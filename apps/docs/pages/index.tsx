@@ -1,4 +1,4 @@
-import { Button } from "ui";
+import { Button } from "@vygruppen/spor-react";
 
 export default function Docs() {
   return (

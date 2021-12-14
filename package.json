@@ -1,5 +1,5 @@
 {
-  "name": "turborepo-basic-shared",
+  "name": "@vygruppen/spor-monorepo",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
@@ -7,12 +7,13 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
+    "build": "turbo run build --scope=\"@vygruppen/*\"",
+    "dev": "turbo run dev --parallel --scope=\"@vygruppen/*\"",
+    "lint": "turbo run lint  --parallel --scope=\"@vygruppen/*\"",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "plop": "^3.0.4",
     "prettier": "^2.5.1",
     "turbo": "latest"
   },

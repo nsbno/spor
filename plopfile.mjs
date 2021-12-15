@@ -10,7 +10,8 @@
  *
  * ## How do I use it?
  *
- * Run `npm run plop` to generate a new package. You'll be prompted for names etc
+ * Run `npm run add-package` to generate a new package.
+ * You'll be prompted for names etc
  */
 export default function (plop) {
   plop.setGenerator("package", {

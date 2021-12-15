@@ -22,7 +22,6 @@ To develop locally, clone the repository and run `npm install` at the root level
 To build all apps and packages, run the following command:
 
 ```
-cd my-turborepo
 npm run build
 ```
 
@@ -31,6 +30,13 @@ npm run build
 To develop all apps and packages, run the following command:
 
 ```
-cd my-turborepo
 npm run dev
+```
+
+### Add new package
+
+To add a new package, run the following command, and follow the wizard:
+
+```
+npm run add-package
 ```

@@ -7,12 +7,14 @@
     "packages/*"
   ],
   "scripts": {
+    "add-package": "plop",
     "build": "turbo run build --scope=\"@vygruppen/*\"",
     "dev": "turbo run dev --parallel --scope=\"@vygruppen/*\"",
     "lint": "turbo run lint  --parallel --scope=\"@vygruppen/*\"",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "case": "^1.6.3",
     "plop": "^3.0.4",
     "prettier": "^2.5.1",
     "turbo": "latest"

@@ -43,18 +43,18 @@ export default function (plop) {
             ...actions,
             {
               type: "add",
-              path: "packages/spor-{{kebabCase name}}/package.json",
+              path: "../packages/spor-{{kebabCase name}}/package.json",
               templateFile: "plop-templates/typescript/package.json.hbs",
             },
             {
               type: "add",
               templateFile: "plop-templates/typescript/src/index.ts.hbs",
-              path: "packages/spor-{{kebabCase name}}/src/index.ts",
+              path: "../packages/spor-{{kebabCase name}}/src/index.ts",
             },
             {
               type: "add",
               templateFile: "plop-templates/typescript/src/fileName.ts.hbs",
-              path: "packages/spor-{{kebabCase name}}/src/{{kebabCase name}}.ts",
+              path: "../packages/spor-{{kebabCase name}}/src/{{kebabCase name}}.ts",
             },
           ];
           break;
@@ -63,18 +63,18 @@ export default function (plop) {
             ...actions,
             {
               type: "add",
-              path: "packages/spor-{{kebabCase name}}/package.json",
+              path: "../packages/spor-{{kebabCase name}}/package.json",
               templateFile: "plop-templates/react/package.json.hbs",
             },
             {
               type: "add",
               templateFile: "plop-templates/react/src/index.tsx.hbs",
-              path: "packages/spor-{{kebabCase name}}/src/index.tsx",
+              path: "../packages/spor-{{kebabCase name}}/src/index.tsx",
             },
             {
               type: "add",
               templateFile: "plop-templates/react/src/ComponentName.tsx.hbs",
-              path: "packages/spor-{{kebabCase name}}/src/{{pascalCase name}}.tsx",
+              path: "../packages/spor-{{kebabCase name}}/src/{{pascalCase name}}.tsx",
             },
           ];
           break;
@@ -83,19 +83,19 @@ export default function (plop) {
             ...actions,
             {
               type: "add",
-              path: "packages/spor-{{kebabCase name}}/package.json",
+              path: "../packages/spor-{{kebabCase name}}/package.json",
               templateFile: "plop-templates/react-native/package.json.hbs",
             },
             {
               type: "add",
               templateFile: "plop-templates/react-native/src/index.tsx.hbs",
-              path: "packages/spor-{{kebabCase name}}/src/index.tsx",
+              path: "../packages/spor-{{kebabCase name}}/src/index.tsx",
             },
             {
               type: "add",
               templateFile:
                 "plop-templates/react-native/src/ComponentName.tsx.hbs",
-              path: "packages/spor-{{kebabCase name}}/src/{{pascalCase name}}.tsx",
+              path: "../packages/spor-{{kebabCase name}}/src/{{pascalCase name}}.tsx",
             },
           ];
           break;
@@ -104,9 +104,9 @@ export default function (plop) {
       }
       actions.push({
         type: "modify",
-        path: "packages/config/eslint-preset.js",
+        path: "../packages/config/eslint-preset.js",
         pattern: /\s+\],/,
-        template: `\n        "packages/spor-{{kebabCase name}}/",
+        template: `\n        "../packages/spor-{{kebabCase name}}/",
       ],`,
       });
       return actions;

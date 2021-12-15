@@ -63,18 +63,18 @@ export default function (plop) {
             ...actions,
             {
               type: "add",
-              path: "../packages/spor-{{kebabCase name}}/package.json",
+              path: "../packages/spor-{{kebabCase name}}-react/package.json",
               templateFile: "plop-templates/react/package.json.hbs",
             },
             {
               type: "add",
               templateFile: "plop-templates/react/src/index.tsx.hbs",
-              path: "../packages/spor-{{kebabCase name}}/src/index.tsx",
+              path: "../packages/spor-{{kebabCase name}}-react/src/index.tsx",
             },
             {
               type: "add",
               templateFile: "plop-templates/react/src/ComponentName.tsx.hbs",
-              path: "../packages/spor-{{kebabCase name}}/src/{{pascalCase name}}.tsx",
+              path: "../packages/spor-{{kebabCase name}}-react/src/{{pascalCase name}}.tsx",
             },
           ];
           break;
@@ -83,30 +83,34 @@ export default function (plop) {
             ...actions,
             {
               type: "add",
-              path: "../packages/spor-{{kebabCase name}}/package.json",
+              path: "../packages/spor-{{kebabCase name}}-react-native/package.json",
               templateFile: "plop-templates/react-native/package.json.hbs",
             },
             {
               type: "add",
               templateFile: "plop-templates/react-native/src/index.tsx.hbs",
-              path: "../packages/spor-{{kebabCase name}}/src/index.tsx",
+              path: "../packages/spor-{{kebabCase name}}-react-native/src/index.tsx",
             },
             {
               type: "add",
               templateFile:
                 "plop-templates/react-native/src/ComponentName.tsx.hbs",
-              path: "../packages/spor-{{kebabCase name}}/src/{{pascalCase name}}.tsx",
+              path: "../packages/spor-{{kebabCase name}}-react-native/src/{{pascalCase name}}.tsx",
             },
           ];
           break;
         default:
           throw "Option is not yet available";
       }
+      const suffix =
+        answers.type === "react" || answers.type === "react-native"
+          ? `-${answers.type}`
+          : "";
       actions.push({
         type: "modify",
         path: "../packages/config/eslint-preset.js",
         pattern: /\s+\],/,
-        template: `\n        "../packages/spor-{{kebabCase name}}/",
+        template: `\n        "../packages/spor-{{kebabCase name}}${suffix}/",
       ],`,
       });
       return actions;

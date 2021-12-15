@@ -1,5 +1,3 @@
-import Case from "case";
-
 /** Welcome to the plopfile!
  *
  *
@@ -15,10 +13,6 @@ import Case from "case";
  * Run `npm run plop` to generate a new package. You'll be prompted for names etc
  */
 export default function (plop) {
-  plop.setHelper("kebabCase", Case.kebab);
-  plop.setHelper("pascalCase", Case.pascal);
-  plop.setHelper("titleCase", Case.title);
-
   plop.setGenerator("package", {
     description: "Create a new package",
     prompts: [

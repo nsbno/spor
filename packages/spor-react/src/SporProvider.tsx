@@ -1,5 +1,9 @@
 import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
-import { theme as defaultSporTheme } from "@vygruppen/spor-theme-react";
+import { Global } from "@emotion/react";
+import {
+  fontFaces,
+  theme as defaultSporTheme,
+} from "@vygruppen/spor-theme-react";
 import React from "react";
 
 /**
@@ -38,7 +42,13 @@ import React from "react";
  */
 export const SporProvider = ({
   theme = defaultSporTheme,
+  children,
   ...props
 }: ChakraProviderProps) => {
-  return <ChakraProvider theme={theme} {...props} />;
+  return (
+    <ChakraProvider theme={theme} {...props}>
+      <Global styles={fontFaces} />
+      {children}
+    </ChakraProvider>
+  );
 };

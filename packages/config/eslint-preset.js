@@ -4,9 +4,10 @@ module.exports = {
     next: {
       rootDir: [
         "apps/docs/",
-        "packages/spor-react/",
         "packages/config/",
         "packages/tsconfig/",
+        "packages/spor-theme-react/",
+        "packages/spor-react/",
       ],
     },
   },

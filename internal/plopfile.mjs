@@ -110,7 +110,7 @@ export default function (plop) {
         type: "modify",
         path: "../packages/config/eslint-preset.js",
         pattern: /\s+\],/,
-        template: `\n        "../packages/spor-{{kebabCase name}}${suffix}/",
+        template: `\n        "packages/spor-{{kebabCase name}}${suffix}/",
       ],`,
       });
       return actions;

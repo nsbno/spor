@@ -10,9 +10,7 @@ export const spacing = {
   5: tokens.size.spacing.px[30].value,
   6: tokens.size.spacing.px[36].value,
   7: tokens.size.spacing.px[42].value,
-  8: tokens.size.spacing.px[48].value,
-  9: tokens.size.spacing.px[54].value,
-  10: tokens.size.spacing.px[60].value,
-  11: tokens.size.spacing.px[72].value,
-  12: tokens.size.spacing.px[90].value,
+  8: tokens.size.spacing.px[54].value,
+  9: tokens.size.spacing.px[72].value,
+  10: tokens.size.spacing.px[90].value,
 };

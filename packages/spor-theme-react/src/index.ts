@@ -4,3 +4,5 @@ import * as foundations from "./foundations";
 export const theme = extendTheme({
   ...foundations,
 });
+
+export { fontFaces } from "./font-faces";

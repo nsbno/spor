@@ -11,7 +11,7 @@ type VyLogoProps = {
 } & BoxProps;
 export const VyLogo = ({ colorScheme, ...boxProps }: VyLogoProps) => {
   // These colors should not be tokenized, as they are logo specific.
-  const mainColor = colorScheme === "light" ? "#ffffff" : "#1d211c";
+  const mainColor = colorScheme === "light" ? "#1d211c" : "#ffffff";
 
   return (
     <Box as="svg" viewBox="0 0 107 54" {...boxProps}>

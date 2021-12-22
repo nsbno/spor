@@ -8,6 +8,7 @@ module.exports = {
         "packages/tsconfig/",
         "packages/spor-theme-react/",
         "packages/spor-react/",
+        "packages/spor-logo-react/",
       ],
     },
   },

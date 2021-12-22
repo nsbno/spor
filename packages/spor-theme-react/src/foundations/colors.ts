@@ -21,7 +21,7 @@ export const colors = {
  * because they are removed when added to the theme.
  */
 function getValues(obj: any) {
-  const newObj = {};
+  const newObj: Record<string, string> = {};
   for (let colorKey in obj) {
     newObj[colorKey] = obj[colorKey].value;
   }
@@ -38,13 +38,13 @@ function getValues(obj: any) {
  * because they are removed when added to the theme.
  */
 function getScaledValues(obj: any) {
-  const newObj = {};
+  const newObj: Record<string, Record<string, string>> = {};
   for (let colorKey in obj) {
     for (let scaleKey in obj[colorKey]) {
       if (!newObj[colorKey]) {
         newObj[colorKey] = {};
       }
-      newObj[colorKey][Number(scaleKey)] = obj[colorKey][scaleKey].value;
+      newObj[colorKey][scaleKey] = obj[colorKey][scaleKey].value;
     }
   }
   return newObj;

@@ -9,6 +9,7 @@ module.exports = {
         "packages/spor-theme-react/",
         "packages/spor-react/",
         "packages/spor-logo-react/",
+        "packages/spor-input-react/",
       ],
     },
   },

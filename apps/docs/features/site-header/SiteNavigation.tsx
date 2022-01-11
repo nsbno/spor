@@ -7,7 +7,11 @@ type SiteNavigationProps = {
   children: React.ReactNode;
 };
 export const SiteNavigation = ({ children }: SiteNavigationProps) => {
-  return <Flex gap={3}>{children}</Flex>;
+  return (
+    <Flex gap={3} as="nav" aria-label="Main">
+      {children}
+    </Flex>
+  );
 };
 
 type NavigationItemProps = {
@@ -35,8 +39,11 @@ export const NavigationLink = ({ children, href }: NavigationItemProps) => {
         fontStyle="sm"
         _focusVisible={{ borderColor: "outline.greenHaze", outline: "none" }}
         _hover={{ backgroundColor: isLight ? "alias.seaMist" : "alias.pine" }}
-        _active={{ backgroundColor: isLight ? "alias.mint" : "alias.celadon" }}
-        backgroundColor={isActive ? "alias.mint" : "transparent"}
+        _active={{
+          backgroundColor: isLight ? "alias.mint" : "alias.celadon",
+        }}
+        backgroundColor={isActive ? "rgba(255,255,255,0.2)" : "transparent"}
+        transition=".1s ease-out"
       >
         {children}
       </Center>

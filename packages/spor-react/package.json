@@ -5,12 +5,13 @@
   "types": "./src/index.tsx",
   "license": "MIT",
   "dependencies": {
-    "@vygruppen/spor-theme-react": "*",
-    "@vygruppen/spor-logo-react": "*",
-    "@vygruppen/spor-input-react": "*",
     "@chakra-ui/react": "^1.7.3",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@leile/lobo-t": "^1.0.5",
+    "@vygruppen/spor-input-react": "*",
+    "@vygruppen/spor-logo-react": "*",
+    "@vygruppen/spor-theme-react": "*",
     "framer-motion": "^4.1.17"
   },
   "devDependencies": {

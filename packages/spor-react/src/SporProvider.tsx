@@ -1,28 +1,35 @@
 import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
+import { Language, LanguageProvider } from "@vygruppen/spor-i18n-react";
 import { fontFaces, theme as defaultSporTheme } from "@vygruppen/spor-react";
 import React from "react";
 
+type SporProviderProps = ChakraProviderProps & {
+  language: Language;
+};
+
 /**
  * This component is used to provide the specified theme of colors and other
- * design tokens to the remainder of the application
+ * design tokens to the remainder of the application, as well as the current language.
  *
  * Please place it as close to the root of your application as possible -
  * at least before rendering any UI.
  *
  * You can pass your own theme to this component. If you don't (and most of the time you won't), the default Spor theme will be used.
  *
+ * You do, however, need to specify the current language of your application. This is specified to provide any built-in microcopy and labels for any Spor components.
+ *
  * ```tsx
- * * import { SporProvider } from "@spor-react";
+ * * import { SporProvider, Language } from "@spor-react";
  * const root = React.createRoot(document.getElementById("root"))
  * root.render(
- *  <SporProvider>
+ *  <SporProvider language={Language.NorwegianBokmal}>
  *    <App />
  *  </SporProvider>
  * );
  * ```
  *
- * You can also pass specific overrides to the theme if you need to. Adding application specific design tokens, for example could be a useful thing to do.
+ * You can pass specific overrides to the theme if you need to. Adding application specific design tokens, for example could be a useful thing to do.
  *
  * ```tsx
  * import { extendTheme, SporProvider } from "@spor-react";
@@ -31,7 +38,7 @@ import React from "react";
  * });
  * const root = React.createRoot(document.getElementById("root"))
  * root.render(
- *  <SporProvider theme={theme}>
+ *  <SporProvider language={Language.English} theme={theme}>
  *    <App />
  *  </SporProvider>
  * );
@@ -39,13 +46,16 @@ import React from "react";
  */
 export const SporProvider = ({
   theme = defaultSporTheme,
+  language,
   children,
   ...props
-}: ChakraProviderProps) => {
+}: SporProviderProps) => {
   return (
-    <ChakraProvider theme={theme} {...props}>
-      <Global styles={fontFaces} />
-      {children}
-    </ChakraProvider>
+    <LanguageProvider value={language}>
+      <ChakraProvider theme={theme} {...props}>
+        <Global styles={fontFaces} />
+        {children}
+      </ChakraProvider>
+    </LanguageProvider>
   );
 };

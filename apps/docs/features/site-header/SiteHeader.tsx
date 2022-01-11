@@ -32,7 +32,7 @@ export const SiteHeader = ({ colorScheme }: SiteHeaderProps) => {
             </Box>
           </Link>
           <SiteNavigation>
-            <NavigationLink href="/getting-started">
+            <NavigationLink href="/resources/getting-started">
               Getting started
             </NavigationLink>
             <NavigationLink href="/profile">Profile</NavigationLink>
@@ -43,7 +43,7 @@ export const SiteHeader = ({ colorScheme }: SiteHeaderProps) => {
         </Flex>
         <Box>
           <Text>
-            Vis som <strong>Designer</strong> ⚙️
+            Vis som: <strong>Designer</strong> ⚙️
           </Text>
         </Box>
       </Flex>

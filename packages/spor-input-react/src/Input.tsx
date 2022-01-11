@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-type InputProps = ChakraInputProps & {
+export type InputProps = ChakraInputProps & {
   /** The label of the input field */
   label: string;
   /** Element that's placed inside of the input field, to the left */
@@ -29,11 +29,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       onBlur = () => {},
       leftElement = null,
       rightElement = null,
+      isInvalid,
+      isDisabled,
       ...inputProps
     },
     ref
   ) => {
-    const theme = useTheme();
     const [hasFocusOrContent, setFocusOrContent] = React.useState(
       Boolean(inputProps.value || inputProps.defaultValue)
     );
@@ -42,17 +43,20 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       setFocusOrContent(Boolean(inputProps.value));
     }, [inputProps.value]);
 
+    const boxShadows = useBoxShadowColors({ isInvalid, isDisabled });
+
     return (
       <FormControl
         position="relative"
         borderRadius="sm"
-        boxShadow={`0 0 0 1px ${theme.colors.outline.darkGrey}`}
+        boxShadow={boxShadows.default}
         overflow="hidden"
         height="54px"
-        _hover={{ boxShadow: `0 0 0 2px ${theme.colors.outline.darkGrey}` }}
-        _focusWithin={{
-          boxShadow: `0 0 0 2px ${theme.colors.outline.greenHaze}`,
-        }}
+        _hover={{ boxShadow: boxShadows.hover }}
+        _focusWithin={{ boxShadow: boxShadows.focus }}
+        isInvalid={isInvalid}
+        isDisabled={isDisabled}
+        transition=".1s ease-out"
       >
         <FormLabel
           position="absolute"
@@ -76,7 +80,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             height="54px"
             fontSize="18px"
             paddingLeft={leftElement ? "38px" : "16px"}
-            paddingRight={rightElement ? "38px" : "16px"}
+            paddingRight={rightElement ? "5em" : "16px"}
             onFocus={(e) => {
               setFocusOrContent(true);
               onFocus(e);
@@ -89,10 +93,39 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             {...inputProps}
           />
           {rightElement && (
-            <InputRightElement height="54px">{rightElement}</InputRightElement>
+            <InputRightElement height="54px" width="5em">
+              {rightElement}
+            </InputRightElement>
           )}
         </InputGroup>
       </FormControl>
     );
   }
 );
+
+type UseDefaultBoxShadowArgs = { isInvalid?: boolean; isDisabled?: boolean };
+const useBoxShadowColors = ({
+  isInvalid,
+  isDisabled,
+}: UseDefaultBoxShadowArgs) => {
+  const theme = useTheme();
+  if (isDisabled) {
+    return {
+      default: `inset 0 0 0 1px ${theme.colors.alias.platinum}`,
+      hover: `inset 0 0 0 1px ${theme.colors.alias.platinum}`,
+      focus: `inset 0 0 0 1px ${theme.colors.alias.platinum}`,
+    };
+  }
+  if (isInvalid) {
+    return {
+      default: `inset 0 0 0 2px ${theme.colors.error.brightRed}`,
+      hover: `inset 0 0 0 2px ${theme.colors.outline.darkGrey}`,
+      focus: `inset 0 0 0 2px ${theme.colors.outline.greenHaze}`,
+    };
+  }
+  return {
+    default: `inset 0 0 0 1px ${theme.colors.outline.darkGrey}`,
+    hover: `inset 0 0 0 2px ${theme.colors.outline.darkGrey}`,
+    focus: `inset 0 0 0 2px ${theme.colors.outline.greenHaze}`,
+  };
+};

@@ -1,0 +1,17 @@
+{
+  "name": "@vygruppen/spor-i18n-react",
+  "version": "0.0.1",
+  "main": "./src/index.tsx",
+  "types": "./src/index.tsx",
+  "license": "MIT",
+  "devDependencies": {
+    "@leile/lobo-t": "^1.0.5",
+    "react": ">17.0.0",
+    "react-dom": ">17.0.0"
+  },
+  "peerDependencies": {
+    "@leile/lobo-t": "^1.0.5",
+    "react": ">17.0.0",
+    "react-dom": ">17.0.0"
+  }
+}

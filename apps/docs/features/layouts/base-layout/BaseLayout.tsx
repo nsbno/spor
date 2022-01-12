@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { SiteHeader } from "../../site-header/SiteHeader";
 
 type BaseLayoutProps = {
@@ -8,7 +8,9 @@ export const BaseLayout = ({ children }: BaseLayoutProps) => {
   return (
     <Flex flexDirection="column" minHeight="100vh">
       <SiteHeader colorScheme="dark" />
-      <Box flex="1">{children}</Box>
+      <Flex flex="1" flexDirection="column" alignItems="stretch">
+        {children}
+      </Flex>
       {/* add <SiteFooter /> */}
     </Flex>
   );

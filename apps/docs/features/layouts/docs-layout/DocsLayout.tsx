@@ -12,7 +12,7 @@ type DocsLayoutProps = { children: React.ReactNode };
 export const DocsLayout = ({ children }: DocsLayoutProps) => {
   return (
     <BaseLayout>
-      <Flex>
+      <Flex flex="1">
         <LeftNavigation />
         <Box as="main" flex="1">
           {children}
@@ -32,6 +32,7 @@ const LeftNavigation = ({}: LeftNavigationProps) => {
       flex="1"
       maxWidth="340px"
       px={1.5}
+      py={2}
       borderRight={`${space[1.5]} solid ${colors.alias.lightGrey}`}
     >
       <FormControl>

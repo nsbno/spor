@@ -12,6 +12,7 @@
     "@vygruppen/spor-input-react": "*",
     "@vygruppen/spor-logo-react": "*",
     "@vygruppen/spor-theme-react": "*",
+    "@vygruppen/spor-i18n-react": "*",
     "framer-motion": "^4.1.17"
   },
   "devDependencies": {

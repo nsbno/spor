@@ -11,6 +11,7 @@ module.exports = {
         "packages/spor-logo-react/",
         "packages/spor-input-react/",
         "packages/spor-i18n-react/",
+        "packages/spor-button-react/",
       ],
     },
   },

@@ -9,6 +9,7 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@leile/lobo-t": "^1.0.5",
+    "@vygruppen/spor-button-react": "*",
     "@vygruppen/spor-input-react": "*",
     "@vygruppen/spor-logo-react": "*",
     "@vygruppen/spor-theme-react": "*",

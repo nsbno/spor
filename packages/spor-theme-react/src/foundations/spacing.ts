@@ -1,6 +1,6 @@
 import tokens from "@vygruppen/spor-design-tokens";
 
-export const space = {
+export const spacing = {
   0.5: tokens.size.spacing.px[3].value,
   1: tokens.size.spacing.px[6].value,
   1.5: tokens.size.spacing.px[9].value,

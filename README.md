@@ -2,16 +2,23 @@
 
 This is the monorepo containing Vy's design system, Spor.
 
+> ## Still under active pre-development
+>
+> The code in this repo is still being bootstrapped, and is not published or deployed anywhere yet. We hope to get the first version of our React component library published as a public beta sometime in January, and the docs site in February.
+> If you have any questions, please get in touch at #design-system on Slack (for Vy employees and contractors only).
+
 ## What's inside?
 
 This repo includes the following packages/apps:
 
 - `docs`: a [Next.js](https://nextjs.org) app documenting the design system
 - `spor-react`: a React component library
-- `spor-react-native`: a React Native component library
-- `spor-elm`: an Elm component library
 - `config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
+
+## Usage
+
+The code isn't yet in a usable state. Once it is, usage information will be found here, and in the `packages/spor-react` README.
 
 ## Setup
 

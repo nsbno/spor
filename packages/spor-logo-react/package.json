@@ -4,9 +4,14 @@
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "license": "MIT",
+  "scripts": {
+    "build": "tsup src/index.tsx --dts",
+    "dev": "tsup src/index.tsx --watch"
+  },
   "devDependencies": {
     "react": ">17.0.0",
-    "react-dom": ">17.0.0"
+    "react-dom": ">17.0.0",
+    "tsup": "^5.11.11"
   },
   "peerDependencies": {
     "react": ">17.0.0",

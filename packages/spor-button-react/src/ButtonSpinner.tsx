@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
  */
 export const ButtonSpinner = () => {
   return (
-    <Box as="svg" viewBox="0 0 31 20" width="40%" mx="auto">
+    <Box as="svg" viewBox="0 0 31 20" width="40%" maxWidth="90px" mx="auto">
       <motion.g variants={variants} animate="loading">
         <motion.circle
           cx="4"

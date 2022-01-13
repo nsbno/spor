@@ -13,6 +13,9 @@ coverage
 out/
 build
 
+# built files
+packages/*/dist
+
 # misc
 .DS_Store
 *.pem

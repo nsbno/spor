@@ -48,6 +48,11 @@ export default function (plop) {
             },
             {
               type: "add",
+              path: "../packages/spor-{{kebabCase name}}/tsconfig.json",
+              templateFile: "plop-templates/typescript/tsconfig.json.hbs",
+            },
+            {
+              type: "add",
               path: "../packages/spor-{{kebabCase name}}/README.md",
               templateFile: "plop-templates/typescript/README.md.hbs",
             },
@@ -73,6 +78,11 @@ export default function (plop) {
             },
             {
               type: "add",
+              path: "../packages/spor-{{kebabCase name}}-react/tsconfig.json",
+              templateFile: "plop-templates/react/tsconfig.json.hbs",
+            },
+            {
+              type: "add",
               path: "../packages/spor-{{kebabCase name}}-react/README.md",
               templateFile: "plop-templates/react/README.md.hbs",
             },
@@ -95,6 +105,11 @@ export default function (plop) {
               type: "add",
               path: "../packages/spor-{{kebabCase name}}-react-native/package.json",
               templateFile: "plop-templates/react-native/package.json.hbs",
+            },
+            {
+              type: "add",
+              path: "../packages/spor-{{kebabCase name}}-react-native/tsconfig.json",
+              templateFile: "plop-templates/react-native/tsconfig.json.hbs",
             },
             {
               type: "add",

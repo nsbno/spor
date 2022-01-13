@@ -5,11 +5,10 @@
   "include": ["src"],
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "moduleResolution": "node",
-    "lib": ["ES2015", "DOM"],
+    "lib": ["ES2015"],
     "module": "ESNext",
     "rootDir": "src",
     "outDir": "dist",
-    "jsx": "react"
+    "jsx": "react-native"
   }
 }

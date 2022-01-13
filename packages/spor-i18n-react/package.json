@@ -4,13 +4,19 @@
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "license": "MIT",
+  "scripts": {
+    "build": "tsup src/index.tsx --dts",
+    "dev": "tsup src/index.tsx --watch"
+  },
+  "dependencies": {
+    "@leile/lobo-t": "^1.0.5"
+  },
   "devDependencies": {
-    "@leile/lobo-t": "^1.0.5",
     "react": ">17.0.0",
-    "react-dom": ">17.0.0"
+    "react-dom": ">17.0.0",
+    "tsup": "^5.11.11"
   },
   "peerDependencies": {
-    "@leile/lobo-t": "^1.0.5",
     "react": ">17.0.0",
     "react-dom": ">17.0.0"
   }

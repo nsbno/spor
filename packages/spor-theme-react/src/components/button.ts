@@ -19,11 +19,11 @@ const baseStyle: SystemStyleObject = {
     cursor: "not-allowed",
     boxShadow: "none",
     backgroundColor: "alias.silver",
-    color: "alias.dimGrey",
+    color: "alias.white",
   },
   _hover: {
     _disabled: {
-      bg: "initial",
+      bg: "alias.silver",
     },
   },
 };
@@ -113,6 +113,9 @@ const variantGhost: SystemStyleFunction = () => ({
   _hover: {
     backgroundColor: "alias.lightGrey",
     color: "alias.darkTeal",
+    _disabled: {
+      color: "alias.white",
+    },
   },
   _active: {
     backgroundColor: "alias.mint",

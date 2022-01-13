@@ -4,6 +4,7 @@ import {
 } from "@chakra-ui/react";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
 import React from "react";
+import { ButtonSpinner } from "./ButtonSpinner";
 
 type ButtonProps = Exclude<ChakraButtonProps, "colorScheme">;
 /**
@@ -34,13 +35,19 @@ type ButtonProps = Exclude<ChakraButtonProps, "colorScheme">;
  */
 export const Button = ({ width, ...props }: ButtonProps) => {
   const { t } = useTranslation();
-  return <ChakraButton loadingText={t(texts.loadingText)} {...props} />;
+  return (
+    <ChakraButton
+      spinner={<ButtonSpinner />}
+      {...props}
+      aria-label={props.isLoading ? t(texts.loadingText) : props["aria-label"]}
+    />
+  );
 };
 
 const texts = {
   loadingText: {
-    nb: 'Laster…',
-    en: 'Loading…',
-    sv: 'Laddar…',
-  }
-}
+    nb: "Laster…",
+    en: "Loading…",
+    sv: "Laddar…",
+  },
+};

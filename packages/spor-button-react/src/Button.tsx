@@ -6,7 +6,7 @@ import { useTranslation } from "@vygruppen/spor-i18n-react";
 import React from "react";
 import { ButtonSpinner } from "./ButtonSpinner";
 
-type ButtonProps = Exclude<ChakraButtonProps, "colorScheme">;
+type ButtonProps = Exclude<ChakraButtonProps, "colorScheme" | "loadingText">;
 /**
  * Buttons are used to trigger actions.
  *

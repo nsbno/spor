@@ -6,10 +6,18 @@
   "license": "MIT",
   "devDependencies": {
     "react": ">17.0.0",
-    "react-dom": ">17.0.0"
+    "react-dom": ">17.0.0",
+    "@chakra-ui/react": "^1.7.3",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "framer-motion": "^4.1.17"
   },
   "peerDependencies": {
     "react": ">17.0.0",
-    "react-dom": ">17.0.0"
+    "react-dom": ">17.0.0",
+    "@chakra-ui/react": "^1.7.3",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "framer-motion": "^4.1.17"
   }
 }

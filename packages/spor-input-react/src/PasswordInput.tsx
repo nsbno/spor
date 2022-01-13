@@ -1,5 +1,6 @@
 import { Button, useDisclosure } from "@chakra-ui/react";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
+import React from "react";
 import { Input, InputGroup, InputProps, InputRightElement } from ".";
 
 type PasswordInputProps = InputProps;

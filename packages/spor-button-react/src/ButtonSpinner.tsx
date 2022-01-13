@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import React from "react";
 /**
  * The loading spinner shown inside of buttons when `isLoading` is set to true.
  */

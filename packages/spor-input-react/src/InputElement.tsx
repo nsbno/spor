@@ -3,6 +3,7 @@ import {
   InputLeftElement as ChakraInputLeftElement,
   InputRightElement as ChakraInputRightElement,
 } from "@chakra-ui/react";
+import React from "react";
 
 /**
  * Places an element inside the left side of an input field.

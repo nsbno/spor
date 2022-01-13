@@ -12,7 +12,8 @@ const baseStyle: SystemStyleObject = {
   transitionDuration: "normal",
   px: 3,
   _focus: {
-    outline: "none",
+    boxShadow: 0,
+    outline: 0,
   },
   _disabled: {
     cursor: "not-allowed",
@@ -31,7 +32,7 @@ const variantControl: SystemStyleFunction = ({ theme }) => ({
   backgroundColor: "alias.darkTeal",
   color: "alias.white",
   _focusVisible: {
-    boxShadow: `inset 0 0 0 6px ${theme.colors.alias.darkTeal}, inset 0 0 0 8px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.darkTeal}, inset 0 0 0 6px currentColor`,
   },
   _hover: {
     backgroundColor: "alias.night",
@@ -40,11 +41,12 @@ const variantControl: SystemStyleFunction = ({ theme }) => ({
     backgroundColor: "alias.pine",
   },
 });
+
 const variantPrimary: SystemStyleFunction = ({ theme }) => ({
   backgroundColor: "alias.primaryGreen",
   color: "alias.white",
   _focusVisible: {
-    boxShadow: `inset 0 0 0 6px ${theme.colors.alias.primaryGreen}, inset 0 0 0 8px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.primaryGreen}, inset 0 0 0 6px currentColor`,
   },
   _hover: {
     backgroundColor: "alias.pine",
@@ -53,11 +55,12 @@ const variantPrimary: SystemStyleFunction = ({ theme }) => ({
     backgroundColor: "alias.azure",
   },
 });
+
 const variantSecondary: SystemStyleFunction = ({ theme }) => ({
   backgroundColor: "alias.coralGreen",
   color: "alias.darkTeal",
   _focusVisible: {
-    boxShadow: `inset 0 0 0 6px ${theme.colors.alias.coralGreen}, inset 0 0 0 8px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.coralGreen}, inset 0 0 0 6px currentColor`,
   },
   _hover: {
     backgroundColor: "alias.blueGreen",
@@ -66,26 +69,13 @@ const variantSecondary: SystemStyleFunction = ({ theme }) => ({
     backgroundColor: "alias.mint",
   },
 });
+
 const variantTertiary: SystemStyleFunction = ({ theme }) => ({
   backgroundColor: "alias.mint",
   color: "alias.darkGrey",
   fontWeight: "normal",
   _focusVisible: {
-    boxShadow: `inset 0 0 0 6px ${theme.colors.alias.mint}, inset 0 0 0 8px currentColor`,
-  },
-  _hover: {
-    backgroundColor: "alias.seaMist",
-  },
-  _active: {
-    backgroundColor: "alias.lightGrey",
-  },
-});
-const variantAdditional: SystemStyleFunction = ({ theme }) => ({
-  backgroundColor: "alias.mint",
-  color: "alias.darkGrey",
-  fontWeight: "normal",
-  _focusVisible: {
-    boxShadow: `inset 0 0 0 6px ${theme.colors.alias.mint}, inset 0 0 0 8px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.mint}, inset 0 0 0 6px currentColor`,
   },
   _hover: {
     backgroundColor: "alias.seaMist",
@@ -95,12 +85,47 @@ const variantAdditional: SystemStyleFunction = ({ theme }) => ({
   },
 });
 
+const variantAdditional: SystemStyleFunction = ({ theme }) => ({
+  backgroundColor: "transparent",
+  color: "alias.darkGrey",
+  fontWeight: "normal",
+  boxShadow: "inset 0 0 0 1px currentColor",
+  _focusVisible: {
+    boxShadow: `inset 0 0 0 3px ${theme.colors.alias.greenHaze}`,
+  },
+  _hover: {
+    boxShadow: `inset 0 0 0 2px currentColor`,
+  },
+  _active: {
+    boxShadow: `inset 0 0 0 1px currentColor`,
+    backgroundColor: "alias.mint",
+  },
+});
+
+const variantGhost: SystemStyleFunction = () => ({
+  backgroundColor: "transparent",
+  color: "alias.darkGrey",
+  fontWeight: "normal",
+  boxShadow: "0",
+  _focusVisible: {
+    boxShadow: `inset 0 0 0 1px currentColor`,
+  },
+  _hover: {
+    backgroundColor: "alias.lightGrey",
+    color: "alias.darkTeal",
+  },
+  _active: {
+    backgroundColor: "alias.mint",
+  },
+});
+
 const variants = {
   control: variantControl,
   primary: variantPrimary,
   secondary: variantSecondary,
   tertiary: variantTertiary,
   additional: variantAdditional,
+  ghost: variantGhost,
 };
 
 const sizes: Record<string, SystemStyleObject> = {

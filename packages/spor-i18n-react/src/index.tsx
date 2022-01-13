@@ -8,3 +8,9 @@ export enum Language {
 export const { LanguageProvider, useTranslation } = initLobot<typeof Language>(
   Language.NorwegianBokmal
 );
+
+export type Translations = {
+  [key: string]: Translations | { [key in Language]: Translation };
+};
+
+type Translation = string | ((args: unknown) => string);

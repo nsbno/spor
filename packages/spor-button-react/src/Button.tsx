@@ -2,6 +2,7 @@ import {
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
 } from "@chakra-ui/react";
+import { useTranslation } from "@vygruppen/spor-i18n-react";
 import React from "react";
 
 type ButtonProps = Exclude<ChakraButtonProps, "colorScheme">;
@@ -32,5 +33,14 @@ type ButtonProps = Exclude<ChakraButtonProps, "colorScheme">;
  * ```
  */
 export const Button = ({ width, ...props }: ButtonProps) => {
-  return <ChakraButton {...props} />;
+  const { t } = useTranslation();
+  return <ChakraButton loadingText={t(texts.loadingText)} {...props} />;
 };
+
+const texts = {
+  loadingText: {
+    nb: 'Laster…',
+    en: 'Loading…',
+    sv: 'Laddar…',
+  }
+}

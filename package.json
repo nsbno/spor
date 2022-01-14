@@ -15,7 +15,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "postinstall": "cd apps/docs && npm run postinstall && cd ../..",
     "prerelease": "npm run build",
-    "release": "changesets publish"
+    "release": "changeset publish"
   },
   "dependencies": {
     "@changesets/cli": "^2.19.0",

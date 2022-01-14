@@ -13,7 +13,9 @@
     "dev": "turbo run dev --no-deps --parallel --scope=\"@vygruppen/*\"",
     "lint": "turbo run lint  --parallel --scope=\"@vygruppen/*\"",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "postinstall": "cd apps/docs && npm run postinstall && cd ../.."
+    "postinstall": "cd apps/docs && npm run postinstall && cd ../..",
+    "prerelease": "npm run build",
+    "release": "changesets publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.19.0",

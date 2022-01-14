@@ -17,8 +17,11 @@
     "prerelease": "npm run build",
     "release": "changesets publish"
   },
-  "devDependencies": {
+  "dependencies": {
     "@changesets/cli": "^2.19.0",
+    "@chakra-ui/cli": "^1.7.0"
+  },
+  "devDependencies": {
     "plop": "^3.0.4",
     "prettier": "^2.5.1",
     "turbo": "^1.0.25"

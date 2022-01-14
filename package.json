@@ -9,6 +9,7 @@
   "scripts": {
     "add-package": "plop --plopfile internal/plopfile.mjs",
     "build": "turbo run build --scope=\"@vygruppen/*\"",
+    "test": "turbo run test --parallel --scope=\"@vygruppen/*\"",
     "dev": "turbo run dev --no-deps --parallel --scope=\"@vygruppen/*\"",
     "lint": "turbo run lint  --parallel --scope=\"@vygruppen/*\"",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
@@ -29,6 +30,9 @@
           "dist/**",
           ".next/**"
         ]
+      },
+      "test": {
+        "outputs": []
       },
       "lint": {
         "outputs": []

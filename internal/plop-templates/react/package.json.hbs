@@ -1,9 +1,10 @@
 {
   "name": "@vygruppen/spor-{{ kebabCase name }}-react",
   "version": "0.0.1",
-  "main": "./src/index.tsx",
-  "types": "./src/index.tsx",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "license": "MIT",
+  "files": ["dist"],
   "scripts": {
     "build": "tsup src/index.tsx --dts",
     "dev": "tsup src/index.tsx --watch",

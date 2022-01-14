@@ -1,7 +1,10 @@
 import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
 import { Language, LanguageProvider } from "@vygruppen/spor-i18n-react";
-import { fontFaces, theme as defaultSporTheme } from "@vygruppen/spor-react";
+import {
+  fontFaces,
+  theme as defaultSporTheme,
+} from "@vygruppen/spor-theme-react";
 import React from "react";
 
 type SporProviderProps = ChakraProviderProps & {

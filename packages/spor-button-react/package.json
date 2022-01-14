@@ -1,9 +1,11 @@
 {
   "name": "@vygruppen/spor-button-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "tsup src/index.tsx --dts",

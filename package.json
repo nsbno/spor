@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "add-package": "plop --plopfile internal/plopfile.mjs",
+    "prebuild": "rimraf packages/*/dist",
     "build": "turbo run build --scope=\"@vygruppen/*\"",
     "test": "turbo run test --parallel --scope=\"@vygruppen/*\"",
     "dev": "turbo run dev --no-deps --parallel --scope=\"@vygruppen/*\"",
@@ -18,8 +19,9 @@
     "release": "changeset publish"
   },
   "dependencies": {
+    "@chakra-ui/cli": "^1.7.0",
     "@changesets/cli": "^2.19.0",
-    "@chakra-ui/cli": "^1.7.0"
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "plop": "^3.0.4",

@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": ["dist"],
   "license": "MIT",
   "scripts": {
     "build": "tsup src/index.tsx --dts",

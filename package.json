@@ -16,6 +16,7 @@
     "postinstall": "cd apps/docs && npm run postinstall && cd ../.."
   },
   "devDependencies": {
+    "@changesets/cli": "^2.19.0",
     "plop": "^3.0.4",
     "prettier": "^2.5.1",
     "turbo": "^1.0.25"

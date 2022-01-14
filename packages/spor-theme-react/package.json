@@ -5,8 +5,8 @@
   "types": "./src/index.ts",
   "license": "MIT",
   "scripts": {
-    "build": "tsup src/index.tsx --dts",
-    "dev": "tsup src/index.tsx --watch",
+    "build": "tsup src/index.ts --dts",
+    "dev": "tsup src/index.ts --watch",
     "gen:theme-typings": "chakra-cli tokens src/index.ts",
     "postinstall": "npm run gen:theme-typings"
   },

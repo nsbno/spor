@@ -23,7 +23,7 @@ type SporProviderProps = ChakraProviderProps & {
  * You do, however, need to specify the current language of your application. This is specified to provide any built-in microcopy and labels for any Spor components.
  *
  * ```tsx
- * * import { SporProvider, Language } from "@spor-react";
+ * * import { SporProvider, Language } from "@vygruppen/spor-react";
  * const root = React.createRoot(document.getElementById("root"))
  * root.render(
  *  <SporProvider language={Language.NorwegianBokmal}>
@@ -35,7 +35,7 @@ type SporProviderProps = ChakraProviderProps & {
  * You can pass specific overrides to the theme if you need to. Adding application specific design tokens, for example could be a useful thing to do.
  *
  * ```tsx
- * import { extendTheme, SporProvider } from "@spor-react";
+ * import { extendTheme, SporProvider } from "@vygruppen/spor-react";
  * const theme = extendTheme({
  *  colors: { myApp: { primary: "tomato" } }
  * });

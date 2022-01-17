@@ -5,8 +5,22 @@ This package includes everything you need to build your React component library.
 ## Installation
 
 ```bash
-$ npm install @vygruppen/spor-react
+$ npm install @vygruppen/spor-react @chakra-ui/react @emotion/styled @emotion/react framer-motion
 ```
+
+or
+
+```bash
+$ yarn add @vygruppen/spor-react @chakra-ui/react @emotion/styled @emotion/react framer-motion
+```
+
+<details>
+<summary>That's a lot of dependencies! Why?</summary>
+The reason there's a lot of dependencies, is that you'll most likely use both Chakra UI and framer-motion to implement your application, and you shouldn't be required to install these dependencies twice.
+
+You'll also be able to update them independently of this library, in case there's a new feature or non-breaking feature out there that you need.
+
+</details>
 
 ## Usage
 

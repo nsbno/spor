@@ -9,23 +9,27 @@
     "dev": "tsup src/index.tsx --watch"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.7.3",
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
     "@leile/lobo-t": "^1.0.5",
     "@vygruppen/spor-button-react": "*",
     "@vygruppen/spor-input-react": "*",
     "@vygruppen/spor-logo-react": "*",
     "@vygruppen/spor-theme-react": "*",
-    "@vygruppen/spor-i18n-react": "*",
-    "framer-motion": "^4.1.17"
+    "@vygruppen/spor-i18n-react": "*"
   },
   "devDependencies": {
+    "@chakra-ui/react": "^1.7.3",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "framer-motion": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "tsup": "^5.11.11"
   },
   "peerDependencies": {
+    "@chakra-ui/react": "^1.7.3",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "framer-motion": "^4.1.0 || ^5.0.0",
     "react": ">= 17.0.0",
     "react-dom": ">= 17.0.0"
   }

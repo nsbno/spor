@@ -22,7 +22,6 @@
     "framer-motion": "^4.0.0"
   },
   "devDependencies": {
-    "@chakra-ui/cli": "^1.7.0",
     "@types/react": "latest",
     "config": "*",
     "eslint": "7.32.0",

@@ -30,7 +30,6 @@ const baseStyleContainer: SystemStyleFunction = () => {
 
     "input, textarea": {
       width: "100%",
-      minHeight: "54px",
       outline: "none",
       backgroundColor: "transparent",
       border: 0,
@@ -38,6 +37,9 @@ const baseStyleContainer: SystemStyleFunction = () => {
       transition: ".1s ease-out",
       position: "relative",
       px: "16px",
+    },
+    input: {
+      height: "54px",
     },
     "input + label": {
       top: 0,

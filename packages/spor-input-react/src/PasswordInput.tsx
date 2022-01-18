@@ -9,9 +9,19 @@ export const PasswordInput = (props: PasswordInputProps) => {
   const { t } = useTranslation();
   return (
     <InputGroup>
-      <Input {...props} type={isShowingPassword ? "text" : "password"} />
-      <InputRightElement>
-        <Button variant="ghost" type="button" px={4} onClick={onToggle}>
+      <Input
+        {...props}
+        type={isShowingPassword ? "text" : "password"}
+        pr="4.5em !important"
+      />
+      <InputRightElement width="4.5em">
+        <Button
+          variant="ghost"
+          type="button"
+          px={4}
+          onClick={onToggle}
+          borderRadius="sm"
+        >
           {isShowingPassword ? t(texts.hidePassword) : t(texts.showPassword)}
         </Button>
       </InputRightElement>

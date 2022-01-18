@@ -42,7 +42,7 @@ const baseStyleContainer: SystemStyleFunction = () => {
       height: "54px",
     },
     "input + label": {
-      top: 0,
+      top: "6px",
       left: "16px",
       zIndex: 2,
       position: "absolute",

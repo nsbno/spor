@@ -1,5 +1,19 @@
 # @vygruppen/spor-react
 
+## 0.1.1
+
+### Patch Changes
+
+- 099d492: Add repository and home page metadata to all packages
+- Updated dependencies [6f145b6]
+- Updated dependencies [099d492]
+- Updated dependencies [146bdda]
+  - @vygruppen/spor-theme-react@0.0.3
+  - @vygruppen/spor-button-react@0.0.3
+  - @vygruppen/spor-i18n-react@0.0.3
+  - @vygruppen/spor-input-react@0.0.3
+  - @vygruppen/spor-logo-react@0.0.3
+
 ## 0.1.0
 
 ### Minor Changes

@@ -1,10 +1,14 @@
-import { extendTheme, theme as chakraTheme } from "@chakra-ui/react";
+import { theme as defaultTheme } from "@chakra-ui/theme";
 import * as components from "./components";
 import * as foundations from "./foundations";
 
-export const theme = extendTheme({
+export const theme = {
+  ...defaultTheme,
   ...foundations,
-  components: { ...chakraTheme, ...components },
-});
+  components: {
+    ...defaultTheme.components,
+    ...components,
+  },
+};
 
 export { fontFaces } from "./font-faces";

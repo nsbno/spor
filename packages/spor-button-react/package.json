@@ -7,6 +7,12 @@
     "dist"
   ],
   "license": "MIT",
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-button-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nsbno/spor.git",
+    "directory": "packages/spor-button-react"
+  },
   "scripts": {
     "build": "tsup src/index.tsx --dts",
     "dev": "tsup src/index.tsx --watch"

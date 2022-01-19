@@ -7,6 +7,12 @@
   "files": [
     "dist"
   ],
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-logo-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nsbno/spor.git",
+    "directory": "packages/spor-logo-react"
+  },
   "scripts": {
     "build": "tsup src/index.tsx --dts",
     "dev": "tsup src/index.tsx --watch"

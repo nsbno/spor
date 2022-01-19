@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-i18n-react",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -12,7 +12,8 @@
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
     "directory": "packages/spor-i18n-react"
-  },  "scripts": {
+  },
+  "scripts": {
     "build": "tsup src/index.tsx --dts",
     "dev": "tsup src/index.tsx --watch"
   },

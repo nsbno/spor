@@ -45,7 +45,4 @@ const baseStyle: PartsStyleObject<typeof parts> = {
 export default {
   parts: parts.keys,
   baseStyle,
-  variants: {},
-  sizes: {},
-  defaultProps: {},
 };

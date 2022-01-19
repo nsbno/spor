@@ -20,7 +20,7 @@ import React from "react";
  * ```
  */
 export const InputLeftElement = (props: InputElementProps) => (
-  <ChakraInputLeftElement height="100%" {...props} />
+  <ChakraInputLeftElement {...props} />
 );
 
 /**
@@ -38,5 +38,5 @@ export const InputLeftElement = (props: InputElementProps) => (
  * ```
  */
 export const InputRightElement = (props: InputElementProps) => (
-  <ChakraInputRightElement height="100%" {...props} />
+  <ChakraInputRightElement {...props} />
 );

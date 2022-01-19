@@ -26,21 +26,7 @@ const baseStyleContainer: SystemStyleFunction = () => {
     width: "100%",
     position: "relative",
     transition: ".1s ease-out",
-    fontSize: "18px",
 
-    "input, textarea": {
-      width: "100%",
-      outline: "none",
-      backgroundColor: "transparent",
-      border: 0,
-      borderRadius: "sm",
-      transition: ".1s ease-out",
-      position: "relative",
-      px: "16px",
-    },
-    input: {
-      height: "54px",
-    },
     "input + label": {
       top: "6px",
       left: "16px",
@@ -57,10 +43,6 @@ const baseStyleContainer: SystemStyleFunction = () => {
     "input:not(:placeholder-shown)": {
       pt: "16px",
     },
-    textarea: {
-      minHeight: "100px",
-      py: 3,
-    },
   };
 };
 
@@ -73,5 +55,4 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
 export default {
   parts: parts.keys,
   baseStyle,
-  variants: {},
 };

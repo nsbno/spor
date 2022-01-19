@@ -5,6 +5,12 @@
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "files": ["dist"],
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-{{ kebabCase name }}-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nsbno/spor.git",
+    "directory": "packages/spor-{{ kebabCase name }}-react"
+  },
   "scripts": {
     "build": "tsup src/index.tsx --dts",
     "dev": "tsup src/index.tsx --watch",

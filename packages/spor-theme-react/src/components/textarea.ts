@@ -11,7 +11,4 @@ const baseStyle: SystemStyleObject = {
 
 export default {
   baseStyle,
-  variants: {},
-  sizes: {},
-  defaultProps: {},
 };

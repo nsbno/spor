@@ -2,9 +2,11 @@
 
 This is the monorepo containing Vy's design system, Spor.
 
-> ## Still under active pre-development
+> ## This is beta software
 >
-> The code in this repo is still being bootstrapped, and is not published or deployed anywhere yet. We hope to get the first version of our React component library published as a public beta sometime in January, and the docs site in February.
+> The code in this repo is still in its early stages, and is not quite production ready yet.
+> We are, however, looking for feedback on the earliest versions of the `@vygruppen/spor-react` package, so please give it a try in your application.
+>
 > If you have any questions, please get in touch at #design-system on Slack (for Vy employees and contractors only).
 
 ## What's inside?
@@ -18,7 +20,7 @@ This repo includes the following packages/apps:
 
 ## Usage
 
-The code isn't yet in a usable state. Once it is, usage information will be found here, and in the `packages/spor-react` README.
+Currently, the only package meant for direct consumption is `@vygruppen/spor-react`. To get started, please check out its [readme](https://github.com/nsbno/spor/tree/main/packages/spor-react)!
 
 ## Setup
 

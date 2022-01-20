@@ -1,8 +1,20 @@
 {
-  "extends": "tsconfig/nextjs.json",
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"],
+  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
   "compilerOptions": {
-    "types": ["react/next"]
+    "lib": ["DOM", "DOM.Iterable", "ES2019"],
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "target": "ES2019",
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./app/*"]
+    },
+
+    // Remix takes care of building everything in `remix build`.
+    "noEmit": true
   }
 }

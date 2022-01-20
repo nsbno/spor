@@ -1,15 +1,17 @@
 {
-  "name": "@vygruppen/spor-{{ kebabCase name }}-react",
+  "name": "@vygruppen/spor-typography-react",
   "version": "0.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
-  "files": ["dist"],
-  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-{{ kebabCase name }}-react",
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-typography-react",
   "repository": {
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
-    "directory": "packages/spor-{{ kebabCase name }}-react"
+    "directory": "packages/spor-typography-react"
   },
   "scripts": {
     "build": "tsup src/index.tsx --dts",
@@ -30,6 +32,6 @@
     "@chakra-ui/react": "^1.7.3",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
-    "framer-motion": "^5.0.0",
+    "framer-motion": "^5.0.0"
   }
 }

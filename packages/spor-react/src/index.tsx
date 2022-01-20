@@ -5,4 +5,5 @@ export * from "@vygruppen/spor-input-react";
 export * from "@vygruppen/spor-layout-react";
 export * from "@vygruppen/spor-logo-react";
 export * from "@vygruppen/spor-theme-react";
+export * from "@vygruppen/spor-typography-react";
 export * from "./SporProvider";

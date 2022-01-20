@@ -18,6 +18,7 @@
     "@leile/lobo-t": "^1.0.5",
     "@vygruppen/spor-button-react": "*",
     "@vygruppen/spor-input-react": "*",
+    "@vygruppen/spor-layout-react": "*",
     "@vygruppen/spor-logo-react": "*",
     "@vygruppen/spor-theme-react": "*",
     "@vygruppen/spor-i18n-react": "*"

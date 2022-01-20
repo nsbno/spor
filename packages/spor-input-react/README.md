@@ -154,6 +154,22 @@ You can also specify the direction of the radio buttons with the `direction` pro
 </Box>
 ```
 
+
+### `FormLabel`
+
+A neat looking label for a few different input types. Should be used inside of a `FormControl`, so it receives the correct IDs and attributes.
+
+You don't need to use this label with the `Input`, `Textarea`, `Checkbox` or `Radio` components, as they come with one built in. You might want to use it with the `Switch` component, for instance.
+
+```tsx
+<FormControl>
+  <FormLabel>Enable alerts?</FormLabel>
+  <Switch variant="outline" size="lg" />
+</FormControl>
+```
+
+Yep, it's the same example as above - the docs author felt lazy. 😎
+
 ### `FormHelperText`
 
 If you want to add some descriptive text to your inputs, you should use the `FormHelperText` component. It adds some neat screen reader properties, and styles the text appropriately.

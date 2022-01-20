@@ -1,6 +1,6 @@
 # Typography (React)
 
-TODO: Add description
+The typography package consists of all the components you need to add text to your app.
 
 ## Installation
 
@@ -11,9 +11,10 @@ $ npm install @vygruppen/spor-typography-react
 ## Usage
 
 ```tsx
-import { } from "@vygruppen/spor-typography-react";
+import { Text, Heading } from "@vygruppen/spor-typography-react";
 ```
-TODO: Add usage description
+
+All of these components are direct exports from Chakra UI. Please refer to their documentation for details.
 
 ## Development
 

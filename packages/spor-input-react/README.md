@@ -16,13 +16,15 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
-  FormHelperText,
+  FormControl,
   FormErrorMessage,
+  FormHelperText,
+  FormLabel,
   PasswordInput,
   Radio,
   RadioGroup,
+  Switch,
   Textarea,
-  FormControl,
 } from "@vygruppen/spor-input-react";
 ```
 

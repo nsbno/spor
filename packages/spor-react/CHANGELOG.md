@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 0.2.0
+
+### Minor Changes
+
+- 7dfe259: Add typography package
+- 2eac310: Add layout package
+
+### Patch Changes
+
+- Updated dependencies [2eac310]
+  - @vygruppen/spor-layout-react@0.0.2
+
 ## 0.1.2
 
 ### Patch Changes

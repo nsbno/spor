@@ -19,12 +19,14 @@ import {
   FormHelperText,
   FormErrorMessage,
   PasswordInput,
+  Radio,
+  RadioGroup,
   Textarea,
   FormControl,
 } from "@vygruppen/spor-input-react";
 ```
 
-There are a lot of imports here - luckily they're pretty intuitive to use.
+There are a lot of imports here - luckily they're pretty intuitive to use, and you'll probably just use a few at a time.
 
 Before we dive into each piece individually, here's a basic example:
 
@@ -98,6 +100,23 @@ Textareas work exactly like the `Input` component, but creates a resizable text 
 <FormControl>
   <Textarea label="Description" />
 </FormControl>
+```
+
+### `Radio` and `RadioGroup`
+
+Radio buttons are a great choice for when you want the user to select one out of several different options. You place your radio buttons inside of a radio button group, and give it a name.
+
+Semantically, radio buttons should be enclosed in a `<fieldset />` with a `<legend />` tag asking the question you want the user to answer.
+
+```tsx
+<Box as="fieldset">
+  <Text as="legend">What is your favorite destination?</Text>
+  <RadioGroup name="destination">
+    <Radio value="oslo">Oslo</Radio>
+    <Radio value="bergen">Bergen</Radio>
+    <Radio value="trondheim">Trondheim</Radio>
+  </RadioGroup>
+</Box>
 ```
 
 ### `FormHelperText`

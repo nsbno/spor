@@ -5,4 +5,6 @@ export * from "./FormControl";
 export * from "./Input";
 export * from "./InputElement";
 export * from "./PasswordInput";
+export * from "./Radio";
+export * from "./RadioGroup";
 export * from "./Textarea";

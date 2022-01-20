@@ -102,6 +102,28 @@ Textareas work exactly like the `Input` component, but creates a resizable text 
 </FormControl>
 ```
 
+### `Checkbox` and `CheckboxGroup`
+
+Checkboxes are great when you want users to answer yes or no to one or more questions.
+
+You can use them by themselves, or place them inside of a `CheckboxGroup`.
+
+```tsx
+<CheckboxGroup>
+  <Checkbox value="terms">I accept the terms and conditions</Checkbox>
+  <Checkbox value="marketing">I want to receive newsletters</Checkbox>
+</CheckboxGroup>
+```
+
+You can also specify the direction of the checkboxes with the `direction` prop.
+
+```tsx
+<CheckboxGroup direction="column">
+  <Checkbox value="terms">I accept the terms and conditions</Checkbox>
+  <Checkbox value="marketing">I want to receive newsletters</Checkbox>
+</CheckboxGroup>
+```
+
 ### `Radio` and `RadioGroup`
 
 Radio buttons are a great choice for when you want the user to select one out of several different options. You place your radio buttons inside of a radio button group, and give it a name.
@@ -112,6 +134,19 @@ Semantically, radio buttons should be enclosed in a `<fieldset />` with a `<lege
 <Box as="fieldset">
   <Text as="legend">What is your favorite destination?</Text>
   <RadioGroup name="destination">
+    <Radio value="oslo">Oslo</Radio>
+    <Radio value="bergen">Bergen</Radio>
+    <Radio value="trondheim">Trondheim</Radio>
+  </RadioGroup>
+</Box>
+```
+
+You can also specify the direction of the radio buttons with the `direction` prop.
+
+```tsx
+<Box as="fieldset">
+  <Text as="legend">What is your favorite destination?</Text>
+  <RadioGroup name="destination" direction="column">
     <Radio value="oslo">Oslo</Radio>
     <Radio value="bergen">Bergen</Radio>
     <Radio value="trondheim">Trondheim</Radio>

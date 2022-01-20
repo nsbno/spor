@@ -213,13 +213,14 @@ You should consider only using the Select component when you have more than 4 op
 
 Select comes with its own optional label!
 
-````tsx
+```tsx
 <Select label="Select level of luxury">
   <option>No luxury</option>
   <option>Some luxury</option>
   <option>Lots of luxury</option>
   <option>I'm rich</option>
 </Select>
+```
 
 ### `FormLabel`
 
@@ -229,10 +230,10 @@ You don't need to use this label with the `Input`, `Textarea`, `Checkbox` or `Ra
 
 ```tsx
 <FormControl>
- <FormLabel>Enable alerts?</FormLabel>
- <Switch variant="outline" size="lg" />
+  <FormLabel>Enable alerts?</FormLabel>
+  <Switch variant="outline" size="lg" />
 </FormControl>
-````
+```
 
 Yep, it's the same example as above - the docs author felt lazy. 😎
 

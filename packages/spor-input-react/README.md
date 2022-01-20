@@ -205,6 +205,23 @@ You can add an icon as well, if you want to!
 </Stack>
 ```
 
+### `Select`
+
+Selects let you choose between several options
+
+You should consider only using the Select component when you have more than 4 options. Otherwise, you should use the `<Radio>` component.
+
+Select comes with its own optional label!
+
+```tsx
+<Select label="Select level of luxury">
+  <option>No luxury</option>
+  <option>Some luxury</option>
+  <option>Lots of luxury</option>
+  <option>I'm rich</option>
+</Select>
+```
+
 ### `FormLabel`
 
 A neat looking label for a few different input types. Should be used inside of a `FormControl`, so it receives the correct IDs and attributes.

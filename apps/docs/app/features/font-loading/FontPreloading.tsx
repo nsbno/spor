@@ -1,8 +1,5 @@
 // These are the most used fonts in the design system.
 // There are more fonts, but they are not used often enough
-
-import React from "react";
-
 // to warrant preloading
 const fontNames = [
   "VyDisplay-Medium",

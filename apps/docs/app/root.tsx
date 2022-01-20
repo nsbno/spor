@@ -8,6 +8,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "remix";
+import { FontPreloading } from "./features/font-loading/FontPreloading";
 import { BaseLayout } from "./features/layouts/base-layout/BaseLayout";
 
 export const meta: MetaFunction = () => {
@@ -22,6 +23,7 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
+        <FontPreloading />
       </head>
       <body>
         <SporProvider language={Language.English}>

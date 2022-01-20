@@ -21,6 +21,7 @@ export type SelectProps = Exclude<
  *  <option>Lots of luxury</option>
  *  <option>I'm rich</option>
  * </Select>
+ * ```
  */
 export const Select = ({ label, ...props }: SelectProps) => {
   return (

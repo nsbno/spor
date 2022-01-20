@@ -16,13 +16,15 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
-  FormHelperText,
+  FormControl,
   FormErrorMessage,
+  FormHelperText,
+  FormLabel,
   PasswordInput,
   Radio,
   RadioGroup,
+  Switch,
   Textarea,
-  FormControl,
 } from "@vygruppen/spor-input-react";
 ```
 
@@ -153,6 +155,43 @@ You can also specify the direction of the radio buttons with the `direction` pro
   </RadioGroup>
 </Box>
 ```
+
+### `Switch`
+
+A switch lets you toggle between on and off, yes and no. It's an alternative to a checkbox.
+
+You can use a Switch component inside of a `FormControl` with an associated `FormLabel`:
+
+```tsx
+<FormControl>
+  <FormLabel>Enable alerts?</FormLabel>
+  <Switch />
+</FormControl>
+```
+
+Switches are available in three different sizes - `sm`, `md` and `lg`. There are also two variants - `solid` and `outline`.
+
+```tsx
+<FormControl>
+  <FormLabel>Enable alerts?</FormLabel>
+  <Switch variant="outline" size="lg" />
+</FormControl>
+```
+
+### `FormLabel`
+
+A neat looking label for a few different input types. Should be used inside of a `FormControl`, so it receives the correct IDs and attributes.
+
+You don't need to use this label with the `Input`, `Textarea`, `Checkbox` or `Radio` components, as they come with one built in. You might want to use it with the `Switch` component, for instance.
+
+```tsx
+<FormControl>
+  <FormLabel>Enable alerts?</FormLabel>
+  <Switch variant="outline" size="lg" />
+</FormControl>
+```
+
+Yep, it's the same example as above - the docs author felt lazy. 😎
 
 ### `FormHelperText`
 

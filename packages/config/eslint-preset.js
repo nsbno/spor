@@ -12,6 +12,7 @@ module.exports = {
         "packages/spor-input-react/",
         "packages/spor-i18n-react/",
         "packages/spor-button-react/",
+        "packages/spor-layout-react/",
       ],
     },
   },

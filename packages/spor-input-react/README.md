@@ -12,6 +12,7 @@ $ npm install @vygruppen/spor-input-react
 
 ```tsx
 import {
+  ChoiceChip,
   Input,
   InputGroup,
   InputLeftElement,
@@ -176,6 +177,32 @@ Switches are available in three different sizes - `sm`, `md` and `lg`. There are
   <FormLabel>Enable alerts?</FormLabel>
   <Switch variant="outline" size="lg" />
 </FormControl>
+```
+
+### `ChoiceChip`
+
+Choice chips are checkboxes that look like selectable buttons.
+
+Choice chips are available in three different sizes - `sm`, `md` and `lg`.
+
+```tsx
+<Stack direction="row">
+  <ChoiceChip size="lg">Bus</ChoiceChip>
+  <ChoiceChip size="lg">Train</ChoiceChip>
+</Stack>
+```
+
+You can add an icon as well, if you want to!
+
+```tsx
+<Stack direction="row">
+  <ChoiceChip size="lg" icon={<BusIcon />}>
+    Bus
+  </ChoiceChip>
+  <ChoiceChip size="lg" icon={<TrainIcon />}>
+    Train
+  </ChoiceChip>
+</Stack>
 ```
 
 ### `FormLabel`

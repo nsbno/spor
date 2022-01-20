@@ -1,0 +1,37 @@
+{
+  "name": "@vygruppen/spor-typography-react",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-typography-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nsbno/spor.git",
+    "directory": "packages/spor-typography-react"
+  },
+  "scripts": {
+    "build": "tsup src/index.tsx --dts",
+    "dev": "tsup src/index.tsx --watch"
+  },
+  "devDependencies": {
+    "react": ">17.0.0",
+    "react-dom": ">17.0.0",
+    "@chakra-ui/react": "^1.7.3",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "framer-motion": "^5.0.0",
+    "tsup": "^5.11.11"
+  },
+  "peerDependencies": {
+    "react": ">17.0.0",
+    "react-dom": ">17.0.0",
+    "@chakra-ui/react": "^1.7.3",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "framer-motion": "^5.0.0"
+  }
+}

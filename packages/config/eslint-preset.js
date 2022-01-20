@@ -13,6 +13,7 @@ module.exports = {
         "packages/spor-i18n-react/",
         "packages/spor-button-react/",
         "packages/spor-layout-react/",
+        "packages/spor-typography-react/",
       ],
     },
   },

@@ -1,7 +1,6 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { VyLogo } from "@vygruppen/spor-react";
-import Link from "next/link";
-import React from "react";
+import { Link } from "remix";
 import {
   ColorScheme,
   ColorSchemeProvider,
@@ -26,11 +25,9 @@ export const SiteHeader = ({ colorScheme }: SiteHeaderProps) => {
         }
       >
         <Flex flex="1" alignItems="center">
-          <Link href="/" passHref>
-            <Box as="a" mr="120px">
-              <VyLogo colorScheme={colorScheme} width="94px" height="48px" />
-            </Box>
-          </Link>
+          <Box as={Link} mr="120px" to="/">
+            <VyLogo colorScheme={colorScheme} width="94px" height="48px" />
+          </Box>
           <SiteNavigation>
             <NavigationLink href="/resources/getting-started">
               Getting started

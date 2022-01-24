@@ -1,9 +1,14 @@
-# The Vy Spor documentation website
+# The Spor Documentation website
 
-This website contains the documentation for Vy's design system - Spor.
+This package contains the code for the Vy Spor documentation website.
+It's based on [Remix](https://remix.run/docs), [TypeScript](https://typescriptlang.org) and [Chakra UI](https://chakra-ui.com/), as well as the Spor design system itself.
 
 ## Development
 
-Clone the monorepo to your machine, and run `npm install`.
+From your terminal:
 
-Start a development server with `npm run dev`, and open your browser to `localhost:3000`.
+```sh
+npm run dev
+```
+
+This starts your app in development mode at `localhost:3000`, rebuilding assets on file changes.

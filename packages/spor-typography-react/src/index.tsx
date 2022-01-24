@@ -1,1 +1,2 @@
-export { Text, Heading } from "@chakra-ui/react";
+export { Text } from "@chakra-ui/react";
+export * from "./Heading";

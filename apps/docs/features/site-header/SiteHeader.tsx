@@ -2,6 +2,7 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 import { VyLogo } from "@vygruppen/spor-react";
 import Link from "next/link";
 import React from "react";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import {
   ColorScheme,
   ColorSchemeProvider,

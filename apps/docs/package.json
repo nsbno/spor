@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@vygruppen/docs-remix",
+  "name": "@vygruppen/docs",
   "description": "A remix rewrite of the docs",
   "license": "MIT",
   "scripts": {
@@ -10,26 +10,30 @@
     "start": "remix-serve build"
   },
   "dependencies": {
-    "@remix-run/react": "^1.1.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "remix": "^1.1.3",
-    "@remix-run/serve": "^1.1.3",
-    "@vygruppen/spor-react": "*",
     "@chakra-ui/cli": "^1.6.0",
     "@chakra-ui/react": "^1.7.3",
+    "@emotion/cache": "^11.7.1",
     "@emotion/react": "^11.6.0",
+    "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.6.0",
-    "framer-motion": "^5.0.0"
+    "@remix-run/react": "^1.1.3",
+    "@remix-run/serve": "^1.1.3",
+    "@vygruppen/spor-design-tokens": "^2.2.1",
+    "@vygruppen/spor-react": "*",
+    "framer-motion": "^5.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.1",
+    "remix": "^1.1.3"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.1.3",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
-    "typescript": "^4.1.2",
     "config": "*",
     "eslint": "7.32.0",
-    "tsconfig": "*"
+    "tsconfig": "*",
+    "typescript": "^4.1.2"
   },
   "engines": {
     "node": ">=14"

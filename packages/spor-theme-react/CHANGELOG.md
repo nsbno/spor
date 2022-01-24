@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.0.5
+
+### Patch Changes
+
+- 61549d5: Add Text, Paragraph and Heading components.
+
 ## 0.0.4
 
 ### Patch Changes

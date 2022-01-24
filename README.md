@@ -13,7 +13,7 @@ This is the monorepo containing Vy's design system, Spor.
 
 This repo includes the following packages/apps:
 
-- `docs`: a [Next.js](https://nextjs.org) app documenting the design system
+- `docs`: a [Remix](https://remix.run) app documenting the design system
 - `spor-react`: a React component library
 - `config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo

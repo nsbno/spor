@@ -4,11 +4,31 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-icons",
   "repository": {
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
     "directory": "packages/spor-icons"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "ts-node bin/generate.ts"
+  },
+  "devDependencies": {
+    "@svgr/core": "^6.2.0",
+    "@types/fs-extra": "^9.0.13",
+    "case": "^1.6.3",
+    "fs-extra": "^10.0.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.4.0"
+  },
+  "dependencies": {
+    "@svgr/plugin-jsx": "^6.2.0",
+    "@svgr/plugin-prettier": "^6.1.2",
+    "@svgr/plugin-svgo": "^6.2.0"
   }
 }

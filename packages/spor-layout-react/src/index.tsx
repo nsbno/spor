@@ -1,10 +1,14 @@
 export {
   Box,
   Center,
-  Flex,
-  Grid,
-  SimpleGrid,
   Stack,
+  HStack,
+  VStack,
+  Flex,
+  Spacer,
+  Grid,
+  GridItem,
+  SimpleGrid,
   Wrap,
-  WrapItem
+  WrapItem,
 } from "@chakra-ui/react";

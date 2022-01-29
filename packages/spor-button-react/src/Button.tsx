@@ -1,6 +1,8 @@
 import {
+  As,
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
+  forwardRef,
 } from "@chakra-ui/react";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
 import React from "react";
@@ -33,16 +35,20 @@ type ButtonProps = Exclude<ChakraButtonProps, "colorScheme" | "loadingText">;
  * </Button>
  * ```
  */
-export const Button = ({ width, ...props }: ButtonProps) => {
-  const { t } = useTranslation();
-  return (
-    <ChakraButton
-      spinner={<ButtonSpinner />}
-      {...props}
-      aria-label={props.isLoading ? t(texts.loadingText) : props["aria-label"]}
-    />
-  );
-};
+export const Button = forwardRef<ButtonProps, As<any>>(
+  ({ width, ...props }, ref) => {
+    const { t } = useTranslation();
+    return (
+      <ChakraButton
+        spinner={<ButtonSpinner />}
+        {...props}
+        aria-label={
+          props.isLoading ? t(texts.loadingText) : props["aria-label"]
+        }
+      />
+    );
+  }
+);
 
 const texts = {
   loadingText: {

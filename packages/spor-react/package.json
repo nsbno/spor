@@ -20,6 +20,7 @@
     "@vygruppen/spor-input-react": "*",
     "@vygruppen/spor-layout-react": "*",
     "@vygruppen/spor-logo-react": "*",
+    "@vygruppen/spor-icons-react": "*",
     "@vygruppen/spor-theme-react": "*",
     "@vygruppen/spor-i18n-react": "*"
   },

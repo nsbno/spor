@@ -15,6 +15,7 @@ build
 
 # built files
 packages/*/dist
+packages/*/tmp
 
 # misc
 .DS_Store

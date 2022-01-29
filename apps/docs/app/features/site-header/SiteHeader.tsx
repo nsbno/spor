@@ -1,5 +1,10 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
-import { VyLogo } from "@vygruppen/spor-react";
+import {
+  Box,
+  Flex,
+  SettingsX1Fill24Icon,
+  Text,
+  VyLogo,
+} from "@vygruppen/spor-react";
 import { Link } from "remix";
 import {
   ColorScheme,
@@ -38,11 +43,12 @@ export const SiteHeader = ({ colorScheme }: SiteHeaderProps) => {
             <NavigationLink href="/design-tokens">Design tokens</NavigationLink>
           </SiteNavigation>
         </Flex>
-        <Box>
+        <Flex gap="1em">
           <Text>
-            Vis som: <strong>Designer</strong> ⚙️
+            Vis som: <strong>Designer</strong>
           </Text>
-        </Box>
+          <SettingsX1Fill24Icon fontSize="24px" />
+        </Flex>
       </Flex>
     </ColorSchemeProvider>
   );

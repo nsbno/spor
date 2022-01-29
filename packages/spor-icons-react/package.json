@@ -1,0 +1,44 @@
+{
+  "name": "@vygruppen/spor-icons-react",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "types": "./dist/types.d.ts",
+  "license": "MIT",
+  "files": [
+    "svg",
+    "react"
+  ],
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-icons-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nsbno/spor.git",
+    "directory": "packages/spor-icons-react"
+  },
+  "scripts": {
+    "clean": "rimraf tmp dist react",
+    "prebuild": "npm run clean",
+    "build": "npm run build:step-1 && npm run build:step-2",
+    "build:step-1": "ts-node bin/generate.ts",
+    "build:step-2": "tsup tmp/index.ts",
+    "build:step-3": "rimraf tmp"
+  },
+  "dependencies": {
+    "@vygruppen/spor-layout-react": "*"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "@vygruppen/spor-icons": "*",
+    "@svgr/core": "^6.2.0",
+    "@svgr/plugin-jsx": "^6.2.0",
+    "@svgr/plugin-svgo": "^6.2.0",
+    "@types/fs-extra": "^9.0.13",
+    "case": "^1.6.3",
+    "fs-extra": "^10.0.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.4.0",
+    "tsup": "^5.11.11"
+  }
+}

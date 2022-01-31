@@ -46,6 +46,7 @@ export const Button = forwardRef<ButtonProps, As<any>>(
       <ChakraButton
         spinner={<ButtonSpinner />}
         {...props}
+        ref={ref}
         aria-label={ariaLabel}
       />
     );

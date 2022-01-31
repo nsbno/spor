@@ -7,16 +7,12 @@ export const typeDefinitionTemplate = (iconsData: IconData[]) => {
 import type { BoxProps } from "@chakra-ui/react";
 import type { ForwardRefExoticComponent } from "react";
 
-declare module "@vygruppen/spor-icon" {
-  module react {
-    export type IconComponent = ForwardRefExoticComponent<BoxProps>;
+declare module "@vygruppen/spor-icon-react" {
+  export type IconComponent = ForwardRefExoticComponent<BoxProps>;
 
-    ${iconsData
-      .map(
-        ({ componentName }) => `export const ${componentName}: IconComponent;`
-      )
-      .join("\n    ")}
-  }
+  ${iconsData
+    .map(({ componentName }) => `export const ${componentName}: IconComponent;`)
+    .join("\n  ")}
 }
 `;
 };

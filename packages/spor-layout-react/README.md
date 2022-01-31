@@ -11,17 +11,22 @@ $ npm install @vygruppen/spor-layout-react
 ## Usage
 
 ```tsx
-import { 
-  Box, 
-  Center, 
-  Flex, 
-  Grid, 
-  SimpleGrid, 
-  Stack, 
-  Wrap, 
-  WrapItem 
+import {
+  Box,
+  Center,
+  Flex,
+  Grid,
+  GridItem,
+  HStack,
+  SimpleGrid,
+  Spacer,
+  Stack,
+  VStack,
+  Wrap,
+  WrapItem,
 } from "@vygruppen/spor-layout-react";
 ```
+
 All of these components are direct exports from Chakra UI. Please refer to their documentation for details.
 
 ## Development

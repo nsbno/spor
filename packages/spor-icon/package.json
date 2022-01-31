@@ -1,15 +1,15 @@
 {
-  "name": "@vygruppen/spor-icons",
+  "name": "@vygruppen/spor-icon",
   "version": "0.0.1",
   "main": "./svg",
   "license": "MIT",
   "files": [
     "svg"
   ],
-  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-icons",
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-icon",
   "repository": {
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
-    "directory": "packages/spor-icons"
+    "directory": "packages/spor-icon"
   }
 }

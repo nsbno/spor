@@ -38,13 +38,15 @@ type ButtonProps = Exclude<ChakraButtonProps, "colorScheme" | "loadingText">;
 export const Button = forwardRef<ButtonProps, As<any>>(
   ({ width, ...props }, ref) => {
     const { t } = useTranslation();
+    let ariaLabel = props["aria-label"];
+    if (props.isLoading) {
+      ariaLabel = props.loadingText ?? t(texts.loadingText);
+    }
     return (
       <ChakraButton
         spinner={<ButtonSpinner />}
         {...props}
-        aria-label={
-          props.isLoading ? t(texts.loadingText) : props["aria-label"]
-        }
+        aria-label={ariaLabel}
       />
     );
   }

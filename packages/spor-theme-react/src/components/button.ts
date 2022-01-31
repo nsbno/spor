@@ -52,13 +52,13 @@ const variantPrimary: SystemStyleFunction = ({ theme }) => ({
   backgroundColor: "alias.primaryGreen",
   color: "alias.white",
   _focus: {
-    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.primaryGreen}, inset 0 0 0 6px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.primaryGreen}, inset 0 0 0 4px ${theme.colors.alias.primaryGreen}, inset 0 0 0 6px currentColor`,
   },
   "&:focus:not(:focus-visible)": {
     boxShadow: `none`,
   },
   _focusVisible: {
-    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.primaryGreen}, inset 0 0 0 6px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.primaryGreen}, inset 0 0 0 4px ${theme.colors.alias.primaryGreen}, inset 0 0 0 6px currentColor`,
   },
   _hover: {
     backgroundColor: "alias.pine",
@@ -72,13 +72,13 @@ const variantSecondary: SystemStyleFunction = ({ theme }) => ({
   backgroundColor: "alias.coralGreen",
   color: "alias.darkTeal",
   _focus: {
-    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.coralGreen}, inset 0 0 0 6px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.coralGreen}, inset 0 0 0 4px ${theme.colors.alias.coralGreen}, inset 0 0 0 6px currentColor`,
   },
   ":focus:not(:focus-visible)": {
     boxShadow: "none",
   },
   _focusVisible: {
-    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.coralGreen}, inset 0 0 0 6px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.coralGreen}, inset 0 0 0 4px ${theme.colors.alias.coralGreen}, inset 0 0 0 6px currentColor`,
   },
   _hover: {
     backgroundColor: "alias.blueGreen",
@@ -93,13 +93,13 @@ const variantTertiary: SystemStyleFunction = ({ theme }) => ({
   color: "alias.darkGrey",
   fontWeight: "normal",
   _focus: {
-    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.mint}, inset 0 0 0 6px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.mint}, inset 0 0 0 4px ${theme.colors.alias.mint}, inset 0 0 0 6px currentColor`,
   },
   ":focus:not(:focus-visible)": {
     boxShadow: "none",
   },
   _focusVisible: {
-    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.mint}, inset 0 0 0 6px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.mint}, inset 0 0 0 4px ${theme.colors.alias.mint}, inset 0 0 0 6px currentColor`,
   },
   _hover: {
     backgroundColor: "alias.seaMist",

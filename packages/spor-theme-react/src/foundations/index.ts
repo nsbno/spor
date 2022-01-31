@@ -6,6 +6,7 @@ export * from "./fontSizes";
 export * from "./fontWeights";
 export * from "./lineHeights";
 export * from "./radii";
+export * from "./shadows";
 export * from "./sizes";
 export * from "./spacing";
 export * from "./strokes";

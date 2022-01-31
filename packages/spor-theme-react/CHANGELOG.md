@@ -1,5 +1,14 @@
 # @vygruppen/spor-theme-react
 
+## 0.0.6
+
+### Patch Changes
+
+- 8aa80c5: Improve rendering bug when some buttons are focused
+- 737d071: Make buttons forward refs
+  Fix focus bug in Safari
+- 217a776: Use box shadows from the spor design tokens
+
 ## 0.0.5
 
 ### Patch Changes

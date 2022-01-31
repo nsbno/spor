@@ -1,5 +1,17 @@
 # @vygruppen/spor-button-react
 
+## 0.1.0
+
+### Minor Changes
+
+- a68f2cc: Make it possible to override loading texts in buttons
+
+### Patch Changes
+
+- 8aa80c5: Improve rendering bug when some buttons are focused
+- 737d071: Make buttons forward refs
+  Fix focus bug in Safari
+
 ## 0.0.3
 
 ### Patch Changes

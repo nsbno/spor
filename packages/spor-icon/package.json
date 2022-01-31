@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-icon",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./svg",
   "license": "MIT",
   "files": [

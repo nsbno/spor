@@ -1,5 +1,27 @@
 # @vygruppen/spor-react
 
+## 0.3.0
+
+### Minor Changes
+
+- be877b9: Add packages for the icons library, and the react implementation of it
+- 1dd2c79: Expose `tokens` - all design tokens
+
+### Patch Changes
+
+- 45c285a: Rename spor-icons and spor-icons-react to their singular form.
+- Updated dependencies [be877b9]
+- Updated dependencies [45c285a]
+- Updated dependencies [8aa80c5]
+- Updated dependencies [a68f2cc]
+- Updated dependencies [737d071]
+- Updated dependencies [e34a588]
+- Updated dependencies [217a776]
+  - @vygruppen/spor-icon-react@0.0.2
+  - @vygruppen/spor-theme-react@0.0.6
+  - @vygruppen/spor-button-react@0.1.0
+  - @vygruppen/spor-layout-react@0.1.0
+
 ## 0.2.1
 
 ### Patch Changes

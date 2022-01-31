@@ -31,6 +31,12 @@ const baseStyle: SystemStyleObject = {
 const variantControl: SystemStyleFunction = ({ theme }) => ({
   backgroundColor: "alias.darkTeal",
   color: "alias.white",
+  _focus: {
+    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.darkTeal}, inset 0 0 0 6px currentColor`,
+  },
+  "&:focus:not(:focus-visible)": {
+    boxShadow: "none",
+  },
   _focusVisible: {
     boxShadow: `inset 0 0 0 4px ${theme.colors.alias.darkTeal}, inset 0 0 0 6px currentColor`,
   },
@@ -45,6 +51,12 @@ const variantControl: SystemStyleFunction = ({ theme }) => ({
 const variantPrimary: SystemStyleFunction = ({ theme }) => ({
   backgroundColor: "alias.primaryGreen",
   color: "alias.white",
+  _focus: {
+    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.primaryGreen}, inset 0 0 0 6px currentColor`,
+  },
+  "&:focus:not(:focus-visible)": {
+    boxShadow: `none`,
+  },
   _focusVisible: {
     boxShadow: `inset 0 0 0 4px ${theme.colors.alias.primaryGreen}, inset 0 0 0 6px currentColor`,
   },
@@ -59,6 +71,12 @@ const variantPrimary: SystemStyleFunction = ({ theme }) => ({
 const variantSecondary: SystemStyleFunction = ({ theme }) => ({
   backgroundColor: "alias.coralGreen",
   color: "alias.darkTeal",
+  _focus: {
+    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.coralGreen}, inset 0 0 0 6px currentColor`,
+  },
+  ":focus:not(:focus-visible)": {
+    boxShadow: "none",
+  },
   _focusVisible: {
     boxShadow: `inset 0 0 0 4px ${theme.colors.alias.coralGreen}, inset 0 0 0 6px currentColor`,
   },
@@ -74,6 +92,12 @@ const variantTertiary: SystemStyleFunction = ({ theme }) => ({
   backgroundColor: "alias.mint",
   color: "alias.darkGrey",
   fontWeight: "normal",
+  _focus: {
+    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.mint}, inset 0 0 0 6px currentColor`,
+  },
+  ":focus:not(:focus-visible)": {
+    boxShadow: "none",
+  },
   _focusVisible: {
     boxShadow: `inset 0 0 0 4px ${theme.colors.alias.mint}, inset 0 0 0 6px currentColor`,
   },
@@ -90,6 +114,12 @@ const variantAdditional: SystemStyleFunction = ({ theme }) => ({
   color: "alias.darkGrey",
   fontWeight: "normal",
   boxShadow: "inset 0 0 0 1px currentColor",
+  _focus: {
+    boxShadow: `inset 0 0 0 3px ${theme.colors.alias.greenHaze}`,
+  },
+  ":focus:not(:focus-visible)": {
+    boxShadow: "inset 0 0 0 1px currentColor",
+  },
   _focusVisible: {
     boxShadow: `inset 0 0 0 3px ${theme.colors.alias.greenHaze}`,
   },
@@ -106,7 +136,12 @@ const variantGhost: SystemStyleFunction = () => ({
   backgroundColor: "transparent",
   color: "alias.darkGrey",
   fontWeight: "normal",
-  boxShadow: "0",
+  _focus: {
+    boxShadow: `inset 0 0 0 1px currentColor`,
+  },
+  ":focus:not(:focus-visible)": {
+    boxShadow: "none",
+  },
   _focusVisible: {
     boxShadow: `inset 0 0 0 1px currentColor`,
   },

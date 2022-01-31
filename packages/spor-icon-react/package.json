@@ -1,5 +1,5 @@
 {
-  "name": "@vygruppen/spor-icons-react",
+  "name": "@vygruppen/spor-icon-react",
   "version": "0.0.1",
   "main": "./dist/index.js",
   "types": "./dist/types.d.ts",
@@ -8,11 +8,11 @@
     "svg",
     "react"
   ],
-  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-icons-react",
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-icon-react",
   "repository": {
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
-    "directory": "packages/spor-icons-react"
+    "directory": "packages/spor-icon-react"
   },
   "scripts": {
     "clean": "rimraf tmp dist react",
@@ -30,7 +30,7 @@
     "react-dom": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
-    "@vygruppen/spor-icons": "*",
+    "@vygruppen/spor-icon": "*",
     "@svgr/core": "^6.2.0",
     "@svgr/plugin-jsx": "^6.2.0",
     "@svgr/plugin-svgo": "^6.2.0",

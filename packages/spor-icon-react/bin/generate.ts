@@ -4,7 +4,7 @@ import fs from "fs-extra";
 import { componentTemplate } from "./componentTemplate";
 import { typeDefinitionTemplate } from "./typeDefinitionTemplate";
 
-const SVG_PATH = "../spor-icons/svg";
+const SVG_PATH = "../spor-icon/svg";
 const TMP_PATH = "./tmp";
 const DIST_PATH = "./dist";
 

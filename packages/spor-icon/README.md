@@ -2,7 +2,7 @@
 
 This package contains all of our SVG icons.
 
-If you want to consume ready made icons, you should probably look at the `@vygruppen/spor-icons/react` package for a more complete package.
+If you want to consume ready made icons, you should probably look at the `@vygruppen/spor-icon/react` package for a more complete package.
 
 ## Structure
 

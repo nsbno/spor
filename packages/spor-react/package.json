@@ -18,12 +18,14 @@
     "@leile/lobo-t": "^1.0.5",
     "@vygruppen/spor-button-react": "*",
     "@vygruppen/spor-design-tokens": "*",
+    "@vygruppen/spor-i18n-react": "*",
     "@vygruppen/spor-input-react": "*",
+    "@vygruppen/spor-icon-react": "*",
+    "@vygruppen/spor-image-react": "*",
     "@vygruppen/spor-layout-react": "*",
     "@vygruppen/spor-logo-react": "*",
-    "@vygruppen/spor-icon-react": "*",
     "@vygruppen/spor-theme-react": "*",
-    "@vygruppen/spor-i18n-react": "*"
+    "@vygruppen/spor-typography-react": "*"
   },
   "devDependencies": {
     "@chakra-ui/react": "^1.7.3",

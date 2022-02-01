@@ -10,7 +10,6 @@
     "start": "remix-serve build"
   },
   "dependencies": {
-    "@chakra-ui/cli": "^1.6.0",
     "@chakra-ui/react": "^1.7.3",
     "@emotion/cache": "^11.7.1",
     "@emotion/react": "^11.6.0",

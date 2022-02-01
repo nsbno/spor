@@ -168,23 +168,23 @@ const variants = {
 
 const sizes: Record<string, SystemStyleObject> = {
   lg: {
-    h: 8,
-    minW: 8,
+    height: 8,
+    minWidth: 8,
     fontSize: "18px",
   },
   md: {
-    h: 7,
-    minW: 7,
+    height: 7,
+    minWidth: 7,
     fontSize: "18px",
   },
   sm: {
-    h: 6,
-    minW: 6,
+    height: 6,
+    minWidth: 6,
     fontSize: "16px",
   },
   xs: {
-    h: 5,
-    minW: 5,
+    height: 5,
+    minWidth: 5,
     fontSize: "16px",
     px: 2,
   },

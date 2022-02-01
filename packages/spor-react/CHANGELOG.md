@@ -1,5 +1,28 @@
 # @vygruppen/spor-react
 
+## 0.4.0
+
+### Minor Changes
+
+- 56494f9: Add new package - spor-image-react
+
+### Patch Changes
+
+- Updated dependencies [5837857]
+- Updated dependencies [35b4962]
+- Updated dependencies [560259d]
+- Updated dependencies [016681e]
+- Updated dependencies [6bed16f]
+- Updated dependencies [22cf05b]
+- Updated dependencies [7934fe0]
+- Updated dependencies [56494f9]
+  - @vygruppen/spor-typography-react@0.1.1
+  - @vygruppen/spor-theme-react@0.0.7
+  - @vygruppen/spor-button-react@0.1.1
+  - @vygruppen/spor-layout-react@0.2.0
+  - @vygruppen/spor-icon-react@0.0.3
+  - @vygruppen/spor-image-react@0.0.2
+
 ## 0.3.0
 
 ### Minor Changes

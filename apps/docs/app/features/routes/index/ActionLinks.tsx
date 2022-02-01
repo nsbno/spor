@@ -1,5 +1,6 @@
 import {
   Box,
+  Card,
   ComponentsOutline30Icon,
   Container,
   Flex,
@@ -102,18 +103,16 @@ type ActionLinkCardProps = {
 };
 function ActionLinkCard({ to, children }: ActionLinkCardProps) {
   return (
-    <Flex
+    <Card
       as={Link}
       to={to}
-      borderRadius="md"
-      boxShadow="md"
       flexDirection={["row", "column"]}
       gap={[3, 4]}
       p={4}
-      background="alias.white"
+      variant="elevated"
     >
       {children}
-    </Flex>
+    </Card>
   );
 }
 

@@ -1,6 +1,6 @@
 # Card (React)
 
-TODO: Add description
+Cards are used to encapsulate some information, or as interactive elements in our UI.
 
 ## Installation
 
@@ -13,6 +13,7 @@ $ npm install @vygruppen/spor-card-react
 ```tsx
 import { } from "@vygruppen/spor-card-react";
 ```
+
 TODO: Add usage description
 
 ## Development

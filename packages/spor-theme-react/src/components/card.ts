@@ -4,7 +4,7 @@ import type {
 } from "@chakra-ui/theme-tools";
 
 const baseStyle: SystemStyleObject = {
-  border: "1px solid",
+  border: "1px solid transparent",
   borderRadius: "md",
 };
 

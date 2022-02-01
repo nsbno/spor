@@ -6,7 +6,7 @@
   "license": "MIT",
   "files": [
     "svg",
-    "react"
+    "dist"
   ],
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-icon-react",
   "repository": {

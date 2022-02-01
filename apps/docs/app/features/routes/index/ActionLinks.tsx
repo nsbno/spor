@@ -82,11 +82,7 @@ export function ActionLinks() {
       >
         {links.map((link) => (
           <ActionLinkCard key={link.to} to={link.to}>
-            <IconCircle
-              aria-hidden="true"
-              backgroundColor={link.iconColor}
-              icon={link.icon}
-            />
+            <IconCircle backgroundColor={link.iconColor} icon={link.icon} />
             <Box>
               <Heading as="h2" textStyle="md" mb={1.5} fontWeight="bold">
                 {link.title}

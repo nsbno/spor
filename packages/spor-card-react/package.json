@@ -15,6 +15,9 @@
     "build": "tsup src/index.tsx --dts",
     "dev": "tsup src/index.tsx --watch"
   },
+  "dependencies": {
+    "@vygruppen/spor-layout-react": "*"
+  },
   "devDependencies": {
     "react": ">17.0.0",
     "react-dom": ">17.0.0",

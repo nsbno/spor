@@ -8,7 +8,15 @@ import { useTranslation } from "@vygruppen/spor-i18n-react";
 import React from "react";
 import { ButtonSpinner } from "./ButtonSpinner";
 
-type ButtonProps = Exclude<ChakraButtonProps, "colorScheme" | "loadingText">;
+export type ButtonProps = Exclude<
+  ChakraButtonProps,
+  "colorScheme" | "loadingText" | "size" | "variant"
+> & {
+  /** The size of the button. Try not to use the xs size a lot */
+  size?: "xs" | "sm" | "md" | "lg";
+  /** The different variants of a button */
+  variant?: "control" | "primary" | "secondary" | "tertiary" | "additional";
+};
 /**
  * Buttons are used to trigger actions.
  *
@@ -36,22 +44,29 @@ type ButtonProps = Exclude<ChakraButtonProps, "colorScheme" | "loadingText">;
  * ```
  */
 export const Button = forwardRef<ButtonProps, As<any>>(
-  ({ width, ...props }, ref) => {
-    const { t } = useTranslation();
-    let ariaLabel = props["aria-label"];
-    if (props.isLoading) {
-      ariaLabel = props.loadingText ?? t(texts.loadingText);
-    }
+  ({ width, size = "md", variant = "primary", ...props }, ref) => {
+    const ariaLabel = useCorrectAriaLabel(props);
+
     return (
       <ChakraButton
         spinner={<ButtonSpinner />}
         {...props}
+        size={size}
+        variant={variant}
         ref={ref}
         aria-label={ariaLabel}
       />
     );
   }
 );
+
+function useCorrectAriaLabel(props: ButtonProps) {
+  const { t } = useTranslation();
+  if (props.isLoading) {
+    return props.loadingText ?? t(texts.loadingText);
+  }
+  return props["aria-label"];
+}
 
 const texts = {
   loadingText: {

@@ -42,8 +42,6 @@ export function HeroSection() {
               src="/illustrations/front-page-illustration.svg"
               alt="En person som sitter foran et skrivebord, med en dataskjerm."
               width="100%"
-              objectFit="contain"
-              objectPosition="top center"
             />
           </Flex>
         </Flex>

@@ -16,6 +16,7 @@ module.exports = {
         "packages/spor-typography-react/",
         "packages/spor-icon/",
         "packages/spor-icon-react/",
+        "packages/spor-image-react/",
       ],
     },
   },

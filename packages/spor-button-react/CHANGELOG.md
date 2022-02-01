@@ -1,5 +1,12 @@
 # @vygruppen/spor-button-react
 
+## 0.1.1
+
+### Patch Changes
+
+- 560259d: Fix refs not being forwarded to the underlying button component
+- 7934fe0: Bundle the correct size and variant types directly
+
 ## 0.1.0
 
 ### Minor Changes

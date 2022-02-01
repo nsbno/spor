@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.0.7
+
+### Patch Changes
+
+- 35b4962: Make the spor-react theme use the correct spacing values
+
 ## 0.0.6
 
 ### Patch Changes

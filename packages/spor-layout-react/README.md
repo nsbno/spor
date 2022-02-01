@@ -14,6 +14,7 @@ $ npm install @vygruppen/spor-layout-react
 import {
   Box,
   Center,
+  Container,
   Flex,
   Grid,
   GridItem,

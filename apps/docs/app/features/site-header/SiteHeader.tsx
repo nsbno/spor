@@ -34,12 +34,10 @@ export const SiteHeader = ({ colorScheme }: SiteHeaderProps) => {
             <VyLogo colorScheme={colorScheme} width="94px" height="48px" />
           </Box>
           <SiteNavigation>
-            <NavigationLink href="/resources/getting-started">
-              Getting started
-            </NavigationLink>
-            <NavigationLink href="/profile">Profile</NavigationLink>
-            <NavigationLink href="/components">Components</NavigationLink>
-            <NavigationLink href="/icons">Icons</NavigationLink>
+            <NavigationLink href="/kom-i-gang">Kom i gang</NavigationLink>
+            <NavigationLink href="/profil">Profil</NavigationLink>
+            <NavigationLink href="/komponenter">Komponenter</NavigationLink>
+            <NavigationLink href="/ikoner">Ikoner</NavigationLink>
             <NavigationLink href="/design-tokens">Design tokens</NavigationLink>
           </SiteNavigation>
         </Flex>

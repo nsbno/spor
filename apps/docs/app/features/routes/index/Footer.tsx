@@ -1,3 +1,4 @@
+import { BoxProps } from "@chakra-ui/react";
 import {
   Box,
   Container,
@@ -6,7 +7,6 @@ import {
   RuterOutline24Icon,
   VyLogo,
 } from "@vygruppen/spor-react";
-import { Link } from "remix";
 
 export function Footer() {
   return (
@@ -14,37 +14,48 @@ export function Footer() {
       <Flex
         justifyContent="space-between"
         borderTop="1px solid"
-        borderColor="alias.iron"
-        pt={4}
+        borderColor="alias.steel"
+        py={4}
       >
-        <Box>
-          <Link to="https://vy.no" title="Gå til Vy.no">
-            <VyLogo colorScheme="light" width="80px" />
-          </Link>
+        <Box as="a" href="https://vy.no" title="Gå til Vy.no">
+          <VyLogo colorScheme="light" width="80px" />
         </Box>
-        <Flex as="nav" aria-label="Footer">
-          <Flex
-            as="a"
+        <Flex as="nav" aria-label="Footer" flexDirection={["column", "row"]}>
+          <FooterLink
             href="https://www.vy.no/vygruppen/om-oss"
-            display={["none", "flex"]}
-            _hover={{ textDecoration: "underline" }}
-            alignItems="center"
+            icon={InformationOutline24Icon}
             mr={8}
           >
-            <InformationOutline24Icon mr={3} fontSize="24px" />
             Om Vy
-          </Flex>
-          <Flex
-            as="a"
+          </FooterLink>
+          <FooterLink
             href="slack://channel?team=nsb-utvikling&id=CM9H2N39U"
-            _hover={{ textDecoration: "underline" }}
-            alignItems="center"
+            icon={RuterOutline24Icon}
           >
-            <RuterOutline24Icon mr={3} fontSize="24px" />
             Prat med oss på Slack
-          </Flex>
+          </FooterLink>
         </Flex>
       </Flex>
     </Container>
+  );
+}
+
+type FooterLinkProps = BoxProps & {
+  href: string;
+  icon: React.ComponentType<BoxProps>;
+  children: React.ReactNode;
+};
+function FooterLink({ href, icon: Icon, children, ...props }: FooterLinkProps) {
+  return (
+    <Flex
+      as="a"
+      href={href}
+      alignItems="center"
+      _hover={{ textDecoration: "underline" }}
+      {...props}
+    >
+      <Icon mr={3} fontSize="24px" />
+      {children}
+    </Flex>
   );
 }

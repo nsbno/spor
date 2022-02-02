@@ -106,10 +106,11 @@ function ActionLinkCard({ to, children }: ActionLinkCardProps) {
     <Card
       as={Link}
       to={to}
-      flexDirection={["row", "column"]}
-      gap={[3, 4]}
       p={4}
       variant="elevated"
+      display="flex"
+      flexDirection={["row", "column"]}
+      gap={[3, 4]}
     >
       {children}
     </Card>

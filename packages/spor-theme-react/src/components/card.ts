@@ -40,10 +40,46 @@ const variants: Record<Variant, SystemStyleInterpolation> = {
   filled: ({ colorScheme }) => ({
     border: "1px solid",
     ...getColorSchemeProps(colorScheme),
+
+    "button&, a&": {
+      _hover: {
+        backgroundColor: "alias.lightGrey",
+      },
+      _focus: {
+        borderColor: "alias.greenHaze",
+      },
+      ":focus:not(:focus-visible)": {
+        boxShadow: "none",
+      },
+      _focusVisible: {
+        boxShadow: `inset 0 0 0 2px ${colors.alias.greenHaze}`,
+      },
+      _active: {
+        borderColor: "alias.cloudy",
+      },
+    },
   }),
   outlined: {
     border: "1px solid",
     borderColor: "alias.osloGrey",
+
+    "button&, a&": {
+      _hover: {
+        borderColor: "alias.darkGrey",
+      },
+      _focus: {
+        borderColor: "alias.greenHaze",
+      },
+      ":focus:not(:focus-visible)": {
+        boxShadow: "none",
+      },
+      _focusVisible: {
+        boxShadow: `inset 0 0 0 2px ${colors.alias.greenHaze}`,
+      },
+      _active: {
+        borderColor: "alias.osloGrey",
+      },
+    },
   },
 };
 

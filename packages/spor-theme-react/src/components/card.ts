@@ -2,6 +2,7 @@ import type {
   SystemStyleInterpolation,
   SystemStyleObject,
 } from "@chakra-ui/theme-tools";
+import { colors } from "../foundations";
 
 const baseStyle: SystemStyleObject = {
   border: "1px solid transparent",
@@ -13,6 +14,28 @@ const variants: Record<Variant, SystemStyleInterpolation> = {
   elevated: {
     backgroundColor: "alias.white",
     boxShadow: "md",
+    transitionProperty: "common",
+    transitionDuration: "fast",
+
+    "button&, a&": {
+      _hover: {
+        borderColor: "alias.steel",
+        boxShadow: "lg",
+      },
+      _focus: {
+        boxShadow: `inset 0 0 0 2px ${colors.alias.greenHaze}`,
+      },
+      ":focus:not(:focus-visible)": {
+        boxShadow: "none",
+      },
+      _focusVisible: {
+        boxShadow: `inset 0 0 0 2px ${colors.alias.greenHaze}`,
+      },
+      _active: {
+        backgroundColor: "alias.mint",
+        borderColor: "transparent",
+      },
+    },
   },
   filled: ({ colorScheme }) => ({
     border: "1px solid",

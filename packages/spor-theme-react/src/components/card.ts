@@ -10,24 +10,26 @@ const baseStyle: SystemStyleObject = {
   transitionProperty: "common",
   transitionDuration: "fast",
 
-  _focus: {
-    borderColor: "alias.greenHaze",
-    boxShadow: `inset 0 0 0 1px ${colors.alias.greenHaze}`,
-    outline: "none",
-  },
-  ":focus:not(:focus-visible)": {
-    boxShadow: "none",
-  },
-  _focusVisible: {
-    borderColor: "alias.greenHaze",
-    boxShadow: `inset 0 0 0 1px ${colors.alias.greenHaze}`,
-  },
+  "button&, a&": {
+    _focus: {
+      borderColor: "alias.greenHaze",
+      boxShadow: `inset 0 0 0 1px ${colors.alias.greenHaze}`,
+      outline: "none",
+    },
+    ":focus:not(:focus-visible)": {
+      boxShadow: "none",
+    },
+    _focusVisible: {
+      borderColor: "alias.greenHaze",
+      boxShadow: `inset 0 0 0 1px ${colors.alias.greenHaze}`,
+    },
 
-  _disabled: {
-    backgroundColor: "alias.silver",
-    borderColor: "alias.silver",
-    color: "alias.osloGrey",
-    pointerEvents: "none",
+    _disabled: {
+      backgroundColor: "alias.silver",
+      borderColor: "alias.silver",
+      color: "alias.osloGrey",
+      pointerEvents: "none",
+    },
   },
 };
 

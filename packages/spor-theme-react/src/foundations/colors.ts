@@ -44,7 +44,9 @@ function getScaledValues(obj: any) {
       if (!newObj[colorKey]) {
         newObj[colorKey] = {};
       }
-      newObj[colorKey][scaleKey] = obj[colorKey][scaleKey].value;
+      newObj[colorKey][scaleKey] = /^\d+$/.test(scaleKey)
+        ? obj[colorKey][scaleKey].original?.value
+        : obj[colorKey].original?.value;
     }
   }
   return newObj;

@@ -18,6 +18,7 @@ import {
 import { RootErrorBoundary } from "./features/error-boundary/RootErrorBoundary";
 import { FontPreloading } from "./features/font-loading/FontPreloading";
 import { BaseLayout } from "./features/layouts/base-layout/BaseLayout";
+import { ViewModeProvider } from "./features/view-mode/ViewModeContext";
 
 export const meta: MetaFunction = () => {
   return { title: "Spor - Vy Design System" };
@@ -107,7 +108,9 @@ const Document = withEmotionCache(
         </head>
         <body>
           <SporProvider language={Language.English}>
-            <BaseLayout>{children}</BaseLayout>
+            <ViewModeProvider>
+              <BaseLayout>{children}</BaseLayout>
+            </ViewModeProvider>
           </SporProvider>
           <ScrollRestoration />
           <Scripts />

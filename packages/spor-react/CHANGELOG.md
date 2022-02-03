@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 0.6.0
+
+### Minor Changes
+
+- d379b43: Add new package for modals - spor-modal-react
+
+### Patch Changes
+
+- Updated dependencies [d379b43]
+  - @vygruppen/spor-modal-react@0.0.2
+  - @vygruppen/spor-theme-react@0.0.9
+
 ## 0.5.0
 
 ### Minor Changes

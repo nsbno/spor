@@ -1,5 +1,18 @@
 # @vygruppen/spor-react
 
+## 0.5.0
+
+### Minor Changes
+
+- 6511380: Add new spor-card-react package
+
+### Patch Changes
+
+- Updated dependencies [6511380]
+- Updated dependencies [b5613c9]
+  - @vygruppen/spor-card-react@0.0.2
+  - @vygruppen/spor-theme-react@0.0.8
+
 ## 0.4.0
 
 ### Minor Changes

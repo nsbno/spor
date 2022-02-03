@@ -7,6 +7,21 @@ import { colors } from "../foundations";
 const baseStyle: SystemStyleObject = {
   border: "1px solid transparent",
   borderRadius: "md",
+  transitionProperty: "common",
+  transitionDuration: "fast",
+
+  _focus: {
+    borderColor: "alias.greenHaze",
+    boxShadow: `inset 0 0 0 1px ${colors.alias.greenHaze}`,
+    outline: "none",
+  },
+  ":focus:not(:focus-visible)": {
+    boxShadow: "none",
+  },
+  _focusVisible: {
+    borderColor: "alias.greenHaze",
+    boxShadow: `inset 0 0 0 1px ${colors.alias.greenHaze}`,
+  },
 };
 
 type Variant = "elevated" | "filled" | "outlined";
@@ -14,22 +29,11 @@ const variants: Record<Variant, SystemStyleInterpolation> = {
   elevated: {
     backgroundColor: "alias.white",
     boxShadow: "md",
-    transitionProperty: "common",
-    transitionDuration: "fast",
 
     "button&, a&": {
       _hover: {
         borderColor: "alias.steel",
         boxShadow: "lg",
-      },
-      _focus: {
-        boxShadow: `inset 0 0 0 2px ${colors.alias.greenHaze}`,
-      },
-      ":focus:not(:focus-visible)": {
-        boxShadow: "none",
-      },
-      _focusVisible: {
-        boxShadow: `inset 0 0 0 2px ${colors.alias.greenHaze}`,
       },
       _active: {
         backgroundColor: "alias.mint",
@@ -43,19 +47,16 @@ const variants: Record<Variant, SystemStyleInterpolation> = {
 
     "button&, a&": {
       _hover: {
-        backgroundColor: "alias.lightGrey",
+        ...getColorSchemeHoverProps(colorScheme),
       },
       _focus: {
-        borderColor: "alias.greenHaze",
-      },
-      ":focus:not(:focus-visible)": {
-        boxShadow: "none",
+        ...getColorSchemeFocusProps(colorScheme),
       },
       _focusVisible: {
-        boxShadow: `inset 0 0 0 2px ${colors.alias.greenHaze}`,
+        ...getColorSchemeFocusProps(colorScheme),
       },
       _active: {
-        borderColor: "alias.cloudy",
+        ...getColorSchemeActiveProps(colorScheme),
       },
     },
   }),
@@ -67,16 +68,8 @@ const variants: Record<Variant, SystemStyleInterpolation> = {
       _hover: {
         borderColor: "alias.darkGrey",
       },
-      _focus: {
-        borderColor: "alias.greenHaze",
-      },
-      ":focus:not(:focus-visible)": {
-        boxShadow: "none",
-      },
-      _focusVisible: {
-        boxShadow: `inset 0 0 0 2px ${colors.alias.greenHaze}`,
-      },
       _active: {
+        backgroundColor: "alias.mint",
         borderColor: "alias.osloGrey",
       },
     },
@@ -99,6 +92,66 @@ function getColorSchemeProps(colorScheme: string) {
     default:
       return {
         backgroundColor: "alias.platinum",
+        borderColor: "alias.silver",
+      };
+  }
+}
+
+function getColorSchemeHoverProps(colorScheme: string) {
+  switch (colorScheme) {
+    case "blue":
+      return {
+        backgroundColor: "alias.cloudy",
+        borderColor: "alias.cloudy",
+      };
+    case "green":
+      return {
+        backgroundColor: "alias.seaMist",
+        borderColor: "alias.seaMist",
+      };
+    case "grey":
+    default:
+      return {
+        backgroundColor: "alias.silver",
+        borderColor: "alias.silver",
+      };
+  }
+}
+
+function getColorSchemeFocusProps(colorScheme: string) {
+  switch (colorScheme) {
+    case "blue":
+      return {
+        backgroundColor: "alias.lightBlue",
+      };
+    case "green":
+      return {
+        backgroundColor: "alias.seaMist",
+      };
+    case "grey":
+    default:
+      return {
+        backgroundColor: "alias.platinum",
+      };
+  }
+}
+
+function getColorSchemeActiveProps(colorScheme: string) {
+  switch (colorScheme) {
+    case "blue":
+      return {
+        backgroundColor: "alias.icyBlue",
+        borderColor: "alias.cloudy",
+      };
+    case "green":
+      return {
+        backgroundColor: "alias.mint",
+        borderColor: "alias.seaMist",
+      };
+    case "grey":
+    default:
+      return {
+        backgroundColor: "alias.lightGrey",
         borderColor: "alias.silver",
       };
   }

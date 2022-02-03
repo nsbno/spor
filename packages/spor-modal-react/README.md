@@ -1,6 +1,6 @@
 # Modal (React)
 
-TODO: Add description
+Use to create modals and dialogs
 
 ## Installation
 
@@ -11,9 +11,38 @@ $ npm install @vygruppen/spor-modal-react
 ## Usage
 
 ```tsx
-import { } from "@vygruppen/spor-modal-react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalCloseButton,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from "@vygruppen/spor-modal-react";
 ```
-TODO: Add usage description
+
+Put together your own modal like this:
+
+```tsx
+<Modal isOpen={isOpen} onClose={onClose}>
+  <ModalOverlay />
+  <ModalContent>
+    <ModalCloseButton />
+    <ModalHeader size="lg">Example</ModalHeader>
+    <ModalBody>
+      <Text>Lorem slipsum 👔</Text>
+    </ModalBody>
+    <ModalFooter>
+      <Button variant="primary" onClick={onClose} isFullWidth>
+        Ok.
+      </Button>
+    </ModalFooter>
+  </ModalContent>
+</Modal>
+```
+
+There are lots of props you can specify.
 
 ## Development
 

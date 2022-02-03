@@ -1,6 +1,17 @@
-import React from 'react';
-
-type ModalProps = {};
-export const Modal = (props: ModalProps) => {
-  return <div>Hi there</div>;
-};
+export {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from "@chakra-ui/react";
+export type {
+  ModalBodyProps,
+  ModalContentProps,
+  ModalFooterProps,
+  ModalHeaderProps,
+  ModalOverlayProps,
+  ModalProps,
+} from "@chakra-ui/react";

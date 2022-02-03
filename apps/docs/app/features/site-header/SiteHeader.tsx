@@ -4,7 +4,7 @@ import {
   ColorScheme,
   ColorSchemeProvider,
 } from "../color-scheme/ColorSchemeContext";
-import { ViewModeSwitcher } from "./ViewModeSwitcher";
+import { UserPreferenceSwitcher } from "./UserPreferenceSwitcher";
 import { NavigationLink, SiteNavigation } from "./SiteNavigation";
 
 type SiteHeaderProps = {
@@ -37,7 +37,7 @@ export const SiteHeader = ({ colorScheme }: SiteHeaderProps) => {
           </SiteNavigation>
         </Flex>
         <Flex gap="1em">
-          <ViewModeSwitcher />
+          <UserPreferenceSwitcher />
         </Flex>
       </Flex>
     </ColorSchemeProvider>

@@ -17,19 +17,21 @@ import {
 import { ChangeEvent } from "react";
 import {
   Technology,
+  UserType,
   useUserPreferences,
-  ViewMode,
 } from "../user-preferences/UserPreferencesContext";
 
-export const ViewModeSwitcher = () => {
+export const UserPreferenceSwitcher = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { viewMode } = useUserPreferences();
+  const { userPreferences } = useUserPreferences();
   return (
     <>
       <Flex as="button" onClick={onOpen} gap={2}>
         <Box>
           Vis som{" "}
-          <strong>{viewMode === "designer" ? "designer" : "utvikler"}</strong>
+          <strong>
+            {userPreferences.userType === "designer" ? "designer" : "utvikler"}
+          </strong>
         </Box>
         <SettingsX1Fill24Icon fontSize="24px" />
       </Flex>
@@ -40,7 +42,7 @@ export const ViewModeSwitcher = () => {
 
 type SwitchModeModalProps = { isOpen: boolean; onClose: () => void };
 const SwitchModeModal = ({ isOpen, onClose }: SwitchModeModalProps) => {
-  const { viewMode, setViewMode, technology, setTechnology } = useUserPreferences();
+  const { userPreferences, setUserPreference } = useUserPreferences();
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -61,20 +63,20 @@ const SwitchModeModal = ({ isOpen, onClose }: SwitchModeModalProps) => {
           <Stack>
             <Select
               label="Hva slags bruker er du?"
-              value={viewMode}
+              value={userPreferences.userType}
               onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-                setViewMode(e.target.value as ViewMode)
+                setUserPreference("userType", e.target.value as UserType)
               }
             >
               <option value="designer">Designer</option>
               <option value="developer">Utvikler</option>
             </Select>
-            {viewMode === "developer" && (
+            {userPreferences.userType === "developer" && (
               <Select
                 label="Hvilken teknologi bruker du mest?"
-                value={technology}
+                value={userPreferences.technology}
                 onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-                  setTechnology(e.target.value as Technology)
+                  setUserPreference("technology", e.target.value as Technology)
                 }
               >
                 <option value="react">React</option>

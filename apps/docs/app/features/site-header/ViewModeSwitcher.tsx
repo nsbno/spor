@@ -17,13 +17,13 @@ import {
 import { ChangeEvent } from "react";
 import {
   Technology,
-  useViewMode,
+  useUserPreferences,
   ViewMode,
-} from "../view-mode/ViewModeContext";
+} from "../user-preferences/UserPreferencesContext";
 
 export const ViewModeSwitcher = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { viewMode } = useViewMode();
+  const { viewMode } = useUserPreferences();
   return (
     <>
       <Flex as="button" onClick={onOpen} gap={2}>
@@ -40,7 +40,7 @@ export const ViewModeSwitcher = () => {
 
 type SwitchModeModalProps = { isOpen: boolean; onClose: () => void };
 const SwitchModeModal = ({ isOpen, onClose }: SwitchModeModalProps) => {
-  const { viewMode, setViewMode, technology, setTechnology } = useViewMode();
+  const { viewMode, setViewMode, technology, setTechnology } = useUserPreferences();
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />

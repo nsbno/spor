@@ -29,6 +29,7 @@ const baseStyleContainer: SystemStyleFunction = () => {
     transitionDuration: "fast",
 
     "input + label, .chakra-select__wrapper + label": {
+      fontSize: ["mobile.sm", "desktop.sm"],
       top: "6px",
       left: "16px",
       zIndex: 2,
@@ -37,9 +38,16 @@ const baseStyleContainer: SystemStyleFunction = () => {
       px: 0,
       my: 2,
       transition: ".1s ease-out",
+      transformOrigin: "top left",
     },
-    ".chakra-select__wrapper + label, input:not(:placeholder-shown) + label": {
+    "input:not(:placeholder-shown) + label": {
       transform: "scale(0.825) translateY(-14px) translateX(-7px)",
+    },
+    ".chakra-select__wrapper + label": {
+      transform: [
+        "scale(0.825) translateY(-16px)",
+        "scale(0.825) translateY(-18px)",
+      ],
     },
     "input:not(:placeholder-shown)": {
       pt: "16px",

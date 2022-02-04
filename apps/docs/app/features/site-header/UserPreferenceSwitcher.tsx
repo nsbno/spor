@@ -1,12 +1,10 @@
 import { Box, useDisclosure } from "@chakra-ui/react";
 import {
-  Button,
   Flex,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   Select,
@@ -48,7 +46,7 @@ const SwitchModeModal = ({ isOpen, onClose }: SwitchModeModalProps) => {
       <ModalOverlay />
       <ModalContent>
         <ModalCloseButton />
-        <ModalHeader size="lg">Visningsvalg</ModalHeader>
+        <ModalHeader size="sm">Visningsvalg</ModalHeader>
         <ModalBody>
           <Text
             mb={6}
@@ -86,11 +84,6 @@ const SwitchModeModal = ({ isOpen, onClose }: SwitchModeModalProps) => {
             )}
           </Stack>
         </ModalBody>
-        <ModalFooter>
-          <Button variant="primary" onClick={onClose} isFullWidth>
-            Ok.
-          </Button>
-        </ModalFooter>
       </ModalContent>
     </Modal>
   );

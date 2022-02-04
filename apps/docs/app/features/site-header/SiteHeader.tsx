@@ -1,15 +1,10 @@
-import {
-  Box,
-  Flex,
-  SettingsX1Fill24Icon,
-  Text,
-  VyLogo,
-} from "@vygruppen/spor-react";
+import { Box, Flex, VyLogo } from "@vygruppen/spor-react";
 import { Link } from "remix";
 import {
   ColorScheme,
   ColorSchemeProvider,
 } from "../color-scheme/ColorSchemeContext";
+import { UserPreferenceSwitcher } from "./UserPreferenceSwitcher";
 import { NavigationLink, SiteNavigation } from "./SiteNavigation";
 
 type SiteHeaderProps = {
@@ -42,10 +37,7 @@ export const SiteHeader = ({ colorScheme }: SiteHeaderProps) => {
           </SiteNavigation>
         </Flex>
         <Flex gap="1em">
-          <Text>
-            Vis som: <strong>Designer</strong>
-          </Text>
-          <SettingsX1Fill24Icon fontSize="24px" />
+          <UserPreferenceSwitcher />
         </Flex>
       </Flex>
     </ColorSchemeProvider>

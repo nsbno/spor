@@ -10,7 +10,7 @@ const baseStyleField: SystemStyleObject = {
   appearance: "none",
   pb: "1px",
   pt: "16px",
-  "> option, > optgroup": {
+  "option, optgroup": {
     background: "alias.white",
   },
 };
@@ -21,6 +21,7 @@ const baseStyleIcon: SystemStyleObject = {
   insetEnd: "0.5rem",
   position: "relative",
   color: "currentColor",
+  strokeLinecap: "round",
   fontSize: "1.25rem",
   _disabled: {
     opacity: 0.5,

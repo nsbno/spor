@@ -33,13 +33,16 @@ export const UserPreferenceSwitcher = () => {
         </Box>
         <SettingsX1Fill24Icon fontSize="24px" />
       </Flex>
-      <SwitchModeModal isOpen={isOpen} onClose={onClose} />
+      <UserPreferencesModal isOpen={isOpen} onClose={onClose} />
     </>
   );
 };
 
-type SwitchModeModalProps = { isOpen: boolean; onClose: () => void };
-const SwitchModeModal = ({ isOpen, onClose }: SwitchModeModalProps) => {
+type UserPreferencesModalProps = { isOpen: boolean; onClose: () => void };
+const UserPreferencesModal = ({
+  isOpen,
+  onClose,
+}: UserPreferencesModalProps) => {
   const { userPreferences, setUserPreference } = useUserPreferences();
   return (
     <Modal isOpen={isOpen} onClose={onClose}>

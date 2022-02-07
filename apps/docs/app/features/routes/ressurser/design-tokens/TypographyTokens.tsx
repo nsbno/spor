@@ -1,7 +1,25 @@
+import {
+  Code,
+  Table,
+  TableCaption,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
+import tokens from "@vygruppen/spor-design-tokens";
 import { Stack, Text } from "@vygruppen/spor-react";
+import { Fragment } from "react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
 export function TypographyTokens() {
+  const mobileTokens = Object.entries(tokens.font.style).map(
+    ([name, style]) => ({
+      name,
+      ...style,
+    })
+  );
   return (
     <SharedTokenLayout
       title="Typografi"
@@ -22,6 +40,45 @@ export function TypographyTokens() {
           </Text>
         </Stack>
       }
-    ></SharedTokenLayout>
+    >
+      <Table>
+        <TableCaption>Mobil</TableCaption>
+        <Thead>
+          <Tr>
+            <Th>Eksempel</Th>
+            <Th>Verdi</Th>
+            <Th>Kode</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {mobileTokens.map((token, index) => (
+            <Fragment key={index}>
+              <Tr>
+                <Td>
+                  <Text
+                    fontSize={token["font-size"].mobile.value}
+                    fontFamily={token["font-family"].value}
+                    lineHeight={token["line-height"].value}
+                  >
+                    {token.name} Regular
+                  </Text>
+                </Td>
+                <Td>
+                  {token["font-size"].mobile.value} /{" "}
+                  {token["line-height"].value}
+                </Td>
+                <Td>
+                  <Stack>
+                    <Code>$font-style-{token.name}-font-size-mobile</Code>
+                    <Code>$font-style-{token.name}-line-height</Code>
+                    <Code>$font-style-{token.name}-font-family</Code>
+                  </Stack>
+                </Td>
+              </Tr>
+            </Fragment>
+          ))}
+        </Tbody>
+      </Table>
+    </SharedTokenLayout>
   );
 }

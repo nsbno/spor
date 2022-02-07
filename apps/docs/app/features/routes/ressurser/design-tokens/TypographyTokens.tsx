@@ -63,16 +63,14 @@ export function TypographyTokens() {
                     {token.name} Regular
                   </Text>
                 </Td>
-                <Td>
+                <Td lineHeight="1.333">
                   {token["font-size"].mobile.value} /{" "}
                   {token["line-height"].value}
                 </Td>
-                <Td>
-                  <Stack>
-                    <Code>$font-style-{token.name}-font-size-mobile</Code>
-                    <Code>$font-style-{token.name}-line-height</Code>
-                    <Code>$font-style-{token.name}-font-family</Code>
-                  </Stack>
+                <Td lineHeight="1.333">
+                  <Code fontFamily="mono">$font-style-{token.name}-font-size-mobile</Code>
+                  <Code>$font-style-{token.name}-line-height</Code>
+                  <Code>$font-style-{token.name}-font-family</Code>
                 </Td>
               </Tr>
             </Fragment>

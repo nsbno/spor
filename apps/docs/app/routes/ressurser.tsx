@@ -3,7 +3,6 @@ import { Outlet } from "remix";
 import { DocsLayout } from "~/features/layouts/docs-layout/DocsLayout";
 
 export default function ResourcesPage() {
-  console.log("ressurser-siden");
   return (
     <DocsLayout>
       <Label backgroundColor="alias.coralGreen" color="alias.darkGrey" mb={1}>
@@ -22,7 +21,7 @@ function Label(props: LabelProps) {
     <Flex
       display="inline-flex"
       borderRadius="sm"
-      textStyles="xs"
+      textStyle="xs"
       fontWeight="bold"
       height="24px"
       px={2}

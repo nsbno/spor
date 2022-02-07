@@ -12,7 +12,7 @@ import { ZIndexTokens } from "~/features/routes/ressurser/design-tokens/ZIndexTo
 export default function DesignTokensPage() {
   return (
     <Box>
-      <Heading as="h1" textStyles="xl-display" mb={2}>
+      <Heading as="h1" textStyle="xl-display" mb={2}>
         Design tokens
       </Heading>
       <Stack spacing={6} fontSize={["mobile.sm", "desktop.sm"]}>
@@ -58,4 +58,3 @@ function Divider(props: BoxProps) {
     />
   );
 }
-

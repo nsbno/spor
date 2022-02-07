@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from "@vygruppen/spor-react";
+import { Box, Heading } from "@vygruppen/spor-react";
 
 type SharedTokenLayoutProps = {
   title: string;
@@ -12,12 +12,12 @@ export function SharedTokenLayout({
 }: SharedTokenLayoutProps) {
   return (
     <Box>
-      <Heading as="h2" textStyles="xl-display" mb={2}>
+      <Heading as="h2" textStyle="xl-display" mb={2}>
         {title}
       </Heading>
-      <Text mb={6} textStyle="sm">
+      <Box mb={6} textStyle="sm">
         {description}
-      </Text>
+      </Box>
       {children}
     </Box>
   );

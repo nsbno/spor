@@ -1,30 +1,94 @@
-import {
-  Code,
-  Table,
-  TableCaption,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react";
+import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import tokens from "@vygruppen/spor-design-tokens";
-import { Stack, Text } from "@vygruppen/spor-react";
-import { Fragment } from "react";
+import {
+  Box,
+  BoxProps,
+  Code,
+  Heading,
+  Stack,
+  Text,
+} from "@vygruppen/spor-react";
+import { Fragment, useMemo } from "react";
+import {
+  TokensFormat,
+  useUserPreferences,
+} from "~/features/user-preferences/UserPreferencesContext";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
+type TypographyToken = {
+  name: string;
+  key: "xs" | "sm" | "md" | "lg" | "xl-display" | "xl-sans" | "xxl";
+  fontWeight: "normal" | "bold";
+};
+const typographyTokens: TypographyToken[] = [
+  {
+    name: "XS Regular",
+    key: "xs",
+    fontWeight: "normal",
+  },
+  {
+    name: "XS Bold",
+    key: "xs",
+    fontWeight: "bold",
+  },
+  {
+    name: "Sm Regular",
+    key: "sm",
+    fontWeight: "normal",
+  },
+  {
+    name: "Sm Bold",
+    key: "sm",
+    fontWeight: "bold",
+  },
+  {
+    name: "Md Regular",
+    key: "md",
+    fontWeight: "normal",
+  },
+  {
+    name: "Md Bold",
+    key: "md",
+    fontWeight: "bold",
+  },
+  {
+    name: "Lg Regular",
+    key: "lg",
+    fontWeight: "normal",
+  },
+  {
+    name: "Lg Bold",
+    key: "lg",
+    fontWeight: "bold",
+  },
+  {
+    name: "XL Sans Regular",
+    key: "xl-sans",
+    fontWeight: "normal",
+  },
+  {
+    name: "XL Sans Bold",
+    key: "xl-sans",
+    fontWeight: "bold",
+  },
+  {
+    name: "XL Display",
+    key: "xl-display",
+    fontWeight: "normal",
+  },
+  {
+    name: "2XL Display",
+    key: "xxl",
+    fontWeight: "normal",
+  },
+];
+
 export function TypographyTokens() {
-  const mobileTokens = Object.entries(tokens.font.style).map(
-    ([name, style]) => ({
-      name,
-      ...style,
-    })
-  );
   return (
     <SharedTokenLayout
       title="Typografi"
       description={
-        <Stack>
+        <Stack spacing={6}>
           <Text>
             Vi har to “sett” med tekststiler; ett for mobil og ett for desktop.
             Tekststilene for Mobil skal brukes i Vy-appen, og web på mobil, mens
@@ -41,8 +105,32 @@ export function TypographyTokens() {
         </Stack>
       }
     >
+      <TypographyTokenTable viewportSize="mobile" title="Mobil" />
+      <TypographyTokenTable viewportSize="desktop" title="Desktop" />
+    </SharedTokenLayout>
+  );
+}
+
+type TypographyTokenTableProps = BoxProps & {
+  viewportSize: "mobile" | "desktop";
+  title: string;
+};
+const TypographyTokenTable = ({
+  viewportSize,
+  title,
+  ...props
+}: TypographyTokenTableProps) => {
+  const { userPreferences } = useUserPreferences();
+  const tokenFormatter = useMemo(
+    () => createTokensFormatter(userPreferences.tokensFormat),
+    [userPreferences.tokensFormat]
+  );
+  return (
+    <Box {...props}>
+      <Heading as="h2" textStyle="xl-display" mb={2}>
+        {title}
+      </Heading>
       <Table>
-        <TableCaption>Mobil</TableCaption>
         <Thead>
           <Tr>
             <Th>Eksempel</Th>
@@ -51,32 +139,72 @@ export function TypographyTokens() {
           </Tr>
         </Thead>
         <Tbody>
-          {mobileTokens.map((token, index) => (
-            <Fragment key={index}>
+          {typographyTokens.map((token) => (
+            <Fragment key={token.name}>
               <Tr>
                 <Td>
                   <Text
-                    fontSize={token["font-size"].mobile.value}
-                    fontFamily={token["font-family"].value}
-                    lineHeight={token["line-height"].value}
+                    fontSize={
+                      tokens.font.style[token.key]["font-size"][viewportSize]
+                        .value
+                    }
+                    fontFamily={
+                      tokens.font.style[token.key]["font-family"].value
+                    }
+                    lineHeight={
+                      tokens.font.style[token.key]["line-height"].value
+                    }
+                    fontWeight={token.fontWeight}
                   >
-                    {token.name} Regular
+                    {token.name}
                   </Text>
                 </Td>
                 <Td lineHeight="1.333">
-                  {token["font-size"].mobile.value} /{" "}
-                  {token["line-height"].value}
+                  {
+                    tokens.font.style[token.key]["font-size"][viewportSize]
+                      .value
+                  }{" "}
+                  / {tokens.font.style[token.key]["line-height"].value}
                 </Td>
                 <Td lineHeight="1.333">
-                  <Code fontFamily="mono">$font-style-{token.name}-font-size-mobile</Code>
-                  <Code>$font-style-{token.name}-line-height</Code>
-                  <Code>$font-style-{token.name}-font-family</Code>
+                  <Code colorScheme="green">
+                    {tokenFormatter(
+                      `font.style.${token.key}.font-size.${viewportSize}`
+                    )}
+                  </Code>
+                  <br />
+                  <Code colorScheme="green">
+                    {tokenFormatter(`font.style.${token.key}.line-height`)}
+                  </Code>
+                  <br />
+                  <Code colorScheme="green">
+                    {tokenFormatter(`font.style.${token.key}.font-family`)}
+                  </Code>
                 </Td>
               </Tr>
             </Fragment>
           ))}
         </Tbody>
       </Table>
-    </SharedTokenLayout>
+    </Box>
   );
-}
+};
+
+const createTokensFormatter =
+  (tokensFormat: TokensFormat) => (template: string) => {
+    switch (tokensFormat) {
+      case "javascript":
+        const parts = template
+          .split(".")
+          .map((part) => (part.includes("-") ? `["${part}"]` : part))
+          .join(".")
+          .replace(/\.\[/g, "[");
+        return `${parts}.value`;
+      case "css":
+        return `--${template.replace(/\./g, "-")}`;
+      case "scss":
+        return `$${template.replace(/\./g, "-")}`;
+      case "less":
+        return `@${template.replace(/\./g, "-")}`;
+    }
+  };

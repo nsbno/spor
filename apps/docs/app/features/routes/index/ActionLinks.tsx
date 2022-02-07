@@ -26,7 +26,7 @@ type LinkItem = {
 // These are the links that are rendered in the action links section.
 const links: LinkItem[] = [
   {
-    to: "/kom-i-gang",
+    to: "/ressurser/kom-i-gang",
     title: "Kom i gang",
     description: "Sett opp Spor i ditt prosjekt på få minutter",
     icon: <HomeOutline30Icon />,
@@ -41,7 +41,7 @@ const links: LinkItem[] = [
     iconColor: "alias.champagne",
   },
   {
-    to: "/design-tokens",
+    to: "/ressurser/design-tokens",
     title: "Design Tokens",
     description:
       "Se farger, størrelser og de andre atomene Spor er bygget opp av",
@@ -49,7 +49,7 @@ const links: LinkItem[] = [
     iconColor: "alias.champagne",
   },
   {
-    to: "/profil",
+    to: "/ressurser/profil",
     title: "Profil",
     description:
       "Lær mer om den visuelle profilen til Vy, og hva den inneholder",
@@ -64,7 +64,7 @@ const links: LinkItem[] = [
     iconColor: "alias.primrose",
   },
   {
-    to: "/api",
+    to: "/ressurser/api",
     title: "API",
     description: "Utforsk APIene til Vy",
     icon: <SettingsX1Outline30Icon />,

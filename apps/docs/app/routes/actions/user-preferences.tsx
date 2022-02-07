@@ -1,5 +1,5 @@
 import { ActionFunction, json, LoaderFunction, redirect } from "remix";
-import { isUserPreferences } from "~/features/user-preferences/UserPreferencesContext";
+import { isValidUserPreferences } from "~/features/user-preferences/UserPreferencesContext";
 import { getUserPreferenceSession } from "~/utils/userPreferences.server";
 
 export const action: ActionFunction = async ({ request }) => {
@@ -9,9 +9,10 @@ export const action: ActionFunction = async ({ request }) => {
   const userPreferences = {
     userType: formData.get("userType")?.toString(),
     technology: formData.get("technology")?.toString(),
+    tokensFormat: formData.get("tokensFormat")?.toString(),
   };
 
-  if (!isUserPreferences(userPreferences)) {
+  if (!isValidUserPreferences(userPreferences)) {
     return json({ success: false, message: "Invalid user preferences" });
   }
 

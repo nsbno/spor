@@ -15,6 +15,7 @@ import {
 import { ChangeEvent } from "react";
 import {
   Technology,
+  TokensFormat,
   UserType,
   useUserPreferences,
 } from "../user-preferences/UserPreferencesContext";
@@ -73,17 +74,37 @@ const UserPreferencesModal = ({
               <option value="developer">Utvikler</option>
             </Select>
             {userPreferences.userType === "developer" && (
-              <Select
-                label="Hvilken teknologi bruker du mest?"
-                value={userPreferences.technology}
-                onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-                  setUserPreference("technology", e.target.value as Technology)
-                }
-              >
-                <option value="react">React</option>
-                <option value="react-native">React Native</option>
-                <option value="elm">Elm</option>
-              </Select>
+              <>
+                <Select
+                  label="Hvilken teknologi bruker du mest?"
+                  value={userPreferences.technology}
+                  onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                    setUserPreference(
+                      "technology",
+                      e.target.value as Technology
+                    )
+                  }
+                >
+                  <option value="react">React</option>
+                  <option value="react-native">React Native</option>
+                  <option value="elm">Elm</option>
+                </Select>
+                <Select
+                  label="Hva slags format vil du se tokens i?"
+                  value={userPreferences.tokensFormat}
+                  onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                    setUserPreference(
+                      "tokensFormat",
+                      e.target.value as TokensFormat
+                    )
+                  }
+                >
+                  <option value="javascript">JavaScript</option>
+                  <option value="css">CSS</option>
+                  <option value="scss">SCSS</option>
+                  <option value="less">LESS</option>
+                </Select>
+              </>
             )}
           </Stack>
         </ModalBody>

@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
+import { useFetcher } from "remix";
 
-type UserPreferences = {
+export type UserPreferences = {
   /**
    * The general type of user you are.
    * This can be used to show you the most relevant information to the right users
@@ -29,36 +30,55 @@ const UserPreferencesContext = createContext<UserPreferencesContextType | null>(
   null
 );
 
-
+export const defaultUserPreferences: UserPreferences = {
+  userType: "developer",
+  technology: "react",
+};
 
 type UserPreferencesProviderProps = {
   children: React.ReactNode;
+  userPreferencesFromCookie?: UserPreferences;
 };
-export function UserPreferencesProvider(props: UserPreferencesProviderProps) {
-  const [userPreferences, setUserPreferences] = useState<UserPreferences>({
-    userType: "developer",
-    technology: "react",
-  });
+/**
+ * Makes user preferences available in to its children.
+ *
+ * You should fetch the user preferences from the cookie, and pass them in as the initial value.
+ *
+ * You can access the user preferences with the `useUserPreferences` hook.
+ */
+export function UserPreferencesProvider({
+  children,
+  userPreferencesFromCookie = defaultUserPreferences,
+}: UserPreferencesProviderProps) {
+  const [userPreferences, setUserPreferences] = useState<UserPreferences>(
+    userPreferencesFromCookie
+  );
+  const persistUserPreferences = useFetcher();
   const setUserPreference = (
     name: UserPreference,
     value: UserPreferences[UserPreference]
   ) => {
-    setUserPreferences({
+    const updatedUserPreferences = {
       ...userPreferences,
       [name]: value,
+    };
+    persistUserPreferences.submit(updatedUserPreferences, {
+      action: "actions/user-preferences",
+      method: "post",
     });
+    setUserPreferences(updatedUserPreferences);
   };
 
   return (
     <UserPreferencesContext.Provider
       value={{ userPreferences, setUserPreference }}
     >
-      {props.children}
+      {children}
     </UserPreferencesContext.Provider>
   );
 }
 
-/** Returns the user preferences, and a way to update it. */
+/** Returns the user preferences, and a way to update them. */
 export function useUserPreferences() {
   const context = useContext(UserPreferencesContext);
   if (!context) {
@@ -67,4 +87,16 @@ export function useUserPreferences() {
     );
   }
   return context;
+}
+
+export function isUserPreferences(
+  userPreferences: Record<string, string | undefined>
+): userPreferences is UserPreferences {
+  const isValidUserType = ["developer", "designer"].includes(
+    userPreferences.userType ?? ""
+  );
+  const isValidTechnology = ["react", "react-native", "elm"].includes(
+    userPreferences.technology ?? ""
+  );
+  return isValidUserType && isValidTechnology;
 }

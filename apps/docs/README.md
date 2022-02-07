@@ -5,6 +5,15 @@ It's based on [Remix](https://remix.run/docs), [TypeScript](https://typescriptla
 
 ## Development
 
+Before you start development, you need to copy the `.env.example` file to `.env`:
+
+```sh
+cd apps/docs # If you're not already here
+cp .env.example .env
+```
+
+Enter the file and make your own SESSION_SECRET variable. It's not strictly neccessary, but should be done either way.
+
 From your terminal:
 
 ```sh

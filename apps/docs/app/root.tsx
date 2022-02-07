@@ -1,15 +1,17 @@
 import { withEmotionCache } from "@emotion/react";
 import { Heading, Language, SporProvider, Text } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect } from "react";
-import type { MetaFunction } from "remix";
 import {
   Links,
   LiveReload,
+  LoaderFunction,
   Meta,
+  MetaFunction,
   Outlet,
   Scripts,
   ScrollRestoration,
   useCatch,
+  useLoaderData,
 } from "remix";
 import {
   ClientStyleContext,
@@ -18,10 +20,25 @@ import {
 import { RootErrorBoundary } from "./features/error-boundary/RootErrorBoundary";
 import { FontPreloading } from "./features/font-loading/FontPreloading";
 import { BaseLayout } from "./features/layouts/base-layout/BaseLayout";
-import { UserPreferencesProvider } from "./features/user-preferences/UserPreferencesContext";
+import {
+  UserPreferences,
+  UserPreferencesProvider,
+} from "./features/user-preferences/UserPreferencesContext";
+import { getUserPreferenceSession as getUserPreferencesSession } from "./utils/userPreferences.server";
 
 export const meta: MetaFunction = () => {
   return { title: "Spor - Vy Design System" };
+};
+
+type LoaderData = {
+  userPreferences?: UserPreferences;
+};
+export const loader: LoaderFunction = async ({ request }) => {
+  const session = await getUserPreferencesSession(request);
+  const data: LoaderData = {
+    userPreferences: session.getUserPreferences(),
+  };
+  return data;
 };
 
 /**
@@ -107,11 +124,7 @@ const Document = withEmotionCache(
           ))}
         </head>
         <body>
-          <SporProvider language={Language.English}>
-            <UserPreferencesProvider>
-              <BaseLayout>{children}</BaseLayout>
-            </UserPreferencesProvider>
-          </SporProvider>
+          <SporProvider language={Language.English}>{children}</SporProvider>
           <ScrollRestoration />
           <Scripts />
           {process.env.NODE_ENV === "development" && <LiveReload />}
@@ -122,9 +135,14 @@ const Document = withEmotionCache(
 );
 
 export default function App() {
+  const { userPreferences } = useLoaderData<LoaderData>();
   return (
     <Document>
-      <Outlet />
+      <UserPreferencesProvider userPreferencesFromCookie={userPreferences}>
+        <BaseLayout>
+          <Outlet />
+        </BaseLayout>
+      </UserPreferencesProvider>
     </Document>
   );
 }

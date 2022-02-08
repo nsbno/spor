@@ -1,5 +1,11 @@
 # @vygruppen/spor-logo-react
 
+## 0.1.0
+
+### Minor Changes
+
+- b81bc05: Export all props types
+
 ## 0.0.3
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @vygruppen/spor-theme-react
 
+## 0.1.0
+
+### Minor Changes
+
+- b81bc05: Export all props types
+
+### Patch Changes
+
+- 8758549: Tweak the design of input fields and select boxes
+- ee14582: Add new package spor-table-react
+- 28976df: Add two new typography components - Badge and Code
+
 ## 0.0.9
 
 ### Patch Changes

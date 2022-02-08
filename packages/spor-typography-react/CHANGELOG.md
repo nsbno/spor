@@ -1,5 +1,12 @@
 # @vygruppen/spor-typography-react
 
+## 0.2.0
+
+### Minor Changes
+
+- b81bc05: Export all props types
+- 28976df: Add two new typography components - Badge and Code
+
 ## 0.1.1
 
 ### Patch Changes

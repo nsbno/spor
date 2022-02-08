@@ -71,6 +71,8 @@ const variantOutline: PartsStyleFunction<typeof parts> = (props) => {
   return {
     tbody: {
       tr: {
+        transitionDuration: "fast",
+        transitionProperty: "background-color, box-shadow",
         _hover: {
           boxShadow: mode(
             `inset 3px 0 0 ${theme.colors.alias.darkTeal}`,

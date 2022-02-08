@@ -6,7 +6,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-export type CodeProps = {} & ChakraCodeProps;
+export type CodeProps = ChakraCodeProps;
 /**
  * Shows inline code.
  */

@@ -5,6 +5,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
+export type CheckboxProps = ChakraCheckboxProps;
 /**
  * Creates a checkbox.
  *
@@ -18,8 +19,6 @@ import React from "react";
  *
  * You can group several of these together with a `CheckboxGroup`.
  */
-export const Checkbox = forwardRef<ChakraCheckboxProps, "input">(
-  (props, ref) => {
-    return <ChakraCheckbox {...props} ref={ref} />;
-  }
-);
+export const Checkbox = forwardRef<CheckboxProps, "input">((props, ref) => {
+  return <ChakraCheckbox {...props} ref={ref} />;
+});

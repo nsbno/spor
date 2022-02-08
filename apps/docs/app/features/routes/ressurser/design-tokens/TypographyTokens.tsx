@@ -105,8 +105,10 @@ export function TypographyTokens() {
         </Stack>
       }
     >
-      <TypographyTokenTable viewportSize="mobile" title="Mobil" />
-      <TypographyTokenTable viewportSize="desktop" title="Desktop" />
+      <Stack spacing={9} mb={9}>
+        <TypographyTokenTable viewportSize="mobile" title="Mobil" />
+        <TypographyTokenTable viewportSize="desktop" title="Desktop" />
+      </Stack>
     </SharedTokenLayout>
   );
 }
@@ -127,7 +129,7 @@ const TypographyTokenTable = ({
   );
   return (
     <Box {...props}>
-      <Heading as="h2" textStyle="xl-display" mb={2}>
+      <Heading as="h2" textStyle="sm" fontWeight="bold" mb={2}>
         {title}
       </Heading>
       <Table>
@@ -167,17 +169,17 @@ const TypographyTokenTable = ({
                   / {tokens.font.style[token.key]["line-height"].value}
                 </Td>
                 <Td lineHeight="1.333">
-                  <Code colorScheme="green">
+                  <Code colorScheme="grey" variant="outline">
                     {tokenFormatter(
                       `font.style.${token.key}.font-size.${viewportSize}`
                     )}
                   </Code>
                   <br />
-                  <Code colorScheme="green">
+                  <Code colorScheme="grey" variant="outline">
                     {tokenFormatter(`font.style.${token.key}.line-height`)}
                   </Code>
                   <br />
-                  <Code colorScheme="green">
+                  <Code colorScheme="grey" variant="outline">
                     {tokenFormatter(`font.style.${token.key}.font-family`)}
                   </Code>
                 </Td>
@@ -199,7 +201,7 @@ const createTokensFormatter =
           .map((part) => (part.includes("-") ? `["${part}"]` : part))
           .join(".")
           .replace(/\.\[/g, "[");
-        return `${parts}.value`;
+        return `tokens.${parts}.value`;
       case "css":
         return `--${template.replace(/\./g, "-")}`;
       case "scss":

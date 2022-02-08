@@ -1,4 +1,3 @@
-import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import tokens from "@vygruppen/spor-design-tokens";
 import {
   Box,
@@ -6,7 +5,13 @@ import {
   Code,
   Heading,
   Stack,
+  Table,
+  Tbody,
+  Td,
   Text,
+  Th,
+  Thead,
+  Tr,
 } from "@vygruppen/spor-react";
 import { Fragment, useCallback } from "react";
 import { useUserPreferences } from "~/features/user-preferences/UserPreferencesContext";
@@ -126,7 +131,7 @@ const TypographyTokenTable = ({
       <Heading as="h2" textStyle="sm" fontWeight="bold" mb={2}>
         {title}
       </Heading>
-      <Table>
+      <Table variant="simple" colorScheme="grey">
         <Thead>
           <Tr>
             <Th>Eksempel</Th>
@@ -163,19 +168,25 @@ const TypographyTokenTable = ({
                   / {tokens.font.style[token.key]["line-height"].value}
                 </Td>
                 <Td lineHeight="1.333">
-                  <Code colorScheme="grey" variant="outline">
-                    {tokenFormatter(
-                      `font.style.${token.key}.font-size.${viewportSize}`
-                    )}
-                  </Code>
-                  <br />
-                  <Code colorScheme="grey" variant="outline">
-                    {tokenFormatter(`font.style.${token.key}.line-height`)}
-                  </Code>
-                  <br />
-                  <Code colorScheme="grey" variant="outline">
-                    {tokenFormatter(`font.style.${token.key}.font-family`)}
-                  </Code>
+                  <Stack spacing={1}>
+                    <Box>
+                      <Code colorScheme="grey" variant="outline">
+                        {tokenFormatter(
+                          `font.style.${token.key}.font-size.${viewportSize}`
+                        )}
+                      </Code>
+                    </Box>
+                    <Box>
+                      <Code colorScheme="grey" variant="outline">
+                        {tokenFormatter(`font.style.${token.key}.line-height`)}
+                      </Code>
+                    </Box>
+                    <Box>
+                      <Code colorScheme="grey" variant="outline">
+                        {tokenFormatter(`font.style.${token.key}.font-family`)}
+                      </Code>
+                    </Box>
+                  </Stack>
                 </Td>
               </Tr>
             </Fragment>

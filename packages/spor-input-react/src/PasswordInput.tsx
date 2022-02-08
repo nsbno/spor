@@ -3,7 +3,7 @@ import { useTranslation } from "@vygruppen/spor-i18n-react";
 import React from "react";
 import { Input, InputGroup, InputProps, InputRightElement } from ".";
 
-type PasswordInputProps = InputProps;
+export type PasswordInputProps = InputProps;
 export const PasswordInput = (props: PasswordInputProps) => {
   const { isOpen: isShowingPassword, onToggle } = useDisclosure();
   const { t } = useTranslation();

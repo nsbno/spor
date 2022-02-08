@@ -4,6 +4,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-export const FormControl = (props: ChakraFormControlProps) => {
+export type FormControlProps = ChakraFormControlProps;
+export const FormControl = (props: FormControlProps) => {
   return <ChakraFormControl {...props} />;
 };

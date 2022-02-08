@@ -1,7 +1,7 @@
 import { createCookieSessionStorage } from "remix";
 import {
   defaultUserPreferences,
-  isUserPreferences,
+  isValidUserPreferences,
   UserPreferences,
 } from "../features/user-preferences/UserPreferencesContext";
 
@@ -37,7 +37,7 @@ export async function getUserPreferenceSession(request: Request) {
         return defaultUserPreferences;
       }
       const parsedUserPreferences = JSON.parse(userPreferencesText);
-      if (isUserPreferences(parsedUserPreferences)) {
+      if (isValidUserPreferences(parsedUserPreferences)) {
         return parsedUserPreferences;
       }
       console.warn(

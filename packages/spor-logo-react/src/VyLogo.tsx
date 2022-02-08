@@ -1,7 +1,7 @@
 import { Box, BoxProps } from "@chakra-ui/react";
 import React from "react";
 
-type VyLogoProps = {
+export type VyLogoProps = {
   /** The color of the logo
    *
    * Use `"light"` when the logo is used on a dark background.

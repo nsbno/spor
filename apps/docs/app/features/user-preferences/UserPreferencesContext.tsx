@@ -10,14 +10,21 @@ export type UserPreferences = {
   /**
    * If the user is a developer, their preferred technology will be found here.
    *
-   * Note that if you set this value as a developer, then switch your viewMode to designer, then this value won't be reset.
+   * Note that if you set this value as a developer, then switch your userType to designer, then this value won't be reset.
    */
   technology: "react" | "react-native" | "elm";
+  /**
+   * If the user is a developer, their preferred tokens format will be found here.
+   *
+   * Note that if you set this value as a developer, then switch your userType to designer, then this value won't be reset.
+   */
+  tokensFormat: "javascript" | "css" | "scss" | "less";
 };
 
 type UserPreference = keyof UserPreferences;
 export type UserType = UserPreferences["userType"];
 export type Technology = UserPreferences["technology"];
+export type TokensFormat = UserPreferences["tokensFormat"];
 
 type UserPreferencesContextType = {
   userPreferences: UserPreferences;
@@ -33,6 +40,7 @@ const UserPreferencesContext = createContext<UserPreferencesContextType | null>(
 export const defaultUserPreferences: UserPreferences = {
   userType: "developer",
   technology: "react",
+  tokensFormat: "javascript",
 };
 
 type UserPreferencesProviderProps = {
@@ -89,7 +97,7 @@ export function useUserPreferences() {
   return context;
 }
 
-export function isUserPreferences(
+export function isValidUserPreferences(
   userPreferences: Record<string, string | undefined>
 ): userPreferences is UserPreferences {
   const isValidUserType = ["developer", "designer"].includes(
@@ -98,5 +106,8 @@ export function isUserPreferences(
   const isValidTechnology = ["react", "react-native", "elm"].includes(
     userPreferences.technology ?? ""
   );
-  return isValidUserType && isValidTechnology;
+  const isValidTokensFormat = ["javascript", "css", "scss", "less"].includes(
+    userPreferences.tokensFormat ?? ""
+  );
+  return isValidUserType && isValidTechnology && isValidTokensFormat;
 }

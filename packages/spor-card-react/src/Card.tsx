@@ -1,8 +1,8 @@
-import { As, BoxProps, forwardRef, useStyleConfig } from "@chakra-ui/react";
-import { Box } from "@vygruppen/spor-layout-react";
+import { As, forwardRef, useStyleConfig } from "@chakra-ui/react";
+import { Box, BoxProps } from "@vygruppen/spor-layout-react";
 import React from "react";
 
-type CardProps = BoxProps &
+export type CardProps = BoxProps &
   (
     | {
         variant: "elevated" | "outlined";

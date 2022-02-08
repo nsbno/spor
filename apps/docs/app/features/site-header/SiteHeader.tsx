@@ -4,8 +4,8 @@ import {
   ColorScheme,
   ColorSchemeProvider,
 } from "../color-scheme/ColorSchemeContext";
-import { UserPreferenceSwitcher } from "./UserPreferenceSwitcher";
 import { NavigationLink, SiteNavigation } from "./SiteNavigation";
+import { UserPreferenceSwitcher } from "./UserPreferenceSwitcher";
 
 type SiteHeaderProps = {
   colorScheme: ColorScheme;
@@ -29,11 +29,15 @@ export const SiteHeader = ({ colorScheme }: SiteHeaderProps) => {
             <VyLogo colorScheme={colorScheme} width="94px" height="48px" />
           </Box>
           <SiteNavigation>
-            <NavigationLink href="/kom-i-gang">Kom i gang</NavigationLink>
-            <NavigationLink href="/profil">Profil</NavigationLink>
+            <NavigationLink href="/ressurser/kom-i-gang">
+              Kom i gang
+            </NavigationLink>
+            <NavigationLink href="/ressurser/profil">Profil</NavigationLink>
             <NavigationLink href="/komponenter">Komponenter</NavigationLink>
             <NavigationLink href="/ikoner">Ikoner</NavigationLink>
-            <NavigationLink href="/design-tokens">Design tokens</NavigationLink>
+            <NavigationLink href="/ressurser/design-tokens">
+              Design tokens
+            </NavigationLink>
           </SiteNavigation>
         </Flex>
         <Flex gap="1em">

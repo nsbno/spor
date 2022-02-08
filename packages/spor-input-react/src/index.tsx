@@ -1,4 +1,5 @@
 export { FormErrorMessage, FormHelperText, InputGroup } from "@chakra-ui/react";
+export type { FormErrorMessageProps, InputGroupProps } from "@chakra-ui/react";
 export * from "./Checkbox";
 export * from "./CheckboxGroup";
 export * from "./ChoiceChip";

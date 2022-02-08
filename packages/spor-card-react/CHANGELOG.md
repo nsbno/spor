@@ -1,6 +1,20 @@
 # @vygruppen/spor-card-react
 
+## 0.1.0
+
+### Minor Changes
+
+- b81bc05: Export all props types
+
+### Patch Changes
+
+- Updated dependencies [b81bc05]
+- Updated dependencies [90ca75c]
+- Updated dependencies [ee14582]
+  - @vygruppen/spor-layout-react@0.3.0
+
 ## 0.0.2
+
 ### Patch Changes
 
 - 6511380: Add new spor-card-react package

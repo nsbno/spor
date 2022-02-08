@@ -1,5 +1,16 @@
 # @vygruppen/spor-layout-react
 
+## 0.3.0
+
+### Minor Changes
+
+- b81bc05: Export all props types
+- 90ca75c: Add a Divider component
+
+### Patch Changes
+
+- ee14582: Add new package spor-table-react
+
 ## 0.2.0
 
 ### Minor Changes

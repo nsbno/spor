@@ -1,5 +1,15 @@
 # @vygruppen/spor-input-react
 
+## 0.2.0
+
+### Minor Changes
+
+- b81bc05: Export all props types
+
+### Patch Changes
+
+- 8758549: Tweak the design of input fields and select boxes
+
 ## 0.1.0
 
 ### Minor Changes

@@ -1,5 +1,29 @@
 # @vygruppen/spor-react
 
+## 0.7.0
+
+### Minor Changes
+
+- ee14582: Add new package spor-table-react
+
+### Patch Changes
+
+- Updated dependencies [b81bc05]
+- Updated dependencies [8758549]
+- Updated dependencies [b78c8b7]
+- Updated dependencies [90ca75c]
+- Updated dependencies [ee14582]
+- Updated dependencies [28976df]
+  - @vygruppen/spor-card-react@0.1.0
+  - @vygruppen/spor-image-react@0.1.0
+  - @vygruppen/spor-input-react@0.2.0
+  - @vygruppen/spor-layout-react@0.3.0
+  - @vygruppen/spor-logo-react@0.1.0
+  - @vygruppen/spor-theme-react@0.1.0
+  - @vygruppen/spor-typography-react@0.2.0
+  - @vygruppen/spor-icon-react@0.0.4
+  - @vygruppen/spor-table-react@0.0.2
+
 ## 0.6.0
 
 ### Minor Changes

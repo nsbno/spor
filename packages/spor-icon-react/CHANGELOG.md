@@ -1,5 +1,15 @@
 # @vygruppen/spor-icon-react
 
+## 0.0.4
+
+### Patch Changes
+
+- b78c8b7: Update the home and search icons
+- Updated dependencies [b81bc05]
+- Updated dependencies [90ca75c]
+- Updated dependencies [ee14582]
+  - @vygruppen/spor-layout-react@0.3.0
+
 ## 0.0.3
 
 ### Patch Changes

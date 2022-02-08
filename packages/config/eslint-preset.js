@@ -19,6 +19,7 @@ module.exports = {
         "packages/spor-image-react/",
         "packages/spor-card-react/",
         "packages/spor-modal-react/",
+        "packages/spor-table-react/",
       ],
     },
   },

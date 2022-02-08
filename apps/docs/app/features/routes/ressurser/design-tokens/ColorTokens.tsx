@@ -1,9 +1,10 @@
-import { Text } from "@vygruppen/spor-react";
+import { BoxProps, Text } from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
-export function ColorTokens() {
+export function ColorTokens(props: BoxProps) {
   return (
     <SharedTokenLayout
+      {...props}
       title="Farger"
       description={
         <Text>

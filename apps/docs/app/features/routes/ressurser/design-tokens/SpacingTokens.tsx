@@ -1,9 +1,10 @@
-import { Text } from "@vygruppen/spor-react";
+import { BoxProps, Text } from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
-export function SpacingTokens() {
+export function SpacingTokens(props: BoxProps) {
   return (
     <SharedTokenLayout
+      {...props}
       title="Spacing"
       description={
         <Text>

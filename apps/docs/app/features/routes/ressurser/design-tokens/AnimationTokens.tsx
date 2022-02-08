@@ -1,9 +1,10 @@
-import { Text } from "@vygruppen/spor-react";
+import { BoxProps, Text } from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
-export function AnimationTokens() {
+export function AnimationTokens(props: BoxProps) {
   return (
     <SharedTokenLayout
+      {...props}
       title="Animasjon"
       description={
         <Text>

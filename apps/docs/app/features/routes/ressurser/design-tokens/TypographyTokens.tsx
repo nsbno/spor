@@ -83,9 +83,10 @@ const typographyTokens: TypographyToken[] = [
   },
 ];
 
-export function TypographyTokens() {
+export function TypographyTokens(props: BoxProps) {
   return (
     <SharedTokenLayout
+      {...props}
       title="Typografi"
       description={
         <Stack spacing={6}>
@@ -105,7 +106,7 @@ export function TypographyTokens() {
         </Stack>
       }
     >
-      <Stack spacing={9} mb={9}>
+      <Stack spacing={9}>
         <TypographyTokenTable viewportSize="mobile" title="Mobil" />
         <TypographyTokenTable viewportSize="desktop" title="Desktop" />
       </Stack>

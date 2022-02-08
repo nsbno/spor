@@ -31,15 +31,17 @@ export default function DesignTokensPage() {
         </Text>
       </Stack>
       <Divider mt={4} mb={9} />
-      <ColorTokens />
-      <TypographyTokens />
-      <SpacingTokens />
-      <RoundingTokens />
-      <ShadowTokens />
-      <OutlineTokens />
-      <BreakpointTokens />
-      <AnimationTokens />
-      <ZIndexTokens />
+      <Stack spacing={9}>
+        <ColorTokens />
+        <TypographyTokens />
+        <SpacingTokens />
+        <RoundingTokens />
+        <ShadowTokens />
+        <OutlineTokens />
+        <BreakpointTokens />
+        <AnimationTokens />
+        <ZIndexTokens />
+      </Stack>
     </Box>
   );
 }

@@ -1,4 +1,4 @@
-import { Box, BoxProps, Heading, Stack, Text } from "@vygruppen/spor-react";
+import { Box, Divider, Heading, Stack, Text } from "@vygruppen/spor-react";
 import { AnimationTokens } from "~/features/routes/ressurser/design-tokens/AnimationTokens";
 import { BreakpointTokens } from "~/features/routes/ressurser/design-tokens/BreakpointTokens";
 import { ColorTokens } from "~/features/routes/ressurser/design-tokens/ColorTokens";
@@ -30,8 +30,8 @@ export default function DesignTokensPage() {
           og mer.
         </Text>
       </Stack>
-      <Divider mt={4} mb={9} />
-      <Stack spacing={9}>
+      <Stack spacing={9} mt={4}>
+        <Divider />
         <ColorTokens />
         <TypographyTokens />
         <SpacingTokens />
@@ -43,20 +43,5 @@ export default function DesignTokensPage() {
         <ZIndexTokens />
       </Stack>
     </Box>
-  );
-}
-
-// TODO: Make this its own package
-function Divider(props: BoxProps) {
-  return (
-    <Box
-      as="hr"
-      height="2px"
-      border="0"
-      borderRadius="1px"
-      backgroundColor="palette.blackAlpha.200"
-      width="100%"
-      {...props}
-    />
   );
 }

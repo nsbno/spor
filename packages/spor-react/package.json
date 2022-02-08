@@ -26,6 +26,7 @@
     "@vygruppen/spor-layout-react": "*",
     "@vygruppen/spor-logo-react": "*",
     "@vygruppen/spor-modal-react": "*",
+    "@vygruppen/spor-table-react": "*",
     "@vygruppen/spor-theme-react": "*",
     "@vygruppen/spor-typography-react": "*"
   },

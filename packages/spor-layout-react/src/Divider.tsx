@@ -1,6 +1,5 @@
-import { As, forwardRef } from "@chakra-ui/react";
+import { As, Box, BoxProps, forwardRef } from "@chakra-ui/react";
 import React from "react";
-import { Box, BoxProps } from ".";
 
 export type DividerProps = BoxProps;
 /** A dividing line, used to divide content.

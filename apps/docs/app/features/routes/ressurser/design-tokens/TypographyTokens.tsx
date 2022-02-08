@@ -13,8 +13,8 @@ import {
   Thead,
   Tr,
 } from "@vygruppen/spor-react";
-import { Fragment, useCallback } from "react";
-import { useUserPreferences } from "~/features/user-preferences/UserPreferencesContext";
+import { Fragment } from "react";
+import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
 type TypographyToken = {
@@ -125,7 +125,7 @@ const TypographyTokenTable = ({
   title,
   ...props
 }: TypographyTokenTableProps) => {
-  const tokenFormatter = useTokensFormatter();
+  const tokenFormatter = useTokenFormatter();
   return (
     <Box {...props}>
       <Heading as="h2" textStyle="sm" fontWeight="bold" mb={2}>
@@ -194,33 +194,5 @@ const TypographyTokenTable = ({
         </Tbody>
       </Table>
     </Box>
-  );
-};
-
-/** Returns a formatter for tokens
- *
- * The format should be separated by dots, and can include dashes.
- */
-const useTokensFormatter = () => {
-  const { userPreferences } = useUserPreferences();
-  return useCallback(
-    (template: string) => {
-      switch (userPreferences.tokensFormat) {
-        case "javascript":
-          const parts = template
-            .split(".")
-            .map((part) => (part.includes("-") ? `["${part}"]` : part))
-            .join(".")
-            .replace(/\.\[/g, "[");
-          return `tokens.${parts}.value`;
-        case "css":
-          return `--${template.replace(/\./g, "-")}`;
-        case "scss":
-          return `$${template.replace(/\./g, "-")}`;
-        case "less":
-          return `@${template.replace(/\./g, "-")}`;
-      }
-    },
-    [userPreferences.tokensFormat]
   );
 };

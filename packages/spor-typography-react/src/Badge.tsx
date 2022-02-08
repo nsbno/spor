@@ -15,6 +15,6 @@ export type BadgeProps = Omit<ChakraBadgeProps, "variant" | "colorScheme"> & {
  *
  * You can specify two different variants - `solid` and `outline`. The default is `solid`, and there are no set rules about when to use what.
  */
-export const Badge = forwardRef<BadgeProps, As<"div">>((props, ref) => (
+export const Badge = forwardRef<BadgeProps, As<any>>((props, ref) => (
   <ChakraBadge {...props} ref={ref} />
 ));

@@ -15,6 +15,7 @@ import {
   Box,
   Center,
   Container,
+  Divider,
   Flex,
   Grid,
   GridItem,
@@ -29,6 +30,8 @@ import {
 ```
 
 All of these components are direct exports from Chakra UI. Please refer to their documentation for details.
+
+One exception is the `Divider` component. It's used on its own, and accepts any `BoxProps`.
 
 ## Development
 

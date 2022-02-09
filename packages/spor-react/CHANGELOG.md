@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 0.7.1
+
+### Patch Changes
+
+- Updated dependencies [b6c6e3c]
+  - @vygruppen/spor-theme-react@0.1.1
+
 ## 0.7.0
 
 ### Minor Changes

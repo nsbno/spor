@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.1.1
+
+### Patch Changes
+
+- b6c6e3c: Fix bug that breaks initial installation
+
 ## 0.1.0
 
 ### Minor Changes

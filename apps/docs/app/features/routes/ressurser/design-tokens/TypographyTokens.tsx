@@ -160,29 +160,29 @@ const TypographyTokenTable = ({
                     {token.name}
                   </Text>
                 </Td>
-                <Td lineHeight="1.333">
+                <Td>
                   {
                     tokens.font.style[token.key]["font-size"][viewportSize]
                       .value
                   }{" "}
                   / {tokens.font.style[token.key]["line-height"].value}
                 </Td>
-                <Td lineHeight="1.333">
+                <Td>
                   <Stack spacing={1}>
                     <Box>
-                      <Code colorScheme="grey" variant="outline">
+                      <Code>
                         {tokenFormatter(
                           `font.style.${token.key}.font-size.${viewportSize}`
                         )}
                       </Code>
                     </Box>
                     <Box>
-                      <Code colorScheme="grey" variant="outline">
+                      <Code>
                         {tokenFormatter(`font.style.${token.key}.line-height`)}
                       </Code>
                     </Box>
                     <Box>
-                      <Code colorScheme="grey" variant="outline">
+                      <Code>
                         {tokenFormatter(`font.style.${token.key}.font-family`)}
                       </Code>
                     </Box>

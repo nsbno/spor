@@ -29,7 +29,7 @@ export function HeroSection() {
                 as={Link}
                 size="lg"
                 to="/bidra"
-                rightIcon={<ArrowRightFill30Icon fontSize="30px" />}
+                rightIcon={<ArrowRightFill30Icon />}
                 mt={4}
                 width={["100%", "fit-content"]}
               >

@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 0.7.2
+
+### Patch Changes
+
+- Updated dependencies [011cdd8]
+- Updated dependencies [3a9746a]
+  - @vygruppen/spor-icon-react@0.0.5
+
 ## 0.7.1
 
 ### Patch Changes

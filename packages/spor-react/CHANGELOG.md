@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 0.7.3
+
+### Patch Changes
+
+- Updated dependencies [bed34b9]
+- Updated dependencies [bed34b9]
+  - @vygruppen/spor-typography-react@0.3.0
+  - @vygruppen/spor-theme-react@0.1.2
+
 ## 0.7.2
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @vygruppen/spor-typography-react
 
+## 0.3.0
+
+### Minor Changes
+
+- bed34b9: Add support for sizes and new colorSchemes for badges
+- bed34b9: Add support for styling code blocks the same way badges are
+
 ## 0.2.0
 
 ### Minor Changes

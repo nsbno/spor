@@ -23,13 +23,20 @@ export function useTokenFormatter() {
             .replace(/\.\[/g, "[");
           return `tokens.${parts}.value`;
         case "css":
-          return `--${template.replace(/\./g, "-")}`;
+          return `--${cssVariablify(template)}`;
         case "scss":
-          return `$${template.replace(/\./g, "-")}`;
+          return `$${cssVariablify(template)}`;
         case "less":
-          return `@${template.replace(/\./g, "-")}`;
+          return `@${cssVariablify(template)}`;
       }
     },
     [userPreferences.tokensFormat]
   );
+}
+
+/**
+ * Makes the template string safe to make into a CSS (or SCSS, LESS) variable
+ */
+function cssVariablify(string: string) {
+  return string.replace(/\./g, "-").replace(/[\[\]\"]/g, "");
 }

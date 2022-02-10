@@ -4,8 +4,6 @@ import type {
 } from "@chakra-ui/theme-tools";
 
 const baseStyle: SystemStyleObject = {
-  px: 2,
-  height: 4,
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
@@ -15,21 +13,20 @@ const baseStyle: SystemStyleObject = {
 };
 
 const variantSolid: SystemStyleFunction = (props) => {
-  const { colorScheme: c } = props;
+  const colorScheme = getColorScheme(props.colorScheme as ColorScheme);
 
   return {
-    backgroundColor: c === "red" ? "palette.red.600" : `palette.${c}.500`,
-    color: `alias.white`,
+    border: "none",
+    ...colorScheme,
   };
 };
 
 const variantOutline: SystemStyleFunction = (props) => {
-  const { colorScheme: c } = props;
+  const colorScheme = getColorScheme(props.colorScheme as ColorScheme);
 
   return {
-    backgroundColor: `palette.${c}.50`,
-    color: `palette.${c}.600`,
-    boxShadow: `inset 0 0 0 1px currentColor`,
+    border: "1px solid",
+    ...colorScheme,
   };
 };
 
@@ -38,13 +35,92 @@ const variants = {
   outline: variantOutline,
 };
 
+const sizes: Record<"sm" | "md", SystemStyleObject> = {
+  sm: {
+    px: 2,
+    height: 4,
+  },
+  md: {
+    px: 3,
+    height: 5,
+  },
+};
+
 const defaultProps = {
   variant: "solid",
   colorScheme: "grey",
+  size: "sm",
 };
 
 export default {
   baseStyle,
   variants,
+  sizes,
   defaultProps,
+};
+
+function getColorScheme(colorScheme: ColorScheme) {
+  let styles: SystemStyleObject = colorCombinations[colorScheme];
+  if (!styles && process.env.NODE_ENV === "development") {
+    console.warn(`Invalid color scheme ${colorScheme} provided.`);
+    styles = colorCombinations.grey;
+  }
+  return styles;
+}
+
+type ColorScheme =
+  | "yellow"
+  | "light-yellow"
+  | "red"
+  | "green"
+  | "orange"
+  | "blue"
+  | "grey"
+  | "white";
+type ColorSpec = {
+  backgroundColor: string;
+  color: string;
+  borderColor?: string;
+};
+const colorCombinations: Record<ColorScheme, ColorSpec> = {
+  yellow: {
+    backgroundColor: "alias.banana",
+    borderColor: "alias.darkGrey",
+    color: "alias.darkGrey",
+  },
+  "light-yellow": {
+    backgroundColor: "alias.blonde",
+    borderColor: "alias.golden",
+    color: "alias.darkGrey",
+  },
+  red: {
+    backgroundColor: "alias.lightRed",
+    borderColor: "alias.brightRed",
+    color: "alias.darkGrey",
+  },
+  green: {
+    backgroundColor: "alias.seaMist",
+    borderColor: "alias.darkTeal",
+    color: "alias.darkTeal",
+  },
+  orange: {
+    backgroundColor: "alias.champagne",
+    borderColor: "alias.pumpkin",
+    color: "alias.darkGrey",
+  },
+  blue: {
+    backgroundColor: "alias.lightBlue",
+    borderColor: "alias.ocean",
+    color: "alias.darkGrey",
+  },
+  grey: {
+    backgroundColor: "alias.platinum",
+    borderColor: "alias.darkGrey",
+    color: "alias.darkGrey",
+  },
+  white: {
+    backgroundColor: "alias.white",
+    borderColor: "alias.silver",
+    color: "alias.darkGrey",
+  },
 };

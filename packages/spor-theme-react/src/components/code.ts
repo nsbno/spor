@@ -5,7 +5,7 @@ const { variants, defaultProps } = Badge;
 
 const baseStyle: SystemStyleObject = {
   fontFamily: "monospace",
-  fontSize: "xs",
+  fontSize: ["mobile.xs", "desktop.xs"],
   borderRadius: "xs",
   px: 1,
 };

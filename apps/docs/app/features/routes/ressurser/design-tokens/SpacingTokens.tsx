@@ -1,4 +1,4 @@
-import { SharedTokenLayout } from "./SharedTokenLayout";
+import tokens from "@vygruppen/spor-design-tokens";
 import {
   Box,
   BoxProps,
@@ -13,75 +13,10 @@ import {
   Tr,
 } from "@vygruppen/spor-react";
 import { Fragment } from "react";
-import tokens from "@vygruppen/spor-design-tokens";
 import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
+import { SharedTokenLayout } from "./SharedTokenLayout";
 
-type SpacingToken = {
-  name: string;
-  key:
-    | "3"
-    | "6"
-    | "9"
-    | "12"
-    | "18"
-    | "24"
-    | "30"
-    | "36"
-    | "42"
-    | "54"
-    | "72"
-    | "90";
-};
-const spacingTokens: SpacingToken[] = [
-  {
-    name: "0.5",
-    key: "3",
-  },
-  {
-    name: "1",
-    key: "6",
-  },
-  {
-    name: "1.5",
-    key: "9",
-  },
-  {
-    name: "2",
-    key: "12",
-  },
-  {
-    name: "3",
-    key: "18",
-  },
-  {
-    name: "4",
-    key: "24",
-  },
-  {
-    name: "5",
-    key: "30",
-  },
-  {
-    name: "6",
-    key: "36",
-  },
-  {
-    name: "7",
-    key: "42",
-  },
-  {
-    name: "8",
-    key: "54",
-  },
-  {
-    name: "9",
-    key: "72",
-  },
-  {
-    name: "10",
-    key: "90",
-  },
-];
+const { px: spacingPxs, ...spacingSizes } = tokens.size.spacing;
 
 export function SpacingTokens(props: BoxProps) {
   return (
@@ -104,12 +39,12 @@ export function SpacingTokens(props: BoxProps) {
   );
 }
 
-type SpacingTokenTableProps = BoxProps & {};
+type SpacingTokenTableProps = BoxProps;
 
-const SpacingTokensTable = ({ ...props }: SpacingTokenTableProps) => {
+const SpacingTokensTable = (props: SpacingTokenTableProps) => {
   const tokenFormatter = useTokenFormatter();
   return (
-    <Box>
+    <Box {...props}>
       <Table variant="simple" colorScheme="grey">
         <Thead>
           <Tr>
@@ -119,23 +54,29 @@ const SpacingTokensTable = ({ ...props }: SpacingTokenTableProps) => {
           </Tr>
         </Thead>
         <Tbody>
-          {spacingTokens.map((token) => (
-            <Fragment key={token.key}>
+          {Object.entries(spacingSizes).map(([key, token]) => (
+            <Fragment key={key}>
               <Tr>
                 <Td>
                   <Box
-                    boxSize={tokens.size.spacing.px[token.key].value}
-                    bgColor="alias.primaryGreen"
-                  ></Box>
+                    width={token.value}
+                    height={token.value}
+                    backgroundColor="alias.primaryGreen"
+                  />
                 </Td>
-                <Td lineHeight="1.333">
-                  {tokens.size.spacing.px[token.key].value}
+                <Td>
+                  {key} / {token.value}
                 </Td>
-                <Td lineHeight="1.333">
+                <Td>
                   <Stack spacing={1}>
                     <Box>
-                      <Code colorScheme="grey" variant="outline">
-                        {tokenFormatter(`size.spacing.px.[${token.key}]`)}
+                      <Code>{tokenFormatter(`size.spacing.["${key}"]`)}</Code>
+                    </Box>
+                    <Box>
+                      <Code>
+                        {tokenFormatter(
+                          `size.spacing.px.[${token.value.replace("px", "")}]`
+                        )}
                       </Code>
                     </Box>
                   </Stack>

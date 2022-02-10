@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.1.2
+
+### Patch Changes
+
+- bed34b9: Add support for sizes and new colorSchemes for badges
+
 ## 0.1.1
 
 ### Patch Changes

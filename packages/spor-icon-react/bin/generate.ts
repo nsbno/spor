@@ -101,7 +101,10 @@ async function generateComponent(iconData: IconData) {
       expandProps: "end",
       ref: true,
       titleProp: false,
-      plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
+      svgo: true,
+      svgoConfig: {
+        removeViewBox: false,
+      },
       template: componentTemplate,
       replaceAttrValues: {
         "#2B2B2C": "currentColor",

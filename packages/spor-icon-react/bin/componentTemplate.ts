@@ -22,16 +22,16 @@ ${variables.interfaces};
 /**
  * Custom made icon.
  * 
- * You can set the color of the icon by setting the text color of the surrounding element.
+ * You can set the color of the icon by setting the color of the surrounding element.
  * 
  * \`\`\`tsx
  * <SomeIcon color="alias.darkGreen" />
  * \`\`\`
  * 
- * You can set the size of the icon by setting the font size of the surrounding element.
+ * In most cases, you should select the icon with the correct specified size, but you can also override the size with the "width" or "height" props.
  * 
  * \`\`\`tsx
- * <SomeIcon fontSize="xl" />
+ * <SomeIcon30 width="60px" height="60px" />
  * \`\`\`
  * 
  * If you're using the icon on its own, remember to set the \`aria-label\` prop with an alternative text for screen readers.

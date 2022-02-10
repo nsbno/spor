@@ -32,7 +32,7 @@ export const UserPreferenceSwitcher = () => {
             {userPreferences.userType === "designer" ? "designer" : "utvikler"}
           </strong>
         </Box>
-        <SettingsX1Fill24Icon fontSize="24px" />
+        <SettingsX1Fill24Icon />
       </Flex>
       <UserPreferencesModal isOpen={isOpen} onClose={onClose} />
     </>

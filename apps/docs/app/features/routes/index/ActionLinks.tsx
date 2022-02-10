@@ -1,5 +1,6 @@
 import {
   Box,
+  BoxProps,
   Card,
   ComponentsOutline30Icon,
   Container,
@@ -29,7 +30,7 @@ const links: LinkItem[] = [
     to: "/ressurser/kom-i-gang",
     title: "Kom i gang",
     description: "Sett opp Spor i ditt prosjekt på få minutter",
-    icon: <HomeOutline30Icon />,
+    icon: HomeOutline30Icon,
     iconColor: "alias.lightBlue",
   },
   {
@@ -37,7 +38,7 @@ const links: LinkItem[] = [
     title: "Komponenter",
     description:
       "Se byggeklossene du har tilgjengelig for å bygge brukergrensesnitt",
-    icon: <ComponentsOutline30Icon />,
+    icon: ComponentsOutline30Icon,
     iconColor: "alias.champagne",
   },
   {
@@ -45,7 +46,7 @@ const links: LinkItem[] = [
     title: "Design Tokens",
     description:
       "Se farger, størrelser og de andre atomene Spor er bygget opp av",
-    icon: <TokensOutline30Icon />,
+    icon: TokensOutline30Icon,
     iconColor: "alias.champagne",
   },
   {
@@ -53,21 +54,21 @@ const links: LinkItem[] = [
     title: "Profil",
     description:
       "Lær mer om den visuelle profilen til Vy, og hva den inneholder",
-    icon: <GuidelinesOutline30Icon />,
+    icon: GuidelinesOutline30Icon,
     iconColor: "alias.seaMist",
   },
   {
     to: "/ikoner",
     title: "Ikoner",
     description: "Utfork Spor sitt ikonbibliotek",
-    icon: <IconsOutline30Icon />,
+    icon: IconsOutline30Icon,
     iconColor: "alias.primrose",
   },
   {
     to: "/ressurser/api",
     title: "API",
     description: "Utforsk APIene til Vy",
-    icon: <SettingsX1Outline30Icon />,
+    icon: SettingsX1Outline30Icon,
     iconColor: "alias.silver",
   },
 ];
@@ -119,9 +120,9 @@ function ActionLinkCard({ to, children }: ActionLinkCardProps) {
 
 type IconCircleProps = {
   backgroundColor: string;
-  icon: React.ReactNode;
+  icon: React.ComponentType<BoxProps>;
 };
-function IconCircle({ backgroundColor, icon }: IconCircleProps) {
+function IconCircle({ backgroundColor, icon: Icon }: IconCircleProps) {
   return (
     <Flex
       width={["52px", "90px"]}
@@ -131,9 +132,8 @@ function IconCircle({ backgroundColor, icon }: IconCircleProps) {
       justifyContent="center"
       borderRadius="round"
       backgroundColor={backgroundColor}
-      fontSize={["30px", "60px"]}
     >
-      {icon}
+      <Icon width={["30px", "60px"]} height={["30px", "60px"]} />
     </Flex>
   );
 }

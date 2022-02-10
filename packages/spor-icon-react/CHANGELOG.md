@@ -1,5 +1,12 @@
 # @vygruppen/spor-icon-react
 
+## 0.0.5
+
+### Patch Changes
+
+- 011cdd8: Make icons their stated size, instead of the current font size.
+- 3a9746a: Fix an issue where viewBox was deleted
+
 ## 0.0.4
 
 ### Patch Changes

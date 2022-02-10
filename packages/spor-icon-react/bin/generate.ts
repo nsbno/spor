@@ -97,7 +97,7 @@ async function generateComponent(iconData: IconData) {
   let jsCode = await transform(
     iconData.icon,
     {
-      icon: true,
+      icon: false,
       expandProps: "end",
       ref: true,
       titleProp: false,

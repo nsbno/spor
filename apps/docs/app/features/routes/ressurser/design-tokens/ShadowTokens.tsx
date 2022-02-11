@@ -16,7 +16,21 @@ import { SharedTokenLayout } from "./SharedTokenLayout";
 import { Fragment } from "react";
 import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
 
-const { sm: shadow, ...shadowDepth } = tokens.depth.shadow;
+type ShadowToken = {
+  key: "sm" | "md" | "lg";
+};
+
+const shadowTokens: ShadowToken[] = [
+  {
+    key: "sm",
+  },
+  {
+    key: "md",
+  },
+  {
+    key: "lg",
+  },
+];
 
 export function ShadowTokens(props: BoxProps) {
   return (
@@ -58,24 +72,22 @@ const ShadowTokensTable = (props: ShadowTokenTableProps) => {
           </Tr>
         </Thead>
         <Tbody>
-          {Object.entries(shadowDepth).map(([key, token]) => (
-            <Fragment key={key}>
+          {shadowTokens.map((token) => (
+            <Fragment>
               <Tr>
                 <Td>
                   <Box
-                    boxShadow={key}
-                    p="6"
-                    backgroundColor="alias.white"
-                    borderRadius="xs"
                     width={8}
                     height={8}
+                    boxShadow={token.key}
+                    borderRadius="xs"
                   />
                 </Td>
-                <Td>{token.value}</Td>
+                <Td>{tokens.depth.shadow[token.key].value}</Td>
                 <Td>
                   <Stack spacing={1}>
                     <Box>
-                      <Code>{tokenFormatter(`depth.shadow.["${key}"]`)}</Code>
+                      <Code>{tokenFormatter(`depth.shadow.${token.key}`)}</Code>
                     </Box>
                   </Stack>
                 </Td>

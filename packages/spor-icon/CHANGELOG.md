@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 0.1.0
+
+### Minor Changes
+
+- c22d76c: Add phone icon
+
 ## 0.0.3
 
 ### Patch Changes

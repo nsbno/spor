@@ -1,5 +1,11 @@
 # @vygruppen/spor-card-react
 
+## 0.1.1
+
+### Patch Changes
+
+- 8a80f1d: This bugfix comes down from heaven and makes dependencies work like they should!
+
 ## 0.1.0
 
 ### Minor Changes

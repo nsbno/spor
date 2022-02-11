@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 0.7.4
+
+### Patch Changes
+
+- 8a80f1d: This bugfix comes down from heaven and makes dependencies work like they should!
+- Updated dependencies [8a80f1d]
+- Updated dependencies [c22d76c]
+  - @vygruppen/spor-button-react@0.1.2
+  - @vygruppen/spor-card-react@0.1.1
+  - @vygruppen/spor-icon-react@0.1.0
+  - @vygruppen/spor-input-react@0.2.1
+
 ## 0.7.3
 
 ### Patch Changes

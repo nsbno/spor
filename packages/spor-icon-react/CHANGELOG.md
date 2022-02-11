@@ -1,5 +1,15 @@
 # @vygruppen/spor-icon-react
 
+## 0.1.0
+
+### Minor Changes
+
+- c22d76c: Add phone icon
+
+### Patch Changes
+
+- 8a80f1d: This bugfix comes down from heaven and makes dependencies work like they should!
+
 ## 0.0.5
 
 ### Patch Changes

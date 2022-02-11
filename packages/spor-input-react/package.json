@@ -18,7 +18,7 @@
     "dev": "tsup src/index.tsx --watch"
   },
   "dependencies": {
-    "@vygruppen/spor-i18n-react": "*"
+    "@vygruppen/spor-i18n-react": "^0.0.3"
   },
   "devDependencies": {
     "react": ">17.0.0",

@@ -13,24 +13,7 @@ import {
   Tr,
 } from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
-import { Fragment } from "react";
 import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
-
-type ShadowToken = {
-  key: "sm" | "md" | "lg";
-};
-
-const shadowTokens: ShadowToken[] = [
-  {
-    key: "sm",
-  },
-  {
-    key: "md",
-  },
-  {
-    key: "lg",
-  },
-];
 
 export function ShadowTokens(props: BoxProps) {
   return (
@@ -50,9 +33,7 @@ export function ShadowTokens(props: BoxProps) {
         </Text>
       }
     >
-      <Stack spacing={9}>
-        <ShadowTokensTable />
-      </Stack>
+      <ShadowTokensTable />
     </SharedTokenLayout>
   );
 }
@@ -72,27 +53,27 @@ const ShadowTokensTable = (props: ShadowTokenTableProps) => {
           </Tr>
         </Thead>
         <Tbody>
-          {shadowTokens.map((token) => (
-            <Fragment>
-              <Tr>
-                <Td>
-                  <Box
-                    width={8}
-                    height={8}
-                    boxShadow={token.key}
-                    borderRadius="xs"
-                  />
-                </Td>
-                <Td>{tokens.depth.shadow[token.key].value}</Td>
-                <Td>
-                  <Stack spacing={1}>
-                    <Box>
-                      <Code>{tokenFormatter(`depth.shadow.${token.key}`)}</Code>
-                    </Box>
-                  </Stack>
-                </Td>
-              </Tr>
-            </Fragment>
+          {Object.entries(tokens.depth.shadow).map(([key, token]) => (
+            <Tr key={key}>
+              <Td>
+                <Box
+                  width={8}
+                  height={8}
+                  boxShadow={token.value}
+                  borderRadius="xs"
+                />
+              </Td>
+              <Td>
+                {key}/ {token.value}
+              </Td>
+              <Td>
+                <Stack spacing={1}>
+                  <Box>
+                    <Code>{tokenFormatter(`depth.shadow.${key}`)}</Code>
+                  </Box>
+                </Stack>
+              </Td>
+            </Tr>
           ))}
         </Tbody>
       </Table>

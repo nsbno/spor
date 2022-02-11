@@ -3,7 +3,6 @@ export type RootErrorBoundaryProps = {
   error: Error;
 };
 export const RootErrorBoundary = ({ error }: RootErrorBoundaryProps) => {
-  console.log({ Box, Heading, Text });
   if (process.env.NODE_ENV === "development") {
     console.error(error);
     return (

@@ -1,5 +1,19 @@
-import { BoxProps, Text } from "@vygruppen/spor-react";
+import tokens from "@vygruppen/spor-design-tokens";
+import {
+  Box,
+  BoxProps,
+  Code,
+  Stack,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+} from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
+import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
 
 export function ShadowTokens(props: BoxProps) {
   return (
@@ -18,6 +32,51 @@ export function ShadowTokens(props: BoxProps) {
           Elevation 1, Elevation 2 og Elevation 3.
         </Text>
       }
-    ></SharedTokenLayout>
+    >
+      <ShadowTokensTable />
+    </SharedTokenLayout>
   );
 }
+
+type ShadowTokenTableProps = BoxProps;
+
+const ShadowTokensTable = (props: ShadowTokenTableProps) => {
+  const tokenFormatter = useTokenFormatter();
+  return (
+    <Box {...props}>
+      <Table variant="simple" colorScheme="grey">
+        <Thead>
+          <Tr>
+            <Th>Eksempel</Th>
+            <Th>Verdi</Th>
+            <Th>Kode</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {Object.entries(tokens.depth.shadow).map(([key, token]) => (
+            <Tr key={key}>
+              <Td>
+                <Box
+                  width={8}
+                  height={8}
+                  boxShadow={token.value}
+                  borderRadius="xs"
+                />
+              </Td>
+              <Td>
+                {key} / {token.value}
+              </Td>
+              <Td>
+                <Stack spacing={1}>
+                  <Box>
+                    <Code>{tokenFormatter(`depth.shadow.${key}`)}</Code>
+                  </Box>
+                </Stack>
+              </Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
+    </Box>
+  );
+};

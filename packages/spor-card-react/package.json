@@ -18,7 +18,7 @@
     "dev": "tsup src/index.tsx --watch"
   },
   "dependencies": {
-    "@vygruppen/spor-layout-react": "*"
+    "@vygruppen/spor-layout-react": "^0.3.0"
   },
   "devDependencies": {
     "react": ">17.0.0",

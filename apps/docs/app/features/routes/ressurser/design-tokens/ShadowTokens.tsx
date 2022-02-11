@@ -63,7 +63,7 @@ const ShadowTokensTable = (props: ShadowTokenTableProps) => {
               <Tr>
                 <Td>
                   <Box
-                    boxShadow={token.value}
+                    boxShadow={key}
                     p="6"
                     backgroundColor="alias.white"
                     borderRadius="xs"

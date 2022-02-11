@@ -64,7 +64,7 @@ const ShadowTokensTable = (props: ShadowTokenTableProps) => {
                 />
               </Td>
               <Td>
-                {key}/ {token.value}
+                {key} / {token.value}
               </Td>
               <Td>
                 <Stack spacing={1}>

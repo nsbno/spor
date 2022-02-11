@@ -1,5 +1,22 @@
-import { BoxProps, Text } from "@vygruppen/spor-react";
+import tokens from "@vygruppen/spor-design-tokens";
+import {
+  Box,
+  BoxProps,
+  Code,
+  Stack,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+} from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
+import { Fragment } from "react";
+import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
+
+const { sm: shadow, ...shadowDepth } = tokens.depth.shadow;
 
 export function ShadowTokens(props: BoxProps) {
   return (
@@ -18,6 +35,55 @@ export function ShadowTokens(props: BoxProps) {
           Elevation 1, Elevation 2 og Elevation 3.
         </Text>
       }
-    ></SharedTokenLayout>
+    >
+      <Stack spacing={9}>
+        <ShadowTokensTable />
+      </Stack>
+    </SharedTokenLayout>
   );
 }
+
+type ShadowTokenTableProps = BoxProps;
+
+const ShadowTokensTable = (props: ShadowTokenTableProps) => {
+  const tokenFormatter = useTokenFormatter();
+  return (
+    <Box {...props}>
+      <Table variant="simple" colorScheme="grey">
+        <Thead>
+          <Tr>
+            <Th>Eksempel</Th>
+            <Th>Verdi</Th>
+            <Th>Kode</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {Object.entries(shadowDepth).map(([key, token]) => (
+            <Fragment key={key}>
+              <Tr>
+                <Td>
+                  <Box
+                    boxShadow={token.value}
+                    p="6"
+                    backgroundColor="alias.white"
+                    borderRadius="xs"
+                    width={8}
+                    height={8}
+                  />
+                </Td>
+                <Td>{token.value}</Td>
+                <Td>
+                  <Stack spacing={1}>
+                    <Box>
+                      <Code>{tokenFormatter(`depth.shadow.["${key}"]`)}</Code>
+                    </Box>
+                  </Stack>
+                </Td>
+              </Tr>
+            </Fragment>
+          ))}
+        </Tbody>
+      </Table>
+    </Box>
+  );
+};

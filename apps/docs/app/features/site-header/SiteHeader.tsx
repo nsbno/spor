@@ -34,7 +34,7 @@ export const SiteHeader = ({ colorScheme }: SiteHeaderProps) => {
             </NavigationLink>
             <NavigationLink href="/ressurser/profil">Profil</NavigationLink>
             <NavigationLink href="/komponenter">Komponenter</NavigationLink>
-            <NavigationLink href="/ikoner">Ikoner</NavigationLink>
+            <NavigationLink href="/ressurser/ikoner">Ikoner</NavigationLink>
             <NavigationLink href="/ressurser/design-tokens">
               Design tokens
             </NavigationLink>

@@ -1,10 +1,20 @@
 import {
+  As,
+  forwardRef,
   IconButton as ChakraIconButton,
   IconButtonProps as ChakraIconButtonProps,
 } from "@chakra-ui/react";
 import React from "react";
 
-export type IconButtonProps = ChakraIconButtonProps;
+export type IconButtonProps = Omit<ChakraIconButtonProps, "variant"> & {
+  variant:
+    | "control"
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "additional"
+    | "ghost";
+};
 /**
  * An icon-only button.
  *
@@ -40,6 +50,6 @@ export type IconButtonProps = ChakraIconButtonProps;
  * />
  * ```
  */
-export const IconButton = (props: IconButtonProps) => (
-  <ChakraIconButton {...props} />
-);
+export const IconButton = forwardRef<IconButtonProps, As<any>>((props, ref) => (
+  <ChakraIconButton {...props} ref={ref} />
+));

@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.1.3
+
+### Patch Changes
+
+- f041db8: Change the color of the additional button border
+
 ## 0.1.2
 
 ### Patch Changes

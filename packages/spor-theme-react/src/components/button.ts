@@ -113,12 +113,12 @@ const variantAdditional: SystemStyleFunction = ({ theme }) => ({
   backgroundColor: "transparent",
   color: "alias.darkGrey",
   fontWeight: "normal",
-  boxShadow: "inset 0 0 0 1px currentColor",
+  boxShadow: `inset 0 0 0 1px ${theme.colors.palette.blackAlpha[400]}`,
   _focus: {
     boxShadow: `inset 0 0 0 3px ${theme.colors.alias.greenHaze}`,
   },
   ":focus:not(:focus-visible)": {
-    boxShadow: "inset 0 0 0 1px currentColor",
+    boxShadow: `inset 0 0 0 1px ${theme.colors.palette.blackAlpha[400]}`,
   },
   _focusVisible: {
     boxShadow: `inset 0 0 0 3px ${theme.colors.alias.greenHaze}`,
@@ -127,7 +127,7 @@ const variantAdditional: SystemStyleFunction = ({ theme }) => ({
     boxShadow: `inset 0 0 0 2px currentColor`,
   },
   _active: {
-    boxShadow: `inset 0 0 0 1px currentColor`,
+    boxShadow: `inset 0 0 0 1px ${theme.colors.palette.blackAlpha[400]}`,
     backgroundColor: "alias.mint",
   },
 });

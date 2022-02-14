@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 0.7.5
+
+### Patch Changes
+
+- 60facc6: Bump dependencies
+- Updated dependencies [f041db8]
+  - @vygruppen/spor-theme-react@0.1.3
+  - @vygruppen/spor-button-react@0.1.3
+
 ## 0.7.4
 
 ### Patch Changes

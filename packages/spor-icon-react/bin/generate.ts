@@ -30,6 +30,7 @@ type IconMetadata = {
   name: string;
   modifier: string;
   size: string;
+  fileName: string;
 };
 
 async function loadIcons() {
@@ -70,7 +71,13 @@ function getMetadata({ fileName, category }: GetMetadataArgs): IconMetadata {
     size = additionalSize;
   }
   size = getPixelSizeOrFallback(size);
-  return { name, modifier, size, category };
+  return {
+    name,
+    modifier,
+    size,
+    category,
+    fileName,
+  };
 }
 
 /** Gets the number of pixels of a size, or returns the argument */

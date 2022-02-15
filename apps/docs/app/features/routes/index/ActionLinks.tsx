@@ -58,7 +58,7 @@ const links: LinkItem[] = [
     iconColor: "alias.seaMist",
   },
   {
-    to: "/ikoner",
+    to: "/ressurser/ikoner",
     title: "Ikoner",
     description: "Utfork Spor sitt ikonbibliotek",
     icon: IconsOutline30Icon,

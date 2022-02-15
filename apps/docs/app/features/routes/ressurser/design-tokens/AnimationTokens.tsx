@@ -1,5 +1,19 @@
-import { BoxProps, Text } from "@vygruppen/spor-react";
+import tokens from "@vygruppen/spor-design-tokens";
+import {
+  Box,
+  BoxProps,
+  Code,
+  Stack,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+} from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
+import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
 
 export function AnimationTokens(props: BoxProps) {
   return (
@@ -16,6 +30,42 @@ export function AnimationTokens(props: BoxProps) {
           Medium, Fast.
         </Text>
       }
-    ></SharedTokenLayout>
+    >
+      <AnimationTokensTable />
+    </SharedTokenLayout>
   );
 }
+
+type AnimationTokenTableProps = BoxProps;
+
+const AnimationTokensTable = (props: AnimationTokenTableProps) => {
+  const tokenFormatter = useTokenFormatter();
+  return (
+    <Box {...props}>
+      <Table variant="simple" colorScheme="grey">
+        <Thead>
+          <Tr>
+            <Th>Navn</Th>
+            <Th>Verdi</Th>
+            <Th>Kode</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {Object.entries(tokens.time.transition).map(([key, token]) => (
+            <Tr key={key}>
+              <Td>{key}</Td>
+              <Td>{token.value}</Td>
+              <Td>
+                <Stack spacing={1}>
+                  <Box>
+                    <Code>{tokenFormatter(`time.transition.${key}`)}</Code>
+                  </Box>
+                </Stack>
+              </Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
+    </Box>
+  );
+};

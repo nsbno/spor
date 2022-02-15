@@ -72,7 +72,7 @@ const NoHits = () => {
       <Heading as="h2" textStyle="sm" fontWeight="bold" mb={7}>
         Ingen matchende ikoner funnet
       </Heading>
-        <NotFound mx="auto" />
+      <NotFound mx="auto" />
     </Box>
   );
 };
@@ -136,6 +136,7 @@ function IconBox({ icon }: IconBoxProps) {
   const { onCopy, hasCopied } = useClipboard(icon.importName);
   const IconComponent = getIconByImportName(icon.importName);
   const { searchFilter } = useSearchFilter();
+  const showVariantLabel = searchFilter.variant === "" && icon.modifier;
   return (
     <Flex
       border="1px solid"
@@ -148,15 +149,15 @@ function IconBox({ icon }: IconBoxProps) {
       pb={1}
     >
       <Text textStyle="xs" mb={1}>
-        {toTitleCase(icon.name)}{" "}
-        {searchFilter.variant === "" && `(${toTitleCase(icon.modifier)})`}
+        {toTitleCase(icon.name)}
+        {showVariantLabel && ` (${toTitleCase(icon.modifier)})`}
       </Text>
       <IconComponent />
       <Flex justifyContent="flex-end" width="100%">
         <IconButton
           as="a"
-          href="/"
-          download={true}
+          href={`/ressurser/ikoner/${icon.category}/${icon.fileName}`}
+          download
           variant="ghost"
           icon={<DownloadOutline18Icon />}
           size="sm"

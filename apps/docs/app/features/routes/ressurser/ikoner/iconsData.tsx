@@ -15,6 +15,7 @@ export type IconMetadata = {
   modifier: string;
   name: string;
   size: string;
+  fileName: string;
 };
 
 export const iconsByCategory = Object.entries(

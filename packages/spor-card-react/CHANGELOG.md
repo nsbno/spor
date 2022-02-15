@@ -1,5 +1,13 @@
 # @vygruppen/spor-card-react
 
+## 0.1.2
+
+### Patch Changes
+
+- 37f7c2e: Fix some issues with dependencies
+- Updated dependencies [37f7c2e]
+  - @vygruppen/spor-layout-react@0.3.1
+
 ## 0.1.1
 
 ### Patch Changes

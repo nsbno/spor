@@ -1,5 +1,11 @@
 # @vygruppen/spor-logo-react
 
+## 0.1.1
+
+### Patch Changes
+
+- 37f7c2e: Fix some issues with dependencies
+
 ## 0.1.0
 
 ### Minor Changes

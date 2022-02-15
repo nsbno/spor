@@ -1,5 +1,13 @@
 # @vygruppen/spor-button-react
 
+## 0.1.4
+
+### Patch Changes
+
+- 37f7c2e: Fix some issues with dependencies
+- Updated dependencies [37f7c2e]
+  - @vygruppen/spor-i18n-react@0.0.4
+
 ## 0.1.3
 
 ### Patch Changes

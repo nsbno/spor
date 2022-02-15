@@ -1,5 +1,11 @@
 # @vygruppen/spor-i18n-react
 
+## 0.0.4
+
+### Patch Changes
+
+- 37f7c2e: Fix some issues with dependencies
+
 ## 0.0.3
 
 ### Patch Changes

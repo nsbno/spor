@@ -1,15 +1,22 @@
 {
   "name": "@vygruppen/spor-icon",
   "version": "0.1.0",
-  "main": "./svg",
+  "main": "./dist/spor-icons.zip",
   "license": "MIT",
   "files": [
-    "svg"
+    "svg",
+    "dist/spor-icons.zip"
   ],
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-icon",
   "repository": {
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
     "directory": "packages/spor-icon"
+  },
+  "scripts": {
+    "build": "mkdir dist && bestzip dist/spor-icons.zip svg/*"
+  },
+  "devDependencies": {
+    "bestzip": "^2.2.0"
   }
 }

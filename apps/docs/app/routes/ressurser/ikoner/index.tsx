@@ -7,6 +7,7 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
+import { Link } from "remix";
 import { SearchBar } from "~/features/routes/ressurser/ikoner/SearchBar";
 import { SearchFilterProvider } from "~/features/routes/ressurser/ikoner/SearchFilterContext";
 import { SearchResults } from "~/features/routes/ressurser/ikoner/SearchResults";
@@ -25,9 +26,10 @@ export default function IconsPage() {
       </Text>
       <ButtonGroup>
         <Button
-          as="a"
+          as={Link}
+          to="alle-ikoner.zip"
           download={true}
-          href="/spor-ikoner.zip"
+          reloadDocument
           variant="primary"
           leftIcon={<DownloadOutline24Icon />}
         >

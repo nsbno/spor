@@ -22,6 +22,13 @@ export function BreakpointTokens(props: BoxProps) {
   );
 }
 
+type Breakpoint = keyof typeof tokens.size.breakpoint;
+const breakpointDisplayNames: Record<Breakpoint, string> = {
+  sm: "Tablet",
+  md: "Desktop",
+  lg: "Widescreen",
+};
+
 type BreakpointTokenTableProps = BoxProps;
 const BreakpointTokensTable = (props: BreakpointTokenTableProps) => {
   const tokenFormatter = useTokenFormatter();
@@ -38,7 +45,7 @@ const BreakpointTokensTable = (props: BreakpointTokenTableProps) => {
         <Tbody>
           {Object.entries(tokens.size.breakpoint).map(([key, token]) => (
             <Tr key={key}>
-              <Td>{token.name}</Td>
+              <Td>{breakpointDisplayNames[key as Breakpoint] || key}</Td>
               <Td>{token.value}</Td>
               <Td>
                 <Stack spacing={1}>

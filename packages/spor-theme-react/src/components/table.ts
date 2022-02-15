@@ -47,7 +47,7 @@ const variantSimple: PartsStyleFunction<typeof parts> = (props) => {
       color: mode("alias.darkGrey", "alias.white")(props),
     },
     th: {
-      borderBottom: "1px",
+      borderBottom: "sm",
       borderColor: mode(
         `palette.blackAlpha.200`,
         `palette.whiteAlpha.300`
@@ -55,7 +55,7 @@ const variantSimple: PartsStyleFunction<typeof parts> = (props) => {
       ...numericStyles,
     },
     td: {
-      borderBottom: "1px",
+      borderBottom: "sm",
       borderColor: mode(
         `palette.blackAlpha.200`,
         `palette.whiteAlpha.300`
@@ -87,13 +87,13 @@ const variantOutline: PartsStyleFunction<typeof parts> = (props) => {
     },
     th: {
       color: mode("alias.darkGrey", "alias.white")(props),
-      border: mode("0", "2px solid"),
+      border: mode("none", "md"),
       borderColor: mode("transparent", `palette.whiteAlpha.200`)(props),
       backgroundColor: mode(`palette.${c}.100`, "palette.darkTeal")(props),
       ...numericStyles,
     },
     td: {
-      border: mode("1px solid", "2px solid"),
+      border: mode("sm", "md"),
       borderColor: mode(
         c === "grey" ? "alias.silver" : "palette.blackAlpha.200",
         "palette.whiteAlpha.200"

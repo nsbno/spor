@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.2.2
+
+### Patch Changes
+
+- 1a01e54: Fix bug where simple tables lost their borders
+
 ## 0.2.1
 
 ### Patch Changes

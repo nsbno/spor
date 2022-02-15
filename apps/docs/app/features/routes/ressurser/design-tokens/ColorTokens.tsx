@@ -12,7 +12,7 @@ import {
   SuccessOutline24Icon,
   Text,
 } from "@vygruppen/spor-react";
-import { toTitleCase } from "~/utils/string-utils";
+import { toTitleCase } from "~/utils/stringUtils";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
 type ColorName = keyof typeof tokens.color.alias;

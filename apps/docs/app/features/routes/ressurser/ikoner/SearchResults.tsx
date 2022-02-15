@@ -12,7 +12,7 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import { useMemo } from "react";
-import { toTitleCase } from "~/utils/string-utils";
+import { toTitleCase } from "~/utils/stringUtils";
 import {
   getIconByImportName,
   IconMetadata,

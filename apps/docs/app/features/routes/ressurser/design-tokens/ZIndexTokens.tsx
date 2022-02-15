@@ -14,74 +14,6 @@ import {
 import { SharedTokenLayout } from "./SharedTokenLayout";
 import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
 
-type ZIndexToken = {
-  name: string;
-  key:
-    | "hide"
-    | "base"
-    | "docked"
-    | "dropdown"
-    | "sticky"
-    | "banner"
-    | "overlay"
-    | "modal"
-    | "popover"
-    | "skipLink"
-    | "toast"
-    | "tooltip";
-};
-
-const zIndexTokens: ZIndexToken[] = [
-  {
-    name: "Hide",
-    key: "hide",
-  },
-  {
-    name: "Base",
-    key: "base",
-  },
-  {
-    name: "Docked",
-    key: "docked",
-  },
-  {
-    name: "Dropdown",
-    key: "dropdown",
-  },
-  {
-    name: "Sticky",
-    key: "sticky",
-  },
-  {
-    name: "Banner",
-    key: "banner",
-  },
-  {
-    name: "Overlay",
-    key: "overlay",
-  },
-  {
-    name: "Modal",
-    key: "modal",
-  },
-  {
-    name: "Popover",
-    key: "popover",
-  },
-  {
-    name: "SkipLink",
-    key: "skipLink",
-  },
-  {
-    name: "Toast",
-    key: "toast",
-  },
-  {
-    name: "Tooltip",
-    key: "tooltip",
-  },
-];
-
 export function ZIndexTokens(props: BoxProps) {
   return (
     <SharedTokenLayout {...props} title="Z-index">
@@ -105,14 +37,14 @@ const ZIndexTokensTable = (props: ZIndexTokenTableProps) => {
           </Tr>
         </Thead>
         <Tbody>
-          {zIndexTokens.map((token) => (
+          {Object.entries(tokens.depth["z-index"]).map(([key, token]) => (
             <Tr key={token.key}>
-              <Td>{token.name}</Td>
-              <Td>{tokens.depth["z-index"][token.key].value}</Td>
+              <Td>{key}</Td>
+              <Td>{token.value}</Td>
               <Td>
                 <Stack spacing={1}>
                   <Box>
-                    <Code>{tokenFormatter(`depth.z-index.${token.key}`)}</Code>
+                    <Code>{tokenFormatter(`depth.z-index.${key}`)}</Code>
                   </Box>
                 </Stack>
               </Td>

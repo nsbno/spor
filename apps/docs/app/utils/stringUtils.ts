@@ -1,12 +1,12 @@
 /**
- * Turns most strings into to Capital Case.
+ * Turns most strings into to Title Case.
  *
  * @example
- * capitalize("hello world") // "Hello World"
- * capitalize("helloWorld") // "Hello World"
- * capitalize("hello-world") // "Hello World"
- * capitalize("hello.world") // "Hello World"
- * capitalize("hello.world.fooBar") // "Hello World Foo Bar"
+ * toTitleCase("hello world") // "Hello World"
+ * toTitleCase("helloWorld") // "Hello World"
+ * toTitleCase("hello-world") // "Hello World"
+ * toTitleCase("hello.world") // "Hello World"
+ * toTitleCase("hello.world.fooBar") // "Hello World Foo Bar"
  */
 export const toTitleCase = (input: string): string => {
   let text = input

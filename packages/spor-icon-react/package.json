@@ -23,14 +23,14 @@
     "build:step-3": "rimraf tmp"
   },
   "dependencies": {
-    "@vygruppen/spor-layout-react": "^0.3.0"
+    "@vygruppen/spor-layout-react": "*"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
-    "@vygruppen/spor-icon": "^0.1.0",
+    "@vygruppen/spor-icon": "*",
     "@svgr/core": "^6.2.0",
     "@svgr/plugin-jsx": "^6.2.0",
     "@svgr/plugin-svgo": "^6.2.0",

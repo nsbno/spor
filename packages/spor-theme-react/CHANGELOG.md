@@ -1,5 +1,15 @@
 # @vygruppen/spor-theme-react
 
+## 0.2.0
+
+### Minor Changes
+
+- 72126f0: Add dashed tokens as well
+
+### Patch Changes
+
+- 793a557: Fix bug where border tokens doesn't work as expected
+
 ## 0.1.3
 
 ### Patch Changes

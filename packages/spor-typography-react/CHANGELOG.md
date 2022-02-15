@@ -1,5 +1,11 @@
 # @vygruppen/spor-typography-react
 
+## 0.3.1
+
+### Patch Changes
+
+- 37f7c2e: Fix some issues with dependencies
+
 ## 0.3.0
 
 ### Minor Changes

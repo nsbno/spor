@@ -1,5 +1,24 @@
 # @vygruppen/spor-react
 
+## 0.7.7
+
+### Patch Changes
+
+- 37f7c2e: Fix some issues with dependencies
+- Updated dependencies [37f7c2e]
+  - @vygruppen/spor-button-react@0.1.4
+  - @vygruppen/spor-card-react@0.1.2
+  - @vygruppen/spor-icon-react@0.1.1
+  - @vygruppen/spor-input-react@0.2.2
+  - @vygruppen/spor-layout-react@0.3.1
+  - @vygruppen/spor-logo-react@0.1.1
+  - @vygruppen/spor-theme-react@0.2.1
+  - @vygruppen/spor-i18n-react@0.0.4
+  - @vygruppen/spor-image-react@0.1.1
+  - @vygruppen/spor-modal-react@0.0.3
+  - @vygruppen/spor-table-react@0.0.3
+  - @vygruppen/spor-typography-react@0.3.1
+
 ## 0.7.6
 
 ### Patch Changes

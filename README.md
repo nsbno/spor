@@ -22,6 +22,8 @@ This repo includes the following packages/apps:
 
 Currently, the only package meant for direct consumption is `@vygruppen/spor-react`. To get started, please check out its [readme](https://github.com/nsbno/spor/tree/main/packages/spor-react)!
 
+You can test it out in a CodeSandbox ([JavaScript](https://codesandbox.io/s/spor-react-template-4q3uwc?file=/src/index.js) or [TypeScript](https://codesandbox.io/s/spor-react-typescript-template-wej0dq)).
+
 ## Setup
 
 To develop locally, clone the repository and run `npm install` at the root level.

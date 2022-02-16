@@ -1,17 +1,19 @@
 import {
   Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
   Center,
   ExpandableItem,
-  FormControl,
-  FormLabel,
-  Input,
-  Select,
   SimpleGrid,
   Stack,
-  Switch,
 } from "@vygruppen/spor-react";
-import { useState } from "react";
+import nightOwlLight from "prism-react-renderer/themes/nightOwlLight";
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
+import { EditableProp } from "./EditableProp";
+import { PropSpec } from "./usePlaygroundProps";
 
 type ComponentPlaygroundProps = {
   /**
@@ -50,7 +52,7 @@ export const ComponentPlayground = ({
   onPropsChange = () => {},
 }: ComponentPlaygroundProps) => {
   return (
-    <LiveProvider code={code} scope={scope}>
+    <LiveProvider code={code} scope={scope} theme={nightOwlLight}>
       <Center
         borderRadius="sm"
         border="md"
@@ -66,87 +68,30 @@ export const ComponentPlayground = ({
             <ExpandableItem headingLevel="h3" title="Endre props">
               <SimpleGrid columns={[1, 2, 3]} gap={[2, 3]}>
                 {propList.map((prop) => (
-                  <FormControl key={prop.name}>
-                    {prop.type === "input" && (
-                      <Input
-                        label={prop.name}
-                        value={currentProps[prop.name] as string}
-                        onChange={(e) =>
-                          onPropsChange(prop.name, e.target.value)
-                        }
-                      />
-                    )}
-                    {prop.type === "switch" && (
-                      <>
-                        <FormLabel fontSize="sm">{prop.name}</FormLabel>
-                        <Switch
-                          size="sm"
-                          isChecked={currentProps[prop.name] as boolean}
-                          onChange={(e) =>
-                            onPropsChange(prop.name, e.target.checked)
-                          }
-                        />
-                      </>
-                    )}
-                    {prop.type === "select" && (
-                      <Select
-                        label={prop.name}
-                        value={currentProps[prop.name] as string}
-                        onChange={(e) =>
-                          onPropsChange(prop.name, e.target.value)
-                        }
-                      >
-                        {prop.values.map((v) => (
-                          <option key={v}>{v}</option>
-                        ))}
-                      </Select>
-                    )}
-                  </FormControl>
+                  <EditableProp
+                    key={prop.name}
+                    prop={prop}
+                    value={currentProps[prop.name]}
+                    onChange={onPropsChange}
+                  />
                 ))}
               </SimpleGrid>
             </ExpandableItem>
           )}
-          <ExpandableItem headingLevel="h3" title="Endre kode" mb={2}>
-            <LiveEditor />
-            <LiveError />
-          </ExpandableItem>
+          <AccordionItem mb={2}>
+            <Box as="h3">
+              <AccordionButton>
+                Endre kode
+                <AccordionIcon />
+              </AccordionButton>
+            </Box>
+            <AccordionPanel fontFamily="monospace" fontSize="desktop.sm">
+              <LiveEditor />
+              <LiveError />
+            </AccordionPanel>
+          </AccordionItem>
         </Stack>
       </Accordion>
     </LiveProvider>
-  );
-};
-
-type PropSpec = {
-  /** The name of the prop */
-  name: string;
-} & (
-  | { type: "input"; defaultValue: "string" }
-  | { type: "switch"; defaultValue: boolean }
-  | { type: "select"; values: string[]; defaultValue: string }
-);
-
-/**
- * Hook that provides you with what you need to use the ComponentPlayground component.
- *
- * You pass in a list of prop specifications that should be available for editing in the preview, and you get the current props and the prop list in return, as well as a way to update the props.
- *
- * Each item in the prop specification list has a name, a type, a default value and an optional list of possible values.
- */
-export const usePlaygroundProps = (propList: PropSpec[]) => {
-  const [currentProps, setCurrentProps] = useState(() =>
-    getDefaultProps(propList)
-  );
-  return {
-    propList,
-    currentProps,
-    onPropsChange: (key: string, value: string | boolean) =>
-      setCurrentProps((prev) => ({ ...prev, [key]: value })),
-  };
-};
-
-const getDefaultProps = (propList: PropSpec[]) => {
-  return propList.reduce(
-    (acc, { name, defaultValue }) => ({ ...acc, [name]: defaultValue }),
-    {} as Record<string, string | boolean>
   );
 };

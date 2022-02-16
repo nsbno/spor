@@ -41,6 +41,7 @@ const baseStyleButton: SystemStyleFunction = ({ theme }) => ({
 const baseStylePanel: SystemStyleObject = {
   pt: 2,
   pb: 5,
+  borderBottomRadius: "sm",
 };
 
 const baseStyleIcon: SystemStyleObject = {

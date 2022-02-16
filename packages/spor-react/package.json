@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@leile/lobo-t": "^1.0.5",
+    "@vygruppen/spor-accordion-react": "*",
     "@vygruppen/spor-button-react": "*",
     "@vygruppen/spor-card-react": "*",
     "@vygruppen/spor-design-tokens": "^2.3.5",

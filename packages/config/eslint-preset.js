@@ -20,6 +20,7 @@ module.exports = {
         "packages/spor-card-react/",
         "packages/spor-modal-react/",
         "packages/spor-table-react/",
+        "packages/spor-accordion-react/",
       ],
     },
   },

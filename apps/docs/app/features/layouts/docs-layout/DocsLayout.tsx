@@ -16,7 +16,14 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
   return (
     <Flex flex="1">
       <LeftNavigation>TBD</LeftNavigation>
-      <Box as="main" flex="1" mt={6} mx={[3, 6, 10]}>
+      <Box
+        as="main"
+        flex="1"
+        mt={6}
+        mx={[3, 6, 10]}
+        mb={["60px", "120px", "180px"]}
+        maxWidth="924px"
+      >
         {children}
       </Box>
     </Flex>

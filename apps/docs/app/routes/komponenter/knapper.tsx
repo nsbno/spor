@@ -41,8 +41,9 @@ const DemoArea = () => {
       defaultValue: "md",
       type: "select",
     },
-    { name: "isLoading", defaultValue: false, type: "switch" },
     { name: "children", defaultValue: "Kjøp billett", type: "input" },
+    { name: "isLoading", defaultValue: false, type: "choiceChip" },
+    { name: "isDisabled", defaultValue: false, type: "choiceChip" },
   ]);
   return (
     <ComponentPlayground

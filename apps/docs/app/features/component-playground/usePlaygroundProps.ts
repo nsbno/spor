@@ -5,7 +5,7 @@ export type PropSpec = {
   name: string;
 } & (
   | { type: "input"; defaultValue: string }
-  | { type: "switch"; defaultValue: boolean }
+  | { type: "choiceChip"; defaultValue: boolean }
   | { type: "select"; values: string[]; defaultValue: string }
 );
 

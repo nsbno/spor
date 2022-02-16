@@ -1,5 +1,19 @@
-import { BoxProps, Text } from "@vygruppen/spor-react";
+import tokens from "@vygruppen/spor-design-tokens";
+import {
+  Box,
+  BoxProps,
+  Code,
+  Stack,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+} from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
+import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
 
 export function RoundingTokens(props: BoxProps) {
   return (
@@ -20,6 +34,56 @@ export function RoundingTokens(props: BoxProps) {
           rounding på header i appen.
         </Text>
       }
-    ></SharedTokenLayout>
+    >
+      <RoundingTokensTable />
+    </SharedTokenLayout>
   );
 }
+
+type RoundingTokenTableProps = BoxProps;
+
+const RoundingTokensTable = (props: RoundingTokenTableProps) => {
+  const tokenFormatter = useTokenFormatter();
+  return (
+    <Box {...props}>
+      <Table variant="simple" colorScheme="grey">
+        <Thead>
+          <Tr>
+            <Th>Eksempel</Th>
+            <Th>Verdi</Th>
+            <Th>Kode</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {Object.entries(tokens.size["border-radius"]).map(([key, token]) => (
+            <Tr key={key}>
+              <Td>
+                <Box
+                  width={"150px"}
+                  height={"52px"}
+                  borderRadius={key}
+                  border={key}
+                  borderWidth={key}
+                  borderColor="alias.greenHaze"
+                  backgroundColor="alias.mint"
+                />
+              </Td>
+              <Td>
+                {key} / {token.value}
+              </Td>
+              <Td>
+                <Stack spacing={1}>
+                  <Box>
+                    <Code>
+                      {tokenFormatter(`tokens.size.border-radius.${key}`)}
+                    </Code>
+                  </Box>
+                </Stack>
+              </Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
+    </Box>
+  );
+};

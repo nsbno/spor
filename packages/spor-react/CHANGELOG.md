@@ -1,5 +1,22 @@
 # @vygruppen/spor-react
 
+## 0.8.0
+
+### Minor Changes
+
+- 548e736: Add new accordion package with lots of new components
+
+### Patch Changes
+
+- Updated dependencies [548e736]
+- Updated dependencies [7835a53]
+- Updated dependencies [7394e9a]
+  - @vygruppen/spor-accordion-react@0.0.2
+  - @vygruppen/spor-theme-react@0.2.3
+  - @vygruppen/spor-input-react@0.2.3
+  - @vygruppen/spor-design-tokens@2.3.5
+  - @vygruppen/spor-typography-react@0.3.2
+
 ## 0.7.8
 
 ### Patch Changes

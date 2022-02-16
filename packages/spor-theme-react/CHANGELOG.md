@@ -1,5 +1,13 @@
 # @vygruppen/spor-theme-react
 
+## 0.2.3
+
+### Patch Changes
+
+- 548e736: Add new accordion package with lots of new components
+- Updated dependencies [7394e9a]
+  - @vygruppen/spor-design-tokens@2.3.5
+
 ## 0.2.2
 
 ### Patch Changes

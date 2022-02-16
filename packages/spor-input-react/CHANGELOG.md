@@ -1,5 +1,11 @@
 # @vygruppen/spor-input-react
 
+## 0.2.3
+
+### Patch Changes
+
+- 7835a53: Fix bug in Switch component that overrode the size prop
+
 ## 0.2.2
 
 ### Patch Changes

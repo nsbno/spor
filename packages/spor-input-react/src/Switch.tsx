@@ -35,5 +35,5 @@ export const Switch = ({
   size = "md",
   ...props
 }: SwitchProps) => {
-  return <ChakraSwitch variant={variant} size="md" {...props} />;
+  return <ChakraSwitch variant={variant} size={size} {...props} />;
 };

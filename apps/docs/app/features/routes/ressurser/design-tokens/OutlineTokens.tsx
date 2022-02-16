@@ -78,7 +78,7 @@ const OutlineTokensTable = (props: OutlineTokenTableProps) => {
                   border={token.key}
                   borderRadius="xs"
                   borderColor="alias.darkGrey"
-                ></Box>
+                />
               </Td>
               <Td>
                 {token.value} / {token.key}

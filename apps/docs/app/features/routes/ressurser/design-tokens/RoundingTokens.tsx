@@ -60,10 +60,9 @@ const RoundingTokensTable = (props: RoundingTokenTableProps) => {
               <Td>
                 <Box
                   width={"150px"}
-                  height={"52px"}
+                  height={"72px"}
                   borderRadius={key}
-                  border={key}
-                  borderWidth={key}
+                  border="md"
                   borderColor="alias.greenHaze"
                   backgroundColor="alias.mint"
                 />

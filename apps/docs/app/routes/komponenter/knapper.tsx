@@ -8,27 +8,21 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
+import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
 import { ComponentPlayground } from "~/features/component-playground/ComponentPlayground";
 import { usePlaygroundProps } from "~/features/component-playground/usePlaygroundProps";
 import { toPropsString } from "~/features/component-playground/utils";
 export default function ButtonsPage() {
   return (
-    <Box>
-      <Stack spacing={2} mb={4}>
-        <Heading as="h1" textStyle="xl-display">
-          Knapper
-        </Heading>
-        <Text>
-          Knapper er det mest grunnleggende interaksjonselementet i moderne
-          utvikling. De lar deg starte en handling eller navigere rundt på
-          siden.
-        </Text>
-      </Stack>
-      <Stack spacing={8}>
-        <DemoArea />
-        <Guidelines />
-      </Stack>
-    </Box>
+    <ComponentDocs
+      title="Knapper"
+      description=" Knapper er det mest grunnleggende interaksjonselementet i moderne
+    utvikling. De lar deg starte en handling eller navigere rundt på
+    siden."
+    >
+      <DemoArea />
+      <Guidelines />
+    </ComponentDocs>
   );
 }
 

@@ -12,6 +12,7 @@ import {
 } from "@vygruppen/spor-react";
 import nightOwlLight from "prism-react-renderer/themes/nightOwlLight";
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
+import { useUserPreferences } from "../user-preferences/UserPreferencesContext";
 import { EditableProp } from "./EditableProp";
 import { PropSpec } from "./usePlaygroundProps";
 
@@ -51,6 +52,7 @@ export const ComponentPlayground = ({
   currentProps = {},
   onPropsChange = () => {},
 }: ComponentPlaygroundProps) => {
+  const { userPreferences } = useUserPreferences();
   return (
     <LiveProvider code={code} scope={scope} theme={nightOwlLight}>
       <Center
@@ -78,18 +80,20 @@ export const ComponentPlayground = ({
               </SimpleGrid>
             </ExpandableItem>
           )}
-          <AccordionItem mb={2}>
-            <Box as="h3">
-              <AccordionButton>
-                Endre kode
-                <AccordionIcon />
-              </AccordionButton>
-            </Box>
-            <AccordionPanel fontFamily="monospace" fontSize="desktop.sm">
-              <LiveEditor />
-              <LiveError />
-            </AccordionPanel>
-          </AccordionItem>
+          {userPreferences.userType === "developer" && (
+            <AccordionItem mb={2}>
+              <Box as="h3">
+                <AccordionButton>
+                  Endre kode
+                  <AccordionIcon />
+                </AccordionButton>
+              </Box>
+              <AccordionPanel fontFamily="monospace" fontSize="desktop.sm">
+                <LiveEditor />
+                <LiveError />
+              </AccordionPanel>
+            </AccordionItem>
+          )}
         </Stack>
       </Accordion>
     </LiveProvider>

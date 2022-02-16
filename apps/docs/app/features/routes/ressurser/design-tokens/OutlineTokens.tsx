@@ -34,15 +34,15 @@ const outlineTokens: OutlineToken[] = [
   },
   {
     key: "sm-dashed",
-    value: "1px dash",
+    value: "1px dashed",
   },
   {
     key: "md-dashed",
-    value: "2px dash",
+    value: "2px dashed",
   },
   {
     key: "lg-dashed",
-    value: "3px dash",
+    value: "3px dashed",
   },
 ];
 

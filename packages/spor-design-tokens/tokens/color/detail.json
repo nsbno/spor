@@ -1,0 +1,27 @@
+{
+  "color": {
+    "detail": {
+      "darkBlue": {
+        "value": "{color.alias.darkBlue.value}"
+      },
+      "ocean": {
+        "value": "{color.alias.ocean.value}"
+      },
+      "golden": {
+        "value": "{color.alias.golden.value}"
+      },
+      "burntYellow": {
+        "value": "{color.alias.burntYellow.value}"
+      },
+      "wood": {
+        "value": "{color.alias.wood.value}"
+      },
+      "chocolate": {
+        "value": "{color.alias.chocolate.value}"
+      },
+      "pumpkin": {
+        "value": "{color.alias.pumpkin.value}"
+      }
+    }
+  }
+}

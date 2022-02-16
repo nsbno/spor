@@ -1,0 +1,15 @@
+{
+  "font": {
+    "family": {
+      "heading": {
+        "value": "\"{asset.font.vy-display.name.value}\""
+      },
+      "body": {
+        "value": "\"{asset.font.vy-sans.medium.name.value}\""
+      },
+      "monospace": {
+        "value": "\"{asset.font.roboto-mono.medium.name.value}\""
+      }
+    }
+  }
+}

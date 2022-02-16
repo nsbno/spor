@@ -21,6 +21,7 @@ module.exports = {
         "packages/spor-modal-react/",
         "packages/spor-table-react/",
         "packages/spor-accordion-react/",
+        "packages/spor-design-tokens/",
       ],
     },
   },

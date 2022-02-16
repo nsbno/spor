@@ -1,0 +1,85 @@
+{
+  "source": ["tokens/**/*.json"],
+  "platforms": {
+    "javascript": {
+      "transforms": [
+        "attribute/cti",
+        "name/cti/pascal",
+        "size/px",
+        "color/hex"
+      ],
+      "files": [
+        {
+          "format": "javascript/module",
+          "destination": "dist/tokens.js"
+        },
+        {
+          "format": "typescript/typings",
+          "destination": "dist/tokens.d.ts"
+        }
+      ]
+    },
+    "elm": {
+      "transforms": [
+        "attribute/cti",
+        "name/cti/pascal",
+        "size/px",
+        "color/hex"
+      ],
+      "files": [
+        {
+          "format": "elm/module",
+          "destination": "elmsrc/Vy/Spor/DesignTokens.elm"
+        }
+      ]
+    },
+    "css": {
+      "transforms": [
+        "attribute/cti",
+        "name/cti/kebab",
+        "time/seconds",
+        "content/icon",
+        "size/pxToRem",
+        "color/css"
+      ],
+      "files": [
+        {
+          "format": "css/variables",
+          "destination": "dist/tokens.css"
+        }
+      ]
+    },
+    "scss": {
+      "transforms": [
+        "attribute/cti",
+        "name/cti/kebab",
+        "time/seconds",
+        "content/icon",
+        "size/pxToRem",
+        "color/css"
+      ],
+      "files": [
+        {
+          "format": "scss/variables",
+          "destination": "dist/_tokens.scss"
+        }
+      ]
+    },
+    "less": {
+      "transforms": [
+        "attribute/cti",
+        "name/cti/kebab",
+        "time/seconds",
+        "content/icon",
+        "size/pxToRem",
+        "color/css"
+      ],
+      "files": [
+        {
+          "format": "less/variables",
+          "destination": "dist/tokens.less"
+        }
+      ]
+    }
+  }
+}

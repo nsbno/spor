@@ -1,0 +1,8 @@
+{
+  "extends": "@vygruppen/tsconfig/base.json",
+  "include": ["."],
+  "exclude": ["dist", "elmsrc", "node_modules"],
+  "compilerOptions": {
+    "rootDir": ".",
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "size": {
+    "font": {
+      "xs": {
+        "mobile": {
+          "value": "14"
+        },
+        "desktop": {
+          "value": "16"
+        }
+      },
+      "sm": {
+        "mobile": {
+          "value": "16"
+        },
+        "desktop": {
+          "value": "18"
+        }
+      },
+      "md": {
+        "mobile": {
+          "value": "18"
+        },
+        "desktop": {
+          "value": "24"
+        }
+      },
+      "lg": {
+        "mobile": {
+          "value": "24"
+        },
+        "desktop": {
+          "value": "30"
+        }
+      },
+      "xl": {
+        "mobile": {
+          "value": "30"
+        },
+        "desktop": {
+          "value": "40"
+        }
+      },
+      "xxl": {
+        "mobile": {
+          "value": "36"
+        },
+        "desktop": {
+          "value": "54"
+        }
+      }
+    }
+  }
+}

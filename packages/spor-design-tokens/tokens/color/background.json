@@ -1,0 +1,8 @@
+{
+  "color": {
+    "background": {
+      "white": { "value": "{color.alias.white.value}" },
+      "lightGrey": { "value": "{color.alias.lightGrey.value}" }
+    }
+  }
+}

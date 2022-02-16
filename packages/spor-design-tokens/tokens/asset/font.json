@@ -1,0 +1,74 @@
+{
+  "asset": {
+    "font": {
+      "vy-sans": {
+        "light": {
+          "name": { "value": "Vy Sans" },
+          "ttf": { "value": "assets/fonts/VySans-Light.ttf" },
+          "eot": { "value": "assets/fonts/VySans-Light.eot" },
+          "otf": { "value": "assets/fonts/VySans-Light.otf" },
+          "woff": { "value": "assets/fonts/VySans-Light.woff" },
+          "woff2": { "value": "assets/fonts/VySans-Light.woff2" }
+        },
+        "light-italic": {
+          "name": { "value": "Vy Sans" },
+          "ttf": { "value": "assets/fonts/VySans-LightItalic.ttf" },
+          "eot": { "value": "assets/fonts/VySans-LightItalic.eot" },
+          "otf": { "value": "assets/fonts/VySans-LightItalic.otf" },
+          "woff": { "value": "assets/fonts/VySans-LightItalic.woff" },
+          "woff2": { "value": "assets/fonts/VySans-LightItalic.woff2" }
+        },
+        "medium": {
+          "name": { "value": "Vy Sans" },
+          "ttf": { "value": "assets/fonts/VySans-Regular.ttf" },
+          "eot": { "value": "assets/fonts/VySans-Regular.eot" },
+          "otf": { "value": "assets/fonts/VySans-Regular.otf" },
+          "woff": { "value": "assets/fonts/VySans-Regular.woff" },
+          "woff2": { "value": "assets/fonts/VySans-Regular.woff2" }
+        },
+        "medium-italic": {
+          "name": { "value": "Vy Sans" },
+          "ttf": { "value": "assets/fonts/VySans-RegularItalic.ttf" },
+          "eot": { "value": "assets/fonts/VySans-RegularItalic.eot" },
+          "otf": { "value": "assets/fonts/VySans-RegularItalic.otf" },
+          "woff": { "value": "assets/fonts/VySans-RegularItalic.woff" },
+          "woff2": { "value": "assets/fonts/VySans-RegularItalic.woff2" }
+        },
+        "bold": {
+          "name": { "value": "Vy Sans" },
+          "ttf": { "value": "assets/fonts/VySans-Bold.ttf" },
+          "eot": { "value": "assets/fonts/VySans-Bold.eot" },
+          "otf": { "value": "assets/fonts/VySans-Bold.otf" },
+          "woff": { "value": "assets/fonts/VySans-Bold.woff" },
+          "woff2": { "value": "assets/fonts/VySans-Bold.woff2" }
+        },
+        "bold-italic": {
+          "name": { "value": "Vy Sans" },
+          "ttf": { "value": "assets/fonts/VySans-BoldItalic.ttf" },
+          "eot": { "value": "assets/fonts/VySans-BoldItalic.eot" },
+          "otf": { "value": "assets/fonts/VySans-BoldItalic.otf" },
+          "woff": { "value": "assets/fonts/VySans-BoldItalic.woff" },
+          "woff2": { "value": "assets/fonts/VySans-BoldItalic.woff2" }
+        }
+      },
+      "vy-display": {
+        "name": { "value": "Vy Display" },
+        "ttf": { "value": "assets/fonts/VyDisplay-Medium.ttf" },
+        "eot": { "value": "assets/fonts/VyDisplay-Medium.eot" },
+        "otf": { "value": "assets/fonts/VyDisplay-Medium.otf" },
+        "woff": { "value": "assets/fonts/VyDisplay-Medium.woff" },
+        "woff2": { "value": "assets/fonts/VyDisplay-Medium.woff2" }
+      },
+      "roboto-mono": {
+        "medium": {
+          "name": { "value": "Roboto Mono" },
+          "ttf": { "value": "assets/fonts/RobotoMono-Regular.tff" }
+        },
+        "medium-italic": {
+          "name": { "value": "Roboto Mono" },
+          "ttf": { "value": "assets/fonts/RobotoMono-Italic.tff" }
+        }
+      }
+    }
+  }
+}

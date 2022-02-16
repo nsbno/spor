@@ -1,0 +1,36 @@
+{
+  "color": {
+    "main": {
+      "darkTeal": {
+        "value": "{color.alias.darkTeal.value}"
+      },
+      "primaryGreen": {
+        "value": "{color.alias.primaryGreen.value}"
+      },
+      "greenHaze": {
+        "value": "{color.alias.greenHaze.value}"
+      },
+      "coralGreen": {
+        "value": "{color.alias.coralGreen.value}"
+      },
+      "mint": {
+        "value": "{color.alias.mint.value}"
+      },
+      "white": {
+        "value": "{color.alias.white.value}"
+      },
+      "darkGrey": {
+        "value": "{color.alias.darkGrey.value}"
+      },
+      "osloGrey": {
+        "value": "{color.alias.osloGrey.value}"
+      },
+      "platinum": {
+        "value": "{color.alias.platinum.value}"
+      },
+      "lightGrey": {
+        "value": "{color.alias.lightGrey.value}"
+      }
+    }
+  }
+}

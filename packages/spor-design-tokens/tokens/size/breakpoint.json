@@ -1,0 +1,18 @@
+{
+  "size": {
+    "breakpoint": {
+      "sm": {
+        "comment": "Phones in landscape mode, tablets in portrait mode",
+        "value": "756"
+      },
+      "md": {
+        "comment": "Medium sized laptop screens",
+        "value": "1440"
+      },
+      "lg": {
+        "comment": "Large laptop screens",
+        "value": "1920"
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "size": {
+    "spacing": {
+      "3xs": {
+        "comment": "3px. This is 0.5x the base size. Should only be used as  baseline grid",
+        "value": "3"
+      },
+      "2xs": {
+        "comment": "6px. This is the base value - all others are multiples of this",
+        "value": "6"
+      },
+      "xs": {
+        "comment": "9px. This 1.5x the base size",
+        "value": "9"
+      },
+      "sm": {
+        "comment": "12px. This is 2x the base size",
+        "value": "12"
+      },
+      "md": {
+        "comment": "18px. This is 3x the base size",
+        "value": "18"
+      },
+      "lg": {
+        "comment": "24px. This is 4x the base size",
+        "value": "24"
+      },
+      "xl": {
+        "comment": "30px. This is 5x the base size",
+        "value": "30"
+      },
+      "2xl": {
+        "comment": "36px. This is 6x the base size",
+        "value": "36"
+      },
+      "3xl": {
+        "comment": "42px. This is 7x the base size",
+        "value": "42"
+      },
+      "4xl": {
+        "comment": "54px. This is 9x the base size",
+        "value": "54"
+      },
+      "5xl": {
+        "comment": "72px. This is 12x the base size",
+        "value": "72"
+      },
+      "6xl": {
+        "comment": "90px. This is 15x the base size",
+        "value": "90"
+      },
+      "7xl": {
+        "comment": "120px. This is 20x the base size",
+        "value": "120"
+      },
+      "8xl": {
+        "comment": "180px. This is 30x the base size",
+        "value": "180"
+      }
+    }
+  }
+}

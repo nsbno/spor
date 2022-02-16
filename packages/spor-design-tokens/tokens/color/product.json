@@ -1,0 +1,14 @@
+{
+  "color": {
+    "product": {
+      "ocean": {
+        "value": "{color.alias.ocean.value}",
+        "comment": "Used for the Smartpris product"
+      },
+      "wood": {
+        "value": "{color.alias.wood.value}",
+        "comment": "Used for the Flexbillett product"
+      }
+    }
+  }
+}

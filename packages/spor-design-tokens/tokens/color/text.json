@@ -1,0 +1,18 @@
+{
+  "color": {
+    "text": {
+      "darkGrey": {
+        "value": "{color.alias.darkGrey.value}",
+        "comment": "Used for typography and icons on light backgrounds"
+      },
+      "white": {
+        "value": "{color.alias.white.value}",
+        "comment": "Used for typography and icons on dark backgrounds"
+      },
+      "darkTeal": {
+        "value": "{color.alias.darkTeal.value}",
+        "comment": "Used primarily for links"
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { HeadingProps as ChakraHeadingProps, Text } from "@chakra-ui/react";
-import tokens from "@vygruppen/spor-design-tokens";
+import type tokens from "@vygruppen/spor-design-tokens";
 import React from "react";
 
 type TextStyles = keyof typeof tokens.font.style;

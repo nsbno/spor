@@ -6,6 +6,7 @@ import {
   AccordionPanel,
   Divider,
 } from "@vygruppen/spor-react";
+import { useState } from "react";
 import { isDivider, menuStructure } from "../content-menu/menuStructure";
 import { MenuItem } from "./MenuItem";
 

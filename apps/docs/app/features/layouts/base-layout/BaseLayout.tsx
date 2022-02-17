@@ -7,7 +7,7 @@ type BaseLayoutProps = {
 export const BaseLayout = ({ children }: BaseLayoutProps) => {
   return (
     <Flex flexDirection="column" minHeight="100vh">
-      <SiteHeader colorScheme="dark" />
+      <SiteHeader />
       <Flex flex="1" flexDirection="column" alignItems="stretch">
         {children}
       </Flex>

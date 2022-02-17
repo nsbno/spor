@@ -26,7 +26,7 @@ export const UserPreferenceSwitcher = () => {
   return (
     <>
       <Flex as="button" onClick={onOpen} gap={2}>
-        <Box>
+        <Box whiteSpace="nowrap">
           Vis som{" "}
           <strong>
             {userPreferences.userType === "designer" ? "designer" : "utvikler"}

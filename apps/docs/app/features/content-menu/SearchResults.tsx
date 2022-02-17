@@ -1,4 +1,4 @@
-import { Box } from "@vygruppen/spor-react";
+import { Box, Text } from "@vygruppen/spor-react";
 import React, { useMemo } from "react";
 import { searchableMenuStructure } from "../content-menu/menuStructure";
 import { MenuItem } from "./MenuItem";
@@ -25,6 +25,9 @@ export const SearchResults = ({ query }: SearchResultsProps) => {
           height={5}
         />
       ))}
+      {hits.length === 0 && (
+        <Text textAlign="center">Ingen treff på "{query}"</Text>
+      )}
     </Box>
   );
 };

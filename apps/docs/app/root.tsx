@@ -1,5 +1,12 @@
 import { withEmotionCache } from "@emotion/react";
-import { Heading, Language, SporProvider, Text } from "@vygruppen/spor-react";
+import {
+  Box,
+  Center,
+  Heading,
+  Language,
+  SporProvider,
+  Text,
+} from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect } from "react";
 import {
   Links,
@@ -74,10 +81,14 @@ export function CatchBoundary() {
 
   return (
     <Document title={`${caught.status} - ${caught.statusText}`}>
-      <Heading as="h1">
-        {caught.status}: {caught.statusText}
-      </Heading>
-      {message}
+      <Center minHeight="100vh">
+        <Box textAlign="center">
+          <Heading as="h1">
+            {caught.status}: {caught.statusText}
+          </Heading>
+          {message}
+        </Box>
+      </Center>
     </Document>
   );
 }

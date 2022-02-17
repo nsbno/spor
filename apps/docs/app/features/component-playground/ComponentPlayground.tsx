@@ -57,8 +57,8 @@ export const ComponentPlayground = ({
     <LiveProvider code={code} scope={scope} theme={nightOwlLight}>
       <Center
         borderRadius="sm"
-        border="md"
-        borderColor="alias.silver"
+        border="sm"
+        borderColor="alias.osloGrey"
         minHeight="240px"
         mb={2}
       >

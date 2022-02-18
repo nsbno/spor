@@ -4,7 +4,7 @@ import type {
   SystemStyleFunction,
   SystemStyleObject,
 } from "@chakra-ui/theme-tools";
-import Input from "./input";
+import { default as Input } from "./input";
 
 const parts = selectAnatomy.extend("root");
 
@@ -27,18 +27,15 @@ const baseStyleRoot: SystemStyleObject = {
   },
 };
 
-const baseStyleField: SystemStyleFunction = (props) => {
-  console.log("base style field", Input.baseStyle(props).field);
-  return {
-    ...Input.baseStyle(props).field,
-    appearance: "none",
-    pb: "1px",
-    pt: "16px",
-    "option, optgroup": {
-      background: "alias.white",
-    },
-  };
-};
+const baseStyleField: SystemStyleFunction = (props) => ({
+  ...Input.baseStyle(props).field,
+  appearance: "none",
+  pb: "1px",
+  pt: "16px",
+  "option, optgroup": {
+    background: "alias.white",
+  },
+});
 const baseStyleIcon: SystemStyleObject = {
   width: "1.5rem",
   height: "100%",

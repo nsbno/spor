@@ -2,93 +2,52 @@ import {
   FormLabel,
   forwardRef,
   Input as ChakraInput,
+  InputGroup,
+  InputLeftElement,
   InputProps as ChakraInputProps,
+  InputRightElement,
 } from "@chakra-ui/react";
 import React from "react";
 
 export type InputProps = Exclude<ChakraInputProps, "variant" | "size"> & {
+  /** The input's label */
   label: string;
+  /** Icon that shows up to the left */
+  leftIcon?: React.ReactNode;
+  /** Icon that shows up to the right */
+  rightIcon?: React.ReactNode;
 };
 /**
- * Input field that works with the `FormControl` component.
+ * Inputs let you enter text or other data.
  *
- * Note that it requires you to pass a label.
+ * You need to specify the label as a prop, since it doubles as the placeholder.
  *
  * ```tsx
- * <FormControl>
- *   <Input label="E-mail" />
- * </FormControl>
+ * <Input label="E-mail" />
  * ```
  *
- * You can also wrap the component in an `InputGroup` and add addons and elements to each side.
+ * You can also add icons to the left and right of the input. Please use the 24 px icons for this.
  *
  * ```tsx
- * <FormControl>
- *   <InputGroup>
- *     <Input label="E-mail" />
- *     <InputRightElement>
- *       <IconButton icon={SearchIcon} />
- *     </InputRightElement>
- *   </InputGroup>
- * </FormControl>
+ * <Input label="E-mail" leftIcon={<EmailOutline24Icon />} />
  * ```
  */
 export const Input = forwardRef<InputProps, "input">(
-  ({ label, ...props }, ref) => {
-    const leftPadding = props.pl || props.paddingLeft;
+  ({ label, leftIcon, rightIcon, ...props }, ref) => {
+    const Container = leftIcon || rightIcon ? InputGroup : React.Fragment;
     return (
-      <>
+      <Container>
+        {leftIcon && <InputLeftElement>{leftIcon}</InputLeftElement>}
         <ChakraInput
+          pl={leftIcon ? 7 : undefined}
+          pr={rightIcon ? 7 : undefined}
           {...props}
           ref={ref}
           placeholder=" " // This is needed to make the label work as expected
         />
-        <FormLabel pl={calculateCorrectLabelPadding(leftPadding)}>
-          {label}
-        </FormLabel>
-      </>
+        <FormLabel>{label}</FormLabel>
+        {rightIcon && <InputRightElement>{rightIcon}</InputRightElement>}
+      </Container>
     );
   }
 );
-
-/** Does a best effort approach to figure out the correct label padding */
-const calculateCorrectLabelPadding = (paddingValue?: any): any => {
-  // If no padding is specified, no padding is required
-  if (!paddingValue) {
-    return 0;
-  }
-
-  // If the padding is a number, it's a part of the spacing scale
-  const paddingValueAsNumber = Number(paddingValue);
-  if (
-    typeof paddingValueAsNumber === "number" &&
-    !Number.isNaN(paddingValueAsNumber)
-  ) {
-    return paddingValueAsNumber < 2 ? 2 : Number(paddingValue) - 2;
-  }
-
-  // If the padding is a responsive array, calculate each value recursively 😎
-  if (Array.isArray(paddingValue)) {
-    return paddingValue.flatMap((partValue) =>
-      calculateCorrectLabelPadding(partValue)
-    );
-  }
-
-  // If the padding is a responsive object, calculate each value recursively 😎
-  if (typeof paddingValue === "object") {
-    return Object.entries(paddingValue).reduce(
-      (acc, [key, value]) => ({
-        ...acc,
-        [key]: calculateCorrectLabelPadding(value),
-      }),
-      {} as any
-    );
-  }
-  // If the padding contains a number, it's a numeric unit we can use with calc
-  if (/\d+/.test(paddingValue.toString())) {
-    return `calc(${paddingValue} - 16px)`;
-  }
-
-  // If all else fails, just return the padding value
-  return paddingValue;
-};

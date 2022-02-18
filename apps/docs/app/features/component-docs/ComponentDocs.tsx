@@ -16,7 +16,7 @@ export const ComponentDocs = ({
         <Heading as="h1" textStyle="xl-display">
           {title}
         </Heading>
-        <Text>{description}</Text>
+        <Text textStyle="sm">{description}</Text>
       </Stack>
       <Stack spacing={8}>{children}</Stack>
     </Stack>

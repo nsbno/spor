@@ -15,7 +15,7 @@ const baseStyleRequiredIndicator: SystemStyleFunction = (props) => {
 const baseStyleHelperText: SystemStyleFunction = (props) => {
   return {
     mt: 2,
-    color: mode("gray.500", "whiteAlpha.600")(props),
+    color: mode("alias.osloGrey", "palette.whiteAlpha.600")(props),
     lineHeight: "normal",
     fontSize: "sm",
   };
@@ -27,32 +27,6 @@ const baseStyleContainer: SystemStyleFunction = () => {
     position: "relative",
     transitionProperty: "common",
     transitionDuration: "fast",
-    "input + label": {
-      top: "0",
-    },
-    "input + label, .chakra-select__wrapper + label": {
-      fontSize: ["mobile.sm", "desktop.sm"],
-      top: "2px",
-      left: "16px",
-      zIndex: 2,
-      position: "absolute",
-      mx: 0,
-      my: 2,
-      transition: ".1s ease-out",
-      transformOrigin: "top left",
-    },
-    "input:not(:placeholder-shown) + label": {
-      transform: "scale(0.825) translateY(-10px)",
-    },
-    ".chakra-select__wrapper + label": {
-      transform: [
-        "scale(0.825) translateY(-12px)",
-        "scale(0.825) translateY(-14px)",
-      ],
-    },
-    "input:not(:placeholder-shown)": {
-      pt: "16px",
-    },
   };
 };
 

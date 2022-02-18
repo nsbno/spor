@@ -5,13 +5,15 @@ import {
   AccordionItem,
   AccordionPanel,
   Box,
-  Center,
   ExpandableItem,
   SimpleGrid,
   Stack,
 } from "@vygruppen/spor-react";
-import nightOwlLight from "prism-react-renderer/themes/nightOwlLight";
-import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
+import React from "react";
+import { LiveEditor } from "../interactive-code/LiveEditor";
+import { LiveError } from "../interactive-code/LiveError";
+import { LivePreview } from "../interactive-code/LivePreview";
+import { LiveProvider } from "../interactive-code/LiveProvider";
 import { useUserPreferences } from "../user-preferences/UserPreferencesContext";
 import { EditableProp } from "./EditableProp";
 import { PropSpec } from "./usePlaygroundProps";
@@ -21,13 +23,6 @@ type ComponentPlaygroundProps = {
    * The code you render in the preview window
    **/
   code: string;
-  /**
-   * A map of components that should be in scope.
-   *
-   * If you want to render the Button component, for instance, you would pass in
-   * `scope={{ Button }}`.
-   */
-  scope: Record<string, any>;
   /**
    * A list of props and how they're specified
    *
@@ -47,23 +42,14 @@ type ComponentPlaygroundProps = {
 };
 export const ComponentPlayground = ({
   code,
-  scope,
   propList = [],
   currentProps = {},
   onPropsChange = () => {},
 }: ComponentPlaygroundProps) => {
   const { userPreferences } = useUserPreferences();
   return (
-    <LiveProvider code={code} scope={scope} theme={nightOwlLight}>
-      <Center
-        borderRadius="sm"
-        border="sm"
-        borderColor="alias.osloGrey"
-        minHeight="240px"
-        mb={2}
-      >
-        <LivePreview />
-      </Center>
+    <LiveProvider code={code}>
+      <LivePreview minHeight="240px" mb={2} />
       <Accordion allowToggle variant="outline" size="lg">
         <Stack spacing={2}>
           {propList && (
@@ -88,9 +74,9 @@ export const ComponentPlayground = ({
                   <AccordionIcon />
                 </AccordionButton>
               </Box>
-              <AccordionPanel fontFamily="monospace" fontSize="desktop.sm">
-                <LiveEditor />
-                <LiveError />
+              <AccordionPanel backgroundColor="alias.darkGrey" p={0}>
+                <LiveEditor border="0" />
+                <LiveError color="alias.white" />
               </AccordionPanel>
             </AccordionItem>
           )}

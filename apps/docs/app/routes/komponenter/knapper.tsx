@@ -60,7 +60,6 @@ const DemoArea = (props: BoxProps) => {
     <Box {...props}>
       <ComponentPlayground
         code={code}
-        scope={{ Button }}
         propList={propList}
         currentProps={currentProps}
         onPropsChange={onPropsChange}

@@ -2,48 +2,52 @@ import {
   FormLabel,
   forwardRef,
   Input as ChakraInput,
+  InputGroup,
+  InputLeftElement,
   InputProps as ChakraInputProps,
+  InputRightElement,
 } from "@chakra-ui/react";
 import React from "react";
 
 export type InputProps = Exclude<ChakraInputProps, "variant" | "size"> & {
+  /** The input's label */
   label: string;
+  /** Icon that shows up to the left */
+  leftIcon?: React.ReactNode;
+  /** Icon that shows up to the right */
+  rightIcon?: React.ReactNode;
 };
 /**
- * Input field that works with the `FormControl` component.
+ * Inputs let you enter text or other data.
  *
- * Note that it requires you to pass a label.
+ * You need to specify the label as a prop, since it doubles as the placeholder.
  *
  * ```tsx
- * <FormControl>
- *   <Input label="E-mail" />
- * </FormControl>
+ * <Input label="E-mail" />
  * ```
  *
- * You can also wrap the component in an `InputGroup` and add addons and elements to each side.
+ * You can also add icons to the left and right of the input. Please use the 24 px icons for this.
  *
  * ```tsx
- * <FormControl>
- *   <InputGroup>
- *     <Input label="E-mail" />
- *     <InputRightElement>
- *       <IconButton icon={SearchIcon} />
- *     </InputRightElement>
- *   </InputGroup>
- * </FormControl>
+ * <Input label="E-mail" leftIcon={<EmailOutline24Icon />} />
  * ```
  */
 export const Input = forwardRef<InputProps, "input">(
-  ({ label, ...props }, ref) => {
+  ({ label, leftIcon, rightIcon, ...props }, ref) => {
+    const Container = leftIcon || rightIcon ? InputGroup : React.Fragment;
     return (
-      <>
+      <Container>
+        {leftIcon && <InputLeftElement>{leftIcon}</InputLeftElement>}
         <ChakraInput
+          pl={leftIcon ? 7 : undefined}
+          pr={rightIcon ? 7 : undefined}
           {...props}
           ref={ref}
           placeholder=" " // This is needed to make the label work as expected
         />
         <FormLabel>{label}</FormLabel>
-      </>
+        {rightIcon && <InputRightElement>{rightIcon}</InputRightElement>}
+      </Container>
     );
   }
 );

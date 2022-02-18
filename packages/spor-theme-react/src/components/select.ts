@@ -1,6 +1,7 @@
 import { selectAnatomy } from "@chakra-ui/anatomy";
 import type {
-  PartsStyleObject,
+  PartsStyleFunction,
+  SystemStyleFunction,
   SystemStyleObject,
 } from "@chakra-ui/theme-tools";
 import Input from "./input";
@@ -26,16 +27,18 @@ const baseStyleRoot: SystemStyleObject = {
   },
 };
 
-const baseStyleField: SystemStyleObject = {
-  ...Input.baseStyle.field,
-  appearance: "none",
-  pb: "1px",
-  pt: "16px",
-  "option, optgroup": {
-    background: "alias.white",
-  },
+const baseStyleField: SystemStyleFunction = (props) => {
+  console.log("base style field", Input.baseStyle(props).field);
+  return {
+    ...Input.baseStyle(props).field,
+    appearance: "none",
+    pb: "1px",
+    pt: "16px",
+    "option, optgroup": {
+      background: "alias.white",
+    },
+  };
 };
-
 const baseStyleIcon: SystemStyleObject = {
   width: "1.5rem",
   height: "100%",
@@ -49,11 +52,11 @@ const baseStyleIcon: SystemStyleObject = {
   },
 };
 
-const baseStyle: PartsStyleObject<typeof parts> = {
+const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   root: baseStyleRoot,
-  field: baseStyleField,
+  field: baseStyleField(props),
   icon: baseStyleIcon,
-};
+});
 
 export default {
   parts: parts.keys,

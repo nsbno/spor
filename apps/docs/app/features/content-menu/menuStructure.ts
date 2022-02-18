@@ -71,7 +71,11 @@ export const menuStructure: MenuStructure[] = [
         href: "/komponenter/form-control",
         keywords: ["form control"],
       },
-      { title: "Tekstfelt", href: "/komponenter/input", keywords: ["input"] },
+      {
+        title: "Tekstfelt",
+        href: "/komponenter/tekstfelt",
+        keywords: ["input"],
+      },
       {
         title: "Passordfelt",
         href: "/komponenter/password-input",

@@ -15,7 +15,13 @@ export type ButtonProps = Exclude<
   /** The size of the button. Try not to use the xs size a lot */
   size?: "xs" | "sm" | "md" | "lg";
   /** The different variants of a button */
-  variant?: "control" | "primary" | "secondary" | "tertiary" | "additional";
+  variant?:
+    | "control"
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "additional"
+    | "ghost";
 };
 /**
  * Buttons are used to trigger actions.

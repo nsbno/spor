@@ -1,7 +1,6 @@
 import { Center, Flex } from "@chakra-ui/react";
 import { useMatch } from "react-router-dom";
 import { Link, useResolvedPath } from "remix";
-import { useColorScheme } from "../color-scheme/ColorSchemeContext";
 
 type SiteNavigationProps = {
   children: React.ReactNode;
@@ -21,7 +20,6 @@ type NavigationItemProps = {
   href: string;
 };
 export const NavigationLink = ({ children, href }: NavigationItemProps) => {
-  const { isLight } = useColorScheme();
   const isActive = useIsActive(href);
   return (
     <Center
@@ -36,9 +34,9 @@ export const NavigationLink = ({ children, href }: NavigationItemProps) => {
       fontWeight="bold"
       fontStyle="sm"
       _focusVisible={{ borderColor: "outline.greenHaze", outline: "none" }}
-      _hover={{ backgroundColor: isLight ? "alias.seaMist" : "alias.pine" }}
+      _hover={{ backgroundColor: "alias.pine" }}
       _active={{
-        backgroundColor: isLight ? "alias.mint" : "alias.celadon",
+        backgroundColor: "alias.celadon",
       }}
       backgroundColor={isActive ? "rgba(255,255,255,0.2)" : "transparent"}
       transitionDuration="fast"

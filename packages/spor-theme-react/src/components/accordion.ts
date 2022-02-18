@@ -17,9 +17,6 @@ const baseStyleButton: SystemStyleFunction = ({ theme }) => ({
   transitionDuration: "normal",
   border: "none",
   borderRadius: "sm",
-  _expanded: {
-    borderBottomRadius: "none",
-  },
   display: "flex",
   justifyContent: "space-between",
   color: "alias.darkGrey",
@@ -72,6 +69,9 @@ const variantOutline: PartsStyleFunction<typeof parts> = ({ theme }) => ({
     boxShadow: `inset 0 0 0 1px ${theme.colors.alias.osloGrey}`,
   },
   button: {
+    _expanded: {
+      borderBottomRadius: "none",
+    },
     _hover: {
       boxShadow: `inset 0 0 0 2px ${theme.colors.alias.darkGrey}`,
     },
@@ -86,6 +86,9 @@ const variantCard: PartsStyleObject<typeof parts> = {
     boxShadow: "md",
   },
   button: {
+    _expanded: {
+      borderBottomRadius: "none",
+    },
     _hover: {
       backgroundColor: "alias.seaMist",
     },

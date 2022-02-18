@@ -13,6 +13,8 @@ export const spacing = {
   8: tokens.size.spacing.px[54].value,
   9: tokens.size.spacing.px[72].value,
   10: tokens.size.spacing.px[90].value,
+  11: tokens.size.spacing.px[120].value,
+  12: tokens.size.spacing.px[180].value,
 };
 
 export const space = spacing;

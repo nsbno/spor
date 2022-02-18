@@ -37,7 +37,6 @@ const baseStyleContainer: SystemStyleFunction = () => {
       zIndex: 2,
       position: "absolute",
       mx: 0,
-      px: 0,
       my: 2,
       transition: ".1s ease-out",
       transformOrigin: "top left",

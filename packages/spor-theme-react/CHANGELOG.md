@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.3.1
+
+### Patch Changes
+
+- cb68026: Fix a bug with selects
+
 ## 0.3.0
 
 ### Minor Changes

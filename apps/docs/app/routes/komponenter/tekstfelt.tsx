@@ -1,12 +1,4 @@
-import {
-  Box,
-  BoxProps,
-  FormControl,
-  Heading,
-  Input,
-  Stack,
-  Text,
-} from "@vygruppen/spor-react";
+import { Box, BoxProps, Heading, Stack, Text } from "@vygruppen/spor-react";
 import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
 import { ComponentPlayground } from "~/features/component-playground/ComponentPlayground";
 import { usePlaygroundProps } from "~/features/component-playground/usePlaygroundProps";
@@ -32,16 +24,13 @@ const DemoArea = (props: BoxProps) => {
     { name: "isDisabled", defaultValue: false, type: "choiceChip" },
   ]);
   const code = `
-<FormControl>
-  <Input 
-    ${toPropsString(currentProps, "    ")}
-  />
-</FormControl>`;
+<Input 
+  ${toPropsString(currentProps, "    ")}
+/>`;
   return (
     <Box {...props}>
       <ComponentPlayground
         code={code}
-        scope={{ Input, FormControl }}
         propList={propList}
         currentProps={currentProps}
         onPropsChange={onPropsChange}

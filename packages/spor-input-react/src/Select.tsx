@@ -1,6 +1,7 @@
 import {
   Select as ChakraSelect,
   SelectProps as ChakraSelectProps,
+  useMultiStyleConfig,
 } from "@chakra-ui/react";
 import React from "react";
 import { FormControl, FormLabel } from ".";
@@ -24,9 +25,10 @@ export type SelectProps = Exclude<
  * ```
  */
 export const Select = ({ label, ...props }: SelectProps) => {
+  const styles = useMultiStyleConfig("Select", props);
   return (
     <FormControl>
-      <ChakraSelect {...props} />
+      <ChakraSelect {...props} rootProps={{ __css: styles.root }} />
       {label && <FormLabel>{label}</FormLabel>}
     </FormControl>
   );

@@ -1,5 +1,16 @@
 # @vygruppen/spor-input-react
 
+## 0.3.0
+
+### Minor Changes
+
+- 362b163: Add support for leftIcon and rightIcon props
+
+### Patch Changes
+
+- d603d3c: Fix an issue where input labels didn't work with input elements
+- b54f699: Fix a bunch of edge cases where inputs and selects would render weirdly
+
 ## 0.2.3
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @vygruppen/spor-theme-react
 
+## 0.3.0
+
+### Minor Changes
+
+- 68ac994: Add two new space tokens
+
+### Patch Changes
+
+- d603d3c: Fix an issue where input labels didn't work with input elements
+- b54f699: Fix a bunch of edge cases where inputs and selects would render weirdly
+- 39b6fc6: Make list accordions not have a straight border when expanded
+
 ## 0.2.3
 
 ### Patch Changes

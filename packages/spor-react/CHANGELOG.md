@@ -1,5 +1,20 @@
 # @vygruppen/spor-react
 
+## 0.8.1
+
+### Patch Changes
+
+- Updated dependencies [362b163]
+- Updated dependencies [4c7ed37]
+- Updated dependencies [d603d3c]
+- Updated dependencies [b54f699]
+- Updated dependencies [68ac994]
+- Updated dependencies [39b6fc6]
+  - @vygruppen/spor-input-react@0.3.0
+  - @vygruppen/spor-button-react@0.1.5
+  - @vygruppen/spor-theme-react@0.3.0
+  - @vygruppen/spor-accordion-react@0.0.3
+
 ## 0.8.0
 
 ### Minor Changes

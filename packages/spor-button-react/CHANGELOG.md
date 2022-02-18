@@ -1,5 +1,11 @@
 # @vygruppen/spor-button-react
 
+## 0.1.5
+
+### Patch Changes
+
+- 4c7ed37: Fix flawed type which excluded the ghost variant of buttons
+
 ## 0.1.4
 
 ### Patch Changes

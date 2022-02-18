@@ -12,15 +12,15 @@ export const PasswordInput = (props: PasswordInputProps) => {
       <Input
         {...props}
         type={isShowingPassword ? "text" : "password"}
-        pr="4.5em !important"
+        pr={10}
       />
-      <InputRightElement width="4.5em">
+      <InputRightElement width="fit-content">
         <Button
           variant="ghost"
           type="button"
-          px={4}
           onClick={onToggle}
           borderRadius="sm"
+          mr={1}
         >
           {isShowingPassword ? t(texts.hidePassword) : t(texts.showPassword)}
         </Button>

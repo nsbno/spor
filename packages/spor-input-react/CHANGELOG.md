@@ -1,5 +1,11 @@
 # @vygruppen/spor-input-react
 
+## 0.3.1
+
+### Patch Changes
+
+- d351027: Fix buggy input fields
+
 ## 0.3.0
 
 ### Minor Changes

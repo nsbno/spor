@@ -1,4 +1,5 @@
 import {
+  Box,
   FormLabel,
   forwardRef,
   Input as ChakraInput,
@@ -34,9 +35,9 @@ export type InputProps = Exclude<ChakraInputProps, "variant" | "size"> & {
  */
 export const Input = forwardRef<InputProps, "input">(
   ({ label, leftIcon, rightIcon, ...props }, ref) => {
-    const Container = leftIcon || rightIcon ? InputGroup : React.Fragment;
+    const Container = leftIcon || rightIcon ? InputGroup : Box;
     return (
-      <Container>
+      <Container position="relative">
         {leftIcon && <InputLeftElement>{leftIcon}</InputLeftElement>}
         <ChakraInput
           pl={leftIcon ? 7 : undefined}

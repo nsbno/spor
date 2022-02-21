@@ -14,6 +14,7 @@ import {
 } from "@vygruppen/spor-react";
 import GetStarted from "~/features/routes/ressurser/kom-i-gang/getstarted";
 import Profile from "~/features/routes/ressurser/kom-i-gang/Profile";
+import Component from "~/features/routes/ressurser/kom-i-gang/Component";
 
 type IntroductionsProps = {
   title: string;
@@ -63,6 +64,7 @@ export default function GettingStartedPage() {
         <Divider />
         <Profile />
         <Divider />
+        <Component />
       </Stack>
     </Box>
   );

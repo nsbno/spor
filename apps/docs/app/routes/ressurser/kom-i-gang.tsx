@@ -15,6 +15,7 @@ import {
 import GetStarted from "~/features/routes/ressurser/kom-i-gang/getstarted";
 import Profile from "~/features/routes/ressurser/kom-i-gang/Profile";
 import Component from "~/features/routes/ressurser/kom-i-gang/Component";
+import Token from "~/features/routes/ressurser/kom-i-gang/Token";
 
 type IntroductionsProps = {
   title: string;
@@ -65,6 +66,8 @@ export default function GettingStartedPage() {
         <Profile />
         <Divider />
         <Component />
+        <Divider />
+        <Token />
       </Stack>
     </Box>
   );

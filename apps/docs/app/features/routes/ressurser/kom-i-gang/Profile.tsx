@@ -33,13 +33,11 @@ export default function Profile() {
         </Text>
         <ProfileLink to="/ressurser/profil">
           <HStack spacing={2}>
-            return (
             <Badge size="md" variant="outline" colorScheme="white">
               <Text textStyle="xs" textColor="alias.darkGrey">
                 Besøk profilen
               </Text>
             </Badge>
-            );
           </HStack>
         </ProfileLink>
       </Stack>

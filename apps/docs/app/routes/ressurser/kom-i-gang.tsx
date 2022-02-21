@@ -13,6 +13,7 @@ import {
   Center,
 } from "@vygruppen/spor-react";
 import GetStarted from "~/features/routes/ressurser/kom-i-gang/getstarted";
+import Profile from "~/features/routes/ressurser/kom-i-gang/Profile";
 
 type IntroductionsProps = {
   title: string;
@@ -59,6 +60,8 @@ export default function GettingStartedPage() {
         <Introductions />
         <Divider />
         <GetStarted />
+        <Divider />
+        <Profile />
         <Divider />
       </Stack>
     </Box>

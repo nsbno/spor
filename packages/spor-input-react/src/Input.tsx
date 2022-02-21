@@ -34,7 +34,7 @@ export type InputProps = Exclude<ChakraInputProps, "variant" | "size"> & {
  * ```
  */
 export const Input = forwardRef<InputProps, "input">(
-  ({ label, leftIcon, rightIcon, ...props }, ref) => {
+  ({ label, leftIcon, rightIcon, id, ...props }, ref) => {
     const Container = leftIcon || rightIcon ? InputGroup : Box;
     return (
       <Container position="relative">
@@ -42,11 +42,14 @@ export const Input = forwardRef<InputProps, "input">(
         <ChakraInput
           pl={leftIcon ? 7 : undefined}
           pr={rightIcon ? 7 : undefined}
+          id={id}
           {...props}
           ref={ref}
           placeholder=" " // This is needed to make the label work as expected
         />
-        <FormLabel>{label}</FormLabel>
+        <FormLabel htmlFor={id} pointerEvents="none">
+          {label}
+        </FormLabel>
         {rightIcon && <InputRightElement>{rightIcon}</InputRightElement>}
       </Container>
     );

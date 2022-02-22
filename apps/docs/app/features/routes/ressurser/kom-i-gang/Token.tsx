@@ -1,9 +1,9 @@
 import {
-  Badge,
+  Button,
   Card,
   Center,
-  Flex,
   Heading,
+  HStack,
   Image,
   SimpleGrid,
   Stack,
@@ -16,16 +16,14 @@ export default function Token() {
   return (
     <Stack spacing={4}>
       <SimpleGrid gap={[8, 4]}>
-        <Card variant="filled" colorScheme="green">
-          <Center height="240px">
-            <Image
-              src="/images/component-examples/tokens-example-1.png"
-              alt="Tokens eksempel"
-              borderRadius="sm"
-              boxShadow="sm"
-            />
-          </Center>
-        </Card>
+        <Center height="240px" backgroundColor="alias.mint" borderRadius="sm">
+          <Image
+            src="/images/component-examples/tokens-example-1.png"
+            alt="Tokens eksempel"
+            borderRadius="sm"
+            boxShadow="sm"
+          />
+        </Center>
       </SimpleGrid>
       <Stack spacing={2}>
         <Heading as="h3" textStyle="md" fontWeight="bold">
@@ -46,32 +44,19 @@ export default function Token() {
           design tokens om dette stemmer.
         </Text>
       </Stack>
-      <Stack>
-        <TokensLink to="/ressurser/design-tokens">
-          <Badge size="md" variant="outline" colorScheme="white">
-            <Text textStyle="xs" textColor="alias.darkGrey">
-              Gå til Tokens
-            </Text>
-          </Badge>
-        </TokensLink>
+      <Stack spacing={2}>
+        <HStack spacing={2}>
+          <Button
+            variant="additional"
+            size="sm"
+            width="fit-content"
+            as={Link}
+            to="/ressurser/profil"
+          >
+            Besøk profilen
+          </Button>
+        </HStack>
       </Stack>
     </Stack>
-  );
-}
-
-type TokensLinkProps = {
-  to: string;
-  children: React.ReactNode;
-};
-
-function TokensLink({ to, ...props }: TokensLinkProps) {
-  return (
-    <Flex
-      as={Link}
-      to={to}
-      alignItems="center"
-      _hover={{ textDecoration: "underline" }}
-      {...props}
-    ></Flex>
   );
 }

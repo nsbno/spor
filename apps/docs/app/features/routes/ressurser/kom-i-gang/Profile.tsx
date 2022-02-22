@@ -1,5 +1,5 @@
-import { Badge } from "@vygruppen/spor-react";
 import {
+  Button,
   Heading,
   Flex,
   Image,
@@ -31,15 +31,17 @@ export default function Profile() {
           bildemaneren, logo, typografi og forstå språkprofilen vår. Så har du
           kommet langt på vei i arbeidet med Vy.
         </Text>
-        <ProfileLink to="/ressurser/profil">
-          <HStack spacing={2}>
-            <Badge size="md" variant="outline" colorScheme="white">
-              <Text textStyle="xs" textColor="alias.darkGrey">
-                Besøk profilen
-              </Text>
-            </Badge>
-          </HStack>
-        </ProfileLink>
+        <HStack spacing={2}>
+          <Button
+            variant="additional"
+            size="sm"
+            width="fit-content"
+            as={Link}
+            to="/ressurser/profil"
+          >
+            Besøk profilen
+          </Button>
+        </HStack>
       </Stack>
       <Flex>
         <Image
@@ -50,22 +52,5 @@ export default function Profile() {
         />
       </Flex>
     </SimpleGrid>
-  );
-}
-
-type ProfileLinkProps = {
-  to: string;
-  children: React.ReactNode;
-};
-
-function ProfileLink({ to, ...props }: ProfileLinkProps) {
-  return (
-    <Flex
-      as={Link}
-      to={to}
-      alignItems="center"
-      _hover={{ textDecoration: "underline" }}
-      {...props}
-    ></Flex>
   );
 }

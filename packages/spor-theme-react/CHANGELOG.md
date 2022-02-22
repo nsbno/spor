@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.3.2
+
+### Patch Changes
+
+- f33e8b8: Remove very embarassing console.log
+
 ## 0.3.1
 
 ### Patch Changes

@@ -19,30 +19,27 @@ import Token from "~/features/routes/ressurser/kom-i-gang/Token";
 
 type IntroductionsProps = {
   title: string;
-  description: string;
   icon: React.ComponentType<BoxProps>;
+  children: React.ReactNode;
 };
 
-const items: IntroductionsProps[] = [
-  {
-    title: "Pålitelig",
-    description:
-      "Vy skal skal være ans­varlige og pålitelige, sak­lige og presise. Vi skal gi deg den informasjonen du trenger, når du trenger den",
-    icon: TimeOutline30Icon,
-  },
-  {
-    title: "Bevegelig",
-    description:
-      "Beveg­else er kjer­nen i virk­somheten til Vy. Beveg­else er både his­to­rien og fremti­den. Vi skal være fleksible og aldri stå stille.",
-    icon: TrainOutline30Icon,
-  },
-  {
-    title: "Gledelig",
-    description:
-      "Vy skal være overraskende og sjarmerende, og det vi gjør skal skape glede i hverdagen.",
-    icon: SmileOutline30Icon,
-  },
-];
+const IntroductionItem = ({
+  title,
+  icon: Icon,
+  children,
+}: IntroductionsProps) => (
+  <Stack spacing={3}>
+    <Heading textStyle="sm" fontWeight="bold" textAlign="center">
+      {title}
+    </Heading>
+    <Card variant="filled" colorScheme="green">
+      <Center height="292px">
+        <Icon width="130px" height="130px" color="alias.pine" />
+      </Center>
+    </Card>
+    <Text textStyle="xs">{children}</Text>
+  </Stack>
+);
 
 export default function GettingStartedPage() {
   return (
@@ -90,19 +87,18 @@ const Introductions = (props: BoxProps) => {
         </Text>
       </Stack>
       <SimpleGrid columns={[1, 2, 3]} spacing={[3, 4]}>
-        {items.map((item) => (
-          <Stack spacing={3}>
-            <Heading textStyle="sm" fontWeight="bold" textAlign="center">
-              {item.title}
-            </Heading>
-            <Card variant="filled" colorScheme="green">
-              <Center height="292px">
-                <item.icon width="130px" height="130px" color="alias.pine" />
-              </Center>
-            </Card>
-            <Text textStyle="xs">{item.description}</Text>
-          </Stack>
-        ))}
+        <IntroductionItem title="Pålitelig" icon={TimeOutline30Icon}>
+          Vy skal skal være ans­varlige og pålitelige, sak­lige og presise. Vi
+          skal gi deg den informasjonen du trenger, når du trenger den.
+        </IntroductionItem>
+        <IntroductionItem title="Bevegelig" icon={TrainOutline30Icon}>
+          Beveg­else er kjer­nen i virk­somheten til Vy. Beveg­else er både
+          his­to­rien og fremti­den. Vi skal være fleksible og aldri stå stille.
+        </IntroductionItem>
+        <IntroductionItem title="Gledelig" icon={SmileOutline30Icon}>
+          Vy skal være overraskende og sjarmerende, og det vi gjør skal skape
+          glede i hverdagen.
+        </IntroductionItem>
       </SimpleGrid>
     </Stack>
   );

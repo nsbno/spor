@@ -9,12 +9,12 @@ import {
 
 export default function Component() {
   return (
-    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+    <SimpleGrid columns={[1, 2]} spacing={8}>
       <Flex>
         <Image
           src="/images/component-examples/component-example-1.png"
-          alt="Componentexample"
-          rounded={"md"}
+          alt="Et komponent brukes til å skape fullstendige brukeropplevelser"
+          rounded="md"
           objectFit="contain"
         />
       </Flex>

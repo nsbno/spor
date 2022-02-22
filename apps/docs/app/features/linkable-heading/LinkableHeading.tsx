@@ -9,7 +9,9 @@ import {
 import { useLocation } from "react-router-dom";
 import { slugify } from "~/utils/stringUtils";
 
-type LinkableHeadingProps = HeadingProps & {};
+type LinkableHeadingProps = HeadingProps;
+
+/** A heading that renders a "copy link" button when hovered. */
 export const LinkableHeading = (props: LinkableHeadingProps) => {
   const location = useLocation();
   const id = props.id || slugify(props.children as string);
@@ -18,7 +20,7 @@ export const LinkableHeading = (props: LinkableHeadingProps) => {
     <Flex position="relative" alignItems="center" data-group>
       <Heading {...props} id={id} />
       <IconButton
-        aria-label="Kopiér"
+        aria-label={hasCopied ? "Kopiert" : "Kopiér"}
         onClick={onCopy}
         variant="ghost"
         icon={hasCopied ? <SuccessOutline24Icon /> : <CopyOutline24Icon />}

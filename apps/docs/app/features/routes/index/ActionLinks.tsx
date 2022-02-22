@@ -20,7 +20,7 @@ type LinkItem = {
   to: string;
   title: string;
   description: string;
-  icon: React.ReactNode;
+  icon: React.ComponentType<BoxProps>;
   iconColor: string;
 };
 

@@ -1,18 +1,14 @@
-import {
-  Heading,
-  SimpleGrid,
-  Stack,
-  Text,
-} from "@vygruppen/spor-react";
+import { SimpleGrid, Stack, Text } from "@vygruppen/spor-react";
 import { ImageWithCaption } from "~/features/Images-with-caption/ImageWithCaption";
+import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 
 export default function GetStarted() {
   return (
     <Stack spacing={8}>
       <Stack spacing={2}>
-        <Heading as="h3" textStyle="md" fontWeight="bold">
+        <LinkableHeading as="h2" textStyle="md" fontWeight="bold">
           Kom i gang
-        </Heading>
+        </LinkableHeading>
         <Text textStyle="sm">
           Det er mye man må sette seg inn i når man er ny i jobben, uansett om
           du er utvikler, designer eller produktutvikler. Spor skal gjøre det

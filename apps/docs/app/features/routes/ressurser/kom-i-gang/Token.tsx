@@ -1,16 +1,14 @@
 import {
   Button,
-  Card,
   Center,
-  Heading,
   HStack,
   Image,
   SimpleGrid,
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-
 import { Link } from "remix";
+import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 
 export default function Token() {
   return (
@@ -26,9 +24,9 @@ export default function Token() {
         </Center>
       </SimpleGrid>
       <Stack spacing={2}>
-        <Heading as="h3" textStyle="md" fontWeight="bold">
+        <LinkableHeading as="h2" textStyle="md" fontWeight="bold">
           Tokens
-        </Heading>
+        </LinkableHeading>
         <Text textStyle="sm">
           Design tokens er alle verdiene du trenger for å konstruere og
           vedlikeholde et designsystem. Det er de felles reglene og

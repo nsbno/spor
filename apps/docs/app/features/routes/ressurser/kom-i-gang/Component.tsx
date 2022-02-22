@@ -6,6 +6,7 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
+import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 
 export default function Component() {
   return (
@@ -19,9 +20,9 @@ export default function Component() {
         />
       </Flex>
       <Stack spacing={2}>
-        <Heading as="h3" textStyle="md" fontWeight="bold">
+        <LinkableHeading as="h2" textStyle="md" fontWeight="bold">
           Komponenter
-        </Heading>
+        </LinkableHeading>
         <Text textStyle="sm">
           Komponenter er interaktive byggeklosser som gjør det enklere å skape
           fullstendige brukeropplevelser. De skal komme innebygget med “states”,

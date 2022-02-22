@@ -24,7 +24,7 @@ function TableOfContent(props: TableOfContentProps) {
     }
   );
 
-  console.log("active id", activeId);
+  const hasHeadings = headings.length > 0;
 
   return (
     <Box
@@ -33,6 +33,11 @@ function TableOfContent(props: TableOfContentProps) {
       width="16rem"
       flexShrink={0}
       display={["none", "none", "block"]}
+      visibility={hasHeadings ? "visible" : "hidden"}
+      opacity={hasHeadings ? 1 : 0}
+      transform={hasHeadings ? "translateY(0)" : "translateY(10px)"}
+      transitionDuration="fast"
+      transitionProperty="common"
       position="sticky"
       py={10}
       pr={4}

@@ -3,7 +3,6 @@ import {
   Box,
   BoxProps,
   Code,
-  Heading,
   Stack,
   Table,
   Tbody,
@@ -14,6 +13,7 @@ import {
   Tr,
 } from "@vygruppen/spor-react";
 import { Fragment } from "react";
+import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
@@ -128,9 +128,9 @@ const TypographyTokenTable = ({
   const tokenFormatter = useTokenFormatter();
   return (
     <Box {...props}>
-      <Heading as="h2" textStyle="sm" fontWeight="bold" mb={2}>
+      <LinkableHeading as="h2" textStyle="sm" fontWeight="bold" mb={2}>
         {title}
-      </Heading>
+      </LinkableHeading>
       <Table variant="simple" colorScheme="grey">
         <Thead>
           <Tr>

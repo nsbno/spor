@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { HeadingLevelType, HeadingType } from "./TableOfContents";
 
 /**
@@ -6,6 +7,7 @@ import { HeadingLevelType, HeadingType } from "./TableOfContents";
  */
 export const useHeadings = () => {
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const location = useLocation();
   const [headings, setHeadings] = useState<HeadingType[]>([]);
   useEffect(() => {
     const headingList: HeadingType[] = [];
@@ -20,7 +22,6 @@ export const useHeadings = () => {
       });
     });
     setHeadings(headingList);
-  }, []);
-  console.log(headings);
+  }, [location]);
   return { headings, contentRef };
 };

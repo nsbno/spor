@@ -5,13 +5,13 @@ import {
   BoxProps,
   CopyOutline24Icon,
   Flex,
-  Heading,
   IconButton,
   SimpleGrid,
   Stack,
   SuccessOutline24Icon,
   Text,
 } from "@vygruppen/spor-react";
+import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
@@ -55,9 +55,9 @@ export function ColorTokens(props: BoxProps) {
           <ColorCategorySection key={category.title} {...category} />
         ))}
         <Stack spacing={3}>
-          <Heading as="h3" textStyle="md">
+          <LinkableHeading as="h3" textStyle="md">
             Full fargepalett
-          </Heading>
+          </LinkableHeading>
           <ColorGrid
             colors={{
               white: tokens.color.alias.white,
@@ -90,9 +90,9 @@ const ColorGrid = ({ colors, ...rest }: ColorGridProps) => {
 
 const ColorCategorySection = ({ title, colors }: ColorCategory) => (
   <Stack>
-    <Heading as="h3" textStyle="md">
+    <LinkableHeading as="h3" textStyle="md">
       {title}
-    </Heading>
+    </LinkableHeading>
     <ColorGrid colors={colors} />
   </Stack>
 );

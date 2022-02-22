@@ -27,7 +27,7 @@ type LinkItem = {
 // These are the links that are rendered in the action links section.
 const links: LinkItem[] = [
   {
-    to: "/ressurser/kom-i-gang",
+    to: "/kom-i-gang",
     title: "Kom i gang",
     description: "Sett opp Spor i ditt prosjekt på få minutter",
     icon: HomeOutline30Icon,

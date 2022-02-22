@@ -1,9 +1,10 @@
-import { Box, BoxProps, Heading, Stack, Text } from "@vygruppen/spor-react";
+import { Box, BoxProps, Stack, Text } from "@vygruppen/spor-react";
 import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
 import { ComponentPlayground } from "~/features/component-playground/ComponentPlayground";
 import { usePlaygroundProps } from "~/features/component-playground/usePlaygroundProps";
 import { toPropsString } from "~/features/component-playground/utils";
 import { InteractiveCode } from "~/features/interactive-code/InteractiveCode";
+import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 
 export default function InputsDocsPage() {
   return (
@@ -43,13 +44,13 @@ const Guidelines = (props: BoxProps) => {
   return (
     <Stack {...props} spacing={8}>
       <Stack spacing={3}>
-        <Heading as="h2" textStyle="xl-display">
+        <LinkableHeading as="h2" textStyle="xl-display">
           Retningslinjer
-        </Heading>
+        </LinkableHeading>
         <Text>Inputbokser brukes når vi skal legge inn tekst i felt.</Text>
-        <Heading as="h3" textStyle="lg" fontWeight="bold">
+        <LinkableHeading as="h3" textStyle="lg" fontWeight="bold">
           Ikoner
-        </Heading>
+        </LinkableHeading>
         <Text>
           Noen ganger kan det være smart å bruke et ikon for å indikere hva
           slags felt det er snakk om.

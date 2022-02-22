@@ -2,11 +2,20 @@ import { Flex, FlexProps } from "@vygruppen/spor-react";
 import React from "react";
 import { Link } from "remix";
 
-type MenuItemProps = FlexProps & { href: string; title: string };
+type MenuItemProps = FlexProps & {
+  href: string;
+  children: string;
+  isActive?: boolean;
+};
 /**
  * Menu item in the `ContentMenu`, and search result in the `SearchResults`.
  */
-export const MenuItem = ({ href, title, ...rest }: MenuItemProps) => (
+export const MenuItem = ({
+  href,
+  children,
+  isActive,
+  ...rest
+}: MenuItemProps) => (
   <Flex
     key={href}
     as={Link}
@@ -15,6 +24,7 @@ export const MenuItem = ({ href, title, ...rest }: MenuItemProps) => (
     fontSize="mobile.xs"
     borderRadius="sm"
     alignItems="center"
+    backgroundColor={isActive ? "alias.mint" : "transparent"}
     _hover={{
       backgroundColor: "alias.mint",
     }}
@@ -27,6 +37,6 @@ export const MenuItem = ({ href, title, ...rest }: MenuItemProps) => (
     }}
     {...rest}
   >
-    {title}
+    {children}
   </Flex>
 );

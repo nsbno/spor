@@ -1,8 +1,6 @@
 import {
   Box,
   BoxProps,
-  Button,
-  Heading,
   Image,
   SimpleGrid,
   Stack,
@@ -12,6 +10,7 @@ import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
 import { ComponentPlayground } from "~/features/component-playground/ComponentPlayground";
 import { usePlaygroundProps } from "~/features/component-playground/usePlaygroundProps";
 import { toPropsString } from "~/features/component-playground/utils";
+import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 
 export default function ButtonsPage() {
   return (
@@ -72,9 +71,9 @@ const Guidelines = (props: BoxProps) => {
   return (
     <Stack {...props} spacing={8}>
       <Stack spacing={3}>
-        <Heading as="h2" textStyle="xl-display">
+        <LinkableHeading as="h2" textStyle="xl-display">
           Retningslinjer
-        </Heading>
+        </LinkableHeading>
         <Text>
           Hovedknappene for navigasjon finnes i ulike varianter for ulike
           brukstilfeller. Vi har <strong>Primærknappen</strong> som skal
@@ -90,9 +89,9 @@ const Guidelines = (props: BoxProps) => {
         </Text>
       </Stack>
       <Stack spacing={2}>
-        <Heading as="h3" textStyle="md" fontWeight="bold">
+        <LinkableHeading as="h3" textStyle="md" fontWeight="bold">
           Design
-        </Heading>
+        </LinkableHeading>
         <Text>
           Knappene kommer i fire størrelser, lg, md, sm og xs . Valg av
           størrelse skal passe flyt og andre elementer Alle størrelsene finnes i

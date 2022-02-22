@@ -45,7 +45,7 @@ const DesktopNavigation = () => {
       alignItems="center"
     >
       <SiteNavigation>
-        <NavigationLink href="/ressurser/kom-i-gang">Kom i gang</NavigationLink>
+        <NavigationLink href="/kom-i-gang">Kom i gang</NavigationLink>
         <NavigationLink href="/ressurser/profil">Profil</NavigationLink>
         <NavigationLink href="/komponenter">Komponenter</NavigationLink>
         <NavigationLink href="/ressurser/ikoner">Ikoner</NavigationLink>

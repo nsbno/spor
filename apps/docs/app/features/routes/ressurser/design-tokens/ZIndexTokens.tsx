@@ -11,8 +11,8 @@ import {
   Thead,
   Tr,
 } from "@vygruppen/spor-react";
-import { SharedTokenLayout } from "./SharedTokenLayout";
 import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
+import { SharedTokenLayout } from "./SharedTokenLayout";
 
 export function ZIndexTokens(props: BoxProps) {
   return (

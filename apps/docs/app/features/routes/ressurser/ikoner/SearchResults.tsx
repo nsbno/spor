@@ -12,6 +12,7 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import { useMemo } from "react";
+import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
 import {
   getIconByImportName,
@@ -117,9 +118,9 @@ function Category({ title, icons }: CategoryProps) {
 
   return (
     <Stack spacing={2}>
-      <Heading as="h2" textStyle="sm">
+      <LinkableHeading as="h2" textStyle="sm">
         {title}
-      </Heading>
+      </LinkableHeading>
       <SimpleGrid columns={[2, 3, 5, 6]} spacing={3}>
         {icons.map((icon) => (
           <IconBox key={icon.importName} icon={icon} />

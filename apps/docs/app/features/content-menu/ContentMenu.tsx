@@ -6,7 +6,6 @@ import {
   AccordionPanel,
   Divider,
 } from "@vygruppen/spor-react";
-import { useState } from "react";
 import { isDivider, menuStructure } from "../content-menu/menuStructure";
 import { MenuItem } from "./MenuItem";
 
@@ -25,7 +24,9 @@ export const ContentMenu = () => {
             </AccordionButton>
             <AccordionPanel pt={1} pb={0}>
               {item.items.map((subItem) => (
-                <MenuItem key={subItem.href} {...subItem} height={6} />
+                <MenuItem key={subItem.href} href={subItem.href} height={6}>
+                  {subItem.title}
+                </MenuItem>
               ))}
             </AccordionPanel>
           </AccordionItem>

@@ -1,20 +1,21 @@
 import { Divider } from "@chakra-ui/layout";
 import {
   Box,
+  BoxProps,
+  Card,
+  Center,
   Heading,
+  SimpleGrid,
+  SmileOutline30Icon,
   Stack,
   Text,
-  SimpleGrid,
-  TrainOutline30Icon,
-  Card,
   TimeOutline30Icon,
-  BoxProps,
-  SmileOutline30Icon,
-  Center,
+  TrainOutline30Icon,
 } from "@vygruppen/spor-react";
+import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
+import Component from "~/features/routes/ressurser/kom-i-gang/Component";
 import GetStarted from "~/features/routes/ressurser/kom-i-gang/getstarted";
 import Profile from "~/features/routes/ressurser/kom-i-gang/Profile";
-import Component from "~/features/routes/ressurser/kom-i-gang/Component";
 import Token from "~/features/routes/ressurser/kom-i-gang/Token";
 
 type IntroductionsProps = {
@@ -29,7 +30,7 @@ const IntroductionItem = ({
   children,
 }: IntroductionsProps) => (
   <Stack spacing={3}>
-    <Heading textStyle="sm" fontWeight="bold" textAlign="center">
+    <Heading as="h2" textStyle="sm" fontWeight="bold" textAlign="center">
       {title}
     </Heading>
     <Card variant="filled" colorScheme="green">
@@ -74,9 +75,9 @@ const Introductions = (props: BoxProps) => {
   return (
     <Stack {...props} spacing={6}>
       <Stack>
-        <Heading as="h3" textStyle="sm" fontWeight="bold">
+        <LinkableHeading as="h2" textStyle="md" fontWeight="bold">
           Spor
-        </Heading>
+        </LinkableHeading>
         <Text textStyle="sm">
           Spor inneholder retningslinjer for visuelt design (brand guidelines),
           ferdigstilte digitale komponenter, dokumentasjon og retningslinjer for

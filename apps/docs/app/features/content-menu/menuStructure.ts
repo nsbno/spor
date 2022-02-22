@@ -15,6 +15,11 @@ export const menuStructure: MenuStructure[] = [
     title: "Kom i gang",
     items: [
       {
+        title: "Introduksjon?",
+        href: "/kom-i-gang",
+        keywords: ["intro"],
+      },
+      {
         title: "Hva er Spor?",
         href: "/kom-i-gang/hva-er-spor",
         keywords: ["om", "about", "hæ"],

@@ -1,22 +1,22 @@
 import {
   Button,
-  Heading,
   Flex,
-  Image,
   HStack,
+  Image,
   SimpleGrid,
   Stack,
   Text,
 } from "@vygruppen/spor-react";
 import { Link } from "remix";
+import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 
 export default function Profile() {
   return (
     <SimpleGrid columns={[1, 2]} spacing={8}>
       <Stack spacing={2}>
-        <Heading as="h3" textStyle="md" fontWeight="bold">
+        <LinkableHeading as="h2" textStyle="md" fontWeight="bold">
           Profilen
-        </Heading>
+        </LinkableHeading>
         <Text textStyle="sm">
           Vy har en tydelig og strukturert designmanual som setter retningen for
           alle oss som jobber i og med selskapets merkevare. Denne omfatter alt
@@ -47,7 +47,7 @@ export default function Profile() {
         <Image
           src="/images/component-examples/profile-example-1.png"
           alt="En profile bilder brukes til å merkervaren og kjernen til vy"
-          rounded={"md"}
+          rounded="md"
           objectFit="contain"
         />
       </Flex>

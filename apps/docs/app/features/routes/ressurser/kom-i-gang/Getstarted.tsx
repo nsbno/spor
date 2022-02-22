@@ -1,13 +1,10 @@
 import {
-  Box,
-  BoxProps,
-  Button,
   Heading,
-  Image,
   SimpleGrid,
   Stack,
   Text,
 } from "@vygruppen/spor-react";
+import { ImageWithCaption } from "~/features/Images-with-caption/ImageWithCaption";
 
 export default function GetStarted() {
   return (
@@ -34,29 +31,17 @@ export default function GetStarted() {
         </Text>
       </Stack>
       <SimpleGrid columns={[1, 2]} gap={[8, 4]}>
-        <Stack spacing={1.5}>
-          <Image
-            src="/images/component-examples/display-options-example-1.png"
-            alt="Visningsvalg for utvikler"
-            borderRadius="sm"
-            boxShadow="sm"
-          />
-          <Text textStyle="xs">
-            Synliggjør de tingene du er ute etter som utvikler. dette kan være
-            fokus på kode, eller tips relatert til utvikling.
-          </Text>
-        </Stack>
-        <Stack spacing={1.5}>
-          <Image
-            src="/images/component-examples/display-options-example-2.png"
-            alt="Visningsvalg for design"
-            borderRadius="sm"
-            boxShadow="sm"
-          />
-          <Text textStyle="xs">
-            Viser deg kun det som er nødvendig som designer.
-          </Text>
-        </Stack>
+        <ImageWithCaption
+          src="/images/component-examples/display-options-example-1.png"
+          alt="Visningsvalg for utvikler"
+          caption="Synliggjør de tingene du er ute etter som utvikler. dette kan være
+          fokus på kode, eller tips relatert til utvikling"
+        />
+        <ImageWithCaption
+          src="/images/component-examples/display-options-example-2.png"
+          alt="Visningsvalg for design"
+          caption=" Viser deg kun det som er nødvendig som designer."
+        />
       </SimpleGrid>
     </Stack>
   );

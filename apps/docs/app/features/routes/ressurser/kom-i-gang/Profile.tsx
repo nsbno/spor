@@ -12,7 +12,7 @@ import { Link } from "remix";
 
 export default function Profile() {
   return (
-    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+    <SimpleGrid columns={[1, 2]} spacing={8}>
       <Stack spacing={2}>
         <Heading as="h3" textStyle="md" fontWeight="bold">
           Profilen

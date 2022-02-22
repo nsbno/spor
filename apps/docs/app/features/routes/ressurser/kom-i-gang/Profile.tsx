@@ -46,7 +46,7 @@ export default function Profile() {
       <Flex>
         <Image
           src="/images/component-examples/profile-example-1.png"
-          alt="Profile example"
+          alt="En profile bilder brukes til å merkervaren og kjernen til vy"
           rounded={"md"}
           objectFit="contain"
         />

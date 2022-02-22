@@ -13,7 +13,7 @@ export default function Component() {
       <Flex>
         <Image
           src="/images/component-examples/component-example-1.png"
-          alt="Et komponent brukes til å skape fullstendige brukeropplevelser"
+          alt="Et komponent bilder brukes til å skape fullstendige brukeropplevelser"
           rounded="md"
           objectFit="contain"
         />

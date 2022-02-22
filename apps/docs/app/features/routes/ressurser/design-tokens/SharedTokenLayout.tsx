@@ -1,4 +1,5 @@
-import { Box, BoxProps, Heading } from "@vygruppen/spor-react";
+import { Box, BoxProps } from "@vygruppen/spor-react";
+import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 
 type SharedTokenLayoutProps = BoxProps & {
   title: string;
@@ -13,9 +14,9 @@ export function SharedTokenLayout({
 }: SharedTokenLayoutProps) {
   return (
     <Box {...rest}>
-      <Heading as="h2" textStyle="xl-display" mb={2}>
+      <LinkableHeading as="h2" textStyle="xl-display" mb={2}>
         {title}
-      </Heading>
+      </LinkableHeading>
       <Box mb={6} textStyle="sm">
         {description}
       </Box>

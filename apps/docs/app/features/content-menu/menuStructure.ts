@@ -15,7 +15,7 @@ export const menuStructure: MenuStructure[] = [
     title: "Kom i gang",
     items: [
       {
-        title: "Introduksjon?",
+        title: "Introduksjon",
         href: "/kom-i-gang",
         keywords: ["intro"],
       },

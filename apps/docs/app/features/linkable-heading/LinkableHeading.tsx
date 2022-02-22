@@ -12,18 +12,19 @@ import { slugify } from "~/utils/stringUtils";
 type LinkableHeadingProps = HeadingProps;
 
 /** A heading that renders a "copy link" button when hovered. */
-export const LinkableHeading = (props: LinkableHeadingProps) => {
+export const LinkableHeading = ({ mb, ...props }: LinkableHeadingProps) => {
   const location = useLocation();
   const id = props.id || slugify(props.children as string);
-  const { onCopy, hasCopied } = useClipboard(`/${location.pathname}#${id}`);
+  const { onCopy, hasCopied } = useClipboard(`${location.pathname}#${id}`);
   return (
-    <Flex position="relative" alignItems="center" data-group>
+    <Flex position="relative" alignItems="center" data-group mb={mb}>
       <Heading {...props} id={id} />
       <IconButton
         aria-label={hasCopied ? "Kopiert" : "Kopiér"}
         onClick={onCopy}
         variant="ghost"
         icon={hasCopied ? <SuccessOutline24Icon /> : <CopyOutline24Icon />}
+        size="sm"
         color="alias.darkGrey"
         visibility="hidden"
         opacity="0"

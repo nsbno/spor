@@ -1,9 +1,9 @@
-import { Divider } from "@chakra-ui/layout";
 import {
   Box,
   BoxProps,
   Card,
   Center,
+  Divider,
   Heading,
   SimpleGrid,
   SmileOutline30Icon,

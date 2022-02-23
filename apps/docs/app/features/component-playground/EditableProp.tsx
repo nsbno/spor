@@ -1,11 +1,11 @@
 import {
-  Center,
   ChoiceChip,
+  Flex,
   FormControl,
   Input,
   Select,
 } from "@vygruppen/spor-react";
-import { toCapitalCase, toTitleCase } from "~/utils/stringUtils";
+import { toTitleCase } from "~/utils/stringUtils";
 import { PropSpec } from "./usePlaygroundProps";
 
 export type EditablePropProps = {
@@ -17,13 +17,12 @@ export type EditablePropProps = {
   onChange: (key: string, value: string | boolean) => void;
 };
 export const EditableProp = ({ prop, value, onChange }: EditablePropProps) => {
-  const label = toTitleCase(prop.name === "children" ? "Tekst" : prop.name);
   switch (prop.type) {
     case "input":
       return (
         <FormControl>
           <Input
-            label={label}
+            label={toTitleCase(prop.name === "children" ? "Tekst" : prop.name)}
             value={value as string}
             onChange={(e) => onChange(prop.name, e.target.value)}
           />
@@ -31,21 +30,21 @@ export const EditableProp = ({ prop, value, onChange }: EditablePropProps) => {
       );
     case "choiceChip":
       return (
-        <Center>
+        <Flex alignItems="center">
           <ChoiceChip
             size="md"
             isChecked={value as boolean}
             onChange={(e) => onChange(prop.name, e.target.checked)}
           >
-            {toCapitalCase(label)}
+            {toTitleCase(prop.name.replace(/^is/i, ""))}
           </ChoiceChip>
-        </Center>
+        </Flex>
       );
     case "select":
       return (
         <FormControl>
           <Select
-            label={label}
+            label={toTitleCase(prop.name)}
             value={value as string}
             onChange={(e) => onChange(prop.name, e.target.value)}
           >

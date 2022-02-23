@@ -176,7 +176,7 @@ export const menuStructure: MenuStructure[] = [
       },
       {
         title: "Lenker",
-        href: "/komponenter/link",
+        href: "/komponenter/lenker",
         keywords: ["link", "a", "lenke", "knapper", "buttons"],
       },
     ],

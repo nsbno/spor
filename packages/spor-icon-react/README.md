@@ -606,6 +606,12 @@ PersonFill30Icon
 PersonOutline18Icon
 PersonOutline24Icon
 PersonOutline30Icon
+PhoneOutline18Icon
+PhoneOutline24Icon
+PhoneOutline30Icon
+PhoneFill18Icon
+PhoneFill24Icon
+PhoneFill30Icon
 PhoneSignalFill18Icon
 PhoneSignalFill24Icon
 PhoneSignalFill30Icon

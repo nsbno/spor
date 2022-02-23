@@ -5,6 +5,7 @@ import {
   AccordionItem,
   AccordionPanel,
   Divider,
+  Stack,
 } from "@vygruppen/spor-react";
 import { useLocation } from "react-router-dom";
 import { isDivider, menuStructure } from "../content-menu/menuStructure";
@@ -36,16 +37,18 @@ export const ContentMenu = () => {
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel pt={1} pb={0}>
-              {item.items.map((subItem) => (
-                <MenuItem
-                  key={subItem.href}
-                  href={subItem.href}
-                  height={6}
-                  isActive={subItem.href === location.pathname}
-                >
-                  {subItem.title}
-                </MenuItem>
-              ))}
+              <Stack spacing={0.5}>
+                {item.items.map((subItem) => (
+                  <MenuItem
+                    key={subItem.href}
+                    href={subItem.href}
+                    height={5}
+                    isActive={subItem.href === location.pathname}
+                  >
+                    {subItem.title}
+                  </MenuItem>
+                ))}
+              </Stack>
             </AccordionPanel>
           </AccordionItem>
         );

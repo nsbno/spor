@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 0.9.0
+
+### Minor Changes
+
+- efc463d: Add a link package
+
+### Patch Changes
+
+- Updated dependencies [efc463d]
+  - @vygruppen/spor-link-react@0.1.0
+  - @vygruppen/spor-theme-react@0.3.3
+
 ## 0.8.4
 
 ### Patch Changes

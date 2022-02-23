@@ -22,6 +22,7 @@ module.exports = {
         "packages/spor-table-react/",
         "packages/spor-accordion-react/",
         "packages/spor-design-tokens/",
+        "packages/spor-link-react/",
       ],
     },
   },

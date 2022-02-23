@@ -13,11 +13,15 @@ import { MenuItem } from "./MenuItem";
 
 export const ContentMenu = () => {
   const location = useLocation();
-  const activeIndex = menuStructure.findIndex(
+  let activeIndex = menuStructure.findIndex(
     (item) =>
       !isDivider(item) &&
       item.items.some((subItem) => subItem.href === location.pathname)
   );
+  const indexOfDivider = menuStructure.findIndex(isDivider);
+  if (activeIndex >= indexOfDivider) {
+    activeIndex = activeIndex - 1;
+  }
   return (
     <Accordion
       variant="list"

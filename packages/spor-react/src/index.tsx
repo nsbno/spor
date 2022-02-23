@@ -8,6 +8,7 @@ export * from "@vygruppen/spor-icon-react";
 export * from "@vygruppen/spor-image-react";
 export * from "@vygruppen/spor-input-react";
 export * from "@vygruppen/spor-layout-react";
+export * from "@vygruppen/spor-link-react";
 export * from "@vygruppen/spor-logo-react";
 export * from "@vygruppen/spor-modal-react";
 export * from "@vygruppen/spor-table-react";

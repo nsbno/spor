@@ -4,7 +4,7 @@ import { Link } from "remix";
 
 type MenuItemProps = FlexProps & {
   href: string;
-  children: string;
+  children: React.ReactNode;
   isActive?: boolean;
 };
 /**

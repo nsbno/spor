@@ -13,12 +13,9 @@ export const SearchResults = ({ query }: SearchResultsProps) => {
   return (
     <Box mt={2}>
       {hits.map((item) => (
-        <MenuItem
-          key={item.href}
-          href={item.href}
-          title={`${item.category}: ${item.title}`}
-          height={5}
-        />
+        <MenuItem key={item.href} href={item.href} height={5}>
+          {item.category}: {item.title}
+        </MenuItem>
       ))}
       {hits.length === 0 && (
         <Text textAlign="center">Ingen treff på "{query}"</Text>

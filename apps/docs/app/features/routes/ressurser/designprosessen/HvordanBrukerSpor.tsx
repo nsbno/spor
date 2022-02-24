@@ -5,10 +5,7 @@ import {
   Stack,
   Text,
   Image,
-  HStack,
   Flex,
-  Card,
-  Center,
 } from "@vygruppen/spor-react";
 
 type SporInfoProps = {
@@ -54,113 +51,115 @@ export default function HvordanBrukerSpor() {
 
 const BrukerSpor = (props: BoxProps) => {
   return (
-    <SimpleGrid {...props} columns={[1, 2]} spacing={8}>
-      <Stack spacing={2}>
-        <SporInfo title="Flyt i team 'X'">
-          <Text textStyle="sm">
-            Et team jobber med en ny flyt for å forbedre kundeopplevelsen vår.
-            Designet tar utgangspunkt i designsystemet, men ser at deler av
-            designet vil bli brukt på tvers av flere team.
-          </Text>
-        </SporInfo>
-      </Stack>
-      <Flex>
-        <Image
-          src="/images/component-examples/flyt-i-team-x-example-1.png"
-          alt="Bilder av flyt i team X brukes til å forbedre kundeopplevelsen"
-          rounded={"md"}
-          objectFit="contain"
-        />
-      </Flex>
-      <Stack spacing={2}>
-        <SporInfo title="Komponent">
-          <Text textStyle="sm">
-            For å kunne få oversikt over omfanget og helheten, er det viktig å
-            gjøre noen tester for å se hvordan denne komponenten kan fungere på
-            andre flater, og i andre og sammenhenger.
-          </Text>
-        </SporInfo>
-      </Stack>
-      <Flex>
-        <Image
-          src="/images/component-examples/card-component-example-2.png"
-          alt="Bilder av komponent brukes til å få oversikt over omfanget og helheten"
-          rounded={"md"}
-          objectFit="contain"
-        />
-      </Flex>
-      <Stack spacing={2}>
-        <SporInfo title="Arbeidsgruppe med andre team">
-          <Text textStyle="sm">
-            Det kan være nødvendig å samarbeide med designere fra andre team
-            eller med noen i Spor for å tilrettelegge designet på komponenten
-            for ulike flater.
-          </Text>
-        </SporInfo>
-      </Stack>
-      <Flex>
-        <Image
-          src="/images/component-examples/card-working-group-with-other-teams-example-1.png"
-          alt="Bilder av arbeid med andre team"
-          rounded={"md"}
-          objectFit="contain"
-        />
-      </Flex>
-      <Stack spacing={2}>
-        <SporInfo title="Utvikling i team 'X'">
-          <Text textStyle="sm">
-            Teamet som startet arbeidet, ferdigstiller komponentene og
-            variantene som man ser behov for. Utviklinge kan deles mellom de
-            involverte teamene om det er behov.
-          </Text>
-        </SporInfo>
-      </Stack>
-      <Flex>
-        <Image
-          src="/images/component-examples/card-development-in-team-x-example-1.png"
-          alt="Bilder av utvikling i team x"
-          rounded={"md"}
-          objectFit="contain"
-        />
-      </Flex>
-      <Stack spacing={2}>
-        <SporInfo title="I produksjon lokalt">
-          <Text textStyle="sm">
-            Løsningen settes i produksjon lokalt, sånn at designet kan
-            ferdigstilles og prosjektet kan rulle videre uten noen store
-            forsinkelser.
-          </Text>
-        </SporInfo>
-      </Stack>
-      <Flex>
-        <Image
-          src="/images/component-examples/card-production-locally-example-1.png"
-          alt="Bilder av produksjon lokalt"
-          rounded={"md"}
-          objectFit="contain"
-        />
-      </Flex>
-      <Stack spacing={2}>
-        <SporInfo title="Forslag til Spor">
-          <Text textStyle="sm">
-            Samtidig som løsningen brukes lokalt, blir det gjort en pull-request
-            fra det ansvarlige teamet som sendes til designsystemet. Spor ser
-            over og godkjenner komponenten og variantene, sånn at de kan
-            publiseres i designsystemet. Her kan det forekomme justeringer som
-            vil bli pushet tilbake til teamet, før det blir gjort en ny
-            gjennomgang før endelig godkjenning og implementering i
-            designsystemet.
-          </Text>
-        </SporInfo>
-      </Stack>
-      <Flex>
-        <Image
-          src="/images/component-examples/card-production-locally-example-1.png"
-          alt="Bilder av forslag til spor"
-          rounded={"md"}
-          objectFit="contain"
-        />
-      </Flex>
-    </SimpleGrid>
+    <Stack {...props} spacing={8}>
+      <SimpleGrid columns={[1, 2]} gap={[8, 4]}>
+        <Stack spacing={2}>
+          <SporInfo title="Flyt i team 'X'">
+            <Text textStyle="sm">
+              Et team jobber med en ny flyt for å forbedre kundeopplevelsen vår.
+              Designet tar utgangspunkt i designsystemet, men ser at deler av
+              designet vil bli brukt på tvers av flere team.
+            </Text>
+          </SporInfo>
+        </Stack>
+        <Flex>
+          <Image
+            src="/images/component-examples/card-move-in-team-x-example-1.png"
+            alt="Bilder av flyt i team x brukes til å frobedre kundeopplevelsen"
+            rounded={"md"}
+            objectFit="contain"
+          />
+        </Flex>
+        <Stack spacing={2}>
+          <SporInfo title="Komponent">
+            <Text textStyle="sm">
+              For å kunne få oversikt over omfanget og helheten, er det viktig å
+              gjøre noen tester for å se hvordan denne komponenten kan fungere
+              på andre flater, og i andre og sammenhenger.
+            </Text>
+          </SporInfo>
+        </Stack>
+        <Flex>
+          <Image
+            src="/images/component-examples/card-component-example-2.png"
+            alt="Bilder av komponent brukes til å få oversikt over omfanget og helheten"
+            rounded={"md"}
+            objectFit="contain"
+          />
+        </Flex>
+        <Stack spacing={2}>
+          <SporInfo title="Arbeidsgruppe med andre team">
+            <Text textStyle="sm">
+              Det kan være nødvendig å samarbeide med designere fra andre team
+              eller med noen i Spor for å tilrettelegge designet på komponenten
+              for ulike flater.
+            </Text>
+          </SporInfo>
+        </Stack>
+        <Flex>
+          <Image
+            src="/images/component-examples/card-working-group-with-other-teams-example-1.png"
+            alt="En profile bilder brukes til å merkervaren og kjernen til vy"
+            rounded={"md"}
+            objectFit="contain"
+          />
+        </Flex>
+        <Stack spacing={2}>
+          <SporInfo title="Utvikling i team 'X'">
+            <Text textStyle="sm">
+              Teamet som startet arbeidet, ferdigstiller komponentene og
+              variantene som man ser behov for. Utviklinge kan deles mellom de
+              involverte teamene om det er behov.
+            </Text>
+          </SporInfo>
+        </Stack>
+        <Flex>
+          <Image
+            src="/images/component-examples/card-development-in-team-x-example-1.png"
+            alt="En profile bilder brukes til å merkervaren og kjernen til vy"
+            rounded={"md"}
+            objectFit="contain"
+          />
+        </Flex>
+        <Stack spacing={2}>
+          <SporInfo title="I produksjon lokalt">
+            <Text textStyle="sm">
+              Løsningen settes i produksjon lokalt, sånn at designet kan
+              ferdigstilles og prosjektet kan rulle videre uten noen store
+              forsinkelser.
+            </Text>
+          </SporInfo>
+        </Stack>
+        <Flex>
+          <Image
+            src="/images/component-examples/card-production-locally-example-3.png"
+            alt="En profile bilder brukes til å merkervaren og kjernen til vy"
+            rounded={"md"}
+            objectFit="contain"
+          />
+        </Flex>
+        <Stack spacing={2}>
+          <SporInfo title="Forslag til Spor">
+            <Text textStyle="sm">
+              Samtidig som løsningen brukes lokalt, blir det gjort en
+              pull-request fra det ansvarlige teamet som sendes til
+              designsystemet. Spor ser over og godkjenner komponenten og
+              variantene, sånn at de kan publiseres i designsystemet. Her kan
+              det forekomme justeringer som vil bli pushet tilbake til teamet,
+              før det blir gjort en ny gjennomgang før endelig godkjenning og
+              implementering i designsystemet.
+            </Text>
+          </SporInfo>
+        </Stack>
+        <Flex>
+          <Image
+            src="/images/component-examples/card-suggestions-for-spor-example-2.png"
+            alt="En profile bilder brukes til å merkervaren og kjernen til vy"
+            rounded={"md"}
+            objectFit="contain"
+          />
+        </Flex>
+      </SimpleGrid>
+    </Stack>
   );
 };

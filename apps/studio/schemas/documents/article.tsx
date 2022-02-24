@@ -27,7 +27,12 @@ export const article: Document<Article> = {
       name: "content",
       title: "Content",
       type: "array",
-      of: [{ type: "introduction" }, { type: "block" }],
+      of: [
+        { type: "introduction" },
+        { type: "divider" },
+        { type: "block" },
+        { type: "imageWithCaption" },
+      ],
     },
   ],
 };

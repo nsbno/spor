@@ -1,3 +1,4 @@
+import { FiAlignCenter } from "react-icons/fi";
 import { BlockField, ObjectField } from "../schemaTypes";
 
 type Introduction = {
@@ -7,6 +8,7 @@ export const introduction: ObjectField<Introduction> = {
   name: "introduction",
   title: "Introduction",
   type: "object",
+  icon: FiAlignCenter,
   fields: [
     {
       name: "content",

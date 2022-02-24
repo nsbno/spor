@@ -208,6 +208,7 @@ export type ObjectField<
   name: Name;
   type: "object";
   title?: string;
+  icon?: React.ReactNode;
   fields: FieldCollection<keyof Schema>;
   validation?: Validation;
   preview?: Preview;
@@ -221,6 +222,7 @@ export type Document<Schema extends Record<string, any>> = {
   name: string;
   fields: FieldCollection<keyof Schema>;
   title?: string;
+  icon?: React.ReactNode;
   validation?: Validation;
   preview?: Preview;
   fieldsets?: Fieldset[];

@@ -6,6 +6,7 @@ import {
   SimpleGrid,
   Text,
   Divider,
+  Link,
 } from "@vygruppen/spor-react";
 
 import Designsystemet from "~/features/routes/ressurser/designprosessen/designsystemet";
@@ -70,9 +71,7 @@ const DesignProcess = (props: BoxProps) => {
           <Text>
             Merkevaren Vy Merkevaren vår er utviklet av Snøhetta. Denne er
             samlet i en Brand book, som du finner her:{" "}
-            <Text as="a" href="https://snohq.io/xx/">
-              https://snohq.io/xx/.{" "}
-            </Text>
+            <Link href="https://snohq.io/xx/">https://snohq.io/xx/.</Link>
             Dette er kjernen i alt vi lager og gjør, og de grunnleggende tankene
             bak opplevelsen vi ønsker at kundene våre skal ha når de bruker
             tjenestene våre. Vi jobber med å videreføre denne merkevaren i alt

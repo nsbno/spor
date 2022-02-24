@@ -48,27 +48,27 @@ const Designsystem = (props: BoxProps) => {
   return (
     <SimpleGrid {...props} spacing={[3, 4]}>
       <DesignsystemetDetails title="Ansvarsområde">
-        <Text>
-          Designsystemet har ansvar for alle byggeklossene. Det vil si alle
-          elementer som kan gjenbrukes uavhengig av flyt, design, komponent
-          eller tjeneste. Eksempler på dette kan være knapper, layout-grid,
-          modaler, tekststiler eller input-felt.
-        </Text>
-        <br />
-        <Text>
-          Vi har ansvar for de ulike bibliotekene. Vi skal holde de oppdaterte,
-          se på forbedringer og gjøre justeringer fortløpende. Bibliotekene vi
-          har ansvar for er: Lokale bibliotek i Figma, regler og retningslinjer
-          og den digitale plattformen på nett.
-        </Text>
-        <br />
-        <Text>
-          Vi har ikke ansvar for komponenter som tilhører teamene som f.eks.:
-          billetter, søkeresultater, kvittering eller prisdetaljer. Vi har
-          heller ikke ansvar for hvert enkelt teams komponentbibliotek. Men vi
-          kan tilrettelegge for å dele de med alle og bistå med design og
-          komponent-hjelp.
-        </Text>
+        <Stack spacing={4}>
+          <Text>
+            Designsystemet har ansvar for alle byggeklossene. Det vil si alle
+            elementer som kan gjenbrukes uavhengig av flyt, design, komponent
+            eller tjeneste. Eksempler på dette kan være knapper, layout-grid,
+            modaler, tekststiler eller input-felt.
+          </Text>
+          <Text>
+            Vi har ansvar for de ulike bibliotekene. Vi skal holde de
+            oppdaterte, se på forbedringer og gjøre justeringer fortløpende.
+            Bibliotekene vi har ansvar for er: Lokale bibliotek i Figma, regler
+            og retningslinjer og den digitale plattformen på nett.
+          </Text>
+          <Text>
+            Vi har ikke ansvar for komponenter som tilhører teamene som f.eks.:
+            billetter, søkeresultater, kvittering eller prisdetaljer. Vi har
+            heller ikke ansvar for hvert enkelt teams komponentbibliotek. Men vi
+            kan tilrettelegge for å dele de med alle og bistå med design og
+            komponent-hjelp.
+          </Text>
+        </Stack>
       </DesignsystemetDetails>
     </SimpleGrid>
   );

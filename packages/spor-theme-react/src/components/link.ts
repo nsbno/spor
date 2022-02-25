@@ -16,7 +16,17 @@ const baseStyle: SystemStyleObject = {
   position: "relative",
   textDecoration: "none",
 
-  "&:focus, &:focus-visible": {
+  "&:focus": {
+    _after: {
+      display: "none",
+    },
+  },
+  "&:focus:not(:focus-visible)": {
+    _after: {
+      display: "block",
+    },
+  },
+  "&:focus-visible": {
     _after: {
       display: "none",
     },
@@ -28,7 +38,7 @@ const baseStyle: SystemStyleObject = {
     width: "100%",
     height: "1px",
     position: "absolute",
-    bottom: 0,
+    bottom: "-2px",
     backgroundColor: "currentColor",
   },
 
@@ -42,12 +52,12 @@ const baseStyle: SystemStyleObject = {
 const variantPrimary: SystemStyleFunction = (props) => ({
   color: "alias.pine",
   _hover: {
-    color: "alias.pineTeal",
+    color: "alias.darkTeal",
   },
   _active: {
     color: "alias.primaryGreen",
   },
-  "&:focus, &:focus-visible": {
+  "&:focus": {
     color: "alias.white",
     backgroundColor: "alias.pine",
     boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.pine}`,
@@ -56,6 +66,11 @@ const variantPrimary: SystemStyleFunction = (props) => ({
     color: "alias.pine",
     boxShadow: "none",
     backgroundColor: "transparent",
+  },
+  "&:focus-visible": {
+    color: "alias.white",
+    backgroundColor: "alias.pine",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.pine}`,
   },
 });
 
@@ -67,7 +82,7 @@ const variantSecondary: SystemStyleFunction = (props) => ({
   _active: {
     color: "alias.dimGrey",
   },
-  "&:focus, &:focus-visible": {
+  "&:focus": {
     color: "alias.white",
     backgroundColor: "alias.darkGrey",
     boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.darkGrey}`,
@@ -76,6 +91,11 @@ const variantSecondary: SystemStyleFunction = (props) => ({
     color: "alias.darkGrey",
     boxShadow: "none",
     backgroundColor: "transparent",
+  },
+  "&:focus-visible": {
+    color: "alias.white",
+    backgroundColor: "alias.darkGrey",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.darkGrey}`,
   },
 });
 
@@ -87,7 +107,7 @@ const variantTertiary: SystemStyleFunction = (props) => ({
   _active: {
     color: "alias.silver",
   },
-  "&:focus, &:focus-visible": {
+  "&:focus": {
     color: "alias.pine",
     backgroundColor: "alias.white",
     boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.white}`,
@@ -96,6 +116,11 @@ const variantTertiary: SystemStyleFunction = (props) => ({
     color: "alias.white",
     boxShadow: "none",
     backgroundColor: "transparent",
+  },
+  "&:focus-visible": {
+    color: "alias.pine",
+    backgroundColor: "alias.white",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.white}`,
   },
 });
 

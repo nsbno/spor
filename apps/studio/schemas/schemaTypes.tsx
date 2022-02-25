@@ -33,7 +33,7 @@ export type CommonFieldProps = {
   description?: string;
   hidden?: boolean;
   readOnly?: boolean;
-  defaultValue?: any;
+  initialValue?: any;
   inputComponent?: ElementType;
 };
 

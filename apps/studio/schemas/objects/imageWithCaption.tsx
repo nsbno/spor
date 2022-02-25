@@ -4,11 +4,11 @@ import { BlockField, Field, ObjectField } from "../schemaTypes";
 type ImageWithCaption = {
   image: Field<"image">;
   alt: string;
-  content: BlockField;
+  caption: BlockField;
 };
 export const imageWithCaption: ObjectField<ImageWithCaption> = {
   name: "imageWithCaption",
-  title: "ImageWithCaption",
+  title: "Image with caption",
   type: "object",
   icon: MdOutlineImage,
   fields: [
@@ -28,11 +28,28 @@ export const imageWithCaption: ObjectField<ImageWithCaption> = {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: "content",
-      title: "Content",
+      name: "caption",
+      title: "Caption text",
       type: "array",
-      of: [{ type: "block" }],
-      validation: (Rule) => Rule.required(),
+      of: [{ type: "block", styles: [{ title: "Text", value: "normal" }] }],
     },
   ],
+  preview: {
+    select: {
+      blocks: "blocks",
+    },
+    prepare(value) {
+      const block = (value.blocks || []).find(
+        (block: any) => block._type === "block"
+      );
+      return {
+        title: block
+          ? block.children
+              .filter((child: any) => child._type === "span")
+              .map((span: any) => span.text)
+              .join("")
+          : "No title",
+      };
+    },
+  },
 };

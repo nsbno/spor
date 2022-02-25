@@ -1,3 +1,4 @@
+import { MdArticle } from "react-icons/md";
 import { BlockField, Document, SlugField } from "../schemaTypes";
 
 export type Article = {
@@ -9,6 +10,7 @@ export const article: Document<Article> = {
   name: "article",
   title: "Article",
   type: "document",
+  icon: MdArticle,
   fields: [
     {
       name: "title",
@@ -28,10 +30,21 @@ export const article: Document<Article> = {
       title: "Content",
       type: "array",
       of: [
-        { type: "introduction" },
+        {
+          type: "block",
+          styles: [
+            { title: "Text", value: "normal" },
+            { title: "Large heading", value: "h2" },
+            { title: "Medium heading", value: "h3" },
+            { title: "Small heading", value: "h4" },
+            { title: "Tiny heading", value: "h5" },
+            { title: "Quote", value: "blockquote" },
+          ],
+        },
         { type: "divider" },
-        { type: "block" },
+        { type: "introduction" },
         { type: "imageWithCaption" },
+        { type: "grid" },
       ],
     },
   ],

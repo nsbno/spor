@@ -8,5 +8,12 @@ export const divider: ObjectField = {
   description:
     "Use one of these whenever you want to add a divider to your content.",
   icon: MdHorizontalRule,
-  fields: [],
+  fields: [
+    {
+      name: "default",
+      type: "boolean",
+      hidden: true,
+      initialValue: true,
+    },
+  ],
 };

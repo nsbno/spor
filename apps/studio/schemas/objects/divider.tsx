@@ -1,3 +1,5 @@
+import { Center, Divider } from "@chakra-ui/react";
+import * as React from "react";
 import { MdHorizontalRule } from "react-icons/md";
 import { ObjectField } from "../schemaTypes";
 
@@ -16,4 +18,11 @@ export const divider: ObjectField = {
       initialValue: true,
     },
   ],
+  preview: {
+    component: () => (
+      <Center height="100%">
+        <Divider />
+      </Center>
+    ),
+  },
 };

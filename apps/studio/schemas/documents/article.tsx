@@ -28,24 +28,7 @@ export const article: Document<Article> = {
     {
       name: "content",
       title: "Content",
-      type: "array",
-      of: [
-        {
-          type: "block",
-          styles: [
-            { title: "Text", value: "normal" },
-            { title: "Large heading", value: "h2" },
-            { title: "Medium heading", value: "h3" },
-            { title: "Small heading", value: "h4" },
-            { title: "Tiny heading", value: "h5" },
-            { title: "Quote", value: "blockquote" },
-          ],
-        },
-        { type: "divider" },
-        { type: "introduction" },
-        { type: "imageWithCaption" },
-        { type: "grid" },
-      ],
+      type: "content",
     },
   ],
 };

@@ -25,16 +25,29 @@ export const grid: ObjectField = {
           type: "object",
           fields: [
             {
-              type: "array",
+              type: "content",
               name: "content",
               title: "Content",
-              of: [
-                { type: "block" },
-                { type: "imageWithCaption" },
-                { type: "buttonLink" },
-              ],
             },
           ],
+          preview: {
+            select: {
+              blocks: "content",
+            },
+            prepare(value) {
+              const block = (value.blocks || []).find(
+                (block: any) => block._type === "block"
+              );
+              return {
+                title: block
+                  ? block.children
+                      .filter((child: any) => child._type === "span")
+                      .map((span: any) => span.text)
+                      .join("")
+                  : "No title",
+              };
+            },
+          },
         },
       ],
     },

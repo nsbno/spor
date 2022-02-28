@@ -1,9 +1,9 @@
+import { PortableText } from "@portabletext/react";
 import {
   Box,
   BoxProps,
   Card,
   Center,
-  Divider,
   Heading,
   SimpleGrid,
   SmileOutline30Icon,
@@ -12,11 +12,29 @@ import {
   TimeOutline30Icon,
   TrainOutline30Icon,
 } from "@vygruppen/spor-react";
+import { LoaderFunction, useLoaderData } from "remix";
 import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
-import Component from "~/features/routes/ressurser/kom-i-gang/Component";
-import GetStarted from "~/features/routes/ressurser/kom-i-gang/getstarted";
-import Profile from "~/features/routes/ressurser/kom-i-gang/Profile";
-import Token from "~/features/routes/ressurser/kom-i-gang/Token";
+import { getClient } from "~/utils/sanity/client.server";
+
+export const loader: LoaderFunction = async () => {
+  const initialData = await getClient().fetch(
+    `*[_type == "article" && slug.current == "kom-i-gang"]`
+  );
+  return { initialData };
+};
+
+export default function GettingStartedPage() {
+  const { initialData } = useLoaderData();
+  console.log(initialData);
+  return (
+    <Box>
+      <Heading as="h1" textStyle="xl-display" mb={2}>
+        {initialData[0].title}
+      </Heading>
+      <PortableText value={initialData[0].content} />
+    </Box>
+  );
+}
 
 type IntroductionsProps = {
   title: string;
@@ -41,35 +59,6 @@ const IntroductionItem = ({
     <Text textStyle="xs">{children}</Text>
   </Stack>
 );
-
-export default function GettingStartedPage() {
-  return (
-    <Box>
-      <Heading as="h1" textStyle="xl-display" mb={2}>
-        Introduksjon
-      </Heading>
-      <Stack spacing={6} fontSize={["mobile.md", "desktop.md"]}>
-        <Text>
-          Velkommen til Spor, som er designsystemet til Vy. For oss, er Spor et
-          samlet felles språk for designere og utviklere. Det er et laget for å
-          hjelpe våre team med å bygge helhetlige brukerreiser av høy kvalitet,
-          både for ansatte og for kundene våre.
-        </Text>
-      </Stack>
-      <Stack spacing={6} mt={4}>
-        <Introductions />
-        <Divider />
-        <GetStarted />
-        <Divider />
-        <Profile />
-        <Divider />
-        <Component />
-        <Divider />
-        <Token />
-      </Stack>
-    </Box>
-  );
-}
 
 const Introductions = (props: BoxProps) => {
   return (

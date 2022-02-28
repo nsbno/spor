@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.3.4
+
+### Patch Changes
+
+- c2681e9: Styling corrections to Link component
+
 ## 0.3.3
 
 ### Patch Changes

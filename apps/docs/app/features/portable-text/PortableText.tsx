@@ -1,15 +1,14 @@
 import { ListItem, OrderedList, UnorderedList } from "@chakra-ui/react";
 import {
-  PortableText as SanityPortableText,
+  PortableText,
   PortableTextComponentsProvider as SanityPortableTextComponentsProvider,
   PortableTextReactComponents,
 } from "@portabletext/react";
-import urlBuilder from "@sanity/image-url";
 import {
   Box,
   Button,
   Divider,
-  Heading,
+  Flex,
   Image,
   Link,
   SimpleGrid,
@@ -18,6 +17,8 @@ import {
 } from "@vygruppen/spor-react";
 import React from "react";
 import { Link as InternalLink } from "remix";
+import { urlBuilder } from "~/utils/sanity/imageUtils";
+import { LinkableHeading } from "../linkable-heading/LinkableHeading";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
@@ -39,18 +40,38 @@ const components: Partial<PortableTextReactComponents> = {
     },
   },
   block: {
-    h2: ({ children }) => <Heading textStyle="xl-display">{children}</Heading>,
-    h3: ({ children }) => <Heading textStyle="lg">{children}</Heading>,
-    h4: ({ children }) => <Heading textStyle="md">{children}</Heading>,
-    h5: ({ children }) => <Heading textStyle="sm">{children}</Heading>,
-    h6: ({ children }) => <Heading textStyle="xs">{children}</Heading>,
+    h2: ({ children }) => (
+      <LinkableHeading as="h2" textStyle="xl-display">
+        {children}
+      </LinkableHeading>
+    ),
+    h3: ({ children }) => (
+      <LinkableHeading as="h3" textStyle="lg">
+        {children}
+      </LinkableHeading>
+    ),
+    h4: ({ children }) => (
+      <LinkableHeading as="h4" textStyle="md">
+        {children}
+      </LinkableHeading>
+    ),
+    h5: ({ children }) => (
+      <LinkableHeading as="h5" textStyle="sm">
+        {children}
+      </LinkableHeading>
+    ),
+    h6: ({ children }) => (
+      <LinkableHeading as="h6" textStyle="xs">
+        {children}
+      </LinkableHeading>
+    ),
     normal: ({ children }) => <Text textStyle="sm">{children}</Text>,
   },
   list: {
     bullet: ({ children }) => <UnorderedList>{children}</UnorderedList>,
     number: ({ children }) => <OrderedList>{children}</OrderedList>,
-    listItem: ({ children }) => <ListItem>{children}</ListItem>,
   },
+  listItem: ({ children }) => <ListItem>{children}</ListItem>,
   types: {
     buttonLink: ({ value }) => {
       const isExternal = value.url.startsWith("/");
@@ -58,47 +79,89 @@ const components: Partial<PortableTextReactComponents> = {
         ? { as: "a", href: value.url }
         : { as: Link, to: value.url };
       return (
-        <Button variant={value.variant} size={value.size} {...linkProps}>
-          {value.text}
-        </Button>
+        <Box>
+          <Button variant={value.variant} size={value.size} {...linkProps}>
+            {value.text}
+          </Button>
+        </Box>
       );
     },
-    divider: () => <Divider />,
-    introduction: ({ value }) => (
-      <Stack spacing={6} fontSize={["mobile.md", "desktop.md"]}>
-        <SanityPortableText value={value} />
-      </Stack>
-    ),
+    divider: () => <Divider height="1px" />,
+    introduction: ({ value }) => {
+      return (
+        <Stack spacing={3}>
+          <PortableText
+            value={value.content}
+            components={{
+              block: {
+                normal: ({ children }) => (
+                  <Text textStyle="md">{children}</Text>
+                ),
+              },
+            }}
+          />
+        </Stack>
+      );
+    },
     grid: ({ value }) => (
-      <SimpleGrid columns={[1, 2, value.maxNumberOfColumns]}>
+      <SimpleGrid columns={[1, 2, value.maxNumberOfColumns]} gap={6}>
         {value.content.map((item: any) => (
-          <SanityPortableText value={item} key={item._key} />
+          <PortableText value={item} key={item._key} />
         ))}
       </SimpleGrid>
     ),
+    gridCell: ({ value }) => {
+      const alignmentMap = {
+        top: "flex-start",
+        center: "center",
+        bottom: "flex-end",
+      };
+      const alignItems =
+        alignmentMap[value.verticalAlignment as keyof typeof alignmentMap] ??
+        "flex-start";
+      return (
+        <Flex justifyContent="center" alignItems={alignItems}>
+          <Stack spacing={3}>
+            <PortableText value={value.content} />
+          </Stack>
+        </Flex>
+      );
+    },
     imageWithCaption: ({ value }) => (
       <Stack spacing={2}>
         {value.image && (
           <Box>
             <Image
-              src={urlBuilder()
+              src={urlBuilder
                 .image(value.image)
-                .width(800)
+                .width(924)
                 .fit("max")
                 .auto("format")
                 .url()}
               alt={value.alt || ""}
+              mx="auto"
             />
           </Box>
         )}
         {value.caption && (
-          <Box textStyle="sm" color="alias.osloGrey">
-            <SanityPortableText value={value.caption} />
-          </Box>
+          <Stack textStyle="sm" color="alias.osloGrey">
+            <PortableText value={value.caption} />
+          </Stack>
         )}
       </Stack>
     ),
-    image: ({ value }) => <Image src={value.src} alt={value.alt} />,
+    image: ({ value }) => (
+      <Image
+        src={urlBuilder
+          .image(value.image)
+          .width(924)
+          .fit("max")
+          .auto("format")
+          .url()}
+        alt={value.alt}
+        mx="auto"
+      />
+    ),
   },
 };
 

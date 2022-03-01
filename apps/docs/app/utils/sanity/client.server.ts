@@ -1,5 +1,5 @@
 import PicoSanity from "picosanity";
-import { sanityConfig } from "./config.server";
+import { sanityConfig } from "./config";
 
 /** Standard Sanity client for fetching data */
 const sanityClient = new PicoSanity(sanityConfig);

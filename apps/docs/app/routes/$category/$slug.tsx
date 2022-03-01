@@ -21,7 +21,7 @@ export const loader: LoaderFunction = async ({ params }) => {
   return { initialData };
 };
 
-export default function GettingStartedPage() {
+export default function ArticlePage() {
   const { initialData } = useLoaderData();
   return (
     <DocsLayout>

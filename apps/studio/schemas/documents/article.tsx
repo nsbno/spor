@@ -1,8 +1,15 @@
 import { MdArticle } from "react-icons/md";
-import { BlockField, Document, SlugField } from "../schemaTypes";
+import {
+  BlockField,
+  Document,
+  Field,
+  SlugField,
+  StringField,
+} from "../schemaTypes";
 
 export type Article = {
-  title: string;
+  title: StringField;
+  category: Field;
   slug: SlugField;
   content: BlockField;
 };
@@ -24,6 +31,12 @@ export const article: Document<Article> = {
       options: {
         source: "title",
       },
+    },
+    {
+      name: "category",
+      title: "Category",
+      type: "reference",
+      to: [{ type: "category" }],
     },
     {
       name: "content",

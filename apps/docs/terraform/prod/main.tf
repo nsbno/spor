@@ -20,29 +20,23 @@ terraform {
 }
 
 provider "aws" {
-  region              = "eu-central-1"
+  region              = "eu-west-1"
   allowed_account_ids = ["635004941268"]
 }
 
 locals {
+  name_prefix      = "digitalekanaler"
   application_name = "spor"
 }
 
-data "aws_caller_identity" "current" {}
-
-module "ecr" {
-  source      = "github.com/nsbno/terraform-aws-ecr?ref=71ca5e2"
-  name_prefix = local.application_name
-
-  max_images_retained = 10
-
-  trusted_accounts = [
-    data.aws_caller_identity.current.account_id
-  ]
+module "app" {
+  source           = "../template"
+  name_prefix      = local.name_prefix
+  application_name = local.application_name
 
   tags = {
     environment = "prod"
-    application = "spor"
+    application = local.application_name
     terraform   = "True"
   }
 }

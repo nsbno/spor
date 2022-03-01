@@ -25,6 +25,21 @@ export const grid: ObjectField = {
           type: "object",
           fields: [
             {
+              type: "string",
+              name: "verticalAlignment",
+              title: "Vertical alignment",
+              description:
+                "How should the content be aligned vertically within the grid cell?",
+              options: {
+                list: [
+                  { title: "Top", value: "top" },
+                  { title: "Center", value: "center" },
+                  { title: "Bottom", value: "bottom" },
+                ],
+              },
+              initialValue: "top",
+            },
+            {
               type: "content",
               name: "content",
               title: "Content",

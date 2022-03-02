@@ -1,54 +1,66 @@
 import { PortableText } from "@portabletext/react";
-import { Badge, Box, Heading, Stack } from "@vygruppen/spor-react";
-import { LoaderFunction, useLoaderData } from "remix";
+import { Badge, Box, Heading, HStack, Stack } from "@vygruppen/spor-react";
+import { LoaderFunction } from "remix";
 import { DocsLayout } from "~/features/layouts/docs-layout/DocsLayout";
-import { getClient } from "~/utils/sanity/client.server";
+import { getClient } from "~/utils/sanity/client";
 import {
-  filterDataToSingleItem,
-  isValidPreviewRequest,
-} from "~/utils/sanity/utils";
+  PreviewableLoaderData,
+  usePreviewableData,
+} from "~/utils/sanity/usePreviewableData";
+import { isValidPreviewRequest } from "~/utils/sanity/utils";
 
-type LoaderData = {
-  initialData: {
-    _id: string;
+type Data = {
+  _id: string;
+  title: string;
+  slug: string;
+  category: {
     title: string;
     slug: string;
-    category: {
-      title: string;
-      slug: string;
-    };
-    content: any[];
-  }[];
-  isPreview: boolean;
+  };
+  content: any[];
 };
-export const loader: LoaderFunction = async ({ params, request }) => {
-  const initialData = await getClient().fetch<LoaderData["initialData"]>(
-    `*[_type == "article" && category->slug.current == $categorySlug && slug.current == $articleSlug] {
-      _id,
+type LoaderData = PreviewableLoaderData<Data>;
+
+export const loader: LoaderFunction = async ({
+  params,
+  request,
+}): Promise<LoaderData> => {
+  const query = `*[_type == "article" && category->slug.current == $categorySlug && slug.current == $articleSlug] {
+    _id,
+    title,
+    "slug": slug.current,
+    category->{
       title,
-      "slug": slug.current,
-      category->{
-        title,
-        "slug": slug.current
-      },
-      content
-    }`,
-    { categorySlug: params.category, articleSlug: params.slug }
-  );
+      "slug": slug.current
+    },
+    content
+  }`;
+  const queryParams = {
+    categorySlug: params.category as string,
+    articleSlug: params.slug as string,
+  };
   const isPreview = isValidPreviewRequest(request);
-  return { initialData, isPreview };
+  const initialData = await getClient(isPreview).fetch<
+    LoaderData["initialData"]
+  >(query, queryParams);
+  return {
+    initialData,
+    isPreview,
+    query: isPreview ? query : null,
+    queryParams: isPreview ? queryParams : null,
+  };
 };
 
 export default function ArticlePage() {
-  const { initialData, isPreview } = useLoaderData<LoaderData>();
-  const article = filterDataToSingleItem(initialData, isPreview);
+  const { data: article, isPreview } = usePreviewableData<Data>();
   return (
     <DocsLayout>
-      {article.category?.title && (
-        <Badge colorScheme="green" mb={1}>
-          {article.category?.title}
-        </Badge>
-      )}
+      <HStack mb={1}>
+        {article.category?.title && (
+          <Badge colorScheme="green">{article.category?.title}</Badge>
+        )}
+        {isPreview && <Badge colorScheme="red">Preview</Badge>}
+      </HStack>
       <Box>
         <Heading as="h1" textStyle="xl-display" mb={2}>
           {article.title}

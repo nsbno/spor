@@ -8,9 +8,9 @@ const sanityClient = new PicoSanity(sanityConfig);
 const previewClient = new PicoSanity({
   ...sanityConfig,
   useCdn: false,
-  token: process.env.SANITY_API_TOKEN ?? "",
+  token: process.env.SANITY_PREVIEW_API_TOKEN ?? "",
 });
 
 /** Get the correct Sanity client */
 export const getClient = (usePreview = false) =>
-  usePreview ? sanityClient : previewClient;
+  usePreview ? previewClient : sanityClient;

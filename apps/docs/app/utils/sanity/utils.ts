@@ -12,25 +12,23 @@ export const isValidPreviewRequest = (request: Request) => {
   );
 };
 
-type SanityDocument = { _id: string };
 /**
  * Returns the correct item based on whether or not we're in preview mode
  **/
-export const filterDataToSingleItem = <T extends SanityDocument>(
-  data: T | T[] = [],
-  preview = false
-) => {
+export const filterDataToSingleItem = <T extends { _id: string }>(
+  data: T[] = [],
+  isPreview = false
+): T => {
   if (!Array.isArray(data)) {
     return data;
   }
 
-  if (data.length === 1) {
-    return data[0];
+  if (isPreview) {
+    return (
+      (data.find((item) => item._id.startsWith(`drafts.`)) as T) ||
+      (data[0] as T)
+    );
   }
 
-  if (preview) {
-    return data.find((item) => item._id.startsWith(`drafts.`)) || data[0];
-  }
-
-  return data[0];
+  return data[0] as T;
 };

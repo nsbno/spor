@@ -21,7 +21,7 @@ export const menuStructure: MenuStructure[] = [
     items: [
       {
         title: "Introduksjon",
-        href: "/kom-i-gang",
+        href: "/kom-i-gang/introduksjon",
         keywords: ["intro"],
         isAvailable: true,
       },

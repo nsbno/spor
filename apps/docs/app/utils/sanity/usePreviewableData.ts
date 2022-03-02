@@ -22,8 +22,6 @@ export const usePreviewableData = <Data extends { _id: string }>() => {
   const { initialData, isPreview, query, queryParams } =
     useLoaderData<PreviewableLoaderData<Data>>();
 
-  // This two-line killer combo makes sure the state is reset whenever
-  // the initial data changes
   const [currentData, setCurrentData] = useState(initialData);
   useEffect(() => setCurrentData(initialData), [initialData]);
 

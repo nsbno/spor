@@ -1,6 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import { Badge, Box, Heading, HStack, Stack } from "@vygruppen/spor-react";
-import { LoaderFunction } from "remix";
+import type { LoaderFunction } from "remix";
 import { DocsLayout } from "~/features/layouts/docs-layout/DocsLayout";
 import { getClient } from "~/utils/sanity/client";
 import {

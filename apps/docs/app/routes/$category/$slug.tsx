@@ -1,6 +1,7 @@
 import { PortableText } from "@portabletext/react";
 import { Badge, Box, Heading, HStack, Stack } from "@vygruppen/spor-react";
 import type { LoaderFunction } from "remix";
+import invariant from "tiny-invariant";
 import { DocsLayout } from "~/features/layouts/docs-layout/DocsLayout";
 import { getClient } from "~/utils/sanity/client";
 import {
@@ -25,6 +26,9 @@ export const loader: LoaderFunction = async ({
   params,
   request,
 }): Promise<LoaderData> => {
+  invariant(params.category, "Expected params.category");
+  invariant(params.slug, "Expected params.article");
+
   const query = `*[_type == "article" && category->slug.current == $categorySlug && slug.current == $articleSlug] {
     _id,
     title,
@@ -36,13 +40,18 @@ export const loader: LoaderFunction = async ({
     content
   }`;
   const queryParams = {
-    categorySlug: params.category as string,
-    articleSlug: params.slug as string,
+    categorySlug: params.category,
+    articleSlug: params.slug,
   };
   const isPreview = isValidPreviewRequest(request);
   const initialData = await getClient(isPreview).fetch<
     LoaderData["initialData"]
   >(query, queryParams);
+
+  if (!initialData || !initialData.length) {
+    throw new Response("Not Found", { status: 404 });
+  }
+
   return {
     initialData,
     isPreview,

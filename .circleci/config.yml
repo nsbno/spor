@@ -24,7 +24,7 @@ jobs:
   build-node:
     docker:
       - image: circleci/node:17.2
-    working_directory: /repo/apps/docs
+    working_directory: ~/repo/apps/docs
     steps:
       - checkout:
           path: ../../

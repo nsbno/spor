@@ -1,6 +1,5 @@
 version: 2.1
 orbs:
-  ci-orb: vydev/ciorb@2.3.0
   node: circleci/node@5.0.0
 parameters:
   ecr_repo_name:
@@ -11,18 +10,32 @@ parameters:
     default: "635004941268.dkr.ecr.eu-central-1.amazonaws.com"
 
 jobs:
+  validate-terraform:
+    docker:
+      - image: vydev/terraform:1.0.8
+    steps:
+      - checkout:
+          path: ~/repo
+      - run:
+          name: Validate terraform code
+          command: |
+            printf "Validating terraform code\n"
+            cd ~/repo/apps/docs/terraform/prod
+            terraform init -backend=false && terraform validate
+
   build-node:
     docker:
       - image: circleci/node:17.2
     steps:
-      - checkout
+      - checkout:
+          path: ~/repo
       - node/install-packages:
-          app-dir: apps/docs
+          app-dir: ~/repo/apps/docs
       - run:
           command: npm run build
-          working-directory: apps/docs
+          working_directory: ~/repo/apps/docs
       - persist_to_workspace:
-          root: apps/docs
+          root: ~/repo/apps/docs
           paths:
             - node_modules
             - build
@@ -73,9 +86,7 @@ workflows:
   version: 2
   build:
     jobs:
-      - ci-orb/validate-terraform:
-          terraformimage: "vydev/terraform:1.0.8"
-          envs: "prod"
+      - validate-terraform
       - build-node
       - build-docker:
           context: digitalekanaler

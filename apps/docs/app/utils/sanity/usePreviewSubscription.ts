@@ -4,7 +4,7 @@ import { sanityConfig } from "./config";
 
 type UsePreviewSubscriptionArgs<T> = {
   query: string | null;
-  params: Record<string, unknown> | null;
+  params?: Record<string, unknown> | null;
   onChange: (data: T) => void;
 };
 export const usePreviewSubscription = <T>({
@@ -13,7 +13,7 @@ export const usePreviewSubscription = <T>({
   onChange,
 }: UsePreviewSubscriptionArgs<T>) => {
   useEffect(() => {
-    if (!query || !params) {
+    if (!query) {
       return;
     }
 
@@ -39,7 +39,7 @@ export const usePreviewSubscription = <T>({
 
       subscription = store.subscribe(
         query as string,
-        params as Record<string, unknown>,
+        params ?? {},
         (err, result) => {
           if (err) {
             console.error(

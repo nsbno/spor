@@ -81,7 +81,7 @@ jobs:
             aws ecr get-login-password --region eu-central-1 \
               | docker login --username AWS --password-stdin "$ECR_ENDPOINT"
             SHORT_SHA1=`echo ${CIRCLE_SHA1}|cut -c1-7`
-            docker build -t ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> -f Docker/Dockerfile .
+            docker build -t ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> -f Dockerfile .
             docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${SHORT_SHA1}"
             docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${SHORT_SHA1}"
             docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"

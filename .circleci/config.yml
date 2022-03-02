@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  node: circleci/node@5.0.0
 parameters:
   ecr_repo_name:
     type: string
@@ -26,16 +24,24 @@ jobs:
   build-node:
     docker:
       - image: circleci/node:17.2
+    working_directory: /repo/apps/docs
     steps:
       - checkout:
-          path: ~/repo
-      - node/install-packages:
-          app-dir: ~/repo/apps/docs
+          path: ../../
+      - restore_cache:
+          keys:
+            - npm-deps-v1-{{ checksum "package.json" }}
+            - npm-deps-v1-
+      - run:
+          command: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: npm-deps-v1-{{ checksum "package.json" }}-{{ epoch }}
       - run:
           command: npm run build
-          working_directory: ~/repo/apps/docs
       - persist_to_workspace:
-          root: ~/repo/apps/docs
+          root: .
           paths:
             - node_modules
             - build

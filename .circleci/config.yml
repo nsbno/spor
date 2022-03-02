@@ -1,0 +1,105 @@
+version: 2.1
+parameters:
+  ecr_repo_name:
+    type: string
+    default: "digitalekanaler-spor"
+  ecr_endpoint:
+    type: string
+    default: "635004941268.dkr.ecr.eu-central-1.amazonaws.com"
+
+jobs:
+  validate-terraform:
+    docker:
+      - image: vydev/terraform:1.0.8
+    steps:
+      - checkout:
+          path: ~/repo
+      - run:
+          name: Validate terraform code
+          command: |
+            printf "Validating terraform code\n"
+            cd ~/repo/apps/docs/terraform/prod
+            terraform init -backend=false && terraform validate
+
+  build-node:
+    docker:
+      - image: circleci/node:17.2
+    working_directory: ~/repo/apps/docs
+    steps:
+      - checkout:
+          path: ../../
+      - restore_cache:
+          keys:
+            - npm-deps-v1-{{ checksum "package.json" }}
+            - npm-deps-v1-
+      - run:
+          command: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: npm-deps-v1-{{ checksum "package.json" }}-{{ epoch }}
+      - run:
+          command: npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+            - build
+            - public
+            - package.json
+            - Dockerfile
+
+  build-docker:
+    parameters:
+      ecr_repo_name:
+        type: string
+        description: "The name of the ECR repository to push Docker images to"
+      ecr_endpoint:
+        type: string
+        description: "The ECR endpoint to use (note: the CircleCI project environment variable ECR_ENDPOINT takes higher precedence than this parameter)."
+        default: ""
+    docker:
+      - image: 'vydev/circleci-ecr:latest'
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+    working_directory: /tmp/workspace
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: "Build Docker image"
+          command: |
+            ECR_ENDPOINT="${ECR_ENDPOINT:-<< parameters.ecr_endpoint >>}"
+            if [ -z "$ECR_ENDPOINT" ]; then
+              echo "ECR endpoint has not been set"
+              exit 1
+            fi
+            aws ecr get-login-password --region eu-central-1 \
+              | docker login --username AWS --password-stdin "$ECR_ENDPOINT"
+            SHORT_SHA1=`echo ${CIRCLE_SHA1}|cut -c1-7`
+            docker build -t ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> -f Docker/Dockerfile .
+            docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${SHORT_SHA1}"
+            docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${SHORT_SHA1}"
+            docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
+            docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
+
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - validate-terraform
+      - build-node
+      - build-docker:
+          context: digitalekanaler
+          ecr_repo_name: << pipeline.parameters.ecr_repo_name >>
+          ecr_endpoint: << pipeline.parameters.ecr_endpoint >>
+          requires:
+            - build-node
+          filters:
+            branches:
+              only: main

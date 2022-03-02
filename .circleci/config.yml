@@ -65,14 +65,24 @@ jobs:
             docker build -t ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> -f Docker/Dockerfile .
             docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${SHORT_SHA1}"
             docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${SHORT_SHA1}"
+            docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
+            docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
 
 
 workflows:
   version: 2
   build:
     jobs:
+      - ci-orb/validate-terraform:
+          terraformimage: "vydev/terraform:1.0.8"
+          envs: "prod"
       - build-node
       - build-docker:
           context: digitalekanaler
           ecr_repo_name: << pipeline.parameters.ecr_repo_name >>
           ecr_endpoint: << pipeline.parameters.ecr_endpoint >>
+          requires:
+            - build-node
+          filters:
+            branches:
+              only: main

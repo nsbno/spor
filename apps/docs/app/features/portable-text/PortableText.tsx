@@ -17,7 +17,7 @@ import {
 } from "@vygruppen/spor-react";
 import React from "react";
 import { Link as InternalLink } from "remix";
-import { urlBuilder } from "~/utils/sanity/imageUtils";
+import { urlBuilder } from "~/utils/sanity/utils";
 import { LinkableHeading } from "../linkable-heading/LinkableHeading";
 
 const components: Partial<PortableTextReactComponents> = {

@@ -2,7 +2,7 @@ import { createCookieSessionStorage } from "remix";
 import {
   defaultUserPreferences,
   isValidUserPreferences,
-  UserPreferences,
+  UserPreferences
 } from "../features/user-preferences/UserPreferencesContext";
 
 const sessionSecret = process.env.SESSION_SECRET;

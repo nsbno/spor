@@ -19,7 +19,11 @@ export const ProgressBar = ({
   const style = useMultiStyleConfig("ProgressBar", { colorScheme });
   return (
     <Box __css={style.root}>
-      <ProgressBarProvider onClick={onClick} activeStepIndex={activeStepIndex}>
+      <ProgressBarProvider
+        onClick={onClick}
+        activeStepIndex={activeStepIndex}
+        colorScheme={colorScheme}
+      >
         {React.Children.toArray(children).map((child, index) =>
           React.cloneElement(child as any, { index })
         )}

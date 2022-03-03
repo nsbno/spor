@@ -1,4 +1,11 @@
-import { Box, BoxProps, Stack, Text } from "@vygruppen/spor-react";
+import {
+  Box,
+  BoxProps,
+  SimpleGrid,
+  Stack,
+  Text,
+  Image,
+} from "@vygruppen/spor-react";
 import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
 import { ComponentPlayground } from "~/features/component-playground/ComponentPlayground";
 import { usePlaygroundProps } from "~/features/component-playground/usePlaygroundProps";
@@ -71,7 +78,7 @@ const Guidelines = (props: BoxProps) => {
           aktivt og beskriver en handling, mens punktet “Billetter” ikke er
           aktivt.
         </Text>
-        <LinkableHeading as="h3" textStyle="lg" fontWeight="bold">
+        <LinkableHeading as="h5" textStyle="xs" fontWeight="bold">
           Når skal du bruke en Progress Bar?
         </LinkableHeading>
         <Text>
@@ -81,7 +88,9 @@ const Guidelines = (props: BoxProps) => {
           tilleggsvalg, skjemaer som skal fylles ut for å kreve refusjon eller
           påmelding av en ny tjeneste for å dele opp valgene over flere sider.
         </Text>
-        <LinkableHeading as="h3" textStyle="lg" fontWeight="bold">
+      </Stack>
+      <Stack spacing={2}>
+        <LinkableHeading as="h3" textStyle="md" fontWeight="bold">
           Design
         </LinkableHeading>
         <Text>
@@ -93,6 +102,22 @@ const Guidelines = (props: BoxProps) => {
           midstilte eller være venstrestilt etter kolonner.
         </Text>
       </Stack>
+      <SimpleGrid columns={[1, 2]} gap={[8, 4]}>
+        <Stack spacing={1.5}>
+          <Image
+            src="/images/component-examples/progress-bar-example-1.png"
+            alt="En progress bar brukes i mobil versjon"
+            borderRadius="sm"
+          />
+        </Stack>
+        <Stack spacing={1.5}>
+          <Image
+            src="/images/component-examples/progress-bar-example-2.png"
+            alt="En progress bar brukes i desktop versjon"
+            borderRadius="sm"
+          />
+        </Stack>
+      </SimpleGrid>
     </Stack>
   );
 };

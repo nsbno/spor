@@ -1,17 +1,26 @@
-import { useMultiStyleConfig } from "@chakra-ui/react";
-import { Box, Flex } from "@vygruppen/spor-react";
+import { useMultiStyleConfig, AccordionIcon, HStack } from "@chakra-ui/react";
+import { Box, Flex, Stack } from "@vygruppen/spor-layout-react";
 import React from "react";
 import { useProgressBar } from "./ProgressBarContext";
 
 type ProgressBarStepProps = {
   children: React.ReactNode;
   index?: number;
+  icon?: React.ReactNode;
 };
-export const ProgressBarStep = ({ children, index }: ProgressBarStepProps) => {
+export const ProgressBarStep = ({
+  children,
+  index,
+  icon,
+}: ProgressBarStepProps) => {
   const guaranteedIndex = index ?? 0;
-  const { activeStepIndex, onClick } = useProgressBar();
+  const { activeStepIndex, onClick, colorScheme } = useProgressBar();
   const variant = getVariant(guaranteedIndex, activeStepIndex);
-  const styles = useMultiStyleConfig("ProgressBar", { variant });
+  const styles = useMultiStyleConfig("ProgressBar", {
+    variant,
+    colorScheme,
+    icon,
+  });
 
   return (
     <Flex
@@ -20,8 +29,11 @@ export const ProgressBarStep = ({ children, index }: ProgressBarStepProps) => {
       alignItems="center"
       onClick={() => onClick(guaranteedIndex)}
     >
-      <Box __css={styles.circle}>{guaranteedIndex + 1}</Box>
-      <Box>{children}</Box>
+      <Box __css={styles.stepNumber}>{guaranteedIndex + 1}</Box>
+
+      <Box __css={styles.stepTitle}>{children}</Box>
+
+      <Box __css={styles.chevron}>{icon}</Box>
     </Flex>
   );
 };

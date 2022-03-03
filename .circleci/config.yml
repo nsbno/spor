@@ -78,7 +78,7 @@ jobs:
               echo "ECR endpoint has not been set"
               exit 1
             fi
-            aws ecr get-login-password --region eu-central-1 \
+            aws ecr get-login-password --region eu-west-1 \
               | docker login --username AWS --password-stdin "$ECR_ENDPOINT"
             SHORT_SHA1=`echo ${CIRCLE_SHA1}|cut -c1-7`
             docker build -t ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> -f Dockerfile .

@@ -5,7 +5,7 @@ parameters:
     default: "digitalekanaler-spor"
   ecr_endpoint:
     type: string
-    default: "635004941268.dkr.ecr.eu-central-1.amazonaws.com"
+    default: "635004941268.dkr.ecr.eu-west-1.amazonaws.com"
 
 jobs:
   validate-terraform:

@@ -47,6 +47,7 @@ jobs:
             - build
             - public
             - package.json
+            - entrypoint.sh
             - Dockerfile
 
   build-docker:

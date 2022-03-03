@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 0.2.0
+
+### Minor Changes
+
+- ed97c76: Add headphones icons
+
 ## 0.1.1
 
 ### Patch Changes

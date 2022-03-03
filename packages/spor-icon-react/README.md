@@ -404,6 +404,12 @@ HamburgerFill30Icon
 HamburgerOutline18Icon
 HamburgerOutline24Icon
 HamburgerOutline30Icon
+HeadphonesFill18Icon
+HeadphonesFill24Icon
+HeadphonesFill30Icon
+HeadphonesOutline18Icon
+HeadphonesOutline24Icon
+HeadphonesOutline30Icon
 HistoryFill18Icon
 HistoryFill24Icon
 HistoryFill30Icon

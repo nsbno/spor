@@ -90,8 +90,8 @@ resource "aws_kms_alias" "application_key_alias" {
 #                                #
 ##################################
 
-resource "aws_ssm_parameter" "cms_api_key" {
-  name   = "/config/${var.application_name}/cms_api_key"
+resource "aws_ssm_parameter" "sanity_preview_api_token" {
+  name   = "/config/${var.application_name}/sanity_preview_api_token"
   type   = "SecureString"
   value  = "null"
   key_id = aws_kms_key.application_key.id
@@ -99,6 +99,68 @@ resource "aws_ssm_parameter" "cms_api_key" {
   lifecycle {
     ignore_changes = [value]
   }
+}
+
+resource "aws_ssm_parameter" "sanity_preview_secret" {
+  name   = "/config/${var.application_name}/sanity_preview_secret"
+  type   = "SecureString"
+  value  = "null"
+  key_id = aws_kms_key.application_key.id
+
+  lifecycle {
+    ignore_changes = [value]
+  }
+}
+
+##################################
+#                                #
+# App Runner instance profile    #
+#                                #
+##################################
+
+
+resource "aws_iam_role" "task_role" {
+  name               = "${var.name_prefix}-${var.application_name}-task-role"
+  assume_role_policy = data.aws_iam_policy_document.task_assume.json
+}
+
+data "aws_iam_policy_document" "task_assume" {
+  statement {
+    principals {
+      type        = "Service"
+      identifiers = ["tasks.apprunner.amazonaws.com"]
+    }
+    actions = ["sts:AssumeRole"]
+  }
+}
+
+data "aws_iam_policy_document" "task_policy" {
+  statement {
+    actions = ["ssm:GetParameters"]
+
+    resources = [
+      aws_ssm_parameter.sanity_preview_api_token.arn,
+      aws_ssm_parameter.sanity_preview_secret.arn,
+    ]
+  }
+  statement {
+    actions = ["kms:Decrypt"]
+
+    resources = [
+      aws_kms_key.application_key.arn
+    ]
+  }
+}
+
+resource "aws_iam_policy" "task_policy" {
+  name   = "${var.name_prefix}-${var.application_name}-task-policy"
+  path   = "/"
+  policy = data.aws_iam_policy_document.task_policy.json
+}
+
+resource "aws_iam_role_policy_attachment" "task_role_policy_attachment" {
+  role       = aws_iam_role.task_role.name
+  policy_arn = aws_iam_policy.task_policy.arn
 }
 
 ##################################
@@ -118,14 +180,19 @@ resource "aws_apprunner_service" "service" {
       image_configuration {
         port = "3000"
         runtime_environment_variables = {
-          SESSION_SECRET = random_string.session_secret.result
-          CMS_API_KEY    = aws_ssm_parameter.cms_api_key.value
+          SESSION_SECRET           = random_string.session_secret.result
+          SANITY_PREVIEW_API_TOKEN = "ssm://${aws_ssm_parameter.sanity_preview_api_token.name}"
+          SANITY_PREVIEW_SECRET    = "ssm://${aws_ssm_parameter.sanity_preview_secret.name}"
         }
       }
       image_identifier      = "${module.ecr.url}:${local.image_tag}"
       image_repository_type = "ECR"
     }
     auto_deployments_enabled = true
+  }
+
+  instance_configuration {
+    instance_role_arn = aws_iam_role.task_role.arn
   }
 
   auto_scaling_configuration_arn = aws_apprunner_auto_scaling_configuration_version.autoscaling.arn

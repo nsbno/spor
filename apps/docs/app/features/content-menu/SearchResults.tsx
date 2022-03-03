@@ -13,7 +13,12 @@ export const SearchResults = ({ query }: SearchResultsProps) => {
   return (
     <Box mt={2}>
       {hits.map((item) => (
-        <MenuItem key={item.href} href={item.href} height={5}>
+        <MenuItem
+          key={item.href}
+          href={item.href}
+          height={5}
+          isDisabled={!item.isAvailable}
+        >
           {item.category}: {item.title}
         </MenuItem>
       ))}

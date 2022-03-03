@@ -8,4 +8,4 @@ RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases
 COPY . /app
 
 EXPOSE 3000
-CMD ["./entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]

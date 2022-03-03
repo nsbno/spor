@@ -95,7 +95,7 @@ workflows:
       - validate-terraform
       - build-node
       - build-docker:
-          context: digitalekanaler
+          context: omnikanal
           ecr_repo_name: << pipeline.parameters.ecr_repo_name >>
           ecr_endpoint: << pipeline.parameters.ecr_endpoint >>
           requires:

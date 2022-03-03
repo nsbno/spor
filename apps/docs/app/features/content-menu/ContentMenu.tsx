@@ -48,6 +48,7 @@ export const ContentMenu = () => {
                     href={subItem.href}
                     height={5}
                     isActive={subItem.href === location.pathname}
+                    isDisabled={!subItem.isAvailable}
                   >
                     {subItem.title}
                   </MenuItem>

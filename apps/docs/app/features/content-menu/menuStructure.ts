@@ -1,5 +1,10 @@
 type MenuDivider = { divider: true };
-type MenuStructureItem = { title: string; href: string; keywords?: string[] };
+type MenuStructureItem = {
+  title: string;
+  href: string;
+  keywords?: string[];
+  isAvailable?: boolean;
+};
 type MenuStructure =
   | {
       title: string;
@@ -18,6 +23,7 @@ export const menuStructure: MenuStructure[] = [
         title: "Introduksjon",
         href: "/kom-i-gang",
         keywords: ["intro"],
+        isAvailable: true,
       },
       {
         title: "Hva er Spor?",
@@ -39,8 +45,19 @@ export const menuStructure: MenuStructure[] = [
   {
     title: "Ressurser",
     items: [
+      {
+        title: "Designprosessen",
+        href: "/ressurser/design-prosessen",
+        keywords: ["process", "prosess"],
+        isAvailable: true,
+      },
       { title: "Profil", href: "/ressurser/profil", keywords: ["visuell"] },
-      { title: "Ikoner", href: "/ressurser/ikoner", keywords: ["icon"] },
+      {
+        title: "Ikoner",
+        href: "/ressurser/ikoner",
+        keywords: ["icon"],
+        isAvailable: true,
+      },
       {
         title: "Design tokens",
         href: "/ressurser/design-tokens",
@@ -62,7 +79,9 @@ export const menuStructure: MenuStructure[] = [
           "padding",
           "margin",
         ],
+        isAvailable: true,
       },
+
       { title: "FAQ", href: "/ressurser/faq" },
       { title: "Bidra", href: "/ressurser/bidra" },
     ],
@@ -72,14 +91,10 @@ export const menuStructure: MenuStructure[] = [
     title: "Skjema",
     items: [
       {
-        title: "Skjemafelt",
-        href: "/komponenter/form-control",
-        keywords: ["form control"],
-      },
-      {
         title: "Tekstfelt",
         href: "/komponenter/tekstfelt",
         keywords: ["input"],
+        isAvailable: true,
       },
       {
         title: "Passordfelt",
@@ -163,6 +178,7 @@ export const menuStructure: MenuStructure[] = [
           "additional",
           "tillegg",
         ],
+        isAvailable: true,
       },
       {
         title: "Chips",
@@ -178,6 +194,7 @@ export const menuStructure: MenuStructure[] = [
         title: "Lenker",
         href: "/komponenter/lenker",
         keywords: ["link", "a", "lenke", "knapper", "buttons"],
+        isAvailable: true,
       },
     ],
   },

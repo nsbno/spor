@@ -8,24 +8,26 @@ type ProgressBarProps = {
   onClick: (clickedIndex: number) => void;
   colorScheme: "light" | "dark" | "green";
   title?: string;
-  activeStepIndex: number;
+  activeStep: number;
 };
 export const ProgressBar = ({
   onClick,
   children,
-  activeStepIndex,
+  activeStep,
   colorScheme,
 }: ProgressBarProps) => {
   const style = useMultiStyleConfig("ProgressBar", { colorScheme });
+  const numberOfSteps = React.Children.count(children);
   return (
     <Box __css={style.root}>
       <ProgressBarProvider
         onClick={onClick}
-        activeStepIndex={activeStepIndex}
+        activeStep={Number(activeStep)}
         colorScheme={colorScheme}
+        numberOfSteps={numberOfSteps}
       >
         {React.Children.toArray(children).map((child, index) =>
-          React.cloneElement(child as any, { index })
+          React.cloneElement(child as any, { stepNumber: index + 1 })
         )}
       </ProgressBarProvider>
     </Box>

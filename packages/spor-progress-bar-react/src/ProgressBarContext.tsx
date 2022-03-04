@@ -1,7 +1,8 @@
 import React from "react";
 
 type ProgressBarContextType = {
-  activeStepIndex: number;
+  activeStep: number;
+  numberOfSteps: number;
   colorScheme: ColorScheme;
   onClick: (clickedIndex: number) => void;
 };
@@ -15,17 +16,19 @@ type ProgressBarProviderProps = {
   children: React.ReactNode;
   onClick: (clickedIndex: number) => void;
   colorScheme: ColorScheme;
-  activeStepIndex: number;
+  activeStep: number;
+  numberOfSteps: number;
 };
 export const ProgressBarProvider = ({
-  activeStepIndex,
+  activeStep,
   children,
   onClick,
   colorScheme,
+  numberOfSteps,
 }: ProgressBarProviderProps) => {
   return (
     <ProgressBarContext.Provider
-      value={{ activeStepIndex, onClick, colorScheme }}
+      value={{ activeStep, onClick, colorScheme, numberOfSteps }}
     >
       {children}
     </ProgressBarContext.Provider>

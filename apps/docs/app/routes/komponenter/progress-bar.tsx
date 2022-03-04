@@ -1,10 +1,10 @@
 import {
   Box,
   BoxProps,
+  Image,
   SimpleGrid,
   Stack,
   Text,
-  Image,
 } from "@vygruppen/spor-react";
 import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
 import { ComponentPlayground } from "~/features/component-playground/ComponentPlayground";
@@ -26,8 +26,8 @@ export default function ProgressDocsPage() {
 
 const DemoArea = (props: BoxProps) => {
   const { currentProps, propList, onPropsChange } = usePlaygroundProps([
-    { name: "steps", defaultValue: "4", type: "input" },
-    { name: "currentActiveIndex", defaultValue: "2", type: "input" },
+    { name: "steps", defaultValue: "5", type: "input" },
+    { name: "activeStep", defaultValue: "2", type: "input" },
     {
       name: "colorScheme",
       defaultValue: "green",

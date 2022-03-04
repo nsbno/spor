@@ -1,8 +1,4 @@
-import type {
-  PartsStyleFunction,
-  SystemStyleFunction,
-  SystemStyleObject,
-} from "@chakra-ui/theme-tools";
+import type { PartsStyleFunction } from "@chakra-ui/theme-tools";
 import { anatomy } from "@chakra-ui/theme-tools";
 
 const parts = anatomy("progress-bar").parts(
@@ -12,20 +8,78 @@ const parts = anatomy("progress-bar").parts(
   "stepContainer",
   "stepNumber",
   "stepTitle",
-  "chevron",
-  "icon",
   "closeButton"
 );
 
-const baseStyleRoot: SystemStyleFunction = (props) => ({
-  backgroundColor: getRootBackgroundColor(props.colorScheme),
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  height: ["48px", "60px"],
+const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
+  root: {
+    backgroundColor: getRootBackgroundColor(props.colorScheme),
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: ["48px", "60px"],
+  },
+  stepContainer: {
+    display: "flex",
+    alignItems: "center",
+  },
+  stepNumber: {
+    borderRadius: "round",
+    border: "sm",
+    borderColor: "currentColor",
+    width: 4,
+    height: 4,
+    mr: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: ["mobile.xs", "desktop.xs"],
+  },
+  stepTitle: {
+    textStyle: "sm",
+  },
+});
+
+const variantCompleted: PartsStyleFunction<typeof parts> = (props) => ({
+  stepContainer: {
+    color: getColor(props.colorScheme),
+    _hover: {
+      // TODO: Implement hover state
+    },
+    _focus: {
+// TODO: Implement active state
+    },
+    _active: {
+// TODO: Implement active state
+    }
+  },
+});
+
+const variantActive: PartsStyleFunction<typeof parts> = (props) => ({
+  stepContainer: {
+    pointerEvents: "none",
+    color: getColor(props.colorScheme),
+  },
+  stepNumber: {
+    backgroundColor: getColor(props.colorScheme),
+    color: getStepNumberColor(props.colorScheme),
+  },
+  stepTitle: {
+    fontWeight: "bold",
+  },
+});
+
+const variantDisabled: PartsStyleFunction<typeof parts> = (props) => ({
+  stepContainer: {
+    pointerEvents: "none",
+    color: getDisabledColor(props.colorScheme),
+  },
 });
 
 const getRootBackgroundColor = (colorScheme: string) => {
+  switch (colorScheme) {
+    case ""
+  }
   if (colorScheme === "green") {
     return "alias.mint";
   }
@@ -34,25 +88,6 @@ const getRootBackgroundColor = (colorScheme: string) => {
   }
   return "alias.darkTeal";
 };
-
-const baseStyleStepNumber: SystemStyleFunction = (props) => ({
-  borderRadius: "round",
-  border: "sm",
-  borderColor: "currentColor",
-  width: 4,
-  height: 4,
-  mr: 1,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  fontSize: ["mobile.xs", "desktop.xs"],
-  color: getColor(props.colorScheme),
-});
-
-const baseStyleStepTitle: SystemStyleFunction = (props) => ({
-  color: getColor(props.colorScheme),
-  textStyle: "sm",
-});
 
 const getColor = (colorScheme: string) => {
   if (colorScheme === "green") {
@@ -66,67 +101,30 @@ const getColor = (colorScheme: string) => {
   }
 };
 
-const baseStyleChevron: SystemStyleFunction = (theme) => ({
-  width: 4,
-  height: 4,
-  marginLeft: 4,
-  mr: 6,
-  transitionProperty: "background, border-color",
-  transitionDuration: "normal",
-  border: "2px solid",
-  borderColor: "alias.darkGrey",
-  borderRadius: "xs",
-
-  _button: {
-    backgroundColor: "alias.primaryGreen",
-    borderColor: "alias.primaryGreen",
-
-    _focus: {
-      borderColor: "alias.mint",
-    },
-
-    _disabled: {
-      backgroundColor: "alias.white",
-      borderColor: "alias.steel",
-      color: "alias.steel",
-    },
-
-    _hover: {
-      backgroundColor: "alias.seaMist",
-      borderRadius: "6px",
-    },
-  },
-
-  _disabled: {
-    backgroundColor: "alias.white",
-    borderColor: "alias.steel",
-  },
-
-  _focus: {
-    backgroundColor: "alias.white",
-    borderColor: "alias.greenHaze",
-  },
-});
-
-const baseStyleIcon: SystemStyleObject = {
-  width: "1.5rem",
-  height: "100%",
-  insetEnd: "0.5rem",
-  position: "relative",
-  color: "currentColor",
-  fontSize: "1.25rem",
-  _disabled: {
-    opacity: 0.5,
-  },
+const getStepNumberColor = (colorScheme: string) => {
+  switch (colorScheme) {
+    case "dark":
+      return "alias.darkTeal";
+    default:
+      return "alias.white";
+  }
 };
 
-const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
-  root: baseStyleRoot(props),
-  stepNumber: baseStyleStepNumber(props),
-  stepTitle: baseStyleStepTitle(props),
-  chevron: baseStyleChevron(props),
-  icon: baseStyleIcon,
-});
+const getDisabledColor = (colorScheme: string) => {
+  switch (colorScheme) {
+    case "dark":
+      return "palette.whiteAlpha.400";
+    default:
+      return "alias.osloGrey";
+  }
+};
+
+type Variant = "completed" | "active" | "disabled";
+const variants: Record<Variant, PartsStyleFunction<typeof parts>> = {
+  completed: variantCompleted,
+  active: variantActive,
+  disabled: variantDisabled,
+};
 
 const defaultProps = {
   colorScheme: "green",
@@ -135,5 +133,6 @@ const defaultProps = {
 export default {
   parts: parts.keys,
   baseStyle,
+  variants,
   defaultProps,
 };

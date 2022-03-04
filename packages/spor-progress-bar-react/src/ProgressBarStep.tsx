@@ -1,48 +1,53 @@
-import { useMultiStyleConfig, AccordionIcon, HStack } from "@chakra-ui/react";
-import { Box, Flex, Stack } from "@vygruppen/spor-layout-react";
+import { Flex, useMultiStyleConfig } from "@chakra-ui/react";
+import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
+import { Box } from "@vygruppen/spor-layout-react";
 import React from "react";
+import invariant from "tiny-invariant";
 import { useProgressBar } from "./ProgressBarContext";
 
 type ProgressBarStepProps = {
   children: React.ReactNode;
-  index?: number;
-  icon?: React.ReactNode;
+  stepNumber?: number;
 };
 export const ProgressBarStep = ({
   children,
-  index,
-  icon,
+  stepNumber,
 }: ProgressBarStepProps) => {
-  const guaranteedIndex = index ?? 0;
-  const { activeStepIndex, onClick, colorScheme } = useProgressBar();
-  const variant = getVariant(guaranteedIndex, activeStepIndex);
+  invariant(
+    stepNumber !== undefined,
+    "stepNumber is required to use the ProgressBarStep component"
+  );
+  const { activeStep, onClick, colorScheme } = useProgressBar();
+  const variant = getVariant(stepNumber!, activeStep);
   const styles = useMultiStyleConfig("ProgressBar", {
     variant,
     colorScheme,
-    icon,
   });
 
+  const isFirstStep = stepNumber === 1;
+
   return (
-    <Flex
-      as="button"
-      type="button"
-      alignItems="center"
-      onClick={() => onClick(guaranteedIndex)}
-    >
-      <Box __css={styles.stepNumber}>{guaranteedIndex + 1}</Box>
-
-      <Box __css={styles.stepTitle}>{children}</Box>
-
-      <Box __css={styles.chevron}>{icon}</Box>
-    </Flex>
+    <Box __css={styles.stepContainer}>
+      {!isFirstStep && <DropdownRightFill18Icon mx={5} />}
+      <Flex
+        alignItems="center"
+        as="button"
+        type="button"
+        disabled={variant === "disabled" || variant === "active"}
+        onClick={() => onClick(stepNumber)}
+      >
+        <Box __css={styles.stepNumber}>{stepNumber}</Box>
+        <Box __css={styles.stepTitle}>{children}</Box>
+      </Flex>
+    </Box>
   );
 };
 
-const getVariant = (index: number, activeStepIndex: number) => {
-  if (index < activeStepIndex) {
+const getVariant = (stepNumber: number, activeStep: number) => {
+  if (stepNumber < activeStep) {
     return "completed";
   }
-  if (index === activeStepIndex) {
+  if (stepNumber === activeStep) {
     return "active";
   }
   return "disabled";

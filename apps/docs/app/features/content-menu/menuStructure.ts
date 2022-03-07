@@ -286,6 +286,7 @@ export const menuStructure: MenuStructure[] = [
         title: "Progress bar",
         href: "/komponenter/progress-bar",
         keywords: ["progress", "bar", "stepper"],
+        isAvailable: true,
       },
     ],
   },

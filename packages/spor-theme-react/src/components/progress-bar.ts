@@ -4,7 +4,10 @@ import { anatomy } from "@chakra-ui/theme-tools";
 const parts = anatomy("progress-bar").parts(
   "root",
   "container",
+  "innerContainer",
+  "backButton",
   "title",
+  "stepCounter",
   "stepContainer",
   "stepButton",
   "stepNumber",
@@ -17,11 +20,37 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
     backgroundColor: getRootBackgroundColor(props.colorScheme),
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: ["space-between", "center"],
     height: ["48px", "60px"],
   },
+  container: {
+    px: [2, 2, 0],
+    maxWidth: "container.lg",
+    mx: "auto",
+    width: "100%",
+  },
+  innerContainer: {
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    display: ["flex", "none"],
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  backButton: {
+    borderRadius: "xs",
+    px: 0,
+    width: "auto",
+    minWidth: "auto",
+  },
+  title: {
+    textOverflow: "ellipsis",
+    fontWeight: "bold",
+  },
+  stepCounter: {
+    whiteSpace: "nowrap",
+  },
   stepContainer: {
-    display: "flex",
+    display: ["none", "flex"],
     alignItems: "center",
   },
   stepButton: {
@@ -44,6 +73,7 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   },
   stepTitle: {
     textStyle: "sm",
+    whiteSpace: "nowrap",
   },
 });
 
@@ -89,26 +119,25 @@ const variantDisabled: PartsStyleFunction<typeof parts> = (props) => ({
 
 const getRootBackgroundColor = (colorScheme: string) => {
   switch (colorScheme) {
-    case "":
+    case "light":
+      return "alias.white";
+    case "dark":
+      return "alias.darkTeal";
+    case "green":
+    default:
+      return "alias.mint";
   }
-  if (colorScheme === "green") {
-    return "alias.mint";
-  }
-  if (colorScheme === "light") {
-    return "alias.white";
-  }
-  return "alias.darkTeal";
 };
 
 const getColor = (colorScheme: string) => {
-  if (colorScheme === "green") {
-    return "alias.darkTeal";
-  }
-  if (colorScheme === "light") {
-    return "alias.darkGrey";
-  }
-  if (colorScheme === "dark") {
-    return "alias.white";
+  switch (colorScheme) {
+    case "light":
+      return "alias.darkGrey";
+    case "dark":
+      return "alias.white";
+    case "green":
+    default:
+      return "alias.darkTeal";
   }
 };
 
@@ -116,6 +145,8 @@ const getStepNumberColor = (colorScheme: string) => {
   switch (colorScheme) {
     case "dark":
       return "alias.darkTeal";
+    case "light":
+    case "green":
     default:
       return "alias.white";
   }
@@ -125,6 +156,8 @@ const getDisabledColor = (colorScheme: string) => {
   switch (colorScheme) {
     case "dark":
       return "palette.whiteAlpha.400";
+    case "light":
+    case "green":
     default:
       return "alias.osloGrey";
   }
@@ -134,6 +167,8 @@ const getHoverStyles = (colorScheme: string) => {
   switch (colorScheme) {
     case "dark":
       return { backgroundColor: "alias.pine" };
+    case "light":
+    case "green":
     default:
       return { backgroundColor: "alias.seaMist" };
   }
@@ -146,6 +181,8 @@ const getFocusStyles = (colorScheme: string, theme: any) => {
         outline: "none",
         boxShadow: `inset 0 0 0 2px ${theme.colors.alias.white}`,
       };
+    case "light":
+    case "green":
     default:
       return {
         outline: "none",
@@ -156,12 +193,13 @@ const getFocusStyles = (colorScheme: string, theme: any) => {
 
 const getActiveStyles = (colorScheme: string) => {
   switch (colorScheme) {
-    case "green":
-      return { color: "alias.blueGreen", backgroundColor: "transparent" };
     case "light":
       return { backgroundColor: "alias.mint" };
-    default:
+    case "dark":
       return { backgroundColor: "alias.celadon" };
+    case "green":
+    default:
+      return { color: "alias.blueGreen", backgroundColor: "transparent" };
   }
 };
 

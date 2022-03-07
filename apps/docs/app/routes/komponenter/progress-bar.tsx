@@ -28,6 +28,7 @@ const DemoArea = (props: BoxProps) => {
   const { currentProps, propList, onPropsChange } = usePlaygroundProps([
     { name: "steps", defaultValue: "5", type: "input" },
     { name: "activeStep", defaultValue: "2", type: "input" },
+    { name: "title", defaultValue: "Tittel", type: "input" },
     {
       name: "colorScheme",
       defaultValue: "green",

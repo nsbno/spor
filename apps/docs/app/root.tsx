@@ -10,6 +10,7 @@ import {
 import { ReactNode, useContext, useEffect } from "react";
 import {
   Links,
+  LinksFunction,
   LiveReload,
   LoaderFunction,
   Meta,
@@ -35,6 +36,16 @@ import { getUserPreferenceSession as getUserPreferencesSession } from "./utils/u
 
 export const meta: MetaFunction = () => {
   return { title: "Spor - Vy Design System" };
+};
+
+export const links: LinksFunction = () => {
+  return [
+    {
+      rel: "icon",
+      href: "/favicon.svg",
+      type: "image/svg+xml",
+    },
+  ];
 };
 
 type LoaderData = {

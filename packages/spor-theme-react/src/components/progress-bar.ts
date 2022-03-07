@@ -1,12 +1,12 @@
 import type { PartsStyleFunction } from "@chakra-ui/theme-tools";
 import { anatomy } from "@chakra-ui/theme-tools";
-import { colors } from "../foundations";
 
 const parts = anatomy("progress-bar").parts(
   "root",
   "container",
   "title",
   "stepContainer",
+  "stepButton",
   "stepNumber",
   "stepTitle",
   "closeButton"
@@ -23,7 +23,12 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   stepContainer: {
     display: "flex",
     alignItems: "center",
-    borderRadius: "6px",
+  },
+  stepButton: {
+    display: "flex",
+    alignItems: "center",
+    padding: 1,
+    borderRadius: "xs",
   },
   stepNumber: {
     borderRadius: "round",
@@ -45,25 +50,24 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
 const variantCompleted: PartsStyleFunction<typeof parts> = (props) => ({
   stepContainer: {
     color: getColor(props.colorScheme),
-    _hover: {
-      // TODO: Implement hover state
-      backgroundColor: getHoverBackgroundColor(props.colorScheme),
+  },
+  stepButton: {
+    _hover: getHoverStyles(props.colorScheme),
+    _focus: getFocusStyles(props.colorScheme, props.theme),
+    "&:focus:not(:focus-visible)": {
+      boxShadow: "none",
     },
-    _focus: {
-      // TODO: Implement active state
-      borderColor: getFocusBackgroundColor(props.colorScheme),
-    },
-    _active: {
-      // TODO: Implement active state
-      backgroundColor: getActiveBackgroundColor(props.colorScheme),
-    },
+    _focusVisible: getFocusStyles(props.colorScheme, props.theme),
+    _active: getActiveStyles(props.colorScheme),
   },
 });
 
 const variantActive: PartsStyleFunction<typeof parts> = (props) => ({
   stepContainer: {
-    pointerEvents: "none",
     color: getColor(props.colorScheme),
+  },
+  stepButton: {
+    pointerEvents: "none",
   },
   stepNumber: {
     backgroundColor: getColor(props.colorScheme),
@@ -76,8 +80,10 @@ const variantActive: PartsStyleFunction<typeof parts> = (props) => ({
 
 const variantDisabled: PartsStyleFunction<typeof parts> = (props) => ({
   stepContainer: {
-    pointerEvents: "none",
     color: getDisabledColor(props.colorScheme),
+  },
+  stepButton: {
+    pointerEvents: "none",
   },
 });
 
@@ -124,36 +130,38 @@ const getDisabledColor = (colorScheme: string) => {
   }
 };
 
-const getHoverBackgroundColor = (colorScheme: string) => {
-  if (colorScheme === "green") {
-    return "alias.seaMist";
-  }
-  if (colorScheme === "light") {
-    return "alias.seaMist";
-  }
-  if (colorScheme === "dark") {
-    return "alias.pine";
-  }
-};
-
-const getFocusBackgroundColor = (colorScheme: string) => {
+const getHoverStyles = (colorScheme: string) => {
   switch (colorScheme) {
     case "dark":
-      return "palette.whiteAlpha.400";
+      return { backgroundColor: "alias.pine" };
     default:
-      return "alias.primaryGreen";
+      return { backgroundColor: "alias.seaMist" };
   }
 };
 
-const getActiveBackgroundColor = (colorScheme: string) => {
-  if (colorScheme === "green") {
-    return "palette.whiteAlpha.400";
+const getFocusStyles = (colorScheme: string, theme: any) => {
+  switch (colorScheme) {
+    case "dark":
+      return {
+        outline: "none",
+        boxShadow: `inset 0 0 0 2px ${theme.colors.alias.white}`,
+      };
+    default:
+      return {
+        outline: "none",
+        boxShadow: `inset 0 0 0 2px ${theme.colors.alias.greenHaze}`,
+      };
   }
-  if (colorScheme === "light") {
-    return "alias.mint";
-  }
-  if (colorScheme === "dark") {
-    return "alias.celadon";
+};
+
+const getActiveStyles = (colorScheme: string) => {
+  switch (colorScheme) {
+    case "green":
+      return { color: "alias.blueGreen", backgroundColor: "transparent" };
+    case "light":
+      return { backgroundColor: "alias.mint" };
+    default:
+      return { backgroundColor: "alias.celadon" };
   }
 };
 

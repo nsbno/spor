@@ -30,6 +30,7 @@ export const ProgressBarStep = ({
     <Box __css={styles.stepContainer}>
       {!isFirstStep && <DropdownRightFill18Icon mx={5} />}
       <Flex
+        __css={styles.stepButton}
         alignItems="center"
         as="button"
         type="button"

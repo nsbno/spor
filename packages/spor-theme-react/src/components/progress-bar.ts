@@ -1,5 +1,6 @@
 import type { PartsStyleFunction } from "@chakra-ui/theme-tools";
 import { anatomy } from "@chakra-ui/theme-tools";
+import { colors } from "../foundations";
 
 const parts = anatomy("progress-bar").parts(
   "root",
@@ -22,6 +23,7 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   stepContainer: {
     display: "flex",
     alignItems: "center",
+    borderRadius: "6px",
   },
   stepNumber: {
     borderRadius: "round",
@@ -45,13 +47,16 @@ const variantCompleted: PartsStyleFunction<typeof parts> = (props) => ({
     color: getColor(props.colorScheme),
     _hover: {
       // TODO: Implement hover state
+      backgroundColor: getHoverBackgroundColor(props.colorScheme),
     },
     _focus: {
-// TODO: Implement active state
+      // TODO: Implement active state
+      borderColor: getFocusBackgroundColor(props.colorScheme),
     },
     _active: {
-// TODO: Implement active state
-    }
+      // TODO: Implement active state
+      backgroundColor: getActiveBackgroundColor(props.colorScheme),
+    },
   },
 });
 
@@ -78,7 +83,7 @@ const variantDisabled: PartsStyleFunction<typeof parts> = (props) => ({
 
 const getRootBackgroundColor = (colorScheme: string) => {
   switch (colorScheme) {
-    case ""
+    case "":
   }
   if (colorScheme === "green") {
     return "alias.mint";
@@ -116,6 +121,39 @@ const getDisabledColor = (colorScheme: string) => {
       return "palette.whiteAlpha.400";
     default:
       return "alias.osloGrey";
+  }
+};
+
+const getHoverBackgroundColor = (colorScheme: string) => {
+  if (colorScheme === "green") {
+    return "alias.seaMist";
+  }
+  if (colorScheme === "light") {
+    return "alias.seaMist";
+  }
+  if (colorScheme === "dark") {
+    return "alias.pine";
+  }
+};
+
+const getFocusBackgroundColor = (colorScheme: string) => {
+  switch (colorScheme) {
+    case "dark":
+      return "palette.whiteAlpha.400";
+    default:
+      return "alias.primaryGreen";
+  }
+};
+
+const getActiveBackgroundColor = (colorScheme: string) => {
+  if (colorScheme === "green") {
+    return "palette.whiteAlpha.400";
+  }
+  if (colorScheme === "light") {
+    return "alias.mint";
+  }
+  if (colorScheme === "dark") {
+    return "alias.celadon";
   }
 };
 

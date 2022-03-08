@@ -13,12 +13,20 @@ const ProgressBarContext = React.createContext<ProgressBarContextType | null>(
 type ColorScheme = "green" | "light" | "dark";
 
 type ProgressBarProviderProps = {
+  /** Progress bar items */
   children: React.ReactNode;
+  /** Callback whenever a progress bar item is clicked */
   onClick: (clickedIndex: number) => void;
+  /** The current color scheme */
   colorScheme: ColorScheme;
+  /** The currently active step */
   activeStep: number;
+  /** The amount of steps */
   numberOfSteps: number;
 };
+/**
+ * Internal provider for sharing logic between progress bar and progress bar items.
+ */
 export const ProgressBarProvider = ({
   activeStep,
   children,
@@ -35,6 +43,9 @@ export const ProgressBarProvider = ({
   );
 };
 
+/**
+ * Internal hook for sharing progress bar state
+ */
 export const useProgressBar = () => {
   const context = React.useContext(ProgressBarContext);
   if (!context) {

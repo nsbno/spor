@@ -3,23 +3,20 @@ import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 import { Box } from "@vygruppen/spor-layout-react";
 import React from "react";
 import invariant from "tiny-invariant";
-import { useProgressBar } from "./ProgressBarContext";
+import { useStepper } from "./StepperContext";
 
-type ProgressBarStepProps = {
+type StepperStepProps = {
   children: React.ReactNode;
   stepNumber?: number;
 };
-export const ProgressBarStep = ({
-  children,
-  stepNumber,
-}: ProgressBarStepProps) => {
+export const StepperStep = ({ children, stepNumber }: StepperStepProps) => {
   invariant(
     stepNumber !== undefined,
-    "stepNumber is required to use the ProgressBarStep component"
+    "stepNumber is required to use the StepperStep component"
   );
-  const { activeStep, onClick, colorScheme } = useProgressBar();
+  const { activeStep, onClick, colorScheme } = useStepper();
   const variant = getVariant(stepNumber!, activeStep);
-  const styles = useMultiStyleConfig("ProgressBar", {
+  const styles = useMultiStyleConfig("Stepper", {
     variant,
     colorScheme,
   });

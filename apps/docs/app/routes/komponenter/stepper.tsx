@@ -12,11 +12,11 @@ import { usePlaygroundProps } from "~/features/component-playground/usePlaygroun
 import { toPropsString } from "~/features/component-playground/utils";
 import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 
-export default function ProgressDocsPage() {
+export default function StepperDocsPage() {
   return (
     <ComponentDocs
-      title="Progress bar"
-      description="Progress bar eller stepper brukes til å synliggjøre hvilket steg du er på i en flyt."
+      title="Stepper"
+      description="Steppers brukes til å synliggjøre hvilket steg du er på i en flyt."
     >
       <DemoArea />
       <Guidelines />
@@ -39,13 +39,13 @@ const DemoArea = (props: BoxProps) => {
   const stepsArray = createRange(1, Number(currentProps.steps));
   const { steps, ...includedCurrentProps } = currentProps;
   const code = `
-<ProgressBar
+<Stepper
   ${toPropsString(includedCurrentProps, "  ")}
 >
   ${stepsArray
-    .map((step) => `<ProgressBarStep>Steg ${step}</ProgressBarStep>`)
+    .map((step) => `<StepperStep>Steg ${step}</StepperStep>`)
     .join("\n  ")}
-</ProgressBar>`;
+</Stepper>`;
   return (
     <Box {...props}>
       <ComponentPlayground
@@ -70,24 +70,24 @@ const Guidelines = (props: BoxProps) => {
           Retningslinjer
         </LinkableHeading>
         <Text>
-          Progress bar eller stepper brukes for å synligghøre hvor du er i en
-          flyt, hvilke valg du har gjort og hva som evt. gjenstår. Progressbaren
-          består av stegnavn med tilhørende tall. Disse er adskilt med en liten
-          pil som indikerer retning på flyten. Hvert steg bør være konsist og
-          beskrivende, og helst ikke inneholde mange punkter/ord. Stegene må
-          også være beskrevet på samme måte; for eksempel er punktet “Velg sete”
-          aktivt og beskriver en handling, mens punktet “Billetter” ikke er
-          aktivt.
+          Stepper brukes for å synligghøre hvor du er i en flyt, hvilke valg du
+          har gjort og hva som evt. gjenstår. Stepperen består av stegnavn med
+          tilhørende tall. Disse er adskilt med en liten pil som indikerer
+          retning på flyten. Hvert steg bør være konsist og beskrivende, og
+          helst ikke inneholde mange punkter/ord. Stegene må også være beskrevet
+          på samme måte; for eksempel er punktet “Velg sete” aktivt og beskriver
+          en handling, mens punktet “Billetter” ikke er aktivt.
         </Text>
         <LinkableHeading as="h5" textStyle="xs" fontWeight="bold">
-          Når skal du bruke en Progress Bar?
+          Når skal du bruke en stepper?
         </LinkableHeading>
         <Text>
           Der brukeren må gjennomføre flere handlinger, ofte over flere sider,
-          og der alle valgene ender i ett resultat, skal man vurdere om Progress
-          bar er nødvendig. Eksempler kan være et komplisert kjøpsløp med mange
-          tilleggsvalg, skjemaer som skal fylles ut for å kreve refusjon eller
-          påmelding av en ny tjeneste for å dele opp valgene over flere sider.
+          og der alle valgene ender i ett resultat, skal man vurdere om en
+          stepper er nødvendig. Eksempler kan være et komplisert kjøpsløp med
+          mange tilleggsvalg, skjemaer som skal fylles ut for å kreve refusjon
+          eller påmelding av en ny tjeneste for å dele opp valgene over flere
+          sider.
         </Text>
       </Stack>
       <Stack spacing={2}>
@@ -95,26 +95,26 @@ const Guidelines = (props: BoxProps) => {
           Design
         </LinkableHeading>
         <Text>
-          Progress bar kommer i to hoved-versjoner, en for desktop som viser mer
+          Stepper kommer i to hoved-versjoner, en for desktop som viser mer
           informasjon om stegene, og en for mobil som er mye mer komprimert.
-          Progress bar skal finnes i 3, 4, 5 og 6 steg. Om det er færre eller
-          flere steg i en flyt må det vurderes om det skal brukes. Progress bar
-          skal alltid være full-skjermbredde, mens stegene kan enten være
-          midstilte eller være venstrestilt etter kolonner.
+          Stepper skal finnes i 3, 4, 5 og 6 steg. Om det er færre eller flere
+          steg i en flyt må det vurderes om det skal brukes. Stepper skal alltid
+          være full-skjermbredde, mens stegene kan enten være midtstilte eller
+          være venstrestilt etter kolonner.
         </Text>
       </Stack>
       <SimpleGrid columns={[1, 2]} gap={[8, 4]}>
         <Stack spacing={1.5}>
           <Image
-            src="/images/component-examples/progress-bar-example-1.png"
-            alt="En progress bar brukes i mobil versjon"
+            src="/images/component-examples/stepper-example-1.png"
+            alt="En stepper brukes i mobil versjon"
             borderRadius="sm"
           />
         </Stack>
         <Stack spacing={1.5}>
           <Image
-            src="/images/component-examples/progress-bar-example-2.png"
-            alt="En progress bar brukes i desktop versjon"
+            src="/images/component-examples/stepper-example-2.png"
+            alt="En stepper brukes i desktop versjon"
             borderRadius="sm"
           />
         </Stack>

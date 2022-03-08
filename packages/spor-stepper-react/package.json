@@ -1,5 +1,5 @@
 {
-  "name": "@vygruppen/spor-progress-bar-react",
+  "name": "@vygruppen/spor-stepper-react",
   "version": "0.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -7,11 +7,11 @@
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-progress-bar-react",
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-stepper-react",
   "repository": {
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
-    "directory": "packages/spor-progress-bar-react"
+    "directory": "packages/spor-stepper-react"
   },
   "scripts": {
     "build": "tsup src/index.tsx --dts",

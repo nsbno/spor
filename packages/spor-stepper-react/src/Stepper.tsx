@@ -4,9 +4,9 @@ import { Language, useTranslation } from "@vygruppen/spor-i18n-react";
 import { DropdownLeftFill24Icon } from "@vygruppen/spor-icon-react";
 import { Box } from "@vygruppen/spor-layout-react";
 import React from "react";
-import { ProgressBarProvider } from "./ProgressBarContext";
+import { StepperProvider } from "./StepperContext";
 
-type ProgressBarProps = {
+type StepperProps = {
   children: React.ReactNode;
   onClick: (clickedStep: number) => void;
   colorScheme: "light" | "dark" | "green";
@@ -14,30 +14,30 @@ type ProgressBarProps = {
   activeStep: number;
 };
 /**
- * A progress bar is used to show the progress of a process.
+ * A stepper is used to show which step of a process a user is currently in.
  *
  * You specify the active step, which starts at 1 (not 0)
  *
  * ```tsx
- * <ProgressBar
+ * <Stepper
  *   title="Eksempel"
  *   onClick={handleStepClick}
  *   activeStep={2}
  * >
- *   <ProgressBarStep>Velg hvor</ProgressBarStep>
- *   <ProgressBarStep>Velg når</ProgressBarStep>
- *   <ProgressBarStep>Velg hvordan</ProgressBarStep>
- * </ProgressBar>
+ *   <StepperStep>Velg hvor</StepperStep>
+ *   <StepperStep>Velg når</StepperStep>
+ *   <StepperStep>Velg hvordan</StepperStep>
+ * </Stepper>
  * ```
  **/
-export const ProgressBar = ({
+export const Stepper = ({
   onClick,
   children,
   activeStep: activeStepAsStringOrNumber,
   title,
   colorScheme,
-}: ProgressBarProps) => {
-  const style = useMultiStyleConfig("ProgressBar", { colorScheme });
+}: StepperProps) => {
+  const style = useMultiStyleConfig("Stepper", { colorScheme });
   const numberOfSteps = React.Children.count(children);
   const activeStep = Number(activeStepAsStringOrNumber);
   const { t } = useTranslation();
@@ -66,7 +66,7 @@ export const ProgressBar = ({
           )}
         </Box>
         <Flex justifyContent="center">
-          <ProgressBarProvider
+          <StepperProvider
             onClick={onClick}
             activeStep={activeStep}
             colorScheme={colorScheme}
@@ -75,7 +75,7 @@ export const ProgressBar = ({
             {React.Children.toArray(children).map((child, index) =>
               React.cloneElement(child as any, { stepNumber: index + 1 })
             )}
-          </ProgressBarProvider>
+          </StepperProvider>
         </Flex>
       </Box>
     </Box>

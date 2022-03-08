@@ -23,7 +23,7 @@ module.exports = {
         "packages/spor-accordion-react/",
         "packages/spor-design-tokens/",
         "packages/spor-link-react/",
-        "packages/spor-progress-bar-react/",
+        "packages/spor-stepper-react/",
       ],
     },
   },

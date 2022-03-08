@@ -1,7 +1,7 @@
 import type { PartsStyleFunction } from "@chakra-ui/theme-tools";
 import { anatomy } from "@chakra-ui/theme-tools";
 
-const parts = anatomy("progress-bar").parts(
+const parts = anatomy("stepper").parts(
   "root",
   "container",
   "innerContainer",

@@ -1,5 +1,6 @@
 import { Flex, HStack, useMultiStyleConfig } from "@chakra-ui/react";
 import { IconButton } from "@vygruppen/spor-button-react";
+import { Language, useTranslation } from "@vygruppen/spor-i18n-react";
 import { DropdownLeftFill24Icon } from "@vygruppen/spor-icon-react";
 import { Box } from "@vygruppen/spor-layout-react";
 import React from "react";
@@ -7,11 +8,28 @@ import { ProgressBarProvider } from "./ProgressBarContext";
 
 type ProgressBarProps = {
   children: React.ReactNode;
-  onClick: (clickedIndex: number) => void;
+  onClick: (clickedStep: number) => void;
   colorScheme: "light" | "dark" | "green";
   title?: string;
   activeStep: number;
 };
+/**
+ * A progress bar is used to show the progress of a process.
+ *
+ * You specify the active step, which starts at 1 (not 0)
+ *
+ * ```tsx
+ * <ProgressBar
+ *   title="Eksempel"
+ *   onClick={handleStepClick}
+ *   activeStep={2}
+ * >
+ *   <ProgressBarStep>Velg hvor</ProgressBarStep>
+ *   <ProgressBarStep>Velg når</ProgressBarStep>
+ *   <ProgressBarStep>Velg hvordan</ProgressBarStep>
+ * </ProgressBar>
+ * ```
+ **/
 export const ProgressBar = ({
   onClick,
   children,
@@ -22,6 +40,7 @@ export const ProgressBar = ({
   const style = useMultiStyleConfig("ProgressBar", { colorScheme });
   const numberOfSteps = React.Children.count(children);
   const activeStep = Number(activeStepAsStringOrNumber);
+  const { t } = useTranslation();
   return (
     <Box __css={style.root}>
       <Box __css={style.container}>
@@ -29,7 +48,7 @@ export const ProgressBar = ({
           <HStack>
             {activeStep > 1 && (
               <IconButton
-                aria-label="Tilbake"
+                aria-label={t(texts.back)}
                 icon={<DropdownLeftFill24Icon />}
                 variant="ghost"
                 size="sm"
@@ -37,12 +56,14 @@ export const ProgressBar = ({
               />
             )}
             <Box __css={style.stepCounter}>
-              Steg {activeStep} av {numberOfSteps}
+              {t(texts.stepsOf(activeStep, numberOfSteps))}
             </Box>
           </HStack>
-          <Box as="h3" __css={style.title}>
-            {title}
-          </Box>
+          {title && (
+            <Box as="h3" __css={style.title}>
+              {title}
+            </Box>
+          )}
         </Box>
         <Flex justifyContent="center">
           <ProgressBarProvider
@@ -59,4 +80,17 @@ export const ProgressBar = ({
       </Box>
     </Box>
   );
+};
+
+const texts = {
+  stepsOf: (activeStep: number, numberOfSteps: number) => ({
+    [Language.NorwegianBokmal]: `Steg ${activeStep} av ${numberOfSteps}`,
+    [Language.Swedish]: `Steg ${activeStep} av ${numberOfSteps}`,
+    [Language.English]: `Step ${activeStep} of ${numberOfSteps}`,
+  }),
+  back: {
+    [Language.NorwegianBokmal]: "Tilbake",
+    [Language.Swedish]: "Tillbaka",
+    [Language.English]: "Back",
+  },
 };

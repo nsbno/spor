@@ -45,6 +45,7 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   title: {
     textOverflow: "ellipsis",
     fontWeight: "bold",
+    ml: 1,
   },
   stepCounter: {
     whiteSpace: "nowrap",

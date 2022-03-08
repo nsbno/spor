@@ -146,7 +146,9 @@ const Document = withEmotionCache(
           ))}
         </head>
         <body>
-          <SporProvider language={Language.English}>{children}</SporProvider>
+          <SporProvider language={Language.NorwegianBokmal}>
+            {children}
+          </SporProvider>
           <ScrollRestoration />
           <Scripts />
           {process.env.NODE_ENV === "development" && <LiveReload />}

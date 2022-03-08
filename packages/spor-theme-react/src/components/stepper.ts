@@ -21,7 +21,8 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: ["space-between", "center"],
-    height: ["48px", "60px"],
+    minHeight: ["48px", "60px"],
+    overflowX: "auto",
   },
   container: {
     px: [2, 2, 0],
@@ -31,10 +32,10 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   },
   innerContainer: {
     overflow: "hidden",
-    whiteSpace: "nowrap",
     display: ["flex", "none"],
     alignItems: "center",
     justifyContent: "space-between",
+    color: getColor(props.colorScheme),
   },
   backButton: {
     borderRadius: "xs",
@@ -43,12 +44,17 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
     minWidth: "auto",
   },
   title: {
-    textOverflow: "ellipsis",
+    overflow: "hidden",
     fontWeight: "bold",
+    WebkitLineClamp: 2,
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
     ml: 1,
+    textAlign: "right",
   },
   stepCounter: {
     whiteSpace: "nowrap",
+    textDecoration: "underline",
   },
   stepContainer: {
     display: ["none", "flex"],

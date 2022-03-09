@@ -1,4 +1,4 @@
-import { Box, BoxProps, Center } from "@vygruppen/spor-react";
+import { BoxProps, Center } from "@vygruppen/spor-react";
 import { LivePreview as ReactLivePreview } from "react-live";
 
 export const LivePreview = (props: BoxProps) => {
@@ -11,7 +11,7 @@ export const LivePreview = (props: BoxProps) => {
       {...props}
     >
       {/** @ts-ignore Bad typing in React Live */}
-      <ReactLivePreview Component={Box} width="100%" />
+      <ReactLivePreview Component={Center} width="100%" />
     </Center>
   );
 };

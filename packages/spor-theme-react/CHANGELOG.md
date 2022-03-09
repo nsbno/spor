@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.3.5
+
+### Patch Changes
+
+- 6f8e5d6: Add stepper component
+
 ## 0.3.4
 
 ### Patch Changes

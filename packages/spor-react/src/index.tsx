@@ -11,6 +11,7 @@ export * from "@vygruppen/spor-layout-react";
 export * from "@vygruppen/spor-link-react";
 export * from "@vygruppen/spor-logo-react";
 export * from "@vygruppen/spor-modal-react";
+export * from "@vygruppen/spor-popover-react";
 export * from "@vygruppen/spor-stepper-react";
 export * from "@vygruppen/spor-table-react";
 export * from "@vygruppen/spor-theme-react";

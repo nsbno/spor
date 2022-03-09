@@ -52,6 +52,7 @@ export const Stepper = ({
                 icon={<DropdownLeftFill24Icon />}
                 variant="ghost"
                 size="sm"
+                onClick={() => onClick(activeStep - 1)}
                 __css={style.backButton}
               />
             )}

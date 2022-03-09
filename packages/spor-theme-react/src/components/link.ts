@@ -8,44 +8,25 @@ const baseStyle: SystemStyleObject = {
   transitionDuration: "fast",
   transitionTimingFunction: "ease-out",
   cursor: "pointer",
-  outline: "none",
-  borderRadius: "xs",
+  backgroundImage: "linear-gradient(currentColor, currentColor)",
+  backgroundSize: "100% 2px",
+  backgroundPosition: "0 100%",
+  backgroundRepeat: "no-repeat",
+  pb: "2px",
   color: "inherit",
-  display: "inline-flex",
-  alignItems: "center",
+  display: "inline",
   position: "relative",
-  textDecoration: "none",
 
   "&:focus": {
-    _after: {
-      display: "none",
-    },
-  },
-  "&:focus:not(:focus-visible)": {
-    _after: {
-      display: "block",
-    },
-  },
-  "&:focus-visible": {
-    _after: {
-      display: "none",
-    },
-  },
-
-  _after: {
-    content: '""',
-    display: "block",
-    width: "100%",
-    height: "1px",
-    position: "absolute",
-    bottom: "-2px",
-    backgroundColor: "currentColor",
+    outline: "none",
   },
 
   svg: {
     display: "inline-block",
-    width: "1.25em",
-    height: "1.25em",
+    width: "1.125em",
+    height: "1.125em",
+    position: "relative",
+    bottom: "-0.2em",
   },
 };
 

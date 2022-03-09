@@ -9,9 +9,10 @@ const baseStyle: SystemStyleObject = {
   transitionTimingFunction: "ease-out",
   cursor: "pointer",
   outline: "none",
-  borderRadius: "xs",
+  borderRadius: "0",
+  borderBottom: "1px solid",
   color: "inherit",
-  display: "inline-flex",
+  display: "inline",
   alignItems: "center",
   position: "relative",
   textDecoration: "none",
@@ -30,16 +31,6 @@ const baseStyle: SystemStyleObject = {
     _after: {
       display: "none",
     },
-  },
-
-  _after: {
-    content: '""',
-    display: "block",
-    width: "100%",
-    height: "1px",
-    position: "absolute",
-    bottom: "-2px",
-    backgroundColor: "currentColor",
   },
 
   svg: {

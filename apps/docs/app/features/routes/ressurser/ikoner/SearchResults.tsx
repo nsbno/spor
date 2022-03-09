@@ -51,13 +51,9 @@ const useSearchResults = () => {
       Object.entries(iconsByCategory).reduce((prev, [category, icons]) => {
         prev[category] = icons.filter(
           (icon) =>
-            icon.size === searchFilter.size &&
-            (!searchFilter.variant ||
-              searchFilter.variant === icon.modifier ||
-              !["fill", "outline"].includes(icon.modifier)) &&
-            icon.name
-              .toLowerCase()
-              .includes(searchFilter.searchString.toLowerCase())
+            matchesSize(searchFilter.size, icon) ||
+            matchesVariant(searchFilter.variant, icon) ||
+            matchesSearchString(searchFilter.searchString, icon)
         );
         return prev;
       }, {} as IconsByCategory),
@@ -65,6 +61,18 @@ const useSearchResults = () => {
   );
   return filteredCategories;
 };
+
+const matchesSize = (size: string, icon: IconMetadata) => size === icon.size;
+
+const matchesVariant = (variant: string, icon: IconMetadata) => {
+  if (!["fill", "outline"].includes(icon.modifier)) {
+    return false;
+  }
+  return variant === icon.modifier;
+};
+
+const matchesSearchString = (searchString: string, icon: IconMetadata) =>
+  icon.name.toLowerCase().includes(searchString.toLowerCase());
 
 const hasNoHits = (filteredCategories: IconsByCategory) =>
   Object.values(filteredCategories).flatMap((icons) => icons).length === 0;

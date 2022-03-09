@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 
-type SearchFilter = {
+export type SearchFilter = {
   searchString: string;
   size: string;
   variant: string;

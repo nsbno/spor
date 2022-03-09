@@ -11,7 +11,7 @@ import {
   SuccessOutline18Icon,
   Text,
 } from "@vygruppen/spor-react";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
 import {
@@ -21,7 +21,7 @@ import {
   iconsByCategory,
 } from "./iconsData";
 import { NotFound } from "./NotFound";
-import { useSearchFilter } from "./SearchFilterContext";
+import { SearchFilter, useSearchFilter } from "./SearchFilterContext";
 
 /**
  * Shows the current search results
@@ -44,24 +44,36 @@ export const SearchResults = () => {
   );
 };
 
+const findMatches = (searchFilter: SearchFilter) => {
+  return Object.entries(iconsByCategory).reduce((prev, [category, icons]) => {
+    prev[category] = icons.filter(
+      (icon) =>
+        matchesSize(searchFilter.size, icon) &&
+        matchesVariant(searchFilter.variant, icon) &&
+        matchesSearchString(searchFilter.searchString, icon)
+    );
+    return prev;
+  }, {} as IconsByCategory);
+};
+
+const matchesSize = (size: string, icon: IconMetadata) => size === icon.size;
+
+const matchesVariant = (variant: string, icon: IconMetadata) => {
+  if (!["fill", "outline"].includes(icon.modifier)) {
+    return true;
+  }
+  if (!variant) {
+    return true;
+  }
+  return variant === icon.modifier;
+};
+
+const matchesSearchString = (searchString: string, icon: IconMetadata) =>
+  icon.name.toLowerCase().includes(searchString.toLowerCase());
+
 const useSearchResults = () => {
   const { searchFilter } = useSearchFilter();
-  const filteredCategories = useMemo(
-    () =>
-      Object.entries(iconsByCategory).reduce((prev, [category, icons]) => {
-        prev[category] = icons.filter(
-          (icon) =>
-            icon.size === searchFilter.size &&
-            (!searchFilter.variant || searchFilter.variant === icon.modifier) &&
-            icon.name
-              .toLowerCase()
-              .includes(searchFilter.searchString.toLowerCase())
-        );
-        return prev;
-      }, {} as IconsByCategory),
-    [searchFilter]
-  );
-  return filteredCategories;
+  return useMemo(() => findMatches(searchFilter), [searchFilter]);
 };
 
 const hasNoHits = (filteredCategories: IconsByCategory) =>
@@ -123,7 +135,7 @@ function Category({ title, icons }: CategoryProps) {
       </LinkableHeading>
       <SimpleGrid columns={[2, 3, 5, 6]} spacing={3}>
         {icons.map((icon) => (
-          <IconBox key={icon.importName} icon={icon} />
+          <MemoedIconBox key={icon.importName} icon={icon} />
         ))}
       </SimpleGrid>
     </Stack>
@@ -136,12 +148,10 @@ type IconBoxProps = {
 function IconBox({ icon }: IconBoxProps) {
   const { onCopy, hasCopied } = useClipboard(icon.importName);
   const IconComponent = getIconByImportName(icon.importName);
-  const { searchFilter } = useSearchFilter();
-  const showVariantLabel = searchFilter.variant === "" && icon.modifier;
   return (
     <Flex
       border="1px solid"
-      borderColor="alias.darkGrey"
+      borderColor="palette.blackAlpha.200"
       borderRadius="sm"
       flexDirection="column"
       alignItems="center"
@@ -151,7 +161,6 @@ function IconBox({ icon }: IconBoxProps) {
     >
       <Text textStyle="xs" mb={1}>
         {toTitleCase(icon.name)}
-        {showVariantLabel && ` (${toTitleCase(icon.modifier)})`}
       </Text>
       <IconComponent />
       <Flex justifyContent="flex-end" width="100%">
@@ -177,3 +186,5 @@ function IconBox({ icon }: IconBoxProps) {
     </Flex>
   );
 }
+
+const MemoedIconBox = memo(IconBox);

@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.3.6
+
+### Patch Changes
+
+- d40d8e8: Fix a bug with the link component that made it misbehave when broken over several lines
+
 ## 0.3.5
 
 ### Patch Changes

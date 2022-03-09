@@ -52,7 +52,9 @@ const useSearchResults = () => {
         prev[category] = icons.filter(
           (icon) =>
             icon.size === searchFilter.size &&
-            (!searchFilter.variant || searchFilter.variant === icon.modifier) &&
+            (!searchFilter.variant ||
+              searchFilter.variant === icon.modifier ||
+              !["fill", "outline"].includes(icon.modifier)) &&
             icon.name
               .toLowerCase()
               .includes(searchFilter.searchString.toLowerCase())

@@ -11,6 +11,7 @@ export { default as Link } from "./link";
 export { default as Modal } from "./modal";
 export { default as Radio } from "./radio";
 export { default as Select } from "./select";
+export { default as Stepper } from "./stepper";
 export { default as Switch } from "./switch";
 export { default as Table } from "./table";
 export { default as Textarea } from "./textarea";

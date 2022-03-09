@@ -282,6 +282,12 @@ export const menuStructure: MenuStructure[] = [
         href: "/komponenter/breadcrumb",
         keywords: ["breadcrumbs"],
       },
+      {
+        title: "Stepper",
+        href: "/komponenter/stepper",
+        keywords: ["progress bar", "stepper", "wizard"],
+        isAvailable: true,
+      },
     ],
   },
   {

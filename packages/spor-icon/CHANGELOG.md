@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 0.2.1
+
+### Patch Changes
+
+- 6f8e5d6: Fix bug where icons were not included
+
 ## 0.2.0
 
 ### Minor Changes

@@ -1,5 +1,18 @@
 # @vygruppen/spor-react
 
+## 0.10.0
+
+### Minor Changes
+
+- 6f8e5d6: Add stepper component
+
+### Patch Changes
+
+- 6f8e5d6: Fix bug where icons were not included
+- Updated dependencies [6f8e5d6]
+  - @vygruppen/spor-stepper-react@0.1.0
+  - @vygruppen/spor-theme-react@0.3.5
+
 ## 0.9.2
 
 ### Patch Changes

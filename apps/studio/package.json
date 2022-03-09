@@ -1,0 +1,34 @@
+{
+  "name": "@vygruppen/spor-docs-studio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "package.json",
+  "license": "MIT",
+  "scripts": {
+    "dev": "sanity start",
+    "build": "sanity build"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.8.5",
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@sanity/base": "^2.27.1",
+    "@sanity/core": "^2.27.0",
+    "@sanity/cli": "^2.27.0",
+    "@sanity/default-layout": "^2.27.1",
+    "@sanity/default-login": "^2.27.0",
+    "@sanity/desk-tool": "^2.27.1",
+    "@sanity/eslint-config-studio": "^2.0.0",
+    "@sanity/vision": "^2.27.1",
+    "@vygruppen/spor-react": "^0.9.0",
+    "eslint": "^8.6.0",
+    "framer-motion": "^6.2.8",
+    "prop-types": "^15.7",
+    "react": "^17.0",
+    "react-dom": "^17.0",
+    "react-icons": "^4.3.1",
+    "sanity-plugin-iframe-pane": "^1.0.15",
+    "styled-components": "^5.2.0"
+  }
+}

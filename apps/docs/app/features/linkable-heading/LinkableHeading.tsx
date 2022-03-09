@@ -6,6 +6,7 @@ import {
   IconButton,
   SuccessOutline24Icon,
 } from "@vygruppen/spor-react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import { slugify } from "~/utils/stringUtils";
 
@@ -14,7 +15,8 @@ type LinkableHeadingProps = HeadingProps;
 /** A heading that renders a "copy link" button when hovered. */
 export const LinkableHeading = ({ mb, ...props }: LinkableHeadingProps) => {
   const location = useLocation();
-  const id = props.id || slugify(props.children as string);
+  const text = getChildrenAsString(props.children);
+  const id = props.id || slugify(text as string);
   const { onCopy, hasCopied } = useClipboard(`${location.pathname}#${id}`);
   return (
     <Flex position="relative" alignItems="center" data-group mb={mb}>
@@ -35,4 +37,10 @@ export const LinkableHeading = ({ mb, ...props }: LinkableHeadingProps) => {
       />
     </Flex>
   );
+};
+
+const getChildrenAsString = (children: React.ReactNode) => {
+  return React.Children.toArray(children)
+    .filter((child) => typeof child === "string")
+    .join(" ");
 };

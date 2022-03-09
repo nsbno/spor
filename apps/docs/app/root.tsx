@@ -1,12 +1,5 @@
 import { withEmotionCache } from "@emotion/react";
-import {
-  Box,
-  Center,
-  Heading,
-  Language,
-  SporProvider,
-  Text,
-} from "@vygruppen/spor-react";
+import { Box, Center, Heading, Text } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect } from "react";
 import {
   Links,
@@ -28,6 +21,7 @@ import {
 import { RootErrorBoundary } from "./features/error-boundary/RootErrorBoundary";
 import { FontPreloading } from "./features/font-loading/FontPreloading";
 import { BaseLayout } from "./features/layouts/base-layout/BaseLayout";
+import { RootProviders } from "./features/root-providers/RootProviders";
 import {
   UserPreferences,
   UserPreferencesProvider,
@@ -146,9 +140,7 @@ const Document = withEmotionCache(
           ))}
         </head>
         <body>
-          <SporProvider language={Language.NorwegianBokmal}>
-            {children}
-          </SporProvider>
+          <RootProviders>{children}</RootProviders>
           <ScrollRestoration />
           <Scripts />
           {process.env.NODE_ENV === "development" && <LiveReload />}

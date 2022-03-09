@@ -1,0 +1,34 @@
+{
+  "root": true,
+  "project": {
+    "name": "spor"
+  },
+  "api": {
+    "projectId": "tbpd14t4",
+    "dataset": "production"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "iframe-pane"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./config/deskStructure.ts"
+    }
+  ]
+}

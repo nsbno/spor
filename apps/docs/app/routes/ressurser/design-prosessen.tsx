@@ -1,15 +1,14 @@
 import {
   Box,
   BoxProps,
-  Heading,
-  Stack,
-  SimpleGrid,
-  Text,
   Divider,
+  Heading,
   Link,
+  SimpleGrid,
+  Stack,
+  Text,
 } from "@vygruppen/spor-react";
-
-import Designsystemet from "~/features/routes/ressurser/designprosessen/designsystemet";
+import Designsystemet from "~/features/routes/ressurser/designprosessen/Designsystemet";
 import HvordanBrukerSpor from "~/features/routes/ressurser/designprosessen/HvordanBrukerSpor";
 
 type DesignProcessPageProps = {

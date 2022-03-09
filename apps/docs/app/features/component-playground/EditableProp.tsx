@@ -1,9 +1,10 @@
 import {
-  ChoiceChip,
   Flex,
   FormControl,
+  FormLabel,
   Input,
   Select,
+  Switch,
 } from "@vygruppen/spor-react";
 import { toTitleCase } from "~/utils/stringUtils";
 import { PropSpec } from "./usePlaygroundProps";
@@ -31,13 +32,18 @@ export const EditableProp = ({ prop, value, onChange }: EditablePropProps) => {
     case "choiceChip":
       return (
         <Flex alignItems="center">
-          <ChoiceChip
-            size="md"
-            isChecked={value as boolean}
-            onChange={(e) => onChange(prop.name, e.target.checked)}
-          >
-            {toTitleCase(prop.name.replace(/^is/i, ""))}
-          </ChoiceChip>
+          <FormControl>
+            <Flex alignItems="center" gap={2}>
+              <Switch
+                size="sm"
+                isChecked={value as boolean}
+                onChange={(e) => onChange(prop.name, e.target.checked)}
+              />
+              <FormLabel fontSize={["mobile.sm", "desktop.sm"]} margin={0}>
+                {toTitleCase(prop.name.replace(/^is/i, ""))}
+              </FormLabel>
+            </Flex>
+          </FormControl>
         </Flex>
       );
     case "select":

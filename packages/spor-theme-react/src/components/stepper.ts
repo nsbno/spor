@@ -49,7 +49,7 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
     WebkitLineClamp: 2,
     display: "-webkit-box",
     WebkitBoxOrient: "vertical",
-    ml: 1,
+    ml: 2,
     textAlign: "right",
   },
   stepCounter: {

@@ -3,6 +3,7 @@ import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
 import { ComponentPlayground } from "~/features/component-playground/ComponentPlayground";
 import { usePlaygroundProps } from "~/features/component-playground/usePlaygroundProps";
 import { toPropsString } from "~/features/component-playground/utils";
+import { InteractiveCode } from "~/features/interactive-code/InteractiveCode";
 import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 
 export default function PopoverPage() {
@@ -73,6 +74,35 @@ const Guidelines = (props: BoxProps) => {
           funksjonalitet, eller som ekstra informasjon for å tydeliggjøre en
           handling.
         </Text>
+        <LinkableHeading as="h3" textStyle="xl-display">
+          Flerstegs-guide
+        </LinkableHeading>
+        <Text>
+          Har du flere steg du vil ta en bruker gjennom, kan du bruke en wizard.
+          Her er et eksempel:
+        </Text>
+        <InteractiveCode>
+          {`
+<Popover size="lg">
+  <PopoverTrigger>
+    <Button variant="secondary" size="md">Klikk for å vise</Button>
+  </PopoverTrigger>
+  <PopoverContent>
+    <PopoverArrow />
+    <PopoverCloseButton />
+    <PopoverBody>
+      <PopoverWizard>
+        <Text>This is the very first step</Text>
+        <Text>This is the second step</Text>
+        <Stack>
+          <Text>The third step has two paragraphs.</Text>
+          <Text>It is special.</Text>
+        </Stack>
+      </PopoverWizard>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>`}
+        </InteractiveCode>
       </Stack>
       <Stack spacing={2}>
         <LinkableHeading as="h3" textStyle="md" fontWeight="bold">

@@ -33,5 +33,11 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "framer-motion": "3.x || 4.x || 5.x || 6.x"
+  },
+  "dependencies": {
+    "@vygruppen/spor-button-react": "*",
+    "@vygruppen/spor-i18n-react": "*",
+    "@vygruppen/spor-icon-react": "*",
+    "@vygruppen/spor-layout-react": "*"
   }
 }

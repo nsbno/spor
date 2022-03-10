@@ -17,10 +17,12 @@ import { SimplePopover } from "@vygruppen/spor-popover-react";
 You can add a popover to any element by wrapping that element in a `Popover` component.
 
 ```tsx
-<SimplePopover content="This is a popover text that will show up">
-  <Button>Click me to learn more</Button>
+<SimplePopover trigger={<Button>Click me to learn more</Button>}>
+  <Text>This is a popover text that will show up</Text>
 </SimplePopover>
 ```
+
+There are other components too, like `WizardPopover`, and lots of other components.
 
 ## Development
 

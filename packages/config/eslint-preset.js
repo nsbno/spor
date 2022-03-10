@@ -24,6 +24,7 @@ module.exports = {
         "packages/spor-design-tokens/",
         "packages/spor-link-react/",
         "packages/spor-stepper-react/",
+        "packages/spor-popover-react/",
       ],
     },
   },

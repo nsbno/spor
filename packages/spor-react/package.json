@@ -29,9 +29,10 @@
     "@vygruppen/spor-logo-react": "*",
     "@vygruppen/spor-modal-react": "*",
     "@vygruppen/spor-table-react": "*",
-    "@vygruppen/spor-stepper-react": "*",
     "@vygruppen/spor-theme-react": "*",
-    "@vygruppen/spor-typography-react": "*"
+    "@vygruppen/spor-popover-react": "*",
+    "@vygruppen/spor-typography-react": "*",
+    "@vygruppen/spor-stepper-react": "*"
   },
   "devDependencies": {
     "@chakra-ui/react": "^1.7.3",

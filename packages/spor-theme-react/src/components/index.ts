@@ -9,6 +9,7 @@ export { default as Form } from "./form";
 export { default as Input } from "./input";
 export { default as Link } from "./link";
 export { default as Modal } from "./modal";
+export { default as Popover } from "./popover";
 export { default as Radio } from "./radio";
 export { default as Select } from "./select";
 export { default as Stepper } from "./stepper";

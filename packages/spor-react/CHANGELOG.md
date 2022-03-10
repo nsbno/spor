@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 0.11.0
+
+### Minor Changes
+
+- 4ec0fcc: Add new popover package
+
+### Patch Changes
+
+- Updated dependencies [4ec0fcc]
+  - @vygruppen/spor-popover-react@0.1.0
+  - @vygruppen/spor-theme-react@0.3.7
+
 ## 0.10.1
 
 ### Patch Changes

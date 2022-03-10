@@ -267,6 +267,12 @@ export const menuStructure: MenuStructure[] = [
         keywords: ["expandable"],
       },
       { title: "Tabs", href: "/komponenter/tab", keywords: ["fliker"] },
+      {
+        title: "Popovers",
+        href: "/komponenter/popover",
+        keywords: ["tooltip"],
+        isAvailable: true,
+      },
     ],
   },
   {

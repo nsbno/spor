@@ -21,35 +21,6 @@ jobs:
             cd ~/repo/apps/docs/terraform/prod
             terraform init -backend=false && terraform validate
 
-  build-node:
-    docker:
-      - image: circleci/node:17.2
-    working_directory: ~/repo/apps/docs
-    steps:
-      - checkout:
-          path: ../../
-      - restore_cache:
-          keys:
-            - npm-deps-v1-{{ checksum "package.json" }}
-            - npm-deps-v1-
-      - run:
-          command: npm install
-      - save_cache:
-          paths:
-            - node_modules
-          key: npm-deps-v1-{{ checksum "package.json" }}-{{ epoch }}
-      - run:
-          command: npm run build
-      - persist_to_workspace:
-          root: .
-          paths:
-            - node_modules
-            - build
-            - public
-            - package.json
-            - entrypoint.sh
-            - Dockerfile
-
   build-docker:
     parameters:
       ecr_repo_name:
@@ -68,6 +39,7 @@ jobs:
     steps:
       - setup_remote_docker:
           docker_layer_caching: true
+      - checkout
       - attach_workspace:
           at: /tmp/workspace
       - run:
@@ -93,13 +65,12 @@ workflows:
   build:
     jobs:
       - validate-terraform
-      - build-node
       - build-docker:
           context: omnikanal
           ecr_repo_name: << pipeline.parameters.ecr_repo_name >>
           ecr_endpoint: << pipeline.parameters.ecr_endpoint >>
           requires:
-            - build-node
+            - validate-terraform
           filters:
             branches:
               only:

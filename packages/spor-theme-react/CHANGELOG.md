@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.3.7
+
+### Patch Changes
+
+- 4ec0fcc: Add new popover package
+
 ## 0.3.6
 
 ### Patch Changes

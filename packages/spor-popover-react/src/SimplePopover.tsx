@@ -17,8 +17,10 @@ type SimplePopoverProps = {
   withCloseButton?: boolean;
   /** The content of the popover */
   content: React.ReactNode;
-  /** Whether or not the popover is open */
+  /** Use this prop if you want to control the open state */
   isOpen?: boolean;
+  /** Whether or not the popover is open by default */
+  defaultIsOpen?: boolean;
   /**
    * Where the popover should be placed by default.
    *
@@ -36,6 +38,7 @@ export const SimplePopover = ({
   children,
   onClose,
   isOpen,
+  defaultIsOpen,
   content,
   placement = "bottom",
   size = "sm",
@@ -45,8 +48,11 @@ export const SimplePopover = ({
     <Popover
       onClose={onClose}
       isOpen={isOpen}
+      defaultIsOpen={defaultIsOpen}
       placement={placement}
       size={size}
+      arrowSize={12}
+      arrowShadowColor="none"
     >
       {children && <PopoverTrigger>{children}</PopoverTrigger>}
       <PopoverContent>

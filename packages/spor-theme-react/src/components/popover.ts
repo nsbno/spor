@@ -19,14 +19,14 @@ const baseStylePopper: SystemStyleObject = {
 const baseStyleContent: SystemStyleFunction = () => {
   return {
     [$popperBg.variable]: `colors.alias.darkTeal`,
-    bg: $popperBg.reference,
+    backgroundColor: $popperBg.reference,
     [$arrowBg.variable]: $popperBg.reference,
     [$arrowShadowColor.variable]: `colors.palette.blackAlpha.300`,
     color: "alias.white",
-    width: "xs",
     borderRadius: "xs",
     p: 1.5,
     zIndex: "inherit",
+    maxWidth: "20em",
     _focus: {
       outline: 0,
       boxShadow: "outline",
@@ -42,10 +42,19 @@ const baseStyleFooter: SystemStyleObject = {};
 
 const baseStyleCloseButton: SystemStyleObject = {
   position: "absolute",
-  borderRadius: "xs",
+  borderRadius: "sm",
   top: 1,
-  insetEnd: 2,
+  insetEnd: 1,
+  width: 2,
+  height: 2,
   padding: 1,
+};
+
+const baseStyleArrow: SystemStyleObject = {
+  backgroundColor: "transparent",
+  boxShadow: "none",
+  clipPath:
+    "path('M 0 0 Q 2.4 6 0 12 Q 6 9.6 12 12 Q 9.6 6 12 0 Q 6 2.4 0 0 z')",
 };
 
 const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
@@ -54,7 +63,7 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   header: baseStyleHeader,
   body: baseStyleBody,
   footer: baseStyleFooter,
-  arrow: {},
+  arrow: baseStyleArrow,
   closeButton: baseStyleCloseButton,
 });
 
@@ -63,14 +72,12 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
     content: {
       px: 1.5,
       py: 1,
-      maxWidth: "126px",
     },
   },
   lg: {
     content: {
       px: 3,
       py: 2,
-      maxWidth: "203px",
     },
   },
 };

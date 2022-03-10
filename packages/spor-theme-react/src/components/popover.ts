@@ -1,10 +1,11 @@
 import { popoverAnatomy as parts } from "@chakra-ui/anatomy";
 import type {
   PartsStyleFunction,
+  PartsStyleObject,
   SystemStyleFunction,
   SystemStyleObject,
 } from "@chakra-ui/theme-tools";
-import { cssVar, mode } from "@chakra-ui/theme-tools";
+import { cssVar } from "@chakra-ui/theme-tools";
 
 const $popperBg = cssVar("popper-bg");
 
@@ -12,23 +13,19 @@ const $arrowBg = cssVar("popper-arrow-bg");
 const $arrowShadowColor = cssVar("popper-arrow-shadow-color");
 
 const baseStylePopper: SystemStyleObject = {
-  zIndex: 10,
+  zIndex: "popover",
 };
 
-const baseStyleContent: SystemStyleFunction = (props) => {
-  const bg = mode("white", "gray.700")(props);
-  const shadowColor = mode("gray.200", "whiteAlpha.300")(props);
-
+const baseStyleContent: SystemStyleFunction = () => {
   return {
-    [$popperBg.variable]: `colors.${bg}`,
+    [$popperBg.variable]: `colors.alias.darkTeal`,
     bg: $popperBg.reference,
     [$arrowBg.variable]: $popperBg.reference,
-    [$arrowShadowColor.variable]: `colors.${shadowColor}`,
+    [$arrowShadowColor.variable]: `colors.palette.blackAlpha.300`,
+    color: "alias.white",
     width: "xs",
-    border: "1px solid",
-    borderColor: "inherit",
-    borderRadius: "md",
-    boxShadow: "sm",
+    borderRadius: "xs",
+    p: 1.5,
     zIndex: "inherit",
     _focus: {
       outline: 0,
@@ -37,29 +34,18 @@ const baseStyleContent: SystemStyleFunction = (props) => {
   };
 };
 
-const baseStyleHeader: SystemStyleObject = {
-  px: 3,
-  py: 2,
-  borderBottomWidth: "1px",
-};
+const baseStyleHeader: SystemStyleObject = {};
 
-const baseStyleBody: SystemStyleObject = {
-  px: 3,
-  py: 2,
-};
+const baseStyleBody: SystemStyleObject = {};
 
-const baseStyleFooter: SystemStyleObject = {
-  px: 3,
-  py: 2,
-  borderTopWidth: "1px",
-};
+const baseStyleFooter: SystemStyleObject = {};
 
 const baseStyleCloseButton: SystemStyleObject = {
   position: "absolute",
-  borderRadius: "md",
+  borderRadius: "xs",
   top: 1,
   insetEnd: 2,
-  padding: 2,
+  padding: 1,
 };
 
 const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
@@ -72,7 +58,25 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   closeButton: baseStyleCloseButton,
 });
 
+const sizes: Record<string, PartsStyleObject<typeof parts>> = {
+  sm: {
+    content: {
+      px: 1.5,
+      py: 1,
+      maxWidth: "126px",
+    },
+  },
+  lg: {
+    content: {
+      px: 3,
+      py: 2,
+      maxWidth: "203px",
+    },
+  },
+};
+
 export default {
   parts: parts.keys,
   baseStyle,
+  sizes,
 };

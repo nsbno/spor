@@ -1,4 +1,5 @@
-import type {
+import {
+  mode,
   SystemStyleFunction,
   SystemStyleObject,
 } from "@chakra-ui/theme-tools";
@@ -109,16 +110,22 @@ const variantTertiary: SystemStyleFunction = ({ theme }) => ({
   },
 });
 
-const variantAdditional: SystemStyleFunction = ({ theme }) => ({
+const variantAdditional: SystemStyleFunction = ({ theme, colorMode }) => ({
   backgroundColor: "transparent",
-  color: "alias.darkGrey",
+  color: mode("alias.darkGrey", "alias.white")({ colorMode }),
   fontWeight: "normal",
-  boxShadow: `inset 0 0 0 1px ${theme.colors.palette.blackAlpha[400]}`,
+  boxShadow: `inset 0 0 0 1px ${mode(
+    theme.colors.palette.blackAlpha[400],
+    theme.colors.palette.whiteAlpha[400]
+  )({ colorMode })}`,
   _focus: {
     boxShadow: `inset 0 0 0 3px ${theme.colors.alias.greenHaze}`,
   },
   ":focus:not(:focus-visible)": {
-    boxShadow: `inset 0 0 0 1px ${theme.colors.palette.blackAlpha[400]}`,
+    boxShadow: `inset 0 0 0 1px ${mode(
+      theme.colors.palette.blackAlpha[400],
+      theme.colors.palette.whiteAlpha[400]
+    )({ colorMode })}`,
   },
   _focusVisible: {
     boxShadow: `inset 0 0 0 3px ${theme.colors.alias.greenHaze}`,
@@ -127,8 +134,14 @@ const variantAdditional: SystemStyleFunction = ({ theme }) => ({
     boxShadow: `inset 0 0 0 2px currentColor`,
   },
   _active: {
-    boxShadow: `inset 0 0 0 1px ${theme.colors.palette.blackAlpha[400]}`,
-    backgroundColor: "alias.mint",
+    boxShadow: `inset 0 0 0 1px ${mode(
+      theme.colors.palette.blackAlpha[400],
+      theme.colors.palette.whiteAlpha[300]
+    )({ colorMode })}`,
+    backgroundColor: mode(
+      "alias.mint",
+      theme.colors.palette.whiteAlpha[300]
+    )({ colorMode }),
   },
 });
 

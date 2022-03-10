@@ -18,5 +18,6 @@ export type {
   PopoverHeaderProps,
   PopoverProps,
 } from "@chakra-ui/react";
-export * from "./PopoverWizard";
+export * from "./PopoverWizardBody";
 export * from "./SimplePopover";
+export * from "./WizardPopover";

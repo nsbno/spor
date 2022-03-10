@@ -1,4 +1,4 @@
-import { usePopoverContext } from "@chakra-ui/react";
+import { PopoverBody, usePopoverContext } from "@chakra-ui/react";
 import { Button } from "@vygruppen/spor-button-react";
 import { Language, useTranslation } from "@vygruppen/spor-i18n-react";
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
@@ -7,29 +7,32 @@ import * as React from "react";
 
 export type PopoverWizardProps = {
   /** Each child will be their own step */
-  children: React.ReactChild;
+  children: React.ReactNode;
 };
 /** A popover wizard is great for showing new features one by one */
-export const PopoverWizard = ({ children }: PopoverWizardProps) => {
+export const PopoverWizardBody = ({ children }: PopoverWizardProps) => {
   const [currentStep, setCurrentStep] = React.useState(1);
   const totalSteps = React.Children.count(children);
   const { isOpen } = usePopoverContext();
   React.useEffect(() => {
     if (!isOpen && currentStep > 1) {
-      setCurrentStep(1);
+      const id = setTimeout(() => setCurrentStep(1), 500);
+      return () => clearTimeout(id);
     }
   }, [isOpen, currentStep]);
   return (
-    <Stack spacing={1.5}>
-      <Box>{React.Children.toArray(children)[currentStep - 1]}</Box>
-      <Flex gap={3}>
-        <StepIndicator totalSteps={totalSteps} currentStep={currentStep} />
-        <NextStepButton
-          isLastStep={totalSteps === currentStep}
-          onNext={() => setCurrentStep((prev) => prev + 1)}
-        />
-      </Flex>
-    </Stack>
+    <PopoverBody>
+      <Stack spacing={1.5}>
+        <Box>{React.Children.toArray(children)[currentStep - 1]}</Box>
+        <Flex gap={3}>
+          <StepIndicator totalSteps={totalSteps} currentStep={currentStep} />
+          <NextStepButton
+            isLastStep={totalSteps === currentStep}
+            onNext={() => setCurrentStep((prev) => prev + 1)}
+          />
+        </Flex>
+      </Stack>
+    </PopoverBody>
   );
 };
 
@@ -44,6 +47,8 @@ const StepIndicator = ({ totalSteps, currentStep }: StepIndicatorProps) => {
           width={1}
           height={1}
           borderRadius="50%"
+          transition="medium"
+          transitionProperty="background-color"
           backgroundColor={
             step === currentStep ? "alias.seaMist" : "alias.greenHaze"
           }

@@ -27,7 +27,7 @@ const DemoArea = (props: BoxProps) => {
       type: "select",
     },
     {
-      name: "content",
+      name: "children",
       defaultValue:
         "Nå kan du endre rekkefølgen på favoritter ved å dra rundt på dem.",
       type: "input",
@@ -47,8 +47,9 @@ const DemoArea = (props: BoxProps) => {
   const code = `
 <SimplePopover 
   ${toPropsString(currentProps)}
+  trigger={<Button variant="secondary" size="md">Klikk for å toggle</Button>}
 >
-  <Button variant="secondary" size="md">Klikk her</Button>
+  
 </SimplePopover>`;
   return (
     <Box {...props}>
@@ -74,38 +75,33 @@ const Guidelines = (props: BoxProps) => {
           funksjonalitet, eller som ekstra informasjon for å tydeliggjøre en
           handling.
         </Text>
-        <LinkableHeading as="h3" textStyle="xl-display">
+        <LinkableHeading as="h3" textStyle="lg">
           Flerstegs-guide
         </LinkableHeading>
         <Text>
-          Har du flere steg du vil ta en bruker gjennom, kan du bruke en wizard.
-          Her er et eksempel:
+          Har du flere steg du vil ta en bruker gjennom, kan du bruke en
+          flerstegs-guide, også kalt en wizard. Her er et eksempel:
         </Text>
         <InteractiveCode>
           {`
-<Popover size="lg">
-  <PopoverTrigger>
-    <Button variant="secondary" size="md">Klikk for å vise</Button>
-  </PopoverTrigger>
-  <PopoverContent>
-    <PopoverArrow />
-    <PopoverCloseButton />
-    <PopoverBody>
-      <PopoverWizard>
-        <Text>This is the very first step</Text>
-        <Text>This is the second step</Text>
-        <Stack>
-          <Text>The third step has two paragraphs.</Text>
-          <Text>It is special.</Text>
-        </Stack>
-      </PopoverWizard>
-    </PopoverBody>
-  </PopoverContent>
-</Popover>`}
+<WizardPopover 
+  trigger={
+    <Button variant="secondary" size="md">
+      Se nye features!
+    </Button>
+  }
+>
+  <Text>Dette er den første featuren. Den er flott!</Text>
+  <Text>Dette er den andre nye featuren.</Text>
+  <Stack>
+    <Text>Den tredje featuren har flere avsnitt.</Text>
+    <Text>Den er nemlig spesiell!</Text>
+  </Stack>
+</WizardPopover>`}
         </InteractiveCode>
       </Stack>
       <Stack spacing={2}>
-        <LinkableHeading as="h3" textStyle="md" fontWeight="bold">
+        <LinkableHeading as="h2" textStyle="xl-display">
           Design
         </LinkableHeading>
         <Text>
@@ -118,7 +114,7 @@ const Guidelines = (props: BoxProps) => {
         </Text>
       </Stack>
       <Stack spacing={2}>
-        <LinkableHeading as="h3" textStyle="md" fontWeight="bold">
+        <LinkableHeading as="h2" textStyle="xl-display">
           Språk
         </LinkableHeading>
         <Text>
@@ -127,7 +123,7 @@ const Guidelines = (props: BoxProps) => {
         </Text>
       </Stack>
       <Stack spacing={2}>
-        <LinkableHeading as="h3" textStyle="md" fontWeight="bold">
+        <LinkableHeading as="h2" textStyle="xl-display">
           Godt å vite
         </LinkableHeading>
         <Text>

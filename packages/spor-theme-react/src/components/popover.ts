@@ -23,7 +23,7 @@ const baseStyleContent: SystemStyleFunction = () => {
     [$arrowBg.variable]: $popperBg.reference,
     [$arrowShadowColor.variable]: `colors.palette.blackAlpha.300`,
     color: "alias.white",
-    borderRadius: "xs",
+    borderRadius: "sm",
     p: 1.5,
     zIndex: "inherit",
     maxWidth: "20em",
@@ -42,7 +42,7 @@ const baseStyleFooter: SystemStyleObject = {};
 
 const baseStyleCloseButton: SystemStyleObject = {
   position: "absolute",
-  borderRadius: "sm",
+  borderRadius: "xs",
   top: 1,
   insetEnd: 1,
   width: 2,

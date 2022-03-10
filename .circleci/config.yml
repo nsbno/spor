@@ -40,10 +40,9 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - checkout
-      - attach_workspace:
-          at: /tmp/workspace
       - run:
           name: "Build Docker image"
+          working_directory: apps/docs
           command: |
             ECR_ENDPOINT="${ECR_ENDPOINT:-<< parameters.ecr_endpoint >>}"
             if [ -z "$ECR_ENDPOINT" ]; then

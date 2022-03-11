@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.3.8
+
+### Patch Changes
+
+- ec876eb: Add mobile friendly menu for stepper component
+
 ## 0.3.7
 
 ### Patch Changes

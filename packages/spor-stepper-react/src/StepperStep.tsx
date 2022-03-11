@@ -2,40 +2,36 @@ import { Flex, useMultiStyleConfig } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 import { Box } from "@vygruppen/spor-layout-react";
 import React from "react";
-import invariant from "tiny-invariant";
 import { useStepper } from "./StepperContext";
 
 type StepperStepProps = {
   children: React.ReactNode;
-  stepNumber?: number;
+  stepNumber: number;
 };
 export const StepperStep = ({ children, stepNumber }: StepperStepProps) => {
-  invariant(
-    stepNumber !== undefined,
-    "stepNumber is required to use the StepperStep component"
-  );
   const { activeStep, onClick, colorScheme } = useStepper();
   const variant = getVariant(stepNumber!, activeStep);
-  const styles = useMultiStyleConfig("Stepper", {
+  const style = useMultiStyleConfig("Stepper", {
     variant,
     colorScheme,
   });
 
-  const isFirstStep = stepNumber === 1;
-
   return (
-    <Box __css={styles.stepContainer}>
-      {!isFirstStep && <DropdownRightFill18Icon mx={5} />}
+    <Box __css={style.stepContainer}>
+      {stepNumber > 1 && (
+        <DropdownRightFill18Icon mx={5} display={["none", "block"]} />
+      )}
+
       <Flex
-        __css={styles.stepButton}
+        __css={style.stepButton}
         alignItems="center"
         as="button"
         type="button"
         disabled={variant === "disabled" || variant === "active"}
         onClick={() => onClick(stepNumber)}
       >
-        <Box __css={styles.stepNumber}>{stepNumber}</Box>
-        <Box __css={styles.stepTitle}>{children}</Box>
+        <Box __css={style.stepNumber}>{stepNumber}</Box>
+        <Box __css={style.stepTitle}>{children}</Box>
       </Flex>
     </Box>
   );

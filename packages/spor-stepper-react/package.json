@@ -37,6 +37,7 @@
   "dependencies": {
     "@vygruppen/spor-i18n-react": "*",
     "@vygruppen/spor-icon-react": "*",
-    "@vygruppen/spor-layout-react": "*"
+    "@vygruppen/spor-layout-react": "*",
+    "@vygruppen/spor-popover-react": "*"
   }
 }

@@ -40,12 +40,10 @@ const DemoArea = (props: BoxProps) => {
   const { steps, ...includedCurrentProps } = currentProps;
   const code = `
 <Stepper
+  width="100%"
+  steps={${JSON.stringify(stepsArray.map((step) => `Steg ${step}`))}}
   ${toPropsString(includedCurrentProps, "  ")}
->
-  ${stepsArray
-    .map((step) => `<StepperStep>Steg ${step}</StepperStep>`)
-    .join("\n  ")}
-</Stepper>`;
+/>`;
   return (
     <Box {...props}>
       <ComponentPlayground
@@ -78,7 +76,7 @@ const Guidelines = (props: BoxProps) => {
           på samme måte; for eksempel er punktet “Velg sete” aktivt og beskriver
           en handling, mens punktet “Billetter” ikke er aktivt.
         </Text>
-        <LinkableHeading as="h5" textStyle="xs" fontWeight="bold">
+        <LinkableHeading as="h3" textStyle="lg">
           Når skal du bruke en stepper?
         </LinkableHeading>
         <Text>
@@ -91,7 +89,7 @@ const Guidelines = (props: BoxProps) => {
         </Text>
       </Stack>
       <Stack spacing={2}>
-        <LinkableHeading as="h3" textStyle="md" fontWeight="bold">
+        <LinkableHeading as="h3" textStyle="lg">
           Design
         </LinkableHeading>
         <Text>

@@ -1,5 +1,9 @@
-import type { PartsStyleFunction } from "@chakra-ui/theme-tools";
-import { anatomy } from "@chakra-ui/theme-tools";
+import {
+  anatomy,
+  mode,
+  PartsStyleFunction,
+  StyleFunctionProps,
+} from "@chakra-ui/theme-tools";
 
 const parts = anatomy("stepper").parts(
   "root",
@@ -17,12 +21,13 @@ const parts = anatomy("stepper").parts(
 
 const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   root: {
-    backgroundColor: getRootBackgroundColor(props.colorScheme),
+    backgroundColor: getRootBackgroundColor(props),
     display: "flex",
     alignItems: "center",
     justifyContent: ["space-between", "center"],
     minHeight: ["48px", "60px"],
     overflowX: "auto",
+    width: "100%",
   },
   container: {
     px: [2, 2, 0],
@@ -35,7 +40,7 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
     display: ["flex", "none"],
     alignItems: "center",
     justifyContent: "space-between",
-    color: getColor(props.colorScheme),
+    color: getColor(props),
   },
   backButton: {
     borderRadius: "xs",
@@ -57,10 +62,11 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
     textDecoration: "underline",
   },
   stepContainer: {
-    display: ["none", "flex"],
+    display: "flex",
     alignItems: "center",
   },
   stepButton: {
+    color: "inherit",
     display: "flex",
     alignItems: "center",
     padding: 1,
@@ -86,30 +92,27 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
 
 const variantCompleted: PartsStyleFunction<typeof parts> = (props) => ({
   stepContainer: {
-    color: getColor(props.colorScheme),
+    color: getColor(props),
   },
   stepButton: {
-    _hover: getHoverStyles(props.colorScheme),
-    _focus: getFocusStyles(props.colorScheme, props.theme),
+    _hover: getHoverStyles(props),
+    _focus: getFocusStyles(props),
     "&:focus:not(:focus-visible)": {
       boxShadow: "none",
     },
-    _focusVisible: getFocusStyles(props.colorScheme, props.theme),
-    _active: getActiveStyles(props.colorScheme),
+    _focusVisible: getFocusStyles(props),
+    _active: getActiveStyles(props),
   },
 });
 
 const variantActive: PartsStyleFunction<typeof parts> = (props) => ({
   stepContainer: {
-    color: getColor(props.colorScheme),
+    color: getColor(props),
   },
   stepButton: {
     pointerEvents: "none",
   },
-  stepNumber: {
-    backgroundColor: getColor(props.colorScheme),
-    color: getStepNumberColor(props.colorScheme),
-  },
+  stepNumber: getStepNumberStyles(props),
   stepTitle: {
     fontWeight: "bold",
   },
@@ -117,15 +120,15 @@ const variantActive: PartsStyleFunction<typeof parts> = (props) => ({
 
 const variantDisabled: PartsStyleFunction<typeof parts> = (props) => ({
   stepContainer: {
-    color: getDisabledColor(props.colorScheme),
+    color: getDisabledColor(props),
   },
   stepButton: {
     pointerEvents: "none",
   },
 });
 
-const getRootBackgroundColor = (colorScheme: string) => {
-  switch (colorScheme) {
+const getRootBackgroundColor = (props: StyleFunctionProps) => {
+  switch (props.colorScheme) {
     case "light":
       return "alias.white";
     case "dark":
@@ -136,31 +139,37 @@ const getRootBackgroundColor = (colorScheme: string) => {
   }
 };
 
-const getColor = (colorScheme: string) => {
-  switch (colorScheme) {
+const getColor = (props: StyleFunctionProps) => {
+  switch (props.colorScheme) {
     case "light":
-      return "alias.darkGrey";
+      return mode("alias.darkGrey", "alias.white")(props);
     case "dark":
       return "alias.white";
     case "green":
     default:
-      return "alias.darkTeal";
+      return mode("alias.darkTeal", "alias.white")(props);
   }
 };
 
-const getStepNumberColor = (colorScheme: string) => {
-  switch (colorScheme) {
+const getStepNumberStyles = (props: StyleFunctionProps) => {
+  switch (props.colorScheme) {
     case "dark":
-      return "alias.darkTeal";
+      return {
+        backgroundColor: "alias.white",
+        color: "alias.darkTeal",
+      };
     case "light":
     case "green":
     default:
-      return "alias.white";
+      return {
+        backgroundColor: mode("alias.darkTeal", "alias.white")(props),
+        color: mode("alias.white", "alias.darkTeal")(props),
+      };
   }
 };
 
-const getDisabledColor = (colorScheme: string) => {
-  switch (colorScheme) {
+const getDisabledColor = (props: StyleFunctionProps) => {
+  switch (props.colorScheme) {
     case "dark":
       return "palette.whiteAlpha.400";
     case "light":
@@ -170,36 +179,38 @@ const getDisabledColor = (colorScheme: string) => {
   }
 };
 
-const getHoverStyles = (colorScheme: string) => {
-  switch (colorScheme) {
+const getHoverStyles = (props: StyleFunctionProps) => {
+  switch (props.colorScheme) {
     case "dark":
       return { backgroundColor: "alias.pine" };
     case "light":
     case "green":
     default:
-      return { backgroundColor: "alias.seaMist" };
+      return {
+        backgroundColor: mode("alias.seaMist", "alias.primaryGreen")(props),
+      };
   }
 };
 
-const getFocusStyles = (colorScheme: string, theme: any) => {
-  switch (colorScheme) {
+const getFocusStyles = (props: StyleFunctionProps) => {
+  switch (props.colorScheme) {
     case "dark":
       return {
         outline: "none",
-        boxShadow: `inset 0 0 0 2px ${theme.colors.alias.white}`,
+        boxShadow: `inset 0 0 0 2px ${props.theme.colors.alias.white}`,
       };
     case "light":
     case "green":
     default:
       return {
         outline: "none",
-        boxShadow: `inset 0 0 0 2px ${theme.colors.alias.greenHaze}`,
+        boxShadow: `inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
       };
   }
 };
 
-const getActiveStyles = (colorScheme: string) => {
-  switch (colorScheme) {
+const getActiveStyles = (props: StyleFunctionProps) => {
+  switch (props.colorScheme) {
     case "light":
       return { backgroundColor: "alias.mint" };
     case "dark":

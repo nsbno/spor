@@ -5,11 +5,12 @@ import {
   PopoverBody,
   PopoverCloseButton,
   PopoverContent,
+  PopoverProps,
   PopoverTrigger,
 } from "@chakra-ui/react";
 import React from "react";
 
-type SimplePopoverProps = {
+type SimplePopoverProps = PopoverProps & {
   /**
    * Whatever is supposed to trigger the popover.
    * Must be focusable - like a link or button */
@@ -35,6 +36,7 @@ type SimplePopoverProps = {
    * Popovers with lots of content should be `lg`. Defaults to `sm`.
    **/
   size?: "sm" | "lg";
+  borderRadius?: string;
 };
 /** A basic popover component for basic content */
 export const SimplePopover = ({
@@ -46,6 +48,8 @@ export const SimplePopover = ({
   placement = "bottom",
   size = "sm",
   withCloseButton = false,
+  borderRadius,
+  ...props
 }: SimplePopoverProps) => {
   return (
     <DarkMode>
@@ -57,9 +61,10 @@ export const SimplePopover = ({
         size={size}
         arrowSize={12}
         arrowShadowColor="none"
+        {...props}
       >
         {trigger && <PopoverTrigger>{trigger}</PopoverTrigger>}
-        <PopoverContent>
+        <PopoverContent borderRadius={borderRadius}>
           <PopoverArrow />
           {withCloseButton && <PopoverCloseButton />}
           <PopoverBody>{children}</PopoverBody>

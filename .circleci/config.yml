@@ -35,14 +35,24 @@ jobs:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-    working_directory: /tmp/workspace
+    working_directory: /tmp/workspace/apps/docs
     steps:
       - setup_remote_docker:
           docker_layer_caching: true
-      - checkout
+      - checkout:
+          path: ../../
+      - restore_cache:
+          keys:
+            - npm-deps-v1-{{ checksum "package.json" }}
+            - npm-deps-v1-
+      - run:
+          command: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: npm-deps-v1-{{ checksum "package.json" }}-{{ epoch }}
       - run:
           name: "Build Docker image"
-          working_directory: apps/docs
           command: |
             ECR_ENDPOINT="${ECR_ENDPOINT:-<< parameters.ecr_endpoint >>}"
             if [ -z "$ECR_ENDPOINT" ]; then

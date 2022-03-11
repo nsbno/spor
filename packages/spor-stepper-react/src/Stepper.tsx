@@ -63,7 +63,7 @@ export const Stepper = ({
               )}
 
               <SimplePopover
-                trigger={
+                triggerElement={
                   <Box as="button" __css={style.stepCounter}>
                     {t(texts.stepsOf(activeStep, numberOfSteps))}
                   </Box>

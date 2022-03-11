@@ -47,7 +47,7 @@ const DemoArea = (props: BoxProps) => {
   const code = `
 <SimplePopover 
   ${toPropsString(currentProps)}
-  trigger={<Button variant="secondary" size="md">Klikk for å toggle</Button>}
+  triggerElement={<Button variant="secondary" size="md">Klikk for å toggle</Button>}
 >
   
 </SimplePopover>`;
@@ -85,7 +85,7 @@ const Guidelines = (props: BoxProps) => {
         <InteractiveCode>
           {`
 <WizardPopover 
-  trigger={
+  triggerElement={
     <Button variant="secondary" size="md">
       Se nye features!
     </Button>

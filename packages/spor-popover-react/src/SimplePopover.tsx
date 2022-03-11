@@ -14,7 +14,7 @@ type SimplePopoverProps = PopoverProps & {
   /**
    * Whatever is supposed to trigger the popover.
    * Must be focusable - like a link or button */
-  trigger?: React.ReactNode;
+  triggerElement?: React.ReactNode;
   /** Callback for when the popover is requested to close */
   onClose?: () => void;
   /** Should the popover have a close button? */
@@ -41,7 +41,7 @@ type SimplePopoverProps = PopoverProps & {
 /** A basic popover component for basic content */
 export const SimplePopover = ({
   children,
-  trigger,
+  triggerElement,
   onClose,
   isOpen,
   defaultIsOpen,
@@ -63,7 +63,7 @@ export const SimplePopover = ({
         arrowShadowColor="none"
         {...props}
       >
-        {trigger && <PopoverTrigger>{trigger}</PopoverTrigger>}
+        {triggerElement && <PopoverTrigger>{triggerElement}</PopoverTrigger>}
         <PopoverContent borderRadius={borderRadius}>
           <PopoverArrow />
           {withCloseButton && <PopoverCloseButton />}

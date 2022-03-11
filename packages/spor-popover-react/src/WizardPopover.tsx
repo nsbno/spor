@@ -14,7 +14,7 @@ export type WizardPopoverProps = PopoverProps & {
   /** Steps in the wizard. Each item is its own step */
   children: React.ReactNode;
   /** The element that triggers the wizard */
-  trigger: React.ReactNode;
+  triggerElement: React.ReactNode;
   /**
    * Where the popover should be placed by default.
    *
@@ -31,7 +31,7 @@ export type WizardPopoverProps = PopoverProps & {
  * single slide, you want to wrap them in an external component (like a Stack).
  *
  * ```tsx
- * <WizardPopover trigger={<Button>Click me</Button>}>
+ * <WizardPopover triggerElement={<Button>Click me</Button>}>
  *  <Text>First step</Text>
  *  <Text>Second step</Text>
  *  <Stack>
@@ -43,13 +43,13 @@ export type WizardPopoverProps = PopoverProps & {
  */
 export const WizardPopover = ({
   children,
-  trigger,
+  triggerElement,
   withCloseButton = false,
 }: WizardPopoverProps) => {
   return (
     <DarkMode>
       <Popover size="lg">
-        <PopoverTrigger>{trigger}</PopoverTrigger>
+        <PopoverTrigger>{triggerElement}</PopoverTrigger>
         <PopoverContent>
           <PopoverArrow />
           {withCloseButton && <PopoverCloseButton />}

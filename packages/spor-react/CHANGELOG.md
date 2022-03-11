@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 0.11.1
+
+### Patch Changes
+
+- Updated dependencies [772cb45]
+- Updated dependencies [ec876eb]
+  - @vygruppen/spor-popover-react@0.1.1
+  - @vygruppen/spor-stepper-react@0.1.1
+  - @vygruppen/spor-theme-react@0.3.8
+
 ## 0.11.0
 
 ### Minor Changes

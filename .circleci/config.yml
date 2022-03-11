@@ -74,4 +74,3 @@ workflows:
             branches:
               only:
                 - main
-                - circleci.tweaking

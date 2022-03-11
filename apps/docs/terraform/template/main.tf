@@ -136,7 +136,7 @@ data "aws_iam_policy_document" "task_assume" {
 
 data "aws_iam_policy_document" "task_policy" {
   statement {
-    actions = ["ssm:GetParameters"]
+    actions = ["ssm:GetParameter"]
 
     resources = [
       aws_ssm_parameter.sanity_preview_api_token.arn,

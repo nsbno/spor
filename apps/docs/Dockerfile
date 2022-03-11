@@ -41,11 +41,11 @@ FROM base
 
 ENV NODE_ENV=production
 
-RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \
-    chmod +x /usr/local/bin/aws-env
-
 RUN mkdir /app
 WORKDIR /app
+
+RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \
+    chmod +x /usr/local/bin/aws-env
 
 COPY --from=production-deps /app/node_modules /app/node_modules
 COPY --from=build /app/build /app/build

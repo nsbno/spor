@@ -41,7 +41,7 @@ FROM base as final
 
 ENV NODE_ENV=production
 
-RUN mkdir /app
+RUN mkdir -p /app
 WORKDIR /app
 
 RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \

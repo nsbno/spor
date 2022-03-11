@@ -1,9 +1,2 @@
-# Ignore everything
-*
-
-# Whitelist folders
-!node_modules/**/*
-!build/**/*
-!public/**/*
-!package.json
-!entrypoint.sh
+node_modules
+terraform

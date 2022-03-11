@@ -41,16 +41,6 @@ jobs:
           docker_layer_caching: true
       - checkout:
           path: ../../
-      - restore_cache:
-          keys:
-            - npm-deps-v1-{{ checksum "package.json" }}
-            - npm-deps-v1-
-      - run:
-          command: npm install
-      - save_cache:
-          paths:
-            - node_modules
-          key: npm-deps-v1-{{ checksum "package.json" }}-{{ epoch }}
       - run:
           name: "Build Docker image"
           command: |

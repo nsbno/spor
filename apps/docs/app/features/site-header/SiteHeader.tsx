@@ -28,7 +28,11 @@ export const SiteHeader = () => {
       backgroundColor="alias.darkTeal"
     >
       <Box as={Link} mr={[0, 0, 11]} to="/">
-        <VyLogo colorScheme="dark" height={[5, 6, 8]} width="100%" />
+        <VyLogo
+          colorScheme="dark"
+          height={[5, 6, 8]}
+          width={["auto", "100%"]}
+        />
       </Box>
       <DesktopNavigation />
       <MobileNavigation />

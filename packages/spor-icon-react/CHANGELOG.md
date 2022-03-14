@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 0.3.0
+
+### Minor Changes
+
+- 68b7928: Add icons for language and minibus
+
 ## 0.2.0
 
 ### Minor Changes

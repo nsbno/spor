@@ -189,6 +189,7 @@ export const menuStructure: MenuStructure[] = [
         title: "Floating action button",
         href: "/komponenter/fab",
         keywords: ["fab", "flytende", "knapper", "buttons"],
+        isAvailable: true
       },
       {
         title: "Lenker",

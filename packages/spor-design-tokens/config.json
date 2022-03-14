@@ -1,6 +1,19 @@
 {
   "source": ["tokens/**/*.json"],
   "platforms": {
+    "rn": {
+      "transforms": ["name/cti/camel", "size/object", "color/css"],
+      "files": [
+        {
+          "format": "javascript/module",
+          "destination": "react-native/index.js"
+        },
+        {
+          "format": "typescript/rn-typings",
+          "destination": "react-native/index.d.ts"
+        }
+      ]
+    },
     "javascript": {
       "transforms": [
         "attribute/cti",

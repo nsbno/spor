@@ -14,7 +14,8 @@
   },
   "files": [
     "dist",
-    "assets"
+    "assets",
+    "react-native"
   ],
   "license": "MIT",
   "devDependencies": {

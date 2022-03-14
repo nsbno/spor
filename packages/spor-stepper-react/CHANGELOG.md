@@ -1,5 +1,11 @@
 # @vygruppen/spor-stepper-react
 
+## 0.1.2
+
+### Patch Changes
+
+- @vygruppen/spor-popover-react@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes

@@ -1,6 +1,7 @@
 import StyleDictionaryFactory from "style-dictionary";
 import { elmFormatter } from "./formatters/elm/module";
 import { typescriptTypingsFormatter } from "./formatters/typescript/typings";
+import { reactNativeTypescriptTypingsFormatter } from "./formatters/typescript/rn-typings";
 import { pxTransformer } from "./transforms/size/px";
 import { pxToRemTransformer } from "./transforms/size/pxToRem";
 
@@ -9,6 +10,7 @@ const styleDictionary = StyleDictionaryFactory.extend("config.json");
 // Register formatters
 // Read about formatters @ https://amzn.github.io/style-dictionary/#/formats
 styleDictionary.registerFormat(typescriptTypingsFormatter);
+styleDictionary.registerFormat(reactNativeTypescriptTypingsFormatter);
 styleDictionary.registerFormat(elmFormatter);
 
 // Register transforms

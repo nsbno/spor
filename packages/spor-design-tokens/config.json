@@ -9,8 +9,8 @@
           "destination": "react-native/index.js"
         },
         {
-          "format": "typescript/typings",
-          "destination": "react-native/tokens.d.ts"
+          "format": "typescript/rn-typings",
+          "destination": "react-native/index.d.ts"
         }
       ]
     },

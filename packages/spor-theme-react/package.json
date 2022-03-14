@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-theme-react",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",

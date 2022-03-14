@@ -1,9 +1,4 @@
-import {
-  Box,
-  BoxProps,
-  Stack,
-  Text,
-} from "@vygruppen/spor-react";
+import { Box, BoxProps, Stack, Text } from "@vygruppen/spor-react";
 import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
 import { ComponentPlayground } from "~/features/component-playground/ComponentPlayground";
 import { usePlaygroundProps } from "~/features/component-playground/usePlaygroundProps";
@@ -14,7 +9,7 @@ export default function FloatingActionButtonPage() {
   return (
     <ComponentDocs
       title="Floating action button"
-      description="Chips gjør det mulig å skru av og på funksjonalitet, eller velge et eller flere alternativer."
+      description="Floating action buttons brukes til ofte brukte handlinger"
     >
       <DemoArea />
       <Guidelines />
@@ -30,14 +25,16 @@ const DemoArea = (props: BoxProps) => {
       type: "select",
       values: ["dark", "light", "green"],
     },
-
     { name: "children", defaultValue: "Kontroll", type: "input" },
+    { name: "isTextVisible", defaultValue: true, type: "choiceChip" },
   ]);
+  const { isTextVisible, ...remainingProps } = currentProps;
   const code = `
-    <FloatingActionButton 
-      icon={<TicketControlFill30Icon /> }
-      ${toPropsString(currentProps)}
-    />`;
+<FloatingActionButton 
+  icon={<TicketControlFill30Icon /> }
+  ${toPropsString(remainingProps)}
+  isTextVisible={${isTextVisible}}
+/>`;
   return (
     <Box {...props}>
       <ComponentPlayground
@@ -58,58 +55,44 @@ const Guidelines = (props: BoxProps) => {
           Retningslinjer
         </LinkableHeading>
         <Stack spacing={2}>
-          <LinkableHeading as="h3" textStyle="xs" fontWeight="bold">
-            Choice chips
+          <LinkableHeading as="h3" textStyle="lg">
+            Bruk
           </LinkableHeading>
           <Text>
-            Dette er knapper som ofte brukes til å definere et resultat. Du skal
-            kunne skru av og på samtlige choice chips og få resultater deretter,
-            som for eksempel et reisesøk hvor du kun ønsker å se buss og
-            togreiser fra kun en leverandør. Ett annet eksempel er muligheten
-            til å velge flere kategorier i tilbakemeldingsmodalen. Det skal
-            helst være flere valg-alternativer før man bruker Choice chips.
+            Dette er en knapp som alltid skal ligge over alt annet innhold slik
+            at den alltid er tilgjengelig (utenom skuffer og modaler som åpnes
+            over). Den skal kun brukes til en hovedhandling hvor man har behov
+            for å gjøre den synlig og tilgjengelig på tvers av flyter, sider
+            eller tjenester.
           </Text>
-          <LinkableHeading as="h3" textStyle="xs" fontWeight="bold">
-            Filter chips
-          </LinkableHeading>
           <Text>
-            Når man aktivt skal vise filtrering av resultatene som gis kan det
-            være lurt å bruke Filter chips. Her tydeliggjør man at valgene man
-            har tatt kan krysses ut og resultatet vil endre seg. Designer man et
-            keyword søk eller har et navigasjonsmønster som endrer seg etter
-            valgte kategorier kan det være lurt å bruke Filter chips. Et god
-            eksempel er filtrering av Turtips, hvor du først får et valg om
-            sted, deretter får du et valg om vanskelighetsgrad og type tur du
-            ønsker å ta. Med Filter chips kan du enkelt velge bort deler eller
-            alle valgene du har gjort.
+            Man skal helst ikke bruke mange forskjellige FABs på samme tjeneste
+            selv om man er på en annen del av tjenesten. Et eksempel kan være å
+            “skrive en melding” eller “legge til noe”, hvor dette er
+            hovedhandlingen for appen. Da kan det være lurt å ha en FAB.
           </Text>
-          <LinkableHeading as="h3" textStyle="xs" fontWeight="bold">
-            Icon chips
+          <Text>Du skal aldri ha flere enn 1 FAB på en side eller flyt.</Text>
+          <LinkableHeading as="h3" textStyle="lg">
+            Design
           </LinkableHeading>
           <Text>
-            Disse brukes i hovedsak for å tydeliggjøre valgene du har gjort i en
-            oversikt som henger sammen med resultatene du ser. De brukes der det
-            er viktig å bruke liten plass, men samtidig visualisere valgene du
-            har gjort og raskt ta deg tilbake til f.eks. modalen eller skuffen
-            med valg-alternativene.
+            Knappen kommer i 3 ulike farger for at den skal kunne tilpasses den
+            flyten eller siden du jobber på. Foreløpig kommer den kun i en
+            størrelse, men vi vil se om det er behov for en egen desktop versjon
+          </Text>
+          <LinkableHeading as="h3" textStyle="lg">
+            Interaksjon
+          </LinkableHeading>
+          <Text>
+            Knappen har to hovedstates. Versjonen med navn skal alltid være
+            synlig først sånn at brukeren forstår hva knappen gjør. Når man
+            skroller nedover på siden kan den animeres slik at kun ikonet er
+            synlig. Dette burde skje etter en bestemt lengde slik at ikke
+            minimale justeringer opp og ned forårsaker en animasjon. Når man
+            skroller oppover skal teksten bli synlig igjen. Det finnes mange
+            gode eksempler på dette slik som Gmail på Android.
           </Text>
         </Stack>
-      </Stack>
-      <Stack spacing={2}>
-        <LinkableHeading as="h3" textStyle="md" fontWeight="bold">
-          Design
-        </LinkableHeading>
-        <Text>
-          Knappene kommer i fire størrelser, lg, md, sm og xs . Valg av
-          størrelse skal passe flyt og andre elementer Alle størrelsene finnes i
-          en dynamisk og en kompakt variant. Dynamisk skal følge skjermstørrelse
-          eller størrelsen på elementet den er i, og har variabel padding på
-          sidene. Kompakt skal følge lengden på innholdet i knappen, og har
-          fastsatt padding på begge sider. Alle størrelsene finnes i tre ulike
-          layout versjoner. En med kun tekst, en med venstrestilt ikon og en med
-          høyrestilt ikon. Det eneste unntaket er Tilleggsknapp som har en
-          ekstra layoutvariant med venstre og høyrestilt ikon.
-        </Text>
       </Stack>
     </Stack>
   );

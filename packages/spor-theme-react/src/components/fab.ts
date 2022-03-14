@@ -62,8 +62,8 @@ const getPositionProps = (props: StyleFunctionProps) => {
       return { top: "1em", right: "1em" };
     case "bottom left":
       return { bottom: "1em", left: "1em" };
-    case "bottom left":
-      return { bottom: "1em", left: "1em" };
+    case "bottom right":
+      return { bottom: "1em", right: "1em" };
   }
 };
 

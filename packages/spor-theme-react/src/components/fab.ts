@@ -12,7 +12,7 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
     alignItems: "center",
     py: 2,
     pl: 2,
-    pr: 3,
+    pr: props.isTextVisible ? 3 : 2,
     cursor: "pointer",
     overflowX: "hidden",
     whiteSpace: "nowrap",

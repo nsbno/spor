@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.3.6
+
+### Patch Changes
+
+- c428f71: Add support for React Native tokens
+
 ## 2.3.5
 
 ### Patch Changes

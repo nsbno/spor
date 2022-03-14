@@ -1,5 +1,11 @@
 # @vygruppen/spor-button-react
 
+## 0.2.0
+
+### Minor Changes
+
+- 936b4ed: Add Floating Action Button component
+
 ## 0.1.5
 
 ### Patch Changes

@@ -11,7 +11,8 @@ import {
   ModalOverlay,
   VyLogo,
 } from "@vygruppen/spor-react";
-import { Link } from "remix";
+import { useEffect } from "react";
+import { Link, useLocation } from "remix";
 import { SearchableContentMenu } from "../content-menu/SearchableContentMenu";
 import { NavigationLink, SiteNavigation } from "./SiteNavigation";
 import { UserPreferenceSwitcher } from "./UserPreferenceSwitcher";
@@ -66,6 +67,12 @@ const DesktopNavigation = () => {
 
 const MobileNavigation = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const location = useLocation();
+  useEffect(() => {
+    // This doesn't close the menu when you're on the page you're clicking on,
+    // but that's on you!
+    onClose();
+  }, [location.pathname]);
   return (
     <Flex display={["flex", "flex", "none"]}>
       <IconButton

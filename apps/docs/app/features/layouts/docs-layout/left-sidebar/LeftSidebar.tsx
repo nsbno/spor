@@ -5,7 +5,7 @@ import { SearchableContentMenu } from "~/features/content-menu/SearchableContent
 export const LeftSidebar = () => {
   return (
     <Box
-      display={["none", "none", "block"]}
+      display={["none", "block"]}
       as="nav"
       aria-label="content"
       flex="1"

@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 0.11.3
+
+### Patch Changes
+
+- Updated dependencies [68b7928]
+  - @vygruppen/spor-icon-react@0.3.0
+  - @vygruppen/spor-link-react@0.1.4
+  - @vygruppen/spor-popover-react@0.1.3
+  - @vygruppen/spor-stepper-react@0.1.3
+
 ## 0.11.2
 
 ### Patch Changes

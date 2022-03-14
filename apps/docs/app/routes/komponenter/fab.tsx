@@ -1,8 +1,9 @@
-import { Box, BoxProps, Stack, Text } from "@vygruppen/spor-react";
+import { Box, BoxProps, Code, Stack, Text } from "@vygruppen/spor-react";
 import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
 import { ComponentPlayground } from "~/features/component-playground/ComponentPlayground";
 import { usePlaygroundProps } from "~/features/component-playground/usePlaygroundProps";
 import { toPropsString } from "~/features/component-playground/utils";
+import { InteractiveCode } from "~/features/interactive-code/InteractiveCode";
 import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 
 export default function FloatingActionButtonPage() {
@@ -20,7 +21,7 @@ export default function FloatingActionButtonPage() {
 const DemoArea = (props: BoxProps) => {
   const { currentProps, propList, onPropsChange } = usePlaygroundProps([
     {
-      name: "colorScheme",
+      name: "variant",
       defaultValue: "dark",
       type: "select",
       values: ["dark", "light", "green"],
@@ -34,6 +35,7 @@ const DemoArea = (props: BoxProps) => {
   icon={<TicketControlFill30Icon /> }
   ${toPropsString(remainingProps)}
   isTextVisible={${isTextVisible}}
+  position="static"
 />`;
   return (
     <Box {...props}>
@@ -91,6 +93,23 @@ const Guidelines = (props: BoxProps) => {
             minimale justeringer opp og ned forårsaker en animasjon. Når man
             skroller oppover skal teksten bli synlig igjen. Det finnes mange
             gode eksempler på dette slik som Gmail på Android.
+          </Text>
+          <InteractiveCode>
+            {`
+<FloatingActionButton 
+  variant="dark" 
+  icon={<TicketControlFill30Icon />}
+  position="static"
+>
+  Endrer seg når den scroller
+</FloatingActionButton>`}
+          </InteractiveCode>
+          <Text>
+            Som konsument kan du definere om du selv vil styre synligheten til
+            teksten, eller om du vil at komponenten gjør det for deg. By default
+            vil komponenten styre dette selv, med et 1 sekunds delay. Om du vil
+            overstyre når teksten vises, kan du sende inn{" "}
+            <Code>isTextVisible</Code> som en prop.
           </Text>
         </Stack>
       </Stack>

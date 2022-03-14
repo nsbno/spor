@@ -1,138 +1,116 @@
-import { PartsStyleFunction } from "@chakra-ui/theme-tools";
-import { anatomy } from "@chakra-ui/theme-tools";
-import { colors } from "../foundations";
+import {
+  anatomy,
+  PartsStyleFunction,
+  StyleFunctionProps,
+} from "@chakra-ui/theme-tools";
 
-const parts = anatomy("fab").parts("root", "container", "icon", "text");
+const parts = anatomy("fab").parts("container", "icon", "text");
 
 const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
-  
   container: {
-    backgroundColor: getContainerBackgroundColor(props.colorScheme),
-    mx: "auto",
-    display: "inline-flex",
+    display: "flex",
     alignItems: "center",
-    overflowX: "auto",
-    padding: 2,
+    py: 2,
+    pl: 2,
+    pr: 3,
     cursor: "pointer",
+    overflowX: "hidden",
+    whiteSpace: "nowrap",
     borderRadius: "xl",
     boxShadow: "md",
     transitionDuration: "fast",
-    _disabled: getDesabledStyles(props.colorScheme),
-    _focus: 
-    getFocusStyles(props.colorScheme, props.theme),
-    _hover: getHoverStyles(props.colorScheme),
-    _active: getActiveStyles(props.colorScheme),
+    transitionProperty: "common",
+    position: "fixed",
+    ...getPositionProps(props),
+    _disabled: {
+      backgroundColor: "palette.whiteAlpha.400",
+      color: "alias.white",
+    },
+    _focus: {
+      outline: "none",
+      boxShadow: `inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
+    },
+    "&:focus:not(:focus-visible)": {
+      boxShadow: "none",
+    },
+    _focusVisible: {
+      outline: "none",
+      boxShadow: `inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
+    },
+    _hover: {
+      backgroundColor: "alias.seaMist",
+    },
+    zIndex: "sticky",
   },
   icon: {
-    mr: 1,
-    color: getIconColor(props.colorScheme),
+    mr: props.isTextVisible ? 1 : 0,
   },
   text: {
     display: "flex",
-    flex:"none",
-    alignItems:"center",
+    flex: "none",
+    alignItems: "center",
     fontWeight: "bold",
     textStyle: "sm",
-    color: getTextStyles(props.colorScheme),
   },
 });
 
-const getDesabledStyles = (colorScheme: string) => {
-  switch (colorScheme) {
-    case "dark":
-      return "palette.whiteAlpha.400";
-    case "light":
-    case "green":
-    default:
-      return "alias.mint";
-  }
-}
-
-const getActiveStyles = (colorScheme: string) => {
-  switch (colorScheme) {
-    case "dark":
-      return { backgroundColor: "alias.pine" };
-    case "light":
-      return { backgroundColor: "alias.minst" };
-    case "green":
-    default:
-      return { color: "alias.lightGrey", backgroundColor: "transparent" };
-  }
-}
-
-const getHoverStyles = (colorScheme: string) => {
-  switch (colorScheme) {
-    case "dark":
-      return {
-       backgroundColor: "alias.night" 
-      };
-    case "light":
-    case "green":
-    default:
-      return {
-         backgroundColor: "alias.seaMist" 
-      };
-  }
-}
-
-const getFocusStyles = (colorScheme: string, theme:any) => {
-  switch (colorScheme) {
-    case "dark":
-      return {
-        outline: "none",
-        boxShadow: `inset 0 0 0 2px ${theme.colors.alias.white}`,
-      };
-    case "light":
-    case "green":
-    default:
-      return {
-        outline: "none",
-        boxShadow: `inset 0 0 0 2px ${theme.colors.alias.greenHaze}`,
-      };
-  }
-}
-
-const getIconColor = (colorScheme: string) => {
-  switch (colorScheme) {
-    case "light":
-      return "alias.darkGrey";
-    case "dark":
-      return "alias.white";
-    case "green":
-    default:
-      return "alias.darkGrey";
-  }
-}
-
-const getContainerBackgroundColor = (colorScheme: string) => {
-  switch (colorScheme) {
-    case "light":
-      return "alias.white";
-    case "dark":
-      return "alias.darkTeal";
-    case "green":
-    default:
-      return "alias.mint";
+const getPositionProps = (props: StyleFunctionProps) => {
+  switch (props.placement) {
+    case "top left":
+      return { top: "1em", left: "1em" };
+    case "top right":
+      return { top: "1em", right: "1em" };
+    case "bottom left":
+      return { bottom: "1em", left: "1em" };
+    case "bottom left":
+      return { bottom: "1em", left: "1em" };
   }
 };
 
-const getTextStyles = (colorScheme: string) => {
-  switch (colorScheme) {
-    case "light":
-      return "alias.darkGrey";
-    case "dark":
-      return "alias.white";
-    case "green":
-    default:
-      return "alias.darkTeal";
-  }
+const variants: Record<string, PartsStyleFunction<typeof parts>> = {
+  dark: (props) => ({
+    container: {
+      backgroundColor: "alias.darkTeal",
+      color: "alias.white",
+      _active: { backgroundColor: "alias.pine" },
+      _hover: {
+        backgroundColor: "alias.night",
+      },
+      _focus: {
+        boxShadow: `inset 0 0 0 4px ${props.theme.colors.alias.darkTeal}, inset 0 0 0 6px ${props.theme.colors.alias.white}`,
+        outline: "none",
+      },
+      "&:focus:not(:focus-visible)": {
+        boxShadow: "none",
+      },
+      _focusVisible: {
+        boxShadow: `inset 0 0 0 4px ${props.theme.colors.alias.darkTeal}, inset 0 0 0 6px ${props.theme.colors.alias.white}`,
+        outline: "none",
+      },
+    },
+  }),
+  light: () => ({
+    container: {
+      backgroundColor: "alias.white",
+      color: "alias.darkGrey",
+      _active: { backgroundColor: "alias.mint" },
+    },
+  }),
+  green: () => ({
+    container: {
+      backgroundColor: "alias.mint",
+      color: "alias.darkTeal",
+      _active: { color: "alias.darkTeal", backgroundColor: "alias.lightGrey" },
+    },
+  }),
 };
 
 const defaultProps = {
-  colorScheme: "dark",
+  variant: "dark",
 };
 
 export default {
   baseStyle,
   defaultProps,
+  variants,
 };

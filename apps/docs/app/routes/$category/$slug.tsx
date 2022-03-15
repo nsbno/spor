@@ -1,5 +1,5 @@
 import { PortableText } from "@portabletext/react";
-import { Badge, Box, Heading, HStack, Stack } from "@vygruppen/spor-react";
+import { Badge, Box, Heading, HStack } from "@vygruppen/spor-react";
 import type { LoaderFunction } from "remix";
 import invariant from "tiny-invariant";
 import { DocsLayout } from "~/features/layouts/docs-layout/DocsLayout";
@@ -74,9 +74,9 @@ export default function ArticlePage() {
         <Heading as="h1" textStyle="xl-display" mb={2}>
           {article.title}
         </Heading>
-        <Stack spacing={6}>
+        <Box>
           <PortableText value={article.content} />
-        </Stack>
+        </Box>
       </Box>
     </DocsLayout>
   );

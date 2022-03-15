@@ -41,35 +41,53 @@ const components: Partial<PortableTextReactComponents> = {
   },
   block: {
     h2: ({ children }) => (
-      <LinkableHeading as="h2" textStyle="xl-display">
+      <LinkableHeading as="h2" textStyle="lg" fontWeight="bold" mt={6} mb={-1}>
         {children}
       </LinkableHeading>
     ),
     h3: ({ children }) => (
-      <LinkableHeading as="h3" textStyle="lg">
+      <LinkableHeading as="h3" textStyle="md" fontWeight="bold" mt={2}>
         {children}
       </LinkableHeading>
     ),
     h4: ({ children }) => (
-      <LinkableHeading as="h4" textStyle="md">
+      <LinkableHeading as="h4" textStyle="sm" fontWeight="bold" mt={2}>
         {children}
       </LinkableHeading>
     ),
     h5: ({ children }) => (
-      <LinkableHeading as="h5" textStyle="sm">
+      <LinkableHeading as="h5" textStyle="xs" fontWeight="bold" mt={2}>
         {children}
       </LinkableHeading>
     ),
     h6: ({ children }) => (
-      <LinkableHeading as="h6" textStyle="xs">
+      <LinkableHeading as="h6" textStyle="xs" mt={2}>
         {children}
       </LinkableHeading>
     ),
-    normal: ({ children }) => <Text textStyle="sm">{children}</Text>,
+    normal: ({ children }) => {
+      const arrayChildren = React.Children.toArray(children);
+      if (!arrayChildren.length || arrayChildren.join("") === "") {
+        return null;
+      }
+      return (
+        <Text textStyle="sm" mt={3}>
+          {children}
+        </Text>
+      );
+    },
   },
   list: {
-    bullet: ({ children }) => <UnorderedList>{children}</UnorderedList>,
-    number: ({ children }) => <OrderedList>{children}</OrderedList>,
+    bullet: ({ children }) => (
+      <UnorderedList mt={6} textStyle="sm">
+        {children}
+      </UnorderedList>
+    ),
+    number: ({ children }) => (
+      <OrderedList mt={6} textStyle="sm">
+        {children}
+      </OrderedList>
+    ),
   },
   listItem: ({ children }) => <ListItem>{children}</ListItem>,
   types: {
@@ -79,14 +97,14 @@ const components: Partial<PortableTextReactComponents> = {
         ? { as: "a", href: value.url }
         : { as: Link, to: value.url };
       return (
-        <Box>
+        <Box mt={3}>
           <Button variant={value.variant} size={value.size} {...linkProps}>
             {value.text}
           </Button>
         </Box>
       );
     },
-    divider: () => <Divider height="1px" />,
+    divider: () => <Divider height="1px" mt={6} />,
     introduction: ({ value }) => {
       return (
         <Stack spacing={3}>
@@ -104,7 +122,7 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     grid: ({ value }) => (
-      <SimpleGrid columns={[1, 2, value.maxNumberOfColumns]} gap={6}>
+      <SimpleGrid columns={[1, 2, value.maxNumberOfColumns]} gap={6} mt={6}>
         {value.content.map((item: any) => (
           <PortableText value={item} key={item._key} />
         ))}
@@ -121,9 +139,9 @@ const components: Partial<PortableTextReactComponents> = {
         "flex-start";
       return (
         <Flex justifyContent="center" alignItems={alignItems}>
-          <Stack spacing={3}>
+          <Box>
             <PortableText value={value.content} />
-          </Stack>
+          </Box>
         </Flex>
       );
     },
@@ -140,6 +158,8 @@ const components: Partial<PortableTextReactComponents> = {
                 .url()}
               alt={value.alt || ""}
               mx="auto"
+              mt={2}
+              borderRadius="md"
             />
           </Box>
         )}
@@ -160,6 +180,8 @@ const components: Partial<PortableTextReactComponents> = {
           .url()}
         alt={value.alt}
         mx="auto"
+        mt={2}
+        borderRadius="md"
       />
     ),
   },

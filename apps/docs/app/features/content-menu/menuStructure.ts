@@ -266,6 +266,7 @@ export const menuStructure: MenuStructure[] = [
         title: "Accordions",
         href: "/komponenter/accordion",
         keywords: ["expandable"],
+        isAvailable: true
       },
       { title: "Tabs", href: "/komponenter/tab", keywords: ["fliker"] },
       {

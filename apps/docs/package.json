@@ -26,7 +26,6 @@
     "@vygruppen/spor-react": "*",
     "dotenv": "^16.0.0",
     "framer-motion": "^6.2.8",
-    "fs-extra": "^10.0.0",
     "match-sorter": "^6.3.1",
     "picosanity": "^4.0.0",
     "prism-react-renderer": "^1.3.1",
@@ -43,10 +42,8 @@
     "@types/react-dom": "^17.0.9",
     "config": "*",
     "eslint": "7.32.0",
-    "graceful-fs": "^4.2.9",
     "tsconfig": "*",
-    "typescript": "^4.1.2",
-    "universalify": "^2.0.0"
+    "typescript": "^4.1.2"
   },
   "engines": {
     "node": ">=14"

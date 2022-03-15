@@ -30,9 +30,13 @@ const DemoArea = (props: BoxProps) => {
     { name: "isTextVisible", defaultValue: true, type: "choiceChip" },
   ]);
   const { isTextVisible, ...remainingProps } = currentProps;
+  const icon =
+    remainingProps.variant === "dark"
+      ? "<TicketControlFill30Icon />"
+      : "<TicketControlOutline30Icon />";
   const code = `
 <FloatingActionButton 
-  icon={<TicketControlFill30Icon /> }
+  icon={${icon}}
   ${toPropsString(remainingProps)}
   isTextVisible={${isTextVisible}}
   position="static"

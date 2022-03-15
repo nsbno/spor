@@ -28,14 +28,14 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
     },
     _focus: {
       outline: "none",
-      boxShadow: `inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
+      boxShadow: `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
     },
     "&:focus:not(:focus-visible)": {
-      boxShadow: "none",
+      boxShadow: "md",
     },
     _focusVisible: {
       outline: "none",
-      boxShadow: `inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
+      boxShadow: `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
     },
     _hover: {
       backgroundColor: "alias.seaMist",
@@ -77,14 +77,14 @@ const variants: Record<string, PartsStyleFunction<typeof parts>> = {
         backgroundColor: "alias.night",
       },
       _focus: {
-        boxShadow: `inset 0 0 0 4px ${props.theme.colors.alias.darkTeal}, inset 0 0 0 6px ${props.theme.colors.alias.white}`,
+        boxShadow: `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.alias.darkTeal}, inset 0 0 0 6px ${props.theme.colors.alias.white}`,
         outline: "none",
       },
       "&:focus:not(:focus-visible)": {
-        boxShadow: "none",
+        boxShadow: "md",
       },
       _focusVisible: {
-        boxShadow: `inset 0 0 0 4px ${props.theme.colors.alias.darkTeal}, inset 0 0 0 6px ${props.theme.colors.alias.white}`,
+        boxShadow: `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.alias.darkTeal}, inset 0 0 0 6px ${props.theme.colors.alias.white}`,
         outline: "none",
       },
     },

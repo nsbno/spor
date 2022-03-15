@@ -2,7 +2,12 @@
   "source": ["tokens/**/*.json"],
   "platforms": {
     "rn": {
-      "transforms": ["name/cti/camel", "size/object", "color/css"],
+      "transforms": [
+        "name/cti/camel",
+        "attribute/cti",
+        "size/object",
+        "color/css"
+      ],
       "files": [
         {
           "format": "javascript/module",

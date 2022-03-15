@@ -21,9 +21,7 @@
   "devDependencies": {
     "style-dictionary": "^3.0.2",
     "ts-node": "^10.2.1",
-    "typescript": "^4.4.3"
-  },
-  "dependencies": {
+    "typescript": "^4.4.3",
     "json-to-ts": "^1.7.0",
     "prettier": "^2.4.1"
   }

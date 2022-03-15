@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.3.7
+
+### Patch Changes
+
+- f49b13d: Fix an issue where the React Native types weren't typed correctly
+- 382173f: Remove unneccesary prod dependencies, creating lots of extra items to consumer's package lock files
+
 ## 2.3.6
 
 ### Patch Changes

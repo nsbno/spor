@@ -35,7 +35,8 @@
     "react-live": "^3.0.0",
     "react-router-dom": "^6.2.1",
     "remix": "1.1.3",
-    "tiny-invariant": "^1.2.0"
+    "tiny-invariant": "^1.2.0",
+    "universalify": "^2.0.0"
   },
   "devDependencies": {
     "@remix-run/dev": "1.1.3",

@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.3.11
+
+### Patch Changes
+
+- 7dc9c0e: Fix bug where shadows disappeared
+
 ## 0.3.10
 
 ### Patch Changes

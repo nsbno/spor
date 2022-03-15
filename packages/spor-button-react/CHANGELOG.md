@@ -1,5 +1,11 @@
 # @vygruppen/spor-button-react
 
+## 0.2.1
+
+### Patch Changes
+
+- 7dc9c0e: Fix bug where shadows disappeared
+
 ## 0.2.0
 
 ### Minor Changes

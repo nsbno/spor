@@ -6,5 +6,10 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@vygruppen/docs", "@vygruppen/config", "@vygruppen/tsconfig"]
+  "ignore": [
+    "@vygruppen/docs",
+    "@vygruppen/spor-docs-studio",
+    "@vygruppen/config",
+    "@vygruppen/tsconfig"
+  ]
 }

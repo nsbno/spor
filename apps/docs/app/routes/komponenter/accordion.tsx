@@ -14,7 +14,7 @@ import { InteractiveCode } from "~/features/interactive-code/InteractiveCode";
 import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 
 type AccordionPageProps = {
-  title: string;
+  title: React.ReactNode;
   children: React.ReactNode;
 };
 
@@ -44,7 +44,7 @@ const DemoArea = (props: BoxProps) => {
     {
       name: "variant",
       values: ["list", "outline", "card"],
-      defaultValue: "card",
+      defaultValue: "outline",
       type: "select",
     },
     {
@@ -55,20 +55,23 @@ const DemoArea = (props: BoxProps) => {
     },
     {
       name: "title",
-      defaultValue: "Accordion Item #1",
+      defaultValue: "Jeg er ekspanderbar",
       type: "input",
     },
   ]);
   const { title, ...remainingProps } = currentProps;
   const code = `
   <Accordion
-  allowToggle
-    ${toPropsString(remainingProps)}
-    
-   >  
-   <ExpandableItem title="${title}" icon={<TrainOutline30Icon/>}>
-   Nå kan du teste utvidbare elementer 😎
-   </ExpandableItem>
+  ${toPropsString(remainingProps)}
+  >  
+    <Expandable allowToggle 
+    title={
+      <HStack>
+      <PersonFill30Icon />
+      <Box>${title}</Box>
+      </HStack>}>
+      Nå kan du teste utvidbare elementer 😎
+    </Expandable>
   </Accordion>`;
   return (
     <Box {...props}>
@@ -101,16 +104,16 @@ const Guidelines = (props: BoxProps) => {
         </Text>
         <InteractiveCode>
           {`
-<Accordion variant="card" size="md" > 
-<Stack spacing={2}>
-  <ExpandableItem title="Accordion #1" headingLevel="h3" icon={<TrainOutline30Icon/>}>
-    <Text>Dette er den første accordions.</Text>
-  </ExpandableItem>
-  <ExpandableItem title="Accordion #2" headingLevel="h3">
-    <Text>Dette er den andre accordions</Text>
-  </ExpandableItem>
-  </Stack>
-</Accordion>
+  <Accordion variant="card" size="md"> 
+    <Stack spacing={2}>
+        <ExpandableItem title="Første panel" headingLevel="h3" >
+          <Text>Dette er det første panelet.</Text>
+        </ExpandableItem>
+        <ExpandableItem title="Andre panel" headingLevel="h3">
+          <Text>Dette er det andre panelet</Text>
+        </ExpandableItem>
+    </Stack>
+  </Accordion>
         `}
         </InteractiveCode>
       </Stack>

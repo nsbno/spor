@@ -14,11 +14,9 @@ type ExpandableProps = AccordionProps & {
   /** The hidden content */
   children: React.ReactNode;
   /** The title that's shown inside the toggle button */
-  title: string;
+  title: React.ReactNode;
   /** The semantic heading level of the toggle button */
   headingLevel?: HeadingLevel;
-
-  icon: React.ReactNode;
 };
 /**
  * A standalone expandable component.
@@ -36,12 +34,11 @@ export const Expandable = ({
   children,
   headingLevel,
   title,
-  icon,
   ...rest
 }: ExpandableProps) => {
   return (
     <Accordion {...rest}>
-      <ExpandableItem headingLevel={headingLevel} title={title} icon={icon}>
+      <ExpandableItem headingLevel={headingLevel} title={title}>
         {children}
       </ExpandableItem>
     </Accordion>
@@ -50,9 +47,8 @@ export const Expandable = ({
 
 export type ExpandableItemProps = AccordionItemProps & {
   children: React.ReactNode;
-  title: string;
+  title: React.ReactNode;
   headingLevel?: HeadingLevel;
-  icon: React.ReactNode;
 };
 /**
  * An item in a set of Expandables. Must be wrapped in an `<Accordion>` component.
@@ -74,7 +70,6 @@ export const ExpandableItem = ({
   children,
   title,
   headingLevel = "h3",
-  icon,
   ...rest
 }: ExpandableItemProps) => {
   return (
@@ -82,7 +77,6 @@ export const ExpandableItem = ({
       <Box as={headingLevel}>
         <AccordionButton>
           {title}
-          {icon}
           <AccordionIcon />
         </AccordionButton>
       </Box>

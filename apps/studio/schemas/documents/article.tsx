@@ -44,4 +44,10 @@ export const article: Document<Article> = {
       type: "content",
     },
   ],
+  preview: {
+    select: {
+      title: "title",
+      subtitle: "category.title",
+    },
+  },
 };

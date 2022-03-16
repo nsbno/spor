@@ -7,17 +7,26 @@ import {
 import {
   Box,
   Button,
+  Code,
   Divider,
   Flex,
+  Heading,
   Image,
   Link,
   SimpleGrid,
   Stack,
+  Table,
+  Tbody,
+  Td,
   Text,
+  Th,
+  Thead,
+  Tr,
 } from "@vygruppen/spor-react";
 import React from "react";
 import { Link as InternalLink } from "remix";
 import { urlBuilder } from "~/utils/sanity/utils";
+import { InteractiveCode } from "../interactive-code/InteractiveCode";
 import { LinkableHeading } from "../linkable-heading/LinkableHeading";
 
 const components: Partial<PortableTextReactComponents> = {
@@ -183,6 +192,56 @@ const components: Partial<PortableTextReactComponents> = {
         mt={2}
         borderRadius="md"
       />
+    ),
+    codeExample: ({ value }) => (
+      <InteractiveCode layout={value.layout} mt={6}>
+        {value.reactCode.code}
+      </InteractiveCode>
+    ),
+    component: ({ value }) => (
+      <Box key={value.name} mt={6} as="article">
+        <LinkableHeading as="h3" textStyle="lg" fontWeight="bold">
+          {`<${value.name} />`}
+        </LinkableHeading>
+        <Box mt={1}>
+          <PortableText value={value.content} />
+        </Box>
+        <Heading as="h4" textStyle="md" fontWeight="bold" mt={3}>
+          Props
+        </Heading>
+        <Table>
+          <Thead>
+            <Tr>
+              <Th>Navn</Th>
+              <Th>Type</Th>
+              <Th>Påkrevd</Th>
+              <Th>Beskrivelse</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {value.props.map((prop: any) => (
+              <Tr key={prop.name}>
+                <Td>
+                  <Code>{prop.name}</Code>
+                </Td>
+                <Td>
+                  <Code>
+                    {prop.type === "other" ? prop.typeOther : prop.type}
+                  </Code>
+                </Td>
+                <Td>
+                  {prop.isRequired && (
+                    <span role="img" aria-label="Ja">
+                      ✅
+                    </span>
+                  )}
+                </Td>
+                <Td>{prop.description}</Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </Box>
     ),
   },
 };

@@ -6,17 +6,25 @@ import { LiveProvider } from "./LiveProvider";
 
 type InteractiveCodeProps = {
   children: string;
+  layout: "simple" | "preview-only" | "code-only" | "advanced";
 } & BoxProps;
 export const InteractiveCode = ({
   children,
+  layout,
   ...rest
 }: InteractiveCodeProps) => {
   return (
     <Box {...rest}>
-      <LiveProvider code={children.trim()}>
+      <LiveProvider code={children?.trim()}>
         <Stack spacing={2}>
-          <LivePreview />
-          <LiveEditor />
+          {layout === "simple" && (
+            <>
+              <LivePreview />
+              <LiveEditor />
+            </>
+          )}
+          {layout === "preview-only" && <LivePreview />}
+          {layout === "code-only" && <LiveEditor />}
           <LiveError />
         </Stack>
       </LiveProvider>

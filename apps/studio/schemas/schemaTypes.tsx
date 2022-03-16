@@ -31,7 +31,12 @@ export type CommonFieldProps = {
   fieldset?: string;
   validation?: Validation;
   description?: string;
-  hidden?: boolean;
+  hidden?:
+    | boolean
+    | ((args: {
+        document: { [key: string]: any };
+        parent: { [key: string]: any };
+      }) => boolean);
   readOnly?: boolean;
   initialValue?: any;
   inputComponent?: ElementType;

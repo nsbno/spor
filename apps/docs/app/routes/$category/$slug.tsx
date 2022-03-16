@@ -37,7 +37,10 @@ export const loader: LoaderFunction = async ({
       title,
       "slug": slug.current
     },
-    content
+    content[]{
+      _type == 'reference' => @->,
+      _type != 'reference' => @,
+    }
   }`;
   const queryParams = {
     categorySlug: params.category,

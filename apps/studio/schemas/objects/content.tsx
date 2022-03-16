@@ -24,5 +24,7 @@ export const content: ArrayField = {
     { type: "imageWithCaption" },
     { type: "grid" },
     { type: "codeExample" },
+    { type: "reference", to: [{ type: "component" }] },
+    { type: "componentsSection" },
   ],
 };

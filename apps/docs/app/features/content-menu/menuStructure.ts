@@ -128,8 +128,9 @@ export const menuStructure: MenuStructure[] = [
       },
       {
         title: "Valgknapper",
-        href: "/komponenter/choice-chips",
+        href: "/komponenter/valgknapper",
         keywords: ["choice", "chips"],
+        isAvailable: true
       },
     ],
   },

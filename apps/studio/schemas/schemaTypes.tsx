@@ -163,7 +163,14 @@ type FileField<Name extends string = string> = CommonFieldProps & {
 
 export type CustomField<Name extends string = string> = CommonFieldProps & {
   name: Name;
-  type: "money" | "color" | "icon" | "iconPicker" | "content" | "metadata";
+  type:
+    | "money"
+    | "color"
+    | "icon"
+    | "iconPicker"
+    | "content"
+    | "metadata"
+    | "code";
   options?: Record<string, any>;
 };
 

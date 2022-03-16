@@ -23,5 +23,6 @@ export const content: ArrayField = {
     { type: "introduction" },
     { type: "imageWithCaption" },
     { type: "grid" },
+    { type: "codeExample" },
   ],
 };

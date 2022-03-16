@@ -79,17 +79,17 @@ const components: Partial<PortableTextReactComponents> = {
   },
   list: {
     bullet: ({ children }) => (
-      <UnorderedList mt={6} textStyle="sm">
+      <UnorderedList pl={3} mt={0} textStyle="sm">
         {children}
       </UnorderedList>
     ),
     number: ({ children }) => (
-      <OrderedList mt={6} textStyle="sm">
+      <OrderedList pl={3} mt={0} textStyle="sm">
         {children}
       </OrderedList>
     ),
   },
-  listItem: ({ children }) => <ListItem>{children}</ListItem>,
+  listItem: ({ children }) => <ListItem mt={2}>{children}</ListItem>,
   types: {
     buttonLink: ({ value }) => {
       const isExternal = value.url.startsWith("/");

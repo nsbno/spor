@@ -14,7 +14,7 @@ type ExpandableProps = AccordionProps & {
   /** The hidden content */
   children: React.ReactNode;
   /** The title that's shown inside the toggle button */
-  title: string;
+  title: React.ReactNode;
   /** The semantic heading level of the toggle button */
   headingLevel?: HeadingLevel;
 };
@@ -47,7 +47,7 @@ export const Expandable = ({
 
 export type ExpandableItemProps = AccordionItemProps & {
   children: React.ReactNode;
-  title: string;
+  title: React.ReactNode;
   headingLevel?: HeadingLevel;
 };
 /**

@@ -44,7 +44,7 @@ const DemoArea = (props: BoxProps) => {
     {
       name: "variant",
       values: ["list", "outline", "card"],
-      defaultValue: "outline",
+      defaultValue: "card",
       type: "select",
     },
     {
@@ -59,14 +59,14 @@ const DemoArea = (props: BoxProps) => {
       type: "input",
     },
   ]);
-  const { title, ...remainningProps } = currentProps;
+  const { title, ...remainingProps } = currentProps;
   const code = `
   <Accordion
   allowToggle
-    ${toPropsString(remainningProps)}
+    ${toPropsString(remainingProps)}
     
    >  
-   <ExpandableItem title="${title}">
+   <ExpandableItem title="${title}" icon={<TrainOutline30Icon/>}>
    Nå kan du teste utvidbare elementer 😎
    </ExpandableItem>
   </Accordion>`;
@@ -107,7 +107,7 @@ const Guidelines = (props: BoxProps) => {
     <Text>Dette er den første accordions.</Text>
   </ExpandableItem>
   <ExpandableItem title="Accordion #2" headingLevel="h3">
-    <Text>Dette er andre accordions</Text>
+    <Text>Dette er den andre accordions</Text>
   </ExpandableItem>
   </Stack>
 </Accordion>

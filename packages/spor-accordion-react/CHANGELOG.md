@@ -1,5 +1,11 @@
 # @vygruppen/spor-accordion-react
 
+## 0.0.4
+
+### Patch Changes
+
+- e783ba9: Add support for adding icons etc to accordion titles
+
 ## 0.0.3
 
 ### Patch Changes

@@ -32,12 +32,7 @@ const DemoArea = (props: BoxProps) => {
       type: "input",
     },
     {
-      name: "defaultChecked",
-      defaultValue: false,
-      type: "choiceChip",
-    },
-    {
-      name: "isSelected",
+      name: "isChecked",
       defaultValue: false,
       type: "choiceChip",
     },

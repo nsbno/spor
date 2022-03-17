@@ -1,4 +1,4 @@
-import { PartsStyleObject, SystemStyleObject } from "@chakra-ui/theme-tools";
+import { PartsStyleFunction, PartsStyleObject, SystemStyleFunction, SystemStyleObject } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 
 const choiceChipAnatomy = {
@@ -25,16 +25,17 @@ const containerStyle: SystemStyleObject = {
     background: "alias.seaMist",
   },
 };
-const iconStyle: SystemStyleObject = {
-  mr: 1,
-};
+const iconStyle: SystemStyleFunction =(props)=> ({
+  mr: props.hasLabel ? 1 :0,
+
+});
 const labelStyle: SystemStyleObject = {};
 
-const baseStyle: PartsStyleObject<typeof choiceChipAnatomy> = {
+const baseStyle: PartsStyleFunction <typeof choiceChipAnatomy> =  props => ({
   container: containerStyle,
-  icon: iconStyle,
+  icon: iconStyle(props),
   label: labelStyle,
-};
+})
 
 const sizes: Record<string, PartsStyleObject<typeof choiceChipAnatomy>> = {
   sm: {

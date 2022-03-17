@@ -6,15 +6,16 @@ const choiceChipAnatomy = {
   keys: ["container", "label", "icon"],
 };
 
-const containerStyle: SystemStyleObject = {
+const containerStyle: SystemStyleFunction =(props)=> ({
   backgroundColor: "alias.white",
   boxShadow: `0 0 0 1px ${colors.alias.celadon}`,
   color: "alias.darkTeal",
   display: "inline-flex",
   alignItems: "center",
   fontSize: "16px",
-  transitionProperty: "box-shadow, backgroundColor",
-  transitionDuration: "fast",
+  px: 3,
+  pr: props.hasLabel ? 3 : 1,
+  pl: props.hasLabel ? 2 : 1,
   _focus: {
     boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
   },
@@ -24,7 +25,8 @@ const containerStyle: SystemStyleObject = {
   _checked: {
     background: "alias.seaMist",
   },
-};
+});
+
 const iconStyle: SystemStyleFunction =(props)=> ({
   mr: props.hasLabel ? 1 :0,
 
@@ -32,7 +34,7 @@ const iconStyle: SystemStyleFunction =(props)=> ({
 const labelStyle: SystemStyleObject = {};
 
 const baseStyle: PartsStyleFunction <typeof choiceChipAnatomy> =  props => ({
-  container: containerStyle,
+  container: containerStyle(props),
   icon: iconStyle(props),
   label: labelStyle,
 })

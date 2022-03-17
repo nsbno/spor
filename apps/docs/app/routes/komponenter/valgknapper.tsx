@@ -23,12 +23,12 @@ const DemoArea = (props: BoxProps) => {
     {
       name: "size",
       values: ["sm", "md", "lg"],
-      defaultValue: "sm",
+      defaultValue: "lg",
       type: "select",
     },
     {
       name: "children",
-      defaultValue: "Bus",
+      defaultValue: "Jeg er en valgknapper",
       type: "input",
     },
     {
@@ -44,7 +44,7 @@ const DemoArea = (props: BoxProps) => {
       : "<BusFill30Icon/>";
   const code = `
 <ChoiceChip 
-icon={${icon}}
+  icon={${icon}}
   ${toPropsString(remainingProps)}
   isSelected={${isSelected}}
 />`;
@@ -106,8 +106,11 @@ const Guidelines = (props: BoxProps) => {
       <InteractiveCode>
         {`
 <Stack direction="row">
-<ChoiceChip size="lg" icon={<NightOutline30Icon />}>Nattog</ChoiceChip>
-<ChoiceChip size="lg" icon={<NightFill30Icon />}></ChoiceChip>
+  <ChoiceChip size="lg" icon={<NightOutline30Icon />}>
+    Valgknapper med ikon
+  </ChoiceChip>
+  <ChoiceChip size="lg" icon={<NightFill30Icon />}>
+  </ChoiceChip>
 </Stack>
 `}
       </InteractiveCode>

@@ -7,21 +7,33 @@ import {
 import {
   Box,
   Button,
+  Code,
   Divider,
   Flex,
+  Heading,
   Image,
   Link,
   SimpleGrid,
   Stack,
+  SuccessFill24Icon,
+  Table,
+  Tbody,
+  Td,
   Text,
+  Th,
+  Thead,
+  Tr,
 } from "@vygruppen/spor-react";
 import React from "react";
 import { Link as InternalLink } from "remix";
 import { urlBuilder } from "~/utils/sanity/utils";
+import { CodeBlock } from "../code-block/CodeBlock";
+import { InteractiveCode } from "../interactive-code/InteractiveCode";
 import { LinkableHeading } from "../linkable-heading/LinkableHeading";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
+    code: ({ children }) => <Code>{children}</Code>,
     link: ({ value, children }) => {
       const isExternal = value.href.startsWith("http");
       if (isExternal) {
@@ -79,17 +91,17 @@ const components: Partial<PortableTextReactComponents> = {
   },
   list: {
     bullet: ({ children }) => (
-      <UnorderedList mt={6} textStyle="sm">
+      <UnorderedList pl={3} mt={0} textStyle="sm">
         {children}
       </UnorderedList>
     ),
     number: ({ children }) => (
-      <OrderedList mt={6} textStyle="sm">
+      <OrderedList pl={3} mt={0} textStyle="sm">
         {children}
       </OrderedList>
     ),
   },
-  listItem: ({ children }) => <ListItem>{children}</ListItem>,
+  listItem: ({ children }) => <ListItem mt={2}>{children}</ListItem>,
   types: {
     buttonLink: ({ value }) => {
       const isExternal = value.url.startsWith("/");
@@ -184,6 +196,58 @@ const components: Partial<PortableTextReactComponents> = {
         borderRadius="md"
       />
     ),
+    codeExample: ({ value }) =>
+      value.layout === "code-only" ? (
+        <CodeBlock language="jsx">{value.reactCode.code}</CodeBlock>
+      ) : (
+        <InteractiveCode layout={value.layout} mt={6}>
+          {value.reactCode.code}
+        </InteractiveCode>
+      ),
+    component: ({ value }) => (
+      <Box key={value.name} mt={6} as="article">
+        <LinkableHeading as="h3" textStyle="lg" fontWeight="bold">
+          {`<${value.name} />`}
+        </LinkableHeading>
+        <Box mt={1}>
+          <PortableText value={value.content} />
+        </Box>
+        <Heading as="h4" textStyle="md" fontWeight="bold" mt={3}>
+          Props
+        </Heading>
+        <Table>
+          <Thead>
+            <Tr>
+              <Th>Navn</Th>
+              <Th>Type</Th>
+              <Th>Påkrevd?</Th>
+              <Th>Beskrivelse</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {value.props.map((prop: any) => (
+              <Tr key={prop.name}>
+                <Td>
+                  <Code>{prop.name}</Code>
+                </Td>
+                <Td>
+                  <Code>
+                    {prop.type === "other" ? prop.typeOther : prop.type}
+                  </Code>
+                </Td>
+                <Td>
+                  {prop.isRequired && (
+                    <SuccessFill24Icon aria-label="Påkrevd" mx="auto" />
+                  )}
+                </Td>
+                <Td>{prop.description}</Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </Box>
+    ),
+    imports: ({ value }) => <CodeBlock mt={3}>{value.reactImport}</CodeBlock>,
   },
 };
 

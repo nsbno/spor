@@ -31,7 +31,12 @@ export type CommonFieldProps = {
   fieldset?: string;
   validation?: Validation;
   description?: string;
-  hidden?: boolean;
+  hidden?:
+    | boolean
+    | ((args: {
+        document: { [key: string]: any };
+        parent: { [key: string]: any };
+      }) => boolean);
   readOnly?: boolean;
   initialValue?: any;
   inputComponent?: ElementType;
@@ -163,7 +168,14 @@ type FileField<Name extends string = string> = CommonFieldProps & {
 
 export type CustomField<Name extends string = string> = CommonFieldProps & {
   name: Name;
-  type: "money" | "color" | "icon" | "iconPicker" | "content" | "metadata";
+  type:
+    | "money"
+    | "color"
+    | "icon"
+    | "iconPicker"
+    | "content"
+    | "metadata"
+    | "code";
   options?: Record<string, any>;
 };
 

@@ -13,13 +13,20 @@ import { slugify } from "~/utils/stringUtils";
 type LinkableHeadingProps = HeadingProps;
 
 /** A heading that renders a "copy link" button when hovered. */
-export const LinkableHeading = ({ mb, ...props }: LinkableHeadingProps) => {
+export const LinkableHeading = ({
+  mb,
+  mt,
+  marginTop,
+  marginBottom,
+  ...props
+}: LinkableHeadingProps) => {
+  const spacingProps = { mb, mt, marginTop, marginBottom };
   const location = useLocation();
   const text = getChildrenAsString(props.children);
   const id = props.id || slugify(text as string);
   const { onCopy, hasCopied } = useClipboard(`${location.pathname}#${id}`);
   return (
-    <Flex position="relative" alignItems="center" data-group mb={mb}>
+    <Flex position="relative" alignItems="center" data-group {...spacingProps}>
       <Heading {...props} id={id} />
       <IconButton
         aria-label={hasCopied ? "Kopiert" : "Kopiér"}

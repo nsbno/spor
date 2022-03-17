@@ -21,7 +21,10 @@ export const content: ArrayField = {
     { type: "buttonLink" },
     { type: "divider" },
     { type: "introduction" },
+    { type: "imports" },
     { type: "imageWithCaption" },
     { type: "grid" },
+    { type: "codeExample" },
+    { type: "reference", to: [{ type: "component" }] },
   ],
 };

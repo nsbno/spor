@@ -16,7 +16,7 @@ async function run() {
   const typesPromise = generateTypeDefinitions(icons);
   const metadataPromise = generateMetadataJson(icons);
 
-  await Promise.allSettled([componentsPromise, typesPromise, metadataPromise]);
+  await Promise.all([componentsPromise, typesPromise, metadataPromise]);
 }
 
 export type IconData = {

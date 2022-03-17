@@ -1,19 +1,15 @@
-import { Box, BoxProps } from "@vygruppen/spor-react";
-import { LiveEditor as ReactLiveEditor } from "react-live";
+import { BoxProps } from "@vygruppen/spor-react";
+import { useContext } from "react";
+import { LiveContext, LiveEditor as ReactLiveEditor } from "react-live";
+import { CodeBlockContainer, CopyCodeButton } from "../code-block/CodeBlock";
+import { theme } from "../code-block/codeTheme";
 
 export const LiveEditor = (props: BoxProps) => {
+  const liveContext = useContext(LiveContext);
   return (
-    <Box
-      borderRadius="sm"
-      border="sm"
-      borderColor="alias.osloGrey"
-      backgroundColor="alias.darkGrey"
-      fontFamily="monospace"
-      fontSize="sm"
-      p={2}
-      {...props}
-    >
-      <ReactLiveEditor />
-    </Box>
+    <CodeBlockContainer {...props}>
+      <ReactLiveEditor theme={theme} />
+      {liveContext.code && <CopyCodeButton code={liveContext.code} />}
+    </CodeBlockContainer>
   );
 };

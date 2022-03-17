@@ -15,6 +15,7 @@ import {
   Link,
   SimpleGrid,
   Stack,
+  SuccessFill24Icon,
   Table,
   Tbody,
   Td,
@@ -26,11 +27,13 @@ import {
 import React from "react";
 import { Link as InternalLink } from "remix";
 import { urlBuilder } from "~/utils/sanity/utils";
+import { CodeBlock } from "../code-block/CodeBlock";
 import { InteractiveCode } from "../interactive-code/InteractiveCode";
 import { LinkableHeading } from "../linkable-heading/LinkableHeading";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
+    code: ({ children }) => <Code>{children}</Code>,
     link: ({ value, children }) => {
       const isExternal = value.href.startsWith("http");
       if (isExternal) {
@@ -193,11 +196,14 @@ const components: Partial<PortableTextReactComponents> = {
         borderRadius="md"
       />
     ),
-    codeExample: ({ value }) => (
-      <InteractiveCode layout={value.layout} mt={6}>
-        {value.reactCode.code}
-      </InteractiveCode>
-    ),
+    codeExample: ({ value }) =>
+      value.layout === "code-only" ? (
+        <CodeBlock language="jsx">{value.reactCode.code}</CodeBlock>
+      ) : (
+        <InteractiveCode layout={value.layout} mt={6}>
+          {value.reactCode.code}
+        </InteractiveCode>
+      ),
     component: ({ value }) => (
       <Box key={value.name} mt={6} as="article">
         <LinkableHeading as="h3" textStyle="lg" fontWeight="bold">
@@ -214,7 +220,7 @@ const components: Partial<PortableTextReactComponents> = {
             <Tr>
               <Th>Navn</Th>
               <Th>Type</Th>
-              <Th>Påkrevd</Th>
+              <Th>Påkrevd?</Th>
               <Th>Beskrivelse</Th>
             </Tr>
           </Thead>
@@ -231,9 +237,7 @@ const components: Partial<PortableTextReactComponents> = {
                 </Td>
                 <Td>
                   {prop.isRequired && (
-                    <span role="img" aria-label="Ja">
-                      ✅
-                    </span>
+                    <SuccessFill24Icon aria-label="Påkrevd" mx="auto" />
                   )}
                 </Td>
                 <Td>{prop.description}</Td>
@@ -243,6 +247,7 @@ const components: Partial<PortableTextReactComponents> = {
         </Table>
       </Box>
     ),
+    imports: ({ value }) => <CodeBlock mt={3}>{value.reactImport}</CodeBlock>,
   },
 };
 

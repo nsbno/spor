@@ -6,7 +6,7 @@ import { toPropsString } from "~/features/component-playground/utils";
 import { InteractiveCode } from "~/features/interactive-code/InteractiveCode";
 import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 
-export default function ChioceChipsPage() {
+export default function ChoiceChipsPage() {
   return (
     <ComponentDocs
       title="Valgknapper"
@@ -37,16 +37,14 @@ const DemoArea = (props: BoxProps) => {
       type: "choiceChip",
     },
   ]);
-  const { isSelected, ...remainingProps } = currentProps;
   const icon =
-    remainingProps.variant === "dark"
-      ? "<BusOutline30Icon/>"
-      : "<BusFill30Icon/>";
+    currentProps.variant === "dark"
+      ? "<BusOutline30Icon />"
+      : "<BusFill30Icon />";
   const code = `
 <ChoiceChip 
   icon={${icon}}
-  ${toPropsString(remainingProps)}
-  isSelected={${isSelected}}
+  ${toPropsString(currentProps)}
 />`;
   return (
     <Box {...props}>

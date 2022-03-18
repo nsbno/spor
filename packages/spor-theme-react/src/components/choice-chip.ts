@@ -13,9 +13,7 @@ const containerStyle: SystemStyleFunction =(props)=> ({
   display: "inline-flex",
   alignItems: "center",
   fontSize: "16px",
-  px: 3,
-  pr: props.hasLabel ? 3 : 1,
-  pl: props.hasLabel ? 2 : 1,
+  px: props.hasLabel ? 1 : 1,
   _focus: {
     boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
   },
@@ -27,10 +25,10 @@ const containerStyle: SystemStyleFunction =(props)=> ({
   },
 });
 
-const iconStyle: SystemStyleFunction =(props)=> ({
-  mr: props.hasLabel ? 1 :0,
-
+const iconStyle: SystemStyleFunction = (props) => ({
+  mr: props.hasLabel ? 1 : 0,
 });
+
 const labelStyle: SystemStyleObject = {};
 
 const baseStyle: PartsStyleFunction <typeof choiceChipAnatomy> =  props => ({
@@ -44,21 +42,19 @@ const sizes: Record<string, PartsStyleObject<typeof choiceChipAnatomy>> = {
     container: {
       borderRadius: "15px",
       height: "30px",
-      px: 1.5,
     },
   },
   md: {
     container: {
       borderRadius: "18px",
       height: "36px",
-      px: 2,
     },
   },
   lg: {
     container: {
       borderRadius: "21px",
       height: "42px",
-      px: 3,
+      
     },
   },
 };

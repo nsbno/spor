@@ -20,7 +20,6 @@ export const PasswordInput = (props: PasswordInputProps) => {
           type="button"
           onClick={onToggle}
           borderRadius="sm"
-          mr={1}
         >
           {isShowingPassword ? t(texts.hidePassword) : t(texts.showPassword)}
         </Button>

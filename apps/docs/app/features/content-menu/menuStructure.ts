@@ -98,8 +98,9 @@ export const menuStructure: MenuStructure[] = [
       },
       {
         title: "Passordfelt",
-        href: "/komponenter/password-input",
+        href: "/komponenter/passordfelt",
         keywords: ["passord", "input"],
+        isAvailable: true
       },
       {
         title: "Tekstområder",

@@ -9,7 +9,7 @@ import React, { ChangeEvent } from "react";
 
 export type ChoiceChipProps = {
   onChange?: (value: ChangeEvent<HTMLInputElement>) => void;
-  isSelected?: boolean;
+  isChecked?: boolean;
   defaultChecked?: boolean;
   /** The button text */
   children: React.ReactNode;
@@ -46,7 +46,10 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
     getRootProps,
     getLabelProps,
   } = useCheckbox(props);
-  const styles = useMultiStyleConfig("ChoiceChip", { size: props.size });
+  const styles = useMultiStyleConfig("ChoiceChip", {
+    size: props.size,
+    hasLabel: Boolean(props.children),
+  });
 
   return (
     <chakra.label {...getRootProps()}>

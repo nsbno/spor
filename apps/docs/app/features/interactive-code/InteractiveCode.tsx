@@ -11,7 +11,7 @@ type InteractiveCodeProps = {
 } & BoxProps;
 export const InteractiveCode = ({
   children,
-  layout,
+  layout = "simple",
   ...rest
 }: InteractiveCodeProps) => {
   const { userPreferences } = useUserPreferences();

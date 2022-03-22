@@ -1,11 +1,4 @@
-import { FormControl } from "@chakra-ui/react";
-import {
-  Box,
-  BoxProps,
-  PasswordInput,
-  Stack,
-  Text,
-} from "@vygruppen/spor-react";
+import { Box, BoxProps, Stack, Text } from "@vygruppen/spor-react";
 import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
 import { ComponentPlayground } from "~/features/component-playground/ComponentPlayground";
 import { usePlaygroundProps } from "~/features/component-playground/usePlaygroundProps";
@@ -66,12 +59,9 @@ const Guidelines = (props: BoxProps) => {
           Passordfelt brukes når vi skal legge inn passord i felt. Store
           inputbokser brukes når vi skal legge inn lengre tekster i felt.
         </Text>
-        <LinkableHeading>Design</LinkableHeading>
-        <Text>
-          <InteractiveCode>
-            {`<PasswordInput label="Skriv inn passord"  />`}
-          </InteractiveCode>
-        </Text>
+        <InteractiveCode>
+          {`<PasswordInput label="Jeg er et passordfelt"  />`}
+        </InteractiveCode>
       </Stack>
     </Stack>
   );

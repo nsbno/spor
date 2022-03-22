@@ -1,15 +1,21 @@
 import {
+  Box,
   Button,
-  Input as ChakraInput,
   FormLabel,
   forwardRef,
+  Input as ChakraInput,
+  InputGroup,
+  InputProps as ChakraInputProps,
+  InputRightElement,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useTranslation } from "@vygruppen/spor-i18n-react";
 import React from "react";
-import { Input, InputGroup, InputProps, InputRightElement } from ".";
+import { useTranslation } from "@vygruppen/spor-i18n-react";
 
-export type PasswordInputProps = Exclude<InputProps, "variant" | "size"> & {
+export type PasswordInputProps = Exclude<
+  ChakraInputProps,
+  "variant" | "size"
+> & {
   label: string;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
@@ -17,31 +23,36 @@ export type PasswordInputProps = Exclude<InputProps, "variant" | "size"> & {
 
 export const PasswordInput = forwardRef<PasswordInputProps, "input">(
   ({ label, leftIcon, rightIcon, id, ...props }, ref) => {
+    const Container = leftIcon || rightIcon ? InputGroup : Box;
     const { isOpen: isShowingPassword, onToggle } = useDisclosure();
     const { t } = useTranslation();
     return (
-      <InputGroup position="relative">
-        <ChakraInput
-          {...props}
-          type={isShowingPassword ? "text" : "password"}
-          id={id}
-          ref={ref}
-          placeholder=" "
-        />
-        <FormLabel htmlFor={id} pointerEvents="none">
-          {label}
-        </FormLabel>
-        <InputRightElement width="fit-content">
-          <Button
-            variant="ghost"
-            type="button"
-            onClick={onToggle}
-            borderRadius="sm"
-          >
-            {isShowingPassword ? t(texts.hidePassword) : t(texts.showPassword)}
-          </Button>
-        </InputRightElement>
-      </InputGroup>
+      <Container position="relative">
+        <InputGroup position="relative">
+          <ChakraInput
+            {...props}
+            type={isShowingPassword ? "text" : "password"}
+            id={id}
+            ref={ref}
+            placeholder=" "
+          />
+          <FormLabel htmlFor={id} pointerEvents="none">
+            {label}
+          </FormLabel>
+          <InputRightElement>
+            <Button
+              variant="ghost"
+              type="button"
+              onClick={onToggle}
+              borderRadius="sm"
+            >
+              {isShowingPassword
+                ? t(texts.hidePassword)
+                : t(texts.showPassword)}
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+      </Container>
     );
   }
 );

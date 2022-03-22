@@ -1,4 +1,11 @@
-import { Box, BoxProps, Stack, Text } from "@vygruppen/spor-react";
+import { FormControl } from "@chakra-ui/react";
+import {
+  Box,
+  BoxProps,
+  PasswordInput,
+  Stack,
+  Text,
+} from "@vygruppen/spor-react";
 import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
 import { ComponentPlayground } from "~/features/component-playground/ComponentPlayground";
 import { usePlaygroundProps } from "~/features/component-playground/usePlaygroundProps";
@@ -20,13 +27,17 @@ export default function PasswordInputPage() {
 
 const DemoArea = (props: BoxProps) => {
   const { currentProps, propList, onPropsChange } = usePlaygroundProps([
+    { name: "label", defaultValue: "Passord", type: "input" },
     {
-      name: "variant",
-      defaultValue: "ghost",
-      type: "select",
-      values: ["ghost", "solid", "unstyled"],
+      name: "isInvalid",
+      defaultValue: false,
+      type: "choiceChip",
     },
-    { name: "label", defaultValue: "Skriv inn passord", type: "input" },
+    {
+      name: "isDisabled",
+      defaultValue: false,
+      type: "choiceChip",
+    },
   ]);
   const code = `
 <PasswordInput 
@@ -51,22 +62,16 @@ const Guidelines = (props: BoxProps) => {
         <LinkableHeading as="h2" textStyle="xl-display">
           Retningslinjer
         </LinkableHeading>
-        <Text>Inputbokser brukes når vi skal legge inn tekst i felt.</Text>
-        <LinkableHeading as="h3" textStyle="lg" fontWeight="bold">
-          Ikoner
-        </LinkableHeading>
         <Text>
-          Noen ganger kan det være smart å bruke et ikon for å indikere hva
-          slags felt det er snakk om.
+          Passordfelt brukes når vi skal legge inn passord i felt. Store
+          inputbokser brukes når vi skal legge inn lengre tekster i felt.
         </Text>
-        <InteractiveCode>
-          {`<FormControl>
-   <InputGroup>
-     <InputLeftElement>🔎</InputLeftElement>
-     <Input label="Search" />
-   </InputGroup>
-  </FormControl>`}
-        </InteractiveCode>
+        <LinkableHeading>Design</LinkableHeading>
+        <Text>
+          <InteractiveCode>
+            {`<PasswordInput label="Skriv inn passord"  />`}
+          </InteractiveCode>
+        </Text>
       </Stack>
     </Stack>
   );

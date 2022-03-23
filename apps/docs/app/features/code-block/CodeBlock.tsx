@@ -3,23 +3,23 @@ import { Box, BoxProps, Button } from "@vygruppen/spor-react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { theme } from "./codeTheme";
 
-type CodeBlockProps = BoxProps & {
+type CodeBlockProps = Omit<BoxProps, "children"> & {
   /** The code to highlight */
-  children: string;
+  code: string;
   /** The code language to highlight */
   language?: "jsx";
 };
 export const CodeBlock = ({
-  children,
+  code,
   language = "jsx",
   ...props
 }: CodeBlockProps) => {
   return (
-    <CodeBlockContainer {...props}>
+    <CodeBlockContainer {...props} code={code}>
       <Highlight
         {...defaultProps}
         theme={theme}
-        code={children}
+        code={code}
         language={language}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
@@ -34,12 +34,18 @@ export const CodeBlock = ({
           </Box>
         )}
       </Highlight>
-      <CopyCodeButton code={children} />
     </CodeBlockContainer>
   );
 };
+type CodeBlockContainerProps = BoxProps & {
+  code: string;
+};
 /** The wrapper around a <pre /> code block */
-export const CodeBlockContainer = ({ children, ...props }: BoxProps) => {
+export const CodeBlockContainer = ({
+  children,
+  code,
+  ...props
+}: CodeBlockContainerProps) => {
   return (
     <Box
       borderRadius="sm"
@@ -50,16 +56,22 @@ export const CodeBlockContainer = ({ children, ...props }: BoxProps) => {
       fontSize="sm"
       p={2}
       position="relative"
+      zIndex="0"
+      maxWidth="calc(100vw - var(--spor-space-4))"
+      __css={{ "pre > div": { whiteSpace: "initial", maxWidth: "100%" } }}
       {...props}
     >
-      {children}
+      <Box width="100%" overflowX="hidden">
+        {children}
+      </Box>
+      <CopyCodeButton code={code} />
     </Box>
   );
 };
 
 type CopyCodeButtonProps = { code: string };
-export const CopyCodeButton = (props: CopyCodeButtonProps) => {
-  const { onCopy, hasCopied } = useClipboard(props.code);
+export const CopyCodeButton = ({ code }: CopyCodeButtonProps) => {
+  const { onCopy, hasCopied } = useClipboard(code);
   return (
     <DarkMode>
       <Button

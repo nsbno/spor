@@ -32,14 +32,16 @@ export const Table = forwardRef<TableProps, "table">((props, ref) => {
   const { variant, size, colorScheme, children, ...rest } = props;
   return (
     <Box {...rest} {...getStyleProps(props)}>
-      <ChakraTable
-        variant={variant}
-        size={size}
-        colorScheme={colorScheme}
-        ref={ref}
-      >
-        {children}
-      </ChakraTable>
+      <Box overflowX={["auto", "initial"]}>
+        <ChakraTable
+          variant={variant}
+          size={size}
+          colorScheme={colorScheme}
+          ref={ref}
+        >
+          {children}
+        </ChakraTable>
+      </Box>
     </Box>
   );
 });

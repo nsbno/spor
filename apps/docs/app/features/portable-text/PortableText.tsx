@@ -198,7 +198,7 @@ const components: Partial<PortableTextReactComponents> = {
     ),
     codeExample: ({ value }) =>
       value.layout === "code-only" ? (
-        <CodeBlock language="jsx">{value.reactCode.code}</CodeBlock>
+        <CodeBlock language="jsx" code={value.reactCode.code} />
       ) : (
         <InteractiveCode layout={value.layout} mt={6}>
           {value.reactCode.code}
@@ -215,7 +215,11 @@ const components: Partial<PortableTextReactComponents> = {
         <Heading as="h4" textStyle="md" fontWeight="bold" mt={3}>
           Props
         </Heading>
-        <Table>
+        <Table
+          variant="outline"
+          mt={3}
+          maxWidth="calc(100vw - var(--spor-space-1))"
+        >
           <Thead>
             <Tr>
               <Th>Navn</Th>
@@ -247,7 +251,7 @@ const components: Partial<PortableTextReactComponents> = {
         </Table>
       </Box>
     ),
-    imports: ({ value }) => <CodeBlock mt={3}>{value.reactImport}</CodeBlock>,
+    imports: ({ value }) => <CodeBlock code={value.reactImport} mt={3} />,
   },
 };
 

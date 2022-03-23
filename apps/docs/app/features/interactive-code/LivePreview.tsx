@@ -8,6 +8,7 @@ export const LivePreview = (props: BoxProps) => {
       border="sm"
       borderColor="alias.osloGrey"
       p={4}
+      maxWidth="calc(100vw - var(--spor-space-4))"
       {...props}
     >
       {/** @ts-ignore Bad typing in React Live */}

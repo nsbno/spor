@@ -69,7 +69,7 @@ export const theme: PrismTheme = {
     {
       types: ["punctuation", "symbol"],
       style: {
-        opacity: "0.7",
+        opacity: 0.7,
       },
     },
   ],

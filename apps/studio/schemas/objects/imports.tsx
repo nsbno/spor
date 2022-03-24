@@ -14,7 +14,7 @@ export const imports: ObjectField<Imports> = {
       name: "reactImport",
       title: "React import string",
       description: "The import string used in a React context",
-      type: "string",
+      type: "text",
       initialValue: 'import {  } from "@vygruppen/spor-react";',
       validation: (Rule) => Rule.required(),
     },

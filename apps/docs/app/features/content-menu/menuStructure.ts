@@ -127,9 +127,10 @@ export const menuStructure: MenuStructure[] = [
         isAvailable: true,
       },
       {
-        title: "Switches",
-        href: "/komponenter/switch",
-        keywords: ["switch", "boolean", "bryter"],
+        title: "Brytere",
+        href: "/komponenter/brytere",
+        keywords: ["switch", "boolean", "bryter", "toggle"],
+        isAvailable: true,
       },
       {
         title: "Valgknapper",

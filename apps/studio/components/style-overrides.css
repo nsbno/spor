@@ -63,6 +63,8 @@
   --brand-secondary--inverted: var(--color-alias-dark-grey);
   /* Typography */
   --font-family-sans-serif: var(--asset-font-vy-sans-medium-name);
+  --font-family-monospace: "Dank Mono", "SFMono-Regular", Consolas,
+    "Liberation Mono", Menlo, Courier, monospace;
   --font-size-base: var(--size-font-sm-desktop);
   --text-color: var(--brand-secondary--inverted);
   /* Main navigation */

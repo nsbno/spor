@@ -17,9 +17,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
@@ -30,6 +28,14 @@
     {
       "name": "part:@sanity/desk-tool/structure",
       "path": "./config/deskStructure.ts"
+    },
+    {
+      "implements": "part:@sanity/base/brand-logo",
+      "path": "./components/VyLogo.tsx"
+    },
+    {
+      "implements": "part:@sanity/base/theme/variables/override-style",
+      "path": "./components/style-overrides.css"
     }
   ]
 }

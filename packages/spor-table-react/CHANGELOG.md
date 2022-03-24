@@ -1,5 +1,11 @@
 # @vygruppen/spor-table-react
 
+## 0.0.4
+
+### Patch Changes
+
+- 2524c7c: Add support for overflowing content
+
 ## 0.0.3
 
 ### Patch Changes

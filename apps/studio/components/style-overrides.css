@@ -1,0 +1,71 @@
+@import "@vygruppen/spor-design-tokens/dist/tokens.css";
+
+@font-face {
+  font-family: var(--asset-font-vy-sans-light-name);
+  src: url("https://www.vy.no/styles/font/VySans-Light.woff2") format("woff2"),
+    url("https://www.vy.no/styles/font/VySans-Light.woff") format("woff");
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-family: var(--asset-font-vy-sans-light-italic-name);
+  src: url("https://www.vy.no/styles/font/VySans-LightItalic.woff2")
+      format("woff2"),
+    url("https://www.vy.no/styles/font/VySans-LightItalic.woff") format("woff");
+  font-style: italic;
+  font-weight: 300;
+}
+@font-face {
+  font-family: var(--asset-font-vy-sans-medium-name);
+  src: url("https://www.vy.no/styles/font/VySans-Regular.woff2") format("woff2"),
+    url("https://www.vy.no/styles/font/VySans-Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: var(--asset-font-vy-sans-medium-italic-name);
+  src: url("https://www.vy.no/styles/font/VySans-RegularItalic.woff2")
+      format("woff2"),
+    url("https://www.vy.no/styles/font/VySans-RegularItalic.woff")
+      format("woff");
+  font-style: italic;
+  font-weight: 400;
+}
+@font-face {
+  font-family: var(--asset-font-vy-sans-bold-name);
+  src: url("https://www.vy.no/styles/font/VySans-Bold.woff2") format("woff2"),
+    url("https://www.vy.no/styles/font/VySans-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: var(--asset-font-vy-sans-bold-italic-name);
+  src: url("https://www.vy.no/styles/font/VySans-BoldItalic.woff2")
+      format("woff2"),
+    url("https://www.vy.no/styles/font/VySans-BoldItalic.woff") format("woff");
+  font-style: italic;
+  font-weight: 700;
+}
+@font-face {
+  font-family: var(--asset-font-vy-display-name);
+  src: url("https://www.vy.no/styles/font/VyDisplay-Medium.woff2")
+      format("woff2"),
+    url("https://www.vy.no/styles/font/VyDisplay-Medium.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+}
+
+:root {
+  /* Brand colors */
+  --brand-primary: var(--color-alias-dark-teal);
+  --brand-primary--inverted: var(--color-alias-white);
+  --brand-secondary: var(--color-alias-mint);
+  --brand-secondary--inverted: var(--color-alias-dark-grey);
+  /* Typography */
+  --font-family-sans-serif: var(--asset-font-vy-sans-medium-name);
+  --font-size-base: var(--size-font-sm-desktop);
+  --text-color: var(--brand-secondary--inverted);
+  /* Main navigation */
+  --main-navigation-color: var(--brand-primary);
+  --main-navigation-color--inverted: var(--brand-primary--inverted);
+}

@@ -1,13 +1,13 @@
-import type { SystemStyleObject } from "@chakra-ui/theme-tools";
+import type { SystemStyleFunction } from "@chakra-ui/theme-tools";
 import Input from "./input";
 
-const baseStyle: SystemStyleObject = {
-  ...Input.baseStyle.field,
+const baseStyle: SystemStyleFunction = (props) => ({
+  ...Input.baseStyle(props).field,
   minHeight: "80px",
   lineHeight: "short",
   py: 3,
   verticalAlign: "top",
-};
+});
 
 export default {
   baseStyle,

@@ -91,35 +91,40 @@ export const menuStructure: MenuStructure[] = [
     title: "Skjema",
     items: [
       {
-        title: "Tekstfelt",
-        href: "/komponenter/tekstfelt",
+        title: "Inputfelt",
+        href: "/komponenter/inputfelt",
         keywords: ["input"],
         isAvailable: true,
       },
       {
         title: "Passordfelt",
-        href: "/komponenter/password-input",
+        href: "/komponenter/passordfelt",
         keywords: ["passord", "input"],
+        isAvailable: true,
       },
       {
         title: "Tekstområder",
-        href: "/komponenter/textarea",
+        href: "/komponenter/tekstomrade",
         keywords: ["textarea"],
+        isAvailable: true,
       },
       {
         title: "Nedtrekkslister",
-        href: "/komponenter/select",
+        href: "/komponenter/nedtrekkslister",
         keywords: ["select", "dropdown"],
+        isAvailable: true,
       },
       {
         title: "Radioknapper",
-        href: "/komponenter/radio",
+        href: "/komponenter/radioknapper",
         keywords: ["flere valg"],
+        isAvailable: true,
       },
       {
         title: "Sjekkbokser",
-        href: "/komponenter/checkbox",
+        href: "/komponenter/sjekkbokser",
         keywords: ["checkbox"],
+        isAvailable: true,
       },
       {
         title: "Switches",
@@ -130,7 +135,7 @@ export const menuStructure: MenuStructure[] = [
         title: "Valgknapper",
         href: "/komponenter/valgknapper",
         keywords: ["choice", "chips"],
-        isAvailable: true
+        isAvailable: true,
       },
     ],
   },
@@ -190,7 +195,7 @@ export const menuStructure: MenuStructure[] = [
         title: "Floating action button",
         href: "/komponenter/fab",
         keywords: ["fab", "flytende", "knapper", "buttons"],
-        isAvailable: true
+        isAvailable: true,
       },
       {
         title: "Lenker",
@@ -267,7 +272,7 @@ export const menuStructure: MenuStructure[] = [
         title: "Accordions",
         href: "/komponenter/accordion",
         keywords: ["expandable"],
-        isAvailable: true
+        isAvailable: true,
       },
       { title: "Tabs", href: "/komponenter/tab", keywords: ["fliker"] },
       {

@@ -1,4 +1,5 @@
 import {
+  Box,
   FormLabel,
   forwardRef,
   Textarea as ChakraTextarea,
@@ -20,13 +21,74 @@ export type TextareaProps = Exclude<ChakraTextareaProps, "variant" | "size"> & {
  * </FormControl>
  * ```
  */
-export const Textarea = forwardRef<TextareaProps, "textarea">(
-  ({ label, ...props }, ref) => {
-    return (
-      <>
-        <FormLabel>{label}</FormLabel>
-        <ChakraTextarea {...props} ref={ref} />
-      </>
-    );
-  }
-);
+export const Textarea = forwardRef<TextareaProps, "textarea">((props, ref) => {
+  const {
+    spacingProps,
+    remainingProps: { label, ...rest },
+  } = getSpacingProps(props);
+  return (
+    <Box {...spacingProps}>
+      <FormLabel>{label}</FormLabel>
+      <ChakraTextarea {...rest} ref={ref} />
+    </Box>
+  );
+});
+
+function getSpacingProps<T extends TextareaProps>(props: T) {
+  const {
+    mt,
+    mr,
+    mb,
+    ml,
+    mx,
+    my,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginX,
+    marginY,
+    pt,
+    pr,
+    pb,
+    pl,
+    px,
+    py,
+    paddingTop,
+    paddingRight,
+    paddingBottom,
+    paddingLeft,
+    paddingX,
+    paddingY,
+    ...remainingProps
+  } = props;
+  return {
+    spacingProps: {
+      mt,
+      mr,
+      mb,
+      ml,
+      mx,
+      my,
+      marginTop,
+      marginRight,
+      marginBottom,
+      marginLeft,
+      marginX,
+      marginY,
+      pt,
+      pr,
+      pb,
+      pl,
+      px,
+      py,
+      paddingTop,
+      paddingRight,
+      paddingBottom,
+      paddingLeft,
+      paddingX,
+      paddingY,
+    },
+    remainingProps,
+  };
+}

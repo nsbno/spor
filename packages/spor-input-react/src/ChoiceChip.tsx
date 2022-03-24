@@ -5,6 +5,7 @@ import {
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import { dataAttr } from "@chakra-ui/utils";
+import { CloseOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { ChangeEvent } from "react";
 
 export type ChoiceChipProps = {
@@ -14,12 +15,13 @@ export type ChoiceChipProps = {
   /** The button text */
   children: React.ReactNode;
   icon?: React.ReactNode;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
+  variant?: "icon" | "choice" | "filter";
 };
 /**
  * Choice chips are checkboxes that look like selectable buttons.
  *
- * Choice chips are available in three different sizes - `sm`, `md` and `lg`.
+ * Choice chips are available in four different sizes - `sm`, `md`, `lg` and `xl`.
  *
  * ```tsx
  * <Stack direction="row">
@@ -28,16 +30,26 @@ export type ChoiceChipProps = {
  * </Stack>
  * ```
  *
- * You can add an icon as well, if you want to!
+ * There are also three different variants - `icon`, `choice` and `filter`.
+ *
  * ```tsx
  * <Stack direction="row">
- *   <ChoiceChip size="lg" icon={<BusIcon />}>Bus</ChoiceChip>
+ *  <ChoiceChip variant="icon" icon={<Bus24Icon />}>Bus</ChoiceChip>
+ *  <ChoiceChip variant="choice" icon={<Bus24Icon />}>Bus</ChoiceChip>
+ *  <ChoiceChip variant="filter" icon={<Bus24Icon />}>Bus</ChoiceChip>
+ * </Stack>
+ *
+ * You can add an icon as well, if you want to!
+ *
+ * ```tsx
+ * <Stack direction="row">
+ *   <ChoiceChip size="md" icon={<BusIcon />}>Bus</ChoiceChip>
  *   <ChoiceChip size="lg" icon={<TrainIcon />}>Train</ChoiceChip>
  * </Stack>
  * ```
  */
 export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
-  const { children, icon } = props;
+  const { children, icon, size = "md", variant = "choice" } = props;
 
   const {
     state,
@@ -47,8 +59,9 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
     getLabelProps,
   } = useCheckbox(props);
   const styles = useMultiStyleConfig("ChoiceChip", {
-    size: props.size,
-    hasLabel: Boolean(props.children),
+    size,
+    variant,
+    hasLabel: Boolean(children),
   });
 
   return (
@@ -63,8 +76,11 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
       >
         {icon && <chakra.span __css={styles.icon}>{icon}</chakra.span>}
         <chakra.span __css={styles.label} {...getCheckboxProps()}>
-          {children}
+          {variant !== "icon" && children}
         </chakra.span>
+        {variant === "filter" && state.isChecked && (
+          <CloseOutline24Icon ml={1.5} />
+        )}
       </chakra.div>
     </chakra.label>
   );

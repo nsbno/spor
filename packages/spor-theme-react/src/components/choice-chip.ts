@@ -1,4 +1,9 @@
-import { PartsStyleFunction, PartsStyleObject, SystemStyleFunction, SystemStyleObject } from "@chakra-ui/theme-tools";
+import {
+  PartsStyleFunction,
+  PartsStyleObject,
+  SystemStyleFunction,
+  SystemStyleObject,
+} from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 
 const choiceChipAnatomy = {
@@ -6,14 +11,14 @@ const choiceChipAnatomy = {
   keys: ["container", "label", "icon"],
 };
 
-const containerStyle: SystemStyleFunction =(props)=> ({
+const containerStyle: SystemStyleFunction = (props) => ({
   backgroundColor: "alias.white",
   boxShadow: `0 0 0 1px ${colors.alias.celadon}`,
   color: "alias.darkTeal",
   display: "inline-flex",
   alignItems: "center",
   fontSize: "16px",
-  px: props.hasLabel ? 1 : 1,
+  px: 1,
   _focus: {
     boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
   },
@@ -31,30 +36,39 @@ const iconStyle: SystemStyleFunction = (props) => ({
 
 const labelStyle: SystemStyleObject = {};
 
-const baseStyle: PartsStyleFunction <typeof choiceChipAnatomy> =  props => ({
+const baseStyle: PartsStyleFunction<typeof choiceChipAnatomy> = (props) => ({
   container: containerStyle(props),
   icon: iconStyle(props),
   label: labelStyle,
-})
+});
 
 const sizes: Record<string, PartsStyleObject<typeof choiceChipAnatomy>> = {
   sm: {
     container: {
       borderRadius: "15px",
       height: "30px",
+      px: 1.5,
     },
   },
   md: {
     container: {
       borderRadius: "18px",
       height: "36px",
+      px: 2,
     },
   },
   lg: {
     container: {
       borderRadius: "21px",
       height: "42px",
-      
+      px: 2,
+    },
+  },
+  xl: {
+    container: {
+      borderRadius: "27px",
+      height: "54px",
+      px: 3,
     },
   },
 };

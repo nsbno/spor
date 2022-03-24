@@ -55,7 +55,15 @@ function TableOfContent(props: TableOfContentProps) {
       </Heading>
       <OrderedList spacing={1} ml="0" mt="4" styleType="none">
         {headings.map(({ id, text, level }) => (
-          <ListItem key={id} title={text} ml={level === "h3" ? "4" : undefined}>
+          <ListItem
+            key={id}
+            title={text}
+            ml={
+              Number(level.substring(1)) > 2
+                ? Number(level.substring(1))
+                : undefined
+            }
+          >
             <MenuItem
               title={text}
               href={`#${id}`}

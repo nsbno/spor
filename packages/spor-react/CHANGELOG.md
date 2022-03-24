@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 0.11.8
+
+### Patch Changes
+
+- Updated dependencies [2524c7c]
+  - @vygruppen/spor-table-react@0.0.4
+
 ## 0.11.7
 
 ### Patch Changes

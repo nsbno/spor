@@ -47,8 +47,8 @@ export const menuStructure: MenuStructure[] = [
     items: [
       {
         title: "Designprosessen",
-        href: "/ressurser/design-prosessen",
-        keywords: ["process", "prosess"],
+        href: "/ressurser/designprosessen",
+        keywords: ["process", "prosess", "design"],
         isAvailable: true,
       },
       { title: "Profil", href: "/ressurser/profil", keywords: ["visuell"] },

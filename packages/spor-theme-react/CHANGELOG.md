@@ -1,5 +1,12 @@
 # @vygruppen/spor-theme-react
 
+## 0.3.13
+
+### Patch Changes
+
+- 5bde18f: Introduce variants for choice chips
+- c61ef00: Fix a bunch of bugs and inconsistencies in the Input and Textarea components
+
 ## 0.3.12
 
 ### Patch Changes

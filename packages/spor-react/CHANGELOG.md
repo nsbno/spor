@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 0.11.9
+
+### Patch Changes
+
+- Updated dependencies [5bde18f]
+- Updated dependencies [c61ef00]
+  - @vygruppen/spor-input-react@0.3.3
+  - @vygruppen/spor-theme-react@0.3.13
+
 ## 0.11.8
 
 ### Patch Changes

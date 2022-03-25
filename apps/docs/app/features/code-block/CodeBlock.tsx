@@ -48,9 +48,7 @@ export const CodeBlockContainer = ({
   ...props
 }: CodeBlockContainerProps) => {
   const copyButtonRef = useRef<HTMLButtonElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   const handleKeyUp = (e: React.KeyboardEvent) => {
-    console.log(e.key, e.shiftKey);
     if (e.key === "Escape") {
       if (e.shiftKey) {
         const previousElement = getPreviousFocusableElement();
@@ -74,7 +72,6 @@ export const CodeBlockContainer = ({
       maxWidth="calc(100vw - var(--spor-space-4))"
       __css={{ "pre > div": { whiteSpace: "initial", maxWidth: "100%" } }}
       onKeyUp={handleKeyUp}
-      ref={containerRef}
       {...props}
     >
       <Box width="100%" overflowX="hidden">

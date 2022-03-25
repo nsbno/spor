@@ -13,6 +13,7 @@ export * from "@vygruppen/spor-logo-react";
 export * from "@vygruppen/spor-modal-react";
 export * from "@vygruppen/spor-popover-react";
 export * from "@vygruppen/spor-stepper-react";
+export * from "@vygruppen/spor-tab-react";
 export * from "@vygruppen/spor-table-react";
 export * from "@vygruppen/spor-theme-react";
 export * from "@vygruppen/spor-typography-react";

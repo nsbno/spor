@@ -116,7 +116,7 @@ const components: Partial<PortableTextReactComponents> = {
         </Box>
       );
     },
-    divider: () => <Divider height="1px" mt={6} />,
+    divider: () => <Divider height="1px" mt={[8, 10]} />,
     introduction: ({ value }) => {
       return (
         <Stack spacing={3}>

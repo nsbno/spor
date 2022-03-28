@@ -1,32 +1,31 @@
 import { PortableText } from "@portabletext/react";
-import { Box, Card, Heading, SimpleGrid, Stack } from "@vygruppen/spor-react";
+import { Box, Card, Heading, Image, SimpleGrid } from "@vygruppen/spor-react";
 import { Link, LoaderFunction, useLoaderData } from "remix";
 import { getClient } from "~/utils/sanity/client";
+import { urlBuilder } from "~/utils/sanity/utils";
 
-type ComponentsData = {
+type ComponentData = {
   _id: string;
-  name: string;
+  title: string;
   slug: string;
+  mainImage: any;
   content: any[];
-  page?: { slug: string };
 };
 
 const componentsQuery = async () => {
-  const query = `*[_type == "component"] | order(name asc) {
+  const query = `*[_type == "article" && category->slug.current == "komponenter" && slug.current != "oversikt"] | order(title asc) {
     _id,
-    name,
+    title,
     "slug": slug.current,
+    mainImage,
     content,
-    "page": *[_type == "article" && references(^._id)] { 
-      "slug": slug.current 
-    }[0]
   }`;
-  const components = await getClient().fetch<ComponentsData[]>(query);
+  const componentArticles = await getClient().fetch<ComponentData[]>(query);
 
-  if (!components || !components.length) {
+  if (!componentArticles || !componentArticles.length) {
     throw new Response("Not Found", { status: 404 });
   }
-  return components;
+  return componentArticles;
 };
 
 type ArticleData = {
@@ -51,7 +50,7 @@ const articleQuery = async () => {
 };
 
 type LoaderData = {
-  components: ComponentsData[];
+  components: ComponentData[];
   article: ArticleData;
 };
 
@@ -69,28 +68,32 @@ export default function ComponentsPage() {
   const { components, article } = useLoaderData<LoaderData>();
   return (
     <Box>
-      <Stack spacing={2} mb={6}>
-        <Heading as="h1" textStyle="xl-display">
-          {article.title}
-        </Heading>
-        <PortableText value={article.content} />
-      </Stack>
-      <SimpleGrid columns={[1, 2, 3]} gap={3}>
+      <Heading as="h1" textStyle="xl-display" mb={2}>
+        {article.title}
+      </Heading>
+      <PortableText value={article.content} />
+      <SimpleGrid columns={[1, 2, 3]} gap={3} mt={6}>
         {components.map((component) => (
           <Card
             key={component._id}
             as={Link}
-            to={
-              component.page
-                ? `../${component.page?.slug}#${component.slug}`
-                : ""
-            }
-            variant="filled"
-            colorScheme="green"
-            p={3}
+            to={`../${component.slug}`}
+            variant="elevated"
           >
-            <Heading as="h2" textStyle="sm" fontWeight="bold">
-              &lt;{component.name} /&gt;
+            {component.mainImage ? (
+              <Image
+                src={urlBuilder.image(component.mainImage).width(300).url()}
+                alt={component.title}
+                backgroundColor="alias.mint"
+                height="10em"
+                objectFit="cover"
+                objectPosition="center center"
+              />
+            ) : (
+              <Box height="10em" backgroundColor="alias.mint" />
+            )}
+            <Heading as="h2" textStyle="sm" fontWeight="bold" p={3}>
+              {component.title}
             </Heading>
           </Card>
         ))}

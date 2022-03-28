@@ -153,7 +153,7 @@ type ReferenceField<Name extends string = string> = CommonFieldProps & {
   };
 };
 
-type ImageField<Name extends string = string> = CommonFieldProps & {
+export type ImageField<Name extends string = string> = CommonFieldProps & {
   name: Name;
   type: "image";
   options?: {

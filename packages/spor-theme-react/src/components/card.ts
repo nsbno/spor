@@ -13,14 +13,14 @@ const baseStyle: SystemStyleObject = {
 
   "button&, a&": {
     _focus: {
-      boxShadow: `0 0 0 1px ${colors.alias.greenHaze}`,
+      boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
       outline: "none",
     },
     ":focus:not(:focus-visible)": {
       boxShadow: "none",
     },
     _focusVisible: {
-      boxShadow: `0 0 0 1px ${colors.alias.greenHaze}`,
+      boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
     },
 
     _disabled: {

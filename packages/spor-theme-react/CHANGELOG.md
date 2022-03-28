@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.3.14
+
+### Patch Changes
+
+- 6c8ad0e: Use box shadows for borders
+
 ## 0.3.13
 
 ### Patch Changes

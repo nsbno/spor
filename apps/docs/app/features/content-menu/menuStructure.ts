@@ -91,6 +91,12 @@ export const menuStructure: MenuStructure[] = [
     title: "Skjema",
     items: [
       {
+        title: "Skjemaelementer",
+        href: "/komponenter/skjemaelementer",
+        keywords: ["input"],
+        isAvailable: true,
+      },
+      {
         title: "Inputfelt",
         href: "/komponenter/inputfelt",
         keywords: ["input"],

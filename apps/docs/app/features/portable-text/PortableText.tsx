@@ -212,43 +212,47 @@ const components: Partial<PortableTextReactComponents> = {
         <Box mt={1}>
           <PortableText value={value.content} />
         </Box>
-        <Heading as="h4" textStyle="md" fontWeight="bold" mt={3}>
-          Props
-        </Heading>
-        <Table
-          variant="outline"
-          mt={3}
-          maxWidth="calc(100vw - var(--spor-space-1))"
-        >
-          <Thead>
-            <Tr>
-              <Th>Navn</Th>
-              <Th>Type</Th>
-              <Th>Påkrevd?</Th>
-              <Th>Beskrivelse</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {value.props.map((prop: any) => (
-              <Tr key={prop.name}>
-                <Td>
-                  <Code>{prop.name}</Code>
-                </Td>
-                <Td>
-                  <Code>
-                    {prop.type === "other" ? prop.typeOther : prop.type}
-                  </Code>
-                </Td>
-                <Td>
-                  {prop.isRequired && (
-                    <SuccessFill24Icon aria-label="Påkrevd" mx="auto" />
-                  )}
-                </Td>
-                <Td>{prop.description}</Td>
-              </Tr>
-            ))}
-          </Tbody>
-        </Table>
+        {value.props && (
+          <>
+            <Heading as="h4" textStyle="md" fontWeight="bold" mt={3}>
+              Props
+            </Heading>
+            <Table
+              variant="outline"
+              mt={3}
+              maxWidth="calc(100vw - var(--spor-space-1))"
+            >
+              <Thead>
+                <Tr>
+                  <Th>Navn</Th>
+                  <Th>Type</Th>
+                  <Th>Påkrevd?</Th>
+                  <Th>Beskrivelse</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                {value.props.map((prop: any) => (
+                  <Tr key={prop.name}>
+                    <Td>
+                      <Code>{prop.name}</Code>
+                    </Td>
+                    <Td>
+                      <Code>
+                        {prop.type === "other" ? prop.typeOther : prop.type}
+                      </Code>
+                    </Td>
+                    <Td>
+                      {prop.isRequired && (
+                        <SuccessFill24Icon aria-label="Påkrevd" mx="auto" />
+                      )}
+                    </Td>
+                    <Td>{prop.description}</Td>
+                  </Tr>
+                ))}
+              </Tbody>
+            </Table>
+          </>
+        )}
       </Box>
     ),
     imports: ({ value }) => <CodeBlock code={value.reactImport} mt={3} />,

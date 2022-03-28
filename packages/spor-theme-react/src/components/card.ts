@@ -2,31 +2,30 @@ import type {
   SystemStyleInterpolation,
   SystemStyleObject,
 } from "@chakra-ui/theme-tools";
-import { colors } from "../foundations";
+import { colors, shadows } from "../foundations";
 
 const baseStyle: SystemStyleObject = {
-  border: "1px solid transparent",
+  border: "none",
   borderRadius: "md",
+  overflow: "hidden",
   transitionProperty: "common",
   transitionDuration: "fast",
 
   "button&, a&": {
     _focus: {
-      borderColor: "alias.greenHaze",
-      boxShadow: `inset 0 0 0 1px ${colors.alias.greenHaze}`,
+      boxShadow: `0 0 0 1px ${colors.alias.greenHaze}`,
       outline: "none",
     },
     ":focus:not(:focus-visible)": {
       boxShadow: "none",
     },
     _focusVisible: {
-      borderColor: "alias.greenHaze",
-      boxShadow: `inset 0 0 0 1px ${colors.alias.greenHaze}`,
+      boxShadow: `0 0 0 1px ${colors.alias.greenHaze}`,
     },
 
     _disabled: {
       backgroundColor: "alias.silver",
-      borderColor: "alias.silver",
+      boxShadow: `0 0 0 1px ${colors.alias.silver}`,
       color: "alias.osloGrey",
       pointerEvents: "none",
     },
@@ -41,17 +40,16 @@ const variants: Record<Variant, SystemStyleInterpolation> = {
 
     "button&, a&": {
       _hover: {
+        boxShadow: `${shadows.lg}, 0 0 0 1px ${colors.alias.steel}`,
         borderColor: "alias.steel",
-        boxShadow: "lg",
       },
       _active: {
         backgroundColor: "alias.mint",
-        borderColor: "transparent",
+        boxShadow: "lg",
       },
     },
   },
   filled: ({ colorScheme }) => ({
-    border: "1px solid",
     ...getColorSchemeProps(colorScheme),
 
     "button&, a&": {
@@ -90,18 +88,18 @@ function getColorSchemeProps(colorScheme: string) {
     case "blue":
       return {
         backgroundColor: "alias.lightBlue",
-        borderColor: "alias.cloudy",
+        boxShadow: `0 0 0 1px ${colors.alias.cloudy}`,
       };
     case "green":
       return {
         backgroundColor: "alias.mint",
-        borderColor: "alias.coralGreen",
+        boxShadow: `0 0 0 1px ${colors.alias.coralGreen}`,
       };
     case "grey":
     default:
       return {
         backgroundColor: "alias.platinum",
-        borderColor: "alias.silver",
+        boxShadow: `0 0 0 1px ${colors.alias.silver}`,
       };
   }
 }
@@ -111,18 +109,18 @@ function getColorSchemeHoverProps(colorScheme: string) {
     case "blue":
       return {
         backgroundColor: "alias.cloudy",
-        borderColor: "alias.cloudy",
+        boxShadow: `0 0 0 1px ${colors.alias.cloudy}`,
       };
     case "green":
       return {
         backgroundColor: "alias.seaMist",
-        borderColor: "alias.seaMist",
+        boxShadow: `0 0 0 1px ${colors.alias.seaMist}`,
       };
     case "grey":
     default:
       return {
         backgroundColor: "alias.silver",
-        borderColor: "alias.silver",
+        boxShadow: `0 0 0 1px ${colors.alias.silver}`,
       };
   }
 }
@@ -150,18 +148,18 @@ function getColorSchemeActiveProps(colorScheme: string) {
     case "blue":
       return {
         backgroundColor: "alias.icyBlue",
-        borderColor: "alias.cloudy",
+        boxShadow: `0 0 0 1px ${colors.alias.cloudy}`,
       };
     case "green":
       return {
         backgroundColor: "alias.mint",
-        borderColor: "alias.seaMist",
+        boxShadow: `0 0 0 1px ${colors.alias.seaMist}`,
       };
     case "grey":
     default:
       return {
         backgroundColor: "alias.lightGrey",
-        borderColor: "alias.silver",
+        boxShadow: `0 0 0 1px ${colors.alias.silver}`,
       };
   }
 }

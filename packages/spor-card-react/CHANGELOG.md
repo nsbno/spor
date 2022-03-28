@@ -1,5 +1,11 @@
 # @vygruppen/spor-card-react
 
+## 0.1.3
+
+### Patch Changes
+
+- 6c8ad0e: Use box shadows for borders
+
 ## 0.1.2
 
 ### Patch Changes

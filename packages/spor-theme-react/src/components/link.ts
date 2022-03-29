@@ -33,10 +33,14 @@ const baseStyle: SystemStyleObject = {
 const variantPrimary: SystemStyleFunction = (props) => ({
   color: "alias.pine",
   _hover: {
+    backgroundColor: "alias.coralGreen",
     color: "alias.darkTeal",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.coralGreen}`,
   },
   _active: {
-    color: "alias.primaryGreen",
+    backgroundColor: "alias.mint",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.mint}`,
+    color: "alias.pine",
   },
   "&:focus": {
     color: "alias.white",
@@ -58,10 +62,14 @@ const variantPrimary: SystemStyleFunction = (props) => ({
 const variantSecondary: SystemStyleFunction = (props) => ({
   color: "alias.darkGrey",
   _hover: {
-    color: "alias.darkTeal",
+    color: "alias.darkGrey",
+    backgroundColor: "palette.blackAlpha.100",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.palette.blackAlpha[100]}`,
   },
   _active: {
-    color: "alias.dimGrey",
+    color: "alias.darkTeal",
+    backgroundColor: "alias.mint",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.mint}`,
   },
   "&:focus": {
     color: "alias.white",
@@ -83,10 +91,14 @@ const variantSecondary: SystemStyleFunction = (props) => ({
 const variantTertiary: SystemStyleFunction = (props) => ({
   color: "alias.white",
   _hover: {
-    color: "alias.seaMist",
+    color: "alias.white",
+    backgroundColor: "palette.whiteAlpha.200",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.palette.whiteAlpha[200]}`,
   },
   _active: {
-    color: "alias.silver",
+    color: "alias.white",
+    backgroundColor: "palette.whiteAlpha.400",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.palette.whiteAlpha[400]}`,
   },
   "&:focus": {
     color: "alias.pine",

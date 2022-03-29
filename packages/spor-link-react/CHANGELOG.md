@@ -1,5 +1,11 @@
 # @vygruppen/spor-link-react
 
+## 0.1.5
+
+### Patch Changes
+
+- 8b711ac: Make links more accessible by improving the hover and active effects
+
 ## 0.1.4
 
 ### Patch Changes

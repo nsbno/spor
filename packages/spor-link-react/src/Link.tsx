@@ -14,7 +14,9 @@ type LinkProps = Omit<ChakraLinkProps, "variant"> & {
  */
 export const Link = ({ children, ...props }: LinkProps) => {
   const isExternal =
-    props.isExternal || Boolean(props.href?.match(/^https?:\/\//));
+    props.isExternal !== undefined
+      ? props.isExternal
+      : Boolean(props.href?.match(/^https?:\/\//));
   return (
     <ChakraLink {...props} isExternal={isExternal}>
       {children}

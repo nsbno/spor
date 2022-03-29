@@ -1,5 +1,12 @@
 # @vygruppen/spor-theme-react
 
+## 0.3.15
+
+### Patch Changes
+
+- 8b711ac: Make links more accessible by improving the hover and active effects
+- 95e34b1: Make the focus styles of cards wider
+
 ## 0.3.14
 
 ### Patch Changes

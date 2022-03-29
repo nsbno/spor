@@ -1,5 +1,11 @@
 # @vygruppen/spor-card-react
 
+## 0.1.4
+
+### Patch Changes
+
+- 95e34b1: Make the focus styles of cards wider
+
 ## 0.1.3
 
 ### Patch Changes

@@ -198,7 +198,7 @@ const components: Partial<PortableTextReactComponents> = {
     ),
     codeExample: ({ value }) =>
       value.layout === "code-only" ? (
-        <CodeBlock language="jsx" code={value.reactCode.code} />
+        <CodeBlock mt={6} language="jsx" code={value.reactCode.code} />
       ) : (
         <InteractiveCode layout={value.layout} mt={6}>
           {value.reactCode.code}

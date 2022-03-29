@@ -12,13 +12,16 @@ const baseStyle: SystemStyleObject = {
   backgroundSize: "100% 2px",
   backgroundPosition: "0 100%",
   backgroundRepeat: "no-repeat",
+  borderRadius: "none",
   pb: "2px",
   color: "inherit",
   display: "inline",
   position: "relative",
 
-  "&:focus": {
+  "&:focus, &:focus-visible, &:active, &:hover": {
+    background: "none",
     outline: "none",
+    borderRadius: "xs",
   },
 
   svg: {

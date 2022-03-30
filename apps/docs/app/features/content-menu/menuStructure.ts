@@ -284,7 +284,7 @@ export const menuStructure: MenuStructure[] = [
       { title: "Tabs", href: "/komponenter/tab", keywords: ["fliker"] },
       {
         title: "Popovers",
-        href: "/komponenter/popover",
+        href: "/komponenter/popovers",
         keywords: ["tooltip"],
         isAvailable: true,
       },

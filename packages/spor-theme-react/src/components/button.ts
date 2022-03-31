@@ -1,3 +1,4 @@
+import { colors } from './../foundations/colors';
 import {
   mode,
   SystemStyleFunction,
@@ -145,22 +146,22 @@ const variantAdditional: SystemStyleFunction = ({ theme, colorMode }) => ({
   },
 });
 
-const variantGhost: SystemStyleFunction = () => ({
+const variantGhost: SystemStyleFunction = ({theme}) => ({
   backgroundColor: "transparent",
   color: "alias.darkGrey",
   fontWeight: "normal",
   _focus: {
-    boxShadow: `inset 0 0 0 1px currentColor`,
+    outline: "none",
+    boxShadow: `inset 0 0 0 1px ${theme.colors.alias.greenHaze}`,
   },
   ":focus:not(:focus-visible)": {
     boxShadow: "none",
   },
   _focusVisible: {
-    boxShadow: `inset 0 0 0 1px currentColor`,
+    boxShadow: `inset 0 0 0 1px ${theme.colors.alias.greenHaze}`,
   },
   _hover: {
-    backgroundColor: "alias.lightGrey",
-    color: "alias.darkTeal",
+    backgroundColor: "alias.seaMist",
     _disabled: {
       color: "alias.white",
     },

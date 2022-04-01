@@ -1,7 +1,6 @@
 # Tab (React)
 
-TODO: Add description
-
+Tabs are used to switch between particular sets of content or functionality.
 ## Installation
 
 ```bash

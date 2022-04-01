@@ -19,6 +19,7 @@ const baseStyleTablist: SystemStyleFunction = (props) => {
   return {
     display: "flex",
     alignItems: "center",
+    gap: 0.5,
     ...getTablistColorSchemeProps(props),
   };
 };
@@ -30,14 +31,6 @@ const baseStyleTab: SystemStyleFunction = (props) => {
     alignItems: "center",
     transitionProperty: "common",
     transitionDuration: "normal",
-    my: 0,
-    mx: 0.5,
-    _first: {
-      mx: 0
-    },
-    _last: {
-      mx: 0
-    },
     _focus: {
       zIndex: 1,
       boxShadow: "outline",

@@ -19,6 +19,8 @@ const baseStyleTablist: SystemStyleFunction = (props) => {
     display: "flex",
     alignItems: "center",
     gap: 0.5,
+    flexGrow: props.isFitted ? 0 : 1,
+    width: props.isFitted ? "fit-content" : "100%",
     ...getTablistColorSchemeProps(props),
   };
 };
@@ -247,55 +249,27 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   },
 };
 
-const variantRoundDynamic: PartsStyleInterpolation<typeof parts> = {
+const variantRound: PartsStyleInterpolation<typeof parts> = (props) => ({
   tablist: {
     borderRadius: "42px",
   },
   tab: {
-    flexGrow: 1,
     borderRadius: "xl",
   },
-};
+});
 
-const variantRoundCompact: PartsStyleInterpolation<typeof parts> = {
-  tablist: {
-    width: "fit-content",
-    justifyContent: "center",
-    borderRadius: "42px",
-  },
-  tab: {
-    flexGrow: 0,
-    borderRadius: "xl",
-  },
-};
-
-const variantSquareDynamic: PartsStyleInterpolation<typeof parts> = {
+const variantSquare: PartsStyleInterpolation<typeof parts> = {
   tablist: {
     borderRadius: "sm",
   },
   tab: {
-    flexGrow: 1,
-    borderRadius: "9px",
-  },
-};
-
-const variantSquareCompact: PartsStyleInterpolation<typeof parts> = {
-  tablist: {
-    width: "fit-content",
-    justifyContent: "center",
-    borderRadius: "sm",
-  },
-  tab: {
-    flexGrow: 0,
     borderRadius: "9px",
   },
 };
 
 const variants: Record<string, PartsStyleInterpolation<typeof parts>> = {
-  "round-dynamic": variantRoundDynamic,
-  "round-compact": variantRoundCompact,
-  "square-dynamic": variantSquareDynamic,
-  "square-compact": variantSquareCompact,
+  round: variantRound,
+  square: variantSquare,
 };
 
 const defaultProps = {

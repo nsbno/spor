@@ -53,7 +53,7 @@ const DesktopNavigation = () => {
         <NavigationLink href="/kom-i-gang/introduksjon">
           Kom i gang
         </NavigationLink>
-        <NavigationLink href="/ressurser/profil">Profil</NavigationLink>
+        <NavigationLink href="https://snohq.io/xx/">Profil</NavigationLink>
         <NavigationLink href="/komponenter">Komponenter</NavigationLink>
         <NavigationLink href="/ressurser/ikoner">Ikoner</NavigationLink>
         <NavigationLink href="/ressurser/design-tokens">

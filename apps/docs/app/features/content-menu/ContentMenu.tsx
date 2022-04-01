@@ -1,3 +1,4 @@
+import { forwardRef } from "@chakra-ui/react";
 import {
   Accordion,
   AccordionButton,
@@ -11,7 +12,7 @@ import { useLocation } from "react-router-dom";
 import { isDivider, menuStructure } from "../content-menu/menuStructure";
 import { MenuItem } from "./MenuItem";
 
-export const ContentMenu = () => {
+export const ContentMenu = forwardRef((_, ref) => {
   const location = useLocation();
   let activeIndex = menuStructure.findIndex(
     (item) =>
@@ -36,7 +37,7 @@ export const ContentMenu = () => {
         }
         return (
           <AccordionItem key={item.title}>
-            <AccordionButton fontWeight="bold">
+            <AccordionButton fontWeight="bold" ref={index === 0 ? ref : null}>
               {item.title}
               <AccordionIcon />
             </AccordionButton>
@@ -60,4 +61,4 @@ export const ContentMenu = () => {
       })}
     </Accordion>
   );
-};
+});

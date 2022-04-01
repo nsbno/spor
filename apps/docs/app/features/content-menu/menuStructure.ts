@@ -51,7 +51,7 @@ export const menuStructure: MenuStructure[] = [
         keywords: ["process", "prosess", "design"],
         isAvailable: true,
       },
-      { title: "Profil", href: "/ressurser/profil", keywords: ["visuell"] },
+      { title: "Profil", href: "https://snohq.io/xx/", keywords: ["visuell"] },
       {
         title: "Ikoner",
         href: "/ressurser/ikoner",

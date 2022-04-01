@@ -50,7 +50,7 @@ const links: LinkItem[] = [
     iconColor: "alias.bisque",
   },
   {
-    to: "/ressurser/profil",
+    to: "https://snohq.io/xx/",
     title: "Profil",
     description:
       "Lær mer om den visuelle profilen til Vy, og hva den inneholder",
@@ -103,10 +103,12 @@ type ActionLinkCardProps = {
   children: React.ReactNode;
 };
 function ActionLinkCard({ to, children }: ActionLinkCardProps) {
+  const linkProps: any = to.match(/^https?:\/\//)
+    ? { as: "a", href: to }
+    : { as: Link, to };
   return (
     <Card
-      as={Link}
-      to={to}
+      {...linkProps}
       p={4}
       variant="elevated"
       display="flex"

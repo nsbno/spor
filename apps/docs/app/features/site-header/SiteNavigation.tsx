@@ -21,10 +21,12 @@ type NavigationItemProps = {
 };
 export const NavigationLink = ({ children, href }: NavigationItemProps) => {
   const isActive = useIsActive(href);
+  const linkProps: any = href.match(/^https?:\/\//)
+    ? { as: "a", href }
+    : { as: Link, to: href };
   return (
     <Center
-      as={Link}
-      to={href}
+      {...linkProps}
       height="42px"
       px={3}
       borderRadius="sm"

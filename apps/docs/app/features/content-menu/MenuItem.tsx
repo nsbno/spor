@@ -13,7 +13,7 @@ type MenuItemProps = FlexProps & {
  * Menu item in the `ContentMenu`, and search result in the `SearchResults`.
  */
 export const MenuItem = forwardRef<MenuItemProps, "a">(
-  ({ href, children, isActive, isDisabled, ...rest }, externalRef) => {
+  ({ href, children, isActive, isDisabled = false, ...rest }, externalRef) => {
     const internalRef = useRef<HTMLAnchorElement>(null);
     const handleKeyUp = (e: React.KeyboardEvent) => {
       if (!internalRef || typeof internalRef === "function") {
@@ -36,13 +36,10 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
         e.preventDefault();
       }
     };
-    const linkProps: any = isDisabled
-      ? { as: "a", "aria-disabled": true }
-      : { as: Link, to: href };
     return (
       <Flex
         key={href}
-        {...linkProps}
+        {...getLinkProps({ href, isDisabled })}
         px={2}
         _disabled={{
           pointerEvents: "none",
@@ -83,6 +80,22 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
     );
   }
 );
+
+const getLinkProps = ({
+  href,
+  isDisabled,
+}: {
+  href: string;
+  isDisabled: boolean;
+}): any => {
+  if (href.match(/^https?:\/\//)) {
+    return { as: "a", href };
+  }
+  if (isDisabled) {
+    return { as: "a", "aria-disabled": true };
+  }
+  return { as: Link, to: href };
+};
 
 const getNextFocusableSibling = (
   element: HTMLElement | null

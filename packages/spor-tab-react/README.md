@@ -18,7 +18,7 @@ import {
   TabPanel
 } from "@vygruppen/spor-tab-react";
 ```
-TODO: Add usage description
+Please refer to the [documentation](https://spor.cloud.vy.no/komponenter/tabs) for further usage examples.
 
 ## Development
 

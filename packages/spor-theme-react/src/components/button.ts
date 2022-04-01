@@ -1,4 +1,3 @@
-import { colors } from './../foundations/colors';
 import {
   mode,
   SystemStyleFunction,
@@ -146,7 +145,7 @@ const variantAdditional: SystemStyleFunction = ({ theme, colorMode }) => ({
   },
 });
 
-const variantGhost: SystemStyleFunction = ({theme}) => ({
+const variantGhost: SystemStyleFunction = ({ theme }) => ({
   backgroundColor: "transparent",
   color: "alias.darkGrey",
   fontWeight: "normal",

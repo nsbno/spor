@@ -19,7 +19,6 @@ const baseStyleTablist: SystemStyleFunction = (props) => {
     display: "flex",
     alignItems: "center",
     gap: 0.5,
-    flexGrow: props.isFitted ? 0 : 1,
     width: props.isFitted ? "fit-content" : "100%",
     ...getTablistColorSchemeProps(props),
   };
@@ -32,6 +31,7 @@ const baseStyleTab: SystemStyleFunction = (props) => {
     alignItems: "center",
     transitionProperty: "common",
     transitionDuration: "normal",
+    width: props.isFitted ? "fit-content" : "100%",
     height: "100%",
     ...getTabColorSchemeProps(props),
 

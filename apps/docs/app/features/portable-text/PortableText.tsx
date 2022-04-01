@@ -171,7 +171,6 @@ const components: Partial<PortableTextReactComponents> = {
               alt={value.alt || ""}
               mx="auto"
               mt={2}
-              borderRadius="md"
             />
           </Box>
         )}
@@ -193,7 +192,6 @@ const components: Partial<PortableTextReactComponents> = {
         alt={value.alt}
         mx="auto"
         mt={2}
-        borderRadius="md"
       />
     ),
     codeExample: ({ value }) =>

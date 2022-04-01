@@ -173,6 +173,7 @@ function IconBox({ icon }: IconBoxProps) {
           size="sm"
           aria-label="Last ned SVG"
           title="Last ned SVG"
+          borderRadius="sm"
         />
         <IconButton
           variant="ghost"
@@ -181,6 +182,7 @@ function IconBox({ icon }: IconBoxProps) {
           aria-label="Kopier navn"
           title="Kopier navn"
           onClick={onCopy}
+          borderRadius="sm"
         />
       </Flex>
     </Flex>

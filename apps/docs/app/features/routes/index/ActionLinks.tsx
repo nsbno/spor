@@ -47,7 +47,7 @@ const links: LinkItem[] = [
     description:
       "Se farger, størrelser og de andre atomene Spor er bygget opp av",
     icon: TokensOutline30Icon,
-    iconColor: "alias.champagne",
+    iconColor: "alias.bisque",
   },
   {
     to: "/ressurser/profil",

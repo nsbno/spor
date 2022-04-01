@@ -17,4 +17,5 @@ export { default as Select } from "./select";
 export { default as Stepper } from "./stepper";
 export { default as Switch } from "./switch";
 export { default as Table } from "./table";
+export { default as Tabs } from "./tabs";
 export { default as Textarea } from "./textarea";

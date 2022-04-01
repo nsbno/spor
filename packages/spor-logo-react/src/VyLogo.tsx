@@ -12,6 +12,7 @@ export type VyLogoProps = {
 export const VyLogo = ({ colorScheme, ...boxProps }: VyLogoProps) => {
   // These colors should not be tokenized, as they are logo specific.
   const mainColor = colorScheme === "light" ? "#1d211c" : "#ffffff";
+  const accentColor = colorScheme === "light" ? "#138c6e" : "#ffffff";
 
   return (
     <Box as="svg" viewBox="0 0 107 54" {...boxProps}>
@@ -45,7 +46,7 @@ export const VyLogo = ({ colorScheme, ...boxProps }: VyLogoProps) => {
         fillRule="evenodd"
         clipRule="evenodd"
         d="M98.49.07h-1.82c-2.98 0-4.6 1.49-5.63 5.06l-6.52 21.79a18.22 18.22 0 0 1-1.67 3.96c.57.78 1.17 1.26 1.76 1.38 1.13-.96 2.06-2.75 2.89-5.46l6.49-21.67c.9-3.1 2.23-4.63 4.5-4.98a.04.04 0 0 0 0-.08Z"
-        fill="#138c6e"
+        fill={accentColor}
       />
       <path
         fillRule="evenodd"

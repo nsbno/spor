@@ -10,7 +10,13 @@ $ npm install @vygruppen/spor-tab-react
 ## Usage
 
 ```tsx
-import { } from "@vygruppen/spor-tab-react";
+import {
+  Tabs, 
+  TabList, 
+  TabPanels, 
+  Tab, 
+  TabPanel
+} from "@vygruppen/spor-tab-react";
 ```
 TODO: Add usage description
 

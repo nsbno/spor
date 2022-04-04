@@ -1,5 +1,19 @@
 # @vygruppen/spor-react
 
+## 0.12.0
+
+### Minor Changes
+
+- 57f4182: Added tabs component
+
+### Patch Changes
+
+- Updated dependencies [57f4182]
+- Updated dependencies [896b898]
+  - @vygruppen/spor-tab-react@0.1.0
+  - @vygruppen/spor-theme-react@0.4.0
+  - @vygruppen/spor-logo-react@0.1.2
+
 ## 0.11.11
 
 ### Patch Changes

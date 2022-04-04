@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.4.0
+
+### Minor Changes
+
+- 57f4182: Added tabs component
+
 ## 0.3.15
 
 ### Patch Changes

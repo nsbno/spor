@@ -1,5 +1,11 @@
 # @vygruppen/spor-logo-react
 
+## 0.1.2
+
+### Patch Changes
+
+- 896b898: Change the accent color when the vy logo is used on dark backgrounds
+
 ## 0.1.1
 
 ### Patch Changes

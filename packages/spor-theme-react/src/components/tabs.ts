@@ -83,11 +83,33 @@ const getTabColorSchemeSelectedProps = (props: StyleFunctionProps) => {
         _focus: {
           boxShadow: `inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
         },
+        "&:focus:not(:focus-visible)": {
+          boxShadow: "none",
+        },
+        _focusVisible: {
+          boxShadow: `inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
+        },
+        _hover: {
+          backgroundColor: "alias.white",
+          color: "alias.darkTeal",
+        },
+        _active: {
+          backgroundColor: "alias.white",
+          color: "alias.darkTeal",
+        },
       };
     default:
       return {
         backgroundColor: "alias.darkTeal",
         color: "alias.white",
+        _hover: {
+          backgroundColor: "alias.darkTeal",
+          color: "alias.white",
+        },
+        _active: {
+          backgroundColor: "alias.darkTeal",
+          color: "alias.white",
+        },
       };
   }
 };
@@ -163,15 +185,15 @@ const getTabColorSchemeDisabledProps = (props: StyleFunctionProps) => {
       };
     case "light":
       return {
-        backgroundColor: "alias.silver",
+        color: "alias.silver",
       };
     case "green":
       return {
-        backgroundColor: "alias.coralGreen",
+        color: "alias.coralGreen",
       };
     case "grey":
       return {
-        backgroundColor: "alias.steel",
+        color: "alias.steel",
       };
     default:
       return {};

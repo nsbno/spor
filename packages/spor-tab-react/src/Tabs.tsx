@@ -9,8 +9,8 @@ export type TabsProps = Exclude<
   "colorScheme" | "variant" | "orientation" | "size"
 > & {
   colorScheme: "dark" | "light" | "green" | "grey";
-  size: "sm" | "md" | "lg" | "xl";
-  variant: "square" | "round";
+  size?: "sm" | "md" | "lg" | "xl";
+  variant?: "square" | "round";
 };
 export const Tabs = (props: TabsProps) => {
   return <ChakraTabs {...props} />;

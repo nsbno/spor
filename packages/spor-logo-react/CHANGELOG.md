@@ -1,5 +1,11 @@
 # @vygruppen/spor-logo-react
 
+## 0.1.3
+
+### Patch Changes
+
+- 3709143: Make the Vy logo completely white on dark backgrounds
+
 ## 0.1.2
 
 ### Patch Changes

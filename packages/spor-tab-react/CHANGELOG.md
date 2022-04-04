@@ -1,5 +1,11 @@
 # @vygruppen/spor-tab-react
 
+## 0.1.2
+
+### Patch Changes
+
+- 683e7f6: Improve a few inconsistencies for some edge case states in tabs
+
 ## 0.1.1
 
 ### Patch Changes

@@ -274,7 +274,7 @@ const variants: Record<string, PartsStyleInterpolation<typeof parts>> = {
 
 const defaultProps = {
   size: "md",
-  variant: "round-dynamic",
+  variant: "round",
 };
 
 export default {

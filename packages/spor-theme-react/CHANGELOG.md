@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.4.1
+
+### Patch Changes
+
+- 82eb6b2: Make default tabs variant work as it should
+
 ## 0.4.0
 
 ### Minor Changes

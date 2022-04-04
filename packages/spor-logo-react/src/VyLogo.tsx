@@ -4,8 +4,8 @@ import React from "react";
 export type VyLogoProps = {
   /** The color of the logo
    *
-   * Use `"light"` when the logo is used on a dark background.
-   * Use `"dark"` when the logo is used on a light background.
+   * Use `"light"` when the logo is used on a light background.
+   * Use `"dark"` when the logo is used on a dark background.
    */
   colorScheme: "light" | "dark";
 } & BoxProps;
@@ -81,7 +81,7 @@ export const VyLogo = ({ colorScheme, ...boxProps }: VyLogoProps) => {
         />
         <path
           d="M53.78 1.44a4.64 4.64 0 0 0-4.17.93A10.79 10.79 0 0 0 46.19 8L34.53 47.72c-.58 1.93-1.2 3.75-2.56 4.87-.62.5-1.4.86-2.39 1.01a.04.04 0 0 0 0 .08h1.8c1.57 0 2.69-.41 3.53-1.1 1.36-1.1 1.98-2.93 2.56-4.86L49.05 8.3c.73-2.74 1.95-4.63 3.43-5.9.43-.36.88-.68 1.35-.95l-.05-.01Z"
-          fill="#138c6e"
+          fill={accentColor}
         />
       </g>
       <path

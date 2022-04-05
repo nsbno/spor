@@ -40,6 +40,7 @@ export const menuStructure: MenuStructure[] = [
         href: "/kom-i-gang/greit-a-kunne",
         keywords: ["prerequisites", "forkunnskap"],
       },
+      { title: "Bidra", href: "/kom-i-gang/bidra", isAvailable: true },
     ],
   },
   {
@@ -83,7 +84,6 @@ export const menuStructure: MenuStructure[] = [
       },
 
       { title: "FAQ", href: "/ressurser/faq" },
-      { title: "Bidra", href: "/ressurser/bidra" },
     ],
   },
   { divider: true },

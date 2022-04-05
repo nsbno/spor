@@ -1,5 +1,15 @@
 # @vygruppen/spor-input-react
 
+## 0.4.0
+
+### Minor Changes
+
+- 21bc292: Introduce new search input component
+
+### Patch Changes
+
+- 1615828: Make the clear search button optional
+
 ## 0.3.3
 
 ### Patch Changes

@@ -13,3 +13,4 @@ export * from "./RadioGroup";
 export * from "./Select";
 export * from "./Switch";
 export * from "./Textarea";
+export * from "./SearchInput";

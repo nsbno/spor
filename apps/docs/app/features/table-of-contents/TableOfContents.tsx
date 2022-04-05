@@ -41,6 +41,7 @@ function TableOfContent(props: TableOfContentProps) {
       position="sticky"
       py={10}
       pr={4}
+      pl={1}
       top="6rem"
       right="0"
       fontSize="sm"

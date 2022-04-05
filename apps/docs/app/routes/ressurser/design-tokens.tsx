@@ -15,9 +15,9 @@ export default function DesignTokensPage() {
       <Heading as="h1" textStyle="xl-display" mb={2}>
         Design tokens
       </Heading>
-      <Stack spacing={6} fontSize={["mobile.sm", "desktop.sm"]}>
+      <Stack spacing={3} fontSize={["mobile.sm", "desktop.sm"]}>
         <Text>
-          Designtokens er alle verdiene man trenger for å konstruere og
+          Design tokens er alle verdiene man trenger for å konstruere og
           vedlikeholde et designsystem. Disse verdiene kan representere alt som
           er definert av design: en farge som en RGB-verdi, en opasitet som et
           tall, en enkel animasjon som Bezier-koordinater. Vi bruker Tokens i
@@ -30,8 +30,8 @@ export default function DesignTokensPage() {
           og mer.
         </Text>
       </Stack>
-      <Stack spacing={9} mt={4}>
-        <Divider />
+      <Divider my={8} />
+      <Stack spacing={9}>
         <ColorTokens />
         <TypographyTokens />
         <SpacingTokens />

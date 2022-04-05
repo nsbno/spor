@@ -89,7 +89,7 @@ const getLinkProps = ({
   isDisabled: boolean;
 }): any => {
   if (href.match(/^https?:\/\//)) {
-    return { as: "a", href };
+    return { as: "a", href, target: "_blank", rel: "noopener noreferrer" };
   }
   if (isDisabled) {
     return { as: "a", "aria-disabled": true };

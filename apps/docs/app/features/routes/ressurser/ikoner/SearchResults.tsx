@@ -155,14 +155,15 @@ function IconBox({ icon }: IconBoxProps) {
       borderRadius="sm"
       flexDirection="column"
       alignItems="center"
+      justifyContent="space-between"
       pt={1}
       px={1}
       pb={1}
     >
-      <Text textStyle="xs" mb={1}>
+      <Text textStyle="xs" textAlign="center">
         {toTitleCase(icon.name)}
       </Text>
-      <IconComponent />
+      <IconComponent mt={1} />
       <Flex justifyContent="flex-end" width="100%">
         <IconButton
           as="a"

@@ -26,7 +26,13 @@ export const LinkableHeading = ({
   const id = props.id || slugify(text as string);
   const { onCopy, hasCopied } = useClipboard(`${location.pathname}#${id}`);
   return (
-    <Flex position="relative" alignItems="center" data-group {...spacingProps}>
+    <Flex
+      position="relative"
+      alignItems="center"
+      data-group
+      {...spacingProps}
+      _first={{ mt: 0 }}
+    >
       <Heading {...props} id={id} />
       <IconButton
         aria-label={hasCopied ? "Kopiert" : "Kopiér"}

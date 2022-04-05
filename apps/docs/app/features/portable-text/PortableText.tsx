@@ -53,12 +53,12 @@ const components: Partial<PortableTextReactComponents> = {
   },
   block: {
     h2: ({ children }) => (
-      <LinkableHeading as="h2" textStyle="lg" fontWeight="bold" mt={6} mb={-1}>
+      <LinkableHeading as="h2" textStyle="lg" fontWeight="bold" mt={8} mb={-1}>
         {children}
       </LinkableHeading>
     ),
     h3: ({ children }) => (
-      <LinkableHeading as="h3" textStyle="md" fontWeight="bold" mt={2}>
+      <LinkableHeading as="h3" textStyle="md" fontWeight="bold" mt={8} mb={-2}>
         {children}
       </LinkableHeading>
     ),
@@ -101,7 +101,7 @@ const components: Partial<PortableTextReactComponents> = {
       </OrderedList>
     ),
   },
-  listItem: ({ children }) => <ListItem mt={2}>{children}</ListItem>,
+  listItem: ({ children }) => <ListItem mt={1}>{children}</ListItem>,
   types: {
     buttonLink: ({ value }) => {
       const isExternal = value.url.startsWith("/");
@@ -116,7 +116,7 @@ const components: Partial<PortableTextReactComponents> = {
         </Box>
       );
     },
-    divider: () => <Divider height="1px" mt={[8, 10]} />,
+    divider: () => <Divider height="1px" my={8} />,
     introduction: ({ value }) => {
       return (
         <Stack spacing={3}>
@@ -134,7 +134,7 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     grid: ({ value }) => (
-      <SimpleGrid columns={[1, 2, value.maxNumberOfColumns]} gap={6} mt={6}>
+      <SimpleGrid columns={[1, 2, value.maxNumberOfColumns]} gap={6} mt={8}>
         {value.content.map((item: any) => (
           <PortableText value={item} key={item._key} />
         ))}
@@ -158,7 +158,7 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     imageWithCaption: ({ value }) => (
-      <Stack spacing={2}>
+      <Box>
         {value.image && (
           <Box>
             <Image
@@ -175,11 +175,11 @@ const components: Partial<PortableTextReactComponents> = {
           </Box>
         )}
         {value.caption && (
-          <Stack textStyle="sm" color="alias.osloGrey">
+          <Stack textStyle="xs" color="alias.dimGrey" mt={-1}>
             <PortableText value={value.caption} />
           </Stack>
         )}
-      </Stack>
+      </Box>
     ),
     image: ({ value }) => (
       <Image
@@ -198,13 +198,13 @@ const components: Partial<PortableTextReactComponents> = {
       value.layout === "code-only" ? (
         <CodeBlock mt={6} language="jsx" code={value.reactCode.code} />
       ) : (
-        <InteractiveCode layout={value.layout} mt={6}>
+        <InteractiveCode layout={value.layout} mt={3}>
           {value.reactCode.code}
         </InteractiveCode>
       ),
     component: ({ value }) => (
       <Box key={value.name} mt={6} as="article">
-        <LinkableHeading as="h3" textStyle="lg" fontWeight="bold">
+        <LinkableHeading as="h3" textStyle="md" fontWeight="bold" mb={-2}>
           {`<${value.name} />`}
         </LinkableHeading>
         <Box mt={1}>
@@ -212,7 +212,7 @@ const components: Partial<PortableTextReactComponents> = {
         </Box>
         {value.props && (
           <>
-            <Heading as="h4" textStyle="md" fontWeight="bold" mt={3}>
+            <Heading as="h4" textStyle="md" mt={3}>
               Props
             </Heading>
             <Table

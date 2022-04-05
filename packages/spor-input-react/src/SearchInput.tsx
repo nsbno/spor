@@ -26,15 +26,21 @@ export type SearchInputProps = Exclude<
  * Includes a search icon, a localized label and a reset button.
  */
 export const SearchInput = forwardRef<SearchInputProps, "input">(
-  ({ id, label, onReset, ...props }, ref) => {
+  ({ label, onReset, ...props }, ref) => {
     const { t } = useTranslation();
     return (
       <InputGroup position="relative">
         <InputLeftElement>
           <SearchOutline24Icon />
         </InputLeftElement>
-        <ChakraInput {...props} placeholder=" " pr={7} pl={7} ref={ref} />
-        <FormLabel htmlFor={id} pointerEvents="none">
+        <ChakraInput
+          pl={7}
+          pr={7}
+          {...props}
+          ref={ref}
+          placeholder=" " // This is needed to make the label work as expected
+        />
+        <FormLabel htmlFor={props.id} pointerEvents="none">
           {label ?? t(texts.label)}
         </FormLabel>
         {Boolean(props.value) && (

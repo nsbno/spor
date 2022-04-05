@@ -1,18 +1,24 @@
-import { Input, SearchOutline24Icon } from "@vygruppen/spor-react";
+import { Input, SearchOutline24Icon, SearchInput } from "@vygruppen/spor-react";
 import React from "react";
 
 export type SearchInputProps = {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyUp: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onReset: () => void;
 };
-export const SearchInput = ({ value, onChange, onKeyUp }: SearchInputProps) => {
+export const SearchField = ({
+  value,
+  onChange,
+  onKeyUp,
+  onReset,
+}: SearchInputProps) => {
   const inputRef = useSearchHotkey();
   return (
-    <Input
+    <SearchInput
       ref={inputRef}
       label="Søk"
-      leftIcon={<SearchOutline24Icon />}
+      onReset={onReset}
       value={value}
       onChange={onChange}
       onKeyUp={onKeyUp}

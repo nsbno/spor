@@ -103,6 +103,12 @@ export const menuStructure: MenuStructure[] = [
         isAvailable: true,
       },
       {
+        title: "Søkefelt",
+        href: "/komponenter/sokefelt",
+        keywords: ["search", "filter", "filtrering"],
+        isAvailable: true,
+      },
+      {
         title: "Passordfelt",
         href: "/komponenter/passordfelt",
         keywords: ["passord", "input"],

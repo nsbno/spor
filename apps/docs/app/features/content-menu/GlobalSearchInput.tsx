@@ -17,11 +17,10 @@ export const GlobalSearchInput = ({
   return (
     <SearchInput
       ref={inputRef}
-      label="Søk"
-      onReset={onReset}
       value={value}
       onChange={onChange}
       onKeyUp={onKeyUp}
+      onReset={onReset}
     />
   );
 };

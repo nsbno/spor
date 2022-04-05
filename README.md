@@ -6,8 +6,8 @@ This is the monorepo containing Vy's design system, **Spor**, and its supporting
 
 This repo includes the following apps:
 
-- `docs`: a [Remix](https://remix.run) app documenting and demoing the design system
-- `studio`: a Sanity Studio app for creating and editing documentation content
+- `docs`: a [Remix](https://remix.run) app documenting and demoing the design system. Available @ [spor.cloud.vy.no](https://spor.cloud.vy.no).
+- `studio`: a [Sanity](https://sanity.io) Studio app for creating and editing documentation content. Available @ [spor.cloud.vy.no/studio](https://spor.cloud.vy.no/studio).
 
 This repo also includes a bunch of packages. The ones you need to know about are:
 

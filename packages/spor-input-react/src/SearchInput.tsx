@@ -19,7 +19,7 @@ export type SearchInputProps = Exclude<
   /** Optional label. Defaults to the localized version of "search" */
   label?: string;
   /** Callback for when the clear button is clicked */
-  onReset: () => void;
+  onReset?: () => void;
 };
 /** Simple search input component.
  *
@@ -28,6 +28,7 @@ export type SearchInputProps = Exclude<
 export const SearchInput = forwardRef<SearchInputProps, "input">(
   ({ label, onReset, ...props }, ref) => {
     const { t } = useTranslation();
+    const showCloseButton = onReset && Boolean(props.value);
     return (
       <InputGroup position="relative">
         <InputLeftElement>
@@ -37,13 +38,19 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
           pl={7}
           pr={7}
           {...props}
+          type="search"
+          css={{
+            "&::-webkit-search-cancel-button": {
+              WebkitAppearance: "none",
+            },
+          }}
           ref={ref}
           placeholder=" " // This is needed to make the label work as expected
         />
         <FormLabel htmlFor={props.id} pointerEvents="none">
           {label ?? t(texts.label)}
         </FormLabel>
-        {Boolean(props.value) && (
+        {showCloseButton && (
           <InputRightElement width="fit-content">
             <IconButton
               variant="ghost"

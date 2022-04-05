@@ -1,4 +1,4 @@
-import { Input, SearchOutline24Icon, SearchInput } from "@vygruppen/spor-react";
+import { SearchInput } from "@vygruppen/spor-react";
 import React from "react";
 
 export type SearchInputProps = {
@@ -7,7 +7,7 @@ export type SearchInputProps = {
   onKeyUp: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   onReset: () => void;
 };
-export const SearchField = ({
+export const GlobalSearchInput = ({
   value,
   onChange,
   onKeyUp,

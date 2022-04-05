@@ -4,7 +4,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ContentMenu } from "./ContentMenu";
 import { searchableMenuStructure } from "./menuStructure";
-import { SearchField } from "./SearchInput";
+import { GlobalSearchInput } from "./GlobalSearchInput";
 import { SearchResults } from "./SearchResults";
 
 export const SearchableContentMenu = () => {
@@ -49,7 +49,7 @@ export const SearchableContentMenu = () => {
   return (
     <>
       <Box as="form" onSubmit={handleSubmit}>
-        <SearchField
+        <GlobalSearchInput
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyUp={handleKeyUp}

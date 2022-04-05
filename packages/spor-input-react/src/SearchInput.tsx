@@ -1,10 +1,10 @@
 import {
-  Button,
   forwardRef,
   IconButton,
   Input as ChakraInput,
   InputProps as ChakraInputProps,
 } from "@chakra-ui/react";
+import { Language, useTranslation } from "@vygruppen/spor-i18n-react";
 import {
   CloseOutline24Icon,
   SearchOutline24Icon,
@@ -16,19 +16,26 @@ export type SearchInputProps = Exclude<
   ChakraInputProps,
   "variant" | "size" | "leftIcon" | "rightIcon"
 > & {
-  label: string;
+  /** Optional label. Defaults to the localized version of "search" */
+  label?: string;
+  /** Callback for when the clear button is clicked */
   onReset: () => void;
 };
+/** Simple search input component.
+ *
+ * Includes a search icon, a localized label and a reset button.
+ */
 export const SearchInput = forwardRef<SearchInputProps, "input">(
   ({ id, label, onReset, ...props }, ref) => {
+    const { t } = useTranslation();
     return (
       <InputGroup position="relative">
         <InputLeftElement>
           <SearchOutline24Icon />
         </InputLeftElement>
-        <ChakraInput {...props} placeholder=" " pr={10} pl={7} ref={ref} />
+        <ChakraInput {...props} placeholder=" " pr={7} pl={7} ref={ref} />
         <FormLabel htmlFor={id} pointerEvents="none">
-          {label}
+          {label ?? t(texts.label)}
         </FormLabel>
         {Boolean(props.value) && (
           <InputRightElement width="fit-content">
@@ -37,13 +44,26 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
               type="button"
               size="sm"
               mr={1}
-              aria-label="Søk"
+              aria-label={t(texts.reset)}
               icon={<CloseOutline24Icon />}
               onClick={onReset}
-            ></IconButton>
+            />
           </InputRightElement>
         )}
       </InputGroup>
     );
   }
 );
+
+const texts = {
+  label: {
+    [Language.NorwegianBokmal]: "Søk",
+    [Language.Swedish]: "Sök",
+    [Language.English]: "Search",
+  },
+  reset: {
+    [Language.NorwegianBokmal]: "Tøm søkefeltet",
+    [Language.Swedish]: "Rensa sökrutan",
+    [Language.English]: "Reset search field",
+  },
+};

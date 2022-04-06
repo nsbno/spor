@@ -155,7 +155,7 @@ export const menuStructure: MenuStructure[] = [
   {
     title: "Layout og flater",
     items: [
-      { title: "Kort", href: "/komponenter/kort", keywords: ["cards"] },
+      { title: "Kort", href: "/komponenter/kort", keywords: ["cards"], isAvailable: true },
       {
         title: "Delestreker",
         href: "/komponenter/divider",

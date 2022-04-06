@@ -12,7 +12,7 @@ export const LiveEditor = (props: BoxProps) => {
   }
 
   return (
-    <CodeBlockContainer code={liveContext.code} {...props}>
+    <CodeBlockContainer code={liveContext.code} spellCheck={false} {...props}>
       <ReactLiveEditor theme={theme} />
     </CodeBlockContainer>
   );

@@ -1,4 +1,5 @@
 import {
+  forwardRef,
   Link as ChakraLink,
   LinkProps as ChakraLinkProps,
 } from "@chakra-ui/react";
@@ -12,18 +13,20 @@ type LinkProps = Omit<ChakraLinkProps, "variant"> & {
  *
  * You can specify the `variant` prop to get different link designs. `tertiary` should only be used on dark backgrounds.
  */
-export const TextLink = ({ children, ...props }: LinkProps) => {
-  const isExternal =
-    props.isExternal !== undefined
-      ? props.isExternal
-      : Boolean(props.href?.match(/^https?:\/\//));
-  return (
-    <ChakraLink {...props} isExternal={isExternal}>
-      {children}
-      {isExternal && <LinkOutOutline24Icon ml={0.5} />}
-    </ChakraLink>
-  );
-};
+export const TextLink = forwardRef<LinkProps, "a">(
+  ({ children, ...props }, ref) => {
+    const isExternal =
+      props.isExternal !== undefined
+        ? props.isExternal
+        : Boolean(props.href?.match(/^https?:\/\//));
+    return (
+      <ChakraLink {...props} ref={ref} isExternal={isExternal}>
+        {children}
+        {isExternal && <LinkOutOutline24Icon ml={0.5} />}
+      </ChakraLink>
+    );
+  }
+);
 
 /** Link to different sites or parts of sites.
  *

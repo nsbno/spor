@@ -3,8 +3,8 @@ import { matchSorter } from "match-sorter";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ContentMenu } from "./ContentMenu";
-import { searchableMenuStructure } from "./menuStructure";
 import { GlobalSearchInput } from "./GlobalSearchInput";
+import { searchableMenuStructure } from "./menuStructure";
 import { SearchResults } from "./SearchResults";
 
 export const SearchableContentMenu = () => {

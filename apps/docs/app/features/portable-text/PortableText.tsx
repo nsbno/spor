@@ -35,17 +35,16 @@ const components: Partial<PortableTextReactComponents> = {
   marks: {
     code: ({ children }) => <Code>{children}</Code>,
     link: ({ value, children }) => {
-      const isExternal = value.href.startsWith("http");
-      if (isExternal) {
+      const isInternal = value.href.startsWith("/");
+      if (isInternal) {
         return (
-          <Link variant="primary" href={value.href}>
+          <Link variant="primary" as={InternalLink} to={value.href}>
             {children}
           </Link>
         );
       }
-
       return (
-        <Link variant="primary" as={InternalLink} to={value.href}>
+        <Link variant="primary" href={value.href}>
           {children}
         </Link>
       );

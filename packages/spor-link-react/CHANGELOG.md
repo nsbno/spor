@@ -1,5 +1,13 @@
 # @vygruppen/spor-link-react
 
+## 0.1.6
+
+### Patch Changes
+
+- d1af49c: Make links forward references
+- ac8bf51: Rename Link component to TextLink, deprecate Link
+- ff3ca57: Make the active and hover styles work as they should for link components
+
 ## 0.1.5
 
 ### Patch Changes

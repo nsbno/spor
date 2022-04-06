@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.4.4
+
+### Patch Changes
+
+- ff3ca57: Make the active and hover styles work as they should for link components
+
 ## 0.4.3
 
 ### Patch Changes

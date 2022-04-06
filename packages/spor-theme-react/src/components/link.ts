@@ -19,7 +19,8 @@ const baseStyle: SystemStyleObject = {
   position: "relative",
 
   "&:focus, &:focus-visible, &:active, &:hover": {
-    background: "none",
+    backgroundImage: "none",
+    backgroundSize: "100%",
     outline: "none",
     borderRadius: "xs",
   },
@@ -35,6 +36,21 @@ const baseStyle: SystemStyleObject = {
 
 const variantPrimary: SystemStyleFunction = (props) => ({
   color: "alias.pine",
+  _focus: {
+    color: "alias.white",
+    backgroundColor: "alias.pine",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.pine}`,
+  },
+  "&:focus:not(:focus-visible):not(:active)": {
+    color: "alias.pine",
+    boxShadow: "none",
+    backgroundColor: "transparent",
+  },
+  _focusVisible: {
+    color: "alias.white",
+    backgroundColor: "alias.pine",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.pine}`,
+  },
   _hover: {
     backgroundColor: "alias.coralGreen",
     color: "alias.darkTeal",
@@ -45,25 +61,25 @@ const variantPrimary: SystemStyleFunction = (props) => ({
     boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.mint}`,
     color: "alias.pine",
   },
-  "&:focus": {
-    color: "alias.white",
-    backgroundColor: "alias.pine",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.pine}`,
-  },
-  "&:focus:not(:focus-visible)": {
-    color: "alias.pine",
-    boxShadow: "none",
-    backgroundColor: "transparent",
-  },
-  "&:focus-visible": {
-    color: "alias.white",
-    backgroundColor: "alias.pine",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.pine}`,
-  },
 });
 
 const variantSecondary: SystemStyleFunction = (props) => ({
   color: "alias.darkGrey",
+  _focus: {
+    color: "alias.white",
+    backgroundColor: "alias.darkGrey",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.darkGrey}`,
+  },
+  "&:focus:not(:focus-visible):not(:active)": {
+    color: "alias.darkGrey",
+    boxShadow: "none",
+    backgroundColor: "transparent",
+  },
+  _focusVisible: {
+    color: "alias.white",
+    backgroundColor: "alias.darkGrey",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.darkGrey}`,
+  },
   _hover: {
     color: "alias.darkGrey",
     backgroundColor: "palette.blackAlpha.100",
@@ -74,25 +90,25 @@ const variantSecondary: SystemStyleFunction = (props) => ({
     backgroundColor: "alias.mint",
     boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.mint}`,
   },
-  "&:focus": {
-    color: "alias.white",
-    backgroundColor: "alias.darkGrey",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.darkGrey}`,
-  },
-  "&:focus:not(:focus-visible)": {
-    color: "alias.darkGrey",
-    boxShadow: "none",
-    backgroundColor: "transparent",
-  },
-  "&:focus-visible": {
-    color: "alias.white",
-    backgroundColor: "alias.darkGrey",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.darkGrey}`,
-  },
 });
 
 const variantTertiary: SystemStyleFunction = (props) => ({
   color: "alias.white",
+  _focus: {
+    color: "alias.pine",
+    backgroundColor: "alias.white",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.white}`,
+  },
+  "&:focus:not(:focus-visible):not(:active)": {
+    color: "alias.white",
+    boxShadow: "none",
+    backgroundColor: "transparent",
+  },
+  _focusVisible: {
+    color: "alias.pine",
+    backgroundColor: "alias.white",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.white}`,
+  },
   _hover: {
     color: "alias.white",
     backgroundColor: "palette.whiteAlpha.200",
@@ -102,21 +118,6 @@ const variantTertiary: SystemStyleFunction = (props) => ({
     color: "alias.white",
     backgroundColor: "palette.whiteAlpha.400",
     boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.palette.whiteAlpha[400]}`,
-  },
-  "&:focus": {
-    color: "alias.pine",
-    backgroundColor: "alias.white",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.white}`,
-  },
-  "&:focus:not(:focus-visible)": {
-    color: "alias.white",
-    boxShadow: "none",
-    backgroundColor: "transparent",
-  },
-  "&:focus-visible": {
-    color: "alias.pine",
-    backgroundColor: "alias.white",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.white}`,
   },
 });
 

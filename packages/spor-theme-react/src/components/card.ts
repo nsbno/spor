@@ -36,7 +36,7 @@ type Variant = "elevated" | "filled" | "outlined";
 const variants: Record<Variant, SystemStyleInterpolation> = {
   elevated: {
     backgroundColor: "alias.white",
-    boxShadow: "md",
+    boxShadow: `${shadows.md}, 0 0 0 1px ${colors.alias.silver}`,
 
     "button&, a&": {
       _hover: {

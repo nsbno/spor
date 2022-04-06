@@ -12,7 +12,6 @@ import {
   Flex,
   Heading,
   Image,
-  Link,
   SimpleGrid,
   Stack,
   SuccessFill24Icon,
@@ -20,12 +19,13 @@ import {
   Tbody,
   Td,
   Text,
+  TextLink,
   Th,
   Thead,
   Tr,
 } from "@vygruppen/spor-react";
 import React from "react";
-import { Link as InternalLink } from "remix";
+import { Link } from "remix";
 import { urlBuilder } from "~/utils/sanity/utils";
 import { CodeBlock } from "../code-block/CodeBlock";
 import { InteractiveCode } from "../interactive-code/InteractiveCode";
@@ -38,15 +38,15 @@ const components: Partial<PortableTextReactComponents> = {
       const isInternal = value.href.startsWith("/");
       if (isInternal) {
         return (
-          <Link variant="primary" as={InternalLink} to={value.href}>
+          <TextLink variant="primary" as={Link} to={value.href}>
             {children}
-          </Link>
+          </TextLink>
         );
       }
       return (
-        <Link variant="primary" href={value.href}>
+        <TextLink variant="primary" href={value.href}>
           {children}
-        </Link>
+        </TextLink>
       );
     },
   },

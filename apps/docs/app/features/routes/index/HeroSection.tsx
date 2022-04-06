@@ -7,7 +7,7 @@ import {
   Heading,
   Image,
 } from "@vygruppen/spor-react";
-import { Link } from "react-router-dom";
+import { Link } from "remix";
 
 export function HeroSection() {
   return (

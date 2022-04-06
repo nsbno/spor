@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 0.12.4
+
+### Patch Changes
+
+- Updated dependencies [a64bcad]
+  - @vygruppen/spor-theme-react@0.4.3
+  - @vygruppen/spor-card-react@0.1.5
+
 ## 0.12.3
 
 ### Patch Changes

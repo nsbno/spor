@@ -1,5 +1,11 @@
 # @vygruppen/spor-card-react
 
+## 0.1.5
+
+### Patch Changes
+
+- a64bcad: Add a background color for elevated cards
+
 ## 0.1.4
 
 ### Patch Changes

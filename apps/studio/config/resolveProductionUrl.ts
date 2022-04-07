@@ -12,5 +12,5 @@ export const resolveProductionUrl = async (doc: any) => {
     { id: doc.category._ref }
   );
 
-  return `${host}/${category.slug}/${doc.slug.current}?preview=${process.env.SANITY_PREVIEW_SECRET}`;
+  return `${host}/${category.slug}/${doc.slug.current}?preview=${process.env.SANITY_STUDIO_PREVIEW_SECRET}`;
 };

@@ -22,6 +22,7 @@ export type RuleType = {
   uri: (options: { scheme: string[] }) => RuleType;
   integer: () => RuleType;
   precision: (limit: number) => RuleType;
+  valueOfField: (field: string) => string;
 };
 
 type Validation = (rule: RuleType) => RuleType | RuleType[];
@@ -134,6 +135,12 @@ export type ArrayField<Name extends string = string> = CommonFieldProps & {
   name: Name;
   type: "array";
   of: ArrayOf[];
+  options?: {
+    sortable?: boolean;
+    layout?: "tags" | "grid";
+    list?: { value: string; title: string }[];
+    editModal?: "dialog" | "fullscreen" | "popover";
+  };
 };
 
 type FilterFunctionResult = { filter: string; filterParams?: string };
@@ -143,7 +150,7 @@ type FilterFunction = (args: {
   parent: Record<string, unknown>[];
 }) => FilterFunctionResult;
 
-type ReferenceField<Name extends string = string> = CommonFieldProps & {
+export type ReferenceField<Name extends string = string> = CommonFieldProps & {
   name: Name;
   type: "reference";
   to: { type: string }[];

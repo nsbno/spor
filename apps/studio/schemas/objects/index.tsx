@@ -6,4 +6,5 @@ export * from "./grid";
 export * from "./imageWithCaption";
 export * from "./imports";
 export * from "./introduction";
+export * from "./menuItem";
 export * from "./props";

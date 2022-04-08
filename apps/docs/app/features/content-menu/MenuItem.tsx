@@ -7,13 +7,12 @@ type MenuItemProps = FlexProps & {
   url: string;
   children: React.ReactNode;
   isActive?: boolean;
-  isDisabled?: boolean;
 };
 /**
  * Menu item in the `ContentMenu`, and search result in the `SearchResults`.
  */
 export const MenuItem = forwardRef<MenuItemProps, "a">(
-  ({ url, children, isActive, isDisabled = false, ...rest }, externalRef) => {
+  ({ url, children, isActive, ...rest }, externalRef) => {
     const internalRef = useRef<HTMLAnchorElement>(null);
     const handleKeyUp = (e: React.KeyboardEvent) => {
       if (!internalRef || typeof internalRef === "function") {
@@ -39,7 +38,7 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
     return (
       <Flex
         key={url}
-        {...getLinkProps({ url, isDisabled })}
+        {...getLinkProps({ url })}
         px={2}
         _disabled={{
           pointerEvents: "none",
@@ -81,18 +80,9 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
   }
 );
 
-const getLinkProps = ({
-  url,
-  isDisabled,
-}: {
-  url: string;
-  isDisabled: boolean;
-}): any => {
+const getLinkProps = ({ url }: { url: string }): any => {
   if (url.match(/^https?:\/\//)) {
     return { as: "a", url, target: "_blank", rel: "noopener noreferrer" };
-  }
-  if (isDisabled) {
-    return { as: "a", "aria-disabled": true };
   }
   return { as: Link, to: url };
 };

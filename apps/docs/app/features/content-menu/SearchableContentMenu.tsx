@@ -18,7 +18,7 @@ export const SearchableContentMenu = () => {
     () =>
       menu?.menuItems
         .filter((menuItem) => menuItem._type !== "divider" && menuItem.subItems)
-        .flatMap((menuItem) => menuItem.subItems) ?? [],
+        .flatMap((menuItem) => menuItem.subItems!) ?? [],
     [menu]
   );
 
@@ -42,7 +42,7 @@ export const SearchableContentMenu = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (query && hits.length === 1) {
-      navigate(hits[0].url);
+      navigate(hits[0]!.url);
       setQuery("");
     }
   };

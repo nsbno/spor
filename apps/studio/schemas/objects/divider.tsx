@@ -21,7 +21,7 @@ export const divider: ObjectField = {
   preview: {
     component: () => (
       <Center height="100%">
-        <Divider />
+        <Divider height="1px" background="currentColor" my="0" />
       </Center>
     ),
   },

@@ -4,16 +4,15 @@ import React, { useRef } from "react";
 import { Link } from "remix";
 
 type MenuItemProps = FlexProps & {
-  href: string;
+  url: string;
   children: React.ReactNode;
   isActive?: boolean;
-  isDisabled?: boolean;
 };
 /**
  * Menu item in the `ContentMenu`, and search result in the `SearchResults`.
  */
 export const MenuItem = forwardRef<MenuItemProps, "a">(
-  ({ href, children, isActive, isDisabled = false, ...rest }, externalRef) => {
+  ({ url, children, isActive, ...rest }, externalRef) => {
     const internalRef = useRef<HTMLAnchorElement>(null);
     const handleKeyUp = (e: React.KeyboardEvent) => {
       if (!internalRef || typeof internalRef === "function") {
@@ -38,8 +37,8 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
     };
     return (
       <Flex
-        key={href}
-        {...getLinkProps({ href, isDisabled })}
+        key={url}
+        {...getLinkProps({ url })}
         px={2}
         _disabled={{
           pointerEvents: "none",
@@ -81,20 +80,11 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
   }
 );
 
-const getLinkProps = ({
-  href,
-  isDisabled,
-}: {
-  href: string;
-  isDisabled: boolean;
-}): any => {
-  if (href.match(/^https?:\/\//)) {
-    return { as: "a", href, target: "_blank", rel: "noopener noreferrer" };
+const getLinkProps = ({ url }: { url: string }): any => {
+  if (url.match(/^https?:\/\//)) {
+    return { as: "a", url, target: "_blank", rel: "noopener noreferrer" };
   }
-  if (isDisabled) {
-    return { as: "a", "aria-disabled": true };
-  }
-  return { as: Link, to: href };
+  return { as: Link, to: url };
 };
 
 const getNextFocusableSibling = (

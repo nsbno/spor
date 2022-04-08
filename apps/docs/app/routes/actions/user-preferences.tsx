@@ -1,9 +1,9 @@
 import { ActionFunction, json, LoaderFunction, redirect } from "remix";
 import { isValidUserPreferences } from "~/features/user-preferences/UserPreferencesContext";
-import { getUserPreferenceSession } from "~/utils/userPreferences.server";
+import { getUserPreferencesSession } from "~/utils/userPreferences.server";
 
 export const action: ActionFunction = async ({ request }) => {
-  const session = await getUserPreferenceSession(request);
+  const session = await getUserPreferencesSession(request);
   const formData = await request.formData();
 
   const userPreferences = {

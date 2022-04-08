@@ -26,8 +26,8 @@ import {
   UserPreferences,
   UserPreferencesProvider,
 } from "./features/user-preferences/UserPreferencesContext";
-import { getUserPreferenceSession as getUserPreferencesSession } from "./utils/userPreferences.server";
-
+import { getMenus, Menu } from "./utils/menu.server";
+import { getUserPreferencesSession } from "./utils/userPreferences.server";
 export const meta: MetaFunction = () => {
   return { title: "Spor - Vy Design System" };
 };
@@ -44,13 +44,18 @@ export const links: LinksFunction = () => {
 
 type LoaderData = {
   userPreferences?: UserPreferences;
+  menus: Menu[];
 };
 export const loader: LoaderFunction = async ({ request }) => {
-  const session = await getUserPreferencesSession(request);
-  const data: LoaderData = {
+  const [session, menus] = await Promise.all([
+    getUserPreferencesSession(request),
+    getMenus(),
+  ]);
+
+  return {
     userPreferences: session.getUserPreferences(),
+    menus,
   };
-  return data;
 };
 
 /**
@@ -123,7 +128,7 @@ const Document = withEmotionCache(
     }, []);
 
     return (
-      <html lang="en">
+      <html lang="nb-no">
         <head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width,initial-scale=1" />

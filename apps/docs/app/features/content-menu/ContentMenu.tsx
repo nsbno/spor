@@ -7,22 +7,27 @@ import {
   AccordionPanel,
   Divider,
   Stack,
+  Text,
 } from "@vygruppen/spor-react";
 import { useLocation } from "react-router-dom";
-import { isDivider, menuStructure } from "../content-menu/menuStructure";
+import { useMenu } from "~/utils/useMenu";
 import { MenuItem } from "./MenuItem";
 
 export const ContentMenu = forwardRef((_, ref) => {
+  const menu = useMenu("side-menu");
   const location = useLocation();
-  let activeIndex = menuStructure.findIndex(
-    (item) =>
-      !isDivider(item) &&
-      item.items.some((subItem) => subItem.href === location.pathname)
-  );
-  const indexOfDivider = menuStructure.findIndex(isDivider);
+  let activeIndex =
+    menu?.menuItems.findIndex(
+      (item) =>
+        item._type !== "divider" &&
+        item.subItems?.some((subItem) => subItem.url === location.pathname)
+    ) ?? 0;
+  const indexOfDivider =
+    menu?.menuItems.findIndex((item) => item._type === "divider") ?? 0;
   if (activeIndex >= indexOfDivider) {
     activeIndex = activeIndex - 1;
   }
+
   return (
     <Accordion
       variant="list"
@@ -31,10 +36,12 @@ export const ContentMenu = forwardRef((_, ref) => {
       mt={6}
       defaultIndex={activeIndex}
     >
-      {menuStructure.map((item, index) => {
-        if (isDivider(item)) {
+      {menu?.menuItems.map((item, index) => {
+        if (item._type === "divider") {
           return <Divider key={index} my={2} height="1px" />;
         }
+        const subItems = item.subItems?.filter((subItem) => subItem.url);
+        const hasSubItems = Boolean(subItems?.length);
         return (
           <AccordionItem key={item.title}>
             <AccordionButton fontWeight="bold" ref={index === 0 ? ref : null}>
@@ -43,17 +50,19 @@ export const ContentMenu = forwardRef((_, ref) => {
             </AccordionButton>
             <AccordionPanel pt={1} pb={0}>
               <Stack spacing={0.5}>
-                {item.items.map((subItem) => (
+                {subItems?.map((subItem) => (
                   <MenuItem
-                    key={subItem.href}
-                    href={subItem.href}
+                    key={subItem.url}
+                    url={subItem.url}
                     height={5}
-                    isActive={subItem.href === location.pathname}
-                    isDisabled={!subItem.isAvailable}
+                    isActive={subItem.url === location.pathname}
                   >
                     {subItem.title}
                   </MenuItem>
                 ))}
+                {!hasSubItems && (
+                  <Text color="alias.dimGrey">Ingen ting her (enda)</Text>
+                )}
               </Stack>
             </AccordionPanel>
           </AccordionItem>

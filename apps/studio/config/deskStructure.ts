@@ -24,4 +24,5 @@ export default () =>
       S.documentTypeListItem("article").title("Articles"),
       S.documentTypeListItem("category").title("Categories"),
       S.documentTypeListItem("component").title("Components"),
+      S.documentTypeListItem("menu").title("Menus"),
     ]);

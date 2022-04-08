@@ -13,6 +13,8 @@ import {
 } from "@vygruppen/spor-react";
 import { useEffect } from "react";
 import { Link, useLocation } from "remix";
+import { MenuItem } from "~/utils/menu.server";
+import { useMenu } from "~/utils/useMenu";
 import { SearchableContentMenu } from "../content-menu/SearchableContentMenu";
 import { NavigationLink, SiteNavigation } from "./SiteNavigation";
 import { UserPreferenceSwitcher } from "./UserPreferenceSwitcher";
@@ -41,7 +43,14 @@ export const SiteHeader = () => {
   );
 };
 
+type MatchesData = {
+  menus: {
+    slug: string;
+    menuItems: MenuItem[];
+  }[];
+};
 const DesktopNavigation = () => {
+  const menu = useMenu("top-menu");
   return (
     <Flex
       display={["none", "none", "flex"]}
@@ -50,15 +59,11 @@ const DesktopNavigation = () => {
       alignItems="center"
     >
       <SiteNavigation>
-        <NavigationLink href="/kom-i-gang/introduksjon">
-          Kom i gang
-        </NavigationLink>
-        <NavigationLink href="https://snohq.io/xx/">Profil</NavigationLink>
-        <NavigationLink href="/komponenter">Komponenter</NavigationLink>
-        <NavigationLink href="/ressurser/ikoner">Ikoner</NavigationLink>
-        <NavigationLink href="/ressurser/design-tokens">
-          Design tokens
-        </NavigationLink>
+        {menu?.menuItems.map((menuItem) => (
+          <NavigationLink key={menuItem.url} href={menuItem.url}>
+            {menuItem.title}
+          </NavigationLink>
+        ))}
       </SiteNavigation>
       <UserPreferenceSwitcher />
     </Flex>

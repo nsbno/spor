@@ -67,7 +67,7 @@ function TableOfContent(props: TableOfContentProps) {
           >
             <MenuItem
               title={text}
-              href={`#${id}`}
+              url={`#${id}`}
               aria-current={id === activeId ? "location" : undefined}
               isActive={id === activeId}
             >

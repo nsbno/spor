@@ -22,6 +22,7 @@ export const menu: Document<Menu> = {
       name: "slug",
       title: "Slug",
       type: "slug",
+      validation: (Rule) => Rule.required(),
       options: {
         source: "title",
       },

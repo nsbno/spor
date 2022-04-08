@@ -20,6 +20,7 @@ import {
 } from "./features/chakra-setup/styleContext";
 import { RootErrorBoundary } from "./features/error-boundary/RootErrorBoundary";
 import { FontPreloading } from "./features/font-loading/FontPreloading";
+import { BaseLayout } from "./features/layouts/base-layout/BaseLayout";
 import { RootProviders } from "./features/root-providers/RootProviders";
 import {
   UserPreferences,
@@ -159,7 +160,9 @@ export default function App() {
   return (
     <Document>
       <UserPreferencesProvider userPreferencesFromCookie={userPreferences}>
-        <Outlet />
+        <BaseLayout>
+          <Outlet />
+        </BaseLayout>
       </UserPreferencesProvider>
     </Document>
   );

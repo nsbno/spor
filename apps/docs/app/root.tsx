@@ -25,7 +25,7 @@ import {
   UserPreferences,
   UserPreferencesProvider,
 } from "./features/user-preferences/UserPreferencesContext";
-import { getMenus, MenuItem } from "./utils/menu.server";
+import { getMenus, Menu } from "./utils/menu.server";
 import { getUserPreferencesSession } from "./utils/userPreferences.server";
 export const meta: MetaFunction = () => {
   return { title: "Spor - Vy Design System" };
@@ -43,7 +43,7 @@ export const links: LinksFunction = () => {
 
 type LoaderData = {
   userPreferences?: UserPreferences;
-  topMenu: MenuItem[];
+  menus: Menu[];
 };
 export const loader: LoaderFunction = async ({ request }) => {
   const [session, menus] = await Promise.all([

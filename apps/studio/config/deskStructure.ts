@@ -1,4 +1,5 @@
 import S from "@sanity/desk-tool/structure-builder";
+import { MdSettings } from "react-icons/md";
 import Iframe from "sanity-plugin-iframe-pane";
 import { resolveProductionUrl } from "./resolveProductionUrl";
 
@@ -21,6 +22,15 @@ export default () =>
   S.list()
     .title("Content")
     .items([
+      S.listItem()
+        .title("Settings")
+        .icon(MdSettings)
+        .child(
+          S.document()
+            .schemaType("siteSettings")
+            .documentId("siteSettings")
+            .title("")
+        ),
       S.documentTypeListItem("article").title("Articles"),
       S.documentTypeListItem("category").title("Categories"),
       S.documentTypeListItem("component").title("Components"),

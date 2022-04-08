@@ -1,6 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import { Badge, Box, Heading, HStack } from "@vygruppen/spor-react";
-import type { LoaderFunction } from "remix";
+import type { LoaderFunction, MetaFunction } from "remix";
 import invariant from "tiny-invariant";
 import { getClient } from "~/utils/sanity/client";
 import {
@@ -59,6 +59,13 @@ export const loader: LoaderFunction = async ({
     isPreview,
     query: isPreview ? query : null,
     queryParams: isPreview ? queryParams : null,
+  };
+};
+
+export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
+  const [article] = data.initialData;
+  return {
+    title: `${article.title} – ${article.category?.title ?? "…"} – Spor`,
   };
 };
 

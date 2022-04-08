@@ -1,10 +1,7 @@
-import { Menu } from "./menu.server";
+import { LoaderData as RootLoaderData } from "~/root";
 import { useMatchesData } from "./useMatchesData";
 
-type RootData = {
-  menus: Menu[];
-};
 export const useMenu = (slug: "top-menu" | "side-menu") => {
-  const { menus } = useMatchesData<RootData>("root");
-  return menus.find((menu) => menu.slug === slug);
+  const { initialSanityData } = useMatchesData<RootLoaderData>("root");
+  return initialSanityData.menus.find((menu) => menu.slug === slug);
 };

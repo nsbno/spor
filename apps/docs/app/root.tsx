@@ -26,10 +26,33 @@ import {
   UserPreferences,
   UserPreferencesProvider,
 } from "./features/user-preferences/UserPreferencesContext";
-import { getMenus, Menu } from "./utils/menu.server";
+import {
+  getInitialSanityData,
+  InitialSanityData,
+} from "./utils/initialSanityData.server";
+import { urlBuilder } from "./utils/sanity/utils";
 import { getUserPreferencesSession } from "./utils/userPreferences.server";
-export const meta: MetaFunction = () => {
-  return { title: "Spor - Vy Design System" };
+
+export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
+  const { title, description, keywords, socialImage } =
+    data.initialSanityData.siteSettings;
+
+  const imageMetaTags = socialImage
+    ? {
+        "og:image": urlBuilder.image(socialImage).width(1200).url(),
+        "og:image:width": "1200",
+        "og:image:height": "600",
+      }
+    : {};
+  return {
+    title,
+    description,
+    keywords: keywords.join(", "),
+    "og:title": title,
+    "og:description": description,
+    ...imageMetaTags,
+    "twitter:card": "summary",
+  };
 };
 
 export const links: LinksFunction = () => {
@@ -42,19 +65,21 @@ export const links: LinksFunction = () => {
   ];
 };
 
-type LoaderData = {
+export type LoaderData = {
   userPreferences?: UserPreferences;
-  menus: Menu[];
+  initialSanityData: InitialSanityData;
 };
 export const loader: LoaderFunction = async ({ request }) => {
-  const [session, menus] = await Promise.all([
+  const [session, initialSanityData] = await Promise.all([
     getUserPreferencesSession(request),
-    getMenus(),
+    getInitialSanityData(),
   ]);
+
+  console.log(initialSanityData);
 
   return {
     userPreferences: session.getUserPreferences(),
-    menus,
+    initialSanityData,
   };
 };
 

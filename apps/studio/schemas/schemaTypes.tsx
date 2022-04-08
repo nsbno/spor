@@ -48,8 +48,8 @@ export type StringField<Name extends string = string> = CommonFieldProps & {
   type: "string";
   options?:
     | {
-        list: { title: string; value: string }[] | string[];
-        layout?: string;
+        list?: { title: string; value: string }[] | string[];
+        layout?: "radio" | "dropdown";
       }
     | never;
 };
@@ -246,6 +246,7 @@ export type Document<Schema extends Record<string, any>> = {
   preview?: Preview;
   fieldsets?: Fieldset[];
   initialValue?: { [key: string]: any };
+  __experimental_actions: ("create" | "update" | "delete" | "publish")[];
   orderings?: {
     name: string;
     title: string;

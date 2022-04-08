@@ -75,8 +75,6 @@ export const loader: LoaderFunction = async ({ request }) => {
     getInitialSanityData(),
   ]);
 
-  console.log(initialSanityData);
-
   return {
     userPreferences: session.getUserPreferences(),
     initialSanityData,

@@ -2,23 +2,31 @@ import { Box } from "@vygruppen/spor-react";
 import { matchSorter } from "match-sorter";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useMenu } from "~/utils/useMenu";
 import { ContentMenu } from "./ContentMenu";
 import { GlobalSearchInput } from "./GlobalSearchInput";
-import { searchableMenuStructure } from "./menuStructure";
 import { SearchResults } from "./SearchResults";
 
 export const SearchableContentMenu = () => {
+  const menu = useMenu("side-menu");
   const [query, setQuery] = React.useState("");
   const isSearchActive = query.length > 0;
   const navigate = useNavigate();
   const location = useLocation();
   const focusableRef = React.useRef<HTMLButtonElement>(null);
+  const searchableMenuStructure = React.useMemo(
+    () =>
+      menu?.menuItems
+        .filter((menuItem) => menuItem._type !== "divider" && menuItem.subItems)
+        .flatMap((menuItem) => menuItem.subItems) ?? [],
+    [menu]
+  );
 
   const hits = React.useMemo(
     () =>
       isSearchActive
         ? matchSorter(searchableMenuStructure, query, {
-            keys: ["title", "category", "keywords"],
+            keys: ["title", "tags"],
           })
         : [],
     [query, isSearchActive]
@@ -34,7 +42,7 @@ export const SearchableContentMenu = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (query && hits.length === 1) {
-      navigate(hits[0].href);
+      navigate(hits[0].url);
       setQuery("");
     }
   };

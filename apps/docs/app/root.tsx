@@ -20,14 +20,13 @@ import {
 } from "./features/chakra-setup/styleContext";
 import { RootErrorBoundary } from "./features/error-boundary/RootErrorBoundary";
 import { FontPreloading } from "./features/font-loading/FontPreloading";
-import { BaseLayout } from "./features/layouts/base-layout/BaseLayout";
 import { RootProviders } from "./features/root-providers/RootProviders";
 import {
   UserPreferences,
   UserPreferencesProvider,
 } from "./features/user-preferences/UserPreferencesContext";
-import { getUserPreferenceSession as getUserPreferencesSession } from "./utils/userPreferences.server";
-
+import { getMenus, MenuItem } from "./utils/menu.server";
+import { getUserPreferencesSession } from "./utils/userPreferences.server";
 export const meta: MetaFunction = () => {
   return { title: "Spor - Vy Design System" };
 };
@@ -44,13 +43,18 @@ export const links: LinksFunction = () => {
 
 type LoaderData = {
   userPreferences?: UserPreferences;
+  topMenu: MenuItem[];
 };
 export const loader: LoaderFunction = async ({ request }) => {
-  const session = await getUserPreferencesSession(request);
-  const data: LoaderData = {
+  const [session, menus] = await Promise.all([
+    getUserPreferencesSession(request),
+    getMenus(),
+  ]);
+
+  return {
     userPreferences: session.getUserPreferences(),
+    menus,
   };
-  return data;
 };
 
 /**
@@ -155,9 +159,7 @@ export default function App() {
   return (
     <Document>
       <UserPreferencesProvider userPreferencesFromCookie={userPreferences}>
-        <BaseLayout>
-          <Outlet />
-        </BaseLayout>
+        <Outlet />
       </UserPreferencesProvider>
     </Document>
   );

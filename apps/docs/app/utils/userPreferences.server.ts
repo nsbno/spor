@@ -26,7 +26,7 @@ const userPreferencesStorage = createCookieSessionStorage({
 /**
  * Creates a session object that lets you access and modify the user preferences from the user preference cookie.
  */
-export async function getUserPreferenceSession(request: Request) {
+export async function getUserPreferencesSession(request: Request) {
   const session = await userPreferencesStorage.getSession(
     request.headers.get("Cookie")
   );

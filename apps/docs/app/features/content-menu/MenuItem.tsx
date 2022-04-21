@@ -82,7 +82,7 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
 
 const getLinkProps = ({ url }: { url: string }): any => {
   if (url.match(/^https?:\/\//)) {
-    return { as: "a", url, target: "_blank", rel: "noopener noreferrer" };
+    return { as: "a", href: url, target: "_blank", rel: "noopener noreferrer" };
   }
   return { as: Link, to: url };
 };

@@ -1,5 +1,12 @@
 # @vygruppen/spor-input-react
 
+## 0.4.1
+
+### Patch Changes
+
+- Updated dependencies [de67c09]
+  - @vygruppen/spor-icon-react@0.4.0
+
 ## 0.4.0
 
 ### Minor Changes

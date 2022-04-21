@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 0.4.0
+
+### Minor Changes
+
+- de67c09: Add new icons to icon library
+
 ## 0.3.0
 
 ### Minor Changes

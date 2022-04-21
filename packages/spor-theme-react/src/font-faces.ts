@@ -8,6 +8,7 @@ export const fontFaces = `
     url("https://www.vy.no/styles/font/VySans-Light.woff") format("woff");
   font-style: normal;
   font-weight: 300;
+  font-display: swap
 }
 @font-face {
   font-family: ${tokens.asset.font["vy-sans"]["light-italic"].name.value};
@@ -16,6 +17,7 @@ export const fontFaces = `
     url("https://www.vy.no/styles/font/VySans-LightItalic.woff") format("woff");
   font-style: italic;
   font-weight: 300;
+  font-display: swap
 }
 @font-face {
   font-family: ${tokens.asset.font["vy-sans"]["medium"].name.value};
@@ -23,6 +25,7 @@ export const fontFaces = `
     url("https://www.vy.no/styles/font/VySans-Regular.woff") format("woff");
   font-style: normal;
   font-weight: 400;
+  font-display: swap
 }
 @font-face {
   font-family: ${tokens.asset.font["vy-sans"]["medium-italic"].name.value}
@@ -32,6 +35,7 @@ export const fontFaces = `
       format("woff");
   font-style: italic;
   font-weight: 400;
+  font-display: swap
 }
 @font-face {
   font-family: ${tokens.asset.font["vy-sans"]["bold"].name.value};
@@ -39,6 +43,7 @@ export const fontFaces = `
     url("https://www.vy.no/styles/font/VySans-Bold.woff") format("woff");
   font-style: normal;
   font-weight: 700;
+  font-display: swap
 }
 @font-face {
   font-family: ${tokens.asset.font["vy-sans"]["bold-italic"].name.value};
@@ -47,6 +52,7 @@ export const fontFaces = `
     url("https://www.vy.no/styles/font/VySans-BoldItalic.woff") format("woff");
   font-style: italic;
   font-weight: 700;
+  font-display: swap
 }
 @font-face {
   font-family: ${tokens.asset.font["vy-display"].name.value};
@@ -55,5 +61,6 @@ export const fontFaces = `
     url("https://www.vy.no/styles/font/VyDisplay-Medium.woff") format("woff");
   font-style: normal;
   font-weight: 400;
+  font-display: swap
 }
 `;

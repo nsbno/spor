@@ -156,43 +156,53 @@ const components: Partial<PortableTextReactComponents> = {
         </Flex>
       );
     },
-    imageWithCaption: ({ value }) => (
-      <Box>
-        {value.image && (
-          <Box>
-            <Image
-              src={urlBuilder
-                .image(value.image)
-                .width(924)
-                .fit("max")
-                .auto("format")
-                .url()}
-              alt={value.alt || ""}
-              mx="auto"
-              mt={2}
-            />
-          </Box>
-        )}
-        {value.caption && (
-          <Stack textStyle="xs" color="alias.dimGrey" mt={-1}>
-            <PortableText value={value.caption} />
-          </Stack>
-        )}
-      </Box>
-    ),
-    image: ({ value }) => (
-      <Image
-        src={urlBuilder
-          .image(value.image)
-          .width(924)
-          .fit("max")
-          .auto("format")
-          .url()}
-        alt={value.alt}
-        mx="auto"
-        mt={2}
-      />
-    ),
+    imageWithCaption: ({ value }) => {
+      const [, , dimensions] = value.image.asset._ref.split("-");
+      const aspectRatio = dimensions.split("x").join(" / ");
+      return (
+        <Box>
+          {value.image && (
+            <Box>
+              <Image
+                src={urlBuilder
+                  .image(value.image)
+                  .width(924)
+                  .fit("max")
+                  .auto("format")
+                  .url()}
+                alt={value.alt || ""}
+                mx="auto"
+                mt={2}
+                __css={{ aspectRatio }}
+              />
+            </Box>
+          )}
+          {value.caption && (
+            <Stack textStyle="xs" color="alias.dimGrey" mt={-1}>
+              <PortableText value={value.caption} />
+            </Stack>
+          )}
+        </Box>
+      );
+    },
+    image: ({ value }) => {
+      const [, , dimensions] = value.image.asset._ref.split("-");
+      const aspectRatio = dimensions.split("x").join(" / ");
+      return (
+        <Image
+          src={urlBuilder
+            .image(value.image)
+            .width(924)
+            .fit("max")
+            .auto("format")
+            .url()}
+          alt={value.alt}
+          mx="auto"
+          mt={2}
+          __css={{ aspectRatio }}
+        />
+      );
+    },
     codeExample: ({ value }) =>
       value.layout === "code-only" ? (
         <CodeBlock mt={6} language="jsx" code={value.reactCode.code} />

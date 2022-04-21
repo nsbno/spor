@@ -26,6 +26,7 @@ module.exports = {
         "packages/spor-stepper-react/",
         "packages/spor-popover-react/",
         "packages/spor-tab-react/",
+        "packages/spor-provider-react/",
       ],
     },
   },

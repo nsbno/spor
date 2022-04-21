@@ -1,0 +1,3 @@
+Contact: mailto:digitalekanaler-plattform@vy.no
+Expires: Fri, 31 Dec 2021 23:59 +0200
+Preferred-Languages: en, no

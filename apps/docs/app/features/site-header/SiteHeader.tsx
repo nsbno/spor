@@ -35,6 +35,7 @@ export const SiteHeader = () => {
           colorScheme="dark"
           height={[5, 6, 8]}
           width={["auto", "100%"]}
+          aria-label="Vy"
         />
       </Box>
       <DesktopNavigation />

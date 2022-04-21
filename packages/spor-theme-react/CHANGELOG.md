@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.4.5
+
+### Patch Changes
+
+- 48cf74b: Improve font loading by using font-display: swap
+
 ## 0.4.4
 
 ### Patch Changes

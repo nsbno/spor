@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 0.12.7
+
+### Patch Changes
+
+- 6df4714: Refactor SporProvider into its own package, so it can be used without the spor-react package
+- Updated dependencies [6df4714]
+  - @vygruppen/spor-provider-react@0.0.2
+
 ## 0.12.6
 
 ### Patch Changes

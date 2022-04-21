@@ -42,6 +42,7 @@ export function HeroSection() {
               src="/illustrations/front-page-illustration.svg"
               alt="En person som sitter foran et skrivebord, med en dataskjerm."
               width="100%"
+              __css={{ aspectRatio: "4 / 3" }}
             />
           </Flex>
         </Flex>

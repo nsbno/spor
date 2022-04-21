@@ -64,13 +64,6 @@ const links: LinkItem[] = [
     icon: IconsOutline30Icon,
     iconColor: "alias.primrose",
   },
-  {
-    to: "/ressurser/api",
-    title: "API",
-    description: "Utforsk APIene til Vy",
-    icon: SettingsX1Outline30Icon,
-    iconColor: "alias.silver",
-  },
 ];
 
 export function ActionLinks() {

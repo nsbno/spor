@@ -31,6 +31,7 @@
     "@vygruppen/spor-table-react": "*",
     "@vygruppen/spor-theme-react": "*",
     "@vygruppen/spor-popover-react": "*",
+    "@vygruppen/spor-provider-react": "*",
     "@vygruppen/spor-tab-react": "*",
     "@vygruppen/spor-typography-react": "*",
     "@vygruppen/spor-stepper-react": "*"

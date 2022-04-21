@@ -8,7 +8,7 @@ import {
 import React from "react";
 
 type SporProviderProps = ChakraProviderProps & {
-  language: Language;
+  language?: Language;
 };
 
 /**
@@ -20,13 +20,13 @@ type SporProviderProps = ChakraProviderProps & {
  *
  * You can pass your own theme to this component. If you don't (and most of the time you won't), the default Spor theme will be used.
  *
- * You do, however, need to specify the current language of your application. This is specified to provide any built-in microcopy and labels for any Spor components.
+ * You should specify the current language of your application. This is specified to provide any built-in microcopy and labels for any Spor components. The default is Norwegian (bokmål).
  *
  * ```tsx
  * * import { SporProvider, Language } from "@vygruppen/spor-react";
  * const root = React.createRoot(document.getElementById("root"))
  * root.render(
- *  <SporProvider language={Language.NorwegianBokmal}>
+ *  <SporProvider language={Language.English}>
  *    <App />
  *  </SporProvider>
  * );
@@ -41,7 +41,7 @@ type SporProviderProps = ChakraProviderProps & {
  * });
  * const root = React.createRoot(document.getElementById("root"))
  * root.render(
- *  <SporProvider language={Language.English} theme={theme}>
+ *  <SporProvider language={Language.Swedish} theme={theme}>
  *    <App />
  *  </SporProvider>
  * );
@@ -49,7 +49,7 @@ type SporProviderProps = ChakraProviderProps & {
  */
 export const SporProvider = ({
   theme = defaultSporTheme,
-  language,
+  language = Language.NorwegianBokmal,
   children,
   ...props
 }: SporProviderProps) => {

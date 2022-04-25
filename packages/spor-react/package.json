@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsup src/index.tsx --dts",
-    "dev": "tsup src/index.tsx --watch"
+    "dev": "tsup src/index.tsx --watch --dts"
   },
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-react",
   "repository": {

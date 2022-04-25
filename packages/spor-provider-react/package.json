@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "tsup src/index.tsx --dts",
-    "dev": "tsup src/index.tsx --watch"
+    "dev": "tsup src/index.tsx --watch --dts"
   },
   "dependencies": {
     "@vygruppen/spor-theme-react": "^0.4.5",

@@ -9,9 +9,9 @@
   "scripts": {
     "add-package": "plop --plopfile internal/plopfile.mjs",
     "prebuild": "rimraf packages/*/dist",
-    "build": "turbo run build --scope=\"@vygruppen/*\"",
-    "test": "turbo run test --parallel --scope=\"@vygruppen/*\"",
-    "dev": "turbo run dev --no-deps --parallel --scope=\"@vygruppen/*\"",
+    "build": "turbo run build",
+    "test": "turbo run test --parallel",
+    "dev": "turbo run dev --no-cache --parallel",
     "postinstall": "cd apps/docs && npm run postinstall && cd ../..",
     "prerelease": "npm run build",
     "release": "changeset publish"

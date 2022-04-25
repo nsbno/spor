@@ -37,11 +37,13 @@ export const Expandable = ({
   ...rest
 }: ExpandableProps) => {
   return (
-    <Accordion {...rest}>
-      <ExpandableItem headingLevel={headingLevel} title={title}>
-        {children}
-      </ExpandableItem>
-    </Accordion>
+    <>
+      <Accordion {...rest}>
+        <ExpandableItem headingLevel={headingLevel} title={title}>
+          {children}
+        </ExpandableItem>
+      </Accordion>
+    </>
   );
 };
 

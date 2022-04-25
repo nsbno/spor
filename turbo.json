@@ -4,12 +4,9 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**", "public/build/**"]
     },
     "test": {
-      "outputs": []
-    },
-    "lint": {
       "outputs": []
     },
     "dev": {

@@ -10,7 +10,7 @@ FROM base as deps
 RUN mkdir /app
 WORKDIR /app
 
-ADD package.json package-lock.json ./
+ADD package.json ./
 # Install both devDependencies and dependencies 
 # (even when NODE_ENV=production)
 RUN npm install --production=false
@@ -23,7 +23,7 @@ WORKDIR /app
 
 # Copy all node_modules to the production image
 COPY --from=deps /app/node_modules /app/node_modules
-ADD package.json package-lock.json ./
+ADD package.json ./
 # Delete all dev dependencies from the node_modules
 RUN npm prune --production
 

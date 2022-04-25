@@ -14,7 +14,7 @@ import {
   Text,
   TokensOutline30Icon,
 } from "@vygruppen/spor-react";
-import { Link } from "remix";
+import { Link } from "@remix-run/react";
 
 type LinkItem = {
   to: string;

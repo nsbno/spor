@@ -1,19 +1,19 @@
 import { withEmotionCache } from "@emotion/react";
 import { Box, Center, Heading, Text } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect } from "react";
+import { LinksFunction, LoaderFunction, MetaFunction } from "@remix-run/node";
+
 import {
   Links,
-  LinksFunction,
   LiveReload,
-  LoaderFunction,
   Meta,
-  MetaFunction,
   Outlet,
   Scripts,
   ScrollRestoration,
   useCatch,
   useLoaderData,
-} from "remix";
+} from "@remix-run/react";
+
 import {
   ClientStyleContext,
   ServerStyleContext,

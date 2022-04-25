@@ -25,7 +25,7 @@ import {
   Tr,
 } from "@vygruppen/spor-react";
 import React from "react";
-import { Link } from "remix";
+import { Link } from "@remix-run/react";
 import { urlBuilder } from "~/utils/sanity/utils";
 import { CodeBlock } from "../code-block/CodeBlock";
 import { InteractiveCode } from "../interactive-code/InteractiveCode";

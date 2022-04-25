@@ -1,0 +1,56 @@
+diff --git a/node_modules/@remix-run/dev/compiler.js b/node_modules/@remix-run/dev/compiler.js
+index 0de2694..7fdfef0 100644
+--- a/node_modules/@remix-run/dev/compiler.js
++++ b/node_modules/@remix-run/dev/compiler.js
+@@ -211,6 +211,10 @@ async function watch(config$1, {
+     toWatch.push(config$1.serverEntryPoint);
+   }
+ 
++  if (config$1.watchGlobs) {
++    toWatch = toWatch.concat(config$1.watchGlobs);
++  }
++
+   let watcher = chokidar__default["default"].watch(toWatch, {
+     persistent: true,
+     ignoreInitial: true,
+diff --git a/node_modules/@remix-run/dev/config.d.ts b/node_modules/@remix-run/dev/config.d.ts
+index df065bd..42975b6 100644
+--- a/node_modules/@remix-run/dev/config.d.ts
++++ b/node_modules/@remix-run/dev/config.d.ts
+@@ -1,4 +1,4 @@
+-import type { RouteManifest, DefineRoutesFunction } from "./config/routes";
++import type { DefineRoutesFunction, RouteManifest } from "./config/routes";
+ import { ServerMode } from "./config/serverModes";
+ export interface RemixMdxConfig {
+     rehypePlugins?: any[];
+@@ -108,6 +108,10 @@ export interface AppConfig {
+      * in a CJS build.
+      */
+     serverDependenciesToBundle?: Array<string | RegExp>;
++    /**
++     * An array of paths to watch for changes.
++     */
++    watchGlobs?: string[];
+ }
+ /**
+  * Fully resolved configuration object we use throughout Remix.
+diff --git a/node_modules/@remix-run/dev/config.js b/node_modules/@remix-run/dev/config.js
+index e8100cb..b69d078 100644
+--- a/node_modules/@remix-run/dev/config.js
++++ b/node_modules/@remix-run/dev/config.js
+@@ -178,6 +178,7 @@ async function readConfig(remixRoot, serverMode = serverModes.ServerMode.Product
+ 
+   let serverBuildTargetEntryModule = `export * from ${JSON.stringify(virtualModules.serverBuildVirtualModule.id)};`;
+   let serverDependenciesToBundle = appConfig.serverDependenciesToBundle || [];
++  let watchGlobs = appConfig.watchGlobs || [];
+   return {
+     appDirectory,
+     cacheDirectory,
+@@ -197,6 +198,7 @@ async function readConfig(remixRoot, serverMode = serverModes.ServerMode.Product
+     serverBuildTargetEntryModule,
+     serverEntryPoint: customServerEntryPoint,
+     serverDependenciesToBundle,
++    watchGlobs,
+     mdx
+   };
+ }

@@ -1,6 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import { Badge, Box, Heading, HStack } from "@vygruppen/spor-react";
-import type { LoaderFunction, MetaFunction } from "remix";
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import invariant from "tiny-invariant";
 import { getClient } from "~/utils/sanity/client";
 import {

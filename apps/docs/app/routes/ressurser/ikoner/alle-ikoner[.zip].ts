@@ -1,4 +1,4 @@
-import { LoaderFunction } from "remix";
+import { LoaderFunction } from "@remix-run/node";
 import { getIconsZipFile } from "~/utils/icons.server";
 
 export const loader: LoaderFunction = async () => {

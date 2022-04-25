@@ -1,7 +1,7 @@
 import { forwardRef } from "@chakra-ui/react";
 import { Flex, FlexProps } from "@vygruppen/spor-react";
 import React, { useRef } from "react";
-import { Link } from "remix";
+import { Link } from "@remix-run/react";
 
 type MenuItemProps = FlexProps & {
   url: string;

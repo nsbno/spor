@@ -1,4 +1,5 @@
-import { LoaderFunction, Outlet } from "remix";
+import { LoaderFunction } from "@remix-run/node";
+import { Outlet } from "@remix-run/react";
 import { DocsLayout } from "~/features/layouts/docs-layout/DocsLayout";
 import { getClient } from "~/utils/sanity/client";
 

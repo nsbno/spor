@@ -12,7 +12,7 @@ import {
   VyLogo,
 } from "@vygruppen/spor-react";
 import { useEffect } from "react";
-import { Link, useLocation } from "remix";
+import { Link, useLocation } from "@remix-run/react";
 import { MenuItem } from "~/utils/initialSanityData.server";
 import { useMenu } from "~/utils/useMenu";
 import { SearchableContentMenu } from "../content-menu/SearchableContentMenu";

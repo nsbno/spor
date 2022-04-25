@@ -1,4 +1,4 @@
-import { LoaderFunction, redirect } from "remix";
+import { LoaderFunction, redirect } from "@remix-run/node";
 
 // Redirect users to the Studio app.
 export const loader: LoaderFunction = async () => {

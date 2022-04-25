@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { useFetcher } from "remix";
+import { useFetcher } from "@remix-run/react";
 
 export type UserPreferences = {
   /**

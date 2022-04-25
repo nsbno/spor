@@ -1,4 +1,4 @@
-import { ActionFunction, json, LoaderFunction, redirect } from "remix";
+import { ActionFunction, json, LoaderFunction, redirect } from "@remix-run/node";
 import { isValidUserPreferences } from "~/features/user-preferences/UserPreferencesContext";
 import { getUserPreferencesSession } from "~/utils/userPreferences.server";
 

@@ -1,7 +1,7 @@
 import { CacheProvider } from "@emotion/react";
 import { useState } from "react";
 import { hydrate } from "react-dom";
-import { RemixBrowser } from "remix";
+import { RemixBrowser } from "@remix-run/react";
 import { createEmotionCache } from "./features/chakra-setup/createEmotionCache";
 import { ClientStyleContext } from "./features/chakra-setup/styleContext";
 

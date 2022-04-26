@@ -1,5 +1,11 @@
 # @vygruppen/spor-typography-react
 
+## 0.4.0
+
+### Minor Changes
+
+- 004548d: Add icon prop to the Badge component
+
 ## 0.3.4
 
 ### Patch Changes

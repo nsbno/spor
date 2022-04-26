@@ -1,5 +1,11 @@
 # @vygruppen/spor-input-react
 
+## 0.4.2
+
+### Patch Changes
+
+- a8376b2: Fix checkbox missing hover state on active state
+
 ## 0.4.1
 
 ### Patch Changes

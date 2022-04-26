@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.4.6
+
+### Patch Changes
+
+- a8376b2: Fix checkbox missing hover state on active state
+
 ## 0.4.5
 
 ### Patch Changes

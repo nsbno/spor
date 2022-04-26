@@ -28,6 +28,11 @@ export type BadgeProps = Omit<ChakraBadgeProps, "variant" | "colorScheme"> & {
    * Can be specified as `md` to render a larger badge.
    */
   size?: "sm" | "md";
+  /** Optional badge icon. Will be rendered to the left of the text.
+   *
+   * Make sure you pass in the 18px version of the icon.
+   */
+  icon?: React.ReactElement;
 };
 /**
  * Shows some additional information about the component it's used within.
@@ -45,14 +50,19 @@ export type BadgeProps = Omit<ChakraBadgeProps, "variant" | "colorScheme"> & {
  * <Badge colorScheme="red" size="md" variant="outline">Special</Badge>
  * ```
  *
- * If you want an icon, just pass it as a child:
+ * If you want an icon, pass it in through the `icon` prop:
  *
  * ```tsx
- * <Badge colorScheme="blue">
- *   <InformationOutline24Icon /> Information
+ * <Badge colorScheme="blue" icon={<InformationOutline18Icon />}>
+ *   Information
  * </Badge>
- * ```
+ * ```
  */
-export const Badge = forwardRef<BadgeProps, As<any>>((props, ref) => (
-  <ChakraBadge {...props} ref={ref} />
-));
+export const Badge = forwardRef<BadgeProps, As<any>>(
+  ({ icon, children, ...props }, ref) => (
+    <ChakraBadge {...props} ref={ref}>
+      {icon && React.cloneElement(icon, { mr: 1 })}
+      {children}
+    </ChakraBadge>
+  )
+);

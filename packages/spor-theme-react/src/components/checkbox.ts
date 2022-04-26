@@ -16,8 +16,8 @@ const baseContainer: SystemStyleObject = {
       borderColor: "alias.lightRed",
     },
     "input:enabled:checked:not([aria-invalid]) + .chakra-checkbox__control": {
-      backgroundColor: "alias.primaryGreen",
-      borderColor: "alias.primaryGreen",
+      backgroundColor: "alias.darkTeal",
+      borderColor: "alias.darkTeal",
     },
     "input:enabled:checked[aria-invalid] + .chakra-checkbox__control": {
       backgroundColor: "alias.lightRed",

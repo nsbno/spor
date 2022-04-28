@@ -244,9 +244,13 @@ const components: Partial<PortableTextReactComponents> = {
               <Tbody>
                 {value.props.map((prop: any) => (
                   <Tr key={prop.name}>
-                    <Td>{prop.name}</Td>
                     <Td>
-                      {prop.type === "other" ? prop.typeOther : prop.type}
+                      <Code>{prop.name}</Code>
+                    </Td>
+                    <Td>
+                      <Code>
+                        {prop.type === "other" ? prop.typeOther : prop.type}
+                      </Code>
                     </Td>
                     <Td>
                       {prop.isRequired && (

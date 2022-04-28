@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import {
   Box,
   BoxProps,
@@ -9,12 +10,11 @@ import {
   Heading,
   HomeOutline30Icon,
   IconsOutline30Icon,
-  SettingsX1Outline30Icon,
   SimpleGrid,
   Text,
   TokensOutline30Icon,
+  TrainOutline30Icon,
 } from "@vygruppen/spor-react";
-import { Link } from "@remix-run/react";
 
 type LinkItem = {
   to: string;
@@ -63,6 +63,13 @@ const links: LinkItem[] = [
     description: "Utfork Spor sitt ikonbibliotek",
     icon: IconsOutline30Icon,
     iconColor: "alias.primrose",
+  },
+  {
+    to: "/lekegrind",
+    title: "Lekegrind",
+    description: "Test ut Spor rett i nettleseren",
+    icon: TrainOutline30Icon,
+    iconColor: "alias.silver",
   },
 ];
 

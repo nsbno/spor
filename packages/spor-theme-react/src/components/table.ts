@@ -8,9 +8,8 @@ import { mode } from "@chakra-ui/theme-tools";
 
 const baseStyle: PartsStyleObject<typeof parts> = {
   table: {
-    fontVariantNumeric: "lining-nums tabular-nums",
     borderCollapse: "collapse",
-    width: "full",
+    width: "100%",
   },
   th: {
     fontWeight: "bold",

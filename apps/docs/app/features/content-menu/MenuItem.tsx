@@ -40,15 +40,6 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
         key={url}
         {...getLinkProps({ url })}
         px={2}
-        _disabled={{
-          pointerEvents: "none",
-          textDecoration: "line-through",
-          color: "alias.osloGrey",
-          "&:hover, &:focus, &:active": {
-            backgroundColor: "transparent",
-            outlineColor: "transparent",
-          },
-        }}
         fontSize="mobile.xs"
         borderRadius="sm"
         alignItems="center"

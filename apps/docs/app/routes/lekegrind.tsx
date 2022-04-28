@@ -1,6 +1,7 @@
 import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
 import { useFetcher, useLoaderData } from "@remix-run/react";
 import { Stack } from "@vygruppen/spor-react";
+import { useState } from "react";
 import { LivePreview } from "react-live";
 import { LiveEditor } from "~/features/interactive-code/LiveEditor";
 import { LiveError } from "~/features/interactive-code/LiveError";
@@ -52,18 +53,34 @@ type LoaderData = {
   playgroundData: string;
 };
 
+const defaultCode = `<Stack textAlign="center">
+  <Heading>Velkommen til lekegrinden</Heading>
+  <Text>Her kan du teste ut hele Spor live i nettleseren.</Text>
+  <Text>Alle komponentene er tilgjengelige, så du trenger ikke importere noe.</Text>
+</Stack>`;
+
+const saveToCookie = debounce((newCode: string, fetcher: any) => {
+  if (fetcher.state === "submitting") {
+    return;
+  }
+  const formData = new FormData();
+  formData.set("playgroundData", newCode);
+  fetcher.submit(formData, { method: "post", action: "/lekegrind" });
+}, 2000);
+
 export default function PlaygroundPage() {
-  const { playgroundData } = useLoaderData<LoaderData>();
+  const { playgroundData: initialPlaygroundDataFromCookie } =
+    useLoaderData<LoaderData>();
+  const [playgroundData, setPlaygroundData] = useState(
+    initialPlaygroundDataFromCookie || defaultCode
+  );
   const fetcher = useFetcher();
-  const handleChange = debounce((newCode: string) => {
-    const formData = new FormData();
-    formData.set("playgroundData", newCode);
-    fetcher.submit(formData, { method: "post", action: "/lekegrind" });
-  }, 1000);
+  const handleChange = (newCode: string) => {
+    setPlaygroundData(newCode);
+    saveToCookie(newCode, fetcher);
+  };
   return (
-    <LiveProvider
-      code={playgroundData || `<Heading>Velkommen til lekegrinden</Heading>`}
-    >
+    <LiveProvider code={playgroundData}>
       <Stack spacing={2}>
         <LiveEditor
           borderRadius="none"

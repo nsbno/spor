@@ -13,8 +13,9 @@ const playgroundDataSessionStorage = createCookieSessionStorage({
     secure: process.env.NODE_ENV === "production",
     secrets: [sessionSecret],
     sameSite: "lax",
-    path: "/",
+    path: "/lekegrind",
     httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24, // 1 day
   },
 });
 

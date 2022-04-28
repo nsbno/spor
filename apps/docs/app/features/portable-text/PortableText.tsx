@@ -4,6 +4,7 @@ import {
   PortableTextComponentsProvider as SanityPortableTextComponentsProvider,
   PortableTextReactComponents,
 } from "@portabletext/react";
+import { Link } from "@remix-run/react";
 import {
   Box,
   Button,
@@ -25,7 +26,6 @@ import {
   Tr,
 } from "@vygruppen/spor-react";
 import React from "react";
-import { Link } from "@remix-run/react";
 import { urlBuilder } from "~/utils/sanity/utils";
 import { CodeBlock } from "../code-block/CodeBlock";
 import { InteractiveCode } from "../interactive-code/InteractiveCode";
@@ -207,7 +207,11 @@ const components: Partial<PortableTextReactComponents> = {
       value.layout === "code-only" ? (
         <CodeBlock mt={6} language="jsx" code={value.reactCode.code} />
       ) : (
-        <InteractiveCode layout={value.layout} mt={3}>
+        <InteractiveCode
+          layout={value.layout}
+          mt={3}
+          maxWidth={`calc(100vw - var(--spor-space-6))`}
+        >
           {value.reactCode.code}
         </InteractiveCode>
       ),
@@ -227,7 +231,7 @@ const components: Partial<PortableTextReactComponents> = {
             <Table
               variant="outline"
               mt={3}
-              maxWidth="calc(100vw - var(--spor-space-1))"
+              maxWidth={`calc(100vw - var(--spor-space-6))`}
             >
               <Thead>
                 <Tr>
@@ -240,13 +244,9 @@ const components: Partial<PortableTextReactComponents> = {
               <Tbody>
                 {value.props.map((prop: any) => (
                   <Tr key={prop.name}>
+                    <Td>{prop.name}</Td>
                     <Td>
-                      <Code>{prop.name}</Code>
-                    </Td>
-                    <Td>
-                      <Code>
-                        {prop.type === "other" ? prop.typeOther : prop.type}
-                      </Code>
+                      {prop.type === "other" ? prop.typeOther : prop.type}
                     </Td>
                     <Td>
                       {prop.isRequired && (

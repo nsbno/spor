@@ -16,7 +16,12 @@ export const CodeBlock = ({
   ...props
 }: CodeBlockProps) => {
   return (
-    <CodeBlockContainer {...props} code={code}>
+    <CodeBlockContainer
+      maxWidth={`calc(100vw - var(--spor-space-6))`}
+      overflowX="auto"
+      {...props}
+      code={code}
+    >
       <Highlight
         {...defaultProps}
         theme={theme}
@@ -65,19 +70,14 @@ export const CodeBlockContainer = ({
       borderColor="alias.osloGrey"
       backgroundColor="alias.darkGrey"
       fontFamily="monospace"
-      fontSize="sm"
+      fontSize={["mobile.sm", "desktop.sm"]}
       p={2}
       position="relative"
-      zIndex="0"
-      maxWidth="calc(100vw - var(--spor-space-4))"
-      __css={{ "pre > div": { whiteSpace: "initial", maxWidth: "100%" } }}
       onKeyUp={handleKeyUp}
       {...props}
     >
-      <Box width="100%" overflowX="hidden">
-        {children}
-      </Box>
       <CopyCodeButton ref={copyButtonRef} code={code} />
+      <Box>{children}</Box>
     </Box>
   );
 };

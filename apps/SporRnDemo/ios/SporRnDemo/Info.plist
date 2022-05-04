@@ -36,7 +36,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -51,5 +51,37 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>RobotoMono-Italic.ttf</string>
+		<string>RobotoMono-Regular.ttf</string>
+		<string>VyDisplay-Medium.otf</string>
+		<string>VyDisplay-Medium.ttf</string>
+		<string>VyDisplay-Medium.woff</string>
+		<string>VyDisplay-Medium.woff2</string>
+		<string>VySans-Bold.otf</string>
+		<string>VySans-Bold.ttf</string>
+		<string>VySans-Bold.woff</string>
+		<string>VySans-Bold.woff2</string>
+		<string>VySans-BoldItalic.otf</string>
+		<string>VySans-BoldItalic.ttf</string>
+		<string>VySans-BoldItalic.woff</string>
+		<string>VySans-BoldItalic.woff2</string>
+		<string>VySans-Light.otf</string>
+		<string>VySans-Light.ttf</string>
+		<string>VySans-Light.woff</string>
+		<string>VySans-Light.woff2</string>
+		<string>VySans-LightItalic.otf</string>
+		<string>VySans-LightItalic.ttf</string>
+		<string>VySans-LightItalic.woff</string>
+		<string>VySans-LightItalic.woff2</string>
+		<string>VySans-Regular.otf</string>
+		<string>VySans-Regular.ttf</string>
+		<string>VySans-Regular.woff</string>
+		<string>VySans-Regular.woff2</string>
+		<string>VySans-RegularItalic.otf</string>
+		<string>VySans-RegularItalic.woff</string>
+		<string>VySans-RegularItalic.woff2</string>
+	</array>
 </dict>
 </plist>

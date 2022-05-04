@@ -14,6 +14,35 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-SporRnDemo-SporRnDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-SporRnDemo-SporRnDemoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		6BFB2C5E241A4F77981D0935 /* RobotoMono-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32D6652EA68F412C8017DBF0 /* RobotoMono-Italic.ttf */; };
+		4520C122246747FBAC8BE7E2 /* RobotoMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BD0CF6EBFA24C55B27A34F1 /* RobotoMono-Regular.ttf */; };
+		5DC3798E2A2D4D00819E5501 /* VyDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52FFE7BF3CED42C8ADA9E738 /* VyDisplay-Medium.otf */; };
+		0480F6AFB6B44A80817E24BA /* VyDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2CBB13007E64C97B8D848D7 /* VyDisplay-Medium.ttf */; };
+		E8849EEF5E26448C8A0DD88A /* VyDisplay-Medium.woff in Resources */ = {isa = PBXBuildFile; fileRef = 786E35C3B57743818D536517 /* VyDisplay-Medium.woff */; };
+		76AB4B842BB24EA6BF6564CE /* VyDisplay-Medium.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = D5353C79740C479598FED06E /* VyDisplay-Medium.woff2 */; };
+		E714E2D81D194F95BFEB8225 /* VySans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4BC44E8A1B9F4CB9BB4F0B7D /* VySans-Bold.otf */; };
+		615FFEBE05A742239AC212F4 /* VySans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988FE6F59B9743C4A7B3E6BC /* VySans-Bold.ttf */; };
+		6D9F64D9447D400A9F8E71EA /* VySans-Bold.woff in Resources */ = {isa = PBXBuildFile; fileRef = 51CD2BB7EB794A6599CD2D2B /* VySans-Bold.woff */; };
+		79C3B17CDF8C46BC82E88F26 /* VySans-Bold.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = FF6B3711F56145B9936DBC65 /* VySans-Bold.woff2 */; };
+		94FFBCC07AA948EF81B2455B /* VySans-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A493A2E4040149EABDD3AAB3 /* VySans-BoldItalic.otf */; };
+		03D8CE906C6842819BDF382A /* VySans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C9F877268134FE1BA612783 /* VySans-BoldItalic.ttf */; };
+		2ECAE802070848A9B0E67922 /* VySans-BoldItalic.woff in Resources */ = {isa = PBXBuildFile; fileRef = F8AACA95782847D6908A5A4E /* VySans-BoldItalic.woff */; };
+		E99D46ED7AEE4CF1A885F27B /* VySans-BoldItalic.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 66DA8A84759146B8851C7BF4 /* VySans-BoldItalic.woff2 */; };
+		F1283174B6464451868E0A0A /* VySans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 61C6F8736D6F4EE7B69770E8 /* VySans-Light.otf */; };
+		345B791A5E084F33B0843410 /* VySans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A878AB9BF2D04ADE908B2599 /* VySans-Light.ttf */; };
+		13E4FA845BA1488BBEFC42B8 /* VySans-Light.woff in Resources */ = {isa = PBXBuildFile; fileRef = 16B233F7A1924FE680B6DB20 /* VySans-Light.woff */; };
+		07517105C3B145DFABB69642 /* VySans-Light.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = D0D94F704D6849B8A1DA4699 /* VySans-Light.woff2 */; };
+		1EEB91A1DC9248C08B90D2D9 /* VySans-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 847846442231427F83800CB1 /* VySans-LightItalic.otf */; };
+		FE9C37030CBB49BFA11480E6 /* VySans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95AC6CD6C2F54F69995109CE /* VySans-LightItalic.ttf */; };
+		6FE478B768D14652BCD0AB50 /* VySans-LightItalic.woff in Resources */ = {isa = PBXBuildFile; fileRef = 62BF2390C79A41B2B9155B26 /* VySans-LightItalic.woff */; };
+		B87E3BC06C5A40AD9F22B756 /* VySans-LightItalic.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 05FB1BED51C74F7281289013 /* VySans-LightItalic.woff2 */; };
+		57E94A87007F4A3081BC1507 /* VySans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4D82B3F9EB4A44569FD9529B /* VySans-Regular.otf */; };
+		41BD5993D3D447209788DC67 /* VySans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DBF837AF45754771A86D503D /* VySans-Regular.ttf */; };
+		CE9AE236476F44608E569E67 /* VySans-Regular.woff in Resources */ = {isa = PBXBuildFile; fileRef = 2B972011876E4359A613F297 /* VySans-Regular.woff */; };
+		9B79FEBAA43A40A1959CDB66 /* VySans-Regular.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E0B62F10849E4A109D27678D /* VySans-Regular.woff2 */; };
+		5B57B14EB2B644968C69C4CD /* VySans-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5AE6D18860D4F30B48433AC /* VySans-RegularItalic.otf */; };
+		528A2F66C0E7451B883179A9 /* VySans-RegularItalic.woff in Resources */ = {isa = PBXBuildFile; fileRef = AF3BA2AE650D495B8F5B67D4 /* VySans-RegularItalic.woff */; };
+		55FB06B4051D456C8AE8B23C /* VySans-RegularItalic.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1E42A18C3E8C4802A013A52E /* VySans-RegularItalic.woff2 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +73,35 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SporRnDemo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-SporRnDemo-SporRnDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SporRnDemo-SporRnDemoTests.release.xcconfig"; path = "Target Support Files/Pods-SporRnDemo-SporRnDemoTests/Pods-SporRnDemo-SporRnDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		32D6652EA68F412C8017DBF0 /* RobotoMono-Italic.ttf */ = {isa = PBXFileReference; name = "RobotoMono-Italic.ttf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/RobotoMono-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2BD0CF6EBFA24C55B27A34F1 /* RobotoMono-Regular.ttf */ = {isa = PBXFileReference; name = "RobotoMono-Regular.ttf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/RobotoMono-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		52FFE7BF3CED42C8ADA9E738 /* VyDisplay-Medium.otf */ = {isa = PBXFileReference; name = "VyDisplay-Medium.otf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VyDisplay-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C2CBB13007E64C97B8D848D7 /* VyDisplay-Medium.ttf */ = {isa = PBXFileReference; name = "VyDisplay-Medium.ttf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VyDisplay-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		786E35C3B57743818D536517 /* VyDisplay-Medium.woff */ = {isa = PBXFileReference; name = "VyDisplay-Medium.woff"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VyDisplay-Medium.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D5353C79740C479598FED06E /* VyDisplay-Medium.woff2 */ = {isa = PBXFileReference; name = "VyDisplay-Medium.woff2"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VyDisplay-Medium.woff2"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4BC44E8A1B9F4CB9BB4F0B7D /* VySans-Bold.otf */ = {isa = PBXFileReference; name = "VySans-Bold.otf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		988FE6F59B9743C4A7B3E6BC /* VySans-Bold.ttf */ = {isa = PBXFileReference; name = "VySans-Bold.ttf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		51CD2BB7EB794A6599CD2D2B /* VySans-Bold.woff */ = {isa = PBXFileReference; name = "VySans-Bold.woff"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-Bold.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FF6B3711F56145B9936DBC65 /* VySans-Bold.woff2 */ = {isa = PBXFileReference; name = "VySans-Bold.woff2"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-Bold.woff2"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A493A2E4040149EABDD3AAB3 /* VySans-BoldItalic.otf */ = {isa = PBXFileReference; name = "VySans-BoldItalic.otf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-BoldItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5C9F877268134FE1BA612783 /* VySans-BoldItalic.ttf */ = {isa = PBXFileReference; name = "VySans-BoldItalic.ttf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F8AACA95782847D6908A5A4E /* VySans-BoldItalic.woff */ = {isa = PBXFileReference; name = "VySans-BoldItalic.woff"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-BoldItalic.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		66DA8A84759146B8851C7BF4 /* VySans-BoldItalic.woff2 */ = {isa = PBXFileReference; name = "VySans-BoldItalic.woff2"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-BoldItalic.woff2"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		61C6F8736D6F4EE7B69770E8 /* VySans-Light.otf */ = {isa = PBXFileReference; name = "VySans-Light.otf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-Light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A878AB9BF2D04ADE908B2599 /* VySans-Light.ttf */ = {isa = PBXFileReference; name = "VySans-Light.ttf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		16B233F7A1924FE680B6DB20 /* VySans-Light.woff */ = {isa = PBXFileReference; name = "VySans-Light.woff"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-Light.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D0D94F704D6849B8A1DA4699 /* VySans-Light.woff2 */ = {isa = PBXFileReference; name = "VySans-Light.woff2"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-Light.woff2"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		847846442231427F83800CB1 /* VySans-LightItalic.otf */ = {isa = PBXFileReference; name = "VySans-LightItalic.otf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-LightItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		95AC6CD6C2F54F69995109CE /* VySans-LightItalic.ttf */ = {isa = PBXFileReference; name = "VySans-LightItalic.ttf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		62BF2390C79A41B2B9155B26 /* VySans-LightItalic.woff */ = {isa = PBXFileReference; name = "VySans-LightItalic.woff"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-LightItalic.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		05FB1BED51C74F7281289013 /* VySans-LightItalic.woff2 */ = {isa = PBXFileReference; name = "VySans-LightItalic.woff2"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-LightItalic.woff2"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4D82B3F9EB4A44569FD9529B /* VySans-Regular.otf */ = {isa = PBXFileReference; name = "VySans-Regular.otf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DBF837AF45754771A86D503D /* VySans-Regular.ttf */ = {isa = PBXFileReference; name = "VySans-Regular.ttf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2B972011876E4359A613F297 /* VySans-Regular.woff */ = {isa = PBXFileReference; name = "VySans-Regular.woff"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-Regular.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E0B62F10849E4A109D27678D /* VySans-Regular.woff2 */ = {isa = PBXFileReference; name = "VySans-Regular.woff2"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-Regular.woff2"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E5AE6D18860D4F30B48433AC /* VySans-RegularItalic.otf */ = {isa = PBXFileReference; name = "VySans-RegularItalic.otf"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-RegularItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AF3BA2AE650D495B8F5B67D4 /* VySans-RegularItalic.woff */ = {isa = PBXFileReference; name = "VySans-RegularItalic.woff"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-RegularItalic.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1E42A18C3E8C4802A013A52E /* VySans-RegularItalic.woff2 */ = {isa = PBXFileReference; name = "VySans-RegularItalic.woff2"; path = "../node_modules/@vygruppen/spor-design-tokens/assets/fonts/VySans-RegularItalic.woff2"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +180,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				BD54C1C2ACF6427DAA83F87A /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +206,43 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		BD54C1C2ACF6427DAA83F87A /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				32D6652EA68F412C8017DBF0 /* RobotoMono-Italic.ttf */,
+				2BD0CF6EBFA24C55B27A34F1 /* RobotoMono-Regular.ttf */,
+				52FFE7BF3CED42C8ADA9E738 /* VyDisplay-Medium.otf */,
+				C2CBB13007E64C97B8D848D7 /* VyDisplay-Medium.ttf */,
+				786E35C3B57743818D536517 /* VyDisplay-Medium.woff */,
+				D5353C79740C479598FED06E /* VyDisplay-Medium.woff2 */,
+				4BC44E8A1B9F4CB9BB4F0B7D /* VySans-Bold.otf */,
+				988FE6F59B9743C4A7B3E6BC /* VySans-Bold.ttf */,
+				51CD2BB7EB794A6599CD2D2B /* VySans-Bold.woff */,
+				FF6B3711F56145B9936DBC65 /* VySans-Bold.woff2 */,
+				A493A2E4040149EABDD3AAB3 /* VySans-BoldItalic.otf */,
+				5C9F877268134FE1BA612783 /* VySans-BoldItalic.ttf */,
+				F8AACA95782847D6908A5A4E /* VySans-BoldItalic.woff */,
+				66DA8A84759146B8851C7BF4 /* VySans-BoldItalic.woff2 */,
+				61C6F8736D6F4EE7B69770E8 /* VySans-Light.otf */,
+				A878AB9BF2D04ADE908B2599 /* VySans-Light.ttf */,
+				16B233F7A1924FE680B6DB20 /* VySans-Light.woff */,
+				D0D94F704D6849B8A1DA4699 /* VySans-Light.woff2 */,
+				847846442231427F83800CB1 /* VySans-LightItalic.otf */,
+				95AC6CD6C2F54F69995109CE /* VySans-LightItalic.ttf */,
+				62BF2390C79A41B2B9155B26 /* VySans-LightItalic.woff */,
+				05FB1BED51C74F7281289013 /* VySans-LightItalic.woff2 */,
+				4D82B3F9EB4A44569FD9529B /* VySans-Regular.otf */,
+				DBF837AF45754771A86D503D /* VySans-Regular.ttf */,
+				2B972011876E4359A613F297 /* VySans-Regular.woff */,
+				E0B62F10849E4A109D27678D /* VySans-Regular.woff2 */,
+				E5AE6D18860D4F30B48433AC /* VySans-RegularItalic.otf */,
+				AF3BA2AE650D495B8F5B67D4 /* VySans-RegularItalic.woff */,
+				1E42A18C3E8C4802A013A52E /* VySans-RegularItalic.woff2 */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +340,35 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				6BFB2C5E241A4F77981D0935 /* RobotoMono-Italic.ttf in Resources */,
+				4520C122246747FBAC8BE7E2 /* RobotoMono-Regular.ttf in Resources */,
+				5DC3798E2A2D4D00819E5501 /* VyDisplay-Medium.otf in Resources */,
+				0480F6AFB6B44A80817E24BA /* VyDisplay-Medium.ttf in Resources */,
+				E8849EEF5E26448C8A0DD88A /* VyDisplay-Medium.woff in Resources */,
+				76AB4B842BB24EA6BF6564CE /* VyDisplay-Medium.woff2 in Resources */,
+				E714E2D81D194F95BFEB8225 /* VySans-Bold.otf in Resources */,
+				615FFEBE05A742239AC212F4 /* VySans-Bold.ttf in Resources */,
+				6D9F64D9447D400A9F8E71EA /* VySans-Bold.woff in Resources */,
+				79C3B17CDF8C46BC82E88F26 /* VySans-Bold.woff2 in Resources */,
+				94FFBCC07AA948EF81B2455B /* VySans-BoldItalic.otf in Resources */,
+				03D8CE906C6842819BDF382A /* VySans-BoldItalic.ttf in Resources */,
+				2ECAE802070848A9B0E67922 /* VySans-BoldItalic.woff in Resources */,
+				E99D46ED7AEE4CF1A885F27B /* VySans-BoldItalic.woff2 in Resources */,
+				F1283174B6464451868E0A0A /* VySans-Light.otf in Resources */,
+				345B791A5E084F33B0843410 /* VySans-Light.ttf in Resources */,
+				13E4FA845BA1488BBEFC42B8 /* VySans-Light.woff in Resources */,
+				07517105C3B145DFABB69642 /* VySans-Light.woff2 in Resources */,
+				1EEB91A1DC9248C08B90D2D9 /* VySans-LightItalic.otf in Resources */,
+				FE9C37030CBB49BFA11480E6 /* VySans-LightItalic.ttf in Resources */,
+				6FE478B768D14652BCD0AB50 /* VySans-LightItalic.woff in Resources */,
+				B87E3BC06C5A40AD9F22B756 /* VySans-LightItalic.woff2 in Resources */,
+				57E94A87007F4A3081BC1507 /* VySans-Regular.otf in Resources */,
+				41BD5993D3D447209788DC67 /* VySans-Regular.ttf in Resources */,
+				CE9AE236476F44608E569E67 /* VySans-Regular.woff in Resources */,
+				9B79FEBAA43A40A1959CDB66 /* VySans-Regular.woff2 in Resources */,
+				5B57B14EB2B644968C69C4CD /* VySans-RegularItalic.otf in Resources */,
+				528A2F66C0E7451B883179A9 /* VySans-RegularItalic.woff in Resources */,
+				55FB06B4051D456C8AE8B23C /* VySans-RegularItalic.woff2 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

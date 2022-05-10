@@ -10,7 +10,7 @@ const colorAliases = Object.entries(tokens.color.alias).reduce(
 const colorPalette: Record<string, string> = {};
 for (const [key, tokenOrScale] of Object.entries(tokens.color.palette)) {
   if ("original" in tokenOrScale) {
-    colorPalette[key] = tokenOrScale.original;
+    colorPalette[key] = tokenOrScale.original.value;
     continue;
   } else {
     for (const [scaleKey, scaleValue] of Object.entries(tokenOrScale)) {

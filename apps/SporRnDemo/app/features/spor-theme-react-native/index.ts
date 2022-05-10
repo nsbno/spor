@@ -1,14 +1,10 @@
 import { createTheme } from "@shopify/restyle";
-import { breakpoints } from "./breakpoints";
-import { colors } from "./colors";
-import { spacing } from "./spacing";
-import { textVariants } from "./textVariants";
+import * as components from "./components";
+import * as foundations from "./foundations";
 
 export const theme = createTheme({
-  colors,
-  spacing,
-  breakpoints,
-  textVariants,
+  ...foundations,
+  ...components,
 });
 
 export type Theme = typeof theme;

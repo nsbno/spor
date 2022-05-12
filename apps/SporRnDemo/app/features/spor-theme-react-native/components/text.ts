@@ -5,6 +5,7 @@ const headingLineHeight = tokens.size["line-height"].heading.value.number;
 const bodyLineHeight = tokens.size["line-height"].body.value.number;
 
 export const textVariants = {
+  defaults: {},
   "2xl": {
     fontFamily: removeQuotes(tokens.font.style.xxl["font-family"].value),
     fontSize: tokens.font.style.xxl["font-size"].mobile.value.number,

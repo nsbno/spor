@@ -22,4 +22,5 @@ for (const [key, tokenOrScale] of Object.entries(tokens.color.palette)) {
 export const colors = {
   ...colorAliases,
   ...colorPalette,
+  transparent: "transparent",
 };

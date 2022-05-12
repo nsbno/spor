@@ -1,4 +1,4 @@
-import tokens from "@vygruppen/spor-design-tokens";
+import tokens from "@vygruppen/spor-design-tokens/react-native";
 
 export const zIndices = {
   hide: tokens.depth["z-index"].hide.value,

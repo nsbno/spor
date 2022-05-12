@@ -13,7 +13,7 @@ const baseStyle: SystemStyleObject = {
   backgroundPosition: "0 100%",
   backgroundRepeat: "no-repeat",
   borderRadius: "none",
-  pb: "2px",
+  pb: "1px",
   color: "inherit",
   display: "inline",
   position: "relative",

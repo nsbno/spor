@@ -1,1 +1,2 @@
-export * from "./textVariants";
+export * from "./button";
+export * from "./text";

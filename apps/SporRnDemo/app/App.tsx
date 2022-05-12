@@ -1,6 +1,7 @@
 import React from "react";
 import { SafeAreaView } from "react-native";
-import { Box } from "./features/spor-layout-react-native";
+import { Button } from "./features/spor-button-react-native";
+import { Stack } from "./features/spor-layout-react-native/Stack";
 import { SporProvider } from "./features/spor-provider-react-native";
 import { Heading, Text } from "./features/spor-typography-react-native";
 /**
@@ -10,23 +11,27 @@ const App = () => {
   return (
     <SporProvider>
       <SafeAreaView>
-        <Box
-          backgroundColor="lightGrey"
+        <Stack
+          backgroundColor="white"
           height="100%"
           p={2}
           justifyContent="center"
+          spacing={3}
         >
-          <Heading color="darkTeal" variant="2xl" textAlign="center">
+          <Heading color="darkGrey" variant="2xl" textAlign="center">
             Spor Demo app
           </Heading>
-          <Text mt={2} color="white" variant="md" textAlign="center">
+          <Text mt={2} color="darkGrey" variant="md" textAlign="center">
             Velkommen! Denne appen brukes til demonstrasjon og utvikling av
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
-          <Text mt={2} color="white" variant="md" textAlign="center">
+          <Text mt={2} color="darkGrey" variant="md" textAlign="center">
             Man kan ikke gjøre så mye enda da, men det funker i alle fall!
           </Text>
-        </Box>
+          <Button variant="primary" size="md" onPress={() => {}} isDisabled>
+            Her er en knapp
+          </Button>
+        </Stack>
       </SafeAreaView>
     </SporProvider>
   );

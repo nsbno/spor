@@ -1,5 +1,12 @@
 # @vygruppen/spor-input-react
 
+## 0.4.3
+
+### Patch Changes
+
+- Updated dependencies [ac60336]
+  - @vygruppen/spor-i18n-react@0.0.5
+
 ## 0.4.2
 
 ### Patch Changes

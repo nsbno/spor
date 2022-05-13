@@ -1,5 +1,11 @@
 # @vygruppen/spor-i18n-react
 
+## 0.0.5
+
+### Patch Changes
+
+- ac60336: Add React Native support
+
 ## 0.0.4
 
 ### Patch Changes

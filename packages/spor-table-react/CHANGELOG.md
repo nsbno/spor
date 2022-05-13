@@ -1,5 +1,11 @@
 # @vygruppen/spor-table-react
 
+## 0.0.5
+
+### Patch Changes
+
+- 469768f: Fix some overflow issues with tables
+
 ## 0.0.4
 
 ### Patch Changes

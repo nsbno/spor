@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.4.7
+
+### Patch Changes
+
+- 469768f: Fix some overflow issues with tables
+
 ## 0.4.6
 
 ### Patch Changes

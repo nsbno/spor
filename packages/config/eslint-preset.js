@@ -42,6 +42,7 @@ module.exports = {
         "packages/spor-badge-react-native/",
         "packages/spor-accordion-react-native/",
         "packages/spor-alert-react-native/",
+        "packages/spor-datepicker-react/",
       ],
     },
   },

@@ -21,6 +21,7 @@
     "@vygruppen/spor-button-react": "*",
     "@vygruppen/spor-card-react": "*",
     "@vygruppen/spor-design-tokens": "*",
+    "@vygruppen/spor-datepicker-react": "*",
     "@vygruppen/spor-i18n-react": "*",
     "@vygruppen/spor-icon-react": "*",
     "@vygruppen/spor-image-react": "*",

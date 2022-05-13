@@ -1,6 +1,6 @@
 import { BoxProps } from "@shopify/restyle";
+import { Theme } from "@vygruppen/spor-theme-react-native";
 import React from "react";
-import { Theme } from "../spor-theme-react-native";
 import { Box } from "./Box";
 
 type StackProps = BoxProps<Theme> & {

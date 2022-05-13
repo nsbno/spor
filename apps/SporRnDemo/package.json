@@ -10,13 +10,12 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@shopify/restyle": "^2.1.0",
-    "@vygruppen/spor-design-tokens": "^2.3.7",
-    "@vygruppen/spor-i18n-react": "^0.0.4",
+    "@vygruppen/spor-react-native": "*",
     "react": "17.0.2",
     "react-native": "0.68.1"
   },
   "devDependencies": {
+    "@shopify/restyle": "^2.1.0",
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",

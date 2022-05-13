@@ -6,9 +6,9 @@ import {
   useRestyle,
   VariantProps,
 } from "@shopify/restyle";
+import type { Theme } from "@vygruppen/spor-theme-react-native";
 import React from "react";
 import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
-import { Theme } from "@vygruppen/spor-theme-react-native";
 
 type RestyleProps = SpacingProps<Theme> &
   VariantProps<Theme, "buttonVariants", "variant"> &

@@ -1,5 +1,5 @@
 import { createBox } from "@shopify/restyle";
-import { Theme } from "../spor-theme-react-native";
+import type { Theme } from "@vygruppen/spor-theme-react-native";
 
 /** A basic box.
  *

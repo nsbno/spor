@@ -16,6 +16,8 @@
   "dependencies": {
     "@shopify/restyle": "^2.1.0",
     "@vygruppen/spor-button-react-native": "*",
+    "@vygruppen/spor-i18n-react": "*",
+    "@vygruppen/spor-layout-react-native": "*",
     "@vygruppen/spor-provider-react-native": "*",
     "@vygruppen/spor-theme-react-native": "*",
     "@vygruppen/spor-typography-react-native": "*"

@@ -1,0 +1,26 @@
+{
+  "name": "@vygruppen/spor-layout-react-native",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-layout-react-native",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nsbno/spor.git",
+    "directory": "packages/spor-layout-react-native"
+  },
+  "devDependencies": {
+    "@shopify/restyle": "^2.1.0",
+    "@vygruppen/spor-theme-react-native": "*",
+    "react": ">17.0.0",
+    "react-native": "^0.66.0"
+  },
+  "peerDependencies": {
+    "react": ">17.0.0",
+    "react-native": "^0.66.0"
+  }
+}

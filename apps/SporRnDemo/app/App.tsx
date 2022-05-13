@@ -1,9 +1,12 @@
+import {
+  Button,
+  Heading,
+  SporProvider,
+  Stack,
+  Text,
+} from "@vygruppen/spor-react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
-import { Button } from "./features/spor-button-react-native";
-import { Stack } from "./features/spor-layout-react-native/Stack";
-import { SporProvider } from "./features/spor-provider-react-native";
-import { Heading, Text } from "./features/spor-typography-react-native";
 /**
  * The entry point of the Spor RN demo app
  */

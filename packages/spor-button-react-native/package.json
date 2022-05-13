@@ -13,13 +13,18 @@
     "url": "https://github.com/nsbno/spor.git",
     "directory": "packages/spor-button-react-native"
   },
+  "scripts": {
+    "build": "tsup src/index.tsx --dts",
+    "dev": "tsup src/index.tsx --watch"
+  },
   "dependencies": {
     "@vygruppen/spor-theme-react-native": "*",
     "@shopify/restyle": "^2.1.0"
   },
   "devDependencies": {
     "react": ">17.0.0",
-    "react-native": "^0.66.0"
+    "react-native": "^0.66.0",
+    "tsup": "^5.11.11"
   },
   "peerDependencies": {
     "react": ">17.0.0",

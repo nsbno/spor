@@ -1,8 +1,5 @@
 import { withEmotionCache } from "@emotion/react";
-import { Box, Center, Heading, Text } from "@vygruppen/spor-react";
-import { ReactNode, useContext, useEffect } from "react";
 import { LinksFunction, LoaderFunction, MetaFunction } from "@remix-run/node";
-
 import {
   Links,
   LiveReload,
@@ -13,7 +10,8 @@ import {
   useCatch,
   useLoaderData,
 } from "@remix-run/react";
-
+import { Box, Center, Heading, Text } from "@vygruppen/spor-react";
+import { ReactNode, useContext, useEffect } from "react";
 import {
   ClientStyleContext,
   ServerStyleContext,
@@ -34,6 +32,9 @@ import { urlBuilder } from "./utils/sanity/utils";
 import { getUserPreferencesSession } from "./utils/userPreferences.server";
 
 export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
+  if (!data) {
+    return {};
+  }
   const { title, description, keywords, socialImage } =
     data.initialSanityData.siteSettings;
 

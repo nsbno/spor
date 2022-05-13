@@ -7,18 +7,23 @@ import {
   VariantProps,
 } from "@shopify/restyle";
 import React from "react";
-import { ActivityIndicator, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 import { Theme } from "../spor-theme-react-native";
-import { Text } from "../spor-typography-react-native";
 
 type RestyleProps = SpacingProps<Theme> &
   VariantProps<Theme, "buttonVariants", "variant"> &
   VariantProps<Theme, "buttonSizes", "size">;
 
+const sizes = createVariant({ themeKey: "buttonSizes", property: "size" });
+const variants = createVariant({
+  themeKey: "buttonVariants",
+  property: "variant",
+});
+
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacing,
-  createVariant({ themeKey: "buttonSizes", property: "size" }),
-  createVariant({ themeKey: "buttonVariants", property: "variant" }),
+  sizes,
+  variants,
 ]);
 
 type Props = RestyleProps & {

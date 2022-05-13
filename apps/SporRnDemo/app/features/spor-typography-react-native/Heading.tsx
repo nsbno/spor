@@ -1,43 +1,7 @@
-import {
-  color,
-  ColorProps,
-  composeRestyleFunctions,
-  createVariant,
-  opacity,
-  OpacityProps,
-  spacing,
-  SpacingProps,
-  textShadow,
-  TextShadowProps,
-  typography,
-  TypographyProps,
-  useRestyle,
-  VariantProps,
-} from "@shopify/restyle";
 import React from "react";
-import { Text } from "react-native";
-import { Theme } from "../spor-theme-react-native";
+import { Text, TextProps } from "./Text";
 
-type RestyleProps = SpacingProps<Theme> &
-  ColorProps<Theme> &
-  OpacityProps<Theme> &
-  TypographyProps<Theme> &
-  TextShadowProps<Theme> &
-  VariantProps<Theme, "textVariants", "variant">;
-
-const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
-  color,
-  opacity,
-  typography,
-  textShadow,
-  spacing,
-  createVariant({
-    themeKey: "textVariants",
-    property: "variant",
-  }),
-]);
-
-export type HeadingProps = RestyleProps & { children: React.ReactNode };
+export type HeadingProps = TextProps;
 /**
  * Create your own fancy headings with this component.
  *
@@ -47,11 +11,6 @@ export type HeadingProps = RestyleProps & { children: React.ReactNode };
  * <Heading size="2xl">Look at me!</Heading>
  * ```
  */
-export const Heading = ({ children, ...props }: HeadingProps) => {
-  const restyleProps: any = useRestyle(restyleFunctions, props);
-  return (
-    <Text accessibilityRole="header" {...restyleProps}>
-      {children}
-    </Text>
-  );
+export const Heading = (props: HeadingProps) => {
+  return <Text accessibilityRole="header" {...props} />;
 };

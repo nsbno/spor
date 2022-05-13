@@ -4,6 +4,7 @@ jest.mock("@shopify/restyle", () => {
   RealModule.createText = () => RN.Text;
   RealModule.createBox = () => RN.View;
   RealModule.createRestyleComponent = (f, c) => c || RN.View;
+  RealModule.useRestyle = () => ({ style: [{}] });
   RealModule.ThemeProvider = RN.View;
   return RealModule;
 });

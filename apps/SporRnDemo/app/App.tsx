@@ -21,14 +21,14 @@ const App = () => {
           <Heading color="darkGrey" variant="2xl" textAlign="center">
             Spor Demo app
           </Heading>
-          <Text mt={2} color="darkGrey" variant="md" textAlign="center">
+          <Text color="darkGrey" variant="md" textAlign="center">
             Velkommen! Denne appen brukes til demonstrasjon og utvikling av
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
-          <Text mt={2} color="darkGrey" variant="md" textAlign="center">
+          <Text color="darkGrey" variant="md" textAlign="center">
             Man kan ikke gjøre så mye enda da, men det funker i alle fall!
           </Text>
-          <Button variant="primary" size="md" onPress={() => {}} isDisabled>
+          <Button variant="primary" size="md" onPress={() => {}}>
             Her er en knapp
           </Button>
         </Stack>

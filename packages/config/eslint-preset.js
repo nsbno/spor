@@ -31,6 +31,7 @@ module.exports = {
         "packages/spor-provider-react-native/",
         "packages/spor-react-native/",
         "packages/spor-typography-react-native/",
+        "packages/spor-button-react-native/",
       ],
     },
   },

@@ -1,7 +1,8 @@
 import type { TextProps as RestyleTextProps } from "@shopify/restyle";
 import { createText } from "@shopify/restyle";
+import type { Theme } from "@vygruppen/spor-theme-react-native";
 import React from "react";
-import { Theme } from "../spor-theme-react-native";
+
 export type TextProps = RestyleTextProps<Theme> & { children: React.ReactNode };
 /**
  * A paragraph of text.

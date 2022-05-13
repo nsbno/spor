@@ -14,13 +14,16 @@
     "directory": "packages/spor-provider-react-native"
   },
   "dependencies": {
+    "@vygruppen/spor-i18n-react": "*",
     "@vygruppen/spor-theme-react-native": "*"
   },
   "devDependencies": {
+    "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
     "react-native": "^0.66.0"
   },
   "peerDependencies": {
+    "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
     "react-native": "^0.66.0"
   }

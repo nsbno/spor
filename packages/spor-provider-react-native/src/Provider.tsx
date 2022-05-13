@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@shopify/restyle";
 import { Language, LanguageProvider } from "@vygruppen/spor-i18n-react";
+import { theme } from "@vygruppen/spor-theme-react-native";
 import React from "react";
-import { theme } from "../spor-theme-react-native";
 
 type SporProviderProps = {
   /** The app */

@@ -95,7 +95,7 @@ There isn't yet an Elm implementation of the Spor Design System. It's in the bac
 
 We're getting ready to accept contributions, and will add an extensive guide to how you can get started with it. For now, you can create an issue or a pull request, and we will check it out within days.
 
-### Setup
+## Setup
 
 To develop locally, clone the repository and run `npm install` at the root level.
 
@@ -103,7 +103,7 @@ If you want to run the docs website locally, you'll need a few secrets. Follow t
 
 Then run `npm run build` to build all artifacts for the first time. Finally, run `npm run dev` to start the development servers.
 
-#### Build
+### Build
 
 To build all apps and packages, run the following command:
 
@@ -111,7 +111,7 @@ To build all apps and packages, run the following command:
 npm run build
 ```
 
-#### Develop
+### Develop
 
 To develop all apps and packages, run the following command:
 
@@ -119,7 +119,13 @@ To develop all apps and packages, run the following command:
 npm run dev
 ```
 
-#### Add new package
+#### Developing for React Native
+
+If you want to develop for React Native, we've created a test application (SporRnDemo) that you can use to test your components and code. To start it, navigate to the `apps/SporRnDemo` directory and run `npm run ios` or `npm run android`.
+
+To run the test application, you need to have a few things installed. Please refer to the [React Native development environment setup documentation](https://reactnative.dev/docs/environment-setup) for further instructions.
+
+## Add new package
 
 To add a new package, run the following command, and follow the wizard:
 

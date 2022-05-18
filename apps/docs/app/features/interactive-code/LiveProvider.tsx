@@ -10,7 +10,7 @@ type LiveProviderProps = {
   children: React.ReactNode;
 };
 export const LiveProvider = ({ children, code }: LiveProviderProps) => (
-  <ReactLiveProvider code={code.trim()} scope={allComponents}>
+  <ReactLiveProvider code={code?.trim()} scope={allComponents}>
     {children}
   </ReactLiveProvider>
 );

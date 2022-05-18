@@ -211,9 +211,8 @@ const components: Partial<PortableTextReactComponents> = {
           layout={value.layout}
           mt={3}
           maxWidth={`calc(100vw - var(--spor-space-6))`}
-        >
-          {value.reactCode.code}
-        </InteractiveCode>
+          code={value.reactCode.code}
+        />
       ),
     component: ({ value }) => (
       <Box key={value.name} mt={6} as="article">

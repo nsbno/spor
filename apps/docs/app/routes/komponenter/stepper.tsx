@@ -1,5 +1,4 @@
 import {
-  Box,
   BoxProps,
   Image,
   SimpleGrid,
@@ -7,9 +6,6 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
-import { ComponentPlayground } from "~/features/component-playground/ComponentPlayground";
-import { usePlaygroundProps } from "~/features/component-playground/usePlaygroundProps";
-import { toPropsString } from "~/features/component-playground/utils";
 import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 
 export default function StepperDocsPage() {
@@ -18,47 +14,10 @@ export default function StepperDocsPage() {
       title="Stepper"
       description="Steppers brukes til å synliggjøre hvilket steg du er på i en flyt."
     >
-      <DemoArea />
       <Guidelines />
     </ComponentDocs>
   );
 }
-
-const DemoArea = (props: BoxProps) => {
-  const { currentProps, propList, onPropsChange } = usePlaygroundProps([
-    { name: "steps", defaultValue: "5", type: "input" },
-    { name: "activeStep", defaultValue: "2", type: "input" },
-    { name: "title", defaultValue: "Tittel", type: "input" },
-    {
-      name: "colorScheme",
-      defaultValue: "green",
-      type: "select",
-      values: ["green", "light", "dark"],
-    },
-  ]);
-  const stepsArray = createRange(1, Number(currentProps.steps));
-  const { steps, ...includedCurrentProps } = currentProps;
-  const code = `
-<Stepper
-  width="100%"
-  steps={${JSON.stringify(stepsArray.map((step) => `Steg ${step}`))}}
-  ${toPropsString(includedCurrentProps, "  ")}
-/>`;
-  return (
-    <Box {...props}>
-      <ComponentPlayground
-        code={code}
-        propList={propList}
-        currentProps={currentProps}
-        onPropsChange={onPropsChange}
-      />
-    </Box>
-  );
-};
-
-const createRange = (start: number, end: number) => {
-  return new Array(end - start + 1).fill(0).map((_, i) => i + start);
-};
 
 const Guidelines = (props: BoxProps) => {
   return (

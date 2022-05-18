@@ -7,10 +7,7 @@ import { theme } from "../code-block/codeTheme";
 type LiveEditorProps = Omit<BoxProps, "onChange"> & {
   onChange?: (code: string) => void;
 };
-export const LiveEditor = ({
-  onChange = () => {},
-  ...props
-}: LiveEditorProps) => {
+export const LiveEditor = ({ onChange, ...props }: LiveEditorProps) => {
   const liveContext = useContext(LiveContext);
 
   if (!liveContext.code) {
@@ -22,7 +19,7 @@ export const LiveEditor = ({
       <ReactLiveEditor
         theme={theme}
         style={{ overflow: "scroll", height: "100%" }}
-        onChange={onChange}
+        {...(onChange ? { onChange } : {})}
       />
     </CodeBlockContainer>
   );

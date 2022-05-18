@@ -6,18 +6,18 @@ import { LivePreview } from "./LivePreview";
 import { LiveProvider } from "./LiveProvider";
 
 type InteractiveCodeProps = {
-  children: string;
+  code: string;
   layout: "simple" | "preview-only" | "code-only" | "advanced";
 } & BoxProps;
 export const InteractiveCode = ({
-  children,
+  code,
   layout = "simple",
   ...rest
 }: InteractiveCodeProps) => {
   const { userPreferences } = useUserPreferences();
   return (
     <Box {...rest}>
-      <LiveProvider code={children?.trim()}>
+      <LiveProvider code={code}>
         <Stack spacing={2}>
           {layout === "simple" && (
             <>

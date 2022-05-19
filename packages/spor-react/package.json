@@ -26,6 +26,7 @@
     "@vygruppen/spor-input-react": "*",
     "@vygruppen/spor-layout-react": "*",
     "@vygruppen/spor-link-react": "*",
+    "@vygruppen/spor-loader-react": "*",
     "@vygruppen/spor-logo-react": "*",
     "@vygruppen/spor-modal-react": "*",
     "@vygruppen/spor-table-react": "*",

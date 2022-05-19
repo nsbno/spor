@@ -806,2220 +806,1596 @@ tokens =
             }
         }
     , color = 
-        { alias = 
-            { lightGrey = 
+        { lightGrey = 
+            { value = "#f5f5f5"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.grey.50.value}"
+                }
+            , name = "ColorLightGrey"
+            , attributes = 
+                { category = "color"
+                , type_ = "lightGrey"
+                }
+            , path = [ "color", "lightGrey" ]
+            }
+        , platinum = 
+            { value = "#ebebec"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.grey.100.value}"
+                }
+            , name = "ColorPlatinum"
+            , attributes = 
+                { category = "color"
+                , type_ = "platinum"
+                }
+            , path = [ "color", "platinum" ]
+            }
+        , silver = 
+            { value = "#d7d8d9"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.grey.200.value}"
+                }
+            , name = "ColorSilver"
+            , attributes = 
+                { category = "color"
+                , type_ = "silver"
+                }
+            , path = [ "color", "silver" ]
+            }
+        , steel = 
+            { value = "#afb2b3"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.grey.300.value}"
+                }
+            , name = "ColorSteel"
+            , attributes = 
+                { category = "color"
+                , type_ = "steel"
+                }
+            , path = [ "color", "steel" ]
+            }
+        , osloGrey = 
+            { value = "#888b8e"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.grey.400.value}"
+                }
+            , name = "ColorOsloGrey"
+            , attributes = 
+                { category = "color"
+                , type_ = "osloGrey"
+                }
+            , path = [ "color", "osloGrey" ]
+            }
+        , dimGrey = 
+            { value = "#606568"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.grey.500.value}"
+                }
+            , name = "ColorDimGrey"
+            , attributes = 
+                { category = "color"
+                , type_ = "dimGrey"
+                }
+            , path = [ "color", "dimGrey" ]
+            }
+        , darkGrey = 
+            { value = "#2b2b2c"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.grey.600.value}"
+                }
+            , name = "ColorDarkGrey"
+            , attributes = 
+                { category = "color"
+                , type_ = "darkGrey"
+                }
+            , path = [ "color", "darkGrey" ]
+            }
+        , seaFoam = 
+            { value = "#cce1df"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.teal.50.value}"
+                }
+            , name = "ColorSeaFoam"
+            , attributes = 
+                { category = "color"
+                , type_ = "seaFoam"
+                }
+            , path = [ "color", "seaFoam" ]
+            }
+        , opal = 
+            { value = "#99c3bf"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.teal.100.value}"
+                }
+            , name = "ColorOpal"
+            , attributes = 
+                { category = "color"
+                , type_ = "opal"
+                }
+            , path = [ "color", "opal" ]
+            }
+        , river = 
+            { value = "#66a49e"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.teal.200.value}"
+                }
+            , name = "ColorRiver"
+            , attributes = 
+                { category = "color"
+                , type_ = "river"
+                }
+            , path = [ "color", "river" ]
+            }
+        , celadon = 
+            { value = "#33867e"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.teal.300.value}"
+                }
+            , name = "ColorCeladon"
+            , attributes = 
+                { category = "color"
+                , type_ = "celadon"
+                }
+            , path = [ "color", "celadon" ]
+            }
+        , pine = 
+            { value = "#00685e"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.teal.400.value}"
+                }
+            , name = "ColorPine"
+            , attributes = 
+                { category = "color"
+                , type_ = "pine"
+                }
+            , path = [ "color", "pine" ]
+            }
+        , darkTeal = 
+            { value = "#00453e"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.teal.500.value}"
+                }
+            , name = "ColorDarkTeal"
+            , attributes = 
+                { category = "color"
+                , type_ = "darkTeal"
+                }
+            , path = [ "color", "darkTeal" ]
+            }
+        , night = 
+            { value = "#012622"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.teal.600.value}"
+                }
+            , name = "ColorNight"
+            , attributes = 
+                { category = "color"
+                , type_ = "night"
+                }
+            , path = [ "color", "night" ]
+            }
+        , mint = 
+            { value = "#e5f4f1"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.green.50.value}"
+                }
+            , name = "ColorMint"
+            , attributes = 
+                { category = "color"
+                , type_ = "mint"
+                }
+            , path = [ "color", "mint" ]
+            }
+        , seaMist = 
+            { value = "#cceae4"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.green.100.value}"
+                }
+            , name = "ColorSeaMist"
+            , attributes = 
+                { category = "color"
+                , type_ = "seaMist"
+                }
+            , path = [ "color", "seaMist" ]
+            }
+        , coralGreen = 
+            { value = "#b2dfd7"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.green.200.value}"
+                }
+            , name = "ColorCoralGreen"
+            , attributes = 
+                { category = "color"
+                , type_ = "coralGreen"
+                }
+            , path = [ "color", "coralGreen" ]
+            }
+        , blueGreen = 
+            { value = "#84cfc2"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.green.300.value}"
+                }
+            , name = "ColorBlueGreen"
+            , attributes = 
+                { category = "color"
+                , type_ = "blueGreen"
+                }
+            , path = [ "color", "blueGreen" ]
+            }
+        , azure = 
+            { value = "#38b49e"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.green.400.value}"
+                }
+            , name = "ColorAzure"
+            , attributes = 
+                { category = "color"
+                , type_ = "azure"
+                }
+            , path = [ "color", "azure" ]
+            }
+        , greenHaze = 
+            { value = "#00957a"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.green.500.value}"
+                }
+            , name = "ColorGreenHaze"
+            , attributes = 
+                { category = "color"
+                , type_ = "greenHaze"
+                }
+            , path = [ "color", "greenHaze" ]
+            }
+        , primaryGreen = 
+            { value = "#037d67"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.green.600.value}"
+                }
+            , name = "ColorPrimaryGreen"
+            , attributes = 
+                { category = "color"
+                , type_ = "primaryGreen"
+                }
+            , path = [ "color", "primaryGreen" ]
+            }
+        , icyBlue = 
+            { value = "#edf1f7"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.blue.50.value}"
+                }
+            , name = "ColorIcyBlue"
+            , attributes = 
+                { category = "color"
+                , type_ = "icyBlue"
+                }
+            , path = [ "color", "icyBlue" ]
+            }
+        , lightBlue = 
+            { value = "#dce4ef"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.blue.100.value}"
+                }
+            , name = "ColorLightBlue"
+            , attributes = 
+                { category = "color"
+                , type_ = "lightBlue"
+                }
+            , path = [ "color", "lightBlue" ]
+            }
+        , cloudy = 
+            { value = "#b9c9de"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.blue.200.value}"
+                }
+            , name = "ColorCloudy"
+            , attributes = 
+                { category = "color"
+                , type_ = "cloudy"
+                }
+            , path = [ "color", "cloudy" ]
+            }
+        , sky = 
+            { value = "#a7bcd6"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.blue.300.value}"
+                }
+            , name = "ColorSky"
+            , attributes = 
+                { category = "color"
+                , type_ = "sky"
+                }
+            , path = [ "color", "sky" ]
+            }
+        , glacier = 
+            { value = "#688cba"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.blue.400.value}"
+                }
+            , name = "ColorGlacier"
+            , attributes = 
+                { category = "color"
+                , type_ = "glacier"
+                }
+            , path = [ "color", "glacier" ]
+            }
+        , ocean = 
+            { value = "#325d93"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.blue.500.value}"
+                }
+            , name = "ColorOcean"
+            , attributes = 
+                { category = "color"
+                , type_ = "ocean"
+                }
+            , path = [ "color", "ocean" ]
+            }
+        , darkBlue = 
+            { value = "#003a70"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.blue.600.value}"
+                }
+            , name = "ColorDarkBlue"
+            , attributes = 
+                { category = "color"
+                , type_ = "darkBlue"
+                }
+            , path = [ "color", "darkBlue" ]
+            }
+        , cornsilk = 
+            { value = "#fef9dd"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.yellow.50.value}"
+                }
+            , name = "ColorCornsilk"
+            , attributes = 
+                { category = "color"
+                , type_ = "cornsilk"
+                }
+            , path = [ "color", "cornsilk" ]
+            }
+        , blonde = 
+            { value = "#fdf3ba"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.yellow.100.value}"
+                }
+            , name = "ColorBlonde"
+            , attributes = 
+                { category = "color"
+                , type_ = "blonde"
+                }
+            , path = [ "color", "blonde" ]
+            }
+        , primrose = 
+            { value = "#fcec98"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.yellow.200.value}"
+                }
+            , name = "ColorPrimrose"
+            , attributes = 
+                { category = "color"
+                , type_ = "primrose"
+                }
+            , path = [ "color", "primrose" ]
+            }
+        , sunshine = 
+            { value = "#fbe675"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.yellow.300.value}"
+                }
+            , name = "ColorSunshine"
+            , attributes = 
+                { category = "color"
+                , type_ = "sunshine"
+                }
+            , path = [ "color", "sunshine" ]
+            }
+        , banana = 
+            { value = "#fae053"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.yellow.400.value}"
+                }
+            , name = "ColorBanana"
+            , attributes = 
+                { category = "color"
+                , type_ = "banana"
+                }
+            , path = [ "color", "banana" ]
+            }
+        , burntYellow = 
+            { value = "#f1c400"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.yellow.500.value}"
+                }
+            , name = "ColorBurntYellow"
+            , attributes = 
+                { category = "color"
+                , type_ = "burntYellow"
+                }
+            , path = [ "color", "burntYellow" ]
+            }
+        , golden = 
+            { value = "#e5a80c"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.yellow.600.value}"
+                }
+            , name = "ColorGolden"
+            , attributes = 
+                { category = "color"
+                , type_ = "golden"
+                }
+            , path = [ "color", "golden" ]
+            }
+        , bisque = 
+            { value = "#ffe6cc"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.orange.50.value}"
+                }
+            , name = "ColorBisque"
+            , attributes = 
+                { category = "color"
+                , type_ = "bisque"
+                }
+            , path = [ "color", "bisque" ]
+            }
+        , champagne = 
+            { value = "#ffcd99"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.orange.100.value}"
+                }
+            , name = "ColorChampagne"
+            , attributes = 
+                { category = "color"
+                , type_ = "champagne"
+                }
+            , path = [ "color", "champagne" ]
+            }
+        , rajah = 
+            { value = "#ffb466"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.orange.200.value}"
+                }
+            , name = "ColorRajah"
+            , attributes = 
+                { category = "color"
+                , type_ = "rajah"
+                }
+            , path = [ "color", "rajah" ]
+            }
+        , saffron = 
+            { value = "#ff9b33"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.orange.300.value}"
+                }
+            , name = "ColorSaffron"
+            , attributes = 
+                { category = "color"
+                , type_ = "saffron"
+                }
+            , path = [ "color", "saffron" ]
+            }
+        , pumpkin = 
+            { value = "#ff8200"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.orange.400.value}"
+                }
+            , name = "ColorPumpkin"
+            , attributes = 
+                { category = "color"
+                , type_ = "pumpkin"
+                }
+            , path = [ "color", "pumpkin" ]
+            }
+        , chocolate = 
+            { value = "#cf6c05"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.orange.500.value}"
+                }
+            , name = "ColorChocolate"
+            , attributes = 
+                { category = "color"
+                , type_ = "chocolate"
+                }
+            , path = [ "color", "chocolate" ]
+            }
+        , wood = 
+            { value = "#a75a0a"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.orange.600.value}"
+                }
+            , name = "ColorWood"
+            , attributes = 
+                { category = "color"
+                , type_ = "wood"
+                }
+            , path = [ "color", "wood" ]
+            }
+        , lightRed = 
+            { value = "#fbcccc"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.red.50.value}"
+                }
+            , name = "ColorLightRed"
+            , attributes = 
+                { category = "color"
+                , type_ = "lightRed"
+                }
+            , path = [ "color", "lightRed" ]
+            }
+        , brightRed = 
+            { value = "#ed0000"
+            , filePath = "tokens/color/alias.json"
+            , isSource = True
+            , original = 
+                { value = "{color.red.600.value}"
+                }
+            , name = "ColorBrightRed"
+            , attributes = 
+                { category = "color"
+                , type_ = "brightRed"
+                }
+            , path = [ "color", "brightRed" ]
+            }
+        , grey = 
+            { i50 = 
                 { value = "#f5f5f5"
-                , filePath = "tokens/color/alias.json"
+                , filePath = "tokens/color/palette.json"
                 , isSource = True
                 , original = 
-                    { value = "{color.palette.grey.50.value}"
+                    { value = "#F5F5F5"
                     }
-                , name = "ColorAliasLightGrey"
+                , name = "ColorGrey50"
                 , attributes = 
                     { category = "color"
-                    , type_ = "alias"
-                    , item = "lightGrey"
+                    , type_ = "grey"
+                    , item = "50"
                     }
-                , path = [ "color", "alias", "lightGrey" ]
+                , path = [ "color", "grey", "50" ]
                 }
-            , platinum = 
+            , i100 = 
                 { value = "#ebebec"
-                , filePath = "tokens/color/alias.json"
+                , filePath = "tokens/color/palette.json"
                 , isSource = True
                 , original = 
-                    { value = "{color.palette.grey.100.value}"
+                    { value = "#EBEBEC"
                     }
-                , name = "ColorAliasPlatinum"
+                , name = "ColorGrey100"
                 , attributes = 
                     { category = "color"
-                    , type_ = "alias"
-                    , item = "platinum"
+                    , type_ = "grey"
+                    , item = "100"
                     }
-                , path = [ "color", "alias", "platinum" ]
+                , path = [ "color", "grey", "100" ]
                 }
-            , silver = 
+            , i200 = 
                 { value = "#d7d8d9"
-                , filePath = "tokens/color/alias.json"
+                , filePath = "tokens/color/palette.json"
                 , isSource = True
                 , original = 
-                    { value = "{color.palette.grey.200.value}"
+                    { value = "#D7D8D9"
                     }
-                , name = "ColorAliasSilver"
+                , name = "ColorGrey200"
                 , attributes = 
                     { category = "color"
-                    , type_ = "alias"
-                    , item = "silver"
+                    , type_ = "grey"
+                    , item = "200"
                     }
-                , path = [ "color", "alias", "silver" ]
+                , path = [ "color", "grey", "200" ]
                 }
-            , steel = 
+            , i300 = 
                 { value = "#afb2b3"
-                , filePath = "tokens/color/alias.json"
+                , filePath = "tokens/color/palette.json"
                 , isSource = True
                 , original = 
-                    { value = "{color.palette.grey.300.value}"
+                    { value = "#AFB2B3"
                     }
-                , name = "ColorAliasSteel"
+                , name = "ColorGrey300"
                 , attributes = 
                     { category = "color"
-                    , type_ = "alias"
-                    , item = "steel"
+                    , type_ = "grey"
+                    , item = "300"
                     }
-                , path = [ "color", "alias", "steel" ]
+                , path = [ "color", "grey", "300" ]
                 }
-            , osloGrey = 
+            , i400 = 
                 { value = "#888b8e"
-                , filePath = "tokens/color/alias.json"
+                , filePath = "tokens/color/palette.json"
                 , isSource = True
                 , original = 
-                    { value = "{color.palette.grey.400.value}"
+                    { value = "#888B8E"
                     }
-                , name = "ColorAliasOsloGrey"
+                , name = "ColorGrey400"
                 , attributes = 
                     { category = "color"
-                    , type_ = "alias"
-                    , item = "osloGrey"
+                    , type_ = "grey"
+                    , item = "400"
                     }
-                , path = [ "color", "alias", "osloGrey" ]
+                , path = [ "color", "grey", "400" ]
                 }
-            , dimGrey = 
+            , i500 = 
                 { value = "#606568"
-                , filePath = "tokens/color/alias.json"
+                , filePath = "tokens/color/palette.json"
                 , isSource = True
                 , original = 
-                    { value = "{color.palette.grey.500.value}"
-                    }
-                , name = "ColorAliasDimGrey"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "dimGrey"
-                    }
-                , path = [ "color", "alias", "dimGrey" ]
-                }
-            , darkGrey = 
-                { value = "#2b2b2c"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.grey.600.value}"
-                    }
-                , name = "ColorAliasDarkGrey"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "darkGrey"
-                    }
-                , path = [ "color", "alias", "darkGrey" ]
-                }
-            , seaFoam = 
-                { value = "#cce1df"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.teal.50.value}"
-                    }
-                , name = "ColorAliasSeaFoam"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "seaFoam"
-                    }
-                , path = [ "color", "alias", "seaFoam" ]
-                }
-            , opal = 
-                { value = "#99c3bf"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.teal.100.value}"
-                    }
-                , name = "ColorAliasOpal"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "opal"
-                    }
-                , path = [ "color", "alias", "opal" ]
-                }
-            , river = 
-                { value = "#66a49e"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.teal.200.value}"
-                    }
-                , name = "ColorAliasRiver"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "river"
-                    }
-                , path = [ "color", "alias", "river" ]
-                }
-            , celadon = 
-                { value = "#33867e"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.teal.300.value}"
-                    }
-                , name = "ColorAliasCeladon"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "celadon"
-                    }
-                , path = [ "color", "alias", "celadon" ]
-                }
-            , pine = 
-                { value = "#00685e"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.teal.400.value}"
-                    }
-                , name = "ColorAliasPine"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "pine"
-                    }
-                , path = [ "color", "alias", "pine" ]
-                }
-            , darkTeal = 
-                { value = "#00453e"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.teal.500.value}"
-                    }
-                , name = "ColorAliasDarkTeal"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "darkTeal"
-                    }
-                , path = [ "color", "alias", "darkTeal" ]
-                }
-            , night = 
-                { value = "#012622"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.teal.600.value}"
-                    }
-                , name = "ColorAliasNight"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "night"
-                    }
-                , path = [ "color", "alias", "night" ]
-                }
-            , mint = 
-                { value = "#e5f4f1"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.green.50.value}"
-                    }
-                , name = "ColorAliasMint"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "mint"
-                    }
-                , path = [ "color", "alias", "mint" ]
-                }
-            , seaMist = 
-                { value = "#cceae4"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.green.100.value}"
-                    }
-                , name = "ColorAliasSeaMist"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "seaMist"
-                    }
-                , path = [ "color", "alias", "seaMist" ]
-                }
-            , coralGreen = 
-                { value = "#b2dfd7"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.green.200.value}"
-                    }
-                , name = "ColorAliasCoralGreen"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "coralGreen"
-                    }
-                , path = [ "color", "alias", "coralGreen" ]
-                }
-            , blueGreen = 
-                { value = "#84cfc2"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.green.300.value}"
-                    }
-                , name = "ColorAliasBlueGreen"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "blueGreen"
-                    }
-                , path = [ "color", "alias", "blueGreen" ]
-                }
-            , azure = 
-                { value = "#38b49e"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.green.400.value}"
-                    }
-                , name = "ColorAliasAzure"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "azure"
-                    }
-                , path = [ "color", "alias", "azure" ]
-                }
-            , greenHaze = 
-                { value = "#00957a"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.green.500.value}"
-                    }
-                , name = "ColorAliasGreenHaze"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "greenHaze"
-                    }
-                , path = [ "color", "alias", "greenHaze" ]
-                }
-            , primaryGreen = 
-                { value = "#037d67"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.green.600.value}"
-                    }
-                , name = "ColorAliasPrimaryGreen"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "primaryGreen"
-                    }
-                , path = [ "color", "alias", "primaryGreen" ]
-                }
-            , icyBlue = 
-                { value = "#edf1f7"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.blue.50.value}"
-                    }
-                , name = "ColorAliasIcyBlue"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "icyBlue"
-                    }
-                , path = [ "color", "alias", "icyBlue" ]
-                }
-            , lightBlue = 
-                { value = "#dce4ef"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.blue.100.value}"
-                    }
-                , name = "ColorAliasLightBlue"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "lightBlue"
-                    }
-                , path = [ "color", "alias", "lightBlue" ]
-                }
-            , cloudy = 
-                { value = "#b9c9de"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.blue.200.value}"
-                    }
-                , name = "ColorAliasCloudy"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "cloudy"
-                    }
-                , path = [ "color", "alias", "cloudy" ]
-                }
-            , sky = 
-                { value = "#a7bcd6"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.blue.300.value}"
-                    }
-                , name = "ColorAliasSky"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "sky"
-                    }
-                , path = [ "color", "alias", "sky" ]
-                }
-            , glacier = 
-                { value = "#688cba"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.blue.400.value}"
-                    }
-                , name = "ColorAliasGlacier"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "glacier"
-                    }
-                , path = [ "color", "alias", "glacier" ]
-                }
-            , ocean = 
-                { value = "#325d93"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.blue.500.value}"
-                    }
-                , name = "ColorAliasOcean"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "ocean"
-                    }
-                , path = [ "color", "alias", "ocean" ]
-                }
-            , darkBlue = 
-                { value = "#003a70"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.blue.600.value}"
-                    }
-                , name = "ColorAliasDarkBlue"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "darkBlue"
-                    }
-                , path = [ "color", "alias", "darkBlue" ]
-                }
-            , cornsilk = 
-                { value = "#fef9dd"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.yellow.50.value}"
-                    }
-                , name = "ColorAliasCornsilk"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "cornsilk"
-                    }
-                , path = [ "color", "alias", "cornsilk" ]
-                }
-            , blonde = 
-                { value = "#fdf3ba"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.yellow.100.value}"
-                    }
-                , name = "ColorAliasBlonde"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "blonde"
-                    }
-                , path = [ "color", "alias", "blonde" ]
-                }
-            , primrose = 
-                { value = "#fcec98"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.yellow.200.value}"
-                    }
-                , name = "ColorAliasPrimrose"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "primrose"
-                    }
-                , path = [ "color", "alias", "primrose" ]
-                }
-            , sunshine = 
-                { value = "#fbe675"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.yellow.300.value}"
-                    }
-                , name = "ColorAliasSunshine"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "sunshine"
-                    }
-                , path = [ "color", "alias", "sunshine" ]
-                }
-            , banana = 
-                { value = "#fae053"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.yellow.400.value}"
-                    }
-                , name = "ColorAliasBanana"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "banana"
-                    }
-                , path = [ "color", "alias", "banana" ]
-                }
-            , burntYellow = 
-                { value = "#f1c400"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.yellow.500.value}"
-                    }
-                , name = "ColorAliasBurntYellow"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "burntYellow"
-                    }
-                , path = [ "color", "alias", "burntYellow" ]
-                }
-            , golden = 
-                { value = "#e5a80c"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.yellow.600.value}"
-                    }
-                , name = "ColorAliasGolden"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "golden"
-                    }
-                , path = [ "color", "alias", "golden" ]
-                }
-            , bisque = 
-                { value = "#ffe6cc"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.orange.50.value}"
-                    }
-                , name = "ColorAliasBisque"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "bisque"
-                    }
-                , path = [ "color", "alias", "bisque" ]
-                }
-            , champagne = 
-                { value = "#ffcd99"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.orange.100.value}"
-                    }
-                , name = "ColorAliasChampagne"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "champagne"
-                    }
-                , path = [ "color", "alias", "champagne" ]
-                }
-            , rajah = 
-                { value = "#ffb466"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.orange.200.value}"
-                    }
-                , name = "ColorAliasRajah"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "rajah"
-                    }
-                , path = [ "color", "alias", "rajah" ]
-                }
-            , saffron = 
-                { value = "#ff9b33"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.orange.300.value}"
-                    }
-                , name = "ColorAliasSaffron"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "saffron"
-                    }
-                , path = [ "color", "alias", "saffron" ]
-                }
-            , pumpkin = 
-                { value = "#ff8200"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.orange.400.value}"
-                    }
-                , name = "ColorAliasPumpkin"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "pumpkin"
-                    }
-                , path = [ "color", "alias", "pumpkin" ]
-                }
-            , chocolate = 
-                { value = "#cf6c05"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.orange.500.value}"
-                    }
-                , name = "ColorAliasChocolate"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "chocolate"
-                    }
-                , path = [ "color", "alias", "chocolate" ]
-                }
-            , wood = 
-                { value = "#a75a0a"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.orange.600.value}"
-                    }
-                , name = "ColorAliasWood"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "wood"
-                    }
-                , path = [ "color", "alias", "wood" ]
-                }
-            , lightRed = 
-                { value = "#fbcccc"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.red.50.value}"
-                    }
-                , name = "ColorAliasLightRed"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "lightRed"
-                    }
-                , path = [ "color", "alias", "lightRed" ]
-                }
-            , brightRed = 
-                { value = "#ed0000"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.red.600.value}"
-                    }
-                , name = "ColorAliasBrightRed"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "brightRed"
-                    }
-                , path = [ "color", "alias", "brightRed" ]
-                }
-            , white = 
-                { value = "#ffffff"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.white.value}"
-                    }
-                , name = "ColorAliasWhite"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "white"
-                    }
-                , path = [ "color", "alias", "white" ]
-                }
-            , black = 
-                { value = "#000000"
-                , filePath = "tokens/color/alias.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.palette.black.value}"
-                    }
-                , name = "ColorAliasBlack"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "alias"
-                    , item = "black"
-                    }
-                , path = [ "color", "alias", "black" ]
-                }
-            }
-        , background = 
-            { white = 
-                { value = "#ffffff"
-                , filePath = "tokens/color/background.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.white.value}"
-                    }
-                , name = "ColorBackgroundWhite"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "background"
-                    , item = "white"
-                    }
-                , path = [ "color", "background", "white" ]
-                }
-            , lightGrey = 
-                { value = "#f5f5f5"
-                , filePath = "tokens/color/background.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.lightGrey.value}"
-                    }
-                , name = "ColorBackgroundLightGrey"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "background"
-                    , item = "lightGrey"
-                    }
-                , path = [ "color", "background", "lightGrey" ]
-                }
-            }
-        , detail = 
-            { darkBlue = 
-                { value = "#003a70"
-                , filePath = "tokens/color/detail.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.darkBlue.value}"
-                    }
-                , name = "ColorDetailDarkBlue"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "detail"
-                    , item = "darkBlue"
-                    }
-                , path = [ "color", "detail", "darkBlue" ]
-                }
-            , ocean = 
-                { value = "#325d93"
-                , filePath = "tokens/color/detail.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.ocean.value}"
-                    }
-                , name = "ColorDetailOcean"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "detail"
-                    , item = "ocean"
-                    }
-                , path = [ "color", "detail", "ocean" ]
-                }
-            , golden = 
-                { value = "#e5a80c"
-                , filePath = "tokens/color/detail.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.golden.value}"
-                    }
-                , name = "ColorDetailGolden"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "detail"
-                    , item = "golden"
-                    }
-                , path = [ "color", "detail", "golden" ]
-                }
-            , burntYellow = 
-                { value = "#f1c400"
-                , filePath = "tokens/color/detail.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.burntYellow.value}"
-                    }
-                , name = "ColorDetailBurntYellow"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "detail"
-                    , item = "burntYellow"
-                    }
-                , path = [ "color", "detail", "burntYellow" ]
-                }
-            , wood = 
-                { value = "#a75a0a"
-                , filePath = "tokens/color/detail.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.wood.value}"
-                    }
-                , name = "ColorDetailWood"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "detail"
-                    , item = "wood"
-                    }
-                , path = [ "color", "detail", "wood" ]
-                }
-            , chocolate = 
-                { value = "#cf6c05"
-                , filePath = "tokens/color/detail.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.chocolate.value}"
-                    }
-                , name = "ColorDetailChocolate"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "detail"
-                    , item = "chocolate"
-                    }
-                , path = [ "color", "detail", "chocolate" ]
-                }
-            , pumpkin = 
-                { value = "#ff8200"
-                , filePath = "tokens/color/detail.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.pumpkin.value}"
-                    }
-                , name = "ColorDetailPumpkin"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "detail"
-                    , item = "pumpkin"
-                    }
-                , path = [ "color", "detail", "pumpkin" ]
-                }
-            }
-        , error = 
-            { brightRed = 
-                { value = "#ed0000"
-                , comment = "Should only be used for errors and settings"
-                , filePath = "tokens/color/error.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.brightRed.value}"
-                    , comment = "Should only be used for errors and settings"
-                    }
-                , name = "ColorErrorBrightRed"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "error"
-                    , item = "brightRed"
-                    }
-                , path = [ "color", "error", "brightRed" ]
-                }
-            , lightRed = 
-                { value = "#fbcccc"
-                , comment = "Should only be used for error backgrounds"
-                , filePath = "tokens/color/error.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.lightRed.value}"
-                    , comment = "Should only be used for error backgrounds"
-                    }
-                , name = "ColorErrorLightRed"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "error"
-                    , item = "lightRed"
-                    }
-                , path = [ "color", "error", "lightRed" ]
-                }
-            }
-        , main = 
-            { darkTeal = 
-                { value = "#00453e"
-                , filePath = "tokens/color/main.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.darkTeal.value}"
-                    }
-                , name = "ColorMainDarkTeal"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "main"
-                    , item = "darkTeal"
-                    }
-                , path = [ "color", "main", "darkTeal" ]
-                }
-            , primaryGreen = 
-                { value = "#037d67"
-                , filePath = "tokens/color/main.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.primaryGreen.value}"
-                    }
-                , name = "ColorMainPrimaryGreen"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "main"
-                    , item = "primaryGreen"
-                    }
-                , path = [ "color", "main", "primaryGreen" ]
-                }
-            , greenHaze = 
-                { value = "#00957a"
-                , filePath = "tokens/color/main.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.greenHaze.value}"
-                    }
-                , name = "ColorMainGreenHaze"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "main"
-                    , item = "greenHaze"
-                    }
-                , path = [ "color", "main", "greenHaze" ]
-                }
-            , coralGreen = 
-                { value = "#b2dfd7"
-                , filePath = "tokens/color/main.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.coralGreen.value}"
-                    }
-                , name = "ColorMainCoralGreen"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "main"
-                    , item = "coralGreen"
-                    }
-                , path = [ "color", "main", "coralGreen" ]
-                }
-            , mint = 
-                { value = "#e5f4f1"
-                , filePath = "tokens/color/main.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.mint.value}"
-                    }
-                , name = "ColorMainMint"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "main"
-                    , item = "mint"
-                    }
-                , path = [ "color", "main", "mint" ]
-                }
-            , white = 
-                { value = "#ffffff"
-                , filePath = "tokens/color/main.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.white.value}"
-                    }
-                , name = "ColorMainWhite"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "main"
-                    , item = "white"
-                    }
-                , path = [ "color", "main", "white" ]
-                }
-            , darkGrey = 
-                { value = "#2b2b2c"
-                , filePath = "tokens/color/main.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.darkGrey.value}"
-                    }
-                , name = "ColorMainDarkGrey"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "main"
-                    , item = "darkGrey"
-                    }
-                , path = [ "color", "main", "darkGrey" ]
-                }
-            , osloGrey = 
-                { value = "#888b8e"
-                , filePath = "tokens/color/main.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.osloGrey.value}"
-                    }
-                , name = "ColorMainOsloGrey"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "main"
-                    , item = "osloGrey"
-                    }
-                , path = [ "color", "main", "osloGrey" ]
-                }
-            , platinum = 
-                { value = "#ebebec"
-                , filePath = "tokens/color/main.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.platinum.value}"
-                    }
-                , name = "ColorMainPlatinum"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "main"
-                    , item = "platinum"
-                    }
-                , path = [ "color", "main", "platinum" ]
-                }
-            , lightGrey = 
-                { value = "#f5f5f5"
-                , filePath = "tokens/color/main.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.lightGrey.value}"
-                    }
-                , name = "ColorMainLightGrey"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "main"
-                    , item = "lightGrey"
-                    }
-                , path = [ "color", "main", "lightGrey" ]
-                }
-            }
-        , outline = 
-            { osloGrey = 
-                { value = "#888b8e"
-                , comment = "Used on tertiary buttons, cards and separators, among others"
-                , filePath = "tokens/color/outline.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.osloGrey.value}"
-                    , comment = "Used on tertiary buttons, cards and separators, among others"
-                    }
-                , name = "ColorOutlineOsloGrey"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "outline"
-                    , item = "osloGrey"
-                    }
-                , path = [ "color", "outline", "osloGrey" ]
-                }
-            , greenHaze = 
-                { value = "#00957a"
-                , comment = "Used for focus state outlines"
-                , filePath = "tokens/color/outline.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.greenHaze.value}"
-                    , comment = "Used for focus state outlines"
-                    }
-                , name = "ColorOutlineGreenHaze"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "outline"
-                    , item = "greenHaze"
-                    }
-                , path = [ "color", "outline", "greenHaze" ]
-                }
-            , darkGrey = 
-                { value = "#2b2b2c"
-                , filePath = "tokens/color/outline.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.darkGrey.value}"
-                    }
-                , name = "ColorOutlineDarkGrey"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "outline"
-                    , item = "darkGrey"
-                    }
-                , path = [ "color", "outline", "darkGrey" ]
-                }
-            , black = 
-                { value = "#000000"
-                , filePath = "tokens/color/outline.json"
-                , isSource = True
-                , original = 
-                    { value = "{color.alias.black.value}"
-                    }
-                , name = "ColorOutlineBlack"
-                , attributes = 
-                    { category = "color"
-                    , type_ = "outline"
-                    , item = "black"
-                    }
-                , path = [ "color", "outline", "black" ]
-                }
-            }
-        , palette = 
-            { grey = 
-                { i50 = 
-                    { value = "#f5f5f5"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#F5F5F5"
-                        }
-                    , name = "ColorPaletteGrey50"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "grey"
-                        , subitem = "50"
-                        }
-                    , path = [ "color", "palette", "grey", "50" ]
-                    }
-                , i100 = 
-                    { value = "#ebebec"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#EBEBEC"
-                        }
-                    , name = "ColorPaletteGrey100"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "grey"
-                        , subitem = "100"
-                        }
-                    , path = [ "color", "palette", "grey", "100" ]
-                    }
-                , i200 = 
-                    { value = "#d7d8d9"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#D7D8D9"
-                        }
-                    , name = "ColorPaletteGrey200"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "grey"
-                        , subitem = "200"
-                        }
-                    , path = [ "color", "palette", "grey", "200" ]
-                    }
-                , i300 = 
-                    { value = "#afb2b3"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#AFB2B3"
-                        }
-                    , name = "ColorPaletteGrey300"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "grey"
-                        , subitem = "300"
-                        }
-                    , path = [ "color", "palette", "grey", "300" ]
-                    }
-                , i400 = 
-                    { value = "#888b8e"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#888B8E"
-                        }
-                    , name = "ColorPaletteGrey400"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "grey"
-                        , subitem = "400"
-                        }
-                    , path = [ "color", "palette", "grey", "400" ]
-                    }
-                , i500 = 
                     { value = "#606568"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#606568"
-                        }
-                    , name = "ColorPaletteGrey500"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "grey"
-                        , subitem = "500"
-                        }
-                    , path = [ "color", "palette", "grey", "500" ]
                     }
-                , i600 = 
-                    { value = "#2b2b2c"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#2B2B2C"
-                        }
-                    , name = "ColorPaletteGrey600"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "grey"
-                        , subitem = "600"
-                        }
-                    , path = [ "color", "palette", "grey", "600" ]
+                , name = "ColorGrey500"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "grey"
+                    , item = "500"
                     }
+                , path = [ "color", "grey", "500" ]
                 }
-            , teal = 
-                { i50 = 
-                    { value = "#cce1df"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#CCE1DF"
-                        }
-                    , name = "ColorPaletteTeal50"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "teal"
-                        , subitem = "50"
-                        }
-                    , path = [ "color", "palette", "teal", "50" ]
+            , i600 = 
+                { value = "#2b2b2c"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#2B2B2C"
                     }
-                , i100 = 
-                    { value = "#99c3bf"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#99C3BF"
-                        }
-                    , name = "ColorPaletteTeal100"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "teal"
-                        , subitem = "100"
-                        }
-                    , path = [ "color", "palette", "teal", "100" ]
+                , name = "ColorGrey600"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "grey"
+                    , item = "600"
                     }
-                , i200 = 
-                    { value = "#66a49e"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#66A49E"
-                        }
-                    , name = "ColorPaletteTeal200"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "teal"
-                        , subitem = "200"
-                        }
-                    , path = [ "color", "palette", "teal", "200" ]
+                , path = [ "color", "grey", "600" ]
+                }
+            }
+        , teal = 
+            { i50 = 
+                { value = "#cce1df"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#CCE1DF"
                     }
-                , i300 = 
-                    { value = "#33867e"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#33867E"
-                        }
-                    , name = "ColorPaletteTeal300"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "teal"
-                        , subitem = "300"
-                        }
-                    , path = [ "color", "palette", "teal", "300" ]
+                , name = "ColorTeal50"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "teal"
+                    , item = "50"
                     }
-                , i400 = 
-                    { value = "#00685e"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#00685E"
-                        }
-                    , name = "ColorPaletteTeal400"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "teal"
-                        , subitem = "400"
-                        }
-                    , path = [ "color", "palette", "teal", "400" ]
+                , path = [ "color", "teal", "50" ]
+                }
+            , i100 = 
+                { value = "#99c3bf"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#99C3BF"
                     }
-                , i500 = 
-                    { value = "#00453e"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#00453E"
-                        }
-                    , name = "ColorPaletteTeal500"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "teal"
-                        , subitem = "500"
-                        }
-                    , path = [ "color", "palette", "teal", "500" ]
+                , name = "ColorTeal100"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "teal"
+                    , item = "100"
                     }
-                , i600 = 
+                , path = [ "color", "teal", "100" ]
+                }
+            , i200 = 
+                { value = "#66a49e"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#66A49E"
+                    }
+                , name = "ColorTeal200"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "teal"
+                    , item = "200"
+                    }
+                , path = [ "color", "teal", "200" ]
+                }
+            , i300 = 
+                { value = "#33867e"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#33867E"
+                    }
+                , name = "ColorTeal300"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "teal"
+                    , item = "300"
+                    }
+                , path = [ "color", "teal", "300" ]
+                }
+            , i400 = 
+                { value = "#00685e"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#00685E"
+                    }
+                , name = "ColorTeal400"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "teal"
+                    , item = "400"
+                    }
+                , path = [ "color", "teal", "400" ]
+                }
+            , i500 = 
+                { value = "#00453e"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#00453E"
+                    }
+                , name = "ColorTeal500"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "teal"
+                    , item = "500"
+                    }
+                , path = [ "color", "teal", "500" ]
+                }
+            , i600 = 
+                { value = "#012622"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
                     { value = "#012622"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#012622"
-                        }
-                    , name = "ColorPaletteTeal600"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "teal"
-                        , subitem = "600"
-                        }
-                    , path = [ "color", "palette", "teal", "600" ]
                     }
+                , name = "ColorTeal600"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "teal"
+                    , item = "600"
+                    }
+                , path = [ "color", "teal", "600" ]
                 }
-            , green = 
-                { i50 = 
-                    { value = "#e5f4f1"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#E5F4F1"
-                        }
-                    , name = "ColorPaletteGreen50"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "green"
-                        , subitem = "50"
-                        }
-                    , path = [ "color", "palette", "green", "50" ]
+            }
+        , green = 
+            { i50 = 
+                { value = "#e5f4f1"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#E5F4F1"
                     }
-                , i100 = 
-                    { value = "#cceae4"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#CCEAE4"
-                        }
-                    , name = "ColorPaletteGreen100"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "green"
-                        , subitem = "100"
-                        }
-                    , path = [ "color", "palette", "green", "100" ]
+                , name = "ColorGreen50"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "green"
+                    , item = "50"
                     }
-                , i200 = 
-                    { value = "#b2dfd7"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#B2DFD7"
-                        }
-                    , name = "ColorPaletteGreen200"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "green"
-                        , subitem = "200"
-                        }
-                    , path = [ "color", "palette", "green", "200" ]
-                    }
-                , i300 = 
-                    { value = "#84cfc2"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#84CFC2"
-                        }
-                    , name = "ColorPaletteGreen300"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "green"
-                        , subitem = "300"
-                        }
-                    , path = [ "color", "palette", "green", "300" ]
-                    }
-                , i400 = 
-                    { value = "#38b49e"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#38B49E"
-                        }
-                    , name = "ColorPaletteGreen400"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "green"
-                        , subitem = "400"
-                        }
-                    , path = [ "color", "palette", "green", "400" ]
-                    }
-                , i500 = 
-                    { value = "#00957a"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#00957A"
-                        }
-                    , name = "ColorPaletteGreen500"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "green"
-                        , subitem = "500"
-                        }
-                    , path = [ "color", "palette", "green", "500" ]
-                    }
-                , i600 = 
-                    { value = "#037d67"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#037D67"
-                        }
-                    , name = "ColorPaletteGreen600"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "green"
-                        , subitem = "600"
-                        }
-                    , path = [ "color", "palette", "green", "600" ]
-                    }
+                , path = [ "color", "green", "50" ]
                 }
-            , blue = 
-                { i50 = 
-                    { value = "#edf1f7"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#EDF1F7"
-                        }
-                    , name = "ColorPaletteBlue50"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blue"
-                        , subitem = "50"
-                        }
-                    , path = [ "color", "palette", "blue", "50" ]
+            , i100 = 
+                { value = "#cceae4"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#CCEAE4"
                     }
-                , i100 = 
-                    { value = "#dce4ef"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#DCE4EF"
-                        }
-                    , name = "ColorPaletteBlue100"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blue"
-                        , subitem = "100"
-                        }
-                    , path = [ "color", "palette", "blue", "100" ]
+                , name = "ColorGreen100"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "green"
+                    , item = "100"
                     }
-                , i200 = 
-                    { value = "#b9c9de"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#B9C9DE"
-                        }
-                    , name = "ColorPaletteBlue200"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blue"
-                        , subitem = "200"
-                        }
-                    , path = [ "color", "palette", "blue", "200" ]
-                    }
-                , i300 = 
-                    { value = "#a7bcd6"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#A7BCD6"
-                        }
-                    , name = "ColorPaletteBlue300"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blue"
-                        , subitem = "300"
-                        }
-                    , path = [ "color", "palette", "blue", "300" ]
-                    }
-                , i400 = 
-                    { value = "#688cba"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#688CBA"
-                        }
-                    , name = "ColorPaletteBlue400"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blue"
-                        , subitem = "400"
-                        }
-                    , path = [ "color", "palette", "blue", "400" ]
-                    }
-                , i500 = 
-                    { value = "#325d93"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#325D93"
-                        }
-                    , name = "ColorPaletteBlue500"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blue"
-                        , subitem = "500"
-                        }
-                    , path = [ "color", "palette", "blue", "500" ]
-                    }
-                , i600 = 
-                    { value = "#003a70"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#003A70"
-                        }
-                    , name = "ColorPaletteBlue600"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blue"
-                        , subitem = "600"
-                        }
-                    , path = [ "color", "palette", "blue", "600" ]
-                    }
+                , path = [ "color", "green", "100" ]
                 }
-            , yellow = 
-                { i50 = 
-                    { value = "#fef9dd"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#FEF9DD"
-                        }
-                    , name = "ColorPaletteYellow50"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "yellow"
-                        , subitem = "50"
-                        }
-                    , path = [ "color", "palette", "yellow", "50" ]
+            , i200 = 
+                { value = "#b2dfd7"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#B2DFD7"
                     }
-                , i100 = 
-                    { value = "#fdf3ba"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#FDF3BA"
-                        }
-                    , name = "ColorPaletteYellow100"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "yellow"
-                        , subitem = "100"
-                        }
-                    , path = [ "color", "palette", "yellow", "100" ]
+                , name = "ColorGreen200"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "green"
+                    , item = "200"
                     }
-                , i200 = 
-                    { value = "#fcec98"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#FCEC98"
-                        }
-                    , name = "ColorPaletteYellow200"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "yellow"
-                        , subitem = "200"
-                        }
-                    , path = [ "color", "palette", "yellow", "200" ]
-                    }
-                , i300 = 
-                    { value = "#fbe675"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#FBE675"
-                        }
-                    , name = "ColorPaletteYellow300"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "yellow"
-                        , subitem = "300"
-                        }
-                    , path = [ "color", "palette", "yellow", "300" ]
-                    }
-                , i400 = 
-                    { value = "#fae053"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#FAE053"
-                        }
-                    , name = "ColorPaletteYellow400"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "yellow"
-                        , subitem = "400"
-                        }
-                    , path = [ "color", "palette", "yellow", "400" ]
-                    }
-                , i500 = 
-                    { value = "#f1c400"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#F1C400"
-                        }
-                    , name = "ColorPaletteYellow500"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "yellow"
-                        , subitem = "500"
-                        }
-                    , path = [ "color", "palette", "yellow", "500" ]
-                    }
-                , i600 = 
-                    { value = "#e5a80c"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#E5A80C"
-                        }
-                    , name = "ColorPaletteYellow600"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "yellow"
-                        , subitem = "600"
-                        }
-                    , path = [ "color", "palette", "yellow", "600" ]
-                    }
+                , path = [ "color", "green", "200" ]
                 }
-            , orange = 
-                { i50 = 
-                    { value = "#ffe6cc"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#FFE6CC"
-                        }
-                    , name = "ColorPaletteOrange50"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "orange"
-                        , subitem = "50"
-                        }
-                    , path = [ "color", "palette", "orange", "50" ]
+            , i300 = 
+                { value = "#84cfc2"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#84CFC2"
                     }
-                , i100 = 
-                    { value = "#ffcd99"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#FFCD99"
-                        }
-                    , name = "ColorPaletteOrange100"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "orange"
-                        , subitem = "100"
-                        }
-                    , path = [ "color", "palette", "orange", "100" ]
+                , name = "ColorGreen300"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "green"
+                    , item = "300"
                     }
-                , i200 = 
-                    { value = "#ffb466"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#FFB466"
-                        }
-                    , name = "ColorPaletteOrange200"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "orange"
-                        , subitem = "200"
-                        }
-                    , path = [ "color", "palette", "orange", "200" ]
-                    }
-                , i300 = 
-                    { value = "#ff9b33"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#FF9B33"
-                        }
-                    , name = "ColorPaletteOrange300"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "orange"
-                        , subitem = "300"
-                        }
-                    , path = [ "color", "palette", "orange", "300" ]
-                    }
-                , i400 = 
-                    { value = "#ff8200"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#FF8200"
-                        }
-                    , name = "ColorPaletteOrange400"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "orange"
-                        , subitem = "400"
-                        }
-                    , path = [ "color", "palette", "orange", "400" ]
-                    }
-                , i500 = 
-                    { value = "#cf6c05"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#CF6C05"
-                        }
-                    , name = "ColorPaletteOrange500"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "orange"
-                        , subitem = "500"
-                        }
-                    , path = [ "color", "palette", "orange", "500" ]
-                    }
-                , i600 = 
-                    { value = "#a75a0a"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#A75A0A"
-                        }
-                    , name = "ColorPaletteOrange600"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "orange"
-                        , subitem = "600"
-                        }
-                    , path = [ "color", "palette", "orange", "600" ]
-                    }
+                , path = [ "color", "green", "300" ]
                 }
-            , red = 
-                { i50 = 
-                    { value = "#fbcccc"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#FBCCCC"
-                        }
-                    , name = "ColorPaletteRed50"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "red"
-                        , subitem = "50"
-                        }
-                    , path = [ "color", "palette", "red", "50" ]
+            , i400 = 
+                { value = "#38b49e"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#38B49E"
                     }
-                , i600 = 
-                    { value = "#ed0000"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "#ED0000"
-                        }
-                    , name = "ColorPaletteRed600"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "red"
-                        , subitem = "600"
-                        }
-                    , path = [ "color", "palette", "red", "600" ]
+                , name = "ColorGreen400"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "green"
+                    , item = "400"
                     }
+                , path = [ "color", "green", "400" ]
                 }
-            , white = 
+            , i500 = 
+                { value = "#00957a"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#00957A"
+                    }
+                , name = "ColorGreen500"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "green"
+                    , item = "500"
+                    }
+                , path = [ "color", "green", "500" ]
+                }
+            , i600 = 
+                { value = "#037d67"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#037D67"
+                    }
+                , name = "ColorGreen600"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "green"
+                    , item = "600"
+                    }
+                , path = [ "color", "green", "600" ]
+                }
+            }
+        , blue = 
+            { i50 = 
+                { value = "#edf1f7"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#EDF1F7"
+                    }
+                , name = "ColorBlue50"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "blue"
+                    , item = "50"
+                    }
+                , path = [ "color", "blue", "50" ]
+                }
+            , i100 = 
+                { value = "#dce4ef"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#DCE4EF"
+                    }
+                , name = "ColorBlue100"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "blue"
+                    , item = "100"
+                    }
+                , path = [ "color", "blue", "100" ]
+                }
+            , i200 = 
+                { value = "#b9c9de"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#B9C9DE"
+                    }
+                , name = "ColorBlue200"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "blue"
+                    , item = "200"
+                    }
+                , path = [ "color", "blue", "200" ]
+                }
+            , i300 = 
+                { value = "#a7bcd6"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#A7BCD6"
+                    }
+                , name = "ColorBlue300"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "blue"
+                    , item = "300"
+                    }
+                , path = [ "color", "blue", "300" ]
+                }
+            , i400 = 
+                { value = "#688cba"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#688CBA"
+                    }
+                , name = "ColorBlue400"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "blue"
+                    , item = "400"
+                    }
+                , path = [ "color", "blue", "400" ]
+                }
+            , i500 = 
+                { value = "#325d93"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#325D93"
+                    }
+                , name = "ColorBlue500"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "blue"
+                    , item = "500"
+                    }
+                , path = [ "color", "blue", "500" ]
+                }
+            , i600 = 
+                { value = "#003a70"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#003A70"
+                    }
+                , name = "ColorBlue600"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "blue"
+                    , item = "600"
+                    }
+                , path = [ "color", "blue", "600" ]
+                }
+            }
+        , yellow = 
+            { i50 = 
+                { value = "#fef9dd"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#FEF9DD"
+                    }
+                , name = "ColorYellow50"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "yellow"
+                    , item = "50"
+                    }
+                , path = [ "color", "yellow", "50" ]
+                }
+            , i100 = 
+                { value = "#fdf3ba"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#FDF3BA"
+                    }
+                , name = "ColorYellow100"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "yellow"
+                    , item = "100"
+                    }
+                , path = [ "color", "yellow", "100" ]
+                }
+            , i200 = 
+                { value = "#fcec98"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#FCEC98"
+                    }
+                , name = "ColorYellow200"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "yellow"
+                    , item = "200"
+                    }
+                , path = [ "color", "yellow", "200" ]
+                }
+            , i300 = 
+                { value = "#fbe675"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#FBE675"
+                    }
+                , name = "ColorYellow300"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "yellow"
+                    , item = "300"
+                    }
+                , path = [ "color", "yellow", "300" ]
+                }
+            , i400 = 
+                { value = "#fae053"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#FAE053"
+                    }
+                , name = "ColorYellow400"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "yellow"
+                    , item = "400"
+                    }
+                , path = [ "color", "yellow", "400" ]
+                }
+            , i500 = 
+                { value = "#f1c400"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#F1C400"
+                    }
+                , name = "ColorYellow500"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "yellow"
+                    , item = "500"
+                    }
+                , path = [ "color", "yellow", "500" ]
+                }
+            , i600 = 
+                { value = "#e5a80c"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#E5A80C"
+                    }
+                , name = "ColorYellow600"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "yellow"
+                    , item = "600"
+                    }
+                , path = [ "color", "yellow", "600" ]
+                }
+            }
+        , orange = 
+            { i50 = 
+                { value = "#ffe6cc"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#FFE6CC"
+                    }
+                , name = "ColorOrange50"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "orange"
+                    , item = "50"
+                    }
+                , path = [ "color", "orange", "50" ]
+                }
+            , i100 = 
+                { value = "#ffcd99"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#FFCD99"
+                    }
+                , name = "ColorOrange100"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "orange"
+                    , item = "100"
+                    }
+                , path = [ "color", "orange", "100" ]
+                }
+            , i200 = 
+                { value = "#ffb466"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#FFB466"
+                    }
+                , name = "ColorOrange200"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "orange"
+                    , item = "200"
+                    }
+                , path = [ "color", "orange", "200" ]
+                }
+            , i300 = 
+                { value = "#ff9b33"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#FF9B33"
+                    }
+                , name = "ColorOrange300"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "orange"
+                    , item = "300"
+                    }
+                , path = [ "color", "orange", "300" ]
+                }
+            , i400 = 
+                { value = "#ff8200"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#FF8200"
+                    }
+                , name = "ColorOrange400"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "orange"
+                    , item = "400"
+                    }
+                , path = [ "color", "orange", "400" ]
+                }
+            , i500 = 
+                { value = "#cf6c05"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#CF6C05"
+                    }
+                , name = "ColorOrange500"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "orange"
+                    , item = "500"
+                    }
+                , path = [ "color", "orange", "500" ]
+                }
+            , i600 = 
+                { value = "#a75a0a"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#A75A0A"
+                    }
+                , name = "ColorOrange600"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "orange"
+                    , item = "600"
+                    }
+                , path = [ "color", "orange", "600" ]
+                }
+            }
+        , red = 
+            { i50 = 
+                { value = "#fbcccc"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#FBCCCC"
+                    }
+                , name = "ColorRed50"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "red"
+                    , item = "50"
+                    }
+                , path = [ "color", "red", "50" ]
+                }
+            , i600 = 
+                { value = "#ed0000"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "#ED0000"
+                    }
+                , name = "ColorRed600"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "red"
+                    , item = "600"
+                    }
+                , path = [ "color", "red", "600" ]
+                }
+            }
+        , white = 
+            { value = "#ffffff"
+            , filePath = "tokens/color/palette.json"
+            , isSource = True
+            , original = 
+                { value = "#FFFFFF"
+                }
+            , name = "ColorWhite"
+            , attributes = 
+                { category = "color"
+                , type_ = "white"
+                }
+            , path = [ "color", "white" ]
+            }
+        , black = 
+            { value = "#000000"
+            , filePath = "tokens/color/palette.json"
+            , isSource = True
+            , original = 
+                { value = "#000000"
+                }
+            , name = "ColorBlack"
+            , attributes = 
+                { category = "color"
+                , type_ = "black"
+                }
+            , path = [ "color", "black" ]
+            }
+        , whiteAlpha = 
+            { i100 = 
                 { value = "#ffffff"
                 , filePath = "tokens/color/palette.json"
                 , isSource = True
                 , original = 
-                    { value = "#FFFFFF"
+                    { value = "rgba(255, 255, 255, 0.1)"
                     }
-                , name = "ColorPaletteWhite"
+                , name = "ColorWhiteAlpha100"
                 , attributes = 
                     { category = "color"
-                    , type_ = "palette"
-                    , item = "white"
+                    , type_ = "whiteAlpha"
+                    , item = "100"
                     }
-                , path = [ "color", "palette", "white" ]
+                , path = [ "color", "whiteAlpha", "100" ]
                 }
-            , black = 
+            , i200 = 
+                { value = "#ffffff"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "rgba(255, 255, 255, 0.2)"
+                    }
+                , name = "ColorWhiteAlpha200"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "whiteAlpha"
+                    , item = "200"
+                    }
+                , path = [ "color", "whiteAlpha", "200" ]
+                }
+            , i300 = 
+                { value = "#ffffff"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "rgba(255, 255, 255, 0.3)"
+                    }
+                , name = "ColorWhiteAlpha300"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "whiteAlpha"
+                    , item = "300"
+                    }
+                , path = [ "color", "whiteAlpha", "300" ]
+                }
+            , i400 = 
+                { value = "#ffffff"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "rgba(255, 255, 255, 0.4)"
+                    }
+                , name = "ColorWhiteAlpha400"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "whiteAlpha"
+                    , item = "400"
+                    }
+                , path = [ "color", "whiteAlpha", "400" ]
+                }
+            , i500 = 
+                { value = "#ffffff"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "rgba(255, 255, 255, 0.5)"
+                    }
+                , name = "ColorWhiteAlpha500"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "whiteAlpha"
+                    , item = "500"
+                    }
+                , path = [ "color", "whiteAlpha", "500" ]
+                }
+            , i600 = 
+                { value = "#ffffff"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "rgba(255, 255, 255, 0.6)"
+                    }
+                , name = "ColorWhiteAlpha600"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "whiteAlpha"
+                    , item = "600"
+                    }
+                , path = [ "color", "whiteAlpha", "600" ]
+                }
+            , i700 = 
+                { value = "#ffffff"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "rgba(255, 255, 255, 0.7)"
+                    }
+                , name = "ColorWhiteAlpha700"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "whiteAlpha"
+                    , item = "700"
+                    }
+                , path = [ "color", "whiteAlpha", "700" ]
+                }
+            , i800 = 
+                { value = "#ffffff"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "rgba(255, 255, 255, 0.8)"
+                    }
+                , name = "ColorWhiteAlpha800"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "whiteAlpha"
+                    , item = "800"
+                    }
+                , path = [ "color", "whiteAlpha", "800" ]
+                }
+            , i900 = 
+                { value = "#ffffff"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "rgba(255, 255, 255, 0.9)"
+                    }
+                , name = "ColorWhiteAlpha900"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "whiteAlpha"
+                    , item = "900"
+                    }
+                , path = [ "color", "whiteAlpha", "900" ]
+                }
+            }
+        , blackAlpha = 
+            { i100 = 
                 { value = "#000000"
                 , filePath = "tokens/color/palette.json"
                 , isSource = True
                 , original = 
-                    { value = "#000000"
+                    { value = "rgba(0, 0, 0, 0.1)"
                     }
-                , name = "ColorPaletteBlack"
+                , name = "ColorBlackAlpha100"
                 , attributes = 
                     { category = "color"
-                    , type_ = "palette"
-                    , item = "black"
+                    , type_ = "blackAlpha"
+                    , item = "100"
                     }
-                , path = [ "color", "palette", "black" ]
+                , path = [ "color", "blackAlpha", "100" ]
                 }
-            , whiteAlpha = 
-                { i100 = 
-                    { value = "#ffffff"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(255, 255, 255, 0.1)"
-                        }
-                    , name = "ColorPaletteWhiteAlpha100"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "whiteAlpha"
-                        , subitem = "100"
-                        }
-                    , path = [ "color", "palette", "whiteAlpha", "100" ]
-                    }
-                , i200 = 
-                    { value = "#ffffff"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(255, 255, 255, 0.2)"
-                        }
-                    , name = "ColorPaletteWhiteAlpha200"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "whiteAlpha"
-                        , subitem = "200"
-                        }
-                    , path = [ "color", "palette", "whiteAlpha", "200" ]
-                    }
-                , i300 = 
-                    { value = "#ffffff"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(255, 255, 255, 0.3)"
-                        }
-                    , name = "ColorPaletteWhiteAlpha300"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "whiteAlpha"
-                        , subitem = "300"
-                        }
-                    , path = [ "color", "palette", "whiteAlpha", "300" ]
-                    }
-                , i400 = 
-                    { value = "#ffffff"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(255, 255, 255, 0.4)"
-                        }
-                    , name = "ColorPaletteWhiteAlpha400"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "whiteAlpha"
-                        , subitem = "400"
-                        }
-                    , path = [ "color", "palette", "whiteAlpha", "400" ]
-                    }
-                , i500 = 
-                    { value = "#ffffff"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(255, 255, 255, 0.5)"
-                        }
-                    , name = "ColorPaletteWhiteAlpha500"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "whiteAlpha"
-                        , subitem = "500"
-                        }
-                    , path = [ "color", "palette", "whiteAlpha", "500" ]
-                    }
-                , i600 = 
-                    { value = "#ffffff"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(255, 255, 255, 0.6)"
-                        }
-                    , name = "ColorPaletteWhiteAlpha600"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "whiteAlpha"
-                        , subitem = "600"
-                        }
-                    , path = [ "color", "palette", "whiteAlpha", "600" ]
-                    }
-                , i700 = 
-                    { value = "#ffffff"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(255, 255, 255, 0.7)"
-                        }
-                    , name = "ColorPaletteWhiteAlpha700"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "whiteAlpha"
-                        , subitem = "700"
-                        }
-                    , path = [ "color", "palette", "whiteAlpha", "700" ]
-                    }
-                , i800 = 
-                    { value = "#ffffff"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(255, 255, 255, 0.8)"
-                        }
-                    , name = "ColorPaletteWhiteAlpha800"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "whiteAlpha"
-                        , subitem = "800"
-                        }
-                    , path = [ "color", "palette", "whiteAlpha", "800" ]
-                    }
-                , i900 = 
-                    { value = "#ffffff"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(255, 255, 255, 0.9)"
-                        }
-                    , name = "ColorPaletteWhiteAlpha900"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "whiteAlpha"
-                        , subitem = "900"
-                        }
-                    , path = [ "color", "palette", "whiteAlpha", "900" ]
-                    }
-                }
-            , blackAlpha = 
-                { i100 = 
-                    { value = "#000000"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(0, 0, 0, 0.1)"
-                        }
-                    , name = "ColorPaletteBlackAlpha100"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blackAlpha"
-                        , subitem = "100"
-                        }
-                    , path = [ "color", "palette", "blackAlpha", "100" ]
-                    }
-                , i200 = 
-                    { value = "#000000"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(0, 0, 0, 0.2)"
-                        }
-                    , name = "ColorPaletteBlackAlpha200"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blackAlpha"
-                        , subitem = "200"
-                        }
-                    , path = [ "color", "palette", "blackAlpha", "200" ]
-                    }
-                , i300 = 
-                    { value = "#000000"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(0, 0, 0, 0.3)"
-                        }
-                    , name = "ColorPaletteBlackAlpha300"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blackAlpha"
-                        , subitem = "300"
-                        }
-                    , path = [ "color", "palette", "blackAlpha", "300" ]
-                    }
-                , i400 = 
-                    { value = "#000000"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(0, 0, 0, 0.4)"
-                        }
-                    , name = "ColorPaletteBlackAlpha400"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blackAlpha"
-                        , subitem = "400"
-                        }
-                    , path = [ "color", "palette", "blackAlpha", "400" ]
-                    }
-                , i500 = 
-                    { value = "#000000"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(0, 0, 0, 0.5)"
-                        }
-                    , name = "ColorPaletteBlackAlpha500"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blackAlpha"
-                        , subitem = "500"
-                        }
-                    , path = [ "color", "palette", "blackAlpha", "500" ]
-                    }
-                , i600 = 
-                    { value = "#000000"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(0, 0, 0, 0.6)"
-                        }
-                    , name = "ColorPaletteBlackAlpha600"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blackAlpha"
-                        , subitem = "600"
-                        }
-                    , path = [ "color", "palette", "blackAlpha", "600" ]
-                    }
-                , i700 = 
-                    { value = "#000000"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(0, 0, 0, 0.7)"
-                        }
-                    , name = "ColorPaletteBlackAlpha700"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blackAlpha"
-                        , subitem = "700"
-                        }
-                    , path = [ "color", "palette", "blackAlpha", "700" ]
-                    }
-                , i800 = 
-                    { value = "#000000"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(0, 0, 0, 0.8)"
-                        }
-                    , name = "ColorPaletteBlackAlpha800"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blackAlpha"
-                        , subitem = "800"
-                        }
-                    , path = [ "color", "palette", "blackAlpha", "800" ]
-                    }
-                , i900 = 
-                    { value = "#000000"
-                    , filePath = "tokens/color/palette.json"
-                    , isSource = True
-                    , original = 
-                        { value = "rgba(0, 0, 0, 0.9)"
-                        }
-                    , name = "ColorPaletteBlackAlpha900"
-                    , attributes = 
-                        { category = "color"
-                        , type_ = "palette"
-                        , item = "blackAlpha"
-                        , subitem = "900"
-                        }
-                    , path = [ "color", "palette", "blackAlpha", "900" ]
-                    }
-                }
-            }
-        , product = 
-            { ocean = 
-                { value = "#325d93"
-                , comment = "Used for the Smartpris product"
-                , filePath = "tokens/color/product.json"
+            , i200 = 
+                { value = "#000000"
+                , filePath = "tokens/color/palette.json"
                 , isSource = True
                 , original = 
-                    { value = "{color.alias.ocean.value}"
-                    , comment = "Used for the Smartpris product"
+                    { value = "rgba(0, 0, 0, 0.2)"
                     }
-                , name = "ColorProductOcean"
+                , name = "ColorBlackAlpha200"
                 , attributes = 
                     { category = "color"
-                    , type_ = "product"
-                    , item = "ocean"
+                    , type_ = "blackAlpha"
+                    , item = "200"
                     }
-                , path = [ "color", "product", "ocean" ]
+                , path = [ "color", "blackAlpha", "200" ]
                 }
-            , wood = 
-                { value = "#a75a0a"
-                , comment = "Used for the Flexbillett product"
-                , filePath = "tokens/color/product.json"
+            , i300 = 
+                { value = "#000000"
+                , filePath = "tokens/color/palette.json"
                 , isSource = True
                 , original = 
-                    { value = "{color.alias.wood.value}"
-                    , comment = "Used for the Flexbillett product"
+                    { value = "rgba(0, 0, 0, 0.3)"
                     }
-                , name = "ColorProductWood"
+                , name = "ColorBlackAlpha300"
                 , attributes = 
                     { category = "color"
-                    , type_ = "product"
-                    , item = "wood"
+                    , type_ = "blackAlpha"
+                    , item = "300"
                     }
-                , path = [ "color", "product", "wood" ]
+                , path = [ "color", "blackAlpha", "300" ]
                 }
-            }
-        , text = 
-            { darkGrey = 
-                { value = "#2b2b2c"
-                , comment = "Used for typography and icons on light backgrounds"
-                , filePath = "tokens/color/text.json"
+            , i400 = 
+                { value = "#000000"
+                , filePath = "tokens/color/palette.json"
                 , isSource = True
                 , original = 
-                    { value = "{color.alias.darkGrey.value}"
-                    , comment = "Used for typography and icons on light backgrounds"
+                    { value = "rgba(0, 0, 0, 0.4)"
                     }
-                , name = "ColorTextDarkGrey"
+                , name = "ColorBlackAlpha400"
                 , attributes = 
                     { category = "color"
-                    , type_ = "text"
-                    , item = "darkGrey"
+                    , type_ = "blackAlpha"
+                    , item = "400"
                     }
-                , path = [ "color", "text", "darkGrey" ]
+                , path = [ "color", "blackAlpha", "400" ]
                 }
-            , white = 
-                { value = "#ffffff"
-                , comment = "Used for typography and icons on dark backgrounds"
-                , filePath = "tokens/color/text.json"
+            , i500 = 
+                { value = "#000000"
+                , filePath = "tokens/color/palette.json"
                 , isSource = True
                 , original = 
-                    { value = "{color.alias.white.value}"
-                    , comment = "Used for typography and icons on dark backgrounds"
+                    { value = "rgba(0, 0, 0, 0.5)"
                     }
-                , name = "ColorTextWhite"
+                , name = "ColorBlackAlpha500"
                 , attributes = 
                     { category = "color"
-                    , type_ = "text"
-                    , item = "white"
+                    , type_ = "blackAlpha"
+                    , item = "500"
                     }
-                , path = [ "color", "text", "white" ]
+                , path = [ "color", "blackAlpha", "500" ]
                 }
-            , darkTeal = 
-                { value = "#00453e"
-                , comment = "Used primarily for links"
-                , filePath = "tokens/color/text.json"
+            , i600 = 
+                { value = "#000000"
+                , filePath = "tokens/color/palette.json"
                 , isSource = True
                 , original = 
-                    { value = "{color.alias.darkTeal.value}"
-                    , comment = "Used primarily for links"
+                    { value = "rgba(0, 0, 0, 0.6)"
                     }
-                , name = "ColorTextDarkTeal"
+                , name = "ColorBlackAlpha600"
                 , attributes = 
                     { category = "color"
-                    , type_ = "text"
-                    , item = "darkTeal"
+                    , type_ = "blackAlpha"
+                    , item = "600"
                     }
-                , path = [ "color", "text", "darkTeal" ]
+                , path = [ "color", "blackAlpha", "600" ]
+                }
+            , i700 = 
+                { value = "#000000"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "rgba(0, 0, 0, 0.7)"
+                    }
+                , name = "ColorBlackAlpha700"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "blackAlpha"
+                    , item = "700"
+                    }
+                , path = [ "color", "blackAlpha", "700" ]
+                }
+            , i800 = 
+                { value = "#000000"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "rgba(0, 0, 0, 0.8)"
+                    }
+                , name = "ColorBlackAlpha800"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "blackAlpha"
+                    , item = "800"
+                    }
+                , path = [ "color", "blackAlpha", "800" ]
+                }
+            , i900 = 
+                { value = "#000000"
+                , filePath = "tokens/color/palette.json"
+                , isSource = True
+                , original = 
+                    { value = "rgba(0, 0, 0, 0.9)"
+                    }
+                , name = "ColorBlackAlpha900"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "blackAlpha"
+                    , item = "900"
+                    }
+                , path = [ "color", "blackAlpha", "900" ]
                 }
             }
         }

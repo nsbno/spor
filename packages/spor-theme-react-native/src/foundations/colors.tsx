@@ -7,17 +7,26 @@ const colorAliases = Object.entries(tokens.color.alias).reduce(
   {} as { [key in keyof typeof tokens.color.alias]: string }
 );
 
-const colorPalette: Record<string, string> = {};
-for (const [key, tokenOrScale] of Object.entries(tokens.color.palette)) {
-  if ("original" in tokenOrScale) {
-    colorPalette[key] = tokenOrScale.original.value;
-    continue;
-  } else {
-    for (const [scaleKey, scaleValue] of Object.entries(tokenOrScale)) {
-      colorPalette[`${key}.${scaleKey}`] = (scaleValue as any).original.value;
+const colorPalette = Object.entries(tokens.color.palette).reduce(
+  (acc, [key, tokenOrScale]) => {
+    if ("original" in tokenOrScale) {
+      return { ...acc, [key]: tokenOrScale.original.value };
+    } else {
+      const scaledValues = Object.entries(tokenOrScale).reduce(
+        (acc, [scaleKey, scaleValue]) => ({
+          ...acc,
+          [`${key}.${scaleKey}`]: (scaleValue as any).original.value,
+        }),
+        {}
+      );
+      return { ...acc, ...scaledValues };
     }
+  },
+  {} as {
+    [key in `${keyof typeof tokens.color.palette}.${keyof typeof tokens.color.palette.blackAlpha}`]: string;
   }
-}
+);
+
 /** All colors in the Spor design system */
 export const colors = {
   ...colorAliases,

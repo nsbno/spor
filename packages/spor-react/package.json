@@ -37,6 +37,7 @@
     "@vygruppen/spor-provider-react": "*",
     "@vygruppen/spor-tab-react": "*",
     "@vygruppen/spor-typography-react": "*",
+    "@vygruppen/spor-util-react": "*",
     "@vygruppen/spor-stepper-react": "*",
     "framer-motion": "^6.3.3"
   },

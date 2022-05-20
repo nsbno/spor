@@ -1,4 +1,5 @@
 import { Center, Stack, useDisclosure } from "@chakra-ui/react";
+import { Link, useLocation } from "@remix-run/react";
 import {
   Box,
   Divider,
@@ -12,7 +13,6 @@ import {
   VyLogo,
 } from "@vygruppen/spor-react";
 import { useEffect } from "react";
-import { Link, useLocation } from "@remix-run/react";
 import { MenuItem } from "~/utils/initialSanityData.server";
 import { useMenu } from "~/utils/useMenu";
 import { SearchableContentMenu } from "../content-menu/SearchableContentMenu";
@@ -23,12 +23,12 @@ import { UserPreferenceSwitcher } from "./UserPreferenceSwitcher";
 export const SiteHeader = () => {
   return (
     <Flex
-      color="alias.white"
+      color="white"
       justifyContent="space-between"
       alignItems="center"
       px={[3, 4, 7]}
       py={[3, 4, 5, 7]}
-      backgroundColor="alias.darkTeal"
+      backgroundColor="darkTeal"
     >
       <Box as={Link} mr={[0, 0, 11]} to="/">
         <VyLogo
@@ -86,9 +86,9 @@ const MobileNavigation = () => {
         aria-label="Meny"
         variant="ghost"
         onClick={onOpen}
-        color="alias.white"
+        color="white"
         _active={{
-          color: "alias.greenHaze",
+          color: "greenHaze",
         }}
       />
       <Modal isOpen={isOpen} onClose={onClose}>

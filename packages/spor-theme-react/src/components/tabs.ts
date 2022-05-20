@@ -55,19 +55,19 @@ const getTabColorSchemeProps = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "dark":
       return {
-        color: "alias.white",
+        color: "white",
       };
     case "light":
       return {
-        color: "alias.darkGrey",
+        color: "darkGrey",
       };
     case "green":
       return {
-        color: "alias.darkTeal",
+        color: "darkTeal",
       };
     case "grey":
       return {
-        color: "alias.darkGrey",
+        color: "darkGrey",
       };
     default:
       return {};
@@ -78,37 +78,37 @@ const getTabColorSchemeSelectedProps = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "dark":
       return {
-        backgroundColor: "alias.white",
-        color: "alias.darkTeal",
+        backgroundColor: "white",
+        color: "darkTeal",
         _focus: {
-          boxShadow: `inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
+          boxShadow: `inset 0 0 0 2px ${props.theme.colors.greenHaze}`,
         },
         "&:focus:not(:focus-visible)": {
           boxShadow: "none",
         },
         _focusVisible: {
-          boxShadow: `inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
+          boxShadow: `inset 0 0 0 2px ${props.theme.colors.greenHaze}`,
         },
         _hover: {
-          backgroundColor: "alias.white",
-          color: "alias.darkTeal",
+          backgroundColor: "white",
+          color: "darkTeal",
         },
         _active: {
-          backgroundColor: "alias.white",
-          color: "alias.darkTeal",
+          backgroundColor: "white",
+          color: "darkTeal",
         },
       };
     default:
       return {
-        backgroundColor: "alias.darkTeal",
-        color: "alias.white",
+        backgroundColor: "darkTeal",
+        color: "white",
         _hover: {
-          backgroundColor: "alias.darkTeal",
-          color: "alias.white",
+          backgroundColor: "darkTeal",
+          color: "white",
         },
         _active: {
-          backgroundColor: "alias.darkTeal",
-          color: "alias.white",
+          backgroundColor: "darkTeal",
+          color: "white",
         },
       };
   }
@@ -118,11 +118,11 @@ const getTabColorSchemeFocusProps = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "dark":
       return {
-        boxShadow: `inset 0 0 0 2px ${props.theme.colors.alias.white}`,
+        boxShadow: `inset 0 0 0 2px ${props.theme.colors.white}`,
       };
     default:
       return {
-        boxShadow: `inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
+        boxShadow: `inset 0 0 0 2px ${props.theme.colors.greenHaze}`,
       };
   }
 };
@@ -131,19 +131,19 @@ const getTabColorSchemeHoverProps = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "dark":
       return {
-        backgroundColor: "alias.pine",
+        backgroundColor: "pine",
       };
     case "light":
       return {
-        backgroundColor: "alias.silver",
+        backgroundColor: "silver",
       };
     case "green":
       return {
-        backgroundColor: "alias.coralGreen",
+        backgroundColor: "coralGreen",
       };
     case "grey":
       return {
-        backgroundColor: "alias.silver",
+        backgroundColor: "silver",
       };
     default:
       return {};
@@ -154,23 +154,23 @@ const getTabColorSchemeActiveProps = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "dark":
       return {
-        backgroundColor: "alias.celadon",
-        color: "alias.white",
+        backgroundColor: "celadon",
+        color: "white",
       };
     case "light":
       return {
-        backgroundColor: "alias.mint",
-        color: "alias.darkGrey",
+        backgroundColor: "mint",
+        color: "darkGrey",
       };
     case "green":
       return {
-        backgroundColor: "alias.seaMist",
-        color: "alias.darkTeal",
+        backgroundColor: "seaMist",
+        color: "darkTeal",
       };
     case "grey":
       return {
-        backgroundColor: "alias.lightGrey",
-        color: "alias.darkGrey",
+        backgroundColor: "lightGrey",
+        color: "darkGrey",
       };
     default:
       return {};
@@ -181,19 +181,19 @@ const getTabColorSchemeDisabledProps = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "dark":
       return {
-        color: "palette.lightAlpha.200",
+        color: "whiteAlpha.200",
       };
     case "light":
       return {
-        color: "alias.silver",
+        color: "silver",
       };
     case "green":
       return {
-        color: "alias.coralGreen",
+        color: "coralGreen",
       };
     case "grey":
       return {
-        color: "alias.steel",
+        color: "steel",
       };
     default:
       return {};
@@ -203,19 +203,19 @@ const getTabColorSchemeDisabledProps = (props: StyleFunctionProps) => {
 const getTablistColorSchemeProps = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "dark":
-      return { backgroundColor: "alias.darkTeal", color: "alias.white" };
+      return { backgroundColor: "darkTeal", color: "white" };
     case "light":
       return {
-        backgroundColor: "alias.white",
-        color: "alias.darkGrey",
-        boxShadow: `inset 0 0 0 1px ${props.theme.colors.alias.darkGrey}`,
+        backgroundColor: "white",
+        color: "darkGrey",
+        boxShadow: `inset 0 0 0 1px ${props.theme.colors.darkGrey}`,
       };
     case "green":
-      return { backgroundColor: "alias.mint", color: "alias.darkTeal" };
+      return { backgroundColor: "mint", color: "darkTeal" };
     case "grey":
       return {
-        backgroundColor: "alias.platinum",
-        color: "alias.darkGrey",
+        backgroundColor: "platinum",
+        color: "darkGrey",
       };
     default:
       return {};

@@ -1,6 +1,6 @@
 import { Center, Flex } from "@chakra-ui/react";
-import { useMatch } from "react-router-dom";
 import { Link, useResolvedPath } from "@remix-run/react";
+import { useMatch } from "react-router-dom";
 
 type SiteNavigationProps = {
   children: React.ReactNode;
@@ -36,9 +36,9 @@ export const NavigationLink = ({ children, href }: NavigationItemProps) => {
       fontWeight="bold"
       fontStyle="sm"
       _focusVisible={{ borderColor: "outline.greenHaze", outline: "none" }}
-      _hover={{ backgroundColor: "alias.pine" }}
+      _hover={{ backgroundColor: "pine" }}
       _active={{
-        backgroundColor: "alias.celadon",
+        backgroundColor: "celadon",
       }}
       backgroundColor={isActive ? "rgba(255,255,255,0.2)" : "transparent"}
       transitionDuration="fast"

@@ -25,8 +25,6 @@ We have a variety of tokens, and we suggest you explore the different types of t
 
 There are a lot of colors in our palette, and the colors are structured into a few useful groups. You can find the complete palette in colors/palette, and the more rememberable aliases for those colors on colors/alias.
 
-There are several more, like colors/main for our main color palette (most colors should come from here), and colors/text for colors used in typography.
-
 ### Depth
 
 The depth category includes drop shadows and z-indexes (elevation), grouped by regular use cases.

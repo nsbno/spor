@@ -56,7 +56,7 @@ const UserPreferencesModal = ({
             mb={6}
             pb={3}
             borderBottom="1px solid"
-            borderColor="palette.blackAlpha.200"
+            borderColor="blackAlpha.200"
           >
             Her kan du endre visningsvalgene for siden. Du kan velge om du vil
             se det som utvikler eller designer, og du kan velge hvilken kode du

@@ -50,10 +50,7 @@ function getStyleProps(props: TableProps) {
   return props.variant === "outline"
     ? {
         border: "1px solid",
-        borderColor:
-          props.colorScheme === "grey"
-            ? "alias.silver"
-            : "palette.blackAlpha.200",
+        borderColor: props.colorScheme === "grey" ? "silver" : "blackAlpha.200",
         overflow: "hidden",
         borderRadius: "md",
       }

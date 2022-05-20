@@ -13,7 +13,7 @@ export const LeftSidebar = () => {
       px={1.5}
       py={2}
       borderRight="9px solid"
-      borderRightColor="alias.lightGrey"
+      borderRightColor="lightGrey"
     >
       <SearchableContentMenu />
     </Box>

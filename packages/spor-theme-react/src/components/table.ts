@@ -43,22 +43,16 @@ const numericStyles: SystemStyleObject = {
 const variantSimple: PartsStyleFunction<typeof parts> = (props) => {
   return {
     table: {
-      color: mode("alias.darkGrey", "alias.white")(props),
+      color: mode("darkGrey", "white")(props),
     },
     th: {
       borderBottom: "sm",
-      borderColor: mode(
-        `palette.blackAlpha.200`,
-        `palette.whiteAlpha.300`
-      )(props),
+      borderColor: mode(`blackAlpha.200`, `whiteAlpha.300`)(props),
       ...numericStyles,
     },
     td: {
       borderBottom: "sm",
-      borderColor: mode(
-        `palette.blackAlpha.200`,
-        `palette.whiteAlpha.300`
-      )(props),
+      borderColor: mode(`blackAlpha.200`, `whiteAlpha.300`)(props),
       ...numericStyles,
     },
   };
@@ -74,28 +68,28 @@ const variantOutline: PartsStyleFunction<typeof parts> = (props) => {
         transitionProperty: "background-color, box-shadow",
         _hover: {
           boxShadow: mode(
-            `inset 3px 0 0 ${theme.colors.alias.darkTeal}`,
-            `inset 3px 0 0 ${theme.colors.alias.blueGreen}`
+            `inset 3px 0 0 ${theme.colors.darkTeal}`,
+            `inset 3px 0 0 ${theme.colors.blueGreen}`
           )(props),
           backgroundColor: mode(
-            c === "grey" ? "alias.mint" : "alias.coralGreen",
-            "palette.whiteAlpha.200"
+            c === "grey" ? "mint" : "coralGreen",
+            "whiteAlpha.200"
           )(props),
         },
       },
     },
     th: {
-      color: mode("alias.darkGrey", "alias.white")(props),
+      color: mode("darkGrey", "white")(props),
       border: mode("none", "md"),
-      borderColor: mode("transparent", `palette.whiteAlpha.200`)(props),
-      backgroundColor: mode(`palette.${c}.100`, "palette.darkTeal")(props),
+      borderColor: mode("transparent", `whiteAlpha.200`)(props),
+      backgroundColor: mode(`${c}.100`, "darkTeal")(props),
       ...numericStyles,
     },
     td: {
       border: mode("sm", "md"),
       borderColor: mode(
-        c === "grey" ? "alias.silver" : "palette.blackAlpha.200",
-        "palette.whiteAlpha.200"
+        c === "grey" ? "silver" : "blackAlpha.200",
+        "whiteAlpha.200"
       )(props),
       ...numericStyles,
       _first: {

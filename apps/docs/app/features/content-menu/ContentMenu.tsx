@@ -61,7 +61,7 @@ export const ContentMenu = forwardRef((_, ref) => {
                   </MenuItem>
                 ))}
                 {!hasSubItems && (
-                  <Text color="alias.dimGrey">Ingen ting her (enda)</Text>
+                  <Text color="dimGrey">Ingen ting her (enda)</Text>
                 )}
               </Stack>
             </AccordionPanel>

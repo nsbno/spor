@@ -7,7 +7,7 @@ import type {
 } from "@chakra-ui/theme-tools";
 
 const baseStyleOverlay: SystemStyleObject = {
-  bg: "palette.blackAlpha.600",
+  bg: "blackAlpha.600",
   zIndex: "modal",
 };
 
@@ -28,7 +28,7 @@ const baseStyleDialog: SystemStyleFunction = (props) => {
 
   return {
     borderRadius: "md",
-    background: "alias.white",
+    background: "white",
     color: "inherit",
     my: "3.75rem",
     zIndex: "modal",

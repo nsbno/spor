@@ -9,11 +9,11 @@ import Checkbox from "./checkbox";
 const baseStyleContainer: SystemStyleObject = {
   _hover: {
     "input:enabled + .chakra-radio__control": {
-      backgroundColor: "alias.white",
-      borderColor: "alias.primaryGreen",
+      backgroundColor: "white",
+      borderColor: "primaryGreen",
     },
     "input:enabled:checked + .chakra-radio__control": {
-      color: "alias.darkTeal",
+      color: "darkTeal",
     },
   },
 };
@@ -22,22 +22,22 @@ const baseStyleControl: SystemStyleFunction = (props) => {
   return {
     width: 4,
     height: 4,
-    backgroundColor: "alias.white",
+    backgroundColor: "white",
     border: "2px solid",
-    borderColor: "alias.osloGrey",
+    borderColor: "osloGrey",
     borderRadius: "50%",
 
     _focus: {
-      backgroundColor: "alias.seaMist",
-      borderColor: "alias.primaryGreen",
+      backgroundColor: "seaMist",
+      borderColor: "primaryGreen",
     },
     _disabled: {
-      backgroundColor: "alias.lightGrey",
-      borderColor: "alias.steel",
+      backgroundColor: "lightGrey",
+      borderColor: "steel",
     },
     _checked: {
       borderColor: "currentColor",
-      color: "alias.primaryGreen",
+      color: "primaryGreen",
       _before: {
         content: `""`,
         display: "inline-block",
@@ -49,13 +49,13 @@ const baseStyleControl: SystemStyleFunction = (props) => {
       },
 
       _focus: {
-        backgroundColor: "alias.seaMist",
-        color: "alias.primaryGreen",
+        backgroundColor: "seaMist",
+        color: "primaryGreen",
       },
       _disabled: {
-        backgroundColor: "alias.lightGrey",
-        borderColor: "alias.steel",
-        color: "alias.osloGrey",
+        backgroundColor: "lightGrey",
+        borderColor: "steel",
+        color: "osloGrey",
       },
     },
   };

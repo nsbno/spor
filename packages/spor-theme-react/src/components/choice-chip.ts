@@ -12,21 +12,21 @@ const choiceChipAnatomy = {
 };
 
 const containerStyle: SystemStyleFunction = (props) => ({
-  backgroundColor: "alias.white",
-  boxShadow: `0 0 0 1px ${colors.alias.celadon}`,
-  color: "alias.darkTeal",
+  backgroundColor: "white",
+  boxShadow: `0 0 0 1px ${colors.celadon}`,
+  color: "darkTeal",
   display: "inline-flex",
   alignItems: "center",
   fontSize: "16px",
   px: 1,
   _focus: {
-    boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
+    boxShadow: `0 0 0 2px ${colors.greenHaze}`,
   },
   _hover: {
-    boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
+    boxShadow: `0 0 0 2px ${colors.greenHaze}`,
   },
   _checked: {
-    background: "alias.seaMist",
+    background: "seaMist",
   },
 });
 

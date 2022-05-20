@@ -67,8 +67,8 @@ export const CodeBlockContainer = ({
     <Box
       borderRadius="sm"
       border="sm"
-      borderColor="alias.osloGrey"
-      backgroundColor="alias.darkGrey"
+      borderColor="osloGrey"
+      backgroundColor="darkGrey"
       fontFamily="monospace"
       fontSize={["mobile.sm", "desktop.sm"]}
       p={2}

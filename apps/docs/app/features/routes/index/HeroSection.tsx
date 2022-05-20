@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import {
   ArrowRightFill30Icon,
   Box,
@@ -7,18 +8,13 @@ import {
   Heading,
   Image,
 } from "@vygruppen/spor-react";
-import { Link } from "@remix-run/react";
 
 export function HeroSection() {
   return (
-    <Flex backgroundColor="alias.darkTeal" minHeight="500px">
+    <Flex backgroundColor="darkTeal" minHeight="500px">
       <Container maxWidth="container.lg" mt={[0, 8]}>
         <Flex flexDirection={["column-reverse", "row"]} alignItems="center">
-          <Flex
-            flexDirection="column"
-            color="alias.white"
-            flex={["auto", "55%"]}
-          >
+          <Flex flexDirection="column" color="white" flex={["auto", "55%"]}>
             <Heading as="h1" textStyle="2xl">
               Velkommen til Spor
             </Heading>

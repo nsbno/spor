@@ -19,154 +19,151 @@ const baseStyle: SystemStyleObject = {
   _disabled: {
     cursor: "not-allowed",
     boxShadow: "none",
-    backgroundColor: "alias.silver",
-    color: "alias.white",
+    backgroundColor: "silver",
+    color: "white",
   },
   _hover: {
     _disabled: {
-      bg: "alias.silver",
+      bg: "silver",
     },
   },
 };
 
 const variantControl: SystemStyleFunction = ({ theme }) => ({
-  backgroundColor: "alias.darkTeal",
-  color: "alias.white",
+  backgroundColor: "darkTeal",
+  color: "white",
   _focus: {
-    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.darkTeal}, inset 0 0 0 6px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.darkTeal}, inset 0 0 0 6px currentColor`,
   },
   "&:focus:not(:focus-visible)": {
     boxShadow: "none",
   },
   _focusVisible: {
-    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.darkTeal}, inset 0 0 0 6px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.darkTeal}, inset 0 0 0 6px currentColor`,
   },
   _hover: {
-    backgroundColor: "alias.night",
+    backgroundColor: "night",
   },
   _active: {
-    backgroundColor: "alias.pine",
+    backgroundColor: "pine",
   },
 });
 
 const variantPrimary: SystemStyleFunction = ({ theme }) => ({
-  backgroundColor: "alias.primaryGreen",
-  color: "alias.white",
+  backgroundColor: "primaryGreen",
+  color: "white",
   _focus: {
-    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.primaryGreen}, inset 0 0 0 4px ${theme.colors.alias.primaryGreen}, inset 0 0 0 6px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.primaryGreen}, inset 0 0 0 4px ${theme.colors.primaryGreen}, inset 0 0 0 6px currentColor`,
   },
   "&:focus:not(:focus-visible)": {
     boxShadow: `none`,
   },
   _focusVisible: {
-    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.primaryGreen}, inset 0 0 0 4px ${theme.colors.alias.primaryGreen}, inset 0 0 0 6px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.primaryGreen}, inset 0 0 0 4px ${theme.colors.primaryGreen}, inset 0 0 0 6px currentColor`,
   },
   _hover: {
-    backgroundColor: "alias.pine",
+    backgroundColor: "pine",
   },
   _active: {
-    backgroundColor: "alias.azure",
+    backgroundColor: "azure",
   },
 });
 
 const variantSecondary: SystemStyleFunction = ({ theme }) => ({
-  backgroundColor: "alias.coralGreen",
-  color: "alias.darkTeal",
+  backgroundColor: "coralGreen",
+  color: "darkTeal",
   _focus: {
-    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.coralGreen}, inset 0 0 0 4px ${theme.colors.alias.coralGreen}, inset 0 0 0 6px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.coralGreen}, inset 0 0 0 4px ${theme.colors.coralGreen}, inset 0 0 0 6px currentColor`,
   },
   ":focus:not(:focus-visible)": {
     boxShadow: "none",
   },
   _focusVisible: {
-    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.coralGreen}, inset 0 0 0 4px ${theme.colors.alias.coralGreen}, inset 0 0 0 6px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.coralGreen}, inset 0 0 0 4px ${theme.colors.coralGreen}, inset 0 0 0 6px currentColor`,
   },
   _hover: {
-    backgroundColor: "alias.blueGreen",
+    backgroundColor: "blueGreen",
   },
   _active: {
-    backgroundColor: "alias.mint",
+    backgroundColor: "mint",
   },
 });
 
 const variantTertiary: SystemStyleFunction = ({ theme }) => ({
-  backgroundColor: "alias.mint",
-  color: "alias.darkGrey",
+  backgroundColor: "mint",
+  color: "darkGrey",
   fontWeight: "normal",
   _focus: {
-    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.mint}, inset 0 0 0 4px ${theme.colors.alias.mint}, inset 0 0 0 6px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.mint}, inset 0 0 0 4px ${theme.colors.mint}, inset 0 0 0 6px currentColor`,
   },
   ":focus:not(:focus-visible)": {
     boxShadow: "none",
   },
   _focusVisible: {
-    boxShadow: `inset 0 0 0 4px ${theme.colors.alias.mint}, inset 0 0 0 4px ${theme.colors.alias.mint}, inset 0 0 0 6px currentColor`,
+    boxShadow: `inset 0 0 0 4px ${theme.colors.mint}, inset 0 0 0 4px ${theme.colors.mint}, inset 0 0 0 6px currentColor`,
   },
   _hover: {
-    backgroundColor: "alias.seaMist",
+    backgroundColor: "seaMist",
   },
   _active: {
-    backgroundColor: "alias.lightGrey",
+    backgroundColor: "lightGrey",
   },
 });
 
 const variantAdditional: SystemStyleFunction = ({ theme, colorMode }) => ({
   backgroundColor: "transparent",
-  color: mode("alias.darkGrey", "alias.white")({ colorMode }),
+  color: mode("darkGrey", "white")({ colorMode }),
   fontWeight: "normal",
   boxShadow: `inset 0 0 0 1px ${mode(
-    theme.colors.palette.blackAlpha[400],
-    theme.colors.palette.whiteAlpha[400]
+    theme.colors.blackAlpha[400],
+    theme.colors.whiteAlpha[400]
   )({ colorMode })}`,
   _focus: {
-    boxShadow: `inset 0 0 0 3px ${theme.colors.alias.greenHaze}`,
+    boxShadow: `inset 0 0 0 3px ${theme.colors.greenHaze}`,
   },
   ":focus:not(:focus-visible)": {
     boxShadow: `inset 0 0 0 1px ${mode(
-      theme.colors.palette.blackAlpha[400],
-      theme.colors.palette.whiteAlpha[400]
+      theme.colors.blackAlpha[400],
+      theme.colors.whiteAlpha[400]
     )({ colorMode })}`,
   },
   _focusVisible: {
-    boxShadow: `inset 0 0 0 3px ${theme.colors.alias.greenHaze}`,
+    boxShadow: `inset 0 0 0 3px ${theme.colors.greenHaze}`,
   },
   _hover: {
     boxShadow: `inset 0 0 0 2px currentColor`,
   },
   _active: {
     boxShadow: `inset 0 0 0 1px ${mode(
-      theme.colors.palette.blackAlpha[400],
-      theme.colors.palette.whiteAlpha[300]
+      theme.colors.blackAlpha[400],
+      theme.colors.whiteAlpha[300]
     )({ colorMode })}`,
-    backgroundColor: mode(
-      "alias.mint",
-      theme.colors.palette.whiteAlpha[300]
-    )({ colorMode }),
+    backgroundColor: mode("mint", theme.colors.whiteAlpha[300])({ colorMode }),
   },
 });
 
 const variantGhost: SystemStyleFunction = ({ theme }) => ({
   backgroundColor: "transparent",
-  color: "alias.darkGrey",
+  color: "darkGrey",
   fontWeight: "normal",
   _focus: {
     outline: "none",
-    boxShadow: `inset 0 0 0 1px ${theme.colors.alias.greenHaze}`,
+    boxShadow: `inset 0 0 0 1px ${theme.colors.greenHaze}`,
   },
   ":focus:not(:focus-visible)": {
     boxShadow: "none",
   },
   _focusVisible: {
-    boxShadow: `inset 0 0 0 1px ${theme.colors.alias.greenHaze}`,
+    boxShadow: `inset 0 0 0 1px ${theme.colors.greenHaze}`,
   },
   _hover: {
-    backgroundColor: "alias.seaMist",
+    backgroundColor: "seaMist",
     _disabled: {
-      color: "alias.white",
+      color: "white",
     },
   },
   _active: {
-    backgroundColor: "alias.mint",
+    backgroundColor: "mint",
   },
 });
 

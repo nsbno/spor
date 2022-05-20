@@ -61,7 +61,7 @@ const SpacingTokensTable = (props: SpacingTokenTableProps) => {
                   <Box
                     width={token.value}
                     height={token.value}
-                    backgroundColor="alias.primaryGreen"
+                    backgroundColor="primaryGreen"
                   />
                 </Td>
                 <Td>

@@ -15,24 +15,69 @@ import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
-type ColorName = keyof typeof tokens.color.alias;
+console.log(tokens.color);
+
 type ColorToken = {
   value: string;
   name: string;
   original: { value: string };
-  attributes: { item: string; subitem?: string };
 };
 
 type ColorCategory = {
   title: string;
-  colors: Partial<{ [key in ColorName]: ColorToken }>;
+  colors: ColorToken[];
 };
 const colorCategories: ColorCategory[] = [
-  { title: "Hovedfarger", colors: tokens.color.main },
-  { title: "Bakgrunnsfarger", colors: tokens.color.background },
-  { title: "Tekstfarger", colors: tokens.color.text },
-  { title: "Detaljfarger", colors: tokens.color.detail },
-  { title: "Outlinefarger", colors: tokens.color.outline },
+  {
+    title: "Hovedfarger",
+    colors: [
+      tokens.color.darkTeal,
+      tokens.color.primaryGreen,
+      tokens.color.greenHaze,
+      tokens.color.coralGreen,
+      tokens.color.mint,
+      tokens.color.darkGrey,
+      tokens.color.osloGrey,
+      tokens.color.platinum,
+      tokens.color.lightGrey,
+      tokens.color.white,
+    ],
+  },
+  {
+    title: "Bakgrunnsfarger",
+    colors: [tokens.color.white, tokens.color.lightGrey],
+  },
+  {
+    title: "Tekstfarger",
+    colors: [
+      tokens.color.darkGrey,
+      tokens.color.white,
+      tokens.color.darkTeal,
+      tokens.color.pine,
+    ],
+  },
+  {
+    title: "Detaljfarger",
+    colors: [
+      tokens.color.darkBlue,
+      tokens.color.ocean,
+      tokens.color.golden,
+      tokens.color.burntYellow,
+      tokens.color.wood,
+      tokens.color.orange[500],
+      tokens.color.pumpkin,
+    ],
+  },
+  {
+    title: "Outlinefarger",
+    colors: [
+      tokens.color.blackAlpha[200],
+      tokens.color.blackAlpha[400],
+      tokens.color.greenHaze,
+      tokens.color.osloGrey,
+      tokens.color.whiteAlpha[300],
+    ],
+  },
 ];
 
 export function ColorTokens(props: BoxProps) {
@@ -58,16 +103,11 @@ export function ColorTokens(props: BoxProps) {
           <LinkableHeading as="h3" textStyle="md">
             Full fargepalett
           </LinkableHeading>
-          <ColorGrid
-            colors={{
-              white: tokens.color.alias.white,
-              black: tokens.color.alias.black,
-            }}
-          />
-          {Object.values(tokens.color.palette)
-            .filter((palette) => !palette.value)
-            .map((palette, i) => {
-              return <ColorGrid key={i} colors={palette} />;
+          <ColorGrid colors={[tokens.color.white, tokens.color.black]} />
+          {Object.values(tokens.color)
+            .filter((color) => !color.value)
+            .map((color, i) => {
+              return <ColorGrid key={i} colors={color} />;
             })}
         </Stack>
       </Stack>
@@ -101,9 +141,6 @@ type ColorTokenProps = BoxProps & { token: ColorToken };
 const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
   const isWhite = token.value.toLowerCase() === "#ffffff";
   const { hasCopied, onCopy } = useClipboard(token.original.value);
-  const name = `${token.attributes.item} ${
-    token.attributes.subitem || ""
-  }`.trim();
   const value = token.original.value.startsWith("rgba")
     ? token.original.value
     : token.value.toUpperCase();
@@ -113,7 +150,7 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
   return (
     <Box
       border="1px solid"
-      borderColor="alias.osloGrey"
+      borderColor="osloGrey"
       borderRadius="sm"
       overflow="hidden"
       {...rest}
@@ -122,7 +159,7 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
         height="60px"
         backgroundColor={value}
         borderBottom="1px solid"
-        borderColor={isWhite ? "alias.osloGrey" : value}
+        borderColor={isWhite ? "osloGrey" : value}
       />
       <Box px={2} pt={1} pb={2}>
         <Text textStyle="xs" fontWeight="bold">
@@ -149,7 +186,7 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
  */
 const getPaletteName = (value: string) => {
   const normalizedValue = value.toLowerCase();
-  const token = Object.values(tokens.color.palette)
+  const token = Object.values(tokens.color)
     .flatMap((scale) => (scale.value ? [scale] : Object.values(scale)))
     .find(
       (token) =>
@@ -166,7 +203,7 @@ const getPaletteName = (value: string) => {
  * Accepts a color value, and returns the alias name of that color - if there is an alias for that color.
  */
 const getAliasName = (value: string) => {
-  const token = Object.values(tokens.color.alias).find(
+  const token = Object.values(tokens.color).find(
     (token) => token.value.toLowerCase() === value.toLowerCase()
   );
   return token ? token.attributes.item : null;

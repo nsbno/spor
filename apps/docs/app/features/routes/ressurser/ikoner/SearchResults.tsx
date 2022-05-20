@@ -151,7 +151,7 @@ function IconBox({ icon }: IconBoxProps) {
   return (
     <Flex
       border="1px solid"
-      borderColor="palette.blackAlpha.200"
+      borderColor="blackAlpha.200"
       borderRadius="sm"
       flexDirection="column"
       alignItems="center"

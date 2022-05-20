@@ -14,7 +14,7 @@ export function Footer() {
       <Flex
         justifyContent="space-between"
         borderTop="1px solid"
-        borderColor="alias.steel"
+        borderColor="steel"
         py={4}
       >
         <Box as="a" href="https://vy.no" title="Gå til Vy.no">

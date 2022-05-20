@@ -1,7 +1,7 @@
 import { forwardRef } from "@chakra-ui/react";
+import { Link } from "@remix-run/react";
 import { Flex, FlexProps } from "@vygruppen/spor-react";
 import React, { useRef } from "react";
-import { Link } from "@remix-run/react";
 
 type MenuItemProps = FlexProps & {
   url: string;
@@ -43,17 +43,17 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
         fontSize="mobile.xs"
         borderRadius="sm"
         alignItems="center"
-        backgroundColor={isActive ? "alias.mint" : "transparent"}
+        backgroundColor={isActive ? "mint" : "transparent"}
         _hover={{
-          backgroundColor: "alias.mint",
+          backgroundColor: "mint",
         }}
         _focus={{
-          backgroundColor: "alias.mint",
+          backgroundColor: "mint",
           outline: "2px solid",
-          outlineColor: "alias.greenHaze",
+          outlineColor: "greenHaze",
         }}
         _active={{
-          backgroundColor: "alias.seaMist",
+          backgroundColor: "seaMist",
         }}
         ref={(el) => {
           if (externalRef) {

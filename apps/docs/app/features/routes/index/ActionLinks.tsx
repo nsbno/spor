@@ -31,7 +31,7 @@ const links: LinkItem[] = [
     title: "Kom i gang",
     description: "Sett opp Spor i ditt prosjekt på få minutter",
     icon: HomeOutline30Icon,
-    iconColor: "alias.lightBlue",
+    iconColor: "lightBlue",
   },
   {
     to: "/komponenter",
@@ -39,7 +39,7 @@ const links: LinkItem[] = [
     description:
       "Se byggeklossene du har tilgjengelig for å bygge brukergrensesnitt",
     icon: ComponentsOutline30Icon,
-    iconColor: "alias.champagne",
+    iconColor: "champagne",
   },
   {
     to: "/ressurser/design-tokens",
@@ -47,7 +47,7 @@ const links: LinkItem[] = [
     description:
       "Se farger, størrelser og de andre atomene Spor er bygget opp av",
     icon: TokensOutline30Icon,
-    iconColor: "alias.bisque",
+    iconColor: "bisque",
   },
   {
     to: "https://snohq.io/xx/",
@@ -55,21 +55,21 @@ const links: LinkItem[] = [
     description:
       "Lær mer om den visuelle profilen til Vy, og hva den inneholder",
     icon: GuidelinesOutline30Icon,
-    iconColor: "alias.seaMist",
+    iconColor: "seaMist",
   },
   {
     to: "/ressurser/ikoner",
     title: "Ikoner",
     description: "Utfork Spor sitt ikonbibliotek",
     icon: IconsOutline30Icon,
-    iconColor: "alias.primrose",
+    iconColor: "primrose",
   },
   {
     to: "/lekegrind",
     title: "Lekegrind",
     description: "Test ut Spor rett i nettleseren",
     icon: TrainOutline30Icon,
-    iconColor: "alias.silver",
+    iconColor: "silver",
   },
 ];
 

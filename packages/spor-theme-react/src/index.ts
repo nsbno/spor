@@ -2,7 +2,7 @@ import { theme as defaultTheme } from "@chakra-ui/theme";
 import * as components from "./components";
 import * as foundations from "./foundations";
 
-export const theme = {
+export const theme: any = {
   ...defaultTheme,
   ...foundations,
   components: {

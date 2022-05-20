@@ -25,7 +25,7 @@ ${variables.interfaces};
  * You can set the color of the icon by setting the color of the surrounding element.
  * 
  * \`\`\`tsx
- * <SomeIcon color="alias.darkGreen" />
+ * <SomeIcon color="darkGreen" />
  * \`\`\`
  * 
  * In most cases, you should select the icon with the correct specified size, but you can also override the size with the "width" or "height" props.

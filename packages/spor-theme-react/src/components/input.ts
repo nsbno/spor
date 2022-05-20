@@ -7,7 +7,7 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
     width: "100%",
     outline: "none",
     border: 0,
-    backgroundColor: "alias.white",
+    backgroundColor: "white",
     borderRadius: "sm",
     transitionProperty: "common",
     transitionDuration: "fast",
@@ -24,9 +24,9 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
       boxShadow: `inset 0 0 0 2px ${colors.outline.greenHaze}`,
     },
     _disabled: {
-      boxShadow: `inset 0 0 0 1px ${colors.alias.platinum}`,
-      _hover: { boxShadow: `inset 0 0 0 1px ${colors.alias.platinum}` },
-      _focus: { boxShadow: `inset 0 0 0 1px ${colors.alias.platinum}` },
+      boxShadow: `inset 0 0 0 1px ${colors.platinum}`,
+      _hover: { boxShadow: `inset 0 0 0 1px ${colors.platinum}` },
+      _focus: { boxShadow: `inset 0 0 0 1px ${colors.platinum}` },
     },
     _invalid: {
       boxShadow: `inset 0 0 0 2px ${colors.error.brightRed}`,

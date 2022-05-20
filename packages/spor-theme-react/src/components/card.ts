@@ -13,20 +13,20 @@ const baseStyle: SystemStyleObject = {
 
   "button&, a&": {
     _focus: {
-      boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
+      boxShadow: `0 0 0 2px ${colors.greenHaze}`,
       outline: "none",
     },
     ":focus:not(:focus-visible)": {
       boxShadow: "none",
     },
     _focusVisible: {
-      boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
+      boxShadow: `0 0 0 2px ${colors.greenHaze}`,
     },
 
     _disabled: {
-      backgroundColor: "alias.silver",
-      boxShadow: `0 0 0 1px ${colors.alias.silver}`,
-      color: "alias.osloGrey",
+      backgroundColor: "silver",
+      boxShadow: `0 0 0 1px ${colors.silver}`,
+      color: "osloGrey",
       pointerEvents: "none",
     },
   },
@@ -35,16 +35,16 @@ const baseStyle: SystemStyleObject = {
 type Variant = "elevated" | "filled" | "outlined";
 const variants: Record<Variant, SystemStyleInterpolation> = {
   elevated: {
-    backgroundColor: "alias.white",
-    boxShadow: `${shadows.md}, 0 0 0 1px ${colors.alias.silver}`,
+    backgroundColor: "white",
+    boxShadow: `${shadows.md}, 0 0 0 1px ${colors.silver}`,
 
     "button&, a&": {
       _hover: {
-        boxShadow: `${shadows.lg}, 0 0 0 1px ${colors.alias.steel}`,
-        borderColor: "alias.steel",
+        boxShadow: `${shadows.lg}, 0 0 0 1px ${colors.steel}`,
+        borderColor: "steel",
       },
       _active: {
-        backgroundColor: "alias.mint",
+        backgroundColor: "mint",
         boxShadow: "lg",
       },
     },
@@ -69,15 +69,15 @@ const variants: Record<Variant, SystemStyleInterpolation> = {
   }),
   outlined: {
     border: "1px solid",
-    borderColor: "alias.osloGrey",
+    borderColor: "osloGrey",
 
     "button&, a&": {
       _hover: {
-        borderColor: "alias.darkGrey",
+        borderColor: "darkGrey",
       },
       _active: {
-        backgroundColor: "alias.mint",
-        borderColor: "alias.osloGrey",
+        backgroundColor: "mint",
+        borderColor: "osloGrey",
       },
     },
   },
@@ -87,19 +87,19 @@ function getColorSchemeProps(colorScheme: string) {
   switch (colorScheme) {
     case "blue":
       return {
-        backgroundColor: "alias.lightBlue",
-        boxShadow: `0 0 0 1px ${colors.alias.cloudy}`,
+        backgroundColor: "lightBlue",
+        boxShadow: `0 0 0 1px ${colors.cloudy}`,
       };
     case "green":
       return {
-        backgroundColor: "alias.mint",
-        boxShadow: `0 0 0 1px ${colors.alias.coralGreen}`,
+        backgroundColor: "mint",
+        boxShadow: `0 0 0 1px ${colors.coralGreen}`,
       };
     case "grey":
     default:
       return {
-        backgroundColor: "alias.platinum",
-        boxShadow: `0 0 0 1px ${colors.alias.silver}`,
+        backgroundColor: "platinum",
+        boxShadow: `0 0 0 1px ${colors.silver}`,
       };
   }
 }
@@ -108,19 +108,19 @@ function getColorSchemeHoverProps(colorScheme: string) {
   switch (colorScheme) {
     case "blue":
       return {
-        backgroundColor: "alias.cloudy",
-        boxShadow: `0 0 0 1px ${colors.alias.cloudy}`,
+        backgroundColor: "cloudy",
+        boxShadow: `0 0 0 1px ${colors.cloudy}`,
       };
     case "green":
       return {
-        backgroundColor: "alias.seaMist",
-        boxShadow: `0 0 0 1px ${colors.alias.seaMist}`,
+        backgroundColor: "seaMist",
+        boxShadow: `0 0 0 1px ${colors.seaMist}`,
       };
     case "grey":
     default:
       return {
-        backgroundColor: "alias.silver",
-        boxShadow: `0 0 0 1px ${colors.alias.silver}`,
+        backgroundColor: "silver",
+        boxShadow: `0 0 0 1px ${colors.silver}`,
       };
   }
 }
@@ -129,16 +129,16 @@ function getColorSchemeFocusProps(colorScheme: string) {
   switch (colorScheme) {
     case "blue":
       return {
-        backgroundColor: "alias.lightBlue",
+        backgroundColor: "lightBlue",
       };
     case "green":
       return {
-        backgroundColor: "alias.seaMist",
+        backgroundColor: "seaMist",
       };
     case "grey":
     default:
       return {
-        backgroundColor: "alias.platinum",
+        backgroundColor: "platinum",
       };
   }
 }
@@ -147,19 +147,19 @@ function getColorSchemeActiveProps(colorScheme: string) {
   switch (colorScheme) {
     case "blue":
       return {
-        backgroundColor: "alias.icyBlue",
-        boxShadow: `0 0 0 1px ${colors.alias.cloudy}`,
+        backgroundColor: "icyBlue",
+        boxShadow: `0 0 0 1px ${colors.cloudy}`,
       };
     case "green":
       return {
-        backgroundColor: "alias.mint",
-        boxShadow: `0 0 0 1px ${colors.alias.seaMist}`,
+        backgroundColor: "mint",
+        boxShadow: `0 0 0 1px ${colors.seaMist}`,
       };
     case "grey":
     default:
       return {
-        backgroundColor: "alias.lightGrey",
-        boxShadow: `0 0 0 1px ${colors.alias.silver}`,
+        backgroundColor: "lightGrey",
+        boxShadow: `0 0 0 1px ${colors.silver}`,
       };
   }
 }

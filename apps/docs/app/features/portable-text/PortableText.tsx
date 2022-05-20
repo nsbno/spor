@@ -178,7 +178,7 @@ const components: Partial<PortableTextReactComponents> = {
             </Box>
           )}
           {value.caption && (
-            <Stack textStyle="xs" color="alias.dimGrey" mt={-1}>
+            <Stack textStyle="xs" color="dimGrey" mt={-1}>
               <PortableText value={value.caption} />
             </Stack>
           )}

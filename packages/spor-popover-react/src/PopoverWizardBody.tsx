@@ -49,9 +49,7 @@ const StepIndicator = ({ totalSteps, currentStep }: StepIndicatorProps) => {
           borderRadius="50%"
           transition="medium"
           transitionProperty="background-color"
-          backgroundColor={
-            step === currentStep ? "alias.seaMist" : "alias.greenHaze"
-          }
+          backgroundColor={step === currentStep ? "seaMist" : "greenHaze"}
         />
       ))}
     </Flex>
@@ -70,7 +68,7 @@ const NextStepButton = ({ isLastStep, onNext }: NextStepButtonProps) => {
     <Button
       variant="additional"
       size="sm"
-      color="alias.white"
+      color="white"
       leftIcon={isLastStep ? undefined : <ArrowRightFill18Icon />}
       onClick={isLastStep ? onClose : onNext}
     >

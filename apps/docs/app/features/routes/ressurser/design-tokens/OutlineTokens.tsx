@@ -1,4 +1,3 @@
-import tokens from "@vygruppen/spor-design-tokens";
 import {
   Box,
   BoxProps,
@@ -11,8 +10,8 @@ import {
   Thead,
   Tr,
 } from "@vygruppen/spor-react";
-import { SharedTokenLayout } from "./SharedTokenLayout";
 import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
+import { SharedTokenLayout } from "./SharedTokenLayout";
 
 type OutlineToken = {
   key: "none" | "sm" | "md" | "lg" | "sm-dashed" | "md-dashed" | "lg-dashed";
@@ -77,7 +76,7 @@ const OutlineTokensTable = (props: OutlineTokenTableProps) => {
                   width={8}
                   border={token.key}
                   borderRadius="xs"
-                  borderColor="alias.darkGrey"
+                  borderColor="darkGrey"
                 />
               </Td>
               <Td>

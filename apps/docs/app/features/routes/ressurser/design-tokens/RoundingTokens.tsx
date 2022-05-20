@@ -12,8 +12,8 @@ import {
   Thead,
   Tr,
 } from "@vygruppen/spor-react";
-import { SharedTokenLayout } from "./SharedTokenLayout";
 import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
+import { SharedTokenLayout } from "./SharedTokenLayout";
 
 export function RoundingTokens(props: BoxProps) {
   return (
@@ -63,8 +63,8 @@ const RoundingTokensTable = (props: RoundingTokenTableProps) => {
                   height={"72px"}
                   borderRadius={key}
                   border="md"
-                  borderColor="alias.greenHaze"
-                  backgroundColor="alias.mint"
+                  borderColor="greenHaze"
+                  backgroundColor="mint"
                 />
               </Td>
               <Td>

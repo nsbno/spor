@@ -1,10 +1,11 @@
-import { Flex, useClipboard } from "@chakra-ui/react";
 import {
   CopyOutline24Icon,
+  Flex,
   Heading,
   HeadingProps,
   IconButton,
   SuccessOutline24Icon,
+  useClipboard,
 } from "@vygruppen/spor-react";
 import React from "react";
 import { useLocation } from "react-router-dom";

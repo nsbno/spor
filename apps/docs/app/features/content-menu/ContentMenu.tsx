@@ -1,4 +1,3 @@
-import { forwardRef } from "@chakra-ui/react";
 import {
   Accordion,
   AccordionButton,
@@ -6,6 +5,7 @@ import {
   AccordionItem,
   AccordionPanel,
   Divider,
+  forwardRef,
   Stack,
   Text,
 } from "@vygruppen/spor-react";

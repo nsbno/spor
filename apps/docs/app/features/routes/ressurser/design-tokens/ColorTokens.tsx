@@ -1,4 +1,3 @@
-import { useClipboard } from "@chakra-ui/react";
 import tokens from "@vygruppen/spor-design-tokens";
 import {
   Box,
@@ -10,6 +9,7 @@ import {
   Stack,
   SuccessOutline24Icon,
   Text,
+  useClipboard,
 } from "@vygruppen/spor-react";
 import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";

@@ -1,6 +1,6 @@
-import { BoxProps } from "@chakra-ui/react";
 import {
   Box,
+  BoxProps,
   Container,
   Flex,
   InformationOutline24Icon,

@@ -1,8 +1,9 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex } from "@vygruppen/spor-react";
+import type { ReactNode } from "react";
 import { SiteHeader } from "../../site-header/SiteHeader";
 
 type BaseLayoutProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 export const BaseLayout = ({ children }: BaseLayoutProps) => {
   return (

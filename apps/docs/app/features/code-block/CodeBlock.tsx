@@ -1,5 +1,11 @@
-import { DarkMode, forwardRef, useClipboard } from "@chakra-ui/react";
-import { Box, BoxProps, Button } from "@vygruppen/spor-react";
+import { DarkMode } from "@chakra-ui/react";
+import {
+  Box,
+  BoxProps,
+  Button,
+  forwardRef,
+  useClipboard,
+} from "@vygruppen/spor-react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { useRef } from "react";
 import { theme } from "./codeTheme";

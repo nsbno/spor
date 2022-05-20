@@ -1,4 +1,3 @@
-import { useClipboard } from "@chakra-ui/react";
 import {
   Box,
   CopyOutline18Icon,
@@ -10,6 +9,7 @@ import {
   Stack,
   SuccessOutline18Icon,
   Text,
+  useClipboard,
 } from "@vygruppen/spor-react";
 import { memo, useMemo } from "react";
 import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";

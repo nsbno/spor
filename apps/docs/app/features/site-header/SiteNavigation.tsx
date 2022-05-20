@@ -1,4 +1,4 @@
-import { Center, Flex } from "@chakra-ui/react";
+import { Center, Flex } from "@vygruppen/spor-react";
 import { Link, useResolvedPath } from "@remix-run/react";
 import { useMatch } from "react-router-dom";
 

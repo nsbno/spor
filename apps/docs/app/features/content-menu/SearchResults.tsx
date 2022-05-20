@@ -1,5 +1,4 @@
-import { forwardRef } from "@chakra-ui/react";
-import { Box, Text } from "@vygruppen/spor-react";
+import { Box, forwardRef, Text } from "@vygruppen/spor-react";
 import { MenuItem as MenuItemType } from "~/utils/initialSanityData.server";
 import { MenuItem } from "./MenuItem";
 

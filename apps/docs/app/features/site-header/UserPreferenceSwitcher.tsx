@@ -1,5 +1,5 @@
-import { Box, useDisclosure } from "@chakra-ui/react";
 import {
+  Box,
   Flex,
   Modal,
   ModalBody,
@@ -11,6 +11,7 @@ import {
   SettingsX1Fill24Icon,
   Stack,
   Text,
+  useDisclosure,
 } from "@vygruppen/spor-react";
 import { ChangeEvent } from "react";
 import {

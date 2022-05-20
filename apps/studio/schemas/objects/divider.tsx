@@ -1,4 +1,4 @@
-import { Center, Divider } from "@chakra-ui/react";
+import { Center, Divider } from "@vygruppen/spor-react";
 import * as React from "react";
 import { MdHorizontalRule } from "react-icons/md";
 import { ObjectField } from "../schemaTypes";

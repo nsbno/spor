@@ -1,7 +1,7 @@
-import { Center, Stack, useDisclosure } from "@chakra-ui/react";
 import { Link, useLocation } from "@remix-run/react";
 import {
   Box,
+  Center,
   Divider,
   Flex,
   HamburgerFill24Icon,
@@ -10,6 +10,8 @@ import {
   ModalBody,
   ModalContent,
   ModalOverlay,
+  Stack,
+  useDisclosure,
   VyLogo,
 } from "@vygruppen/spor-react";
 import { useEffect } from "react";

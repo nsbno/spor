@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react-native
 
+## 0.1.2
+
+### Patch Changes
+
+- 43d27f6: Add TypeScript support for palette colors as well
+
 ## 0.1.1
 
 ### Patch Changes

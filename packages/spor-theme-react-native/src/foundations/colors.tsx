@@ -23,7 +23,19 @@ const colorPalette = Object.entries(tokens.color.palette).reduce(
     }
   },
   {} as {
-    [key in `${keyof typeof tokens.color.palette}.${keyof typeof tokens.color.palette.blackAlpha}`]: string;
+    // TODO: Make these types look better than this!
+    [key in
+      | `${
+          | "grey"
+          | "teal"
+          | "green"
+          | "blue"
+          | "yellow"
+          | "orange"}.${keyof typeof tokens.color.palette.grey}`
+      | `red.${keyof typeof tokens.color.palette.red}`
+      | `${
+          | "blackAlpha"
+          | "whiteAlpha"}.${keyof typeof tokens.color.palette.whiteAlpha}`]: string;
   }
 );
 

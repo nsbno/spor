@@ -9,7 +9,7 @@ const baseStyle: SystemStyleObject = {
   transitionTimingFunction: "ease-out",
   cursor: "pointer",
   backgroundImage: "linear-gradient(currentColor, currentColor)",
-  backgroundSize: "100% 2px",
+  backgroundSize: "100% 1px",
   backgroundPosition: "0 100%",
   backgroundRepeat: "no-repeat",
   borderRadius: "none",

@@ -25,6 +25,8 @@ const SporDatepicker: React.VFC<DatepickerProps> = (props) => {
     onDateSelect,
     onDateFocus,
     onDateHover,
+    goToNextMonths,
+    goToPreviousMonths,
   } = useDatepicker({
     startDate: selectedDate,
     endDate: selectedDate,
@@ -48,6 +50,8 @@ const SporDatepicker: React.VFC<DatepickerProps> = (props) => {
         onDateSelect,
         onDateFocus,
         onDateHover,
+        goToNextMonths,
+        goToPreviousMonths,
       }}
     >
       <StylesProvider value={styles}>

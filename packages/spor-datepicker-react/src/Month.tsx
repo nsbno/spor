@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FirstDayOfWeek, MonthType, useMonth } from "@datepicker-react/hooks";
 import { Button, Flex, Grid, GridItem, useStyles } from "@chakra-ui/react";
 import { Card } from "@vygruppen/spor-card-react";
@@ -8,6 +8,7 @@ import {
   ArrowLeftFill30Icon,
   ArrowRightFill30Icon,
 } from "@vygruppen/spor-icon-react";
+import { DatepickerContext } from "./DatepickerContext";
 
 export const Month: React.VFC<{
   activeMonth: MonthType;
@@ -19,18 +20,20 @@ export const Month: React.VFC<{
     firstDayOfWeek,
     dayLabelFormat(date: Date): string {
       return date.getDate().toString();
-    }
+    },
   });
+
+  const { goToPreviousMonths, goToNextMonths } = useContext(DatepickerContext);
 
   const styles = useStyles();
   return (
     <Card variant="outlined" p={1} __css={styles.calendar}>
       <Flex justify="space-between" mx={3} mt={2}>
-        <Button __css={styles.button}>
+        <Button __css={styles.button} onClick={goToPreviousMonths}>
           <ArrowLeftFill30Icon />
         </Button>
         <Text sx={styles.label}>{monthLabel}</Text>
-        <Button __css={styles.button}>
+        <Button __css={styles.button} onClick={goToNextMonths}>
           <ArrowRightFill30Icon />
         </Button>
       </Flex>

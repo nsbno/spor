@@ -1,33 +1,130 @@
-import React from "react";
+import React, { useState } from "react";
+import {
+  START_DATE,
+  useDatepicker as useReactDatepicker,
+  useMonth,
+  useDay as useReactDay,
+} from "@datepicker-react/hooks";
 
 interface DatepickerContextType {
-  focusedDate: Date | null;
-  isDateFocused: (date: Date) => boolean;
+  selectedDate: Date | null;
+  setSelectedDate: (date: Date) => void;
   isDateSelected: (date: Date) => boolean;
   isDateHovered: (date: Date) => boolean;
-  isDateBlocked: (date: Date) => boolean;
   isFirstOrLastSelectedDate: (date: Date) => boolean;
-  onDateFocus: (date: Date) => void;
-  onDateHover: (date: Date) => void;
+  isDateBlocked: (date: Date) => boolean;
+  isDateFocused: (date: Date) => boolean;
+  focusedDate: Date | null;
+  onDateHover: (date: Date | null) => void;
   onDateSelect: (date: Date) => void;
-  goToNextMonths: () => void;
+  onDateFocus: (date: Date) => void;
   goToPreviousMonths: () => void;
+  goToNextMonths: () => void;
+  days: (number | { dayLabel: string; date: Date })[];
+  weekdayLabels: string[];
+  monthLabel: string;
 }
 
-const datepickerContextDefaultValue: DatepickerContextType = {
-  focusedDate: null,
-  isDateFocused: (date: Date) => false,
-  isDateSelected: (date: Date) => false,
-  isDateHovered: (date: Date) => false,
-  isDateBlocked: (date: Date) => false,
-  isFirstOrLastSelectedDate: (date: Date) => false,
-  onDateFocus: (date: Date) => {},
-  onDateHover: (date: Date) => {},
-  onDateSelect: (date: Date) => {},
-  goToNextMonths: () => {},
-  goToPreviousMonths: () => {}
+export const DatepickerContext = React.createContext<
+  DatepickerContextType | undefined
+>(undefined);
+
+export const DatepickerProvider: React.FC = ({ children }) => {
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const {
+    activeMonths,
+    firstDayOfWeek,
+    isDateSelected,
+    isDateHovered,
+    isFirstOrLastSelectedDate,
+    isDateBlocked,
+    isDateFocused,
+    focusedDate,
+    onDateHover,
+    onDateSelect,
+    onDateFocus,
+    goToPreviousMonths,
+    goToNextMonths,
+  } = useReactDatepicker({
+    startDate: selectedDate,
+    endDate: selectedDate,
+    focusedInput: START_DATE,
+    numberOfMonths: 1,
+    onDatesChange: ({ startDate }) => {
+      setSelectedDate(startDate);
+    },
+  });
+  const activeMonth = activeMonths[0];
+  const { days, weekdayLabels, monthLabel } = useMonth({
+    year: activeMonth.year,
+    month: activeMonth.month,
+    firstDayOfWeek: firstDayOfWeek,
+    dayLabelFormat(date: Date): string {
+      return date.getDate().toString();
+    },
+  });
+  return (
+    <DatepickerContext.Provider
+      value={{
+        selectedDate,
+        setSelectedDate,
+        isDateSelected,
+        isDateHovered,
+        isFirstOrLastSelectedDate,
+        isDateBlocked,
+        isDateFocused,
+        focusedDate,
+        onDateHover,
+        onDateSelect,
+        onDateFocus,
+        goToPreviousMonths,
+        goToNextMonths,
+        days,
+        weekdayLabels,
+        monthLabel,
+      }}
+    >
+      {children}
+    </DatepickerContext.Provider>
+  );
 };
 
-export const DatepickerContext = React.createContext(
-  datepickerContextDefaultValue
-);
+export const useDatepicker = () => {
+  const context = React.useContext(DatepickerContext);
+  if (context === undefined) {
+    throw new Error("useDatepicker must be used within a DatepickerProvider");
+  }
+  return context;
+};
+
+export const useDay = (
+  date: Date,
+  dayRef: React.RefObject<HTMLButtonElement> | undefined
+) => {
+  const {
+    focusedDate,
+    isDateBlocked,
+    isDateFocused,
+    isDateHovered,
+    isDateSelected,
+    isFirstOrLastSelectedDate,
+    onDateFocus,
+    onDateHover,
+    onDateSelect,
+  } = useDatepicker();
+  const context = useReactDay({
+    date,
+    focusedDate,
+    isDateFocused,
+    isDateSelected,
+    isDateHovered,
+    isDateBlocked,
+    isFirstOrLastSelectedDate,
+    onDateFocus,
+    onDateSelect,
+    onDateHover,
+    dayRef,
+  });
+  const isToday = new Date().toDateString() === date.toDateString();
+  return { ...context, isToday };
+};

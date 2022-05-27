@@ -1,12 +1,16 @@
 import {ComponentMultiStyleConfig} from "@chakra-ui/react";
 import {anatomy, PartsStyleObject} from "@chakra-ui/theme-tools";
 
-const parts = anatomy("datepicker").parts('calendar', 'weekdayLabel', 'weekendLabel', 'day')
+const parts = anatomy("datepicker").parts('calendar', 'label', 'weekendLabel', 'button')
 
 const baseStyle: PartsStyleObject<typeof parts> = {
   calendar: {
+    borderRadius: 'md',
+    boxShadow: "0px 1px 5px rgba(0, 0, 0, 0.2)",
+    height: "348px",
+    width: "375px"
   },
-  weekdayLabel: {
+  label: {
     fontWeight: 'bold',
     color: 'alias.darkGrey',
   },
@@ -14,7 +18,7 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     fontWeight: 'bold',
     color: 'alias.greenHaze',
   },
-  day: {
+  button: {
     backgroundColor: 'alias.white',
     color: 'alias.darkGrey',
     borderRadius: '50%',
@@ -33,9 +37,6 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     _active: {
       backgroundColor: 'alias.mint'
     },
-    _selected: {
-      backgroundColor: 'alias.darkTeal'
-    }
   }
 };
 const Datepicker: ComponentMultiStyleConfig = {

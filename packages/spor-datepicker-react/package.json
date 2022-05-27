@@ -31,5 +31,8 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "framer-motion": "3.x || 4.x || 5.x || 6.x"
+  },
+  "dependencies": {
+    "@datepicker-react/hooks": "^2.8.4"
   }
 }

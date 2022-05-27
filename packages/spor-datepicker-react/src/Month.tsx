@@ -1,6 +1,11 @@
 import React from "react";
 import { FirstDayOfWeek, MonthType, useMonth } from "@datepicker-react/hooks";
-import { Button, Grid, GridItem, useMultiStyleConfig } from "@chakra-ui/react";
+import {
+  Button,
+  Grid,
+  GridItem,
+  useStyles,
+} from "@chakra-ui/react";
 import { Card } from "@vygruppen/spor-card-react";
 import { Text } from "@vygruppen/spor-typography-react";
 import { Day } from "./Day";
@@ -14,8 +19,10 @@ export const Month: React.VFC<{
     month: activeMonth.month,
     firstDayOfWeek,
   });
+
+  const styles = useStyles();
   return (
-    <Card variant="outlined" p={1}>
+    <Card variant="outlined" p={1} __css={styles.month}>
       <Button>{"<-"}</Button>
       {monthLabel}
       <Button>{"->"}</Button>

@@ -10,6 +10,8 @@ interface DatepickerContextType {
   onDateFocus: (date: Date) => void;
   onDateHover: (date: Date) => void;
   onDateSelect: (date: Date) => void;
+  goToNextMonths: () => void;
+  goToPreviousMonths: () => void;
 }
 
 const datepickerContextDefaultValue: DatepickerContextType = {
@@ -22,6 +24,8 @@ const datepickerContextDefaultValue: DatepickerContextType = {
   onDateFocus: (date: Date) => {},
   onDateHover: (date: Date) => {},
   onDateSelect: (date: Date) => {},
+  goToNextMonths: () => {},
+  goToPreviousMonths: () => {}
 };
 
 export const DatepickerContext = React.createContext(

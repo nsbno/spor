@@ -18,8 +18,8 @@ interface DatepickerContextType {
   onDateHover: (date: Date | null) => void;
   onDateSelect: (date: Date) => void;
   onDateFocus: (date: Date) => void;
-  goToPreviousMonths: () => void;
-  goToNextMonths: () => void;
+  goToPreviousMonth: () => void;
+  goToNextMonth: () => void;
   days: (number | { dayLabel: string; date: Date })[];
   weekdayLabels: string[];
   monthLabel: string;
@@ -77,8 +77,8 @@ export const DatepickerProvider: React.FC = ({ children }) => {
         onDateHover,
         onDateSelect,
         onDateFocus,
-        goToPreviousMonths,
-        goToNextMonths,
+        goToPreviousMonth: goToPreviousMonths,
+        goToNextMonth: goToNextMonths,
         days,
         weekdayLabels,
         monthLabel,

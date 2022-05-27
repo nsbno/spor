@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
-import { DatepickerContext } from "./DatepickerContext";
-import { useDay } from "@datepicker-react/hooks";
+import React from "react";
+import { useDay } from "./DatepickerContext";
 import { Button, GridItem, useStyles, useToken } from "@chakra-ui/react";
 
 export const Day: React.VFC<{ dayLabel: string; date: Date }> = ({
@@ -8,30 +7,8 @@ export const Day: React.VFC<{ dayLabel: string; date: Date }> = ({
   date,
 }) => {
   const dayRef = React.useRef(null);
-  const {
-    focusedDate,
-    isDateFocused,
-    isDateSelected,
-    isDateHovered,
-    isDateBlocked,
-    isFirstOrLastSelectedDate,
-    onDateSelect,
-    onDateFocus,
-    onDateHover,
-  } = useContext(DatepickerContext);
-  const { onClick, onKeyDown, onMouseEnter, tabIndex, isSelected } = useDay({
-    date,
-    focusedDate,
-    isDateFocused,
-    isDateSelected,
-    isDateHovered,
-    isDateBlocked,
-    isFirstOrLastSelectedDate,
-    onDateFocus,
-    onDateSelect,
-    onDateHover,
-    dayRef,
-  });
+  const { onClick, onKeyDown, onMouseEnter, tabIndex, isSelected, isToday } =
+    useDay(date, dayRef);
 
   const styles = useStyles();
   const [osloGrey] = useToken("colors", ["alias.osloGrey"]);
@@ -39,8 +16,6 @@ export const Day: React.VFC<{ dayLabel: string; date: Date }> = ({
   if (!dayLabel) {
     return <div />;
   }
-
-  const isToday = new Date().toDateString() === date.toDateString();
 
   return (
     <GridItem>

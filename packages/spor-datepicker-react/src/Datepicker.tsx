@@ -2,7 +2,7 @@ import React from "react";
 
 import { StylesProvider, useMultiStyleConfig } from "@chakra-ui/react";
 import { DatepickerProvider } from "./DatepickerContext";
-import { Month } from "./Month";
+import { Calendar } from "./Calendar";
 import { DateInput } from "./DateInput";
 
 type DatepickerProps = {
@@ -16,7 +16,7 @@ const SporDatepicker: React.VFC<DatepickerProps> = (props) => {
     <DatepickerProvider>
       <StylesProvider value={styles}>
         <DateInput />
-        <Month />
+        <Calendar />
       </StylesProvider>
     </DatepickerProvider>
   );

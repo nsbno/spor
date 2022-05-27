@@ -9,24 +9,19 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { useDatepicker } from "./DatepickerContext";
 
-export const Month: React.VFC = () => {
-  const {
-    goToNextMonths,
-    goToPreviousMonths,
-    days,
-    weekdayLabels,
-    monthLabel,
-  } = useDatepicker();
+export const Calendar: React.VFC = () => {
+  const { goToNextMonth, goToPreviousMonth, days, weekdayLabels, monthLabel } =
+    useDatepicker();
 
   const styles = useStyles();
   return (
     <Card variant="outlined" p={1} __css={styles.calendar}>
       <Flex justify="space-between" mx={3} mt={2}>
-        <Button __css={styles.button} onClick={goToPreviousMonths}>
+        <Button __css={styles.button} onClick={goToPreviousMonth}>
           <ArrowLeftFill30Icon />
         </Button>
         <Text sx={styles.label}>{monthLabel}</Text>
-        <Button __css={styles.button} onClick={goToNextMonths}>
+        <Button __css={styles.button} onClick={goToNextMonth}>
           <ArrowRightFill30Icon />
         </Button>
       </Flex>

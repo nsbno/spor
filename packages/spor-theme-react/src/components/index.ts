@@ -5,6 +5,7 @@ export { default as Card } from "./card";
 export { default as Checkbox } from "./checkbox";
 export { default as ChoiceChip } from "./choice-chip";
 export { default as Code } from "./code";
+export { default as Datepicker } from "./datepicker";
 export { default as FloatingActionButton } from "./fab";
 export { default as Form } from "./form";
 export { default as FormLabel } from "./form-label";

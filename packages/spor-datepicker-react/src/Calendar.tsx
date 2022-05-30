@@ -10,7 +10,7 @@ import {
 import { useDatepicker } from "./DatepickerContext";
 
 export const Calendar: React.VFC = () => {
-  const { goToNextMonth, goToPreviousMonth, days, weekdayLabels, monthLabel } =
+  const { goToNextMonth, goToPreviousMonth, days, weekdayLabels, monthLabel, prevDays, nextDays } =
     useDatepicker();
 
   const styles = useStyles();
@@ -36,7 +36,17 @@ export const Calendar: React.VFC = () => {
         ))}
       </Grid>
       <Grid templateColumns="repeat(7, 1fr)" gap={1} m={1}>
-        {days.map((day, idx) => {
+        {prevDays.map((day) => {
+          return (
+            <Day
+              isDisabled
+              key={day.date.toString()}
+              dayLabel={day.dayLabel}
+              date={day.date}
+            />
+          );
+        })}
+        {days.map((day) => {
           if (typeof day === "object") {
             return (
               <Day
@@ -46,7 +56,16 @@ export const Calendar: React.VFC = () => {
               />
             );
           }
-          return <div key={idx} />;
+        })}
+        {nextDays.map((day) => {
+            return (
+              <Day
+                isDisabled
+                key={day.date.toString()}
+                dayLabel={day.dayLabel}
+                date={day.date}
+              />
+            );
         })}
       </Grid>
     </Card>

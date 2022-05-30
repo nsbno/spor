@@ -37,6 +37,10 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     _active: {
       backgroundColor: 'alias.mint'
     },
+    _disabled: {
+      color: 'alias.osloGrey',
+      border: 'none'
+    },
   }
 };
 const Datepicker: ComponentMultiStyleConfig = {

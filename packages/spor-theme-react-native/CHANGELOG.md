@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react-native
 
+## 0.1.3
+
+### Patch Changes
+
+- 4bcd21e: Improve the color typings even more for React Native
+
 ## 0.1.2
 
 ### Patch Changes

@@ -5,6 +5,12 @@ import {
   useMonth,
   useDay as useReactDay,
 } from "@datepicker-react/hooks";
+import {
+  dayLabelFormat,
+  getNextDays,
+  getPrevDays,
+  Day,
+} from "./datepicker-utils";
 
 interface DatepickerContextType {
   selectedDate: Date | null;
@@ -20,9 +26,11 @@ interface DatepickerContextType {
   onDateFocus: (date: Date) => void;
   goToPreviousMonth: () => void;
   goToNextMonth: () => void;
-  days: (number | { dayLabel: string; date: Date })[];
+  days: (number | Day)[];
   weekdayLabels: string[];
   monthLabel: string;
+  prevDays: Day[];
+  nextDays: Day[];
 }
 
 export const DatepickerContext = React.createContext<
@@ -30,7 +38,7 @@ export const DatepickerContext = React.createContext<
 >(undefined);
 
 export const DatepickerProvider: React.FC = ({ children }) => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const {
     activeMonths,
     firstDayOfWeek,
@@ -43,8 +51,8 @@ export const DatepickerProvider: React.FC = ({ children }) => {
     onDateHover,
     onDateSelect,
     onDateFocus,
-    goToPreviousMonths,
-    goToNextMonths,
+    goToPreviousMonthsByOneMonth,
+    goToNextMonthsByOneMonth,
   } = useReactDatepicker({
     startDate: selectedDate,
     endDate: selectedDate,
@@ -54,15 +62,17 @@ export const DatepickerProvider: React.FC = ({ children }) => {
       setSelectedDate(startDate);
     },
   });
-  const activeMonth = activeMonths[0];
-  const { days, weekdayLabels, monthLabel } = useMonth({
-    year: activeMonth.year,
-    month: activeMonth.month,
-    firstDayOfWeek: firstDayOfWeek,
-    dayLabelFormat(date: Date): string {
-      return date.getDate().toString();
-    },
-  });
+  const { month, year } = activeMonths[0];
+  const monthProps = {
+    year,
+    month,
+    firstDayOfWeek,
+    dayLabelFormat,
+  };
+  const { days, weekdayLabels, monthLabel } = useMonth(monthProps);
+  const prevDays = getPrevDays(monthProps, days);
+  const nextDays = getNextDays(monthProps);
+
   return (
     <DatepickerContext.Provider
       value={{
@@ -77,11 +87,13 @@ export const DatepickerProvider: React.FC = ({ children }) => {
         onDateHover,
         onDateSelect,
         onDateFocus,
-        goToPreviousMonth: goToPreviousMonths,
-        goToNextMonth: goToNextMonths,
+        goToPreviousMonth: goToPreviousMonthsByOneMonth,
+        goToNextMonth: goToNextMonthsByOneMonth,
         days,
         weekdayLabels,
         monthLabel,
+        prevDays,
+        nextDays,
       }}
     >
       {children}
@@ -125,6 +137,6 @@ export const useDay = (
     onDateHover,
     dayRef,
   });
-  const isToday = new Date().toDateString() === date.toDateString();
+  const isToday = new Date().toDateString() === date?.toDateString();
   return { ...context, isToday };
 };

@@ -1,4 +1,4 @@
-export const animationData = {
+export const spinnerData = {
   v: "4.8.0",
   meta: { g: "LottieFiles AE 1.1.0", a: "", k: "", d: "", tc: "" },
   fr: 25,

@@ -1,6 +1,6 @@
 import { Box, BoxProps } from "@chakra-ui/react";
+import { contentLoaderData } from "@vygruppen/spor-loader";
 import React from "react";
-import { animationData } from "./animation-data/content-loader";
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
 
@@ -14,7 +14,7 @@ export const ContentLoader = ({ children, ...props }: ContentLoaderProps) => {
     <Box {...props}>
       <Box maxWidth="140px" mx="auto">
         <ClientOnly>
-          {() => <Lottie animationData={animationData} />}
+          {() => <Lottie animationData={contentLoaderData} />}
         </ClientOnly>
       </Box>
       {children && (

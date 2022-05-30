@@ -1,4 +1,4 @@
-export const animationData = {
+export const fullScreenLoaderData = {
   v: "5.7.1",
   fr: 29.9700012207031,
   ip: 7.00000028511585,

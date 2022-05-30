@@ -1,6 +1,6 @@
 import { Box, BoxProps, Center } from "@chakra-ui/react";
 import React from "react";
-import { animationData } from "./animation-data/inline-loader";
+import { inlineLoaderData } from "@vygruppen/spor-loader";
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
 
@@ -17,7 +17,7 @@ export const InlineLoader = ({
     <Center {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={animationData} />}
+          {() => <Lottie animationData={inlineLoaderData} />}
         </ClientOnly>
       </Box>
     </Center>

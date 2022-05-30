@@ -1,6 +1,6 @@
 import { Box, BoxProps, Center } from "@chakra-ui/react";
+import { spinnerData } from "@vygruppen/spor-loader";
 import React from "react";
-import { animationData } from "./animation-data/spinner";
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
 
@@ -29,9 +29,7 @@ export const Spinner = ({
   return (
     <Center flexDirection="column" {...props}>
       <Box width={width} maxWidth={maxWidth}>
-        <ClientOnly>
-          {() => <Lottie animationData={animationData} />}
-        </ClientOnly>
+        <ClientOnly>{() => <Lottie animationData={spinnerData} />}</ClientOnly>
       </Box>
       {children && (
         <Box mt={3} fontWeight="bold">

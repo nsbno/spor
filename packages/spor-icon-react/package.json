@@ -8,6 +8,7 @@
     "svg",
     "dist"
   ],
+  "sideEffects": false,
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-icon-react",
   "repository": {
     "type": "git",

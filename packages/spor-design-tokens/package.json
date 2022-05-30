@@ -17,6 +17,7 @@
     "assets",
     "react-native"
   ],
+  "sideEffects": false,
   "license": "MIT",
   "devDependencies": {
     "style-dictionary": "^3.0.2",

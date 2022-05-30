@@ -2,10 +2,11 @@ import React from "react";
 import { useDay } from "./DatepickerContext";
 import { Button, GridItem, useStyles, useToken } from "@chakra-ui/react";
 
-export const Day: React.VFC<{ dayLabel: string; date: Date }> = ({
-  dayLabel,
-  date,
-}) => {
+export const Day: React.VFC<{
+  dayLabel: string;
+  date: Date;
+  isDisabled?: boolean;
+}> = ({ dayLabel, date, isDisabled = false }) => {
   const dayRef = React.useRef(null);
   const { onClick, onKeyDown, onMouseEnter, tabIndex, isSelected, isToday } =
     useDay(date, dayRef);
@@ -30,6 +31,7 @@ export const Day: React.VFC<{ dayLabel: string; date: Date }> = ({
         bgColor={isSelected ? "alias.pine" : undefined}
         color={isSelected ? "alias.white" : undefined}
         border={isToday ? `solid 1px ${osloGrey}` : undefined}
+        disabled={isDisabled}
       >
         {dayLabel}
       </Button>

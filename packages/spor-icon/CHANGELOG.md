@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 0.5.0
+
+### Minor Changes
+
+- 629c381: Add new icons for express bus, figma, github , arrow up and arrow down
+
 ## 0.4.0
 
 ### Minor Changes

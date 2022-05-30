@@ -1,5 +1,23 @@
 # @vygruppen/spor-react
 
+## 0.13.0
+
+### Minor Changes
+
+- 36ebbf2: Add new package spor-loader-react
+
+### Patch Changes
+
+- Updated dependencies [629c381]
+- Updated dependencies [36ebbf2]
+  - @vygruppen/spor-icon-react@0.5.0
+  - @vygruppen/spor-loader-react@0.0.2
+  - @vygruppen/spor-theme-react@0.4.8
+  - @vygruppen/spor-input-react@0.4.4
+  - @vygruppen/spor-link-react@0.1.8
+  - @vygruppen/spor-popover-react@0.1.7
+  - @vygruppen/spor-stepper-react@0.1.7
+
 ## 0.12.9
 
 ### Patch Changes

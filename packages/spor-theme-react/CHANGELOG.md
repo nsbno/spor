@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.4.8
+
+### Patch Changes
+
+- 36ebbf2: Add new package spor-loader-react
+
 ## 0.4.7
 
 ### Patch Changes

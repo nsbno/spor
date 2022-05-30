@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 /**
  * Accepts a list of selectors, and returns the active ID.

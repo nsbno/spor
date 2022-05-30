@@ -1,10 +1,14 @@
 import { Box, BoxProps } from "@chakra-ui/react";
 import React from "react";
-import { ClientOnly } from "remix-utils";
 import { animationData } from "./animation-data/content-loader";
-import { Lottie } from "./Lottie";
+import { ClientOnly } from "./ClientOnly";
+import Lottie from "./Lottie";
 
 export type ContentLoaderProps = BoxProps;
+/**
+ * ContentLoader is a component that renders a loading animation.
+ * It should mostly be used for
+ */
 export const ContentLoader = ({ children, ...props }: ContentLoaderProps) => {
   return (
     <Box {...props}>

@@ -80,7 +80,7 @@ type ColorGridProps = BoxProps & {
 };
 const ColorGrid = ({ colors, ...rest }: ColorGridProps) => {
   return (
-    <SimpleGrid gap={3} columns={[2, 3, 6, 7]} {...rest}>
+    <SimpleGrid columns={[2, 3, 4]} spacing={3} {...rest}>
       {Object.values(colors).map((token, i) => (
         <ColorToken key={i} token={token} />
       ))}
@@ -124,8 +124,8 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
         borderBottom="1px solid"
         borderColor={isWhite ? "alias.osloGrey" : value}
       />
-      <Box px={2} pt={1} pb={2}>
-        <Text textStyle="xs" fontWeight="bold">
+      <Box px={2}>
+        <Text textStyle="xs" fontWeight="bold" whiteSpace="nowrap">
           {aliasName}
         </Text>
         {aliasName !== paletteName && <Text textStyle="xs">{paletteName}</Text>}
@@ -137,6 +137,8 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
             title="Kopier fargekode"
             aria-label="Kopier fargekode"
             onClick={onCopy}
+            size="sm"
+            borderRadius="sm"
           />
         </Flex>
       </Box>

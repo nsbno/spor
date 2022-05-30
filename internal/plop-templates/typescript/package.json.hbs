@@ -5,10 +5,18 @@
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "files": ["dist"],
+  "sideEffects": false,
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-{{ kebabCase name }}",
   "repository": {
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
     "directory": "packages/spor-{{ kebabCase name }}"
-  }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --dts",
+    "dev": "tsup src/index.ts --watch"
+  },
+  "devDependencies": {
+    "tsup": "^5.11.11"
+  },
 }

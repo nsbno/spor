@@ -4,6 +4,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
+  "sideEffects": false,
   "scripts": {
     "build": "tsup src/index.tsx --dts",
     "dev": "tsup src/index.tsx --watch"
@@ -26,6 +27,7 @@
     "@vygruppen/spor-input-react": "*",
     "@vygruppen/spor-layout-react": "*",
     "@vygruppen/spor-link-react": "*",
+    "@vygruppen/spor-loader-react": "*",
     "@vygruppen/spor-logo-react": "*",
     "@vygruppen/spor-modal-react": "*",
     "@vygruppen/spor-table-react": "*",

@@ -33,6 +33,8 @@ module.exports = {
         "packages/spor-typography-react-native/",
         "packages/spor-button-react-native/",
         "packages/spor-layout-react-native/",
+        "packages/spor-loader-react/",
+        "packages/spor-loader/",
       ],
     },
   },

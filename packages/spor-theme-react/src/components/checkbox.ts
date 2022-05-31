@@ -9,19 +9,19 @@ const baseContainer: SystemStyleObject = {
   _hover: {
     "input:enabled:not([aria-invalid]) + .chakra-checkbox__control": {
       backgroundColor: "alias.white",
-      borderColor: "alias.greenHaze",
+      borderColor: "alias.primaryGreen",
     },
     "input:enabled[aria-invalid] + .chakra-checkbox__control": {
       backgroundColor: "alias.white",
-      borderColor: "alias.lightRed",
+      borderColor: "alias.brightRed",
     },
     "input:enabled:checked:not([aria-invalid]) + .chakra-checkbox__control": {
       backgroundColor: "alias.darkTeal",
       borderColor: "alias.darkTeal",
     },
     "input:enabled:checked[aria-invalid] + .chakra-checkbox__control": {
-      backgroundColor: "alias.lightRed",
-      borderColor: "alias.lightRed",
+      backgroundColor: "alias.brightRed",
+      borderColor: "alias.brightRed",
     },
   },
 };
@@ -34,7 +34,7 @@ const baseStyleControl: SystemStyleFunction = () => {
     transitionDuration: "normal",
     backgroundColor: "white",
     border: "2px solid",
-    borderColor: "alias.darkGrey",
+    borderColor: "alias.darkTeal",
     borderRadius: "xs",
     color: "white",
 
@@ -44,12 +44,12 @@ const baseStyleControl: SystemStyleFunction = () => {
       color: "alias.white",
 
       _focus: {
-        backgroundColor: "alias.greenHaze",
-        borderColor: "alias.blueGreen",
+        backgroundColor: "alias.blueGreen",
+        borderColor: "alias.azure",
       },
 
       _disabled: {
-        backgroundColor: "alias.white",
+        backgroundColor: "alias.lightGrey",
         borderColor: "alias.steel",
         color: "alias.steel",
       },
@@ -61,13 +61,13 @@ const baseStyleControl: SystemStyleFunction = () => {
     },
 
     _disabled: {
-      backgroundColor: "alias.white",
+      backgroundColor: "alias.lightGrey",
       borderColor: "alias.steel",
     },
 
     _focus: {
       backgroundColor: "alias.white",
-      borderColor: "alias.greenHaze",
+      borderColor: "alias.azure",
     },
 
     _invalid: {

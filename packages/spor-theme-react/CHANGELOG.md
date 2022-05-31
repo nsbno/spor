@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.4.9
+
+### Patch Changes
+
+- 08904d1: Change checkbox css colors.
+
 ## 0.4.8
 
 ### Patch Changes

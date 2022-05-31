@@ -2,8 +2,9 @@ import { As, forwardRef, useStyleConfig } from "@chakra-ui/react";
 import { Box, BoxProps } from "@vygruppen/spor-layout-react";
 import React from "react";
 
-export type CardProps = BoxProps &
-  (
+export type CardProps = Exclude<BoxProps, "size"> & {
+  size?: "sm" | "lg";
+} & (
     | {
         variant: "elevated" | "outlined";
         children: React.ReactNode;
@@ -28,10 +29,11 @@ export type CardProps = BoxProps &
  * You can also pass any style props you want, like padding or borderRadius.
  */
 export const Card = forwardRef<CardProps, As<any>>(
-  ({ variant, colorScheme = "grey", children, ...props }, ref) => {
+  ({ variant, size = "lg", colorScheme = "grey", children, ...props }, ref) => {
     const styles = useStyleConfig("Card", {
       variant: variant as any,
       colorScheme,
+      size,
     });
     return (
       <Box __css={styles} {...props} ref={ref}>

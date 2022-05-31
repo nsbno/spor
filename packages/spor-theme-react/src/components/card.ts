@@ -34,13 +34,13 @@ const baseStyle: SystemStyleObject = {
 
 type Variant = "elevated" | "filled" | "outlined";
 const variants: Record<Variant, SystemStyleInterpolation> = {
-  elevated: {
+  elevated: ({size}) => ({
     backgroundColor: "alias.white",
-    boxShadow: `${shadows.md}, 0 0 0 1px ${colors.alias.silver}`,
-
+    boxShadow:   `${size === "lg" ? shadows.md : shadows.sm}, 0 0 0 1px ${colors.alias.silver}`,
+    
     "button&, a&": {
       _hover: {
-        boxShadow: `${shadows.lg}, 0 0 0 1px ${colors.alias.steel}`,
+        boxShadow: `${size === "lg" ? shadows.lg: shadows.md}, 0 0 0 1px ${colors.alias.steel}`,
         borderColor: "alias.steel",
       },
       _active: {
@@ -48,7 +48,7 @@ const variants: Record<Variant, SystemStyleInterpolation> = {
         boxShadow: "lg",
       },
     },
-  },
+  }),
   filled: ({ colorScheme }) => ({
     ...getColorSchemeProps(colorScheme),
 
@@ -164,7 +164,19 @@ function getColorSchemeActiveProps(colorScheme: string) {
   }
 }
 
+type Size = "sm" | "lg"
+
+const sizes : Record<Size, SystemStyleInterpolation> = {
+  lg:({variants})  => ({
+    borderRadius: "md",
+  }),
+  sm: {
+   borderRadius: "sm",
+  },
+};
+
 export default {
   baseStyle,
   variants,
+  sizes
 };

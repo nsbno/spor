@@ -1,30 +1,42 @@
 import { Box, BoxProps, Center } from "@chakra-ui/react";
-import { fullScreenLoaderData } from "@vygruppen/spor-loader";
+import {
+  fullScreenLoaderBlackData,
+  fullScreenLoaderWhiteData,
+} from "@vygruppen/spor-loader";
 import React from "react";
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
 
 type FullScreenLoaderProps = {
-  background: "alias.darkTeal" | "alias.white";
-} & Exclude<BoxProps, "background">;
+  colorScheme: "alias.darkTeal" | "alias.white";
+} & Exclude<BoxProps, "colorScheme">;
 
 /**
  * FullScreenLoader is a component that renders a loading animation on the entire screen.
- * 
+ *
  * ```tsx
- * <FullScreenLoader background="alias.darkTeal" />
+ * <FullScreenLoader colorScheme="alias.white" />
  * ```
  */
 export const FullScreenLoader = ({
   width,
   maxWidth,
+  colorScheme,
   ...props
 }: FullScreenLoaderProps) => {
   return (
-    <Center height="100%" {...props}>
+    <Center height="100%" {...props} background={colorScheme}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={fullScreenLoaderData} />}
+          {() => (
+            <Lottie
+              animationData={
+                colorScheme === "alias.white"
+                  ? fullScreenLoaderBlackData
+                  : fullScreenLoaderWhiteData
+              }
+            />
+          )}
         </ClientOnly>
       </Box>
     </Center>

@@ -24,12 +24,12 @@ const baseStyleControl: SystemStyleFunction = (props) => {
     height: 4,
     backgroundColor: "alias.white",
     border: "2px solid",
-    borderColor: "alias.osloGrey",
+    borderColor: "alias.primaryGreen",
     borderRadius: "50%",
 
     _focus: {
       backgroundColor: "alias.seaMist",
-      borderColor: "alias.primaryGreen",
+      borderColor: "alias.azure",
     },
     _disabled: {
       backgroundColor: "alias.lightGrey",
@@ -50,12 +50,11 @@ const baseStyleControl: SystemStyleFunction = (props) => {
 
       _focus: {
         backgroundColor: "alias.seaMist",
-        color: "alias.primaryGreen",
+        color: "alias.azure",
       },
       _disabled: {
         backgroundColor: "alias.lightGrey",
         borderColor: "alias.steel",
-        color: "alias.osloGrey",
       },
     },
   };

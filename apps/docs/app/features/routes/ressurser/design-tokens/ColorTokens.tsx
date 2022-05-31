@@ -80,7 +80,7 @@ type ColorGridProps = BoxProps & {
 };
 const ColorGrid = ({ colors, ...rest }: ColorGridProps) => {
   return (
-    <SimpleGrid columns={[2, 3, 4]} spacing={3} {...rest}>
+    <SimpleGrid gap={3} columns={[2, 3, 4]} {...rest}>
       {Object.values(colors).map((token, i) => (
         <ColorToken key={i} token={token} />
       ))}

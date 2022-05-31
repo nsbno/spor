@@ -42,7 +42,7 @@ const baseStyleIcon: SystemStyleObject = {
   position: "relative",
   color: "currentColor",
   strokeLinecap: "round",
-  fontSize: "18px",
+  fontSize: "1.125rem",
   _disabled: {
     opacity: 0.5,
   },

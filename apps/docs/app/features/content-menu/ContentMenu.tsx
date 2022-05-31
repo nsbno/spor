@@ -43,7 +43,7 @@ export const ContentMenu = forwardRef((_, ref) => {
         const subItems = item.subItems?.filter((subItem) => subItem.url);
         const hasSubItems = Boolean(subItems?.length);
         return (
-          <AccordionItem key={item.title}>
+          <AccordionItem key={item.title} mt={0.5} mb={0.5} >
             <AccordionButton fontWeight="bold" ref={index === 0 ? ref : null}>
               {item.title}
               <AccordionIcon />

@@ -1,12 +1,14 @@
 import {
   As,
+  Box,
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
+  Center,
   forwardRef,
 } from "@chakra-ui/react";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
+import { ColorInlineLoader } from "@vygruppen/spor-loader-react";
 import React from "react";
-import { ButtonSpinner } from "./ButtonSpinner";
 
 export type ButtonProps = Exclude<
   ChakraButtonProps,
@@ -50,18 +52,54 @@ export type ButtonProps = Exclude<
  * ```
  */
 export const Button = forwardRef<ButtonProps, As<any>>(
-  ({ width, size = "md", variant = "primary", ...props }, ref) => {
+  (
+    {
+      width,
+      size = "md",
+      variant = "primary",
+      children,
+      isLoading,
+      isDisabled,
+      leftIcon,
+      rightIcon,
+      ...props
+    },
+    ref
+  ) => {
     const ariaLabel = useCorrectAriaLabel(props);
 
     return (
       <ChakraButton
-        spinner={<ButtonSpinner />}
         {...props}
         size={size}
         variant={variant}
         ref={ref}
         aria-label={ariaLabel}
-      />
+        aria-busy={isLoading}
+        isDisabled={isDisabled || isLoading}
+        leftIcon={
+          isLoading && leftIcon ? (
+            <Box visibility={isLoading ? "hidden" : "visible"}>{leftIcon}</Box>
+          ) : (
+            leftIcon
+          )
+        }
+        rightIcon={
+          isLoading && rightIcon ? (
+            <Box visibility={isLoading ? "hidden" : "visible"}>{rightIcon}</Box>
+          ) : (
+            rightIcon
+          )
+        }
+        position="relative"
+      >
+        {isLoading && (
+          <Center position="absolute" top="0" right="0" bottom="0" left="0">
+            <ColorInlineLoader maxWidth="6rem" width="100%" mx={2} />
+          </Center>
+        )}
+        <Box visibility={isLoading ? "hidden" : "visible"}>{children}</Box>
+      </ChakraButton>
     );
   }
 );

@@ -19,14 +19,17 @@ const containerStyle: SystemStyleFunction = (props) => ({
   alignItems: "center",
   fontSize: "16px",
   px: 1,
-  _focus: {
+  _checked: {
+    background: "alias.seaMist",
+    boxShadow: `0 0 0 1px ${colors.alias.celadon}`,
+  },
+  "input:focus-visible + &": {
     boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
   },
   _hover: {
     boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
-  },
-  _checked: {
-    background: "alias.seaMist",
+    background: "alias.mint",
+    cursor: "pointer",
   },
 });
 

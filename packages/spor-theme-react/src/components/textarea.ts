@@ -7,6 +7,7 @@ const baseStyle: SystemStyleFunction = (props) => ({
   lineHeight: "short",
   py: 3,
   verticalAlign: "top",
+  appearance: "none",
 });
 
 export default {

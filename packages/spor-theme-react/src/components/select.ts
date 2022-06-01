@@ -30,20 +30,19 @@ const baseStyleRoot: SystemStyleObject = {
 const baseStyleField: SystemStyleFunction = (props) => ({
   ...Input.baseStyle(props).field,
   appearance: "none",
-  pb: "1px",
   pt: "16px",
   "option, optgroup": {
     background: "alias.white",
   },
 });
 const baseStyleIcon: SystemStyleObject = {
-  width: "1.5rem",
-  height: "100%",
+  width: "30px",
+  height: "30px",
   insetEnd: "0.5rem",
   position: "relative",
   color: "currentColor",
   strokeLinecap: "round",
-  fontSize: "1.25rem",
+  fontSize: "1.125rem",
   _disabled: {
     opacity: 0.5,
   },

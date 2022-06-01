@@ -1,23 +1,23 @@
 import { Box, BoxProps, Center } from "@chakra-ui/react";
+import { inlineLoaderLightData } from "@vygruppen/spor-loader";
 import React from "react";
-import { inlineLoaderData } from "@vygruppen/spor-loader";
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
 
-export type InlineLoaderProps = Exclude<BoxProps, "children">;
+export type DarkInlineLoaderProps = Exclude<BoxProps, "children">;
 /**
  * Loading component that works well in bounded contexts, like inside a button.
  */
-export const InlineLoader = ({
+export const DarkInlineLoader = ({
   width,
   maxWidth,
   ...props
-}: InlineLoaderProps) => {
+}: DarkInlineLoaderProps) => {
   return (
     <Center {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={inlineLoaderData} />}
+          {() => <Lottie animationData={inlineLoaderLightData} />}
         </ClientOnly>
       </Box>
     </Center>

@@ -1,6 +1,6 @@
 export * from "./ContentLoader";
 export * from "./DarkFullScreenLoader";
-export * from "./InlineLoader";
+export * from "./ColorInlineLoader";
 export * from "./LightFullScreenLoader";
 export * from "./Skeleton";
 export * from "./SkeletonCircle";

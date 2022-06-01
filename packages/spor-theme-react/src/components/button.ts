@@ -19,12 +19,12 @@ const baseStyle: SystemStyleObject = {
   _disabled: {
     cursor: "not-allowed",
     boxShadow: "none",
-    backgroundColor: "alias.silver",
+    backgroundColor: "alias.platinum",
     color: "alias.white",
   },
   _hover: {
     _disabled: {
-      bg: "alias.silver",
+      background: "alias.platinum",
     },
   },
 };

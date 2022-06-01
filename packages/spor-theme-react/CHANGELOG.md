@@ -1,5 +1,14 @@
 # @vygruppen/spor-theme-react
 
+## 0.4.10
+
+### Patch Changes
+
+- 8ceb63f: Introduce the new spinners for buttons
+- 8d559a6: Make textareas work on iphone safari
+- db6ecd3: Fix css styles in dropdown and breakpoint on color tokens
+- b1d0e3e: Change the choice chip styling slightly
+
 ## 0.4.9
 
 ### Patch Changes

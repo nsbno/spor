@@ -19,7 +19,8 @@
     "dev": "tsup src/index.tsx --watch"
   },
   "dependencies": {
-    "@vygruppen/spor-i18n-react": "*"
+    "@vygruppen/spor-i18n-react": "*",
+    "@vygruppen/spor-loader-react": "*"
   },
   "devDependencies": {
     "@chakra-ui/react": "^1.7.3",

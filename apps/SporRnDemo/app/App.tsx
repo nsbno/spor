@@ -1,6 +1,6 @@
 import {
-  Button,
   Heading,
+  Spinner,
   SporProvider,
   Stack,
   Text,
@@ -11,6 +11,7 @@ import { SafeAreaView } from "react-native";
  * The entry point of the Spor RN demo app
  */
 const App = () => {
+  console.log("the spinner is ", Spinner);
   return (
     <SporProvider>
       <SafeAreaView>
@@ -31,9 +32,7 @@ const App = () => {
           <Text color="darkGrey" variant="md" textAlign="center">
             Man kan ikke gjøre så mye enda da, men det funker i alle fall!
           </Text>
-          <Button variant="primary" size="md" onPress={() => {}}>
-            Her er en knapp
-          </Button>
+          <Spinner />
         </Stack>
       </SafeAreaView>
     </SporProvider>

@@ -1,9 +1,8 @@
-import { BoxProps } from "@shopify/restyle";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 import React from "react";
-import { Box } from "./Box";
+import { Box, BoxProps } from "./Box";
 
-type StackProps = BoxProps<Theme> & {
+type StackProps = BoxProps & {
   spacing?: keyof Theme["spacing"];
   children: React.ReactNode;
 };

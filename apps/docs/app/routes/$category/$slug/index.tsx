@@ -26,7 +26,7 @@ export const loader: LoaderFunction = async ({
   request,
 }): Promise<LoaderData> => {
   invariant(params.category, "Expected params.category");
-  invariant(params.slug, "Expected params.article");
+  invariant(params.slug, "Expected params.slug");
 
   const query = `*[_type == "article" && category->slug.current == $categorySlug && slug.current == $articleSlug] {
     _id,

@@ -4,18 +4,18 @@ import React from "react";
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
 
-export type LightInlineLoaderProps = Exclude<BoxProps, "children">;
+export type DarkInlineLoaderProps = Exclude<BoxProps, "children">;
 /**
  * Loading component that works well in bounded contexts, like inside a button.
  */
-export const LightInlineLoader = ({
+export const DarkInlineLoader = ({
   width,
   maxWidth,
   ...props
-}: LightInlineLoaderProps) => {
+}: DarkInlineLoaderProps) => {
   return (
     <Center {...props}>
-      <Box width={width} maxWidth={maxWidth} filter="brightness(0) invert(1)">
+      <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
           {() => <Lottie animationData={inlineLoaderLightData} />}
         </ClientOnly>

@@ -77,8 +77,20 @@ export const Button = forwardRef<ButtonProps, As<any>>(
         aria-label={ariaLabel}
         aria-busy={isLoading}
         isDisabled={isDisabled || isLoading}
-        leftIcon={isLoading ? undefined : leftIcon}
-        rightIcon={isLoading ? undefined : rightIcon}
+        leftIcon={
+          isLoading && leftIcon ? (
+            <Box visibility={isLoading ? "hidden" : "visible"}>{leftIcon}</Box>
+          ) : (
+            leftIcon
+          )
+        }
+        rightIcon={
+          isLoading && rightIcon ? (
+            <Box visibility={isLoading ? "hidden" : "visible"}>{rightIcon}</Box>
+          ) : (
+            rightIcon
+          )
+        }
         position="relative"
       >
         {isLoading && (

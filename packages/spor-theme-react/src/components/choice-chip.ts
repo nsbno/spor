@@ -23,7 +23,7 @@ const containerStyle: SystemStyleFunction = (props) => ({
     background: "alias.seaMist",
     boxShadow: `0 0 0 1px ${colors.alias.celadon}`,
   },
-  _focus: {
+  "input:focus-visible + &": {
     boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
   },
   _hover: {

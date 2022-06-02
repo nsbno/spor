@@ -1,5 +1,13 @@
 # @vygruppen/spor-button-react
 
+## 0.2.3
+
+### Patch Changes
+
+- 8ceb63f: Introduce the new spinners for buttons
+- Updated dependencies [83d0026]
+  - @vygruppen/spor-loader-react@0.1.0
+
 ## 0.2.2
 
 ### Patch Changes

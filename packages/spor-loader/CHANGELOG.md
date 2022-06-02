@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader
 
+## 0.1.0
+
+### Minor Changes
+
+- 83d0026: Add two new components – LightInlineLoader and ColorInlineLoader instead of the default InlineLoader
+
 ## 0.0.3
 
 ### Patch Changes

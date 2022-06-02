@@ -1,5 +1,16 @@
 # @vygruppen/spor-loader-react
 
+## 0.1.0
+
+### Minor Changes
+
+- 83d0026: Add two new components – LightInlineLoader and ColorInlineLoader instead of the default InlineLoader
+
+### Patch Changes
+
+- Updated dependencies [83d0026]
+  - @vygruppen/spor-loader@0.1.0
+
 ## 0.0.3
 
 ### Patch Changes

@@ -1,6 +1,5 @@
 import {
   Heading,
-  Spinner,
   SporProvider,
   Stack,
   Text,
@@ -11,7 +10,6 @@ import { SafeAreaView } from "react-native";
  * The entry point of the Spor RN demo app
  */
 const App = () => {
-  console.log("the spinner is ", Spinner);
   return (
     <SporProvider>
       <SafeAreaView>
@@ -32,7 +30,6 @@ const App = () => {
           <Text color="darkGrey" variant="md" textAlign="center">
             Man kan ikke gjøre så mye enda da, men det funker i alle fall!
           </Text>
-          <Spinner />
         </Stack>
       </SafeAreaView>
     </SporProvider>

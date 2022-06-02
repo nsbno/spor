@@ -1,11 +1,12 @@
 {
-  "name": "sporrndemo",
+  "name": "spor-rn-demo",
   "version": "0.0.2",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "dev": "react-native start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {

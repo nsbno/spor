@@ -34,7 +34,6 @@ const baseStyle: SystemStyleObject = {
 
 type Variant = "elevated" | "filled" | "outlined";
 const variants: Record<Variant, SystemStyleInterpolation> = {
-<<<<<<< HEAD
   elevated: ({ size }) => ({
     backgroundColor: "alias.white",
     boxShadow: `${size === "lg" ? shadows.md : shadows.sm}, 0 0 0 1px ${
@@ -46,15 +45,6 @@ const variants: Record<Variant, SystemStyleInterpolation> = {
         boxShadow: `${size === "lg" ? shadows.lg : shadows.md}, 0 0 0 1px ${
           colors.alias.steel
         }`,
-=======
-  elevated: ({size}) => ({
-    backgroundColor: "alias.white",
-    boxShadow:   `${size === "lg" ? shadows.md : shadows.sm}, 0 0 0 1px ${colors.alias.silver}`,
-    
-    "button&, a&": {
-      _hover: {
-        boxShadow: `${size === "lg" ? shadows.lg: shadows.md}, 0 0 0 1px ${colors.alias.steel}`,
->>>>>>> 73eeb79 (Add sizes in cards component)
         borderColor: "alias.steel",
       },
       _active: {
@@ -178,7 +168,6 @@ function getColorSchemeActiveProps(colorScheme: string) {
   }
 }
 
-<<<<<<< HEAD
 type Size = "sm" | "lg";
 
 const sizes: Record<Size, SystemStyleInterpolation> = {
@@ -187,25 +176,11 @@ const sizes: Record<Size, SystemStyleInterpolation> = {
   },
   sm: {
     borderRadius: "sm",
-=======
-type Size = "sm" | "lg"
-
-const sizes : Record<Size, SystemStyleInterpolation> = {
-  lg:({variants})  => ({
-    borderRadius: "md",
-  }),
-  sm: {
-   borderRadius: "sm",
->>>>>>> 73eeb79 (Add sizes in cards component)
   },
 };
 
 export default {
   baseStyle,
   variants,
-<<<<<<< HEAD
   sizes,
-=======
-  sizes
->>>>>>> 73eeb79 (Add sizes in cards component)
 };

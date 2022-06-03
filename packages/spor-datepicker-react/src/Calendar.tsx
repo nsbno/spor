@@ -10,8 +10,15 @@ import {
 import { useDatepicker } from "./DatepickerContext";
 
 export const Calendar: React.VFC = () => {
-  const { goToNextMonth, goToPreviousMonth, days, weekdayLabels, monthLabel, prevDays, nextDays } =
-    useDatepicker();
+  const {
+    goToNextMonth,
+    goToPreviousMonth,
+    days,
+    weekdayLabels,
+    monthLabel,
+    prevDays,
+    nextDays,
+  } = useDatepicker();
 
   const styles = useStyles();
   return (
@@ -58,14 +65,14 @@ export const Calendar: React.VFC = () => {
           }
         })}
         {nextDays.map((day) => {
-            return (
-              <Day
-                isDisabled
-                key={day.date.toString()}
-                dayLabel={day.dayLabel}
-                date={day.date}
-              />
-            );
+          return (
+            <Day
+              isDisabled
+              key={day.date.toString()}
+              dayLabel={day.dayLabel}
+              date={day.date}
+            />
+          );
         })}
       </Grid>
     </Card>

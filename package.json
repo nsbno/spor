@@ -10,6 +10,7 @@
     "add-package": "plop --plopfile internal/plopfile.mjs",
     "prebuild": "rimraf packages/*/dist",
     "build": "turbo run build",
+    "build:rn": "turbo run build --filter=@vygruppen/spor*-react-native",
     "test": "turbo run test --parallel",
     "dev": "turbo run dev --no-cache --parallel",
     "dev:rn": "turbo run dev --no-cache --parallel --filter=@vygruppen/spor*-react-native --filter=spor-rn-demo",

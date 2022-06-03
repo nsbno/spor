@@ -15,8 +15,8 @@ export const DarkFullScreenLoader = ({
 }: DarkFullScreenLoaderProps) => {
   return (
     <Box height="100%" backgroundColor="darkTeal" {...props}>
-      <Box width={width} maxWidth={maxWidth}>
-        <Lottie source={fullScreenLoaderWhiteData} />
+      <Box width={width} maxWidth={maxWidth} height={width}>
+        <Lottie source={fullScreenLoaderWhiteData} loop autoPlay />
       </Box>
     </Box>
   );

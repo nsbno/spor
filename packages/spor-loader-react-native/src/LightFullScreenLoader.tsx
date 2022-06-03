@@ -16,7 +16,7 @@ export const LightFullScreenLoader = ({
   return (
     <Box height="100%" backgroundColor="white" {...props}>
       <Box width={width} maxWidth={maxWidth}>
-        <Lottie source={fullScreenLoaderBlackData} />
+        <Lottie source={fullScreenLoaderBlackData} loop autoPlay />
       </Box>
     </Box>
   );

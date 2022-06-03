@@ -18,7 +18,7 @@ export const ContentLoader = ({ children, ...props }: ContentLoaderProps) => {
   return (
     <Box {...props}>
       <Box maxWidth={140} width="100%" alignSelf="auto">
-        <Lottie source={contentLoaderData} />
+        <Lottie source={contentLoaderData} loop autoPlay />
       </Box>
       {children && (
         <Box maxWidth={200} width="100%" alignSelf="auto">

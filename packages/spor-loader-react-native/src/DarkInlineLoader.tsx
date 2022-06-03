@@ -17,7 +17,7 @@ export const DarkInlineLoader = ({
   return (
     <Box alignItems="center" justifyContent="center" {...props}>
       <Box width={width} maxWidth={maxWidth}>
-        <Lottie source={inlineLoaderLightData} />
+        <Lottie source={inlineLoaderLightData} loop autoPlay />
       </Box>
     </Box>
   );

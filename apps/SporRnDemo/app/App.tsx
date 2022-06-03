@@ -1,4 +1,5 @@
 import {
+  DarkFullScreenLoader,
   Heading,
   SporProvider,
   Stack,
@@ -10,6 +11,13 @@ import { SafeAreaView } from "react-native";
  * The entry point of the Spor RN demo app
  */
 const App = () => {
+  if (true) {
+    return (
+      <SporProvider>
+        <DarkFullScreenLoader height="100%" />
+      </SporProvider>
+    );
+  }
   return (
     <SporProvider>
       <SafeAreaView>

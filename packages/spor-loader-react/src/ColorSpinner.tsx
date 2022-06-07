@@ -1,26 +1,27 @@
 import { Box, BoxProps, Center } from "@chakra-ui/react";
-import { spinnerData } from "@vygruppen/spor-loader";
+import { spinnerColorData } from "@vygruppen/spor-loader";
 import React from "react";
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
 
 export type SpinnerProps = BoxProps;
+export type ColorSpinnerProps = SpinnerProps;
 /** A circular spinner
  *
  * Can be used in place of a loading animation, or for reloading app state, for instance.
  *
  * ```tsx
- * <Spinner width="64px" height="64px" />
+ * <ColorSpinner width="64px" height="64px" />
  * ```
  *
  * You can also pass an explanatory text as `children`:
  *
  * ```tsx
- * <Spinner>
+ * <ColorSpinner>
  *   Hold your horses
- * </Spinner>
+ * </ColorSpinner>
  */
-export const Spinner = ({
+export const ColorSpinner = ({
   children,
   width,
   maxWidth,
@@ -29,7 +30,9 @@ export const Spinner = ({
   return (
     <Center flexDirection="column" {...props}>
       <Box width={width} maxWidth={maxWidth}>
-        <ClientOnly>{() => <Lottie animationData={spinnerData} />}</ClientOnly>
+        <ClientOnly>
+          {() => <Lottie animationData={spinnerColorData} />}
+        </ClientOnly>
       </Box>
       {children && (
         <Box mt={3} fontWeight="bold">
@@ -39,3 +42,6 @@ export const Spinner = ({
     </Center>
   );
 };
+
+/** @deprecated Use ColorSpinner instead */
+export const Spinner = ColorSpinner;

@@ -1,6 +1,11 @@
 import React from "react";
 
-import { StylesProvider, useMultiStyleConfig } from "@chakra-ui/react";
+import {
+  Popover,
+  PopoverContent,
+  StylesProvider,
+  useMultiStyleConfig,
+} from "@chakra-ui/react";
 import { DatepickerProvider } from "./DatepickerContext";
 import { Calendar } from "./Calendar";
 import { DateInput } from "./DateInput";
@@ -31,10 +36,14 @@ const SporDatepicker: React.VFC<DatepickerProps> = (props) => {
 
   return (
     <DatepickerProvider>
-      <StylesProvider value={styles}>
-        <DateInput variant={variant} />
-        <Calendar />
-      </StylesProvider>
+      <Popover placement={"bottom-start"}>
+        <StylesProvider value={styles}>
+          <DateInput variant={variant} />
+          <PopoverContent>
+            <Calendar />
+          </PopoverContent>
+        </StylesProvider>
+      </Popover>
     </DatepickerProvider>
   );
 };

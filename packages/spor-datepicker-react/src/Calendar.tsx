@@ -1,5 +1,12 @@
 import React from "react";
-import { Button, Flex, Grid, GridItem, useStyles } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  forwardRef,
+  Grid,
+  GridItem,
+  useStyles,
+} from "@chakra-ui/react";
 import { Card } from "@vygruppen/spor-card-react";
 import { Text } from "@vygruppen/spor-typography-react";
 import { Day } from "./Day";
@@ -9,7 +16,7 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { useDatepicker } from "./DatepickerContext";
 
-export const Calendar: React.VFC = () => {
+export const Calendar: React.VFC = forwardRef((props, ref) => {
   const {
     goToNextMonth,
     goToPreviousMonth,
@@ -22,7 +29,7 @@ export const Calendar: React.VFC = () => {
 
   const styles = useStyles();
   return (
-    <Card variant="outlined" p={1} __css={styles.calendar}>
+    <Card variant="outlined" p={1} __css={styles.calendar} ref={ref}>
       <Flex justify="space-between" mx={3} mt={2}>
         <Button __css={styles.button} onClick={goToPreviousMonth}>
           <ArrowLeftFill30Icon />
@@ -77,4 +84,4 @@ export const Calendar: React.VFC = () => {
       </Grid>
     </Card>
   );
-};
+});

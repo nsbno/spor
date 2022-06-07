@@ -47,6 +47,7 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     ...elementStateStyles,
   },
   calendar: {
+    backgroundColor: "alias.white",
     borderRadius: "md",
     boxShadow: "0px 1px 5px rgba(0, 0, 0, 0.2)",
     height: "348px",

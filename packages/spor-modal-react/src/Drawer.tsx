@@ -7,6 +7,7 @@ import {
   forwardRef,
   useModalContext,
 } from "@chakra-ui/react";
+import styled from "@emotion/styled";
 import React from "react";
 import { useSwipeable } from "react-swipeable";
 export {
@@ -51,11 +52,30 @@ export const DrawerContent = forwardRef<DrawerContentProps, any>(
 
     return (
       <Box {...handlers}>
-        <ChakraDrawerContent {...props} ref={ref} />
+        <StyledChakraDrawerContent {...props} ref={ref} />
       </Box>
     );
   }
 );
+
+const StyledChakraDrawerContent = styled(ChakraDrawerContent)`
+  position: relative;
+
+  @media screen and (max-width: 48em) {
+    &::before {
+      content: "";
+      width: 42px;
+      height: 6px;
+      background-color: #afb2b3;
+      position: absolute;
+      top: 12px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      border-radius: 3px;
+    }
+  }
+`;
 
 const DrawerContext = React.createContext<DrawerProps["placement"]>(undefined);
 type DrawerProviderProps = {

@@ -23,17 +23,18 @@
     "@vygruppen/spor-button-react-native": "*",
     "@vygruppen/spor-i18n-react": "*",
     "@vygruppen/spor-layout-react-native": "*",
+    "@vygruppen/spor-loader-react-native": "*",
     "@vygruppen/spor-provider-react-native": "*",
     "@vygruppen/spor-theme-react-native": "*",
     "@vygruppen/spor-typography-react-native": "*"
   },
   "devDependencies": {
     "react": ">17.0.0",
-    "react-native": ">0.66.0",
+    "react-native": ">=0.66.0",
     "tsup": "^5.11.11"
   },
   "peerDependencies": {
     "react": ">17.0.0",
-    "react-native": "^0.66.0"
+    "react-native": ">=0.66.0"
   }
 }

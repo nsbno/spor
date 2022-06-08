@@ -1,4 +1,4 @@
-export const spinnerData = {
+export const spinnerColorData = {
   v: "4.8.0",
   meta: { g: "LottieFiles AE 1.1.0", a: "", k: "", d: "", tc: "" },
   fr: 25,

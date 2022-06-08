@@ -8,8 +8,8 @@
   "updateInternalDependencies": "patch",
   "ignore": [
     "@vygruppen/docs",
-    "sporrndemo",
-    "@vygruppen/spor-docs-studio",
+    "@vygruppen/studio",
+    "@vygruppen/rn-demo",
     "@vygruppen/config",
     "@vygruppen/tsconfig"
   ]

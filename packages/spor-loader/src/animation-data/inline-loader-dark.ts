@@ -1,4 +1,4 @@
-export const inlineLoaderLightData = {
+export const inlineLoaderDarkData = {
   v: "4.8.0",
   meta: { g: "LottieFiles AE 2.0.4", a: "", k: "", d: "", tc: "" },
   fr: 25,
@@ -6,7 +6,7 @@ export const inlineLoaderLightData = {
   op: 214,
   w: 200,
   h: 112,
-  nm: "_Loading_horizontal 3",
+  nm: "_Loading_horizontal 2",
   ddd: 0,
   assets: [],
   layers: [
@@ -104,7 +104,11 @@ export const inlineLoaderLightData = {
             },
             {
               ty: "st",
-              c: { a: 0, k: [1, 1, 1, 1], ix: 3 },
+              c: {
+                a: 0,
+                k: [0.16862745098, 0.16862745098, 0.172549019608, 1],
+                ix: 3,
+              },
               o: { a: 0, k: 100, ix: 4 },
               w: { a: 0, k: 9, ix: 5 },
               lc: 2,
@@ -172,7 +176,11 @@ export const inlineLoaderLightData = {
             },
             {
               ty: "fl",
-              c: { a: 0, k: [1, 1, 1, 1], ix: 4 },
+              c: {
+                a: 0,
+                k: [0.16862745098, 0.16862745098, 0.172549019608, 1],
+                ix: 4,
+              },
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
@@ -316,7 +324,11 @@ export const inlineLoaderLightData = {
             },
             {
               ty: "st",
-              c: { a: 0, k: [1, 1, 1, 1], ix: 3 },
+              c: {
+                a: 0,
+                k: [0.16862745098, 0.16862745098, 0.172549019608, 1],
+                ix: 3,
+              },
               o: { a: 0, k: 100, ix: 4 },
               w: { a: 0, k: 9, ix: 5 },
               lc: 2,
@@ -384,7 +396,11 @@ export const inlineLoaderLightData = {
             },
             {
               ty: "fl",
-              c: { a: 0, k: [1, 1, 1, 1], ix: 4 },
+              c: {
+                a: 0,
+                k: [0.16862745098, 0.16862745098, 0.172549019608, 1],
+                ix: 4,
+              },
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
@@ -531,7 +547,11 @@ export const inlineLoaderLightData = {
             },
             {
               ty: "st",
-              c: { a: 0, k: [1, 1, 1, 1], ix: 3 },
+              c: {
+                a: 0,
+                k: [0.16862745098, 0.16862745098, 0.172549019608, 1],
+                ix: 3,
+              },
               o: { a: 0, k: 100, ix: 4 },
               w: { a: 0, k: 9, ix: 5 },
               lc: 2,
@@ -599,7 +619,11 @@ export const inlineLoaderLightData = {
             },
             {
               ty: "fl",
-              c: { a: 0, k: [1, 1, 1, 1], ix: 4 },
+              c: {
+                a: 0,
+                k: [0.16862745098, 0.16862745098, 0.172549019608, 1],
+                ix: 4,
+              },
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
@@ -711,7 +735,11 @@ export const inlineLoaderLightData = {
             },
             {
               ty: "st",
-              c: { a: 0, k: [1, 1, 1, 1], ix: 3 },
+              c: {
+                a: 0,
+                k: [0.16862745098, 0.16862745098, 0.172549019608, 1],
+                ix: 3,
+              },
               o: { a: 0, k: 100, ix: 4 },
               w: { a: 0, k: 9, ix: 5 },
               lc: 2,
@@ -814,7 +842,11 @@ export const inlineLoaderLightData = {
             },
             {
               ty: "fl",
-              c: { a: 0, k: [1, 1, 1, 1], ix: 4 },
+              c: {
+                a: 0,
+                k: [0.16862745098, 0.16862745098, 0.172549019608, 1],
+                ix: 4,
+              },
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
@@ -905,7 +937,11 @@ export const inlineLoaderLightData = {
             },
             {
               ty: "fl",
-              c: { a: 0, k: [1, 1, 1, 1], ix: 4 },
+              c: {
+                a: 0,
+                k: [0.16862745098, 0.16862745098, 0.172549019608, 1],
+                ix: 4,
+              },
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,

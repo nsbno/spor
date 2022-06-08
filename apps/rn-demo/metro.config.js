@@ -4,6 +4,8 @@
  *
  * @format
  */
+const path = require("path");
+const glob = require("glob");
 
 module.exports = {
   transformer: {
@@ -14,4 +16,15 @@ module.exports = {
       },
     }),
   },
+  watchFolders: [
+    path.resolve(__dirname, "..", ".."),
+    ...getPaths("packages/spor-*"),
+  ],
 };
+
+function getPaths(globPattern) {
+  return glob.sync(globPattern, {
+    cwd: path.resolve(__dirname, "../.."),
+    absolute: true,
+  });
+}

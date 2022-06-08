@@ -1,5 +1,4 @@
 import {
-  Button,
   Heading,
   SporProvider,
   Stack,
@@ -28,12 +27,6 @@ const App = () => {
             Velkommen! Denne appen brukes til demonstrasjon og utvikling av
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
-          <Text color="darkGrey" variant="md" textAlign="center">
-            Man kan ikke gjøre så mye enda da, men det funker i alle fall!
-          </Text>
-          <Button variant="primary" size="md" onPress={() => {}}>
-            Her er en knapp
-          </Button>
         </Stack>
       </SafeAreaView>
     </SporProvider>

@@ -51,6 +51,11 @@ const variants: Record<Variant, SystemStyleInterpolation> = {
         backgroundColor: "alias.mint",
         boxShadow: "lg",
       },
+      ":focus:not(:focus-visible)": {
+        boxShadow: `${size === "lg" ? shadows.md : shadows.sm}, 0 0 0 1px ${
+          colors.alias.silver
+        }`,
+      },
     },
   }),
   filled: ({ colorScheme }) => ({

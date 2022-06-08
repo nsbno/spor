@@ -5,6 +5,21 @@ import Lottie from "lottie-react-native";
 import React from "react";
 
 export type LightSpinnerProps = BoxProps & { children?: React.ReactNode };
+/** A circular spinner
+ *
+ * Can be used in place of a loading animation, or for reloading app state, for instance.
+ *
+ * ```tsx
+ * <LightSpinner width={64} height={64} />
+ * ```
+ *
+ * You can also pass an explanatory text as `children`:
+ *
+ * ```tsx
+ * <LightSpinner>
+ *   Hold your horses
+ * </LightSpinner>
+ */
 export const LightSpinner = ({
   children,
   height,

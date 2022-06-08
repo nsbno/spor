@@ -4,7 +4,7 @@ import { Text } from "@vygruppen/spor-typography-react-native";
 import Lottie from "lottie-react-native";
 import React from "react";
 
-export type ColorSpinnerProps = BoxProps & { children: React.ReactNode };
+export type ColorSpinnerProps = BoxProps & { children?: React.ReactNode };
 export const ColorSpinner = ({
   children,
   height,

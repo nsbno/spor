@@ -1,5 +1,5 @@
 import { Box, BoxProps } from "@vygruppen/spor-layout-react-native";
-import { inlineLoaderLightData } from "@vygruppen/spor-loader";
+import { inlineLoaderDarkData } from "@vygruppen/spor-loader";
 import Lottie from "lottie-react-native";
 import React from "react";
 
@@ -16,8 +16,8 @@ export const DarkInlineLoader = ({
 }: DarkInlineLoaderProps) => {
   return (
     <Box alignItems="center" justifyContent="center" {...props}>
-      <Box width={width} maxWidth={maxWidth}>
-        <Lottie source={inlineLoaderLightData} loop autoPlay />
+      <Box width={width} maxWidth={maxWidth} height="100%">
+        <Lottie source={inlineLoaderDarkData} loop autoPlay />
       </Box>
     </Box>
   );

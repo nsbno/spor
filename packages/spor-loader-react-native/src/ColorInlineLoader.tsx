@@ -16,8 +16,8 @@ export const ColorInlineLoader = ({
 }: ColorInlineLoaderProps) => {
   return (
     <Box alignItems="center" justifyContent="center" {...props}>
-      <Box width={width} maxWidth={maxWidth}>
-        <Lottie source={inlineLoaderColorData} loop autoPlay  />
+      <Box width={width} maxWidth={maxWidth} height="100%">
+        <Lottie source={inlineLoaderColorData} loop autoPlay />
       </Box>
     </Box>
   );

@@ -1,4 +1,4 @@
-export const inlineColorDarkData = {
+export const inlineLoaderDarkData = {
   v: "4.8.0",
   meta: { g: "LottieFiles AE 2.0.4", a: "", k: "", d: "", tc: "" },
   fr: 25,

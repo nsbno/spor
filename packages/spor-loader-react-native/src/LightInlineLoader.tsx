@@ -16,7 +16,7 @@ export const LightInlineLoader = ({
 }: LightInlineLoaderProps) => {
   return (
     <Box alignItems="center" justifyContent="center" {...props}>
-      <Box width={width} maxWidth={maxWidth}>
+      <Box width={width} maxWidth={maxWidth} height="100%">
         <Lottie source={inlineLoaderLightData} loop autoPlay />
       </Box>
     </Box>

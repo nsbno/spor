@@ -7,10 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "dev": "react-native start",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "monkeypatch": "npm run monkeypatch:build && npm run monkeypatch:copy",
-    "monkeypatch:build": "cd ../.. && npm run build:rn && cd -",
-    "monkeypatch:copy": "cp -r ../../packages/spor-* ./node_modules/@vygruppen/spor-react-native/node_modules/@vygruppen/"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "@vygruppen/spor-design-tokens": "*",

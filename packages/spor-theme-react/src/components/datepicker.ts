@@ -9,7 +9,8 @@ const parts = anatomy("datepicker").parts(
   "input",
   "calendarButton",
   "calendar",
-  "label",
+  "monthLabel",
+  "dayLabel",
   "weekendLabel",
   "button"
 );
@@ -50,10 +51,12 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     backgroundColor: "alias.white",
     borderRadius: "md",
     boxShadow: "0px 1px 5px rgba(0, 0, 0, 0.2)",
-    height: "348px",
-    width: "375px",
   },
-  label: {
+  monthLabel: {
+    fontWeight: "bold",
+    color: "alias.darkGrey",
+  },
+  dayLabel: {
     fontWeight: "bold",
     color: "alias.darkGrey",
   },
@@ -65,8 +68,6 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     backgroundColor: "alias.white",
     color: "alias.darkGrey",
     borderRadius: "50%",
-    height: "36px",
-    width: "36px",
     ...elementStateStyles,
   },
 };
@@ -80,6 +81,22 @@ const sizes: Record<string, PartsStyleInterpolation<typeof parts>> = {
     calendarButton: {
       height: "56px",
     },
+    monthLabel: {
+      fontSize: "18px",
+      lineHeight: "24px",
+    },
+    dayLabel: {
+      fontSize: "16px",
+      lineHeight: "20px",
+    },
+    weekendLabel: {
+      fontSize: "16px",
+      lineHeight: "20px",
+    },
+    button: {
+      height: "36px",
+      width: "36px",
+    },
   },
   lg: {
     input: {
@@ -88,6 +105,22 @@ const sizes: Record<string, PartsStyleInterpolation<typeof parts>> = {
     },
     calendarButton: {
       height: "60px",
+    },
+    monthLabel: {
+      fontSize: "24px",
+      lineHeight: "36px",
+    },
+    dayLabel: {
+      fontSize: "18px",
+      lineHeight: "24px",
+    },
+    weekendLabel: {
+      fontSize: "18px",
+      lineHeight: "24px",
+    },
+    button: {
+      height: "42px",
+      width: "42px",
     },
   },
 };

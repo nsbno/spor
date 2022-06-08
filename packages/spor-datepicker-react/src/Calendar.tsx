@@ -34,7 +34,7 @@ export const Calendar: React.VFC = forwardRef((props, ref) => {
         <Button __css={styles.button} onClick={goToPreviousMonth}>
           <ArrowLeftFill30Icon />
         </Button>
-        <Text sx={styles.label}>{monthLabel}</Text>
+        <Text sx={styles.monthLabel}>{monthLabel}</Text>
         <Button __css={styles.button} onClick={goToNextMonth}>
           <ArrowRightFill30Icon />
         </Button>
@@ -43,7 +43,7 @@ export const Calendar: React.VFC = forwardRef((props, ref) => {
         {weekdayLabels.map((dayLabel, idx) => (
           <GridItem
             key={dayLabel}
-            __css={idx > 4 ? styles.weekendLabel : styles.label}
+            __css={idx > 4 ? styles.weekendLabel : styles.dayLabel}
           >
             <Text>{dayLabel}</Text>
           </GridItem>

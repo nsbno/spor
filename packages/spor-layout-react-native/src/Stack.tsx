@@ -14,7 +14,7 @@ export const Stack = (props: StackProps) => {
   return (
     <Box {...rest}>
       {React.Children.map(children, (child: any, index: number) =>
-        React.cloneElement(child as any, {
+        React.cloneElement(child, {
           marginTop: index === 0 ? 0 : spacing,
         })
       )}

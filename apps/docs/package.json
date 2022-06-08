@@ -23,7 +23,7 @@
     "@vygruppen/spor-design-tokens": "*",
     "@vygruppen/spor-icon": "*",
     "@vygruppen/spor-icon-react": "*",
-    "@vygruppen/spor-react": "^0.13.3",
+    "@vygruppen/spor-react": "^0.13.4",
     "framer-motion": "^6.2.8",
     "match-sorter": "^6.3.1",
     "picosanity": "^4.0.0",

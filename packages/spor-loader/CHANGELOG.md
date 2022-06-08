@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader
 
+## 0.2.0
+
+### Minor Changes
+
+- 911e40b: Add new color variants of spinners, and new designs for inline loaders
+
 ## 0.1.0
 
 ### Minor Changes

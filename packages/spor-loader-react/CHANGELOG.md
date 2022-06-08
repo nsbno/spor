@@ -1,5 +1,16 @@
 # @vygruppen/spor-loader-react
 
+## 0.2.0
+
+### Minor Changes
+
+- 911e40b: Add new color variants of spinners
+
+### Patch Changes
+
+- Updated dependencies [911e40b]
+  - @vygruppen/spor-loader@0.2.0
+
 ## 0.1.0
 
 ### Minor Changes

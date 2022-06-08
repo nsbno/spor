@@ -18,13 +18,13 @@ import {
   ColorInlineLoader,
   LightInlineLoader,
   DarkInlineLoader,
-  Spinner,
-  Skeleton,
-  SkeletonText,
-  SkeletonCircle,
- } from "@vygruppen/spor-loader-react-native";
+  ColorSpinner,
+  LightSpinner,
+  DarkSpinner,
+} from "@vygruppen/spor-loader-react-native";
 ```
-For usage description, please 
+
+For usage description, please refer to the documentation.
 
 ## Development
 

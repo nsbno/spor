@@ -26,10 +26,12 @@ const containerStyle: SystemStyleFunction = (props) => ({
   "input:focus-visible + &": {
     boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
   },
-  _hover: {
-    boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
-    background: "alias.mint",
-    cursor: "pointer",
+  "@media (hover:hover)": {
+    _hover: {
+      boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
+      background: "alias.mint",
+      cursor: "pointer",
+    },
   },
 });
 

@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.4.11
+
+### Patch Changes
+
+- 9e25325: Fix an issue with how the choice chips are rendered on ios safari"
+
 ## 0.4.10
 
 ### Patch Changes

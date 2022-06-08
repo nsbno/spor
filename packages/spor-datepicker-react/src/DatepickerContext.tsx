@@ -7,8 +7,8 @@ import {
 } from "@datepicker-react/hooks";
 import {
   dayLabelFormat,
-  getNextDays,
-  getPrevDays,
+  useNextDays,
+  usePrevDays,
   Day,
 } from "./datepicker-utils";
 
@@ -70,8 +70,8 @@ export const DatepickerProvider: React.FC = ({ children }) => {
     dayLabelFormat,
   };
   const { days, weekdayLabels, monthLabel } = useMonth(monthProps);
-  const prevDays = getPrevDays(monthProps, days);
-  const nextDays = getNextDays(monthProps);
+  const prevDays = usePrevDays(monthProps, days);
+  const nextDays = useNextDays(monthProps);
 
   return (
     <DatepickerContext.Provider

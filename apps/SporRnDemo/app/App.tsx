@@ -27,9 +27,6 @@ const App = () => {
             Velkommen! Denne appen brukes til demonstrasjon og utvikling av
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
-          <Text color="darkGrey" variant="md" textAlign="center">
-            Man kan ikke gjøre så mye enda da, men det funker i alle fall!
-          </Text>
         </Stack>
       </SafeAreaView>
     </SporProvider>

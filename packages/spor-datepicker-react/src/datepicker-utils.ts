@@ -11,7 +11,7 @@ const getWeekdayIndexOfFirst = (
   days: (number | { dayLabel: string; date: Date })[]
 ) => days.filter((day) => !isDay(day)).length;
 
-export const getPrevDays = (
+export const usePrevDays = (
   { year, month, firstDayOfWeek, dayLabelFormat }: UseMonthProps,
   days: (number | { dayLabel: string; date: Date })[]
 ) => {
@@ -22,10 +22,12 @@ export const getPrevDays = (
     dayLabelFormat,
   });
   const weekdayOfFirst = getWeekdayIndexOfFirst(days);
-  return prevMonth.filter(isDay).slice(-1 * (weekdayOfFirst || 7));
+  return weekdayOfFirst
+    ? prevMonth.filter(isDay).slice(-1 * weekdayOfFirst)
+    : [];
 };
 
-export const getNextDays = ({
+export const useNextDays = ({
   year,
   month,
   firstDayOfWeek,
@@ -38,7 +40,7 @@ export const getNextDays = ({
     dayLabelFormat,
   });
   const weekdayOfFirstInNext = getWeekdayIndexOfFirst(nextMonth);
-  return nextMonth.filter(isDay).slice(0, 7 - weekdayOfFirstInNext);
+  return nextMonth.filter(isDay).slice(0, 7 - (weekdayOfFirstInNext || 7));
 };
 
 export const dayLabelFormat = (date: Date): string => date.getDate().toString();

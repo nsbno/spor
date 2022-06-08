@@ -76,7 +76,9 @@ export const CodeBlockContainer = ({
       onKeyUp={handleKeyUp}
       {...props}
     >
-      <CopyCodeButton ref={copyButtonRef} code={code} />
+      <Box position="absolute" top={2} right={2}>
+        <CopyCodeButton ref={copyButtonRef} code={code} />
+      </Box>
       <Box>{children}</Box>
     </Box>
   );
@@ -104,11 +106,10 @@ export const CopyCodeButton = forwardRef<CopyCodeButtonProps, "button">(
       <DarkMode>
         <Button
           variant="additional"
+          color="white"
+          boxShadow="inset 0 0 0 1px white"
           size="xs"
           onClick={onCopy}
-          position="absolute"
-          top={2}
-          right={2}
           fontFamily="body"
           ref={ref}
         >

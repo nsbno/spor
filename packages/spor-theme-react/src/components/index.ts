@@ -20,3 +20,4 @@ export { default as Switch } from "./switch";
 export { default as Table } from "./table";
 export { default as Tabs } from "./tabs";
 export { default as Textarea } from "./textarea";
+export { default as Drawer } from "./drawer";

@@ -103,10 +103,10 @@ const components: Partial<PortableTextReactComponents> = {
   listItem: ({ children }) => <ListItem mt={1}>{children}</ListItem>,
   types: {
     buttonLink: ({ value }) => {
-      const isExternal = value.url.startsWith("/");
-      const linkProps: any = isExternal
-        ? { as: "a", href: value.url }
-        : { as: Link, to: value.url };
+      const isInternal = value.url.startsWith("/");
+      const linkProps: any = isInternal
+        ? { as: Link, to: value.url }
+        : { as: "a", href: value.url };
       return (
         <Box mt={3}>
           <Button variant={value.variant} size={value.size} {...linkProps}>

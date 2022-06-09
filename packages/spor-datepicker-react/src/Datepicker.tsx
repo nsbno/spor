@@ -1,6 +1,8 @@
 import React from "react";
 
 import {
+  Box,
+  BoxProps,
   Popover,
   PopoverContent,
   StylesProvider,
@@ -30,20 +32,29 @@ const getDefaultProps: ({
   return { size: "lg", variant: "desktop" };
 };
 
-const SporDatepicker: React.VFC<DatepickerProps> = (props) => {
-  const { size, variant } = getDefaultProps(props);
+const SporDatepicker: React.VFC<DatepickerProps & BoxProps> = ({
+  size: sizeProp,
+  variant: variantProp,
+  ...boxProps
+}) => {
+  const { size, variant } = getDefaultProps({
+    size: sizeProp,
+    variant: variantProp,
+  });
   const styles = useMultiStyleConfig("Datepicker", { size, variant });
 
   return (
     <DatepickerProvider>
-      <Popover placement={"bottom-start"}>
-        <StylesProvider value={styles}>
-          <DateInput variant={variant} />
-          <PopoverContent>
-            <Calendar />
-          </PopoverContent>
-        </StylesProvider>
-      </Popover>
+      <Box {...boxProps}>
+        <Popover placement={"bottom-start"}>
+          <StylesProvider value={styles}>
+            <DateInput variant={variant} />
+            <PopoverContent>
+              <Calendar />
+            </PopoverContent>
+          </StylesProvider>
+        </Popover>
+      </Box>
     </DatepickerProvider>
   );
 };

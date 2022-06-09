@@ -83,11 +83,10 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
         data-hover={dataAttr(state.isHovered)}
         data-focus={dataAttr(state.isFocused)}
       >
-        {!(state.isChecked && checkedIcon) && icon && (
-          <chakra.span __css={styles.icon}>{icon}</chakra.span>
-        )}
-        {state.isChecked && checkedIcon && (
-          <chakra.span __css={styles.defaultIcon}>{checkedIcon}</chakra.span>
+        {icon && (
+          <chakra.span __css={styles.icon}>
+            {state.isChecked && checkedIcon ? checkedIcon : icon}
+          </chakra.span>
         )}
         <chakra.span __css={styles.label} {...getCheckboxProps()}>
           {variant !== "icon" && children}

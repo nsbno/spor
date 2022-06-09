@@ -39,7 +39,7 @@ export function HeroSection() {
           </Flex>
           <Flex flex={["auto", "45%"]}>
             <Image
-              src="/illustrations/front-page-illustration.svg"
+              src="/illustrations/front-page-illustration-2.svg"
               alt="En person som sitter foran et skrivebord, med en dataskjerm."
               width="100%"
               __css={{ aspectRatio: "4 / 3" }}

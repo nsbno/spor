@@ -12,10 +12,12 @@ import {
 } from "@chakra-ui/react";
 import { IconButton } from "@vygruppen/spor-button-react";
 import { DatepickerProps } from "./Datepicker";
+import { useTranslation } from "@vygruppen/spor-i18n-react";
 
 export const DateInput: React.VFC<DatepickerProps> = ({ variant }) => {
   const { selectedDate, setSelectedDate } = useDatepicker();
   const styles = useStyles();
+  const { t } = useTranslation();
 
   return (
     <InputGroup>
@@ -24,7 +26,7 @@ export const DateInput: React.VFC<DatepickerProps> = ({ variant }) => {
           <>
             <PopoverAnchor>
               <Input
-                label="dato"
+                label={t(texts.date)}
                 value={selectedDate?.toLocaleDateString()}
                 onChange={(event) => {
                   setSelectedDate(new Date(event.target.value));
@@ -37,7 +39,7 @@ export const DateInput: React.VFC<DatepickerProps> = ({ variant }) => {
                 <IconButton
                   variant="additional"
                   icon={<CalendarOutline24Icon />}
-                  aria-label="Kalender"
+                  aria-label={t(texts.calendar)}
                   sx={styles.calendarButton}
                 />
               </PopoverTrigger>
@@ -47,7 +49,7 @@ export const DateInput: React.VFC<DatepickerProps> = ({ variant }) => {
           <PopoverTrigger>
             <Input
               leftIcon={<CalendarOutline24Icon />}
-              label="dato"
+              label={t(texts.date)}
               value={selectedDate?.toLocaleDateString()}
               onChange={(event) => {
                 setSelectedDate(new Date(event.target.value));
@@ -59,4 +61,17 @@ export const DateInput: React.VFC<DatepickerProps> = ({ variant }) => {
       </Flex>
     </InputGroup>
   );
+};
+
+const texts = {
+  date: {
+    nb: "Dato",
+    sv: "Datum",
+    en: "Date",
+  },
+  calendar: {
+    nb: "Kalender",
+    sv: "Kalender",
+    en: "Calendar",
+  },
 };

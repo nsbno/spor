@@ -14,7 +14,10 @@ export type ChoiceChipProps = {
   defaultChecked?: boolean;
   /** The button text */
   children: React.ReactNode;
-  icon?: React.ReactNode;
+  icon?: {
+    default: React.ReactNode;
+    checked: React.ReactNode;
+  };
   size?: "sm" | "md" | "lg" | "xl";
   variant?: "icon" | "choice" | "filter";
   checkedIcon?: React.ReactNode;
@@ -88,6 +91,7 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
             {state.isChecked && checkedIcon ? checkedIcon : icon}
           </chakra.span>
         )}
+
         <chakra.span __css={styles.label} {...getCheckboxProps()}>
           {variant !== "icon" && children}
         </chakra.span>

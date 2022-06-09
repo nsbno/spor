@@ -1,5 +1,7 @@
 import {
   Box,
+  BoxProps,
+  Center,
   Drawer as ChakraDrawer,
   DrawerContent as ChakraDrawerContent,
   DrawerContentProps as ChakraDrawerContentProps,
@@ -7,7 +9,6 @@ import {
   forwardRef,
   useModalContext,
 } from "@chakra-ui/react";
-import styled from "@emotion/styled";
 import React from "react";
 import { useSwipeable } from "react-swipeable";
 export {
@@ -30,7 +31,7 @@ export const Drawer = (props: DrawerProps) => {
 
 type DrawerContentProps = ChakraDrawerContentProps;
 export const DrawerContent = forwardRef<DrawerContentProps, any>(
-  (props, ref) => {
+  ({ children, ...props }, ref) => {
     const placement = useDrawerContext();
     const { onClose } = useModalContext();
     const handlers = useSwipeable({
@@ -50,32 +51,51 @@ export const DrawerContent = forwardRef<DrawerContentProps, any>(
       swipeDuration: 500,
     });
 
+    const isTopOrBottom = placement === "top" || placement === "bottom";
+    const widthConstraits = isTopOrBottom
+      ? { width: ["100%", "37.5rem"], mx: "auto" }
+      : {};
     return (
       <Box {...handlers}>
-        <StyledChakraDrawerContent {...props} ref={ref} />
+        <ChakraDrawerContent
+          {...widthConstraits}
+          borderTopRadius={placement === "bottom" ? "md" : "none"}
+          borderBottomRadius={placement === "top" ? "md" : "none"}
+          {...props}
+          ref={ref}
+        >
+          <Box position="relative">
+            {isTopOrBottom && (
+              <Notch
+                top={placement === "bottom" ? 2 : undefined}
+                bottom={placement === "top" ? 2 : undefined}
+              />
+            )}
+            <Box>{children}</Box>
+          </Box>
+        </ChakraDrawerContent>
       </Box>
     );
   }
 );
 
-const StyledChakraDrawerContent = styled(ChakraDrawerContent)`
-  position: relative;
-
-  @media screen and (max-width: 48em) {
-    &::before {
-      content: "";
-      width: 42px;
-      height: 6px;
-      background-color: #afb2b3;
-      position: absolute;
-      top: 12px;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-      border-radius: 3px;
-    }
-  }
-`;
+const Notch = forwardRef<BoxProps, any>((props, ref) => (
+  <Center
+    position="absolute"
+    left={0}
+    right={0}
+    zIndex="modal"
+    {...props}
+    ref={ref}
+  >
+    <Box
+      width="2.265rem"
+      height={1}
+      backgroundColor="alias.steel"
+      borderRadius="xs"
+    />
+  </Center>
+));
 
 const DrawerContext = React.createContext<DrawerProps["placement"]>(undefined);
 type DrawerProviderProps = {

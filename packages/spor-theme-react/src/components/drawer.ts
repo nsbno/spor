@@ -7,7 +7,7 @@ import type {
 } from "@chakra-ui/theme-tools";
 
 const baseStyleOverlay: SystemStyleObject = {
-  bg: "palette.blackAlpha.600",
+  backgroundColor: "palette.blackAlpha.600",
   zIndex: "modal",
 };
 
@@ -25,13 +25,11 @@ const baseStyleDialogContainer: SystemStyleFunction = (props) => {
 
 const baseStyleDialog: SystemStyleFunction = (props) => {
   const { scrollBehavior } = props;
-
   return {
-    borderTopRadius: "md",
     background: "alias.white",
     color: "inherit",
     zIndex: "modal",
-    maxH: scrollBehavior === "inside" ? "calc(100% - 7.5rem)" : undefined,
+    maxHeight: scrollBehavior === "inside" ? "calc(100% - 7.5rem)" : undefined,
     boxShadow: "md",
   };
 };
@@ -40,15 +38,12 @@ const baseStyleHeader: SystemStyleFunction = (props) => ({
   px: 5,
   pt: 6,
   pb: 2,
-  fontWeight: "bold",
-  fontFamily: "body",
 });
 
 const baseStyleCloseButton: SystemStyleObject = {
   position: "absolute",
   top: 3,
   insetEnd: 3,
-  display: ["none", "block"],
 };
 
 const baseStyleBody: SystemStyleFunction = (props) => {
@@ -84,17 +79,17 @@ function getSize(value: string): PartsStyleObject<typeof parts> {
   if (value === "full") {
     return {
       dialog: {
-        maxW: "100vw",
-        minH: "100vh",
+        maxWidth: "100vw",
+        minHeight: "100vh",
         "@supports(min-height: -webkit-fill-available)": {
-          minH: "-webkit-fill-available",
+          minHeight: "-webkit-fill-available",
         },
         my: 0,
       },
     };
   }
   return {
-    dialog: { maxW: value },
+    dialog: { maxWidth: value },
   };
 }
 

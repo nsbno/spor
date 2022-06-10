@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 0.13.5
+
+### Patch Changes
+
+- Updated dependencies [66336f0]
+- Updated dependencies [45b11e8]
+- Updated dependencies [51b1847]
+- Updated dependencies [874099f]
+  - @vygruppen/spor-card-react@0.2.0
+  - @vygruppen/spor-input-react@0.5.0
+  - @vygruppen/spor-modal-react@0.1.0
+
 ## 0.13.4
 
 ### Patch Changes

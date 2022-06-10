@@ -1,5 +1,15 @@
 # @vygruppen/spor-card-react
 
+## 0.2.0
+
+### Minor Changes
+
+- 66336f0: Add new `size` prop to Card components. The sizes available are `sm` and `lg` (with `lg` being the default).
+
+### Patch Changes
+
+- 45b11e8: Fix some design inconsistencies with certain states of active cards.
+
 ## 0.1.5
 
 ### Patch Changes

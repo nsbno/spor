@@ -55,7 +55,6 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
   const {
     children,
     icon,
-    checkedIcon,
     size = "md",
     variant = "choice",
   } = props;
@@ -71,7 +70,6 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
     size,
     variant,
     icon,
-    checkedIcon,
     hasLabel: Boolean(children),
   });
 

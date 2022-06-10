@@ -20,7 +20,6 @@ export type ChoiceChipProps = {
   };
   size?: "sm" | "md" | "lg" | "xl";
   variant?: "icon" | "choice" | "filter";
-  checkedIcon?: React.ReactNode;
 };
 /**
  * Choice chips are checkboxes that look like selectable buttons.

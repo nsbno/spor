@@ -88,7 +88,7 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
       >
         {icon && (
           <chakra.span __css={styles.icon}>
-            {state.isChecked && checkedIcon ? checkedIcon : icon}
+            {state.isChecked ? icon.checked : icon.default}
           </chakra.span>
         )}
 

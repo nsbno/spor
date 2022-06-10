@@ -1,5 +1,18 @@
 ---
-"@vygruppen/spor-input-react": patch
+"@vygruppen/spor-input-react": minor
 ---
 
-Change front page illustation and fix choichips icon to be checked state.
+Breaking change: The `ChoiceChip`'s `icon` prop now requires an object that requires both a default icon and a checked icon.
+
+Previously, the code would be:
+
+<ChoiceChip icon={<SomeIcon />} />
+
+Now, the code would be:
+
+<ChoiceChip
+  icon={{
+    default: <SomeOutlineIcon />,
+    checked: <SomeFillIcon />
+  }}
+/>

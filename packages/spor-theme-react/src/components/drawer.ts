@@ -35,9 +35,11 @@ const baseStyleDialog: SystemStyleFunction = (props) => {
 };
 
 const baseStyleHeader: SystemStyleFunction = (props) => ({
-  px: 5,
+  px: 3,
   pt: 6,
   pb: 2,
+  fontWeight: "bold",
+  fontFamily: "body",
 });
 
 const baseStyleCloseButton: SystemStyleObject = {
@@ -49,7 +51,7 @@ const baseStyleCloseButton: SystemStyleObject = {
 const baseStyleBody: SystemStyleFunction = (props) => {
   const { scrollBehavior } = props;
   return {
-    px: 5,
+    px: 3,
     pb: 6,
     flex: 1,
     overflow: scrollBehavior === "inside" ? "auto" : undefined,

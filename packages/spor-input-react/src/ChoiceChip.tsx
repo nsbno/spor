@@ -14,7 +14,10 @@ export type ChoiceChipProps = {
   defaultChecked?: boolean;
   /** The button text */
   children: React.ReactNode;
-  icon?: React.ReactNode;
+  icon?: {
+    default: React.ReactNode;
+    checked: React.ReactNode;
+  };
   size?: "sm" | "md" | "lg" | "xl";
   variant?: "icon" | "choice" | "filter";
 };
@@ -49,7 +52,12 @@ export type ChoiceChipProps = {
  * ```
  */
 export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
-  const { children, icon, size = "md", variant = "choice" } = props;
+  const {
+    children,
+    icon,
+    size = "md",
+    variant = "choice",
+  } = props;
 
   const {
     state,
@@ -61,6 +69,7 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
   const styles = useMultiStyleConfig("ChoiceChip", {
     size,
     variant,
+    icon,
     hasLabel: Boolean(children),
   });
 
@@ -74,7 +83,12 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
         data-hover={dataAttr(state.isHovered)}
         data-focus={dataAttr(state.isFocused)}
       >
-        {icon && <chakra.span __css={styles.icon}>{icon}</chakra.span>}
+        {icon && (
+          <chakra.span __css={styles.icon}>
+            {state.isChecked ? icon.checked : icon.default}
+          </chakra.span>
+        )}
+
         <chakra.span __css={styles.label} {...getCheckboxProps()}>
           {variant !== "icon" && children}
         </chakra.span>

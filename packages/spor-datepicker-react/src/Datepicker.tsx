@@ -8,22 +8,21 @@ import {
   StylesProvider,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
-import { DatepickerProvider } from "./DatepickerContext";
+import {
+  DatepickerControlProps,
+  DatepickerProvider,
+} from "./DatepickerContext";
 import { Calendar } from "./Calendar";
 import { DateInput } from "./DateInput";
 
-export type DatepickerProps = {
+export type DatepickerStylingProps = {
   size?: "sm" | "lg";
   variant?: "mobile" | "desktop";
 };
 
-const getDefaultProps: ({
-  size,
-  variant,
-}: DatepickerProps) => Required<DatepickerProps> = ({
-  size,
-  variant,
-}: DatepickerProps) => {
+const getDefaultProps: (
+  props: DatepickerStylingProps
+) => Required<DatepickerStylingProps> = ({ size, variant }) => {
   if (size && variant) return { size, variant };
   if (size && !variant)
     return { size, variant: size === "lg" ? "desktop" : "mobile" };
@@ -32,7 +31,11 @@ const getDefaultProps: ({
   return { size: "lg", variant: "desktop" };
 };
 
-const SporDatepicker: React.VFC<DatepickerProps & BoxProps> = ({
+const SporDatepicker: React.VFC<
+  DatepickerControlProps & DatepickerStylingProps & BoxProps
+> = ({
+  value,
+  onChange,
   size: sizeProp,
   variant: variantProp,
   ...boxProps
@@ -44,7 +47,7 @@ const SporDatepicker: React.VFC<DatepickerProps & BoxProps> = ({
   const styles = useMultiStyleConfig("Datepicker", { size, variant });
 
   return (
-    <DatepickerProvider>
+    <DatepickerProvider value={value} onChange={onChange}>
       <Box {...boxProps}>
         <Popover placement={"bottom-start"}>
           <StylesProvider value={styles}>

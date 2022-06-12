@@ -4,6 +4,7 @@ import {
   useDatepicker as useReactDatepicker,
   useMonth,
   useDay as useReactDay,
+  OnDatesChangeProps,
 } from "@datepicker-react/hooks";
 import {
   dayLabelFormat,
@@ -37,8 +38,25 @@ export const DatepickerContext = React.createContext<
   DatepickerContextType | undefined
 >(undefined);
 
-export const DatepickerProvider: React.FC = ({ children }) => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+export interface DatepickerControlProps {
+  value?: Date;
+  onChange: (date: Date) => void;
+}
+
+export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
+  value,
+  onChange,
+  children,
+}) => {
+  const [selectedDate, setSelectedDate] = useState<Date>(value || new Date());
+
+  const handleDateChange = ({ startDate }: OnDatesChangeProps) => {
+    if (startDate) {
+      setSelectedDate(startDate);
+      onChange(startDate);
+    }
+  };
+
   const {
     activeMonths,
     firstDayOfWeek,
@@ -58,9 +76,7 @@ export const DatepickerProvider: React.FC = ({ children }) => {
     endDate: selectedDate,
     focusedInput: START_DATE,
     numberOfMonths: 1,
-    onDatesChange: ({ startDate }) => {
-      setSelectedDate(startDate);
-    },
+    onDatesChange: handleDateChange,
   });
   const { month, year } = activeMonths[0];
   const monthProps = {

@@ -11,10 +11,10 @@ import {
   useStyles,
 } from "@chakra-ui/react";
 import { IconButton } from "@vygruppen/spor-button-react";
-import { DatepickerProps } from "./Datepicker";
+import { DatepickerStylingProps } from "./Datepicker";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
 
-export const DateInput: React.VFC<DatepickerProps> = ({ variant }) => {
+export const DateInput: React.VFC<DatepickerStylingProps> = ({ variant }) => {
   const { selectedDate, setSelectedDate } = useDatepicker();
   const styles = useStyles();
   const { t } = useTranslation();

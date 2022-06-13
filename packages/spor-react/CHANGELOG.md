@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 0.13.6
+
+### Patch Changes
+
+- Updated dependencies [4dc266d]
+- Updated dependencies [aac513e]
+  - @vygruppen/spor-theme-react@0.4.12
+  - @vygruppen/spor-modal-react@0.1.1
+
 ## 0.13.5
 
 ### Patch Changes

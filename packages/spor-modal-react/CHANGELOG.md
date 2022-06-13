@@ -1,5 +1,11 @@
 # @vygruppen/spor-modal-react
 
+## 0.1.1
+
+### Patch Changes
+
+- 4dc266d: Fix some minor bugs in the drawer
+
 ## 0.1.0
 
 ### Minor Changes

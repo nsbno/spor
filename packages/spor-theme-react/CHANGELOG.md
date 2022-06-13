@@ -1,5 +1,12 @@
 # @vygruppen/spor-theme-react
 
+## 0.4.12
+
+### Patch Changes
+
+- 4dc266d: Fix some minor bugs in the drawer
+- aac513e: Fix a bug where input fields doesnt get their border on ios safari
+
 ## 0.4.11
 
 ### Patch Changes

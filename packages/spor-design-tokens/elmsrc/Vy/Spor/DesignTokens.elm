@@ -1673,6 +1673,338 @@ tokens =
                 , path = [ "color", "error", "lightRed" ]
                 }
             }
+        , linjetag = 
+            { lokaltog = 
+                { value = "#65b152"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#65B152"
+                    }
+                , name = "ColorLinjetagLokaltog"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "lokaltog"
+                    }
+                , path = [ "color", "linjetag", "lokaltog" ]
+                }
+            , lokaltogLight = 
+                { value = "#e5f6d1"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#E5F6D1"
+                    }
+                , name = "ColorLinjetagLokaltogLight"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "lokaltogLight"
+                    }
+                , path = [ "color", "linjetag", "lokaltogLight" ]
+                }
+            , regiontog = 
+                { value = "#c34c4c"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#C34C4C"
+                    }
+                , name = "ColorLinjetagRegiontog"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "regiontog"
+                    }
+                , path = [ "color", "linjetag", "regiontog" ]
+                }
+            , regiontogLight = 
+                { value = "#fbe8eb"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#FBE8EB"
+                    }
+                , name = "ColorLinjetagRegiontogLight"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "regiontogLight"
+                    }
+                , path = [ "color", "linjetag", "regiontogLight" ]
+                }
+            , regionEkspress = 
+                { value = "#10a8b2"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#10A8B2"
+                    }
+                , name = "ColorLinjetagRegionEkspress"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "regionEkspress"
+                    }
+                , path = [ "color", "linjetag", "regionEkspress" ]
+                }
+            , regionEkspressLight = 
+                { value = "#d8f1f4"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#D8F1F4"
+                    }
+                , name = "ColorLinjetagRegionEkspressLight"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "regionEkspressLight"
+                    }
+                , path = [ "color", "linjetag", "regionEkspressLight" ]
+                }
+            , fjerntog = 
+                { value = "#325d93"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#325D93"
+                    }
+                , name = "ColorLinjetagFjerntog"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "fjerntog"
+                    }
+                , path = [ "color", "linjetag", "fjerntog" ]
+                }
+            , fjerntogLight = 
+                { value = "#dce4ef"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "DCE4EF"
+                    }
+                , name = "ColorLinjetagFjerntogLight"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "fjerntogLight"
+                    }
+                , path = [ "color", "linjetag", "fjerntogLight" ]
+                }
+            , flytog = 
+                { value = "#cf6c05"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "CF6C05"
+                    }
+                , name = "ColorLinjetagFlytog"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "flytog"
+                    }
+                , path = [ "color", "linjetag", "flytog" ]
+                }
+            , flytogLight = 
+                { value = "#ffe6cc"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#FFE6CC"
+                    }
+                , name = "ColorLinjetagFlytogLight"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "flytogLight"
+                    }
+                , path = [ "color", "linjetag", "flytogLight" ]
+                }
+            , vyBuss = 
+                { value = "#037d67"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#037D67"
+                    }
+                , name = "ColorLinjetagVyBuss"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "vyBuss"
+                    }
+                , path = [ "color", "linjetag", "vyBuss" ]
+                }
+            , vyBussLight = 
+                { value = "#e5f4f1"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#E5F4F1"
+                    }
+                , name = "ColorLinjetagVyBussLight"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "vyBussLight"
+                    }
+                , path = [ "color", "linjetag", "vyBussLight" ]
+                }
+            , lokalbuss = 
+                { value = "#2b2b2c"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#2B2B2C"
+                    }
+                , name = "ColorLinjetagLokalbuss"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "lokalbuss"
+                    }
+                , path = [ "color", "linjetag", "lokalbuss" ]
+                }
+            , lokalbussLight = 
+                { value = "#ebebec"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#EBEBEC"
+                    }
+                , name = "ColorLinjetagLokalbussLight"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "lokalbussLight"
+                    }
+                , path = [ "color", "linjetag", "lokalbussLight" ]
+                }
+            , ferge = 
+                { value = "#965f96"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#965F96"
+                    }
+                , name = "ColorLinjetagFerge"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "ferge"
+                    }
+                , path = [ "color", "linjetag", "ferge" ]
+                }
+            , fergeLight = 
+                { value = "#f0ddf0"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#F0DDF0"
+                    }
+                , name = "ColorLinjetagFergeLight"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "fergeLight"
+                    }
+                , path = [ "color", "linjetag", "fergeLight" ]
+                }
+            , trikk = 
+                { value = "#3998dc"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#3998DC"
+                    }
+                , name = "ColorLinjetagTrikk"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "trikk"
+                    }
+                , path = [ "color", "linjetag", "trikk" ]
+                }
+            , trikkLight = 
+                { value = "#d9edfb"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#D9EDFB"
+                    }
+                , name = "ColorLinjetagTrikkLight"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "trikkLight"
+                    }
+                , path = [ "color", "linjetag", "trikkLight" ]
+                }
+            , tbane = 
+                { value = "#ff8200"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#FF8200"
+                    }
+                , name = "ColorLinjetagTbane"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "tbane"
+                    }
+                , path = [ "color", "linjetag", "tbane" ]
+                }
+            , tbaneLight = 
+                { value = "#ffe6cc"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#FFE6CC"
+                    }
+                , name = "ColorLinjetagTbaneLight"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "tbaneLight"
+                    }
+                , path = [ "color", "linjetag", "tbaneLight" ]
+                }
+            , altTransport = 
+                { value = "#fae053"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#FAE053"
+                    }
+                , name = "ColorLinjetagAltTransport"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "altTransport"
+                    }
+                , path = [ "color", "linjetag", "altTransport" ]
+                }
+            , altTransportLight = 
+                { value = "#fdf3ba"
+                , filePath = "tokens/color/linjetag.json"
+                , isSource = True
+                , original = 
+                    { value = "#FDF3BA"
+                    }
+                , name = "ColorLinjetagAltTransportLight"
+                , attributes = 
+                    { category = "color"
+                    , type_ = "linjetag"
+                    , item = "altTransportLight"
+                    }
+                , path = [ "color", "linjetag", "altTransportLight" ]
+                }
+            }
         , main = 
             { darkTeal = 
                 { value = "#00453e"

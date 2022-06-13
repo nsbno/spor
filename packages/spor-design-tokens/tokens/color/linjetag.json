@@ -1,0 +1,72 @@
+{
+  "color": {
+    "linjetag": {
+      "lokaltog": {
+        "value": "#65B152"
+      },
+      "lokaltogLight": {
+        "value": "#E5F6D1"
+      },
+      "regiontog": {
+        "value": "#C34C4C"
+      },
+      "regiontogLight": {
+        "value": "#FBE8EB"
+      },
+      "regionEkspress": {
+        "value": "#10A8B2"
+      },
+      "regionEkspressLight": {
+        "value": "#D8F1F4"
+      },
+      "fjerntog": {
+        "value": "#325D93"
+      },
+      "fjerntogLight": {
+        "value": "DCE4EF"
+      },
+      "flytog": {
+        "value": "CF6C05"
+      },
+      "flytogLight": {
+        "value": "#FFE6CC"
+      },
+      "vyBuss": {
+        "value": "#037D67"
+      },
+      "vyBussLight": {
+        "value": "#E5F4F1"
+      },
+      "lokalbuss": {
+        "value": "#2B2B2C"
+      },
+      "lokalbussLight": {
+        "value": "#EBEBEC"
+      },
+      "ferge": {
+        "value": "#965F96"
+      },
+      "fergeLight": {
+        "value": "#F0DDF0"
+      },
+      "trikk": {
+        "value": "#3998DC"
+      },
+      "trikkLight": {
+        "value": "#D9EDFB"
+      },
+      "tbane": {
+        "value": "#FF8200"
+      },
+      "tbaneLight": {
+        "value": "#FFE6CC"
+      },
+      "altTransport": {
+        "value": "#FAE053"
+      },
+      "altTransportLight": {
+        "value": "#FDF3BA"
+      }
+    }
+  }
+}

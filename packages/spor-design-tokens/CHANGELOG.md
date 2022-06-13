@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.0
+
+### Minor Changes
+
+- d09d725: Add new color lines for linjetags
+
 ## 2.3.7
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @vygruppen/spor-theme-react-native
 
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies [d09d725]
+  - @vygruppen/spor-design-tokens@2.4.0
+
 ## 0.1.3
 
 ### Patch Changes

@@ -4,6 +4,7 @@ import { colors } from "../foundations";
 
 const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   field: {
+    appearance: "none",
     width: "100%",
     outline: "none",
     border: 0,

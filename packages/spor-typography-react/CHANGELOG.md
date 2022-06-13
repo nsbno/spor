@@ -1,5 +1,12 @@
 # @vygruppen/spor-typography-react
 
+## 0.4.1
+
+### Patch Changes
+
+- Updated dependencies [d09d725]
+  - @vygruppen/spor-design-tokens@2.4.0
+
 ## 0.4.0
 
 ### Minor Changes

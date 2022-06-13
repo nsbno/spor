@@ -1,5 +1,13 @@
 # @vygruppen/spor-react-native
 
+## 0.1.5
+
+### Patch Changes
+
+- @vygruppen/spor-theme-react-native@0.1.4
+- @vygruppen/spor-button-react-native@0.1.4
+- @vygruppen/spor-provider-react-native@0.1.4
+
 ## 0.1.4
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react/tmp";
 import { Input } from "@vygruppen/spor-input-react";
-import React from "react";
+import React, { ChangeEventHandler } from "react";
 import { useDatepicker } from "./DatepickerContext";
 import {
   Flex,
@@ -13,11 +13,19 @@ import {
 import { IconButton } from "@vygruppen/spor-button-react";
 import { DatepickerStylingProps } from "./Datepicker";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
+import isValid from "date-fns/isValid";
 
 export const DateInput: React.VFC<DatepickerStylingProps> = ({ variant }) => {
   const { selectedDate, setSelectedDate } = useDatepicker();
   const styles = useStyles();
   const { t } = useTranslation();
+
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    const date = new Date(event.target.value);
+    if (isValid(date)) {
+      setSelectedDate(date);
+    }
+  };
 
   return (
     <InputGroup>
@@ -28,9 +36,7 @@ export const DateInput: React.VFC<DatepickerStylingProps> = ({ variant }) => {
               <Input
                 label={t(texts.date)}
                 value={selectedDate?.toLocaleDateString()}
-                onChange={(event) => {
-                  setSelectedDate(new Date(event.target.value));
-                }}
+                onChange={handleChange}
                 sx={styles.input}
               />
             </PopoverAnchor>
@@ -51,9 +57,7 @@ export const DateInput: React.VFC<DatepickerStylingProps> = ({ variant }) => {
               leftIcon={<CalendarOutline24Icon />}
               label={t(texts.date)}
               value={selectedDate?.toLocaleDateString()}
-              onChange={(event) => {
-                setSelectedDate(new Date(event.target.value));
-              }}
+              onChange={handleChange}
               sx={styles.input}
             />
           </PopoverTrigger>

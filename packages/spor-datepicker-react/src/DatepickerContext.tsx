@@ -53,7 +53,7 @@ export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
   const handleDateChange = ({ startDate }: OnDatesChangeProps) => {
     if (startDate) {
       setSelectedDate(startDate);
-      onChange(startDate);
+      onChange && onChange(startDate);
     }
   };
 

@@ -3359,28 +3359,28 @@ tokens =
         { shadow = 
             { sm = 
                 { value = "0 1px 5px rgba(0, 0, 0, 0.2)"
-                , color = [ "#000000" ]
-                , blur = [ "5" ]
-                , spread = [ "0" ]
-                , opacity = [ "0.2" ]
-                , offset = [ 
-                    { x = 0
-                    , y = 1
-                    } ]
-                , elevation = "1"
+                , color = "#000000"
+                , blur = 5
+                , spread = 0
+                , opacity = 0.2
+                , offset = 
+                    { width = 0
+                    , height = 1
+                    }
+                , elevation = 1
                 , filePath = "tokens/depth/shadow.json"
                 , isSource = True
                 , original = 
                     { value = "0 1px 5px rgba(0, 0, 0, 0.2)"
-                    , color = [ "{color.alias.black.value}" ]
-                    , blur = [ "5" ]
-                    , spread = [ "0" ]
-                    , opacity = [ "0.2" ]
-                    , offset = [ 
-                        { x = 0
-                        , y = 1
-                        } ]
-                    , elevation = "1"
+                    , color = "{color.alias.black.value}"
+                    , blur = 5
+                    , spread = 0
+                    , opacity = 0.2
+                    , offset = 
+                        { width = 0
+                        , height = 1
+                        }
+                    , elevation = 1
                     }
                 , name = "DepthShadowSm"
                 , attributes = 
@@ -3392,28 +3392,28 @@ tokens =
                 }
             , md = 
                 { value = "0 2px 8px rgba(0, 0, 0, 0.25)"
-                , color = [ "#000000" ]
-                , blur = [ "8" ]
-                , spread = [ "0" ]
-                , opacity = [ "0.25" ]
-                , offset = [ 
-                    { x = 0
-                    , y = 2
-                    } ]
-                , elevation = "2"
+                , color = "#000000"
+                , blur = 8
+                , spread = 0
+                , opacity = 0.25
+                , offset = 
+                    { width = 0
+                    , height = 2
+                    }
+                , elevation = 2
                 , filePath = "tokens/depth/shadow.json"
                 , isSource = True
                 , original = 
                     { value = "0 2px 8px rgba(0, 0, 0, 0.25)"
-                    , color = [ "{color.alias.black.value}" ]
-                    , blur = [ "8" ]
-                    , spread = [ "0" ]
-                    , opacity = [ "0.25" ]
-                    , offset = [ 
-                        { x = 0
-                        , y = 2
-                        } ]
-                    , elevation = "2"
+                    , color = "{color.alias.black.value}"
+                    , blur = 8
+                    , spread = 0
+                    , opacity = 0.25
+                    , offset = 
+                        { width = 0
+                        , height = 2
+                        }
+                    , elevation = 2
                     }
                 , name = "DepthShadowMd"
                 , attributes = 
@@ -3425,28 +3425,28 @@ tokens =
                 }
             , lg = 
                 { value = "0 4px 8px 1px rgba(0, 0, 0, 0.3)"
-                , color = [ "#000000" ]
-                , blur = [ "8" ]
-                , spread = [ "1" ]
-                , opacity = [ "0.3" ]
-                , offset = [ 
-                    { x = 0
-                    , y = 4
-                    } ]
-                , elevation = "3"
+                , color = "#000000"
+                , blur = 8
+                , spread = 1
+                , opacity = 0.3
+                , offset = 
+                    { width = 0
+                    , height = 4
+                    }
+                , elevation = 3
                 , filePath = "tokens/depth/shadow.json"
                 , isSource = True
                 , original = 
                     { value = "0 4px 8px 1px rgba(0, 0, 0, 0.3)"
-                    , color = [ "{color.alias.black.value}" ]
-                    , blur = [ "8" ]
-                    , spread = [ "1" ]
-                    , opacity = [ "0.3" ]
-                    , offset = [ 
-                        { x = 0
-                        , y = 4
-                        } ]
-                    , elevation = "3"
+                    , color = "{color.alias.black.value}"
+                    , blur = 8
+                    , spread = 1
+                    , opacity = 0.3
+                    , offset = 
+                        { width = 0
+                        , height = 4
+                        }
+                    , elevation = 3
                     }
                 , name = "DepthShadowLg"
                 , attributes = 

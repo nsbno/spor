@@ -36,6 +36,7 @@ const SporDatepicker: React.VFC<
 > = ({
   value,
   onChange,
+  defaultValue,
   size: sizeProp,
   variant: variantProp,
   ...boxProps
@@ -47,7 +48,11 @@ const SporDatepicker: React.VFC<
   const styles = useMultiStyleConfig("Datepicker", { size, variant });
 
   return (
-    <DatepickerProvider value={value} onChange={onChange}>
+    <DatepickerProvider
+      value={value}
+      onChange={onChange}
+      defaultValue={defaultValue}
+    >
       <Box {...boxProps}>
         <Popover placement={"bottom-start"}>
           <StylesProvider value={styles}>

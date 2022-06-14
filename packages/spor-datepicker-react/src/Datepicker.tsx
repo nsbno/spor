@@ -6,6 +6,7 @@ import {
   Popover,
   PopoverContent,
   StylesProvider,
+  useBreakpointValue,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import {
@@ -15,20 +16,35 @@ import {
 import { Calendar } from "./Calendar";
 import { DateInput } from "./DateInput";
 
+type Size = "sm" | "lg";
+type Variant = "mobile" | "desktop";
+
 export type DatepickerStylingProps = {
-  size?: "sm" | "lg";
-  variant?: "mobile" | "desktop";
+  size?: Size;
+  variant?: Variant;
 };
 
 const getDefaultProps: (
   props: DatepickerStylingProps
 ) => Required<DatepickerStylingProps> = ({ size, variant }) => {
   if (size && variant) return { size, variant };
-  if (size && !variant)
-    return { size, variant: size === "lg" ? "desktop" : "mobile" };
-  if (variant && !size)
-    return { variant, size: variant === "desktop" ? "lg" : "sm" };
-  return { size: "lg", variant: "desktop" };
+  const defaultVariant: Variant =
+    useBreakpointValue({
+      base: "mobile",
+      sm: "desktop",
+      md: "desktop",
+      lg: "desktop",
+    }) || "mobile";
+  const defaultSize: Size =
+    useBreakpointValue({
+      base: "sm",
+      sm: "lg",
+      md: "lg",
+      lg: "lg",
+    }) || "sm";
+  if (size && !variant) return { size, variant: defaultVariant };
+  if (variant && !size) return { variant, size: defaultSize };
+  return { size: defaultSize, variant: defaultVariant };
 };
 
 const SporDatepicker: React.VFC<

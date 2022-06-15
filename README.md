@@ -134,7 +134,7 @@ npm run add-package
 ```
 Then, add a dependency in the component library. 
 
-For instance, the dependency for the package `Message-box` with the type react-native should be added to `spor-react-native/package.json`
+For instance, the dependency for the package `message-box` with the type react-native should be added to `spor-react-native/package.json`
 
 ```diff
     "dependencies": {

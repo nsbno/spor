@@ -136,12 +136,10 @@ Then, add a dependency in the component library.
 
 For instance, the dependency for the package `Message-box` with the type react-native should be added to `spor-react-native/package.json`
 
-```tsx
-"dependencies": {
-    "@vygruppen/spor-message-box-react-native": "*"
+```diff
+    "dependencies": {
++      "@vygruppen/spor-message-box-react-native": "*"
     }
-
-```
 At last, export the package in the index file. e.g `spor-react-native/src/index.tsx`. 
 
 ```tsx

@@ -9,7 +9,7 @@ const isDay = (day: number | Day): day is Day => typeof day !== "number";
 
 const getWeekdayIndexOfFirst = (
   days: (number | { dayLabel: string; date: Date })[]
-) => days.filter((day) => !isDay(day)).length;
+) => days.findIndex((day) => isDay(day));
 
 export const usePrevDays = (
   { year, month, firstDayOfWeek, dayLabelFormat }: UseMonthProps,

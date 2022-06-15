@@ -132,3 +132,17 @@ To add a new package, run the following command, and follow the wizard:
 ```
 npm run add-package
 ```
+Then, add a dependency in the component library. 
+
+For instance, the dependency for the package `message-box` with the type react-native should be added to `spor-react-native/package.json`
+
+```diff
+    "dependencies": {
++      "@vygruppen/spor-message-box-react-native": "*"
+    }
+At last, export the package in the index file. e.g `spor-react-native/src/index.tsx`. 
+
+```tsx
+export * from "@vygruppen/spor-message-box-react-native";
+```
+

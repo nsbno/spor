@@ -1,0 +1,4 @@
+# Generated files that are included in the NPM packages, but not in the git repo
+react
+dist
+tmp

@@ -37,6 +37,7 @@ module.exports = {
         "packages/spor-loader/",
         "packages/spor-loader-react-native/",
         "packages/spor-card-react-native/",
+        "packages/spor-icon-react-native/",
       ],
     },
   },

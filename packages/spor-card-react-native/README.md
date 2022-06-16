@@ -1,6 +1,6 @@
 # Card (React Native)
 
-TODO: Add description
+This package contains the `Card` component for React Native.
 
 ## Installation
 
@@ -11,9 +11,10 @@ $ npm install @vygruppen/spor-card-react-native
 ## Usage
 
 ```tsx
-import { } from "@vygruppen/spor-card-react-native";
+import { Card } from "@vygruppen/spor-card-react-native";
 ```
-TODO: Add usage description
+
+Please refer to the documentation for usage.
 
 ## Development
 

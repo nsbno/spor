@@ -59,12 +59,21 @@ export const article: Document<Article> = {
       type: "array",
       of: [{ type: "url" }],
       validation: (Rule) =>
-        Rule.custom(
-          (text) =>
-            text.includes("figma.com") ||
-            text.includes("github.com") ||
-            "Please only link to Figma or Github domains."
-        ),
+        Rule.custom((items) => {
+          console.log(items);
+          if (!items) {
+            return true;
+          }
+          if (
+            items.every(
+              (text: string) =>
+                text.includes("figma.com") || text.includes("github.com")
+            )
+          ) {
+            return true;
+          }
+          return "Only GitHub and Figma links are supported";
+        }),
     },
     {
       name: "content",

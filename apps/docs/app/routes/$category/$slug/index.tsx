@@ -4,12 +4,9 @@ import {
   Badge,
   Box,
   Button,
-  EditOutline30Icon,
   FigmaOutline24Icon,
-  FigmaOutline30Icon,
   Flex,
   GithubOutline24Icon,
-  GithubOutline30Icon,
   Heading,
   HStack,
 } from "@vygruppen/spor-react";

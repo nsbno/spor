@@ -1,3 +1,4 @@
+import { color } from "@chakra-ui/react";
 import type {
   SystemStyleInterpolation,
   SystemStyleObject,
@@ -32,7 +33,7 @@ const baseStyle: SystemStyleObject = {
   },
 };
 
-type Variant = "elevated" | "filled" | "outlined";
+type Variant = "elevated" | "colored" | "boxes";
 const variants: Record<Variant, SystemStyleInterpolation> = {
   elevated: ({ size }) => ({
     backgroundColor: "alias.white",
@@ -58,7 +59,7 @@ const variants: Record<Variant, SystemStyleInterpolation> = {
       },
     },
   }),
-  filled: ({ colorScheme }) => ({
+  colored: ({ colorScheme }) => ({
     ...getColorSchemeProps(colorScheme),
 
     "button&, a&": {
@@ -76,44 +77,35 @@ const variants: Record<Variant, SystemStyleInterpolation> = {
       },
     },
   }),
-  outlined: {
+  boxes: {
     border: "1px solid",
     borderColor: "alias.osloGrey",
-
-    "button&, a&": {
-      _hover: {
-        borderColor: "alias.darkGrey",
-      },
-      _active: {
-        backgroundColor: "alias.mint",
-        borderColor: "alias.osloGrey",
-      },
-    },
   },
 };
 
 function getColorSchemeProps(colorScheme: string) {
-  switch (colorScheme) {
-    case "blue":
-      return {
-        backgroundColor: "alias.lightBlue",
-        boxShadow: `0 0 0 1px ${colors.alias.cloudy}`,
-      };
-    case "green":
-      return {
-        backgroundColor: "alias.mint",
-        boxShadow: `0 0 0 1px ${colors.alias.coralGreen}`,
-      };
-    case "grey":
-    default:
-      return {
-        backgroundColor: "alias.platinum",
-        boxShadow: `0 0 0 1px ${colors.alias.silver}`,
-      };
-  }
+  const backgroundColor =
+    colors.palette[colorScheme]?.[200] || "alias.platinum";
+  const boxShadowColor =
+    colors.palette[colorScheme]?.[400] || colors.alias.silver;
+  return {
+    backgroundColor,
+    boxShadow: `0 0 0 1px ${boxShadowColor}`,
+  };
 }
 
 function getColorSchemeHoverProps(colorScheme: string) {
+  const backgroundColor =
+    colors.palette[colorScheme]?.[200] || "alias.silver";
+  const boxShadowColor =
+    colors.palette[colorScheme]?.[100] || colors.alias.silver;
+  return {
+    backgroundColor,
+    boxShadowColor: `0 0 0 1px ${boxShadowColor}`,
+  };
+}
+
+/* function getColorSchemeHoverProps(colorScheme: string) {
   switch (colorScheme) {
     case "blue":
       return {
@@ -132,9 +124,17 @@ function getColorSchemeHoverProps(colorScheme: string) {
         boxShadow: `0 0 0 1px ${colors.alias.silver}`,
       };
   }
-}
+} */
 
 function getColorSchemeFocusProps(colorScheme: string) {
+  const backgroundColor =
+    colors.palette[colorScheme]?.[100] || "alias.platinum";
+  return {
+    backgroundColor,
+  };
+}
+
+/* function getColorSchemeFocusProps(colorScheme: string) {
   switch (colorScheme) {
     case "blue":
       return {
@@ -150,9 +150,19 @@ function getColorSchemeFocusProps(colorScheme: string) {
         backgroundColor: "alias.platinum",
       };
   }
-}
+} */
 
 function getColorSchemeActiveProps(colorScheme: string) {
+  const backgroundColor =
+    colors.palette[colorScheme]?.[50] || "alias.lightGrey";
+  const boxShadowColor =
+    colors.palette[colorScheme]?.[100] || colors.alias.silver;
+  return {
+    backgroundColor,
+    boxShadowColor: `0 0 0 1px ${boxShadowColor}`,
+  };
+}
+/* function getColorSchemeActiveProps(colorScheme: string) {
   switch (colorScheme) {
     case "blue":
       return {
@@ -171,7 +181,7 @@ function getColorSchemeActiveProps(colorScheme: string) {
         boxShadow: `0 0 0 1px ${colors.alias.silver}`,
       };
   }
-}
+} */
 
 type Size = "sm" | "lg";
 

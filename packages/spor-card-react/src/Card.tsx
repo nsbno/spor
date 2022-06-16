@@ -6,24 +6,24 @@ export type CardProps = Exclude<BoxProps, "size"> & {
   size?: "sm" | "lg";
 } & (
     | {
-        variant: "elevated" | "outlined";
+        variant: "elevated" | "boxes";
         children: React.ReactNode;
       }
-    | { variant: "filled"; colorScheme: "blue" | "green" | "grey" }
+    | { variant: "colored"; colorScheme: "blue" | "green" | "grey"| "yellow" | "orange" }
   );
 /**
- * Cards come in three different variants - `filled`, `outlined` and `elevated`.
+ * Cards come in three different variants - `colored`, `boxes` and `elevated`.
  * If you specify the `filled` variant, you need to specify a `colorScheme` as well. The available color schemes are `blue`, `green` and `grey`.
  * 
 ```tsx
 <Card variant="elevated">
   I'm an elevated card
 </Card>
-<Card variant="outlined">
-  I'm an outlined card
+<Card variant="boxes">
+  I'm an boxes card
 </Card>
-<Card variant="filled" colorScheme="blue">
-  I'm a filled card
+<Card variant="colored" colorScheme="blue">
+  I'm a colored card
 </Card>
 ```
  * You can also pass any style props you want, like padding or borderRadius.

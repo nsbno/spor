@@ -10,6 +10,7 @@ const spacingSizes = Object.entries({ ...spacings }).reduce(
   }
 );
 const spacingSteps = {
+  0: 0,
   0.5: 3,
   1: 6,
   1.5: 9,

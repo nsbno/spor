@@ -42,6 +42,33 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
   children: React.ReactNode;
   onPress?: () => void;
 };
+/**
+ * Renders a card.
+ *
+ * The most basic version looks like this:
+ *
+ * ```tsx
+ * <Card colorScheme="white">
+ *   <Text variant="md">Content</Text>
+ * </Card>
+ * ```
+ *
+ * There are lots of color schemes available. You can also set the size as either `sm` or `lg`. The default is `lg`.
+ *
+ * ```tsx
+ * <Card colorScheme="orange" size="sm">
+ *   <Text variant="md">A smaller card</Text>
+ * </Card>
+ * ```
+ *
+ * Cards are not interactive by default. You can set a `onPress` handler to make them interactive. This will also give it a drop shadow.
+ *
+ * ```tsx
+ * <Card colorScheme="blue" onPress={handlePress}>
+ *   <Text variant="md">Click for profit</Text>
+ * </Card>
+ * ```
+ */
 export const Card = ({
   children,
   onPress,

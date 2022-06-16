@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
 import { ColorInlineLoader } from "@vygruppen/spor-loader-react";
+import { Props } from "framer-motion/types/types";
 import React from "react";
 
 export type ButtonProps = Exclude<
@@ -95,7 +96,11 @@ export const Button = forwardRef<ButtonProps, As<any>>(
       >
         {isLoading && (
           <Center position="absolute" top="0" right="0" bottom="0" left="0">
-            <ColorInlineLoader maxWidth="6rem" width="100%" mx={2} />
+            <ColorInlineLoader
+              maxWidth={sizeToWidthMap[size] || "4rem"}
+              width="100%"
+              mx={2}
+            />
           </Center>
         )}
         <Box visibility={isLoading ? "hidden" : "visible"}>{children}</Box>
@@ -103,6 +108,13 @@ export const Button = forwardRef<ButtonProps, As<any>>(
     );
   }
 );
+
+const sizeToWidthMap: Record<Props["size"], string> = {
+  xs: "4rem",
+  sm: "4rem",
+  md: "5rem",
+  lg: "6rem",
+};
 
 function useCorrectAriaLabel(props: ButtonProps) {
   const { t } = useTranslation();

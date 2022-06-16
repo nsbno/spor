@@ -246,7 +246,7 @@ export type Document<Schema extends Record<string, any>> = {
   preview?: Preview;
   fieldsets?: Fieldset[];
   initialValue?: { [key: string]: any };
-  __experimental_actions: ("create" | "update" | "delete" | "publish")[];
+  __experimental_actions?: ("create" | "update" | "delete" | "publish")[];
   orderings?: {
     name: string;
     title: string;

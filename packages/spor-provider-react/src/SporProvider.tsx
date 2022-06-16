@@ -57,6 +57,9 @@ export const SporProvider = ({
     <LanguageProvider value={language}>
       <ChakraProvider theme={theme} {...props}>
         <Global styles={fontFaces} />
+        <Global
+          styles={`html, body { color: ${theme.colors.alias.darkGrey}; }`}
+        />
         {children}
       </ChakraProvider>
     </LanguageProvider>

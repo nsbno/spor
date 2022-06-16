@@ -1,6 +1,18 @@
 import { PortableText } from "@portabletext/react";
 import type { LoaderFunction, MetaFunction } from "@remix-run/node";
-import { Badge, Box, Heading, HStack } from "@vygruppen/spor-react";
+import {
+  Badge,
+  Box,
+  Button,
+  EditOutline30Icon,
+  FigmaOutline24Icon,
+  FigmaOutline30Icon,
+  Flex,
+  GithubOutline24Icon,
+  GithubOutline30Icon,
+  Heading,
+  HStack,
+} from "@vygruppen/spor-react";
 import invariant from "tiny-invariant";
 import { getClient } from "~/utils/sanity/client";
 import {
@@ -76,11 +88,19 @@ export default function ArticlePage() {
   const { data: article, isPreview } = usePreviewableData<Data>();
   return (
     <>
-      <HStack mb={1}>
+      <HStack mb={1} justifyContent="space-between">
         {article.category?.title && (
           <Badge colorScheme="green">{article.category?.title}</Badge>
         )}
         {isPreview && <Badge colorScheme="red">Preview</Badge>}
+        <Flex flexWrap="wrap" gap={2}>
+          <Button as="a" href="https://www.figma.com/file/Tmr2URVX2vNkyRLqKhNRQA/Vy_komponentbibliotek?node-id=607%3A0" variant="additional" size="sm" leftIcon={<FigmaOutline24Icon />}>
+           Figma
+          </Button>
+          <Button as="a" href="https://github.com/nsbno/spor" variant="additional" size="sm" leftIcon={<GithubOutline24Icon />}>
+            Github
+          </Button>
+        </Flex>
       </HStack>
       <Box>
         <Heading as="h1" textStyle="xl-display" mb={2}>

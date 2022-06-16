@@ -20,8 +20,7 @@
   },
   "dependencies": {
     "@vygruppen/spor-layout-react-native": "*",
-    "@vygruppen/spor-theme-react-native": "*",
-    "tiny-invariant": "^1.2.0"
+    "@vygruppen/spor-theme-react-native": "*"
   },
   "devDependencies": {
     "react": ">17.0.0",

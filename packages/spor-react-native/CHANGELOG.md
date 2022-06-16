@@ -1,5 +1,19 @@
 # @vygruppen/spor-react-native
 
+## 0.2.0
+
+### Minor Changes
+
+- be56aa0: Add new package Card
+
+### Patch Changes
+
+- Updated dependencies [be56aa0]
+  - @vygruppen/spor-card-react-native@0.0.2
+  - @vygruppen/spor-theme-react-native@0.1.5
+  - @vygruppen/spor-button-react-native@0.1.5
+  - @vygruppen/spor-provider-react-native@0.1.5
+
 ## 0.1.5
 
 ### Patch Changes

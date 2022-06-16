@@ -1,5 +1,11 @@
 # @vygruppen/spor-button-react
 
+## 0.2.5
+
+### Patch Changes
+
+- 7bcedd2: Fix a bug where the loader animation would go outside of the button on small button sizes
+
 ## 0.2.4
 
 ### Patch Changes

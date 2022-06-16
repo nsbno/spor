@@ -8,7 +8,6 @@ import {
 } from "@chakra-ui/react";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
 import { ColorInlineLoader } from "@vygruppen/spor-loader-react";
-import { Props } from "framer-motion/types/types";
 import React from "react";
 
 export type ButtonProps = Exclude<
@@ -109,7 +108,7 @@ export const Button = forwardRef<ButtonProps, As<any>>(
   }
 );
 
-const sizeToWidthMap: Record<Props["size"], string> = {
+const sizeToWidthMap: Record<string, string> = {
   xs: "4rem",
   sm: "4rem",
   md: "5rem",

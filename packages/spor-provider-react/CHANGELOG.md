@@ -1,5 +1,12 @@
 # @vygruppen/spor-provider-react
 
+## 0.0.4
+
+### Patch Changes
+
+- 2f59ba3: Set the default text color to darkGrey
+  - @vygruppen/spor-theme-react@0.4.14
+
 ## 0.0.3
 
 ### Patch Changes

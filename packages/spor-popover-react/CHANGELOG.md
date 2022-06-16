@@ -1,5 +1,12 @@
 # @vygruppen/spor-popover-react
 
+## 0.1.10
+
+### Patch Changes
+
+- Updated dependencies [7bcedd2]
+  - @vygruppen/spor-button-react@0.2.5
+
 ## 0.1.9
 
 ### Patch Changes

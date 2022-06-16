@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.4.1
+
+### Patch Changes
+
+- 9ba66ca: Add shadow color ("color") to the set of shadow tokens
+- b47d697: Tweak the shadow tokens for mobile
+
 ## 2.4.0
 
 ### Minor Changes

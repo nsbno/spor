@@ -1,5 +1,14 @@
 # @vygruppen/spor-theme-react-native
 
+## 0.1.5
+
+### Patch Changes
+
+- be56aa0: Add new package Card
+- Updated dependencies [9ba66ca]
+- Updated dependencies [b47d697]
+  - @vygruppen/spor-design-tokens@2.4.1
+
 ## 0.1.4
 
 ### Patch Changes

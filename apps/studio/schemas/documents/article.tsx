@@ -1,5 +1,6 @@
 import { MdArticle } from "react-icons/md";
 import {
+  ArrayField,
   BlockField,
   Document,
   Field,
@@ -13,6 +14,7 @@ export type Article = {
   category: Field;
   slug: SlugField;
   mainImage: ImageField;
+  resourceLinks: ArrayField;
   content: BlockField;
 };
 export const article: Document<Article> = {
@@ -48,6 +50,30 @@ export const article: Document<Article> = {
       description:
         "Used whenever an image is required, like listing components, or as a social media image",
       type: "image",
+    },
+    {
+      name: "resourceLinks",
+      title: "Resource links",
+      description:
+        "Add links to GitHub or Figma here (only GitHub and Figma is supported)",
+      type: "array",
+      of: [{ type: "url" }],
+      validation: (Rule) =>
+        Rule.custom((items) => {
+          console.log(items);
+          if (!items) {
+            return true;
+          }
+          if (
+            items.every(
+              (text: string) =>
+                text.includes("figma.com") || text.includes("github.com")
+            )
+          ) {
+            return true;
+          }
+          return "Only GitHub and Figma links are supported";
+        }),
     },
     {
       name: "content",

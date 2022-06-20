@@ -1,6 +1,15 @@
 import { PortableText } from "@portabletext/react";
 import type { LoaderFunction, MetaFunction } from "@remix-run/node";
-import { Badge, Box, Heading, HStack } from "@vygruppen/spor-react";
+import {
+  Badge,
+  Box,
+  Button,
+  FigmaOutline24Icon,
+  Flex,
+  GithubOutline24Icon,
+  Heading,
+  HStack,
+} from "@vygruppen/spor-react";
 import invariant from "tiny-invariant";
 import { getClient } from "~/utils/sanity/client";
 import {
@@ -17,6 +26,7 @@ type Data = {
     title: string;
     slug: string;
   };
+  resourceLinks?: string[];
   content: any[];
 };
 type LoaderData = PreviewableLoaderData<Data>;
@@ -36,6 +46,7 @@ export const loader: LoaderFunction = async ({
       title,
       "slug": slug.current
     },
+    resourceLinks,
     content[]{
       _type == 'reference' => @->,
       _type != 'reference' => @,
@@ -76,11 +87,25 @@ export default function ArticlePage() {
   const { data: article, isPreview } = usePreviewableData<Data>();
   return (
     <>
-      <HStack mb={1}>
+      <HStack mb={1} justifyContent="space-between">
         {article.category?.title && (
           <Badge colorScheme="green">{article.category?.title}</Badge>
         )}
         {isPreview && <Badge colorScheme="red">Preview</Badge>}
+        <Flex flexWrap="wrap" gap={2}>
+          {article.resourceLinks?.map((link) => (
+            <Button
+              key={link}
+              as="a"
+              href={link}
+              variant="additional"
+              size="sm"
+              leftIcon={mapLinkToIcon(link)}
+            >
+              {mapLinkToLabel(link)}
+            </Button>
+          ))}
+        </Flex>
       </HStack>
       <Box>
         <Heading as="h1" textStyle="xl-display" mb={2}>
@@ -93,3 +118,23 @@ export default function ArticlePage() {
     </>
   );
 }
+
+const mapLinkToLabel = (link: string) => {
+  if (link.includes("figma.com")) {
+    return "Figma";
+  }
+  if (link.includes("github.com")) {
+    return "Github";
+  }
+  return null;
+};
+
+const mapLinkToIcon = (link: string) => {
+  if (link.includes("figma.com")) {
+    return <FigmaOutline24Icon />;
+  }
+  if (link.includes("github.com")) {
+    return <GithubOutline24Icon />;
+  }
+  return undefined;
+};

@@ -1,4 +1,4 @@
-import { MdArticle } from "react-icons/md";
+import { MdAddLink, MdArticle } from "react-icons/md";
 import {
   ArrayField,
   BlockField,
@@ -57,23 +57,36 @@ export const article: Document<Article> = {
       description:
         "Add links to GitHub or Figma here (only GitHub and Figma is supported)",
       type: "array",
-      of: [{ type: "url" }],
-      validation: (Rule) =>
-        Rule.custom((items) => {
-          console.log(items);
-          if (!items) {
-            return true;
-          }
-          if (
-            items.every(
-              (text: string) =>
-                text.includes("figma.com") || text.includes("github.com")
-            )
-          ) {
-            return true;
-          }
-          return "Only GitHub and Figma links are supported";
-        }),
+      of: [
+        {
+          type: "object",
+          name: "resourceLink",
+          title: "Resource link",
+          icon: MdAddLink,
+          fields: [
+            {
+              name: "linkType",
+              type: "string",
+              title: "Link type",
+              options: {
+                list: [
+                  { title: "Figma", value: "figma" },
+                  { title: "React", value: "react" },
+                  { title: "React Native", value: "react-native" },
+                  { title: "Elm", value: "elm" },
+                ],
+              },
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: "url",
+              type: "url",
+              title: "URL",
+              validation: (Rule) => Rule.required(),
+            },
+          ],
+        },
+      ],
     },
     {
       name: "content",

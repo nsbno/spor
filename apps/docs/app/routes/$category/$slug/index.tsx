@@ -18,6 +18,10 @@ import {
 } from "~/utils/sanity/usePreviewableData";
 import { isValidPreviewRequest } from "~/utils/sanity/utils";
 
+type ResourceLink = {
+  linkType: "figma" | "react" | "react-native" | "elm";
+  url: string;
+};
 type Data = {
   _id: string;
   title: string;
@@ -26,7 +30,7 @@ type Data = {
     title: string;
     slug: string;
   };
-  resourceLinks?: string[];
+  resourceLinks?: ResourceLink[];
   content: any[];
 };
 type LoaderData = PreviewableLoaderData<Data>;
@@ -95,9 +99,9 @@ export default function ArticlePage() {
         <Flex flexWrap="wrap" gap={2}>
           {article.resourceLinks?.map((link) => (
             <Button
-              key={link}
+              key={link.url}
               as="a"
-              href={link}
+              href={link.url}
               variant="additional"
               size="sm"
               leftIcon={mapLinkToIcon(link)}
@@ -119,22 +123,26 @@ export default function ArticlePage() {
   );
 }
 
-const mapLinkToLabel = (link: string) => {
-  if (link.includes("figma.com")) {
-    return "Figma";
+const mapLinkToLabel = (link: ResourceLink) => {
+  switch (link.linkType) {
+    case "figma":
+      return "Figma";
+    case "elm":
+      return "Elm";
+    case "react":
+      return "React";
+    case "react-native":
+      return "React Native";
+    default:
+      return "GitHub";
   }
-  if (link.includes("github.com")) {
-    return "Github";
-  }
-  return null;
 };
 
-const mapLinkToIcon = (link: string) => {
-  if (link.includes("figma.com")) {
-    return <FigmaOutline24Icon />;
+const mapLinkToIcon = (link: ResourceLink) => {
+  switch (link.linkType) {
+    case "figma":
+      return <FigmaOutline24Icon />;
+    default:
+      return <GithubOutline24Icon />;
   }
-  if (link.includes("github.com")) {
-    return <GithubOutline24Icon />;
-  }
-  return undefined;
 };

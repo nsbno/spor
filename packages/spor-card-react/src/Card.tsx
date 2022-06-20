@@ -4,34 +4,49 @@ import React from "react";
 
 export type CardProps = Exclude<BoxProps, "size"> & {
   size?: "sm" | "lg";
-} & (
-    | {
-        variant: "elevated" | "boxes";
-        children: React.ReactNode;
-      }
-    | { variant: "colored"; colorScheme: "blue" | "green" | "grey"| "yellow" | "orange" }
-  );
+  children: React.ReactNode;
+  colorScheme:
+    | "white"
+    | "grey"
+    | "blue"
+    | "green"
+    | "teal"
+    | "yellow"
+    | "orange";
+};
 /**
- * Cards come in three different variants - `colored`, `boxes` and `elevated`.
- * If you specify the `filled` variant, you need to specify a `colorScheme` as well. The available color schemes are `blue`, `green` and `grey`.
- * 
-```tsx
-<Card variant="elevated">
-  I'm an elevated card
-</Card>
-<Card variant="boxes">
-  I'm an boxes card
-</Card>
-<Card variant="colored" colorScheme="blue">
-  I'm a colored card
-</Card>
-```
- * You can also pass any style props you want, like padding or borderRadius.
+ * Renders a card.
+ *
+ * The most basic version looks like this:
+ *
+ * ```tsx
+ * <Card>
+ *   Content
+ * </Card>
+ * ```
+ *
+ * There are lots of color schemes available. You can also set the size as either `sm` or `lg`. The default is `lg`.
+ *
+ * ```tsx
+ * <Card colorScheme="orange" size="sm">
+ *   A smaller card
+ * </Card>
+ * ```
+ *
+ * Cards are not interactive by default. If you specify the `as` prop to be a link or a button, you can make them work as links or buttons respectively. This will also give it a drop shadow.
+ *
+ * ```tsx
+ * <Card colorScheme="blue" as="button" onClick={handleClick}>
+ *   Click for profit
+ * </Card>
+ * <Card colorScheme="green" as="a" href="https://vy.no">
+ *   Go to start
+ * </Card>
+ * ```
  */
 export const Card = forwardRef<CardProps, As<any>>(
-  ({ variant, size = "lg", colorScheme = "grey", children, ...props }, ref) => {
+  ({ size = "lg", colorScheme = "white", children, ...props }, ref) => {
     const styles = useStyleConfig("Card", {
-      variant: variant as any,
       colorScheme,
       size,
     });

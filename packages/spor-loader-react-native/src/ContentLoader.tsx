@@ -17,11 +17,17 @@ export type ContentLoaderProps = BoxProps & { children?: React.ReactNode };
 export const ContentLoader = ({ children, ...props }: ContentLoaderProps) => {
   return (
     <Box {...props}>
-      <Box maxWidth={140} width="100%" alignSelf="auto">
+      <Box
+        maxWidth={140}
+        width="100%"
+        height="100%"
+        maxHeight={140}
+        alignSelf="center"
+      >
         <Lottie source={contentLoaderData} loop autoPlay />
       </Box>
       {children && (
-        <Box maxWidth={200} width="100%" alignSelf="auto">
+        <Box maxWidth={200} width="100%" alignSelf="center">
           <Text textAlign="center" fontWeight="bold">
             {children}
           </Text>

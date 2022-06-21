@@ -1,4 +1,3 @@
-import type { SystemStyleInterpolation } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 
@@ -17,11 +16,11 @@ type CardThemeProps = {
 const baseStyle = (props: CardThemeProps) => ({
   appearance: "none",
   border: "none",
-  borderRadius: "md",
   overflow: "hidden",
   fontSize: "inherit",
   transitionProperty: "common",
   transitionDuration: "fast",
+  borderRadius: "md",
   ...getColorSchemeBaseProps(props),
 
   "button&, a&": {
@@ -34,9 +33,11 @@ const baseStyle = (props: CardThemeProps) => ({
         borderWidth: 2,
       }),
       outline: "none",
+      _active: getColorSchemeActiveProps(props),
     },
     ":focus:not(:focus-visible)": {
-      boxShadow: "none",
+      ...getColorSchemeClickableProps(props),
+      _active: getColorSchemeActiveProps(props),
     },
     _focusVisible: {
       boxShadow: getBoxShadowString({
@@ -77,10 +78,10 @@ function getColorSchemeBaseProps({ colorScheme }: CardThemeProps): {
       };
     default:
       return {
-        backgroundColor: colors.palette[colorScheme]?.[200] ?? "alias.platinum",
+        backgroundColor: colors.palette[colorScheme]?.[100] ?? "alias.platinum",
         boxShadow: getBoxShadowString({
           borderColor:
-            colors.palette[colorScheme]?.[100] ?? colors.alias.silver,
+            colors.palette[colorScheme]?.[200] ?? colors.alias.silver,
         }),
       };
   }
@@ -105,7 +106,67 @@ function getColorSchemeClickableProps({ colorScheme, size }: CardThemeProps) {
       };
     default:
       return {
-        backgroundColor: colors.palette[colorScheme]?.[200] ?? "alias.platinum",
+        backgroundColor: colors.palette[colorScheme]?.[100] ?? "alias.platinum",
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor:
+            colors.palette[colorScheme]?.[200] ?? colors.alias.silver,
+        }),
+      };
+  }
+}
+
+function getColorSchemeHoverProps({ colorScheme, size }: CardThemeProps) {
+  const baseShadow = size === "lg" ? "lg" : "md";
+  switch (colorScheme) {
+    case "white":
+      return {
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor: colors.palette.blackAlpha[200],
+        }),
+      };
+    case "grey":
+      return {
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor: colors.palette.blackAlpha[300],
+        }),
+      };
+    default:
+      return {
+        backgroundColor: colors.palette[colorScheme]?.[200] ?? "alias.silver",
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor:
+            colors.palette[colorScheme]?.[400] ?? colors.alias.silver,
+        }),
+      };
+  }
+}
+
+function getColorSchemeActiveProps({ colorScheme, size }: CardThemeProps) {
+  const baseShadow = size === "lg" ? "sm" : "none";
+  switch (colorScheme) {
+    case "white":
+      return {
+        backgroundColor: "alias.mint",
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor: colors.palette.blackAlpha[200],
+        }),
+      };
+    case "grey":
+      return {
+        backgroundColor: "alias.white",
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor: colors.palette.blackAlpha[300],
+        }),
+      };
+    default:
+      return {
+        backgroundColor: colors.palette[colorScheme]?.[50] ?? "alias.lightGrey",
         boxShadow: getBoxShadowString({
           baseShadow,
           borderColor:
@@ -115,50 +176,6 @@ function getColorSchemeClickableProps({ colorScheme, size }: CardThemeProps) {
   }
 }
 
-function getColorSchemeHoverProps({ colorScheme }: CardThemeProps) {
-  switch (colorScheme) {
-    case "white":
-      return {};
-    case "grey":
-      return {};
-    default:
-      return {
-        backgroundColor: colors.palette[colorScheme]?.[200] ?? "alias.silver",
-        boxShadow: getBoxShadowString({
-          borderColor:
-            colors.palette[colorScheme]?.[100] ?? colors.alias.silver,
-        }),
-      };
-  }
-}
-
-function getColorSchemeActiveProps({ colorScheme }: CardThemeProps) {
-  switch (colorScheme) {
-    case "white":
-      return {};
-    case "grey":
-      return {};
-    default:
-      return {
-        backgroundColor: colors.palette[colorScheme]?.[50] ?? "alias.lightGrey",
-        boxShadow: getBoxShadowString({
-          borderColor:
-            colors.palette[colorScheme]?.[100] ?? colors.alias.silver,
-        }),
-      };
-  }
-}
-
-const sizes: Record<CardThemeProps["size"], SystemStyleInterpolation> = {
-  lg: {
-    borderRadius: "md",
-  },
-  sm: {
-    borderRadius: "sm",
-  },
-};
-
 export default {
   baseStyle,
-  sizes,
 };

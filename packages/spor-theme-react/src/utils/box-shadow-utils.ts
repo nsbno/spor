@@ -14,11 +14,12 @@ export const getBoxShadowString = ({
   borderWidth = 1,
 }: GetBoxShadowStringArgs) => {
   const allShadows: string[] = [];
-  if (baseShadow) {
-    allShadows.push(shadows[baseShadow]);
-  }
+
   if (borderColor) {
     allShadows.push(`0 0 0 ${borderWidth}px ${borderColor}`);
+  }
+  if (baseShadow) {
+    allShadows.push(shadows[baseShadow]);
   }
   return allShadows.join(", ");
 };

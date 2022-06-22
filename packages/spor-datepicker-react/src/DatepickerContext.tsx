@@ -11,7 +11,7 @@ import {
   dayLabelFormat,
   isValidDateObject,
   useNextDays,
-  usePrevDays,
+  usePreviousDays,
 } from "./datepicker-utils";
 
 interface DatepickerContextType {
@@ -31,7 +31,7 @@ interface DatepickerContextType {
   days: (number | Day)[];
   weekdayLabels: string[];
   monthLabel: string;
-  prevDays: Day[];
+  previousDays: Day[];
   nextDays: Day[];
 }
 
@@ -56,9 +56,9 @@ export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
   );
 
   useEffect(() => {
-    if (isValidDateObject(value)) { 
+    if (isValidDateObject(value)) {
       setSelectedDate(value);
-    };
+    }
   }, [value]);
 
   const handleDateChange = ({ startDate }: OnDatesChangeProps) => {
@@ -97,7 +97,7 @@ export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
     dayLabelFormat,
   };
   const { days, weekdayLabels, monthLabel } = useMonth(monthProps);
-  const prevDays = usePrevDays(monthProps, days);
+  const previousDays = usePreviousDays(monthProps, days);
   const nextDays = useNextDays(monthProps);
 
   return (
@@ -119,7 +119,7 @@ export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
         days,
         weekdayLabels,
         monthLabel,
-        prevDays,
+        previousDays,
         nextDays,
       }}
     >

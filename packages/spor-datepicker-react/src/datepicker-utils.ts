@@ -7,7 +7,7 @@ export interface Day {
 
 const isDay = (day: number | Day): day is Day => typeof day !== "number";
 
-/** 
+/**
  * Checks whether a Date object is valid or not.
  */
 export const isValidDateObject = (date?: Date): date is Date =>
@@ -17,7 +17,7 @@ const getWeekdayIndexOfFirst = (
   days: (number | { dayLabel: string; date: Date })[]
 ) => days.findIndex((day) => isDay(day));
 
-export const usePrevDays = (
+export const usePreviousDays = (
   { year, month, firstDayOfWeek, dayLabelFormat }: UseMonthProps,
   days: (number | { dayLabel: string; date: Date })[]
 ) => {

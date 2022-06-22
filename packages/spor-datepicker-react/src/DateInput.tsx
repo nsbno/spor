@@ -10,9 +10,9 @@ import { IconButton } from "@vygruppen/spor-button-react";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import { Input } from "@vygruppen/spor-input-react";
-import { isValidDateObject } from "./datepicker-utils";
 import React, { ChangeEventHandler } from "react";
 import { DatepickerStylingProps } from "./Datepicker";
+import { isValidDateObject } from "./datepicker-utils";
 import { useDatepicker } from "./DatepickerContext";
 
 export const DateInput = ({ variant }: DatepickerStylingProps) => {
@@ -37,7 +37,7 @@ export const DateInput = ({ variant }: DatepickerStylingProps) => {
                 label={t(texts.date)}
                 value={selectedDate?.toLocaleDateString()}
                 onChange={handleChange}
-                sx={styles.input}
+                __css={styles.input}
               />
             </PopoverAnchor>
             <InputRightAddon>
@@ -46,7 +46,7 @@ export const DateInput = ({ variant }: DatepickerStylingProps) => {
                   variant="additional"
                   icon={<CalendarOutline24Icon />}
                   aria-label={t(texts.calendar)}
-                  sx={styles.calendarButton}
+                  __css={styles.calendarButton}
                 />
               </PopoverTrigger>
             </InputRightAddon>
@@ -58,7 +58,7 @@ export const DateInput = ({ variant }: DatepickerStylingProps) => {
               label={t(texts.date)}
               value={selectedDate?.toLocaleDateString()}
               onChange={handleChange}
-              sx={styles.input}
+              __css={styles.input}
             />
           </PopoverTrigger>
         )}

@@ -19,8 +19,8 @@ export const ContentLoader = ({ children, ...props }: ContentLoaderProps) => {
     <Box {...props}>
       <Box
         maxWidth={140}
-        width="100%"
-        height="100%"
+        width={140}
+        height={140}
         maxHeight={140}
         alignSelf="center"
       >

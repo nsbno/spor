@@ -3,7 +3,7 @@ import { useMonth, UseMonthProps } from "@datepicker-react/hooks";
 export type Day = {
   dayLabel: string;
   date: Date;
-}
+};
 
 const isDay = (day: number | Day): day is Day => typeof day !== "number";
 
@@ -12,6 +12,10 @@ const isDay = (day: number | Day): day is Day => typeof day !== "number";
  */
 export const isValidDateObject = (date?: Date): date is Date =>
   date instanceof Date && !isNaN(date.getTime());
+
+/** Checks whether a given date object is today or not */
+export const isToday = (date?: Date) =>
+  date?.toDateString() === new Date().toDateString();
 
 const getWeekdayIndexOfFirst = (
   days: (number | { dayLabel: string; date: Date })[]

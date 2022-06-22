@@ -52,7 +52,7 @@ export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
   children,
 }) => {
   const [selectedDate, setSelectedDate] = useState<Date>(
-    defaultValue || new Date()
+    value ?? defaultValue ?? new Date()
   );
 
   useEffect(() => {

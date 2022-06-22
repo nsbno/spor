@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Button,
   Flex,
@@ -8,16 +7,18 @@ import {
   useStyles,
 } from "@chakra-ui/react";
 import { Card } from "@vygruppen/spor-card-react";
-import { Text } from "@vygruppen/spor-typography-react";
-import { Day } from "./Day";
+import { useTranslation } from "@vygruppen/spor-i18n-react";
 import {
   ArrowLeftFill30Icon,
   ArrowRightFill30Icon,
 } from "@vygruppen/spor-icon-react";
+import { Text } from "@vygruppen/spor-typography-react";
+import React from "react";
 import { useDatepicker } from "./DatepickerContext";
-import { useTranslation } from "@vygruppen/spor-i18n-react";
+import { Day } from "./Day";
 
-export const Calendar: React.VFC = forwardRef((props, ref) => {
+type CalendarProps = {};
+export const Calendar = forwardRef<CalendarProps, any>((_, ref) => {
   const {
     goToNextMonth,
     goToPreviousMonth,
@@ -34,7 +35,7 @@ export const Calendar: React.VFC = forwardRef((props, ref) => {
 
   const styles = useStyles();
   return (
-    <Card variant="outlined" p={1} __css={styles.calendar} ref={ref}>
+    <Card colorScheme="white" p={1} __css={styles.calendar} ref={ref}>
       <Flex justify="space-between" mx={3} mt={2}>
         <Button __css={styles.button} onClick={goToPreviousMonth}>
           <ArrowLeftFill30Icon />

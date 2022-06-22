@@ -31,19 +31,30 @@ export const Calendar = forwardRef<CalendarProps, any>((_, ref) => {
 
   let { t } = useTranslation();
 
-  const [monthLabelMonth, monthLabelYear] = monthLabel.split(" ");
+  const [monthLabelMonth, monthLabelYear] = monthLabel.split(" ") as [
+    Month,
+    string
+  ];
 
   const styles = useStyles();
   return (
     <Card colorScheme="white" p={1} __css={styles.calendar} ref={ref}>
       <Flex justify="space-between" mx={3} mt={2}>
-        <Button __css={styles.button} onClick={goToPreviousMonth}>
+        <Button
+          __css={styles.button}
+          onClick={goToPreviousMonth}
+          aria-label={t(texts.previousMonth)}
+        >
           <ArrowLeftFill30Icon />
         </Button>
-        <Text sx={styles.monthLabel}>
-          {t(months[monthLabelMonth as Month])} {monthLabelYear}
+        <Text __css={styles.monthLabel}>
+          {t(months[monthLabelMonth])} {monthLabelYear}
         </Text>
-        <Button __css={styles.button} onClick={goToNextMonth}>
+        <Button
+          __css={styles.button}
+          onClick={goToNextMonth}
+          aria-label={t(texts.nextMonth)}
+        >
           <ArrowRightFill30Icon />
         </Button>
       </Flex>
@@ -196,5 +207,18 @@ const months = {
     nb: "Desember",
     sv: "December",
     en: "December",
+  },
+};
+
+const texts = {
+  previousMonth: {
+    nb: "Forrige måned",
+    sv: "Föregående månad",
+    en: "Previous month",
+  },
+  nextMonth: {
+    nb: "Neste måned",
+    sv: "Nästa månad",
+    en: "Next month",
   },
 };

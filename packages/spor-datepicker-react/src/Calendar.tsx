@@ -25,7 +25,7 @@ export const Calendar = forwardRef<CalendarProps, any>((_, ref) => {
     days,
     weekdayLabels,
     monthLabel,
-    prevDays,
+    previousDays,
     nextDays,
   } = useDatepicker();
 
@@ -69,7 +69,7 @@ export const Calendar = forwardRef<CalendarProps, any>((_, ref) => {
         ))}
       </SimpleGrid>
       <SimpleGrid columns={7} gap={1} m={1}>
-        {prevDays.map((day) => {
+        {previousDays.map((day) => {
           return (
             <Day
               isDisabled

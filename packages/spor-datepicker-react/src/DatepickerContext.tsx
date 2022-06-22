@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import {
   Day,
   dayLabelFormat,
+  isToday,
   isValidDateObject,
   useNextDays,
   usePreviousDays,
@@ -164,6 +165,5 @@ export const useDay = (
     onDateHover,
     dayRef,
   });
-  const isToday = new Date().toDateString() === date?.toDateString();
-  return { ...context, isToday };
+  return { ...context, isToday: isToday(date) };
 };

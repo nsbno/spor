@@ -1,7 +1,3 @@
-import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
-import { Input } from "@vygruppen/spor-input-react";
-import React, { ChangeEventHandler } from "react";
-import { useDatepicker } from "./DatepickerContext";
 import {
   Flex,
   InputGroup,
@@ -11,18 +7,22 @@ import {
   useStyles,
 } from "@chakra-ui/react";
 import { IconButton } from "@vygruppen/spor-button-react";
-import { DatepickerStylingProps } from "./Datepicker";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
-import isValid from "date-fns/isValid";
+import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
+import { Input } from "@vygruppen/spor-input-react";
+import { isValidDateObject } from "./datepicker-utils";
+import React, { ChangeEventHandler } from "react";
+import { DatepickerStylingProps } from "./Datepicker";
+import { useDatepicker } from "./DatepickerContext";
 
-export const DateInput: React.VFC<DatepickerStylingProps> = ({ variant }) => {
+export const DateInput = ({ variant }: DatepickerStylingProps) => {
   const { selectedDate, setSelectedDate } = useDatepicker();
   const styles = useStyles();
   const { t } = useTranslation();
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     const date = new Date(event.target.value);
-    if (isValid(date)) {
+    if (isValidDateObject(date)) {
       setSelectedDate(date);
     }
   };

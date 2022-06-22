@@ -3,6 +3,7 @@ import tokens from "@vygruppen/spor-design-tokens";
 import {
   Box,
   BoxProps,
+  Card,
   CopyOutline24Icon,
   Flex,
   IconButton,
@@ -101,9 +102,7 @@ type ColorTokenProps = BoxProps & { token: ColorToken };
 const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
   const isWhite = token.value.toLowerCase() === "#ffffff";
   const { hasCopied, onCopy } = useClipboard(token.original.value);
-  const name = `${token.attributes.item} ${
-    token.attributes.subitem || ""
-  }`.trim();
+
   const value = token.original.value.startsWith("rgba")
     ? token.original.value
     : token.value.toUpperCase();
@@ -111,13 +110,7 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
   const paletteName = toTitleCase(getPaletteName(value));
   const aliasName = toTitleCase(getAliasName(value) || paletteName);
   return (
-    <Box
-      border="1px solid"
-      borderColor="alias.osloGrey"
-      borderRadius="sm"
-      overflow="hidden"
-      {...rest}
-    >
+    <Card colorScheme="white" borderRadius="sm" overflow="hidden" {...rest}>
       <Box
         height="60px"
         backgroundColor={value}
@@ -142,7 +135,7 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
           />
         </Flex>
       </Box>
-    </Box>
+    </Card>
   );
 };
 

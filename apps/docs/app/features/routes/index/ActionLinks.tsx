@@ -109,8 +109,8 @@ function ActionLinkCard({ to, children }: ActionLinkCardProps) {
   return (
     <Card
       {...linkProps}
+      colorScheme="white"
       p={4}
-      variant="elevated"
       display="flex"
       flexDirection={["row", "column"]}
       gap={[3, 4]}

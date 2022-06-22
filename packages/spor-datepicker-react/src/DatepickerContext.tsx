@@ -14,7 +14,7 @@ import {
   usePreviousDays,
 } from "./datepicker-utils";
 
-interface DatepickerContextType {
+type DatepickerContextType = {
   selectedDate: Date | null;
   setSelectedDate: (date: Date) => void;
   isDateSelected: (date: Date) => boolean;
@@ -33,17 +33,17 @@ interface DatepickerContextType {
   monthLabel: string;
   previousDays: Day[];
   nextDays: Day[];
-}
+};
 
 export const DatepickerContext = React.createContext<
   DatepickerContextType | undefined
 >(undefined);
 
-export interface DatepickerControlProps {
+export type DatepickerControlProps = {
   value?: Date;
   onChange?: (date: Date) => void;
   defaultValue?: Date;
-}
+};
 
 export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
   value,

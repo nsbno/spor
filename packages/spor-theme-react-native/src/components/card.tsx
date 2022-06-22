@@ -76,6 +76,6 @@ export const cardSizes = {
     borderRadius: "md",
   },
   sm: {
-    borderRadius: "sm",
+    borderRadius: "md",
   },
 };

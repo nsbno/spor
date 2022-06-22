@@ -1,191 +1,181 @@
-import type {
-  SystemStyleInterpolation,
-  SystemStyleObject,
-} from "@chakra-ui/theme-tools";
-import { colors, shadows } from "../foundations";
+import { colors } from "../foundations";
+import { getBoxShadowString } from "../utils/box-shadow-utils";
 
-const baseStyle: SystemStyleObject = {
+type CardThemeProps = {
+  colorScheme:
+    | "white"
+    | "grey"
+    | "blue"
+    | "green"
+    | "teal"
+    | "yellow"
+    | "orange";
+  size: "sm" | "lg";
+};
+
+const baseStyle = (props: CardThemeProps) => ({
+  appearance: "none",
   border: "none",
-  borderRadius: "md",
   overflow: "hidden",
+  fontSize: "inherit",
   transitionProperty: "common",
   transitionDuration: "fast",
+  borderRadius: "md",
+  ...getColorSchemeBaseProps(props),
 
   "button&, a&": {
+    ...getColorSchemeClickableProps(props),
+    _hover: getColorSchemeHoverProps(props),
+    _active: getColorSchemeActiveProps(props),
     _focus: {
-      boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
+      boxShadow: getBoxShadowString({
+        borderColor: colors.alias.greenHaze,
+        borderWidth: 2,
+      }),
       outline: "none",
+      _active: getColorSchemeActiveProps(props),
     },
     ":focus:not(:focus-visible)": {
-      boxShadow: "none",
+      ...getColorSchemeClickableProps(props),
+      _active: getColorSchemeActiveProps(props),
     },
     _focusVisible: {
-      boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
+      boxShadow: getBoxShadowString({
+        borderColor: colors.alias.greenHaze,
+        borderWidth: 2,
+      }),
     },
 
     _disabled: {
       backgroundColor: "alias.silver",
-      boxShadow: `0 0 0 1px ${colors.alias.silver}`,
+      boxShadow: getBoxShadowString({
+        borderColor: colors.alias.silver,
+      }),
       color: "alias.osloGrey",
       pointerEvents: "none",
     },
   },
-};
+});
 
-type Variant = "elevated" | "filled" | "outlined";
-const variants: Record<Variant, SystemStyleInterpolation> = {
-  elevated: ({ size }) => ({
-    backgroundColor: "alias.white",
-    boxShadow: `${size === "lg" ? shadows.md : shadows.sm}, 0 0 0 1px ${
-      colors.alias.silver
-    }`,
-
-    "button&, a&": {
-      _hover: {
-        boxShadow: `${size === "lg" ? shadows.lg : shadows.md}, 0 0 0 1px ${
-          colors.alias.steel
-        }`,
-        borderColor: "alias.steel",
-      },
-      _active: {
-        backgroundColor: "alias.mint",
-        boxShadow: "lg",
-      },
-      ":focus:not(:focus-visible)": {
-        boxShadow: `${size === "lg" ? shadows.md : shadows.sm}, 0 0 0 1px ${
-          colors.alias.silver
-        }`,
-      },
-    },
-  }),
-  filled: ({ colorScheme }) => ({
-    ...getColorSchemeProps(colorScheme),
-
-    "button&, a&": {
-      _hover: {
-        ...getColorSchemeHoverProps(colorScheme),
-      },
-      _focus: {
-        ...getColorSchemeFocusProps(colorScheme),
-      },
-      _focusVisible: {
-        ...getColorSchemeFocusProps(colorScheme),
-      },
-      _active: {
-        ...getColorSchemeActiveProps(colorScheme),
-      },
-    },
-  }),
-  outlined: {
-    border: "1px solid",
-    borderColor: "alias.osloGrey",
-
-    "button&, a&": {
-      _hover: {
-        borderColor: "alias.darkGrey",
-      },
-      _active: {
-        backgroundColor: "alias.mint",
-        borderColor: "alias.osloGrey",
-      },
-    },
-  },
-};
-
-function getColorSchemeProps(colorScheme: string) {
+function getColorSchemeBaseProps({ colorScheme }: CardThemeProps): {
+  backgroundColor: string;
+  boxShadow: string;
+} {
   switch (colorScheme) {
-    case "blue":
+    case "white":
       return {
-        backgroundColor: "alias.lightBlue",
-        boxShadow: `0 0 0 1px ${colors.alias.cloudy}`,
-      };
-    case "green":
-      return {
-        backgroundColor: "alias.mint",
-        boxShadow: `0 0 0 1px ${colors.alias.coralGreen}`,
+        backgroundColor: "alias.white",
+        boxShadow: getBoxShadowString({
+          borderColor: colors.palette.blackAlpha[200],
+        }),
       };
     case "grey":
-    default:
-      return {
-        backgroundColor: "alias.platinum",
-        boxShadow: `0 0 0 1px ${colors.alias.silver}`,
-      };
-  }
-}
-
-function getColorSchemeHoverProps(colorScheme: string) {
-  switch (colorScheme) {
-    case "blue":
-      return {
-        backgroundColor: "alias.cloudy",
-        boxShadow: `0 0 0 1px ${colors.alias.cloudy}`,
-      };
-    case "green":
-      return {
-        backgroundColor: "alias.seaMist",
-        boxShadow: `0 0 0 1px ${colors.alias.seaMist}`,
-      };
-    case "grey":
-    default:
-      return {
-        backgroundColor: "alias.silver",
-        boxShadow: `0 0 0 1px ${colors.alias.silver}`,
-      };
-  }
-}
-
-function getColorSchemeFocusProps(colorScheme: string) {
-  switch (colorScheme) {
-    case "blue":
-      return {
-        backgroundColor: "alias.lightBlue",
-      };
-    case "green":
-      return {
-        backgroundColor: "alias.seaMist",
-      };
-    case "grey":
-    default:
-      return {
-        backgroundColor: "alias.platinum",
-      };
-  }
-}
-
-function getColorSchemeActiveProps(colorScheme: string) {
-  switch (colorScheme) {
-    case "blue":
-      return {
-        backgroundColor: "alias.icyBlue",
-        boxShadow: `0 0 0 1px ${colors.alias.cloudy}`,
-      };
-    case "green":
-      return {
-        backgroundColor: "alias.mint",
-        boxShadow: `0 0 0 1px ${colors.alias.seaMist}`,
-      };
-    case "grey":
-    default:
       return {
         backgroundColor: "alias.lightGrey",
-        boxShadow: `0 0 0 1px ${colors.alias.silver}`,
+        boxShadow: getBoxShadowString({
+          borderColor: colors.palette.blackAlpha[300],
+        }),
+      };
+    default:
+      return {
+        backgroundColor: colors.palette[colorScheme]?.[100] ?? "alias.platinum",
+        boxShadow: getBoxShadowString({
+          borderColor:
+            colors.palette[colorScheme]?.[200] ?? colors.alias.silver,
+        }),
       };
   }
 }
 
-type Size = "sm" | "lg";
+function getColorSchemeClickableProps({ colorScheme, size }: CardThemeProps) {
+  const baseShadow = size === "lg" ? "md" : "sm";
+  switch (colorScheme) {
+    case "white":
+      return {
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor: colors.palette.blackAlpha[200],
+        }),
+      };
+    case "grey":
+      return {
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor: colors.palette.blackAlpha[300],
+        }),
+      };
+    default:
+      return {
+        backgroundColor: colors.palette[colorScheme]?.[100] ?? "alias.platinum",
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor:
+            colors.palette[colorScheme]?.[200] ?? colors.alias.silver,
+        }),
+      };
+  }
+}
 
-const sizes: Record<Size, SystemStyleInterpolation> = {
-  lg: {
-    borderRadius: "md",
-  },
-  sm: {
-    borderRadius: "sm",
-  },
-};
+function getColorSchemeHoverProps({ colorScheme, size }: CardThemeProps) {
+  const baseShadow = size === "lg" ? "lg" : "md";
+  switch (colorScheme) {
+    case "white":
+      return {
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor: colors.palette.blackAlpha[200],
+        }),
+      };
+    case "grey":
+      return {
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor: colors.palette.blackAlpha[300],
+        }),
+      };
+    default:
+      return {
+        backgroundColor: colors.palette[colorScheme]?.[200] ?? "alias.silver",
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor:
+            colors.palette[colorScheme]?.[400] ?? colors.alias.silver,
+        }),
+      };
+  }
+}
+
+function getColorSchemeActiveProps({ colorScheme, size }: CardThemeProps) {
+  const baseShadow = size === "lg" ? "sm" : "none";
+  switch (colorScheme) {
+    case "white":
+      return {
+        backgroundColor: "alias.mint",
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor: colors.palette.blackAlpha[200],
+        }),
+      };
+    case "grey":
+      return {
+        backgroundColor: "alias.white",
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor: colors.palette.blackAlpha[300],
+        }),
+      };
+    default:
+      return {
+        backgroundColor: colors.palette[colorScheme]?.[50] ?? "alias.lightGrey",
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor:
+            colors.palette[colorScheme]?.[100] ?? colors.alias.silver,
+        }),
+      };
+  }
+}
 
 export default {
   baseStyle,
-  variants,
-  sizes,
 };

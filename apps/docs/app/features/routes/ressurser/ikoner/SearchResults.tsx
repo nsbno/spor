@@ -1,6 +1,7 @@
 import { useClipboard } from "@chakra-ui/react";
 import {
   Box,
+  Card,
   CopyOutline18Icon,
   DownloadOutline18Icon,
   Flex,
@@ -149,9 +150,9 @@ function IconBox({ icon }: IconBoxProps) {
   const { onCopy, hasCopied } = useClipboard(icon.importName);
   const IconComponent = getIconByImportName(icon.importName);
   return (
-    <Flex
-      border="1px solid"
-      borderColor="palette.blackAlpha.200"
+    <Card
+      display="flex"
+      colorScheme="white"
       borderRadius="sm"
       flexDirection="column"
       alignItems="center"
@@ -186,7 +187,7 @@ function IconBox({ icon }: IconBoxProps) {
           borderRadius="sm"
         />
       </Flex>
-    </Flex>
+    </Card>
   );
 }
 

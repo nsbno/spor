@@ -4,7 +4,9 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-datepicker-react",
   "repository": {
     "type": "git",
@@ -39,7 +41,6 @@
     "@vygruppen/spor-i18n-react": "*",
     "@vygruppen/spor-typography-react": "*",
     "@vygruppen/spor-icon-react": "*",
-    "@vygruppen/spor-input-react": "*",
-    "date-fns": "^2.28.0"
+    "@vygruppen/spor-input-react": "*"
   }
 }

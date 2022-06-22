@@ -1,4 +1,4 @@
-import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react/tmp";
+import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import { Input } from "@vygruppen/spor-input-react";
 import React, { ChangeEventHandler } from "react";
 import { useDatepicker } from "./DatepickerContext";

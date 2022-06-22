@@ -2,8 +2,8 @@ import {
   Button,
   Flex,
   forwardRef,
-  Grid,
   GridItem,
+  SimpleGrid,
   useStyles,
 } from "@chakra-ui/react";
 import { Card } from "@vygruppen/spor-card-react";
@@ -58,7 +58,7 @@ export const Calendar = forwardRef<CalendarProps, any>((_, ref) => {
           <ArrowRightFill30Icon />
         </Button>
       </Flex>
-      <Grid templateColumns="repeat(7, 1fr)" gap={2} mx={1}>
+      <SimpleGrid columns={7} gap={2} mx={1}>
         {weekdayLabels.map((dayLabel, idx) => (
           <GridItem
             key={dayLabel}
@@ -67,8 +67,8 @@ export const Calendar = forwardRef<CalendarProps, any>((_, ref) => {
             <Text>{t(weekdays[dayLabel as Weekday])}</Text>
           </GridItem>
         ))}
-      </Grid>
-      <Grid templateColumns="repeat(7, 1fr)" gap={1} m={1}>
+      </SimpleGrid>
+      <SimpleGrid columns={7} gap={1} m={1}>
         {prevDays.map((day) => {
           return (
             <Day
@@ -100,7 +100,7 @@ export const Calendar = forwardRef<CalendarProps, any>((_, ref) => {
             />
           );
         })}
-      </Grid>
+      </SimpleGrid>
     </Card>
   );
 });

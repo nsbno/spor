@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
 import {
+  OnDatesChangeProps,
   START_DATE,
   useDatepicker as useReactDatepicker,
-  useMonth,
   useDay as useReactDay,
-  OnDatesChangeProps,
+  useMonth,
 } from "@datepicker-react/hooks";
+import React, { useEffect, useState } from "react";
 import {
+  Day,
   dayLabelFormat,
+  isValidDateObject,
   useNextDays,
   usePrevDays,
-  Day,
 } from "./datepicker-utils";
-import isValid from "date-fns/isValid";
 
 interface DatepickerContextType {
   selectedDate: Date | null;
@@ -56,7 +56,9 @@ export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
   );
 
   useEffect(() => {
-    if (value && isValid(value)) setSelectedDate(value);
+    if (isValidDateObject(value)) { 
+      setSelectedDate(value);
+    };
   }, [value]);
 
   const handleDateChange = ({ startDate }: OnDatesChangeProps) => {

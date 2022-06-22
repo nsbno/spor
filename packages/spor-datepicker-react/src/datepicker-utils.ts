@@ -7,6 +7,12 @@ export interface Day {
 
 const isDay = (day: number | Day): day is Day => typeof day !== "number";
 
+/** 
+ * Checks whether a Date object is valid or not.
+ */
+export const isValidDateObject = (date?: Date): date is Date =>
+  date instanceof Date && !isNaN(date.getTime());
+
 const getWeekdayIndexOfFirst = (
   days: (number | { dayLabel: string; date: Date })[]
 ) => days.findIndex((day) => isDay(day));

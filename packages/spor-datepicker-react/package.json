@@ -33,6 +33,13 @@
     "framer-motion": "3.x || 4.x || 5.x || 6.x"
   },
   "dependencies": {
-    "@datepicker-react/hooks": "^2.8.4"
+    "@datepicker-react/hooks": "^2.8.4",
+    "@vygruppen/spor-card-react": "*",
+    "@vygruppen/spor-button-react": "*",
+    "@vygruppen/spor-i18n-react": "*",
+    "@vygruppen/spor-typography-react": "*",
+    "@vygruppen/spor-icon-react": "*",
+    "@vygruppen/spor-input-react": "*",
+    "date-fns": "^2.28.0"
   }
 }

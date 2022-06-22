@@ -1,6 +1,6 @@
 import { useMonth, UseMonthProps } from "@datepicker-react/hooks";
 
-export interface Day {
+export type Day = {
   dayLabel: string;
   date: Date;
 }

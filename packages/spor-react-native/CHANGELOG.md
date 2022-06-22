@@ -1,5 +1,12 @@
 # @vygruppen/spor-react-native
 
+## 0.2.2
+
+### Patch Changes
+
+- Updated dependencies [970436f]
+  - @vygruppen/spor-loader-react-native@0.1.2
+
 ## 0.2.1
 
 ### Patch Changes

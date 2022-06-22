@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader-react-native
 
+## 0.1.2
+
+### Patch Changes
+
+- 970436f: Fix a bug where the content loader would disappear if the content is center aligned
+
 ## 0.1.1
 
 ### Patch Changes

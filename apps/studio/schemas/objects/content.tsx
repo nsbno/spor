@@ -23,8 +23,9 @@ export const content: ArrayField = {
     { type: "introduction" },
     { type: "imports" },
     { type: "imageWithCaption" },
-    { type: "grid" },
     { type: "codeExample" },
     { type: "reference", to: [{ type: "component" }] },
+    { type: "grid" },
+    { type: "tipsPanel" },
   ],
 };

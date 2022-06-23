@@ -10,6 +10,7 @@ import {
   Button,
   Code,
   Divider,
+  FavouriteOutline30Icon,
   Flex,
   Heading,
   Image,
@@ -266,6 +267,25 @@ const components: Partial<PortableTextReactComponents> = {
       </Box>
     ),
     imports: ({ value }) => <CodeBlock code={value.reactImport} mt={3} />,
+    tipsPanel: ({ value }) => (
+      <Box
+        as="article"
+        backgroundColor="alias.mint"
+        mt={3}
+        p={4}
+        borderRadius="md"
+      >
+        <Flex gap={1} alignItems="end">
+          <FavouriteOutline30Icon />
+          <Heading as="h3" textStyle="sm" fontWeight="bold">
+            {value.title}
+          </Heading>
+        </Flex>
+        <Box __css={{ " > p:first-of-type": { mt: 1 } }}>
+          <PortableText value={value.content} />
+        </Box>
+      </Box>
+    ),
   },
 };
 

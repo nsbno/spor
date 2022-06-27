@@ -43,14 +43,16 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     borderStyle: "solid",
     borderWidth: "1px",
     borderRadius: "sm",
-    borderLeftRadius: "0px",
-    padding: "15px",
+    borderLeftRadius: 0,
+    padding: "1rem",
     ...elementStateStyles,
   },
   calendar: {
     backgroundColor: "alias.white",
     borderRadius: "md",
-    boxShadow: "0px 1px 5px rgba(0, 0, 0, 0.2)",
+    boxShadow: "sm",
+    position: "relative",
+    zIndex: "popover",
   },
   monthLabel: {
     fontWeight: "bold",
@@ -75,52 +77,48 @@ const baseStyle: PartsStyleObject<typeof parts> = {
 const sizes: Record<string, PartsStyleInterpolation<typeof parts>> = {
   sm: {
     input: {
-      height: "56px",
-      minWidth: "172px",
+      height: "3.5rem",
+      minWidth: "11rem",
     },
     calendarButton: {
-      height: "56px",
+      height: "3.5rem",
     },
     monthLabel: {
-      fontSize: "18px",
-      lineHeight: "24px",
+      textStyle: "sm",
+      lineHeight: 4,
     },
     dayLabel: {
-      fontSize: "16px",
-      lineHeight: "20px",
+      textStyle: "sm",
     },
     weekendLabel: {
-      fontSize: "16px",
-      lineHeight: "20px",
+      textStyle: "sm",
     },
     button: {
-      height: "36px",
-      width: "36px",
+      height: 6,
+      width: 6,
     },
   },
   lg: {
     input: {
-      height: "60px",
-      minWidth: "180px",
+      height: "3.75rem",
+      minWidth: "11.25rem",
     },
     calendarButton: {
-      height: "60px",
+      height: "3.75rem",
     },
     monthLabel: {
-      fontSize: "24px",
-      lineHeight: "36px",
+      fontSize: "md",
+      lineHeight: "2.25rem",
     },
     dayLabel: {
-      fontSize: "18px",
-      lineHeight: "24px",
+      textStyle: "sm",
     },
     weekendLabel: {
-      fontSize: "18px",
-      lineHeight: "24px",
+      textStyle: "sm",
     },
     button: {
-      height: "42px",
-      width: "42px",
+      height: 7,
+      width: 7,
     },
   },
 };

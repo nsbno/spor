@@ -5,16 +5,17 @@ import {
   BoxProps,
   Popover,
   PopoverContent,
+  Portal,
   StylesProvider,
   useBreakpointValue,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
+import { Calendar } from "./Calendar";
+import { DateInput } from "./DateInput";
 import {
   DatepickerControlProps,
   DatepickerProvider,
 } from "./DatepickerContext";
-import { Calendar } from "./Calendar";
-import { DateInput } from "./DateInput";
 
 type Size = "sm" | "lg";
 type Variant = "mobile" | "desktop";
@@ -47,16 +48,18 @@ const getDefaultProps: (
   return { size: defaultSize, variant: defaultVariant };
 };
 
-const SporDatepicker: React.VFC<
-  DatepickerControlProps & DatepickerStylingProps & BoxProps
-> = ({
+type DatepickerProps = DatepickerControlProps &
+  DatepickerStylingProps &
+  BoxProps;
+
+export const Datepicker = ({
   value,
   onChange,
   defaultValue,
   size: sizeProp,
   variant: variantProp,
   ...boxProps
-}) => {
+}: DatepickerProps) => {
   const { size, variant } = getDefaultProps({
     size: sizeProp,
     variant: variantProp,
@@ -70,17 +73,17 @@ const SporDatepicker: React.VFC<
       defaultValue={defaultValue}
     >
       <Box {...boxProps}>
-        <Popover placement={"bottom-start"}>
+        <Popover placement="bottom-start">
           <StylesProvider value={styles}>
             <DateInput variant={variant} />
-            <PopoverContent>
-              <Calendar />
-            </PopoverContent>
+            <Portal>
+              <PopoverContent>
+                <Calendar />
+              </PopoverContent>
+            </Portal>
           </StylesProvider>
         </Popover>
       </Box>
     </DatepickerProvider>
   );
 };
-
-export const Datepicker = SporDatepicker;

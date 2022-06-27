@@ -4,8 +4,9 @@ import { typescriptTypingsFormatter } from "./formatters/typescript/typings";
 import { reactNativeTypescriptTypingsFormatter } from "./formatters/typescript/rn-typings";
 import { pxTransformer } from "./transforms/size/px";
 import { pxToRemTransformer } from "./transforms/size/pxToRem";
+import config from '../config';
 
-const styleDictionary = StyleDictionaryFactory.extend("config.json");
+const styleDictionary = StyleDictionaryFactory.extend(config);
 
 // Register formatters
 // Read about formatters @ https://amzn.github.io/style-dictionary/#/formats

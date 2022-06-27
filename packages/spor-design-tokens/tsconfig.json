@@ -1,7 +1,7 @@
 {
-  "extends": "@vygruppen/tsconfig/base.json",
+  "extends": "../tsconfig/base.json",
   "include": ["."],
-  "exclude": ["dist", "elmsrc", "node_modules"],
+  "exclude": ["dist", "elm", "node_modules"],
   "compilerOptions": {
     "rootDir": ".",
   }

@@ -41,7 +41,7 @@ export default {
       ]
     },
     "elm": {
-      "buildPath": "elm/Spor/Token/",
+      "buildPath": "elm/src/Spor/Token/",
       "transforms": [
         "name/cti/camel",
         "attribute/cti",

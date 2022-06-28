@@ -27,6 +27,8 @@ export const elmFormatter: Named<Format> = {
     return [
       `module ${moduleName} exposing (${exposing})`,
       '',
+      `{-| @docs ${exposing} -}`,
+      '',
       fileHeader,
       '',
       '',

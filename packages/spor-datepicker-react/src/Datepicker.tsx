@@ -7,7 +7,7 @@ import {
   PopoverContent,
   Portal,
   StylesProvider,
-  useBreakpointValue,
+  useFormControl,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import { Calendar } from "./Calendar";
@@ -17,54 +17,24 @@ import {
   DatepickerProvider,
 } from "./DatepickerContext";
 
-type Size = "sm" | "lg";
-type Variant = "mobile" | "desktop";
-
-export type DatepickerStylingProps = {
-  size?: Size;
-  variant?: Variant;
-};
-
-const getDefaultProps: (
-  props: DatepickerStylingProps
-) => Required<DatepickerStylingProps> = ({ size, variant }) => {
-  if (size && variant) return { size, variant };
-  const defaultVariant: Variant =
-    useBreakpointValue({
-      base: "mobile",
-      sm: "desktop",
-      md: "desktop",
-      lg: "desktop",
-    }) || "mobile";
-  const defaultSize: Size =
-    useBreakpointValue({
-      base: "sm",
-      sm: "lg",
-      md: "lg",
-      lg: "lg",
-    }) || "sm";
-  if (size && !variant) return { size, variant: defaultVariant };
-  if (variant && !size) return { variant, size: defaultSize };
-  return { size: defaultSize, variant: defaultVariant };
-};
-
 type DatepickerProps = DatepickerControlProps &
-  DatepickerStylingProps &
-  BoxProps;
+  BoxProps & {
+    size?: "sm" | "lg";
+  };
 
+/**  */
 export const Datepicker = ({
   value,
   onChange,
   defaultValue,
-  size: sizeProp,
-  variant: variantProp,
+  size,
   ...boxProps
 }: DatepickerProps) => {
-  const { size, variant } = getDefaultProps({
-    size: sizeProp,
-    variant: variantProp,
+  const formControlProps = useFormControl(boxProps);
+  const styles = useMultiStyleConfig("Datepicker", {
+    size,
+    ...formControlProps,
   });
-  const styles = useMultiStyleConfig("Datepicker", { size, variant });
 
   return (
     <DatepickerProvider
@@ -75,7 +45,7 @@ export const Datepicker = ({
       <Box {...boxProps}>
         <Popover placement="bottom-start">
           <StylesProvider value={styles}>
-            <DateInput variant={variant} />
+            <DateInput />
             <Portal>
               <PopoverContent>
                 <Calendar />

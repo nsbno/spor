@@ -4,6 +4,8 @@ import {
   PartsStyleInterpolation,
   PartsStyleObject,
 } from "@chakra-ui/theme-tools";
+import { colors } from "../foundations";
+import { getBoxShadowString } from "../utils/box-shadow-utils";
 
 const parts = anatomy("datepicker").parts(
   "input",
@@ -15,37 +17,16 @@ const parts = anatomy("datepicker").parts(
   "button"
 );
 
-const elementStateStyles = {
-  _hover: {
-    borderStyle: "solid",
-    borderWidth: "2px",
-    borderColor: "alias.osloGrey",
-  },
-  _focus: {
-    borderStyle: "solid",
-    borderWidth: "2px",
-    borderColor: "alias.greenHaze",
-  },
-  _active: {
-    backgroundColor: "alias.mint",
-  },
-  _disabled: {
-    color: "alias.osloGrey",
-    border: "none",
-  },
-};
-
 const baseStyle: PartsStyleObject<typeof parts> = {
   input: {
-    ...elementStateStyles,
+    borderRadius: "sm",
+    borderRightRadius: ["none", "sm"],
   },
   calendarButton: {
-    borderStyle: "solid",
-    borderWidth: "1px",
     borderRadius: "sm",
     borderLeftRadius: 0,
     padding: "1rem",
-    ...elementStateStyles,
+    boxShadow: getBoxShadowString({ borderColor: colors.alias.darkGrey }),
   },
   calendar: {
     backgroundColor: "alias.white",
@@ -70,7 +51,53 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     backgroundColor: "alias.white",
     color: "alias.darkGrey",
     borderRadius: "50%",
-    ...elementStateStyles,
+    borderStyle: "solid",
+    transition: ".1s ease-in-out",
+    userSelect: "none",
+
+    _selected: {
+      backgroundColor: "alias.pine",
+      color: "alias.white",
+    },
+
+    _hover: {
+      boxShadow: getBoxShadowString({
+        borderWidth: 2,
+        borderColor: colors.alias.osloGrey,
+      }),
+    },
+    _focus: {
+      boxShadow: getBoxShadowString({
+        borderWidth: 2,
+        borderColor: colors.alias.greenHaze,
+      }),
+    },
+    "&:focus:not(:focus-visible)": {
+      boxShadow: "none",
+      _hover: {
+        boxShadow: getBoxShadowString({
+          borderWidth: 2,
+          borderColor: colors.alias.osloGrey,
+        }),
+      },
+      _active: {
+        color: "alias.darkGrey",
+      },
+    },
+    _focusVisible: {
+      boxShadow: getBoxShadowString({
+        borderWidth: 2,
+        borderColor: colors.alias.greenHaze,
+      }),
+    },
+    _active: {
+      backgroundColor: "alias.mint",
+    },
+    _disabled: {
+      color: "alias.osloGrey",
+      boxShadow: "none",
+      pointerEvents: "none",
+    },
   },
 };
 
@@ -123,20 +150,13 @@ const sizes: Record<string, PartsStyleInterpolation<typeof parts>> = {
   },
 };
 
-const variants: Record<string, PartsStyleInterpolation<typeof parts>> = {
-  mobile: {
-    input: {
-      borderRightRadius: 0,
-    },
-  },
-};
-
 const Datepicker: ComponentMultiStyleConfig = {
   parts: parts.keys,
-  defaultProps: {},
+  defaultProps: {
+    size: "sm",
+  },
   baseStyle: baseStyle,
   sizes,
-  variants,
 };
 
 export default Datepicker;

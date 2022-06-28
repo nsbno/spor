@@ -22,14 +22,14 @@ export const Day = ({ dayLabel, date, isDisabled = false }: DayProps) => {
   return (
     <GridItem>
       <Button
+        aria-selected={isSelected}
+        data-is-selected={isSelected}
         onClick={onClick}
         onKeyDown={onKeyDown}
         onMouseEnter={onMouseEnter}
         tabIndex={tabIndex}
         ref={dayRef}
         __css={styles.button}
-        backgroundColor={isSelected ? "alias.pine" : undefined}
-        color={isSelected ? "alias.white" : undefined}
         border={isToday ? `solid 1px ${osloGrey}` : undefined}
         disabled={isDisabled}
       >

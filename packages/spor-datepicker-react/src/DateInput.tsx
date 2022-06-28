@@ -4,6 +4,8 @@ import {
   InputRightAddon,
   PopoverAnchor,
   PopoverTrigger,
+  useBreakpoint,
+  useFormControl,
   useStyles,
 } from "@chakra-ui/react";
 import { IconButton } from "@vygruppen/spor-button-react";
@@ -11,14 +13,14 @@ import { useTranslation } from "@vygruppen/spor-i18n-react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import { Input } from "@vygruppen/spor-input-react";
 import React, { ChangeEventHandler } from "react";
-import { DatepickerStylingProps } from "./Datepicker";
 import { isValidDateObject } from "./datepicker-utils";
 import { useDatepicker } from "./DatepickerContext";
 
-export const DateInput = ({ variant }: DatepickerStylingProps) => {
+export const DateInput = () => {
   const { selectedDate, setSelectedDate } = useDatepicker();
   const styles = useStyles();
   const { t } = useTranslation();
+  const formControlProps = useFormControl({});
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     const date = new Date(event.target.value);
@@ -27,17 +29,20 @@ export const DateInput = ({ variant }: DatepickerStylingProps) => {
     }
   };
 
+  const breakpoint = useBreakpoint("base");
+
   return (
     <InputGroup>
       <Flex>
-        {variant === "mobile" ? (
+        {breakpoint === "base" ? (
           <>
             <PopoverAnchor>
               <Input
+                aria-invalid={formControlProps["aria-invalid"]}
                 label={t(texts.date)}
                 value={selectedDate?.toLocaleDateString()}
                 onChange={handleChange}
-                __css={styles.input}
+                sx={styles.input}
               />
             </PopoverAnchor>
             <InputRightAddon>
@@ -46,7 +51,7 @@ export const DateInput = ({ variant }: DatepickerStylingProps) => {
                   variant="additional"
                   icon={<CalendarOutline24Icon />}
                   aria-label={t(texts.calendar)}
-                  __css={styles.calendarButton}
+                  sx={styles.calendarButton}
                 />
               </PopoverTrigger>
             </InputRightAddon>
@@ -54,11 +59,12 @@ export const DateInput = ({ variant }: DatepickerStylingProps) => {
         ) : (
           <PopoverTrigger>
             <Input
+              aria-invalid={formControlProps["aria-invalid"]}
               leftIcon={<CalendarOutline24Icon />}
               label={t(texts.date)}
               value={selectedDate?.toLocaleDateString()}
               onChange={handleChange}
-              __css={styles.input}
+              sx={styles.input}
             />
           </PopoverTrigger>
         )}

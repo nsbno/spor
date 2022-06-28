@@ -5,6 +5,7 @@ import {
   AccordionItemProps,
   AccordionPanel,
   Box,
+  Flex,
 } from "@chakra-ui/react";
 import React from "react";
 import { Accordion, AccordionProps } from "./Accordion";
@@ -17,6 +18,12 @@ type ExpandableProps = AccordionProps & {
   title: React.ReactNode;
   /** The semantic heading level of the toggle button */
   headingLevel?: HeadingLevel;
+  /**
+   * Icon shown to the left of the title
+   *
+   * Make sure it's the 30px outlined version of the icon
+   */
+  leftIcon?: React.ReactNode;
 };
 /**
  * A standalone expandable component.
@@ -34,11 +41,17 @@ export const Expandable = ({
   children,
   headingLevel,
   title,
+  leftIcon,
   ...rest
 }: ExpandableProps) => {
+  console.log(leftIcon);
   return (
     <Accordion {...rest}>
-      <ExpandableItem headingLevel={headingLevel} title={title}>
+      <ExpandableItem
+        headingLevel={headingLevel}
+        title={title}
+        leftIcon={leftIcon}
+      >
         {children}
       </ExpandableItem>
     </Accordion>
@@ -46,9 +59,18 @@ export const Expandable = ({
 };
 
 export type ExpandableItemProps = AccordionItemProps & {
+  /** The hidden content */
   children: React.ReactNode;
+  /** The title that's shown inside the toggle button */
   title: React.ReactNode;
+  /** The semantic heading level of the toggle button */
   headingLevel?: HeadingLevel;
+  /**
+   * Icon shown to the left of the title
+   *
+   * Make sure it's the 30px outlined version of the icon
+   */
+  leftIcon?: React.ReactNode;
 };
 /**
  * An item in a set of Expandables. Must be wrapped in an `<Accordion>` component.
@@ -70,13 +92,17 @@ export const ExpandableItem = ({
   children,
   title,
   headingLevel = "h3",
+  leftIcon,
   ...rest
 }: ExpandableItemProps) => {
   return (
     <AccordionItem {...rest}>
       <Box as={headingLevel}>
         <AccordionButton>
-          {title}
+          <Flex>
+            {leftIcon && <Box mr={2}>{leftIcon}</Box>}
+            {title}
+          </Flex>
           <AccordionIcon />
         </AccordionButton>
       </Box>

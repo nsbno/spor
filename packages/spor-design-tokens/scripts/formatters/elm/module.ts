@@ -1,18 +1,27 @@
-import { Format } from "style-dictionary";
-import { Named } from "style-dictionary/types/_helpers";
+import { Format, Named, formatHelpers } from "style-dictionary";
 
 export const elmFormatter: Named<Format> = {
   name: "elm/module",
-  formatter: ({ dictionary }) => {
+  formatter: function(opts) {
+    const fileHeader = formatHelpers.fileHeader({
+      file: opts.file,
+      formatting: {
+        prefix: defaultIndentation,
+        lineSeparator: '\n',
+        header: '{-\n',
+        footer: '\n-}'
+      }
+    });
+    
     return [
       "module Vy.Spor.DesignTokens exposing (tokens)",
       "",
-      "-- This file is auto generated. Do not edit directly.",
+      fileHeader,
       "",
       "tokens =",
       defaultIndentation +
         "{ " +
-        jsonToRecord(dictionary.properties, defaultIndentation) +
+        jsonToRecord(opts.dictionary.properties, defaultIndentation) +
         defaultIndentation +
         "}",
     ].join("\n");

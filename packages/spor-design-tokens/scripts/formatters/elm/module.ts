@@ -1,9 +1,15 @@
-import { Format, Named, formatHelpers } from "style-dictionary";
+import { Format, Named, TransformedToken, formatHelpers } from "style-dictionary";
 
 export const elmFormatter: Named<Format> = {
   name: "elm/module",
   formatter: function({ dictionary, file }) {
     const moduleName = generateModuleName(file.destination);
+
+    const exposing = dictionary
+      .allProperties
+      .map((prop) => prop.name)
+      .join(', ');
+    
     const fileHeader = formatHelpers.fileHeader({
       file: file,
       formatting: {
@@ -15,7 +21,7 @@ export const elmFormatter: Named<Format> = {
     });
     
     return [
-      `module ${moduleName} exposing (tokens)`,
+      `module ${moduleName} exposing (${exposing})`,
       "",
       fileHeader,
       "",

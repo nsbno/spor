@@ -1,24 +1,38 @@
 {
-    "type": "application",
-    "source-directories": [
-        "elmsrc"
-    ],
-    "elm-version": "0.19.1",
+    "type": "package",
+    "name": "vygruppen/spor-design-tokens-elm",
+    "version": "1.0.0",
+    "summary": "Design tokens for vy elm applications",
+    "license": "BSD-3-Clause",
+    "elm-version": "0.19.1 <= v < 0.20.0",
     "dependencies": {
-        "direct": {
-            "elm/browser": "1.0.2",
-            "elm/core": "1.0.5",
-            "elm/html": "1.0.0"
-        },
-        "indirect": {
-            "elm/json": "1.1.3",
-            "elm/time": "1.0.0",
-            "elm/url": "1.0.0",
-            "elm/virtual-dom": "1.0.2"
-        }
+        "elm/browser": "1.0.0 <= v < 2.0.0",
+        "elm/core": "1.0.0 <= v < 2.0.0",
+        "elm/html": "1.0.0 <= v < 2.0.0"
     },
     "test-dependencies": {
-        "direct": {},
-        "indirect": {}
-    }
+    },
+    "exposed-modules": [
+        "Vy.Spor.Token.Asset.Font",
+        "Vy.Spor.Token.Color.Alias",
+        "Vy.Spor.Token.Color.Background",
+        "Vy.Spor.Token.Color.Detail",
+        "Vy.Spor.Token.Color.Error",
+        "Vy.Spor.Token.Color.Linjetag",
+        "Vy.Spor.Token.Color.Main",
+        "Vy.Spor.Token.Color.Outline",
+        "Vy.Spor.Token.Color.Palette",
+        "Vy.Spor.Token.Color.Product",
+        "Vy.Spor.Token.Color.Text",
+        "Vy.Spor.Token.Depth.Shadow",
+        "Vy.Spor.Token.Depth.ZIndex",
+        "Vy.Spor.Token.Font.Style",
+        "Vy.Spor.Token.Font.Family",
+        "Vy.Spor.Token.Size.BorderRadius",
+        "Vy.Spor.Token.Size.Breakpoint",
+        "Vy.Spor.Token.Size.LineHeight",
+        "Vy.Spor.Token.Size.Spacing",
+        "Vy.Spor.Token.Size.Stroke",
+        "Vy.Spor.Token.Time.Transition"
+    ]
 }

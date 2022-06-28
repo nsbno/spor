@@ -42,6 +42,10 @@ ${variables.interfaces};
 const ${variables.componentName} = (${variables.props}) => (
   ${variables.jsx}
 );
+
+if (process.env.NODE_ENV !== "production") {
+  ${variables.componentName}.displayName = "${variables.componentName}";
+}
  
 ${variables.exports};
 `;

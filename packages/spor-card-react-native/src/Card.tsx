@@ -75,7 +75,7 @@ export const Card = ({
   size = "lg",
   ...props
 }: CardProps) => {
-  const restyleProps: Record<string, any> = { ...props, size };
+  const restyleProps = { ...props, size };
   const [isPressed, setPressed] = React.useState(false);
   const isPressable = onPress !== undefined;
 

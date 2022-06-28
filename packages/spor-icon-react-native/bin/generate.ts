@@ -112,7 +112,7 @@ async function generateComponent(iconData: IconData) {
       },
       native: true,
       replaceAttrValues: {
-        "#2B2B2C": "currentColor",
+        '#2B2B2C': `{props.color ?? "#2B2B2C"}`,
       },
     },
     {

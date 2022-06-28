@@ -21,7 +21,10 @@ type ExpandableProps = AccordionProps & {
   /**
    * Icon shown to the left of the title
    *
-   * Make sure it's the 30px outlined version of the icon
+   * Make sure it's the outlined version of the icon.
+   *
+   * If the size is set to `sm` or `md` the icon should be 24px.
+   * If the size is set to `lg`, the icon should be 30px.
    */
   leftIcon?: React.ReactNode;
 };
@@ -42,11 +45,12 @@ export const Expandable = ({
   headingLevel,
   title,
   leftIcon,
+  size = "md",
   ...rest
 }: ExpandableProps) => {
-  console.log(leftIcon);
+  verifyIconAndSize({ icon: leftIcon, size });
   return (
-    <Accordion {...rest}>
+    <Accordion {...rest} size={size}>
       <ExpandableItem
         headingLevel={headingLevel}
         title={title}
@@ -56,6 +60,46 @@ export const Expandable = ({
       </ExpandableItem>
     </Accordion>
   );
+};
+
+type VerifyIconAndSizeArgs = {
+  icon: any;
+  size: AccordionProps["size"];
+};
+const verifyIconAndSize = ({ icon, size }: VerifyIconAndSizeArgs) => {
+  if (process.env.NODE_ENV !== "production") {
+    const displayName = icon?.type?.render?.displayName;
+    if (!displayName) {
+      return;
+    }
+    if (displayName.includes("Fill")) {
+      console.warn(
+        `You passed a filled icon. This component requires outlined icons. You passed ${displayName}, replace it with ${displayName.replace(
+          "Fill",
+          "Outline"
+        )}.`
+      );
+      return;
+    }
+    if (size === "lg" && !displayName.includes("30Icon")) {
+      console.warn(
+        `The icon you passed was of the wrong size for the ${size} size. You passed ${displayName}, replace it with ${displayName.replace(
+          /(\d{2})Icon/,
+          "30Icon"
+        )}.`
+      );
+      return;
+    }
+    if (["md" || "sm"].includes(size!) && !displayName.includes("24Icon")) {
+      console.warn(
+        `The icon you passed was of the wrong size for the ${size} size. You passed ${displayName}, replace it with ${displayName.replace(
+          /(\d{2})Icon/,
+          "24Icon"
+        )}.`
+      );
+      return;
+    }
+  }
 };
 
 export type ExpandableItemProps = AccordionItemProps & {

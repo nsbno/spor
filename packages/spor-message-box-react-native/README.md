@@ -1,6 +1,6 @@
-# Message-Box (React Native)
+# Message Box (React Native)
 
-TODO: Add description
+This package contains message boxes for React Native
 
 ## Installation
 
@@ -11,9 +11,10 @@ $ npm install @vygruppen/spor-message-box-react-native
 ## Usage
 
 ```tsx
-import { } from "@vygruppen/spor-message-box-react-native";
+import { MessageBox } from "@vygruppen/spor-message-box-react-native";
 ```
-TODO: Add usage description
+
+For more usage description, please refer to the documentation page.
 
 ## Development
 

@@ -41,6 +41,7 @@ export default {
       ]
     },
     "elm": {
+      "buildPath": "elm/Spor/Token/",
       "transforms": [
         "name/cti/camel",
         "attribute/cti",
@@ -50,9 +51,10 @@ export default {
       "files": tokens.map(tokenFile => {
         const category = pascalCase(tokenFile.category);
         const type = pascalCase(tokenFile.type);
+        
         return {
           "format": "elm/module",
-          "destination": `elm/Vy/Spor/Token/${category}/${type}.elm`,
+          "destination": `${category}/${type}.elm`,
           "filter": {
             "attributes": {
                "category": tokenFile.category,

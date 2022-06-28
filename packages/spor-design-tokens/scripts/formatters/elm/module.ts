@@ -65,8 +65,6 @@ function encodeValue(value: any, indentation: String): String {
 const defaultIndentation = "    ";
 
 function elmify(str: String): String {
-  str = unSnake(str);
-
   // reserved keywords
   if (str === "type") {
     return "type_";
@@ -80,21 +78,3 @@ function elmify(str: String): String {
   return str;
 }
 
-function unSnake(str: String) {
-  for (let idx = str.indexOf("-"); idx >= 0; idx = str.indexOf("-")) {
-    str = removeCharByIdx(str, idx);
-    str = upperCaseAtIdx(str, idx);
-  }
-
-  return str;
-}
-
-function removeCharByIdx(str: String, idx: number): String {
-  return str.substring(0, idx) + str.substring(idx + 1);
-}
-
-function upperCaseAtIdx(str: String, idx: number): String {
-  return (
-    str.substring(0, idx) + str[idx].toUpperCase() + str.substring(idx + 1)
-  );
-}

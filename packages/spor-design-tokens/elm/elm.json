@@ -1,19 +1,12 @@
 {
     "type": "package",
     "name": "vygruppen/spor-design-tokens-elm",
-    "version": "1.0.0",
     "summary": "Design tokens for vy elm applications",
     "license": "BSD-3-Clause",
-    "elm-version": "0.19.1 <= v < 0.20.0",
-    "dependencies": {
-        "elm/browser": "1.0.0 <= v < 2.0.0",
-        "elm/core": "1.0.0 <= v < 2.0.0",
-        "elm/html": "1.0.0 <= v < 2.0.0"
-    },
-    "test-dependencies": {
-    },
+    "version": "1.0.0",
     "exposed-modules": [
         "Spor.Token.Asset.Font",
+        "Spor.Token.Color",
         "Spor.Token.Color.Alias",
         "Spor.Token.Color.Background",
         "Spor.Token.Color.Detail",
@@ -34,5 +27,13 @@
         "Spor.Token.Size.Spacing",
         "Spor.Token.Size.Stroke",
         "Spor.Token.Time.Transition"
-    ]
+    ],
+    "elm-version": "0.19.1 <= v < 0.20.0",
+    "dependencies": {
+        "elm/browser": "1.0.0 <= v < 2.0.0",
+        "elm/core": "1.0.0 <= v < 2.0.0",
+        "elm/html": "1.0.0 <= v < 2.0.0",
+        "rtfeldman/elm-css": "17.1.1 <= v < 18.0.0"
+    },
+    "test-dependencies": {}
 }

@@ -33,15 +33,6 @@ export const buttonVariants = {
     borderColor: "blackAlpha.400",
     borderStyle: "solid",
   },
-  ghost: {
-    backgroundColor: "transparent",
-    color: "darkGrey",
-    fontWeight: "normal",
-  },
-  disabled: {
-    backgroundColor: "silver",
-    color: "white",
-  },
 };
 
 export const buttonSizes = {

@@ -7,18 +7,37 @@ import {
   VariantProps,
 } from "@shopify/restyle";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
-import React from "react";
-import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
+import { LightInlineLoader } from "@vygruppen/spor-loader-react-native";
+import React, { useState } from "react";
+import {
+  Platform,
+  Pressable,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextStyle,
+  ViewStyle,
+} from "react-native";
+import tokens from "@vygruppen/spor-design-tokens";
+import { Box } from "@vygruppen/spor-layout-react-native";
+
+const variants = createVariant({
+  themeKey: "buttonVariants",
+  property: "variant",
+});
+
+type ButtonVariant =
+  | "primary"
+  | "control"
+  | "secondary"
+  | "tertiary"
+  | "additional";
 
 type RestyleProps = SpacingProps<Theme> &
   VariantProps<Theme, "buttonVariants", "variant"> &
   VariantProps<Theme, "buttonSizes", "size">;
 
 const sizes = createVariant({ themeKey: "buttonSizes", property: "size" });
-const variants = createVariant({
-  themeKey: "buttonVariants",
-  property: "variant",
-});
 
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacing,
@@ -26,50 +45,118 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   variants,
 ]);
 
-type Props = RestyleProps & {
+const ANDROID_VERSION_LOLLIPOP = 21;
+const ANDROID_SUPPORTS_RIPPLE =
+  Platform.OS === "android" && Platform.Version >= ANDROID_VERSION_LOLLIPOP;
+
+type ButtonProps = Exclude<RestyleProps, "variant"> & {
+  variant: ButtonVariant;
   onPress: () => void;
-  children: React.ReactNode;
-  isDisabled?: boolean;
+  children: string;
+  disabled?: boolean;
   isLoading?: boolean;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
+  accessibilityLabel?: string;
 };
 
 /** A button. */
 export const Button = ({
+  variant,
   onPress,
-  children,
-  isDisabled = false,
+  disabled = false,
   isLoading = false,
-  leftIcon,
-  rightIcon,
+  accessibilityLabel,
+  children,
   ...rest
-}: Props) => {
-  if (isDisabled) {
-    rest.variant = "disabled";
-  }
-  const { style, ...viewProps } = useRestyle(restyleFunctions, rest);
+}: ButtonProps) => {
+  const [pressed, setPressed] = useState(false);
 
-  const fontSize = findProperty("fontSize", style as any[]);
-  const fontWeight = findProperty("fontWeight", style as any[]);
-  const color = findProperty("color", style as any[]);
+  const { style: restyleStyle } = useRestyle(restyleFunctions, {
+    variant,
+    ...rest,
+  });
+  const activeStyle = pressed ? getActiveStyle(variant) : {};
+  const disabledAndLoadingStyle =
+    disabled || isLoading ? getDisabledAndLoadingStyle() : {};
+
+  const style = [
+    restyleStyle,
+    activeStyle,
+    disabledAndLoadingStyle,
+  ] as StyleProp<TextStyle>;
+
+  const flatStyles = StyleSheet.flatten(style);
+  const fontSize = flatStyles.fontSize;
+  const fontWeight = flatStyles.fontWeight;
+  const color = flatStyles.color;
+  const backgroundColor = flatStyles.backgroundColor;
 
   return (
-    <TouchableOpacity onPress={onPress} disabled={isDisabled}>
-      <View style={style as any} {...viewProps}>
-        {isLoading ? (
-          <ActivityIndicator color={color} />
-        ) : (
-          <Text style={{ color, fontSize, fontWeight }}>{children}</Text>
-        )}
-      </View>
-    </TouchableOpacity>
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ disabled }}
+      onPressIn={() => setPressed(true)}
+      onPressOut={() => setPressed(false)}
+      onPress={onPress}
+      disabled={disabled}
+      accessibilityLabel={accessibilityLabel}
+      style={style}
+      android_ripple={
+        ANDROID_SUPPORTS_RIPPLE
+          ? {
+              color: backgroundColor,
+            }
+          : undefined
+      }
+      {...rest}
+    >
+      <Text style={{ color, fontSize, fontWeight, opacity: isLoading ? 0 : 1 }}>
+        {children}
+      </Text>
+      {isLoading && (
+        <Box
+          style={{
+            position: "absolute",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <LightInlineLoader height={"75%"} />
+        </Box>
+      )}
+    </Pressable>
   );
 };
 
-// TODO: Make this more pretty
-const findProperty = (propertyName: string, styles: any[]) => {
-  return styles
-    .map((style) => style[propertyName])
-    .reduce((prev, next) => (next ? next : prev)) as any;
-};
+function getDisabledAndLoadingStyle(): StyleProp<TextStyle> {
+  return {
+    color: tokens.color.alias.dimGrey.value,
+    backgroundColor: tokens.color.alias.silver.value,
+    borderWidth: 0,
+  };
+}
+
+function getActiveStyle(variant: ButtonVariant): StyleProp<ViewStyle> {
+  switch (variant) {
+    case "primary":
+      return {
+        backgroundColor: tokens.color.alias.azure.value,
+      };
+    case "control":
+      return {
+        backgroundColor: tokens.color.alias.pine.value,
+      };
+    case "tertiary":
+      return {
+        backgroundColor: tokens.color.alias.lightGrey.value,
+      };
+    case "additional":
+      return {
+        backgroundColor: tokens.color.alias.mint.value,
+        borderColor: tokens.color.alias.darkGrey.value,
+      };
+    default:
+      return {
+        backgroundColor: tokens.color.alias.mint.value,
+      };
+  }
+}

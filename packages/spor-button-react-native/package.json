@@ -19,7 +19,9 @@
     "dev": "tsup src/index.tsx --watch"
   },
   "dependencies": {
-    "@vygruppen/spor-theme-react-native": "*"
+    "@vygruppen/spor-theme-react-native": "*",
+    "@vygruppen/spor-design-tokens": "*",
+    "@vygruppen/spor-loader-react-native": "*"
   },
   "devDependencies": {
     "react": ">17.0.0",

@@ -46,7 +46,7 @@ export default {
         "attribute/cti",
         "name/elm",
         "size/px",
-        "color/hex"
+        "color/css"
       ],
       "files": tokens.map(tokenFile => {
         const category = pascalCase(tokenFile.category);

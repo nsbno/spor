@@ -16,7 +16,7 @@ export const getBoxShadowString = ({
   const allShadows: string[] = [];
 
   if (borderColor) {
-    allShadows.push(`0 0 0 ${borderWidth}px ${borderColor}`);
+    allShadows.push(`inset 0 0 0 ${borderWidth}px ${borderColor}`);
   }
   if (baseShadow) {
     allShadows.push(shadows[baseShadow]);

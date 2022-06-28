@@ -2,9 +2,10 @@ import { Format, Named, formatHelpers } from "style-dictionary";
 
 export const elmFormatter: Named<Format> = {
   name: "elm/module",
-  formatter: function(opts) {
+  formatter: function({ dictionary, file }) {
+    const moduleName = generateModuleName(file.destination);
     const fileHeader = formatHelpers.fileHeader({
-      file: opts.file,
+      file: file,
       formatting: {
         prefix: defaultIndentation,
         lineSeparator: '\n',
@@ -14,19 +15,25 @@ export const elmFormatter: Named<Format> = {
     });
     
     return [
-      "module Vy.Spor.DesignTokens exposing (tokens)",
+      `module ${moduleName} exposing (tokens)`,
       "",
       fileHeader,
       "",
       "tokens =",
       defaultIndentation +
         "{ " +
-        jsonToRecord(opts.dictionary.properties, defaultIndentation) +
+        jsonToRecord(dictionary.properties, defaultIndentation) +
         defaultIndentation +
         "}",
     ].join("\n");
   },
 };
+
+const moduleNamePrefix = 'Spor.Token.';
+
+function generateModuleName(file: string): string {
+  return moduleNamePrefix + file.replace('\.elm', '').replace('\/', '\.');
+}
 
 function jsonToRecord(object: any, indentation: String): String {
   let result = "";
@@ -86,4 +93,3 @@ function elmify(str: String): String {
 
   return str;
 }
-

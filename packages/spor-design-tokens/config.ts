@@ -60,6 +60,10 @@ export default {
                "category": tokenFile.category,
                "type": tokenFile.type
             }
+          },
+          "options": {
+            "category": category,
+            "type": type
           }
         };
       })

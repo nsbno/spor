@@ -14,7 +14,8 @@ import { Box } from "@vygruppen/spor-layout-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 import { Text } from '@vygruppen/spor-typography-react-native';
 import { Pressable } from 'react-native';
-import { DropdownDownFill24Icon } from '@vygruppen/spor-icon-react-native';
+import { ExpandableItem } from './ExpandableItem';
+//import { DropdownDownFill24Icon } from '@vygruppen/spor-icon-react-native';
 
 
 type Variant = VariantProps<Theme, "expandableVariant", "variant">;
@@ -64,9 +65,10 @@ export const Expandable = ({
     < Box style={style as any} {...props}>
       {leftIcon && leftIcon
       }
-      <Box mr={2}>
+      <Box mr={2} >
         <Text variant="md" fontWeight="bold" > {label}</Text>
         <Pressable onPress={handleToggleIsExpanded}>
+          {true && (<ExpandableItem>{children}</ExpandableItem>)}
         </Pressable>
       </Box>
     </Box >

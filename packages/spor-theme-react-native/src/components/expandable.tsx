@@ -3,32 +3,34 @@ export const expandableVariant = {
     defaults: {
         borderRadius: "sm",
         padding: 2,
+    },
+
+    outline: {
+        backgroundColor: "mint",
+    },
+    card: {
+        boxShadow: "sm"
 
     },
-    text: {
-        selected: {
-            backgroundColor: "mint",
 
-        }
+}
+export const expandableVariantPressed = {
+    defaults: {
+        borderRadius: "sm",
+        padding: 2,
+        backgroundColor: "mint",
 
     },
+
     outline: {
         border: "sm",
-        borderColor: "lightBlue",
+        borderColor: "dimGrey",
         borderWidth: 2,
     },
     card: {
-        defaults: { elevation: 2 },
-
-        selected: {
-            backgroundColor: "mint",
-            borderColor: "darkGrey",
-            elevation: 2
-        }
+        borderRadius: "sm",
+        boxShadow: "sm"
     },
-
-
-
 }
 
 export const expandableSize = {

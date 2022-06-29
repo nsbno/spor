@@ -29,7 +29,7 @@ export const elmFormatter: Named<Format> = {
         const definitions = moduleType.definitions().concat(
             dictionary
                 .allProperties
-                .map((prop) => generateElmConstant(prop, moduleType))
+                .map((prop) => moduleType.generateElmConstant(prop))
                 .flat()
         );
 
@@ -50,17 +50,23 @@ function generateModuleName(options: any): string {
     return `${moduleNamePrefix}.${options.category}.${options.type}`;
 }
 
+
+type ModuleWrappedType = {
+    name: string;
+    construct: (input: string) => string;
+};
+
 class ModuleType {
     name: string;
-    wrappedType: ModuleTypeConstruction;
+    wrappedType: ModuleWrappedType;
 
-    constructor(name: string, wrappedType: ModuleTypeConstruction) {
+    constructor(name: string, wrappedType: ModuleWrappedType) {
         this.name = name;
         this.wrappedType = wrappedType;
     }
 
     imports(): Array<string> {
-        const wrapped = this.wrappedType.innerType;
+        const wrapped = this.wrappedType.name;
 
         if (['Int', 'Float', 'String'].includes(wrapped)) {
             return [];
@@ -77,16 +83,13 @@ class ModuleType {
     }
 
     unwrapperName(): string {
-        const wrapped = this.wrappedType.innerType;
+        const wrapped = this.wrappedType.name;
 
-        let unwrapper = 'toCss';
-
-        if (wrapped === 'Int') {
-            unwrapper = 'toInt';
-        } else if (wrapped === 'Float') {
-            unwrapper = 'toFloat';
-        } else if (wrapped === 'String') {
-            unwrapper = 'toString';
+        let unwrapper;
+        if (['Int', 'Float', 'String'].includes(wrapped)) {
+            unwrapper = `to${wrapped}`;
+        } else {
+            unwrapper = 'toCss';
         }
 
         return unwrapper;
@@ -98,43 +101,50 @@ class ModuleType {
         return [
             '{-| -}',
             `type ${this.name} =`,
-                `${defaultIndentation}${this.name} ${this.wrappedType.innerType}`,
+                `${defaultIndentation}${this.name} ${this.wrappedType.name}`,
             '',
-            `{-| Convert ${this.name} into a ${this.wrappedType.innerType} -}`,
-            `${unwrapperName} : ${this.name} -> ${this.wrappedType.innerType}`,
+            `{-| Convert ${this.name} into a ${this.wrappedType.name} -}`,
+            `${unwrapperName} : ${this.name} -> ${this.wrappedType.name}`,
             `${unwrapperName} (${this.name} value) =`,
                 `${defaultIndentation}value`,
             ''
         ];
     }
+
+    generateElmConstant(token: TransformedToken): Array<string> {
+        return [
+            `{-| ${token.comment || ''} -}`,
+            `${token.name} : ${this.name}`,
+            `${token.name} =`,
+                `${defaultIndentation}${this.name} <| ${this.wrappedType.construct(token.value)}`,
+            '',
+            ''
+        ];
+    }
 };
 
-type ModuleTypeConstruction = {
-    innerType: string;
-    construct: (input: string) => string;
-};
 
-const intTypeConstruction: ModuleTypeConstruction = {
-    innerType: 'Int',
+const intTypeConstruction: ModuleWrappedType = {
+    name: 'Int',
     construct(input: string): string {
         return input;
     }
 };
 
-const floatTypeConstruction: ModuleTypeConstruction = {
-    innerType: 'Float',
+const floatTypeConstruction: ModuleWrappedType = {
+    name: 'Float',
     construct(input: string): string {
         return input;
     }
 };
 
-const stringTypeConstruction: ModuleTypeConstruction = {
-    innerType: 'String',
+const stringTypeConstruction: ModuleWrappedType = {
+    name: 'String',
     construct: asString
 };
 
-const colorTypeConstruction: ModuleTypeConstruction = {
-    innerType: 'Css.Color',
+const colorTypeConstruction: ModuleWrappedType = {
+    name: 'Css.Color',
     construct: colorConstructor
 };
 
@@ -150,8 +160,8 @@ function colorConstructor(input: string): string {
     throw new Error(`Don\'t know how to handle this color value: ${input}`);
 }
 
-const pxTypeConstruction: ModuleTypeConstruction = {
-    innerType: 'Css.Px',
+const pxTypeConstruction: ModuleWrappedType = {
+    name: 'Css.Px',
     construct: sizeConstructor
 };
 
@@ -166,8 +176,8 @@ function sizeConstructor(input: string): string {
     throw new Error(`Don\'t know how to handle this size value: ${input}`);
 }
 
-const shadowTypeConstruction: ModuleTypeConstruction = {
-    innerType: 'Css.Style',
+const shadowTypeConstruction: ModuleWrappedType = {
+    name: 'Css.Style',
 
     construct(input: string): string {
         const rgbaRegex = /rgba\(.*\)/;
@@ -190,7 +200,7 @@ const shadowTypeConstruction: ModuleTypeConstruction = {
     }
 };
 
-const moduleTypeInnerType: Map<string, ModuleTypeConstruction> = new Map([
+const moduleTypeInnerType: Map<string, ModuleWrappedType> = new Map([
     ['Alias', colorTypeConstruction],
     ['Background', colorTypeConstruction],
     ['Detail', colorTypeConstruction],
@@ -212,21 +222,7 @@ const moduleTypeInnerType: Map<string, ModuleTypeConstruction> = new Map([
 
 function generateModuleType(options: any): ModuleType {
     const wrappedType = moduleTypeInnerType.get(options.type) || stringTypeConstruction;
-
     return new ModuleType(options.type, wrappedType);
-}
-
-function generateElmConstant(token: TransformedToken, moduleType: ModuleType): Array<string> {
-    const name = token.name;
-
-    return [
-        `{-| ${token.comment || ''} -}`,
-        `${name} : ${moduleType.name}`,
-        `${name} =`,
-            `${defaultIndentation}${moduleType.name} <| ${moduleType.wrappedType.construct(token.value)}`,
-        '',
-        ''
-    ];
 }
 
 function asString(input: any): string {

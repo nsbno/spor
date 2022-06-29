@@ -36,9 +36,9 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     outline: 0,
   },
   monthLabel: {
-    fontWeight: "bold",
     color: "alias.darkGrey",
     textStyle: ["sm", "md"],
+    fontWeight: "bold",
   },
   dayLabel: {
     textStyle: "sm",

@@ -9,8 +9,15 @@ type DayProps = {
 };
 export const Day = ({ dayLabel, date, isDisabled = false }: DayProps) => {
   const dayRef = React.useRef(null);
-  const { onClick, onKeyDown, onMouseEnter, tabIndex, isSelected, isToday } =
-    useDay(date, dayRef);
+  const {
+    onClick,
+    onKeyDown,
+    onMouseEnter,
+    tabIndex,
+    isSelected,
+    isToday,
+    disabledDate,
+  } = useDay(date, dayRef);
 
   const styles = useStyles();
   const [osloGrey] = useToken("colors", ["alias.osloGrey"]);
@@ -31,7 +38,7 @@ export const Day = ({ dayLabel, date, isDisabled = false }: DayProps) => {
         ref={dayRef}
         __css={styles.button}
         border={isToday ? `solid 1px ${osloGrey}` : undefined}
-        disabled={isDisabled}
+        disabled={isDisabled || disabledDate}
       >
         {dayLabel}
       </Button>

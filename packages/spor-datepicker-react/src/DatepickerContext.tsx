@@ -44,6 +44,8 @@ export type DatepickerControlProps = {
   value?: Date;
   onChange?: (date: Date) => void;
   defaultValue?: Date;
+  minDate?: Date;
+  maxDate?: Date;
 };
 
 export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
@@ -51,6 +53,8 @@ export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
   onChange = () => {},
   defaultValue,
   children,
+  minDate,
+  maxDate,
 }) => {
   const [selectedDate, setSelectedDate] = useState<Date>(
     value ?? defaultValue ?? new Date()
@@ -89,6 +93,8 @@ export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
     focusedInput: START_DATE,
     numberOfMonths: 1,
     onDatesChange: handleDateChange,
+    minBookingDate: minDate,
+    maxBookingDate: maxDate,
   });
   const { month, year } = activeMonths[0];
   const monthProps = {

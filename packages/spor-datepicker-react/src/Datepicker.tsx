@@ -24,6 +24,8 @@ export const Datepicker = ({
   value,
   onChange,
   defaultValue,
+  minDate,
+  maxDate,
   height = "3.5rem",
   ...boxProps
 }: DatepickerProps) => {
@@ -37,6 +39,8 @@ export const Datepicker = ({
       value={value}
       onChange={onChange}
       defaultValue={defaultValue}
+      minDate={minDate}
+      maxDate={maxDate}
     >
       <Box {...boxProps}>
         <Popover placement="bottom-start">

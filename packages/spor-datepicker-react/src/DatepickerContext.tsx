@@ -1,7 +1,9 @@
 import {
+  MonthType,
   OnDatesChangeProps,
   START_DATE,
   useDatepicker as useReactDatepicker,
+  UseDatepickerProps,
   useDay as useReactDay,
   useMonth,
 } from "@datepicker-react/hooks";
@@ -34,6 +36,7 @@ type DatepickerContextType = {
   monthLabel: string;
   previousDays: Day[];
   nextDays: Day[];
+  activeMonths: MonthType[];
 };
 
 export const DatepickerContext = React.createContext<
@@ -46,6 +49,13 @@ export type DatepickerControlProps = {
   defaultValue?: Date;
   min?: Date;
   max?: Date;
+  children: React.ReactNode;
+};
+
+type DatepickerState = {
+  startDate: Date | null;
+  endDate: Date | null;
+  focusedInput: UseDatepickerProps["focusedInput"];
 };
 
 export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
@@ -55,21 +65,40 @@ export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
   children,
   min,
   max,
-}) => {
+}: DatepickerControlProps) => {
   const [selectedDate, setSelectedDate] = useState<Date>(
     value ?? defaultValue ?? new Date()
   );
+  const [datepickerState, setDatepickerState] = useState<DatepickerState>({
+    startDate: selectedDate,
+    endDate: selectedDate,
+    focusedInput: START_DATE,
+  });
 
   useEffect(() => {
     if (isValidDateObject(value)) {
       setSelectedDate(value);
+      setDatepickerState({
+        startDate: value,
+        endDate: value,
+        focusedInput: START_DATE,
+      });
     }
   }, [value]);
 
-  const handleDateChange = ({ startDate }: OnDatesChangeProps) => {
+  const handleDateChange = ({
+    startDate,
+    endDate,
+    focusedInput,
+  }: OnDatesChangeProps) => {
     if (startDate) {
       setSelectedDate(startDate);
       onChange(startDate);
+      setDatepickerState({
+        startDate,
+        endDate,
+        focusedInput: focusedInput || START_DATE,
+      });
     }
   };
 
@@ -88,9 +117,9 @@ export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
     goToPreviousMonthsByOneMonth,
     goToNextMonthsByOneMonth,
   } = useReactDatepicker({
-    startDate: selectedDate,
-    endDate: selectedDate,
-    focusedInput: START_DATE,
+    startDate: datepickerState.startDate,
+    endDate: datepickerState.endDate,
+    focusedInput: datepickerState.focusedInput,
     numberOfMonths: 1,
     onDatesChange: handleDateChange,
     minBookingDate: min,
@@ -128,6 +157,7 @@ export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
         monthLabel,
         previousDays,
         nextDays,
+        activeMonths,
       }}
     >
       {children}
@@ -143,10 +173,11 @@ export const useDatepicker = () => {
   return context;
 };
 
-export const useDay = (
-  date: Date,
-  dayRef: React.RefObject<HTMLButtonElement> | undefined
-) => {
+type UseDayArgs = {
+  date: Date;
+  dayRef?: React.RefObject<HTMLButtonElement>;
+};
+export const useDay = ({ date, dayRef }: UseDayArgs) => {
   const {
     focusedDate,
     isDateBlocked,

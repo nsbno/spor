@@ -55,7 +55,7 @@ export const DateInput = (props: DateInputProps) => {
           <Input
             aria-invalid={formControlProps["aria-invalid"]}
             leftIcon={<CalendarOutline24Icon />}
-            label={label ?? t(texts.date)}
+            label={props.label ?? t(texts.date)}
             value={dateString}
             onChange={(e) => onDateStringChange(e.target.value)}
             onBlur={onDateSelected}

@@ -1,0 +1,35 @@
+{
+    "type": "package",
+    "name": "vygruppen/spor-design-tokens-elm",
+    "summary": "Design tokens for vy elm applications",
+    "license": "BSD-3-Clause",
+    "version": "1.0.0",
+    "exposed-modules": [
+        "Spor.Token.Color.Alias",
+        "Spor.Token.Color.Background",
+        "Spor.Token.Color.Detail",
+        "Spor.Token.Color.Error",
+        "Spor.Token.Color.Linjetag",
+        "Spor.Token.Color.Main",
+        "Spor.Token.Color.Outline",
+        "Spor.Token.Color.Palette",
+        "Spor.Token.Color.Product",
+        "Spor.Token.Color.Text",
+        "Spor.Token.Depth.Shadow",
+        "Spor.Token.Depth.ZIndex",
+        "Spor.Token.Size.BorderRadius",
+        "Spor.Token.Size.Breakpoint",
+        "Spor.Token.Size.LineHeight",
+        "Spor.Token.Size.Spacing",
+        "Spor.Token.Size.Stroke",
+        "Spor.Token.Time.Transition"
+    ],
+    "elm-version": "0.19.1 <= v < 0.20.0",
+    "dependencies": {
+        "elm/browser": "1.0.0 <= v < 2.0.0",
+        "elm/core": "1.0.0 <= v < 2.0.0",
+        "elm/html": "1.0.0 <= v < 2.0.0",
+        "rtfeldman/elm-css": "17.1.1 <= v < 18.0.0"
+    },
+    "test-dependencies": {}
+}

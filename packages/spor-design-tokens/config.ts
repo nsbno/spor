@@ -1,4 +1,7 @@
-{
+import { tokens } from './tokens';
+
+
+export default {
   "source": ["tokens/**/*.json"],
   "platforms": {
     "rn": {
@@ -38,18 +41,32 @@
       ]
     },
     "elm": {
+      "buildPath": "elm/src/Spor/Token/",
       "transforms": [
         "attribute/cti",
-        "name/cti/pascal",
+        "name/elm",
         "size/px",
-        "color/hex"
+        "color/css"
       ],
-      "files": [
-        {
+      "files": tokens.map(tokenFile => {
+        const category = pascalCase(tokenFile.category);
+        const type = pascalCase(tokenFile.type);
+        
+        return {
           "format": "elm/module",
-          "destination": "elmsrc/Vy/Spor/DesignTokens.elm"
-        }
-      ]
+          "destination": `${category}/${type}.elm`,
+          "filter": {
+            "attributes": {
+               "category": tokenFile.category,
+               "type": tokenFile.type
+            }
+          },
+          "options": {
+            "category": category,
+            "type": type
+          }
+        };
+      })
     },
     "css": {
       "transforms": [
@@ -101,3 +118,11 @@
     }
   }
 }
+
+function pascalCase(input: string): string {
+    return input.split('-')
+        .map((s) => `${s[0].toUpperCase()}${s.slice(1)}`)
+        .join('');
+
+}
+

@@ -1,0 +1,1226 @@
+Script started on Mon Jun 27 16:10:59 2022
+Welcome to fish, the friendly interactive shell
+Type [32mhelp(B[m for instructions on how to use fish
+[?2004h]7;file://bekk-mac-2715/Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mekk-mac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m> 
+[A[87C  s[A
+[C[A[86C  [91ms[A
+[C[30m(B[m[38;5;240mcript[A
+[C[30m(B[m[91mc[38;5;240mript[A
+[C[C[30m(B[m[91mr[38;5;240mipt[A
+[3C[30m(B[m[91mi[38;5;240mpt[A
+[4C[30m(B[m[91mp[38;5;240mt[A
+[5C[30m(B[m[91mt[A
+[6C[30m(B[m[A[81C  [34mscript[A
+[6C[30m(B[m[34m/[A
+[7C[30m(B[m[A[80C  [91mscript/[A
+[7C[30m(B[m
+[30m(B[m[?2004l]0;script/ ~/W/v/f/s/p/spor-design-tokens[30m(B[mfish: Unknown command: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens/script/
+[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mc-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m127(B[m[31m](B[m(B[m> 
+[A[87C  l[A
+[C[38;5;240ms[A
+[C[30m(B[m[A[86C  [91ml[38;5;240ms[A
+[C[30m(B[m[91ms[A
+[C[C[30m(B[m[A[85C  [34mls[A
+[C[C[30m(B[m[A
+[C[C
+[30m(B[m[?2004l]0;ls ~/W/v/f/s/p/spor-design-tokens[30m(B[mCHANGELOG.md   config.js      [34melmsrc[39;49m[0m/        [34mtokens[39;49m[0m/
+README.md      [34melm-stuff[39;49m[0m/     package.json   tsconfig.json
+[34massets[39;49m[0m/        elm.json       [34mscripts[39;49m[0m/       typescript
+[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mekk-mac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m> 
+[A[87C  s[A
+[C[A[86C  [91ms[A
+[C[30m(B[m[38;5;240mcript[A
+[C[30m(B[m[91mc[38;5;240mript[A
+[C[C[30m(B[m[91mr[38;5;240mipt[A
+[3C[30m(B[m
+[36m[1m[4mscr(B[meen                               ([38;5;143m[3mScreen manager with VT100/ANSI terminal emulation[30m(B[m)
+[36m[1m[4mscr(B[meencapture  ([38;5;143m[3mCapture images from the screen and save them to a file or the clipboard[30m(B[m)
+[36m[1m[4mscr(B[mipt                                             ([38;5;143m[3mMake typescript of terminal session[30m(B[m)
+[36m[1m[4mscr(B[mipts/                                                                     ([38;5;143m[3mdirectory[30m(B[m)[A[A[A[A[A
+[3C[91meen 
+[36m[1m[4m[7mscr(B[m[7meen                               ([38;5;143m[3mScreen manager with VT100/ANSI terminal emulation[30m(B[m[7m)[A[A
+[7C(B[m[A[80C  [34mscreen[30m(B[m [A
+[7Ccapture 
+[36m[1m[4mscr(B[meen                               ([38;5;143m[3mScreen manager with VT100/ANSI terminal emulation[30m(B[m)
+[36m[1m[4m[7mscr(B[m[7meencapture  ([38;5;143m[3mCapture images from the screen and save them to a file or the clipboard[30m(B[m[7m)[A[A[A
+[14C(B[m[34mcapture[30m(B[m [A
+[14C[11D[34mipt [30m(B[m[K
+
+[36m[1m[4mscr(B[meencapture  ([38;5;143m[3mCapture images from the screen and save them to a file or the clipboard[30m(B[m)
+[36m[1m[4m[7mscr(B[m[7mipt                                             ([38;5;143m[3mMake typescript of terminal session[30m(B[m[7m)[A[A[A[A
+[7C(B[m [A
+[7Cs/
+
+
+[36m[1m[4mscr(B[mipt                                             ([38;5;143m[3mMake typescript of terminal session[30m(B[m)
+[36m[1m[4m[7mscr(B[m[7mipts/                                                                     ([38;5;143m[3mdirectory[30m(B[m[7m)[A[A[A[A[A
+[8C(B[m[34ms/[A
+[8C[30m(B[m[38;5;240mformatters/[A
+[8C[30m(B[m[11C[J[A
+[8C[K[A
+[8C
+[30m(B[m[?2004l]0;scripts/ ~/W/v/f/s/p/spor-design-tokens[30m(B[m]7;file://bekk-mac-2715/Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens/scripts[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/s/scripts[30m(B[m[92mrobin(B[m@(B[mbekk-mac-2715(B[m [32m~/W/v/f/s/p/s/scripts(B[m (improve-elm-design-token-code-generation)(B[m> [K[86Cl[87C[38;5;240ms[87C[30m(B[m[91ml[38;5;240ms[87C[30m(B[m[91ms[88C[30m(B[m[34mls[88C[30m(B[m[88C
+[30m(B[m[?2004l]0;ls ~/W/v/f/s/p/s/scripts[30m(B[mREADME.md   build.ts    [34mformatters[39;49m[0m/ [34mtransforms[39;49m[0m/ [34mutils[39;49m[0m/
+[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/s/scripts[30m(B[m[92mrobin(B[m@(B[mbekk-mac-2715(B[m [32m~/W/v/f/s/p/s/scripts(B[m (improve-elm-design-token-code-generation)(B[m> [K[86Cn[87C[87C[91mn[87C[30m(B[m[91mo[88C[30m(B[m[91md
+[30m(B[m[A[87C[91mode[A
+[C[30m(B[m[A[85C[34mnode[A
+[C[30m(B[m[34m [A
+[C[C[30m(B[m [A
+[C[Cb[A
+[3C[36m[4mb[A
+[3C[30m(B[m[38;5;240muild.ts [A
+[3C[30m(B[m[36m[4mu[38;5;240m[24mild.ts [A
+[4C[30m(B[m[36m[4mi[38;5;240m[24mld.ts [A
+[5C[30m(B[m[36m[4ml[38;5;240m[24md.ts [A
+[6C[30m(B[m[36m[4md[38;5;240m[24m.ts [A
+[7C[30m(B[m[36m[4m.ts [A
+[11C[30m(B[m [A
+[11C[A
+[11C
+[30m(B[m[?2004l]0;node build.ts  ~/W/v/f/s/p/s/scripts[30m(B[m(node:59756) Warning: To load an ES module, set "type": "module" in the package.json or use the .mjs extension.
+(Use `node --trace-warnings ...` to show where the warning was created)
+/Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens/scripts/build.ts:1
+import StyleDictionaryFactory from "style-dictionary";
+^^^^^^
+
+SyntaxError: Cannot use import statement outside a module
+[90m    at Object.compileFunction (node:vm:352:18)[39m
+[90m    at wrapSafe (node:internal/modules/cjs/loader:1033:15)[39m
+[90m    at Module._compile (node:internal/modules/cjs/loader:1069:27)[39m
+[90m    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)[39m
+[90m    at node:internal/main/run_main_module:17:47[39m
+[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/s/scripts[30m(B[m…[92mbin(B[m@(B[mbekk-mac-2715(B[m [32m~/W/v/f/s/p/s/scripts(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  .[A
+[C[A[86C  [34m.[A
+[C[30m(B[m[38;5;240m [A
+[C[30m(B[m[34m.[A
+[C[C[30m(B[m[38;5;240m/[A
+[C[C[30m(B[m[K[A
+[C[C
+[30m(B[m[?2004l]0;.. ~/W/v/f/s/p/s/scripts[30m(B[m]7;file://bekk-mac-2715/Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mekk-mac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m> 
+[A[87C  n[A
+[C[A[86C  [91mn[A
+[C[30m(B[m[38;5;240mode config.js[A
+[C[30m(B[m[91mp[30m(B[m[K[A
+[C[C[38;5;240mm install -g gren-lang[A
+[C[C[30m(B[m[91mm[38;5;240m install -g gren-lang[A
+[3C[30m(B[m[A[84C  [34mnpm[38;5;240m install -g gren-lang[A
+[3C[30m(B[m[34m [38;5;240minstall -g gren-lang[A
+[4C[30m(B[m [38;5;240minstall -g gren-lang[A
+[4C[30m(B[mr[K[A
+[5C[36m[4mr[A
+[5C[30m(B[m[38;5;240mun build[A
+[5C[30m(B[m[36m[4mu[38;5;240m[24mn build[A
+[6C[30m(B[m[36mru[38;5;240mn build[A
+[6C[30m(B[m[36mn[38;5;240m build[A
+[7C[30m(B[m[36m [38;5;240mbuild[A
+[8C[30m(B[m [38;5;240mbuild[A
+[8C[30m(B[mb[38;5;240muild[A
+[9C[30m(B[m[36mb[38;5;240muild[A
+[9C[30m(B[m[36mu[38;5;240mild[A
+[10C[30m(B[m[36mi[38;5;240mld[A
+[11C[30m(B[m[36ml[38;5;240md[A
+[12C[30m(B[m[36md[A
+[13C[30m(B[m[A
+[13C
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+sh: ts-node: command not found
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  n[A
+[C[A[86C  [91mn[A
+[C[30m(B[m[38;5;240mpm run build[A
+[C[30m(B[m[91mp[38;5;240mm run build[A
+[C[C[30m(B[m[91mm[38;5;240m run build[A
+[3C[30m(B[m[A[84C  [34mnpm[38;5;240m run build[A
+[3C[30m(B[m[34m [38;5;240mrun build[A
+[4C[30m(B[m [38;5;240mrun build[A
+[4C[30m(B[mi[K[A
+[5C[38;5;240mnstall -g gren-lang[A
+[5C[30m(B[m[36mi[38;5;240mnstall -g gren-lang[A
+[5C[30m(B[m[36mn[38;5;240mstall -g gren-lang[A
+[6C[30m(B[m[K[A
+[5C[K[A
+[4Cc[A
+[5C[36m[4mc[A
+[5C[30m(B[m[38;5;240monfig.js [A
+[5C[30m(B[m[36m[4mi[30m(B[m[K[A
+[6C[36mci[A
+[6C[30m(B[m
+[30m(B[m[?2004l]0;npm ci ~/W/v/f/s/p/spor-design-tokens[30m(B[m[?25l([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠴ reify: [32;40mtiming[0m [35mnpm-ci:rm[0m Completed in 0ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:@cspotcode/source-map-consumer: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ reify:@vygruppen/spor-design-tokens: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ reify:@vygruppen/spor-design-tokens: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ reify:@vygruppen/spor-design-tokens: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:which-boxed-primitive: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:which-boxed-primitive: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:which-boxed-primitive: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠴ reify:which-boxed-primitive: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠴ reify:unbox-primitive: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.[0m[K([107;97m##########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ reify:string.prototype.padend: [32;40mtiming[0m [35mreifyNode:node_modules/stri[0m[K([107;97m##########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠴ reify:string.prototype.padend: [32;40mtiming[0m [35mreifyNode:node_modules/stri[0m[K([107;97m##########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠴ reify:object-inspect: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.o[0m[K([107;97m##########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:object-inspect: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.o[0m[K([107;97m##########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠙ reify:object-inspect: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.o[0m[K([107;97m##########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠴ reify:object-inspect: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.o[0m[K([107;97m##########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ reify:is-weakref: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/i[0m[K([107;97m###########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ reify:internal-slot: [32;40mtiming[0m [35mreifyNode:node_modules/is-boolean-obj[0m[K([107;97m###########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂[0m) ⠴ reify:es-to-primitive: [32;40mtiming[0m [35mreifyNode:node_modules/get-symbol-d[0m[K([107;97m###########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂[0m) ⠴ reify:call-bind: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/ca[0m[K([107;97m###########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ reify:call-bind: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/ca[0m[K([107;97m###########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂[0m) ⠴ reify:lodash: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/@tsco[0m[K([107;97m###########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂[0m) ⠴ reify:lodash: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/@tsco[0m[K([107;97m###########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:lodash: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/@tsco[0m[K([107;97m###########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂[0m) ⠹ reify:lodash: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/@tsco[0m[K([107;97m############[0m[100;90m⠂⠂⠂⠂⠂⠂[0m) ⠋ reify:once: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/once/-/[0m[K([107;97m############[0m[100;90m⠂⠂⠂⠂⠂⠂[0m) ⠦ reify:balanced-match: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.o[0m[K([107;97m############[0m[100;90m⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:fs.realpath: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m############[0m[100;90m⠂⠂⠂⠂⠂⠂[0m) ⠋ reify:fs.realpath: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m############[0m[100;90m⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:inherits: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pat[0m[K([107;97m############[0m[100;90m⠂⠂⠂⠂⠂⠂[0m) ⠧ reify:has-tostringtag: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.[0m[K([107;97m############[0m[100;90m⠂⠂⠂⠂⠂⠂[0m) ⠼ reify:color-name: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/c[0m[K([107;97m#############[0m[100;90m⠂⠂⠂⠂⠂[0m) ⠸ reify:color-convert: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.or[0m[K([107;97m#############[0m[100;90m⠂⠂⠂⠂⠂[0m) ⠏ reify:chalk: [32;40mtiming[0m [35mreifyNode:node_modules/ts-node[0m Completed in 1[0m[K([107;97m#############[0m[100;90m⠂⠂⠂⠂⠂[0m) ⠸ reify:supports-color: [32;40mtiming[0m [35mreifyNode:node_modules/style-diction[0m[K([107;97m#############[0m[100;90m⠂⠂⠂⠂⠂[0m) ⠴ reify:yn: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/yn/-/yn-3[0m[K([107;97m#############[0m[100;90m⠂⠂⠂⠂⠂[0m) ⠧ reify:string.prototype.trimleft: [32;40mhttp[0m [35mfetch[0m GET 200 https://regis[0m[K([107;97m##############[0m[100;90m⠂⠂⠂⠂[0m) ⠴ reify:tinycolor2: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/t[0m[K([107;97m##############[0m[100;90m⠂⠂⠂⠂[0m) ⠧ reify:v8-compile-cache-lib: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.n[0m[K([107;97m##############[0m[100;90m⠂⠂⠂⠂[0m) ⠧ reify:v8-compile-cache-lib: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.n[0m[K([107;97m##############[0m[100;90m⠂⠂⠂⠂[0m) ⠇ reify:v8-compile-cache-lib: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.n[0m[K([107;97m##############[0m[100;90m⠂⠂⠂⠂[0m) ⠦ reify:no-case: [32;40mtiming[0m [35mreifyNode:node_modules/sentence-case[0m Comple[0m[K([107;97m##############[0m[100;90m⠂⠂⠂⠂[0m) ⠏ reify:no-case: [32;40mtiming[0m [35mreifyNode:node_modules/sentence-case[0m Comple[0m[K([107;97m###############[0m[100;90m⠂⠂⠂[0m) ⠇ reify:pascal-case: [32;40mtiming[0m [35mreifyNode:node_modules/lower-case[0m Compl[0m[K([107;97m###############[0m[100;90m⠂⠂⠂[0m) ⠇ reify:pascal-case: [32;40mtiming[0m [35mreifyNode:node_modules/lower-case[0m Compl[0m[K([107;97m###############[0m[100;90m⠂⠂⠂[0m) ⠏ reify:jsonc-parser: [32;40mtiming[0m [35mreifyNode:node_modules/is-shared-array[0m[K([107;97m###############[0m[100;90m⠂⠂⠂[0m) ⠙ reify:acorn: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/acorn/[0m[K([107;97m###############[0m[100;90m⠂⠂⠂[0m) ⠙ reify:hash.js: [32;40mtiming[0m [35mreifyNode:node_modules/dot-case[0m Completed i[0m[K([107;97m###############[0m[100;90m⠂⠂⠂[0m) ⠙ reify:hash.js: [32;40mtiming[0m [35mreifyNode:node_modules/dot-case[0m Completed i[0m[K([107;97m################[0m[100;90m⠂⠂[0m) ⠸ reify:es-abstract: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m################[0m[100;90m⠂⠂[0m) ⠸ reify:diff: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/diff/-/[0m[K([107;97m################[0m[100;90m⠂⠂[0m) ⠸ reify:diff: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/diff/-/[0m[K([107;97m################[0m[100;90m⠂⠂[0m) ⠸ reify:diff: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/diff/-/[0m[K([107;97m################[0m[100;90m⠂⠂[0m) ⠸ reify:diff: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/diff/-/[0m[K([107;97m################[0m[100;90m⠂⠂[0m) ⠼ reify:universalify: [32;40mtiming[0m [35mreifyNode:node_modules/arg[0m Completed i[0m[K([107;97m#################[0m[100;90m⠂[0m) ⠧ reify:fs-extra: [32;40mtiming[0m [35mreifyNode:node_modules/array-includes[0m Comp[0m[K([107;97m#################[0m[100;90m⠂[0m) ⠧ reify:@tsconfig/node16: [32;40mtiming[0m [35mreifyNode:node_modules/@tsconfig/n[0m[K([107;97m#################[0m[100;90m⠂[0m) ⠦ reify:tslib: [32;40mtiming[0m [35mreifyNode:node_modules/graceful-fs[0m Completed[0m[K([107;97m##################[0m) ⠙ reify:@cspotcode/source-map-consumer: [32;40mhttp[0m [35mfetch[0m GET 200 https://[0m[K([107;97m##################[0m) ⠹ reify:@cspotcode/source-map-consumer: [32;40mhttp[0m [35mfetch[0m GET 200 https://[0m[K([107;97m##################[0m) ⠸ reify:json-to-ts: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/j[0m[K([107;97m##################[0m) ⠸ reify:json-to-ts: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/j[0m[K([107;97m##################[0m) ⠸ reify:json-to-ts: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/j[0m[K([107;97m##################[0m) ⠸ reify:json-to-ts: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/j[0m[K([107;97m##################[0m) ⠸ reify:json-to-ts: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/j[0m[K([107;97m##################[0m) ⠸ reify:json-to-ts: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/j[0m[K([107;97m##################[0m) ⠸ reify:json-to-ts: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/j[0m[K([107;97m##################[0m) ⠸ reify:json-to-ts: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/j[0m[K([107;97m##################[0m) ⠴ reify:style-dictionary: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs[0m[K([107;97m##################[0m) ⠴ reify:style-dictionary: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs[0m[K([107;97m##################[0m) ⠴ reify:style-dictionary: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs[0m[K([107;97m##################[0m) ⠴ reify:style-dictionary: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs[0m[K([107;97m##################[0m) ⠴ reify:style-dictionary: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs[0m[K([107;97m##################[0m) ⠴ reify:style-dictionary: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs[0m[K([107;97m##################[0m) ⠧ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠧ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠧ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠧ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠧ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠧ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠧ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠧ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠧ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠧ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠧ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠇ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠇ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠇ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠇ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠇ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠇ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠇ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠇ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠇ reify:@types/node: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠋ reify:prettier: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/pre[0m[K([107;97m##################[0m) ⠴ reify:typescript: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/t[0m[K([107;97m##################[0m) ⠇ reify:typescript: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/t[0m[K[K[?25h
+> @vygruppen/spor-monorepo@0.0.0 postinstall
+> patch-package
+
+sh: patch-package: command not found
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mcode[0m 127
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mpath[0m /Users/robin/Workspace/vy/frontend/spor
+[0m[37;40mnpm[0m [0m[31;40mERR![0m[35m[0m command failed
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mcommand[0m sh -c patch-package
+[0m
+[37;40mnpm[0m [0m[31;40mERR![0m[35m[0m A complete log of this run can be found in:
+[0m[37;40mnpm[0m [0m[31;40mERR![0m[35m[0m     /Users/robin/.npm/_logs/2022-06-27T14_11_48_167Z-debug-0.log
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mc-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m127(B[m[31m](B[m(B[m> 
+[A[87C  b[A
+[C[A[86C  [91mb[A
+[C[30m(B[m[38;5;240mrew upgrade[A
+[C[30m(B[m[91mr[38;5;240mew upgrade[A
+[C[C[30m(B[m[91me[38;5;240mw upgrade[A
+[3C[30m(B[m[91mw[38;5;240m upgrade[A
+[4C[30m(B[m[A[83C  [34mbrew[38;5;240m upgrade[A
+[4C[30m(B[m[34m [38;5;240mupgrade[A
+[5C[30m(B[m [38;5;240mupgrade[A
+[5C[30m(B[ms[K[A
+[6C[38;5;240mearch litestream[A
+[6C[30m(B[m[36m[4ms[38;5;240m[24mearch litestream[A
+[6C[30m(B[m[36m[4me[38;5;240m[24march litestream[A
+[7C[30m(B[m[36mse[38;5;240march litestream[A
+[7C[30m(B[m[36ma[38;5;240mrch litestream[A
+[8C[30m(B[m[36mr[38;5;240mch litestream[A
+[9C[30m(B[m[36mc[38;5;240mh litestream[A
+[10C[30m(B[m[36mh[38;5;240m litestream[A
+[11C[30m(B[m[36m [38;5;240mlitestream[A
+[12C[30m(B[m [38;5;240mlitestream[A
+[12C[30m(B[mp[K[A
+[13C[36m[4mp[A
+[13C[30m(B[m[38;5;240mackage.json [A
+[13C[30m(B[m[36m[4ma[38;5;240m[24mckage.json [A
+[14C[30m(B[m[36m[4mt[30m(B[m[K[A
+[15C[36mpat[A
+[15C[30m(B[m[36mc[A
+[16C[30m(B[m[36mh[A
+[17C[30m(B[m[36m-[A
+[18C[30m(B[m[36mp[A
+[19C[30m(B[m[36ma[A
+[20C[30m(B[m[36mc[A
+[21C[30m(B[m[36mk[A
+[22C[30m(B[m[36ma[A
+[23C[30m(B[m[36mg[A
+[24C[30m(B[m[36me[A
+[25C[30m(B[m
+[30m(B[m[?2004l]0;brew search patch-pa ~/W/v/f/s/p/spor-design-tokens[30m(B[m[31mError:[0m No formulae or casks found for "patch-package".
+[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  n[A
+[C[A[86C  [91mn[A
+[C[30m(B[m[38;5;240mpm ci[A
+[C[30m(B[m[91mp[38;5;240mm ci[A
+[C[C[30m(B[m[91mm[38;5;240m ci[A
+[3C[30m(B[m[A[84C  [34mnpm[38;5;240m ci[A
+[3C[30m(B[m[34m [38;5;240mci[A
+[4C[30m(B[m [38;5;240mci[A
+[4C[30m(B[mi[K[A
+[5C[38;5;240mnstall -g gren-lang[A
+[5C[30m(B[m[36mi[38;5;240mnstall -g gren-lang[A
+[5C[30m(B[m[36mn[38;5;240mstall -g gren-lang[A
+[6C[30m(B[m[36ms[38;5;240mtall -g gren-lang[A
+[7C[30m(B[m[36mt[38;5;240mall -g gren-lang[A
+[8C[30m(B[m[36ma[38;5;240mll -g gren-lang[A
+[9C[30m(B[m[36ml[38;5;240ml -g gren-lang[A
+[10C[30m(B[m[36ml[38;5;240m -g gren-lang[A
+[11C[30m(B[m[36m [38;5;240m-g gren-lang[A
+[12C[30m(B[m [38;5;240m-g gren-lang[A
+[12C[30m(B[m-[38;5;240mg gren-lang[A
+[13C[30m(B[m[36m-[38;5;240mg gren-lang[A
+[13C[30m(B[m[36m-[30m(B[m[K[A
+[14C[38;5;240msave semver[A
+[14C[30m(B[m[36ms[38;5;240mave semver[A
+[15C[30m(B[m[36ma[38;5;240mve semver[A
+[16C[30m(B[m[36mv[38;5;240me semver[A
+[17C[30m(B[m[36me[38;5;240m semver[A
+[18C[30m(B[m[36m-[30m(B[m[K[A
+[19C[36md[A
+[20C[30m(B[m[36me[A
+[21C[30m(B[m[36mv[A
+[22C[30m(B[m[36m [A
+[23C[30m(B[m [A
+[23Cp[A
+[24C[36m[4mp[A
+[24C[30m(B[m[38;5;240mackage.json [A
+[24C[30m(B[m[36m[4ma[38;5;240m[24mckage.json [A
+[25C[30m(B[m[36m[4mc[38;5;240m[24mkage.json [A
+[26C[30m(B[m[K[A
+[25C[36m[4mt[A
+[26C[30m(B[m[36mpat[A
+[26C[30m(B[m[36mc[A
+[27C[30m(B[m[36mh[A
+[28C[30m(B[m[36m-[A
+[29C[30m(B[m[36mp[A
+[30C[30m(B[m[36ma[A
+[31C[30m(B[m[36mc[A
+[32C[30m(B[m[36mk[A
+[33C[30m(B[m[36ma[A
+[34C[30m(B[m[36mg[A
+[35C[30m(B[m[36me[A
+[36C[30m(B[m
+[30m(B[m[?2004l]0;npm install --save-d ~/W/v/f/s/p/spor-design-tokens[30m(B[m[?25l([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ idealTree: [32;40mtiming[0m [35marborist:ctor[0m Completed in 1ms[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ idealTree: [32;40mtiming[0m [35marborist:ctor[0m Completed in 1ms[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ idealTree: [32;40mtiming[0m [35marborist:ctor[0m Completed in 1ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠸ idealTree:spor: [32;40mtiming[0m [35midealTree:#root[0m Completed in 0ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠸ idealTree:spor: [32;40mtiming[0m [35midealTree:#root[0m Completed in 0ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ idealTree: [32;40mtiming[0m [35midealTree[0m Completed in 935ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ reify:@yarnpkg/lockfile: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠸ reify:@yarnpkg/lockfile: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m##########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:ansi-styles: [32;40mtiming[0m [35mreifyNode:node_modules/supports-color[0m C[0m[K([107;97m###########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂[0m) ⠙ reify:nice-try: [32;40mtiming[0m [35mreifyNode:node_modules/is-docker[0m Completed[0m[K([107;97m###########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂[0m) ⠹ reify:patch-package: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.or[0m[K([107;97m############[0m[100;90m⠂⠂⠂⠂⠂⠂[0m) ⠸ reify:to-regex-range: [32;40mtiming[0m [35mreifyNode:node_modules/isexe[0m Complet[0m[K([107;97m#############[0m[100;90m⠂⠂⠂⠂⠂[0m) ⠸ reify:is-ci: [32;40mtiming[0m [35mreify:audit[0m Completed in 343ms[0m[K([107;97m###############[0m[100;90m⠂⠂⠂[0m) ⠴ reify:minimist: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/she[0m[K([107;97m##################[0m) ⠇ reify:escape-string-regexp: [32;40mtiming[0m [35mreifyNode:node_modules/patch-p[0m[K([107;97m##################[0m) ⠏ reify:escape-string-regexp: [32;40mtiming[0m [35mreifyNode:node_modules/patch-p[0m[K[K[?25h
+added 38 packages, and audited 147 packages in 2s
+
+41 packages are looking for funding
+  run `npm fund` for details
+
+found [32m[1m0[22m[39m vulnerabilities
+[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mekk-mac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m> 
+[A[87C  npm install --save-dev patch-package[A
+[36C[A[51C  [34mnpm[30m(B[m [36minstall[30m(B[m [36m--save-dev[30m(B[m [36mpatch-package[A
+[36C[30m(B[m[A[51C  [34mbre[30m(B[mw[36m search[30m(B[m [36mpatch-pack[30m(B[ma[36mge[30m(B[m[K[A
+[25C[22D[34mw[30m(B[m [36msearch[30m(B[m [36mpatch-package[A
+[25C[30m(B[m[A[62C  [34mnpm [30m(B[mc[36mi[30m(B[m[K[A
+[6C [36mci[A
+[6C[30m(B[m[36mrun build[A
+[13C[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[91merror[0m[90m TS6053: [0mFile '@vygruppen/tsconfig/base.json' not found.
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at create (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:843:36)
+    at register (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:563:15)
+    at main (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/bin.ts:281:27)
+    at Object.<anonymous> (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/bin.ts:539:3)
+[90m    at Module._compile (node:internal/modules/cjs/loader:1105:14)[39m
+[90m    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m {
+  diagnosticCodes: [ [33m6053[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  n[A
+[C[A[86C  [91mn[A
+[C[30m(B[m[38;5;240mpm run build[A
+[C[30m(B[m[91mp[38;5;240mm run build[A
+[C[C[30m(B[m[91mm[38;5;240m run build[A
+[3C[30m(B[m[A[84C  [34mnpm[38;5;240m run build[A
+[3C[30m(B[m[34m [38;5;240mrun build[A
+[4C[30m(B[m [38;5;240mrun build[A
+[4C[30m(B[mc[K[A
+[5C[38;5;240mi[A
+[5C[30m(B[m[36m[4mc[38;5;240m[24mi[A
+[5C[30m(B[m[36m[4mi[A
+[6C[30m(B[m[36mci[A
+[6C[30m(B[m[A
+[6C
+[30m(B[m[?2004l]0;npm ci ~/W/v/f/s/p/spor-design-tokens[30m(B[m[?25l([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:@cspotcode/source-map-consumer: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ reify:@vygruppen/spor-design-tokens: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ reify:@vygruppen/spor-design-tokens: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ reify:@vygruppen/spor-design-tokens: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:@vygruppen/spor-design-tokens: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ reify:@vygruppen/spor-design-tokens: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ reify:@vygruppen/spor-design-tokens: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ reify:@vygruppen/spor-design-tokens: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ reify:@vygruppen/spor-design-tokens: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ reify:@vygruppen/spor-design-tokens: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ reify:@vygruppen/spor-design-tokens: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ reify:@vygruppen/spor-design-tokens: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m##########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:once: [32;40mtiming[0m [35mreifyNode:node_modules/path-is-absolute[0m Comple[0m[K([107;97m#############[0m[100;90m⠂⠂⠂⠂⠂[0m) ⠋ reify:shebang-regex: [32;40mtiming[0m [35mreifyNode:node_modules/style-dictiona[0m[K([107;97m################[0m[100;90m⠂⠂[0m) ⠏ reify:upper-case-first: [32;40mtiming[0m [35mreifyNode:node_modules/has-symbols[0m[0m[K([107;97m##################[0m) ⠇ reify:ts-node: [32;40mtiming[0m [35mreifyNode:node_modules/json-to-ts[0m Completed[0m[K([107;97m##################[0m) ⠏ reify:@types/node: [32;40mtiming[0m [35mreifyNode:node_modules/ts-node[0m Complete[0m[K([107;97m##################[0m) ⠏ reify:@types/node: [32;40mtiming[0m [35mreifyNode:node_modules/ts-node[0m Complete[0m[K([107;97m##################[0m) ⠏ reify:@types/node: [32;40mtiming[0m [35mreifyNode:node_modules/ts-node[0m Complete[0m[K([107;97m##################[0m) ⠹ reify:prettier: [32;40mtiming[0m [35mreifyNode:node_modules/es-abstract[0m Complet[0m[K([107;97m##################[0m) ⠸ reify:style-dictionary: [32;40mtiming[0m [35mreifyNode:node_modules/prettier[0m Co[0m[K([107;97m##################[0m) ⠦ reify:typescript: [32;40mtiming[0m [35mreifyNode:node_modules/style-dictionary[0m[0m[K[K[?25h
+> @vygruppen/spor-monorepo@0.0.0 postinstall
+> patch-package
+
+[1mpatch-package[22m 6.4.7
+Applying patches...
+[31mError:[39m Patch file found for package dev which is not present at node_modules/@remix-run/dev
+---
+patch-package finished with [31m1 error(s)[39m.
+
+added 145 packages, and audited 147 packages in 4s
+
+41 packages are looking for funding
+  run `npm fund` for details
+
+found [32m[1m0[22m[39m vulnerabilities
+[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mekk-mac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m> 
+[A[87C  n[A
+[C[A[86C  [91mn[A
+[C[30m(B[m[38;5;240mpm ci[A
+[C[30m(B[m[91mp[38;5;240mm ci[A
+[C[C[30m(B[m[91mm[38;5;240m ci[A
+[3C[30m(B[m[A[84C  [34mnpm[38;5;240m ci[A
+[3C[30m(B[m[34m [38;5;240mci[A
+[4C[30m(B[m [38;5;240mci[A
+[4C[30m(B[mr[K[A
+[5C[38;5;240mun build[A
+[5C[30m(B[m[36m[4mr[38;5;240m[24mun build[A
+[5C[30m(B[m[36m[4mu[38;5;240m[24mn build[A
+[6C[30m(B[m[36mru[38;5;240mn build[A
+[6C[30m(B[m[36mn[38;5;240m build[A
+[7C[30m(B[m[36m build[A
+[13C[30m(B[m [36mbuild[A
+[13C[30m(B[m[A
+[13C
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[91merror[0m[90m TS6053: [0mFile '@vygruppen/tsconfig/base.json' not found.
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at create (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:843:36)
+    at register (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:563:15)
+    at main (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/bin.ts:281:27)
+    at Object.<anonymous> (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/bin.ts:539:3)
+[90m    at Module._compile (node:internal/modules/cjs/loader:1105:14)[39m
+[90m    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m {
+  diagnosticCodes: [ [33m6053[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A
+[A
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[91merror[0m[90m TS6053: [0mFile '' not found.
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at create (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:843:36)
+    at register (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:563:15)
+    at main (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/bin.ts:281:27)
+    at Object.<anonymous> (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/bin.ts:539:3)
+[90m    at Module._compile (node:internal/modules/cjs/loader:1105:14)[39m
+[90m    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m {
+  diagnosticCodes: [ [33m6053[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mscripts/build.ts[0m:[93m1[0m:[93m8[0m - [91merror[0m[90m TS1259: [0mModule '"/Users/robin/Workspace/vy/frontend/spor/node_modules/style-dictionary/types/index"' can only be default-imported using the 'esModuleInterop' flag
+
+[7m1[0m import StyleDictionaryFactory from "style-dictionary";
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/style-dictionary/types/index.d.ts[0m:[93m329[0m:[93m1[0m
+    [7m329[0m export = StyleDictionary;
+    [7m   [0m [96m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    This module is declared with using 'export =', and can only be used with a default import when using the 'esModuleInterop' flag.
+[96mscripts/build.ts[0m:[93m1[0m:[93m8[0m - [91merror[0m[90m TS1259: [0mModule '"/Users/robin/Workspace/vy/frontend/spor/node_modules/style-dictionary/types/index"' can only be default-imported using the 'esModuleInterop' flag
+
+[7m1[0m import StyleDictionaryFactory from "style-dictionary";
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/style-dictionary/types/index.d.ts[0m:[93m329[0m:[93m1[0m
+    [7m329[0m export = StyleDictionary;
+    [7m   [0m [96m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    This module is declared with using 'export =', and can only be used with a default import when using the 'esModuleInterop' flag.
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)[39m {
+  diagnosticCodes: [ [33m1259[39m, [33m1259[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mscripts/build.ts[0m:[93m7[0m:[93m25[0m - [91merror[0m[90m TS7016: [0mCould not find a declaration file for module '../config.js'. '/Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens/config.js' implicitly has an 'any' type.
+
+[7m7[0m import * as config from '../config.js';
+[7m [0m [91m                        ~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)[39m {
+  diagnosticCodes: [ [33m7016[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mscripts/build.ts[0m:[93m7[0m:[93m25[0m - [91merror[0m[90m TS2691: [0mAn import path cannot end with a '.ts' extension. Consider importing '../config' instead.
+
+[7m7[0m import * as config from '../config.ts';
+[7m [0m [91m                        ~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)[39m {
+  diagnosticCodes: [ [33m2691[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mscripts/build.ts[0m:[93m7[0m:[93m25[0m - [91merror[0m[90m TS2306: [0mFile '/Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens/config.ts' is not a module.
+
+[7m7[0m import * as config from '../config';
+[7m [0m [91m                        ~~~~~~~~~~~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)[39m {
+  diagnosticCodes: [ [33m2306[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mconfig.ts[0m:[93m50[0m:[93m30[0m - [91merror[0m[90m TS7031: [0mBinding element 'category' implicitly has an 'any' type.
+
+[7m50[0m       "files": tokens.map(({ category, type }) => {
+[7m  [0m [91m                             ~~~~~~~~[0m
+[96mconfig.ts[0m:[93m50[0m:[93m40[0m - [91merror[0m[90m TS7031: [0mBinding element 'type' implicitly has an 'any' type.
+
+[7m50[0m       "files": tokens.map(({ category, type }) => {
+[7m  [0m [91m                                       ~~~~[0m
+[96mconfig.ts[0m:[93m114[0m:[93m21[0m - [91merror[0m[90m TS7006: [0mParameter 'input' implicitly has an 'any' type.
+
+[7m114[0m function pascalCase(input) {
+[7m   [0m [91m                    ~~~~~[0m
+[96mconfig.ts[0m:[93m116[0m:[93m15[0m - [91merror[0m[90m TS7006: [0mParameter 's' implicitly has an 'any' type.
+
+[7m116[0m         .map((s) => `${s[0].toUpperCase()}${s.slice(1)}`)
+[7m   [0m [91m              ~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1005:19)[39m {
+  diagnosticCodes: [ [33m7031[39m, [33m7031[39m, [33m7006[39m, [33m7006[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mconfig.ts[0m:[93m50[0m:[93m30[0m - [91merror[0m[90m TS7031: [0mBinding element 'category' implicitly has an 'any' type.
+
+[7m50[0m       "files": tokens.map(({ category, type }) => {
+[7m  [0m [91m                             ~~~~~~~~[0m
+[96mconfig.ts[0m:[93m50[0m:[93m40[0m - [91merror[0m[90m TS7031: [0mBinding element 'type' implicitly has an 'any' type.
+
+[7m50[0m       "files": tokens.map(({ category, type }) => {
+[7m  [0m [91m                                       ~~~~[0m
+[96mconfig.ts[0m:[93m114[0m:[93m21[0m - [91merror[0m[90m TS7006: [0mParameter 'input' implicitly has an 'any' type.
+
+[7m114[0m function pascalCase(input) {
+[7m   [0m [91m                    ~~~~~[0m
+[96mconfig.ts[0m:[93m116[0m:[93m15[0m - [91merror[0m[90m TS7006: [0mParameter 's' implicitly has an 'any' type.
+
+[7m116[0m         .map((s) => `${s[0].toUpperCase()}${s.slice(1)}`)
+[7m   [0m [91m              ~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1005:19)[39m {
+  diagnosticCodes: [ [33m7031[39m, [33m7031[39m, [33m7006[39m, [33m7006[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mconfig.ts[0m:[93m50[0m:[93m30[0m - [91merror[0m[90m TS7031: [0mBinding element 'category' implicitly has an 'any' type.
+
+[7m50[0m       "files": tokens.map(({ category, type }) => {
+[7m  [0m [91m                             ~~~~~~~~[0m
+[96mconfig.ts[0m:[93m50[0m:[93m40[0m - [91merror[0m[90m TS7031: [0mBinding element 'type' implicitly has an 'any' type.
+
+[7m50[0m       "files": tokens.map(({ category, type }) => {
+[7m  [0m [91m                                       ~~~~[0m
+[96mconfig.ts[0m:[93m114[0m:[93m21[0m - [91merror[0m[90m TS7006: [0mParameter 'input' implicitly has an 'any' type.
+
+[7m114[0m function pascalCase(input) {
+[7m   [0m [91m                    ~~~~~[0m
+[96mconfig.ts[0m:[93m116[0m:[93m15[0m - [91merror[0m[90m TS7006: [0mParameter 's' implicitly has an 'any' type.
+
+[7m116[0m         .map((s) => `${s[0].toUpperCase()}${s.slice(1)}`)
+[7m   [0m [91m              ~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1005:19)[39m {
+  diagnosticCodes: [ [33m7031[39m, [33m7031[39m, [33m7006[39m, [33m7006[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mconfig.ts[0m:[93m50[0m:[93m40[0m - [91merror[0m[90m TS2300: [0mDuplicate identifier 'string'.
+
+[7m50[0m       "files": tokens.map(({ category: string, type: string }) => {
+[7m  [0m [91m                                       ~~~~~~[0m
+[96mconfig.ts[0m:[93m50[0m:[93m54[0m - [91merror[0m[90m TS2300: [0mDuplicate identifier 'string'.
+
+[7m50[0m       "files": tokens.map(({ category: string, type: string }) => {
+[7m  [0m [91m                                                     ~~~~~~[0m
+[96mconfig.ts[0m:[93m50[0m:[93m40[0m - [91merror[0m[90m TS7031: [0mBinding element 'string' implicitly has an 'any' type.
+
+[7m50[0m       "files": tokens.map(({ category: string, type: string }) => {
+[7m  [0m [91m                                       ~~~~~~[0m
+[96mconfig.ts[0m:[93m50[0m:[93m54[0m - [91merror[0m[90m TS7031: [0mBinding element 'string' implicitly has an 'any' type.
+
+[7m50[0m       "files": tokens.map(({ category: string, type: string }) => {
+[7m  [0m [91m                                                     ~~~~~~[0m
+[96mconfig.ts[0m:[93m53[0m:[93m58[0m - [91merror[0m[90m TS2304: [0mCannot find name 'category'.
+
+[7m53[0m           "destination": `elm/Vy/Spor/Token/${pascalCase(category)}/${pascalCase(type)}.elm`,
+[7m  [0m [91m                                                         ~~~~~~~~[0m
+[96mconfig.ts[0m:[93m53[0m:[93m82[0m - [91merror[0m[90m TS2304: [0mCannot find name 'type'.
+
+[7m53[0m           "destination": `elm/Vy/Spor/Token/${pascalCase(category)}/${pascalCase(type)}.elm`,
+[7m  [0m [91m                                                                                 ~~~~[0m
+[96mconfig.ts[0m:[93m56[0m:[93m28[0m - [91merror[0m[90m TS2304: [0mCannot find name 'category'.
+
+[7m56[0m                "category": category,
+[7m  [0m [91m                           ~~~~~~~~[0m
+[96mconfig.ts[0m:[93m57[0m:[93m24[0m - [91merror[0m[90m TS2304: [0mCannot find name 'type'.
+
+[7m57[0m                "type": type
+[7m  [0m [91m                       ~~~~[0m
+[96mconfig.ts[0m:[93m114[0m:[93m21[0m - [91merror[0m[90m TS7006: [0mParameter 'input' implicitly has an 'any' type.
+
+[7m114[0m function pascalCase(input) {
+[7m   [0m [91m                    ~~~~~[0m
+[96mconfig.ts[0m:[93m116[0m:[93m15[0m - [91merror[0m[90m TS7006: [0mParameter 's' implicitly has an 'any' type.
+
+[7m116[0m         .map((s) => `${s[0].toUpperCase()}${s.slice(1)}`)
+[7m   [0m [91m              ~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1005:19)[39m {
+  diagnosticCodes: [
+    [33m2300[39m, [33m2300[39m, [33m7031[39m,
+    [33m7031[39m, [33m2304[39m, [33m2304[39m,
+    [33m2304[39m, [33m2304[39m, [33m7006[39m,
+    [33m7006[39m
+  ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mconfig.ts[0m:[93m50[0m:[93m30[0m - [91merror[0m[90m TS7031: [0mBinding element 'category' implicitly has an 'any' type.
+
+[7m50[0m       "files": tokens.map(({ category, type }) => {
+[7m  [0m [91m                             ~~~~~~~~[0m
+[96mconfig.ts[0m:[93m50[0m:[93m40[0m - [91merror[0m[90m TS7031: [0mBinding element 'type' implicitly has an 'any' type.
+
+[7m50[0m       "files": tokens.map(({ category, type }) => {
+[7m  [0m [91m                                       ~~~~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1005:19)[39m {
+  diagnosticCodes: [ [33m7031[39m, [33m7031[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mconfig.ts[0m:[93m50[0m:[93m27[0m - [91merror[0m[90m TS7006: [0mParameter 'tokenFile' implicitly has an 'any' type.
+
+[7m50[0m       "files": tokens.map(tokenFile => {
+[7m  [0m [91m                          ~~~~~~~~~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1005:19)[39m {
+  diagnosticCodes: [ [33m7006[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mconfig.ts[0m:[93m50[0m:[93m27[0m - [91merror[0m[90m TS7006: [0mParameter 'tokenFile' implicitly has an 'any' type.
+
+[7m50[0m       "files": tokens.map(tokenFile => {
+[7m  [0m [91m                          ~~~~~~~~~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1005:19)[39m {
+  diagnosticCodes: [ [33m7006[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C   [A
+[Cf[A
+[C[C[91mf[A
+[C[C[30m(B[m[38;5;240malse [A
+[C[C[30m(B[m[91me[30m(B[m[K[A
+[3C[A[84C  [1m[48;5;233m fe[A
+[3C(B[m[30m[30m(B[m[A[84C   [91mfe[A
+[3C[30m(B[m[K[A
+[C[C[K[A
+[C[A
+[K[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mconfig.ts[0m:[93m1[0m:[93m10[0m - [91merror[0m[90m TS2305: [0mModule '"./tokens"' has no exported member 'tokens'.
+
+[7m1[0m import { tokens } from './tokens';
+[7m [0m [91m         ~~~~~~[0m
+[96mconfig.ts[0m:[93m50[0m:[93m27[0m - [91merror[0m[90m TS7006: [0mParameter 'tokenFile' implicitly has an 'any' type.
+
+[7m50[0m       "files": tokens.map(tokenFile => {
+[7m  [0m [91m                          ~~~~~~~~~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1005:19)[39m {
+  diagnosticCodes: [ [33m2305[39m, [33m7006[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mtokens/index.ts[0m:[93m2[0m:[93m9[0m - [91merror[0m[90m TS7031: [0mBinding element 'join' implicitly has an 'any' type.
+
+[7m2[0m const { join, extname, basename } from 'path';
+[7m [0m [91m        ~~~~[0m
+[96mtokens/index.ts[0m:[93m2[0m:[93m15[0m - [91merror[0m[90m TS7031: [0mBinding element 'extname' implicitly has an 'any' type.
+
+[7m2[0m const { join, extname, basename } from 'path';
+[7m [0m [91m              ~~~~~~~[0m
+[96mtokens/index.ts[0m:[93m2[0m:[93m24[0m - [91merror[0m[90m TS7031: [0mBinding element 'basename' implicitly has an 'any' type.
+
+[7m2[0m const { join, extname, basename } from 'path';
+[7m [0m [91m                       ~~~~~~~~[0m
+[96mtokens/index.ts[0m:[93m2[0m:[93m35[0m - [91merror[0m[90m TS7005: [0mVariable 'from' implicitly has an 'any' type.
+
+[7m2[0m const { join, extname, basename } from 'path';
+[7m [0m [91m                                  ~~~~[0m
+[96mtokens/index.ts[0m:[93m14[0m:[93m26[0m - [91merror[0m[90m TS2345: [0mArgument of type '(type: string) => { category: string; type: any; path: any; }' is not assignable to parameter of type '(value: String, index: number, array: String[]) => { category: string; type: any; path: any; }'.
+  Types of parameters 'type' and 'value' are incompatible.
+    Type 'String' is not assignable to type 'string'.
+      'string' is a primitive, but 'String' is a wrapper object. Prefer using 'string' when possible.
+
+[7m14[0m         return files.map((type: string) => {
+[7m  [0m [91m                         ~~~~~~~~~~~~~~~~~~~[0m
+[96mtokens/index.ts[0m:[93m2[0m:[93m35[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m2[0m const { join, extname, basename } from 'path';
+[7m [0m [91m                                  ~~~~[0m
+[96mtokens/index.ts[0m:[93m2[0m:[93m40[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m2[0m const { join, extname, basename } from 'path';
+[7m [0m [91m                                       ~~~~~~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1005:19)[39m {
+  diagnosticCodes: [
+    [33m7031[39m, [33m7031[39m,
+    [33m7031[39m, [33m7005[39m,
+    [33m2345[39m, [33m1005[39m,
+    [33m1005[39m
+  ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mtokens/index.ts[0m:[93m14[0m:[93m26[0m - [91merror[0m[90m TS2345: [0mArgument of type '(type: string) => { category: string; type: string; path: string; }' is not assignable to parameter of type '(value: String, index: number, array: String[]) => { category: string; type: string; path: string; }'.
+  Types of parameters 'type' and 'value' are incompatible.
+    Type 'String' is not assignable to type 'string'.
+      'string' is a primitive, but 'String' is a wrapper object. Prefer using 'string' when possible.
+
+[7m14[0m         return files.map((type: string) => {
+[7m  [0m [91m                         ~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1005:19)[39m {
+  diagnosticCodes: [ [33m2345[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mtokens/index.ts[0m:[93m10[0m:[93m15[0m - [91merror[0m[90m TS7006: [0mParameter 'root' implicitly has an 'any' type.
+
+[7m10[0m const dirs = (root) => readdirSync(root)
+[7m  [0m [91m              ~~~~[0m
+[96mtokens/index.ts[0m:[93m24[0m:[93m20[0m - [91merror[0m[90m TS7006: [0mParameter 'd' implicitly has an 'any' type.
+
+[7m24[0m const jsonFiles = (d) =>
+[7m  [0m [91m                   ~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1005:19)[39m {
+  diagnosticCodes: [ [33m7006[39m, [33m7006[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+/Users/robin/Workspace/vy/frontend/spor/node_modules/ts-node/src/index.ts:828
+    return new TSError(diagnosticText, diagnosticCodes);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+[96mtokens/index.ts[0m:[93m10[0m:[93m15[0m - [91merror[0m[90m TS7006: [0mParameter 'root' implicitly has an 'any' type.
+
+[7m10[0m const dirs = (root) => readdirSync(root)
+[7m  [0m [91m              ~~~~[0m
+
+    at createTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:828:12)
+    at reportTSError (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:832:19)
+    at getOutput (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1022:36)
+    at Object.compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1326:43)
+    at Module.m._compile (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1458:30)
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)[39m
+    at Object.require.extensions.<computed> [as .ts] (/Users/robin/Workspace/vy/frontend/spor/node_modules/[4mts-node[24m/src/index.ts:1462:12)
+[90m    at Module.load (node:internal/modules/cjs/loader:981:32)[39m
+[90m    at Function.Module._load (node:internal/modules/cjs/loader:822:12)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1005:19)[39m {
+  diagnosticCodes: [ [33m7006[39m ]
+}
+[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mLifecycle script `build` failed with error:[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35mError: command failed[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  in workspace: @vygruppen/spor-design-tokens@2.4.1[0m 
+[0m[37;40mnpm[0m [0m[31;40mERR![0m [0m[35m  at location: /Users/robin/Workspace/vy/frontend/spor/packages/spor-design-tokens[0m 
+[0m[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mmac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m (B[m[31m[[1m[31m1(B[m[31m](B[m(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+
+rn
+[1m[32m✔︎ react-native/index.js[39m[22m
+[1m[32m✔︎ react-native/index.d.ts[39m[22m
+
+javascript
+[1m[32m✔︎ dist/tokens.js[39m[22m
+[1m[32m✔︎ dist/tokens.d.ts[39m[22m
+
+elm
+[1m[32m✔︎ elm/Vy/Spor/Token/Asset/Font.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Alias.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Background.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Detail.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Error.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Linjetag.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Main.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Outline.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Palette.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Product.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Text.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Depth/Shadow.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Depth/ZIndex.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Font/Family.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Font/Style.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Size/BorderRadius.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Size/Breakpoint.elm[39m[22m
+[38;5;214mNo properties for elm/Vy/Spor/Token/Size/FontSize.elm. File not created.[39m
+[1m[32m✔︎ elm/Vy/Spor/Token/Size/LineHeight.elm[39m[22m
+[38;5;214mNo properties for elm/Vy/Spor/Token/Size/SpacingPx.elm. File not created.[39m
+[1m[32m✔︎ elm/Vy/Spor/Token/Size/Spacing.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Size/Stroke.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Time/Transition.elm[39m[22m
+
+css
+[1m[32m✔︎ dist/tokens.css[39m[22m
+
+scss
+[1m[32m✔︎ dist/_tokens.scss[39m[22m
+
+less
+[1m[32m✔︎ dist/tokens.less[39m[22m
+[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mekk-mac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m> 
+[A[87C  npm run build[A
+[13C[A[74C  [34mnpm[30m(B[m [36mrun[30m(B[m [36mbuild[A
+[13C[30m(B[m
+[30m(B[m[?2004l]0;npm run build ~/W/v/f/s/p/spor-design-tokens[30m(B[m
+> @vygruppen/spor-design-tokens@2.4.1 build
+> ts-node scripts/build.ts
+
+
+rn
+[1m[32m✔︎ react-native/index.js[39m[22m
+[1m[32m✔︎ react-native/index.d.ts[39m[22m
+
+javascript
+[1m[32m✔︎ dist/tokens.js[39m[22m
+[1m[32m✔︎ dist/tokens.d.ts[39m[22m
+
+elm
+[1m[32m✔︎ elm/Vy/Spor/Token/Asset/Font.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Alias.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Background.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Detail.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Error.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Linjetag.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Main.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Outline.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Palette.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Product.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Color/Text.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Depth/Shadow.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Depth/ZIndex.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Font/Family.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Font/Style.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Size/BorderRadius.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Size/Breakpoint.elm[39m[22m
+[38;5;214mNo properties for elm/Vy/Spor/Token/Size/FontSize.elm. File not created.[39m
+[1m[32m✔︎ elm/Vy/Spor/Token/Size/LineHeight.elm[39m[22m
+[38;5;214mNo properties for elm/Vy/Spor/Token/Size/SpacingPx.elm. File not created.[39m
+[1m[32m✔︎ elm/Vy/Spor/Token/Size/Spacing.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Size/Stroke.elm[39m[22m
+[1m[32m✔︎ elm/Vy/Spor/Token/Time/Transition.elm[39m[22m
+
+css
+[1m[32m✔︎ dist/tokens.css[39m[22m
+
+scss
+[1m[32m✔︎ dist/_tokens.scss[39m[22m
+
+less
+[1m[32m✔︎ dist/tokens.less[39m[22m
+[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mekk-mac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m> 
+[A[87C  g[A
+[C[38;5;240mit st[A
+[C[30m(B[m[A[86C  [91mg[38;5;240mit st[A
+[C[30m(B[m[91mi[38;5;240mt st[A
+[C[C[30m(B[m[91mt[38;5;240m st[A
+[3C[30m(B[m[A[84C  [34mgit[38;5;240m st[A
+[3C[30m(B[m[34m [38;5;240mst[A
+[4C[30m(B[m [38;5;240mst[A
+[4C[30m(B[ms[38;5;240mt[A
+[5C[30m(B[m[36m[4ms[38;5;240m[24mt[A
+[5C[30m(B[m[36m[4mt[A
+[6C[30m(B[m[36mst[A
+[6C[30m(B[m[A
+[6C
+[30m(B[m[?2004l]0;git st ~/W/v/f/s/p/spor-design-tokens[30m(B[mOn branch improve-elm-design-token-code-generation
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   ../../package-lock.json[m
+	[31mdeleted:    config.json[m
+	[31mmodified:   package.json[m
+	[31mmodified:   scripts/build.ts[m
+	[31mmodified:   tsconfig.json[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mconfig.ts[m
+	[31melm/[m
+	[31mtokens/index.ts[m
+	[31mtypescript[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[2m⏎(B[m                                                                                        ⏎ [K[?2004h]0;~/W/v/f/s/p/spor-design-tokens[30m(B[m…[92m(B[m(B[mekk-mac-2715(B[m [32m~/W/v/f/s/p/spor-design-tokens(B[m (improve-elm-design-token-code-generation)(B[m> 
+[30m(B[m[30m(B[m[?2004l
+Script done on Mon Jun 27 16:50:38 2022

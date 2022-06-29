@@ -33,6 +33,7 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     boxShadow: "sm",
     position: "relative",
     zIndex: "popover",
+    outline: 0,
   },
   monthLabel: {
     fontWeight: "bold",

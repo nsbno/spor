@@ -1,5 +1,6 @@
 import {
   Heading,
+  MessageBox,
   SporProvider,
   Stack,
   Text,
@@ -27,6 +28,9 @@ const App = () => {
             Velkommen! Denne appen brukes til demonstrasjon og utvikling av
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
+          <MessageBox variant="error" close_button="false">
+            Hei
+          </MessageBox>
         </Stack>
       </SafeAreaView>
     </SporProvider>

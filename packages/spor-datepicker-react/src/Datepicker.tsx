@@ -17,22 +17,18 @@ import {
   DatepickerProvider,
 } from "./DatepickerContext";
 
-type DatepickerProps = DatepickerControlProps &
-  BoxProps & {
-    size?: "sm" | "lg";
-  };
+type DatepickerProps = DatepickerControlProps & BoxProps;
 
 /**  */
 export const Datepicker = ({
   value,
   onChange,
   defaultValue,
-  size,
+  height = "3.5rem",
   ...boxProps
 }: DatepickerProps) => {
   const formControlProps = useFormControl(boxProps);
   const styles = useMultiStyleConfig("Datepicker", {
-    size,
     ...formControlProps,
   });
 
@@ -45,7 +41,7 @@ export const Datepicker = ({
       <Box {...boxProps}>
         <Popover placement="bottom-start">
           <StylesProvider value={styles}>
-            <DateInput />
+            <DateInput height={height} />
             <Portal>
               <PopoverContent>
                 <Calendar />

@@ -1,7 +1,5 @@
 # Built tokens
 elm/src/Spor/Token/*
-!elm/src/Spor/Token/Internal
-!elm/src/Spor/Token/Color.elm
 react-native
 
 # Dependencies

@@ -1,6 +1,6 @@
 {
     "type": "package",
-    "name": "vygruppen/spor-design-tokens-elm",
+    "name": "nsbno/spor-design-tokens-elm",
     "summary": "Design tokens for vy elm applications",
     "license": "MIT",
     "version": "1.0.0",

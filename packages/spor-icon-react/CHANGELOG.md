@@ -1,5 +1,15 @@
 # @vygruppen/spor-icon-react
 
+## 0.6.0
+
+### Minor Changes
+
+- 4c4efad: Add new Vy icon
+
+### Patch Changes
+
+- 305c3ba: Add a displayName to all icons in development
+
 ## 0.5.0
 
 ### Minor Changes

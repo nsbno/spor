@@ -1,16 +1,16 @@
 import {
-  Button,
   Flex,
   forwardRef,
   GridItem,
   SimpleGrid,
   useStyles,
 } from "@chakra-ui/react";
+import { IconButton } from "@vygruppen/spor-button-react";
 import { Card } from "@vygruppen/spor-card-react";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
 import {
-  ArrowLeftFill30Icon,
-  ArrowRightFill30Icon,
+  ArrowLeftFill24Icon,
+  ArrowRightFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import { Text } from "@vygruppen/spor-typography-react";
 import React from "react";
@@ -38,25 +38,31 @@ export const Calendar = forwardRef<CalendarProps, any>((_, ref) => {
 
   const styles = useStyles();
   return (
-    <Card colorScheme="white" p={1} __css={styles.calendar} ref={ref}>
-      <Flex justify="space-between" mx={3} mt={2}>
-        <Button
-          __css={styles.button}
+    <Card colorScheme="white" p={1} sx={styles.calendar} ref={ref}>
+      <Flex
+        justifyContent="space-between"
+        alignItems="center"
+        mx={3}
+        mt={1}
+        mb={1}
+      >
+        <IconButton
+          variant="ghost"
+          size="sm"
           onClick={goToPreviousMonth}
           aria-label={t(texts.previousMonth)}
-        >
-          <ArrowLeftFill30Icon />
-        </Button>
-        <Text __css={styles.monthLabel}>
+          icon={<ArrowLeftFill24Icon boxSize={["24px", "30px"]} />}
+        />
+        <Text sx={styles.monthLabel}>
           {t(months[monthLabelMonth])} {monthLabelYear}
         </Text>
-        <Button
-          __css={styles.button}
+        <IconButton
+          variant="ghost"
+          size="sm"
           onClick={goToNextMonth}
           aria-label={t(texts.nextMonth)}
-        >
-          <ArrowRightFill30Icon />
-        </Button>
+          icon={<ArrowRightFill24Icon boxSize={["24px", "30px"]} />}
+        />
       </Flex>
       <SimpleGrid columns={7} gap={2} mx={1}>
         {weekdayLabels.map((dayLabel, idx) => (

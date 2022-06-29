@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { Accordion, AccordionProps } from "./Accordion";
+import { useAccordionContext } from "./AccordionContext";
 
 type HeadingLevel = "h2" | "h3" | "h4" | "h5" | "h6";
 type ExpandableProps = AccordionProps & {
@@ -48,7 +49,6 @@ export const Expandable = ({
   size = "md",
   ...rest
 }: ExpandableProps) => {
-  verifyIconAndSize({ icon: leftIcon, size });
   return (
     <Accordion {...rest} size={size}>
       <ExpandableItem
@@ -60,46 +60,6 @@ export const Expandable = ({
       </ExpandableItem>
     </Accordion>
   );
-};
-
-type VerifyIconAndSizeArgs = {
-  icon: any;
-  size: AccordionProps["size"];
-};
-const verifyIconAndSize = ({ icon, size }: VerifyIconAndSizeArgs) => {
-  if (process.env.NODE_ENV !== "production") {
-    const displayName = icon?.type?.render?.displayName;
-    if (!displayName) {
-      return;
-    }
-    if (displayName.includes("Fill")) {
-      console.warn(
-        `You passed a filled icon. This component requires outlined icons. You passed ${displayName}, replace it with ${displayName.replace(
-          "Fill",
-          "Outline"
-        )}.`
-      );
-      return;
-    }
-    if (size === "lg" && !displayName.includes("30Icon")) {
-      console.warn(
-        `The icon you passed was of the wrong size for the ${size} size. You passed ${displayName}, replace it with ${displayName.replace(
-          /(\d{2})Icon/,
-          "30Icon"
-        )}.`
-      );
-      return;
-    }
-    if (["md" || "sm"].includes(size!) && !displayName.includes("24Icon")) {
-      console.warn(
-        `The icon you passed was of the wrong size for the ${size} size. You passed ${displayName}, replace it with ${displayName.replace(
-          /(\d{2})Icon/,
-          "24Icon"
-        )}.`
-      );
-      return;
-    }
-  }
 };
 
 export type ExpandableItemProps = AccordionItemProps & {
@@ -139,6 +99,8 @@ export const ExpandableItem = ({
   leftIcon,
   ...rest
 }: ExpandableItemProps) => {
+  const { size } = useAccordionContext();
+  warnAboutMismatchingIcon({ icon: leftIcon, size });
   return (
     <AccordionItem {...rest}>
       <Box as={headingLevel}>
@@ -153,4 +115,43 @@ export const ExpandableItem = ({
       <AccordionPanel>{children}</AccordionPanel>
     </AccordionItem>
   );
+};
+
+type WarnAboutMismatchingIcon = {
+  icon: any;
+  size: AccordionProps["size"];
+};
+const warnAboutMismatchingIcon = ({ icon, size }: WarnAboutMismatchingIcon) => {
+  if (process.env.NODE_ENV !== "production") {
+    const displayName = icon?.type?.render?.displayName;
+    if (!displayName) {
+      return;
+    }
+    if (displayName.includes("Fill")) {
+      console.warn(
+        `You passed a filled icon. This component requires outlined icons. You passed ${displayName}, replace it with ${displayName.replace(
+          "Fill",
+          "Outline"
+        )}.`
+      );
+      return;
+    }
+    if (size === "lg" && !displayName.includes("30Icon")) {
+      console.warn(
+        `The icon you passed was of the wrong size for the lg size. You passed ${displayName}, replace it with ${displayName.replace(
+          /(\d{2})Icon/,
+          "30Icon"
+        )}.`
+      );
+      return;
+    }
+    if (["md" || "sm"].includes(size!) && !displayName.includes("24Icon")) {
+      console.warn(
+        `The icon you passed was of the wrong size for the ${size} size. You passed ${displayName}, replace it with ${displayName.replace(
+          /(\d{2})Icon/,
+          "24Icon"
+        )}.`
+      );
+    }
+  }
 };

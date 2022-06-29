@@ -3,6 +3,7 @@ import {
   AccordionProps as ChakraAccordionProps,
 } from "@chakra-ui/react";
 import React from "react";
+import { AccordionProvider } from "./AccordionContext";
 export {
   AccordionButton,
   AccordionIcon,
@@ -43,5 +44,9 @@ export type AccordionProps = Omit<ChakraAccordionProps, "variant" | "size"> & {
  * If you only have one expandable item, you can use the `<Expandable />` component instead.
  */
 export const Accordion = (props: AccordionProps) => {
-  return <ChakraAccordion {...props} />;
+  return (
+    <AccordionProvider size={props.size}>
+      <ChakraAccordion {...props} />
+    </AccordionProvider>
+  );
 };

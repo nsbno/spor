@@ -54,7 +54,6 @@ export type ButtonProps = Exclude<
 export const Button = forwardRef<ButtonProps, As<any>>(
   (
     {
-      width,
       size = "md",
       variant = "primary",
       children,
@@ -70,9 +69,9 @@ export const Button = forwardRef<ButtonProps, As<any>>(
 
     return (
       <ChakraButton
-        {...props}
         size={size}
         variant={variant}
+        {...props}
         ref={ref}
         aria-label={ariaLabel}
         aria-busy={isLoading}

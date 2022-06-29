@@ -81,7 +81,7 @@ const texts = {
 };
 
 const useControlledDatepicker = () => {
-  const { selectedDate, setSelectedDate } = useDatepicker();
+  const { selectedDate, setSelectedDate, onDateSelect } = useDatepicker();
   const formattedDate = selectedDate?.toLocaleDateString("nb-NO");
   const [dateString, setDateString] = React.useState(formattedDate);
   React.useEffect(() => {
@@ -97,6 +97,7 @@ const useControlledDatepicker = () => {
       const newDate = parseDateString(dateString);
       if (newDate) {
         setSelectedDate(newDate);
+        onDateSelect(newDate);
       }
     },
   };

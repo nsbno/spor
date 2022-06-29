@@ -1,5 +1,11 @@
 # @vygruppen/spor-button-react
 
+## 0.2.6
+
+### Patch Changes
+
+- d263565: Add possibility for specifying the width of a button
+
 ## 0.2.5
 
 ### Patch Changes

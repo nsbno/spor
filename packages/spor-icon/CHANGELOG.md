@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 0.6.0
+
+### Minor Changes
+
+- 4c4efad: Add new Vy icon
+
 ## 0.5.0
 
 ### Minor Changes

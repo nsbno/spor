@@ -16,7 +16,7 @@ import React from "react";
 import { parseDateString } from "./datepicker-utils";
 import { useDatepicker } from "./DatepickerContext";
 
-type DateInputProps = BoxProps;
+type DateInputProps = BoxProps & { label?: string };
 export const DateInput = (props: DateInputProps) => {
   const { dateString, onDateStringChange, onDateSelected } =
     useControlledDatepicker();
@@ -32,7 +32,7 @@ export const DateInput = (props: DateInputProps) => {
           <PopoverAnchor>
             <Input
               aria-invalid={formControlProps["aria-invalid"]}
-              label={t(texts.date)}
+              label={props.label ?? t(texts.date)}
               value={dateString}
               onChange={(e) => onDateStringChange(e.target.value)}
               onBlur={onDateSelected}
@@ -55,7 +55,7 @@ export const DateInput = (props: DateInputProps) => {
           <Input
             aria-invalid={formControlProps["aria-invalid"]}
             leftIcon={<CalendarOutline24Icon />}
-            label={t(texts.date)}
+            label={label ?? t(texts.date)}
             value={dateString}
             onChange={(e) => onDateStringChange(e.target.value)}
             onBlur={onDateSelected}

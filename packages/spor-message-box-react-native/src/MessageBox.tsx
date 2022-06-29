@@ -7,14 +7,14 @@ import {
   useTheme,
   VariantProps,
 } from "@shopify/restyle";
-import { Box } from "@vygruppen/spor-layout-react-native";
-import { Theme } from "@vygruppen/spor-theme-react-native";
-import { Text } from "@vygruppen/spor-typography-react-native";
 import {
   InformationOutline24Icon,
   DeleteCircleOutline24Icon,
   SuccessOutline24Icon,
 } from "@vygruppen/spor-icon-react-native";
+import { Box } from "@vygruppen/spor-layout-react-native";
+import { Theme } from "@vygruppen/spor-theme-react-native";
+import { Text } from "@vygruppen/spor-typography-react-native";
 import React from "react";
 
 type Variant = VariantProps<Theme, "messageBoxVariants", "variant">;
@@ -30,7 +30,7 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
 ]);
 
 type MessageBoxVariant = "success" | "info" | "error";
-type MessageBoxProps = {
+type MessageBoxProps = Exclude<RestyleProps, "variant"> & {
   variant: MessageBoxVariant;
   children: string;
   close_button?: false | "true" | string;

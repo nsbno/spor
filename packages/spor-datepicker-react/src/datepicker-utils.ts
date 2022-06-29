@@ -20,21 +20,71 @@ export const parseDateString = (dateString?: string) => {
   if (!dateString) {
     return null;
   }
+
   if (!isExpectedFormat(dateString)) {
     return null;
   }
-  const periodOrSlashOrSpaceRegex = /[\.\/\s]+/g;
-  const [day, month, year] = dateString
-    .split(periodOrSlashOrSpaceRegex)
-    .map(Number);
-  console.log(day, month, year);
+
+  const { day, month, year } = splitInputIntoDateParts(dateString);
   const date = new Date(year, month - 1, day);
+
   return isValidDateObject(date) ? date : null;
 };
 
+const splitInputIntoDateParts = (input: string) => {
+  const validSeparatorRegex = /[\.\/\s]+/g;
+  const [dayString, monthString, yearString] = input.split(validSeparatorRegex);
+  return {
+    day: Number(dayString),
+    month: getMonthFromInput(monthString),
+    year: getYearOrFallback(yearString),
+  };
+};
+
 const isExpectedFormat = (dateString: string) => {
-  const expectedFormatRegex = /^\d{1,2}[\.\/\s]+\d{1,2}[\.\/\s]+\d{4}$/;
+  const expectedFormatRegex =
+    /^\d{1,2}[\.\/\s]+(\d{1,2}|\w{4,})([\.\/\s]+\d{4}){0,1}$/;
   return dateString.match(expectedFormatRegex);
+};
+
+const getMonthFromInput = (input: string) => {
+  const normalizedInput = input.toLowerCase();
+  return monthMap[normalizedInput] ?? Number(normalizedInput);
+};
+
+const getYearOrFallback = (input: string) => {
+  const inputAsNumber = Number(input);
+  if (Number.isNaN(inputAsNumber)) {
+    return new Date().getFullYear();
+  }
+  return inputAsNumber;
+};
+
+const monthMap: Record<string, number> = {
+  januar: 1,
+  januari: 1,
+  january: 1,
+  februar: 2,
+  februari: 2,
+  february: 2,
+  mars: 3,
+  march: 3,
+  april: 4,
+  mai: 5,
+  maj: 5,
+  may: 5,
+  juni: 6,
+  june: 6,
+  juli: 7,
+  july: 7,
+  august: 8,
+  augusti: 8,
+  september: 9,
+  oktober: 10,
+  october: 10,
+  november: 11,
+  desember: 12,
+  december: 12,
 };
 
 /** Checks whether a given date object is today or not */

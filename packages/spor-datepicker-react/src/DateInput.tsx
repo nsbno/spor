@@ -12,25 +12,18 @@ import { IconButton } from "@vygruppen/spor-button-react";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import { Input } from "@vygruppen/spor-input-react";
-import React, { ChangeEventHandler } from "react";
-import { isValidDateObject } from "./datepicker-utils";
+import React from "react";
+import { parseDateString } from "./datepicker-utils";
 import { useDatepicker } from "./DatepickerContext";
 
 type DateInputProps = BoxProps;
 export const DateInput = (props: DateInputProps) => {
-  const { selectedDate, setSelectedDate } = useDatepicker();
+  const { dateString, onDateStringChange, onDateSelected } =
+    useControlledDatepicker();
   const styles = useStyles();
   const { t } = useTranslation();
-  const formControlProps = useFormControl({});
-
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    const date = new Date(event.target.value);
-    if (isValidDateObject(date)) {
-      setSelectedDate(date);
-    }
-  };
-
   const breakpoint = useBreakpoint("base");
+  const formControlProps = useFormControl({});
 
   return (
     <InputGroup height={props.height}>
@@ -40,8 +33,9 @@ export const DateInput = (props: DateInputProps) => {
             <Input
               aria-invalid={formControlProps["aria-invalid"]}
               label={t(texts.date)}
-              value={selectedDate?.toLocaleDateString()}
-              onChange={handleChange}
+              value={dateString}
+              onChange={(e) => onDateStringChange(e.target.value)}
+              onBlur={onDateSelected}
               sx={styles.input}
             />
           </PopoverAnchor>
@@ -62,8 +56,9 @@ export const DateInput = (props: DateInputProps) => {
             aria-invalid={formControlProps["aria-invalid"]}
             leftIcon={<CalendarOutline24Icon />}
             label={t(texts.date)}
-            value={selectedDate?.toLocaleDateString()}
-            onChange={handleChange}
+            value={dateString}
+            onChange={(e) => onDateStringChange(e.target.value)}
+            onBlur={onDateSelected}
             sx={styles.input}
           />
         </PopoverTrigger>
@@ -83,4 +78,26 @@ const texts = {
     sv: "Kalender",
     en: "Calendar",
   },
+};
+
+const useControlledDatepicker = () => {
+  const { selectedDate, setSelectedDate } = useDatepicker();
+  const formattedDate = selectedDate?.toLocaleDateString("nb-NO");
+  const [dateString, setDateString] = React.useState(formattedDate);
+  React.useEffect(() => {
+    if (formattedDate) {
+      setDateString(formattedDate);
+    }
+  }, [formattedDate]);
+
+  return {
+    dateString,
+    onDateStringChange: setDateString,
+    onDateSelected: () => {
+      const newDate = parseDateString(dateString);
+      if (newDate) {
+        setSelectedDate(newDate);
+      }
+    },
+  };
 };

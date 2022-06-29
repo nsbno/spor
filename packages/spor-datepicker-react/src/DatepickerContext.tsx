@@ -89,6 +89,7 @@ export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
     focusedInput: START_DATE,
     numberOfMonths: 1,
     onDatesChange: handleDateChange,
+    
   });
   const { month, year } = activeMonths[0];
   const monthProps = {

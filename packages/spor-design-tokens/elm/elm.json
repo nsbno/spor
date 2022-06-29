@@ -5,7 +5,6 @@
     "license": "BSD-3-Clause",
     "version": "1.0.0",
     "exposed-modules": [
-        "Spor.Token.Asset.Font",
         "Spor.Token.Color",
         "Spor.Token.Color.Alias",
         "Spor.Token.Color.Background",
@@ -19,8 +18,6 @@
         "Spor.Token.Color.Text",
         "Spor.Token.Depth.Shadow",
         "Spor.Token.Depth.ZIndex",
-        "Spor.Token.Font.Style",
-        "Spor.Token.Font.Family",
         "Spor.Token.Size.BorderRadius",
         "Spor.Token.Size.Breakpoint",
         "Spor.Token.Size.LineHeight",

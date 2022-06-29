@@ -1,9 +1,5 @@
 import { ComponentMultiStyleConfig } from "@chakra-ui/react";
-import {
-  anatomy,
-  PartsStyleInterpolation,
-  PartsStyleObject,
-} from "@chakra-ui/theme-tools";
+import { anatomy, PartsStyleObject } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 
@@ -21,12 +17,15 @@ const baseStyle: PartsStyleObject<typeof parts> = {
   input: {
     borderRadius: "sm",
     borderRightRadius: ["none", "sm"],
+    height: "100%",
+    minWidth: "11rem",
   },
   calendarButton: {
     borderRadius: "sm",
     borderLeftRadius: 0,
     padding: "1rem",
     boxShadow: getBoxShadowString({ borderColor: colors.alias.darkGrey }),
+    height: "100%",
   },
   calendar: {
     backgroundColor: "alias.white",
@@ -38,12 +37,15 @@ const baseStyle: PartsStyleObject<typeof parts> = {
   monthLabel: {
     fontWeight: "bold",
     color: "alias.darkGrey",
+    textStyle: ["sm", "md"],
   },
   dayLabel: {
+    textStyle: "sm",
     fontWeight: "bold",
     color: "alias.darkGrey",
   },
   weekendLabel: {
+    textStyle: "sm",
     fontWeight: "bold",
     color: "alias.greenHaze",
   },
@@ -54,6 +56,8 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     borderStyle: "solid",
     transition: ".1s ease-in-out",
     userSelect: "none",
+    width: [6, 7],
+    height: [6, 7],
 
     _selected: {
       backgroundColor: "alias.pine",
@@ -101,62 +105,12 @@ const baseStyle: PartsStyleObject<typeof parts> = {
   },
 };
 
-const sizes: Record<string, PartsStyleInterpolation<typeof parts>> = {
-  sm: {
-    input: {
-      height: "3.5rem",
-      minWidth: "11rem",
-    },
-    calendarButton: {
-      height: "3.5rem",
-    },
-    monthLabel: {
-      textStyle: "sm",
-      lineHeight: 4,
-    },
-    dayLabel: {
-      textStyle: "sm",
-    },
-    weekendLabel: {
-      textStyle: "sm",
-    },
-    button: {
-      height: 6,
-      width: 6,
-    },
-  },
-  lg: {
-    input: {
-      height: "3.75rem",
-      minWidth: "11.25rem",
-    },
-    calendarButton: {
-      height: "3.75rem",
-    },
-    monthLabel: {
-      fontSize: "md",
-      lineHeight: "2.25rem",
-    },
-    dayLabel: {
-      textStyle: "sm",
-    },
-    weekendLabel: {
-      textStyle: "sm",
-    },
-    button: {
-      height: 7,
-      width: 7,
-    },
-  },
-};
-
 const Datepicker: ComponentMultiStyleConfig = {
   parts: parts.keys,
   defaultProps: {
     size: "sm",
   },
   baseStyle: baseStyle,
-  sizes,
 };
 
 export default Datepicker;

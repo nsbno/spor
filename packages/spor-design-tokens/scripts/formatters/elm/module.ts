@@ -61,27 +61,48 @@ class ModuleType {
     }
 
     imports(): Array<string> {
-        return [
-            'import Css'
-        ];
+        const wrapped = this.wrappedType.innerType;
+        
+        if (wrapped === 'Float') {
+            return [];
+        } else if (wrapped === 'String') {
+            return [];
+        }
+        
+        return [ 'import Css' ];
     }
 
     exposings(): Array<string> {
         return [
             this.name,
-            'toCss'
+            this.unwrapperName()
         ];
     }
 
+    unwrapperName(): string {
+        const wrapped = this.wrappedType.innerType;
+
+        let unwrapper = 'toCss';
+        if (wrapped === 'Float') {
+            unwrapper = 'toFloat';
+        } else if (wrapped === 'String') {
+            unwrapper = 'toString';
+        }
+        
+        return unwrapper;
+    }
+
     definitions(): Array<string> {
+        const unwrapperName = this.unwrapperName();
+        
         return [
             '{-| -}',
             `type ${this.name} =`,
             `${defaultIndentation}${this.name} ${this.wrappedType.innerType}`,
             '',
-            `{-| Convert ${this.name} into an elm-css value -}`,
-            `toCss : ${this.name} -> ${this.wrappedType.innerType}`,
-            `toCss (${this.name} value) =`,
+            `{-| Convert ${this.name} into a ${this.wrappedType.innerType} -}`,
+            `${unwrapperName} : ${this.name} -> ${this.wrappedType.innerType}`,
+            `${unwrapperName} (${this.name} value) =`,
             `${defaultIndentation}value`,
             ''
         ];
@@ -116,6 +137,26 @@ const colorTypeConstruction: ModuleTypeConstruction = {
     }
 };
 
+const pxTypeConstruction: ModuleTypeConstruction = {
+    innerType: 'Css.Px',
+    
+    construct(input: string) {
+        if (input.endsWith('px')) {
+            const rawValue = input.replace(/px$/, '');
+            return `Css.px ${rawValue}`;
+        }
+        
+        throw new Error(`Don\'t know how to handle this size value: ${input}`);
+    }
+};
+
+const floatTypeConstruction: ModuleTypeConstruction = {
+    innerType: 'Float',
+    construct(input: string) {
+        return input;
+    }
+};
+
 const stringTypeConstruction: ModuleTypeConstruction = {
     innerType: 'String',
     construct: asString
@@ -131,7 +172,12 @@ const moduleTypeInnerType: Map<string, ModuleTypeConstruction> = new Map([
     ['Outline', colorTypeConstruction],
     ['Palette', colorTypeConstruction],
     ['Product', colorTypeConstruction],
-    ['Text', colorTypeConstruction]
+    ['Text', colorTypeConstruction],
+    ['BorderRadius', pxTypeConstruction],
+    ['Breakpoint', pxTypeConstruction],
+    ['LineHeight', floatTypeConstruction],
+    ['Spacing', pxTypeConstruction],
+    ['Stroke', pxTypeConstruction]
 ]);
 
 

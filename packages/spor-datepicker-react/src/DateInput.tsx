@@ -1,5 +1,5 @@
 import {
-  Flex,
+  BoxProps,
   InputGroup,
   InputRightAddon,
   PopoverAnchor,
@@ -16,7 +16,8 @@ import React, { ChangeEventHandler } from "react";
 import { isValidDateObject } from "./datepicker-utils";
 import { useDatepicker } from "./DatepickerContext";
 
-export const DateInput = () => {
+type DateInputProps = BoxProps;
+export const DateInput = (props: DateInputProps) => {
   const { selectedDate, setSelectedDate } = useDatepicker();
   const styles = useStyles();
   const { t } = useTranslation();
@@ -32,43 +33,41 @@ export const DateInput = () => {
   const breakpoint = useBreakpoint("base");
 
   return (
-    <InputGroup>
-      <Flex>
-        {breakpoint === "base" ? (
-          <>
-            <PopoverAnchor>
-              <Input
-                aria-invalid={formControlProps["aria-invalid"]}
-                label={t(texts.date)}
-                value={selectedDate?.toLocaleDateString()}
-                onChange={handleChange}
-                sx={styles.input}
-              />
-            </PopoverAnchor>
-            <InputRightAddon>
-              <PopoverTrigger>
-                <IconButton
-                  variant="additional"
-                  icon={<CalendarOutline24Icon />}
-                  aria-label={t(texts.calendar)}
-                  sx={styles.calendarButton}
-                />
-              </PopoverTrigger>
-            </InputRightAddon>
-          </>
-        ) : (
-          <PopoverTrigger>
+    <InputGroup height={props.height}>
+      {breakpoint === "base" ? (
+        <>
+          <PopoverAnchor>
             <Input
               aria-invalid={formControlProps["aria-invalid"]}
-              leftIcon={<CalendarOutline24Icon />}
               label={t(texts.date)}
               value={selectedDate?.toLocaleDateString()}
               onChange={handleChange}
               sx={styles.input}
             />
-          </PopoverTrigger>
-        )}
-      </Flex>
+          </PopoverAnchor>
+          <InputRightAddon>
+            <PopoverTrigger>
+              <IconButton
+                variant="additional"
+                icon={<CalendarOutline24Icon />}
+                aria-label={t(texts.calendar)}
+                sx={styles.calendarButton}
+              />
+            </PopoverTrigger>
+          </InputRightAddon>
+        </>
+      ) : (
+        <PopoverTrigger>
+          <Input
+            aria-invalid={formControlProps["aria-invalid"]}
+            leftIcon={<CalendarOutline24Icon />}
+            label={t(texts.date)}
+            value={selectedDate?.toLocaleDateString()}
+            onChange={handleChange}
+            sx={styles.input}
+          />
+        </PopoverTrigger>
+      )}
     </InputGroup>
   );
 };

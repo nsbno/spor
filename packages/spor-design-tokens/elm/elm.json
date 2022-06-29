@@ -2,7 +2,7 @@
     "type": "package",
     "name": "vygruppen/spor-design-tokens-elm",
     "summary": "Design tokens for vy elm applications",
-    "license": "BSD-3-Clause",
+    "license": "MIT",
     "version": "1.0.0",
     "exposed-modules": [
         "Spor.Token.Color.Alias",

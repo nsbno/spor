@@ -44,25 +44,80 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     textStyle: "sm",
     fontWeight: "bold",
     color: "alias.darkGrey",
+    textAlign: "center",
   },
   weekendLabel: {
     textStyle: "sm",
     fontWeight: "bold",
     color: "alias.greenHaze",
+    textAlign: "center",
   },
   button: {
     backgroundColor: "alias.white",
     color: "alias.darkGrey",
     borderRadius: "50%",
     borderStyle: "solid",
+    position: "relative",
     transition: ".1s ease-in-out",
     userSelect: "none",
     width: [6, 7],
     height: [6, 7],
+    transitionProperty: "common",
+    transitionSpeed: "fast",
 
-    _selected: {
+    // the edge of a selection
+    "&[data-is-edge='true']": {
       backgroundColor: "alias.pine",
       color: "alias.white",
+    },
+    // when two days back to back are selected
+    "&[data-is-edge='true'] + [data-is-edge='true']": {
+      _before: {
+        content: '""',
+        display: "block",
+        backgroundColor: "alias.mint",
+        borderRightRadius: "lg",
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        left: "-50%",
+        right: 0,
+        zIndex: "-1",
+      },
+    },
+    // when you've selected one day, and hovering towards the next
+    "&[data-is-in-range='true'][data-is-edge='false']": {
+      backgroundColor: "alias.mint",
+
+      _before: {
+        content: '""',
+        display: "block",
+        backgroundColor: "alias.mint",
+        borderRightRadius: "lg",
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        left: "-50%",
+        right: 0,
+        zIndex: "-1",
+      },
+    },
+    // the days between the selected days
+    "&[data-is-edge='false'][data-is-selected='true']": {
+      backgroundColor: "alias.mint",
+
+      _before: {
+        content: '""',
+        display: "block",
+        backgroundColor: "alias.mint",
+        borderRightRadius: "lg",
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        left: "-50%",
+        right: "-100%",
+        zIndex: "-1",
+      },
     },
 
     _hover: {

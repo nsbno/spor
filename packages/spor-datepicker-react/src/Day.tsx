@@ -1,4 +1,4 @@
-import { Box, Button, GridItem, useStyles, useToken } from "@chakra-ui/react";
+import { Button, useStyles } from "@chakra-ui/react";
 import React from "react";
 import { useDay } from "./DatepickerContext";
 
@@ -15,33 +15,30 @@ export const Day = ({ dayLabel, date, isDisabled = false }: DayProps) => {
     onMouseEnter,
     tabIndex,
     isSelected,
+    isSelectedStartOrEnd,
+    isWithinHoverRange,
     isToday,
     disabledDate,
-  } = useDay(date, dayRef);
-
+  } = useDay({ date, dayRef });
   const styles = useStyles();
-  const [osloGrey] = useToken("colors", ["alias.osloGrey"]);
-
-  if (!dayLabel) {
-    return <Box />;
-  }
 
   return (
-    <GridItem>
-      <Button
-        aria-selected={isSelected}
-        data-is-selected={isSelected}
-        onClick={onClick}
-        onKeyDown={onKeyDown}
-        onMouseEnter={onMouseEnter}
-        tabIndex={tabIndex}
-        ref={dayRef}
-        __css={styles.button}
-        border={isToday ? `solid 1px ${osloGrey}` : undefined}
-        disabled={isDisabled || disabledDate}
-      >
-        {dayLabel}
-      </Button>
-    </GridItem>
+    <Button
+      aria-selected={isSelected}
+      data-is-selected={isSelected}
+      data-is-edge={isSelectedStartOrEnd}
+      data-is-in-range={isWithinHoverRange}
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+      onMouseEnter={onMouseEnter}
+      tabIndex={tabIndex}
+      ref={dayRef}
+      __css={styles.button}
+      border={isToday ? `solid 1px` : undefined}
+      borderColor="alias.osloGrey"
+      disabled={isDisabled || disabledDate}
+    >
+      {Number(dayLabel)}
+    </Button>
   );
 };

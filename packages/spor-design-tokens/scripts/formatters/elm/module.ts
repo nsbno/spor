@@ -1,51 +1,51 @@
 import { Format, Named, File, TransformedToken, formatHelpers } from 'style-dictionary';
 
-export const elmFormatter: Named<Format> = {
-  name: 'elm/module',
-  formatter: function({ dictionary, file }) {
-    const moduleName = generateModuleName(file.destination);
-
-    const moduleType = generateModuleType(file.destination);
-
-    const exposing = moduleType.exposings().concat(
-        dictionary
-            .allProperties
-            .map((prop) => prop.name)
-    )
-    .join(', ');
-    
-    const fileHeader = formatHelpers.fileHeader({
-      file: file,
-      formatting: {
-        prefix: defaultIndentation,
-        lineSeparator: '\n',
-        header: '{-\n',
-        footer: '\n-}'
-      }
-    });
-
-    const definitions = moduleType.definitions().concat(
-        dictionary
-            .allProperties
-            .map((prop) => generateElmConstant(prop, moduleType))
-            .flat()
-    );
-    
-    return [
-      `module ${moduleName} exposing (${exposing})`,
-      '',
-      fileHeader,
-      '',
-      `{-| @docs ${exposing} -}`,
-      '',
-    ].concat(...moduleType.imports(), '')
-     .concat(...definitions)
-     .join('\n');
-  },
-};
-
 const moduleNamePrefix = 'Spor.Token.';
 const defaultIndentation = '    ';
+
+export const elmFormatter: Named<Format> = {
+    name: 'elm/module',
+    formatter: function({ dictionary, file }) {
+        const moduleName = generateModuleName(file.destination);
+
+        const moduleType = generateModuleType(file.destination);
+
+        const exposing = moduleType.exposings().concat(
+            dictionary
+                .allProperties
+                .map((prop) => prop.name)
+        )
+        .join(', ');
+
+        const fileHeader = formatHelpers.fileHeader({
+            file: file,
+            formatting: {
+                prefix: defaultIndentation,
+                lineSeparator: '\n',
+                header: '{-\n',
+                footer: '\n-}'
+            }
+        });
+
+        const definitions = moduleType.definitions().concat(
+            dictionary
+                .allProperties
+                .map((prop) => generateElmConstant(prop, moduleType))
+                .flat()
+        );
+
+        return [
+            `module ${moduleName} exposing (${exposing})`,
+            '',
+            fileHeader,
+            '',
+            `{-| @docs ${exposing} -}`,
+            '',
+        ].concat(...moduleType.imports(), '')
+         .concat(...definitions)
+         .join('\n');
+    }
+};
 
 function generateModuleName(fileName: string): string {
     return moduleNamePrefix + fileName.replace(/\.elm$/, '').replace('\/', '\.');
@@ -62,11 +62,11 @@ class ModuleType {
 
     imports(): Array<string> {
         const wrapped = this.wrappedType.innerType;
-        
+
         if (['Int', 'Float', 'String'].includes(wrapped)) {
             return [];
         } 
-        
+
         return [ 'import Css' ];
     }
 
@@ -81,7 +81,7 @@ class ModuleType {
         const wrapped = this.wrappedType.innerType;
 
         let unwrapper = 'toCss';
-        
+
         if (wrapped === 'Int') {
             unwrapper = 'toInt';
         } else if (wrapped === 'Float') {
@@ -89,33 +89,26 @@ class ModuleType {
         } else if (wrapped === 'String') {
             unwrapper = 'toString';
         }
-        
+
         return unwrapper;
     }
 
     definitions(): Array<string> {
         const unwrapperName = this.unwrapperName();
-        
+
         return [
             '{-| -}',
             `type ${this.name} =`,
-            `${defaultIndentation}${this.name} ${this.wrappedType.innerType}`,
+                `${defaultIndentation}${this.name} ${this.wrappedType.innerType}`,
             '',
             `{-| Convert ${this.name} into a ${this.wrappedType.innerType} -}`,
             `${unwrapperName} : ${this.name} -> ${this.wrappedType.innerType}`,
             `${unwrapperName} (${this.name} value) =`,
-            `${defaultIndentation}value`,
+                `${defaultIndentation}value`,
             ''
         ];
     }
 };
-
-function generateModuleType(fileName: string): ModuleType {
-    const type = fileName.replace(/^\w+\//, '').replace(/\.elm$/, '');
-    const wrappedType = moduleTypeInnerType.get(type) || stringTypeConstruction;
-    
-    return new ModuleType(type, wrappedType);
-}
 
 type ModuleTypeConstruction = {
     innerType: string;
@@ -176,10 +169,10 @@ function sizeConstructor(input: string): string {
 
 const shadowTypeConstruction: ModuleTypeConstruction = {
     innerType: 'Css.Style',
-    
+
     construct(input: string): string {
         const rgbaRegex = /rgba\(.*\)/;
-        
+
         const color = colorConstructor((input.match(rgbaRegex) || [])[0] || '');
         const sizes = input
             .replace(rgbaRegex, '')
@@ -218,22 +211,26 @@ const moduleTypeInnerType: Map<string, ModuleTypeConstruction> = new Map([
     ['Stroke', pxTypeConstruction]
 ]);
 
+function generateModuleType(fileName: string): ModuleType {
+    const type = fileName.replace(/^\w+\//, '').replace(/\.elm$/, '');
+    const wrappedType = moduleTypeInnerType.get(type) || stringTypeConstruction;
+
+    return new ModuleType(type, wrappedType);
+}
 
 function generateElmConstant(token: TransformedToken, moduleType: ModuleType): Array<string> {
     const name = token.name;
-    
+
     return [
         `{-| ${token.comment || ''} -}`,
         `${name} : ${moduleType.name}`,
         `${name} =`,
-        `${defaultIndentation}${moduleType.name} <| ${moduleType.wrappedType.construct(token.value)}`,
+            `${defaultIndentation}${moduleType.name} <| ${moduleType.wrappedType.construct(token.value)}`,
         '',
         ''
     ];
 }
 
 function asString(input: any): string {
-    const output = input.toString();
-
-    return `\"${output.replaceAll('"', '\\"')}\"`;
+    return `\"${input.toString().replaceAll('"', '\\"')}\"`;
 }

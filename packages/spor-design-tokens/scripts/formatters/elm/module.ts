@@ -63,11 +63,9 @@ class ModuleType {
     imports(): Array<string> {
         const wrapped = this.wrappedType.innerType;
         
-        if (wrapped === 'Float') {
+        if (['Int', 'Float', 'String'].includes(wrapped)) {
             return [];
-        } else if (wrapped === 'String') {
-            return [];
-        }
+        } 
         
         return [ 'import Css' ];
     }
@@ -83,7 +81,10 @@ class ModuleType {
         const wrapped = this.wrappedType.innerType;
 
         let unwrapper = 'toCss';
-        if (wrapped === 'Float') {
+        
+        if (wrapped === 'Int') {
+            unwrapper = 'toInt';
+        } else if (wrapped === 'Float') {
             unwrapper = 'toFloat';
         } else if (wrapped === 'String') {
             unwrapper = 'toString';
@@ -121,38 +122,16 @@ type ModuleTypeConstruction = {
     construct: (input: string) => string;
 };
 
-const colorTypeConstruction: ModuleTypeConstruction = {
-    innerType: 'Css.Color',
-    
-    construct(input: string) {
-        if (input.startsWith('#')) {
-            return `Css.hex ${asString(input)}`
-        } else if (input.startsWith('rgba')) {
-            // remove the first five characters 'rgba(' and the last character ')
-            const args = input.slice(5, -1).split(',').map((s: string) => s.trim());
-            return `Css.rgba ${args[0]} ${args[1]} ${args[2]} ${args[3]}`
-        }
-        
-        throw new Error(`Don\'t know how to handle this color value: ${input}`);
-    }
-};
-
-const pxTypeConstruction: ModuleTypeConstruction = {
-    innerType: 'Css.Px',
-    
-    construct(input: string) {
-        if (input.endsWith('px')) {
-            const rawValue = input.replace(/px$/, '');
-            return `Css.px ${rawValue}`;
-        }
-        
-        throw new Error(`Don\'t know how to handle this size value: ${input}`);
+const intTypeConstruction: ModuleTypeConstruction = {
+    innerType: 'Int',
+    construct(input: string): string {
+        return input;
     }
 };
 
 const floatTypeConstruction: ModuleTypeConstruction = {
     innerType: 'Float',
-    construct(input: string) {
+    construct(input: string): string {
         return input;
     }
 };
@@ -160,6 +139,63 @@ const floatTypeConstruction: ModuleTypeConstruction = {
 const stringTypeConstruction: ModuleTypeConstruction = {
     innerType: 'String',
     construct: asString
+};
+
+const colorTypeConstruction: ModuleTypeConstruction = {
+    innerType: 'Css.Color',
+    construct: colorConstructor
+};
+
+function colorConstructor(input: string): string {
+    if (input.startsWith('#')) {
+        return `Css.hex ${asString(input)}`
+    } else if (input.startsWith('rgba')) {
+        // remove the first five characters 'rgba(' and the last character ')
+        const args = input.slice(5, -1).split(',').map((s: string) => s.trim());
+        return `Css.rgba ${args[0]} ${args[1]} ${args[2]} ${args[3]}`
+    }
+
+    throw new Error(`Don\'t know how to handle this color value: ${input}`);
+}
+
+const pxTypeConstruction: ModuleTypeConstruction = {
+    innerType: 'Css.Px',
+    construct: sizeConstructor
+};
+
+function sizeConstructor(input: string): string {
+    if (input === '0') {
+        return 'Css.zero';
+    } else if (input.endsWith('px')) {
+        const rawValue = input.replace(/px$/, '');
+        return `Css.px ${rawValue}`;
+    }
+
+    throw new Error(`Don\'t know how to handle this size value: ${input}`);
+}
+
+const shadowTypeConstruction: ModuleTypeConstruction = {
+    innerType: 'Css.Style',
+    
+    construct(input: string): string {
+        const rgbaRegex = /rgba\(.*\)/;
+        
+        const color = colorConstructor((input.match(rgbaRegex) || [])[0] || '');
+        const sizes = input
+            .replace(rgbaRegex, '')
+            .trim()
+            .split(/\s/)
+            .map(arg => sizeConstructor(arg));
+
+        const args = sizes.concat(color).map(arg => `(${arg})`);
+
+        switch(args.length) {
+            case 4: return `Css.boxShadow4 ${args.join(' ')}`;
+            case 5: return `Css.boxShadow5 ${args.join(' ')}`;
+            default:
+                throw new Error(`Don\'t know how to handle this box-shadow value: ${input}`);
+        }
+    }
 };
 
 const moduleTypeInnerType: Map<string, ModuleTypeConstruction> = new Map([
@@ -173,6 +209,8 @@ const moduleTypeInnerType: Map<string, ModuleTypeConstruction> = new Map([
     ['Palette', colorTypeConstruction],
     ['Product', colorTypeConstruction],
     ['Text', colorTypeConstruction],
+    ['Shadow', shadowTypeConstruction],
+    ['ZIndex', intTypeConstruction],
     ['BorderRadius', pxTypeConstruction],
     ['Breakpoint', pxTypeConstruction],
     ['LineHeight', floatTypeConstruction],

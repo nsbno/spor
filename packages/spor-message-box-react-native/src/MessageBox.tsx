@@ -11,6 +11,7 @@ import {
   InformationOutline24Icon,
   DeleteCircleOutline24Icon,
   SuccessOutline24Icon,
+  CloseOutline18Icon,
 } from "@vygruppen/spor-icon-react-native";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
@@ -33,7 +34,7 @@ type MessageBoxVariant = "success" | "info" | "error";
 type MessageBoxProps = Exclude<RestyleProps, "variant"> & {
   variant: MessageBoxVariant;
   children: string;
-  close_button?: false | "true" | string;
+  close_button?: false | true | string;
   onPress?: () => void;
 };
 
@@ -67,8 +68,13 @@ export const MessageBox = ({
   return (
     <Box style={style as any} {...rest}>
       <Box flexDirection="row">
-        <Box mr={1}>{icon}</Box>
-        <Text variant="md">{children}</Text>
+        <Box flex={1} flexDirection="row">
+          <Box mr={1}>{icon}</Box>
+          <Text variant="md">{children}</Text>
+        </Box>
+        {close_button === true && (
+          <Box justifyContent="center">{<CloseOutline18Icon />}</Box>
+        )}
       </Box>
     </Box>
   );

@@ -3,6 +3,7 @@ import {
   SporProvider,
   Stack,
   Text,
+  MessageBox,
 } from "@vygruppen/spor-react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
@@ -18,7 +19,6 @@ const App = () => {
           height="100%"
           p={2}
           justifyContent="center"
-          spacing={3}
         >
           <Heading color="darkGrey" variant="2xl" textAlign="center">
             Spor Demo app
@@ -27,6 +27,9 @@ const App = () => {
             Velkommen! Denne appen brukes til demonstrasjon og utvikling av
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
+          <MessageBox variant="error" close_button={true}>
+            hei
+          </MessageBox>
         </Stack>
       </SafeAreaView>
     </SporProvider>

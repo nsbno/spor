@@ -1,4 +1,5 @@
 import { Format, Named, File, TransformedToken } from 'style-dictionary';
+import { unSnake } from '../../transforms/elm/name';
 
 const moduleNamePrefix = 'Spor.Token';
 const defaultIndentation = '    ';
@@ -9,17 +10,15 @@ export const elmFormatter: Named<Format> = {
         const moduleName = generateModuleName(file.options);
         const moduleType = generateModuleType(file.options);
 
-        const exposing = moduleType.exposings().concat(
-            dictionary
-                .allProperties
-                .map((prop) => prop.name)
-        )
-        .join(', ');
+        const complexProps = buildComplexProps(dictionary.allProperties); 
+
+        const exposing = moduleType.exposings()
+            .concat(Array.from(complexProps.keys()))
+            .join(', ');
 
         const definitions = moduleType.definitions().concat(
-            dictionary
-                .allProperties
-                .map((prop) => moduleType.generateElmConstant(prop))
+            Array.from(complexProps.entries())
+                .map(([name, prop]) => moduleType.generateElmConstant(name, prop))
                 .flat()
         );
 
@@ -36,6 +35,35 @@ export const elmFormatter: Named<Format> = {
          .join('\n');
     }
 };
+
+function buildComplexProps(properties: Array<TransformedToken>): Map<string, any> {
+    const result = new Map();
+
+    for (let prop of properties) {
+        if (!prop.attributes) {
+            continue;
+        }
+        
+        const item = unSnake(prop.attributes.item || '');
+        
+        if (prop.attributes.subitem) {
+            const current = result.get(item) || {};
+            
+            current.value =  (current.value ? current.value + ' ' : '') + prop.value;
+            current.comment = current.comment || prop.comment;
+            current[prop.attributes.subitem] = prop.value;
+            
+            result.set(item, current);
+        } else {
+            result.set(item, { 
+                value: prop.value,
+                comment: prop.comment
+            });
+        }
+    }
+    
+    return result;
+}
 
 function generateModuleName(options: any): string {
     return `${moduleNamePrefix}.${options.category}.${options.type}`;
@@ -104,13 +132,13 @@ class ModuleType {
         ];
     }
 
-    generateElmConstant(token: TransformedToken): Array<string> {
+    generateElmConstant(name: string, prop: any): Array<string> {
         return [
-            `{-| ${token.comment || ''}`,
+            `{-| ${prop.comment || ''}`,
             '-}',
-            `${token.name} : ${this.name}`,
-            `${token.name} =`,
-                `${defaultIndentation}${this.name} <| ${this.wrappedType.construct(token.value)}`,
+            `${name} : ${this.name}`,
+            `${name} =`,
+                `${defaultIndentation}${this.name} <| ${this.wrappedType.construct(prop)}`,
             '',
             ''
         ];
@@ -120,21 +148,23 @@ class ModuleType {
 
 const intTypeConstruction: ModuleWrappedType = {
     name: 'Int',
-    construct(input: string): string {
-        return input;
+    construct(prop: any): string {
+        return prop.value;
     }
 };
 
 const floatTypeConstruction: ModuleWrappedType = {
     name: 'Float',
-    construct(input: string): string {
-        return input;
+    construct(prop: any): string {
+        return prop.value;
     }
 };
 
 const stringTypeConstruction: ModuleWrappedType = {
     name: 'String',
-    construct: asString
+    construct(prop: any): string {
+        return asString(prop.value);
+    }
 };
 
 const colorTypeConstruction: ModuleWrappedType = {
@@ -142,7 +172,9 @@ const colorTypeConstruction: ModuleWrappedType = {
     construct: colorConstructor
 };
 
-function colorConstructor(input: string): string {
+function colorConstructor(prop: any): string {
+    const input: string = prop.value;
+    
     if (input.startsWith('#')) {
         return `Css.hex ${asString(input)}`
     } else if (input.startsWith('rgba')) {
@@ -159,7 +191,9 @@ const pxTypeConstruction: ModuleWrappedType = {
     construct: sizeConstructor
 };
 
-function sizeConstructor(input: string): string {
+function sizeConstructor(prop: any): string {
+    const input: string = prop.value;
+    
     if (input === '0') {
         return 'Css.zero';
     } else if (input.endsWith('px')) {
@@ -173,15 +207,16 @@ function sizeConstructor(input: string): string {
 const shadowTypeConstruction: ModuleWrappedType = {
     name: 'Css.Style',
 
-    construct(input: string): string {
+    construct(prop: any): string {
         const rgbaRegex = /rgba\(.*\)/;
 
-        const color = colorConstructor((input.match(rgbaRegex) || [])[0] || '');
+        const input: string = prop.value;
+        const color = colorConstructor({ value: (input.match(rgbaRegex) || [])[0] || ''});
         const sizes = input
             .replace(rgbaRegex, '')
             .trim()
             .split(/\s/)
-            .map(arg => sizeConstructor(arg));
+            .map(arg => sizeConstructor({ value: arg }));
 
         const args = sizes.concat(color).map(arg => `(${arg})`);
 

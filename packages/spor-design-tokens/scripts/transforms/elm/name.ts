@@ -18,7 +18,7 @@ export const elmNameTransformer: Named<Transform> = {
   }
 };
 
-function unSnake(input: string): string {
+export function unSnake(input: string): string {
     return camelCase(input.split('-'));
 }
 

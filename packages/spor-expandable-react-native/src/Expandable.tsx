@@ -62,7 +62,6 @@ export const Expandable = ({
 
   const [isPressed, setIsPressed] = useState(false);
   const pressedStyle = getPressedStyle({ variant: variant, pressedStyle: theme })
-  console.log(pressedStyle)
   const [isExpanded, toggleExpanded] = useState(isInitiallyExpanded)
   function handleToggleIsExpanded() {
     toggleExpanded(!isExpanded)
@@ -74,14 +73,12 @@ export const Expandable = ({
   return (
 
     < Pressable style={isPressed ? pressedStyle as any : style as any}
-      {...props}
+
       onPressIn={() => { onPress() }
       }
       onPressOut={() => setIsPressed(false)}>
       {leftIcon && leftIcon}
-      <Box mr={2} >
-        <Text variant="md"> {label}</Text>
-      </Box>
+      <Text variant="md"> {label}</Text>
       {isExpanded && <ExpandableItem>{children}</ExpandableItem>}
     </Pressable >
 

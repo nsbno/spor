@@ -16,9 +16,7 @@ import {
   StyleSheet,
   Text,
   TextStyle,
-  ViewStyle,
 } from "react-native";
-import tokens from "@vygruppen/spor-design-tokens";
 import { Box } from "@vygruppen/spor-layout-react-native";
 
 const variants = createVariant({

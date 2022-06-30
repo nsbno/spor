@@ -14,9 +14,11 @@ import {
   CloseOutline18Icon,
 } from "@vygruppen/spor-icon-react-native";
 import { Box } from "@vygruppen/spor-layout-react-native";
+import { Button } from "@vygruppen/spor-button-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 import { Text } from "@vygruppen/spor-typography-react-native";
 import React from "react";
+import { Touchable, TouchableOpacity, View } from "react-native";
 
 type Variant = VariantProps<Theme, "messageBoxVariants", "variant">;
 const variant = createVariant({
@@ -31,12 +33,29 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
 ]);
 
 type MessageBoxVariant = "success" | "info" | "error";
-type MessageBoxProps = Exclude<RestyleProps, "variant"> & {
+type MessageBoxProps = BaseProps & ActionProps;
+
+type BaseProps = Exclude<RestyleProps, "variant"> & {
   variant: MessageBoxVariant;
   children: string;
-  close_button?: false | true | string;
-  onPress?: () => void;
 };
+
+type WithCloseButtonProps = {
+  actionType: "close";
+  onPress: () => void;
+};
+
+type WithButtonProps = {
+  actionType: "button";
+  actionText: string;
+  onPress: () => void;
+};
+
+type WithoutButtonProps = {
+  actionType: "none";
+};
+
+type ActionProps = WithCloseButtonProps | WithButtonProps | WithoutButtonProps;
 
 const getIconVariant = (variant: MessageBoxVariant) => {
   switch (variant) {
@@ -51,13 +70,8 @@ const getIconVariant = (variant: MessageBoxVariant) => {
   }
 };
 
-export const MessageBox = ({
-  variant,
-  children,
-  close_button = false,
-  onPress,
-  ...rest
-}: MessageBoxProps) => {
+export const MessageBox = (props: MessageBoxProps) => {
+  const { variant, children, actionType, ...rest } = props;
   const { style } = useRestyle(restyleFunctions, {
     variant,
     ...rest,
@@ -65,6 +79,7 @@ export const MessageBox = ({
 
   const theme = useTheme<Theme>();
   const icon = getIconVariant(variant);
+
   return (
     <Box style={style as any} {...rest}>
       <Box flexDirection="row">
@@ -72,10 +87,35 @@ export const MessageBox = ({
           <Box mr={1}>{icon}</Box>
           <Text variant="md">{children}</Text>
         </Box>
-        {close_button === true && (
-          <Box justifyContent="center">{<CloseOutline18Icon />}</Box>
+
+        {isCloseButtonProps(props) ? (
+          <Box justifyContent="center">
+            <Button variant="ghost" onPress={props.onPress}>
+              <CloseOutline18Icon />
+            </Button>
+          </Box>
+        ) : isButtonProps(props) ? (
+          <Box justifyContent="center">
+            <Button variant="additional" onPress={props.onPress}>
+              {props.actionText}
+            </Button>
+          </Box>
+        ) : (
+          <></>
         )}
       </Box>
     </Box>
   );
 };
+
+function isCloseButtonProps(
+  props: MessageBoxProps
+): props is BaseProps & WithCloseButtonProps {
+  return props.actionType === "close";
+}
+
+function isButtonProps(
+  props: MessageBoxProps
+): props is BaseProps & WithButtonProps {
+  return props.actionType === "button";
+}

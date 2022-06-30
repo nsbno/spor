@@ -10,6 +10,10 @@ import { SafeAreaView } from "react-native";
 /**
  * The entry point of the Spor RN demo app
  */
+const onClose = () => {
+  console.log("hei");
+};
+
 const App = () => {
   return (
     <SporProvider>
@@ -27,9 +31,11 @@ const App = () => {
             Velkommen! Denne appen brukes til demonstrasjon og utvikling av
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
-          <MessageBox variant="error" close_button={true}>
-            hei
-          </MessageBox>
+          <MessageBox
+            variant="error"
+            actionType="button"
+            actionText="Prøv på nytt"
+          ></MessageBox>
         </Stack>
       </SafeAreaView>
     </SporProvider>

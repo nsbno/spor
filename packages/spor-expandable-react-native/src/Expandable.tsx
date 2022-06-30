@@ -28,6 +28,7 @@ const variantPressed = createVariant({ themeKey: "expandableVariantPressed", pro
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacingShorthand,
   variant,
+  variantPressed
 ]);
 
 type ExpandableVariant = "card" | "outline" | "text";
@@ -65,8 +66,7 @@ export const Expandable = ({
     toggleExpanded(!isExpanded)
   }
 
-  const pressedStyle = getPressedStyle({ variant: variant, pressedStyle: theme })
-
+  const { pressedStyle } = getPressedStyle({ variant: variant, pressedStyle: theme })
   return (
 
     < Pressable style={isPressed ? pressedStyle : style as any}
@@ -77,6 +77,7 @@ export const Expandable = ({
       <Box mr={2} >
         <Text variant="md"> {label}</Text>
       </Box>
+      {isPressed && <ExpandableItem>{children}</ExpandableItem>}
     </Pressable >
 
   )
@@ -96,10 +97,9 @@ const getPressedStyle = ({ variant, pressedStyle }: GetPressedStyleArgs) => {
       return pressedStyle.expandableVariantPressed.outline
     case "card":
       console.log([pressedStyle.expandableVariantPressed.card])
-      return [pressedStyle.expandableVariantPressed.card]
+      return pressedStyle.expandableVariantPressed.card
     default:
       return pressedStyle.expandableVariantPressed.default
-
   }
 };
 

@@ -36,6 +36,7 @@ export const expandableVariantPressed = {
         borderWidth: 1,
     },
     card: {
+        backgroundColor: "mint",
         elevation: shadows.elevation.md,
         shadowColor: "black",
         shadowOffset: shadows.offset.md,

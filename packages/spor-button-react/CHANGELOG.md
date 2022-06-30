@@ -1,5 +1,11 @@
 # @vygruppen/spor-button-react
 
+## 0.2.7
+
+### Patch Changes
+
+- @vygruppen/spor-loader-react@0.2.1
+
 ## 0.2.6
 
 ### Patch Changes

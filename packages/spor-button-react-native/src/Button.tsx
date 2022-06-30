@@ -10,7 +10,6 @@ import type { Theme } from "@vygruppen/spor-theme-react-native";
 import { LightInlineLoader } from "@vygruppen/spor-loader-react-native";
 import React, { useState } from "react";
 import {
-  Platform,
   Pressable,
   StyleProp,
   StyleSheet,
@@ -45,15 +44,10 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   variants,
 ]);
 
-const ANDROID_VERSION_LOLLIPOP = 21;
-const ANDROID_SUPPORTS_RIPPLE =
-  Platform.OS === "android" && Platform.Version >= ANDROID_VERSION_LOLLIPOP;
-
 type ButtonProps = Exclude<RestyleProps, "variant"> & {
   variant: ButtonVariant;
-  onPress: () => void;
   children: string;
-  disabled?: boolean;
+  isDisabled?: boolean;
   isLoading?: boolean;
   accessibilityLabel?: string;
 };
@@ -61,22 +55,21 @@ type ButtonProps = Exclude<RestyleProps, "variant"> & {
 /** A button. */
 export const Button = ({
   variant,
-  onPress,
-  disabled = false,
+  isDisabled = false,
   isLoading = false,
   accessibilityLabel,
   children,
   ...rest
 }: ButtonProps) => {
-  const [pressed, setPressed] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
 
   const { style: restyleStyle } = useRestyle(restyleFunctions, {
     variant,
     ...rest,
   });
-  const activeStyle = pressed ? getActiveStyle(variant) : {};
+  const activeStyle = isPressed ? getActiveStyle(variant) : {};
   const disabledAndLoadingStyle =
-    disabled || isLoading ? getDisabledAndLoadingStyle() : {};
+    isDisabled || isLoading ? getDisabledAndLoadingStyle() : {};
 
   const style = [
     restyleStyle,
@@ -85,28 +78,20 @@ export const Button = ({
   ] as StyleProp<TextStyle>;
 
   const flatStyles = StyleSheet.flatten(style);
-  const fontSize = flatStyles.fontSize;
-  const fontWeight = flatStyles.fontWeight;
-  const color = flatStyles.color;
-  const backgroundColor = flatStyles.backgroundColor;
+  const { fontSize, fontWeight, color, backgroundColor } = flatStyles;
 
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityState={{ disabled }}
-      onPressIn={() => setPressed(true)}
-      onPressOut={() => setPressed(false)}
-      onPress={onPress}
-      disabled={disabled}
+      accessibilityState={{ disabled: isDisabled, busy: isLoading }}
+      onPressIn={() => setIsPressed(true)}
+      onPressOut={() => setIsPressed(false)}
+      disabled={isDisabled || isLoading}
       accessibilityLabel={accessibilityLabel}
       style={style}
-      android_ripple={
-        ANDROID_SUPPORTS_RIPPLE
-          ? {
-              color: backgroundColor,
-            }
-          : undefined
-      }
+      android_ripple={{
+        color: backgroundColor,
+      }}
       {...rest}
     >
       <Text style={{ color, fontSize, fontWeight, opacity: isLoading ? 0 : 1 }}>
@@ -120,7 +105,7 @@ export const Button = ({
             alignItems: "center",
           }}
         >
-          <LightInlineLoader height={"75%"} />
+          <LightInlineLoader height="75%" />
         </Box>
       )}
     </Pressable>

@@ -90,7 +90,7 @@ class ModuleType {
         const unwrapperName = this.unwrapperName();
 
         return [
-            '{-| An opaque type representing a ${this.name} value.',
+            `{-| An opaque type representing a ${this.name} value.`,
             '-}',
             `type ${this.name} =`,
             `${defaultIndentation}${this.name} ${this.wrappedType.name}`,

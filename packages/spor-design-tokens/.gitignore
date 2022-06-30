@@ -1,5 +1,5 @@
 # Built tokens
-elmsrc/Vy/Design/Tokens.elm
+elm/src/Spor/Token/*
 react-native
 
 # Dependencies

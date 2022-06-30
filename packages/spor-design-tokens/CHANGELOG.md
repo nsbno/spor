@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.2
+
+### Patch Changes
+
+- f52e583: Improve elm design token code generation
+
 ## 2.4.1
 
 ### Patch Changes

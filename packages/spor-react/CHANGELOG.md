@@ -1,5 +1,48 @@
 # @vygruppen/spor-react
 
+## 0.13.13
+
+### Patch Changes
+
+- Updated dependencies [f52e583]
+  - @vygruppen/spor-design-tokens@2.4.2
+  - @vygruppen/spor-theme-react@0.5.1
+  - @vygruppen/spor-typography-react@0.4.3
+  - @vygruppen/spor-loader-react@0.2.1
+  - @vygruppen/spor-button-react@0.2.7
+  - @vygruppen/spor-popover-react@0.1.13
+  - @vygruppen/spor-stepper-react@0.1.13
+
+## 0.13.12
+
+### Patch Changes
+
+- Updated dependencies [f4943ef]
+  - @vygruppen/spor-accordion-react@0.1.1
+
+## 0.13.11
+
+### Patch Changes
+
+- Updated dependencies [d263565]
+  - @vygruppen/spor-button-react@0.2.6
+  - @vygruppen/spor-popover-react@0.1.12
+  - @vygruppen/spor-stepper-react@0.1.12
+
+## 0.13.10
+
+### Patch Changes
+
+- Updated dependencies [4c4efad]
+- Updated dependencies [305c3ba]
+- Updated dependencies [4019f27]
+  - @vygruppen/spor-icon-react@0.6.0
+  - @vygruppen/spor-accordion-react@0.1.0
+  - @vygruppen/spor-input-react@0.5.1
+  - @vygruppen/spor-link-react@0.1.9
+  - @vygruppen/spor-popover-react@0.1.11
+  - @vygruppen/spor-stepper-react@0.1.11
+
 ## 0.13.9
 
 ### Patch Changes

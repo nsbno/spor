@@ -11,7 +11,7 @@ $ npm install @vygruppen/spor-icon-react
 ## Usage
 
 ```tsx
-import { AddFilled16Icon } from "@vygruppen/spor-icon-react";
+import { AddFill18Icon } from "@vygruppen/spor-icon-react";
 ```
 
 There are lots of icons - close to 1000 at last count. Most icons are designed for one of three to four sizes (12, 18, 24, 30 px), and available in a filled or outlined variant.
@@ -20,6 +20,11 @@ The naming scheme looks something like this:
 
 ```
 {name}{variant}{size}Icon
+```
+
+Then, use the icon(s) as follows:
+```
+<AddFill18Icon />
 ```
 
 ### 🚨 Never import all icons!

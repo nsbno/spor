@@ -31,11 +31,6 @@ const App = () => {
             Velkommen! Denne appen brukes til demonstrasjon og utvikling av
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
-          <MessageBox
-            variant="error"
-            actionType="button"
-            actionText="Prøv på nytt"
-          ></MessageBox>
         </Stack>
       </SafeAreaView>
     </SporProvider>

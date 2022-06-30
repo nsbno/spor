@@ -4,7 +4,6 @@ import {
   spacing,
   SpacingProps,
   useRestyle,
-  useTheme,
   VariantProps,
 } from "@shopify/restyle";
 import {
@@ -18,7 +17,6 @@ import { Button } from "@vygruppen/spor-button-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 import { Text } from "@vygruppen/spor-typography-react-native";
 import React from "react";
-import { Touchable, TouchableOpacity, View } from "react-native";
 
 type Variant = VariantProps<Theme, "messageBoxVariants", "variant">;
 const variant = createVariant({
@@ -77,31 +75,28 @@ export const MessageBox = (props: MessageBoxProps) => {
     ...rest,
   });
 
-  const theme = useTheme<Theme>();
   const icon = getIconVariant(variant);
 
   return (
     <Box style={style as any} {...rest}>
       <Box flexDirection="row">
         <Box flex={1} flexDirection="row">
-          <Box mr={1}>{icon}</Box>
+          <Box mr={1} justifyContent="center">
+            {icon}
+          </Box>
           <Text variant="md">{children}</Text>
         </Box>
 
         {isCloseButtonProps(props) ? (
-          <Box justifyContent="center">
-            <Button variant="ghost" onPress={props.onPress}>
-              <CloseOutline18Icon />
-            </Button>
-          </Box>
-        ) : isButtonProps(props) ? (
-          <Box justifyContent="center">
-            <Button variant="additional" onPress={props.onPress}>
+          <Button size="xs" variant="ghost" onPress={props.onPress}>
+            <CloseOutline18Icon />
+          </Button>
+        ) : (
+          isButtonProps(props) && (
+            <Button size="xs" variant="additional" onPress={props.onPress}>
               {props.actionText}
             </Button>
-          </Box>
-        ) : (
-          <></>
+          )
         )}
       </Box>
     </Box>

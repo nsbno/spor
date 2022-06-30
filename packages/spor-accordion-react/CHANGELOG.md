@@ -1,5 +1,11 @@
 # @vygruppen/spor-accordion-react
 
+## 0.1.1
+
+### Patch Changes
+
+- f4943ef: Make the text and icon centered inside of expandables
+
 ## 0.1.0
 
 ### Minor Changes

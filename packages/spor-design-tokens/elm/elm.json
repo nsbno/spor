@@ -1,0 +1,33 @@
+{
+    "type": "package",
+    "name": "nsbno/spor-design-tokens-elm",
+    "summary": "Design tokens for vy elm applications",
+    "license": "MIT",
+    "version": "1.0.0",
+    "exposed-modules": [
+        "Spor.Token.Color.Alias",
+        "Spor.Token.Color.Background",
+        "Spor.Token.Color.Detail",
+        "Spor.Token.Color.Error",
+        "Spor.Token.Color.Linjetag",
+        "Spor.Token.Color.Main",
+        "Spor.Token.Color.Outline",
+        "Spor.Token.Color.Palette",
+        "Spor.Token.Color.Product",
+        "Spor.Token.Color.Text",
+        "Spor.Token.Depth.Shadow",
+        "Spor.Token.Depth.ZIndex",
+        "Spor.Token.Size.BorderRadius",
+        "Spor.Token.Size.Breakpoint",
+        "Spor.Token.Size.LineHeight",
+        "Spor.Token.Size.Spacing",
+        "Spor.Token.Size.Stroke",
+        "Spor.Token.Time.Transition"
+    ],
+    "elm-version": "0.19.1 <= v < 0.20.0",
+    "dependencies": {
+        "elm/core": "1.0.0 <= v < 2.0.0",
+        "rtfeldman/elm-css": "17.0.0 <= v < 18.0.0"
+    },
+    "test-dependencies": {}
+}

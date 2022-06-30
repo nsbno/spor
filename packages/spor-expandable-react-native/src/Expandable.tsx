@@ -8,23 +8,26 @@ import {
   useRestyle,
   useTheme,
   VariantProps,
+  RestyleFunctionContainer
 } from "@shopify/restyle";
 import React from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 import { Text } from '@vygruppen/spor-typography-react-native';
-import { Pressable } from 'react-native';
+import { Pressable, ViewStyle } from 'react-native';
 import { ExpandableItem } from './ExpandableItem';
 import { DropdownDownFill30Icon } from '@vygruppen/spor-icon-react-native';
 
 
-type Variant = VariantProps<Theme, "expandableVariant", "variant">;
-const variant = createVariant({ themeKey: "expandableVariant" });
+
+
 type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
-  Variant & VariantProps<Theme, "expandableVariantPressed", "pressed">;
-const variantPressed = createVariant({ themeKey: "expandableVariantPressed", property: "pressed" });
+  VariantProps<Theme, "expandableVariant", "variant"> &
+  VariantProps<Theme, "expandableVariantPressed", "pressed">;
 
+const variant = createVariant({ themeKey: "expandableVariant" });
+const variantPressed = createVariant({ themeKey: "expandableVariantPressed" });
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacingShorthand,
   variant,
@@ -51,55 +54,52 @@ export const Expandable = ({
   isInitiallyExpanded = false,
   ...props
 }: ExpandableProps) => {
-
-  const { style } = useRestyle(restyleFunctions, {
-    variant,
-    ...props,
-  });
-  console.log(style)
   const theme = useTheme<Theme>();
 
-  const [isPressed, setIsPressed] = useState(false);
+  const restyleProps: Record<string, any> = { ...props, variant, variantPressed };
 
+  const { style } = useRestyle(restyleFunctions, restyleProps);
+
+  const [isPressed, setIsPressed] = useState(false);
+  const pressedStyle = getPressedStyle({ variant: variant, pressedStyle: theme })
+  console.log(pressedStyle)
   const [isExpanded, toggleExpanded] = useState(isInitiallyExpanded)
   function handleToggleIsExpanded() {
     toggleExpanded(!isExpanded)
   }
-
-  const { pressedStyle } = getPressedStyle({ variant: variant, pressedStyle: theme })
+  function onPress(): void {
+    setIsPressed(true)
+    handleToggleIsExpanded()
+  }
   return (
 
-    < Pressable style={isPressed ? pressedStyle : style as any}
+    < Pressable style={isPressed ? pressedStyle as any : style as any}
       {...props}
-      onPressIn={() => setIsPressed(true)}
+      onPressIn={() => { onPress() }
+      }
       onPressOut={() => setIsPressed(false)}>
       {leftIcon && leftIcon}
       <Box mr={2} >
         <Text variant="md"> {label}</Text>
       </Box>
-      {isPressed && <ExpandableItem>{children}</ExpandableItem>}
+      {isExpanded && <ExpandableItem>{children}</ExpandableItem>}
     </Pressable >
 
   )
 }
 
-
-
 type GetPressedStyleArgs = {
   variant: ExpandableVariant;
   pressedStyle: Theme;
 };
-const getPressedStyle = ({ variant, pressedStyle }: GetPressedStyleArgs) => {
-
+function getPressedStyle({ variant, pressedStyle }: GetPressedStyleArgs): any {
   switch (variant) {
     case "outline":
-      console.log(pressedStyle.expandableVariantPressed.outline)
       return pressedStyle.expandableVariantPressed.outline
     case "card":
-      console.log([pressedStyle.expandableVariantPressed.card])
       return pressedStyle.expandableVariantPressed.card
     default:
-      return pressedStyle.expandableVariantPressed.default
+      return pressedStyle.expandableVariantPressed.defaults
   }
 };
 

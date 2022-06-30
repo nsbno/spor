@@ -5,6 +5,9 @@ export const expandableVariant = {
         borderRadius: "sm",
         padding: 2,
     },
+    text: {
+
+    },
 
     outline: {
         borderColor: "osloGrey",

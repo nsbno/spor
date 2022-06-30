@@ -113,37 +113,3 @@ export const Button = ({
     </Pressable>
   );
 };
-
-function getDisabledAndLoadingStyle(): StyleProp<TextStyle> {
-  return {
-    color: tokens.color.alias.dimGrey.value,
-    backgroundColor: tokens.color.alias.silver.value,
-    borderWidth: 0,
-  };
-}
-
-function getActiveStyle(variant: ButtonVariant): StyleProp<ViewStyle> {
-  switch (variant) {
-    case "primary":
-      return {
-        backgroundColor: tokens.color.alias.azure.value,
-      };
-    case "control":
-      return {
-        backgroundColor: tokens.color.alias.pine.value,
-      };
-    case "tertiary":
-      return {
-        backgroundColor: tokens.color.alias.lightGrey.value,
-      };
-    case "additional":
-      return {
-        backgroundColor: tokens.color.alias.mint.value,
-        borderColor: tokens.color.alias.darkGrey.value,
-      };
-    default:
-      return {
-        backgroundColor: tokens.color.alias.mint.value,
-      };
-  }
-}

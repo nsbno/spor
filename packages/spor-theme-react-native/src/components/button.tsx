@@ -33,6 +33,39 @@ export const buttonVariants = {
     borderColor: "blackAlpha.400",
     borderStyle: "solid",
   },
+  ghost: {
+    backgroundColor: "transparent",
+    color: "darkGrey",
+    fontWeight: "normal",
+  },
+};
+
+export const buttonVariantsActive = {
+  control: {
+    backgroundColor: "#00685e",
+  },
+  primary: {
+    backgroundColor: "#38b49e",
+  },
+  secondary: {
+    backgroundColor: "#e5f4f1",
+  },
+  tertiary: {
+    backgroundColor: "#F5F5F5",
+  },
+  additional: {
+    backgroundColor: "#e5f4f1",
+    borderColor: "#2b2b2c",
+  },
+  ghost: {
+    backgroundColor: "#e5f4f1",
+  },
+};
+
+export const buttonVariantsDisabled = {
+  color: "#606568",
+  backgroundColor: "#D7D8D9",
+  borderWidth: 0,
 };
 
 export const buttonSizes = {

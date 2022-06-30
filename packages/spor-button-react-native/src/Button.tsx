@@ -4,6 +4,7 @@ import {
   spacing,
   SpacingProps,
   useRestyle,
+  useTheme,
   VariantProps,
 } from "@shopify/restyle";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
@@ -63,13 +64,14 @@ export const Button = ({
 }: ButtonProps) => {
   const [isPressed, setIsPressed] = useState(false);
 
+  const { buttonVariantsActive, buttonVariantsDisabled } = useTheme();
   const { style: restyleStyle } = useRestyle(restyleFunctions, {
     variant,
     ...rest,
   });
-  const activeStyle = isPressed ? getActiveStyle(variant) : {};
+  const activeStyle = isPressed ? buttonVariantsActive[variant] : {};
   const disabledAndLoadingStyle =
-    isDisabled || isLoading ? getDisabledAndLoadingStyle() : {};
+    isDisabled || isLoading ? buttonVariantsDisabled : {};
 
   const style = [
     restyleStyle,

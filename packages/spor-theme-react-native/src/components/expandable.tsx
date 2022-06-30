@@ -1,3 +1,4 @@
+import { shadows } from "../foundations/shadows";
 
 export const expandableVariant = {
     defaults: {
@@ -6,10 +7,18 @@ export const expandableVariant = {
     },
 
     outline: {
-        backgroundColor: "mint",
+        borderColor: "osloGrey",
+        borderStyle: "solid",
+        borderWidth: 1,
+
     },
     card: {
-        boxShadow: "sm"
+        backgroundColor: "white",
+        elevation: shadows.elevation.md,
+        shadowColor: "black",
+        shadowOffset: shadows.offset.md,
+        shadowRadius: shadows.radius.md,
+        shadowOpacity: shadows.opacity.md,
 
     },
 
@@ -19,17 +28,19 @@ export const expandableVariantPressed = {
         borderRadius: "sm",
         padding: 2,
         backgroundColor: "mint",
-
     },
 
     outline: {
-        border: "sm",
-        borderColor: "dimGrey",
-        borderWidth: 2,
+        borderColor: "darkGrey",
+        borderStyle: "solid",
+        borderWidth: 1,
     },
     card: {
-        borderRadius: "sm",
-        boxShadow: "sm"
+        elevation: shadows.elevation.md,
+        shadowColor: "black",
+        shadowOffset: shadows.offset.md,
+        shadowRadius: shadows.radius.md,
+        shadowOpacity: shadows.opacity.md,
     },
 }
 

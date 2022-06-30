@@ -48,7 +48,7 @@ export default {
         "size/px",
         "color/css"
       ],
-      "files": tokens.map(tokenFile => {
+      "files": tokens.filter(f => !['font', 'family', 'style'].includes(f.type)).map(tokenFile => {
         const category = pascalCase(tokenFile.category);
         const type = pascalCase(tokenFile.type);
         

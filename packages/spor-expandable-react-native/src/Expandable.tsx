@@ -66,7 +66,7 @@ export const Expandable = ({
   }
 
   return (
-    <Box style={style as any} >
+    <Box style={style as any}>
       < Pressable style={isPressed ? pressedStyle : { padding: 12 }}
         onPressIn={() => { onPress() }}
         onPressOut={() => setIsPressed(false)}>
@@ -77,7 +77,7 @@ export const Expandable = ({
         </Box  >
       </Pressable >
       {isExpanded && <ExpandableItem>{children}</ExpandableItem>}
-    </Box>
+    </Box >
 
   )
 }
@@ -104,17 +104,10 @@ function getSizeOfDrowDownDownIcon(size: string) {
   }
 }
 
-
-
 function getDropdownUpIcon(isExpanded: Boolean, size: string) {
   if (isExpanded) {
     return getSizeOfDrowDownUpIcon(size)
   } else {
     return getSizeOfDrowDownDownIcon(size)
-
   }
 }
-
-
-
-

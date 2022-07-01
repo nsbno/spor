@@ -8,28 +8,28 @@ import {
   useRestyle,
   useTheme,
   VariantProps,
-  RestyleFunctionContainer
 } from "@shopify/restyle";
 import React from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 import { Text } from '@vygruppen/spor-typography-react-native';
-import { Pressable, ViewStyle } from 'react-native';
+import { Pressable } from 'react-native';
 import { ExpandableItem } from './ExpandableItem';
-import { DropdownDownFill30Icon, DropdownUpFill30Icon } from '@vygruppen/spor-icon-react-native';
+import { DropdownDownFill18Icon, DropdownUpFill18Icon, DropdownUpFill24Icon, DropdownDownFill24Icon, DropdownDownFill30Icon, DropdownUpFill30Icon } from '@vygruppen/spor-icon-react-native';
 
 
 type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
   VariantProps<Theme, "expandableVariant", "variant">
-
 const variant = createVariant({ themeKey: "expandableVariant" });
+
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacingShorthand,
   variant
 ]);
 
 type ExpandableVariant = "card" | "outline" | "text";
+type ExpandableSize = "sm" | "md";
 
 type ExpandableProps = Exclude<RestyleProps, "variant"> & {
   label: string,
@@ -37,6 +37,7 @@ type ExpandableProps = Exclude<RestyleProps, "variant"> & {
   leftIcon?: JSX.Element,
   variant: ExpandableVariant,
   isInitiallyExpanded?: Boolean
+  size?: ExpandableSize,
   onToggleIsExpanded?: (isExpanding: boolean) => void
 };
 
@@ -46,15 +47,13 @@ export const Expandable = ({
   onToggleIsExpanded,
   variant,
   children,
+  size = "sm",
   isInitiallyExpanded = false,
   ...props
 }: ExpandableProps) => {
   const theme = useTheme<Theme>();
-
   const restyleProps: Record<string, any> = { ...props, variant };
-
   const { style } = useRestyle(restyleFunctions, restyleProps);
-
   const [isPressed, setIsPressed] = useState(false);
   const pressedStyle = theme.getExpandableVariantPressedState(variant)
   const [isExpanded, toggleExpanded] = useState(isInitiallyExpanded)
@@ -66,24 +65,54 @@ export const Expandable = ({
     handleToggleIsExpanded()
   }
   return (
-
-    < Pressable style={[style, isPressed ? pressedStyle : undefined]}
-
-      onPressIn={() => { onPress() }
-      }
-      onPressOut={() => setIsPressed(false)}>
-      <Box style={{ flexDirection: "row", justifyContent: "space-between" }}>
-        {leftIcon && leftIcon}
-        <Text variant="md"> {label}</Text>
-        <DropdownDownFill30Icon></DropdownDownFill30Icon>
-      </Box>
+    <Box style={style as any} >
+      < Pressable style={isPressed ? pressedStyle : {}}
+        onPressIn={() => { onPress() }}
+        onPressOut={() => setIsPressed(false)}>
+        <Box style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          {leftIcon && leftIcon}
+          <Text variant={size} fontWeight="bold"> {label}</Text>
+          {getDropdownUpIcon(isExpanded, size)}
+        </Box  >
+      </Pressable >
       {isExpanded && <ExpandableItem>{children}</ExpandableItem>}
-    </Pressable >
+    </Box>
 
   )
 }
 
+function getSizeOfDrowDownUpIcon(size: string) {
+  switch (size) {
+    case "sm":
+      return <DropdownUpFill18Icon></DropdownUpFill18Icon>
+    case "md":
+      return <DropdownUpFill24Icon></DropdownUpFill24Icon>
+    default:
+      null
+  }
+}
 
+function getSizeOfDrowDownDownIcon(size: string) {
+  switch (size) {
+    case "sm":
+      return <DropdownDownFill18Icon></DropdownDownFill18Icon>
+    case "md":
+      return <DropdownDownFill24Icon></DropdownDownFill24Icon>
+    default:
+      null
+  }
+}
+
+
+
+function getDropdownUpIcon(isExpanded: Boolean, size: string) {
+  if (isExpanded) {
+    return getSizeOfDrowDownUpIcon(size)
+  } else {
+    return getSizeOfDrowDownDownIcon(size)
+
+  }
+}
 
 
 

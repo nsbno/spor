@@ -50,15 +50,3 @@ const expandableVariantPressed = {
         shadowOpacity: shadows.opacity.sm,
     },
 }
-
-export const expandableSize = {
-    sm: {
-
-    },
-    md: {
-
-    },
-    lg: {
-
-    }
-}

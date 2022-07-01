@@ -64,9 +64,10 @@ export const Expandable = ({
     setIsPressed(true)
     handleToggleIsExpanded()
   }
+
   return (
     <Box style={style as any} >
-      < Pressable style={isPressed ? pressedStyle : {}}
+      < Pressable style={isPressed ? pressedStyle : { padding: 12 }}
         onPressIn={() => { onPress() }}
         onPressOut={() => setIsPressed(false)}>
         <Box style={{ flexDirection: "row", justifyContent: "space-between" }}>

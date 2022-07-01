@@ -1,14 +1,13 @@
-import { shadows } from "../foundations/shadows";
-import { colors } from "../foundations/colors";
-
+import { shadows } from "@vygruppen/spor-theme-react-native/src/foundations/shadows";
+import { colors } from "@vygruppen/spor-theme-react-native/src/foundations/colors";
+import { borderRadii } from "@vygruppen/spor-theme-react-native/src/foundations/borderRadii";
+import { spacing } from "@vygruppen/spor-theme-react-native/src/foundations/spacing";
 
 export const expandableVariant = {
     defaults: {
         borderRadius: "sm",
-        padding: 2,
     },
     text: {
-
     },
 
     outline: {
@@ -34,6 +33,8 @@ export function getExpandableVariantPressedState(variant: "card" | "outline" | "
 const expandableVariantPressed = {
     defaults: {
         backgroundColor: colors.mint,
+        borderRadius: borderRadii.sm,
+        padding: spacing.sm,
     },
     text: {
 

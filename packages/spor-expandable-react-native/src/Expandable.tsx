@@ -32,7 +32,7 @@ type ExpandableVariant = "card" | "outline" | "list";
 type ExpandableSize = "sm" | "md" | "lg";
 
 type ExpandableProps = Exclude<RestyleProps, "variant"> & {
-  label: string,
+  title: string,
   children?: React.ReactNode,
   leftIcon?: JSX.Element,
   variant: ExpandableVariant,
@@ -42,7 +42,7 @@ type ExpandableProps = Exclude<RestyleProps, "variant"> & {
 };
 
 export const Expandable = ({
-  label,
+  title,
   leftIcon,
   onToggleIsExpanded,
   variant,
@@ -72,7 +72,7 @@ export const Expandable = ({
         onPressOut={() => setPressed(false)}>
         <Box style={{ flexDirection: "row", justifyContent: "space-between" }}>
           {leftIcon}
-          <Text variant={size} fontWeight="bold"> {label}</Text>
+          <Text variant={size} fontWeight="bold"> {title}</Text>
           {getDropdownUpIcon(isExpanded, size)}
         </Box  >
       </Pressable >

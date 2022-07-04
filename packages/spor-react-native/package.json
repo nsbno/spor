@@ -28,7 +28,7 @@
     "@vygruppen/spor-provider-react-native": "*",
     "@vygruppen/spor-theme-react-native": "*",
     "@vygruppen/spor-typography-react-native": "*",
-    "@vygruppen/spor-expandable-react-native": "*"
+    "@vygruppen/spor-accordion-react-native": "*"
   },
   "devDependencies": {
     "react": ">17.0.0",

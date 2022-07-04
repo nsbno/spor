@@ -1,19 +1,18 @@
 # Expandable (React Native)
 
-TODO: Add description
+Accordions, or expandables, are used to show and hide information one step at a time.
 
 ## Installation
 
 ```bash
-$ npm install @vygruppen/spor-expandable-react-native
+$ npm install @vygruppen/spor-accordion-react-native
 ```
 
 ## Usage
 
 ```tsx
-import { } from "@vygruppen/spor-expandable-react-native";
+import { Expandable } from "@vygruppen/spor-accordion-react-native";
 ```
-TODO: Add usage description
 
 ## Development
 

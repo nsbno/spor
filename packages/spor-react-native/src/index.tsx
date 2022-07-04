@@ -6,4 +6,4 @@ export * from "@vygruppen/spor-loader-react-native";
 export * from "@vygruppen/spor-provider-react-native";
 export * from "@vygruppen/spor-theme-react-native";
 export * from "@vygruppen/spor-typography-react-native";
-export * from "@vygruppen/spor-expandable-react-native";
+export * from "@vygruppen/spor-accordion-react-native";

@@ -44,6 +44,7 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
 ]);
 
 type ButtonProps = Exclude<RestyleProps, "variant"> & {
+  onPress: () => void;
   variant: ButtonVariant;
   children: string;
   isDisabled?: boolean;
@@ -55,6 +56,7 @@ type ButtonProps = Exclude<RestyleProps, "variant"> & {
 
 /** A button. */
 export const Button = ({
+  onPress,
   variant,
   isDisabled = false,
   isLoading = false,
@@ -90,6 +92,7 @@ export const Button = ({
       accessibilityState={{ disabled: isDisabled, busy: isLoading }}
       onPressIn={() => setIsPressed(true)}
       onPressOut={() => setIsPressed(false)}
+      onPress={onPress}
       disabled={isDisabled || isLoading}
       accessibilityLabel={accessibilityLabel}
       style={style}

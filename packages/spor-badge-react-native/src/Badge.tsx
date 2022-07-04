@@ -53,8 +53,9 @@ export const Badge = ({
   let width = 0;
   borderStyle ? (width = 1) : (width = 0);
   return (
-    <Box borderWidth={width} style={style as any} {...props}>
-      <Box paddingRight={0.5}>{icon}</Box>
+    <Box borderWidth={1} style={style as any} {...props}>
+      {icon && <Box paddingRight={0.5}>{icon}</Box>}
+
       <Text variant="xs" fontWeight="bold">
         {children}
       </Text>

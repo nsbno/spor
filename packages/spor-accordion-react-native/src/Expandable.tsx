@@ -68,9 +68,9 @@ export const Expandable = ({
   return (
     <Box style={style as any} mb={2}>
       < Pressable style={isPressed ? pressedStyle : { padding: 12 }}
-        onPressIn={() => { onPress() }}
+        onPressIn={onPress}
         onPressOut={() => setPressed(false)}>
-        <Box style={{ flexDirection: "row", justifyContent: "space-between" }}>
+        <Box flexDirection="row" justifyContent="space-between">
           {leftIcon}
           <Text variant={size} fontWeight="bold"> {title}</Text>
           {getDropdownUpIcon(isExpanded, size)}

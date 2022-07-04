@@ -1,5 +1,5 @@
 {
-  "name": "@vygruppen/spor-expandable-react-native",
+  "name": "@vygruppen/spor-accordion-react-native",
   "version": "0.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,11 +8,11 @@
     "dist"
   ],
   "sideEffects": false,
-  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-expandable-react-native",
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-accordion-react-native",
   "repository": {
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
-    "directory": "packages/spor-expandable-react-native"
+    "directory": "packages/spor-accordion-react-native"
   },
   "scripts": {
     "build": "tsup src/index.tsx --dts",

@@ -28,27 +28,32 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
 
 type BadgeProps = Exclude<RestyleProps, "variant"> & {
   children: string;
-  variant?: "yellow";
-  /* | "light-yellow"
+  variant?:
+    | "yellow"
+    | "light-yellow"
     | "red"
     | "green"
     | "orange"
     | "blue"
     | "grey"
-    | "white" */
-  borderStyle?: "solid" | "outline";
-  //icon?: React.ReactElement;
+    | "white";
+  borderStyle: boolean;
+  icon?: React.ReactElement;
 };
 
 export const Badge = ({
-  variant,
   children,
-  borderStyle,
+  borderStyle = false,
+  variant,
+  icon,
   ...props
 }: BadgeProps) => {
   const { style } = useRestyle(restyleFunctions, { variant, ...props });
+  let width = 0;
+  borderStyle ? (width = 2) : (width = 0);
   return (
-    <Box style={style as any} {...props}>
+    <Box borderWidth={width} style={style as any} {...props}>
+      <Box></Box>
       <Text>Hi there</Text>
     </Box>
   );

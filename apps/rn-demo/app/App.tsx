@@ -28,7 +28,9 @@ const App = () => {
             Velkommen! Denne appen brukes til demonstrasjon og utvikling av
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
-          <Badge variant="yellow">Hei</Badge>
+          <Badge borderStyle={true} variant="white">
+            Hei
+          </Badge>
         </Stack>
       </SafeAreaView>
     </SporProvider>

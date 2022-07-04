@@ -1,4 +1,5 @@
 import {
+  END_DATE,
   MonthType,
   OnDatesChangeProps,
   START_DATE,
@@ -12,14 +13,14 @@ import {
   Day,
   dayLabelFormat,
   isToday,
-  isValidDateObject,
   useNextDays,
   usePreviousDays,
 } from "./datepicker-utils";
 
 type DatepickerContextType = {
-  selectedDate: Date | null;
-  setSelectedDate: (date: Date) => void;
+  state: DatepickerState;
+  setStartDate: (date: Date | null) => void;
+  setEndDate: (date: Date | null) => void;
   isDateSelected: (date: Date) => boolean;
   isDateHovered: (date: Date) => boolean;
   isFirstOrLastSelectedDate: (date: Date) => boolean;
@@ -44,12 +45,15 @@ export const DatepickerContext = React.createContext<
 >(undefined);
 
 export type DatepickerControlProps = {
-  value?: Date;
-  onChange?: (date: Date) => void;
-  defaultValue?: Date;
+  startDate?: Date;
+  endDate?: Date;
+  onChange?: (args: { startDate: Date | null; endDate: Date | null }) => void;
+  defaultStartDate?: Date;
+  defaultEndDate?: Date;
   min?: Date;
   max?: Date;
   children: React.ReactNode;
+  mode: "single" | "range";
 };
 
 type DatepickerState = {
@@ -59,47 +63,49 @@ type DatepickerState = {
 };
 
 export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
-  value,
+  startDate,
+  endDate,
+  defaultStartDate,
+  defaultEndDate,
   onChange = () => {},
-  defaultValue,
   children,
   min,
   max,
+  mode,
 }: DatepickerControlProps) => {
-  const [selectedDate, setSelectedDate] = useState<Date>(
-    value ?? defaultValue ?? new Date()
-  );
   const [datepickerState, setDatepickerState] = useState<DatepickerState>({
-    startDate: selectedDate,
-    endDate: selectedDate,
+    startDate: startDate ?? defaultStartDate ?? new Date(),
+    endDate: endDate ?? defaultEndDate ?? null,
     focusedInput: START_DATE,
   });
 
   useEffect(() => {
-    if (isValidDateObject(value)) {
-      setSelectedDate(value);
+    if (startDate && endDate) {
       setDatepickerState({
-        startDate: value,
-        endDate: value,
+        startDate: startDate,
+        endDate: endDate,
+        focusedInput: START_DATE,
+      });
+    } else if (startDate) {
+      setDatepickerState({
+        startDate: startDate,
+        endDate: startDate,
         focusedInput: START_DATE,
       });
     }
-  }, [value]);
+  }, [startDate]);
 
   const handleDateChange = ({
     startDate,
     endDate,
     focusedInput,
   }: OnDatesChangeProps) => {
-    if (startDate) {
-      setSelectedDate(startDate);
-      onChange(startDate);
-      setDatepickerState({
-        startDate,
-        endDate,
-        focusedInput: focusedInput || START_DATE,
-      });
-    }
+    setDatepickerState({
+      startDate,
+      endDate,
+      focusedInput: focusedInput || START_DATE,
+    });
+    onChange({ startDate, endDate });
   };
 
   const {
@@ -124,6 +130,8 @@ export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
     onDatesChange: handleDateChange,
     minBookingDate: min,
     maxBookingDate: max,
+    exactMinBookingDays: mode === "single",
+    minBookingDays: 1,
   });
   const { month, year } = activeMonths[0];
   const monthProps = {
@@ -139,8 +147,19 @@ export const DatepickerProvider: React.FC<DatepickerControlProps> = ({
   return (
     <DatepickerContext.Provider
       value={{
-        selectedDate,
-        setSelectedDate,
+        state: datepickerState,
+        setStartDate: (startDate: Date | null) =>
+          setDatepickerState({
+            startDate,
+            endDate: null,
+            focusedInput: START_DATE,
+          }),
+        setEndDate: (endDate: Date | null) =>
+          setDatepickerState((prev) => ({
+            startDate: prev.startDate,
+            endDate,
+            focusedInput: mode === "single" ? START_DATE : END_DATE,
+          })),
         isDateSelected,
         isDateHovered,
         isFirstOrLastSelectedDate,

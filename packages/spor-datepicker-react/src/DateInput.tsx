@@ -14,27 +14,53 @@ import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import { Input } from "@vygruppen/spor-input-react";
 import React from "react";
 import { parseDateString } from "./datepicker-utils";
-import { useDatepicker } from "./DatepickerContext";
 
-type DateInputProps = BoxProps & { label?: string };
-export const DateInput = (props: DateInputProps) => {
-  const { dateString, onDateStringChange, onDateSelected } =
-    useControlledDatepicker();
+type DateInputProps = {
+  label?: string;
+  /** The currently selected date */
+  value: Date | null;
+  /** When a date is selected, i.e. on blur */
+  onChange: (date: Date) => void | null;
+  /** The height of the input field */
+  height: BoxProps["height"];
+};
+export const DateInput = ({
+  value,
+  onChange,
+  label,
+  height = "3.5rem",
+}: DateInputProps) => {
+  const formattedDate = value?.toLocaleDateString("nb-NO") ?? "";
+  const [dateString, setDateString] = React.useState(formattedDate);
+
+  React.useEffect(() => {
+    if (formattedDate) {
+      setDateString(formattedDate);
+    }
+  }, [formattedDate]);
+
+  const onDateSelected = () => {
+    const newDate = parseDateString(dateString);
+    if (newDate) {
+      onChange(newDate);
+    }
+  };
+
   const styles = useStyles();
   const { t } = useTranslation();
   const breakpoint = useBreakpoint("base");
   const formControlProps = useFormControl({});
 
   return (
-    <InputGroup height={props.height}>
+    <InputGroup height={height}>
       {breakpoint === "base" ? (
         <>
           <PopoverAnchor>
             <Input
               aria-invalid={formControlProps["aria-invalid"]}
-              label={props.label ?? t(texts.date)}
+              label={label ?? t(texts.date)}
               value={dateString}
-              onChange={(e) => onDateStringChange(e.target.value)}
+              onChange={(e) => setDateString(e.target.value)}
               onBlur={onDateSelected}
               sx={styles.input}
             />
@@ -55,9 +81,9 @@ export const DateInput = (props: DateInputProps) => {
           <Input
             aria-invalid={formControlProps["aria-invalid"]}
             leftIcon={<CalendarOutline24Icon />}
-            label={props.label ?? t(texts.date)}
+            label={label ?? t(texts.date)}
             value={dateString}
-            onChange={(e) => onDateStringChange(e.target.value)}
+            onChange={(e) => setDateString(e.target.value)}
             onBlur={onDateSelected}
             sx={styles.input}
           />
@@ -78,27 +104,4 @@ const texts = {
     sv: "Kalender",
     en: "Calendar",
   },
-};
-
-const useControlledDatepicker = () => {
-  const { selectedDate, setSelectedDate, onDateSelect } = useDatepicker();
-  const formattedDate = selectedDate?.toLocaleDateString("nb-NO");
-  const [dateString, setDateString] = React.useState(formattedDate);
-  React.useEffect(() => {
-    if (formattedDate) {
-      setDateString(formattedDate);
-    }
-  }, [formattedDate]);
-
-  return {
-    dateString,
-    onDateStringChange: setDateString,
-    onDateSelected: () => {
-      const newDate = parseDateString(dateString);
-      if (newDate) {
-        setSelectedDate(newDate);
-        onDateSelect(newDate);
-      }
-    },
-  };
 };

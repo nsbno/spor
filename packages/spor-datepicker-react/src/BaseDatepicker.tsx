@@ -46,14 +46,15 @@ type DatepickerProps = DatepickerControlProps & BoxProps & { label?: string };
  * <Datepicker label="Departure" />
  * ```
  */
-export const Datepicker = ({
+export const BaseDatepicker = ({
   value,
   onChange,
   defaultValue,
   min,
   max,
-  height = "3.5rem",
+  height,
   label,
+  mode,
   ...boxProps
 }: DatepickerProps) => {
   const formControlProps = useFormControl(boxProps);
@@ -68,6 +69,7 @@ export const Datepicker = ({
       defaultValue={defaultValue}
       min={min}
       max={max}
+      mode={mode}
     >
       <Box {...boxProps}>
         <Popover placement="bottom-start">

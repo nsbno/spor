@@ -54,22 +54,22 @@ export const Expandable = ({
   const theme = useTheme<Theme>();
   const restyleProps: Record<string, any> = { ...props, variant };
   const { style } = useRestyle(restyleFunctions, restyleProps);
-  const [isPressed, setIsPressed] = useState(false);
+  const [isPressed, setPressed] = useState(false);
   const pressedStyle = theme.getExpandableVariantPressedState(variant)
   const [isExpanded, toggleExpanded] = useState(isInitiallyExpanded)
   function handleToggleIsExpanded() {
     toggleExpanded(!isExpanded)
   }
   function onPress(): void {
-    setIsPressed(true)
+    setPressed(true)
     handleToggleIsExpanded()
   }
 
   return (
-    <Box style={style as any}>
+    <Box style={style as any} mb={2}>
       < Pressable style={isPressed ? pressedStyle : { padding: 12 }}
         onPressIn={() => { onPress() }}
-        onPressOut={() => setIsPressed(false)}>
+        onPressOut={() => setPressed(false)}>
         <Box style={{ flexDirection: "row", justifyContent: "space-between" }}>
           {leftIcon && leftIcon}
           <Text variant={size} fontWeight="bold"> {label}</Text>

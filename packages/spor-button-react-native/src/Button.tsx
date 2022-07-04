@@ -101,13 +101,13 @@ export const Button = ({
       <Box
         style={{
           flexDirection: "row",
-          alignContent: "center",
+          alignItems: "center",
           opacity: isLoading ? 0 : 1,
         }}
       >
         {leftIcon && (
           <Box marginRight={1} style={{ marginLeft: -6 }}>
-            {leftIcon}
+            <leftIcon.type {...leftIcon.props} {...{ color }} />
           </Box>
         )}
         <Text
@@ -121,7 +121,7 @@ export const Button = ({
         </Text>
         {rightIcon && (
           <Box marginLeft={1} style={{ marginRight: -6 }}>
-            {rightIcon}
+            <rightIcon.type {...rightIcon.props} {...{ color }} />
           </Box>
         )}
       </Box>
@@ -132,6 +132,8 @@ export const Button = ({
             position: "absolute",
             justifyContent: "center",
             alignItems: "center",
+            top: 0,
+            bottom: 0,
           }}
         >
           <ColorInlineLoader height="75%" />

@@ -5,6 +5,7 @@ export const badgeColorSchemes = {
     paddingTop: 0.5,
     paddingBottom: 0.5,
     borderRadius: "xl",
+    height: 24,
     alignSelf: "center",
     flexDirection: "row",
     alignItems: "center",
@@ -14,7 +15,7 @@ export const badgeColorSchemes = {
     borderColor: "darkGrey",
   },
   "light-yellow": {
-    backgroundColor: "bold",
+    backgroundColor: "blonde",
     borderColor: "golden",
   },
   green: {

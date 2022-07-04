@@ -5,4 +5,4 @@
 "@vygruppen/spor-theme-react-native": patch
 ---
 
-Oppdaterer knappe-komponent
+Oppdaterer Button-komponent

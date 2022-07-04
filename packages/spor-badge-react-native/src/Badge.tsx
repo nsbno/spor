@@ -6,34 +6,49 @@ import {
   SpacingShorthandProps,
   VariantProps,
   createVariant,
+  useRestyle,
+  composeRestyleFunctions,
+  spacing,
+  spacingShorthand,
 } from "@shopify/restyle";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 
-type Variant = VariantProps<Theme, "badgeColorSchemes", "colorScheme">;
-const colorScheme = createVariant({ themeKey: "badgeColorSchemes" });
+type Variant = VariantProps<Theme, "badgeColorSchemes", "variant">;
+const variant = createVariant({ themeKey: "badgeColorSchemes" });
 
 type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
   Variant;
 
+const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
+  spacing,
+  spacingShorthand,
+  variant,
+]);
+
 type BadgeProps = Exclude<RestyleProps, "variant"> & {
   children: string;
-  colorScheme?:
-    | "yellow"
-    | "light-yellow"
+  variant?: "yellow";
+  /* | "light-yellow"
     | "red"
     | "green"
     | "orange"
     | "blue"
     | "grey"
-    | "white";
-  variant?: "soild" | "outline";
-  icon?: React.ReactElement;
+    | "white" */
+  borderStyle?: "solid" | "outline";
+  //icon?: React.ReactElement;
 };
 
-export const Badge = ({ variant, colorScheme, ...props }: BadgeProps) => {
+export const Badge = ({
+  variant,
+  children,
+  borderStyle,
+  ...props
+}: BadgeProps) => {
+  const { style } = useRestyle(restyleFunctions, { variant, ...props });
   return (
-    <Box>
+    <Box style={style as any} {...props}>
       <Text>Hi there</Text>
     </Box>
   );

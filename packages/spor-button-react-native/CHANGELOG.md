@@ -1,5 +1,11 @@
 # @vygruppen/spor-button-react-native
 
+## 0.1.8
+
+### Patch Changes
+
+- f94e141: Liten bugfiks på Button
+
 ## 0.1.7
 
 ### Patch Changes

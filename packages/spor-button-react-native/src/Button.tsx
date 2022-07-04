@@ -8,7 +8,7 @@ import {
   VariantProps,
 } from "@shopify/restyle";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
-import { LightInlineLoader } from "@vygruppen/spor-loader-react-native";
+import { ColorInlineLoader } from "@vygruppen/spor-loader-react-native";
 import React, { useState } from "react";
 import {
   Pressable,
@@ -92,24 +92,40 @@ export const Button = ({
       onPressOut={() => setIsPressed(false)}
       disabled={isDisabled || isLoading}
       accessibilityLabel={accessibilityLabel}
-      style={[{ flexDirection: "row", alignContent: "center" }, style]}
+      style={style}
       android_ripple={{
         color: backgroundColor,
       }}
       {...rest}
     >
-      {leftIcon && <Box marginRight={1}>{leftIcon}</Box>}
-      <Text
+      <Box
         style={{
-          color,
-          fontSize,
-          fontWeight,
+          flexDirection: "row",
+          alignContent: "center",
           opacity: isLoading ? 0 : 1,
         }}
       >
-        {children}
-      </Text>
-      {rightIcon && <Box marginLeft={1}>{rightIcon}</Box>}
+        {leftIcon && (
+          <Box marginRight={1} style={{ marginLeft: -6 }}>
+            {leftIcon}
+          </Box>
+        )}
+        <Text
+          style={{
+            color,
+            fontSize,
+            fontWeight,
+          }}
+        >
+          {children}
+        </Text>
+        {rightIcon && (
+          <Box marginLeft={1} style={{ marginRight: -6 }}>
+            {rightIcon}
+          </Box>
+        )}
+      </Box>
+
       {isLoading && (
         <Box
           style={{
@@ -118,7 +134,7 @@ export const Button = ({
             alignItems: "center",
           }}
         >
-          <LightInlineLoader height="75%" />
+          <ColorInlineLoader height="75%" />
         </Box>
       )}
     </Pressable>

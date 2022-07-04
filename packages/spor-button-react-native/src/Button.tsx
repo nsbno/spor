@@ -49,6 +49,8 @@ type ButtonProps = Exclude<RestyleProps, "variant"> & {
   isDisabled?: boolean;
   isLoading?: boolean;
   accessibilityLabel?: string;
+  leftIcon?: JSX.Element;
+  rightIcon?: JSX.Element;
 };
 
 /** A button. */
@@ -58,6 +60,8 @@ export const Button = ({
   isLoading = false,
   accessibilityLabel,
   children,
+  leftIcon,
+  rightIcon,
   ...rest
 }: ButtonProps) => {
   const [isPressed, setIsPressed] = useState(false);
@@ -88,15 +92,24 @@ export const Button = ({
       onPressOut={() => setIsPressed(false)}
       disabled={isDisabled || isLoading}
       accessibilityLabel={accessibilityLabel}
-      style={style}
+      style={[{ flexDirection: "row", alignContent: "center" }, style]}
       android_ripple={{
         color: backgroundColor,
       }}
       {...rest}
     >
-      <Text style={{ color, fontSize, fontWeight, opacity: isLoading ? 0 : 1 }}>
+      {leftIcon && <Box marginRight={1}>{leftIcon}</Box>}
+      <Text
+        style={{
+          color,
+          fontSize,
+          fontWeight,
+          opacity: isLoading ? 0 : 1,
+        }}
+      >
         {children}
       </Text>
+      {rightIcon && <Box marginLeft={1}>{rightIcon}</Box>}
       {isLoading && (
         <Box
           style={{

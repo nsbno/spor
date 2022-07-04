@@ -18,14 +18,17 @@
   },
   "dependencies":{
     "@vygruppen/spor-layout-react-native":"*",
-    "@vygruppen/spor-typography-react-native":"*"
+    "@vygruppen/spor-typography-react-native":"*",
+    "@vygruppen/spor-theme-react-native":"*"
   },
   "devDependencies": {
+    "@shopify/restyle":"^2.1.0",
     "react": ">17.0.0",
     "react-native": "^0.66.0",
     "tsup": "^5.11.11"
   },
   "peerDependencies": {
+    "@shopify/restyle":"^2.1.0",
     "react": ">17.0.0",
     "react-native": "^0.66.0"
   }

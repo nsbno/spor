@@ -4,6 +4,7 @@ import {
   SporProvider,
   Stack,
   Text,
+  Box,
 } from "@vygruppen/spor-react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
@@ -14,24 +15,9 @@ const App = () => {
   return (
     <SporProvider>
       <SafeAreaView>
-        <Stack
-          backgroundColor="white"
-          height="100%"
-          p={2}
-          justifyContent="center"
-          spacing={3}
-        >
-          <Heading color="darkGrey" variant="2xl" textAlign="center">
-            Spor Demo app
-          </Heading>
-          <Text color="darkGrey" variant="md" textAlign="center">
-            Velkommen! Denne appen brukes til demonstrasjon og utvikling av
-            forskjellige komponenter i Spor sitt designsystem for React Native.
-          </Text>
-          <Badge borderStyle={true} variant="white">
-            Hei
-          </Badge>
-        </Stack>
+        <Badge borderStyle={true} variant="orange">
+          Innstilt
+        </Badge>
       </SafeAreaView>
     </SporProvider>
   );

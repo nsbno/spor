@@ -1,6 +1,8 @@
 import React from "react";
 import { Text } from "@vygruppen/spor-typography-react-native";
 import { Box } from "@vygruppen/spor-layout-react-native";
+import { Theme } from "@vygruppen/spor-theme-react-native";
+import { AltTransportOutline24Icon } from "@vygruppen/spor-icon-react-native";
 import {
   SpacingProps,
   SpacingShorthandProps,
@@ -11,7 +13,6 @@ import {
   spacing,
   spacingShorthand,
 } from "@shopify/restyle";
-import { Theme } from "@vygruppen/spor-theme-react-native";
 
 type Variant = VariantProps<Theme, "badgeColorSchemes", "variant">;
 const variant = createVariant({ themeKey: "badgeColorSchemes" });
@@ -50,11 +51,15 @@ export const Badge = ({
 }: BadgeProps) => {
   const { style } = useRestyle(restyleFunctions, { variant, ...props });
   let width = 0;
-  borderStyle ? (width = 2) : (width = 0);
+  borderStyle ? (width = 1) : (width = 0);
   return (
     <Box borderWidth={width} style={style as any} {...props}>
-      <Box></Box>
-      <Text>Hi there</Text>
+      <Box>
+        <AltTransportOutline24Icon />
+      </Box>
+      <Text variant="xs" fontWeight="bold">
+        {children}
+      </Text>
     </Box>
   );
 };

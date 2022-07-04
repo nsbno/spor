@@ -2,6 +2,7 @@ export const badgeColorSchemes = {
   defaults: {
     padding: 2,
     borderRadius: "xl",
+    alignSelf: "center",
   },
   yellow: {
     backgroundColor: "banana",

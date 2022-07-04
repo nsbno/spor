@@ -1,5 +1,13 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.1.1
+
+### Patch Changes
+
+- e361222: Oppdaterer Button-komponent
+- e9d084d: Oppdaterer Button-komponent
+- 4c2f201: Set the correct types path
+
 ## 0.1.0
 
 ### Minor Changes

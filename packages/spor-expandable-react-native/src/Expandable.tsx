@@ -28,8 +28,8 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   variant
 ]);
 
-type ExpandableVariant = "card" | "outline" | "text";
-type ExpandableSize = "sm" | "md";
+type ExpandableVariant = "card" | "outline" | "list";
+type ExpandableSize = "sm" | "md" | "lg";
 
 type ExpandableProps = Exclude<RestyleProps, "variant"> & {
   label: string,
@@ -88,6 +88,8 @@ function getSizeOfDrowDownUpIcon(size: string) {
       return <DropdownUpFill18Icon></DropdownUpFill18Icon>
     case "md":
       return <DropdownUpFill24Icon></DropdownUpFill24Icon>
+    case "lg":
+      return <DropdownUpFill30Icon></DropdownUpFill30Icon>
     default:
       null
   }
@@ -99,6 +101,8 @@ function getSizeOfDrowDownDownIcon(size: string) {
       return <DropdownDownFill18Icon></DropdownDownFill18Icon>
     case "md":
       return <DropdownDownFill24Icon></DropdownDownFill24Icon>
+    case "lg":
+      return <DropdownDownFill30Icon></DropdownDownFill30Icon>
     default:
       null
   }

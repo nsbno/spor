@@ -7,7 +7,7 @@ export const expandableVariant = {
     defaults: {
         borderRadius: "sm",
     },
-    text: {
+    list: {
     },
 
     outline: {
@@ -27,7 +27,7 @@ export const expandableVariant = {
     },
 
 }
-export function getExpandableVariantPressedState(variant: "card" | "outline" | "text") {
+export function getExpandableVariantPressedState(variant: "card" | "outline" | "list") {
     return { ...expandableVariantPressed.defaults, ...expandableVariantPressed[variant] }
 }
 const expandableVariantPressed = {
@@ -36,7 +36,7 @@ const expandableVariantPressed = {
         borderRadius: borderRadii.sm,
         padding: spacing.sm,
     },
-    text: {
+    list: {
 
     },
 

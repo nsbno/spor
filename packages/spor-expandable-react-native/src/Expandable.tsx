@@ -71,7 +71,7 @@ export const Expandable = ({
         onPressIn={() => { onPress() }}
         onPressOut={() => setPressed(false)}>
         <Box style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          {leftIcon && leftIcon}
+          {leftIcon}
           <Text variant={size} fontWeight="bold"> {label}</Text>
           {getDropdownUpIcon(isExpanded, size)}
         </Box  >

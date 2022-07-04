@@ -9,7 +9,7 @@ type ExpandableItemProps = {
 export const ExpandableItem = ({
     children
 }: ExpandableItemProps) => {
-    return < Box style={{ marginBottom: spacing.sm, marginLeft: spacing.sm }} >
+    return < Box marginBottom="sm" marginLeft="sm" >
         <Text>{children}</Text>
     </Box>
 }

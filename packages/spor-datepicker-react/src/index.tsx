@@ -1,1 +1,1 @@
-export { Datepicker } from "./Datepicker";
+export { Datepicker } from "./BaseDatepicker";

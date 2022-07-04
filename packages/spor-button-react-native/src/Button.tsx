@@ -4,21 +4,38 @@ import {
   spacing,
   SpacingProps,
   useRestyle,
+  useTheme,
   VariantProps,
 } from "@shopify/restyle";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
-import React from "react";
-import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
+import { LightInlineLoader } from "@vygruppen/spor-loader-react-native";
+import React, { useState } from "react";
+import {
+  Pressable,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextStyle,
+} from "react-native";
+import { Box } from "@vygruppen/spor-layout-react-native";
+
+const variants = createVariant({
+  themeKey: "buttonVariants",
+  property: "variant",
+});
+
+type ButtonVariant =
+  | "primary"
+  | "control"
+  | "secondary"
+  | "tertiary"
+  | "additional";
 
 type RestyleProps = SpacingProps<Theme> &
   VariantProps<Theme, "buttonVariants", "variant"> &
   VariantProps<Theme, "buttonSizes", "size">;
 
 const sizes = createVariant({ themeKey: "buttonSizes", property: "size" });
-const variants = createVariant({
-  themeKey: "buttonVariants",
-  property: "variant",
-});
 
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacing,
@@ -26,50 +43,71 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   variants,
 ]);
 
-type Props = RestyleProps & {
-  onPress: () => void;
-  children: React.ReactNode;
+type ButtonProps = Exclude<RestyleProps, "variant"> & {
+  variant: ButtonVariant;
+  children: string;
   isDisabled?: boolean;
   isLoading?: boolean;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
+  accessibilityLabel?: string;
 };
 
 /** A button. */
 export const Button = ({
-  onPress,
-  children,
+  variant,
   isDisabled = false,
   isLoading = false,
-  leftIcon,
-  rightIcon,
+  accessibilityLabel,
+  children,
   ...rest
-}: Props) => {
-  if (isDisabled) {
-    rest.variant = "disabled";
-  }
-  const { style, ...viewProps } = useRestyle(restyleFunctions, rest);
+}: ButtonProps) => {
+  const [isPressed, setIsPressed] = useState(false);
 
-  const fontSize = findProperty("fontSize", style as any[]);
-  const fontWeight = findProperty("fontWeight", style as any[]);
-  const color = findProperty("color", style as any[]);
+  const { buttonVariantsActive, buttonVariantsDisabled } = useTheme();
+  const { style: restyleStyle } = useRestyle(restyleFunctions, {
+    variant,
+    ...rest,
+  });
+  const activeStyle = isPressed ? buttonVariantsActive[variant] : {};
+  const disabledAndLoadingStyle =
+    isDisabled || isLoading ? buttonVariantsDisabled : {};
+
+  const style = [
+    restyleStyle,
+    activeStyle,
+    disabledAndLoadingStyle,
+  ] as StyleProp<TextStyle>;
+
+  const flatStyles = StyleSheet.flatten(style);
+  const { fontSize, fontWeight, color, backgroundColor } = flatStyles;
 
   return (
-    <TouchableOpacity onPress={onPress} disabled={isDisabled}>
-      <View style={style as any} {...viewProps}>
-        {isLoading ? (
-          <ActivityIndicator color={color} />
-        ) : (
-          <Text style={{ color, fontSize, fontWeight }}>{children}</Text>
-        )}
-      </View>
-    </TouchableOpacity>
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ disabled: isDisabled, busy: isLoading }}
+      onPressIn={() => setIsPressed(true)}
+      onPressOut={() => setIsPressed(false)}
+      disabled={isDisabled || isLoading}
+      accessibilityLabel={accessibilityLabel}
+      style={style}
+      android_ripple={{
+        color: backgroundColor,
+      }}
+      {...rest}
+    >
+      <Text style={{ color, fontSize, fontWeight, opacity: isLoading ? 0 : 1 }}>
+        {children}
+      </Text>
+      {isLoading && (
+        <Box
+          style={{
+            position: "absolute",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <LightInlineLoader height="75%" />
+        </Box>
+      )}
+    </Pressable>
   );
-};
-
-// TODO: Make this more pretty
-const findProperty = (propertyName: string, styles: any[]) => {
-  return styles
-    .map((style) => style[propertyName])
-    .reduce((prev, next) => (next ? next : prev)) as any;
 };

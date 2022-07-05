@@ -3,11 +3,9 @@ import {
   SporProvider,
   Stack,
   Text,
-  Badge,
 } from "@vygruppen/spor-react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
-import { AltTransportOutline18Icon } from "@vygruppen/spor-icon-react-native";
 
 /**
  * The entry point of the Spor RN demo app
@@ -30,9 +28,6 @@ const App = () => {
             Velkommen! Denne appen brukes til demonstrasjon og utvikling av
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
-          <Badge variant={"light-yellow"} borderStyle={true}>
-            Innstilt
-          </Badge>
         </Stack>
       </SafeAreaView>
     </SporProvider>

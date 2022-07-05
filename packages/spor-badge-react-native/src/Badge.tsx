@@ -2,7 +2,6 @@ import React from "react";
 import { Text } from "@vygruppen/spor-typography-react-native";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
-import { AltTransportOutline18Icon } from "@vygruppen/spor-icon-react-native";
 import {
   SpacingProps,
   SpacingShorthandProps,
@@ -38,22 +37,27 @@ type BadgeProps = Exclude<RestyleProps, "variant"> & {
     | "blue"
     | "grey"
     | "white";
-  borderStyle: boolean;
+  borderOutline: boolean;
   icon?: React.ReactNode;
 };
 
 export const Badge = ({
   children,
-  borderStyle = false,
   variant,
+  borderOutline = false,
   icon,
   ...props
 }: BadgeProps) => {
   const { style } = useRestyle(restyleFunctions, { variant, ...props });
-  let width = 0;
-  borderStyle ? (width = 1) : (width = 0);
+  let outlineWidth = 0;
+  borderOutline ? (outlineWidth = 1) : (outlineWidth = 0);
   return (
-    <Box borderWidth={width} style={style as any} {...props}>
+    <Box
+      borderWidth={outlineWidth}
+      justifyContent="center"
+      style={style as any}
+      {...props}
+    >
       {icon && <Box paddingRight={0.5}>{icon}</Box>}
       <Text variant="xs" fontWeight="bold">
         {children}

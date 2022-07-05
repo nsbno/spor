@@ -2,8 +2,6 @@ export const badgeColorSchemes = {
   defaults: {
     paddingLeft: 2,
     paddingRight: 2,
-    paddingTop: 0.5,
-    paddingBottom: 0.5,
     borderRadius: "xl",
     height: 24,
     alignSelf: "center",

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   composeRestyleFunctions,
   createVariant,
@@ -12,33 +12,39 @@ import {
 import React from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
-import { Text } from '@vygruppen/spor-typography-react-native';
-import { Pressable } from 'react-native';
-import { ExpandableItem } from './ExpandableItem';
-import { DropdownDownFill18Icon, DropdownUpFill18Icon, DropdownUpFill24Icon, DropdownDownFill24Icon, DropdownDownFill30Icon, DropdownUpFill30Icon } from '@vygruppen/spor-icon-react-native';
-
+import { Text } from "@vygruppen/spor-typography-react-native";
+import { Pressable } from "react-native";
+import { ExpandableItem } from "./ExpandableItem";
+import {
+  DropdownDownFill18Icon,
+  DropdownUpFill18Icon,
+  DropdownUpFill24Icon,
+  DropdownDownFill24Icon,
+  DropdownDownFill30Icon,
+  DropdownUpFill30Icon,
+} from "@vygruppen/spor-icon-react-native";
 
 type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
-  VariantProps<Theme, "expandableVariant", "variant">
+  VariantProps<Theme, "expandableVariant", "variant">;
 const variant = createVariant({ themeKey: "expandableVariant" });
 
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacingShorthand,
-  variant
+  variant,
 ]);
 
 type ExpandableVariant = "card" | "outline" | "list";
 type ExpandableSize = "sm" | "md" | "lg";
 
 type ExpandableProps = Exclude<RestyleProps, "variant"> & {
-  title: string,
-  children: React.ReactNode,
-  leftIcon?: JSX.Element,
-  variant: ExpandableVariant,
-  isInitiallyExpanded?: boolean
-  size?: ExpandableSize,
-  onToggleIsExpanded?: (isExpanding: boolean) => void
+  title: string;
+  children: React.ReactNode;
+  leftIcon?: JSX.Element;
+  variant: ExpandableVariant;
+  isInitiallyExpanded?: boolean;
+  size?: ExpandableSize;
+  onToggleIsExpanded?: (isExpanding: boolean) => void;
 };
 
 export const Expandable = ({
@@ -58,40 +64,35 @@ export const Expandable = ({
   const pressedStyle = theme.getExpandableVariantPressedState(variant);
   const [isExpanded, toggleExpanded] = useState(isInitiallyExpanded);
 
-  function handleToggleIsExpanded() {
-    toggleExpanded(!isExpanded);
-  }
-
-  function onPress(): void {
-    setPressed(true);
-    handleToggleIsExpanded();
-  }
-
   return (
-    <Box style={style as any} mb={2}>
-      <Pressable style={isPressed ? pressedStyle : { padding: 12 }}
-        onPressIn={onPress}
-        onPressOut={() => setPressed(false)}>
+    <Box style={style as any} m={2}>
+      <Pressable
+        style={isPressed ? pressedStyle : { padding: 12 }}
+        onPress={() => toggleExpanded(!isExpanded)}
+        onPressIn={() => setPressed(true)}
+        onPressOut={() => setPressed(false)}
+      >
         <Box flexDirection="row" justifyContent="space-between">
           {leftIcon}
-          <Text variant={size} fontWeight="bold">{title}</Text>
+          <Text variant={size} fontWeight="bold">
+            {title}
+          </Text>
           {getDropdownIcon(isExpanded, size)}
         </Box>
-      </Pressable >
+      </Pressable>
       {isExpanded && <ExpandableItem>{children}</ExpandableItem>}
-    </Box >
-
-  )
-}
+    </Box>
+  );
+};
 
 function getDropDownUpIcon(size: string) {
   switch (size) {
     case "sm":
-      return <DropdownUpFill18Icon/>
+      return <DropdownUpFill18Icon />;
     case "md":
-      return <DropdownUpFill24Icon/>
+      return <DropdownUpFill24Icon />;
     case "lg":
-      return <DropdownUpFill30Icon/>
+      return <DropdownUpFill30Icon />;
     default:
       return null;
   }
@@ -100,11 +101,11 @@ function getDropDownUpIcon(size: string) {
 function getDropDownDownIcon(size: string) {
   switch (size) {
     case "sm":
-      return <DropdownDownFill18Icon/>
+      return <DropdownDownFill18Icon />;
     case "md":
-      return <DropdownDownFill24Icon/>
+      return <DropdownDownFill24Icon />;
     case "lg":
-      return <DropdownDownFill30Icon/>
+      return <DropdownDownFill30Icon />;
     default:
       return null;
   }
@@ -112,8 +113,8 @@ function getDropDownDownIcon(size: string) {
 
 function getDropdownIcon(isExpanded: boolean, size: string) {
   if (isExpanded) {
-    return getDropDownUpIcon(size)
+    return getDropDownUpIcon(size);
   } else {
-    return getDropDownDownIcon(size)
+    return getDropDownDownIcon(size);
   }
 }

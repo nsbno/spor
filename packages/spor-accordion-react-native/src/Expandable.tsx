@@ -33,7 +33,7 @@ type ExpandableSize = "sm" | "md" | "lg";
 
 type ExpandableProps = Exclude<RestyleProps, "variant"> & {
   title: string,
-  children?: React.ReactNode,
+  children: React.ReactNode,
   leftIcon?: JSX.Element,
   variant: ExpandableVariant,
   isInitiallyExpanded?: Boolean
@@ -72,7 +72,7 @@ export const Expandable = ({
         onPressOut={() => setPressed(false)}>
         <Box flexDirection="row" justifyContent="space-between">
           {leftIcon}
-          <Text variant={size} fontWeight="bold"> {title}</Text>
+          <Text variant={size} fontWeight="bold">{title}</Text>
           {getDropdownUpIcon(isExpanded, size)}
         </Box  >
       </Pressable >

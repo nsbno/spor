@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-button-react-native",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -19,9 +19,13 @@
     "dev": "tsup src/index.tsx --watch"
   },
   "dependencies": {
-    "@vygruppen/spor-theme-react-native": "*"
+    "@vygruppen/spor-icon-react-native": "*",
+    "@vygruppen/spor-theme-react-native": "*",
+    "@vygruppen/spor-design-tokens": "*",
+    "@vygruppen/spor-loader-react-native": "*"
   },
   "devDependencies": {
+    "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
     "react-native": ">0.66.0",
     "tsup": "^5.11.11"

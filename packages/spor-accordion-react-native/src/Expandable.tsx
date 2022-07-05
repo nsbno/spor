@@ -36,7 +36,7 @@ type ExpandableProps = Exclude<RestyleProps, "variant"> & {
   children: React.ReactNode,
   leftIcon?: JSX.Element,
   variant: ExpandableVariant,
-  isInitiallyExpanded?: Boolean
+  isInitiallyExpanded?: boolean
   size?: ExpandableSize,
   onToggleIsExpanded?: (isExpanding: boolean) => void
 };
@@ -55,26 +55,28 @@ export const Expandable = ({
   const restyleProps: Record<string, any> = { ...props, variant };
   const { style } = useRestyle(restyleFunctions, restyleProps);
   const [isPressed, setPressed] = useState(false);
-  const pressedStyle = theme.getExpandableVariantPressedState(variant)
-  const [isExpanded, toggleExpanded] = useState(isInitiallyExpanded)
+  const pressedStyle = theme.getExpandableVariantPressedState(variant);
+  const [isExpanded, toggleExpanded] = useState(isInitiallyExpanded);
+
   function handleToggleIsExpanded() {
-    toggleExpanded(!isExpanded)
+    toggleExpanded(!isExpanded);
   }
+
   function onPress(): void {
-    setPressed(true)
-    handleToggleIsExpanded()
+    setPressed(true);
+    handleToggleIsExpanded();
   }
 
   return (
     <Box style={style as any} mb={2}>
-      < Pressable style={isPressed ? pressedStyle : { padding: 12 }}
+      <Pressable style={isPressed ? pressedStyle : { padding: 12 }}
         onPressIn={onPress}
         onPressOut={() => setPressed(false)}>
         <Box flexDirection="row" justifyContent="space-between">
           {leftIcon}
           <Text variant={size} fontWeight="bold">{title}</Text>
-          {getDropdownUpIcon(isExpanded, size)}
-        </Box  >
+          {getDropdownIcon(isExpanded, size)}
+        </Box>
       </Pressable >
       {isExpanded && <ExpandableItem>{children}</ExpandableItem>}
     </Box >
@@ -82,36 +84,36 @@ export const Expandable = ({
   )
 }
 
-function getSizeOfDrowDownUpIcon(size: string) {
+function getDropDownUpIcon(size: string) {
   switch (size) {
     case "sm":
-      return <DropdownUpFill18Icon></DropdownUpFill18Icon>
+      return <DropdownUpFill18Icon/>
     case "md":
-      return <DropdownUpFill24Icon></DropdownUpFill24Icon>
+      return <DropdownUpFill24Icon/>
     case "lg":
-      return <DropdownUpFill30Icon></DropdownUpFill30Icon>
+      return <DropdownUpFill30Icon/>
     default:
-      null
+      return null;
   }
 }
 
-function getSizeOfDrowDownDownIcon(size: string) {
+function getDropDownDownIcon(size: string) {
   switch (size) {
     case "sm":
-      return <DropdownDownFill18Icon></DropdownDownFill18Icon>
+      return <DropdownDownFill18Icon/>
     case "md":
-      return <DropdownDownFill24Icon></DropdownDownFill24Icon>
+      return <DropdownDownFill24Icon/>
     case "lg":
-      return <DropdownDownFill30Icon></DropdownDownFill30Icon>
+      return <DropdownDownFill30Icon/>
     default:
-      null
+      return null;
   }
 }
 
-function getDropdownUpIcon(isExpanded: Boolean, size: string) {
+function getDropdownIcon(isExpanded: boolean, size: string) {
   if (isExpanded) {
-    return getSizeOfDrowDownUpIcon(size)
+    return getDropDownUpIcon(size)
   } else {
-    return getSizeOfDrowDownDownIcon(size)
+    return getDropDownDownIcon(size)
   }
 }

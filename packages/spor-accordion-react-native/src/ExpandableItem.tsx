@@ -7,7 +7,5 @@ type ExpandableItemProps = {
 export const ExpandableItem = ({
     children
 }: ExpandableItemProps) => {
-    return < Box marginBottom="sm" marginLeft="sm" >
-        {children}
-    </Box>
+    return <Box marginBottom="sm" marginLeft="md">{children}</Box>;
 }

@@ -63,7 +63,7 @@ export const Expandable = ({
   const [isPressed, setPressed] = useState(false);
   const pressedStyle = theme.getExpandableVariantPressedState(variant);
   const [isExpanded, toggleExpanded] = useState(isInitiallyExpanded);
-
+  console.log("test");
   return (
     <Box style={style as any} m={2}>
       <Pressable

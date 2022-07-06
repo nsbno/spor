@@ -22,7 +22,7 @@ import {
   DropdownDownFill30Icon,
   DropdownUpFill30Icon,
 } from "@vygruppen/spor-icon-react-native";
-
+import { ExpandableItem } from "./ExpandableItem";
 type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
   VariantProps<Theme, "expandableVariant", "variant">;
@@ -79,6 +79,7 @@ export const Expandable = ({
           {getDropdownIcon(isExpanded, size)}
         </Box>
       </Pressable>
+      {isExpanded && <ExpandableItem>{children}</ExpandableItem>}
     </Box>
   );
 };

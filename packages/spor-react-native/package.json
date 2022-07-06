@@ -32,7 +32,8 @@
     "@vygruppen/spor-badge-react-native": "*",
     "@vygruppen/spor-accordion-react-native": "*",
     "@vygruppen/spor-modal-react-native": "*",
-    "@vygruppen/spor-alert-react-native": "*"
+    "@vygruppen/spor-alert-react-native": "*",
+    "@vygruppen/spor-line-tag-react-native": "*"
   },
   "devDependencies": {
     "react": ">17.0.0",

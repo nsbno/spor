@@ -1,5 +1,6 @@
 import {
   Heading,
+  LineTag,
   SporProvider,
   Stack,
   Text,
@@ -27,6 +28,7 @@ const App = () => {
             Velkommen! Denne appen brukes til demonstrasjon og utvikling av
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
+          <LineTag lineNumber="2"></LineTag>
         </Stack>
       </SafeAreaView>
     </SporProvider>

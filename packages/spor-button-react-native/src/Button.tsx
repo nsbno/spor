@@ -85,7 +85,7 @@ export const Button = ({
 
   const flatStyles = StyleSheet.flatten(style);
   const { fontSize, fontWeight, color, backgroundColor } = flatStyles;
-
+  console.log("TEST BYGGING");
   return (
     <Pressable
       accessibilityRole="button"

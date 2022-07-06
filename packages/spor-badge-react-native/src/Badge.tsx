@@ -26,19 +26,21 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   variant,
 ]);
 
+type ColorVariants =
+  | "yellow"
+  | "light-yellow"
+  | "red"
+  | "green"
+  | "orange"
+  | "blue"
+  | "grey"
+  | "white";
+
 type BadgeProps = Exclude<RestyleProps, "variant"> & {
-  children: string;
-  variant?:
-    | "yellow"
-    | "light-yellow"
-    | "red"
-    | "green"
-    | "orange"
-    | "blue"
-    | "grey"
-    | "white";
+  children?: string;
+  variant: ColorVariants;
   borderOutline: boolean;
-  icon?: React.ReactNode;
+  icon?: JSX.Element;
 };
 
 export const Badge = ({
@@ -49,11 +51,10 @@ export const Badge = ({
   ...props
 }: BadgeProps) => {
   const { style } = useRestyle(restyleFunctions, { variant, ...props });
-  let outlineWidth = 0;
-  borderOutline ? (outlineWidth = 1) : (outlineWidth = 0);
+  const borderWidth = borderOutline ? 1 : 0;
   return (
     <Box
-      borderWidth={outlineWidth}
+      borderWidth={borderWidth}
       justifyContent="center"
       style={style as any}
       {...props}

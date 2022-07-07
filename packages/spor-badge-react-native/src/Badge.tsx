@@ -40,7 +40,7 @@ type ColorVariants =
   | "white";
 
 type BadgeProps = Exclude<RestyleProps, "variant"> & {
-  children?: string;
+  children: string;
   colorScheme: ColorVariants;
   variant?: "solid" | "outline";
   icon?: JSX.Element;

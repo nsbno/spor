@@ -1,6 +1,6 @@
 # Badge (React Native)
 
-TODO: Add description
+This package includes the badge component for Spor.
 
 ## Installation
 
@@ -11,9 +11,12 @@ $ npm install @vygruppen/spor-badge-react-native
 ## Usage
 
 ```tsx
-import { } from "@vygruppen/spor-badge-react-native";
+import { Badge } from "@vygruppen/spor-badge-react-native";
 ```
-TODO: Add usage description
+
+Badges are static components and are not clickable.
+There are four props: `children`, `colorScheme`, `variant`, `icon`.
+`colorScheme` and `children` are required.
 
 ## Development
 

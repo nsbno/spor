@@ -27,6 +27,7 @@ import {
   WalkFill30Icon,
 } from "@vygruppen/spor-icon-react-native";
 import {
+  BackgroundColorProps,
   composeRestyleFunctions,
   createVariant,
   SpacingProps,
@@ -37,22 +38,22 @@ import {
 } from "@shopify/restyle";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 
-type Variant = VariantProps<Theme, "lineIconVariants", "iconVariant">;
-const iconVariant = createVariant({
+type Variant = VariantProps<Theme, "lineIconVariants", "variant">;
+const variant = createVariant({
   themeKey: "lineIconVariants",
-  property: "iconVariant",
 });
 
 type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
+  BackgroundColorProps<Theme> &
   Variant;
 
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacingShorthand,
-  iconVariant,
+  variant,
 ]);
 
-type IconVariantProps =
+type LineIconVariantProps =
   | "local-train"
   | "region-train"
   | "region-express-train"
@@ -69,102 +70,116 @@ type IconVariantProps =
 type LineIconSizeProps = "sm" | "md" | "lg";
 
 type LineIconProps = Exclude<RestyleProps, "variant"> & {
-  iconVariant: IconVariantProps;
+  variant: LineIconVariantProps;
   size: LineIconSizeProps;
   type?: "travel" | "info";
+  iconColor?: string;
 };
 
-const getIcon = (iconVariant: IconVariantProps, size: LineIconSizeProps) => {
-  switch (iconVariant) {
-    case "local-train" ||
-      "region-train" ||
-      "region-express-train" ||
-      "long-distance-train" ||
-      "airport-express-train":
-      switch (size) {
-        case "sm":
-          return <TrainFill18Icon />;
-        case "md":
-          return <TrainFill24Icon />;
-        case "lg":
-          return <TrainFill30Icon />;
-      }
-    case "vy-bus":
-      switch (size) {
-        case "sm":
-          return <ExpressBusFill18Icon />;
-        case "md":
-          return <ExpressBusFill24Icon />;
-        case "lg":
-          return <ExpressBusFill30Icon />;
-      }
-    case "local-bus":
-      switch (size) {
-        case "sm":
-          return <BusFill18Icon />;
-        case "md":
-          return <BusFill24Icon />;
-        case "lg":
-          return <BusFill30Icon />;
-      }
-    case "ferry":
-      switch (size) {
-        case "sm":
-          return <FerryFill18Icon />;
-        case "md":
-          return <FerryFill24Icon />;
-        case "lg":
-          return <FerryFill30Icon />;
-      }
-    case "subway":
-      switch (size) {
-        case "sm":
-          return <SubwayFill18Icon />;
-        case "md":
-          return <SubwayFill24Icon />;
-        case "lg":
-          return <SubwayFill30Icon />;
-      }
-    case "tram":
-      switch (size) {
-        case "sm":
-          return <TramFill18Icon />;
-        case "md":
-          return <TramFill24Icon />;
-        case "lg":
-          return <TramFill30Icon />;
-      }
-    case "alt-transport":
-      switch (size) {
-        case "sm":
-          return <AltTransportFill18Icon />;
-        case "md":
-          return <AltTransportFill24Icon />;
-        case "lg":
-          return <AltTransportFill30Icon />;
-      }
-    case "walk":
-      switch (size) {
-        case "sm":
-          return <WalkFill18Icon />;
-        case "md":
-          return <WalkFill24Icon />;
-        case "lg":
-          return <WalkFill30Icon />;
-      }
-    default:
-      return null;
+function isTrain(variant: LineIconVariantProps) {
+  return (
+    variant === "local-train" ||
+    variant === "region-train" ||
+    variant === "region-express-train" ||
+    variant === "long-distance-train" ||
+    variant === "airport-express-train"
+  );
+}
+
+const getIcon = (
+  variant: LineIconVariantProps,
+  size: LineIconSizeProps,
+  iconColor: string
+) => {
+  if (isTrain(variant)) {
+    switch (size) {
+      case "sm":
+        return <TrainFill18Icon color={iconColor} />;
+      case "md":
+        return <TrainFill24Icon color={iconColor} />;
+      case "lg":
+        return <BusFill30Icon color={iconColor} />;
+    }
+  } else {
+    switch (variant) {
+      case "vy-bus":
+        switch (size) {
+          case "sm":
+            return <ExpressBusFill18Icon color={iconColor} />;
+          case "md":
+            return <ExpressBusFill24Icon color={iconColor} />;
+          case "lg":
+            return <ExpressBusFill30Icon color={iconColor} />;
+        }
+      case "local-bus":
+        switch (size) {
+          case "sm":
+            return <BusFill18Icon color={iconColor} />;
+          case "md":
+            return <BusFill24Icon color={iconColor} />;
+          case "lg":
+            return <BusFill30Icon color={iconColor} />;
+        }
+      case "ferry":
+        switch (size) {
+          case "sm":
+            return <FerryFill18Icon color={iconColor} />;
+          case "md":
+            return <FerryFill24Icon color={iconColor} />;
+          case "lg":
+            return <FerryFill30Icon color={iconColor} />;
+        }
+      case "subway":
+        switch (size) {
+          case "sm":
+            return <SubwayFill18Icon color={iconColor} />;
+          case "md":
+            return <SubwayFill24Icon color={iconColor} />;
+          case "lg":
+            return <SubwayFill30Icon color={iconColor} />;
+        }
+      case "tram":
+        switch (size) {
+          case "sm":
+            return <TramFill18Icon color={iconColor} />;
+          case "md":
+            return <TramFill24Icon color={iconColor} />;
+          case "lg":
+            return <TramFill30Icon color={iconColor} />;
+        }
+      case "alt-transport":
+        switch (size) {
+          case "sm":
+            return <AltTransportFill18Icon color={iconColor} />;
+          case "md":
+            return <AltTransportFill24Icon color={iconColor} />;
+          case "lg":
+            return <AltTransportFill30Icon color={iconColor} />;
+        }
+      case "walk":
+        switch (size) {
+          case "sm":
+            return <WalkFill18Icon color={iconColor} />;
+          case "md":
+            return <WalkFill24Icon color={iconColor} />;
+          case "lg":
+            return <WalkFill30Icon color={iconColor} />;
+        }
+      default:
+        return null;
+    }
   }
 };
 
 export const LineIcon = ({
-  iconVariant,
+  variant,
   size,
   type,
+  iconColor = "white",
   ...props
 }: LineIconProps) => {
-  const { style } = useRestyle(restyleFunctions, { iconVariant, ...props });
-  const icon = getIcon(iconVariant, size);
+  const { style } = useRestyle(restyleFunctions, { variant, ...props });
+  const icon = getIcon(variant, size, iconColor);
 
   return (
     <Box style={style as any} {...props}>

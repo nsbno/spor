@@ -4,21 +4,38 @@ import {
   spacing,
   SpacingProps,
   useRestyle,
+  useTheme,
   VariantProps,
 } from "@shopify/restyle";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
-import React from "react";
-import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
+import { ColorInlineLoader } from "@vygruppen/spor-loader-react-native";
+import React, { useState } from "react";
+import {
+  Pressable,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextStyle,
+} from "react-native";
+import { Box } from "@vygruppen/spor-layout-react-native";
+
+const variants = createVariant({
+  themeKey: "buttonVariants",
+  property: "variant",
+});
+
+type ButtonVariant =
+  | "primary"
+  | "control"
+  | "secondary"
+  | "tertiary"
+  | "additional";
 
 type RestyleProps = SpacingProps<Theme> &
   VariantProps<Theme, "buttonVariants", "variant"> &
   VariantProps<Theme, "buttonSizes", "size">;
 
 const sizes = createVariant({ themeKey: "buttonSizes", property: "size" });
-const variants = createVariant({
-  themeKey: "buttonVariants",
-  property: "variant",
-});
 
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacing,
@@ -26,50 +43,105 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   variants,
 ]);
 
-type Props = RestyleProps & {
+type ButtonProps = Exclude<RestyleProps, "variant"> & {
   onPress: () => void;
-  children: React.ReactNode;
+  variant: ButtonVariant;
+  children: string;
   isDisabled?: boolean;
   isLoading?: boolean;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
+  accessibilityLabel?: string;
+  leftIcon?: JSX.Element;
+  rightIcon?: JSX.Element;
 };
 
 /** A button. */
 export const Button = ({
   onPress,
-  children,
+  variant,
   isDisabled = false,
   isLoading = false,
+  accessibilityLabel,
+  children,
   leftIcon,
   rightIcon,
   ...rest
-}: Props) => {
-  if (isDisabled) {
-    rest.variant = "disabled";
-  }
-  const { style, ...viewProps } = useRestyle(restyleFunctions, rest);
+}: ButtonProps) => {
+  const [isPressed, setIsPressed] = useState(false);
 
-  const fontSize = findProperty("fontSize", style as any[]);
-  const fontWeight = findProperty("fontWeight", style as any[]);
-  const color = findProperty("color", style as any[]);
+  const { buttonVariantsActive, buttonVariantsDisabled } = useTheme();
+  const { style: restyleStyle } = useRestyle(restyleFunctions, {
+    variant,
+    ...rest,
+  });
+  const activeStyle = isPressed ? buttonVariantsActive[variant] : {};
+  const disabledAndLoadingStyle =
+    isDisabled || isLoading ? buttonVariantsDisabled : {};
+
+  const style = [
+    restyleStyle,
+    activeStyle,
+    disabledAndLoadingStyle,
+  ] as StyleProp<TextStyle>;
+
+  const flatStyles = StyleSheet.flatten(style);
+  const { fontSize, fontWeight, color, backgroundColor } = flatStyles;
 
   return (
-    <TouchableOpacity onPress={onPress} disabled={isDisabled}>
-      <View style={style as any} {...viewProps}>
-        {isLoading ? (
-          <ActivityIndicator color={color} />
-        ) : (
-          <Text style={{ color, fontSize, fontWeight }}>{children}</Text>
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ disabled: isDisabled, busy: isLoading }}
+      onPressIn={() => setIsPressed(true)}
+      onPressOut={() => setIsPressed(false)}
+      onPress={onPress}
+      disabled={isDisabled || isLoading}
+      accessibilityLabel={accessibilityLabel}
+      style={style}
+      android_ripple={{
+        color: backgroundColor,
+      }}
+      {...rest}
+    >
+      <Box
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          opacity: isLoading ? 0 : 1,
+        }}
+      >
+        {leftIcon && (
+          <Box marginRight={1} style={{ marginLeft: -6 }}>
+            <leftIcon.type {...leftIcon.props} {...{ color }} />
+          </Box>
         )}
-      </View>
-    </TouchableOpacity>
-  );
-};
+        <Text
+          style={{
+            color,
+            fontSize,
+            fontWeight,
+          }}
+        >
+          {children}
+        </Text>
+        {rightIcon && (
+          <Box marginLeft={1} style={{ marginRight: -6 }}>
+            <rightIcon.type {...rightIcon.props} {...{ color }} />
+          </Box>
+        )}
+      </Box>
 
-// TODO: Make this more pretty
-const findProperty = (propertyName: string, styles: any[]) => {
-  return styles
-    .map((style) => style[propertyName])
-    .reduce((prev, next) => (next ? next : prev)) as any;
+      {isLoading && (
+        <Box
+          style={{
+            position: "absolute",
+            justifyContent: "center",
+            alignItems: "center",
+            top: 0,
+            bottom: 0,
+          }}
+        >
+          <ColorInlineLoader height="75%" />
+        </Box>
+      )}
+    </Pressable>
+  );
 };

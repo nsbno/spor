@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader
 
+## 0.2.1
+
+### Patch Changes
+
+- 0d849dd: Update spinner animation data
+
 ## 0.2.0
 
 ### Minor Changes

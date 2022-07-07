@@ -117,7 +117,9 @@ All values are available as LESS variables.
 
 ### Elm
 
-Not yet supported.
+Install using `elm install nsbno/spor-design-tokens-elm`.
+
+You can view the documentation at [packages.elm-lang.org](https://package.elm-lang.org/packages/nsbno/spor-design-tokens-elm/latest/).
 
 ## I want to contribute!
 

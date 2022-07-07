@@ -1,5 +1,23 @@
 # @vygruppen/spor-loader-react-native
 
+## 0.1.4
+
+### Patch Changes
+
+- e361222: Oppdaterer Button-komponent
+- e9d084d: Oppdaterer Button-komponent
+  - @vygruppen/spor-layout-react-native@0.0.2
+  - @vygruppen/spor-typography-react-native@0.1.1
+
+## 0.1.3
+
+### Patch Changes
+
+- Updated dependencies [0d849dd]
+  - @vygruppen/spor-loader@0.2.1
+  - @vygruppen/spor-layout-react-native@0.0.2
+  - @vygruppen/spor-typography-react-native@0.1.1
+
 ## 0.1.2
 
 ### Patch Changes

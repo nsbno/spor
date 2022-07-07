@@ -1,5 +1,19 @@
 # @vygruppen/spor-theme-react-native
 
+## 0.1.7
+
+### Patch Changes
+
+- e361222: Oppdaterer Button-komponent
+- e9d084d: Oppdaterer Button-komponent
+
+## 0.1.6
+
+### Patch Changes
+
+- Updated dependencies [f52e583]
+  - @vygruppen/spor-design-tokens@2.4.2
+
 ## 0.1.5
 
 ### Patch Changes

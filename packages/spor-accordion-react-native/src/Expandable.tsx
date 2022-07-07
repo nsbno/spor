@@ -41,19 +41,17 @@ type ExpandableProps = Exclude<RestyleProps, "variant"> & {
   children: React.ReactNode;
   leftIcon?: JSX.Element;
   variant: ExpandableVariant;
-  isInitiallyExpanded?: boolean;
+  defaultExpanded?: boolean;
   size?: ExpandableSize;
-  onToggleIsExpanded?: (isExpanding: boolean) => void;
 };
 
 export const Expandable = ({
   title,
   leftIcon,
-  onToggleIsExpanded,
   variant,
   children,
   size = "sm",
-  isInitiallyExpanded = false,
+  defaultExpanded = false,
   ...props
 }: ExpandableProps) => {
   const theme = useTheme<Theme>();
@@ -61,7 +59,7 @@ export const Expandable = ({
   const { style } = useRestyle(restyleFunctions, restyleProps);
   const [isPressed, setPressed] = useState(false);
   const pressedStyle = theme.getExpandableVariantPressedState(variant);
-  const [isExpanded, toggleExpanded] = useState(isInitiallyExpanded);
+  const [isExpanded, toggleExpanded] = useState(defaultExpanded);
 
   return (
     <Box style={style as any} m={2}>

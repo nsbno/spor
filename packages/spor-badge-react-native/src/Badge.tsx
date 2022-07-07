@@ -13,8 +13,11 @@ import {
   spacingShorthand,
 } from "@shopify/restyle";
 
-type Variant = VariantProps<Theme, "badgeColorSchemes", "variant">;
-const variant = createVariant({ themeKey: "badgeColorSchemes" });
+type Variant = VariantProps<Theme, "badgeColorSchemes", "colorScheme">;
+const colorScheme = createVariant({
+  themeKey: "badgeColorSchemes",
+  property: "colorScheme",
+});
 
 type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
@@ -23,7 +26,7 @@ type RestyleProps = SpacingProps<Theme> &
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacing,
   spacingShorthand,
-  variant,
+  colorScheme,
 ]);
 
 type ColorVariants =
@@ -38,20 +41,20 @@ type ColorVariants =
 
 type BadgeProps = Exclude<RestyleProps, "variant"> & {
   children?: string;
-  variant: ColorVariants;
-  borderOutline: boolean;
+  colorScheme: ColorVariants;
+  variant?: "solid" | "outline";
   icon?: JSX.Element;
 };
 
 export const Badge = ({
   children,
-  variant,
-  borderOutline = false,
+  colorScheme,
+  variant = "solid",
   icon,
   ...props
 }: BadgeProps) => {
-  const { style } = useRestyle(restyleFunctions, { variant, ...props });
-  const borderWidth = borderOutline ? 1 : 0;
+  const { style } = useRestyle(restyleFunctions, { colorScheme, ...props });
+  const borderWidth = variant === "outline" ? 1 : 0;
   return (
     <Box
       borderWidth={borderWidth}

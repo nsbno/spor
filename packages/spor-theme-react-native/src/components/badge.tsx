@@ -7,6 +7,7 @@ export const badgeColorSchemes = {
     alignSelf: "center",
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
   },
   yellow: {
     backgroundColor: "banana",

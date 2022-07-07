@@ -56,12 +56,7 @@ export const Badge = ({
   const { style } = useRestyle(restyleFunctions, { colorScheme, ...props });
   const borderWidth = variant === "outline" ? 1 : 0;
   return (
-    <Box
-      borderWidth={borderWidth}
-      justifyContent="center"
-      style={style as any}
-      {...props}
-    >
+    <Box borderWidth={borderWidth} style={style as any} {...props}>
       {icon && <Box paddingRight={0.5}>{icon}</Box>}
       <Text variant="xs" fontWeight="bold">
         {children}

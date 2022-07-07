@@ -70,11 +70,11 @@ type LineIconSizeProps = "sm" | "md" | "lg";
 
 type LineIconProps = Exclude<RestyleProps, "variant"> & {
   iconVariant: IconVariantProps;
-  size?: LineIconSizeProps;
+  size: LineIconSizeProps;
   type?: "travel" | "info";
 };
 
-const getIcon = (iconVariant: IconVariantProps, size: string) => {
+const getIcon = (iconVariant: IconVariantProps, size: LineIconSizeProps) => {
   switch (iconVariant) {
     case "local-train" ||
       "region-train" ||

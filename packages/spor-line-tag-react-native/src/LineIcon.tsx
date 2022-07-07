@@ -1,11 +1,12 @@
 import React from "react";
-import { Text } from "@vygruppen/spor-typography-react-native";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import {
   AltTransportFill18Icon,
   AltTransportFill24Icon,
   AltTransportFill30Icon,
   BusFill18Icon,
+  BusFill24Icon,
+  BusFill30Icon,
   ExpressBusFill18Icon,
   ExpressBusFill24Icon,
   ExpressBusFill30Icon,
@@ -25,8 +26,33 @@ import {
   WalkFill24Icon,
   WalkFill30Icon,
 } from "@vygruppen/spor-icon-react-native";
+import {
+  composeRestyleFunctions,
+  createVariant,
+  SpacingProps,
+  spacingShorthand,
+  SpacingShorthandProps,
+  useRestyle,
+  VariantProps,
+} from "@shopify/restyle";
+import { Theme } from "@vygruppen/spor-theme-react-native";
 
-type VariantProps =
+type Variant = VariantProps<Theme, "lineIconVariants", "iconVariant">;
+const iconVariant = createVariant({
+  themeKey: "lineIconVariants",
+  property: "iconVariant",
+});
+
+type RestyleProps = SpacingProps<Theme> &
+  SpacingShorthandProps<Theme> &
+  Variant;
+
+const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
+  spacingShorthand,
+  iconVariant,
+]);
+
+type IconVariantProps =
   | "local-train"
   | "region-train"
   | "region-express-train"
@@ -40,14 +66,16 @@ type VariantProps =
   | "alt-transport"
   | "walk";
 
-type LineIconProps = {
-  variant: VariantProps;
-  size: "sm" | "md" | "lg";
-  type: "travel" | "info";
+type LineIconSizeProps = "sm" | "md" | "lg";
+
+type LineIconProps = Exclude<RestyleProps, "variant"> & {
+  iconVariant: IconVariantProps;
+  size?: LineIconSizeProps;
+  type?: "travel" | "info";
 };
 
-const getIcon = (variant: VariantProps, size: string) => {
-  switch (variant) {
+const getIcon = (iconVariant: IconVariantProps, size: string) => {
+  switch (iconVariant) {
     case "local-train" ||
       "region-train" ||
       "region-express-train" ||
@@ -69,6 +97,15 @@ const getIcon = (variant: VariantProps, size: string) => {
           return <ExpressBusFill24Icon />;
         case "lg":
           return <ExpressBusFill30Icon />;
+      }
+    case "local-bus":
+      switch (size) {
+        case "sm":
+          return <BusFill18Icon />;
+        case "md":
+          return <BusFill24Icon />;
+        case "lg":
+          return <BusFill30Icon />;
       }
     case "ferry":
       switch (size) {
@@ -120,7 +157,18 @@ const getIcon = (variant: VariantProps, size: string) => {
   }
 };
 
-export const LineIcon = ({ variant, size, ...props }: LineIconProps) => {
-  const icon = getIcon(variant, size);
-  return <Box>{icon}</Box>;
+export const LineIcon = ({
+  iconVariant,
+  size,
+  type,
+  ...props
+}: LineIconProps) => {
+  const { style } = useRestyle(restyleFunctions, { iconVariant, ...props });
+  const icon = getIcon(iconVariant, size);
+
+  return (
+    <Box style={style as any} {...props}>
+      {icon}
+    </Box>
+  );
 };

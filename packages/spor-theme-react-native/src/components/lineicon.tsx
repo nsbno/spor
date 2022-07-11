@@ -18,10 +18,11 @@ export const lineIconVariants = {
 
 export const lineIconTypeVariants = {
   defaults: {},
+
   "sm-travel": { padding: 0.5, borderRadius: "xs" },
-  "sm-info": { padding: 1, borderRadius: "xxs" },
-  "md-travel": { padding: 0.5, borderRadius: "xxs" },
-  "md-info": { padding: 1, borderRadius: "xxs" },
-  "lg-travel": { padding: 0.5, borderRadius: "xxs" },
+  "sm-info": { padding: 1, borderRadius: "xs" },
+  "md-travel": { padding: 0.5, borderRadius: "xs" },
+  "md-info": { padding: 1, borderRadius: "xs" },
+  "lg-travel": { padding: 0.5, borderRadius: "xs" },
   "lg-info": { padding: 1, borderRadius: "sm" },
 };

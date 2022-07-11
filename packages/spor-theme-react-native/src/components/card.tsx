@@ -71,6 +71,54 @@ export const cardColorSchemes = {
   },
 };
 
+export const cardOnPressColorSchemes = {
+  white: {
+    backgroundColor: "green.50",
+    borderColor: "blackAlpha.100",
+  },
+  grey: {
+    backgroundColor: "grey.50",
+    borderColor: "blackAlpha.200",
+  },
+  blue: {
+    backgroundColor: "blue.50",
+    borderColor: "blue.100",
+  },
+  green: {
+    backgroundColor: "green.50",
+    borderColor: "green.200",
+  },
+  teal: {
+    backgroundColor: "teal.50",
+    borderColor: "teal.100",
+  },
+  yellow: {
+    backgroundColor: "yellow.50",
+    borderColor: "yellow.200",
+  },
+  orange: {
+    backgroundColor: "orange.50",
+    borderColor: "orange.100",
+  },
+  disabled: {
+    backgroundColor: "silver",
+    borderColor: "silver",
+  },
+};
+
+
+export const cardStates = {
+  clicked: {
+    backgroundColor: "green.50",
+  },
+  selected: {
+    backgroundColor: "teal.300",
+  },
+  disabled: {
+    backgroundColor: "silver",
+  },
+};
+
 export const cardSizes = {
   lg: {
     borderRadius: "md",

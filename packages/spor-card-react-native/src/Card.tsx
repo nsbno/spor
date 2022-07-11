@@ -17,6 +17,8 @@ type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
   VariantProps<Theme, "cardSizes", "size"> &
   VariantProps<Theme, "cardColorSchemes", "colorScheme"> &
+  VariantProps<Theme, "cardStates", "state"> &
+  VariantProps<Theme, "cardOnPressColorSchemes", "onPressColorScheme"> &
   VariantProps<Theme, "cardElevations", "elevationLevel">;
 
 const sizes = createVariant({ themeKey: "cardSizes", property: "size" });
@@ -25,22 +27,36 @@ const colorSchemes = createVariant({
   themeKey: "cardColorSchemes",
   property: "colorScheme",
 });
+
 const elevations = createVariant({
   themeKey: "cardElevations",
   property: "elevationLevel",
+});
+
+const states = createVariant({ 
+  themeKey: "cardStates", 
+  property: "state",
+});
+
+const onPressColorSchemes = createVariant({
+  themeKey: "cardOnPressColorSchemes",
+  property: "onPressColorScheme",
 });
 
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacing,
   spacingShorthand,
   elevations,
+  states,
   sizes,
+  onPressColorSchemes,
   colorSchemes,
 ]);
 
 type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
   children: React.ReactNode;
   onPress?: () => void;
+  state?: "selected" | "disabled" | undefined;
 };
 /**
  * Renders a card.
@@ -73,11 +89,12 @@ export const Card = ({
   children,
   onPress,
   size = "lg",
+  state,
   ...props
 }: CardProps) => {
   const restyleProps: Record<string, any> = { ...props, size };
   const [isPressed, setPressed] = React.useState(false);
-  const isPressable = onPress !== undefined;
+  const isPressable = onPress !== undefined && restyleProps.colorScheme !== "grey";
 
   if (props.p === undefined && props.padding === undefined) {
     restyleProps.p = 3;
@@ -86,6 +103,7 @@ export const Card = ({
   if (isPressable) {
     if (isPressed) {
       restyleProps.elevationLevel = size === "lg" ? "sm" : "none";
+      restyleProps.onPressColorScheme = restyleProps.colorScheme;
     } else {
       restyleProps.elevationLevel = size === "lg" ? "md" : "sm";
     }

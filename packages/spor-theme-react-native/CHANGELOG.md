@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react-native
 
+## 0.1.8
+
+### Patch Changes
+
+- 02a0efb: Lagt til en ny pakke for Accordions som er utvidbare elementer.
+
 ## 0.1.7
 
 ### Patch Changes

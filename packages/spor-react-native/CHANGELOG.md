@@ -1,5 +1,17 @@
 # @vygruppen/spor-react-native
 
+## 0.2.6
+
+### Patch Changes
+
+- 02a0efb: Lagt til en ny pakke for Accordions som er utvidbare elementer.
+- Updated dependencies [02a0efb]
+  - @vygruppen/spor-accordion-react-native@0.0.2
+  - @vygruppen/spor-theme-react-native@0.1.8
+  - @vygruppen/spor-button-react-native@0.1.9
+  - @vygruppen/spor-card-react-native@0.0.5
+  - @vygruppen/spor-provider-react-native@0.1.8
+
 ## 0.2.5
 
 ### Patch Changes

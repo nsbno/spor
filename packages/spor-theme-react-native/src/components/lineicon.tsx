@@ -1,6 +1,6 @@
 export const lineIconVariants = {
   defaults: {
-    borderRadius: "sm",
+    alignSelf: "center",
   },
   "local-train": { backgroundColor: "#65B152", color: "white" },
   "region-train": { backgroundColor: "#C34C4C" },
@@ -14,4 +14,14 @@ export const lineIconVariants = {
   tram: { backgroundColor: "tram" },
   "alt-transport": { backgroundColor: "banana" },
   walk: { backgroundColor: "white" },
+};
+
+export const lineIconTypeVariants = {
+  defaults: {},
+  "sm-travel": { padding: "sm", borderRadius: "xs" },
+  "sm-info": { padding: "sm", borderRadius: "9" },
+  "md-travel": { padding: "sm", borderRadius: "9" },
+  "md-info": { padding: "sm", borderRadius: "9" },
+  "lg-travel": { padding: 1, borderRadius: "9px" },
+  "lg-info": { padding: 1, borderRadius: "sm" },
 };

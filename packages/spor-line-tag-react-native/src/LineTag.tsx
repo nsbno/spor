@@ -36,11 +36,7 @@ type LineTagProps = {
 export const LineTag = ({ children, lineNumber, ...props }: LineTagProps) => {
   return (
     <Box>
-      <LineIcon
-        variant="long-distance-train"
-        size="lg"
-        type="travel"
-      ></LineIcon>
+      <LineIcon variant="vy-bus" size="lg" type="lg-travel"></LineIcon>
     </Box>
   );
 };

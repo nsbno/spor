@@ -28,6 +28,7 @@
     "@vygruppen/spor-provider-react-native": "*",
     "@vygruppen/spor-theme-react-native": "*",
     "@vygruppen/spor-typography-react-native": "*",
+    "@vygruppen/spor-badge-react-native": "*",
     "@vygruppen/spor-accordion-react-native": "*"
   },
   "devDependencies": {

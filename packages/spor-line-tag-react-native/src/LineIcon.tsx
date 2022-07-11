@@ -39,7 +39,7 @@ import {
 import { Theme } from "@vygruppen/spor-theme-react-native";
 
 type Variant = VariantProps<Theme, "lineIconVariants", "variant">;
-type SizeVariant = VariantProps<Theme, "lineIconTypeVariants", "type">;
+type TypeVariant = VariantProps<Theme, "lineIconTypeVariants", "type">;
 const variant = createVariant({
   themeKey: "lineIconVariants",
 });
@@ -52,7 +52,7 @@ type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
   BackgroundColorProps<Theme> &
   Variant &
-  SizeVariant;
+  TypeVariant;
 
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacingShorthand,
@@ -108,76 +108,76 @@ const getIcon = (
   if (isTrain(variant)) {
     switch (size) {
       case "sm":
-        return <TrainFill18Icon /* color={iconColor} */ />;
+        return <TrainFill18Icon color={iconColor} />;
       case "md":
-        return <TrainFill24Icon /* color={iconColor} */ />;
+        return <TrainFill24Icon color={iconColor} />;
       case "lg":
-        return <BusFill30Icon /* color={iconColor} */ />;
+        return <BusFill30Icon color={iconColor} />;
     }
   } else {
     switch (variant) {
       case "vy-bus":
         switch (size) {
           case "sm":
-            return <ExpressBusFill18Icon /* color={iconColor} */ />;
+            return <ExpressBusFill18Icon color={iconColor} />;
           case "md":
-            return <ExpressBusFill24Icon /* color={iconColor} */ />;
+            return <ExpressBusFill24Icon color={iconColor} />;
           case "lg":
-            return <ExpressBusFill30Icon /* color={iconColor} */ />;
+            return <ExpressBusFill30Icon color={iconColor} />;
         }
       case "local-bus":
         switch (size) {
           case "sm":
-            return <BusFill18Icon /* color={iconColor} */ />;
+            return <BusFill18Icon color={iconColor} />;
           case "md":
-            return <BusFill24Icon /* color={iconColor} */ />;
+            return <BusFill24Icon color={iconColor} />;
           case "lg":
-            return <BusFill30Icon /* color={iconColor} */ />;
+            return <BusFill30Icon color={iconColor} />;
         }
       case "ferry":
         switch (size) {
           case "sm":
-            return <FerryFill18Icon /* color={iconColor} */ />;
+            return <FerryFill18Icon color={iconColor} />;
           case "md":
-            return <FerryFill24Icon /* color={iconColor} */ />;
+            return <FerryFill24Icon color={iconColor} />;
           case "lg":
-            return <FerryFill30Icon /* color={iconColor} */ />;
+            return <FerryFill30Icon color={iconColor} />;
         }
       case "subway":
         switch (size) {
           case "sm":
-            return <SubwayFill18Icon /* color={iconColor} */ />;
+            return <SubwayFill18Icon color={iconColor} />;
           case "md":
-            return <SubwayFill24Icon /* color={iconColor} */ />;
+            return <SubwayFill24Icon color={iconColor} />;
           case "lg":
-            return <SubwayFill30Icon /* color={iconColor} */ />;
+            return <SubwayFill30Icon color={iconColor} />;
         }
       case "tram":
         switch (size) {
           case "sm":
-            return <TramFill18Icon /* color={iconColor} */ />;
+            return <TramFill18Icon color={iconColor} />;
           case "md":
-            return <TramFill24Icon /* color={iconColor} */ />;
+            return <TramFill24Icon color={iconColor} />;
           case "lg":
-            return <TramFill30Icon /* color={iconColor} */ />;
+            return <TramFill30Icon color={iconColor} />;
         }
       case "alt-transport":
         switch (size) {
           case "sm":
-            return <AltTransportFill18Icon /* color={iconColor} */ />;
+            return <AltTransportFill18Icon color={iconColor} />;
           case "md":
-            return <AltTransportFill24Icon /* color={iconColor} */ />;
+            return <AltTransportFill24Icon color={iconColor} />;
           case "lg":
-            return <AltTransportFill30Icon /* color={iconColor} */ />;
+            return <AltTransportFill30Icon color={iconColor} />;
         }
       case "walk":
         switch (size) {
           case "sm":
-            return <WalkFill18Icon /* color={iconColor} */ />;
+            return <WalkFill18Icon color={iconColor} />;
           case "md":
-            return <WalkFill24Icon /* color={iconColor} */ />;
+            return <WalkFill24Icon color={iconColor} />;
           case "lg":
-            return <WalkFill30Icon /* color={iconColor} */ />;
+            return <WalkFill30Icon color={iconColor} />;
         }
       default:
         return null;

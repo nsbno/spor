@@ -106,6 +106,30 @@ export const cardOnPressColorSchemes = {
   },
 };
 
+export const cardSelectedColorSchemes = {
+  white: {
+    backgroundColor: "green.50",    
+    borderColor: "green.500",
+  },
+  grey: {
+    borderColor: "blackAlpha.600",
+  },
+  blue: {
+    borderColor: "blue.400",
+  },
+  green: {
+    borderColor: "green.500",
+  },
+  teal: {
+    borderColor: "teal.400",
+  },
+  yellow: {
+    borderColor: "yellow.500",
+  },
+  orange: {
+    borderColor: "orange.400",
+  },
+};
 
 export const cardStates = {
   clicked: {

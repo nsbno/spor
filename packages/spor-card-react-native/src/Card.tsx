@@ -10,9 +10,9 @@ import {
 } from "@shopify/restyle";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
+import { BusOutline18Icon } from "@vygruppen/spor-icon-react-native";
 import React from "react";
 import { Pressable } from "react-native";
-import { BusOutline18Icon } from "@vygruppen/spor-icon-react-native";
 
 type RestyleProps = SpacingProps<Theme> &
     SpacingShorthandProps<Theme> &
@@ -20,6 +20,7 @@ type RestyleProps = SpacingProps<Theme> &
     VariantProps<Theme, "cardColorSchemes", "colorScheme"> &
     VariantProps<Theme, "cardStates", "state"> &
     VariantProps<Theme, "cardOnPressColorSchemes", "onPressColorScheme"> &
+    VariantProps<Theme, "cardSelectedColorSchemes", "selectedColorScheme"> &
     VariantProps<Theme, "cardElevations", "elevationLevel">;
 
 const sizes = createVariant({ themeKey: "cardSizes", property: "size" });
@@ -40,8 +41,13 @@ const states = createVariant({
 });
 
 const onPressColorSchemes = createVariant({
-    themeKey: "cardOnPressColorSchemes",
-    property: "onPressColorScheme",
+  themeKey: "cardOnPressColorSchemes",
+  property: "onPressColorScheme",
+});
+
+const selectedColorSchemes = createVariant({
+  themeKey: "cardSelectedColorSchemes",
+  property: "selectedColorScheme",
 });
 
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
@@ -51,6 +57,7 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
     states,
     sizes,
     onPressColorSchemes,
+    selectedColorSchemes,
     colorSchemes,
 ]);
 
@@ -97,7 +104,7 @@ export const Card = ({
     const restyleProps: Record<string, any> = { ...props, size };
     const [isPressed, setPressed] = React.useState(false);
     const isPressable =
-        onPress !== undefined && restyleProps.colorScheme !== "grey";
+        onPress !== undefined && restyleProps.colorScheme !== "disabled";
 
     if (props.p === undefined && props.padding === undefined) {
         restyleProps.p = 3;
@@ -110,6 +117,10 @@ export const Card = ({
         } else {
             restyleProps.elevationLevel = size === "lg" ? "md" : "sm";
         }
+    }
+
+    if (selected) {
+      restyleProps.selectedColorScheme = restyleProps.colorScheme;
     }
 
     const { style } = useRestyle(restyleFunctions, restyleProps);
@@ -125,8 +136,8 @@ export const Card = ({
 
         return (
             <Pressable onPressIn={handlePressIn} onPressOut={handlePressOut}>
-                <Box style={style as any} flexDirection="row">
-                  {selected && 
+                <Box style={style as any} flexDirection="row" >
+                {selected && 
                     <Box alignSelf={"center"} paddingRight="sm">
                         <BusOutline18Icon />
                     </Box>

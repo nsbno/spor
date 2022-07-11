@@ -1,62 +1,63 @@
 import {
-  composeRestyleFunctions,
-  createVariant,
-  spacing,
-  SpacingProps,
-  spacingShorthand,
-  SpacingShorthandProps,
-  useRestyle,
-  VariantProps,
+    composeRestyleFunctions,
+    createVariant,
+    spacing,
+    SpacingProps,
+    spacingShorthand,
+    SpacingShorthandProps,
+    useRestyle,
+    VariantProps,
 } from "@shopify/restyle";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
 import React from "react";
 import { Pressable } from "react-native";
+import { BusOutline18Icon } from "@vygruppen/spor-icon-react-native";
 
 type RestyleProps = SpacingProps<Theme> &
-  SpacingShorthandProps<Theme> &
-  VariantProps<Theme, "cardSizes", "size"> &
-  VariantProps<Theme, "cardColorSchemes", "colorScheme"> &
-  VariantProps<Theme, "cardStates", "state"> &
-  VariantProps<Theme, "cardOnPressColorSchemes", "onPressColorScheme"> &
-  VariantProps<Theme, "cardElevations", "elevationLevel">;
+    SpacingShorthandProps<Theme> &
+    VariantProps<Theme, "cardSizes", "size"> &
+    VariantProps<Theme, "cardColorSchemes", "colorScheme"> &
+    VariantProps<Theme, "cardStates", "state"> &
+    VariantProps<Theme, "cardOnPressColorSchemes", "onPressColorScheme"> &
+    VariantProps<Theme, "cardElevations", "elevationLevel">;
 
 const sizes = createVariant({ themeKey: "cardSizes", property: "size" });
 
 const colorSchemes = createVariant({
-  themeKey: "cardColorSchemes",
-  property: "colorScheme",
+    themeKey: "cardColorSchemes",
+    property: "colorScheme",
 });
 
 const elevations = createVariant({
-  themeKey: "cardElevations",
-  property: "elevationLevel",
+    themeKey: "cardElevations",
+    property: "elevationLevel",
 });
 
-const states = createVariant({ 
-  themeKey: "cardStates", 
-  property: "state",
+const states = createVariant({
+    themeKey: "cardStates",
+    property: "state",
 });
 
 const onPressColorSchemes = createVariant({
-  themeKey: "cardOnPressColorSchemes",
-  property: "onPressColorScheme",
+    themeKey: "cardOnPressColorSchemes",
+    property: "onPressColorScheme",
 });
 
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
-  spacing,
-  spacingShorthand,
-  elevations,
-  states,
-  sizes,
-  onPressColorSchemes,
-  colorSchemes,
+    spacing,
+    spacingShorthand,
+    elevations,
+    states,
+    sizes,
+    onPressColorSchemes,
+    colorSchemes,
 ]);
 
 type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
-  children: React.ReactNode;
-  onPress?: () => void;
-  state?: "selected" | "disabled" | undefined;
+    children: React.ReactNode;
+    onPress?: () => void;
+    selected?: boolean;
 };
 /**
  * Renders a card.
@@ -86,46 +87,55 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
  * ```
  */
 export const Card = ({
-  children,
-  onPress,
-  size = "lg",
-  state,
-  ...props
+    children,
+    onPress,
+    size = "lg",
+    state,
+    selected=false,
+    ...props
 }: CardProps) => {
-  const restyleProps: Record<string, any> = { ...props, size };
-  const [isPressed, setPressed] = React.useState(false);
-  const isPressable = onPress !== undefined && restyleProps.colorScheme !== "grey";
+    const restyleProps: Record<string, any> = { ...props, size };
+    const [isPressed, setPressed] = React.useState(false);
+    const isPressable =
+        onPress !== undefined && restyleProps.colorScheme !== "grey";
 
-  if (props.p === undefined && props.padding === undefined) {
-    restyleProps.p = 3;
-  }
-
-  if (isPressable) {
-    if (isPressed) {
-      restyleProps.elevationLevel = size === "lg" ? "sm" : "none";
-      restyleProps.onPressColorScheme = restyleProps.colorScheme;
-    } else {
-      restyleProps.elevationLevel = size === "lg" ? "md" : "sm";
+    if (props.p === undefined && props.padding === undefined) {
+        restyleProps.p = 3;
     }
-  }
 
-  const { style } = useRestyle(restyleFunctions, restyleProps);
+    if (isPressable) {
+        if (isPressed) {
+            restyleProps.elevationLevel = size === "lg" ? "sm" : "none";
+            restyleProps.onPressColorScheme = restyleProps.colorScheme;
+        } else {
+            restyleProps.elevationLevel = size === "lg" ? "md" : "sm";
+        }
+    }
 
-  if (isPressable) {
-    const handlePressIn = () => {
-      setPressed(true);
-    };
-    const handlePressOut = () => {
-      setPressed(false);
-      onPress();
-    };
+    const { style } = useRestyle(restyleFunctions, restyleProps);
 
-    return (
-      <Pressable onPressIn={handlePressIn} onPressOut={handlePressOut}>
-        <Box style={style as any}>{children}</Box>
-      </Pressable>
-    );
-  }
+    if (isPressable) {
+        const handlePressIn = () => {
+            setPressed(true);
+        };
+        const handlePressOut = () => {
+            setPressed(false);
+            onPress();
+        };
 
-  return <Box style={style as any}>{children}</Box>;
+        return (
+            <Pressable onPressIn={handlePressIn} onPressOut={handlePressOut}>
+                <Box style={style as any} flexDirection="row">
+                  {selected && 
+                    <Box alignSelf={"center"} paddingRight="sm">
+                        <BusOutline18Icon />
+                    </Box>
+                    }
+                    <Box flex={1}>{children}</Box>
+                </Box>
+            </Pressable>
+        );
+    }
+
+    return <Box style={style as any}>{children}</Box>;
 };

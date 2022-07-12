@@ -39,13 +39,13 @@ import {
 import { Theme } from "@vygruppen/spor-theme-react-native";
 
 type Variant = VariantProps<Theme, "lineIconVariants", "variant">;
-type TypeVariant = VariantProps<Theme, "lineIconTypeVariants", "type">;
+type TypeVariant = VariantProps<Theme, "lineIconTypeVariants", "iconType">;
 const variant = createVariant({
   themeKey: "lineIconVariants",
 });
-const type = createVariant({
+const iconType = createVariant({
   themeKey: "lineIconTypeVariants",
-  property: "type",
+  property: "iconType",
 });
 
 type RestyleProps = SpacingProps<Theme> &
@@ -57,7 +57,7 @@ type RestyleProps = SpacingProps<Theme> &
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacingShorthand,
   variant,
-  type,
+  iconType,
 ]);
 
 type LineIconVariantProps =
@@ -75,18 +75,13 @@ type LineIconVariantProps =
   | "walk";
 
 type LineIconSizeProps = "sm" | "md" | "lg";
-type LineIconTypeProps =
-  | "sm-travel"
-  | "sm-info"
-  | "md-travel"
-  | "md-info"
-  | "lg-travel"
-  | "lg-info";
+type LineIconTypeProps = "travel" | "info";
 
 type LineIconProps = Exclude<RestyleProps, "variant"> & {
   variant: LineIconVariantProps;
   size: LineIconSizeProps;
-  type: LineIconTypeProps;
+  iconType: LineIconTypeProps;
+  travelOrInfo: string;
   iconColor?: string;
 };
 
@@ -188,11 +183,14 @@ const getIcon = (
 export const LineIcon = ({
   variant,
   size,
-  type,
+  travelOrInfo,
   iconColor = "white",
   ...props
 }: LineIconProps) => {
-  const { style } = useRestyle(restyleFunctions, { variant, type, ...props });
+  const RestyleProps: Record<string, any> = { variant, ...props };
+  RestyleProps.iconType = size + "-" + travelOrInfo;
+  const { style } = useRestyle(restyleFunctions, RestyleProps);
+
   const icon = getIcon(variant, size, iconColor);
 
   return (

@@ -109,16 +109,10 @@ export const Button = ({
           opacity: isLoading ? 0 : 1,
         }}
       >
-        {leftIcon && children ? (
-          <Box marginRight={1} style={{ marginLeft: -6 }}>
+        {leftIcon && (
+          <Box marginRight={1} style={{ marginLeft: children ? -6 : 0 }}>
             <leftIcon.type {...leftIcon.props} {...{ color }} />
           </Box>
-        ) : (
-          leftIcon && (
-            <Box>
-              <leftIcon.type {...leftIcon.props} {...{ color }} />
-            </Box>
-          )
         )}
         <Text
           style={{
@@ -129,16 +123,10 @@ export const Button = ({
         >
           {children}
         </Text>
-        {rightIcon && children ? (
+        {rightIcon && (
           <Box marginLeft={1} style={{ marginRight: -6 }}>
             <rightIcon.type {...rightIcon.props} {...{ color }} />
           </Box>
-        ) : (
-          rightIcon && (
-            <Box>
-              <rightIcon.type {...rightIcon.props} {...{ color }} />
-            </Box>
-          )
         )}
       </Box>
 

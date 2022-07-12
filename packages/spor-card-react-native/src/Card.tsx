@@ -10,7 +10,7 @@ import {
 } from "@shopify/restyle";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
-import { BusOutline18Icon } from "@vygruppen/spor-icon-react-native";
+import { SuccessFill24Icon } from "@vygruppen/spor-icon-react-native";
 import React from "react";
 import { Pressable } from "react-native";
 
@@ -139,7 +139,7 @@ export const Card = ({
                 <Box style={style as any} flexDirection="row" >
                 {selected && 
                     <Box alignSelf={"center"} paddingRight="sm">
-                        <BusOutline18Icon />
+                        <SuccessFill24Icon />
                     </Box>
                     }
                     <Box flex={1}>{children}</Box>

@@ -1,5 +1,30 @@
 # @vygruppen/spor-react-native
 
+## 0.3.1
+
+### Patch Changes
+
+- Updated dependencies [085ade3]
+  - @vygruppen/spor-button-react-native@0.2.0
+
+## 0.3.0
+
+### Minor Changes
+
+- c54d418: Lagt til en ny pakke for Badges
+- ea1ad58: Add new Badge component for React Native.
+
+### Patch Changes
+
+- Updated dependencies [c54d418]
+- Updated dependencies [ea1ad58]
+  - @vygruppen/spor-badge-react-native@1.0.0
+  - @vygruppen/spor-theme-react-native@0.2.0
+  - @vygruppen/spor-accordion-react-native@0.0.3
+  - @vygruppen/spor-button-react-native@0.1.10
+  - @vygruppen/spor-card-react-native@0.0.6
+  - @vygruppen/spor-provider-react-native@0.1.9
+
 ## 0.2.6
 
 ### Patch Changes

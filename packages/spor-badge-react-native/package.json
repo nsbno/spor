@@ -1,6 +1,6 @@
 {
-  "name": "@vygruppen/spor-provider-react-native",
-  "version": "0.1.9",
+  "name": "@vygruppen/spor-badge-react-native",
+  "version": "1.0.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -8,24 +8,26 @@
     "dist"
   ],
   "sideEffects": false,
-  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-provider-react-native",
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-badge-react-native",
   "repository": {
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
-    "directory": "packages/spor-provider-react-native"
+    "directory": "packages/spor-badge-react-native"
   },
   "scripts": {
     "build": "tsup src/index.tsx --dts",
     "dev": "tsup src/index.tsx --watch"
   },
   "dependencies": {
-    "@vygruppen/spor-i18n-react": "*",
-    "@vygruppen/spor-theme-react-native": "*"
+    "@vygruppen/spor-layout-react-native": "*",
+    "@vygruppen/spor-typography-react-native": "*",
+    "@vygruppen/spor-theme-react-native": "*",
+    "@vygruppen/spor-icon-react-native": "*"
   },
   "devDependencies": {
     "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
-    "react-native": ">0.66.0",
+    "react-native": "^0.66.0",
     "tsup": "^5.11.11"
   },
   "peerDependencies": {

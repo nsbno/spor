@@ -29,7 +29,8 @@ type ButtonVariant =
   | "control"
   | "secondary"
   | "tertiary"
-  | "additional";
+  | "additional"
+  | "ghost";
 
 type RestyleProps = SpacingProps<Theme> &
   VariantProps<Theme, "buttonVariants", "variant"> &
@@ -46,7 +47,7 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
 type ButtonProps = Exclude<RestyleProps, "variant"> & {
   onPress: () => void;
   variant: ButtonVariant;
-  children: string;
+  children?: string;
   isDisabled?: boolean;
   isLoading?: boolean;
   accessibilityLabel?: string;
@@ -109,7 +110,7 @@ export const Button = ({
         }}
       >
         {leftIcon && (
-          <Box marginRight={1} style={{ marginLeft: -6 }}>
+          <Box marginRight={1} style={{ marginLeft: children ? -6 : 0 }}>
             <leftIcon.type {...leftIcon.props} {...{ color }} />
           </Box>
         )}

@@ -20,7 +20,9 @@
     "@vygruppen/spor-icon-react-native": "*",
     "@vygruppen/spor-layout-react-native": "*",
     "@vygruppen/spor-theme-react-native": "*",
-    "@vygruppen/spor-typography-react-native": "*"
+    "@vygruppen/spor-typography-react-native": "*",
+    "@vygruppen/spor-button-react-native": "*"
+
   },
   "devDependencies": {
     "@shopify/restyle": "^2.1.0",

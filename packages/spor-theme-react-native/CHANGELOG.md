@@ -1,5 +1,15 @@
 # @vygruppen/spor-theme-react-native
 
+## 0.2.0
+
+### Minor Changes
+
+- c54d418: Lagt til en ny pakke for Badges
+
+### Patch Changes
+
+- ea1ad58: Add new Badge component for React Native.
+
 ## 0.1.8
 
 ### Patch Changes

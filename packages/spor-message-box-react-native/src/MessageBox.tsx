@@ -45,7 +45,7 @@ type WithCloseButtonProps = {
 
 type WithButtonProps = {
   actionType: "button";
-  actionText: string;
+  buttonText: string;
   onPress: () => void;
 };
 
@@ -78,27 +78,28 @@ export const MessageBox = (props: MessageBoxProps) => {
   const icon = getIconVariant(variant);
 
   return (
-    <Box style={style as any} {...rest}>
-      <Box flexDirection="row">
-        <Box flex={1} flexDirection="row">
-          <Box mr={1} justifyContent="center">
-            {icon}
-          </Box>
-          <Text variant="md">{children}</Text>
+    <Box flexDirection="row" style={style as any} {...rest}>
+      <Box flex={1} flexDirection="row" alignItems="center">
+        <Box mr={1} alignContent="center">
+          {icon}
         </Box>
-
-        {isCloseButtonProps(props) ? (
-          <Button size="xs" variant="ghost" onPress={props.onPress}>
-            <CloseOutline18Icon />
-          </Button>
-        ) : (
-          isButtonProps(props) && (
-            <Button size="xs" variant="additional" onPress={props.onPress}>
-              {props.actionText}
-            </Button>
-          )
-        )}
+        <Text variant="md">{children}</Text>
       </Box>
+
+      {isCloseButtonProps(props) ? (
+        <Button
+          size="xs"
+          variant="ghost"
+          onPress={props.onPress}
+          leftIcon={<CloseOutline18Icon />}
+        ></Button>
+      ) : (
+        isButtonProps(props) && (
+          <Button size="xs" variant="additional" onPress={props.onPress}>
+            {props.buttonText}
+          </Button>
+        )
+      )}
     </Box>
   );
 };

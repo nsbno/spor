@@ -3,7 +3,6 @@ import {
   SporProvider,
   Stack,
   Text,
-  MessageBox,
 } from "@vygruppen/spor-react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
@@ -11,9 +10,6 @@ import { SafeAreaView } from "react-native";
 /**
  * The entry point of the Spor RN demo app
  */
-const onClose = () => {
-  console.log("hei");
-};
 
 const App = () => {
   return (

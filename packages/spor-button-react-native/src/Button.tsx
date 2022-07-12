@@ -47,7 +47,7 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
 type ButtonProps = Exclude<RestyleProps, "variant"> & {
   onPress: () => void;
   variant: ButtonVariant;
-  children?: JSX.Element;
+  children?: string;
   isDisabled?: boolean;
   isLoading?: boolean;
   accessibilityLabel?: string;

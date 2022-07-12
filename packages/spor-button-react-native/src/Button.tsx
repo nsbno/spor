@@ -102,44 +102,38 @@ export const Button = ({
       }}
       {...rest}
     >
-      {variant === "ghost" && leftIcon ? (
-        <Box>
-          <leftIcon.type {...leftIcon.props} {...{ color }} />
-        </Box>
-      ) : (
-        <Box
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            opacity: isLoading ? 0 : 1,
-          }}
-        >
-          {leftIcon && (
-            <Box
-              style={{
-                marginLeft: children ? -6 : 0,
-                marginRight: children ? 6 : 0,
-              }}
-            >
-              <leftIcon.type {...leftIcon.props} {...{ color }} />
-            </Box>
-          )}
-          <Text
+      <Box
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          opacity: isLoading ? 0 : 1,
+        }}
+      >
+        {leftIcon && (
+          <Box
             style={{
-              color,
-              fontSize,
-              fontWeight,
+              marginLeft: children ? -6 : 0,
+              marginRight: children ? 6 : 0,
             }}
           >
-            {children}
-          </Text>
-          {rightIcon && (
-            <Box marginLeft={1} style={{ marginRight: -6 }}>
-              <rightIcon.type {...rightIcon.props} {...{ color }} />
-            </Box>
-          )}
-        </Box>
-      )}
+            <leftIcon.type {...leftIcon.props} {...{ color }} />
+          </Box>
+        )}
+        <Text
+          style={{
+            color,
+            fontSize,
+            fontWeight,
+          }}
+        >
+          {children}
+        </Text>
+        {rightIcon && (
+          <Box marginLeft={1} style={{ marginRight: -6 }}>
+            <rightIcon.type {...rightIcon.props} {...{ color }} />
+          </Box>
+        )}
+      </Box>
 
       {isLoading && (
         <Box

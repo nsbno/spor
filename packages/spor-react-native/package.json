@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-react-native",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "main": "./dist/index.js",
   "types": "./dist/types.d.ts",
   "license": "MIT",

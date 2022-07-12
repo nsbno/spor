@@ -21,7 +21,6 @@ type RestyleProps = SpacingProps<Theme> &
     SpacingShorthandProps<Theme> &
     VariantProps<Theme, "cardSizes", "size"> &
     VariantProps<Theme, "cardColorSchemes", "colorScheme"> &
-    VariantProps<Theme, "cardStates", "state"> &
     VariantProps<Theme, "cardOnPressColorSchemes", "onPressColorScheme"> &
     VariantProps<Theme, "cardSelectedColorSchemes", "selectedColorScheme"> &
     VariantProps<Theme, "cardElevations", "elevationLevel">;
@@ -38,11 +37,6 @@ const elevations = createVariant({
     property: "elevationLevel",
 });
 
-const states = createVariant({
-    themeKey: "cardStates",
-    property: "state",
-});
-
 const onPressColorSchemes = createVariant({
     themeKey: "cardOnPressColorSchemes",
     property: "onPressColorScheme",
@@ -57,7 +51,6 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
     spacing,
     spacingShorthand,
     elevations,
-    states,
     sizes,
     onPressColorSchemes,
     selectedColorSchemes,
@@ -149,7 +142,9 @@ export const Card = ({
                             )}
                         </Box>
                     )}
-                    <Box flex={1}>{children}</Box>
+                    <Box flex={1} justifyContent="center">
+                        {children}
+                    </Box>
                 </Box>
             </Pressable>
         );

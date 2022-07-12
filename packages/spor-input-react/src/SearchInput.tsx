@@ -31,7 +31,7 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
     const showCloseButton = onReset && Boolean(props.value);
     return (
       <InputGroup position="relative">
-        <InputLeftElement>
+        <InputLeftElement pointerEvents="none">
           <SearchOutline24Icon />
         </InputLeftElement>
         <ChakraInput
@@ -51,7 +51,7 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
           {label ?? t(texts.label)}
         </FormLabel>
         {showCloseButton && (
-          <InputRightElement width="fit-content">
+          <InputRightElement width="fit-content" pointerEvents="none">
             <IconButton
               variant="ghost"
               type="button"

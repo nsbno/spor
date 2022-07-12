@@ -10,6 +10,7 @@ import { SafeAreaView } from "react-native";
 /**
  * The entry point of the Spor RN demo app
  */
+
 const App = () => {
   return (
     <SporProvider>
@@ -19,7 +20,6 @@ const App = () => {
           height="100%"
           p={2}
           justifyContent="center"
-          spacing={3}
         >
           <Heading color="darkGrey" variant="2xl" textAlign="center">
             Spor Demo app

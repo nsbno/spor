@@ -93,7 +93,6 @@ export const Card = ({
     children,
     onPress,
     size = "lg",
-    state,
     selected = false,
     ...props
 }: CardProps) => {
@@ -106,6 +105,10 @@ export const Card = ({
         restyleProps.p = 3;
     }
 
+    if (selected) {
+        restyleProps.selectedColorScheme = restyleProps.colorScheme;
+    }
+
     if (isPressable) {
         if (isPressed) {
             restyleProps.elevationLevel = size === "lg" ? "sm" : "none";
@@ -113,10 +116,6 @@ export const Card = ({
         } else {
             restyleProps.elevationLevel = size === "lg" ? "md" : "sm";
         }
-    }
-
-    if (selected) {
-        restyleProps.selectedColorScheme = restyleProps.colorScheme;
     }
 
     const { style } = useRestyle(restyleFunctions, restyleProps);

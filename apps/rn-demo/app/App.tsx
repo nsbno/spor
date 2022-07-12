@@ -32,7 +32,7 @@ const App = () => {
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
           <Card
-            colorScheme={"white"}
+            colorScheme={"blue"}
             size="sm"
             selected={isSelected}
             onPress={() => {

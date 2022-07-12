@@ -10,7 +10,10 @@ import {
 } from "@shopify/restyle";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
-import { SuccessFill24Icon } from "@vygruppen/spor-icon-react-native";
+import {
+    SuccessFill24Icon,
+    SuccessFill30Icon,
+} from "@vygruppen/spor-icon-react-native";
 import React from "react";
 import { Pressable } from "react-native";
 
@@ -41,13 +44,13 @@ const states = createVariant({
 });
 
 const onPressColorSchemes = createVariant({
-  themeKey: "cardOnPressColorSchemes",
-  property: "onPressColorScheme",
+    themeKey: "cardOnPressColorSchemes",
+    property: "onPressColorScheme",
 });
 
 const selectedColorSchemes = createVariant({
-  themeKey: "cardSelectedColorSchemes",
-  property: "selectedColorScheme",
+    themeKey: "cardSelectedColorSchemes",
+    property: "selectedColorScheme",
 });
 
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
@@ -98,7 +101,7 @@ export const Card = ({
     onPress,
     size = "lg",
     state,
-    selected=false,
+    selected = false,
     ...props
 }: CardProps) => {
     const restyleProps: Record<string, any> = { ...props, size };
@@ -120,7 +123,7 @@ export const Card = ({
     }
 
     if (selected) {
-      restyleProps.selectedColorScheme = restyleProps.colorScheme;
+        restyleProps.selectedColorScheme = restyleProps.colorScheme;
     }
 
     const { style } = useRestyle(restyleFunctions, restyleProps);
@@ -136,12 +139,16 @@ export const Card = ({
 
         return (
             <Pressable onPressIn={handlePressIn} onPressOut={handlePressOut}>
-                <Box style={style as any} flexDirection="row" >
-                {selected && 
-                    <Box alignSelf={"center"} paddingRight="sm">
-                        <SuccessFill24Icon />
-                    </Box>
-                    }
+                <Box style={style as any} flexDirection="row">
+                    {selected && (
+                        <Box alignSelf={"center"} paddingRight="sm">
+                            {size === "lg" ? (
+                                <SuccessFill30Icon />
+                            ) : (
+                                <SuccessFill24Icon />
+                            )}
+                        </Box>
+                    )}
                     <Box flex={1}>{children}</Box>
                 </Box>
             </Pressable>

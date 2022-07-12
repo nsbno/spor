@@ -9,10 +9,12 @@ import {
     VariantProps,
 } from "@shopify/restyle";
 import { Box } from "@vygruppen/spor-layout-react-native";
+import { Button } from "@vygruppen/spor-button-react-native";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
 import {
     SuccessFill24Icon,
     SuccessFill30Icon,
+    CloseOutline18Icon,
 } from "@vygruppen/spor-icon-react-native";
 import React from "react";
 import { Pressable } from "react-native";
@@ -60,6 +62,7 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
 type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
     children: React.ReactNode;
     onPress?: () => void;
+    onClose?: () => void;
     selected?: boolean;
 };
 /**
@@ -92,6 +95,7 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
 export const Card = ({
     children,
     onPress,
+    onClose,
     size = "lg",
     selected = false,
     ...props
@@ -131,7 +135,12 @@ export const Card = ({
 
         return (
             <Pressable onPressIn={handlePressIn} onPressOut={handlePressOut}>
-                <Box style={style as any} flexDirection="row">
+                <Box
+                    style={style as any}
+                    flexDirection="row"
+                    alignItems="center"
+                    justifyContent="center"
+                >
                     {selected && (
                         <Box alignSelf={"center"} paddingRight="sm">
                             {size === "lg" ? (
@@ -144,6 +153,15 @@ export const Card = ({
                     <Box flex={1} justifyContent="center">
                         {children}
                     </Box>
+                    {onClose && (
+                        <Button
+                            onPress={onClose}
+                            variant={"ghost"}
+                            leftIcon={<CloseOutline18Icon />}
+                        >
+                            {""}
+                        </Button>
+                    )}
                 </Box>
             </Pressable>
         );

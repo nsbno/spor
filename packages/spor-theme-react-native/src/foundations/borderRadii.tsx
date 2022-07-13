@@ -3,7 +3,6 @@ import tokens from "@vygruppen/spor-design-tokens/react-native";
 export const borderRadii = {
   none: tokens.size["border-radius"].none.value.number,
   xs: tokens.size["border-radius"].xs.value.number,
-  "9px": tokens.size.spacing.px[9].value.number,
   sm: tokens.size["border-radius"].sm.value.number,
   md: tokens.size["border-radius"].md.value.number,
   lg: tokens.size["border-radius"].lg.value.number,

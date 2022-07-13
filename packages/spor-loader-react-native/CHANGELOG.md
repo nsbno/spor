@@ -1,5 +1,13 @@
 # @vygruppen/spor-loader-react-native
 
+## 0.1.5
+
+### Patch Changes
+
+- 8dbf17e: Updated loader with a textVariant, and varianttheme with a default textcolor
+  - @vygruppen/spor-layout-react-native@0.0.2
+  - @vygruppen/spor-typography-react-native@0.1.1
+
 ## 0.1.4
 
 ### Patch Changes

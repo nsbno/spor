@@ -188,17 +188,17 @@ export const LineIcon = ({
   const getIconStyle = (iconType: string) => {
     switch (iconType) {
       case "sm-travel":
-        return styles["sm-travel"];
+        return { padding: 3, borderRadius: 6 };
       case "md-travel":
-        return styles["md-travel"];
+        return { padding: 3, borderRadius: 9 };
       case "lg-travel":
-        return styles["lg-travel"];
+        return { padding: 3, borderRadius: 9 };
       case "sm-info":
-        return styles["sm-info"];
+        return { padding: 6, borderRadius: 9 };
       case "md-info":
-        return styles["md-info"];
+        return { padding: 6, borderRadius: 9 };
       case "lg-info":
-        return styles["lg-info"];
+        return { padding: 6, borderRadius: 12 };
       default:
         return null;
     }
@@ -212,12 +212,3 @@ export const LineIcon = ({
     </Box>
   );
 };
-
-const styles = StyleSheet.create({
-  "sm-travel": { padding: 3, borderRadius: 6 },
-  "sm-info": { padding: 6, borderRadius: 9 },
-  "md-travel": { padding: 3, borderRadius: 9 },
-  "md-info": { padding: 6, borderRadius: 9 },
-  "lg-travel": { padding: 3, borderRadius: 9 },
-  "lg-info": { padding: 6, borderRadius: 12 },
-});

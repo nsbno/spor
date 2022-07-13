@@ -1,5 +1,26 @@
 # @vygruppen/spor-button-react-native
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [bfb0d80]
+  - @vygruppen/spor-theme-react-native@0.2.1
+
+## 0.2.0
+
+### Minor Changes
+
+- 085ade3: Gjør children optional i Button komponent
+
+## 0.1.10
+
+### Patch Changes
+
+- Updated dependencies [c54d418]
+- Updated dependencies [ea1ad58]
+  - @vygruppen/spor-theme-react-native@0.2.0
+
 ## 0.1.9
 
 ### Patch Changes

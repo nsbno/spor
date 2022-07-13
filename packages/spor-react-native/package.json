@@ -1,8 +1,8 @@
 {
   "name": "@vygruppen/spor-react-native",
-  "version": "0.2.6",
+  "version": "0.3.2",
   "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/types.d.ts",
   "license": "MIT",
   "files": [
     "dist"
@@ -29,6 +29,7 @@
     "@vygruppen/spor-theme-react-native": "*",
     "@vygruppen/spor-typography-react-native": "*",
     "@vygruppen/spor-line-tag-react-native": "*",
+    "@vygruppen/spor-message-box-react-native": "*",
     "@vygruppen/spor-badge-react-native": "*",
     "@vygruppen/spor-accordion-react-native": "*"
   },

@@ -37,27 +37,21 @@ import {
   VariantProps,
 } from "@shopify/restyle";
 import { Theme } from "@vygruppen/spor-theme-react-native";
+import { StyleSheet } from "react-native";
 
 type Variant = VariantProps<Theme, "lineIconVariants", "variant">;
-type TypeVariant = VariantProps<Theme, "lineIconTypeVariants", "iconType">;
 const variant = createVariant({
   themeKey: "lineIconVariants",
-});
-const iconType = createVariant({
-  themeKey: "lineIconTypeVariants",
-  property: "iconType",
 });
 
 type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
   BackgroundColorProps<Theme> &
-  Variant &
-  TypeVariant;
+  Variant;
 
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacingShorthand,
   variant,
-  iconType,
 ]);
 
 type LineIconVariantProps =
@@ -80,8 +74,7 @@ type LineIconTypeProps = "travel" | "info";
 type LineIconProps = Exclude<RestyleProps, "variant"> & {
   variant: LineIconVariantProps;
   size: LineIconSizeProps;
-  iconType: LineIconTypeProps;
-  travelOrInfo: string;
+  travelOrInfo: LineIconTypeProps;
   iconColor?: string;
 };
 
@@ -187,15 +180,44 @@ export const LineIcon = ({
   iconColor = "white",
   ...props
 }: LineIconProps) => {
-  const RestyleProps: Record<string, any> = { variant, ...props };
-  RestyleProps.iconType = size + "-" + travelOrInfo;
-  const { style } = useRestyle(restyleFunctions, RestyleProps);
+  const { style } = useRestyle(restyleFunctions, {
+    variant,
+    ...props,
+  });
+  const iconType = size + "-" + travelOrInfo;
+  const getIconStyle = (iconType: string) => {
+    switch (iconType) {
+      case "sm-travel":
+        return styles["sm-travel"];
+      case "md-travel":
+        return styles["md-travel"];
+      case "lg-travel":
+        return styles["lg-travel"];
+      case "sm-info":
+        return styles["sm-info"];
+      case "md-info":
+        return styles["md-info"];
+      case "lg-info":
+        return styles["lg-info"];
+      default:
+        return null;
+    }
+  };
 
   const icon = getIcon(variant, size, iconColor);
 
   return (
-    <Box style={style as any} {...props}>
+    <Box style={[style as any, getIconStyle(iconType)]} {...props}>
       {icon}
     </Box>
   );
 };
+
+const styles = StyleSheet.create({
+  "sm-travel": { padding: 3, borderRadius: 6 },
+  "sm-info": { padding: 6, borderRadius: 9 },
+  "md-travel": { padding: 3, borderRadius: 9 },
+  "md-info": { padding: 6, borderRadius: 9 },
+  "lg-travel": { padding: 3, borderRadius: 9 },
+  "lg-info": { padding: 6, borderRadius: 12 },
+});

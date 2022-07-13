@@ -15,13 +15,3 @@ export const lineIconVariants = {
   "alt-transport": { backgroundColor: "banana" },
   walk: { backgroundColor: "white" },
 };
-
-export const lineIconTypeVariants = {
-  defaults: {},
-  "sm-travel": { padding: 0.5, borderRadius: "xs" },
-  "sm-info": { padding: 1, borderRadius: "9px" },
-  "md-travel": { padding: 0.5, borderRadius: "9px" },
-  "md-info": { padding: 1, borderRadius: "9px" },
-  "lg-travel": { padding: 0.5, borderRadius: "9px" },
-  "lg-info": { padding: 1, borderRadius: "sm" },
-};

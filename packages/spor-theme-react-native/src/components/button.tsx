@@ -38,14 +38,6 @@ export const buttonVariants = {
     color: "darkGrey",
     fontWeight: "normal",
     px: 0,
-    // wrapt around content
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 0,
-    margin: 0,
-    borderWidth: 0,
-    borderRadius: 0,
   },
 };
 

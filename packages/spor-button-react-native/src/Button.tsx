@@ -112,8 +112,8 @@ export const Button = ({
         {leftIcon && (
           <Box
             style={{
-              marginLeft: children ? -6 : 0,
-              marginRight: children ? 6 : 0,
+              paddingLeft: children ? -6 : 0,
+              paddingRight: children ? 6 : 0,
             }}
           >
             <leftIcon.type {...leftIcon.props} {...{ color }} />
@@ -129,7 +129,12 @@ export const Button = ({
           {children}
         </Text>
         {rightIcon && (
-          <Box marginLeft={1} style={{ marginRight: -6 }}>
+          <Box
+            style={{
+              paddingLeft: children ? 6 : 0,
+              paddingRight: children ? -6 : 0,
+            }}
+          >
             <rightIcon.type {...rightIcon.props} {...{ color }} />
           </Box>
         )}

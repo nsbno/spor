@@ -31,27 +31,14 @@ const App = () => {
             Velkommen! Denne appen brukes til demonstrasjon og utvikling av
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
-          <Card
-            colorScheme={"blue"}
-            size="sm"
-            selected={isSelected}
-            onPress={() => {
-              setIsSelected(!isSelected);
-            }}
-            onClose={() => {
-              console.log("close");
-            }}
-          >
-            <Text variant="md">
-              120 kr
-              {/* Velkommen! Denne appen brukes til demonstrasjon og utvikling av
-              forskjellige komponenter i Spor sitt designsystem for React
-              Native.Velkommen! Denne appen brukes til demonstrasjon og
-              utvikling av forskjellige komponenter i Spor sitt designsystem for
-              React Native.Velkommen! Denne appen brukes til demonstrasjon og
-              utvikling av forskjellige komponenter i Spor sitt designsystem for
-              React Native. */}
-            </Text>
+          <Card colorScheme={"white"} size="sm" selected={true}>
+            <Text variant="md">120 kr</Text>
+          </Card>
+          <Card size="sm" selected={true}>
+            <Text variant="md">120 kr</Text>
+          </Card>
+          <Card colorScheme={"white"} size="sm">
+            <Text variant="md">120 kr</Text>
           </Card>
         </Stack>
       </SafeAreaView>

@@ -1,69 +1,69 @@
 import {
-    composeRestyleFunctions,
-    createVariant,
-    spacing,
-    SpacingProps,
-    spacingShorthand,
-    SpacingShorthandProps,
-    useRestyle,
-    VariantProps,
+  composeRestyleFunctions,
+  createVariant,
+  spacing,
+  SpacingProps,
+  spacingShorthand,
+  SpacingShorthandProps,
+  useRestyle,
+  VariantProps,
 } from "@shopify/restyle";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
 import {
-    SuccessFill24Icon,
-    SuccessFill30Icon,
-    CloseOutline18Icon,
+  SuccessFill24Icon,
+  SuccessFill30Icon,
+  CloseOutline18Icon,
 } from "@vygruppen/spor-icon-react-native";
 import React from "react";
 import { Pressable } from "react-native";
 
 type RestyleProps = SpacingProps<Theme> &
-    SpacingShorthandProps<Theme> &
-    VariantProps<Theme, "cardSizes", "size"> &
-    VariantProps<Theme, "cardColorSchemes", "colorScheme"> &
-    VariantProps<Theme, "cardOnPressColorSchemes", "onPressColorScheme"> &
-    VariantProps<Theme, "cardSelectedColorSchemes", "selectedColorScheme"> &
-    VariantProps<Theme, "cardElevations", "elevationLevel">;
+  SpacingShorthandProps<Theme> &
+  VariantProps<Theme, "cardSizes", "size"> &
+  VariantProps<Theme, "cardColorSchemes", "colorScheme"> &
+  VariantProps<Theme, "cardOnPressColorSchemes", "onPressColorScheme"> &
+  VariantProps<Theme, "cardSelectedColorSchemes", "selectedColorScheme"> &
+  VariantProps<Theme, "cardElevations", "elevationLevel">;
 
 const sizes = createVariant({ themeKey: "cardSizes", property: "size" });
 
 const colorSchemes = createVariant({
-    themeKey: "cardColorSchemes",
-    property: "colorScheme",
+  themeKey: "cardColorSchemes",
+  property: "colorScheme",
 });
 
 const elevations = createVariant({
-    themeKey: "cardElevations",
-    property: "elevationLevel",
+  themeKey: "cardElevations",
+  property: "elevationLevel",
 });
 
 const onPressColorSchemes = createVariant({
-    themeKey: "cardOnPressColorSchemes",
-    property: "onPressColorScheme",
+  themeKey: "cardOnPressColorSchemes",
+  property: "onPressColorScheme",
 });
 
 const selectedColorSchemes = createVariant({
-    themeKey: "cardSelectedColorSchemes",
-    property: "selectedColorScheme",
+  themeKey: "cardSelectedColorSchemes",
+  property: "selectedColorScheme",
 });
 
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
-    spacing,
-    spacingShorthand,
-    elevations,
-    sizes,
-    onPressColorSchemes,
-    selectedColorSchemes,
-    colorSchemes,
+  spacing,
+  spacingShorthand,
+  elevations,
+  sizes,
+  onPressColorSchemes,
+  selectedColorSchemes,
+  colorSchemes,
 ]);
 
 type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
-    children: React.ReactNode;
-    onPress?: () => void;
-    onClose?: () => void;
-    selected?: boolean;
+  children: React.ReactNode;
+  onPress?: () => void;
+  onClose?: () => void;
+  selected?: boolean;
 };
 /**
  * Renders a card.
@@ -93,77 +93,82 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
  * ```
  */
 export const Card = ({
-    children,
-    onPress,
-    onClose,
-    size = "lg",
-    selected = false,
-    ...props
+  children,
+  onPress,
+  onClose,
+  size = "lg",
+  selected = false,
+  ...props
 }: CardProps) => {
-    const restyleProps: Record<string, any> = { ...props, size };
-    const [isPressed, setPressed] = React.useState(false);
-    const isPressable =
-        onPress !== undefined && restyleProps.colorScheme !== "disabled";
+  const restyleProps: Record<string, any> = { ...props, size };
+  const [isPressed, setPressed] = React.useState(false);
+  const isPressable =
+    onPress !== undefined && restyleProps.colorScheme !== "disabled";
 
-    if (props.p === undefined && props.padding === undefined) {
-        restyleProps.p = 3;
+  if (props.p === undefined && props.padding === undefined) {
+    restyleProps.p = 3;
+  }
+
+  if (selected) {
+    restyleProps.selectedColorScheme = restyleProps.colorScheme;
+  }
+
+  if (isPressable) {
+    if (isPressed) {
+      restyleProps.elevationLevel = size === "lg" ? "sm" : "none";
+      restyleProps.onPressColorScheme = restyleProps.colorScheme;
+    } else {
+      restyleProps.elevationLevel = size === "lg" ? "md" : "sm";
     }
+  }
 
-    if (selected) {
-        restyleProps.selectedColorScheme = restyleProps.colorScheme;
-    }
+  const { style } = useRestyle(restyleFunctions, restyleProps);
 
-    if (isPressable) {
-        if (isPressed) {
-            restyleProps.elevationLevel = size === "lg" ? "sm" : "none";
-            restyleProps.onPressColorScheme = restyleProps.colorScheme;
-        } else {
-            restyleProps.elevationLevel = size === "lg" ? "md" : "sm";
-        }
-    }
+  if (isPressable) {
+    const handlePressIn = () => {
+      setPressed(true);
+    };
+    const handlePressOut = () => {
+      setPressed(false);
+      onPress();
+    };
 
-    const { style } = useRestyle(restyleFunctions, restyleProps);
+    return (
+      <Pressable onPressIn={handlePressIn} onPressOut={handlePressOut}>
+        <Box
+          style={style as any}
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="center"
+        >
+          {selected && (
+            <Box alignSelf={"center"} paddingRight="sm">
+              {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
+            </Box>
+          )}
+          <Box flex={1} justifyContent="center">
+            {children}
+          </Box>
+          {onClose && (
+            <Button
+              onPress={onClose}
+              variant={"ghost"}
+              leftIcon={<CloseOutline18Icon />}
+            ></Button>
+          )}
+        </Box>
+      </Pressable>
+    );
+  }
 
-    if (isPressable) {
-        const handlePressIn = () => {
-            setPressed(true);
-        };
-        const handlePressOut = () => {
-            setPressed(false);
-            onPress();
-        };
-
-        return (
-            <Pressable onPressIn={handlePressIn} onPressOut={handlePressOut}>
-                <Box
-                    style={style as any}
-                    flexDirection="row"
-                    alignItems="center"
-                    justifyContent="center"
-                >
-                    {selected && (
-                        <Box alignSelf={"center"} paddingRight="sm">
-                            {size === "lg" ? (
-                                <SuccessFill30Icon />
-                            ) : (
-                                <SuccessFill24Icon />
-                            )}
-                        </Box>
-                    )}
-                    <Box flex={1} justifyContent="center">
-                        {children}
-                    </Box>
-                    {onClose && (
-                        <Button
-                            onPress={onClose}
-                            variant={"ghost"}
-                            leftIcon={<CloseOutline18Icon />}
-                        ></Button>
-                    )}
-                </Box>
-            </Pressable>
-        );
-    }
-
-    return <Box style={style as any}>{children}</Box>;
+  return (
+    <Box style={style as any} flexDirection="row">
+      {selected && (
+        <Box alignSelf={"center"} paddingRight="sm">
+          {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
+        </Box>
+      )}
+      {children}
+    </Box>
+  );
 };

@@ -3,7 +3,6 @@ import {
   SporProvider,
   Stack,
   Text,
-  ContentLoader,
 } from "@vygruppen/spor-react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
@@ -22,14 +21,13 @@ const App = () => {
           justifyContent="center"
           spacing={3}
         >
-          <Heading variant="2xl" textAlign="center">
+          <Heading color="darkGrey" variant="2xl" textAlign="center">
             Spor Demo app
           </Heading>
-          <Text variant="md" color="darkGrey" textAlign="center">
+          <Text color="darkGrey" variant="md" textAlign="center">
             Velkommen! Denne appen brukes til demonstrasjon og utvikling av
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
-          <ContentLoader>Leter etter reiseforslag...</ContentLoader>
         </Stack>
       </SafeAreaView>
     </SporProvider>

@@ -170,12 +170,14 @@ export const Card = ({
             {children}
           </Box>
           {onClose && (
-            <Button
-              marginLeft={"sm"}
-              onPress={onClose}
-              variant={"ghost"}
-              leftIcon={<CloseOutline18Icon />}
-            ></Button>
+            <Box alignSelf={"flex-start"} marginTop="3xs">
+              <Button
+                marginLeft={"sm"}
+                onPress={onClose}
+                variant={"ghost"}
+                leftIcon={<CloseOutline18Icon />}
+              ></Button>
+            </Box>
           )}
         </Box>
       </Pressable>
@@ -193,12 +195,14 @@ export const Card = ({
         {children}
       </Box>
       {onClose && (
-        <Button
-          marginRight={"sm"}
-          onPress={onClose}
-          variant={"ghost"}
-          leftIcon={<CloseOutline18Icon />}
-        ></Button>
+        <Box alignSelf={"flex-start"} marginTop={size === "sm" ? "3xs" : "2xs"}>
+          <Button
+            marginRight={"sm"}
+            onPress={onClose}
+            variant={"ghost"}
+            leftIcon={<CloseOutline18Icon />}
+          ></Button>
+        </Box>
       )}
     </Box>
   );

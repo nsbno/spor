@@ -28,7 +28,7 @@ export const ContentLoader = ({ children, ...props }: ContentLoaderProps) => {
       </Box>
       {children && (
         <Box maxWidth={200} width="100%" alignSelf="center">
-          <Text textAlign="center" fontWeight="bold">
+          <Text variant="sm" textAlign="center" fontWeight="bold">
             {children}
           </Text>
         </Box>

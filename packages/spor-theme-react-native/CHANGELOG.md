@@ -1,5 +1,17 @@
 # @vygruppen/spor-theme-react-native
 
+## 0.2.2
+
+### Patch Changes
+
+- 8dbf17e: Updated loader with a textVariant, and varianttheme with a default textcolor
+
+## 0.2.1
+
+### Patch Changes
+
+- bfb0d80: Add new Message Box component for React Native.
+
 ## 0.2.0
 
 ### Minor Changes

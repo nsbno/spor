@@ -37,6 +37,7 @@ export const buttonVariants = {
     backgroundColor: "transparent",
     color: "darkGrey",
     fontWeight: "normal",
+    px: 0,
   },
 };
 

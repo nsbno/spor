@@ -6,6 +6,7 @@ import { SafeAreaView } from "react-native";
 /**
  * The entry point of the Spor RN demo app
  */
+
 const App = () => {
   const [isSelected, setIsSelected] = React.useState(false);
   return (

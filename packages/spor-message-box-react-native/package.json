@@ -1,6 +1,6 @@
 {
-  "name": "@vygruppen/spor-loader-react-native",
-  "version": "0.1.5",
+  "name": "@vygruppen/spor-message-box-react-native",
+  "version": "1.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -8,33 +8,32 @@
     "dist"
   ],
   "sideEffects": false,
-  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-loader-react-native",
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-message-box-react-native",
   "repository": {
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
-    "directory": "packages/spor-loader-react-native"
+    "directory": "packages/spor-message-box-react-native"
   },
   "scripts": {
     "build": "tsup src/index.tsx --dts",
     "dev": "tsup src/index.tsx --watch"
   },
   "dependencies": {
-    "@vygruppen/spor-loader": "*"
+    "@vygruppen/spor-icon-react-native": "*",
+    "@vygruppen/spor-layout-react-native": "*",
+    "@vygruppen/spor-theme-react-native": "*",
+    "@vygruppen/spor-typography-react-native": "*",
+    "@vygruppen/spor-button-react-native": "*"
   },
   "devDependencies": {
-    "@vygruppen/spor-layout-react-native": "*",
-    "@vygruppen/spor-typography-react-native": "*",
-    "lottie-ios": "3.2.3",
-    "lottie-react-native": "^5.1.3",
+    "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
     "react-native": "^0.66.0",
-    "tsup": "^5.11.11"
+    "tsup": "^5.11.11",
+    "react-native-svg": "^12.3.0"
   },
   "peerDependencies": {
-    "@vygruppen/spor-layout-react-native": "*",
-    "@vygruppen/spor-typography-react-native": "*",
-    "lottie-ios": "3.2.3",
-    "lottie-react-native": "^5.1.3",
+    "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
     "react-native": "^0.66.0"
   }

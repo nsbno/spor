@@ -110,7 +110,7 @@ export const Button = ({
         }}
       >
         {leftIcon && (
-          <Box marginRight={1} style={{ marginLeft: children ? -6 : 0 }}>
+          <Box marginRight={children ? 1 : 0}>
             <leftIcon.type {...leftIcon.props} {...{ color }} />
           </Box>
         )}
@@ -124,7 +124,7 @@ export const Button = ({
           {children}
         </Text>
         {rightIcon && (
-          <Box marginLeft={1} style={{ marginRight: -6 }}>
+          <Box marginLeft={children ? 1 : 0}>
             <rightIcon.type {...rightIcon.props} {...{ color }} />
           </Box>
         )}

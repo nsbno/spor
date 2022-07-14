@@ -32,14 +32,20 @@ const App = () => {
         </Card>
         <Card
           colorScheme={"white"}
-          size="sm"
+          size="lg"
           marginBottom="md"
+          selected={true}
           onClose={() => {}}
         >
           <Text variant="md">120 kr</Text>
         </Card>
         <Card colorScheme="white" onClose={() => {}}>
-          <Text variant="md">120 kr</Text>
+          <Text variant="md">
+            120 kr Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Explicabo soluta sapiente illo voluptatum pariatur quibusdam
+            adipisci quas impedit, veniam totam quos nemo tenetur, nisi
+            voluptatem modi a temporibus quia rem.
+          </Text>
         </Card>
       </SafeAreaView>
     </SporProvider>

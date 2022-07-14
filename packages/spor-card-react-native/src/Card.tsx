@@ -80,7 +80,7 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
  * </Card>
  * ```
  *
- * There are lots of color schemes available. You can also set the size as either `sm` or `lg`. The default is `lg`.
+ * There are lots of color schemes available including disabled. You can also set the size as either `sm` or `lg`. The default is `lg`.
  *
  * ```tsx
  * <Card colorScheme="orange" size="sm">
@@ -92,6 +92,22 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
  *
  * ```tsx
  * <Card colorScheme="blue" onPress={handlePress}>
+ *   <Text variant="md">Click for profit</Text>
+ * </Card>
+ * ```
+ *
+ * A close icon can be added to the card. By passing an `onClose` handler, the close icon will appear, and when clicked the onClose handler will be called.
+ *
+ * ```tsx
+ * <Card colorScheme="blue" onClose={handleClose}>
+ *  <Text variant="md">Click for profit</Text>
+ * </Card>
+ * ```
+ *
+ * You can also set the `selected` property to make the card appear selected.
+ *
+ * ```tsx
+ * <Card colorScheme="white" selected={true}>
  *   <Text variant="md">Click for profit</Text>
  * </Card>
  * ```
@@ -172,7 +188,16 @@ export const Card = ({
           {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
         </Box>
       )}
-      {children}
+      <Box flex={1} justifyContent="center">
+        {children}
+      </Box>
+      {onClose && (
+        <Button
+          onPress={onClose}
+          variant={"ghost"}
+          leftIcon={<CloseOutline18Icon />}
+        ></Button>
+      )}
     </Box>
   );
 };

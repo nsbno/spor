@@ -162,7 +162,7 @@ export const Card = ({
           justifyContent="center"
         >
           {selected && (
-            <Box alignSelf={"center"} paddingRight="sm">
+            <Box alignSelf={"center"} marginRight="sm">
               {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
             </Box>
           )}
@@ -185,7 +185,7 @@ export const Card = ({
   return (
     <Box style={style as any} flexDirection="row">
       {selected && (
-        <Box alignSelf={"center"} paddingRight="sm">
+        <Box alignSelf={"center"} marginRight="sm">
           {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
         </Box>
       )}

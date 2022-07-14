@@ -19,7 +19,7 @@ import {
   CloseOutline18Icon,
 } from "@vygruppen/spor-icon-react-native";
 import React from "react";
-import { Pressable, StyleProp, ViewStyle } from "react-native";
+import { Pressable } from "react-native";
 
 type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react-native
 
+## 0.3.5
+
+### Patch Changes
+
+- e7d3f51: revert en endring for å fikse lintfeil som dukker opp i salgsappen ved importering av spor komponenter
+
 ## 0.3.4
 
 ### Patch Changes

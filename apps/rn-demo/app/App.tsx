@@ -16,14 +16,28 @@ const App = () => {
         </Card>
         <Card
           size="sm"
-          colorScheme={"white"}
+          colorScheme={"blue"}
           selected={isSelected}
           onPress={() => setIsSelected(!isSelected)}
           marginBottom="md"
+          onClose={() => {}}
+        >
+          <Text variant="md">
+            120 kr Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Alias pariatur sed vero enim? Similique animi maxime rem ducimus
+            harum. Alias minus nihil consequuntur totam? Reprehenderit quas
+            distinctio tempore aliquam voluptates!
+          </Text>
+        </Card>
+        <Card
+          colorScheme={"white"}
+          size="sm"
+          marginBottom="md"
+          onClose={() => {}}
         >
           <Text variant="md">120 kr</Text>
         </Card>
-        <Card colorScheme={"white"} size="sm" marginBottom="md">
+        <Card colorScheme="white" onClose={() => {}}>
           <Text variant="md">120 kr</Text>
         </Card>
       </SafeAreaView>

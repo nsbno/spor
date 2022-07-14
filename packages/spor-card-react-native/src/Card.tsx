@@ -171,6 +171,7 @@ export const Card = ({
           </Box>
           {onClose && (
             <Button
+              marginLeft={"sm"}
               onPress={onClose}
               variant={"ghost"}
               leftIcon={<CloseOutline18Icon />}
@@ -193,6 +194,7 @@ export const Card = ({
       </Box>
       {onClose && (
         <Button
+          marginRight={"sm"}
           onPress={onClose}
           variant={"ghost"}
           leftIcon={<CloseOutline18Icon />}

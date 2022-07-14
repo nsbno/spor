@@ -1,4 +1,5 @@
 import {
+  BorderProps,
   composeRestyleFunctions,
   createVariant,
   spacing,
@@ -7,6 +8,7 @@ import {
   SpacingShorthandProps,
   useRestyle,
   VariantProps,
+  border,
 } from "@shopify/restyle";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";
@@ -17,10 +19,11 @@ import {
   CloseOutline18Icon,
 } from "@vygruppen/spor-icon-react-native";
 import React from "react";
-import { Pressable } from "react-native";
+import { Pressable, StyleProp, ViewStyle } from "react-native";
 
 type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
+  BorderProps<Theme> &
   VariantProps<Theme, "cardSizes", "size"> &
   VariantProps<Theme, "cardColorSchemes", "colorScheme"> &
   VariantProps<Theme, "cardOnPressColorSchemes", "onPressColorScheme"> &
@@ -54,6 +57,7 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacingShorthand,
   elevations,
   sizes,
+  border,
   onPressColorSchemes,
   selectedColorSchemes,
   colorSchemes,

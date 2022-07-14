@@ -1,5 +1,11 @@
 # @vygruppen/spor-accordion-react-native
 
+## 0.0.6
+
+### Patch Changes
+
+- f8a1e26: Endret styling for expandable komponenten
+
 ## 0.0.5
 
 ### Patch Changes

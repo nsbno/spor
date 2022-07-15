@@ -1,5 +1,11 @@
 # @vygruppen/spor-accordion-react-native
 
+## 0.0.7
+
+### Patch Changes
+
+- 2aec703: Fikse styling for ikon og margin generellt for Expandable
+
 ## 0.0.6
 
 ### Patch Changes

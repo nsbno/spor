@@ -3,6 +3,8 @@ import {
   SporProvider,
   Stack,
   Text,
+  Card,
+  Box,
 } from "@vygruppen/spor-react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
@@ -12,23 +14,55 @@ import { SafeAreaView } from "react-native";
  */
 
 const App = () => {
+  const [isClicked, setIsClicked] = React.useState(false);
   return (
     <SporProvider>
       <SafeAreaView>
-        <Stack
-          backgroundColor="white"
-          height="100%"
-          p={2}
-          justifyContent="center"
-        >
-          <Heading color="darkGrey" variant="2xl" textAlign="center">
-            Spor Demo app
-          </Heading>
-          <Text color="darkGrey" variant="md" textAlign="center">
-            Velkommen! Denne appen brukes til demonstrasjon og utvikling av
-            forskjellige komponenter i Spor sitt designsystem for React Native.
-          </Text>
-        </Stack>
+        <Box margin={"xl"}>
+          <Card
+            colorScheme={"white"}
+            marginBottom="lg"
+            onPress={() => {
+              setIsClicked(!isClicked);
+            }}
+          >
+            <Text>It works!</Text>
+          </Card>
+          <Card
+            colorScheme={"white"}
+            marginBottom="lg"
+            onPress={() => {
+              setIsClicked(!isClicked);
+            }}
+          >
+            <Text>It works!</Text>
+          </Card>
+          <Card
+            colorScheme={"white"}
+            marginBottom="lg"
+            onPress={() => {
+              setIsClicked(!isClicked);
+            }}
+          >
+            <Text>It works!</Text>
+          </Card>
+          <Card
+            colorScheme={"white"}
+            marginBottom="lg"
+            onPress={() => {
+              setIsClicked(!isClicked);
+            }}
+          >
+            <Text>It works!</Text>
+          </Card>
+        </Box>
+        <Box marginTop={"8xl"} alignItems="center">
+          {isClicked && (
+            <Text variant="lg" color={"teal.600"}>
+              Click!
+            </Text>
+          )}
+        </Box>
       </SafeAreaView>
     </SporProvider>
   );

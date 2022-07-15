@@ -31,6 +31,14 @@ export function getExpandableVariantPressedState(
     ...expandableVariantPressed[variant],
   };
 }
+
+export function getExtraMarginForIcon(){
+  return {
+    marginLeft: spacing.sm,
+    marginRight:spacing.sm
+  }
+
+}
 const expandableVariantPressed = {
   defaults: {
     backgroundColor: colors.mint,

@@ -61,7 +61,6 @@ export const Expandable = ({
   const { style } = useRestyle(restyleFunctions, restyleProps);
   const [isPressed, setPressed] = useState(false);
   const pressedStyle = theme.getExpandableVariantPressedState(variant);
-  const iconStyle = theme.getExtraMarginForIcon();
   const [isExpanded, setExpanded] = useState(defaultExpanded);
 
   function handlePress() {
@@ -72,7 +71,7 @@ export const Expandable = ({
   }
 
   return (
-    <Box style={style as any} ml="sm" mb="sm" >
+    <Box style={style as any} ml="sm" mb="sm">
       <Pressable
         style={isPressed ? pressedStyle : { padding: 12 }}
         onPress={handlePress}
@@ -82,7 +81,18 @@ export const Expandable = ({
         <Box flexDirection="row" justifyContent="space-between">
           <Box flexDirection="row" flex={1}>
             {leftIcon}
-            <Text variant={size} fontWeight="bold" style={leftIcon? iconStyle: {}}>
+            <Text
+              variant={size}
+              fontWeight="bold"
+              style={
+                leftIcon
+                  ? {
+                      marginRight: theme.spacing.lg,
+                      marginLeft: theme.spacing.sm,
+                    }
+                  : {}
+              }
+            >
               {title}
             </Text>
           </Box>

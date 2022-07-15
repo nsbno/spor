@@ -31,7 +31,6 @@ export function getExpandableVariantPressedState(
     ...expandableVariantPressed[variant],
   };
 }
-
 const expandableVariantPressed = {
   defaults: {
     backgroundColor: colors.mint,

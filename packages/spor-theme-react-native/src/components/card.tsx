@@ -42,11 +42,11 @@ export const cardColorSchemes = {
     borderColor: "blackAlpha.200",
   },
   grey: {
-    backgroundColor: "grey.100",
+    backgroundColor: "grey.50",
     borderColor: "blackAlpha.300",
   },
   blue: {
-    backgroundColor: "blue.100",
+    backgroundColor: "blue.50",
     borderColor: "blue.200",
   },
   green: {

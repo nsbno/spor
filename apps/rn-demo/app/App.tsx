@@ -20,6 +20,7 @@ const App = () => {
           height="100%"
           p={2}
           justifyContent="center"
+          spacint={3}
         >
           <Heading color="darkGrey" variant="2xl" textAlign="center">
             Spor Demo app

@@ -9,3 +9,4 @@ export * from "@vygruppen/spor-typography-react-native";
 export * from "@vygruppen/spor-message-box-react-native";
 export * from "@vygruppen/spor-badge-react-native";
 export * from "@vygruppen/spor-accordion-react-native";
+export * from "@vygruppen/spor-bottom-drawer-react-native";

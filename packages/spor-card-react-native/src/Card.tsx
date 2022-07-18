@@ -130,15 +130,13 @@ export const Card = ({
   }
 
   if (selected) {
-    restyleProps.selectedColorScheme = "defaults";
+    restyleProps.selectedColorScheme = restyleProps.colorScheme;
   }
 
   if (isPressable) {
     if (isPressed) {
       restyleProps.elevationLevel = size === "lg" ? "sm" : "none";
-      if (restyleProps.colorScheme === "white") {
-        restyleProps.onPressColorScheme = "defaults";
-      }
+      restyleProps.onPressColorScheme = restyleProps.colorScheme;
     } else {
       restyleProps.elevationLevel = size === "lg" ? "md" : "sm";
     }
@@ -156,11 +154,7 @@ export const Card = ({
     };
 
     return (
-      <Pressable
-        onPressIn={handlePressIn}
-        onPressOut={handlePressOut}
-        style={isPressed && { opacity: 0.8 }}
-      >
+      <Pressable onPressIn={handlePressIn} onPressOut={handlePressOut}>
         <Box
           style={style as any}
           flexDirection="row"

@@ -78,10 +78,12 @@ export const cardOnPressColorSchemes = {
     borderColor: "blackAlpha.200",
   },
   grey: {
-    opacity: 0.7,
+    backgroundColor: "green.50",
+    borderColor: "blackAlpha.200",
   },
   blue: {
-    opacity: 0.7,
+    backgroundColor: "green.50",
+    borderColor: "blackAlpha.200",
   },
   green: {
     opacity: 0.7,

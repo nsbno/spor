@@ -175,7 +175,7 @@ export const Card = ({
               onPress={onClose}
               variant={"ghost"}
               leftIcon={<CloseOutline18Icon />}
-            ></Button>
+            />
           )}
         </Box>
       </Pressable>
@@ -184,14 +184,7 @@ export const Card = ({
 
   return (
     <Box style={style as any} flexDirection="row">
-      {selected && (
-        <Box alignSelf={"center"} marginRight="sm">
-          {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
-        </Box>
-      )}
-      <Box flex={1} justifyContent="center">
-        {children}
-      </Box>
+      <Box flex={1}>{children}</Box>
       {onClose && (
         <Button
           marginLeft={"sm"}

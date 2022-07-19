@@ -1,5 +1,25 @@
 # @vygruppen/spor-react-native
 
+## 0.3.6
+
+### Patch Changes
+
+- Updated dependencies [2aec703]
+  - @vygruppen/spor-accordion-react-native@0.0.7
+
+## 0.3.5
+
+### Patch Changes
+
+- e7d3f51: revert en endring for å fikse lintfeil som dukker opp i salgsappen ved importering av spor komponenter
+
+## 0.3.4
+
+### Patch Changes
+
+- Updated dependencies [f8a1e26]
+  - @vygruppen/spor-accordion-react-native@0.0.6
+
 ## 0.3.3
 
 ### Patch Changes

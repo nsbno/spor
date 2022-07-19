@@ -71,7 +71,7 @@ export const Expandable = ({
   }
 
   return (
-    <Box style={style as any} m={2}>
+    <Box style={style as any} ml="sm" mb="sm">
       <Pressable
         style={isPressed ? pressedStyle : { padding: 12 }}
         onPress={handlePress}
@@ -79,10 +79,23 @@ export const Expandable = ({
         onPressOut={() => setPressed(false)}
       >
         <Box flexDirection="row" justifyContent="space-between">
-          {leftIcon}
-          <Text variant={size} fontWeight="bold">
-            {title}
-          </Text>
+          <Box flexDirection="row" flex={1}>
+            {leftIcon}
+            <Text
+              variant={size}
+              fontWeight="bold"
+              style={
+                leftIcon
+                  ? {
+                      marginRight: theme.spacing.lg,
+                      marginLeft: theme.spacing.sm,
+                    }
+                  : {}
+              }
+            >
+              {title}
+            </Text>
+          </Box>
           {getDropdownIcon(isExpanded, size as string)}
         </Box>
       </Pressable>

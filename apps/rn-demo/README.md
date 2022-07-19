@@ -16,7 +16,7 @@ Now that your environment is set up correctly, we can start setting up for devel
 Here's a script you can copy and run to get your environment up and running.
 
 ```bash
-git clone https://github.com/nsbno/spor.git
+git clone git@github.com:nsbno/spor.git
 cd spor
 npm install
 npm run build:rn

@@ -39,13 +39,15 @@ export const TooltipSmall = ({
   arrowPosition,
   ...rest
 }: TooltipSmallProps) => {
+  const maxWidth = 50;
+
   const arrowStyle = getArrowStyle(arrowPosition);
   return (
     <Box alignSelf={"center"}>
       <View style={arrowStyle} />
       <Box
         borderRadius="sm"
-        maxWidth={"50%"}
+        maxWidth={maxWidth + "%"}
         // backgroundColor={"teal.500"}
         backgroundColor={"banana"}
         flexDirection="row"
@@ -71,12 +73,28 @@ export const TooltipSmall = ({
 };
 
 function getArrowStyle(arrowPosition: "top" | "bottom" | "left" | "right") {
+  return {
+    // width: 0,
+    // height: 0,
+    // backgroundColor: "transparent",
+    // borderStyle: "solid",
+    borderTopWidth: 0,
+    borderRightWidth: 5.5,
+    borderBottomWidth: 11.0,
+    borderLeftWidth: 5.5,
+    borderTopColor: "transparent",
+    borderRightColor: "transparent",
+    borderBottomColor: "black",
+    borderLeftColor: "transparent",
+    alignSelf: "center",
+  };
   const baseStyle = {
     width: 17,
     height: 17,
     borderRadius: 2,
-    position: "absolute",
+    position: "relative",
     backgroundColor: "black",
+    // backgroundColor: "#FAE053",
     transform: [
       {
         rotateZ: "45deg",
@@ -94,7 +112,7 @@ function getArrowStyle(arrowPosition: "top" | "bottom" | "left" | "right") {
     case "bottom":
       return {
         ...baseStyle,
-        bottom: -8,
+        bottom: -60,
         left: "25%",
       };
     case "left":

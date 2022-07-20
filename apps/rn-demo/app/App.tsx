@@ -3,6 +3,7 @@ import {
   SporProvider,
   Stack,
   Text,
+  Alert,
 } from "@vygruppen/spor-react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
@@ -28,6 +29,7 @@ const App = () => {
             Velkommen! Denne appen brukes til demonstrasjon og utvikling av
             forskjellige komponenter i Spor sitt designsystem for React Native.
           </Text>
+          <Alert variant="info">ehi jeg heter gyda</Alert>
         </Stack>
       </SafeAreaView>
     </SporProvider>

@@ -39,32 +39,35 @@ export const TooltipSmall = ({
   arrowPosition,
   ...rest
 }: TooltipSmallProps) => {
-  const maxWidth = 50;
-
   const flexDirection = getFlexDirection(arrowPosition);
-  const arrowStyle = getArrowStyle(arrowPosition);
+  const arrowStyle = getTriangleStyle(arrowPosition);
   return (
     <Box alignSelf={"center"} flexDirection={flexDirection}>
       <View style={arrowStyle} />
       <Box
         borderRadius="sm"
-        maxWidth={maxWidth + "%"}
+        maxWidth={250}
+        minWidth={100}
         // backgroundColor={"teal.500"}
-        backgroundColor={"banana"}
+        backgroundColor={"seaMist"}
         flexDirection="row"
-        alignSelf={"center"}
         paddingVertical={"2xs"}
         paddingHorizontal={"xs"}
       >
-        {/* <Text color={"white"}>{children}</Text> */}
-        <Text>{children}</Text>
+        <Box flexGrow={1}>
+          {/* <Text color={"white"}>{children}</Text> */}
+          <Text>{children}</Text>
+        </Box>
         {closeable && (
-          <Box alignSelf={"flex-start"}>
+          <Box
+            marginLeft={"2xs"}
+            alignSelf="flex-start"
+            justifyContent={"flex-end"}
+          >
             <Button
               variant="ghost"
               onPress={() => {}}
               leftIcon={<CloseFill18Icon />}
-              marginLeft={"2xs"}
             />
           </Box>
         )}
@@ -88,7 +91,7 @@ function getFlexDirection(arrowPosition: "top" | "bottom" | "left" | "right") {
   }
 }
 
-function getArrowStyle(arrowPosition: "top" | "bottom" | "left" | "right") {
+function getTriangleStyle(arrowPosition: "top" | "bottom" | "left" | "right") {
   const baseStyle = {
     // width: 0,
     // height: 0,
@@ -106,34 +109,34 @@ function getArrowStyle(arrowPosition: "top" | "bottom" | "left" | "right") {
     case "top":
       return {
         ...baseStyle,
-        borderRightWidth: 4.5 * 4,
-        borderBottomWidth: 9.0 * 4,
-        borderLeftWidth: 4.5 * 4,
-        borderBottomColor: "black",
+        borderRightWidth: 11 * 1,
+        borderBottomWidth: 7.0 * 1,
+        borderLeftWidth: 11 * 1,
+        borderBottomColor: "#CCEAE4",
       };
     case "bottom":
       return {
         ...baseStyle,
-        borderRightWidth: 4.5 * 4,
-        borderTopWidth: 9.0 * 4,
-        borderLeftWidth: 4.5 * 4,
-        borderTopColor: "black",
+        borderRightWidth: 11 * 1,
+        borderTopWidth: 7 * 1,
+        borderLeftWidth: 11 * 1,
+        borderTopColor: "#CCEAE4",
       };
     case "left":
       return {
         ...baseStyle,
-        borderTopWidth: 4.5 * 4,
-        borderBottomWidth: 4.5 * 4,
-        borderRightWidth: 9.0 * 4,
-        borderRightColor: "black",
+        borderTopWidth: 11 * 1,
+        borderBottomWidth: 11 * 1,
+        borderRightWidth: 7 * 1,
+        borderRightColor: "#CCEAE4",
       };
     case "right":
       return {
         ...baseStyle,
-        borderTopWidth: 4.5 * 4,
-        borderBottomWidth: 4.5 * 4,
-        borderLeftWidth: 9.0 * 4,
-        borderLeftColor: "black",
+        borderTopWidth: 11 * 1,
+        borderBottomWidth: 11 * 1,
+        borderLeftWidth: 7 * 1,
+        borderLeftColor: "#CCEAE4",
       };
     default:
       return {};

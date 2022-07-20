@@ -41,9 +41,10 @@ export const TooltipSmall = ({
 }: TooltipSmallProps) => {
   const maxWidth = 50;
 
+  const flexDirection = getFlexDirection(arrowPosition);
   const arrowStyle = getArrowStyle(arrowPosition);
   return (
-    <Box alignSelf={"center"}>
+    <Box alignSelf={"center"} flexDirection={flexDirection}>
       <View style={arrowStyle} />
       <Box
         borderRadius="sm"
@@ -72,60 +73,67 @@ export const TooltipSmall = ({
   );
 };
 
+function getFlexDirection(arrowPosition: "top" | "bottom" | "left" | "right") {
+  switch (arrowPosition) {
+    case "top":
+      return "column";
+    case "bottom":
+      return "column-reverse";
+    case "left":
+      return "row";
+    case "right":
+      return "row-reverse";
+    default:
+      return "column";
+  }
+}
+
 function getArrowStyle(arrowPosition: "top" | "bottom" | "left" | "right") {
-  return {
+  const baseStyle = {
     // width: 0,
     // height: 0,
     // backgroundColor: "transparent",
     // borderStyle: "solid",
     borderTopWidth: 0,
-    borderRightWidth: 5.5,
-    borderBottomWidth: 11.0,
-    borderLeftWidth: 5.5,
     borderTopColor: "transparent",
     borderRightColor: "transparent",
-    borderBottomColor: "black",
+    borderBottomColor: "transparent",
     borderLeftColor: "transparent",
     alignSelf: "center",
-  };
-  const baseStyle = {
-    width: 17,
-    height: 17,
-    borderRadius: 2,
-    position: "relative",
-    backgroundColor: "black",
-    // backgroundColor: "#FAE053",
-    transform: [
-      {
-        rotateZ: "45deg",
-      },
-    ],
   };
 
   switch (arrowPosition) {
     case "top":
       return {
         ...baseStyle,
-        top: -8,
-        left: "25%",
+        borderRightWidth: 4.5 * 4,
+        borderBottomWidth: 9.0 * 4,
+        borderLeftWidth: 4.5 * 4,
+        borderBottomColor: "black",
       };
     case "bottom":
       return {
         ...baseStyle,
-        bottom: -60,
-        left: "25%",
+        borderRightWidth: 4.5 * 4,
+        borderTopWidth: 9.0 * 4,
+        borderLeftWidth: 4.5 * 4,
+        borderTopColor: "black",
       };
     case "left":
       return {
         ...baseStyle,
-        top: "25%",
-        left: -6,
+        borderTopWidth: 4.5 * 4,
+        borderBottomWidth: 4.5 * 4,
+        borderRightWidth: 9.0 * 4,
+        borderRightColor: "black",
       };
     case "right":
       return {
         ...baseStyle,
-        top: "25%",
-        right: -6,
+        borderTopWidth: 4.5 * 4,
+        borderBottomWidth: 4.5 * 4,
+        borderLeftWidth: 9.0 * 4,
+        borderLeftColor: "black",
       };
     default:
       return {};

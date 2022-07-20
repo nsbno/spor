@@ -16,21 +16,19 @@ const App = () => {
   return (
     <SporProvider>
       <SafeAreaView>
-        <Stack
-          backgroundColor="white"
-          height="100%"
-          p={2}
-          justifyContent="center"
+        <Heading color="darkGrey" variant="2xl" textAlign="center">
+          Spor Demo app
+        </Heading>
+        <Text
+          color="darkGrey"
+          variant="md"
+          textAlign="center"
+          marginBottom={"2xl"}
         >
-          <Heading color="darkGrey" variant="2xl" textAlign="center">
-            Spor Demo app
-          </Heading>
-          <Text color="darkGrey" variant="md" textAlign="center">
-            Velkommen! Denne appen brukes til demonstrasjon og utvikling av
-            forskjellige komponenter i Spor sitt designsystem for React Native.
-          </Text>
-          <TooltipSmall />
-        </Stack>
+          Velkommen! Denne appen brukes til demonstrasjon og utvikling av
+          forskjellige komponenter i Spor sitt designsystem for React Native.
+        </Text>
+        <TooltipSmall>Hey there</TooltipSmall>
       </SafeAreaView>
     </SporProvider>
   );

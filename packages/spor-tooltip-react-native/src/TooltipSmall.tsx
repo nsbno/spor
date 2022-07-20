@@ -16,6 +16,7 @@ import {
   CloseFill18Icon,
   CloseOutline18Icon,
 } from "@vygruppen/spor-icon-react-native";
+import { View } from "react-native";
 
 // type Variant = VariantProps<Theme, "tooltipVariants", "variant">;
 // const variant = createVariant({
@@ -38,26 +39,77 @@ export const TooltipSmall = ({
   arrowPosition,
   ...rest
 }: TooltipSmallProps) => {
+  const arrowStyle = getArrowStyle(arrowPosition);
   return (
-    <Box
-      borderRadius="sm"
-      // backgroundColor={"teal.500"}
-      backgroundColor={"banana"}
-      flexDirection="row"
-      alignSelf={"center"}
-      paddingVertical={"2xs"}
-      paddingHorizontal={"xs"}
-    >
-      {/* <Text color={"white"}>{children}</Text> */}
-      <Text>{children}</Text>
-      {closeable && (
-        <Button
-          variant="ghost"
-          onPress={() => {}}
-          leftIcon={<CloseFill18Icon />}
-          marginLeft={"2xs"}
-        />
-      )}
+    <Box alignSelf={"center"}>
+      <View style={arrowStyle} />
+      <Box
+        borderRadius="sm"
+        maxWidth={"50%"}
+        // backgroundColor={"teal.500"}
+        backgroundColor={"banana"}
+        flexDirection="row"
+        alignSelf={"center"}
+        paddingVertical={"2xs"}
+        paddingHorizontal={"xs"}
+      >
+        {/* <Text color={"white"}>{children}</Text> */}
+        <Text>{children}</Text>
+        {closeable && (
+          <Box alignSelf={"flex-start"}>
+            <Button
+              variant="ghost"
+              onPress={() => {}}
+              leftIcon={<CloseFill18Icon />}
+              marginLeft={"2xs"}
+            />
+          </Box>
+        )}
+      </Box>
     </Box>
   );
 };
+
+function getArrowStyle(arrowPosition: "top" | "bottom" | "left" | "right") {
+  const baseStyle = {
+    width: 17,
+    height: 17,
+    borderRadius: 2,
+    position: "absolute",
+    backgroundColor: "black",
+    transform: [
+      {
+        rotateZ: "45deg",
+      },
+    ],
+  };
+
+  switch (arrowPosition) {
+    case "top":
+      return {
+        ...baseStyle,
+        top: -8,
+        left: "25%",
+      };
+    case "bottom":
+      return {
+        ...baseStyle,
+        bottom: -8,
+        left: "25%",
+      };
+    case "left":
+      return {
+        ...baseStyle,
+        top: "25%",
+        left: -6,
+      };
+    case "right":
+      return {
+        ...baseStyle,
+        top: "25%",
+        right: -6,
+      };
+    default:
+      return {};
+  }
+}

@@ -1,5 +1,14 @@
 # @vygruppen/spor-card-react-native
 
+## 0.0.9
+
+### Patch Changes
+
+- cdf4c2d: Update cards with Active and Selected state as well as enhancing card shadows on android.
+- Updated dependencies [cdf4c2d]
+  - @vygruppen/spor-theme-react-native@0.2.3
+  - @vygruppen/spor-button-react-native@0.2.3
+
 ## 0.0.8
 
 ### Patch Changes

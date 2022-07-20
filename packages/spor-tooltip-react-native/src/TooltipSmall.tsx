@@ -28,6 +28,7 @@ import { View } from "react-native";
 type TooltipSmallProps = {
   size?: "sm" | "md";
   closeable?: boolean;
+  onClose?: () => void;
   children: string;
   arrowPosition: "top" | "bottom" | "left" | "right";
 };
@@ -110,18 +111,20 @@ function getTriangleStyle(arrowPosition: "top" | "bottom" | "left" | "right") {
       return {
         ...baseStyle,
         borderRightWidth: 11 * 1,
-        borderBottomWidth: 7.0 * 1,
+        borderBottomWidth: 8 * 1,
         borderLeftWidth: 11 * 1,
         borderBottomColor: "#CCEAE4",
+        top: 1.5,
       };
     case "bottom":
       return {
         ...baseStyle,
         borderRightWidth: 11 * 1,
-        borderTopWidth: 7 * 1,
+        borderTopWidth: 8 * 1,
         borderLeftWidth: 11 * 1,
         borderTopColor: "#CCEAE4",
         borderRadius: 50,
+        top: 1.5,
       };
     case "left":
       return {

@@ -3,8 +3,14 @@ import {
   SporProvider,
   Stack,
   Text,
+  BottomDrawer,
+  Button,
+  Box,
+  SimpleDrawer,
+  DrawerHeader,
+  DrawerFooter,
 } from "@vygruppen/spor-react-native";
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native";
 
 /**
@@ -12,6 +18,7 @@ import { SafeAreaView } from "react-native";
  */
 
 const App = () => {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <SporProvider>
       <SafeAreaView>
@@ -22,13 +29,34 @@ const App = () => {
           justifyContent="center"
           spacint={3}
         >
-          <Heading color="darkGrey" variant="2xl" textAlign="center">
-            Spor Demo app
-          </Heading>
-          <Text color="darkGrey" variant="md" textAlign="center">
-            Velkommen! Denne appen brukes til demonstrasjon og utvikling av
-            forskjellige komponenter i Spor sitt designsystem for React Native.
-          </Text>
+          <Button variant="primary" onPress={() => setModalVisible(true)}>
+            åpne meg
+          </Button>
+
+          {/* <SimpleDrawer
+            isVisible={modalVisible}
+            title="en skuff"
+            onClose={() => setModalVisible(false)}
+          >
+            <Text>heihei</Text>
+          </SimpleDrawer>
+ */}
+          <BottomDrawer
+            isVisible={modalVisible}
+            onClose={() => setModalVisible(false)}
+          >
+            <DrawerHeader size="small">Liten tittel</DrawerHeader>
+            <Box>
+              <Text>
+                Dette er et eksempel på en kort midtstilt melding i en skuff.
+                Størrelsen på skuffen skal følge tekstmengden.
+              </Text>
+            </Box>
+            <DrawerFooter>
+              <Button variant="primary">Primærknapp</Button>
+              <Button variant="primary">Primærknapp</Button>
+            </DrawerFooter>
+          </BottomDrawer>
         </Stack>
       </SafeAreaView>
     </SporProvider>

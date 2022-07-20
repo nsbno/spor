@@ -15,16 +15,16 @@ export type SimpleDrawerProps = {
   isOpen: boolean;
   onClose: () => void;
 };
-/** A very basic drawer component that's easy to use 
- * 
+/** A very basic drawer component that's easy to use
+ *
  * ```tsx
  * <SimpleDrawer placement="bottom" isOpen={isOpen} onClose={handleClose}>
  *   This is the drawer content
  * </SimpleDrawer>
  * ```
- * 
+ *
  * For more advanced use cases, see the [Drawer](./Drawer.tsx) component.
-*/
+ */
 export const SimpleDrawer = ({
   placement,
   children,

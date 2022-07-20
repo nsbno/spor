@@ -1,5 +1,18 @@
 # @vygruppen/spor-react-native
 
+## 0.3.7
+
+### Patch Changes
+
+- Updated dependencies [cdf4c2d]
+  - @vygruppen/spor-card-react-native@0.0.9
+  - @vygruppen/spor-theme-react-native@0.2.3
+  - @vygruppen/spor-button-react-native@0.2.3
+  - @vygruppen/spor-accordion-react-native@0.0.8
+  - @vygruppen/spor-badge-react-native@1.0.3
+  - @vygruppen/spor-message-box-react-native@1.0.2
+  - @vygruppen/spor-provider-react-native@0.1.12
+
 ## 0.3.6
 
 ### Patch Changes

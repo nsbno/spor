@@ -121,22 +121,25 @@ function getTriangleStyle(arrowPosition: "top" | "bottom" | "left" | "right") {
         borderTopWidth: 7 * 1,
         borderLeftWidth: 11 * 1,
         borderTopColor: "#CCEAE4",
+        borderRadius: 50,
       };
     case "left":
       return {
         ...baseStyle,
         borderTopWidth: 11 * 1,
         borderBottomWidth: 11 * 1,
-        borderRightWidth: 7 * 1,
+        borderRightWidth: 8 * 1,
         borderRightColor: "#CCEAE4",
+        left: 1.5,
       };
     case "right":
       return {
         ...baseStyle,
         borderTopWidth: 11 * 1,
         borderBottomWidth: 11 * 1,
-        borderLeftWidth: 7 * 1,
+        borderLeftWidth: 8 * 1,
         borderLeftColor: "#CCEAE4",
+        left: 1.5,
       };
     default:
       return {};

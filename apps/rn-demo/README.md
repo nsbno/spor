@@ -16,7 +16,7 @@ Now that your environment is set up correctly, we can start setting up for devel
 Here's a script you can copy and run to get your environment up and running.
 
 ```bash
-git clone https://github.com/nsbno/spor.git
+git clone git@github.com:nsbno/spor.git
 cd spor
 npm install
 npm run build:rn
@@ -67,3 +67,23 @@ It typically takes 5-10 minutes the first time.
 
 With a bit of luck, you'll see the app running on your screen after a while.
 
+## Running on a physical android device connected by USB
+
+Make sure your developer options is enabled on your device. See this link for more information: https://developer.android.com/studio/debug/dev-options
+
+```bash
+git clone git@github.com:nsbno/spor.git
+cd spor
+npm install
+npm run build:rn
+cd apps/rn-demo
+npm install
+cd android
+bundle install
+npm run android
+# Wait for the installation to complete
+cd ..
+rm -rf node_modules/react node_modules/react-native
+cd ...
+npm run dev:rn
+```

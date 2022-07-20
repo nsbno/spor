@@ -7,8 +7,11 @@
         "blur": 2,
         "spread": 0,
         "opacity": 0.2,
-        "offset": { "width": 0, "height": 1 },
-        "elevation": 1
+        "offset": {
+          "width": 0,
+          "height": 1
+        },
+        "elevation": 3
       },
       "md": {
         "value": "0 2px 8px rgba(0, 0, 0, 0.25)",
@@ -16,8 +19,11 @@
         "blur": 5,
         "spread": 0,
         "opacity": 0.2,
-        "offset": { "width": 0, "height": 2 },
-        "elevation": 2
+        "offset": {
+          "width": 0,
+          "height": 2
+        },
+        "elevation": 5
       },
       "lg": {
         "value": "0 4px 8px 1px rgba(0, 0, 0, 0.3)",
@@ -25,8 +31,11 @@
         "blur": 5,
         "spread": 0,
         "opacity": 0.3,
-        "offset": { "width": 0, "height": 4 },
-        "elevation": 4
+        "offset": {
+          "width": 0,
+          "height": 4
+        },
+        "elevation": 9
       }
     }
   }

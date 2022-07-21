@@ -4,6 +4,7 @@ import {
   Stack,
   Text,
   Alert,
+  Expandable,
 } from "@vygruppen/spor-react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
@@ -25,11 +26,27 @@ const App = () => {
           <Heading color="darkGrey" variant="2xl" textAlign="center">
             Spor Demo app
           </Heading>
-          <Text color="darkGrey" variant="md" textAlign="center">
-            Velkommen! Denne appen brukes til demonstrasjon og utvikling av
-            forskjellige komponenter i Spor sitt designsystem for React Native.
-          </Text>
-          <Alert variant="info">ehi jeg heter gyda</Alert>
+          <Alert variant="info">
+            Informasjon om alternativ transport for avganger som ikke går som
+            normalt.
+          </Alert>
+          <Alert
+            variant="important-message"
+            expandable
+            title="Kort tid til neste avgang"
+          >
+            Informasjon om kort tid mellom avganger, når overgangstid er mindre
+            enn 10 min. {"\n"}
+            {"\n"}
+            Om den korte teksten ikke holder og det er behov for en lengre og
+            mer forklarende tekst, så kan vi legge til mer tekst i xl-boksen.
+            Denne kan fylle en hel skjerm om nødvendig, men prøv å holde teksten
+            i infoboksene så kortfattet som mulig.{"\n"}
+            {"\n"}
+            Noen ganger må ord utheves for å forsterke et budskap.
+            {"\n"}
+            {"\n"} Link til mer informasjon
+          </Alert>
         </Stack>
       </SafeAreaView>
     </SporProvider>

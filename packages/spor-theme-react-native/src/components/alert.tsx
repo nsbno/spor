@@ -1,7 +1,11 @@
 export const alertVariant = {
   defaults: {
     borderRadius: "sm",
-    padding: 2,
+    paddingLeft: 2,
+    paddingRight: 2,
+    paddingTop: 1.5,
+    paddingBottom: 1.5,
+    width: 284,
   },
   "alternativ-transport": {
     backgroundColor: "banana",

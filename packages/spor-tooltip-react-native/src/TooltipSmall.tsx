@@ -43,7 +43,7 @@ export const TooltipSmall = ({
   const flexDirection = getFlexDirection(arrowPosition);
   const arrowStyle = getTriangleStyle(arrowPosition);
   return (
-    <Box alignSelf={"center"} flexDirection={flexDirection}>
+    <Box flex-wrap="wrap" flexDirection={flexDirection}>
       <View style={arrowStyle} />
       <Box
         borderRadius="sm"

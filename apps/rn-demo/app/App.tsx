@@ -1,4 +1,6 @@
 import {
+  Box,
+  Card,
   Heading,
   SporProvider,
   Stack,
@@ -19,16 +21,22 @@ const App = () => {
         <Heading color="darkGrey" variant="2xl" textAlign="center">
           Spor Demo app
         </Heading>
-        <Text
-          color="darkGrey"
-          variant="md"
-          textAlign="center"
-          marginBottom={"2xl"}
-        >
-          Velkommen! Denne appen brukes til demonstrasjon og utvikling av
-          forskjellige komponenter i Spor sitt designsystem for React Native.
-        </Text>
-        <TooltipSmall>Hey there</TooltipSmall>
+        <Box marginHorizontal={"lg"}>
+          <TooltipSmall arrowPosition="bottom">
+            Hey there this sf ølasdjd føalksjd øsaf
+          </TooltipSmall>
+          <Box marginTop={"3xl"}></Box>
+
+          <TooltipSmall arrowPosition="top">He</TooltipSmall>
+          <Box marginTop={"3xl"}></Box>
+
+          <TooltipSmall arrowPosition="left" closeable={false}>
+            h
+          </TooltipSmall>
+          <Box marginTop={"3xl"}></Box>
+
+          <TooltipSmall arrowPosition="right">Hey</TooltipSmall>
+        </Box>
       </SafeAreaView>
     </SporProvider>
   );

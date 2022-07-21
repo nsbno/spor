@@ -83,7 +83,9 @@ export const MessageBox = (props: MessageBoxProps) => {
         <Box mr={1} alignContent="center">
           {icon}
         </Box>
-        <Text variant="md">{children}</Text>
+        <Box flex={1}>
+          <Text variant="md">{children}</Text>
+        </Box>
       </Box>
 
       {isCloseButtonProps(props) ? (

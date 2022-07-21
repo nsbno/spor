@@ -43,6 +43,33 @@ export const TooltipSmall = ({
   const flexDirection = getFlexDirection(arrowPosition);
   const arrowStyle = getTriangleStyle(arrowPosition);
   return (
+    <Box alignSelf="baseline">
+      <Box
+        backgroundColor="seaMist"
+        borderRadius="sm"
+        paddingVertical="2xs"
+        paddingHorizontal="sm"
+        alignSelf="baseline"
+        flexDirection="row"
+      >
+        <Box minWidth={closeable ? 50 : 50 + 18}>
+          <Text>{children}</Text>
+        </Box>
+        {closeable && (
+          <Box>
+            <Button
+              variant="ghost"
+              onPress={() => {}}
+              leftIcon={<CloseFill18Icon />}
+            />
+          </Box>
+        )}
+      </Box>
+      <View style={arrowStyle} />
+    </Box>
+  );
+
+  return (
     <Box flex-wrap="wrap" flexDirection={flexDirection}>
       <View style={arrowStyle} />
       <Box
@@ -94,16 +121,16 @@ function getFlexDirection(arrowPosition: "top" | "bottom" | "left" | "right") {
 
 function getTriangleStyle(arrowPosition: "top" | "bottom" | "left" | "right") {
   const baseStyle = {
-    // width: 0,
-    // height: 0,
-    // backgroundColor: "transparent",
-    // borderStyle: "solid",
     borderTopWidth: 0,
     borderTopColor: "transparent",
     borderRightColor: "transparent",
     borderBottomColor: "transparent",
     borderLeftColor: "transparent",
-    alignSelf: "center",
+    width: 0,
+
+    height: 0,
+    backgroundColor: "transparent",
+    borderStyle: "solid",
   };
 
   switch (arrowPosition) {
@@ -113,7 +140,7 @@ function getTriangleStyle(arrowPosition: "top" | "bottom" | "left" | "right") {
         borderRightWidth: 11 * 1,
         borderBottomWidth: 8 * 1,
         borderLeftWidth: 11 * 1,
-        borderBottomColor: "#CCEAE4",
+        borderBottomColor: "black",
         top: 1.5,
       };
     case "bottom":
@@ -122,9 +149,10 @@ function getTriangleStyle(arrowPosition: "top" | "bottom" | "left" | "right") {
         borderRightWidth: 11 * 1,
         borderTopWidth: 8 * 1,
         borderLeftWidth: 11 * 1,
-        borderTopColor: "#CCEAE4",
+        borderTopColor: "black",
         borderRadius: 50,
-        top: 1.5,
+        left: "50%",
+        // top: 1.5,
       };
     case "left":
       return {
@@ -132,7 +160,7 @@ function getTriangleStyle(arrowPosition: "top" | "bottom" | "left" | "right") {
         borderTopWidth: 11 * 1,
         borderBottomWidth: 11 * 1,
         borderRightWidth: 8 * 1,
-        borderRightColor: "#CCEAE4",
+        borderRightColor: "black",
         left: 1.5,
       };
     case "right":
@@ -141,7 +169,7 @@ function getTriangleStyle(arrowPosition: "top" | "bottom" | "left" | "right") {
         borderTopWidth: 11 * 1,
         borderBottomWidth: 11 * 1,
         borderLeftWidth: 8 * 1,
-        borderLeftColor: "#CCEAE4",
+        borderLeftColor: "black",
         left: 1.5,
       };
     default:

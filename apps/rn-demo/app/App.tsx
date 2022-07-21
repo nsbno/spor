@@ -21,12 +21,17 @@ const App = () => {
         <Heading color="darkGrey" variant="2xl" textAlign="center">
           Spor Demo app
         </Heading>
-        <Box marginHorizontal={"lg"}>
-          <TooltipSmall arrowPosition="bottom">
-            Hey there this sf ølasdjd føalksjd øsaf
-          </TooltipSmall>
-          <Box marginTop={"3xl"}></Box>
-
+        {/* <Box marginHorizontal={"lg"}> */}
+        <TooltipSmall arrowPosition="bottom">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga maiores
+          debitis ipsa? Veritatis, illum eaque? Necessitatibus, earum quae!
+          Blanditiis quibusdam ab facilis sint quo quidem aliquid omnis iure
+          deserunt suscipit?
+        </TooltipSmall>
+        <Box marginTop={"3xl"}></Box>
+        <TooltipSmall arrowPosition="bottom">Lor</TooltipSmall>
+        <Box marginTop={"3xl"}></Box>
+        {/* 
           <TooltipSmall arrowPosition="top">He</TooltipSmall>
           <Box marginTop={"3xl"}></Box>
 
@@ -35,8 +40,11 @@ const App = () => {
           </TooltipSmall>
           <Box marginTop={"3xl"}></Box>
 
-          <TooltipSmall arrowPosition="right">Hey</TooltipSmall>
-        </Box>
+          <TooltipSmall arrowPosition="right">
+            Hey lorem asd asd asd asas as s asklwelw lw lewkw j asdf asdfasd asf
+            asdf sadf asdf sdaf sda
+          </TooltipSmall> */}
+        {/* </Box> */}
       </SafeAreaView>
     </SporProvider>
   );

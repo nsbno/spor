@@ -9,12 +9,7 @@ type DrawerHeaderProps = {
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
 };
-export const DrawerHeader = ({
-  children,
-  size,
-  leftIcon,
-  rightIcon,
-}: DrawerHeaderProps) => {
+export const DrawerHeader = ({ children, size }: DrawerHeaderProps) => {
   const textSize = size === "small" ? "md" : "lg";
   const { textAlign } = useDrawer();
 

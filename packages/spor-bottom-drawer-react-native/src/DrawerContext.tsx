@@ -1,4 +1,5 @@
 import React, { createContext, useContext } from "react";
+
 type DrawerContextProps = { onClose: () => void; textAlign: "left" | "center" };
 const DrawerContext = createContext<DrawerContextProps | null>(null);
 
@@ -13,7 +14,7 @@ export const useDrawer = () => {
 type DrawerProviderProps = {
   onClose: () => void;
   textAlign: "left" | "center";
-  children: JSX.Element;
+  children: React.ReactNode;
 };
 
 export const DrawerProvider = ({

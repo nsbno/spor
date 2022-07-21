@@ -1,16 +1,13 @@
 import {
-  Heading,
   SporProvider,
   Stack,
-  Text,
-  BottomDrawer,
   Button,
-  Box,
   SimpleDrawer,
-  DrawerHeader,
   DrawerFooter,
+  Text,
 } from "@vygruppen/spor-react-native";
 import React, { useState } from "react";
+
 import { SafeAreaView } from "react-native";
 
 /**
@@ -18,7 +15,7 @@ import { SafeAreaView } from "react-native";
  */
 
 const App = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(true);
   return (
     <SporProvider>
       <SafeAreaView>
@@ -33,30 +30,18 @@ const App = () => {
             åpne meg
           </Button>
 
-          {/* <SimpleDrawer
+          <SimpleDrawer
             isVisible={modalVisible}
             title="en skuff"
             onClose={() => setModalVisible(false)}
           >
-            <Text>heihei</Text>
-          </SimpleDrawer>
- */}
-          <BottomDrawer
-            isVisible={modalVisible}
-            onClose={() => setModalVisible(false)}
-          >
-            <DrawerHeader size="small">Liten tittel</DrawerHeader>
-            <Box>
-              <Text>
-                Dette er et eksempel på en kort midtstilt melding i en skuff.
-                Størrelsen på skuffen skal følge tekstmengden.
-              </Text>
-            </Box>
+            <Text>heiheihei</Text>
             <DrawerFooter>
-              <Button variant="primary">Primærknapp</Button>
-              <Button variant="primary">Primærknapp</Button>
+              <Button variant="primary" size="sm">
+                hei
+              </Button>
             </DrawerFooter>
-          </BottomDrawer>
+          </SimpleDrawer>
         </Stack>
       </SafeAreaView>
     </SporProvider>

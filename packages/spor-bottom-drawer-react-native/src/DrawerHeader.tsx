@@ -20,7 +20,6 @@ export const DrawerHeader = ({
 
   return (
     <Box>
-      {leftIcon && <Box mr="xs">{leftIcon}</Box>}
       <Text
         variant={textSize}
         textAlign={textAlign}
@@ -35,7 +34,6 @@ export const DrawerHeader = ({
       >
         {children}
       </Text>
-      {rightIcon && <Box mr="xs">{rightIcon}</Box>}
     </Box>
   );
 };

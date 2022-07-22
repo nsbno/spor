@@ -10,10 +10,10 @@ export const alertVariant = {
   "alternativ-transport": {
     backgroundColor: "banana",
   },
-  "important-message": {
+  important: {
     backgroundColor: "blonde",
   },
-  transitiontime: {
+  "short-transition": {
     backgroundColor: "champagne",
   },
   error: {

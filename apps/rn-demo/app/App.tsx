@@ -32,7 +32,7 @@ const App = () => {
             normalt.
           </Alert>
           <Alert
-            variant="important-message"
+            variant="important"
             actionType="expandable"
             title="Viktig melding"
           >
@@ -49,12 +49,11 @@ const App = () => {
             {"\n"} Link til mer informasjon
           </Alert>
           <Alert
-            variant="transitiontime"
+            variant="short-transition"
             actionType="closeable"
             title="Kort overgangstid"
           >
             Informasjon om alternativ transport for avganger som ikke går som
-            normalt.
           </Alert>
         </Stack>
       </SafeAreaView>

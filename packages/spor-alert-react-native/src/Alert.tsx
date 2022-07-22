@@ -9,12 +9,6 @@ import {
   useTheme,
   VariantProps,
 } from "@shopify/restyle";
-import React, { useEffect, useState } from "react";
-import { Box } from "@vygruppen/spor-layout-react-native";
-import { Theme } from "@vygruppen/spor-theme-react-native";
-import { Text } from "@vygruppen/spor-typography-react-native";
-import { Button } from "@vygruppen/spor-button-react-native";
-
 import {
   AltTransportOutline24Icon,
   CloseOutline18Icon,
@@ -25,8 +19,12 @@ import {
   SuccessOutline24Icon,
   WarningOutline24Icon,
 } from "@vygruppen/spor-icon-react-native";
+import React, { useEffect, useState } from "react";
+import { Box } from "@vygruppen/spor-layout-react-native";
+import { Theme } from "@vygruppen/spor-theme-react-native";
+import { Text } from "@vygruppen/spor-typography-react-native";
+import { Button } from "@vygruppen/spor-button-react-native";
 import { Pressable } from "react-native";
-import { ExpandableItem } from "./ExpandableItem";
 
 type Variant = VariantProps<Theme, "alertVariant", "variant">;
 const variant = createVariant({ themeKey: "alertVariant" });
@@ -43,8 +41,8 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
 
 type AlertVariant =
   | "alternativ-transport"
-  | "important-message"
-  | "transitiontime"
+  | "important"
+  | "short-transition"
   | "error"
   | "confirmation"
   | "info";
@@ -89,7 +87,7 @@ export const Alert = (props: AlertProps) => {
 
   const [isExpanded, setExpanded] = useState(false);
 
-  function handleExpandPress() {
+  function handlePress() {
     setExpanded(!isExpanded);
     if (onToggle) {
       onToggle(!isExpanded);
@@ -106,9 +104,10 @@ export const Alert = (props: AlertProps) => {
     <Box style={style as any} {...props}>
       <Box flexDirection="row">
         {icon}
+
         <Text
           fontWeight={isExpanded ? "bold" : "normal"}
-          ml={1}
+          ml={1.5}
           style={{ flex: 1 }}
           variant="sm"
         >
@@ -118,23 +117,22 @@ export const Alert = (props: AlertProps) => {
         </Text>
 
         {isExpandableProps(props) && (
-          <Button
-            size="xs"
-            variant="ghost"
-            onPress={handleExpandPress}
-            leftIcon={getDropDownIcon(isExpanded)}
-          ></Button>
+          <Pressable onPress={handlePress} style={{ alignSelf: "center" }}>
+            {getDropDownIcon(isExpanded)}
+          </Pressable>
         )}
         {isCloseButtonProps(props) && (
-          <Button
-            size="xs"
-            variant="ghost"
-            onPress={props.onPress}
-            leftIcon={<CloseOutline18Icon />}
-          ></Button>
+          <Pressable onPress={props.onPress} style={{ alignSelf: "center" }}>
+            <CloseOutline18Icon />
+          </Pressable>
         )}
       </Box>
-      {isExpanded && <ExpandableItem>{children}</ExpandableItem>}
+
+      {isExpanded && (
+        <Text mt={1} variant="sm" ml={5} pr={3}>
+          {children}
+        </Text>
+      )}
     </Box>
   );
 };
@@ -143,9 +141,9 @@ const getVariantIcon = (variant: AlertVariant) => {
   switch (variant) {
     case "alternativ-transport":
       return <AltTransportOutline24Icon />;
-    case "important-message":
+    case "important":
       return <WarningOutline24Icon />;
-    case "transitiontime":
+    case "short-transition":
       return <InformationOutline24Icon />;
     case "error":
       return <DeleteCircleOutline24Icon />;
@@ -155,6 +153,7 @@ const getVariantIcon = (variant: AlertVariant) => {
       return <InformationOutline24Icon />;
   }
 };
+
 function isExpandableProps(
   props: AlertProps
 ): props is BaseProps & WithExpandableProps {

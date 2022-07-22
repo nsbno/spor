@@ -9,19 +9,24 @@ import {
   useTheme,
   VariantProps,
 } from "@shopify/restyle";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 import { Text } from "@vygruppen/spor-typography-react-native";
+import { Button } from "@vygruppen/spor-button-react-native";
+
 import {
   AltTransportOutline24Icon,
+  CloseOutline18Icon,
   DeleteCircleOutline24Icon,
   DropdownDownFill18Icon,
+  DropdownUpFill18Icon,
   InformationOutline24Icon,
   SuccessOutline24Icon,
   WarningOutline24Icon,
 } from "@vygruppen/spor-icon-react-native";
 import { Pressable } from "react-native";
+import { ExpandableItem } from "./ExpandableItem";
 
 type Variant = VariantProps<Theme, "alertVariant", "variant">;
 const variant = createVariant({ themeKey: "alertVariant" });
@@ -44,40 +49,58 @@ type AlertVariant =
   | "confirmation"
   | "info";
 
-type AlertProps = Exclude<RestyleProps, "variant"> & {
+type BaseProps = Exclude<RestyleProps, "variant"> & {
   children: string;
   variant: AlertVariant;
-  expandable: boolean;
-  title: string;
   onToggle?: (isExpanded: boolean) => void;
 };
 
-export const Alert = ({
-  children,
-  variant,
-  expandable = false,
-  title,
-  link,
-  onToggle,
-  ...props
-}: AlertProps) => {
+type WithExpandableProps = {
+  actionType: "expandable";
+  title: string;
+};
+
+type WithCloseButtonProps = {
+  actionType: "closeable";
+  title: string;
+  onPress: () => void;
+};
+
+type WithoutActionProps = {
+  actionType: "none";
+};
+
+type ActionProps =
+  | WithExpandableProps
+  | WithCloseButtonProps
+  | WithoutActionProps;
+
+type AlertProps = BaseProps & ActionProps;
+
+export const Alert = (props: AlertProps) => {
+  const { children, variant, onToggle, actionType, ...rest } = props;
   const { style } = useRestyle(restyleFunctions, {
     variant,
-    ...props,
+    ...rest,
   });
 
   const theme = useTheme<Theme>();
   const icon = getVariantIcon(variant);
 
-  const [isPressed, setPressed] = useState(false);
   const [isExpanded, setExpanded] = useState(false);
 
-  function handlePress() {
+  function handleExpandPress() {
     setExpanded(!isExpanded);
     if (onToggle) {
       onToggle(!isExpanded);
     }
   }
+
+  useEffect(() => {
+    if (isCloseButtonProps(props)) {
+      setExpanded(true);
+    }
+  }, []);
 
   return (
     <Box style={style as any} {...props}>
@@ -89,26 +112,29 @@ export const Alert = ({
           style={{ flex: 1 }}
           variant="sm"
         >
-          {expandable ? title : children}
+          {actionType == "closeable" || actionType == "expandable"
+            ? props.title
+            : children}
         </Text>
 
-        {expandable && (
-          <Pressable
-            onPress={handlePress}
-            onPressIn={() => setPressed(true)}
-            onPressOut={() => setPressed(false)}
-          >
-            <DropdownDownFill18Icon />
-          </Pressable>
+        {isExpandableProps(props) && (
+          <Button
+            size="xs"
+            variant="ghost"
+            onPress={handleExpandPress}
+            leftIcon={getDropDownIcon(isExpanded)}
+          ></Button>
+        )}
+        {isCloseButtonProps(props) && (
+          <Button
+            size="xs"
+            variant="ghost"
+            onPress={props.onPress}
+            leftIcon={<CloseOutline18Icon />}
+          ></Button>
         )}
       </Box>
-      <Box ml={5} pr={3}>
-        {isExpanded && (
-          <Text mt={4} variant="sm">
-            {children}
-          </Text>
-        )}
-      </Box>
+      {isExpanded && <ExpandableItem>{children}</ExpandableItem>}
     </Box>
   );
 };
@@ -129,3 +155,22 @@ const getVariantIcon = (variant: AlertVariant) => {
       return <InformationOutline24Icon />;
   }
 };
+function isExpandableProps(
+  props: AlertProps
+): props is BaseProps & WithExpandableProps {
+  return props.actionType === "expandable";
+}
+
+function isCloseButtonProps(
+  props: AlertProps
+): props is BaseProps & WithCloseButtonProps {
+  return props.actionType === "closeable";
+}
+
+function getDropDownIcon(isExpanded: boolean) {
+  if (isExpanded) {
+    return <DropdownUpFill18Icon />;
+  } else {
+    return <DropdownDownFill18Icon />;
+  }
+}

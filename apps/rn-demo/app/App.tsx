@@ -22,6 +22,7 @@ const App = () => {
           height="100%"
           p={2}
           justifyContent="center"
+          alignItems={"center"}
         >
           <Heading color="darkGrey" variant="2xl" textAlign="center">
             Spor Demo app
@@ -32,8 +33,8 @@ const App = () => {
           </Alert>
           <Alert
             variant="important-message"
-            expandable
-            title="Kort tid til neste avgang"
+            actionType="expandable"
+            title="Viktig melding"
           >
             Informasjon om kort tid mellom avganger, når overgangstid er mindre
             enn 10 min. {"\n"}
@@ -46,6 +47,14 @@ const App = () => {
             Noen ganger må ord utheves for å forsterke et budskap.
             {"\n"}
             {"\n"} Link til mer informasjon
+          </Alert>
+          <Alert
+            variant="transitiontime"
+            actionType="closeable"
+            title="Kort overgangstid"
+          >
+            Informasjon om alternativ transport for avganger som ikke går som
+            normalt.
           </Alert>
         </Stack>
       </SafeAreaView>

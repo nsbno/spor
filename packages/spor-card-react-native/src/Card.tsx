@@ -9,6 +9,7 @@ import {
   useRestyle,
   VariantProps,
   border,
+  LayoutProps,
 } from "@shopify/restyle";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";
@@ -22,6 +23,7 @@ import React from "react";
 import { Pressable } from "react-native";
 
 type RestyleProps = SpacingProps<Theme> &
+  LayoutProps<Theme> &
   SpacingShorthandProps<Theme> &
   BorderProps<Theme> &
   VariantProps<Theme, "cardSizes", "size"> &
@@ -144,9 +146,23 @@ export const Card = ({
 
   const { style } = useRestyle(restyleFunctions, restyleProps);
 
+  // const childrenBox = <Box flexGrow={1}>{children}</Box>;
+  const childrenBox = <Box flexGrow={1}>{children}</Box>;
+  const closeButton = onClose !== undefined && (
+    <Box alignSelf={"center"} flexShrink={0}>
+      <Button
+        marginLeft={"sm"}
+        onPress={onClose}
+        variant={"ghost"}
+        leftIcon={<CloseOutline18Icon />}
+      ></Button>
+    </Box>
+  );
+
   if (isPressable) {
     const handlePressIn = () => {
       setPressed(true);
+      console.log("style is,", style);
     };
     const handlePressOut = () => {
       setPressed(false);
@@ -162,24 +178,15 @@ export const Card = ({
           style={style as any}
           flexDirection="row"
           alignItems="center"
-          justifyContent="center"
+          // maxWidth={250}
         >
           {selected && (
-            <Box alignSelf={"center"} marginRight="sm">
+            <Box alignSelf={"center"} marginRight="sm" flexShrink={0}>
               {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
             </Box>
           )}
-          <Box flex={1} justifyContent="center">
-            {children}
-          </Box>
-          {onClose && (
-            <Button
-              marginLeft={"sm"}
-              onPress={onClose}
-              variant={"ghost"}
-              leftIcon={<CloseOutline18Icon />}
-            />
-          )}
+          {childrenBox}
+          {closeButton}
         </Box>
       </Pressable>
     );
@@ -187,15 +194,8 @@ export const Card = ({
 
   return (
     <Box style={style as any} flexDirection="row">
-      <Box flex={1}>{children}</Box>
-      {onClose && (
-        <Button
-          marginLeft={"sm"}
-          onPress={onClose}
-          variant={"ghost"}
-          leftIcon={<CloseOutline18Icon />}
-        ></Button>
-      )}
+      {childrenBox}
+      {closeButton}
     </Box>
   );
 };

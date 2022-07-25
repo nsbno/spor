@@ -53,6 +53,7 @@ type ButtonProps = Exclude<RestyleProps, "variant"> & {
   accessibilityLabel?: string;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
+  hitSlop?: number;
 };
 
 /** A button. */
@@ -65,6 +66,7 @@ export const Button = ({
   children,
   leftIcon,
   rightIcon,
+  hitSlop,
   ...rest
 }: ButtonProps) => {
   const [isPressed, setIsPressed] = useState(false);
@@ -89,6 +91,7 @@ export const Button = ({
 
   return (
     <Pressable
+      hitSlop={hitSlop}
       accessibilityRole="button"
       accessibilityState={{ disabled: isDisabled, busy: isLoading }}
       onPressIn={() => setIsPressed(true)}

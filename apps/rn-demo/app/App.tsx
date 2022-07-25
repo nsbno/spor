@@ -2,9 +2,10 @@ import {
   SporProvider,
   Stack,
   Button,
-  SimpleDrawer,
   DrawerFooter,
   Text,
+  BottomDrawer,
+  DrawerHeader,
 } from "@vygruppen/spor-react-native";
 import React, { useState } from "react";
 
@@ -15,7 +16,7 @@ import { SafeAreaView } from "react-native";
  */
 
 const App = () => {
-  const [modalVisible, setModalVisible] = useState(true);
+  const [drawerVisible, setDrawerVisible] = useState(false);
   return (
     <SporProvider>
       <SafeAreaView>
@@ -26,22 +27,34 @@ const App = () => {
           justifyContent="center"
           spacint={3}
         >
-          <Button variant="primary" onPress={() => setModalVisible(true)}>
+          <Button
+            variant="primary"
+            size="md"
+            onPress={() => setDrawerVisible(true)}
+          >
             åpne meg
           </Button>
 
-          <SimpleDrawer
-            isVisible={modalVisible}
-            title="en skuff"
-            onClose={() => setModalVisible(false)}
+          <BottomDrawer
+            isVisible={drawerVisible}
+            textAlign="center"
+            onClose={() => setDrawerVisible(false)}
           >
-            <Text>heiheihei</Text>
-            <DrawerFooter>
-              <Button variant="primary" size="sm">
-                hei
+            <DrawerHeader size="large">tittel</DrawerHeader>
+            <Text>
+              Dette er et eksempel på en lang melding i en skuff. Del gjerne opp
+              innholdet over flere avsnitt, for å gjøre meldingen lettere å
+              lese. Dette er et eksempel på en lang melding i en skuff. Del
+              gjerne opp innholdet over flere avsnitt, for å gjøre meldingen
+              lettere å lese. Dette er et eksempel på en lang melding i en
+              skuff. Del gjerne opp innholdet over flere avsnitt.
+            </Text>
+            <DrawerFooter style={{ justifyContent: "space-evenly" }}>
+              <Button variant="primary" size="md">
+                knapp
               </Button>
             </DrawerFooter>
-          </SimpleDrawer>
+          </BottomDrawer>
         </Stack>
       </SafeAreaView>
     </SporProvider>

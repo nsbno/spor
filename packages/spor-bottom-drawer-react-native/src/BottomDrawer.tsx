@@ -3,13 +3,13 @@ import { Box } from "@vygruppen/spor-layout-react-native";
 import { DrawerHandle } from "./DrawerHandle";
 import Modal from "react-native-modal";
 import { DrawerProvider } from "./DrawerContext";
-import { StyleProp } from "react-native";
 
 type BottomDrawerProps = {
   children: React.ReactNode;
   onClose: () => void;
   isVisible: boolean;
   textAlign: "left" | "center";
+  icon?: JSX.Element;
 };
 
 export const BottomDrawer = ({
@@ -17,6 +17,7 @@ export const BottomDrawer = ({
   onClose,
   isVisible,
   textAlign = "center",
+  icon,
 }: BottomDrawerProps) => {
   return (
     <DrawerProvider onClose={onClose} textAlign={textAlign}>
@@ -45,7 +46,9 @@ export const BottomDrawer = ({
           justifyContent="center"
           backgroundColor="lightGrey"
         >
-          <DrawerHandle onClose={onClose} />
+          <Box>
+            <DrawerHandle onClose={onClose} />
+          </Box>
           {children}
         </Box>
       </Modal>

@@ -1,10 +1,11 @@
+import { Text } from "@vygruppen/spor-typography-react-native";
 import React from "react";
 import { BottomDrawer } from "./BottomDrawer";
-import { DrawerHandle } from "./DrawerHandle";
+import { useDrawer } from "./DrawerContext";
 import { DrawerHeader } from "./DrawerHeader";
 
 type SimpleDrawerProps = {
-  children?: React.ReactNode;
+  children?: JSX.Element | JSX.Element[];
   title?: string;
   titleSize?: "small" | "large";
   textAlign?: "left" | "center";
@@ -29,7 +30,7 @@ export const SimpleDrawer = ({
       {...props}
     >
       {title && <DrawerHeader size={titleSize}>{title}</DrawerHeader>}
-      {children}
+      <Text textAlign={textAlign}>{children}</Text>
     </BottomDrawer>
   );
 };

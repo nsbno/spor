@@ -6,12 +6,12 @@ type Props = {
   onClose: () => void;
 };
 
-export function DrawerHandle({ onClose }: Props) {
+export const DrawerHandle = ({ onClose }: Props) => {
   return (
     <Box flex={1} paddingVertical="2xs" alignItems="center">
       <Box backgroundColor="steel" borderRadius="xs" height={6}>
-        <Button variant="ghost" onPress={onClose}></Button>
+        <Button variant="ghost" onPress={onClose} hitSlop={5}></Button>
       </Box>
     </Box>
   );
-}
+};

@@ -9,7 +9,7 @@ type DrawerFooterProps = {
 
 export const DrawerFooter = ({ children, style }: DrawerFooterProps) => {
   return (
-    <Box marginTop="lg" marginBottom="lg">
+    <Box marginTop="lg" marginBottom="lg" style={style}>
       {children}
     </Box>
   );

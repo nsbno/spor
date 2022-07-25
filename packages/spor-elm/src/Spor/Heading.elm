@@ -39,8 +39,8 @@ type alias Options =
     }
 
 
-{-| What HTML element to use for the header.
-Use H1 for most important, H2 for second most important etc.
+{-| What `Html` element to use for the header.
+Use `H1` for most important, `H2` for second most important etc.
 -}
 type HeadingLevel
     = H1
@@ -55,8 +55,8 @@ type HeadingLevel
 -- CONFIG
 
 
-{-| Create an initial configuration for a Heading component.
-By default, the H2 level is used, along with TextStyle.Medium.
+{-| Create an initial configuration for a `Heading` component.
+By default, the `H2` level is used, along with the `Medium` text style.
 -}
 init : Heading
 init =

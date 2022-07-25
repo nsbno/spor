@@ -42,8 +42,8 @@ type alias Options =
 -- CONFIG
 
 
-{-| Create an initial config for the Text component.
-It defaults to the Medium TextStyle, and no text.
+{-| Create an initial config for the `Text` component.
+Defaults to the `Medium` text style, and no text.
 -}
 init : Text
 init =
@@ -71,7 +71,7 @@ withString text (Text options) =
 -- DISPLAY
 
 
-{-| Render Text component to Html
+{-| Render `Text` component to `Html`
 -}
 toHtml : Text -> Html a
 toHtml (Text options) =

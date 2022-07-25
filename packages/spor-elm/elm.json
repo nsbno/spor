@@ -6,6 +6,7 @@
     "version": "1.0.0",
     "exposed-modules": [
         "Spor.Text",
+        "Spor.TextStyle",
         "Spor.Heading"
     ],
     "elm-version": "0.19.1 <= v < 0.20.0",

@@ -1,7 +1,6 @@
 module Spor.Heading exposing
     ( Heading
     , HeadingLevel(..)
-    , TextStyle(..)
     , addString
     , init
     , toHtml
@@ -11,9 +10,10 @@ module Spor.Heading exposing
     )
 
 import Css
-import Css.Media
 import Html.Styled as Html exposing (Attribute, Html)
 import Html.Styled.Attributes as Attribute
+import Spor.Internal.TextStyle as TextStyleInternal
+import Spor.TextStyle as TextStyle exposing (TextStyle)
 import Spor.Token.Size.Breakpoint as Breakpoint exposing (Breakpoint)
 
 
@@ -37,20 +37,10 @@ type HeadingLevel
     | H6
 
 
-type TextStyle
-    = DoubleExtraLarge
-    | ExtraLargeDisplay
-    | ExtraLargeSans
-    | Large
-    | Medium
-    | Small
-    | ExtraSmall
-
-
 init : Heading
 init =
     Heading
-        { style = Medium
+        { style = TextStyle.Medium
         , level = H2
         , text = ""
         }
@@ -79,7 +69,7 @@ addString text (Heading options) =
 toHtml : Heading -> Html a
 toHtml (Heading options) =
     constructorForLevel options.level
-        [ Attribute.css <| textStyleCss options.style ]
+        [ Attribute.css <| TextStyleInternal.toCss options.style ]
         [ Html.text options.text ]
 
 
@@ -103,72 +93,3 @@ constructorForLevel level =
 
         H6 ->
             Html.h6
-
-
-textStyleCss : TextStyle -> List Css.Style
-textStyleCss textStyle =
-    case textStyle of
-        DoubleExtraLarge ->
-            [ Css.fontFamilies [ "Vy Display" ]
-            , Css.lineHeight (Css.num 1.333)
-            , Css.fontSize (Css.rem 3.375)
-            , mediaQuery Breakpoint.sm
-                [ Css.fontSize (Css.rem 2.25) ]
-            ]
-
-        ExtraLargeDisplay ->
-            [ Css.fontFamilies [ "Vy Display" ]
-            , Css.lineHeight (Css.num 1.333)
-            , Css.fontSize (Css.rem 2.5)
-            , mediaQuery Breakpoint.sm
-                [ Css.fontSize (Css.rem 1.875) ]
-            ]
-
-        ExtraLargeSans ->
-            [ Css.fontFamilies [ "Vy Sans" ]
-            , Css.lineHeight (Css.num 1.333)
-            , Css.fontSize (Css.rem 2.5)
-            , mediaQuery Breakpoint.sm
-                [ Css.fontSize (Css.rem 1.875) ]
-            ]
-
-        Large ->
-            [ Css.fontFamilies [ "Vy Sans" ]
-            , Css.lineHeight (Css.num 1.333)
-            , Css.fontSize (Css.rem 1.875)
-            , mediaQuery Breakpoint.sm
-                [ Css.fontSize (Css.rem 1.5) ]
-            ]
-
-        Medium ->
-            [ Css.fontFamilies [ "Vy Sans" ]
-            , Css.lineHeight (Css.num 1.333)
-            , Css.fontSize (Css.rem 1.5)
-            , mediaQuery Breakpoint.sm
-                [ Css.fontSize (Css.rem 1.125) ]
-            ]
-
-        Small ->
-            [ Css.fontFamilies [ "Vy Sans" ]
-            , Css.lineHeight (Css.num 1.333)
-            , Css.fontSize (Css.rem 1.125)
-            , mediaQuery Breakpoint.sm
-                [ Css.fontSize (Css.rem 1) ]
-            ]
-
-        ExtraSmall ->
-            [ Css.fontFamilies [ "Vy Sans" ]
-            , Css.lineHeight (Css.num 1.333)
-            , Css.fontSize (Css.rem 1)
-            , mediaQuery Breakpoint.sm
-                [ Css.fontSize (Css.rem 0.875) ]
-            ]
-
-
-mediaQuery : Breakpoint -> List Css.Style -> Css.Style
-mediaQuery breakpoint styles =
-    Css.Media.withMedia
-        [ Css.Media.only Css.Media.screen
-            [ Css.Media.maxWidth (Breakpoint.toCss breakpoint) ]
-        ]
-        styles

@@ -1,13 +1,24 @@
 module Spor.Heading exposing
-    ( Heading
-    , HeadingLevel(..)
-    , addString
-    , init
+    ( Heading, HeadingLevel(..)
+    , init, withHeadingLevel, withTextStyle, withString
     , toHtml
-    , withHeadingLevel
-    , withString
-    , withTextStyle
     )
+
+{-| A component for displaying headers
+
+@docs Heading, HeadingLevel
+
+
+## Config
+
+@docs init, withHeadingLevel, withTextStyle, withString
+
+
+## Display
+
+@docs toHtml
+
+-}
 
 import Css
 import Html.Styled as Html exposing (Attribute, Html)
@@ -17,6 +28,8 @@ import Spor.TextStyle as TextStyle exposing (TextStyle)
 import Spor.Token.Size.Breakpoint as Breakpoint exposing (Breakpoint)
 
 
+{-| A component for displaying headers
+-}
 type Heading
     = Heading Options
 
@@ -28,6 +41,9 @@ type alias Options =
     }
 
 
+{-| What HTML element to use for the header.
+Use H1 for most important, H2 for second most important etc.
+-}
 type HeadingLevel
     = H1
     | H2
@@ -37,6 +53,13 @@ type HeadingLevel
     | H6
 
 
+
+-- CONFIG
+
+
+{-| Create an initial configuration for a Heading component.
+By default, the H2 level is used, along with TextStyle.Medium.
+-}
 init : Heading
 init =
     Heading
@@ -46,26 +69,33 @@ init =
         }
 
 
+{-| Set the text style
+-}
 withTextStyle : TextStyle -> Heading -> Heading
 withTextStyle style (Heading options) =
     Heading { options | style = style }
 
 
+{-| Set the heading level
+-}
 withHeadingLevel : HeadingLevel -> Heading -> Heading
 withHeadingLevel level (Heading options) =
     Heading { options | level = level }
 
 
+{-| Set the text to be displayed
+-}
 withString : String -> Heading -> Heading
 withString text (Heading options) =
     Heading { options | text = text }
 
 
-addString : String -> Heading -> Heading
-addString text (Heading options) =
-    Heading { options | text = options.text ++ text }
+
+-- DISPLAY
 
 
+{-| Convert configuration to HTML
+-}
 toHtml : Heading -> Html a
 toHtml (Heading options) =
     constructorForLevel options.level

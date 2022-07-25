@@ -1,21 +1,33 @@
 module Spor.Text exposing
     ( Text
-    , addString
-    , init
+    , init, withTextStyle, withString
     , toHtml
-    , withString
-    , withTextStyle
     )
 
-import Css
-import Css.Media
+{-| A component for displaying text.
+
+@docs Text
+
+
+## Configuration
+
+@docs init, withTextStyle, withString
+
+
+## Display
+
+@docs toHtml
+
+-}
+
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attribute
 import Spor.Internal.TextStyle as TextStyleInternal
 import Spor.TextStyle as TextStyle exposing (TextStyle)
-import Spor.Token.Size.Breakpoint as Breakpoint exposing (Breakpoint)
 
 
+{-| A component for displaying text.
+-}
 type Text
     = Text Options
 
@@ -26,6 +38,13 @@ type alias Options =
     }
 
 
+
+-- CONFIG
+
+
+{-| Create an initial config for the Text component.
+It defaults to the Medium TextStyle, and no text.
+-}
 init : Text
 init =
     Text
@@ -34,21 +53,26 @@ init =
         }
 
 
+{-| Set the text style to use
+-}
 withTextStyle : TextStyle -> Text -> Text
 withTextStyle style (Text options) =
     Text { options | style = style }
 
 
+{-| Set the text to be displayed
+-}
 withString : String -> Text -> Text
 withString text (Text options) =
     Text { options | text = text }
 
 
-addString : String -> Text -> Text
-addString text (Text options) =
-    Text { options | text = options.text ++ text }
+
+-- DISPLAY
 
 
+{-| Render Text component to Html
+-}
 toHtml : Text -> Html a
 toHtml (Text options) =
     Html.p

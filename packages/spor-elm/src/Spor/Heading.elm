@@ -20,12 +20,10 @@ module Spor.Heading exposing
 
 -}
 
-import Css
 import Html.Styled as Html exposing (Attribute, Html)
 import Html.Styled.Attributes as Attribute
 import Spor.Internal.TextStyle as TextStyleInternal
 import Spor.TextStyle as TextStyle exposing (TextStyle)
-import Spor.Token.Size.Breakpoint as Breakpoint exposing (Breakpoint)
 
 
 {-| A component for displaying headers

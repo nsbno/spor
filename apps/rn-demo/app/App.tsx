@@ -34,7 +34,7 @@ const App = () => {
           <Alert
             variant="important"
             actionType="expandable"
-            title="Viktig melding"
+            title="Viktig melding lang lang lang lang tekst"
           >
             Informasjon om kort tid mellom avganger, når overgangstid er mindre
             enn 10 min. {"\n"}

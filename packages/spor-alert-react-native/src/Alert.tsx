@@ -66,6 +66,7 @@ type WithCloseButtonProps = {
 
 type WithoutActionProps = {
   actionType: "none";
+  title?: undefined;
 };
 
 type ActionProps =
@@ -76,14 +77,13 @@ type ActionProps =
 type AlertProps = BaseProps & ActionProps;
 
 export const Alert = (props: AlertProps) => {
-  const { children, variant, onToggle, actionType, ...rest } = props;
+  const { children, variant, onToggle, actionType, title, ...rest } = props;
   const { style } = useRestyle(restyleFunctions, {
     variant,
     ...rest,
   });
 
-  const theme = useTheme<Theme>();
-  const icon = getVariantIcon(variant);
+  const variantIcon = getVariantIcon(variant);
 
   const [isExpanded, setExpanded] = useState(false);
 
@@ -103,25 +103,24 @@ export const Alert = (props: AlertProps) => {
   return (
     <Box style={style as any} {...props}>
       <Box flexDirection="row">
-        {icon}
+        {variantIcon}
 
         <Text
           fontWeight={isExpanded ? "bold" : "normal"}
           ml={1.5}
           style={{ flex: 1 }}
           variant="sm"
+          numberOfLines={props.title ? 1 : undefined}
         >
-          {actionType == "closeable" || actionType == "expandable"
-            ? props.title
-            : children}
+          {props.title ?? children}
         </Text>
 
-        {isExpandableProps(props) && (
+        {actionType == "expandable" && (
           <Pressable onPress={handlePress} style={{ alignSelf: "center" }}>
             {getDropDownIcon(isExpanded)}
           </Pressable>
         )}
-        {isCloseButtonProps(props) && (
+        {actionType == "closeable" && (
           <Pressable onPress={props.onPress} style={{ alignSelf: "center" }}>
             <CloseOutline18Icon />
           </Pressable>

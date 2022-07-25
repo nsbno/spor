@@ -2,10 +2,10 @@ import {
   SporProvider,
   Stack,
   Button,
-  DrawerFooter,
-  Text,
   BottomDrawer,
   DrawerHeader,
+  Text,
+  DrawerFooter,
 } from "@vygruppen/spor-react-native";
 import React, { useState } from "react";
 
@@ -16,7 +16,7 @@ import { SafeAreaView } from "react-native";
  */
 
 const App = () => {
-  const [drawerVisible, setDrawerVisible] = useState(false);
+  const [drawerVisible, setDrawerVisible] = useState(true);
   return (
     <SporProvider>
       <SafeAreaView>
@@ -37,15 +37,21 @@ const App = () => {
 
           <BottomDrawer
             isVisible={drawerVisible}
-            textAlign="center"
             onClose={() => setDrawerVisible(false)}
           >
-            <DrawerHeader size="large">tittel</DrawerHeader>
+            <DrawerHeader textAlign="left" size="large">
+              tittel
+            </DrawerHeader>
             <Text>
               Dette er et eksempel på en lang melding i en skuff. Del gjerne opp
               innholdet over flere avsnitt, for å gjøre meldingen lettere å
               lese. Dette er et eksempel på en lang melding i en skuff. Del
               gjerne opp innholdet over flere avsnitt, for å gjøre meldingen
+              lettere å lese. Dette er et eksempel på en lang melding i en
+              skuff. Del gjerne opp innholdet over flere avsnitt.
+            </Text>
+            <Text>
+              Del gjerne opp innholdet over flere avsnitt, for å gjøre meldingen
               lettere å lese. Dette er et eksempel på en lang melding i en
               skuff. Del gjerne opp innholdet over flere avsnitt.
             </Text>

@@ -3,7 +3,7 @@ import { Box } from "@vygruppen/spor-layout-react-native";
 import { StyleProp, ViewStyle } from "react-native";
 
 type DrawerFooterProps = {
-  children: React.ReactNode;
+  children: JSX.Element;
   style?: StyleProp<ViewStyle>;
 };
 

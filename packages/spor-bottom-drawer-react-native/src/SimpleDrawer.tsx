@@ -1,7 +1,6 @@
 import { Text } from "@vygruppen/spor-typography-react-native";
 import React from "react";
 import { BottomDrawer } from "./BottomDrawer";
-import { useDrawer } from "./DrawerContext";
 import { DrawerHeader } from "./DrawerHeader";
 
 type SimpleDrawerProps = {
@@ -22,14 +21,19 @@ export const SimpleDrawer = ({
   onClose,
   ...props
 }: SimpleDrawerProps) => {
+  if (title !== undefined) {
+    return (
+      <BottomDrawer isVisible={isVisible} onClose={onClose} {...props}>
+        <DrawerHeader textAlign={textAlign} size={titleSize}>
+          {title}
+        </DrawerHeader>
+        <Text textAlign={textAlign}>{children}</Text>
+      </BottomDrawer>
+    );
+  }
+
   return (
-    <BottomDrawer
-      textAlign={textAlign}
-      isVisible={isVisible}
-      onClose={onClose}
-      {...props}
-    >
-      {title && <DrawerHeader size={titleSize}>{title}</DrawerHeader>}
+    <BottomDrawer isVisible={isVisible} onClose={onClose} {...props}>
       <Text textAlign={textAlign}>{children}</Text>
     </BottomDrawer>
   );

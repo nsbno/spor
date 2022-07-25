@@ -150,11 +150,14 @@ export const Card = ({
     };
     const handlePressOut = () => {
       setPressed(false);
-      onPress();
     };
 
     return (
-      <Pressable onPressIn={handlePressIn} onPressOut={handlePressOut}>
+      <Pressable
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        onPress={onPress}
+      >
         <Box
           style={style as any}
           flexDirection="row"

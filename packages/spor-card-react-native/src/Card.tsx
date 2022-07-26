@@ -144,8 +144,20 @@ export const Card = ({
     }
   }
 
+  const handlePressIn = () => {
+    setPressed(true);
+  };
+  const handlePressOut = () => {
+    setPressed(false);
+  };
+
   const { style } = useRestyle(restyleFunctions, restyleProps);
 
+  const selectedIconIfEnabled = selected && (
+    <Box marginRight="sm">
+      {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
+    </Box>
+  );
   const childrenBox = <Box flex={1}>{children}</Box>;
   const closeButtonIfEnabled = onClose !== undefined && (
     <Button
@@ -155,20 +167,8 @@ export const Card = ({
       leftIcon={<CloseOutline18Icon />}
     ></Button>
   );
-  const selectedIconIfEnabled = selected && (
-    <Box marginRight="sm">
-      {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
-    </Box>
-  );
 
   if (isPressable) {
-    const handlePressIn = () => {
-      setPressed(true);
-    };
-    const handlePressOut = () => {
-      setPressed(false);
-    };
-
     return (
       <Pressable
         onPressIn={handlePressIn}

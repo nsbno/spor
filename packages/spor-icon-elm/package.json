@@ -1,0 +1,17 @@
+{
+  "name": "spor-icon-elm",
+  "version": "1.0.0",
+  "description": "Spor icons as Elm SVG nodes",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "node ./generate.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "camelcase": "^7.0.0",
+    "svg2elm": "^1.2.4",
+    "svgo": "^2.8.0"
+  }
+}

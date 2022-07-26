@@ -1,5 +1,11 @@
 # @vygruppen/spor-card-react-native
 
+## 0.0.10
+
+### Patch Changes
+
+- 0436a58: Card onPress now works correctly while in a scroll-view
+
 ## 0.0.9
 
 ### Patch Changes

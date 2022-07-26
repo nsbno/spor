@@ -10,6 +10,7 @@ import {
 import {
   BusOutline24Icon,
   CloseOutline18Icon,
+  SuccessFill24Icon,
 } from "@vygruppen/spor-icon-react-native";
 import React from "react";
 import { Pressable, SafeAreaView, ScrollView } from "react-native";
@@ -25,7 +26,34 @@ function press2() {
   console.log("button");
 }
 
+function card(color: "banana" | "seaMist" | "white") {
+  return (
+    <Box
+      flexDirection="row"
+      flex={1}
+      backgroundColor={color}
+      alignItems="center"
+    >
+      <SuccessFill24Icon />
+      <Box flex={1}>
+        <Text>children here</Text>
+      </Box>
+      <CloseOutline18Icon />
+    </Box>
+  );
+}
+
 const App = () => {
+  // const card = (
+  //   <Box flexDirection="row" flex={1}>
+  //     <SuccessFill24Icon />
+  //     <Box flex={1}>
+  //       <Text>children here</Text>
+  //     </Box>
+  //     <CloseOutline18Icon />
+  //   </Box>
+  // );
+
   return (
     <SporProvider>
       <SafeAreaView>
@@ -34,19 +62,52 @@ const App = () => {
             Spor Demo app
           </Heading>
 
-          <Box
-            flexDirection={"row"}
-            backgroundColor="banana"
-            justifyContent={"space-evenly"}
-          >
-            <Card
-              colorScheme={"white"}
-              // onClose={() => {}}
-            >
-              <Text>its content</Text>
+          {/* minimal card container */}
+          <Box flexDirection="row">
+            {card("banana")}
+            {card("seaMist")}
+            {card("white")}
+          </Box>
+
+          <Box marginBottom={"lg"}></Box>
+          <Box flexDirection={"row"} backgroundColor="banana">
+            <Card colorScheme={"white"} onClose={() => {}}>
+              <Text>A</Text>
+            </Card>
+            <Card colorScheme={"white"}>
+              <Text>B</Text>
             </Card>
             <Card colorScheme={"white"} onPress={press}>
-              <Text>its content</Text>
+              <Text>C</Text>
+            </Card>
+          </Box>
+
+          <Box marginBottom={"lg"}></Box>
+          <Box flexDirection={"row"}>
+            <Card colorScheme={"white"} onClose={() => {}}>
+              <Text>Lorem ipsum dolor, sit amet consectetur adipisicing</Text>
+            </Card>
+            <Card colorScheme={"white"}>
+              <Text>Lorem ipsum dolor, sit amet consectetur adipisicing</Text>
+            </Card>
+            <Card colorScheme={"white"} onPress={press}>
+              <Text>Lorem ipsum dolor, sit amet consectetur adipisicing</Text>
+            </Card>
+          </Box>
+
+          <Box marginBottom={"lg"}></Box>
+          <Box flexDirection={"row"}>
+            <Card colorScheme={"white"} onClose={() => {}}>
+              <Text>Lorem ipsum dolor, sit amet consectetur adipisicing</Text>
+              <Button onPress={() => {}} variant="primary">
+                click
+              </Button>
+            </Card>
+            <Card colorScheme={"white"} selected={true} onPress={() => {}}>
+              <Text>Lorem ipsum dolor, sit amet consectetur adipisicing</Text>
+              <Button onPress={() => {}} variant="primary">
+                click
+              </Button>
             </Card>
           </Box>
 
@@ -55,11 +116,16 @@ const App = () => {
           <Box marginHorizontal={"md"}>
             <Box marginBottom={"lg"}></Box>
             <Card colorScheme={"white"} onClose={() => {}}>
-              <Text>its content</Text>
+              <Text>Lorem</Text>
             </Card>
             <Box marginBottom={"lg"}></Box>
-            <Card colorScheme={"white"} onPress={press} selected={true}>
-              <Text>its content</Text>
+            <Card
+              colorScheme={"white"}
+              size="sm"
+              onPress={press}
+              selected={true}
+            >
+              <Text>Lorem</Text>
             </Card>
             <Box marginBottom={"lg"}></Box>
 
@@ -68,23 +134,24 @@ const App = () => {
               onPress={press}
               selected={true}
               onClose={() => {}}
+              size="sm"
             >
-              <Text>its content</Text>
+              <Text>Lorem</Text>
             </Card>
             <Box marginBottom={"lg"}></Box>
             <Card colorScheme={"white"} onPress={press} onClose={() => {}}>
               <Text>
-                its content Lorem, ipsum dolor sit amet consectetur adipisicing
-                elit. Voluptates reiciendis porro minus ipsam, nulla incidunt
-                delectus distinctio placeat recusandae fugiat consequuntur
-                tempora dolores similique ullam eligendi ea molestiae possimus
+                Lorem Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptates reiciendis porro minus ipsam, nulla incidunt delectus
+                distinctio placeat recusandae fugiat consequuntur tempora
+                dolores similique ullam eligendi ea molestiae possimus
                 molestias?
               </Text>
             </Card>
             <Box marginBottom={"lg"}></Box>
             <Card colorScheme={"white"} onPress={press} onClose={() => {}}>
               {/* <Box flex={1}> */}
-              <Text>its content</Text>
+              <Text>Lorem</Text>
               <Button variant={"control"} onPress={press2}>
                 click me
               </Button>

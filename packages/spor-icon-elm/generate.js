@@ -26,7 +26,7 @@ async function generateSvgs() {
                     const svg = await fs.readFile(filePath, { encoding: 'utf-8' });
                     const optimizedSvg = svgo.optimize(svg);
 
-                    const elmName = camelCase(path.basename(fileName));
+                    const elmName = camelCase(fileName.replace(/.svg$/, ''));
                     const elmSvg = await svg2elm.generateSvgFunction(elmName, optimizedSvg.data);
                     const actualElmName = elmSvg.split(':')[0].trim();
 

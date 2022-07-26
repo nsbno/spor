@@ -7,22 +7,22 @@ export const alertVariant = {
     paddingBottom: 1.5,
     width: 284,
   },
-  "alternativ-transport": {
+  yellow: {
     backgroundColor: "banana",
   },
-  important: {
+  "light-yellow": {
     backgroundColor: "blonde",
   },
-  "short-transition": {
+  orange: {
     backgroundColor: "champagne",
   },
-  error: {
+  red: {
     backgroundColor: "lightRed",
   },
-  confirmation: {
+  green: {
     backgroundColor: "seaMist",
   },
-  info: {
+  blue: {
     backgroundColor: "lightBlue",
   },
 };

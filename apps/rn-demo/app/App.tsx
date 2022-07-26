@@ -6,6 +6,16 @@ import {
   Alert,
   Expandable,
 } from "@vygruppen/spor-react-native";
+import {
+  AltTransportOutline24Icon,
+  CloseOutline18Icon,
+  DeleteCircleOutline24Icon,
+  DropdownDownFill18Icon,
+  DropdownUpFill18Icon,
+  InformationOutline24Icon,
+  SuccessOutline24Icon,
+  WarningOutline24Icon,
+} from "@vygruppen/spor-icon-react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
 
@@ -27,14 +37,17 @@ const App = () => {
           <Heading color="darkGrey" variant="2xl" textAlign="center">
             Spor Demo app
           </Heading>
-          <Alert variant="info">
+
+          <Alert variant="yellow" icon={<InformationOutline24Icon />}>
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
           </Alert>
+
           <Alert
-            variant="important"
+            variant="light-yellow"
             actionType="expandable"
-            title="Viktig melding lang lang lang lang tekst"
+            title="Viktig melding med for lang tittel"
+            icon={<WarningOutline24Icon />}
           >
             Informasjon om kort tid mellom avganger, når overgangstid er mindre
             enn 10 min. {"\n"}
@@ -48,12 +61,35 @@ const App = () => {
             {"\n"}
             {"\n"} Link til mer informasjon
           </Alert>
+
           <Alert
-            variant="short-transition"
+            variant="orange"
             actionType="closeable"
             title="Kort overgangstid"
+            url="https://spor.cloud.vy.no/ressurser/design-tokens"
+            icon={<InformationOutline24Icon />}
           >
             Informasjon om alternativ transport for avganger som ikke går som
+          </Alert>
+
+          <Alert variant="red" icon={<InformationOutline24Icon />}>
+            Informasjon om alternativ transport for avganger som ikke går som
+            normalt.
+          </Alert>
+
+          <Alert
+            variant="green"
+            actionType="expandable"
+            title="Bekreftelse"
+            icon={<SuccessOutline24Icon />}
+          >
+            Brukes til bekreftelse i kjøpsløpet og informasjon om utførte
+            handlinger.
+          </Alert>
+
+          <Alert variant="blue" icon={<InformationOutline24Icon />}>
+            Informasjon om alternativ transport for avganger som ikke går som
+            normalt.
           </Alert>
         </Stack>
       </SafeAreaView>

@@ -24,7 +24,7 @@ import { Box } from "@vygruppen/spor-layout-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 import { Text } from "@vygruppen/spor-typography-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";
-import { Pressable } from "react-native";
+import { Linking, Pressable, TouchableOpacity } from "react-native";
 
 type Variant = VariantProps<Theme, "alertVariant", "variant">;
 const variant = createVariant({ themeKey: "alertVariant" });
@@ -40,33 +40,37 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
 ]);
 
 type AlertVariant =
-  | "alternativ-transport"
-  | "important"
-  | "short-transition"
-  | "error"
-  | "confirmation"
-  | "info";
+  | "yellow"
+  | "light-yellow"
+  | "orange"
+  | "red"
+  | "green"
+  | "blue";
+
+type ActionType = "expandable" | "closeable" | "none";
 
 type BaseProps = Exclude<RestyleProps, "variant"> & {
   children: string;
   variant: AlertVariant;
+  url?: string;
+  icon: JSX.Element;
   onToggle?: (isExpanded: boolean) => void;
 };
 
 type WithExpandableProps = {
-  actionType: "expandable";
+  actionType: ActionType;
   title: string;
 };
 
 type WithCloseButtonProps = {
-  actionType: "closeable";
+  actionType: ActionType;
   title: string;
   onPress: () => void;
 };
 
 type WithoutActionProps = {
-  actionType: "none";
-  title?: undefined;
+  actionType: ActionType;
+  title?: string;
 };
 
 type ActionProps =
@@ -77,13 +81,12 @@ type ActionProps =
 type AlertProps = BaseProps & ActionProps;
 
 export const Alert = (props: AlertProps) => {
-  const { children, variant, onToggle, actionType, title, ...rest } = props;
+  const { children, variant, onToggle, actionType, title, url, icon, ...rest } =
+    props;
   const { style } = useRestyle(restyleFunctions, {
     variant,
     ...rest,
   });
-
-  const variantIcon = getVariantIcon(variant);
 
   const [isExpanded, setExpanded] = useState(false);
 
@@ -103,24 +106,24 @@ export const Alert = (props: AlertProps) => {
   return (
     <Box style={style as any} {...props}>
       <Box flexDirection="row">
-        {variantIcon}
+        {icon && icon}
 
         <Text
           fontWeight={isExpanded ? "bold" : "normal"}
           ml={1.5}
           style={{ flex: 1 }}
           variant="sm"
-          numberOfLines={props.title ? 1 : undefined}
+          numberOfLines={title ? 1 : undefined}
         >
-          {props.title ?? children}
+          {title ?? children}
         </Text>
 
-        {actionType == "expandable" && (
+        {isExpandableProps(props) && (
           <Pressable onPress={handlePress} style={{ alignSelf: "center" }}>
             {getDropDownIcon(isExpanded)}
           </Pressable>
         )}
-        {actionType == "closeable" && (
+        {isCloseButtonProps(props) && (
           <Pressable onPress={props.onPress} style={{ alignSelf: "center" }}>
             <CloseOutline18Icon />
           </Pressable>
@@ -128,29 +131,23 @@ export const Alert = (props: AlertProps) => {
       </Box>
 
       {isExpanded && (
-        <Text mt={1} variant="sm" ml={5} pr={3}>
-          {children}
-        </Text>
+        <Box mt={1} ml={5} pr={3}>
+          <Text variant="sm">{children}</Text>
+          {url && (
+            <TouchableOpacity
+              style={{ marginTop: 12 }}
+              accessibilityRole="link"
+              onPress={() => Linking.openURL(url)}
+            >
+              <Text variant="xs" textDecorationLine={"underline"}>
+                Link til mer informasjon
+              </Text>
+            </TouchableOpacity>
+          )}
+        </Box>
       )}
     </Box>
   );
-};
-
-const getVariantIcon = (variant: AlertVariant) => {
-  switch (variant) {
-    case "alternativ-transport":
-      return <AltTransportOutline24Icon />;
-    case "important":
-      return <WarningOutline24Icon />;
-    case "short-transition":
-      return <InformationOutline24Icon />;
-    case "error":
-      return <DeleteCircleOutline24Icon />;
-    case "confirmation":
-      return <SuccessOutline24Icon />;
-    case "info":
-      return <InformationOutline24Icon />;
-  }
 };
 
 function isExpandableProps(

@@ -1,0 +1,19 @@
+{
+    "type": "package",
+    "name": "nsbno/spor-elm",
+    "summary": "UI components used in Elm applications at Vy",
+    "license": "MIT",
+    "version": "1.0.0",
+    "exposed-modules": [
+        "Spor.Text",
+        "Spor.TextStyle",
+        "Spor.Heading"
+    ],
+    "elm-version": "0.19.1 <= v < 0.20.0",
+    "dependencies": {
+        "elm/core": "1.0.0 <= v < 2.0.0",
+        "nsbno/spor-design-tokens-elm": "1.0.2 <= v < 2.0.0",
+        "rtfeldman/elm-css": "17.0.0 <= v < 18.0.0"
+    },
+    "test-dependencies": {}
+}

@@ -26,34 +26,7 @@ function press2() {
   console.log("button");
 }
 
-function card(color: "banana" | "seaMist" | "white") {
-  return (
-    <Box
-      flexDirection="row"
-      flex={1}
-      backgroundColor={color}
-      alignItems="center"
-    >
-      <SuccessFill24Icon />
-      <Box flex={1}>
-        <Text>children here</Text>
-      </Box>
-      <CloseOutline18Icon />
-    </Box>
-  );
-}
-
 const App = () => {
-  // const card = (
-  //   <Box flexDirection="row" flex={1}>
-  //     <SuccessFill24Icon />
-  //     <Box flex={1}>
-  //       <Text>children here</Text>
-  //     </Box>
-  //     <CloseOutline18Icon />
-  //   </Box>
-  // );
-
   return (
     <SporProvider>
       <SafeAreaView>
@@ -62,15 +35,8 @@ const App = () => {
             Spor Demo app
           </Heading>
 
-          {/* minimal card container */}
-          <Box flexDirection="row">
-            {card("banana")}
-            {card("seaMist")}
-            {card("white")}
-          </Box>
-
-          <Box marginBottom={"lg"}></Box>
-          <Box flexDirection={"row"} backgroundColor="banana">
+          <Box marginBottom={"lg"} />
+          <Box flexDirection={"row"}>
             <Card colorScheme={"white"} onClose={() => {}}>
               <Text>A</Text>
             </Card>
@@ -82,7 +48,7 @@ const App = () => {
             </Card>
           </Box>
 
-          <Box marginBottom={"lg"}></Box>
+          <Box marginBottom={"lg"} />
           <Box flexDirection={"row"}>
             <Card colorScheme={"white"} onClose={() => {}}>
               <Text>Lorem ipsum dolor, sit amet consectetur adipisicing</Text>
@@ -95,7 +61,7 @@ const App = () => {
             </Card>
           </Box>
 
-          <Box marginBottom={"lg"}></Box>
+          <Box marginBottom={"lg"} />
           <Box flexDirection={"row"}>
             <Card colorScheme={"white"} onClose={() => {}}>
               <Text>Lorem ipsum dolor, sit amet consectetur adipisicing</Text>
@@ -111,14 +77,14 @@ const App = () => {
             </Card>
           </Box>
 
-          <Box marginBottom={"lg"}></Box>
+          <Box marginBottom={"lg"} />
 
           <Box marginHorizontal={"md"}>
-            <Box marginBottom={"lg"}></Box>
+            <Box marginBottom={"lg"} />
             <Card colorScheme={"white"} onClose={() => {}}>
               <Text>Lorem</Text>
             </Card>
-            <Box marginBottom={"lg"}></Box>
+            <Box marginBottom={"lg"} />
             <Card
               colorScheme={"white"}
               size="sm"
@@ -127,7 +93,7 @@ const App = () => {
             >
               <Text>Lorem</Text>
             </Card>
-            <Box marginBottom={"lg"}></Box>
+            <Box marginBottom={"lg"} />
 
             <Card
               colorScheme={"white"}
@@ -138,7 +104,7 @@ const App = () => {
             >
               <Text>Lorem</Text>
             </Card>
-            <Box marginBottom={"lg"}></Box>
+            <Box marginBottom={"lg"} />
             <Card colorScheme={"white"} onPress={press} onClose={() => {}}>
               <Text>
                 Lorem Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -148,7 +114,7 @@ const App = () => {
                 molestias?
               </Text>
             </Card>
-            <Box marginBottom={"lg"}></Box>
+            <Box marginBottom={"lg"} />
             <Card colorScheme={"white"} onPress={press} onClose={() => {}}>
               {/* <Box flex={1}> */}
               <Text>Lorem</Text>

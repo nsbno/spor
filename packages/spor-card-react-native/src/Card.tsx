@@ -146,16 +146,18 @@ export const Card = ({
 
   const { style } = useRestyle(restyleFunctions, restyleProps);
 
-  // const childrenBox = <Box flexGrow={1}>{children}</Box>;
-  const childrenBox = <Box flexGrow={1}>{children}</Box>;
-  const closeButton = onClose !== undefined && (
-    <Box alignSelf={"center"} flexShrink={0}>
-      <Button
-        marginLeft={"sm"}
-        onPress={onClose}
-        variant={"ghost"}
-        leftIcon={<CloseOutline18Icon />}
-      ></Button>
+  const childrenBox = <Box flex={1}>{children}</Box>;
+  const closeButtonIfEnabled = onClose !== undefined && (
+    <Button
+      marginLeft={"sm"}
+      onPress={onClose}
+      variant={"ghost"}
+      leftIcon={<CloseOutline18Icon />}
+    ></Button>
+  );
+  const selectedIconIfEnabled = selected && (
+    <Box marginRight="sm">
+      {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
     </Box>
   );
 
@@ -169,33 +171,26 @@ export const Card = ({
     };
 
     return (
-      <Pressable
-        onPressIn={handlePressIn}
-        onPressOut={handlePressOut}
-        onPress={onPress}
-      >
-        <Box
-          style={style as any}
-          flexDirection="row"
-          alignItems="center"
-          // maxWidth={250}
+      <Box flex={1} style={style as any}>
+        <Pressable
+          onPressIn={handlePressIn}
+          onPressOut={handlePressOut}
+          onPress={onPress}
         >
-          {selected && (
-            <Box alignSelf={"center"} marginRight="sm" flexShrink={0}>
-              {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
-            </Box>
-          )}
-          {childrenBox}
-          {closeButton}
-        </Box>
-      </Pressable>
+          <Box flexDirection="row" flex={1} alignItems="center">
+            {selectedIconIfEnabled}
+            {childrenBox}
+            {closeButtonIfEnabled}
+          </Box>
+        </Pressable>
+      </Box>
     );
   }
 
   return (
-    <Box style={style as any} flexDirection="row">
+    <Box style={style as any} flexDirection="row" flex={1} alignItems="center">
       {childrenBox}
-      {closeButton}
+      {closeButtonIfEnabled}
     </Box>
   );
 };

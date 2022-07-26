@@ -3,18 +3,18 @@ import {
   SporProvider,
   Stack,
   Text,
-  Alert,
+  ExpandableAlert,
+  SimpleAlert,
+  ClosableAlert,
   Expandable,
 } from "@vygruppen/spor-react-native";
 import {
-  AltTransportOutline24Icon,
+  AltTransportOutline18Icon,
   CloseOutline18Icon,
-  DeleteCircleOutline24Icon,
-  DropdownDownFill18Icon,
-  DropdownUpFill18Icon,
-  InformationOutline24Icon,
-  SuccessOutline24Icon,
-  WarningOutline24Icon,
+  DeleteCircleOutline18Icon,
+  InformationOutline18Icon,
+  SuccessOutline18Icon,
+  WarningOutline18Icon,
 } from "@vygruppen/spor-icon-react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
@@ -39,65 +39,25 @@ const App = () => {
             Spor Demo app
           </Heading>
 
-          <Alert
-            colorScheme="yellow"
-            icon={<InformationOutline24Icon />}
-            url="https://spor.cloud.vy.no/ressurser/design-tokens"
-            actionType="none"
+          <ExpandableAlert
+            color="blue"
+            icon={<InformationOutline18Icon />}
+            title="Informasjon"
           >
+            Generell positiv informasjon, som påvirker den reisende i liten og
+            mellomstor betydning.{" "}
+          </ExpandableAlert>
+          <SimpleAlert color="yellow" icon={<AltTransportOutline18Icon />}>
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
-          </Alert>
-
-          <Alert
-            colorScheme="light-yellow"
-            actionType="expandable"
-            title="Viktig melding med for lang tittel"
-            icon={<WarningOutline24Icon />}
-            url="https://spor.cloud.vy.no/ressurser/design-tokens"
+          </SimpleAlert>
+          <ClosableAlert
+            color="red"
+            title="Feilmelding"
+            icon={<DeleteCircleOutline18Icon />}
           >
-            Informasjon om kort tid mellom avganger, når overgangstid er mindre
-            enn 10 min. {"\n"}
-            {"\n"}
-            Om den korte teksten ikke holder og det er behov for en lengre og
-            mer forklarende tekst, så kan vi legge til mer tekst i xl-boksen.
-            Denne kan fylle en hel skjerm om nødvendig, men prøv å holde teksten
-            i infoboksene så kortfattet som mulig.{"\n"}
-            {"\n"}
-            Noen ganger må ord utheves for å forsterke et budskap.
-            {"\n"}
-            {"\n"} Link til mer informasjon
-          </Alert>
-
-          <Alert
-            colorScheme="orange"
-            actionType="closeable"
-            title="Kort overgangstid"
-            url="https://spor.cloud.vy.no/ressurser/design-tokens"
-            icon={<InformationOutline24Icon />}
-          >
-            Informasjon om alternativ transport for avganger som ikke går som
-          </Alert>
-
-          <Alert colorScheme="red" icon={<InformationOutline24Icon />}>
-            Informasjon om alternativ transport for avganger som ikke går som
-            normalt.
-          </Alert>
-
-          <Alert
-            colorScheme="green"
-            actionType="expandable"
-            title="Bekreftelse"
-            icon={<SuccessOutline24Icon />}
-          >
-            Brukes til bekreftelse i kjøpsløpet og informasjon om utførte
-            handlinger.
-          </Alert>
-
-          <Alert colorScheme="blue" icon={<InformationOutline24Icon />}>
-            Informasjon om alternativ transport for avganger som ikke går som
-            normalt.
-          </Alert>
+            Informasjon om brukerfeil og når noe har gått galt i kjøpsløpet.
+          </ClosableAlert>
         </Stack>
       </SafeAreaView>
     </SporProvider>

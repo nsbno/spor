@@ -39,7 +39,12 @@ const App = () => {
             Spor Demo app
           </Heading>
 
-          <Alert colorScheme="yellow" icon={<InformationOutline24Icon />}>
+          <Alert
+            colorScheme="yellow"
+            icon={<InformationOutline24Icon />}
+            url="https://spor.cloud.vy.no/ressurser/design-tokens"
+            actionType="none"
+          >
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
           </Alert>
@@ -49,6 +54,7 @@ const App = () => {
             actionType="expandable"
             title="Viktig melding med for lang tittel"
             icon={<WarningOutline24Icon />}
+            url="https://spor.cloud.vy.no/ressurser/design-tokens"
           >
             Informasjon om kort tid mellom avganger, når overgangstid er mindre
             enn 10 min. {"\n"}

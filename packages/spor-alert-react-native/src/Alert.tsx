@@ -10,21 +10,16 @@ import {
   VariantProps,
 } from "@shopify/restyle";
 import {
-  AltTransportOutline24Icon,
   CloseOutline18Icon,
-  DeleteCircleOutline24Icon,
   DropdownDownFill18Icon,
   DropdownUpFill18Icon,
-  InformationOutline24Icon,
-  SuccessOutline24Icon,
-  WarningOutline24Icon,
 } from "@vygruppen/spor-icon-react-native";
 import React, { useEffect, useState } from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 import { Text } from "@vygruppen/spor-typography-react-native";
-import { Button } from "@vygruppen/spor-button-react-native";
 import { Linking, Pressable, TouchableOpacity } from "react-native";
+import { UrlItem } from "./UrlItem";
 
 type Variant = VariantProps<Theme, "alertColorScheme", "colorScheme">;
 const colorScheme = createVariant({
@@ -116,47 +111,53 @@ export const Alert = (props: AlertProps) => {
 
   return (
     <Box style={style as any} {...props}>
-      <Box flexDirection="row">
-        {icon && icon}
-
-        <Text
-          fontWeight={isExpanded ? "bold" : "normal"}
-          ml={1.5}
-          style={{ flex: 1 }}
-          variant="sm"
-          numberOfLines={title ? 1 : undefined}
-        >
-          {title ?? children}
-        </Text>
-
-        {isExpandableProps(props) && (
-          <Pressable onPress={handlePress} style={{ alignSelf: "center" }}>
-            {getDropDownIcon(isExpanded)}
-          </Pressable>
-        )}
-        {isCloseButtonProps(props) && (
-          <Pressable onPress={props.onPress} style={{ alignSelf: "center" }}>
-            <CloseOutline18Icon />
-          </Pressable>
-        )}
-      </Box>
-
-      {isExpanded && (
-        <Box mt={1} ml={5} pr={3}>
-          <Text variant="sm">{children}</Text>
-          {url && (
-            <TouchableOpacity
-              style={{ marginTop: 12 }}
-              accessibilityRole="link"
-              onPress={() => Linking.openURL(url)}
+      {isExpandableProps(props) ? (
+        <Pressable onPress={handlePress}>
+          <Box flexDirection="row">
+            {icon && icon}
+            <Text
+              fontWeight={isExpanded ? "bold" : "normal"}
+              ml={1.5}
+              style={{ flex: 1 }}
+              variant="sm"
+              numberOfLines={1}
             >
-              <Text variant="xs" textDecorationLine={"underline"}>
-                Link til mer informasjon
-              </Text>
-            </TouchableOpacity>
+              {title}
+            </Text>
+            {getDropDownIcon(isExpanded)}
+          </Box>
+        </Pressable>
+      ) : (
+        <Box flexDirection="row">
+          {icon && icon}
+
+          <Text
+            fontWeight={isExpanded ? "bold" : "normal"}
+            ml={1.5}
+            style={{ flex: 1 }}
+            variant="sm"
+            numberOfLines={title ? 1 : undefined}
+          >
+            {title ?? children}
+          </Text>
+
+          {isCloseButtonProps(props) && (
+            <Pressable onPress={props.onPress} style={{ alignSelf: "center" }}>
+              <CloseOutline18Icon />
+            </Pressable>
           )}
         </Box>
       )}
+
+      {isExpanded && (
+        <Box mt={1} pr={3}>
+          <Text ml={5} variant="sm">
+            {children}
+          </Text>
+          {url && <UrlItem url={url} />}
+        </Box>
+      )}
+      {actionType == "none" && url && <UrlItem url={url} />}
     </Box>
   );
 };

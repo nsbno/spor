@@ -30,6 +30,7 @@ const App = () => {
         <Stack
           backgroundColor="white"
           height="100%"
+          width={284}
           p={2}
           justifyContent="center"
           alignItems={"center"}
@@ -38,13 +39,13 @@ const App = () => {
             Spor Demo app
           </Heading>
 
-          <Alert variant="yellow" icon={<InformationOutline24Icon />}>
+          <Alert colorScheme="yellow" icon={<InformationOutline24Icon />}>
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
           </Alert>
 
           <Alert
-            variant="light-yellow"
+            colorScheme="light-yellow"
             actionType="expandable"
             title="Viktig melding med for lang tittel"
             icon={<WarningOutline24Icon />}
@@ -63,7 +64,7 @@ const App = () => {
           </Alert>
 
           <Alert
-            variant="orange"
+            colorScheme="orange"
             actionType="closeable"
             title="Kort overgangstid"
             url="https://spor.cloud.vy.no/ressurser/design-tokens"
@@ -72,13 +73,13 @@ const App = () => {
             Informasjon om alternativ transport for avganger som ikke går som
           </Alert>
 
-          <Alert variant="red" icon={<InformationOutline24Icon />}>
+          <Alert colorScheme="red" icon={<InformationOutline24Icon />}>
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
           </Alert>
 
           <Alert
-            variant="green"
+            colorScheme="green"
             actionType="expandable"
             title="Bekreftelse"
             icon={<SuccessOutline24Icon />}
@@ -87,7 +88,7 @@ const App = () => {
             handlinger.
           </Alert>
 
-          <Alert variant="blue" icon={<InformationOutline24Icon />}>
+          <Alert colorScheme="blue" icon={<InformationOutline24Icon />}>
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
           </Alert>

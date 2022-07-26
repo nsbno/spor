@@ -26,8 +26,11 @@ import { Text } from "@vygruppen/spor-typography-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";
 import { Linking, Pressable, TouchableOpacity } from "react-native";
 
-type Variant = VariantProps<Theme, "alertVariant", "variant">;
-const variant = createVariant({ themeKey: "alertVariant" });
+type Variant = VariantProps<Theme, "alertColorScheme", "colorScheme">;
+const colorScheme = createVariant({
+  themeKey: "alertColorScheme",
+  property: "colorScheme",
+});
 
 type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
@@ -36,10 +39,10 @@ type RestyleProps = SpacingProps<Theme> &
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacing,
   spacingShorthand,
-  variant,
+  colorScheme,
 ]);
 
-type AlertVariant =
+type ColorVariants =
   | "yellow"
   | "light-yellow"
   | "orange"
@@ -51,7 +54,7 @@ type ActionType = "expandable" | "closeable" | "none";
 
 type BaseProps = Exclude<RestyleProps, "variant"> & {
   children: string;
-  variant: AlertVariant;
+  colorScheme: ColorVariants;
   url?: string;
   icon: JSX.Element;
   onToggle?: (isExpanded: boolean) => void;
@@ -81,10 +84,18 @@ type ActionProps =
 type AlertProps = BaseProps & ActionProps;
 
 export const Alert = (props: AlertProps) => {
-  const { children, variant, onToggle, actionType, title, url, icon, ...rest } =
-    props;
+  const {
+    children,
+    colorScheme,
+    onToggle,
+    actionType,
+    title,
+    url,
+    icon,
+    ...rest
+  } = props;
   const { style } = useRestyle(restyleFunctions, {
-    variant,
+    colorScheme,
     ...rest,
   });
 

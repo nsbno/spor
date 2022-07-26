@@ -1,11 +1,11 @@
-export const alertVariant = {
+export const alertColorScheme = {
   defaults: {
     borderRadius: "sm",
     paddingLeft: 2,
     paddingRight: 2,
     paddingTop: 1.5,
     paddingBottom: 1.5,
-    width: 284,
+    width: "100%",
   },
   yellow: {
     backgroundColor: "banana",

@@ -32,22 +32,22 @@ const App = () => {
           height="100%"
           width={284}
           p={2}
-          justifyContent="center"
+          justifyContent="space-around"
           alignItems={"center"}
         >
           <Heading color="darkGrey" variant="2xl" textAlign="center">
             Spor Demo app
           </Heading>
 
-          <ExpandableAlert
-            color="blue"
-            icon={<InformationOutline18Icon />}
-            title="Informasjon"
-          >
-            Generell positiv informasjon, som påvirker den reisende i liten og
-            mellomstor betydning.{" "}
-          </ExpandableAlert>
           <SimpleAlert color="yellow" icon={<AltTransportOutline18Icon />}>
+            Informasjon om alternativ transport for avganger som ikke går som
+            normalt.
+          </SimpleAlert>
+          <SimpleAlert color="light-yellow" icon={<WarningOutline18Icon />}>
+            Informasjon om alternativ transport for avganger som ikke går som
+            normalt.
+          </SimpleAlert>
+          <SimpleAlert color="orange" icon={<InformationOutline18Icon />}>
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
           </SimpleAlert>
@@ -58,6 +58,18 @@ const App = () => {
           >
             Informasjon om brukerfeil og når noe har gått galt i kjøpsløpet.
           </ClosableAlert>
+          <SimpleAlert color="green" icon={<SuccessOutline18Icon />}>
+            Informasjon om alternativ transport for avganger som ikke går som
+            normalt.
+          </SimpleAlert>
+          <ExpandableAlert
+            color="blue"
+            icon={<InformationOutline18Icon />}
+            title="Informasjon"
+          >
+            Generell positiv informasjon, som påvirker den reisende i liten og
+            mellomstor betydning.
+          </ExpandableAlert>
         </Stack>
       </SafeAreaView>
     </SporProvider>

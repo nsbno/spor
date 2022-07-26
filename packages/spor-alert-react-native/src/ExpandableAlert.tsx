@@ -16,15 +16,15 @@ type ColorVariants =
   | "green"
   | "blue";
 
-type AlertProps = {
-  children: string;
+type ExpandableAlertProps = {
+  children: React.ReactNode;
   color: ColorVariants;
   icon: JSX.Element;
   title: string;
   onToggle?: (isExpanded: boolean) => void;
 };
 
-export const ExpandableAlert = (props: AlertProps) => {
+export const ExpandableAlert = (props: ExpandableAlertProps) => {
   const { children, color, onToggle, title, icon, ...rest } = props;
   const [isExpanded, setExpanded] = useState(false);
 
@@ -36,28 +36,25 @@ export const ExpandableAlert = (props: AlertProps) => {
   }
 
   return (
-    <Alert colorScheme={color}>
-      <Pressable onPress={handlePress}>
-        <Box flexDirection="row">
-          {icon}
-          <Text
-            fontWeight={isExpanded ? "bold" : "normal"}
-            ml={1.5}
-            style={{ flex: 1 }}
-            variant="xs"
-            numberOfLines={1}
-          >
-            {title}
-          </Text>
+    <Pressable onPress={handlePress}>
+      <Box flexDirection={"row"}>
+        <Alert
+          colorScheme={color}
+          icon={icon}
+          text={title}
+          weight={isExpanded ? "bold" : undefined}
+          expandableItem={
+            isExpanded && (
+              <Text ml={5} mt={1} pr={3} variant="xs">
+                {children}
+              </Text>
+            )
+          }
+        >
           {getDropDownIcon(isExpanded)}
-        </Box>
-      </Pressable>
-      {isExpanded && (
-        <Text ml={5} mt={1} pr={3} variant="xs">
-          {children}
-        </Text>
-      )}
-    </Alert>
+        </Alert>
+      </Box>
+    </Pressable>
   );
 };
 

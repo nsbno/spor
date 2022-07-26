@@ -11,23 +11,14 @@ type ColorVariants =
   | "green"
   | "blue";
 
-type AlertProps = {
+type SimpleAlertProps = {
   children: string;
   color: ColorVariants;
   icon: JSX.Element;
 };
 
-export const SimpleAlert = (props: AlertProps) => {
+export const SimpleAlert = (props: SimpleAlertProps) => {
   const { children, color, icon, ...rest } = props;
 
-  return (
-    <Alert colorScheme={color}>
-      <Box flexDirection="row">
-        {icon}
-        <Text ml={1.5} style={{ flex: 1 }} variant="xs">
-          {children}
-        </Text>
-      </Box>
-    </Alert>
-  );
+  return <Alert colorScheme={color} text={children} icon={icon}></Alert>;
 };

@@ -13,8 +13,8 @@ type ColorVariants =
   | "green"
   | "blue";
 
-type AlertProps = {
-  children: string;
+type ClosableAlertProps = {
+  children: React.ReactNode;
   color: ColorVariants;
   icon: JSX.Element;
   title: string;
@@ -22,32 +22,24 @@ type AlertProps = {
   onToggle?: (isExpanded: boolean) => void;
 };
 
-export const ClosableAlert = (props: AlertProps) => {
+export const ClosableAlert = (props: ClosableAlertProps) => {
   const { children, color, onToggle, onClose, title, icon, ...rest } = props;
 
   return (
-    <Alert colorScheme={color}>
-      <Box flexDirection="row">
-        {icon && icon}
-
-        <Text
-          fontWeight="bold"
-          ml={1.5}
-          style={{ flex: 1 }}
-          variant="xs"
-          numberOfLines={1}
-        >
-          {title}
+    <Alert
+      colorScheme={color}
+      icon={icon}
+      text={title}
+      weight="bold"
+      expandableItem={
+        <Text ml={5} mt={1} pr={3} variant="xs">
+          {children}
         </Text>
-
-        <Pressable onPress={props.onClose} style={{ alignSelf: "center" }}>
-          <CloseOutline18Icon />
-        </Pressable>
-      </Box>
-
-      <Text ml={5} mt={1} pr={3} variant="xs">
-        {children}
-      </Text>
+      }
+    >
+      <Pressable onPress={props.onClose} style={{ alignSelf: "center" }}>
+        <CloseOutline18Icon />
+      </Pressable>
     </Alert>
   );
 };

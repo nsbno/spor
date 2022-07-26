@@ -39,12 +39,17 @@ type ColorVariants =
   | "blue";
 
 type AlertProps = Exclude<RestyleProps, "variant"> & {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   colorScheme: ColorVariants;
+  icon: JSX.Element;
+  text: string;
+  expandableItem?: React.ReactNode;
+  weight?: "bold";
 };
 
 export const Alert = (props: AlertProps) => {
-  const { children, colorScheme, ...rest } = props;
+  const { children, colorScheme, icon, text, expandableItem, weight, ...rest } =
+    props;
   const { style } = useRestyle(restyleFunctions, {
     colorScheme,
     ...rest,
@@ -52,7 +57,14 @@ export const Alert = (props: AlertProps) => {
 
   return (
     <Box style={style as any} {...props}>
-      {children}
+      <Box flexDirection="row">
+        {icon}
+        <Text marginLeft={2} style={{ flex: 1 }} fontWeight={weight}>
+          {text}
+        </Text>
+        {children}
+      </Box>
+      {expandableItem}
     </Box>
   );
 };

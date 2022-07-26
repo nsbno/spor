@@ -26,14 +26,22 @@ async function generateSvgs() {
                     const svg = await fs.readFile(filePath, { encoding: 'utf-8' });
                     const optimizedSvg = svgo.optimize(svg);
 
-                    const elmName = camelCase(fileName.replace(/.svg$/, ''));
+                    const elmName = camelCase(path.basename(fileName));
                     const elmSvg = await svg2elm.generateSvgFunction(elmName, optimizedSvg.data);
+                    const actualElmName = elmSvg.split(':')[0].trim();
 
-                    return elmSvg;
+                    return {
+                        name: actualElmName,
+                        impl: elmSvg
+                    };
                 });
 
-            const moduleHeader = svg2elm.generateModuleHeader(`Spor.Icon.${module.name}`);
-            const src = [moduleHeader].concat(await Promise.all(svgPromises))
+            const svgs = await Promise.all(svgPromises);
+            const svgNames = svgs.map((svg) => svg.name);
+            const svgImpls = svgs.map((svg) => svg.impl);
+
+            const moduleHeader = generateModuleHeader(module.name, svgNames);
+            const src = [moduleHeader].concat(svgImpls)
                 .join('\n\n\n{-|-}\n');
 
             return {
@@ -47,6 +55,22 @@ async function generateSvgs() {
 
             await fs.writeFile(targetFile, module.src);
         });
+}
+
+function generateModuleHeader(moduleName, svgNames) {
+    const svgNameExportStr = svgNames.join(', ');
+
+    return `module Spor.Icon.${moduleName} exposing (${svgNameExportStr})
+
+{-| ${moduleName} icons
+
+@docs ${svgNameExportStr}
+
+-}
+
+import Svg
+import VirtualDom exposing (Attribute, attribute)
+`;
 }
 
 generateSvgs();

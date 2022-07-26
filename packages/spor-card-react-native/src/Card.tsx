@@ -164,26 +164,24 @@ export const Card = ({
   if (isPressable) {
     const handlePressIn = () => {
       setPressed(true);
-      console.log("style is,", style);
     };
     const handlePressOut = () => {
       setPressed(false);
     };
 
     return (
-      <Box flex={1} style={style as any}>
-        <Pressable
-          onPressIn={handlePressIn}
-          onPressOut={handlePressOut}
-          onPress={onPress}
-        >
-          <Box flexDirection="row" flex={1} alignItems="center">
-            {selectedIconIfEnabled}
-            {childrenBox}
-            {closeButtonIfEnabled}
-          </Box>
-        </Pressable>
-      </Box>
+      <Pressable
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        onPress={onPress}
+        style={[style as any, { flex: 1 }]}
+      >
+        <Box flexDirection="row" flex={1} alignItems="center">
+          {selectedIconIfEnabled}
+          {childrenBox}
+          {closeButtonIfEnabled}
+        </Box>
+      </Pressable>
     );
   }
 

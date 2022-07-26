@@ -3,12 +3,12 @@ import { Box } from "@vygruppen/spor-layout-react-native";
 import { StyleProp, ViewStyle } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-type DrawerFooterProps = {
+type Props = {
   children: JSX.Element;
   style?: StyleProp<ViewStyle>;
 };
 
-export const DrawerFooter = ({ children, style }: DrawerFooterProps) => {
+export function DrawerFooter({ children, style }: Props) {
   const insets = useSafeAreaInsets();
   const styles = { marginBottom: insets.bottom > 0 ? insets.bottom : 12 };
 
@@ -17,4 +17,4 @@ export const DrawerFooter = ({ children, style }: DrawerFooterProps) => {
       {children}
     </Box>
   );
-};
+}

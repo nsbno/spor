@@ -3,18 +3,14 @@ import { Box } from "@vygruppen/spor-layout-react-native";
 import { DrawerHandle } from "./DrawerHandle";
 import Modal from "react-native-modal";
 
-type BottomDrawerProps = {
+type Props = {
   children: JSX.Element | JSX.Element[];
   onClose: () => void;
   isVisible: boolean;
   icon?: JSX.Element;
 };
 
-export const BottomDrawer = ({
-  onClose,
-  children,
-  isVisible,
-}: BottomDrawerProps) => {
+export function BottomDrawer({ onClose, children, isVisible }: Props) {
   return (
     <Modal
       isVisible={isVisible}
@@ -47,4 +43,4 @@ export const BottomDrawer = ({
       </Box>
     </Modal>
   );
-};
+}

@@ -9,7 +9,6 @@ import {
   useRestyle,
   VariantProps,
   border,
-  LayoutProps,
 } from "@shopify/restyle";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";
@@ -23,7 +22,6 @@ import React from "react";
 import { Pressable } from "react-native";
 
 type RestyleProps = SpacingProps<Theme> &
-  LayoutProps<Theme> &
   SpacingShorthandProps<Theme> &
   BorderProps<Theme> &
   VariantProps<Theme, "cardSizes", "size"> &

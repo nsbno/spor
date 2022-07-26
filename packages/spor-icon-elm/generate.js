@@ -8,7 +8,7 @@ const svgFolder = '../spor-icon/svg';
 const targetFolder = './src/Spor/Icon';
 
 async function generateSvgs() {
-    await fs.rm('./src', { recursive: true });
+    await fs.rm('./src', { recursive: true, force: true });
     await fs.mkdir(targetFolder, { recursive: true });
 
     (await fs.readdir(svgFolder))

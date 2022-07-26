@@ -22,7 +22,8 @@
     "@vygruppen/spor-theme-react-native": "*",
     "@vygruppen/spor-typography-react-native": "*",
     "@vygruppen/spor-button-react-native": "*",
-    "react-native-modal": "13.0.0"
+    "react-native-modal": "13.0.0",
+    "react-native-safe-area-context":"4.3.1"
   },
   "devDependencies": {
     "@shopify/restyle": "^2.1.0",

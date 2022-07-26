@@ -27,14 +27,18 @@ export const SimpleDrawer = ({
         <DrawerHeader textAlign={textAlign} size={titleSize}>
           {title}
         </DrawerHeader>
-        <Text textAlign={textAlign}>{children}</Text>
+        <Text textAlign={textAlign} marginBottom="lg">
+          {children}
+        </Text>
       </BottomDrawer>
     );
   }
 
   return (
     <BottomDrawer isVisible={isVisible} onClose={onClose} {...props}>
-      <Text textAlign={textAlign}>{children}</Text>
+      <Text textAlign={textAlign} marginBottom="lg">
+        {children}
+      </Text>
     </BottomDrawer>
   );
 };

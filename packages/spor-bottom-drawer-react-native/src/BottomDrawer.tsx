@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { DrawerHandle } from "./DrawerHandle";
 import Modal from "react-native-modal";

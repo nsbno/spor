@@ -1,5 +1,11 @@
 # @vygruppen/spor-card-react-native
 
+## 0.0.11
+
+### Patch Changes
+
+- 14f657c: Update layout of Cards so they work properly when placed vertically
+
 ## 0.0.10
 
 ### Patch Changes

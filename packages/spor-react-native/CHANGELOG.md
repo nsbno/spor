@@ -1,5 +1,12 @@
 # @vygruppen/spor-react-native
 
+## 0.3.9
+
+### Patch Changes
+
+- Updated dependencies [14f657c]
+  - @vygruppen/spor-card-react-native@0.0.11
+
 ## 0.3.8
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 # Bottom-Drawer (React Native)
 
-TODO: Add description
+Bottom drawers are modals which lay on top of other content and are always rooted to the bottom of the view.
 
 ## Installation
 
@@ -11,9 +11,17 @@ $ npm install @vygruppen/spor-bottom-drawer-react-native
 ## Usage
 
 ```tsx
-import { } from "@vygruppen/spor-bottom-drawer-react-native";
+import {
+  SimpleDrawer,
+  BottomDrawer,
+  DrawerHeader,
+  DrawerFooter,
+} from "@vygruppen/spor-bottom-drawer-react-native";
 ```
-TODO: Add usage description
+
+`<SimpleDrawer />` is a simple drawer with a title and text content. There are three props `size`, `textAlign` and `title`.
+
+`<BottomDrawer />` provides more options for customizations. Can import `DrawerHeader` and `DrawerFooter` in addition to other Spor-components.
 
 ## Development
 

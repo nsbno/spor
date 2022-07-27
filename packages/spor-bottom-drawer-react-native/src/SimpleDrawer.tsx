@@ -6,7 +6,7 @@ import { DrawerHeader } from "./DrawerHeader";
 type SimpleDrawerProps = {
   children?: JSX.Element | JSX.Element[];
   title?: string;
-  titleSize?: "small" | "large";
+  titleSize?: "sm" | "lg";
   textAlign?: "left" | "center";
   isVisible: boolean;
   onClose: () => void;
@@ -14,7 +14,7 @@ type SimpleDrawerProps = {
 
 export const SimpleDrawer = ({
   textAlign = "center",
-  titleSize = "large",
+  titleSize = "lg",
   children,
   title,
   isVisible,

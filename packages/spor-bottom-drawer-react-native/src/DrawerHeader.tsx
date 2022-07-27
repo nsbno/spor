@@ -3,7 +3,7 @@ import { Text } from "@vygruppen/spor-typography-react-native";
 
 type DrawerHeaderProps = {
   children: string;
-  size: "small" | "large";
+  size: "sm" | "lg";
   textAlign?: "left" | "center";
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
@@ -13,7 +13,7 @@ export const DrawerHeader = ({
   size,
   textAlign,
 }: DrawerHeaderProps) => {
-  const textSize = size === "small" ? "md" : "lg";
+  const textSize = size === "sm" ? "md" : "lg";
 
   return (
     <Text

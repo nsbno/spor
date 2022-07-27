@@ -5,6 +5,7 @@ import {
   BottomDrawer,
   DrawerHeader,
   Text,
+  Box,
   DrawerFooter,
 } from "@vygruppen/spor-react-native";
 import React, { useState } from "react";
@@ -39,7 +40,7 @@ const App = () => {
               isVisible={drawerVisible}
               onClose={() => setDrawerVisible(false)}
             >
-              <DrawerHeader textAlign="left" size="large">
+              <DrawerHeader textAlign="left" size="lg" icon={true}>
                 tittel
               </DrawerHeader>
               <Text>
@@ -51,10 +52,26 @@ const App = () => {
                 skuff. Del gjerne opp innholdet over flere avsnitt.
               </Text>
 
-              <DrawerFooter style={{ justifyContent: "space-evenly" }}>
-                <Button variant="primary" size="md" onPress={() => {}}>
-                  knapp
-                </Button>
+              <DrawerFooter>
+                <Box flexDirection="row" justifyContent="space-around">
+                  <Button
+                    variant="primary"
+                    size="md"
+                    onPress={() => {}}
+                    flex={1}
+                    marginRight={2}
+                  >
+                    knapp
+                  </Button>
+                  <Button
+                    variant="primary"
+                    size="md"
+                    onPress={() => {}}
+                    flex={1}
+                  >
+                    knapp
+                  </Button>
+                </Box>
               </DrawerFooter>
             </BottomDrawer>
           </Stack>

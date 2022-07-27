@@ -5,15 +5,14 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type Props = {
   children: JSX.Element;
-  style?: StyleProp<ViewStyle>;
 };
 
-export function DrawerFooter({ children, style }: Props) {
+export function DrawerFooter({ children }: Props) {
   const insets = useSafeAreaInsets();
   const styles = { marginBottom: insets.bottom > 0 ? insets.bottom : 12 };
 
   return (
-    <Box marginTop="lg" style={[styles, style]}>
+    <Box marginTop="lg" style={styles}>
       {children}
     </Box>
   );

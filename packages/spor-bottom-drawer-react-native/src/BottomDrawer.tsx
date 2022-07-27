@@ -30,8 +30,6 @@ export function BottomDrawer({ onClose, children, isVisible }: Props) {
       }}
     >
       <Box
-        borderBottomLeftRadius="none"
-        borderBottomRightRadius="none"
         borderTopRightRadius="lg"
         borderTopLeftRadius="lg"
         paddingHorizontal="xl"

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Pressable } from "react-native";
 import { BaseAlert, ColorVariants } from "./BaseAlert";
+import { Text } from "@vygruppen/spor-typography-react-native";
 
 type ClosableAlertProps = {
   children: React.ReactNode;
@@ -24,8 +25,7 @@ export const ClosableAlert = ({
     <BaseAlert
       colorScheme={colorScheme}
       leftIcon={icon}
-      title={title}
-      weight="bold"
+      heading={<Text fontWeight={"bold"}>{title}</Text>}
       rightIcon={
         <Pressable onPress={onClose} style={{ alignSelf: "center" }}>
           <CloseOutline18Icon />

@@ -42,8 +42,7 @@ type AlertProps = Exclude<RestyleProps, "variant"> & {
   colorScheme: ColorVariants;
   leftIcon: JSX.Element;
   rightIcon?: JSX.Element;
-  title: React.ReactNode;
-  weight?: "bold";
+  heading: React.ReactNode;
 };
 
 export const BaseAlert = ({
@@ -51,8 +50,7 @@ export const BaseAlert = ({
   colorScheme,
   leftIcon,
   rightIcon,
-  title,
-  weight,
+  heading,
   ...props
 }: AlertProps) => {
   const { style } = useRestyle(restyleFunctions, {
@@ -64,9 +62,9 @@ export const BaseAlert = ({
     <Box style={style as any} {...props}>
       <Box flexDirection="row">
         {leftIcon}
-        <Text marginLeft={2} style={{ flex: 1 }} fontWeight={weight}>
-          {title}
-        </Text>
+        <Box marginLeft={2} flex={1}>
+          {heading}
+        </Box>
         {rightIcon}
       </Box>
       {children}

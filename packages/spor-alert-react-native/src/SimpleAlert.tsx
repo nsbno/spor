@@ -1,8 +1,9 @@
 import { BaseAlert, ColorVariants } from "./BaseAlert";
 import React from "react";
+import { Text } from "@vygruppen/spor-typography-react-native";
 
 type SimpleAlertProps = {
-  children: string;
+  children: React.ReactNode;
   colorScheme: ColorVariants;
   icon: JSX.Element;
 };
@@ -16,7 +17,7 @@ export const SimpleAlert = ({
   return (
     <BaseAlert
       colorScheme={colorScheme}
-      title={children}
+      heading={<Text>{children}</Text>}
       leftIcon={icon}
     ></BaseAlert>
   );

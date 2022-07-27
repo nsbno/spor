@@ -142,60 +142,53 @@ export const Card = ({
     }
   }
 
+  const handlePressIn = () => {
+    setPressed(true);
+  };
+  const handlePressOut = () => {
+    setPressed(false);
+  };
+
   const { style } = useRestyle(restyleFunctions, restyleProps);
 
-  if (isPressable) {
-    const handlePressIn = () => {
-      setPressed(true);
-    };
-    const handlePressOut = () => {
-      setPressed(false);
-    };
+  const selectedIconIfEnabled = selected && (
+    <Box marginRight="sm" alignSelf={"center"}>
+      {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
+    </Box>
+  );
+  const childrenBox = <Box flex={1}>{children}</Box>;
+  const closeButtonIfEnabled = onClose !== undefined && (
+    <Box alignSelf={"center"}>
+      <Button
+        marginLeft={"sm"}
+        onPress={onClose}
+        variant={"ghost"}
+        leftIcon={<CloseOutline18Icon />}
+      />
+    </Box>
+  );
 
+  if (isPressable) {
     return (
       <Pressable
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
         onPress={onPress}
+        style={[style as any, { flex: 1 }]}
       >
-        <Box
-          style={style as any}
-          flexDirection="row"
-          alignItems="center"
-          justifyContent="center"
-        >
-          {selected && (
-            <Box alignSelf={"center"} marginRight="sm">
-              {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
-            </Box>
-          )}
-          <Box flex={1} justifyContent="center">
-            {children}
-          </Box>
-          {onClose && (
-            <Button
-              marginLeft={"sm"}
-              onPress={onClose}
-              variant={"ghost"}
-              leftIcon={<CloseOutline18Icon />}
-            />
-          )}
+        <Box flexDirection="row" flex={1}>
+          {selectedIconIfEnabled}
+          {childrenBox}
+          {closeButtonIfEnabled}
         </Box>
       </Pressable>
     );
   }
 
   return (
-    <Box style={style as any} flexDirection="row">
-      <Box flex={1}>{children}</Box>
-      {onClose && (
-        <Button
-          marginLeft={"sm"}
-          onPress={onClose}
-          variant={"ghost"}
-          leftIcon={<CloseOutline18Icon />}
-        ></Button>
-      )}
+    <Box style={style as any} flexDirection="row" flex={1}>
+      {childrenBox}
+      {closeButtonIfEnabled}
     </Box>
   );
 };

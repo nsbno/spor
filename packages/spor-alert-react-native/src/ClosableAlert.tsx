@@ -6,17 +6,15 @@ import { BaseAlert, ColorVariants } from "./BaseAlert";
 
 type ClosableAlertProps = {
   children: React.ReactNode;
-  color: ColorVariants;
+  colorScheme: ColorVariants;
   icon: JSX.Element;
   title: string;
   onClose: () => void;
-  onToggle?: (isExpanded: boolean) => void;
 };
 
 export const ClosableAlert = ({
   children,
-  color,
-  onToggle,
+  colorScheme,
   onClose,
   title,
   icon,
@@ -24,7 +22,7 @@ export const ClosableAlert = ({
 }: ClosableAlertProps) => {
   return (
     <BaseAlert
-      colorScheme={color}
+      colorScheme={colorScheme}
       leftIcon={icon}
       title={title}
       weight="bold"

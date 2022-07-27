@@ -3,17 +3,21 @@ import React from "react";
 
 type SimpleAlertProps = {
   children: string;
-  color: ColorVariants;
+  colorScheme: ColorVariants;
   icon: JSX.Element;
 };
 
 export const SimpleAlert = ({
   children,
-  color,
+  colorScheme,
   icon,
   ...props
 }: SimpleAlertProps) => {
   return (
-    <BaseAlert colorScheme={color} title={children} leftIcon={icon}></BaseAlert>
+    <BaseAlert
+      colorScheme={colorScheme}
+      title={children}
+      leftIcon={icon}
+    ></BaseAlert>
   );
 };

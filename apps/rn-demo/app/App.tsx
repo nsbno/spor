@@ -44,20 +44,26 @@ const App = () => {
             Spor Demo app
           </Heading>
 
-          <SimpleAlert color="yellow" icon={<AltTransportOutline18Icon />}>
+          <SimpleAlert
+            colorScheme="yellow"
+            icon={<AltTransportOutline18Icon />}
+          >
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
           </SimpleAlert>
-          <SimpleAlert color="light-yellow" icon={<WarningOutline18Icon />}>
+          <SimpleAlert
+            colorScheme="light-yellow"
+            icon={<WarningOutline18Icon />}
+          >
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
           </SimpleAlert>
-          <SimpleAlert color="orange" icon={<InformationOutline18Icon />}>
+          <SimpleAlert colorScheme="orange" icon={<InformationOutline18Icon />}>
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
           </SimpleAlert>
           <ClosableAlert
-            color="red"
+            colorScheme="red"
             title="Feilmelding"
             icon={<DeleteCircleOutline18Icon />}
             onClose={() => {
@@ -68,12 +74,12 @@ const App = () => {
               Informasjon om brukerfeil og når noe har gått galt i kjøpsløpet.
             </Text>
           </ClosableAlert>
-          <SimpleAlert color="green" icon={<SuccessOutline18Icon />}>
+          <SimpleAlert colorScheme="green" icon={<SuccessOutline18Icon />}>
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
           </SimpleAlert>
           <ExpandableAlert
-            color="blue"
+            colorScheme="blue"
             icon={<InformationOutline18Icon />}
             title="Informasjon"
           >

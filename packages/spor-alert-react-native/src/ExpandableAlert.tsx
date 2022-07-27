@@ -9,7 +9,7 @@ import { BaseAlert, ColorVariants } from "./BaseAlert";
 
 type ExpandableAlertProps = {
   children: React.ReactNode;
-  color: ColorVariants;
+  colorScheme: ColorVariants;
   icon: JSX.Element;
   title: string;
   onToggle?: (isExpanded: boolean) => void;
@@ -17,7 +17,7 @@ type ExpandableAlertProps = {
 
 export const ExpandableAlert = ({
   children,
-  color,
+  colorScheme,
   onToggle,
   title,
   icon,
@@ -36,11 +36,13 @@ export const ExpandableAlert = ({
     <Pressable onPress={handlePress}>
       <Box flexDirection={"row"}>
         <BaseAlert
-          colorScheme={color}
+          colorScheme={colorScheme}
           leftIcon={icon}
           title={title}
           weight={isExpanded ? "bold" : undefined}
-          rightIcon={getDropDownIcon(isExpanded)}
+          rightIcon={
+            isExpanded ? <DropdownUpFill18Icon /> : <DropdownDownFill18Icon />
+          }
         >
           {isExpanded && (
             <Box ml={5} mt={1} pr={3}>
@@ -52,11 +54,3 @@ export const ExpandableAlert = ({
     </Pressable>
   );
 };
-
-function getDropDownIcon(isExpanded: boolean) {
-  if (isExpanded) {
-    return <DropdownUpFill18Icon />;
-  } else {
-    return <DropdownDownFill18Icon />;
-  }
-}

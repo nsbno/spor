@@ -152,18 +152,20 @@ export const Card = ({
   const { style } = useRestyle(restyleFunctions, restyleProps);
 
   const selectedIconIfEnabled = selected && (
-    <Box marginRight="sm">
+    <Box marginRight="sm" alignSelf={"center"}>
       {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
     </Box>
   );
   const childrenBox = <Box flex={1}>{children}</Box>;
   const closeButtonIfEnabled = onClose !== undefined && (
-    <Button
-      marginLeft={"sm"}
-      onPress={onClose}
-      variant={"ghost"}
-      leftIcon={<CloseOutline18Icon />}
-    ></Button>
+    <Box alignSelf={"center"}>
+      <Button
+        marginLeft={"sm"}
+        onPress={onClose}
+        variant={"ghost"}
+        leftIcon={<CloseOutline18Icon />}
+      ></Button>
+    </Box>
   );
 
   if (isPressable) {
@@ -174,7 +176,7 @@ export const Card = ({
         onPress={onPress}
         style={[style as any, { flex: 1 }]}
       >
-        <Box flexDirection="row" flex={1} alignItems="center">
+        <Box flexDirection="row" flex={1}>
           {selectedIconIfEnabled}
           {childrenBox}
           {closeButtonIfEnabled}
@@ -184,7 +186,7 @@ export const Card = ({
   }
 
   return (
-    <Box style={style as any} flexDirection="row" flex={1} alignItems="center">
+    <Box style={style as any} flexDirection="row" flex={1}>
       {childrenBox}
       {closeButtonIfEnabled}
     </Box>

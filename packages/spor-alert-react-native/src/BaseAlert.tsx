@@ -40,18 +40,18 @@ export type ColorVariants =
 type AlertProps = Exclude<RestyleProps, "variant"> & {
   children?: React.ReactNode;
   colorScheme: ColorVariants;
-  icon: JSX.Element;
-  text: React.ReactNode;
-  expandableItem?: React.ReactNode;
+  leftIcon: JSX.Element;
+  rightIcon?: JSX.Element;
+  title: React.ReactNode;
   weight?: "bold";
 };
 
 export const BaseAlert = ({
   children,
   colorScheme,
-  icon,
-  text,
-  expandableItem,
+  leftIcon,
+  rightIcon,
+  title,
   weight,
   ...props
 }: AlertProps) => {
@@ -63,13 +63,13 @@ export const BaseAlert = ({
   return (
     <Box style={style as any} {...props}>
       <Box flexDirection="row">
-        {icon}
+        {leftIcon}
         <Text marginLeft={2} style={{ flex: 1 }} fontWeight={weight}>
-          {text}
+          {title}
         </Text>
-        {children}
+        {rightIcon}
       </Box>
-      {expandableItem}
+      {children}
     </Box>
   );
 };

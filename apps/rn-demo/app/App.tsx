@@ -64,11 +64,9 @@ const App = () => {
               console.log("Test av lukke-knapp");
             }}
           >
-            <Text>Her er masse info</Text>
             <Text>
               Informasjon om brukerfeil og når noe har gått galt i kjøpsløpet.
             </Text>
-            <Pressable></Pressable>
           </ClosableAlert>
           <SimpleAlert color="green" icon={<SuccessOutline18Icon />}>
             Informasjon om alternativ transport for avganger som ikke går som

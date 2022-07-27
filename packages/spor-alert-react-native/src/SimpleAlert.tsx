@@ -14,6 +14,6 @@ export const SimpleAlert = ({
   ...props
 }: SimpleAlertProps) => {
   return (
-    <BaseAlert colorScheme={color} text={children} icon={icon}></BaseAlert>
+    <BaseAlert colorScheme={color} title={children} leftIcon={icon}></BaseAlert>
   );
 };

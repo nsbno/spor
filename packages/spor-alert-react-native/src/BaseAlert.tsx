@@ -6,7 +6,6 @@ import {
   spacingShorthand,
   SpacingShorthandProps,
   useRestyle,
-  useTheme,
   VariantProps,
 } from "@shopify/restyle";
 import React, { useEffect, useState } from "react";
@@ -30,7 +29,7 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   colorScheme,
 ]);
 
-type ColorVariants =
+export type ColorVariants =
   | "yellow"
   | "light-yellow"
   | "orange"
@@ -42,17 +41,23 @@ type AlertProps = Exclude<RestyleProps, "variant"> & {
   children?: React.ReactNode;
   colorScheme: ColorVariants;
   icon: JSX.Element;
-  text: string;
+  text: React.ReactNode;
   expandableItem?: React.ReactNode;
   weight?: "bold";
 };
 
-export const Alert = (props: AlertProps) => {
-  const { children, colorScheme, icon, text, expandableItem, weight, ...rest } =
-    props;
+export const BaseAlert = ({
+  children,
+  colorScheme,
+  icon,
+  text,
+  expandableItem,
+  weight,
+  ...props
+}: AlertProps) => {
   const { style } = useRestyle(restyleFunctions, {
     colorScheme,
-    ...rest,
+    ...props,
   });
 
   return (

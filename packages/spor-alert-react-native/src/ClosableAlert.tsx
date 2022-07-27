@@ -3,15 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Text } from "@vygruppen/spor-typography-react-native";
 import { Pressable } from "react-native";
-import { Alert } from "./Alert";
-
-type ColorVariants =
-  | "yellow"
-  | "light-yellow"
-  | "orange"
-  | "red"
-  | "green"
-  | "blue";
+import { BaseAlert, ColorVariants } from "./BaseAlert";
 
 type ClosableAlertProps = {
   children: React.ReactNode;
@@ -22,24 +14,30 @@ type ClosableAlertProps = {
   onToggle?: (isExpanded: boolean) => void;
 };
 
-export const ClosableAlert = (props: ClosableAlertProps) => {
-  const { children, color, onToggle, onClose, title, icon, ...rest } = props;
-
+export const ClosableAlert = ({
+  children,
+  color,
+  onToggle,
+  onClose,
+  title,
+  icon,
+  ...props
+}: ClosableAlertProps) => {
   return (
-    <Alert
+    <BaseAlert
       colorScheme={color}
       icon={icon}
       text={title}
       weight="bold"
       expandableItem={
-        <Text ml={5} mt={1} pr={3} variant="xs">
+        <Box ml={5} mt={1} pr={3}>
           {children}
-        </Text>
+        </Box>
       }
     >
-      <Pressable onPress={props.onClose} style={{ alignSelf: "center" }}>
+      <Pressable onPress={onClose} style={{ alignSelf: "center" }}>
         <CloseOutline18Icon />
       </Pressable>
-    </Alert>
+    </BaseAlert>
   );
 };

@@ -6,15 +6,7 @@ import React, { useState } from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Text } from "@vygruppen/spor-typography-react-native";
 import { Pressable } from "react-native";
-import { Alert } from "./Alert";
-
-type ColorVariants =
-  | "yellow"
-  | "light-yellow"
-  | "orange"
-  | "red"
-  | "green"
-  | "blue";
+import { BaseAlert, ColorVariants } from "./BaseAlert";
 
 type ExpandableAlertProps = {
   children: React.ReactNode;
@@ -24,8 +16,14 @@ type ExpandableAlertProps = {
   onToggle?: (isExpanded: boolean) => void;
 };
 
-export const ExpandableAlert = (props: ExpandableAlertProps) => {
-  const { children, color, onToggle, title, icon, ...rest } = props;
+export const ExpandableAlert = ({
+  children,
+  color,
+  onToggle,
+  title,
+  icon,
+  ...props
+}: ExpandableAlertProps) => {
   const [isExpanded, setExpanded] = useState(false);
 
   function handlePress() {
@@ -38,21 +36,21 @@ export const ExpandableAlert = (props: ExpandableAlertProps) => {
   return (
     <Pressable onPress={handlePress}>
       <Box flexDirection={"row"}>
-        <Alert
+        <BaseAlert
           colorScheme={color}
           icon={icon}
           text={title}
           weight={isExpanded ? "bold" : undefined}
           expandableItem={
             isExpanded && (
-              <Text ml={5} mt={1} pr={3} variant="xs">
+              <Box ml={5} mt={1} pr={3}>
                 {children}
-              </Text>
+              </Box>
             )
           }
         >
           {getDropDownIcon(isExpanded)}
-        </Alert>
+        </BaseAlert>
       </Box>
     </Pressable>
   );

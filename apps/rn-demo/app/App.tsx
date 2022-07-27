@@ -17,7 +17,12 @@ import {
   WarningOutline18Icon,
 } from "@vygruppen/spor-icon-react-native";
 import React from "react";
-import { SafeAreaView } from "react-native";
+import {
+  Linking,
+  Pressable,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 
 /**
  * The entry point of the Spor RN demo app
@@ -55,8 +60,15 @@ const App = () => {
             color="red"
             title="Feilmelding"
             icon={<DeleteCircleOutline18Icon />}
+            onClose={() => {
+              console.log("Test av lukke-knapp");
+            }}
           >
-            Informasjon om brukerfeil og når noe har gått galt i kjøpsløpet.
+            <Text>Her er masse info</Text>
+            <Text>
+              Informasjon om brukerfeil og når noe har gått galt i kjøpsløpet.
+            </Text>
+            <Pressable></Pressable>
           </ClosableAlert>
           <SimpleAlert color="green" icon={<SuccessOutline18Icon />}>
             Informasjon om alternativ transport for avganger som ikke går som
@@ -67,8 +79,22 @@ const App = () => {
             icon={<InformationOutline18Icon />}
             title="Informasjon"
           >
-            Generell positiv informasjon, som påvirker den reisende i liten og
-            mellomstor betydning.
+            <Text>
+              Generell positiv informasjon, som påvirker den reisende i liten og
+              mellomstor betydning. {"\n"}
+            </Text>
+            <TouchableOpacity
+              accessibilityRole="link"
+              onPress={() =>
+                Linking.openURL(
+                  "https://spor.cloud.vy.no/ressurser/design-tokens"
+                )
+              }
+            >
+              <Text variant="xs" textDecorationLine={"underline"}>
+                Link til mer informasjon
+              </Text>
+            </TouchableOpacity>
           </ExpandableAlert>
         </Stack>
       </SafeAreaView>

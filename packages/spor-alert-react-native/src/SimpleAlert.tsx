@@ -1,15 +1,5 @@
-import { Box } from "@vygruppen/spor-layout-react-native";
-import { Text } from "@vygruppen/spor-typography-react-native";
-import { Alert } from "./Alert";
+import { BaseAlert, ColorVariants } from "./BaseAlert";
 import React from "react";
-
-type ColorVariants =
-  | "yellow"
-  | "light-yellow"
-  | "orange"
-  | "red"
-  | "green"
-  | "blue";
 
 type SimpleAlertProps = {
   children: string;
@@ -17,8 +7,13 @@ type SimpleAlertProps = {
   icon: JSX.Element;
 };
 
-export const SimpleAlert = (props: SimpleAlertProps) => {
-  const { children, color, icon, ...rest } = props;
-
-  return <Alert colorScheme={color} text={children} icon={icon}></Alert>;
+export const SimpleAlert = ({
+  children,
+  color,
+  icon,
+  ...props
+}: SimpleAlertProps) => {
+  return (
+    <BaseAlert colorScheme={color} text={children} icon={icon}></BaseAlert>
+  );
 };

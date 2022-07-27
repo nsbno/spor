@@ -164,7 +164,7 @@ export const Card = ({
         onPress={onClose}
         variant={"ghost"}
         leftIcon={<CloseOutline18Icon />}
-      ></Button>
+      />
     </Box>
   );
 

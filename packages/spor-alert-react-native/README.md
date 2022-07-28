@@ -12,9 +12,9 @@ $ npm install @vygruppen/spor-alert-react-native
 
 Alerts comes in three different variants: `<SimpleAlert>`, `<ClosableAlert>` and `<ExpandableAlert>`
 
-`SimpleAlert`: support for children, colorScheme and leftIcon. <br>
-`ClosableAlert`: support for children, colorScheme and leftIcon, heading, onClose. <br>
-`SimpleAlert`: support for children, colorScheme and leftIcon, heading,
+`SimpleAlert`: a simple alert with no heading, and mandatory props: **children**, **colorScheme** and **leftIcon**. <br>
+`ClosableAlert`: an alert with a closeButton. Mandatory props: **children**, **colorScheme**, **leftIcon**, **heading**, **onClose**. <br>
+`ExpandableAlert`: an alert with expandable content and optional onToogle. Mandatory props: **children**, **colorScheme**, **leftIcon**, **heading**,
 (optional props: defaultExpanded, onToogle)
 
 `colorScheme` is either `yellow`, `light-yellow`, `orange`, `red`, `green` or `blue`,

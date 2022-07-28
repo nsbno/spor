@@ -184,7 +184,7 @@ export const Card = ({
           },
         ]}
       >
-        <Box flexDirection={"row"} flex={1}>
+        <Box flexDirection={"row"} flex={1} alignItems="center">
           {selectedIconIfEnabled}
           {childrenBox}
           {closeButtonIfEnabled}
@@ -201,7 +201,7 @@ export const Card = ({
       flexShrink={1}
       flexBasis={"auto"}
     >
-      <Box flexDirection={"row"} flex={1}>
+      <Box flexDirection={"row"} flex={1} alignItems="center">
         {childrenBox}
         {closeButtonIfEnabled}
       </Box>

@@ -12,7 +12,7 @@ type ExpandableAlertProps = {
   children: React.ReactNode;
   colorScheme: ColorVariants;
   leftIcon: JSX.Element;
-  title: string;
+  heading: string;
   defaultExpanded?: boolean;
   onToggle?: (isExpanded: boolean) => void;
 };
@@ -20,7 +20,7 @@ type ExpandableAlertProps = {
 export const ExpandableAlert = ({
   children,
   colorScheme,
-  title,
+  heading,
   leftIcon,
   defaultExpanded = false,
   onToggle = () => {},
@@ -40,7 +40,7 @@ export const ExpandableAlert = ({
           colorScheme={colorScheme}
           leftIcon={leftIcon}
           heading={
-            <Text fontWeight={isExpanded ? "bold" : undefined}>{title}</Text>
+            <Text fontWeight={isExpanded ? "bold" : undefined}>{heading}</Text>
           }
           rightIcon={
             isExpanded ? <DropdownUpFill18Icon /> : <DropdownDownFill18Icon />

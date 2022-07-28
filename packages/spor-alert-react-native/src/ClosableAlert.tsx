@@ -9,7 +9,7 @@ type ClosableAlertProps = {
   children: React.ReactNode;
   colorScheme: ColorVariants;
   leftIcon: JSX.Element;
-  title: string;
+  heading: string;
   onClose: () => void;
 };
 
@@ -17,7 +17,7 @@ export const ClosableAlert = ({
   children,
   colorScheme,
   onClose,
-  title,
+  heading,
   leftIcon,
   ...props
 }: ClosableAlertProps) => {
@@ -25,7 +25,7 @@ export const ClosableAlert = ({
     <BaseAlert
       colorScheme={colorScheme}
       leftIcon={leftIcon}
-      heading={<Text fontWeight={"bold"}>{title}</Text>}
+      heading={<Text fontWeight={"bold"}>{heading}</Text>}
       rightIcon={
         <Pressable onPress={onClose} style={{ alignSelf: "center" }}>
           <CloseOutline18Icon />

@@ -154,7 +154,7 @@ export const Card = ({
   const selectedIconIfEnabled = selected && (
     <Box
       marginRight="sm"
-      alignSelf={"center"}
+      alignSelf="center"
       style={size == "sm" ? { marginVertical: -2 } : { marginVertical: -5 }}
     >
       {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
@@ -188,7 +188,7 @@ export const Card = ({
           },
         ]}
       >
-        <Box flexDirection={"row"} flex={1}>
+        <Box flexDirection="row" flex={1}>
           {selectedIconIfEnabled}
           {childrenBox}
           {closeButtonIfEnabled}
@@ -203,9 +203,9 @@ export const Card = ({
       flexDirection="row"
       flexGrow={1}
       flexShrink={1}
-      flexBasis={"auto"}
+      flexBasis="auto"
     >
-      <Box flexDirection={"row"} flex={1}>
+      <Box flexDirection="row" flex={1}>
         {childrenBox}
         {closeButtonIfEnabled}
       </Box>

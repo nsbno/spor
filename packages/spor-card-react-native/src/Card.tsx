@@ -152,7 +152,10 @@ export const Card = ({
   const { style } = useRestyle(restyleFunctions, restyleProps);
 
   const selectedIconIfEnabled = selected && (
-    <Box marginRight="sm" alignSelf={"center"}>
+    <Box
+      marginRight="sm"
+      style={size == "sm" ? { marginVertical: -3 } : { marginVertical: -9 }}
+    >
       {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
     </Box>
   );
@@ -201,7 +204,7 @@ export const Card = ({
       flexShrink={1}
       flexBasis={"auto"}
     >
-      <Box flexDirection={"row"} flex={1} alignItems="center">
+      <Box flexDirection={"row"} flex={1}>
         {childrenBox}
         {closeButtonIfEnabled}
       </Box>

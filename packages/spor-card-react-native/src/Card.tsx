@@ -174,9 +174,9 @@ export const Card = ({
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
         onPress={onPress}
-        style={[style as any, { flex: 1 }]}
+        style={[style as any, { flexGrow: 1 }]}
       >
-        <Box flexDirection="row" flex={1}>
+        <Box flexDirection="row">
           {selectedIconIfEnabled}
           {childrenBox}
           {closeButtonIfEnabled}
@@ -186,7 +186,7 @@ export const Card = ({
   }
 
   return (
-    <Box style={style as any} flexDirection="row" flex={1}>
+    <Box style={style as any} flexDirection="row" flexGrow={1}>
       {childrenBox}
       {closeButtonIfEnabled}
     </Box>

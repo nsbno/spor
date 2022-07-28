@@ -1,6 +1,5 @@
 # Alert (React Native)
 
-TODO: Add description
 
 ## Installation
 
@@ -20,7 +19,7 @@ Alerts comes in three different variants: `<SimpleAlert>`, `<ClosableAlert>` and
 `colorScheme` is either `yellow`, `light-yellow`, `orange`, `red`, `green` or `blue`,
 
 ```tsx
-import {} from "@vygruppen/spor-alert-react-native";
+import {SimpleAlert, ClosableAlert, ExpandableAlert} from "@vygruppen/spor-alert-react-native";
 
 
 

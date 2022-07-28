@@ -82,6 +82,7 @@ const App = () => {
             colorScheme="blue"
             icon={<InformationOutline18Icon />}
             title="Informasjon"
+            onToggle={() => console.log("Test av onToogle")}
           >
             <Text>
               Generell positiv informasjon, som påvirker den reisende i liten og

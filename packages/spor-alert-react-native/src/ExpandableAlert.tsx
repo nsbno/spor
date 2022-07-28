@@ -20,7 +20,7 @@ type ExpandableAlertProps = {
 export const ExpandableAlert = ({
   children,
   colorScheme,
-  onToggle,
+  onToggle = () => {},
   title,
   icon,
   defaultExpanded = false,
@@ -30,9 +30,7 @@ export const ExpandableAlert = ({
 
   function handlePress() {
     setExpanded(!isExpanded);
-    if (onToggle) {
-      onToggle(!isExpanded);
-    }
+    onToggle(!isExpanded);
   }
 
   return (

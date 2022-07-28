@@ -1,5 +1,11 @@
 # @vygruppen/spor-card-react-native
 
+## 0.0.12
+
+### Patch Changes
+
+- 7b7fe5b: Change the card component so it behaves correctly in any type of view.
+
 ## 0.0.11
 
 ### Patch Changes

@@ -5,20 +5,20 @@ import { Text } from "@vygruppen/spor-typography-react-native";
 type SimpleAlertProps = {
   children: React.ReactNode;
   colorScheme: ColorVariants;
-  icon: JSX.Element;
+  leftIcon: JSX.Element;
 };
 
 export const SimpleAlert = ({
   children,
   colorScheme,
-  icon,
+  leftIcon,
   ...props
 }: SimpleAlertProps) => {
   return (
     <BaseAlert
       colorScheme={colorScheme}
       heading={<Text>{children}</Text>}
-      leftIcon={icon}
+      leftIcon={leftIcon}
     ></BaseAlert>
   );
 };

@@ -8,7 +8,7 @@ import { Text } from "@vygruppen/spor-typography-react-native";
 type ClosableAlertProps = {
   children: React.ReactNode;
   colorScheme: ColorVariants;
-  icon: JSX.Element;
+  leftIcon: JSX.Element;
   title: string;
   onClose: () => void;
 };
@@ -18,13 +18,13 @@ export const ClosableAlert = ({
   colorScheme,
   onClose,
   title,
-  icon,
+  leftIcon,
   ...props
 }: ClosableAlertProps) => {
   return (
     <BaseAlert
       colorScheme={colorScheme}
-      leftIcon={icon}
+      leftIcon={leftIcon}
       heading={<Text fontWeight={"bold"}>{title}</Text>}
       rightIcon={
         <Pressable onPress={onClose} style={{ alignSelf: "center" }}>

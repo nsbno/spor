@@ -11,7 +11,6 @@ import {
 import React, { useEffect, useState } from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
-import { Text } from "@vygruppen/spor-typography-react-native";
 
 type Variant = VariantProps<Theme, "alertColorScheme", "colorScheme">;
 const colorScheme = createVariant({

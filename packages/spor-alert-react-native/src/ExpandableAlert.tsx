@@ -11,7 +11,7 @@ import { Text } from "@vygruppen/spor-typography-react-native";
 type ExpandableAlertProps = {
   children: React.ReactNode;
   colorScheme: ColorVariants;
-  icon: JSX.Element;
+  leftIcon: JSX.Element;
   title: string;
   defaultExpanded?: boolean;
   onToggle?: (isExpanded: boolean) => void;
@@ -20,10 +20,10 @@ type ExpandableAlertProps = {
 export const ExpandableAlert = ({
   children,
   colorScheme,
-  onToggle = () => {},
   title,
-  icon,
+  leftIcon,
   defaultExpanded = false,
+  onToggle = () => {},
   ...props
 }: ExpandableAlertProps) => {
   const [isExpanded, setExpanded] = useState(defaultExpanded);
@@ -38,7 +38,7 @@ export const ExpandableAlert = ({
       <Box flexDirection={"row"}>
         <BaseAlert
           colorScheme={colorScheme}
-          leftIcon={icon}
+          leftIcon={leftIcon}
           heading={
             <Text fontWeight={isExpanded ? "bold" : undefined}>{title}</Text>
           }

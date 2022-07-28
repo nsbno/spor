@@ -6,23 +6,16 @@ import {
   ExpandableAlert,
   SimpleAlert,
   ClosableAlert,
-  Expandable,
 } from "@vygruppen/spor-react-native";
 import {
   AltTransportOutline18Icon,
-  CloseOutline18Icon,
   DeleteCircleOutline18Icon,
   InformationOutline18Icon,
   SuccessOutline18Icon,
   WarningOutline18Icon,
 } from "@vygruppen/spor-icon-react-native";
 import React from "react";
-import {
-  Linking,
-  Pressable,
-  SafeAreaView,
-  TouchableOpacity,
-} from "react-native";
+import { Linking, SafeAreaView, TouchableOpacity } from "react-native";
 
 /**
  * The entry point of the Spor RN demo app
@@ -46,26 +39,29 @@ const App = () => {
 
           <SimpleAlert
             colorScheme="yellow"
-            icon={<AltTransportOutline18Icon />}
+            leftIcon={<AltTransportOutline18Icon />}
           >
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
           </SimpleAlert>
           <SimpleAlert
             colorScheme="light-yellow"
-            icon={<WarningOutline18Icon />}
+            leftIcon={<WarningOutline18Icon />}
           >
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
           </SimpleAlert>
-          <SimpleAlert colorScheme="orange" icon={<InformationOutline18Icon />}>
+          <SimpleAlert
+            colorScheme="orange"
+            leftIcon={<InformationOutline18Icon />}
+          >
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
           </SimpleAlert>
           <ClosableAlert
             colorScheme="red"
             title="Feilmelding"
-            icon={<DeleteCircleOutline18Icon />}
+            leftIcon={<DeleteCircleOutline18Icon />}
             onClose={() => {
               console.log("Test av lukke-knapp");
             }}
@@ -74,13 +70,13 @@ const App = () => {
               Informasjon om brukerfeil og når noe har gått galt i kjøpsløpet.
             </Text>
           </ClosableAlert>
-          <SimpleAlert colorScheme="green" icon={<SuccessOutline18Icon />}>
+          <SimpleAlert colorScheme="green" leftIcon={<SuccessOutline18Icon />}>
             Informasjon om alternativ transport for avganger som ikke går som
             normalt.
           </SimpleAlert>
           <ExpandableAlert
             colorScheme="blue"
-            icon={<InformationOutline18Icon />}
+            leftIcon={<InformationOutline18Icon />}
             title="Informasjon"
             onToggle={() => console.log("Test av onToogle")}
           >

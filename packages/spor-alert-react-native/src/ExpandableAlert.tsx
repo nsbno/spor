@@ -13,6 +13,7 @@ type ExpandableAlertProps = {
   colorScheme: ColorVariants;
   icon: JSX.Element;
   title: string;
+  defaultExpanded?: boolean;
   onToggle?: (isExpanded: boolean) => void;
 };
 
@@ -22,9 +23,10 @@ export const ExpandableAlert = ({
   onToggle,
   title,
   icon,
+  defaultExpanded = false,
   ...props
 }: ExpandableAlertProps) => {
-  const [isExpanded, setExpanded] = useState(false);
+  const [isExpanded, setExpanded] = useState(defaultExpanded);
 
   function handlePress() {
     setExpanded(!isExpanded);

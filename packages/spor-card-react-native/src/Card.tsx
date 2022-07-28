@@ -174,23 +174,33 @@ export const Card = ({
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
         onPress={onPress}
-        style={[style as any, { flexGrow: 1, flexDirection: "row" }]}
+        style={[
+          style as any,
+          {
+            flexGrow: 1,
+            flexShrink: 1,
+            flexBasis: "auto",
+            flexDirection: "row",
+          },
+        ]}
       >
-        <Box flexDirection={"row"} flex={1}>
-          {selectedIconIfEnabled}
-          {childrenBox}
-          {closeButtonIfEnabled}
-        </Box>
+        {selectedIconIfEnabled}
+        {childrenBox}
+        {closeButtonIfEnabled}
       </Pressable>
     );
   }
 
   return (
-    <Box style={style as any} flexDirection="row" flexGrow={1}>
-      <Box flexDirection="row" flex={1}>
-        {childrenBox}
-        {closeButtonIfEnabled}
-      </Box>
+    <Box
+      style={style as any}
+      flexDirection="row"
+      flexGrow={1}
+      flexShrink={1}
+      flexBasis={"auto"}
+    >
+      {childrenBox}
+      {closeButtonIfEnabled}
     </Box>
   );
 };

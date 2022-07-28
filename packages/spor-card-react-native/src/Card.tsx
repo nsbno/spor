@@ -184,9 +184,11 @@ export const Card = ({
           },
         ]}
       >
-        {selectedIconIfEnabled}
-        {childrenBox}
-        {closeButtonIfEnabled}
+        <Box flexDirection={"row"} flex={1}>
+          {selectedIconIfEnabled}
+          {childrenBox}
+          {closeButtonIfEnabled}
+        </Box>
       </Pressable>
     );
   }
@@ -199,8 +201,10 @@ export const Card = ({
       flexShrink={1}
       flexBasis={"auto"}
     >
-      {childrenBox}
-      {closeButtonIfEnabled}
+      <Box flexDirection={"row"} flex={1}>
+        {childrenBox}
+        {closeButtonIfEnabled}
+      </Box>
     </Box>
   );
 };

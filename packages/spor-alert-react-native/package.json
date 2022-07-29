@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@shopify/restyle": "^2.1.0",
+    "@types/react-native": "^0.69.3",
     "react": ">17.0.0",
     "react-native": "^0.66.0",
     "tsup": "^5.11.11"

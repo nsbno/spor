@@ -83,7 +83,9 @@ export const MessageBox = (props: MessageBoxProps) => {
         <Box mr={1} alignContent="center">
           {icon}
         </Box>
-        <Text variant="md">{children}</Text>
+        <Box flex={1}>
+          <Text variant="md">{children}</Text>
+        </Box>
       </Box>
 
       {isCloseButtonProps(props) ? (
@@ -95,7 +97,12 @@ export const MessageBox = (props: MessageBoxProps) => {
         ></Button>
       ) : (
         isButtonProps(props) && (
-          <Button size="xs" variant="additional" onPress={props.onPress}>
+          <Button
+            size="xs"
+            variant="additional"
+            onPress={props.onPress}
+            marginLeft={1}
+          >
             {props.buttonText}
           </Button>
         )

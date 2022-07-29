@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-card-react-native",
-  "version": "0.0.8",
+  "version": "0.0.12",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -20,7 +20,9 @@
   },
   "dependencies": {
     "@vygruppen/spor-layout-react-native": "*",
-    "@vygruppen/spor-theme-react-native": "*"
+    "@vygruppen/spor-theme-react-native": "*",
+    "@vygruppen/spor-icon-react-native": "*",
+    "@vygruppen/spor-button-react-native": "*"
   },
   "devDependencies": {
     "react": ">17.0.0",

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.3
+
+### Patch Changes
+
+- cdf4c2d: Update cards with Active and Selected state as well as enhancing card shadows on android.
+
 ## 2.4.2
 
 ### Patch Changes

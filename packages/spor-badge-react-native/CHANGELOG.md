@@ -1,5 +1,13 @@
 # @vygruppen/spor-badge-react-native
 
+## 1.0.5
+
+### Patch Changes
+
+- 9d2fba0: Add color scheme for night-train badge
+- Updated dependencies [9d2fba0]
+  - @vygruppen/spor-theme-react-native@0.2.5
+
 ## 1.0.4
 
 ### Patch Changes

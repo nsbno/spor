@@ -1,5 +1,12 @@
 # @vygruppen/spor-accordion-react-native
 
+## 0.0.9
+
+### Patch Changes
+
+- Updated dependencies [c0b0f01]
+  - @vygruppen/spor-theme-react-native@0.2.4
+
 ## 0.0.8
 
 ### Patch Changes

@@ -58,15 +58,7 @@ const App = () => {
                     variant="primary"
                     size="md"
                     onPress={() => {}}
-                    flex={1}
                     marginRight={2}
-                  >
-                    knapp
-                  </Button>
-                  <Button
-                    variant="primary"
-                    size="md"
-                    onPress={() => {}}
                     flex={1}
                   >
                     knapp

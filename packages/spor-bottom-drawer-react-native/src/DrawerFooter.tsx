@@ -1,6 +1,5 @@
 import React from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
-import { StyleProp, ViewStyle } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type Props = {

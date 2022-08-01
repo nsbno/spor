@@ -8,8 +8,8 @@ type Props = {
 
 export const DrawerHandle = ({ onClose }: Props) => {
   return (
-    <Box flex={1} paddingVertical="2xs" alignItems="center">
-      <Box backgroundColor="steel" borderRadius="xs" height={6}>
+    <Box flex={1} paddingVertical="sm" alignItems="center">
+      <Box backgroundColor="steel" borderRadius="xs" height={6} width={42}>
         <Button variant="ghost" onPress={onClose} hitSlop={5}></Button>
       </Box>
     </Box>

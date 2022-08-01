@@ -19,13 +19,14 @@
     "dev": "tsup src/index.tsx --watch"
   },
   "dependencies": {
-    "@vygruppen/spor-icon-react-native": "*",
-    "@vygruppen/spor-theme-react-native": "*",
     "@vygruppen/spor-design-tokens": "*",
-    "@vygruppen/spor-loader-react-native": "*"
+    "@vygruppen/spor-icon-react-native": "*",
+    "@vygruppen/spor-loader-react-native": "*",
+    "@vygruppen/spor-theme-react-native": "*"
   },
   "devDependencies": {
     "@shopify/restyle": "^2.1.0",
+    "@types/react-native": "^0.69.4",
     "react": ">17.0.0",
     "react-native": ">0.66.0",
     "tsup": "^5.11.11"

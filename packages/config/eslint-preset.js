@@ -41,7 +41,6 @@ module.exports = {
         "packages/spor-message-box-react-native/",
         "packages/spor-badge-react-native/",
         "packages/spor-accordion-react-native/",
-        "packages/spor-alert-react-native/",
       ],
     },
   },

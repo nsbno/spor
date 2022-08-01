@@ -4,4 +4,3 @@ export * from "./message-box";
 export * from "./text";
 export * from "./badge";
 export * from "./expandable";
-export * from "./alert";

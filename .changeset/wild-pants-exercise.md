@@ -1,6 +1,5 @@
 ---
 "@vygruppen/spor-alert-react-native": major
-"@vygruppen/config": patch
 "@vygruppen/spor-react-native": patch
 "@vygruppen/spor-theme-react-native": patch
 ---

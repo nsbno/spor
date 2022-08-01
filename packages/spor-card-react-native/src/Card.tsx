@@ -1,4 +1,5 @@
 import {
+  BorderProps,
   composeRestyleFunctions,
   createVariant,
   spacing,
@@ -7,16 +8,26 @@ import {
   SpacingShorthandProps,
   useRestyle,
   VariantProps,
+  border,
 } from "@shopify/restyle";
 import { Box } from "@vygruppen/spor-layout-react-native";
+import { Button } from "@vygruppen/spor-button-react-native";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
+import {
+  SuccessFill24Icon,
+  SuccessFill30Icon,
+  CloseOutline18Icon,
+} from "@vygruppen/spor-icon-react-native";
 import React from "react";
 import { Pressable } from "react-native";
 
 type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
+  BorderProps<Theme> &
   VariantProps<Theme, "cardSizes", "size"> &
   VariantProps<Theme, "cardColorSchemes", "colorScheme"> &
+  VariantProps<Theme, "cardOnPressColorSchemes", "onPressColorScheme"> &
+  VariantProps<Theme, "cardSelectedColorSchemes", "selectedColorScheme"> &
   VariantProps<Theme, "cardElevations", "elevationLevel">;
 
 const sizes = createVariant({ themeKey: "cardSizes", property: "size" });
@@ -25,9 +36,20 @@ const colorSchemes = createVariant({
   themeKey: "cardColorSchemes",
   property: "colorScheme",
 });
+
 const elevations = createVariant({
   themeKey: "cardElevations",
   property: "elevationLevel",
+});
+
+const onPressColorSchemes = createVariant({
+  themeKey: "cardOnPressColorSchemes",
+  property: "onPressColorScheme",
+});
+
+const selectedColorSchemes = createVariant({
+  themeKey: "cardSelectedColorSchemes",
+  property: "selectedColorScheme",
 });
 
 const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
@@ -35,12 +57,17 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   spacingShorthand,
   elevations,
   sizes,
+  border,
+  onPressColorSchemes,
+  selectedColorSchemes,
   colorSchemes,
 ]);
 
 type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
   children: React.ReactNode;
   onPress?: () => void;
+  onClose?: () => void;
+  selected?: boolean;
 };
 /**
  * Renders a card.
@@ -53,7 +80,7 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
  * </Card>
  * ```
  *
- * There are lots of color schemes available. You can also set the size as either `sm` or `lg`. The default is `lg`.
+ * There are lots of color schemes available including disabled. You can also set the size as either `sm` or `lg`. The default is `lg`.
  *
  * ```tsx
  * <Card colorScheme="orange" size="sm">
@@ -68,46 +95,120 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
  *   <Text variant="md">Click for profit</Text>
  * </Card>
  * ```
+ *
+ * A close icon can be added to the card. By passing an `onClose` handler, the close icon will appear, and when clicked the onClose handler will be called.
+ *
+ * ```tsx
+ * <Card colorScheme="blue" onClose={handleClose}>
+ *  <Text variant="md">Click for profit</Text>
+ * </Card>
+ * ```
+ *
+ * You can also set the `selected` property to make the card appear selected.
+ *
+ * ```tsx
+ * <Card colorScheme="white" selected={true}>
+ *   <Text variant="md">Click for profit</Text>
+ * </Card>
+ * ```
  */
 export const Card = ({
   children,
   onPress,
+  onClose,
   size = "lg",
+  selected = false,
   ...props
 }: CardProps) => {
   const restyleProps: Record<string, any> = { ...props, size };
   const [isPressed, setPressed] = React.useState(false);
-  const isPressable = onPress !== undefined;
+  const isPressable =
+    onPress !== undefined && restyleProps.colorScheme !== "disabled";
 
   if (props.p === undefined && props.padding === undefined) {
     restyleProps.p = 3;
   }
 
+  if (selected) {
+    restyleProps.selectedColorScheme = restyleProps.colorScheme;
+  }
+
   if (isPressable) {
     if (isPressed) {
       restyleProps.elevationLevel = size === "lg" ? "sm" : "none";
+      restyleProps.onPressColorScheme = restyleProps.colorScheme;
     } else {
       restyleProps.elevationLevel = size === "lg" ? "md" : "sm";
     }
   }
 
+  const handlePressIn = () => {
+    setPressed(true);
+  };
+  const handlePressOut = () => {
+    setPressed(false);
+  };
+
   const { style } = useRestyle(restyleFunctions, restyleProps);
 
-  if (isPressable) {
-    const handlePressIn = () => {
-      setPressed(true);
-    };
-    const handlePressOut = () => {
-      setPressed(false);
-      onPress();
-    };
+  const selectedIconIfEnabled = selected && (
+    <Box
+      marginRight="sm"
+      alignSelf="center"
+      style={size == "sm" ? { marginVertical: -2 } : { marginVertical: -5 }}
+    >
+      {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
+    </Box>
+  );
+  const childrenBox = <Box flex={1}>{children}</Box>;
+  const closeButtonIfEnabled = onClose !== undefined && (
+    <Box alignSelf={"center"}>
+      <Button
+        marginLeft={"sm"}
+        onPress={onClose}
+        variant={"ghost"}
+        leftIcon={<CloseOutline18Icon />}
+      />
+    </Box>
+  );
 
+  if (isPressable) {
     return (
-      <Pressable onPressIn={handlePressIn} onPressOut={handlePressOut}>
-        <Box style={style as any}>{children}</Box>
+      <Pressable
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        onPress={onPress}
+        style={[
+          style as any,
+          {
+            flexGrow: 1,
+            flexShrink: 1,
+            flexBasis: "auto",
+            flexDirection: "row",
+          },
+        ]}
+      >
+        <Box flexDirection="row" flex={1}>
+          {selectedIconIfEnabled}
+          {childrenBox}
+          {closeButtonIfEnabled}
+        </Box>
       </Pressable>
     );
   }
 
-  return <Box style={style as any}>{children}</Box>;
+  return (
+    <Box
+      style={style as any}
+      flexDirection="row"
+      flexGrow={1}
+      flexShrink={1}
+      flexBasis="auto"
+    >
+      <Box flexDirection="row" flex={1}>
+        {childrenBox}
+        {closeButtonIfEnabled}
+      </Box>
+    </Box>
+  );
 };

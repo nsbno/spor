@@ -43,7 +43,7 @@ export const cardColorSchemes = {
   },
   grey: {
     backgroundColor: "grey.100",
-    borderColor: "blackAlpha.300",
+    borderColor: "grey.200",
   },
   blue: {
     backgroundColor: "blue.100",
@@ -69,6 +69,58 @@ export const cardColorSchemes = {
     backgroundColor: "silver",
     borderColor: "silver",
   },
+};
+
+export const cardOnPressColorSchemes = {
+  defaults: {},
+  white: {
+    backgroundColor: "green.50",
+    borderColor: "blackAlpha.200",
+  },
+  grey: {
+    backgroundColor: "green.50",
+    borderColor: "blackAlpha.200",
+  },
+  blue: {
+    backgroundColor: "green.50",
+    borderColor: "blackAlpha.200",
+  },
+  green: {
+    opacity: 0.7,
+  },
+  teal: {
+    opacity: 0.7,
+  },
+  yellow: {
+    opacity: 0.7,
+  },
+  orange: {
+    opacity: 0.7,
+  },
+  disabled: {
+    opacity: 0.7,
+  },
+};
+
+export const cardSelectedColorSchemes = {
+  defaults: {},
+  white: {
+    backgroundColor: "green.50",
+    borderColor: "green.500",
+  },
+  grey: {
+    backgroundColor: "green.50",
+    borderColor: "green.500",
+  },
+  blue: {
+    backgroundColor: "green.50",
+    borderColor: "green.500",
+  },
+  green: {},
+  teal: {},
+  yellow: {},
+  orange: {},
+  disabled: {},
 };
 
 export const cardSizes = {

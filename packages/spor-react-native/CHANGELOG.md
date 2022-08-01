@@ -1,5 +1,73 @@
 # @vygruppen/spor-react-native
 
+## 0.3.10
+
+### Patch Changes
+
+- Updated dependencies [7b7fe5b]
+  - @vygruppen/spor-card-react-native@0.0.12
+
+## 0.3.9
+
+### Patch Changes
+
+- Updated dependencies [14f657c]
+  - @vygruppen/spor-card-react-native@0.0.11
+
+## 0.3.8
+
+### Patch Changes
+
+- Updated dependencies [0436a58]
+  - @vygruppen/spor-card-react-native@0.0.10
+
+## 0.3.7
+
+### Patch Changes
+
+- Updated dependencies [cdf4c2d]
+  - @vygruppen/spor-card-react-native@0.0.9
+  - @vygruppen/spor-theme-react-native@0.2.3
+  - @vygruppen/spor-button-react-native@0.2.3
+  - @vygruppen/spor-accordion-react-native@0.0.8
+  - @vygruppen/spor-badge-react-native@1.0.3
+  - @vygruppen/spor-message-box-react-native@1.0.2
+  - @vygruppen/spor-provider-react-native@0.1.12
+
+## 0.3.6
+
+### Patch Changes
+
+- Updated dependencies [2aec703]
+  - @vygruppen/spor-accordion-react-native@0.0.7
+
+## 0.3.5
+
+### Patch Changes
+
+- e7d3f51: revert en endring for å fikse lintfeil som dukker opp i salgsappen ved importering av spor komponenter
+
+## 0.3.4
+
+### Patch Changes
+
+- Updated dependencies [f8a1e26]
+  - @vygruppen/spor-accordion-react-native@0.0.6
+
+## 0.3.3
+
+### Patch Changes
+
+- Updated dependencies [8dbf17e]
+  - @vygruppen/spor-loader-react-native@0.1.5
+  - @vygruppen/spor-theme-react-native@0.2.2
+  - @vygruppen/spor-button-react-native@0.2.2
+  - @vygruppen/spor-accordion-react-native@0.0.5
+  - @vygruppen/spor-badge-react-native@1.0.2
+  - @vygruppen/spor-card-react-native@0.0.8
+  - @vygruppen/spor-message-box-react-native@1.0.1
+  - @vygruppen/spor-provider-react-native@0.1.11
+
 ## 0.3.2
 
 ### Patch Changes

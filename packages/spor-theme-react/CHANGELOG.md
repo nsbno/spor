@@ -1,5 +1,12 @@
 # @vygruppen/spor-theme-react
 
+## 0.5.2
+
+### Patch Changes
+
+- Updated dependencies [cdf4c2d]
+  - @vygruppen/spor-design-tokens@2.4.3
+
 ## 0.5.1
 
 ### Patch Changes

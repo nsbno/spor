@@ -1,5 +1,19 @@
 # @vygruppen/spor-theme-react-native
 
+## 0.2.3
+
+### Patch Changes
+
+- cdf4c2d: Update cards with Active and Selected state as well as enhancing card shadows on android.
+- Updated dependencies [cdf4c2d]
+  - @vygruppen/spor-design-tokens@2.4.3
+
+## 0.2.2
+
+### Patch Changes
+
+- 8dbf17e: Updated loader with a textVariant, and varianttheme with a default textcolor
+
 ## 0.2.1
 
 ### Patch Changes

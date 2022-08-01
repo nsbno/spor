@@ -37,7 +37,8 @@ type ColorVariants =
   | "orange"
   | "blue"
   | "grey"
-  | "white";
+  | "white"
+  | "night-train";
 
 type BadgeProps = Exclude<RestyleProps, "variant"> & {
   children: string;
@@ -58,7 +59,11 @@ export const Badge = ({
   return (
     <Box borderWidth={borderWidth} style={style as any} {...props}>
       {icon && <Box paddingRight={0.5}>{icon}</Box>}
-      <Text variant="xs" fontWeight="bold">
+      <Text
+        variant="xs"
+        fontWeight="bold"
+        color={colorScheme == "night-train" ? "white" : "darkGrey"}
+      >
         {children}
       </Text>
     </Box>

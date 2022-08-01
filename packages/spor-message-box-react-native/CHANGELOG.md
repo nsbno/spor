@@ -1,5 +1,13 @@
 # @vygruppen/spor-message-box-react-native
 
+## 1.0.3
+
+### Patch Changes
+
+- Updated dependencies [c0b0f01]
+  - @vygruppen/spor-theme-react-native@0.2.4
+  - @vygruppen/spor-button-react-native@0.2.4
+
 ## 1.0.2
 
 ### Patch Changes

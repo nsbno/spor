@@ -97,14 +97,16 @@ export const MessageBox = (props: MessageBoxProps) => {
         ></Button>
       ) : (
         isButtonProps(props) && (
-          <Button
-            size="xs"
-            variant="additional"
-            onPress={props.onPress}
-            marginLeft={1}
-          >
-            {props.buttonText}
-          </Button>
+          <Box alignSelf={"center"}>
+            <Button
+              size="xs"
+              variant="additional"
+              onPress={props.onPress}
+              marginLeft={1}
+            >
+              {props.buttonText}
+            </Button>
+          </Box>
         )
       )}
     </Box>

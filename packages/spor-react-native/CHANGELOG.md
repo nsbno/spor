@@ -1,5 +1,34 @@
 # @vygruppen/spor-react-native
 
+## 0.3.12
+
+### Patch Changes
+
+- Updated dependencies [9d2fba0]
+  - @vygruppen/spor-badge-react-native@1.0.5
+  - @vygruppen/spor-theme-react-native@0.2.5
+  - @vygruppen/spor-accordion-react-native@0.0.10
+  - @vygruppen/spor-alert-react-native@1.0.1
+  - @vygruppen/spor-button-react-native@0.2.5
+  - @vygruppen/spor-card-react-native@0.0.14
+  - @vygruppen/spor-message-box-react-native@1.0.4
+  - @vygruppen/spor-provider-react-native@0.1.14
+
+## 0.3.11
+
+### Patch Changes
+
+- c0b0f01: Lagt til første versjon av alert komponent
+- Updated dependencies [c0b0f01]
+  - @vygruppen/spor-alert-react-native@1.0.0
+  - @vygruppen/spor-theme-react-native@0.2.4
+  - @vygruppen/spor-accordion-react-native@0.0.9
+  - @vygruppen/spor-badge-react-native@1.0.4
+  - @vygruppen/spor-button-react-native@0.2.4
+  - @vygruppen/spor-card-react-native@0.0.13
+  - @vygruppen/spor-message-box-react-native@1.0.3
+  - @vygruppen/spor-provider-react-native@0.1.13
+
 ## 0.3.10
 
 ### Patch Changes

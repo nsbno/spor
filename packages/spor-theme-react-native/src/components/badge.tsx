@@ -41,4 +41,8 @@ export const badgeColorSchemes = {
     backgroundColor: "lightRed",
     borderColor: "brightRed",
   },
+  "night-train": {
+    backgroundColor: "darkBlue",
+    borderColor: "darkGrey",
+  },
 };

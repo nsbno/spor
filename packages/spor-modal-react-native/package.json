@@ -1,5 +1,5 @@
 {
-  "name": "@vygruppen/spor-bottom-drawer-react-native",
+  "name": "@vygruppen/spor-modal-react-native",
   "version": "0.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,11 +8,11 @@
     "dist"
   ],
   "sideEffects": false,
-  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-bottom-drawer-react-native",
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-modal-react-native",
   "repository": {
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
-    "directory": "packages/spor-bottom-drawer-react-native"
+    "directory": "packages/spor-modal-react-native"
   },
   "scripts": {
     "build": "tsup src/index.tsx --dts",
@@ -22,8 +22,7 @@
     "@vygruppen/spor-icon-react-native": "*",
     "@vygruppen/spor-layout-react-native": "*",
     "@vygruppen/spor-theme-react-native": "*",
-    "@vygruppen/spor-typography-react-native": "*",
-    "@vygruppen/spor-button-react-native": "*"
+    "@vygruppen/spor-typography-react-native": "*"
   },
   "devDependencies": {
     "@shopify/restyle": "^2.1.0",
@@ -36,7 +35,7 @@
     "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
     "react-native": "^0.66.0",
-    "react-native-safe-area-context": "4.3.1",
+    "react-native-safe-area-context": "^4.3.1",
     "react-native-modal": "13.0.0"
   }
 }

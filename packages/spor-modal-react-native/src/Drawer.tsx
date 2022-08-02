@@ -2,22 +2,25 @@ import React from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { DrawerHandle } from "./DrawerHandle";
 import Modal from "react-native-modal";
-import { Dimensions, ScrollView } from "react-native";
+import { Dimensions } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type Props = {
-  children: JSX.Element | JSX.Element[];
   onClose: () => void;
-  isVisible: boolean;
+  isOpen: boolean;
   icon?: JSX.Element;
 };
 
-export function BottomDrawer({ onClose, children, isVisible }: Props) {
+export function Drawer({
+  onClose,
+  children,
+  isOpen,
+}: React.PropsWithChildren<Props>) {
   const insets = useSafeAreaInsets();
 
   return (
     <Modal
-      isVisible={isVisible}
+      isVisible={isOpen}
       backdropOpacity={0.6}
       onBackdropPress={onClose}
       animationInTiming={450}

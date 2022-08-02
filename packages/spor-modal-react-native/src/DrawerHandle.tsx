@@ -1,6 +1,6 @@
 import * as React from "react";
+import { Pressable } from "react-native";
 import { Box } from "@vygruppen/spor-layout-react-native";
-import { Button } from "@vygruppen/spor-button-react-native";
 
 type Props = {
   onClose: () => void;
@@ -8,9 +8,9 @@ type Props = {
 
 export const DrawerHandle = ({ onClose }: Props) => {
   return (
-    <Box flex={1} paddingVertical="sm" alignItems="center">
+    <Box alignItems="center" paddingVertical="sm" flex={1}>
       <Box backgroundColor="steel" borderRadius="xs" height={6} width={42}>
-        <Button variant="ghost" onPress={onClose} hitSlop={5}></Button>
+        <Pressable onPress={onClose} accessibilityLabel={"close"}></Pressable>
       </Box>
     </Box>
   );

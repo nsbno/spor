@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "@vygruppen/spor-typography-react-native";
+import { Heading } from "@vygruppen/spor-typography-react-native";
 
 type DrawerHeaderProps = {
   children: string;
@@ -16,18 +16,15 @@ export const DrawerHeader = ({
   const textSize = size === "sm" ? "md" : "lg";
 
   return (
-    <Text
+    <Heading
       variant={textSize}
       fontWeight="bold"
-      accessibilityRole={"header"}
       paddingTop="sm"
       paddingBottom="xs"
-      style={{
-        alignSelf: textAlign === "center" ? "center" : "flex-start",
-        paddingHorizontal: textAlign === "center" ? 12 : 0,
-      }}
+      paddingHorizontal={textAlign === "center" ? "sm" : 0}
+      textAlign={textAlign}
     >
       {children}
-    </Text>
+    </Heading>
   );
 };

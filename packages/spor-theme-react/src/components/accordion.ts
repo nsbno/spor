@@ -20,6 +20,7 @@ const baseStyleButton: SystemStyleFunction = ({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   color: "alias.darkGrey",
+  textAlign: "left",
   _focus: {
     boxShadow: `inset 0 0 0 2px ${theme.colors.alias.greenHaze}`,
   },
@@ -108,7 +109,6 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   sm: {
     button: {
       fontSize: "desktop.xs",
-      minHeight: "36px",
       px: 2,
       py: 1,
     },
@@ -119,7 +119,6 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   md: {
     button: {
       fontSize: "desktop.sm",
-      minHeight: "42px",
       px: 3,
       py: 1,
     },
@@ -130,7 +129,6 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   lg: {
     button: {
       fontSize: "desktop.sm",
-      minHeight: "54px",
       px: 3,
       py: 2,
     },

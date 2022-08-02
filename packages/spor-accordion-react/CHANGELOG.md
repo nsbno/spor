@@ -1,5 +1,11 @@
 # @vygruppen/spor-accordion-react
 
+## 0.1.3
+
+### Patch Changes
+
+- 2514283: Fix a bug where allowMultiple doesn't play along with defaultIndex
+
 ## 0.1.2
 
 ### Patch Changes

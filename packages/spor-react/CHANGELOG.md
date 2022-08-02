@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 0.13.16
+
+### Patch Changes
+
+- Updated dependencies [2514283]
+  - @vygruppen/spor-accordion-react@0.1.3
+
 ## 0.13.15
 
 ### Patch Changes

@@ -3,10 +3,6 @@ import {
   SporProvider,
   Stack,
   Text,
-  Button,
-  SimpleDrawer,
-  DrawerHeader,
-  DrawerFooter,
 } from "@vygruppen/spor-react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
@@ -37,12 +33,6 @@ const App = () => {
               forskjellige komponenter i Spor sitt designsystem for React
               Native.
             </Text>
-            <Button onPress={() => setIsDrawerOpen(true)}>Åpne meg</Button>
-            <SimpleDrawer
-              onClose={() => setIsDrawerOpen(false)}
-              isOpen={isDrawerOpen}
-              title="TittelTittelTittelTitte"
-            ></SimpleDrawer>
           </Stack>
         </SafeAreaView>
       </SafeAreaProvider>

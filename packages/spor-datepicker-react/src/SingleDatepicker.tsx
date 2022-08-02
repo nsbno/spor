@@ -2,6 +2,7 @@ import {
   Box,
   BoxProps,
   Popover,
+  PopoverAnchor,
   PopoverContent,
   Portal,
   StylesProvider,
@@ -37,8 +38,6 @@ export const SingleDatepicker = ({
     ...formControlProps,
   });
 
-  const { setStartDate, state } = useDatepicker();
-
   return (
     <StylesProvider value={styles}>
       <DatepickerProvider
@@ -52,14 +51,15 @@ export const SingleDatepicker = ({
       >
         <Box {...boxProps}>
           <Popover placement="bottom-start">
-            <DateInput
-              height={height}
-              label={label}
-              value={state.startDate}
-              onChange={setStartDate}
-            />
+            <PopoverAnchor>
+              <SingleDateInput height={height} label={label} />
+            </PopoverAnchor>
             <Portal>
-              <PopoverContent>
+              <PopoverContent
+                maxWidth="max-content"
+                padding={0}
+                backgroundColor="transparent"
+              >
                 <Calendar />
               </PopoverContent>
             </Portal>
@@ -67,5 +67,21 @@ export const SingleDatepicker = ({
         </Box>
       </DatepickerProvider>
     </StylesProvider>
+  );
+};
+
+type SingleDateInputProps = {
+  height?: SingleDatepickerProps["height"];
+  label?: SingleDatepickerProps["label"];
+};
+const SingleDateInput = ({ height, label }: SingleDateInputProps) => {
+  const { setStartDate, state } = useDatepicker();
+  return (
+    <DateInput
+      height={height}
+      label={label}
+      value={state.startDate}
+      onChange={setStartDate}
+    />
   );
 };

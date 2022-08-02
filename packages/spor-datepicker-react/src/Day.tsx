@@ -1,4 +1,4 @@
-import { Button, useStyles } from "@chakra-ui/react";
+import { Button, useMultiStyleConfig } from "@chakra-ui/react";
 import React from "react";
 import { useDay } from "./DatepickerContext";
 
@@ -20,7 +20,7 @@ export const Day = ({ dayLabel, date, isDisabled = false }: DayProps) => {
     isToday,
     disabledDate,
   } = useDay({ date, dayRef });
-  const styles = useStyles();
+  const styles = useMultiStyleConfig("Datepicker", {});
 
   return (
     <Button

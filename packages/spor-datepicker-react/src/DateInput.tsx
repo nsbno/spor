@@ -18,7 +18,7 @@ import { parseDateString } from "./datepicker-utils";
 type DateInputProps = {
   label?: string;
   /** The currently selected date */
-  value: Date | null;
+  value?: Date | null;
   /** When a date is selected, i.e. on blur */
   onChange: (date: Date) => void | null;
   /** The height of the input field */

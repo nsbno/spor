@@ -5,6 +5,7 @@ import {
   SimpleGrid,
   Text,
   useBreakpointValue,
+  useMultiStyleConfig,
   useStyles,
 } from "@chakra-ui/react";
 import { useMonth } from "@datepicker-react/hooks";
@@ -32,7 +33,7 @@ export const Month = ({ year, month }: MonthProps) => {
     firstDayOfWeek: 0,
   });
   const { t } = useTranslation();
-  const styles = useStyles();
+  const styles = useMultiStyleConfig("Datepicker", {});
 
   const disable = (day: DayType) => ({ ...day, isDisabled: true });
   const enable = (day: DayType) => ({ ...day, isDisabled: false });
@@ -51,7 +52,7 @@ export const Month = ({ year, month }: MonthProps) => {
   return (
     <Box>
       <MonthHeader monthLabel={monthLabel} />
-      <SimpleGrid columns={7} gap={2} mx={1}>
+      <SimpleGrid columns={7} gap={[1, 2]} mx={1}>
         {weekdayLabels.map((dayLabel, idx) => (
           <Box
             key={dayLabel}
@@ -63,7 +64,7 @@ export const Month = ({ year, month }: MonthProps) => {
           </Box>
         ))}
       </SimpleGrid>
-      <SimpleGrid columns={7} gap={1} m={1}>
+      <SimpleGrid columns={7} rowGap={1} columnGap={[1, 2]} m={1}>
         {daysToRender.map((day) => {
           return (
             <Day

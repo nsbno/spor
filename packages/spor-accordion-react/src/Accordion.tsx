@@ -44,9 +44,16 @@ export type AccordionProps = Omit<ChakraAccordionProps, "variant" | "size"> & {
  * If you only have one expandable item, you can use the `<Expandable />` component instead.
  */
 export const Accordion = (props: AccordionProps) => {
+  const defaultIndex =
+    typeof props.defaultIndex === "number" && props.allowMultiple
+      ? [props.defaultIndex]
+      : props.defaultIndex;
   return (
     <AccordionProvider size={props.size}>
-      <ChakraAccordion {...props} />
+      <ChakraAccordion
+        {...props}
+        defaultIndex={defaultIndex as number[] | undefined}
+      />
     </AccordionProvider>
   );
 };

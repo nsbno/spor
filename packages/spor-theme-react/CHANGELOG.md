@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.5.3
+
+### Patch Changes
+
+- a3c38ac: Fix a bug where multiple line accordion items was center aligned and lost padding
+
 ## 0.5.2
 
 ### Patch Changes

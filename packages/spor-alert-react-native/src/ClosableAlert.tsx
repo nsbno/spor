@@ -47,7 +47,7 @@ export const ClosableAlert = ({
           onPress={onClose}
           variant="ghost"
           leftIcon={<CloseOutline18Icon />}
-        ></Button>
+        />
       }
     >
       <Box ml={5} mt={1} pr={3}>

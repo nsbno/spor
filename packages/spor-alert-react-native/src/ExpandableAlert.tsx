@@ -7,6 +7,7 @@ import { Box } from "@vygruppen/spor-layout-react-native";
 import { Pressable } from "react-native";
 import { BaseAlert, ColorVariants } from "./BaseAlert";
 import { Text } from "@vygruppen/spor-typography-react-native";
+import { Button } from "@vygruppen/spor-button-react-native";
 
 type ExpandableAlertProps = {
   children: React.ReactNode;
@@ -72,7 +73,17 @@ export const ExpandableAlert = ({
             <Text fontWeight={isExpanded ? "bold" : "normal"}>{heading}</Text>
           }
           rightIcon={
-            isExpanded ? <DropdownUpFill18Icon /> : <DropdownDownFill18Icon />
+            <Button
+              onPress={handlePress}
+              variant="ghost"
+              leftIcon={
+                isExpanded ? (
+                  <DropdownUpFill18Icon />
+                ) : (
+                  <DropdownDownFill18Icon />
+                )
+              }
+            ></Button>
           }
         >
           {isExpanded && (

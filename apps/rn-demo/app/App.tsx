@@ -13,8 +13,6 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
  */
 
 const App = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
-
   return (
     <SporProvider>
       <SafeAreaProvider>

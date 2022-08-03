@@ -18,7 +18,6 @@ export const SimpleDrawer = ({
   onClose,
   ...props
 }: React.PropsWithChildren<SimpleDrawerProps>) => {
-  console.log("title", title?.length);
   return (
     <Drawer isOpen={isOpen} onClose={onClose} {...props}>
       {!!title && (

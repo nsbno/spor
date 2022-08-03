@@ -40,7 +40,7 @@ export function Drawer({
         borderTopLeftRadius="lg"
         paddingHorizontal="xl"
         justifyContent="center"
-        backgroundColor="lightGrey"
+        backgroundColor="white"
         maxHeight={Dimensions.get("window").height - insets.top}
       >
         <DrawerHandle onClose={onClose} />

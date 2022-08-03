@@ -9,9 +9,14 @@ type Props = {
 export const DrawerHandle = ({ onClose }: Props) => {
   return (
     <Box alignItems="center" paddingVertical="sm" flex={1}>
-      <Box backgroundColor="steel" borderRadius="xs" height={6} width={42}>
-        <Pressable onPress={onClose} accessibilityLabel={"close"}></Pressable>
-      </Box>
+      <Pressable onPress={onClose} accessibilityLabel={"close"}>
+        <Box
+          backgroundColor="steel"
+          borderRadius="xs"
+          height={6}
+          width={42}
+        ></Box>
+      </Pressable>
     </Box>
   );
 };

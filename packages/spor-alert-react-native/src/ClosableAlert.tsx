@@ -1,7 +1,6 @@
 import { CloseOutline18Icon } from "@vygruppen/spor-icon-react-native";
 import React, { useEffect, useState } from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
-import { Pressable } from "react-native";
 import { BaseAlert, ColorVariants } from "./BaseAlert";
 import { Text } from "@vygruppen/spor-typography-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";

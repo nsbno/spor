@@ -25,7 +25,7 @@ type ClosableAlertProps = {
  * ```
  *
  * There are six of color schemes available; yellow, light-yellow, orange, red, green and blue.
- * You will also need to insert your own icon as a "leftIcon", an onclose function and your own heading.
+ * You will also need to insert your own icon as a "leftIcon", an callback for when it closes and your own heading.
  *
  */
 

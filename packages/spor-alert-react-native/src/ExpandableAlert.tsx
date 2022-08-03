@@ -34,7 +34,12 @@ type ExpandableAlertProps = {
  *
  * You can also send in your own onToogle function that looks like this:
  * ```tsx
- * <ExpandableAlert colorScheme="yellow" leftIcon={<InformationOutline18Icon />} heading="Informasjon" onTooggle={{your onToogle function}}>
+ * <ExpandableAlert 
+ *   colorScheme="yellow" 
+ *   leftIcon={<InformationOutline18Icon />} 
+ *   heading="Information" 
+ *   onToggle={() => setOpen(prev => !prev)}
+ * >
  *   <Text variant="md">Content</Text>
  * </ExpandableAlert>
  * ```

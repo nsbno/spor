@@ -75,7 +75,7 @@ export const cardOnPressColorSchemes = {
   defaults: {},
   white: {
     backgroundColor: "green.50",
-    borderColor: "green.200",
+    borderColor: "coralGreen",
   },
   grey: {
     backgroundColor: "green.50",

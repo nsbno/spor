@@ -28,7 +28,7 @@ type ExpandableAlertProps = {
  * </ExpandableAlert>
  * ```
  *
- * There are six of color schemes available; yellow, light-yellow, orange, red, green and blue.
+ * There are six color schemes available; yellow, light-yellow, orange, red, green and blue.
  * You can also insert your own icon as a "leftIcon",
  * and your own heading
  *

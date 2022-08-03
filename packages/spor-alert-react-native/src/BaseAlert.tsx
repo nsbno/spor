@@ -8,7 +8,7 @@ import {
   useRestyle,
   VariantProps,
 } from "@shopify/restyle";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 

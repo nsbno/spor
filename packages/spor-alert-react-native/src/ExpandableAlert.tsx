@@ -17,6 +17,35 @@ type ExpandableAlertProps = {
   onToggle?: (isExpanded: boolean) => void;
 };
 
+/**
+ * Renders an Expadable Alert.
+ *
+ * An expandable version of an alert looks like this:
+ *
+ * ```tsx
+ * <ExpandableAlert colorScheme="yellow" leftIcon={<InformationOutline18Icon />} heading="Informasjon">
+ *   <Text variant="md">Content</Text>
+ * </ExpandableAlert>
+ * ```
+ *
+ * There are six of color schemes available; yellow, light-yellow, orange, red, green and blue.
+ * You can also insert your own icon as a "leftIcon",
+ * and your own heading
+ *
+ * You can also send in your own onToogle function that looks like this:
+ * ```tsx
+ * <ExpandableAlert colorScheme="yellow" leftIcon={<InformationOutline18Icon />} heading="Informasjon" onTooggle={{your onToogle function}}>
+ *   <Text variant="md">Content</Text>
+ * </ExpandableAlert>
+ * ```
+ * If you want the alert to be expanded by default you can send it in thorugh defaultExpanded. It looks like this:
+ * ```tsx
+ * <ExpandableAlert colorScheme="yellow" leftIcon={<InformationOutline18Icon />} heading="Informasjon" defaultExpanded={true}>
+ *   <Text variant="md">Content</Text>
+ * </ExpandableAlert>
+ * ```
+ */
+
 export const ExpandableAlert = ({
   children,
   colorScheme,
@@ -40,7 +69,7 @@ export const ExpandableAlert = ({
           colorScheme={colorScheme}
           leftIcon={leftIcon}
           heading={
-            <Text fontWeight={isExpanded ? "bold" : undefined}>{heading}</Text>
+            <Text fontWeight={isExpanded ? "bold" : "normal"}>{heading}</Text>
           }
           rightIcon={
             isExpanded ? <DropdownUpFill18Icon /> : <DropdownDownFill18Icon />

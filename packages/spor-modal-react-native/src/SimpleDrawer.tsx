@@ -10,6 +10,20 @@ type SimpleDrawerProps = {
   onClose: () => void;
 };
 
+/** Renders a simple drawer.
+ *
+ * Can be used when you want to render a drawer with only text as its content.
+ *
+ * A simple drawer looks like this:
+ *
+ * ```tsx
+ * <SimpleDrawer isOpen={} onClose={} title="Small title">
+ *  Content
+ * </SimpleDrawer>
+ *
+ * The SimpleDrawer component comes with the following props: textAlign, title, isOpen, onClose.
+ * ```
+ */
 export const SimpleDrawer = ({
   textAlign = "center",
   children,

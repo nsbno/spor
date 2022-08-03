@@ -8,9 +8,25 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 type Props = {
   onClose: () => void;
   isOpen: boolean;
-  icon?: JSX.Element;
 };
 
+/** Renders a drawer.
+ *
+ * Can be used when you want to render a customizable drawer with different kinds of content.
+ *
+ * A drawer can looks like this:
+ *
+ * ```tsx
+ * <Drawer isOpen={} onClose={} title="Title">
+ *  <DrawerHeader size="lg">Small drawer</DrawerHeader>
+ *  <Text variant="md">Content</Text>
+ *  <Text variant="md">Content 2</Text>
+ *  <DrawerFooter>
+ *    <Button variant="primary">Close</Button>
+ *  </DrawerFooter>
+ * </Drawer>
+ * ```
+ */
 export function Drawer({
   onClose,
   children,

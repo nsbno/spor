@@ -45,7 +45,12 @@ type ExpandableAlertProps = {
  * ```
  * If you want the alert to be expanded by default you can send it in thorugh defaultExpanded. It looks like this:
  * ```tsx
- * <ExpandableAlert colorScheme="yellow" leftIcon={<InformationOutline18Icon />} heading="Informasjon" defaultExpanded={true}>
+ * <ExpandableAlert 
+ *   colorScheme="yellow" 
+ *   leftIcon={<InformationOutline18Icon />} 
+ *   heading="Information" 
+ *   defaultExpanded
+ * >
  *   <Text variant="md">Content</Text>
  * </ExpandableAlert>
  * ```

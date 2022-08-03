@@ -14,7 +14,7 @@ type ClosableAlertProps = {
 };
 
 /**
- * Renders an Closable Alert.
+ * Renders a closable alert.
  *
  * A closable version of an alert looks like this:
  *

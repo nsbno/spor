@@ -5,8 +5,6 @@ type DrawerHeaderProps = {
   children: string;
   size: "sm" | "lg";
   textAlign?: "left" | "center";
-  leftIcon?: JSX.Element;
-  rightIcon?: JSX.Element;
 };
 export const DrawerHeader = ({
   children,

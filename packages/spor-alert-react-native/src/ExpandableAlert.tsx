@@ -18,7 +18,7 @@ type ExpandableAlertProps = {
 };
 
 /**
- * Renders an Expadable Alert.
+ * Renders an expandable alert.
  *
  * An expandable version of an alert looks like this:
  *

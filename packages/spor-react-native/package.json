@@ -31,6 +31,7 @@
     "@vygruppen/spor-message-box-react-native": "*",
     "@vygruppen/spor-badge-react-native": "*",
     "@vygruppen/spor-accordion-react-native": "*",
+    "@vygruppen/spor-modal-react-native": "*",
     "@vygruppen/spor-alert-react-native": "*"
   },
   "devDependencies": {

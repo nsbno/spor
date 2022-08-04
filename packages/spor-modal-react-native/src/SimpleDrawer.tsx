@@ -8,6 +8,7 @@ type SimpleDrawerProps = {
   textAlign?: "left" | "center";
   isOpen: boolean;
   onClose: () => void;
+  children: JSX.Element;
 };
 
 /** Renders a simple drawer.
@@ -31,10 +32,10 @@ export const SimpleDrawer = ({
   isOpen,
   onClose,
   ...props
-}: React.PropsWithChildren<SimpleDrawerProps>) => {
+}: SimpleDrawerProps) => {
   return (
     <Drawer isOpen={isOpen} onClose={onClose} {...props}>
-      {!!title && (
+      {title && (
         <DrawerHeader
           textAlign={textAlign}
           size={title.length > 30 ? "sm" : "lg"}

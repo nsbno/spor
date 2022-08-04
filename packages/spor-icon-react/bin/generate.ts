@@ -121,7 +121,9 @@ async function generateComponent(iconData: IconData) {
       componentName: iconData.componentName,
     }
   );
-  jsCode = jsCode.replace("<svg", '<Box as="svg"').replace("</svg>", "</Box>");
+  jsCode = jsCode
+    .replace("<svg", '<Box as="svg" display="block"')
+    .replace("</svg>", "</Box>");
   return createComponentFile(iconData, jsCode);
 }
 

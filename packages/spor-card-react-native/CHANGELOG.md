@@ -1,5 +1,13 @@
 # @vygruppen/spor-card-react-native
 
+## 0.0.15
+
+### Patch Changes
+
+- Updated dependencies [7570261]
+  - @vygruppen/spor-theme-react-native@0.2.6
+  - @vygruppen/spor-button-react-native@0.2.6
+
 ## 0.0.14
 
 ### Patch Changes

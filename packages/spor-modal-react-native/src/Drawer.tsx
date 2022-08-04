@@ -8,6 +8,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 type Props = {
   onClose: () => void;
   isOpen: boolean;
+  children: React.ReactNode;
 };
 
 /** Renders a drawer.
@@ -27,11 +28,7 @@ type Props = {
  * </Drawer>
  * ```
  */
-export function Drawer({
-  onClose,
-  children,
-  isOpen,
-}: React.PropsWithChildren<Props>) {
+export function Drawer({ onClose, children, isOpen }: Props) {
   const insets = useSafeAreaInsets();
 
   return (

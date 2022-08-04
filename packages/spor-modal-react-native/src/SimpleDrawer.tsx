@@ -8,7 +8,7 @@ type SimpleDrawerProps = {
   textAlign?: "left" | "center";
   isOpen: boolean;
   onClose: () => void;
-  children: JSX.Element;
+  children: React.ReactNode;
 };
 
 /** Renders a simple drawer.

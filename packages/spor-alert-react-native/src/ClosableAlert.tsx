@@ -4,7 +4,7 @@ import { Box } from "@vygruppen/spor-layout-react-native";
 import { BaseAlert, ColorVariants } from "./BaseAlert";
 import { Text } from "@vygruppen/spor-typography-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";
-import {useTranslation} from "@vygruppen/spor-i18n-react"
+import { useTranslation } from "@vygruppen/spor-i18n-react"
 
 type ClosableAlertProps = {
   children: React.ReactNode;

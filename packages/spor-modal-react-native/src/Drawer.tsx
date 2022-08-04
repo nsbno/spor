@@ -15,7 +15,7 @@ type Props = {
  *
  * Can be used when you want to render a customizable drawer with different kinds of content.
  *
- * A drawer can looks like this:
+ * A drawer can look like this:
  *
  * ```tsx
  * <Drawer isOpen={} onClose={} title="Title">

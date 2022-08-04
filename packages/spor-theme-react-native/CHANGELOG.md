@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react-native
 
+## 0.2.6
+
+### Patch Changes
+
+- 7570261: endre farge på onPress border for Card komponenten
+
 ## 0.2.5
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 0.6.1
+
+### Patch Changes
+
+- d2b9f7e: Fix an issue where all svg images were made to display: block
+
 ## 0.6.0
 
 ### Minor Changes

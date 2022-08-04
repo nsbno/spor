@@ -34,10 +34,10 @@ type ExpandableAlertProps = {
  *
  * You can also send in your own onToogle function that looks like this:
  * ```tsx
- * <ExpandableAlert 
- *   colorScheme="yellow" 
- *   leftIcon={<InformationOutline18Icon />} 
- *   heading="Information" 
+ * <ExpandableAlert
+ *   colorScheme="yellow"
+ *   leftIcon={<InformationOutline18Icon />}
+ *   heading="Information"
  *   onToggle={() => setOpen(prev => !prev)}
  * >
  *   <Text variant="md">Content</Text>
@@ -45,10 +45,10 @@ type ExpandableAlertProps = {
  * ```
  * If you want the alert to be expanded by default you can send it in thorugh defaultExpanded. It looks like this:
  * ```tsx
- * <ExpandableAlert 
- *   colorScheme="yellow" 
- *   leftIcon={<InformationOutline18Icon />} 
- *   heading="Information" 
+ * <ExpandableAlert
+ *   colorScheme="yellow"
+ *   leftIcon={<InformationOutline18Icon />}
+ *   heading="Information"
  *   defaultExpanded
  * >
  *   <Text variant="md">Content</Text>

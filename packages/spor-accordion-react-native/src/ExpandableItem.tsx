@@ -1,6 +1,8 @@
 import React from "react";
 import { useExpandAnimation } from "./utils";
 import { Animated, View } from "react-native";
+import { useTheme } from "@shopify/restyle";
+import { Theme } from "@vygruppen/spor-theme-react-native";
 
 type Props = {
   children: React.ReactNode;
@@ -12,6 +14,7 @@ export function ExpandableItem({
   isExpanded,
   defaultExpanded,
 }: Props) {
+  const theme = useTheme<Theme>();
   const { heightAnim, opacityAnim, handleLayoutChanges } = useExpandAnimation(
     isExpanded,
     defaultExpanded
@@ -26,8 +29,8 @@ export function ExpandableItem({
           opacity: opacityAnim,
           flex: 1,
           flexGrow: 1,
-          paddingBottom: 12,
-          paddingHorizontal: 12,
+          paddingBottom: theme.spacing.sm,
+          paddingHorizontal: theme.spacing.sm,
         }}
         onLayout={handleLayoutChanges}
       >

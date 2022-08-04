@@ -44,7 +44,7 @@ type ExpandableProps = Exclude<RestyleProps, "variant"> & {
   variant: ExpandableVariant;
   defaultExpanded?: boolean;
   onToggle?: (isExpanded: boolean) => void;
-  containerStyle?: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 };
 
 export const Expandable = ({
@@ -55,12 +55,12 @@ export const Expandable = ({
   defaultExpanded = false,
   size,
   onToggle,
-  containerStyle,
+  style,
   ...props
 }: ExpandableProps) => {
   const theme = useTheme<Theme>();
   const restyleProps: Record<string, any> = { ...props, variant };
-  const { style } = useRestyle(restyleFunctions, restyleProps);
+  const { style: restyleStyle } = useRestyle(restyleFunctions, restyleProps);
   const [isPressed, setPressed] = useState(false);
   const pressedStyle = theme.getExpandableVariantPressedState(variant);
   const [isExpanded, setExpanded] = useState(defaultExpanded);
@@ -73,7 +73,7 @@ export const Expandable = ({
   }
 
   return (
-    <Box style={[style as any, containerStyle]}>
+    <Box style={[restyleStyle as any, style]}>
       <Pressable
         style={isPressed ? pressedStyle : { padding: 12 }}
         onPress={handlePress}
@@ -101,11 +101,9 @@ export const Expandable = ({
           {getDropdownIcon(isExpanded, size as string)}
         </Box>
       </Pressable>
-      <ExpandableItem
-        children={children}
-        isExpanded={isExpanded}
-        defaultExpanded={defaultExpanded}
-      />
+      <ExpandableItem isExpanded={isExpanded} defaultExpanded={defaultExpanded}>
+        {children}
+      </ExpandableItem>
     </Box>
   );
 };

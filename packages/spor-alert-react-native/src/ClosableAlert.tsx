@@ -4,6 +4,7 @@ import { Box } from "@vygruppen/spor-layout-react-native";
 import { BaseAlert, ColorVariants } from "./BaseAlert";
 import { Text } from "@vygruppen/spor-typography-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";
+import {useTranslation} from "@vygruppen/spor-i18n-react"
 
 type ClosableAlertProps = {
   children: React.ReactNode;
@@ -37,6 +38,7 @@ export const ClosableAlert = ({
   leftIcon,
   ...props
 }: ClosableAlertProps) => {
+  const {t } = useTranslation();
   return (
     <BaseAlert
       colorScheme={colorScheme}
@@ -47,6 +49,7 @@ export const ClosableAlert = ({
           onPress={onClose}
           variant="ghost"
           leftIcon={<CloseOutline18Icon />}
+          accessibilityLabel={t(texts.close)}
         />
       }
     >
@@ -56,3 +59,11 @@ export const ClosableAlert = ({
     </BaseAlert>
   );
 };
+
+const texts = {
+  close: {
+    nb: "Lukk",
+    sv: "Dölj",
+    en: "Close",
+  }
+}

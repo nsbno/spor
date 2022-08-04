@@ -38,7 +38,7 @@ export const ClosableAlert = ({
   leftIcon,
   ...props
 }: ClosableAlertProps) => {
-  const {t } = useTranslation();
+  const {t} = useTranslation();
   return (
     <BaseAlert
       colorScheme={colorScheme}

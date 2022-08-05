@@ -73,8 +73,7 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
 /**
  * Renders a card.
  *
- * Card takes the following props : children, onPress, onClose and selected. You can send in style since it is implemented with BoxProps.
- * The most basic version looks like this:
+ * Card takes the following props : children, onPress, onClose, selected and style. 
  *
  * ```tsx
  * <Card colorScheme="white">

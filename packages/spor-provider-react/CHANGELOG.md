@@ -1,5 +1,11 @@
 # @vygruppen/spor-provider-react
 
+## 0.0.6
+
+### Patch Changes
+
+- d2b9f7e: Fix an issue where all svg images were made to display: block
+
 ## 0.0.5
 
 ### Patch Changes

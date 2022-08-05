@@ -106,7 +106,7 @@ export const cardSelectedColorSchemes = {
   defaults: {},
   white: {
     backgroundColor: "green.50",
-    borderColor: "green.500",
+    borderColor: "silver",
   },
   grey: {
     backgroundColor: "green.50",

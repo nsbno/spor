@@ -9,6 +9,7 @@ import {
   useRestyle,
   VariantProps,
   border,
+  BoxProps
 } from "@shopify/restyle";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";
@@ -21,7 +22,7 @@ import {
 import React from "react";
 import { Pressable } from "react-native";
 
-type RestyleProps = SpacingProps<Theme> &
+type RestyleProps = BoxProps<Theme> & SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
   BorderProps<Theme> &
   VariantProps<Theme, "cardSizes", "size"> &
@@ -72,7 +73,7 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
 /**
  * Renders a card.
  *
- * The most basic version looks like this:
+ * Card takes the following props : children, onPress, onClose, selected and style. 
  *
  * ```tsx
  * <Card colorScheme="white">

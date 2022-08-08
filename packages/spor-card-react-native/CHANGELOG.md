@@ -1,5 +1,11 @@
 # @vygruppen/spor-card-react-native
 
+## 0.0.17
+
+### Patch Changes
+
+- f699317: Legge til accessibilityLabel for Pressable cards
+
 ## 0.0.16
 
 ### Patch Changes

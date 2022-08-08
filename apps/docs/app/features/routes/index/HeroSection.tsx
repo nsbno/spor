@@ -22,7 +22,7 @@ export function HeroSection() {
             <Heading as="h1" textStyle="2xl">
               Velkommen til Spor
             </Heading>
-            <Box mt={[10, 0]}>
+            <Box marginBottom={[10, 0]}>
               <Button
                 variant="secondary"
                 display={["flex", "inline-flex"]}

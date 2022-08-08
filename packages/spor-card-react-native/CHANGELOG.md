@@ -1,5 +1,15 @@
 # @vygruppen/spor-card-react-native
 
+## 0.0.16
+
+### Patch Changes
+
+- 2a708a4: Legger til BoxProp slik at vi kan sende med style som en prop til Card. Endrer også fargen på kanten til sølv.
+- Updated dependencies [358f915]
+- Updated dependencies [2a708a4]
+  - @vygruppen/spor-button-react-native@0.2.7
+  - @vygruppen/spor-theme-react-native@0.2.7
+
 ## 0.0.15
 
 ### Patch Changes

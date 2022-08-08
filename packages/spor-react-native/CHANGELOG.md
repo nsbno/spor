@@ -1,5 +1,22 @@
 # @vygruppen/spor-react-native
 
+## 0.3.14
+
+### Patch Changes
+
+- 358f915: Add first version of drawer component
+- Updated dependencies [358f915]
+- Updated dependencies [2a708a4]
+  - @vygruppen/spor-modal-react-native@1.0.0
+  - @vygruppen/spor-button-react-native@0.2.7
+  - @vygruppen/spor-card-react-native@0.0.16
+  - @vygruppen/spor-theme-react-native@0.2.7
+  - @vygruppen/spor-message-box-react-native@1.0.6
+  - @vygruppen/spor-accordion-react-native@0.0.12
+  - @vygruppen/spor-alert-react-native@1.0.3
+  - @vygruppen/spor-badge-react-native@1.0.7
+  - @vygruppen/spor-provider-react-native@0.1.16
+
 ## 0.3.13
 
 ### Patch Changes

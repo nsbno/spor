@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react-native
 
+## 0.2.7
+
+### Patch Changes
+
+- 2a708a4: Legger til BoxProp slik at vi kan sende med style som en prop til Card. Endrer også fargen på kanten til sølv.
+
 ## 0.2.6
 
 ### Patch Changes

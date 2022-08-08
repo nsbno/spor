@@ -9,7 +9,7 @@ import {
   useRestyle,
   VariantProps,
   border,
-  BoxProps,
+  BoxProps
 } from "@shopify/restyle";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";

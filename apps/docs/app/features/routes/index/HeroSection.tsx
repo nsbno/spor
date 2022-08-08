@@ -22,7 +22,7 @@ export function HeroSection() {
             <Heading as="h1" textStyle="2xl">
               Velkommen til Spor
             </Heading>
-            <Box>
+            <Box marginBottom={[10, 0]}>
               <Button
                 variant="secondary"
                 display={["flex", "inline-flex"]}
@@ -43,6 +43,7 @@ export function HeroSection() {
               alt="En person som ser på mobiltelefon for hvordan man kan benytte seg av Grønn Reise"
               width="100%"
               __css={{ aspectRatio: "4 / 3" }}
+              maxWidth={["400px", "none"]}
             />
           </Flex>
         </Flex>

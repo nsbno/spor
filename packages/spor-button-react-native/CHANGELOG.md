@@ -1,5 +1,13 @@
 # @vygruppen/spor-button-react-native
 
+## 0.2.7
+
+### Patch Changes
+
+- 358f915: Add first version of drawer component
+- Updated dependencies [2a708a4]
+  - @vygruppen/spor-theme-react-native@0.2.7
+
 ## 0.2.6
 
 ### Patch Changes

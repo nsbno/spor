@@ -9,7 +9,7 @@ import {
   useRestyle,
   VariantProps,
   border,
-  BoxProps
+  BoxProps,
 } from "@shopify/restyle";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";
@@ -22,7 +22,8 @@ import {
 import React from "react";
 import { Pressable } from "react-native";
 
-type RestyleProps = BoxProps<Theme> & SpacingProps<Theme> &
+type RestyleProps = BoxProps<Theme> &
+  SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
   BorderProps<Theme> &
   VariantProps<Theme, "cardSizes", "size"> &
@@ -65,6 +66,7 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
 ]);
 
 type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
+  accessibilityLabel?: string;
   children: React.ReactNode;
   onPress?: () => void;
   onClose?: () => void;
@@ -73,7 +75,7 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
 /**
  * Renders a card.
  *
- * Card takes the following props : children, onPress, onClose, selected and style. 
+ * Card takes the following props : children, onPress, onClose, selected and style.
  *
  * ```tsx
  * <Card colorScheme="white">
@@ -114,6 +116,7 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
  * ```
  */
 export const Card = ({
+  accessibilityLabel,
   children,
   onPress,
   onClose,
@@ -176,6 +179,7 @@ export const Card = ({
   if (isPressable) {
     return (
       <Pressable
+        accessibilityLabel={accessibilityLabel}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
         onPress={onPress}

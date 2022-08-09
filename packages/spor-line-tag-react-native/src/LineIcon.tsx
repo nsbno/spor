@@ -1,5 +1,13 @@
-import React from "react";
-import { Box } from "@vygruppen/spor-layout-react-native";
+import {
+  BackgroundColorProps,
+  composeRestyleFunctions,
+  createVariant,
+  SpacingProps,
+  spacingShorthand,
+  SpacingShorthandProps,
+  useRestyle,
+  VariantProps,
+} from "@shopify/restyle";
 import {
   AltTransportFill18Icon,
   AltTransportFill24Icon,
@@ -18,7 +26,6 @@ import {
   SubwayFill30Icon,
   TrainFill18Icon,
   TrainFill24Icon,
-  TrainFill30Icon,
   TramFill18Icon,
   TramFill24Icon,
   TramFill30Icon,
@@ -26,18 +33,9 @@ import {
   WalkFill24Icon,
   WalkFill30Icon,
 } from "@vygruppen/spor-icon-react-native";
-import {
-  BackgroundColorProps,
-  composeRestyleFunctions,
-  createVariant,
-  SpacingProps,
-  spacingShorthand,
-  SpacingShorthandProps,
-  useRestyle,
-  VariantProps,
-} from "@shopify/restyle";
+import { Box } from "@vygruppen/spor-layout-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
-import { StyleSheet } from "react-native";
+import React from "react";
 
 type Variant = VariantProps<Theme, "lineIconVariants", "variant">;
 const variant = createVariant({
@@ -184,7 +182,7 @@ export const LineIcon = ({
     variant,
     ...props,
   });
-  const iconType = size + "-" + travelOrInfo;
+  const iconType = `${size}-${travelOrInfo}`;
   const getIconStyle = (iconType: string) => {
     switch (iconType) {
       case "sm-travel":

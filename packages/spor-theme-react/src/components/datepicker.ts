@@ -21,7 +21,7 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = ({ theme }) => ({
     transitionDuration: "fast",
     display: "flex",
     flex: 1,
-    pl: 3,
+    px: 3,
     py: 1.5,
     _hover: {
       boxShadow: getBoxShadowString({

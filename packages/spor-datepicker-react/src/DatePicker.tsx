@@ -7,6 +7,8 @@ import {
   PopoverArrow,
   PopoverBody,
   PopoverContent,
+  ResponsiveValue,
+  useBreakpointValue,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
@@ -20,7 +22,7 @@ import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField, StyledField } from "./DateField";
 
 type DatePickerProps = AriaDatePickerProps<DateValue> & {
-  variant: "simple" | "with-trigger";
+  variant: ResponsiveValue<"simple" | "with-trigger">;
 };
 /**
  * A date picker component.
@@ -46,8 +48,12 @@ export function DatePicker({ variant, ...props }: DatePickerProps) {
     calendarProps,
   } = useDatePicker(props, state, ref);
 
+  const responsiveVariant =
+    useBreakpointValue(typeof variant === "string" ? [variant] : variant) ??
+    "simple";
+
   const styles = useMultiStyleConfig("Datepicker", {
-    variant: variant,
+    variant: responsiveVariant,
   });
 
   return (
@@ -69,14 +75,14 @@ export function DatePicker({ variant, ...props }: DatePickerProps) {
         >
           <PopoverAnchor>
             <StyledField
-              variant={variant}
+              variant={responsiveVariant}
               onClick={() => {
-                if (variant === "simple") {
+                if (responsiveVariant === "simple") {
                   state.setOpen(true);
                 }
               }}
             >
-              {variant === "simple" && (
+              {responsiveVariant === "simple" && (
                 <CalendarOutline24Icon mr={2} alignSelf="center" />
               )}
               <Box>
@@ -88,7 +94,7 @@ export function DatePicker({ variant, ...props }: DatePickerProps) {
                     if (
                       e.key === "Enter" &&
                       !state.isOpen &&
-                      variant === "simple"
+                      responsiveVariant === "simple"
                     ) {
                       // Don't submit the form
                       e.stopPropagation();
@@ -101,7 +107,7 @@ export function DatePicker({ variant, ...props }: DatePickerProps) {
               </Box>
             </StyledField>
           </PopoverAnchor>
-          {variant === "with-trigger" && (
+          {responsiveVariant === "with-trigger" && (
             <CalendarTriggerButton {...buttonProps} />
           )}
         </InputGroup>

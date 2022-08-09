@@ -139,6 +139,7 @@ type LineIconProps = RestyleProps & {
   size: Size;
   lineIconType: IconType;
   iconColor?: string;
+  accessibilityLabel?: string;
 };
 
 function isTrain(variant: Variant) {
@@ -237,6 +238,7 @@ export const LineIcon = ({
   size,
   lineIconType,
   iconColor = "white",
+  accessibilityLabel,
   ...props
 }: LineIconProps) => {
   const { style } = useRestyle(restyleFunctions, {
@@ -250,7 +252,9 @@ export const LineIcon = ({
   return (
     <Box
       style={[style as any, getIconStyle(iconType)]}
-      accessibilityLabel={t(texts[variant as VariantType])}
+      accessibilityLabel={
+        accessibilityLabel || t(texts[variant as VariantType])
+      }
       {...props}
     >
       {icon}

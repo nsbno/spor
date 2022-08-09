@@ -4,7 +4,9 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-line-tag-react-native",
   "repository": {
@@ -16,20 +18,20 @@
     "build": "tsup src/index.tsx --dts",
     "dev": "tsup src/index.tsx --watch"
   },
-  "dependencies":{
+  "dependencies": {
+    "@vygruppen/spor-i18n-react": "*",
     "@vygruppen/spor-layout-react-native": "*",
     "@vygruppen/spor-theme-react-native": "*",
-    "@vygruppen/spor-icon-react-native": "*",
     "@vygruppen/spor-typography-react-native": "*"
   },
   "devDependencies": {
-    "@shopify/restyle":"^2.1.0",
+    "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
     "react-native": "^0.66.0",
     "tsup": "^5.11.11"
   },
   "peerDependencies": {
-    "@shopify/restyle":"^2.1.0",
+    "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
     "react-native": "^0.66.0"
   }

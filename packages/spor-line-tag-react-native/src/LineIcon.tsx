@@ -8,6 +8,7 @@ import {
   useRestyle,
   VariantProps,
 } from "@shopify/restyle";
+import { Language, useTranslation } from "@vygruppen/spor-i18n-react";
 import {
   AltTransportFill18Icon,
   AltTransportFill24Icon,
@@ -53,7 +54,7 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   variant,
 ]);
 
-type LineIconVariantProps =
+type VariantType =
   | "local-train"
   | "region-train"
   | "region-express-train"
@@ -67,17 +68,80 @@ type LineIconVariantProps =
   | "alt-transport"
   | "walk";
 
-type LineIconSizeProps = "sm" | "md" | "lg";
-type LineIconTypeProps = "travel" | "info";
+const texts: Record<VariantType, Record<Language, string>> = {
+  "local-train": {
+    nb: "Lokaltog",
+    sv: "",
+    en: "Local train",
+  },
+  "region-train": {
+    nb: "Regiontog",
+    sv: "",
+    en: "Region train",
+  },
+  "region-express-train": {
+    nb: "Ekspress regionstog",
+    sv: "",
+    en: "Express region train",
+  },
+  "long-distance-train": {
+    nb: "Langtidsstog",
+    sv: "",
+    en: "Long distance train",
+  },
+  "airport-express-train": {
+    nb: "Flytog",
+    sv: "",
+    en: "Airport express train",
+  },
+  "vy-bus": {
+    nb: "Vy-buss",
+    sv: "Vy-buss",
+    en: "Vy bus",
+  },
+  "local-bus": {
+    nb: "Lokalbuss",
+    sv: "",
+    en: "Local bus",
+  },
+  ferry: {
+    nb: "Ferge",
+    sv: "",
+    en: "Ferry",
+  },
+  subway: {
+    nb: "T-bane",
+    sv: "",
+    en: "Subway",
+  },
+  tram: {
+    nb: "Trikk",
+    sv: "",
+    en: "Tram",
+  },
+  "alt-transport": {
+    nb: "Alternativ transport",
+    sv: "",
+    en: "Alternative transport",
+  },
+  walk: {
+    nb: "Gange",
+    sv: "",
+    en: "Walk",
+  },
+};
 
-type LineIconProps = Exclude<RestyleProps, "variant"> & {
-  variant: LineIconVariantProps;
-  size: LineIconSizeProps;
-  travelOrInfo: LineIconTypeProps;
+type Size = "sm" | "md" | "lg";
+type IconType = "travel" | "info";
+
+type LineIconProps = RestyleProps & {
+  variant: VariantType;
+  size: Size;
+  lineIconType: IconType;
   iconColor?: string;
 };
 
-function isTrain(variant: LineIconVariantProps) {
+function isTrain(variant: Variant) {
   return (
     variant === "local-train" ||
     variant === "region-train" ||
@@ -87,11 +151,7 @@ function isTrain(variant: LineIconVariantProps) {
   );
 }
 
-const getIcon = (
-  variant: LineIconVariantProps,
-  size: LineIconSizeProps,
-  iconColor: string
-) => {
+const getIcon = (variant: Variant, size: Size, iconColor: string) => {
   if (isTrain(variant)) {
     switch (size) {
       case "sm":
@@ -175,7 +235,7 @@ const getIcon = (
 export const LineIcon = ({
   variant,
   size,
-  travelOrInfo,
+  lineIconType,
   iconColor = "white",
   ...props
 }: LineIconProps) => {
@@ -183,12 +243,16 @@ export const LineIcon = ({
     variant,
     ...props,
   });
-  const iconType = `${size}-${travelOrInfo}`;
-
+  const iconType = `${size}-${lineIconType}`;
   const icon = getIcon(variant, size, iconColor);
+  const { t } = useTranslation();
 
   return (
-    <Box style={[style as any, getIconStyle(iconType)]} {...props}>
+    <Box
+      style={[style as any, getIconStyle(iconType)]}
+      accessibilityLabel={t(texts[variant as VariantType])}
+      {...props}
+    >
       {icon}
     </Box>
   );

@@ -1,6 +1,7 @@
 import type { BoxProps as RestyleBoxProps } from "@shopify/restyle";
 import { createBox } from "@shopify/restyle";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
+import { ViewProps } from "react-native";
 
 /** A basic box.
  *
@@ -19,4 +20,4 @@ import type { Theme } from "@vygruppen/spor-theme-react-native";
  */
 export const Box = createBox<Theme>();
 
-export type BoxProps = RestyleBoxProps<Theme>;
+export type BoxProps = RestyleBoxProps<Theme> & ViewProps;

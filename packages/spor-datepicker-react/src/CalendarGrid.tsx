@@ -1,18 +1,24 @@
 import { endOfMonth, getWeeksInMonth } from "@internationalized/date";
 import { useCalendarGrid } from "@react-aria/calendar";
+import { Language, useTranslation } from "@vygruppen/spor-i18n-react";
 import React from "react";
 import { AriaCalendarGridProps } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
 import { CalendarCell } from "./CalendarCell";
 import { useCurrentLocale } from "./utils";
 
-const weekDays = ["Ma", "Ti", "On", "To", "Fr", "Lø", "Sø"];
+const weekDays: Record<Language, string[]> = {
+  nb: ["Ma", "Ti", "On", "To", "Fr", "Lø", "Sø"],
+  sv: ["Må", "Ti", "On", "To", "Fr", "Lö", "Sö"],
+  en: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+};
 
 type CalendarGridProps = AriaCalendarGridProps & {
   state: CalendarState | RangeCalendarState;
   offset?: { months?: number };
 };
 export function CalendarGrid({ state, offset = {} }: CalendarGridProps) {
+  const { language } = useTranslation();
   const locale = useCurrentLocale();
   const startDate = state.visibleRange.start.add(offset);
   const endDate = endOfMonth(startDate);
@@ -32,7 +38,7 @@ export function CalendarGrid({ state, offset = {} }: CalendarGridProps) {
     <table {...gridProps}>
       <thead {...headerProps}>
         <tr>
-          {weekDays.map((day, index) => (
+          {weekDays[language].map((day, index) => (
             <th key={index}>{day}</th>
           ))}
         </tr>

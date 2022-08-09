@@ -3,26 +3,29 @@ import {
   FormLabel,
   InputGroup,
   Popover,
+  PopoverAnchor,
   PopoverArrow,
   PopoverBody,
   PopoverContent,
-  PopoverTrigger,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
 import { useDatePicker } from "@react-aria/datepicker";
 import { useDatePickerState } from "@react-stately/datepicker";
+import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { useRef } from "react";
 import { AriaDatePickerProps } from "react-aria";
 import { Calendar } from "./Calendar";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField, StyledField } from "./DateField";
 
-type DatePickerProps = AriaDatePickerProps<DateValue>;
-export function DatePicker(props: DatePickerProps) {
+type DatePickerProps = AriaDatePickerProps<DateValue> & {
+  variant: "simple" | "with-trigger";
+};
+export function DatePicker({ variant, ...props }: DatePickerProps) {
   const state = useDatePickerState({
     ...props,
-    shouldCloseOnSelect: false,
+    shouldCloseOnSelect: true,
   });
   const ref = useRef(null);
   const {
@@ -34,7 +37,9 @@ export function DatePicker(props: DatePickerProps) {
     calendarProps,
   } = useDatePicker(props, state, ref);
 
-  const styles = useMultiStyleConfig("Datepicker", {});
+  const styles = useMultiStyleConfig("Datepicker", {
+    variant: variant,
+  });
 
   return (
     <Box position="relative" display="inline-flex" flexDirection="column">
@@ -53,15 +58,43 @@ export function DatePicker(props: DatePickerProps) {
           width="auto"
           display="inline-flex"
         >
-          <StyledField pr="4.5rem">
-            <Box>
-              <FormLabel {...labelProps} sx={styles.inputLabel}>
-                {props.label}
-              </FormLabel>
-              <DateField {...fieldProps} />
-            </Box>
-          </StyledField>
+          <PopoverAnchor>
+            <StyledField
+              variant={variant}
+              onClick={() => {
+                if (variant === "simple") {
+                  state.setOpen(true);
+                }
+              }}
+            >
+              {variant === "simple" && (
+                <CalendarOutline24Icon mr={2} alignSelf="center" />
+              )}
+              <Box>
+                <FormLabel {...labelProps} sx={styles.inputLabel}>
+                  {props.label}
+                </FormLabel>
+                <Box
+                  onKeyPress={(e) => {
+                    if (
+                      e.key === "Enter" &&
+                      !state.isOpen &&
+                      variant === "simple"
+                    ) {
+                      // Don't submit the form
+                      e.stopPropagation();
+                      state.setOpen(true);
+                    }
+                  }}
+                >
+                  <DateField {...fieldProps} />
+                </Box>
+              </Box>
+            </StyledField>
+          </PopoverAnchor>
+          {variant === "with-trigger" && (
             <CalendarTriggerButton {...buttonProps} />
+          )}
         </InputGroup>
         {state.isOpen && (
           <PopoverContent

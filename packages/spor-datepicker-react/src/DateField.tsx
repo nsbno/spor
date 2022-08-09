@@ -31,7 +31,9 @@ export function DateField(props: DateFieldProps) {
     </Flex>
   );
 }
-type StyledFieldProps = BoxProps;
+type StyledFieldProps = BoxProps & {
+  variant: "simple" | "with-trigger";
+};
 export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
   ({ children, ...otherProps }, ref) => {
     const styles = useMultiStyleConfig("Datepicker", otherProps);

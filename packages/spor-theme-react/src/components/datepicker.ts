@@ -5,27 +5,15 @@ import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
 
 const parts = anatomy("datepicker").parts(
-  "inputLabel",
   "wrapper",
-  "dateSegments",
-  "dateInputParts",
   "calendarTriggerButton",
   "dateCell",
-
-  // gamle
-  "input",
-  "calendarButton",
-  "calendar",
-  "monthLabel",
-  "dayLabel",
-  "weekendLabel",
-  "button"
+  "inputLabel"
 );
 
 const baseStyle: PartsStyleInterpolation<typeof parts> = ({ theme }) => ({
   wrapper: {
     backgroundColor: "alias.white",
-    borderLeftRadius: "sm",
     boxShadow: getBoxShadowString({
       borderColor: theme.colors.alias.darkGrey,
     }),
@@ -71,9 +59,6 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = ({ theme }) => ({
     fontSize: "mobile.xs",
     color: "alias.darkGrey",
     margin: 0,
-  },
-  dateSegments: {
-    display: "flex",
   },
   calendarTriggerButton: {
     boxShadow: getBoxShadowString({
@@ -203,131 +188,28 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = ({ theme }) => ({
     color: "alias.greenHaze",
     textAlign: "center",
   },
-
-  // Old
-  calendar: {
-    backgroundColor: "alias.white",
-    borderRadius: "md",
-    boxShadow: "sm",
-    position: "relative",
-    zIndex: "popover",
-    outline: 0,
-  },
-  button: {
-    backgroundColor: "alias.white",
-    color: "alias.darkGrey",
-    borderRadius: "50%",
-    borderStyle: "solid",
-    position: "relative",
-    transition: ".1s ease-in-out",
-    userSelect: "none",
-    width: [6, 7],
-    height: [6, 7],
-    transitionProperty: "common",
-    transitionSpeed: "fast",
-
-    // the edge of a selection
-    "&[data-is-edge='true']": {
-      backgroundColor: "alias.pine",
-      color: "alias.white",
-    },
-    // when two days back to back are selected
-    "&[data-is-edge='true'] + [data-is-edge='true']": {
-      _before: {
-        content: '""',
-        display: "block",
-        backgroundColor: "alias.mint",
-        borderRightRadius: "lg",
-        position: "absolute",
-        top: 0,
-        bottom: 0,
-        left: "-50%",
-        right: 0,
-        zIndex: "-1",
-      },
-    },
-    // when you've selected one day, and hovering towards the next
-    "&[data-is-in-range='true'][data-is-edge='false']": {
-      backgroundColor: "alias.mint",
-
-      _before: {
-        content: '""',
-        display: "block",
-        backgroundColor: "alias.mint",
-        borderRightRadius: "lg",
-        position: "absolute",
-        top: 0,
-        bottom: 0,
-        left: "-50%",
-        right: 0,
-        zIndex: "-1",
-      },
-    },
-    // the days between the selected days
-    "&[data-is-edge='false'][data-is-selected='true']": {
-      backgroundColor: "alias.mint",
-
-      _before: {
-        content: '""',
-        display: "block",
-        backgroundColor: "alias.mint",
-        borderRightRadius: "lg",
-        position: "absolute",
-        top: 0,
-        bottom: 0,
-        left: "-50%",
-        right: "-100%",
-        zIndex: "-1",
-      },
-    },
-
-    _hover: {
-      boxShadow: getBoxShadowString({
-        borderWidth: 2,
-        borderColor: colors.alias.osloGrey,
-      }),
-    },
-    _focus: {
-      boxShadow: getBoxShadowString({
-        borderWidth: 2,
-        borderColor: colors.alias.greenHaze,
-      }),
-    },
-    "&:focus:not(:focus-visible)": {
-      boxShadow: "none",
-      _hover: {
-        boxShadow: getBoxShadowString({
-          borderWidth: 2,
-          borderColor: colors.alias.osloGrey,
-        }),
-      },
-      _active: {
-        color: "alias.darkGrey",
-      },
-    },
-    _focusVisible: {
-      boxShadow: getBoxShadowString({
-        borderWidth: 2,
-        borderColor: colors.alias.greenHaze,
-      }),
-    },
-    _active: {
-      backgroundColor: "alias.mint",
-    },
-    _disabled: {
-      color: "alias.osloGrey",
-      boxShadow: "none",
-      pointerEvents: "none",
-    },
-  },
 });
+
+const variants: Record<
+  "simple" | "with-trigger",
+  PartsStyleInterpolation<typeof parts>
+> = {
+  simple: {
+    wrapper: {
+      borderRadius: "sm",
+    },
+  },
+  "with-trigger": {
+    wrapper: {
+      borderLeftRadius: "sm",
+    },
+  },
+};
 
 const Datepicker: ComponentMultiStyleConfig = {
   parts: parts.keys,
-  defaultProps: {
-    size: "sm",
-  },
   baseStyle: baseStyle,
+  variants,
 };
 
 export default Datepicker;

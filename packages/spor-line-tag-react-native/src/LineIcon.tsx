@@ -142,7 +142,7 @@ type LineIconProps = RestyleProps & {
   accessibilityLabel?: string;
 };
 
-function isTrain(variant: Variant) {
+function isTrain(variant: VariantType) {
   return (
     variant === "local-train" ||
     variant === "region-train" ||
@@ -152,7 +152,7 @@ function isTrain(variant: Variant) {
   );
 }
 
-const getIcon = (variant: Variant, size: Size, iconColor: string) => {
+const getIcon = (variant: VariantType, size: Size, iconColor: string) => {
   if (isTrain(variant)) {
     switch (size) {
       case "sm":

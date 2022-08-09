@@ -183,24 +183,6 @@ export const LineIcon = ({
     ...props,
   });
   const iconType = `${size}-${travelOrInfo}`;
-  const getIconStyle = (iconType: string) => {
-    switch (iconType) {
-      case "sm-travel":
-        return { padding: 3, borderRadius: 6 };
-      case "md-travel":
-        return { padding: 3, borderRadius: 9 };
-      case "lg-travel":
-        return { padding: 3, borderRadius: 9 };
-      case "sm-info":
-        return { padding: 6, borderRadius: 9 };
-      case "md-info":
-        return { padding: 6, borderRadius: 9 };
-      case "lg-info":
-        return { padding: 6, borderRadius: 12 };
-      default:
-        return null;
-    }
-  };
 
   const icon = getIcon(variant, size, iconColor);
 
@@ -209,4 +191,23 @@ export const LineIcon = ({
       {icon}
     </Box>
   );
+};
+
+const getIconStyle = (iconType: string) => {
+  switch (iconType) {
+    case "sm-travel":
+      return { padding: 3, borderRadius: 6 };
+    case "md-travel":
+      return { padding: 3, borderRadius: 9 };
+    case "lg-travel":
+      return { padding: 3, borderRadius: 9 };
+    case "sm-info":
+      return { padding: 6, borderRadius: 9 };
+    case "md-info":
+      return { padding: 6, borderRadius: 9 };
+    case "lg-info":
+      return { padding: 6, borderRadius: 12 };
+    default:
+      return null;
+  }
 };

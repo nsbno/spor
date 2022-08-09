@@ -1,6 +1,6 @@
 # Datepicker (React)
 
-TODO: Add description
+This package contains a date picker component and a date range picker component.
 
 ## Installation
 
@@ -11,9 +11,10 @@ $ npm install @vygruppen/spor-datepicker-react
 ## Usage
 
 ```tsx
-import { } from "@vygruppen/spor-datepicker-react";
+import { DatePicker, DateRangePicker } from "@vygruppen/spor-datepicker-react";
 ```
-TODO: Add usage description
+
+Please refer to the documentation for usage notes.
 
 ## Development
 

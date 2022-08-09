@@ -20,7 +20,7 @@ import {
   CloseOutline18Icon,
 } from "@vygruppen/spor-icon-react-native";
 import React from "react";
-import { Pressable } from "react-native";
+import { Pressable, StyleProp, ViewStyle } from "react-native";
 
 type RestyleProps = BoxProps<Theme> &
   SpacingProps<Theme> &
@@ -71,6 +71,7 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
   onPress?: () => void;
   onClose?: () => void;
   selected?: boolean;
+  style: StyleProp<ViewStyle>;
 };
 /**
  * Renders a card.
@@ -122,6 +123,7 @@ export const Card = ({
   onClose,
   size = "lg",
   selected = false,
+  style,
   ...props
 }: CardProps) => {
   const restyleProps: Record<string, any> = { ...props, size };
@@ -153,7 +155,7 @@ export const Card = ({
     setPressed(false);
   };
 
-  const { style } = useRestyle(restyleFunctions, restyleProps);
+  const { restyle } = useRestyle(restyleFunctions, restyleProps);
 
   const selectedIconIfEnabled = selected && (
     <Box
@@ -184,7 +186,8 @@ export const Card = ({
         onPressOut={handlePressOut}
         onPress={onPress}
         style={[
-          style as any,
+          restyle as any,
+          style,
           {
             flexGrow: 1,
             flexShrink: 1,
@@ -204,7 +207,7 @@ export const Card = ({
 
   return (
     <Box
-      style={style as any}
+      style={[restyle as any, style]}
       flexDirection="row"
       flexGrow={1}
       flexShrink={1}

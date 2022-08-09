@@ -1,4 +1,4 @@
-import { Box, useMultiStyleConfig } from "@chakra-ui/react";
+import { Box, PopoverAnchor, useMultiStyleConfig } from "@chakra-ui/react";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { useRef } from "react";
@@ -11,16 +11,18 @@ export const CalendarTriggerButton = (props: CalendarTriggerButtonProps) => {
   const ref = useRef(null);
   const { buttonProps } = useButton(props, ref);
   return (
-    <Box
-      ref={ref}
-      as="button"
-      type="button"
-      aria-label={t(texts.openCalendar)}
-      sx={styles.calendarTriggerButton}
-      {...(buttonProps as any)}
-    >
-      <CalendarOutline24Icon />
-    </Box>
+    <PopoverAnchor>
+      <Box
+        ref={ref}
+        as="button"
+        type="button"
+        aria-label={t(texts.openCalendar)}
+        sx={styles.calendarTriggerButton}
+        {...(buttonProps as any)}
+      >
+        <CalendarOutline24Icon />
+      </Box>
+    </PopoverAnchor>
   );
 };
 

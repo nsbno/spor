@@ -5,7 +5,7 @@ import {
   DateSegment as DateSegmentType,
   useDateFieldState,
 } from "@react-stately/datepicker";
-import { Language, useTranslation } from "@vygruppen/spor-i18n-react";
+import { useTranslation } from "@vygruppen/spor-i18n-react";
 import React, { forwardRef, useRef } from "react";
 import { AriaDateFieldProps } from "react-aria";
 import { DateFieldState } from "react-stately";
@@ -35,8 +35,8 @@ type StyledFieldProps = BoxProps & {
   variant: "simple" | "with-trigger";
 };
 export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
-  ({ children, ...otherProps }, ref) => {
-    const styles = useMultiStyleConfig("Datepicker", otherProps);
+  ({ children, variant, ...otherProps }, ref) => {
+    const styles = useMultiStyleConfig("Datepicker", { variant });
     return (
       <Box sx={styles.wrapper} {...otherProps} ref={ref}>
         {children}
@@ -53,7 +53,6 @@ function DateSegment({ segment, state }: DateSegmentProps) {
   const ref = useRef(null);
   const { segmentProps } = useDateSegment(segment, state, ref);
   const { language } = useTranslation();
-  console.log(segment);
   return (
     <Box
       {...segmentProps}
@@ -80,25 +79,7 @@ function DateSegment({ segment, state }: DateSegmentProps) {
         color: "white",
       }}
     >
-      {segment.isPlaceholder
-        ? translateSegmentPlaceholder(segment.type, language)
-        : segment.text}
+      {segment.text === "yyyy" && language !== "en" ? "åååå" : segment.text}
     </Box>
   );
 }
-
-const translateSegmentPlaceholder = (
-  segmentType: DateSegmentType["type"],
-  language: Language
-) => {
-  switch (segmentType) {
-    case "day":
-      return "dd";
-    case "month":
-      return "mm";
-    case "year":
-      return language === "en" ? "yyyy" : "åååå";
-    default:
-      return "";
-  }
-};

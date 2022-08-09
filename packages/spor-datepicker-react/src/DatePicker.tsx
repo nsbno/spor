@@ -22,6 +22,17 @@ import { DateField, StyledField } from "./DateField";
 type DatePickerProps = AriaDatePickerProps<DateValue> & {
   variant: "simple" | "with-trigger";
 };
+/**
+ * A date picker component.
+ *
+ * There are two versions of this component – a simple one, and one with a trigger button for showing the calendar. Use whatever fits your design.
+ *
+ * ```tsx
+ * <DatePicker date={date} onChange={setDate} variant="simple" />
+ * ```
+ *
+ * There are a lot of props you can pass, please check the documentation or auto-complete for more details.
+ */
 export function DatePicker({ variant, ...props }: DatePickerProps) {
   const state = useDatePickerState({
     ...props,

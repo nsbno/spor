@@ -1,6 +1,7 @@
 import {
   border,
   BorderProps,
+  BoxProps,
   composeRestyleFunctions,
   createVariant,
   spacing,

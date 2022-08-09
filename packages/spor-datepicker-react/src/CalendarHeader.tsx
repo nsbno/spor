@@ -7,7 +7,7 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { Heading } from "@vygruppen/spor-typography-react";
 import React from "react";
-import { CalendarButton } from "./Button";
+import { MonthNavigationButton } from "./Button";
 
 type CalendarHeaderProps = {
   title: string;
@@ -22,7 +22,7 @@ export function CalendarHeader({
   const { t } = useTranslation();
   return (
     <Flex alignItems="center" pb="4">
-      <CalendarButton
+      <MonthNavigationButton
         {...previousButtonProps}
         icon={<ArrowLeftOutline24Icon />}
         aria-label={t(texts.previousMonth)}
@@ -30,7 +30,7 @@ export function CalendarHeader({
       <Heading as="h2" textStyle="sm" flex="1" textAlign="center">
         {title}
       </Heading>
-      <CalendarButton
+      <MonthNavigationButton
         {...nextButtonProps}
         icon={<ArrowRightOutline24Icon />}
         aria-label={t(texts.nextMonth)}

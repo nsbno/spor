@@ -1,6 +1,14 @@
 # @vygruppen/spor-modal-react-native
 
+## 1.0.1
+
+### Patch Changes
+
+- Updated dependencies [d17176c]
+  - @vygruppen/spor-layout-react-native@0.0.3
+
 ## 1.0.0
+
 ### Major Changes
 
 - 358f915: Add first version of drawer component

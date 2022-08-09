@@ -1,5 +1,11 @@
 # @vygruppen/spor-button-react-native
 
+## 0.2.8
+
+### Patch Changes
+
+- @vygruppen/spor-loader-react-native@0.1.6
+
 ## 0.2.7
 
 ### Patch Changes

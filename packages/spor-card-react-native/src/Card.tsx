@@ -71,7 +71,7 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
   onPress?: () => void;
   onClose?: () => void;
   selected?: boolean;
-  style: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 };
 /**
  * Renders a card.

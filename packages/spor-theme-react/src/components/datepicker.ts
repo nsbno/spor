@@ -1,9 +1,18 @@
 import { ComponentMultiStyleConfig } from "@chakra-ui/react";
-import { anatomy, PartsStyleObject } from "@chakra-ui/theme-tools";
+import { anatomy, PartsStyleInterpolation } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { focusVisible } from "../utils/focus-utils";
 
 const parts = anatomy("datepicker").parts(
+  "inputLabel",
+  "wrapper",
+  "dateSegments",
+  "dateInputParts",
+  "calendarTriggerButton",
+  "dateCell",
+
+  // gamle
   "input",
   "calendarButton",
   "calendar",
@@ -13,27 +22,169 @@ const parts = anatomy("datepicker").parts(
   "button"
 );
 
-const baseStyle: PartsStyleObject<typeof parts> = {
-  input: {
-    borderRadius: "sm",
-    borderRightRadius: ["none", "sm"],
-    height: "100%",
-    minWidth: "11rem",
-  },
-  calendarButton: {
-    borderRadius: "sm",
-    borderLeftRadius: 0,
-    padding: "1rem",
-    boxShadow: getBoxShadowString({ borderColor: colors.alias.darkGrey }),
-    height: "100%",
-  },
-  calendar: {
+const baseStyle: PartsStyleInterpolation<typeof parts> = ({ theme }) => ({
+  wrapper: {
     backgroundColor: "alias.white",
-    borderRadius: "md",
-    boxShadow: "sm",
+    borderLeftRadius: "sm",
+    boxShadow: getBoxShadowString({
+      borderColor: theme.colors.alias.darkGrey,
+    }),
+    transitionProperty: "box-shadow",
+    transitionDuration: "fast",
+    display: "flex",
+    flex: 1,
+    pl: 3,
+    py: 1.5,
+    _hover: {
+      boxShadow: getBoxShadowString({
+        borderColor: theme.colors.alias.darkGrey,
+        borderWidth: 2,
+      }),
+    },
+    _focusWithin: {
+      boxShadow: getBoxShadowString({
+        borderColor: theme.colors.alias.greenHaze,
+        borderWidth: 2,
+      }),
+    },
+    _error: {
+      boxShadow: getBoxShadowString({
+        borderColor: theme.colors.alias.brightRed,
+        borderWidth: 2,
+      }),
+    },
+    _disabled: {
+      pointerEvents: "none",
+      boxShadow: getBoxShadowString({
+        borderColor: theme.colors.alias.osloGrey,
+        borderWidth: 1,
+      }),
+      _focus: {
+        boxShadow: getBoxShadowString({
+          borderColor: theme.colors.alias.osloGrey,
+          borderWidth: 1,
+        }),
+      },
+    },
+  },
+  inputLabel: {
+    fontSize: "mobile.xs",
+    color: "alias.darkGrey",
+    margin: 0,
+  },
+  dateSegments: {
+    display: "flex",
+  },
+  calendarTriggerButton: {
+    boxShadow: getBoxShadowString({
+      borderColor: theme.colors.alias.darkGrey,
+      borderWidth: 1,
+    }),
+    width: 8,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRightRadius: "sm",
+    transitionProperty: "box-shadow, background-color",
+    transitionSpeed: "fast",
     position: "relative",
-    zIndex: "popover",
-    outline: 0,
+    left: "-1px", // To make the box-shadows overlap
+
+    _hover: {
+      boxShadow: getBoxShadowString({
+        borderColor: theme.colors.alias.darkGrey,
+        borderWidth: 2,
+      }),
+    },
+    _active: {
+      backgroundColor: "alias.mint",
+    },
+    ...focusVisible({
+      focus: {
+        outline: "none",
+        boxShadow: getBoxShadowString({
+          borderColor: theme.colors.alias.greenHaze,
+          borderWidth: 2,
+        }),
+      },
+      notFocus: {
+        boxShadow: getBoxShadowString({
+          borderColor: theme.colors.alias.darkGrey,
+          borderWidth: 1,
+        }),
+      },
+    }),
+    _error: {
+      boxShadow: getBoxShadowString({
+        borderColor: theme.colors.alias.brightRed,
+        borderWidth: 2,
+      }),
+    },
+  },
+  dateCell: {
+    backgroundColor: "alias.white",
+    color: "alias.darkGrey",
+    borderRadius: "50%",
+    position: "relative",
+    transition: ".1s ease-in-out",
+    userSelect: "none",
+    width: [6, 7],
+    height: [6, 7],
+    transitionProperty: "common",
+    transitionSpeed: "fast",
+
+    _hover: {
+      boxShadow: getBoxShadowString({
+        borderWidth: 2,
+        borderColor: colors.alias.darkGrey,
+      }),
+    },
+    ...focusVisible({
+      focus: {
+        outline: "none",
+        boxShadow: getBoxShadowString({
+          borderWidth: 2,
+          borderColor: colors.alias.greenHaze,
+        }),
+      },
+      notFocus: {
+        boxShadow: "none",
+        _hover: {
+          boxShadow: getBoxShadowString({
+            borderWidth: 2,
+            borderColor: colors.alias.osloGrey,
+          }),
+        },
+        _active: {
+          color: "alias.darkGrey",
+        },
+      },
+    }),
+    _active: {
+      backgroundColor: "alias.seaMist",
+      boxShadow: "none",
+      color: "alias.darkGrey",
+    },
+    _disabled: {
+      color: "alias.osloGrey",
+      boxShadow: "none",
+      pointerEvents: "none",
+    },
+    _selected: {
+      backgroundColor: "alias.darkTeal",
+      color: "alias.white",
+      _active: {
+        backgroundColor: "alias.seaMist",
+        boxShadow: "none",
+        color: "alias.darkGrey",
+      },
+    },
+    "&[data-today]": {
+      boxShadow: getBoxShadowString({
+        borderWidth: 1,
+        borderColor: colors.alias.osloGrey,
+      }),
+    },
   },
   monthLabel: {
     color: "alias.darkGrey",
@@ -51,6 +202,16 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     fontWeight: "bold",
     color: "alias.greenHaze",
     textAlign: "center",
+  },
+
+  // Old
+  calendar: {
+    backgroundColor: "alias.white",
+    borderRadius: "md",
+    boxShadow: "sm",
+    position: "relative",
+    zIndex: "popover",
+    outline: 0,
   },
   button: {
     backgroundColor: "alias.white",
@@ -159,7 +320,7 @@ const baseStyle: PartsStyleObject<typeof parts> = {
       pointerEvents: "none",
     },
   },
-};
+});
 
 const Datepicker: ComponentMultiStyleConfig = {
   parts: parts.keys,

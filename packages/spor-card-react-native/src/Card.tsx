@@ -1,4 +1,5 @@
 import {
+  border,
   BorderProps,
   composeRestyleFunctions,
   createVariant,
@@ -8,17 +9,16 @@ import {
   SpacingShorthandProps,
   useRestyle,
   VariantProps,
-  border,
 } from "@shopify/restyle";
-import { BoxProps } from "@vygruppen/spor-layout-react-native";
+import type { BoxProps } from "@vygruppen/spor-layout-react-native";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";
-import type { Theme } from "@vygruppen/spor-theme-react-native";
 import {
+  CloseOutline18Icon,
   SuccessFill24Icon,
   SuccessFill30Icon,
-  CloseOutline18Icon,
 } from "@vygruppen/spor-icon-react-native";
+import type { Theme } from "@vygruppen/spor-theme-react-native";
 import React from "react";
 import { Pressable } from "react-native";
 
@@ -72,6 +72,7 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
   onClose?: () => void;
   selected?: boolean;
 };
+
 /**
  * Renders a card.
  *

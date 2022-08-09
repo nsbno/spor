@@ -1,38 +1,32 @@
-import {
-  forwardRef,
-  SimpleGrid,
-  useFormControl,
-  useMultiStyleConfig,
-} from "@chakra-ui/react";
-import { Card } from "@vygruppen/spor-card-react";
+import { Box } from "@chakra-ui/react";
+import { createCalendar, DateValue } from "@internationalized/date";
+import { useCalendar } from "@react-aria/calendar";
+import { useCalendarState } from "@react-stately/calendar";
 import React from "react";
-import { useDatepicker } from "./DatepickerContext";
-import { Month } from "./Month";
+import { CalendarProps } from "react-aria";
+import { CalendarGrid } from "./CalendarGrid";
+import { CalendarHeader } from "./CalendarHeader";
+import { useCurrentLocale } from "./utils";
 
-type CalendarProps = {};
-export const Calendar = forwardRef<CalendarProps, any>((_, ref) => {
-  const { activeMonths } = useDatepicker();
-  const formControlProps = useFormControl({});
-  const styles = useMultiStyleConfig("Datepicker", {
-    ...formControlProps,
+export function Calendar(props: CalendarProps<DateValue>) {
+  const locale = useCurrentLocale();
+  const state = useCalendarState({
+    ...props,
+    locale,
+    createCalendar,
   });
 
-  const maxColumns = Math.min(activeMonths.length, 2);
+  const { calendarProps, prevButtonProps, nextButtonProps, title } =
+    useCalendar(props, state);
 
   return (
-    <SimpleGrid columns={[1, maxColumns]} gap={3}>
-      {activeMonths.map((activeMonth) => (
-        <Card
-          colorScheme="white"
-          color="alias.darkGrey"
-          p={1}
-          sx={styles.calendar}
-          ref={ref}
-          key={activeMonth.month}
-        >
-          <Month month={activeMonth.month} year={activeMonth.year} />
-        </Card>
-      ))}
-    </SimpleGrid>
+    <Box {...calendarProps}>
+      <CalendarHeader
+        title={title}
+        previousButtonProps={prevButtonProps}
+        nextButtonProps={nextButtonProps}
+      />
+      <CalendarGrid state={state} />
+    </Box>
   );
-});
+}

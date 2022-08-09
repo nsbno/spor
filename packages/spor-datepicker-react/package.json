@@ -18,29 +18,31 @@
     "dev": "tsup src/index.tsx --watch"
   },
   "devDependencies": {
-    "react": ">17.0.0",
-    "react-dom": ">17.0.0",
     "@chakra-ui/react": "^1.7.3",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "framer-motion": "^6.0.0",
+    "react": ">17.0.0",
+    "react-dom": ">17.0.0",
     "tsup": "^5.11.11"
   },
   "peerDependencies": {
-    "react": ">17.0.0",
-    "react-dom": ">17.0.0",
     "@chakra-ui/react": "^1.7.3",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
-    "framer-motion": "3.x || 4.x || 5.x || 6.x"
+    "framer-motion": "3.x || 4.x || 5.x || 6.x",
+    "react": ">17.0.0",
+    "react-dom": ">17.0.0"
   },
   "dependencies": {
-    "@datepicker-react/hooks": "^2.8.4",
-    "@vygruppen/spor-card-react": "*",
+    "@internationalized/date": "^3.0.1",
     "@vygruppen/spor-button-react": "*",
+    "@vygruppen/spor-card-react": "*",
     "@vygruppen/spor-i18n-react": "*",
-    "@vygruppen/spor-typography-react": "*",
     "@vygruppen/spor-icon-react": "*",
-    "@vygruppen/spor-input-react": "*"
+    "@vygruppen/spor-input-react": "*",
+    "@vygruppen/spor-typography-react": "*",
+    "react-aria": "^3.18.0",
+    "react-stately": "^3.16.0"
   }
 }

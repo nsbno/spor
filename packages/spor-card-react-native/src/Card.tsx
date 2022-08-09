@@ -154,9 +154,7 @@ export const Card = ({
   const handlePressOut = () => {
     setPressed(false);
   };
-
-  const { restyle } = useRestyle(restyleFunctions, restyleProps);
-
+  const { style: restyle } = useRestyle(restyleFunctions, restyleProps);
   const selectedIconIfEnabled = selected && (
     <Box
       marginRight="sm"

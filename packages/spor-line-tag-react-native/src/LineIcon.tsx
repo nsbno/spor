@@ -26,6 +26,7 @@ import {
   SubwayFill30Icon,
   TrainFill18Icon,
   TrainFill24Icon,
+  TrainFill30Icon,
   TramFill18Icon,
   TramFill24Icon,
   TramFill30Icon,
@@ -98,7 +99,7 @@ const getIcon = (
       case "md":
         return <TrainFill24Icon color={iconColor} />;
       case "lg":
-        return <BusFill30Icon color={iconColor} />;
+        return <TrainFill30Icon color={iconColor} />;
     }
   } else {
     switch (variant) {

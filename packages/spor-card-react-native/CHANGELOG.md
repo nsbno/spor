@@ -1,5 +1,11 @@
 # @vygruppen/spor-card-react-native
 
+## 0.0.19
+
+### Patch Changes
+
+- cea112e: Legger til styleProps for Card
+
 ## 0.0.18
 
 ### Patch Changes

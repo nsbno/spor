@@ -1,5 +1,5 @@
 {
-  "name": "@vygruppen/spor-line-tag-react-native",
+  "name": "@vygruppen/spor-linjetag-react-native",
   "version": "0.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,11 +8,11 @@
     "dist"
   ],
   "sideEffects": false,
-  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-line-tag-react-native",
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-linjetag-react-native",
   "repository": {
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
-    "directory": "packages/spor-line-tag-react-native"
+    "directory": "packages/spor-linjetag-react-native"
   },
   "scripts": {
     "build": "tsup src/index.tsx --dts",

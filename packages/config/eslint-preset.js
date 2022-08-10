@@ -43,7 +43,7 @@ module.exports = {
         "packages/spor-accordion-react-native/",
         "packages/spor-modal-react-native/",
         "packages/spor-alert-react-native/",
-        "packages/spor-line-tag-react-native/",
+        "packages/spor-linjetag-react-native/",
       ],
     },
   },

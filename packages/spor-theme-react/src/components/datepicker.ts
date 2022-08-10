@@ -170,6 +170,9 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = ({ theme }) => ({
         borderColor: colors.alias.osloGrey,
       }),
     },
+    "&[data-unavailable]": {
+      pointerEvents: "none",
+      color: "alias.osloGrey",
   },
   monthLabel: {
     color: "alias.darkGrey",

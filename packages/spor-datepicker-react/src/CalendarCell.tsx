@@ -38,6 +38,9 @@ export function CalendarCell({ state, date, currentMonth }: CalendarCellProps) {
   if (isToday(date, "Europe/Oslo")) {
     stateProps["data-today"] = true;
   }
+  if (isOutsideMonth) {
+    stateProps["data-unavailable"] = true;
+  }
 
   return (
     <Box
@@ -67,7 +70,6 @@ export function CalendarCell({ state, date, currentMonth }: CalendarCellProps) {
         {...buttonProps}
         {...stateProps}
         ref={ref}
-        hidden={isOutsideMonth}
         sx={styles.dateCell}
         width="100%"
       >

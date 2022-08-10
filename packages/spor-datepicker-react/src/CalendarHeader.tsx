@@ -7,7 +7,7 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { Heading } from "@vygruppen/spor-typography-react";
 import React from "react";
-import { MonthNavigationButton } from "./Button";
+import { MonthNavigationButton } from "./MonthNavigationButton";
 
 type CalendarHeaderProps = {
   title: string;

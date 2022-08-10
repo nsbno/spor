@@ -27,8 +27,14 @@ export function CalendarHeader({
         icon={<ArrowLeftOutline24Icon />}
         aria-label={t(texts.previousMonth)}
       />
-      <Heading as="h2" textStyle="sm" flex="1" textAlign="center">
-        {title}
+      <Heading
+        as="h2"
+        textStyle="sm"
+        fontWeight="bold"
+        flex="1"
+        textAlign="center"
+      >
+        {capitalize(title)}
       </Heading>
       <MonthNavigationButton
         {...nextButtonProps}
@@ -38,6 +44,8 @@ export function CalendarHeader({
     </Flex>
   );
 }
+
+const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 const texts = {
   previousMonth: {

@@ -61,6 +61,14 @@ export function DateRangePicker({ variant, ...props }: DateRangePickerProps) {
   });
   const locale = useCurrentLocale();
 
+  const handleEnterClick = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !state.isOpen && responsiveVariant === "simple") {
+      // Don't submit the form
+      e.stopPropagation();
+      state.setOpen(true);
+    }
+  };
+
   return (
     <I18nProvider locale={locale}>
       <Box position="relative" display="inline-flex" flexDirection="column">
@@ -92,43 +100,24 @@ export function DateRangePicker({ variant, ...props }: DateRangePickerProps) {
                     state.setOpen(true);
                   }
                 }}
+                onKeyPress={handleEnterClick}
               >
                 {responsiveVariant === "simple" && (
                   <CalendarOutline24Icon mr={2} alignSelf="center" />
                 )}
-                <Box>
-                  {props.startLabel && (
-                    <FormLabel {...labelProps} sx={styles.inputLabel}>
-                      {props.startLabel}
-                    </FormLabel>
-                  )}
-                  <Box
-                    onKeyPress={(e) => {
-                      if (
-                        e.key === "Enter" &&
-                        !state.isOpen &&
-                        responsiveVariant === "simple"
-                      ) {
-                        // Don't submit the form
-                        e.stopPropagation();
-                        state.setOpen(true);
-                      }
-                    }}
-                  >
-                    <DateField {...startFieldProps} />
-                  </Box>
-                </Box>
+                <DateField
+                  {...startFieldProps}
+                  label={props.startLabel}
+                  labelProps={labelProps}
+                />
                 <Box as="span" aria-hidden="true" px="2">
                   –
                 </Box>
-                <Box>
-                  {props.endLabel && (
-                    <FormLabel {...labelProps} sx={styles.inputLabel}>
-                      {props.endLabel}
-                    </FormLabel>
-                  )}
-                  <DateField {...endFieldProps} />
-                </Box>
+                <DateField
+                  {...endFieldProps}
+                  label={props.endLabel}
+                  labelProps={labelProps}
+                />
               </StyledField>
             </PopoverAnchor>
             {responsiveVariant === "with-trigger" && (

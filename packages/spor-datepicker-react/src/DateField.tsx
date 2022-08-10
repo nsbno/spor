@@ -1,10 +1,17 @@
-import { Box, BoxProps, Flex, useMultiStyleConfig } from "@chakra-ui/react";
+import {
+  Box,
+  BoxProps,
+  Flex,
+  FormLabel,
+  useMultiStyleConfig,
+} from "@chakra-ui/react";
 import { DateValue, GregorianCalendar } from "@internationalized/date";
 import { useDateField, useDateSegment } from "@react-aria/datepicker";
 import {
   DateSegment as DateSegmentType,
   useDateFieldState,
 } from "@react-stately/datepicker";
+import { DOMAttributes, FocusableElement } from "@react-types/shared";
 import React, { forwardRef, useRef } from "react";
 import { AriaDateFieldProps } from "react-aria";
 import { DateFieldState } from "react-stately";
@@ -19,9 +26,13 @@ function createCalendar(identifier: string) {
   }
 }
 
-type DateFieldProps = AriaDateFieldProps<DateValue>;
+type DateFieldProps = AriaDateFieldProps<DateValue> & {
+  label?: React.ReactNode;
+  labelProps?: DOMAttributes<FocusableElement>;
+};
 export function DateField(props: DateFieldProps) {
   const locale = useCurrentLocale();
+  const styles = useMultiStyleConfig("DateField", {});
   const state = useDateFieldState({
     ...props,
     locale,
@@ -29,14 +40,26 @@ export function DateField(props: DateFieldProps) {
   });
 
   const ref = useRef(null);
-  const { fieldProps } = useDateField(props, state, ref);
+  const { fieldProps, labelProps } = useDateField(props, state, ref);
 
   return (
-    <Flex {...fieldProps} ref={ref}>
-      {state.segments.map((segment, i) => (
-        <DateSegment key={i} segment={segment} state={state} />
-      ))}
-    </Flex>
+    <Box>
+      {props.label && (
+        <FormLabel
+          {...props.labelProps}
+          {...labelProps}
+          sx={styles.inputLabel}
+          m={0}
+        >
+          {props.label}
+        </FormLabel>
+      )}
+      <Flex {...fieldProps} ref={ref}>
+        {state.segments.map((segment, i) => (
+          <DateSegment key={i} segment={segment} state={state} />
+        ))}
+      </Flex>
+    </Box>
   );
 }
 type StyledFieldProps = BoxProps & {

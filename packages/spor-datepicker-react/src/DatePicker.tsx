@@ -1,6 +1,5 @@
 import {
   Box,
-  FormLabel,
   InputGroup,
   Popover,
   PopoverAnchor,
@@ -59,76 +58,71 @@ export function DatePicker({ variant, ...props }: DatePickerProps) {
 
   const locale = useCurrentLocale();
 
+  const handleEnterClick = (e: React.KeyboardEvent) => {
+    if (responsiveVariant === "simple" && e.key === "Enter" && !state.isOpen) {
+      // Don't submit the form
+      e.stopPropagation();
+      state.setOpen(true);
+    }
+  };
+
   return (
     <I18nProvider locale={locale}>
-    <Box position="relative" display="inline-flex" flexDirection="column">
-      <Popover
-        {...dialogProps}
-        isOpen={state.isOpen}
-        onClose={() => state.setOpen(false)}
-        onOpen={() => state.setOpen(true)}
-        closeOnBlur
-        closeOnEsc
-        returnFocusOnClose
-      >
-        <InputGroup
-          {...groupProps}
-          ref={ref}
-          width="auto"
-          display="inline-flex"
+      <Box position="relative" display="inline-flex" flexDirection="column">
+        <Popover
+          {...dialogProps}
+          isOpen={state.isOpen}
+          onClose={() => state.setOpen(false)}
+          onOpen={() => state.setOpen(true)}
+          closeOnBlur
+          closeOnEsc
+          returnFocusOnClose
         >
-          <PopoverAnchor>
-            <StyledField
-              variant={responsiveVariant}
-              onClick={() => {
-                if (responsiveVariant === "simple") {
-                  state.setOpen(true);
-                }
-              }}
-            >
-              {responsiveVariant === "simple" && (
-                <CalendarOutline24Icon mr={2} alignSelf="center" />
-              )}
-              <Box>
-                <FormLabel {...labelProps} sx={styles.inputLabel}>
-                  {props.label}
-                </FormLabel>
-                <Box
-                  onKeyPress={(e) => {
-                    if (
-                      e.key === "Enter" &&
-                      !state.isOpen &&
-                      responsiveVariant === "simple"
-                    ) {
-                      // Don't submit the form
-                      e.stopPropagation();
-                      state.setOpen(true);
-                    }
-                  }}
-                >
-                  <DateField {...fieldProps} />
-                </Box>
-              </Box>
-            </StyledField>
-          </PopoverAnchor>
-          {responsiveVariant === "with-trigger" && (
-            <CalendarTriggerButton {...buttonProps} />
-          )}
-        </InputGroup>
-        {state.isOpen && (
-          <PopoverContent
-            backgroundColor="alias.white"
-            color="alias.darkGrey"
-            boxShadow="md"
+          <InputGroup
+            {...groupProps}
+            ref={ref}
+            width="auto"
+            display="inline-flex"
           >
-            <PopoverArrow backgroundColor="white" />
-            <PopoverBody>
-              <Calendar {...calendarProps} />
-            </PopoverBody>
-          </PopoverContent>
-        )}
-      </Popover>
-    </Box>
+            <PopoverAnchor>
+              <StyledField
+                variant={responsiveVariant}
+                onClick={() => {
+                  if (responsiveVariant === "simple") {
+                    state.setOpen(true);
+                  }
+                }}
+              >
+                {responsiveVariant === "simple" && (
+                  <CalendarOutline24Icon mr={2} alignSelf="center" />
+                )}
+                <Box onKeyPress={handleEnterClick}>
+                  <DateField
+                    label={props.label}
+                    labelProps={labelProps}
+                    {...fieldProps}
+                  />
+                </Box>
+              </StyledField>
+            </PopoverAnchor>
+            {responsiveVariant === "with-trigger" && (
+              <CalendarTriggerButton {...buttonProps} />
+            )}
+          </InputGroup>
+          {state.isOpen && (
+            <PopoverContent
+              backgroundColor="alias.white"
+              color="alias.darkGrey"
+              boxShadow="md"
+            >
+              <PopoverArrow backgroundColor="white" />
+              <PopoverBody>
+                <Calendar {...calendarProps} />
+              </PopoverBody>
+            </PopoverContent>
+          )}
+        </Popover>
+      </Box>
     </I18nProvider>
   );
 }

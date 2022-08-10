@@ -1,4 +1,4 @@
-# Line-Tag (React Native)
+# Linjetag (React Native)
 
 This package contains the implementation of line tags in React Native
 
@@ -11,7 +11,7 @@ $ npm install @vygruppen/spor-linjetag-react-native
 ## Usage
 
 ```tsx
-import { LineIcon } from "@vygruppen/spor-linjetag-react-native";
+import { TravelTag, InfoTag } from "@vygruppen/spor-linjetag-react-native";
 ```
 
 Please refer to the documentation for more information.

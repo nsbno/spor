@@ -7,9 +7,6 @@ type LineIconProps = BoxProps & {
   variant: Variant;
   size: Size;
 };
-/**
- * The line tag icon component
- */
 export const LineTagIcon = ({ variant, size, ...rest }: LineIconProps) => {
   const styles = variantStyling[variant];
   const Icon = styles.icons[size];

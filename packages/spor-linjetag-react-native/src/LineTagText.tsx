@@ -6,7 +6,6 @@ type LineTextProps = {
   title: string;
   children: string;
 };
-/** The text part of a line tag */
 export const LineTagText = ({ title, children }: LineTextProps) => (
   <Stack flexDirection="row" spacing={1}>
     <Text fontWeight="bold" color="darkGrey">

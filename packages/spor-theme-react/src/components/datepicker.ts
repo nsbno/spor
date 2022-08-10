@@ -173,23 +173,7 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = ({ theme }) => ({
     "&[data-unavailable]": {
       pointerEvents: "none",
       color: "alias.osloGrey",
-  },
-  monthLabel: {
-    color: "alias.darkGrey",
-    textStyle: ["sm", "md"],
-    fontWeight: "bold",
-  },
-  dayLabel: {
-    textStyle: "sm",
-    fontWeight: "bold",
-    color: "alias.darkGrey",
-    textAlign: "center",
-  },
-  weekendLabel: {
-    textStyle: "sm",
-    fontWeight: "bold",
-    color: "alias.greenHaze",
-    textAlign: "center",
+    },
   },
 });
 

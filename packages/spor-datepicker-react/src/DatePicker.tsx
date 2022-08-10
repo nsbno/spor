@@ -8,7 +8,6 @@ import {
   PopoverContent,
   ResponsiveValue,
   useBreakpointValue,
-  useMultiStyleConfig,
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
 import { useDatePicker } from "@react-aria/datepicker";
@@ -52,10 +51,6 @@ export function DatePicker({ variant, ...props }: DatePickerProps) {
     useBreakpointValue(typeof variant === "string" ? [variant] : variant) ??
     "simple";
 
-  const styles = useMultiStyleConfig("Datepicker", {
-    variant: responsiveVariant,
-  });
-
   const locale = useCurrentLocale();
 
   const handleEnterClick = (e: React.KeyboardEvent) => {
@@ -65,6 +60,14 @@ export function DatePicker({ variant, ...props }: DatePickerProps) {
       state.setOpen(true);
     }
   };
+
+  const onFieldClick = () => {
+    if (!hasTrigger) {
+      state.setOpen(true);
+    }
+  };
+
+  const hasTrigger = responsiveVariant === "with-trigger";
 
   return (
     <I18nProvider locale={locale}>
@@ -87,27 +90,20 @@ export function DatePicker({ variant, ...props }: DatePickerProps) {
             <PopoverAnchor>
               <StyledField
                 variant={responsiveVariant}
-                onClick={() => {
-                  if (responsiveVariant === "simple") {
-                    state.setOpen(true);
-                  }
-                }}
+                onClick={onFieldClick}
+                onKeyPress={handleEnterClick}
               >
-                {responsiveVariant === "simple" && (
+                {!hasTrigger && (
                   <CalendarOutline24Icon mr={2} alignSelf="center" />
                 )}
-                <Box onKeyPress={handleEnterClick}>
-                  <DateField
-                    label={props.label}
-                    labelProps={labelProps}
-                    {...fieldProps}
-                  />
-                </Box>
+                <DateField
+                  label={props.label}
+                  labelProps={labelProps}
+                  {...fieldProps}
+                />
               </StyledField>
             </PopoverAnchor>
-            {responsiveVariant === "with-trigger" && (
-              <CalendarTriggerButton {...buttonProps} />
-            )}
+            {hasTrigger && <CalendarTriggerButton {...buttonProps} />}
           </InputGroup>
           {state.isOpen && (
             <PopoverContent

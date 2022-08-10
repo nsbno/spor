@@ -69,6 +69,14 @@ export function DateRangePicker({ variant, ...props }: DateRangePickerProps) {
     }
   };
 
+  const onFieldClick = () => {
+    if (!hasTrigger) {
+      state.setOpen(true);
+    }
+  };
+
+  const hasTrigger = responsiveVariant === "with-trigger";
+
   return (
     <I18nProvider locale={locale}>
       <Box position="relative" display="inline-flex" flexDirection="column">
@@ -95,14 +103,10 @@ export function DateRangePicker({ variant, ...props }: DateRangePickerProps) {
               <StyledField
                 alignItems="center"
                 variant={responsiveVariant}
-                onClick={() => {
-                  if (responsiveVariant === "simple") {
-                    state.setOpen(true);
-                  }
-                }}
+                onClick={onFieldClick}
                 onKeyPress={handleEnterClick}
               >
-                {responsiveVariant === "simple" && (
+                {!hasTrigger && (
                   <CalendarOutline24Icon mr={2} alignSelf="center" />
                 )}
                 <DateField
@@ -120,9 +124,7 @@ export function DateRangePicker({ variant, ...props }: DateRangePickerProps) {
                 />
               </StyledField>
             </PopoverAnchor>
-            {responsiveVariant === "with-trigger" && (
-              <CalendarTriggerButton {...buttonProps} />
-            )}
+            {hasTrigger && <CalendarTriggerButton {...buttonProps} />}
           </InputGroup>
           {state.isOpen && (
             <PopoverContent

@@ -32,7 +32,7 @@ type DateFieldProps = AriaDateFieldProps<DateValue> & {
 };
 export function DateField(props: DateFieldProps) {
   const locale = useCurrentLocale();
-  const styles = useMultiStyleConfig("DateField", {});
+  const styles = useMultiStyleConfig("Datepicker", {});
   const state = useDateFieldState({
     ...props,
     locale,
@@ -45,12 +45,7 @@ export function DateField(props: DateFieldProps) {
   return (
     <Box>
       {props.label && (
-        <FormLabel
-          {...props.labelProps}
-          {...labelProps}
-          sx={styles.inputLabel}
-          m={0}
-        >
+        <FormLabel {...props.labelProps} {...labelProps} sx={styles.inputLabel}>
           {props.label}
         </FormLabel>
       )}

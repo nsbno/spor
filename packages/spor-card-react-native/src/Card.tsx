@@ -9,8 +9,8 @@ import {
   useRestyle,
   VariantProps,
   border,
-  BoxProps,
 } from "@shopify/restyle";
+import { BoxProps } from "@vygruppen/spor-layout-react-native";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
@@ -22,7 +22,7 @@ import {
 import React from "react";
 import { Pressable } from "react-native";
 
-type RestyleProps = BoxProps<Theme> &
+type RestyleProps = BoxProps &
   SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
   BorderProps<Theme> &
@@ -152,9 +152,7 @@ export const Card = ({
   const handlePressOut = () => {
     setPressed(false);
   };
-
   const { style } = useRestyle(restyleFunctions, restyleProps);
-
   const selectedIconIfEnabled = selected && (
     <Box
       marginRight="sm"

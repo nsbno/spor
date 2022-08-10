@@ -65,14 +65,14 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   colorSchemes,
 ]);
 
-type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
-  accessibilityLabel?: string;
-  children: React.ReactNode;
-  onPress?: () => void;
-  onClose?: () => void;
-  selected?: boolean;
-  style?: BoxProps<Theme>;
-};
+type CardProps = BoxProps<Theme> &
+  Exclude<RestyleProps, "elevationLevel"> & {
+    accessibilityLabel?: string;
+    children: React.ReactNode;
+    onPress?: () => void;
+    onClose?: () => void;
+    selected?: boolean;
+  };
 /**
  * Renders a card.
  *
@@ -123,7 +123,6 @@ export const Card = ({
   onClose,
   size = "lg",
   selected = false,
-  style,
   ...props
 }: CardProps) => {
   const restyleProps: Record<string, any> = { ...props, size };
@@ -154,7 +153,7 @@ export const Card = ({
   const handlePressOut = () => {
     setPressed(false);
   };
-  const { style: restyle } = useRestyle(restyleFunctions, restyleProps);
+  const { style } = useRestyle(restyleFunctions, restyleProps);
   const selectedIconIfEnabled = selected && (
     <Box
       marginRight="sm"
@@ -184,8 +183,7 @@ export const Card = ({
         onPressOut={handlePressOut}
         onPress={onPress}
         style={[
-          restyle as any,
-          style,
+          style as any,
           {
             flexGrow: 1,
             flexShrink: 1,
@@ -205,7 +203,7 @@ export const Card = ({
 
   return (
     <Box
-      style={[restyle as any, style]}
+      style={style as any}
       flexDirection="row"
       flexGrow={1}
       flexShrink={1}

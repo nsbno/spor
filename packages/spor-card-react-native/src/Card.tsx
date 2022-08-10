@@ -65,14 +65,13 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   colorSchemes,
 ]);
 
-type CardProps = BoxProps &
-  Exclude<RestyleProps, "elevationLevel"> & {
-    accessibilityLabel?: string;
-    children: React.ReactNode;
-    onPress?: () => void;
-    onClose?: () => void;
-    selected?: boolean;
-  };
+type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
+  accessibilityLabel?: string;
+  children: React.ReactNode;
+  onPress?: () => void;
+  onClose?: () => void;
+  selected?: boolean;
+};
 /**
  * Renders a card.
  *

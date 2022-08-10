@@ -16,10 +16,11 @@ import { useDatePicker } from "@react-aria/datepicker";
 import { useDatePickerState } from "@react-stately/datepicker";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { useRef } from "react";
-import { AriaDatePickerProps } from "react-aria";
+import { AriaDatePickerProps, I18nProvider } from "react-aria";
 import { Calendar } from "./Calendar";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField, StyledField } from "./DateField";
+import { useCurrentLocale } from "./utils";
 
 type DatePickerProps = AriaDatePickerProps<DateValue> & {
   variant: ResponsiveValue<"simple" | "with-trigger">;
@@ -56,7 +57,10 @@ export function DatePicker({ variant, ...props }: DatePickerProps) {
     variant: responsiveVariant,
   });
 
+  const locale = useCurrentLocale();
+
   return (
+    <I18nProvider locale={locale}>
     <Box position="relative" display="inline-flex" flexDirection="column">
       <Popover
         {...dialogProps}
@@ -125,5 +129,6 @@ export function DatePicker({ variant, ...props }: DatePickerProps) {
         )}
       </Popover>
     </Box>
+    </I18nProvider>
   );
 }

@@ -5,7 +5,6 @@ import {
   DateSegment as DateSegmentType,
   useDateFieldState,
 } from "@react-stately/datepicker";
-import { useTranslation } from "@vygruppen/spor-i18n-react";
 import React, { forwardRef, useRef } from "react";
 import { AriaDateFieldProps } from "react-aria";
 import { DateFieldState } from "react-stately";
@@ -61,7 +60,6 @@ type DateSegmentProps = {
 function DateSegment({ segment, state }: DateSegmentProps) {
   const ref = useRef(null);
   const { segmentProps } = useDateSegment(segment, state, ref);
-  const { language } = useTranslation();
   return (
     <Box
       {...segmentProps}
@@ -88,7 +86,7 @@ function DateSegment({ segment, state }: DateSegmentProps) {
         color: "white",
       }}
     >
-      {segment.text === "yyyy" && language !== "en" ? "åååå" : segment.text}
+      {segment.text}
     </Box>
   );
 }

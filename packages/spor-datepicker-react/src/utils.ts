@@ -8,12 +8,12 @@ export const useCurrentLocale = () => {
   const { language } = useTranslation();
   switch (language) {
     case "nb":
-      return "nb-NO";
+      return "no";
     case "sv":
-      return "sv-SE";
+      return "sv";
     case "en":
-      return "en-UK";
+      return "en";
     default:
-      return "nb-NO";
+      return "no";
   }
 };

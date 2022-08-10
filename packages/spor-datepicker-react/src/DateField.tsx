@@ -1,5 +1,5 @@
 import { Box, BoxProps, Flex, useMultiStyleConfig } from "@chakra-ui/react";
-import { createCalendar, DateValue } from "@internationalized/date";
+import { DateValue, GregorianCalendar } from "@internationalized/date";
 import { useDateField, useDateSegment } from "@react-aria/datepicker";
 import {
   DateSegment as DateSegmentType,
@@ -10,6 +10,15 @@ import React, { forwardRef, useRef } from "react";
 import { AriaDateFieldProps } from "react-aria";
 import { DateFieldState } from "react-stately";
 import { useCurrentLocale } from "./utils";
+
+function createCalendar(identifier: string) {
+  switch (identifier) {
+    case "gregory":
+      return new GregorianCalendar();
+    default:
+      throw new Error(`Unsupported calendar ${identifier}`);
+  }
+}
 
 type DateFieldProps = AriaDateFieldProps<DateValue>;
 export function DateField(props: DateFieldProps) {

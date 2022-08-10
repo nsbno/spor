@@ -28,7 +28,8 @@ export function CalendarHeader({
         aria-label={t(texts.previousMonth)}
       />
       <Heading
-        as="h2"
+        as="div"
+        role="heading"
         textStyle="sm"
         fontWeight="bold"
         flex="1"
@@ -45,7 +46,8 @@ export function CalendarHeader({
   );
 }
 
-const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
+const capitalize = (str: string = "") =>
+  str.charAt(0).toUpperCase() + str.slice(1);
 
 const texts = {
   previousMonth: {

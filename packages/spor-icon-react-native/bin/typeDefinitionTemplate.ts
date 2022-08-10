@@ -8,7 +8,8 @@ import type { BoxProps } from "@vygruppen/spor-layout-react-native";
 import type { ForwardRefExoticComponent } from "react";
 
 declare module "@vygruppen/spor-icon-react-native" {
-  export type IconComponent = ForwardRefExoticComponent<BoxProps>;
+  type IconProps = BoxProps & { color?: string };
+  export type IconComponent = ForwardRefExoticComponent<IconProps>;
 
   ${iconsData
     .map(({ componentName }) => `export const ${componentName}: IconComponent;`)

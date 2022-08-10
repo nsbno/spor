@@ -74,9 +74,9 @@ PODS:
   - fmt (6.2.1)
   - glog (0.3.5)
   - libevent (2.1.12)
-  - lottie-ios (3.2.3)
-  - lottie-react-native (5.1.3):
-    - lottie-ios (~> 3.2.3)
+  - lottie-ios (3.4.1)
+  - lottie-react-native (5.1.4):
+    - lottie-ios (~> 3.4.0)
     - React-Core
   - OpenSSL-Universal (1.1.1100)
   - RCT-Folly (2021.06.28.00-v2):
@@ -357,7 +357,7 @@ PODS:
     - React-jsi (= 0.68.1)
     - React-logger (= 0.68.1)
     - React-perflogger (= 0.68.1)
-  - RNSVG (12.3.0):
+  - RNSVG (12.4.3):
     - React-Core
   - SocketRocket (0.6.0)
   - Yoga (1.14.0)
@@ -533,8 +533,8 @@ SPEC CHECKSUMS:
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 476ee3e89abb49e07f822b48323c51c57124b572
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
-  lottie-react-native: a501112fa980529ccb80b9f3ee117a7f98c6af3a
+  lottie-ios: 016449b5d8be0c3dcbcfa0a9988469999cd04c5d
+  lottie-react-native: b702fab740cdb952a8e2354713d3beda63ff97b0
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: 4d8508a426467c48885f1151029bc15fa5d7b3b8
   RCTRequired: 00581111c53531e39e3c6346ef0d2c0cf52a5a37
@@ -562,7 +562,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: 9e344c840176b0af9c84d5019eb4fed8b3c105a1
   React-runtimeexecutor: 7285b499d0339104b2813a1f58ad1ada4adbd6c0
   ReactCommon: bf2888a826ceedf54b99ad1b6182d1bc4a8a3984
-  RNSVG: 302bfc9905bd8122f08966dc2ce2d07b7b52b9f8
+  RNSVG: f3b60aeeaa81960e2e0536c3a9eef50b667ef3a9
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 17cd9a50243093b547c1e539c749928dd68152da
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a

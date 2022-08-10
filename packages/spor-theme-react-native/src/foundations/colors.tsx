@@ -7,6 +7,13 @@ const colorAliases = Object.entries(tokens.color.alias).reduce(
   {} as { [key in keyof typeof tokens.color.alias]: string }
 );
 
+const colorLinjetags = Object.entries(tokens.color.linjetag).reduce(
+  (acc, [key, token]) => {
+    return { ...acc, [`linjetag.${key}`]: token.value };
+  },
+  {} as { [key in `linjetag.${keyof typeof tokens.color.linjetag}`]: string }
+);
+
 const colorPalette = Object.entries(tokens.color.palette).reduce(
   (acc, [key, tokenOrScale]) => {
     if ("original" in tokenOrScale) {
@@ -43,5 +50,6 @@ const colorPalette = Object.entries(tokens.color.palette).reduce(
 export const colors = {
   ...colorAliases,
   ...colorPalette,
+  ...colorLinjetags,
   transparent: "transparent",
 };

@@ -66,14 +66,14 @@ function getColorSchemeBaseProps({ colorScheme }: CardThemeProps): {
       return {
         backgroundColor: "alias.white",
         boxShadow: getBoxShadowString({
-          borderColor: colors.palette.blackAlpha[200],
+          borderColor: colors.alias.silver,
         }),
       };
     case "grey":
       return {
         backgroundColor: "alias.lightGrey",
         boxShadow: getBoxShadowString({
-          borderColor: colors.palette.blackAlpha[300],
+          borderColor: colors.alias.steel,
         }),
       };
     default:
@@ -94,14 +94,14 @@ function getColorSchemeClickableProps({ colorScheme, size }: CardThemeProps) {
       return {
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor: colors.palette.blackAlpha[200],
+          borderColor: colors.alias.silver,
         }),
       };
     case "grey":
       return {
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor: colors.palette.blackAlpha[300],
+          borderColor: colors.alias.steel,
         }),
       };
     default:
@@ -123,14 +123,14 @@ function getColorSchemeHoverProps({ colorScheme, size }: CardThemeProps) {
       return {
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor: colors.palette.blackAlpha[200],
+          borderColor: colors.alias.steel,
         }),
       };
     case "grey":
       return {
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor: colors.palette.blackAlpha[300],
+          borderColor: colors.alias.osloGrey,
         }),
       };
     default:
@@ -153,7 +153,7 @@ function getColorSchemeActiveProps({ colorScheme, size }: CardThemeProps) {
         backgroundColor: "alias.mint",
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor: colors.palette.blackAlpha[200],
+          borderColor: colors.alias.silver,
         }),
       };
     case "grey":
@@ -161,7 +161,7 @@ function getColorSchemeActiveProps({ colorScheme, size }: CardThemeProps) {
         backgroundColor: "alias.white",
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor: colors.palette.blackAlpha[300],
+          borderColor: colors.alias.steel,
         }),
       };
     default:

@@ -47,7 +47,7 @@ const baseStyle = (props: CardThemeProps) => ({
     },
 
     _disabled: {
-      backgroundColor: "alias.silver",
+      backgroundColor: "alias.platinum",
       boxShadow: getBoxShadowString({
         borderColor: colors.alias.silver,
       }),

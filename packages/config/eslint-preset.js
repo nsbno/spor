@@ -44,6 +44,7 @@ module.exports = {
         "packages/spor-modal-react-native/",
         "packages/spor-alert-react-native/",
         "packages/spor-linjetag-react-native/",
+        "packages/spor-datepicker-react/",
       ],
     },
   },

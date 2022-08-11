@@ -1,7 +1,6 @@
 import {
   border,
   BorderProps,
-  BoxProps,
   composeRestyleFunctions,
   createVariant,
   spacing,
@@ -11,14 +10,14 @@ import {
   useRestyle,
   VariantProps,
 } from "@shopify/restyle";
-import type { BoxProps } from "@vygruppen/spor-layout-react-native";
-import { Box } from "@vygruppen/spor-layout-react-native";
 import { Button } from "@vygruppen/spor-button-react-native";
 import {
   CloseOutline18Icon,
   SuccessFill24Icon,
   SuccessFill30Icon,
 } from "@vygruppen/spor-icon-react-native";
+import type { BoxProps } from "@vygruppen/spor-layout-react-native";
+import { Box } from "@vygruppen/spor-layout-react-native";
 import type { Theme } from "@vygruppen/spor-theme-react-native";
 import React from "react";
 import { Pressable } from "react-native";

@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.1.2
+
+### Patch Changes
+
+- 50b9bb1: Fixes a bug where specifying the color of an icon wouldn't work as expected
+
 ## 0.1.1
 
 ### Patch Changes

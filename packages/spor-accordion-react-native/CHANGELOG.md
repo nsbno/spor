@@ -1,5 +1,12 @@
 # @vygruppen/spor-accordion-react-native
 
+## 0.0.14
+
+### Patch Changes
+
+- Updated dependencies [50b9bb1]
+  - @vygruppen/spor-icon-react-native@0.1.2
+
 ## 0.0.13
 
 ### Patch Changes

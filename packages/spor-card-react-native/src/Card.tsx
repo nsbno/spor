@@ -70,14 +70,14 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
   children: React.ReactNode;
   onPress?: () => void;
   onClose?: () => void;
-  selected?: boolean;
-  disabled?: boolean;
+  isSelected?: boolean;
+  isDisabled?: boolean;
 };
 
 /**
  * Renders a card.
  *
- * Card takes the following props : children, onPress, onClose, selected and style.
+ * Card takes the following props : children, onPress, onClose, isSelected, isDisabled and style.
  *
  * ```tsx
  * <Card colorScheme="white">
@@ -123,8 +123,8 @@ export const Card = ({
   onPress,
   onClose,
   size = "lg",
-  selected = false,
-  disabled = false,
+  isSelected = false,
+  isDisabled = false,
   ...props
 }: CardProps) => {
   const restyleProps: Record<string, any> = { ...props, size };
@@ -132,16 +132,16 @@ export const Card = ({
   const isPressable =
     onPress !== undefined &&
     restyleProps.colorScheme !== "disabled" &&
-    !disabled;
+    !isDisabled;
 
   if (props.p === undefined && props.padding === undefined) {
     restyleProps.p = 3;
   }
-  if (selected) {
+  if (isSelected) {
     restyleProps.colorScheme = "disabled";
   }
 
-  if (selected) {
+  if (isSelected) {
     restyleProps.selectedColorScheme = restyleProps.colorScheme;
   }
 
@@ -161,7 +161,7 @@ export const Card = ({
     setPressed(false);
   };
   const { style } = useRestyle(restyleFunctions, restyleProps);
-  const selectedIconIfEnabled = selected && (
+  const selectedIconIfEnabled = isSelected && (
     <Box
       marginRight="sm"
       alignSelf="center"

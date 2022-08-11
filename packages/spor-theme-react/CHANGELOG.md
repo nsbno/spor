@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.5.5
+
+### Patch Changes
+
+- 93725fa: Tweak the color of disabled cards
+
 ## 0.5.4
 
 ### Patch Changes

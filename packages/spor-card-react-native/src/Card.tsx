@@ -124,7 +124,7 @@ export const Card = ({
   onClose,
   size = "lg",
   selected = false,
-  disabled,
+  disabled = false,
   ...props
 }: CardProps) => {
   const restyleProps: Record<string, any> = { ...props, size };

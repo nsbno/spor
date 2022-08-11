@@ -1,5 +1,13 @@
 # @vygruppen/spor-accordion-react-native
 
+## 0.0.15
+
+### Patch Changes
+
+- 67b4b2e: Adds animation to the open and close sattes of accordions
+- Updated dependencies [20e7e2e]
+  - @vygruppen/spor-theme-react-native@0.2.8
+
 ## 0.0.14
 
 ### Patch Changes

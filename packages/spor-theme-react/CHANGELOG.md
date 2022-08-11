@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.5.4
+
+### Patch Changes
+
+- 20e7e2e: Adjust the colors of cards on React and React Native
+
 ## 0.5.3
 
 ### Patch Changes

@@ -83,10 +83,16 @@ const hasNoHits = (filteredCategories: IconsByCategory) =>
 const NoHits = () => {
   return (
     <Box>
-      <Heading as="h2" textStyle="sm" fontWeight="bold" mb={7}>
+      <NotFound mx="auto" />
+      <Heading
+        as="h2"
+        textStyle="sm"
+        fontWeight="bold"
+        mt={7}
+        textAlign="center"
+      >
         Ingen matchende ikoner funnet
       </Heading>
-      <NotFound mx="auto" />
     </Box>
   );
 };

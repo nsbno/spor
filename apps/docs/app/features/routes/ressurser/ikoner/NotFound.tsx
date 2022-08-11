@@ -2,7 +2,14 @@ import { Box, BoxProps } from "@vygruppen/spor-react";
 
 export const NotFound = (props: BoxProps) => {
   return (
-    <Box as="svg" width="270" height="276" fill="none" {...props}>
+    <Box
+      as="svg"
+      width="270"
+      height="276"
+      fill="none"
+      display="block"
+      {...props}
+    >
       <path
         d="M65.9 202.7 77.4 91.2l38.5-11 90 57-14.5 18.5-29.5-15-46 37.5c-1 3.2-2.4 15.2 0 38s-7.3 19.8-12.5 15.5l-6.5-36.5-9-5-6.5 12.5H65.9Z"
         fill="#FCEC98"

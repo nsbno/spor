@@ -66,7 +66,7 @@ export const cardColorSchemes = {
     borderColor: "orange.200",
   },
   disabled: {
-    backgroundColor: "silver",
+    backgroundColor: "platinum",
     borderColor: "silver",
   },
 };

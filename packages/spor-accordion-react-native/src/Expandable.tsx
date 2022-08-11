@@ -13,7 +13,7 @@ import React from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 import { Text } from "@vygruppen/spor-typography-react-native";
-import { Pressable } from "react-native";
+import { Pressable, StyleProp, ViewStyle } from "react-native";
 import {
   DropdownDownFill18Icon,
   DropdownUpFill18Icon,
@@ -44,6 +44,7 @@ type ExpandableProps = Exclude<RestyleProps, "variant"> & {
   variant: ExpandableVariant;
   defaultExpanded?: boolean;
   onToggle?: (isExpanded: boolean) => void;
+  style?: StyleProp<ViewStyle>;
 };
 
 export const Expandable = ({
@@ -54,11 +55,12 @@ export const Expandable = ({
   defaultExpanded = false,
   size,
   onToggle,
+  style,
   ...props
 }: ExpandableProps) => {
   const theme = useTheme<Theme>();
   const restyleProps: Record<string, any> = { ...props, variant };
-  const { style } = useRestyle(restyleFunctions, restyleProps);
+  const { style: restyleStyle } = useRestyle(restyleFunctions, restyleProps);
   const [isPressed, setPressed] = useState(false);
   const pressedStyle = theme.getExpandableVariantPressedState(variant);
   const [isExpanded, setExpanded] = useState(defaultExpanded);
@@ -71,7 +73,7 @@ export const Expandable = ({
   }
 
   return (
-    <Box style={style as any} ml="sm" mb="sm">
+    <Box style={[restyleStyle as any, style]}>
       <Pressable
         style={isPressed ? pressedStyle : { padding: 12 }}
         onPress={handlePress}
@@ -99,7 +101,9 @@ export const Expandable = ({
           {getDropdownIcon(isExpanded, size as string)}
         </Box>
       </Pressable>
-      {isExpanded && <ExpandableItem>{children}</ExpandableItem>}
+      <ExpandableItem isExpanded={isExpanded} defaultExpanded={defaultExpanded}>
+        {children}
+      </ExpandableItem>
     </Box>
   );
 };

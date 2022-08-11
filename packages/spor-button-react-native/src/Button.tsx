@@ -17,7 +17,7 @@ import {
   Text,
   TextStyle,
 } from "react-native";
-import { Box } from "@vygruppen/spor-layout-react-native";
+import { BoxProps, Box } from "@vygruppen/spor-layout-react-native";
 
 const variants = createVariant({
   themeKey: "buttonVariants",
@@ -32,7 +32,8 @@ type ButtonVariant =
   | "additional"
   | "ghost";
 
-type RestyleProps = SpacingProps<Theme> &
+type RestyleProps = BoxProps &
+  SpacingProps<Theme> &
   VariantProps<Theme, "buttonVariants", "variant"> &
   VariantProps<Theme, "buttonSizes", "size">;
 
@@ -47,7 +48,7 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
 type ButtonProps = Exclude<RestyleProps, "variant"> & {
   onPress: () => void;
   variant: ButtonVariant;
-  children?: React.ReactNode;
+  children?: JSX.Element;
   isDisabled?: boolean;
   isLoading?: boolean;
   accessibilityLabel?: string;

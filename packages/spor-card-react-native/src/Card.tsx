@@ -71,6 +71,7 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
   onPress?: () => void;
   onClose?: () => void;
   selected?: boolean;
+  disabled?: boolean;
 };
 
 /**
@@ -123,15 +124,21 @@ export const Card = ({
   onClose,
   size = "lg",
   selected = false,
+  disabled,
   ...props
 }: CardProps) => {
   const restyleProps: Record<string, any> = { ...props, size };
   const [isPressed, setPressed] = React.useState(false);
   const isPressable =
-    onPress !== undefined && restyleProps.colorScheme !== "disabled";
+    onPress !== undefined &&
+    restyleProps.colorScheme !== "disabled" &&
+    !disabled;
 
   if (props.p === undefined && props.padding === undefined) {
     restyleProps.p = 3;
+  }
+  if (selected) {
+    restyleProps.colorScheme = "disabled";
   }
 
   if (selected) {
@@ -183,13 +190,13 @@ export const Card = ({
         onPressOut={handlePressOut}
         onPress={onPress}
         style={[
-          style as any,
           {
             flexGrow: 1,
             flexShrink: 1,
             flexBasis: "auto",
             flexDirection: "row",
           },
+          style as any,
         ]}
       >
         <Box flexDirection="row" flex={1}>

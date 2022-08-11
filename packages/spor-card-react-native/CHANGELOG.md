@@ -1,5 +1,11 @@
 # @vygruppen/spor-card-react-native
 
+## 0.1.0
+
+### Minor Changes
+
+- 23c33a8: Legge til disabled som props i Card
+
 ## 0.0.22
 
 ### Patch Changes

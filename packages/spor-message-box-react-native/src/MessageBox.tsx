@@ -6,14 +6,14 @@ import {
   useRestyle,
   VariantProps,
 } from "@shopify/restyle";
+import { Button } from "@vygruppen/spor-button-react-native";
 import {
-  InformationOutline24Icon,
-  DeleteCircleOutline24Icon,
-  SuccessOutline24Icon,
   CloseOutline18Icon,
+  DeleteCircleOutline24Icon,
+  InformationOutline24Icon,
+  SuccessOutline24Icon,
 } from "@vygruppen/spor-icon-react-native";
 import { Box } from "@vygruppen/spor-layout-react-native";
-import { Button } from "@vygruppen/spor-button-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 import { Text } from "@vygruppen/spor-typography-react-native";
 import React from "react";
@@ -88,15 +88,16 @@ export const MessageBox = (props: MessageBoxProps) => {
         </Box>
       </Box>
 
-      {isCloseButtonProps(props) ? (
+      {isCloseButtonProps(props) && (
         <Button
           size="xs"
           variant="ghost"
           onPress={props.onPress}
           leftIcon={<CloseOutline18Icon />}
-        ></Button>
-      ) : (
-        isButtonProps(props) && (
+        />
+      )}
+      {isButtonProps(props) && (
+        <Box alignSelf="center">
           <Button
             size="xs"
             variant="additional"
@@ -105,7 +106,7 @@ export const MessageBox = (props: MessageBoxProps) => {
           >
             {props.buttonText}
           </Button>
-        )
+        </Box>
       )}
     </Box>
   );

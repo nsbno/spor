@@ -165,7 +165,7 @@ export const Card = ({
   );
   const childrenBox = <Box flex={1}>{children}</Box>;
   const closeButtonIfEnabled = onClose !== undefined && (
-    <Box alignSelf={"center"}>
+    <Box alignSelf="center">
       <Button
         marginLeft={"sm"}
         onPress={onClose}

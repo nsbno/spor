@@ -64,13 +64,16 @@ export const DrawerContent = forwardRef<DrawerContentProps, any>(
           ref={ref}
         >
           <Box position="relative">
-            {isTopOrBottom && (
-              <Notch
-                top={placement === "bottom" ? 2 : undefined}
-                bottom={placement === "top" ? 2 : undefined}
-              />
-            )}
-            <Box>{children}</Box>
+            <Box maxHeight="100vh" maxWidth="100vw" overflow="auto">
+              {isTopOrBottom && (
+                <Notch
+                  top={placement === "bottom" ? 2 : undefined}
+                  bottom={placement === "top" ? 2 : undefined}
+                />
+              )}
+
+              <Box>{children}</Box>
+            </Box>
           </Box>
         </ChakraDrawerContent>
       </Box>

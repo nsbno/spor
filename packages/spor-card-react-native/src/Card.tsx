@@ -137,7 +137,7 @@ export const Card = ({
   if (props.p === undefined && props.padding === undefined) {
     restyleProps.p = 3;
   }
-  if (isSelected) {
+  if (isDisabled) {
     restyleProps.colorScheme = "disabled";
   }
 

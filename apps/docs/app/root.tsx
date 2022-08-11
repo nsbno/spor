@@ -1,7 +1,6 @@
 import { withEmotionCache } from "@emotion/react";
 import { LinksFunction, LoaderFunction, MetaFunction } from "@remix-run/node";
 import {
-  Link,
   Links,
   LiveReload,
   Meta,
@@ -110,7 +109,7 @@ export function CatchBoundary() {
           <Text textStyle="sm" mb={4}>
             Ups! Det ser ut som du prøvde å besøke en side som ikke finnes.
           </Text>
-          <Button as={Link} to="/" variant="primary">
+          <Button as="a" href="/" variant="primary">
             Tilbake til forsiden
           </Button>
         </Box>

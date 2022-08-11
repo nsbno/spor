@@ -1,5 +1,14 @@
 # @vygruppen/spor-message-box-react-native
 
+## 1.0.9
+
+### Patch Changes
+
+- fbdcb69: Improve layout of text buttons in multi-line message boxes
+- Updated dependencies [20e7e2e]
+  - @vygruppen/spor-theme-react-native@0.2.8
+  - @vygruppen/spor-button-react-native@0.2.10
+
 ## 1.0.8
 
 ### Patch Changes

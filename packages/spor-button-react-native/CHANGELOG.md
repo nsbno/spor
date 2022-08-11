@@ -1,5 +1,12 @@
 # @vygruppen/spor-button-react-native
 
+## 0.2.10
+
+### Patch Changes
+
+- Updated dependencies [20e7e2e]
+  - @vygruppen/spor-theme-react-native@0.2.8
+
 ## 0.2.9
 
 ### Patch Changes

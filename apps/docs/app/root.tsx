@@ -10,7 +10,7 @@ import {
   useCatch,
   useLoaderData,
 } from "@remix-run/react";
-import { Box, Center, Heading, Text } from "@vygruppen/spor-react";
+import { Box, Button, Center, Text } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect } from "react";
 import {
   ClientStyleContext,
@@ -20,6 +20,7 @@ import { RootErrorBoundary } from "./features/error-boundary/RootErrorBoundary";
 import { FontPreloading } from "./features/font-loading/FontPreloading";
 import { BaseLayout } from "./features/layouts/base-layout/BaseLayout";
 import { RootProviders } from "./features/root-providers/RootProviders";
+import { NotFound } from "./features/routes/ressurser/ikoner/NotFound";
 import {
   UserPreferences,
   UserPreferencesProvider,
@@ -103,9 +104,15 @@ export function CatchBoundary() {
   switch (caught.status) {
     case 404:
       message = (
-        <Text>
-          Ups! Det ser ut som du prøvde å besøke en side som ikke finnes.
-        </Text>
+        <Box>
+          <NotFound mx="auto" mb={2} />
+          <Text textStyle="sm" mb={4}>
+            Ups! Det ser ut som du prøvde å besøke en side som ikke finnes.
+          </Text>
+          <Button as="a" href="/" variant="primary">
+            Tilbake til forsiden
+          </Button>
+        </Box>
       );
       break;
 
@@ -116,12 +123,7 @@ export function CatchBoundary() {
   return (
     <Document title={`${caught.status} - ${caught.statusText}`}>
       <Center minHeight="100vh">
-        <Box textAlign="center">
-          <Heading as="h1">
-            {caught.status}: {caught.statusText}
-          </Heading>
-          {message}
-        </Box>
+        <Box textAlign="center">{message}</Box>
       </Center>
     </Document>
   );

@@ -8,6 +8,23 @@ type SimpleAlertProps = {
   leftIcon: JSX.Element;
 };
 
+/**
+ * Renders a simple alert.
+ *
+ * This most basic version of an alert.
+ * It looks like this:
+ *
+ * ```tsx
+ * <SimpleAlert colorScheme="yellow" leftIcon={<AltTransportOutline18Icon />}>
+ *   <Text variant="md">Content</Text>
+ * </SimpleAlert>
+ * ```
+ *
+ * There are six color schemes available; yellow, light-yellow, orange, red, green and blue.
+ * You can also insert your own icon as a "leftIcon"
+ *
+ */
+
 export const SimpleAlert = ({
   children,
   colorScheme,

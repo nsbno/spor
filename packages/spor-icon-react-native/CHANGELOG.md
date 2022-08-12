@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.1.3
+
+### Patch Changes
+
+- 2521824: Endre fra dependencies til devDependencies for react-native-svg
+
 ## 0.1.2
 
 ### Patch Changes

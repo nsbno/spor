@@ -23,11 +23,10 @@
     "build:step-2": "tsup tmp/index.ts",
     "build:step-3": "rimraf tmp"
   },
-  "dependencies": {
-    "react-native-svg": "^12.3.0"
-  },
+
   "devDependencies": {
     "@vygruppen/spor-icon": "*",
+    "react-native-svg": "^12.3.0",
     "@svgr/core": "^6.2.0",
     "@svgr/plugin-jsx": "^6.2.0",
     "@svgr/plugin-svgo": "^6.2.0",
@@ -42,6 +41,7 @@
   },
   "peerDependencies": {
     "react": ">17.0.0",
-    "react-native": "^0.66.0"
+    "react-native": "^0.66.0",
+    "react-native-svg": "^12.3.0"
   }
 }

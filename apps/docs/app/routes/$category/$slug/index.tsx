@@ -1,6 +1,5 @@
 import { PortableText } from "@portabletext/react";
 import type { LoaderFunction, MetaFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
 import {
   Badge,
   Box,
@@ -12,6 +11,7 @@ import {
   HStack,
 } from "@vygruppen/spor-react";
 import invariant from "tiny-invariant";
+import { useUserPreferences } from "~/features/user-preferences/UserPreferencesContext";
 import { getClient } from "~/utils/sanity/client";
 import {
   PreviewableLoaderData,
@@ -35,9 +35,7 @@ type Data = {
   resourceLinks?: ResourceLink[];
   content: any[];
 };
-type LoaderData = PreviewableLoaderData<Data> & {
-  preferredTechnology: "react" | "react-native" | "elm" | "figma";
-};
+type LoaderData = PreviewableLoaderData<Data>;
 
 export const loader: LoaderFunction = async ({
   params,
@@ -85,10 +83,6 @@ export const loader: LoaderFunction = async ({
     isPreview,
     query: isPreview ? query : null,
     queryParams: isPreview ? queryParams : null,
-    preferredTechnology:
-      userPreferences.userType === "developer"
-        ? userPreferences.technology
-        : "figma",
   };
 };
 
@@ -104,9 +98,9 @@ export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
 
 export default function ArticlePage() {
   const { data: article, isPreview } = usePreviewableData<Data>();
-  const { preferredTechnology } = useLoaderData<LoaderData>();
+  const { userPreferences } = useUserPreferences();
   const showNoImplementationWarning =
-    preferredTechnology !== "figma" &&
+    userPreferences.userType === "developer" &&
     article.category?.title === "Komponenter" &&
     article.resourceLinks?.filter((link) => link.linkType !== "figma")
       .length === 0;
@@ -120,7 +114,7 @@ export default function ArticlePage() {
           {isPreview && <Badge colorScheme="yellow">Preview</Badge>}
           {showNoImplementationWarning && (
             <Badge colorScheme="red">
-              Ikke tilgjengelig i {mapLinkToLabel(preferredTechnology)}
+              Ikke tilgjengelig i {mapLinkToLabel(userPreferences.technology)}
             </Badge>
           )}
         </HStack>

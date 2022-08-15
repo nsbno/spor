@@ -16,6 +16,7 @@ import { ChangeEvent } from "react";
 import {
   Technology,
   TokensFormat,
+  UserPreferences,
   UserType,
   useUserPreferences,
 } from "../user-preferences/UserPreferencesContext";
@@ -27,16 +28,29 @@ export const UserPreferenceSwitcher = () => {
     <>
       <Flex as="button" onClick={onOpen} gap={2}>
         <Box whiteSpace="nowrap">
-          Vis som{" "}
-          <strong>
-            {userPreferences.userType === "designer" ? "designer" : "utvikler"}
-          </strong>
+          Vis som <strong>{getUserTypeLabel(userPreferences)}</strong>
         </Box>
         <SettingsX1Fill24Icon />
       </Flex>
       <UserPreferencesModal isOpen={isOpen} onClose={onClose} />
     </>
   );
+};
+
+const getUserTypeLabel = (userPreferences: UserPreferences) => {
+  if (userPreferences.userType === "designer") {
+    return "designer";
+  }
+  switch (userPreferences.technology) {
+    case "elm":
+      return "Elm-utvikler";
+    case "react-native":
+      return "App-utvikler";
+    case "react":
+      return "React-utvikler";
+    default:
+      return "utvikler";
+  }
 };
 
 type UserPreferencesModalProps = { isOpen: boolean; onClose: () => void };

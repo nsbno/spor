@@ -11,12 +11,14 @@ import {
   HStack,
 } from "@vygruppen/spor-react";
 import invariant from "tiny-invariant";
+import { useUserPreferences } from "~/features/user-preferences/UserPreferencesContext";
 import { getClient } from "~/utils/sanity/client";
 import {
   PreviewableLoaderData,
   usePreviewableData,
 } from "~/utils/sanity/usePreviewableData";
 import { isValidPreviewRequest } from "~/utils/sanity/utils";
+import { getUserPreferencesSession } from "~/utils/userPreferences.server";
 
 type ResourceLink = {
   linkType: "figma" | "react" | "react-native" | "elm";
@@ -42,6 +44,9 @@ export const loader: LoaderFunction = async ({
   invariant(params.category, "Expected params.category");
   invariant(params.slug, "Expected params.slug");
 
+  const userPreferencesSession = await getUserPreferencesSession(request);
+  const userPreferences = userPreferencesSession.getUserPreferences();
+
   const query = `*[_type == "article" && category->slug.current == $categorySlug && slug.current == $articleSlug] {
     _id,
     title,
@@ -50,7 +55,7 @@ export const loader: LoaderFunction = async ({
       title,
       "slug": slug.current
     },
-    resourceLinks,
+    resourceLinks[linkType == $technologyPreference || linkType == "figma"],
     content[]{
       _type == 'reference' => @->,
       _type != 'reference' => @,
@@ -59,6 +64,10 @@ export const loader: LoaderFunction = async ({
   const queryParams = {
     categorySlug: params.category,
     articleSlug: params.slug,
+    technologyPreference:
+      userPreferences.userType === "developer"
+        ? userPreferences.technology
+        : "figma",
   };
   const isPreview = isValidPreviewRequest(request);
   const initialData = await getClient(isPreview).fetch<
@@ -89,13 +98,26 @@ export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
 
 export default function ArticlePage() {
   const { data: article, isPreview } = usePreviewableData<Data>();
+  const { userPreferences } = useUserPreferences();
+  const showNoImplementationWarning =
+    userPreferences.userType === "developer" &&
+    article.category?.title === "Komponenter" &&
+    article.resourceLinks?.filter((link) => link.linkType !== "figma")
+      .length === 0;
   return (
     <>
       <HStack mb={1} justifyContent="space-between">
-        {article.category?.title && (
-          <Badge colorScheme="green">{article.category?.title}</Badge>
-        )}
-        {isPreview && <Badge colorScheme="red">Preview</Badge>}
+        <HStack>
+          {article.category?.title && (
+            <Badge colorScheme="green">{article.category?.title}</Badge>
+          )}
+          {isPreview && <Badge colorScheme="yellow">Preview</Badge>}
+          {showNoImplementationWarning && (
+            <Badge colorScheme="red">
+              Ikke tilgjengelig i {mapLinkToLabel(userPreferences.technology)}
+            </Badge>
+          )}
+        </HStack>
         <Flex flexWrap="wrap" gap={2}>
           {article.resourceLinks?.map((link) => (
             <Button
@@ -104,9 +126,9 @@ export default function ArticlePage() {
               href={link.url}
               variant="additional"
               size="sm"
-              leftIcon={mapLinkToIcon(link)}
+              leftIcon={mapLinkToIcon(link.linkType)}
             >
-              {mapLinkToLabel(link)}
+              {mapLinkToLabel(link.linkType)}
             </Button>
           ))}
         </Flex>
@@ -123,8 +145,8 @@ export default function ArticlePage() {
   );
 }
 
-const mapLinkToLabel = (link: ResourceLink) => {
-  switch (link.linkType) {
+const mapLinkToLabel = (linkType: ResourceLink["linkType"]) => {
+  switch (linkType) {
     case "figma":
       return "Figma";
     case "elm":
@@ -138,8 +160,8 @@ const mapLinkToLabel = (link: ResourceLink) => {
   }
 };
 
-const mapLinkToIcon = (link: ResourceLink) => {
-  switch (link.linkType) {
+const mapLinkToIcon = (linkType: ResourceLink["linkType"]) => {
+  switch (linkType) {
     case "figma":
       return <FigmaOutline24Icon />;
     default:

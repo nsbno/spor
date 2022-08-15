@@ -74,7 +74,7 @@ export type LoaderData = {
 export const loader: LoaderFunction = async ({ request }) => {
   const [session, initialSanityData] = await Promise.all([
     getUserPreferencesSession(request),
-    getInitialSanityData(),
+    getInitialSanityData(request),
   ]);
 
   return {

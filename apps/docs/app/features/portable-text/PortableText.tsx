@@ -31,6 +31,7 @@ import { urlBuilder } from "~/utils/sanity/utils";
 import { CodeBlock } from "../code-block/CodeBlock";
 import { InteractiveCode } from "../interactive-code/InteractiveCode";
 import { LinkableHeading } from "../linkable-heading/LinkableHeading";
+import { useUserPreferences } from "../user-preferences/UserPreferencesContext";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
@@ -266,7 +267,32 @@ const components: Partial<PortableTextReactComponents> = {
         )}
       </Box>
     ),
-    imports: ({ value }) => <CodeBlock code={value.reactImport} mt={3} />,
+    imports: ({ value }) => {
+      const { userPreferences } = useUserPreferences();
+      if (userPreferences.userType === "designer") {
+        return null;
+      }
+      let imports;
+      switch (userPreferences.technology) {
+        case "react":
+          imports = value.reactImport;
+          break;
+        case "react-native":
+          imports = value.reactNativeImport;
+          break;
+        case "elm":
+          imports = value.elmImport;
+          break;
+        default:
+          return null;
+      }
+
+      if (!imports) {
+        return null;
+      }
+
+      return <CodeBlock code={imports} mt={3} />;
+    },
     tipsPanel: ({ value }) => (
       <Box
         as="article"

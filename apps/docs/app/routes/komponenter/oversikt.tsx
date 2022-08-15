@@ -1,9 +1,10 @@
 import { PortableText } from "@portabletext/react";
-import { Box, Card, Heading, Image, SimpleGrid } from "@vygruppen/spor-react";
 import { LoaderFunction } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
+import { Box, Card, Heading, Image, SimpleGrid } from "@vygruppen/spor-react";
 import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";
+import { getUserPreferencesSession } from "~/utils/userPreferences.server";
 
 type ComponentData = {
   _id: string;
@@ -13,15 +14,22 @@ type ComponentData = {
   content: any[];
 };
 
-const componentsQuery = async () => {
-  const query = `*[_type == "article" && category->slug.current == "komponenter" && slug.current != "oversikt"] | order(title asc) {
+const componentsQuery = async (technologyPreference?: string) => {
+  const query = `*[
+      _type == "article" && 
+      category->slug.current == "komponenter" && 
+      slug.current != "oversikt" && 
+      $technologyPreference in resourceLinks[].linkType
+    ] | order(title asc) {
     _id,
     title,
     "slug": slug.current,
     mainImage,
     content,
   }`;
-  const componentArticles = await getClient().fetch<ComponentData[]>(query);
+  const componentArticles = await getClient().fetch<ComponentData[]>(query, {
+    technologyPreference,
+  });
 
   if (!componentArticles || !componentArticles.length) {
     throw new Response("Not Found", { status: 404 });
@@ -55,8 +63,14 @@ type LoaderData = {
   article: ArticleData;
 };
 
-export const loader: LoaderFunction = async () => {
-  const componentsPromise = componentsQuery();
+export const loader: LoaderFunction = async ({ request }) => {
+  const session = await getUserPreferencesSession(request);
+  const userPreferences = session.getUserPreferences();
+  const technologyPreference =
+    userPreferences.userType === "developer"
+      ? userPreferences.technology
+      : "figma";
+  const componentsPromise = componentsQuery(technologyPreference);
   const articlePromise = articleQuery();
   const [components, article] = await Promise.all([
     componentsPromise,
@@ -79,7 +93,7 @@ export default function ComponentsPage() {
             key={component._id}
             as={Link}
             to={`../${component.slug}`}
-            variant="elevated"
+            colorScheme="white"
           >
             {component.mainImage ? (
               <Image

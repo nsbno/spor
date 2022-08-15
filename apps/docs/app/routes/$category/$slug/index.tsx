@@ -1,5 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import type { LoaderFunction, MetaFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import {
   Badge,
   Box,
@@ -17,6 +18,7 @@ import {
   usePreviewableData,
 } from "~/utils/sanity/usePreviewableData";
 import { isValidPreviewRequest } from "~/utils/sanity/utils";
+import { getUserPreferencesSession } from "~/utils/userPreferences.server";
 
 type ResourceLink = {
   linkType: "figma" | "react" | "react-native" | "elm";
@@ -33,7 +35,9 @@ type Data = {
   resourceLinks?: ResourceLink[];
   content: any[];
 };
-type LoaderData = PreviewableLoaderData<Data>;
+type LoaderData = PreviewableLoaderData<Data> & {
+  preferredTechnology: "react" | "react-native" | "elm" | "figma";
+};
 
 export const loader: LoaderFunction = async ({
   params,
@@ -41,6 +45,9 @@ export const loader: LoaderFunction = async ({
 }): Promise<LoaderData> => {
   invariant(params.category, "Expected params.category");
   invariant(params.slug, "Expected params.slug");
+
+  const userPreferencesSession = await getUserPreferencesSession(request);
+  const userPreferences = userPreferencesSession.getUserPreferences();
 
   const query = `*[_type == "article" && category->slug.current == $categorySlug && slug.current == $articleSlug] {
     _id,
@@ -50,7 +57,7 @@ export const loader: LoaderFunction = async ({
       title,
       "slug": slug.current
     },
-    resourceLinks,
+    resourceLinks[linkType == $technologyPreference],
     content[]{
       _type == 'reference' => @->,
       _type != 'reference' => @,
@@ -59,6 +66,10 @@ export const loader: LoaderFunction = async ({
   const queryParams = {
     categorySlug: params.category,
     articleSlug: params.slug,
+    technologyPreference:
+      userPreferences.userType === "developer"
+        ? userPreferences.technology
+        : "figma",
   };
   const isPreview = isValidPreviewRequest(request);
   const initialData = await getClient(isPreview).fetch<
@@ -74,6 +85,10 @@ export const loader: LoaderFunction = async ({
     isPreview,
     query: isPreview ? query : null,
     queryParams: isPreview ? queryParams : null,
+    preferredTechnology:
+      userPreferences.userType === "developer"
+        ? userPreferences.technology
+        : "figma",
   };
 };
 
@@ -89,6 +104,9 @@ export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
 
 export default function ArticlePage() {
   const { data: article, isPreview } = usePreviewableData<Data>();
+  const { preferredTechnology } = useLoaderData<LoaderData>();
+  const showNoImplementationWarning =
+    article.category?.title === "Komponenter" && !article.resourceLinks?.length;
   return (
     <>
       <HStack mb={1} justifyContent="space-between">
@@ -104,11 +122,16 @@ export default function ArticlePage() {
               href={link.url}
               variant="additional"
               size="sm"
-              leftIcon={mapLinkToIcon(link)}
+              leftIcon={mapLinkToIcon(link.linkType)}
             >
-              {mapLinkToLabel(link)}
+              {mapLinkToLabel(link.linkType)}
             </Button>
           ))}
+          {showNoImplementationWarning && (
+            <Badge colorScheme="red">
+              Ikke tilgjengelig i {mapLinkToLabel(preferredTechnology)}
+            </Badge>
+          )}
         </Flex>
       </HStack>
       <Box>
@@ -123,8 +146,8 @@ export default function ArticlePage() {
   );
 }
 
-const mapLinkToLabel = (link: ResourceLink) => {
-  switch (link.linkType) {
+const mapLinkToLabel = (linkType: ResourceLink["linkType"]) => {
+  switch (linkType) {
     case "figma":
       return "Figma";
     case "elm":
@@ -138,8 +161,8 @@ const mapLinkToLabel = (link: ResourceLink) => {
   }
 };
 
-const mapLinkToIcon = (link: ResourceLink) => {
-  switch (link.linkType) {
+const mapLinkToIcon = (linkType: ResourceLink["linkType"]) => {
+  switch (linkType) {
     case "figma":
       return <FigmaOutline24Icon />;
     default:

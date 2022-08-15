@@ -1,4 +1,5 @@
 import { getClient } from "./sanity/client";
+import { getUserPreferencesSession } from "./userPreferences.server";
 
 type SiteSettings = {
   title: string;
@@ -21,8 +22,15 @@ export type InitialSanityData = {
   menus: Menu[];
   siteSettings: SiteSettings;
 };
-export const getInitialSanityData = async () =>
-  getClient().fetch<MenuItem[]>(
+export const getInitialSanityData = async (request: Request) => {
+  const userPreferencesSession = await getUserPreferencesSession(request);
+  const userPreferences = userPreferencesSession.getUserPreferences();
+  const preferredTechnology =
+    userPreferences.userType === "developer"
+      ? userPreferences.technology
+      : "figma";
+
+  return getClient().fetch<MenuItem[]>(
     `{
       "menus": *[_type == "menu"] { 
         "slug": slug.current,
@@ -35,7 +43,9 @@ export const getInitialSanityData = async () =>
               "/" + internalLink->slug.current, 
             defined(externalLink) => externalLink
           ),
-          subItems[]{
+          subItems[
+            internalLink->category->slug.current != "komponenter" ||$preferredTechnology in internalLink->resourceLinks[].linkType
+          ]{
             title,
             tags,
             "url": select(
@@ -53,5 +63,7 @@ export const getInitialSanityData = async () =>
         keywords,
         socialImage
       }
-    }`
+    }`,
+    { preferredTechnology }
   );
+};

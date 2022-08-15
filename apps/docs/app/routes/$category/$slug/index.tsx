@@ -57,7 +57,7 @@ export const loader: LoaderFunction = async ({
       title,
       "slug": slug.current
     },
-    resourceLinks[linkType == $technologyPreference],
+    resourceLinks[linkType == $technologyPreference || linkType == "figma"],
     content[]{
       _type == 'reference' => @->,
       _type != 'reference' => @,
@@ -106,14 +106,24 @@ export default function ArticlePage() {
   const { data: article, isPreview } = usePreviewableData<Data>();
   const { preferredTechnology } = useLoaderData<LoaderData>();
   const showNoImplementationWarning =
-    article.category?.title === "Komponenter" && !article.resourceLinks?.length;
+    preferredTechnology !== "figma" &&
+    article.category?.title === "Komponenter" &&
+    article.resourceLinks?.filter((link) => link.linkType !== "figma")
+      .length === 0;
   return (
     <>
       <HStack mb={1} justifyContent="space-between">
-        {article.category?.title && (
-          <Badge colorScheme="green">{article.category?.title}</Badge>
-        )}
-        {isPreview && <Badge colorScheme="red">Preview</Badge>}
+        <HStack>
+          {article.category?.title && (
+            <Badge colorScheme="green">{article.category?.title}</Badge>
+          )}
+          {isPreview && <Badge colorScheme="yellow">Preview</Badge>}
+          {showNoImplementationWarning && (
+            <Badge colorScheme="red">
+              Ikke tilgjengelig i {mapLinkToLabel(preferredTechnology)}
+            </Badge>
+          )}
+        </HStack>
         <Flex flexWrap="wrap" gap={2}>
           {article.resourceLinks?.map((link) => (
             <Button
@@ -127,11 +137,6 @@ export default function ArticlePage() {
               {mapLinkToLabel(link.linkType)}
             </Button>
           ))}
-          {showNoImplementationWarning && (
-            <Badge colorScheme="red">
-              Ikke tilgjengelig i {mapLinkToLabel(preferredTechnology)}
-            </Badge>
-          )}
         </Flex>
       </HStack>
       <Box>

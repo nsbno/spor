@@ -1,20 +1,30 @@
 import { DarkMode, forwardRef, useClipboard } from "@chakra-ui/react";
 import { Box, BoxProps, Button } from "@vygruppen/spor-react";
-import Highlight, { defaultProps } from "prism-react-renderer";
+import Highlight, { defaultProps, Prism } from "prism-react-renderer";
 import { useRef } from "react";
 import { theme } from "./codeTheme";
+
+// This includes Elm highlighting support
+// It's pretty hacky, so it doesn't play well with TS
+// @ts-ignore
+(typeof global !== "undefined" ? global : window).Prism = Prism;
+require("prismjs/components/prism-elm");
+// Back to normalcy
 
 type CodeBlockProps = Omit<BoxProps, "children"> & {
   /** The code to highlight */
   code: string;
   /** The code language to highlight */
-  language?: "jsx";
+  language?: "jsx" | "elm";
 };
 export const CodeBlock = ({
   code,
   language = "jsx",
   ...props
 }: CodeBlockProps) => {
+  if (!code) {
+    return null;
+  }
   return (
     <CodeBlockContainer
       maxWidth={`calc(100vw - var(--spor-space-6))`}
@@ -26,7 +36,7 @@ export const CodeBlock = ({
         {...defaultProps}
         theme={theme}
         code={code}
-        language={language}
+        language={language as any}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <Box as="pre" className={className} style={style}>

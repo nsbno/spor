@@ -15,7 +15,6 @@ export const codeExample: ObjectField = {
         list: ["simple", "preview-only", "code-only", "advanced"],
       },
       initialValue: "simple",
-      validation: (Rule) => Rule.required(),
     },
     {
       name: "reactCode",
@@ -25,9 +24,25 @@ export const codeExample: ObjectField = {
         language: "react",
         languageAlternatives: [{ title: "React", value: "react" }],
       },
-      validation: (Rule) => Rule.required(),
     },
-    // TODO: Add support for other targets, like React Native and Elm
+    {
+      name: "reactNativeCode",
+      title: "React Native Code Example",
+      type: "code",
+      options: {
+        language: "react",
+        languageAlternatives: [{ title: "React Native", value: "react" }],
+      },
+    },
+    {
+      name: "elmCode",
+      title: "Elm Code Example",
+      type: "code",
+      options: {
+        language: "elm",
+        languageAlternatives: [{ title: "Elm", value: "elm" }],
+      },
+    },
   ],
   preview: {
     select: {

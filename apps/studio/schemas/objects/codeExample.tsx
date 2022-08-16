@@ -31,7 +31,7 @@ export const codeExample: ObjectField = {
       type: "code",
       options: {
         language: "react",
-        languageAlternatives: [{ title: "React", value: "react" }],
+        languageAlternatives: [{ title: "React Native", value: "react" }],
       },
     },
     {

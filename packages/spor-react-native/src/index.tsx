@@ -5,7 +5,7 @@ export * from "@vygruppen/spor-button-react-native";
 export * from "@vygruppen/spor-card-react-native";
 export * from "@vygruppen/spor-i18n-react";
 export * from "@vygruppen/spor-layout-react-native";
-export * from "../../spor-linjetag-react-native/dist";
+export * from "@vygruppen/spor-linjetag-react-native/dist";
 export * from "@vygruppen/spor-loader-react-native";
 export * from "@vygruppen/spor-message-box-react-native";
 export * from "@vygruppen/spor-modal-react-native";

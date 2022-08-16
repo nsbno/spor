@@ -1,5 +1,11 @@
 # @vygruppen/spor-react-native
 
+## 0.3.23
+
+### Patch Changes
+
+- 33608f8: Endrer path for export for react-native linjetag
+
 ## 0.3.22
 
 ### Patch Changes

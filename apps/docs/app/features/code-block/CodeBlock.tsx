@@ -22,6 +22,9 @@ export const CodeBlock = ({
   language = "jsx",
   ...props
 }: CodeBlockProps) => {
+  if (!code) {
+    return null;
+  }
   return (
     <CodeBlockContainer
       maxWidth={`calc(100vw - var(--spor-space-6))`}

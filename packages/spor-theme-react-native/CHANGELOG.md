@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react-native
 
+## 0.2.10
+
+### Patch Changes
+
+- da41f8c: Endre borderRadius for small Card
+
 ## 0.2.9
 
 ### Patch Changes

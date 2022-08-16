@@ -1,5 +1,12 @@
 # @vygruppen/spor-provider-react-native
 
+## 0.1.19
+
+### Patch Changes
+
+- Updated dependencies [da41f8c]
+  - @vygruppen/spor-theme-react-native@0.2.10
+
 ## 0.1.18
 
 ### Patch Changes

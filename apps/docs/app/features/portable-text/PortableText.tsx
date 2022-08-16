@@ -205,17 +205,56 @@ const components: Partial<PortableTextReactComponents> = {
         />
       );
     },
-    codeExample: ({ value }) =>
-      value.layout === "code-only" ? (
-        <CodeBlock mt={6} language="jsx" code={value.reactCode.code} />
+    codeExample: ({ value }) => {
+      const { userPreferences } = useUserPreferences();
+      if (userPreferences.userType === "designer") {
+        return (
+          <InteractiveCode
+            mt={3}
+            layout="preview-only"
+            code={value.reactCode.code}
+          />
+        );
+      }
+      let code, language;
+      switch (userPreferences.technology) {
+        case "react": {
+          code = value.reactCode?.code ?? "";
+          language = "jsx";
+          break;
+        }
+        case "react-native": {
+          code = value.reactNativeCode?.code ?? "";
+          language = "jsx";
+          break;
+        }
+        case "elm": {
+          code = value.elmCode?.code ?? "";
+          language = "elm";
+          break;
+        }
+        default:
+          return null;
+      }
+
+      const showCodeBlock =
+        value.layout === "code-only" || userPreferences.technology !== "react";
+
+      return showCodeBlock ? (
+        <CodeBlock
+          mt={6}
+          language={userPreferences.technology === "elm" ? "elm" : "jsx"}
+          code={code}
+        />
       ) : (
         <InteractiveCode
           layout={value.layout}
           mt={3}
           maxWidth={`calc(100vw - var(--spor-space-6))`}
-          code={value.reactCode.code}
+          code={code}
         />
-      ),
+      );
+    },
     component: ({ value }) => (
       <Box key={value.name} mt={6} as="article">
         <LinkableHeading as="h3" textStyle="md" fontWeight="bold" mb={-2}>

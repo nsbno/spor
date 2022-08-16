@@ -15,7 +15,6 @@ export const codeExample: ObjectField = {
         list: ["simple", "preview-only", "code-only", "advanced"],
       },
       initialValue: "simple",
-      validation: (Rule) => Rule.required(),
     },
     {
       name: "reactCode",
@@ -25,7 +24,6 @@ export const codeExample: ObjectField = {
         language: "react",
         languageAlternatives: [{ title: "React", value: "react" }],
       },
-      validation: (Rule) => Rule.required(),
     },
     {
       name: "reactNativeCode",
@@ -35,7 +33,6 @@ export const codeExample: ObjectField = {
         language: "react",
         languageAlternatives: [{ title: "React", value: "react" }],
       },
-      validation: (Rule) => Rule.required(),
     },
     {
       name: "elmCode",
@@ -45,7 +42,6 @@ export const codeExample: ObjectField = {
         language: "elm",
         languageAlternatives: [{ title: "Elm", value: "elm" }],
       },
-      validation: (Rule) => Rule.required(),
     },
   ],
   preview: {

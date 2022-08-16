@@ -1,5 +1,12 @@
 # @vygruppen/spor-linjetag-react-native
 
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies [da41f8c]
+  - @vygruppen/spor-theme-react-native@0.2.10
+
 ## 0.1.3
 
 ### Patch Changes

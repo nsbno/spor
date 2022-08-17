@@ -116,9 +116,11 @@ export const CopyCodeButton = forwardRef<CopyCodeButtonProps, "button">(
         <Button
           variant="additional"
           color="white"
+          backgroundColor="alias.darkGrey"
           boxShadow="inset 0 0 0 1px white"
           size="xs"
           onClick={onCopy}
+          _active={{ backgroundColor: "alias.mint", color: "alias.darkGrey" }}
           fontFamily="body"
           ref={ref}
         >

@@ -3,6 +3,7 @@
   "version": "0.1.6",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "type": "module",
   "license": "MIT",
   "files": [
     "dist"
@@ -15,7 +16,7 @@
     "directory": "packages/spor-loader-react-native"
   },
   "scripts": {
-    "build": "tsup src/index.tsx --dts",
+    "build": "tsup src/* --dts --treeshake --format esm,cjs",
     "dev": "tsup src/index.tsx --watch"
   },
   "dependencies": {

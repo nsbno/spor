@@ -10,6 +10,6 @@
     "module": "ESNext",
     "rootDir": "src",
     "outDir": "dist",
-    "jsx": "react-native"
+    "jsx": "react"
   }
 }

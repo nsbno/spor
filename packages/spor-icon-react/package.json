@@ -20,7 +20,7 @@
     "prebuild": "npm run clean",
     "build": "npm run build:step-1 && npm run build:step-2",
     "build:step-1": "ts-node bin/generate.ts",
-    "build:step-2": "tsup tmp/index.ts",
+    "build:step-2": "tsup tmp/index.ts --format esm",
     "build:step-3": "rimraf tmp"
   },
   "dependencies": {
@@ -40,6 +40,6 @@
     "fs-extra": "^10.0.0",
     "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
-    "tsup": "^5.11.11"
+    "tsup": "^6.2.2"
   }
 }

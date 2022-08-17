@@ -19,6 +19,6 @@
     "dev": "tsup src/index.ts --watch"
   },
   "devDependencies": {
-    "tsup": "^5.11.11"
+    "tsup": "^6.2.2"
   }
 }

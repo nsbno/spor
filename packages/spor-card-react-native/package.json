@@ -27,7 +27,7 @@
   "devDependencies": {
     "react": ">17.0.0",
     "react-native": "^0.66.0",
-    "tsup": "^5.11.11",
+    "tsup": "^6.2.2",
     "@shopify/restyle": "^2.1.0"
   },
   "peerDependencies": {

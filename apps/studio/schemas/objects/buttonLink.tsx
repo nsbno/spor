@@ -1,5 +1,3 @@
-import { Button, ButtonProps, Center } from "@vygruppen/spor-react";
-import * as React from "react";
 import { MdOutlineLink } from "react-icons/md";
 import { ObjectField } from "../schemaTypes";
 
@@ -61,17 +59,8 @@ export const buttonLink: ObjectField<ButtonLink> = {
   ],
   preview: {
     select: {
-      children: "text",
-      variant: "variant",
-      size: "size",
+      title: "text",
+      subtitle: "variant",
     },
-    prepare: (values) => values,
-    component: ({ value }: { value: ButtonProps }) => (
-      <Center height="100%">
-        <Button variant={value.variant} size={value.size}>
-          {value.children}
-        </Button>
-      </Center>
-    ),
   },
 };

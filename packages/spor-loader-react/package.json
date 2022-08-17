@@ -8,7 +8,6 @@
   "files": [
     "dist"
   ],
-  "sideEffects": false,
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-loader-react",
   "repository": {
     "type": "git",

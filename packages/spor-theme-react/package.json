@@ -3,7 +3,6 @@
   "version": "0.5.5",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "type": "module",
   "license": "MIT",
   "files": [
     "dist"
@@ -16,7 +15,7 @@
     "directory": "packages/spor-theme-react"
   },
   "scripts": {
-    "build": "tsup src/index.ts --dts --format esm",
+    "build": "tsup src/* --dts --treeshake --format esm,cjs",
     "dev": "tsup src/index.ts --watch"
   },
   "dependencies": {

@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "description": "Spor icons as Elm SVG nodes",
-  "type": "module",
   "scripts": {
     "test": "exit 0",
     "generate": "node ./generate.js"

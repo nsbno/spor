@@ -3,9 +3,7 @@
   "version": "0.3.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "type": "module",
   "license": "MIT",
-  "type": "module",
   "files": [
     "dist"
   ],

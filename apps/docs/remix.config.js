@@ -9,4 +9,5 @@ module.exports = {
   devServerPort: 8002,
   ignoredRouteFiles: [".*"],
   watchGlobs: ["../../packages/*/dist/index.js"],
+  serverDependenciesToBundle: ["@vygruppen/*"],
 };

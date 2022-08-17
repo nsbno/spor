@@ -205,6 +205,16 @@ const components: Partial<PortableTextReactComponents> = {
         />
       );
     },
+    staticCodeBlock: ({ value }) => {
+      console.log(value);
+      return (
+        <CodeBlock
+          mt={6}
+          language={value.code.language}
+          code={value.code.code}
+        />
+      );
+    },
     codeExample: ({ value }) => {
       const { userPreferences } = useUserPreferences();
       if (userPreferences.userType === "designer") {
@@ -216,21 +226,18 @@ const components: Partial<PortableTextReactComponents> = {
           />
         );
       }
-      let code, language;
+      let code;
       switch (userPreferences.technology) {
         case "react": {
           code = value.reactCode?.code ?? "";
-          language = "jsx";
           break;
         }
         case "react-native": {
           code = value.reactNativeCode?.code ?? "";
-          language = "jsx";
           break;
         }
         case "elm": {
           code = value.elmCode?.code ?? "";
-          language = "elm";
           break;
         }
         default:

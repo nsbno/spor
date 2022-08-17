@@ -4,7 +4,7 @@ import { ObjectField } from "../schemaTypes";
 export const codeExample: ObjectField = {
   icon: MdCode,
   name: "codeExample",
-  title: "Code Example",
+  title: "Interactive Code Example",
   type: "object",
   fields: [
     {

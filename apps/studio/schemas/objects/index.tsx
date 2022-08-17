@@ -8,4 +8,5 @@ export * from "./imports";
 export * from "./introduction";
 export * from "./menuItem";
 export * from "./props";
+export * from "./staticCodeBlock";
 export * from "./tipsPanel";

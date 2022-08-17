@@ -15,11 +15,11 @@ type CodeBlockProps = Omit<BoxProps, "children"> & {
   /** The code to highlight */
   code: string;
   /** The code language to highlight */
-  language?: "jsx" | "elm";
+  language?: "tsx" | "elm" | "bash";
 };
 export const CodeBlock = ({
   code,
-  language = "jsx",
+  language = "tsx",
   ...props
 }: CodeBlockProps) => {
   if (!code) {
@@ -28,7 +28,6 @@ export const CodeBlock = ({
   return (
     <CodeBlockContainer
       maxWidth={`calc(100vw - var(--spor-space-6))`}
-      overflowX="auto"
       {...props}
       code={code}
     >
@@ -89,7 +88,7 @@ export const CodeBlockContainer = ({
       <Box position="absolute" top={2} right={2}>
         <CopyCodeButton ref={copyButtonRef} code={code} />
       </Box>
-      <Box>{children}</Box>
+      <Box overflow="auto">{children}</Box>
     </Box>
   );
 };
@@ -117,9 +116,11 @@ export const CopyCodeButton = forwardRef<CopyCodeButtonProps, "button">(
         <Button
           variant="additional"
           color="white"
-          boxShadow="inset 0 0 0 1px white"
+          backgroundColor="alias.darkGrey"
+          boxShadow="inset 0 0 0 1px white, 0 0 10px 0.25rem rgba(0,0,0,0.7)"
           size="xs"
           onClick={onCopy}
+          _active={{ backgroundColor: "alias.mint", color: "alias.darkGrey" }}
           fontFamily="body"
           ref={ref}
         >

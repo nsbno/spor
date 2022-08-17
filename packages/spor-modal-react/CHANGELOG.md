@@ -1,5 +1,11 @@
 # @vygruppen/spor-modal-react
 
+## 0.1.2
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+
 ## 0.1.1
 
 ### Patch Changes

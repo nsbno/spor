@@ -1,5 +1,16 @@
 # @vygruppen/spor-card-react-native
 
+## 0.1.3
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+- Updated dependencies [4337f0f4]
+  - @vygruppen/spor-button-react-native@0.2.14
+  - @vygruppen/spor-icon-react-native@0.1.4
+  - @vygruppen/spor-layout-react-native@0.0.4
+  - @vygruppen/spor-theme-react-native@0.2.11
+
 ## 0.1.2
 
 ### Patch Changes

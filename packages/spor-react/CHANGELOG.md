@@ -1,5 +1,33 @@
 # @vygruppen/spor-react
 
+## 0.13.21
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+- Updated dependencies [4337f0f4]
+  - @vygruppen/spor-accordion-react@0.1.4
+  - @vygruppen/spor-button-react@0.2.8
+  - @vygruppen/spor-card-react@0.3.1
+  - @vygruppen/spor-datepicker-react@0.1.1
+  - @vygruppen/spor-design-tokens@2.4.4
+  - @vygruppen/spor-i18n-react@0.0.6
+  - @vygruppen/spor-icon-react@0.6.2
+  - @vygruppen/spor-image-react@0.1.2
+  - @vygruppen/spor-input-react@0.5.3
+  - @vygruppen/spor-layout-react@0.3.2
+  - @vygruppen/spor-link-react@0.1.11
+  - @vygruppen/spor-loader-react@0.2.2
+  - @vygruppen/spor-logo-react@0.1.4
+  - @vygruppen/spor-modal-react@0.1.2
+  - @vygruppen/spor-popover-react@0.1.15
+  - @vygruppen/spor-provider-react@0.0.7
+  - @vygruppen/spor-stepper-react@0.1.15
+  - @vygruppen/spor-tab-react@0.1.3
+  - @vygruppen/spor-table-react@0.0.6
+  - @vygruppen/spor-theme-react@0.5.6
+  - @vygruppen/spor-typography-react@0.4.5
+
 ## 0.13.20
 
 ### Patch Changes

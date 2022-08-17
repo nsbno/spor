@@ -36,7 +36,6 @@ export const DrawerContent = forwardRef<DrawerContentProps, any>(
     const { onClose } = useModalContext();
     const handlers = useSwipeable({
       onSwiped: (e) => {
-        console.log(e);
         const shouldClose =
           (placement === "bottom" && e.dir === "Down") ||
           (placement === "right" && e.dir === "Right") ||

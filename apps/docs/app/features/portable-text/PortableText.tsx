@@ -206,7 +206,6 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     staticCodeBlock: ({ value }) => {
-      console.log(value);
       return (
         <CodeBlock
           mt={6}

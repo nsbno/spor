@@ -15,7 +15,7 @@ type CodeBlockProps = Omit<BoxProps, "children"> & {
   /** The code to highlight */
   code: string;
   /** The code language to highlight */
-  language?: "jsx" | "react" | "elm" | "bash";
+  language?: "jsx" | "elm" | "bash";
 };
 export const CodeBlock = ({
   code,

@@ -36,7 +36,7 @@
     "react-native": "^0.66.0",
     "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
-    "tsup": "^5.11.11"
+    "tsup": "^6.2.2"
   },
   "peerDependencies": {
     "react": ">17.0.0",

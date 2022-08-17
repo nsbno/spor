@@ -2,6 +2,7 @@
   "name": "@vygruppen/spor-modal-react-native",
   "version": "1.0.6",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "files": [
@@ -15,7 +16,7 @@
     "directory": "packages/spor-modal-react-native"
   },
   "scripts": {
-    "build": "tsup src/index.tsx --dts",
+    "build": "tsup src/* --dts --treeshake --format esm,cjs",
     "dev": "tsup src/index.tsx --watch"
   },
   "dependencies": {
@@ -29,7 +30,7 @@
     "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
     "react-native": "^0.66.0",
-    "tsup": "^5.11.11",
+    "tsup": "^6.2.2",
     "react-native-svg": "^12.3.0"
   },
   "peerDependencies": {

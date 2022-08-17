@@ -2,6 +2,7 @@
   "name": "@vygruppen/spor-theme-react",
   "version": "0.5.5",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "files": [
@@ -15,7 +16,7 @@
     "directory": "packages/spor-theme-react"
   },
   "scripts": {
-    "build": "tsup src/index.ts --dts",
+    "build": "tsup src/* --dts --treeshake --format esm,cjs",
     "dev": "tsup src/index.ts --watch"
   },
   "dependencies": {
@@ -23,7 +24,7 @@
     "@vygruppen/spor-design-tokens": "*"
   },
   "devDependencies": {
-    "tsup": "^5.11.11"
+    "tsup": "^6.2.2"
   },
   "peerDependencies": {
     "@chakra-ui/react": "^1.7.3",

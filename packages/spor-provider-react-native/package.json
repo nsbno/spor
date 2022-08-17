@@ -2,6 +2,7 @@
   "name": "@vygruppen/spor-provider-react-native",
   "version": "0.1.19",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "files": [
@@ -15,7 +16,7 @@
     "directory": "packages/spor-provider-react-native"
   },
   "scripts": {
-    "build": "tsup src/index.tsx --dts",
+    "build": "tsup src/* --dts --treeshake --format esm,cjs",
     "dev": "tsup src/index.tsx --watch"
   },
   "dependencies": {
@@ -26,7 +27,7 @@
     "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
     "react-native": ">0.66.0",
-    "tsup": "^5.11.11"
+    "tsup": "^6.2.2"
   },
   "peerDependencies": {
     "@shopify/restyle": "^2.1.0",

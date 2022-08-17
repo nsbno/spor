@@ -1,6 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
-import { FavouriteOutline30Icon, Heading } from "@vygruppen/spor-react";
-import React from "react";
+import * as React from "react";
 import { MdStar } from "react-icons/md";
 import { BlockField, ObjectField, StringField } from "../schemaTypes";
 
@@ -37,14 +35,18 @@ export const tipsPanel: ObjectField<TipsPanel> = {
     prepare: (data) => ({ title: data.title }),
     component: (props: { value: { title: string } }) => {
       return (
-        <Box backgroundColor="alias.mint" p={4} borderRadius="md">
-          <Flex gap={1} alignItems="end">
-            <FavouriteOutline30Icon />
-            <Heading textStyle="sm" fontWeight="bold" mt={0.5}>
-              {props.value.title}
-            </Heading>
-          </Flex>
-        </Box>
+        <div
+          style={{
+            backgroundColor: "var(--brand-secondary)",
+            padding: 24,
+            borderRadius: 18,
+          }}
+        >
+          <div style={{ gap: 6, alignItems: "end" }}>
+            <MdStar />
+            <h2>{props.value.title}</h2>
+          </div>
+        </div>
       );
     },
   },

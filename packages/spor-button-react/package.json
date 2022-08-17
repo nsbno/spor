@@ -2,6 +2,7 @@
   "name": "@vygruppen/spor-button-react",
   "version": "0.2.7",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -15,7 +16,7 @@
     "directory": "packages/spor-button-react"
   },
   "scripts": {
-    "build": "tsup src/index.tsx --dts",
+    "build": "tsup src/* --dts --treeshake --format esm,cjs",
     "dev": "tsup src/index.tsx --watch"
   },
   "dependencies": {
@@ -29,7 +30,7 @@
     "framer-motion": "^6.0.0",
     "react": ">17.0.0",
     "react-dom": ">17.0.0",
-    "tsup": "^5.11.11"
+    "tsup": "^6.2.2"
   },
   "peerDependencies": {
     "react": ">17.0.0",

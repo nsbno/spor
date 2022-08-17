@@ -2,6 +2,7 @@
   "name": "@vygruppen/spor-loader",
   "version": "0.2.1",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "files": [
@@ -15,10 +16,10 @@
     "directory": "packages/spor-loader"
   },
   "scripts": {
-    "build": "tsup src/index.ts --dts",
+    "build": "tsup src/* --dts --treeshake --format esm,cjs",
     "dev": "tsup src/index.ts --watch"
   },
   "devDependencies": {
-    "tsup": "^5.11.11"
+    "tsup": "^6.2.2"
   }
 }

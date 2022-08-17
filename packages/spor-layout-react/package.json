@@ -2,6 +2,7 @@
   "name": "@vygruppen/spor-layout-react",
   "version": "0.3.1",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "files": [
@@ -15,13 +16,13 @@
     "directory": "packages/spor-layout-react"
   },
   "scripts": {
-    "build": "tsup src/index.tsx --dts",
+    "build": "tsup src/* --dts --treeshake --format esm,cjs",
     "dev": "tsup src/index.tsx --watch"
   },
   "devDependencies": {
     "react": ">17.0.0",
     "react-dom": ">17.0.0",
-    "tsup": "^5.11.11"
+    "tsup": "^6.2.2"
   },
   "peerDependencies": {
     "react": ">17.0.0",

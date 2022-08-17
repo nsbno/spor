@@ -2,6 +2,7 @@
   "name": "@vygruppen/spor-icon-react",
   "version": "0.6.1",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/types.d.ts",
   "license": "MIT",
   "files": [

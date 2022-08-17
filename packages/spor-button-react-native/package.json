@@ -2,6 +2,7 @@
   "name": "@vygruppen/spor-button-react-native",
   "version": "0.2.13",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "files": [

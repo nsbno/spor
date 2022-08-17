@@ -15,11 +15,11 @@ type CodeBlockProps = Omit<BoxProps, "children"> & {
   /** The code to highlight */
   code: string;
   /** The code language to highlight */
-  language?: "jsx" | "elm" | "bash";
+  language?: "tsx" | "elm" | "bash";
 };
 export const CodeBlock = ({
   code,
-  language = "jsx",
+  language = "tsx",
   ...props
 }: CodeBlockProps) => {
   if (!code) {
@@ -28,7 +28,6 @@ export const CodeBlock = ({
   return (
     <CodeBlockContainer
       maxWidth={`calc(100vw - var(--spor-space-6))`}
-      overflowX="auto"
       {...props}
       code={code}
     >
@@ -89,7 +88,7 @@ export const CodeBlockContainer = ({
       <Box position="absolute" top={2} right={2}>
         <CopyCodeButton ref={copyButtonRef} code={code} />
       </Box>
-      <Box>{children}</Box>
+      <Box overflow="auto">{children}</Box>
     </Box>
   );
 };

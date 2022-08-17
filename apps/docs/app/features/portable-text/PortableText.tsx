@@ -207,11 +207,23 @@ const components: Partial<PortableTextReactComponents> = {
     },
     staticCodeBlock: ({ value }) => {
       return (
-        <CodeBlock
-          mt={6}
-          language={value.code.language}
-          code={value.code.code}
-        />
+        <Box>
+          <CodeBlock
+            mt={6}
+            language={value.code.language}
+            code={value.code.code}
+          />
+          {value.caption && (
+            <Text
+              textStyle="xs"
+              textAlign="center"
+              color="alias.dimGrey"
+              mt={1}
+            >
+              {value.caption}
+            </Text>
+          )}
+        </Box>
       );
     },
     codeExample: ({ value }) => {

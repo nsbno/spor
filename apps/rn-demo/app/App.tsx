@@ -3,6 +3,8 @@ import {
   SporProvider,
   Stack,
   Text,
+  Card,
+  Box,
 } from "@vygruppen/spor-react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
@@ -26,11 +28,32 @@ const App = () => {
             <Heading color="darkGrey" variant="2xl" textAlign="center">
               Spor Demo app
             </Heading>
-            <Text color="darkGrey" variant="md" textAlign="center">
-              Velkommen! Denne appen brukes til demonstrasjon og utvikling av
-              forskjellige komponenter i Spor sitt designsystem for React
-              Native.
-            </Text>
+            <Card
+              size="sm"
+              colorScheme="white"
+              onPress={() => console.log("test")}
+              isSelected={true}
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
+              <Box
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                {
+                  <Text variant={"sm"} fontWeight={"bold"}>
+                    ProductText
+                  </Text>
+                }
+                <Text variant={"sm"}>1003</Text>
+              </Box>
+              {true && <Text variant={"sm"}>seasonTicket.infoMessage</Text>}
+            </Card>
           </Stack>
         </SafeAreaView>
       </SafeAreaProvider>

@@ -1,5 +1,13 @@
 # @vygruppen/spor-loader-react
 
+## 0.2.2
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+- Updated dependencies [4337f0f4]
+  - @vygruppen/spor-loader@0.2.2
+
 ## 0.2.1
 
 ### Patch Changes

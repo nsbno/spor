@@ -1,5 +1,13 @@
 # @vygruppen/spor-typography-react
 
+## 0.4.5
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+- Updated dependencies [4337f0f4]
+  - @vygruppen/spor-design-tokens@2.4.4
+
 ## 0.4.4
 
 ### Patch Changes

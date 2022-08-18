@@ -1,5 +1,11 @@
 # @vygruppen/spor-tab-react
 
+## 0.1.3
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+
 ## 0.1.2
 
 ### Patch Changes

@@ -1,5 +1,16 @@
 # @vygruppen/spor-popover-react
 
+## 0.1.15
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+- Updated dependencies [4337f0f4]
+  - @vygruppen/spor-button-react@0.2.8
+  - @vygruppen/spor-i18n-react@0.0.6
+  - @vygruppen/spor-icon-react@0.6.2
+  - @vygruppen/spor-layout-react@0.3.2
+
 ## 0.1.14
 
 ### Patch Changes

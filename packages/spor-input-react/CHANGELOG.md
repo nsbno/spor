@@ -1,5 +1,14 @@
 # @vygruppen/spor-input-react
 
+## 0.5.3
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+- Updated dependencies [4337f0f4]
+  - @vygruppen/spor-i18n-react@0.0.6
+  - @vygruppen/spor-icon-react@0.6.2
+
 ## 0.5.2
 
 ### Patch Changes

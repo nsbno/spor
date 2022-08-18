@@ -1,5 +1,14 @@
 # @vygruppen/spor-provider-react
 
+## 0.0.7
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+- Updated dependencies [4337f0f4]
+  - @vygruppen/spor-i18n-react@0.0.6
+  - @vygruppen/spor-theme-react@0.5.6
+
 ## 0.0.6
 
 ### Patch Changes

@@ -1,5 +1,16 @@
 # @vygruppen/spor-button-react-native
 
+## 0.2.14
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+- Updated dependencies [4337f0f4]
+  - @vygruppen/spor-design-tokens@2.4.4
+  - @vygruppen/spor-icon-react-native@0.1.4
+  - @vygruppen/spor-loader-react-native@0.1.7
+  - @vygruppen/spor-theme-react-native@0.2.11
+
 ## 0.2.13
 
 ### Patch Changes

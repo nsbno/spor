@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.1.4
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+
 ## 0.1.3
 
 ### Patch Changes

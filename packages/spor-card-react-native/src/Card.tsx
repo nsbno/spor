@@ -72,6 +72,7 @@ type CardProps = Exclude<RestyleProps, "elevationLevel"> & {
   onClose?: () => void;
   isSelected?: boolean;
   isDisabled?: boolean;
+  isSuccessIconCenter?: boolean;
 };
 
 /**
@@ -125,6 +126,7 @@ export const Card = ({
   size = "lg",
   isSelected = false,
   isDisabled = false,
+  isSuccessIconCenter = false,
   ...props
 }: CardProps) => {
   const restyleProps: Record<string, any> = { ...props, size };
@@ -164,8 +166,8 @@ export const Card = ({
   const selectedIconIfEnabled = isSelected && (
     <Box
       marginRight="sm"
-      alignSelf="center"
-      style={size == "sm" ? { marginVertical: -2 } : { marginVertical: -5 }}
+      alignSelf={isSuccessIconCenter ? "center" : "auto"}
+      marginVertical={0.5}
     >
       {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
     </Box>

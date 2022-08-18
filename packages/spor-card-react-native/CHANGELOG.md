@@ -1,5 +1,11 @@
 # @vygruppen/spor-card-react-native
 
+## 0.1.5
+
+### Patch Changes
+
+- 4c8f4f60: Sucessfilled icon is default not centered
+
 ## 0.1.4
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react-native
 
+## 0.2.12
+
+### Patch Changes
+
+- 070e6ee2: Mark the react-native theme package as side-effecty
+
 ## 0.2.11
 
 ### Patch Changes

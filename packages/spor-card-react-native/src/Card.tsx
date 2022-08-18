@@ -164,8 +164,8 @@ export const Card = ({
   const selectedIconIfEnabled = isSelected && (
     <Box
       marginRight="sm"
-      alignSelf="center"
-      style={size == "sm" ? { marginVertical: -2 } : { marginVertical: -5 }}
+      alignSelf={isCenterSuccessIcon ? "center" : "auto"}
+      marginVertical={0.5}
     >
       {size === "lg" ? <SuccessFill30Icon /> : <SuccessFill24Icon />}
     </Box>

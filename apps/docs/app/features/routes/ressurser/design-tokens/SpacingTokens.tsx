@@ -70,14 +70,7 @@ const SpacingTokensTable = (props: SpacingTokenTableProps) => {
                 <Td>
                   <Stack spacing={1}>
                     <Box>
-                      <Code>{tokenFormatter(`size.spacing.["${key}"]`)}</Code>
-                    </Box>
-                    <Box>
-                      <Code>
-                        {tokenFormatter(
-                          `size.spacing.px.[${token.value.replace("px", "")}]`
-                        )}
-                      </Code>
+                      <Code>{tokenFormatter(`size.spacing.[${key}]`)}</Code>
                     </Box>
                   </Stack>
                 </Td>

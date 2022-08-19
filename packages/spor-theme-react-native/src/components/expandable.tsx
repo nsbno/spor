@@ -1,6 +1,6 @@
-import { shadows } from "@vygruppen/spor-theme-react-native/src/foundations/shadows";
-import { colors } from "@vygruppen/spor-theme-react-native/src/foundations/colors";
 import { borderRadii } from "@vygruppen/spor-theme-react-native/src/foundations/borderRadii";
+import { colors } from "@vygruppen/spor-theme-react-native/src/foundations/colors";
+import { shadows } from "@vygruppen/spor-theme-react-native/src/foundations/shadows";
 import { spacing } from "@vygruppen/spor-theme-react-native/src/foundations/spacing";
 
 export const expandableVariant = {
@@ -35,7 +35,7 @@ const expandableVariantPressed = {
   defaults: {
     backgroundColor: colors.mint,
     borderRadius: borderRadii.sm,
-    padding: spacing.sm,
+    padding: spacing[2],
   },
   list: {},
 

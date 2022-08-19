@@ -1,20 +1,30 @@
 import tokens from "@vygruppen/spor-design-tokens";
 
-export const spacing = {
-  0.5: tokens.size.spacing.px[3].value,
-  1: tokens.size.spacing.px[6].value,
-  1.5: tokens.size.spacing.px[9].value,
-  2: tokens.size.spacing.px[12].value,
-  3: tokens.size.spacing.px[18].value,
-  4: tokens.size.spacing.px[24].value,
-  5: tokens.size.spacing.px[30].value,
-  6: tokens.size.spacing.px[36].value,
-  7: tokens.size.spacing.px[42].value,
-  8: tokens.size.spacing.px[54].value,
-  9: tokens.size.spacing.px[72].value,
-  10: tokens.size.spacing.px[90].value,
-  11: tokens.size.spacing.px[120].value,
-  12: tokens.size.spacing.px[180].value,
+type Token = { value: { number: number } };
+type Spacing = {
+  0: Token;
+  0.5: Token;
+  1: Token;
+  1.5: Token;
+  2: Token;
+  3: Token;
+  4: Token;
+  5: Token;
+  6: Token;
+  7: Token;
+  8: Token;
+  9: Token;
+  10: Token;
+  11: Token;
+  12: Token;
 };
+
+export const spacing = Object.entries(tokens.size.spacing).reduce(
+  (tokens, [key, token]) => ({
+    ...tokens,
+    [Number(key)]: token.value,
+  }),
+  {} as Record<keyof Spacing, string>
+);
 
 export const space = spacing;

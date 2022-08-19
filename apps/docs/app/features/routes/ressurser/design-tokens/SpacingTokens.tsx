@@ -16,7 +16,7 @@ import { Fragment } from "react";
 import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
-const { px: spacingPxs, ...spacingSizes } = tokens.size.spacing;
+const spacingSizes = tokens.size.spacing;
 
 export function SpacingTokens(props: BoxProps) {
   return (

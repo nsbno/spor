@@ -72,23 +72,23 @@ export const buttonVariantsDisabled = {
 export const buttonSizes = {
   defaults: {},
   lg: {
-    height: spacing["7"],
-    minWidth: spacing["7"],
+    height: spacing[8],
+    minWidth: spacing[7],
     fontSize: 18,
   },
   md: {
-    height: spacing["7"],
-    minWidth: spacing["7"],
+    height: spacing[7],
+    minWidth: spacing[7],
     fontSize: 18,
   },
   sm: {
-    height: spacing["6"],
-    minWidth: spacing["6"],
+    height: spacing[6],
+    minWidth: spacing[6],
     fontSize: 16,
   },
   xs: {
-    height: spacing["5"],
-    minWidth: spacing["5"],
+    height: spacing[5],
+    minWidth: spacing[5],
     fontSize: 16,
     px: 2,
   },

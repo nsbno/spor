@@ -1,5 +1,23 @@
 # @vygruppen/spor-accordion-react-native
 
+## 0.0.20
+
+### Patch Changes
+
+- Updated dependencies [070e6ee2]
+  - @vygruppen/spor-theme-react-native@0.2.12
+
+## 0.0.19
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+- Updated dependencies [4337f0f4]
+  - @vygruppen/spor-icon-react-native@0.1.4
+  - @vygruppen/spor-layout-react-native@0.0.4
+  - @vygruppen/spor-theme-react-native@0.2.11
+  - @vygruppen/spor-typography-react-native@0.1.2
+
 ## 0.0.18
 
 ### Patch Changes

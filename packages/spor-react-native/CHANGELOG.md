@@ -1,5 +1,49 @@
 # @vygruppen/spor-react-native
 
+## 0.3.27
+
+### Patch Changes
+
+- Updated dependencies [4c8f4f60]
+  - @vygruppen/spor-card-react-native@0.1.5
+
+## 0.3.26
+
+### Patch Changes
+
+- Updated dependencies [070e6ee2]
+  - @vygruppen/spor-theme-react-native@0.2.12
+  - @vygruppen/spor-accordion-react-native@0.0.20
+  - @vygruppen/spor-alert-react-native@1.0.11
+  - @vygruppen/spor-badge-react-native@1.0.15
+  - @vygruppen/spor-button-react-native@0.2.15
+  - @vygruppen/spor-card-react-native@0.1.4
+  - @vygruppen/spor-linjetag-react-native@0.1.6
+  - @vygruppen/spor-message-box-react-native@1.0.14
+  - @vygruppen/spor-modal-react-native@1.0.8
+  - @vygruppen/spor-provider-react-native@0.1.21
+
+## 0.3.25
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+- Updated dependencies [4337f0f4]
+  - @vygruppen/spor-accordion-react-native@0.0.19
+  - @vygruppen/spor-alert-react-native@1.0.10
+  - @vygruppen/spor-badge-react-native@1.0.14
+  - @vygruppen/spor-button-react-native@0.2.14
+  - @vygruppen/spor-card-react-native@0.1.3
+  - @vygruppen/spor-i18n-react@0.0.6
+  - @vygruppen/spor-layout-react-native@0.0.4
+  - @vygruppen/spor-linjetag-react-native@0.1.5
+  - @vygruppen/spor-loader-react-native@0.1.7
+  - @vygruppen/spor-message-box-react-native@1.0.13
+  - @vygruppen/spor-modal-react-native@1.0.7
+  - @vygruppen/spor-provider-react-native@0.1.20
+  - @vygruppen/spor-theme-react-native@0.2.11
+  - @vygruppen/spor-typography-react-native@0.1.2
+
 ## 0.3.24
 
 ### Patch Changes

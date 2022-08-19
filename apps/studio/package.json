@@ -22,7 +22,7 @@
     "@sanity/desk-tool": "^2.27.1",
     "@sanity/eslint-config-studio": "^2.0.0",
     "@sanity/vision": "^2.27.1",
-    "@vygruppen/spor-design-tokens": "^2.4.3",
+    "@vygruppen/spor-design-tokens": "^2.4.4",
     "eslint": "^8.6.0",
     "framer-motion": "^6.2.8",
     "prop-types": "^15.7",

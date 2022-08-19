@@ -1,5 +1,13 @@
 # @vygruppen/spor-icon-react
 
+## 0.6.2
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+- Updated dependencies [4337f0f4]
+  - @vygruppen/spor-layout-react@0.3.2
+
 ## 0.6.1
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # @vygruppen/spor-button-react
 
+## 0.2.8
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+- Updated dependencies [4337f0f4]
+  - @vygruppen/spor-i18n-react@0.0.6
+  - @vygruppen/spor-loader-react@0.2.2
+
 ## 0.2.7
 
 ### Patch Changes

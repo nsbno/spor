@@ -1,5 +1,30 @@
 # @vygruppen/spor-card-react-native
 
+## 0.1.5
+
+### Patch Changes
+
+- 4c8f4f60: Sucessfilled icon is default not centered
+
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies [070e6ee2]
+  - @vygruppen/spor-theme-react-native@0.2.12
+  - @vygruppen/spor-button-react-native@0.2.15
+
+## 0.1.3
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+- Updated dependencies [4337f0f4]
+  - @vygruppen/spor-button-react-native@0.2.14
+  - @vygruppen/spor-icon-react-native@0.1.4
+  - @vygruppen/spor-layout-react-native@0.0.4
+  - @vygruppen/spor-theme-react-native@0.2.11
+
 ## 0.1.2
 
 ### Patch Changes

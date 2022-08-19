@@ -1,5 +1,21 @@
 # @vygruppen/spor-provider-react-native
 
+## 0.1.21
+
+### Patch Changes
+
+- Updated dependencies [070e6ee2]
+  - @vygruppen/spor-theme-react-native@0.2.12
+
+## 0.1.20
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+- Updated dependencies [4337f0f4]
+  - @vygruppen/spor-i18n-react@0.0.6
+  - @vygruppen/spor-theme-react-native@0.2.11
+
 ## 0.1.19
 
 ### Patch Changes

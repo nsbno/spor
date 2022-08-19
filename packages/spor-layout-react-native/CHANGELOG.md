@@ -1,5 +1,11 @@
 # @vygruppen/spor-layout-react-native
 
+## 0.0.4
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+
 ## 0.0.3
 
 ### Patch Changes

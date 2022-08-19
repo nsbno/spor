@@ -1,5 +1,11 @@
 # @vygruppen/spor-layout-react
 
+## 0.3.2
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+
 ## 0.3.1
 
 ### Patch Changes

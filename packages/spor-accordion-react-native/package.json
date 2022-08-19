@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-accordion-react-native",
-  "version": "0.0.18",
+  "version": "0.0.20",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

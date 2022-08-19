@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.4
+
+### Patch Changes
+
+- 4337f0f4: Make library more tree-shakeable than before
+
 ## 2.4.3
 
 ### Patch Changes

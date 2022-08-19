@@ -1,9 +1,9 @@
-import React from "react";
 import { Box } from "@vygruppen/spor-layout-react-native";
-import { DrawerHandle } from "./DrawerHandle";
-import Modal from "react-native-modal";
+import React from "react";
 import { Dimensions } from "react-native";
+import Modal from "react-native-modal";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { DrawerHandle } from "./DrawerHandle";
 
 type Props = {
   onClose: () => void;
@@ -51,7 +51,7 @@ export function Drawer({ onClose, children, isOpen }: Props) {
       <Box
         borderTopRightRadius="lg"
         borderTopLeftRadius="lg"
-        paddingHorizontal="xl"
+        paddingHorizontal={5}
         justifyContent="center"
         backgroundColor="white"
         maxHeight={Dimensions.get("window").height - insets.top}

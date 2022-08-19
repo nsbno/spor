@@ -1,5 +1,5 @@
-import React from "react";
 import { Heading } from "@vygruppen/spor-typography-react-native";
+import React from "react";
 
 type DrawerHeaderProps = {
   children: string;
@@ -17,9 +17,9 @@ export const DrawerHeader = ({
     <Heading
       variant={textSize}
       fontWeight="bold"
-      paddingTop="sm"
-      paddingBottom="xs"
-      paddingHorizontal={textAlign === "center" ? "sm" : 0}
+      paddingTop={2}
+      paddingBottom={1.5}
+      paddingHorizontal={textAlign === "center" ? 2 : 0}
       textAlign={textAlign}
     >
       {children}

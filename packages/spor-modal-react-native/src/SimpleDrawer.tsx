@@ -39,7 +39,7 @@ export const SimpleDrawer = ({
           {title}
         </DrawerHeader>
       )}
-      <Text textAlign={textAlign} marginBottom="lg">
+      <Text textAlign={textAlign} marginBottom={4}>
         {children}
       </Text>
     </Drawer>

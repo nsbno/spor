@@ -64,13 +64,11 @@ export const DrawerContent = forwardRef<DrawerContentProps, any>(
           ref={ref}
         >
           <Box position="relative">
-            {isTopOrBottom && (
-              <Notch
-                top={placement === "bottom" ? 2 : undefined}
-                bottom={placement === "top" ? 2 : undefined}
-              />
-            )}
-            <Box>{children}</Box>
+            <Box maxHeight="100vh" maxWidth="100vw" overflow="auto">
+              {isTopOrBottom && <Notch />}
+
+              <Box>{children}</Box>
+            </Box>
           </Box>
         </ChakraDrawerContent>
       </Box>
@@ -78,23 +76,36 @@ export const DrawerContent = forwardRef<DrawerContentProps, any>(
   }
 );
 
-const Notch = forwardRef<BoxProps, any>((props, ref) => (
-  <Center
-    position="absolute"
-    left={0}
-    right={0}
-    zIndex="modal"
-    {...props}
-    ref={ref}
-  >
+const Notch = forwardRef<BoxProps, any>((props, ref) => {
+  const placement = useDrawerContext();
+  return (
     <Box
-      width="2.265rem"
-      height={1}
-      backgroundColor="alias.steel"
-      borderRadius="xs"
-    />
-  </Center>
-));
+      position="absolute"
+      left={0}
+      right={0}
+      top={placement === "bottom" ? 0 : undefined}
+      bottom={placement === "top" ? 0 : undefined}
+      zIndex="modal"
+      {...props}
+      ref={ref}
+    >
+      <Center
+        background={`linear-gradient(to ${
+          placement === "bottom" ? "bottom" : "top"
+        }, white 0%, white 60%, transparent)`}
+        padding={2}
+        borderRadius="md"
+      >
+        <Box
+          width="2.265rem"
+          height={1}
+          backgroundColor="alias.steel"
+          borderRadius="xs"
+        />
+      </Center>
+    </Box>
+  );
+});
 
 const DrawerContext = React.createContext<DrawerProps["placement"]>(undefined);
 type DrawerProviderProps = {

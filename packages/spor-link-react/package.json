@@ -17,7 +17,7 @@
   },
   "scripts": {
     "build": "tsup src/* --dts --treeshake --format esm,cjs",
-    "dev": "tsup src/index.tsx --watch"
+    "dev": "tsup src/index.tsx --watch --format esm"
   },
   "dependencies": {
     "@vygruppen/spor-icon-react": "*"

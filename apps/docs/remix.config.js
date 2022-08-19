@@ -8,5 +8,5 @@ module.exports = {
   serverBuildDirectory: "build",
   devServerPort: 8002,
   ignoredRouteFiles: [".*"],
-  watchGlobs: ["../../packages/*/dist/index.js"],
+  watchGlobs: ["../../packages/*/dist/index.mjs"],
 };

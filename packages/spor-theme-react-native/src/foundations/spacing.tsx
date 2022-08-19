@@ -1,33 +1,28 @@
 import tokens from "@vygruppen/spor-design-tokens/react-native";
 
-const { px, ...spacings } = tokens.size.spacing;
-const spacingSizes = Object.entries({ ...spacings }).reduce(
-  (acc, [key, token]) => {
-    return { ...acc, [key]: token.value.number };
-  },
-  {} as {
-    [key in keyof typeof spacings]: number;
-  }
-);
-const spacingSteps = {
-  0: 0,
-  0.5: 3,
-  1: 6,
-  1.5: 9,
-  2: 12,
-  3: 18,
-  4: 24,
-  5: 30,
-  6: 36,
-  7: 42,
-  8: 54,
-  9: 72,
-  10: 90,
-  11: 120,
-  12: 180,
+type Token = { value: { number: number } };
+type Spacing = {
+  0: Token;
+  0.5: Token;
+  1: Token;
+  1.5: Token;
+  2: Token;
+  3: Token;
+  4: Token;
+  5: Token;
+  6: Token;
+  7: Token;
+  8: Token;
+  9: Token;
+  10: Token;
+  11: Token;
+  12: Token;
 };
 
-export const spacing = {
-  ...spacingSizes,
-  ...spacingSteps,
-};
+export const spacing = Object.entries(tokens.size.spacing).reduce(
+  (tokens, [key, token]) => ({
+    ...tokens,
+    [Number(key)]: token.value.number,
+  }),
+  {} as Record<keyof Spacing, number>
+);

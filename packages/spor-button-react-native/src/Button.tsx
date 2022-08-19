@@ -7,8 +7,9 @@ import {
   useTheme,
   VariantProps,
 } from "@shopify/restyle";
-import type { Theme } from "@vygruppen/spor-theme-react-native";
+import { Box } from "@vygruppen/spor-layout-react-native";
 import { ColorInlineLoader } from "@vygruppen/spor-loader-react-native";
+import type { Theme } from "@vygruppen/spor-theme-react-native";
 import React, { useState } from "react";
 import {
   Pressable,
@@ -17,7 +18,6 @@ import {
   Text,
   TextStyle,
 } from "react-native";
-import { Box } from "@vygruppen/spor-layout-react-native";
 
 const variants = createVariant({
   themeKey: "buttonVariants",
@@ -102,13 +102,7 @@ export const Button = ({
       }}
       {...rest}
     >
-      <Box
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          opacity: isLoading ? 0 : 1,
-        }}
-      >
+      <Box flexDirection="row" alignItems="center" opacity={isLoading ? 0 : 1}>
         {leftIcon && (
           <Box marginRight={children ? 1 : 0}>
             <leftIcon.type {...leftIcon.props} {...{ color }} />
@@ -132,13 +126,11 @@ export const Button = ({
 
       {isLoading && (
         <Box
-          style={{
-            position: "absolute",
-            justifyContent: "center",
-            alignItems: "center",
-            top: 0,
-            bottom: 0,
-          }}
+          position="absolute"
+          justifyContent="center"
+          alignItems="center"
+          top={0}
+          bottom={0}
         >
           <ColorInlineLoader height="75%" />
         </Box>

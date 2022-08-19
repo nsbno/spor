@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   composeRestyleFunctions,
   createVariant,
@@ -9,17 +8,17 @@ import {
   useTheme,
   VariantProps,
 } from "@shopify/restyle";
-import React from "react";
+import {
+  DropdownDownFill18Icon,
+  DropdownDownFill24Icon,
+  DropdownUpFill18Icon,
+  DropdownUpFill24Icon,
+} from "@vygruppen/spor-icon-react-native";
 import { Box } from "@vygruppen/spor-layout-react-native";
 import { Theme } from "@vygruppen/spor-theme-react-native";
 import { Text } from "@vygruppen/spor-typography-react-native";
+import React, { useState } from "react";
 import { Pressable, StyleProp, ViewStyle } from "react-native";
-import {
-  DropdownDownFill18Icon,
-  DropdownUpFill18Icon,
-  DropdownUpFill24Icon,
-  DropdownDownFill24Icon,
-} from "@vygruppen/spor-icon-react-native";
 import { ExpandableItem } from "./ExpandableItem";
 type RestyleProps = SpacingProps<Theme> &
   SpacingShorthandProps<Theme> &
@@ -86,14 +85,8 @@ export const Expandable = ({
             <Text
               variant={size}
               fontWeight="bold"
-              style={
-                leftIcon
-                  ? {
-                      marginRight: theme.spacing.lg,
-                      marginLeft: theme.spacing.sm,
-                    }
-                  : {}
-              }
+              marginLeft={leftIcon ? 2 : 0}
+              marginRight={leftIcon ? 4 : 0}
             >
               {title}
             </Text>

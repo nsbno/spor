@@ -165,7 +165,7 @@ export const Card = ({
   const { style } = useRestyle(restyleFunctions, restyleProps);
   const selectedIconIfEnabled = isSelected && (
     <Box
-      marginRight="sm"
+      marginRight={2}
       alignSelf={isSuccessIconCenter ? "center" : "auto"}
       marginVertical={0.5}
     >
@@ -176,7 +176,7 @@ export const Card = ({
   const closeButtonIfEnabled = onClose !== undefined && (
     <Box alignSelf="center">
       <Button
-        marginLeft={"sm"}
+        marginLeft={2}
         onPress={onClose}
         variant={"ghost"}
         leftIcon={<CloseOutline18Icon />}

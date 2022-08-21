@@ -17,6 +17,7 @@ import {
   StyleSheet,
   Text,
   TextStyle,
+  ViewStyle,
 } from "react-native";
 
 const variants = createVariant({
@@ -53,6 +54,7 @@ type ButtonProps = Exclude<RestyleProps, "variant"> & {
   accessibilityLabel?: string;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
+  style?: StyleProp<ViewStyle>;
 };
 
 /** A button. */
@@ -65,6 +67,7 @@ export const Button = ({
   children,
   leftIcon,
   rightIcon,
+  style,
   ...rest
 }: ButtonProps) => {
   const [isPressed, setIsPressed] = useState(false);
@@ -78,13 +81,14 @@ export const Button = ({
   const disabledAndLoadingStyle =
     isDisabled || isLoading ? buttonVariantsDisabled : {};
 
-  const style = [
+  const buttonStyle = [
     restyleStyle,
     activeStyle,
     disabledAndLoadingStyle,
+    style,
   ] as StyleProp<TextStyle>;
 
-  const flatStyles = StyleSheet.flatten(style);
+  const flatStyles = StyleSheet.flatten(buttonStyle);
   const { fontSize, fontWeight, color, backgroundColor } = flatStyles;
 
   return (
@@ -96,7 +100,7 @@ export const Button = ({
       onPress={onPress}
       disabled={isDisabled || isLoading}
       accessibilityLabel={accessibilityLabel}
-      style={style}
+      style={buttonStyle}
       android_ripple={{
         color: backgroundColor,
       }}

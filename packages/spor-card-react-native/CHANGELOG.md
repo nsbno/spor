@@ -1,5 +1,16 @@
 # @vygruppen/spor-card-react-native
 
+## 0.1.6
+
+### Patch Changes
+
+- ae157f1b: Use new tokens internally
+- Updated dependencies [80e771e5]
+- Updated dependencies [864ceba0]
+- Updated dependencies [ae157f1b]
+  - @vygruppen/spor-theme-react-native@0.3.0
+  - @vygruppen/spor-button-react-native@0.2.16
+
 ## 0.1.5
 
 ### Patch Changes

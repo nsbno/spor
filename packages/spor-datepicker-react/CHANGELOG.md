@@ -1,5 +1,11 @@
 # @vygruppen/spor-datepicker-react
 
+## 0.1.2
+
+### Patch Changes
+
+- @vygruppen/spor-typography-react@0.4.6
+
 ## 0.1.1
 
 ### Patch Changes

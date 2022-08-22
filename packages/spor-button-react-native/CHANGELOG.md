@@ -1,5 +1,16 @@
 # @vygruppen/spor-button-react-native
 
+## 0.2.16
+
+### Patch Changes
+
+- 864ceba0: Add style-prop to Button-component
+- ae157f1b: Use new tokens internally
+- Updated dependencies [80e771e5]
+- Updated dependencies [ae157f1b]
+  - @vygruppen/spor-design-tokens@2.5.0
+  - @vygruppen/spor-theme-react-native@0.3.0
+
 ## 0.2.15
 
 ### Patch Changes

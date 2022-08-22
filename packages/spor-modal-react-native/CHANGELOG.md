@@ -1,5 +1,14 @@
 # @vygruppen/spor-modal-react-native
 
+## 1.0.9
+
+### Patch Changes
+
+- ae157f1b: Use new tokens internally
+- Updated dependencies [80e771e5]
+- Updated dependencies [ae157f1b]
+  - @vygruppen/spor-theme-react-native@0.3.0
+
 ## 1.0.8
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-modal-react
 
+## 0.1.3
+
+### Patch Changes
+
+- 8a170ece: Fix a bug where overflowing drawer content would make content disappear instead of making it scrollable
+
 ## 0.1.2
 
 ### Patch Changes

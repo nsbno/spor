@@ -1,5 +1,19 @@
 # @vygruppen/spor-react
 
+## 0.13.22
+
+### Patch Changes
+
+- Updated dependencies [80e771e5]
+- Updated dependencies [ae157f1b]
+- Updated dependencies [8a170ece]
+  - @vygruppen/spor-design-tokens@2.5.0
+  - @vygruppen/spor-theme-react@0.6.0
+  - @vygruppen/spor-modal-react@0.1.3
+  - @vygruppen/spor-typography-react@0.4.6
+  - @vygruppen/spor-provider-react@0.0.8
+  - @vygruppen/spor-datepicker-react@0.1.2
+
 ## 0.13.21
 
 ### Patch Changes

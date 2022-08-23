@@ -1,5 +1,14 @@
 # @vygruppen/spor-accordion-react-native
 
+## 0.0.21
+
+### Patch Changes
+
+- ae157f1b: Use new tokens internally
+- Updated dependencies [80e771e5]
+- Updated dependencies [ae157f1b]
+  - @vygruppen/spor-theme-react-native@0.3.0
+
 ## 0.0.20
 
 ### Patch Changes

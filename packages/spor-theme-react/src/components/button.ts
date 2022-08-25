@@ -19,12 +19,12 @@ const baseStyle: SystemStyleObject = {
   _disabled: {
     cursor: "not-allowed",
     boxShadow: "none",
-    backgroundColor: "alias.platinum",
-    color: "alias.white",
+    backgroundColor: "alias.silver",
+    color: "alias.dimGrey",
   },
   _hover: {
     _disabled: {
-      background: "alias.platinum",
+      background: "alias.silver",
     },
   },
 };
@@ -162,7 +162,7 @@ const variantGhost: SystemStyleFunction = ({ theme }) => ({
   _hover: {
     backgroundColor: "alias.seaMist",
     _disabled: {
-      color: "alias.white",
+      color: "alias.dimGrey",
     },
   },
   _active: {

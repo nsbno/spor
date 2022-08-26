@@ -3,6 +3,7 @@ import { ObjectField } from "../schemaTypes";
 
 type Props = {
   name: string;
+  platform: string;
   type: string;
   typeOther?: string;
   isRequired: boolean;
@@ -20,6 +21,20 @@ export const props: ObjectField<Props> = {
       title: "Name",
       type: "string",
       validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "platform",
+      title: "Platform",
+      type: "string",
+      options: {
+        list: [
+          { title: "React & React Native", value: "react, react-native" },
+          { title: "React only", value: "react" },
+          { title: "React Native only", value: "react-native" },
+          { title: "Elm", value: "elm" },
+        ],
+      },
+      initialValue: "react, react-native",
     },
     {
       name: "type",

@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader-react
 
+## 0.2.3
+
+### Patch Changes
+
+- 0a128d66: Fix an issue where lottie animations crashed
+
 ## 0.2.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 0.6.1
+
+### Patch Changes
+
+- 8f6053e0: Css fikses og updater nye ikoner
+
 ## 0.6.0
 
 ### Minor Changes

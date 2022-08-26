@@ -36,7 +36,7 @@
     "react-dom": ">17.0.0"
   },
   "dependencies": {
-    "lottie-react": "^2.2.1",
+    "lottie-react": "^2.3.1",
     "@vygruppen/spor-loader": "*"
   }
 }

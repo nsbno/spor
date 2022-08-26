@@ -273,57 +273,64 @@ const components: Partial<PortableTextReactComponents> = {
         />
       );
     },
-    component: ({ value }) => (
-      <Box key={value.name} mt={6} as="article">
-        <LinkableHeading as="h3" textStyle="md" fontWeight="bold" mb={-2}>
-          {`<${value.name} />`}
-        </LinkableHeading>
-        <Box mt={1}>
-          <PortableText value={value.content} />
-        </Box>
-        {value.props && (
-          <>
-            <Heading as="h4" textStyle="md" mt={3}>
-              Props
-            </Heading>
-            <Table
-              variant="outline"
-              mt={3}
-              maxWidth={`calc(100vw - var(--spor-space-6))`}
-            >
-              <Thead>
-                <Tr>
-                  <Th>Navn</Th>
-                  <Th>Type</Th>
-                  <Th>Påkrevd?</Th>
-                  <Th>Beskrivelse</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {value.props.map((prop: any) => (
-                  <Tr key={prop.name}>
-                    <Td>
-                      <Code>{prop.name}</Code>
-                    </Td>
-                    <Td>
-                      <Code>
-                        {prop.type === "other" ? prop.typeOther : prop.type}
-                      </Code>
-                    </Td>
-                    <Td>
-                      {prop.isRequired && (
-                        <SuccessFill24Icon aria-label="Påkrevd" mx="auto" />
-                      )}
-                    </Td>
-                    <Td>{prop.description}</Td>
+    component: ({ value }) => {
+      const { userPreferences } = useUserPreferences();
+      const visibleProps = value.props?.filter((prop: any) => {
+        const platform = prop.platform ?? "react, react-native";
+        return platform.split(", ").includes(userPreferences.technology);
+      });
+      return (
+        <Box key={value.name} mt={6} as="article">
+          <LinkableHeading as="h3" textStyle="md" fontWeight="bold" mb={-2}>
+            {`<${value.name} />`}
+          </LinkableHeading>
+          <Box mt={1}>
+            <PortableText value={value.content} />
+          </Box>
+          {visibleProps && (
+            <>
+              <Heading as="h4" textStyle="md" mt={3}>
+                Props
+              </Heading>
+              <Table
+                variant="outline"
+                mt={3}
+                maxWidth={`calc(100vw - var(--spor-space-6))`}
+              >
+                <Thead>
+                  <Tr>
+                    <Th>Navn</Th>
+                    <Th>Type</Th>
+                    <Th>Påkrevd?</Th>
+                    <Th>Beskrivelse</Th>
                   </Tr>
-                ))}
-              </Tbody>
-            </Table>
-          </>
-        )}
-      </Box>
-    ),
+                </Thead>
+                <Tbody>
+                  {visibleProps.map((prop: any) => (
+                    <Tr key={prop.name}>
+                      <Td>
+                        <Code>{prop.name}</Code>
+                      </Td>
+                      <Td>
+                        <Code>
+                          {prop.type === "other" ? prop.typeOther : prop.type}
+                        </Code>
+                      </Td>
+                      <Td>
+                        {prop.isRequired && (
+                          <SuccessFill24Icon aria-label="Påkrevd" mx="auto" />
+                        )}
+                      </Td>
+                      <Td>{prop.description}</Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+              </Table>
+            </>
+          )}
+        </Box>
+      );
+    },
     imports: ({ value }) => {
       const { userPreferences } = useUserPreferences();
       if (userPreferences.userType === "designer") {

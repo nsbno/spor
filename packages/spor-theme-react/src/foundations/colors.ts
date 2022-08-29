@@ -9,6 +9,7 @@ export const colors = {
   outline: getValues(tokens.color.outline),
   product: getValues(tokens.color.product),
   text: getValues(tokens.color.text),
+  linjeTag: getValues(tokens.color.linjetag)
 };
 
 /**

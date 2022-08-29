@@ -1,4 +1,4 @@
-import { Stack } from "@vygruppen/spor-layout-react-native";
+import { Stack } from "@vygruppen/spor-layout-react";
 import { Text } from "@vygruppen/spor-typography-react";
 import React from "react";
 

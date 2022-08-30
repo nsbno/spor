@@ -18,10 +18,8 @@ import Css exposing (Color, Style)
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Spor.Common.Types exposing (Size(..), Variant(..))
-import Spor.Icon.Transportation as Transportation
 import Spor.Text as Text
 import Spor.Token.Color.Alias as Alias
-import Spor.Token.Color.Linjetag as Linjetag
 import Spor.Token.Size.Spacing as Spacing
 import Svg exposing (Svg)
 
@@ -70,23 +68,6 @@ withSize children (LineTagText options) =
 -}
 toHtml : LineTagText -> Html a
 toHtml (LineTagText options) =
-    let
-        children =
-            options.children
-                |> Maybe.map
-                    (\item ->
-                        [ Html.span
-                            [ Attributes.css
-                                [ Css.color <| Alias.toCss Alias.darkGrey ]
-                            ]
-                            [ Text.init
-                                |> Text.withString item
-                                |> Text.toHtml
-                            ]
-                        ]
-                    )
-                |> Maybe.withDefault []
-    in
     Html.div
         [ Attributes.css
             [ Css.displayFlex
@@ -105,5 +86,23 @@ toHtml (LineTagText options) =
                 |> Text.toHtml
             ]
          ]
-            ++ children
+            ++ childText options
         )
+
+
+childText : Options -> List (Html a)
+childText options =
+    options.children
+        |> Maybe.map
+            (\item ->
+                [ Html.span
+                    [ Attributes.css
+                        [ Css.color <| Alias.toCss Alias.darkGrey ]
+                    ]
+                    [ Text.init
+                        |> Text.withString item
+                        |> Text.toHtml
+                    ]
+                ]
+            )
+        |> Maybe.withDefault []

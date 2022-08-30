@@ -91,35 +91,6 @@ withChildren children (TravelTag options) =
 -}
 toHtml : TravelTag -> Html a
 toHtml (TravelTag options) =
-    let
-        lineTagIcon =
-            LineTagIcon.init
-                |> LineTagIcon.withVariant options.variant
-                |> LineTagIcon.withSize options.size
-                |> LineTagIcon.withAdditionalStyle
-                    (Css.batch
-                        [ Css.borderRadius <| Css.px <| iconRadius options.size
-                        , Css.marginRight <| Css.px <| marginRight options.size
-                        ]
-                    )
-                |> LineTagIcon.toHtml
-
-        lineTagText =
-            options.children
-                |> Maybe.map
-                    (\item ->
-                        [ Html.span
-                            [ Attributes.css
-                                [ Css.color <| Alias.toCss Alias.darkGrey ]
-                            ]
-                            [ Text.init
-                                |> Text.withString item
-                                |> Text.toHtml
-                            ]
-                        ]
-                    )
-                |> Maybe.withDefault []
-    in
     Html.div
         [ Attributes.css
             [ Css.displayFlex
@@ -130,7 +101,39 @@ toHtml (TravelTag options) =
             , Css.padding <| Spacing.toCss Spacing.xs
             ]
         ]
-        ([ lineTagIcon ] ++ lineTagText)
+        ([ lineTagIcon options ] ++ lineTagText options)
+
+
+lineTagIcon : Options -> Html a
+lineTagIcon options =
+    LineTagIcon.init
+        |> LineTagIcon.withVariant options.variant
+        |> LineTagIcon.withSize options.size
+        |> LineTagIcon.withAdditionalStyle
+            (Css.batch
+                [ Css.borderRadius <| Css.px <| iconRadius options.size
+                , Css.marginRight <| Css.px <| marginRight options.size
+                ]
+            )
+        |> LineTagIcon.toHtml
+
+
+lineTagText : Options -> List (Html a)
+lineTagText options =
+    options.children
+        |> Maybe.map
+            (\item ->
+                [ Html.span
+                    [ Attributes.css
+                        [ Css.color <| Alias.toCss Alias.darkGrey ]
+                    ]
+                    [ Text.init
+                        |> Text.withString item
+                        |> Text.toHtml
+                    ]
+                ]
+            )
+        |> Maybe.withDefault []
 
 
 containerRadius : Size -> Float

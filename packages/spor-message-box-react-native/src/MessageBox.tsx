@@ -50,7 +50,7 @@ type WithButtonProps = {
 };
 
 type WithoutButtonProps = {
-  actionType: "none";
+  actionType?: "none";
 };
 
 type ActionProps = WithCloseButtonProps | WithButtonProps | WithoutButtonProps;
@@ -70,14 +70,38 @@ const getIconVariant = (variant: MessageBoxVariant) => {
 /**
  * A message box component.
  *
- * Message boxes can either be closable,
+ * Message boxes can have a close button, a text button or neither. For the button variants, you need to pass an `onPress` function, and specify the action type and optional text:
+ *
+ * ```tsx
+ * <MessageBox variant="success">
+ *   Great job!
+ * </MessageBox>
+ * <MessageBox variant="info" actionType="close" onPress={handleClose}>
+ *   The train leaves from platform 2.
+ * </MessageBox>
+ * <MessageBox
+ *  variant="error"
+ *  actionType="button"
+ *  buttonText="Lukk"
+ *  onPress={handleClose}
+ * >
+ *   Something went wrong
+ * </MessageBox>
+ * ```
  *
  * Message boxes comes in three different variants, with different icons and colors – success, info and error.
  *
  * ```tsx
- * <MessageBox variant="success">That went well</MessageBox>
- * <MessageBox variant="info">Just FYI</MessageBox>
- * <MessageBox variant="error">Insufficient funds</MessageBox>
+ * <MessageBox variant="success">
+ *  That went well
+ * </MessageBox>
+ * <MessageBox variant="info">
+ *  Just FYI
+ * </MessageBox>
+ * <MessageBox variant="error">
+ *  Insufficient funds
+ * </MessageBox>
+ * ```
  */
 export const MessageBox = (props: MessageBoxProps) => {
   const { variant, children, actionType, ...rest } = props;

@@ -1,5 +1,15 @@
 # @vygruppen/spor-message-box-react-native
 
+## 1.0.16
+
+### Patch Changes
+
+- af3422f2: Align message box icons and buttons to the top of message boxes
+  Make actionType="none" optional
+- Updated dependencies [36fb9fae]
+  - @vygruppen/spor-theme-react-native@0.3.1
+  - @vygruppen/spor-button-react-native@0.2.17
+
 ## 1.0.15
 
 ### Patch Changes

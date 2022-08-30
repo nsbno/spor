@@ -1,5 +1,12 @@
 # @vygruppen/spor-badge-react-native
 
+## 1.0.17
+
+### Patch Changes
+
+- Updated dependencies [36fb9fae]
+  - @vygruppen/spor-theme-react-native@0.3.1
+
 ## 1.0.16
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @vygruppen/spor-alert-react-native
 
+## 1.0.13
+
+### Patch Changes
+
+- Updated dependencies [36fb9fae]
+  - @vygruppen/spor-theme-react-native@0.3.1
+  - @vygruppen/spor-button-react-native@0.2.17
+
 ## 1.0.12
 
 ### Patch Changes

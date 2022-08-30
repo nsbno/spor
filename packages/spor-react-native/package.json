@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-react-native",
-  "version": "0.3.28",
+  "version": "0.3.29",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

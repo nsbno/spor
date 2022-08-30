@@ -50,7 +50,7 @@ type WithButtonProps = {
 };
 
 type WithoutButtonProps = {
-  actionType: "none";
+  actionType?: "none";
 };
 
 type ActionProps = WithCloseButtonProps | WithButtonProps | WithoutButtonProps;
@@ -67,7 +67,44 @@ const getIconVariant = (variant: MessageBoxVariant) => {
       return null;
   }
 };
-
+/**
+ * A message box component.
+ *
+ * Message boxes can have a close button, a text button or neither. For the button variants, you need to pass an `onPress` function, and specify the action type and optional text:
+ *
+ * ```tsx
+ * <MessageBox variant="success">
+ *   Great job!
+ * </MessageBox>
+ * <MessageBox variant="info" actionType="close" onPress={handleClose}>
+ *   The train leaves from platform 2.
+ * </MessageBox>
+ * <MessageBox
+ *  variant="error"
+ *  actionType="button"
+ *  buttonText="Lukk"
+ *  onPress={handleClose}
+ * >
+ *   Something went wrong
+ * </MessageBox>
+ * ```
+ *
+ * Message boxes comes in three different variants, with different icons and colors – success, info and error.
+ *
+ * ```tsx
+ * <MessageBox variant="success">
+ *  That went well
+ * </MessageBox>
+ * <MessageBox variant="info">
+ *  Just FYI
+ * </MessageBox>
+ * <MessageBox variant="error">
+ *  Insufficient funds
+ * </MessageBox>
+ * ```
+ *
+ * Note that message boxes should have a short text - never more than two lines of text. If you have more, use a different component.
+ */
 export const MessageBox = (props: MessageBoxProps) => {
   const { variant, children, actionType, ...rest } = props;
   const { style } = useRestyle(restyleFunctions, {
@@ -78,11 +115,9 @@ export const MessageBox = (props: MessageBoxProps) => {
   const icon = getIconVariant(variant);
 
   return (
-    <Box flexDirection="row" style={style as any} {...rest}>
+    <Box flexDirection="row" style={style as any} {...rest} alignItems="center">
       <Box flex={1} flexDirection="row" alignItems="center">
-        <Box mr={1} alignContent="center">
-          {icon}
-        </Box>
+        <Box marginRight={2}>{icon}</Box>
         <Box flex={1}>
           <Text variant="md">{children}</Text>
         </Box>
@@ -94,19 +129,18 @@ export const MessageBox = (props: MessageBoxProps) => {
           variant="ghost"
           onPress={props.onPress}
           leftIcon={<CloseOutline18Icon />}
+          marginLeft={2}
         />
       )}
       {isButtonProps(props) && (
-        <Box alignSelf="center">
-          <Button
-            size="xs"
-            variant="additional"
-            onPress={props.onPress}
-            marginLeft={1}
-          >
-            {props.buttonText}
-          </Button>
-        </Box>
+        <Button
+          size="xs"
+          variant="additional"
+          onPress={props.onPress}
+          marginLeft={2}
+        >
+          {props.buttonText}
+        </Button>
       )}
     </Box>
   );

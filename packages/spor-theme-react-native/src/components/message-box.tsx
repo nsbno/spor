@@ -1,7 +1,8 @@
 export const messageBoxVariants = {
   defaults: {
     borderRadius: "sm",
-    padding: 2,
+    paddingHorizontal: 2,
+    paddingVertical: 1.5,
   },
   success: {
     backgroundColor: "seaMist",

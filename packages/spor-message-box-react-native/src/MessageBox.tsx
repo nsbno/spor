@@ -67,7 +67,18 @@ const getIconVariant = (variant: MessageBoxVariant) => {
       return null;
   }
 };
-
+/**
+ * A message box component.
+ *
+ * Message boxes can either be closable,
+ *
+ * Message boxes comes in three different variants, with different icons and colors – success, info and error.
+ *
+ * ```tsx
+ * <MessageBox variant="success">That went well</MessageBox>
+ * <MessageBox variant="info">Just FYI</MessageBox>
+ * <MessageBox variant="error">Insufficient funds</MessageBox>
+ */
 export const MessageBox = (props: MessageBoxProps) => {
   const { variant, children, actionType, ...rest } = props;
   const { style } = useRestyle(restyleFunctions, {
@@ -79,11 +90,9 @@ export const MessageBox = (props: MessageBoxProps) => {
 
   return (
     <Box flexDirection="row" style={style as any} {...rest}>
-      <Box flex={1} flexDirection="row" alignItems="center">
-        <Box mr={1} alignContent="center">
-          {icon}
-        </Box>
-        <Box flex={1}>
+      <Box flex={1} flexDirection="row">
+        <Box marginRight={1}>{icon}</Box>
+        <Box flex={1} alignSelf="center">
           <Text variant="md">{children}</Text>
         </Box>
       </Box>
@@ -97,16 +106,14 @@ export const MessageBox = (props: MessageBoxProps) => {
         />
       )}
       {isButtonProps(props) && (
-        <Box alignSelf="center">
-          <Button
-            size="xs"
-            variant="additional"
-            onPress={props.onPress}
-            marginLeft={1}
-          >
-            {props.buttonText}
-          </Button>
-        </Box>
+        <Button
+          size="xs"
+          variant="additional"
+          onPress={props.onPress}
+          marginLeft={1}
+        >
+          {props.buttonText}
+        </Button>
       )}
     </Box>
   );

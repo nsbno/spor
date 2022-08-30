@@ -19,6 +19,7 @@ import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Spor.Common.Types exposing (Size(..), Variant(..))
 import Spor.LineTagIcon as LineTagIcon
+import Spor.LineTagText as LineTagText exposing (LineTagText)
 import Spor.Text as Text
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Color.Linjetag as Linjetag
@@ -96,9 +97,10 @@ toHtml (InfoTag options) =
             [ Css.displayFlex
             , Css.flexDirection Css.row
             , Css.justifyContent Css.center
+            , Css.alignItems Css.center
             ]
         ]
-        ([ lineTagIcon options ] ++ lineTagText options)
+        (lineTagIcon options :: lineTagText options)
 
 
 lineTagIcon : Options -> Html a
@@ -108,8 +110,9 @@ lineTagIcon options =
         |> LineTagIcon.withSize options.size
         |> LineTagIcon.withAdditionalStyle
             (Css.batch
-                [ Css.borderRadius <| Css.px <| tagRadius options.size
+                [ Css.borderRadius <| Css.px <| iconRadius options.size
                 , Css.marginRight <| Css.px <| marginRight options.size
+                , Css.padding <| Spacing.toCss Spacing.xs
                 ]
             )
         |> LineTagIcon.toHtml
@@ -120,40 +123,36 @@ lineTagText options =
     options.children
         |> Maybe.map
             (\item ->
-                [ Html.span
-                    [ Attributes.css
-                        [ Css.color <| Alias.toCss Alias.darkGrey ]
-                    ]
-                    [ Text.init
-                        |> Text.withString item
-                        |> Text.toHtml
-                    ]
+                [ LineTagText.init
+                    |> LineTagText.withTitle options.title
+                    |> LineTagText.withChildren (Just item)
+                    |> LineTagText.toHtml
                 ]
             )
         |> Maybe.withDefault []
 
 
-tagRadius : Size -> Float
-tagRadius size =
+iconRadius : Size -> Float
+iconRadius size =
     case size of
         Sm ->
-            9
+            6
 
         Md ->
-            12
+            9
 
         Lg ->
-            12
+            9
 
 
 marginRight : Size -> Float
 marginRight size =
     case size of
         Sm ->
-            1
+            9
 
         Md ->
-            1.5
+            9
 
         Lg ->
-            2
+            9

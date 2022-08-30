@@ -20,6 +20,7 @@ module Spor.Text exposing
 
 -}
 
+import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attribute
 import Spor.Internal.TextStyle as TextStyleInternal
@@ -76,5 +77,8 @@ withString text (Text options) =
 toHtml : Text -> Html a
 toHtml (Text options) =
     Html.p
-        [ Attribute.css <| TextStyleInternal.toCss options.style ]
+        [ Attribute.css <|
+            TextStyleInternal.toCss options.style
+                ++ [ Css.margin Css.zero ]
+        ]
         [ Html.text options.text ]

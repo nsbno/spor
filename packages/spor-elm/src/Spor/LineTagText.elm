@@ -14,14 +14,14 @@ module Spor.LineTagText exposing (..)
 
 -}
 
-import Css exposing (Color, Style)
+import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Spor.Common.Types exposing (Size(..), Variant(..))
 import Spor.Text as Text
+import Spor.TextStyle as TextStyle exposing (TextStyle(..))
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Size.Spacing as Spacing
-import Svg exposing (Svg)
 
 
 {-| A component for displaying line tag text
@@ -46,17 +46,17 @@ init =
         }
 
 
-{-| Set the variant
+{-| Set the title
 -}
-withVariant : String -> LineTagText -> LineTagText
-withVariant title (LineTagText options) =
+withTitle : String -> LineTagText -> LineTagText
+withTitle title (LineTagText options) =
     LineTagText { options | title = title }
 
 
-{-| Set the size
+{-| Set the children
 -}
-withSize : Maybe String -> LineTagText -> LineTagText
-withSize children (LineTagText options) =
+withChildren : Maybe String -> LineTagText -> LineTagText
+withChildren children (LineTagText options) =
     LineTagText { options | children = children }
 
 
@@ -72,10 +72,11 @@ toHtml (LineTagText options) =
         [ Attributes.css
             [ Css.displayFlex
             , Css.flexDirection Css.row
+            , Css.alignItems Css.center
             , Css.lineHeight <| Spacing.toCss Spacing.sm
             ]
         ]
-        ([ Html.span
+        (Html.span
             [ Attributes.css
                 [ Css.color <| Alias.toCss Alias.darkGrey
                 , Css.fontWeight Css.bold
@@ -83,10 +84,10 @@ toHtml (LineTagText options) =
             ]
             [ Text.init
                 |> Text.withString options.title
+                |> Text.withTextStyle TextStyle.ExtraSmall
                 |> Text.toHtml
             ]
-         ]
-            ++ childText options
+            :: childText options
         )
 
 
@@ -97,10 +98,13 @@ childText options =
             (\item ->
                 [ Html.span
                     [ Attributes.css
-                        [ Css.color <| Alias.toCss Alias.darkGrey ]
+                        [ Css.color <| Alias.toCss Alias.darkGrey
+                        , Css.marginLeft <| Css.px 3
+                        ]
                     ]
                     [ Text.init
                         |> Text.withString item
+                        |> Text.withTextStyle TextStyle.ExtraSmall
                         |> Text.toHtml
                     ]
                 ]

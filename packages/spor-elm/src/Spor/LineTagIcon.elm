@@ -21,7 +21,9 @@ import Spor.Common.Types exposing (Size(..), Variant(..))
 import Spor.Icon.Transportation as Transportation
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Color.Linjetag as Linjetag
-import Svg exposing (Svg)
+import Svg as UnstyledSvg
+import Svg.Styled as Svg exposing (Svg)
+import Svg.Styled.Attributes as SvgAttributes
 
 
 {-| A component for displaying line tag icons
@@ -89,8 +91,8 @@ toHtml (LineTagIcon options) =
 
         borderWidth_ =
             borderColor options.variant
-                |> Maybe.map (\_ -> Css.width <| Css.px 1)
-                |> Maybe.withDefault (Css.width <| Css.zero)
+                |> Maybe.map (\_ -> Css.borderWidth <| Css.px 1)
+                |> Maybe.withDefault (Css.borderWidth <| Css.zero)
     in
     Html.div
         [ Attributes.css
@@ -101,11 +103,13 @@ toHtml (LineTagIcon options) =
             , options.additionalStyle
             ]
         ]
-        [ Html.span [ Attributes.css [ Css.color <| iconColor options.variant ] ]
-            [ Html.fromUnstyled <|
-                Svg.svg []
-                    [ icon options.variant options.size ]
+        [ Html.span
+            [ Attributes.css
+                [ Css.color <| iconColor options.variant
+                , Css.displayFlex
+                ]
             ]
+            [ icon options.variant options.size ]
         ]
 
 
@@ -136,112 +140,112 @@ icon : Variant -> Size -> Svg msg
 icon variant size =
     case ( variant, size ) of
         ( LocalTrain, Sm ) ->
-            Transportation.trainFill18X18 []
+            Svg.fromUnstyled <| Transportation.trainFill18X18 []
 
         ( LocalTrain, Md ) ->
-            Transportation.trainFill24X24 []
+            Svg.fromUnstyled <| Transportation.trainFill24X24 []
 
         ( LocalTrain, Lg ) ->
-            Transportation.trainFill30X30 []
+            Svg.fromUnstyled <| Transportation.trainFill30X30 []
 
         ( RegionTrain, Sm ) ->
-            Transportation.trainFill18X18 []
+            Svg.fromUnstyled <| Transportation.trainFill18X18 []
 
         ( RegionTrain, Md ) ->
-            Transportation.trainFill24X24 []
+            Svg.fromUnstyled <| Transportation.trainFill24X24 []
 
         ( RegionTrain, Lg ) ->
-            Transportation.trainFill30X30 []
+            Svg.fromUnstyled <| Transportation.trainFill30X30 []
 
         ( RegionExpressTrain, Sm ) ->
-            Transportation.trainFill18X18 []
+            Svg.fromUnstyled <| Transportation.trainFill18X18 []
 
         ( RegionExpressTrain, Md ) ->
-            Transportation.trainFill24X24 []
+            Svg.fromUnstyled <| Transportation.trainFill24X24 []
 
         ( RegionExpressTrain, Lg ) ->
-            Transportation.trainFill30X30 []
+            Svg.fromUnstyled <| Transportation.trainFill30X30 []
 
         ( LongDistanceTrain, Sm ) ->
-            Transportation.trainFill18X18 []
+            Svg.fromUnstyled <| Transportation.trainFill18X18 []
 
         ( LongDistanceTrain, Md ) ->
-            Transportation.trainFill24X24 []
+            Svg.fromUnstyled <| Transportation.trainFill24X24 []
 
         ( LongDistanceTrain, Lg ) ->
-            Transportation.trainFill30X30 []
+            Svg.fromUnstyled <| Transportation.trainFill30X30 []
 
         ( AirportExpressTrain, Sm ) ->
-            Transportation.trainFill18X18 []
+            Svg.fromUnstyled <| Transportation.trainFill18X18 []
 
         ( AirportExpressTrain, Md ) ->
-            Transportation.trainFill24X24 []
+            Svg.fromUnstyled <| Transportation.trainFill24X24 []
 
         ( AirportExpressTrain, Lg ) ->
-            Transportation.trainFill30X30 []
+            Svg.fromUnstyled <| Transportation.trainFill30X30 []
 
         ( VyBus, Sm ) ->
-            Transportation.expressBusFill18X18 []
+            Svg.fromUnstyled <| Transportation.expressBusFill18X18 []
 
         ( VyBus, Md ) ->
-            Transportation.expressBusFill24X24 []
+            Svg.fromUnstyled <| Transportation.expressBusFill24X24 []
 
         ( VyBus, Lg ) ->
-            Transportation.expressBusFill30X30 []
+            Svg.fromUnstyled <| Transportation.expressBusFill30X30 []
 
         ( LocalBus, Sm ) ->
-            Transportation.busFill18X18 []
+            Svg.fromUnstyled <| Transportation.busFill18X18 []
 
         ( LocalBus, Md ) ->
-            Transportation.busFill24X24 []
+            Svg.fromUnstyled <| Transportation.busFill24X24 []
 
         ( LocalBus, Lg ) ->
-            Transportation.busFill30X30 []
+            Svg.fromUnstyled <| Transportation.busFill30X30 []
 
         ( Ferry, Sm ) ->
-            Transportation.ferryFill18X18 []
+            Svg.fromUnstyled <| Transportation.ferryFill18X18 []
 
         ( Ferry, Md ) ->
-            Transportation.ferryFill24X24 []
+            Svg.fromUnstyled <| Transportation.ferryFill24X24 []
 
         ( Ferry, Lg ) ->
-            Transportation.ferryFill30X30 []
+            Svg.fromUnstyled <| Transportation.ferryFill30X30 []
 
         ( Subway, Sm ) ->
-            Transportation.subwayFill18X18 []
+            Svg.fromUnstyled <| Transportation.subwayFill18X18 []
 
         ( Subway, Md ) ->
-            Transportation.subwayFill24X24 []
+            Svg.fromUnstyled <| Transportation.subwayFill24X24 []
 
         ( Subway, Lg ) ->
-            Transportation.subwayFill30X30 []
+            Svg.fromUnstyled <| Transportation.subwayFill30X30 []
 
         ( Tram, Sm ) ->
-            Transportation.trainFill18X18 []
+            Svg.fromUnstyled <| Transportation.trainFill18X18 []
 
         ( Tram, Md ) ->
-            Transportation.tramFill18X18 []
+            Svg.fromUnstyled <| Transportation.tramFill18X18 []
 
         ( Tram, Lg ) ->
-            Transportation.trainFill24X24 []
+            Svg.fromUnstyled <| Transportation.trainFill24X24 []
 
         ( AlternativeTransport, Sm ) ->
-            Transportation.altTransportFill18X18 []
+            Svg.fromUnstyled <| Transportation.altTransportFill18X18 []
 
         ( AlternativeTransport, Md ) ->
-            Transportation.altTransportFill24X24 []
+            Svg.fromUnstyled <| Transportation.altTransportFill24X24 []
 
         ( AlternativeTransport, Lg ) ->
-            Transportation.altTransportFill30X30 []
+            Svg.fromUnstyled <| Transportation.altTransportFill30X30 []
 
         ( Walk, Sm ) ->
-            Transportation.wagonFill18X18 []
+            Svg.fromUnstyled <| Transportation.wagonFill18X18 []
 
         ( Walk, Md ) ->
-            Transportation.wagonFill24X24 []
+            Svg.fromUnstyled <| Transportation.wagonFill24X24 []
 
         ( Walk, Lg ) ->
-            Transportation.walkFill30X30 []
+            Svg.fromUnstyled <| Transportation.walkFill30X30 []
 
 
 backgroundColor : Variant -> Color

@@ -19,6 +19,7 @@ import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Spor.Common.Types exposing (Size(..), Variant(..))
 import Spor.LineTagIcon as LineTagIcon
+import Spor.LineTagText as LineTagText exposing (LineTagText)
 import Spor.Text as Text
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Color.Linjetag as Linjetag
@@ -96,12 +97,13 @@ toHtml (TravelTag options) =
             [ Css.displayFlex
             , Css.flexDirection Css.row
             , Css.justifyContent Css.center
+            , Css.alignItems Css.center
             , Css.backgroundColor <| backgroundColor options.variant
             , Css.borderRadius <| Css.px <| containerRadius options.size
-            , Css.padding <| Spacing.toCss Spacing.xs
+            , Css.padding <| Spacing.toCss Spacing.i3xs
             ]
         ]
-        ([ lineTagIcon options ] ++ lineTagText options)
+        (lineTagIcon options :: lineTagText options)
 
 
 lineTagIcon : Options -> Html a
@@ -113,6 +115,7 @@ lineTagIcon options =
             (Css.batch
                 [ Css.borderRadius <| Css.px <| iconRadius options.size
                 , Css.marginRight <| Css.px <| marginRight options.size
+                , Css.padding <| Spacing.toCss Spacing.xs
                 ]
             )
         |> LineTagIcon.toHtml
@@ -123,14 +126,10 @@ lineTagText options =
     options.children
         |> Maybe.map
             (\item ->
-                [ Html.span
-                    [ Attributes.css
-                        [ Css.color <| Alias.toCss Alias.darkGrey ]
-                    ]
-                    [ Text.init
-                        |> Text.withString item
-                        |> Text.toHtml
-                    ]
+                [ LineTagText.init
+                    |> LineTagText.withTitle options.title
+                    |> LineTagText.withChildren (Just item)
+                    |> LineTagText.toHtml
                 ]
             )
         |> Maybe.withDefault []
@@ -166,13 +165,13 @@ marginRight : Size -> Float
 marginRight size =
     case size of
         Sm ->
-            1
+            9
 
         Md ->
-            1.5
+            9
 
         Lg ->
-            1.5
+            9
 
 
 backgroundColor : Variant -> Color

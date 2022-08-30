@@ -102,6 +102,8 @@ const getIconVariant = (variant: MessageBoxVariant) => {
  *  Insufficient funds
  * </MessageBox>
  * ```
+ *
+ * Note that message boxes should have a short text - never more than two lines of text. If you have more, use a different component.
  */
 export const MessageBox = (props: MessageBoxProps) => {
   const { variant, children, actionType, ...rest } = props;
@@ -113,10 +115,10 @@ export const MessageBox = (props: MessageBoxProps) => {
   const icon = getIconVariant(variant);
 
   return (
-    <Box flexDirection="row" style={style as any} {...rest}>
-      <Box flex={1} flexDirection="row">
-        <Box marginRight={1}>{icon}</Box>
-        <Box flex={1} alignSelf="center">
+    <Box flexDirection="row" style={style as any} {...rest} alignItems="center">
+      <Box flex={1} flexDirection="row" alignItems="center">
+        <Box marginRight={2}>{icon}</Box>
+        <Box flex={1}>
           <Text variant="md">{children}</Text>
         </Box>
       </Box>
@@ -127,6 +129,7 @@ export const MessageBox = (props: MessageBoxProps) => {
           variant="ghost"
           onPress={props.onPress}
           leftIcon={<CloseOutline18Icon />}
+          marginLeft={2}
         />
       )}
       {isButtonProps(props) && (
@@ -134,7 +137,7 @@ export const MessageBox = (props: MessageBoxProps) => {
           size="xs"
           variant="additional"
           onPress={props.onPress}
-          marginLeft={1}
+          marginLeft={2}
         >
           {props.buttonText}
         </Button>

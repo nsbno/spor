@@ -15,15 +15,14 @@ module Spor.LineTagIcon exposing (..)
 -}
 
 import Css exposing (Color, Style)
+import Css.Global
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Spor.Common.Types exposing (Size(..), Variant(..))
 import Spor.Icon.Transportation as Transportation
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Color.Linjetag as Linjetag
-import Svg as UnstyledSvg
 import Svg.Styled as Svg exposing (Svg)
-import Svg.Styled.Attributes as SvgAttributes
 
 
 {-| A component for displaying line tag icons
@@ -107,6 +106,8 @@ toHtml (LineTagIcon options) =
             [ Attributes.css
                 [ Css.color <| iconColor options.variant
                 , Css.displayFlex
+                , Css.Global.descendants
+                    [ Css.Global.path [ Css.fill <| iconColor options.variant ] ]
                 ]
             ]
             [ icon options.variant options.size ]

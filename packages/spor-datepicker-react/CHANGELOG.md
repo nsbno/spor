@@ -1,5 +1,11 @@
 # @vygruppen/spor-datepicker-react
 
+## 0.1.4
+
+### Patch Changes
+
+- 77bf8c23: Fix bug where datepicker didn't work with native form tags
+
 ## 0.1.3
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react-native
 
+## 0.3.1
+
+### Patch Changes
+
+- 36fb9fae: Tweak the vertical padding of react native messageboxes
+
 ## 0.3.0
 
 ### Minor Changes

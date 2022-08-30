@@ -1,5 +1,12 @@
 # @vygruppen/spor-modal-react-native
 
+## 1.0.10
+
+### Patch Changes
+
+- Updated dependencies [36fb9fae]
+  - @vygruppen/spor-theme-react-native@0.3.1
+
 ## 1.0.9
 
 ### Patch Changes

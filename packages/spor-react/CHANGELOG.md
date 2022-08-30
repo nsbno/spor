@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 0.13.24
+
+### Patch Changes
+
+- Updated dependencies [77bf8c23]
+  - @vygruppen/spor-datepicker-react@0.1.4
+
 ## 0.13.23
 
 ### Patch Changes

@@ -22,6 +22,7 @@ import { useCurrentLocale } from "./utils";
 
 type DatePickerProps = AriaDatePickerProps<DateValue> & {
   variant: ResponsiveValue<"simple" | "with-trigger">;
+  name?: string;
 };
 /**
  * A date picker component.
@@ -99,6 +100,7 @@ export function DatePicker({ variant, ...props }: DatePickerProps) {
                 <DateField
                   label={props.label}
                   labelProps={labelProps}
+                  name={props.name}
                   {...fieldProps}
                 />
               </StyledField>

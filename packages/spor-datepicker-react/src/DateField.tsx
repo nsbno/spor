@@ -29,6 +29,7 @@ function createCalendar(identifier: string) {
 type DateFieldProps = AriaDateFieldProps<DateValue> & {
   label?: React.ReactNode;
   labelProps?: DOMAttributes<FocusableElement>;
+  name?: string;
 };
 export function DateField(props: DateFieldProps) {
   const locale = useCurrentLocale();
@@ -54,6 +55,7 @@ export function DateField(props: DateFieldProps) {
           <DateSegment key={i} segment={segment} state={state} />
         ))}
       </Flex>
+      <input type="hidden" value={state.value?.toString()} name={props.name} />
     </Box>
   );
 }

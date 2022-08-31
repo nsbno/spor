@@ -14,15 +14,12 @@ module Spor.InfoTag exposing (..)
 
 -}
 
-import Css exposing (Color)
+import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Spor.Common.Types exposing (Size(..), Variant(..))
 import Spor.LineTagIcon as LineTagIcon
-import Spor.LineTagText as LineTagText exposing (LineTagText)
-import Spor.Text as Text
-import Spor.Token.Color.Alias as Alias
-import Spor.Token.Color.Linjetag as Linjetag
+import Spor.LineTagText as LineTagText
 import Spor.Token.Size.Spacing as Spacing
 
 

@@ -65,28 +65,6 @@ export const App = () => {
 
 You'll find lots of components, and extensive documentation on the [documentation site](https://spor.cloud.vy.no/komponenter).
 
-## Usage (React Native)
-
-There isn't yet a React Native implementation of the Spor Design System. We're working on it though, and hoping to ship an early version in Q2 2022.
-
-While you wait for that though, you can already use the design tokens in your React Native application!
-
-First, install the `@vygruppen/spor-design-tokens` package:
-
-```bash
-$ npm install @vygruppen/spor-design-tokens
-# or
-$ yarn add @vygruppen/spor-design-tokens
-```
-
-Next, import the tokens in your React Native application:
-
-```tsx
-import tokens from "@vygruppen/spor-design-tokens/react-native";
-```
-
-[Here is a complete list](https://spor.cloud.vy.no/ressurser/design-tokens) of all available design tokens.
-
 ## Usage (Elm)
 
 There isn't yet an Elm implementation of the Spor Design System. It's in the backlog, and we hope to start shipping components sometime later this year.
@@ -119,12 +97,6 @@ To develop all apps and packages, run the following command:
 npm run dev
 ```
 
-#### Developing for React Native
-
-If you want to develop for React Native, we've created a test application (SporRnDemo) that you can use to test your components and code. To start it, navigate to the `apps/SporRnDemo` directory and run `npm run ios` or `npm run android`.
-
-To run the test application, you need to have a few things installed. Please refer to the [React Native development environment setup documentation](https://reactnative.dev/docs/environment-setup) for further instructions.
-
 ## Add new package
 
 To add a new package, run the following command, and follow the wizard:
@@ -132,17 +104,17 @@ To add a new package, run the following command, and follow the wizard:
 ```
 npm run add-package
 ```
-Then, add a dependency in the component library. 
 
-For instance, the dependency for the package `message-box` with the type react-native should be added to `spor-react-native/package.json`
+Then, add a dependency in the component library.
 
-```diff
+For instance, the dependency for the package `message-box` with the type react should be added to `spor-react/package.json`
+
+````diff
     "dependencies": {
-+      "@vygruppen/spor-message-box-react-native": "*"
++      "@vygruppen/spor-message-box-react": "*"
     }
-At last, export the package in the index file. e.g `spor-react-native/src/index.tsx`. 
+At last, export the package in the index file. e.g `spor-react/src/index.tsx`.
 
 ```tsx
-export * from "@vygruppen/spor-message-box-react-native";
-```
-
+export * from "@vygruppen/spor-message-box-react";
+````

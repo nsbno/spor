@@ -9,7 +9,6 @@
   "ignore": [
     "@vygruppen/docs",
     "@vygruppen/studio",
-    "@vygruppen/rn-demo",
     "@vygruppen/config",
     "@vygruppen/tsconfig"
   ]

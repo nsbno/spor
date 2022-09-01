@@ -9,14 +9,9 @@
   "scripts": {
     "add-package": "plop --plopfile internal/plopfile.mjs",
     "prebuild": "rimraf packages/*/dist",
-    "prebuild:web": "rimraf packages/*/dist",
-    "build": "turbo run build",
-    "build:rn": "turbo run build --filter=@vygruppen/spor*-react-native",
-    "build:web": "turbo run build --filter=@vygruppen/spor*-react",
+    "build": "turbo run build --filter=@vygruppen/spor*-react",
     "test": "turbo run test --parallel",
-    "dev": "npm run dev:web",
-    "dev:web": "turbo run dev --no-cache --parallel --filter=@vygruppen/spor*-react --filter=@vygruppen/docs --filter=@vygruppen/studio",
-    "dev:rn": "turbo run dev --no-cache --parallel --filter=@vygruppen/spor*-react-native --filter=@vygruppen/rn-demo",
+    "dev": "turbo run dev --no-cache --parallel --filter=@vygruppen/spor*-react --filter=@vygruppen/docs --filter=@vygruppen/studio",
     "postinstall": "patch-package",
     "prerelease": "npm run build",
     "release": "changeset publish"
@@ -33,8 +28,5 @@
     "npm": ">=7.0.0",
     "node": ">=14.0.0"
   },
-  "packageManager": "npm@8.1.2",
-  "devDependencies": {
-    "@types/react-native": "^0.69.4"
-  }
+  "packageManager": "npm@8.1.2"
 }

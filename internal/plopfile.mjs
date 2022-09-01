@@ -30,7 +30,6 @@ export default function (plop) {
         choices: [
           { name: "Basic TypeScript", value: "typescript" },
           { name: "React", value: "react" },
-          { name: "React Native", value: "react-native" },
           { name: "Elm", value: "elm" },
         ],
       },
@@ -98,44 +97,10 @@ export default function (plop) {
             },
           ];
           break;
-        case "react-native":
-          actions = [
-            ...actions,
-            {
-              type: "add",
-              path: "../packages/spor-{{kebabCase name}}-react-native/package.json",
-              templateFile: "plop-templates/react-native/package.json.hbs",
-            },
-            {
-              type: "add",
-              path: "../packages/spor-{{kebabCase name}}-react-native/tsconfig.json",
-              templateFile: "plop-templates/react-native/tsconfig.json.hbs",
-            },
-            {
-              type: "add",
-              path: "../packages/spor-{{kebabCase name}}-react-native/README.md",
-              templateFile: "plop-templates/react-native/README.md.hbs",
-            },
-            {
-              type: "add",
-              templateFile: "plop-templates/react-native/src/index.tsx.hbs",
-              path: "../packages/spor-{{kebabCase name}}-react-native/src/index.tsx",
-            },
-            {
-              type: "add",
-              templateFile:
-                "plop-templates/react-native/src/ComponentName.tsx.hbs",
-              path: "../packages/spor-{{kebabCase name}}-react-native/src/{{pascalCase name}}.tsx",
-            },
-          ];
-          break;
         default:
           throw "Option is not yet available";
       }
-      const suffix =
-        answers.type === "react" || answers.type === "react-native"
-          ? `-${answers.type}`
-          : "";
+      const suffix = answers.type === "react" ? `-${answers.type}` : "";
       actions.push({
         type: "modify",
         path: "../packages/config/eslint-preset.js",

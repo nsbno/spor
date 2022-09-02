@@ -108,9 +108,9 @@ class ModuleType {
         return [
             `{-| ${token.comment || ''}`,
             '-}',
-            `${token.name} : ${this.name}`,
-            `${token.name} =`,
-                `${defaultIndentation}${this.name.replace(".", "_")} <| ${this.wrappedType.construct(token.value)}`,
+            `${token.name.replace(".", "_")} : ${this.name}`,
+            `${token.name.replace(".", "_")} =`,
+                `${defaultIndentation}${this.name} <| ${this.wrappedType.construct(token.value)}`,
             '',
             ''
         ];

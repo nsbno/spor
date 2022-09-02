@@ -10,7 +10,7 @@ toCss : TextStyle -> List Css.Style
 toCss textStyle =
     case textStyle of
         TextStyle.DoubleExtraLarge ->
-            [ Css.fontFamilies [ "Vy Display" ]
+            [ Css.fontFamilies [ "VyDisplay" ]
             , Css.lineHeight (Css.num 1.333)
             , Css.fontSize (Css.rem 3.375)
             , mediaQuery Breakpoint.sm
@@ -18,7 +18,7 @@ toCss textStyle =
             ]
 
         TextStyle.ExtraLargeDisplay ->
-            [ Css.fontFamilies [ "Vy Display" ]
+            [ Css.fontFamilies [ "VyDisplay" ]
             , Css.lineHeight (Css.num 1.333)
             , Css.fontSize (Css.rem 2.5)
             , mediaQuery Breakpoint.sm
@@ -26,7 +26,7 @@ toCss textStyle =
             ]
 
         TextStyle.ExtraLargeSans ->
-            [ Css.fontFamilies [ "Vy Sans" ]
+            [ Css.fontFamilies [ "VySans" ]
             , Css.lineHeight (Css.num 1.333)
             , Css.fontSize (Css.rem 2.5)
             , mediaQuery Breakpoint.sm
@@ -34,7 +34,7 @@ toCss textStyle =
             ]
 
         TextStyle.Large ->
-            [ Css.fontFamilies [ "Vy Sans" ]
+            [ Css.fontFamilies [ "VySans" ]
             , Css.lineHeight (Css.num 1.333)
             , Css.fontSize (Css.rem 1.875)
             , mediaQuery Breakpoint.sm
@@ -42,7 +42,7 @@ toCss textStyle =
             ]
 
         TextStyle.Medium ->
-            [ Css.fontFamilies [ "Vy Sans" ]
+            [ Css.fontFamilies [ "VySans" ]
             , Css.lineHeight (Css.num 1.333)
             , Css.fontSize (Css.rem 1.5)
             , mediaQuery Breakpoint.sm
@@ -58,7 +58,7 @@ toCss textStyle =
             ]
 
         TextStyle.ExtraSmall ->
-            [ Css.fontFamilies [ "Vy Sans" ]
+            [ Css.fontFamilies [ "VySans" ]
             , Css.lineHeight (Css.num 1.333)
             , Css.fontSize (Css.rem 1)
             , mediaQuery Breakpoint.sm

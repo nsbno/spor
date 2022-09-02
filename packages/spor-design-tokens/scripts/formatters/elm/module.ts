@@ -12,7 +12,7 @@ export const elmFormatter: Named<Format> = {
         const exposing = moduleType.exposings().concat(
             dictionary
                 .allProperties
-                .map((prop) => prop.name)
+                .map((prop) => prop.name.replace(".", "_"))
         )
         .join(', ');
 
@@ -110,7 +110,7 @@ class ModuleType {
             '-}',
             `${token.name} : ${this.name}`,
             `${token.name} =`,
-                `${defaultIndentation}${this.name} <| ${this.wrappedType.construct(token.value)}`,
+                `${defaultIndentation}${this.name.replace(".", "_")} <| ${this.wrappedType.construct(token.value)}`,
             '',
             ''
         ];

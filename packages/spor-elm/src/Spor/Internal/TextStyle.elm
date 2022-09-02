@@ -50,7 +50,7 @@ toCss textStyle =
             ]
 
         TextStyle.Small ->
-            [ Css.fontFamilies [ "Vy Sans" ]
+            [ Css.fontFamilies [ "VySans" ]
             , Css.lineHeight (Css.num 1.333)
             , Css.fontSize (Css.rem 1.125)
             , mediaQuery Breakpoint.sm

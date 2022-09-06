@@ -14,7 +14,7 @@ module Spor.InfoTag exposing (..)
 
 -}
 
-import Css
+import Css exposing (Color)
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Spor.Common.Types exposing (Size(..), Variant(..))
@@ -34,6 +34,7 @@ type alias Options =
     , size : Size
     , title : String
     , children : Maybe String
+    , overrideColor : Maybe Color
     }
 
 
@@ -50,6 +51,7 @@ init =
         , size = Sm
         , title = ""
         , children = Nothing
+        , overrideColor = Nothing
         }
 
 
@@ -146,10 +148,23 @@ marginRight : Size -> Float
 marginRight size =
     case size of
         Sm ->
-            9
+            6
 
         Md ->
             9
 
         Lg ->
-            9
+            12
+
+
+lineTagPadding : Options -> Css.Px
+lineTagPadding options =
+    case options.size of
+        Sm ->
+            Spacing.toCss Spacing.px6
+
+        Md ->
+            Spacing.toCss Spacing.px6
+
+        Lg ->
+            Spacing.toCss Spacing.px6

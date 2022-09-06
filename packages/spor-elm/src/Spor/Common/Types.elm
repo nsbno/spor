@@ -2,7 +2,8 @@ module Spor.Common.Types exposing (Size(..), Variant(..))
 
 
 type Variant
-    = LocalTrain
+    = Train
+    | LocalTrain
     | RegionTrain
     | RegionExpressTrain
     | LongDistanceTrain

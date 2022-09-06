@@ -36,6 +36,8 @@ type alias Options =
     , size : Size
     , title : String
     , children : Maybe String
+    , overrideFillColor : Maybe Color
+    , overrideColor : Maybe Color
     }
 
 
@@ -52,6 +54,8 @@ init =
         , size = Sm
         , title = ""
         , children = Nothing
+        , overrideFillColor = Nothing
+        , overrideColor = Nothing
         }
 
 
@@ -83,6 +87,20 @@ withChildren children (TravelTag options) =
     TravelTag { options | children = children }
 
 
+{-| Set the override colour
+-}
+withOverrideColor : Maybe Color -> TravelTag -> TravelTag
+withOverrideColor color (TravelTag options) =
+    TravelTag { options | overrideColor = color }
+
+
+{-| Set the override fill colour
+-}
+withOverrideFillColor : Maybe Color -> TravelTag -> TravelTag
+withOverrideFillColor color (TravelTag options) =
+    TravelTag { options | overrideFillColor = color }
+
+
 
 -- DISPLAY
 
@@ -91,15 +109,25 @@ withChildren children (TravelTag options) =
 -}
 toHtml : TravelTag -> Html a
 toHtml (TravelTag options) =
+    let
+        backgroundColor_ =
+            options.overrideFillColor
+                |> Maybe.map identity
+                |> Maybe.withDefault (backgroundColor options.variant)
+    in
     Html.div
         [ Attributes.css
             [ Css.displayFlex
             , Css.flexDirection Css.row
             , Css.justifyContent Css.center
             , Css.alignItems Css.center
-            , Css.backgroundColor <| backgroundColor options.variant
-            , Css.borderRadius <| Css.px <| containerRadius options.size
-            , Css.padding <| Spacing.toCss Spacing.i3xs
+            , Css.backgroundColor backgroundColor_
+            , Css.borderRadius <| Css.px 12
+            , Css.padding4
+                (Spacing.toCss Spacing.i3xs)
+                (Spacing.toCss Spacing.i2xs)
+                (Spacing.toCss Spacing.i3xs)
+                (Spacing.toCss Spacing.i3xs)
             ]
         ]
         (lineTagIcon options :: lineTagText options)
@@ -107,6 +135,14 @@ toHtml (TravelTag options) =
 
 lineTagIcon : Options -> Html a
 lineTagIcon options =
+    let
+        withInfoText =
+            if options.variant == Walk then
+                LineTagIcon.withInfoText (Just options.title)
+
+            else
+                identity
+    in
     LineTagIcon.init
         |> LineTagIcon.withVariant options.variant
         |> LineTagIcon.withSize options.size
@@ -114,37 +150,12 @@ lineTagIcon options =
             (Css.batch
                 [ Css.borderRadius <| Css.px <| iconRadius options.size
                 , Css.marginRight <| Css.px <| marginRight options.size
-                , Css.padding <| Spacing.toCss Spacing.xs
+                , Css.padding <| lineTagPadding options
                 ]
             )
+        |> LineTagIcon.withOverrideColor options.overrideColor
+        |> withInfoText
         |> LineTagIcon.toHtml
-
-
-lineTagText : Options -> List (Html a)
-lineTagText options =
-    options.children
-        |> Maybe.map
-            (\item ->
-                [ LineTagText.init
-                    |> LineTagText.withTitle options.title
-                    |> LineTagText.withChildren (Just item)
-                    |> LineTagText.toHtml
-                ]
-            )
-        |> Maybe.withDefault []
-
-
-containerRadius : Size -> Float
-containerRadius size =
-    case size of
-        Sm ->
-            9
-
-        Md ->
-            12
-
-        Lg ->
-            12
 
 
 iconRadius : Size -> Float
@@ -160,11 +171,29 @@ iconRadius size =
             9
 
 
+lineTagText : Options -> List (Html a)
+lineTagText options =
+    if options.variant == Walk then
+        []
+
+    else
+        options.children
+            |> Maybe.map
+                (\item ->
+                    [ LineTagText.init
+                        |> LineTagText.withTitle options.title
+                        |> LineTagText.withChildren (Just item)
+                        |> LineTagText.toHtml
+                    ]
+                )
+            |> Maybe.withDefault []
+
+
 marginRight : Size -> Float
 marginRight size =
     case size of
         Sm ->
-            9
+            6
 
         Md ->
             9
@@ -176,6 +205,9 @@ marginRight size =
 backgroundColor : Variant -> Color
 backgroundColor variant =
     case variant of
+        Train ->
+            Linjetag.toCss Linjetag.lokaltogLight
+
         LocalTrain ->
             Linjetag.toCss Linjetag.lokaltogLight
 
@@ -211,3 +243,16 @@ backgroundColor variant =
 
         Walk ->
             Alias.toCss Alias.white
+
+
+lineTagPadding : Options -> Css.Px
+lineTagPadding options =
+    case options.size of
+        Sm ->
+            Spacing.toCss Spacing.px3
+
+        Md ->
+            Spacing.toCss Spacing.px3
+
+        Lg ->
+            Spacing.toCss Spacing.px3

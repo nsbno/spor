@@ -35,6 +35,9 @@ type alias Options =
     { variant : Variant
     , size : Size
     , additionalStyle : Style
+    , overrideColor : Maybe Color
+    , useWalkBorder : Bool
+    , infoText : Maybe String
     }
 
 
@@ -50,6 +53,9 @@ init =
         { variant = LocalTrain
         , size = Sm
         , additionalStyle = Css.batch []
+        , overrideColor = Nothing
+        , useWalkBorder = False
+        , infoText = Nothing
         }
 
 
@@ -74,6 +80,27 @@ withAdditionalStyle style (LineTagIcon options) =
     LineTagIcon { options | additionalStyle = style }
 
 
+{-| Set the override colour
+-}
+withOverrideColor : Maybe Color -> LineTagIcon -> LineTagIcon
+withOverrideColor color (LineTagIcon options) =
+    LineTagIcon { options | overrideColor = color }
+
+
+{-| Set whether to use walk boder or not
+-}
+withWalkBorder : Bool -> LineTagIcon -> LineTagIcon
+withWalkBorder useWalkBorder (LineTagIcon options) =
+    LineTagIcon { options | useWalkBorder = useWalkBorder }
+
+
+{-| Set the info text
+-}
+withInfoText : Maybe String -> LineTagIcon -> LineTagIcon
+withInfoText infoText (LineTagIcon options) =
+    LineTagIcon { options | infoText = infoText }
+
+
 
 -- DISPLAY
 
@@ -92,26 +119,48 @@ toHtml (LineTagIcon options) =
             borderColor options.variant
                 |> Maybe.map (\_ -> Css.borderWidth <| Css.px 1)
                 |> Maybe.withDefault (Css.borderWidth <| Css.zero)
+
+        backGroundColor =
+            options.overrideColor
+                |> Maybe.map identity
+                |> Maybe.withDefault (backgroundColor options.variant)
+
+        title =
+            Maybe.withDefault "" options.infoText
     in
-    Html.div
-        [ Attributes.css
-            [ Css.backgroundColor <| backgroundColor options.variant
-            , borderColor_
-            , borderWidth_
-            , Css.borderStyle Css.solid
-            , options.additionalStyle
-            ]
-        ]
-        [ Html.span
+    if options.variant == Walk && not options.useWalkBorder then
+        Html.span
             [ Attributes.css
-                [ Css.color <| iconColor options.variant
-                , Css.displayFlex
-                , Css.Global.descendants
-                    [ Css.Global.path [ Css.fill <| iconColor options.variant ] ]
+                [ Css.marginTop <| Css.px 6
+                , Css.pseudoElement "after"
+                    [ Css.property "content" <| "\"" ++ title ++ "\""
+                    , Css.marginLeft <| Css.px -6
+                    , Css.fontSize <| Css.px 14
+                    ]
                 ]
             ]
             [ icon options.variant options.size ]
-        ]
+
+    else
+        Html.div
+            [ Attributes.css
+                [ Css.backgroundColor backGroundColor
+                , borderColor_
+                , borderWidth_
+                , Css.borderStyle Css.solid
+                , options.additionalStyle
+                ]
+            ]
+            [ Html.span
+                [ Attributes.css
+                    [ Css.color <| iconColor options.variant
+                    , Css.displayFlex
+                    , Css.Global.descendants
+                        [ Css.Global.path [ Css.fill <| iconColor options.variant ] ]
+                    ]
+                ]
+                [ icon options.variant options.size ]
+            ]
 
 
 borderColor : Variant -> Maybe Color
@@ -140,6 +189,15 @@ iconColor variant =
 icon : Variant -> Size -> Svg msg
 icon variant size =
     case ( variant, size ) of
+        ( Train, Sm ) ->
+            Svg.fromUnstyled <| Transportation.trainFill18X18 []
+
+        ( Train, Md ) ->
+            Svg.fromUnstyled <| Transportation.trainFill24X24 []
+
+        ( Train, Lg ) ->
+            Svg.fromUnstyled <| Transportation.trainFill30X30 []
+
         ( LocalTrain, Sm ) ->
             Svg.fromUnstyled <| Transportation.trainFill18X18 []
 
@@ -225,10 +283,10 @@ icon variant size =
             Svg.fromUnstyled <| Transportation.trainFill18X18 []
 
         ( Tram, Md ) ->
-            Svg.fromUnstyled <| Transportation.tramFill18X18 []
+            Svg.fromUnstyled <| Transportation.tramFill24X24 []
 
         ( Tram, Lg ) ->
-            Svg.fromUnstyled <| Transportation.trainFill24X24 []
+            Svg.fromUnstyled <| Transportation.trainFill30X30 []
 
         ( AlternativeTransport, Sm ) ->
             Svg.fromUnstyled <| Transportation.altTransportFill18X18 []
@@ -240,10 +298,10 @@ icon variant size =
             Svg.fromUnstyled <| Transportation.altTransportFill30X30 []
 
         ( Walk, Sm ) ->
-            Svg.fromUnstyled <| Transportation.wagonFill18X18 []
+            Svg.fromUnstyled <| Transportation.walkFill18X18 []
 
         ( Walk, Md ) ->
-            Svg.fromUnstyled <| Transportation.wagonFill24X24 []
+            Svg.fromUnstyled <| Transportation.walkFill24X24 []
 
         ( Walk, Lg ) ->
             Svg.fromUnstyled <| Transportation.walkFill30X30 []
@@ -252,6 +310,9 @@ icon variant size =
 backgroundColor : Variant -> Color
 backgroundColor variant =
     case variant of
+        Train ->
+            Linjetag.toCss Linjetag.lokaltog
+
         LocalTrain ->
             Linjetag.toCss Linjetag.lokaltog
 

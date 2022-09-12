@@ -5,7 +5,7 @@ module Spor.LineTagIcon exposing (..)
 
 ## Config
 
-@docs init, withVariant, withSize, withAdditionalStyle
+@docs init, withVariant, withSize, withAdditionalStyle, withColor, withWalkBorder, withInfoText
 
 
 ## Display
@@ -87,14 +87,14 @@ withcolor color (LineTagIcon options) =
     LineTagIcon { options | color = color }
 
 
-{-| Set the override colour
+{-| Set the use border
 -}
 withWalkBorder : Bool -> LineTagIcon -> LineTagIcon
 withWalkBorder useWalkBorder (LineTagIcon options) =
     LineTagIcon { options | useWalkBorder = useWalkBorder }
 
 
-{-| Set the override colour
+{-| Set the info text
 -}
 withInfoText : Maybe String -> LineTagIcon -> LineTagIcon
 withInfoText infoText (LineTagIcon options) =

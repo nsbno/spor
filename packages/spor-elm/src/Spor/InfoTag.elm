@@ -5,7 +5,7 @@ module Spor.InfoTag exposing (..)
 
 ## Config
 
-@docs init, withVariant, withSize, withSize, withTitle, withChildren
+@docs init, withVariant, withSize, withSize, withTitle, withChildren, withColor
 
 
 ## Display
@@ -81,6 +81,13 @@ withTitle title (InfoTag options) =
 withChildren : Maybe String -> InfoTag -> InfoTag
 withChildren children (InfoTag options) =
     InfoTag { options | children = children }
+
+
+{-| Set the color
+-}
+withcolor : Maybe Color -> InfoTag -> InfoTag
+withcolor color (InfoTag options) =
+    InfoTag { options | color = color }
 
 
 

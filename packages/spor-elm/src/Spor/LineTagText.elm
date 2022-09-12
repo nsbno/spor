@@ -5,7 +5,7 @@ module Spor.LineTagText exposing (..)
 
 ## Config
 
-@docs init, withVariant, withSize
+@docs init, withTitle, withChildren
 
 
 ## Display

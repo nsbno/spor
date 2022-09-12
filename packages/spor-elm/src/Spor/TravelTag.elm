@@ -5,7 +5,7 @@ module Spor.TravelTag exposing (..)
 
 ## Config
 
-@docs init, withHeadingLevel, withTextStyle, withString
+@docs init, withVariant, withSize, withTitle, withChildren, withcolor, withBackgroundColor
 
 
 ## Display

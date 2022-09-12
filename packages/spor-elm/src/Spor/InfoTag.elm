@@ -1,6 +1,6 @@
 module Spor.InfoTag exposing (..)
 
-{-| A component for displaying info tags
+{-| A component for displaying travel tags
 
 
 ## Config
@@ -34,7 +34,7 @@ type alias Options =
     , size : Size
     , title : String
     , children : Maybe String
-    , overrideColor : Maybe Color
+    , color : Maybe Color
     }
 
 
@@ -51,7 +51,7 @@ init =
         , size = Sm
         , title = ""
         , children = Nothing
-        , overrideColor = Nothing
+        , color = Nothing
         }
 
 
@@ -155,16 +155,3 @@ marginRight size =
 
         Lg ->
             12
-
-
-lineTagPadding : Options -> Css.Px
-lineTagPadding options =
-    case options.size of
-        Sm ->
-            Spacing.toCss Spacing.px6
-
-        Md ->
-            Spacing.toCss Spacing.px6
-
-        Lg ->
-            Spacing.toCss Spacing.px6

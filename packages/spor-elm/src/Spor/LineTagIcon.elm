@@ -35,7 +35,7 @@ type alias Options =
     { variant : Variant
     , size : Size
     , additionalStyle : Style
-    , overrideColor : Maybe Color
+    , color : Maybe Color
     , useWalkBorder : Bool
     , infoText : Maybe String
     }
@@ -53,7 +53,7 @@ init =
         { variant = LocalTrain
         , size = Sm
         , additionalStyle = Css.batch []
-        , overrideColor = Nothing
+        , color = Nothing
         , useWalkBorder = False
         , infoText = Nothing
         }
@@ -82,19 +82,19 @@ withAdditionalStyle style (LineTagIcon options) =
 
 {-| Set the override colour
 -}
-withOverrideColor : Maybe Color -> LineTagIcon -> LineTagIcon
-withOverrideColor color (LineTagIcon options) =
-    LineTagIcon { options | overrideColor = color }
+withcolor : Maybe Color -> LineTagIcon -> LineTagIcon
+withcolor color (LineTagIcon options) =
+    LineTagIcon { options | color = color }
 
 
-{-| Set whether to use walk boder or not
+{-| Set the override colour
 -}
 withWalkBorder : Bool -> LineTagIcon -> LineTagIcon
 withWalkBorder useWalkBorder (LineTagIcon options) =
     LineTagIcon { options | useWalkBorder = useWalkBorder }
 
 
-{-| Set the info text
+{-| Set the override colour
 -}
 withInfoText : Maybe String -> LineTagIcon -> LineTagIcon
 withInfoText infoText (LineTagIcon options) =
@@ -121,7 +121,7 @@ toHtml (LineTagIcon options) =
                 |> Maybe.withDefault (Css.borderWidth <| Css.zero)
 
         backGroundColor =
-            options.overrideColor
+            options.color
                 |> Maybe.map identity
                 |> Maybe.withDefault (backgroundColor options.variant)
 

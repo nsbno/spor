@@ -36,8 +36,8 @@ type alias Options =
     , size : Size
     , title : String
     , children : Maybe String
-    , overrideFillColor : Maybe Color
-    , overrideColor : Maybe Color
+    , backroundColor : Maybe Color
+    , color : Maybe Color
     }
 
 
@@ -54,8 +54,8 @@ init =
         , size = Sm
         , title = ""
         , children = Nothing
-        , overrideFillColor = Nothing
-        , overrideColor = Nothing
+        , backroundColor = Nothing
+        , color = Nothing
         }
 
 
@@ -87,18 +87,18 @@ withChildren children (TravelTag options) =
     TravelTag { options | children = children }
 
 
-{-| Set the override colour
--}
-withOverrideColor : Maybe Color -> TravelTag -> TravelTag
-withOverrideColor color (TravelTag options) =
-    TravelTag { options | overrideColor = color }
-
-
 {-| Set the override fill colour
 -}
-withOverrideFillColor : Maybe Color -> TravelTag -> TravelTag
-withOverrideFillColor color (TravelTag options) =
-    TravelTag { options | overrideFillColor = color }
+withcolor : Maybe Color -> TravelTag -> TravelTag
+withcolor color (TravelTag options) =
+    TravelTag { options | color = color }
+
+
+{-| Set the override colour
+-}
+withbackroundColor : Maybe Color -> TravelTag -> TravelTag
+withbackroundColor color (TravelTag options) =
+    TravelTag { options | backroundColor = color }
 
 
 
@@ -111,7 +111,7 @@ toHtml : TravelTag -> Html a
 toHtml (TravelTag options) =
     let
         backgroundColor_ =
-            options.overrideFillColor
+            options.backroundColor
                 |> Maybe.map identity
                 |> Maybe.withDefault (backgroundColor options.variant)
     in
@@ -138,7 +138,7 @@ lineTagIcon options =
     let
         withInfoText =
             if options.variant == Walk then
-                LineTagIcon.withInfoText (Just options.title)
+                LineTagIcon.withInfoText <| Just options.title
 
             else
                 identity
@@ -150,25 +150,12 @@ lineTagIcon options =
             (Css.batch
                 [ Css.borderRadius <| Css.px <| iconRadius options.size
                 , Css.marginRight <| Css.px <| marginRight options.size
-                , Css.padding <| lineTagPadding options
+                , Css.padding <| Spacing.toCss Spacing.px3
                 ]
             )
-        |> LineTagIcon.withOverrideColor options.overrideColor
+        |> LineTagIcon.withcolor options.color
         |> withInfoText
         |> LineTagIcon.toHtml
-
-
-iconRadius : Size -> Float
-iconRadius size =
-    case size of
-        Sm ->
-            6
-
-        Md ->
-            9
-
-        Lg ->
-            9
 
 
 lineTagText : Options -> List (Html a)
@@ -187,6 +174,19 @@ lineTagText options =
                     ]
                 )
             |> Maybe.withDefault []
+
+
+iconRadius : Size -> Float
+iconRadius size =
+    case size of
+        Sm ->
+            6
+
+        Md ->
+            9
+
+        Lg ->
+            9
 
 
 marginRight : Size -> Float
@@ -243,16 +243,3 @@ backgroundColor variant =
 
         Walk ->
             Alias.toCss Alias.white
-
-
-lineTagPadding : Options -> Css.Px
-lineTagPadding options =
-    case options.size of
-        Sm ->
-            Spacing.toCss Spacing.px3
-
-        Md ->
-            Spacing.toCss Spacing.px3
-
-        Lg ->
-            Spacing.toCss Spacing.px3

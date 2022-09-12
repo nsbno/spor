@@ -1,6 +1,6 @@
 module Spor.InfoTag exposing (..)
 
-{-| A component for displaying travel tags
+{-| A component for displaying info tags
 
 
 ## Config

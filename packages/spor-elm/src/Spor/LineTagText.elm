@@ -32,7 +32,7 @@ type LineTagText
 
 type alias Options =
     { title : String
-    , text : Maybe String
+    , description : Maybe String
     }
 
 
@@ -42,7 +42,7 @@ init : LineTagText
 init =
     LineTagText
         { title = ""
-        , text = Nothing
+        , description = Nothing
         }
 
 
@@ -55,9 +55,9 @@ withTitle title (LineTagText options) =
 
 {-| Set the text to be displayed
 -}
-withText : Maybe String -> LineTagText -> LineTagText
-withText text (LineTagText options) =
-    LineTagText { options | text = text }
+withDescription : Maybe String -> LineTagText -> LineTagText
+withDescription description (LineTagText options) =
+    LineTagText { options | description = description }
 
 
 
@@ -94,7 +94,7 @@ toHtml (LineTagText options) =
 
 textContent : Options -> List (Html a)
 textContent options =
-    options.text
+    options.description
         |> Maybe.map
             (\item ->
                 [ Html.span

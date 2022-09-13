@@ -5,7 +5,7 @@ module Spor.LineTagIcon exposing (..)
 
 ## Config
 
-@docs init, withVariant, withSize, withAdditionalStyle, withColor, withText, withParentComponent
+@docs init, withVariant, withSize, withAdditionalStyle, withColor, withDescription, withParentComponent
 
 
 ## Display
@@ -36,7 +36,7 @@ type alias Options =
     , size : Size
     , additionalStyle : Style
     , color : Maybe Color
-    , text : Maybe String
+    , description : Maybe String
     , parentComponent : Maybe Component
     }
 
@@ -54,7 +54,7 @@ init =
         , size = Sm
         , additionalStyle = Css.batch []
         , color = Nothing
-        , text = Nothing
+        , description = Nothing
         , parentComponent = Nothing
         }
 
@@ -87,11 +87,11 @@ withColor color (LineTagIcon options) =
     LineTagIcon { options | color = color }
 
 
-{-| Set the info text
+{-| Set the description to be displayed
 -}
-withText : Maybe String -> LineTagIcon -> LineTagIcon
-withText text (LineTagIcon options) =
-    LineTagIcon { options | text = text }
+withDescription : Maybe String -> LineTagIcon -> LineTagIcon
+withDescription description (LineTagIcon options) =
+    LineTagIcon { options | description = description }
 
 
 {-| Set the parent component
@@ -126,7 +126,7 @@ toHtml (LineTagIcon options) =
                 |> Maybe.withDefault (backgroundColor options.variant)
 
         title =
-            Maybe.withDefault "" options.text
+            Maybe.withDefault "" options.description
     in
     if options.variant == Walk && options.parentComponent == Just Types.TravelTag then
         Html.span

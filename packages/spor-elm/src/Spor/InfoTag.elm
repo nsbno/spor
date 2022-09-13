@@ -5,7 +5,7 @@ module Spor.InfoTag exposing (..)
 
 ## Config
 
-@docs init, withVariant, withSize, withTitle, withText, withColor
+@docs init, withVariant, withSize, withTitle, withDescription, withColor
 
 
 ## Display
@@ -33,7 +33,7 @@ type alias Options =
     { variant : Variant
     , size : Size
     , title : String
-    , text : Maybe String
+    , description : Maybe String
     , color : Maybe Color
     }
 
@@ -50,7 +50,7 @@ init =
         { variant = LocalTrain
         , size = Sm
         , title = ""
-        , text = Nothing
+        , description = Nothing
         , color = Nothing
         }
 
@@ -69,18 +69,18 @@ withSize size (InfoTag options) =
     InfoTag { options | size = size }
 
 
-{-| Set the text to be displayed
+{-| Set the title to be displayed
 -}
 withTitle : String -> InfoTag -> InfoTag
 withTitle title (InfoTag options) =
     InfoTag { options | title = title }
 
 
-{-| Set the text to be displayed
+{-| Set the description to be displayed
 -}
-withText : Maybe String -> InfoTag -> InfoTag
-withText text (InfoTag options) =
-    InfoTag { options | text = text }
+withDescription : Maybe String -> InfoTag -> InfoTag
+withDescription description (InfoTag options) =
+    InfoTag { options | description = description }
 
 
 {-| Set the color
@@ -128,12 +128,12 @@ lineTagIcon options =
 
 lineTagText : Options -> List (Html a)
 lineTagText options =
-    options.text
+    options.description
         |> Maybe.map
             (\item ->
                 [ LineTagText.init
                     |> LineTagText.withTitle options.title
-                    |> LineTagText.withText (Just item)
+                    |> LineTagText.withDescription (Just item)
                     |> LineTagText.toHtml
                 ]
             )

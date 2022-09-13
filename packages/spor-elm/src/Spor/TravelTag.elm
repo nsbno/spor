@@ -5,7 +5,7 @@ module Spor.TravelTag exposing (..)
 
 ## Config
 
-@docs init, withVariant, withSize, withTitle, withText, withColor, withBackgroundColor
+@docs init, withVariant, withSize, withTitle, withDescription, withColor, withBackgroundColor
 
 
 ## Display
@@ -35,7 +35,7 @@ type alias Options =
     { variant : Variant
     , size : Size
     , title : String
-    , text : Maybe String
+    , description : Maybe String
     , backroundColor : Maybe Color
     , color : Maybe Color
     }
@@ -53,7 +53,7 @@ init =
         { variant = LocalTrain
         , size = Sm
         , title = ""
-        , text = Nothing
+        , description = Nothing
         , backroundColor = Nothing
         , color = Nothing
         }
@@ -80,11 +80,11 @@ withTitle title (TravelTag options) =
     TravelTag { options | title = title }
 
 
-{-| Set the text to be displayed
+{-| Set the description to be displayed
 -}
-withText : Maybe String -> TravelTag -> TravelTag
-withText text (TravelTag options) =
-    TravelTag { options | text = text }
+withDescription : Maybe String -> TravelTag -> TravelTag
+withDescription description (TravelTag options) =
+    TravelTag { options | description = description }
 
 
 {-| Set the color
@@ -138,9 +138,9 @@ toHtml (TravelTag options) =
 lineTagIcon : Options -> Html a
 lineTagIcon options =
     let
-        withText_ =
+        withDescription_ =
             if options.variant == Walk then
-                LineTagIcon.withText <| Just options.title
+                LineTagIcon.withDescription <| Just options.title
 
             else
                 identity
@@ -156,7 +156,7 @@ lineTagIcon options =
                 ]
             )
         |> LineTagIcon.withColor options.color
-        |> withText_
+        |> withDescription_
         |> LineTagIcon.toHtml
 
 
@@ -166,12 +166,12 @@ lineTagText options =
         []
 
     else
-        options.text
+        options.description
             |> Maybe.map
                 (\item ->
                     [ LineTagText.init
                         |> LineTagText.withTitle options.title
-                        |> LineTagText.withText (Just item)
+                        |> LineTagText.withDescription (Just item)
                         |> LineTagText.toHtml
                     ]
                 )

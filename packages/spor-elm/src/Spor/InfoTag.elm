@@ -5,7 +5,7 @@ module Spor.InfoTag exposing (..)
 
 ## Config
 
-@docs init, withVariant, withSize, withSize, withTitle, withText, withColor
+@docs init, withVariant, withSize, withTitle, withText, withColor
 
 
 ## Display
@@ -119,7 +119,7 @@ lineTagIcon options =
         |> LineTagIcon.withAdditionalStyle
             (Css.batch
                 [ Css.borderRadius <| Css.px <| iconRadius options.size
-                , Css.marginRight <| Css.px <| marginRight options.size
+                , Css.marginRight <| Css.px <| rightMargin options.size
                 , Css.padding <| Spacing.toCss Spacing.xs
                 ]
             )
@@ -153,8 +153,8 @@ iconRadius size =
             9
 
 
-marginRight : Size -> Float
-marginRight size =
+rightMargin : Size -> Float
+rightMargin size =
     case size of
         Sm ->
             6

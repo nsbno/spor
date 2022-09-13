@@ -138,7 +138,7 @@ toHtml (TravelTag options) =
 lineTagIcon : Options -> Html a
 lineTagIcon options =
     let
-        withText =
+        withText_ =
             if options.variant == Walk then
                 LineTagIcon.withText <| Just options.title
 
@@ -151,12 +151,12 @@ lineTagIcon options =
         |> LineTagIcon.withAdditionalStyle
             (Css.batch
                 [ Css.borderRadius <| Css.px <| iconRadius options.size
-                , Css.marginRight <| Css.px <| marginRight options.size
+                , Css.marginRight <| Css.px <| rightMargin options.size
                 , Css.padding <| Spacing.toCss Spacing.px3
                 ]
             )
         |> LineTagIcon.withColor options.color
-        |> withText
+        |> withText_
         |> LineTagIcon.toHtml
 
 
@@ -191,8 +191,8 @@ iconRadius size =
             9
 
 
-marginRight : Size -> Float
-marginRight size =
+rightMargin : Size -> Float
+rightMargin size =
     case size of
         Sm ->
             6

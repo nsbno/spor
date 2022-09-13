@@ -5,7 +5,7 @@ module Spor.LineTagIcon exposing (..)
 
 ## Config
 
-@docs init, withVariant, withSize, withAdditionalStyle, withColor, withDescription, withParentComponent
+@docs init, withVariant, withSize, withAdditionalStyle, withColor, withDescription
 
 
 ## Display
@@ -18,7 +18,7 @@ import Css exposing (Color, Style)
 import Css.Global
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Spor.Common.Types as Types exposing (Component, Size(..), Variant(..))
+import Spor.Common.Types exposing (Size(..), Variant(..))
 import Spor.Icon.Transportation as Transportation
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Color.Linjetag as Linjetag
@@ -37,7 +37,6 @@ type alias Options =
     , additionalStyle : Style
     , color : Maybe Color
     , description : Maybe String
-    , parentComponent : Maybe Component
     }
 
 
@@ -55,7 +54,6 @@ init =
         , additionalStyle = Css.batch []
         , color = Nothing
         , description = Nothing
-        , parentComponent = Nothing
         }
 
 
@@ -80,7 +78,7 @@ withAdditionalStyle style (LineTagIcon options) =
     LineTagIcon { options | additionalStyle = style }
 
 
-{-| Set the override colour
+{-| Set the colour
 -}
 withColor : Maybe Color -> LineTagIcon -> LineTagIcon
 withColor color (LineTagIcon options) =
@@ -92,13 +90,6 @@ withColor color (LineTagIcon options) =
 withDescription : Maybe String -> LineTagIcon -> LineTagIcon
 withDescription description (LineTagIcon options) =
     LineTagIcon { options | description = description }
-
-
-{-| Set the parent component
--}
-withParentComponent : Maybe Component -> LineTagIcon -> LineTagIcon
-withParentComponent parentComponent (LineTagIcon options) =
-    LineTagIcon { options | parentComponent = parentComponent }
 
 
 
@@ -125,15 +116,15 @@ toHtml (LineTagIcon options) =
                 |> Maybe.map identity
                 |> Maybe.withDefault (backgroundColor options.variant)
 
-        title =
+        description =
             Maybe.withDefault "" options.description
     in
-    if options.variant == Walk && options.parentComponent == Just Types.TravelTag then
+    if options.variant == Walk False then
         Html.span
             [ Attributes.css
                 [ Css.marginTop <| Css.px 6
                 , Css.pseudoElement "after"
-                    [ Css.property "content" <| "\"" ++ title ++ "\""
+                    [ Css.property "content" <| "\"" ++ description ++ "\""
                     , Css.marginLeft <| Css.px -6
                     , Css.fontSize <| Css.px 14
                     ]
@@ -166,7 +157,7 @@ toHtml (LineTagIcon options) =
 borderColor : Variant -> Maybe Color
 borderColor variant =
     case variant of
-        Walk ->
+        Walk True ->
             Just <| Alias.toCss Alias.osloGrey
 
         _ ->
@@ -176,7 +167,7 @@ borderColor variant =
 iconColor : Variant -> Color
 iconColor variant =
     case variant of
-        Walk ->
+        Walk _ ->
             Alias.toCss Alias.darkGrey
 
         AlternativeTransport ->
@@ -288,13 +279,13 @@ icon variant size =
         ( AlternativeTransport, Lg ) ->
             Svg.fromUnstyled <| Transportation.altTransportFill30X30 []
 
-        ( Walk, Sm ) ->
+        ( Walk _, Sm ) ->
             Svg.fromUnstyled <| Transportation.walkFill18X18 []
 
-        ( Walk, Md ) ->
+        ( Walk _, Md ) ->
             Svg.fromUnstyled <| Transportation.walkFill24X24 []
 
-        ( Walk, Lg ) ->
+        ( Walk _, Lg ) ->
             Svg.fromUnstyled <| Transportation.walkFill30X30 []
 
 
@@ -334,5 +325,5 @@ backgroundColor variant =
         AlternativeTransport ->
             Linjetag.toCss Linjetag.altTransport
 
-        Walk ->
+        Walk _ ->
             Alias.toCss Alias.white

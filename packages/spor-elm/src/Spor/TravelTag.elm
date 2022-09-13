@@ -17,7 +17,7 @@ module Spor.TravelTag exposing (..)
 import Css exposing (Color)
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Spor.Common.Types as Types exposing (Size(..), Variant(..))
+import Spor.Common.Types exposing (Size(..), Variant(..))
 import Spor.LineTagIcon as LineTagIcon
 import Spor.LineTagText as LineTagText
 import Spor.Token.Color.Alias as Alias
@@ -139,7 +139,7 @@ lineTagIcon : Options -> Html a
 lineTagIcon options =
     let
         withDescription_ =
-            if options.variant == Walk then
+            if options.variant == Walk False then
                 LineTagIcon.withDescription <| Just options.title
 
             else
@@ -157,13 +157,12 @@ lineTagIcon options =
             )
         |> LineTagIcon.withColor options.color
         |> withDescription_
-        |> LineTagIcon.withParentComponent (Just Types.TravelTag)
         |> LineTagIcon.toHtml
 
 
 lineTagText : Options -> List (Html a)
 lineTagText options =
-    if options.variant == Walk then
+    if options.variant == Walk False then
         []
 
     else
@@ -241,5 +240,5 @@ backgroundColor variant =
         AlternativeTransport ->
             Linjetag.toCss Linjetag.altTransportLight
 
-        Walk ->
+        Walk _ ->
             Alias.toCss Alias.white

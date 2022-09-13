@@ -1,4 +1,4 @@
-module Spor.Common.Types exposing (Component(..), Size(..), Variant(..))
+module Spor.Common.Types exposing (Size(..), Variant(..))
 
 
 type Variant
@@ -13,15 +13,14 @@ type Variant
     | Subway
     | Tram
     | AlternativeTransport
-    | Walk
+    | Walk WithBorder
+
+
+type alias WithBorder =
+    Bool
 
 
 type Size
     = Sm
     | Md
     | Lg
-
-
-type Component
-    = TravelTag
-    | InfoTag

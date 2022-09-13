@@ -17,7 +17,7 @@ module Spor.TravelTag exposing (..)
 import Css exposing (Color)
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Spor.Common.Types exposing (Size(..), Variant(..))
+import Spor.Common.Types as Types exposing (Size(..), Variant(..))
 import Spor.LineTagIcon as LineTagIcon
 import Spor.LineTagText as LineTagText
 import Spor.Token.Color.Alias as Alias
@@ -157,6 +157,7 @@ lineTagIcon options =
             )
         |> LineTagIcon.withColor options.color
         |> withDescription_
+        |> LineTagIcon.withParentComponent (Just Types.TravelTag)
         |> LineTagIcon.toHtml
 
 

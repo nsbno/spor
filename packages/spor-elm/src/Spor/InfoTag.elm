@@ -106,7 +106,9 @@ toHtml (InfoTag options) =
             , Css.alignItems Css.center
             ]
         ]
-        (lineTagIcon options :: lineTagText options)
+    <|
+        lineTagIcon options
+            :: lineTagText options
 
 
 lineTagIcon : Options -> Html a

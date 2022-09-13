@@ -87,14 +87,14 @@ withChildren children (TravelTag options) =
     TravelTag { options | children = children }
 
 
-{-| Set the override fill colour
+{-| Set the color
 -}
 withcolor : Maybe Color -> TravelTag -> TravelTag
 withcolor color (TravelTag options) =
     TravelTag { options | color = color }
 
 
-{-| Set the override colour
+{-| Set the background color
 -}
 withbackroundColor : Maybe Color -> TravelTag -> TravelTag
 withbackroundColor color (TravelTag options) =
@@ -130,7 +130,9 @@ toHtml (TravelTag options) =
                 (Spacing.toCss Spacing.i3xs)
             ]
         ]
-        (lineTagIcon options :: lineTagText options)
+    <|
+        lineTagIcon options
+            :: lineTagText options
 
 
 lineTagIcon : Options -> Html a

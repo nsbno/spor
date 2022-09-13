@@ -76,7 +76,8 @@ toHtml (LineTagText options) =
             , Css.lineHeight <| Spacing.toCss Spacing.sm
             ]
         ]
-        (Html.span
+    <|
+        Html.span
             [ Attributes.css
                 [ Css.color <| Alias.toCss Alias.darkGrey
                 , Css.fontWeight Css.bold
@@ -88,7 +89,6 @@ toHtml (LineTagText options) =
                 |> Text.toHtml
             ]
             :: childText options
-        )
 
 
 childText : Options -> List (Html a)

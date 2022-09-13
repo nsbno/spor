@@ -1,6 +1,6 @@
 module Spor.Text exposing
     ( Text
-    , init, withTextStyle, withString
+    , init, withTextStyle, withString, withAdditionalStyle
     , toHtml
     )
 
@@ -11,7 +11,7 @@ module Spor.Text exposing
 
 ## Configuration
 
-@docs init, withTextStyle, withString
+@docs init, withTextStyle, withString, withAdditionalStyle
 
 
 ## Display
@@ -20,7 +20,7 @@ module Spor.Text exposing
 
 -}
 
-import Css
+import Css exposing (Style)
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attribute
 import Spor.Internal.TextStyle as TextStyleInternal
@@ -36,6 +36,7 @@ type Text
 type alias Options =
     { style : TextStyle
     , text : String
+    , additionalStyle : Style
     }
 
 
@@ -51,6 +52,7 @@ init =
     Text
         { style = TextStyle.Medium
         , text = ""
+        , additionalStyle = Css.batch []
         }
 
 
@@ -68,6 +70,13 @@ withString text (Text options) =
     Text { options | text = text }
 
 
+{-| Set the additional style
+-}
+withAdditionalStyle : Style -> Text -> Text
+withAdditionalStyle style (Text options) =
+    Text { options | additionalStyle = style }
+
+
 
 -- DISPLAY
 
@@ -79,6 +88,6 @@ toHtml (Text options) =
     Html.p
         [ Attribute.css <|
             TextStyleInternal.toCss options.style
-                ++ [ Css.margin Css.zero ]
+                ++ [ options.additionalStyle ]
         ]
         [ Html.text options.text ]

@@ -35,7 +35,7 @@ type alias Options =
     { variant : Variant
     , size : Size
     , title : String
-    , children : Maybe String
+    , text : Maybe String
     , backroundColor : Maybe Color
     , color : Maybe Color
     }
@@ -53,7 +53,7 @@ init =
         { variant = LocalTrain
         , size = Sm
         , title = ""
-        , children = Nothing
+        , text = Nothing
         , backroundColor = Nothing
         , color = Nothing
         }
@@ -73,7 +73,7 @@ withSize size (TravelTag options) =
     TravelTag { options | size = size }
 
 
-{-| Set the text to be displayed
+{-| Set the title to be displayed
 -}
 withTitle : String -> TravelTag -> TravelTag
 withTitle title (TravelTag options) =
@@ -83,8 +83,8 @@ withTitle title (TravelTag options) =
 {-| Set the text to be displayed
 -}
 withText : Maybe String -> TravelTag -> TravelTag
-withText children (TravelTag options) =
-    TravelTag { options | children = children }
+withText text (TravelTag options) =
+    TravelTag { options | text = text }
 
 
 {-| Set the color
@@ -166,7 +166,7 @@ lineTagText options =
         []
 
     else
-        options.children
+        options.text
             |> Maybe.map
                 (\item ->
                     [ LineTagText.init

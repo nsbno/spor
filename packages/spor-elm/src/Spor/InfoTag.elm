@@ -33,7 +33,7 @@ type alias Options =
     { variant : Variant
     , size : Size
     , title : String
-    , children : Maybe String
+    , text : Maybe String
     , color : Maybe Color
     }
 
@@ -50,7 +50,7 @@ init =
         { variant = LocalTrain
         , size = Sm
         , title = ""
-        , children = Nothing
+        , text = Nothing
         , color = Nothing
         }
 
@@ -79,8 +79,8 @@ withTitle title (InfoTag options) =
 {-| Set the text to be displayed
 -}
 withText : Maybe String -> InfoTag -> InfoTag
-withText children (InfoTag options) =
-    InfoTag { options | children = children }
+withText text (InfoTag options) =
+    InfoTag { options | text = text }
 
 
 {-| Set the color
@@ -128,7 +128,7 @@ lineTagIcon options =
 
 lineTagText : Options -> List (Html a)
 lineTagText options =
-    options.children
+    options.text
         |> Maybe.map
             (\item ->
                 [ LineTagText.init

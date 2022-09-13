@@ -5,7 +5,7 @@ module Spor.LineTagIcon exposing (..)
 
 ## Config
 
-@docs init, withVariant, withSize, withAdditionalStyle, withColor, withWalkBorder, withtext
+@docs init, withVariant, withSize, withAdditionalStyle, withColor, withWalkBorder, withText
 
 
 ## Display

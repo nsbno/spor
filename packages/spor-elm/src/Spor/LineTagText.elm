@@ -5,7 +5,7 @@ module Spor.LineTagText exposing (..)
 
 ## Config
 
-@docs init, withTitle, withChildren
+@docs init, withTitle, withText
 
 
 ## Display
@@ -55,8 +55,8 @@ withTitle title (LineTagText options) =
 
 {-| Set the children
 -}
-withChildren : Maybe String -> LineTagText -> LineTagText
-withChildren children (LineTagText options) =
+withText : Maybe String -> LineTagText -> LineTagText
+withText children (LineTagText options) =
     LineTagText { options | children = children }
 
 
@@ -86,13 +86,14 @@ toHtml (LineTagText options) =
             [ Text.init
                 |> Text.withString options.title
                 |> Text.withTextStyle TextStyle.ExtraSmall
+                |> Text.withAdditionalStyle (Css.batch [ Css.margin Css.zero ])
                 |> Text.toHtml
             ]
-            :: childText options
+            :: text options
 
 
-childText : Options -> List (Html a)
-childText options =
+text : Options -> List (Html a)
+text options =
     options.children
         |> Maybe.map
             (\item ->
@@ -105,6 +106,7 @@ childText options =
                     [ Text.init
                         |> Text.withString item
                         |> Text.withTextStyle TextStyle.ExtraSmall
+                        |> Text.withAdditionalStyle (Css.batch [ Css.margin Css.zero ])
                         |> Text.toHtml
                     ]
                 ]

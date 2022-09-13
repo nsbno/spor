@@ -5,7 +5,7 @@ module Spor.TravelTag exposing (..)
 
 ## Config
 
-@docs init, withVariant, withSize, withTitle, withChildren, withColor, withBackgroundColor
+@docs init, withVariant, withSize, withTitle, withText, withColor, withBackgroundColor
 
 
 ## Display
@@ -80,10 +80,10 @@ withTitle title (TravelTag options) =
     TravelTag { options | title = title }
 
 
-{-| Set the children to be displayed
+{-| Set the text to be displayed
 -}
-withChildren : Maybe String -> TravelTag -> TravelTag
-withChildren children (TravelTag options) =
+withText : Maybe String -> TravelTag -> TravelTag
+withText children (TravelTag options) =
     TravelTag { options | children = children }
 
 
@@ -171,7 +171,7 @@ lineTagText options =
                 (\item ->
                     [ LineTagText.init
                         |> LineTagText.withTitle options.title
-                        |> LineTagText.withChildren (Just item)
+                        |> LineTagText.withText (Just item)
                         |> LineTagText.toHtml
                     ]
                 )

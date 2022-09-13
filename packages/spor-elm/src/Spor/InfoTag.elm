@@ -5,7 +5,7 @@ module Spor.InfoTag exposing (..)
 
 ## Config
 
-@docs init, withVariant, withSize, withSize, withTitle, withChildren, withColor
+@docs init, withVariant, withSize, withSize, withTitle, withText, withColor
 
 
 ## Display
@@ -76,10 +76,10 @@ withTitle title (InfoTag options) =
     InfoTag { options | title = title }
 
 
-{-| Set the children to be displayed
+{-| Set the text to be displayed
 -}
-withChildren : Maybe String -> InfoTag -> InfoTag
-withChildren children (InfoTag options) =
+withText : Maybe String -> InfoTag -> InfoTag
+withText children (InfoTag options) =
     InfoTag { options | children = children }
 
 
@@ -133,7 +133,7 @@ lineTagText options =
             (\item ->
                 [ LineTagText.init
                     |> LineTagText.withTitle options.title
-                    |> LineTagText.withChildren (Just item)
+                    |> LineTagText.withText (Just item)
                     |> LineTagText.toHtml
                 ]
             )

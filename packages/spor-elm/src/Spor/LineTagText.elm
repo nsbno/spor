@@ -84,7 +84,7 @@ toHtml (LineTagText options) =
                 ]
             ]
             [ Text.init
-                |> Text.withString options.title
+                |> Text.withText options.title
                 |> Text.withTextStyle TextStyle.ExtraSmall
                 |> Text.withAdditionalStyle (Css.batch [ Css.margin Css.zero ])
                 |> Text.toHtml
@@ -104,7 +104,7 @@ text options =
                         ]
                     ]
                     [ Text.init
-                        |> Text.withString item
+                        |> Text.withText item
                         |> Text.withTextStyle TextStyle.ExtraSmall
                         |> Text.withAdditionalStyle (Css.batch [ Css.margin Css.zero ])
                         |> Text.toHtml

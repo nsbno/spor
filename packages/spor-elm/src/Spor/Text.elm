@@ -1,6 +1,6 @@
 module Spor.Text exposing
     ( Text
-    , init, withTextStyle, withString, withAdditionalStyle
+    , init, withTextStyle, withText, withAdditionalStyle
     , toHtml
     )
 
@@ -11,7 +11,7 @@ module Spor.Text exposing
 
 ## Configuration
 
-@docs init, withTextStyle, withString, withAdditionalStyle
+@docs init, withTextStyle, withText, withAdditionalStyle
 
 
 ## Display
@@ -65,8 +65,8 @@ withTextStyle style (Text options) =
 
 {-| Set the text to be displayed
 -}
-withString : String -> Text -> Text
-withString text (Text options) =
+withText : String -> Text -> Text
+withText text (Text options) =
     Text { options | text = text }
 
 

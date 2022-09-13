@@ -138,9 +138,9 @@ toHtml (TravelTag options) =
 lineTagIcon : Options -> Html a
 lineTagIcon options =
     let
-        withInfoText =
+        withText =
             if options.variant == Walk then
-                LineTagIcon.withInfoText <| Just options.title
+                LineTagIcon.withText <| Just options.title
 
             else
                 identity
@@ -156,7 +156,7 @@ lineTagIcon options =
                 ]
             )
         |> LineTagIcon.withColor options.color
-        |> withInfoText
+        |> withText
         |> LineTagIcon.toHtml
 
 

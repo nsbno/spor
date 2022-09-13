@@ -207,9 +207,6 @@ marginRight size =
 backgroundColor : Variant -> Color
 backgroundColor variant =
     case variant of
-        Train ->
-            Linjetag.toCss Linjetag.lokaltogLight
-
         LocalTrain ->
             Linjetag.toCss Linjetag.lokaltogLight
 

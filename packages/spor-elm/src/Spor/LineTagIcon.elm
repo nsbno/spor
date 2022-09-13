@@ -310,9 +310,6 @@ icon variant size =
 backgroundColor : Variant -> Color
 backgroundColor variant =
     case variant of
-        Train ->
-            Linjetag.toCss Linjetag.lokaltog
-
         LocalTrain ->
             Linjetag.toCss Linjetag.lokaltog
 

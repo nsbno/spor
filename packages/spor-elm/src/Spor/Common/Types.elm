@@ -1,4 +1,4 @@
-module Spor.Common.Types exposing (Size(..), Variant(..))
+module Spor.Common.Types exposing (Component(..), Size(..), Variant(..))
 
 
 type Variant
@@ -20,3 +20,8 @@ type Size
     = Sm
     | Md
     | Lg
+
+
+type Component
+    = TravelTag
+    | InfoTag

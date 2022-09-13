@@ -18,7 +18,7 @@ import Css exposing (Color, Style)
 import Css.Global
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Spor.Common.Types exposing (Size(..), Variant(..))
+import Spor.Common.Types as Types exposing (Component, Size(..), Variant(..))
 import Spor.Icon.Transportation as Transportation
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Color.Linjetag as Linjetag
@@ -36,8 +36,8 @@ type alias Options =
     , size : Size
     , additionalStyle : Style
     , color : Maybe Color
-    , useWalkBorder : Bool
     , infoText : Maybe String
+    , parentComponent : Maybe Component
     }
 
 
@@ -54,8 +54,8 @@ init =
         , size = Sm
         , additionalStyle = Css.batch []
         , color = Nothing
-        , useWalkBorder = False
         , infoText = Nothing
+        , parentComponent = Nothing
         }
 
 
@@ -87,18 +87,18 @@ withcolor color (LineTagIcon options) =
     LineTagIcon { options | color = color }
 
 
-{-| Set the use border
--}
-withWalkBorder : Bool -> LineTagIcon -> LineTagIcon
-withWalkBorder useWalkBorder (LineTagIcon options) =
-    LineTagIcon { options | useWalkBorder = useWalkBorder }
-
-
 {-| Set the info text
 -}
 withInfoText : Maybe String -> LineTagIcon -> LineTagIcon
 withInfoText infoText (LineTagIcon options) =
     LineTagIcon { options | infoText = infoText }
+
+
+{-| Set the parent component
+-}
+withParentComponent : Maybe Component -> LineTagIcon -> LineTagIcon
+withParentComponent parentComponent (LineTagIcon options) =
+    LineTagIcon { options | parentComponent = parentComponent }
 
 
 
@@ -128,7 +128,7 @@ toHtml (LineTagIcon options) =
         title =
             Maybe.withDefault "" options.infoText
     in
-    if options.variant == Walk && not options.useWalkBorder then
+    if options.variant == Walk && options.parentComponent == Just Types.TravelTag then
         Html.span
             [ Attributes.css
                 [ Css.marginTop <| Css.px 6
@@ -189,15 +189,6 @@ iconColor variant =
 icon : Variant -> Size -> Svg msg
 icon variant size =
     case ( variant, size ) of
-        ( Train, Sm ) ->
-            Svg.fromUnstyled <| Transportation.trainFill18X18 []
-
-        ( Train, Md ) ->
-            Svg.fromUnstyled <| Transportation.trainFill24X24 []
-
-        ( Train, Lg ) ->
-            Svg.fromUnstyled <| Transportation.trainFill30X30 []
-
         ( LocalTrain, Sm ) ->
             Svg.fromUnstyled <| Transportation.trainFill18X18 []
 

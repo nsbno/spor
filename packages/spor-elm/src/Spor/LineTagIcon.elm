@@ -82,8 +82,8 @@ withAdditionalStyle style (LineTagIcon options) =
 
 {-| Set the override colour
 -}
-withcolor : Maybe Color -> LineTagIcon -> LineTagIcon
-withcolor color (LineTagIcon options) =
+withColor : Maybe Color -> LineTagIcon -> LineTagIcon
+withColor color (LineTagIcon options) =
     LineTagIcon { options | color = color }
 
 

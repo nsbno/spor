@@ -5,7 +5,7 @@ module Spor.TravelTag exposing (..)
 
 ## Config
 
-@docs init, withVariant, withSize, withTitle, withChildren, withcolor, withBackgroundColor
+@docs init, withVariant, withSize, withTitle, withChildren, withColor, withBackgroundColor
 
 
 ## Display
@@ -89,8 +89,8 @@ withChildren children (TravelTag options) =
 
 {-| Set the color
 -}
-withcolor : Maybe Color -> TravelTag -> TravelTag
-withcolor color (TravelTag options) =
+withColor : Maybe Color -> TravelTag -> TravelTag
+withColor color (TravelTag options) =
     TravelTag { options | color = color }
 
 
@@ -155,7 +155,7 @@ lineTagIcon options =
                 , Css.padding <| Spacing.toCss Spacing.px3
                 ]
             )
-        |> LineTagIcon.withcolor options.color
+        |> LineTagIcon.withColor options.color
         |> withInfoText
         |> LineTagIcon.toHtml
 

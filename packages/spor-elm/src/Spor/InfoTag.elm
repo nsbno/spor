@@ -85,8 +85,8 @@ withChildren children (InfoTag options) =
 
 {-| Set the color
 -}
-withcolor : Maybe Color -> InfoTag -> InfoTag
-withcolor color (InfoTag options) =
+withColor : Maybe Color -> InfoTag -> InfoTag
+withColor color (InfoTag options) =
     InfoTag { options | color = color }
 
 

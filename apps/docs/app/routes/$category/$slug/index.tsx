@@ -92,24 +92,29 @@ export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
   }
   const [article] = data.initialData;
   return {
-    title: `${article.title} – ${article.category?.title ?? "…"} – Spor`,
+    title: `${article.title} – ${article?.category?.title ?? "…"} – Spor`,
   };
 };
 
 export default function ArticlePage() {
   const { data: article, isPreview } = usePreviewableData<Data>();
   const { userPreferences } = useUserPreferences();
+
+  if (!article) {
+    return null;
+  }
+
   const showNoImplementationWarning =
     userPreferences.userType === "developer" &&
-    article.category?.title === "Komponenter" &&
-    article.resourceLinks?.filter((link) => link.linkType !== "figma")
+    article?.category?.title === "Komponenter" &&
+    article?.resourceLinks?.filter((link) => link.linkType !== "figma")
       .length === 0;
   return (
     <>
       <HStack mb={1} justifyContent="space-between">
         <HStack>
-          {article.category?.title && (
-            <Badge colorScheme="green">{article.category?.title}</Badge>
+          {article?.category?.title && (
+            <Badge colorScheme="green">{article?.category?.title}</Badge>
           )}
           {isPreview && <Badge colorScheme="yellow">Preview</Badge>}
           {showNoImplementationWarning && (

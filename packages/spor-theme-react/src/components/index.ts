@@ -11,7 +11,9 @@ export { default as Drawer } from "./drawer";
 export { default as FloatingActionButton } from "./fab";
 export { default as Form } from "./form";
 export { default as FormLabel } from "./form-label";
+export { default as InfoTag } from "./info-tag";
 export { default as Input } from "./input";
+export { default as LineIcon } from "./line-icon";
 export { default as Link } from "./link";
 export { default as Modal } from "./modal";
 export { default as Popover } from "./popover";
@@ -23,4 +25,4 @@ export { default as Switch } from "./switch";
 export { default as Table } from "./table";
 export { default as Tabs } from "./tabs";
 export { default as Textarea } from "./textarea";
-
+export { default as TravelTag } from "./travel-tag";

@@ -48,7 +48,9 @@ export const usePreviewSubscription = <T>({
             );
             return;
           }
-          onChange(result);
+          if (result.length) {
+            onChange(result);
+          }
         }
       );
     }

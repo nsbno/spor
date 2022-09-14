@@ -1,5 +1,25 @@
 # @vygruppen/spor-react
 
+## 0.14.0
+
+### Minor Changes
+
+- 6c05d5ac: Add new package - spor-linjetag-react
+
+### Patch Changes
+
+- Updated dependencies [6c05d5ac]
+- Updated dependencies [13e5bd03]
+- Updated dependencies [e8aaeb07]
+  - @vygruppen/spor-linjetag-react@0.1.0
+  - @vygruppen/spor-theme-react@0.6.2
+  - @vygruppen/spor-icon-react@0.6.3
+  - @vygruppen/spor-datepicker-react@0.1.5
+  - @vygruppen/spor-input-react@0.5.4
+  - @vygruppen/spor-link-react@0.1.12
+  - @vygruppen/spor-popover-react@0.1.17
+  - @vygruppen/spor-stepper-react@0.1.17
+
 ## 0.13.24
 
 ### Patch Changes

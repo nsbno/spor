@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.1.5
+
+### Patch Changes
+
+- 13e5bd03: Update warning, error and info icons
+
 ## 0.1.4
 
 ### Patch Changes

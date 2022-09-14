@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 0.6.2
+
+### Patch Changes
+
+- 13e5bd03: Update warning, error and info icons
+
 ## 0.6.1
 
 ### Patch Changes

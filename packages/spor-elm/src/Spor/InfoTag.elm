@@ -48,7 +48,7 @@ init : InfoTag
 init =
     InfoTag
         { variant = LocalTrain
-        , size = Sm
+        , size = Md
         , title = ""
         , description = Nothing
         , color = Nothing

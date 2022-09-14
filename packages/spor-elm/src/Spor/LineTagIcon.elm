@@ -34,8 +34,8 @@ type LineTagIcon
 type alias Options =
     { variant : Variant
     , size : Size
-    , additionalStyle : Style
     , description : Maybe String
+    , additionalStyle : Style
     , color : Maybe Color
     }
 
@@ -51,8 +51,8 @@ init =
     LineTagIcon
         { variant = LocalTrain
         , size = Sm
-        , additionalStyle = Css.batch []
         , description = Nothing
+        , additionalStyle = Css.batch []
         , color = Nothing
         }
 
@@ -71,6 +71,13 @@ withSize size (LineTagIcon options) =
     LineTagIcon { options | size = size }
 
 
+{-| Set the description to be displayed
+-}
+withDescription : Maybe String -> LineTagIcon -> LineTagIcon
+withDescription description (LineTagIcon options) =
+    LineTagIcon { options | description = description }
+
+
 {-| Set the additonal style
 -}
 withAdditionalStyle : Style -> LineTagIcon -> LineTagIcon
@@ -83,13 +90,6 @@ withAdditionalStyle style (LineTagIcon options) =
 withColor : Maybe Color -> LineTagIcon -> LineTagIcon
 withColor color (LineTagIcon options) =
     LineTagIcon { options | color = color }
-
-
-{-| Set the description to be displayed
--}
-withDescription : Maybe String -> LineTagIcon -> LineTagIcon
-withDescription description (LineTagIcon options) =
-    LineTagIcon { options | description = description }
 
 
 
@@ -111,7 +111,7 @@ toHtml (LineTagIcon options) =
                 |> Maybe.map (\_ -> Css.borderWidth <| Css.px 1)
                 |> Maybe.withDefault (Css.borderWidth <| Css.zero)
 
-        backGroundColor =
+        backgroundColor_ =
             options.color
                 |> Maybe.map identity
                 |> Maybe.withDefault (backgroundColor options.variant)
@@ -135,7 +135,7 @@ toHtml (LineTagIcon options) =
     else
         Html.div
             [ Attributes.css
-                [ Css.backgroundColor backGroundColor
+                [ Css.backgroundColor backgroundColor_
                 , borderColor_
                 , borderWidth_
                 , Css.borderStyle Css.solid

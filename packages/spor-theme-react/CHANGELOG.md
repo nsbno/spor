@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.6.3
+
+### Patch Changes
+
+- 12383632: Fix a bug with linjetags on small screens
+
 ## 0.6.2
 
 ### Patch Changes

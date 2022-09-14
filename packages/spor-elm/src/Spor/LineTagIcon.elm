@@ -35,8 +35,8 @@ type alias Options =
     { variant : Variant
     , size : Size
     , additionalStyle : Style
-    , color : Maybe Color
     , description : Maybe String
+    , color : Maybe Color
     }
 
 
@@ -52,8 +52,8 @@ init =
         { variant = LocalTrain
         , size = Sm
         , additionalStyle = Css.batch []
-        , color = Nothing
         , description = Nothing
+        , color = Nothing
         }
 
 

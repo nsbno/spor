@@ -36,8 +36,8 @@ type alias Options =
     , size : Size
     , title : String
     , description : Maybe String
-    , backroundColor : Maybe Color
     , color : Maybe Color
+    , backroundColor : Maybe Color
     }
 
 
@@ -54,8 +54,8 @@ init =
         , size = Sm
         , title = ""
         , description = Nothing
-        , backroundColor = Nothing
         , color = Nothing
+        , backroundColor = Nothing
         }
 
 

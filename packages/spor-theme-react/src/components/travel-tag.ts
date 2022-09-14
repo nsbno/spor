@@ -4,6 +4,8 @@ import type {
   StyleFunctionProps,
 } from "@chakra-ui/theme-tools";
 import { anatomy } from "@chakra-ui/theme-tools";
+import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { focusVisible } from "../utils/focus-utils";
 
 const parts = anatomy("travel-tag").parts(
   "container",
@@ -15,20 +17,31 @@ const parts = anatomy("travel-tag").parts(
   "deviationIcon"
 );
 
-const getDeviationContainerStyle = ({ deviationLevel }: StyleFunctionProps) => {
-  switch (deviationLevel) {
+const getDeviationContainerStyle = (args: StyleFunctionProps) => {
+  switch (args.deviationLevel) {
     case "critical":
       return {
         border: "1px solid",
-        borderColor: "alias.brightRed",
+        borderColor: getDeviationBorderColor(args),
       };
     case "major":
       return {
         border: "1px solid",
-        borderColor: "alias.golden",
+        borderColor: getDeviationBorderColor(args),
       };
     default:
       return {};
+  }
+};
+
+const getDeviationBorderColor = ({ deviationLevel }: StyleFunctionProps) => {
+  switch (deviationLevel) {
+    case "critical":
+      return "alias.brightRed";
+    case "major":
+      return "alias.golden";
+    default:
+      return "transparent";
   }
 };
 
@@ -50,8 +63,36 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = (args) => ({
     padding: 0.5,
     width: "fit-content",
     ...getDeviationContainerStyle(args),
+    transitionDuration: "fast",
+    transitionProperty: "common",
     _disabled: {
       backgroundColor: "alias.silver",
+    },
+    "button&, a&": {
+      _hover: {
+        boxShadow: getBoxShadowString({
+          borderColor: args.theme.colors.palette.blackAlpha[100],
+          baseShadow: "sm",
+        }),
+      },
+      ...focusVisible({
+        focus: {
+          outline: "none",
+          borderColor: "transparent",
+          boxShadow: getBoxShadowString({
+            borderWidth: 2,
+            borderColor: args.theme.colors.alias.darkGrey,
+          }),
+        },
+        notFocus: {
+          boxShadow: "none",
+          borderColor: getDeviationBorderColor(args),
+        },
+      }),
+      _active: {
+        opacity: 0.5,
+        boxShadow: "none",
+      },
     },
   },
   iconContainer: {

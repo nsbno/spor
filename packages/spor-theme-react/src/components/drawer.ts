@@ -5,7 +5,6 @@ import type {
   SystemStyleFunction,
   SystemStyleObject,
 } from "@chakra-ui/theme-tools";
-import { colors } from "../foundations";
 
 const baseStyleOverlay: SystemStyleObject = {
   backgroundColor: "palette.blackAlpha.600",
@@ -47,28 +46,7 @@ const baseStyleCloseButton: SystemStyleObject = {
   position: "absolute",
   top: 3,
   insetEnd: 3,
-  backgroundColor: "transparent",
-  color: "alias.darkGrey",
-  fontWeight: "normal",
-  _focus: {
-    outline: "none",
-    boxShadow: `inset 0 0 0 1px ${colors.alias.greenHaze}`,
-  },
-  ":focus:not(:focus-visible)": {
-    boxShadow: "none",
-  },
-  _focusVisible: {
-    boxShadow: `inset 0 0 0 1px ${colors.alias.greenHaze}`,
-  },
-  _hover: {
-    backgroundColor: "alias.seaMist",
-    _disabled: {
-      color: "alias.dimGrey",
-    },
-  },
-  _active: {
-    backgroundColor: "alias.mint",
-  },
+  zIndex: "modal",
 };
 
 const baseStyleBody: SystemStyleFunction = (props) => {

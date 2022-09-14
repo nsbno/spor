@@ -37,7 +37,7 @@ type alias Options =
     , title : String
     , description : Maybe String
     , color : Maybe Color
-    , backGroundColor : Maybe Color
+    , backgroundColor : Maybe Color
     }
 
 
@@ -55,7 +55,7 @@ init =
         , title = ""
         , description = Nothing
         , color = Nothing
-        , backGroundColor = Nothing
+        , backgroundColor = Nothing
         }
 
 
@@ -96,9 +96,9 @@ withColor color (TravelTag options) =
 
 {-| Set the background color
 -}
-withBackroundColor : Maybe Color -> TravelTag -> TravelTag
-withBackroundColor color (TravelTag options) =
-    TravelTag { options | backGroundColor = color }
+withBackgroundColor : Maybe Color -> TravelTag -> TravelTag
+withBackgroundColor color (TravelTag options) =
+    TravelTag { options | backgroundColor = color }
 
 
 
@@ -111,7 +111,7 @@ toHtml : TravelTag -> Html a
 toHtml (TravelTag options) =
     let
         backgroundColor_ =
-            options.backGroundColor
+            options.backgroundColor
                 |> Maybe.map identity
                 |> Maybe.withDefault (backgroundColor options.variant)
     in

@@ -46,6 +46,7 @@ const baseStyleCloseButton: SystemStyleObject = {
   position: "absolute",
   top: 3,
   insetEnd: 3,
+  zIndex: "modal",
 };
 
 const baseStyleBody: SystemStyleFunction = (props) => {

@@ -1,6 +1,6 @@
 {
   "size": {
-    "border-radius": {
+    "borderRadius": {
       "0": {
         "comment": "Should only be used for images, site headers, footers and article cards",
         "value": 0

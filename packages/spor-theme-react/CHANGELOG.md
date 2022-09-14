@@ -1,5 +1,12 @@
 # @vygruppen/spor-theme-react
 
+## 0.6.2
+
+### Patch Changes
+
+- 6c05d5ac: Add new package - spor-linjetag-react
+- e8aaeb07: Update the design of close buttons to be similar to ghost buttons
+
 ## 0.6.1
 
 ### Patch Changes

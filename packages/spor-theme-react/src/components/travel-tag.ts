@@ -105,6 +105,7 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = (args) => ({
   textContainer: {
     color: "alias.darkGrey",
     paddingRight: 0.5,
+    whiteSpace: "nowrap",
     "[aria-disabled=true] &": {
       color: "alias.dimGrey",
     },

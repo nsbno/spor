@@ -1,33 +1,33 @@
 {
   "size": {
     "border-radius": {
-      "none": {
+      "0": {
         "comment": "Should only be used for images, site headers, footers and article cards",
-        "value": "0"
+        "value": 0
       },
-      "xs": {
+      "1": {
         "comment": "Should only be used for the smallest components, like tooltips and info boxes",
-        "value": "6"
+        "value": 6
       },
-      "sm": {
+      "2": {
         "comment": "The default. A single line of text is the most typical usecase",
-        "value": "12"
+        "value": 12
       },
-      "md": {
+      "3": {
         "comment": "Should be used for components with several components stacked vertically",
-        "value": "18"
+        "value": 18
       },
-      "lg": {
+      "4": {
         "comment": "Should be used on larger components, like drawers",
-        "value": "24"
+        "value": 24
       },
-      "xl": {
+      "5": {
         "comment": "Should be used for buttons, tags and labels. Provides a complete rounding effect for single lines of text",
-        "value": "30"
+        "value": 30
       },
-      "2xl": {
+      "6": {
         "comment": "Should only be used for the app header",
-        "value": "36"
+        "value": 36
       }
     }
   }

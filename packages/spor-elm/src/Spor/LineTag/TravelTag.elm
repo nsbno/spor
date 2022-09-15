@@ -1,10 +1,12 @@
 module Spor.LineTag.TravelTag exposing
-    ( init, withVariant, withSize, withTitle, withDescription, withColor, withBackgroundColor
+    ( TravelTag
+    , init, withVariant, withSize, withTitle, withDescription, withColor, withBackgroundColor
     , toHtml
-    , TravelTag
     )
 
 {-| A component for displaying travel tags
+
+@docs TravelTag
 
 
 ## Config

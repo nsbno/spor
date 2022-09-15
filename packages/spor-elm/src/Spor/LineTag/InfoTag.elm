@@ -1,10 +1,12 @@
 module Spor.LineTag.InfoTag exposing
-    ( init, withVariant, withSize, withTitle, withDescription, withColor
+    ( InfoTag
+    , init, withVariant, withSize, withTitle, withDescription, withColor
     , toHtml
-    , InfoTag
     )
 
 {-| A component for displaying info tags
+
+@docs InfoTag
 
 
 ## Config

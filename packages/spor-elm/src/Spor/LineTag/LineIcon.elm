@@ -1,10 +1,12 @@
 module Spor.LineTag.LineIcon exposing
-    ( init, withVariant, withSize, withAdditionalStyle, withColor, withDescription
+    ( LineIcon
+    , init, withVariant, withSize, withAdditionalStyle, withColor, withDescription
     , toHtml
-    , LineIcon
     )
 
 {-| A component for displaying line icons
+
+@docs LineIcon
 
 
 ## Config

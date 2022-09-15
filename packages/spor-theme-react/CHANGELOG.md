@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 0.6.4
+
+### Patch Changes
+
+- 2ec31319: Tweak the size of line icon and info tag border radius
+
 ## 0.6.3
 
 ### Patch Changes

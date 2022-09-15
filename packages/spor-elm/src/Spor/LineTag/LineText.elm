@@ -1,6 +1,10 @@
-module Spor.LineTagText exposing (..)
+module Spor.LineTag.LineText exposing
+    ( init, withTitle
+    , toHtml
+    , LineText, withDescription
+    )
 
-{-| A component for displaying line tag text
+{-| A component for displaying line text
 
 
 ## Config
@@ -17,17 +21,17 @@ module Spor.LineTagText exposing (..)
 import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Spor.Common.Types exposing (Size(..), Variant(..))
+import Spor.LineTag.Types exposing (Size(..), Variant(..))
 import Spor.Text as Text
 import Spor.TextStyle as TextStyle exposing (TextStyle(..))
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Size.Spacing as Spacing
 
 
-{-| A component for displaying line tag text
+{-| A component for displaying line text
 -}
-type LineTagText
-    = LineTagText Options
+type LineText
+    = LineText Options
 
 
 type alias Options =
@@ -36,11 +40,11 @@ type alias Options =
     }
 
 
-{-| Create an initial configuration for a `LineTagText` component.
+{-| Create an initial configuration for a `LineText` component.
 -}
-init : LineTagText
+init : LineText
 init =
-    LineTagText
+    LineText
         { title = ""
         , description = Nothing
         }
@@ -48,16 +52,16 @@ init =
 
 {-| Set the title to be displayed
 -}
-withTitle : String -> LineTagText -> LineTagText
-withTitle title (LineTagText options) =
-    LineTagText { options | title = title }
+withTitle : String -> LineText -> LineText
+withTitle title (LineText options) =
+    LineText { options | title = title }
 
 
 {-| Set the text to be displayed
 -}
-withDescription : Maybe String -> LineTagText -> LineTagText
-withDescription description (LineTagText options) =
-    LineTagText { options | description = description }
+withDescription : Maybe String -> LineText -> LineText
+withDescription description (LineText options) =
+    LineText { options | description = description }
 
 
 
@@ -66,8 +70,8 @@ withDescription description (LineTagText options) =
 
 {-| Convert configuration to HTML
 -}
-toHtml : LineTagText -> Html a
-toHtml (LineTagText options) =
+toHtml : LineText -> Html a
+toHtml (LineText options) =
     Html.div
         [ Attributes.css
             [ Css.displayFlex

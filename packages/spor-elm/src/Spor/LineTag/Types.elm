@@ -1,4 +1,4 @@
-module Spor.Common.Types exposing (Size(..), Variant(..))
+module Spor.LineTag.Types exposing (Size(..), Variant(..))
 
 
 type Variant

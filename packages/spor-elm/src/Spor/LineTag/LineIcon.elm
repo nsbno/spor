@@ -1,6 +1,10 @@
-module Spor.LineTagIcon exposing (..)
+module Spor.LineTag.LineIcon exposing
+    ( init, withVariant, withSize, withAdditionalStyle, withColor, withDescription
+    , toHtml
+    , LineIcon
+    )
 
-{-| A component for displaying line tag icons
+{-| A component for displaying line icons
 
 
 ## Config
@@ -18,17 +22,17 @@ import Css exposing (Color, Style)
 import Css.Global
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Spor.Common.Types exposing (Size(..), Variant(..))
 import Spor.Icon.Transportation as Transportation
+import Spor.LineTag.Types exposing (Size(..), Variant(..))
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Color.Linjetag as Linjetag
 import Svg.Styled as Svg exposing (Svg)
 
 
-{-| A component for displaying line tag icons
+{-| A component for displaying line icons
 -}
-type LineTagIcon
-    = LineTagIcon Options
+type LineIcon
+    = LineIcon Options
 
 
 type alias Options =
@@ -44,11 +48,11 @@ type alias Options =
 -- CONFIG
 
 
-{-| Create an initial configuration for a `LineTagIcon` component.
+{-| Create an initial configuration for a `LineIcon` component.
 -}
-init : LineTagIcon
+init : LineIcon
 init =
-    LineTagIcon
+    LineIcon
         { variant = LocalTrain
         , size = Sm
         , description = Nothing
@@ -59,37 +63,37 @@ init =
 
 {-| Set the variant
 -}
-withVariant : Variant -> LineTagIcon -> LineTagIcon
-withVariant variant (LineTagIcon options) =
-    LineTagIcon { options | variant = variant }
+withVariant : Variant -> LineIcon -> LineIcon
+withVariant variant (LineIcon options) =
+    LineIcon { options | variant = variant }
 
 
 {-| Set the size
 -}
-withSize : Size -> LineTagIcon -> LineTagIcon
-withSize size (LineTagIcon options) =
-    LineTagIcon { options | size = size }
+withSize : Size -> LineIcon -> LineIcon
+withSize size (LineIcon options) =
+    LineIcon { options | size = size }
 
 
 {-| Set the description to be displayed
 -}
-withDescription : Maybe String -> LineTagIcon -> LineTagIcon
-withDescription description (LineTagIcon options) =
-    LineTagIcon { options | description = description }
+withDescription : Maybe String -> LineIcon -> LineIcon
+withDescription description (LineIcon options) =
+    LineIcon { options | description = description }
 
 
 {-| Set the additonal style
 -}
-withAdditionalStyle : Style -> LineTagIcon -> LineTagIcon
-withAdditionalStyle style (LineTagIcon options) =
-    LineTagIcon { options | additionalStyle = style }
+withAdditionalStyle : Style -> LineIcon -> LineIcon
+withAdditionalStyle style (LineIcon options) =
+    LineIcon { options | additionalStyle = style }
 
 
 {-| Set the colour
 -}
-withColor : Maybe Color -> LineTagIcon -> LineTagIcon
-withColor color (LineTagIcon options) =
-    LineTagIcon { options | color = color }
+withColor : Maybe Color -> LineIcon -> LineIcon
+withColor color (LineIcon options) =
+    LineIcon { options | color = color }
 
 
 
@@ -98,8 +102,8 @@ withColor color (LineTagIcon options) =
 
 {-| Convert configuration to HTML
 -}
-toHtml : LineTagIcon -> Html a
-toHtml (LineTagIcon options) =
+toHtml : LineIcon -> Html a
+toHtml (LineIcon options) =
     let
         borderColor_ =
             borderColor options.variant

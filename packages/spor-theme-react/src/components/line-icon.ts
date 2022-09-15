@@ -96,13 +96,13 @@ const variants = {
 const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   sm: {
     iconContainer: {
-      borderRadius: "0.375rem",
+      borderRadius: "0.5625rem",
       padding: 1,
     },
   },
   md: {
     iconContainer: {
-      borderRadius: "0.375rem",
+      borderRadius: "0.5625rem",
       padding: 1,
     },
   },

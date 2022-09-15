@@ -1,10 +1,13 @@
 module Spor.LineTag.LineText exposing
-    ( init, withTitle
+    ( LineText
+    , init, withTitle
     , toHtml
-    , LineText, withDescription
+    , withDescription
     )
 
 {-| A component for displaying line text
+
+@docs LineText
 
 
 ## Config

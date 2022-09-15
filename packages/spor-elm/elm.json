@@ -11,6 +11,7 @@
         "Spor.LineTag.TravelTag",
         "Spor.LineTag.InfoTag",
         "Spor.LineTag.LineIcon",
+        "Spor.LineTag.LineText",
         "Spor.LineTag.Types"
     ],
     "elm-version": "0.19.1 <= v < 0.20.0",

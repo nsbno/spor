@@ -28,6 +28,7 @@ type alias WithBorder =
     Bool
 
 
+{-| -}
 type Size
     = Sm
     | Md

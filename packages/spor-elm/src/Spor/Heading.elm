@@ -1,6 +1,6 @@
 module Spor.Heading exposing
     ( Heading, HeadingLevel(..)
-    , init, withHeadingLevel, withTextStyle, withString
+    , init, withHeadingLevel, withTextStyle, withText
     , toHtml
     )
 
@@ -11,7 +11,7 @@ module Spor.Heading exposing
 
 ## Config
 
-@docs init, withHeadingLevel, withTextStyle, withString
+@docs init, withHeadingLevel, withTextStyle, withText
 
 
 ## Display
@@ -83,8 +83,8 @@ withHeadingLevel level (Heading options) =
 
 {-| Set the text to be displayed
 -}
-withString : String -> Heading -> Heading
-withString text (Heading options) =
+withText : String -> Heading -> Heading
+withText text (Heading options) =
     Heading { options | text = text }
 
 

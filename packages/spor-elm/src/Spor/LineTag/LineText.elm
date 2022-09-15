@@ -11,7 +11,7 @@ module Spor.LineTag.LineText exposing
 
 ## Config
 
-@docs init, withTitle, withText, withDescription
+@docs init, withTitle, withDescription
 
 
 ## Display

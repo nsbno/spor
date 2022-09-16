@@ -1,6 +1,6 @@
 module Spor.LineTag.LineIcon exposing
     ( LineIcon
-    , init, withVariant, withSize, withAdditionalStyle, withColor, withDescription
+    , init, withVariant, withSize, withAdditionalStyle, withColor
     , toHtml
     )
 
@@ -11,7 +11,7 @@ module Spor.LineTag.LineIcon exposing
 
 ## Config
 
-@docs init, withVariant, withSize, withAdditionalStyle, withColor, withDescription
+@docs init, withVariant, withSize, withAdditionalStyle, withColor
 
 
 ## Display
@@ -40,7 +40,6 @@ type LineIcon
 type alias Options =
     { variant : Variant
     , size : Size
-    , description : Maybe String
     , additionalStyle : Style
     , color : Maybe Color
     }
@@ -57,7 +56,6 @@ init =
     LineIcon
         { variant = LocalTrain
         , size = Sm
-        , description = Nothing
         , additionalStyle = Css.batch []
         , color = Nothing
         }
@@ -75,13 +73,6 @@ withVariant variant (LineIcon options) =
 withSize : Size -> LineIcon -> LineIcon
 withSize size (LineIcon options) =
     LineIcon { options | size = size }
-
-
-{-| Set the description to be displayed
--}
-withDescription : Maybe String -> LineIcon -> LineIcon
-withDescription description (LineIcon options) =
-    LineIcon { options | description = description }
 
 
 {-| Set the additonal style
@@ -121,49 +112,32 @@ toHtml (LineIcon options) =
             options.color
                 |> Maybe.map identity
                 |> Maybe.withDefault (backgroundColor options.variant)
-
-        description =
-            Maybe.withDefault "" options.description
     in
-    if options.variant == Walk False then
-        Html.span
+    Html.div
+        [ Attributes.css
+            [ Css.backgroundColor backgroundColor_
+            , borderColor_
+            , borderWidth_
+            , Css.borderStyle Css.solid
+            , options.additionalStyle
+            ]
+        ]
+        [ Html.span
             [ Attributes.css
-                [ Css.marginTop <| Css.px 6
-                , Css.pseudoElement "after"
-                    [ Css.property "content" <| "\"" ++ description ++ "\""
-                    , Css.marginLeft <| Css.px -6
-                    , Css.fontSize <| Css.px 14
-                    ]
+                [ Css.color <| iconColor options.variant
+                , Css.displayFlex
+                , Css.Global.descendants
+                    [ Css.Global.path [ Css.fill <| iconColor options.variant ] ]
                 ]
             ]
             [ icon options.variant options.size ]
-
-    else
-        Html.div
-            [ Attributes.css
-                [ Css.backgroundColor backgroundColor_
-                , borderColor_
-                , borderWidth_
-                , Css.borderStyle Css.solid
-                , options.additionalStyle
-                ]
-            ]
-            [ Html.span
-                [ Attributes.css
-                    [ Css.color <| iconColor options.variant
-                    , Css.displayFlex
-                    , Css.Global.descendants
-                        [ Css.Global.path [ Css.fill <| iconColor options.variant ] ]
-                    ]
-                ]
-                [ icon options.variant options.size ]
-            ]
+        ]
 
 
 borderColor : Variant -> Maybe Color
 borderColor variant =
     case variant of
-        Walk True ->
+        Walk ->
             Just <| Alias.toCss Alias.osloGrey
 
         _ ->
@@ -173,7 +147,7 @@ borderColor variant =
 iconColor : Variant -> Color
 iconColor variant =
     case variant of
-        Walk _ ->
+        Walk ->
             Alias.toCss Alias.darkGrey
 
         AlternativeTransport ->
@@ -285,13 +259,13 @@ icon variant size =
         ( AlternativeTransport, Lg ) ->
             Svg.fromUnstyled <| Transportation.altTransportFill30X30 []
 
-        ( Walk _, Sm ) ->
+        ( Walk, Sm ) ->
             Svg.fromUnstyled <| Transportation.walkFill18X18 []
 
-        ( Walk _, Md ) ->
+        ( Walk, Md ) ->
             Svg.fromUnstyled <| Transportation.walkFill24X24 []
 
-        ( Walk _, Lg ) ->
+        ( Walk, Lg ) ->
             Svg.fromUnstyled <| Transportation.walkFill30X30 []
 
 
@@ -331,5 +305,5 @@ backgroundColor variant =
         AlternativeTransport ->
             Linjetag.toCss Linjetag.altTransport
 
-        Walk _ ->
+        Walk ->
             Alias.toCss Alias.white

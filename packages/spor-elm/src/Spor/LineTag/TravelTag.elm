@@ -23,8 +23,8 @@ module Spor.LineTag.TravelTag exposing
 import Css exposing (Color)
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Spor.LineTag.LineIcon as LineTagIcon
-import Spor.LineTag.LineText as LineTagText
+import Spor.LineTag.LineIcon as LineIcon
+import Spor.LineTag.LineText as LineText
 import Spor.LineTag.Types exposing (Size(..), Variant(..))
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Color.Linjetag as Linjetag
@@ -129,59 +129,71 @@ toHtml (TravelTag options) =
             , Css.alignItems Css.center
             , Css.backgroundColor backgroundColor_
             , Css.borderRadius <| Css.px 12
-            , Css.padding4
-                (Spacing.toCss Spacing.i3xs)
-                (Spacing.toCss Spacing.i2xs)
-                (Spacing.toCss Spacing.i3xs)
-                (Spacing.toCss Spacing.i3xs)
+            , if options.variant /= Walk then
+                Css.padding4
+                    (Spacing.toCss Spacing.i3xs)
+                    (Spacing.toCss Spacing.i2xs)
+                    (Spacing.toCss Spacing.i3xs)
+                    (Spacing.toCss Spacing.i3xs)
+
+              else
+                Css.batch []
             ]
         ]
-    <|
-        lineTagIcon options
-            :: lineTagText options
+        [ lineIcon options, lineText options ]
 
 
-lineTagIcon : Options -> Html a
-lineTagIcon options =
+lineIcon : Options -> Html a
+lineIcon options =
     let
-        withDescription_ =
-            if options.variant == Walk False then
-                LineTagIcon.withDescription <| Just options.title
+        additionalStyle =
+            if options.variant == Walk then
+                Css.batch [ Css.borderStyle Css.none ]
 
             else
-                identity
+                Css.batch
+                    [ Css.borderRadius <| Css.px <| iconRadius options.size
+                    , Css.marginRight <| Css.px <| rightMargin options.size
+                    , Css.padding <| Spacing.toCss Spacing.px3
+                    ]
+
+        icon =
+            LineIcon.init
+                |> LineIcon.withVariant options.variant
+                |> LineIcon.withSize options.size
+                |> LineIcon.withAdditionalStyle additionalStyle
+                |> LineIcon.withColor options.color
+                |> LineIcon.toHtml
     in
-    LineTagIcon.init
-        |> LineTagIcon.withVariant options.variant
-        |> LineTagIcon.withSize options.size
-        |> LineTagIcon.withAdditionalStyle
-            (Css.batch
-                [ Css.borderRadius <| Css.px <| iconRadius options.size
-                , Css.marginRight <| Css.px <| rightMargin options.size
-                , Css.padding <| Spacing.toCss Spacing.px3
+    if options.variant == Walk then
+        Html.span [ Attributes.css [ Css.position Css.relative ] ]
+            [ icon
+            , Html.span
+                [ Attributes.css <|
+                    [ Css.position Css.absolute
+                    , Css.left <| Css.px 18
+                    , Css.bottom <| Css.px -6
+                    , Css.fontSize <| Css.px 14
+                    , Css.lineHeight <| Css.px 19
+                    ]
                 ]
-            )
-        |> LineTagIcon.withColor options.color
-        |> withDescription_
-        |> LineTagIcon.toHtml
-
-
-lineTagText : Options -> List (Html a)
-lineTagText options =
-    if options.variant == Walk False then
-        []
+                [ Html.text options.title ]
+            ]
 
     else
-        options.description
-            |> Maybe.map
-                (\item ->
-                    [ LineTagText.init
-                        |> LineTagText.withTitle options.title
-                        |> LineTagText.withDescription (Just item)
-                        |> LineTagText.toHtml
-                    ]
-                )
-            |> Maybe.withDefault []
+        icon
+
+
+lineText : Options -> Html a
+lineText options =
+    if options.variant == Walk then
+        Html.text ""
+
+    else
+        LineText.init
+            |> LineText.withTitle options.title
+            |> LineText.withDescription options.description
+            |> LineText.toHtml
 
 
 iconRadius : Size -> Float
@@ -246,5 +258,5 @@ backgroundColor variant =
         AlternativeTransport ->
             Linjetag.toCss Linjetag.altTransportLight
 
-        Walk _ ->
+        Walk ->
             Alias.toCss Alias.white

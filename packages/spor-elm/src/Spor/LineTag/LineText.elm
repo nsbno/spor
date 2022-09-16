@@ -23,11 +23,9 @@ module Spor.LineTag.LineText exposing
 import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Spor.LineTag.Types exposing (Size(..), Variant(..))
-import Spor.Text as Text
+import Spor.Internal.TextStyle as TextStyle
 import Spor.TextStyle as TextStyle exposing (TextStyle(..))
 import Spor.Token.Color.Alias as Alias
-import Spor.Token.Size.Spacing as Spacing
 
 
 {-| A component for displaying line text
@@ -62,8 +60,8 @@ withTitle title (LineText options) =
 {-| Set the text to be displayed
 -}
 withDescription : Maybe String -> LineText -> LineText
-withDescription description (LineText options) =
-    LineText { options | description = description }
+withDescription description_ (LineText options) =
+    LineText { options | description = description_ }
 
 
 
@@ -74,47 +72,37 @@ withDescription description (LineText options) =
 -}
 toHtml : LineText -> Html a
 toHtml (LineText options) =
-    Html.div
+    Html.span
         [ Attributes.css
             [ Css.displayFlex
             , Css.flexDirection Css.row
             , Css.alignItems Css.center
-            , Css.lineHeight <| Spacing.toCss Spacing.sm
             ]
         ]
-    <|
-        Html.span
-            [ Attributes.css
+        [ Html.span
+            [ Attributes.css <|
                 [ Css.color <| Alias.toCss Alias.darkGrey
                 , Css.fontWeight Css.bold
                 ]
+                    ++ TextStyle.toCss TextStyle.ExtraSmall
             ]
-            [ Text.init
-                |> Text.withText options.title
-                |> Text.withTextStyle TextStyle.ExtraSmall
-                |> Text.withAdditionalStyle (Css.batch [ Css.margin Css.zero ])
-                |> Text.toHtml
-            ]
-            :: textContent options
+            [ Html.text options.title ]
+        , description options
+        ]
 
 
-textContent : Options -> List (Html a)
-textContent options =
+description : Options -> Html a
+description options =
     options.description
         |> Maybe.map
             (\item ->
-                [ Html.span
-                    [ Attributes.css
+                Html.span
+                    [ Attributes.css <|
                         [ Css.color <| Alias.toCss Alias.darkGrey
                         , Css.marginLeft <| Css.px 3
                         ]
+                            ++ TextStyle.toCss TextStyle.ExtraSmall
                     ]
-                    [ Text.init
-                        |> Text.withText item
-                        |> Text.withTextStyle TextStyle.ExtraSmall
-                        |> Text.withAdditionalStyle (Css.batch [ Css.margin Css.zero ])
-                        |> Text.toHtml
-                    ]
-                ]
+                    [ Html.text item ]
             )
-        |> Maybe.withDefault []
+        |> Maybe.withDefault (Html.text "")

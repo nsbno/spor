@@ -21,11 +21,7 @@ type Variant
     | Subway
     | Tram
     | AlternativeTransport
-    | Walk WithBorder
-
-
-type alias WithBorder =
-    Bool
+    | Walk
 
 
 {-| -}

@@ -23,8 +23,8 @@ module Spor.LineTag.InfoTag exposing
 import Css exposing (Color)
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Spor.LineTag.LineIcon as LineTagIcon
-import Spor.LineTag.LineText as LineTagText
+import Spor.LineTag.LineIcon as LineIcon
+import Spor.LineTag.LineText as LineText
 import Spor.LineTag.Types exposing (Size(..), Variant(..))
 import Spor.Token.Size.Spacing as Spacing
 
@@ -112,38 +112,31 @@ toHtml (InfoTag options) =
             , Css.alignItems Css.center
             ]
         ]
-    <|
-        lineTagIcon options
-            :: lineTagText options
+        [ lineIcon options, lineText options ]
 
 
-lineTagIcon : Options -> Html a
-lineTagIcon options =
-    LineTagIcon.init
-        |> LineTagIcon.withVariant options.variant
-        |> LineTagIcon.withSize options.size
-        |> LineTagIcon.withAdditionalStyle
+lineIcon : Options -> Html a
+lineIcon options =
+    LineIcon.init
+        |> LineIcon.withVariant options.variant
+        |> LineIcon.withSize options.size
+        |> LineIcon.withAdditionalStyle
             (Css.batch
                 [ Css.borderRadius <| Css.px <| iconRadius options.size
                 , Css.marginRight <| Css.px <| rightMargin options.size
-                , Css.padding <| Spacing.toCss Spacing.xs
+                , Css.padding <| Spacing.toCss Spacing.i2xs
                 ]
             )
-        |> LineTagIcon.toHtml
+        |> LineIcon.withColor options.color
+        |> LineIcon.toHtml
 
 
-lineTagText : Options -> List (Html a)
-lineTagText options =
-    options.description
-        |> Maybe.map
-            (\item ->
-                [ LineTagText.init
-                    |> LineTagText.withTitle options.title
-                    |> LineTagText.withDescription (Just item)
-                    |> LineTagText.toHtml
-                ]
-            )
-        |> Maybe.withDefault []
+lineText : Options -> Html a
+lineText options =
+    LineText.init
+        |> LineText.withTitle options.title
+        |> LineText.withDescription options.description
+        |> LineText.toHtml
 
 
 iconRadius : Size -> Float

@@ -293,7 +293,7 @@ deviationIcon maybeDeviationLevel =
                     [ Css.position Css.absolute
                     , Css.top <| Css.px -7
                     , Css.right <| Css.px -8
-                    , Css.zIndex <| Css.int 2
+                    , Css.zIndex <| Css.int 1
                     , Css.property "paint-order" "stroke"
                     , Css.property "stroke" "white"
                     , Css.property "stroke-width" "2"

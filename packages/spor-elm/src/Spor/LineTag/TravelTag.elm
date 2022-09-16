@@ -280,29 +280,8 @@ deviationIcon : Maybe DeviationLevel -> Html msg
 deviationIcon maybeDeviationLevel =
     case maybeDeviationLevel of
         Just deviationLevel ->
-            let
-                fillColor =
-                    if deviationLevel == Info then
-                        [ Css.fill <| Alias.toCss Alias.ocean ]
-
-                    else
-                        []
-            in
             Html.span
-                [ Attributes.css
-                    [ Css.position Css.absolute
-                    , Css.top <| Css.px -7
-                    , Css.right <| Css.px -8
-                    , Css.zIndex <| Css.int 1
-                    , Css.property "paint-order" "stroke"
-                    , Css.property "stroke" "white"
-                    , Css.property "stroke-width" "2"
-                    , Css.Global.descendants
-                        [ Css.Global.path fillColor
-                        , Css.Global.typeSelector "path:first-child" [ Css.fill <| Alias.toCss Alias.white ]
-                        ]
-                    ]
-                ]
+                [ Attributes.css [ deviationStyle deviationLevel ] ]
                 [ Svg.fromUnstyled <|
                     case deviationLevel of
                         Critical ->
@@ -320,6 +299,31 @@ deviationIcon maybeDeviationLevel =
 
         Nothing ->
             Html.text ""
+
+
+deviationStyle : DeviationLevel -> Style
+deviationStyle deviationLevel =
+    let
+        fillColor =
+            if deviationLevel == Info then
+                [ Css.fill <| Alias.toCss Alias.ocean ]
+
+            else
+                []
+    in
+    Css.batch
+        [ Css.position Css.absolute
+        , Css.top <| Css.px -7
+        , Css.right <| Css.px -8
+        , Css.zIndex <| Css.int 1
+        , Css.property "paint-order" "stroke"
+        , Css.property "stroke" "white"
+        , Css.property "stroke-width" "2"
+        , Css.Global.descendants
+            [ Css.Global.path fillColor
+            , Css.Global.typeSelector "path:first-child" [ Css.fill <| Alias.toCss Alias.white ]
+            ]
+        ]
 
 
 deviationBorderStyle : Maybe DeviationLevel -> Style

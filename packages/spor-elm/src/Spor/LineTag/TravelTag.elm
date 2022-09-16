@@ -304,7 +304,7 @@ deviationIcon maybeDeviationLevel =
 deviationStyle : DeviationLevel -> Style
 deviationStyle deviationLevel =
     let
-        fillColor =
+        iconFillColor =
             if deviationLevel == Info then
                 [ Css.fill <| Alias.toCss Alias.ocean ]
 
@@ -320,7 +320,7 @@ deviationStyle deviationLevel =
         , Css.property "stroke" "white"
         , Css.property "stroke-width" "2"
         , Css.Global.descendants
-            [ Css.Global.path fillColor
+            [ Css.Global.path iconFillColor
             , Css.Global.typeSelector "path:first-child" [ Css.fill <| Alias.toCss Alias.white ]
             ]
         ]

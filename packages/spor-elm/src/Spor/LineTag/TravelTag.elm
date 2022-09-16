@@ -331,8 +331,7 @@ deviationBorderStyle maybeDeviationLevel =
     case maybeDeviationLevel of
         Just deviationLevel ->
             deviationBorderColor deviationLevel
-                |> Maybe.map
-                    (Css.boxShadow6 Css.inset Css.zero Css.zero Css.zero <| Css.px 1)
+                |> Maybe.map (Css.boxShadow6 Css.inset Css.zero Css.zero Css.zero <| Css.px 1)
                 |> Maybe.withDefault (Css.batch [])
 
         Nothing ->

@@ -7,7 +7,7 @@ module Spor.LineTag.Types exposing (Variant(..), Size(..), DeviationLevel(..))
 -}
 
 
-{-| Used to configure the variant of the line tag (LocalTrain is default).
+{-| Used to configure the variant of the line tag.
 -}
 type Variant
     = LocalTrain
@@ -24,7 +24,7 @@ type Variant
     | Walk
 
 
-{-| Used to configure the size of the line tag (Md is default).
+{-| Used to configure the size of the line tag.
 -}
 type Size
     = Sm
@@ -32,7 +32,7 @@ type Size
     | Lg
 
 
-{-| Used to configure what deviation (if any) exists for a line (Nothing is default).
+{-| Used to configure what deviation (if any) exists for a line.
 -}
 type DeviationLevel
     = Critical

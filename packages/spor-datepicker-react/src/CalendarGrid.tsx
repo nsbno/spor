@@ -43,7 +43,7 @@ export function CalendarGrid({ state, offset = {} }: CalendarGridProps) {
             <Text
               as="th"
               key={index}
-              color={index < 5 ? "alias.darkGrey" : "alias.greenHaze"}
+              color={index < 5 ? "darkGrey" : "greenHaze"}
               textStyle="sm"
             >
               {day}

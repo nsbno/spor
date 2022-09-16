@@ -1,54 +1,30 @@
 import tokens from "@vygruppen/spor-design-tokens";
 
-export const colors = {
-  alias: getValues(tokens.color.alias),
-  palette: getScaledValues(tokens.color.palette),
-  detail: getValues(tokens.color.detail),
-  error: getValues(tokens.color.error),
-  main: getValues(tokens.color.main),
-  outline: getValues(tokens.color.outline),
-  product: getValues(tokens.color.product),
-  text: getValues(tokens.color.text),
-  linjetag: getValues(tokens.color.linjetag),
+type Token = { value: string };
+
+type FlattenValue<T> = T extends { value: string }
+  ? string
+  : { [K in keyof T]: FlattenValue<T[K]> };
+type TransformColorTokens<T> = {
+  [K in keyof T]: FlattenValue<T[K]>;
 };
 
-/**
- * Turns `{ blue: { value: "#00f" } }` into `{ blue: "#00f" }`
- *
- * Could definitely be implemented with a reduce, but let's keep it simple for
- * readability's sake.
- *
- * There are also no types here for simplicity's sake,
- * because they are removed when added to the theme.
- */
-function getValues(obj: any) {
-  const newObj: Record<string, string> = {};
-  for (let colorKey in obj) {
-    newObj[colorKey] = obj[colorKey].value;
-  }
-  return newObj;
-}
+type FinalColors = TransformColorTokens<typeof tokens.color>;
 
-/**
- * Turns { blue: { '100': { value: "#00f" } } } into { blue: { 100: "#00f" } }
- *
- * Could definitely be implemented with a reduce and some flat map jazz, but
- * let's keep it simple for readability's sake.
- *
- * There are also no types here for simplicity's sake,
- * because they are removed when added to the theme.
- */
-function getScaledValues(obj: any) {
-  const newObj: Record<string, Record<string, string>> = {};
-  for (let colorKey in obj) {
-    for (let scaleKey in obj[colorKey]) {
-      if (!newObj[colorKey]) {
-        newObj[colorKey] = {};
-      }
-      newObj[colorKey][scaleKey] = /^\d+$/.test(scaleKey)
-        ? obj[colorKey][scaleKey].original?.value
-        : obj[colorKey].original?.value;
+export const colors: FinalColors = Object.entries(tokens.color).reduce(
+  (allColors, [colorName, tokenOrScale]) => {
+    if ("value" in tokenOrScale) {
+      return { ...allColors, [colorName]: tokenOrScale.value };
+    } else {
+      const scale = Object.entries(tokenOrScale).reduce(
+        (acc, [scaleNumber, scaleToken]) => ({
+          ...acc,
+          [scaleNumber]: (scaleToken as Token).value,
+        }),
+        {} as Record<number, string>
+      );
+      return { ...allColors, [colorName]: scale };
     }
-  }
-  return newObj;
-}
+  },
+  {} as FinalColors
+);

@@ -23,22 +23,22 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
     position: "fixed",
     ...getPositionProps(props),
     _disabled: {
-      backgroundColor: "palette.whiteAlpha.400",
-      color: "alias.white",
+      backgroundColor: "whiteAlpha.400",
+      color: "white",
     },
     _focus: {
       outline: "none",
-      boxShadow: `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
+      boxShadow: `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.greenHaze}`,
     },
     "&:focus:not(:focus-visible)": {
       boxShadow: "md",
     },
     _focusVisible: {
       outline: "none",
-      boxShadow: `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
+      boxShadow: `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.greenHaze}`,
     },
     _hover: {
-      backgroundColor: "alias.seaMist",
+      backgroundColor: "seaMist",
     },
     zIndex: "sticky",
   },
@@ -70,37 +70,37 @@ const getPositionProps = (props: StyleFunctionProps) => {
 const variants: Record<string, PartsStyleFunction<typeof parts>> = {
   dark: (props) => ({
     container: {
-      backgroundColor: "alias.darkTeal",
-      color: "alias.white",
-      _active: { backgroundColor: "alias.pine" },
+      backgroundColor: "darkTeal",
+      color: "white",
+      _active: { backgroundColor: "pine" },
       _hover: {
-        backgroundColor: "alias.night",
+        backgroundColor: "night",
       },
       _focus: {
-        boxShadow: `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.alias.darkTeal}, inset 0 0 0 6px ${props.theme.colors.alias.white}`,
+        boxShadow: `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.darkTeal}, inset 0 0 0 6px ${props.theme.colors.white}`,
         outline: "none",
       },
       "&:focus:not(:focus-visible)": {
         boxShadow: "md",
       },
       _focusVisible: {
-        boxShadow: `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.alias.darkTeal}, inset 0 0 0 6px ${props.theme.colors.alias.white}`,
+        boxShadow: `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.darkTeal}, inset 0 0 0 6px ${props.theme.colors.white}`,
         outline: "none",
       },
     },
   }),
   light: () => ({
     container: {
-      backgroundColor: "alias.white",
-      color: "alias.darkGrey",
-      _active: { backgroundColor: "alias.mint" },
+      backgroundColor: "white",
+      color: "darkGrey",
+      _active: { backgroundColor: "mint" },
     },
   }),
   green: () => ({
     container: {
-      backgroundColor: "alias.mint",
-      color: "alias.darkTeal",
-      _active: { color: "alias.darkTeal", backgroundColor: "alias.lightGrey" },
+      backgroundColor: "mint",
+      color: "darkTeal",
+      _active: { color: "darkTeal", backgroundColor: "lightGrey" },
     },
   }),
 };

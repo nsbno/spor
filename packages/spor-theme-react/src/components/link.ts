@@ -35,89 +35,89 @@ const baseStyle: SystemStyleObject = {
 };
 
 const variantPrimary: SystemStyleFunction = (props) => ({
-  color: "alias.pine",
+  color: "pine",
   _focus: {
-    color: "alias.white",
-    backgroundColor: "alias.pine",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.pine}`,
+    color: "white",
+    backgroundColor: "pine",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.pine}`,
   },
   "&:focus:not(:focus-visible):not(:active)": {
-    color: "alias.pine",
+    color: "pine",
     boxShadow: "none",
     backgroundColor: "transparent",
   },
   _focusVisible: {
-    color: "alias.white",
-    backgroundColor: "alias.pine",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.pine}`,
+    color: "white",
+    backgroundColor: "pine",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.pine}`,
   },
   _hover: {
-    backgroundColor: "alias.coralGreen",
-    color: "alias.darkTeal",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.coralGreen}`,
+    backgroundColor: "coralGreen",
+    color: "darkTeal",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.coralGreen}`,
   },
   _active: {
-    backgroundColor: "alias.mint",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.mint}`,
-    color: "alias.pine",
+    backgroundColor: "mint",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.mint}`,
+    color: "pine",
   },
 });
 
 const variantSecondary: SystemStyleFunction = (props) => ({
-  color: "alias.darkGrey",
+  color: "darkGrey",
   _focus: {
-    color: "alias.white",
-    backgroundColor: "alias.darkGrey",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.darkGrey}`,
+    color: "white",
+    backgroundColor: "darkGrey",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.darkGrey}`,
   },
   "&:focus:not(:focus-visible):not(:active)": {
-    color: "alias.darkGrey",
+    color: "darkGrey",
     boxShadow: "none",
     backgroundColor: "transparent",
   },
   _focusVisible: {
-    color: "alias.white",
-    backgroundColor: "alias.darkGrey",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.darkGrey}`,
+    color: "white",
+    backgroundColor: "darkGrey",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.darkGrey}`,
   },
   _hover: {
-    color: "alias.darkGrey",
-    backgroundColor: "palette.blackAlpha.100",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.palette.blackAlpha[100]}`,
+    color: "darkGrey",
+    backgroundColor: "blackAlpha.100",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.blackAlpha[100]}`,
   },
   _active: {
-    color: "alias.darkTeal",
-    backgroundColor: "alias.mint",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.mint}`,
+    color: "darkTeal",
+    backgroundColor: "mint",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.mint}`,
   },
 });
 
 const variantTertiary: SystemStyleFunction = (props) => ({
-  color: "alias.white",
+  color: "white",
   _focus: {
-    color: "alias.pine",
-    backgroundColor: "alias.white",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.white}`,
+    color: "pine",
+    backgroundColor: "white",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.white}`,
   },
   "&:focus:not(:focus-visible):not(:active)": {
-    color: "alias.white",
+    color: "white",
     boxShadow: "none",
     backgroundColor: "transparent",
   },
   _focusVisible: {
-    color: "alias.pine",
-    backgroundColor: "alias.white",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.alias.white}`,
+    color: "pine",
+    backgroundColor: "white",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.white}`,
   },
   _hover: {
-    color: "alias.white",
-    backgroundColor: "palette.whiteAlpha.200",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.palette.whiteAlpha[200]}`,
+    color: "white",
+    backgroundColor: "whiteAlpha.200",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.whiteAlpha[200]}`,
   },
   _active: {
-    color: "alias.white",
-    backgroundColor: "palette.whiteAlpha.400",
-    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.palette.whiteAlpha[400]}`,
+    color: "white",
+    backgroundColor: "whiteAlpha.400",
+    boxShadow: `0 0 0 ${props.theme.spacing[0.5]} ${props.theme.colors.whiteAlpha[400]}`,
   },
 });
 

@@ -18,11 +18,11 @@ const baseStylePopper: SystemStyleObject = {
 
 const baseStyleContent: SystemStyleFunction = () => {
   return {
-    [$popperBg.variable]: `colors.alias.darkTeal`,
+    [$popperBg.variable]: `colors.darkTeal`,
     backgroundColor: $popperBg.reference,
     [$arrowBg.variable]: $popperBg.reference,
-    [$arrowShadowColor.variable]: `colors.palette.blackAlpha.300`,
-    color: "alias.white",
+    [$arrowShadowColor.variable]: `colors.blackAlpha.300`,
+    color: "white",
     borderRadius: "sm",
     p: 1.5,
     zIndex: "inherit",

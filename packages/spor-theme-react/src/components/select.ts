@@ -32,7 +32,7 @@ const baseStyleField: SystemStyleFunction = (props) => ({
   appearance: "none",
   pt: "16px",
   "option, optgroup": {
-    background: "alias.white",
+    background: "white",
   },
 });
 const baseStyleIcon: SystemStyleObject = {

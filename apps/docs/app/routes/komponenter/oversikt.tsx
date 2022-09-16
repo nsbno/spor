@@ -99,14 +99,14 @@ export default function ComponentsPage() {
               <Image
                 src={urlBuilder.image(component.mainImage).width(300).url()}
                 alt={component.title}
-                backgroundColor="alias.mint"
+                backgroundColor="mint"
                 width="100%"
                 height="10em"
                 objectFit="cover"
                 objectPosition="center center"
               />
             ) : (
-              <Box height="10em" backgroundColor="alias.mint" />
+              <Box height="10em" backgroundColor="mint" />
             )}
             <Heading as="h2" textStyle="sm" fontWeight="bold" p={3}>
               {component.title}

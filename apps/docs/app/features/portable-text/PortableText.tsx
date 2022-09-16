@@ -180,7 +180,7 @@ const components: Partial<PortableTextReactComponents> = {
             </Box>
           )}
           {value.caption && (
-            <Stack textStyle="xs" color="alias.dimGrey" mt={-1}>
+            <Stack textStyle="xs" color="dimGrey" mt={-1}>
               <PortableText value={value.caption} />
             </Stack>
           )}
@@ -214,12 +214,7 @@ const components: Partial<PortableTextReactComponents> = {
             code={value.code.code}
           />
           {value.caption && (
-            <Text
-              textStyle="xs"
-              textAlign="center"
-              color="alias.dimGrey"
-              mt={1}
-            >
+            <Text textStyle="xs" textAlign="center" color="dimGrey" mt={1}>
               {value.caption}
             </Text>
           )}
@@ -358,13 +353,7 @@ const components: Partial<PortableTextReactComponents> = {
       return <CodeBlock code={imports} mt={3} />;
     },
     tipsPanel: ({ value }) => (
-      <Box
-        as="article"
-        backgroundColor="alias.mint"
-        mt={3}
-        p={4}
-        borderRadius="md"
-      >
+      <Box as="article" backgroundColor="mint" mt={3} p={4} borderRadius="md">
         <Flex gap={1} alignItems="end">
           <FavouriteOutline30Icon />
           <Heading as="h3" textStyle="sm" fontWeight="bold">

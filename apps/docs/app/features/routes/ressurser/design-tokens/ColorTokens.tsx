@@ -16,25 +16,13 @@ import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
-type ColorName = keyof typeof tokens.color.alias;
+type Color = keyof typeof tokens.color;
 type ColorToken = {
   value: string;
   name: string;
   original: { value: string };
   attributes: { item: string; subitem?: string };
 };
-
-type ColorCategory = {
-  title: string;
-  colors: Partial<{ [key in ColorName]: ColorToken }>;
-};
-const colorCategories: ColorCategory[] = [
-  { title: "Hovedfarger", colors: tokens.color.main },
-  { title: "Bakgrunnsfarger", colors: tokens.color.background },
-  { title: "Tekstfarger", colors: tokens.color.text },
-  { title: "Detaljfarger", colors: tokens.color.detail },
-  { title: "Outlinefarger", colors: tokens.color.outline },
-];
 
 export function ColorTokens(props: BoxProps) {
   return (
@@ -51,33 +39,18 @@ export function ColorTokens(props: BoxProps) {
         </Text>
       }
     >
-      <Stack spacing={7}>
-        {colorCategories.map((category) => (
-          <ColorCategorySection key={category.title} {...category} />
-        ))}
-        <Stack spacing={3}>
-          <LinkableHeading as="h3" textStyle="md">
-            Full fargepalett
-          </LinkableHeading>
-          <ColorGrid
-            colors={{
-              white: tokens.color.alias.white,
-              black: tokens.color.alias.black,
-            }}
-          />
-          {Object.values(tokens.color.palette)
-            .filter((palette) => !palette.value)
-            .map((palette, i) => {
-              return <ColorGrid key={i} colors={palette} />;
-            })}
-        </Stack>
+      <Stack spacing={3}>
+        <LinkableHeading as="h3" textStyle="md">
+          Full fargepalett
+        </LinkableHeading>
+        <ColorGrid colors={tokens.color} />
       </Stack>
     </SharedTokenLayout>
   );
 }
 
 type ColorGridProps = BoxProps & {
-  colors: ColorCategory["colors"];
+  colors: typeof tokens.color;
 };
 const ColorGrid = ({ colors, ...rest }: ColorGridProps) => {
   return (
@@ -88,15 +61,6 @@ const ColorGrid = ({ colors, ...rest }: ColorGridProps) => {
     </SimpleGrid>
   );
 };
-
-const ColorCategorySection = ({ title, colors }: ColorCategory) => (
-  <Stack>
-    <LinkableHeading as="h3" textStyle="md">
-      {title}
-    </LinkableHeading>
-    <ColorGrid colors={colors} />
-  </Stack>
-);
 
 type ColorTokenProps = BoxProps & { token: ColorToken };
 const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
@@ -115,7 +79,7 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
         height="60px"
         backgroundColor={value}
         borderBottom="1px solid"
-        borderColor={isWhite ? "alias.osloGrey" : value}
+        borderColor={isWhite ? "osloGrey" : value}
       />
       <Box px={2}>
         <Text textStyle="xs" fontWeight="bold" whiteSpace="nowrap">
@@ -144,7 +108,7 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
  */
 const getPaletteName = (value: string) => {
   const normalizedValue = value.toLowerCase();
-  const token = Object.values(tokens.color.palette)
+  const token = Object.values(tokens.color)
     .flatMap((scale) => (scale.value ? [scale] : Object.values(scale)))
     .find(
       (token) =>
@@ -161,7 +125,7 @@ const getPaletteName = (value: string) => {
  * Accepts a color value, and returns the alias name of that color - if there is an alias for that color.
  */
 const getAliasName = (value: string) => {
-  const token = Object.values(tokens.color.alias).find(
+  const token = Object.values(tokens.color).find(
     (token) => token.value.toLowerCase() === value.toLowerCase()
   );
   return token ? token.attributes.item : null;

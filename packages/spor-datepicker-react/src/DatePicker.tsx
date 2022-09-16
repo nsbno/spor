@@ -109,8 +109,8 @@ export function DatePicker({ variant, ...props }: DatePickerProps) {
           </InputGroup>
           {state.isOpen && (
             <PopoverContent
-              backgroundColor="alias.white"
-              color="alias.darkGrey"
+              backgroundColor="white"
+              color="darkGrey"
               boxShadow="md"
             >
               <PopoverArrow backgroundColor="white" />

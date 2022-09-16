@@ -8,20 +8,20 @@ import type {
 const baseContainer: SystemStyleObject = {
   _hover: {
     "input:enabled:not([aria-invalid]) + .chakra-checkbox__control": {
-      backgroundColor: "alias.white",
-      borderColor: "alias.primaryGreen",
+      backgroundColor: "white",
+      borderColor: "primaryGreen",
     },
     "input:enabled[aria-invalid] + .chakra-checkbox__control": {
-      backgroundColor: "alias.white",
-      borderColor: "alias.brightRed",
+      backgroundColor: "white",
+      borderColor: "brightRed",
     },
     "input:enabled:checked:not([aria-invalid]) + .chakra-checkbox__control": {
-      backgroundColor: "alias.darkTeal",
-      borderColor: "alias.darkTeal",
+      backgroundColor: "darkTeal",
+      borderColor: "darkTeal",
     },
     "input:enabled:checked[aria-invalid] + .chakra-checkbox__control": {
-      backgroundColor: "alias.brightRed",
-      borderColor: "alias.brightRed",
+      backgroundColor: "brightRed",
+      borderColor: "brightRed",
     },
   },
 };
@@ -34,45 +34,45 @@ const baseStyleControl: SystemStyleFunction = () => {
     transitionDuration: "normal",
     backgroundColor: "white",
     border: "2px solid",
-    borderColor: "alias.darkTeal",
+    borderColor: "darkTeal",
     borderRadius: "xs",
     color: "white",
 
     _checked: {
-      backgroundColor: "alias.primaryGreen",
-      borderColor: "alias.primaryGreen",
-      color: "alias.white",
+      backgroundColor: "primaryGreen",
+      borderColor: "primaryGreen",
+      color: "white",
 
       _focus: {
-        backgroundColor: "alias.blueGreen",
-        borderColor: "alias.azure",
+        backgroundColor: "blueGreen",
+        borderColor: "azure",
       },
 
       _disabled: {
-        backgroundColor: "alias.lightGrey",
-        borderColor: "alias.steel",
-        color: "alias.steel",
+        backgroundColor: "lightGrey",
+        borderColor: "steel",
+        color: "steel",
       },
 
       _invalid: {
-        backgroundColor: "alias.brightRed",
-        borderColor: "alias.brightRed",
+        backgroundColor: "brightRed",
+        borderColor: "brightRed",
       },
     },
 
     _disabled: {
-      backgroundColor: "alias.lightGrey",
-      borderColor: "alias.steel",
+      backgroundColor: "lightGrey",
+      borderColor: "steel",
     },
 
     _focus: {
-      backgroundColor: "alias.white",
-      borderColor: "alias.azure",
+      backgroundColor: "white",
+      borderColor: "azure",
     },
 
     _invalid: {
-      backgroundColor: "alias.white",
-      borderColor: "alias.brightRed",
+      backgroundColor: "white",
+      borderColor: "brightRed",
     },
   };
 };

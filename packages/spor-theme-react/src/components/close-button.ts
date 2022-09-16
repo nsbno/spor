@@ -15,25 +15,25 @@ const baseStyle: SystemStyleFunction = (props) => {
     transitionDuration: "normal",
     borderRadius: "xs",
     backgroundColor: "transparent",
-    color: "alias.darkGrey",
+    color: "darkGrey",
     fontWeight: "normal",
     ...focusVisible({
       focus: {
         outline: "none",
-        boxShadow: `inset 0 0 0 1px ${props.theme.colors.alias.greenHaze}`,
+        boxShadow: `inset 0 0 0 1px ${props.theme.colors.greenHaze}`,
       },
       notFocus: {
         boxShadow: "none",
       },
     }),
     _hover: {
-      backgroundColor: "alias.seaMist",
+      backgroundColor: "seaMist",
       _disabled: {
-        color: "alias.dimGrey",
+        color: "dimGrey",
       },
     },
     _active: {
-      backgroundColor: "alias.mint",
+      backgroundColor: "mint",
     },
   };
 };

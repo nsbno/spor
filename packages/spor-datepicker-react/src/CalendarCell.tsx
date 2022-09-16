@@ -54,7 +54,7 @@ export function CalendarCell({ state, date, currentMonth }: CalendarCellProps) {
             display: "block",
             width: "100%",
             height: "100%",
-            backgroundColor: "alias.darkTeal",
+            backgroundColor: "darkTeal",
             position: "absolute",
             left: "-50%",
             top: 0,

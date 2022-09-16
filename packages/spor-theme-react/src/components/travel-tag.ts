@@ -37,9 +37,9 @@ const getDeviationContainerStyle = (args: StyleFunctionProps) => {
 const getDeviationBorderColor = ({ deviationLevel }: StyleFunctionProps) => {
   switch (deviationLevel) {
     case "critical":
-      return "alias.brightRed";
+      return "brightRed";
     case "major":
-      return "alias.golden";
+      return "golden";
     default:
       return "transparent";
   }
@@ -51,7 +51,7 @@ const getDeviationIconStyle = ({ deviationLevel }: StyleFunctionProps) => {
     top: "-7px",
     right: "-7px",
     stroke: "white",
-    color: deviationLevel === "info" ? "alias.ocean" : "inherit",
+    color: deviationLevel === "info" ? "ocean" : "inherit",
   };
 };
 
@@ -66,12 +66,12 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = (args) => ({
     transitionDuration: "fast",
     transitionProperty: "common",
     _disabled: {
-      backgroundColor: "alias.silver",
+      backgroundColor: "silver",
     },
     "button&, a&": {
       _hover: {
         boxShadow: getBoxShadowString({
-          borderColor: args.theme.colors.palette.blackAlpha[100],
+          borderColor: args.theme.colors.blackAlpha[100],
           baseShadow: "sm",
         }),
       },
@@ -81,7 +81,7 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = (args) => ({
           borderColor: "transparent",
           boxShadow: getBoxShadowString({
             borderWidth: 2,
-            borderColor: args.theme.colors.alias.darkGrey,
+            borderColor: args.theme.colors.darkGrey,
           }),
         },
         notFocus: {
@@ -98,16 +98,16 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = (args) => ({
   iconContainer: {
     padding: 0.5,
     "[aria-disabled=true] &": {
-      backgroundColor: "alias.osloGrey",
-      color: "alias.white",
+      backgroundColor: "osloGrey",
+      color: "white",
     },
   },
   textContainer: {
-    color: "alias.darkGrey",
+    color: "darkGrey",
     paddingRight: 0.5,
     whiteSpace: "nowrap",
     "[aria-disabled=true] &": {
-      color: "alias.dimGrey",
+      color: "dimGrey",
     },
   },
   title: {
@@ -179,9 +179,9 @@ const variants: Record<string, PartsStyleInterpolation<typeof parts>> = {
   },
   walk: {
     container: {
-      backgroundColor: "alias.white",
+      backgroundColor: "white",
       _disabled: {
-        backgroundColor: "alias.white",
+        backgroundColor: "white",
       },
     },
     iconContainer: {
@@ -190,7 +190,7 @@ const variants: Record<string, PartsStyleInterpolation<typeof parts>> = {
       left: -1,
       "[aria-disabled=true] &": {
         backgroundColor: "transparent",
-        color: "alias.osloGrey",
+        color: "osloGrey",
       },
     },
     textContainer: {
@@ -198,7 +198,7 @@ const variants: Record<string, PartsStyleInterpolation<typeof parts>> = {
       left: 2,
       bottom: -0.5,
       "[aria-disabled=true] &": {
-        color: "alias.osloGrey",
+        color: "osloGrey",
       },
     },
     title: {

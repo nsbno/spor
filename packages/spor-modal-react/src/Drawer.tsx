@@ -99,7 +99,7 @@ const Notch = forwardRef<BoxProps, any>((props, ref) => {
         <Box
           width="2.265rem"
           height={1}
-          backgroundColor="alias.steel"
+          backgroundColor="steel"
           borderRadius="xs"
         />
       </Center>

@@ -76,8 +76,8 @@ export const CodeBlockContainer = ({
     <Box
       borderRadius="sm"
       border="sm"
-      borderColor="alias.osloGrey"
-      backgroundColor="alias.darkGrey"
+      borderColor="osloGrey"
+      backgroundColor="darkGrey"
       fontFamily="monospace"
       fontSize={["mobile.sm", "desktop.sm"]}
       p={2}
@@ -116,11 +116,11 @@ export const CopyCodeButton = forwardRef<CopyCodeButtonProps, "button">(
         <Button
           variant="additional"
           color="white"
-          backgroundColor="alias.darkGrey"
+          backgroundColor="darkGrey"
           boxShadow="inset 0 0 0 1px white, 0 0 10px 0.25rem rgba(0,0,0,0.7)"
           size="xs"
           onClick={onCopy}
-          _active={{ backgroundColor: "alias.mint", color: "alias.darkGrey" }}
+          _active={{ backgroundColor: "mint", color: "darkGrey" }}
           fontFamily="body"
           ref={ref}
         >

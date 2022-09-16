@@ -1,6 +1,6 @@
 module Spor.LineTag.TravelTag exposing
     ( TravelTag
-    , init, withVariant, withSize, withTitle, withDescription, withColor, withBackgroundColor
+    , init, withVariant, withSize, withTitle, withDescription, withDeviationLevel, withColor, withBackgroundColor
     , toHtml
     )
 
@@ -11,7 +11,7 @@ module Spor.LineTag.TravelTag exposing
 
 ## Config
 
-@docs init, withVariant, withSize, withTitle, withDescription, withColor, withBackgroundColor
+@docs init, withVariant, withSize, withTitle, withDescription, withDeviationLevel, withColor, withBackgroundColor
 
 
 ## Display
@@ -20,15 +20,18 @@ module Spor.LineTag.TravelTag exposing
 
 -}
 
-import Css exposing (Color)
+import Css exposing (Color, Style)
+import Css.Global
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
+import Spor.Icon.Feedback as Feedback
 import Spor.LineTag.LineIcon as LineIcon
 import Spor.LineTag.LineText as LineText
-import Spor.LineTag.Types exposing (Size(..), Variant(..))
+import Spor.LineTag.Types exposing (DeviationLevel(..), Size(..), Variant(..))
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Color.Linjetag as Linjetag
 import Spor.Token.Size.Spacing as Spacing
+import Svg.Styled as Svg
 
 
 {-| A component for displaying travel tags
@@ -42,6 +45,7 @@ type alias Options =
     , size : Size
     , title : String
     , description : Maybe String
+    , deviationLevel : Maybe DeviationLevel
     , color : Maybe Color
     , backgroundColor : Maybe Color
     }
@@ -60,6 +64,7 @@ init =
         , size = Md
         , title = ""
         , description = Nothing
+        , deviationLevel = Nothing
         , color = Nothing
         , backgroundColor = Nothing
         }
@@ -93,6 +98,13 @@ withDescription description (TravelTag options) =
     TravelTag { options | description = description }
 
 
+{-| Set the deviation level
+-}
+withDeviationLevel : Maybe DeviationLevel -> TravelTag -> TravelTag
+withDeviationLevel deviationLevel (TravelTag options) =
+    TravelTag { options | deviationLevel = deviationLevel }
+
+
 {-| Set the color
 -}
 withColor : Maybe Color -> TravelTag -> TravelTag
@@ -123,12 +135,14 @@ toHtml (TravelTag options) =
     in
     Html.div
         [ Attributes.css
-            [ Css.displayFlex
+            [ Css.position Css.relative
+            , Css.displayFlex
             , Css.flexDirection Css.row
             , Css.justifyContent Css.center
             , Css.alignItems Css.center
             , Css.backgroundColor backgroundColor_
             , Css.borderRadius <| Css.px 12
+            , deviationBorderStyle options.deviationLevel
             , if options.variant /= Walk then
                 Css.padding4
                     (Spacing.toCss Spacing.i3xs)
@@ -140,7 +154,7 @@ toHtml (TravelTag options) =
                 Css.batch []
             ]
         ]
-        [ lineIcon options, lineText options ]
+        [ lineIcon options, deviationIcon options.deviationLevel, lineText options ]
 
 
 lineIcon : Options -> Html a
@@ -260,3 +274,77 @@ backgroundColor variant =
 
         Walk ->
             Alias.toCss Alias.white
+
+
+deviationIcon : Maybe DeviationLevel -> Html msg
+deviationIcon maybeDeviationLevel =
+    case maybeDeviationLevel of
+        Just deviationLevel ->
+            let
+                fillColor =
+                    if deviationLevel == Info then
+                        [ Css.fill <| Alias.toCss Alias.ocean ]
+
+                    else
+                        []
+            in
+            Html.span
+                [ Attributes.css
+                    [ Css.position Css.absolute
+                    , Css.top <| Css.px -7
+                    , Css.right <| Css.px -8
+                    , Css.zIndex <| Css.int 2
+                    , Css.property "paint-order" "stroke"
+                    , Css.property "stroke" "white"
+                    , Css.property "stroke-width" "2"
+                    , Css.Global.descendants
+                        [ Css.Global.path fillColor
+                        , Css.Global.typeSelector "path:first-child" [ Css.fill <| Alias.toCss Alias.white ]
+                        ]
+                    ]
+                ]
+                [ Svg.fromUnstyled <|
+                    case deviationLevel of
+                        Critical ->
+                            Feedback.errorFill18X18 []
+
+                        Major ->
+                            Feedback.warningFill18X18 []
+
+                        Minor ->
+                            Feedback.warningFill18X18 []
+
+                        Info ->
+                            Feedback.informationFill18X18 []
+                ]
+
+        Nothing ->
+            Html.text ""
+
+
+deviationBorderStyle : Maybe DeviationLevel -> Style
+deviationBorderStyle maybeDeviationLevel =
+    case maybeDeviationLevel of
+        Just deviationLevel ->
+            deviationBorderColor deviationLevel
+                |> Maybe.map
+                    (\color ->
+                        Css.boxShadow6 Css.inset Css.zero Css.zero Css.zero (Css.px 1) color
+                    )
+                |> Maybe.withDefault (Css.batch [])
+
+        Nothing ->
+            Css.batch []
+
+
+deviationBorderColor : DeviationLevel -> Maybe Color
+deviationBorderColor deviationLevel =
+    case deviationLevel of
+        Critical ->
+            Just <| Alias.toCss Alias.brightRed
+
+        Major ->
+            Just <| Alias.toCss Alias.golden
+
+        _ ->
+            Nothing

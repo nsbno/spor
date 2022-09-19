@@ -57,10 +57,10 @@
 
 :root {
   /* Brand colors */
-  --brand-primary: var(--color-dark-teal);
-  --brand-primary--inverted: var(--color-white);
-  --brand-secondary: var(--color-mint);
-  --brand-secondary--inverted: var(--color-dark-grey);
+  --brand-primary: var(--color-alias-dark-teal);
+  --brand-primary--inverted: var(--color-palette-white);
+  --brand-secondary: var(--color-alias-mint);
+  --brand-secondary--inverted: var(--color-alias-dark-grey);
   /* Typography */
   --font-family-sans-serif: var(--asset-font-vy-sans-medium-name);
   --font-family-monospace: "Dank Mono", "SFMono-Regular", Consolas,

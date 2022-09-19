@@ -147,25 +147,17 @@ const TypographyTokenTable = ({
                   <Text
                     fontSize={
                       tokens.font.style[token.key]["font-size"][viewportSize]
-                        .value
                     }
-                    fontFamily={
-                      tokens.font.style[token.key]["font-family"].value
-                    }
-                    lineHeight={
-                      tokens.font.style[token.key]["line-height"].value
-                    }
+                    fontFamily={tokens.font.style[token.key]["font-family"]}
+                    lineHeight={tokens.font.style[token.key]["line-height"]}
                     fontWeight={token.fontWeight}
                   >
                     {token.name}
                   </Text>
                 </Td>
                 <Td>
-                  {
-                    tokens.font.style[token.key]["font-size"][viewportSize]
-                      .value
-                  }{" "}
-                  / {tokens.font.style[token.key]["line-height"].value}
+                  {tokens.font.style[token.key]["font-size"][viewportSize]} /{" "}
+                  {tokens.font.style[token.key]["line-height"]}
                 </Td>
                 <Td>
                   <Stack spacing={1}>

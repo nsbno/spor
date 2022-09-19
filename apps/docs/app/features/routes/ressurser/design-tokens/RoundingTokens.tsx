@@ -68,7 +68,7 @@ const RoundingTokensTable = (props: RoundingTokenTableProps) => {
                 />
               </Td>
               <Td>
-                {key} / {token.value}
+                {key} / {token}
               </Td>
               <Td>
                 <Stack spacing={1}>

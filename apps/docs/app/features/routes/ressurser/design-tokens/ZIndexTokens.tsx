@@ -38,9 +38,9 @@ const ZIndexTokensTable = (props: ZIndexTokenTableProps) => {
         </Thead>
         <Tbody>
           {Object.entries(tokens.depth["z-index"]).map(([key, token]) => (
-            <Tr key={token.key}>
+            <Tr key={key}>
               <Td>{key}</Td>
-              <Td>{token.value}</Td>
+              <Td>{token}</Td>
               <Td>
                 <Stack spacing={1}>
                   <Box>

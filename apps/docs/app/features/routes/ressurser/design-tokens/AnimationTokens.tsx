@@ -12,8 +12,8 @@ import {
   Thead,
   Tr,
 } from "@vygruppen/spor-react";
-import { SharedTokenLayout } from "./SharedTokenLayout";
 import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
+import { SharedTokenLayout } from "./SharedTokenLayout";
 
 export function AnimationTokens(props: BoxProps) {
   return (
@@ -54,7 +54,7 @@ const AnimationTokensTable = (props: AnimationTokenTableProps) => {
           {Object.entries(tokens.time.transition).map(([key, token]) => (
             <Tr key={key}>
               <Td>{key}</Td>
-              <Td>{token.value}</Td>
+              <Td>{token}</Td>
               <Td>
                 <Stack spacing={1}>
                   <Box>

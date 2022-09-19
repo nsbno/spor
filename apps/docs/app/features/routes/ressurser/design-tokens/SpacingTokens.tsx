@@ -54,29 +54,31 @@ const SpacingTokensTable = (props: SpacingTokenTableProps) => {
           </Tr>
         </Thead>
         <Tbody>
-          {Object.entries(spacingSizes).map(([key, token]) => (
-            <Fragment key={key}>
-              <Tr>
-                <Td>
-                  <Box
-                    width={token.value}
-                    height={token.value}
-                    backgroundColor="primaryGreen"
-                  />
-                </Td>
-                <Td>
-                  {key} / {token.value}
-                </Td>
-                <Td>
-                  <Stack spacing={1}>
-                    <Box>
-                      <Code>{tokenFormatter(`size.spacing.[${key}]`)}</Code>
-                    </Box>
-                  </Stack>
-                </Td>
-              </Tr>
-            </Fragment>
-          ))}
+          {Object.entries(spacingSizes)
+            .sort(([a], [b]) => Number(a) - Number(b))
+            .map(([key, token]) => (
+              <Fragment key={key}>
+                <Tr>
+                  <Td>
+                    <Box
+                      width={token}
+                      height={token}
+                      backgroundColor="primaryGreen"
+                    />
+                  </Td>
+                  <Td>
+                    {key} / {token}
+                  </Td>
+                  <Td>
+                    <Stack spacing={1}>
+                      <Box>
+                        <Code>{tokenFormatter(`size.spacing.[${key}]`)}</Code>
+                      </Box>
+                    </Stack>
+                  </Td>
+                </Tr>
+              </Fragment>
+            ))}
         </Tbody>
       </Table>
     </Box>

@@ -12,8 +12,12 @@ export default {
       ],
       files: [
         {
-          format: "javascript/module",
+          format: "typescript/cjs-module",
           destination: "react-native/index.js",
+        },
+        {
+          format: "typescript/es-module",
+          destination: "react-native/index.mjs",
         },
         {
           format: "typescript/rn-typings",
@@ -22,11 +26,15 @@ export default {
       ],
     },
     javascript: {
-      transforms: ["attribute/cti", "name/cti/pascal", "size/px", "color/hex"],
+      transforms: ["attribute/cti", "name/cti/pascal", "size/px", "color/css"],
       files: [
         {
-          format: "typescript/module",
+          format: "typescript/cjs-module",
           destination: "dist/tokens.js",
+        },
+        {
+          format: "typescript/es-module",
+          destination: "dist/tokens.mjs",
         },
         {
           format: "typescript/typings",

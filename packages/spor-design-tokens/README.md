@@ -56,7 +56,7 @@ Install the package with `npm install @vygruppen/spor-design-tokens`.
 ```tsx
 import tokens from "@vygruppen/spor-design-tokens";
 
-const background = tokens.colors.brand.darkGray.value;
+const background = tokens.colors.brand.darkGrey;
 ```
 
 ### CSS

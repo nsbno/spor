@@ -1,6 +1,12 @@
 {
   "color": {
     "alias": {
+      "white": {
+        "value": "{color.palette.white.value}"
+      },
+      "black": {
+        "value": "{color.palette.black.value}"
+      },
       "lightGrey": {
         "value": "{color.palette.grey.50.value}"
       },

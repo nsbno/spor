@@ -9,8 +9,8 @@ export const reactNativeTypescriptTypingsFormatter: Named<Format> = {
   formatter: ({ dictionary }) => {
     return (
       'declare module "@vygruppen/spor-design-tokens/react-native";\n' +
-      "declare const root: RootObject\n" +
-      "export default root\n" +
+      "declare const root: RootObject;\n" +
+      "export default root;\n" +
       JsonToTS(simplifyTokens(dictionary.tokens)).join("\n")
     );
   },

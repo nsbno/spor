@@ -79,7 +79,7 @@ toHtml (LineTagText options) =
     <|
         Html.span
             [ Attributes.css
-                [ Css.color <| toCss darkGrey
+                [ Css.color <| toCss Alias.darkGrey
                 , Css.fontWeight Css.bold
                 ]
             ]
@@ -99,7 +99,7 @@ textContent options =
             (\item ->
                 [ Html.span
                     [ Attributes.css
-                        [ Css.color <| toCss darkGrey
+                        [ Css.color <| toCss Alias.darkGrey
                         , Css.marginLeft <| Css.px 3
                         ]
                     ]

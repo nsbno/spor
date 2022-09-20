@@ -4,12 +4,7 @@ export default {
   source: ["tokens/**/*.json"],
   platforms: {
     rn: {
-      transforms: [
-        "name/cti/camel",
-        "attribute/cti",
-        "size/object",
-        "color/css",
-      ],
+      transforms: ["name/cti/camel", "size/object", "color/css"],
       files: [
         {
           format: "typescript/cjs-module",
@@ -26,7 +21,7 @@ export default {
       ],
     },
     javascript: {
-      transforms: ["attribute/cti", "name/cti/pascal", "size/px", "color/css"],
+      transforms: ["name/cti/pascal", "size/px", "color/css"],
       files: [
         {
           format: "typescript/cjs-module",

@@ -1,5 +1,28 @@
 # @vygruppen/spor-react
 
+## 0.14.3
+
+### Patch Changes
+
+- Updated dependencies [d2c64617]
+  - @vygruppen/spor-design-tokens@3.0.0
+  - @vygruppen/spor-datepicker-react@0.1.6
+  - @vygruppen/spor-icon-react@0.6.4
+  - @vygruppen/spor-layout-react@0.3.3
+  - @vygruppen/spor-loader-react@0.2.4
+  - @vygruppen/spor-modal-react@0.1.4
+  - @vygruppen/spor-popover-react@0.1.18
+  - @vygruppen/spor-provider-react@0.0.9
+  - @vygruppen/spor-table-react@0.0.7
+  - @vygruppen/spor-theme-react@0.6.5
+  - @vygruppen/spor-typography-react@0.4.7
+  - @vygruppen/spor-input-react@0.5.5
+  - @vygruppen/spor-linjetag-react@0.1.1
+  - @vygruppen/spor-link-react@0.1.13
+  - @vygruppen/spor-stepper-react@0.1.18
+  - @vygruppen/spor-card-react@0.3.2
+  - @vygruppen/spor-button-react@0.2.10
+
 ## 0.14.2
 
 ### Patch Changes

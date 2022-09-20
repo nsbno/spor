@@ -6,7 +6,7 @@ export function simplifyTokens(obj: Record<string, any>): any {
     if (!obj[key] || typeof obj[key] !== "object") {
       continue;
     }
-    if ("value" in obj[key]) {
+    if ("value" in obj[key] && !obj[key].keepDetails) {
       obj[key] = obj[key].value;
       continue;
     }

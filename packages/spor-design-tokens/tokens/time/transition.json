@@ -2,6 +2,7 @@
   "time": {
     "transition": {
       "slow": {
+        "keepDetails": true,
         "value": "{time.transition.slow.duration.value} {time.transition.slow.timing.value}",
         "duration": {
           "value": "0.5s"
@@ -12,6 +13,7 @@
         "comment": "Should be used when you need a slower animation. Works great for large objects, or when the animated element is moving a larger distance"
       },
       "medium": {
+        "keepDetails": true,
         "value": "{time.transition.medium.duration.value} {time.transition.medium.timing.value}",
         "duration": {
           "value": "0.3s"
@@ -22,6 +24,7 @@
         "comment": "Should be used for medium transitions. Works great for when elements are moving, or when animating width or height"
       },
       "fast": {
+        "keepDetails": true,
         "value": "{time.transition.fast.duration.value} {time.transition.fast.timing.value}",
         "duration": {
           "value": "0.1s"

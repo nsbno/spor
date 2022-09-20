@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 0.14.4
+
+### Patch Changes
+
+- Updated dependencies [1b58e2ff]
+  - @vygruppen/spor-design-tokens@3.0.1
+  - @vygruppen/spor-theme-react@0.6.6
+  - @vygruppen/spor-typography-react@0.4.8
+  - @vygruppen/spor-datepicker-react@0.1.7
+
 ## 0.14.3
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.1
+
+### Patch Changes
+
+- 1b58e2ff: Fix a bug where some design tokens lost some nice-to-have details
+
 ## 3.0.0
 
 ### Major Changes

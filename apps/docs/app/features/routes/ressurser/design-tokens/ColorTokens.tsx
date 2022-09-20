@@ -138,7 +138,7 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
         height="60px"
         backgroundColor={colorValue}
         border="1px solid"
-        borderColor={isWhite ? "osloGrey" : colorValue}
+        borderColor={isWhite ? "silver" : colorValue}
         borderTopRadius="sm"
       />
       <Box px={2}>

@@ -87,57 +87,57 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
 
 const variantSolid: PartsStyleObject = {
   track: {
-    backgroundColor: "alias.osloGrey",
+    backgroundColor: "osloGrey",
 
     _focus: {
       boxShadow: "outline",
     },
     _hover: {
-      backgroundColor: "alias.steel",
+      backgroundColor: "steel",
     },
     _checked: {
-      backgroundColor: "alias.darkTeal",
+      backgroundColor: "darkTeal",
       _hover: {
-        backgroundColor: "alias.pine",
+        backgroundColor: "pine",
       },
       _focus: {
-        boxShadow: `0 0 0 4px ${colors.alias.greenHaze}, 0 0 0 2px ${colors.alias.white}`,
+        boxShadow: `0 0 0 4px ${colors.greenHaze}, 0 0 0 2px ${colors.white}`,
       },
     },
   },
 
   thumb: {
-    backgroundColor: "alias.white",
+    backgroundColor: "white",
   },
 };
 const variantOutline: PartsStyleObject = {
   track: {
-    backgroundColor: "alias.platinum",
-    boxShadow: `0 0 0 1px ${colors.alias.darkGrey}`,
+    backgroundColor: "platinum",
+    boxShadow: `0 0 0 1px ${colors.darkGrey}`,
 
     _focus: {
-      backgroundColor: "alias.platinum",
-      boxShadow: `0 0 0 2px ${colors.alias.greenHaze}`,
+      backgroundColor: "platinum",
+      boxShadow: `0 0 0 2px ${colors.greenHaze}`,
     },
     _hover: {
-      backgroundColor: "alias.white",
+      backgroundColor: "white",
     },
     _checked: {
-      backgroundColor: "alias.white",
+      backgroundColor: "white",
       _hover: {
-        backgroundColor: "alias.mint",
+        backgroundColor: "mint",
       },
       _focus: {
-        backgroundColor: "alias.white",
-        boxShadow: `0 0 0 4px ${colors.alias.greenHaze}, 0 0 0 2px ${colors.alias.white}`,
+        backgroundColor: "white",
+        boxShadow: `0 0 0 4px ${colors.greenHaze}, 0 0 0 2px ${colors.white}`,
       },
     },
   },
   thumb: {
-    backgroundColor: "alias.osloGrey",
+    backgroundColor: "osloGrey",
 
     _checked: {
-      backgroundColor: "alias.darkTeal",
+      backgroundColor: "darkTeal",
     },
   },
 };

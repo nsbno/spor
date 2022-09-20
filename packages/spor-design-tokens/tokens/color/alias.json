@@ -1,6 +1,12 @@
 {
   "color": {
     "alias": {
+      "white": {
+        "value": "{color.palette.white.value}"
+      },
+      "black": {
+        "value": "{color.palette.black.value}"
+      },
       "lightGrey": {
         "value": "{color.palette.grey.50.value}"
       },
@@ -132,12 +138,6 @@
       },
       "brightRed": {
         "value": "{color.palette.red.600.value}"
-      },
-      "white": {
-        "value": "{color.palette.white.value}"
-      },
-      "black": {
-        "value": "{color.palette.black.value}"
       }
     }
   }

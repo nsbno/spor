@@ -29,7 +29,7 @@ const baseStyle = (props: CardThemeProps) => ({
     _active: getColorSchemeActiveProps(props),
     _focus: {
       boxShadow: getBoxShadowString({
-        borderColor: colors.alias.greenHaze,
+        borderColor: colors.greenHaze,
         borderWidth: 2,
       }),
       outline: "none",
@@ -41,17 +41,17 @@ const baseStyle = (props: CardThemeProps) => ({
     },
     _focusVisible: {
       boxShadow: getBoxShadowString({
-        borderColor: colors.alias.greenHaze,
+        borderColor: colors.greenHaze,
         borderWidth: 2,
       }),
     },
 
     _disabled: {
-      backgroundColor: "alias.platinum",
+      backgroundColor: "platinum",
       boxShadow: getBoxShadowString({
-        borderColor: colors.alias.silver,
+        borderColor: colors.silver,
       }),
-      color: "alias.osloGrey",
+      color: "osloGrey",
       pointerEvents: "none",
     },
   },
@@ -64,24 +64,23 @@ function getColorSchemeBaseProps({ colorScheme }: CardThemeProps): {
   switch (colorScheme) {
     case "white":
       return {
-        backgroundColor: "alias.white",
+        backgroundColor: "white",
         boxShadow: getBoxShadowString({
-          borderColor: colors.alias.silver,
+          borderColor: colors.silver,
         }),
       };
     case "grey":
       return {
-        backgroundColor: "alias.lightGrey",
+        backgroundColor: "lightGrey",
         boxShadow: getBoxShadowString({
-          borderColor: colors.alias.steel,
+          borderColor: colors.steel,
         }),
       };
     default:
       return {
-        backgroundColor: colors.palette[colorScheme]?.[100] ?? "alias.platinum",
+        backgroundColor: colors[colorScheme]?.[100] ?? "platinum",
         boxShadow: getBoxShadowString({
-          borderColor:
-            colors.palette[colorScheme]?.[200] ?? colors.alias.silver,
+          borderColor: colors[colorScheme]?.[200] ?? colors.silver,
         }),
       };
   }
@@ -94,23 +93,22 @@ function getColorSchemeClickableProps({ colorScheme, size }: CardThemeProps) {
       return {
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor: colors.alias.silver,
+          borderColor: colors.silver,
         }),
       };
     case "grey":
       return {
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor: colors.alias.steel,
+          borderColor: colors.steel,
         }),
       };
     default:
       return {
-        backgroundColor: colors.palette[colorScheme]?.[100] ?? "alias.platinum",
+        backgroundColor: colors[colorScheme]?.[100] ?? "platinum",
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor:
-            colors.palette[colorScheme]?.[200] ?? colors.alias.silver,
+          borderColor: colors[colorScheme]?.[200] ?? colors.silver,
         }),
       };
   }
@@ -123,23 +121,22 @@ function getColorSchemeHoverProps({ colorScheme, size }: CardThemeProps) {
       return {
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor: colors.alias.steel,
+          borderColor: colors.steel,
         }),
       };
     case "grey":
       return {
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor: colors.alias.osloGrey,
+          borderColor: colors.osloGrey,
         }),
       };
     default:
       return {
-        backgroundColor: colors.palette[colorScheme]?.[200] ?? "alias.silver",
+        backgroundColor: colors[colorScheme]?.[200] ?? "silver",
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor:
-            colors.palette[colorScheme]?.[400] ?? colors.alias.silver,
+          borderColor: colors[colorScheme]?.[400] ?? colors.silver,
         }),
       };
   }
@@ -150,27 +147,26 @@ function getColorSchemeActiveProps({ colorScheme, size }: CardThemeProps) {
   switch (colorScheme) {
     case "white":
       return {
-        backgroundColor: "alias.mint",
+        backgroundColor: "mint",
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor: colors.alias.silver,
+          borderColor: colors.silver,
         }),
       };
     case "grey":
       return {
-        backgroundColor: "alias.white",
+        backgroundColor: "white",
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor: colors.alias.steel,
+          borderColor: colors.steel,
         }),
       };
     default:
       return {
-        backgroundColor: colors.palette[colorScheme]?.[50] ?? "alias.lightGrey",
+        backgroundColor: colors[colorScheme]?.[50] ?? "lightGrey",
         boxShadow: getBoxShadowString({
           baseShadow,
-          borderColor:
-            colors.palette[colorScheme]?.[100] ?? colors.alias.silver,
+          borderColor: colors[colorScheme]?.[100] ?? colors.silver,
         }),
       };
   }

@@ -7,7 +7,7 @@ import type {
 } from "@chakra-ui/theme-tools";
 
 const baseStyleOverlay: SystemStyleObject = {
-  backgroundColor: "palette.blackAlpha.600",
+  backgroundColor: "blackAlpha.600",
   zIndex: "modal",
 };
 
@@ -26,7 +26,7 @@ const baseStyleDialogContainer: SystemStyleFunction = (props) => {
 const baseStyleDialog: SystemStyleFunction = (props) => {
   const { scrollBehavior } = props;
   return {
-    background: "alias.white",
+    background: "white",
     color: "inherit",
     zIndex: "modal",
     maxHeight: scrollBehavior === "inside" ? "calc(100% - 7.5rem)" : undefined,

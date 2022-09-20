@@ -58,7 +58,7 @@
 :root {
   /* Brand colors */
   --brand-primary: var(--color-alias-dark-teal);
-  --brand-primary--inverted: var(--color-alias-white);
+  --brand-primary--inverted: var(--color-palette-white);
   --brand-secondary: var(--color-alias-mint);
   --brand-secondary--inverted: var(--color-alias-dark-grey);
   /* Typography */

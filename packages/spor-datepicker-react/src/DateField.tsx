@@ -96,13 +96,13 @@ function DateSegment({ segment, state }: DateSegmentProps) {
       borderRadius="xs"
       color={
         segment.isPlaceholder
-          ? "alias.osloGrey"
+          ? "osloGrey"
           : segment.isEditable
-          ? "alias.darkGrey"
-          : "alias.osloGrey"
+          ? "darkGrey"
+          : "osloGrey"
       }
       _focus={{
-        backgroundColor: "alias.darkTeal",
+        backgroundColor: "darkTeal",
         color: "white",
       }}
     >

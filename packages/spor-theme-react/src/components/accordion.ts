@@ -19,16 +19,16 @@ const baseStyleButton: SystemStyleFunction = ({ theme }) => ({
   borderRadius: "sm",
   display: "flex",
   justifyContent: "space-between",
-  color: "alias.darkGrey",
+  color: "darkGrey",
   textAlign: "left",
   _focus: {
-    boxShadow: `inset 0 0 0 2px ${theme.colors.alias.greenHaze}`,
+    boxShadow: `inset 0 0 0 2px ${theme.colors.greenHaze}`,
   },
   ":focus:not(:focus-within)": {
-    boxShadow: `inset 0 0 0 1px ${theme.colors.alias.osloGrey}`,
+    boxShadow: `inset 0 0 0 1px ${theme.colors.osloGrey}`,
   },
   _focusWithin: {
-    boxShadow: `inset 0 0 0 2px ${theme.colors.alias.greenHaze}`,
+    boxShadow: `inset 0 0 0 2px ${theme.colors.greenHaze}`,
   },
   _disabled: {
     opacity: 0.4,
@@ -57,28 +57,28 @@ const variantList: PartsStyleFunction<typeof parts> = ({ theme }) => ({
   button: {
     boxShadow: "none",
     _hover: {
-      backgroundColor: "alias.seaMist",
+      backgroundColor: "seaMist",
     },
     _active: {
-      backgroundColor: "alias.mint",
-      boxShadow: `inset 0 0 0 1px ${theme.colors.alias.darkGrey}`,
+      backgroundColor: "mint",
+      boxShadow: `inset 0 0 0 1px ${theme.colors.darkGrey}`,
     },
   },
 });
 const variantOutline: PartsStyleFunction<typeof parts> = ({ theme }) => ({
   container: {
-    boxShadow: `inset 0 0 0 1px ${theme.colors.alias.osloGrey}`,
+    boxShadow: `inset 0 0 0 1px ${theme.colors.osloGrey}`,
   },
   button: {
     _expanded: {
       borderBottomRadius: "none",
     },
     _hover: {
-      boxShadow: `inset 0 0 0 2px ${theme.colors.alias.darkGrey}`,
+      boxShadow: `inset 0 0 0 2px ${theme.colors.darkGrey}`,
     },
     _active: {
-      backgroundColor: "alias.mint",
-      boxShadow: `inset 0 0 0 1px ${theme.colors.alias.darkGrey}`,
+      backgroundColor: "mint",
+      boxShadow: `inset 0 0 0 1px ${theme.colors.darkGrey}`,
     },
   },
 });
@@ -91,10 +91,10 @@ const variantCard: PartsStyleObject<typeof parts> = {
       borderBottomRadius: "none",
     },
     _hover: {
-      backgroundColor: "alias.seaMist",
+      backgroundColor: "seaMist",
     },
     _active: {
-      backgroundColor: "alias.mint",
+      backgroundColor: "mint",
     },
   },
 };

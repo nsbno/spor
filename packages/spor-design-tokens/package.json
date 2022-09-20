@@ -8,7 +8,9 @@
     "url": "https://github.com/nsbno/spor.git",
     "directory": "packages/spor-design-tokens"
   },
-  "main": "dist/tokens.js",
+  "main": "./dist/tokens.js",
+  "module": "./dist/tokens.mjs",
+  "types": "./dist/tokens.d.ts",
   "scripts": {
     "build": "ts-node scripts/build.ts"
   },

@@ -12,7 +12,7 @@ export const LightFullScreenLoader = ({
   ...props
 }: LightFullScreenLoaderProps) => {
   return (
-    <Center height="100%" background="alias.white" {...props}>
+    <Center height="100%" background="white" {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
           {() => <Lottie animationData={fullScreenLoaderBlackData} />}

@@ -130,24 +130,24 @@ const variantDisabled: PartsStyleFunction<typeof parts> = (props) => ({
 const getRootBackgroundColor = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "light":
-      return "alias.white";
+      return "white";
     case "dark":
-      return "alias.darkTeal";
+      return "darkTeal";
     case "green":
     default:
-      return "alias.mint";
+      return "mint";
   }
 };
 
 const getColor = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "light":
-      return mode("alias.darkGrey", "alias.white")(props);
+      return mode("darkGrey", "white")(props);
     case "dark":
-      return "alias.white";
+      return "white";
     case "green":
     default:
-      return mode("alias.darkTeal", "alias.white")(props);
+      return mode("darkTeal", "white")(props);
   }
 };
 
@@ -155,15 +155,15 @@ const getStepNumberStyles = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "dark":
       return {
-        backgroundColor: "alias.white",
-        color: "alias.darkTeal",
+        backgroundColor: "white",
+        color: "darkTeal",
       };
     case "light":
     case "green":
     default:
       return {
-        backgroundColor: mode("alias.darkTeal", "alias.white")(props),
-        color: mode("alias.white", "alias.darkTeal")(props),
+        backgroundColor: mode("darkTeal", "white")(props),
+        color: mode("white", "darkTeal")(props),
       };
   }
 };
@@ -171,23 +171,23 @@ const getStepNumberStyles = (props: StyleFunctionProps) => {
 const getDisabledColor = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "dark":
-      return "palette.whiteAlpha.400";
+      return "whiteAlpha.400";
     case "light":
     case "green":
     default:
-      return "alias.osloGrey";
+      return "osloGrey";
   }
 };
 
 const getHoverStyles = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "dark":
-      return { backgroundColor: "alias.pine" };
+      return { backgroundColor: "pine" };
     case "light":
     case "green":
     default:
       return {
-        backgroundColor: mode("alias.seaMist", "alias.primaryGreen")(props),
+        backgroundColor: mode("seaMist", "primaryGreen")(props),
       };
   }
 };
@@ -197,14 +197,14 @@ const getFocusStyles = (props: StyleFunctionProps) => {
     case "dark":
       return {
         outline: "none",
-        boxShadow: `inset 0 0 0 2px ${props.theme.colors.alias.white}`,
+        boxShadow: `inset 0 0 0 2px ${props.theme.colors.white}`,
       };
     case "light":
     case "green":
     default:
       return {
         outline: "none",
-        boxShadow: `inset 0 0 0 2px ${props.theme.colors.alias.greenHaze}`,
+        boxShadow: `inset 0 0 0 2px ${props.theme.colors.greenHaze}`,
       };
   }
 };
@@ -212,12 +212,12 @@ const getFocusStyles = (props: StyleFunctionProps) => {
 const getActiveStyles = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "light":
-      return { backgroundColor: "alias.mint" };
+      return { backgroundColor: "mint" };
     case "dark":
-      return { backgroundColor: "alias.celadon" };
+      return { backgroundColor: "celadon" };
     case "green":
     default:
-      return { color: "alias.blueGreen", backgroundColor: "transparent" };
+      return { color: "blueGreen", backgroundColor: "transparent" };
   }
 };
 

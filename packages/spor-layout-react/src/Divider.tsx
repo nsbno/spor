@@ -17,7 +17,7 @@ export const Divider = forwardRef<BoxProps, As<any>>((props, ref) => {
       height="2px"
       border="0"
       borderRadius="1px"
-      backgroundColor="palette.blackAlpha.200"
+      backgroundColor="blackAlpha.200"
       width="100%"
       {...props}
       ref={ref}

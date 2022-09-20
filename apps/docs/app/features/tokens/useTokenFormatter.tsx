@@ -21,7 +21,7 @@ export function useTokenFormatter() {
             .map((part) => (part.includes("-") ? `["${part}"]` : part))
             .join(".")
             .replace(/\.\[/g, "[");
-          return `tokens.${parts}.value`;
+          return `tokens.${parts}`;
         case "css":
           return `--${cssVariablify(template)}`;
         case "scss":

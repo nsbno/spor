@@ -10,7 +10,7 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     alignItems: "center",
   },
   icon: {
-    color: "alias.white",
+    color: "white",
   },
 };
 
@@ -70,24 +70,24 @@ const variants = {
       backgroundColor: "linjetag.altTransport",
     },
     icon: {
-      color: "alias.darkGrey",
+      color: "darkGrey",
       "[aria-disabled=true] &": {
-        color: "alias.white",
+        color: "white",
       },
     },
   },
 
   walk: {
     iconContainer: {
-      backgroundColor: "alias.white",
+      backgroundColor: "white",
       borderWidth: 1,
       borderStyle: "solid",
-      borderColor: "palette.blackAlpha.200",
+      borderColor: "blackAlpha.200",
     },
     icon: {
-      color: "alias.darkGrey",
+      color: "darkGrey",
       "[aria-disabled=true] &": {
-        color: "alias.osloGrey",
+        color: "osloGrey",
       },
     },
   },

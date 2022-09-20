@@ -46,7 +46,7 @@ const BreakpointTokensTable = (props: BreakpointTokenTableProps) => {
           {Object.entries(tokens.size.breakpoint).map(([key, token]) => (
             <Tr key={key}>
               <Td>{breakpointDisplayNames[key as Breakpoint] || key}</Td>
-              <Td>{token.value}</Td>
+              <Td>{token}</Td>
               <Td>
                 <Stack spacing={1}>
                   <Box>

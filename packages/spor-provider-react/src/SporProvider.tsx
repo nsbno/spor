@@ -59,7 +59,7 @@ export const SporProvider = ({
         <Global styles={fontFaces} />
         <Global
           styles={`
-          html, body { color: ${theme.colors.alias.darkGrey}; }
+          html, body { color: ${theme.colors.darkGrey}; }
           svg { display: initial; }
           `}
         />

@@ -22,7 +22,7 @@ type Spacing = {
 export const spacing = Object.entries(tokens.size.spacing).reduce(
   (tokens, [key, token]) => ({
     ...tokens,
-    [Number(key)]: token.value,
+    [Number(key)]: token,
   }),
   {} as Record<keyof Spacing, string>
 );

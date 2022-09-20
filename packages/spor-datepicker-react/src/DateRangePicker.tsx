@@ -128,8 +128,8 @@ export function DateRangePicker({ variant, ...props }: DateRangePickerProps) {
           </InputGroup>
           {state.isOpen && (
             <PopoverContent
-              backgroundColor="alias.white"
-              color="alias.darkGrey"
+              backgroundColor="white"
+              color="darkGrey"
               boxShadow="md"
               maxWidth="none"
             >

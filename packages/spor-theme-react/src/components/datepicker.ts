@@ -13,9 +13,9 @@ const parts = anatomy("datepicker").parts(
 
 const baseStyle: PartsStyleInterpolation<typeof parts> = ({ theme }) => ({
   wrapper: {
-    backgroundColor: "alias.white",
+    backgroundColor: "white",
     boxShadow: getBoxShadowString({
-      borderColor: theme.colors.alias.darkGrey,
+      borderColor: theme.colors.darkGrey,
     }),
     transitionProperty: "box-shadow",
     transitionDuration: "fast",
@@ -25,31 +25,31 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = ({ theme }) => ({
     py: 1.5,
     _hover: {
       boxShadow: getBoxShadowString({
-        borderColor: theme.colors.alias.darkGrey,
+        borderColor: theme.colors.darkGrey,
         borderWidth: 2,
       }),
     },
     _focusWithin: {
       boxShadow: getBoxShadowString({
-        borderColor: theme.colors.alias.greenHaze,
+        borderColor: theme.colors.greenHaze,
         borderWidth: 2,
       }),
     },
     _error: {
       boxShadow: getBoxShadowString({
-        borderColor: theme.colors.alias.brightRed,
+        borderColor: theme.colors.brightRed,
         borderWidth: 2,
       }),
     },
     _disabled: {
       pointerEvents: "none",
       boxShadow: getBoxShadowString({
-        borderColor: theme.colors.alias.osloGrey,
+        borderColor: theme.colors.osloGrey,
         borderWidth: 1,
       }),
       _focus: {
         boxShadow: getBoxShadowString({
-          borderColor: theme.colors.alias.osloGrey,
+          borderColor: theme.colors.osloGrey,
           borderWidth: 1,
         }),
       },
@@ -57,12 +57,12 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = ({ theme }) => ({
   },
   inputLabel: {
     fontSize: "mobile.xs",
-    color: "alias.darkGrey",
+    color: "darkGrey",
     margin: 0,
   },
   calendarTriggerButton: {
     boxShadow: getBoxShadowString({
-      borderColor: theme.colors.alias.darkGrey,
+      borderColor: theme.colors.darkGrey,
       borderWidth: 1,
     }),
     width: 8,
@@ -77,38 +77,38 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = ({ theme }) => ({
 
     _hover: {
       boxShadow: getBoxShadowString({
-        borderColor: theme.colors.alias.darkGrey,
+        borderColor: theme.colors.darkGrey,
         borderWidth: 2,
       }),
     },
     _active: {
-      backgroundColor: "alias.mint",
+      backgroundColor: "mint",
     },
     ...focusVisible({
       focus: {
         outline: "none",
         boxShadow: getBoxShadowString({
-          borderColor: theme.colors.alias.greenHaze,
+          borderColor: theme.colors.greenHaze,
           borderWidth: 2,
         }),
       },
       notFocus: {
         boxShadow: getBoxShadowString({
-          borderColor: theme.colors.alias.darkGrey,
+          borderColor: theme.colors.darkGrey,
           borderWidth: 1,
         }),
       },
     }),
     _error: {
       boxShadow: getBoxShadowString({
-        borderColor: theme.colors.alias.brightRed,
+        borderColor: theme.colors.brightRed,
         borderWidth: 2,
       }),
     },
   },
   dateCell: {
-    backgroundColor: "alias.white",
-    color: "alias.darkGrey",
+    backgroundColor: "white",
+    color: "darkGrey",
     borderRadius: "50%",
     position: "relative",
     transition: ".1s ease-in-out",
@@ -121,7 +121,7 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = ({ theme }) => ({
     _hover: {
       boxShadow: getBoxShadowString({
         borderWidth: 2,
-        borderColor: colors.alias.darkGrey,
+        borderColor: colors.darkGrey,
       }),
     },
     ...focusVisible({
@@ -129,7 +129,7 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = ({ theme }) => ({
         outline: "none",
         boxShadow: getBoxShadowString({
           borderWidth: 2,
-          borderColor: colors.alias.greenHaze,
+          borderColor: colors.greenHaze,
         }),
       },
       notFocus: {
@@ -137,42 +137,42 @@ const baseStyle: PartsStyleInterpolation<typeof parts> = ({ theme }) => ({
         _hover: {
           boxShadow: getBoxShadowString({
             borderWidth: 2,
-            borderColor: colors.alias.osloGrey,
+            borderColor: colors.osloGrey,
           }),
         },
         _active: {
-          color: "alias.darkGrey",
+          color: "darkGrey",
         },
       },
     }),
     _active: {
-      backgroundColor: "alias.seaMist",
+      backgroundColor: "seaMist",
       boxShadow: "none",
-      color: "alias.darkGrey",
+      color: "darkGrey",
     },
     _disabled: {
-      color: "alias.osloGrey",
+      color: "osloGrey",
       boxShadow: "none",
       pointerEvents: "none",
     },
     _selected: {
-      backgroundColor: "alias.darkTeal",
-      color: "alias.white",
+      backgroundColor: "darkTeal",
+      color: "white",
       _active: {
-        backgroundColor: "alias.seaMist",
+        backgroundColor: "seaMist",
         boxShadow: "none",
-        color: "alias.darkGrey",
+        color: "darkGrey",
       },
     },
     "&[data-today]": {
       boxShadow: getBoxShadowString({
         borderWidth: 1,
-        borderColor: colors.alias.osloGrey,
+        borderColor: colors.osloGrey,
       }),
     },
     "&[data-unavailable]": {
       pointerEvents: "none",
-      color: "alias.osloGrey",
+      color: "osloGrey",
     },
   },
 });

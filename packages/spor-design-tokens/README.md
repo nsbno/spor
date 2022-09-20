@@ -23,7 +23,7 @@ We have a variety of tokens, and we suggest you explore the different types of t
 
 ### Colors
 
-There are a lot of colors in our palette, and the colors are structured into a few useful groups. You can find the complete palette in colors/palette, and the more rememberable aliases for those colors on colors/alias.
+There are a lot of colors in our palette, and the colors are structured into a few useful groups. You can find the complete palette in colors/palette, and the more rememberable aliases for those colors on colors/
 
 There are several more, like colors/main for our main color palette (most colors should come from here), and colors/text for colors used in typography.
 
@@ -56,7 +56,7 @@ Install the package with `npm install @vygruppen/spor-design-tokens`.
 ```tsx
 import tokens from "@vygruppen/spor-design-tokens";
 
-const background = tokens.colors.brand.darkGray.value;
+const background = tokens.colors.brand.darkGrey;
 ```
 
 ### CSS

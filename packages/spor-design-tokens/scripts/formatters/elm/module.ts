@@ -196,15 +196,8 @@ const shadowTypeConstruction: ModuleWrappedType = {
 
 const moduleTypeInnerType: Map<string, ModuleWrappedType> = new Map([
     ['Alias', colorTypeConstruction],
-    ['Background', colorTypeConstruction],
-    ['Detail', colorTypeConstruction],
-    ['Error', colorTypeConstruction],
     ['Linjetag', colorTypeConstruction],
-    ['Main', colorTypeConstruction],
-    ['Outline', colorTypeConstruction],
     ['Palette', colorTypeConstruction],
-    ['Product', colorTypeConstruction],
-    ['Text', colorTypeConstruction],
     ['Shadow', shadowTypeConstruction],
     ['ZIndex', intTypeConstruction],
     ['BorderRadius', pxTypeConstruction],

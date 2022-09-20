@@ -1,5 +1,12 @@
 # @vygruppen/spor-link-react
 
+## 0.1.13
+
+### Patch Changes
+
+- Updated dependencies [d2c64617]
+  - @vygruppen/spor-icon-react@0.6.4
+
 ## 0.1.12
 
 ### Patch Changes

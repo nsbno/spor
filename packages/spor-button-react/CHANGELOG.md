@@ -1,5 +1,12 @@
 # @vygruppen/spor-button-react
 
+## 0.2.10
+
+### Patch Changes
+
+- Updated dependencies [d2c64617]
+  - @vygruppen/spor-loader-react@0.2.4
+
 ## 0.2.9
 
 ### Patch Changes

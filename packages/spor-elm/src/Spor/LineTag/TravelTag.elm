@@ -310,6 +310,13 @@ deviationStyle deviationLevel =
 
             else
                 []
+
+        iconSymbolColor =
+            if deviationLevel == Major || deviationLevel == Minor then
+                Alias.toCss Alias.darkGrey
+
+            else
+                Alias.toCss Alias.white
     in
     Css.batch
         [ Css.position Css.absolute
@@ -321,7 +328,7 @@ deviationStyle deviationLevel =
         , Css.property "stroke-width" "2"
         , Css.Global.descendants
             [ Css.Global.path iconFillColor
-            , Css.Global.typeSelector "path:first-child" [ Css.fill <| Alias.toCss Alias.white ]
+            , Css.Global.typeSelector "path:first-child" [ Css.fill iconSymbolColor ]
             ]
         ]
 

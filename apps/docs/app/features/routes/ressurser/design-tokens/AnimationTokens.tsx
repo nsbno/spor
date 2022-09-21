@@ -54,7 +54,7 @@ const AnimationTokensTable = (props: AnimationTokenTableProps) => {
           {Object.entries(tokens.time.transition).map(([key, token]) => (
             <Tr key={key}>
               <Td>{key}</Td>
-              <Td>{token}</Td>
+              <Td>{token.value}</Td>
               <Td>
                 <Stack spacing={1}>
                   <Box>

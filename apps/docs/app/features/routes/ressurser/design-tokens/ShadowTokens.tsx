@@ -56,10 +56,15 @@ const ShadowTokensTable = (props: ShadowTokenTableProps) => {
           {Object.entries(tokens.depth.shadow).map(([key, token]) => (
             <Tr key={key}>
               <Td>
-                <Box width={8} height={8} boxShadow={token} borderRadius="xs" />
+                <Box
+                  width={8}
+                  height={8}
+                  boxShadow={token.value}
+                  borderRadius="xs"
+                />
               </Td>
               <Td>
-                {key} / {token}
+                {key} / {token.value}
               </Td>
               <Td>
                 <Stack spacing={1}>

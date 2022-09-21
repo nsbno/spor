@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.2
+
+### Patch Changes
+
+- 9731b589: Fix an issue where tokens didn't get their px units attached
+
 ## 3.0.1
 
 ### Patch Changes

@@ -35,4 +35,5 @@ export default () =>
       S.documentTypeListItem("category").title("Categories"),
       S.documentTypeListItem("component").title("Components"),
       S.documentTypeListItem("menu").title("Menus"),
+      S.documentTypeListItem("illustration").title("Illustrations"),
     ]);

@@ -110,7 +110,6 @@ toHtml (LineIcon options) =
 
         backgroundColor_ =
             options.color
-                |> Maybe.map identity
                 |> Maybe.withDefault (backgroundColor options.variant)
     in
     Html.div

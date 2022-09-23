@@ -32,6 +32,7 @@ import Spor.Token.Color.Alias as Alias
 import Spor.Token.Color.Linjetag as Linjetag
 import Spor.Token.Size.Spacing as Spacing
 import Svg.Styled as Svg
+import Svg.Styled.Attributes as SvgAttributes
 
 
 {-| A component for displaying travel tags
@@ -130,7 +131,6 @@ toHtml (TravelTag options) =
     let
         backgroundColor_ =
             options.backgroundColor
-                |> Maybe.map identity
                 |> Maybe.withDefault (backgroundColor options.variant)
     in
     Html.div
@@ -282,19 +282,18 @@ deviationIcon maybeDeviationLevel =
         Just deviationLevel ->
             Html.span
                 [ Attributes.css [ deviationStyle deviationLevel ] ]
-                [ Svg.fromUnstyled <|
-                    case deviationLevel of
-                        Critical ->
-                            Feedback.errorFill18X18 []
+                [ case deviationLevel of
+                    Critical ->
+                        Svg.fromUnstyled <| Feedback.errorFill18X18 []
 
-                        Major ->
-                            Feedback.warningFill18X18 []
+                    Major ->
+                        warningFill18x18
 
-                        Minor ->
-                            Feedback.warningFill18X18 []
+                    Minor ->
+                        warningFill18x18
 
-                        Info ->
-                            Feedback.informationFill18X18 []
+                    Info ->
+                        Svg.fromUnstyled <| Feedback.informationFill18X18 []
                 ]
 
         Nothing ->
@@ -311,25 +310,62 @@ deviationStyle deviationLevel =
             else
                 []
 
-        iconSymbolColor =
-            if deviationLevel == Major || deviationLevel == Minor then
-                Alias.toCss Alias.darkGrey
+        {- TODO: Fix these comments when Feedback.warningFill has been updated in Spor.
+           The new icon version is used directly until further.
+        -}
+        {- iconSymbolColor =
+           if deviationLevel == Major || deviationLevel == Minor then
+               Alias.toCss Alias.darkGrey
 
-            else
-                Alias.toCss Alias.white
+           else
+               Alias.toCss Alias.white
+        -}
     in
     Css.batch
         [ Css.position Css.absolute
         , Css.top <| Css.px -7
         , Css.right <| Css.px -8
         , Css.zIndex <| Css.int 1
-        , Css.property "paint-order" "stroke"
-        , Css.property "stroke" "white"
-        , Css.property "stroke-width" "2"
         , Css.Global.descendants
             [ Css.Global.path iconFillColor
-            , Css.Global.typeSelector "path:first-child" [ Css.fill iconSymbolColor ]
             ]
+
+        {- , Css.property "paint-order" "stroke"
+           , Css.property "stroke" "white"
+           , Css.property "stroke-width" "2"
+            Css.Global.descendants
+                [ Css.Global.path iconFillColor
+               , Css.Global.typeSelector "path:first-child" [ Css.fill iconSymbolColor ]
+           -    ]
+        -}
+        ]
+
+
+warningFill18x18 : Html msg
+warningFill18x18 =
+    Svg.svg
+        [ SvgAttributes.width "18"
+        , SvgAttributes.height "18"
+        , SvgAttributes.fill "none"
+        , SvgAttributes.stroke "#fff"
+        , Attributes.attribute "stroke-width" "2"
+        , Attributes.attribute "paint-order" "stroke"
+        ]
+        [ Svg.path
+            [ SvgAttributes.fillRule "evenodd"
+            , SvgAttributes.clipRule "evenodd"
+            , SvgAttributes.d "M7.897 1.506a1.25 1.25 0 0 1 2.206 0l6.75 12.656A1.25 1.25 0 0 1 15.75 16H2.25a1.25 1.25 0 0 1-1.103-1.838l6.75-12.656ZM9 6a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0v-4A.5.5 0 0 1 9 6Zm.625 6.375a.625.625 0 1 1-1.25 0 .625.625 0 0 1 1.25 0Z"
+            , SvgAttributes.fill "#E5A80C"
+            ]
+            []
+        , Svg.path
+            [ SvgAttributes.fillRule "evenodd"
+            , SvgAttributes.clipRule "evenodd"
+            , SvgAttributes.d "M9.5 6.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 1 0v-4ZM9 13a.625.625 0 1 0 0-1.25A.625.625 0 0 0 9 13Z"
+            , SvgAttributes.fill "#2B2B2C"
+            , SvgAttributes.stroke "none"
+            ]
+            []
         ]
 
 

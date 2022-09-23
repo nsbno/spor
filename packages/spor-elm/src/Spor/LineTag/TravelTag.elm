@@ -310,34 +310,39 @@ deviationStyle deviationLevel =
             else
                 []
 
-        {- TODO: Fix these comments when Feedback.warningFill has been updated in Spor.
+        {- TODO: Update this part of the code when the icons are updated in Spor.
            The new icon version is used directly until further.
         -}
-        {- iconSymbolColor =
-           if deviationLevel == Major || deviationLevel == Minor then
-               Alias.toCss Alias.darkGrey
+        iconSymbolColor =
+            if deviationLevel == Major || deviationLevel == Minor then
+                Alias.toCss Alias.darkGrey
 
-           else
-               Alias.toCss Alias.white
-        -}
+            else
+                Alias.toCss Alias.white
+
+        svgStyle =
+            if deviationLevel == Major || deviationLevel == Minor then
+                Css.Global.descendants
+                    [ Css.Global.path iconFillColor
+                    ]
+
+            else
+                Css.batch
+                    [ Css.property "paint-order" "stroke"
+                    , Css.property "stroke" "white"
+                    , Css.property "stroke-width" "2"
+                    , Css.Global.descendants
+                        [ Css.Global.path iconFillColor
+                        , Css.Global.typeSelector "path:first-child" [ Css.fill iconSymbolColor ]
+                        ]
+                    ]
     in
     Css.batch
         [ Css.position Css.absolute
         , Css.top <| Css.px -7
         , Css.right <| Css.px -8
         , Css.zIndex <| Css.int 1
-        , Css.Global.descendants
-            [ Css.Global.path iconFillColor
-            ]
-
-        {- , Css.property "paint-order" "stroke"
-           , Css.property "stroke" "white"
-           , Css.property "stroke-width" "2"
-            Css.Global.descendants
-                [ Css.Global.path iconFillColor
-               , Css.Global.typeSelector "path:first-child" [ Css.fill iconSymbolColor ]
-           -    ]
-        -}
+        , svgStyle
         ]
 
 

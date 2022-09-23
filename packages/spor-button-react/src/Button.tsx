@@ -93,7 +93,13 @@ export const Button = forwardRef<ButtonProps, As<any>>(
         position="relative"
       >
         {isLoading && (
-          <Center position="absolute" top="0" right="0" bottom="0" left="0">
+          <Center
+            position="absolute"
+            right="0"
+            paddingBottom={1}
+            left="0"
+            paddingTop={2}
+          >
             <ColorInlineLoader
               maxWidth={sizeToWidthMap[size] || "4rem"}
               width="100%"

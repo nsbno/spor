@@ -112,25 +112,19 @@ toHtml (LineIcon options) =
             options.color
                 |> Maybe.withDefault (backgroundColor options.variant)
     in
-    Html.div
+    Html.span
         [ Attributes.css
             [ Css.backgroundColor backgroundColor_
             , borderColor_
             , borderWidth_
             , Css.borderStyle Css.solid
             , options.additionalStyle
+            , Css.color <| iconColor options.variant
+            , Css.Global.descendants
+                [ Css.Global.path [ Css.fill <| iconColor options.variant ] ]
             ]
         ]
-        [ Html.span
-            [ Attributes.css
-                [ Css.color <| iconColor options.variant
-                , Css.displayFlex
-                , Css.Global.descendants
-                    [ Css.Global.path [ Css.fill <| iconColor options.variant ] ]
-                ]
-            ]
-            [ icon options.variant options.size ]
-        ]
+        [ icon options.variant options.size ]
 
 
 borderColor : Variant -> Maybe Color

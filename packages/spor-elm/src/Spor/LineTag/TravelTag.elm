@@ -135,8 +135,8 @@ toHtml (TravelTag options) =
     in
     Html.div
         [ Attributes.css
-            [ Css.position Css.relative
-            , Css.displayFlex
+            [ Css.displayFlex
+            , Css.lineHeight Css.zero
             , Css.flexDirection Css.row
             , Css.justifyContent Css.center
             , Css.alignItems Css.center
@@ -162,7 +162,14 @@ lineIcon options =
     let
         additionalStyle =
             if options.variant == Walk then
-                Css.batch [ Css.borderStyle Css.none ]
+                Css.batch
+                    [ Css.borderStyle Css.none
+                    , Css.after
+                        [ Css.property "content" <| "\"" ++ options.title ++ "\""
+                        , Css.marginLeft <| Css.px -6
+                        , Css.fontSize <| Css.px 14
+                        ]
+                    ]
 
             else
                 Css.batch
@@ -170,32 +177,13 @@ lineIcon options =
                     , Css.marginRight <| Css.px <| rightMargin options.size
                     , Css.padding <| Spacing.toCss Spacing.px3
                     ]
-
-        icon =
-            LineIcon.init
-                |> LineIcon.withVariant options.variant
-                |> LineIcon.withSize options.size
-                |> LineIcon.withAdditionalStyle additionalStyle
-                |> LineIcon.withColor options.color
-                |> LineIcon.toHtml
     in
-    if options.variant == Walk then
-        Html.span [ Attributes.css [ Css.position Css.relative ] ]
-            [ icon
-            , Html.span
-                [ Attributes.css <|
-                    [ Css.position Css.absolute
-                    , Css.left <| Css.px 18
-                    , Css.bottom <| Css.px -6
-                    , Css.fontSize <| Css.px 14
-                    , Css.lineHeight <| Css.px 19
-                    ]
-                ]
-                [ Html.text options.title ]
-            ]
-
-    else
-        icon
+    LineIcon.init
+        |> LineIcon.withVariant options.variant
+        |> LineIcon.withSize options.size
+        |> LineIcon.withAdditionalStyle additionalStyle
+        |> LineIcon.withColor options.color
+        |> LineIcon.toHtml
 
 
 lineText : Options -> Html a

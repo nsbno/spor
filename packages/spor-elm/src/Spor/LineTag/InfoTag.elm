@@ -124,7 +124,11 @@ lineIcon options =
             (Css.batch
                 [ Css.borderRadius <| Css.px <| iconRadius options.size
                 , Css.marginRight <| Css.px <| rightMargin options.size
-                , Css.padding <| Spacing.toCss Spacing.i2xs
+                , if options.variant == Walk then
+                    Css.padding <| Css.px 4
+
+                  else
+                    Css.padding <| Spacing.toCss Spacing.i2xs
                 ]
             )
         |> LineIcon.withColor options.color

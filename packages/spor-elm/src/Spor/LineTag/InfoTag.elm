@@ -107,6 +107,7 @@ toHtml (InfoTag options) =
     Html.div
         [ Attributes.css
             [ Css.displayFlex
+            , Css.lineHeight Css.zero
             , Css.flexDirection Css.row
             , Css.justifyContent Css.center
             , Css.alignItems Css.center

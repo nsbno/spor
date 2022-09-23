@@ -135,7 +135,8 @@ toHtml (TravelTag options) =
     in
     Html.div
         [ Attributes.css
-            [ Css.displayFlex
+            [ Css.position Css.relative
+            , Css.displayFlex
             , Css.lineHeight Css.zero
             , Css.flexDirection Css.row
             , Css.justifyContent Css.center

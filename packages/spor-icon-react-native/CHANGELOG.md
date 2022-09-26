@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.2.1
+
+### Patch Changes
+
+- feb421b4: Fix build bug for react-native
+
 ## 0.2.0
 
 ### Minor Changes

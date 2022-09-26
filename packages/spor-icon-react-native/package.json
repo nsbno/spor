@@ -24,21 +24,23 @@
     "build:step-3": "rimraf tmp"
   },
   "devDependencies": {
-    "@vygruppen/spor-icon": "*",
-    "react-native-svg": "^12.3.0",
+    "@shopify/restyle": "^2.1.0",
     "@svgr/core": "^6.2.0",
     "@svgr/plugin-jsx": "^6.2.0",
     "@svgr/plugin-svgo": "^6.2.0",
     "@types/fs-extra": "^9.0.13",
+    "@vygruppen/spor-icon": "*",
     "case": "^1.6.3",
     "fs-extra": "^10.0.0",
     "react": ">17.0.0",
     "react-native": "^0.66.0",
+    "react-native-svg": "^12.3.0",
     "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
     "tsup": "^6.2.2"
   },
   "peerDependencies": {
+    "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
     "react-native": "^0.66.0",
     "react-native-svg": "^12.3.0"

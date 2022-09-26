@@ -99,7 +99,7 @@ async function generateComponents(icons: IconData[]) {
 }
 
 async function generateComponent(iconData: IconData) {
-  const jsCode = await transform(
+  let jsCode = await transform(
     iconData.icon,
     {
       icon: false,
@@ -112,13 +112,31 @@ async function generateComponent(iconData: IconData) {
       },
       native: true,
       replaceAttrValues: {
-        '#2B2B2C': `{props.color ?? "#2B2B2C"}`,
+        "#2B2B2C": `{theme.colors[color] ?? "#2B2B2C"}`,
       },
     },
     {
       componentName: iconData.componentName,
     }
   );
+
+  // Since we don't own the template, we need to change the generated code
+  // to make it work as we want.
+  // The most straight-forward way to do this is by using string replacement.
+  // It looks hacky, it is hacky, but it works.
+  jsCode =
+    "import { createBox, useTheme } from '@shopify/restyle';\n" +
+    "const Box = createBox();\n" +
+    jsCode;
+  jsCode = jsCode
+    .replace("{...props}", "")
+    .replace("props", '{ color = "darkGrey", ...props }')
+    .replace(
+      "<Svg",
+      "{ \n\tconst theme = useTheme(); \n\treturn <Box {...props}><Svg"
+    )
+    .replace("</Svg>", "</Svg></Box>}");
+
   return createComponentFile(iconData, jsCode);
 }
 

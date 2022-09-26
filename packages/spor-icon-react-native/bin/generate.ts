@@ -124,11 +124,17 @@ async function generateComponent(iconData: IconData) {
   // to make it work as we want.
   // The most straight-forward way to do this is by using string replacement.
   // It looks hacky, it is hacky, but it works.
-  jsCode = "import { Box, useTheme } from '@shopify/restyle';\n" + jsCode;
+  jsCode =
+    "import { createBox, useTheme } from '@shopify/restyle';\n" +
+    "const Box = createBox();\n" +
+    jsCode;
   jsCode = jsCode
     .replace("{...props}", "")
     .replace("props", '{ color = "darkGrey", ...props }')
-    .replace("<Svg", "{ \n\tconst theme = useTheme(); \n\treturn <Box {...props}><Svg")
+    .replace(
+      "<Svg",
+      "{ \n\tconst theme = useTheme(); \n\treturn <Box {...props}><Svg"
+    )
     .replace("</Svg>", "</Svg></Box>}");
 
   return createComponentFile(iconData, jsCode);

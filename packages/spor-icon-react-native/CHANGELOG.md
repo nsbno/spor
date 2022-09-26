@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.2.0
+
+### Minor Changes
+
+- bc687eb4: Add support for using color names
+
 ## 0.1.5
 
 ### Patch Changes

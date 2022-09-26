@@ -1,5 +1,11 @@
 # @vygruppen/spor-button-react
 
+## 0.2.11
+
+### Patch Changes
+
+- 09448ca8: fix button styles
+
 ## 0.2.10
 
 ### Patch Changes

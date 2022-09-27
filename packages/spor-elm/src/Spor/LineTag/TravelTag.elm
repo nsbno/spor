@@ -146,10 +146,10 @@ toHtml (TravelTag options) =
             , deviationBorderStyle options.deviationLevel
             , if options.variant /= Walk then
                 Css.padding4
-                    (Spacing.toCss Spacing.i3xs)
-                    (Spacing.toCss Spacing.i2xs)
-                    (Spacing.toCss Spacing.i3xs)
-                    (Spacing.toCss Spacing.i3xs)
+                    (Spacing.toCss Spacing.i0_5)
+                    (Spacing.toCss Spacing.i1)
+                    (Spacing.toCss Spacing.i0_5)
+                    (Spacing.toCss Spacing.i0_5)
 
               else
                 Css.batch []
@@ -176,7 +176,7 @@ lineIcon options =
                 Css.batch
                     [ Css.borderRadius <| Css.px <| iconRadius options.size
                     , Css.marginRight <| Css.px <| rightMargin options.size
-                    , Css.padding <| Spacing.toCss Spacing.px3
+                    , Css.padding <| Spacing.toCss Spacing.i0_5
                     ]
     in
     LineIcon.init

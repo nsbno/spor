@@ -129,7 +129,7 @@ lineIcon options =
                     Css.padding <| Css.px 4
 
                   else
-                    Css.padding <| Spacing.toCss Spacing.i2xs
+                    Css.padding <| Spacing.toCss Spacing.i1
                 ]
             )
         |> LineIcon.withColor options.color

@@ -135,7 +135,8 @@ async function generateComponent(iconData: IconData) {
       "<Svg",
       "{ \n\tconst theme = useTheme(); \n\treturn <Box {...props}><Svg"
     )
-    .replace("</Svg>", "</Svg></Box>}");
+    .replace("</Svg>", "</Svg></Box>}")
+    .replace(`strokeWidth: "none"`, `"strokeWidth: 0`);
 
   return createComponentFile(iconData, jsCode);
 }

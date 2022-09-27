@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 0.6.3
+
+### Patch Changes
+
+- 867b12b9: Fix bug in svg-prop stroke-width
+
 ## 0.6.2
 
 ### Patch Changes

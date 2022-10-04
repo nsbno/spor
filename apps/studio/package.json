@@ -13,11 +13,13 @@
   },
   "dependencies": {
     "@sanity/code-input": "^3.0.0-v3-studio.9",
+    "@sanity/vision": "^3.0.0-dev-preview.20",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-is": "^18.2.0",
     "sanity": "dev-preview",
+    "sanity-plugin-iframe-pane": "^2.0.0",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {

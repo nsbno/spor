@@ -6,7 +6,6 @@ export const siteSettings = defineType({
   title: "Site Settings",
   type: "document",
   icon: MdSettings,
-  readOnly: true,
   fields: [
     defineField({
       name: "title",

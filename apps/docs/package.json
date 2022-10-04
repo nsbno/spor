@@ -15,9 +15,9 @@
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.6.0",
     "@portabletext/react": "^1.0.3",
-    "@remix-run/node": "1.4.1",
-    "@remix-run/react": "1.4.1",
-    "@remix-run/serve": "1.4.1",
+    "@remix-run/node": "1.7.2",
+    "@remix-run/react": "1.7.2",
+    "@remix-run/serve": "1.7.2",
     "@sanity/groq-store": "^0.4.1",
     "@sanity/image-url": "^1.0.1",
     "@vygruppen/spor-design-tokens": "*",
@@ -33,7 +33,7 @@
     "react-dom": "^17.0.2",
     "react-live": "^3.1.0",
     "react-router-dom": "^6.2.1",
-    "remix-utils": "^3.2.0",
+    "remix-utils": "^3.3.0",
     "tiny-invariant": "^1.2.0"
   },
   "devDependencies": {

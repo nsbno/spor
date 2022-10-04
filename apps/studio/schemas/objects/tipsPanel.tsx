@@ -1,3 +1,4 @@
+import * as React from "react";
 import { MdStar } from "react-icons/md";
 import { defineField, defineType } from "sanity";
 

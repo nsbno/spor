@@ -1,3 +1,4 @@
+import * as React from "react";
 import { MdHorizontalRule } from "react-icons/md";
 import { defineField, defineType } from "sanity";
 
@@ -24,7 +25,6 @@ export const divider = defineType({
     defineField({
       name: "default",
       type: "boolean",
-      hidden: true,
       initialValue: true,
     }),
   ],

@@ -1,19 +1,19 @@
 import { MdGridView } from "react-icons/md";
-import { ObjectField } from "../schemaTypes";
+import { defineField, defineType } from "sanity";
 
-export const grid: ObjectField = {
+export const grid = defineType({
   name: "grid",
   title: "Grid",
   type: "object",
   description: "Place content in a grid",
   icon: MdGridView,
   fields: [
-    {
+    defineField({
       name: "maxNumberOfColumns",
       title: "Max number of columns",
       type: "number",
-    },
-    {
+    }),
+    defineField({
       name: "content",
       title: "Content",
       description: "Each piece of content will be placed in its own grid cell",
@@ -24,7 +24,7 @@ export const grid: ObjectField = {
           title: "Grid cell",
           type: "object",
           fields: [
-            {
+            defineField({
               type: "string",
               name: "verticalAlignment",
               title: "Vertical alignment",
@@ -38,12 +38,12 @@ export const grid: ObjectField = {
                 ],
               },
               initialValue: "top",
-            },
-            {
+            }),
+            defineField({
               type: "content",
               name: "content",
               title: "Content",
-            },
+            }),
           ],
           preview: {
             select: {
@@ -65,11 +65,11 @@ export const grid: ObjectField = {
           },
         },
       ],
-    },
+    }),
   ],
   preview: {
     prepare: () => ({
       title: "Grid view",
     }),
   },
-};
+});

@@ -1,11 +1,10 @@
 import * as React from "react";
-
 const Logo = () => {
   const mainColor = "#ffffff";
   const accentColor = "#ffffff";
 
   return (
-    <svg viewBox="0 0 107 54">
+    <svg viewBox="0 0 107 54" width={60}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

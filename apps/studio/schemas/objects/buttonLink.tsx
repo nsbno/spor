@@ -1,31 +1,25 @@
 import { MdOutlineLink } from "react-icons/md";
-import { ObjectField } from "../schemaTypes";
+import { defineField, defineType } from "sanity";
 
-type ButtonLink = {
-  text: string;
-  url: string;
-  variant: "primary" | "secondary" | "tertiary" | "additional" | "control";
-  size: "small" | "medium" | "large";
-};
-export const buttonLink: ObjectField<ButtonLink> = {
+export const buttonLink = defineType({
   name: "buttonLink",
   title: "Button link",
   type: "object",
   icon: MdOutlineLink,
   fields: [
-    {
+    defineField({
       name: "text",
       title: "Text",
       type: "string",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "url",
       title: "URL",
       type: "string",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "variant",
       title: "Button variant",
       type: "string",
@@ -40,8 +34,8 @@ export const buttonLink: ObjectField<ButtonLink> = {
       },
       initialValue: "primary",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "size",
       title: "Button size",
       type: "string",
@@ -55,7 +49,7 @@ export const buttonLink: ObjectField<ButtonLink> = {
       },
       initialValue: "md",
       validation: (Rule) => Rule.required(),
-    },
+    }),
   ],
   preview: {
     select: {
@@ -63,4 +57,4 @@ export const buttonLink: ObjectField<ButtonLink> = {
       subtitle: "variant",
     },
   },
-};
+});

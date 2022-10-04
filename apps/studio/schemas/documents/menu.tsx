@@ -1,24 +1,19 @@
 import { MdMenu } from "react-icons/md";
-import { Document, Field, SlugField, StringField } from "../schemaTypes";
+import { defineField, defineType } from "sanity";
 
-export type Menu = {
-  title: StringField;
-  slug: SlugField;
-  menuItems: Field[];
-};
-export const menu: Document<Menu> = {
+export const menu = defineType({
   name: "menu",
   title: "Menu",
   type: "document",
   icon: MdMenu,
   fields: [
-    {
+    defineField({
       name: "title",
       title: "Title",
       type: "string",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
@@ -26,13 +21,13 @@ export const menu: Document<Menu> = {
       options: {
         source: "title",
       },
-    },
-    {
+    }),
+    defineField({
       name: "menuItems",
       title: "Menu items",
       type: "array",
       of: [{ type: "menuItem" }, { type: "divider" }],
-    },
+    }),
   ],
   preview: {
     select: {
@@ -41,4 +36,4 @@ export const menu: Document<Menu> = {
       media: "mainImage",
     },
   },
-};
+});

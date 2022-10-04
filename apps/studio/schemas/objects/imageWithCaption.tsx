@@ -1,18 +1,13 @@
 import { MdOutlineImage } from "react-icons/md";
-import { BlockField, Field, ObjectField } from "../schemaTypes";
+import { defineField, defineType } from "sanity";
 
-type ImageWithCaption = {
-  image: Field<"image">;
-  alt: string;
-  caption: BlockField;
-};
-export const imageWithCaption: ObjectField<ImageWithCaption> = {
+export const imageWithCaption = defineType({
   name: "imageWithCaption",
   title: "Image with caption",
   type: "object",
   icon: MdOutlineImage,
   fields: [
-    {
+    defineField({
       name: "image",
       title: "Image",
       type: "image",
@@ -20,19 +15,19 @@ export const imageWithCaption: ObjectField<ImageWithCaption> = {
         hotspot: true,
       },
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "alt",
       title: "Alternative text",
       type: "string",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "caption",
       title: "Caption text",
       type: "array",
       of: [{ type: "block", styles: [{ title: "Text", value: "normal" }] }],
-    },
+    }),
   ],
   preview: {
     select: {
@@ -52,4 +47,4 @@ export const imageWithCaption: ObjectField<ImageWithCaption> = {
       };
     },
   },
-};
+});

@@ -1,57 +1,41 @@
 import { MdAddLink, MdArticle } from "react-icons/md";
-import {
-  ArrayField,
-  BlockField,
-  Document,
-  Field,
-  ImageField,
-  SlugField,
-  StringField,
-} from "../schemaTypes";
+import { defineField, defineType } from "sanity";
 
-export type Article = {
-  title: StringField;
-  category: Field;
-  slug: SlugField;
-  mainImage: ImageField;
-  resourceLinks: ArrayField;
-  content: BlockField;
-};
-export const article: Document<Article> = {
+export const article = defineType({
   name: "article",
   title: "Article",
   type: "document",
   icon: MdArticle,
   fields: [
-    {
+    defineField({
       name: "title",
       title: "Title",
       type: "string",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
       options: {
         source: "title",
       },
-    },
-    {
+    }),
+    defineField({
       name: "category",
       title: "Category",
       type: "reference",
       to: [{ type: "category" }],
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "mainImage",
       title: "Main image",
       description:
         "Used whenever an image is required, like listing components, or as a social media image",
       type: "image",
-    },
-    {
+    }),
+    defineField({
       name: "resourceLinks",
       title: "Resource links",
       description:
@@ -87,12 +71,12 @@ export const article: Document<Article> = {
           ],
         },
       ],
-    },
-    {
+    }),
+    defineField({
       name: "content",
       title: "Content",
       type: "content",
-    },
+    }),
   ],
   preview: {
     select: {
@@ -101,4 +85,4 @@ export const article: Document<Article> = {
       media: "mainImage",
     },
   },
-};
+});

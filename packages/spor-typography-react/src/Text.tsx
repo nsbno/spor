@@ -17,14 +17,3 @@ export type TextProps = ChakraTextProps;
 export const Text = ({ fontSize = "xl", ...props }: TextProps) => {
   return <ChakraText fontSize={fontSize} {...props} />;
 };
-
-/**
- * A paragraph of text.
- *
- * ```tsx
- * <Paragraph>Welcome to this paragraph of text.</Paragraph>
- * ```
- *
- * This is the same as `Text`, but with a different name.
- */
-export const Paragraph = Text;

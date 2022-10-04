@@ -1,20 +1,17 @@
 import { FiAlignCenter } from "react-icons/fi";
-import { BlockField, ObjectField } from "../schemaTypes";
+import { defineField, defineType } from "sanity";
 
-type Introduction = {
-  content: BlockField;
-};
-export const introduction: ObjectField<Introduction> = {
+export const introduction = defineType({
   name: "introduction",
   title: "Introduction",
   type: "object",
   icon: FiAlignCenter,
   fields: [
-    {
+    defineField({
       name: "content",
       title: "Content",
       type: "array",
       of: [{ type: "block" }],
-    },
+    }),
   ],
-};
+});

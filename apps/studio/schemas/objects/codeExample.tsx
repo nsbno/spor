@@ -1,14 +1,14 @@
 import { MdCode } from "react-icons/md";
-import { ObjectField } from "../schemaTypes";
+import { defineField, defineType } from "sanity";
 
-export const codeExample: ObjectField = {
+export const codeExample = defineType({
   icon: MdCode,
   name: "codeExample",
   title: "Interactive Code Block",
   description: "Great for showing example code with a live preview",
   type: "object",
   fields: [
-    {
+    defineField({
       name: "layout",
       title: "Layout",
       type: "string",
@@ -16,8 +16,8 @@ export const codeExample: ObjectField = {
         list: ["simple", "preview-only", "code-only", "advanced"],
       },
       initialValue: "simple",
-    },
-    {
+    }),
+    defineField({
       name: "reactCode",
       title: "React Code Example",
       type: "code",
@@ -25,8 +25,8 @@ export const codeExample: ObjectField = {
         language: "react",
         languageAlternatives: [{ title: "React", value: "react" }],
       },
-    },
-    {
+    }),
+    defineField({
       name: "reactNativeCode",
       title: "React Native Code Example",
       type: "code",
@@ -34,8 +34,8 @@ export const codeExample: ObjectField = {
         language: "react",
         languageAlternatives: [{ title: "React Native", value: "react" }],
       },
-    },
-    {
+    }),
+    defineField({
       name: "elmCode",
       title: "Elm Code Example",
       type: "code",
@@ -43,7 +43,7 @@ export const codeExample: ObjectField = {
         language: "elm",
         languageAlternatives: [{ title: "Elm", value: "elm" }],
       },
-    },
+    }),
   ],
   preview: {
     select: {
@@ -55,4 +55,4 @@ export const codeExample: ObjectField = {
       };
     },
   },
-};
+});

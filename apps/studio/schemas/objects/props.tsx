@@ -1,28 +1,19 @@
 import { MdInput } from "react-icons/md";
-import { ObjectField } from "../schemaTypes";
+import { defineField, defineType } from "sanity";
 
-type Props = {
-  name: string;
-  platform: string;
-  type: string;
-  typeOther?: string;
-  isRequired: boolean;
-  subtype?: Props;
-  description?: string;
-};
-export const props: ObjectField<Props> = {
+export const props = defineType({
   name: "props",
   title: "Props",
   type: "object",
   icon: MdInput,
   fields: [
-    {
+    defineField({
       name: "name",
       title: "Name",
       type: "string",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "platform",
       title: "Platform",
       type: "string",
@@ -35,8 +26,8 @@ export const props: ObjectField<Props> = {
         ],
       },
       initialValue: "react, react-native",
-    },
-    {
+    }),
+    defineField({
       name: "type",
       title: "Type of prop",
       type: "string",
@@ -56,16 +47,16 @@ export const props: ObjectField<Props> = {
         ],
       },
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "typeOther",
       title: "Other type",
       description:
         'A typical use case is a subset of strings - like "primary" | "secondary", or a function - like (id: string) => void',
       type: "string",
       hidden: ({ parent }) => parent?.type !== "other",
-    },
-    {
+    }),
+    defineField({
       name: "isRequired",
       title: "Is the prop required?",
       type: "boolean",
@@ -73,8 +64,8 @@ export const props: ObjectField<Props> = {
       options: {
         layout: "switch",
       },
-    },
-    {
+    }),
+    defineField({
       name: "subtype",
       title: "Subtype",
       description:
@@ -82,13 +73,13 @@ export const props: ObjectField<Props> = {
       type: "array",
       hidden: ({ parent }) => !["object", "object[]"].includes(parent?.type),
       of: [{ type: "props" }],
-    },
-    {
+    }),
+    defineField({
       name: "description",
       title: "Description",
       description:
         "Avoid reiterating on the obvious - just add extra context if needed",
       type: "text",
-    },
+    }),
   ],
-};
+});

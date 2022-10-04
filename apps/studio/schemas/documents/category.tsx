@@ -1,28 +1,24 @@
 import { MdCategory } from "react-icons/md";
-import { Document, SlugField, StringField } from "../schemaTypes";
+import { defineField, defineType } from "sanity";
 
-export type Category = {
-  title: StringField;
-  slug: SlugField;
-};
-export const category: Document<Category> = {
+export const category = defineType({
   name: "category",
   title: "Category",
   type: "document",
   icon: MdCategory,
   fields: [
-    {
+    defineField({
       name: "title",
       title: "Title",
       type: "string",
-    },
-    {
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
       options: {
         source: "title",
       },
-    },
+    }),
   ],
-};
+});

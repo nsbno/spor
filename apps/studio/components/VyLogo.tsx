@@ -1,5 +1,3 @@
-import * as React from "react";
-
 const Logo = () => {
   const mainColor = "#ffffff";
   const accentColor = "#ffffff";

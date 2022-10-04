@@ -1,40 +1,25 @@
 import { MdBrush } from "react-icons/md";
-import {
-  ArrayField,
-  Document,
-  ImageField,
-  StringField,
-  TextField,
-} from "../schemaTypes";
-
-export type Illustration = {
-  title: StringField;
-  tags: ArrayField;
-  image: ImageField;
-  descriptionNb: TextField;
-  descriptionSv: TextField;
-  descriptionEn: TextField;
-};
-export const illustration: Document<Illustration> = {
+import { defineField, defineType } from "sanity";
+export const illustration = defineType({
   name: "illustration",
   title: "Illustration",
   type: "document",
   icon: MdBrush,
   fields: [
-    {
+    defineField({
       name: "title",
       title: "Title",
       type: "string",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "image",
       title: "Illustration",
       description: "Upload the SVG version of your illustration",
       type: "image",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "tags",
       title: "Tags",
       description:
@@ -44,27 +29,27 @@ export const illustration: Document<Illustration> = {
       options: {
         layout: "tags",
       },
-    },
-    {
+    }),
+    defineField({
       name: "descriptionNb",
       title: "Description (Norwegian Bokmål)",
       description:
         "Describe the illustration in Norwegian Bokmål, for screen readers",
       type: "text",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "descriptionSv",
       title: "Description (Swedish)",
       description: "Describe the illustration in Swedish, for screen readers",
       type: "text",
-    },
-    {
+    }),
+    defineField({
       name: "descriptionEn",
       title: "Description (English)",
       description: "Describe the illustration in English, for screen readers",
       type: "text",
-    },
+    }),
   ],
   preview: {
     select: {
@@ -72,4 +57,4 @@ export const illustration: Document<Illustration> = {
       media: "image",
     },
   },
-};
+});

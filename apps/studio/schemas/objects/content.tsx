@@ -1,11 +1,11 @@
+import { defineType } from "sanity";
 import { SporBlockEditor } from "../../components/SporBlockEditor";
-import { ArrayField } from "../schemaTypes";
 
-export const content: ArrayField = {
+export const content = defineType({
   name: "content",
   title: "Content",
   type: "array",
-  inputComponent: SporBlockEditor,
+  components: { input: SporBlockEditor },
   of: [
     {
       type: "block",
@@ -29,4 +29,4 @@ export const content: ArrayField = {
     { type: "grid" },
     { type: "tipsPanel" },
   ],
-};
+});

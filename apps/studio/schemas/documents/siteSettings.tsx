@@ -1,30 +1,24 @@
 import { MdSettings } from "react-icons/md";
-import { ArrayField, Document, ImageField, StringField } from "../schemaTypes";
+import { defineField, defineType } from "sanity";
 
-type SiteSettings = {
-  title: StringField;
-  description: StringField;
-  keywords: ArrayField;
-  socialImage: ImageField;
-};
-export const siteSettings: Document<SiteSettings> = {
+export const siteSettings = defineType({
   name: "siteSettings",
   title: "Site Settings",
   type: "document",
   icon: MdSettings,
-  __experimental_actions: ["update", "publish"],
+  readOnly: true,
   fields: [
-    {
+    defineField({
       name: "title",
       title: "Site Title",
       type: "string",
-    },
-    {
+    }),
+    defineField({
       name: "description",
       title: "Site Description",
       type: "text",
-    },
-    {
+    }),
+    defineField({
       name: "keywords",
       title: "Keywords",
       type: "array",
@@ -32,11 +26,11 @@ export const siteSettings: Document<SiteSettings> = {
       options: {
         layout: "tags",
       },
-    },
-    {
+    }),
+    defineField({
       name: "socialImage",
       title: "Social image",
       type: "image",
-    },
+    }),
   ],
-};
+});

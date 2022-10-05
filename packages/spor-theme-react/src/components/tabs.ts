@@ -1,55 +1,114 @@
 import { tabsAnatomy as parts } from "@chakra-ui/anatomy";
-import type {
-  PartsStyleFunction,
-  PartsStyleInterpolation,
-  PartsStyleObject,
-  StyleFunctionProps,
-  SystemStyleFunction,
-} from "@chakra-ui/theme-tools";
+import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import type { StyleFunctionProps } from "@chakra-ui/theme-tools";
 
-const baseStyleRoot: SystemStyleFunction = () => {
-  return {
-    display: "flex",
-    flexDirection: "column",
-  };
-};
+const helpers = createMultiStyleConfigHelpers(parts.keys);
 
-const baseStyleTablist: SystemStyleFunction = (props) => {
-  return {
-    display: "flex",
-    alignItems: "center",
-    gap: 0.5,
-    width: props.isFitted ? "fit-content" : "100%",
-    ...getTablistColorSchemeProps(props),
-  };
-};
-
-const baseStyleTab: SystemStyleFunction = (props) => {
-  return {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    transitionProperty: "common",
-    transitionDuration: "normal",
-    width: props.isFitted ? "fit-content" : "100%",
-    height: "100%",
-    ...getTabColorSchemeProps(props),
-
-    _selected: {
-      boxShadow: "md",
-      pointerEvents: "none",
-      ...getTabColorSchemeSelectedProps(props),
+const config = helpers.defineMultiStyleConfig({
+  baseStyle: (props) => ({
+    root: {
+      display: "flex",
+      flexDirection: "column",
     },
-    _focus: getTabColorSchemeFocusProps(props),
-    ":focus:not(:focus-visible)": {
-      boxShadow: "none",
+    tablist: {
+      display: "flex",
+      alignItems: "center",
+      gap: 0.5,
+      width: props.isFitted ? "fit-content" : "100%",
+      ...getTablistColorSchemeProps(props),
     },
-    _focusVisible: getTabColorSchemeFocusProps(props),
-    _hover: getTabColorSchemeHoverProps(props),
-    _active: getTabColorSchemeActiveProps(props),
-    _disabled: getTabColorSchemeDisabledProps(props),
-  };
-};
+    tab: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      transitionProperty: "common",
+      transitionDuration: "normal",
+      width: props.isFitted ? "fit-content" : "100%",
+      height: "100%",
+      ...getTabColorSchemeProps(props),
+
+      _selected: {
+        boxShadow: "md",
+        pointerEvents: "none",
+        ...getTabColorSchemeSelectedProps(props),
+      },
+      _focus: getTabColorSchemeFocusProps(props),
+      ":focus:not(:focus-visible)": {
+        boxShadow: "none",
+      },
+      _focusVisible: getTabColorSchemeFocusProps(props),
+      _hover: getTabColorSchemeHoverProps(props),
+      _active: getTabColorSchemeActiveProps(props),
+      _disabled: getTabColorSchemeDisabledProps(props),
+    },
+    tabpanel: {},
+  }),
+  variants: {
+    round: {
+      tablist: {
+        borderRadius: "42px",
+      },
+      tab: {
+        borderRadius: "xl",
+      },
+    },
+    square: {
+      tablist: {
+        borderRadius: "sm",
+      },
+      tab: {
+        borderRadius: "9px",
+      },
+    },
+  },
+  sizes: {
+    sm: {
+      tablist: {
+        height: "30px",
+        p: "2px",
+      },
+      tab: {
+        px: 2,
+        py: 0,
+      },
+    },
+    md: {
+      tablist: {
+        height: "36px",
+        p: 0.5,
+      },
+      tab: {
+        px: 2,
+      },
+    },
+    lg: {
+      tablist: {
+        height: "42px",
+        p: 0.5,
+      },
+      tab: {
+        fontWeight: "bold",
+        px: 2,
+      },
+    },
+    xl: {
+      tablist: {
+        height: "54px",
+        p: "4px",
+      },
+      tab: {
+        fontWeight: "bold",
+        px: 3,
+      },
+    },
+  },
+  defaultProps: {
+    size: "md",
+    variant: "round",
+  },
+});
+
+export default config;
 
 const getTabColorSchemeProps = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
@@ -220,89 +279,4 @@ const getTablistColorSchemeProps = (props: StyleFunctionProps) => {
     default:
       return {};
   }
-};
-
-const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
-  root: baseStyleRoot(props),
-  tablist: baseStyleTablist(props),
-  tab: baseStyleTab(props),
-  tabpanel: {},
-});
-
-const sizes: Record<string, PartsStyleObject<typeof parts>> = {
-  sm: {
-    tablist: {
-      height: "30px",
-      p: "2px",
-    },
-    tab: {
-      px: 2,
-      py: 0,
-    },
-  },
-  md: {
-    tablist: {
-      height: "36px",
-      p: 0.5,
-    },
-    tab: {
-      px: 2,
-    },
-  },
-  lg: {
-    tablist: {
-      height: "42px",
-      p: 0.5,
-    },
-    tab: {
-      fontWeight: "bold",
-      px: 2,
-    },
-  },
-  xl: {
-    tablist: {
-      height: "54px",
-      p: "4px",
-    },
-    tab: {
-      fontWeight: "bold",
-      px: 3,
-    },
-  },
-};
-
-const variantRound: PartsStyleInterpolation<typeof parts> = (props) => ({
-  tablist: {
-    borderRadius: "42px",
-  },
-  tab: {
-    borderRadius: "xl",
-  },
-});
-
-const variantSquare: PartsStyleInterpolation<typeof parts> = {
-  tablist: {
-    borderRadius: "sm",
-  },
-  tab: {
-    borderRadius: "9px",
-  },
-};
-
-const variants: Record<string, PartsStyleInterpolation<typeof parts>> = {
-  round: variantRound,
-  square: variantSquare,
-};
-
-const defaultProps = {
-  size: "md",
-  variant: "round",
-};
-
-export default {
-  parts: parts.keys,
-  baseStyle,
-  sizes,
-  variants,
-  defaultProps,
 };

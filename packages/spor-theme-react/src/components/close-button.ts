@@ -1,14 +1,12 @@
-import type {
-  SystemStyleFunction,
-  SystemStyleObject,
-} from "@chakra-ui/theme-tools";
+import { defineStyleConfig } from "@chakra-ui/react";
 import { cssVar } from "@chakra-ui/theme-tools";
+import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
 
 const $size = cssVar("close-button-size");
 
-const baseStyle: SystemStyleFunction = (props) => {
-  return {
+const config = defineStyleConfig({
+  baseStyle: {
     w: [$size.reference],
     h: [$size.reference],
     transitionProperty: "common",
@@ -20,7 +18,7 @@ const baseStyle: SystemStyleFunction = (props) => {
     ...focusVisible({
       focus: {
         outline: "none",
-        boxShadow: `inset 0 0 0 1px ${props.theme.colors.greenHaze}`,
+        boxShadow: getBoxShadowString({ borderColor: "greenHaze" }),
       },
       notFocus: {
         boxShadow: "none",
@@ -35,30 +33,24 @@ const baseStyle: SystemStyleFunction = (props) => {
     _active: {
       backgroundColor: "mint",
     },
-  };
-};
-
-const sizes: Record<string, SystemStyleObject> = {
-  lg: {
-    [$size.variable]: "40px",
-    fontSize: "16px",
   },
-  md: {
-    [$size.variable]: "32px",
-    fontSize: "12px",
+  sizes: {
+    lg: {
+      [$size.variable]: "40px",
+      fontSize: "16px",
+    },
+    md: {
+      [$size.variable]: "32px",
+      fontSize: "12px",
+    },
+    sm: {
+      [$size.variable]: "24px",
+      fontSize: "10px",
+    },
   },
-  sm: {
-    [$size.variable]: "24px",
-    fontSize: "10px",
+  defaultProps: {
+    size: "md",
   },
-};
+});
 
-const defaultProps = {
-  size: "md",
-};
-
-export default {
-  baseStyle,
-  sizes,
-  defaultProps,
-};
+export default config;

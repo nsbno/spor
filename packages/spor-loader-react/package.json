@@ -19,21 +19,21 @@
     "dev": "tsup src/index.tsx --watch --format esm"
   },
   "devDependencies": {
-    "@chakra-ui/react": "^1.7.3",
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
-    "framer-motion": "^6.0.0",
-    "react": ">17.0.0",
-    "react-dom": ">17.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@chakra-ui/react": "^2.3.5",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "framer-motion": ">6.0.0",
     "tsup": "^6.2.2"
   },
   "peerDependencies": {
-    "@chakra-ui/react": "^1.7.3",
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
-    "framer-motion": "3.x || 4.x || 5.x || 6.x",
-    "react": ">17.0.0",
-    "react-dom": ">17.0.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@chakra-ui/react": "^2.3.5",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "framer-motion": ">6.0.0"
   },
   "dependencies": {
     "lottie-react": "^2.3.1",

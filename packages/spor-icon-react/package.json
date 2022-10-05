@@ -28,8 +28,8 @@
     "@vygruppen/spor-layout-react": "*"
   },
   "peerDependencies": {
-    "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@vygruppen/spor-icon": "*",
@@ -39,6 +39,8 @@
     "@types/fs-extra": "^9.0.13",
     "case": "^1.6.3",
     "fs-extra": "^10.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
     "tsup": "^6.2.2"

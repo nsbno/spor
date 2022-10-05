@@ -13,11 +13,11 @@ import {
   VyLogo,
 } from "@vygruppen/spor-react";
 import { useEffect } from "react";
-import { MenuItem } from "~/utils/initialSanityData.server";
 import { useMenu } from "~/utils/useMenu";
 import { SearchableContentMenu } from "../content-menu/SearchableContentMenu";
 import { NavigationLink, SiteNavigation } from "./SiteNavigation";
 import { UserPreferenceSwitcher } from "./UserPreferenceSwitcher";
+
 
 /** The site header shown at the top of every part of our site */
 export const SiteHeader = () => {
@@ -44,12 +44,6 @@ export const SiteHeader = () => {
   );
 };
 
-type MatchesData = {
-  menus: {
-    slug: string;
-    menuItems: MenuItem[];
-  }[];
-};
 const DesktopNavigation = () => {
   const menu = useMenu("top-menu");
   return (

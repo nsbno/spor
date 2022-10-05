@@ -9,7 +9,7 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "@remix-run/react";
 import { useMenu } from "~/utils/useMenu";
 import { MenuItem } from "./MenuItem";
 

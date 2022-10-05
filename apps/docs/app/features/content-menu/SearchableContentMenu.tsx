@@ -1,7 +1,7 @@
+import { useLocation, useNavigate } from "@remix-run/react";
 import { Box } from "@vygruppen/spor-react";
 import { matchSorter } from "match-sorter";
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import { useMenu } from "~/utils/useMenu";
 import { ContentMenu } from "./ContentMenu";
 import { GlobalSearchInput } from "./GlobalSearchInput";

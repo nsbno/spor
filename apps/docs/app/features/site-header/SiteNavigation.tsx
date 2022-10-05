@@ -1,6 +1,5 @@
 import { Center, Flex } from "@chakra-ui/react";
-import { Link, useResolvedPath } from "@remix-run/react";
-import { useMatch } from "react-router-dom";
+import { Link, useMatches, useResolvedPath } from "@remix-run/react";
 
 type SiteNavigationProps = {
   children: React.ReactNode;
@@ -35,12 +34,12 @@ export const NavigationLink = ({ children, href }: NavigationItemProps) => {
       whiteSpace="nowrap"
       fontWeight="bold"
       fontStyle="sm"
-      _focusVisible={{ borderColor: "outline.greenHaze", outline: "none" }}
+      _focusVisible={{ borderColor: "greenHaze", outline: "none" }}
       _hover={{ backgroundColor: "pine" }}
       _active={{
         backgroundColor: "celadon",
       }}
-      backgroundColor={isActive ? "rgba(255,255,255,0.2)" : "transparent"}
+      backgroundColor={isActive ? "whiteAlpha.200" : "transparent"}
       transitionDuration="fast"
       transitionProperty="common"
     >
@@ -51,5 +50,11 @@ export const NavigationLink = ({ children, href }: NavigationItemProps) => {
 
 const useIsActive = (to: string, end: boolean = false) => {
   let resolved = useResolvedPath(to);
-  return useMatch({ path: resolved.pathname, end });
+  const matches = useMatches();
+  // TODO: This doesn't really work for nested routes
+  // See if there's a way we can fix this
+  return matches.some(
+    (match) =>
+      match.pathname !== "/" && match.pathname.startsWith(resolved.pathname)
+  );
 };

@@ -7,7 +7,7 @@ import {
   SuccessOutline24Icon,
 } from "@vygruppen/spor-react";
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "@remix-run/react";
 import { slugify } from "~/utils/stringUtils";
 
 type LinkableHeadingProps = HeadingProps;

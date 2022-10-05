@@ -1,5 +1,5 @@
+import { useLocation } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { HeadingLevelType, HeadingType } from "./TableOfContents";
 
 /**

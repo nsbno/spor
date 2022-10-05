@@ -1,5 +1,41 @@
 # @vygruppen/spor-react
 
+## 1.0.0
+
+### Major Changes
+
+- e6158c62: Velkommen til den første stabile major-versjonen av Vy sitt komponentbibliotek for React - `@vygruppen/spor-react`.
+
+  Det er kun én breaking change i denne releasen - at vi nå krever en avhengighet på React 18.2 eller høyere.
+
+  Du kan også fjerne avhengighetene til `@chakra-ui/react`, `@emotion/*` og `framer-motion`, med mindre du bruker dem direkte.
+
+### Patch Changes
+
+- Updated dependencies [7e8052a8]
+- Updated dependencies [e6158c62]
+  - @vygruppen/spor-typography-react@1.0.0
+  - @vygruppen/spor-accordion-react@1.0.0
+  - @vygruppen/spor-button-react@1.0.0
+  - @vygruppen/spor-card-react@1.0.0
+  - @vygruppen/spor-datepicker-react@1.0.0
+  - @vygruppen/spor-i18n-react@1.0.0
+  - @vygruppen/spor-icon-react@1.0.0
+  - @vygruppen/spor-image-react@1.0.0
+  - @vygruppen/spor-input-react@1.0.0
+  - @vygruppen/spor-layout-react@1.0.0
+  - @vygruppen/spor-linjetag-react@1.0.0
+  - @vygruppen/spor-link-react@1.0.0
+  - @vygruppen/spor-loader-react@1.0.0
+  - @vygruppen/spor-logo-react@1.0.0
+  - @vygruppen/spor-modal-react@1.0.0
+  - @vygruppen/spor-popover-react@1.0.0
+  - @vygruppen/spor-provider-react@1.0.0
+  - @vygruppen/spor-stepper-react@1.0.0
+  - @vygruppen/spor-tab-react@1.0.0
+  - @vygruppen/spor-table-react@1.0.0
+  - @vygruppen/spor-theme-react@1.0.0
+
 ## 0.14.6
 
 ### Patch Changes

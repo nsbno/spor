@@ -10,3 +10,5 @@ const config = defineStyleConfig({
     appearance: "none",
   }),
 });
+
+export default config;

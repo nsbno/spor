@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-button-react",
-  "version": "0.2.11",
+  "version": "1.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

@@ -28,9 +28,9 @@ If you want, you can also test it out in a CodeSandbox ([JavaScript](https://cod
 To get started, you'll need to install the required packages:
 
 ```bash
-$ npm install @vygruppen/spor-react @chakra-ui/react @emotion/styled @emotion/react framer-motion
+$ npm install @vygruppen/spor-react
 # or
-$ yarn add @vygruppen/spor-react @chakra-ui/react @emotion/styled @emotion/react framer-motion
+$ yarn add @vygruppen/spor-react
 ```
 
 Next, wrap your entire application in the `SporProvider` component. You'll need to pass the current language as well:
@@ -65,13 +65,13 @@ export const App = () => {
 
 You'll find lots of components, and extensive documentation on the [documentation site](https://spor.cloud.vy.no/komponenter).
 
+## Usage (React Native)
+
+The React Native version of Spor lives in the [app repo](https://github.com/nsbno/salgsapp-react-native/tree/master/app/spor). The APIs should be pretty much the same as in React.
+
 ## Usage (Elm)
 
-There isn't yet an Elm implementation of the Spor Design System. It's in the backlog, and we hope to start shipping components sometime later this year.
-
-## Contributing!
-
-We're getting ready to accept contributions, and will add an extensive guide to how you can get started with it. For now, you can create an issue or a pull request, and we will check it out within days.
+The Elm-implementation can be found in its own repo - namely the [spor-elm](https://github.com/nsbno/spor-elm) repo. This is because Elm needs its own repo per package.
 
 ## Setup
 
@@ -96,6 +96,11 @@ To develop all apps and packages, run the following command:
 ```
 npm run dev
 ```
+
+This will start all apps and packages in development mode. You can then visit the following URLs:
+
+[localhost:3000](http://localhost:3000) - The local version of the docs website
+[localhost:3333](http://localhost:3333) - The local version of the Sanity Studio
 
 ## Add new package
 

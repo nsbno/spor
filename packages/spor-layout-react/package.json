@@ -20,6 +20,7 @@
     "dev": "tsup src/index.tsx --watch --format esm"
   },
   "devDependencies": {
+    "@chakra-ui/react": "^2.3.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^6.2.2"
@@ -30,6 +31,6 @@
     "@chakra-ui/react": "^2.3.5",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "framer-motion": "^7.5.1"
+    "framer-motion": ">6.0.0"
   }
 }

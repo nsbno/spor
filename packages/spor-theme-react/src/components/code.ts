@@ -1,17 +1,17 @@
-import type { SystemStyleObject } from "@chakra-ui/theme-tools";
+import { defineStyleConfig } from "@chakra-ui/react";
 import Badge from "./badge";
 
 const { variants, defaultProps } = Badge;
 
-const baseStyle: SystemStyleObject = {
-  fontFamily: "monospace",
-  fontSize: ["mobile.xs", "desktop.xs"],
-  borderRadius: "xs",
-  px: 1,
-};
-
-export default {
-  baseStyle,
+const config = defineStyleConfig({
+  baseStyle: {
+    fontFamily: "monospace",
+    fontSize: ["mobile.xs", "desktop.xs"],
+    borderRadius: "xs",
+    px: 1,
+  },
   variants,
   defaultProps,
-};
+});
+
+export default config;

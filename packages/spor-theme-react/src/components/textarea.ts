@@ -1,15 +1,12 @@
-import type { SystemStyleFunction } from "@chakra-ui/theme-tools";
+import { defineStyleConfig } from "@chakra-ui/react";
 import Input from "./input";
 
-const baseStyle: SystemStyleFunction = (props) => ({
-  ...Input.baseStyle(props).field,
-  minHeight: "80px",
-  lineHeight: "short",
-  py: 3,
-  verticalAlign: "top",
-  appearance: "none",
+const config = defineStyleConfig({
+  baseStyle: (props) => ({
+    ...Input.baseStyle!(props).field,
+    minHeight: "5rem",
+    py: 3,
+    verticalAlign: "top",
+    appearance: "none",
+  }),
 });
-
-export default {
-  baseStyle,
-};

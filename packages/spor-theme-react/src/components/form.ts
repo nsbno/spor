@@ -1,42 +1,27 @@
 import { formAnatomy as parts } from "@chakra-ui/anatomy";
-import type {
-  PartsStyleFunction,
-  SystemStyleFunction,
-} from "@chakra-ui/theme-tools";
+import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
-const baseStyleRequiredIndicator: SystemStyleFunction = (props) => {
-  return {
-    marginStart: 1,
-    color: mode("error.brightRed", "error.lightRed")(props),
-  };
-};
+const helpers = createMultiStyleConfigHelpers(parts.keys);
 
-const baseStyleHelperText: SystemStyleFunction = (props) => {
-  return {
-    mt: 2,
-    color: mode("osloGrey", "whiteAlpha.600")(props),
-    lineHeight: "normal",
-    fontSize: "sm",
-  };
-};
-
-const baseStyleContainer: SystemStyleFunction = () => {
-  return {
-    width: "100%",
-    position: "relative",
-    transitionProperty: "common",
-    transitionDuration: "fast",
-  };
-};
-
-const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
-  container: baseStyleContainer(props),
-  requiredIndicator: baseStyleRequiredIndicator(props),
-  helperText: baseStyleHelperText(props),
+const config = helpers.defineMultiStyleConfig({
+  baseStyle: (props) => ({
+    container: {
+      width: "100%",
+      position: "relative",
+      transitionProperty: "common",
+      transitionDuration: "fast",
+    },
+    requiredIndicator: {
+      marginStart: 1,
+      color: mode("brightRed", "lightRed")(props),
+    },
+    helperText: {
+      mt: 2,
+      color: mode("osloGrey", "whiteAlpha.600")(props),
+      lineHeight: "normal",
+      fontSize: "sm",
+    },
+  }),
 });
-
-export default {
-  parts: parts.keys,
-  baseStyle,
-};
+export default config;

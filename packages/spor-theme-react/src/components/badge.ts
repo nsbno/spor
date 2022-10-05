@@ -1,66 +1,45 @@
-import type {
-  SystemStyleFunction,
-  SystemStyleObject,
-} from "@chakra-ui/theme-tools";
+import { defineStyleConfig } from "@chakra-ui/react";
 
-const baseStyle: SystemStyleObject = {
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  fontSize: ["mobile.xs", "desktop.xs"],
-  borderRadius: "xl",
-  fontWeight: "bold",
-};
-
-const variantSolid: SystemStyleFunction = (props) => {
-  const colorScheme = getColorScheme(props.colorScheme as ColorScheme);
-
-  return {
-    border: "none",
-    ...colorScheme,
-  };
-};
-
-const variantOutline: SystemStyleFunction = (props) => {
-  const colorScheme = getColorScheme(props.colorScheme as ColorScheme);
-
-  return {
-    border: "1px solid",
-    ...colorScheme,
-  };
-};
-
-const variants = {
-  solid: variantSolid,
-  outline: variantOutline,
-};
-
-const sizes: Record<"sm" | "md", SystemStyleObject> = {
-  sm: {
-    px: 2,
-    height: 4,
+const config = defineStyleConfig({
+  baseStyle: {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: ["mobile.xs", "desktop.xs"],
+    borderRadius: "xl",
+    fontWeight: "bold",
   },
-  md: {
-    px: 3,
-    height: 5,
+  variants: {
+    solid: ({ colorScheme }) => ({
+      border: "none",
+      ...getColorScheme(colorScheme as ColorScheme),
+    }),
+    outline: ({ colorScheme }) => ({
+      border: "1px solid",
+      ...getColorScheme(colorScheme as ColorScheme),
+    }),
   },
-};
+  sizes: {
+    sm: {
+      px: 2,
+      height: 4,
+    },
+    md: {
+      px: 3,
+      height: 5,
+    },
+  },
+  defaultProps: {
+    variant: "solid",
+    colorScheme: "grey",
+    size: "sm",
+  },
+});
 
-const defaultProps = {
-  variant: "solid",
-  colorScheme: "grey",
-  size: "sm",
-};
-
-export default {
-  baseStyle,
-  variants,
-  sizes,
-  defaultProps,
-};
+export default config;
 
 function getColorScheme(colorScheme: ColorScheme) {
-  let styles: SystemStyleObject = colorCombinations[colorScheme];
+  let styles = colorCombinations[colorScheme];
   if (!styles && process.env.NODE_ENV === "development") {
     console.warn(`Invalid color scheme ${colorScheme} provided.`);
     styles = colorCombinations.grey;

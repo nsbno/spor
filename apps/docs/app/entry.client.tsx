@@ -1,7 +1,7 @@
 import { CacheProvider } from "@emotion/react";
-import { useState } from "react";
-import { hydrate } from "react-dom";
 import { RemixBrowser } from "@remix-run/react";
+import { useState } from "react";
+import { hydrateRoot } from "react-dom/client";
 import { createEmotionCache } from "./features/chakra-setup/createEmotionCache";
 import { ClientStyleContext } from "./features/chakra-setup/styleContext";
 
@@ -23,9 +23,9 @@ const ClientCacheProvider = ({ children }: ClientCacheProviderProps) => {
   );
 };
 
-hydrate(
+hydrateRoot(
+  document,
   <ClientCacheProvider>
     <RemixBrowser />
-  </ClientCacheProvider>,
-  document
+  </ClientCacheProvider>
 );

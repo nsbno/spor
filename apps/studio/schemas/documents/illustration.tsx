@@ -13,10 +13,25 @@ export const illustration = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "image",
-      title: "Illustration",
-      description: "Upload the SVG version of your illustration",
+      name: "imageLightBackground",
+      title: "Illustration (light background)",
+      description:
+        "Upload the version of your illustration meant for light backgrounds",
       type: "image",
+      options: {
+        accept: "image/svg+xml",
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "imageDarkBackground",
+      title: "Illustration (dark background)",
+      description:
+        "Upload the version of your illustration meant for dark backgrounds",
+      type: "image",
+      options: {
+        accept: "image/svg+xml",
+      },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -31,24 +46,12 @@ export const illustration = defineType({
       },
     }),
     defineField({
-      name: "descriptionNb",
-      title: "Description (Norwegian Bokmål)",
+      name: "description",
+      title: "Description",
       description:
-        "Describe the illustration in Norwegian Bokmål, for screen readers",
+        "Describe the illustration in such a way that it's easy to understand what it could be used for.",
       type: "text",
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: "descriptionSv",
-      title: "Description (Swedish)",
-      description: "Describe the illustration in Swedish, for screen readers",
-      type: "text",
-    }),
-    defineField({
-      name: "descriptionEn",
-      title: "Description (English)",
-      description: "Describe the illustration in English, for screen readers",
-      type: "text",
     }),
   ],
   preview: {

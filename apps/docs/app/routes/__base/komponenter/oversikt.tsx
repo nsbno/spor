@@ -92,7 +92,7 @@ export default function ComponentsPage() {
           <Card
             key={component._id}
             as={Link}
-            to={`../${component.slug}`}
+            to={`/komponenter/${component.slug}`}
             colorScheme="white"
           >
             {component.mainImage ? (

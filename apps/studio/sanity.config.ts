@@ -13,14 +13,14 @@ export default createConfig({
   plugins: [deskTool(), visionTool(), codeInput()],
   logo: VyLogo,
   document: {
-    productionUrl: async (prev, { document, getClient }) => {
-      const client = getClient({ apiVersion: "2022-10-04" });
+    productionUrl: async (prev, { document, client }) => {
+      const configuredClient = client.withConfig({ apiVersion: "2022-10-06" });
       const host = window.location.href.includes("localhost")
         ? "http://localhost:3000"
         : "https://spor.cloud.vy.no";
 
       if (document._type === "article") {
-        const category = await client.fetch(
+        const category = await configuredClient.fetch(
           `*[_id == $id] { "slug": slug.current }[0]`,
           { id: (document.category as any)._ref }
         );

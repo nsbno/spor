@@ -20,6 +20,9 @@ export default createConfig({
         : "https://spor.cloud.vy.no";
 
       if (document._type === "article") {
+        if (!document.category) {
+          return host;
+        }
         const category = await configuredClient.fetch(
           `*[_id == $id] { "slug": slug.current }[0]`,
           { id: (document.category as any)._ref }

@@ -78,7 +78,9 @@ export default function IllustrasjonerPage() {
       <Button
         variant="primary"
         size="lg"
-        onClick={() => alert("Det kommer snart")}
+        as="a"
+        download="illustrasjoner.zip"
+        href="/ressurser/illustrasjoner/alle"
         leftIcon={<DownloadOutline24Icon />}
       >
         Last ned alle illustrasjoner
@@ -118,7 +120,11 @@ export default function IllustrasjonerPage() {
             <Flex flexDirection="column" height="100%">
               <Flex gap={1} alignItems="center">
                 <Text variant="sm">{illustration.title}</Text>
-                <SimplePopover triggerElement={<InformationOutline18Icon />}>
+                <SimplePopover
+                  placement="top"
+                  arrowPadding={2}
+                  triggerElement={<InformationOutline18Icon />}
+                >
                   {illustration.description}
                 </SimplePopover>
               </Flex>
@@ -134,6 +140,7 @@ export default function IllustrasjonerPage() {
                 }
                 alt={illustration.description}
                 width="100%"
+                maxHeight="10rem"
                 objectFit="contain"
                 objectPosition="center"
                 flex={1}

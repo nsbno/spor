@@ -24,6 +24,7 @@
     "@vygruppen/spor-icon": "*",
     "@vygruppen/spor-icon-react": "*",
     "@vygruppen/spor-react": "*",
+    "archiver": "^5.3.1",
     "framer-motion": "^7.5.2",
     "match-sorter": "^6.3.1",
     "picosanity": "^4.0.0",
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@remix-run/dev": "1.7.2",
+    "@types/archiver": "^5.3.1",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "config": "*",

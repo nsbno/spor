@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.2.3
+
+### Patch Changes
+
+- 9b989ba5: Add support for treeshaking icons
+
 ## 0.2.2
 
 ### Patch Changes

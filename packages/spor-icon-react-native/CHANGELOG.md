@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.2.4
+
+### Patch Changes
+
+- cff44b63: Fix react native releases
+
 ## 0.2.3
 
 ### Patch Changes

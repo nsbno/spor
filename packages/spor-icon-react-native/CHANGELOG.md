@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.2.5
+
+### Patch Changes
+
+- 4a572371: Improve the icon implementation
+
 ## 0.2.4
 
 ### Patch Changes

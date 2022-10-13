@@ -1,12 +1,15 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { keyframes } from "@chakra-ui/system";
-import { getColor, mode } from "@chakra-ui/theme-tools";
+import { cssVar, getColor, mode } from "@chakra-ui/theme-tools";
 
 const fade = (startColor: string, endColor: string) =>
   keyframes({
     from: { borderColor: startColor, background: startColor },
     to: { borderColor: endColor, background: endColor },
   });
+
+const $startColor = cssVar("skeleton-start-color");
+const $endColor = cssVar("skeleton-end-color");
 
 const config = defineStyleConfig({
   baseStyle: (props) => {
@@ -24,6 +27,8 @@ const config = defineStyleConfig({
     const end = getColor(theme, endColor);
 
     return {
+      [$startColor.variable]: start,
+      [$endColor.variable]: end,
       opacity: 1,
       borderRadius: "xs",
       borderColor: start,

@@ -1,7 +1,6 @@
 import { transform } from "@svgr/core";
 import Case from "case";
 import fs from "fs-extra";
-import { typeDefinitionTemplate } from "./typeDefinitionTemplate";
 
 const SVG_PATH = "../spor-icon/svg";
 const TMP_PATH = "./tmp";
@@ -95,7 +94,7 @@ function createComponentName({
 
 async function generateComponents(icons: IconData[]) {
   await Promise.all(icons.map(generateComponent));
-  await generateIndexFiles(icons);
+  await generateRootIndexFile(icons);
 }
 
 async function generateComponent(iconData: IconData) {
@@ -124,10 +123,7 @@ async function generateComponent(iconData: IconData) {
   // to make it work as we want.
   // The most straight-forward way to do this is by using string replacement.
   // It looks hacky, it is hacky, but it works.
-  jsCode =
-    "import { createBox, useTheme } from '@shopify/restyle';\n" +
-    "const Box = createBox();\n" +
-    jsCode;
+  jsCode = "import { Box, useTheme } from 'app/spor';\n" + jsCode;
   jsCode = jsCode
     .replace("{...props}", "")
     .replace("props", '{ color = "darkGrey", ...props }')
@@ -141,52 +137,19 @@ async function generateComponent(iconData: IconData) {
 }
 
 function createComponentFile(iconData: IconData, content: string) {
-  return fs.outputFile(
-    createFilePath(iconData.metadata.category, iconData.componentName),
-    content
-  );
+  return fs.outputFile(createFilePath(iconData.componentName), content);
 }
 
-function createFilePath(category: string, componentName: string) {
-  return `${TMP_PATH}/${category}/${componentName}.tsx`;
+function createFilePath(componentName: string) {
+  return `${TMP_PATH}/${componentName}.tsx`;
 }
 
-function generateIndexFiles(icons: IconData[]) {
-  const categories = getUniqueCategories(icons);
-
-  const categoriesIndexFiles = categories.map((category) =>
-    generateCategoryIndexFile(
-      icons.filter((icon) => icon.metadata.category === category),
-      category
-    )
-  );
-  const rootIndexFile = generateRootIndexFile(categories);
-  return Promise.all([...categoriesIndexFiles, rootIndexFile]);
-}
-
-function getUniqueCategories(icons: IconData[]) {
-  return Object.keys(
-    icons.reduce(
-      (prev, icon) => ({ ...prev, [icon.metadata.category]: true }),
-      {}
-    )
-  );
-}
-
-function generateCategoryIndexFile(icons: IconData[], category: string) {
+function generateRootIndexFile(icons: IconData[]) {
   const content = icons
     .map(
       (icon) =>
-        `export { default as ${icon.componentName} } from "./${icon.componentName}";`
+        `export { default as ${icon.componentName}} from "./${icon.componentName}";`
     )
-    .join("\n");
-
-  return fs.outputFile(`${TMP_PATH}/${category}/index.ts`, content);
-}
-
-function generateRootIndexFile(categories: string[]) {
-  const content = categories
-    .map((category) => `export * from "./${category}";`)
     .join("\n");
 
   return fs.outputFile(`${TMP_PATH}/index.ts`, content);
@@ -196,3 +159,21 @@ function generateTypeDefinitions(icons: IconData[]) {
   const typeDefinitionString = typeDefinitionTemplate(icons);
   return fs.outputFile(`${DIST_PATH}/types.d.ts`, typeDefinitionString);
 }
+
+const typeDefinitionTemplate = (iconsData: IconData[]) => {
+  return `
+// This file was auto-generated.
+// Please do not change this file directly.
+import type { BoxProps } from "app/spor";
+import type { ForwardRefExoticComponent } from "react";
+
+declare module "@vygruppen/spor-icon-react-native" {
+  type IconProps = BoxProps & { color?: BoxProps["backgroundColor"] };
+  export type IconComponent = ForwardRefExoticComponent<IconProps>;
+
+  ${iconsData
+    .map(({ componentName }) => `export const ${componentName}: IconComponent;`)
+    .join("\n  ")}
+}
+`;
+};

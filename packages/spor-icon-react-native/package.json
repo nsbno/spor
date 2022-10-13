@@ -2,13 +2,13 @@
   "name": "@vygruppen/spor-icon-react-native",
   "version": "0.2.4",
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
   "types": "./dist/types.d.ts",
   "license": "MIT",
   "files": [
     "svg",
     "dist"
   ],
+  "type": "module",
   "sideEffects": false,
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-icon-react-native",
   "repository": {
@@ -21,7 +21,7 @@
     "prebuild": "npm run clean",
     "build": "npm run build:step-1 && npm run build:step-2",
     "build:step-1": "ts-node bin/generate.ts",
-    "build:step-2": "tsup tmp/* --treeshake --format esm,cjs"
+    "build:step-2": "tsup tmp/* --treeshake --format esm --external app"
   },
   "devDependencies": {
     "@shopify/restyle": "^2.1.0",
@@ -36,7 +36,7 @@
     "react-native": "^0.66.0",
     "react-native-svg": "^12.3.0",
     "rimraf": "^3.0.2",
-    "ts-node": "^10.4.0",
+    "ts-node": "^10.9.1",
     "tsup": "^6.2.2"
   },
   "peerDependencies": {

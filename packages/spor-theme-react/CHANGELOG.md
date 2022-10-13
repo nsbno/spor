@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.1
+
+### Patch Changes
+
+- ce4c0579: Fix bug with skeletons not showing up like they should
+
 ## 1.0.0
 
 ### Major Changes

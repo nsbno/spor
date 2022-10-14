@@ -17,7 +17,8 @@
   },
   "scripts": {
     "build": "tsup src/* --dts --treeshake --format esm,cjs",
-    "dev": "tsup src/index.tsx --watch --format esm"
+    "dev": "tsup src/index.tsx --watch --format esm",
+    "test": "vitest run --config ../config/vitest.config.ts"
   },
   "dependencies": {
     "@vygruppen/spor-i18n-react": "*",
@@ -26,11 +27,15 @@
   "devDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
     "@chakra-ui/react": "^2.3.5",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "framer-motion": ">6.0.0",
-    "tsup": "^6.2.2"
+    "tsup": "^6.2.2",
+    "vitest": "^0.24.2",
+    "vitest-axe": "^0.0.7"
   },
   "peerDependencies": {
     "react": "^18.2.0",

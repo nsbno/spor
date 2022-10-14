@@ -1,15 +1,11 @@
-import { useClipboard } from "@chakra-ui/react";
 import tokens from "@vygruppen/spor-design-tokens";
 import {
   Box,
   BoxProps,
   Card,
-  CopyOutline24Icon,
   Flex,
-  IconButton,
   SimpleGrid,
   Stack,
-  SuccessOutline24Icon,
   Text,
 } from "@vygruppen/spor-react";
 import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
@@ -17,8 +13,6 @@ import { toTitleCase } from "~/utils/stringUtils";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
 export function ColorTokens(props: BoxProps) {
-  const colorScales = tokens.color.palette;
-  const aliases = tokens.color.alias;
   return (
     <SharedTokenLayout
       {...props}
@@ -130,7 +124,6 @@ type ColorTokenProps = BoxProps & { token: string };
 const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
   const { aliasName, paletteName, colorValue } = useTokenInfo(token);
   const isWhite = colorValue.toLowerCase() === "#ffffff";
-  const { hasCopied, onCopy } = useClipboard(colorValue);
 
   return (
     <Card colorScheme="white" borderRadius="sm" overflow="hidden" {...rest}>
@@ -141,24 +134,19 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
         borderColor={isWhite ? "silver" : colorValue}
         borderTopRadius="sm"
       />
-      <Box px={2}>
-        <Text textStyle="xs" fontWeight="bold" whiteSpace="nowrap">
-          {aliasName}
+      <Flex flexDirection="column" justifyContent="space-between" px={2}>
+        <Box>
+          <Text textStyle="xs" fontWeight="bold" whiteSpace="nowrap">
+            {aliasName}
+          </Text>
+          <Text textStyle="xs">
+            {aliasName !== paletteName ? paletteName : " "}
+          </Text>
+        </Box>
+        <Text textStyle="xs" mt={3} mb={2}>
+          {colorValue}
         </Text>
-        <Text textStyle="xs">{aliasName !== paletteName && paletteName}</Text>
-        <Flex justifyContent="space-between" alignItems="center">
-          <Text textStyle="xs">{colorValue}</Text>
-          <IconButton
-            variant="ghost"
-            icon={hasCopied ? <SuccessOutline24Icon /> : <CopyOutline24Icon />}
-            title="Kopier fargekode"
-            aria-label="Kopier fargekode"
-            onClick={onCopy}
-            size="sm"
-            borderRadius="sm"
-          />
-        </Flex>
-      </Box>
+      </Flex>
     </Card>
   );
 };

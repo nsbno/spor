@@ -5,5 +5,13 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
     setupFiles: ["../config/vitest.setup.ts"],
+    deps: {
+      inline: ["vitest-canvas-mock"],
+    },
+    environmentOptions: {
+      jsdom: {
+        resources: "usable",
+      },
+    },
   },
 });

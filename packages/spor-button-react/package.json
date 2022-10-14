@@ -35,7 +35,8 @@
     "framer-motion": ">6.0.0",
     "tsup": "^6.2.2",
     "vitest": "^0.24.2",
-    "vitest-axe": "^0.0.7"
+    "vitest-axe": "^0.0.7",
+    "vitest-canvas-mock": "^0.2.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",

@@ -20,7 +20,7 @@ export const getIcon = async ({ category, fileName }: getIconArgs) => {
 };
 
 const getPathToSporIconsFolder = async (
-  currentPath: string = "."
+  currentPath: string = __dirname
 ): Promise<string> => {
   const pathToCheck = path.resolve(
     currentPath,
@@ -38,7 +38,8 @@ const getPathToSporIconsFolder = async (
       "No @vygruppen/spor-icon package found. Are you sure it's installed?"
     );
   }
-  return await getPathToSporIconsFolder(path.resolve("..", currentPath));
+  const nextPath = path.resolve(currentPath, "..");
+  return await getPathToSporIconsFolder(nextPath);
 };
 
 const getPathToIconsZipFile = async () => {

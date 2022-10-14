@@ -10,9 +10,6 @@ export const loader: LoaderFunction = async ({ params }) => {
   if (!iconFile) {
     return new Response(null, {
       status: 404,
-      headers: {
-        "Content-Type": "text/html",
-      },
     });
   }
   return new Response(iconFile, {

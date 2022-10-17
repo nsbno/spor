@@ -23,6 +23,7 @@ import {
 import { useMemo, useState } from "react";
 import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";
+import { slugify } from "~/utils/stringUtils";
 
 type LoaderData = {
   illustrations: {
@@ -156,14 +157,14 @@ export default function IllustrasjonerPage() {
                   }}
                   icon={<DownloadOutline18Icon />}
                   as="a"
-                  download={illustration.title}
+                  download={`${slugify(illustration.title)}.svg`}
                   href={urlBuilder
                     .image(
                       background === "light"
                         ? illustration.imageLightBackground
                         : illustration.imageDarkBackground
                     )
-                    .forceDownload(true)
+                    .forceDownload(`${slugify(illustration.title)}.svg`)
                     .url()}
                   aria-label="Last ned SVG"
                 />

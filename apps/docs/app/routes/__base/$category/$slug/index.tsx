@@ -17,7 +17,10 @@ import {
   PreviewableLoaderData,
   usePreviewableData,
 } from "~/utils/sanity/usePreviewableData";
-import { isValidPreviewRequest } from "~/utils/sanity/utils";
+import {
+  blockContentToPlainText,
+  isValidPreviewRequest,
+} from "~/utils/sanity/utils";
 import { getUserPreferencesSession } from "~/utils/userPreferences.server";
 
 type ResourceLink = {
@@ -91,8 +94,15 @@ export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
     return {};
   }
   const [article] = data.initialData;
+  const description =
+    blockContentToPlainText(
+      article.content.find((block) => block._type === "introduction")?.content
+    ) || undefined;
+  console.log(description);
   return {
     title: `${article.title} – ${article?.category?.title ?? "…"} – Spor`,
+    description,
+    "og:description": description,
   };
 };
 

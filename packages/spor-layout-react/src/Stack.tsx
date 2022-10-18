@@ -4,6 +4,8 @@ import React from "react";
 
 export type StackProps = ChakraStackProps & {
   flexDirection?: ChakraStackProps["direction"];
+  /** @deprecated Use `flexDirection` instead */
+  direction?: ChakraStackProps["direction"];
 };
 /**
  * Adds consistent spacing between elements

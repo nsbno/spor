@@ -1,5 +1,11 @@
 # @vygruppen/spor-layout-react
 
+## 1.1.0
+
+### Minor Changes
+
+- ee2ede08: Nå kan man spesifisere retningen på en Stack med flexDirection istedenfor direction.
+
 ## 1.0.0
 
 ### Major Changes

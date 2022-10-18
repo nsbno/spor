@@ -1,3 +1,4 @@
+import { PortableText } from "@portabletext/react";
 import { json, LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { SanityAsset } from "@sanity/image-url/lib/types/types";
@@ -34,24 +35,54 @@ type LoaderData = {
     tags: string[];
     description: string;
   }[];
+  article: {
+    title: string;
+    slug: string;
+    category?: {
+      title: string;
+      slug: string;
+    };
+    resourceLinks?: {
+      linkType: "figma";
+      url: string;
+    };
+    content: any[];
+  };
 };
 
 export const loader: LoaderFunction = async () => {
   const client = getClient();
-  const query = `*[_type == "illustration"] | order(title asc) {
+  const query = `
+  {
+    "illustrations": *[_type == "illustration"] | order(title asc) {
+      _id,
+      title,
+      imageLightBackground,
+      imageDarkBackground,
+      tags,
+      description
+    },
+  "article": *[_type == "article" && slug.current == "illustrasjonsbibliotek"][0] {
     _id,
     title,
-    imageLightBackground,
-    imageDarkBackground,
-    tags,
-    description
-  }`;
-  const illustrations = await client.fetch(query);
-  return json<LoaderData>({ illustrations });
+    "slug": slug.current,
+    category->{
+      title,
+      "slug": slug.current
+    },
+    resourceLinks[linkType == "figma"],
+    content[]{
+      _type == 'reference' => @->,
+      _type != 'reference' => @,
+    }
+  }
+}`;
+  const { illustrations, article } = await client.fetch(query);
+  return json<LoaderData>({ illustrations, article });
 };
 
 export default function IllustrasjonerPage() {
-  const { illustrations } = useLoaderData<LoaderData>();
+  const { illustrations, article } = useLoaderData<LoaderData>();
   const [searchValue, setSearchValue] = useState("");
   const [background, setBackground] = useState("light");
 
@@ -66,22 +97,19 @@ export default function IllustrasjonerPage() {
 
   return (
     <Box>
-      <Badge colorScheme="green">Ressurser</Badge>
+      <Badge colorScheme="green">{article.category?.title}</Badge>
       <Heading as="h1" size="2xl">
-        Illustrasjoner
+        {article.title}
       </Heading>
-      <Text mb={3}>
-        Vy-illustrasjoner skaper et felles språk som skal hjelpe våre ansatte,
-        kunder, brukere eller samarbeidspartnere når de skal interagere med
-        merkevaren og tjenestene våre. Illustrasjonene gjenspeiler våre verdier
-        og mål i en strek og tone.
-      </Text>
+      <Box marginBottom={4}>
+        <PortableText value={article.content} />
+      </Box>
       <Button
         variant="primary"
         size="lg"
         as="a"
         download="illustrasjoner.zip"
-        href="/ressurser/illustrasjoner/alle"
+        href="/ressurser/illustrasjonsbibliotek/alle"
         leftIcon={<DownloadOutline24Icon />}
       >
         Last ned alle illustrasjoner

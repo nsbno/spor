@@ -96,9 +96,8 @@ export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
   const [article] = data.initialData;
   const description =
     blockContentToPlainText(
-      article.content.find((block) => block._type === "introduction")?.content
+      article.content?.find((block) => block._type === "introduction")?.content
     ) || undefined;
-  console.log(description);
   return {
     title: `${article.title} – ${article?.category?.title ?? "…"} – Spor`,
     description,

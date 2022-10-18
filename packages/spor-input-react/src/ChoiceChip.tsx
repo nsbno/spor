@@ -27,7 +27,7 @@ export type ChoiceChipProps = {
  * Choice chips are available in four different sizes - `sm`, `md`, `lg` and `xl`.
  *
  * ```tsx
- * <Stack direction="row">
+ * <Stack flexDirection="row">
  *   <ChoiceChip size="lg">Bus</ChoiceChip>
  *   <ChoiceChip size="lg">Train</ChoiceChip>
  * </Stack>
@@ -36,7 +36,7 @@ export type ChoiceChipProps = {
  * There are also three different variants - `icon`, `choice` and `filter`.
  *
  * ```tsx
- * <Stack direction="row">
+ * <Stack flexDirection="row">
  *  <ChoiceChip variant="icon" icon={<Bus24Icon />}>Bus</ChoiceChip>
  *  <ChoiceChip variant="choice" icon={<Bus24Icon />}>Bus</ChoiceChip>
  *  <ChoiceChip variant="filter" icon={<Bus24Icon />}>Bus</ChoiceChip>
@@ -45,7 +45,7 @@ export type ChoiceChipProps = {
  * You can add an icon as well, if you want to!
  *
  * ```tsx
- * <Stack direction="row">
+ * <Stack flexDirection="row">
  *   <ChoiceChip size="md" icon={<BusIcon />}>Bus</ChoiceChip>
  *   <ChoiceChip size="lg" icon={<TrainIcon />}>Train</ChoiceChip>
  * </Stack>

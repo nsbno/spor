@@ -8,7 +8,6 @@ export {
   HStack,
   SimpleGrid,
   Spacer,
-  Stack,
   VStack,
   Wrap,
   WrapItem,
@@ -22,8 +21,8 @@ export type {
   GridProps,
   SimpleGridProps,
   SpacerProps,
-  StackProps,
   WrapItemProps,
   WrapProps,
 } from "@chakra-ui/react";
 export * from "./Divider";
+export * from "./Stack";

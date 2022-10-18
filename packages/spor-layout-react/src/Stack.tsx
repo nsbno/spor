@@ -3,7 +3,7 @@ import { Stack as ChakraStack } from "@chakra-ui/react";
 import React from "react";
 
 export type StackProps = ChakraStackProps & {
-  flexDirection: ChakraStackProps["direction"];
+  flexDirection?: ChakraStackProps["direction"];
 };
 /**
  * Adds consistent spacing between elements

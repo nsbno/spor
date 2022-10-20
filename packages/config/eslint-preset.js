@@ -32,6 +32,7 @@ module.exports = {
         "packages/spor-icon-react-native/",
         "packages/spor-datepicker-react/",
         "packages/spor-linjetag-react/",
+        "packages/spor-media-controllers-react/",
       ],
     },
   },

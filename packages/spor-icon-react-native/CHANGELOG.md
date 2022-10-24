@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.2.6
+
+### Patch Changes
+
+- ceadf7dc: Fix a bug where resizing the icons directly through height or width didn't work as expected
+
 ## 0.2.5
 
 ### Patch Changes

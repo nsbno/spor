@@ -126,7 +126,9 @@ async function generateComponent(iconData: IconData) {
   jsCode = "import { Box, useTheme } from 'app/spor';\n" + jsCode;
   jsCode = jsCode
     .replace("{...props}", "")
-    .replace("props", '{ color = "darkGrey", ...props }')
+    .replace("props", '{ color = "darkGrey", width, height, ...props }')
+    .replace(/width={(\d+)}/, "width={width ?? $1}")
+    .replace(/height={(\d+)}/, "height={height ?? $1}")
     .replace(
       "<Svg",
       "{ \n\tconst theme = useTheme(); \n\treturn <Box {...props}><Svg"

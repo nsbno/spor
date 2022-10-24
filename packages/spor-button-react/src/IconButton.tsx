@@ -4,7 +4,7 @@ import {
   IconButton as ChakraIconButton,
   IconButtonProps as ChakraIconButtonProps,
 } from "@chakra-ui/react";
-import { Spinner } from "@vygruppen/spor-loader-react";
+import { ColorSpinner } from "@vygruppen/spor-loader-react";
 import React from "react";
 
 export type IconButtonProps = Omit<ChakraIconButtonProps, "variant"> & {
@@ -53,6 +53,11 @@ export type IconButtonProps = Omit<ChakraIconButtonProps, "variant"> & {
  */
 export const IconButton = forwardRef<IconButtonProps, As<any>>(
   ({ ...props }, ref) => (
-    <ChakraIconButton {...props} spinner={<Spinner m={1} />} ref={ref} />
+    <ChakraIconButton
+      title={props["aria-label"]}
+      {...props}
+      spinner={<ColorSpinner m={1} />}
+      ref={ref}
+    />
   )
 );

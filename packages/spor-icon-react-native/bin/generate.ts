@@ -127,7 +127,10 @@ async function generateComponent(iconData: IconData) {
   jsCode = jsCode
     .replace("{...props}", "")
     .replace("props", '{ color = "darkGrey", width, height, ...props }')
+    // Weird regex alert!
+    // Replaces `width={18}` with `width={width ?? 18}`
     .replace(/width={(\d+)}/, "width={width ?? $1}")
+    // Replaces `height={18}` with `height={width ?? 18}`
     .replace(/height={(\d+)}/, "height={height ?? $1}")
     .replace(
       "<Svg",

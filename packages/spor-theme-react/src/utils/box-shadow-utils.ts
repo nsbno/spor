@@ -5,6 +5,7 @@ type GetBoxShadowStringArgs = {
   baseShadow?: keyof typeof shadows;
   borderColor?: keyof typeof colors | string;
   borderWidth?: number;
+  isInset?: boolean;
 };
 /**
  * A utility for creating box shadow strings
@@ -13,6 +14,7 @@ export const getBoxShadowString = ({
   baseShadow,
   borderColor,
   borderWidth = 1,
+  isInset = true,
 }: GetBoxShadowStringArgs) => {
   const allShadows: string[] = [];
 
@@ -21,7 +23,9 @@ export const getBoxShadowString = ({
     if (borderColor in colors) {
       color = colors[borderColor as keyof typeof colors] as string;
     }
-    allShadows.push(`inset 0 0 0 ${borderWidth}px ${color}`);
+    allShadows.push(
+      `${isInset ? "inset " : ""}0 0 0 ${borderWidth}px ${color}`
+    );
   }
   if (baseShadow) {
     allShadows.push(shadows[baseShadow]);

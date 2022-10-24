@@ -43,6 +43,7 @@ const config = defineStyleConfig({
           boxShadow: getBoxShadowString({
             borderColor: "pine",
             borderWidth: 3,
+            isInset: false,
           }),
         },
         notFocus: {
@@ -57,11 +58,16 @@ const config = defineStyleConfig({
         boxShadow: getBoxShadowString({
           borderColor: "coralGreen",
           borderWidth: 3,
+          isInset: false,
         }),
       },
       _active: {
         backgroundColor: "mint",
-        boxShadow: getBoxShadowString({ borderColor: "mint", borderWidth: 3 }),
+        boxShadow: getBoxShadowString({
+          borderColor: "mint",
+          borderWidth: 3,
+          isInset: false,
+        }),
         color: "pine",
       },
     },
@@ -74,6 +80,7 @@ const config = defineStyleConfig({
           boxShadow: getBoxShadowString({
             borderColor: "darkGrey",
             borderWidth: 3,
+            isInset: false,
           }),
         },
         notFocus: {
@@ -88,6 +95,7 @@ const config = defineStyleConfig({
         boxShadow: getBoxShadowString({
           borderColor: props.theme.colors.blackAlpha[100],
           borderWidth: 3,
+          isInset: false,
         }),
       },
       _active: {
@@ -96,6 +104,7 @@ const config = defineStyleConfig({
         boxShadow: getBoxShadowString({
           borderColor: "mint",
           borderWidth: 3,
+          isInset: false,
         }),
       },
     }),
@@ -108,6 +117,7 @@ const config = defineStyleConfig({
           boxShadow: getBoxShadowString({
             borderColor: "white",
             borderWidth: 3,
+            isInset: false,
           }),
         },
         notFocus: {
@@ -122,6 +132,7 @@ const config = defineStyleConfig({
         boxShadow: getBoxShadowString({
           borderColor: props.theme.colors.whiteAlpha[200],
           borderWidth: 3,
+          isInset: false,
         }),
       },
       _active: {
@@ -130,6 +141,7 @@ const config = defineStyleConfig({
         boxShadow: getBoxShadowString({
           borderColor: props.theme.colors.whiteAlpha[400],
           borderWidth: 3,
+          isInset: false,
         }),
       },
     }),

@@ -1,5 +1,11 @@
 # @vygruppen/spor-button-react
 
+## 1.0.1
+
+### Patch Changes
+
+- 5fec51bd: Set the default title attribute of icon buttons to the aria-label if not specified
+
 ## 1.0.0
 
 ### Major Changes

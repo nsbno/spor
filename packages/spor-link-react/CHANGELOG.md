@@ -1,5 +1,11 @@
 # @vygruppen/spor-link-react
 
+## 1.0.1
+
+### Patch Changes
+
+- a911bdea: Fix a bug where the box shadows were misplaced on some links
+
 ## 1.0.0
 
 ### Major Changes

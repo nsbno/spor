@@ -128,10 +128,18 @@ async function generateComponent(iconData: IconData) {
     .replace("{...props}", "")
     .replace("props", '{ color = "darkGrey", width, height, ...props }')
     // Weird regex alert!
-    // Replaces `width={18}` with `width={width ?? 18}`
-    .replace(/width={(\d+)}/, "width={width ?? $1}")
-    // Replaces `height={18}` with `height={width ?? 18}`
-    .replace(/height={(\d+)}/, "height={height ?? $1}")
+    // Replaces `width={18}` with
+    // `width={props.style?.width ?? theme.spacing[width] ?? 18}`
+    .replace(
+      /width={(\d+)}/,
+      "width={props.style?.width ?? theme.spacing[width] ?? $1}"
+    )
+    // Replaces `height={18}` with
+    // `height=props.style?.height ?? theme.spacing[height] ?? 18}`
+    .replace(
+      /height={(\d+)}/,
+      "height={props.style?.height ?? theme.spacing[height] ?? $1}"
+    )
     .replace(
       "<Svg",
       "{ \n\tconst theme = useTheme(); \n\treturn <Box {...props}><Svg"

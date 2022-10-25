@@ -31,15 +31,16 @@ export const PlayPauseButton = ({
   const Icon = isPlaying ? Pause : Play;
 
   return (
-    <IconButton
-      variant="ghost"
-      onClick={onClick}
-      isDisabled={isDisabled}
-      size="lg"
-      aria-label={ariaLabel}
-      icon={<Icon width={30} height={30} />}
-      __css={style.icon}
-    />
+    <Box __css={style.container}>
+      <IconButton
+        variant="ghost"
+        onClick={onClick}
+        isDisabled={isDisabled}
+        size="lg"
+        aria-label={ariaLabel}
+        icon={<Icon width={30} height={30} />}
+      />
+    </Box>
   );
 };
 

@@ -1,6 +1,7 @@
 import { useMultiStyleConfig } from "@chakra-ui/react";
 import { IconButton } from "@vygruppen/spor-button-react";
 import React from "react";
+import { Box } from "@vygruppen/spor-layout-react";
 
 export type SkipButtonColorSchemes = "green";
 
@@ -16,7 +17,7 @@ type SkipButtonProps = {
 
 export const SkipButton = ({
   onClick,
-  colorScheme = "green",
+  colorScheme = "dark",
   direction,
   isDisabled = false,
   "aria-label": ariaLabel,
@@ -29,15 +30,16 @@ export const SkipButton = ({
   const Icon = direction === "next" ? Next : Previous;
 
   return (
-    <IconButton
-      onClick={onClick}
-      variant="ghost"
-      isDisabled={isDisabled}
-      size="md"
-      aria-label={ariaLabel}
-      color="darkgrey"
-      icon={<Icon width={30} height={30} />}
-    />
+    <Box __css={style.container}>
+      <IconButton
+        variant="ghost"
+        onClick={onClick}
+        size="md"
+        isDisabled={isDisabled}
+        aria-label={ariaLabel}
+        icon={<Icon width={30} height={30} />}
+      />
+    </Box>
   );
 };
 

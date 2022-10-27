@@ -20,6 +20,8 @@ export const divider = defineType({
         }}
       />
     ),
+
+    
   },
   fields: [
     defineField({

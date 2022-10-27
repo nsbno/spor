@@ -159,7 +159,7 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     imageWithCaption: ({ value }) => {
-      const [, , dimensions] = value.image.asset._ref.split("-");
+      const [, , dimensions] = value.image.asset?._ref.split("-");
       const aspectRatio = dimensions.split("x").join(" / ");
       return (
         <Box>
@@ -188,7 +188,7 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     image: ({ value }) => {
-      const [, , dimensions] = value.image.asset._ref.split("-");
+      const [, , dimensions] = value.image.asset?._ref.split("-");
       const aspectRatio = dimensions.split("x").join(" / ");
       return (
         <Image

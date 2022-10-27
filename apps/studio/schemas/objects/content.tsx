@@ -1,11 +1,9 @@
 import { defineType } from "sanity";
-import { SporBlockEditor } from "../../components/SporBlockEditor";
 
 export const content = defineType({
   name: "content",
   title: "Content",
   type: "array",
-  components: { input: SporBlockEditor },
   of: [
     {
       type: "block",

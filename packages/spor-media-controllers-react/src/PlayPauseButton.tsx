@@ -1,44 +1,52 @@
-import { useMultiStyleConfig } from "@chakra-ui/react";
+import { useMultiStyleConfig, useDisclosure } from "@chakra-ui/react";
 import React from "react";
 import { IconButton } from "@vygruppen/spor-button-react";
 import { Box } from "@vygruppen/spor-layout-react";
 
-export type Size = "sm" | "lg";
+export type PlayPauseButtonColorSchemed = "green"
 
-type PlayPauseButtonProps = {
-  onClick: () => void;
+export type PlayPauseButtonProps = {
   colorScheme?: "green" | "white";
-  size?: Size;
-  isPlaying: boolean;
+  variant:
+    | "control"
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "additional"
+    | "ghost";
+  size?: "md" | "lg";
   isDisabled?: boolean;
   "aria-label": string;
+  isPlaying: PlayPause;
+  onToggle: () => void;
 };
-
 export const PlayPauseButton = ({
-  onClick,
-  colorScheme,
+  colorScheme = "white",
+  variant = "ghost",
   size,
   isPlaying,
   isDisabled = false,
   "aria-label": ariaLabel,
+  onToggle,
+  ...props
 }: PlayPauseButtonProps) => {
   const style = useMultiStyleConfig("PlayPauseButton", {
-    colorScheme,
     isDisabled,
     size,
+    colorScheme,
+    variant,
   });
-
-  const Icon = isPlaying ? Pause : Play;
 
   return (
     <Box __css={style.container}>
       <IconButton
-        variant="ghost"
-        onClick={onClick}
+        variant={variant}
+        onClick={onToggle}
         isDisabled={isDisabled}
-        size="lg"
-        aria-label={ariaLabel}
-        icon={<Icon width={30} height={30} />}
+        size={size}
+        aria-label={isPlaying ? "Pause" : "Play"}
+        icon={isPlaying ? <PauseIcon /> : <PlayIcon />}
+        {...props}
       />
     </Box>
   );
@@ -49,7 +57,9 @@ type IconProp = {
   height?: number | string;
 };
 
-const Play = ({ width = 60, height = 60 }: IconProp) => (
+type PlayPause = "play" | "pause";
+
+const PlayIcon = ({ width = 60, height = 60 }: IconProp) => (
   <svg width={width} height={height} viewBox="0 0 60 60" fill="none">
     <path
       fillRule="evenodd"
@@ -60,7 +70,7 @@ const Play = ({ width = 60, height = 60 }: IconProp) => (
   </svg>
 );
 
-const Pause = ({ width = 60, height = 60 }: IconProp) => (
+const PauseIcon = ({ width = 60, height = 60 }: IconProp) => (
   <svg width={width} height={height} viewBox="0 0 60 60" fill="none">
     <path
       fillRule="evenodd"

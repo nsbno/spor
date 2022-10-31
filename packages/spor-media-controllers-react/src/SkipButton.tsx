@@ -5,11 +5,17 @@ import { Box } from "@vygruppen/spor-layout-react";
 
 export type SkipButtonColorSchemes = "green";
 
-export type SkipDirection = "next" | "previous";
-
 type SkipButtonProps = {
   onClick: () => void;
   colorScheme?: "light" | "dark" | "green";
+  variant:
+    | "control"
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "additional"
+    | "ghost";
+  size?: "md";
   direction: SkipDirection;
   isDisabled?: boolean;
   "aria-label": string;
@@ -17,27 +23,30 @@ type SkipButtonProps = {
 
 export const SkipButton = ({
   onClick,
-  colorScheme = "dark",
+  size = "md",
+  variant = "ghost",
+  colorScheme = "green",
   direction,
   isDisabled = false,
   "aria-label": ariaLabel,
+  ...props
 }: SkipButtonProps) => {
   const style = useMultiStyleConfig("SkipButton", {
     colorScheme,
     isDisabled,
+    variant,
   });
-
-  const Icon = direction === "next" ? Next : Previous;
 
   return (
     <Box __css={style.container}>
       <IconButton
-        variant="ghost"
+        variant={variant}
         onClick={onClick}
-        size="md"
+        size={size}
         isDisabled={isDisabled}
-        aria-label={ariaLabel}
-        icon={<Icon width={30} height={30} />}
+        aria-label={direction === "next" ? "Next" : "Previous"}
+        icon={direction === "next" ? <SkipNextIcon /> : <SkipPreviousIcon />}
+        {...props}
       />
     </Box>
   );
@@ -48,7 +57,9 @@ type IconProp = {
   height?: number | string;
 };
 
-const Next = ({ width = 30, height = 30 }: IconProp) => (
+type SkipDirection = "next" | "previous";
+
+const SkipNextIcon = ({ width = 30, height = 30 }: IconProp) => (
   <svg width={width} height={height} fill="none">
     <path
       fillRule="evenodd"
@@ -59,7 +70,7 @@ const Next = ({ width = 30, height = 30 }: IconProp) => (
   </svg>
 );
 
-const Previous = ({ width = 30, height = 30 }: IconProp) => (
+const SkipPreviousIcon = ({ width = 30, height = 30 }: IconProp) => (
   <svg width={width} height={height} fill="none">
     <path
       fillRule="evenodd"

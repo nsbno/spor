@@ -5,11 +5,16 @@ import { Box } from "@vygruppen/spor-layout-react";
 
 export type JumpButtonColorSchemes = "green";
 
-// export type JumpDirection = "forward" | "backward";
-
 type JumpButtonProps = {
   onClick: () => void;
   colorScheme?: "light" | "dark" | "green";
+  variant:
+    | "control"
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "additional"
+    | "ghost";
   size?: "md" | "lg";
   direction: JumpDirection;
   isDisabled?: boolean;
@@ -18,6 +23,8 @@ type JumpButtonProps = {
 
 export const JumpButton = ({
   onClick,
+  size = "md",
+  variant = "ghost",
   colorScheme = "green",
   direction,
   isDisabled = false,
@@ -27,19 +34,22 @@ export const JumpButton = ({
   const style = useMultiStyleConfig("JumpButton", {
     colorScheme,
     isDisabled,
+    variant,
   });
 
-  const Icon = direction === "forward" ? Forward : Backward;
-
   return (
-    <Box __css={style.jumpButton}>
+    <Box __css={style.container}>
       <IconButton
-        variant="ghost"
+        variant={variant}
         onClick={onClick}
-        size="md"
+        size={size}
         isDisabled={isDisabled}
-        aria-label={ariaLabel}
-        icon={<Icon width={30} height={30} />}
+        aria-label={
+          direction === "forward" ? "15 sekunder frem" : "15 sekunder tilbake"
+        }
+        icon={
+          direction === "forward" ? <JumpForwardIcon /> : <JumpBackwardIcon />
+        }
         {...props}
       />
     </Box>
@@ -53,7 +63,7 @@ type IconProp = {
 
 type JumpDirection = "forward" | "backward";
 
-const Forward = ({ width = 30, height = 30 }: IconProp) => (
+const JumpForwardIcon = ({ width = 30, height = 30 }: IconProp) => (
   <svg width={width} height={height} fill="none">
     <path
       fillRule="evenodd"
@@ -70,7 +80,7 @@ const Forward = ({ width = 30, height = 30 }: IconProp) => (
   </svg>
 );
 
-const Backward = ({ width = 30, height = 30 }: IconProp) => (
+const JumpBackwardIcon = ({ width = 30, height = 30 }: IconProp) => (
   <svg width={width} height={height} fill="none">
     <path
       fillRule="evenodd"

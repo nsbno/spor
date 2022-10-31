@@ -1,23 +1,16 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy, mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
+import { anatomy, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
 
-const parts = anatomy("media-controller").parts(
-  "root",
-  "container",
-  "iconContainer",
-  "jumpButton",
-  "playPauseButton",
-  "skipButton"
-);
+const parts = anatomy("media-controller").parts("container", "iconContainer");
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({
   baseStyle: (props) => ({
     container: {
-      backgroundColor: getRootBackgroundColor(props),
+      backgroundColor: "darkTeal",
       display: "flex",
       alignItems: "center",
       whiteSpace: "nowrap",
@@ -25,11 +18,14 @@ const config = helpers.defineMultiStyleConfig({
       transitionProperty: "common",
       position: "fixed",
       boxShadow: "md",
-      borderRadius: "xl",
+      borderRadius: "sm",
+      opacity: "0",
+      color: "white",
       _disabled: {
         backgroundColor: "silver",
         color: "white",
       },
+      _active: { backgroundColor: "pine" },
       ...focusVisible({
         focus: {
           boxShadow: getBoxShadowString({
@@ -43,25 +39,11 @@ const config = helpers.defineMultiStyleConfig({
         },
       }),
       _hover: {
-        backgroundColor: "banana",
+        backgroundColor: "night",
       },
     },
-    skipButton: {
-      px: 0,
-      width: "auto",
-      minWidth: "auto",
-      color: "darkTeal",
-      _active: getActiveStyles(props),
-    },
-    jumpButton: {
-      px: 0,
-      width: "auto",
-      minWidth: "auto",
-      color: "darkTeal",
-      _active: getActiveStyles(props),
-    },
   }),
-  
+
   sizes: {
     md: {
       container: {
@@ -86,39 +68,3 @@ const config = helpers.defineMultiStyleConfig({
 });
 
 export default config;
-
-const getRootBackgroundColor = (props: StyleFunctionProps) => {
-  switch (props.colorScheme) {
-    case "light":
-      return "white";
-    case "dark":
-      return "darkTeal";
-    case "green":
-    default:
-      return "mint";
-  }
-};
-
-/* const getColor = (props: StyleFunctionProps) => {
-  switch (props.colorScheme) {
-    case "light":
-      return mode("darkGrey", "white")(props);
-    case "dark":
-      return "white";
-    case "green":
-    default:
-      return mode("darkTeal", "white")(props);
-  }
-}; */
-
-const getActiveStyles = (props: StyleFunctionProps) => {
-  switch (props.colorScheme) {
-    case "light":
-      return { backgroundColor: "mint" };
-    case "dark":
-      return { backgroundColor: "banana" };
-    case "green":
-    default:
-      return { color: "darkTeal", backgroundColor: "transparent" };
-  }
-};

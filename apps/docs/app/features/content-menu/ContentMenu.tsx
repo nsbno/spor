@@ -1,4 +1,5 @@
 import { forwardRef } from "@chakra-ui/react";
+import { useLocation } from "@remix-run/react";
 import {
   Accordion,
   AccordionButton,
@@ -9,7 +10,6 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-import { useLocation } from "@remix-run/react";
 import { useMenu } from "~/utils/useMenu";
 import { MenuItem } from "./MenuItem";
 
@@ -33,23 +33,23 @@ export const ContentMenu = forwardRef((_, ref) => {
       variant="list"
       size="sm"
       allowToggle
-      mt={6}
+      marginTop={6}
       defaultIndex={activeIndex}
     >
       {menu?.menuItems.map((item, index) => {
         if (item._type === "divider") {
-          return <Divider key={index} my={2} height="1px" />;
+          return <Divider key={index} marginY={2} height="1px" />;
         }
         const subItems = item.subItems?.filter((subItem) => subItem.url);
         const hasSubItems = Boolean(subItems?.length);
         return (
-          <AccordionItem key={item.title} my={0.5}>
+          <AccordionItem key={item.title} marginY={0.5}>
             <AccordionButton fontWeight="bold" ref={index === 0 ? ref : null}>
               {item.title}
               <AccordionIcon />
             </AccordionButton>
-            <AccordionPanel pt={1} pb={0}>
-              <Stack spacing={0.5}>
+            <AccordionPanel paddingTop={1} paddingBottom={0}>
+              <Stack spacing={0.5} marginBottom={1}>
                 {subItems?.map((subItem) => (
                   <MenuItem
                     key={subItem.url}

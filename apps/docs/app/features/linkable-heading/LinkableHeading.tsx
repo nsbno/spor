@@ -1,4 +1,5 @@
 import { Flex, useClipboard } from "@chakra-ui/react";
+import { useLocation } from "@remix-run/react";
 import {
   CopyOutline24Icon,
   Heading,
@@ -7,7 +8,6 @@ import {
   SuccessOutline24Icon,
 } from "@vygruppen/spor-react";
 import React from "react";
-import { useLocation } from "@remix-run/react";
 import { slugify } from "~/utils/stringUtils";
 
 type LinkableHeadingProps = HeadingProps;
@@ -28,13 +28,7 @@ export const LinkableHeading = ({
     `https://spor.cloud.vy.no${location.pathname}#${id}`
   );
   return (
-    <Flex
-      position="relative"
-      alignItems="center"
-      data-group
-      {...spacingProps}
-      _first={{ mt: 0 }}
-    >
+    <Flex position="relative" alignItems="center" data-group {...spacingProps}>
       <Heading {...props} id={id} />
       <IconButton
         aria-label={hasCopied ? "Kopiert" : "Kopiér"}
@@ -45,10 +39,12 @@ export const LinkableHeading = ({
         color="darkGrey"
         visibility="hidden"
         opacity="0"
-        ml={2}
         transitionDuration="fast"
         transitionProperty="common"
         _groupHover={{ visibility: "visible", opacity: 1 }}
+        position="absolute"
+        left={0}
+        transform="translateX(-100%)" // TODO: Fiks siden
       />
     </Flex>
   );

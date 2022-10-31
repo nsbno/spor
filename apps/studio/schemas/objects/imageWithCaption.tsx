@@ -28,6 +28,16 @@ export const imageWithCaption = defineType({
       type: "array",
       of: [{ type: "block", styles: [{ title: "Text", value: "normal" }] }],
     }),
+    defineField({
+      name: "horizontalAlignment",
+      title: "HorizontalAlignment",
+      type: "string",
+      initialValue: "center",
+      options: {
+        list: ["left", "center", "right"],
+        layout: "radio",
+      },
+    }),
   ],
   preview: {
     select: {

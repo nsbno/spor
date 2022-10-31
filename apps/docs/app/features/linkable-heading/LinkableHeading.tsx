@@ -28,8 +28,14 @@ export const LinkableHeading = ({
     `https://spor.cloud.vy.no${location.pathname}#${id}`
   );
   return (
-    <Flex position="relative" alignItems="center" data-group {...spacingProps}>
-      <Heading {...props} id={id} />
+    <Flex
+      position="relative"
+      left={-6}
+      alignItems="center"
+      data-group
+      {...spacingProps}
+    >
+      <Heading {...props} marginLeft={6} id={id} />
       <IconButton
         aria-label={hasCopied ? "Kopiert" : "Kopiér"}
         onClick={onCopy}
@@ -41,10 +47,13 @@ export const LinkableHeading = ({
         opacity="0"
         transitionDuration="fast"
         transitionProperty="common"
-        _groupHover={{ visibility: "visible", opacity: 1 }}
+        _groupHover={{
+          visibility: "visible",
+          opacity: 1,
+          transform: "translateX(-10%)",
+        }}
         position="absolute"
         left={0}
-        transform="translateX(-100%)" // TODO: Fiks siden
       />
     </Flex>
   );

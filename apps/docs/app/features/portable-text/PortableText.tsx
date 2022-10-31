@@ -54,29 +54,41 @@ const components: Partial<PortableTextReactComponents> = {
   },
   block: {
     h2: ({ children }) => (
-      <LinkableHeading as="h2" textStyle="lg" fontWeight="bold" mt={8} mb={-1}>
+      <LinkableHeading
+        as="h2"
+        textStyle="lg"
+        fontWeight="bold"
+        marginTop={6}
+        marginBottom={2}
+      >
         {children}
       </LinkableHeading>
     ),
     h3: ({ children }) => (
-      <LinkableHeading as="h3" textStyle="md" fontWeight="bold" mt={8} mb={-2}>
+      <LinkableHeading
+        as="h3"
+        textStyle="md"
+        fontWeight="bold"
+        marginTop={6}
+        marginBottom={1}
+      >
         {children}
       </LinkableHeading>
     ),
     h4: ({ children }) => (
-      <LinkableHeading as="h4" textStyle="sm" fontWeight="bold" mt={2}>
+      <Heading as="h4" textStyle="sm" fontWeight="bold" marginTop={4}>
         {children}
-      </LinkableHeading>
+      </Heading>
     ),
     h5: ({ children }) => (
-      <LinkableHeading as="h5" textStyle="xs" fontWeight="bold" mt={2}>
+      <Heading as="h5" textStyle="xs" fontWeight="bold" marginTop={4}>
         {children}
-      </LinkableHeading>
+      </Heading>
     ),
     h6: ({ children }) => (
-      <LinkableHeading as="h6" textStyle="xs" mt={2}>
+      <Heading as="h6" textStyle="xs" marginTop={2}>
         {children}
-      </LinkableHeading>
+      </Heading>
     ),
     normal: ({ children }) => {
       const arrayChildren = React.Children.toArray(children);
@@ -84,7 +96,17 @@ const components: Partial<PortableTextReactComponents> = {
         return null;
       }
       return (
-        <Text textStyle="sm" mt={3}>
+        <Text
+          textStyle="sm"
+          sx={{
+            "& + &": {
+              marginTop: 3,
+            },
+            "figure + &": {
+              marginTop: 6,
+            },
+          }}
+        >
           {children}
         </Text>
       );
@@ -92,17 +114,17 @@ const components: Partial<PortableTextReactComponents> = {
   },
   list: {
     bullet: ({ children }) => (
-      <UnorderedList pl={3} mt={0} textStyle="sm">
+      <UnorderedList paddingLeft={3} marginTop={0} textStyle="sm">
         {children}
       </UnorderedList>
     ),
     number: ({ children }) => (
-      <OrderedList pl={3} mt={0} textStyle="sm">
+      <OrderedList paddingLeft={3} marginTop={0} textStyle="sm">
         {children}
       </OrderedList>
     ),
   },
-  listItem: ({ children }) => <ListItem mt={1}>{children}</ListItem>,
+  listItem: ({ children }) => <ListItem marginTop={1}>{children}</ListItem>,
   types: {
     buttonLink: ({ value }) => {
       const isInternal = value.url.startsWith("/");
@@ -110,7 +132,7 @@ const components: Partial<PortableTextReactComponents> = {
         ? { as: Link, to: value.url }
         : { as: "a", href: value.url };
       return (
-        <Box mt={3}>
+        <Box marginTop={3}>
           <Button variant={value.variant} size={value.size} {...linkProps}>
             {value.text}
           </Button>
@@ -135,7 +157,11 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     grid: ({ value }) => (
-      <SimpleGrid columns={[1, 2, value.maxNumberOfColumns]} gap={6} mt={8}>
+      <SimpleGrid
+        columns={[1, 2, value.maxNumberOfColumns]}
+        gap={6}
+        marginTop={6}
+      >
         {value.content.map((item: any) => (
           <PortableText value={item} key={item._key} />
         ))}
@@ -152,7 +178,7 @@ const components: Partial<PortableTextReactComponents> = {
         "flex-start";
       return (
         <Flex justifyContent="center" alignItems={alignItems}>
-          <Box>
+          <Box sx={{ "& > :first-child": { marginTop: 0 } }}>
             <PortableText value={value.content} />
           </Box>
         </Flex>
@@ -162,25 +188,28 @@ const components: Partial<PortableTextReactComponents> = {
       const [, , dimensions] = value.image.asset?._ref.split("-");
       const aspectRatio = dimensions.split("x").join(" / ");
       return (
-        <Box>
+        <Box as="figure" marginTop={[3, 6]}>
           {value.image && (
-            <Box>
-              <Image
-                src={urlBuilder
-                  .image(value.image)
-                  .width(924)
-                  .fit("max")
-                  .auto("format")
-                  .url()}
-                alt={value.alt || ""}
-                mx="auto"
-                mt={2}
-                __css={{ aspectRatio }}
-              />
-            </Box>
+            <Image
+              src={urlBuilder
+                .image(value.image)
+                .width(924)
+                .fit("max")
+                .auto("format")
+                .url()}
+              alt={value.alt || ""}
+              mx="auto"
+              __css={{ aspectRatio }}
+            />
           )}
           {value.caption && (
-            <Stack textStyle="xs" color="dimGrey" mt={-1}>
+            <Stack
+              as="figcaption"
+              textStyle="xs"
+              color="dimGrey"
+              marginTop={1.5}
+              textAlign={["left", "center"]}
+            >
               <PortableText value={value.caption} />
             </Stack>
           )}
@@ -200,14 +229,14 @@ const components: Partial<PortableTextReactComponents> = {
             .url()}
           alt={value.alt}
           mx="auto"
-          mt={2}
+          mt={6}
           __css={{ aspectRatio }}
         />
       );
     },
     staticCodeBlock: ({ value }) => {
       return (
-        <Box>
+        <Box marginBottom={3}>
           <CodeBlock
             mt={6}
             language={value.code.language}
@@ -226,7 +255,7 @@ const components: Partial<PortableTextReactComponents> = {
       if (userPreferences.userType === "designer") {
         return (
           <InteractiveCode
-            mt={3}
+            marginY={3}
             layout="preview-only"
             code={value.reactCode.code}
           />
@@ -255,14 +284,14 @@ const components: Partial<PortableTextReactComponents> = {
 
       return showCodeBlock ? (
         <CodeBlock
-          mt={6}
-          language={userPreferences.technology === "elm" ? "elm" : "jsx"}
+          my={3}
+          language={userPreferences.technology === "elm" ? "elm" : "tsx"}
           code={code}
         />
       ) : (
         <InteractiveCode
           layout={value.layout}
-          mt={3}
+          my={3}
           maxWidth={`calc(100vw - var(--spor-space-6))`}
           code={code}
         />
@@ -276,7 +305,7 @@ const components: Partial<PortableTextReactComponents> = {
       });
       return (
         <Box key={value.name} mt={6} as="article">
-          <LinkableHeading as="h3" textStyle="md" fontWeight="bold" mb={-2}>
+          <LinkableHeading as="h3" textStyle="md" fontWeight="bold">
             {`<${value.name} />`}
           </LinkableHeading>
           <Box mt={1}>

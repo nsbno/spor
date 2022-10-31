@@ -1,4 +1,5 @@
 import { Flex, useClipboard } from "@chakra-ui/react";
+import { useLocation } from "@remix-run/react";
 import {
   CopyOutline24Icon,
   Heading,
@@ -7,7 +8,6 @@ import {
   SuccessOutline24Icon,
 } from "@vygruppen/spor-react";
 import React from "react";
-import { useLocation } from "@remix-run/react";
 import { slugify } from "~/utils/stringUtils";
 
 type LinkableHeadingProps = HeadingProps;
@@ -30,12 +30,12 @@ export const LinkableHeading = ({
   return (
     <Flex
       position="relative"
+      left={-6}
       alignItems="center"
       data-group
       {...spacingProps}
-      _first={{ mt: 0 }}
     >
-      <Heading {...props} id={id} />
+      <Heading {...props} marginLeft={6} id={id} />
       <IconButton
         aria-label={hasCopied ? "Kopiert" : "Kopiér"}
         onClick={onCopy}
@@ -45,10 +45,15 @@ export const LinkableHeading = ({
         color="darkGrey"
         visibility="hidden"
         opacity="0"
-        ml={2}
         transitionDuration="fast"
         transitionProperty="common"
-        _groupHover={{ visibility: "visible", opacity: 1 }}
+        _groupHover={{
+          visibility: "visible",
+          opacity: 1,
+          transform: "translateX(-10%)",
+        }}
+        position="absolute"
+        left={0}
       />
     </Flex>
   );

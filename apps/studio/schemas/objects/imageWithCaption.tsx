@@ -28,6 +28,21 @@ export const imageWithCaption = defineType({
       type: "array",
       of: [{ type: "block", styles: [{ title: "Text", value: "normal" }] }],
     }),
+    defineField({
+      name: "alignment",
+      title: "Preferred alignment",
+      description:
+        "This is only a suggestion, the image may be aligned differently depending on the context",
+      type: "string",
+      options: {
+        list: [
+          { title: "Left-aligned", value: "left" },
+          { title: "Center-aligned", value: "center" },
+          { title: "Right-aligned", value: "right" },
+        ],
+        layout: "radio",
+      },
+    }),
   ],
   preview: {
     select: {

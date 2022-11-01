@@ -29,6 +29,7 @@ import {
 import React from "react";
 import { urlBuilder } from "~/utils/sanity/utils";
 import { CodeBlock } from "../code-block/CodeBlock";
+import { ImageWithCaption } from "../Images-with-caption/ImageWithCaption";
 import { InteractiveCode } from "../interactive-code/InteractiveCode";
 import { LinkableHeading } from "../linkable-heading/LinkableHeading";
 import { useUserPreferences } from "../user-preferences/UserPreferencesContext";
@@ -187,33 +188,20 @@ const components: Partial<PortableTextReactComponents> = {
     imageWithCaption: ({ value }) => {
       const [, , dimensions] = value.image.asset?._ref.split("-");
       const aspectRatio = dimensions.split("x").join(" / ");
+
       return (
-        <Box as="figure" marginTop={[3, 6]}>
-          {value.image && (
-            <Image
-              src={urlBuilder
-                .image(value.image)
-                .width(924)
-                .fit("max")
-                .auto("format")
-                .url()}
-              alt={value.alt || ""}
-              mx="auto"
-              __css={{ aspectRatio }}
-            />
-          )}
-          {value.caption && (
-            <Stack
-              as="figcaption"
-              textStyle="xs"
-              color="dimGrey"
-              marginTop={1.5}
-              textAlign={["left", "center"]}
-            >
-              <PortableText value={value.caption} />
-            </Stack>
-          )}
-        </Box>
+        <ImageWithCaption
+          src={urlBuilder
+            .image(value.image)
+            .width(924)
+            .fit("max")
+            .auto("format")
+            .url()}
+          alt={value.alt}
+          alignment={value.alignment}
+          caption={value.caption}
+          aspectRatio={aspectRatio}
+        />
       );
     },
     image: ({ value }) => {

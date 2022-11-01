@@ -34,6 +34,7 @@ export const imageWithCaption = defineType({
       description:
         "This is only a suggestion, the image may be aligned differently depending on the context",
       type: "string",
+      initialValue: 'center',
       options: {
         list: [
           { title: "Left-aligned", value: "left" },

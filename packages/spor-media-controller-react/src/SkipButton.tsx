@@ -13,8 +13,6 @@ type SkipButtonProps = BoxProps & {
 
 export const SkipButton = ({
   direction,
-  onClick,
-  "aria-label": ariaLabel,
   isDisabled,
   size = "sm",
   ...props

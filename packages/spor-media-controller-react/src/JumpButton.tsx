@@ -13,8 +13,6 @@ type JumpButtonProps = BoxProps & {
 
 export const JumpButton = ({
   direction,
-  onClick,
-  "aria-label": ariaLabel,
   isDisabled,
   size = "sm",
   ...props

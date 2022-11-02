@@ -19,6 +19,5 @@ describe("<Button />", () => {
   it("is accessible", async () => {
     const { container } = render(<Button variant="primary">Click me</Button>);
     expect(await axe(container)).toHaveNoViolations();
-
   });
 });

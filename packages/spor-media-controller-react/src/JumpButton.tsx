@@ -61,7 +61,7 @@ const texts = {
   },
   backward: {
     nb: "15 sekunder tilbake",
-    sv: "15 sekunder bakåt",
+    sv: "15 sekunder tillbaka",
     en: "15 seconds backward",
   },
 };

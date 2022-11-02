@@ -99,13 +99,13 @@ const config = helpers.defineMultiStyleConfig({
           backgroundColor: "mint",
         },
         _disabled: {
-          backgroundColor: "silver",
+          backgroundColor: "platinum",
           color: "steel",
           _hover: {
-            backgroundColor: "silver",
+            backgroundColor: "platinum",
           },
           _active: {
-            backgroundColor: "silver",
+            backgroundColor: "platinum",
           },
         },
       },

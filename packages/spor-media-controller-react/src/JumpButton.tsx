@@ -32,6 +32,7 @@ export const JumpButton = ({
       aria-label={
         direction === "forward" ? t(texts.forward) : t(texts.backward)
       }
+      disabled={isDisabled}
       {...props}
     >
       {direction === "forward" ? (

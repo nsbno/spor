@@ -30,6 +30,7 @@ export const SkipButton = ({
       as="button"
       sx={styles.container}
       aria-label={direction === "forward" ? t(texts.next) : t(texts.previous)}
+      disabled={isDisabled}
       {...props}
     >
       {direction === "forward" ? (

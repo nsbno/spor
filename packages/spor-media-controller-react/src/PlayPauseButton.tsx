@@ -14,6 +14,7 @@ type SkipButtonProps = BoxProps & {
 export const PlayPauseButton = ({
   size = "lg",
   isPlaying,
+  isDisabled,
   ...props
 }: SkipButtonProps) => {
   const { t } = useTranslation();
@@ -27,6 +28,7 @@ export const PlayPauseButton = ({
       as="button"
       sx={styles.container}
       aria-label={isPlaying ? t(texts.pause) : t(texts.play)}
+      disabled={isDisabled}
       {...props}
     >
       {isPlaying ? (

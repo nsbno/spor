@@ -13,6 +13,7 @@ export * from "@vygruppen/spor-linjetag-react";
 export * from "@vygruppen/spor-link-react";
 export * from "@vygruppen/spor-loader-react";
 export * from "@vygruppen/spor-logo-react";
+export * from "@vygruppen/spor-media-controller-react";
 export * from "@vygruppen/spor-modal-react";
 export * from "@vygruppen/spor-popover-react";
 export * from "@vygruppen/spor-provider-react";

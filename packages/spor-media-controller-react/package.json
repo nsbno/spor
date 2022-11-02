@@ -1,0 +1,48 @@
+{
+  "name": "@vygruppen/spor-media-controller-react",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-media-controller-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nsbno/spor.git",
+    "directory": "packages/spor-media-controller-react"
+  },
+  "scripts": {
+    "build": "tsup src/* --dts --treeshake --format esm,cjs",
+    "dev": "tsup src/index.tsx --watch --format esm",
+    "test": "vitest run --config ../config/vitest.config.ts"
+  },
+  "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@chakra-ui/react": "^1.7.3",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "framer-motion": "^6.0.0",
+    "tsup": "^6.2.2",
+    "vitest": "^0.24.2",
+    "vitest-axe": "^0.0.7"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@chakra-ui/react": "^1.7.3",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "framer-motion": "3.x || 4.x || 5.x || 6.x"
+  },
+  "dependencies": {
+    "@vygruppen/spor-button-react": "*",
+    "@vygruppen/spor-i18n-react": "*"
+  }
+}

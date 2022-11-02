@@ -1,5 +1,5 @@
 {
-  "name": "@vygruppen/spor-media-controllers-react",
+  "name": "@vygruppen/spor-media-controller-react",
   "version": "0.0.1",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -9,11 +9,11 @@
     "dist"
   ],
   "sideEffects": false,
-  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-media-controllers-react",
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-media-controller-react",
   "repository": {
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
-    "directory": "packages/spor-media-controllers-react"
+    "directory": "packages/spor-media-controller-react"
   },
   "scripts": {
     "build": "tsup src/* --dts --treeshake --format esm,cjs",
@@ -40,5 +40,9 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "framer-motion": "3.x || 4.x || 5.x || 6.x"
+  },
+  "dependencies": {
+    "@vygruppen/spor-button-react": "*",
+    "@vygruppen/spor-i18n-react": "*"
   }
 }

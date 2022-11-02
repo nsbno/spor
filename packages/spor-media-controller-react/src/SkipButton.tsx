@@ -10,7 +10,17 @@ type SkipButtonProps = BoxProps & {
   direction: "backward" | "forward";
   size: "sm" | "lg";
 };
-
+/**
+ * A skip button.
+ * 
+ * Intended to skip to the next section, chapter og similar.
+ * 
+ * Specify what direction you want to skip with the `direction` prop.
+ * 
+ * ```tsx
+ * <SkipButton direction="forward" onClick={onNextChapter} />
+ * ```
+ */
 export const SkipButton = ({
   direction,
   isDisabled,

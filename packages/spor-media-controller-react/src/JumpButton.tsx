@@ -11,6 +11,17 @@ type JumpButtonProps = BoxProps & {
   size: "sm" | "lg";
 };
 
+/**
+ * A jump button.
+ *
+ * Intended to jump 15 seconds forward or backward in a video, podcast, audiobook or similar.
+ *
+ * Specify what direction you want to skip with the `direction` prop.
+ *
+ * ```tsx
+ * <JumpButton direction="forward" onClick={onGoForward} />
+ * ```
+ */
 export const JumpButton = ({
   direction,
   isDisabled,

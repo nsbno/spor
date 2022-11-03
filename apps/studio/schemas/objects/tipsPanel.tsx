@@ -1,4 +1,3 @@
-import * as React from "react";
 import { MdStar } from "react-icons/md";
 import { defineField, defineType } from "sanity";
 
@@ -8,7 +7,7 @@ export const tipsPanel = defineType({
   type: "object",
   icon: MdStar,
   components: {
-    preview: (props: { value: { title: string } }) => (
+    preview: (props: { value?: { title: string } }) => (
       <div
         style={{
           backgroundColor: "var(--brand-secondary)",
@@ -18,7 +17,7 @@ export const tipsPanel = defineType({
       >
         <div style={{ gap: 6, alignItems: "end" }}>
           <MdStar />
-          <h2>{props.value.title}</h2>
+          <h2>{props.value?.title}</h2>
         </div>
       </div>
     ),

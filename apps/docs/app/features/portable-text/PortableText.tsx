@@ -16,19 +16,13 @@ import {
   Image,
   SimpleGrid,
   Stack,
-  SuccessFill24Icon,
-  Table,
-  Tbody,
-  Td,
   Text,
   TextLink,
-  Th,
-  Thead,
-  Tr,
 } from "@vygruppen/spor-react";
 import React from "react";
 import { urlBuilder } from "~/utils/sanity/utils";
 import { CodeBlock } from "../code-block/CodeBlock";
+import { ComponentDocs } from "../component-docs/ComponentDocs";
 import { ImageWithCaption } from "../Images-with-caption/ImageWithCaption";
 import { InteractiveCode } from "../interactive-code/InteractiveCode";
 import { LinkableHeading } from "../linkable-heading/LinkableHeading";
@@ -286,60 +280,9 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     component: ({ value }) => {
-      const { userPreferences } = useUserPreferences();
-      const visibleProps = value.props?.filter((prop: any) => {
-        const platform = prop.platform ?? "react, react-native";
-        return platform.split(", ").includes(userPreferences.technology);
-      });
       return (
-        <Box key={value.name} mt={6} as="article">
-          <LinkableHeading as="h3" textStyle="md" fontWeight="bold">
-            {`<${value.name} />`}
-          </LinkableHeading>
-          <Box mt={1}>
-            <PortableText value={value.content} />
-          </Box>
-          {visibleProps && (
-            <>
-              <Heading as="h4" textStyle="md" mt={3}>
-                Props
-              </Heading>
-              <Table
-                variant="outline"
-                mt={3}
-                maxWidth={`calc(100vw - var(--spor-space-6))`}
-              >
-                <Thead>
-                  <Tr>
-                    <Th>Navn</Th>
-                    <Th>Type</Th>
-                    <Th>Påkrevd?</Th>
-                    <Th>Beskrivelse</Th>
-                  </Tr>
-                </Thead>
-                <Tbody>
-                  {visibleProps.map((prop: any) => (
-                    <Tr key={prop.name}>
-                      <Td>
-                        <Code>{prop.name}</Code>
-                      </Td>
-                      <Td>
-                        <Code>
-                          {prop.type === "other" ? prop.typeOther : prop.type}
-                        </Code>
-                      </Td>
-                      <Td>
-                        {prop.isRequired && (
-                          <SuccessFill24Icon aria-label="Påkrevd" mx="auto" />
-                        )}
-                      </Td>
-                      <Td>{prop.description}</Td>
-                    </Tr>
-                  ))}
-                </Tbody>
-              </Table>
-            </>
-          )}
+        <Box mt={6}>
+          <ComponentDocs component={value} />
         </Box>
       );
     },

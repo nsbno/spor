@@ -4,13 +4,22 @@ import {
   Badge,
   Box,
   Button,
+  Divider,
   FigmaOutline24Icon,
   Flex,
   GithubOutline24Icon,
   Heading,
   HStack,
+  Stack,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
 } from "@vygruppen/spor-react";
 import invariant from "tiny-invariant";
+import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
 import { useUserPreferences } from "~/features/user-preferences/UserPreferencesContext";
 import { getClient } from "~/utils/sanity/client";
 import {
@@ -21,22 +30,38 @@ import {
   blockContentToPlainText,
   isValidPreviewRequest,
 } from "~/utils/sanity/utils";
+import { toTitleCase } from "~/utils/stringUtils";
 import { getUserPreferencesSession } from "~/utils/userPreferences.server";
 
 type ResourceLink = {
   linkType: "figma" | "react" | "react-native" | "elm";
   url: string;
 };
+type ComponentSection = {
+  _id: string;
+  title: "guidelines" | "react" | "react-native" | "components" | "other";
+  customTitle?: string;
+  content: any[];
+  components?: {
+    _id: string;
+    name: string;
+    slug: string;
+    props: any[];
+    content: any[];
+  }[];
+};
 type Data = {
   _id: string;
   title: string;
+  introduction?: any[];
   slug: string;
   category: {
     title: string;
     slug: string;
   };
   resourceLinks?: ResourceLink[];
-  content: any[];
+  content?: any[];
+  componentSections?: ComponentSection[];
 };
 type LoaderData = PreviewableLoaderData<Data>;
 
@@ -54,6 +79,7 @@ export const loader: LoaderFunction = async ({
     _id,
     title,
     "slug": slug.current,
+    introduction,
     category->{
       title,
       "slug": slug.current
@@ -62,6 +88,16 @@ export const loader: LoaderFunction = async ({
     content[]{
       _type == 'reference' => @->,
       _type != 'reference' => @,
+    },
+    componentSections[] {
+      _id,
+      title,
+      customTitle,
+      content,
+      components[] {
+        _type == 'reference' => @->,
+        _type != 'reference' => @,
+      }
     }
   }`;
   const queryParams = {
@@ -151,9 +187,27 @@ export default function ArticlePage() {
         <Heading as="h1" textStyle="xl-display" mb={2}>
           {article.title}
         </Heading>
-        <Box>
-          <PortableText value={article.content} />
-        </Box>
+        {article.introduction && (
+          <Box>
+            <PortableText
+              value={article.introduction}
+              components={{
+                block: {
+                  normal: ({ children }) => (
+                    <Text textStyle="md">{children}</Text>
+                  ),
+                },
+              }}
+            />
+          </Box>
+        )}
+        {article.componentSections ? (
+          <ComponentSections sections={article.componentSections} />
+        ) : (
+          <Box>
+            <PortableText value={article.content} />
+          </Box>
+        )}
       </Box>
     </>
   );
@@ -180,5 +234,60 @@ const mapLinkToIcon = (linkType: ResourceLink["linkType"]) => {
       return <FigmaOutline24Icon />;
     default:
       return <GithubOutline24Icon />;
+  }
+};
+
+type ComponentSectionsProps = {
+  sections: ComponentSection[];
+};
+const ComponentSections = ({ sections }: ComponentSectionsProps) => {
+  return (
+    <Tabs colorScheme="green" variant="square" size="md" mt={4} isFitted>
+      <TabList>
+        {sections.map((section) => (
+          <Tab key={section._id}>
+            {getCorrectTitle({
+              title: section.title,
+              customTitle: section.customTitle,
+            })}
+          </Tab>
+        ))}
+      </TabList>
+      <Divider marginY={4} />
+      <TabPanels>
+        {sections.map((section) => (
+          <TabPanel key={section._id}>
+            <Heading as="h2" textStyle="lg" mb={1}>
+              {getCorrectTitle({
+                title: section.title,
+                customTitle: section.customTitle,
+              })}
+            </Heading>
+            <Stack>
+              {section.content && <PortableText value={section.content} />}
+              {section.components?.map((component) => (
+                <ComponentDocs key={component._id} component={component} />
+              ))}
+            </Stack>
+          </TabPanel>
+        ))}
+      </TabPanels>
+    </Tabs>
+  );
+};
+
+type GetCorrectTitleArgs = Pick<ComponentSection, "title" | "customTitle">;
+const getCorrectTitle = ({ title, customTitle }: GetCorrectTitleArgs) => {
+  switch (title) {
+    case "guidelines":
+      return "Retningslinjer";
+    case "react":
+      return "React";
+    case "react-native":
+      return "React Native";
+    case "components":
+      return "Kode";
+    case "other":
+      return toTitleCase(customTitle ?? "");
   }
 };

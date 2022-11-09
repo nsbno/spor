@@ -1,5 +1,5 @@
 import { useLocation } from "@remix-run/react";
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { HeadingLevelType, HeadingType } from "./TableOfContents";
 
 /**
@@ -9,21 +9,19 @@ export const useHeadings = () => {
   const contentRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
   const [headings, setHeadings] = useState<HeadingType[]>([]);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const id = setTimeout(() => {
       const headingList: HeadingType[] = [];
-      contentRef.current
-        ?.querySelectorAll("h2, h3, h4, h5, h6")
-        .forEach((el) => {
-          if (!el.id) {
-            return;
-          }
-          headingList.push({
-            id: el.id,
-            text: el.textContent || "",
-            level: el.tagName.toLowerCase() as HeadingLevelType,
-          });
+      contentRef.current?.querySelectorAll("h2, h3, h4").forEach((el) => {
+        if (!el.id) {
+          return;
+        }
+        headingList.push({
+          id: el.id,
+          text: el.textContent || "",
+          level: el.tagName.toLowerCase() as HeadingLevelType,
         });
+      });
       setHeadings(headingList);
     }, 16);
     return () => clearTimeout(id);

@@ -87,7 +87,7 @@ export const article = defineType({
     }),
     defineField({
       name: "componentSections",
-      title: "Component sections",
+      title: "Sections",
       description: "This is the new way to document components.",
       hidden: (args) => {
         const COMPONENTS_CATEGORY_ID = "ab982447-e71f-4a1f-85ef-d6d6deacddfe";
@@ -103,6 +103,21 @@ export const article = defineType({
           type: "object",
           name: "componentSection",
           title: "Component section",
+          preview: {
+            select: {
+              title: "title",
+              customTitle: "customTitle",
+            },
+            prepare: ({ title, customTitle }) => ({
+              title:
+                title === "other"
+                  ? customTitle
+                  : title
+                      .split("-")
+                      .map((s: string) => s[0]?.toUpperCase() + s.slice(1))
+                      .join(" "),
+            }),
+          },
           fields: [
             {
               name: "title",
@@ -111,10 +126,11 @@ export const article = defineType({
               initialValue: "guidelines",
               options: {
                 list: [
-                  { key: "guidelines", title: "Guidelines" },
-                  { key: "react", title: "React" },
-                  { key: "react-native", title: "React Native" },
-                  { key: "other", title: "Other" },
+                  { value: "guidelines", title: "Guidelines" },
+                  { value: "react", title: "React" },
+                  { value: "react-native", title: "React Native" },
+                  { value: "components", title: "Components" },
+                  { value: "other", title: "Other" },
                 ],
               },
             },
@@ -122,9 +138,23 @@ export const article = defineType({
               name: "customTitle",
               type: "string",
               title: "Please specify the title you want",
-              hidden: ({ document }) => document?.title !== "other",
+              hidden: ({ parent }) => {
+                return parent?.title !== "other";
+              },
             },
-            { name: "content", type: "content", title: "Content" },
+            {
+              name: "content",
+              type: "content",
+              title: "Content",
+              hidden: ({ parent }) => parent?.title === "components",
+            },
+            {
+              name: "components",
+              title: "Components",
+              type: "array",
+              of: [{ type: "reference", to: [{ type: "component" }] }],
+              hidden: ({ parent }) => parent.title !== "components",
+            },
           ],
         },
       ],

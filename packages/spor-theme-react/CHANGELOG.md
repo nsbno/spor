@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.3
+
+### Patch Changes
+
+- 43acbc1d: Add new package media-controller-react
+
 ## 1.0.2
 
 ### Patch Changes

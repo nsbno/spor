@@ -12,9 +12,7 @@ export {
   useToken,
 } from "@chakra-ui/react";
 export type {
-  UseBreakpointOptions,
   UseClipboardOptions,
   UseDisclosureProps,
-  UseMediaQueryOptions,
   UseOutsideClickProps,
 } from "@chakra-ui/react";

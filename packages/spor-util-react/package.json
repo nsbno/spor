@@ -17,8 +17,7 @@
   },
   "scripts": {
     "build": "tsup src/* --dts --treeshake --format esm,cjs",
-    "dev": "tsup src/index.tsx --watch --format esm",
-    "test": "vitest run --config ../config/vitest.config.ts"
+    "dev": "tsup src/index.tsx --watch --format esm"
   },
   "devDependencies": {
     "react": "^18.2.0",

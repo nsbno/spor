@@ -24,7 +24,7 @@ export function HeroSection() {
                 display={["flex", "inline-flex"]}
                 as={Link}
                 size="lg"
-                to="/kom-i-gang/bidra"
+                to="/guider/bidra"
                 rightIcon={<ArrowRightFill30Icon />}
                 mt={4}
                 width={["100%", "fit-content"]}

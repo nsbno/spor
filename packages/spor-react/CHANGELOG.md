@@ -1,5 +1,20 @@
 # @vygruppen/spor-react
 
+## 1.1.0
+
+### Minor Changes
+
+- 43acbc1d: Add new package media-controller-react
+
+### Patch Changes
+
+- 6fd2530c: Add new package spor-util-react
+- Updated dependencies [43acbc1d]
+- Updated dependencies [6fd2530c]
+  - @vygruppen/spor-media-controller-react@0.1.0
+  - @vygruppen/spor-theme-react@1.0.3
+  - @vygruppen/spor-util-react@0.1.0
+
 ## 1.0.0
 
 ### Major Changes

@@ -33,6 +33,7 @@ module.exports = {
         "packages/spor-datepicker-react/",
         "packages/spor-linjetag-react/",
         "packages/spor-media-controller-react/",
+        "packages/spor-util-react/",
       ],
     },
   },

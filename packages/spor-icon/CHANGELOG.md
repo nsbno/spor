@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 0.6.4
+
+### Patch Changes
+
+- f6305a33: Small fixes
+
 ## 0.6.3
 
 ### Patch Changes

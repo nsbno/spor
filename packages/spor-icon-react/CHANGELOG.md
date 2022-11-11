@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 1.0.1
+
+### Patch Changes
+
+- f6305a33: Small fixes
+
 ## 1.0.0
 
 ### Major Changes

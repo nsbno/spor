@@ -14,20 +14,6 @@ export const props = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "platform",
-      title: "Platform",
-      type: "string",
-      options: {
-        list: [
-          { title: "React & React Native", value: "react, react-native" },
-          { title: "React only", value: "react" },
-          { title: "React Native only", value: "react-native" },
-          { title: "Elm", value: "elm" },
-        ],
-      },
-      initialValue: "react, react-native",
-    }),
-    defineField({
       name: "type",
       title: "Type of prop",
       type: "string",

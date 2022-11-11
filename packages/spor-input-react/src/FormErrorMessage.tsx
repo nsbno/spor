@@ -58,6 +58,7 @@ export const FormErrorMessage = ({ children }: FormErrorMessageProps) => {
         top={-1.5}
         left={3}
         zIndex="popover"
+        maxWidth="50ch"
         {...errorMessageProps}
       >
         <Arrow position="absolute" top="-0.25em" left="1em" />

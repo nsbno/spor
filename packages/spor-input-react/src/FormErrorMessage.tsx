@@ -34,6 +34,11 @@ export type FormErrorMessageProps = {
  */
 export const FormErrorMessage = ({ children }: FormErrorMessageProps) => {
   const formControlContext = useFormControlContext();
+  if (!formControlContext) {
+    throw new Error(
+      "FormErrorMessage must be used within a FormControl component"
+    );
+  }
   if (!formControlContext.isInvalid) {
     return null;
   }

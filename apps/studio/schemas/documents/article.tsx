@@ -90,9 +90,9 @@ export const article = defineType({
       title: "Sections",
       description: "This is the new way to document components.",
       hidden: (args) => {
-        const COMPONENTS_CATEGORY_ID = "ab982447-e71f-4a1f-85ef-d6d6deacddfe";
         // TODO: This is a hack to hide this field when the article isn't a component
         // The UUID is the ID of the component category in Sanity.
+        const COMPONENTS_CATEGORY_ID = "ab982447-e71f-4a1f-85ef-d6d6deacddfe";
         return (
           (args.document?.category as any)?._ref !== COMPONENTS_CATEGORY_ID
         );
@@ -126,10 +126,9 @@ export const article = defineType({
               initialValue: "guidelines",
               options: {
                 list: [
+                  { value: "examples", title: "Examples" },
                   { value: "guidelines", title: "Guidelines" },
-                  { value: "react", title: "React" },
-                  { value: "react-native", title: "React Native" },
-                  { value: "components", title: "Components" },
+                  { value: "code", title: "Code" },
                   { value: "other", title: "Other" },
                 ],
               },

@@ -1,5 +1,16 @@
 # @vygruppen/spor-input-react
 
+## 1.1.0
+
+### Minor Changes
+
+- 7bb002d0: Create a redesigned and easier to use FormErrorMessage component
+
+### Patch Changes
+
+- Updated dependencies [f6305a33]
+  - @vygruppen/spor-icon-react@1.0.1
+
 ## 1.0.0
 
 ### Major Changes

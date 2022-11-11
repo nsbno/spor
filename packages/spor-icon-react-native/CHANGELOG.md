@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.2.7
+
+### Patch Changes
+
+- f6305a33: Small fixes
+
 ## 0.2.6
 
 ### Patch Changes

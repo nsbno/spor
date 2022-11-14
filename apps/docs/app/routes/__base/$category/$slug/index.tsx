@@ -39,7 +39,7 @@ type ResourceLink = {
 };
 type ComponentSection = {
   _id: string;
-  title: "guidelines" | "react" | "react-native" | "components" | "other";
+  title: "guidelines" | "examples" | "code" | "other";
   customTitle?: string;
   content: any[];
   components?: {
@@ -245,7 +245,7 @@ const ComponentSections = ({ sections }: ComponentSectionsProps) => {
     <Tabs colorScheme="green" variant="square" size="md" mt={4} isFitted>
       <TabList>
         {sections.map((section) => (
-          <Tab key={section._id}>
+          <Tab key={section.customTitle || section.title}>
             {getCorrectTitle({
               title: section.title,
               customTitle: section.customTitle,
@@ -256,7 +256,7 @@ const ComponentSections = ({ sections }: ComponentSectionsProps) => {
       <Divider marginY={4} />
       <TabPanels>
         {sections.map((section) => (
-          <TabPanel key={section._id}>
+          <TabPanel key={section.customTitle || section.title}>
             <Heading as="h2" textStyle="lg" mb={1}>
               {getCorrectTitle({
                 title: section.title,
@@ -279,13 +279,11 @@ const ComponentSections = ({ sections }: ComponentSectionsProps) => {
 type GetCorrectTitleArgs = Pick<ComponentSection, "title" | "customTitle">;
 const getCorrectTitle = ({ title, customTitle }: GetCorrectTitleArgs) => {
   switch (title) {
+    case "examples":
+      return "Eksempler";
     case "guidelines":
       return "Retningslinjer";
-    case "react":
-      return "React";
-    case "react-native":
-      return "React Native";
-    case "components":
+    case "code":
       return "Kode";
     case "other":
       return toTitleCase(customTitle ?? "");

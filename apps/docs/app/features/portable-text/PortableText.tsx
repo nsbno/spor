@@ -287,30 +287,10 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     imports: ({ value }) => {
-      const { userPreferences } = useUserPreferences();
-      if (userPreferences.userType === "designer") {
+      if (!value.reactImport) {
         return null;
       }
-      let imports;
-      switch (userPreferences.technology) {
-        case "react":
-          imports = value.reactImport;
-          break;
-        case "react-native":
-          imports = value.reactNativeImport;
-          break;
-        case "elm":
-          imports = value.elmImport;
-          break;
-        default:
-          return null;
-      }
-
-      if (!imports) {
-        return null;
-      }
-
-      return <CodeBlock code={imports} mt={3} />;
+      return <CodeBlock code={value.reactImport} mt={3} />;
     },
     tipsPanel: ({ value }) => (
       <Box as="article" backgroundColor="mint" mt={3} p={4} borderRadius="md">

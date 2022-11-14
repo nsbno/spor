@@ -1,20 +1,22 @@
 import { PortableText } from "@portabletext/react";
-import { json, LoaderFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { SanityAsset } from "@sanity/image-url/lib/types/types";
+import {
+  DownloadOutline18Icon,
+  DownloadOutline24Icon,
+  InformationOutline18Icon,
+} from "@vygruppen/spor-icon-react";
 import {
   Badge,
   Box,
   Button,
   Card,
   Divider,
-  DownloadOutline18Icon,
-  DownloadOutline24Icon,
   Flex,
   Heading,
   IconButton,
   Image,
-  InformationOutline18Icon,
   SearchInput,
   Select,
   SimpleGrid,
@@ -50,7 +52,7 @@ type LoaderData = {
   };
 };
 
-export const loader: LoaderFunction = async () => {
+export const loader = async () => {
   const client = getClient();
   const query = `
   {
@@ -78,11 +80,11 @@ export const loader: LoaderFunction = async () => {
   }
 }`;
   const { illustrations, article } = await client.fetch(query);
-  return json<LoaderData>({ illustrations, article });
+  return json({ illustrations, article } as LoaderData);
 };
 
 export default function IllustrasjonerPage() {
-  const { illustrations, article } = useLoaderData<LoaderData>();
+  const { illustrations, article } = useLoaderData<typeof loader>();
   const [searchValue, setSearchValue] = useState("");
   const [background, setBackground] = useState("light");
 

@@ -15,7 +15,7 @@ type Illustration = {
 /**
  * Fetches all illustrations from Sanity and returns them as a zip file.
  */
-export const loader: LoaderFunction = async () => {
+export const loader = async () => {
   console.info("Fetching list of illustrations from Sanity");
   const allIllustrations = await getClient().fetch<Illustration[]>(
     `*[_type == "illustration"] { title, imageLightBackground, imageDarkBackground }`

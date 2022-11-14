@@ -2,7 +2,6 @@ import {
   Button,
   ButtonGroup,
   Divider,
-  DownloadOutline24Icon,
   Heading,
   Stack,
   Text,
@@ -11,6 +10,7 @@ import { Link } from "@remix-run/react";
 import { SearchBar } from "~/features/routes/ressurser/ikoner/SearchBar";
 import { SearchFilterProvider } from "~/features/routes/ressurser/ikoner/SearchFilterContext";
 import { SearchResults } from "~/features/routes/ressurser/ikoner/SearchResults";
+import { DownloadOutline24Icon } from "@vygruppen/spor-icon-react";
 
 export default function IconsPage() {
   return (

@@ -7,7 +7,7 @@ import { useHeadings } from "~/features/table-of-contents/useHeadings";
 import { getClient } from "~/utils/sanity/client";
 
 /* This loader isn't use here directly, but from within the left sidebar component tree. Don't remove it, even if it isn't used here.  */
-export const loader: LoaderFunction = async () => {
+export const loader = async () => {
   const menu = await getClient().fetch(
     `*[_type == "menu" && slug.current == "side-menu"][0] { menuItems }`
   );

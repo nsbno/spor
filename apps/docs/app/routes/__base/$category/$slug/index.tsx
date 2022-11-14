@@ -1,5 +1,5 @@
 import { PortableText } from "@portabletext/react";
-import type { LoaderFunction, MetaFunction } from "@remix-run/node";
+import type { LoaderArgs, MetaFunction } from "@remix-run/node";
 import {
   Badge,
   Box,
@@ -65,10 +65,7 @@ type Data = {
 };
 type LoaderData = PreviewableLoaderData<Data>;
 
-export const loader: LoaderFunction = async ({
-  params,
-  request,
-}): Promise<LoaderData> => {
+export const loader = async ({ params, request }: LoaderArgs) => {
   invariant(params.category, "Expected params.category");
   invariant(params.slug, "Expected params.slug");
 
@@ -125,7 +122,7 @@ export const loader: LoaderFunction = async ({
   };
 };
 
-export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data) {
     return {};
   }

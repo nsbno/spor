@@ -108,6 +108,9 @@ async function generateComponent(iconData: IconData) {
       expandProps: "end",
       ref: true,
       titleProp: false,
+      svgProps: {
+        role: "img",
+      },
       svgo: true,
       svgoConfig: {
         removeViewBox: false,

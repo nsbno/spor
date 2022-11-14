@@ -1,4 +1,4 @@
-import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
+import { ActionArgs, json, LoaderArgs } from "@remix-run/node";
 import { useFetcher, useLoaderData } from "@remix-run/react";
 import { Stack } from "@vygruppen/spor-react";
 import { useState } from "react";
@@ -9,7 +9,7 @@ import { LiveProvider } from "~/features/interactive-code/LiveProvider";
 import { debounce } from "~/utils/debounce";
 import { getPlaygroundDataSession } from "~/utils/playgroundData.server";
 
-export const action: ActionFunction = async ({ request }) => {
+export const action = async ({ request }: ActionArgs) => {
   const { setPlaygroundData, commit } = await getPlaygroundDataSession(request);
   const formData = await request.formData();
   const playgroundData = formData.get("playgroundData");
@@ -35,7 +35,7 @@ export const action: ActionFunction = async ({ request }) => {
   );
 };
 
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader = async ({ request }: LoaderArgs) => {
   const session = await getPlaygroundDataSession(request);
   const playgroundData = session.getPlaygroundData();
 
@@ -47,10 +47,6 @@ export const loader: LoaderFunction = async ({ request }) => {
       },
     }
   );
-};
-
-type LoaderData = {
-  playgroundData: string;
 };
 
 const defaultCode = `<Stack textAlign="center">
@@ -70,7 +66,7 @@ const saveToCookie = debounce((newCode: string, fetcher: any) => {
 
 export default function PlaygroundPage() {
   const { playgroundData: initialPlaygroundDataFromCookie } =
-    useLoaderData<LoaderData>();
+    useLoaderData<typeof loader>();
   const [playgroundData, setPlaygroundData] = useState(
     initialPlaygroundDataFromCookie || defaultCode
   );

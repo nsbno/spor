@@ -1,5 +1,5 @@
 import { PortableText } from "@portabletext/react";
-import { LoaderFunction } from "@remix-run/node";
+import { LoaderArgs } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { Box, Card, Heading, Image, SimpleGrid } from "@vygruppen/spor-react";
 import { getClient } from "~/utils/sanity/client";
@@ -58,12 +58,7 @@ const articleQuery = async () => {
   return article;
 };
 
-type LoaderData = {
-  components: ComponentData[];
-  article: ArticleData;
-};
-
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader = async ({ request }: LoaderArgs) => {
   const session = await getUserPreferencesSession(request);
   const userPreferences = session.getUserPreferences();
   const technologyPreference =
@@ -80,7 +75,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export default function ComponentsPage() {
-  const { components, article } = useLoaderData<LoaderData>();
+  const { components, article } = useLoaderData<typeof loader>();
   return (
     <Box>
       <Heading as="h1" textStyle="xl-display" mb={2}>

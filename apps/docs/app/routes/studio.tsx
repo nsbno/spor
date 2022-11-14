@@ -1,7 +1,7 @@
 import { LoaderFunction, redirect } from "@remix-run/node";
 
 // Redirect users to the Studio app.
-export const loader: LoaderFunction = async () => {
+export const loader = async () => {
   if (process.env.NODE_ENV === "development") {
     return redirect("http://localhost:3333");
   }

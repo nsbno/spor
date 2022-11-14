@@ -30,7 +30,7 @@ import {
   blockContentToPlainText,
   isValidPreviewRequest,
 } from "~/utils/sanity/utils";
-import { toTitleCase } from "~/utils/stringUtils";
+import { slugify, toTitleCase } from "~/utils/stringUtils";
 import { getUserPreferencesSession } from "~/utils/userPreferences.server";
 
 type ResourceLink = {
@@ -242,10 +242,10 @@ type ComponentSectionsProps = {
 };
 const ComponentSections = ({ sections }: ComponentSectionsProps) => {
   return (
-    <Tabs colorScheme="green" variant="square" size="md" mt={4} isFitted>
+    <Tabs colorScheme="green" variant="square" size="md" mt={4} isFitted isLazy>
       <TabList>
         {sections.map((section) => (
-          <Tab key={section.customTitle || section.title}>
+          <Tab key={getSlugFromSection(section)}>
             {getCorrectTitle({
               title: section.title,
               customTitle: section.customTitle,
@@ -288,4 +288,8 @@ const getCorrectTitle = ({ title, customTitle }: GetCorrectTitleArgs) => {
     case "other":
       return toTitleCase(customTitle ?? "");
   }
+};
+
+const getSlugFromSection = (section: ComponentSection) => {
+  return slugify(section.customTitle || section.title);
 };

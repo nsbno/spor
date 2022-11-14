@@ -11,6 +11,7 @@ import {
   Thead,
   Tr,
 } from "@vygruppen/spor-react";
+import { CodeBlock } from "../code-block/CodeBlock";
 import { LinkableHeading } from "../linkable-heading/LinkableHeading";
 import { useUserPreferences } from "../user-preferences/UserPreferencesContext";
 
@@ -36,9 +37,12 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
   });
   return (
     <Box key={component.name} as="article">
-      <LinkableHeading as="h3" textStyle="md" fontWeight="bold">
+      <LinkableHeading as="h3" textStyle="md" fontWeight="bold" mb={1}>
         <Code fontSize="md">{`<${component.name} />`}</Code>
       </LinkableHeading>
+      <CodeBlock
+        code={`import { ${component.name} } from "@vygruppen/spor-react";`}
+      />
       <Box mt={1}>
         <PortableText value={component.content} />
       </Box>

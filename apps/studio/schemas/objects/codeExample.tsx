@@ -26,24 +26,6 @@ export const codeExample = defineType({
         languageAlternatives: [{ title: "React", value: "react" }],
       },
     }),
-    defineField({
-      name: "reactNativeCode",
-      title: "React Native Code Example",
-      type: "code",
-      options: {
-        language: "react",
-        languageAlternatives: [{ title: "React Native", value: "react" }],
-      },
-    }),
-    defineField({
-      name: "elmCode",
-      title: "Elm Code Example",
-      type: "code",
-      options: {
-        language: "elm",
-        languageAlternatives: [{ title: "Elm", value: "elm" }],
-      },
-    }),
   ],
   preview: {
     select: {

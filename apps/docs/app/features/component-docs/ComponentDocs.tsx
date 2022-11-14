@@ -1,24 +1,92 @@
-import { Heading, Stack, Text } from "@vygruppen/spor-react";
+import { PortableText } from "@portabletext/react";
+import {
+  Box,
+  Code,
+  Heading,
+  SuccessFill24Icon,
+  Table,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "@vygruppen/spor-react";
+import { CodeBlock } from "../code-block/CodeBlock";
+import { LinkableHeading } from "../linkable-heading/LinkableHeading";
+import { useUserPreferences } from "../user-preferences/UserPreferencesContext";
 
 type ComponentDocsProps = {
-  title: string;
-  description: string;
-  children: React.ReactNode;
+  component: {
+    name: string;
+    content: any[];
+    props: {
+      platform: "react" | "react-native" | "react, react-native" | "elm";
+      type: "other" | string;
+      typeOther?: string;
+      name: string;
+      description?: string;
+      isRequired: boolean;
+    }[];
+  };
 };
-export const ComponentDocs = ({
-  title,
-  description,
-  children,
-}: ComponentDocsProps) => {
+export const ComponentDocs = ({ component }: ComponentDocsProps) => {
+  const { userPreferences } = useUserPreferences();
+  const visibleProps = component.props?.filter((prop) => {
+    const platform = prop.platform ?? "react, react-native";
+    return platform.split(", ").includes(userPreferences.technology);
+  });
   return (
-    <Stack spacing={4}>
-      <Stack spacing={2}>
-        <Heading as="h1" textStyle="xl-display">
-          {title}
-        </Heading>
-        <Text textStyle="sm">{description}</Text>
-      </Stack>
-      <Stack spacing={8}>{children}</Stack>
-    </Stack>
+    <Box key={component.name} as="article">
+      <LinkableHeading as="h3" textStyle="md" fontWeight="bold" mb={1}>
+        <Code fontSize="md">{`<${component.name} />`}</Code>
+      </LinkableHeading>
+      <CodeBlock
+        code={`import { ${component.name} } from "@vygruppen/spor-react";`}
+      />
+      <Box mt={1}>
+        <PortableText value={component.content} />
+      </Box>
+      {visibleProps && (
+        <>
+          <Heading as="h4" textStyle="md" mt={3}>
+            Props
+          </Heading>
+          <Table
+            variant="outline"
+            mt={3}
+            maxWidth={`calc(100vw - var(--spor-space-6))`}
+          >
+            <Thead>
+              <Tr>
+                <Th>Navn</Th>
+                <Th>Type</Th>
+                <Th>Påkrevd?</Th>
+                <Th>Beskrivelse</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {visibleProps.map((prop) => (
+                <Tr key={prop.name}>
+                  <Td>
+                    <Code>{prop.name}</Code>
+                  </Td>
+                  <Td>
+                    <Code>
+                      {prop.type === "other" ? prop.typeOther : prop.type}
+                    </Code>
+                  </Td>
+                  <Td>
+                    {prop.isRequired && (
+                      <SuccessFill24Icon aria-label="Påkrevd" mx="auto" />
+                    )}
+                  </Td>
+                  <Td>{prop.description}</Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
+        </>
+      )}
+    </Box>
   );
 };

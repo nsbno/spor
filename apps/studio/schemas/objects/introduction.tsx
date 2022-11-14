@@ -3,7 +3,8 @@ import { defineField, defineType } from "sanity";
 
 export const introduction = defineType({
   name: "introduction",
-  title: "Introduction",
+  title: "[Deprecated] Introduction",
+  description: 'Use the "Introduction" field instead',
   type: "object",
   icon: FiAlignCenter,
   fields: [

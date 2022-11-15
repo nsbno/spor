@@ -149,7 +149,7 @@ const config = defineStyleConfig({
       _hover: {
         backgroundColor: "seaMist",
         _disabled: {
-          color: "dimGrey",
+          color: "blackAlpha.300",
         },
       },
       _active: {

@@ -155,10 +155,6 @@ const config = defineStyleConfig({
       _active: {
         backgroundColor: "mint",
       },
-      _disabled: {
-        color: "blackAlpha.300",
-        opacity: 0.4,
-      },
     }),
   },
   sizes: {

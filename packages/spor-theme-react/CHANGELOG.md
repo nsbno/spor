@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.4
+
+### Patch Changes
+
+- c12ade2b: Tweak colors for disabled ghost buttons and checkboxes
+
 ## 1.0.3
 
 ### Patch Changes

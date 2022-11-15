@@ -16,6 +16,7 @@ export const VyLogo = ({ colorScheme, ...boxProps }: VyLogoProps) => {
 
   return (
     <Box as="svg" viewBox="0 0 107 54" {...boxProps}>
+      <title>Vy logo</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

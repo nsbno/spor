@@ -33,7 +33,11 @@ export const InfoTag = ({
   const styles = useMultiStyleConfig("InfoTag", { variant, size });
   return (
     <Box sx={styles.container}>
-      <LineIcon variant={variant} size={size} sx={styles.iconContainer} />
+      <LineIcon
+        variant={variant}
+        size={size}
+        sx={styles.iconContainer}
+      />
       <Box sx={styles.textContainer}>
         {title && (
           <Box as="span" sx={styles.title}>

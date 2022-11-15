@@ -133,8 +133,23 @@
       "wood": {
         "value": "{color.palette.orange.600.value}"
       },
-      "lightRed": {
+      "pink": {
         "value": "{color.palette.red.50.value}"
+      },
+      "lightRed": {
+        "value": "{color.palette.red.100.value}"
+      },
+      "salmon": {
+        "value": "{color.palette.red.200.value}"
+      },
+      "apricot": {
+        "value": "{color.palette.red.300.value}"
+      },
+      "carmine": {
+        "value": "{color.palette.red.400.value}"
+      },
+      "region": {
+        "value": "{color.palette.red.500.value}"
       },
       "brightRed": {
         "value": "{color.palette.red.600.value}"

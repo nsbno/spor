@@ -20,7 +20,8 @@
     "dev": "tsup src/index.tsx --watch --format esm"
   },
   "dependencies": {
-    "@vygruppen/spor-icon-react": "*"
+    "@vygruppen/spor-icon-react": "*",
+    "@vygruppen/spor-i18n-react": "*"
   },
   "devDependencies": {
     "react": "^18.2.0",

@@ -3,6 +3,7 @@ import {
   Link as ChakraLink,
   LinkProps as ChakraLinkProps,
 } from "@chakra-ui/react";
+import { useTranslation } from "@vygruppen/spor-i18n-react";
 import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
 
@@ -15,6 +16,7 @@ type LinkProps = Omit<ChakraLinkProps, "variant"> & {
  */
 export const TextLink = forwardRef<LinkProps, "a">(
   ({ children, ...props }, ref) => {
+    const { t } = useTranslation();
     const isExternal =
       props.isExternal !== undefined
         ? props.isExternal
@@ -22,11 +24,24 @@ export const TextLink = forwardRef<LinkProps, "a">(
     return (
       <ChakraLink {...props} ref={ref} isExternal={isExternal}>
         {children}
-        {isExternal && <LinkOutOutline24Icon ml={0.5} />}
+        {isExternal && (
+          <LinkOutOutline24Icon
+            marginLeft={0.5}
+            aria-label={t(texts.externalLink)}
+          />
+        )}
       </ChakraLink>
     );
   }
 );
+
+const texts = {
+  externalLink: {
+    nb: "Ekstern lenke",
+    sv: "Extern länk",
+    en: "External link",
+  },
+};
 
 /** Link to different sites or parts of sites.
  *

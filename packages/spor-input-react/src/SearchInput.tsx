@@ -31,8 +31,8 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
     const showCloseButton = onReset && Boolean(props.value);
     return (
       <InputGroup position="relative">
-        <InputLeftElement aria-hidden="true">
-          <SearchOutline24Icon />
+        <InputLeftElement>
+          <SearchOutline24Icon aria-hidden="true" />
         </InputLeftElement>
         <ChakraInput
           pl={7}

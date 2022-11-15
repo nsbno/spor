@@ -1,11 +1,11 @@
 import { codeInput } from "@sanity/code-input";
 import { visionTool } from "@sanity/vision";
-import { createConfig } from "sanity";
+import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import VyLogo from "./components/VyLogo";
 import { schemaTypes } from "./schemas";
 
-export default createConfig({
+export default defineConfig({
   name: "default",
   title: "Spor",
   projectId: "tbpd14t4",

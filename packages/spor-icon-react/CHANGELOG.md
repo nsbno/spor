@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 1.0.2
+
+### Patch Changes
+
+- 410227bf: Add role="img" to all icons
+
 ## 1.0.1
 
 ### Patch Changes

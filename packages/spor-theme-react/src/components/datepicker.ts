@@ -37,7 +37,7 @@ const config = helpers.defineMultiStyleConfig({
           borderWidth: 2,
         }),
       },
-      _error: {
+      _invalid: {
         boxShadow: getBoxShadowString({
           borderColor: "brightRed",
           borderWidth: 2,
@@ -101,7 +101,7 @@ const config = helpers.defineMultiStyleConfig({
           }),
         },
       }),
-      _error: {
+      _invalid: {
         boxShadow: getBoxShadowString({
           borderColor: "brightRed",
           borderWidth: 2,

@@ -27,3 +27,4 @@ export { default as Table } from "./table";
 export { default as Tabs } from "./tabs";
 export { default as Textarea } from "./textarea";
 export { default as TravelTag } from "./travel-tag";
+export { default as Alert } from "./alert";

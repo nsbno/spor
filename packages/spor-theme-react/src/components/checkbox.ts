@@ -49,7 +49,7 @@ const config = helpers.defineMultiStyleConfig({
         color: "white",
 
         _focus: {
-          backgroundColor: "blueGreen",
+          backgroundColor: "primaryGreen",
           borderColor: "azure",
         },
 

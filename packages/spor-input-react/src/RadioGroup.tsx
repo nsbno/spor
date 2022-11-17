@@ -37,7 +37,7 @@ export type RadioGroupProps = Exclude<
  * ```
  */
 export const RadioGroup = forwardRef<RadioGroupProps, "div">(
-  ({ children, direction = "row", ...rest }: RadioGroupProps, ref) => {
+  ({ children, direction = "row", ...rest }, ref) => {
     return (
       <ChakraRadioGroup {...rest} ref={ref}>
         <Stack direction={direction}>{children}</Stack>

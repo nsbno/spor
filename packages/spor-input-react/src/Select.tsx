@@ -26,7 +26,7 @@ export type SelectProps = Exclude<
  * ```
  */
 export const Select = forwardRef<SelectProps, "select">(
-  ({ label, ...props }: SelectProps, ref) => {
+  ({ label, ...props }, ref) => {
     const styles = useMultiStyleConfig("Select", props);
     return (
       <FormControl>

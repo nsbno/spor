@@ -35,7 +35,7 @@ export type StackProps = ChakraStackProps & {
  * ```
  */
 export const Stack = forwardRef<StackProps, "div">(
-  ({ flexDirection, ...props }: StackProps, ref) => {
+  ({ flexDirection, ...props }, ref) => {
     return <ChakraStack {...props} direction={flexDirection} ref={ref} />;
   }
 );

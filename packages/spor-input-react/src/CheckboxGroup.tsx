@@ -32,9 +32,9 @@ export type CheckboxGroupProps = Exclude<
  * </CheckboxGroup>
  */
 export const CheckboxGroup = forwardRef<CheckboxGroupProps, "div">(
-  ({ direction = "row", children, ...props }: CheckboxGroupProps) => {
+  ({ direction = "row", children, ...props }, ref) => {
     return (
-      <ChakraCheckboxGroup {...props}>
+      <ChakraCheckboxGroup {...props} ref={ref}>
         <Stack flexDirection={direction}>{children}</Stack>
       </ChakraCheckboxGroup>
     );

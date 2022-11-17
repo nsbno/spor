@@ -107,7 +107,7 @@ export function DatePicker({ variant, ...props }: DatePickerProps) {
             </PopoverAnchor>
             {hasTrigger && <CalendarTriggerButton {...buttonProps} />}
           </InputGroup>
-          {state.isOpen && (
+          {state.isOpen && !props.isDisabled && (
             <PopoverContent
               backgroundColor="white"
               color="darkGrey"

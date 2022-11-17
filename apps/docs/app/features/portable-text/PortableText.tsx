@@ -157,7 +157,7 @@ const components: Partial<PortableTextReactComponents> = {
         gap={6}
         marginTop={6}
       >
-        {value.content.map((item: any) => (
+        {value.content?.map((item: any) => (
           <PortableText value={item} key={item._key} />
         ))}
       </SimpleGrid>

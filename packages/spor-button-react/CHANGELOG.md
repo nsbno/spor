@@ -1,5 +1,13 @@
 # @vygruppen/spor-button-react
 
+## 1.0.2
+
+### Patch Changes
+
+- 54721c92: Lagt til forwardref for de fleste komponentene
+- Updated dependencies [54721c92]
+  - @vygruppen/spor-loader-react@1.0.1
+
 ## 1.0.1
 
 ### Patch Changes

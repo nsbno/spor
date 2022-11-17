@@ -1,5 +1,14 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.5
+
+### Patch Changes
+
+- 7eb52570: Datepicker: Add form control with validation state and error messages
+- a0778ac4: Change hover state styling for datecell
+- Updated dependencies [2d59b9b9]
+  - @vygruppen/spor-design-tokens@3.1.0
+
 ## 1.0.4
 
 ### Patch Changes

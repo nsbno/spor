@@ -1,5 +1,12 @@
 # @vygruppen/spor-input-react
 
+## 1.1.1
+
+### Patch Changes
+
+- 54721c92: Lagt til forwardref for de fleste komponentene
+- 30f859be: Improve accessibility of related icons
+
 ## 1.1.0
 
 ### Minor Changes

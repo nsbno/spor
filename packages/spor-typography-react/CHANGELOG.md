@@ -1,5 +1,13 @@
 # @vygruppen/spor-typography-react
 
+## 1.0.1
+
+### Patch Changes
+
+- 54721c92: Lagt til forwardref for de fleste komponentene
+- Updated dependencies [2d59b9b9]
+  - @vygruppen/spor-design-tokens@3.1.0
+
 ## 1.0.0
 
 ### Major Changes

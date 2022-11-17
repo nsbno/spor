@@ -1,5 +1,17 @@
 # @vygruppen/spor-datepicker-react
 
+## 1.0.1
+
+### Patch Changes
+
+- 7eb52570: Datepicker: Add form control with validation state and error messages
+- 3af3a3ee: Rmove popover on disabled datepicker
+- Updated dependencies [54721c92]
+- Updated dependencies [30f859be]
+  - @vygruppen/spor-button-react@1.0.2
+  - @vygruppen/spor-input-react@1.1.1
+  - @vygruppen/spor-typography-react@1.0.1
+
 ## 1.0.0
 
 ### Major Changes

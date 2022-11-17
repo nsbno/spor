@@ -1,4 +1,5 @@
 import {
+  forwardRef,
   Switch as ChakraSwitch,
   SwitchProps as ChakraSwitchProps,
 } from "@chakra-ui/react";
@@ -30,10 +31,8 @@ export type SwitchProps = Exclude<ChakraSwitchProps, "colorScheme"> & {
  * </FormControl>
  * ```
  */
-export const Switch = ({
-  variant = "solid",
-  size = "md",
-  ...props
-}: SwitchProps) => {
-  return <ChakraSwitch variant={variant} size={size} {...props} />;
-};
+export const Switch = forwardRef<SwitchProps, "input">(
+  ({ variant = "solid", size = "md", ...props }: SwitchProps, ref) => {
+    return <ChakraSwitch variant={variant} size={size} {...props} ref={ref} />;
+  }
+);

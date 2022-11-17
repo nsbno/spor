@@ -1,4 +1,5 @@
 import {
+  forwardRef,
   Select as ChakraSelect,
   SelectProps as ChakraSelectProps,
   useMultiStyleConfig,
@@ -24,12 +25,14 @@ export type SelectProps = Exclude<
  * </Select>
  * ```
  */
-export const Select = ({ label, ...props }: SelectProps) => {
-  const styles = useMultiStyleConfig("Select", props);
-  return (
-    <FormControl>
-      <ChakraSelect {...props} rootProps={{ __css: styles.root }} />
-      {label && <FormLabel>{label}</FormLabel>}
-    </FormControl>
-  );
-};
+export const Select = forwardRef<SelectProps, "select">(
+  ({ label, ...props }, ref) => {
+    const styles = useMultiStyleConfig("Select", props);
+    return (
+      <FormControl>
+        <ChakraSelect {...props} rootProps={{ __css: styles.root }} ref={ref} />
+        {label && <FormLabel>{label}</FormLabel>}
+      </FormControl>
+    );
+  }
+);

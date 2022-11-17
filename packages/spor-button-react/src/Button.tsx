@@ -51,7 +51,7 @@ export type ButtonProps = Exclude<
  * </Button>
  * ```
  */
-export const Button = forwardRef<ButtonProps, As<any>>(
+export const Button = forwardRef<ButtonProps, "button">(
   (
     {
       size = "md",

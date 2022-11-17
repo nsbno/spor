@@ -1,6 +1,7 @@
 import {
   Tabs as ChakraTabs,
   TabsProps as ChakraTabsProps,
+  forwardRef,
 } from "@chakra-ui/react";
 import * as React from "react";
 
@@ -14,6 +15,6 @@ export type TabsProps = Exclude<
   /** Defaults to `round` */
   variant?: "square" | "round";
 };
-export const Tabs = (props: TabsProps) => {
-  return <ChakraTabs {...props} />;
-};
+export const Tabs = forwardRef<TabsProps, "div">((props, ref) => {
+  return <ChakraTabs {...props} ref={ref} />;
+});

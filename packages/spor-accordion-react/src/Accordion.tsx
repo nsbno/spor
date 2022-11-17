@@ -1,6 +1,8 @@
 import {
   Accordion as ChakraAccordion,
   AccordionProps as ChakraAccordionProps,
+  As,
+  forwardRef,
 } from "@chakra-ui/react";
 import React from "react";
 import { AccordionProvider } from "./AccordionContext";
@@ -43,7 +45,7 @@ export type AccordionProps = Omit<ChakraAccordionProps, "variant" | "size"> & {
  *
  * If you only have one expandable item, you can use the `<Expandable />` component instead.
  */
-export const Accordion = (props: AccordionProps) => {
+export const Accordion = forwardRef<AccordionProps, "div">((props, ref) => {
   const defaultIndex =
     typeof props.defaultIndex === "number" && props.allowMultiple
       ? [props.defaultIndex]
@@ -52,8 +54,9 @@ export const Accordion = (props: AccordionProps) => {
     <AccordionProvider size={props.size}>
       <ChakraAccordion
         {...props}
+        ref={ref}
         defaultIndex={defaultIndex as number[] | undefined}
       />
     </AccordionProvider>
   );
-};
+});

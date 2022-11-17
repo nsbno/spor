@@ -1,4 +1,6 @@
 import {
+  As,
+  forwardRef,
   InputElementProps as ChakraInputElementProps,
   InputLeftElement as ChakraInputLeftElement,
   InputRightElement as ChakraInputRightElement,
@@ -20,8 +22,8 @@ export type InputElementProps = ChakraInputElementProps;
  * </FormControl>
  * ```
  */
-export const InputLeftElement = (props: InputElementProps) => (
-  <ChakraInputLeftElement {...props} />
+export const InputLeftElement = forwardRef<InputElementProps, "div">(
+  (props, ref) => <ChakraInputLeftElement {...props} ref={ref} />
 );
 
 /**
@@ -38,6 +40,6 @@ export const InputLeftElement = (props: InputElementProps) => (
  * </FormControl>
  * ```
  */
-export const InputRightElement = (props: InputElementProps) => (
-  <ChakraInputRightElement {...props} />
+export const InputRightElement = forwardRef<InputElementProps, "div">(
+  (props, ref) => <ChakraInputRightElement {...props} ref={ref} />
 );

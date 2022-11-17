@@ -3,6 +3,7 @@ import {
   BoxProps,
   Flex,
   FormLabel,
+  useFormControlContext,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import { DateValue, GregorianCalendar } from "@internationalized/date";
@@ -64,9 +65,15 @@ type StyledFieldProps = BoxProps & {
 };
 export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
   ({ children, variant, ...otherProps }, ref) => {
+    const { isInvalid } = useFormControlContext();
     const styles = useMultiStyleConfig("Datepicker", { variant });
     return (
-      <Box sx={styles.wrapper} {...otherProps} ref={ref}>
+      <Box
+        sx={styles.wrapper}
+        {...otherProps}
+        ref={ref}
+        aria-invalid={isInvalid}
+      >
         {children}
       </Box>
     );

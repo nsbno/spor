@@ -26,7 +26,6 @@ import { ComponentDocs } from "../component-docs/ComponentDocs";
 import { ImageWithCaption } from "../Images-with-caption/ImageWithCaption";
 import { InteractiveCode } from "../interactive-code/InteractiveCode";
 import { LinkableHeading } from "../linkable-heading/LinkableHeading";
-import { useUserPreferences } from "../user-preferences/UserPreferencesContext";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
@@ -233,43 +232,12 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     codeExample: ({ value }) => {
-      const { userPreferences } = useUserPreferences();
-      if (userPreferences.userType === "designer") {
-        return (
-          <InteractiveCode
-            marginY={3}
-            layout="preview-only"
-            code={value.reactCode.code}
-          />
-        );
-      }
-      let code;
-      switch (userPreferences.technology) {
-        case "react": {
-          code = value.reactCode?.code ?? "";
-          break;
-        }
-        case "react-native": {
-          code = value.reactNativeCode?.code ?? "";
-          break;
-        }
-        case "elm": {
-          code = value.elmCode?.code ?? "";
-          break;
-        }
-        default:
-          return null;
-      }
+      const code = value.reactCode.value;
 
-      const showCodeBlock =
-        value.layout === "code-only" || userPreferences.technology !== "react";
+      const showCodeBlock = value.layout === "code-only";
 
       return showCodeBlock ? (
-        <CodeBlock
-          my={3}
-          language={userPreferences.technology === "elm" ? "elm" : "tsx"}
-          code={code}
-        />
+        <CodeBlock my={3} language="tsx" code={code} />
       ) : (
         <InteractiveCode
           layout={value.layout}

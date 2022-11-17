@@ -1,5 +1,11 @@
 # @vygruppen/spor-link-react
 
+## 1.0.2
+
+### Patch Changes
+
+- 30f859be: Improve accessibility of related icons
+
 ## 1.0.1
 
 ### Patch Changes

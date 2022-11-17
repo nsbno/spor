@@ -1,5 +1,11 @@
 # @vygruppen/spor-accordion-react
 
+## 1.0.1
+
+### Patch Changes
+
+- 54721c92: Lagt til forwardref for de fleste komponentene
+
 ## 1.0.0
 
 ### Major Changes

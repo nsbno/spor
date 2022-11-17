@@ -1,5 +1,11 @@
 # @vygruppen/spor-layout-react
 
+## 1.1.1
+
+### Patch Changes
+
+- 54721c92: Lagt til forwardref for de fleste komponentene
+
 ## 1.1.0
 
 ### Minor Changes

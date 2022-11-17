@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader
 
+## 0.2.3
+
+### Patch Changes
+
+- 54721c92: Lagt til forwardref for de fleste komponentene
+
 ## 0.2.2
 
 ### Patch Changes

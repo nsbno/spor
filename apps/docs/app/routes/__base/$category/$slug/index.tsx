@@ -20,7 +20,6 @@ import {
 } from "@vygruppen/spor-react";
 import invariant from "tiny-invariant";
 import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
-import { useUserPreferences } from "~/features/user-preferences/UserPreferencesContext";
 import { getClient } from "~/utils/sanity/client";
 import {
   PreviewableLoaderData,
@@ -31,7 +30,6 @@ import {
   isValidPreviewRequest,
 } from "~/utils/sanity/utils";
 import { slugify, toTitleCase } from "~/utils/stringUtils";
-import { getUserPreferencesSession } from "~/utils/userPreferences.server";
 
 type ResourceLink = {
   linkType: "figma" | "react" | "react-native" | "elm";
@@ -69,9 +67,6 @@ export const loader = async ({ params, request }: LoaderArgs) => {
   invariant(params.category, "Expected params.category");
   invariant(params.slug, "Expected params.slug");
 
-  const userPreferencesSession = await getUserPreferencesSession(request);
-  const userPreferences = userPreferencesSession.getUserPreferences();
-
   const query = `*[_type == "article" && category->slug.current == $categorySlug && slug.current == $articleSlug] {
     _id,
     title,
@@ -81,7 +76,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
       title,
       "slug": slug.current
     },
-    resourceLinks[linkType == $technologyPreference || linkType == "figma"],
+    resourceLinks[linkType == "react" || linkType == "figma"],
     content[]{
       _type == 'reference' => @->,
       _type != 'reference' => @,
@@ -100,10 +95,6 @@ export const loader = async ({ params, request }: LoaderArgs) => {
   const queryParams = {
     categorySlug: params.category,
     articleSlug: params.slug,
-    technologyPreference:
-      userPreferences.userType === "developer"
-        ? userPreferences.technology
-        : "figma",
   };
   const isPreview = isValidPreviewRequest(request);
   const initialData = await getClient(isPreview).fetch<
@@ -140,17 +131,11 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 
 export default function ArticlePage() {
   const { data: article, isPreview } = usePreviewableData<Data>();
-  const { userPreferences } = useUserPreferences();
 
   if (!article) {
     return null;
   }
 
-  const showNoImplementationWarning =
-    userPreferences.userType === "developer" &&
-    article?.category?.title === "Komponenter" &&
-    article?.resourceLinks?.filter((link) => link.linkType !== "figma")
-      .length === 0;
   return (
     <>
       <HStack mb={1} justifyContent="space-between">
@@ -159,11 +144,6 @@ export default function ArticlePage() {
             <Badge colorScheme="green">{article?.category?.title}</Badge>
           )}
           {isPreview && <Badge colorScheme="yellow">Preview</Badge>}
-          {showNoImplementationWarning && (
-            <Badge colorScheme="red">
-              Ikke tilgjengelig i {mapLinkToLabel(userPreferences.technology)}
-            </Badge>
-          )}
         </HStack>
         <Flex flexWrap="wrap" gap={2}>
           {article.resourceLinks?.map((link) => (

@@ -1,10 +1,8 @@
 import { PortableText } from "@portabletext/react";
-import { LoaderArgs } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { Box, Card, Heading, Image, SimpleGrid } from "@vygruppen/spor-react";
 import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";
-import { getUserPreferencesSession } from "~/utils/userPreferences.server";
 
 type ComponentData = {
   _id: string;
@@ -14,12 +12,11 @@ type ComponentData = {
   content: any[];
 };
 
-const componentsQuery = async (technologyPreference?: string) => {
+const componentsQuery = async () => {
   const query = `*[
       _type == "article" && 
       category->slug.current == "komponenter" && 
-      slug.current != "oversikt" && 
-      $technologyPreference in resourceLinks[].linkType
+      slug.current != "oversikt"
     ] | order(title asc) {
     _id,
     title,
@@ -27,9 +24,7 @@ const componentsQuery = async (technologyPreference?: string) => {
     mainImage,
     content,
   }`;
-  const componentArticles = await getClient().fetch<ComponentData[]>(query, {
-    technologyPreference,
-  });
+  const componentArticles = await getClient().fetch<ComponentData[]>(query);
 
   if (!componentArticles || !componentArticles.length) {
     throw new Response("Not Found", { status: 404 });
@@ -58,14 +53,8 @@ const articleQuery = async () => {
   return article;
 };
 
-export const loader = async ({ request }: LoaderArgs) => {
-  const session = await getUserPreferencesSession(request);
-  const userPreferences = session.getUserPreferences();
-  const technologyPreference =
-    userPreferences.userType === "developer"
-      ? userPreferences.technology
-      : "figma";
-  const componentsPromise = componentsQuery(technologyPreference);
+export const loader = async () => {
+  const componentsPromise = componentsQuery();
   const articlePromise = articleQuery();
   const [components, article] = await Promise.all([
     componentsPromise,

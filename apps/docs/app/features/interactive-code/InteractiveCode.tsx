@@ -1,5 +1,4 @@
 import { Box, BoxProps, Stack } from "@vygruppen/spor-react";
-import { useUserPreferences } from "../user-preferences/UserPreferencesContext";
 import { LiveEditor } from "./LiveEditor";
 import { LiveError } from "./LiveError";
 import { LivePreview } from "./LivePreview";
@@ -14,7 +13,6 @@ export const InteractiveCode = ({
   layout = "simple",
   ...rest
 }: InteractiveCodeProps) => {
-  const { userPreferences } = useUserPreferences();
   return (
     <Box {...rest}>
       <LiveProvider code={code}>
@@ -22,7 +20,7 @@ export const InteractiveCode = ({
           {layout === "simple" && (
             <>
               <LivePreview />
-              {userPreferences.userType === "developer" && <LiveEditor />}
+              <LiveEditor />
               <LiveError />
             </>
           )}

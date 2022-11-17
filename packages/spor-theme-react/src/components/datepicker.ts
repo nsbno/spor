@@ -121,10 +121,7 @@ const config = helpers.defineMultiStyleConfig({
       transitionSpeed: "fast",
 
       _hover: {
-        boxShadow: getBoxShadowString({
-          borderWidth: 2,
-          borderColor: "darkGrey",
-        }),
+        backgroundColor: "seaMist",
       },
       ...focusVisible({
         focus: {

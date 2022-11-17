@@ -66,10 +66,7 @@ type StyledFieldProps = BoxProps & {
 export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
   ({ children, variant, ...otherProps }, ref) => {
     const { isInvalid } = useFormControlContext();
-    const styles = useMultiStyleConfig("Datepicker", {
-      variant,
-      isInvalid,
-    });
+    const styles = useMultiStyleConfig("Datepicker", { variant });
     return (
       <Box
         sx={styles.wrapper}

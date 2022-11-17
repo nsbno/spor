@@ -1,7 +1,12 @@
 /** This file works as a proxy for all Chakra UI exports */
 export {
+  DarkMode,
+  LightMode,
   useBreakpointValue,
   useClipboard,
+  useColorMode,
+  useColorModePreference,
+  useColorModeValue,
   useControllableProp,
   useDisclosure,
   useMediaQuery,

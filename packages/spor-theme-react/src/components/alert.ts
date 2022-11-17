@@ -29,34 +29,22 @@ const config = helpers.defineMultiStyleConfig({
       paddingRight: 2,
       paddingTop: 1.5,
       paddingBottom: 1.5,
-      position: "relative",
-      ...focusVisible({
-        focus: {
-          boxShadow: getBoxShadowString({
-            borderColor: "darkGrey",
-            borderWidth: 2,
-            baseShadow: "md",
-          }),
-        },
-        notFocus: {
-          boxShadow: "md",
-        },
-      }),
-    },
-
-    iconContainer: {
       padding: 0.5,
-      "[aria-disabled=true] &": {
-        backgroundColor: "darkGrey",
-        color: "white",
+      position: "relative",
+      _focus: {
+        backgroundColor: "blonde",
+        outline: "2px solid",
+        outlineColor: "darkGrey",
       },
     },
-    description: {
-      fontWeight: "normal",
+    iconContainer: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "darkGrey",
     },
     textContainer: {
       color: "darkGrey",
-      paddingRight: 0.5,
       whiteSpace: "nowrap",
     },
   }),
@@ -65,7 +53,6 @@ const config = helpers.defineMultiStyleConfig({
       container: {
         backgroundColor: "banana",
       },
-      padding: 0,
       _hover: {
         backgroundColor: "primerose",
       },

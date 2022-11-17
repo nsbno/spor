@@ -1,5 +1,5 @@
 import { withEmotionCache } from "@emotion/react";
-import { LinksFunction, LoaderFunction, MetaFunction } from "@remix-run/node";
+import { json, LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -8,7 +8,6 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
-  useLoaderData,
 } from "@remix-run/react";
 import { Box, Button, Center, Text } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect } from "react";
@@ -22,18 +21,13 @@ import { BaseLayout } from "./features/layouts/base-layout/BaseLayout";
 import { RootProviders } from "./features/root-providers/RootProviders";
 import { NotFound } from "./features/routes/ressurser/ikoner/NotFound";
 import {
-  UserPreferences,
-  UserPreferencesProvider,
-} from "./features/user-preferences/UserPreferencesContext";
-import {
   getInitialSanityData,
   InitialSanityData,
 } from "./utils/initialSanityData.server";
 import { urlBuilder } from "./utils/sanity/utils";
-import { getUserPreferencesSession } from "./utils/userPreferences.server";
 
 export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
-  if (!data) {
+  if (!data || !data.initialSanityData) {
     return {};
   }
   const { title, description, keywords, socialImage } =
@@ -68,19 +62,14 @@ export const links: LinksFunction = () => {
 };
 
 export type LoaderData = {
-  userPreferences?: UserPreferences;
   initialSanityData: InitialSanityData;
 };
-export const loader: LoaderFunction = async ({ request }) => {
-  const [session, initialSanityData] = await Promise.all([
-    getUserPreferencesSession(request),
-    getInitialSanityData(request),
-  ]);
+export const loader = async () => {
+  const initialSanityData = await getInitialSanityData();
 
-  return {
-    userPreferences: session.getUserPreferences(),
+  return json({
     initialSanityData,
-  };
+  });
 };
 
 /**
@@ -182,14 +171,11 @@ const Document = withEmotionCache(
 );
 
 export default function App() {
-  const { userPreferences } = useLoaderData<LoaderData>();
   return (
     <Document>
-      <UserPreferencesProvider userPreferencesFromCookie={userPreferences}>
-        <BaseLayout>
-          <Outlet />
-        </BaseLayout>
-      </UserPreferencesProvider>
+      <BaseLayout>
+        <Outlet />
+      </BaseLayout>
     </Document>
   );
 }

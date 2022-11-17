@@ -232,7 +232,7 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     codeExample: ({ value }) => {
-      const code = value.reactCode.value;
+      const code = value.reactCode.code;
 
       const showCodeBlock = value.layout === "code-only";
 

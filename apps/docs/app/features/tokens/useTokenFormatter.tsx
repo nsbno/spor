@@ -1,5 +1,4 @@
 import { useCallback } from "react";
-import { useUserPreferences } from "../user-preferences/UserPreferencesContext";
 
 /** Returns a formatter for tokens, which will format any design token to the user's preferred format.
  *
@@ -11,32 +10,12 @@ import { useUserPreferences } from "../user-preferences/UserPreferencesContext";
  * ```
  */
 export function useTokenFormatter() {
-  const { userPreferences } = useUserPreferences();
-  return useCallback(
-    (template: string) => {
-      switch (userPreferences.tokensFormat) {
-        case "javascript":
-          const parts = template
-            .split(".")
-            .map((part) => (part.includes("-") ? `["${part}"]` : part))
-            .join(".")
-            .replace(/\.\[/g, "[");
-          return `tokens.${parts}`;
-        case "css":
-          return `--${cssVariablify(template)}`;
-        case "scss":
-          return `$${cssVariablify(template)}`;
-        case "less":
-          return `@${cssVariablify(template)}`;
-      }
-    },
-    [userPreferences.tokensFormat]
-  );
-}
-
-/**
- * Makes the template string safe to make into a CSS (or SCSS, LESS) variable
- */
-function cssVariablify(string: string) {
-  return string.replace(/\./g, "-").replace(/[\[\]\"]/g, "");
+  return useCallback((template: string) => {
+    const parts = template
+      .split(".")
+      .map((part) => (part.includes("-") ? `["${part}"]` : part))
+      .join(".")
+      .replace(/\.\[/g, "[");
+    return `tokens.${parts}`;
+  }, []);
 }

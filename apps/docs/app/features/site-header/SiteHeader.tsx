@@ -1,8 +1,7 @@
-import { Center, Stack, useDisclosure } from "@chakra-ui/react";
+import { Stack, useDisclosure } from "@chakra-ui/react";
 import { Link, useLocation } from "@remix-run/react";
 import {
   Box,
-  Divider,
   Flex,
   HamburgerFill24Icon,
   IconButton,
@@ -16,8 +15,6 @@ import { useEffect } from "react";
 import { useMenu } from "~/utils/useMenu";
 import { SearchableContentMenu } from "../content-menu/SearchableContentMenu";
 import { NavigationLink, SiteNavigation } from "./SiteNavigation";
-import { UserPreferenceSwitcher } from "./UserPreferenceSwitcher";
-
 
 /** The site header shown at the top of every part of our site */
 export const SiteHeader = () => {
@@ -60,7 +57,6 @@ const DesktopNavigation = () => {
           </NavigationLink>
         ))}
       </SiteNavigation>
-      <UserPreferenceSwitcher />
     </Flex>
   );
 };
@@ -91,10 +87,6 @@ const MobileNavigation = () => {
           <ModalBody py={2} px={[1, 2, 3]}>
             <Stack spacing={2}>
               <SearchableContentMenu />
-              <Divider />
-              <Center>
-                <UserPreferenceSwitcher />
-              </Center>
             </Stack>
           </ModalBody>
         </ModalContent>

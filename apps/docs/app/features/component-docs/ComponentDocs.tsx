@@ -13,7 +13,6 @@ import {
 } from "@vygruppen/spor-react";
 import { CodeBlock } from "../code-block/CodeBlock";
 import { LinkableHeading } from "../linkable-heading/LinkableHeading";
-import { useUserPreferences } from "../user-preferences/UserPreferencesContext";
 
 type ComponentDocsProps = {
   component: {
@@ -30,10 +29,9 @@ type ComponentDocsProps = {
   };
 };
 export const ComponentDocs = ({ component }: ComponentDocsProps) => {
-  const { userPreferences } = useUserPreferences();
   const visibleProps = component.props?.filter((prop) => {
     const platform = prop.platform ?? "react, react-native";
-    return platform.split(", ").includes(userPreferences.technology);
+    return platform.split(", ").includes("react");
   });
   return (
     <Box key={component.name} as="article">

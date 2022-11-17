@@ -1,4 +1,4 @@
-import type { StackProps as ChakraStackProps } from "@chakra-ui/react";
+import { forwardRef, StackProps as ChakraStackProps } from "@chakra-ui/react";
 import { Stack as ChakraStack } from "@chakra-ui/react";
 import React from "react";
 
@@ -34,6 +34,8 @@ export type StackProps = ChakraStackProps & {
  * </Stack>
  * ```
  */
-export const Stack = ({ flexDirection, ...props }: StackProps) => {
-  return <ChakraStack {...props} direction={flexDirection} />;
-};
+export const Stack = forwardRef<StackProps, "div">(
+  ({ flexDirection, ...props }: StackProps, ref) => {
+    return <ChakraStack {...props} direction={flexDirection} ref={ref} />;
+  }
+);

@@ -1,6 +1,7 @@
 import {
   CheckboxGroup as ChakraCheckboxGroup,
   CheckboxGroupProps as ChakraCheckboxGroupProps,
+  forwardRef,
   Stack,
   StackDirection,
 } from "@chakra-ui/react";
@@ -30,14 +31,12 @@ export type CheckboxGroupProps = Exclude<
  *   <Checkbox>First Class</Checkbox>
  * </CheckboxGroup>
  */
-export const CheckboxGroup = ({
-  direction = "row",
-  children,
-  ...props
-}: CheckboxGroupProps) => {
-  return (
-    <ChakraCheckboxGroup {...props}>
-      <Stack flexDirection={direction}>{children}</Stack>
-    </ChakraCheckboxGroup>
-  );
-};
+export const CheckboxGroup = forwardRef<CheckboxGroupProps, "div">(
+  ({ direction = "row", children, ...props }: CheckboxGroupProps) => {
+    return (
+      <ChakraCheckboxGroup {...props}>
+        <Stack flexDirection={direction}>{children}</Stack>
+      </ChakraCheckboxGroup>
+    );
+  }
+);

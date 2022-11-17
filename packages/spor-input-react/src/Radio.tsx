@@ -1,6 +1,8 @@
 import {
+  As,
   Radio as ChakraRadio,
   RadioProps as ChakraRadioProps,
+  forwardRef,
 } from "@chakra-ui/react";
 import React from "react";
 
@@ -27,6 +29,6 @@ export type RadioProps = Exclude<
  *   <Radio value="first-class">First Class</Radio>
  * </RadioGroup>
  */
-export const Radio = (props: RadioProps) => {
-  return <ChakraRadio {...props} />;
-};
+export const Radio = forwardRef<RadioProps, "input">((props, ref) => {
+  return <ChakraRadio {...props} ref={ref} />;
+});

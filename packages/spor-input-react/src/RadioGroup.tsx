@@ -1,4 +1,5 @@
 import {
+  forwardRef,
   RadioGroup as ChakraRadioGroup,
   RadioGroupProps as ChakraRadioGroupProps,
   Stack,
@@ -35,14 +36,12 @@ export type RadioGroupProps = Exclude<
  * </RadioGroup>
  * ```
  */
-export const RadioGroup = ({
-  children,
-  direction = "row",
-  ...rest
-}: RadioGroupProps) => {
-  return (
-    <ChakraRadioGroup {...rest}>
-      <Stack direction={direction}>{children}</Stack>
-    </ChakraRadioGroup>
-  );
-};
+export const RadioGroup = forwardRef<RadioGroupProps, "div">(
+  ({ children, direction = "row", ...rest }: RadioGroupProps, ref) => {
+    return (
+      <ChakraRadioGroup {...rest} ref={ref}>
+        <Stack direction={direction}>{children}</Stack>
+      </ChakraRadioGroup>
+    );
+  }
+);

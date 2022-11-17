@@ -50,7 +50,7 @@ const config = helpers.defineMultiStyleConfig({
         },
 
         _focus: {
-          backgroundColor: "seaMist",
+          backgroundColor: "white",
           color: "azure",
         },
         _disabled: {

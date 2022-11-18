@@ -234,17 +234,18 @@ const components: Partial<PortableTextReactComponents> = {
     codeExample: ({ value }) => {
       const code = value.reactCode.code;
 
-      const showCodeBlock = value.layout === "code-only";
+      if (value.layout === "code-only") {
+        return <CodeBlock marginY={3} language="tsx" code={code} />;
+      }
 
-      return showCodeBlock ? (
-        <CodeBlock my={3} language="tsx" code={code} />
-      ) : (
-        <InteractiveCode
-          layout={value.layout}
-          my={3}
-          maxWidth={`calc(100vw - var(--spor-space-6))`}
-          code={code}
-        />
+      return (
+        <Box paddingBottom={3}>
+          <InteractiveCode
+            layout={value.layout}
+            maxWidth={`calc(100vw - var(--spor-space-6))`}
+            code={code}
+          />
+        </Box>
       );
     },
     component: ({ value }) => {

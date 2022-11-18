@@ -6,6 +6,7 @@ import {
 import React from "react";
 
 export type SwitchProps = Exclude<ChakraSwitchProps, "colorScheme"> & {
+  /** @deprecated The outline variant is deprecated. Stop using the variant prop, as it will no longer apply */
   variant?: "solid" | "outline";
   size?: "sm" | "md" | "lg";
 };
@@ -32,7 +33,7 @@ export type SwitchProps = Exclude<ChakraSwitchProps, "colorScheme"> & {
  * ```
  */
 export const Switch = forwardRef<SwitchProps, "input">(
-  ({ variant = "solid", size = "md", ...props }: SwitchProps, ref) => {
-    return <ChakraSwitch variant={variant} size={size} {...props} ref={ref} />;
+  ({ size = "md", ...props }: SwitchProps, ref) => {
+    return <ChakraSwitch variant="solid" size={size} {...props} ref={ref} />;
   }
 );

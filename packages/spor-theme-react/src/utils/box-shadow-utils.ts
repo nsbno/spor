@@ -10,12 +10,14 @@ type GetBoxShadowStringArgs = {
 /**
  * A utility for creating box shadow strings
  */
-export const getBoxShadowString = ({
-  baseShadow,
-  borderColor,
-  borderWidth = 1,
-  isInset = true,
-}: GetBoxShadowStringArgs) => {
+export const getBoxShadowString = (
+  args: GetBoxShadowStringArgs | GetBoxShadowStringArgs[]
+): string => {
+  if (Array.isArray(args)) {
+    return args.map((arg) => getBoxShadowString(arg)).join(", ");
+  }
+
+  const { baseShadow, borderColor, borderWidth = 1, isInset = true } = args;
   const allShadows: string[] = [];
 
   if (borderColor) {

@@ -12,5 +12,5 @@ type FocusArgs = {
 export const focusVisible = ({ notFocus, focus }: FocusArgs) => ({
   _focus: focus,
   _focusVisible: focus,
-  "&:focus:not(:focus-visible)": notFocus,
+  "&[data-focus]:not([data-focus-visible])": notFocus,
 });

@@ -1,3 +1,4 @@
+import { ColorModeScript } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
 import { json, LinksFunction, MetaFunction } from "@remix-run/node";
 import {
@@ -160,6 +161,7 @@ const Document = withEmotionCache(
           ))}
         </head>
         <body>
+          <ColorModeScript />
           <RootProviders>{children}</RootProviders>
           <ScrollRestoration />
           <Scripts />

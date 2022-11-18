@@ -1,7 +1,9 @@
 import { switchAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { calc, cssVar } from "@chakra-ui/theme-tools";
+import { calc, cssVar, mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
+import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { focusVisible } from "../utils/focus-utils";
 
 const $width = cssVar("switch-track-width");
 const $height = cssVar("switch-track-height");
@@ -27,8 +29,7 @@ const config = helpers.defineMultiStyleConfig({
       transitionDuration: "fast",
 
       _disabled: {
-        opacity: 0.4,
-        cursor: "not-allowed",
+        pointerEvents: "none",
       },
     },
     thumb: {
@@ -43,31 +44,117 @@ const config = helpers.defineMultiStyleConfig({
     },
   },
   variants: {
-    solid: {
+    solid: ({ colorMode }) => ({
       track: {
         backgroundColor: "osloGrey",
+        boxShadow: mode(
+          "none",
+          getBoxShadowString({
+            borderColor: colors.whiteAlpha[400],
+          })
+        )({ colorMode }),
 
-        _focus: {
-          boxShadow: "outline",
-        },
+        ...focusVisible({
+          focus: {
+            boxShadow: mode(
+              getBoxShadowString([
+                {
+                  borderColor: "white",
+                  borderWidth: 2,
+                  isInset: false,
+                },
+                {
+                  borderColor: "primaryGreen",
+                  borderWidth: 4,
+                  isInset: false,
+                },
+              ]),
+              getBoxShadowString({
+                borderColor: "coralGreen",
+                borderWidth: 2,
+                isInset: false,
+              })
+            )({ colorMode }),
+          },
+          notFocus: {
+            boxShadow: mode(
+              "none",
+              getBoxShadowString({
+                borderColor: colors.whiteAlpha[400],
+              })
+            )({ colorMode }),
+          },
+        }),
         _hover: {
           backgroundColor: "steel",
+          boxShadow: mode(
+            "none",
+            getBoxShadowString({ borderColor: colors.white })
+          )({ colorMode }),
         },
         _checked: {
-          backgroundColor: "darkTeal",
+          backgroundColor: mode("darkTeal", "celadon")({ colorMode }),
+          ...focusVisible({
+            focus: {
+              boxShadow: mode(
+                getBoxShadowString([
+                  {
+                    borderColor: "white",
+                    borderWidth: 2,
+                    isInset: false,
+                  },
+                  {
+                    borderColor: "primaryGreen",
+                    borderWidth: 4,
+                    isInset: false,
+                  },
+                ]),
+                getBoxShadowString({
+                  borderWidth: 2,
+                  borderColor: "coralGreen",
+                  isInset: false,
+                })
+              )({ colorMode }),
+            },
+            notFocus: {
+              boxShadow: mode(
+                "none",
+                getBoxShadowString({ borderColor: colors.white })
+              )({ colorMode }),
+            },
+          }),
+
           _hover: {
-            backgroundColor: "pine",
+            backgroundColor: mode("pine", "river")({ colorMode }),
+            boxShadow: mode(
+              "none",
+              getBoxShadowString({ borderColor: colors.white })
+            )({ colorMode }),
           },
-          _focus: {
-            boxShadow: `0 0 0 4px ${colors.greenHaze}, 0 0 0 2px ${colors.white}`,
+        },
+        _disabled: {
+          backgroundColor: mode("platinum", "dimGrey")({ colorMode }),
+          boxShadow: mode(
+            "none",
+            getBoxShadowString({ borderColor: colors.whiteAlpha[400] })
+          )({ colorMode }),
+          _checked: {
+            backgroundColor: mode("platinum", "dimGrey")({ colorMode }),
+            boxShadow: mode(
+              "none",
+              getBoxShadowString({ borderColor: colors.whiteAlpha[400] })
+            )({ colorMode }),
           },
         },
       },
 
       thumb: {
         backgroundColor: "white",
+        "[data-disabled] &": {
+          backgroundColor: "steel",
+        },
       },
-    },
+    }),
     outline: {
       track: {
         backgroundColor: "platinum",

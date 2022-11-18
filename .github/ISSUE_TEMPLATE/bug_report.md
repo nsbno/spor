@@ -1,29 +1,25 @@
 ---
-name: Bug report
-about: Help us make Spor better by telling us what's wrong!
-title: ''
+name: Bug-rapport
+about: Hjelp oss gjøre Spor bedre ved å si ifra om feil!
+title: ""
 labels: bug
-assignees: selbekk
-
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is, and when it shows up
+**Hva er feil**
+Beskriv kort og godt hva feilen er.
 
-**To Reproduce**
-You can create a reproduction with our [CodeSandbox template](https://codesandbox.io/s/spor-react-typescript-template-wej0dq).
+**Hvordan reprodusere**
+Om det gjelder React, kan du lage en reproduksjon med denne [CodeSandbox templaten](https://codesandbox.io/s/spor-react-typescript-template-wej0dq).
 
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+Steg for å reprodusere
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+1. Gå til '...'
+2. Trykk på '....'
+3. Scroll ned til '....'
+4. Se feil
+
+**Hva forventet du skulle skje, og hva skjedde?**
+…
 
 **Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-**Additional context**
-Add any other context about the problem here.
+Legg gjerne ved relevante screenshots

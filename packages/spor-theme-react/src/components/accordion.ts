@@ -1,5 +1,6 @@
 import { accordionAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
+import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
 
@@ -62,7 +63,9 @@ const config = helpers.defineMultiStyleConfig({
     },
     outline: {
       container: {
-        boxShadow: getBoxShadowString({ borderColor: "osloGrey" }),
+        boxShadow: getBoxShadowString({
+          borderColor: colors.blackAlpha["400"],
+        }),
       },
       button: {
         _expanded: {

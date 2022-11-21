@@ -1,5 +1,11 @@
 # @vygruppen/spor-input-react
 
+## 1.1.2
+
+### Patch Changes
+
+- c87f09f3: Add support for dark mode on switches
+
 ## 1.1.1
 
 ### Patch Changes

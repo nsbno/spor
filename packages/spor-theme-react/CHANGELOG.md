@@ -1,5 +1,12 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.6
+
+### Patch Changes
+
+- c87f09f3: Add support for dark mode on switches
+- bb8a25ce: Fix outline color for datepicker, accordion, switch, input and tabs
+
 ## 1.0.5
 
 ### Patch Changes

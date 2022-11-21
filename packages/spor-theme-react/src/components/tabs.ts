@@ -267,7 +267,7 @@ const getTablistColorSchemeProps = (props: StyleFunctionProps) => {
       return {
         backgroundColor: "white",
         color: "darkGrey",
-        boxShadow: `inset 0 0 0 1px ${props.theme.colors.darkGrey}`,
+        boxShadow: `inset 0 0 0 1px ${props.theme.colors.blackAlpha["400"]}`,
       };
     case "green":
       return { backgroundColor: "mint", color: "darkTeal" };

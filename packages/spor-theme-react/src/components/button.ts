@@ -1,5 +1,6 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
+import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
 
@@ -29,12 +30,12 @@ const config = defineStyleConfig({
     },
   },
   variants: {
-    control: ({ theme }) => ({
+    control: {
       backgroundColor: "darkTeal",
       color: "white",
       ...focusVisible({
         focus: {
-          boxShadow: `inset 0 0 0 4px ${theme.colors.darkTeal}, inset 0 0 0 6px currentColor`,
+          boxShadow: `inset 0 0 0 4px ${colors.darkTeal}, inset 0 0 0 6px currentColor`,
         },
         notFocus: { boxShadow: "none" },
       }),
@@ -44,13 +45,13 @@ const config = defineStyleConfig({
       _active: {
         backgroundColor: "pine",
       },
-    }),
-    primary: ({ theme }) => ({
+    },
+    primary: {
       backgroundColor: "primaryGreen",
       color: "white",
       ...focusVisible({
         focus: {
-          boxShadow: `inset 0 0 0 4px ${theme.colors.primaryGreen}, inset 0 0 0 4px ${theme.colors.primaryGreen}, inset 0 0 0 6px currentColor`,
+          boxShadow: `inset 0 0 0 4px ${colors.primaryGreen}, inset 0 0 0 4px ${colors.primaryGreen}, inset 0 0 0 6px currentColor`,
         },
         notFocus: { boxShadow: "none" },
       }),
@@ -60,13 +61,13 @@ const config = defineStyleConfig({
       _active: {
         backgroundColor: "azure",
       },
-    }),
-    secondary: ({ theme }) => ({
+    },
+    secondary: {
       backgroundColor: "coralGreen",
       color: "darkTeal",
       ...focusVisible({
         focus: {
-          boxShadow: `inset 0 0 0 4px ${theme.colors.coralGreen}, inset 0 0 0 4px ${theme.colors.coralGreen}, inset 0 0 0 6px currentColor`,
+          boxShadow: `inset 0 0 0 4px ${colors.coralGreen}, inset 0 0 0 4px ${colors.coralGreen}, inset 0 0 0 6px currentColor`,
         },
         notFocus: {
           boxShadow: "none",
@@ -78,14 +79,14 @@ const config = defineStyleConfig({
       _active: {
         backgroundColor: "mint",
       },
-    }),
-    tertiary: ({ theme }) => ({
+    },
+    tertiary: {
       backgroundColor: "mint",
       color: "darkGrey",
       fontWeight: "normal",
       ...focusVisible({
         focus: {
-          boxShadow: `inset 0 0 0 4px ${theme.colors.mint}, inset 0 0 0 4px ${theme.colors.mint}, inset 0 0 0 6px currentColor`,
+          boxShadow: `inset 0 0 0 4px ${colors.mint}, inset 0 0 0 4px ${colors.mint}, inset 0 0 0 6px currentColor`,
         },
         notFocus: { boxShadow: "none" },
       }),
@@ -95,14 +96,14 @@ const config = defineStyleConfig({
       _active: {
         backgroundColor: "lightGrey",
       },
-    }),
-    additional: ({ theme, colorMode }) => ({
+    },
+    additional: ({ colorMode }) => ({
       backgroundColor: "transparent",
       color: mode("darkGrey", "white")({ colorMode }),
       fontWeight: "normal",
       boxShadow: `inset 0 0 0 1px ${mode(
-        theme.colors.blackAlpha[400],
-        theme.colors.whiteAlpha[400]
+        colors.blackAlpha[400],
+        colors.whiteAlpha[400]
       )({ colorMode })}`,
       ...focusVisible({
         focus: {
@@ -113,8 +114,8 @@ const config = defineStyleConfig({
         },
         notFocus: {
           boxShadow: `inset 0 0 0 1px ${mode(
-            theme.colors.blackAlpha[400],
-            theme.colors.whiteAlpha[400]
+            colors.blackAlpha[400],
+            colors.whiteAlpha[400]
           )({ colorMode })}`,
         },
       }),
@@ -123,13 +124,10 @@ const config = defineStyleConfig({
       },
       _active: {
         boxShadow: `inset 0 0 0 1px ${mode(
-          theme.colors.blackAlpha[400],
-          theme.colors.whiteAlpha[300]
+          colors.blackAlpha[400],
+          colors.whiteAlpha[300]
         )({ colorMode })}`,
-        backgroundColor: mode(
-          "mint",
-          theme.colors.whiteAlpha[300]
-        )({ colorMode }),
+        backgroundColor: mode("mint", colors.whiteAlpha[300])({ colorMode }),
       },
     }),
     ghost: () => ({

@@ -158,8 +158,9 @@ const config = helpers.defineMultiStyleConfig({
     outline: {
       track: {
         backgroundColor: "platinum",
-        boxShadow: `0 0 0 1px ${colors.darkGrey}`,
-
+        boxShadow: getBoxShadowString({
+          borderColor: colors.blackAlpha["400"],
+        }),
         _focus: {
           backgroundColor: "platinum",
           boxShadow: `0 0 0 2px ${colors.greenHaze}`,

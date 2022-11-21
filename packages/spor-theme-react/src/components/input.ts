@@ -1,5 +1,6 @@
 import { inputAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
 
@@ -21,7 +22,7 @@ const config = helpers.defineMultiStyleConfig({
       height: "54px",
       fontSize: "18px",
 
-      boxShadow: getBoxShadowString({ borderColor: "darkGrey" }),
+      boxShadow: getBoxShadowString({ borderColor: colors.blackAlpha[400] }),
       _hover: {
         boxShadow: getBoxShadowString({
           borderColor: "darkGrey",

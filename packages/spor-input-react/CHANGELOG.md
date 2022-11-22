@@ -1,5 +1,13 @@
 # @vygruppen/spor-input-react
 
+## 1.1.3
+
+### Patch Changes
+
+- 0a7e3b44: Add support for nynorsk texts
+- Updated dependencies [0a7e3b44]
+  - @vygruppen/spor-i18n-react@1.1.0
+
 ## 1.1.2
 
 ### Patch Changes

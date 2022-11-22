@@ -1,6 +1,6 @@
 import { PopoverBody, usePopoverContext } from "@chakra-ui/react";
 import { Button } from "@vygruppen/spor-button-react";
-import { Language, useTranslation } from "@vygruppen/spor-i18n-react";
+import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
 import { Box, Flex, Stack } from "@vygruppen/spor-layout-react";
 import * as React from "react";
@@ -77,15 +77,17 @@ const NextStepButton = ({ isLastStep, onNext }: NextStepButtonProps) => {
   );
 };
 
-const texts = {
+const texts = createTexts({
   nextStep: {
-    [Language.NorwegianBokmal]: "Neste",
-    [Language.Swedish]: "Nästa",
-    [Language.English]: "Next",
+    nb: "Neste",
+    nn: "Neste",
+    sv: "Nästa",
+    en: "Next",
   },
   finish: {
-    [Language.NorwegianBokmal]: "Fullfør",
-    [Language.Swedish]: "Fullför",
-    [Language.English]: "Finish",
+    nb: "Fullfør",
+    nn: "Fullfør",
+    sv: "Fullför",
+    en: "Finish",
   },
-};
+});

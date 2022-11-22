@@ -50,47 +50,51 @@ const ExampleComponent = () => {
 In order to translate this, we need to first write up the texts and translations. Let's create an object:
 
 ```tsx
-import { Translations } from "@vygruppen/spor-i18n-react";
+import { createTexts } from "@vygruppen/spor-i18n-react";
 const ExampleComponent = () => {
   return <Box>I need to be translated</Box>;
 };
-const texts: Translations = {
+const texts = createTexts({
   iAmTranslated: {
     nb: "Jeg er oversatt",
+    nn: "Jeg er oversatt",
     en: "I am translated",
     sv: "Jag är översatt",
   },
-};
+});
 ```
+
+The `createTexts` function doesn't really do anything to the object you pass in, but enables another layer of type safety and code completion. Consider it an optional recommendation.
 
 Now, we call the `useTranslation` hook, and destructure out the translation function `t`. This is the one you pass your texts to.
 
 This is the final result:
 
 ```tsx
-import { useTranslation, Translations } from "@vygruppen/spor-i18n-react";
+import { useTranslation, createTexts } from "@vygruppen/spor-i18n-react";
 const ExampleComponent = () => {
   const { t } = useTranslation();
   return <Box>{t(texts.iAmTranslated)}</Box>;
 };
-const texts: Translations = {
+const texts = createTexts({
   iAmTranslated: {
     nb: "Jeg er oversatt",
+    nn: "Eg er oversatt",
     en: "I am translated",
     sv: "Jag är översatt",
   },
-};
+});
 ```
 
 Note that you can nest these `texts` objects as deep as you like. The values of each language can also be a function, if you need to interpolate some values:
 
 ```tsx
-const texts: Translations = {
-  greeting: {
-    nb: (name) => `Hei ${name}!`,
-    en: (name) => `Hello ${name}!`,
-    sv: (name) => `Hej ${name}!`,
-  },
+const texts = createTexts({
+  greeting: (name) => ({
+    nb: `Hei ${name}!`,
+    en: `Hello ${name}!`,
+    sv: `Hej ${name}!`,
+  }),
 };
 ```
 

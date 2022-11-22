@@ -1,5 +1,5 @@
 import { BoxProps, Center, useMultiStyleConfig } from "@chakra-ui/react";
-import { useTranslation } from "@vygruppen/spor-i18n-react";
+import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import React from "react";
 import { SkipNextIcon, SkipPreviousIcon } from "./icons";
 
@@ -12,11 +12,11 @@ type SkipButtonProps = BoxProps & {
 };
 /**
  * A skip button.
- * 
+ *
  * Intended to skip to the next section, chapter og similar.
- * 
+ *
  * Specify what direction you want to skip with the `direction` prop.
- * 
+ *
  * ```tsx
  * <SkipButton direction="forward" onClick={onNextChapter} />
  * ```
@@ -50,15 +50,17 @@ export const SkipButton = ({
   );
 };
 
-const texts = {
+const texts = createTexts({
   next: {
     nb: "Neste",
+    nn: "Neste",
     sv: "Nästa",
     en: "Next",
   },
   previous: {
     nb: "Forrige",
+    nn: "Forrige",
     sv: "Föregående",
     en: "Previous",
   },
-};
+});

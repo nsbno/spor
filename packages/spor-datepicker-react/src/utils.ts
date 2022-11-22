@@ -9,6 +9,8 @@ export const useCurrentLocale = () => {
   switch (language) {
     case "nb":
       return "no";
+    case "nn":
+      return "no";
     case "sv":
       return "sv";
     case "en":

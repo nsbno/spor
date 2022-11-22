@@ -10,6 +10,7 @@ import { useCurrentLocale } from "./utils";
 
 const weekDays: Record<Language, string[]> = {
   nb: ["Ma", "Ti", "On", "To", "Fr", "Lø", "Sø"],
+  nn: ["Ma", "Ti", "On", "To", "Fr", "Lø", "Sø"],
   sv: ["Må", "Ti", "On", "To", "Fr", "Lö", "Sö"],
   en: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
 };

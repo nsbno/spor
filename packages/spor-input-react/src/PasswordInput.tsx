@@ -4,7 +4,7 @@ import {
   Input as ChakraInput,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useTranslation } from "@vygruppen/spor-i18n-react";
+import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import React from "react";
 import {
   FormLabel,
@@ -49,15 +49,17 @@ export const PasswordInput = forwardRef<PasswordInputProps, "input">(
   }
 );
 
-const texts = {
+const texts = createTexts({
   showPassword: {
     nb: "Vis",
+    nn: "Vis",
     en: "Show",
     sv: "Visa",
   },
   hidePassword: {
     nb: "Skjul",
+    nn: "Skjul",
     en: "Hide",
     sv: "Dölj",
   },
-};
+});

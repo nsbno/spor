@@ -4,7 +4,7 @@ import {
   Input as ChakraInput,
   InputProps as ChakraInputProps,
 } from "@chakra-ui/react";
-import { Language, useTranslation } from "@vygruppen/spor-i18n-react";
+import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import {
   CloseOutline24Icon,
   SearchOutline24Icon,
@@ -68,15 +68,17 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
   }
 );
 
-const texts = {
+const texts = createTexts({
   label: {
-    [Language.NorwegianBokmal]: "Søk",
-    [Language.Swedish]: "Sök",
-    [Language.English]: "Search",
+    nb: "Søk",
+    nn: "Søk",
+    sv: "Sök",
+    en: "Search",
   },
   reset: {
-    [Language.NorwegianBokmal]: "Tøm søkefeltet",
-    [Language.Swedish]: "Rensa sökrutan",
-    [Language.English]: "Reset search field",
+    nb: "Tøm søkefeltet",
+    nn: "Tøm søkefelt",
+    sv: "Rensa sökrutan",
+    en: "Reset search field",
   },
-};
+});

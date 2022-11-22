@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import { AriaButtonProps } from "@react-aria/button";
-import { useTranslation } from "@vygruppen/spor-i18n-react";
+import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import {
   ArrowLeftOutline24Icon,
   ArrowRightOutline24Icon,
@@ -49,15 +49,17 @@ export function CalendarHeader({
 const capitalize = (str: string = "") =>
   str.charAt(0).toUpperCase() + str.slice(1);
 
-const texts = {
+const texts = createTexts({
   previousMonth: {
     nb: "Forrige måned",
+    nn: "Forrige månad",
     sv: "Föregående månad",
     en: "Previous month",
   },
   nextMonth: {
     nb: "Neste måned",
+    nn: "Neste månad",
     sv: "Nästa månad",
     en: "Next month",
   },
-};
+});

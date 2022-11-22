@@ -1,12 +1,11 @@
 import {
-  As,
   Box,
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
   Center,
   forwardRef,
 } from "@chakra-ui/react";
-import { useTranslation } from "@vygruppen/spor-i18n-react";
+import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import { ColorInlineLoader } from "@vygruppen/spor-loader-react";
 import React from "react";
 
@@ -128,10 +127,11 @@ function useCorrectAriaLabel(props: ButtonProps) {
   return props["aria-label"];
 }
 
-const texts = {
+const texts = createTexts({
   loadingText: {
     nb: "Laster…",
+    nn: "Lastar…",
     en: "Loading…",
     sv: "Laddar…",
   },
-};
+});

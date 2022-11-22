@@ -1,5 +1,14 @@
 # @vygruppen/spor-popover-react
 
+## 1.0.1
+
+### Patch Changes
+
+- 0a7e3b44: Add support for nynorsk texts
+- Updated dependencies [0a7e3b44]
+  - @vygruppen/spor-i18n-react@1.1.0
+  - @vygruppen/spor-button-react@1.0.3
+
 ## 1.0.0
 
 ### Major Changes

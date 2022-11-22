@@ -1,5 +1,11 @@
 # @vygruppen/spor-i18n-react
 
+## 1.1.0
+
+### Minor Changes
+
+- 0a7e3b44: Add support for nynorsk texts
+
 ## 1.0.0
 
 ### Major Changes

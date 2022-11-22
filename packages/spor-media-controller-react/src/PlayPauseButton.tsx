@@ -1,5 +1,5 @@
 import { BoxProps, Center, useMultiStyleConfig } from "@chakra-ui/react";
-import { useTranslation } from "@vygruppen/spor-i18n-react";
+import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import React from "react";
 import { PauseIcon, PlayIcon } from "./icons";
 
@@ -51,15 +51,17 @@ export const PlayPauseButton = ({
   );
 };
 
-const texts = {
+const texts = createTexts({
   pause: {
     nb: "Pause",
+    nn: "Pause",
     sv: "Paus",
     en: "Pause",
   },
   play: {
     nb: "Spill av",
+    nn: "Spill av",
     sv: "Spel av",
     en: "Play",
   },
-};
+});

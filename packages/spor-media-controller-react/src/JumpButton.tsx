@@ -1,5 +1,5 @@
 import { BoxProps, Center, useMultiStyleConfig } from "@chakra-ui/react";
-import { useTranslation } from "@vygruppen/spor-i18n-react";
+import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import React from "react";
 import { JumpBackwardIcon, JumpForwardIcon } from "./icons";
 
@@ -53,15 +53,17 @@ export const JumpButton = ({
   );
 };
 
-const texts = {
+const texts = createTexts({
   forward: {
     nb: "15 sekunder frem",
+    nn: "15 sekunder fram",
     sv: "15 sekunder framåt",
     en: "15 seconds forward",
   },
   backward: {
     nb: "15 sekunder tilbake",
+    nn: "15 sekunder tilbake",
     sv: "15 sekunder tillbaka",
     en: "15 seconds backward",
   },
-};
+});

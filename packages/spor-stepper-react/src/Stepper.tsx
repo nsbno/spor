@@ -1,6 +1,6 @@
 import { Flex, HStack, useMultiStyleConfig } from "@chakra-ui/react";
 import { IconButton } from "@vygruppen/spor-button-react";
-import { Language, useTranslation } from "@vygruppen/spor-i18n-react";
+import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import { DropdownLeftFill24Icon } from "@vygruppen/spor-icon-react";
 import { Box } from "@vygruppen/spor-layout-react";
 import { SimplePopover } from "@vygruppen/spor-popover-react";
@@ -96,15 +96,17 @@ export const Stepper = ({
   );
 };
 
-const texts = {
-  stepsOf: (activeStep: number, numberOfSteps: number) => ({
-    [Language.NorwegianBokmal]: `Steg ${activeStep} av ${numberOfSteps}`,
-    [Language.Swedish]: `Steg ${activeStep} av ${numberOfSteps}`,
-    [Language.English]: `Step ${activeStep} of ${numberOfSteps}`,
+const texts = createTexts({
+  stepsOf: (activeStep, numberOfSteps) => ({
+    nb: `Steg ${activeStep} av ${numberOfSteps}`,
+    nn: `Steg ${activeStep} av ${numberOfSteps}`,
+    sv: `Steg ${activeStep} av ${numberOfSteps}`,
+    en: `Step ${activeStep} of ${numberOfSteps}`,
   }),
   back: {
-    [Language.NorwegianBokmal]: "Tilbake",
-    [Language.Swedish]: "Tillbaka",
-    [Language.English]: "Back",
+    nb: "Tilbake",
+    nn: "Tilbake",
+    sv: "Tillbaka",
+    en: "Back",
   },
-};
+});

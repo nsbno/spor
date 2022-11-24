@@ -1,15 +1,12 @@
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import { border, createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy } from "@chakra-ui/theme-tools";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
 
 const parts = anatomy("alert").parts(
   "container",
   "iconContainer",
-  "icon",
   "textContainer",
-  "title",
-  "description"
+  "title"
 );
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
@@ -20,38 +17,47 @@ const config = helpers.defineMultiStyleConfig({
       display: "inline-flex",
       alignItems: "center",
       width: "fit-content",
-      justifyContent: "center",
+      justifyContent: ["space-between", "center"],
       transitionDuration: "fast",
       transitionProperty: "common",
       fontSize: ["mobile.sm", "desktop.sm"],
+      border: 0,
+      whiteSpace: "nowrap",
+      px: 1,
       borderRadius: "sm",
       paddingLeft: 2,
       paddingRight: 2,
-      paddingTop: 1.5,
-      paddingBottom: 1.5,
+      paddingTop: 2,
+      paddingBottom: 2,
       padding: 0.5,
       position: "relative",
-      _focus: {
-        backgroundColor: "blonde",
-        outline: "2px solid",
-        outlineColor: "darkGrey",
-      },
+      ...focusVisible({
+        focus: {
+          color: "white",
+          border: "2px solid",
+          borderColor: "darkGrey",
+        },
+        notFocus: { boxShadow: "none" },
+      }),
     },
     iconContainer: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "darkGrey",
+      padding: 1,
+      color: "darkGrey",
     },
     textContainer: {
       color: "darkGrey",
       whiteSpace: "nowrap",
     },
+    title: {
+      display: "-webkit-box",
+      WebkitBoxOrient: "vertical",
+      textAlign: "right",
+    },
   }),
   variants: {
     warning: {
       container: {
-        backgroundColor: "banana",
+        backgroundColor: "blonde",
       },
       _hover: {
         backgroundColor: "primerose",
@@ -60,24 +66,48 @@ const config = helpers.defineMultiStyleConfig({
         backgroundColor: "cornsilk",
       },
     },
-    allTransport: {
-      container: {
-        backgroundColor: "blonde",
-      },
-    },
-    error: {
-      container: {
-        backgroundColor: "lightRed",
-      },
-    },
     success: {
       container: {
         backgroundColor: "seaMist",
+        _hover: {
+          backgroundColor: "coralGreen",
+        },
+        _active: {
+          backgroundColor: "mint",
+        },
       },
     },
     info: {
       container: {
         backgroundColor: "lightBlue",
+        _hover: {
+          backgroundColor: "cloudy",
+        },
+        _active: {
+          backgroundColor: "icyBlue",
+        },
+      },
+    },
+    allTransport: {
+      container: {
+        backgroundColor: "banana",
+        _hover: {
+          backgroundColor: "burntYellow",
+        },
+        _active: {
+          backgroundColor: "primerose",
+        },
+      },
+    },
+    error: {
+      container: {
+        backgroundColor: "lightRed",
+        _hover: {
+          backgroundColor: "salmon",
+        },
+        _active: {
+          backgroundColor: "pink",
+        },
       },
     },
   },

@@ -1,14 +1,6 @@
 import React from "react";
 import { Box, BoxProps } from "@vygruppen/spor-layout-react";
-import {
-  AccordionIcon,
-  As,
-  chakra,
-  forwardRef,
-  InputLeftElement,
-  useMultiStyleConfig,
-  useStyleConfig,
-} from "@chakra-ui/react";
+import { As, forwardRef, useMultiStyleConfig } from "@chakra-ui/react";
 
 export type AlertProps = BoxProps & {
   children: React.ReactNode;
@@ -22,7 +14,7 @@ export const Alert = forwardRef<AlertProps, As<any>>(
     const style = useMultiStyleConfig("Alert", { variant });
     return (
       <Box {...props} __css={style.container}>
-        <Box mr={4}>{leftIcon}</Box>
+        <Box __css={style.iconContainer}>{leftIcon}</Box>
         <Box __css={style.textContainer}>
           {title && (
             <Box as="span" __css={style.title}>
@@ -30,7 +22,8 @@ export const Alert = forwardRef<AlertProps, As<any>>(
             </Box>
           )}
         </Box>
-        {children}
+        {children && <Box as="span">{children}</Box>}
+        <Box ml={11}>{rightIcon}</Box>
       </Box>
     );
   }

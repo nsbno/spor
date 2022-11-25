@@ -42,6 +42,7 @@
     "@vygruppen/spor-tab-react": "*",
     "@vygruppen/spor-typography-react": "*",
     "@vygruppen/spor-util-react": "*",
+    "@vygruppen/spor-alert-react": "*",
     "@chakra-ui/react": "^2.3.5",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",

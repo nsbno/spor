@@ -10,10 +10,13 @@ export type AlertProps = BoxProps & {
   rightIcon: React.ReactNode;
 };
 export const Alert = forwardRef<AlertProps, As<any>>(
-  ({ children, variant, title, leftIcon, rightIcon, ...props }: AlertProps) => {
+  (
+    { children, variant, title, leftIcon, rightIcon, ...props }: AlertProps,
+    ref
+  ) => {
     const style = useMultiStyleConfig("Alert", { variant });
     return (
-      <Box {...props} __css={style.container}>
+      <Box {...props} ref={ref} __css={style.container}>
         <Box __css={style.iconContainer}>{leftIcon}</Box>
         <Box __css={style.textContainer}>
           {title && (

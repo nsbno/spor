@@ -1,4 +1,4 @@
-import { border, createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy } from "@chakra-ui/theme-tools";
 import { focusVisible } from "../utils/focus-utils";
 
@@ -25,10 +25,6 @@ const config = helpers.defineMultiStyleConfig({
       whiteSpace: "nowrap",
       px: 1,
       borderRadius: "sm",
-      paddingLeft: 2,
-      paddingRight: 2,
-      paddingTop: 2,
-      paddingBottom: 2,
       padding: 0.5,
       position: "relative",
       ...focusVisible({
@@ -49,9 +45,8 @@ const config = helpers.defineMultiStyleConfig({
       whiteSpace: "nowrap",
     },
     title: {
-      display: "-webkit-box",
       WebkitBoxOrient: "vertical",
-      textAlign: "right",
+      fontWeight: "normal",
     },
   }),
   variants: {

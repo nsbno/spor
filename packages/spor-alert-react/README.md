@@ -11,8 +11,9 @@ $ npm install @vygruppen/spor-alert-react
 ## Usage
 
 ```tsx
-import { } from "@vygruppen/spor-alert-react";
+import { Alert } from "@vygruppen/spor-alert-react";
 ```
+
 TODO: Add usage description
 
 ## Development

@@ -22,7 +22,7 @@
   "devDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@chakra-ui/react": "^1.7.3",
+    "@chakra-ui/react": "^2.3.5",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -35,7 +35,7 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@chakra-ui/react": "^1.7.3",
+    "@chakra-ui/react": "^2.3.5",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "framer-motion": "3.x || 4.x || 5.x || 6.x"

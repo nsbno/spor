@@ -1,5 +1,11 @@
 # @vygruppen/spor-util-react
 
+## 0.2.1
+
+### Patch Changes
+
+- 92915156: Fix a bug where the peer dep of chakra was set too high
+
 ## 0.2.0
 
 ### Minor Changes

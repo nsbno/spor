@@ -25,7 +25,7 @@ export const LivePreview = (props: BoxProps) => {
         position="relative"
         {...props}
       >
-        <FormControl position="absolute" top={2} right={2}>
+        <FormControl position="absolute" top={2} right={2} zIndex="popover">
           <Flex justifyContent="flex-end">
             <IconButton
               size="sm"

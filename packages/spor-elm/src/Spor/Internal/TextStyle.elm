@@ -65,6 +65,46 @@ toCss textStyle =
                 [ Css.fontSize (Css.rem 0.875) ]
             ]
 
+        TextStyle.ExtraLargeSansBold ->
+            [ Css.fontFamilies [ "VySans bold" ]
+            , Css.lineHeight (Css.num 1.333)
+            , Css.fontSize (Css.rem 2.5)
+            , mediaQuery Breakpoint.sm
+                [ Css.fontSize (Css.rem 1.875) ]
+            ]
+
+        TextStyle.LargeBold ->
+            [ Css.fontFamilies [ "VySans bold" ]
+            , Css.lineHeight (Css.num 1.333)
+            , Css.fontSize (Css.rem 1.875)
+            , mediaQuery Breakpoint.sm
+                [ Css.fontSize (Css.rem 1.5) ]
+            ]
+
+        TextStyle.MediumBold ->
+            [ Css.fontFamilies [ "VySans bold" ]
+            , Css.lineHeight (Css.num 1.333)
+            , Css.fontSize (Css.rem 1.5)
+            , mediaQuery Breakpoint.sm
+                [ Css.fontSize (Css.rem 1.125) ]
+            ]
+
+        TextStyle.SmallBold ->
+            [ Css.fontFamilies [ "VySans bold" ]
+            , Css.lineHeight (Css.num 1.333)
+            , Css.fontSize (Css.rem 1.125)
+            , mediaQuery Breakpoint.sm
+                [ Css.fontSize (Css.rem 1) ]
+            ]
+
+        TextStyle.ExtraSmallBold ->
+            [ Css.fontFamilies [ "VySans bold" ]
+            , Css.lineHeight (Css.num 1.333)
+            , Css.fontSize (Css.rem 1)
+            , mediaQuery Breakpoint.sm
+                [ Css.fontSize (Css.rem 0.875) ]
+            ]
+
 
 mediaQuery : Breakpoint -> List Css.Style -> Css.Style
 mediaQuery breakpoint styles =

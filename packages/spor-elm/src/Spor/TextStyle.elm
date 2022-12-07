@@ -19,3 +19,8 @@ type TextStyle
     | Medium
     | Small
     | ExtraSmall
+    | ExtraLargeSansBold
+    | LargeBold
+    | MediumBold
+    | SmallBold
+    | ExtraSmallBold

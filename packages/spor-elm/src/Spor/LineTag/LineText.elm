@@ -81,10 +81,8 @@ toHtml (LineText options) =
         ]
         [ Html.span
             [ Attributes.css <|
-                [ Css.color <| Alias.toCss Alias.darkGrey
-                , Css.fontWeight Css.bold
-                ]
-                    ++ TextStyle.toCss TextStyle.ExtraSmall
+                (Css.color <| Alias.toCss Alias.darkGrey)
+                    :: TextStyle.toCss TextStyle.ExtraSmall
             ]
             [ Html.text options.title ]
         , description options

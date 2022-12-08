@@ -4,4 +4,4 @@
 "@vygruppen/spor-icon-react-native": minor
 ---
 
-New icons
+New notification icons

@@ -1,5 +1,15 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.3.0
+
+### Minor Changes
+
+- 1afc13f3: New notification icons
+
+### Patch Changes
+
+- 15af4ea9: Update the design of check mark icons
+
 ## 0.2.7
 
 ### Patch Changes

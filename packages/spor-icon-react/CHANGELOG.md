@@ -1,5 +1,15 @@
 # @vygruppen/spor-icon-react
 
+## 1.1.0
+
+### Minor Changes
+
+- 1afc13f3: New notification icons
+
+### Patch Changes
+
+- 15af4ea9: Update the design of check mark icons
+
 ## 1.0.2
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @vygruppen/spor-icon
 
+## 0.7.0
+
+### Minor Changes
+
+- 1afc13f3: New notification icons
+
+### Patch Changes
+
+- 15af4ea9: Update the design of check mark icons
+
 ## 0.6.4
 
 ### Patch Changes

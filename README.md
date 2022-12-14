@@ -67,11 +67,7 @@ You'll find lots of components, and extensive documentation on the [documentatio
 
 ## Usage (React Native)
 
-The React Native version of Spor lives in the [app repo](https://github.com/nsbno/salgsapp-react-native/tree/master/app/spor). The APIs should be pretty much the same as in React.
-
-## Usage (Elm)
-
-The Elm-implementation can be found in its own repo - namely the [spor-elm](https://github.com/nsbno/spor-elm) repo. This is because Elm needs its own repo per package.
+The React Native version of Spor lives in the [app repo](https://github.com/nsbno/salgsapp-react-native/tree/master/app/spor). The APIs should be pretty much the same as in React, but there might be some differences. Look at the relevant documentation for more information.
 
 ## Setup
 

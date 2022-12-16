@@ -14,6 +14,6 @@ export * from "./PasswordInput";
 export * from "./Radio";
 export * from "./RadioGroup";
 export * from "./SearchInput";
-export * from "./Select";
+export * from "./NativeSelect";
 export * from "./Switch";
 export * from "./Textarea";

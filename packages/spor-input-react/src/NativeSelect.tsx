@@ -17,15 +17,15 @@ export type SelectProps = Exclude<
  * You should consider only using the Select component when you have more than  4 options. Otherwise, you should use the `<Radio>` component.
  *
  * ```tsx
- * <Select label="Select level of luxury">
+ * <NativeSelect label="Select level of luxury">
  *  <option>No luxury</option>
  *  <option>Some luxury</option>
  *  <option>Lots of luxury</option>
  *  <option>I'm rich</option>
- * </Select>
+ * </NativeSelect>
  * ```
  */
-export const Select = forwardRef<SelectProps, "select">(
+export const NativeSelect = forwardRef<SelectProps, "select">(
   ({ label, ...props }, ref) => {
     const styles = useMultiStyleConfig("Select", props);
     return (
@@ -36,3 +36,10 @@ export const Select = forwardRef<SelectProps, "select">(
     );
   }
 );
+
+/**
+ * A select component.
+ *
+ * @deprecated Use NativeSelect instead. Will be removed in the next major version
+ */
+export const Select = NativeSelect;

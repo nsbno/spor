@@ -7,7 +7,7 @@ import {
 import React from "react";
 import { FormControl, FormLabel } from ".";
 
-export type SelectProps = Exclude<
+export type NativeSelectProps = Exclude<
   ChakraSelectProps,
   "colorScheme" | "variant" | "size"
 > & { label?: string };
@@ -25,7 +25,7 @@ export type SelectProps = Exclude<
  * </NativeSelect>
  * ```
  */
-export const NativeSelect = forwardRef<SelectProps, "select">(
+export const NativeSelect = forwardRef<NativeSelectProps, "select">(
   ({ label, ...props }, ref) => {
     const styles = useMultiStyleConfig("Select", props);
     return (

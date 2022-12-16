@@ -22,7 +22,14 @@ type OptionProps = {
  */
 export const ListBox = forwardRef<HTMLUListElement, ListBoxProps>(
   (props, ref) => {
-    const { state, ...rest } = props;
+    const {
+      state,
+      defaultSelectedKeys,
+      disallowEmptySelection,
+      shouldFocusOnHover,
+      shouldSelectOnPressUp,
+      ...rest
+    } = props;
     const styles = useMultiStyleConfig("ListBox", {});
     const internalRef = useRef<HTMLUListElement>(null);
     const listBoxRef = (ref ?? internalRef) as RefObject<HTMLUListElement>;

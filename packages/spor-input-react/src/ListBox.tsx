@@ -15,6 +15,11 @@ type OptionProps = {
   state: ListState<unknown>;
 };
 
+/**
+ * A listbox component.
+ *
+ * This component is currently only thought to be used with the `InfoSelect` component. Usage outside of that is not documented, nor intended.
+ */
 export const ListBox = forwardRef<HTMLUListElement, ListBoxProps>(
   (props, ref) => {
     const { state, ...rest } = props;
@@ -76,6 +81,11 @@ const Option = ({ item, state }: OptionProps) => {
 // described by the description, which makes for better announcements
 // for screen reader users.
 
+/**
+ * Renders a label for a SelectItem.
+ *
+ * Useful if you want to render a custom SelectItem - especially if it has a description.
+ */
 export function SelectItemLabel({ children }: { children: React.ReactNode }) {
   let { labelProps } = useOptionContext();
   const styles = useMultiStyleConfig("ListBox", {});
@@ -86,6 +96,11 @@ export function SelectItemLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+/**
+ * Renders a description for a SelectItem.
+ *
+ * Useful if you want to render a custom SelectItem with more than just a label.
+ */
 export function SelectItemDescription({
   children,
 }: {

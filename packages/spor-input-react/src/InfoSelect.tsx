@@ -44,6 +44,20 @@ type InfoSelectProps = {
    * ```
    **/
   children: any;
+  /**
+   * The items to render
+   * 
+   * If you have a dynamic list of items you want to display, you should use this prop instead of mapping them out. This is a performance optimization.
+   * 
+   * You can render each item in a render function, passed in as `children`:
+   * 
+   * ```tsx
+   * <Select items={items}>
+   *   {(item) => <div>{item.someProp}</div>}
+   * </Select>
+   * ```
+   */
+  items: any[];
   /** Callback for when something is selected */
   onChange?: (value: string | number) => void;
   value?: string | number;

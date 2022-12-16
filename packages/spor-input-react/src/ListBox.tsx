@@ -70,7 +70,7 @@ const Option = ({ item, state }: OptionProps) => {
   );
 };
 
-// The Label and Description components will be used within an <Item>.
+// The Label and Description components will be used within a <SelectItem>.
 // They receive props from the OptionContext defined above.
 // This ensures that the option is ARIA labelled by the label, and
 // described by the description, which makes for better announcements
@@ -99,5 +99,5 @@ export function SelectItemDescription({
     </Box>
   );
 }
-// TODO: Make SelectItem stylable
+
 export { Item as SelectItem } from "react-stately";

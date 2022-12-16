@@ -17,6 +17,7 @@ const config = helpers.defineMultiStyleConfig({
       background: mode("white", "darkGrey")(props),
       boxShadow: "sm",
       overflowY: "auto",
+      maxHeight: "50vh",
       width: "100%",
       listStyle: "none",
     },
@@ -39,8 +40,8 @@ const config = helpers.defineMultiStyleConfig({
     },
     label: {},
     description: {
-      fontSize: ["mobile.sm", "desktop.sm"],
-      color: mode("darkGrey", "whiteAlpha.600")(props),
+      fontSize: ["mobile.xs", "desktop.xs"],
+      color: mode("dimGrey", "whiteAlpha.600")(props),
     },
   }),
 });

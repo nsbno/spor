@@ -17,8 +17,8 @@ export default defineConfig({
     },
   },
   document: {
-    productionUrl: async (prev, { document, client }) => {
-      const configuredClient = client.withConfig({ apiVersion: "2022-10-06" });
+    productionUrl: async (prev, { document, getClient }) => {
+      const configuredClient = getClient({ apiVersion: "2022-10-06" });
       const host = window.location.href.includes("localhost")
         ? "http://localhost:3000"
         : "https://spor.cloud.vy.no";

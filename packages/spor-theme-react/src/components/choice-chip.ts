@@ -17,7 +17,7 @@ const config = helpers.defineMultiStyleConfig({
       fontSize: "16px",
       px: 1,
       _checked: {
-        background: "blueGreen",
+        background: "seaMist",
         boxShadow: getBoxShadowString({ borderColor: "celadon" }),
       },
       "input:focus-visible + &": {

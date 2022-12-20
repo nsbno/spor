@@ -21,7 +21,9 @@
   },
   "dependencies": {
     "@vygruppen/spor-i18n-react": "*",
-    "@vygruppen/spor-icon-react": "*"
+    "@vygruppen/spor-icon-react": "*",
+    "react-aria": "^3.21.0",
+    "react-stately": "^3.19.0"
   },
   "devDependencies": {
     "react": "^18.2.0",

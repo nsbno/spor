@@ -1,28 +1,40 @@
-import { inputAnatomy as parts } from "@chakra-ui/anatomy";
+import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
+
+const parts = anatomy("InfoSelect").parts(
+  "container",
+  "label",
+  "button",
+  "arrowIcon"
+);
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({
   baseStyle: (props) => ({
-    field: {
-      appearance: "none",
-      width: "100%",
-      outline: "none",
-      border: 0,
-      backgroundColor: "white",
-      borderRadius: "sm",
-      transitionProperty: "common",
-      transitionDuration: "fast",
+    container: {},
+    label: {
       position: "relative",
-      px: 3,
-      height: "54px",
-      fontSize: "18px",
-
-      boxShadow: getBoxShadowString({ borderColor: colors.blackAlpha[400] }),
+    },
+    button: {
+      appearance: "none",
+      borderTopRadius: "sm",
+      borderBottomRadius: props.isOpen ? 0 : "sm",
+      paddingY: 1.5,
+      paddingX: 3,
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      boxShadow: getBoxShadowString({
+        borderColor: mode(
+          colors.blackAlpha[400],
+          colors.whiteAlpha[400]
+        )(props),
+      }),
       _hover: {
         boxShadow: getBoxShadowString({
           borderColor: "darkGrey",
@@ -35,6 +47,7 @@ const config = helpers.defineMultiStyleConfig({
             borderColor: "greenHaze",
             borderWidth: 2,
           }),
+          outline: "none",
         },
         notFocus: {
           boxShadow: getBoxShadowString({ borderColor: "darkGrey" }),
@@ -71,27 +84,8 @@ const config = helpers.defineMultiStyleConfig({
           },
         }),
       },
-      " + label": {
-        fontSize: ["mobile.sm", "desktop.sm"],
-        top: "2px",
-        left: props.paddingLeft || props.pl || 3,
-        zIndex: 2,
-        position: "absolute",
-        my: 2,
-        transition: ".1s ease-out",
-        transformOrigin: "top left",
-      },
-      "&:not(:placeholder-shown)": {
-        pt: "16px",
-        "& + label": {
-          transform: "scale(0.825) translateY(-10px)",  
-        },
-      },
     },
-    element: {
-      height: "100%",
-    },
+    arrowIcon: {},
   }),
 });
-
 export default config;

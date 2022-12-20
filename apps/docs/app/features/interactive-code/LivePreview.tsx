@@ -1,8 +1,7 @@
-import { ColorModeProvider, Flex } from "@chakra-ui/react";
+import { ColorModeProvider } from "@chakra-ui/react";
 import {
   Box,
   BoxProps,
-  FormControl,
   IconButton,
   NightFill24Icon,
   SummerFill24Icon,
@@ -25,17 +24,15 @@ export const LivePreview = (props: BoxProps) => {
         position="relative"
         {...props}
       >
-        <FormControl position="absolute" top={2} right={2} zIndex="popover">
-          <Flex justifyContent="flex-end">
-            <IconButton
-              size="sm"
-              variant="additional"
-              onClick={() => setDarkMode((d) => !d)}
-              icon={isDarkMode ? <SummerFill24Icon /> : <NightFill24Icon />}
-              aria-label={isDarkMode ? "Dark mode" : "Light mode"}
-            />
-          </Flex>
-        </FormControl>
+        <Box position="absolute" top={2} right={2} zIndex="popover">
+          <IconButton
+            size="sm"
+            variant="additional"
+            onClick={() => setDarkMode((d) => !d)}
+            icon={isDarkMode ? <SummerFill24Icon /> : <NightFill24Icon />}
+            aria-label={isDarkMode ? "Dark mode" : "Light mode"}
+          />
+        </Box>
         {/** @ts-ignore Bad typing in React Live */}
         <ReactLivePreview Component={Box} width="100%" />
       </Box>

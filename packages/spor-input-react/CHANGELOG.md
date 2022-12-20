@@ -1,5 +1,16 @@
 # @vygruppen/spor-input-react
 
+## 1.2.0
+
+### Minor Changes
+
+- 35a40160: Introduce a new component - InfoSelect.
+  Rename the Select component to NativeSelect, and deprecate the old name
+
+### Patch Changes
+
+- ed44ba73: Fix a contrast issue for selected choice chips
+
 ## 1.1.3
 
 ### Patch Changes

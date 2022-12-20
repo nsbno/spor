@@ -1,5 +1,13 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.7
+
+### Patch Changes
+
+- ed44ba73: Fix a contrast issue for selected choice chips
+- 35a40160: Introduce a new component - InfoSelect.
+  Rename the Select component to NativeSelect, and deprecate the old name
+
 ## 1.0.6
 
 ### Patch Changes

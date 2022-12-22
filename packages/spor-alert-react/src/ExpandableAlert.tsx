@@ -60,7 +60,18 @@ export const ExpandableAlert = ({
             >
               <Flex as={headingLevel}>
                 <AlertIcon variant={variant} />
-                <Box as="span">{title}</Box>
+                <Box
+                  as="span"
+                  sx={{
+                    // Truncate the title to one line
+                    display: "-webkit-box",
+                    overflow: "hidden",
+                    "-webkit-line-clamp": "1",
+                    "-webkit-box-orient": "vertical",
+                  }}
+                >
+                  {title}
+                </Box>
               </Flex>
               <AccordionIcon />
             </Flex>

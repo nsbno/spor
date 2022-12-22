@@ -17,7 +17,12 @@ export const AlertIcon = ({ variant }: AlertIconProps) => {
   const Icon = getIcon(variant);
   const { t } = useTranslation();
   return (
-    <Icon aria-label={t(texts[variant])} marginRight={1} color="darkGrey" />
+    <Icon
+      flexShrink={0}
+      aria-label={t(texts[variant])}
+      marginRight={1}
+      color="darkGrey"
+    />
   );
 };
 

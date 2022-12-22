@@ -1,5 +1,5 @@
 {
-  "name": "@vygruppen/spor-{{ kebabCase name}}-react",
+  "name": "@vygruppen/spor-toast-react",
   "version": "0.0.1",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -9,17 +9,22 @@
     "dist"
   ],
   "sideEffects": false,
-  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-{{ kebabCase name }}-react",
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-toast-react",
   "repository": {
     "type": "git",
     "url": "https://github.com/nsbno/spor.git",
-    "directory": "packages/spor-{{ kebabCase name }}-react"
+    "directory": "packages/spor-toast-react"
   },
   "scripts": {
     "build": "tsup src/* --dts --treeshake --format esm,cjs",
     "dev": "tsup src/index.tsx --watch --format esm",
     "test": "vitest run --config ../config/vitest.config.ts",
     "test:watch": "vitest --config ../config/vitest.config.ts"
+  },
+  "dependencies": {
+    "@vygruppen/spor-button-react": "*",
+    "@vygruppen/spor-i18n-react": "*",
+    "@vygruppen/spor-icon-react": "*"
   },
   "devDependencies": {
     "react": "^18.2.0",

@@ -41,6 +41,7 @@
     "@vygruppen/spor-popover-react": "*",
     "@vygruppen/spor-provider-react": "*",
     "@vygruppen/spor-tab-react": "*",
+    "@vygruppen/spor-toast-react": "*",
     "@vygruppen/spor-typography-react": "*",
     "@vygruppen/spor-util-react": "*",
     "@chakra-ui/react": "^2.3.5",

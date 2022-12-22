@@ -69,7 +69,7 @@ const texts = createTexts({
   close: {
     nb: "Lukk",
     nn: "Lukk",
-    sv: "Stäng",
+    sv: "Dölj",
     en: "Close",
   },
 });

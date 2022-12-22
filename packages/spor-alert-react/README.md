@@ -1,6 +1,6 @@
 # Alert (React)
 
-TODO: Add description
+This package contains alert components.
 
 ## Installation
 
@@ -11,9 +11,14 @@ $ npm install @vygruppen/spor-alert-react
 ## Usage
 
 ```tsx
-import { } from "@vygruppen/spor-alert-react";
+import {
+  StaticAlert,
+  ClosableAlert,
+  ExpandableAlert,
+} from "@vygruppen/spor-alert-react";
 ```
-TODO: Add usage description
+
+Please refer to the documentation for more information.
 
 ## Development
 

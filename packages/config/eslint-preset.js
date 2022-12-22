@@ -34,6 +34,7 @@ module.exports = {
         "packages/spor-linjetag-react/",
         "packages/spor-media-controller-react/",
         "packages/spor-util-react/",
+        "packages/spor-alert-react/",
       ],
     },
   },

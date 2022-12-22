@@ -14,8 +14,6 @@ export type BaseToastProps = {
 };
 /**
  * A basic toast component.
- *
- *
  **/
 export const BaseToast = ({ children, variant, id }: BaseToastProps) => {
   const styles = useStyleConfig("Toast", { variant });

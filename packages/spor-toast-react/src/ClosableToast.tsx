@@ -8,7 +8,7 @@ import { BaseToast, BaseToastProps } from "./BaseToast";
 type ClosableToastProps = BaseToastProps & {
   onClose: () => void;
 };
-/** A closable */
+/** A closable toast */
 export const ClosableToast = ({
   children,
   onClose,

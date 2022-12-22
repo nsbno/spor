@@ -7,7 +7,7 @@ type ActionToastProps = BaseToastProps & {
   onClick: () => void;
   buttonText: string;
 };
-/** A toast message with a button */
+/** A toast with a button */
 export const ActionToast = ({
   children,
   onClick,

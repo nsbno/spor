@@ -35,6 +35,7 @@ module.exports = {
         "packages/spor-media-controller-react/",
         "packages/spor-util-react/",
         "packages/spor-alert-react/",
+        "packages/spor-toast-react/",
       ],
     },
   },

@@ -18,7 +18,10 @@ type ExpandableAlertProps = BaseAlertProps & {
   onToggle?: (isOpen: boolean) => void;
   /** Whether or not the default state of the expandable alert is open */
   defaultOpen?: boolean;
-  /** Defaults to h3 */
+  /**
+   * The HTML element used for the `title` prop.
+   *
+   * Defaults to h3 */
   headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
 };
 /**

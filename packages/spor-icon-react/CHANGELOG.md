@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 1.2.0
+
+### Minor Changes
+
+- 9a26a7c5: Remove default colors from success and error icons
+
 ## 1.1.0
 
 ### Minor Changes

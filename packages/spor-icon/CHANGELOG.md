@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 0.8.0
+
+### Minor Changes
+
+- 9a26a7c5: Remove default colors from success and error icons
+
 ## 0.7.0
 
 ### Minor Changes

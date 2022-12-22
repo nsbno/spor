@@ -1,6 +1,7 @@
 import { useDisclosure, useMultiStyleConfig } from "@chakra-ui/react";
 import { IconButton } from "@vygruppen/spor-button-react";
 import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
+import { CloseFill18Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { AlertIcon } from "./AlertIcon";
 import { BaseAlert, BaseAlertProps } from "./BaseAlert";
@@ -54,6 +55,7 @@ export const ClosableAlert = ({
         variant="ghost"
         size="sm"
         onClick={handleClose}
+        icon={<CloseFill18Icon />}
         aria-label={t(texts.close)}
         sx={styles.closeButton}
       />

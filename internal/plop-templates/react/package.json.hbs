@@ -18,7 +18,8 @@
   "scripts": {
     "build": "tsup src/* --dts --treeshake --format esm,cjs",
     "dev": "tsup src/index.tsx --watch --format esm",
-    "test": "vitest run --config ../config/vitest.config.ts"
+    "test": "vitest run --config ../config/vitest.config.ts",
+    "test:watch": "vitest run --config ../config/vitest.config.ts"
   },
   "devDependencies": {
     "react": "^18.2.0",

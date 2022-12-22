@@ -1,5 +1,6 @@
 export { extendTheme } from "@chakra-ui/react";
 export * from "@vygruppen/spor-accordion-react";
+export * from "@vygruppen/spor-alert-react";
 export * from "@vygruppen/spor-button-react";
 export * from "@vygruppen/spor-card-react";
 export * from "@vygruppen/spor-datepicker-react";

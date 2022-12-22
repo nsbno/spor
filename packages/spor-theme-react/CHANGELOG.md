@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.8
+
+### Patch Changes
+
+- 1b0d28d6: Add new alert component
+
 ## 1.0.7
 
 ### Patch Changes

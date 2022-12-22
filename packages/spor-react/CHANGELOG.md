@@ -1,5 +1,19 @@
 # @vygruppen/spor-react
 
+## 1.2.0
+
+### Minor Changes
+
+- 1b0d28d6: Add new alert component
+
+### Patch Changes
+
+- Updated dependencies [9a26a7c5]
+- Updated dependencies [1b0d28d6]
+  - @vygruppen/spor-icon-react@1.2.0
+  - @vygruppen/spor-alert-react@0.1.0
+  - @vygruppen/spor-theme-react@1.0.8
+
 ## 1.1.0
 
 ### Minor Changes

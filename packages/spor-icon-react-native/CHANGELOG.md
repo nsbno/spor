@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.4.0
+
+### Minor Changes
+
+- 9a26a7c5: Remove default colors from success and error icons
+
 ## 0.3.0
 
 ### Minor Changes

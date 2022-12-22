@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 1.3.0
+
+### Minor Changes
+
+- 22f1772e: New hook: useToast!
+
+### Patch Changes
+
+- Updated dependencies [22f1772e]
+  - @vygruppen/spor-toast-react@0.1.0
+  - @vygruppen/spor-theme-react@1.0.9
+
 ## 1.2.0
 
 ### Minor Changes

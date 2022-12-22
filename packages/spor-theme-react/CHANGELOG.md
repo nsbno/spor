@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.9
+
+### Patch Changes
+
+- 22f1772e: New hook: useToast!
+
 ## 1.0.8
 
 ### Patch Changes

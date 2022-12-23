@@ -13,7 +13,7 @@ WORKDIR /app
 ADD package.json ./
 # Install both devDependencies and dependencies 
 # (even when NODE_ENV=production)
-RUN npm install --production=false
+RUN npm install --omit=dev
 
 # Setup production node_modules
 FROM base as production-deps
@@ -25,7 +25,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules /app/node_modules
 ADD package.json ./
 # Delete all dev dependencies from the node_modules
-RUN npm prune --production
+RUN npm prune --omit=dev
 
 # Build the app
 FROM base as build

@@ -13,7 +13,7 @@ WORKDIR /app
 ADD package.json ./
 # Install both devDependencies and dependencies 
 # (even when NODE_ENV=production)
-RUN npm install --omit=dev
+RUN npm install --production=false
 
 # Setup production node_modules
 FROM base as production-deps

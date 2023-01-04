@@ -44,25 +44,35 @@ export const TimePicker = ({
     isDisabled,
   });
 
+  const dateTime = state.value as CalendarDateTime;
+
   const handleBackwardsClick = () => {
+    const minutesToSubtract =
+      (dateTime.minute - stepGranularity) % stepGranularity || stepGranularity;
     state.setValue(
-      (state.value as CalendarDateTime)?.cycle("minute", -stepGranularity, {
-        round: true,
+      state.value.subtract({
+        minutes: minutesToSubtract,
       })
     );
   };
   const handleForwardClick = () => {
+    const minutesToAdd =
+      stepGranularity - (dateTime.minute % stepGranularity) || stepGranularity;
     state.setValue(
-      (state.value as CalendarDateTime)?.cycle("minute", +stepGranularity, {
-        round: true,
+      state.value.add({
+        minutes: minutesToAdd,
       })
     );
   };
-  const backwardsLabel = `${t(texts.forwards)} ${stepGranularity} ${t(
+  const backwardsLabel = `${t(texts.backwards)} ${stepGranularity} ${t(
     texts.minutes
   )}`;
   const forwardsLabel = `${t(texts.forwards)} ${stepGranularity} ${t(
     texts.minutes
+  )}`;
+  const inputLabel = label ?? t(texts.time);
+  const ariaLabel = `${inputLabel} – ${t(
+    texts.selectedTimeIs(`${dateTime.hour} ${dateTime.minute}`)
   )}`;
   return (
     <StyledField
@@ -76,6 +86,8 @@ export const TimePicker = ({
       opacity={isDisabled ? 0.5 : 1}
       pointerEvents={isDisabled ? "none" : "auto"}
       aria-disabled={isDisabled}
+      aria-live="assertive"
+      aria-label={ariaLabel}
       {...boxProps}
     >
       <IconButton
@@ -102,6 +114,12 @@ export const TimePicker = ({
 };
 
 const texts = createTexts({
+  selectedTimeIs: (time) => ({
+    nb: `Valgt tidspunkt er ${time}`,
+    nn: `Valt tidspunkt er ${time}`,
+    en: `Selected time is ${time}`,
+    sv: `Vald tid är ${time}`,
+  }),
   time: {
     nb: "Tid",
     nn: "Tid",

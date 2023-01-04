@@ -1,3 +1,4 @@
+import { parseTime } from "@internationalized/date";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
 
 /**
@@ -18,4 +19,10 @@ export const useCurrentLocale = () => {
     default:
       return "no";
   }
+};
+
+/** Gets the current time as a Time object */
+export const getCurrentTime = () => {
+  const now = new Date();
+  return parseTime(now.toTimeString().split(" ")[0]);
 };

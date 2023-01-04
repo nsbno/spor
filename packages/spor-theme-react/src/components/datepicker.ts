@@ -24,8 +24,7 @@ const config = helpers.defineMultiStyleConfig({
       transitionDuration: "fast",
       display: "flex",
       flex: 1,
-      px: 3,
-      py: 1.5,
+      paddingY: 1.5,
       _hover: {
         boxShadow: getBoxShadowString({
           borderColor: "darkGrey",

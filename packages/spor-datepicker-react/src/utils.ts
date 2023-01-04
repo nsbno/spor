@@ -1,4 +1,4 @@
-import { parseTime } from "@internationalized/date";
+import { CalendarDateTime, parseTime } from "@internationalized/date";
 import { useTranslation } from "@vygruppen/spor-i18n-react";
 
 /**
@@ -25,4 +25,9 @@ export const useCurrentLocale = () => {
 export const getCurrentTime = () => {
   const now = new Date();
   return parseTime(now.toTimeString().split(" ")[0]);
+};
+
+/** Gets a readable timestamp from a given time object */
+export const getTimestampFromTime = (time: CalendarDateTime) => {
+  return `${time.hour}:${time.minute}`;
 };

@@ -1,10 +1,11 @@
 import { Box, Flex } from "@chakra-ui/react";
-import { Time } from "@internationalized/date";
+import { CalendarDateTime, Time } from "@internationalized/date";
 import { FormLabel } from "@vygruppen/spor-input-react";
 import React, { useRef } from "react";
 import { AriaTimeFieldProps, useTimeField } from "react-aria";
 import { DateFieldState } from "react-stately";
 import { DateTimeSegment } from "./DateTimeSegment";
+import { getTimestampFromTime } from "./utils";
 
 type TimeFieldProps = AriaTimeFieldProps<Time> & {
   state: DateFieldState;
@@ -35,7 +36,11 @@ export const TimeField = ({ state, label, ...props }: TimeFieldProps) => {
           <DateTimeSegment key={segment.type} segment={segment} state={state} />
         ))}
       </Flex>
-      <input type="hidden" value={state.value?.toString()} name={props.name} />
+      <input
+        type="hidden"
+        value={getTimestampFromTime(state.value as CalendarDateTime)}
+        name={props.name}
+      />
     </Box>
   );
 };

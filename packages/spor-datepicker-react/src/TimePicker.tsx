@@ -48,7 +48,8 @@ export const TimePicker = ({
 
   const handleBackwardsClick = () => {
     const minutesToSubtract =
-      (dateTime.minute - stepGranularity) % stepGranularity || stepGranularity;
+      dateTime.minute % stepGranularity || stepGranularity;
+    console.log({ minutesToSubtract });
     state.setValue(
       state.value.subtract({
         minutes: minutesToSubtract,

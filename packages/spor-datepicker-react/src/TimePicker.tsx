@@ -1,3 +1,4 @@
+import { BoxProps, useFormControlContext } from "@chakra-ui/react";
 import { CalendarDateTime } from "@internationalized/date";
 import { TimeValue } from "@react-types/datepicker";
 import { IconButton } from "@vygruppen/spor-button-react";
@@ -12,12 +13,14 @@ import { StyledField } from "./StyledField";
 import { TimeField } from "./TimeField";
 import { getCurrentTime, useCurrentLocale } from "./utils";
 
-type TimePickerProps = {
-  label: string;
+type TimePickerProps = Omit<BoxProps, "defaultValue"> & {
+  label?: string;
+  name?: string;
   value?: TimeValue;
   defaultValue?: TimeValue;
   onChange?: (value: TimeValue) => void;
   stepGranularity?: number;
+  isDisabled?: boolean;
 };
 export const TimePicker = ({
   label,
@@ -25,10 +28,21 @@ export const TimePicker = ({
   defaultValue = getCurrentTime(),
   onChange = () => {},
   stepGranularity = 5,
+  isDisabled: isDisabledExternally = false,
+  name,
+  ...boxProps
 }: TimePickerProps) => {
+  const { isDisabled: isFormControlDisabled } = useFormControlContext() ?? {};
+  const isDisabled = isDisabledExternally ?? isFormControlDisabled ?? false;
   const { t } = useTranslation();
   const locale = useCurrentLocale();
-  const state = useTimeFieldState({ value, defaultValue, onChange, locale });
+  const state = useTimeFieldState({
+    value,
+    defaultValue,
+    onChange,
+    locale,
+    isDisabled,
+  });
 
   const handleBackwardsClick = () => {
     state.setValue(
@@ -55,8 +69,14 @@ export const TimePicker = ({
       variant="simple"
       width="fit-content"
       paddingX={2}
+      paddingY={1}
       alignItems="center"
+      justifyContent="space-between"
       gap={2}
+      opacity={isDisabled ? 0.5 : 1}
+      pointerEvents={isDisabled ? "none" : "auto"}
+      aria-disabled={isDisabled}
+      {...boxProps}
     >
       <IconButton
         variant="ghost"
@@ -67,7 +87,7 @@ export const TimePicker = ({
         icon={<DropdownLeftFill24Icon />}
         onClick={handleBackwardsClick}
       />
-      <TimeField label={label ?? t(texts.time)} state={state} />
+      <TimeField label={label ?? t(texts.time)} state={state} name={name} />
       <IconButton
         variant="ghost"
         size="xs"

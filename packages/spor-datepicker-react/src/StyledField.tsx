@@ -15,13 +15,13 @@ export const StyledField = forwardRef<StyledFieldProps, As<any>>(
   ({ children, variant, ...otherProps }, ref) => {
     const { isInvalid } = useFormControlContext() ?? {
       isInvalid: false,
+      isDisabled: false,
     };
     const styles = useMultiStyleConfig("Datepicker", { variant });
-    console.log("wrapper", styles.wrapper);
     return (
       <Box
-        sx={styles.wrapper}
         {...otherProps}
+        __css={styles.wrapper}
         ref={ref}
         aria-invalid={isInvalid}
       >

@@ -19,9 +19,15 @@ type TimeFieldProps = AriaTimeFieldProps<Time> & {
 export const TimeField = ({ state, label, ...props }: TimeFieldProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { labelProps, fieldProps } = useTimeField(props, state, ref);
+
   return (
     <Box>
-      <FormLabel {...labelProps} marginBottom={0} fontSize="mobile.xs">
+      <FormLabel
+        {...labelProps}
+        htmlFor={fieldProps.id}
+        marginBottom={0}
+        fontSize="mobile.xs"
+      >
         {label}
       </FormLabel>
       <Flex {...fieldProps} ref={ref}>

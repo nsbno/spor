@@ -139,9 +139,9 @@ const texts = createTexts({
     sv: "Framåt",
   },
   minutes: {
-    nb: "Minutter",
-    nn: "Minuttar",
-    en: "Minutes",
-    sv: "Minuter",
+    nb: "minutter",
+    nn: "minuttar",
+    en: "minutes",
+    sv: "minuter",
   },
 });

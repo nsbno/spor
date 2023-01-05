@@ -41,21 +41,21 @@ type TimePickerProps = Omit<BoxProps, "defaultValue"> & {
   isDisabled?: boolean;
 };
 /** A time picker component.
- * 
+ *
  * This lets the user select a time of day, either through typing it in, using the up and down arrows to select the hour and minute, or by clicking the step buttons to move the time forwards or backwards in pre-defined increments.
- * 
+ *
  * ```tsx
  * <TimePicker />
  * ```
- * 
+ *
  * It can also be controlled:
- * 
+ *
  * ```tsx
  * <TimePicker value={new Time(13, 37)} onChange={setTime} />
  * ```
- * 
+ *
  * Note that the TimePicker uses the `Time` class to represent the time. This is a class that is part of the `@internationalized/date` package.
- * 
+ *
  * @see https://spor.cloud.vy.no/komponenter/timepicker
  */
 export const TimePicker = ({
@@ -85,7 +85,6 @@ export const TimePicker = ({
   const handleBackwardsClick = () => {
     const minutesToSubtract =
       dateTime.minute % stepGranularity || stepGranularity;
-    console.log({ minutesToSubtract });
     state.setValue(
       state.value.subtract({
         minutes: minutesToSubtract,

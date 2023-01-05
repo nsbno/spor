@@ -28,6 +28,6 @@ export const getCurrentTime = () => {
 };
 
 /** Gets a readable timestamp from a given time object */
-export const getTimestampFromTime = (time: CalendarDateTime) => {
-  return `${time.hour}:${time.minute}`;
+export const getTimestampFromTime = (time: CalendarDateTime | null) => {
+  return `${time?.hour ?? 0}:${time?.minute ?? 0}`;
 };

@@ -80,9 +80,12 @@ export const TimePicker = ({
     isDisabled,
   });
 
-  const dateTime = state.value as CalendarDateTime;
+  const dateTime = state.value as CalendarDateTime | null;
 
   const handleBackwardsClick = () => {
+    if (!dateTime) {
+      return;
+    }
     const minutesToSubtract =
       dateTime.minute % minuteInterval || minuteInterval;
     state.setValue(
@@ -92,6 +95,9 @@ export const TimePicker = ({
     );
   };
   const handleForwardClick = () => {
+    if (!dateTime) {
+      return;
+    }
     const minutesToAdd =
       minuteInterval - (dateTime.minute % minuteInterval) || minuteInterval;
     state.setValue(
@@ -108,7 +114,7 @@ export const TimePicker = ({
   )}`;
   const inputLabel = label ?? t(texts.time);
   const ariaLabel = `${inputLabel} – ${t(
-    texts.selectedTimeIs(`${dateTime.hour} ${dateTime.minute}`)
+    texts.selectedTimeIs(`${dateTime?.hour ?? 0} ${dateTime?.minute ?? 0}`)
   )}`;
   return (
     <StyledField

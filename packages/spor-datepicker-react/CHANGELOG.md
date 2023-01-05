@@ -1,5 +1,18 @@
 # @vygruppen/spor-datepicker-react
 
+## 1.1.0
+
+### Minor Changes
+
+- 5e796e79: Add new component TimePicker and class Time
+
+### Patch Changes
+
+- Updated dependencies [7849279e]
+- Updated dependencies [199ad3da]
+  - @vygruppen/spor-button-react@1.0.4
+  - @vygruppen/spor-icon-react@1.3.0
+
 ## 1.0.2
 
 ### Patch Changes

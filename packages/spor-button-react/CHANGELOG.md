@@ -1,5 +1,11 @@
 # @vygruppen/spor-button-react
 
+## 1.0.4
+
+### Patch Changes
+
+- 7849279e: Add proper outlines for ghost button focus
+
 ## 1.0.3
 
 ### Patch Changes

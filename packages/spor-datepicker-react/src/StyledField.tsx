@@ -15,7 +15,6 @@ export const StyledField = forwardRef<StyledFieldProps, As<any>>(
   ({ children, variant, ...otherProps }, ref) => {
     const { isInvalid } = useFormControlContext() ?? {
       isInvalid: false,
-      isDisabled: false,
     };
     const styles = useMultiStyleConfig("Datepicker", { variant });
     return (

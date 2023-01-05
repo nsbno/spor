@@ -1,5 +1,11 @@
 # @vygruppen/spor-datepicker-react
 
+## 1.1.1
+
+### Patch Changes
+
+- b17ec3fb: Fix a bug where wiping the value would crash the time picker component
+
 ## 1.1.0
 
 ### Minor Changes

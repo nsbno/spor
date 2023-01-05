@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
+import { useDateSegment } from "@react-aria/datepicker";
 import React, { useRef } from "react";
-import { useDateSegment } from "react-aria";
 import { DateFieldState, DateSegment } from "react-stately";
 
 type DateTimeSegmentProps = {
@@ -16,6 +16,7 @@ type DateTimeSegmentProps = {
  * */
 export const DateTimeSegment = ({ segment, state }: DateTimeSegmentProps) => {
   const ref = useRef(null);
+
   const { segmentProps } = useDateSegment(segment, state, ref);
   return (
     <Box
@@ -26,7 +27,6 @@ export const DateTimeSegment = ({ segment, state }: DateTimeSegmentProps) => {
         fontVariantNumeric: "tabular-nums",
         boxSizing: "content-box",
       }}
-      boxSizing="content-box"
       px="1px"
       textAlign="end"
       outline="none"

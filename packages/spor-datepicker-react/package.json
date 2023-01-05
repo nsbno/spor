@@ -49,7 +49,7 @@
     "@vygruppen/spor-icon-react": "*",
     "@vygruppen/spor-input-react": "*",
     "@vygruppen/spor-typography-react": "*",
-    "react-aria": "^3.18.0",
-    "react-stately": "^3.16.0"
+    "react-aria": "^3.22.0",
+    "react-stately": "^3.20.0"
   }
 }

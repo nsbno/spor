@@ -40,9 +40,9 @@ describe("<TimePicker />", () => {
     });
     expect(getByRole("group")).toHaveTextContent("14:00");
   });
-  it("jumps backwards as expected when stepGranularity is set", async () => {
+  it("jumps backwards as expected when minuteInterval is set", async () => {
     const { getByLabelText, getByRole } = render(
-      <TimePicker defaultValue={new Time(13, 3)} stepGranularity={15} />
+      <TimePicker defaultValue={new Time(13, 3)} minuteInterval={15} />
     );
     const backwardsButton = getByLabelText("Bakover 15 minutter");
     expect(getByRole("group")).toHaveTextContent("13:03");
@@ -55,9 +55,9 @@ describe("<TimePicker />", () => {
     });
     expect(getByRole("group")).toHaveTextContent("12:45");
   });
-  it("jumps forwards as expected when stepGranularity is set", async () => {
+  it("jumps forwards as expected when minuteInterval is set", async () => {
     const { getByLabelText, getByRole } = render(
-      <TimePicker defaultValue={new Time(13, 49)} stepGranularity={15} />
+      <TimePicker defaultValue={new Time(13, 49)} minuteInterval={15} />
     );
 
     const forwardsButton = getByLabelText("Fremover 15 minutter");

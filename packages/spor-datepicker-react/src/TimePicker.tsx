@@ -34,9 +34,9 @@ type TimePickerProps = Omit<BoxProps, "defaultValue"> & {
    *
    * Defaults to 5 minutes.
    *
-   * An example: If the time is at 13:37 and the stepGranularity is 15, clicking the step button forwards will move the time to 13:45. Next click will move it to 14:00.
+   * An example: If the time is at 13:37 and the minuteInterval is 15, clicking the step button forwards will move the time to 13:45. Next click will move it to 14:00.
    */
-  stepGranularity?: number;
+  minuteInterval?: number;
   /** Whether or not the field is disabled */
   isDisabled?: boolean;
 };
@@ -63,7 +63,7 @@ export const TimePicker = ({
   value,
   defaultValue = getCurrentTime(),
   onChange = () => {},
-  stepGranularity = 5,
+  minuteInterval = 5,
   isDisabled: isDisabledExternally = false,
   name,
   ...boxProps
@@ -84,7 +84,7 @@ export const TimePicker = ({
 
   const handleBackwardsClick = () => {
     const minutesToSubtract =
-      dateTime.minute % stepGranularity || stepGranularity;
+      dateTime.minute % minuteInterval || minuteInterval;
     state.setValue(
       state.value.subtract({
         minutes: minutesToSubtract,
@@ -93,17 +93,17 @@ export const TimePicker = ({
   };
   const handleForwardClick = () => {
     const minutesToAdd =
-      stepGranularity - (dateTime.minute % stepGranularity) || stepGranularity;
+      minuteInterval - (dateTime.minute % minuteInterval) || minuteInterval;
     state.setValue(
       state.value.add({
         minutes: minutesToAdd,
       })
     );
   };
-  const backwardsLabel = `${t(texts.backwards)} ${stepGranularity} ${t(
+  const backwardsLabel = `${t(texts.backwards)} ${minuteInterval} ${t(
     texts.minutes
   )}`;
-  const forwardsLabel = `${t(texts.forwards)} ${stepGranularity} ${t(
+  const forwardsLabel = `${t(texts.forwards)} ${minuteInterval} ${t(
     texts.minutes
   )}`;
   const inputLabel = label ?? t(texts.time);

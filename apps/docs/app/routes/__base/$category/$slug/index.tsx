@@ -28,6 +28,7 @@ import {
 import {
   blockContentToPlainText,
   isValidPreviewRequest,
+  urlBuilder,
 } from "~/utils/sanity/utils";
 import { slugify, toTitleCase } from "~/utils/stringUtils";
 
@@ -58,6 +59,7 @@ type Data = {
     slug: string;
   };
   resourceLinks?: ResourceLink[];
+  mainImage?: any;
   content?: any[];
   componentSections?: ComponentSection[];
 };
@@ -76,7 +78,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
       title,
       "slug": slug.current
     },
-    resourceLinks[linkType == "react" || linkType == "figma"],
+    resourceLinks[linkType == "react" || linkType == "react-native" || linkType == "figma"],
     content[]{
       _type == 'reference' => @->,
       _type != 'reference' => @,
@@ -120,13 +122,19 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   const [article] = data.initialData;
   const description =
     blockContentToPlainText(
-      article.content?.find((block) => block._type === "introduction")?.content
+      article.introduction ??
+        article.content?.find((block) => block._type === "introduction")
+          ?.content
     ) || undefined;
-  return {
+  const meta: Record<string, any> = {
     title: `${article.title} – ${article?.category?.title ?? "…"} – Spor`,
     description,
     "og:description": description,
   };
+  if (article.mainImage) {
+    meta["og:image"] = urlBuilder.image(article.mainImage).width(1200).url();
+  }
+  return meta;
 };
 
 export default function ArticlePage() {

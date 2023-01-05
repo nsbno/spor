@@ -32,9 +32,9 @@ type TimePickerProps = Omit<BoxProps, "defaultValue"> & {
   onChange?: (value: TimeValue) => void;
   /** The maxiumum number of minutes to move when the step buttons are used.
    *
-   * Defaults to 5 minutes.
+   * Defaults to 30 minutes.
    *
-   * An example: If the time is at 13:37 and the minuteInterval is 15, clicking the step button forwards will move the time to 13:45. Next click will move it to 14:00.
+   * An example: If the time is at 13:37 and the minuteInterval is 15, clicking the step forwards button will move the time to 13:45. Next click will move it to 14:00.
    */
   minuteInterval?: number;
   /** Whether or not the field is disabled */
@@ -63,7 +63,7 @@ export const TimePicker = ({
   value,
   defaultValue = getCurrentTime(),
   onChange = () => {},
-  minuteInterval = 5,
+  minuteInterval = 30,
   isDisabled: isDisabledExternally = false,
   name,
   ...boxProps

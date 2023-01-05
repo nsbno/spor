@@ -14,7 +14,7 @@ describe("<TimePicker />", () => {
     const { getByLabelText, getByRole } = render(
       <TimePicker defaultValue={new Time(13, 3)} />
     );
-    const backwardsButton = getByLabelText("Bakover 5 minutter");
+    const backwardsButton = getByLabelText("Bakover 30 minutter");
     expect(getByRole("group")).toHaveTextContent("13:03");
     act(() => {
       backwardsButton.click();
@@ -23,22 +23,22 @@ describe("<TimePicker />", () => {
     act(() => {
       backwardsButton.click();
     });
-    expect(getByRole("group")).toHaveTextContent("12:55");
+    expect(getByRole("group")).toHaveTextContent("12:30");
   });
   it("jumps forwards as expected", async () => {
     const { getByLabelText, getByRole } = render(
       <TimePicker defaultValue={new Time(13, 53)} />
     );
-    const forwardsButton = getByLabelText("Fremover 5 minutter");
+    const forwardsButton = getByLabelText("Fremover 30 minutter");
     expect(getByRole("group")).toHaveTextContent("13:53");
     act(() => {
       forwardsButton.click();
     });
-    expect(getByRole("group")).toHaveTextContent("13:55");
+    expect(getByRole("group")).toHaveTextContent("14:00");
     act(() => {
       forwardsButton.click();
     });
-    expect(getByRole("group")).toHaveTextContent("14:00");
+    expect(getByRole("group")).toHaveTextContent("14:30");
   });
   it("jumps backwards as expected when minuteInterval is set", async () => {
     const { getByLabelText, getByRole } = render(

@@ -38,7 +38,7 @@ export const TimeField = ({ state, label, ...props }: TimeFieldProps) => {
       </Flex>
       <input
         type="hidden"
-        value={getTimestampFromTime(state.value as CalendarDateTime)}
+        value={getTimestampFromTime(state.value as CalendarDateTime | null)}
         name={props.name}
       />
     </Box>

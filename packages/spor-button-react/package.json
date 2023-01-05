@@ -34,7 +34,7 @@
     "@emotion/styled": "^11.10.4",
     "framer-motion": ">6.0.0",
     "tsup": "^6.2.2",
-    "vitest": "^0.24.2",
+    "vitest": "^0.26.3",
     "vitest-axe": "^0.1.0",
     "vitest-canvas-mock": "^0.2.0"
   },

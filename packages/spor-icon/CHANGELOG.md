@@ -1,5 +1,12 @@
 # @vygruppen/spor-icon
 
+## 0.9.0
+
+### Minor Changes
+
+- 199ad3da: Legg til ikonene "baby changing", "coffee cart", "play room"
+  Endre ikoene "dog allowed", "dog not allowed", "toalett"
+
 ## 0.8.0
 
 ### Minor Changes

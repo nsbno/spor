@@ -1,5 +1,12 @@
 # @vygruppen/spor-icon-react-native
 
+## 0.5.0
+
+### Minor Changes
+
+- 199ad3da: Legg til ikonene "baby changing", "coffee cart", "play room"
+  Endre ikoene "dog allowed", "dog not allowed", "toalett"
+
 ## 0.4.0
 
 ### Minor Changes

@@ -1,5 +1,12 @@
 # @vygruppen/spor-icon-react
 
+## 1.3.0
+
+### Minor Changes
+
+- 199ad3da: Legg til ikonene "baby changing", "coffee cart", "play room"
+  Endre ikoene "dog allowed", "dog not allowed", "toalett"
+
 ## 1.2.0
 
 ### Minor Changes

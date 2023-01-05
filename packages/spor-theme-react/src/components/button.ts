@@ -136,12 +136,13 @@ const config = defineStyleConfig({
       fontWeight: "normal",
       ...focusVisible({
         focus: {
-          outline: "none",
-        },
-        notFocus: {
           boxShadow: getBoxShadowString({
             borderColor: "greenHaze",
+            borderWidth: 2,
           }),
+        },
+        notFocus: {
+          outline: "none",
         },
       }),
       _hover: {

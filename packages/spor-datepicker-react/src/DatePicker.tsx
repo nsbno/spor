@@ -18,7 +18,8 @@ import React, { useRef } from "react";
 import { AriaDatePickerProps, I18nProvider } from "react-aria";
 import { Calendar } from "./Calendar";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
-import { DateField, StyledField } from "./DateField";
+import { DateField } from "./DateField";
+import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
 
 type DatePickerProps = AriaDatePickerProps<DateValue> & {
@@ -100,6 +101,7 @@ export function DatePicker({
                   variant={responsiveVariant}
                   onClick={onFieldClick}
                   onKeyPress={handleEnterClick}
+                  paddingX={3}
                 >
                   {!hasTrigger && (
                     <CalendarOutline24Icon mr={2} alignSelf="center" />

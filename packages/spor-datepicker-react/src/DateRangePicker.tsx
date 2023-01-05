@@ -18,8 +18,9 @@ import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { useRef } from "react";
 import { AriaDateRangePickerProps, I18nProvider } from "react-aria";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
-import { DateField, StyledField } from "./DateField";
+import { DateField } from "./DateField";
 import { RangeCalendar } from "./RangeCalendar";
+import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
 
 type DateRangePickerProps = AriaDateRangePickerProps<DateValue> & {
@@ -102,6 +103,7 @@ export function DateRangePicker({ variant, ...props }: DateRangePickerProps) {
             <PopoverAnchor>
               <StyledField
                 alignItems="center"
+                paddingX={3}
                 variant={responsiveVariant}
                 onClick={onFieldClick}
                 onKeyPress={handleEnterClick}

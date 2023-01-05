@@ -1,8 +1,8 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { CalendarDateTime, Time } from "@internationalized/date";
+import { AriaTimeFieldProps, useTimeField } from "@react-aria/datepicker";
 import { FormLabel } from "@vygruppen/spor-input-react";
 import React, { useRef } from "react";
-import { AriaTimeFieldProps, useTimeField } from "react-aria";
 import { DateFieldState } from "react-stately";
 import { DateTimeSegment } from "./DateTimeSegment";
 import { getTimestampFromTime } from "./utils";

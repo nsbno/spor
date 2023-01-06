@@ -1,5 +1,11 @@
 # @vygruppen/spor-datepicker-react
 
+## 1.1.2
+
+### Patch Changes
+
+- 7d936ca3: Fix a bug where the datepicker would crash
+
 ## 1.1.1
 
 ### Patch Changes

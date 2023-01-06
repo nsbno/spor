@@ -8,7 +8,8 @@ export const LeftSidebar = () => {
       as="nav"
       aria-label="content"
       flex="1"
-      maxWidth="340px"
+      maxWidth="22rem"
+      minWidth="18rem"
       px={1.5}
       py={2}
       borderRight="9px solid"

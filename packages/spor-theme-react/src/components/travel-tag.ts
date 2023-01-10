@@ -250,6 +250,16 @@ const getDeviationIconStyle = (props: StyleFunctionProps) => {
     top: "-7px",
     right: "-7px",
     stroke: "white",
-    color: props.deviationLevel === "info" ? "ocean" : "inherit",
+    color:
+      deviationIconColor[
+        props.deviationLevel as keyof typeof deviationIconColor
+      ] || "inherit",
   };
 };
+
+const deviationIconColor = {
+  critical: "brightRed",
+  major: "golden",
+  minor: "golden",
+  info: "ocean",
+} as const;

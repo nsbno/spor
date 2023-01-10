@@ -1,5 +1,11 @@
 # @vygruppen/spor-linjetag-react
 
+## 1.0.2
+
+### Patch Changes
+
+- 12293ce4: Fix some broken colors
+
 ## 1.0.1
 
 ### Patch Changes

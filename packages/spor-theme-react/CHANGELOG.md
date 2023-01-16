@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.11
+
+### Patch Changes
+
+- 12293ce4: Fix some broken colors
+
 ## 1.0.10
 
 ### Patch Changes

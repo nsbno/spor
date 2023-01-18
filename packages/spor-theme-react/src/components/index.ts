@@ -3,6 +3,7 @@ export { default as Alert } from "./alert";
 export { default as Badge } from "./badge";
 export { default as Button } from "./button";
 export { default as Card } from "./card";
+export { default as CardSelect } from "./card-select";
 export { default as Checkbox } from "./checkbox";
 export { default as ChoiceChip } from "./choice-chip";
 export { default as CloseButton } from "./close-button";

@@ -33,7 +33,7 @@ export const ListBox = forwardRef<HTMLUListElement, ListBoxProps>(
     const styles = useMultiStyleConfig("ListBox", {});
     const internalRef = useRef<HTMLUListElement>(null);
     const listBoxRef = (ref ?? internalRef) as RefObject<HTMLUListElement>;
-    let { listBoxProps } = useListBox(props, state, listBoxRef);
+    const { listBoxProps } = useListBox(props, state, listBoxRef);
 
     return (
       <Box

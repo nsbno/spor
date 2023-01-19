@@ -1,4 +1,4 @@
-import { colors } from "../foundations/colors";
+import { colors, ColorsType } from "../foundations/colors";
 import { shadows } from "../foundations/shadows";
 
 type GetBoxShadowStringArgs = {
@@ -24,6 +24,14 @@ export const getBoxShadowString = (
     let color = borderColor;
     if (borderColor in colors) {
       color = colors[borderColor as keyof typeof colors] as string;
+    } else {
+      const [subgroup, value] = borderColor.split(".");
+      const subgroupValue = (colors[subgroup as keyof ColorsType] as any)?.[
+        value
+      ];
+      if (subgroupValue) {
+        color = subgroupValue;
+      }
     }
     allShadows.push(
       `${isInset ? "inset " : ""}0 0 0 ${borderWidth}px ${color}`

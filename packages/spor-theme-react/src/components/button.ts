@@ -9,7 +9,6 @@ const config = defineStyleConfig({
     border: 0,
     borderRadius: "xl",
     fontWeight: "bold",
-    whiteSpace: "nowrap",
     transitionProperty: "common",
     transitionDuration: "normal",
     px: 3,
@@ -158,22 +157,22 @@ const config = defineStyleConfig({
   },
   sizes: {
     lg: {
-      height: 8,
+      minHeight: 8,
       minWidth: 8,
       fontSize: "18px",
     },
     md: {
-      height: 7,
+      minHeight: 7,
       minWidth: 7,
       fontSize: "18px",
     },
     sm: {
-      height: 6,
+      minHeight: 6,
       minWidth: 6,
       fontSize: "16px",
     },
     xs: {
-      height: 5,
+      minHeight: 5,
       minWidth: 5,
       fontSize: "16px",
       px: 2,

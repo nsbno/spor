@@ -20,7 +20,7 @@ const config = helpers.defineMultiStyleConfig({
       display: "flex",
       padding: 1,
       alignSelf: "center",
-      color: "darkTeal",
+      color: "primaryGreen",
     },
     icon: {
       flex: "0 0 auto",
@@ -34,10 +34,10 @@ const config = helpers.defineMultiStyleConfig({
       container: {
         padding: 0,
         _hover: {
-          color: "night",
+          color: "pine",
         },
         _active: {
-          color: "primaryGreen",
+          color: "greenHaze",
         },
         ...focusVisible({
           focus: {
@@ -130,3 +130,5 @@ const config = helpers.defineMultiStyleConfig({
 });
 
 export default config;
+
+// 3341 minus hund

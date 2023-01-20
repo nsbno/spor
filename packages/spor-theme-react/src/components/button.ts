@@ -154,6 +154,36 @@ const config = defineStyleConfig({
         backgroundColor: "mint",
       },
     }),
+    floating: {
+      backgroundColor: "white",
+      boxShadow: "sm",
+      _active: {
+        backgroundColor: "mint",
+      },
+      _hover: {
+        boxShadow: "md",
+      },
+      ...focusVisible({
+        focus: {
+          boxShadow: getBoxShadowString({
+            borderColor: "greenHaze",
+            borderWidth: 2,
+            baseShadow: "sm",
+          }),
+          _hover: {
+            boxShadow: getBoxShadowString({
+              borderColor: "greenHaze",
+              borderWidth: 2,
+              baseShadow: "md",
+            }),
+          },
+        },
+        notFocus: {
+          outline: "none",
+          boxShadow: "sm",
+        },
+      }),
+    },
   },
   sizes: {
     lg: {

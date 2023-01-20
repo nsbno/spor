@@ -51,9 +51,11 @@ type ColorScheme =
   | "yellow"
   | "light-yellow"
   | "red"
-  | "green"
+  | "light-green"
+  | "dark-green"
   | "orange"
-  | "blue"
+  | "light-blue"
+  | "dark-blue"
   | "grey"
   | "white";
 type ColorSpec = {
@@ -77,20 +79,30 @@ const colorCombinations: Record<ColorScheme, ColorSpec> = {
     borderColor: "brightRed",
     color: "darkGrey",
   },
-  green: {
+  "light-green": {
     backgroundColor: "seaMist",
     borderColor: "darkTeal",
     color: "darkTeal",
+  },
+  "dark-green": {
+    backgroundColor: "celadon",
+    borderColor: "blueGreen",
+    color: "white",
   },
   orange: {
     backgroundColor: "champagne",
     borderColor: "pumpkin",
     color: "darkGrey",
   },
-  blue: {
+  "light-blue": {
     backgroundColor: "lightBlue",
     borderColor: "ocean",
     color: "darkGrey",
+  },
+  "dark-blue": {
+    backgroundColor: "darkBlue",
+    borderColor: "sky",
+    color: "white",
   },
   grey: {
     backgroundColor: "platinum",

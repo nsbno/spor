@@ -14,9 +14,15 @@ export type BadgeProps = Omit<ChakraBadgeProps, "variant" | "colorScheme"> & {
     | "yellow"
     | "light-yellow"
     | "red"
+    | "light-green"
+    /** @deprecated Use "light-green" instead */
     | "green"
+    | "dark-green"
     | "orange"
+    | "light-blue"
+    /** @deprecated Use "light-blue" instead */
     | "blue"
+    | "dark-blue"
     | "grey"
     | "white";
   /** The design variant – "solid" by default.
@@ -53,16 +59,28 @@ export type BadgeProps = Omit<ChakraBadgeProps, "variant" | "colorScheme"> & {
  * If you want an icon, pass it in through the `icon` prop:
  *
  * ```tsx
- * <Badge colorScheme="blue" icon={<InformationOutline18Icon />}>
+ * <Badge colorScheme="light-blue" icon={<InformationOutline18Icon />}>
  *   Information
  * </Badge>
  * ```
  */
 export const Badge = forwardRef<BadgeProps, As<any>>(
-  ({ icon, children, ...props }, ref) => (
-    <ChakraBadge {...props} ref={ref}>
-      {icon && React.cloneElement(icon, { mr: 1 })}
-      {children}
-    </ChakraBadge>
-  )
+  ({ icon, colorScheme = "grey", children, ...props }, ref) => {
+    if (colorScheme === "blue" || colorScheme === "green") {
+      if (process.env.NODE_ENV !== "production") {
+        console.warn(
+          `⚠️ You're using a deprecated Badge colorScheme – ${colorScheme}. Please use "light-${colorScheme}" instead.`
+        );
+      }
+      colorScheme = `light-${colorScheme}`;
+    }
+    return (
+      <ChakraBadge colorScheme={colorScheme} {...props} ref={ref}>
+        {icon && React.cloneElement(icon, { mr: 1 })}
+        {children}
+      </ChakraBadge>
+    );
+  }
 );
+
+<Badge colorScheme="blue" />;

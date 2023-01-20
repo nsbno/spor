@@ -4,5 +4,5 @@
 ---
 
 Add new variant "floating"
-Add new componnet "CloseButton"
+Add new component "CloseButton"
 Add better support for ButtonGroup

@@ -61,6 +61,7 @@ export function ColorTokens(props: BoxProps) {
             tokens.color.alias.darkGrey,
             tokens.color.alias.white,
             tokens.color.alias.darkTeal,
+            tokens.color.alias.pine,
           ]}
         />
 

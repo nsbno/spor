@@ -28,7 +28,7 @@ export type SearchInputProps = Exclude<
 export const SearchInput = forwardRef<SearchInputProps, "input">(
   ({ label, onReset, ...props }, ref) => {
     const { t } = useTranslation();
-    const showCloseButton = onReset && Boolean(props.value);
+    const showClearButton = onReset && Boolean(props.value);
     return (
       <InputGroup position="relative">
         <InputLeftElement>
@@ -50,7 +50,7 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
         <FormLabel htmlFor={props.id} pointerEvents="none">
           {label ?? t(texts.label)}
         </FormLabel>
-        {showCloseButton && (
+        {showClearButton && (
           <InputRightElement width="fit-content">
             <IconButton
               variant="ghost"

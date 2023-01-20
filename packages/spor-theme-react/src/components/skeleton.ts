@@ -13,7 +13,7 @@ const $endColor = cssVar("skeleton-end-color");
 
 const config = defineStyleConfig({
   baseStyle: (props) => {
-    const defaultStartColor = mode("blackAlpha.200", "whiteAlpha.200")(props);
+    const defaultStartColor = mode("blackAlpha.300", "whiteAlpha.300")(props);
     const defaultEndColor = mode("blackAlpha.100", "whiteAlpha.100")(props);
 
     const {

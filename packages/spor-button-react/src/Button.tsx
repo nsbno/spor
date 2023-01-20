@@ -4,6 +4,7 @@ import {
   ButtonProps as ChakraButtonProps,
   Center,
   forwardRef,
+  useButtonGroup,
 } from "@chakra-ui/react";
 import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import { ColorInlineLoader } from "@vygruppen/spor-loader-react";
@@ -13,16 +14,24 @@ export type ButtonProps = Exclude<
   ChakraButtonProps,
   "colorScheme" | "loadingText" | "size" | "variant"
 > & {
-  /** The size of the button. Try not to use the xs size a lot */
+  /**
+   * The size of the button.
+   *
+   * Defaults to "md"
+   * */
   size?: "xs" | "sm" | "md" | "lg";
-  /** The different variants of a button */
+  /** The different variants of a button
+   *
+   * Defaults to "primary"
+   */
   variant?:
     | "control"
     | "primary"
     | "secondary"
     | "tertiary"
     | "additional"
-    | "ghost";
+    | "ghost"
+    | "floating";
 };
 /**
  * Buttons are used to trigger actions.
@@ -35,6 +44,7 @@ export type ButtonProps = Exclude<
  * - `tertiary`: Used for non-essential actions, as well as in combination with the primary button.
  * - `additional`: Used for additional choices, like a less important tertiary action.
  * - `ghost`: Used inside other interactive elements, like date pickers and input fields.
+ * - `floating`: Used for floating actions, like a menu button in a menu.
  *
  * ```tsx
  * <Button variant="primary" onClick={confirmOrder}>
@@ -49,12 +59,14 @@ export type ButtonProps = Exclude<
  *   Cancel trip
  * </Button>
  * ```
+ *
+ * @see https://spor.cloud.vy.no/komponenter/button
  */
 export const Button = forwardRef<ButtonProps, "button">(
   (
     {
-      size = "md",
-      variant = "primary",
+      size,
+      variant,
       children,
       isLoading,
       isDisabled,
@@ -65,11 +77,18 @@ export const Button = forwardRef<ButtonProps, "button">(
     ref
   ) => {
     const ariaLabel = useCorrectAriaLabel(props);
+    const buttonGroup = useButtonGroup();
+    const finalVariant = (variant ??
+      buttonGroup?.variant ??
+      "primary") as Required<ButtonProps["variant"]>;
+    const finalSize = (size ?? buttonGroup?.size ?? "md") as Required<
+      ButtonProps["size"]
+    >;
 
     return (
       <ChakraButton
-        size={size}
-        variant={variant}
+        size={finalSize}
+        variant={finalVariant}
         {...props}
         ref={ref}
         aria-label={ariaLabel}
@@ -77,14 +96,24 @@ export const Button = forwardRef<ButtonProps, "button">(
         isDisabled={isDisabled || isLoading}
         leftIcon={
           isLoading && leftIcon ? (
-            <Box visibility={isLoading ? "hidden" : "visible"}>{leftIcon}</Box>
+            <Box
+              visibility={isLoading ? "hidden" : "visible"}
+              aria-hidden="true"
+            >
+              {leftIcon}
+            </Box>
           ) : (
             leftIcon
           )
         }
         rightIcon={
           isLoading && rightIcon ? (
-            <Box visibility={isLoading ? "hidden" : "visible"}>{rightIcon}</Box>
+            <Box
+              visibility={isLoading ? "hidden" : "visible"}
+              aria-hidden="true"
+            >
+              {rightIcon}
+            </Box>
           ) : (
             rightIcon
           )
@@ -100,7 +129,7 @@ export const Button = forwardRef<ButtonProps, "button">(
             paddingTop={2}
           >
             <ColorInlineLoader
-              maxWidth={sizeToWidthMap[size] || "4rem"}
+              maxWidth={getLoaderWidth(finalSize)}
               width="100%"
               mx={2}
             />
@@ -112,12 +141,19 @@ export const Button = forwardRef<ButtonProps, "button">(
   }
 );
 
-const sizeToWidthMap: Record<string, string> = {
-  xs: "4rem",
-  sm: "4rem",
-  md: "5rem",
-  lg: "6rem",
-};
+function getLoaderWidth(size: any) {
+  switch (size) {
+    case "xs":
+      return "4rem";
+    case "sm":
+      return "4rem";
+    case "md":
+      return "5rem";
+    case "lg":
+    default:
+      return "6rem";
+  }
+}
 
 function useCorrectAriaLabel(props: ButtonProps) {
   const { t } = useTranslation();

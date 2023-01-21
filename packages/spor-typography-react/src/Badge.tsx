@@ -29,9 +29,8 @@ export type BadgeProps = Omit<ChakraBadgeProps, "variant" | "colorScheme"> & {
    *
    * Can be specified as `outline` to render a border around the badge. */
   variant?: "solid" | "outline";
-  /** The badge size – "sm" by default.
-   *
-   * Can be specified as `md` to render a larger badge.
+  /**
+   * @deprecated Size is automatically set based on screen size.
    */
   size?: "sm" | "md";
   /** Optional badge icon. Will be rendered to the left of the text.
@@ -47,13 +46,6 @@ export type BadgeProps = Omit<ChakraBadgeProps, "variant" | "colorScheme"> & {
  *
  * ```tsx
  * <Badge colorScheme="green">Hello</Badge>
- * ```
- *
- * You can specify the `size` (`sm` by default) and the `variant` (`solid` by default) props if required.
- *
- *
- * ```tsx
- * <Badge colorScheme="red" size="md" variant="outline">Special</Badge>
  * ```
  *
  * If you want an icon, pass it in through the `icon` prop:
@@ -75,8 +67,13 @@ export const Badge = forwardRef<BadgeProps, As<any>>(
       colorScheme = `light-${colorScheme}`;
     }
     return (
-      <ChakraBadge colorScheme={colorScheme} {...props} ref={ref}>
-        {icon && React.cloneElement(icon, { mr: 1 })}
+      <ChakraBadge
+        colorScheme={colorScheme}
+        {...props}
+        paddingLeft={icon ? 1 : undefined}
+        ref={ref}
+      >
+        {icon && React.cloneElement(icon, { marginRight: 1 })}
         {children}
       </ChakraBadge>
     );

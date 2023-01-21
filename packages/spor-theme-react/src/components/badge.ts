@@ -8,6 +8,9 @@ const config = defineStyleConfig({
     fontSize: ["mobile.xs", "desktop.xs"],
     borderRadius: "xl",
     fontWeight: "bold",
+    paddingLeft: [2, 3],
+    paddingRight: [2, 3],
+    minHeight: [4, 5],
   },
   variants: {
     solid: ({ colorScheme }) => ({
@@ -19,20 +22,9 @@ const config = defineStyleConfig({
       ...getColorScheme(colorScheme as ColorScheme),
     }),
   },
-  sizes: {
-    sm: {
-      px: 2,
-      height: 4,
-    },
-    md: {
-      px: 3,
-      height: 5,
-    },
-  },
   defaultProps: {
     variant: "solid",
     colorScheme: "grey",
-    size: "sm",
   },
 });
 

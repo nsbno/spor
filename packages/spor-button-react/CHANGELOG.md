@@ -1,5 +1,19 @@
 # @vygruppen/spor-button-react
 
+## 1.1.0
+
+### Minor Changes
+
+- 77089ff5: Add new variant "floating"
+  Add new component "CloseButton"
+  Add better support for ButtonGroup
+
+### Patch Changes
+
+- 69756a1c: Let buttons span several lines
+- Updated dependencies [bdffe816]
+  - @vygruppen/spor-loader-react@1.0.2
+
 ## 1.0.4
 
 ### Patch Changes

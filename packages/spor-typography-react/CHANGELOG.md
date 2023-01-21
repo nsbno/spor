@@ -1,5 +1,15 @@
 # @vygruppen/spor-typography-react
 
+## 1.1.0
+
+### Minor Changes
+
+- 110af9f2: Add new colors dark-green, light-green, dark-blue and light-blue. Also deprecate green and blue in favor of their light versions.
+
+### Patch Changes
+
+- 1420991f: Deprecate size prop for Badge, and fix an issue with excessive padding when badges have icons
+
 ## 1.0.1
 
 ### Patch Changes

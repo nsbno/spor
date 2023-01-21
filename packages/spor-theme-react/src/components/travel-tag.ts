@@ -247,8 +247,10 @@ const getDeviationBorderColor = (props: StyleFunctionProps) => {
 const getDeviationIconStyle = (props: StyleFunctionProps) => {
   return {
     position: "absolute",
-    top: "-7px",
-    right: "-7px",
+    top: "0",
+    right: "0",
+    transform: "translate(50%, -50%)",
+    zIndex: "banner",
     stroke: "white",
     color:
       deviationIconColor[

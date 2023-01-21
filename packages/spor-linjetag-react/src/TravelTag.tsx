@@ -7,8 +7,11 @@ import {
 } from "@chakra-ui/react";
 import {
   ErrorFill18Icon,
+  ErrorFill24Icon,
   InformationFill18Icon,
+  InformationFill24Icon,
   WarningFill18Icon,
+  WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { LineIcon } from "./LineIcon";
@@ -76,7 +79,7 @@ export const TravelTag = forwardRef<TravelTagProps, As<any>>(
       deviationLevel,
     });
 
-    const DeviationLevelIcon = getDeviationLevelIcon(deviationLevel);
+    const DeviationLevelIcon = getDeviationLevelIcon({ deviationLevel, size });
 
     return (
       <Box sx={styles.container} aria-disabled={isDisabled} ref={ref} {...rest}>
@@ -100,17 +103,18 @@ export const TravelTag = forwardRef<TravelTagProps, As<any>>(
   }
 );
 
-const getDeviationLevelIcon = (
-  deviationLevel: TravelTagProps["deviationLevel"]
-) => {
+const getDeviationLevelIcon = ({
+  deviationLevel,
+  size,
+}: Pick<TravelTagProps, "deviationLevel" | "size">) => {
   switch (deviationLevel) {
     case "critical":
-      return ErrorFill18Icon;
+      return size === "lg" ? ErrorFill24Icon : ErrorFill18Icon;
     case "major":
     case "minor":
-      return WarningFill18Icon;
+      return size === "lg" ? WarningFill24Icon : WarningFill18Icon;
     case "info":
-      return InformationFill18Icon;
+      return size === "lg" ? InformationFill24Icon : InformationFill18Icon;
     default:
       return null;
   }

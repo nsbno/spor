@@ -1,38 +1,30 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 
 const config = defineStyleConfig({
-  baseStyle: {
+  baseStyle: ({ colorScheme }) => ({
+    borderStyle: "solid",
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
     fontSize: ["mobile.xs", "desktop.xs"],
     borderRadius: "xl",
     fontWeight: "bold",
-  },
+    paddingLeft: [2, 3],
+    paddingRight: [2, 3],
+    minHeight: [4, 5],
+    ...getColorScheme(colorScheme as ColorScheme),
+  }),
   variants: {
-    solid: ({ colorScheme }) => ({
-      border: "none",
-      ...getColorScheme(colorScheme as ColorScheme),
-    }),
-    outline: ({ colorScheme }) => ({
-      border: "1px solid",
-      ...getColorScheme(colorScheme as ColorScheme),
-    }),
-  },
-  sizes: {
-    sm: {
-      px: 2,
-      height: 4,
+    solid: {
+      borderWidth: 0,
     },
-    md: {
-      px: 3,
-      height: 5,
+    outline: {
+      borderWidth: 1,
     },
   },
   defaultProps: {
     variant: "solid",
     colorScheme: "grey",
-    size: "sm",
   },
 });
 

@@ -1,5 +1,20 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.12
+
+### Patch Changes
+
+- 110af9f2: Add new colors dark-green, light-green, dark-blue and light-blue. Also deprecate green and blue in favor of their light versions.
+- b4edad03: Change the colors of the buttons slightly
+- 6c532f14: New component: Card Select
+- 4667f209: Use large deviation icons on large travel tags
+- 77089ff5: Add new variant "floating"
+  Add new component "CloseButton"
+  Add better support for ButtonGroup
+- 69756a1c: Let buttons span several lines
+- bdffe816: Improve the skeleton colors slightly"
+- 1420991f: Deprecate size prop for Badge, and fix an issue with excessive padding when badges have icons
+
 ## 1.0.11
 
 ### Patch Changes

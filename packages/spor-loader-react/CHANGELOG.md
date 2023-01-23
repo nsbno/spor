@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader-react
 
+## 1.0.2
+
+### Patch Changes
+
+- bdffe816: Improve the skeleton colors slightly"
+
 ## 1.0.1
 
 ### Patch Changes

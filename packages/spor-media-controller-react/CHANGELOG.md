@@ -1,5 +1,14 @@
 # @vygruppen/spor-media-controller-react
 
+## 0.1.3
+
+### Patch Changes
+
+- b4edad03: Change the colors of the buttons slightly
+- Updated dependencies [77089ff5]
+- Updated dependencies [69756a1c]
+  - @vygruppen/spor-button-react@1.1.0
+
 ## 0.1.2
 
 ### Patch Changes

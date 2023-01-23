@@ -1,5 +1,11 @@
 # @vygruppen/spor-linjetag-react
 
+## 1.0.3
+
+### Patch Changes
+
+- 4667f209: Use large deviation icons on large travel tags
+
 ## 1.0.2
 
 ### Patch Changes

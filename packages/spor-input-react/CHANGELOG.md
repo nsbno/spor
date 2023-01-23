@@ -1,5 +1,11 @@
 # @vygruppen/spor-input-react
 
+## 1.3.0
+
+### Minor Changes
+
+- 6c532f14: New component: Card Select
+
 ## 1.2.0
 
 ### Minor Changes

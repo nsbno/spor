@@ -21,6 +21,7 @@ import { FontPreloading } from "./features/font-loading/FontPreloading";
 import { BaseLayout } from "./features/layouts/base-layout/BaseLayout";
 import { RootProviders } from "./features/root-providers/RootProviders";
 import { NotFound } from "./features/routes/ressurser/ikoner/NotFound";
+import { SkipToContent } from "./features/skip-to-content/SkipToContent";
 import {
   getInitialSanityData,
   InitialSanityData,
@@ -162,7 +163,10 @@ const Document = withEmotionCache(
         </head>
         <body>
           <ColorModeScript />
-          <RootProviders>{children}</RootProviders>
+          <RootProviders>
+            <SkipToContent />
+            {children}
+          </RootProviders>
           <ScrollRestoration />
           <Scripts />
           {process.env.NODE_ENV === "development" && <LiveReload />}

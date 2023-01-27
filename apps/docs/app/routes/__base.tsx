@@ -1,5 +1,4 @@
 import { Box, Flex } from "@chakra-ui/react";
-import { LoaderFunction } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 import { LeftSidebar } from "~/features/layouts/docs-layout/left-sidebar/LeftSidebar";
 import TableOfContent from "~/features/table-of-contents/TableOfContents";
@@ -17,20 +16,23 @@ export const loader = async () => {
 export default function BaseLayout() {
   const { headings, contentRef } = useHeadings();
   return (
-    <Flex flex="1">
-      <LeftSidebar />
-      <Box
-        as="main"
-        flex="1"
-        mt={6}
-        mx={[3, 6, 10]}
-        mb={["60px", "120px", "180px"]}
-        maxWidth="924px"
-        ref={contentRef}
-      >
-        <Outlet />
-      </Box>
-      <TableOfContent headings={headings} />
-    </Flex>
+    <>
+      <Flex flex="1">
+        <LeftSidebar />
+        <Box
+          as="main"
+          id="content"
+          flex="1"
+          mt={6}
+          mx={[3, 6, 10]}
+          mb={["60px", "120px", "180px"]}
+          maxWidth="924px"
+          ref={contentRef}
+        >
+          <Outlet />
+        </Box>
+        <TableOfContent headings={headings} />
+      </Flex>
+    </>
   );
 }

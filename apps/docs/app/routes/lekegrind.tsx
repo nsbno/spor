@@ -77,7 +77,7 @@ export default function PlaygroundPage() {
   };
   return (
     <LiveProvider code={playgroundData}>
-      <Stack spacing={2}>
+      <Stack spacing={2} id="content">
         <LiveEditor
           borderRadius="none"
           minHeight="200px"

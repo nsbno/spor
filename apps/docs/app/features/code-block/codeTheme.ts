@@ -10,7 +10,7 @@ export const theme: PrismTheme = {
     {
       types: ["prolog", "comment", "doctype", "cdata"],
       style: {
-        color: "hsl(30, 20%, 50%)",
+        color: "hsl(30, 20%, 70%)",
       },
     },
     {

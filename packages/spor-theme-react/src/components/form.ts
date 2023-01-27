@@ -18,7 +18,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     helperText: {
       mt: 2,
-      color: mode("osloGrey", "whiteAlpha.600")(props),
+      color: mode("dimGrey", "whiteAlpha.600")(props),
       lineHeight: "normal",
       fontSize: "sm",
     },

@@ -57,8 +57,15 @@ export const FloatingActionButton = ({
     placement,
   });
   return (
-    <MotionBox __css={style.container} as="button" {...props}>
-      <Box __css={style.icon}>{icon}</Box>
+    <MotionBox
+      __css={style.container}
+      as="button"
+      aria-label={children}
+      {...props}
+    >
+      <Box __css={style.icon} aria-hidden="true">
+        {icon}
+      </Box>
       <MotionBox
         animate={isTextVisible ? "show" : "hide"}
         initial="show"

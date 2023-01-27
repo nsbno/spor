@@ -6,7 +6,7 @@ import {
 } from "@chakra-ui/react";
 import { dataAttr } from "@chakra-ui/utils";
 import { CloseOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useId } from "react";
 
 export type ChoiceChipProps = {
   onChange?: (value: ChangeEvent<HTMLInputElement>) => void;
@@ -52,12 +52,7 @@ export type ChoiceChipProps = {
  * ```
  */
 export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
-  const {
-    children,
-    icon,
-    size = "md",
-    variant = "choice",
-  } = props;
+  const { children, icon, size = "md", variant = "choice" } = props;
 
   const {
     state,
@@ -73,9 +68,15 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
     hasLabel: Boolean(children),
   });
 
+  const id = `choice-chip-${useId()}`;
+
   return (
-    <chakra.label {...getRootProps()}>
-      <chakra.input {...getInputProps({}, ref)} />
+    <chakra.label
+      htmlFor={id}
+      {...getRootProps()}
+      aria-label={String(children)}
+    >
+      <chakra.input {...getInputProps({}, ref)} id={id} />
       <chakra.div
         {...getLabelProps()}
         __css={styles.container}

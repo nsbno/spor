@@ -1,5 +1,5 @@
 import { Box, BoxProps } from "@chakra-ui/react";
-import React from "react";
+import React, { useId } from "react";
 
 export type VyLogoProps = {
   /** The color of the logo
@@ -13,7 +13,7 @@ export const VyLogo = ({ colorScheme, ...boxProps }: VyLogoProps) => {
   // These colors should not be tokenized, as they are logo specific.
   const mainColor = colorScheme === "light" ? "#1d211c" : "#ffffff";
   const accentColor = colorScheme === "light" ? "#138c6e" : "#ffffff";
-
+  const id = useId();
   return (
     <Box as="svg" viewBox="0 0 107 54" {...boxProps}>
       <title>Vy logo</title>
@@ -24,7 +24,7 @@ export const VyLogo = ({ colorScheme, ...boxProps }: VyLogoProps) => {
         fill={mainColor}
       />
       <mask
-        id="a"
+        id={`${id}-a`}
         style={{ maskType: "alpha" }}
         maskUnits="userSpaceOnUse"
         x="0"
@@ -39,7 +39,12 @@ export const VyLogo = ({ colorScheme, ...boxProps }: VyLogoProps) => {
           fill={mainColor}
         />
       </mask>
-      <g mask="url(#a)" fillRule="evenodd" clipRule="evenodd" fill={mainColor}>
+      <g
+        mask={`url(#${id}-a)`}
+        fillRule="evenodd"
+        clipRule="evenodd"
+        fill={mainColor}
+      >
         <path d="M84.57 33.44a.04.04 0 0 0 .01-.08c-2.34-.3-3.85-3.59-4.68-6.38-.88-2.93-4.04-13.63-5.92-19.82C72.08.94 66.2.05 63.54.04a.04.04 0 0 0-.01.08c2.49.34 6.02 1.85 7.55 7.04 1.34 4.55 5.6 19.03 5.76 19.51 1.02 3.03 2.22 4.85 3.73 5.83a6.3 6.3 0 0 0 3.54.94h.46ZM23.28 53.68h-.72c-2.12 0-4.68-1.08-6.09-6.04L3.8 4.37C3.04 1.77 1.93.47.03.15A.04.04 0 0 1 .04.07h1.9c2.54 0 3.92 1.27 4.8 4.3 0 0 11.72 39.78 12.79 43.54.78 2.78 1.7 4.67 3.13 5.43.23.13.42.2.62.26a.04.04 0 0 1 0 .08ZM18.99 5.99C17.77 1.79 15.87.04 12.37.04h-1.71a.04.04 0 0 0 0 .08c2.73.39 4.32 2.19 5.39 5.87 0 0 10.49 35.72 11.85 40.4l1.44-4.87L18.99 6Z" />
         <path d="M24.26 53.68h1.24c1.57 0 2.69-.41 3.52-1.1 1.37-1.1 1.99-2.93 2.56-4.86.09-.29 11.2-37.95 11.59-39.42 1.32-4.97 4.27-7.13 7.43-7.9a12.2 12.2 0 0 1 1.58-.28.04.04 0 0 0 0-.08h-1.4c-4.15 0-8.8 1.65-10.56 8.26-.63 2.38-11.5 39.13-11.58 39.42-.57 1.93-1.23 3.96-2.59 5.07-.56.45-1.06.7-1.8.81a.04.04 0 0 0 0 .08ZM81.3 27.76l6.53-21.78C88.89 2.3 90.49.5 93.23.11a.04.04 0 0 0-.01-.08H91.5c-3.5 0-5.4 1.76-6.62 5.95l-5.05 16.97s1.33 4.46 1.46 4.8Z" />
       </g>
@@ -56,7 +61,7 @@ export const VyLogo = ({ colorScheme, ...boxProps }: VyLogoProps) => {
         fill={mainColor}
       />
       <mask
-        id="b"
+        id={`${id}-b`}
         style={{ maskType: "alpha" }}
         maskUnits="userSpaceOnUse"
         x="29"
@@ -71,7 +76,7 @@ export const VyLogo = ({ colorScheme, ...boxProps }: VyLogoProps) => {
           fill={mainColor}
         />
       </mask>
-      <g mask="url(#b)" fillRule="evenodd" clipRule="evenodd">
+      <g mask={`url(#${id}-b)`} fillRule="evenodd" clipRule="evenodd">
         <path
           d="m88.2 34.45-3.96 13.46c-1.54 5.18.9 5.72 1.83 5.72h2.26a.04.04 0 0 0 0-.09c-1.05-.27-2.44-1.4-1.18-5.63l4.43-15.02c-.7.71-1.88 1.37-3.38 1.56ZM93.71 53.63c.02 0 .04-.02.04-.05a.04.04 0 0 0-.03-.04c-.9-.25-2.02-1.24-.96-4.77 0 0 12.4-42.2 13.08-44.6a3.1 3.1 0 0 0-2.47-4.1c-.02 0-.06-.02-.07.01-.01.04.03.06.04.06.3.16.63.52.45 1.14L89.84 48.77c-1.32 4.4.76 4.86 1.55 4.86h2.32ZM74.1 33.44a.04.04 0 0 0 0-.08 5.77 5.77 0 0 1-2.3-.83c-1.64-1.04-2.9-3.06-3.98-6.5-.1-.29-5.37-18.25-5.55-18.87-1.12-3.8-2.91-5.63-4.68-6.46a7.06 7.06 0 0 0-3.04-.66H53a.04.04 0 0 0-.02.08c.3.05 4.32.17 6.35 7.04 2.03 6.86 4.46 15.07 5.28 17.97 1.77 6.26 4.07 8.3 7.75 8.3h1.73Z"
           fill={mainColor}

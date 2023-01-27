@@ -264,7 +264,7 @@ const components: Partial<PortableTextReactComponents> = {
     tipsPanel: ({ value }) => (
       <Box as="article" backgroundColor="mint" mt={3} p={4} borderRadius="md">
         <Flex gap={1} alignItems="end">
-          <FavouriteOutline30Icon />
+          <FavouriteOutline30Icon aria-hidden="true" />
           <Heading as="h3" textStyle="sm" fontWeight="bold">
             {value.title}
           </Heading>

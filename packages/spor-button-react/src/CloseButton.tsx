@@ -26,13 +26,14 @@ export type CloseButtonProps = Omit<
  * ```
  */
 export const CloseButton = forwardRef<CloseButtonProps, "button">(
-  (props, ref) => {
+  ({ size = "sm", ...props }, ref) => {
     const { t } = useTranslation();
     return (
       <IconButton
         ref={ref}
         variant="ghost"
-        icon={getIcon(props.size)}
+        icon={getIcon(size)}
+        size={size}
         aria-label={props["aria-label"] || t(texts.close)}
         {...props}
       />

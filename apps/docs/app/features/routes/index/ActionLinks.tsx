@@ -135,7 +135,11 @@ function IconCircle({ backgroundColor, icon: Icon }: IconCircleProps) {
       borderRadius="round"
       backgroundColor={backgroundColor}
     >
-      <Icon width={["30px", "60px"]} height={["30px", "60px"]} />
+      <Icon
+        width={["30px", "60px"]}
+        height={["30px", "60px"]}
+        aria-hidden="true"
+      />
     </Flex>
   );
 }

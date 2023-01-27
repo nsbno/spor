@@ -36,7 +36,7 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
     return (
       <InputGroup position="relative">
         <InputLeftElement>
-          <SearchOutline24Icon aria-hidden="true" />
+          <SearchOutline24Icon />
         </InputLeftElement>
         <ChakraInput
           pl={7}

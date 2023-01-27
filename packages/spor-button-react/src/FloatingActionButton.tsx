@@ -63,7 +63,7 @@ export const FloatingActionButton = ({
       aria-label={children}
       {...props}
     >
-      <Box __css={style.icon} aria-hidden="true">
+      <Box __css={style.icon}>
         {icon}
       </Box>
       <MotionBox

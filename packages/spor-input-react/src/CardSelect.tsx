@@ -108,9 +108,9 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
             {icon}
             <Box as="span">{label}</Box>
             {state.isOpen ? (
-              <DropdownUpFill24Icon aria-hidden="true" />
+              <DropdownUpFill24Icon />
             ) : (
-              <DropdownDownFill24Icon aria-hidden="true" />
+              <DropdownDownFill24Icon />
             )}
           </Flex>
         </chakra.button>

@@ -25,7 +25,7 @@ export function HeroSection() {
                 as={Link}
                 size="lg"
                 to="/guider/bidra"
-                rightIcon={<ArrowRightFill30Icon aria-hidden="true" />}
+                rightIcon={<ArrowRightFill30Icon />}
                 mt={4}
                 width={["100%", "fit-content"]}
               >

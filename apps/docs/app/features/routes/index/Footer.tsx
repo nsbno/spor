@@ -54,7 +54,7 @@ function FooterLink({ href, icon: Icon, children, ...props }: FooterLinkProps) {
       _hover={{ textDecoration: "underline" }}
       {...props}
     >
-      <Icon marginRight={3} aria-hidden="true" />
+      <Icon marginRight={3} />
       {children}
     </Flex>
   );

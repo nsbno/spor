@@ -185,7 +185,7 @@ export const InfoSelect = ({
             ? state.selectedItem.textValue ?? state.selectedItem.rendered
             : placeholder ?? t(texts.selectAnOption)}
         </Box>
-        <Box aria-hidden="true" sx={styles.arrowIcon}>
+        <Box sx={styles.arrowIcon}>
           {state.isOpen ? <DropdownUpFill24Icon /> : <DropdownDownFill24Icon />}
         </Box>
       </chakra.button>

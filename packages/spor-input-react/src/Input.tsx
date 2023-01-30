@@ -41,9 +41,9 @@ export const Input = forwardRef<InputProps, "input">(
           pl={leftIcon ? 7 : undefined}
           pr={rightIcon ? 7 : undefined}
           id={id}
+          placeholder=" " // This is needed to make the label work as expected
           {...props}
           ref={ref}
-          placeholder=" " // This is needed to make the label work as expected
         />
         <FormLabel htmlFor={id} pointerEvents="none">
           {label}

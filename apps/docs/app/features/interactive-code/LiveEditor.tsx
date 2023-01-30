@@ -25,10 +25,10 @@ export const LiveEditor = ({ onChange, ...props }: LiveEditorProps) => {
         position: "absolute",
         top: 0,
         left: 0,
-        backgroundColor: "var(--spor-colors-greenHaze)",
-        color: "var(--spor-colors-white)",
-        padding: "var(--spor-space-1)",
-        borderBottomRightRadius: "var(--spor-radii-sm)",
+        backgroundColor: "greenHaze",
+        color: "white",
+        padding: 1,
+        borderBottomRightRadius: "sm",
       }}
       _focus={{
         outline: "none",

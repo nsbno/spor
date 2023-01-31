@@ -15,7 +15,7 @@ export const useCurrentLocale = () => {
     case "sv":
       return "sv";
     case "en":
-      return "en";
+      return "en-GB";
     default:
       return "no";
   }

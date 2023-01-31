@@ -16,14 +16,8 @@ type CalendarCellProps = {
 };
 export function CalendarCell({ state, date, currentMonth }: CalendarCellProps) {
   const ref = useRef(null);
-  const {
-    cellProps,
-    buttonProps,
-    isSelected,
-    isInvalid,
-    isDisabled,
-    isUnavailable,
-  } = useCalendarCell({ date }, state, ref);
+  const { cellProps, buttonProps, isSelected, isDisabled, isUnavailable } =
+    useCalendarCell({ date }, state, ref);
 
   const isOutsideMonth = !isSameMonth(currentMonth, date);
   const styles = useMultiStyleConfig("Datepicker", {});

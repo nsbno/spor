@@ -11,6 +11,7 @@ import {
 import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
 import { SharedTokenLayout } from "./SharedTokenLayout";
+import translucentBackgroundUrl from "./translucent-background.svg";
 
 export function ColorTokens(props: BoxProps) {
   return (
@@ -125,16 +126,24 @@ const ColorGrid = ({ colors, ...rest }: ColorGridProps) => {
 type ColorTokenProps = BoxProps & { token: string };
 const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
   const { aliasName, paletteName, colorValue } = useTokenInfo(token);
-  const isWhite = colorValue.toLowerCase() === "#ffffff";
+  const isWhite = aliasName?.includes("White");
+  const isTranslucent = paletteName?.includes("Alpha");
+
+  const colorBackground = isTranslucent
+    ? `linear-gradient(to right, ${colorValue}, ${colorValue}), url(${translucentBackgroundUrl})`
+    : colorValue;
 
   return (
     <Card colorScheme="white" borderRadius="sm" overflow="hidden" {...rest}>
       <Box
         height="60px"
-        backgroundColor={colorValue}
         border="1px solid"
         borderColor={isWhite ? "silver" : colorValue}
         borderTopRadius="sm"
+        position="relative"
+        background={colorBackground}
+        backgroundPosition="center center"
+        backgroundRepeat="repeat"
       />
       <Flex flexDirection="column" justifyContent="space-between" px={2}>
         <Box>

@@ -1,5 +1,11 @@
 # @vygruppen/spor-typography-react
 
+## 1.1.1
+
+### Patch Changes
+
+- fbe0808b: Fix a few accessibility issues
+
 ## 1.1.0
 
 ### Minor Changes

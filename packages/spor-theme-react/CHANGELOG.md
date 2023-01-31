@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.13
+
+### Patch Changes
+
+- fbe0808b: Fix a few accessibility issues
+
 ## 1.0.12
 
 ### Patch Changes

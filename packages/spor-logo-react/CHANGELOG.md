@@ -1,5 +1,11 @@
 # @vygruppen/spor-logo-react
 
+## 1.0.2
+
+### Patch Changes
+
+- fbe0808b: Fix a few accessibility issues
+
 ## 1.0.1
 
 ### Patch Changes

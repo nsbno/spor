@@ -1,5 +1,13 @@
 # @vygruppen/spor-button-react
 
+## 1.1.1
+
+### Patch Changes
+
+- fbe0808b: Fix a few accessibility issues
+- Updated dependencies [fbe0808b]
+  - @vygruppen/spor-icon-react@2.0.0
+
 ## 1.1.0
 
 ### Minor Changes

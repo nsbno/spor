@@ -1,5 +1,17 @@
 # @vygruppen/spor-datepicker-react
 
+## 1.1.3
+
+### Patch Changes
+
+- fbe0808b: Fix a few accessibility issues
+- Updated dependencies [fbe0808b]
+- Updated dependencies [fbe0808b]
+  - @vygruppen/spor-typography-react@1.1.1
+  - @vygruppen/spor-button-react@1.1.1
+  - @vygruppen/spor-input-react@1.3.1
+  - @vygruppen/spor-icon-react@2.0.0
+
 ## 1.1.2
 
 ### Patch Changes

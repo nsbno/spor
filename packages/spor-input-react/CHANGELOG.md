@@ -1,5 +1,13 @@
 # @vygruppen/spor-input-react
 
+## 1.3.1
+
+### Patch Changes
+
+- fbe0808b: Fix a few accessibility issues
+- Updated dependencies [fbe0808b]
+  - @vygruppen/spor-icon-react@2.0.0
+
 ## 1.3.0
 
 ### Minor Changes

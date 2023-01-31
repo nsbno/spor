@@ -1,5 +1,6 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { Outlet } from "@remix-run/react";
+import { Footer } from "~/features/layouts/docs-layout/footer/Footer";
 import { LeftSidebar } from "~/features/layouts/docs-layout/left-sidebar/LeftSidebar";
 import TableOfContent from "~/features/table-of-contents/TableOfContents";
 import { useHeadings } from "~/features/table-of-contents/useHeadings";
@@ -30,6 +31,7 @@ export default function BaseLayout() {
           ref={contentRef}
         >
           <Outlet />
+          <Footer />
         </Box>
         <TableOfContent headings={headings} />
       </Flex>

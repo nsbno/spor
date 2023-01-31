@@ -17,8 +17,8 @@ import {
   Heading,
   IconButton,
   Image,
+  NativeSelect,
   SearchInput,
-  Select,
   SimpleGrid,
   SimplePopover,
   Text,
@@ -99,7 +99,7 @@ export default function IllustrasjonerPage() {
 
   return (
     <Box>
-      <Badge colorScheme="green">{article.category?.title}</Badge>
+      <Badge colorScheme="light-green">{article.category?.title}</Badge>
       <Heading as="h1" size="2xl">
         {article.title}
       </Heading>
@@ -127,7 +127,7 @@ export default function IllustrasjonerPage() {
           />
         </Box>
         <Box>
-          <Select
+          <NativeSelect
             label="Bakgrunn"
             value={background}
             onChange={(e) => setBackground(e.target.value)}
@@ -135,7 +135,7 @@ export default function IllustrasjonerPage() {
           >
             <option value="light">Lys bakgrunn</option>
             <option value="dark">Mørk bakgrunn</option>
-          </Select>
+          </NativeSelect>
         </Box>
       </Flex>
       <SimpleGrid columns={[1, 2, 3]} gap={2}>
@@ -154,7 +154,9 @@ export default function IllustrasjonerPage() {
                 <SimplePopover
                   placement="top"
                   arrowPadding={2}
-                  triggerElement={<InformationOutline18Icon />}
+                  triggerElement={
+                    <InformationOutline18Icon aria-label="Informasjon" />
+                  }
                 >
                   {illustration.description}
                 </SimplePopover>

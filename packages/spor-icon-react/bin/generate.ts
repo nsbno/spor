@@ -110,6 +110,7 @@ async function generateComponent(iconData: IconData) {
       titleProp: false,
       svgProps: {
         role: "img",
+        "aria-hidden": "true",
       },
       svgo: true,
       svgoConfig: {

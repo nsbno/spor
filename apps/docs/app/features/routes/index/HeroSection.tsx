@@ -36,7 +36,7 @@ export function HeroSection() {
           <Flex flex={["auto", "45%"]}>
             <Image
               src="/illustrations/front-page-illustration.svg"
-              alt="En person som ser på mobiltelefon for hvordan man kan benytte seg av Grønn Reise"
+              alt="En illustrasjon av person som ser ut over et landskap med trær, hus, busser, sykler og veier"
               width="100%"
               __css={{ aspectRatio: "4 / 3" }}
               maxWidth={["400px", "none"]}

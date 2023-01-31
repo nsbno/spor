@@ -62,84 +62,73 @@ export type ButtonProps = Exclude<
  *
  * @see https://spor.cloud.vy.no/komponenter/button
  */
-export const Button = forwardRef<ButtonProps, "button">(
-  (
-    {
-      size,
-      variant,
-      children,
-      isLoading,
-      isDisabled,
-      leftIcon,
-      rightIcon,
-      ...props
-    },
-    ref
-  ) => {
-    const ariaLabel = useCorrectAriaLabel(props);
-    const buttonGroup = useButtonGroup();
-    const finalVariant = (variant ??
-      buttonGroup?.variant ??
-      "primary") as Required<ButtonProps["variant"]>;
-    const finalSize = (size ?? buttonGroup?.size ?? "md") as Required<
-      ButtonProps["size"]
-    >;
+export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
+  const {
+    size,
+    variant,
+    children,
+    isLoading,
+    isDisabled,
+    leftIcon,
+    rightIcon,
+  } = props;
+  const ariaLabel = useCorrectAriaLabel(props);
+  const buttonGroup = useButtonGroup();
+  const finalVariant = (variant ??
+    buttonGroup?.variant ??
+    "primary") as Required<ButtonProps["variant"]>;
+  const finalSize = (size ?? buttonGroup?.size ?? "md") as Required<
+    ButtonProps["size"]
+  >;
 
-    return (
-      <ChakraButton
-        size={finalSize}
-        variant={finalVariant}
-        {...props}
-        ref={ref}
-        aria-label={ariaLabel}
-        aria-busy={isLoading}
-        isDisabled={isDisabled || isLoading}
-        leftIcon={
-          isLoading && leftIcon ? (
-            <Box
-              visibility={isLoading ? "hidden" : "visible"}
-              aria-hidden="true"
-            >
-              {leftIcon}
-            </Box>
-          ) : (
-            leftIcon
-          )
-        }
-        rightIcon={
-          isLoading && rightIcon ? (
-            <Box
-              visibility={isLoading ? "hidden" : "visible"}
-              aria-hidden="true"
-            >
-              {rightIcon}
-            </Box>
-          ) : (
-            rightIcon
-          )
-        }
-        position="relative"
-      >
-        {isLoading && (
-          <Center
-            position="absolute"
-            right="0"
-            paddingBottom={1}
-            left="0"
-            paddingTop={2}
-          >
-            <ColorInlineLoader
-              maxWidth={getLoaderWidth(finalSize)}
-              width="100%"
-              mx={2}
-            />
-          </Center>
-        )}
-        <Box visibility={isLoading ? "hidden" : "visible"}>{children}</Box>
-      </ChakraButton>
-    );
-  }
-);
+  return (
+    <ChakraButton
+      size={finalSize}
+      variant={finalVariant}
+      {...props}
+      ref={ref}
+      aria-label={ariaLabel}
+      aria-busy={isLoading}
+      isDisabled={isDisabled || isLoading}
+      leftIcon={
+        isLoading && leftIcon ? (
+          <Box visibility={isLoading ? "hidden" : "visible"} aria-hidden="true">
+            {leftIcon}
+          </Box>
+        ) : (
+          leftIcon
+        )
+      }
+      rightIcon={
+        isLoading && rightIcon ? (
+          <Box visibility={isLoading ? "hidden" : "visible"} aria-hidden="true">
+            {rightIcon}
+          </Box>
+        ) : (
+          rightIcon
+        )
+      }
+      position="relative"
+    >
+      {isLoading && (
+        <Center
+          position="absolute"
+          right="0"
+          paddingBottom={1}
+          left="0"
+          paddingTop={2}
+        >
+          <ColorInlineLoader
+            maxWidth={getLoaderWidth(finalSize)}
+            width="100%"
+            mx={2}
+          />
+        </Center>
+      )}
+      <Box visibility={isLoading ? "hidden" : "visible"}>{children}</Box>
+    </ChakraButton>
+  );
+});
 
 function getLoaderWidth(size: any) {
   switch (size) {

@@ -18,7 +18,7 @@ export function Footer() {
         py={4}
       >
         <Box as="a" href="https://vy.no" title="Gå til Vy.no">
-          <VyLogo colorScheme="light" width="80px" />
+          <VyLogo colorScheme="light" width="80px" aria-label="Vy logo" />
         </Box>
         <Flex as="nav" aria-label="Footer" flexDirection={["column", "row"]}>
           <FooterLink
@@ -54,7 +54,7 @@ function FooterLink({ href, icon: Icon, children, ...props }: FooterLinkProps) {
       _hover={{ textDecoration: "underline" }}
       {...props}
     >
-      <Icon mr={3} />
+      <Icon marginRight={3} />
       {children}
     </Flex>
   );

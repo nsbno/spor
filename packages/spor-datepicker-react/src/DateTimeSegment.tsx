@@ -33,7 +33,7 @@ export const DateTimeSegment = ({ segment, state }: DateTimeSegmentProps) => {
       borderRadius="xs"
       color={
         segment.isPlaceholder
-          ? "osloGrey"
+          ? "dimGrey"
           : segment.isEditable
           ? "darkGrey"
           : "osloGrey"

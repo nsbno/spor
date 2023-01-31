@@ -149,7 +149,7 @@ export default function ArticlePage() {
       <HStack mb={1} justifyContent="space-between">
         <HStack>
           {article?.category?.title && (
-            <Badge colorScheme="green">{article?.category?.title}</Badge>
+            <Badge colorScheme="light-green">{article?.category?.title}</Badge>
           )}
           {isPreview && <Badge colorScheme="yellow">Preview</Badge>}
         </HStack>
@@ -227,7 +227,7 @@ type ComponentSectionsProps = {
 };
 const ComponentSections = ({ sections }: ComponentSectionsProps) => {
   return (
-    <Tabs colorScheme="green" variant="square" size="md" mt={4} isFitted isLazy>
+    <Tabs colorScheme="light-green" variant="square" size="md" mt={4} isFitted isLazy>
       <TabList>
         {sections.map((section) => (
           <Tab key={getSlugFromSection(section)}>

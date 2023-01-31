@@ -45,7 +45,7 @@ export type BadgeProps = Omit<ChakraBadgeProps, "variant" | "colorScheme"> & {
  * You have to specify some content (icons should be placed to the left, if present), and a colorScheme.
  *
  * ```tsx
- * <Badge colorScheme="green">Hello</Badge>
+ * <Badge colorScheme="light-green">Hello</Badge>
  * ```
  *
  * If you want an icon, pass it in through the `icon` prop:

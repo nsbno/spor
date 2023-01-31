@@ -4,8 +4,9 @@ import {
   forwardRef,
   Textarea as ChakraTextarea,
   TextareaProps as ChakraTextareaProps,
+  useFormControlContext,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useId } from "react";
 
 export type TextareaProps = Exclude<ChakraTextareaProps, "variant" | "size"> & {
   label: string;
@@ -26,10 +27,13 @@ export const Textarea = forwardRef<TextareaProps, "textarea">((props, ref) => {
     spacingProps,
     remainingProps: { label, ...rest },
   } = getSpacingProps(props);
+  const formControlProps = useFormControlContext();
+  const fallbackId = `textarea-${useId()}`;
+  const inputId = props.id ?? formControlProps?.id ?? fallbackId;
   return (
     <Box {...spacingProps}>
-      <FormLabel>{label}</FormLabel>
-      <ChakraTextarea {...rest} ref={ref} />
+      <FormLabel htmlFor={inputId}>{label}</FormLabel>
+      <ChakraTextarea {...rest} id={inputId} ref={ref} />
     </Box>
   );
 });

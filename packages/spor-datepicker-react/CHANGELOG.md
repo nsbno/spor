@@ -1,5 +1,11 @@
 # @vygruppen/spor-datepicker-react
 
+## 1.1.4
+
+### Patch Changes
+
+- e9480416: Fix an issue with day-name and date alignment in the calendar for english users
+
 ## 1.1.3
 
 ### Patch Changes

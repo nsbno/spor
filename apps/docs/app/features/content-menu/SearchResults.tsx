@@ -11,7 +11,11 @@ export type SearchResultsProps = {
 export const SearchResults = forwardRef<SearchResultsProps, "button">(
   ({ query, hits }, ref) => {
     return (
-      <Box mt={2}>
+      <Box
+        mt={2}
+        aria-live="polite"
+        aria-label={`${hits.length || "Ingen"} treff på ${query}.`}
+      >
         {hits
           .filter((item) => item.url)
           .map((item, index) => (

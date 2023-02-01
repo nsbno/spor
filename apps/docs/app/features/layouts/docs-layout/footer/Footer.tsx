@@ -18,7 +18,13 @@ export const Footer = () => {
       <Link to="/" title="Gå til forsiden">
         <VyLogo colorScheme="light" width="4rem" />
       </Link>
-      <Flex flexDirection="row" gap={2} flexWrap="wrap">
+      <Flex
+        flexDirection="row"
+        gap={2}
+        flexWrap="wrap"
+        as="nav"
+        aria-label="Ressurser"
+      >
         {menu?.menuItems.map((item) => (
           <MenuItem title={item.title} url={item.url} />
         ))}

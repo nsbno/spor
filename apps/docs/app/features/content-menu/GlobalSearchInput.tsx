@@ -22,6 +22,7 @@ export const GlobalSearchInput = ({
         onChange={onChange}
         onKeyUp={onKeyUp}
         onReset={onReset}
+        aria-keyshortcuts="Meta+K"
       />
     </FormControl>
   );

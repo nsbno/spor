@@ -55,7 +55,7 @@ export const SearchableContentMenu = () => {
   };
 
   return (
-    <>
+    <Box as="nav" aria-label={isSearchActive ? "Søkeresultater" : "Innhold"}>
       <Box as="form" onSubmit={handleSubmit}>
         <GlobalSearchInput
           value={query}
@@ -69,6 +69,6 @@ export const SearchableContentMenu = () => {
       ) : (
         <ContentMenu ref={focusableRef} />
       )}
-    </>
+    </Box>
   );
 };

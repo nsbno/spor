@@ -1,5 +1,6 @@
 import {
   Box,
+  BoxProps,
   FormLabel,
   InputGroup,
   Popover,
@@ -23,11 +24,12 @@ import { RangeCalendar } from "./RangeCalendar";
 import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
 
-type DateRangePickerProps = AriaDateRangePickerProps<DateValue> & {
-  startLabel?: string;
-  endLabel?: string;
-  variant: ResponsiveValue<"simple" | "with-trigger">;
-};
+type DateRangePickerProps = AriaDateRangePickerProps<DateValue> &
+  Pick<BoxProps, "minHeight"> & {
+    startLabel?: string;
+    endLabel?: string;
+    variant: ResponsiveValue<"simple" | "with-trigger">;
+  };
 /**
  * A date range picker component.
  *
@@ -37,7 +39,11 @@ type DateRangePickerProps = AriaDateRangePickerProps<DateValue> & {
  * <DateRangePicker startLabel="From" endLabel="To" variant="simple" />
  * ```
  */
-export function DateRangePicker({ variant, ...props }: DateRangePickerProps) {
+export function DateRangePicker({
+  variant,
+  minHeight,
+  ...props
+}: DateRangePickerProps) {
   const state = useDateRangePickerState({
     ...props,
     shouldCloseOnSelect: true,
@@ -107,6 +113,7 @@ export function DateRangePicker({ variant, ...props }: DateRangePickerProps) {
                 variant={responsiveVariant}
                 onClick={onFieldClick}
                 onKeyPress={handleEnterClick}
+                minHeight={minHeight}
               >
                 {!hasTrigger && (
                   <CalendarOutline24Icon mr={2} alignSelf="center" />

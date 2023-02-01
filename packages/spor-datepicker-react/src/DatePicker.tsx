@@ -1,5 +1,6 @@
 import {
   Box,
+  BoxProps,
   InputGroup,
   Popover,
   PopoverAnchor,
@@ -22,10 +23,11 @@ import { DateField } from "./DateField";
 import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
 
-type DatePickerProps = AriaDatePickerProps<DateValue> & {
-  variant: ResponsiveValue<"simple" | "with-trigger">;
-  name?: string;
-};
+type DatePickerProps = AriaDatePickerProps<DateValue> &
+  Pick<BoxProps, "minHeight"> & {
+    variant: ResponsiveValue<"simple" | "with-trigger">;
+    name?: string;
+  };
 /**
  * A date picker component.
  *
@@ -38,6 +40,7 @@ type DatePickerProps = AriaDatePickerProps<DateValue> & {
 export function DatePicker({
   variant,
   errorMessage,
+  minHeight,
   ...props
 }: DatePickerProps) {
   const state = useDatePickerState({
@@ -102,6 +105,7 @@ export function DatePicker({
                   onClick={onFieldClick}
                   onKeyPress={handleEnterClick}
                   paddingX={3}
+                  minHeight={minHeight}
                 >
                   {!hasTrigger && (
                     <CalendarOutline24Icon mr={2} alignSelf="center" />

@@ -54,6 +54,7 @@ export const LiveEditor = ({ onChange, ...props }: LiveEditorProps) => {
       onMouseDown={() => {
         setDisabled(false);
       }}
+      aria-label="Trykk enter (eller klikk) for å endre koden, escape for å avbryte"
     >
       <CodeBlockContainer code={liveContext.code} spellCheck={false} {...props}>
         <Box

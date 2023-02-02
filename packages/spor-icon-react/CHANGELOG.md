@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 2.0.1
+
+### Patch Changes
+
+- 86a84f32: Reimplement the departure icon in a simpler way
+
 ## 2.0.0
 
 ### Major Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.14
+
+### Patch Changes
+
+- fb8c5506: Add option to specify minHeight for DatePicker and DateRangePicker
+
 ## 1.0.13
 
 ### Patch Changes

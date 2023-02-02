@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 1.0.1
+
+### Patch Changes
+
+- 86a84f32: Reimplement the departure icon in a simpler way
+
 ## 1.0.0
 
 ### Major Changes

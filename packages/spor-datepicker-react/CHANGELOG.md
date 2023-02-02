@@ -1,5 +1,13 @@
 # @vygruppen/spor-datepicker-react
 
+## 1.1.5
+
+### Patch Changes
+
+- fb8c5506: Add option to specify minHeight for DatePicker and DateRangePicker
+- Updated dependencies [86a84f32]
+  - @vygruppen/spor-icon-react@2.0.1
+
 ## 1.1.4
 
 ### Patch Changes

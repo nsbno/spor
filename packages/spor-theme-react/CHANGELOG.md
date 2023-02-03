@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.15
+
+### Patch Changes
+
+- 990531d2: Add hover and active styles to card selects
+
 ## 1.0.14
 
 ### Patch Changes

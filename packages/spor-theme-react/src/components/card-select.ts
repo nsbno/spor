@@ -13,7 +13,6 @@ const config = helpers.defineMultiStyleConfig({
       appearance: "none",
       display: "flex",
       alignItems: "center",
-      borderRadius: "sm",
       _expanded: {
         backgroundColor: mode("mint", "night")(props),
       },
@@ -131,6 +130,8 @@ const config = helpers.defineMultiStyleConfig({
         paddingX: 1.5,
         paddingY: 1,
         minHeight: "1.25rem",
+        fontSize: "xs",
+        borderRadius: "sm",
       },
     },
     md: {
@@ -138,6 +139,8 @@ const config = helpers.defineMultiStyleConfig({
         paddingX: 2,
         paddingY: 1.5,
         minHeight: "2.625rem",
+        fontSize: "sm",
+        borderRadius: "sm",
       },
     },
     lg: {
@@ -145,6 +148,8 @@ const config = helpers.defineMultiStyleConfig({
         paddingX: 3,
         paddingY: 2,
         minHeight: "3.375rem",
+        fontSize: "sm",
+        borderRadius: "sm",
       },
     },
   },

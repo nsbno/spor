@@ -8,8 +8,8 @@ import {
 } from "@chakra-ui/react";
 import { Card } from "@vygruppen/spor-card-react";
 import {
+  DropdownDownFill18Icon,
   DropdownDownFill24Icon,
-  DropdownUpFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import React, { useEffect, useRef, useState } from "react";
 import { AriaPositionProps, useButton, useOverlayTrigger } from "react-aria";
@@ -42,6 +42,8 @@ type CardSelectProps = BoxProps & {
   crossOffset?: number;
   /** The position of the popover card */
   placement?: AriaPositionProps["placement"];
+  /** Whether or not to show the chevron. Defaults to true */
+  withChevron?: boolean;
 };
 
 /**
@@ -71,6 +73,7 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
       width = "fit-content",
       crossOffset = 0,
       placement = "bottom",
+      withChevron = true,
       ...props
     },
     externalRef
@@ -95,6 +98,9 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
     const styles = useMultiStyleConfig("CardSelect", { variant, size });
     useForceRerender(state.isOpen);
 
+    const ChevronIcon =
+      size === "sm" ? DropdownDownFill18Icon : DropdownDownFill24Icon;
+
     return (
       <Box {...props}>
         <chakra.button
@@ -107,11 +113,11 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
           <Flex gap={1.5} alignItems="center">
             {icon}
             <Box as="span">{label}</Box>
-            {state.isOpen ? (
-              <DropdownUpFill24Icon />
-            ) : (
-              <DropdownDownFill24Icon />
-            )}
+            {withChevron ? (
+              <ChevronIcon
+                transform={state.isOpen ? "rotate(180deg)" : "none"}
+              />
+            ) : null}
           </Flex>
         </chakra.button>
         {state.isOpen && (

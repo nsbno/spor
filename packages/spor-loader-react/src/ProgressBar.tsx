@@ -1,7 +1,8 @@
-import { Box, BoxProps, Flex, Text, useInterval } from "@chakra-ui/react";
+import { Box, BoxProps, Flex, Text } from "@chakra-ui/react";
 import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
-import React, { useMemo, useState } from "react";
+import React from "react";
 import { useProgressBar } from "react-aria";
+import { useRotatingLabel } from "./useRotatingLabel";
 
 type ProgressBarProps = {
   /** The percentage of progress made.
@@ -53,16 +54,10 @@ type ProgressBarProps = {
  * <ProgressBar value={50} label={["Loading...", "Almost there..."]} />
  * ```
  *
- * If you don't pass a value, the loader will show an indeterminate progress bar:
- *
- * ```tsx
- * <ProgressBar label="Loading..." />
- * ```
- *
  * If you don't pass a label, you should pass an `aria-label` prop:
  *
  * ```tsx
- * <ProgressBar aria-label="Loading..." />
+ * <ProgressBar value={50} aria-label="Loading..." />
  * ```
  */
 export const ProgressBar = ({
@@ -81,26 +76,21 @@ export const ProgressBar = ({
   const { labelProps, progressBarProps } = useProgressBar({
     isIndeterminate: value === undefined,
     value,
-    "aria-label": ariaLabel || t(texts.fallbackLabel(value)),
+    "aria-label": ariaLabel || t(texts.label(value)),
   });
-  const { indeterminateValue, direction } = useIndeterminateValue(value);
   return (
-    <Box
-      {...progressBarProps}
-      title={t(texts.fallbackLabel(indeterminateValue))}
-      minWidth="100px"
-    >
+    <Box {...progressBarProps} title={t(texts.label(value))} minWidth="100px">
       <Flex
         backgroundColor="coralGreen"
         borderRadius="sm"
         width={width}
-        justifyContent={direction === "right" ? "flex-start" : "flex-end"}
+        justifyContent="flex-start"
       >
         <Box
           backgroundColor="greenHaze"
           borderRadius="sm"
           height={height}
-          width={`${indeterminateValue}%`}
+          width={`${value}%`}
           maxWidth="100%"
           transition="width .2s ease-out"
         />
@@ -120,49 +110,10 @@ export const ProgressBar = ({
 };
 
 const texts = createTexts({
-  fallbackLabel: (value) => ({
+  label: (value) => ({
     nb: `${value}% ferdig`,
     nn: `${value}% ferdig`,
     sv: `${value}% klart`,
     en: `${value}% done`,
   }),
 });
-
-type UseRotatingLabelArgs = {
-  label?: string | string[];
-  delay: number;
-};
-const useRotatingLabel = ({ label, delay }: UseRotatingLabelArgs) => {
-  const loadingTextArray = useMemo(
-    () => (Array.isArray(label) ? label : [label]),
-    [label]
-  );
-  const [currentLoadingTextIndex, setCurrentLoadingTextIndex] = useState(0);
-
-  useInterval(() => {
-    setCurrentLoadingTextIndex(
-      (prevIndex) => (prevIndex + 1) % loadingTextArray.length
-    );
-  }, delay);
-  return loadingTextArray[currentLoadingTextIndex];
-};
-
-const useIndeterminateValue = (value?: number) => {
-  const [indeterminateValue, setIndeterminateValue] = useState(0);
-  const [direction, setDirection] = useState<"left" | "right">("right");
-  useInterval(() => {
-    setIndeterminateValue((prevValue) => {
-      const valueToAdd = Math.max(Math.round(Math.random() * 10));
-      const newValue = (prevValue + valueToAdd) % 100;
-      if (newValue < prevValue) {
-        setDirection((prevDirection) =>
-          prevDirection === "left" ? "right" : "left"
-        );
-      }
-      return newValue;
-    });
-  }, 100);
-  if (value !== undefined)
-    return { indeterminateValue: value, direction: "right" };
-  return { indeterminateValue, direction };
-};

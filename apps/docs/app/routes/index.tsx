@@ -1,6 +1,6 @@
 import { Box } from "@vygruppen/spor-react";
+import { Footer } from "~/features/layouts/docs-layout/footer/Footer";
 import { ActionLinks } from "~/features/routes/index/ActionLinks";
-import { Footer } from "~/features/routes/index/Footer";
 import { HeroSection } from "~/features/routes/index/HeroSection";
 
 export default function Index() {
@@ -10,7 +10,9 @@ export default function Index() {
         <HeroSection />
         <ActionLinks />
       </Box>
-      <Footer />
+      <Box maxWidth="container.lg" marginX="auto" marginY={3} paddingX={4}>
+        <Footer />
+      </Box>
     </Box>
   );
 }

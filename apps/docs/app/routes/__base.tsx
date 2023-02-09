@@ -1,7 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { Outlet } from "@remix-run/react";
-import { Footer } from "~/features/layouts/docs-layout/footer/Footer";
 import { LeftSidebar } from "~/features/layouts/docs-layout/left-sidebar/LeftSidebar";
+import { Footer } from "~/features/layouts/footer/Footer";
 import TableOfContent from "~/features/table-of-contents/TableOfContents";
 import { useHeadings } from "~/features/table-of-contents/useHeadings";
 import { getClient } from "~/utils/sanity/client";

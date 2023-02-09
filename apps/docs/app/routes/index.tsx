@@ -1,5 +1,5 @@
 import { Box } from "@vygruppen/spor-react";
-import { Footer } from "~/features/layouts/docs-layout/footer/Footer";
+import { Footer } from "~/features/layouts/footer/Footer";
 import { ActionLinks } from "~/features/routes/index/ActionLinks";
 import { HeroSection } from "~/features/routes/index/HeroSection";
 

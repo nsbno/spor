@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader-react
 
+## 1.1.0
+
+### Minor Changes
+
+- ddcd9a8b: Add new components ProgressBar and ProgressLoader
+
 ## 1.0.2
 
 ### Patch Changes

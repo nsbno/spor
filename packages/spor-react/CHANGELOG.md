@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 1.3.1
+
+### Patch Changes
+
+- 0c360f40: Bump
+
 ## 1.3.0
 
 ### Minor Changes

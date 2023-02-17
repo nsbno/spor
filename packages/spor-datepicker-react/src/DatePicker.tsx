@@ -109,7 +109,7 @@ export function DatePicker({
                   minHeight={minHeight}
                 >
                   {!hasTrigger && (
-                    <CalendarOutline24Icon mr={2} alignSelf="center" />
+                    <CalendarOutline24Icon marginRight={2} alignSelf="center" />
                   )}
                   <DateField
                     label={props.label}

@@ -27,7 +27,7 @@ export const DateTimeSegment = ({ segment, state }: DateTimeSegmentProps) => {
         fontVariantNumeric: "tabular-nums",
         boxSizing: "content-box",
       }}
-      px="1px"
+      paddingX="1px"
       textAlign="end"
       outline="none"
       borderRadius="xs"

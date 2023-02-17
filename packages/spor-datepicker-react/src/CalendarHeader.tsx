@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import { AriaButtonProps } from "@react-aria/button";
+import { getLocalTimeZone } from "@internationalized/date";
 import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import {
   ArrowLeftOutline24Icon,
@@ -7,25 +7,103 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { Heading } from "@vygruppen/spor-typography-react";
 import React from "react";
-import { MonthNavigationButton } from "./MonthNavigationButton";
+import { CalendarState, RangeCalendarState } from "react-stately";
+import { CalendarNavigationButton } from "./CalendarNavigationButton";
+import { useCurrentLocale } from "./utils";
 
 type CalendarHeaderProps = {
-  title: string;
-  previousButtonProps: AriaButtonProps<"button">;
-  nextButtonProps: AriaButtonProps<"button">;
+  state: CalendarState | RangeCalendarState;
+  title?: string;
+  showYearPicker?: boolean;
 };
 export function CalendarHeader({
+  state,
+  showYearPicker = false,
   title,
-  previousButtonProps,
-  nextButtonProps,
 }: CalendarHeaderProps) {
+  const locale = useCurrentLocale();
+  const monthFormatter = Intl.DateTimeFormat(locale, {
+    month: "long",
+  });
+  const jsDate = state.focusedDate.toDate(getLocalTimeZone());
+
+  const monthTitle = monthFormatter.format(jsDate);
+  const monthAndYearTitle = `${monthTitle} ${state.focusedDate.year}`;
+
+  const isPreviousYearDisabled = state.isInvalid(
+    state.visibleRange.start.subtract({ years: 1 })
+  );
+  const isNextYearDisabled = state.isInvalid(
+    state.visibleRange.start.add({ years: 1 })
+  );
+  const areAllOtherYearsDisabled = isPreviousYearDisabled && isNextYearDisabled;
+  const isYearPickerVisible = showYearPicker && !areAllOtherYearsDisabled;
+
+  return (
+    <Flex alignItems="center" paddingBottom="4" justifyContent="space-between">
+      <CalendarNavigator
+        title={
+          title ? title : isYearPickerVisible ? monthTitle : monthAndYearTitle
+        }
+        unit="month"
+        onPrevious={() =>
+          state.setFocusedDate(state.focusedDate.subtract({ months: 1 }))
+        }
+        onNext={() =>
+          state.setFocusedDate(state.focusedDate.add({ months: 1 }))
+        }
+        isNextDisabled={!state.isPreviousVisibleRangeInvalid}
+        isPreviousDisabled={!state.isNextVisibleRangeInvalid}
+      />
+      {isYearPickerVisible && (
+        <CalendarNavigator
+          title={jsDate.getFullYear().toString()}
+          unit="year"
+          onPrevious={() =>
+            state.setFocusedDate(state.focusedDate.subtract({ years: 1 }))
+          }
+          onNext={() =>
+            state.setFocusedDate(state.focusedDate.add({ years: 1 }))
+          }
+          isPreviousDisabled={isPreviousYearDisabled}
+          isNextDisabled={isNextYearDisabled}
+        />
+      )}
+    </Flex>
+  );
+}
+
+const capitalize = (str: string = "") =>
+  str.charAt(0).toUpperCase() + str.slice(1);
+
+type CalendarNavigatorProps = {
+  /** The unit of time you want to navigate with  */
+  unit: "month" | "year";
+  /** The text in the middle */
+  title: string;
+  /** Callback for when you click back */
+  onPrevious: () => void;
+  /** Callback for when you click forward */
+  onNext: () => void;
+  isNextDisabled: boolean;
+  isPreviousDisabled: boolean;
+};
+export const CalendarNavigator = ({
+  title,
+  unit,
+  onPrevious,
+  isPreviousDisabled,
+  onNext,
+  isNextDisabled,
+}: CalendarNavigatorProps) => {
   const { t } = useTranslation();
   return (
-    <Flex alignItems="center" pb="4">
-      <MonthNavigationButton
-        {...previousButtonProps}
+    <Flex alignItems="center" flexGrow={1}>
+      <CalendarNavigationButton
+        onPress={onPrevious}
+        isDisabled={isPreviousDisabled}
         icon={<ArrowLeftOutline24Icon />}
-        aria-label={t(texts.previousMonth)}
+        aria-label={`${t(texts.previous)} ${t(texts[unit])}`}
       />
       <Heading
         as="div"
@@ -37,29 +115,39 @@ export function CalendarHeader({
       >
         {capitalize(title)}
       </Heading>
-      <MonthNavigationButton
-        {...nextButtonProps}
+      <CalendarNavigationButton
+        onPress={onNext}
+        isDisabled={isNextDisabled}
         icon={<ArrowRightOutline24Icon />}
-        aria-label={t(texts.nextMonth)}
+        aria-label={`${t(texts.next)} ${t(texts[unit])}`}
       />
     </Flex>
   );
-}
-
-const capitalize = (str: string = "") =>
-  str.charAt(0).toUpperCase() + str.slice(1);
+};
 
 const texts = createTexts({
-  previousMonth: {
+  previous: {
     nb: "Forrige måned",
     nn: "Forrige månad",
     sv: "Föregående månad",
     en: "Previous month",
   },
-  nextMonth: {
+  next: {
     nb: "Neste måned",
     nn: "Neste månad",
     sv: "Nästa månad",
     en: "Next month",
+  },
+  month: {
+    nb: "måned",
+    nn: "månad",
+    sv: "månad",
+    en: "month",
+  },
+  year: {
+    nb: "år",
+    nn: "år",
+    sv: "år",
+    en: "year",
   },
 });

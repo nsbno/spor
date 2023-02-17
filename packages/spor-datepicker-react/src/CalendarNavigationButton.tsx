@@ -7,7 +7,7 @@ type CalendarButtonProps = AriaButtonProps<"button"> & {
   icon: React.ReactElement;
   "aria-label": string;
 };
-export function MonthNavigationButton({
+export function CalendarNavigationButton({
   icon,
   "aria-label": ariaLabel,
   ...rest

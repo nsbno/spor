@@ -3,12 +3,13 @@ import { createCalendar, DateValue } from "@internationalized/date";
 import { useRangeCalendar } from "@react-aria/calendar";
 import { useRangeCalendarState } from "@react-stately/calendar";
 import React, { useRef } from "react";
-import { RangeCalendarProps } from "react-aria";
+import { RangeCalendarProps as ReactAriaRangeCalendarProps } from "react-aria";
 import { CalendarGrid } from "./CalendarGrid";
 import { CalendarHeader } from "./CalendarHeader";
 import { useCurrentLocale } from "./utils";
 
-export function RangeCalendar(props: RangeCalendarProps<DateValue>) {
+type RangeCalendarProps = ReactAriaRangeCalendarProps<DateValue>;
+export function RangeCalendar(props: RangeCalendarProps) {
   const locale = useCurrentLocale();
   const state = useRangeCalendarState({
     ...props,
@@ -18,16 +19,11 @@ export function RangeCalendar(props: RangeCalendarProps<DateValue>) {
   });
 
   const ref = useRef(null);
-  const { calendarProps, prevButtonProps, nextButtonProps, title } =
-    useRangeCalendar(props, state, ref);
+  const { calendarProps, title } = useRangeCalendar(props, state, ref);
 
   return (
     <Box {...calendarProps} ref={ref}>
-      <CalendarHeader
-        title={title}
-        previousButtonProps={prevButtonProps}
-        nextButtonProps={nextButtonProps}
-      />
+      <CalendarHeader state={state} title={title} />
       <Box display="flex" gap="8">
         <CalendarGrid state={state} />
         <CalendarGrid state={state} offset={{ months: 1 }} />

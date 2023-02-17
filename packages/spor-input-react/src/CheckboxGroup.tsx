@@ -37,7 +37,7 @@ export const CheckboxGroup = ({
 }: CheckboxGroupProps) => {
   return (
     <ChakraCheckboxGroup {...props}>
-      <Stack flexDirection={direction}>{children}</Stack>
+      <Stack direction={direction}>{children}</Stack>
     </ChakraCheckboxGroup>
   );
 };

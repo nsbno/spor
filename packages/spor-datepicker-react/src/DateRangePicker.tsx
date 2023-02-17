@@ -8,8 +8,10 @@ import {
   PopoverArrow,
   PopoverBody,
   PopoverContent,
+  Portal,
   ResponsiveValue,
   useBreakpointValue,
+  useFormControlContext,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
@@ -44,9 +46,13 @@ export function DateRangePicker({
   minHeight,
   ...props
 }: DateRangePickerProps) {
+  const formControlProps = useFormControlContext();
   const state = useDateRangePickerState({
     ...props,
     shouldCloseOnSelect: true,
+    errorMessage,
+    isRequired: props.isRequired ?? formControlProps?.isRequired,
+    validationState: formControlProps.isInvalid ? "invalid" : "valid",
   });
   const ref = useRef(null);
   const {
@@ -136,17 +142,19 @@ export function DateRangePicker({
             {hasTrigger && <CalendarTriggerButton {...buttonProps} />}
           </InputGroup>
           {state.isOpen && (
-            <PopoverContent
-              backgroundColor="white"
-              color="darkGrey"
-              boxShadow="md"
-              maxWidth="none"
-            >
-              <PopoverArrow backgroundColor="white" />
-              <PopoverBody>
-                <RangeCalendar {...calendarProps} />
-              </PopoverBody>
-            </PopoverContent>
+            <Portal>
+              <PopoverContent
+                backgroundColor="white"
+                color="darkGrey"
+                boxShadow="md"
+                maxWidth="none"
+              >
+                <PopoverArrow backgroundColor="white" />
+                <PopoverBody>
+                  <RangeCalendar {...calendarProps} />
+                </PopoverBody>
+              </PopoverContent>
+            </Portal>
           )}
         </Popover>
       </Box>

@@ -7,14 +7,16 @@ import {
   PopoverArrow,
   PopoverBody,
   PopoverContent,
+  Portal,
   ResponsiveValue,
   useBreakpointValue,
+  useFormControlContext,
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
 import { useDatePicker } from "@react-aria/datepicker";
 import { useDatePickerState } from "@react-stately/datepicker";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
-import { FormControl, FormErrorMessage } from "@vygruppen/spor-input-react";
+import { FormErrorMessage } from "@vygruppen/spor-input-react";
 import React, { useRef } from "react";
 import { AriaDatePickerProps, I18nProvider } from "react-aria";
 import { Calendar } from "./Calendar";
@@ -43,9 +45,13 @@ export function DatePicker({
   minHeight,
   ...props
 }: DatePickerProps) {
+  const formControlProps = useFormControlContext();
   const state = useDatePickerState({
     ...props,
     shouldCloseOnSelect: true,
+    errorMessage,
+    isRequired: props.isRequired ?? formControlProps?.isRequired,
+    validationState: formControlProps.isInvalid ? "invalid" : "valid",
   });
   const ref = useRef(null);
   const {
@@ -82,48 +88,48 @@ export function DatePicker({
 
   return (
     <I18nProvider locale={locale}>
-      <FormControl isInvalid={state.validationState === "invalid"}>
-        <Box position="relative" display="inline-flex" flexDirection="column">
-          <Popover
-            {...dialogProps}
-            isOpen={state.isOpen}
-            onClose={() => state.setOpen(false)}
-            onOpen={() => state.setOpen(true)}
-            closeOnBlur
-            closeOnEsc
-            returnFocusOnClose
+      <Box position="relative" display="inline-flex" flexDirection="column">
+        <Popover
+          {...dialogProps}
+          isOpen={state.isOpen}
+          onClose={() => state.setOpen(false)}
+          onOpen={() => state.setOpen(true)}
+          closeOnBlur
+          closeOnEsc
+          returnFocusOnClose
+        >
+          <InputGroup
+            {...groupProps}
+            ref={ref}
+            width="auto"
+            display="inline-flex"
           >
-            <InputGroup
-              {...groupProps}
-              ref={ref}
-              width="auto"
-              display="inline-flex"
-            >
-              <PopoverAnchor>
-                <StyledField
-                  variant={responsiveVariant}
-                  onClick={onFieldClick}
-                  onKeyPress={handleEnterClick}
-                  paddingX={3}
-                  minHeight={minHeight}
-                >
-                  {!hasTrigger && (
-                    <CalendarOutline24Icon mr={2} alignSelf="center" />
-                  )}
-                  <DateField
-                    label={props.label}
-                    labelProps={labelProps}
-                    name={props.name}
-                    {...fieldProps}
-                  />
-                </StyledField>
-              </PopoverAnchor>
-              {hasTrigger && <CalendarTriggerButton {...buttonProps} />}
-            </InputGroup>
-            <FormErrorMessage {...errorMessageProps}>
-              {errorMessage}
-            </FormErrorMessage>
-            {state.isOpen && !props.isDisabled && (
+            <PopoverAnchor>
+              <StyledField
+                variant={responsiveVariant}
+                onClick={onFieldClick}
+                onKeyPress={handleEnterClick}
+                paddingX={3}
+                minHeight={minHeight}
+              >
+                {!hasTrigger && (
+                  <CalendarOutline24Icon marginRight={2} alignSelf="center" />
+                )}
+                <DateField
+                  label={props.label}
+                  labelProps={labelProps}
+                  name={props.name}
+                  {...fieldProps}
+                />
+              </StyledField>
+            </PopoverAnchor>
+            {hasTrigger && <CalendarTriggerButton {...buttonProps} />}
+          </InputGroup>
+          <FormErrorMessage {...errorMessageProps}>
+            {errorMessage}
+          </FormErrorMessage>
+          {state.isOpen && !props.isDisabled && (
+            <Portal>
               <PopoverContent
                 backgroundColor="white"
                 color="darkGrey"
@@ -134,10 +140,10 @@ export function DatePicker({
                   <Calendar {...calendarProps} />
                 </PopoverBody>
               </PopoverContent>
-            )}
-          </Popover>
-        </Box>
-      </FormControl>
+            </Portal>
+          )}
+        </Popover>
+      </Box>
     </I18nProvider>
   );
 }

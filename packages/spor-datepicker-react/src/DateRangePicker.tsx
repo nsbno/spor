@@ -50,7 +50,6 @@ export function DateRangePicker({
   const state = useDateRangePickerState({
     ...props,
     shouldCloseOnSelect: true,
-    errorMessage,
     isRequired: props.isRequired ?? formControlProps?.isRequired,
     validationState: formControlProps.isInvalid ? "invalid" : "valid",
   });

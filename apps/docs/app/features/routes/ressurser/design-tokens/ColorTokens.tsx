@@ -86,11 +86,11 @@ export function ColorTokens(props: BoxProps) {
         </LinkableHeading>
         <ColorGrid
           colors={[
+            tokens.color.palette.blackAlpha["200"],
             tokens.color.palette.blackAlpha["400"],
-            tokens.color.alias.osloGrey,
             tokens.color.alias.greenHaze,
-            tokens.color.alias.darkGrey,
-            tokens.color.alias.black,
+            tokens.color.alias.osloGrey,
+            tokens.color.alias.white,
           ]}
         />
 

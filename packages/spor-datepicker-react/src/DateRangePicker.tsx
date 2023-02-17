@@ -11,6 +11,7 @@ import {
   Portal,
   ResponsiveValue,
   useBreakpointValue,
+  useFormControlContext,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
@@ -45,9 +46,13 @@ export function DateRangePicker({
   minHeight,
   ...props
 }: DateRangePickerProps) {
+  const formControlProps = useFormControlContext();
   const state = useDateRangePickerState({
     ...props,
     shouldCloseOnSelect: true,
+    errorMessage,
+    isRequired: props.isRequired ?? formControlProps?.isRequired,
+    validationState: formControlProps.isInvalid ? "invalid" : "valid",
   });
   const ref = useRef(null);
   const {

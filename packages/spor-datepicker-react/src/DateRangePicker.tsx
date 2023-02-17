@@ -8,6 +8,7 @@ import {
   PopoverArrow,
   PopoverBody,
   PopoverContent,
+  Portal,
   ResponsiveValue,
   useBreakpointValue,
   useMultiStyleConfig,
@@ -136,17 +137,19 @@ export function DateRangePicker({
             {hasTrigger && <CalendarTriggerButton {...buttonProps} />}
           </InputGroup>
           {state.isOpen && (
-            <PopoverContent
-              backgroundColor="white"
-              color="darkGrey"
-              boxShadow="md"
-              maxWidth="none"
-            >
-              <PopoverArrow backgroundColor="white" />
-              <PopoverBody>
-                <RangeCalendar {...calendarProps} />
-              </PopoverBody>
-            </PopoverContent>
+            <Portal>
+              <PopoverContent
+                backgroundColor="white"
+                color="darkGrey"
+                boxShadow="md"
+                maxWidth="none"
+              >
+                <PopoverArrow backgroundColor="white" />
+                <PopoverBody>
+                  <RangeCalendar {...calendarProps} />
+                </PopoverBody>
+              </PopoverContent>
+            </Portal>
           )}
         </Popover>
       </Box>

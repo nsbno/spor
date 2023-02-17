@@ -7,6 +7,7 @@ import {
   PopoverArrow,
   PopoverBody,
   PopoverContent,
+  Portal,
   ResponsiveValue,
   useBreakpointValue,
 } from "@chakra-ui/react";
@@ -124,16 +125,18 @@ export function DatePicker({
               {errorMessage}
             </FormErrorMessage>
             {state.isOpen && !props.isDisabled && (
-              <PopoverContent
-                backgroundColor="white"
-                color="darkGrey"
-                boxShadow="md"
-              >
-                <PopoverArrow backgroundColor="white" />
-                <PopoverBody>
-                  <Calendar {...calendarProps} />
-                </PopoverBody>
-              </PopoverContent>
+              <Portal>
+                <PopoverContent
+                  backgroundColor="white"
+                  color="darkGrey"
+                  boxShadow="md"
+                >
+                  <PopoverArrow backgroundColor="white" />
+                  <PopoverBody>
+                    <Calendar {...calendarProps} />
+                  </PopoverBody>
+                </PopoverContent>
+              </Portal>
             )}
           </Popover>
         </Box>

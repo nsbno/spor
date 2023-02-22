@@ -29,6 +29,7 @@ type DatePickerProps = AriaDatePickerProps<DateValue> &
   Pick<BoxProps, "minHeight"> & {
     variant: ResponsiveValue<"simple" | "with-trigger">;
     name?: string;
+    showYearNavigation?: boolean;
   };
 /**
  * A date picker component.
@@ -43,6 +44,7 @@ export function DatePicker({
   variant,
   errorMessage,
   minHeight,
+  showYearNavigation,
   ...props
 }: DatePickerProps) {
   const formControlProps = useFormControlContext();
@@ -137,7 +139,10 @@ export function DatePicker({
               >
                 <PopoverArrow backgroundColor="white" />
                 <PopoverBody>
-                  <Calendar {...calendarProps} />
+                  <Calendar
+                    {...calendarProps}
+                    showYearNavigation={showYearNavigation}
+                  />
                 </PopoverBody>
               </PopoverContent>
             </Portal>

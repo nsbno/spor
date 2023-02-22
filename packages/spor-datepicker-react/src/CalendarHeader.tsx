@@ -127,10 +127,10 @@ export const CalendarNavigator = ({
 
 const texts = createTexts({
   previous: {
-    nb: "Forrige måned",
-    nn: "Forrige månad",
-    sv: "Föregående månad",
-    en: "Previous month",
+    nb: "Forrige",
+    nn: "Forrige",
+    sv: "Föregående",
+    en: "Previous",
   },
   next: {
     nb: "Neste måned",

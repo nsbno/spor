@@ -9,9 +9,9 @@ import { CalendarHeader } from "./CalendarHeader";
 import { useCurrentLocale } from "./utils";
 
 type CalendarProps = ReactAriaCalendarProps<DateValue> & {
-  showYearPicker?: boolean;
+  showYearNavigation?: boolean;
 };
-export function Calendar({ showYearPicker, ...props }: CalendarProps) {
+export function Calendar({ showYearNavigation, ...props }: CalendarProps) {
   const locale = useCurrentLocale();
   const state = useCalendarState({
     ...props,
@@ -23,7 +23,7 @@ export function Calendar({ showYearPicker, ...props }: CalendarProps) {
 
   return (
     <Box {...calendarProps}>
-      <CalendarHeader state={state} showYearPicker={showYearPicker} />
+      <CalendarHeader state={state} showYearNavigation={showYearNavigation} />
       <CalendarGrid state={state} />
     </Box>
   );

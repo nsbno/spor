@@ -14,11 +14,11 @@ import { useCurrentLocale } from "./utils";
 type CalendarHeaderProps = {
   state: CalendarState | RangeCalendarState;
   title?: string;
-  showYearPicker?: boolean;
+  showYearNavigation?: boolean;
 };
 export function CalendarHeader({
   state,
-  showYearPicker = false,
+  showYearNavigation = false,
   title,
 }: CalendarHeaderProps) {
   const locale = useCurrentLocale();
@@ -37,7 +37,7 @@ export function CalendarHeader({
     state.visibleRange.start.add({ years: 1 })
   );
   const areAllOtherYearsDisabled = isPreviousYearDisabled && isNextYearDisabled;
-  const isYearPickerVisible = showYearPicker && !areAllOtherYearsDisabled;
+  const isYearPickerVisible = showYearNavigation && !areAllOtherYearsDisabled;
 
   return (
     <Flex alignItems="center" paddingBottom="4" justifyContent="space-between">

@@ -133,10 +133,10 @@ const texts = createTexts({
     en: "Previous",
   },
   next: {
-    nb: "Neste måned",
-    nn: "Neste månad",
-    sv: "Nästa månad",
-    en: "Next month",
+    nb: "Neste",
+    nn: "Neste",
+    sv: "Nästa",
+    en: "Next",
   },
   month: {
     nb: "måned",

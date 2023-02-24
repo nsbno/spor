@@ -5,15 +5,20 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-export type TextProps = ChakraTextProps;
+export type TextProps = Exclude<ChakraTextProps, "textStyle"> & {
+  /** @deprecated Use `variant` instead */
+  textStyle?: ChakraTextProps["textStyle"];
+  /** The size and style of the text.
+   *
+   * Defaults to "xl" */
+  variant?: ChakraTextProps["textStyle"];
+};
 /**
  * A paragraph of text.
  *
  * ```tsx
  * <Text>Welcome to this paragraph of text.</Text>
  * ```
- *
- * Note that you're most likely going to run into some issues auto-importing this component. That's because Text is a window global, and it'll be available wherever. So take care to import it thorougly. Alternatively, you can import `Paragraph`, which is an alias for the same component.
  */
 export const Text = forwardRef<TextProps, "p">(
   ({ fontSize = "xl", ...props }, ref) => {

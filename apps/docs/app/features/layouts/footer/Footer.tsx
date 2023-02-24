@@ -1,6 +1,5 @@
 import { Link } from "@remix-run/react";
 import { Flex, TextLink, VyLogo } from "@vygruppen/spor-react";
-import { MenuItem } from "~/";
 import { useMenu } from "~/utils/useMenu";
 
 export const Footer = () => {

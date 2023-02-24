@@ -26,7 +26,7 @@ export const Footer = () => {
         aria-label="Ressurser"
       >
         {menu?.menuItems.map((item) => (
-          <MenuItem title={item.title} url={item.url} key={title} />
+          <MenuItem title={item.title} url={item.url} key={item.title} />
         ))}
       </Flex>
     </Flex>

@@ -25,11 +25,8 @@ export type HeadingProps = Exclude<ChakraHeadingProps, "textStyle"> & {
  * <Heading as="h1">Page heading</Heading>
  * ```
  */
-export const Heading = ({
-  variant = "xl-display",
-  textStyle = variant,
-  as = "h2",
-  ...props
-}: any) => {
-  return <Text as={as} textStyle={variant} {...props} />;
+export const Heading = ({ variant, textStyle, as = "h2", ...props }: any) => {
+  return (
+    <Text as={as} textStyle={variant ?? textStyle ?? "xl-display"} {...props} />
+  );
 };

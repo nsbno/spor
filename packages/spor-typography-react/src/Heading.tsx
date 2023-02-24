@@ -31,5 +31,5 @@ export const Heading = ({
   as = "h2",
   ...props
 }: any) => {
-  return <Text as={as} textStyle={textStyle} {...props} />;
+  return <Text as={as} textStyle={variant} {...props} />;
 };

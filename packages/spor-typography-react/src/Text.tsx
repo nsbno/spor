@@ -21,7 +21,14 @@ export type TextProps = Exclude<ChakraTextProps, "textStyle"> & {
  * ```
  */
 export const Text = forwardRef<TextProps, "p">(
-  ({ fontSize = "xl", ...props }, ref) => {
-    return <ChakraText fontSize={fontSize} {...props} ref={ref} />;
+  ({ fontSize = "xl", variant, textStyle = variant, ...props }, ref) => {
+    return (
+      <ChakraText
+        fontSize={fontSize}
+        {...props}
+        textStyle={variant}
+        ref={ref}
+      />
+    );
   }
 );

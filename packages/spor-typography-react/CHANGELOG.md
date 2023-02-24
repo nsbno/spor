@@ -1,5 +1,11 @@
 # @vygruppen/spor-typography-react
 
+## 1.1.2
+
+### Patch Changes
+
+- f6fec340: Deprecate the `textStyle` property in favor of `variant`
+
 ## 1.1.1
 
 ### Patch Changes

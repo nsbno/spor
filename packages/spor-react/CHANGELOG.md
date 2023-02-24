@@ -1,5 +1,20 @@
 # @vygruppen/spor-react
 
+## 1.3.2
+
+### Patch Changes
+
+- deb3934d: Changes in the datepicker and input packages
+- Updated dependencies [12202232]
+- Updated dependencies [1d2de067]
+- Updated dependencies [12202232]
+- Updated dependencies [12202232]
+- Updated dependencies [f6fec340]
+- Updated dependencies [78b7dd54]
+  - @vygruppen/spor-datepicker-react@1.2.0
+  - @vygruppen/spor-typography-react@1.1.2
+  - @vygruppen/spor-input-react@1.3.3
+
 ## 1.3.1
 
 ### Patch Changes

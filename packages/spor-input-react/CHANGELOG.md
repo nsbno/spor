@@ -1,5 +1,11 @@
 # @vygruppen/spor-input-react
 
+## 1.3.3
+
+### Patch Changes
+
+- 78b7dd54: Fix a bug with horizontal checkbox groups
+
 ## 1.3.2
 
 ### Patch Changes

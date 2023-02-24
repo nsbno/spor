@@ -12,11 +12,11 @@ import { ZIndexTokens } from "~/features/routes/ressurser/design-tokens/ZIndexTo
 export default function DesignTokensPage() {
   return (
     <Box>
-      <Heading as="h1" textStyle="xl-display" mb={2}>
+      <Heading as="h1" variant="xl-display" mb={2}>
         Design tokens
       </Heading>
-      <Stack spacing={3} fontSize={["mobile.sm", "desktop.sm"]}>
-        <Text>
+      <Stack spacing={3}>
+        <Text variant="sm">
           Design tokens er alle verdiene man trenger for å konstruere og
           vedlikeholde et designsystem. Disse verdiene kan representere alt som
           er definert av design: en farge som en RGB-verdi, en opasitet som et
@@ -24,7 +24,7 @@ export default function DesignTokensPage() {
           stedet for hardkodede verdier for å sikre fleksibilitet og enhet på
           tvers av alle produktopplevelser.
         </Text>
-        <Text>
+        <Text variant="sm">
           Designtokens er direkte integrert i komponentbiblioteket vårt. De
           dekker de ulike alternativene for vekter, fargetemaer, komponentstates
           og mer.

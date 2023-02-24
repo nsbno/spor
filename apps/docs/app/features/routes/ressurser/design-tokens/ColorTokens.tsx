@@ -29,7 +29,7 @@ export function ColorTokens(props: BoxProps) {
       }
     >
       <Stack spacing={3}>
-        <LinkableHeading as="h3" textStyle="md">
+        <LinkableHeading as="h3" variant="md">
           Hovedfarger
         </LinkableHeading>
         <ColorGrid
@@ -47,14 +47,14 @@ export function ColorTokens(props: BoxProps) {
           ]}
         />
 
-        <LinkableHeading as="h3" textStyle="md">
+        <LinkableHeading as="h3" variant="md">
           Bakgrunnsfarger
         </LinkableHeading>
         <ColorGrid
           colors={[tokens.color.alias.white, tokens.color.alias.lightGrey]}
         />
 
-        <LinkableHeading as="h3" textStyle="md">
+        <LinkableHeading as="h3" variant="md">
           Tekstfarger
         </LinkableHeading>
         <ColorGrid
@@ -66,7 +66,7 @@ export function ColorTokens(props: BoxProps) {
           ]}
         />
 
-        <LinkableHeading as="h3" textStyle="md">
+        <LinkableHeading as="h3" variant="md">
           Detaljfarger
         </LinkableHeading>
         <ColorGrid
@@ -81,7 +81,7 @@ export function ColorTokens(props: BoxProps) {
           ]}
         />
 
-        <LinkableHeading as="h3" textStyle="md">
+        <LinkableHeading as="h3" variant="md">
           Outlinefarger
         </LinkableHeading>
         <ColorGrid
@@ -94,7 +94,7 @@ export function ColorTokens(props: BoxProps) {
           ]}
         />
 
-        <LinkableHeading as="h3" textStyle="md">
+        <LinkableHeading as="h3" variant="md">
           Full fargepalett
         </LinkableHeading>
         {Object.entries(tokens.color.palette)
@@ -147,14 +147,14 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
       />
       <Flex flexDirection="column" justifyContent="space-between" px={2}>
         <Box>
-          <Text textStyle="xs" fontWeight="bold" whiteSpace="nowrap">
+          <Text variant="xs" fontWeight="bold" whiteSpace="nowrap">
             {aliasName}
           </Text>
-          <Text textStyle="xs">
+          <Text variant="xs">
             {aliasName !== paletteName ? paletteName : " "}
           </Text>
         </Box>
-        <Text textStyle="xs" mt={3} mb={2}>
+        <Text variant="xs" mt={3} mb={2}>
           {colorValue}
         </Text>
       </Flex>

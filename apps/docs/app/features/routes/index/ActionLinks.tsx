@@ -86,10 +86,10 @@ export function ActionLinks() {
           <ActionLinkCard key={link.to} to={link.to}>
             <IconCircle backgroundColor={link.iconColor} icon={link.icon} />
             <Box>
-              <Heading as="h2" textStyle="md" mb={1.5} fontWeight="bold">
+              <Heading as="h2" variant="md" mb={1.5} fontWeight="bold">
                 {link.title}
               </Heading>
-              <Text textStyle="sm">{link.description}</Text>
+              <Text variant="sm">{link.description}</Text>
             </Box>
           </ActionLinkCard>
         ))}
@@ -135,10 +135,7 @@ function IconCircle({ backgroundColor, icon: Icon }: IconCircleProps) {
       borderRadius="round"
       backgroundColor={backgroundColor}
     >
-      <Icon
-        width={["30px", "60px"]}
-        height={["30px", "60px"]}
-      />
+      <Icon width={["30px", "60px"]} height={["30px", "60px"]} />
     </Flex>
   );
 }

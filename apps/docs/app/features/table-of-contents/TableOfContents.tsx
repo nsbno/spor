@@ -51,7 +51,7 @@ function TableOfContent(props: TableOfContentProps) {
       sx={{ overscrollBehavior: "contain" }}
       {...rest}
     >
-      <Heading as="h2" id="toc-title" textStyle="sm" fontWeight="bold">
+      <Heading as="h2" id="toc-title" variant="sm" fontWeight="bold">
         På denne siden
       </Heading>
       <OrderedList spacing={1} ml="0" mt="4" styleType="none">

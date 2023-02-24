@@ -1,3 +1,5 @@
+import { Link } from "@remix-run/react";
+import { DownloadOutline24Icon } from "@vygruppen/spor-icon-react";
 import {
   Button,
   ButtonGroup,
@@ -6,19 +8,17 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-import { Link } from "@remix-run/react";
 import { SearchBar } from "~/features/routes/ressurser/ikoner/SearchBar";
 import { SearchFilterProvider } from "~/features/routes/ressurser/ikoner/SearchFilterContext";
 import { SearchResults } from "~/features/routes/ressurser/ikoner/SearchResults";
-import { DownloadOutline24Icon } from "@vygruppen/spor-icon-react";
 
 export default function IconsPage() {
   return (
     <Stack spacing={4}>
-      <Heading as="h1" textStyle="xl-display">
+      <Heading as="h1" variant="xl-display">
         Ikonbibliotek
       </Heading>
-      <Text textStyle="sm">
+      <Text variant="sm">
         Vi bruker ikoner for å skape bedre navigasjon og for å tydeliggjøre
         hvilket produkt og tjeneste vi refererer til. Ikonene skal hjelpe
         brukeren med å raskt identifisere og skille mellom ulikt innhold slik at

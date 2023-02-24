@@ -15,7 +15,7 @@ export function HeroSection() {
       <Container maxWidth="container.lg" mt={[0, 8]}>
         <Flex flexDirection={["column-reverse", "row"]} alignItems="center">
           <Flex flexDirection="column" color="white" flex={["auto", "55%"]}>
-            <Heading as="h1" textStyle="2xl">
+            <Heading as="h1" variant="2xl">
               Velkommen til Spor
             </Heading>
             <Box marginBottom={[10, 0]}>

@@ -108,7 +108,7 @@ export const CalendarNavigator = ({
       <Heading
         as="div"
         role="heading"
-        textStyle="sm"
+        variant="sm"
         fontWeight="bold"
         flex="1"
         textAlign="center"

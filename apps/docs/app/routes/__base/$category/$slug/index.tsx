@@ -169,7 +169,7 @@ export default function ArticlePage() {
         </Flex>
       </HStack>
       <Box>
-        <Heading as="h1" textStyle="xl-display" mb={2}>
+        <Heading as="h1" variant="xl-display" mb={2}>
           {article.title}
         </Heading>
         {article.introduction && (
@@ -179,7 +179,7 @@ export default function ArticlePage() {
               components={{
                 block: {
                   normal: ({ children }) => (
-                    <Text textStyle="md">{children}</Text>
+                    <Text variant="md">{children}</Text>
                   ),
                 },
               }}
@@ -242,7 +242,7 @@ const ComponentSections = ({ sections }: ComponentSectionsProps) => {
       <TabPanels>
         {sections.map((section) => (
           <TabPanel key={section.customTitle || section.title}>
-            <Heading as="h2" textStyle="lg" mb={1}>
+            <Heading as="h2" variant="lg" mb={1}>
               {getCorrectTitle({
                 title: section.title,
                 customTitle: section.customTitle,

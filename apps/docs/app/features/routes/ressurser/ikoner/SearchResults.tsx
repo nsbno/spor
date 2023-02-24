@@ -84,13 +84,7 @@ const NoHits = () => {
   return (
     <Box>
       <NotFound mx="auto" />
-      <Heading
-        as="h2"
-        textStyle="sm"
-        fontWeight="bold"
-        mt={7}
-        textAlign="center"
-      >
+      <Heading as="h2" variant="sm" fontWeight="bold" mt={7} textAlign="center">
         Ingen matchende ikoner funnet
       </Heading>
     </Box>
@@ -137,7 +131,7 @@ function Category({ title, icons }: CategoryProps) {
 
   return (
     <Stack spacing={2}>
-      <LinkableHeading as="h2" textStyle="sm">
+      <LinkableHeading as="h2" variant="sm">
         {title}
       </LinkableHeading>
       <SimpleGrid columns={[2, 3, 5, 6]} spacing={3}>
@@ -167,7 +161,7 @@ function IconBox({ icon }: IconBoxProps) {
       px={1}
       pb={1}
     >
-      <Text textStyle="xs" textAlign="center">
+      <Text variant="xs" textAlign="center">
         {toTitleCase(icon.name)}
       </Text>
       <IconComponent marginTop={1} aria-label={icon.name} />

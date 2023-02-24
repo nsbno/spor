@@ -67,7 +67,7 @@ export default function ComponentsPage() {
   const { components, article } = useLoaderData<typeof loader>();
   return (
     <Box>
-      <Heading as="h1" textStyle="xl-display" mb={2}>
+      <Heading as="h1" variant="xl-display" mb={2}>
         {article.title}
       </Heading>
       <PortableText value={article.content} />
@@ -92,7 +92,7 @@ export default function ComponentsPage() {
             ) : (
               <Box height="10em" backgroundColor="mint" />
             )}
-            <Heading as="h2" textStyle="sm" fontWeight="bold" p={3}>
+            <Heading as="h2" variant="sm" fontWeight="bold" p={3}>
               {component.title}
             </Heading>
           </Card>

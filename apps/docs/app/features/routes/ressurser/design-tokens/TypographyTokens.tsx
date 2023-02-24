@@ -128,7 +128,7 @@ const TypographyTokenTable = ({
   const tokenFormatter = useTokenFormatter();
   return (
     <Box {...props}>
-      <LinkableHeading as="h2" textStyle="sm" fontWeight="bold" mb={2}>
+      <LinkableHeading as="h2" variant="sm" fontWeight="bold" mb={2}>
         {title}
       </LinkableHeading>
       <Table variant="simple" colorScheme="grey">

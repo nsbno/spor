@@ -50,7 +50,7 @@ const components: Partial<PortableTextReactComponents> = {
     h2: ({ children }) => (
       <LinkableHeading
         as="h2"
-        textStyle="lg"
+        variant="lg"
         fontWeight="bold"
         marginTop={6}
         marginBottom={2}
@@ -61,7 +61,7 @@ const components: Partial<PortableTextReactComponents> = {
     h3: ({ children }) => (
       <LinkableHeading
         as="h3"
-        textStyle="md"
+        variant="md"
         fontWeight="bold"
         marginTop={6}
         marginBottom={1}
@@ -70,17 +70,17 @@ const components: Partial<PortableTextReactComponents> = {
       </LinkableHeading>
     ),
     h4: ({ children }) => (
-      <Heading as="h4" textStyle="sm" fontWeight="bold" marginTop={4}>
+      <Heading as="h4" variant="sm" fontWeight="bold" marginTop={4}>
         {children}
       </Heading>
     ),
     h5: ({ children }) => (
-      <Heading as="h5" textStyle="xs" fontWeight="bold" marginTop={4}>
+      <Heading as="h5" variant="xs" fontWeight="bold" marginTop={4}>
         {children}
       </Heading>
     ),
     h6: ({ children }) => (
-      <Heading as="h6" textStyle="xs" marginTop={2}>
+      <Heading as="h6" variant="xs" marginTop={2}>
         {children}
       </Heading>
     ),
@@ -91,7 +91,7 @@ const components: Partial<PortableTextReactComponents> = {
       }
       return (
         <Text
-          textStyle="sm"
+          variant="sm"
           sx={{
             "& + &": {
               marginTop: 3,
@@ -108,12 +108,12 @@ const components: Partial<PortableTextReactComponents> = {
   },
   list: {
     bullet: ({ children }) => (
-      <UnorderedList paddingLeft={3} marginTop={0} textStyle="sm">
+      <UnorderedList paddingLeft={3} marginTop={0} variant="sm">
         {children}
       </UnorderedList>
     ),
     number: ({ children }) => (
-      <OrderedList paddingLeft={3} marginTop={0} textStyle="sm">
+      <OrderedList paddingLeft={3} marginTop={0} variant="sm">
         {children}
       </OrderedList>
     ),
@@ -142,7 +142,7 @@ const components: Partial<PortableTextReactComponents> = {
             components={{
               block: {
                 normal: ({ children }) => (
-                  <Text textStyle="md">{children}</Text>
+                  <Text variant="md">{children}</Text>
                 ),
               },
             }}
@@ -224,7 +224,7 @@ const components: Partial<PortableTextReactComponents> = {
             code={value.code.code}
           />
           {value.caption && (
-            <Text textStyle="xs" textAlign="center" color="dimGrey" mt={1}>
+            <Text variant="xs" textAlign="center" color="dimGrey" mt={1}>
               {value.caption}
             </Text>
           )}
@@ -265,7 +265,7 @@ const components: Partial<PortableTextReactComponents> = {
       <Box as="article" backgroundColor="mint" mt={3} p={4} borderRadius="md">
         <Flex gap={1} alignItems="end">
           <FavouriteOutline30Icon />
-          <Heading as="h3" textStyle="sm" fontWeight="bold">
+          <Heading as="h3" variant="sm" fontWeight="bold">
             {value.title}
           </Heading>
         </Flex>

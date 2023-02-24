@@ -35,7 +35,7 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
   });
   return (
     <Box key={component.name} as="article">
-      <LinkableHeading as="h3" textStyle="md" fontWeight="bold" mb={1}>
+      <LinkableHeading as="h3" variant="md" fontWeight="bold" mb={1}>
         <Code fontSize="md">{`<${component.name} />`}</Code>
       </LinkableHeading>
       <CodeBlock
@@ -46,7 +46,7 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
       </Box>
       {visibleProps && (
         <>
-          <Heading as="h4" textStyle="md" mt={3}>
+          <Heading as="h4" variant="md" mt={3}>
             Props
           </Heading>
           <Table

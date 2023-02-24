@@ -1,5 +1,21 @@
 # @vygruppen/spor-datepicker-react
 
+## 1.2.0
+
+### Minor Changes
+
+- 1d2de067: Add support for changing years with the showYearNavigation prop
+
+### Patch Changes
+
+- 12202232: Fix a bug where the calendar would be cut off by overflow hidden containers
+- 12202232: Fix a bug where the input field would resize on smaller dates
+- 12202232: Make Datepickers work with FormControl components
+- Updated dependencies [f6fec340]
+- Updated dependencies [78b7dd54]
+  - @vygruppen/spor-typography-react@1.1.2
+  - @vygruppen/spor-input-react@1.3.3
+
 ## 1.1.5
 
 ### Patch Changes

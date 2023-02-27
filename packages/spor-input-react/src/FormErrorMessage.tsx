@@ -52,7 +52,7 @@ export const FormErrorMessage = ({ children }: FormErrorMessageProps) => {
         color="darkGrey"
         paddingX={1.5}
         paddingY={1}
-        variant="xs"
+        textStyle="xs"
         width="fit-content"
         position="absolute"
         top={-1.5}

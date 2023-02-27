@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 1.3.3
+
+### Patch Changes
+
+- e7228767: Upgrade React Aria
+- Updated dependencies [e7228767]
+  - @vygruppen/spor-datepicker-react@1.2.1
+  - @vygruppen/spor-input-react@1.3.4
+  - @vygruppen/spor-loader-react@1.1.1
+
 ## 1.3.2
 
 ### Patch Changes

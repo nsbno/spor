@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader-react
 
+## 1.1.1
+
+### Patch Changes
+
+- e7228767: Upgrade React Aria
+
 ## 1.1.0
 
 ### Minor Changes

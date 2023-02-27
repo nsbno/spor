@@ -1,5 +1,11 @@
 # @vygruppen/spor-input-react
 
+## 1.3.4
+
+### Patch Changes
+
+- e7228767: Upgrade React Aria
+
 ## 1.3.3
 
 ### Patch Changes

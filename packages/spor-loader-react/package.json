@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "lottie-react": "^2.3.1",
-    "react-aria": "^3.22.0",
+    "react-aria": "^3.23.0",
     "@vygruppen/spor-i18n-react": "*",
     "@vygruppen/spor-loader": "*"
   }

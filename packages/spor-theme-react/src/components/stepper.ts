@@ -139,7 +139,7 @@ const getRootBackgroundColor = (props: StyleFunctionProps) => {
       return "darkTeal";
     case "green":
     default:
-      return "mint";
+      return "seaMist";
   }
 };
 
@@ -176,8 +176,9 @@ const getDisabledColor = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "dark":
       return "whiteAlpha.400";
-    case "light":
     case "green":
+      return "dimGrey";
+    case "light":
     default:
       return "osloGrey";
   }
@@ -187,8 +188,11 @@ const getHoverStyles = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "dark":
       return { backgroundColor: "pine" };
-    case "light":
     case "green":
+      return {
+        backgroundColor: mode("coralGreen", "primaryGreen")(props),
+      };
+    case "light":
     default:
       return {
         backgroundColor: mode("seaMist", "primaryGreen")(props),
@@ -221,6 +225,6 @@ const getActiveStyles = (props: StyleFunctionProps) => {
       return { backgroundColor: "celadon" };
     case "green":
     default:
-      return { color: "blueGreen", backgroundColor: "transparent" };
+      return { color: "azure", backgroundColor: "transparent" };
   }
 };

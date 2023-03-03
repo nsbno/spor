@@ -4,7 +4,7 @@ import React, { useId, useRef } from "react";
 import { useProgressBar } from "react-aria";
 import { useRotatingLabel } from "./useRotatingLabel";
 
-type ProgressLoaderProps = {
+type ProgressLoaderProps = BoxProps & {
   /** The percentage of progress made.
    *
    * The value must be between 0 and 100 */
@@ -62,6 +62,7 @@ export const ProgressLoader = ({
   labelRotationDelay = 5000,
   "aria-label": ariaLabel,
   width,
+  ...rest
 }: ProgressLoaderProps) => {
   const { t } = useTranslation();
   const currentLoadingText = useRotatingLabel({
@@ -78,7 +79,7 @@ export const ProgressLoader = ({
   const progress = ((value - 100) / 100) * progressPathLength;
   const id = useId();
   return (
-    <Box {...progressBarProps} minWidth="100px" width={width}>
+    <Box {...progressBarProps} minWidth="100px" width={width} {...rest}>
       <Box as="svg" viewBox="0 0 246 78" fill="none">
         <Box
           as="path"

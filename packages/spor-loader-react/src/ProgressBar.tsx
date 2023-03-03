@@ -4,7 +4,7 @@ import React from "react";
 import { useProgressBar } from "react-aria";
 import { useRotatingLabel } from "./useRotatingLabel";
 
-type ProgressBarProps = {
+type ProgressBarProps = BoxProps & {
   /** The percentage of progress made.
    *
    * The value must be between 0 and 100 */
@@ -67,6 +67,7 @@ export const ProgressBar = ({
   height = "0.5rem",
   width = "100%",
   "aria-label": ariaLabel,
+  ...rest
 }: ProgressBarProps) => {
   const { t } = useTranslation();
   const currentLoadingText = useRotatingLabel({
@@ -79,33 +80,41 @@ export const ProgressBar = ({
     "aria-label": ariaLabel || t(texts.label(value)),
   });
   return (
-    <Box {...progressBarProps} title={t(texts.label(value))} minWidth="100px">
-      <Flex
-        backgroundColor="coralGreen"
-        borderRadius="sm"
-        width={width}
-        justifyContent="flex-start"
+    <>
+      <Box
+        {...progressBarProps}
+        title={t(texts.label(value))}
+        minWidth="100px"
+        {...rest}
       >
-        <Box
-          backgroundColor="greenHaze"
+        <Flex
+          backgroundColor="coralGreen"
           borderRadius="sm"
-          height={height}
-          width={`${value}%`}
-          maxWidth="100%"
-          transition="width .2s ease-out"
-        />
-      </Flex>
-      {currentLoadingText && (
-        <Text
-          textAlign="center"
-          marginTop={2}
-          fontWeight="bold"
-          {...labelProps}
+          width={width}
+          justifyContent="flex-start"
+          marginX="auto"
         >
-          {currentLoadingText}
-        </Text>
-      )}
-    </Box>
+          <Box
+            backgroundColor="greenHaze"
+            borderRadius="sm"
+            height={height}
+            width={`${value}%`}
+            maxWidth="100%"
+            transition="width .2s ease-out"
+          />
+        </Flex>
+        {currentLoadingText && (
+          <Text
+            textAlign="center"
+            marginTop={2}
+            fontWeight="bold"
+            {...labelProps}
+          >
+            {currentLoadingText}
+          </Text>
+        )}
+      </Box>
+    </>
   );
 };
 

@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 2.0.2
+
+### Patch Changes
+
+- 38b0e7c9: Slight redesign of the sound off outline icon
+
 ## 2.0.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 1.0.2
+
+### Patch Changes
+
+- 38b0e7c9: Slight redesign of the sound off outline icon
+
 ## 1.0.1
 
 ### Patch Changes

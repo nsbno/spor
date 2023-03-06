@@ -95,9 +95,10 @@ export default function IllustrasjonerPage() {
     const normalizedSearchValue = searchValue.toLowerCase().trim();
     return illustrations.filter(
       (illustration) =>
+        size === "all" ||
+        illustration.size === size ||
         illustration.title.toLowerCase().includes(normalizedSearchValue) ||
-        illustration.tags.includes(normalizedSearchValue) ||
-        (illustration.size && illustration.size === size)
+        illustration.tags.includes(normalizedSearchValue)
     );
   }, [illustrations, searchValue]);
 

@@ -1,5 +1,13 @@
 # @vygruppen/spor-stepper-react
 
+## 1.0.2
+
+### Patch Changes
+
+- 6cee1061: Change the green color scheme colors for steppers
+- Updated dependencies [38b0e7c9]
+  - @vygruppen/spor-icon-react@2.0.2
+
 ## 1.0.1
 
 ### Patch Changes

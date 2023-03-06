@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader-react
 
+## 1.1.2
+
+### Patch Changes
+
+- 0c1a8261: Make it possible to use box props on ProgressBar and ProgressLoader
+
 ## 1.1.1
 
 ### Patch Changes

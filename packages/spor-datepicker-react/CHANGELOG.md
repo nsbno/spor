@@ -1,5 +1,13 @@
 # @vygruppen/spor-datepicker-react
 
+## 1.2.2
+
+### Patch Changes
+
+- 1d2fd5e9: Fix a bug where you had to wrap your DatePicker component in a FormControl
+- Updated dependencies [38b0e7c9]
+  - @vygruppen/spor-icon-react@2.0.2
+
 ## 1.2.1
 
 ### Patch Changes

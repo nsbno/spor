@@ -34,6 +34,7 @@ type LoaderData = {
     title: string;
     imageLightBackground: SanityAsset;
     imageDarkBackground: SanityAsset;
+    size: "small" | "medium" | "large";
     tags: string[];
     description: string;
   }[];
@@ -62,6 +63,7 @@ export const loader = async () => {
       imageLightBackground,
       imageDarkBackground,
       tags,
+      size,
       description
     },
   "article": *[_type == "article" && slug.current == "illustrasjonsbibliotek"][0] {
@@ -87,13 +89,15 @@ export default function IllustrasjonerPage() {
   const { illustrations, article } = useLoaderData<typeof loader>();
   const [searchValue, setSearchValue] = useState("");
   const [background, setBackground] = useState("light");
+  const [size, setSize] = useState("all");
 
   const matchingIllustrations = useMemo(() => {
     const normalizedSearchValue = searchValue.toLowerCase().trim();
     return illustrations.filter(
       (illustration) =>
         illustration.title.toLowerCase().includes(normalizedSearchValue) ||
-        illustration.tags.includes(normalizedSearchValue)
+        illustration.tags.includes(normalizedSearchValue) ||
+        (illustration.size && illustration.size === size)
     );
   }, [illustrations, searchValue]);
 
@@ -135,6 +139,19 @@ export default function IllustrasjonerPage() {
           >
             <option value="light">Lys bakgrunn</option>
             <option value="dark">Mørk bakgrunn</option>
+          </NativeSelect>
+        </Box>
+        <Box>
+          <NativeSelect
+            label="Størrelse"
+            value={size}
+            onChange={(e) => setSize(e.target.value)}
+            width="fit-content"
+          >
+            <option value="all">Alle</option>
+            <option value="small">Små</option>
+            <option value="medium">Middels</option>
+            <option value="large">Store</option>
           </NativeSelect>
         </Box>
       </Flex>

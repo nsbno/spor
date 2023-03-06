@@ -53,7 +53,7 @@ export function DatePicker({
     shouldCloseOnSelect: true,
     errorMessage,
     isRequired: props.isRequired ?? formControlProps?.isRequired,
-    validationState: formControlProps.isInvalid ? "invalid" : "valid",
+    validationState: formControlProps?.isInvalid ? "invalid" : "valid",
   });
   const ref = useRef(null);
   const {

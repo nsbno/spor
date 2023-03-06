@@ -35,6 +35,21 @@ export const illustration = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "size",
+      title: "Size",
+      description:
+        "The illustrations are either meant to be used in certain sizes.",
+      type: "string",
+      options: {
+        list: [
+          { title: "Small", value: "small" },
+          { title: "Medium", value: "medium" },
+          { title: "Large", value: "large" },
+        ],
+        layout: "dropdown",
+      },
+    }),
+    defineField({
       name: "tags",
       title: "Tags",
       description:

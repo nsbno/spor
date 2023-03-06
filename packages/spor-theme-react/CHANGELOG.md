@@ -1,5 +1,11 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.16
+
+### Patch Changes
+
+- 6cee1061: Change the green color scheme colors for steppers
+
 ## 1.0.15
 
 ### Patch Changes

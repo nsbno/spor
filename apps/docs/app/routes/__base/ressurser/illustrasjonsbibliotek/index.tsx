@@ -41,6 +41,7 @@ type LoaderData = {
   article: {
     title: string;
     slug: string;
+    introduction?: any[];
     category?: {
       title: string;
       slug: string;
@@ -70,6 +71,7 @@ export const loader = async () => {
     _id,
     title,
     "slug": slug.current,
+    introduction,
     category->{
       title,
       "slug": slug.current
@@ -105,9 +107,14 @@ export default function IllustrasjonerPage() {
   return (
     <Box>
       <Badge colorScheme="light-green">{article.category?.title}</Badge>
-      <Heading as="h1" size="2xl">
+      <Heading as="h1" size="2xl" marginBottom={1}>
         {article.title}
       </Heading>
+      {article.introduction && (
+        <Box marginBottom={2}>
+          <PortableText value={article.introduction} />
+        </Box>
+      )}
       <Box marginBottom={4}>
         <PortableText value={article.content} />
       </Box>

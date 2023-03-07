@@ -15,7 +15,6 @@ import {
   Heading,
   Image,
   SimpleGrid,
-  Stack,
   Text,
   TextLink,
 } from "@vygruppen/spor-react";
@@ -134,22 +133,6 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     divider: () => <Divider height="1px" my={8} />,
-    introduction: ({ value }) => {
-      return (
-        <Stack spacing={3}>
-          <PortableText
-            value={value.content}
-            components={{
-              block: {
-                normal: ({ children }) => (
-                  <Text variant="md">{children}</Text>
-                ),
-              },
-            }}
-          />
-        </Stack>
-      );
-    },
     grid: ({ value }) => (
       <SimpleGrid
         columns={[1, 2, value.maxNumberOfColumns]}

@@ -1,6 +1,11 @@
 import { MdAddLink, MdArticle } from "react-icons/md";
 import { defineField, defineType } from "sanity";
 
+// This is the ID of the components category
+// It's used to filter out a few fields when editing an article that's a
+// component
+const COMPONENTS_CATEGORY_ID = "ab982447-e71f-4a1f-85ef-d6d6deacddfe";
+
 export const article = defineType({
   name: "article",
   title: "Article",
@@ -83,16 +88,21 @@ export const article = defineType({
       name: "content",
       title: "Content",
       type: "content",
-      // TODO: Hide this for components once everything is migrated
+      hidden: (args) => {
+        // This is a hack to hide this field when the article is a component
+        // It's not supported to do it any other way yet
+        return (
+          (args.document?.category as any)?._ref === COMPONENTS_CATEGORY_ID
+        );
+      },
     }),
     defineField({
       name: "componentSections",
       title: "Sections",
       description: "This is the new way to document components.",
       hidden: (args) => {
-        // TODO: This is a hack to hide this field when the article isn't a component
-        // The UUID is the ID of the component category in Sanity.
-        const COMPONENTS_CATEGORY_ID = "ab982447-e71f-4a1f-85ef-d6d6deacddfe";
+        // This is a hack to hide this field when the article isn't a component
+        // It's not supported to do it any other way yet
         return (
           (args.document?.category as any)?._ref !== COMPONENTS_CATEGORY_ID
         );

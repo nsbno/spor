@@ -18,7 +18,6 @@ export const content = defineType({
     },
     { type: "buttonLink" },
     { type: "divider" },
-    { type: "introduction" },
     { type: "imports" },
     { type: "imageWithCaption" },
     { type: "codeExample" },

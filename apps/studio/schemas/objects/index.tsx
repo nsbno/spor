@@ -5,7 +5,6 @@ export * from "./divider";
 export * from "./grid";
 export * from "./imageWithCaption";
 export * from "./imports";
-export * from "./introduction";
 export * from "./menuItem";
 export * from "./props";
 export * from "./staticCodeBlock";

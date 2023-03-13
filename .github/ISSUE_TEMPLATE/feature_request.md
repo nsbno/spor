@@ -5,14 +5,10 @@ title: ""
 labels: enhancement
 ---
 
-**Er featuren du forespør relatert til en utfordring du opplever?**
+### Er featuren du forespør relatert til en utfordring du opplever?
 
 <!-- Beskriv hva utfordringen er -->
 
-**Hvordan kan vi løse dette?**
+### Hvordan kan vi løse dette?
 
 <!-- Beskriv et løsningsforslag om du har det -->
-
-**Kan du eller teamet ditt hjelpe til?**
-
-<!-- Om du eller teamet ditt kan bidra med kode eller annet, skriv det her -->

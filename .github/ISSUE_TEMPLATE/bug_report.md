@@ -5,10 +5,12 @@ title: ""
 labels: bug
 ---
 
-**Hva er feil**
+### Hva er feil
+
 <!-- Beskriv kort og godt hva feilen er. -->
 
-**Hvordan reprodusere**
+### Hvordan reprodusere
+
 <!-- Om det gjelder React, kan du lage en reproduksjon med denne [CodeSandbox templaten](https://codesandbox.io/s/demo-spor-b137ig).
 
 Steg for å reprodusere
@@ -19,8 +21,6 @@ Steg for å reprodusere
 4. Se feil
 -->
 
-**Hva forventet du skulle skje, og hva skjedde?**
+### Hva forventet du skulle skje, og hva skjedde?
 
-
-**Screenshots**
-<!-- -->
+### Screenshots

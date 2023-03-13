@@ -17,7 +17,7 @@ type TimeFieldProps = AriaTimeFieldProps<Time> & {
  * This component lets the user choose a time based on regular user input.
  * It shouldn't be used directly, but is used by the TimePicker component.
  */
-export const TimeField = ({ state, label, ...props }: TimeFieldProps) => {
+export const TimeField = ({ state, ...props }: TimeFieldProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { labelProps, fieldProps } = useTimeField(props, state, ref);
 
@@ -29,7 +29,7 @@ export const TimeField = ({ state, label, ...props }: TimeFieldProps) => {
         marginBottom={0}
         fontSize="mobile.xs"
       >
-        {label}
+        {props.label}
       </FormLabel>
       <Flex {...fieldProps} ref={ref}>
         {state.segments.map((segment) => (

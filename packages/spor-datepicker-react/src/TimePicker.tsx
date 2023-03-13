@@ -59,7 +59,7 @@ type TimePickerProps = Omit<BoxProps, "defaultValue"> & {
  * @see https://spor.cloud.vy.no/komponenter/timepicker
  */
 export const TimePicker = ({
-  label,
+  label: externalLabel,
   value,
   defaultValue = getCurrentTime(),
   onChange = () => {},
@@ -68,16 +68,20 @@ export const TimePicker = ({
   name,
   ...boxProps
 }: TimePickerProps) => {
-  const { isDisabled: isFormControlDisabled } = useFormControlContext() ?? {};
+  const { isDisabled: isFormControlDisabled, isInvalid: isFormControlInvalid } =
+    useFormControlContext() ?? {};
   const isDisabled = isDisabledExternally ?? isFormControlDisabled ?? false;
   const { t } = useTranslation();
   const locale = useCurrentLocale();
+  const label = externalLabel ?? t(texts.time);
   const state = useTimeFieldState({
     value,
     defaultValue,
     onChange,
     locale,
     isDisabled,
+    label,
+    validationState: isFormControlInvalid ? "invalid" : "valid",
   });
 
   const dateTime = state.value as CalendarDateTime | null;
@@ -141,7 +145,7 @@ export const TimePicker = ({
         icon={<DropdownLeftFill24Icon />}
         onClick={handleBackwardsClick}
       />
-      <TimeField label={label ?? t(texts.time)} state={state} name={name} />
+      <TimeField label={label} state={state} name={name} />
       <IconButton
         variant="ghost"
         size="xs"

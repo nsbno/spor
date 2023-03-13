@@ -144,6 +144,8 @@ export const TimePicker = ({
         title={backwardsLabel}
         icon={<DropdownLeftFill24Icon />}
         onClick={handleBackwardsClick}
+        isDisabled={isDisabled}
+        style={isDisabled ? { backgroundColor: "transparent" } : {}}
       />
       <TimeField label={label} state={state} name={name} />
       <IconButton
@@ -154,6 +156,8 @@ export const TimePicker = ({
         title={forwardsLabel}
         icon={<DropdownRightFill24Icon />}
         onClick={handleForwardClick}
+        isDisabled={isDisabled}
+        style={isDisabled ? { backgroundColor: "transparent" } : {}}
       />
     </StyledField>
   );

@@ -89,7 +89,7 @@ const colorCombinations: Record<ColorScheme, ColorSpec> = {
   "light-blue": {
     backgroundColor: "lightBlue",
     borderColor: "ocean",
-    color: "darkGrey",
+    color: "darkBlue",
   },
   "dark-blue": {
     backgroundColor: "darkBlue",

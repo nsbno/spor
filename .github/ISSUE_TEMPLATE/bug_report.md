@@ -9,7 +9,7 @@ labels: bug
 <!-- Beskriv kort og godt hva feilen er. -->
 
 **Hvordan reprodusere**
-<!-- Om det gjelder React, kan du lage en reproduksjon med denne [CodeSandbox templaten](https://codesandbox.io/s/spor-react-typescript-template-wej0dq).
+<!-- Om det gjelder React, kan du lage en reproduksjon med denne [CodeSandbox templaten](https://codesandbox.io/s/demo-spor-b137ig).
 
 Steg for å reprodusere
 

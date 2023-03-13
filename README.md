@@ -21,7 +21,7 @@ There are others as well, but most of them are meant for internal consumption.
 
 Feel free to visit our documentation website on [spor.cloud.vy.no](https://spor.cloud.vy.no). You'll find live versions of all components, including extensive documentation. And the website is built by dogfooding the React component library!
 
-If you want, you can also test it out in a CodeSandbox ([JavaScript](https://codesandbox.io/s/spor-react-template-4q3uwc?file=/src/index.js) or [TypeScript](https://codesandbox.io/s/spor-react-typescript-template-wej0dq)).
+If you want, you can also test it out in a [CodeSandbox](https://codesandbox.io/s/demo-spor-b137ig).
 
 ## Usage (React)
 

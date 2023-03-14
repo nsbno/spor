@@ -1,5 +1,11 @@
 # @vygruppen/spor-link-react
 
+## 1.0.4
+
+### Patch Changes
+
+- ee9fdaf6: Improve how multi-line links are rendered
+
 ## 1.0.3
 
 ### Patch Changes

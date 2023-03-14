@@ -17,6 +17,7 @@ const config = defineStyleConfig({
     color: "inherit",
     display: "inline",
     position: "relative",
+    boxDecorationBreak: "clone",
 
     "&:focus, &:focus-visible, &:active, &:hover": {
       backgroundImage: "none",

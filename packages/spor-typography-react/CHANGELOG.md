@@ -1,5 +1,11 @@
 # @vygruppen/spor-typography-react
 
+## 1.1.3
+
+### Patch Changes
+
+- 6fbac8a4: Change the text color of light blue badges
+
 ## 1.1.2
 
 ### Patch Changes

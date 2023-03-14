@@ -1,5 +1,12 @@
 # @vygruppen/spor-theme-react
 
+## 1.0.17
+
+### Patch Changes
+
+- ee9fdaf6: Improve how multi-line links are rendered
+- 6fbac8a4: Change the text color of light blue badges
+
 ## 1.0.16
 
 ### Patch Changes

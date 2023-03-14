@@ -1,5 +1,14 @@
 # @vygruppen/spor-datepicker-react
 
+## 1.2.3
+
+### Patch Changes
+
+- 9208b781: Make the timepicker buttons disabled
+- 15cdb021: Fix a bug where a react-aria warning was logged to the console when none was needed
+- Updated dependencies [6fbac8a4]
+  - @vygruppen/spor-typography-react@1.1.3
+
 ## 1.2.2
 
 ### Patch Changes

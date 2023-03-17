@@ -95,16 +95,14 @@ export default function IllustrasjonerPage() {
 
   const matchingIllustrations = useMemo(() => {
     const normalizedSearchValue = searchValue.toLowerCase().trim();
-    return illustrations.filter((illustration) => {
-      if (normalizedSearchValue === "") {
-        return size === "all" || size === illustration.size;
-      }
-      return (
-        illustration.title.toLowerCase().includes(normalizedSearchValue) ||
-        illustration.tags.includes(normalizedSearchValue)
+    return illustrations
+      .filter((illustration) => size === "all" || illustration.size === size)
+      .filter(
+        (illustration) =>
+          illustration.title.toLowerCase().includes(normalizedSearchValue) ||
+          illustration.tags.includes(normalizedSearchValue)
       );
-    });
-  }, [illustrations, searchValue]);
+  }, [illustrations, searchValue, size]);
 
   return (
     <Box>

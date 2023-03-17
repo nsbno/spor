@@ -43,7 +43,14 @@ export const DateTimeSegment = ({ segment, state }: DateTimeSegmentProps) => {
         color: "white",
       }}
     >
-      {segment.text}
+      {isPaddable(segment.type) ? segment.text.padStart(2, "0") : segment.text}
     </Box>
   );
 };
+
+const isPaddable = (segmentType: DateSegment["type"]) =>
+  segmentType === "month" ||
+  segmentType === "day" ||
+  segmentType === "hour" ||
+  segmentType === "minute" ||
+  segmentType === "second";

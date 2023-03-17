@@ -95,14 +95,14 @@ export default function IllustrasjonerPage() {
 
   const matchingIllustrations = useMemo(() => {
     const normalizedSearchValue = searchValue.toLowerCase().trim();
-    return illustrations.filter(
-      (illustration) =>
-        size === "all" ||
-        illustration.size === size ||
-        illustration.title.toLowerCase().includes(normalizedSearchValue) ||
-        illustration.tags.includes(normalizedSearchValue)
-    );
-  }, [illustrations, searchValue]);
+    return illustrations
+      .filter((illustration) => size === "all" || illustration.size === size)
+      .filter(
+        (illustration) =>
+          illustration.title.toLowerCase().includes(normalizedSearchValue) ||
+          illustration.tags.includes(normalizedSearchValue)
+      );
+  }, [illustrations, searchValue, size]);
 
   return (
     <Box>

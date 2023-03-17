@@ -1,5 +1,11 @@
 # @vygruppen/spor-datepicker-react
 
+## 1.2.4
+
+### Patch Changes
+
+- 20d54a1c: Pad all dates and times to be at least two digits (padded with a leading zero)
+
 ## 1.2.3
 
 ### Patch Changes

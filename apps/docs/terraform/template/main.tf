@@ -79,7 +79,7 @@ resource "aws_kms_key" "application_key" {
 }
 
 resource "aws_kms_alias" "application_key_alias" {
-  name          = "alias/${var.name_prefix}-${var.application_name}-new"
+  name          = "alias/${var.name_prefix}-${var.application_name}"
   target_key_id = aws_kms_key.application_key.id
 }
 
@@ -223,6 +223,14 @@ resource "random_string" "session_secret" {
 
 resource "aws_apprunner_custom_domain_association" "service" {
   domain_name          = aws_route53_record.record.name
+  service_arn          = aws_apprunner_service.service.arn
+  enable_www_subdomain = false
+}
+
+# The CNAME record and certificate validation records for this domain
+# are manually configured in DNSMadeEasy
+resource "aws_apprunner_custom_domain_association" "main" {
+  domain_name          = "spor.vy.no"
   service_arn          = aws_apprunner_service.service.arn
   enable_www_subdomain = false
 }

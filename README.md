@@ -6,8 +6,8 @@ This is the monorepo containing Vy's design system, **Spor**, and its supporting
 
 This repo includes the following apps:
 
-- `docs`: a [Remix](https://remix.run) app documenting and demoing the design system. Available @ [spor.cloud.vy.no](https://spor.cloud.vy.no).
-- `studio`: a [Sanity](https://sanity.io) Studio app for creating and editing documentation content. Available @ [spor.cloud.vy.no/studio](https://spor.cloud.vy.no/studio).
+- `docs`: a [Remix](https://remix.run) app documenting and demoing the design system. Available @ [spor.vy.no](https://spor.vy.no).
+- `studio`: a [Sanity](https://sanity.io) Studio app for creating and editing documentation content. Available @ [spor.vy.no/studio](https://spor.vy.no/studio).
 
 This repo also includes a bunch of packages. The ones you need to know about are:
 
@@ -19,7 +19,7 @@ There are others as well, but most of them are meant for internal consumption.
 
 ## Documentation and demos
 
-Feel free to visit our documentation website on [spor.cloud.vy.no](https://spor.cloud.vy.no). You'll find live versions of all components, including extensive documentation. And the website is built by dogfooding the React component library!
+Feel free to visit our documentation website on [spor.vy.no](https://spor.vy.no). You'll find live versions of all components, including extensive documentation. And the website is built by dogfooding the React component library!
 
 If you want, you can also test it out in a [CodeSandbox](https://codesandbox.io/s/demo-spor-b137ig).
 
@@ -63,7 +63,7 @@ export const App = () => {
 };
 ```
 
-You'll find lots of components, and extensive documentation on the [documentation site](https://spor.cloud.vy.no/komponenter).
+You'll find lots of components, and extensive documentation on the [documentation site](https://spor.vy.no/komponenter).
 
 ## Usage (React Native)
 

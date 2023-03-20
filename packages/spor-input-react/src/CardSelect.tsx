@@ -57,7 +57,7 @@ type CardSelectProps = BoxProps & {
  * </CardSelect>
  * ```
  *
- * @see https://spor.cloud.vy.no/komponenter/card-select
+ * @see https://spor.vy.no/komponenter/card-select
  */
 export const CardSelect = forwardRef<CardSelectProps, "button">(
   (

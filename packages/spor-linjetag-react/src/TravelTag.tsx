@@ -58,7 +58,7 @@ type TravelTagProps = TagProps &
  * />
  * ```
  *
- * @see https://spor.cloud.vy.no/komponenter/linjetags
+ * @see https://spor.vy.no/komponenter/linjetags
  */
 export const TravelTag = forwardRef<TravelTagProps, As<any>>(
   (

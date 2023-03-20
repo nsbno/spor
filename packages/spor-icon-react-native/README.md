@@ -30,7 +30,7 @@ Instead, import only the icons you need as named imports.
 
 ### Available icons
 
-Please refer to the [documentation](https://spor.cloud.vy.no/ressurser/ikoner) for a complete list of icons:
+Please refer to the [documentation](https://spor.vy.no/ressurser/ikoner) for a complete list of icons:
 
 ## Development
 

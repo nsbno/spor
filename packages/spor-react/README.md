@@ -17,7 +17,7 @@ Import the components and functions you need as named imports:
 import { Button, Input } from "@vygruppen/spor-react";
 ```
 
-Each component and function comes with extensive documentation that shows up once you use it. Just hover over the component to make it show up in your IDE. Documentation is also available on [the documentation website](https://spor.cloud.vy.no).
+Each component and function comes with extensive documentation that shows up once you use it. Just hover over the component to make it show up in your IDE. Documentation is also available on [the documentation website](https://spor.vy.no).
 
 ## Development
 

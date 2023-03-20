@@ -25,7 +25,7 @@ export const LinkableHeading = ({
   const text = getChildrenAsString(props.children);
   const id = props.id || slugify(text as string);
   const { onCopy, hasCopied } = useClipboard(
-    `https://spor.cloud.vy.no${location.pathname}#${id}`
+    `https://spor.vy.no${location.pathname}#${id}`
   );
   return (
     <Flex

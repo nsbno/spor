@@ -60,7 +60,7 @@ export type ButtonProps = Exclude<
  * </Button>
  * ```
  *
- * @see https://spor.cloud.vy.no/komponenter/button
+ * @see https://spor.vy.no/komponenter/button
  */
 export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
   const {

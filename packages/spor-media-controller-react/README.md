@@ -18,7 +18,7 @@ import {
 } from "@vygruppen/spor-media-controller-react";
 ```
 
-Please refer to the [documentation](https://spor.cloud.vy.no) for more information.
+Please refer to the [documentation](https://spor.vy.no) for more information.
 
 ## Development
 

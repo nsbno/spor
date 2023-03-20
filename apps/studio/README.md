@@ -38,4 +38,4 @@ Then, run the deploy command:
 $ sanity deploy
 ```
 
-This will trigger a build, followed by a deploy to the Sanity project. You can visit your newly deployed site at spor.sanity.studio (or spor.cloud.vy.no/studio).
+This will trigger a build, followed by a deploy to the Sanity project. You can visit your newly deployed site at spor.sanity.studio (or spor.vy.no/studio).

@@ -23,6 +23,7 @@ The naming scheme looks something like this:
 ```
 
 Then, use the icon(s) as follows:
+
 ```
 <AddFill18Icon />
 ```
@@ -45,7 +46,7 @@ This will probably only be interesting for the documentation site or other inter
 
 ### Available icons
 
-Please refer to the [documentation](https://spor.cloud.vy.no/ressurser/ikoner) for a complete list of icons:
+Please refer to the [documentation](https://spor.vy.no/ressurser/ikoner) for a complete list of icons:
 
 ## Development
 

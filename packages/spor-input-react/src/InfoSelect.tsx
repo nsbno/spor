@@ -133,7 +133,7 @@ type InfoSelectProps = {
  * </InfoSelect>
  * ```
  *
- * @see https://spor.cloud.vy.no/komponenter/info-select
+ * @see https://spor.vy.no/komponenter/info-select
  */
 export const InfoSelect = ({
   placeholder,

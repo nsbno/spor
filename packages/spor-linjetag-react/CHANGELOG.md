@@ -1,5 +1,14 @@
 # @vygruppen/spor-linjetag-react
 
+## 1.0.4
+
+### Patch Changes
+
+- 11acb8ec: Export the props types for external usage
+- 7daa5891: Update URL for documentation website
+- Updated dependencies [7daa5891]
+  - @vygruppen/spor-icon-react@2.0.3
+
 ## 1.0.3
 
 ### Patch Changes

@@ -1,5 +1,20 @@
 # @vygruppen/spor-react
 
+## 1.3.4
+
+### Patch Changes
+
+- 7daa5891: Update URL for documentation website
+- Updated dependencies [11acb8ec]
+- Updated dependencies [7daa5891]
+  - @vygruppen/spor-linjetag-react@1.0.4
+  - @vygruppen/spor-media-controller-react@0.1.4
+  - @vygruppen/spor-datepicker-react@1.2.5
+  - @vygruppen/spor-button-react@1.1.2
+  - @vygruppen/spor-input-react@1.3.5
+  - @vygruppen/spor-icon-react@2.0.3
+  - @vygruppen/spor-tab-react@1.0.2
+
 ## 1.3.3
 
 ### Patch Changes

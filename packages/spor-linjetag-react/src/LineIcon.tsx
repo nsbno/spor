@@ -3,7 +3,7 @@ import React from "react";
 import { getCorrectIcon } from "./icons";
 import { TagProps } from "./types";
 
-type LineIconProps = BoxProps & {
+export type LineIconProps = BoxProps & {
   variant: TagProps["variant"];
   size: TagProps["size"];
 };

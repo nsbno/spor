@@ -3,6 +3,8 @@ import React from "react";
 import { LineIcon } from "./LineIcon";
 import type { TagProps } from "./types";
 
+export type InfoTagProps = TagProps;
+
 /**
  * An info tag component.
  *
@@ -29,7 +31,7 @@ export const InfoTag = ({
   size = "md",
   title,
   description,
-}: TagProps) => {
+}: InfoTagProps) => {
   const styles = useMultiStyleConfig("InfoTag", { variant, size });
   return (
     <Box sx={styles.container}>

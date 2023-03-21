@@ -14,6 +14,7 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import { AriaPositionProps, useButton, useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
+import { Dialog } from "./Dialog";
 import { Popover } from "./Popover";
 
 type CardSelectProps = BoxProps & {
@@ -134,7 +135,7 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
               sx={styles.card}
               {...overlayProps}
             >
-              {children}
+              <Dialog aria-label={label}>{children}</Dialog>
             </Card>
           </Popover>
         )}

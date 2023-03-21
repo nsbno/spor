@@ -17,7 +17,7 @@ import React from "react";
 import { LineIcon } from "./LineIcon";
 import type { TagProps } from "./types";
 
-type TravelTagProps = TagProps &
+export type TravelTagProps = TagProps &
   BoxProps & {
     deviationLevel?: "critical" | "major" | "minor" | "info" | "none";
     isDisabled?: boolean;

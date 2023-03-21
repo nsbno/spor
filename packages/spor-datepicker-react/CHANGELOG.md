@@ -1,5 +1,15 @@
 # @vygruppen/spor-datepicker-react
 
+## 1.2.5
+
+### Patch Changes
+
+- 7daa5891: Update URL for documentation website
+- Updated dependencies [7daa5891]
+  - @vygruppen/spor-button-react@1.1.2
+  - @vygruppen/spor-input-react@1.3.5
+  - @vygruppen/spor-icon-react@2.0.3
+
 ## 1.2.4
 
 ### Patch Changes

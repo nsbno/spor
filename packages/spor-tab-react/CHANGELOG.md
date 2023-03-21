@@ -1,5 +1,11 @@
 # @vygruppen/spor-tab-react
 
+## 1.0.2
+
+### Patch Changes
+
+- 7daa5891: Update URL for documentation website
+
 ## 1.0.1
 
 ### Patch Changes

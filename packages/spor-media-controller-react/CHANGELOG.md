@@ -1,5 +1,13 @@
 # @vygruppen/spor-media-controller-react
 
+## 0.1.4
+
+### Patch Changes
+
+- 7daa5891: Update URL for documentation website
+- Updated dependencies [7daa5891]
+  - @vygruppen/spor-button-react@1.1.2
+
 ## 0.1.3
 
 ### Patch Changes

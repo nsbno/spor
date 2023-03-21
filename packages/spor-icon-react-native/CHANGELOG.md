@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 1.0.3
+
+### Patch Changes
+
+- 7daa5891: Update URL for documentation website
+
 ## 1.0.2
 
 ### Patch Changes

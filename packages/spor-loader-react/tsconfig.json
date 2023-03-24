@@ -1,8 +1,0 @@
-{
-  "extends": "@vygruppen/tsconfig/react-library.json",
-  "include": [".", "../spor-loader/src/animation-data"],
-  "exclude": ["dist", "build", "node_modules"],
-  "compilerOptions": {
-    "rootDir": "."
-  }
-}

@@ -7,7 +7,6 @@
     "packages/*"
   ],
   "scripts": {
-    "add-package": "plop --plopfile internal/plopfile.mjs",
     "prebuild": "rimraf packages/*/dist",
     "build": "turbo run build --filter=@vygruppen/spor*-react --filter=@vygruppen/spor*-react-native",
     "test": "turbo run test --parallel",
@@ -19,7 +18,6 @@
   "dependencies": {
     "@changesets/cli": "^2.19.0",
     "patch-package": "^6.4.7",
-    "plop": "^3.0.4",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "turbo": "^1.6.3"

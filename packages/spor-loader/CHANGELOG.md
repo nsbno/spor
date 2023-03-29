@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader
 
+## 0.3.0
+
+### Minor Changes
+
+- 6a85ed66: Add new inline loader animation with lighter colors
+
 ## 0.2.3
 
 ### Patch Changes

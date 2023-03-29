@@ -1,5 +1,11 @@
 # @vygruppen/spor-input-react
 
+## 1.3.6
+
+### Patch Changes
+
+- 020130b1: Fix bug for CardSelect component where it didn't set its focus correctly
+
 ## 1.3.5
 
 ### Patch Changes

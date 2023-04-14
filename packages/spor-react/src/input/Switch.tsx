@@ -1,13 +1,14 @@
 import {
-  forwardRef,
   Switch as ChakraSwitch,
   SwitchProps as ChakraSwitchProps,
+  forwardRef,
 } from "@chakra-ui/react";
 import React from "react";
 
-export type SwitchProps = Exclude<ChakraSwitchProps, "colorScheme"> & {
-  /** @deprecated The outline variant is deprecated. Stop using the variant prop, as it will no longer apply */
-  variant?: "solid" | "outline";
+export type SwitchProps = Exclude<
+  ChakraSwitchProps,
+  "colorScheme" | "variant"
+> & {
   size?: "sm" | "md" | "lg";
 };
 

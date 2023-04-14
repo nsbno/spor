@@ -5,8 +5,6 @@ import React from "react";
 type TextStyles = keyof typeof tokens.font.style;
 
 export type HeadingProps = Exclude<ChakraHeadingProps, "textStyle"> & {
-  /** @deprecated Use `variant` instead */
-  textStyle?: TextStyles;
   /** The size and style of the heading */
   variant?: TextStyles;
 };
@@ -25,8 +23,10 @@ export type HeadingProps = Exclude<ChakraHeadingProps, "textStyle"> & {
  * <Heading as="h1">Page heading</Heading>
  * ```
  */
-export const Heading = ({ variant, textStyle, as = "h2", ...props }: any) => {
-  return (
-    <Text as={as} textStyle={variant ?? textStyle ?? "xl-display"} {...props} />
-  );
+export const Heading = ({
+  variant = "xl-display",
+  as = "h2",
+  ...props
+}: any) => {
+  return <Text as={as} textStyle={variant} {...props} />;
 };

@@ -1,5 +1,5 @@
 export { extendTheme } from "@chakra-ui/react";
-export * from "@vygruppen/spor-design-tokens";
+export * as tokens from "@vygruppen/spor-design-tokens";
 export * from "./accordion";
 export * from "./alert";
 export * from "./button";

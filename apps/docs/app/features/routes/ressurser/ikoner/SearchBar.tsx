@@ -1,4 +1,4 @@
-import { Flex, FormControl, Input, Select } from "@vygruppen/spor-react";
+import { Flex, FormControl, Input, NativeSelect } from "@vygruppen/spor-react";
 import { useSearchFilter } from "./SearchFilterContext";
 
 /**
@@ -19,7 +19,7 @@ export function SearchBar() {
         />
       </FormControl>
       <FormControl flex="1 1 170px">
-        <Select
+        <NativeSelect
           label="Størrelse"
           value={searchFilter.size}
           onChange={(e) => setSize(e.target.value)}
@@ -27,10 +27,10 @@ export function SearchBar() {
           <option value="18">18 x 18px</option>
           <option value="24">24 x 24px</option>
           <option value="30">30 x 30px</option>
-        </Select>
+        </NativeSelect>
       </FormControl>
       <FormControl flex="1 1 150px">
-        <Select
+        <NativeSelect
           label="Variant"
           value={searchFilter.variant}
           onChange={(e) => setVariant(e.target.value)}
@@ -38,7 +38,7 @@ export function SearchBar() {
           <option value="">Alle</option>
           <option value="outline">Outline</option>
           <option value="fill">Fill</option>
-        </Select>
+        </NativeSelect>
       </FormControl>
     </Flex>
   );

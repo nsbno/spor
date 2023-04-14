@@ -53,14 +53,6 @@ export type BadgeProps = Omit<
  */
 export const Badge = forwardRef<BadgeProps, As>(
   ({ icon, colorScheme = "grey", children, ...props }, ref) => {
-    if (colorScheme === "blue" || colorScheme === "green") {
-      if (process.env.NODE_ENV !== "production") {
-        console.warn(
-          `⚠️ You're using a deprecated Badge colorScheme – ${colorScheme}. Please use "light-${colorScheme}" instead.`
-        );
-      }
-      colorScheme = `light-${colorScheme}`;
-    }
     return (
       <ChakraBadge
         colorScheme={colorScheme}
@@ -74,5 +66,3 @@ export const Badge = forwardRef<BadgeProps, As>(
     );
   }
 );
-
-<Badge colorScheme="blue" />;

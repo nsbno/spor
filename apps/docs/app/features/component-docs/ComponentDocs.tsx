@@ -19,7 +19,7 @@ type ComponentDocsProps = {
     name: string;
     content: any[];
     props: {
-      platform: "react" | "react-native" | "react, react-native" | "elm";
+      platform: "react" | "react-native" | "react, react-native";
       type: "other" | string;
       typeOther?: string;
       name: string;

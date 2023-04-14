@@ -229,14 +229,7 @@ type ComponentSectionsProps = {
 };
 const ComponentSections = ({ sections }: ComponentSectionsProps) => {
   return (
-    <Tabs
-      colorScheme="light-green"
-      variant="square"
-      size="md"
-      mt={4}
-      isFitted
-      isLazy
-    >
+    <Tabs colorScheme="green" variant="square" size="md" mt={4} isFitted isLazy>
       <TabList>
         {sections.map((section) => (
           <Tab key={getSlugFromSection(section)}>

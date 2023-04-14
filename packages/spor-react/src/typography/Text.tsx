@@ -1,18 +1,17 @@
 import {
-  forwardRef,
   Text as ChakraText,
   TextProps as ChakraTextProps,
+  forwardRef,
 } from "@chakra-ui/react";
 import React from "react";
 
-export type TextProps = Exclude<ChakraTextProps, "textStyle"> & {
-  /** @deprecated Use `variant` instead */
-  textStyle?: ChakraTextProps["textStyle"];
+export type TextProps = Omit<ChakraTextProps, "textStyle"> & {
   /** The size and style of the text.
    *
    * Defaults to "sm" */
   variant?: ChakraTextProps["textStyle"];
 };
+
 /**
  * A paragraph of text.
  *
@@ -21,13 +20,7 @@ export type TextProps = Exclude<ChakraTextProps, "textStyle"> & {
  * ```
  */
 export const Text = forwardRef<TextProps, "p">(
-  ({ variant, textStyle, ...props }, ref) => {
-    return (
-      <ChakraText
-        {...props}
-        textStyle={variant ?? textStyle ?? "sm"}
-        ref={ref}
-      />
-    );
+  ({ variant = "sm", ...props }, ref) => {
+    return <ChakraText {...props} textStyle={variant} ref={ref} />;
   }
 );

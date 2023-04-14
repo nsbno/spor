@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
-import { Button } from "@vygruppen/spor-button-react";
 import React from "react";
+import { Button } from "..";
 import { BaseToast, BaseToastProps } from "./BaseToast";
 
 type ActionToastProps = BaseToastProps & {

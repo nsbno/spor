@@ -1,8 +1,8 @@
 import { useDisclosure, useMultiStyleConfig } from "@chakra-ui/react";
-import { IconButton } from "@vygruppen/spor-button-react";
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import { CloseFill18Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
+import { IconButton } from "../button";
+import { createTexts, useTranslation } from "../i18n";
 import { AlertIcon } from "./AlertIcon";
 import { BaseAlert, BaseAlertProps } from "./BaseAlert";
 

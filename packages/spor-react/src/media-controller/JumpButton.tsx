@@ -1,6 +1,6 @@
 import { BoxProps, Center, useMultiStyleConfig } from "@chakra-ui/react";
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import React from "react";
+import { createTexts, useTranslation } from "..";
 import { JumpBackwardIcon, JumpForwardIcon } from "./icons";
 
 type JumpButtonProps = BoxProps & {

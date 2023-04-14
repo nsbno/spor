@@ -1,11 +1,11 @@
 import { Flex, useStyleConfig } from "@chakra-ui/react";
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import {
   ErrorOutline24Icon,
   InformationOutline24Icon,
   SuccessOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import React from "react";
+import { createTexts, useTranslation } from "..";
 
 export type BaseToastProps = {
   children: React.ReactNode;

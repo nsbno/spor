@@ -1,11 +1,11 @@
 import {
-  forwardRef,
   Link as ChakraLink,
   LinkProps as ChakraLinkProps,
+  forwardRef,
 } from "@chakra-ui/react";
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
+import { createTexts, useTranslation } from "..";
 
 type LinkProps = Omit<ChakraLinkProps, "variant"> & {
   variant?: "primary" | "secondary" | "tertiary";

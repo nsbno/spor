@@ -1,7 +1,7 @@
 import { Box, BoxProps, Text } from "@chakra-ui/react";
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import React, { useId, useRef } from "react";
 import { useProgressBar } from "react-aria";
+import { createTexts, useTranslation } from "..";
 import { useRotatingLabel } from "./useRotatingLabel";
 
 type ProgressLoaderProps = BoxProps & {

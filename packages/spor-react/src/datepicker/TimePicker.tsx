@@ -1,14 +1,13 @@
 import { BoxProps, useFormControlContext } from "@chakra-ui/react";
 import { CalendarDateTime } from "@internationalized/date";
 import { TimeValue } from "@react-types/datepicker";
-import { IconButton } from "@vygruppen/spor-button-react";
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import {
   DropdownLeftFill24Icon,
   DropdownRightFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { useTimeFieldState } from "react-stately";
+import { IconButton, createTexts, useTranslation } from "..";
 import { StyledField } from "./StyledField";
 import { TimeField } from "./TimeField";
 import { getCurrentTime, useCurrentLocale } from "./utils";

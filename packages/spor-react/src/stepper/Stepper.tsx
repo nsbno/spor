@@ -1,11 +1,14 @@
 import { Flex, HStack, useMultiStyleConfig } from "@chakra-ui/react";
-import { IconButton } from "@vygruppen/spor-button-react";
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import { DropdownLeftFill24Icon } from "@vygruppen/spor-icon-react";
-import { Box } from "@vygruppen/spor-layout-react";
-import { SimplePopover } from "@vygruppen/spor-popover-react";
 import React from "react";
 import { StepperStep } from ".";
+import {
+  Box,
+  IconButton,
+  SimplePopover,
+  createTexts,
+  useTranslation,
+} from "..";
 import { StepperProvider } from "./StepperContext";
 
 type StepperProps = {

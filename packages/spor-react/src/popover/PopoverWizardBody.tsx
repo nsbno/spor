@@ -1,9 +1,7 @@
 import { PopoverBody, usePopoverContext } from "@chakra-ui/react";
-import { Button } from "@vygruppen/spor-button-react";
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
-import { Box, Flex, Stack } from "@vygruppen/spor-layout-react";
 import * as React from "react";
+import { Box, Button, Flex, Stack, createTexts, useTranslation } from "..";
 
 export type PopoverWizardProps = {
   /** Each child will be their own step */

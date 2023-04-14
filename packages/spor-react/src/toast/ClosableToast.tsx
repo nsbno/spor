@@ -1,8 +1,7 @@
 import { Box, useMultiStyleConfig } from "@chakra-ui/react";
-import { IconButton } from "@vygruppen/spor-button-react";
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import { CloseFill18Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
+import { IconButton, createTexts, useTranslation } from "..";
 import { BaseToast, BaseToastProps } from "./BaseToast";
 
 type ClosableToastProps = BaseToastProps & {

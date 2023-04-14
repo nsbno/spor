@@ -6,7 +6,6 @@ import {
   forwardRef,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
-import { Card } from "@vygruppen/spor-card-react";
 import {
   DropdownDownFill18Icon,
   DropdownDownFill24Icon,
@@ -14,6 +13,7 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import { AriaPositionProps, useButton, useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
+import { Card } from "..";
 import { Dialog } from "./Dialog";
 import { Popover } from "./Popover";
 

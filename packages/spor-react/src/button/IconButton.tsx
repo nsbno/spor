@@ -1,11 +1,11 @@
 import {
   As,
-  forwardRef,
   IconButton as ChakraIconButton,
   IconButtonProps as ChakraIconButtonProps,
+  forwardRef,
 } from "@chakra-ui/react";
-import { ColorSpinner } from "@vygruppen/spor-loader-react";
 import React from "react";
+import { ColorSpinner } from "..";
 
 export type IconButtonProps = Omit<ChakraIconButtonProps, "variant"> & {
   variant:

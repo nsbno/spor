@@ -1,8 +1,8 @@
 import { Box, PopoverAnchor, useMultiStyleConfig } from "@chakra-ui/react";
-import { createTexts, Translations, useTranslation } from "@vygruppen/spor-i18n-react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { useRef } from "react";
 import { AriaButtonProps, useButton } from "react-aria";
+import { createTexts, useTranslation } from "..";
 
 type CalendarTriggerButtonProps = AriaButtonProps<"button">;
 export const CalendarTriggerButton = (props: CalendarTriggerButtonProps) => {

@@ -1,10 +1,10 @@
 import { endOfMonth, getWeeksInMonth } from "@internationalized/date";
 import { useCalendarGrid } from "@react-aria/calendar";
-import { Language, useTranslation } from "@vygruppen/spor-i18n-react";
-import { Text } from "@vygruppen/spor-typography-react";
 import React from "react";
 import { AriaCalendarGridProps } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
+import { Language, useTranslation } from "../i18n";
+import { Text } from "../typography";
 import { CalendarCell } from "./CalendarCell";
 import { useCurrentLocale } from "./utils";
 

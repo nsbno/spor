@@ -1,11 +1,10 @@
 import {
   Button,
-  forwardRef,
   Input as ChakraInput,
+  forwardRef,
   useDisclosure,
   useFormControlContext,
 } from "@chakra-ui/react";
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import React, { useId } from "react";
 import {
   FormLabel,
@@ -14,6 +13,7 @@ import {
   InputProps,
   InputRightElement,
 } from ".";
+import { createTexts, useTranslation } from "..";
 
 export type PasswordInputProps = InputProps;
 export const PasswordInput = forwardRef<PasswordInputProps, "input">(

@@ -1,14 +1,14 @@
 import {
   Box,
+  Center,
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
-  Center,
   forwardRef,
   useButtonGroup,
 } from "@chakra-ui/react";
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
-import { ColorInlineLoader } from "@vygruppen/spor-loader-react";
 import React from "react";
+import { createTexts, useTranslation } from "../i18n";
+import { ColorInlineLoader } from "../loader";
 
 export type ButtonProps = Exclude<
   ChakraButtonProps,

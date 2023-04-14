@@ -1,17 +1,17 @@
 import {
-  forwardRef,
-  IconButton,
   Input as ChakraInput,
   InputProps as ChakraInputProps,
+  IconButton,
+  forwardRef,
   useFormControlContext,
 } from "@chakra-ui/react";
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import {
   CloseOutline24Icon,
   SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import React, { useId } from "react";
 import { FormLabel, InputGroup, InputLeftElement, InputRightElement } from ".";
+import { createTexts, useTranslation } from "..";
 
 export type SearchInputProps = Exclude<
   ChakraInputProps,

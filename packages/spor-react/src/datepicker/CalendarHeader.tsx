@@ -1,13 +1,13 @@
 import { Flex } from "@chakra-ui/react";
 import { getLocalTimeZone } from "@internationalized/date";
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import {
   ArrowLeftOutline24Icon,
   ArrowRightOutline24Icon,
 } from "@vygruppen/spor-icon-react";
-import { Heading } from "@vygruppen/spor-typography-react";
 import React from "react";
 import { CalendarState, RangeCalendarState } from "react-stately";
+import { createTexts, useTranslation } from "../i18n";
+import { Heading } from "../typography";
 import { CalendarNavigationButton } from "./CalendarNavigationButton";
 import { useCurrentLocale } from "./utils";
 

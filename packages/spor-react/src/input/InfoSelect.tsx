@@ -4,7 +4,6 @@ import {
   ResponsiveValue,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import {
   DropdownDownFill24Icon,
   DropdownUpFill24Icon,
@@ -12,6 +11,7 @@ import {
 import React, { useRef } from "react";
 import { HiddenSelect, useButton, useSelect } from "react-aria";
 import { useSelectState } from "react-stately";
+import { createTexts, useTranslation } from "../";
 import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
 

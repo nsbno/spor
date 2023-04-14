@@ -24,9 +24,6 @@
     "build:step-2": "tsup tmp/* --treeshake --format esm,cjs",
     "build:step-3": "rimraf tmp"
   },
-  "dependencies": {
-    "@vygruppen/spor-layout-react": "*"
-  },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

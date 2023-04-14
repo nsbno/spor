@@ -1,4 +1,3 @@
-import { createTexts, useTranslation } from "@vygruppen/spor-i18n-react";
 import {
   AltTransportOutline24Icon,
   ErrorOutline24Icon,
@@ -7,6 +6,7 @@ import {
   WarningOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import React from "react";
+import { createTexts, useTranslation } from "../i18n";
 import { BaseAlertProps } from "./BaseAlert";
 
 type AlertIconProps = { variant: BaseAlertProps["variant"] };

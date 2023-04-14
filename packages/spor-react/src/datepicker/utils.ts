@@ -1,5 +1,5 @@
 import { CalendarDateTime, parseTime } from "@internationalized/date";
-import { useTranslation } from "@vygruppen/spor-i18n-react";
+import { useTranslation } from "..";
 
 /**
  * Returns the currently selected language as a BCF47 language tag.

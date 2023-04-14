@@ -1,7 +1,7 @@
 import { useButton } from "@react-aria/button";
-import { IconButton } from "@vygruppen/spor-button-react";
 import React, { useRef } from "react";
 import { AriaButtonProps } from "react-aria";
+import { IconButton } from "..";
 
 type CalendarButtonProps = AriaButtonProps<"button"> & {
   icon: React.ReactElement;

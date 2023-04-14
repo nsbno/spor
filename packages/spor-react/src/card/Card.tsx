@@ -1,6 +1,6 @@
 import { As, forwardRef, useStyleConfig } from "@chakra-ui/react";
-import { Box, BoxProps } from "@vygruppen/spor-layout-react";
 import React from "react";
+import { Box, BoxProps } from "../layout";
 
 export type CardProps = Exclude<BoxProps, "size"> & {
   size?: "sm" | "lg";

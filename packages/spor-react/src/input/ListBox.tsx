@@ -1,18 +1,25 @@
-import { Box, BoxProps, chakra, useMultiStyleConfig } from "@chakra-ui/react";
-import type { AriaListBoxOptions } from "@react-aria/listbox";
+import {
+  Box,
+  BoxProps,
+  chakra,
+  forwardRef,
+  useMultiStyleConfig,
+} from "@chakra-ui/react";
 import type { Node } from "@react-types/shared";
-import React, { forwardRef, RefObject, useContext, useRef } from "react";
+import React, { RefObject, useContext, useRef } from "react";
+import type { AriaListBoxOptions } from "react-aria";
 import { useListBox, useOption } from "react-aria";
-import type { ListState } from "react-stately";
+import type { ListState, SelectState } from "react-stately";
 
-type ListBoxProps = AriaListBoxOptions<unknown> & {
+type ListBoxProps = {
   listBoxRef?: React.RefObject<HTMLUListElement>;
-  state: ListState<unknown>;
+  listBoxOptions: AriaListBoxOptions<unknown>;
+  state: SelectState<unknown> | ListState<unknown>;
 } & BoxProps;
 
 type OptionProps = {
   item: Node<unknown>;
-  state: ListState<unknown>;
+  state: SelectState<any> | ListState<unknown>;
 };
 
 /**
@@ -20,36 +27,27 @@ type OptionProps = {
  *
  * This component is currently only thought to be used with the `InfoSelect` component. Usage outside of that is not documented, nor intended.
  */
-export const ListBox = forwardRef<HTMLUListElement, ListBoxProps>(
-  (props, ref) => {
-    const {
-      state,
-      defaultSelectedKeys,
-      disallowEmptySelection,
-      shouldFocusOnHover,
-      shouldSelectOnPressUp,
-      ...rest
-    } = props;
-    const styles = useMultiStyleConfig("ListBox", {});
-    const internalRef = useRef<HTMLUListElement>(null);
-    const listBoxRef = (ref ?? internalRef) as RefObject<HTMLUListElement>;
-    const { listBoxProps } = useListBox(props, state, listBoxRef);
+export const ListBox = forwardRef<ListBoxProps, "ul">((props, ref) => {
+  const { state, listBoxOptions, ...rest } = props;
+  const styles = useMultiStyleConfig("ListBox", {});
+  const internalRef = useRef<HTMLUListElement>(null);
+  const listBoxRef = (ref ?? internalRef) as RefObject<HTMLUListElement>;
+  const { listBoxProps } = useListBox(listBoxOptions, state, listBoxRef);
 
-    return (
-      <Box
-        as="ul"
-        {...listBoxProps}
-        sx={styles.container}
-        ref={listBoxRef as RefObject<any>}
-        {...rest}
-      >
-        {Array.from(state.collection).map((item) => (
-          <Option key={item.key} item={item} state={state} />
-        ))}
-      </Box>
-    );
-  }
-);
+  return (
+    <Box
+      as="ul"
+      {...listBoxProps}
+      sx={styles.container}
+      ref={listBoxRef as RefObject<any>}
+      {...rest}
+    >
+      {Array.from(state.collection).map((item) => (
+        <Option key={item.key} item={item} state={state} />
+      ))}
+    </Box>
+  );
+});
 
 type OptionContextValue = {
   labelProps: React.HTMLAttributes<HTMLElement>;

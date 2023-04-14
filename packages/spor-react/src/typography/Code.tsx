@@ -27,6 +27,6 @@ export type CodeProps = ChakraCodeProps & {
 /**
  * Shows inline code.
  */
-export const Code = forwardRef<CodeProps, As<any>>((props, ref) => (
+export const Code = forwardRef<CodeProps, As>((props, ref) => (
   <ChakraCode {...props} ref={ref} />
 ));

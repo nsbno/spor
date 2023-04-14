@@ -1,9 +1,9 @@
 import { Stack, useDisclosure } from "@chakra-ui/react";
 import { Link, useLocation } from "@remix-run/react";
+import { HamburgerFill24Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
   Flex,
-  HamburgerFill24Icon,
   IconButton,
   Modal,
   ModalBody,

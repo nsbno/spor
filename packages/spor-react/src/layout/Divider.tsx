@@ -10,7 +10,7 @@ export type DividerProps = BoxProps;
  * <Divider mt={4} mb={6} />
  * ```
  */
-export const Divider = forwardRef<BoxProps, As<any>>((props, ref) => {
+export const Divider = forwardRef<BoxProps, As>((props, ref) => {
   return (
     <Box
       as="hr"

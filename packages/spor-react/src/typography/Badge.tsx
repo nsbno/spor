@@ -56,7 +56,7 @@ export type BadgeProps = Omit<ChakraBadgeProps, "variant" | "colorScheme"> & {
  * </Badge>
  * ```
  */
-export const Badge = forwardRef<BadgeProps, As<any>>(
+export const Badge = forwardRef<BadgeProps, As>(
   ({ icon, colorScheme = "grey", children, ...props }, ref) => {
     if (colorScheme === "blue" || colorScheme === "green") {
       if (process.env.NODE_ENV !== "production") {

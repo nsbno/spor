@@ -144,12 +144,12 @@ function getLoaderWidth(size: any) {
   }
 }
 
-function useCorrectAriaLabel(props: ButtonProps) {
+function useCorrectAriaLabel(props: ButtonProps): string {
   const { t } = useTranslation();
   if (props.isLoading) {
-    return props.loadingText ?? t(texts.loadingText);
+    return String(props.loadingText) ?? t(texts.loadingText);
   }
-  return props["aria-label"];
+  return props["aria-label"] as string;
 }
 
 const texts = createTexts({

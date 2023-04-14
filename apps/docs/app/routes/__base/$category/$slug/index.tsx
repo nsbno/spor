@@ -1,15 +1,17 @@
 import { PortableText } from "@portabletext/react";
 import type { LoaderArgs, MetaFunction } from "@remix-run/node";
 import {
+  FigmaOutline24Icon,
+  GithubOutline24Icon,
+} from "@vygruppen/spor-icon-react";
+import {
   Badge,
   Box,
   Button,
   Divider,
-  FigmaOutline24Icon,
   Flex,
-  GithubOutline24Icon,
-  Heading,
   HStack,
+  Heading,
   Stack,
   Tab,
   TabList,
@@ -227,7 +229,14 @@ type ComponentSectionsProps = {
 };
 const ComponentSections = ({ sections }: ComponentSectionsProps) => {
   return (
-    <Tabs colorScheme="light-green" variant="square" size="md" mt={4} isFitted isLazy>
+    <Tabs
+      colorScheme="light-green"
+      variant="square"
+      size="md"
+      mt={4}
+      isFitted
+      isLazy
+    >
       <TabList>
         {sections.map((section) => (
           <Tab key={getSlugFromSection(section)}>

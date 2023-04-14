@@ -15,11 +15,14 @@ import {
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
-import { useDateRangePicker } from "@react-aria/datepicker";
 import { useDateRangePickerState } from "@react-stately/datepicker";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { useRef } from "react";
-import { AriaDateRangePickerProps, I18nProvider } from "react-aria";
+import {
+  AriaDateRangePickerProps,
+  I18nProvider,
+  useDateRangePicker,
+} from "react-aria";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
 import { RangeCalendar } from "./RangeCalendar";

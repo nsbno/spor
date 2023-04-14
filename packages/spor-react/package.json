@@ -7,7 +7,7 @@
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
-    "build": "tsup src/* --dts --treeshake --format esm,cjs",
+    "build": "tsup src/index.tsx --dts --treeshake --format cjs,esm",
     "dev": "tsup src/index.tsx --watch --format esm"
   },
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-react",
@@ -23,6 +23,7 @@
     "@leile/lobo-t": "^1.0.5",
     "@vygruppen/spor-design-tokens": "latest",
     "@vygruppen/spor-icon-react": "latest",
+    "@vygruppen/spor-loader": "latest",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "framer-motion": ">6.0.0",

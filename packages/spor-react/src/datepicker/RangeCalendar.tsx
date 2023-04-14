@@ -1,9 +1,11 @@
 import { Box } from "@chakra-ui/react";
 import { createCalendar, DateValue } from "@internationalized/date";
-import { useRangeCalendar } from "@react-aria/calendar";
 import { useRangeCalendarState } from "@react-stately/calendar";
 import React, { useRef } from "react";
-import { RangeCalendarProps as ReactAriaRangeCalendarProps } from "react-aria";
+import {
+  RangeCalendarProps as ReactAriaRangeCalendarProps,
+  useRangeCalendar,
+} from "react-aria";
 import { CalendarGrid } from "./CalendarGrid";
 import { CalendarHeader } from "./CalendarHeader";
 import { useCurrentLocale } from "./utils";

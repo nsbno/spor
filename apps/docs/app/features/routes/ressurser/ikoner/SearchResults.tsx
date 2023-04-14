@@ -1,28 +1,30 @@
 import { useClipboard } from "@chakra-ui/react";
 import {
-  Box,
-  Card,
   CopyOutline18Icon,
   DownloadOutline18Icon,
+  SuccessOutline18Icon,
+} from "@vygruppen/spor-icon-react";
+import {
+  Box,
+  Card,
   Flex,
   Heading,
   IconButton,
   SimpleGrid,
   Stack,
-  SuccessOutline18Icon,
   Text,
 } from "@vygruppen/spor-react";
 import { memo, useMemo } from "react";
 import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
-import {
-  getIconByImportName,
-  IconMetadata,
-  IconsByCategory,
-  iconsByCategory,
-} from "./iconsData";
 import { NotFound } from "./NotFound";
 import { SearchFilter, useSearchFilter } from "./SearchFilterContext";
+import {
+  IconMetadata,
+  IconsByCategory,
+  getIconByImportName,
+  iconsByCategory,
+} from "./iconsData";
 
 /**
  * Shows the current search results

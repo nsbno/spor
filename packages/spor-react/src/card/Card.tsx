@@ -44,7 +44,7 @@ export type CardProps = Exclude<BoxProps, "size"> & {
  * </Card>
  * ```
  */
-export const Card = forwardRef<CardProps, As<any>>(
+export const Card = forwardRef<CardProps, As>(
   ({ size = "lg", colorScheme = "white", children, ...props }, ref) => {
     const styles = useStyleConfig("Card", {
       colorScheme,

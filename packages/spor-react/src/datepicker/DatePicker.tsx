@@ -13,11 +13,10 @@ import {
   useFormControlContext,
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
-import { useDatePicker } from "@react-aria/datepicker";
 import { useDatePickerState } from "@react-stately/datepicker";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { useRef } from "react";
-import { AriaDatePickerProps, I18nProvider } from "react-aria";
+import { AriaDatePickerProps, I18nProvider, useDatePicker } from "react-aria";
 import { FormErrorMessage } from "..";
 import { Calendar } from "./Calendar";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";

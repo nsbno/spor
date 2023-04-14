@@ -192,7 +192,7 @@ export const InfoSelect = ({
 
       {state.isOpen && (
         <Popover state={state} triggerRef={triggerRef}>
-          <ListBox {...menuProps} state={state} borderBottomRadius="sm" />
+          <ListBox listBoxOptions={menuProps} state={state} borderBottomRadius="sm" />
         </Popover>
       )}
     </Box>

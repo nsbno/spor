@@ -51,7 +51,7 @@ export type IconButtonProps = Omit<ChakraIconButtonProps, "variant"> & {
  * />
  * ```
  */
-export const IconButton = forwardRef<IconButtonProps, As<any>>(
+export const IconButton = forwardRef<IconButtonProps, As>(
   ({ ...props }, ref) => (
     <ChakraIconButton
       title={props["aria-label"]}

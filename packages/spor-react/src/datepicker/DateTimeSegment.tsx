@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
-import { useDateSegment } from "@react-aria/datepicker";
 import React, { useRef } from "react";
+import { useDateSegment } from "react-aria";
 import { DateFieldState, DateSegment } from "react-stately";
 
 type DateTimeSegmentProps = {

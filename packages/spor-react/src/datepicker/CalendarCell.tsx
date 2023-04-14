@@ -5,8 +5,8 @@ import {
   isSameMonth,
   isToday,
 } from "@internationalized/date";
-import { useCalendarCell } from "@react-aria/calendar";
 import React, { useRef } from "react";
+import { useCalendarCell } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
 
 type CalendarCellProps = {

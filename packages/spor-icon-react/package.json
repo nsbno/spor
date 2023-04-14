@@ -21,7 +21,7 @@
     "prebuild": "npm run clean",
     "build": "npm run build:step-1 && npm run build:step-2",
     "build:step-1": "ts-node bin/generate.ts",
-    "build:step-2": "tsup tmp/* --treeshake --format esm,cjs",
+    "build:step-2": "tsup tmp/* --treeshake --format esm,cjs --external @vygruppen/spor-react",
     "build:step-3": "rimraf tmp"
   },
   "peerDependencies": {

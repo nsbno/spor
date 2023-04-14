@@ -1,7 +1,6 @@
 import { endOfMonth, getWeeksInMonth } from "@internationalized/date";
-import { useCalendarGrid } from "@react-aria/calendar";
 import React from "react";
-import { AriaCalendarGridProps } from "react-aria";
+import { AriaCalendarGridProps, useCalendarGrid } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
 import { Language, useTranslation } from "../i18n";
 import { Text } from "../typography";

@@ -11,7 +11,7 @@ import React from "react";
 type StyledFieldProps = BoxProps & {
   variant: "simple" | "with-trigger";
 };
-export const StyledField = forwardRef<StyledFieldProps, As<any>>(
+export const StyledField = forwardRef<StyledFieldProps, As>(
   ({ children, variant, ...otherProps }, ref) => {
     const { isInvalid } = useFormControlContext() ?? {
       isInvalid: false,

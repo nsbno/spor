@@ -60,7 +60,7 @@ export type TravelTagProps = TagProps &
  *
  * @see https://spor.vy.no/komponenter/linjetags
  */
-export const TravelTag = forwardRef<TravelTagProps, As<any>>(
+export const TravelTag = forwardRef<TravelTagProps, As>(
   (
     {
       variant,

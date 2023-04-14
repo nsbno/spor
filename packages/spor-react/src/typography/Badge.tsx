@@ -6,7 +6,10 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-export type BadgeProps = Omit<ChakraBadgeProps, "variant" | "colorScheme"> & {
+export type BadgeProps = Omit<
+  ChakraBadgeProps,
+  "variant" | "colorScheme" | "size"
+> & {
   /**
    * The color scheme of the badge.
    */
@@ -25,10 +28,6 @@ export type BadgeProps = Omit<ChakraBadgeProps, "variant" | "colorScheme"> & {
    *
    * Can be specified as `outline` to render a border around the badge. */
   variant?: "solid" | "outline";
-  /**
-   * @deprecated Size is automatically set based on screen size.
-   */
-  size?: "sm" | "md";
   /** Optional badge icon. Will be rendered to the left of the text.
    *
    * Make sure you pass in the 18px version of the icon.

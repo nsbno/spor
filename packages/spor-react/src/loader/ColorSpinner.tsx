@@ -42,6 +42,3 @@ export const ColorSpinner = ({
     </Center>
   );
 };
-
-/** @deprecated Use ColorSpinner instead */
-export const Spinner = ColorSpinner;

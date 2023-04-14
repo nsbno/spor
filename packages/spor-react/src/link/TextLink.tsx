@@ -43,9 +43,3 @@ const texts = createTexts({
     en: "External link",
   },
 });
-
-/** Link to different sites or parts of sites.
- *
- * @deprecated Use `TextLink` instead. Will be removed in v1.0.0
- */
-export const Link = TextLink;

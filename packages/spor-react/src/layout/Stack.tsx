@@ -1,11 +1,12 @@
-import { forwardRef, StackProps as ChakraStackProps } from "@chakra-ui/react";
-import { Stack as ChakraStack } from "@chakra-ui/react";
+import {
+  Stack as ChakraStack,
+  StackProps as ChakraStackProps,
+  forwardRef,
+} from "@chakra-ui/react";
 import React from "react";
 
-export type StackProps = ChakraStackProps & {
+export type StackProps = Exclude<ChakraStackProps, "direction"> & {
   flexDirection?: ChakraStackProps["direction"];
-  /** @deprecated Use `flexDirection` instead */
-  direction?: ChakraStackProps["direction"];
 };
 /**
  * Adds consistent spacing between elements

@@ -15,13 +15,9 @@ export type BadgeProps = Omit<ChakraBadgeProps, "variant" | "colorScheme"> & {
     | "light-yellow"
     | "red"
     | "light-green"
-    /** @deprecated Use "light-green" instead */
-    | "green"
     | "dark-green"
     | "orange"
     | "light-blue"
-    /** @deprecated Use "light-blue" instead */
-    | "blue"
     | "dark-blue"
     | "grey"
     | "white";

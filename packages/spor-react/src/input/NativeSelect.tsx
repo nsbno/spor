@@ -1,7 +1,7 @@
 import {
-  forwardRef,
   Select as ChakraSelect,
   SelectProps as ChakraSelectProps,
+  forwardRef,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import React from "react";
@@ -36,10 +36,3 @@ export const NativeSelect = forwardRef<NativeSelectProps, "select">(
     );
   }
 );
-
-/**
- * A select component.
- *
- * @deprecated Use NativeSelect instead. Will be removed in the next major version
- */
-export const Select = NativeSelect;

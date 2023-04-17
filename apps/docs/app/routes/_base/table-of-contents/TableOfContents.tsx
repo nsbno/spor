@@ -1,6 +1,6 @@
 import { ListItem, OrderedList } from "@chakra-ui/react";
 import { Box, BoxProps, Heading } from "@vygruppen/spor-react";
-import { MenuItem } from "~/features/content-menu/MenuItem";
+import { MenuItem } from "~/routes/_base/content-menu/MenuItem";
 import { useScrollSpy } from "./useScrollSpy";
 
 export type HeadingLevelType = "h2" | "h3" | "h4" | "h5" | "h6";

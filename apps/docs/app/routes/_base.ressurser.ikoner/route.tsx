@@ -8,9 +8,9 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-import { SearchBar } from "~/features/routes/ressurser/ikoner/SearchBar";
-import { SearchFilterProvider } from "~/features/routes/ressurser/ikoner/SearchFilterContext";
-import { SearchResults } from "~/features/routes/ressurser/ikoner/SearchResults";
+import { SearchBar } from "./SearchBar";
+import { SearchFilterProvider } from "./SearchFilterContext";
+import { SearchResults } from "./SearchResults";
 
 export default function IconsPage() {
   return (

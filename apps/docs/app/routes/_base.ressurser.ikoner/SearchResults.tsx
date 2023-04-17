@@ -15,9 +15,9 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import { memo, useMemo } from "react";
-import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
+import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
-import { NotFound } from "./NotFound";
+import { NotFound } from "../../features/illustrations/NotFoundIllustration";
 import { SearchFilter, useSearchFilter } from "./SearchFilterContext";
 import {
   IconMetadata,

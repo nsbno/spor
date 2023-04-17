@@ -3,9 +3,9 @@ import { useFetcher, useLoaderData } from "@remix-run/react";
 import { Stack } from "@vygruppen/spor-react";
 import { useState } from "react";
 import { LivePreview } from "react-live";
-import { LiveEditor } from "~/features/interactive-code/LiveEditor";
-import { LiveError } from "~/features/interactive-code/LiveError";
-import { LiveProvider } from "~/features/interactive-code/LiveProvider";
+import { LiveEditor } from "~/features/portable-text/interactive-code/LiveEditor";
+import { LiveError } from "~/features/portable-text/interactive-code/LiveError";
+import { LiveProvider } from "~/features/portable-text/interactive-code/LiveProvider";
 import { debounce } from "~/utils/debounce";
 import { getPlaygroundDataSession } from "~/utils/playgroundData.server";
 

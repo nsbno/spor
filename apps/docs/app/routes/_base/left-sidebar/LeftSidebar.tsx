@@ -1,5 +1,5 @@
 import { Box } from "@vygruppen/spor-react";
-import { SearchableContentMenu } from "~/features/content-menu/SearchableContentMenu";
+import { SearchableContentMenu } from "~/routes/_base/content-menu/SearchableContentMenu";
 
 export const LeftSidebar = () => {
   return (

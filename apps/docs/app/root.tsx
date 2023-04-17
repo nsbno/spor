@@ -12,16 +12,16 @@ import {
 } from "@remix-run/react";
 import { Box, Button, Center, Text } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect } from "react";
+import { NotFound } from "./features/illustrations/NotFoundIllustration";
+import { RootLayout } from "./features/layouts/root-layout/RootLayout";
+import { SkipToContent } from "./features/layouts/root-layout/SkipToContent";
 import {
   ClientStyleContext,
   ServerStyleContext,
-} from "./features/chakra-setup/styleContext";
-import { RootErrorBoundary } from "./features/error-boundary/RootErrorBoundary";
-import { FontPreloading } from "./features/font-loading/FontPreloading";
-import { BaseLayout } from "./features/layouts/base-layout/BaseLayout";
-import { RootProviders } from "./features/root-providers/RootProviders";
-import { NotFound } from "./features/routes/ressurser/ikoner/NotFound";
-import { SkipToContent } from "./features/skip-to-content/SkipToContent";
+} from "./features/setup/chakra-setup/styleContext";
+import { RootErrorBoundary } from "./features/setup/error-boundary/RootErrorBoundary";
+import { FontPreloading } from "./features/setup/font-loading/FontPreloading";
+import { RootProviders } from "./features/setup/RootProviders";
 import {
   getInitialSanityData,
   InitialSanityData,
@@ -97,7 +97,7 @@ export function CatchBoundary() {
       message = (
         <Box>
           <NotFound mx="auto" mb={2} />
-          <Text textStyle="sm" mb={4}>
+          <Text variant="sm" mb={4}>
             Ups! Det ser ut som du prøvde å besøke en side som ikke finnes.
           </Text>
           <Button as="a" href="/" variant="primary">
@@ -179,9 +179,9 @@ const Document = withEmotionCache(
 export default function App() {
   return (
     <Document>
-      <BaseLayout>
+      <RootLayout>
         <Outlet />
-      </BaseLayout>
+      </RootLayout>
     </Document>
   );
 }

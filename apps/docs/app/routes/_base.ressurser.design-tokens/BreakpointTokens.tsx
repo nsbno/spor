@@ -11,7 +11,7 @@ import {
   Thead,
   Tr,
 } from "@vygruppen/spor-react";
-import { useTokenFormatter } from "../../../tokens/useTokenFormatter";
+import { useTokenFormatter } from "~/routes/_base.ressurser.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
 export function BreakpointTokens(props: BoxProps) {

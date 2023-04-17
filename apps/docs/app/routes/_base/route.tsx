@@ -1,9 +1,9 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { Outlet } from "@remix-run/react";
-import { LeftSidebar } from "~/features/layouts/docs-layout/left-sidebar/LeftSidebar";
 import { Footer } from "~/features/layouts/footer/Footer";
-import TableOfContent from "~/features/table-of-contents/TableOfContents";
-import { useHeadings } from "~/features/table-of-contents/useHeadings";
+import { LeftSidebar } from "~/routes/_base/left-sidebar/LeftSidebar";
+import TableOfContent from "~/routes/_base/table-of-contents/TableOfContents";
+import { useHeadings } from "~/routes/_base/table-of-contents/useHeadings";
 import { getClient } from "~/utils/sanity/client";
 
 /* This loader isn't use here directly, but from within the left sidebar component tree. Don't remove it, even if it isn't used here.  */

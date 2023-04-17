@@ -1,13 +1,13 @@
 import { Box, Divider, Heading, Stack, Text } from "@vygruppen/spor-react";
-import { AnimationTokens } from "~/features/routes/ressurser/design-tokens/AnimationTokens";
-import { BreakpointTokens } from "~/features/routes/ressurser/design-tokens/BreakpointTokens";
-import { ColorTokens } from "~/features/routes/ressurser/design-tokens/ColorTokens";
-import { OutlineTokens } from "~/features/routes/ressurser/design-tokens/OutlineTokens";
-import { RoundingTokens } from "~/features/routes/ressurser/design-tokens/RoundingTokens";
-import { ShadowTokens } from "~/features/routes/ressurser/design-tokens/ShadowTokens";
-import { SpacingTokens } from "~/features/routes/ressurser/design-tokens/SpacingTokens";
-import { TypographyTokens } from "~/features/routes/ressurser/design-tokens/TypographyTokens";
-import { ZIndexTokens } from "~/features/routes/ressurser/design-tokens/ZIndexTokens";
+import { AnimationTokens } from "~/routes/_base.ressurser.design-tokens/AnimationTokens";
+import { BreakpointTokens } from "./BreakpointTokens";
+import { ColorTokens } from "./ColorTokens";
+import { OutlineTokens } from "./OutlineTokens";
+import { RoundingTokens } from "./RoundingTokens";
+import { ShadowTokens } from "./ShadowTokens";
+import { SpacingTokens } from "./SpacingTokens";
+import { TypographyTokens } from "./TypographyTokens";
+import { ZIndexTokens } from "./ZIndexTokens";
 
 export default function DesignTokensPage() {
   return (

@@ -8,7 +8,7 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-import { LinkableHeading } from "~/features/linkable-heading/LinkableHeading";
+import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 import translucentBackgroundUrl from "./translucent-background.svg";

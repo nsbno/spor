@@ -11,8 +11,8 @@ import {
   Thead,
   Tr,
 } from "@vygruppen/spor-react";
-import { CodeBlock } from "../code-block/CodeBlock";
-import { LinkableHeading } from "../linkable-heading/LinkableHeading";
+import { LinkableHeading } from "../../../features/portable-text/LinkableHeading";
+import { CodeBlock } from "../../../features/portable-text/code-block/CodeBlock";
 
 type ComponentDocsProps = {
   component: {

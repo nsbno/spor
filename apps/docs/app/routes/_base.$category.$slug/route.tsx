@@ -21,7 +21,7 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import invariant from "tiny-invariant";
-import { ComponentDocs } from "~/features/component-docs/ComponentDocs";
+import { ComponentDocs } from "~/routes/_base.$category.$slug/component-docs/ComponentDocs";
 import { getClient } from "~/utils/sanity/client";
 import {
   PreviewableLoaderData,

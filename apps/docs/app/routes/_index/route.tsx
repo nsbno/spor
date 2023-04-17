@@ -1,7 +1,7 @@
 import { Box } from "@vygruppen/spor-react";
 import { Footer } from "~/features/layouts/footer/Footer";
-import { ActionLinks } from "~/features/routes/index/ActionLinks";
-import { HeroSection } from "~/features/routes/index/HeroSection";
+import { ActionLinks } from "~/routes/_index/ActionLinks";
+import { HeroSection } from "~/routes/_index/HeroSection";
 
 export default function Index() {
   return (

@@ -10,7 +10,7 @@ import {
   Thead,
   Tr,
 } from "@vygruppen/spor-react";
-import { useTokenFormatter } from "~/features/tokens/useTokenFormatter";
+import { useTokenFormatter } from "~/routes/_base.ressurser.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
 type OutlineToken = {

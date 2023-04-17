@@ -61,7 +61,7 @@ const saveToCookie = debounce((newCode: string, fetcher: any) => {
   }
   const formData = new FormData();
   formData.set("playgroundData", newCode);
-  fetcher.submit(formData, { method: "post", action: "/lekegrind" });
+  fetcher.submit(formData, { method: "POST", action: "/lekegrind" });
 }, 2000);
 
 export default function PlaygroundPage() {

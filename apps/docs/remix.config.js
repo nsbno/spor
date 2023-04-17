@@ -9,4 +9,7 @@ module.exports = {
   devServerPort: 8002,
   ignoredRouteFiles: [".*"],
   watchPaths: ["../../packages/*/dist/index.mjs"],
+  future: {
+    v2_normalizeFormMethod: true,
+  },
 };

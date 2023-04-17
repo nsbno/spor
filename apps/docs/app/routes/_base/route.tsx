@@ -1,6 +1,6 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { Outlet } from "@remix-run/react";
-import { Footer } from "~/features/layouts/footer/Footer";
+import { Footer } from "~/root/layout/Footer";
 import { LeftSidebar } from "~/routes/_base/left-sidebar/LeftSidebar";
 import TableOfContent from "~/routes/_base/table-of-contents/TableOfContents";
 import { useHeadings } from "~/routes/_base/table-of-contents/useHeadings";

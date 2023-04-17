@@ -1,6 +1,6 @@
 import { Language, SporProvider } from "@vygruppen/spor-react";
 import { SSRProvider } from "react-aria";
-import { PortableTextProvider } from "../portable-text/PortableText";
+import { PortableTextProvider } from "../../features/portable-text/PortableText";
 
 type RootProvidersProps = { children: React.ReactNode };
 /**
@@ -12,8 +12,7 @@ export const RootProviders = ({ children }: RootProvidersProps) => {
   return (
     <SSRProvider>
       <SporProvider language={Language.NorwegianBokmal}>
-        <PortableTextProvider>
-        {children}</PortableTextProvider>
+        <PortableTextProvider>{children}</PortableTextProvider>
       </SporProvider>
     </SSRProvider>
   );

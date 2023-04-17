@@ -13,7 +13,7 @@ import {
 } from "@vygruppen/spor-react";
 import { useEffect } from "react";
 import { useMenu } from "~/utils/useMenu";
-import { SearchableContentMenu } from "../../../routes/_base/content-menu/SearchableContentMenu";
+import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
 import { NavigationLink, SiteNavigation } from "./SiteNavigation";
 
 /** The site header shown at the top of every part of our site */

@@ -1,6 +1,6 @@
 import { Box, BoxProps } from "@vygruppen/spor-react";
 
-export const NotFound = (props: BoxProps) => {
+export const NotFoundIllustration = (props: BoxProps) => {
   return (
     <Box
       as="svg"

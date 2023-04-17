@@ -3,8 +3,8 @@ import createEmotionServer from "@emotion/server/create-instance";
 import type { EntryContext } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import { renderToString } from "react-dom/server";
-import { createEmotionCache } from "./features/setup/chakra-setup/createEmotionCache";
-import { ServerStyleContext } from "./features/setup/chakra-setup/styleContext";
+import { createEmotionCache } from "./root/setup/chakra-setup/createEmotionCache";
+import { ServerStyleContext } from "./root/setup/chakra-setup/styleContext";
 
 export default function handleRequest(
   request: Request,

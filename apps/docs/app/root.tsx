@@ -2,26 +2,26 @@ import { ColorModeScript } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
 import { json, LinksFunction, MetaFunction } from "@remix-run/node";
 import {
+  isRouteErrorResponse,
   Links,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-  useCatch,
+  useRouteError,
 } from "@remix-run/react";
-import { Box, Button, Center, Text } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect } from "react";
-import { NotFound } from "./features/illustrations/NotFoundIllustration";
-import { RootLayout } from "./features/layouts/root-layout/RootLayout";
-import { SkipToContent } from "./features/layouts/root-layout/SkipToContent";
+import { RootLayout } from "./root/layout/RootLayout";
+import { SkipToContent } from "./root/layout/SkipToContent";
+import { PageNotFound } from "./root/PageNotFound";
 import {
   ClientStyleContext,
   ServerStyleContext,
-} from "./features/setup/chakra-setup/styleContext";
-import { RootErrorBoundary } from "./features/setup/error-boundary/RootErrorBoundary";
-import { FontPreloading } from "./features/setup/font-loading/FontPreloading";
-import { RootProviders } from "./features/setup/RootProviders";
+} from "./root/setup/chakra-setup/styleContext";
+import { RootErrorBoundary } from "./root/setup/error-boundary/RootErrorBoundary";
+import { FontPreloading } from "./root/setup/font-loading/FontPreloading";
+import { RootProviders } from "./root/setup/RootProviders";
 import {
   getInitialSanityData,
   InitialSanityData,
@@ -77,45 +77,20 @@ export const loader = async () => {
 /**
  * The error boundary shown if no other error boundary catches the error.
  */
-export function ErrorBoundary({ error }: { error: Error }) {
+export function ErrorBoundary() {
+  const error = useRouteError();
+  if (isRouteErrorResponse(error) && error.status === 404) {
+    return (
+      <Document title="Fant ikke siden!">
+        <RootLayout>
+          <PageNotFound />
+        </RootLayout>
+      </Document>
+    );
+  }
   return (
     <Document title="Error!">
       <RootErrorBoundary error={error} />
-    </Document>
-  );
-}
-
-/**
- * Catches HTTP errors
- */
-export function CatchBoundary() {
-  let caught = useCatch();
-
-  let message;
-  switch (caught.status) {
-    case 404:
-      message = (
-        <Box>
-          <NotFound mx="auto" mb={2} />
-          <Text variant="sm" mb={4}>
-            Ups! Det ser ut som du prøvde å besøke en side som ikke finnes.
-          </Text>
-          <Button as="a" href="/" variant="primary">
-            Tilbake til forsiden
-          </Button>
-        </Box>
-      );
-      break;
-
-    default:
-      throw new Error(caught.data || caught.statusText);
-  }
-
-  return (
-    <Document title={`${caught.status} - ${caught.statusText}`}>
-      <Center minHeight="100vh">
-        <Box textAlign="center">{message}</Box>
-      </Center>
     </Document>
   );
 }

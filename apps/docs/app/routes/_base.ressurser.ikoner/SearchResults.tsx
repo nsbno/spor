@@ -17,7 +17,7 @@ import {
 import { memo, useMemo } from "react";
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
-import { NotFound } from "../../features/illustrations/NotFoundIllustration";
+import { NotFoundIllustration } from "../../features/illustrations/NotFoundIllustration";
 import { SearchFilter, useSearchFilter } from "./SearchFilterContext";
 import {
   IconMetadata,
@@ -85,7 +85,7 @@ const hasNoHits = (filteredCategories: IconsByCategory) =>
 const NoHits = () => {
   return (
     <Box>
-      <NotFound mx="auto" />
+      <NotFoundIllustration mx="auto" />
       <Heading as="h2" variant="sm" fontWeight="bold" mt={7} textAlign="center">
         Ingen matchende ikoner funnet
       </Heading>

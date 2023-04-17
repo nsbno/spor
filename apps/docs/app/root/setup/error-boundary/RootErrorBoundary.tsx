@@ -1,6 +1,6 @@
 import { Box, Center, Heading, Text } from "@vygruppen/spor-react";
 export type RootErrorBoundaryProps = {
-  error: Error;
+  error: any;
 };
 export const RootErrorBoundary = ({ error }: RootErrorBoundaryProps) => {
   if (process.env.NODE_ENV === "development") {
@@ -9,7 +9,7 @@ export const RootErrorBoundary = ({ error }: RootErrorBoundaryProps) => {
       <Center minHeight="100vh">
         <Box>
           <Heading as="h1">There was an error</Heading>
-          <Text>{error.message}</Text>
+          <Text>{JSON.stringify(error)}</Text>
         </Box>
       </Center>
     );

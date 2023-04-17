@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import { SkipToContent } from "~/features/layouts/root-layout/SkipToContent";
+import { SkipToContent } from "~/root/layout/SkipToContent";
 import { SiteHeader } from "./SiteHeader";
 
 type BaseLayoutProps = {

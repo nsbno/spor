@@ -1,5 +1,5 @@
 import { PortableText } from "@portabletext/react";
-import type { LoaderArgs, MetaFunction } from "@remix-run/node";
+import type { LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 import {
   FigmaOutline24Icon,
   GithubOutline24Icon,
@@ -117,24 +117,35 @@ export const loader = async ({ params, request }: LoaderArgs) => {
   };
 };
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
+export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
   if (!data) {
-    return {};
+    return [];
   }
   const [article] = data.initialData;
-  const description =
-    blockContentToPlainText(
-      article.introduction ??
-        article.content?.find((block) => block._type === "introduction")
-          ?.content
-    ) || undefined;
-  const meta: Record<string, any> = {
-    title: `${article.title} – ${article?.category?.title ?? "…"} – Spor`,
-    description,
-    "og:description": description,
-  };
+  const title = `${article.title} – ${article?.category?.title ?? "…"} – Spor`;
+  const description = blockContentToPlainText(
+    article.introduction ??
+      article.content?.find((block) => block._type === "introduction")?.content
+  );
+  const meta = [
+    { title },
+    { name: "description", content: description },
+    { name: "og:title", content: title },
+    { name: "og:description", content: description },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+  ];
+
   if (article.mainImage) {
-    meta["og:image"] = urlBuilder.image(article.mainImage).width(1200).url();
+    meta.push({
+      name: "og:image",
+      content: urlBuilder.image(article.mainImage).width(1200).url(),
+    });
+    meta.push({ name: "twitter:card", content: "summary_large_image" });
+    meta.push({
+      name: "twitter:image",
+      content: urlBuilder.image(article.mainImage).width(1200).url(),
+    });
   }
   return meta;
 };

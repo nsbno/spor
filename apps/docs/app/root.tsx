@@ -1,6 +1,6 @@
 import { ColorModeScript } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
-import { json, LinksFunction, MetaFunction } from "@remix-run/node";
+import { json, LinksFunction } from "@remix-run/node";
 import {
   isRouteErrorResponse,
   Links,
@@ -10,6 +10,7 @@ import {
   Scripts,
   ScrollRestoration,
   useRouteError,
+  V2_MetaFunction,
 } from "@remix-run/react";
 import { ReactNode, useContext, useEffect } from "react";
 import { RootLayout } from "./root/layout/RootLayout";
@@ -28,29 +29,44 @@ import {
 } from "./utils/initialSanityData.server";
 import { urlBuilder } from "./utils/sanity/utils";
 
-export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
+export const meta: V2_MetaFunction = ({ data }: { data: LoaderData }) => {
   if (!data || !data.initialSanityData) {
-    return {};
+    return [];
   }
   const { title, description, keywords, socialImage } =
     data.initialSanityData.siteSettings;
 
-  const imageMetaTags = socialImage
-    ? {
-        "og:image": urlBuilder.image(socialImage).width(1200).url(),
-        "og:image:width": "1200",
-        "og:image:height": "600",
-      }
-    : {};
-  return {
-    title,
-    description,
-    keywords: keywords.join(", "),
-    "og:title": title,
-    "og:description": description,
-    ...imageMetaTags,
-    "twitter:card": "summary",
-  };
+  const meta = [
+    { title },
+    { name: "description", content: description },
+    { name: "keywords", content: keywords.join(", ") },
+    { name: "og:title", content: title },
+    { name: "og:description", content: description },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+  ];
+
+  if (socialImage) {
+    meta.push({
+      name: "og:image",
+      content: urlBuilder.image(socialImage).width(1200).url(),
+    });
+    meta.push({
+      name: "og:image:width",
+      content: "1200",
+    });
+    meta.push({
+      name: "og:image:height",
+      content: "600",
+    });
+    meta.push({ name: "twitter:card", content: "summary_large_image" });
+    meta.push({
+      name: "twitter:image",
+      content: urlBuilder.image(socialImage).width(1200).url(),
+    });
+  }
+
+  return meta;
 };
 
 export const links: LinksFunction = () => {

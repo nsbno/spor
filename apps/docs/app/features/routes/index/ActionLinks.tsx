@@ -1,19 +1,21 @@
 import { Link } from "@remix-run/react";
 import {
+  ComponentsOutline30Icon,
+  GuidelinesOutline30Icon,
+  HomeOutline30Icon,
+  IconsOutline30Icon,
+  TokensOutline30Icon,
+  TrainOutline30Icon,
+} from "@vygruppen/spor-icon-react";
+import {
   Box,
   BoxProps,
   Card,
-  ComponentsOutline30Icon,
   Container,
   Flex,
-  GuidelinesOutline30Icon,
   Heading,
-  HomeOutline30Icon,
-  IconsOutline30Icon,
   SimpleGrid,
   Text,
-  TokensOutline30Icon,
-  TrainOutline30Icon,
 } from "@vygruppen/spor-react";
 
 type LinkItem = {

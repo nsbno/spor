@@ -14,8 +14,9 @@ This repo also includes a bunch of packages. The ones you need to know about are
 - `@vygruppen/spor-react` - The React component library
 - `@vygruppen/spor-design-tokens` - Design tokens for React, React Native and Elm
 - `@vygruppen/spor-icon` - All SVG icons
-
-There are others as well, but most of them are meant for internal consumption.
+- `@vygruppen/spor-icon-react` - All SVG icons as React components
+- `@vygruppen/spor-icon-react-native` - All SVG icons as React components
+- `@vygruppen/spor-loader` - All Lottie loading animation data
 
 ## Documentation and demos
 
@@ -52,7 +53,8 @@ root.render(
 Now, you can start importing components across your app. For instance, to use the Button component:
 
 ```tsx
-import { Button, EditOutline24Icon } from "@vygruppen/spor-react";
+import { Button } from "@vygruppen/spor-react";
+import { EditOutline24Icon } from "@vygruppen/spor-icon-react";
 
 export const App = () => {
   return (
@@ -97,25 +99,3 @@ This will start all apps and packages in development mode. You can then visit th
 
 [localhost:3000](http://localhost:3000) - The local version of the docs website
 [localhost:3333](http://localhost:3333) - The local version of the Sanity Studio
-
-## Add new package
-
-To add a new package, run the following command, and follow the wizard:
-
-```
-npm run add-package
-```
-
-Then, add a dependency in the component library.
-
-For instance, the dependency for the package `message-box` with the type react should be added to `spor-react/package.json`
-
-````diff
-    "dependencies": {
-+      "@vygruppen/spor-message-box-react": "*"
-    }
-At last, export the package in the index file. e.g `spor-react/src/index.tsx`.
-
-```tsx
-export * from "@vygruppen/spor-message-box-react";
-````

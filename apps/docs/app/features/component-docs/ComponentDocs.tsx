@@ -1,9 +1,9 @@
 import { PortableText } from "@portabletext/react";
+import { SuccessFill24Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
   Code,
   Heading,
-  SuccessFill24Icon,
   Table,
   Tbody,
   Td,
@@ -19,7 +19,7 @@ type ComponentDocsProps = {
     name: string;
     content: any[];
     props: {
-      platform: "react" | "react-native" | "react, react-native" | "elm";
+      platform: "react" | "react-native" | "react, react-native";
       type: "other" | string;
       typeOther?: string;
       name: string;

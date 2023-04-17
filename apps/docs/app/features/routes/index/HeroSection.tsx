@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react";
+import { ArrowRightFill30Icon } from "@vygruppen/spor-icon-react";
 import {
-  ArrowRightFill30Icon,
   Box,
   Button,
   Container,

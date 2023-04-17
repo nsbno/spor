@@ -1,16 +1,16 @@
 import { ListItem, OrderedList, UnorderedList } from "@chakra-ui/react";
 import {
   PortableText,
-  PortableTextComponentsProvider as SanityPortableTextComponentsProvider,
   PortableTextReactComponents,
+  PortableTextComponentsProvider as SanityPortableTextComponentsProvider,
 } from "@portabletext/react";
 import { Link } from "@remix-run/react";
+import { FavouriteOutline30Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
   Button,
   Code,
   Divider,
-  FavouriteOutline30Icon,
   Flex,
   Heading,
   Image,
@@ -20,9 +20,9 @@ import {
 } from "@vygruppen/spor-react";
 import React from "react";
 import { urlBuilder } from "~/utils/sanity/utils";
+import { ImageWithCaption } from "../Images-with-caption/ImageWithCaption";
 import { CodeBlock } from "../code-block/CodeBlock";
 import { ComponentDocs } from "../component-docs/ComponentDocs";
-import { ImageWithCaption } from "../Images-with-caption/ImageWithCaption";
 import { InteractiveCode } from "../interactive-code/InteractiveCode";
 import { LinkableHeading } from "../linkable-heading/LinkableHeading";
 

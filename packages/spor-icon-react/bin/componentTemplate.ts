@@ -15,7 +15,7 @@ ${variables.exports};
 export const componentTemplate: Config["template"] = (variables, { tpl }) => {
   return tpl`
 ${variables.imports};
-import { Box } from "@vygruppen/spor-layout-react";
+import { Box } from "@vygruppen/spor-react";
 
 ${variables.interfaces};
 

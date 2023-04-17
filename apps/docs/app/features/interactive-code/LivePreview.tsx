@@ -1,11 +1,6 @@
 import { ColorModeProvider } from "@chakra-ui/react";
-import {
-  Box,
-  BoxProps,
-  IconButton,
-  NightFill24Icon,
-  SummerFill24Icon,
-} from "@vygruppen/spor-react";
+import { NightFill24Icon, SummerFill24Icon } from "@vygruppen/spor-icon-react";
+import { Box, BoxProps, IconButton } from "@vygruppen/spor-react";
 import { useState } from "react";
 import { LivePreview as ReactLivePreview } from "react-live";
 

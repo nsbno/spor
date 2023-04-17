@@ -11,5 +11,6 @@ module.exports = {
   watchPaths: ["../../packages/*/dist/index.mjs"],
   future: {
     v2_normalizeFormMethod: true,
+    v2_routeConvention: true,
   },
 };

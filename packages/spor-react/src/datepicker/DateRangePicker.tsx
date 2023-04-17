@@ -32,7 +32,9 @@ import { useCurrentLocale } from "./utils";
 type DateRangePickerProps = AriaDateRangePickerProps<DateValue> &
   Pick<BoxProps, "minHeight"> & {
     startLabel?: string;
+    startName?: string;
     endLabel?: string;
+    endName?: string;
     variant: ResponsiveValue<"simple" | "with-trigger">;
   };
 /**
@@ -41,12 +43,14 @@ type DateRangePickerProps = AriaDateRangePickerProps<DateValue> &
  * There are two versions of this component – a simple one, and one with a trigger button for showing the calendar. Use whatever fits your design.
  *
  * ```tsx
- * <DateRangePicker startLabel="From" endLabel="To" variant="simple" />
+ * <DateRangePicker startLabel="From" startName="from" endLabel="To" endName="to" variant="simple" />
  * ```
  */
 export function DateRangePicker({
   variant,
   minHeight,
+  startName,
+  endName,
   ...props
 }: DateRangePickerProps) {
   const formControlProps = useFormControlContext();
@@ -128,6 +132,7 @@ export function DateRangePicker({
                 )}
                 <DateField
                   {...startFieldProps}
+                  name={startName}
                   label={props.startLabel}
                   labelProps={labelProps}
                 />
@@ -136,6 +141,7 @@ export function DateRangePicker({
                 </Box>
                 <DateField
                   {...endFieldProps}
+                  name={endName}
                   label={props.endLabel}
                   labelProps={labelProps}
                 />

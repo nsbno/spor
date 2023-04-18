@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 2.0.1
+
+### Patch Changes
+
+- 6b3cdd17: Add `startName` and `endName` props to `DateRangePicker` component
+
 ## 2.0.0
 
 ### Major Changes

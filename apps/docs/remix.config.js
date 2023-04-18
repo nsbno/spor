@@ -5,8 +5,14 @@ module.exports = {
   appDirectory: "app",
   assetsBuildDirectory: "public/build",
   publicPath: "/build/",
-  serverBuildDirectory: "build",
+  serverBuildPath: "build/index.js",
   devServerPort: 8002,
   ignoredRouteFiles: [".*"],
   watchPaths: ["../../packages/*/dist/index.mjs"],
+  future: {
+    v2_normalizeFormMethod: true,
+    v2_routeConvention: true,
+    v2_errorBoundary: true,
+    v2_meta: true,
+  },
 };

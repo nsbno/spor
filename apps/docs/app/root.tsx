@@ -1,56 +1,72 @@
 import { ColorModeScript } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
-import { json, LinksFunction, MetaFunction } from "@remix-run/node";
+import { json, LinksFunction } from "@remix-run/node";
 import {
+  isRouteErrorResponse,
   Links,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-  useCatch,
+  useRouteError,
+  V2_MetaFunction,
 } from "@remix-run/react";
-import { Box, Button, Center, Text } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect } from "react";
+import { RootLayout } from "./root/layout/RootLayout";
+import { SkipToContent } from "./root/layout/SkipToContent";
+import { PageNotFound } from "./root/PageNotFound";
 import {
   ClientStyleContext,
   ServerStyleContext,
-} from "./features/chakra-setup/styleContext";
-import { RootErrorBoundary } from "./features/error-boundary/RootErrorBoundary";
-import { FontPreloading } from "./features/font-loading/FontPreloading";
-import { BaseLayout } from "./features/layouts/base-layout/BaseLayout";
-import { RootProviders } from "./features/root-providers/RootProviders";
-import { NotFound } from "./features/routes/ressurser/ikoner/NotFound";
-import { SkipToContent } from "./features/skip-to-content/SkipToContent";
+} from "./root/setup/chakra-setup/styleContext";
+import { RootErrorBoundary } from "./root/setup/error-boundary/RootErrorBoundary";
+import { FontPreloading } from "./root/setup/font-loading/FontPreloading";
+import { RootProviders } from "./root/setup/RootProviders";
 import {
   getInitialSanityData,
   InitialSanityData,
 } from "./utils/initialSanityData.server";
 import { urlBuilder } from "./utils/sanity/utils";
 
-export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
+export const meta: V2_MetaFunction = ({ data }: { data: LoaderData }) => {
   if (!data || !data.initialSanityData) {
-    return {};
+    return [];
   }
   const { title, description, keywords, socialImage } =
     data.initialSanityData.siteSettings;
 
-  const imageMetaTags = socialImage
-    ? {
-        "og:image": urlBuilder.image(socialImage).width(1200).url(),
-        "og:image:width": "1200",
-        "og:image:height": "600",
-      }
-    : {};
-  return {
-    title,
-    description,
-    keywords: keywords.join(", "),
-    "og:title": title,
-    "og:description": description,
-    ...imageMetaTags,
-    "twitter:card": "summary",
-  };
+  const meta = [
+    { title },
+    { name: "description", content: description },
+    { name: "keywords", content: keywords.join(", ") },
+    { name: "og:title", content: title },
+    { name: "og:description", content: description },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+  ];
+
+  if (socialImage) {
+    meta.push({
+      name: "og:image",
+      content: urlBuilder.image(socialImage).width(1200).url(),
+    });
+    meta.push({
+      name: "og:image:width",
+      content: "1200",
+    });
+    meta.push({
+      name: "og:image:height",
+      content: "600",
+    });
+    meta.push({ name: "twitter:card", content: "summary_large_image" });
+    meta.push({
+      name: "twitter:image",
+      content: urlBuilder.image(socialImage).width(1200).url(),
+    });
+  }
+
+  return meta;
 };
 
 export const links: LinksFunction = () => {
@@ -77,45 +93,20 @@ export const loader = async () => {
 /**
  * The error boundary shown if no other error boundary catches the error.
  */
-export function ErrorBoundary({ error }: { error: Error }) {
+export function ErrorBoundary() {
+  const error = useRouteError();
+  if (isRouteErrorResponse(error) && error.status === 404) {
+    return (
+      <Document title="Fant ikke siden!">
+        <RootLayout>
+          <PageNotFound />
+        </RootLayout>
+      </Document>
+    );
+  }
   return (
     <Document title="Error!">
       <RootErrorBoundary error={error} />
-    </Document>
-  );
-}
-
-/**
- * Catches HTTP errors
- */
-export function CatchBoundary() {
-  let caught = useCatch();
-
-  let message;
-  switch (caught.status) {
-    case 404:
-      message = (
-        <Box>
-          <NotFound mx="auto" mb={2} />
-          <Text textStyle="sm" mb={4}>
-            Ups! Det ser ut som du prøvde å besøke en side som ikke finnes.
-          </Text>
-          <Button as="a" href="/" variant="primary">
-            Tilbake til forsiden
-          </Button>
-        </Box>
-      );
-      break;
-
-    default:
-      throw new Error(caught.data || caught.statusText);
-  }
-
-  return (
-    <Document title={`${caught.status} - ${caught.statusText}`}>
-      <Center minHeight="100vh">
-        <Box textAlign="center">{message}</Box>
-      </Center>
     </Document>
   );
 }
@@ -179,9 +170,9 @@ const Document = withEmotionCache(
 export default function App() {
   return (
     <Document>
-      <BaseLayout>
+      <RootLayout>
         <Outlet />
-      </BaseLayout>
+      </RootLayout>
     </Document>
   );
 }

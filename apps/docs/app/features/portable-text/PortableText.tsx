@@ -20,11 +20,11 @@ import {
 } from "@vygruppen/spor-react";
 import React from "react";
 import { urlBuilder } from "~/utils/sanity/utils";
-import { ImageWithCaption } from "../Images-with-caption/ImageWithCaption";
-import { CodeBlock } from "../code-block/CodeBlock";
-import { ComponentDocs } from "../component-docs/ComponentDocs";
-import { InteractiveCode } from "../interactive-code/InteractiveCode";
-import { LinkableHeading } from "../linkable-heading/LinkableHeading";
+import { ComponentDocs } from "../../routes/_base.$category.$slug/component-docs/ComponentDocs";
+import { ImageWithCaption } from "./ImageWithCaption";
+import { LinkableHeading } from "./LinkableHeading";
+import { CodeBlock } from "./code-block/CodeBlock";
+import { InteractiveCode } from "./interactive-code/InteractiveCode";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {

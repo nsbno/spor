@@ -2,8 +2,8 @@ import { CacheProvider } from "@emotion/react";
 import { RemixBrowser } from "@remix-run/react";
 import { useState } from "react";
 import { hydrateRoot } from "react-dom/client";
-import { createEmotionCache } from "./features/chakra-setup/createEmotionCache";
-import { ClientStyleContext } from "./features/chakra-setup/styleContext";
+import { createEmotionCache } from "./root/setup/chakra-setup/createEmotionCache";
+import { ClientStyleContext } from "./root/setup/chakra-setup/styleContext";
 
 type ClientCacheProviderProps = {
   children: React.ReactNode;

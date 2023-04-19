@@ -124,7 +124,6 @@ export const TimePicker = ({
       variant="simple"
       width="fit-content"
       paddingX={2}
-      paddingY={1}
       alignItems="center"
       justifyContent="space-between"
       gap={2}

@@ -25,7 +25,6 @@ const config = helpers.defineMultiStyleConfig({
       display: "flex",
       flex: 1,
       paddingY: 0.5,
-      minHeight: 64,
       alignItems: "center",
       _hover: {
         boxShadow: getBoxShadowString({

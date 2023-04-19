@@ -29,6 +29,7 @@ const config = helpers.defineMultiStyleConfig({
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
+      fontSize: "mobile.md",
       boxShadow: getBoxShadowString({
         borderColor: mode(
           colors.blackAlpha[400],

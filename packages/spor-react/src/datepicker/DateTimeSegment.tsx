@@ -31,6 +31,7 @@ export const DateTimeSegment = ({ segment, state }: DateTimeSegmentProps) => {
       textAlign="end"
       outline="none"
       borderRadius="xs"
+      fontSize="mobile.md"
       color={
         segment.isPlaceholder
           ? "dimGrey"

@@ -29,7 +29,7 @@ const config = helpers.defineMultiStyleConfig({
     field: {
       ...Input.baseStyle!(props).field,
       appearance: "none",
-      pt: "16px",
+      paddingTop: "16px",
       "option, optgroup": {
         background: "white",
       },

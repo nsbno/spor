@@ -3,6 +3,7 @@ import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
+import { mode } from "@chakra-ui/theme-tools";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -13,14 +14,14 @@ const config = helpers.defineMultiStyleConfig({
       width: "100%",
       outline: "none",
       border: 0,
-      backgroundColor: "white",
+      backgroundColor: mode("white", "darkGrey")(props),
       borderRadius: "sm",
       transitionProperty: "common",
       transitionDuration: "fast",
       position: "relative",
       px: 3,
       height: "54px",
-      fontSize: "18px",
+      fontSize: "mobile.md",
 
       boxShadow: getBoxShadowString({ borderColor: colors.blackAlpha[400] }),
       _hover: {
@@ -84,7 +85,7 @@ const config = helpers.defineMultiStyleConfig({
       "&:not(:placeholder-shown)": {
         pt: "16px",
         "& + label": {
-          transform: "scale(0.825) translateY(-10px)",  
+          transform: "scale(0.825) translateY(-10px)",
         },
       },
     },

@@ -1,5 +1,5 @@
 import { As, forwardRef, useControllableState } from "@chakra-ui/react";
-import React from "react";
+import React, { Suspense } from "react";
 import { InfoSelect, Input, SelectItem, createTexts, useTranslation } from "..";
 import { AttachedInputs } from "./AttachedInputs";
 
@@ -45,20 +45,31 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
     });
     return (
       <AttachedInputs>
-        <InfoSelect
-          items={countryCodes}
-          label={t(texts.countryCode)}
-          isLabelSrOnly={true}
-          value={value.countryCode}
-          onChange={(countryCode) =>
-            onChange({
-              countryCode: countryCode as string,
-              phoneNumber: value.phoneNumber,
-            })
+        <Suspense
+          fallback={
+            <InfoSelect
+              isLabelSrOnly
+              label=""
+              width="6.25rem"
+              height="100%"
+              value="+47"
+            >
+              <SelectItem key="+47">+47</SelectItem>
+            </InfoSelect>
           }
         >
-          {(item) => <SelectItem key={item.key}>{item.value}</SelectItem>}
-        </InfoSelect>
+          <LazyCountryCodeSelect
+            value={value.countryCode}
+            onChange={(countryCode) =>
+              onChange({
+                countryCode: countryCode as string,
+                phoneNumber: value.phoneNumber,
+              })
+            }
+            height="100%"
+            width="6.25rem"
+          />
+        </Suspense>
         <Input
           ref={ref}
           label={t(texts.phoneNumber)}
@@ -69,6 +80,8 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
               phoneNumber: e.target.value,
             })
           }
+          position="relative"
+          left="-1px" // Makes the borders overlap
         />
       </AttachedInputs>
     );
@@ -76,12 +89,6 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
 );
 
 const texts = createTexts({
-  countryCode: {
-    nb: "Landkode",
-    nn: "Landskode",
-    en: "Country code",
-    sv: "Landskod",
-  },
   phoneNumber: {
     nb: "Telefonnummer",
     nn: "Telefonnummer",
@@ -90,8 +97,4 @@ const texts = createTexts({
   },
 });
 
-const countryCodes = new Array(100)
-  .fill(null)
-  .map((_, i) => ({ key: `+${i + 1}`, value: `+${i + 1}` }))
-  .filter((item) => item.key !== "+47");
-countryCodes.unshift({ key: "+47", value: "+47" });
+const LazyCountryCodeSelect = React.lazy(() => import("./CountryCodeSelect"));

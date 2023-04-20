@@ -14,6 +14,7 @@ export * from "./InputElement";
 export * from "./ListBox";
 export * from "./NativeSelect";
 export * from "./PasswordInput";
+export * from "./PhoneNumberInput";
 export * from "./Radio";
 export * from "./RadioGroup";
 export * from "./SearchInput";

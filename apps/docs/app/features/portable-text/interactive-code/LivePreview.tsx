@@ -15,7 +15,8 @@ export const LivePreview = (props: BoxProps) => {
         backgroundColor={isDarkMode ? "darkGrey" : "white"}
         color={isDarkMode ? "white" : "darkGrey"}
         transition="all .1s ease-out"
-        p={4}
+        padding={4}
+        paddingRight={8}
         position="relative"
         {...props}
       >

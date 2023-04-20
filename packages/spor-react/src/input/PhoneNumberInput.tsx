@@ -41,7 +41,10 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
     const [value, onChange] = useControllableState({
       value: props.value,
       onChange: props.onChange,
-      defaultValue: { countryCode: "+47", phoneNumber: "" },
+      defaultValue: {
+        countryCode: "+47",
+        phoneNumber: "",
+      },
     });
     return (
       <AttachedInputs>

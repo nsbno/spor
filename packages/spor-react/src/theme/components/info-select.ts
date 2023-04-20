@@ -1,7 +1,6 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
-import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
 import { srOnly } from "../utils/sr-utils";
@@ -33,14 +32,11 @@ const config = helpers.defineMultiStyleConfig({
       alignItems: "center",
       fontSize: "mobile.md",
       boxShadow: getBoxShadowString({
-        borderColor: mode(
-          colors.blackAlpha[400],
-          colors.whiteAlpha[400]
-        )(props),
+        borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
       }),
       _hover: {
         boxShadow: getBoxShadowString({
-          borderColor: "darkGrey",
+          borderColor: mode("darkGrey", "whiteAlpha.600")(props),
           borderWidth: 2,
         }),
       },
@@ -53,7 +49,9 @@ const config = helpers.defineMultiStyleConfig({
           outline: "none",
         },
         notFocus: {
-          boxShadow: getBoxShadowString({ borderColor: "darkGrey" }),
+          boxShadow: getBoxShadowString({
+            borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
+          }),
         },
       }),
       _disabled: {

@@ -2,6 +2,7 @@ import {
   Box,
   chakra,
   ResponsiveValue,
+  useFormControlProps,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import {
@@ -15,7 +16,7 @@ import { createTexts, useTranslation } from "../";
 import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
 
-type InfoSelectProps = {
+type InfoSelectProps<T> = {
   /**
    * Either a render function accepting an item, and returning a <SelectItem />,
    * or a list of <SelectItem />s.
@@ -43,7 +44,7 @@ type InfoSelectProps = {
    * </Select>
    * ```
    **/
-  children: any;
+  children: React.ReactNode | ((item: T) => React.ReactNode);
   /**
    * The items to render
    *
@@ -57,7 +58,7 @@ type InfoSelectProps = {
    * </Select>
    * ```
    */
-  items: any[];
+  items?: T[];
   /** Callback for when something is selected */
   onChange?: (value: string | number) => void;
   value?: string | number;
@@ -74,6 +75,12 @@ type InfoSelectProps = {
   onOpenChange?: (isOpen: boolean) => void;
   /** The label describing the choice */
   label: string;
+  /** Hide the label visually
+   *
+   * Should be used sparingly, as it makes the component less accessible.
+   * Useful for the label is obvious, like a phone number country code select.
+   */
+  isLabelSrOnly?: boolean;
   /** The name of the select element */
   name?: string;
   /**
@@ -87,6 +94,11 @@ type InfoSelectProps = {
    * Defaults to the width of the selected content
    */
   width?: ResponsiveValue<string | number>;
+  /** The height of the select box.
+   *
+   * Defaults to "auto"
+   */
+  height?: ResponsiveValue<string | number>;
   isDisabled?: boolean;
   /** A list of disabled keys.
    *
@@ -99,6 +111,8 @@ type InfoSelectProps = {
    * ```
    **/
   disabledKeys?: string[];
+  /** Whether or not the input is invalid */
+  "aria-invalid"?: boolean;
 };
 /**
  * A styled select component.
@@ -135,21 +149,23 @@ type InfoSelectProps = {
  *
  * @see https://spor.vy.no/komponenter/info-select
  */
-export const InfoSelect = ({
+export function InfoSelect<T extends { key: string }>({
   placeholder,
   width = "100%",
+  height = "auto",
   onChange,
   value,
+  isLabelSrOnly,
   defaultValue,
   ...props
-}: InfoSelectProps) => {
+}: InfoSelectProps<T>) {
   const renamedProps = {
     onSelectionChange: onChange,
     selectedKey: value,
     defaultSelectedKey: defaultValue,
     ...props,
   };
-  const state = useSelectState(renamedProps);
+  const state = useSelectState(renamedProps as any);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const { labelProps, triggerProps, valueProps, menuProps } = useSelect(
     renamedProps,
@@ -157,9 +173,13 @@ export const InfoSelect = ({
     triggerRef
   );
 
-  const styles = useMultiStyleConfig("InfoSelect", { isOpen: state.isOpen });
+  const styles = useMultiStyleConfig("InfoSelect", {
+    isOpen: state.isOpen,
+    isLabelSrOnly,
+  });
   const { buttonProps } = useButton(triggerProps, triggerRef);
   const { t } = useTranslation();
+  const formControl = useFormControlProps(props);
 
   return (
     <Box sx={styles.container}>
@@ -179,6 +199,10 @@ export const InfoSelect = ({
         sx={styles.button}
         {...buttonProps}
         width={width}
+        height={height}
+        data-attachable
+        aria-invalid={formControl.isInvalid}
+        aria-describedby={formControl["aria-describedby"]}
       >
         <Box {...valueProps}>
           {state.selectedItem
@@ -192,12 +216,16 @@ export const InfoSelect = ({
 
       {state.isOpen && (
         <Popover state={state} triggerRef={triggerRef}>
-          <ListBox listBoxOptions={menuProps} state={state} borderBottomRadius="sm" />
+          <ListBox
+            listBoxOptions={menuProps}
+            state={state}
+            borderBottomRadius="sm"
+          />
         </Popover>
       )}
     </Box>
   );
-};
+}
 
 const texts = createTexts({
   selectAnOption: {

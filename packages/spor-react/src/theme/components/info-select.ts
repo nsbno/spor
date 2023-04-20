@@ -4,6 +4,7 @@ import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
+import { srOnly } from "../utils/sr-utils";
 
 const parts = anatomy("InfoSelect").parts(
   "container",
@@ -19,6 +20,7 @@ const config = helpers.defineMultiStyleConfig({
     container: {},
     label: {
       position: "relative",
+      ...(props.isLabelSrOnly ? srOnly : {}),
     },
     button: {
       appearance: "none",

@@ -1,4 +1,9 @@
-import { As, forwardRef, useControllableState } from "@chakra-ui/react";
+import {
+  As,
+  BoxProps,
+  forwardRef,
+  useControllableState,
+} from "@chakra-ui/react";
 import React, { Suspense } from "react";
 import { InfoSelect, Input, SelectItem, createTexts, useTranslation } from "..";
 import { AttachedInputs } from "./AttachedInputs";
@@ -7,7 +12,7 @@ type CountryCodeAndPhoneNumber = {
   countryCode: string;
   phoneNumber: string;
 };
-type PhoneNumberInputProps = {
+type PhoneNumberInputProps = BoxProps & {
   /** The root name.
    *
    * Please note that when specifying the name, the rendered names will be `${name}-country-code` and `${name}-phone-number`, respectively
@@ -36,18 +41,21 @@ type PhoneNumberInputProps = {
  * ```
  */
 export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
-  ({ name, ...props }, ref) => {
+  (
+    { name, value: externalValue, onChange: externalOnChange, ...boxProps },
+    ref
+  ) => {
     const { t } = useTranslation();
     const [value, onChange] = useControllableState({
-      value: props.value,
-      onChange: props.onChange,
+      value: externalValue,
+      onChange: externalOnChange,
       defaultValue: {
         countryCode: "+47",
         phoneNumber: "",
       },
     });
     return (
-      <AttachedInputs>
+      <AttachedInputs {...boxProps}>
         <Suspense
           fallback={
             <InfoSelect
@@ -69,7 +77,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
                 phoneNumber: value.phoneNumber,
               })
             }
-            name={props.name ? `${props.name}-country-code` : "country-code"}
+            name={name ? `${name}-country-code` : "country-code"}
             height="100%"
             width="6.25rem"
           />
@@ -78,7 +86,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
           ref={ref}
           label={t(texts.phoneNumber)}
           value={value.phoneNumber}
-          name={props.name ? `${props.name}-phone-number` : "phone-number"}
+          name={name ? `${name}-phone-number` : "phone-number"}
           onChange={(e) =>
             onChange({
               countryCode: value.countryCode,

@@ -110,6 +110,7 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
           sx={styles.trigger}
           {...buttonProps}
           width={width}
+          data-attachable
         >
           <Flex gap={1.5} alignItems="center">
             {icon}

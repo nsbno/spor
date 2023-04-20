@@ -51,6 +51,7 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
           }}
           ref={ref}
           placeholder=" " // This is needed to make the label work as expected
+          data-attachable
         />
         <FormLabel htmlFor={inputId} pointerEvents="none">
           {label ?? t(texts.label)}

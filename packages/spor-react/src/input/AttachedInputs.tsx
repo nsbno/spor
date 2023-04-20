@@ -20,21 +20,34 @@ export const AttachedInputs = ({
 }: AttachedInputsProps) => {
   const attachedStyles = {
     horizontal: {
-      "> *:first-of-type:not(:last-of-type)": { borderEndRadius: 0 },
-      "> *:not(:first-of-type):not(:last-of-type)": { borderRadius: 0 },
-      "> *:not(:first-of-type):last-of-type": { borderStartRadius: 0 },
+      "> *:first-of-type:not(:last-of-type) [data-attachable]": {
+        borderEndRadius: 0,
+      },
+      "> *:not(:first-of-type):not(:last-of-type) [data-attachable]": {
+        borderRadius: 0,
+      },
+      "> *:not(:first-of-type):last-of-type [data-attachable]": {
+        borderStartRadius: 0,
+      },
     },
     vertical: {
-      "> *:first-of-type:not(:last-of-type)": { borderBottomRadius: 0 },
-      "> *:not(:first-of-type):not(:last-of-type)": { borderRadius: 0 },
-      "> *:not(:first-of-type):last-of-type": { borderTopRadius: 0 },
+      "> *:first-of-type:not(:last-of-type) [data-attachable]": {
+        borderBottomRadius: 0,
+      },
+      "> *:not(:first-of-type):not(:last-of-type) [data-attachable]": {
+        borderRadius: 0,
+      },
+      "> *:not(:first-of-type):last-of-type [data-attachable]": {
+        borderTopRadius: 0,
+      },
     },
   };
   const direction = flexDirection === "row" ? "horizontal" : "vertical";
   return (
     <Flex
       role="group"
-      css={attachedStyles[direction]}
+      __css={attachedStyles[direction]}
+      display="flex"
       flexDirection={flexDirection}
       {...rest}
     />

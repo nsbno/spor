@@ -1,11 +1,11 @@
 import {
-  FormLabel,
-  forwardRef,
   Input as ChakraInput,
+  InputProps as ChakraInputProps,
+  FormLabel,
   InputGroup,
   InputLeftElement,
-  InputProps as ChakraInputProps,
   InputRightElement,
+  forwardRef,
   useFormControlContext,
 } from "@chakra-ui/react";
 import React, { useId } from "react";
@@ -42,8 +42,9 @@ export const Input = forwardRef<InputProps, "input">(
       <InputGroup position="relative">
         {leftIcon && <InputLeftElement>{leftIcon}</InputLeftElement>}
         <ChakraInput
-          pl={leftIcon ? 7 : undefined}
-          pr={rightIcon ? 7 : undefined}
+          data-attachable
+          paddingLeft={leftIcon ? 7 : undefined}
+          paddingRight={rightIcon ? 7 : undefined}
           {...props}
           id={inputId}
           ref={ref}

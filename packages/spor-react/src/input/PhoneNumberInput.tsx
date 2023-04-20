@@ -31,12 +31,12 @@ type PhoneNumberInputProps = {
  * ```tsx
  * <PhoneNumberInput
  *   value={{ countryCode: '+47', phoneNumber: '81549300' }}
- * onChange={handleChange}
+ *   onChange={handleChange}
  * />
  * ```
  */
 export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
-  (props, ref) => {
+  ({ name, ...props }, ref) => {
     const { t } = useTranslation();
     const [value, onChange] = useControllableState({
       value: props.value,
@@ -69,6 +69,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
                 phoneNumber: value.phoneNumber,
               })
             }
+            name={props.name ? `${props.name}-country-code` : "country-code"}
             height="100%"
             width="6.25rem"
           />
@@ -77,6 +78,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
           ref={ref}
           label={t(texts.phoneNumber)}
           value={value.phoneNumber}
+          name={props.name ? `${props.name}-phone-number` : "phone-number"}
           onChange={(e) =>
             onChange({
               countryCode: value.countryCode,

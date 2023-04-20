@@ -21,6 +21,7 @@ callingCodes.unshift({ key: "+47", value: "+47" }); // Norway
 type CountryCodeSelectProps = {
   value: string;
   onChange: (value: string | number) => void;
+  name: string;
   width?: BoxProps["width"];
   height?: BoxProps["height"];
 };

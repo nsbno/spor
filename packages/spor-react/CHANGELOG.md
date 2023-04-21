@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 2.1.1
+
+### Patch Changes
+
+- 0559a3f9: Fix broken dependency
+
 ## 2.1.0
 
 ### Minor Changes

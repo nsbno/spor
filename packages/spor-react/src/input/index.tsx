@@ -1,5 +1,6 @@
 export { FormHelperText, InputGroup } from "@chakra-ui/react";
 export type { InputGroupProps } from "@chakra-ui/react";
+export * from "./AttachedInputs";
 export * from "./CardSelect";
 export * from "./Checkbox";
 export * from "./CheckboxGroup";
@@ -13,6 +14,7 @@ export * from "./InputElement";
 export * from "./ListBox";
 export * from "./NativeSelect";
 export * from "./PasswordInput";
+export * from "./PhoneNumberInput";
 export * from "./Radio";
 export * from "./RadioGroup";
 export * from "./SearchInput";

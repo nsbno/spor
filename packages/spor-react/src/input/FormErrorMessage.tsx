@@ -1,7 +1,7 @@
 import { Box, BoxProps, useFormControlContext } from "@chakra-ui/react";
 import React from "react";
 
-export type FormErrorMessageProps = {
+export type FormErrorMessageProps = BoxProps & {
   /**
    * The error message itself.
    */
@@ -32,7 +32,10 @@ export type FormErrorMessageProps = {
  *
  * @see https://spor.vy.no/komponenter/skjemaelementer
  */
-export const FormErrorMessage = ({ children }: FormErrorMessageProps) => {
+export const FormErrorMessage = ({
+  children,
+  ...boxProps
+}: FormErrorMessageProps) => {
   const formControlContext = useFormControlContext();
   if (!formControlContext) {
     throw new Error(
@@ -60,6 +63,7 @@ export const FormErrorMessage = ({ children }: FormErrorMessageProps) => {
         zIndex="popover"
         maxWidth="50ch"
         {...errorMessageProps}
+        {...boxProps}
       >
         <Arrow position="absolute" top="-0.25em" left="1em" />
         {children}

@@ -30,7 +30,12 @@ export const NativeSelect = forwardRef<NativeSelectProps, "select">(
     const styles = useMultiStyleConfig("Select", props);
     return (
       <FormControl>
-        <ChakraSelect {...props} rootProps={{ __css: styles.root }} ref={ref} />
+        <ChakraSelect
+          data-attachable
+          {...props}
+          rootProps={{ __css: styles.root }}
+          ref={ref}
+        />
         {label && <FormLabel>{label}</FormLabel>}
       </FormControl>
     );

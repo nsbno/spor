@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@changesets/cli": "^2.19.0",
+    "awesome-phonenumber": "^5.5.0",
     "patch-package": "^6.4.7",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",

@@ -34,6 +34,7 @@ export const PasswordInput = forwardRef<PasswordInputProps, "input">(
           paddingRight={10}
           paddingLeft={leftIcon ? 7 : undefined}
           ref={ref}
+          data-attachable
         />
         <FormLabel htmlFor={inputId} pointerEvents="none">
           {label}

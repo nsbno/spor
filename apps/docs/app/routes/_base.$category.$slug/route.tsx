@@ -76,6 +76,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
     title,
     "slug": slug.current,
     introduction,
+    mainImage,
     category->{
       title,
       "slug": slug.current

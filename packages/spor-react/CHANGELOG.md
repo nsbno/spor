@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 2.1.0
+
+### Minor Changes
+
+- 29ace9be: Add new components – PhoneNumberInput and AttachedInputs
+
+### Patch Changes
+
+- 08cf2ccc: Set the correct text size on all inputs and selects
+- Updated dependencies [f48edb9f]
+  - @vygruppen/spor-icon-react@3.0.0
+
 ## 2.0.1
 
 ### Patch Changes

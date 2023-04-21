@@ -1,7 +1,7 @@
 import { Flex, useMultiStyleConfig } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
-import { Box } from "@vygruppen/spor-layout-react";
 import React from "react";
+import { Box } from "..";
 import { useStepper } from "./StepperContext";
 
 type StepperStepProps = {

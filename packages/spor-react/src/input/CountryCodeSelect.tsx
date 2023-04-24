@@ -9,14 +9,22 @@ import {
 
 import { getSupportedCallingCodes } from "awesome-phonenumber";
 
-const callingCodes = getSupportedCallingCodes()
+const prioritizedCountryCodes = [
+  { key: "+47", value: "+47" },
+  { key: "+46", value: "+46" },
+  { key: "+45", value: "+45" },
+];
+
+const sortedCallingCodes = getSupportedCallingCodes()
   .sort((a, b) => Number(a) - Number(b))
   .map((code) => ({
     key: `+${code}`,
     value: `+${code}`,
   }))
-  .filter((code) => code.key !== "+47"); // We're adding Norway to the top
-callingCodes.unshift({ key: "+47", value: "+47" }); // Norway
+  .filter(
+    (code) => !prioritizedCountryCodes.some((pCode) => pCode.key === code.key)
+  );
+const callingCodes = [...prioritizedCountryCodes, ...sortedCallingCodes];
 
 type CountryCodeSelectProps = {
   value: string;

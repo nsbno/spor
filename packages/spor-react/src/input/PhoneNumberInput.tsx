@@ -10,7 +10,7 @@ import { AttachedInputs } from "./AttachedInputs";
 
 type CountryCodeAndPhoneNumber = {
   countryCode: string;
-  phoneNumber: string;
+  nationalNumber: string;
 };
 type PhoneNumberInputProps = BoxProps & {
   /** The root name.
@@ -51,7 +51,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
       onChange: externalOnChange,
       defaultValue: {
         countryCode: "+47",
-        phoneNumber: "",
+        nationalNumber: "",
       },
     });
     return (
@@ -74,7 +74,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
             onChange={(countryCode) =>
               onChange({
                 countryCode: countryCode as string,
-                phoneNumber: value.phoneNumber,
+                nationalNumber: value.nationalNumber,
               })
             }
             name={name ? `${name}-country-code` : "country-code"}
@@ -85,12 +85,12 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
         <Input
           ref={ref}
           label={t(texts.phoneNumber)}
-          value={value.phoneNumber}
+          value={value.nationalNumber}
           name={name ? `${name}-phone-number` : "phone-number"}
           onChange={(e) =>
             onChange({
               countryCode: value.countryCode,
-              phoneNumber: e.target.value,
+              nationalNumber: e.target.value,
             })
           }
           position="relative"

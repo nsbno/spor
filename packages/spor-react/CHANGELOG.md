@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 2.1.2
+
+### Patch Changes
+
+- e405193d: Address some feedback from real life usage
+
 ## 2.1.1
 
 ### Patch Changes

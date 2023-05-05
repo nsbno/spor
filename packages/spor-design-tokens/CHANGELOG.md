@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.1
+
+### Patch Changes
+
+- a520757b: Change the amount of blur on the smallest shadow token to be in line with what's in Figma
+
 ## 3.1.0
 
 ### Minor Changes

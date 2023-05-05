@@ -1,5 +1,26 @@
 # @vygruppen/spor-react
 
+## 2.2.0
+
+### Minor Changes
+
+- 5bd65c9e: Export some new transition components from Chakra
+
+  This change adds the following components:
+
+  - Fade
+  - ScaleFade
+  - Slide
+  - SldeFade
+  - Collapse
+
+### Patch Changes
+
+- Updated dependencies [fb1b899e]
+- Updated dependencies [a520757b]
+  - @vygruppen/spor-icon-react@3.1.0
+  - @vygruppen/spor-design-tokens@3.1.1
+
 ## 2.1.2
 
 ### Patch Changes

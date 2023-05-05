@@ -22,5 +22,6 @@ export * from "./tab";
 export * from "./table";
 export * from "./theme";
 export * from "./toast";
+export * from "./transition";
 export * from "./typography";
 export * from "./util";

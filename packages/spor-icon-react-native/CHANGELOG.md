@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.1.0
+
+### Minor Changes
+
+- fb1b899e: add new town icon
+
 ## 2.0.0
 
 ### Major Changes

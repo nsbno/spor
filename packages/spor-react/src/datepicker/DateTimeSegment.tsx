@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, useMultiStyleConfig } from "@chakra-ui/react";
 import React, { useRef } from "react";
 import { useDateSegment } from "react-aria";
 import { DateFieldState, DateSegment } from "react-stately";
@@ -18,6 +18,12 @@ export const DateTimeSegment = ({ segment, state }: DateTimeSegmentProps) => {
   const ref = useRef(null);
 
   const { segmentProps } = useDateSegment(segment, state, ref);
+
+  const styles = useMultiStyleConfig("Datepicker", {
+    isPlaceholder: segment.isPlaceholder,
+    isEditable: segment.isEditable,
+  });
+
   return (
     <Box
       {...segmentProps}
@@ -32,13 +38,7 @@ export const DateTimeSegment = ({ segment, state }: DateTimeSegmentProps) => {
       outline="none"
       borderRadius="xs"
       fontSize="mobile.md"
-      color={
-        segment.isPlaceholder
-          ? "dimGrey"
-          : segment.isEditable
-          ? "darkGrey"
-          : "osloGrey"
-      }
+      sx={styles.dateTimeSegment}
       _focus={{
         backgroundColor: "darkTeal",
         color: "white",

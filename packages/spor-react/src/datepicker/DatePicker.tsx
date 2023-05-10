@@ -11,6 +11,7 @@ import {
   ResponsiveValue,
   useBreakpointValue,
   useFormControlContext,
+  useMultiStyleConfig,
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
 import { useDatePickerState } from "@react-stately/datepicker";
@@ -87,6 +88,8 @@ export function DatePicker({
 
   const hasTrigger = responsiveVariant === "with-trigger";
 
+  const styles = useMultiStyleConfig("Datepicker", {});
+
   return (
     <I18nProvider locale={locale}>
       <Box position="relative" display="inline-flex" flexDirection="column">
@@ -132,9 +135,9 @@ export function DatePicker({
           {state.isOpen && !props.isDisabled && (
             <Portal>
               <PopoverContent
-                backgroundColor="white"
                 color="darkGrey"
                 boxShadow="md"
+                sx={styles.calendar}
               >
                 <PopoverArrow backgroundColor="white" />
                 <PopoverBody>

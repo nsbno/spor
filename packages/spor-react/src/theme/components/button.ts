@@ -129,14 +129,14 @@ const config = defineStyleConfig({
         backgroundColor: mode("mint", colors.whiteAlpha[300])({ colorMode }),
       },
     }),
-    ghost: () => ({
+    ghost: ({colorMode}) => ({
       backgroundColor: "transparent",
-      color: "darkGrey",
+      color: mode("darkGrey", "white")({colorMode}),
       fontWeight: "normal",
       ...focusVisible({
         focus: {
           boxShadow: getBoxShadowString({
-            borderColor: "greenHaze",
+            borderColor: mode("greenHaze", "azure")({colorMode}),
             borderWidth: 2,
           }),
         },
@@ -145,13 +145,13 @@ const config = defineStyleConfig({
         },
       }),
       _hover: {
-        backgroundColor: "seaMist",
+        backgroundColor: mode("seaMist", "pine")({colorMode}),
         _disabled: {
           color: "blackAlpha.300",
         },
       },
       _active: {
-        backgroundColor: "mint",
+        backgroundColor: mode("mint", colors.whiteAlpha[300])({colorMode}),
       },
     }),
     floating: {

@@ -1,5 +1,5 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy, mode } from "@chakra-ui/theme-tools";
+import { anatomy, cssVar, mode } from "@chakra-ui/theme-tools";
 import { colors, zIndices } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
@@ -7,12 +7,15 @@ import { focusVisible } from "../utils/focus-utils";
 const parts = anatomy("datepicker").parts(
   "wrapper",
   "calendarTriggerButton",
+  "arrow",
   "calendar",
   "weekDays",
   "dateCell",
   "inputLabel",
   "dateTimeSegment"
 );
+
+const $arrowBackground = cssVar("popper-arrow-bg");
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -77,7 +80,7 @@ const config = helpers.defineMultiStyleConfig({
       backgroundColor: mode("white", "night")({ colorMode }),
       boxShadow: `${getBoxShadowString({
         borderColor: mode(colors.blackAlpha["400"], colors.whiteAlpha["400"])({colorMode}),
-      })}, inset 1px 0 0 1px ${mode("white", colors.teal["600"])({colorMode})}`, // to make the shadow colors not multiply
+      })}, inset 1px 0 0 1px ${mode("white", colors.night)({colorMode})}`, // to make the shadow colors not multiply
       width: 8,
       display: "flex",
       alignItems: "center",
@@ -92,7 +95,7 @@ const config = helpers.defineMultiStyleConfig({
         boxShadow: `${getBoxShadowString({
           borderColor: mode("darkGrey", "white")({colorMode}),
           borderWidth: 2,
-        })}, inset 2px 0 0 2px ${mode("white", colors.teal["600"])({colorMode})}`,
+        })}, inset 2px 0 0 2px ${mode("white", colors.night)({colorMode})}`,
       },
       _active: {
         backgroundColor: mode("mint", "azure")({colorMode}),
@@ -118,6 +121,9 @@ const config = helpers.defineMultiStyleConfig({
           borderWidth: 2,
         }),
       },
+    },
+    arrow: {
+      [$arrowBackground.variable]: mode("white", colors.night)({ colorMode })
     },
     calendar: {
       backgroundColor: mode("white", "night")({ colorMode }),

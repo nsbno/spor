@@ -139,7 +139,7 @@ export function DatePicker({
                 boxShadow="md"
                 sx={styles.calendar}
               >
-                <PopoverArrow backgroundColor="white" />
+                <PopoverArrow sx={styles.arrow} />
                 <PopoverBody>
                   <Calendar
                     {...calendarProps}

@@ -84,15 +84,18 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
         </Suspense>
         <Input
           ref={ref}
+          type="tel"
           label={t(texts.phoneNumber)}
           value={value.nationalNumber}
           name={name ? `${name}-phone-number` : "phone-number"}
-          onChange={(e) =>
+          onChange={(e) => {
+            // Removes everything but numbers, spaces and dashes
+            const strippedValue = e.target.value.replace(/[^\d\s-]/g, "");
             onChange({
               countryCode: value.countryCode,
-              nationalNumber: e.target.value,
-            })
-          }
+              nationalNumber: strippedValue,
+            });
+          }}
           position="relative"
           left="-1px" // Makes the borders overlap
         />

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 2.2.1
+
+### Patch Changes
+
+- 84f2911d: Improve the phone number input by only allowing digits, spaces and hyphens
+
 ## 2.2.0
 
 ### Minor Changes

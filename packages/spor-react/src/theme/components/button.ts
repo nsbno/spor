@@ -96,14 +96,14 @@ const config = defineStyleConfig({
         backgroundColor: "lightGrey",
       },
     },
-    additional: ({ colorMode }) => ({
+    additional: (props) => ({
       backgroundColor: "transparent",
-      color: mode("darkGrey", "white")({ colorMode }),
+      color: mode("darkGrey", "white")(props),
       fontWeight: "normal",
       boxShadow: `inset 0 0 0 1px ${mode(
         colors.blackAlpha[400],
         colors.whiteAlpha[400]
-      )({ colorMode })}`,
+      )(props)}`,
       ...focusVisible({
         focus: {
           boxShadow: getBoxShadowString({
@@ -115,7 +115,7 @@ const config = defineStyleConfig({
           boxShadow: `inset 0 0 0 1px ${mode(
             colors.blackAlpha[400],
             colors.whiteAlpha[400]
-          )({ colorMode })}`,
+          )(props)}`,
         },
       }),
       _hover: {
@@ -125,18 +125,18 @@ const config = defineStyleConfig({
         boxShadow: `inset 0 0 0 1px ${mode(
           colors.blackAlpha[400],
           colors.whiteAlpha[300]
-        )({ colorMode })}`,
-        backgroundColor: mode("mint", colors.whiteAlpha[300])({ colorMode }),
+        )(props)}`,
+        backgroundColor: mode("mint", "whiteAlpha.300")(props),
       },
     }),
-    ghost: ({colorMode}) => ({
+    ghost: (props) => ({
       backgroundColor: "transparent",
-      color: mode("darkGrey", "white")({colorMode}),
+      color: mode("darkGrey", "white")(props),
       fontWeight: "normal",
       ...focusVisible({
         focus: {
           boxShadow: getBoxShadowString({
-            borderColor: mode("greenHaze", "azure")({colorMode}),
+            borderColor: mode("greenHaze", "azure")(props),
             borderWidth: 2,
           }),
         },
@@ -145,13 +145,13 @@ const config = defineStyleConfig({
         },
       }),
       _hover: {
-        backgroundColor: mode("seaMist", "pine")({colorMode}),
+        backgroundColor: mode("seaMist", "pine")(props),
         _disabled: {
           color: "blackAlpha.300",
         },
       },
       _active: {
-        backgroundColor: mode("mint", colors.whiteAlpha[300])({colorMode}),
+        backgroundColor: mode("mint", "whiteAlpha.300")(props),
       },
     }),
     floating: {

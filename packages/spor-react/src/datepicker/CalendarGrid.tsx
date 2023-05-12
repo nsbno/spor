@@ -35,15 +35,20 @@ export function CalendarGrid({ state, offset = {} }: CalendarGridProps) {
   // Get the number of weeks in the month so we can render the proper number of rows.
   const weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
   const weeksInMonthRange = new Array(weeksInMonth).fill(0).map((_, i) => i);
+  const styles = useMultiStyleConfig("Datepicker", {});
 
   return (
     <table {...gridProps}>
       <thead {...headerProps}>
         <tr>
           {weekDays[language].map((day, index) => {
-            const styles = useMultiStyleConfig("Datepicker", { index });
             return (
-              <Text as="th" key={index} sx={styles.weekDays} variant="sm">
+              <Text
+                as="th"
+                key={index}
+                sx={index < 5 ? styles.weekdays : styles.weekend}
+                variant="sm"
+              >
                 {day}
               </Text>
             );

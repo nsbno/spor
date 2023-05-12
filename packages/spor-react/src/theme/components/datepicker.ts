@@ -9,7 +9,8 @@ const parts = anatomy("datepicker").parts(
   "calendarTriggerButton",
   "arrow",
   "calendar",
-  "weekDays",
+  "weekdays",
+  "weekend",
   "dateCell",
   "inputLabel",
   "dateTimeSegment"
@@ -129,8 +130,11 @@ const config = helpers.defineMultiStyleConfig({
       backgroundColor: mode("white", "night")(props),
       color: mode("darkGrey", "white")(props)
     },
-    weekDays: {
-      color: props.index < 5 ? mode("darkGrey", "white")(props) : mode("greenHaze", "azure")(props)
+    weekdays: {
+      color: mode("darkGrey", "white")(props),
+    },
+    weekend: {
+      color: mode("greenHaze", "azure")(props),
     },
     dateCell: {
       backgroundColor: mode("white", "night")(props),

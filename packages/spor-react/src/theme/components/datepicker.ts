@@ -25,7 +25,7 @@ const config = helpers.defineMultiStyleConfig({
     wrapper: {
       backgroundColor: mode("white", "night")(props),
       boxShadow: getBoxShadowString({
-        borderColor: mode(colors.blackAlpha["400"], colors.whiteAlpha["400"])(props),
+        borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
       }),
       transitionProperty: "box-shadow",
       transitionDuration: "fast",
@@ -55,12 +55,12 @@ const config = helpers.defineMultiStyleConfig({
       _disabled: {
         pointerEvents: "none",
         boxShadow: getBoxShadowString({
-          borderColor: mode("osloGrey", colors.whiteAlpha["400"])(props),
+          borderColor: mode("osloGrey", "whiteAlpha.400")(props),
           borderWidth: 1,
         }),
         _focus: {
           boxShadow: getBoxShadowString({
-            borderColor: mode("osloGrey", colors.whiteAlpha["400"])(props),
+            borderColor: mode("osloGrey", "whiteAlpha.400")(props),
             borderWidth: 1,
           }),
         },
@@ -68,19 +68,19 @@ const config = helpers.defineMultiStyleConfig({
     },
     inputLabel: {
       fontSize: "mobile.xs",
-      color: mode("osloGrey", "white")(props),
+      color: mode("darkGrey", "white")(props),
       margin: 0,
     },
     dateTimeSegment: {
       color: mode(
         props.isPlaceholder ? "dimGrey" : props.isEditable ? "darkGrey" : "osloGrey", 
-        props.isPlaceholder ? colors.whiteAlpha["400"] : "white"
+        props.isPlaceholder ? "whiteAlpha.400" : "white"
       )(props),
     },
     calendarTriggerButton: {
       backgroundColor: mode("white", "night")(props),
       boxShadow: `${getBoxShadowString({
-        borderColor: mode(colors.blackAlpha["400"], colors.whiteAlpha["400"])(props),
+        borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
       })}, inset 1px 0 0 1px ${mode("white", colors.night)(props)}`, // to make the shadow colors not multiply
       width: 8,
       display: "flex",

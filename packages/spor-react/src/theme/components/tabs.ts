@@ -25,6 +25,7 @@ const config = helpers.defineMultiStyleConfig({
       transitionDuration: "normal",
       width: props.isFitted ? "fit-content" : "100%",
       height: "100%",
+      whiteSpace: "nowrap",
       ...getTabColorSchemeProps(props),
 
       _selected: {

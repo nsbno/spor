@@ -1,6 +1,6 @@
 import { DarkMode, forwardRef, useClipboard } from "@chakra-ui/react";
 import { Box, BoxProps, Button } from "@vygruppen/spor-react";
-import Highlight, { defaultProps, Prism } from "prism-react-renderer";
+import { Highlight, Prism } from "prism-react-renderer";
 import { useRef } from "react";
 import { theme } from "./codeTheme";
 
@@ -31,12 +31,7 @@ export const CodeBlock = ({
       {...props}
       code={code}
     >
-      <Highlight
-        {...defaultProps}
-        theme={theme}
-        code={code}
-        language={language as any}
-      >
+      <Highlight theme={theme} code={code} language={language as any}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <Box as="pre" className={className} style={style}>
             {tokens.map((line, i) => (

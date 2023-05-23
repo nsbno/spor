@@ -2,6 +2,7 @@ import {
   chakra,
   useColorModeValue,
   useControllableState,
+  useFormControl,
 } from "@chakra-ui/react";
 import React from "react";
 import {
@@ -12,6 +13,7 @@ import {
   createTexts,
   useTranslation,
 } from "..";
+import { getBoxShadowString } from "../theme/utils/box-shadow-utils";
 import { focusVisible } from "../theme/utils/focus-utils";
 
 type CounterProps = {
@@ -27,6 +29,8 @@ type CounterProps = {
   minValue?: number;
   /** Optional maximum value. Defaults to 99 */
   maxValue?: number;
+  /** Whether the counter is disabled or not */
+  isDisabled?: boolean;
 } & BoxProps;
 /** A simple counter component
  *
@@ -44,12 +48,14 @@ type CounterProps = {
  * ```
  */
 export function Counter({
-  name,
+  name: nameProp,
+  id: idProp,
   value: valueProp,
   defaultValue = 1,
   onChange: onChangeProp,
   minValue = 0,
   maxValue = 99,
+  isDisabled,
   ...boxProps
 }: CounterProps) {
   const { t } = useTranslation();
@@ -58,10 +64,9 @@ export function Counter({
     onChange: onChangeProp,
     defaultValue,
   });
+  const formControlProps = useFormControl({ id: idProp, isDisabled });
   const textColor = useColorModeValue("darkGrey", "white");
   const backgroundColor = useColorModeValue("white", "darkGrey");
-  const focusedTextColor = useColorModeValue("white", "darkGrey");
-  const focusedBackgroundColor = useColorModeValue("darkTeal", "white");
 
   return (
     <Flex alignItems="center" {...boxProps}>
@@ -70,23 +75,41 @@ export function Counter({
         aria-label={t(texts.decrementButtonAriaLabel)}
         onClick={() => onChange(value - 1)}
         visibility={value <= minValue ? "hidden" : "visible"}
+        isDisabled={formControlProps.disabled}
       />
       <chakra.input
         type="number"
-        name={name}
+        name={nameProp}
         value={value}
+        {...formControlProps}
         fontSize="sm"
         fontWeight="bold"
-        width="2ch"
-        marginX={2}
+        width="3ch"
+        marginX={1}
+        paddingX={1}
         borderRadius="xs"
         textAlign="center"
         backgroundColor={backgroundColor}
         color={textColor}
+        transition="all .1s ease-out"
+        _hover={{
+          boxShadow: getBoxShadowString({
+            borderColor: "currentColor",
+            borderWidth: 2,
+          }),
+          _disabled: {
+            boxShadow: "none",
+          },
+        }}
+        _disabled={{
+          opacity: 0.5,
+        }}
         _focus={{
           outline: "none",
-          backgroundColor: focusedBackgroundColor,
-          color: focusedTextColor,
+          boxShadow: getBoxShadowString({
+            borderColor: "primaryGreen",
+            borderWidth: 2,
+          }),
         }}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const numericInput = Number(e.target.value);
@@ -101,6 +124,7 @@ export function Counter({
         aria-label={t(texts.incrementButtonAriaLabel)}
         onClick={() => onChange(value + 1)}
         visibility={value >= maxValue ? "hidden" : "visible"}
+        isDisabled={formControlProps.disabled}
       />
     </Flex>
   );
@@ -115,6 +139,8 @@ type VerySmallButtonProps = {
   onClick: () => void;
   /** Whether or not the button is hidden */
   visibility?: "visible" | "hidden";
+  /** Whether or not the button is disabled */
+  isDisabled?: boolean;
 };
 /** Internal override for extra small icon buttons */
 const VerySmallButton = (props: VerySmallButtonProps) => {

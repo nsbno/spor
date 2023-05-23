@@ -46,6 +46,15 @@ type CounterProps = {
  * ```tsx
  * <Counter value={value} onChange={setValue} minValue={1} maxValue={10} />
  * ```
+ *
+ * You can use the Counter inside of a FormControl component to get IDs etc linked up automatically:
+ *
+ * ```tsx
+ * <FormControl>
+ *   <FormLabel>Number of adults</FormLabel>
+ *   <Counter />
+ * </FormControl>
+ * ```
  */
 export function Counter({
   name: nameProp,

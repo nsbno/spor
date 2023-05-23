@@ -124,7 +124,7 @@ const VerySmallButton = (props: VerySmallButtonProps) => {
       size="xs"
       minWidth="24px"
       minHeight="24px"
-      {...focusVisible({
+      sx={focusVisible({
         notFocus: { boxShadow: "none" },
         focus: {
           boxShadow:

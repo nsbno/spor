@@ -21,7 +21,7 @@
     "patch-package": "^6.4.7",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
-    "turbo": "^1.9.3"
+    "turbo": "^1.9.8"
   },
   "engines": {
     "npm": ">=7.0.0",

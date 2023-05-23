@@ -16,7 +16,7 @@ import {
 import { getBoxShadowString } from "../theme/utils/box-shadow-utils";
 import { focusVisible } from "../theme/utils/focus-utils";
 
-type CounterProps = {
+type NumericStepperProps = {
   /** The name of the input field */
   name?: string;
   /** The current value */
@@ -29,34 +29,34 @@ type CounterProps = {
   minValue?: number;
   /** Optional maximum value. Defaults to 99 */
   maxValue?: number;
-  /** Whether the counter is disabled or not */
+  /** Whether the stepper is disabled or not */
   isDisabled?: boolean;
 } & BoxProps;
-/** A simple counter component
+/** A simple stepper component for integer values
  *
  * Allows you to choose a given integer value, like for example the number of
  * adults on your journey.
  *
  * ```tsx
- * <Counter value={value} onChange={setValue} />
+ * <NumericStepper value={value} onChange={setValue} />
  * ```
  *
  * You can also set a minimum and/or maximum value:
  *
  * ```tsx
- * <Counter value={value} onChange={setValue} minValue={1} maxValue={10} />
+ * <NumericStepper value={value} onChange={setValue} minValue={1} maxValue={10} />
  * ```
  *
- * You can use the Counter inside of a FormControl component to get IDs etc linked up automatically:
+ * You can use the NumericStepper inside of a FormControl component to get IDs etc linked up automatically:
  *
  * ```tsx
  * <FormControl>
  *   <FormLabel>Number of adults</FormLabel>
- *   <Counter />
+ *   <NumericStepper />
  * </FormControl>
  * ```
  */
-export function Counter({
+export function NumericStepper({
   name: nameProp,
   id: idProp,
   value: valueProp,
@@ -66,7 +66,7 @@ export function Counter({
   maxValue = 99,
   isDisabled,
   ...boxProps
-}: CounterProps) {
+}: NumericStepperProps) {
   const { t } = useTranslation();
   const [value, onChange] = useControllableState<number>({
     value: valueProp,

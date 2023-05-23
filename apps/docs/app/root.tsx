@@ -105,7 +105,7 @@ export function ErrorBoundary() {
     );
   }
   return (
-    <Document title="Error!">
+    <Document title="Feil oppstod">
       <RootErrorBoundary error={error} />
     </Document>
   );

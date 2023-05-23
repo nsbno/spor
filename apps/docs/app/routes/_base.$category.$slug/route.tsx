@@ -1,5 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import type { LoaderArgs, V2_MetaFunction } from "@remix-run/node";
+import { groq } from "@sanity/groq-store";
 import {
   FigmaOutline24Icon,
   GithubOutline24Icon,
@@ -71,7 +72,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
   invariant(params.category, "Expected params.category");
   invariant(params.slug, "Expected params.slug");
 
-  const query = `*[_type == "article" && category->slug.current == $categorySlug && slug.current == $articleSlug] {
+  const query = groq`*[_type == "article" && category->slug.current == $categorySlug && slug.current == $articleSlug] {
     _id,
     title,
     "slug": slug.current,
@@ -81,7 +82,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
       title,
       "slug": slug.current
     },
-    resourceLinks[linkType == "react" || linkType == "react-native" || linkType == "figma"],
+    resourceLinks[linkType == "react" || linkType == "react-native" || linkType == "figma"],
     content[]{
       _type == 'reference' => @->,
       _type != 'reference' => @,

@@ -6,7 +6,7 @@ module.exports = {
   assetsBuildDirectory: "public/build",
   publicPath: "/build/",
   serverBuildPath: "build/index.js",
-  serverModuleFormat: "cjs",
+  serverModuleFormat: "esm",
   devServerPort: 8002,
   ignoredRouteFiles: [".*"],
   watchPaths: ["../../packages/*/dist/index.mjs"],

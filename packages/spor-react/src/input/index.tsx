@@ -5,7 +5,7 @@ export * from "./CardSelect";
 export * from "./Checkbox";
 export * from "./CheckboxGroup";
 export * from "./ChoiceChip";
-export * from "./Counter";
+export * from "./NumericStepper";
 export * from "./FormControl";
 export * from "./FormErrorMessage";
 export * from "./FormLabel";

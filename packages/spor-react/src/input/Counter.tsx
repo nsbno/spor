@@ -76,6 +76,7 @@ export function Counter({
         name={name}
         value={value}
         fontSize="sm"
+        fontWeight="bold"
         width="2ch"
         marginX={2}
         borderRadius="xs"

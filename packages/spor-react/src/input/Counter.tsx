@@ -1,4 +1,9 @@
-import { chakra } from "@chakra-ui/react";
+import {
+  chakra,
+  useColorModeValue,
+  useControllableState,
+} from "@chakra-ui/react";
+import React from "react";
 import {
   Box,
   BoxProps,
@@ -6,14 +11,16 @@ import {
   IconButton,
   createTexts,
   useTranslation,
-} from "@vygruppen/spor-react";
-import React from "react";
+} from "..";
+import { focusVisible } from "../theme/utils/focus-utils";
 
 type CounterProps = {
   /** The name of the input field */
   name?: string;
   /** The current value */
   value?: number;
+  /** A default value, if uncontrolled */
+  defaultValue?: number;
   /** Callback for when the value changes */
   onChange?: (value: number) => void;
   /** Optional minimum value. Defaults to 0 */
@@ -38,13 +45,24 @@ type CounterProps = {
  */
 export function Counter({
   name,
-  value = 1,
-  onChange = () => {},
+  value: valueProp,
+  defaultValue = 1,
+  onChange: onChangeProp,
   minValue = 0,
   maxValue = 99,
   ...boxProps
 }: CounterProps) {
   const { t } = useTranslation();
+  const [value, onChange] = useControllableState<number>({
+    value: valueProp,
+    onChange: onChangeProp,
+    defaultValue,
+  });
+  const textColor = useColorModeValue("darkGrey", "white");
+  const backgroundColor = useColorModeValue("white", "darkGrey");
+  const focusedTextColor = useColorModeValue("white", "darkGrey");
+  const focusedBackgroundColor = useColorModeValue("darkTeal", "white");
+
   return (
     <Flex alignItems="center" {...boxProps}>
       <VerySmallButton
@@ -62,10 +80,12 @@ export function Counter({
         borderRadius="xs"
         textAlign="center"
         value={value}
+        backgroundColor={backgroundColor}
+        color={textColor}
         _focus={{
           outline: "none",
-          backgroundColor: "darkTeal",
-          color: "white",
+          backgroundColor: focusedBackgroundColor,
+          color: focusedTextColor,
         }}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const numericInput = Number(e.target.value);
@@ -87,7 +107,7 @@ export function Counter({
 
 type VerySmallButtonProps = {
   /** The icon to render */
-  icon: React.ReactNode;
+  icon: React.ReactElement;
   /** Accessible label for the icon */
   "aria-label": string;
   /** Callback for when the button is clicked */
@@ -103,17 +123,13 @@ const VerySmallButton = (props: VerySmallButtonProps) => {
       size="xs"
       minWidth="24px"
       minHeight="24px"
-      _focus={{
-        boxShadow:
-          "inset 0 0 0 2px var(--spor-colors-pine), inset 0 0 0 3px white",
-        "&:not(:focus-visible)": {
-          boxShadow: "none",
+      {...focusVisible({
+        notFocus: { boxShadow: "none" },
+        focus: {
+          boxShadow:
+            "inset 0 0 0 2px var(--spor-colors-pine), inset 0 0 0 3px white",
         },
-      }}
-      _focusVisible={{
-        boxShadow:
-          "inset 0 0 0 2px var(--spor-colors-pine), inset 0 0 0 3px white",
-      }}
+      })}
       {...props}
     />
   );

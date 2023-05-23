@@ -74,12 +74,12 @@ export function Counter({
       <chakra.input
         type="number"
         name={name}
+        value={value}
         fontSize="sm"
         width="2ch"
         marginX={2}
         borderRadius="xs"
         textAlign="center"
-        value={value}
         backgroundColor={backgroundColor}
         color={textColor}
         _focus={{

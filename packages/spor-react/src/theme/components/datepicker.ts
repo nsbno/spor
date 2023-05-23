@@ -1,5 +1,5 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy } from "@chakra-ui/theme-tools";
+import { anatomy, cssVar, mode } from "@chakra-ui/theme-tools";
 import { colors, zIndices } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
@@ -7,18 +7,25 @@ import { focusVisible } from "../utils/focus-utils";
 const parts = anatomy("datepicker").parts(
   "wrapper",
   "calendarTriggerButton",
+  "arrow",
+  "calendar",
+  "weekdays",
+  "weekend",
   "dateCell",
-  "inputLabel"
+  "inputLabel",
+  "dateTimeSegment"
 );
+
+const $arrowBackground = cssVar("popper-arrow-bg");
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({
-  baseStyle: {
+  baseStyle: (props) => ({
     wrapper: {
-      backgroundColor: "white",
+      backgroundColor: mode("white", "night")(props),
       boxShadow: getBoxShadowString({
-        borderColor: colors.blackAlpha["400"],
+        borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
       }),
       transitionProperty: "box-shadow",
       transitionDuration: "fast",
@@ -28,14 +35,14 @@ const config = helpers.defineMultiStyleConfig({
       alignItems: "center",
       _hover: {
         boxShadow: getBoxShadowString({
-          borderColor: "darkGrey",
+          borderColor: mode("darkGrey", "white")(props),
           borderWidth: 2,
         }),
         zIndex: zIndices.docked,
       },
       _focusWithin: {
         boxShadow: getBoxShadowString({
-          borderColor: "greenHaze",
+          borderColor: mode("greenHaze", "azure")(props),
           borderWidth: 2,
         }),
       },
@@ -48,12 +55,12 @@ const config = helpers.defineMultiStyleConfig({
       _disabled: {
         pointerEvents: "none",
         boxShadow: getBoxShadowString({
-          borderColor: "osloGrey",
+          borderColor: mode("osloGrey", "whiteAlpha.400")(props),
           borderWidth: 1,
         }),
         _focus: {
           boxShadow: getBoxShadowString({
-            borderColor: "osloGrey",
+            borderColor: mode("osloGrey", "whiteAlpha.400")(props),
             borderWidth: 1,
           }),
         },
@@ -61,13 +68,20 @@ const config = helpers.defineMultiStyleConfig({
     },
     inputLabel: {
       fontSize: "mobile.xs",
-      color: "darkGrey",
+      color: mode("darkGrey", "white")(props),
       margin: 0,
     },
+    dateTimeSegment: {
+      color: mode(
+        props.isPlaceholder ? "dimGrey" : props.isEditable ? "darkGrey" : "osloGrey", 
+        props.isPlaceholder ? "whiteAlpha.400" : "white"
+      )(props),
+    },
     calendarTriggerButton: {
+      backgroundColor: mode("white", "night")(props),
       boxShadow: `${getBoxShadowString({
-        borderColor: colors.blackAlpha["400"],
-      })}, inset 1px 0 0 1px white`, // to make the shadow colors not multiply
+        borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
+      })}, inset 1px 0 0 1px ${mode("white", colors.night)(props)}`, // to make the shadow colors not multiply
       width: 8,
       display: "flex",
       alignItems: "center",
@@ -80,24 +94,24 @@ const config = helpers.defineMultiStyleConfig({
 
       _hover: {
         boxShadow: `${getBoxShadowString({
-          borderColor: "darkGrey",
+          borderColor: mode("darkGrey", "white")(props),
           borderWidth: 2,
-        })}, inset 2px 0 0 2px white`,
+        })}, inset 2px 0 0 2px ${mode("white", colors.night)(props)}`,
       },
       _active: {
-        backgroundColor: "mint",
+        backgroundColor: mode("mint", "azure")(props),
       },
       ...focusVisible({
         focus: {
           outline: "none",
           boxShadow: getBoxShadowString({
-            borderColor: "greenHaze",
+            borderColor: mode("greenHaze", "azure")(props),
             borderWidth: 2,
           }),
         },
         notFocus: {
           boxShadow: getBoxShadowString({
-            borderColor: "darkGrey",
+            borderColor: mode("darkGrey", "white")(props),
             borderWidth: 1,
           }),
         },
@@ -109,9 +123,22 @@ const config = helpers.defineMultiStyleConfig({
         }),
       },
     },
+    arrow: {
+      [$arrowBackground.variable]: mode("white", colors.night)(props)
+    },
+    calendar: {
+      backgroundColor: mode("white", "night")(props),
+      color: mode("darkGrey", "white")(props)
+    },
+    weekdays: {
+      color: mode("darkGrey", "white")(props),
+    },
+    weekend: {
+      color: mode("greenHaze", "azure")(props),
+    },
     dateCell: {
-      backgroundColor: "white",
-      color: "darkGrey",
+      backgroundColor: mode("white", "night")(props),
+      color: mode("darkGrey", "white")(props),
       borderRadius: "50%",
       position: "relative",
       transition: ".1s ease-in-out",
@@ -122,14 +149,14 @@ const config = helpers.defineMultiStyleConfig({
       transitionSpeed: "fast",
 
       _hover: {
-        backgroundColor: "seaMist",
+        backgroundColor: mode("seaMist", "pine")(props),
       },
       ...focusVisible({
         focus: {
           outline: "none",
           boxShadow: getBoxShadowString({
             borderWidth: 2,
-            borderColor: "greenHaze",
+            borderColor: mode("greenHaze", "azure")(props),
           }),
         },
         notFocus: {
@@ -141,14 +168,14 @@ const config = helpers.defineMultiStyleConfig({
             }),
           },
           _active: {
-            color: "darkGrey",
+            color: mode("darkGrey", "white")(props),
           },
         },
       }),
       _active: {
         backgroundColor: "seaMist",
         boxShadow: "none",
-        color: "darkGrey",
+        color: mode("darkGrey", "white")(props),
       },
       _disabled: {
         color: "osloGrey",
@@ -156,7 +183,7 @@ const config = helpers.defineMultiStyleConfig({
         pointerEvents: "none",
       },
       _selected: {
-        backgroundColor: "darkTeal",
+        backgroundColor: mode("darkTeal", "pine")(props),
         color: "white",
         _active: {
           backgroundColor: "seaMist",
@@ -167,7 +194,7 @@ const config = helpers.defineMultiStyleConfig({
       "&[data-today]": {
         boxShadow: getBoxShadowString({
           borderWidth: 1,
-          borderColor: "osloGrey",
+          borderColor: mode("osloGrey", "dimGrey")(props),
         }),
       },
       "&[data-unavailable]": {
@@ -175,7 +202,7 @@ const config = helpers.defineMultiStyleConfig({
         color: "osloGrey",
       },
     },
-  },
+  }),
   variants: {
     simple: {
       wrapper: {

@@ -152,12 +152,11 @@ export function DateRangePicker({
           {state.isOpen && (
             <Portal>
               <PopoverContent
-                backgroundColor="white"
-                color="darkGrey"
+                sx={styles.calendar}
                 boxShadow="md"
                 maxWidth="none"
               >
-                <PopoverArrow backgroundColor="white" />
+                <PopoverArrow sx={styles.arrow} />
                 <PopoverBody>
                   <RangeCalendar {...calendarProps} />
                 </PopoverBody>

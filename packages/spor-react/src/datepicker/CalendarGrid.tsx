@@ -6,6 +6,7 @@ import { Language, useTranslation } from "../i18n";
 import { Text } from "../typography";
 import { CalendarCell } from "./CalendarCell";
 import { useCurrentLocale } from "./utils";
+import { useMultiStyleConfig } from "@chakra-ui/react";
 
 const weekDays: Record<Language, string[]> = {
   nb: ["Ma", "Ti", "On", "To", "Fr", "Lø", "Sø"],
@@ -34,21 +35,24 @@ export function CalendarGrid({ state, offset = {} }: CalendarGridProps) {
   // Get the number of weeks in the month so we can render the proper number of rows.
   const weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
   const weeksInMonthRange = new Array(weeksInMonth).fill(0).map((_, i) => i);
+  const styles = useMultiStyleConfig("Datepicker", {});
 
   return (
     <table {...gridProps}>
       <thead {...headerProps}>
         <tr>
-          {weekDays[language].map((day, index) => (
-            <Text
-              as="th"
-              key={index}
-              color={index < 5 ? "darkGrey" : "greenHaze"}
-              variant="sm"
-            >
-              {day}
-            </Text>
-          ))}
+          {weekDays[language].map((day, index) => {
+            return (
+              <Text
+                as="th"
+                key={index}
+                sx={index < 5 ? styles.weekdays : styles.weekend}
+                variant="sm"
+              >
+                {day}
+              </Text>
+            );
+          })}
         </tr>
       </thead>
       <tbody>

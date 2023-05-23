@@ -107,17 +107,26 @@ const components: Partial<PortableTextReactComponents> = {
   },
   list: {
     bullet: ({ children }) => (
-      <UnorderedList paddingLeft={3} marginTop={0} variant="sm">
+      <UnorderedList
+        paddingLeft={3}
+        marginTop={0}
+        marginBottom={3}
+        variant="sm"
+      >
         {children}
       </UnorderedList>
     ),
     number: ({ children }) => (
-      <OrderedList paddingLeft={3} marginTop={0} variant="sm">
+      <OrderedList paddingLeft={3} marginTop={0} marginBottom={3} variant="sm">
         {children}
       </OrderedList>
     ),
   },
-  listItem: ({ children }) => <ListItem marginTop={1}>{children}</ListItem>,
+  listItem: ({ children }) => (
+    <ListItem marginTop={0.5} textStyle="sm">
+      {children}
+    </ListItem>
+  ),
   types: {
     buttonLink: ({ value }) => {
       const isInternal = value.url.startsWith("/");

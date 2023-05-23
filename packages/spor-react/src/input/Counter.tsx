@@ -76,6 +76,7 @@ export function Counter({
   const formControlProps = useFormControl({ id: idProp, isDisabled });
   const textColor = useColorModeValue("darkGrey", "white");
   const backgroundColor = useColorModeValue("white", "darkGrey");
+  const focusColor = useColorModeValue("greenHaze", "azure");
 
   return (
     <Flex alignItems="center" {...boxProps}>
@@ -88,6 +89,8 @@ export function Counter({
       />
       <chakra.input
         type="number"
+        min={minValue}
+        max={maxValue}
         name={nameProp}
         value={value}
         {...formControlProps}
@@ -104,7 +107,7 @@ export function Counter({
         _hover={{
           boxShadow: getBoxShadowString({
             borderColor: "currentColor",
-            borderWidth: 2,
+            borderWidth: 1,
           }),
           _disabled: {
             boxShadow: "none",
@@ -116,8 +119,8 @@ export function Counter({
         _focus={{
           outline: "none",
           boxShadow: getBoxShadowString({
-            borderColor: "primaryGreen",
-            borderWidth: 2,
+            borderColor: focusColor,
+            borderWidth: 1,
           }),
         }}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {

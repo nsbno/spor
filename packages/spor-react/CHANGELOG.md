@@ -1,5 +1,16 @@
 # @vygruppen/spor-react
 
+## 2.3.0
+
+### Minor Changes
+
+- 7687d9a3: Add new component - Counter
+
+### Patch Changes
+
+- f5f641e5: Add support for dark mode for Date Picker
+- 00730969: Fix a bug where the content of tabs would break onto two lines"
+
 ## 2.2.1
 
 ### Patch Changes

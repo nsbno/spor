@@ -10,7 +10,9 @@ export enum Language {
 type TranslationObject = {
   [key in Language]: string | React.ReactElement;
 };
-type TranslationFunction = (...args: (string | number)[]) => TranslationObject;
+type TranslationFunction = (
+  ...args: Array<string | number>
+) => TranslationObject;
 
 type Translation = TranslationObject | TranslationFunction;
 export type Translations = {
@@ -66,12 +68,6 @@ function useLanguage() {
   return language;
 }
 
-function isLanguageFunction(
-  translation: Translation
-): translation is TranslationFunction {
-  return typeof translation === "function";
-}
-
 /**
  * A hook that returns translation utilities. Typically used to translate text.
  *
@@ -101,11 +97,8 @@ function isLanguageFunction(
  */
 export function useTranslation() {
   const language = useLanguage();
-  const t = (text: Translation) => {
-    if (isLanguageFunction(text)) {
-      return (...args: Array<string | number>) => text(...args)[language];
-    }
-    return text[language];
+  const t = (text: TranslationObject) => {
+    return text[language] as string;
   };
   return { t, language } as const;
 }

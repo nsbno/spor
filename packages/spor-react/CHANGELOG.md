@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 2.3.2
+
+### Patch Changes
+
+- 785671da: NumericStepper: Hide the input field / numeric value if the value is zero (0)
+
 ## 2.3.1
 
 ### Patch Changes

@@ -20,7 +20,6 @@
     "@chakra-ui/react": "^2.3.5",
     "@chakra-ui/theme-tools": "^2.0.12",
     "@internationalized/date": "^3.0.1",
-    "@leile/lobo-t": "^1.0.5",
     "@vygruppen/spor-design-tokens": "*",
     "@vygruppen/spor-icon-react": "*",
     "@vygruppen/spor-loader": "*",

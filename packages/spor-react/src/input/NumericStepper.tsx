@@ -103,7 +103,10 @@ export function NumericStepper({
         textAlign="center"
         backgroundColor={backgroundColor}
         color={textColor}
-        transition="all .1s ease-out"
+        transition="box-shadow .1s ease-out"
+        visibility={value === 0 ? "hidden" : "visible"}
+        aria-live="assertive"
+        aria-label={value}
         _hover={{
           boxShadow: getBoxShadowString({
             borderColor: "currentColor",

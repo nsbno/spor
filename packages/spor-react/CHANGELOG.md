@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 2.3.1
+
+### Patch Changes
+
+- bab5015d: Rename Counter to NumericStepper before anyone gets to use it
+
 ## 2.3.0
 
 ### Minor Changes

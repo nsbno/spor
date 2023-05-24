@@ -51,7 +51,7 @@ export const SporProvider = ({
   ...props
 }: SporProviderProps) => {
   return (
-    <LanguageProvider value={language}>
+    <LanguageProvider language={language}>
       <ChakraProvider theme={theme} {...props}>
         <Global styles={fontFaces} />
         <Global

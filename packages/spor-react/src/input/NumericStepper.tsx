@@ -106,7 +106,7 @@ export function NumericStepper({
         transition="box-shadow .1s ease-out"
         visibility={value === 0 ? "hidden" : "visible"}
         aria-live="assertive"
-        aria-label={value}
+        aria-label={value.toString()}
         _hover={{
           boxShadow: getBoxShadowString({
             borderColor: "currentColor",

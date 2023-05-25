@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 2.3.4
+
+### Patch Changes
+
+- 517c5aad: Fix an issue with the onChange handler for NumericStepper and PhoneNumberInput
+
 ## 2.3.3
 
 ### Patch Changes

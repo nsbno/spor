@@ -31,7 +31,7 @@ type NumericStepperProps = {
   maxValue?: number;
   /** Whether the stepper is disabled or not */
   isDisabled?: boolean;
-} & BoxProps;
+} & Omit<BoxProps, "onChange">;
 /** A simple stepper component for integer values
  *
  * Allows you to choose a given integer value, like for example the number of

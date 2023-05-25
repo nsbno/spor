@@ -12,7 +12,7 @@ type CountryCodeAndPhoneNumber = {
   countryCode: string;
   nationalNumber: string;
 };
-type PhoneNumberInputProps = BoxProps & {
+type PhoneNumberInputProps = Omit<BoxProps, "onChange"> & {
   /** The root name.
    *
    * Please note that when specifying the name, the rendered names will be `${name}-country-code` and `${name}-phone-number`, respectively

@@ -1,6 +1,6 @@
-import { Box, BoxProps, Center } from "@chakra-ui/react";
 import { spinnerDarkData } from "@vygruppen/spor-loader";
 import React from "react";
+import { Box, BoxProps, Center } from "..";
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
 
@@ -34,7 +34,7 @@ export const DarkSpinner = ({
         </ClientOnly>
       </Box>
       {children && (
-        <Box mt={3} fontWeight="bold">
+        <Box marginTop={3} fontWeight="bold">
           {children}
         </Box>
       )}

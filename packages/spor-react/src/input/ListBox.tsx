@@ -15,6 +15,7 @@ type ListBoxProps = {
   listBoxRef?: React.RefObject<HTMLUListElement>;
   listBoxOptions: AriaListBoxOptions<unknown>;
   state: SelectState<unknown> | ListState<unknown>;
+  isLoading?: boolean;
 } & BoxProps;
 
 type OptionProps = {
@@ -25,10 +26,10 @@ type OptionProps = {
 /**
  * A listbox component.
  *
- * This component is currently only thought to be used with the `InfoSelect` component. Usage outside of that is not documented, nor intended.
+ * Used to render accessible listbox content, like a dropdown menu or a card select. Should not be used directly, but as a part of Spor components.
  */
 export const ListBox = forwardRef<ListBoxProps, "ul">((props, ref) => {
-  const { state, listBoxOptions, ...rest } = props;
+  const { state, listBoxOptions, isLoading, ...rest } = props;
   const styles = useMultiStyleConfig("ListBox", {});
   const internalRef = useRef<HTMLUListElement>(null);
   const listBoxRef = (ref ?? internalRef) as RefObject<HTMLUListElement>;
@@ -37,6 +38,7 @@ export const ListBox = forwardRef<ListBoxProps, "ul">((props, ref) => {
   return (
     <Box
       as="ul"
+      aria-busy={isLoading}
       {...listBoxProps}
       sx={styles.container}
       ref={listBoxRef as RefObject<any>}

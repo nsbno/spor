@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import React, { useRef } from "react";
+import React, { forwardRef, useRef } from "react";
 import {
   AriaPopoverProps,
   DismissButton,
@@ -33,38 +33,45 @@ type PopoverProps = {
  *
  * Used to render accessible popover content, like a  dropdown menu or a card select. Should not be used directly, but as a part of Spor components.
  */
-export const Popover = ({
-  children,
-  state,
-  triggerRef,
-  offset = 0,
-  crossOffset = 0,
-  placement = "bottom",
-}: PopoverProps) => {
-  const popoverRef = useRef<HTMLDivElement>(null);
-  const { popoverProps, underlayProps } = usePopover(
+export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
+  (
     {
+      children,
+      state,
       triggerRef,
-      popoverRef,
-      offset,
-      crossOffset,
-      placement,
+      offset = 0,
+      crossOffset = 0,
+      placement = "bottom",
     },
-    state
-  );
+    ref
+  ) => {
+    const internalRef = useRef<HTMLDivElement>(null);
+    const popoverRef = ref ?? (internalRef as any);
 
-  return (
-    <Overlay>
-      <Box {...underlayProps} position="fixed" inset="0" />
-      <Box
-        {...popoverProps}
-        ref={popoverRef}
-        minWidth={triggerRef.current?.clientWidth ?? "auto"}
-      >
-        <DismissButton onDismiss={state.close} />
-        {children}
-        <DismissButton onDismiss={state.close} />
-      </Box>
-    </Overlay>
-  );
-};
+    const { popoverProps, underlayProps } = usePopover(
+      {
+        triggerRef,
+        popoverRef,
+        offset,
+        crossOffset,
+        placement,
+      },
+      state
+    );
+
+    return (
+      <Overlay>
+        <Box {...underlayProps} position="fixed" inset="0" />
+        <Box
+          {...popoverProps}
+          ref={popoverRef}
+          minWidth={triggerRef.current?.clientWidth ?? "auto"}
+        >
+          <DismissButton onDismiss={state.close} />
+          {children}
+          <DismissButton onDismiss={state.close} />
+        </Box>
+      </Overlay>
+    );
+  }
+);

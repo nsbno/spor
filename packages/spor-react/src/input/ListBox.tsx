@@ -9,7 +9,7 @@ import type { Node } from "@react-types/shared";
 import React, { RefObject, useContext, useRef } from "react";
 import type { AriaListBoxOptions } from "react-aria";
 import { useListBox, useOption } from "react-aria";
-import type { ListState, SelectState } from "react-stately";
+import { type ListState, type SelectState } from "react-stately";
 
 type ListBoxProps = {
   listBoxRef?: React.RefObject<HTMLUListElement>;

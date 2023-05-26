@@ -1,6 +1,12 @@
 import React from "react";
 import { useAsyncList } from "react-stately";
-import { Combobox, ComboboxProps } from "../";
+import {
+  Combobox,
+  ComboboxProps,
+  SelectItem,
+  SelectItemDescription,
+  SelectItemLabel,
+} from "../";
 
 type AutosuggestProps<T> = {
   /** The label of the search field */
@@ -13,7 +19,7 @@ type AutosuggestProps<T> = {
    * @example
    * ```tsx
    * const fetcher = async (query?: string) => {
-   *   const response = await fetch(`https://some.api.vy.no/filter=${query}`);
+   *   const response = await fetch(`https://some.api.com/filter=${query}`);
    *   const json = await response.json();
    *   return json;
    * };
@@ -27,10 +33,10 @@ type AutosuggestProps<T> = {
    * ```tsx
    * <Autosuggest {...otherProps}>
    *  {(user) => (
-   *    <SelectItem key={user.id} textValue={user.fullName}>
-   *       <SelectItemLabel>{user.fullName}</SelectItemLabel>
-   *       <SelectItemDescription>{user.asl}</SelectItemDescription>
-   *    </SelectItem>
+   *    <Autosuggest.Item key={user.id} textValue={user.fullName}>
+   *       <Autosuggest.ItemLabel>{user.fullName}</Autosuggest.ItemLabel>
+   *       <Autosuggest.ItemDescription>{user.asl}</Autosuggest.ItemDescription>
+   *    </Autosuggest.Item>
    *  )}
    * </Autosuggest>
    * ```
@@ -64,10 +70,10 @@ type AutosuggestProps<T> = {
  *       onSelectionChange={(item) => console.log(item)}
  *     >
  *       {(user) => (
- *         <SelectItem key={user.id} textValue={user.fullName}>
- *           <SelectItemLabel>{user.fullName}</SelectItemLabel>
- *           <SelectItemDescription>{user.asl}</SelectItemDescription>
- *         </SelectItem>
+ *         <Autosuggest.Item key={user.id} textValue={user.fullName}>
+ *           <Autosuggest.ItemLabel>{user.fullName}</Autosuggest.ItemLabel>
+ *           <Autosuggest.ItemDescription>{user.asl}</Autosuggest.ItemDescription>
+ *         </Autosuggest.Item>
  *       )}
  *     </Autosuggest>
  *   );
@@ -100,3 +106,7 @@ export function Autosuggest<T extends object>({
     </Combobox>
   );
 }
+
+Autosuggest.Item = SelectItem;
+Autosuggest.ItemLabel = SelectItemLabel;
+Autosuggest.ItemDescription = SelectItemDescription;

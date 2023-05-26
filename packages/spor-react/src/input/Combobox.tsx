@@ -1,7 +1,15 @@
 import React, { useRef } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
-import { ColorSpinner, FormControl, Input, ListBox } from "..";
+import {
+  ColorSpinner,
+  FormControl,
+  Input,
+  ListBox,
+  SelectItem,
+  SelectItemDescription,
+  SelectItemLabel,
+} from "..";
 import { Popover } from "./Popover";
 
 export type ComboboxProps<T> = AriaComboBoxProps<T> & {
@@ -26,9 +34,9 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
  * ]}
  * >
  * {(item) => (
- *   <ComboboxItem key={item.value} value={item.value}>
+ *   <Combobox.Item key={item.value} value={item.value}>
  *      {item.label}
- *   </ComboboxItem>
+ *   </Combobox.Item>
  *  )}
  * </Combobox>
  */
@@ -95,3 +103,7 @@ export function Combobox<T extends object>({
     </FormControl>
   );
 }
+
+Combobox.Item = SelectItem;
+Combobox.ItemLabel = SelectItemLabel;
+Combobox.ItemDescription = SelectItemDescription;

@@ -13,7 +13,12 @@ import React, { useRef } from "react";
 import { HiddenSelect, useButton, useSelect } from "react-aria";
 import { useSelectState } from "react-stately";
 import { createTexts, useTranslation } from "../";
-import { ListBox } from "./ListBox";
+import {
+  ListBox,
+  SelectItem,
+  SelectItemDescription,
+  SelectItemLabel,
+} from "./ListBox";
 import { Popover } from "./Popover";
 
 type InfoSelectProps<T> = {
@@ -140,9 +145,9 @@ type InfoSelectProps<T> = {
  *   ]}
  * >
  *   {(item) => (
- *     <SelectItem key={item.key}>
+ *     <InfoSelect.Item key={item.key}>
  *       {item.label}
- *     </SelectItem>
+ *     </InfoSelect.Item>
  *   )}
  * </InfoSelect>
  * ```
@@ -226,6 +231,10 @@ export function InfoSelect<T extends { key: string }>({
     </Box>
   );
 }
+
+InfoSelect.Item = SelectItem;
+InfoSelect.ItemLabel = SelectItemLabel;
+InfoSelect.ItemDescription = SelectItemDescription;
 
 const texts = createTexts({
   selectAnOption: {

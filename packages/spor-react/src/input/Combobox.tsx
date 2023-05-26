@@ -5,9 +5,33 @@ import { ColorSpinner, FormControl, Input, ListBox } from "..";
 import { Popover } from "./Popover";
 
 export type ComboboxProps<T> = AriaComboBoxProps<T> & {
+  /** The label of the combobox */
   label: string;
+  /** Whether or not the combobox is waiting for new suggestions */
   isLoading?: boolean;
 };
+/**
+ * A combobox is a combination of an input and a list of suggestions.
+ *
+ * It is used to select a single item from a list of suggestions.
+ *
+ * @example
+ * ```tsx
+ * <Combobox
+ *  label="Choose a color"
+ * items={[
+ *   { label: "Green", value: "green" },
+ *  { label: "Blue", value: "blue" },
+ * { label: "Yellow", value: "yellow" },
+ * ]}
+ * >
+ * {(item) => (
+ *   <ComboboxItem key={item.value} value={item.value}>
+ *      {item.label}
+ *   </ComboboxItem>
+ *  )}
+ * </Combobox>
+ */
 export function Combobox<T extends object>({
   label,
   isLoading,

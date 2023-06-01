@@ -27,7 +27,46 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
     state: ListState<T> | SelectState<T>;
   };
 
-/**  */
+/**
+ * A component that renders a list box with selectable options.
+ *
+ * @template T The type of the items in the list box.
+ *
+ *
+ * @example
+ * ```jsx
+ * const options = [
+ *   { id: 1, name: "Option 1" },
+ *   { id: 2, name: "Option 2" },
+ *   { id: 3, name: "Option 3" },
+ * ];
+ *
+ * const state = useListState({ items: options });
+ *
+ * return (
+ *   <ListBox state={state}>
+ *     {(option) => <div key={option.id}>{option.name}</div>}
+ *   </ListBox>
+ * );
+ * ```
+ *
+ * @example
+ * ```jsx
+ * const options = [
+ *   { id: 1, name: "Option 1" },
+ *   { id: 2, name: "Option 2" },
+ *   { id: 3, name: "Option 3" },
+ * ];
+ *
+ * const state = useListState({ items: options });
+ *
+ * return (
+ *   <ListBox state={state} isLoading={true}>
+ *     {(option) => <div key={option.id}>{option.name}</div>}
+ *   </ListBox>
+ * );
+ * ```
+ */
 export function ListBox<T extends object>({
   isLoading,
   listBoxRef,
@@ -54,6 +93,40 @@ export function ListBox<T extends object>({
     </List>
   );
 }
+
+/**
+ * Renders a label for a listbox item.
+ *
+ * Useful if you want to render a custom Item - especially if it has a description.
+ */
+export function ItemLabel({ children }: { children: React.ReactNode }) {
+  let { labelProps } = useOptionContext();
+  const styles = useMultiStyleConfig("ListBox", {});
+  return (
+    <Box {...labelProps} sx={styles.label}>
+      {children}
+    </Box>
+  );
+}
+/** @deprecated use ItemLabel instead */
+export const SelectItemLabel = ItemLabel;
+
+/**
+ * Renders a description for an Item.
+ *
+ * Useful if you want to render a custom Item with more than just a label.
+ */
+export function ItemDescription({ children }: { children: React.ReactNode }) {
+  let { descriptionProps } = useOptionContext();
+  const styles = useMultiStyleConfig("ListBox", {});
+  return (
+    <Box {...descriptionProps} sx={styles.description}>
+      {children}
+    </Box>
+  );
+}
+/** @deprecated Use ItemDescription instead */
+export const SelectItemDescription = ItemDescription;
 
 type OptionProps = {
   item: Node<unknown>;
@@ -104,11 +177,11 @@ const useOptionContext = () => {
   return useContext(OptionContext);
 };
 
-type SectionProps = {
+type ListBoxSectionProps = {
   section: Node<unknown>;
   state: any;
 };
-function ListBoxSection({ section, state }: SectionProps) {
+function ListBoxSection({ section, state }: ListBoxSectionProps) {
   const { itemProps, headingProps, groupProps } = useListBoxSection({
     heading: section.rendered,
     "aria-label": section["aria-label"],
@@ -140,39 +213,3 @@ function ListBoxSection({ section, state }: SectionProps) {
     </ListItem>
   );
 }
-
-/**
- * Renders a label for a listbox item.
- *
- * Useful if you want to render a custom Item - especially if it has a description.
- */
-export function SelectItemLabel({ children }: { children: React.ReactNode }) {
-  let { labelProps } = useOptionContext();
-  const styles = useMultiStyleConfig("ListBox", {});
-  return (
-    <Box {...labelProps} sx={styles.label}>
-      {children}
-    </Box>
-  );
-}
-export const ItemLabel = SelectItemLabel;
-
-/**
- * Renders a description for an Item.
- *
- * Useful if you want to render a custom Item with more than just a label.
- */
-export function SelectItemDescription({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  let { descriptionProps } = useOptionContext();
-  const styles = useMultiStyleConfig("ListBox", {});
-  return (
-    <Box {...descriptionProps} sx={styles.description}>
-      {children}
-    </Box>
-  );
-}
-export const ItemDescription = SelectItemDescription;

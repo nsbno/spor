@@ -115,7 +115,7 @@ export function Autosuggest<T extends object>({
       onInputChange={list.setFilterText}
       isLoading={list.isLoading}
       onSelectionChange={onSelectionChange}
-      {...boxProps}}
+      {...boxProps}
     >
       {children}
     </Combobox>

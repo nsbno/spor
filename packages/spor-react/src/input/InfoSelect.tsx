@@ -16,7 +16,7 @@ import { createTexts, useTranslation } from "../";
 import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
 
-type InfoSelectProps<T> = {
+type InfoSelectProps<T extends object> = {
   /**
    * Either a render function accepting an item, and returning a <SelectItem />,
    * or a list of <SelectItem />s.
@@ -44,7 +44,7 @@ type InfoSelectProps<T> = {
    * </Select>
    * ```
    **/
-  children: React.ReactNode | ((item: T) => React.ReactNode);
+  children: React.ReactElement | ((item: T) => React.ReactElement);
   /**
    * The items to render
    *
@@ -140,16 +140,16 @@ type InfoSelectProps<T> = {
  *   ]}
  * >
  *   {(item) => (
- *     <SelectItem key={item.key}>
+ *     <Item key={item.key}>
  *       {item.label}
- *     </SelectItem>
+ *     </Item>
  *   )}
  * </InfoSelect>
  * ```
  *
  * @see https://spor.vy.no/komponenter/info-select
  */
-export function InfoSelect<T extends { key: string }>({
+export function InfoSelect<T extends object>({
   placeholder,
   width = "100%",
   height = "auto",
@@ -165,8 +165,9 @@ export function InfoSelect<T extends { key: string }>({
     defaultSelectedKey: defaultValue,
     ...props,
   };
-  const state = useSelectState(renamedProps as any);
+  const state = useSelectState(renamedProps);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const listboxRef = useRef<HTMLUListElement>(null);
   const { labelProps, triggerProps, valueProps, menuProps } = useSelect(
     renamedProps,
     state,
@@ -217,10 +218,13 @@ export function InfoSelect<T extends { key: string }>({
       {state.isOpen && (
         <Popover state={state} triggerRef={triggerRef}>
           <ListBox
-            listBoxOptions={menuProps}
+            {...menuProps}
             state={state}
+            listBoxRef={listboxRef}
             borderBottomRadius="sm"
-          />
+          >
+            {props.children}
+          </ListBox>
         </Popover>
       )}
     </Box>

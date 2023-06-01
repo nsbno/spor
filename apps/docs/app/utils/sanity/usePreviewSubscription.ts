@@ -23,9 +23,7 @@ export const usePreviewSubscription = <T>({
     async function createStore() {
       // For more details about configuring groq-store see:
       // https://www.npmjs.com/package/@sanity/groq-store
-      const {
-        default: { groqStore },
-      } = await import("@sanity/groq-store");
+      const { groqStore } = await import("@sanity/groq-store");
 
       const { projectId, dataset } = sanityConfig;
 

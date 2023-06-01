@@ -31,19 +31,19 @@ const config = helpers.defineMultiStyleConfig({
       },
       _focus: {
         outline: "none",
-        background: mode("mint", "darkTeal")(props),
+        backgroundColor: mode("mint", "darkTeal")(props),
       },
       _selected: {
-        background: mode("pine", "pine")(props),
+        backgroundColor: mode("pine", "pine")(props),
         color: mode("white", "white")(props),
       },
     },
     label: {},
     description: {
       fontSize: ["mobile.xs", "desktop.xs"],
-      color: "dimGrey",
+      color: mode("dimGrey", "silver")(props),
       "[aria-selected='true'] &": {
-        color: "lightGrey",
+        color: mode("lightGrey", "platinum")(props),
       },
     },
   }),

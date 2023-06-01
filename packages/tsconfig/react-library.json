@@ -10,6 +10,7 @@
     "module": "ESNext",
     "rootDir": "src",
     "outDir": "dist",
-    "jsx": "react"
+    "jsx": "react",
+    "downlevelIteration": true
   }
 }

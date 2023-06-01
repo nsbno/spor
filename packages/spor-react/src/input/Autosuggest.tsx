@@ -42,6 +42,8 @@ type AutosuggestProps<T> = {
    * Callback for when the selection changes. Returns the entire item.
    */
   onSelectionChange?: (item: T) => void;
+  /** The selected item key (controlled) */
+  selectedKey?: ComboboxProps<T>["selectedKey"];
   /** What should open the menu.
    *
    * Defaults to "input"

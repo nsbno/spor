@@ -27,10 +27,10 @@ type AutosuggestProps<T> = {
    * ```tsx
    * <Autosuggest {...otherProps}>
    *  {(user) => (
-   *    <Autosuggest.Item key={user.id} textValue={user.fullName}>
-   *       <Autosuggest.ItemLabel>{user.fullName}</Autosuggest.ItemLabel>
-   *       <Autosuggest.ItemDescription>{user.asl}</Autosuggest.ItemDescription>
-   *    </Autosuggest.Item>
+   *    <Item key={user.id} textValue={user.fullName}>
+   *       <ItemLabel>{user.fullName}</ItemLabel>
+   *       <ItemDescription>{user.asl}</ItemDescription>
+   *    </Item>
    *  )}
    * </Autosuggest>
    * ```
@@ -64,10 +64,10 @@ type AutosuggestProps<T> = {
  *       onSelectionChange={(item) => console.log(item)}
  *     >
  *       {(user) => (
- *         <Autosuggest.Item key={user.id} textValue={user.fullName}>
- *           <Autosuggest.ItemLabel>{user.fullName}</Autosuggest.ItemLabel>
- *           <Autosuggest.ItemDescription>{user.asl}</Autosuggest.ItemDescription>
- *         </Autosuggest.Item>
+ *         <Item key={user.id} textValue={user.fullName}>
+ *           <ItemLabel>{user.fullName}</ItemLabel>
+ *           <ItemDescription>{user.asl}</ItemDescription>
+ *         </Item>
  *       )}
  *     </Autosuggest>
  *   );

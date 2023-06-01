@@ -41,9 +41,9 @@ const config = helpers.defineMultiStyleConfig({
     label: {},
     description: {
       fontSize: ["mobile.xs", "desktop.xs"],
-      color: "dimGrey",
+      color: mode("dimGrey", "silver")(props),
       "[aria-selected='true'] &": {
-        color: "lightGrey",
+        color: mode("lightGrey", "platinum")(props),
       },
     },
   }),

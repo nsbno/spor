@@ -140,9 +140,9 @@ type InfoSelectProps<T extends object> = {
  *   ]}
  * >
  *   {(item) => (
- *     <InfoSelect.Item key={item.key}>
+ *     <Item key={item.key}>
  *       {item.label}
- *     </InfoSelect.Item>
+ *     </Item>
  *   )}
  * </InfoSelect>
  * ```

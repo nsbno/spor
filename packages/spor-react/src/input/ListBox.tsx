@@ -2,6 +2,7 @@ import {
   Box,
   List,
   ListItem,
+  useColorModeValue,
   useMultiStyleConfig,
   type BoxProps,
 } from "@chakra-ui/react";
@@ -12,13 +13,12 @@ import {
   useListBox,
   useListBoxSection,
   useOption,
-  useSeparator,
 } from "react-aria";
 import { Item, type ListState, type SelectState } from "react-stately";
 
 /** @deprecated use Item instead */
 export const SelectItem = Item;
-export { Item } from "react-stately";
+export { Item, Section } from "react-stately";
 
 type ListBoxProps<T> = AriaListBoxProps<T> &
   Omit<BoxProps, "filter" | "autoFocus" | "children"> & {
@@ -27,6 +27,7 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
     state: ListState<T> | SelectState<T>;
   };
 
+/**  */
 export function ListBox<T extends object>({
   isLoading,
   listBoxRef,
@@ -45,7 +46,7 @@ export function ListBox<T extends object>({
     >
       {[...state.collection].map((item) =>
         item.type === "section" ? (
-          <Section key={item.key} section={item} state={state} />
+          <ListBoxSection key={item.key} section={item} state={state} />
         ) : (
           <Option key={item.key} item={item} state={state} />
         )
@@ -107,49 +108,36 @@ type SectionProps = {
   section: Node<unknown>;
   state: any;
 };
-export function Section({ section, state }: SectionProps) {
+function ListBoxSection({ section, state }: SectionProps) {
   const { itemProps, headingProps, groupProps } = useListBoxSection({
     heading: section.rendered,
     "aria-label": section["aria-label"],
   });
 
-  const { separatorProps } = useSeparator({
-    elementType: "li",
-  });
-
-  // If the section is not the first, add a separator element.
-  // The heading is rendered inside an <li> element, which contains
-  // a <ul> with the child items.
+  const isFirstSection = section.key !== state.collection.getFirstKey();
+  const titleBackgroundColor = useColorModeValue("platinum", "dimGrey");
+  const titleColor = useColorModeValue("darkGrey", "white");
   return (
-    <>
-      {section.key !== state.collection.getFirstKey() && (
-        <ListItem
-          {...separatorProps}
-          borderTop="1px solid gray"
-          marginX={1}
-          marginY={0.5}
-        />
+    <ListItem {...itemProps}>
+      {section.rendered && (
+        <Box
+          textStyle="xs"
+          backgroundColor={titleBackgroundColor}
+          color={titleColor}
+          paddingX={3}
+          paddingY={1}
+          marginTop={isFirstSection ? 0 : 0}
+          {...headingProps}
+        >
+          {section.rendered}
+        </Box>
       )}
-      <ListItem {...itemProps}>
-        {section.rendered && (
-          <Box
-            as="span"
-            fontWeight="bold"
-            fontSize="sm"
-            paddingX={1}
-            paddingY={0.5}
-            {...headingProps}
-          >
-            {section.rendered}
-          </Box>
-        )}
-        <List {...groupProps} padding={0} listStyleType="none">
-          {[...section.childNodes].map((node) => (
-            <Option key={node.key} item={node} state={state} />
-          ))}
-        </List>
-      </ListItem>
-    </>
+      <List {...groupProps} padding={0} listStyleType="none">
+        {[...state.collection.getChildren(section.key)].map((item) => (
+          <Option key={item.key} item={item} state={state} />
+        ))}
+      </List>
+    </ListItem>
   );
 }
 

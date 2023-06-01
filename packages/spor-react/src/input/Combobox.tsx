@@ -18,19 +18,20 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
  * @example
  * ```tsx
  * <Combobox
- *  label="Choose a color"
- * items={[
- *   { label: "Green", value: "green" },
- *  { label: "Blue", value: "blue" },
- * { label: "Yellow", value: "yellow" },
- * ]}
+ *   label="Choose a color"
+ *   items={[
+ *     { label: "Green", value: "green" },
+ *     { label: "Blue", value: "blue" },
+ *     { label: "Yellow", value: "yellow" },
+ *   ]}
  * >
  * {(item) => (
- *   <Combobox.Item key={item.value} value={item.value}>
+ *   <Item key={item.value} value={item.value}>
  *      {item.label}
- *   </Combobox.Item>
+ *   </Item>
  *  )}
  * </Combobox>
+ * ```
  */
 export function Combobox<T extends object>({
   label,

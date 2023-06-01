@@ -39,9 +39,14 @@ type AutosuggestProps<T> = {
    * */
   children: ComboboxProps<T>["children"];
   /**
-   * Callback for when the selection changes.
+   * Callback for when the selection changes. Returns the entire item.
    */
-  onSelectionChange?: ComboboxProps<T>["onSelectionChange"];
+  onSelectionChange?: (item: T) => void;
+  /** What should open the menu.
+   *
+   * Defaults to "input"
+   */
+  menuTrigger?: ComboboxProps<T>["menuTrigger"];
 } & Pick<
   InputProps,
   | "marginTop"
@@ -98,7 +103,7 @@ export function Autosuggest<T extends object>({
   fetcher,
   children,
   onSelectionChange,
-  ...boxProps
+  ...props
 }: AutosuggestProps<T>) {
   const list = useAsyncList<T>({
     async load({ filterText }) {
@@ -107,15 +112,21 @@ export function Autosuggest<T extends object>({
       };
     },
   });
+  const handleSelectionChange = (key: React.Key) => {
+    if (!onSelectionChange) {
+      return;
+    }
+    return onSelectionChange(list.getItem(key));
+  };
   return (
     <Combobox
       label={label}
       items={list.items}
       inputValue={list.filterText}
       onInputChange={list.setFilterText}
+      onSelectionChange={handleSelectionChange}
       isLoading={list.isLoading}
-      onSelectionChange={onSelectionChange}
-      {...boxProps}
+      {...props}
     >
       {children}
     </Combobox>

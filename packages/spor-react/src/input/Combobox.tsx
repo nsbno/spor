@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
-import { ColorSpinner, FormControl, Input, ListBox } from "..";
+import { ColorSpinner, FormControl, Input, InputProps, ListBox } from "..";
 import { Popover } from "./Popover";
 
 export type ComboboxProps<T> = AriaComboBoxProps<T> & {
@@ -9,7 +9,26 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
   label: string;
   /** Whether or not the combobox is waiting for new suggestions */
   isLoading?: boolean;
-};
+} & Pick<
+    InputProps,
+    | "marginTop"
+    | "marginBottom"
+    | "marginY"
+    | "marginX"
+    | "paddingTop"
+    | "paddingBottom"
+    | "paddingLeft"
+    | "paddingRight"
+    | "paddingY"
+    | "paddingX"
+    | "leftIcon"
+    | "rightIcon"
+    | "borderTopRightRadius"
+    | "borderTopLeftRadius"
+    | "borderBottomRightRadius"
+    | "borderBottomLeftRadius"
+    | "onFocus"
+  >;
 /**
  * A combobox is a combination of an input and a list of suggestions.
  *
@@ -36,6 +55,23 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
 export function Combobox<T extends object>({
   label,
   isLoading,
+  leftIcon,
+  rightIcon,
+  borderBottomLeftRadius = "sm",
+  borderBottomRightRadius = "sm",
+  borderTopLeftRadius = "sm",
+  borderTopRightRadius = "sm",
+  marginBottom,
+  marginTop,
+  marginX,
+  marginY,
+  paddingBottom,
+  paddingRight,
+  paddingTop,
+  paddingLeft,
+  paddingX,
+  paddingY,
+  onFocus,
   ...rest
 }: ComboboxProps<T>) {
   const { contains } = useFilter({ sensitivity: "base" });
@@ -67,7 +103,22 @@ export function Combobox<T extends object>({
         {...inputProps}
         ref={inputRef}
         label={label}
-        borderBottomRadius={state.isOpen ? 0 : "sm"}
+        onFocus={onFocus}
+        borderBottomLeftRadius={state.isOpen ? 0 : borderBottomLeftRadius}
+        borderBottomRightRadius={state.isOpen ? 0 : borderBottomRightRadius}
+        borderTopLeftRadius={borderTopLeftRadius}
+        borderTopRightRadius={borderTopRightRadius}
+        marginBottom={marginBottom}
+        marginTop={marginTop}
+        marginX={marginX}
+        marginY={marginY}
+        paddingBottom={paddingBottom}
+        paddingRight={paddingRight}
+        paddingTop={paddingTop}
+        paddingLeft={paddingLeft}
+        paddingX={paddingX}
+        paddingY={paddingY}
+        leftIcon={leftIcon}
         rightIcon={
           isLoading ? (
             <ColorSpinner
@@ -80,7 +131,9 @@ export function Combobox<T extends object>({
                 },
               }}
             />
-          ) : undefined
+          ) : (
+            rightIcon
+          )
         }
       />
       {state.isOpen && (

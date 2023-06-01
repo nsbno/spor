@@ -80,7 +80,7 @@ export function ListBox<T extends object>({
       sx={styles.container}
       aria-busy={isLoading}
     >
-      {[...state.collection].map((item) =>
+      {Array.from(state.collection).map((item) =>
         item.type === "section" ? (
           <ListBoxSection key={item.key} section={item} state={state} />
         ) : (
@@ -203,9 +203,11 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
         </Box>
       )}
       <List {...groupProps} padding={0} listStyleType="none">
-        {[...state.collection.getChildren(section.key)].map((item) => (
-          <Option key={item.key} item={item} state={state} />
-        ))}
+        {Array.from(state.collection.getChildren(section.key)).map(
+          (item: any) => (
+            <Option key={item.key} item={item} state={state} />
+          )
+        )}
       </List>
     </ListItem>
   );

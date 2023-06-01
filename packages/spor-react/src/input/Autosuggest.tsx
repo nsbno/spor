@@ -1,6 +1,6 @@
 import React from "react";
 import { useAsyncList } from "react-stately";
-import { Combobox, ComboboxProps } from "../";
+import { Combobox, ComboboxProps, InputProps } from "../";
 
 type AutosuggestProps<T> = {
   /** The label of the search field */
@@ -42,7 +42,26 @@ type AutosuggestProps<T> = {
    * Callback for when the selection changes.
    */
   onSelectionChange?: ComboboxProps<T>["onSelectionChange"];
-};
+} & Pick<
+  InputProps,
+  | "marginTop"
+  | "marginBottom"
+  | "marginY"
+  | "marginX"
+  | "paddingTop"
+  | "paddingBottom"
+  | "paddingLeft"
+  | "paddingRight"
+  | "paddingY"
+  | "paddingX"
+  | "leftIcon"
+  | "rightIcon"
+  | "borderTopRightRadius"
+  | "borderTopLeftRadius"
+  | "borderBottomRightRadius"
+  | "borderBottomLeftRadius"
+  | "onFocus"
+>;
 /**
  * A component that provides an autocomplete search field with suggestions.
  *
@@ -79,6 +98,7 @@ export function Autosuggest<T extends object>({
   fetcher,
   children,
   onSelectionChange,
+  ...boxProps
 }: AutosuggestProps<T>) {
   const list = useAsyncList<T>({
     async load({ filterText }) {
@@ -95,6 +115,7 @@ export function Autosuggest<T extends object>({
       onInputChange={list.setFilterText}
       isLoading={list.isLoading}
       onSelectionChange={onSelectionChange}
+      {...boxProps}
     >
       {children}
     </Combobox>

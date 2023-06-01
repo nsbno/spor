@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 2.4.2
+
+### Patch Changes
+
+- a5f843bc: Autosuggest: Return the entire item selected, not just the list
+
 ## 2.4.1
 
 ### Patch Changes

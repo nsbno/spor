@@ -22,16 +22,16 @@ export { Item, Section } from "react-stately";
 
 type ListBoxProps<T> = AriaListBoxProps<T> &
   Omit<BoxProps, "filter" | "autoFocus" | "children"> & {
+    /** External reference to the ListBox itself */
     listBoxRef: React.RefObject<HTMLUListElement>;
+    /** Whether or not the listbox is waiting on new data, i.e. through a autosuggest search */
     isLoading?: boolean;
+    /** The state of the listbox, provided externally somehow. */
     state: ListState<T> | SelectState<T>;
   };
 
 /**
  * A component that renders a list box with selectable options.
- *
- * @template T The type of the items in the list box.
- *
  *
  * @example
  * ```jsx
@@ -42,9 +42,10 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
  * ];
  *
  * const state = useListState({ items: options });
+ * const ref = useRef(null);
  *
  * return (
- *   <ListBox state={state}>
+ *   <ListBox state={state} listBoxRef={ref}>
  *     {(option) => <div key={option.id}>{option.name}</div>}
  *   </ListBox>
  * );
@@ -52,16 +53,12 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
  *
  * @example
  * ```jsx
- * const options = [
- *   { id: 1, name: "Option 1" },
- *   { id: 2, name: "Option 2" },
- *   { id: 3, name: "Option 3" },
- * ];
- *
- * const state = useListState({ items: options });
+ * const { data, isLoading } = useSWR('/api/options')
+ * const state = useListState({ items: data });
+ * const ref = useRef(null);
  *
  * return (
- *   <ListBox state={state} isLoading={true}>
+ *   <ListBox state={state} isLoading={isLoading} ref={ref}>
  *     {(option) => <div key={option.id}>{option.name}</div>}
  *   </ListBox>
  * );

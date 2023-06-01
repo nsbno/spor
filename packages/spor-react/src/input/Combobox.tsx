@@ -1,15 +1,7 @@
 import React, { useRef } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
-import {
-  ColorSpinner,
-  FormControl,
-  Input,
-  ListBox,
-  SelectItem,
-  SelectItemDescription,
-  SelectItemLabel,
-} from "..";
+import { ColorSpinner, FormControl, Input, ListBox } from "..";
 import { Popover } from "./Popover";
 
 export type ComboboxProps<T> = AriaComboBoxProps<T> & {
@@ -45,12 +37,12 @@ export function Combobox<T extends object>({
   isLoading,
   ...rest
 }: ComboboxProps<T>) {
-  // Setup filter function and state.
   const { contains } = useFilter({ sensitivity: "base" });
-  const state = useComboBoxState({ ...rest, defaultFilter: contains });
+  const state = useComboBoxState({
+    ...rest,
+    defaultFilter: contains,
+  });
 
-  // Setup refs and get props for child elements.
-  const buttonRef = useRef(null);
   const inputRef = useRef(null);
   const listBoxRef = useRef(null);
   const popoverRef = useRef(null);
@@ -62,12 +54,12 @@ export function Combobox<T extends object>({
     {
       ...rest,
       inputRef,
-      buttonRef,
       listBoxRef,
       popoverRef,
     },
     state
   );
+
   return (
     <FormControl>
       <Input
@@ -91,19 +83,22 @@ export function Combobox<T extends object>({
         }
       />
       {state.isOpen && (
-        <Popover state={state} triggerRef={inputRef} placement="bottom start">
+        <Popover
+          state={state}
+          triggerRef={inputRef}
+          ref={popoverRef}
+          placement="bottom start"
+        >
           <ListBox
-            listBoxOptions={listBoxProps}
-            listBoxRef={listBoxRef}
+            {...listBoxProps}
             state={state}
+            listBoxRef={listBoxRef}
             borderBottomRadius="sm"
-          />
+          >
+            {rest.children}
+          </ListBox>
         </Popover>
       )}
     </FormControl>
   );
 }
-
-Combobox.Item = SelectItem;
-Combobox.ItemLabel = SelectItemLabel;
-Combobox.ItemDescription = SelectItemDescription;

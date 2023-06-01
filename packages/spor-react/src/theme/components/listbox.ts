@@ -31,10 +31,10 @@ const config = helpers.defineMultiStyleConfig({
       },
       _focus: {
         outline: "none",
-        background: mode("mint", "darkTeal")(props),
+        backgroundColor: mode("mint", "darkTeal")(props),
       },
       _selected: {
-        background: mode("pine", "pine")(props),
+        backgroundColor: mode("pine", "pine")(props),
         color: mode("white", "white")(props),
       },
     },

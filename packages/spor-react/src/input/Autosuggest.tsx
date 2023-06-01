@@ -1,12 +1,6 @@
 import React from "react";
 import { useAsyncList } from "react-stately";
-import {
-  Combobox,
-  ComboboxProps,
-  SelectItem,
-  SelectItemDescription,
-  SelectItemLabel,
-} from "../";
+import { Combobox, ComboboxProps } from "../";
 
 type AutosuggestProps<T> = {
   /** The label of the search field */
@@ -106,7 +100,3 @@ export function Autosuggest<T extends object>({
     </Combobox>
   );
 }
-
-Autosuggest.Item = SelectItem;
-Autosuggest.ItemLabel = SelectItemLabel;
-Autosuggest.ItemDescription = SelectItemDescription;

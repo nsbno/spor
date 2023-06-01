@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 2.4.0
+
+### Minor Changes
+
+- 7d5fc2e8: Add Combobox and Autosuggest components
+
+### Patch Changes
+
+- 062a4e70: Change the placement of the FormErrorMessage relative to the input fields they address.
+
 ## 2.3.4
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 2.4.1
+
+### Patch Changes
+
+- 3dfeccd7: Add some spacing and styling props to both Combobox and Autosuggest
+
 ## 2.4.0
 
 ### Minor Changes

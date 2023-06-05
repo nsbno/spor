@@ -53,6 +53,8 @@ type AutosuggestProps<T> = {
   InputProps,
   | "marginTop"
   | "marginBottom"
+  | "marginRight"
+  | "marginLeft"
   | "marginY"
   | "marginX"
   | "paddingTop"
@@ -125,7 +127,6 @@ type AutosuggestProps<T> = {
 export function Autosuggest<T extends object>({
   label,
   fetcher,
-  children,
   onSelectionChange,
   ...props
 }: AutosuggestProps<T>) {
@@ -166,8 +167,6 @@ export function Autosuggest<T extends object>({
       onSelectionChange={handleSelectionChange}
       isLoading={list.isLoading}
       {...props}
-    >
-      {children}
-    </Combobox>
+    />
   );
 }

@@ -245,7 +245,7 @@ const ComponentSections = ({ sections }: ComponentSectionsProps) => {
     <Tabs colorScheme="green" variant="square" size="md" mt={4} isFitted isLazy>
       <TabList>
         {sections.map((section) => (
-          <Tab key={getSlugFromSection(section)}>
+          <Tab key={section._id}>
             {getCorrectTitle({
               title: section.title,
               customTitle: section.customTitle,

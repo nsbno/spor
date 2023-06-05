@@ -84,6 +84,7 @@ export default function ComponentsPage() {
                 src={urlBuilder.image(component.mainImage).width(300).url()}
                 alt={component.title}
                 backgroundColor="mint"
+                padding="1em"
                 width="100%"
                 height="10em"
                 objectFit="cover"

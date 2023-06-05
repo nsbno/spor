@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
-import { ColorSpinner, FormControl, Input, InputProps, ListBox } from "..";
+import { ColorSpinner, Input, InputProps, ListBox } from "..";
 import { Popover } from "./Popover";
 
 export type ComboboxProps<T> = AriaComboBoxProps<T> & {
@@ -13,6 +13,8 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
     InputProps,
     | "marginTop"
     | "marginBottom"
+    | "marginRight"
+    | "marginLeft"
     | "marginY"
     | "marginX"
     | "paddingTop"
@@ -65,6 +67,8 @@ export function Combobox<T extends object>({
   marginTop,
   marginX,
   marginY,
+  marginRight,
+  marginLeft,
   paddingBottom,
   paddingRight,
   paddingTop,
@@ -98,7 +102,7 @@ export function Combobox<T extends object>({
   );
 
   return (
-    <FormControl>
+    <>
       <Input
         {...inputProps}
         ref={inputRef}
@@ -110,6 +114,8 @@ export function Combobox<T extends object>({
         borderTopRightRadius={borderTopRightRadius}
         marginBottom={marginBottom}
         marginTop={marginTop}
+        marginRight={marginRight}
+        marginLeft={marginLeft}
         marginX={marginX}
         marginY={marginY}
         paddingBottom={paddingBottom}
@@ -153,6 +159,6 @@ export function Combobox<T extends object>({
           </ListBox>
         </Popover>
       )}
-    </FormControl>
+    </>
   );
 }

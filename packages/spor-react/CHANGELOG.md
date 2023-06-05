@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 2.4.3
+
+### Patch Changes
+
+- 5640417f: Autosuggest: Fix a bug where the onSelectionChanged was called with no item on nested lists
+
 ## 2.4.2
 
 ### Patch Changes

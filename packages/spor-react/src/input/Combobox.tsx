@@ -75,18 +75,18 @@ export function Combobox<T extends object>({
   paddingLeft,
   paddingX,
   paddingY,
-  onFocus,
   ...rest
 }: ComboboxProps<T>) {
   const { contains } = useFilter({ sensitivity: "base" });
-  const state = useComboBoxState({
-    ...rest,
-    defaultFilter: contains,
-  });
 
   const inputRef = useRef(null);
   const listBoxRef = useRef(null);
   const popoverRef = useRef(null);
+
+  const state = useComboBoxState({
+    ...rest,
+    defaultFilter: contains,
+  });
 
   const {
     inputProps: { size, ...inputProps },
@@ -107,7 +107,6 @@ export function Combobox<T extends object>({
         {...inputProps}
         ref={inputRef}
         label={label}
-        onFocus={onFocus}
         borderBottomLeftRadius={state.isOpen ? 0 : borderBottomLeftRadius}
         borderBottomRightRadius={state.isOpen ? 0 : borderBottomRightRadius}
         borderTopLeftRadius={borderTopLeftRadius}
@@ -149,12 +148,7 @@ export function Combobox<T extends object>({
           ref={popoverRef}
           placement="bottom start"
         >
-          <ListBox
-            {...listBoxProps}
-            state={state}
-            listBoxRef={listBoxRef}
-            borderBottomRadius="sm"
-          >
+          <ListBox {...listBoxProps} state={state} listBoxRef={listBoxRef}>
             {rest.children}
           </ListBox>
         </Popover>

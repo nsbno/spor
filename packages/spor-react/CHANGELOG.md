@@ -1,5 +1,16 @@
 # @vygruppen/spor-react
 
+## 2.5.0
+
+### Minor Changes
+
+- 042dba35: Make accordions and cards default to the sm size
+
+### Patch Changes
+
+- f9d6bd34: Combobox: Fix a bug where menuTrigger="focus" wouldn't work
+- 76914a15: Remove non-working Autosuggest component
+
 ## 2.4.3
 
 ### Patch Changes

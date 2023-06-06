@@ -9,6 +9,8 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
   label: string;
   /** Whether or not the combobox is waiting for new suggestions */
   isLoading?: boolean;
+  /** Optional UI to show when there are no matching items */
+  emptyContent?: React.ReactNode;
 } & Pick<
     InputProps,
     | "marginTop"
@@ -75,18 +77,20 @@ export function Combobox<T extends object>({
   paddingLeft,
   paddingX,
   paddingY,
-  onFocus,
+  emptyContent,
   ...rest
 }: ComboboxProps<T>) {
   const { contains } = useFilter({ sensitivity: "base" });
-  const state = useComboBoxState({
-    ...rest,
-    defaultFilter: contains,
-  });
 
   const inputRef = useRef(null);
   const listBoxRef = useRef(null);
   const popoverRef = useRef(null);
+
+  const state = useComboBoxState({
+    ...rest,
+    defaultFilter: contains,
+    allowsEmptyCollection: Boolean(emptyContent),
+  });
 
   const {
     inputProps: { size, ...inputProps },
@@ -107,7 +111,6 @@ export function Combobox<T extends object>({
         {...inputProps}
         ref={inputRef}
         label={label}
-        onFocus={onFocus}
         borderBottomLeftRadius={state.isOpen ? 0 : borderBottomLeftRadius}
         borderBottomRightRadius={state.isOpen ? 0 : borderBottomRightRadius}
         borderTopLeftRadius={borderTopLeftRadius}
@@ -153,7 +156,7 @@ export function Combobox<T extends object>({
             {...listBoxProps}
             state={state}
             listBoxRef={listBoxRef}
-            borderBottomRadius="sm"
+            emptyContent={emptyContent}
           >
             {rest.children}
           </ListBox>

@@ -136,7 +136,7 @@ const config = helpers.defineMultiStyleConfig({
   },
   defaultProps: {
     variant: "list",
-    size: "md",
+    size: "sm",
   },
 });
 

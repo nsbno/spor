@@ -9,6 +9,8 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
   label: string;
   /** Whether or not the combobox is waiting for new suggestions */
   isLoading?: boolean;
+  /** Optional UI to show when there are no matching items */
+  emptyContent?: React.ReactNode;
 } & Pick<
     InputProps,
     | "marginTop"
@@ -75,6 +77,7 @@ export function Combobox<T extends object>({
   paddingLeft,
   paddingX,
   paddingY,
+  emptyContent,
   ...rest
 }: ComboboxProps<T>) {
   const { contains } = useFilter({ sensitivity: "base" });
@@ -86,6 +89,7 @@ export function Combobox<T extends object>({
   const state = useComboBoxState({
     ...rest,
     defaultFilter: contains,
+    allowsEmptyCollection: Boolean(emptyContent),
   });
 
   const {
@@ -148,7 +152,12 @@ export function Combobox<T extends object>({
           ref={popoverRef}
           placement="bottom start"
         >
-          <ListBox {...listBoxProps} state={state} listBoxRef={listBoxRef}>
+          <ListBox
+            {...listBoxProps}
+            state={state}
+            listBoxRef={listBoxRef}
+            emptyContent={emptyContent}
+          >
             {rest.children}
           </ListBox>
         </Popover>

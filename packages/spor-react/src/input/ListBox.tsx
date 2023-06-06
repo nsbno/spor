@@ -28,6 +28,8 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
     isLoading?: boolean;
     /** The state of the listbox, provided externally somehow. */
     state: ListState<T> | SelectState<T>;
+    /** UI to render if the collection is empty */
+    emptyContent?: React.ReactNode;
   };
 
 /**
@@ -80,6 +82,7 @@ export function ListBox<T extends object>({
       sx={styles.container}
       aria-busy={isLoading}
     >
+      {state.collection.size === 0 && props.emptyContent}
       {Array.from(state.collection).map((item) =>
         item.type === "section" ? (
           <ListBoxSection key={item.key} section={item} state={state} />
@@ -184,19 +187,19 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
     "aria-label": section["aria-label"],
   });
 
-  const isFirstSection = section.key !== state.collection.getFirstKey();
-  const titleBackgroundColor = useColorModeValue("platinum", "dimGrey");
+  const isFirstSection = section.key === state.collection.getFirstKey();
   const titleColor = useColorModeValue("darkGrey", "white");
   return (
     <ListItem {...itemProps}>
       {section.rendered && (
         <Box
-          textStyle="xs"
-          backgroundColor={titleBackgroundColor}
+          fontSize="mobile.xs"
           color={titleColor}
           paddingX={3}
           paddingY={1}
-          marginTop={isFirstSection ? 0 : 0}
+          marginTop={isFirstSection ? 0 : 3}
+          textTransform="uppercase"
+          fontWeight="bold"
           {...headingProps}
         >
           {section.rendered}

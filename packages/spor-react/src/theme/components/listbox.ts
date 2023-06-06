@@ -20,13 +20,17 @@ const config = helpers.defineMultiStyleConfig({
       maxHeight: "50vh",
       width: "100%",
       listStyle: "none",
+      borderBottomRadius: "sm",
     },
     item: {
-      paddingX: 3,
+      paddingX: 2,
       paddingY: 2,
+      marginY: 1,
+      marginX: 1,
+      borderRadius: "sm",
       color: mode("darkGrey", "white")(props),
       _hover: {
-        background: mode("mint", "darkTeal")(props),
+        backgroundColor: mode("mint", "darkTeal")(props),
         outline: "none",
       },
       _focus: {

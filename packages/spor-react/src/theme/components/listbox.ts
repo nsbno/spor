@@ -24,18 +24,22 @@ const config = helpers.defineMultiStyleConfig({
     },
     item: {
       paddingX: 2,
-      paddingY: 2,
+      paddingY: 1,
       marginY: 1,
       marginX: 1,
       borderRadius: "sm",
       color: mode("darkGrey", "white")(props),
       _hover: {
+        backgroundColor: mode("seaMist", "darkTeal")(props),
+        outline: "none",
+      },
+      _active: {
         backgroundColor: mode("mint", "darkTeal")(props),
         outline: "none",
       },
       _focus: {
         outline: "none",
-        backgroundColor: mode("mint", "darkTeal")(props),
+        backgroundColor: mode("seaMist", "darkTeal")(props),
       },
       _selected: {
         backgroundColor: mode("pine", "pine")(props),

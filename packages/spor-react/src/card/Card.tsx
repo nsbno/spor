@@ -25,10 +25,10 @@ export type CardProps = Exclude<BoxProps, "size"> & {
  * </Card>
  * ```
  *
- * There are lots of color schemes available. You can also set the size as either `sm` or `lg`. The default is `lg`.
+ * There are lots of color schemes available. You can also set the size as either `sm` or `lg`. The default is `sm`.
  *
  * ```tsx
- * <Card colorScheme="orange" size="sm">
+ * <Card colorScheme="orange" size="lg">
  *   A smaller card
  * </Card>
  * ```
@@ -45,7 +45,7 @@ export type CardProps = Exclude<BoxProps, "size"> & {
  * ```
  */
 export const Card = forwardRef<CardProps, As>(
-  ({ size = "lg", colorScheme = "white", children, ...props }, ref) => {
+  ({ size = "sm", colorScheme = "white", children, ...props }, ref) => {
     const styles = useStyleConfig("Card", {
       colorScheme,
       size,

@@ -17,7 +17,7 @@ import { createTexts, useTranslation } from "..";
 
 export type PasswordInputProps = InputProps;
 export const PasswordInput = forwardRef<PasswordInputProps, "input">(
-  ({ leftIcon, id, label, ...props }, ref) => {
+  ({ leftIcon, id, label, size, ...props }, ref) => {
     const { isOpen: isShowingPassword, onToggle } = useDisclosure();
     const { t } = useTranslation();
     const formControlProps = useFormControlContext();

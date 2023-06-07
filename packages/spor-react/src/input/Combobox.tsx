@@ -90,6 +90,7 @@ export function Combobox<T extends object>({
     ...rest,
     defaultFilter: contains,
     allowsEmptyCollection: Boolean(emptyContent),
+    shouldCloseOnBlur: true,
   });
 
   const {
@@ -111,8 +112,12 @@ export function Combobox<T extends object>({
         {...inputProps}
         ref={inputRef}
         label={label}
-        borderBottomLeftRadius={state.isOpen ? 0 : borderBottomLeftRadius}
-        borderBottomRightRadius={state.isOpen ? 0 : borderBottomRightRadius}
+        borderBottomLeftRadius={
+          state.isOpen && !isLoading ? 0 : borderBottomLeftRadius
+        }
+        borderBottomRightRadius={
+          state.isOpen && !isLoading ? 0 : borderBottomRightRadius
+        }
         borderTopLeftRadius={borderTopLeftRadius}
         borderTopRightRadius={borderTopRightRadius}
         marginBottom={marginBottom}
@@ -145,7 +150,7 @@ export function Combobox<T extends object>({
           )
         }
       />
-      {state.isOpen && (
+      {state.isOpen && !isLoading && (
         <Popover
           state={state}
           triggerRef={inputRef}

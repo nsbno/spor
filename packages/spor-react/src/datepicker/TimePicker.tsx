@@ -12,7 +12,7 @@ import { StyledField } from "./StyledField";
 import { TimeField } from "./TimeField";
 import { getCurrentTime, useCurrentLocale } from "./utils";
 
-type TimePickerProps = Omit<BoxProps, "defaultValue"> & {
+type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> & {
   /** The label. Defaults to a localized version of "Time" */
   label?: string;
   /** The name of the form field, if used in a regular form */

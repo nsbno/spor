@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 2.5.1
+
+### Patch Changes
+
+- 28a772f4: Datepicker, Timepicker: Changed color to meet contrast minimum requriement
+- f49fa9d2: TimePicker: Fixes typing bug in onChange prop
+- 643afb0d: Combobox: Fix glitchy loading state
+
 ## 2.5.0
 
 ### Minor Changes

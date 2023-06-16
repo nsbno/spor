@@ -30,6 +30,7 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
     state: ListState<T> | SelectState<T>;
     /** UI to render if the collection is empty */
     emptyContent?: React.ReactNode;
+    maxWidth?: BoxProps["maxWidth"];
   };
 
 /**
@@ -70,6 +71,7 @@ export function ListBox<T extends object>({
   isLoading,
   listBoxRef,
   state,
+  maxWidth,
   ...props
 }: ListBoxProps<T>) {
   const { listBoxProps } = useListBox(props, state, listBoxRef);
@@ -81,6 +83,7 @@ export function ListBox<T extends object>({
       ref={listBoxRef}
       sx={styles.container}
       aria-busy={isLoading}
+      maxWidth={maxWidth}
     >
       {state.collection.size === 0 && props.emptyContent}
       {Array.from(state.collection).map((item) =>

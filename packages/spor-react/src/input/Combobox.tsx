@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
 import { ColorSpinner, Input, InputProps, ListBox } from "..";
@@ -82,9 +82,11 @@ export function Combobox<T extends object>({
 }: ComboboxProps<T>) {
   const { contains } = useFilter({ sensitivity: "base" });
 
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const listBoxRef = useRef(null);
   const popoverRef = useRef(null);
+
+  const inputWidth = useInputWidth(inputRef);
 
   const state = useComboBoxState({
     ...rest,
@@ -153,7 +155,7 @@ export function Combobox<T extends object>({
       {state.isOpen && !isLoading && (
         <Popover
           state={state}
-          triggerRef={inputRef}
+          triggerRef={inputRef as any}
           ref={popoverRef}
           placement="bottom start"
         >
@@ -162,6 +164,7 @@ export function Combobox<T extends object>({
             state={state}
             listBoxRef={listBoxRef}
             emptyContent={emptyContent}
+            maxWidth={inputWidth}
           >
             {rest.children}
           </ListBox>
@@ -170,3 +173,28 @@ export function Combobox<T extends object>({
     </>
   );
 }
+
+const useInputWidth = (inputRef: React.RefObject<HTMLInputElement>) => {
+  const [inputWidth, setInputWidth] = useState("auto");
+  useEffect(() => {
+    const onResize = debounce(() => {
+      if (inputRef.current) {
+        setInputWidth(`${inputRef.current.offsetWidth}px`);
+      }
+    }, 67);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  return inputWidth;
+};
+
+const debounce = (fn: () => void, ms = 100) => {
+  let timer: any;
+  return () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      timer = null;
+      fn();
+    }, ms);
+  };
+};

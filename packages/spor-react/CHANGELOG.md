@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 2.5.2
+
+### Patch Changes
+
+- a884fea5: Combobox: Make the width of the attached listbox never outgrow its input field
+
 ## 2.5.1
 
 ### Patch Changes

@@ -29,6 +29,7 @@ const config = helpers.defineMultiStyleConfig({
       marginX: 1,
       borderRadius: "sm",
       color: mode("darkGrey", "white")(props),
+      cursor: "pointer",
       _hover: {
         backgroundColor: mode("seaMist", "darkTeal")(props),
         outline: "none",

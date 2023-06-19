@@ -13,16 +13,17 @@ export type HeadingProps = Omit<ChakraHeadingProps, "textStyle" | "as"> & {
 /**
  * Create your own fancy headings with this component.
  *
- * You can specify the variant, which is one of "xs", "sm", "md", "lg", "xl-sans", "xs-serif" and "2xl". The default is "xl-sans".
- *
- * ```tsx
- * <Heading variant="2xl">Look at me!</Heading>
- * ```
- *
- * You can also specify what level of heading you want. You do this with the `as` prop. The default is "h2".
+ * You have to specify what level of heading you want, depending on the context you are using the heading in.
+ * You do this with the `as` prop. The options are h1, h2, h3, h4, h5 and h6.
  *
  * ```tsx
  * <Heading as="h1">Page heading</Heading>
+ * ```
+ *
+ * You can specify the variant, which is one of "xs", "sm", "md", "lg", "xl-sans", "xs-serif" and "2xl". The default is "xl-sans".
+ *
+ * ```tsx
+ * <Heading as="h1" variant="2xl">Look at me!</Heading>
  * ```
  */
 export const Heading = ({ as, variant = "xl-display", ...props }: any) => {

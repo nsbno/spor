@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 2.5.3
+
+### Patch Changes
+
+- 2481b7f5: Use correct cursor for listbox items
+
 ## 2.5.2
 
 ### Patch Changes

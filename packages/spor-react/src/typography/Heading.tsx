@@ -4,7 +4,9 @@ import React from "react";
 
 type TextStyles = keyof typeof tokens.font.style;
 
-export type HeadingProps = Exclude<ChakraHeadingProps, "textStyle"> & {
+export type HeadingProps = Omit<ChakraHeadingProps, "textStyle" | "as"> & {
+  /** The heading level, e.g. h1, h2, h3... **/
+  as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   /** The size and style of the heading */
   variant?: TextStyles;
 };
@@ -23,10 +25,6 @@ export type HeadingProps = Exclude<ChakraHeadingProps, "textStyle"> & {
  * <Heading as="h1">Page heading</Heading>
  * ```
  */
-export const Heading = ({
-  variant = "xl-display",
-  as = "h2",
-  ...props
-}: any) => {
+export const Heading = ({ as, variant = "xl-display", ...props }: any) => {
   return <Text as={as} textStyle={variant} {...props} />;
 };

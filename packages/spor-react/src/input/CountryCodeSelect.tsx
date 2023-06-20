@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  BoxProps,
-  InfoSelect,
-  SelectItem,
-  createTexts,
-  useTranslation,
-} from "..";
+import { BoxProps, InfoSelect, Item, createTexts, useTranslation } from "..";
 
 import { getSupportedCallingCodes } from "awesome-phonenumber";
 
@@ -43,7 +37,7 @@ export const CountryCodeSelect = (props: CountryCodeSelectProps) => {
       items={callingCodes as any}
       {...props}
     >
-      {(item) => <SelectItem key={item.key}>{item.key}</SelectItem>}
+      {(item) => <Item key={item.key}>{item.key}</Item>}
     </InfoSelect>
   );
 };

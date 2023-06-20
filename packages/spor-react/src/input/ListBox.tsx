@@ -14,10 +14,8 @@ import {
   useListBoxSection,
   useOption,
 } from "react-aria";
-import { Item, type ListState, type SelectState } from "react-stately";
+import { type ListState, type SelectState } from "react-stately";
 
-/** @deprecated use Item instead */
-export const SelectItem = Item;
 export { Item, Section } from "react-stately";
 
 type ListBoxProps<T> = AriaListBoxProps<T> &
@@ -111,8 +109,6 @@ export function ItemLabel({ children }: { children: React.ReactNode }) {
     </Box>
   );
 }
-/** @deprecated use ItemLabel instead */
-export const SelectItemLabel = ItemLabel;
 
 /**
  * Renders a description for an Item.
@@ -128,8 +124,6 @@ export function ItemDescription({ children }: { children: React.ReactNode }) {
     </Box>
   );
 }
-/** @deprecated Use ItemDescription instead */
-export const SelectItemDescription = ItemDescription;
 
 type OptionProps = {
   item: Node<unknown>;

@@ -34,7 +34,7 @@ export function DateField(props: DateFieldProps) {
   const { fieldProps, labelProps } = useDateField(props, state, ref);
 
   return (
-    <Box minWidth="6rem">
+    <Box minWidth="6rem" width="100%">
       {props.label && (
         <FormLabel {...props.labelProps} {...labelProps} sx={styles.inputLabel}>
           {props.label}

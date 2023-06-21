@@ -26,7 +26,7 @@ import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
 
 type DatePickerProps = AriaDatePickerProps<DateValue> &
-  Pick<BoxProps, "minHeight"> & {
+  Pick<BoxProps, "minHeight" | "width"> & {
     variant: ResponsiveValue<"simple" | "with-trigger">;
     name?: string;
     showYearNavigation?: boolean;
@@ -45,6 +45,7 @@ export function DatePicker({
   errorMessage,
   minHeight,
   showYearNavigation,
+  width = "auto",
   ...props
 }: DatePickerProps) {
   const formControlProps = useFormControlContext();
@@ -92,7 +93,12 @@ export function DatePicker({
 
   return (
     <I18nProvider locale={locale}>
-      <Box position="relative" display="inline-flex" flexDirection="column">
+      <Box
+        position="relative"
+        display="inline-flex"
+        flexDirection="column"
+        width={width}
+      >
         <Popover
           {...dialogProps}
           isOpen={state.isOpen}
@@ -102,12 +108,7 @@ export function DatePicker({
           closeOnEsc
           returnFocusOnClose
         >
-          <InputGroup
-            {...groupProps}
-            ref={ref}
-            width="auto"
-            display="inline-flex"
-          >
+          <InputGroup {...groupProps} ref={ref} display="inline-flex">
             <PopoverAnchor>
               <StyledField
                 variant={responsiveVariant}

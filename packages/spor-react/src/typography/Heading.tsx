@@ -26,6 +26,10 @@ export type HeadingProps = Omit<ChakraHeadingProps, "textStyle" | "as"> & {
  * <Heading as="h1" variant="2xl">Look at me!</Heading>
  * ```
  */
-export const Heading = ({ as, variant = "xl-display", ...props }: any) => {
+export const Heading = ({
+  as,
+  variant = "xl-display",
+  ...props
+}: HeadingProps) => {
   return <Text as={as} textStyle={variant} {...props} />;
 };

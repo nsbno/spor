@@ -1,5 +1,21 @@
 # @vygruppen/spor-react
 
+## 3.0.0
+
+### Major Changes
+
+- d0f0c5ff: Remove deprecated components SelectItem, SelectItemLabel and SelectItemDescription.
+
+  To migrate, use Item, ItemLabel and ItemDescription, respectively.
+
+- 6c1f3d08: Heading: Make `as` prop required
+
+  This is a breaking change. Previously, this defaulted to "h2". Go through all usages and add `as="h1"` or whatever is correct for your context.
+
+### Patch Changes
+
+- 08b926e3: DatePicker: Make it possible to override width of datepicker
+
 ## 2.5.3
 
 ### Patch Changes

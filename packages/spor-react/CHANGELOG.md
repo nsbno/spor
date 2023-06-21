@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 3.0.1
+
+### Patch Changes
+
+- 828e4f38: Fix a typing issue with Heading
+
 ## 3.0.0
 
 ### Major Changes

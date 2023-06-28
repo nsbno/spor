@@ -7,6 +7,11 @@ import * as svgo from 'svgo';
 const svgFolder = '../spor-icon/svg';
 const targetFolder = './src/Spor/Icon';
 
+async function cleanAndsetupFolders() {
+    await fs.rm('./src', { recursive: true, force: true });
+    await fs.mkdir(targetFolder, { recursive: true });
+}
+
 async function generateSvgs() {
     await cleanAndsetupFolders()
 
@@ -44,7 +49,7 @@ async function generateSvgs() {
             const svgImpls = svgs.map((svg) => svg.impl);
             const uniqueIconSizes = new Set([...svgs.map(svg => svg.size)])
 
-            const moduleHeader = generateModuleHeader(module.name, svgNames);
+            const moduleHeader = generateModuleHeader(module.name, svgNames, uniqueIconSizes);
             const src = [moduleHeader].concat(svgImpls)
                 .join('\n\n\n{-|-}\n');
 
@@ -71,10 +76,6 @@ function parseFileName(fileName) {
     }
 }
 
-async function cleanAndsetupFolders() {
-    await fs.rm('./src', { recursive: true, force: true });
-    await fs.mkdir(targetFolder, { recursive: true });
-}
 
 // Default fill color is set on parent with Elm, to allow differentiation on backgrounds, etc.
 function removeDefaultFillColor(svgString) {

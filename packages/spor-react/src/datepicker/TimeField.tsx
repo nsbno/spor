@@ -28,6 +28,7 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
         htmlFor={fieldProps.id}
         marginBottom={0}
         fontSize="mobile.xs"
+        cursor="text"
       >
         {props.label}
       </FormLabel>

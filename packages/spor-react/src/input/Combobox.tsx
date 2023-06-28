@@ -93,6 +93,7 @@ export function Combobox<T extends object>({
     defaultFilter: contains,
     allowsEmptyCollection: Boolean(emptyContent),
     shouldCloseOnBlur: true,
+    label,
   });
 
   const {

@@ -165,8 +165,6 @@ ${iconName} iconConfig =
 
 
 function generateModuleHeader(moduleName, svgNames, sizes) {
-    const svgNameExportStr = svgNames.join(', ');
-
     return `module Spor.Icon.${moduleName} exposing (toHtml, FillType(..), IconConfig, Size(..), IconVariant(..), icon, withColor)
 
 {-| ${moduleName}

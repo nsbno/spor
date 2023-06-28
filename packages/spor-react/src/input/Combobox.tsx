@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
-import { ColorSpinner, Input, InputProps, ListBox } from "..";
+import { ColorSpinner, Input, InputProps, ListBox, useOutsideClick } from "..";
 import { Popover } from "./Popover";
 
 export type ComboboxProps<T> = AriaComboBoxProps<T> & {
@@ -94,6 +94,12 @@ export function Combobox<T extends object>({
     allowsEmptyCollection: Boolean(emptyContent),
     shouldCloseOnBlur: true,
     label,
+  });
+
+  useOutsideClick({
+    ref: listBoxRef,
+    handler: state.close,
+    enabled: true,
   });
 
   const {

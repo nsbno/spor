@@ -160,6 +160,7 @@ export function Combobox<T extends object>({
           triggerRef={inputRef as any}
           ref={popoverRef}
           placement="bottom start"
+          shouldFlip={false}
         >
           <ListBox
             {...listBoxProps}

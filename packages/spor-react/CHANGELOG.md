@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 3.0.3
+
+### Patch Changes
+
+- 7e9b8990: DatePicker, TimePicker: Use cursor: text; everywhere inside of the date input field
+- 7e9b8990: Combobox: Make padding-right apply to the loading indicator as well
+
 ## 3.0.2
 
 ### Patch Changes

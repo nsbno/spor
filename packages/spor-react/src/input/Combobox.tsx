@@ -141,6 +141,7 @@ export function Combobox<T extends object>({
             <ColorSpinner
               width="1.5rem"
               alignSelf="center"
+              paddingRight={paddingRight}
               css={{
                 div: {
                   display: "flex",

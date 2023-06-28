@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 3.0.2
+
+### Patch Changes
+
+- ed4dc214: NumericStepper: Make label work as "add one" button if the value is zero
+- 0e951ddf: Input: Display text cursor for form labels inside of inputs.
+
 ## 3.0.1
 
 ### Patch Changes

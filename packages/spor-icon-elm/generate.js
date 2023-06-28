@@ -171,6 +171,12 @@ function generateModuleHeader(moduleName, svgNames, sizes) {
 
 @docs toHtml, FillType(..), IconConfig, Size(..), IconVariant(..), icon, withColor
 
+Example usage:
+
+ Icon.icon Icon.Size18 Icon.Fill Icon.Home
+    |> Icon.withColor "#FFF"
+    |> Icon.toHtml
+
 -}
 
 import Svg

@@ -70,6 +70,7 @@ const config = helpers.defineMultiStyleConfig({
       fontSize: "mobile.xs",
       color: mode("darkGrey", "white")(props),
       margin: 0,
+      cursor: "text",
     },
     dateTimeSegment: {
       color: mode(

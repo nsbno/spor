@@ -16,7 +16,7 @@ import {
 import { DateValue } from "@internationalized/date";
 import { useDatePickerState } from "@react-stately/datepicker";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, { useRef } from "react";
+import React, { forwardRef, useRef } from "react";
 import { AriaDatePickerProps, I18nProvider, useDatePicker } from "react-aria";
 import { FormErrorMessage } from "..";
 import { Calendar } from "./Calendar";
@@ -40,118 +40,133 @@ type DatePickerProps = AriaDatePickerProps<DateValue> &
  * <DatePicker label="Dato" variant="simple" />
  * ```
  */
-export function DatePicker({
-  variant,
-  errorMessage,
-  minHeight,
-  showYearNavigation,
-  width = "auto",
-  ...props
-}: DatePickerProps) {
-  const formControlProps = useFormControlContext();
-  const state = useDatePickerState({
-    ...props,
-    shouldCloseOnSelect: true,
-    errorMessage,
-    isRequired: props.isRequired ?? formControlProps?.isRequired,
-    validationState: formControlProps?.isInvalid ? "invalid" : "valid",
-  });
-  const ref = useRef(null);
-  const {
-    groupProps,
-    labelProps,
-    fieldProps,
-    buttonProps,
-    dialogProps,
-    calendarProps,
-    errorMessageProps,
-  } = useDatePicker(props, state, ref);
+export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
+  (
+    {
+      variant,
+      errorMessage,
+      minHeight,
+      showYearNavigation,
+      width = "auto",
+      ...props
+    },
+    externalRef
+  ) => {
+    const formControlProps = useFormControlContext();
+    const state = useDatePickerState({
+      ...props,
+      shouldCloseOnSelect: true,
+      errorMessage,
+      isRequired: props.isRequired ?? formControlProps?.isRequired,
+      validationState: formControlProps?.isInvalid ? "invalid" : "valid",
+    });
+    const internalRef = useRef<HTMLDivElement>(null);
+    const ref = externalRef ?? internalRef;
+    const {
+      groupProps,
+      labelProps,
+      fieldProps,
+      buttonProps,
+      dialogProps,
+      calendarProps,
+      errorMessageProps,
+    } = useDatePicker(
+      props,
+      state,
+      ref as React.MutableRefObject<HTMLDivElement>
+    );
 
-  const responsiveVariant =
-    useBreakpointValue(typeof variant === "string" ? [variant] : variant) ??
-    "simple";
+    const responsiveVariant =
+      useBreakpointValue(typeof variant === "string" ? [variant] : variant) ??
+      "simple";
 
-  const locale = useCurrentLocale();
+    const locale = useCurrentLocale();
 
-  const handleEnterClick = (e: React.KeyboardEvent) => {
-    if (responsiveVariant === "simple" && e.key === "Enter" && !state.isOpen) {
-      // Don't submit the form
-      e.stopPropagation();
-      state.setOpen(true);
-    }
-  };
+    const handleEnterClick = (e: React.KeyboardEvent) => {
+      if (
+        responsiveVariant === "simple" &&
+        e.key === "Enter" &&
+        !state.isOpen
+      ) {
+        // Don't submit the form
+        e.stopPropagation();
+        state.setOpen(true);
+      }
+    };
 
-  const onFieldClick = () => {
-    if (!hasTrigger) {
-      state.setOpen(true);
-    }
-  };
+    const onFieldClick = () => {
+      if (!hasTrigger) {
+        state.setOpen(true);
+      }
+    };
 
-  const hasTrigger = responsiveVariant === "with-trigger";
+    const hasTrigger = responsiveVariant === "with-trigger";
 
-  const styles = useMultiStyleConfig("Datepicker", {});
+    const styles = useMultiStyleConfig("Datepicker", {});
 
-  return (
-    <I18nProvider locale={locale}>
-      <Box
-        position="relative"
-        display="inline-flex"
-        flexDirection="column"
-        width={width}
-      >
-        <Popover
-          {...dialogProps}
-          isOpen={state.isOpen}
-          onClose={() => state.setOpen(false)}
-          onOpen={() => state.setOpen(true)}
-          closeOnBlur
-          closeOnEsc
-          returnFocusOnClose
+    return (
+      <I18nProvider locale={locale}>
+        <Box
+          position="relative"
+          display="inline-flex"
+          flexDirection="column"
+          width={width}
         >
-          <InputGroup {...groupProps} ref={ref} display="inline-flex">
-            <PopoverAnchor>
-              <StyledField
-                variant={responsiveVariant}
-                onClick={onFieldClick}
-                onKeyPress={handleEnterClick}
-                paddingX={3}
-                minHeight={minHeight}
-              >
-                {!hasTrigger && (
-                  <CalendarOutline24Icon marginRight={2} alignSelf="center" />
-                )}
-                <DateField
-                  label={props.label}
-                  labelProps={labelProps}
-                  name={props.name}
-                  {...fieldProps}
-                />
-              </StyledField>
-            </PopoverAnchor>
-            {hasTrigger && <CalendarTriggerButton {...buttonProps} />}
-          </InputGroup>
-          <FormErrorMessage {...errorMessageProps}>
-            {errorMessage}
-          </FormErrorMessage>
-          {state.isOpen && !props.isDisabled && (
-            <Portal>
-              <PopoverContent
-                color="darkGrey"
-                boxShadow="md"
-                sx={styles.calendar}
-              >
-                <PopoverArrow sx={styles.arrow} />
-                <PopoverBody>
-                  <Calendar
-                    {...calendarProps}
-                    showYearNavigation={showYearNavigation}
+          <Popover
+            {...dialogProps}
+            isOpen={state.isOpen}
+            onClose={state.close}
+            onOpen={state.open}
+            closeOnBlur
+            closeOnEsc
+            returnFocusOnClose
+          >
+            <InputGroup {...groupProps} display="inline-flex">
+              <PopoverAnchor>
+                <StyledField
+                  variant={responsiveVariant}
+                  onClick={onFieldClick}
+                  onKeyPress={handleEnterClick}
+                  paddingX={3}
+                  minHeight={minHeight}
+                >
+                  {!hasTrigger && (
+                    <CalendarOutline24Icon marginRight={2} alignSelf="center" />
+                  )}
+                  <DateField
+                    label={props.label}
+                    labelProps={labelProps}
+                    name={props.name}
+                    ref={ref}
+                    {...fieldProps}
                   />
-                </PopoverBody>
-              </PopoverContent>
-            </Portal>
-          )}
-        </Popover>
-      </Box>
-    </I18nProvider>
-  );
-}
+                </StyledField>
+              </PopoverAnchor>
+              {hasTrigger && <CalendarTriggerButton {...buttonProps} />}
+            </InputGroup>
+            <FormErrorMessage {...errorMessageProps}>
+              {errorMessage}
+            </FormErrorMessage>
+            {state.isOpen && !props.isDisabled && (
+              <Portal>
+                <PopoverContent
+                  color="darkGrey"
+                  boxShadow="md"
+                  sx={styles.calendar}
+                >
+                  <PopoverArrow sx={styles.arrow} />
+                  <PopoverBody>
+                    <Calendar
+                      {...calendarProps}
+                      showYearNavigation={showYearNavigation}
+                    />
+                  </PopoverBody>
+                </PopoverContent>
+              </Portal>
+            )}
+          </Popover>
+        </Box>
+      </I18nProvider>
+    );
+  }
+);

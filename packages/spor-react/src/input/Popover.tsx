@@ -39,6 +39,11 @@ type PopoverProps = {
    * Defaults to false.
    */
   isNonModal?: boolean;
+  /** Whether or not the popover renders a backdrop that stops the user from interacting with background elements
+   *
+   * Defaults to true
+   */
+  hasBackdrop?: boolean;
 };
 /**
  * Internal popover component.
@@ -56,6 +61,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       placement = "bottom",
       shouldFlip = false,
       isNonModal = false,
+      hasBackdrop = true,
     },
     ref
   ) => {
@@ -77,7 +83,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
     return (
       <Overlay>
-        <Box {...underlayProps} position="fixed" inset="0" />
+        {hasBackdrop && <Box {...underlayProps} position="fixed" inset="0" />}
         <Box
           {...popoverProps}
           ref={popoverRef}

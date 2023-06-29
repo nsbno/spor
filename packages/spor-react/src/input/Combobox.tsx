@@ -167,6 +167,7 @@ export function Combobox<T extends object>({
           ref={popoverRef}
           placement="bottom start"
           shouldFlip={false}
+          hasBackdrop={false}
         >
           <ListBox
             {...listBoxProps}

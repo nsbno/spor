@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 3.0.4
+
+### Patch Changes
+
+- 6cbe41ca: Combobox: Remove popover backdrop
+- 3d852b87: Datepicker: Add ref support
+
 ## 3.0.3
 
 ### Patch Changes

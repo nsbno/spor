@@ -5,11 +5,13 @@ import {
   Textarea as ChakraTextarea,
   TextareaProps as ChakraTextareaProps,
   useFormControlContext,
+  InputGroup,
 } from "@chakra-ui/react";
 import React, { useId } from "react";
 
 export type TextareaProps = Exclude<ChakraTextareaProps, "variant" | "size"> & {
   label: string;
+  variant?: "default" | "floating";
 };
 /**
  * Text area that works with the `FormControl` component.
@@ -30,12 +32,23 @@ export const Textarea = forwardRef<TextareaProps, "textarea">((props, ref) => {
   const formControlProps = useFormControlContext();
   const fallbackId = `textarea-${useId()}`;
   const inputId = props.id ?? formControlProps?.id ?? fallbackId;
-  return (
-    <Box {...spacingProps}>
-      <FormLabel htmlFor={inputId}>{label}</FormLabel>
-      <ChakraTextarea {...rest} id={inputId} ref={ref} />
-    </Box>
-  );
+
+  switch (props.variant) {
+    case "floating":
+      return (
+        <InputGroup position="relative" {...spacingProps}>
+          <ChakraTextarea {...rest} id={inputId} ref={ref} placeholder=" " />{" "}
+          <FormLabel htmlFor={inputId}>{label}</FormLabel>
+        </InputGroup>
+      );
+    default:
+      return (
+        <Box {...spacingProps}>
+          <FormLabel htmlFor={inputId}>{label}</FormLabel>
+          <ChakraTextarea {...rest} id={inputId} ref={ref} />{" "}
+        </Box>
+      );
+  }
 });
 
 function getSpacingProps<T extends TextareaProps>(props: T) {

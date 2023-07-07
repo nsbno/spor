@@ -10,13 +10,12 @@ import {
 import React, { useId } from "react";
 
 export type TextareaProps = Exclude<ChakraTextareaProps, "variant" | "size"> & {
-  label: string;
-  variant?: "default" | "floating";
+  label?: string;
 };
 /**
  * Text area that works with the `FormControl` component.
  *
- * Note that it requires you to pass a label.
+ * Providing a label is optional.
  *
  * ```tsx
  * <FormControl>
@@ -33,22 +32,16 @@ export const Textarea = forwardRef<TextareaProps, "textarea">((props, ref) => {
   const fallbackId = `textarea-${useId()}`;
   const inputId = props.id ?? formControlProps?.id ?? fallbackId;
 
-  switch (props.variant) {
-    case "floating":
-      return (
-        <InputGroup position="relative" {...spacingProps}>
-          <ChakraTextarea {...rest} id={inputId} ref={ref} placeholder=" " />{" "}
-          <FormLabel htmlFor={inputId}>{label}</FormLabel>
-        </InputGroup>
-      );
-    default:
-      return (
-        <Box {...spacingProps}>
-          <FormLabel htmlFor={inputId}>{label}</FormLabel>
-          <ChakraTextarea {...rest} id={inputId} ref={ref} />{" "}
-        </Box>
-      );
-  }
+  return (
+    <InputGroup position="relative" {...spacingProps}>
+      <ChakraTextarea {...rest} id={inputId} ref={ref} placeholder=" " />
+      {label && (
+        <FormLabel htmlFor={inputId} id={`label`}>
+          {label}
+        </FormLabel>
+      )}
+    </InputGroup>
+  );
 });
 
 function getSpacingProps<T extends TextareaProps>(props: T) {

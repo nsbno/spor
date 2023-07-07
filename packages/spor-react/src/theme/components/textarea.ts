@@ -7,24 +7,16 @@ const config = defineStyleConfig({
     minHeight: "5rem",
     verticalAlign: "top",
     appearance: "none",
-  }),
-  variants: {
-    default: {
-      py: 3,
-    },
-    floating: {
-      pt: 2,
-      "&:not(:placeholder-shown)": {
+    pt: 2,
+    "&:not(:placeholder-shown)": {
+      "&:has(+ label)": {
         pt: 4,
-        "& + label": {
-          transform: "scale(0.825) translateY(-10px)",
-        },
+      },
+      "& + label": {
+        transform: "scale(0.825) translateY(-10px)",
       },
     },
-  },
-  defaultProps: {
-    variant: "default",
-  },
+  }),
 });
 
 export default config;

@@ -7,10 +7,10 @@ const config = defineStyleConfig({
     minHeight: "5rem",
     verticalAlign: "top",
     appearance: "none",
-    pt: 2,
+    paddingTop: 2,
     "&:not(:placeholder-shown)": {
       "&:has(+ label)": {
-        pt: 4,
+        paddingTop: 4
       },
       "& + label": {
         transform: "scale(0.825) translateY(-10px)",

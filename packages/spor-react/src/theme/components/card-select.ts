@@ -31,7 +31,7 @@ const config = helpers.defineMultiStyleConfig({
       borderRadius: "sm",
       boxShadow: "md",
       padding: 3,
-      textColor: mode("darkGrey", "lightGrey")(props), 
+      color: mode("darkGrey", "lightGrey")(props), 
       backgroundColor: mode("white", "darkGrey")(props),
     },
   }),

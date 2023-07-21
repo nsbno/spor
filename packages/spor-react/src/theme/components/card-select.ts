@@ -32,7 +32,7 @@ const config = helpers.defineMultiStyleConfig({
       boxShadow: "md",
       padding: 3,
       color: mode("darkGrey", "lightGrey")(props), 
-      backgroundColor: mode("white", "darkGrey")(props),
+      backgroundColor: mode("white", "night")(props),
     },
   }),
   variants: {

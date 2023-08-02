@@ -5,17 +5,7 @@
     "license": "MIT",
     "version": "1.0.0",
     "exposed-modules": [
-        "Spor.Icon.Communication",
-        "Spor.Icon.Feedback",
-        "Spor.Icon.Layout",
-        "Spor.Icon.Map",
-        "Spor.Icon.Misc",
-        "Spor.Icon.Navigation",
-        "Spor.Icon.OnboardService",
-        "Spor.Icon.Payment",
-        "Spor.Icon.SocialMedia",
-        "Spor.Icon.Transportation",
-        "Spor.Icon.Travel"
+        "Spor.Icon.Icons"
     ],
     "elm-version": "0.19.1 <= v < 0.20.0",
     "dependencies": {

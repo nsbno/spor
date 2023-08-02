@@ -5,7 +5,7 @@ import svg2elm from 'svg2elm';
 import * as svgo from 'svgo';
 
 const svgFolder = '../spor-icon/svg';
-const targetFolder = './src/Spor/Icon';
+const targetFolder = './src/Spor';
 
 const groupBy = (xs, key) => {
     return xs.reduce(function(rv, x) {
@@ -79,11 +79,11 @@ async function generateSvgs() {
             fillFunctionName: fills.find(fillSvg => fillSvg.name === svg.name) ? svg.functionName + "Fill_" : svg.functionName + "Outline_"
         }))
 
-        const moduleHeader = generateModuleHeader("Icons", implementationNames.sort((a, b) => lexicalSortUniqueStrings(a.functionName, b.functionName)), uniqueIconSizes);
+        const moduleHeader = generateModuleHeader("Icon", implementationNames.sort((a, b) => lexicalSortUniqueStrings(a.functionName, b.functionName)), uniqueIconSizes);
         const src = [moduleHeader].concat(svgImpls)
             .join('\n\n\n{-|-}\n');
 
-        const targetFile = path.join(targetFolder, `Icons.elm`);
+        const targetFile = path.join(targetFolder, `Icon.elm`);
 
         fs.writeFile(targetFile, src);
     })
@@ -157,11 +157,8 @@ function generateToHtmlCase(icons) {
     return `
 {-| -}
 toHtml : IconConfig -> Html msg
-toHtml iconConfig =
-    let 
-        icon_ = getIcon iconConfig
-    in
-    case icon_ of
+toHtml ((IconConfig iconOptions) as iconConfig) =
+    case iconOptions.icon of
         ${icons.map(icon => `${camelCase(icon, { pascalCase: true })} ->
             ${icon} iconConfig
         `).join("\n        ")}
@@ -203,7 +200,7 @@ sizeToEm size =
 
 
 function generateModuleHeader(moduleName, svgs, sizes) {
-    return `module Spor.Icon.${moduleName} exposing (toHtml, FillType(..), IconConfig, Size(..), IconVariant(..), icon, withColor)
+    return `module Spor.${moduleName} exposing (toHtml, FillType(..), IconConfig, Size(..), IconVariant(..), icon, withColor)
 
 {-| ${moduleName}
 
@@ -257,12 +254,6 @@ withColor : String -> IconConfig -> IconConfig
 withColor color (IconConfig config) =
        IconConfig { config | color = color }
 
-
-
-{-| -}
-getIcon : IconConfig -> IconVariant
-getIcon (IconConfig iconConfig) =
-        iconConfig.icon
 
 
 ${sizeToEmCase(sizes)}

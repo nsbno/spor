@@ -119,7 +119,7 @@ function removeDefaultFillColor(svgString) {
 }
 
 function removeHardcodedSize(svgString) {
-    return svgString.replace(/width="\d{2}"/,"").replace(/height="\d{2}"/, "")
+    return svgString.replace(/width="\d+"/,"").replace(/height="\d+"/, "")
 }
 
 function generateIconVariants(iconNames) {

@@ -1,75 +1,322 @@
-import * as fs from 'fs/promises';
-import * as path from 'path';
-import camelCase from 'camelcase';
-import svg2elm from 'svg2elm';
-import * as svgo from 'svgo';
+import * as fs from "fs/promises";
+import * as path from "path";
+import camelCase from "camelcase";
+import svg2elm from "svg2elm";
+import * as svgo from "svgo";
 
-const svgFolder = '../spor-icon/svg';
-const targetFolder = './src/Spor/Icon';
+const svgFolder = "../spor-icon/svg";
+const targetFolder = "./src/Spor";
+
+const groupBy = (xs, key) => {
+  return xs.reduce(function (rv, x) {
+    (rv[x[key]] = rv[x[key]] || []).push(x);
+    return rv;
+  }, {});
+};
+
+const maxBy = (items, field) =>
+  items.reduce((seed, item) => {
+    return seed && seed[field] > item[field] ? seed : item;
+  }, null);
 
 async function generateSvgs() {
-    await fs.rm('./src', { recursive: true, force: true });
-    await fs.mkdir(targetFolder, { recursive: true });
+  await fs.rm("./src", { recursive: true, force: true });
+  await fs.mkdir(targetFolder, { recursive: true });
 
-    (await fs.readdir(svgFolder))
-        .map((folderName) => {
-            return {
-                name: camelCase(folderName, { pascalCase: true }),
-                path: path.join(svgFolder, folderName)
-            };
-        }).map(async (module) => {
-            const svgPromises = (await fs.readdir(module.path))
-                .filter((fileName) => fileName.endsWith('.svg'))
-                .map(async (fileName) => {
-                    const filePath = path.join(module.path, fileName);
+  const svgs = (await fs.readdir(svgFolder))
+    .map((folderName) => {
+      return {
+        name: camelCase(folderName, { pascalCase: true }),
+        path: path.join(svgFolder, folderName),
+      };
+    })
+    .map(async (module) => {
+      const svgPromises = (await fs.readdir(module.path))
+        .filter((fileName) => fileName.endsWith(".svg"))
+        .map(async (fileName) => {
+          const filePath = path.join(module.path, fileName);
 
-                    const svg = await fs.readFile(filePath, { encoding: 'utf-8' });
-                    const optimizedSvg = svgo.optimize(svg);
+          const svg = await fs.readFile(filePath, { encoding: "utf-8" });
+          const fileNameAsParts = parseFileName(fileName);
+          const optimizedSvg = svgo.optimize(svg);
+          const svgWithoutHardcodedSize = removeHardcodedSize(
+            optimizedSvg.data
+          );
+          const svgWithoutDefaultFill = removeDefaultFillColor(
+            svgWithoutHardcodedSize
+          );
+          const elmName = camelCase(
+            fileNameAsParts.iconName + " " + fileNameAsParts.fillType
+          );
+          const elmSvg = await svg2elm.generateSvgFunction(
+            elmName,
+            svgWithoutDefaultFill
+          );
+          const actualElmName = elmSvg.split(":")[0].trim(); // Some words are treated differently by svg2elm and camelCase, such as "email" which one of them turns to "eMail"
+          const elmSvgInternal = injectUnderscoreToImpl(elmSvg, actualElmName);
 
-                    const elmName = camelCase(fileName.replace(/.svg$/, ''));
-                    const elmSvg = await svg2elm.generateSvgFunction(elmName, optimizedSvg.data);
-                    const actualElmName = elmSvg.split(':')[0].trim();
-
-                    return {
-                        name: actualElmName,
-                        impl: elmSvg
-                    };
-                });
-
-            const svgs = await Promise.all(svgPromises);
-            const svgNames = svgs.map((svg) => svg.name);
-            const svgImpls = svgs.map((svg) => svg.impl);
-
-            const moduleHeader = generateModuleHeader(module.name, svgNames);
-            const src = [moduleHeader].concat(svgImpls)
-                .join('\n\n\n{-|-}\n');
-
-            return {
-                ...module,
-                src: src
-            };
-        }).forEach(async (modulePromise) => {
-            const module = await modulePromise;
-
-            const targetFile = path.join(targetFolder, `${module.name}.elm`);
-
-            await fs.writeFile(targetFile, module.src);
+          return {
+            internalName: actualElmName,
+            name: fileNameAsParts.iconName,
+            impl: elmSvgInternal,
+            size: fileNameAsParts.size,
+            sizeAsInt: Number(fileNameAsParts.size),
+            type: fileNameAsParts.fillType,
+          };
         });
+
+      const svgs = await Promise.all(svgPromises);
+      return svgs;
+    });
+  await Promise.all(svgs).then((svgs) => {
+    const gatheredSvgs = svgs.flat();
+    const outlines = gatheredSvgs.filter((svg) => svg.type === "outline");
+    const fills = gatheredSvgs.filter((svg) => svg.type === "fill");
+    const maxSizeFills = Object.values(groupBy(fills, "name")).map((group) =>
+      maxBy(group, "sizeAsInt")
+    );
+    const maxSizeOutlines = Object.values(groupBy(outlines, "name")).map(
+      (group) => maxBy(group, "sizeAsInt")
+    );
+
+    // Autogenerated elm svgs not to be exposed to end-user. To be appended to bottom of elm-file and used in toHtml.
+    const svgImpls = [...maxSizeFills, ...maxSizeOutlines].map(
+      (svg) => svg.impl
+    );
+
+    // "Allowed" icon sizes based on existing file names.
+    const uniqueIconSizes = Array.from(
+      new Set([...gatheredSvgs.map((svg) => svg.size)])
+    );
+
+    const uniqueFunctionNames = Object.entries(
+      groupBy(gatheredSvgs, "name")
+    ).map((pair) => ({
+      name: pair[0],
+      functionName: pair[1][0].internalName
+        .replace("Fill", "")
+        .replace("Outline", ""),
+    }));
+
+    // Some icons exists as only fill or outline, or even none (like the Vy-icon).
+    // The simple approach is thus to default to the one who exists if trying to set any other.
+    const implementationNames = uniqueFunctionNames.map((svg) => {
+      const maybeOutline = maxSizeOutlines.find(
+        (outlineSvg) => outlineSvg.name === svg.name
+      );
+      const maybeFill = maxSizeFills.find(
+        (fillSvg) => fillSvg.name === svg.name
+      );
+      const originalSize = maybeOutline ? maybeOutline.size : maybeFill.size;
+      return {
+        viewBox: `0 0 ${originalSize} ${originalSize}`,
+        functionName: svg.functionName,
+        outlineFunctionName: maybeOutline
+          ? svg.functionName + "Outline_"
+          : svg.functionName + "Fill_",
+        fillFunctionName: maybeFill
+          ? svg.functionName + "Fill_"
+          : svg.functionName + "Outline_",
+      };
+    });
+
+    const moduleHeader = generateModuleHeader(
+      "Icon",
+      implementationNames.sort((a, b) =>
+        lexicalSortUniqueStrings(a.functionName, b.functionName)
+      ),
+      uniqueIconSizes
+    );
+    const src = [moduleHeader].concat(svgImpls).join("\n\n\n{-|-}\n");
+
+    const targetFile = path.join(targetFolder, `Icon.elm`);
+
+    fs.writeFile(targetFile, src);
+  });
 }
 
-function generateModuleHeader(moduleName, svgNames) {
-    const svgNameExportStr = svgNames.join(', ');
+function lexicalSortUniqueStrings(string1, string2) {
+  return string1 > string2 ? 1 : -1;
+}
 
-    return `module Spor.Icon.${moduleName} exposing (${svgNameExportStr})
+// Most file names are structured as "name-[fill|outline]-[size]x[size].svg"
+// If we don't have either fill or outline, we just assign one of them as "placeholder"-type.
+// Using the icon with any of the two types will still return the same icon.
+function parseFileName(fileName) {
+  const [iconName, fillType, size] = fileName.split("-");
+  const sizeAsNumber = size ? size.split("x")[0] : "24";
+  const fillTypeWithDefault =
+    fillType === "outline" || fillType === "fill" ? fillType : "outline";
+  const sizeWithDefault = isNaN(sizeAsNumber) ? "24" : sizeAsNumber;
+  return {
+    iconName,
+    fillType: fillTypeWithDefault,
+    size: sizeWithDefault,
+  };
+}
 
-{-| ${moduleName} icons
+function injectUnderscoreToImpl(implString, name) {
+  return implString.replaceAll(name, name + "_");
+}
 
-@docs ${svgNameExportStr}
+// Default fill color is set on parent with Elm, to allow differentiation on backgrounds, etc.
+function removeDefaultFillColor(svgString) {
+  return svgString.replaceAll('fill="#2B2B2C"', "");
+}
+
+function removeHardcodedSize(svgString) {
+  return svgString.replace(/width="\d+"/, "").replace(/height="\d+"/, "");
+}
+
+function generateIconVariants(iconNames) {
+  const [firstIcon, ...rest] = iconNames.map((icon) =>
+    camelCase(icon, { pascalCase: true })
+  );
+  return `
+{-| -}
+type IconVariant =
+    ${firstIcon}
+    ${rest.map((iconName) => `| ${iconName}`).join("\n    ")}
+    `;
+}
+
+// Generates the Size-type from a list of unique icon sizes. This list is generated by parsing SVG file names.
+function generateSizes(uniqueIconSizes) {
+  const [firstSize, ...rest] = uniqueIconSizes
+    .map((size) => camelCase(size, { pascalCase: true }))
+    .sort();
+  return ` 
+{-| -}
+type Size =
+    Size${firstSize}
+    ${rest.map((size) => `| Size${size}`).join("\n    ")}
+    `;
+}
+
+/*
+
+type Size =
+    Size1
+    | Size2
+    | Size3
+
+*/
+
+function generateToHtmlCase(icons) {
+  return `
+{-| -}
+toHtml : IconConfig -> Html msg
+toHtml ((IconConfig iconOptions) as iconConfig) =
+    Html.Styled.fromUnstyled <| case iconOptions.icon of
+        ${icons
+          .map(
+            (icon) => `${camelCase(icon, { pascalCase: true })} ->
+            ${icon} iconConfig
+        `
+          )
+          .join("\n        ")}
+    `;
+}
+
+// Generates the function for each SVG with height, width, and fill or stroke.
+function generateBasicCase(svg) {
+  return `
+{-| -}
+${svg.functionName} : IconConfig -> Svg.Svg msg
+${svg.functionName} (IconConfig iconConfig) =
+    let
+        attributes =
+            [ attribute "width" (sizeToEm iconConfig.size), attribute "height" (sizeToEm iconConfig.size), attribute "viewBox" "${svg.viewBox}" ]
+            
+    in
+    case iconConfig.variant of
+        Fill ->
+            ${svg.fillFunctionName} <| (attribute "fill" iconConfig.color) :: attributes
+        
+        Stroke ->
+            ${svg.outlineFunctionName} <| (attribute "stroke" iconConfig.color) :: attributes
+
+`;
+}
+
+function sizeToEmCase(sizes) {
+  return `
+{-| -}
+sizeToEm : Size -> String
+sizeToEm size =
+    case size of
+        ${sizes
+          .map(
+            (sizeType) => `Size${sizeType} ->
+            "${sizeType / 16 + "em"}"`
+          )
+          .join("\n        ")}
+    `;
+}
+
+function generateModuleHeader(moduleName, svgs, sizes) {
+  return `module Spor.${moduleName} exposing (toHtml, FillType(..), IconConfig, Size(..), IconVariant(..), icon, withColor)
+
+{-| ${moduleName}
+
+@docs toHtml, FillType(..), IconConfig, Size(..), IconVariant(..), icon, withColor
+
+Example usage:
+
+ Icon.icon Icon.Size18 Icon.Fill Icon.Home
+    |> Icon.withColor "#FFF"
+    |> Icon.toHtml
 
 -}
 
 import Svg
+import Html.Styled exposing (Html)
 import VirtualDom exposing (Attribute, attribute)
+
+
+${generateIconVariants(svgs.map((svg) => svg.functionName))}
+
+${generateSizes(sizes)}
+
+{-| -}
+type FillType
+    = Fill
+    | Stroke
+
+
+{-| -}
+type IconConfig
+    = IconConfig
+        { icon : IconVariant
+        , size : Size
+        , variant : FillType
+        , color : String
+        }
+
+
+{-| -}
+icon : Size -> FillType -> IconVariant -> IconConfig
+icon size fillType iconVariant =
+        IconConfig { 
+            icon = iconVariant
+            , size = size
+            , variant = fillType
+            , color = "#2B2B2C"
+        }
+
+{-| -}
+withColor : String -> IconConfig -> IconConfig
+withColor color (IconConfig config) =
+       IconConfig { config | color = color }
+
+
+
+${sizeToEmCase(sizes)}
+
+${generateToHtmlCase(svgs.map((svg) => svg.functionName))}
+
+
+${svgs.map((svg) => generateBasicCase(svg)).join("\n\n")}
 `;
 }
 

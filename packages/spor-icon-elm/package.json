@@ -6,13 +6,18 @@
   "description": "Spor icons as Elm SVG nodes",
   "scripts": {
     "test": "exit 0",
-    "generate": "node ./generate.js"
+    "generate": "node ./generate.js && elm make --output=/dev/null && elm-format src/ --yes"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "camelcase": "^7.0.0",
+    "elm": "^0.19.1-5",
+    "elm-format": "^0.8.7",
     "svg2elm": "^1.2.4",
     "svgo": "^2.8.0"
+  },
+  "dependencies": {
+    "patch-package": "^7.0.0"
   }
 }

@@ -248,7 +248,7 @@ sizeToEm size =
         ${sizes
           .map(
             (sizeType) => `Size${sizeType} ->
-            "${sizeType / 16 + "em"}"`
+            "${sizeType / 16 + "rem"}"`
           )
           .join("\n        ")}
     `;

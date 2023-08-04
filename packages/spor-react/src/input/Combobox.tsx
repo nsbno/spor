@@ -82,7 +82,7 @@ export function Combobox<T extends object>({
 }: ComboboxProps<T>) {
   const { contains } = useFilter({ sensitivity: "base" });
 
-  const inputRef =  useRef(null);
+  const inputRef = useRef(null);
   const listBoxRef = useRef(null);
   const popoverRef = useRef(null);
 

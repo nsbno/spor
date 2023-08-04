@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
-import { ColorSpinner, Input, InputProps, ListBox, useOutsideClick } from "..";
+import { ColorSpinner, Input, InputProps, ListBox } from "..";
 import { Popover } from "./Popover";
 
 export type ComboboxProps<T> = AriaComboBoxProps<T> & {
@@ -96,12 +96,6 @@ export function Combobox<T extends object>({
     label,
   });
 
-  useOutsideClick({
-    ref: listBoxRef,
-    handler: state.close,
-    enabled: true,
-  });
-
   const {
     inputProps: { size, ...inputProps },
     listBoxProps,
@@ -165,6 +159,7 @@ export function Combobox<T extends object>({
           state={state}
           triggerRef={inputRef as any}
           ref={popoverRef}
+          isNonModal
           placement="bottom start"
           shouldFlip={false}
           hasBackdrop={false}

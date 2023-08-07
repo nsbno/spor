@@ -1,5 +1,16 @@
 # @vygruppen/spor-react
 
+## 3.1.0
+
+### Minor Changes
+
+- a522876f: Adds floating label variant on TextArea
+
+### Patch Changes
+
+- 003cefc9: Combobox: Fix some behavioral issues with opening and closing
+- 0a6ddedb: SkeletonText: export props directly from Chakra
+
 ## 3.0.4
 
 ### Patch Changes

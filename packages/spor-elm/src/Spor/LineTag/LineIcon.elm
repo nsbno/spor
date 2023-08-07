@@ -24,7 +24,7 @@ import Css exposing (Color, Style)
 import Css.Global
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Spor.Icon.Transportation as Transportation
+import Spor.Icon as Icon
 import Spor.LineTag.Types exposing (Size(..), Variant(..))
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Color.Linjetag as Linjetag
@@ -152,115 +152,140 @@ iconColor variant =
 
 icon : Variant -> Size -> Svg msg
 icon variant size =
-    Svg.fromUnstyled <|
+    let
+        trainIcon size_ =
+            Icon.icon size_ Icon.Fill Icon.Train
+
+        expressBusIcon size_ =
+            Icon.icon size_ Icon.Fill Icon.ExpressBus
+
+        busIcon size_ =
+            Icon.icon size_ Icon.Fill Icon.Bus
+
+        ferryIcon size_ =
+            Icon.icon size_ Icon.Fill Icon.Ferry
+
+        subwayIcon size_ =
+            Icon.icon size_ Icon.Fill Icon.Subway
+
+        tramIcon size_ =
+            Icon.icon size_ Icon.Fill Icon.Tram
+
+        altTransportIcon size_ =
+            Icon.icon size_ Icon.Fill Icon.AltTransport
+
+        walkIcon size_ =
+            Icon.icon size_ Icon.Fill Icon.Walk
+    in
+    Icon.toHtml <|
         case ( variant, size ) of
             ( LocalTrain, Sm ) ->
-                Transportation.trainFill18X18 []
+                trainIcon Icon.Size18
 
             ( LocalTrain, Md ) ->
-                Transportation.trainFill24X24 []
+                trainIcon Icon.Size24
 
             ( LocalTrain, Lg ) ->
-                Transportation.trainFill30X30 []
+                trainIcon Icon.Size30
 
             ( RegionTrain, Sm ) ->
-                Transportation.trainFill18X18 []
+                trainIcon Icon.Size18
 
             ( RegionTrain, Md ) ->
-                Transportation.trainFill24X24 []
+                trainIcon Icon.Size24
 
             ( RegionTrain, Lg ) ->
-                Transportation.trainFill30X30 []
+                trainIcon Icon.Size30
 
             ( RegionExpressTrain, Sm ) ->
-                Transportation.trainFill18X18 []
+                trainIcon Icon.Size18
 
             ( RegionExpressTrain, Md ) ->
-                Transportation.trainFill24X24 []
+                trainIcon Icon.Size24
 
             ( RegionExpressTrain, Lg ) ->
-                Transportation.trainFill30X30 []
+                trainIcon Icon.Size30
 
             ( LongDistanceTrain, Sm ) ->
-                Transportation.trainFill18X18 []
+                trainIcon Icon.Size18
 
             ( LongDistanceTrain, Md ) ->
-                Transportation.trainFill24X24 []
+                trainIcon Icon.Size24
 
             ( LongDistanceTrain, Lg ) ->
-                Transportation.trainFill30X30 []
+                trainIcon Icon.Size30
 
             ( AirportExpressTrain, Sm ) ->
-                Transportation.trainFill18X18 []
+                trainIcon Icon.Size18
 
             ( AirportExpressTrain, Md ) ->
-                Transportation.trainFill24X24 []
+                trainIcon Icon.Size24
 
             ( AirportExpressTrain, Lg ) ->
-                Transportation.trainFill30X30 []
+                trainIcon Icon.Size30
 
             ( VyBus, Sm ) ->
-                Transportation.expressBusFill18X18 []
+                expressBusIcon Icon.Size18
 
             ( VyBus, Md ) ->
-                Transportation.expressBusFill24X24 []
+                expressBusIcon Icon.Size24
 
             ( VyBus, Lg ) ->
-                Transportation.expressBusFill30X30 []
+                expressBusIcon Icon.Size30
 
             ( LocalBus, Sm ) ->
-                Transportation.busFill18X18 []
+                busIcon Icon.Size18
 
             ( LocalBus, Md ) ->
-                Transportation.busFill24X24 []
+                busIcon Icon.Size24
 
             ( LocalBus, Lg ) ->
-                Transportation.busFill30X30 []
+                busIcon Icon.Size30
 
             ( Ferry, Sm ) ->
-                Transportation.ferryFill18X18 []
+                ferryIcon Icon.Size18
 
             ( Ferry, Md ) ->
-                Transportation.ferryFill24X24 []
+                ferryIcon Icon.Size24
 
             ( Ferry, Lg ) ->
-                Transportation.ferryFill30X30 []
+                ferryIcon Icon.Size30
 
             ( Subway, Sm ) ->
-                Transportation.subwayFill18X18 []
+                subwayIcon Icon.Size18
 
             ( Subway, Md ) ->
-                Transportation.subwayFill24X24 []
+                subwayIcon Icon.Size24
 
             ( Subway, Lg ) ->
-                Transportation.subwayFill30X30 []
+                subwayIcon Icon.Size30
 
             ( Tram, Sm ) ->
-                Transportation.trainFill18X18 []
+                tramIcon Icon.Size18
 
             ( Tram, Md ) ->
-                Transportation.tramFill24X24 []
+                tramIcon Icon.Size24
 
             ( Tram, Lg ) ->
-                Transportation.trainFill30X30 []
+                tramIcon Icon.Size30
 
             ( AlternativeTransport, Sm ) ->
-                Transportation.altTransportFill18X18 []
+                altTransportIcon Icon.Size18
 
             ( AlternativeTransport, Md ) ->
-                Transportation.altTransportFill24X24 []
+                altTransportIcon Icon.Size24
 
             ( AlternativeTransport, Lg ) ->
-                Transportation.altTransportFill30X30 []
+                altTransportIcon Icon.Size30
 
             ( Walk, Sm ) ->
-                Transportation.walkFill18X18 []
+                walkIcon Icon.Size18
 
             ( Walk, Md ) ->
-                Transportation.walkFill24X24 []
+                walkIcon Icon.Size24
 
             ( Walk, Lg ) ->
-                Transportation.walkFill30X30 []
+                walkIcon Icon.Size30
 
 
 backgroundColor : Variant -> Color

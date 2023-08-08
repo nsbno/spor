@@ -153,139 +153,57 @@ iconColor variant =
 icon : Variant -> Size -> Svg msg
 icon variant size =
     let
+        sizeToIconSize =
+            case size of
+                Sm ->
+                    Icon.Size18
+
+                Md ->
+                    Icon.Size24
+
+                Lg ->
+                    Icon.Size30
+
         trainIcon size_ =
             Icon.icon size_ Icon.Fill Icon.Train
-
-        expressBusIcon size_ =
-            Icon.icon size_ Icon.Fill Icon.ExpressBus
-
-        busIcon size_ =
-            Icon.icon size_ Icon.Fill Icon.Bus
-
-        ferryIcon size_ =
-            Icon.icon size_ Icon.Fill Icon.Ferry
-
-        subwayIcon size_ =
-            Icon.icon size_ Icon.Fill Icon.Subway
-
-        tramIcon size_ =
-            Icon.icon size_ Icon.Fill Icon.Tram
-
-        altTransportIcon size_ =
-            Icon.icon size_ Icon.Fill Icon.AltTransport
-
-        walkIcon size_ =
-            Icon.icon size_ Icon.Fill Icon.Walk
     in
     Icon.toHtml <|
-        case ( variant, size ) of
-            ( LocalTrain, Sm ) ->
-                trainIcon Icon.Size18
+        case variant of
+            LocalTrain ->
+                trainIcon sizeToIconSize
 
-            ( LocalTrain, Md ) ->
-                trainIcon Icon.Size24
+            RegionTrain ->
+                trainIcon sizeToIconSize
 
-            ( LocalTrain, Lg ) ->
-                trainIcon Icon.Size30
+            RegionExpressTrain ->
+                trainIcon sizeToIconSize
 
-            ( RegionTrain, Sm ) ->
-                trainIcon Icon.Size18
+            LongDistanceTrain ->
+                trainIcon sizeToIconSize
 
-            ( RegionTrain, Md ) ->
-                trainIcon Icon.Size24
+            AirportExpressTrain ->
+                trainIcon sizeToIconSize
 
-            ( RegionTrain, Lg ) ->
-                trainIcon Icon.Size30
+            VyBus ->
+                Icon.icon sizeToIconSize Icon.Fill Icon.ExpressBus
 
-            ( RegionExpressTrain, Sm ) ->
-                trainIcon Icon.Size18
+            LocalBus ->
+                Icon.icon sizeToIconSize Icon.Fill Icon.Bus
 
-            ( RegionExpressTrain, Md ) ->
-                trainIcon Icon.Size24
+            Ferry ->
+                Icon.icon sizeToIconSize Icon.Fill Icon.Ferry
 
-            ( RegionExpressTrain, Lg ) ->
-                trainIcon Icon.Size30
+            Subway ->
+                Icon.icon sizeToIconSize Icon.Fill Icon.Subway
 
-            ( LongDistanceTrain, Sm ) ->
-                trainIcon Icon.Size18
+            Tram ->
+                Icon.icon sizeToIconSize Icon.Fill Icon.Tram
 
-            ( LongDistanceTrain, Md ) ->
-                trainIcon Icon.Size24
+            AlternativeTransport ->
+                Icon.icon sizeToIconSize Icon.Fill Icon.AltTransport
 
-            ( LongDistanceTrain, Lg ) ->
-                trainIcon Icon.Size30
-
-            ( AirportExpressTrain, Sm ) ->
-                trainIcon Icon.Size18
-
-            ( AirportExpressTrain, Md ) ->
-                trainIcon Icon.Size24
-
-            ( AirportExpressTrain, Lg ) ->
-                trainIcon Icon.Size30
-
-            ( VyBus, Sm ) ->
-                expressBusIcon Icon.Size18
-
-            ( VyBus, Md ) ->
-                expressBusIcon Icon.Size24
-
-            ( VyBus, Lg ) ->
-                expressBusIcon Icon.Size30
-
-            ( LocalBus, Sm ) ->
-                busIcon Icon.Size18
-
-            ( LocalBus, Md ) ->
-                busIcon Icon.Size24
-
-            ( LocalBus, Lg ) ->
-                busIcon Icon.Size30
-
-            ( Ferry, Sm ) ->
-                ferryIcon Icon.Size18
-
-            ( Ferry, Md ) ->
-                ferryIcon Icon.Size24
-
-            ( Ferry, Lg ) ->
-                ferryIcon Icon.Size30
-
-            ( Subway, Sm ) ->
-                subwayIcon Icon.Size18
-
-            ( Subway, Md ) ->
-                subwayIcon Icon.Size24
-
-            ( Subway, Lg ) ->
-                subwayIcon Icon.Size30
-
-            ( Tram, Sm ) ->
-                tramIcon Icon.Size18
-
-            ( Tram, Md ) ->
-                tramIcon Icon.Size24
-
-            ( Tram, Lg ) ->
-                tramIcon Icon.Size30
-
-            ( AlternativeTransport, Sm ) ->
-                altTransportIcon Icon.Size18
-
-            ( AlternativeTransport, Md ) ->
-                altTransportIcon Icon.Size24
-
-            ( AlternativeTransport, Lg ) ->
-                altTransportIcon Icon.Size30
-
-            ( Walk, Sm ) ->
-                walkIcon Icon.Size18
-
-            ( Walk, Md ) ->
-                walkIcon Icon.Size24
-
-            ( Walk, Lg ) ->
-                walkIcon Icon.Size30
+            Walk ->
+                Icon.icon sizeToIconSize Icon.Fill Icon.Walk
 
 
 backgroundColor : Variant -> Color

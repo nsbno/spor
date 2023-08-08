@@ -274,18 +274,19 @@ deviationIcon maybeDeviationLevel =
             Html.span
                 [ Attributes.css [ deviationStyle deviationLevel ] ]
                 [ Icon.toHtml <|
-                    case deviationLevel of
-                        Critical ->
-                            feedbackIcon Icon.Error
+                    feedbackIcon <|
+                        case deviationLevel of
+                            Critical ->
+                                Icon.Error
 
-                        Major ->
-                            feedbackIcon Icon.Warning
+                            Major ->
+                                Icon.Warning
 
-                        Minor ->
-                            feedbackIcon Icon.Warning
+                            Minor ->
+                                Icon.Warning
 
-                        Info ->
-                            feedbackIcon Icon.Information
+                            Info ->
+                                Icon.Information
                 ]
 
         Nothing ->

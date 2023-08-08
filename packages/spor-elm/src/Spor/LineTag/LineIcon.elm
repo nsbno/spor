@@ -153,7 +153,7 @@ iconColor variant =
 icon : Variant -> Size -> Svg msg
 icon variant size =
     let
-        sizeToIconSize =
+        sizeAsIconSize =
             case size of
                 Sm ->
                     Icon.Size18
@@ -163,47 +163,45 @@ icon variant size =
 
                 Lg ->
                     Icon.Size30
-
-        trainIcon size_ =
-            Icon.icon size_ Icon.Fill Icon.Train
     in
     Icon.toHtml <|
-        case variant of
-            LocalTrain ->
-                trainIcon sizeToIconSize
+        Icon.icon sizeAsIconSize Icon.Fill <|
+            case variant of
+                LocalTrain ->
+                    Icon.Train
 
-            RegionTrain ->
-                trainIcon sizeToIconSize
+                RegionTrain ->
+                    Icon.Train
 
-            RegionExpressTrain ->
-                trainIcon sizeToIconSize
+                RegionExpressTrain ->
+                    Icon.Train
 
-            LongDistanceTrain ->
-                trainIcon sizeToIconSize
+                LongDistanceTrain ->
+                    Icon.Train
 
-            AirportExpressTrain ->
-                trainIcon sizeToIconSize
+                AirportExpressTrain ->
+                    Icon.Train
 
-            VyBus ->
-                Icon.icon sizeToIconSize Icon.Fill Icon.ExpressBus
+                VyBus ->
+                    Icon.ExpressBus
 
-            LocalBus ->
-                Icon.icon sizeToIconSize Icon.Fill Icon.Bus
+                LocalBus ->
+                    Icon.Bus
 
-            Ferry ->
-                Icon.icon sizeToIconSize Icon.Fill Icon.Ferry
+                Ferry ->
+                    Icon.Ferry
 
-            Subway ->
-                Icon.icon sizeToIconSize Icon.Fill Icon.Subway
+                Subway ->
+                    Icon.Subway
 
-            Tram ->
-                Icon.icon sizeToIconSize Icon.Fill Icon.Tram
+                Tram ->
+                    Icon.Tram
 
-            AlternativeTransport ->
-                Icon.icon sizeToIconSize Icon.Fill Icon.AltTransport
+                AlternativeTransport ->
+                    Icon.AltTransport
 
-            Walk ->
-                Icon.icon sizeToIconSize Icon.Fill Icon.Walk
+                Walk ->
+                    Icon.Walk
 
 
 backgroundColor : Variant -> Color

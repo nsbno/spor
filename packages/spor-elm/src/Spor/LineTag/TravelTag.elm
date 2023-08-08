@@ -24,15 +24,13 @@ import Css exposing (Color, Style)
 import Css.Global
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Spor.Icon.Feedback as Feedback
+import Spor.Icon as Icon
 import Spor.LineTag.LineIcon as LineIcon
 import Spor.LineTag.LineText as LineText
 import Spor.LineTag.Types exposing (DeviationLevel(..), Size(..), Variant(..))
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Color.Linjetag as Linjetag
 import Spor.Token.Size.Spacing as Spacing
-import Svg.Styled as Svg
-import Svg.Styled.Attributes as SvgAttributes
 
 
 {-| A component for displaying travel tags
@@ -267,22 +265,28 @@ backgroundColor variant =
 
 deviationIcon : Maybe DeviationLevel -> Html msg
 deviationIcon maybeDeviationLevel =
+    let
+        feedbackIcon type_ =
+            Icon.icon Icon.Size18 Icon.Fill type_
+    in
     case maybeDeviationLevel of
         Just deviationLevel ->
             Html.span
                 [ Attributes.css [ deviationStyle deviationLevel ] ]
-                [ case deviationLevel of
-                    Critical ->
-                        Svg.fromUnstyled <| Feedback.errorFill18X18 []
+                [ Icon.toHtml <|
+                    feedbackIcon <|
+                        case deviationLevel of
+                            Critical ->
+                                Icon.Error
 
-                    Major ->
-                        warningFill18x18
+                            Major ->
+                                Icon.Warning
 
-                    Minor ->
-                        warningFill18x18
+                            Minor ->
+                                Icon.Warning
 
-                    Info ->
-                        Svg.fromUnstyled <| Feedback.informationFill18X18 []
+                            Info ->
+                                Icon.Information
                 ]
 
         Nothing ->
@@ -332,34 +336,6 @@ deviationStyle deviationLevel =
         , Css.right <| Css.px -8
         , Css.zIndex <| Css.int 1
         , svgStyle
-        ]
-
-
-warningFill18x18 : Html msg
-warningFill18x18 =
-    Svg.svg
-        [ SvgAttributes.width "18"
-        , SvgAttributes.height "18"
-        , SvgAttributes.fill "none"
-        , SvgAttributes.stroke "#fff"
-        , Attributes.attribute "stroke-width" "2"
-        , Attributes.attribute "paint-order" "stroke"
-        ]
-        [ Svg.path
-            [ SvgAttributes.fillRule "evenodd"
-            , SvgAttributes.clipRule "evenodd"
-            , SvgAttributes.d "M7.897 1.506a1.25 1.25 0 0 1 2.206 0l6.75 12.656A1.25 1.25 0 0 1 15.75 16H2.25a1.25 1.25 0 0 1-1.103-1.838l6.75-12.656ZM9 6a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0v-4A.5.5 0 0 1 9 6Zm.625 6.375a.625.625 0 1 1-1.25 0 .625.625 0 0 1 1.25 0Z"
-            , SvgAttributes.fill "#E5A80C"
-            ]
-            []
-        , Svg.path
-            [ SvgAttributes.fillRule "evenodd"
-            , SvgAttributes.clipRule "evenodd"
-            , SvgAttributes.d "M9.5 6.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 1 0v-4ZM9 13a.625.625 0 1 0 0-1.25A.625.625 0 0 0 9 13Z"
-            , SvgAttributes.fill "#2B2B2C"
-            , SvgAttributes.stroke "none"
-            ]
-            []
         ]
 
 

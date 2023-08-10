@@ -205,7 +205,7 @@ type Size =
 function generateToHtmlCase(icons) {
   return `
 {-| -}
-toHtml : IconConfig -> Html msg
+toHtml : IconConfig msg -> Html msg
 toHtml ((IconConfig iconOptions) as iconConfig) =
     Html.Styled.fromUnstyled <| case iconOptions.icon of
         ${icons
@@ -222,7 +222,7 @@ toHtml ((IconConfig iconOptions) as iconConfig) =
 function generateBasicCase(svg) {
   return `
 {-| -}
-${svg.functionName} : IconConfig -> Svg.Svg msg
+${svg.functionName} : IconConfig msg -> Svg.Svg msg
 ${svg.functionName} (IconConfig iconConfig) =
     let
         attributes =
@@ -255,11 +255,11 @@ sizeToEm size =
 }
 
 function generateModuleHeader(moduleName, svgs, sizes) {
-  return `module Spor.${moduleName} exposing (toHtml, FillType(..), IconConfig, Size(..), IconVariant(..), icon, withColor)
+  return `module Spor.${moduleName} exposing (toHtml, FillType(..), IconConfig, Size(..), IconVariant(..), icon, withColor, withAttributes)
 
 {-| ${moduleName}
 
-@docs toHtml, FillType(..), IconConfig, Size(..), IconVariant(..), icon, withColor
+@docs toHtml, FillType(..), IconConfig, Size(..), IconVariant(..), icon, withColor, withAttributes
 
 Example usage:
 
@@ -285,29 +285,37 @@ type FillType
 
 
 {-| -}
-type IconConfig
+type IconConfig msg
     = IconConfig
         { icon : IconVariant
         , size : Size
         , variant : FillType
         , color : String
+        , attributes: List (Attribute msg)
         }
 
 
 {-| -}
-icon : Size -> FillType -> IconVariant -> IconConfig
+icon : Size -> FillType -> IconVariant -> IconConfig msg
 icon size fillType iconVariant =
         IconConfig { 
             icon = iconVariant
             , size = size
             , variant = fillType
             , color = "#2B2B2C"
+            , attributes = []
         }
 
 {-| -}
-withColor : String -> IconConfig -> IconConfig
+withColor : String -> IconConfig msg -> IconConfig msg
 withColor color (IconConfig config) =
        IconConfig { config | color = color }
+
+{-| -}
+withAttributes : List (Attribute msg) -> IconConfig msg -> IconConfig msg
+withAttributes attributes (IconConfig config) =
+        IconConfig { config | attributes = attributes}
+
 
 
 

@@ -259,7 +259,7 @@ function generateModuleHeader(moduleName, svgs, sizes) {
 
 {-| ${moduleName}
 
-@docs toHtml, FillType(..), IconConfig, Size(..), IconVariant(..), icon, withColor
+@docs toHtml, FillType(..), IconConfig, Size(..), IconVariant(..), icon, withColor, withAttributes
 
 Example usage:
 

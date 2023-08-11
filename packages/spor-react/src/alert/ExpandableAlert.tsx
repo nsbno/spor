@@ -42,9 +42,10 @@ export const ExpandableAlert = ({
   headingLevel = "h3",
   defaultOpen = false,
   onToggle = () => {},
+  ...boxProps,
 }: ExpandableAlertProps) => {
   return (
-    <BaseAlert variant={variant} paddingX={0} paddingY={0} padding={0}>
+    <BaseAlert variant={variant} paddingX={0} paddingY={0} padding={0} {...boxProps}>
       <Accordion
         onChange={(expandedIndex) => onToggle(expandedIndex === 0)}
         defaultIndex={defaultOpen ? 0 : -1}

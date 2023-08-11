@@ -234,7 +234,7 @@ ${svg.functionName} (IconConfig iconConfig) =
             ${svg.fillFunctionName} <| (attribute "fill" iconConfig.color) :: attributes
         
         Stroke ->
-            ${svg.outlineFunctionName} <| (attribute "stroke" iconConfig.color) :: attributes
+            ${svg.outlineFunctionName} <| (attribute "fill" iconConfig.color) :: attributes
 
 `;
 }

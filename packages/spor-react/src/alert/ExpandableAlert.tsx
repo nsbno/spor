@@ -42,7 +42,7 @@ export const ExpandableAlert = ({
   headingLevel = "h3",
   defaultOpen = false,
   onToggle = () => {},
-  ...boxProps,
+  ...boxProps
 }: ExpandableAlertProps) => {
   return (
     <BaseAlert variant={variant} paddingX={0} paddingY={0} padding={0} {...boxProps}>

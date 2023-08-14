@@ -81,28 +81,26 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       state
     );
 
-    const PopOverBox = () => {
-      return (
-        <Box
-          {...popoverProps}
-          ref={popoverRef}
-          minWidth={triggerRef.current?.clientWidth ?? "auto"}
-          marginLeft={-2}
-        >
-          {!isNonModal && <DismissButton onDismiss={state.close} />}
-          {children}
-          <DismissButton onDismiss={state.close} />
-        </Box>
-      );
-    };
+    const popoverBox = (
+      <Box
+        {...popoverProps}
+        ref={popoverRef}
+        minWidth={triggerRef.current?.clientWidth ?? "auto"}
+        marginLeft={-2}
+      >
+        {!isNonModal && <DismissButton onDismiss={state.close} />}
+        {children}
+        <DismissButton onDismiss={state.close} />
+      </Box>
+    );
 
     if (isNonModal) {
-      return <PopOverBox />;
+      return popoverBox;
     }
     return (
       <Overlay>
         {hasBackdrop && <Box {...underlayProps} position="fixed" inset="0" />}
-        <PopOverBox />
+        {popoverBox}
       </Overlay>
     );
   }

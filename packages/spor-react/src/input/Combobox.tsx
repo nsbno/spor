@@ -113,6 +113,7 @@ export function Combobox<T extends object>({
     <>
       <Input
         {...inputProps}
+        aria-haspopup="listbox"
         ref={inputRef}
         label={label}
         borderBottomLeftRadius={

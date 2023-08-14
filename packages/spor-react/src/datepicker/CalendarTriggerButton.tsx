@@ -11,7 +11,6 @@ export const CalendarTriggerButton = (props: CalendarTriggerButtonProps) => {
   const ref = useRef(null);
   const { buttonProps } = useButton(props, ref);
   return (
-    <PopoverAnchor>
       <Box
         ref={ref}
         as="button"
@@ -22,7 +21,6 @@ export const CalendarTriggerButton = (props: CalendarTriggerButtonProps) => {
       >
         <CalendarOutline24Icon />
       </Box>
-    </PopoverAnchor>
   );
 };
 

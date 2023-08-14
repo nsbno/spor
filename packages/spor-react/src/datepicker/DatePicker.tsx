@@ -82,18 +82,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 
     const locale = useCurrentLocale();
 
-    const handleEnterClick = (e: React.KeyboardEvent) => {
-      if (
-        responsiveVariant === "simple" &&
-        e.key === "Enter" &&
-        !state.isOpen
-      ) {
-        // Don't submit the form
-        e.stopPropagation();
-        state.setOpen(true);
-      }
-    };
-
     const onFieldClick = () => {
       if (!hasTrigger) {
         state.setOpen(true);
@@ -126,7 +114,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                 <StyledField
                   variant={responsiveVariant}
                   onClick={onFieldClick}
-                  onKeyPress={handleEnterClick}
                   paddingX={3}
                   minHeight={minHeight}
                 >
@@ -148,21 +135,19 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
               {errorMessage}
             </FormErrorMessage>
             {state.isOpen && !props.isDisabled && (
-              <Portal>
-                <PopoverContent
-                  color="darkGrey"
-                  boxShadow="md"
-                  sx={styles.calendar}
-                >
-                  <PopoverArrow sx={styles.arrow} />
-                  <PopoverBody>
-                    <Calendar
-                      {...calendarProps}
-                      showYearNavigation={showYearNavigation}
-                    />
-                  </PopoverBody>
-                </PopoverContent>
-              </Portal>
+              <PopoverContent
+                color="darkGrey"
+                boxShadow="md"
+                sx={styles.calendar}
+              >
+                <PopoverArrow sx={styles.arrow} />
+                <PopoverBody>
+                  <Calendar
+                    {...calendarProps}
+                    showYearNavigation={showYearNavigation}
+                  />
+                </PopoverBody>
+              </PopoverContent>
             )}
           </Popover>
         </Box>

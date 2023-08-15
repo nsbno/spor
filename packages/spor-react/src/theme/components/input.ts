@@ -82,6 +82,7 @@ const config = helpers.defineMultiStyleConfig({
         my: 2,
         transition: ".1s ease-out",
         transformOrigin: "top left",
+        cursor: "text",
       },
       "&:not(:placeholder-shown)": {
         pt: "16px",

@@ -9,7 +9,7 @@ type AttachedInputsProps = FlexProps;
  * <AttachedInputs>
  *   <Input />
  *   <NativeSelect>
- *     <SelectItem />
+ *     <Item />
  *   </NativeSelect>
  * </AttachedInputs>
  * ```

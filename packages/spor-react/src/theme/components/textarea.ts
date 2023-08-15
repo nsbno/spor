@@ -5,9 +5,17 @@ const config = defineStyleConfig({
   baseStyle: (props) => ({
     ...Input.baseStyle!(props).field,
     minHeight: "5rem",
-    py: 3,
     verticalAlign: "top",
     appearance: "none",
+    paddingTop: 2,
+    "&:not(:placeholder-shown)": {
+      "&:has(+ label)": {
+        paddingTop: 4
+      },
+      "& + label": {
+        transform: "scale(0.825) translateY(-10px)",
+      },
+    },
   }),
 });
 

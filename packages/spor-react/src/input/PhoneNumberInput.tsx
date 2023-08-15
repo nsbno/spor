@@ -5,7 +5,7 @@ import {
   useControllableState,
 } from "@chakra-ui/react";
 import React, { Suspense } from "react";
-import { InfoSelect, Input, SelectItem, createTexts, useTranslation } from "..";
+import { InfoSelect, Input, Item, createTexts, useTranslation } from "..";
 import { AttachedInputs } from "./AttachedInputs";
 
 type CountryCodeAndPhoneNumber = {
@@ -65,7 +65,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
               height="100%"
               value="+47"
             >
-              <SelectItem key="+47">+47</SelectItem>
+              <Item key="+47">+47</Item>
             </InfoSelect>
           }
         >

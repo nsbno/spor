@@ -2,7 +2,7 @@ import { Box, Flex, FormLabel, useMultiStyleConfig } from "@chakra-ui/react";
 import { DateValue, GregorianCalendar } from "@internationalized/date";
 import { useDateFieldState } from "@react-stately/datepicker";
 import { DOMAttributes, FocusableElement } from "@react-types/shared";
-import React, { useRef } from "react";
+import React, { RefObject, forwardRef, useRef } from "react";
 import { AriaDateFieldProps, useDateField } from "react-aria";
 import { DateTimeSegment } from "./DateTimeSegment";
 import { useCurrentLocale } from "./utils";
@@ -21,31 +21,51 @@ type DateFieldProps = AriaDateFieldProps<DateValue> & {
   labelProps?: DOMAttributes<FocusableElement>;
   name?: string;
 };
-export function DateField(props: DateFieldProps) {
-  const locale = useCurrentLocale();
-  const styles = useMultiStyleConfig("Datepicker", {});
-  const state = useDateFieldState({
-    ...props,
-    locale,
-    createCalendar,
-  });
+export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
+  (props, externalRef) => {
+    const locale = useCurrentLocale();
+    const styles = useMultiStyleConfig("Datepicker", {});
+    const state = useDateFieldState({
+      ...props,
+      locale,
+      createCalendar,
+    });
 
-  const ref = useRef(null);
-  const { fieldProps, labelProps } = useDateField(props, state, ref);
+    const internalRef = useRef(null);
+    const ref = externalRef ?? internalRef;
+    const { fieldProps, labelProps } = useDateField(
+      props,
+      state,
+      ref as RefObject<HTMLDivElement>
+    );
 
-  return (
-    <Box minWidth="6rem">
-      {props.label && (
-        <FormLabel {...props.labelProps} {...labelProps} sx={styles.inputLabel}>
-          {props.label}
-        </FormLabel>
-      )}
-      <Flex {...fieldProps} ref={ref}>
-        {state.segments.map((segment, i) => (
-          <DateTimeSegment key={i} segment={segment} state={state} />
-        ))}
-      </Flex>
-      <input type="hidden" value={state.value?.toString()} name={props.name} />
-    </Box>
-  );
-}
+    return (
+      <Box minWidth="6rem" width="100%">
+        {props.label && (
+          <FormLabel
+            {...props.labelProps}
+            {...labelProps}
+            sx={styles.inputLabel}
+          >
+            {props.label}
+          </FormLabel>
+        )}
+        <Flex {...fieldProps}>
+          {state.segments.map((segment, i) => (
+            <DateTimeSegment
+              ref={i === 0 ? ref : undefined}
+              key={i}
+              segment={segment}
+              state={state}
+            />
+          ))}
+        </Flex>
+        <input
+          type="hidden"
+          value={state.value?.toString()}
+          name={props.name}
+        />
+      </Box>
+    );
+  }
+);

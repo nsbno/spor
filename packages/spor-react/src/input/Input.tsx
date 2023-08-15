@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useId } from "react";
 
-export type InputProps = Exclude<ChakraInputProps, "variant" | "size"> & {
+export type InputProps = Omit<ChakraInputProps, "variant" | "size"> & {
   /** The input's label */
   label: string;
   /** Icon that shows up to the left */
@@ -34,7 +34,7 @@ export type InputProps = Exclude<ChakraInputProps, "variant" | "size"> & {
  * ```
  */
 export const Input = forwardRef<InputProps, "input">(
-  ({ label, leftIcon, rightIcon, id, ...props }, ref) => {
+  ({ label, leftIcon, rightIcon, id, size, ...props }, ref) => {
     const formControlProps = useFormControlContext();
     const fallbackId = `input-${useId()}`;
     const inputId = id ?? formControlProps?.id ?? fallbackId;
@@ -50,9 +50,7 @@ export const Input = forwardRef<InputProps, "input">(
           ref={ref}
           placeholder=" " // This is needed to make the label work as expected
         />
-        <FormLabel htmlFor={inputId} pointerEvents="none">
-          {label}
-        </FormLabel>
+        <FormLabel htmlFor={inputId}>{label}</FormLabel>
         {rightIcon && <InputRightElement>{rightIcon}</InputRightElement>}
       </InputGroup>
     );

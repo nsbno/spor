@@ -18,16 +18,16 @@ import { Popover } from "./Popover";
 
 type InfoSelectProps<T extends object> = {
   /**
-   * Either a render function accepting an item, and returning a <SelectItem />,
-   * or a list of <SelectItem />s.
+   * Either a render function accepting an item, and returning a <Item />,
+   * or a list of <Item />s.
    *
    * Render function example:
    * ```tsx
    * <Select items={items}>
    *   {(item) => (
-   *     <SelectItem key={item.value} value={item.value}>
+   *     <Item key={item.value} value={item.value}>
    *       {item.label}
-   *     </SelectItem>
+   *     </Item>
    *   )}
    * </Select>
    * ```
@@ -35,12 +35,12 @@ type InfoSelectProps<T extends object> = {
    * For this to work, the members in `items` need either a `key`
    * or an `id` property.
    *
-   * List of <SelectItem />s example:
+   * List of <Item />s example:
    * ```tsx
    * <Select label="Choose a color">
-   *   <SelectItem>Green</SelectItem>
-   *   <SelectItem>Blue</SelectItem>
-   *   <SelectItem>Yellow</SelectItem>
+   *   <Item>Green</Item>
+   *   <Item>Blue</Item>
+   *   <Item>Yellow</Item>
    * </Select>
    * ```
    **/
@@ -104,9 +104,9 @@ type InfoSelectProps<T extends object> = {
    *
    * ```tsx
    * <Select label="Choose a color" disabledKeys={["blue", "yellow"]}>
-   *   <SelectItem key="green">Green</SelectItem>
-   *   <SelectItem key="blue">Blue</SelectItem>
-   *   <SelectItem key="yellow">Yellow</SelectItem>
+   *   <Item key="green">Green</Item>
+   *   <Item key="blue">Blue</Item>
+   *   <Item key="yellow">Yellow</Item>
    * </Select>
    * ```
    **/

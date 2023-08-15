@@ -1,27 +1,17 @@
 {
-    "type": "package",
-    "name": "nsbno/spor-icon-elm",
-    "summary": "Icons used for Elm applications hosted on vy.no",
-    "license": "MIT",
-    "version": "1.0.0",
-    "exposed-modules": [
-        "Spor.Icon.Communication",
-        "Spor.Icon.Feedback",
-        "Spor.Icon.Layout",
-        "Spor.Icon.Map",
-        "Spor.Icon.Misc",
-        "Spor.Icon.Navigation",
-        "Spor.Icon.OnboardService",
-        "Spor.Icon.Payment",
-        "Spor.Icon.SocialMedia",
-        "Spor.Icon.Transportation",
-        "Spor.Icon.Travel"
-    ],
-    "elm-version": "0.19.1 <= v < 0.20.0",
-    "dependencies": {
-        "elm/core": "1.0.0 <= v < 2.0.0",
-        "elm/svg": "1.0.1 <= v < 2.0.0",
-        "elm/virtual-dom": "1.0.3 <= v < 2.0.0"
-    },
-    "test-dependencies": {}
+  "type": "package",
+  "name": "nsbno/spor-icon-elm",
+  "summary": "Icons used for Elm applications hosted on vy.no",
+  "license": "MIT",
+  "version": "1.0.0",
+  "exposed-modules": ["Spor.Icon"],
+  "elm-version": "0.19.1 <= v < 0.20.0",
+  "dependencies": {
+    "elm/core": "1.0.0 <= v < 2.0.0",
+    "elm/html": "1.0.0 <= v < 2.0.0",
+    "elm/svg": "1.0.1 <= v < 2.0.0",
+    "elm/virtual-dom": "1.0.3 <= v < 2.0.0",
+    "rtfeldman/elm-css": "17.1.1 <= v < 18.0.0"
+  },
+  "test-dependencies": {}
 }

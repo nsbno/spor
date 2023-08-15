@@ -1,5 +1,96 @@
 # @vygruppen/spor-react
 
+## 3.1.0
+
+### Minor Changes
+
+- a522876f: Adds floating label variant on TextArea
+
+### Patch Changes
+
+- 003cefc9: Combobox: Fix some behavioral issues with opening and closing
+- 0a6ddedb: SkeletonText: export props directly from Chakra
+
+## 3.0.4
+
+### Patch Changes
+
+- 6cbe41ca: Combobox: Remove popover backdrop
+- 3d852b87: Datepicker: Add ref support
+
+## 3.0.3
+
+### Patch Changes
+
+- 7e9b8990: DatePicker, TimePicker: Use cursor: text; everywhere inside of the date input field
+- 7e9b8990: Combobox: Make padding-right apply to the loading indicator as well
+
+## 3.0.2
+
+### Patch Changes
+
+- ed4dc214: NumericStepper: Make label work as "add one" button if the value is zero
+- 0e951ddf: Input: Display text cursor for form labels inside of inputs.
+
+## 3.0.1
+
+### Patch Changes
+
+- 828e4f38: Fix a typing issue with Heading
+
+## 3.0.0
+
+### Major Changes
+
+- d0f0c5ff: Remove deprecated components SelectItem, SelectItemLabel and SelectItemDescription.
+
+  To migrate, use Item, ItemLabel and ItemDescription, respectively.
+
+- 6c1f3d08: Heading: Make `as` prop required
+
+  This is a breaking change. Previously, this defaulted to "h2". Go through all usages and add `as="h1"` or whatever is correct for your context.
+
+### Patch Changes
+
+- 08b926e3: DatePicker: Make it possible to override width of datepicker
+
+## 2.5.3
+
+### Patch Changes
+
+- 2481b7f5: Use correct cursor for listbox items
+
+## 2.5.2
+
+### Patch Changes
+
+- a884fea5: Combobox: Make the width of the attached listbox never outgrow its input field
+
+## 2.5.1
+
+### Patch Changes
+
+- 28a772f4: Datepicker, Timepicker: Changed color to meet contrast minimum requriement
+- f49fa9d2: TimePicker: Fixes typing bug in onChange prop
+- 643afb0d: Combobox: Fix glitchy loading state
+
+## 2.5.0
+
+### Minor Changes
+
+- 042dba35: Make accordions and cards default to the sm size
+
+### Patch Changes
+
+- f9d6bd34: Combobox: Fix a bug where menuTrigger="focus" wouldn't work
+- 76914a15: Remove non-working Autosuggest component
+
+## 2.4.3
+
+### Patch Changes
+
+- 5640417f: Autosuggest: Fix a bug where the onSelectionChanged was called with no item on nested lists
+
 ## 2.4.2
 
 ### Patch Changes

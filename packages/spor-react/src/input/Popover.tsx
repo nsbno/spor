@@ -27,6 +27,23 @@ type PopoverProps = {
    * Defaults to "bottom"
    */
   placement?: AriaPopoverProps["placement"];
+  /**
+   * Whether or not the list should flip to the opposite side of the trigger if there is not enough space.
+   * Defaults to false.
+   */
+  shouldFlip?: boolean;
+  /**
+   * Whether the popover is non-modal, i.e. elements outside the popover may be interacted with by assistive technologies.
+   * Most popovers should not use this option as it may negatively impact the screen reader experience. Only use with components such as combobox, which are designed to handle this situation carefully.
+   *
+   * Defaults to false.
+   */
+  isNonModal?: boolean;
+  /** Whether or not the popover renders a backdrop that stops the user from interacting with background elements
+   *
+   * Defaults to true
+   */
+  hasBackdrop?: boolean;
 };
 /**
  * Internal popover component.
@@ -42,6 +59,9 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       offset = 0,
       crossOffset = 0,
       placement = "bottom",
+      shouldFlip = false,
+      isNonModal = false,
+      hasBackdrop = true,
     },
     ref
   ) => {
@@ -55,13 +75,15 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         offset,
         crossOffset,
         placement,
+        shouldFlip,
+        isNonModal,
       },
       state
     );
 
     return (
       <Overlay>
-        <Box {...underlayProps} position="fixed" inset="0" />
+        {hasBackdrop && <Box {...underlayProps} position="fixed" inset="0" />}
         <Box
           {...popoverProps}
           ref={popoverRef}

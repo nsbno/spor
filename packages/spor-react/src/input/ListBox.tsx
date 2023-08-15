@@ -14,10 +14,8 @@ import {
   useListBoxSection,
   useOption,
 } from "react-aria";
-import { Item, type ListState, type SelectState } from "react-stately";
+import { type ListState, type SelectState } from "react-stately";
 
-/** @deprecated use Item instead */
-export const SelectItem = Item;
 export { Item, Section } from "react-stately";
 
 type ListBoxProps<T> = AriaListBoxProps<T> &
@@ -28,6 +26,9 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
     isLoading?: boolean;
     /** The state of the listbox, provided externally somehow. */
     state: ListState<T> | SelectState<T>;
+    /** UI to render if the collection is empty */
+    emptyContent?: React.ReactNode;
+    maxWidth?: BoxProps["maxWidth"];
   };
 
 /**
@@ -68,6 +69,7 @@ export function ListBox<T extends object>({
   isLoading,
   listBoxRef,
   state,
+  maxWidth,
   ...props
 }: ListBoxProps<T>) {
   const { listBoxProps } = useListBox(props, state, listBoxRef);
@@ -79,7 +81,9 @@ export function ListBox<T extends object>({
       ref={listBoxRef}
       sx={styles.container}
       aria-busy={isLoading}
+      maxWidth={maxWidth}
     >
+      {state.collection.size === 0 && props.emptyContent}
       {Array.from(state.collection).map((item) =>
         item.type === "section" ? (
           <ListBoxSection key={item.key} section={item} state={state} />
@@ -105,8 +109,6 @@ export function ItemLabel({ children }: { children: React.ReactNode }) {
     </Box>
   );
 }
-/** @deprecated use ItemLabel instead */
-export const SelectItemLabel = ItemLabel;
 
 /**
  * Renders a description for an Item.
@@ -122,8 +124,6 @@ export function ItemDescription({ children }: { children: React.ReactNode }) {
     </Box>
   );
 }
-/** @deprecated Use ItemDescription instead */
-export const SelectItemDescription = ItemDescription;
 
 type OptionProps = {
   item: Node<unknown>;
@@ -184,19 +184,19 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
     "aria-label": section["aria-label"],
   });
 
-  const isFirstSection = section.key !== state.collection.getFirstKey();
-  const titleBackgroundColor = useColorModeValue("platinum", "dimGrey");
+  const isFirstSection = section.key === state.collection.getFirstKey();
   const titleColor = useColorModeValue("darkGrey", "white");
   return (
     <ListItem {...itemProps}>
       {section.rendered && (
         <Box
-          textStyle="xs"
-          backgroundColor={titleBackgroundColor}
+          fontSize="mobile.xs"
           color={titleColor}
           paddingX={3}
           paddingY={1}
-          marginTop={isFirstSection ? 0 : 0}
+          marginTop={isFirstSection ? 0 : 3}
+          textTransform="uppercase"
+          fontWeight="bold"
           {...headingProps}
         >
           {section.rendered}

@@ -113,7 +113,8 @@ export function NumericStepper({
           name={nameProp}
           value={value}
           {...formControlProps}
-          fontSize="sm"
+          id={value !== 0 ? formControlProps.id : undefined}
+        fontSize="sm"
           fontWeight="bold"
           width="3ch"
           marginX={1}
@@ -160,6 +161,7 @@ export function NumericStepper({
         onClick={() => onChange(value + 1)}
         visibility={value >= maxValue ? "hidden" : "visible"}
         isDisabled={formControlProps.disabled}
+        id={value === 0 ? formControlProps.id : undefined}
       />
     </Flex>
   );
@@ -176,6 +178,8 @@ type VerySmallButtonProps = {
   visibility?: "visible" | "hidden";
   /** Whether or not the button is disabled */
   isDisabled?: boolean;
+  /** The ID of the button */
+  id?: string;
 };
 /** Internal override for extra small icon buttons */
 const VerySmallButton = (props: VerySmallButtonProps) => {

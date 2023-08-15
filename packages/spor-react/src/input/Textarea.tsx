@@ -5,16 +5,17 @@ import {
   Textarea as ChakraTextarea,
   TextareaProps as ChakraTextareaProps,
   useFormControlContext,
+  InputGroup,
 } from "@chakra-ui/react";
 import React, { useId } from "react";
 
 export type TextareaProps = Exclude<ChakraTextareaProps, "variant" | "size"> & {
-  label: string;
+  label?: string;
 };
 /**
  * Text area that works with the `FormControl` component.
  *
- * Note that it requires you to pass a label.
+ * Providing a label is optional.
  *
  * ```tsx
  * <FormControl>
@@ -30,11 +31,16 @@ export const Textarea = forwardRef<TextareaProps, "textarea">((props, ref) => {
   const formControlProps = useFormControlContext();
   const fallbackId = `textarea-${useId()}`;
   const inputId = props.id ?? formControlProps?.id ?? fallbackId;
+
   return (
-    <Box {...spacingProps}>
-      <FormLabel htmlFor={inputId}>{label}</FormLabel>
-      <ChakraTextarea {...rest} id={inputId} ref={ref} />
-    </Box>
+    <InputGroup position="relative" {...spacingProps}>
+      <ChakraTextarea {...rest} id={inputId} ref={ref} placeholder=" " />
+      {label && (
+        <FormLabel htmlFor={inputId} id={`${inputId}-label`}>
+          {label}
+        </FormLabel>
+      )}
+    </InputGroup>
   );
 });
 

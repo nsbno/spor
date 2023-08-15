@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
-import { ColorSpinner, FormControl, Input, InputProps, ListBox } from "..";
+import { ColorSpinner, Input, InputProps, ListBox } from "..";
 import { Popover } from "./Popover";
 
 export type ComboboxProps<T> = AriaComboBoxProps<T> & {
@@ -9,10 +9,14 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
   label: string;
   /** Whether or not the combobox is waiting for new suggestions */
   isLoading?: boolean;
+  /** Optional UI to show when there are no matching items */
+  emptyContent?: React.ReactNode;
 } & Pick<
     InputProps,
     | "marginTop"
     | "marginBottom"
+    | "marginRight"
+    | "marginLeft"
     | "marginY"
     | "marginX"
     | "paddingTop"
@@ -65,24 +69,32 @@ export function Combobox<T extends object>({
   marginTop,
   marginX,
   marginY,
+  marginRight,
+  marginLeft,
   paddingBottom,
   paddingRight,
   paddingTop,
   paddingLeft,
   paddingX,
   paddingY,
-  onFocus,
+  emptyContent,
   ...rest
 }: ComboboxProps<T>) {
   const { contains } = useFilter({ sensitivity: "base" });
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const listBoxRef = useRef(null);
+  const popoverRef = useRef(null);
+
+  const inputWidth = useInputWidth(inputRef);
+
   const state = useComboBoxState({
     ...rest,
     defaultFilter: contains,
+    allowsEmptyCollection: Boolean(emptyContent),
+    shouldCloseOnBlur: true,
+    label,
   });
-
-  const inputRef = useRef(null);
-  const listBoxRef = useRef(null);
-  const popoverRef = useRef(null);
 
   const {
     inputProps: { size, ...inputProps },
@@ -98,18 +110,23 @@ export function Combobox<T extends object>({
   );
 
   return (
-    <FormControl>
+    <>
       <Input
         {...inputProps}
         ref={inputRef}
         label={label}
-        onFocus={onFocus}
-        borderBottomLeftRadius={state.isOpen ? 0 : borderBottomLeftRadius}
-        borderBottomRightRadius={state.isOpen ? 0 : borderBottomRightRadius}
+        borderBottomLeftRadius={
+          state.isOpen && !isLoading ? 0 : borderBottomLeftRadius
+        }
+        borderBottomRightRadius={
+          state.isOpen && !isLoading ? 0 : borderBottomRightRadius
+        }
         borderTopLeftRadius={borderTopLeftRadius}
         borderTopRightRadius={borderTopRightRadius}
         marginBottom={marginBottom}
         marginTop={marginTop}
+        marginRight={marginRight}
+        marginLeft={marginLeft}
         marginX={marginX}
         marginY={marginY}
         paddingBottom={paddingBottom}
@@ -124,6 +141,7 @@ export function Combobox<T extends object>({
             <ColorSpinner
               width="1.5rem"
               alignSelf="center"
+              paddingRight={paddingRight}
               css={{
                 div: {
                   display: "flex",
@@ -136,23 +154,52 @@ export function Combobox<T extends object>({
           )
         }
       />
-      {state.isOpen && (
+      {state.isOpen && !isLoading && (
         <Popover
           state={state}
-          triggerRef={inputRef}
+          triggerRef={inputRef as any}
           ref={popoverRef}
+          isNonModal
           placement="bottom start"
+          shouldFlip={false}
+          hasBackdrop={false}
         >
           <ListBox
             {...listBoxProps}
             state={state}
             listBoxRef={listBoxRef}
-            borderBottomRadius="sm"
+            emptyContent={emptyContent}
+            maxWidth={inputWidth}
           >
             {rest.children}
           </ListBox>
         </Popover>
       )}
-    </FormControl>
+    </>
   );
 }
+
+const useInputWidth = (inputRef: React.RefObject<HTMLInputElement>) => {
+  const [inputWidth, setInputWidth] = useState("auto");
+  useEffect(() => {
+    const onResize = debounce(() => {
+      if (inputRef.current) {
+        setInputWidth(`${inputRef.current.offsetWidth}px`);
+      }
+    }, 67);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  return inputWidth;
+};
+
+const debounce = (fn: () => void, ms = 100) => {
+  let timer: any;
+  return () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      timer = null;
+      fn();
+    }, ms);
+  };
+};

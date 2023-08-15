@@ -16,8 +16,14 @@ type CalendarCellProps = {
 };
 export function CalendarCell({ state, date, currentMonth }: CalendarCellProps) {
   const ref = useRef(null);
-  const { cellProps, buttonProps, isSelected, isDisabled, isUnavailable } =
-    useCalendarCell({ date }, state, ref);
+  const {
+    cellProps,
+    buttonProps,
+    isSelected,
+    isDisabled,
+    isUnavailable,
+    isOutsideVisibleRange,
+  } = useCalendarCell({ date }, state, ref);
 
   const isOutsideMonth = !isSameMonth(currentMonth, date);
   const styles = useMultiStyleConfig("Datepicker", {});
@@ -35,7 +41,6 @@ export function CalendarCell({ state, date, currentMonth }: CalendarCellProps) {
   if (isOutsideMonth) {
     stateProps["data-unavailable"] = true;
   }
-
   return (
     <Box
       as="td"
@@ -60,11 +65,11 @@ export function CalendarCell({ state, date, currentMonth }: CalendarCellProps) {
     >
       <Box
         as="button"
-        type="button"
         {...buttonProps}
-        {...stateProps}
+        //{...stateProps}
         ref={ref}
         sx={styles.dateCell}
+        hidden={isOutsideVisibleRange}
         width="100%"
       >
         {date.day}

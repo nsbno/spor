@@ -24,7 +24,7 @@ export function Calendar({ showYearNavigation, ...props }: CalendarProps) {
   const { calendarProps } = useCalendar(props, state);
 
   return (
-    <Box {...calendarProps}>
+    <Box {...calendarProps} role="dialog">
       <CalendarHeader state={state} showYearNavigation={showYearNavigation} />
       <CalendarGrid state={state} />
     </Box>

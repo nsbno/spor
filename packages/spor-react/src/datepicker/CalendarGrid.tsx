@@ -1,6 +1,6 @@
 import { endOfMonth, getWeeksInMonth } from "@internationalized/date";
 import React from "react";
-import { AriaCalendarGridProps, useCalendarCell, useCalendarGrid } from "react-aria";
+import { AriaCalendarGridProps, useCalendarGrid } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
 import { Language, useTranslation } from "../i18n";
 import { Text } from "../typography";
@@ -62,11 +62,11 @@ export function CalendarGrid({ state, offset = {} }: CalendarGridProps) {
               .getDatesInWeek(weekIndex, startDate)
               .map((date, dayIndex) =>
                 date ? (
-                  <CalendarCell2
+                  <CalendarCell
                     key={dayIndex}
                     state={state}
                     date={date}
-                    //currentMonth={startDate}
+                    currentMonth={startDate}
                   />
                 ) : (
                   <td key={dayIndex} />
@@ -76,33 +76,5 @@ export function CalendarGrid({ state, offset = {} }: CalendarGridProps) {
         ))}
       </tbody>
     </table>
-  );
-}
-
-function CalendarCell2({ state, date}: {state: any, date: any}) {
-  let ref = React.useRef(null);
-  let {
-    cellProps,
-    buttonProps,
-    isSelected,
-    isOutsideVisibleRange,
-    isDisabled,
-    isUnavailable,
-    formattedDate
-  } = useCalendarCell({ date }, state, ref);
-
-  return (
-    <td {...cellProps}>
-      <div
-        {...buttonProps}
-        ref={ref}
-        hidden={isOutsideVisibleRange}
-        className={`cell ${isSelected ? 'selected' : ''} ${
-          isDisabled ? 'disabled' : ''
-        } ${isUnavailable ? 'unavailable' : ''}`}
-      >
-        {formattedDate}
-      </div>
-    </td>
   );
 }

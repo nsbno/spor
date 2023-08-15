@@ -3,46 +3,31 @@ import {
   BoxProps,
   FocusLock,
   InputGroup,
+  Popover,
   PopoverAnchor,
   PopoverArrow,
   PopoverBody,
   PopoverContent,
+  PopoverTrigger,
   Portal,
   ResponsiveValue,
   useBreakpointValue,
+  useDisclosure,
   useFormControlContext,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
-import {
-  DateValue,
-  createCalendar,
-  getWeeksInMonth,
-} from "@internationalized/date";
+import { DateValue } from "@internationalized/date";
 import { useDatePickerState } from "@react-stately/datepicker";
-import {
-  ArrowLeftOutline24Icon,
-  ArrowRightOutline24Icon,
-  CalendarOutline24Icon,
-} from "@vygruppen/spor-icon-react";
+import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, useRef } from "react";
-import {
-  AriaDatePickerProps,
-  I18nProvider,
-  useButton,
-  useCalendar,
-  useCalendarCell,
-  useCalendarGrid,
-  useDateField,
-  useDatePicker,
-  useDateSegment,
-  useLocale,
-} from "react-aria";
+import { AriaDatePickerProps, I18nProvider, useDatePicker } from "react-aria";
+import { FormErrorMessage } from "..";
+import { Calendar } from "./Calendar";
+import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
-import { useCalendarState, useDateFieldState } from "react-stately";
-import { Dialog } from "../input/Dialog";
-import FocusTrap from "focus-trap-react";
-import { Popover } from "../input/Popover";
-import { CalendarNavigationButton } from "./CalendarNavigationButton";
+import { StyledField } from "./StyledField";
+import { useCurrentLocale } from "./utils";
+import { useOnClickOutside } from "usehooks-ts";
 
 type DatePickerProps = AriaDatePickerProps<DateValue> &
   Pick<BoxProps, "minHeight" | "width"> & {
@@ -71,21 +56,35 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     },
     externalRef
   ) => {
-    //const formControlProps = useFormControlContext();
-    let state = useDatePickerState(props);
-    let ref = React.useRef(null);
-    let {
+    const formControlProps = useFormControlContext();
+    const state = useDatePickerState({
+      ...props,
+      shouldCloseOnSelect: true,
+      errorMessage,
+      isRequired: props.isRequired ?? formControlProps?.isRequired,
+      validationState: formControlProps?.isInvalid ? "invalid" : "valid",
+    });
+    const internalRef = useRef<HTMLDivElement>(null);
+    const ref = externalRef ?? internalRef;
+    const {
       groupProps,
       labelProps,
       fieldProps,
       buttonProps,
       dialogProps,
       calendarProps,
-    } = useDatePicker(props, state, ref);
+      errorMessageProps,
+    } = useDatePicker(
+      props,
+      state,
+      ref as React.MutableRefObject<HTMLDivElement>
+    );
 
     const responsiveVariant =
       useBreakpointValue(typeof variant === "string" ? [variant] : variant) ??
       "simple";
+
+    const locale = useCurrentLocale();
 
     const onFieldClick = () => {
       if (!hasTrigger) {
@@ -93,143 +92,115 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       }
     };
 
+    console.log(state);
+
+    const onClose2 = () => {
+      console.log("onClose");
+      console.log(state);
+      if (state.isOpen) {
+        state.setOpen(false);
+      } else {
+        state.setOpen(true);
+      }
+    };
+
+    const onOpen2 = () => {
+      console.log("onOpen");
+      console.log(state);
+      if (state.isOpen) {
+        state.setOpen(false);
+      } else {
+        state.setOpen(true);
+      }
+    };
+
+    const onBlur = () => {
+      console.log("entering onBlur");
+      console.log(state.isOpen);
+      state.setOpen(false);
+    };
+
     const hasTrigger = responsiveVariant === "with-trigger";
 
     const styles = useMultiStyleConfig("Datepicker", {});
 
+    const handleClickOutside = () => {
+      console.log("handleClickOutside");
+      state.setOpen(false);
+    };
+
+    const boxRef = useRef(null);
+    //useOnClickOutside(boxRef, handleClickOutside)
+
     console.log(state);
 
     return (
-      <div
-        style={{
-          display: "inline-flex",
-          flexDirection: "column",
-        }}
-      >
-        <div {...labelProps}>{props.label}</div>
-        <div {...groupProps} ref={ref} style={{ display: "flex" }}>
-          <DateField {...fieldProps} />
-          <Button {...buttonProps}>🗓</Button>
-        </div>
-        {state.isOpen && !props.isDisabled && (
+      <I18nProvider locale={locale}>
+        <Box
+          position="relative"
+          display="inline-flex"
+          flexDirection="column"
+          width={width}
+          ref={boxRef}
+        >
           <Popover
-            state={state}
-            triggerRef={ref as any}
-            placement="bottom start"
+            //{...dialogProps}
+            isOpen={state.isOpen}
+            onClose={state.close}
+            onOpen={state.open}
+            closeOnBlur
+            //closeOnEsc
+            //returnFocusOnClose
           >
-            <FocusLock>
-              <Calendar {...calendarProps} />
-            </FocusLock>
+            <InputGroup {...groupProps} display="inline-flex">
+              <PopoverAnchor>
+                <StyledField
+                  variant={responsiveVariant}
+                  onClick={onFieldClick}
+                  paddingX={3}
+                  minHeight={minHeight}
+                >
+                  {!hasTrigger && (
+                    <CalendarOutline24Icon marginRight={2} alignSelf="center" />
+                  )}
+                  <DateField
+                    label={props.label}
+                    labelProps={labelProps}
+                    name={props.name}
+                    ref={ref}
+                    {...fieldProps}
+                  />
+                </StyledField>
+              </PopoverAnchor>
+              {hasTrigger && (
+                <CalendarTriggerButton {...buttonProps}></CalendarTriggerButton>
+              )}
+            </InputGroup>
+            <FormErrorMessage {...errorMessageProps}>
+              {errorMessage}
+            </FormErrorMessage>
+            {state.isOpen && !props.isDisabled && (
+              <PopoverContent
+                color="darkGrey"
+                boxShadow="md"
+                sx={styles.calendar}
+              >
+                <PopoverArrow sx={styles.arrow} />
+                <PopoverBody>
+                  <FocusLock>
+                    <Calendar
+                      {...calendarProps}
+                      showYearNavigation={showYearNavigation}
+                    />
+                  </FocusLock>
+                </PopoverBody>
+              </PopoverContent>
+            )}
           </Popover>
-        )}
-      </div>
+        </Box>
+      </I18nProvider>
     );
   }
 );
 
-function Button(props: any) {
-  let ref = React.useRef(null);
-  let { buttonProps } = useButton(props, ref);
-  return (
-    <button {...buttonProps} ref={ref}>
-      {props.children}
-    </button>
-  );
-}
-
-function Calendar(props: any) {
-  let { locale } = useLocale();
-  let state = useCalendarState({
-    ...props,
-    locale,
-    createCalendar,
-  });
-
-  let { calendarProps, prevButtonProps, nextButtonProps, title } = useCalendar(
-    props,
-    state
-  );
-
-  let { role } = calendarProps;
-
-  console.log(nextButtonProps);
-
-  return (
-    <div {...calendarProps} role="group" className="calendar">
-      <CalendarNavigationButton
-        onPress={() => {}}
-        aria-label={""}
-        icon={<ArrowLeftOutline24Icon />}
-      />
-      <CalendarNavigationButton
-        onPress={() => {}}
-        aria-label={""}
-        icon={<ArrowRightOutline24Icon />}
-      />
-      <CalendarGrid state={state} />
-    </div>
-  );
-}
-
-function CalendarGrid({ state, ...props }: { state: any }) {
-  let { locale } = useLocale();
-  let { gridProps, headerProps, weekDays } = useCalendarGrid(props, state);
-
-  // Get the number of weeks in the month so we can render the proper number of rows.
-  let weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
-
-  return (
-    <table {...gridProps}>
-      <thead {...headerProps}>
-        <tr>
-          {weekDays.map((day, index) => (
-            <th key={index}>{day}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {[...new Array(weeksInMonth).keys()].map((weekIndex) => (
-          <tr key={weekIndex}>
-            {state
-              .getDatesInWeek(weekIndex)
-              .map((date: any, i: React.Key | null | undefined) =>
-                date ? (
-                  <CalendarCell2 key={i} state={state} date={date} />
-                ) : (
-                  <td key={i} />
-                )
-              )}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
-
-function CalendarCell2({ state, date }: { state: any; date: any }) {
-  let ref = React.useRef(null);
-  let {
-    cellProps,
-    buttonProps,
-    isSelected,
-    isOutsideVisibleRange,
-    isDisabled,
-    isUnavailable,
-    formattedDate,
-  } = useCalendarCell({ date }, state, ref);
-
-  return (
-    <td {...cellProps}>
-      <div
-        {...buttonProps}
-        ref={ref}
-        hidden={isOutsideVisibleRange}
-        className={`cell ${isSelected ? "selected" : ""} ${
-          isDisabled ? "disabled" : ""
-        } ${isUnavailable ? "unavailable" : ""}`}
-      >
-        {formattedDate}
-      </div>
-    </td>
-  );
-}
+//haspopup="dialog"

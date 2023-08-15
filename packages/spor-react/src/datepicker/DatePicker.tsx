@@ -1,6 +1,7 @@
 import {
   Box,
   BoxProps,
+  FocusLock,
   InputGroup,
   PopoverAnchor,
   PopoverArrow,
@@ -18,7 +19,11 @@ import {
   getWeeksInMonth,
 } from "@internationalized/date";
 import { useDatePickerState } from "@react-stately/datepicker";
-import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
+import {
+  ArrowLeftOutline24Icon,
+  ArrowRightOutline24Icon,
+  CalendarOutline24Icon,
+} from "@vygruppen/spor-icon-react";
 import React, { forwardRef, useRef } from "react";
 import {
   AriaDatePickerProps,
@@ -27,18 +32,17 @@ import {
   useCalendar,
   useCalendarCell,
   useCalendarGrid,
+  useDateField,
   useDatePicker,
+  useDateSegment,
   useLocale,
 } from "react-aria";
-import { FormErrorMessage } from "..";
-import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
-import { StyledField } from "./StyledField";
-import { useCurrentLocale } from "./utils";
+import { useCalendarState, useDateFieldState } from "react-stately";
 import { Dialog } from "../input/Dialog";
-import { useCalendarState } from "react-stately";
+import FocusTrap from "focus-trap-react";
 import { Popover } from "../input/Popover";
-import { Calendar } from "./Calendar";
+import { CalendarNavigationButton } from "./CalendarNavigationButton";
 
 type DatePickerProps = AriaDatePickerProps<DateValue> &
   Pick<BoxProps, "minHeight" | "width"> & {
@@ -67,36 +71,21 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     },
     externalRef
   ) => {
-    const formControlProps = useFormControlContext();
-    const state = useDatePickerState({
-      ...props,
-      shouldCloseOnSelect: true,
-      errorMessage,
-      isRequired: props.isRequired ?? formControlProps?.isRequired,
-      validationState: formControlProps?.isInvalid ? "invalid" : "valid",
-    });
-    const internalRef = useRef<HTMLDivElement>(null);
-    const ref = externalRef ?? internalRef;
-    const {
+    //const formControlProps = useFormControlContext();
+    let state = useDatePickerState(props);
+    let ref = React.useRef(null);
+    let {
       groupProps,
       labelProps,
       fieldProps,
       buttonProps,
       dialogProps,
       calendarProps,
-      errorMessageProps,
-    } = useDatePicker(
-      props,
-      state,
-      ref as React.MutableRefObject<HTMLDivElement>
-    );
-
+    } = useDatePicker(props, state, ref);
 
     const responsiveVariant =
       useBreakpointValue(typeof variant === "string" ? [variant] : variant) ??
       "simple";
-
-    const locale = useCurrentLocale();
 
     const onFieldClick = () => {
       if (!hasTrigger) {
@@ -111,46 +100,29 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     console.log(state);
 
     return (
-      <I18nProvider locale={locale}>
-        <Box
-          position="relative"
-          display="inline-flex"
-          flexDirection="column"
-          width={width}
-        >
-          <InputGroup {...groupProps} display="inline-flex">
-            <StyledField
-              variant={responsiveVariant}
-              onClick={onFieldClick}
-              paddingX={3}
-              minHeight={minHeight}
-            >
-              {!hasTrigger && (
-                <CalendarOutline24Icon marginRight={2} alignSelf="center" />
-              )}
-              <DateField
-                label={props.label}
-                labelProps={labelProps}
-                name={props.name}
-                ref={ref}
-                {...fieldProps}
-              />
-            </StyledField>
-            {hasTrigger && <CalendarTriggerButton {...buttonProps} />}
-          </InputGroup>
-          <FormErrorMessage {...errorMessageProps}>
-                {errorMessage}
-              </FormErrorMessage>
-          {state.isOpen && !props.isDisabled && (
-              <Popover state={state} triggerRef={ref as any} placement='bottom start'>
-              <Dialog {...dialogProps}>
-                <Calendar {...calendarProps} />
-              </Dialog>
-            </Popover>
-          )}
-                  
-        </Box>
-      </I18nProvider>
+      <div
+        style={{
+          display: "inline-flex",
+          flexDirection: "column",
+        }}
+      >
+        <div {...labelProps}>{props.label}</div>
+        <div {...groupProps} ref={ref} style={{ display: "flex" }}>
+          <DateField {...fieldProps} />
+          <Button {...buttonProps}>🗓</Button>
+        </div>
+        {state.isOpen && !props.isDisabled && (
+          <Popover
+            state={state}
+            triggerRef={ref as any}
+            placement="bottom start"
+          >
+            <FocusLock>
+              <Calendar {...calendarProps} />
+            </FocusLock>
+          </Popover>
+        )}
+      </div>
     );
   }
 );
@@ -165,43 +137,46 @@ function Button(props: any) {
   );
 }
 
-function Calendar2(props: any) {
+function Calendar(props: any) {
   let { locale } = useLocale();
   let state = useCalendarState({
     ...props,
     locale,
-    createCalendar
+    createCalendar,
   });
 
-  let {
-    calendarProps,
-    prevButtonProps,
-    nextButtonProps,
-    title
-  } = useCalendar(props, state);
+  let { calendarProps, prevButtonProps, nextButtonProps, title } = useCalendar(
+    props,
+    state
+  );
+
+  let { role } = calendarProps;
+
+  console.log(nextButtonProps);
 
   return (
-    <div {...calendarProps} className="calendar">
-      <div className="header">
-        <h2>{title}</h2>
-        <Button {...prevButtonProps}>&lt;</Button>
-        <Button {...nextButtonProps}>&gt;</Button>
-      </div>
+    <div {...calendarProps} role="group" className="calendar">
+      <CalendarNavigationButton
+        onPress={() => {}}
+        aria-label={""}
+        icon={<ArrowLeftOutline24Icon />}
+      />
+      <CalendarNavigationButton
+        onPress={() => {}}
+        aria-label={""}
+        icon={<ArrowRightOutline24Icon />}
+      />
       <CalendarGrid state={state} />
     </div>
   );
 }
 
-function CalendarGrid({ state, ...props }: {state: any}) {
+function CalendarGrid({ state, ...props }: { state: any }) {
   let { locale } = useLocale();
-  let { gridProps, headerProps, weekDays } =
-    useCalendarGrid(props, state);
+  let { gridProps, headerProps, weekDays } = useCalendarGrid(props, state);
 
   // Get the number of weeks in the month so we can render the proper number of rows.
-  let weeksInMonth = getWeeksInMonth(
-    state.visibleRange.start,
-    locale
-  );
+  let weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
 
   return (
     <table {...gridProps}>
@@ -213,32 +188,25 @@ function CalendarGrid({ state, ...props }: {state: any}) {
         </tr>
       </thead>
       <tbody>
-        {[...new Array(weeksInMonth).keys()].map(
-          (weekIndex) => (
-            <tr key={weekIndex}>
-              {state.getDatesInWeek(weekIndex).map((
-                date: any,
-                i: React.Key | null | undefined
-              ) => (
-                date
-                  ? (
-                    <CalendarCell
-                      key={i}
-                      state={state}
-                      date={date}
-                    />
-                  )
-                  : <td key={i} />
-              ))}
-            </tr>
-          )
-        )}
+        {[...new Array(weeksInMonth).keys()].map((weekIndex) => (
+          <tr key={weekIndex}>
+            {state
+              .getDatesInWeek(weekIndex)
+              .map((date: any, i: React.Key | null | undefined) =>
+                date ? (
+                  <CalendarCell2 key={i} state={state} date={date} />
+                ) : (
+                  <td key={i} />
+                )
+              )}
+          </tr>
+        ))}
       </tbody>
     </table>
   );
 }
 
-function CalendarCell({ state, date}: {state: any, date: any}) {
+function CalendarCell2({ state, date }: { state: any; date: any }) {
   let ref = React.useRef(null);
   let {
     cellProps,
@@ -247,7 +215,7 @@ function CalendarCell({ state, date}: {state: any, date: any}) {
     isOutsideVisibleRange,
     isDisabled,
     isUnavailable,
-    formattedDate
+    formattedDate,
   } = useCalendarCell({ date }, state, ref);
 
   return (
@@ -256,9 +224,9 @@ function CalendarCell({ state, date}: {state: any, date: any}) {
         {...buttonProps}
         ref={ref}
         hidden={isOutsideVisibleRange}
-        className={`cell ${isSelected ? 'selected' : ''} ${
-          isDisabled ? 'disabled' : ''
-        } ${isUnavailable ? 'unavailable' : ''}`}
+        className={`cell ${isSelected ? "selected" : ""} ${
+          isDisabled ? "disabled" : ""
+        } ${isUnavailable ? "unavailable" : ""}`}
       >
         {formattedDate}
       </div>

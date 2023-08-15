@@ -20,6 +20,7 @@
     "awesome-phonenumber": "^5.5.0",
     "patch-package": "^6.4.7",
     "prettier": "^2.5.1",
+    "react-focus-lock": "^2.9.5",
     "rimraf": "^3.0.2",
     "turbo": "^1.9.8"
   },

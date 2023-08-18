@@ -12,7 +12,7 @@ import { Accordion, AccordionProps } from "./Accordion";
 import { useAccordionContext } from "./AccordionContext";
 
 type HeadingLevel = "h2" | "h3" | "h4" | "h5" | "h6";
-type ExpandableProps = AccordionProps & {
+type ExpandableProps = Omit<AccordionProps, "title"> & {
   /** The hidden content */
   children: React.ReactNode;
   /** The title that's shown inside the toggle button */
@@ -62,7 +62,7 @@ export const Expandable = ({
   );
 };
 
-export type ExpandableItemProps = AccordionItemProps & {
+export type ExpandableItemProps = Omit<AccordionItemProps, "title"> & {
   /** The hidden content */
   children: React.ReactNode;
   /** The title that's shown inside the toggle button */

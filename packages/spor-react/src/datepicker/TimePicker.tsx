@@ -2,8 +2,8 @@ import { BoxProps, useFormControlContext } from "@chakra-ui/react";
 import { CalendarDateTime } from "@internationalized/date";
 import { TimeValue } from "@react-types/datepicker";
 import {
-  DropdownLeftFill24Icon,
-  DropdownRightFill24Icon,
+  DropdownLeftFill18Icon,
+  DropdownRightFill18Icon,
 } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { useTimeFieldState } from "react-stately";
@@ -140,7 +140,7 @@ export const TimePicker = ({
         borderRadius="xs"
         aria-label={backwardsLabel}
         title={backwardsLabel}
-        icon={<DropdownLeftFill24Icon />}
+        icon={<DropdownLeftFill18Icon />}
         onClick={handleBackwardsClick}
         isDisabled={isDisabled}
         style={isDisabled ? { backgroundColor: "transparent" } : {}}
@@ -152,7 +152,7 @@ export const TimePicker = ({
         borderRadius="xs"
         aria-label={forwardsLabel}
         title={forwardsLabel}
-        icon={<DropdownRightFill24Icon />}
+        icon={<DropdownRightFill18Icon />}
         onClick={handleForwardClick}
         isDisabled={isDisabled}
         style={isDisabled ? { backgroundColor: "transparent" } : {}}

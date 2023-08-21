@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": patch
 ---
 
-Improve combobox when used in embedded apps
+Add the possibility to not use overlay in PopOver. 

@@ -1,14 +1,12 @@
 import { HeadingProps as ChakraHeadingProps, Text } from "@chakra-ui/react";
-import type tokens from "@vygruppen/spor-design-tokens";
 import React from "react";
-
-type TextStyles = keyof typeof tokens.font.style;
+import type { textStyles } from "../theme/foundations";
 
 export type HeadingProps = Omit<ChakraHeadingProps, "textStyle" | "as"> & {
   /** The heading level, e.g. h1, h2, h3... **/
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  /** The size and style of the heading */
-  variant?: TextStyles;
+  /** The size and style of the heading. Defaults to xl-display */
+  variant?: keyof typeof textStyles;
 };
 /**
  * Create your own fancy headings with this component.

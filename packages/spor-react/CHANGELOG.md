@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 3.1.2
+
+### Patch Changes
+
+- a19a1e80: Heading: Fix a bug with variants
+
 ## 3.1.1
 
 ### Patch Changes

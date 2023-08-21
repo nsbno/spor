@@ -88,7 +88,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         minWidth={triggerRef.current?.clientWidth ?? "auto"}
         marginLeft={-2}
       >
-        {!isNonModal && <DismissButton onDismiss={state.close} />}
+        <DismissButton onDismiss={state.close} />
         {children}
         <DismissButton onDismiss={state.close} />
       </Box>

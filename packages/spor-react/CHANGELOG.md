@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 3.1.1
+
+### Patch Changes
+
+- ffaf999e: Add the possibility to not use overlay in PopOver.
+- fc9d0b88: Fix paddings and text color in DatePicker and TimePicker
+- 81aed3c7: Fix Expandable title
+- dec74c7d: Update react-aria
+- 615e1a46: Propagate Box props through ExpandableAlert
+
 ## 3.1.0
 
 ### Minor Changes

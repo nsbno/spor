@@ -2,6 +2,7 @@ import { Box, useMultiStyleConfig } from "@chakra-ui/react";
 import React, { RefObject, forwardRef, useRef } from "react";
 import { useDateSegment } from "react-aria";
 import { DateFieldState, DateSegment } from "react-stately";
+import { colors } from "../theme/foundations";
 
 type DateTimeSegmentProps = {
   segment: DateSegment;
@@ -29,7 +30,6 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
       isPlaceholder: segment.isPlaceholder,
       isEditable: segment.isEditable,
     });
-
     return (
       <Box
         {...segmentProps}
@@ -38,6 +38,7 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
           ...segmentProps.style,
           fontVariantNumeric: "tabular-nums",
           boxSizing: "content-box",
+          color: colors.darkGrey,
         }}
         paddingX="1px"
         textAlign="end"

@@ -46,11 +46,13 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
             {...props.labelProps}
             {...labelProps}
             sx={styles.inputLabel}
+            position="absolute"
+            paddingTop="2px"
           >
             {props.label}
           </FormLabel>
         )}
-        <Flex {...fieldProps}>
+        <Flex {...fieldProps} paddingTop="3" paddingBottom="0.5">
           {state.segments.map((segment, i) => (
             <DateTimeSegment
               ref={i === 0 ? ref : undefined}

@@ -74,7 +74,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     dateTimeSegment: {
       color: mode(
-        props.isEditable ? "darkGrey" : "dimGrey",
+        "darkGrey",
         props.isPlaceholder ? "whiteAlpha.400" : "white"
       )(props),
     },

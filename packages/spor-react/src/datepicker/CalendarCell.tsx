@@ -41,6 +41,7 @@ export function CalendarCell({ state, date, currentMonth }: CalendarCellProps) {
   if (isOutsideMonth) {
     stateProps["data-unavailable"] = true;
   }
+  
   return (
     <Box
       as="td"
@@ -66,7 +67,7 @@ export function CalendarCell({ state, date, currentMonth }: CalendarCellProps) {
       <Box
         as="button"
         {...buttonProps}
-        //{...stateProps}
+        {...stateProps}
         ref={ref}
         sx={styles.dateCell}
         hidden={isOutsideVisibleRange}

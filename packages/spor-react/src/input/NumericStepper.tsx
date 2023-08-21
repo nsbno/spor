@@ -32,7 +32,7 @@ type NumericStepperProps = {
   /** Whether the stepper is disabled or not */
   isDisabled?: boolean;
   /** Whether to show input field or not */
-  withoutInput?: boolean;
+  withInput?: boolean;
 } & Omit<BoxProps, "onChange">;
 /** A simple stepper component for integer values
  *
@@ -67,7 +67,7 @@ export function NumericStepper({
   minValue = 0,
   maxValue = 99,
   isDisabled,
-  withoutInput,
+  withInput = true,
   ...boxProps
 }: NumericStepperProps) {
   const { t } = useTranslation();
@@ -90,22 +90,7 @@ export function NumericStepper({
         visibility={value <= minValue ? "hidden" : "visible"}
         isDisabled={formControlProps.disabled}
       />
-      {withoutInput ? (
-        <chakra.text
-          fontSize="sm"
-          fontWeight="bold"
-          width="3ch"
-          marginX={1}
-          paddingX={1}
-          textAlign="center"
-          color={textColor}
-          transition="box-shadow .1s ease-out"
-          visibility={value === 0 ? "hidden" : "visible"}
-          aria-label={value.toString()}
-        >
-          {value}
-        </chakra.text>
-      ) : (
+      {withInput ? (
         <chakra.input
           type="number"
           min={minValue}
@@ -114,7 +99,7 @@ export function NumericStepper({
           value={value}
           {...formControlProps}
           id={value !== 0 ? formControlProps.id : undefined}
-        fontSize="sm"
+          fontSize="sm"
           fontWeight="bold"
           width="3ch"
           marginX={1}
@@ -154,6 +139,21 @@ export function NumericStepper({
             onChange(numericInput);
           }}
         />
+      ) : (
+        <chakra.text
+          fontSize="sm"
+          fontWeight="bold"
+          width="3ch"
+          marginX={1}
+          paddingX={1}
+          textAlign="center"
+          color={textColor}
+          transition="box-shadow .1s ease-out"
+          visibility={value === 0 ? "hidden" : "visible"}
+          aria-label={value.toString()}
+        >
+          {value}
+        </chakra.text>
       )}
       <VerySmallButton
         icon={<AddIcon color="white" />}

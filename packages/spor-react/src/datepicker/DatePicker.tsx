@@ -67,6 +67,8 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       groupProps,
       labelProps,
       fieldProps,
+      buttonProps,
+      dialogProps,
       calendarProps,
       errorMessageProps,
     } = useDatePicker(
@@ -126,7 +128,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           ref={boxRef}
           onKeyDown={onEscapePress}
         >
-          <Popover isOpen={state.isOpen}>
+          <Popover {...dialogProps} isOpen={state.isOpen}>
             <InputGroup {...groupProps} display="inline-flex">
               <PopoverAnchor>
                 <StyledField
@@ -149,6 +151,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
               </PopoverAnchor>
               {hasTrigger && (
                 <CalendarTriggerButton
+                  {...buttonProps}
                   onPress={onCalendarButtonClick}
                   isTriggerButtonFocused={isTriggerButtonFocused}
                 />

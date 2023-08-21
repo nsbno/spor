@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 3.2.0
+
+### Minor Changes
+
+- 37b40a9b: Adds withInput prop to numericStepper
+
 ## 3.1.2
 
 ### Patch Changes

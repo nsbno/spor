@@ -31,6 +31,8 @@ type NumericStepperProps = {
   maxValue?: number;
   /** Whether the stepper is disabled or not */
   isDisabled?: boolean;
+  /** Whether to show input field or not */
+  withInput?: boolean;
 } & Omit<BoxProps, "onChange">;
 /** A simple stepper component for integer values
  *
@@ -65,6 +67,7 @@ export function NumericStepper({
   minValue = 0,
   maxValue = 99,
   isDisabled,
+  withInput = true,
   ...boxProps
 }: NumericStepperProps) {
   const { t } = useTranslation();
@@ -87,54 +90,71 @@ export function NumericStepper({
         visibility={value <= minValue ? "hidden" : "visible"}
         isDisabled={formControlProps.disabled}
       />
-      <chakra.input
-        type="number"
-        min={minValue}
-        max={maxValue}
-        name={nameProp}
-        value={value}
-        {...formControlProps}
-        id={value !== 0 ? formControlProps.id : undefined}
-        fontSize="sm"
-        fontWeight="bold"
-        width="3ch"
-        marginX={1}
-        paddingX={1}
-        borderRadius="xs"
-        textAlign="center"
-        backgroundColor={backgroundColor}
-        color={textColor}
-        transition="box-shadow .1s ease-out"
-        visibility={value === 0 ? "hidden" : "visible"}
-        aria-live="assertive"
-        aria-label={value.toString()}
-        _hover={{
-          boxShadow: getBoxShadowString({
-            borderColor: "currentColor",
-            borderWidth: 1,
-          }),
-          _disabled: {
-            boxShadow: "none",
-          },
-        }}
-        _disabled={{
-          opacity: 0.5,
-        }}
-        _focus={{
-          outline: "none",
-          boxShadow: getBoxShadowString({
-            borderColor: focusColor,
-            borderWidth: 1,
-          }),
-        }}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          const numericInput = Number(e.target.value);
-          if (Number.isNaN(numericInput)) {
-            return;
-          }
-          onChange(numericInput);
-        }}
-      />
+      {withInput ? (
+        <chakra.input
+          type="number"
+          min={minValue}
+          max={maxValue}
+          name={nameProp}
+          value={value}
+          {...formControlProps}
+          id={value !== 0 ? formControlProps.id : undefined}
+          fontSize="sm"
+          fontWeight="bold"
+          width="3ch"
+          marginX={1}
+          paddingX={1}
+          borderRadius="xs"
+          textAlign="center"
+          backgroundColor={backgroundColor}
+          color={textColor}
+          transition="box-shadow .1s ease-out"
+          visibility={value === 0 ? "hidden" : "visible"}
+          aria-live="assertive"
+          aria-label={value.toString()}
+          _hover={{
+            boxShadow: getBoxShadowString({
+              borderColor: "currentColor",
+              borderWidth: 1,
+            }),
+            _disabled: {
+              boxShadow: "none",
+            },
+          }}
+          _disabled={{
+            opacity: 0.5,
+          }}
+          _focus={{
+            outline: "none",
+            boxShadow: getBoxShadowString({
+              borderColor: focusColor,
+              borderWidth: 1,
+            }),
+          }}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            const numericInput = Number(e.target.value);
+            if (Number.isNaN(numericInput)) {
+              return;
+            }
+            onChange(numericInput);
+          }}
+        />
+      ) : (
+        <chakra.text
+          fontSize="sm"
+          fontWeight="bold"
+          width="3ch"
+          marginX={1}
+          paddingX={1}
+          textAlign="center"
+          color={textColor}
+          transition="box-shadow .1s ease-out"
+          visibility={value === 0 ? "hidden" : "visible"}
+          aria-label={value.toString()}
+        >
+          {value}
+        </chakra.text>
+      )}
       <VerySmallButton
         icon={<AddIcon color="white" />}
         aria-label={t(texts.incrementButtonAriaLabel)}

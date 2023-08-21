@@ -22,7 +22,7 @@ export const CalendarTriggerButton = (props: CalendarTriggerButtonProps) => {
       >
         <CalendarOutline24Icon />
       </Box>
-      </PopoverAnchor>
+    </PopoverAnchor>
   );
 };
 

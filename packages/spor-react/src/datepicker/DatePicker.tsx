@@ -16,7 +16,7 @@ import {
 import { DateValue } from "@internationalized/date";
 import { useDatePickerState } from "@react-stately/datepicker";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, useRef } from "react";
+import React, { forwardRef, useRef, useState } from "react";
 import { AriaDatePickerProps, I18nProvider, useDatePicker } from "react-aria";
 import { FormErrorMessage } from "..";
 import { Calendar } from "./Calendar";
@@ -75,6 +75,8 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       ref as React.MutableRefObject<HTMLDivElement>
     );
 
+    const [isTriggerButtonFocused, setIsTriggerButtonFocused] = useState(false);
+
     const styles = useMultiStyleConfig("Datepicker", {});
 
     const responsiveVariant =
@@ -92,6 +94,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     };
 
     const onCalendarButtonClick = () => {
+      setIsTriggerButtonFocused(false);
       if (state.isOpen) {
         state.setOpen(false);
       } else {
@@ -99,14 +102,16 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       }
     };
 
-    const onEscapePress = (e) => {
+    const onEscapePress = (e: React.KeyboardEvent) => {
       if (e.key === "Escape") {
+        setIsTriggerButtonFocused(true);
         state.setOpen(false);
       }
     };
 
     const boxRef = useRef(null);
     const handleClickOutside = () => {
+      setIsTriggerButtonFocused(false);
       state.setOpen(false);
     };
     useOnClickOutside(boxRef, handleClickOutside);
@@ -143,7 +148,10 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                 </StyledField>
               </PopoverAnchor>
               {hasTrigger && (
-                <CalendarTriggerButton onPress={onCalendarButtonClick} />
+                <CalendarTriggerButton
+                  onPress={onCalendarButtonClick}
+                  isTriggerButtonFocused={isTriggerButtonFocused}
+                />
               )}
             </InputGroup>
             <FormErrorMessage {...errorMessageProps}>

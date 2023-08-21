@@ -27,7 +27,7 @@
     "@vygruppen/spor-loader": "*",
     "framer-motion": ">6.0.0",
     "lottie-react": "^2.3.1",
-    "react-aria": "^3.23.0",
+    "react-aria": "^3.27.0",
     "react-stately": "^3.20.0",
     "react-swipeable": "^7.0.0"
   },

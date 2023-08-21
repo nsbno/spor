@@ -4,6 +4,5 @@
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "rootDir": ".",
-    "downlevelIteration": true
   }
 }

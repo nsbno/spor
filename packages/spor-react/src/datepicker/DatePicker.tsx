@@ -8,11 +8,8 @@ import {
   PopoverArrow,
   PopoverBody,
   PopoverContent,
-  PopoverTrigger,
-  Portal,
   ResponsiveValue,
   useBreakpointValue,
-  useDisclosure,
   useFormControlContext,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
@@ -70,8 +67,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       groupProps,
       labelProps,
       fieldProps,
-      buttonProps,
-      dialogProps,
       calendarProps,
       errorMessageProps,
     } = useDatePicker(
@@ -80,9 +75,13 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       ref as React.MutableRefObject<HTMLDivElement>
     );
 
+    const styles = useMultiStyleConfig("Datepicker", {});
+
     const responsiveVariant =
       useBreakpointValue(typeof variant === "string" ? [variant] : variant) ??
       "simple";
+
+    const hasTrigger = responsiveVariant === "with-trigger";
 
     const locale = useCurrentLocale();
 
@@ -92,11 +91,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       }
     };
 
-    console.log(state);
-
-    const onClose2 = () => {
-      console.log("onClose");
-      console.log(state);
+    const onCalendarButtonClick = () => {
       if (state.isOpen) {
         state.setOpen(false);
       } else {
@@ -104,35 +99,17 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       }
     };
 
-    const onOpen2 = () => {
-      console.log("onOpen");
-      console.log(state);
-      if (state.isOpen) {
+    const onEscapePress = (e) => {
+      if (e.key === "Escape") {
         state.setOpen(false);
-      } else {
-        state.setOpen(true);
       }
-    };
-
-    const onBlur = () => {
-      console.log("entering onBlur");
-      console.log(state.isOpen);
-      state.setOpen(false);
-    };
-
-    const hasTrigger = responsiveVariant === "with-trigger";
-
-    const styles = useMultiStyleConfig("Datepicker", {});
-
-    const handleClickOutside = () => {
-      console.log("handleClickOutside");
-      state.setOpen(false);
     };
 
     const boxRef = useRef(null);
-    //useOnClickOutside(boxRef, handleClickOutside)
-
-    console.log(state);
+    const handleClickOutside = () => {
+      state.setOpen(false);
+    };
+    useOnClickOutside(boxRef, handleClickOutside);
 
     return (
       <I18nProvider locale={locale}>
@@ -142,16 +119,9 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           flexDirection="column"
           width={width}
           ref={boxRef}
+          onKeyDown={onEscapePress}
         >
-          <Popover
-            //{...dialogProps}
-            isOpen={state.isOpen}
-            onClose={state.close}
-            onOpen={state.open}
-            closeOnBlur
-            //closeOnEsc
-            //returnFocusOnClose
-          >
+          <Popover isOpen={state.isOpen}>
             <InputGroup {...groupProps} display="inline-flex">
               <PopoverAnchor>
                 <StyledField
@@ -173,7 +143,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                 </StyledField>
               </PopoverAnchor>
               {hasTrigger && (
-                <CalendarTriggerButton {...buttonProps}></CalendarTriggerButton>
+                <CalendarTriggerButton onPress={onCalendarButtonClick} />
               )}
             </InputGroup>
             <FormErrorMessage {...errorMessageProps}>
@@ -202,5 +172,3 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     );
   }
 );
-
-//haspopup="dialog"

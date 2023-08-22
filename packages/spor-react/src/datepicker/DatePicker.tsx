@@ -8,6 +8,7 @@ import {
   PopoverArrow,
   PopoverBody,
   PopoverContent,
+  PopoverTrigger,
   ResponsiveValue,
   useBreakpointValue,
   useFormControlContext,
@@ -96,6 +97,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       setIsTriggerButtonFocused(false);
       if (state.isOpen) {
         state.setOpen(false);
+        setIsTriggerButtonFocused(true);
       } else {
         state.setOpen(true);
       }
@@ -115,6 +117,8 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     };
     useOnClickOutside(boxRef, handleClickOutside);
 
+    console.log(state);
+
     return (
       <I18nProvider locale={locale}>
         <Box
@@ -125,7 +129,20 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           ref={boxRef}
           onKeyDown={onEscapePress}
         >
-          <Popover {...dialogProps} isOpen={state.isOpen}>
+          <Popover
+            {...dialogProps}
+            isOpen={state.isOpen}
+            onOpen={() => {
+              state.open()
+              console.log("Åpner")
+            }
+          }
+            onClose={() => {
+              state.close()
+              console.log("Lukker")
+            }
+          }
+          >
             <InputGroup {...groupProps} display="inline-flex">
               <PopoverAnchor>
                 <StyledField
@@ -147,11 +164,13 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                 </StyledField>
               </PopoverAnchor>
               {hasTrigger && (
-                <CalendarTriggerButton
-                  {...buttonProps}
-                  onPress={onTriggerButtonClick}
-                  isTriggerButtonFocused={isTriggerButtonFocused}
-                />
+                <PopoverTrigger>
+                  <CalendarTriggerButton
+                    //{...buttonProps}
+                    //onPress={onTriggerButtonClick}
+                    isTriggerButtonFocused={isTriggerButtonFocused}
+                  />
+                </PopoverTrigger>
               )}
             </InputGroup>
             <FormErrorMessage {...errorMessageProps}>

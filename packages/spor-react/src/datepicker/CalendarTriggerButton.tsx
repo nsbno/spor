@@ -17,8 +17,6 @@ export const CalendarTriggerButton = (
   useEffect(() => {
     if (isTriggerButtonFocused) {
       ref.current?.focus();
-    } else {
-      ref.current?.blur();
     }
   }, [isTriggerButtonFocused]);
 

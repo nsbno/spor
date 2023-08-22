@@ -78,16 +78,13 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     );
 
     const [isTriggerButtonFocused, setIsTriggerButtonFocused] = useState(false);
-
     const styles = useMultiStyleConfig("Datepicker", {});
+    const locale = useCurrentLocale();
 
     const responsiveVariant =
       useBreakpointValue(typeof variant === "string" ? [variant] : variant) ??
       "simple";
-
     const hasTrigger = responsiveVariant === "with-trigger";
-
-    const locale = useCurrentLocale();
 
     const onFieldClick = () => {
       if (!hasTrigger) {
@@ -95,7 +92,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       }
     };
 
-    const onCalendarButtonClick = () => {
+    const onTriggerButtonClick = () => {
       setIsTriggerButtonFocused(false);
       if (state.isOpen) {
         state.setOpen(false);
@@ -152,7 +149,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
               {hasTrigger && (
                 <CalendarTriggerButton
                   {...buttonProps}
-                  onPress={onCalendarButtonClick}
+                  onPress={onTriggerButtonClick}
                   isTriggerButtonFocused={isTriggerButtonFocused}
                 />
               )}

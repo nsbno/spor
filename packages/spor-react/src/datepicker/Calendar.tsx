@@ -24,12 +24,13 @@ export function Calendar({ showYearNavigation, ...props }: CalendarProps) {
   });
 
   const { calendarProps } = useCalendar(props, state);
-  const ariaLabel = calendarProps["aria-label"]
+  const calendarAriaLabel = calendarProps["aria-label"];
 
-  const ariaLabelTouse = `${t(texts.calendar)} ${(ariaLabel ?? "")}`
+  const ariaLabel =
+    t(texts.calendar) + (calendarAriaLabel ? ` ${calendarAriaLabel}` : "");
 
   return (
-    <Box {...calendarProps} role="group" aria-label={ariaLabelTouse}>
+    <Box {...calendarProps} role="group" aria-label={ariaLabel}>
       <CalendarHeader state={state} showYearNavigation={showYearNavigation} />
       <CalendarGrid state={state} />
     </Box>

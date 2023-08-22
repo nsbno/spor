@@ -25,7 +25,6 @@ import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
 import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
-import { useOnClickOutside } from "usehooks-ts";
 
 type DatePickerProps = AriaDatePickerProps<DateValue> &
   Pick<BoxProps, "minHeight" | "width"> & {
@@ -78,7 +77,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       ref as React.MutableRefObject<HTMLDivElement>
     );
 
-    const [isTriggerButtonFocused, setIsTriggerButtonFocused] = useState(false);
+    const buttonRef = useRef<HTMLButtonElement>(null);
     const styles = useMultiStyleConfig("Datepicker", {});
     const locale = useCurrentLocale();
 
@@ -93,32 +92,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       }
     };
 
-    const onTriggerButtonClick = () => {
-      setIsTriggerButtonFocused(false);
-      if (state.isOpen) {
-        state.setOpen(false);
-        setIsTriggerButtonFocused(true);
-      } else {
-        state.setOpen(true);
-      }
-    };
-
-    const onEscapePress = (e: React.KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setIsTriggerButtonFocused(true);
-        state.setOpen(false);
-      }
-    };
-
-    const boxRef = useRef(null);
-    const handleClickOutside = () => {
-      setIsTriggerButtonFocused(false);
-      state.setOpen(false);
-    };
-    useOnClickOutside(boxRef, handleClickOutside);
-
-    console.log(state);
-
     return (
       <I18nProvider locale={locale}>
         <Box
@@ -126,22 +99,11 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           display="inline-flex"
           flexDirection="column"
           width={width}
-          ref={boxRef}
-          onKeyDown={onEscapePress}
         >
           <Popover
             {...dialogProps}
-            isOpen={state.isOpen}
-            onOpen={() => {
-              state.open()
-              console.log("Åpner")
-            }
-          }
-            onClose={() => {
-              state.close()
-              console.log("Lukker")
-            }
-          }
+            onClose={() => console.log("Lukker")}
+            onOpen={() => console.log("Åpner")}
           >
             <InputGroup {...groupProps} display="inline-flex">
               <PopoverAnchor>
@@ -163,36 +125,29 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                   />
                 </StyledField>
               </PopoverAnchor>
-              {hasTrigger && (
-                <PopoverTrigger>
-                  <CalendarTriggerButton
-                    //{...buttonProps}
-                    //onPress={onTriggerButtonClick}
-                    isTriggerButtonFocused={isTriggerButtonFocused}
-                  />
-                </PopoverTrigger>
-              )}
+              <PopoverTrigger>
+                <CalendarTriggerButton {...buttonProps} ref={buttonRef} />
+              </PopoverTrigger>
             </InputGroup>
             <FormErrorMessage {...errorMessageProps}>
               {errorMessage}
             </FormErrorMessage>
-            {state.isOpen && !props.isDisabled && (
-              <PopoverContent
-                color="darkGrey"
-                boxShadow="md"
-                sx={styles.calendar}
-              >
-                <PopoverArrow sx={styles.arrow} />
-                <PopoverBody>
-                  <FocusLock>
-                    <Calendar
-                      {...calendarProps}
-                      showYearNavigation={showYearNavigation}
-                    />
-                  </FocusLock>
-                </PopoverBody>
-              </PopoverContent>
-            )}
+            <PopoverContent
+              color="darkGrey"
+              boxShadow="md"
+              sx={styles.calendar}
+              marginTop="32px"
+            >
+              <PopoverArrow sx={styles.arrow} />
+              <PopoverBody>
+                <FocusLock>
+                  <Calendar
+                    {...calendarProps}
+                    showYearNavigation={showYearNavigation}
+                  />
+                </FocusLock>
+              </PopoverBody>
+            </PopoverContent>
           </Popover>
         </Box>
       </I18nProvider>

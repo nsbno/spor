@@ -115,14 +115,13 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                     label={props.label}
                     labelProps={labelProps}
                     name={props.name}
-                    ref={ref}
                     {...fieldProps}
                   />
                 </StyledField>
               </PopoverAnchor>
               {hasTrigger && (
                 <PopoverTrigger>
-                  <CalendarTriggerButton {...buttonProps} />
+                  <CalendarTriggerButton ref={ref} {...buttonProps} />
                 </PopoverTrigger>
               )}
             </InputGroup>

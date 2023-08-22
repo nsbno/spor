@@ -1,39 +1,41 @@
-import { Box, PopoverAnchor, useMultiStyleConfig } from "@chakra-ui/react";
+import {
+  Box,
+  PopoverAnchor,
+  useMultiStyleConfig,
+  forwardRef,
+  As,
+} from "@chakra-ui/react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, { useEffect } from "react";
+import React from "react";
 import { AriaButtonProps, useButton } from "react-aria";
 import { createTexts, useTranslation } from "..";
 
-type CalendarTriggerButtonProps = AriaButtonProps<"button">;
-export const CalendarTriggerButton = (
-  props: CalendarTriggerButtonProps & { isTriggerButtonFocused?: boolean }
-) => {
-  const { t } = useTranslation();
-  const styles = useMultiStyleConfig("Datepicker", {});
-  const ref = React.useRef<HTMLButtonElement>(null);
-  const { isTriggerButtonFocused } = props;
-  const { buttonProps } = useButton(props, ref);
+type CalendarTriggerButtonProps = AriaButtonProps<"button">
+export const CalendarTriggerButton = forwardRef<CalendarTriggerButtonProps, As>(
+  ({ ...buttonProps }, ref) => {
+    const { t } = useTranslation();
+    const styles = useMultiStyleConfig("Datepicker", {});
 
-  useEffect(() => {
-    if (isTriggerButtonFocused) {
-      ref.current?.focus();
-    }
-  }, [isTriggerButtonFocused]);
+    console.log(buttonProps)
+    //const { onPress } = buttonProps
+    //const { onKeyDown } = buttonProps
 
-  return (
-    <PopoverAnchor>
-      <Box
-        ref={ref}
-        as="button"
-        aria-label={t(texts.openCalendar)}
-        sx={styles.calendarTriggerButton}
-        {...(buttonProps as any)}
-      >
-        <CalendarOutline24Icon />
-      </Box>
-    </PopoverAnchor>
-  );
-};
+    return (
+      <PopoverAnchor>
+        <Box
+          ref={ref}
+          as="button"
+          aria-label={t(texts.openCalendar)}
+          sx={styles.calendarTriggerButton}
+          //onPress={() => {}}
+          //onKeyDown={() => {}}
+        >
+          <CalendarOutline24Icon />
+        </Box>
+      </PopoverAnchor>
+    );
+  }
+);
 
 const texts = createTexts({
   openCalendar: {

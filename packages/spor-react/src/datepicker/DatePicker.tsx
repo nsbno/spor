@@ -78,7 +78,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       ref as React.MutableRefObject<HTMLDivElement>
     );
 
-    const [isTriggerButtonFocused, setIsTriggerButtonFocused] = useState(false);
     const styles = useMultiStyleConfig("Datepicker", {});
     const locale = useCurrentLocale();
 
@@ -93,32 +92,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       }
     };
 
-    const onTriggerButtonClick = () => {
-      setIsTriggerButtonFocused(false);
-      if (state.isOpen) {
-        state.setOpen(false);
-        setIsTriggerButtonFocused(true);
-      } else {
-        state.setOpen(true);
-      }
-    };
-
-    const onEscapePress = (e: React.KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setIsTriggerButtonFocused(true);
-        state.setOpen(false);
-      }
-    };
-
-    const boxRef = useRef(null);
-    const handleClickOutside = () => {
-      setIsTriggerButtonFocused(false);
-      state.setOpen(false);
-    };
-    useOnClickOutside(boxRef, handleClickOutside);
-
-    console.log(state);
-
     return (
       <I18nProvider locale={locale}>
         <Box
@@ -126,22 +99,12 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           display="inline-flex"
           flexDirection="column"
           width={width}
-          ref={boxRef}
-          onKeyDown={onEscapePress}
         >
           <Popover
             {...dialogProps}
-            isOpen={state.isOpen}
-            onOpen={() => {
-              state.open()
-              console.log("Åpner")
-            }
-          }
-            onClose={() => {
-              state.close()
-              console.log("Lukker")
-            }
-          }
+            //isOpen={state.isOpen}
+            onOpen={state.open}
+            onClose={state.close}
           >
             <InputGroup {...groupProps} display="inline-flex">
               <PopoverAnchor>
@@ -165,11 +128,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
               </PopoverAnchor>
               {hasTrigger && (
                 <PopoverTrigger>
-                  <CalendarTriggerButton
-                    //{...buttonProps}
-                    //onPress={onTriggerButtonClick}
-                    isTriggerButtonFocused={isTriggerButtonFocused}
-                  />
+                  <CalendarTriggerButton {...buttonProps} />
                 </PopoverTrigger>
               )}
             </InputGroup>

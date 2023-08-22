@@ -7,18 +7,14 @@ import {
 } from "@chakra-ui/react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
-import { AriaButtonProps, useButton } from "react-aria";
+import { AriaButtonProps } from "react-aria";
 import { createTexts, useTranslation } from "..";
 
-type CalendarTriggerButtonProps = AriaButtonProps<"button">
+type CalendarTriggerButtonProps = AriaButtonProps<"button">;
 export const CalendarTriggerButton = forwardRef<CalendarTriggerButtonProps, As>(
   ({ ...buttonProps }, ref) => {
     const { t } = useTranslation();
     const styles = useMultiStyleConfig("Datepicker", {});
-
-    console.log(buttonProps)
-    //const { onPress } = buttonProps
-    //const { onKeyDown } = buttonProps
 
     return (
       <PopoverAnchor>
@@ -27,8 +23,7 @@ export const CalendarTriggerButton = forwardRef<CalendarTriggerButtonProps, As>(
           as="button"
           aria-label={t(texts.openCalendar)}
           sx={styles.calendarTriggerButton}
-          //onPress={() => {}}
-          //onKeyDown={() => {}}
+          {...buttonProps}
         >
           <CalendarOutline24Icon />
         </Box>

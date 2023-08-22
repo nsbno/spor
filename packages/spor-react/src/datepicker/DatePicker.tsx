@@ -25,7 +25,6 @@ import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
 import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
-import { useOnClickOutside } from "usehooks-ts";
 
 type DatePickerProps = AriaDatePickerProps<DateValue> &
   Pick<BoxProps, "minHeight" | "width"> & {
@@ -100,12 +99,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           flexDirection="column"
           width={width}
         >
-          <Popover
-            {...dialogProps}
-            //isOpen={state.isOpen}
-            onOpen={state.open}
-            onClose={state.close}
-          >
+          <Popover {...dialogProps} onOpen={state.open} onClose={state.close}>
             <InputGroup {...groupProps} display="inline-flex">
               <PopoverAnchor>
                 <StyledField

@@ -38,6 +38,7 @@ type DateRangePickerProps = AriaDateRangePickerProps<DateValue> &
     endLabel?: string;
     endName?: string;
     variant: ResponsiveValue<"simple" | "with-trigger">;
+    withPortal?: boolean;
   };
 /**
  * A date range picker component.
@@ -53,6 +54,7 @@ export function DateRangePicker({
   minHeight,
   startName,
   endName,
+  withPortal = true,
   ...props
 }: DateRangePickerProps) {
   const formControlProps = useFormControlContext();
@@ -98,6 +100,17 @@ export function DateRangePicker({
 
   const hasTrigger = responsiveVariant === "with-trigger";
 
+  const popoverContent = (
+    <PopoverContent sx={styles.calendar} boxShadow="md" maxWidth="none">
+      <PopoverArrow sx={styles.arrow} />
+      <PopoverBody>
+        <FocusLock>
+          <RangeCalendar {...calendarProps} />
+        </FocusLock>
+      </PopoverBody>
+    </PopoverContent>
+  );
+
   return (
     <I18nProvider locale={locale}>
       <Box position="relative" display="inline-flex" flexDirection="column">
@@ -111,16 +124,8 @@ export function DateRangePicker({
           isOpen={state.isOpen}
           onOpen={state.open}
           onClose={state.close}
-          closeOnBlur
-          closeOnEsc
-          returnFocusOnClose
         >
-          <InputGroup
-            {...groupProps}
-            ref={hasTrigger ? undefined : ref}
-            width="auto"
-            display="inline-flex"
-          >
+          <InputGroup {...groupProps} width="auto" display="inline-flex">
             <PopoverAnchor>
               <StyledField
                 alignItems="center"
@@ -137,6 +142,7 @@ export function DateRangePicker({
                   {...startFieldProps}
                   name={startName}
                   label={props.startLabel}
+                  ref={hasTrigger ? undefined : ref}
                   labelProps={labelProps}
                 />
                 <Box as="span" aria-hidden="true" px="2">
@@ -156,16 +162,8 @@ export function DateRangePicker({
               </PopoverTrigger>
             )}
           </InputGroup>
-          {state.isOpen && (
-            <PopoverContent sx={styles.calendar} boxShadow="md" maxWidth="none">
-              <PopoverArrow sx={styles.arrow} />
-              <PopoverBody>
-                <FocusLock>
-                  <RangeCalendar {...calendarProps} />
-                </FocusLock>
-              </PopoverBody>
-            </PopoverContent>
-          )}
+          {state.isOpen && withPortal && <Portal>{popoverContent}</Portal>}
+          {state.isOpen && popoverContent}
         </Popover>
       </Box>
     </I18nProvider>

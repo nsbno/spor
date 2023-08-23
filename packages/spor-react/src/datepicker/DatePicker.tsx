@@ -9,6 +9,7 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
+  Portal,
   ResponsiveValue,
   useBreakpointValue,
   useFormControlContext,
@@ -18,7 +19,12 @@ import { DateValue } from "@internationalized/date";
 import { useDatePickerState } from "@react-stately/datepicker";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, useRef } from "react";
-import { AriaDatePickerProps, I18nProvider, useDatePicker } from "react-aria";
+import {
+  AriaDatePickerProps,
+  CalendarProps,
+  I18nProvider,
+  useDatePicker,
+} from "react-aria";
 import { FormErrorMessage } from "..";
 import { Calendar } from "./Calendar";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
@@ -31,6 +37,7 @@ type DatePickerProps = AriaDatePickerProps<DateValue> &
     variant: ResponsiveValue<"simple" | "with-trigger">;
     name?: string;
     showYearNavigation?: boolean;
+    withPortal?: boolean;
   };
 /**
  * A date picker component.
@@ -48,6 +55,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       errorMessage,
       minHeight,
       showYearNavigation,
+      withPortal = true,
       width = "auto",
       ...props
     },
@@ -90,6 +98,20 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
         state.setOpen(true);
       }
     };
+
+    const popoverContent = (
+      <PopoverContent color="darkGrey" boxShadow="md" sx={styles.calendar}>
+        <PopoverArrow sx={styles.arrow} />
+        <PopoverBody>
+          <FocusLock>
+            <Calendar
+              {...calendarProps}
+              showYearNavigation={showYearNavigation}
+            />
+          </FocusLock>
+        </PopoverBody>
+      </PopoverContent>
+    );
 
     return (
       <I18nProvider locale={locale}>
@@ -134,23 +156,10 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
             <FormErrorMessage {...errorMessageProps}>
               {errorMessage}
             </FormErrorMessage>
-            {state.isOpen && !props.isDisabled && (
-              <PopoverContent
-                color="darkGrey"
-                boxShadow="md"
-                sx={styles.calendar}
-              >
-                <PopoverArrow sx={styles.arrow} />
-                <PopoverBody>
-                  <FocusLock>
-                    <Calendar
-                      {...calendarProps}
-                      showYearNavigation={showYearNavigation}
-                    />
-                  </FocusLock>
-                </PopoverBody>
-              </PopoverContent>
+            {state.isOpen && !props.isDisabled && withPortal && (
+              <Portal>{popoverContent}</Portal>
             )}
+            {state.isOpen && !props.isDisabled && popoverContent}
           </Popover>
         </Box>
       </I18nProvider>

@@ -99,7 +99,12 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           flexDirection="column"
           width={width}
         >
-          <Popover {...dialogProps} onOpen={state.open} onClose={state.close}>
+          <Popover
+            {...dialogProps}
+            isOpen={state.isOpen}
+            onOpen={state.open}
+            onClose={state.close}
+          >
             <InputGroup {...groupProps} display="inline-flex">
               <PopoverAnchor>
                 <StyledField
@@ -115,6 +120,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                     label={props.label}
                     labelProps={labelProps}
                     name={props.name}
+                    ref={hasTrigger ? undefined : ref}
                     {...fieldProps}
                   />
                 </StyledField>

@@ -106,7 +106,7 @@ export const ExpandableItem = ({
       <Box as={headingLevel}>
         <AccordionButton>
           <Flex alignItems="center">
-            {leftIcon && <Box mr={2}>{leftIcon}</Box>}
+            {leftIcon && <Box marginRight={2}>{leftIcon}</Box>}
             {title}
           </Flex>
           <AccordionIcon />

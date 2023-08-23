@@ -40,8 +40,8 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
     panel: {
-      pt: 2,
-      pb: 5,
+      paddingTop: 2,
+      paddingBottom: 5,
       borderBottomRadius: "sm",
     },
     icon: {
@@ -106,31 +106,31 @@ const config = helpers.defineMultiStyleConfig({
     sm: {
       button: {
         fontSize: "desktop.xs",
-        px: 2,
-        py: 1,
+        paddingX: 2,
+        paddingY: 1,
       },
       panel: {
-        px: 2,
+        paddingX: 2,
       },
     },
     md: {
       button: {
         fontSize: "desktop.sm",
-        px: 3,
-        py: 1,
+        paddingX: 3,
+        paddingY: 1,
       },
       panel: {
-        px: 3,
+        paddingX: 3,
       },
     },
     lg: {
       button: {
         fontSize: "desktop.sm",
-        px: 3,
-        py: 2,
+        paddingX: 3,
+        paddingY: 2,
       },
       panel: {
-        px: 3,
+        paddingX: 3,
       },
     },
   },

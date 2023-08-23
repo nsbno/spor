@@ -21,6 +21,7 @@ const config = helpers.defineMultiStyleConfig({
       justifyContent: "space-between",
       color: "darkGrey",
       textAlign: "left",
+      fontWeight: "bold",
       ...focusVisible({
         notFocus: {
           boxShadow: getBoxShadowString({
@@ -40,8 +41,7 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
     panel: {
-      paddingTop: 2,
-      paddingBottom: 5,
+      paddingY: 2,
       borderBottomRadius: "sm",
     },
     icon: {
@@ -57,7 +57,6 @@ const config = helpers.defineMultiStyleConfig({
         },
         _active: {
           backgroundColor: "mint",
-          boxShadow: getBoxShadowString({ borderColor: "darkGrey" }),
         },
       },
     },
@@ -87,7 +86,10 @@ const config = helpers.defineMultiStyleConfig({
     },
     card: {
       container: {
-        boxShadow: "md",
+        boxShadow: getBoxShadowString({
+          baseShadow: "sm",
+          borderColor: "silver",
+        }),
       },
       button: {
         _expanded: {
@@ -110,6 +112,7 @@ const config = helpers.defineMultiStyleConfig({
         paddingY: 1,
       },
       panel: {
+        fontSize: "desktop.xs",
         paddingX: 2,
       },
     },
@@ -120,6 +123,7 @@ const config = helpers.defineMultiStyleConfig({
         paddingY: 1,
       },
       panel: {
+        fontSize: "desktop.sm",
         paddingX: 3,
       },
     },
@@ -130,6 +134,7 @@ const config = helpers.defineMultiStyleConfig({
         paddingY: 2,
       },
       panel: {
+        fontSize: "desktop.sm",
         paddingX: 3,
       },
     },

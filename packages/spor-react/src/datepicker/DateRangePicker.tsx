@@ -1,6 +1,7 @@
 import {
   Box,
   BoxProps,
+  FocusLock,
   FormLabel,
   InputGroup,
   Popover,
@@ -8,6 +9,7 @@ import {
   PopoverArrow,
   PopoverBody,
   PopoverContent,
+  PopoverTrigger,
   Portal,
   ResponsiveValue,
   useBreakpointValue,
@@ -107,14 +109,15 @@ export function DateRangePicker({
         <Popover
           {...dialogProps}
           isOpen={state.isOpen}
-          onClose={() => state.setOpen(false)}
+          onOpen={state.open}
+          onClose={state.close}
           closeOnBlur
           closeOnEsc
           returnFocusOnClose
         >
           <InputGroup
             {...groupProps}
-            ref={ref}
+            ref={hasTrigger ? undefined : ref}
             width="auto"
             display="inline-flex"
           >
@@ -147,21 +150,21 @@ export function DateRangePicker({
                 />
               </StyledField>
             </PopoverAnchor>
-            {hasTrigger && <CalendarTriggerButton {...buttonProps} />}
+            {hasTrigger && (
+              <PopoverTrigger>
+                <CalendarTriggerButton ref={ref} {...buttonProps} />
+              </PopoverTrigger>
+            )}
           </InputGroup>
           {state.isOpen && (
-            <Portal>
-              <PopoverContent
-                sx={styles.calendar}
-                boxShadow="md"
-                maxWidth="none"
-              >
-                <PopoverArrow sx={styles.arrow} />
-                <PopoverBody>
+            <PopoverContent sx={styles.calendar} boxShadow="md" maxWidth="none">
+              <PopoverArrow sx={styles.arrow} />
+              <PopoverBody>
+                <FocusLock>
                   <RangeCalendar {...calendarProps} />
-                </PopoverBody>
-              </PopoverContent>
-            </Portal>
+                </FocusLock>
+              </PopoverBody>
+            </PopoverContent>
           )}
         </Popover>
       </Box>

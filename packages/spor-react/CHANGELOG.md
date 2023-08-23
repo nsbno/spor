@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 3.3.0
+
+### Minor Changes
+
+- 81c256bc: Accordion: Add new prop "spacing" for adding spacing between items.
+  Accordion: Do some design tweaks
+
 ## 3.2.0
 
 ### Minor Changes

@@ -17,7 +17,7 @@ import {
 import { DateValue } from "@internationalized/date";
 import { useDatePickerState } from "@react-stately/datepicker";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, useRef, useState } from "react";
+import React, { forwardRef, useRef } from "react";
 import { AriaDatePickerProps, I18nProvider, useDatePicker } from "react-aria";
 import { FormErrorMessage } from "..";
 import { Calendar } from "./Calendar";

@@ -66,6 +66,7 @@ export function CalendarCell({ state, date, currentMonth }: CalendarCellProps) {
     >
       <Box
         as="button"
+        type="button"
         {...buttonProps}
         {...stateProps}
         ref={ref}

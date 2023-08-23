@@ -159,7 +159,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
             {state.isOpen && !props.isDisabled && withPortal && (
               <Portal>{popoverContent}</Portal>
             )}
-            {state.isOpen && !props.isDisabled && popoverContent}
+            {state.isOpen && !props.isDisabled && !withPortal && popoverContent}
           </Popover>
         </Box>
       </I18nProvider>

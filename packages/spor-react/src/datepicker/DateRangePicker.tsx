@@ -163,7 +163,7 @@ export function DateRangePicker({
             )}
           </InputGroup>
           {state.isOpen && withPortal && <Portal>{popoverContent}</Portal>}
-          {state.isOpen && popoverContent}
+          {state.isOpen && !withPortal && popoverContent}
         </Popover>
       </Box>
     </I18nProvider>

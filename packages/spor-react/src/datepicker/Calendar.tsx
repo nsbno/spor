@@ -30,7 +30,7 @@ export function Calendar({ showYearNavigation, ...props }: CalendarProps) {
     t(texts.calendar) + (calendarAriaLabel ? ` ${calendarAriaLabel}` : "");
 
   return (
-    <Box {...calendarProps} role="group" aria-label={ariaLabel}>
+    <Box {...calendarProps} aria-label={ariaLabel}>
       <CalendarHeader state={state} showYearNavigation={showYearNavigation} />
       <CalendarGrid state={state} />
     </Box>

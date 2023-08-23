@@ -1,10 +1,10 @@
 import {
   Accordion as ChakraAccordion,
   AccordionProps as ChakraAccordionProps,
-  As,
   forwardRef,
 } from "@chakra-ui/react";
 import React from "react";
+import { Stack, StackProps } from "../layout";
 import { AccordionProvider } from "./AccordionContext";
 export {
   AccordionButton,
@@ -28,6 +28,8 @@ export type AccordionProps = Omit<ChakraAccordionProps, "variant" | "size"> & {
    */
   variant?: "list" | "outline" | "card";
   size?: "sm" | "md" | "lg";
+  /** The margin between accordion items */
+  spacing?: StackProps["spacing"];
 };
 /**
  * Wraps a set of ExpandableItem or AccordionItem components.
@@ -45,18 +47,22 @@ export type AccordionProps = Omit<ChakraAccordionProps, "variant" | "size"> & {
  *
  * If you only have one expandable item, you can use the `<Expandable />` component instead.
  */
-export const Accordion = forwardRef<AccordionProps, "div">((props, ref) => {
-  const defaultIndex =
-    typeof props.defaultIndex === "number" && props.allowMultiple
-      ? [props.defaultIndex]
-      : props.defaultIndex;
-  return (
-    <AccordionProvider size={props.size}>
-      <ChakraAccordion
-        {...props}
-        ref={ref}
-        defaultIndex={defaultIndex as number[] | undefined}
-      />
-    </AccordionProvider>
-  );
-});
+export const Accordion = forwardRef<AccordionProps, "div">(
+  ({ children, spacing = 2, ...props }, ref) => {
+    const defaultIndex =
+      typeof props.defaultIndex === "number" && props.allowMultiple
+        ? [props.defaultIndex]
+        : props.defaultIndex;
+    return (
+      <AccordionProvider size={props.size}>
+        <ChakraAccordion
+          {...props}
+          ref={ref}
+          defaultIndex={defaultIndex as number[] | undefined}
+        >
+          <Stack spacing={spacing}>{children}</Stack>
+        </ChakraAccordion>
+      </AccordionProvider>
+    );
+  }
+);

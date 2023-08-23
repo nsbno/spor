@@ -21,6 +21,7 @@ const config = helpers.defineMultiStyleConfig({
       justifyContent: "space-between",
       color: "darkGrey",
       textAlign: "left",
+      fontWeight: "bold",
       ...focusVisible({
         notFocus: {
           boxShadow: getBoxShadowString({
@@ -40,8 +41,7 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
     panel: {
-      pt: 2,
-      pb: 5,
+      paddingY: 2,
       borderBottomRadius: "sm",
     },
     icon: {
@@ -57,7 +57,6 @@ const config = helpers.defineMultiStyleConfig({
         },
         _active: {
           backgroundColor: "mint",
-          boxShadow: getBoxShadowString({ borderColor: "darkGrey" }),
         },
       },
     },
@@ -87,7 +86,10 @@ const config = helpers.defineMultiStyleConfig({
     },
     card: {
       container: {
-        boxShadow: "md",
+        boxShadow: getBoxShadowString({
+          baseShadow: "sm",
+          borderColor: "silver",
+        }),
       },
       button: {
         _expanded: {
@@ -106,31 +108,34 @@ const config = helpers.defineMultiStyleConfig({
     sm: {
       button: {
         fontSize: "desktop.xs",
-        px: 2,
-        py: 1,
+        paddingX: 2,
+        paddingY: 1,
       },
       panel: {
-        px: 2,
+        fontSize: "desktop.xs",
+        paddingX: 2,
       },
     },
     md: {
       button: {
         fontSize: "desktop.sm",
-        px: 3,
-        py: 1,
+        paddingX: 3,
+        paddingY: 1,
       },
       panel: {
-        px: 3,
+        fontSize: "desktop.sm",
+        paddingX: 3,
       },
     },
     lg: {
       button: {
         fontSize: "desktop.sm",
-        px: 3,
-        py: 2,
+        paddingX: 3,
+        paddingY: 2,
       },
       panel: {
-        px: 3,
+        fontSize: "desktop.sm",
+        paddingX: 3,
       },
     },
   },

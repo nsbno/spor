@@ -143,7 +143,7 @@ export function NumericStepper({
         <chakra.text
           fontSize="sm"
           fontWeight="bold"
-          width="3ch"
+          width="4ch"
           marginX={1}
           paddingX={1}
           textAlign="center"

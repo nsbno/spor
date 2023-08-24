@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 3.3.1
+
+### Patch Changes
+
+- 07066ecb: Make font size in DateTime dynamic.
+- 160c0566: Improve accessibility for DatePicker
+
 ## 3.3.0
 
 ### Minor Changes

@@ -17,7 +17,7 @@ export const useCurrentLocale = () => {
     case "en":
       return "en-GB";
     default:
-      return "no-NO";
+      return "nb-NO";
   }
 };
 

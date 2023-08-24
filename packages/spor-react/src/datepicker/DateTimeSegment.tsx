@@ -2,7 +2,6 @@ import { Box, useMultiStyleConfig } from "@chakra-ui/react";
 import React, { RefObject, forwardRef, useRef } from "react";
 import { useDateSegment } from "react-aria";
 import { DateFieldState, DateSegment } from "react-stately";
-import { colors } from "../theme/foundations";
 
 type DateTimeSegmentProps = {
   segment: DateSegment;
@@ -43,7 +42,7 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
         textAlign="end"
         outline="none"
         borderRadius="xs"
-        fontSize="mobile.md"
+        fontSize={["mobile.sm", "desktop.sm"]}
         sx={styles.dateTimeSegment}
         _focus={{
           backgroundColor: "darkTeal",

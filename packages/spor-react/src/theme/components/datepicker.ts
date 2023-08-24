@@ -74,7 +74,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     dateTimeSegment: {
       color: mode(
-        props.isEditable ? "darkGrey" : "dimGrey",
+        "darkGrey",
         props.isPlaceholder ? "whiteAlpha.400" : "white"
       )(props),
     },
@@ -125,11 +125,11 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
     arrow: {
-      [$arrowBackground.variable]: mode("white", colors.night)(props)
+      [$arrowBackground.variable]: mode("white", colors.night)(props),
     },
     calendar: {
       backgroundColor: mode("white", "night")(props),
-      color: mode("darkGrey", "white")(props)
+      color: mode("darkGrey", "white")(props),
     },
     weekdays: {
       color: mode("darkGrey", "white")(props),
@@ -197,6 +197,13 @@ const config = helpers.defineMultiStyleConfig({
           borderWidth: 1,
           borderColor: mode("osloGrey", "dimGrey")(props),
         }),
+        _focus: {
+          outline: "none",
+          boxShadow: getBoxShadowString({
+            borderWidth: 2,
+            borderColor: mode("greenHaze", "azure")(props),
+          }),
+        },
       },
       "&[data-unavailable]": {
         pointerEvents: "none",

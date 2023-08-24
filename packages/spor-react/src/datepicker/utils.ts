@@ -9,15 +9,15 @@ export const useCurrentLocale = () => {
   const { language } = useTranslation();
   switch (language) {
     case "nb":
-      return "no";
+      return "nb-NO";
     case "nn":
-      return "no";
+      return "nb-NO";
     case "sv":
-      return "sv";
+      return "sv-SE";
     case "en":
       return "en-GB";
     default:
-      return "no";
+      return "nb-NO";
   }
 };
 

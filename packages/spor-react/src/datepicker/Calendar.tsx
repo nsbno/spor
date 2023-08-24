@@ -9,11 +9,13 @@ import {
 import { CalendarGrid } from "./CalendarGrid";
 import { CalendarHeader } from "./CalendarHeader";
 import { useCurrentLocale } from "./utils";
+import { createTexts, useTranslation } from "../i18n";
 
 type CalendarProps = ReactAriaCalendarProps<DateValue> & {
   showYearNavigation?: boolean;
 };
 export function Calendar({ showYearNavigation, ...props }: CalendarProps) {
+  const { t } = useTranslation();
   const locale = useCurrentLocale();
   const state = useCalendarState({
     ...props,
@@ -22,11 +24,24 @@ export function Calendar({ showYearNavigation, ...props }: CalendarProps) {
   });
 
   const { calendarProps } = useCalendar(props, state);
+  const calendarAriaLabel = calendarProps["aria-label"];
+
+  const ariaLabel =
+    t(texts.calendar) + (calendarAriaLabel ? ` ${calendarAriaLabel}` : "");
 
   return (
-    <Box {...calendarProps}>
+    <Box {...calendarProps} aria-label={ariaLabel}>
       <CalendarHeader state={state} showYearNavigation={showYearNavigation} />
       <CalendarGrid state={state} />
     </Box>
   );
 }
+
+const texts = createTexts({
+  calendar: {
+    nb: "Kalender",
+    nn: "Kalender",
+    sv: "Kalender",
+    en: "Calendar",
+  },
+});

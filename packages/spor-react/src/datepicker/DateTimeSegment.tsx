@@ -38,7 +38,6 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
           ...segmentProps.style,
           fontVariantNumeric: "tabular-nums",
           boxSizing: "content-box",
-          color: colors.darkGrey,
         }}
         paddingX="1px"
         textAlign="end"

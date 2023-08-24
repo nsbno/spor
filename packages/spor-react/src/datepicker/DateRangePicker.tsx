@@ -1,6 +1,7 @@
 import {
   Box,
   BoxProps,
+  FocusLock,
   FormLabel,
   InputGroup,
   Popover,
@@ -8,6 +9,7 @@ import {
   PopoverArrow,
   PopoverBody,
   PopoverContent,
+  PopoverTrigger,
   Portal,
   ResponsiveValue,
   useBreakpointValue,
@@ -36,6 +38,7 @@ type DateRangePickerProps = AriaDateRangePickerProps<DateValue> &
     endLabel?: string;
     endName?: string;
     variant: ResponsiveValue<"simple" | "with-trigger">;
+    withPortal?: boolean;
   };
 /**
  * A date range picker component.
@@ -51,6 +54,7 @@ export function DateRangePicker({
   minHeight,
   startName,
   endName,
+  withPortal = true,
   ...props
 }: DateRangePickerProps) {
   const formControlProps = useFormControlContext();
@@ -96,6 +100,17 @@ export function DateRangePicker({
 
   const hasTrigger = responsiveVariant === "with-trigger";
 
+  const popoverContent = (
+    <PopoverContent sx={styles.calendar} boxShadow="md" maxWidth="none">
+      <PopoverArrow sx={styles.arrow} />
+      <PopoverBody>
+        <FocusLock>
+          <RangeCalendar {...calendarProps} />
+        </FocusLock>
+      </PopoverBody>
+    </PopoverContent>
+  );
+
   return (
     <I18nProvider locale={locale}>
       <Box position="relative" display="inline-flex" flexDirection="column">
@@ -107,17 +122,10 @@ export function DateRangePicker({
         <Popover
           {...dialogProps}
           isOpen={state.isOpen}
-          onClose={() => state.setOpen(false)}
-          closeOnBlur
-          closeOnEsc
-          returnFocusOnClose
+          onOpen={state.open}
+          onClose={state.close}
         >
-          <InputGroup
-            {...groupProps}
-            ref={ref}
-            width="auto"
-            display="inline-flex"
-          >
+          <InputGroup {...groupProps} width="auto" display="inline-flex">
             <PopoverAnchor>
               <StyledField
                 alignItems="center"
@@ -134,6 +142,7 @@ export function DateRangePicker({
                   {...startFieldProps}
                   name={startName}
                   label={props.startLabel}
+                  ref={hasTrigger ? undefined : ref}
                   labelProps={labelProps}
                 />
                 <Box as="span" aria-hidden="true" px="2">
@@ -147,22 +156,14 @@ export function DateRangePicker({
                 />
               </StyledField>
             </PopoverAnchor>
-            {hasTrigger && <CalendarTriggerButton {...buttonProps} />}
+            {hasTrigger && (
+              <PopoverTrigger>
+                <CalendarTriggerButton ref={ref} {...buttonProps} />
+              </PopoverTrigger>
+            )}
           </InputGroup>
-          {state.isOpen && (
-            <Portal>
-              <PopoverContent
-                sx={styles.calendar}
-                boxShadow="md"
-                maxWidth="none"
-              >
-                <PopoverArrow sx={styles.arrow} />
-                <PopoverBody>
-                  <RangeCalendar {...calendarProps} />
-                </PopoverBody>
-              </PopoverContent>
-            </Portal>
-          )}
+          {state.isOpen && withPortal && <Portal>{popoverContent}</Portal>}
+          {state.isOpen && !withPortal && popoverContent}
         </Popover>
       </Box>
     </I18nProvider>

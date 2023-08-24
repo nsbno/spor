@@ -197,7 +197,7 @@ const config = helpers.defineMultiStyleConfig({
           borderWidth: 1,
           borderColor: mode("osloGrey", "dimGrey")(props),
         }),
-        "&:focus": {
+        _focus: {
           outline: "none",
           boxShadow: getBoxShadowString({
             borderWidth: 2,

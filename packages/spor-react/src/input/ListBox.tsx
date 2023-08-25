@@ -155,7 +155,7 @@ function Option({ item, state }: OptionProps) {
   /* 
   Workaround to fix click througs on mobile devices
   Related to https://github.com/adobe/react-spectrum/issues/4970
-  TODO: Follow up with react-spectrum to see if they can solve on their end
+  TODO: Follow up with react-spectrum to see if they can solve it on their end
   */
   useEffect(() => {
     (ref as any)?.current?.addEventListener(

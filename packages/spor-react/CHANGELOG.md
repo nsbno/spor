@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 3.3.2
+
+### Patch Changes
+
+- 1209e991: Add workaround for click throughs on mobile devices in CalendarCell and ListBox
+
 ## 3.3.1
 
 ### Patch Changes

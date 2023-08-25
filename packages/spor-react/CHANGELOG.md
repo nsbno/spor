@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 3.3.3
+
+### Patch Changes
+
+- 3a95bedd: Accordion: Make the text size responsive
+
 ## 3.3.2
 
 ### Patch Changes

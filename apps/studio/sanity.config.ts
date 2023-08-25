@@ -36,7 +36,7 @@ export default defineConfig({
         params.set("preview", import.meta.env.SANITY_STUDIO_PREVIEW_SECRET);
 
         return `${host}/${category.slug}/${
-          (document?.slug as any).current
+          (document?.slug as any)?.current
         }?${params}`;
       }
       return prev;

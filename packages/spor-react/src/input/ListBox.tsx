@@ -7,7 +7,7 @@ import {
   type BoxProps,
 } from "@chakra-ui/react";
 import type { Node } from "@react-types/shared";
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import {
   AriaListBoxProps,
   useListBox,
@@ -151,6 +151,16 @@ function Option({ item, state }: OptionProps) {
   if (isFocused) {
     dataFields["data-focus"] = true;
   }
+
+  useEffect(() => {
+    (ref as any)?.current?.addEventListener(
+      "touchend",
+      (event: TouchEvent) => {
+        event.preventDefault();
+      },
+      { passive: false, once: true }
+    );
+  }, []);
 
   return (
     <OptionContext.Provider value={{ labelProps, descriptionProps }}>

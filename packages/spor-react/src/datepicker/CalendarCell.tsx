@@ -5,7 +5,7 @@ import {
   isSameMonth,
   isToday,
 } from "@internationalized/date";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useCalendarCell } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
 
@@ -41,7 +41,17 @@ export function CalendarCell({ state, date, currentMonth }: CalendarCellProps) {
   if (isOutsideMonth) {
     stateProps["data-unavailable"] = true;
   }
-  
+
+  useEffect(() => {
+    (ref as any)?.current?.addEventListener(
+      "touchend",
+      (event: TouchEvent) => {
+        event.preventDefault();
+      },
+      { passive: false, once: true }
+    );
+  }, []);
+
   return (
     <Box
       as="td"

@@ -17,6 +17,7 @@ export * from "./media-controller";
 export * from "./modal";
 export * from "./popover";
 export * from "./provider";
+export * from "./breadcrum";
 export * from "./stepper";
 export * from "./tab";
 export * from "./table";

@@ -25,6 +25,7 @@ export { default as Popover } from "./popover";
 export { default as Radio } from "./radio";
 export { default as Select } from "./select";
 export { default as Skeleton } from "./skeleton";
+export { default as Breadcrum } from "./breadcrum";
 export { default as Stepper } from "./stepper";
 export { default as Switch } from "./switch";
 export { default as Table } from "./table";

@@ -23,6 +23,7 @@ module.exports = {
         "packages/spor-accordion-react/",
         "packages/spor-design-tokens/",
         "packages/spor-link-react/",
+        "packages/spor-breadcrum-react/",
         "packages/spor-stepper-react/",
         "packages/spor-popover-react/",
         "packages/spor-tab-react/",

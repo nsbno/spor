@@ -16,7 +16,9 @@
     "release": "changeset publish"
   },
   "dependencies": {
+    "@chakra-ui/breadcrumb": "^2.2.0",
     "@changesets/cli": "^2.19.0",
+    "@vygruppen/spor-react": "^3.1.0",
     "awesome-phonenumber": "^5.5.0",
     "patch-package": "^6.4.7",
     "prettier": "^2.5.1",
@@ -27,5 +29,8 @@
     "npm": ">=7.0.0",
     "node": ">=14.0.0"
   },
-  "packageManager": "npm@8.1.2"
+  "packageManager": "npm@8.1.2",
+  "devDependencies": {
+    "dotenv": "^16.3.1"
+  }
 }

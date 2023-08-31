@@ -6,7 +6,7 @@ import {
   As,
 } from "@chakra-ui/react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
-import React from "react";
+import React, { useEffect } from "react";
 import { AriaButtonProps } from "react-aria";
 import { createTexts, useTranslation } from "..";
 
@@ -16,14 +16,25 @@ export const CalendarTriggerButton = forwardRef<CalendarTriggerButtonProps, As>(
     const { t } = useTranslation();
     const styles = useMultiStyleConfig("Datepicker", {});
 
+    const { onPress, ...filteredButtonProps } = buttonProps;
+
+    const handleOnPress = (event: KeyboardEvent) => {
+      if (onPress) {
+        if (event.key == "Enter" || event.key == " ")
+        onPress(event as any)
+      }
+    }
+
     return (
       <PopoverAnchor>
         <Box
           ref={ref}
           as="button"
+          type="button"
           aria-label={t(texts.openCalendar)}
           sx={styles.calendarTriggerButton}
-          {...buttonProps}
+          {...filteredButtonProps}
+          onKeyUp={handleOnPress}
         >
           <CalendarOutline24Icon />
         </Box>

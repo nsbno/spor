@@ -21,7 +21,6 @@ import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, useRef } from "react";
 import {
   AriaDatePickerProps,
-  CalendarProps,
   I18nProvider,
   useDatePicker,
 } from "react-aria";

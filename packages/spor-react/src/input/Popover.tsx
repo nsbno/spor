@@ -44,7 +44,7 @@ type PopoverProps = {
    * Defaults to true
    */
   hasBackdrop?: boolean;
-  /** The minimum padding required between the popover and the surrounding container.
+  /** The minimum padding required between the popover and the surrounding container
    * 
    * Defaults to 12 (the same as React Aria's default)
    */

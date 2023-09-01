@@ -60,29 +60,24 @@ type CardThemeProps = {
 
 function getColorSchemeBaseProps({ colorScheme }: CardThemeProps): {
   backgroundColor: string;
-  boxShadow: string;
 } {
   switch (colorScheme) {
     case "white":
       return {
-        backgroundColor: "white",
-        boxShadow: getBoxShadowString({
-          borderColor: "silver",
-        }),
+        backgroundColor: "lightGrey",
       };
     case "grey":
       return {
         backgroundColor: "lightGrey",
-        boxShadow: getBoxShadowString({
-          borderColor: "steel",
-        }),
       };
+    case "green": {
+      return {
+        backgroundColor: "seaMist",
+      };
+    }
     default:
       return {
         backgroundColor: colors[colorScheme]?.[100] ?? "platinum",
-        boxShadow: getBoxShadowString({
-          borderColor: colors[colorScheme]?.[200] ?? "silver",
-        }),
       };
   }
 }

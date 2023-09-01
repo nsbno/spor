@@ -25,8 +25,8 @@ export default function BaseLayout() {
           id="content"
           flex="1"
           mt={6}
-          mx={[3, 6, 10]}
-          mb={["60px", "120px", "180px"]}
+          mx={[3, null, 6, 10]}
+          mb={["60px", null, "120px", "180px"]}
           maxWidth="924px"
           ref={contentRef}
         >

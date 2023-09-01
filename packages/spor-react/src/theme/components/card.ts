@@ -70,6 +70,11 @@ function getColorSchemeBaseProps({ colorScheme }: CardThemeProps): {
       return {
         backgroundColor: "lightGrey",
       };
+    case "green": {
+      return {
+        backgroundColor: "seaMist",
+      };
+    }
     default:
       return {
         backgroundColor: colors[colorScheme]?.[100] ?? "platinum",

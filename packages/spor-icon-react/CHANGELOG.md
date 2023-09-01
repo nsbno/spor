@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 3.2.0
+
+### Minor Changes
+
+- 9f84f18f: Add mountain and forest icons.
+
 ## 3.1.0
 
 ### Minor Changes

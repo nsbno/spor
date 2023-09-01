@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 3.3.4
+
+### Patch Changes
+
+- afebaf34: Override minimum left padding in ComboBox and InfoSelect popovers
+- 309d4e18: Change type of calendar trigger button to "button"
+- 2c7f2004: IconButton: Add missing floating variant
+- Updated dependencies [9f84f18f]
+  - @vygruppen/spor-icon-react@3.2.0
+
 ## 3.3.3
 
 ### Patch Changes

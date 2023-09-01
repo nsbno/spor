@@ -14,7 +14,8 @@ export type IconButtonProps = Omit<ChakraIconButtonProps, "variant"> & {
     | "secondary"
     | "tertiary"
     | "additional"
-    | "ghost";
+    | "ghost"
+    | "floating";
 };
 /**
  * An icon-only button.
@@ -29,6 +30,7 @@ export type IconButtonProps = Omit<ChakraIconButtonProps, "variant"> & {
  * - `tertiary`: Used for non-essential actions, as well as in combination with the primary button.
  * - `additional`: Used for additional choices, like a less important tertiary action.
  * - `ghost`: Used inside other interactive elements, like date pickers and input fields.
+ * - `floating`: Used for floating actions, like a menu button in a menu.
  *
  * ```tsx
  * <IconButton

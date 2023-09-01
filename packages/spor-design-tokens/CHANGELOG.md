@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.2.0
+
+### Minor Changes
+
+- 349fe0a5: Implement new breakpoint structure
+
+  This change introduces a new breakpoint between sm and md, and changes the breakpoint values slightly.
+
+  When upgrading, please make sure to check your responsive layouts.
+
 ## 3.1.1
 
 ### Patch Changes

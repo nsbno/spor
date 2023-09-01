@@ -216,7 +216,13 @@ export function InfoSelect<T extends object>({
       </chakra.button>
 
       {state.isOpen && (
-        <Popover state={state} triggerRef={triggerRef}>
+        <Popover
+          state={state}
+          triggerRef={triggerRef}
+          // The minimum padding should be 0, because the popover always should be
+          // aligned with the input field regardless of the left padding in the container.
+          containerPadding={0}
+        >
           <ListBox
             {...menuProps}
             state={state}

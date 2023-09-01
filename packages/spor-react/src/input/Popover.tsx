@@ -44,6 +44,11 @@ type PopoverProps = {
    * Defaults to true
    */
   hasBackdrop?: boolean;
+  /** The minimum padding required between the popover and the surrounding container.
+   * 
+   * Defaults to 12 (the same as React Aria's default)
+   */
+  containerPadding?: number;
 };
 /**
  * Internal popover component.
@@ -62,6 +67,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       shouldFlip = false,
       isNonModal = false,
       hasBackdrop = true,
+      containerPadding = 12,
     },
     ref
   ) => {
@@ -77,6 +83,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         placement,
         shouldFlip,
         isNonModal,
+        containerPadding: containerPadding,
       },
       state
     );
@@ -86,7 +93,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         {...popoverProps}
         ref={popoverRef}
         minWidth={triggerRef.current?.clientWidth ?? "auto"}
-        marginLeft={-2}
       >
         <DismissButton onDismiss={state.close} />
         {children}

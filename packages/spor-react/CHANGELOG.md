@@ -1,5 +1,21 @@
 # @vygruppen/spor-react
 
+## 3.4.0
+
+### Minor Changes
+
+- 349fe0a5: Implement new breakpoint structure
+
+  This change introduces a new breakpoint between sm and md, and changes the breakpoint values slightly.
+
+  When upgrading, please make sure to check your responsive layouts.
+
+### Patch Changes
+
+- b18e847b: Card: Update design for non-interactive cards
+- Updated dependencies [349fe0a5]
+  - @vygruppen/spor-design-tokens@3.2.0
+
 ## 3.3.4
 
 ### Patch Changes

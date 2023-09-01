@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 3.4.1
+
+### Patch Changes
+
+- 83976e0a: Card: Fix a bug with clickable cards that had to have the display property set to not break
+- 4787d9e9: Hotfix breakpoints
+
 ## 3.4.0
 
 ### Minor Changes

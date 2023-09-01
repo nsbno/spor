@@ -32,7 +32,7 @@ function TableOfContent(props: TableOfContentProps) {
       aria-labelledby="toc-title"
       width="16rem"
       flexShrink={0}
-      display={["none", "none", "block"]}
+      display={["none", null, null, "block"]}
       visibility={hasHeadings ? "visible" : "hidden"}
       opacity={hasHeadings ? 1 : 0}
       transform={hasHeadings ? "translateY(0)" : "translateY(10px)"}

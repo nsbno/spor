@@ -4,7 +4,7 @@ import { SearchableContentMenu } from "~/routes/_base/content-menu/SearchableCon
 export const LeftSidebar = () => {
   return (
     <Box
-      display={["none", "none", "block"]}
+      display={["none", null, null, "block"]}
       as="nav"
       aria-label="content"
       flex="1"

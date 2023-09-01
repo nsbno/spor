@@ -9,6 +9,7 @@ const config = defineStyleConfig({
     border: "none",
     overflow: "hidden",
     fontSize: "inherit",
+    display: "block",
     transitionProperty: "common",
     transitionDuration: "fast",
     borderRadius: "md",

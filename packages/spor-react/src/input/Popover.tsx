@@ -83,7 +83,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         placement,
         shouldFlip,
         isNonModal,
-        containerPadding: containerPadding,
+        containerPadding,
       },
       state
     );

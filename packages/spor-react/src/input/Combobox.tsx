@@ -164,6 +164,9 @@ export function Combobox<T extends object>({
           placement="bottom start"
           shouldFlip={false}
           hasBackdrop={false}
+          // The minimum padding should be 0, because the popover always should be
+          // aligned with the input field regardless of the left padding in the container.
+          containerPadding={0}
         >
           <ListBox
             {...listBoxProps}

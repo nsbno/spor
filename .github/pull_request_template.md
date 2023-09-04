@@ -1,5 +1,5 @@
-## Bakgrunn
-<!-- Liten forklaring på hva som var bakgrunnen for oppgaven, hvorfor det skulle gjøres. -->
+## Background
+<!-- Why is this pull request necessary? -->
 
 ## Løsning
-<!-- Kort oppsummering av hva som er gjort -->
+<!-- Summarize what has been done to solve the challenge. -->

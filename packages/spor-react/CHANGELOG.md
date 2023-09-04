@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 3.4.2
+
+### Patch Changes
+
+- f5fb6ae6: Card: Improve the way card outlines are generated
+- 5b33fdc5: Card: Correct the colors of white cards
+
 ## 3.4.1
 
 ### Patch Changes

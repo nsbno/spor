@@ -1,26 +1,26 @@
 ---
-name: Bug-rapport
-about: Hjelp oss gjøre Spor bedre ved å si ifra om feil!
+name: Bug report
+about: Help us improve by reporting bugs
 title: ""
 labels: bug
 ---
 
-### Hva er feil
+### What's wrong?
 
-<!-- Beskriv kort og godt hva feilen er. -->
+<!-- Briefly describe what's the error is. -->
 
-### Hvordan reprodusere
+### How to reproduce?
 
-<!-- Om det gjelder React, kan du lage en reproduksjon med denne [CodeSandbox templaten](https://codesandbox.io/s/demo-spor-b137ig).
+<!-- Please make a reproduction with this [CodeSandbox template](https://codesandbox.io/s/demo-spor-b137ig).
 
-Steg for å reprodusere
+Steps to reproduce the behavior:
 
-1. Gå til '...'
-2. Trykk på '....'
-3. Scroll ned til '....'
-4. Se feil
+1. Go to '...'
+2. Click '....'
+3. Scroll to '....'
+4. Error occurs
 -->
 
-### Hva forventet du skulle skje, og hva skjedde?
+### What did you expect to happen, and what happened instead?
 
 ### Screenshots

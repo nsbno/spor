@@ -1,14 +1,14 @@
 ---
 name: Feature request
-about: Trenger du en komponent eller en ny feature?
+about: Do you need a new component, prop or a new feature?
 title: ""
 labels: enhancement
 ---
 
-### Er featuren du forespør relatert til en utfordring du opplever?
+### Is the feature you're requesting related to a challenge you're experiencing?
 
-<!-- Beskriv hva utfordringen er -->
+<!-- Briefly describe what you want fixed -->
 
-### Hvordan kan vi løse dette?
+### How can we solve it?
 
-<!-- Beskriv et løsningsforslag om du har det -->
+<!-- Please describe how the perfect solution would look like -->

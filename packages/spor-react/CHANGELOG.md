@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 3.4.4
+
+### Patch Changes
+
+- 548d9b9f: Input: Make hover-effect work as expected over icons
+
 ## 3.4.3
 
 ### Patch Changes

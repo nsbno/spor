@@ -65,7 +65,7 @@ function getColorSchemeBaseProps({ colorScheme }: CardThemeProps): {
   switch (colorScheme) {
     case "white":
       return {
-        backgroundColor: "lightGrey",
+        backgroundColor: "white",
       };
     case "grey":
       return {

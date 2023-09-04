@@ -5,6 +5,7 @@ export const textStyles = {
     fontSize: [
       tokens.font.style.xxl["font-size"].mobile,
       null,
+      null,
       tokens.font.style.xxl["font-size"].desktop,
     ],
     fontFamily: tokens.font.style.xxl["font-family"],
@@ -13,6 +14,7 @@ export const textStyles = {
   "xl-display": {
     fontSize: [
       tokens.font.style["xl-display"]["font-size"].mobile,
+      null,
       null,
       tokens.font.style["xl-display"]["font-size"].desktop,
     ],
@@ -23,6 +25,7 @@ export const textStyles = {
     fontSize: [
       tokens.font.style["xl-sans"]["font-size"].mobile,
       null,
+      null,
       tokens.font.style["xl-sans"]["font-size"].desktop,
     ],
     fontFamily: tokens.font.style["xl-sans"]["font-family"],
@@ -31,6 +34,7 @@ export const textStyles = {
   lg: {
     fontSize: [
       tokens.font.style.lg["font-size"].mobile,
+      null,
       null,
       tokens.font.style.lg["font-size"].desktop,
     ],
@@ -41,6 +45,7 @@ export const textStyles = {
     fontSize: [
       tokens.font.style.md["font-size"].mobile,
       null,
+      null,
       tokens.font.style.md["font-size"].desktop,
     ],
     fontFamily: tokens.font.style.md["font-family"],
@@ -50,6 +55,7 @@ export const textStyles = {
     fontSize: [
       tokens.font.style.sm["font-size"].mobile,
       null,
+      null,
       tokens.font.style.sm["font-size"].desktop,
     ],
     fontFamily: tokens.font.style.sm["font-family"],
@@ -58,6 +64,7 @@ export const textStyles = {
   xs: {
     fontSize: [
       tokens.font.style.xs["font-size"].mobile,
+      null,
       null,
       tokens.font.style.xs["font-size"].desktop,
     ],

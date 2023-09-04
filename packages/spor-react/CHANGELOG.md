@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 3.4.3
+
+### Patch Changes
+
+- 6a74c8ab: Change when we use desktop font sizes
+
 ## 3.4.2
 
 ### Patch Changes

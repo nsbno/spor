@@ -40,7 +40,9 @@ export const Input = forwardRef<InputProps, "input">(
     const inputId = id ?? formControlProps?.id ?? fallbackId;
     return (
       <InputGroup position="relative">
-        {leftIcon && <InputLeftElement>{leftIcon}</InputLeftElement>}
+        {leftIcon && (
+          <InputLeftElement pointerEvents="none">{leftIcon}</InputLeftElement>
+        )}
         <ChakraInput
           data-attachable
           paddingLeft={leftIcon ? 7 : undefined}
@@ -51,7 +53,11 @@ export const Input = forwardRef<InputProps, "input">(
           placeholder=" " // This is needed to make the label work as expected
         />
         <FormLabel htmlFor={inputId}>{label}</FormLabel>
-        {rightIcon && <InputRightElement>{rightIcon}</InputRightElement>}
+        {rightIcon && (
+          <InputRightElement pointerEvents="none">
+            {rightIcon}
+          </InputRightElement>
+        )}
       </InputGroup>
     );
   }

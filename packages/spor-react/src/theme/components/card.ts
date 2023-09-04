@@ -24,6 +24,7 @@ const config = defineStyleConfig({
           boxShadow: getBoxShadowString({
             borderColor: "greenHaze",
             borderWidth: 2,
+            isInset: false,
           }),
           outline: "none",
           _active: getColorSchemeActiveProps(props),
@@ -37,6 +38,7 @@ const config = defineStyleConfig({
         backgroundColor: "platinum",
         boxShadow: getBoxShadowString({
           borderColor: "silver",
+          isInset: false,
         }),
         color: "osloGrey",
         pointerEvents: "none",
@@ -91,6 +93,7 @@ function getColorSchemeClickableProps({ colorScheme, size }: CardThemeProps) {
         boxShadow: getBoxShadowString({
           baseShadow,
           borderColor: "silver",
+          isInset: false,
         }),
       };
     case "grey":
@@ -98,6 +101,7 @@ function getColorSchemeClickableProps({ colorScheme, size }: CardThemeProps) {
         boxShadow: getBoxShadowString({
           baseShadow,
           borderColor: "steel",
+          isInset: false,
         }),
       };
     default:
@@ -106,6 +110,7 @@ function getColorSchemeClickableProps({ colorScheme, size }: CardThemeProps) {
         boxShadow: getBoxShadowString({
           baseShadow,
           borderColor: colors[colorScheme]?.[200] ?? "silver",
+          isInset: false,
         }),
       };
   }
@@ -119,6 +124,7 @@ function getColorSchemeHoverProps({ colorScheme, size }: CardThemeProps) {
         boxShadow: getBoxShadowString({
           baseShadow,
           borderColor: colors.steel,
+          isInset: false,
         }),
       };
     case "grey":
@@ -126,6 +132,7 @@ function getColorSchemeHoverProps({ colorScheme, size }: CardThemeProps) {
         boxShadow: getBoxShadowString({
           baseShadow,
           borderColor: colors.osloGrey,
+          isInset: false,
         }),
       };
     default:
@@ -134,6 +141,7 @@ function getColorSchemeHoverProps({ colorScheme, size }: CardThemeProps) {
         boxShadow: getBoxShadowString({
           baseShadow,
           borderColor: colors[colorScheme]?.[400] ?? colors.silver,
+          isInset: false,
         }),
       };
   }
@@ -148,6 +156,7 @@ function getColorSchemeActiveProps({ colorScheme, size }: CardThemeProps) {
         boxShadow: getBoxShadowString({
           baseShadow,
           borderColor: colors.silver,
+          isInset: false,
         }),
       };
     case "grey":
@@ -156,6 +165,7 @@ function getColorSchemeActiveProps({ colorScheme, size }: CardThemeProps) {
         boxShadow: getBoxShadowString({
           baseShadow,
           borderColor: colors.steel,
+          isInset: false,
         }),
       };
     default:
@@ -164,6 +174,7 @@ function getColorSchemeActiveProps({ colorScheme, size }: CardThemeProps) {
         boxShadow: getBoxShadowString({
           baseShadow,
           borderColor: colors[colorScheme]?.[100] ?? colors.silver,
+          isInset: false,
         }),
       };
   }

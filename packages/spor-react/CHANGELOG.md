@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 3.5.0
+
+### Minor Changes
+
+- e05d6093: New components: Breadcrumb, BreadcrumbItem and BreadcrumbLink
+
 ## 3.4.4
 
 ### Patch Changes

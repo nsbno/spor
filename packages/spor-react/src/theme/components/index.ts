@@ -1,6 +1,7 @@
 export { default as Accordion } from "./accordion";
 export { default as Alert } from "./alert";
 export { default as Badge } from "./badge";
+export { default as Breadcrumb } from "./breadcrumb";
 export { default as Button } from "./button";
 export { default as Card } from "./card";
 export { default as CardSelect } from "./card-select";

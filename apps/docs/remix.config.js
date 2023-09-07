@@ -7,7 +7,6 @@ module.exports = {
   publicPath: "/build/",
   serverBuildPath: "build/index.js",
   serverModuleFormat: "cjs",
-  devServerPort: 8002,
   ignoredRouteFiles: [".*"],
   watchPaths: ["../../packages/*/dist/index.mjs"],
   future: {
@@ -15,5 +14,7 @@ module.exports = {
     v2_routeConvention: true,
     v2_errorBoundary: true,
     v2_meta: true,
+    v2_headers: true,
+    v2_dev: true,
   },
 };

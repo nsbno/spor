@@ -39,7 +39,7 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
       <Flex
         key={url}
         {...getLinkProps({ url })}
-        px={2}
+        paddingX={2}
         fontSize="mobile.xs"
         borderRadius="sm"
         alignItems="center"

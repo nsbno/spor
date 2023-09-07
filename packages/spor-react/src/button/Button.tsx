@@ -121,7 +121,7 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
           <ColorInlineLoader
             maxWidth={getLoaderWidth(finalSize)}
             width="100%"
-            mx={2}
+            marginX={2}
           />
         </Center>
       )}

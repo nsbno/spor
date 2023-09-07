@@ -19,7 +19,7 @@ export const StepperStep = ({ children, stepNumber }: StepperStepProps) => {
   return (
     <Box __css={style.stepContainer}>
       {stepNumber > 1 && (
-        <DropdownRightFill18Icon mx={5} display={["none", "block"]} />
+        <DropdownRightFill18Icon marginX={5} display={["none", "block"]} />
       )}
 
       <Flex

@@ -8,7 +8,7 @@ export const LiveError = (props: BoxProps) => {
     return null;
   }
   return (
-    <Box textStyle="sm" p={2} {...props}>
+    <Box textStyle="sm" padding={2} {...props}>
       <ReactLiveError />
     </Box>
   );

@@ -94,7 +94,7 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
           {variant !== "icon" && children}
         </chakra.span>
         {variant === "filter" && state.isChecked && (
-          <CloseOutline24Icon ml={1.5} />
+          <CloseOutline24Icon marginLeft={1.5} />
         )}
       </chakra.div>
     </chakra.label>

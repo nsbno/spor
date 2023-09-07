@@ -35,23 +35,23 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
   });
   return (
     <Box key={component.name} as="article">
-      <LinkableHeading as="h3" variant="md" fontWeight="bold" mb={1}>
+      <LinkableHeading as="h3" variant="md" fontWeight="bold" marginBottom={1}>
         <Code fontSize="md">{`<${component.name} />`}</Code>
       </LinkableHeading>
       <CodeBlock
         code={`import { ${component.name} } from "@vygruppen/spor-react";`}
       />
-      <Box mt={1}>
+      <Box marginTop={1}>
         <PortableText value={component.content} />
       </Box>
       {visibleProps && (
         <>
-          <Heading as="h4" variant="md" mt={3}>
+          <Heading as="h4" variant="md" marginTop={3}>
             Props
           </Heading>
           <Table
             variant="outline"
-            mt={3}
+            marginTop={3}
             maxWidth={`calc(100vw - var(--spor-space-6))`}
           >
             <Thead>
@@ -75,7 +75,7 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
                   </Td>
                   <Td>
                     {prop.isRequired && (
-                      <SuccessFill24Icon aria-label="Påkrevd" mx="auto" />
+                      <SuccessFill24Icon aria-label="Påkrevd" marginX="auto" />
                     )}
                   </Td>
                   <Td>{prop.description}</Td>

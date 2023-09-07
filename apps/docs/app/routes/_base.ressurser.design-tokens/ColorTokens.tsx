@@ -145,7 +145,7 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
         backgroundPosition="center center"
         backgroundRepeat="repeat"
       />
-      <Flex flexDirection="column" justifyContent="space-between" px={2}>
+      <Flex flexDirection="column" justifyContent="space-between" paddingX={2}>
         <Box>
           <Text variant="xs" fontWeight="bold" whiteSpace="nowrap">
             {aliasName}
@@ -154,7 +154,7 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
             {aliasName !== paletteName ? paletteName : " "}
           </Text>
         </Box>
-        <Text variant="xs" mt={3} mb={2}>
+        <Text variant="xs" marginTop={3} marginBottom={2}>
           {colorValue}
         </Text>
       </Flex>

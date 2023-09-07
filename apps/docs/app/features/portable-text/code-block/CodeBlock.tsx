@@ -74,8 +74,8 @@ export const CodeBlockContainer = ({
       borderColor="osloGrey"
       backgroundColor="darkGrey"
       fontFamily="monospace"
-      fontSize={["mobile.sm", "desktop.sm"]}
-      p={2}
+      fontSize={["mobile.sm", null, "desktop.sm"]}
+      padding={2}
       position="relative"
       onKeyUp={handleKeyUp}
       {...props}
@@ -83,7 +83,7 @@ export const CodeBlockContainer = ({
       <Box position="absolute" top={2} right={2}>
         <CopyCodeButton ref={copyButtonRef} code={code} />
       </Box>
-      <Box overflow="auto">{children}</Box>
+      <Box>{children}</Box>
     </Box>
   );
 };

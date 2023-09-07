@@ -88,7 +88,12 @@ export function ActionLinks() {
           <ActionLinkCard key={link.to} to={link.to}>
             <IconCircle backgroundColor={link.iconColor} icon={link.icon} />
             <Box>
-              <Heading as="h2" variant="md" mb={1.5} fontWeight="bold">
+              <Heading
+                as="h2"
+                variant="md"
+                marginBottom={1.5}
+                fontWeight="bold"
+              >
                 {link.title}
               </Heading>
               <Text variant="sm">{link.description}</Text>
@@ -112,7 +117,7 @@ function ActionLinkCard({ to, children }: ActionLinkCardProps) {
     <Card
       {...linkProps}
       colorScheme="white"
-      p={4}
+      padding={4}
       display="flex"
       flexDirection={["row", "column"]}
       gap={[3, 4]}

@@ -23,15 +23,15 @@ export const SiteHeader = () => {
       color="white"
       justifyContent="space-between"
       alignItems="center"
-      px={[3, 4, 7]}
-      py={[3, 4, 5, 7]}
+      paddingX={[3, 4, 7]}
+      paddingY={[3, 4, 5, 7]}
       backgroundColor="darkTeal"
     >
-      <Box as={Link} mr={[0, 0, 11]} to="/">
+      <Box as={Link} marginRight={[0, 0, 11]} to="/">
         <VyLogo
           colorScheme="dark"
-          height={[5, 6, 8]}
-          width={["auto", "100%"]}
+          width="auto"
+          height={["30px", "36px", null, "48px"]}
           aria-label="Vy"
         />
       </Box>
@@ -45,7 +45,7 @@ const DesktopNavigation = () => {
   const menu = useMenu("top-menu");
   return (
     <Flex
-      display={["none", "none", "flex"]}
+      display={["none", null, null, "flex"]}
       flex="1"
       justifyContent="space-between"
       alignItems="center"
@@ -70,7 +70,7 @@ const MobileNavigation = () => {
     onClose();
   }, [location.pathname]);
   return (
-    <Flex display={["flex", "flex", "none"]}>
+    <Flex display={["flex", null, null, "none"]}>
       <IconButton
         icon={<HamburgerFill24Icon />}
         aria-label="Meny"
@@ -83,8 +83,8 @@ const MobileNavigation = () => {
       />
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent mx={[2, "auto"]}>
-          <ModalBody py={2} px={[1, 2, 3]}>
+        <ModalContent marginX={[2, "auto"]}>
+          <ModalBody paddingY={2} paddingX={[1, 2, 3]}>
             <Stack spacing={2}>
               <SearchableContentMenu />
             </Stack>

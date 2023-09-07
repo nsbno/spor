@@ -7,11 +7,9 @@ export const LeftSidebar = () => {
       display={["none", null, null, "block"]}
       as="nav"
       aria-label="content"
-      flex="1"
-      maxWidth="22rem"
       minWidth="18rem"
-      px={1.5}
-      py={2}
+      paddingX={1.5}
+      paddingY={2}
       borderRight="9px solid"
       borderRightColor="lightGrey"
     >

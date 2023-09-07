@@ -39,8 +39,8 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
           <SearchOutline24Icon />
         </InputLeftElement>
         <ChakraInput
-          pl={7}
-          pr={7}
+          paddingLeft={7}
+          paddingRight={7}
           {...props}
           id={inputId}
           type="search"
@@ -62,7 +62,7 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
               variant="ghost"
               type="button"
               size="sm"
-              mr={1}
+              marginRight={1}
               aria-label={t(texts.reset)}
               icon={<CloseOutline24Icon />}
               onClick={onReset}

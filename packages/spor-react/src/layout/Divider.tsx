@@ -7,7 +7,7 @@ export type DividerProps = BoxProps;
  * You can specify margins if you need to give the content some space, or use a `Stack` component to do it for you
  *
  * ```tsx
- * <Divider mt={4} mb={6} />
+ * <Divider marginTop={4} marginBottom={6} />
  * ```
  */
 export const Divider = forwardRef<BoxProps, As>((props, ref) => {

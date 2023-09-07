@@ -32,16 +32,16 @@ function TableOfContent(props: TableOfContentProps) {
       aria-labelledby="toc-title"
       width="16rem"
       flexShrink={0}
-      display={["none", null, null, "block"]}
+      display={["none", null, null, null, "block"]}
       visibility={hasHeadings ? "visible" : "hidden"}
       opacity={hasHeadings ? 1 : 0}
       transform={hasHeadings ? "translateY(0)" : "translateY(10px)"}
       transitionDuration="fast"
       transitionProperty="common"
       position="sticky"
-      py={10}
-      pr={4}
-      pl={1}
+      paddingY={10}
+      paddingRight={4}
+      paddingLeft={1}
       top="6rem"
       right="0"
       fontSize="sm"
@@ -54,12 +54,12 @@ function TableOfContent(props: TableOfContentProps) {
       <Heading as="h2" id="toc-title" variant="sm" fontWeight="bold">
         På denne siden
       </Heading>
-      <OrderedList spacing={1} ml="0" mt="4" styleType="none">
+      <OrderedList spacing={1} marginLeft="0" marginTop="4" styleType="none">
         {headings.map(({ id, text, level }) => (
           <ListItem
             key={id}
             title={text}
-            ml={
+            marginLeft={
               Number(level.substring(1)) > 2
                 ? Number(level.substring(1))
                 : undefined

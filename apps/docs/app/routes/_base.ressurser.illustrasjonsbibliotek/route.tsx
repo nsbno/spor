@@ -128,8 +128,8 @@ export default function IllustrasjonerPage() {
       >
         Last ned alle illustrasjoner
       </Button>
-      <Divider my={3} />
-      <Flex mb={5} gap={2}>
+      <Divider marginY={3} />
+      <Flex marginBottom={5} gap={2}>
         <Box flex={1}>
           <SearchInput
             label="Finn illustrasjon"
@@ -171,7 +171,7 @@ export default function IllustrasjonerPage() {
             color={background === "light" ? "darkGrey" : "white"}
             variant="outline"
             key={illustration._id}
-            p={2}
+            padding={2}
           >
             <Flex flexDirection="column" height="100%">
               <Flex gap={1} alignItems="center">

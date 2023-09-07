@@ -12,7 +12,7 @@ export type ContentLoaderProps = BoxProps;
 export const ContentLoader = ({ children, ...props }: ContentLoaderProps) => {
   return (
     <Box {...props}>
-      <Box maxWidth="140px" mx="auto">
+      <Box maxWidth="140px" marginX="auto">
         <ClientOnly>
           {() => <Lottie animationData={contentLoaderData} />}
         </ClientOnly>

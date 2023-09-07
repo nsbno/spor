@@ -35,7 +35,7 @@ export const SearchResults = () => {
     return <NoHits />;
   }
   return (
-    <Stack spacing={9} mt={4}>
+    <Stack spacing={9} marginTop={4}>
       {Object.entries(filteredCategories).map(([category, icons]) => (
         <Category
           key={category}
@@ -85,8 +85,14 @@ const hasNoHits = (filteredCategories: IconsByCategory) =>
 const NoHits = () => {
   return (
     <Box>
-      <NotFoundIllustration mx="auto" />
-      <Heading as="h2" variant="sm" fontWeight="bold" mt={7} textAlign="center">
+      <NotFoundIllustration marginX="auto" />
+      <Heading
+        as="h2"
+        variant="sm"
+        fontWeight="bold"
+        marginTop={7}
+        textAlign="center"
+      >
         Ingen matchende ikoner funnet
       </Heading>
     </Box>
@@ -159,9 +165,9 @@ function IconBox({ icon }: IconBoxProps) {
       flexDirection="column"
       alignItems="center"
       justifyContent="space-between"
-      pt={1}
-      px={1}
-      pb={1}
+      paddingTop={1}
+      paddingX={1}
+      paddingBottom={1}
     >
       <Text variant="xs" textAlign="center">
         {toTitleCase(icon.name)}

@@ -29,10 +29,12 @@ export const LightSpinner = ({
   return (
     <Center flexDirection="column" {...props}>
       <Box width={width} maxWidth={maxWidth}>
-        <ClientOnly>{() => <Lottie animationData={spinnerLightData} />}</ClientOnly>
+        <ClientOnly>
+          {() => <Lottie animationData={spinnerLightData} />}
+        </ClientOnly>
       </Box>
       {children && (
-        <Box mt={3} fontWeight="bold">
+        <Box marginTop={3} fontWeight="bold">
           {children}
         </Box>
       )}

@@ -14,10 +14,10 @@ export function SharedTokenLayout({
 }: SharedTokenLayoutProps) {
   return (
     <Box {...rest}>
-      <LinkableHeading as="h2" variant="xl-display" mb={2}>
+      <LinkableHeading as="h2" variant="xl-display" marginBottom={2}>
         {title}
       </LinkableHeading>
-      <Box mb={6} textStyle="sm">
+      <Box marginBottom={6} textStyle="sm">
         {description}
       </Box>
       {children}

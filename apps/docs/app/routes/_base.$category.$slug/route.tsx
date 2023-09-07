@@ -161,7 +161,7 @@ export default function ArticlePage() {
 
   return (
     <>
-      <HStack mb={1} justifyContent="space-between">
+      <HStack marginBottom={1} justifyContent="space-between">
         <HStack>
           {article?.category?.title && (
             <Badge colorScheme="light-green">{article?.category?.title}</Badge>
@@ -184,7 +184,7 @@ export default function ArticlePage() {
         </Flex>
       </HStack>
       <Box>
-        <Heading as="h1" variant="xl-display" mb={2}>
+        <Heading as="h1" variant="xl-display" marginBottom={2}>
           {article.title}
         </Heading>
         {article.introduction && (
@@ -242,7 +242,14 @@ type ComponentSectionsProps = {
 };
 const ComponentSections = ({ sections }: ComponentSectionsProps) => {
   return (
-    <Tabs colorScheme="green" variant="square" size="md" mt={4} isFitted isLazy>
+    <Tabs
+      colorScheme="green"
+      variant="square"
+      size="md"
+      marginTop={4}
+      isFitted
+      isLazy
+    >
       <TabList>
         {sections.map((section) => (
           <Tab key={section.title}>
@@ -257,7 +264,7 @@ const ComponentSections = ({ sections }: ComponentSectionsProps) => {
       <TabPanels>
         {sections.map((section) => (
           <TabPanel key={section.customTitle || section.title}>
-            <Heading as="h2" variant="lg" mb={1}>
+            <Heading as="h2" variant="lg" marginBottom={1}>
               {getCorrectTitle({
                 title: section.title,
                 customTitle: section.customTitle,

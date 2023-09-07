@@ -141,10 +141,10 @@ const components: Partial<PortableTextReactComponents> = {
         </Box>
       );
     },
-    divider: () => <Divider height="1px" my={8} />,
+    divider: () => <Divider height="1px" marginY={8} />,
     grid: ({ value }) => (
       <SimpleGrid
-        columns={[1, 2, value.maxNumberOfColumns]}
+        columns={[1, 1, 2, value.maxNumberOfColumns]}
         gap={6}
         marginTop={6}
       >
@@ -201,9 +201,9 @@ const components: Partial<PortableTextReactComponents> = {
             .auto("format")
             .url()}
           alt={value.alt}
-          mx="auto"
-          mt={6}
-          __css={{ aspectRatio }}
+          marginX="auto"
+          marginTop={6}
+          aspectRatio={aspectRatio}
         />
       );
     },
@@ -211,12 +211,12 @@ const components: Partial<PortableTextReactComponents> = {
       return (
         <Box marginBottom={3}>
           <CodeBlock
-            mt={6}
+            marginTop={6}
             language={value.code.language}
             code={value.code.code}
           />
           {value.caption && (
-            <Text variant="xs" textAlign="center" color="dimGrey" mt={1}>
+            <Text variant="xs" textAlign="center" color="dimGrey" marginTop={1}>
               {value.caption}
             </Text>
           )}
@@ -242,7 +242,7 @@ const components: Partial<PortableTextReactComponents> = {
     },
     component: ({ value }) => {
       return (
-        <Box mt={6}>
+        <Box marginTop={6}>
           <ComponentDocs component={value} />
         </Box>
       );
@@ -251,10 +251,16 @@ const components: Partial<PortableTextReactComponents> = {
       if (!value.reactImport) {
         return null;
       }
-      return <CodeBlock code={value.reactImport} mt={3} />;
+      return <CodeBlock code={value.reactImport} marginTop={3} />;
     },
     tipsPanel: ({ value }) => (
-      <Box as="article" backgroundColor="mint" mt={3} p={4} borderRadius="md">
+      <Box
+        as="article"
+        backgroundColor="mint"
+        marginTop={3}
+        padding={4}
+        borderRadius="md"
+      >
         <Flex gap={1} alignItems="end">
           <FavouriteOutline30Icon />
           <Heading as="h3" variant="sm" fontWeight="bold">

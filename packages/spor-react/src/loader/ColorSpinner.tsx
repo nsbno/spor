@@ -35,7 +35,7 @@ export const ColorSpinner = ({
         </ClientOnly>
       </Box>
       {children && (
-        <Box mt={3} fontWeight="bold">
+        <Box marginTop={3} fontWeight="bold">
           {children}
         </Box>
       )}

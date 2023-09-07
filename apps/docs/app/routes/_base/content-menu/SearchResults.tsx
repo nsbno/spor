@@ -12,7 +12,7 @@ export const SearchResults = forwardRef<SearchResultsProps, "button">(
   ({ query, hits }, ref) => {
     return (
       <Box
-        mt={2}
+        marginTop={2}
         aria-live="polite"
         aria-label={`${hits.length || "Ingen"} treff på ${query}.`}
       >

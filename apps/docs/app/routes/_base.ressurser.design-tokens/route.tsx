@@ -12,7 +12,7 @@ import { ZIndexTokens } from "./ZIndexTokens";
 export default function DesignTokensPage() {
   return (
     <Box>
-      <Heading as="h1" variant="xl-display" mb={2}>
+      <Heading as="h1" variant="xl-display" marginBottom={2}>
         Design tokens
       </Heading>
       <Stack spacing={3}>
@@ -30,7 +30,7 @@ export default function DesignTokensPage() {
           og mer.
         </Text>
       </Stack>
-      <Divider my={8} />
+      <Divider marginY={8} />
       <Stack spacing={9}>
         <ColorTokens />
         <TypographyTokens />

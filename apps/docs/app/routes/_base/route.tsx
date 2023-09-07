@@ -17,24 +17,22 @@ export const loader = async () => {
 export default function BaseLayout() {
   const { headings, contentRef } = useHeadings();
   return (
-    <>
-      <Flex flex="1">
-        <LeftSidebar />
-        <Box
-          as="main"
-          id="content"
-          flex="1"
-          mt={6}
-          mx={[3, null, 6, 10]}
-          mb={["60px", null, "120px", "180px"]}
-          maxWidth="924px"
-          ref={contentRef}
-        >
-          <Outlet />
-          <Footer />
-        </Box>
-        <TableOfContent headings={headings} />
-      </Flex>
-    </>
+    <Flex flex="1">
+      <LeftSidebar />
+      <Box
+        as="main"
+        id="content"
+        flex="1"
+        marginTop={6}
+        marginX={[3, null, 6, 10]}
+        marginBottom={["60px", null, "120px", "180px"]}
+        maxWidth="924px"
+        ref={contentRef}
+      >
+        <Outlet />
+        <Footer />
+      </Box>
+      <TableOfContent headings={headings} />
+    </Flex>
   );
 }

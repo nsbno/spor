@@ -2,6 +2,7 @@ export { extendTheme } from "@chakra-ui/react";
 export * as tokens from "@vygruppen/spor-design-tokens";
 export * from "./accordion";
 export * from "./alert";
+export * from "./breadcrumb";
 export * from "./button";
 export * from "./card";
 export * from "./datepicker";

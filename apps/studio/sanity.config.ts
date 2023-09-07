@@ -18,26 +18,30 @@ export default defineConfig({
   },
   document: {
     productionUrl: async (prev, { document, getClient }) => {
-      const configuredClient = getClient({ apiVersion: "2022-10-06" });
-      const host = window.location.href.includes("localhost")
-        ? "http://localhost:3000"
-        : "https://spor.vy.no";
+      try {
+        const configuredClient = getClient({ apiVersion: "2022-10-06" });
+        const host = window.location.href.includes("localhost")
+          ? "http://localhost:3000"
+          : "https://spor.vy.no";
 
-      if (document._type === "article") {
-        if (!document.category) {
-          return host;
+        if (document._type === "article") {
+          if (!document.category) {
+            return host;
+          }
+          const category = await configuredClient.fetch(
+            `*[_id == $id] { "slug": slug.current }[0]`,
+            { id: (document.category as any)?._ref }
+          );
+
+          const params = new URLSearchParams();
+          params.set("preview", import.meta.env.SANITY_STUDIO_PREVIEW_SECRET);
+
+          return `${host}/${category.slug}/${
+            (document?.slug as any)?.current
+          }?${params}`;
         }
-        const category = await configuredClient.fetch(
-          `*[_id == $id] { "slug": slug.current }[0]`,
-          { id: (document.category as any)?._ref }
-        );
-
-        const params = new URLSearchParams();
-        params.set("preview", import.meta.env.SANITY_STUDIO_PREVIEW_SECRET);
-
-        return `${host}/${category.slug}/${
-          (document?.slug as any)?.current
-        }?${params}`;
+      } catch (e) {
+        console.error(e);
       }
       return prev;
     },

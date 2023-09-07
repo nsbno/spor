@@ -113,9 +113,6 @@ async function generateComponent(iconData: IconData) {
         "aria-hidden": "true",
       },
       svgo: true,
-      svgoConfig: {
-        removeViewBox: false,
-      },
       template: componentTemplate,
       replaceAttrValues: {
         "#2B2B2C": "currentColor",

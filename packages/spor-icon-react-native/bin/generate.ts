@@ -106,9 +106,6 @@ async function generateComponent(iconData: IconData) {
       ref: true,
       titleProp: false,
       svgo: true,
-      svgoConfig: {
-        removeViewBox: false,
-      },
       native: true,
       replaceAttrValues: {
         "#2B2B2C": `{theme.colors[color] ?? "#2B2B2C"}`,

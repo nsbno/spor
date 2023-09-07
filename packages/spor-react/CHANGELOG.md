@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 3.5.1
+
+### Patch Changes
+
+- 6ca2f865: Update internal dependencies"
+- 01f4a68c: FloatingActionButton: Enable server rendering
+- Updated dependencies [6ca2f865]
+  - @vygruppen/spor-icon-react@3.2.1
+  - @vygruppen/spor-loader@0.3.2
+
 ## 3.5.0
 
 ### Minor Changes

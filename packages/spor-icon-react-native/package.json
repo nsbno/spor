@@ -28,16 +28,16 @@
     "@svgr/core": "^6.2.0",
     "@svgr/plugin-jsx": "^6.2.0",
     "@svgr/plugin-svgo": "^6.2.0",
-    "@types/fs-extra": "^9.0.13",
+    "@types/fs-extra": "^11.0.1",
     "@vygruppen/spor-icon": "*",
     "case": "^1.6.3",
-    "fs-extra": "^10.0.0",
+    "fs-extra": "^11.0.1",
     "react": ">17.0.0",
     "react-native": "^0.66.0",
     "react-native-svg": "^12.3.0",
-    "rimraf": "^3.0.2",
+    "rimraf": "^5.0.1",
     "ts-node": "^10.9.1",
-    "tsup": "^6.2.2"
+    "tsup": "^7.2.0"
   },
   "peerDependencies": {
     "@shopify/restyle": "^2.1.0",

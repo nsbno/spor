@@ -93,7 +93,7 @@ type ScrollDirection = "up" | "down" | null;
 const useScrollDirection = () => {
   const [scrollDirection, setScrollDirection] =
     React.useState<ScrollDirection>(null);
-  const lastScrollPosition = React.useRef(window.scrollY);
+  const lastScrollPosition = React.useRef(typeof window !== "undefined" ? window.scrollY : 0);
   React.useEffect(() => {
     const onScroll = () => {
       const delta = window.scrollY - lastScrollPosition.current;

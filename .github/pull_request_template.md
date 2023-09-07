@@ -1,5 +1,5 @@
 ## Background
 <!-- Why is this pull request necessary? -->
 
-## Løsning
+## Solution
 <!-- Summarize what has been done to solve the challenge. -->

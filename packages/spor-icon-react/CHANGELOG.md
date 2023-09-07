@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 3.2.1
+
+### Patch Changes
+
+- 6ca2f865: Update internal dependencies"
+
 ## 3.2.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader
 
+## 0.3.2
+
+### Patch Changes
+
+- 6ca2f865: Update internal dependencies"
+
 ## 0.3.1
 
 ### Patch Changes

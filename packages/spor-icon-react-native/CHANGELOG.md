@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.2.1
+
+### Patch Changes
+
+- 6ca2f865: Update internal dependencies"
+
 ## 2.2.0
 
 ### Minor Changes

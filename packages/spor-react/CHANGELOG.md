@@ -1,5 +1,18 @@
 # @vygruppen/spor-react
 
+## 3.6.0
+
+### Minor Changes
+
+- 8d2cf4d3: Divider: Implement size and variant props
+
+### Patch Changes
+
+- 1d30e122: Icons: Re-add viewBox prop to all icons, making them scalable
+  ExpandableAlert: Ensure the text size is equal across title and content
+- Updated dependencies [1d30e122]
+  - @vygruppen/spor-icon-react@3.2.3
+
 ## 3.5.2
 
 ### Patch Changes

@@ -160,7 +160,7 @@ function IconBox({ icon }: IconBoxProps) {
   return (
     <Card
       display="flex"
-      colorScheme="white"
+      colorScheme="grey"
       borderRadius="sm"
       flexDirection="column"
       alignItems="center"

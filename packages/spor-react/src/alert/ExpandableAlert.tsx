@@ -53,7 +53,7 @@ export const ExpandableAlert = ({
         flexGrow="1"
       >
         <AccordionItem>
-          <AccordionButton paddingX={3} paddingY={2}>
+          <AccordionButton paddingX={3} paddingY={2} fontSize="inherit">
             <Flex
               justifyContent="space-between"
               alignItems="center"

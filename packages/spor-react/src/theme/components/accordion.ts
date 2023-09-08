@@ -107,34 +107,34 @@ const config = helpers.defineMultiStyleConfig({
   sizes: {
     sm: {
       button: {
-        fontSize: ["mobile.xs", "desktop.xs"],
+        fontSize: ["mobile.xs", null, "desktop.xs"],
         paddingX: 2,
         paddingY: 1,
       },
       panel: {
-        fontSize: ["mobile.xs", "desktop.xs"],
+        fontSize: ["mobile.xs", null, "desktop.xs"],
         paddingX: 2,
       },
     },
     md: {
       button: {
-        fontSize: ["mobile.sm", "desktop.sm"],
+        fontSize: ["mobile.sm", null, "desktop.sm"],
         paddingX: 3,
         paddingY: 1,
       },
       panel: {
-        fontSize: ["mobile.sm", "desktop.sm"],
+        fontSize: ["mobile.sm", null, "desktop.sm"],
         paddingX: 3,
       },
     },
     lg: {
       button: {
-        fontSize: ["mobile.sm", "desktop.sm"],
+        fontSize: ["mobile.sm", null, "desktop.sm"],
         paddingX: 3,
         paddingY: 2,
       },
       panel: {
-        fontSize: ["mobile.sm", "desktop.sm"],
+        fontSize: ["mobile.sm", null, "desktop.sm"],
         paddingX: 3,
       },
     },

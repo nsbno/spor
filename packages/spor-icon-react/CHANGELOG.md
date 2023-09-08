@@ -1,5 +1,12 @@
 # @vygruppen/spor-icon-react
 
+## 3.2.3
+
+### Patch Changes
+
+- 1d30e122: Icons: Re-add viewBox prop to all icons, making them scalable
+  ExpandableAlert: Ensure the text size is equal across title and content
+
 ## 3.2.2
 
 ### Patch Changes

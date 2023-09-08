@@ -14,7 +14,7 @@ export type BaseAlertProps = BoxProps & {
 export const BaseAlert = ({ variant, children, ...boxProps }: BaseAlertProps) => {
   const styles = useMultiStyleConfig("Alert", { variant });
   return (
-    <Box sx={styles.container} {...boxProps}>
+    <Box __css={styles.container} {...boxProps}>
       {children}
     </Box>
   );

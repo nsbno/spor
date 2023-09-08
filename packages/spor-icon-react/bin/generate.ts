@@ -114,7 +114,8 @@ async function generateComponent(iconData: IconData) {
       },
       svgo: true,
       template: componentTemplate,
-      replaceAttrValues: {
+      plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
+      replaceAttrValues: { 
         "#2B2B2C": "currentColor",
       },
     },

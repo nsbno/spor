@@ -45,7 +45,7 @@ export const ExpandableAlert = ({
   ...boxProps
 }: ExpandableAlertProps) => {
   return (
-    <BaseAlert variant={variant} paddingX={0} paddingY={0} padding={0} {...boxProps}>
+    <BaseAlert variant={variant} {...boxProps} paddingX={0} paddingY={0}>
       <Accordion
         onChange={(expandedIndex) => onToggle(expandedIndex === 0)}
         defaultIndex={defaultOpen ? 0 : -1}
@@ -59,7 +59,7 @@ export const ExpandableAlert = ({
               alignItems="center"
               flexGrow="1"
             >
-              <Flex as={headingLevel}>
+              <Flex as={headingLevel} alignItems="center">
                 <AlertIcon variant={variant} />
                 <Box
                   as="span"

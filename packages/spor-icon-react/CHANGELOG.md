@@ -1,5 +1,15 @@
 # @vygruppen/spor-icon-react
 
+## 3.2.2
+
+### Patch Changes
+
+- cfa3ebb1: ExpandableAlert: Fix double padding bug
+  Other:
+
+  - Set the document-level line height to a valid value
+  - Fix a bug with icon generation
+
 ## 3.2.1
 
 ### Patch Changes

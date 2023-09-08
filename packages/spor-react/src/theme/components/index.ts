@@ -10,6 +10,7 @@ export { default as ChoiceChip } from "./choice-chip";
 export { default as CloseButton } from "./close-button";
 export { default as Code } from "./code";
 export { default as Datepicker } from "./datepicker";
+export { default as Divider } from "./divider";
 export { default as Drawer } from "./drawer";
 export { default as FloatingActionButton } from "./fab";
 export { default as Form } from "./form";
@@ -33,3 +34,4 @@ export { default as Tabs } from "./tabs";
 export { default as Textarea } from "./textarea";
 export { default as Toast } from "./toast";
 export { default as TravelTag } from "./travel-tag";
+

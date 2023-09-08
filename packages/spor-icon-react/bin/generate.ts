@@ -113,6 +113,17 @@ async function generateComponent(iconData: IconData) {
         "aria-hidden": "true",
       },
       svgo: true,
+      svgoConfig: {
+        plugins: [{
+          name: 'preset-default',
+          params: {
+            overrides: {
+              removeViewBox: false,
+            }
+          }
+        }]
+      },
+      dimensions: true,
       template: componentTemplate,
       plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
       replaceAttrValues: { 

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 3.6.1
+
+### Patch Changes
+
+- 6fc147dc: Breadcrumb: Ensure the breadcrumbs scale correctly
+
 ## 3.6.0
 
 ### Minor Changes

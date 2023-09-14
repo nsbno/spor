@@ -12,6 +12,7 @@ export * from "./input";
 export * from "./layout";
 export * from "./linjetag";
 export * from "./link";
+export * from "./list";
 export * from "./loader";
 export * from "./logo";
 export * from "./media-controller";
@@ -26,3 +27,4 @@ export * from "./toast";
 export * from "./transition";
 export * from "./typography";
 export * from "./util";
+

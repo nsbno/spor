@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 3.7.0
+
+### Minor Changes
+
+- 3b6597ae: Add new components – UnorderedList, OrderedList and ListItem
+
+### Patch Changes
+
+- 6d1b0a5e: Datepicker, Timepicker: Use regular font for numbers"
+
 ## 3.6.1
 
 ### Patch Changes

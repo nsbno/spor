@@ -12,3 +12,4 @@ export * from "./sizes";
 export * from "./spacing";
 export * from "./textStyles";
 export * from "./zIndices";
+export * from "./styles";

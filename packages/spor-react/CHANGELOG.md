@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 3.7.1
+
+### Patch Changes
+
+- eb87e2ee: Global color supports both light and dark ColorMode
+- 9358f2a3: Add fallback for fonts"
+
 ## 3.7.0
 
 ### Minor Changes

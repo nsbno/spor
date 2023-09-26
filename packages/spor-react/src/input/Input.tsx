@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useId } from "react";
 
-export type InputProps = Omit<ChakraInputProps, "variant" | "size"> & {
+export type InputProps = Omit<ChakraInputProps, "variant"> & {
   /** The input's label */
   label: string;
   /** Icon that shows up to the left */
@@ -34,7 +34,7 @@ export type InputProps = Omit<ChakraInputProps, "variant" | "size"> & {
  * ```
  */
 export const Input = forwardRef<InputProps, "input">(
-  ({ label, leftIcon, rightIcon, id, size, ...props }, ref) => {
+  ({ label, leftIcon, rightIcon, id, ...props }, ref) => {
     const formControlProps = useFormControlContext();
     const fallbackId = `input-${useId()}`;
     const inputId = id ?? formControlProps?.id ?? fallbackId;

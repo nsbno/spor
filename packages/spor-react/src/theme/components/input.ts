@@ -1,12 +1,32 @@
 import { inputAnatomy as parts } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import { createMultiStyleConfigHelpers, defineStyle } from "@chakra-ui/react";
+
 import { mode } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
 
-const helpers = createMultiStyleConfigHelpers(parts.keys);
+const { definePartsStyle, defineMultiStyleConfig } =
+  createMultiStyleConfigHelpers(parts.keys);
 
-const config = helpers.defineMultiStyleConfig({
+const sizes = {
+  sm: definePartsStyle({
+    field: defineStyle({
+      height: 6,
+      "+ label": {
+        margin: 0,
+        lineHeight: "2rem", // FIXME: these values are a bit arbitrary, but work for now
+      },
+      ":not(:placeholder-shown)": {
+        paddingTop: 0,
+        "+ label": {
+          display: "none",
+        },
+      },
+    }),
+  }),
+};
+
+const config = defineMultiStyleConfig({
   baseStyle: (props) => ({
     field: {
       appearance: "none",
@@ -101,6 +121,7 @@ const config = helpers.defineMultiStyleConfig({
       height: "100%",
     },
   }),
+  sizes,
 });
 
 export default config;

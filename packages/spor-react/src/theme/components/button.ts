@@ -126,7 +126,7 @@ const config = defineStyleConfig({
           colors.blackAlpha[400],
           colors.whiteAlpha[300]
         )(props)}`,
-        backgroundColor: mode("mint", "whiteAlpha.300")(props),
+        backgroundColor: mode("mint", "whiteAlpha.200")(props),
       },
     }),
     ghost: (props) => ({
@@ -151,30 +151,38 @@ const config = defineStyleConfig({
         },
       },
       _active: {
-        backgroundColor: mode("mint", "whiteAlpha.300")(props),
+        backgroundColor: mode("mint", "whiteAlpha.200")(props),
       },
     }),
-    floating: {
-      backgroundColor: "white",
-      boxShadow: "sm",
+    floating: (props) => ({
+      backgroundColor: mode("white", "whiteAlpha.100")(props),
+      boxShadow: getBoxShadowString({
+        borderColor: mode("grey.200", "whiteAlpha.400")(props),
+        baseShadow: "sm",
+      }),
       _active: {
-        backgroundColor: "mint",
+        backgroundColor: mode("mint", "whiteAlpha.300")(props),
       },
       _hover: {
-        boxShadow: "md",
+        backgroundColor: mode("white", "whiteAlpha.200")(props),
+        boxShadow: getBoxShadowString({
+          borderColor: mode("grey.300", "white")(props),
+          baseShadow: "md",
+          borderWidth: 2,
+        }),
       },
       ...focusVisible({
         focus: {
           boxShadow: getBoxShadowString({
-            borderColor: "greenHaze",
+            borderColor: mode("greenHaze", "azure")(props),
             borderWidth: 2,
             baseShadow: "sm",
           }),
           _hover: {
             boxShadow: getBoxShadowString({
-              borderColor: "greenHaze",
+              borderColor: mode("greenHaze", "azure")(props),
               borderWidth: 2,
-              baseShadow: "md",
+              baseShadow: "md"
             }),
           },
         },
@@ -183,7 +191,7 @@ const config = defineStyleConfig({
           boxShadow: "sm",
         },
       }),
-    },
+    }),
   },
   sizes: {
     lg: {

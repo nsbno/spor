@@ -1,6 +1,7 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
+import { mode } from "@chakra-ui/theme-tools";
 
 const config = defineStyleConfig({
   baseStyle: {
@@ -35,80 +36,79 @@ const config = defineStyleConfig({
     },
   },
   variants: {
-    primary: {
-      color: "pine",
+    primary: (props) => ({
+      color: mode("pine", "seaMist")(props),
       ...focusVisible({
         focus: {
-          color: "white",
-          backgroundColor: "pine",
+          backgroundColor: "transparent",
           boxShadow: getBoxShadowString({
-            borderColor: "pine",
-            borderWidth: 3,
+            borderColor: "azure",
+            borderWidth: 2,
             isInset: false,
           }),
         },
         notFocus: {
           color: "pine",
-          boxShadow: "none",
           backgroundColor: "transparent",
+          boxShadow: "none",
         },
       }),
       _hover: {
-        backgroundColor: "coralGreen",
-        color: "darkTeal",
+        color: "white",
+        backgroundColor: "pine",
         boxShadow: getBoxShadowString({
-          borderColor: "coralGreen",
-          borderWidth: 3,
+          borderColor: "pine",
+          borderWidth: 2,
           isInset: false,
         }),
       },
       _active: {
-        backgroundColor: "mint",
+        color: "white",
+        backgroundColor: "azure",
         boxShadow: getBoxShadowString({
-          borderColor: "mint",
-          borderWidth: 3,
-          isInset: false,
-        }),
-        color: "pine",
-      },
-    },
-    secondary: (props) => ({
-      color: "darkGrey",
-      ...focusVisible({
-        focus: {
-          color: "white",
-          backgroundColor: "darkGrey",
-          boxShadow: getBoxShadowString({
-            borderColor: "darkGrey",
-            borderWidth: 3,
-            isInset: false,
-          }),
-        },
-        notFocus: {
-          color: "darkGrey",
-          boxShadow: "none",
-          backgroundColor: "transparent",
-        },
-      }),
-      _hover: {
-        color: "darkGrey",
-        backgroundColor: "blackAlpha.100",
-        boxShadow: getBoxShadowString({
-          borderColor: props.theme.colors.blackAlpha[100],
-          borderWidth: 3,
-          isInset: false,
-        }),
-      },
-      _active: {
-        color: "darkTeal",
-        backgroundColor: "mint",
-        boxShadow: getBoxShadowString({
-          borderColor: "mint",
-          borderWidth: 3,
+          borderColor: "azure",
+          borderWidth: 2,
           isInset: false,
         }),
       },
     }),
+    secondary: (props) => ({
+      color: mode("darkGrey", "white")(props),
+      ...focusVisible({
+        focus: {
+          backgroundColor: "transparent",
+          boxShadow: getBoxShadowString({
+            borderColor: "azure",
+            borderWidth: 2,
+            isInset: false,
+          }),
+        },
+        notFocus: {
+          boxShadow: "none",
+          backgroundColor: "transparent",
+        },
+      }),
+      _hover: {
+        backgroundColor: mode("seaMist", "pine")(props),
+        boxShadow: getBoxShadowString({
+          borderColor: mode("seaMist", "pine")(props),
+          borderWidth: 2,
+          isInset: false,
+        }),
+      },
+      _active: {
+        backgroundColor: mode("mint", "whiteAlpha.200")(props),
+        boxShadow: getBoxShadowString({
+          borderColor: mode("mint", "whiteAlpha.200")(props),
+          borderWidth: 2,
+          isInset: false,
+        }),
+      },
+    }),
+    /**
+     * @deprecated tertiary style will be deprecated in the future.
+     * Please use the secondary style instead.
+     */
     tertiary: (props) => ({
       color: "white",
       ...focusVisible({

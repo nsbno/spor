@@ -25,16 +25,22 @@ const config = helpers.defineMultiStyleConfig({
       boxShadow: getBoxShadowString({
         borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
       }),
+      _active: {
+        backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
+        boxShadow: getBoxShadowString({
+          borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
+        }),
+      },
       _hover: {
         boxShadow: getBoxShadowString({
-          borderColor: mode("darkGrey", "whiteAlpha.600")(props),
+          borderColor: mode("darkGrey", "white")(props),
           borderWidth: 2,
         }),
       },
       ...focusVisible({
         focus: {
           boxShadow: getBoxShadowString({
-            borderColor: "greenHaze",
+            borderColor: mode("greenHaze", "azure")(props),
             borderWidth: 2,
           }),
         },
@@ -61,7 +67,7 @@ const config = helpers.defineMultiStyleConfig({
         ...focusVisible({
           focus: {
             boxShadow: getBoxShadowString({
-              borderColor: "greenHaze",
+              borderColor: mode("greenHaze", "azure")(props),
               borderWidth: 2,
             }),
           },

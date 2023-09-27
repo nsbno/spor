@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 3.7.2
+
+### Patch Changes
+
+- 0e5ef35c: Adjust active color on Ghost-btn and add dark mode to Floating-btn
+- bd1c6655: Added missing colors for Input in darkmode
+- Updated dependencies [88d6fc75]
+  - @vygruppen/spor-icon-react@3.3.0
+
 ## 3.7.1
 
 ### Patch Changes

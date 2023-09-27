@@ -1,5 +1,20 @@
 # @vygruppen/spor-icon-react
 
+## 3.3.0
+
+### Minor Changes
+
+- 88d6fc75: Add new icons:
+
+  - No wifi
+  - Reclining seat
+  - Sleep 6 beds
+
+  Modify icons:
+
+  - Wifi
+  - Baby changing
+
 ## 3.2.3
 
 ### Patch Changes

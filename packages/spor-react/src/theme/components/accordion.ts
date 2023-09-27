@@ -21,6 +21,7 @@ const config = helpers.defineMultiStyleConfig({
       justifyContent: "space-between",
       color: "darkGrey",
       textAlign: "left",
+      fontFamily: "body",
       fontWeight: "bold",
       ...focusVisible({
         notFocus: {

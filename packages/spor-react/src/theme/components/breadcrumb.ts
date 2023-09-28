@@ -15,6 +15,7 @@ const baseStyleLink = defineStyle({
   outline: "none",
   color: "inherit",
   textDecoration: "none",
+  
   textStyle: "xs",
   "&:not([aria-current=page])": {
     cursor: "pointer",

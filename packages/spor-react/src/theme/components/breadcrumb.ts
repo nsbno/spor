@@ -1,14 +1,12 @@
 import { breadcrumbAnatomy as parts } from "@chakra-ui/anatomy";
-import {
-  createMultiStyleConfigHelpers,
-  defineStyle,
-} from "@chakra-ui/styled-system";
+import { createMultiStyleConfigHelpers, defineStyle } from "@chakra-ui/styled-system";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { mode } from "@chakra-ui/theme-tools";
 
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys);
 
-const baseStyleLink = defineStyle({
+const baseStyleLink = defineStyle((props) => ({
   transitionProperty: "common",
   transitionDuration: "fast",
   transitionTimingFunction: "ease-out",
@@ -21,7 +19,7 @@ const baseStyleLink = defineStyle({
     paddingX: 0.5,
     borderRadius: "xs",
     _hover: {
-      backgroundColor: "coralGreen",
+      backgroundColor: mode("seaMist", "red")(props),
     },
     _focusVisible: {
       boxShadow: getBoxShadowString({
@@ -33,7 +31,7 @@ const baseStyleLink = defineStyle({
       backgroundColor: "mint",
     },
   },
-});
+}));
 
 const baseStyle = definePartsStyle({
   link: baseStyleLink,

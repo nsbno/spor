@@ -33,13 +33,13 @@ const baseStyleLink = defineStyle((props) => ({
   },
 }));
 
-const baseStyle = definePartsStyle({
-  link: baseStyleLink,
+const baseStyle = definePartsStyle((props) => ({
+  link: baseStyleLink(props),
   list: {
     flexWrap: "wrap",
     alignItems: "flex-start",
   },
-});
+}));
 
 export default defineMultiStyleConfig({
   baseStyle,

@@ -19,7 +19,7 @@ const baseStyleLink = defineStyle((props) => ({
     paddingX: 0.5,
     borderRadius: "xs",
     _hover: {
-      backgroundColor: mode("seaMist", "red")(props),
+      backgroundColor: mode("seaMist", "pine")(props),
     },
     _focusVisible: {
       boxShadow: getBoxShadowString({
@@ -28,7 +28,7 @@ const baseStyleLink = defineStyle((props) => ({
       }),
     },
     _active: {
-      backgroundColor: "mint",
+      backgroundColor: mode("mint", "whiteAlpha.200")(props),
     },
   },
 }));

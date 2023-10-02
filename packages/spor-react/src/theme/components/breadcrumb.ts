@@ -23,7 +23,7 @@ const baseStyleLink = defineStyle((props) => ({
     },
     _focusVisible: {
       boxShadow: getBoxShadowString({
-        borderColor: mode("greenHaze", "Azure")(props),
+        borderColor: mode("greenHaze", "azure")(props),
         borderWidth: 2,
       }),
     },

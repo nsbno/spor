@@ -111,6 +111,7 @@ const config = helpers.defineMultiStyleConfig({
         fontSize: ["mobile.xs", null, "desktop.xs"],
         paddingX: 2,
         paddingY: 1,
+        minHeight: 6,
       },
       panel: {
         fontSize: ["mobile.xs", null, "desktop.xs"],
@@ -122,6 +123,7 @@ const config = helpers.defineMultiStyleConfig({
         fontSize: ["mobile.sm", null, "desktop.sm"],
         paddingX: 3,
         paddingY: 1,
+        minHeight: 7,
       },
       panel: {
         fontSize: ["mobile.sm", null, "desktop.sm"],
@@ -133,6 +135,7 @@ const config = helpers.defineMultiStyleConfig({
         fontSize: ["mobile.sm", null, "desktop.sm"],
         paddingX: 3,
         paddingY: 2,
+        minHeight: 8,
       },
       panel: {
         fontSize: ["mobile.sm", null, "desktop.sm"],

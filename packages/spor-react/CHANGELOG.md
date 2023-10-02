@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 3.7.3
+
+### Patch Changes
+
+- 05f55861: Updated styles for TextLink, and added dark mode support.
+  Variant `tertiary` is now deprecated as we are updating our visual structure
+  with a more minimalistic selection; please use `secondary` instead.
+- 6cef81ca: Add font family to list and accordion button
+
 ## 3.7.2
 
 ### Patch Changes

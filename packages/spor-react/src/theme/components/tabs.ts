@@ -1,6 +1,6 @@
 import { tabsAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import type { StyleFunctionProps } from "@chakra-ui/theme-tools";
+import { mode, type StyleFunctionProps } from "@chakra-ui/theme-tools";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -119,11 +119,11 @@ const getTabColorSchemeProps = (props: StyleFunctionProps) => {
       };
     case "light":
       return {
-        color: "darkGrey",
+        color: mode("darkGrey", "white")(props),
       };
     case "green":
       return {
-        color: "darkTeal",
+        color: mode("darkTeal", "white")(props),
       };
     case "grey":
       return {
@@ -160,7 +160,7 @@ const getTabColorSchemeSelectedProps = (props: StyleFunctionProps) => {
       };
     default:
       return {
-        backgroundColor: "darkTeal",
+        backgroundColor: "pine",
         color: "white",
         _hover: {
           backgroundColor: "darkTeal",
@@ -182,7 +182,7 @@ const getTabColorSchemeFocusProps = (props: StyleFunctionProps) => {
       };
     default:
       return {
-        boxShadow: `inset 0 0 0 2px ${props.theme.colors.greenHaze}`,
+        boxShadow: `inset 0 0 0 2px ${props.theme.colors.azure}`,
       };
   }
 };
@@ -195,11 +195,13 @@ const getTabColorSchemeHoverProps = (props: StyleFunctionProps) => {
       };
     case "light":
       return {
-        backgroundColor: "silver",
+        boxShadow: mode(`inset 0 0 0 2px ${props.theme.colors.darkGrey}`, `inset 0 0 0 2px ${props.theme.colors.white}`)(props),
+        color: mode("darkGrey", "white")(props)
       };
     case "green":
       return {
-        backgroundColor: "coralGreen",
+        backgroundColor: mode("seaMist", "whiteAlpha.200")(props),
+        color: mode("darkTeal", "white")(props)
       };
     case "grey":
       return {
@@ -219,13 +221,13 @@ const getTabColorSchemeActiveProps = (props: StyleFunctionProps) => {
       };
     case "light":
       return {
-        backgroundColor: "mint",
-        color: "darkGrey",
+        backgroundColor: mode("mint", "whiteAlpha.100")(props),
+        color: mode("darkGrey", "white")(props),
       };
     case "green":
       return {
-        backgroundColor: "seaMist",
-        color: "darkTeal",
+        backgroundColor: mode("seaMist", "whiteAlpha.100")(props),
+        color: mode("darkTeal", "white")(props),
       };
     case "grey":
       return {
@@ -245,11 +247,11 @@ const getTabColorSchemeDisabledProps = (props: StyleFunctionProps) => {
       };
     case "light":
       return {
-        color: "silver",
+        color: mode("blackAlpha.400", "whiteAlpha.400")(props),
       };
     case "green":
       return {
-        color: "coralGreen",
+        color: mode("blackAlpha.400", "whiteAlpha.400")(props),
       };
     case "grey":
       return {
@@ -266,12 +268,15 @@ const getTablistColorSchemeProps = (props: StyleFunctionProps) => {
       return { backgroundColor: "darkTeal", color: "white" };
     case "light":
       return {
-        backgroundColor: "white",
+        backgroundColor: mode("white", "whiteAlpha.400")(props),
         color: "darkGrey",
         boxShadow: `inset 0 0 0 1px ${props.theme.colors.blackAlpha["400"]}`,
       };
     case "green":
-      return { backgroundColor: "mint", color: "darkTeal" };
+      return { 
+        backgroundColor: mode("mint", "whiteAlpha.100")(props), 
+        color: "darkTeal" 
+      };
     case "grey":
       return {
         backgroundColor: "platinum",

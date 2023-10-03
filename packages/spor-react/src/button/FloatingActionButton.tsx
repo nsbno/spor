@@ -1,6 +1,6 @@
 import { Box, BoxProps, useMultiStyleConfig } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect } from "react";
 
 const MotionBox = motion(Box);
 
@@ -33,10 +33,10 @@ export const FloatingActionButton = ({
   ...props
 }: FloatingActionButtonProps) => {
   const [isTextVisible, setIsTextVisible] = React.useState(
-    externalIsTextVisible !== undefined ? externalIsTextVisible : true
+    externalIsTextVisible !== undefined ? externalIsTextVisible : false
   );
   const scrollDirection = useScrollDirection();
-  React.useEffect(() => {
+  useEffect(() => {
     if (externalIsTextVisible !== undefined) {
       return;
     }
@@ -47,7 +47,7 @@ export const FloatingActionButton = ({
     return () => window.clearTimeout(id);
   }, [scrollDirection, externalIsTextVisible]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setIsTextVisible(!!externalIsTextVisible);
   }, [externalIsTextVisible]);
 
@@ -63,12 +63,10 @@ export const FloatingActionButton = ({
       aria-label={children}
       {...props}
     >
-      <Box __css={style.icon}>
-        {icon}
-      </Box>
+      <Box __css={style.icon}>{icon}</Box>
       <MotionBox
         animate={isTextVisible ? "show" : "hide"}
-        initial="show"
+        initial={externalIsTextVisible ? "show" : "hide"}
         variants={{
           show: {
             opacity: 1,
@@ -93,7 +91,9 @@ type ScrollDirection = "up" | "down" | null;
 const useScrollDirection = () => {
   const [scrollDirection, setScrollDirection] =
     React.useState<ScrollDirection>(null);
-  const lastScrollPosition = React.useRef(typeof window !== "undefined" ? window.scrollY : 0);
+  const lastScrollPosition = React.useRef(
+    typeof window !== "undefined" ? window.scrollY : 0
+  );
   React.useEffect(() => {
     const onScroll = () => {
       const delta = window.scrollY - lastScrollPosition.current;

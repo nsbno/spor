@@ -1,6 +1,8 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy } from "@chakra-ui/theme-tools";
+import { anatomy, mode } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { colors } from "../foundations";
+import { focusVisible } from "../utils/focus-utils";
 
 const parts = anatomy("choice-chip").parts("container", "icon", "label");
 
@@ -9,32 +11,43 @@ const helpers = createMultiStyleConfigHelpers(parts.keys);
 const config = helpers.defineMultiStyleConfig({
   baseStyle: (props) => ({
     container: {
-      backgroundColor: "white",
+      backgroundColor: mode("white", "transparent")(props),
       boxShadow: getBoxShadowString({ borderColor: "celadon" }),
-      color: "darkTeal",
+      color: mode("darkTeal", "white")(props),
       display: "inline-flex",
       alignItems: "center",
       fontSize: "16px",
       px: 1,
       _checked: {
-        background: "seaMist",
+        color: "white",
+        background: "pine",
         boxShadow: getBoxShadowString({ borderColor: "celadon" }),
       },
       "input:focus-visible + &": {
-        boxShadow: getBoxShadowString({
-          borderColor: "greenHaze",
-          borderWidth: 2,
-        }),
+        boxShadow: `inset 0 0 0 2px ${mode(
+          colors.greenHaze,
+          colors.azure,
+        )(props)}, inset 0 0 0 4px ${mode(
+          colors.white,
+          colors.darkGrey,
+        )(props)}`,
       },
       "@media (hover:hover)": {
         _hover: {
+          color: mode("darkTeal", "white")(props),
           boxShadow: getBoxShadowString({
             borderColor: "greenHaze",
             borderWidth: 2,
           }),
-          background: "mint",
+          background: mode("coralGreen", "whiteAlpha.200")(props),
           cursor: "pointer",
         },
+      },
+      _active: {
+        backgroundColor: mode("mint", "whiteAlpha.300")(props),
+        boxShadow: getBoxShadowString({
+          borderColor: "pine",
+        }),
       },
     },
     icon: {

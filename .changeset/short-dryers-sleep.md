@@ -1,5 +1,5 @@
 ---
-"@vygruppen/spor-react": minor
+"@vygruppen/spor-react": patch
 ---
 
-Updated styles for Breadcrumbs, and added dark mode support.
+Breadcrumb: Add dark mode support

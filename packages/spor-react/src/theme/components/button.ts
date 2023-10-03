@@ -29,28 +29,39 @@ const config = defineStyleConfig({
     },
   },
   variants: {
-    control: {
-      backgroundColor: "darkTeal",
-      color: "white",
+    control: (props) => ({
+      backgroundColor: mode("darkTeal", "mint")(props),
+      color: mode("white", "darkTeal")(props),
       ...focusVisible({
         focus: {
-          boxShadow: `inset 0 0 0 4px ${colors.darkTeal}, inset 0 0 0 6px currentColor`,
+          boxShadow: `inset 0 0 0 4px ${mode(
+            colors.darkTeal,
+            colors.seaMist,
+          )(props)}, inset 0 0 0 6px currentColor`,
         },
         notFocus: { boxShadow: "none" },
       }),
       _hover: {
-        backgroundColor: "night",
+        backgroundColor: mode("night", "coralGreen")(props),
       },
       _active: {
-        backgroundColor: "pine",
+        backgroundColor: mode("pine", "white")(props),
       },
-    },
-    primary: {
+    }),
+    primary: (props) => ({
+      // FIXME: Update to use a global defined background color for darkMode whenever it is available.
+      // hardcoded background color as alpha-"hack" below is not feasible for dark mode with solid background color
       backgroundColor: "primaryGreen",
       color: "white",
       ...focusVisible({
         focus: {
-          boxShadow: `inset 0 0 0 4px ${colors.primaryGreen}, inset 0 0 0 4px ${colors.primaryGreen}, inset 0 0 0 6px currentColor`,
+          boxShadow: `inset 0 0 0 2px ${mode(
+            colors.greenHaze,
+            colors.azure,
+          )(props)}, inset 0 0 0 4px ${mode(
+            colors.white,
+            colors.darkGrey,
+          )(props)}`,
         },
         notFocus: { boxShadow: "none" },
       }),
@@ -60,25 +71,61 @@ const config = defineStyleConfig({
       _active: {
         backgroundColor: "azure",
       },
-    },
-    secondary: {
-      backgroundColor: "coralGreen",
-      color: "darkTeal",
+    }),
+    secondary: (props) => ({
+      // FIXME: Update to use global defined background color for darkMode whenever it is available instead of alpha
+      backgroundColor: mode("seaMist", "whiteAlpha.100")(props),
+      color: mode("darkTeal", "white")(props),
+      // order is important here for now while we do not have global defined background color for darkMode
+      _hover: {
+        backgroundColor: mode("coralGreen", "whiteAlpha.200")(props),
+      },
       ...focusVisible({
         focus: {
-          boxShadow: `inset 0 0 0 4px ${colors.coralGreen}, inset 0 0 0 4px ${colors.coralGreen}, inset 0 0 0 6px currentColor`,
+          boxShadow: `inset 0 0 0 2px ${mode(
+            colors.greenHaze,
+            colors.azure,
+          )(props)}, inset 0 0 0 4px ${mode(
+            colors.white,
+            colors.blackAlpha[300],
+          )(props)}`,
+          _hover: {
+            boxShadow: `inset 0 0 0 2px ${mode(
+              colors.greenHaze,
+              colors.azure,
+            )(props)}, inset 0 0 0 4px ${mode(
+              colors.white,
+              colors.blackAlpha[500],
+            )(props)}`,
+          },
         },
         notFocus: {
           boxShadow: "none",
         },
       }),
-      _hover: {
-        backgroundColor: "blueGreen",
-      },
       _active: {
-        backgroundColor: "mint",
+        backgroundColor: mode("mint", "whiteAlpha.300")(props),
+        boxShadow: `inset 0 0 0 2px ${mode(
+          colors.greenHaze,
+          colors.azure,
+        )(props)}, inset 0 0 0 4px ${mode(
+          colors.white,
+          colors.blackAlpha[600],
+        )(props)}`,
+        _hover: {
+          boxShadow: `inset 0 0 0 2px ${mode(
+            colors.greenHaze,
+            colors.azure,
+          )(props)}, inset 0 0 0 4px ${mode(
+            colors.white,
+            colors.blackAlpha[600],
+          )(props)}`,
+        },
       },
-    },
+    }),
+    /**
+     * @deprecated use `secondary` instead.
+     */
     tertiary: {
       backgroundColor: "mint",
       color: "darkGrey",
@@ -102,19 +149,19 @@ const config = defineStyleConfig({
       fontWeight: "normal",
       boxShadow: `inset 0 0 0 1px ${mode(
         colors.blackAlpha[400],
-        colors.whiteAlpha[400]
+        colors.whiteAlpha[400],
       )(props)}`,
       ...focusVisible({
         focus: {
           boxShadow: getBoxShadowString({
-            borderWidth: 3,
+            borderWidth: 2,
             borderColor: "greenHaze",
           }),
         },
         notFocus: {
           boxShadow: `inset 0 0 0 1px ${mode(
             colors.blackAlpha[400],
-            colors.whiteAlpha[400]
+            colors.whiteAlpha[400],
           )(props)}`,
         },
       }),
@@ -124,7 +171,7 @@ const config = defineStyleConfig({
       _active: {
         boxShadow: `inset 0 0 0 1px ${mode(
           colors.blackAlpha[400],
-          colors.whiteAlpha[300]
+          colors.whiteAlpha[300],
         )(props)}`,
         backgroundColor: mode("mint", "whiteAlpha.200")(props),
       },
@@ -182,7 +229,7 @@ const config = defineStyleConfig({
             boxShadow: getBoxShadowString({
               borderColor: mode("greenHaze", "azure")(props),
               borderWidth: 2,
-              baseShadow: "md"
+              baseShadow: "md",
             }),
           },
         },

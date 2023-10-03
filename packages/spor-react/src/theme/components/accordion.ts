@@ -1,12 +1,13 @@
 import { accordionAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
-import { colors } from "../foundations";
+import { colors, shadows } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
+import { mode } from "@chakra-ui/theme-tools";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 const config = helpers.defineMultiStyleConfig({
-  baseStyle: {
+  baseStyle: (props) => ({
     container: {
       border: "none",
       borderRadius: "sm",
@@ -19,7 +20,7 @@ const config = helpers.defineMultiStyleConfig({
       borderRadius: "sm",
       display: "flex",
       justifyContent: "space-between",
-      color: "darkGrey",
+      color: mode("darkGrey", "white")(props),
       textAlign: "left",
       fontFamily: "body",
       fontWeight: "bold",
@@ -31,7 +32,7 @@ const config = helpers.defineMultiStyleConfig({
         },
         focus: {
           boxShadow: getBoxShadowString({
-            borderColor: "greenHaze",
+            borderColor: mode("greenHaze", "azure")(props),
             borderWidth: 2,
           }),
         },
@@ -48,23 +49,26 @@ const config = helpers.defineMultiStyleConfig({
     icon: {
       fontSize: "1.25em",
     },
-  },
+  }),
   variants: {
-    list: {
+    list: (props) => ({
       button: {
         boxShadow: "none",
         _hover: {
-          backgroundColor: "seaMist",
+          backgroundColor: mode("seaMist", "pine")(props),
         },
         _active: {
-          backgroundColor: "mint",
+          backgroundColor: mode("mint", "whiteAlpha.200")(props),
         },
       },
-    },
-    outline: {
+    }),
+    outline: (props) => ({
       container: {
         boxShadow: getBoxShadowString({
-          borderColor: colors.blackAlpha["400"],
+          borderColor: mode(
+            colors.blackAlpha["400"],
+            colors.whiteAlpha["400"],
+          )(props),
         }),
       },
       button: {
@@ -73,23 +77,24 @@ const config = helpers.defineMultiStyleConfig({
         },
         _hover: {
           boxShadow: getBoxShadowString({
-            borderColor: "darkGrey",
+            borderColor: mode("darkGrey", "white")(props),
             borderWidth: 2,
           }),
         },
         _active: {
-          backgroundColor: "mint",
+          backgroundColor: mode("mint", "whiteAlpha.100")(props),
           boxShadow: getBoxShadowString({
-            borderColor: "darkGrey",
+            borderColor: mode("darkGrey", colors.whiteAlpha[400])(props),
           }),
         },
       },
-    },
-    card: {
+    }),
+    card: (props) => ({
       container: {
+        backgroundColor: mode("white", "whiteAlpha.100")(props),
         boxShadow: getBoxShadowString({
-          baseShadow: "sm",
-          borderColor: "silver",
+          baseShadow: mode<keyof typeof shadows>("sm", "none")(props),
+          borderColor: mode("silver", "whiteAlpha.400")(props),
         }),
       },
       button: {
@@ -97,13 +102,22 @@ const config = helpers.defineMultiStyleConfig({
           borderBottomRadius: "none",
         },
         _hover: {
-          backgroundColor: "seaMist",
+          backgroundColor: mode("seaMist", "whiteAlpha.200")(props),
+          boxShadow: getBoxShadowString({
+            borderColor: mode("darkGrey", "white")(props),
+            borderWidth: 1,
+          }),
         },
         _active: {
-          backgroundColor: "mint",
+          backgroundColor: mode("mint", "inherit")(props),
+          boxShadow: getBoxShadowString({
+            baseShadow: "none",
+            borderWidth: 1,
+            borderColor: mode("darkGrey", "whiteAlpha.400")(props),
+          }),
         },
       },
-    },
+    }),
   },
   sizes: {
     sm: {

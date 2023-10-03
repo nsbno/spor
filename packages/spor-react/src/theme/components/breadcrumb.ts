@@ -26,6 +26,9 @@ const baseStyleLink = defineStyle((props) => ({
         borderColor: mode("greenHaze", "azure")(props),
         borderWidth: 2,
       }),
+       notFocus: {
+       notFocus: { boxShadow: "none" },
+     }
     },
     _active: {
       backgroundColor: mode("mint", "whiteAlpha.200")(props),

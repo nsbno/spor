@@ -28,6 +28,7 @@ export type ButtonProps = Exclude<
     | "control"
     | "primary"
     | "secondary"
+    /** @deprecated Use `secondary` instead */
     | "tertiary"
     | "additional"
     | "ghost"

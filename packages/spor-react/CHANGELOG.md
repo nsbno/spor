@@ -1,5 +1,27 @@
 # @vygruppen/spor-react
 
+## 3.7.4
+
+### Patch Changes
+
+- 637d713b: Accordion, ExpandableItem: Set the correct minimum height
+- 75971916: Dark mode support for Accordion
+- 6854e54a: Updated buttons to support dark mode with some minor touch ups to the current styles.
+  Variant `tertiary`-buttons are now deprecated as we are updating our visual structure
+  with a more minimalistic selection; please use `secondary` instead.
+- 1a88ad5a: Tweaked ChoiceChip colors, and added dark mode
+- e48e91d5: Breadcrumb: Add dark mode support
+- 5012de56: FloatingActionButton: Make the isTextVisible prop work as expected
+
+## 3.7.3
+
+### Patch Changes
+
+- 05f55861: Updated styles for TextLink, and added dark mode support.
+  Variant `tertiary` is now deprecated as we are updating our visual structure
+  with a more minimalistic selection; please use `secondary` instead.
+- 6cef81ca: Add font family to list and accordion button
+
 ## 3.7.2
 
 ### Patch Changes

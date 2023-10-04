@@ -26,7 +26,7 @@ const config = helpers.defineMultiStyleConfig({
         borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
       }),
       _active: {
-        backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
+        backgroundColor: mode("mint", "whiteAlpha.100")(props),
         boxShadow: getBoxShadowString({
           borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
         }),

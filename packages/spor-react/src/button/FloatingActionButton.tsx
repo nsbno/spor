@@ -1,4 +1,10 @@
-import { Box, BoxProps, useMultiStyleConfig } from "@chakra-ui/react";
+import {
+  Box,
+  BoxProps,
+  ComponentWithAs,
+  forwardRef,
+  useMultiStyleConfig,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 
@@ -24,68 +30,77 @@ type FloatingActionButtonProps = BoxProps & {
  *  placement="bottom right"
  * />
  */
-export const FloatingActionButton = ({
-  children,
-  icon,
-  variant,
-  isTextVisible: externalIsTextVisible,
-  placement = "bottom right",
-  ...props
-}: FloatingActionButtonProps) => {
-  const [isTextVisible, setIsTextVisible] = React.useState(
-    externalIsTextVisible !== undefined ? externalIsTextVisible : false
-  );
-  const scrollDirection = useScrollDirection();
-  useEffect(() => {
-    if (externalIsTextVisible !== undefined) {
-      return;
-    }
-    const id = window.setTimeout(
-      () => setIsTextVisible(scrollDirection !== "down"),
-      1000
+export const FloatingActionButton = forwardRef<
+  FloatingActionButtonProps,
+  ComponentWithAs<"a" | "button">
+>(
+  (
+    {
+      as,
+      children,
+      icon,
+      variant,
+      isTextVisible: externalIsTextVisible,
+      placement = "bottom right",
+      ...props
+    },
+    ref
+  ) => {
+    const [isTextVisible, setIsTextVisible] = React.useState(
+      externalIsTextVisible !== undefined ? externalIsTextVisible : false
     );
-    return () => window.clearTimeout(id);
-  }, [scrollDirection, externalIsTextVisible]);
+    const scrollDirection = useScrollDirection();
+    useEffect(() => {
+      if (externalIsTextVisible !== undefined) {
+        return;
+      }
+      const id = window.setTimeout(
+        () => setIsTextVisible(scrollDirection !== "down"),
+        1000
+      );
+      return () => window.clearTimeout(id);
+    }, [scrollDirection, externalIsTextVisible]);
 
-  useEffect(() => {
-    setIsTextVisible(!!externalIsTextVisible);
-  }, [externalIsTextVisible]);
+    useEffect(() => {
+      setIsTextVisible(!!externalIsTextVisible);
+    }, [externalIsTextVisible]);
 
-  const style = useMultiStyleConfig("FloatingActionButton", {
-    variant,
-    isTextVisible,
-    placement,
-  });
-  return (
-    <MotionBox
-      __css={style.container}
-      as="button"
-      aria-label={children}
-      {...props}
-    >
-      <Box __css={style.icon}>{icon}</Box>
+    const style = useMultiStyleConfig("FloatingActionButton", {
+      variant,
+      isTextVisible,
+      placement,
+    });
+    return (
       <MotionBox
-        animate={isTextVisible ? "show" : "hide"}
-        initial={externalIsTextVisible ? "show" : "hide"}
-        variants={{
-          show: {
-            opacity: 1,
-            width: "auto",
-            visibility: "visible",
-          },
-          hide: {
-            opacity: 0,
-            width: 0,
-            visibility: "hidden",
-          },
-        }}
-        __css={style.text}
+        __css={style.container}
+        aria-label={children}
+        ref={ref}
+        {...props}
       >
-        {children}
+        <Box __css={style.icon}>{icon}</Box>
+        <MotionBox
+          animate={isTextVisible ? "show" : "hide"}
+          initial={externalIsTextVisible ? "show" : "hide"}
+          variants={{
+            show: {
+              opacity: 1,
+              width: "auto",
+              visibility: "visible",
+            },
+            hide: {
+              opacity: 0,
+              width: 0,
+              visibility: "hidden",
+            },
+          }}
+          __css={style.text}
+        >
+          {children}
+        </MotionBox>
       </MotionBox>
-    </MotionBox>
-  );
-};
+    );
+  }
+);
 
 type ScrollDirection = "up" | "down" | null;
 const useScrollDirection = () => {

@@ -2,6 +2,7 @@ import { breadcrumbAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers, defineStyle } from "@chakra-ui/styled-system";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { mode } from "@chakra-ui/theme-tools";
+import { focusVisible } from "../utils/focus-utils";
 
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys);
@@ -21,15 +22,17 @@ const baseStyleLink = defineStyle((props) => ({
     _hover: {
       backgroundColor: mode("seaMist", "pine")(props),
     },
-    _focusVisible: {
-      boxShadow: getBoxShadowString({
-        borderColor: mode("greenHaze", "azure")(props),
-        borderWidth: 2,
-      }),
-       notFocus: {
-       notFocus: { boxShadow: "none" },
-     }
-    },
+    ...focusVisible({
+      focus: {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("greenHaze", "azure")(props),
+          borderWidth: 2,
+        }),
+      },
+      notFocus: {
+        notFocus: { boxShadow: "none" },
+      }
+    }),
     _active: {
       backgroundColor: mode("mint", "whiteAlpha.200")(props),
     },

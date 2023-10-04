@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 3.7.5
+
+### Patch Changes
+
+- fde28bf1: Input: Changed active-color to mint for light mode
+- 6778a4cf: Breadcrumb: Fix focus
+- e9fdce39: Fix bug where you couldn't use FAB as a link
+
 ## 3.7.4
 
 ### Patch Changes

@@ -117,11 +117,11 @@ const getTabColorSchemeProps = (props: StyleFunctionProps) => {
       return {
         color: "white",
       };
-    case "light":
+    case "default":
       return {
         color: mode("darkGrey", "white")(props),
       };
-    case "green":
+    case "accent":
       return {
         color: mode("darkTeal", "white")(props),
       };
@@ -193,12 +193,12 @@ const getTabColorSchemeHoverProps = (props: StyleFunctionProps) => {
       return {
         backgroundColor: "pine",
       };
-    case "light":
+    case "default":
       return {
         boxShadow: mode(`inset 0 0 0 2px ${props.theme.colors.darkGrey}`, `inset 0 0 0 2px ${props.theme.colors.white}`)(props),
         color: mode("darkGrey", "white")(props)
       };
-    case "green":
+    case "accent":
       return {
         backgroundColor: mode("seaMist", "whiteAlpha.200")(props),
         color: mode("darkTeal", "white")(props)
@@ -219,12 +219,12 @@ const getTabColorSchemeActiveProps = (props: StyleFunctionProps) => {
         backgroundColor: "celadon",
         color: "white",
       };
-    case "light":
+    case "default":
       return {
         backgroundColor: mode("mint", "whiteAlpha.100")(props),
         color: mode("darkGrey", "white")(props),
       };
-    case "green":
+    case "accent":
       return {
         backgroundColor: mode("seaMist", "whiteAlpha.100")(props),
         color: mode("darkTeal", "white")(props),
@@ -245,11 +245,11 @@ const getTabColorSchemeDisabledProps = (props: StyleFunctionProps) => {
       return {
         color: "lightAlpha.200",
       };
-    case "light":
+    case "default":
       return {
         color: mode("blackAlpha.400", "whiteAlpha.400")(props),
       };
-    case "green":
+    case "accent":
       return {
         color: mode("blackAlpha.400", "whiteAlpha.400")(props),
       };
@@ -266,13 +266,13 @@ const getTablistColorSchemeProps = (props: StyleFunctionProps) => {
   switch (props.colorScheme) {
     case "dark":
       return { backgroundColor: "darkTeal", color: "white" };
-    case "light":
+    case "default":
       return {
-        backgroundColor: mode("white", "whiteAlpha.400")(props),
+        backgroundColor: mode("white", "transparent")(props),
         color: "darkGrey",
-        boxShadow: `inset 0 0 0 1px ${props.theme.colors.blackAlpha["400"]}`,
+        boxShadow: mode(`inset 0 0 0 1px ${props.theme.colors.blackAlpha["400"]}`, `inset 0 0 0 1px ${props.theme.colors.whiteAlpha["400"]}`)(props),
       };
-    case "green":
+    case "accent":
       return { 
         backgroundColor: mode("mint", "whiteAlpha.100")(props), 
         color: "darkTeal" 

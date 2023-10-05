@@ -180,6 +180,7 @@ const getTabColorSchemeFocusProps = (props: StyleFunctionProps) => {
       return {
         boxShadow: `inset 0 0 0 2px ${props.theme.colors.white}`,
       };
+      
     default:
       return {
         boxShadow: `inset 0 0 0 2px ${props.theme.colors.azure}`,

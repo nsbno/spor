@@ -9,7 +9,13 @@ export type TabsProps = Exclude<
   ChakraTabsProps,
   "colorScheme" | "variant" | "orientation" | "size"
 > & {
-  colorScheme: "dark" | "default" | "accent" | "grey";
+  colorScheme: 
+  /** @deprecated dark is deprecated please use accent*/
+  | "dark" 
+  | "default" 
+  | "accent" 
+  /** @deprecated dark is deprecated please use default*/
+  | "grey";
   /** Defaults to `md` */
   size?: "sm" | "md" | "lg" | "xl";
   /** Defaults to `round` */

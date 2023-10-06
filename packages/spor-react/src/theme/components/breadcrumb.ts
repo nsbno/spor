@@ -33,7 +33,7 @@ const baseStyleLink = defineStyle((props) => ({
         }),
       },
       notFocus: {
-        notFocus: { boxShadow: "none" },
+        boxShadow: "none",
       },
     }),
     _active: {

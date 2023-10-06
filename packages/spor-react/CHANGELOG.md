@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 3.7.6
+
+### Patch Changes
+
+- 9e78f2f0: BreadcrumbLink: Fix a bug where the current page got a different amount of padding than other breadcrumbs
+
 ## 3.7.5
 
 ### Patch Changes

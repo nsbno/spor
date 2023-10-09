@@ -231,10 +231,10 @@ ${svg.functionName} (IconConfig iconConfig) =
     in
     case iconConfig.variant of
         Fill ->
-            ${svg.fillFunctionName} <| (attribute "fill" iconConfig.color) :: attributes
+            ${svg.fillFunctionName} <| (attribute "fill" iconConfig.color) :: attributes ++ iconConfig.attributes
         
         Stroke ->
-            ${svg.outlineFunctionName} <| (attribute "fill" iconConfig.color) :: attributes
+            ${svg.outlineFunctionName} <| (attribute "fill" iconConfig.color) :: attributes ++ iconConfig.attributes
 
 `;
 }

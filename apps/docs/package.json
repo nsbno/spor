@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "name": "@vygruppen/docs",
   "description": "A remix rewrite of the docs",
   "license": "MIT",

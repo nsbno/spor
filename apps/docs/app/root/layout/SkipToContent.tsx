@@ -12,7 +12,7 @@ export const SkipToContent = () => {
       left="0"
       right="0"
       padding={2}
-      backgroundColor="greenHaze"
+      backgroundColor="night"
       color="white"
       borderBottomRadius="sm"
       minWidth="40ch"

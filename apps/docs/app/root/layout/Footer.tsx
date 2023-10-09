@@ -14,8 +14,8 @@ export const Footer = () => {
       borderTop="1px solid"
       borderColor="blackAlpha.200"
     >
-      <Link to="/" title="Gå til forsiden">
-        <VyLogo colorScheme="light" width="4rem" />
+      <Link to="/" aria-label="Gå til forsiden">
+        <VyLogo colorScheme="light" width="4rem" aria-hidden="true" />
       </Link>
       <Flex
         flexDirection="row"

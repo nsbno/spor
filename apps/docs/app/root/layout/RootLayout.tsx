@@ -1,5 +1,4 @@
 import { Flex } from "@chakra-ui/react";
-import { SkipToContent } from "~/root/layout/SkipToContent";
 import { SiteHeader } from "./SiteHeader";
 
 type BaseLayoutProps = {
@@ -7,14 +6,11 @@ type BaseLayoutProps = {
 };
 export const RootLayout = ({ children }: BaseLayoutProps) => {
   return (
-    <>
-      <SkipToContent />
-      <Flex flexDirection="column" minHeight="100vh">
-        <SiteHeader />
-        <Flex flex="1" flexDirection="column" alignItems="stretch">
-          {children}
-        </Flex>
+    <Flex flexDirection="column" minHeight="100vh">
+      <SiteHeader />
+      <Flex flex="1" flexDirection="column" alignItems="stretch">
+        {children}
       </Flex>
-    </>
+    </Flex>
   );
 };

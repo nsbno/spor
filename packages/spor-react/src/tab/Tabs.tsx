@@ -18,7 +18,7 @@ export type TabsProps = Exclude<
   | "green"   
   /** @deprecated grey is deprecated please use default*/
   | "grey"
-  | "default" 
+  | "base" 
   | "accent" ;
   /** Defaults to `md` */
   size?: "sm" | "md" | "lg" | "xl";

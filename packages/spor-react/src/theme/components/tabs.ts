@@ -129,7 +129,7 @@ const getTabColorSchemeProps = (props: StyleFunctionProps) => {
       return {
         color: "darkGrey",
       };
-    case "default":
+    case "base":
       return {
         color: mode("darkGrey", "white")(props),
       };
@@ -166,7 +166,7 @@ const getTabColorSchemeSelectedProps = (props: StyleFunctionProps) => {
           color: "darkTeal",
         },
       };
-    case "default":
+    case "base":
       return {
         backgroundColor: "pine",
         color: "white",
@@ -214,7 +214,7 @@ const getTabColorSchemeFocusProps = (props: StyleFunctionProps) => {
       return {
         boxShadow: `inset 0 0 0 2px ${props.theme.colors.white}`,
       };
-    case "default":
+    case "base":
       return {
         boxShadow: `inset 0 0 0 2px ${props.theme.colors.azure}`,
       } 
@@ -247,7 +247,7 @@ const getTabColorSchemeHoverProps = (props: StyleFunctionProps) => {
       return {
         backgroundColor: "silver",
       };
-    case "default":
+    case "base":
       return {
         boxShadow: mode(`inset 0 0 0 2px ${props.theme.colors.darkGrey}`, `inset 0 0 0 2px ${props.theme.colors.white}`)(props),
         color: mode("darkGrey", "white")(props)
@@ -284,7 +284,7 @@ const getTabColorSchemeActiveProps = (props: StyleFunctionProps) => {
         backgroundColor: "lightGrey",
         color: "darkGrey",
       };
-    case "default":
+    case "base":
       return {
         backgroundColor: mode("mint", "whiteAlpha.100")(props),
         color: mode("darkGrey", "white")(props),
@@ -317,7 +317,7 @@ const getTabColorSchemeDisabledProps = (props: StyleFunctionProps) => {
       return {
         color: "steel",
       };
-    case "default":
+    case "base":
     return {
       color: mode("blackAlpha.400", "whiteAlpha.400")(props),
     };
@@ -347,7 +347,7 @@ const getTablistColorSchemeProps = (props: StyleFunctionProps) => {
         backgroundColor: "platinum",
         color: "darkGrey",
       };
-    case "default":
+    case "base":
       return {
         backgroundColor: mode("white", "transparent")(props),
         color: "darkGrey",

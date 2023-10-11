@@ -2,6 +2,7 @@ import { defineStyleConfig } from "@chakra-ui/react";
 import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
+import { mode } from "@chakra-ui/theme-tools";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({
@@ -22,7 +23,7 @@ const config = defineStyleConfig({
       ...focusVisible({
         focus: {
           boxShadow: getBoxShadowString({
-            borderColor: "greenHaze",
+            borderColor: mode("greenHaze", "azure")(props),
             borderWidth: 2,
             isInset: false,
           }),
@@ -61,13 +62,18 @@ type CardThemeProps = {
   size: "sm" | "lg";
 };
 
-function getColorSchemeBaseProps({ colorScheme }: CardThemeProps): {
-  backgroundColor: string;
-} {
+const getColorSchemeBaseProps= (props: CardThemeProps) => {
+  const { colorScheme, size } = props;
+  const baseShadow = size === "lg" ? "md" : "sm";
   switch (colorScheme) {
     case "white":
       return {
-        backgroundColor: "white",
+        backgroundColor: mode("white", "whiteAlpha.100")(props),
+        boxShadow: getBoxShadowString({
+          baseShadow,
+          borderColor: "silver",
+          isInset: false,
+        }),
       };
     case "grey":
       return {
@@ -116,12 +122,14 @@ function getColorSchemeClickableProps({ colorScheme, size }: CardThemeProps) {
   }
 }
 
-function getColorSchemeHoverProps({ colorScheme, size }: CardThemeProps) {
+const getColorSchemeHoverProps = (props: CardThemeProps) => {
+  const { colorScheme, size } = props;
   const baseShadow = size === "lg" ? "lg" : "md";
   switch (colorScheme) {
     case "white":
       return {
-        boxShadow: getBoxShadowString({
+        backgroundColor: mode("white", "whiteAlpha.200")(props),
+        boxShadow: getBoxShadowString({   
           baseShadow,
           borderColor: colors.steel,
           isInset: false,
@@ -146,13 +154,13 @@ function getColorSchemeHoverProps({ colorScheme, size }: CardThemeProps) {
       };
   }
 }
-
-function getColorSchemeActiveProps({ colorScheme, size }: CardThemeProps) {
+const getColorSchemeActiveProps = (props: CardThemeProps) => {
+  const { colorScheme, size } = props;
   const baseShadow = size === "lg" ? "sm" : "none";
   switch (colorScheme) {
     case "white":
       return {
-        backgroundColor: "mint",
+        backgroundColor: mode("mint", "teal")(props),
         boxShadow: getBoxShadowString({
           baseShadow,
           borderColor: colors.silver,

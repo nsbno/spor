@@ -14,7 +14,7 @@ const config = defineStyleConfig({
     backgroundPosition: "0 100%",
     backgroundRepeat: "no-repeat",
     borderRadius: "none",
-    pb: "2px",
+    p: "2px",
     color: "inherit",
     display: "inline",
     position: "relative",
@@ -37,12 +37,12 @@ const config = defineStyleConfig({
   },
   variants: {
     primary: (props) => ({
-      color: mode("pine", "seaMist")(props),
+      color: mode("pine", "coralGreen")(props),
       ...focusVisible({
         focus: {
-          backgroundColor: "transparent",
+          backgroundColor: mode("pine", "white")(props),
+          color: mode("white", "pine")(props),
           boxShadow: getBoxShadowString({
-            borderColor: "azure",
             borderWidth: 2,
             isInset: false,
           }),
@@ -54,34 +54,20 @@ const config = defineStyleConfig({
         },
       }),
       _hover: {
-        color: "white",
-        backgroundColor: "pine",
-        boxShadow: getBoxShadowString({
-          borderColor: "pine",
-          borderWidth: 2,
-          isInset: false,
-        }),
+        color: mode("pine", "white")(props),
+        backgroundColor: mode("coralGreen", "whiteAlpha.200")(props)
       },
       _active: {
-        color: "white",
-        backgroundColor: "azure",
-        boxShadow: getBoxShadowString({
-          borderColor: "azure",
-          borderWidth: 2,
-          isInset: false,
-        }),
+        color: mode("pine", "white"),
+        backgroundColor: mode("mint", "whiteAlpha.100")(props),
       },
     }),
     secondary: (props) => ({
       color: mode("darkGrey", "white")(props),
       ...focusVisible({
         focus: {
-          backgroundColor: "transparent",
-          boxShadow: getBoxShadowString({
-            borderColor: "azure",
-            borderWidth: 2,
-            isInset: false,
-          }),
+          backgroundColor: mode("darkGrey", "white")(props),
+          color: mode("white", "darkTeal")(props)
         },
         notFocus: {
           boxShadow: "none",
@@ -89,20 +75,12 @@ const config = defineStyleConfig({
         },
       }),
       _hover: {
-        backgroundColor: mode("seaMist", "pine")(props),
-        boxShadow: getBoxShadowString({
-          borderColor: mode("seaMist", "pine")(props),
-          borderWidth: 2,
-          isInset: false,
-        }),
+        backgroundColor: mode("blackAlpha.100", "whiteAlpha.200")(props),
+        color: mode("darkGrey", "white")(props)
       },
       _active: {
-        backgroundColor: mode("mint", "whiteAlpha.200")(props),
-        boxShadow: getBoxShadowString({
-          borderColor: mode("mint", "whiteAlpha.200")(props),
-          borderWidth: 2,
-          isInset: false,
-        }),
+        backgroundColor: mode("mint", "whiteAlpha.100")(props),
+        color: mode("darkGrey", "white")(props)
       },
     }),
     /**

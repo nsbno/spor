@@ -1,15 +1,15 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
 import { srOnly } from "../utils/sr-utils";
+import { baseBorder } from "../utils/border-utils";
+import { baseBackground } from "../utils/background-utils";
 
 const parts = anatomy("InfoSelect").parts(
   "container",
   "label",
   "button",
-  "arrowIcon"
+  "arrowIcon",
 );
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
@@ -31,57 +31,44 @@ const config = helpers.defineMultiStyleConfig({
       justifyContent: "space-between",
       alignItems: "center",
       fontSize: "mobile.md",
-      boxShadow: getBoxShadowString({
-        borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-      }),
+      ...baseBorder("default", props),
       _hover: {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("darkGrey", "whiteAlpha.600")(props),
-          borderWidth: 2,
-        }),
+        ...baseBorder("hover", props),
       },
       ...focusVisible({
         focus: {
-          boxShadow: getBoxShadowString({
-            borderColor: "greenHaze",
-            borderWidth: 2,
-          }),
+          ...baseBorder("focus", props),
           outline: "none",
         },
         notFocus: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-          }),
+          ...baseBorder("default", props),
         },
       }),
       _disabled: {
-        boxShadow: getBoxShadowString({ borderColor: "platinum" }),
-        _hover: { boxShadow: getBoxShadowString({ borderColor: "platinum" }) },
-        _focus: { boxShadow: getBoxShadowString({ borderColor: "platinum" }) },
+        color: "whiteAlpha.400",
+        ...baseBackground("disabled", props),
+        _hover: { ...baseBorder("disabled", props) },
+        _focus: { ...baseBorder("disabled", props) },
+      },
+      _active: {
+        ...baseBackground("active", props),
+        ...baseBorder("focus", props),
+      },
+      _expanded: {
+        ...baseBackground("active", props),
+        ...baseBorder("focus", props),
       },
       _invalid: {
-        boxShadow: getBoxShadowString({
-          borderColor: "brightRed",
-          borderWidth: 2,
-        }),
+        ...baseBorder("invalid", props),
         _hover: {
-          boxShadow: getBoxShadowString({
-            borderColor: "darkGrey",
-            borderWidth: 2,
-          }),
+          ...baseBorder("hover", props),
         },
         ...focusVisible({
           focus: {
-            boxShadow: getBoxShadowString({
-              borderColor: "greenHaze",
-              borderWidth: 2,
-            }),
+            ...baseBorder("focus", props),
           },
           notFocus: {
-            boxShadow: getBoxShadowString({
-              borderColor: "brightRed",
-              borderWidth: 2,
-            }),
+            ...baseBorder("invalid", props),
           },
         }),
       },

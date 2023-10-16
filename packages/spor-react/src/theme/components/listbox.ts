@@ -1,12 +1,14 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
+import { colors } from "../foundations";
+import { baseBackground } from "../utils/background-utils";
 
 const parts = anatomy("ListBox").parts(
   "container",
   "item",
   "label",
-  "description"
+  "description",
 );
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
@@ -14,7 +16,11 @@ const helpers = createMultiStyleConfigHelpers(parts.keys);
 const config = helpers.defineMultiStyleConfig({
   baseStyle: (props) => ({
     container: {
-      background: mode("white", "darkGrey")(props),
+      // avoiding extra div by blending a transparent color into darkGrey for dark mode
+      backgroundColor: mode(
+        "mint",
+        `color-mix(in srgb, ${colors.darkGrey}, ${colors.white} 10%)`,
+      )(props),
       boxShadow: "sm",
       overflowY: "auto",
       maxHeight: "50vh",
@@ -31,20 +37,20 @@ const config = helpers.defineMultiStyleConfig({
       color: mode("darkGrey", "white")(props),
       cursor: "pointer",
       _hover: {
-        backgroundColor: mode("seaMist", "darkTeal")(props),
+        backgroundColor: mode("seaMist", "pine")(props),
         outline: "none",
       },
       _active: {
-        backgroundColor: mode("mint", "darkTeal")(props),
+        backgroundColor: mode("mint", "pine")(props),
         outline: "none",
       },
       _focus: {
         outline: "none",
-        backgroundColor: mode("seaMist", "darkTeal")(props),
+        backgroundColor: mode("seaMist", "pine")(props),
       },
       _selected: {
-        backgroundColor: mode("pine", "pine")(props),
-        color: mode("white", "white")(props),
+        ...baseBackground("selected", props),
+        color: "white",
       },
     },
     label: {},

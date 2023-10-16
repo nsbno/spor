@@ -54,11 +54,11 @@ const config = defineStyleConfig({
         },
       }),
       _hover: {
-        color: mode("pine", "white")(props),
+        color: mode("darkTeal", "white")(props),
         backgroundColor: mode("coralGreen", "whiteAlpha.200")(props)
       },
       _active: {
-        color: mode("pine", "white"),
+        color: mode("pine", "white")(props),
         backgroundColor: mode("mint", "whiteAlpha.100")(props),
       },
     }),

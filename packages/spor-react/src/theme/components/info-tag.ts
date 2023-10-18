@@ -48,28 +48,14 @@ const config = helpers.defineMultiStyleConfig({
   defaultProps: {
     size: "md",
   },
-  variants: {
-    "local-bus": (props)  => ({
-      iconContainer: {
-        color: "red",
-        boxShadow: mode(
-          `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.black}`, 
-          `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.whiteAlpha[400]}`
-          )(props),
-      },
-    }),
+ variants: {
     "walk": (props)  => ({
-      container: {
-        backgroundColor: "white",
-      },
       iconContainer: {
-        backgroundColor: mode("white", "red")(props),
-        color: "white",
+        backgroundColor: mode("white", "transparent")(props),
         boxShadow: mode(
           `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.black[200]}`, 
           `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.whiteAlpha[400]}`
           )(props),
-        img: "red"
       },
     }),
   }

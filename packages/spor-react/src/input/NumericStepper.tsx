@@ -83,13 +83,14 @@ export function NumericStepper({
   const textColor = useColorModeValue("darkGrey", "white");
   const backgroundColor = useColorModeValue("white", "darkGrey");
   const focusColor = useColorModeValue("greenHaze", "azure");
+  const clampedStepSize = Math.max(Math.min(stepSize, 10), 1);
 
   return (
     <Flex alignItems="center" {...boxProps}>
       <VerySmallButton
-        icon={<SubtractIcon color="white" />}
-        aria-label={t(texts.decrementButtonAriaLabel(stepSize))}
-        onClick={() => onChange(Math.max(value - stepSize, minValue))}
+        icon={<SubtractIcon color="white" stepLabel={clampedStepSize} />}
+        aria-label={t(texts.decrementButtonAriaLabel(clampedStepSize))}
+        onClick={() => onChange(Math.max(value - clampedStepSize, minValue))}
         visibility={value <= minValue ? "hidden" : "visible"}
         isDisabled={formControlProps.disabled}
       />
@@ -104,7 +105,7 @@ export function NumericStepper({
           id={value !== 0 ? formControlProps.id : undefined}
           fontSize="sm"
           fontWeight="bold"
-          width="3ch"
+          width={`${Math.max(value.toString().length + 1, 3)}ch`}
           marginX={1}
           paddingX={1}
           borderRadius="xs"
@@ -159,9 +160,9 @@ export function NumericStepper({
         </chakra.text>
       )}
       <VerySmallButton
-        icon={<AddIcon color="white" />}
-        aria-label={t(texts.incrementButtonAriaLabel(stepSize))}
-        onClick={() => onChange(Math.min(value + stepSize, maxValue))}
+        icon={<AddIcon color="white" stepLabel={clampedStepSize} />}
+        aria-label={t(texts.incrementButtonAriaLabel(clampedStepSize))}
+        onClick={() => onChange(Math.min(value + clampedStepSize, maxValue))}
         visibility={value >= maxValue ? "hidden" : "visible"}
         isDisabled={formControlProps.disabled}
         id={value === 0 ? formControlProps.id : undefined}
@@ -204,52 +205,63 @@ const VerySmallButton = (props: VerySmallButtonProps) => {
   );
 };
 
-const SubtractIcon = (props: BoxProps) => (
-  <Box
-    as="svg"
-    viewBox="0 0 30 30"
-    width="24"
-    height="24"
-    stroke="currentColor"
-    {...props}
-  >
-    <line
-      x1="9"
-      y1="15"
-      x2="21"
-      y2="15"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-  </Box>
+const SubtractIcon = (props: BoxProps & { stepLabel: number }) => (
+  <>
+    <Box
+      as="svg"
+      viewBox="0 0 30 30"
+      width="24"
+      height="24"
+      stroke="currentColor"
+      {...props}
+    >
+      <line
+        x1="9"
+        y1="15"
+        x2="21"
+        y2="15"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </Box>
+    {props.stepLabel > 1 && (
+      <chakra.text paddingRight="1">{props.stepLabel.toString()}</chakra.text>
+    )}
+  </>
 );
 
-const AddIcon = (props: BoxProps) => (
-  <Box
-    as="svg"
-    viewBox="0 0 30 30"
-    width="24"
-    height="24"
-    stroke="currentColor"
-    {...props}
-  >
-    <line
-      x1="9"
-      y1="15"
-      x2="21"
-      y2="15"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-    <line
-      x1="15"
-      y1="9"
-      x2="15"
-      y2="21"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-  </Box>
+const AddIcon = (props: BoxProps & { stepLabel: number }) => (
+  <>
+    <Box
+      as="svg"
+      viewBox="0 0 30 30"
+      width="24"
+      height="24"
+      stroke="currentColor"
+      {...props}
+    >
+      <line
+        x1="9"
+        y1="15"
+        x2="21"
+        y2="15"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <line
+        x1="15"
+        y1="9"
+        x2="15"
+        y2="21"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </Box>
+
+    {props.stepLabel > 1 && (
+      <chakra.text paddingRight="1">{props.stepLabel.toString()}</chakra.text>
+    )}
+  </>
 );
 
 const texts = createTexts({

@@ -1,5 +1,5 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy } from "@chakra-ui/theme-tools";
+import { anatomy, mode } from "@chakra-ui/theme-tools";
 
 const parts = anatomy("line-tag").parts("iconContainer", "icon");
 const helpers = createMultiStyleConfigHelpers(parts.keys);
@@ -78,7 +78,7 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
 
-    walk: {
+    walk: (props) => ({
       iconContainer: {
         backgroundColor: "white",
         borderWidth: 1,
@@ -86,12 +86,12 @@ const config = helpers.defineMultiStyleConfig({
         borderColor: "blackAlpha.200",
       },
       icon: {
-        color: "darkGrey",
+        color: mode("darkGrey", "white")(props),
         "[aria-disabled=true] &": {
           color: "osloGrey",
         },
       },
-    },
+    }),
   },
   sizes: {
     sm: {

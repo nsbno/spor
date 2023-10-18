@@ -33,6 +33,8 @@ type NumericStepperProps = {
   isDisabled?: boolean;
   /** Whether to show input field or not */
   withInput?: boolean;
+  /** The amount to increase/decrease when pressing +/- */
+  stepSize?: number;
 } & Omit<BoxProps, "onChange">;
 /** A simple stepper component for integer values
  *
@@ -43,10 +45,10 @@ type NumericStepperProps = {
  * <NumericStepper value={value} onChange={setValue} />
  * ```
  *
- * You can also set a minimum and/or maximum value:
+ * You can also set a minimum and/or maximum value and step size:
  *
  * ```tsx
- * <NumericStepper value={value} onChange={setValue} minValue={1} maxValue={10} />
+ * <NumericStepper value={value} onChange={setValue} minValue={1} maxValue={10} stepSize={3} />
  * ```
  *
  * You can use the NumericStepper inside of a FormControl component to get IDs etc linked up automatically:
@@ -68,6 +70,7 @@ export function NumericStepper({
   maxValue = 99,
   isDisabled,
   withInput = true,
+  stepSize = 1,
   ...boxProps
 }: NumericStepperProps) {
   const { t } = useTranslation();
@@ -85,8 +88,8 @@ export function NumericStepper({
     <Flex alignItems="center" {...boxProps}>
       <VerySmallButton
         icon={<SubtractIcon color="white" />}
-        aria-label={t(texts.decrementButtonAriaLabel)}
-        onClick={() => onChange(value - 1)}
+        aria-label={t(texts(stepSize).decrementButtonAriaLabel)}
+        onClick={() => onChange(Math.max(value - stepSize, minValue))}
         visibility={value <= minValue ? "hidden" : "visible"}
         isDisabled={formControlProps.disabled}
       />
@@ -157,8 +160,8 @@ export function NumericStepper({
       )}
       <VerySmallButton
         icon={<AddIcon color="white" />}
-        aria-label={t(texts.incrementButtonAriaLabel)}
-        onClick={() => onChange(value + 1)}
+        aria-label={t(texts(stepSize).incrementButtonAriaLabel)}
+        onClick={() => onChange(Math.min(value + stepSize, maxValue))}
         visibility={value >= maxValue ? "hidden" : "visible"}
         isDisabled={formControlProps.disabled}
         id={value === 0 ? formControlProps.id : undefined}
@@ -249,17 +252,18 @@ const AddIcon = (props: BoxProps) => (
   </Box>
 );
 
-const texts = createTexts({
-  decrementButtonAriaLabel: {
-    nb: "Trekk fra 1",
-    en: "Subtract 1",
-    nn: "Trekk frå 1",
-    sv: "Subtrahera 1",
-  },
-  incrementButtonAriaLabel: {
-    nb: "Legg til 1",
-    en: "Add 1",
-    nn: "Legg til 1",
-    sv: "Lägg till 1",
-  },
-});
+const texts = (stepSize: number) =>
+  createTexts({
+    decrementButtonAriaLabel: {
+      nb: `Trekk fra ${stepSize}`,
+      en: `Subtract ${stepSize}`,
+      nn: `Trekk frå ${stepSize}`,
+      sv: `Subtrahera ${stepSize}`,
+    },
+    incrementButtonAriaLabel: {
+      nb: `Legg til ${stepSize}`,
+      en: `Add ${stepSize}`,
+      nn: `Legg til ${stepSize}`,
+      sv: `Lägg till ${stepSize}`,
+    },
+  });

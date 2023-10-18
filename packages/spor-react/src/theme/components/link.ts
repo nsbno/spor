@@ -14,7 +14,7 @@ const config = defineStyleConfig({
     backgroundPosition: "0 100%",
     backgroundRepeat: "no-repeat",
     borderRadius: "none",
-    p: "2px",
+    padding: "2px",
     color: "inherit",
     display: "inline",
     position: "relative",

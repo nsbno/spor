@@ -88,7 +88,7 @@ export function NumericStepper({
     <Flex alignItems="center" {...boxProps}>
       <VerySmallButton
         icon={<SubtractIcon color="white" />}
-        aria-label={t(texts(stepSize).decrementButtonAriaLabel)}
+        aria-label={t(texts.decrementButtonAriaLabel(stepSize))}
         onClick={() => onChange(Math.max(value - stepSize, minValue))}
         visibility={value <= minValue ? "hidden" : "visible"}
         isDisabled={formControlProps.disabled}
@@ -160,7 +160,7 @@ export function NumericStepper({
       )}
       <VerySmallButton
         icon={<AddIcon color="white" />}
-        aria-label={t(texts(stepSize).incrementButtonAriaLabel)}
+        aria-label={t(texts.incrementButtonAriaLabel(stepSize))}
         onClick={() => onChange(Math.min(value + stepSize, maxValue))}
         visibility={value >= maxValue ? "hidden" : "visible"}
         isDisabled={formControlProps.disabled}
@@ -252,18 +252,21 @@ const AddIcon = (props: BoxProps) => (
   </Box>
 );
 
-const texts = (stepSize: number) =>
-  createTexts({
-    decrementButtonAriaLabel: {
+const texts = createTexts({
+  decrementButtonAriaLabel(stepSize) {
+    return {
       nb: `Trekk fra ${stepSize}`,
       en: `Subtract ${stepSize}`,
       nn: `Trekk frå ${stepSize}`,
       sv: `Subtrahera ${stepSize}`,
-    },
-    incrementButtonAriaLabel: {
+    };
+  },
+  incrementButtonAriaLabel(stepSize) {
+    return {
       nb: `Legg til ${stepSize}`,
       en: `Add ${stepSize}`,
       nn: `Legg til ${stepSize}`,
       sv: `Lägg till ${stepSize}`,
-    },
-  });
+    };
+  },
+});

@@ -1,5 +1,5 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy } from "@chakra-ui/theme-tools";
+import { StyleFunctionProps, anatomy, mode } from "@chakra-ui/theme-tools";
 import travelTagStyles from "./travel-tag";
 
 const parts = anatomy("info-tag").parts(
@@ -19,6 +19,9 @@ const config = helpers.defineMultiStyleConfig({
     iconContainer: {
       ...travelTagStyles.baseStyle!(props).iconContainer,
       padding: 1,
+    },
+    textContainer: {
+      color: mode("darkGrey", "white")(props),
     },
   }),
   sizes: {
@@ -45,5 +48,17 @@ const config = helpers.defineMultiStyleConfig({
   defaultProps: {
     size: "md",
   },
+ variants: {
+    "walk": (props)  => ({
+      iconContainer: {
+        backgroundColor: mode("white", "transparent")(props),
+        boxShadow: mode(
+          `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.black[200]}`, 
+          `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.whiteAlpha[400]}`
+          )(props),
+      },
+    }),
+  }
 });
 export default config;
+

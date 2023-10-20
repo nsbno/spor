@@ -1,4 +1,4 @@
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react"
+import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy, mode } from "@chakra-ui/theme-tools";
 
 const parts = anatomy("line-tag").parts("iconContainer", "icon");
@@ -77,8 +77,9 @@ const config = helpers.defineMultiStyleConfig({
         },
       },
     },
-
+    
     walk: (props) => ({
+
       iconContainer: {
         backgroundColor: "white",
         borderWidth: 1,

@@ -61,7 +61,4 @@ const config = helpers.defineMultiStyleConfig({
   }
 });
 export default config;
-function getDeviationContainerStyle(props: StyleFunctionProps): any {
-  throw new Error("Function not implemented.");
-}
 

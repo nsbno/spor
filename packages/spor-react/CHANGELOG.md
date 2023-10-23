@@ -1,5 +1,21 @@
 # @vygruppen/spor-react
 
+## 3.7.7
+
+### Patch Changes
+
+- 2ffdd3b7: Tabs: changed from default to base
+- d12c315d: travelTag: add support for dark mode
+- b6884fa6: Tabs: Update variants and design for tabs
+- fb6605c6: Card: Add dark mode support
+- 4c078f92: Design tokens: Change the color for lokalbuss
+  InfoTag: Add dark mode support
+- eaf12b4b: Link: Add dark mode support
+- e103af4b: Button: Make buttons break on several lines if there isn't space
+- bc846dd5: Fab:Add dark mode support
+- Updated dependencies [4c078f92]
+  - @vygruppen/spor-design-tokens@3.2.1
+
 ## 3.7.6
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import type { StyleFunctionProps } from "@chakra-ui/theme-tools";
-import { anatomy } from "@chakra-ui/theme-tools";
+import { anatomy, mode } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
 
@@ -138,9 +138,9 @@ const config = helpers.defineMultiStyleConfig({
         backgroundColor: "linjetag.altTransportLight",
       },
     },
-    walk: {
+    walk: (props) => ({
       container: {
-        backgroundColor: "white",
+        backgroundColor: mode("white", "transparent")(props),
         _disabled: {
           backgroundColor: "white",
         },
@@ -149,6 +149,7 @@ const config = helpers.defineMultiStyleConfig({
         border: "none",
         position: "relative",
         left: -1,
+        backgroundColor: mode("white", "transparent")(props),
         "[aria-disabled=true] &": {
           backgroundColor: "transparent",
           color: "osloGrey",
@@ -165,11 +166,12 @@ const config = helpers.defineMultiStyleConfig({
       title: {
         fontSize: "mobile.xs",
         fontWeight: "normal",
+        color: mode("black", "white")(props)
       },
       description: {
         display: "none",
       },
-    },
+    }),
   },
   sizes: {
     sm: {

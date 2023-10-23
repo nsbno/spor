@@ -127,6 +127,11 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
             onClose={state.close}
           >
             <InputGroup {...groupProps} display="inline-flex">
+            {hasTrigger && (
+                <PopoverTrigger>
+                  <CalendarTriggerButton ref={ref} {...buttonProps} />
+                </PopoverTrigger>
+              )}
               <PopoverAnchor>
                 <StyledField
                   variant={responsiveVariant}
@@ -146,11 +151,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                   />
                 </StyledField>
               </PopoverAnchor>
-              {hasTrigger && (
-                <PopoverTrigger>
-                  <CalendarTriggerButton ref={ref} {...buttonProps} />
-                </PopoverTrigger>
-              )}
+           
             </InputGroup>
             <FormErrorMessage {...errorMessageProps}>
               {errorMessage}

@@ -87,11 +87,11 @@ const config = helpers.defineMultiStyleConfig({
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      borderRightRadius: "sm",
+      borderLeftRadius: "sm",
       transitionProperty: "box-shadow, background-color",
       transitionSpeed: "fast",
       position: "relative",
-      left: "-1px", // To make the box-shadows overlap
+      right: "-1px", // To make the box-shadows overlap
 
       _hover: {
         boxShadow: `${getBoxShadowString({
@@ -219,7 +219,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     "with-trigger": {
       wrapper: {
-        borderLeftRadius: "sm",
+        borderRightRadius: "sm",
       },
     },
   },

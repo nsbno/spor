@@ -151,7 +151,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                   />
                 </StyledField>
               </PopoverAnchor>
-           
             </InputGroup>
             <FormErrorMessage {...errorMessageProps}>
               {errorMessage}

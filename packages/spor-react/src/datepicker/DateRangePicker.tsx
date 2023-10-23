@@ -126,6 +126,11 @@ export function DateRangePicker({
           onClose={state.close}
         >
           <InputGroup {...groupProps} width="auto" display="inline-flex">
+          {hasTrigger && (
+              <PopoverTrigger>
+                <CalendarTriggerButton ref={ref} {...buttonProps} />
+              </PopoverTrigger>
+            )}
             <PopoverAnchor>
               <StyledField
                 alignItems="center"
@@ -156,11 +161,6 @@ export function DateRangePicker({
                 />
               </StyledField>
             </PopoverAnchor>
-            {hasTrigger && (
-              <PopoverTrigger>
-                <CalendarTriggerButton ref={ref} {...buttonProps} />
-              </PopoverTrigger>
-            )}
           </InputGroup>
           {state.isOpen && withPortal && <Portal>{popoverContent}</Portal>}
           {state.isOpen && !withPortal && popoverContent}

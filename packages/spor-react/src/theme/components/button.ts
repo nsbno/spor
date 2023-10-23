@@ -11,7 +11,9 @@ const config = defineStyleConfig({
     fontWeight: "bold",
     transitionProperty: "common",
     transitionDuration: "normal",
-    px: 3,
+    textWrap: "wrap",
+    paddingX: 3,
+    paddingY: 1,
     _focus: {
       boxShadow: 0,
       outline: 0,
@@ -36,7 +38,7 @@ const config = defineStyleConfig({
         focus: {
           boxShadow: `inset 0 0 0 4px ${mode(
             colors.darkTeal,
-            colors.seaMist,
+            colors.seaMist
           )(props)}, inset 0 0 0 6px currentColor`,
         },
         notFocus: { boxShadow: "none" },
@@ -57,10 +59,10 @@ const config = defineStyleConfig({
         focus: {
           boxShadow: `inset 0 0 0 2px ${mode(
             colors.greenHaze,
-            colors.azure,
+            colors.azure
           )(props)}, inset 0 0 0 4px ${mode(
             colors.white,
-            colors.darkGrey,
+            colors.darkGrey
           )(props)}`,
         },
         notFocus: { boxShadow: "none" },
@@ -84,18 +86,18 @@ const config = defineStyleConfig({
         focus: {
           boxShadow: `inset 0 0 0 2px ${mode(
             colors.greenHaze,
-            colors.azure,
+            colors.azure
           )(props)}, inset 0 0 0 4px ${mode(
             colors.white,
-            colors.blackAlpha[300],
+            colors.blackAlpha[300]
           )(props)}`,
           _hover: {
             boxShadow: `inset 0 0 0 2px ${mode(
               colors.greenHaze,
-              colors.azure,
+              colors.azure
             )(props)}, inset 0 0 0 4px ${mode(
               colors.white,
-              colors.blackAlpha[500],
+              colors.blackAlpha[500]
             )(props)}`,
           },
         },
@@ -107,18 +109,18 @@ const config = defineStyleConfig({
         backgroundColor: mode("mint", "whiteAlpha.300")(props),
         boxShadow: `inset 0 0 0 2px ${mode(
           colors.greenHaze,
-          colors.azure,
+          colors.azure
         )(props)}, inset 0 0 0 4px ${mode(
           colors.white,
-          colors.blackAlpha[600],
+          colors.blackAlpha[600]
         )(props)}`,
         _hover: {
           boxShadow: `inset 0 0 0 2px ${mode(
             colors.greenHaze,
-            colors.azure,
+            colors.azure
           )(props)}, inset 0 0 0 4px ${mode(
             colors.white,
-            colors.blackAlpha[600],
+            colors.blackAlpha[600]
           )(props)}`,
         },
       },
@@ -149,7 +151,7 @@ const config = defineStyleConfig({
       fontWeight: "normal",
       boxShadow: `inset 0 0 0 1px ${mode(
         colors.blackAlpha[400],
-        colors.whiteAlpha[400],
+        colors.whiteAlpha[400]
       )(props)}`,
       ...focusVisible({
         focus: {
@@ -161,7 +163,7 @@ const config = defineStyleConfig({
         notFocus: {
           boxShadow: `inset 0 0 0 1px ${mode(
             colors.blackAlpha[400],
-            colors.whiteAlpha[400],
+            colors.whiteAlpha[400]
           )(props)}`,
         },
       }),
@@ -171,7 +173,7 @@ const config = defineStyleConfig({
       _active: {
         boxShadow: `inset 0 0 0 1px ${mode(
           colors.blackAlpha[400],
-          colors.whiteAlpha[300],
+          colors.whiteAlpha[300]
         )(props)}`,
         backgroundColor: mode("mint", "whiteAlpha.200")(props),
       },
@@ -260,7 +262,7 @@ const config = defineStyleConfig({
       minHeight: 5,
       minWidth: 5,
       fontSize: "16px",
-      px: 2,
+      paddingX: 2,
     },
   },
   defaultProps: {

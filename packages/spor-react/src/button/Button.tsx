@@ -126,7 +126,13 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
           />
         </Center>
       )}
-      <Box visibility={isLoading ? "hidden" : "visible"}>{children}</Box>
+      <Box
+        visibility={isLoading ? "hidden" : "visible"}
+        whiteSpace="normal"
+        textAlign="left"
+      >
+        {children}
+      </Box>
     </ChakraButton>
   );
 });

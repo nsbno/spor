@@ -141,7 +141,7 @@ export function DateRangePicker({
                 minHeight={minHeight}
               >
                 {!hasTrigger && (
-                  <CalendarOutline24Icon marginRight={2} alignSelf="center" />
+                  <CalendarOutline24Icon boxSize={8} marginRight={2} alignSelf="center" />
                 )}
                 <DateField
                   {...startFieldProps}
@@ -150,9 +150,16 @@ export function DateRangePicker({
                   ref={hasTrigger ? undefined : ref}
                   labelProps={labelProps}
                 />
-                <Box as="span" aria-hidden="true" paddingX="2">
-                  –
-                </Box>
+                {!hasTrigger && (
+                  <Box as="span" aria-hidden="true" marginLeft={-3} paddingX="2">
+                    –
+                  </Box>
+                )}
+                {hasTrigger && (
+                  <Box as="span" aria-hidden="true" paddingX="2">
+                    –
+                  </Box>
+                )}
                 <DateField
                   {...endFieldProps}
                   name={endName}

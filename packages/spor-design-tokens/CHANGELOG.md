@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.2.1
+
+### Patch Changes
+
+- 4c078f92: Design tokens: Change the color for lokalbuss
+  InfoTag: Add dark mode support
+
 ## 3.2.0
 
 ### Minor Changes

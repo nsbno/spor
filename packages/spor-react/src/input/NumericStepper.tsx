@@ -35,6 +35,8 @@ type NumericStepperProps = {
   withInput?: boolean;
   /** The amount to increase/decrease when pressing +/- */
   stepSize?: number;
+  /** Whether to show the number input when value is zero  */
+  showZero?: boolean;
 } & Omit<BoxProps, "onChange">;
 /** A simple stepper component for integer values
  *
@@ -71,6 +73,7 @@ export function NumericStepper({
   isDisabled,
   withInput = true,
   stepSize = 1,
+  showZero = false,
   ...boxProps
 }: NumericStepperProps) {
   const { t } = useTranslation();
@@ -93,6 +96,7 @@ export function NumericStepper({
         onClick={() => onChange(Math.max(value - clampedStepSize, minValue))}
         visibility={value <= minValue ? "hidden" : "visible"}
         isDisabled={formControlProps.disabled}
+        id={value <= minValue ? undefined : formControlProps.id}
       />
       {withInput ? (
         <chakra.input
@@ -102,7 +106,7 @@ export function NumericStepper({
           name={nameProp}
           value={value}
           {...formControlProps}
-          id={value !== 0 ? formControlProps.id : undefined}
+          id={!showZero && value === 0 ? undefined : formControlProps.id}
           fontSize="sm"
           fontWeight="bold"
           width={`${Math.max(value.toString().length + 1, 3)}ch`}
@@ -113,7 +117,7 @@ export function NumericStepper({
           backgroundColor={backgroundColor}
           color={textColor}
           transition="box-shadow .1s ease-out"
-          visibility={value === 0 ? "hidden" : "visible"}
+          visibility={!showZero && value === 0 ? "hidden" : "visible"}
           aria-live="assertive"
           aria-label={value.toString()}
           _hover={{
@@ -140,7 +144,7 @@ export function NumericStepper({
             if (Number.isNaN(numericInput)) {
               return;
             }
-            onChange(numericInput);
+            onChange(Math.max(Math.min(numericInput, maxValue), minValue));
           }}
         />
       ) : (
@@ -153,7 +157,7 @@ export function NumericStepper({
           textAlign="center"
           color={textColor}
           transition="box-shadow .1s ease-out"
-          visibility={value === 0 ? "hidden" : "visible"}
+          visibility={!showZero && value === 0 ? "hidden" : "visible"}
           aria-label={value.toString()}
         >
           {value}
@@ -165,7 +169,7 @@ export function NumericStepper({
         onClick={() => onChange(Math.min(value + clampedStepSize, maxValue))}
         visibility={value >= maxValue ? "hidden" : "visible"}
         isDisabled={formControlProps.disabled}
-        id={value === 0 ? formControlProps.id : undefined}
+        id={value >= maxValue ? undefined : formControlProps.id}
       />
     </Flex>
   );
@@ -225,7 +229,7 @@ const SubtractIcon = (props: BoxProps & { stepLabel: number }) => (
       />
     </Box>
     {props.stepLabel > 1 && (
-      <chakra.text paddingRight="1">{props.stepLabel.toString()}</chakra.text>
+      <chakra.span paddingRight="1">{props.stepLabel.toString()}</chakra.span>
     )}
   </>
 );
@@ -259,7 +263,7 @@ const AddIcon = (props: BoxProps & { stepLabel: number }) => (
     </Box>
 
     {props.stepLabel > 1 && (
-      <chakra.text paddingRight="1">{props.stepLabel.toString()}</chakra.text>
+      <chakra.span paddingRight="1">{props.stepLabel.toString()}</chakra.span>
     )}
   </>
 );

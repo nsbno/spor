@@ -150,16 +150,7 @@ export function DateRangePicker({
                   ref={hasTrigger ? undefined : ref}
                   labelProps={labelProps}
                 />
-                {!hasTrigger && (
-                  <Box as="span" aria-hidden="true" marginLeft={-3} paddingX="2">
-                    –
-                  </Box>
-                )}
-                {hasTrigger && (
-                  <Box as="span" aria-hidden="true" paddingX="2">
-                    –
-                  </Box>
-                )}
+               
                 <DateField
                   {...endFieldProps}
                   name={endName}

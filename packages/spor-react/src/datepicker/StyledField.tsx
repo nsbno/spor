@@ -9,7 +9,7 @@ import {
 import React from "react";
 
 type StyledFieldProps = BoxProps & {
-  variant: "simple" | "with-trigger";
+  variant: "simple" | "with-trigger" | "base" | "floating" | "ghost";
 };
 export const StyledField = forwardRef<StyledFieldProps, As>(
   ({ children, variant, ...otherProps }, ref) => {

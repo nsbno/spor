@@ -19,7 +19,6 @@ const parts = anatomy("datepicker").parts(
 const $arrowBackground = cssVar("popper-arrow-bg");
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
-
 const config = helpers.defineMultiStyleConfig({
   baseStyle: (props) => ({
     wrapper: {
@@ -124,9 +123,9 @@ const config = helpers.defineMultiStyleConfig({
         }),
       },
     },
-    arrow: {
+    arrow: {  
       [$arrowBackground.variable]: mode("white", colors.night)(props),
-    },
+    },    
     calendar: {
       backgroundColor: mode("white", "night")(props),
       color: mode("darkGrey", "white")(props),
@@ -135,7 +134,7 @@ const config = helpers.defineMultiStyleConfig({
       color: mode("darkGrey", "white")(props),
     },
     weekend: {
-      color: mode("greenHaze", "azure")(props),
+      color: mode("darkTeal", "seaMist")(props),
     },
     dateCell: {
       backgroundColor: mode("white", "night")(props),
@@ -212,6 +211,66 @@ const config = helpers.defineMultiStyleConfig({
     },
   }),
   variants: {
+    base: (props) => ({
+      calendar: {
+        backgroundColor: mode("white", "night")(props),
+        color: mode("darkGrey", "white")(props),
+        boxShadow: getBoxShadowString({
+          borderWidth: 2,
+          borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
+        }),
+      },
+      dateCell: {
+        color: mode("darkGrey", "white")(props),
+        _hover: {
+          backgroundColor: mode("seaMist", "pine")(props),
+        },
+        "&[data-today]": {
+          boxShadow: getBoxShadowString({
+            borderWidth: 1,
+            borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
+          }),
+        },
+      },
+    }),
+    floating: (props) => ({
+      calendar: {
+        backgroundColor: mode("white", "night")(props),
+        color: mode("darkGrey", "white")(props),
+      },
+      dateCell: {
+        color: mode("darkGrey", "white")(props),
+        _hover: {
+          backgroundColor: mode("", "")(props),
+        },
+        "&[data-today]": {
+          boxShadow: getBoxShadowString({
+            borderWidth: 1,
+            borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
+          }),
+        },
+      },
+    }),
+    ghost: (props) => ({
+      calendar: {
+        backgroundColor: mode("white", "night")(props),
+        color: mode("darkGrey", "white")(props),
+        boxShadow: getBoxShadowString({
+          borderWidth: 2,
+          borderColor: mode("", "")(props),
+        }),
+      },
+      dateCell: {
+        color: mode("darkGrey", "white")(props),
+        _hover: {
+          backgroundColor: mode("seaMist", "pine")(props),
+        },
+        _selected: {
+          backgroundColor: mode("", "primaryGreen")(props),
+          color: "darkGrey"
+        },
+      },
+    }),
     simple: {
       wrapper: {
         borderRadius: "sm",
@@ -223,6 +282,9 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
   },
+  defaultProps: {
+    variant: "floating",
+  }
 });
 
 export default config;

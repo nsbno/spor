@@ -33,7 +33,13 @@ import { useCurrentLocale } from "./utils";
 
 type DatePickerProps = AriaDatePickerProps<DateValue> &
   Pick<BoxProps, "minHeight" | "width"> & {
-    variant: ResponsiveValue<"simple" | "with-trigger">;
+    variant: ResponsiveValue<
+    "simple" 
+    | "with-trigger" 
+    | "base" 
+    | "floating"
+    | "ghost"
+    >;
     name?: string;
     showYearNavigation?: boolean;
     withPortal?: boolean;

@@ -234,21 +234,18 @@ const config = helpers.defineMultiStyleConfig({
       },
     }),
     floating: (props) => ({
-      calendar: {
-        backgroundColor: mode("white", "night")(props),
-        color: mode("darkGrey", "white")(props),
-      },
+        calendar: {
+          backgroundColor: mode("red", "night")(props),
+          color: mode("darkGrey", "white")(props),
+        },
       dateCell: {
         color: mode("darkGrey", "white")(props),
         _hover: {
           backgroundColor: mode("", "")(props),
         },
-        "&[data-today]": {
-          boxShadow: getBoxShadowString({
-            borderWidth: 1,
-            borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-          }),
-        },
+      },
+      wrapper: {
+        borderRadius: "sm",
       },
     }),
     ghost: (props) => ({
@@ -270,6 +267,9 @@ const config = helpers.defineMultiStyleConfig({
           color: "darkGrey"
         },
       },
+      wrapper: {
+        borderRightRadius: "sm",
+      },
     }),
     simple: {
       wrapper: {
@@ -282,9 +282,9 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
   },
-  defaultProps: {
-    variant: "floating",
-  }
+  // defaultProps: {
+  //   variant: "floating",
+  // }
 });
 
 export default config;

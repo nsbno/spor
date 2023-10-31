@@ -235,7 +235,7 @@ const config = helpers.defineMultiStyleConfig({
     }),
     floating: (props) => ({
         calendar: {
-          backgroundColor: mode("red", "night")(props),
+          backgroundColor: mode("white", "night")(props),
           color: mode("darkGrey", "white")(props),
         },
       dateCell: {
@@ -245,7 +245,7 @@ const config = helpers.defineMultiStyleConfig({
         },
       },
       wrapper: {
-        borderRadius: "sm",
+        borderRightRadius: "sm",
       },
     }),
     ghost: (props) => ({
@@ -282,9 +282,6 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
   },
-  // defaultProps: {
-  //   variant: "floating",
-  // }
 });
 
 export default config;

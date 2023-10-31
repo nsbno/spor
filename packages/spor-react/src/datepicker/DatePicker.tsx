@@ -90,13 +90,17 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       ref as React.MutableRefObject<HTMLDivElement>
     );
 
-    const styles = useMultiStyleConfig("Datepicker", {});
+    const styles = useMultiStyleConfig("Datepicker", {variant});
     const locale = useCurrentLocale();
 
     const responsiveVariant =
       useBreakpointValue(typeof variant === "string" ? [variant] : variant) ??
       "simple";
-    const hasTrigger = responsiveVariant === "with-trigger";
+      const hasTrigger = responsiveVariant === "with-trigger" ||
+      responsiveVariant === "base" ||
+      responsiveVariant === "floating" ||
+      responsiveVariant === "ghost";
+    
 
     const onFieldClick = () => {
       if (!hasTrigger) {
@@ -111,6 +115,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           <FocusLock>
             <Calendar
               {...calendarProps}
+              variant={variant}
               showYearNavigation={showYearNavigation}
             />
           </FocusLock>

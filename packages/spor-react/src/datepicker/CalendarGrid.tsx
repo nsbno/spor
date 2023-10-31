@@ -6,7 +6,7 @@ import { Language, useTranslation } from "../i18n";
 import { Text } from "../typography";
 import { CalendarCell } from "./CalendarCell";
 import { useCurrentLocale } from "./utils";
-import { useMultiStyleConfig } from "@chakra-ui/react";
+import { ResponsiveValue, useMultiStyleConfig } from "@chakra-ui/react";
 
 const weekDays: Record<Language, string[]> = {
   nb: ["Ma", "Ti", "On", "To", "Fr", "Lø", "Sø"],
@@ -16,10 +16,17 @@ const weekDays: Record<Language, string[]> = {
 };
 
 type CalendarGridProps = AriaCalendarGridProps & {
+  variant: ResponsiveValue<
+  "simple" 
+  | "with-trigger" 
+  | "base" 
+  | "floating"
+  | "ghost"
+  >;
   state: CalendarState | RangeCalendarState;
   offset?: { months?: number };
 };
-export function CalendarGrid({ state, offset = {} }: CalendarGridProps) {
+export function CalendarGrid({ state, variant ,offset = {} }: CalendarGridProps) {
   const { language } = useTranslation();
   const locale = useCurrentLocale();
   const startDate = state.visibleRange.start.add(offset);
@@ -35,7 +42,7 @@ export function CalendarGrid({ state, offset = {} }: CalendarGridProps) {
   // Get the number of weeks in the month so we can render the proper number of rows.
   const weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
   const weeksInMonthRange = new Array(weeksInMonth).fill(0).map((_, i) => i);
-  const styles = useMultiStyleConfig("Datepicker", {});
+  const styles = useMultiStyleConfig("Datepicker", {variant});
 
   return (
     <table {...gridProps}>
@@ -63,6 +70,7 @@ export function CalendarGrid({ state, offset = {} }: CalendarGridProps) {
               .map((date, dayIndex) =>
                 date ? (
                   <CalendarCell
+                    variant={variant}
                     key={dayIndex}
                     state={state}
                     date={date}

@@ -232,6 +232,45 @@ const config = helpers.defineMultiStyleConfig({
           }),
         },
       },
+      calendarTriggerButton: {
+        boxShadow: ``,
+        paddingTop: 1,
+        paddingBottom: 1,
+        borderRadius: "sm",
+        right: "9px",
+  
+        _hover: {
+        boxShadow: "",
+         backgroundColor: mode("seaMist", "pine")(props),
+        },
+        _active: {
+          backgroundColor: mode("mint", "whiteAlpha.200")(props),
+        },
+        ...focusVisible({
+          focus: {
+            outline: "none",
+            boxShadow: getBoxShadowString({
+              borderColor: mode("greenHaze", "azure")(props),
+              borderWidth: 2,
+            }),
+          },
+          notFocus: {
+            boxShadow: getBoxShadowString({
+              borderColor: mode("darkGrey", "white")(props),
+              borderWidth: 1,
+            }),
+          },
+        }),
+        _invalid: {
+          boxShadow: getBoxShadowString({
+            borderColor: "brightRed",
+            borderWidth: 2,
+          }),
+        },
+      },
+      wrapper: {
+        borderRadius: "sm",
+      },
     }),
     floating: (props) => ({
         calendar: {
@@ -244,8 +283,44 @@ const config = helpers.defineMultiStyleConfig({
           backgroundColor: mode("", "")(props),
         },
       },
+      calendarTriggerButton: {
+        boxShadow: ``,
+        paddingTop: 1,
+        paddingBottom: 1,
+        borderRadius: "sm",
+        right: "9px",
+  
+        _hover: {
+        boxShadow: "",
+         backgroundColor: mode("seaMist", "pine")(props),
+        },
+        _active: {
+          backgroundColor: mode("mint", "whiteAlpha.200")(props),
+        },
+        ...focusVisible({
+          focus: {
+            outline: "none",
+            boxShadow: getBoxShadowString({
+              borderColor: mode("greenHaze", "azure")(props),
+              borderWidth: 2,
+            }),
+          },
+          notFocus: {
+            boxShadow: getBoxShadowString({
+              borderColor: mode("darkGrey", "white")(props),
+              borderWidth: 1,
+            }),
+          },
+        }),
+        _invalid: {
+          boxShadow: getBoxShadowString({
+            borderColor: "brightRed",
+            borderWidth: 2,
+          }),
+        },
+      },
       wrapper: {
-        borderRightRadius: "sm",
+        borderRadius: "sm",
       },
     }),
     ghost: (props) => ({
@@ -267,8 +342,44 @@ const config = helpers.defineMultiStyleConfig({
           color: "darkGrey"
         },
       },
+      calendarTriggerButton: {
+        boxShadow: ``,
+        paddingTop: 1,
+        paddingBottom: 1,
+        borderRadius: "sm",
+        right: "9px",
+  
+        _hover: {
+        boxShadow: "",
+         backgroundColor: mode("seaMist", "pine")(props),
+        },
+        _active: {
+          backgroundColor: mode("mint", "whiteAlpha.200")(props),
+        },
+        ...focusVisible({
+          focus: {
+            outline: "none",
+            boxShadow: getBoxShadowString({
+              borderColor: mode("greenHaze", "azure")(props),
+              borderWidth: 2,
+            }),
+          },
+          notFocus: {
+            boxShadow: getBoxShadowString({
+              borderColor: mode("darkGrey", "white")(props),
+              borderWidth: 1,
+            }),
+          },
+        }),
+        _invalid: {
+          boxShadow: getBoxShadowString({
+            borderColor: "brightRed",
+            borderWidth: 2,
+          }),
+        },
+      },
       wrapper: {
-        borderRightRadius: "sm",
+        borderRadius: "sm",
       },
     }),
     simple: {

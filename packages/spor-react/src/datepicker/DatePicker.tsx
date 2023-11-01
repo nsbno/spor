@@ -93,11 +93,13 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     const styles = useMultiStyleConfig("Datepicker", {variant});
     const locale = useCurrentLocale();
 
+    //deprecated
     const responsiveVariant =
       useBreakpointValue(typeof variant === "string" ? [variant] : variant) ??
       "simple";
-      const hasTrigger = responsiveVariant === "with-trigger" ||
-      responsiveVariant === "base" ||
+      const hasTrigger = responsiveVariant === "with-trigger"
+      //midlertidid løsning for å ikke lage breakingchange
+      const hasNewTrigger = responsiveVariant === "base" ||
       responsiveVariant === "floating" ||
       responsiveVariant === "ghost";
     
@@ -140,7 +142,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
             <InputGroup {...groupProps} display="inline-flex">
                  {hasTrigger && (
                 <PopoverTrigger>
-                  <CalendarTriggerButton ref={ref} {...buttonProps} />
+                  <CalendarTriggerButton variant={variant} ref={ref} {...buttonProps} />
                 </PopoverTrigger>
               )}
               <PopoverAnchor>
@@ -150,7 +152,12 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                   paddingX={3}
                   minHeight={minHeight}
                 >
-                  {!hasTrigger && (
+                  {hasNewTrigger && (
+                    <PopoverTrigger>
+                      <CalendarTriggerButton variant={variant} ref={ref} {...buttonProps} />
+                    </PopoverTrigger>
+                  )}
+                  {!hasTrigger && !hasNewTrigger && (
                     <CalendarOutline24Icon marginRight={2} alignSelf="center" />
                   )}
                   <DateField

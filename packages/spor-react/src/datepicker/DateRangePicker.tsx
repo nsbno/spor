@@ -37,7 +37,13 @@ type DateRangePickerProps = AriaDateRangePickerProps<DateValue> &
     startName?: string;
     endLabel?: string;
     endName?: string;
-    variant: ResponsiveValue<"simple" | "with-trigger">;
+    variant: ResponsiveValue<
+    "simple" 
+    | "with-trigger" 
+    | "base" 
+    | "floating"
+    | "ghost"
+    >;
     withPortal?: boolean;
   };
 /**
@@ -99,6 +105,11 @@ export function DateRangePicker({
   };
 
   const hasTrigger = responsiveVariant === "with-trigger";
+  
+  //midlertidig løsning for å ikke lage breaking change
+  const hasNewTrigger = responsiveVariant === "base" ||
+  responsiveVariant === "floating" ||
+  responsiveVariant === "ghost";
 
   const popoverContent = (
     <PopoverContent sx={styles.calendar} boxShadow="md" maxWidth="none">
@@ -128,7 +139,7 @@ export function DateRangePicker({
           <InputGroup {...groupProps} width="auto" display="inline-flex">
           {hasTrigger && (
               <PopoverTrigger>
-                <CalendarTriggerButton ref={ref} {...buttonProps} />
+                <CalendarTriggerButton variant={variant} ref={ref} {...buttonProps} />
               </PopoverTrigger>
             )}
             <PopoverAnchor>
@@ -140,7 +151,12 @@ export function DateRangePicker({
                 onKeyPress={handleEnterClick}
                 minHeight={minHeight}
               >
-                {!hasTrigger && (
+                 {hasNewTrigger && (
+                  <PopoverTrigger>
+                    <CalendarTriggerButton paddingLeft={1} paddingRight={1} variant={variant} ref={ref} {...buttonProps} />
+                  </PopoverTrigger>
+                )}
+                {!hasTrigger && !hasNewTrigger && (
                   <CalendarOutline24Icon boxSize={8} marginRight={2} alignSelf="center" />
                 )}
                 <DateField

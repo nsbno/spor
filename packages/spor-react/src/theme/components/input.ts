@@ -45,13 +45,14 @@ const config = helpers.defineMultiStyleConfig({
           }),
         },
         notFocus: {
-          boxShadow: getBoxShadowString({ borderColor: "darkGrey" }),
+          boxShadow: getBoxShadowString({ borderColor: mode("darkGrey", "white")(props) }),
         },
       }),
       _disabled: {
-        boxShadow: getBoxShadowString({ borderColor: "platinum" }),
-        _hover: { boxShadow: getBoxShadowString({ borderColor: "platinum" }) },
-        _focus: { boxShadow: getBoxShadowString({ borderColor: "platinum" }) },
+        backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
+        boxShadow: getBoxShadowString({
+          borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props)
+        }),
       },
       _invalid: {
         boxShadow: getBoxShadowString({
@@ -60,7 +61,7 @@ const config = helpers.defineMultiStyleConfig({
         }),
         _hover: {
           boxShadow: getBoxShadowString({
-            borderColor: "darkGrey",
+            borderColor: mode("darkGrey", "white")(props),
             borderWidth: 2,
           }),
         },
@@ -78,6 +79,9 @@ const config = helpers.defineMultiStyleConfig({
             }),
           },
         }),
+      },
+      ":disabled + label": {
+        color: mode("blackAlpha.400", "whiteAlpha.400")(props),
       },
       " + label": {
         fontSize: ["mobile.sm", "desktop.sm"],

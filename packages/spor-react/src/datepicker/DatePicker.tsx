@@ -36,7 +36,7 @@ type DatePickerProps = AriaDatePickerProps<DateValue> &
     variant: ResponsiveValue<
     /** @deprecated simple is deprecated please use base, floating or ghost*/ 
     "simple" 
-    /** @deprecated with-trigger is deprecated please use base, floating or ghost*/ simple" 
+    /** @deprecated with-trigger is deprecated please use base, floating or ghost*/
     | "with-trigger" 
     | "base" 
     | "floating"

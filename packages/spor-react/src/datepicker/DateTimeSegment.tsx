@@ -24,8 +24,6 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
       state,
       ref as RefObject<HTMLDivElement>
     );
-    
-    const segmented = segment.type === "year" ? segment.text.slice(-2) : segment.text;
 
     const styles = useMultiStyleConfig("Datepicker", {
       isPlaceholder: segment.isPlaceholder,
@@ -50,8 +48,8 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
         }}
       >
         {isPaddable(segment.type)
-          ? segmented.padStart(2, "0")
-          : segmented}
+          ? segment.text.padStart(2, "0")
+          : segment.text}
       </Box>
     );
   }

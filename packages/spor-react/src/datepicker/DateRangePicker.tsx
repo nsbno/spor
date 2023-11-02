@@ -151,7 +151,7 @@ export function DateRangePicker({
                   label={props.startLabel}
                   labelProps={labelProps}
                 />
-                 <Box as="span" aria-hidden="true" marginRight="2" marginLeft="-3">
+                 <Box as="span" aria-hidden="true" paddingRight="2">
                   –
                 </Box>
                 <DateField

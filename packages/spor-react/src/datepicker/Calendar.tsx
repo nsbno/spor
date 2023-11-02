@@ -14,9 +14,7 @@ import { createTexts, useTranslation } from "../i18n";
 type CalendarProps = ReactAriaCalendarProps<DateValue> & {
   showYearNavigation?: boolean;
   variant: ResponsiveValue<
-  "simple" 
-  | "with-trigger" 
-  | "base" 
+   "base"
   | "floating"
   | "ghost"
   >;

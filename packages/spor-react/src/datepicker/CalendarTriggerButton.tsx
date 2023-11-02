@@ -13,9 +13,7 @@ import { createTexts, useTranslation } from "..";
 
 type CalendarTriggerButtonProps = AriaButtonProps<"button"> & {
   variant: ResponsiveValue<
-    "simple" 
-    | "with-trigger" 
-    | "base" 
+     "base" 
     | "floating" 
     | "ghost"
   >;

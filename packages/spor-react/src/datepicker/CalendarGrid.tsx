@@ -17,9 +17,7 @@ const weekDays: Record<Language, string[]> = {
 
 type CalendarGridProps = AriaCalendarGridProps & {
   variant: ResponsiveValue<
-  "simple" 
-  | "with-trigger" 
-  | "base" 
+   "base" 
   | "floating"
   | "ghost"
   >;

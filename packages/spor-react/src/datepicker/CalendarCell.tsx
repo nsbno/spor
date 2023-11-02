@@ -11,9 +11,7 @@ import { CalendarState, RangeCalendarState } from "react-stately";
 
 type CalendarCellProps = {
   variant: ResponsiveValue<
-  "simple" 
-  | "with-trigger" 
-  | "base" 
+    "base" 
   | "floating"
   | "ghost"
   >;

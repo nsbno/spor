@@ -33,24 +33,12 @@ import { useCurrentLocale } from "./utils";
 
 type DatePickerProps = AriaDatePickerProps<DateValue> &
   Pick<BoxProps, "minHeight" | "width"> & {
-    variant: ResponsiveValue<
-     "base" 
-    | "floating"
-    | "ghost"
-    >;
+    variant: ResponsiveValue<"base" | "floating" | "ghost">;
     name?: string;
     showYearNavigation?: boolean;
     withPortal?: boolean;
   };
-/**
- * A date picker component.
- *
- * There are two versions of this component – a simple one, and one with a trigger button for showing the calendar. Use whatever fits your design.
- *
- * ```tsx
- * <DatePicker label="Dato" variant="simple" />
- * ```
- */
+
 export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
   (
     {
@@ -88,24 +76,15 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       ref as React.MutableRefObject<HTMLDivElement>
     );
 
-    const styles = useMultiStyleConfig("Datepicker", {variant});
+    const styles = useMultiStyleConfig("Datepicker", { variant });
     const locale = useCurrentLocale();
 
-    //deprecated
-    const responsiveVariant =
-      useBreakpointValue(typeof variant === "string" ? [variant] : variant) ??
-      "simple";
-      const hasTrigger = responsiveVariant === "with-trigger"
-      //midlertidid løsning for å ikke lage breakingchange
-      const hasNewTrigger = responsiveVariant === "base" ||
-      responsiveVariant === "floating" ||
-      responsiveVariant === "ghost";
-    
+    // if (variant == "with-trigger" || "simple") {
+      
+    // }
 
     const onFieldClick = () => {
-      if (!hasTrigger) {
-        state.setOpen(true);
-      }
+      state.setOpen(true);
     };
 
     const popoverContent = (
@@ -125,12 +104,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 
     return (
       <I18nProvider locale={locale}>
-        <Box
-          position="relative"
-          display="inline-flex"
-          flexDirection="column"
-          width={width}
-        >
+        <Box position="relative" display="inline-flex" flexDirection="column" width={width}>
           <Popover
             {...dialogProps}
             isOpen={state.isOpen}
@@ -138,42 +112,30 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
             onClose={state.close}
           >
             <InputGroup {...groupProps} display="inline-flex">
-                 {hasTrigger && (
-                <PopoverTrigger>
-                  <CalendarTriggerButton variant={variant} ref={ref} {...buttonProps} />
-                </PopoverTrigger>
-              )}
+             
               <PopoverAnchor>
                 <StyledField
-                  variant={responsiveVariant}
+                  variant={variant}
                   onClick={onFieldClick}
                   paddingX={3}
                   minHeight={minHeight}
                 >
-                  {hasNewTrigger && (
-                    <PopoverTrigger>
-                      <CalendarTriggerButton variant={variant} ref={ref} {...buttonProps} />
-                    </PopoverTrigger>
-                  )}
-                  {!hasTrigger && !hasNewTrigger && (
-                    <CalendarOutline24Icon marginRight={2} alignSelf="center" />
-                  )}
+                   {variant && (
+                <PopoverTrigger>
+                  <CalendarTriggerButton variant={variant} ref={ref} {...buttonProps} />
+                </PopoverTrigger>
+              )}
                   <DateField
                     label={props.label}
                     labelProps={labelProps}
                     name={props.name}
-                    ref={hasTrigger ? undefined : ref}
                     {...fieldProps}
                   />
                 </StyledField>
-              </PopoverAnchor> 
+              </PopoverAnchor>
             </InputGroup>
-            <FormErrorMessage {...errorMessageProps}>
-              {errorMessage}
-            </FormErrorMessage>
-            {state.isOpen && !props.isDisabled && withPortal && (
-              <Portal>{popoverContent}</Portal>
-            )}
+            <FormErrorMessage {...errorMessageProps}>{errorMessage}</FormErrorMessage>
+            {state.isOpen && !props.isDisabled && withPortal && <Portal>{popoverContent}</Portal>}
             {state.isOpen && !props.isDisabled && !withPortal && popoverContent}
           </Popover>
         </Box>

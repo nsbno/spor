@@ -28,6 +28,7 @@ const config = helpers.defineMultiStyleConfig({
       }),
       transitionProperty: "box-shadow",
       transitionDuration: "fast",
+      borderRadius: "sm",
       display: "flex",
       flex: 1,
       paddingY: 0.5,
@@ -79,9 +80,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     calendarTriggerButton: {
       backgroundColor: mode("white", "night")(props),
-      boxShadow: `${getBoxShadowString({
-        borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-      })}, inset 1px 0 0 1px ${mode("white", colors.night)(props)}`, // to make the shadow colors not multiply
+      boxShadow: "none",
       width: 8,
       display: "flex",
       alignItems: "center",
@@ -90,16 +89,17 @@ const config = helpers.defineMultiStyleConfig({
       transitionProperty: "box-shadow, background-color",
       transitionSpeed: "fast",
       position: "relative",
-      right: "-1px", // To make the box-shadows overlap
+      paddingTop: 1,
+      paddingBottom: 1,
+      borderRadius: "sm",
+      right: "9px",
 
       _hover: {
-        boxShadow: `${getBoxShadowString({
-          borderColor: mode("darkGrey", "white")(props),
-          borderWidth: 2,
-        })}, inset 2px 0 0 2px ${mode("white", colors.night)(props)}`,
+        boxShadow: "none",
+        backgroundColor: mode("seaMist", "pine")(props),
       },
       _active: {
-        backgroundColor: mode("mint", "azure")(props),
+        backgroundColor: mode("mint", "whiteAlpha.200")(props),
       },
       ...focusVisible({
         focus: {
@@ -129,6 +129,10 @@ const config = helpers.defineMultiStyleConfig({
     calendar: {
       backgroundColor: mode("white", "night")(props),
       color: mode("darkGrey", "white")(props),
+      boxShadow: getBoxShadowString({
+        borderWidth: 2,
+        borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
+      }),
     },
     weekdays: {
       color: mode("darkGrey", "white")(props),
@@ -194,7 +198,7 @@ const config = helpers.defineMultiStyleConfig({
       "&[data-today]": {
         boxShadow: getBoxShadowString({
           borderWidth: 1,
-          borderColor: mode("osloGrey", "dimGrey")(props),
+          borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
         }),
         _focus: {
           outline: "none",
@@ -232,45 +236,6 @@ const config = helpers.defineMultiStyleConfig({
           }),
         },
       },
-      calendarTriggerButton: {
-        boxShadow: ``,
-        paddingTop: 1,
-        paddingBottom: 1,
-        borderRadius: "sm",
-        right: "9px",
-  
-        _hover: {
-        boxShadow: "",
-         backgroundColor: mode("seaMist", "pine")(props),
-        },
-        _active: {
-          backgroundColor: mode("mint", "whiteAlpha.200")(props),
-        },
-        ...focusVisible({
-          focus: {
-            outline: "none",
-            boxShadow: getBoxShadowString({
-              borderColor: mode("greenHaze", "azure")(props),
-              borderWidth: 2,
-            }),
-          },
-          notFocus: {
-            boxShadow: getBoxShadowString({
-              borderColor: mode("darkGrey", "white")(props),
-              borderWidth: 1,
-            }),
-          },
-        }),
-        _invalid: {
-          boxShadow: getBoxShadowString({
-            borderColor: "brightRed",
-            borderWidth: 2,
-          }),
-        },
-      },
-      wrapper: {
-        borderRadius: "sm",
-      },
     }),
     floating: (props) => ({
         calendar: {
@@ -282,45 +247,6 @@ const config = helpers.defineMultiStyleConfig({
         _hover: {
           backgroundColor: mode("", "")(props),
         },
-      },
-      calendarTriggerButton: {
-        boxShadow: ``,
-        paddingTop: 1,
-        paddingBottom: 1,
-        borderRadius: "sm",
-        right: "9px",
-  
-        _hover: {
-        boxShadow: "",
-         backgroundColor: mode("seaMist", "pine")(props),
-        },
-        _active: {
-          backgroundColor: mode("mint", "whiteAlpha.200")(props),
-        },
-        ...focusVisible({
-          focus: {
-            outline: "none",
-            boxShadow: getBoxShadowString({
-              borderColor: mode("greenHaze", "azure")(props),
-              borderWidth: 2,
-            }),
-          },
-          notFocus: {
-            boxShadow: getBoxShadowString({
-              borderColor: mode("darkGrey", "white")(props),
-              borderWidth: 1,
-            }),
-          },
-        }),
-        _invalid: {
-          boxShadow: getBoxShadowString({
-            borderColor: "brightRed",
-            borderWidth: 2,
-          }),
-        },
-      },
-      wrapper: {
-        borderRadius: "sm",
       },
     }),
     ghost: (props) => ({
@@ -342,56 +268,7 @@ const config = helpers.defineMultiStyleConfig({
           color: "darkGrey"
         },
       },
-      calendarTriggerButton: {
-        boxShadow: ``,
-        paddingTop: 1,
-        paddingBottom: 1,
-        borderRadius: "sm",
-        right: "9px",
-  
-        _hover: {
-        boxShadow: "",
-         backgroundColor: mode("seaMist", "pine")(props),
-        },
-        _active: {
-          backgroundColor: mode("mint", "whiteAlpha.200")(props),
-        },
-        ...focusVisible({
-          focus: {
-            outline: "none",
-            boxShadow: getBoxShadowString({
-              borderColor: mode("greenHaze", "azure")(props),
-              borderWidth: 2,
-            }),
-          },
-          notFocus: {
-            boxShadow: getBoxShadowString({
-              borderColor: mode("darkGrey", "white")(props),
-              borderWidth: 1,
-            }),
-          },
-        }),
-        _invalid: {
-          boxShadow: getBoxShadowString({
-            borderColor: "brightRed",
-            borderWidth: 2,
-          }),
-        },
-      },
-      wrapper: {
-        borderRadius: "sm",
-      },
     }),
-    simple: {
-      wrapper: {
-        borderRadius: "sm",
-      },
-    },
-    "with-trigger": {
-      wrapper: {
-        borderRightRadius: "sm",
-      },
-    },
   },
 });
 

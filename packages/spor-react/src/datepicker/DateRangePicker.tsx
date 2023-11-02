@@ -38,11 +38,7 @@ type DateRangePickerProps = AriaDateRangePickerProps<DateValue> &
     endLabel?: string;
     endName?: string;
     variant: ResponsiveValue<
-      /** @deprecated simple is deprecated please use base, floating or ghost*/ 
-    "simple" 
-      /** @deprecated with-trigger is deprecated please use base, floating or ghost*/ 
-    | "with-trigger" 
-    | "base" 
+     "base" 
     | "floating"
     | "ghost"
     >;
@@ -101,13 +97,9 @@ export function DateRangePicker({
   };
 
   const onFieldClick = () => {
-    if (!hasTrigger) {
       state.setOpen(true);
-    }
   };
 
-  const hasTrigger = responsiveVariant === "with-trigger";
-  
   //midlertidig løsning for å ikke lage breaking change
   const hasNewTrigger = responsiveVariant === "base" ||
   responsiveVariant === "floating" ||
@@ -139,36 +131,29 @@ export function DateRangePicker({
           onClose={state.close}
         >
           <InputGroup {...groupProps} width="auto" display="inline-flex">
-          {hasTrigger && (
-              <PopoverTrigger>
-                <CalendarTriggerButton variant={variant} ref={ref} {...buttonProps} />
-              </PopoverTrigger>
-            )}
             <PopoverAnchor>
               <StyledField
                 alignItems="center"
                 paddingX={3}
-                variant={responsiveVariant}
+                variant={variant}
                 onClick={onFieldClick}
                 onKeyPress={handleEnterClick}
                 minHeight={minHeight}
               >
-                 {hasNewTrigger && (
+                {variant && (
                   <PopoverTrigger>
                     <CalendarTriggerButton paddingLeft={1} paddingRight={1} variant={variant} ref={ref} {...buttonProps} />
                   </PopoverTrigger>
-                )}
-                {!hasTrigger && !hasNewTrigger && (
-                  <CalendarOutline24Icon boxSize={8} marginRight={2} alignSelf="center" />
                 )}
                 <DateField
                   {...startFieldProps}
                   name={startName}
                   label={props.startLabel}
-                  ref={hasTrigger ? undefined : ref}
                   labelProps={labelProps}
                 />
-               
+                 <Box as="span" aria-hidden="true" marginRight="2" marginLeft="-3">
+                  –
+                </Box>
                 <DateField
                   {...endFieldProps}
                   name={endName}

@@ -53,6 +53,7 @@ const config = helpers.defineMultiStyleConfig({
         boxShadow: getBoxShadowString({
           borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props)
         }),
+        cursor: "not-allowed"
       },
       _invalid: {
         boxShadow: getBoxShadowString({

@@ -17,7 +17,6 @@ import {
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
 import { useDatePickerState } from "@react-stately/datepicker";
-import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, useRef } from "react";
 import {
   AriaDatePickerProps,

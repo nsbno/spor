@@ -18,7 +18,6 @@ import {
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
 import { useDateRangePickerState } from "@react-stately/datepicker";
-import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { useRef } from "react";
 import {
   AriaDateRangePickerProps,
@@ -79,38 +78,19 @@ export function DateRangePicker({
     calendarProps,
   } = useDateRangePicker(props, state, ref);
 
-  const responsiveVariant =
-    useBreakpointValue(typeof variant === "string" ? [variant] : variant) ??
-    "simple";
-
-  const styles = useMultiStyleConfig("Datepicker", {
-    variant: responsiveVariant,
-  });
+  const styles = useMultiStyleConfig("Datepicker", {variant});
   const locale = useCurrentLocale();
-
-  const handleEnterClick = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !state.isOpen && responsiveVariant === "simple") {
-      // Don't submit the form
-      e.stopPropagation();
-      state.setOpen(true);
-    }
-  };
 
   const onFieldClick = () => {
       state.setOpen(true);
   };
-
-  //midlertidig løsning for å ikke lage breaking change
-  const hasNewTrigger = responsiveVariant === "base" ||
-  responsiveVariant === "floating" ||
-  responsiveVariant === "ghost";
 
   const popoverContent = (
     <PopoverContent sx={styles.calendar} boxShadow="md" maxWidth="none">
       <PopoverArrow sx={styles.arrow} />
       <PopoverBody>
         <FocusLock>
-          <RangeCalendar {...calendarProps} />
+          <RangeCalendar variant={"base"} {...calendarProps} />
         </FocusLock>
       </PopoverBody>
     </PopoverContent>
@@ -137,7 +117,6 @@ export function DateRangePicker({
                 paddingX={3}
                 variant={variant}
                 onClick={onFieldClick}
-                onKeyPress={handleEnterClick}
                 minHeight={minHeight}
               >
                 {variant && (

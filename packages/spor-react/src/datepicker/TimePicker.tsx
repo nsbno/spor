@@ -121,7 +121,7 @@ export const TimePicker = ({
   )}`;
   return (
     <StyledField
-      variant="simple"
+      variant="base"
       width="fit-content"
       paddingX={2}
       alignItems="center"

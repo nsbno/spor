@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": patch
 ---
 
-DatePicker: add new variations and dark mode
+DatePicker: add new variations, dark mode and deprecated some old designs

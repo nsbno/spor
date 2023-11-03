@@ -38,6 +38,16 @@ type DatePickerProps = AriaDatePickerProps<DateValue> &
     withPortal?: boolean;
   };
 
+/**
+ * A date picker component.
+ *
+ * There are two versions of this component – a simple one, and one with a trigger button for showing the calendar. Use whatever fits your design.
+ *
+ * ```tsx
+ * <DatePicker label="Dato" variant="simple" />
+ * ```
+ */
+
 export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
   (
     {
@@ -78,10 +88,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     const styles = useMultiStyleConfig("Datepicker", { variant });
     const locale = useCurrentLocale();
 
-    // if (variant == "with-trigger" || "simple") {
-      
-    // }
-
     const onFieldClick = () => {
       state.setOpen(true);
     };
@@ -110,8 +116,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
             onOpen={state.open}
             onClose={state.close}
           >
-            <InputGroup {...groupProps} display="inline-flex">
-             
+            <InputGroup {...groupProps} display="inline-flex">             
               <PopoverAnchor>
                 <StyledField
                   variant={variant}
@@ -119,11 +124,9 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                   paddingX={3}
                   minHeight={minHeight}
                 >
-                   {variant && (
-                <PopoverTrigger>
-                  <CalendarTriggerButton variant={variant} ref={ref} {...buttonProps} />
-                </PopoverTrigger>
-              )}
+                  <PopoverTrigger>
+                    <CalendarTriggerButton variant={variant} ref={ref} {...buttonProps} />
+                  </PopoverTrigger>
                   <DateField
                     label={props.label}
                     labelProps={labelProps}

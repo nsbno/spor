@@ -81,6 +81,14 @@ export function DateRangePicker({
   const styles = useMultiStyleConfig("Datepicker", {variant});
   const locale = useCurrentLocale();
 
+  const handleEnterClick = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !state.isOpen && variant === "base") {
+      // Don't submit the form
+      e.stopPropagation();
+      state.setOpen(true);
+    }
+  };
+
   const onFieldClick = () => {
       state.setOpen(true);
   };
@@ -117,6 +125,7 @@ export function DateRangePicker({
                 paddingX={3}
                 variant={variant}
                 onClick={onFieldClick}
+                onKeyPress={handleEnterClick}
                 minHeight={minHeight}
               >
                 {variant && (

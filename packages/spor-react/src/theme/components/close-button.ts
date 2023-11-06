@@ -11,7 +11,7 @@ const config = defineStyleConfig({
     h: [$size.reference],
     transitionProperty: "common",
     transitionDuration: "normal",
-    borderRadius: "xs",
+    borderRadius: "md",
     backgroundColor: "transparent",
     color: mode("darkGrey", "white")(props),
     fontWeight: "normal",

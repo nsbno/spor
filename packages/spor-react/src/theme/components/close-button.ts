@@ -1,39 +1,40 @@
-import { defineStyleConfig } from "@chakra-ui/react";
-import { cssVar } from "@chakra-ui/theme-tools";
+import { defineStyleConfig, propNames } from "@chakra-ui/react";
+import { cssVar, mode } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
 
 const $size = cssVar("close-button-size");
 
 const config = defineStyleConfig({
-  baseStyle: {
+  baseStyle: (props) => ({
     w: [$size.reference],
     h: [$size.reference],
     transitionProperty: "common",
     transitionDuration: "normal",
     borderRadius: "xs",
     backgroundColor: "transparent",
-    color: "darkGrey",
+    color: mode("darkGrey", "white")(props),
     fontWeight: "normal",
     ...focusVisible({
       focus: {
-        outline: "none",
-        boxShadow: getBoxShadowString({ borderColor: "greenHaze" }),
+        outline: "transparent solid 2px",
+        boxShadow: getBoxShadowString({ borderColor: mode("greenHaze", "azure")(props) }),
+        outlineOffset: "2px",
       },
       notFocus: {
         boxShadow: "none",
       },
     }),
     _hover: {
-      backgroundColor: "seaMist",
+      backgroundColor: mode("seaMist", "pine")(props),
       _disabled: {
         color: "dimGrey",
       },
     },
     _active: {
-      backgroundColor: "mint",
+      backgroundColor: mode("mint", "whiteAlpha.200")(props),
     },
-  },
+  }),
   sizes: {
     lg: {
       [$size.variable]: "40px",

@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, ResponsiveValue } from "@chakra-ui/react";
 import { createCalendar, DateValue } from "@internationalized/date";
 import { useCalendarState } from "@react-stately/calendar";
 import React from "react";
@@ -13,8 +13,13 @@ import { createTexts, useTranslation } from "../i18n";
 
 type CalendarProps = ReactAriaCalendarProps<DateValue> & {
   showYearNavigation?: boolean;
+  variant: ResponsiveValue<
+   "base"
+  | "floating"
+  | "ghost"
+  >;
 };
-export function Calendar({ showYearNavigation, ...props }: CalendarProps) {
+export function Calendar({ showYearNavigation, variant, ...props }: CalendarProps) {
   const { t } = useTranslation();
   const locale = useCurrentLocale();
   const state = useCalendarState({
@@ -32,7 +37,7 @@ export function Calendar({ showYearNavigation, ...props }: CalendarProps) {
   return (
     <Box {...calendarProps} aria-label={ariaLabel}>
       <CalendarHeader state={state} showYearNavigation={showYearNavigation} />
-      <CalendarGrid state={state} />
+      <CalendarGrid variant={variant} state={state} />
     </Box>
   );
 }

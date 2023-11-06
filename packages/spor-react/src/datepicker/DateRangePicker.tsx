@@ -18,7 +18,6 @@ import {
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
 import { useDateRangePickerState } from "@react-stately/datepicker";
-import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { useRef } from "react";
 import {
   AriaDateRangePickerProps,
@@ -37,7 +36,11 @@ type DateRangePickerProps = AriaDateRangePickerProps<DateValue> &
     startName?: string;
     endLabel?: string;
     endName?: string;
-    variant: ResponsiveValue<"simple" | "with-trigger">;
+    variant: ResponsiveValue<
+     "base" 
+    | "floating"
+    | "ghost"
+    >;
     withPortal?: boolean;
   };
 /**
@@ -75,17 +78,11 @@ export function DateRangePicker({
     calendarProps,
   } = useDateRangePicker(props, state, ref);
 
-  const responsiveVariant =
-    useBreakpointValue(typeof variant === "string" ? [variant] : variant) ??
-    "simple";
-
-  const styles = useMultiStyleConfig("Datepicker", {
-    variant: responsiveVariant,
-  });
+  const styles = useMultiStyleConfig("Datepicker", {variant});
   const locale = useCurrentLocale();
 
   const handleEnterClick = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !state.isOpen && responsiveVariant === "simple") {
+    if (e.key === "Enter" && !state.isOpen && variant === "base") {
       // Don't submit the form
       e.stopPropagation();
       state.setOpen(true);
@@ -93,19 +90,15 @@ export function DateRangePicker({
   };
 
   const onFieldClick = () => {
-    if (!hasTrigger) {
       state.setOpen(true);
-    }
   };
-
-  const hasTrigger = responsiveVariant === "with-trigger";
 
   const popoverContent = (
     <PopoverContent sx={styles.calendar} boxShadow="md" maxWidth="none">
       <PopoverArrow sx={styles.arrow} />
       <PopoverBody>
         <FocusLock>
-          <RangeCalendar {...calendarProps} />
+          <RangeCalendar variant={"base"} {...calendarProps} />
         </FocusLock>
       </PopoverBody>
     </PopoverContent>
@@ -130,22 +123,23 @@ export function DateRangePicker({
               <StyledField
                 alignItems="center"
                 paddingX={3}
-                variant={responsiveVariant}
+                variant={variant}
                 onClick={onFieldClick}
                 onKeyPress={handleEnterClick}
                 minHeight={minHeight}
               >
-                {!hasTrigger && (
-                  <CalendarOutline24Icon marginRight={2} alignSelf="center" />
+                {variant && (
+                  <PopoverTrigger>
+                    <CalendarTriggerButton paddingLeft={1} paddingRight={1} variant={variant} ref={ref} {...buttonProps} />
+                  </PopoverTrigger>
                 )}
                 <DateField
                   {...startFieldProps}
                   name={startName}
                   label={props.startLabel}
-                  ref={hasTrigger ? undefined : ref}
                   labelProps={labelProps}
                 />
-                <Box as="span" aria-hidden="true" paddingX="2">
+                 <Box as="span" aria-hidden="true" paddingRight="2">
                   –
                 </Box>
                 <DateField
@@ -156,11 +150,6 @@ export function DateRangePicker({
                 />
               </StyledField>
             </PopoverAnchor>
-            {hasTrigger && (
-              <PopoverTrigger>
-                <CalendarTriggerButton ref={ref} {...buttonProps} />
-              </PopoverTrigger>
-            )}
           </InputGroup>
           {state.isOpen && withPortal && <Portal>{popoverContent}</Portal>}
           {state.isOpen && !withPortal && popoverContent}

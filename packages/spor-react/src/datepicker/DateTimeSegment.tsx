@@ -37,12 +37,10 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
           ...segmentProps.style,
           boxSizing: "content-box",
         }}
-        paddingX="1px"
         textAlign="center"
         outline="none"
         borderRadius="xs"
         fontSize={["mobile.sm", "desktop.sm"]}
-        minWidth={isPaddable(segment.type) ? "1.3em" : "auto"}
         sx={styles.dateTimeSegment}
         _focus={{
           backgroundColor: "darkTeal",

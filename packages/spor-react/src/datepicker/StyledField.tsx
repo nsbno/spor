@@ -2,6 +2,7 @@ import {
   As,
   Box,
   BoxProps,
+  ResponsiveValue,
   forwardRef,
   useFormControlContext,
   useMultiStyleConfig,
@@ -9,7 +10,11 @@ import {
 import React from "react";
 
 type StyledFieldProps = BoxProps & {
-  variant: "simple" | "with-trigger";
+  variant: ResponsiveValue< 
+  "base" 
+  | "floating" 
+  | "ghost" 
+>;
 };
 export const StyledField = forwardRef<StyledFieldProps, As>(
   ({ children, variant, ...otherProps }, ref) => {

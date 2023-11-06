@@ -4,17 +4,24 @@ import {
   useMultiStyleConfig,
   forwardRef,
   As,
+  ResponsiveValue,
 } from "@chakra-ui/react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { useEffect } from "react";
 import { AriaButtonProps } from "react-aria";
 import { createTexts, useTranslation } from "..";
 
-type CalendarTriggerButtonProps = AriaButtonProps<"button">;
+type CalendarTriggerButtonProps = AriaButtonProps<"button"> & {
+  variant: ResponsiveValue<
+     "base" 
+    | "floating" 
+    | "ghost"
+  >;
+};
 export const CalendarTriggerButton = forwardRef<CalendarTriggerButtonProps, As>(
-  ({ ...buttonProps }, ref) => {
+  ({ variant, ...buttonProps }, ref) => {
     const { t } = useTranslation();
-    const styles = useMultiStyleConfig("Datepicker", {});
+    const styles = useMultiStyleConfig("Datepicker", {variant});
 
     const { onPress, ...filteredButtonProps } = buttonProps;
 

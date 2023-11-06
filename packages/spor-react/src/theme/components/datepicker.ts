@@ -241,6 +241,10 @@ const config = helpers.defineMultiStyleConfig({
         calendar: {
           backgroundColor: mode("white", "night")(props),
           color: mode("darkGrey", "white")(props),
+          boxShadow: getBoxShadowString({
+            borderColor: mode("grey.200", "whiteAlpha.400")(props),
+            baseShadow: "sm",
+          }),
         },
       dateCell: {
         color: mode("darkGrey", "white")(props),

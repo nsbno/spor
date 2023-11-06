@@ -1,4 +1,4 @@
-import { defineStyleConfig, propNames } from "@chakra-ui/react";
+import { defineStyleConfig } from "@chakra-ui/react";
 import { cssVar, mode } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";

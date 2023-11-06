@@ -36,7 +36,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     closeButton: {
       position: "absolute",
-      color: mode("inherit", "white")(props),
+      color: "inherit",
       top: 3,
       insetEnd: 3,
     },

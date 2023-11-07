@@ -1,6 +1,6 @@
 import { popoverAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { cssVar } from "@chakra-ui/theme-tools";
+import { cssVar, mode } from "@chakra-ui/theme-tools";
 
 const $popperBg = cssVar("popper-bg");
 const $arrowBg = cssVar("popper-arrow-bg");
@@ -9,12 +9,12 @@ const $arrowShadowColor = cssVar("popper-arrow-shadow-color");
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({
-  baseStyle: {
+  baseStyle: (props) => ({
     popper: {
       zIndex: "popover",
     },
     content: {
-      [$popperBg.variable]: `colors.darkTeal`,
+      [$popperBg.variable]: mode(`colors.darkTeal`, `colors.seaMist`)(props) ,
       backgroundColor: $popperBg.reference,
       [$arrowBg.variable]: $popperBg.reference,
       [$arrowShadowColor.variable]: `colors.blackAlpha.300`,
@@ -43,7 +43,7 @@ const config = helpers.defineMultiStyleConfig({
       height: 2,
       padding: 1,
     },
-  },
+  }),
   sizes: {
     sm: {
       content: {

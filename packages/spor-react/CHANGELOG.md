@@ -1,5 +1,18 @@
 # @vygruppen/spor-react
 
+## 3.8.0
+
+### Minor Changes
+
+- d709b8b0: NumericStepper: Add two new props – `stepSize` (which sets the number to increment at a time) and `showZero` ( which decides whether you should show the digit 0 when the count is 0)
+
+### Patch Changes
+
+- bd1d64b1: close-button: added dark mode
+- c999ff24: DatePicker: add new variations, dark mode and deprecated some old designs
+- 8c44575c: General: Downgrade framer-motion because of race condition bug
+- edb3b106: Modal: Add Dark Mode support
+
 ## 3.7.7
 
 ### Patch Changes

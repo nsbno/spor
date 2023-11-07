@@ -1,6 +1,6 @@
 import { modalAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import type { PartsStyleObject } from "@chakra-ui/theme-tools";
+import { mode, type PartsStyleObject } from "@chakra-ui/theme-tools";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -19,8 +19,8 @@ const config = helpers.defineMultiStyleConfig({
     },
     dialog: {
       borderRadius: "md",
-      background: "white",
-      color: "inherit",
+      background: mode("white", "night")(props),
+      color: mode("inherit", "white")(props),
       my: "3.75rem",
       zIndex: "modal",
       maxHeight:
@@ -36,6 +36,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     closeButton: {
       position: "absolute",
+      color: "inherit",
       top: 3,
       insetEnd: 3,
     },

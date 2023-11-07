@@ -17,6 +17,7 @@ const config = defineStyleConfig({
     fontWeight: "normal",
     ...focusVisible({
       focus: {
+        outline: "none",
         boxShadow: getBoxShadowString({ borderColor: mode("greenHaze", "azure")(props) }),
         outlineOffset: "2px",
       },

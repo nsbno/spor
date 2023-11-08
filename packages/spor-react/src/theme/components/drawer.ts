@@ -19,16 +19,12 @@ const config = helpers.defineMultiStyleConfig({
       overflow: props.scrollBehavior === "inside" ? "hidden" : "auto",
     },
     dialog: {
-      backgroundColor: mode("white", "night")(props),
+      backgroundColor: mode("white", "pine")(props),
       color: mode("inherit", "white")(props),
       zIndex: "modal",
       maxHeight:
         props.scrollBehavior === "inside" ? "calc(100% - 7.5rem)" : undefined,
       boxShadow: "md",
-    },
-    notch: {
-      backgroundColor: "red", // Define the background color for the Notch component
-      // You can add any other styles specific to the Notch component here
     },
     header: {
       px: 3,

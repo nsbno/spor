@@ -1,8 +1,8 @@
 import { defineStyleConfig } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
-import { mode } from "@chakra-ui/theme-tools";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({
@@ -16,7 +16,7 @@ const config = defineStyleConfig({
     borderRadius: "md",
     ...getColorSchemeBaseProps(props),
 
-    "button&, a&": {
+    "button&, a&, label&, &.is-clickable": {
       ...getColorSchemeClickableProps(props),
       _hover: getColorSchemeHoverProps(props),
       _active: getColorSchemeActiveProps(props),
@@ -62,7 +62,7 @@ type CardThemeProps = {
   size: "sm" | "lg";
 };
 
-const getColorSchemeBaseProps= (props: CardThemeProps) => {
+const getColorSchemeBaseProps = (props: CardThemeProps) => {
   const { colorScheme, size } = props;
   const baseShadow = size === "lg" ? "md" : "sm";
   switch (colorScheme) {
@@ -89,7 +89,7 @@ const getColorSchemeBaseProps= (props: CardThemeProps) => {
         backgroundColor: colors[colorScheme]?.[100] ?? "platinum",
       };
   }
-}
+};
 
 function getColorSchemeClickableProps({ colorScheme, size }: CardThemeProps) {
   const baseShadow = size === "lg" ? "md" : "sm";
@@ -129,7 +129,7 @@ const getColorSchemeHoverProps = (props: CardThemeProps) => {
     case "white":
       return {
         backgroundColor: mode("white", "whiteAlpha.200")(props),
-        boxShadow: getBoxShadowString({   
+        boxShadow: getBoxShadowString({
           baseShadow,
           borderColor: colors.steel,
           isInset: false,
@@ -153,7 +153,7 @@ const getColorSchemeHoverProps = (props: CardThemeProps) => {
         }),
       };
   }
-}
+};
 const getColorSchemeActiveProps = (props: CardThemeProps) => {
   const { colorScheme, size } = props;
   const baseShadow = size === "lg" ? "sm" : "none";
@@ -186,4 +186,4 @@ const getColorSchemeActiveProps = (props: CardThemeProps) => {
         }),
       };
   }
-}
+};

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 3.8.1
+
+### Patch Changes
+
+- c1e025e0: Card: add support for clickable labels, and .is-clickable override
+
 ## 3.8.0
 
 ### Minor Changes

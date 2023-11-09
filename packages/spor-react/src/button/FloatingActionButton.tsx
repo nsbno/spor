@@ -25,7 +25,7 @@ type FloatingActionButtonProps = BoxProps & {
  *
  * ```tsx
  * <FloatingActionButton
- *  variant="green"
+ *  variant="accent"
  *  icon={<TicketControlFill30Icon />}
  *  placement="bottom right"
  * />

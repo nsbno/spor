@@ -11,18 +11,13 @@ import {
   PopoverTrigger,
   Portal,
   ResponsiveValue,
-  useBreakpointValue,
   useFormControlContext,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
 import { useDatePickerState } from "@react-stately/datepicker";
 import React, { forwardRef, useRef } from "react";
-import {
-  AriaDatePickerProps,
-  I18nProvider,
-  useDatePicker,
-} from "react-aria";
+import { AriaDatePickerProps, I18nProvider, useDatePicker } from "react-aria";
 import { FormErrorMessage } from "..";
 import { Calendar } from "./Calendar";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
@@ -41,10 +36,10 @@ type DatePickerProps = AriaDatePickerProps<DateValue> &
 /**
  * A date picker component.
  *
- * There are two versions of this component – a simple one, and one with a trigger button for showing the calendar. Use whatever fits your design.
+ * There are three different variants – `base`, `floating` and `ghost`.
  *
  * ```tsx
- * <DatePicker label="Dato" variant="simple" />
+ * <DatePicker label="Dato" variant="base" />
  * ```
  */
 
@@ -109,14 +104,19 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 
     return (
       <I18nProvider locale={locale}>
-        <Box position="relative" display="inline-flex" flexDirection="column" width={width}>
+        <Box
+          position="relative"
+          display="inline-flex"
+          flexDirection="column"
+          width={width}
+        >
           <Popover
             {...dialogProps}
             isOpen={state.isOpen}
             onOpen={state.open}
             onClose={state.close}
           >
-            <InputGroup {...groupProps} display="inline-flex">             
+            <InputGroup {...groupProps} display="inline-flex">
               <PopoverAnchor>
                 <StyledField
                   variant={variant}
@@ -125,7 +125,11 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                   minHeight={minHeight}
                 >
                   <PopoverTrigger>
-                    <CalendarTriggerButton variant={variant} ref={ref} {...buttonProps} />
+                    <CalendarTriggerButton
+                      variant={variant}
+                      ref={ref}
+                      {...buttonProps}
+                    />
                   </PopoverTrigger>
                   <DateField
                     label={props.label}
@@ -136,8 +140,12 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                 </StyledField>
               </PopoverAnchor>
             </InputGroup>
-            <FormErrorMessage {...errorMessageProps}>{errorMessage}</FormErrorMessage>
-            {state.isOpen && !props.isDisabled && withPortal && <Portal>{popoverContent}</Portal>}
+            <FormErrorMessage {...errorMessageProps}>
+              {errorMessage}
+            </FormErrorMessage>
+            {state.isOpen && !props.isDisabled && withPortal && (
+              <Portal>{popoverContent}</Portal>
+            )}
             {state.isOpen && !props.isDisabled && !withPortal && popoverContent}
           </Popover>
         </Box>

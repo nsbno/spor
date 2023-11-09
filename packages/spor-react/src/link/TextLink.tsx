@@ -12,7 +12,7 @@ type LinkProps = Omit<ChakraLinkProps, "variant"> & {
 };
 /** Link to different sites or parts of site
  *
- * You can specify the `variant` prop to get different link designs. `tertiary` should only be used on dark backgrounds.
+ * You can specify the `variant` prop to get different link designs.
  */
 export const TextLink = forwardRef<LinkProps, "a">(
   ({ children, ...props }, ref) => {

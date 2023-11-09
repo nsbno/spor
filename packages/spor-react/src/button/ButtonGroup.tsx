@@ -13,7 +13,7 @@ export type ButtonGroupProps = ChakraButtonGroupProps;
  *
  * ```tsx
  * <ButtonGroup>
- *   <Button variant="tertiary">Cancel</Button>
+ *   <Button variant="secondary">Cancel</Button>
  *   <Button variant="primary">Save</Button>
  * </ButtonGroup>
  * ```

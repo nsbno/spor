@@ -46,10 +46,10 @@ type DateRangePickerProps = AriaDateRangePickerProps<DateValue> &
 /**
  * A date range picker component.
  *
- * There are two versions of this component – a simple one, and one with a trigger button for showing the calendar. Use whatever fits your design.
+ * There are three variants to choose from – `base`, `floating` and `ghost`.
  *
  * ```tsx
- * <DateRangePicker startLabel="From" startName="from" endLabel="To" endName="to" variant="simple" />
+ * <DateRangePicker startLabel="From" startName="from" endLabel="To" endName="to" variant="base" />
  * ```
  */
 export function DateRangePicker({

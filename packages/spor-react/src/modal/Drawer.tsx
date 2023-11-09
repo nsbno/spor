@@ -90,9 +90,9 @@ const Notch = forwardRef<BoxProps, any>((props, ref) => {
       ref={ref}
     >
       <Center
-        background={`linear-gradient(to ${
+        background={
           placement === "bottom" ? "bottom" : "top"
-        }, white 0%, white 60%, transparent)`}
+        }
         padding={2}
         borderRadius="md"
       >

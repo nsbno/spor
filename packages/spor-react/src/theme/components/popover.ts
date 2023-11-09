@@ -14,11 +14,7 @@ const config = helpers.defineMultiStyleConfig({
       zIndex: "popover",
     },
     content: {
-<<<<<<< HEAD
-      [$popperBg.variable]: mode(`colors.darkTeal`, `colors.seaMist`)(props) ,
-=======
-      [$popperBg.variable]: mode(`colors.darkTeal`, `colors.seaMist`)(props) ,
->>>>>>> fd725f86e5d03f02505a5d1c2ac8c9a8b00a013d
+      [$popperBg.variable]: mode(`colors.darkTeal`, `colors.pine`)(props) ,
       backgroundColor: $popperBg.reference,
       [$arrowBg.variable]: $popperBg.reference,
       [$arrowShadowColor.variable]: `colors.blackAlpha.300`,

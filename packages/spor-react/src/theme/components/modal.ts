@@ -19,7 +19,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     dialog: {
       borderRadius: "md",
-      background: mode("white", "night")(props),
+      background: mode("white", "pine")(props),
       color: mode("inherit", "white")(props),
       my: "3.75rem",
       zIndex: "modal",

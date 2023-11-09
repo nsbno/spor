@@ -26,7 +26,7 @@ const config = defineStyleConfig({
       },
     }),
     _hover: {
-      backgroundColor: mode("seaMist", "pine")(props),
+      backgroundColor: mode("seaMist", "whiteAlpha.100")(props),
       _disabled: {
         color: "dimGrey",
       },

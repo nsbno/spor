@@ -36,6 +36,8 @@ const config = helpers.defineMultiStyleConfig({
     },
     closeButton: {
       position: "absolute",
+      color: "white",
+      hover: "whiteAlpha.100",
       borderRadius: "xs",
       top: 1,
       insetEnd: 1,

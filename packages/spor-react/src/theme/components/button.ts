@@ -125,26 +125,6 @@ const config = defineStyleConfig({
         },
       },
     }),
-    /**
-     * @deprecated use `secondary` instead.
-     */
-    tertiary: {
-      backgroundColor: "mint",
-      color: "darkGrey",
-      fontWeight: "normal",
-      ...focusVisible({
-        focus: {
-          boxShadow: `inset 0 0 0 4px ${colors.mint}, inset 0 0 0 4px ${colors.mint}, inset 0 0 0 6px currentColor`,
-        },
-        notFocus: { boxShadow: "none" },
-      }),
-      _hover: {
-        backgroundColor: "seaMist",
-      },
-      _active: {
-        backgroundColor: "lightGrey",
-      },
-    },
     additional: (props) => ({
       backgroundColor: "transparent",
       color: mode("darkGrey", "white")(props),

@@ -8,11 +8,7 @@ import React from "react";
 import { createTexts, useTranslation } from "..";
 
 type LinkProps = Omit<ChakraLinkProps, "variant"> & {
-  variant?:
-    | "primary"
-    | "secondary"
-    /** @deprecated Use `secondary` instead */
-    | "tertiary";
+  variant?: "primary" | "secondary";
 };
 /** Link to different sites or parts of site
  *

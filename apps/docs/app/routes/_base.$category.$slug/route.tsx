@@ -243,7 +243,7 @@ type ComponentSectionsProps = {
 const ComponentSections = ({ sections }: ComponentSectionsProps) => {
   return (
     <Tabs
-      colorScheme="green"
+      colorScheme="accent"
       variant="square"
       size="md"
       marginTop={4}

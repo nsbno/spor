@@ -11,16 +11,7 @@ import React, { useEffect } from "react";
 const MotionBox = motion(Box);
 
 type FloatingActionButtonProps = BoxProps & {
-  variant?:
-   /** @deprecated dark is deprecated please use accent*/ 
-    "green" 
-   /** @deprecated dark is deprecated please use accent*/
-  | "light"
-   /** @deprecated dark is deprecated please use accent*/ 
-  | "dark"
-  | "accent"
-  | "base"
-  | "brand"
+  variant?: "accent" | "base" | "brand";
   placement?: "bottom right" | "bottom left" | "top right" | "top left";
   icon: React.ReactNode;
   children: React.ReactNode;
@@ -34,7 +25,7 @@ type FloatingActionButtonProps = BoxProps & {
  *
  * ```tsx
  * <FloatingActionButton
- *  variant="green"
+ *  variant="accent"
  *  icon={<TicketControlFill30Icon />}
  *  placement="bottom right"
  * />

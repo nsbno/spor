@@ -12,7 +12,6 @@ export type IconButtonProps = Omit<ChakraIconButtonProps, "variant"> & {
     | "control"
     | "primary"
     | "secondary"
-    | "tertiary"
     | "additional"
     | "ghost"
     | "floating";
@@ -27,8 +26,7 @@ export type IconButtonProps = Omit<ChakraIconButtonProps, "variant"> & {
  * - `control`: This button is used for ticket controls only.
  * - `primary`: This is our main button. It's used for the main actions in a view, like a call to action. There should only be a single primary button in each view.
  * - `secondary`: Used for secondary actions in a view, and when you need to make several actions available at the same time.
- * - `tertiary`: Used for non-essential actions, as well as in combination with the primary button.
- * - `additional`: Used for additional choices, like a less important tertiary action.
+ * - `additional`: Used for additional choices, like a less important secondary action.
  * - `ghost`: Used inside other interactive elements, like date pickers and input fields.
  * - `floating`: Used for floating actions, like a menu button in a menu.
  *

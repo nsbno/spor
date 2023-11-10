@@ -1,7 +1,7 @@
 import { defineStyleConfig } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
-import { mode } from "@chakra-ui/theme-tools";
 
 const config = defineStyleConfig({
   baseStyle: {
@@ -55,7 +55,7 @@ const config = defineStyleConfig({
       }),
       _hover: {
         color: mode("darkTeal", "white")(props),
-        backgroundColor: mode("coralGreen", "whiteAlpha.200")(props)
+        backgroundColor: mode("coralGreen", "whiteAlpha.200")(props),
       },
       _active: {
         color: mode("pine", "white")(props),
@@ -67,7 +67,7 @@ const config = defineStyleConfig({
       ...focusVisible({
         focus: {
           backgroundColor: mode("darkGrey", "white")(props),
-          color: mode("white", "darkTeal")(props)
+          color: mode("white", "darkTeal")(props),
         },
         notFocus: {
           boxShadow: "none",
@@ -76,52 +76,11 @@ const config = defineStyleConfig({
       }),
       _hover: {
         backgroundColor: mode("blackAlpha.100", "whiteAlpha.200")(props),
-        color: mode("darkGrey", "white")(props)
+        color: mode("darkGrey", "white")(props),
       },
       _active: {
         backgroundColor: mode("mint", "whiteAlpha.100")(props),
-        color: mode("darkGrey", "white")(props)
-      },
-    }),
-    /**
-     * @deprecated tertiary style will be deprecated in the future.
-     * Please use the secondary style instead.
-     */
-    tertiary: (props) => ({
-      color: "white",
-      ...focusVisible({
-        focus: {
-          color: "pine",
-          backgroundColor: "white",
-          boxShadow: getBoxShadowString({
-            borderColor: "white",
-            borderWidth: 3,
-            isInset: false,
-          }),
-        },
-        notFocus: {
-          color: "white",
-          boxShadow: "none",
-          backgroundColor: "transparent",
-        },
-      }),
-      _hover: {
-        color: "white",
-        backgroundColor: "whiteAlpha.200",
-        boxShadow: getBoxShadowString({
-          borderColor: props.theme.colors.whiteAlpha[200],
-          borderWidth: 3,
-          isInset: false,
-        }),
-      },
-      _active: {
-        color: "white",
-        backgroundColor: "whiteAlpha.400",
-        boxShadow: getBoxShadowString({
-          borderColor: props.theme.colors.whiteAlpha[400],
-          borderWidth: 3,
-          isInset: false,
-        }),
+        color: mode("darkGrey", "white")(props),
       },
     }),
   },

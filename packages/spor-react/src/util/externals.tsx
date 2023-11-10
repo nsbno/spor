@@ -2,6 +2,7 @@
 export {
   DarkMode,
   LightMode,
+  Portal,
   useBreakpointValue,
   useClipboard,
   useColorMode,
@@ -17,6 +18,7 @@ export {
   useToken,
 } from "@chakra-ui/react";
 export type {
+  PortalProps,
   UseClipboardOptions,
   UseDisclosureProps,
   UseOutsideClickProps,

@@ -8,6 +8,7 @@ const parts = anatomy("datepicker").parts(
   "wrapper",
   "calendarTriggerButton",
   "arrow",
+  "calendarPopover",
   "calendar",
   "weekdays",
   "weekend",
@@ -100,14 +101,16 @@ const config = helpers.defineMultiStyleConfig({
     arrow: {
       [$arrowBackground.variable]: mode("white", colors.night)(props),
     },
-    calendar: {
+    calendarPopover: {
       backgroundColor: mode("white", "night")(props),
       color: mode("darkGrey", "white")(props),
       boxShadow: getBoxShadowString({
         borderWidth: 2,
         borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
+        baseShadow: "sm",
       }),
     },
+
     weekdays: {
       color: mode("darkGrey", "white")(props),
     },

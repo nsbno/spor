@@ -88,13 +88,13 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     };
 
     const popoverContent = (
-      <PopoverContent color="darkGrey" boxShadow="md" sx={styles.calendar}>
+      <PopoverContent color="darkGrey" sx={styles.calendarPopover}>
         <PopoverArrow sx={styles.arrow} />
         <PopoverBody>
           <FocusLock>
             <Calendar
               {...calendarProps}
-              variant="base"
+              variant={variant}
               showYearNavigation={showYearNavigation}
             />
           </FocusLock>

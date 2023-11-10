@@ -107,7 +107,7 @@ const config = helpers.defineMultiStyleConfig({
       boxShadow: getBoxShadowString({
         borderWidth: 2,
         borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
-        baseShadow: "sm",
+        baseShadow: "md",
       }),
     },
 

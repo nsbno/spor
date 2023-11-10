@@ -12,7 +12,6 @@ import {
   PopoverTrigger,
   Portal,
   ResponsiveValue,
-  useBreakpointValue,
   useFormControlContext,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
@@ -36,11 +35,7 @@ type DateRangePickerProps = AriaDateRangePickerProps<DateValue> &
     startName?: string;
     endLabel?: string;
     endName?: string;
-    variant: ResponsiveValue<
-     "base" 
-    | "floating"
-    | "ghost"
-    >;
+    variant: ResponsiveValue<"base" | "floating" | "ghost">;
     withPortal?: boolean;
   };
 /**
@@ -78,7 +73,7 @@ export function DateRangePicker({
     calendarProps,
   } = useDateRangePicker(props, state, ref);
 
-  const styles = useMultiStyleConfig("Datepicker", {variant});
+  const styles = useMultiStyleConfig("Datepicker", { variant });
   const locale = useCurrentLocale();
 
   const handleEnterClick = (e: React.KeyboardEvent) => {
@@ -90,11 +85,11 @@ export function DateRangePicker({
   };
 
   const onFieldClick = () => {
-      state.setOpen(true);
+    state.setOpen(true);
   };
 
   const popoverContent = (
-    <PopoverContent sx={styles.calendar} boxShadow="md" maxWidth="none">
+    <PopoverContent sx={styles.calendarPopover} maxWidth="none">
       <PopoverArrow sx={styles.arrow} />
       <PopoverBody>
         <FocusLock>
@@ -130,7 +125,13 @@ export function DateRangePicker({
               >
                 {variant && (
                   <PopoverTrigger>
-                    <CalendarTriggerButton paddingLeft={1} paddingRight={1} variant={variant} ref={ref} {...buttonProps} />
+                    <CalendarTriggerButton
+                      paddingLeft={1}
+                      paddingRight={1}
+                      variant={variant}
+                      ref={ref}
+                      {...buttonProps}
+                    />
                   </PopoverTrigger>
                 )}
                 <DateField
@@ -139,7 +140,7 @@ export function DateRangePicker({
                   label={props.startLabel}
                   labelProps={labelProps}
                 />
-                 <Box as="span" aria-hidden="true" paddingRight="2">
+                <Box as="span" aria-hidden="true" paddingRight="2">
                   –
                 </Box>
                 <DateField

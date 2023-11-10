@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 4.0.1
+
+### Patch Changes
+
+- 0450ca0a: DatePicker, DateRangePicker: Fix visual regressions
+
 ## 4.0.0
 
 ### Major Changes

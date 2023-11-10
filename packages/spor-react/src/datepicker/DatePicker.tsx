@@ -94,7 +94,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           <FocusLock>
             <Calendar
               {...calendarProps}
-              variant={variant}
+              variant="base"
               showYearNavigation={showYearNavigation}
             />
           </FocusLock>

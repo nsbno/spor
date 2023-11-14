@@ -1,6 +1,7 @@
-import { selectAnatomy } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { default as Input } from "./input";
+import {selectAnatomy} from "@chakra-ui/anatomy";
+import {createMultiStyleConfigHelpers} from "@chakra-ui/react";
+import {default as Input} from "./input";
+import {mode} from "@chakra-ui/theme-tools";
 
 const parts = selectAnatomy.extend("root");
 
@@ -43,7 +44,7 @@ const config = helpers.defineMultiStyleConfig({
       strokeLinecap: "round",
       fontSize: "1.125rem",
       _disabled: {
-        opacity: 0.5,
+        color: mode("blackAlpha.400", "whiteAlpha.400")(props),
       },
     },
   }),

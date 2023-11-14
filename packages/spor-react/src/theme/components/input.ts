@@ -53,7 +53,7 @@ const config = helpers.defineMultiStyleConfig({
         boxShadow: getBoxShadowString({
           borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props)
         }),
-        cursor: "not-allowed"
+        cursor: "not-allowed",
       },
       _invalid: {
         boxShadow: getBoxShadowString({
@@ -81,9 +81,6 @@ const config = helpers.defineMultiStyleConfig({
           },
         }),
       },
-      ":disabled + label": {
-        color: mode("blackAlpha.400", "whiteAlpha.400")(props),
-      },
       " + label": {
         fontSize: ["mobile.sm", "desktop.sm"],
         top: "2px",
@@ -104,6 +101,11 @@ const config = helpers.defineMultiStyleConfig({
     },
     element: {
       height: "100%",
+    },
+    group: {
+      ":has(:disabled)": {
+        color: mode("blackAlpha.400", "whiteAlpha.400")(props),
+      },
     },
   }),
 });

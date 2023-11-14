@@ -46,8 +46,8 @@ export const RadioCard = forwardRef<RadioCardProps, "input">((props, ref) => {
   const { getInputProps } = useRadio({
     ...props,
     isChecked,
-    name: group.name,
-    onChange: group.onChange,
+    name: group?.name,
+    onChange: group?.onChange,
   });
 
   const input = getInputProps();

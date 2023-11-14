@@ -10,7 +10,9 @@ type State =
   | "invalid"
   | "disabled";
 
-export function baseBorder(state: State, props: StyleFunctionProps) {
+type BorderState = Subset<State, 'hover' | 'focus' | 'disabled' | 'selected' | 'invalid' | "default">;
+
+export function baseBorder(state: BorderState, props: StyleFunctionProps) {
   switch (state) {
     case "hover":
       return {

@@ -56,6 +56,7 @@ export const RadioCard = forwardRef<RadioCardProps, "input">((props, ref) => {
       as="label"
       colorScheme={input.checked ? "green" : "white"}
       padding={3}
+      cursor="pointer"
     >
       <Stack gap={3}>
         <input {...input} ref={ref} />

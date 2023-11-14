@@ -180,7 +180,6 @@ resource "aws_apprunner_service" "service" {
       image_configuration {
         port = "3000"
         runtime_environment_variables = {
-          SESSION_SECRET           = random_string.session_secret.result
           SANITY_PREVIEW_API_TOKEN = "ssm://${aws_ssm_parameter.sanity_preview_api_token.name}"
           SANITY_PREVIEW_SECRET    = "ssm://${aws_ssm_parameter.sanity_preview_secret.name}"
         }
@@ -207,11 +206,6 @@ resource "aws_apprunner_auto_scaling_configuration_version" "autoscaling" {
   max_size                        = 2
 
   tags = var.tags
-}
-
-resource "random_string" "session_secret" {
-  length  = 32
-  special = false
 }
 
 ##################################

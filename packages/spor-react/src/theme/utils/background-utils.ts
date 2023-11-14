@@ -22,3 +22,31 @@ export function baseBackground(state: BackgroundState, props: StyleFunctionProps
       return {};
   }
 }
+
+type GhostBackgroundState = Subset<State, "default" | "hover" | "focus" | "active" | "selected">;
+
+export function ghostBackground(state: GhostBackgroundState, props: StyleFunctionProps) {
+  switch (state) {
+    case "hover": {
+      return {
+        backgroundColor: mode("seaMist", "whiteAlpha.100")(props),
+      }
+    }
+    case "active":
+      return {
+        backgroundColor: mode("seaMist", "whiteAlpha.200")(props),
+      }
+    case "focus":
+      return {
+        backgroundColor: mode("transparent", "transparent")(props),
+      }
+    case "selected": {
+      return {
+        backgroundColor: mode("mint", "whiteAlpha.200")(props),
+      }
+    }
+    case "default":
+    default:
+      return {};
+  }
+}

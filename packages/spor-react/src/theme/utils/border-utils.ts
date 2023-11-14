@@ -3,7 +3,7 @@ import { getBoxShadowString } from "./box-shadow-utils";
 import { State, Subset} from "./types";
 
 
-type BorderState = Subset<State, 'hover' | 'focus' | 'disabled' | 'selected' | 'invalid'>;
+type BorderState = Subset<State, 'hover' | 'focus' | 'disabled' | 'selected' | 'invalid' | "default">;
 
 export function baseBorder(state: BorderState, props: StyleFunctionProps) {
   switch (state) {
@@ -43,6 +43,7 @@ export function baseBorder(state: BorderState, props: StyleFunctionProps) {
         }),
       };
     }
+    case "default":
     default:
       return {
         boxShadow: getBoxShadowString({

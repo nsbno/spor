@@ -10,6 +10,7 @@ import { Card } from "../card";
 import { Text } from "../typography";
 import { TextProps as ChakraTextProps } from "@chakra-ui/layout/dist/text";
 import { Stack } from "../layout";
+import { getBoxShadowString } from "../theme/utils/box-shadow-utils";
 
 export type RadioCardProps = Exclude<
   ChakraRadioProps,
@@ -57,6 +58,12 @@ export const RadioCard = forwardRef<RadioCardProps, "input">((props, ref) => {
       colorScheme={input.checked ? "green" : "white"}
       padding={3}
       cursor="pointer"
+      _focusWithin={{
+        boxShadow: getBoxShadowString({
+          borderColor: "greenHaze",
+          borderWidth: 2,
+        }),
+      }}
     >
       <Stack gap={3}>
         <input {...input} ref={ref} />

@@ -25,6 +25,7 @@ export { default as ListBox } from "./listbox";
 export { default as MediaControllerButton } from "./media-controller-button";
 export { default as Modal } from "./modal";
 export { default as Popover } from "./popover";
+export { default as ProgressIndicator } from "./progress-indicator";
 export { default as Radio } from "./radio";
 export { default as Select } from "./select";
 export { default as Skeleton } from "./skeleton";

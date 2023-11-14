@@ -56,12 +56,12 @@ export const RadioCard = forwardRef<RadioCardProps, "input">((props, ref) => {
     onChange: group?.onChange,
   });
 
-  const input = getInputProps();
+  const inputProps = getInputProps();
 
   return (
     <Card
       as="label"
-      colorScheme={input.checked ? "green" : "white"}
+      colorScheme={inputProps.checked ? "green" : "white"}
       padding={3}
       cursor="pointer"
       _focusWithin={{
@@ -72,7 +72,7 @@ export const RadioCard = forwardRef<RadioCardProps, "input">((props, ref) => {
       }}
     >
       <Stack gap={3}>
-        <input {...input} ref={ref} />
+        <input {...inputProps} ref={ref} />
         {props.children}
       </Stack>
     </Card>

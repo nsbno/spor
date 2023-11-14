@@ -3,7 +3,7 @@ import { createCookieSessionStorage } from "@remix-run/node";
 const sessionSecret = process.env.SESSION_SECRET;
 if (!sessionSecret) {
   throw new Error(
-    "SESSION_SECRET must be set as an environment variable. It can be anything, but it should be long, random and the same. Once it changes, all sessions will be invalidated."
+    "Could not find SESSION_SECRET environment variable. Either set it explicitly, or create a .env file with it (`cp .env.example .env` will do that for you).\n\n The SESSION_SECRET can be anything, but it should be long, random and the same. Once it changes, all sessions will be invalidated."
   );
 }
 

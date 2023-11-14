@@ -46,6 +46,7 @@ export const PasswordInput = forwardRef<PasswordInputProps, "input">(
             onClick={onToggle}
             borderRadius="sm"
             marginRight={1}
+            isDisabled={props.disabled || props.isDisabled}
           >
             {isShowingPassword ? t(texts.hidePassword) : t(texts.showPassword)}
           </Button>

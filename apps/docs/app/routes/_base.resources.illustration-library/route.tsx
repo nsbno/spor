@@ -122,8 +122,8 @@ export default function IllustrasjonerPage() {
         variant="primary"
         size="lg"
         as="a"
-        download="illustrasjoner.zip"
-        href="/ressurser/illustrasjonsbibliotek/alle"
+        download="illustrations.zip"
+        href="/resources/illustration-library/all"
         leftIcon={<DownloadOutline24Icon />}
       >
         Last ned alle illustrasjoner

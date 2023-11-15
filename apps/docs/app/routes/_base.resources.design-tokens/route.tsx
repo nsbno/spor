@@ -1,5 +1,5 @@
 import { Box, Divider, Heading, Stack, Text } from "@vygruppen/spor-react";
-import { AnimationTokens } from "~/routes/_base.ressurser.design-tokens/AnimationTokens";
+import { AnimationTokens } from "~/routes/_base.resources.design-tokens/AnimationTokens";
 import { BreakpointTokens } from "./BreakpointTokens";
 import { ColorTokens } from "./ColorTokens";
 import { OutlineTokens } from "./OutlineTokens";

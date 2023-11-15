@@ -147,7 +147,7 @@ type InfoSelectProps<T extends object> = {
  * </InfoSelect>
  * ```
  *
- * @see https://spor.vy.no/komponenter/info-select
+ * @see https://spor.vy.no/components/info-select
  */
 export function InfoSelect<T extends object>({
   placeholder,

@@ -9,7 +9,7 @@ type RootProvidersProps = { children: React.ReactNode };
  */
 export const RootProviders = ({ children }: RootProvidersProps) => {
   return (
-    <SporProvider language={Language.NorwegianBokmal}>
+    <SporProvider language={Language.English}>
       <PortableTextProvider>{children}</PortableTextProvider>
     </SporProvider>
   );

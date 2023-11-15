@@ -65,7 +65,7 @@ export const App = () => {
 };
 ```
 
-You'll find lots of components, and extensive documentation on the [documentation site](https://spor.vy.no/komponenter).
+You'll find lots of components, and extensive documentation on the [documentation site](https://spor.vy.no/components).
 
 ## Usage (React Native)
 

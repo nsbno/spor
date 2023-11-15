@@ -176,21 +176,21 @@ function IconBox({ icon }: IconBoxProps) {
       <Flex justifyContent="flex-end" width="100%">
         <IconButton
           as="a"
-          href={`/ressurser/ikoner/${icon.category}/${icon.fileName}`}
+          href={`/resources/icons/${icon.category}/${icon.fileName}`}
           download
           variant="ghost"
           icon={<DownloadOutline18Icon />}
           size="sm"
-          aria-label="Last ned SVG"
-          title="Last ned SVG"
+          aria-label="Download SVG"
+          title="Download SVG"
           borderRadius="sm"
         />
         <IconButton
           variant="ghost"
           icon={hasCopied ? <SuccessOutline18Icon /> : <CopyOutline18Icon />}
           size="sm"
-          aria-label="Kopier navn"
-          title="Kopier navn"
+          aria-label="Copy name"
+          title="Copy name"
           onClick={onCopy}
           borderRadius="sm"
         />

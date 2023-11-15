@@ -16,7 +16,7 @@ export default function IconsPage() {
   return (
     <Stack spacing={4}>
       <Heading as="h1" variant="xl-display">
-        Ikonbibliotek
+        Icon library
       </Heading>
       <Text variant="sm">
         Vi bruker ikoner for å skape bedre navigasjon og for å tydeliggjøre
@@ -27,13 +27,13 @@ export default function IconsPage() {
       <ButtonGroup>
         <Button
           as={Link}
-          to="alle-ikoner.zip"
+          to="all-icons.zip"
           download={true}
           reloadDocument
           variant="primary"
           leftIcon={<DownloadOutline24Icon />}
         >
-          Last ned alle ikoner
+          Download all icons
         </Button>
       </ButtonGroup>
       <Divider />

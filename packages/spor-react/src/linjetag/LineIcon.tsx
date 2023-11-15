@@ -23,7 +23,7 @@ export type LineIconProps = BoxProps & {
  * <LineIcon variant="subway" size="lg" />
  * ```
  *
- * @see https://spor.vy.no/komponenter/linjetags
+ * @see https://spor.vy.no/components/line-tags
  */
 export const LineIcon = ({
   variant,

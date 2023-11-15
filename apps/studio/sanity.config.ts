@@ -20,7 +20,7 @@ export default defineConfig({
     productionUrl: async (prev, { document, getClient }) => {
       try {
         const configuredClient = getClient({ apiVersion: "2022-10-06" });
-        const host = window.location.href.includes("localhost")
+        const host = window.location.href?.includes("localhost")
           ? "http://localhost:3000"
           : "https://spor.vy.no";
 
@@ -32,6 +32,10 @@ export default defineConfig({
             `*[_id == $id] { "slug": slug.current }[0]`,
             { id: (document.category as any)?._ref }
           );
+
+          if (!category) {
+            return host;
+          }
 
           const params = new URLSearchParams();
           params.set("preview", import.meta.env.SANITY_STUDIO_PREVIEW_SECRET);

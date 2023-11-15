@@ -1,4 +1,4 @@
-import { LoaderFunction, Response } from "@remix-run/node";
+import { Response } from "@remix-run/node";
 import { SanityAsset } from "@sanity/image-url/lib/types/types";
 import Archiver from "archiver";
 import { PassThrough } from "stream";
@@ -48,7 +48,7 @@ export const loader = async () => {
 
   const headers = new Headers();
   headers.set("Content-Type", "application/zip");
-  headers.set("Content-Disposition", "attachment; filename=illustrasjoner.zip");
+  headers.set("Content-Disposition", "attachment; filename=illustrations.zip");
   headers.set("Cache-Control", "max-age=60");
   return new Response(stream, {
     status: 200,

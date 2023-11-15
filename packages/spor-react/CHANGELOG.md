@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 4.0.2
+
+### Patch Changes
+
+- 0f59ee68: InfoSelect: Added dark mode
+- 573f649a: Input, PasswordInput, SearchInput, InfoSelect, NativeSelect: Tweak disabled state styling.
+- d9c2de51: docs: update links
+- 0cc70e7e: Fix some issues with the styling of lists"
+
 ## 4.0.1
 
 ### Patch Changes

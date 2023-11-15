@@ -55,7 +55,7 @@ type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> & {
  *
  * Note that the TimePicker uses the `Time` class to represent the time. This is a class that is part of the `@internationalized/date` package.
  *
- * @see https://spor.vy.no/komponenter/timepicker
+ * @see https://spor.vy.no/komponents/timepicker
  */
 export const TimePicker = ({
   label: externalLabel,

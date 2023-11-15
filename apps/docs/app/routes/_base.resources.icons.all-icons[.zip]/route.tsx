@@ -7,7 +7,7 @@ export const loader: LoaderFunction = async () => {
     headers: {
       "Content-Type": "application/zip",
       "Content-Length": zipFile.length.toString(),
-      "Content-Disposition": 'attachment; filename="spor-ikoner.zip"',
+      "Content-Disposition": 'attachment; filename="spor-icons.zip"',
     },
   });
 };

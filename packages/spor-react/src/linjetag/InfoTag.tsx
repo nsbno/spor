@@ -24,7 +24,7 @@ export type InfoTagProps = TagProps;
  * />
  * ```
  *
- * @see https://spor.vy.no/komponenter/linjetags
+ * @see https://spor.vy.no/components/line-tags
  */
 export const InfoTag = ({
   variant,

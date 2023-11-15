@@ -15,8 +15,8 @@ type ComponentData = {
 const componentsQuery = async () => {
   const query = `*[
       _type == "article" && 
-      category->slug.current == "komponenter" && 
-      slug.current != "oversikt"
+      category->slug.current == "components" && 
+      slug.current != "overview"
     ] | order(title asc) {
     _id,
     title,
@@ -40,7 +40,7 @@ type ArticleData = {
 };
 
 const articleQuery = async () => {
-  const query = `*[_type == "article" && slug.current == "oversikt"] {
+  const query = `*[_type == "article" && slug.current == "overview"] {
     _id,
     title,
     content
@@ -76,7 +76,7 @@ export default function ComponentsPage() {
           <Card
             key={component._id}
             as={Link}
-            to={`/komponenter/${component.slug}`}
+            to={`/components/${component.slug}`}
             colorScheme="white"
           >
             {component.mainImage ? (

@@ -13,7 +13,7 @@ import {
   Tr,
 } from "@vygruppen/spor-react";
 import { Fragment } from "react";
-import { useTokenFormatter } from "~/routes/_base.ressurser.design-tokens/useTokenFormatter";
+import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
 const spacingSizes = tokens.size.spacing;

@@ -20,7 +20,7 @@ export function HeroSection() {
         >
           <Flex flexDirection="column" color="white" flex={["auto", "55%"]}>
             <Heading as="h1" variant="2xl">
-              Velkommen til Spor
+              Welcome to Spor
             </Heading>
             <Box marginBottom={[10, null, 0]}>
               <Button
@@ -28,19 +28,19 @@ export function HeroSection() {
                 display={["flex", "inline-flex"]}
                 as={Link}
                 size="lg"
-                to="/guider/bidra"
+                to="/guides/introduction"
                 rightIcon={<ArrowRightFill30Icon />}
                 marginTop={4}
                 width={["100%", null, "fit-content"]}
               >
-                Se hvordan du kan bidra
+                Get started
               </Button>
             </Box>
           </Flex>
           <Flex flex={["auto", null, "45%"]}>
             <Image
               src="/illustrations/front-page-illustration.svg"
-              alt="En illustrasjon av person som ser ut over et landskap med trær, hus, busser, sykler og veier"
+              alt="An illustration of a person looking out over a landscape with trees, houses, buses, bicycles and roads"
               width="100%"
               aspectRatio="4 / 3"
               maxWidth={["400px", null, "none"]}

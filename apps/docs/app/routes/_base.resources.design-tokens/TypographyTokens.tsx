@@ -14,7 +14,7 @@ import {
 } from "@vygruppen/spor-react";
 import { Fragment } from "react";
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
-import { useTokenFormatter } from "~/routes/_base.ressurser.design-tokens/useTokenFormatter";
+import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
 type TypographyToken = {

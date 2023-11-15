@@ -30,7 +30,7 @@ export type FormErrorMessageProps = BoxProps & {
  * </FormControl>
  * ```
  *
- * @see https://spor.vy.no/komponenter/skjemaelementer
+ * @see https://spor.vy.no/components/form-control
  */
 export const FormErrorMessage = ({
   children,

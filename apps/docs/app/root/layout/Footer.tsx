@@ -22,7 +22,7 @@ export const Footer = () => {
         gap={2}
         flexWrap="wrap"
         as="nav"
-        aria-label="Ressurser"
+        aria-label="Resources"
       >
         {menu?.menuItems.map((item) => (
           <MenuItem title={item.title} url={item.url} key={item.title} />

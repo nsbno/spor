@@ -29,47 +29,47 @@ type LinkItem = {
 // These are the links that are rendered in the action links section.
 const links: LinkItem[] = [
   {
-    to: "/guider/introduksjon",
-    title: "Kom i gang",
-    description: "Sett opp Spor i ditt prosjekt på få minutter",
+    to: "/guides/introduction",
+    title: "Get started",
+    description: "Set up Spor in a new project in no time",
     icon: HomeOutline30Icon,
     iconColor: "lightBlue",
   },
   {
-    to: "/komponenter",
-    title: "Komponenter",
+    to: "/components",
+    title: "Components",
     description:
-      "Se byggeklossene du har tilgjengelig for å bygge brukergrensesnitt",
+      "Discover the building blocks you have available to build great user experiences",
     icon: ComponentsOutline30Icon,
     iconColor: "champagne",
   },
   {
-    to: "/ressurser/design-tokens",
+    to: "/resources/design-tokens",
     title: "Design Tokens",
     description:
-      "Se farger, størrelser og de andre atomene Spor er bygget opp av",
+      "See colors, sizes and the other tokens that make up the Vy design system",
     icon: TokensOutline30Icon,
     iconColor: "bisque",
   },
   {
     to: "https://snohq.io/xx/",
-    title: "Profil",
+    title: "Profile",
     description:
-      "Lær mer om den visuelle profilen til Vy, og hva den inneholder",
+      "Learn about our public visual profile and how to use it in your projects",
     icon: GuidelinesOutline30Icon,
     iconColor: "seaMist",
   },
   {
-    to: "/ressurser/ikoner",
-    title: "Ikoner",
-    description: "Utfork Spor sitt ikonbibliotek",
+    to: "/resources/icons",
+    title: "Icons",
+    description: "Explore Spor's custom icon library",
     icon: IconsOutline30Icon,
     iconColor: "primrose",
   },
   {
-    to: "/lekegrind",
-    title: "Lekegrind",
-    description: "Test ut Spor rett i nettleseren",
+    to: "/playground",
+    title: "Playground",
+    description: "Try out Spor components live in our playground",
     icon: TrainOutline30Icon,
     iconColor: "silver",
   },

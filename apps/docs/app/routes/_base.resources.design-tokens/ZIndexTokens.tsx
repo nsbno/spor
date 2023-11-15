@@ -11,26 +11,20 @@ import {
   Thead,
   Tr,
 } from "@vygruppen/spor-react";
-import { useTokenFormatter } from "~/routes/_base.ressurser.design-tokens/useTokenFormatter";
+import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 
-export function BreakpointTokens(props: BoxProps) {
+export function ZIndexTokens(props: BoxProps) {
   return (
-    <SharedTokenLayout {...props} title="Breakpoints">
-      <BreakpointTokensTable />
+    <SharedTokenLayout {...props} title="Z-index">
+      <ZIndexTokensTable />
     </SharedTokenLayout>
   );
 }
 
-type Breakpoint = keyof typeof tokens.size.breakpoint;
-const breakpointDisplayNames: Record<Breakpoint, string> = {
-  sm: "Tablet",
-  md: "Desktop",
-  lg: "Widescreen",
-};
+type ZIndexTokenTableProps = BoxProps;
 
-type BreakpointTokenTableProps = BoxProps;
-const BreakpointTokensTable = (props: BreakpointTokenTableProps) => {
+const ZIndexTokensTable = (props: ZIndexTokenTableProps) => {
   const tokenFormatter = useTokenFormatter();
   return (
     <Box {...props}>
@@ -43,14 +37,14 @@ const BreakpointTokensTable = (props: BreakpointTokenTableProps) => {
           </Tr>
         </Thead>
         <Tbody>
-          {Object.entries(tokens.size.breakpoint).map(([key, token]) => (
+          {Object.entries(tokens.depth["z-index"]).map(([key, token]) => (
             <Tr key={key}>
-              <Td>{breakpointDisplayNames[key as Breakpoint] || key}</Td>
+              <Td>{key}</Td>
               <Td>{token}</Td>
               <Td>
                 <Stack spacing={1}>
                   <Box>
-                    <Code>{tokenFormatter(`size.breakpoint.${key}`)}</Code>
+                    <Code>{tokenFormatter(`depth.z-index.${key}`)}</Code>
                   </Box>
                 </Stack>
               </Td>

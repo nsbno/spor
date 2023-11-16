@@ -1,15 +1,6 @@
 import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "./box-shadow-utils";
 
-type State =
-  | "default"
-  | "hover"
-  | "active"
-  | "focus"
-  | "selected"
-  | "invalid"
-  | "disabled";
-
 type BorderState = Subset<State, 'hover' | 'focus' | 'disabled' | 'selected' | 'invalid' | "default">;
 
 export function baseBorder(state: BorderState, props: StyleFunctionProps) {

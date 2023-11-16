@@ -1,14 +1,7 @@
 import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 
-type State =
-  | "default"
-  | "hover"
-  | "active"
-  | "focus"
-  | "selected"
-  | "invalid"
-  | "disabled";
-export function baseBackground(state: State, props: StyleFunctionProps) {
+type BaseBackgroundState = Subset<State, "active" | "selected" | "disabled">;
+export function baseBackground(state: BaseBackgroundState, props: StyleFunctionProps) {
   switch (state) {
     case "active":
       return {

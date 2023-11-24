@@ -46,7 +46,7 @@ This will probably only be interesting for the documentation site or other inter
 
 ### Available icons
 
-Please refer to the [documentation](https://spor.vy.no/resources/icons) for a complete list of icons:
+Please refer to the [documentation](https://spor.vy.no/resources/icon-library) for a complete list of icons:
 
 ## Development
 

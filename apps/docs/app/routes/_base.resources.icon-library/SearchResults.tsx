@@ -176,7 +176,7 @@ function IconBox({ icon }: IconBoxProps) {
       <Flex justifyContent="flex-end" width="100%">
         <IconButton
           as="a"
-          href={`/resources/icons/${icon.category}/${icon.fileName}`}
+          href={`/resources/icon-library/${icon.category}/${icon.fileName}`}
           download
           variant="ghost"
           icon={<DownloadOutline18Icon />}

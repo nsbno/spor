@@ -60,7 +60,7 @@ const links: LinkItem[] = [
     iconColor: "seaMist",
   },
   {
-    to: "/resources/icons",
+    to: "/resources/icon-library",
     title: "Icons",
     description: "Explore Spor's custom icon library",
     icon: IconsOutline30Icon,

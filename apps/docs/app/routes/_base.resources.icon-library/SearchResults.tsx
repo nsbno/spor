@@ -93,7 +93,7 @@ const NoHits = () => {
         marginTop={7}
         textAlign="center"
       >
-        Ingen matchende ikoner funnet
+        No matching icons found. Perhaps try a different search term?
       </Heading>
     </Box>
   );
@@ -102,29 +102,29 @@ const NoHits = () => {
 const getCategoryDisplayName = (category: string) => {
   switch (category) {
     case "communication":
-      return "Kommunikasjon";
+      return "Communication";
     case "feedback":
-      return "Tilbakemelding";
+      return "Feedback";
     case "layout":
       return "Layout";
     case "map":
-      return "Kart";
+      return "Map";
     case "misc":
-      return "Diverse";
+      return "Miscellaneous";
     case "navigation":
-      return "Navigasjon";
+      return "Navigation";
     case "onboard-service":
-      return "Tjenester om bord";
+      return "Onboard service";
     case "payment":
-      return "Betaling";
+      return "Payment";
     case "social-media":
-      return "Sosiale medier";
+      return "Social media";
     case "transportation":
-      return "Transport";
+      return "Transportation";
     case "travel":
-      return "Reise";
+      return "Travel";
     default:
-      return "Diverse";
+      return "Other";
   }
 };
 

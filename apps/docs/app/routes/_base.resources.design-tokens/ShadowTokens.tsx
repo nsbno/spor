@@ -22,14 +22,14 @@ export function ShadowTokens(props: BoxProps) {
       title="Shadows"
       description={
         <Text>
-          Skygge brukes for å løfte noe fra bakgrunnen (en handling) og for å
-          tydeliggjøre at noe er klikkbart. Det skal kun brukes skygge på
-          komponenter som er klikkbare. Vi bruker skygge for å skape et hierarki
-          av viktighet. Ikke alle klikkbare elementer har skygge, som f.eks
-          inputfelt og knapper. Noen ganger brukes skygge kun i enkelte states
-          av komponenter, for å tydeliggjøre en handling. Komponenter med sterke
-          farger eller outline trenger ikke skygge. Vi har tre nivåer av skygge:
-          Elevation 1, Elevation 2 og Elevation 3.
+          "Shadow is used to lift something from the background (an action) and
+          to clarify that something is clickable. Shadow should only be used on
+          components that are clickable. We use shadow to create a hierarchy of
+          importance. Not all clickable elements have shadow, such as input
+          fields and buttons. Sometimes shadow is used only in certain states of
+          components, to clarify an action. Components with strong colors or
+          outline do not need shadow. We have three levels of shadow: Elevation
+          1, Elevation 2, and Elevation 3 (or in code: "sm", "md" and "lg")
         </Text>
       }
     >
@@ -47,9 +47,9 @@ const ShadowTokensTable = (props: ShadowTokenTableProps) => {
       <Table variant="simple" colorScheme="grey">
         <Thead>
           <Tr>
-            <Th>Eksempel</Th>
-            <Th>Verdi</Th>
-            <Th>Kode</Th>
+            <Th>Example</Th>
+            <Th>Value</Th>
+            <Th>Code</Th>
           </Tr>
         </Thead>
         <Tbody>

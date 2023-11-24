@@ -52,7 +52,7 @@ function TableOfContent(props: TableOfContentProps) {
       {...rest}
     >
       <Heading as="h2" id="toc-title" variant="sm" fontWeight="bold">
-        På denne siden
+        On this page
       </Heading>
       <OrderedList spacing={1} marginLeft="0" marginTop="4" styleType="none">
         {headings.map(({ id, text, level }) => (

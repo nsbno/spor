@@ -14,7 +14,7 @@ export const Footer = () => {
       borderTop="1px solid"
       borderColor="blackAlpha.200"
     >
-      <Link to="/" aria-label="Gå til forsiden">
+      <Link to="/" aria-label="Go to the front page">
         <VyLogo colorScheme="light" width="4rem" aria-hidden="true" />
       </Link>
       <Flex

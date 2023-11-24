@@ -62,9 +62,9 @@ const OutlineTokensTable = (props: OutlineTokenTableProps) => {
       <Table variant="simple" colorScheme="grey">
         <Thead>
           <Tr>
-            <Th>Eksempel</Th>
-            <Th>Verdi</Th>
-            <Th>Kode</Th>
+            <Th>Example</Th>
+            <Th>Value</Th>
+            <Th>Code</Th>
           </Tr>
         </Thead>
         <Tbody>

@@ -93,17 +93,18 @@ export function TypographyTokens(props: BoxProps) {
       description={
         <Stack spacing={6}>
           <Text>
-            Vi har to “sett” med tekststiler; ett for mobil og ett for desktop.
-            Tekststilene for Mobil skal brukes i Vy-appen, og web på mobil, mens
-            liggende tablet, desktop og widescreen skal bruke tekststilene for
-            Desktop. Brekkpunktet er på skjermbredde større eller lik &gt;=756
-            piksler bredde. Linjehøyden skal alltid være 1.333 ganger
-            skriftstørrelsen rundet av til nærmeste pixel.
+            We have two "sets" of text styles; one for mobile and one for
+            desktop. The text styles for Mobile should be used in the Vy app,
+            and on the web on mobile, while horizontal tablet, desktop, and
+            widescreen should use the text styles for Desktop. The breakpoint is
+            at screen widths greater than or equal to &gt;=756 pixels wide. Line
+            height should always be 1.333 times the font size, rounded to the
+            nearest pixel.
           </Text>
           <Text>
-            Fonten Vy Display er mindre lesbar i små størrelser, og skal derfor
-            helst bare brukes på overskrifter på Epi-sidene, mens vi i Elm- og
-            React-apper foretrekker Vy Sans.
+            The font Vy Display is less readable in small sizes, and should
+            therefore preferably only be used for headings in content, while in
+            Elm and React applications, Vy Sans is preferred.
           </Text>
         </Stack>
       }
@@ -134,9 +135,9 @@ const TypographyTokenTable = ({
       <Table variant="simple" colorScheme="grey">
         <Thead>
           <Tr>
-            <Th>Eksempel</Th>
-            <Th>Verdi</Th>
-            <Th>Kode</Th>
+            <Th>Example</Th>
+            <Th>Value</Th>
+            <Th>Code</Th>
           </Tr>
         </Thead>
         <Tbody>

@@ -73,7 +73,7 @@ const MobileNavigation = () => {
     <Flex display={["flex", null, null, "none"]}>
       <IconButton
         icon={<HamburgerFill24Icon />}
-        aria-label="Meny"
+        aria-label="Menu"
         variant="ghost"
         onClick={onOpen}
         color="white"

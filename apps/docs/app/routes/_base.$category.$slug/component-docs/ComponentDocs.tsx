@@ -56,10 +56,10 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
           >
             <Thead>
               <Tr>
-                <Th>Navn</Th>
+                <Th>Name</Th>
                 <Th>Type</Th>
-                <Th>Påkrevd?</Th>
-                <Th>Beskrivelse</Th>
+                <Th>Required?</Th>
+                <Th>Description</Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -75,7 +75,7 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
                   </Td>
                   <Td>
                     {prop.isRequired && (
-                      <SuccessFill24Icon aria-label="Påkrevd" marginX="auto" />
+                      <SuccessFill24Icon aria-label="Required" marginX="auto" />
                     )}
                   </Td>
                   <Td>{prop.description}</Td>

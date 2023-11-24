@@ -17,17 +17,17 @@ export default function DesignTokensPage() {
       </Heading>
       <Stack spacing={3}>
         <Text variant="sm">
-          Design tokens er alle verdiene man trenger for å konstruere og
-          vedlikeholde et designsystem. Disse verdiene kan representere alt som
-          er definert av design: en farge som en RGB-verdi, en opasitet som et
-          tall, en enkel animasjon som Bezier-koordinater. Vi bruker Tokens i
-          stedet for hardkodede verdier for å sikre fleksibilitet og enhet på
-          tvers av alle produktopplevelser.
+          Design tokens are all the values needed to construct and maintain a
+          design system. These values can represent everything defined by the
+          design: a color as an RGB value, opacity as a number, a simple
+          animation as Bezier coordinates. We use tokens instead of hard-coded
+          values to ensure flexibility and consistency across all product
+          experiences.
         </Text>
         <Text variant="sm">
-          Designtokens er direkte integrert i komponentbiblioteket vårt. De
-          dekker de ulike alternativene for vekter, fargetemaer, komponentstates
-          og mer.
+          Design tokens are directly integrated into our component library. They
+          cover the various options for weights, color themes, component states,
+          and more.
         </Text>
       </Stack>
       <Divider marginY={8} />

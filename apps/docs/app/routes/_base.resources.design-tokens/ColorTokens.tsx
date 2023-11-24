@@ -20,17 +20,17 @@ export function ColorTokens(props: BoxProps) {
       title="Farger"
       description={
         <Text>
-          Hovedfargene våre er de fargene vi bruker mest. Disse brukes som bla.
-          bakgrunnsfarger, i hovedfunksjonalitet, navigasjon og knapper – for å
-          lage et rammeverk for våre tjenester. Ved å bruke mest av disse
-          fargene, skaper vi en helhet og gjenkjennbarhet på tvers av våre
-          digitale flater.
+          Our main colors are the ones we use the most. These are used for,
+          among other things, background colors, in core functionality,
+          navigation, and buttons – to create a framework for our services. By
+          using mostly these colors, we create a unity and recognizability
+          across our digital platforms.
         </Text>
       }
     >
       <Stack spacing={3}>
         <LinkableHeading as="h3" variant="md">
-          Hovedfarger
+          Main colors
         </LinkableHeading>
         <ColorGrid
           colors={[
@@ -48,14 +48,14 @@ export function ColorTokens(props: BoxProps) {
         />
 
         <LinkableHeading as="h3" variant="md">
-          Bakgrunnsfarger
+          Background colors
         </LinkableHeading>
         <ColorGrid
           colors={[tokens.color.alias.white, tokens.color.alias.lightGrey]}
         />
 
         <LinkableHeading as="h3" variant="md">
-          Tekstfarger
+          Text colors
         </LinkableHeading>
         <ColorGrid
           colors={[
@@ -67,7 +67,7 @@ export function ColorTokens(props: BoxProps) {
         />
 
         <LinkableHeading as="h3" variant="md">
-          Detaljfarger
+          Detail colors
         </LinkableHeading>
         <ColorGrid
           colors={[
@@ -82,7 +82,7 @@ export function ColorTokens(props: BoxProps) {
         />
 
         <LinkableHeading as="h3" variant="md">
-          Outlinefarger
+          Outline colors
         </LinkableHeading>
         <ColorGrid
           colors={[
@@ -95,7 +95,7 @@ export function ColorTokens(props: BoxProps) {
         />
 
         <LinkableHeading as="h3" variant="md">
-          Full fargepalett
+          Complete palette
         </LinkableHeading>
         {Object.entries(tokens.color.palette)
           .filter(([scaleName]) => !["white", "black"].includes(scaleName))

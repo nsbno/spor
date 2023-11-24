@@ -35,7 +35,7 @@ export const LiveEditor = ({ onChange, ...props }: LiveEditorProps) => {
         boxShadow: `0 0 0 4px var(--spor-colors-greenHaze)`,
         "&::after": {
           content:
-            "'Trykk enter (eller klikk) for å endre koden, escape for å avbryte'",
+            "'Tap enter (or click) to change the code, and escape to cancel'",
           display: "block",
         },
       }}
@@ -54,7 +54,7 @@ export const LiveEditor = ({ onChange, ...props }: LiveEditorProps) => {
       onMouseDown={() => {
         setDisabled(false);
       }}
-      aria-label="Trykk enter (eller klikk) for å endre koden, escape for å avbryte"
+      aria-label="Tap enter (or click) to change the code, and escape to cancel"
     >
       <CodeBlockContainer code={liveContext.code} spellCheck={false} {...props}>
         <Box

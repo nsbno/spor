@@ -27,7 +27,7 @@ export const SkipToContent = () => {
         boxShadow: "0 0 0 4px var(--spor-colors-burntYellow)",
       }}
     >
-      Hopp til hovedinnhold
+      Skip to content
     </Box>
   );
 };

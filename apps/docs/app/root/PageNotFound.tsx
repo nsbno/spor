@@ -8,14 +8,14 @@ export const PageNotFound = () => {
       <Box padding={4} textAlign="center">
         <NotFoundIllustration marginX="auto" marginBottom={4} />
         <Heading as="h2" variant="xl-display" marginBottom={1}>
-          For en avsporing!
+          That went off the rails!
         </Heading>
         <Text marginBottom={6} maxWidth="50ch">
-          Det ser ut til at du fant en død lenke, eller skrev inn feil URL.
-          Uansett hva som skjedde, så er det i alle fall ingenting her.
+          It looks like you found a dead link, or entered a wrong URL. Whatever
+          happened, there's nothing here.
         </Text>
         <Button variant="primary" as={Link} to="/">
-          Gå tilbake til forsiden
+          Go back to the front page
         </Button>
       </Box>
     </Center>

@@ -22,12 +22,12 @@ export function AnimationTokens(props: BoxProps) {
       title="Animasjon"
       description={
         <Text>
-          Det er viktig at lengden på animasjonen og hvilke attributter som
-          animeres ikke virker forstyrrende eller gjør det vanskeligere å
-          navigere for brukeren. Vi har satt opp tre grunn-animasjoner man kan
-          bruke når man setter opp overganger mellom states. Disse definerer tre
-          ulike timinger og hvordan kurven på animasjonen skal utføres: Slow,
-          Medium, Fast.
+          It is important that the length of the animation and which attributes
+          are animated do not appear disturbing or make it more difficult for
+          the user to navigate. We have set up three basic animations that one
+          can use when setting up transitions between states. These define three
+          different timings and how the curve of the animation should be
+          executed: Slow, Medium, Fast.
         </Text>
       }
     >
@@ -45,9 +45,9 @@ const AnimationTokensTable = (props: AnimationTokenTableProps) => {
       <Table variant="simple" colorScheme="grey">
         <Thead>
           <Tr>
-            <Th>Navn</Th>
-            <Th>Verdi</Th>
-            <Th>Kode</Th>
+            <Th>Name</Th>
+            <Th>Value</Th>
+            <Th>Code</Th>
           </Tr>
         </Thead>
         <Tbody>

@@ -6,16 +6,19 @@ import { LiveError } from "~/features/portable-text/interactive-code/LiveError";
 import { LiveProvider } from "~/features/portable-text/interactive-code/LiveProvider";
 
 const defaultCode = `<Stack textAlign="center">
-  <Heading>Velkommen til lekegrinden</Heading>
-  <Text>Her kan du teste ut hele Spor live i nettleseren.</Text>
-  <Text>Alle komponentene er tilgjengelige, så du trenger ikke importere noe.</Text>
+  <Heading>Welcome to the playground</Heading>
+  <Text>Here, you can test out Spor in your browser</Text>
+  <Text>
+    All components are exposed as global variables, 
+    so you don't need to download anything.
+  </Text>
 </Stack>`;
 
 export default function PlaygroundPage() {
   const [playgroundData, setPlaygroundData] = useState(() => "");
   useEffect(() => {
     const storedData = localStorage.getItem("playgroundData");
-    setPlaygroundData(defaultCode);
+    setPlaygroundData(storedData ?? defaultCode);
   }, []);
 
   const handleChange = (newCode: string) => {

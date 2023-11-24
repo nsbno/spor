@@ -33,7 +33,7 @@ import {
   isValidPreviewRequest,
   urlBuilder,
 } from "~/utils/sanity/utils";
-import { slugify, toTitleCase } from "~/utils/stringUtils";
+import { toTitleCase } from "~/utils/stringUtils";
 
 type ResourceLink = {
   linkType: "figma" | "react" | "react-native" | "elm";
@@ -287,16 +287,12 @@ type GetCorrectTitleArgs = Pick<ComponentSection, "title" | "customTitle">;
 const getCorrectTitle = ({ title, customTitle }: GetCorrectTitleArgs) => {
   switch (title) {
     case "examples":
-      return "Eksempler";
+      return "Examples";
     case "guidelines":
-      return "Retningslinjer";
+      return "Guidelines";
     case "code":
-      return "Kode";
+      return "Code";
     case "other":
       return toTitleCase(customTitle ?? "");
   }
-};
-
-const getSlugFromSection = (section: ComponentSection) => {
-  return slugify(section.customTitle || section.title);
 };

@@ -25,10 +25,10 @@ export function SpacingTokens(props: BoxProps) {
       title="Spacing"
       description={
         <Text>
-          Vy bruker en spacing-skala basert på 6 px, i kombinasjon med et 3 px
-          baseline-grid for mindre komponenter. Det vil si at menyer, bokser,
-          marginer og padding tar utgangspunkt i 6 px. Mens komponenter som
-          knapper og ikoner tar utgangspunkt i 6 og 12 px.
+          Vy uses a spacing scale based on 6 px, in combination with a 3 px
+          baseline grid for smaller components. This means that menus, boxes,
+          margins, and padding are based on 6 px. While components like buttons
+          and icons are based on 6 and 12 px.
         </Text>
       }
     >
@@ -48,9 +48,9 @@ const SpacingTokensTable = (props: SpacingTokenTableProps) => {
       <Table variant="simple" colorScheme="grey">
         <Thead>
           <Tr>
-            <Th>Eksempel</Th>
-            <Th>Verdi</Th>
-            <Th>Kode</Th>
+            <Th>Example</Th>
+            <Th>Value</Th>
+            <Th>Code</Th>
           </Tr>
         </Thead>
         <Tbody>

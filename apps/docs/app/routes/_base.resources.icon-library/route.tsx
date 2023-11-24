@@ -19,10 +19,10 @@ export default function IconsPage() {
         Icon library
       </Heading>
       <Text variant="sm">
-        Vi bruker ikoner for å skape bedre navigasjon og for å tydeliggjøre
-        hvilket produkt og tjeneste vi refererer til. Ikonene skal hjelpe
-        brukeren med å raskt identifisere og skille mellom ulikt innhold slik at
-        de skaper verdi for brukeren.
+        We use icons to create better navigation and to clarify which product
+        and service we are referring to. The icons should help users quickly
+        identify and differentiate between different content so that they create
+        value for the user.
       </Text>
       <ButtonGroup>
         <Button

@@ -126,7 +126,7 @@ export default function IllustrationLibraryPage() {
         href="/resources/illustration-library/all"
         leftIcon={<DownloadOutline24Icon />}
       >
-        Last ned alle illustrasjoner
+        Download all illustrations
       </Button>
       <Divider marginY={3} />
       <Flex marginBottom={5} gap={2}>

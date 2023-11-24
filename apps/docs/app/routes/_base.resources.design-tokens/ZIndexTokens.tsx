@@ -31,9 +31,9 @@ const ZIndexTokensTable = (props: ZIndexTokenTableProps) => {
       <Table variant="simple" colorScheme="grey">
         <Thead>
           <Tr>
-            <Th>Navn</Th>
-            <Th>Verdi</Th>
-            <Th>Kode</Th>
+            <Th>Name</Th>
+            <Th>Value</Th>
+            <Th>Code</Th>
           </Tr>
         </Thead>
         <Tbody>

@@ -22,16 +22,16 @@ export function RoundingTokens(props: BoxProps) {
       title="Rounding"
       description={
         <Text>
-          Avrundingen følger størrelsen på komponenten. Små komponenter har
-          liten avrunding, og store komponenter har større avrunding. Alle
-          komponenter som består av en “boks/kort” har rounding. Vi bruker
-          sjeldent helt firkantede komponenter (0 px rounding). En enkel måte å
-          se hvilken rounding du burde bruke, er å følge tommelfingerregelen:
-          komponenter med 1-2 linjer med tekst eller veldig kompakte elementer,
-          vil alltid ha rounding på 12 px. Når det er flere linjer horisontalt,
-          sånn som kort eller bokser, bruker vi rounding på 18 px. I tillegg
-          brukes 24 px rounding på skuffer, 30 px rounding på knapper og 36 px
-          rounding på header i appen.
+          The rounding follows the size of the component. Small components have
+          small rounding, and large components have larger rounding. All
+          components that consist of a 'box/card' have rounding. We rarely use
+          completely square components (0 px rounding). An easy way to determine
+          which rounding you should use is to follow the rule of thumb:
+          components with 1-2 lines of text or very compact elements will always
+          have a rounding of 12 px. When there are more lines horizontally, such
+          as cards or boxes, we use a rounding of 18 px. In addition, 24 px
+          rounding is used on drawers, 30 px rounding on buttons, and 36 px
+          rounding on the app header.
         </Text>
       }
     >
@@ -49,9 +49,9 @@ const RoundingTokensTable = (props: RoundingTokenTableProps) => {
       <Table variant="simple" colorScheme="grey">
         <Thead>
           <Tr>
-            <Th>Eksempel</Th>
-            <Th>Verdi</Th>
-            <Th>Kode</Th>
+            <Th>Example</Th>
+            <Th>Value</Th>
+            <Th>Code</Th>
           </Tr>
         </Thead>
         <Tbody>

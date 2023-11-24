@@ -119,7 +119,7 @@ export const CopyCodeButton = forwardRef<CopyCodeButtonProps, "button">(
           fontFamily="body"
           ref={ref}
         >
-          {hasCopied ? "Kopiert" : "Kopiér"}
+          {hasCopied ? "Copied" : "Copy"}
         </Button>
       </DarkMode>
     );

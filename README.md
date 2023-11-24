@@ -30,8 +30,6 @@ To get started, you'll need to install the required packages:
 
 ```bash
 $ npm install @vygruppen/spor-react
-# or
-$ yarn add @vygruppen/spor-react
 ```
 
 Next, wrap your entire application in the `SporProvider` component. You'll need to pass the current language as well:

@@ -67,7 +67,7 @@ export const loader = async () => {
       size,
       description
     },
-  "article": *[_type == "article" && slug.current == "illustrasjonsbibliotek"][0] {
+  "article": *[_type == "article" && slug.current == "illustration-library"][0] {
     _id,
     title,
     "slug": slug.current,
@@ -87,7 +87,7 @@ export const loader = async () => {
   return json({ illustrations, article } as LoaderData);
 };
 
-export default function IllustrasjonerPage() {
+export default function IllustrationLibraryPage() {
   const { illustrations, article } = useLoaderData<typeof loader>();
   const [searchValue, setSearchValue] = useState("");
   const [background, setBackground] = useState("light");

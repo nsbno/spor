@@ -19,7 +19,7 @@ export function ShadowTokens(props: BoxProps) {
   return (
     <SharedTokenLayout
       {...props}
-      title="Skygger"
+      title="Shadows"
       description={
         <Text>
           Skygge brukes for å løfte noe fra bakgrunnen (en handling) og for å

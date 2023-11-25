@@ -19,7 +19,7 @@ export function AnimationTokens(props: BoxProps) {
   return (
     <SharedTokenLayout
       {...props}
-      title="Animasjon"
+      title="Animation"
       description={
         <Text>
           Det er viktig at lengden på animasjonen og hvilke attributter som

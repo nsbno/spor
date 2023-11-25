@@ -17,7 +17,7 @@ export function ColorTokens(props: BoxProps) {
   return (
     <SharedTokenLayout
       {...props}
-      title="Farger"
+      title="Colors"
       description={
         <Text>
           Hovedfargene våre er de fargene vi bruker mest. Disse brukes som bla.

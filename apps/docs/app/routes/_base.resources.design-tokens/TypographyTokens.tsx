@@ -89,7 +89,7 @@ export function TypographyTokens(props: BoxProps) {
   return (
     <SharedTokenLayout
       {...props}
-      title="Typografi"
+      title="Typography"
       description={
         <Stack spacing={6}>
           <Text>
@@ -109,7 +109,7 @@ export function TypographyTokens(props: BoxProps) {
       }
     >
       <Stack spacing={9}>
-        <TypographyTokenTable viewportSize="mobile" title="Mobil" />
+        <TypographyTokenTable viewportSize="mobile" title="Mobile" />
         <TypographyTokenTable viewportSize="desktop" title="Desktop" />
       </Stack>
     </SharedTokenLayout>

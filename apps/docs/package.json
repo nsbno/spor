@@ -1,8 +1,8 @@
 {
   "private": true,
-  "version": "0.0.9",
+  "version": "0.0.10",
   "name": "@vygruppen/docs",
-  "description": "A remix rewrite of the docs",
+  "description": "The Spor documentation",
   "license": "MIT",
   "scripts": {
     "build": "remix build",

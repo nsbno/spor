@@ -1,6 +1,6 @@
-import { spinnerDarkData } from "@vygruppen/spor-loader";
+import { spinnerDarkData, spinnerLightData } from "@vygruppen/spor-loader";
 import React from "react";
-import { Box, BoxProps, Center } from "..";
+import { Box, BoxProps, Center, useColorMode } from "..";
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
 
@@ -26,11 +26,13 @@ export const DarkSpinner = ({
   maxWidth,
   ...props
 }: DarkSpinnerProps) => {
+  const { colorMode } = useColorMode();
+  const spinnerData = colorMode === "dark" ? spinnerLightData : spinnerDarkData
   return (
     <Center flexDirection="column" {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={spinnerDarkData} />}
+          {() => <Lottie animationData={spinnerData} />}
         </ClientOnly>
       </Box>
       {children && (

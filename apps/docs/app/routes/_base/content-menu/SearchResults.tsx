@@ -14,7 +14,9 @@ export const SearchResults = forwardRef<SearchResultsProps, "button">(
       <Box
         marginTop={2}
         aria-live="polite"
-        aria-label={`${hits.length || "Ingen"} treff på ${query}.`}
+        aria-label={`${hits.length || "No"} hit${
+          hits.length !== 1 ? "s" : ""
+        } for ${query}.`}
       >
         {hits
           .filter((item) => item.url)
@@ -29,7 +31,7 @@ export const SearchResults = forwardRef<SearchResultsProps, "button">(
             </MenuItem>
           ))}
         {hits.length === 0 && (
-          <Text textAlign="center">Ingen treff på "{query}"</Text>
+          <Text textAlign="center">No hits for "{query}"</Text>
         )}
       </Box>
     );

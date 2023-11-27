@@ -132,7 +132,7 @@ export default function IllustrationLibraryPage() {
       <Flex marginBottom={5} gap={2}>
         <Box flex={1}>
           <SearchInput
-            label="Finn illustrasjon"
+            label="Find illustration"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             width="100%"
@@ -140,26 +140,26 @@ export default function IllustrationLibraryPage() {
         </Box>
         <Box>
           <NativeSelect
-            label="Bakgrunn"
+            label="Background"
             value={background}
             onChange={(e) => setBackground(e.target.value)}
             width="fit-content"
           >
-            <option value="light">Lys bakgrunn</option>
-            <option value="dark">Mørk bakgrunn</option>
+            <option value="light">Light background</option>
+            <option value="dark">Dark background</option>
           </NativeSelect>
         </Box>
         <Box>
           <NativeSelect
-            label="Størrelse"
+            label="Size"
             value={size}
             onChange={(e) => setSize(e.target.value)}
             width="fit-content"
           >
-            <option value="all">Alle</option>
-            <option value="small">Små</option>
-            <option value="medium">Middels</option>
-            <option value="large">Store</option>
+            <option value="all">All</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
           </NativeSelect>
         </Box>
       </Flex>
@@ -223,7 +223,8 @@ export default function IllustrationLibraryPage() {
                     )
                     .forceDownload(`${slugify(illustration.title)}.svg`)
                     .url()}
-                  aria-label="Last ned SVG"
+                  aria-label="Download SVG"
+                  title="Download SVG"
                 />
               </Flex>
             </Flex>

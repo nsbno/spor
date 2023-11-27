@@ -20,7 +20,7 @@ export function SearchBar() {
       </FormControl>
       <FormControl flex="1 1 170px">
         <NativeSelect
-          label="Størrelse"
+          label="Size"
           value={searchFilter.size}
           onChange={(e) => setSize(e.target.value)}
         >

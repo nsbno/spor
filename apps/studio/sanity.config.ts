@@ -3,6 +3,7 @@ import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import VyLogo from "./components/VyLogo";
+import { structure } from "./desk/structure";
 import { schemaTypes } from "./schemas";
 
 export default defineConfig({
@@ -10,7 +11,7 @@ export default defineConfig({
   title: "Spor",
   projectId: "tbpd14t4",
   dataset: "production",
-  plugins: [deskTool(), visionTool(), codeInput()],
+  plugins: [deskTool({ structure: structure }), visionTool(), codeInput()],
   studio: {
     components: {
       logo: VyLogo,

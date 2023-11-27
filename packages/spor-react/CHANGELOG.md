@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 4.0.3
+
+### Patch Changes
+
+- 1cd9939e: TimePicker: Make defaultValue=null a valid value
+- 8b4ab3ac: spinner: added darkmode for Darkspinner
+
 ## 4.0.2
 
 ### Patch Changes

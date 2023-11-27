@@ -24,9 +24,11 @@ type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> & {
   value?: TimeValue;
   /** A default value, if any.
    *
-   * A `new Time(hours, minutes)` should be passed. Defaults to the current time if not provided.
+   * A `new Time(hours, minutes)` should be passed.
+   * Defaults to the current time if not provided.
+   * Can be set to null if you don't want a time to be selected by default.
    **/
-  defaultValue?: TimeValue;
+  defaultValue?: TimeValue | null;
   /** Callback for when the time changes */
   onChange?: (value: TimeValue) => void;
   /** The maxiumum number of minutes to move when the step buttons are used.

@@ -12,3 +12,8 @@ cp .env.example .env
 ```
 
 Next, start the development server with `npm run dev`. The site will open on `localhost:3000`.
+
+
+## New release?
+
+Bump version in `package.json` to push it out.

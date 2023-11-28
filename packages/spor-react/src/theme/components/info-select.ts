@@ -4,6 +4,7 @@ import { focusVisible } from "../utils/focus-utils";
 import { srOnly } from "../utils/sr-utils";
 import { baseBorder } from "../utils/border-utils";
 import { baseBackground } from "../utils/background-utils";
+import { PartsStyleInterpolation } from "@chakra-ui/styled-system";
 
 const parts = anatomy("InfoSelect").parts(
   "container",
@@ -75,5 +76,14 @@ const config = helpers.defineMultiStyleConfig({
     },
     arrowIcon: {},
   }),
+  variants: {
+    base: (props) => ({
+    }),
+    floating: (props) => ({
+    }),
+  },
+  defaultProps: {
+    variant: "base",
+  }
 });
 export default config;

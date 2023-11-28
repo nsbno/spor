@@ -113,6 +113,7 @@ type InfoSelectProps<T extends object> = {
   disabledKeys?: string[];
   /** Whether or not the input is invalid */
   "aria-invalid"?: boolean;
+  variant?: "base" | "floating";
 };
 /**
  * A styled select component.
@@ -157,6 +158,7 @@ export function InfoSelect<T extends object>({
   value,
   isLabelSrOnly,
   defaultValue,
+  variant = "base",
   ...props
 }: InfoSelectProps<T>) {
   const renamedProps = {
@@ -174,9 +176,13 @@ export function InfoSelect<T extends object>({
     triggerRef,
   );
 
+  const stateStyle = "completed";
+
   const styles = useMultiStyleConfig("InfoSelect", {
     isOpen: state.isOpen,
     isLabelSrOnly,
+    variant,
+    stateStyle
   });
   const { buttonProps } = useButton(triggerProps, triggerRef);
   const { t } = useTranslation();

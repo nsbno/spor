@@ -15,12 +15,14 @@ export const StepperStep = ({
   variant,
 }: StepperStepProps) => {
   const { activeStep, onClick, colorScheme } = useStepper();
-  const state = getVariant(stepNumber!, activeStep);
+  const state = getState(stepNumber!, activeStep);
   const style = useMultiStyleConfig("Stepper", {
     state,
     variant,
     colorScheme,
   });
+
+  const adjustedProps = getAdjustedBtnProps(state);
 
   return (
     <Box __css={style.stepContainer}>
@@ -30,24 +32,14 @@ export const StepperStep = ({
 
       <Button
         size={"xs"}
-        backgroundColor={state === "active" ? "primaryGreen" : undefined}
         variant={
           state === "active"
             ? "primary"
             : state === "completed"
-            ? "secondary"
-            : "additional"
+            ? "additional"
+            : "ghost"
         }
-        isDisabled={state === "disabled"}
-        {...(state === "active"
-          ? {
-              _hover: {},
-              boxShadow: "none",
-              cursor: "not-allowed",
-              _focus: {},
-              _active: {},
-            }
-          : undefined)}
+        {...adjustedProps}
         onClick={() => onClick(stepNumber)}
       >
         {children}
@@ -56,7 +48,39 @@ export const StepperStep = ({
   );
 };
 
-const getVariant = (stepNumber: number, activeStep: number) => {
+const getAdjustedBtnProps = (
+  state: "completed" | "active" | "disabled"
+): Record<string, any> => {
+  switch (state) {
+    case "active":
+      return {
+        _hover: {},
+        boxShadow: "none",
+        _focus: {},
+        _active: {},
+        cursor: "auto",
+      };
+    case "completed":
+      return {
+        boxShadow: "",
+      };
+    case "disabled":
+      return {
+        _disabled: {},
+        _hover: {},
+        _focus: {},
+        _active: {},
+        color: "dimGrey",
+        cursor: "auto",
+      };
+    default:
+      return {};
+  }
+};
+
+
+
+const getState = (stepNumber: number, activeStep: number) => {
   if (stepNumber < activeStep) {
     return "completed";
   }

@@ -56,25 +56,9 @@ const config = helpers.defineMultiStyleConfig({
       ml: 2,
       textAlign: "right",
     },
-    stepCounter: {
-      whiteSpace: "nowrap",
-      textDecoration: "underline",
-    },
     stepContainer: {
       display: "flex",
       alignItems: "center",
-    },
-    stepNumber: {
-      borderRadius: "round",
-      border: "sm",
-      borderColor: "currentColor",
-      width: 4,
-      height: 4,
-      mr: 1,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontSize: ["mobile.xs", "desktop.xs"],
     },
     stepTitle: {
       textStyle: "sm",
@@ -84,19 +68,15 @@ const config = helpers.defineMultiStyleConfig({
   variants: {
     base: (props) => ({
       root: {
-        backgroundColor: "red",
+        backgroundColor: "transparent",
       },
     }),
-
     accent: (props) => ({
       root: {
-        backgroundColor: "red",
+        backgroundColor: mode("seaMist", "pine") (props),
       },
     }),
   },
-  // defaultProps: {
-  //   variant: "base",
-  // },
 });
 
 export default config;
@@ -108,8 +88,9 @@ const getRootBackgroundColor = (props: StyleFunctionProps) => {
     case "dark":
       return "darkTeal";
     case "green":
-    default:
       return "seaMist";
+    default:
+      return "transpare";
   }
 };
 
@@ -125,76 +106,3 @@ const getColor = (props: StyleFunctionProps) => {
   }
 };
 
-const getStepNumberStyles = (props: StyleFunctionProps) => {
-  switch (props.colorScheme) {
-    case "dark":
-      return {
-        backgroundColor: "white",
-        color: "darkTeal",
-      };
-    case "light":
-    case "green":
-    default:
-      return {
-        backgroundColor: mode("darkTeal", "white")(props),
-        color: mode("white", "darkTeal")(props),
-      };
-  }
-};
-
-const getDisabledColor = (props: StyleFunctionProps) => {
-  switch (props.colorScheme) {
-    case "dark":
-      return "whiteAlpha.400";
-    case "green":
-      return "dimGrey";
-    case "light":
-    default:
-      return "osloGrey";
-  }
-};
-
-const getHoverStyles = (props: StyleFunctionProps) => {
-  switch (props.colorScheme) {
-    case "dark":
-      return { backgroundColor: "pine" };
-    case "green":
-      return {
-        backgroundColor: mode("coralGreen", "primaryGreen")(props),
-      };
-    case "light":
-    default:
-      return {
-        backgroundColor: mode("seaMist", "primaryGreen")(props),
-      };
-  }
-};
-
-const getFocusStyles = (props: StyleFunctionProps) => {
-  switch (props.colorScheme) {
-    case "dark":
-      return {
-        outline: "none",
-        boxShadow: `inset 0 0 0 2px ${props.theme.colors.white}`,
-      };
-    case "light":
-    case "green":
-    default:
-      return {
-        outline: "none",
-        boxShadow: `inset 0 0 0 2px ${props.theme.colors.greenHaze}`,
-      };
-  }
-};
-
-const getActiveStyles = (props: StyleFunctionProps) => {
-  switch (props.colorScheme) {
-    case "light":
-      return { backgroundColor: "mint" };
-    case "dark":
-      return { backgroundColor: "celadon" };
-    case "green":
-    default:
-      return { color: "azure", backgroundColor: "transparent" };
-  }
-};

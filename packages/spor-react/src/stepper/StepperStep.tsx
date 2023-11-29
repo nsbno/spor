@@ -1,4 +1,4 @@
-import { Flex, useMultiStyleConfig } from "@chakra-ui/react";
+import { useMultiStyleConfig } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { Box, Button } from "..";

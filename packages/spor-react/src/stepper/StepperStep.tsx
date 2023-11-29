@@ -1,17 +1,23 @@
 import { Flex, useMultiStyleConfig } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
-import { Box } from "..";
+import { Box, Button } from "..";
 import { useStepper } from "./StepperContext";
 
 type StepperStepProps = {
   children: React.ReactNode;
   stepNumber: number;
+  variant: "base" | "accent";
 };
-export const StepperStep = ({ children, stepNumber }: StepperStepProps) => {
+export const StepperStep = ({
+  children,
+  stepNumber,
+  variant,
+}: StepperStepProps) => {
   const { activeStep, onClick, colorScheme } = useStepper();
-  const variant = getVariant(stepNumber!, activeStep);
+  const state = getVariant(stepNumber!, activeStep);
   const style = useMultiStyleConfig("Stepper", {
+    state,
     variant,
     colorScheme,
   });
@@ -22,17 +28,30 @@ export const StepperStep = ({ children, stepNumber }: StepperStepProps) => {
         <DropdownRightFill18Icon marginX={5} display={["none", "block"]} />
       )}
 
-      <Flex
-        __css={style.stepButton}
-        alignItems="center"
-        as="button"
-        type="button"
-        disabled={variant === "disabled" || variant === "active"}
+      <Button
+        size={"xs"}
+        backgroundColor={state === "active" ? "primaryGreen" : undefined}
+        variant={
+          state === "active"
+            ? "primary"
+            : state === "completed"
+            ? "secondary"
+            : "additional"
+        }
+        isDisabled={state === "disabled"}
+        {...(state === "active"
+          ? {
+              _hover: {},
+              boxShadow: "none",
+              cursor: "not-allowed",
+              _focus: {},
+              _active: {},
+            }
+          : undefined)}
         onClick={() => onClick(stepNumber)}
       >
-        <Box __css={style.stepNumber}>{stepNumber}</Box>
-        <Box __css={style.stepTitle}>{children}</Box>
-      </Flex>
+        {children}
+      </Button>
     </Box>
   );
 };

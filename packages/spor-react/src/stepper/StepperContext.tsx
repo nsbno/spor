@@ -4,11 +4,13 @@ type StepperContextType = {
   activeStep: number;
   numberOfSteps: number;
   colorScheme: ColorScheme;
+  variant: Variant;
   onClick: (clickedIndex: number) => void;
 };
 const StepperContext = React.createContext<StepperContextType | null>(null);
 
 type ColorScheme = "green" | "light" | "dark";
+type Variant = "base" | "accent";
 
 type StepperProviderProps = {
   /** Stepper steps */
@@ -21,6 +23,8 @@ type StepperProviderProps = {
   activeStep: number;
   /** The amount of steps */
   numberOfSteps: number;
+  /** The current variant */
+  variant: Variant;
 };
 /**
  * Internal provider for sharing logic between stepper and stepper steps.
@@ -31,10 +35,11 @@ export const StepperProvider = ({
   onClick,
   colorScheme,
   numberOfSteps,
+  variant,
 }: StepperProviderProps) => {
   return (
     <StepperContext.Provider
-      value={{ activeStep, onClick, colorScheme, numberOfSteps }}
+      value={{ activeStep, onClick, colorScheme, numberOfSteps, variant }}
     >
       {children}
     </StepperContext.Provider>

@@ -17,6 +17,7 @@ type StepperProps = {
   title?: string;
   activeStep: number;
   steps: string[];
+  variant: "base" | "accent";
 };
 /**
  * A stepper is used to show which step of a process a user is currently in.
@@ -38,8 +39,9 @@ export const Stepper = ({
   activeStep: activeStepAsStringOrNumber,
   title,
   colorScheme,
+  variant,
 }: StepperProps) => {
-  const style = useMultiStyleConfig("Stepper", { colorScheme });
+  const style = useMultiStyleConfig("Stepper", { colorScheme, variant });
   const numberOfSteps = steps.length;
   const activeStep = Number(activeStepAsStringOrNumber);
   const { t } = useTranslation();
@@ -49,6 +51,7 @@ export const Stepper = ({
         onClick={onClick}
         activeStep={activeStep}
         colorScheme={colorScheme}
+        variant={variant}
         numberOfSteps={numberOfSteps}
       >
         <Box __css={style.container}>
@@ -74,7 +77,11 @@ export const Stepper = ({
                 borderRadius="xs"
               >
                 {steps.map((step, index) => (
-                  <StepperStep key={step} stepNumber={index + 1}>
+                  <StepperStep
+                    key={step}
+                    stepNumber={index + 1}
+                    variant={variant}
+                  >
                     {step}
                   </StepperStep>
                 ))}
@@ -88,7 +95,7 @@ export const Stepper = ({
           </Box>
           <Flex justifyContent="center" display={["none", "flex"]}>
             {steps.map((step, index) => (
-              <StepperStep key={index} stepNumber={index + 1}>
+              <StepperStep key={index} stepNumber={index + 1} variant={variant}>
                 {step}
               </StepperStep>
             ))}

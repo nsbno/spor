@@ -12,7 +12,7 @@ const parts = anatomy("stepper").parts(
   "stepButton",
   "stepNumber",
   "stepTitle",
-  "closeButton"
+  "closeButton",
 );
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
@@ -64,13 +64,6 @@ const config = helpers.defineMultiStyleConfig({
       display: "flex",
       alignItems: "center",
     },
-    stepButton: {
-      color: "inherit",
-      display: "flex",
-      alignItems: "center",
-      padding: 1,
-      borderRadius: "xs",
-    },
     stepNumber: {
       borderRadius: "round",
       border: "sm",
@@ -89,44 +82,21 @@ const config = helpers.defineMultiStyleConfig({
     },
   }),
   variants: {
-    completed: (props) => ({
-      stepContainer: {
-        color: getColor(props),
-      },
-      stepButton: {
-        _hover: getHoverStyles(props),
-        _focus: getFocusStyles(props),
-        "&:focus:not(:focus-visible)": {
-          boxShadow: "none",
-        },
-        _focusVisible: getFocusStyles(props),
-        _active: getActiveStyles(props),
+    base: (props) => ({
+      root: {
+        backgroundColor: "red",
       },
     }),
-    active: (props) => ({
-      stepContainer: {
-        color: getColor(props),
-      },
-      stepButton: {
-        pointerEvents: "none",
-      },
-      stepNumber: getStepNumberStyles(props),
-      stepTitle: {
-        fontWeight: "bold",
-      },
-    }),
-    disabled: (props) => ({
-      stepContainer: {
-        color: getDisabledColor(props),
-      },
-      stepButton: {
-        pointerEvents: "none",
+
+    accent: (props) => ({
+      root: {
+        backgroundColor: "red",
       },
     }),
   },
-  defaultProps: {
-    colorScheme: "green",
-  },
+  // defaultProps: {
+  //   variant: "base",
+  // },
 });
 
 export default config;

@@ -45,6 +45,8 @@ type CardSelectProps = BoxProps & {
   placement?: AriaPositionProps["placement"];
   /** Whether or not to show the chevron. Defaults to true */
   withChevron?: boolean;
+  /** ColorScheme for different dark mode backgrounds */
+  backgroundScheme?: "dark" | "green"
 };
 
 /**
@@ -64,6 +66,7 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
   (
     {
       variant,
+      backgroundScheme,
       size,
       isOpen: externalIsOpen,
       defaultOpen = false,
@@ -96,7 +99,7 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
 
     const { buttonProps } = useButton(triggerProps, triggerRef);
 
-    const styles = useMultiStyleConfig("CardSelect", { variant, size });
+    const styles = useMultiStyleConfig("CardSelect", { variant, size, backgroundScheme });
     useForceRerender(state.isOpen);
 
     const ChevronIcon =
@@ -129,8 +132,10 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
             offset={size === "sm" ? 6 : 12}
             crossOffset={crossOffset}
             placement={placement}
+            
           >
             <Card
+              backgroundScheme={backgroundScheme}
               colorScheme="white"
               size="lg"
               sx={styles.card}

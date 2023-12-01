@@ -1,6 +1,6 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
-import { mode } from "@chakra-ui/theme-tools";
+import { StyleFunctionProps, mode } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
 
@@ -28,6 +28,8 @@ const config = helpers.defineMultiStyleConfig({
       borderRadius: "sm",
       boxShadow: "md",
       padding: 3,
+      color: mode("darkGrey", "white")(props),
+      backgroundColor: getBackgroundColor(props),
     },
   }),
   variants: {
@@ -157,3 +159,15 @@ const config = helpers.defineMultiStyleConfig({
 });
 
 export default config;
+
+
+const getBackgroundColor = (props: StyleFunctionProps) => {
+  switch (props.backgroundScheme) {
+    case "dark":
+      return mode("white", "darkGrey")(props);;
+    case "green":
+      return mode("white", "night")(props);;
+    default:
+      return mode("white", "whiteAlpha.100")(props);
+  }
+};

@@ -13,9 +13,6 @@ const config = helpers.defineMultiStyleConfig({
       appearance: "none",
       display: "flex",
       alignItems: "center",
-      _expanded: {
-        backgroundColor: mode("mint", "night")(props),
-      },
       ...focusVisible({
         notFocus: {},
         focus: {
@@ -34,16 +31,6 @@ const config = helpers.defineMultiStyleConfig({
     },
   }),
   variants: {
-    ghost: (props) => ({
-      trigger: {
-        _hover: {
-          backgroundColor: mode("seaMist", "pine")(props),
-        },
-        _active: {
-          backgroundColor: mode("mint", "whiteAlpha.200")(props),
-        },
-      },
-    }),
     outline: (props) => ({
       trigger: {
         boxShadow: getBoxShadowString({
@@ -72,8 +59,8 @@ const config = helpers.defineMultiStyleConfig({
             borderWidth: 1,
           }),
         },
-
         _expanded: {
+          backgroundColor: mode("mint", "whiteAlpha.100")(props),
           _hover: {
             backgroundColor: mode("seaMist", "todo")(props),
             boxShadow: "none",
@@ -86,6 +73,19 @@ const config = helpers.defineMultiStyleConfig({
             }),
           },
         },
+      },
+    }),
+    ghost: (props) => ({
+      trigger: {
+        _hover: {
+          backgroundColor: mode("seaMist", "pine")(props),
+        },
+        _active: {
+          backgroundColor: mode("mint", "whiteAlpha.200")(props),
+        },
+        _expanded: {
+          backgroundColor: mode("mint", "whiteAlpha.200")(props)
+        }
       },
     }),
     card: (props) => ({
@@ -110,6 +110,7 @@ const config = helpers.defineMultiStyleConfig({
           }),
         },
         _expanded: {
+          backgroundColor: mode("mint","whiteAlpha.100")(props),
           _hover: {
             boxShadow: getBoxShadowString({
               borderColor: "darkGrey",

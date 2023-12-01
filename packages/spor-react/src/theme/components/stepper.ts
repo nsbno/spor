@@ -90,7 +90,7 @@ const getRootBackgroundColor = (props: StyleFunctionProps) => {
     case "green":
       return "seaMist";
     default:
-      return "transpare";
+      return "transparent";
   }
 };
 

@@ -22,7 +22,7 @@ export const StepperStep = ({
     colorScheme,
   });
 
-  const adjustedProps = getAdjustedBtnProps(state);
+  const adjustedProps = getButtonStylesForState(state);
 
   return (
     <Box __css={style.stepContainer}>
@@ -48,7 +48,7 @@ export const StepperStep = ({
   );
 };
 
-const getAdjustedBtnProps = (
+const getButtonStylesForState = (
   state: "completed" | "active" | "disabled"
 ): Record<string, any> => {
   switch (state) {
@@ -62,7 +62,7 @@ const getAdjustedBtnProps = (
       };
     case "completed":
       return {
-        boxShadow: "",
+        boxShadow: "none",
       };
     case "disabled":
       return {

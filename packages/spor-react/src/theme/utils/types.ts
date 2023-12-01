@@ -1,4 +1,4 @@
-type State =
+export type State =
   | "default"
   | "hover"
   | "active"
@@ -8,6 +8,6 @@ type State =
   | "disabled";
 
 // Helper type to extract subset of union types
-type Subset<T, U extends T> = T extends U ? T : never;
+export type Subset<T, U extends T> = T extends U ? T : never;
 
 

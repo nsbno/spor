@@ -1,4 +1,5 @@
 import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
+import { State, Subset } from "./types";
 
 type BaseBackgroundState = Subset<State, "active" | "selected" | "disabled">;
 export function baseBackground(state: BaseBackgroundState, props: StyleFunctionProps) {

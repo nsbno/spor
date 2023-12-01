@@ -14,12 +14,11 @@ export const StepperStep = ({
   stepNumber,
   variant,
 }: StepperStepProps) => {
-  const { activeStep, onClick, colorScheme } = useStepper();
+  const { activeStep, onClick } = useStepper();
   const state = getState(stepNumber!, activeStep);
   const style = useMultiStyleConfig("Stepper", {
     state,
-    variant,
-    colorScheme,
+    variant
   });
 
   const adjustedProps = getButtonStylesForState(state);

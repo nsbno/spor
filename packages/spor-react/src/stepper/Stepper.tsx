@@ -13,7 +13,6 @@ import { StepperProvider } from "./StepperContext";
 
 type StepperProps = {
   onClick: (clickedStep: number) => void;
-  colorScheme: "light" | "dark" | "green";
   title?: string;
   activeStep: number;
   steps: string[];
@@ -38,10 +37,9 @@ export const Stepper = ({
   steps,
   activeStep: activeStepAsStringOrNumber,
   title,
-  colorScheme,
   variant,
 }: StepperProps) => {
-  const style = useMultiStyleConfig("Stepper", { colorScheme, variant });
+  const style = useMultiStyleConfig("Stepper", { variant });
   const numberOfSteps = steps.length;
   const activeStep = Number(activeStepAsStringOrNumber);
   const { t } = useTranslation();
@@ -50,7 +48,6 @@ export const Stepper = ({
       <StepperProvider
         onClick={onClick}
         activeStep={activeStep}
-        colorScheme={colorScheme}
         variant={variant}
         numberOfSteps={numberOfSteps}
       >

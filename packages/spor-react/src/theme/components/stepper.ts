@@ -20,7 +20,6 @@ const helpers = createMultiStyleConfigHelpers(parts.keys);
 const config = helpers.defineMultiStyleConfig({
   baseStyle: (props) => ({
     root: {
-      backgroundColor: getRootBackgroundColor(props),
       display: "flex",
       alignItems: "center",
       justifyContent: ["space-between", "center"],
@@ -39,7 +38,6 @@ const config = helpers.defineMultiStyleConfig({
       display: ["flex", "none"],
       alignItems: "center",
       justifyContent: "space-between",
-      color: getColor(props),
     },
     backButton: {
       borderRadius: "xs",
@@ -77,32 +75,9 @@ const config = helpers.defineMultiStyleConfig({
       },
     }),
   },
+  defaultProps: {
+    variant: "base"
+  }
 });
 
 export default config;
-
-const getRootBackgroundColor = (props: StyleFunctionProps) => {
-  switch (props.colorScheme) {
-    case "light":
-      return "white";
-    case "dark":
-      return "darkTeal";
-    case "green":
-      return "seaMist";
-    default:
-      return "transparent";
-  }
-};
-
-const getColor = (props: StyleFunctionProps) => {
-  switch (props.colorScheme) {
-    case "light":
-      return mode("darkGrey", "white")(props);
-    case "dark":
-      return "white";
-    case "green":
-    default:
-      return mode("darkTeal", "white")(props);
-  }
-};
-

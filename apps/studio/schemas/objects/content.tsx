@@ -18,12 +18,12 @@ export const content = defineType({
     },
     { type: "buttonLink" },
     { type: "divider" },
-    { type: "imports" },
     { type: "imageWithCaption" },
     { type: "codeExample" },
     { type: "staticCodeBlock" },
     { type: "reference", to: [{ type: "component" }] },
     { type: "grid" },
     { type: "tipsPanel" },
+    { type: "bestPracticePanel" },
   ],
 });

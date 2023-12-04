@@ -57,20 +57,20 @@ const config = defineStyleConfig({
     }),
     secondary: (props) => ({
       // FIXME: Update to use global defined background color for darkMode whenever it is available instead of alpha
-      backgroundColor: mode("seaMist", "whiteAlpha.100")(props),
+      backgroundColor: mode("seaMist", "primaryGreen")(props),
       color: mode("darkTeal", "white")(props),
       // order is important here for now while we do not have global defined background color for darkMode
       _hover: {
-        backgroundColor: mode("coralGreen", "whiteAlpha.200")(props),
+        backgroundColor: mode("coralGreen", "greenHaze")(props),
       },
       ...focusVisible({
         focus: {
           boxShadow: `inset 0 0 0 2px ${mode(
             colors.greenHaze,
-            colors.azure
+            colors.primaryGreen
           )(props)}, inset 0 0 0 4px ${mode(
             colors.white,
-            colors.blackAlpha[300]
+            colors.darkTeal
           )(props)}`,
           _hover: {
             boxShadow: `inset 0 0 0 2px ${mode(
@@ -87,7 +87,7 @@ const config = defineStyleConfig({
         },
       }),
       _active: {
-        backgroundColor: mode("mint", "whiteAlpha.300")(props),
+        backgroundColor: mode("mint", "darkTeal")(props),
         boxShadow: `inset 0 0 0 2px ${mode(
           colors.greenHaze,
           colors.azure

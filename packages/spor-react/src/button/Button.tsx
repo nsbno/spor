@@ -46,7 +46,6 @@ export type ButtonProps = Exclude<
  *
  * ```tsx
  * <Button variant="primary" onClick={confirmOrder}>
- *   Buy trip
  * </Button>
  * ```
  *

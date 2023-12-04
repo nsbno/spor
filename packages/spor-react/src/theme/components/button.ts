@@ -31,30 +31,11 @@ const config = defineStyleConfig({
     },
   },
   variants: {
-    control: (props) => ({
-      backgroundColor: mode("darkTeal", "mint")(props),
-      color: mode("white", "darkTeal")(props),
-      ...focusVisible({
-        focus: {
-          boxShadow: `inset 0 0 0 4px ${mode(
-            colors.darkTeal,
-            colors.seaMist
-          )(props)}, inset 0 0 0 6px currentColor`,
-        },
-        notFocus: { boxShadow: "none" },
-      }),
-      _hover: {
-        backgroundColor: mode("night", "coralGreen")(props),
-      },
-      _active: {
-        backgroundColor: mode("pine", "white")(props),
-      },
-    }),
     primary: (props) => ({
       // FIXME: Update to use a global defined background color for darkMode whenever it is available.
       // hardcoded background color as alpha-"hack" below is not feasible for dark mode with solid background color
-      backgroundColor: "primaryGreen",
-      color: "white",
+      backgroundColor: mode("primaryGreen", "coralGreen")(props),
+      color: mode("white", "darkTeal")(props),
       ...focusVisible({
         focus: {
           boxShadow: `inset 0 0 0 2px ${mode(
@@ -68,10 +49,10 @@ const config = defineStyleConfig({
         notFocus: { boxShadow: "none" },
       }),
       _hover: {
-        backgroundColor: "pine",
+        backgroundColor: mode("darkTeal", "blueGreen")(props),
       },
       _active: {
-        backgroundColor: "azure",
+        backgroundColor: mode("greenHaze", "seaMist")(props),
       },
     }),
     secondary: (props) => ({
@@ -125,7 +106,7 @@ const config = defineStyleConfig({
         },
       },
     }),
-    additional: (props) => ({
+    tertiary: (props) => ({
       backgroundColor: "transparent",
       color: mode("darkGrey", "white")(props),
       fontWeight: "normal",

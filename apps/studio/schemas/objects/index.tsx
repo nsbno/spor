@@ -1,3 +1,4 @@
+export * from "./bestPracticePanel";
 export * from "./buttonLink";
 export * from "./codeExample";
 export * from "./content";

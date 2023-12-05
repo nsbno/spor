@@ -118,7 +118,7 @@ const config = defineStyleConfig({
         focus: {
           boxShadow: getBoxShadowString({
             borderWidth: 2,
-            borderColor: "greenHaze",
+            borderColor: "azure",
           }),
         },
         notFocus: {
@@ -155,13 +155,13 @@ const config = defineStyleConfig({
         },
       }),
       _hover: {
-        backgroundColor: mode("seaMist", "pine")(props),
+        backgroundColor: mode("seaMist", "whiteAlpha.200")(props),
         _disabled: {
           color: "blackAlpha.300",
         },
       },
       _active: {
-        backgroundColor: mode("mint", "whiteAlpha.200")(props),
+        backgroundColor: mode("mint", "whiteAlpha.100")(props),
       },
     }),
     floating: (props) => ({
@@ -171,7 +171,7 @@ const config = defineStyleConfig({
         baseShadow: "sm",
       }),
       _active: {
-        backgroundColor: mode("mint", "whiteAlpha.300")(props),
+        backgroundColor: mode("mint", "whiteAlpha.400")(props),
       },
       _hover: {
         backgroundColor: mode("white", "whiteAlpha.200")(props),

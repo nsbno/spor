@@ -31,30 +31,11 @@ const config = defineStyleConfig({
     },
   },
   variants: {
-    control: (props) => ({
-      backgroundColor: mode("darkTeal", "mint")(props),
-      color: mode("white", "darkTeal")(props),
-      ...focusVisible({
-        focus: {
-          boxShadow: `inset 0 0 0 4px ${mode(
-            colors.darkTeal,
-            colors.seaMist
-          )(props)}, inset 0 0 0 6px currentColor`,
-        },
-        notFocus: { boxShadow: "none" },
-      }),
-      _hover: {
-        backgroundColor: mode("night", "coralGreen")(props),
-      },
-      _active: {
-        backgroundColor: mode("pine", "white")(props),
-      },
-    }),
     primary: (props) => ({
       // FIXME: Update to use a global defined background color for darkMode whenever it is available.
       // hardcoded background color as alpha-"hack" below is not feasible for dark mode with solid background color
-      backgroundColor: "primaryGreen",
-      color: "white",
+      backgroundColor: mode("primaryGreen", "coralGreen")(props),
+      color: mode("white", "darkTeal")(props),
       ...focusVisible({
         focus: {
           boxShadow: `inset 0 0 0 2px ${mode(
@@ -68,28 +49,28 @@ const config = defineStyleConfig({
         notFocus: { boxShadow: "none" },
       }),
       _hover: {
-        backgroundColor: "pine",
+        backgroundColor: mode("darkTeal", "blueGreen")(props),
       },
       _active: {
-        backgroundColor: "azure",
+        backgroundColor: mode("greenHaze", "seaMist")(props),
       },
     }),
     secondary: (props) => ({
       // FIXME: Update to use global defined background color for darkMode whenever it is available instead of alpha
-      backgroundColor: mode("seaMist", "whiteAlpha.100")(props),
+      backgroundColor: mode("seaMist", "primaryGreen")(props),
       color: mode("darkTeal", "white")(props),
       // order is important here for now while we do not have global defined background color for darkMode
       _hover: {
-        backgroundColor: mode("coralGreen", "whiteAlpha.200")(props),
+        backgroundColor: mode("coralGreen", "greenHaze")(props),
       },
       ...focusVisible({
         focus: {
           boxShadow: `inset 0 0 0 2px ${mode(
             colors.greenHaze,
-            colors.azure
+            colors.primaryGreen
           )(props)}, inset 0 0 0 4px ${mode(
             colors.white,
-            colors.blackAlpha[300]
+            colors.darkTeal
           )(props)}`,
           _hover: {
             boxShadow: `inset 0 0 0 2px ${mode(
@@ -106,7 +87,7 @@ const config = defineStyleConfig({
         },
       }),
       _active: {
-        backgroundColor: mode("mint", "whiteAlpha.300")(props),
+        backgroundColor: mode("mint", "darkTeal")(props),
         boxShadow: `inset 0 0 0 2px ${mode(
           colors.greenHaze,
           colors.azure
@@ -125,7 +106,7 @@ const config = defineStyleConfig({
         },
       },
     }),
-    additional: (props) => ({
+    tertiary: (props) => ({
       backgroundColor: "transparent",
       color: mode("darkGrey", "white")(props),
       fontWeight: "normal",
@@ -137,7 +118,7 @@ const config = defineStyleConfig({
         focus: {
           boxShadow: getBoxShadowString({
             borderWidth: 2,
-            borderColor: "greenHaze",
+            borderColor: "azure",
           }),
         },
         notFocus: {
@@ -174,13 +155,13 @@ const config = defineStyleConfig({
         },
       }),
       _hover: {
-        backgroundColor: mode("seaMist", "pine")(props),
+        backgroundColor: mode("seaMist", "whiteAlpha.200")(props),
         _disabled: {
           color: "blackAlpha.300",
         },
       },
       _active: {
-        backgroundColor: mode("mint", "whiteAlpha.200")(props),
+        backgroundColor: mode("mint", "whiteAlpha.100")(props),
       },
     }),
     floating: (props) => ({
@@ -190,7 +171,7 @@ const config = defineStyleConfig({
         baseShadow: "sm",
       }),
       _active: {
-        backgroundColor: mode("mint", "whiteAlpha.300")(props),
+        backgroundColor: mode("mint", "whiteAlpha.400")(props),
       },
       _hover: {
         backgroundColor: mode("white", "whiteAlpha.200")(props),

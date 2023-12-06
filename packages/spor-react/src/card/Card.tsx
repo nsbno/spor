@@ -12,7 +12,8 @@ export type CardProps = Exclude<BoxProps, "size"> & {
     | "green"
     | "teal"
     | "yellow"
-    | "orange";
+    | "orange"
+    | "red";
 };
 /**
  * Renders a card.

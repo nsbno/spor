@@ -58,7 +58,8 @@ type CardThemeProps = {
     | "green"
     | "teal"
     | "yellow"
-    | "orange";
+    | "orange"
+    | "red";
   size: "sm" | "lg";
 };
 
@@ -82,6 +83,11 @@ const getColorSchemeBaseProps = (props: CardThemeProps) => {
     case "green": {
       return {
         backgroundColor: "seaMist",
+      };
+    }
+    case "red": {
+      return {
+        backgroundColor: "pink",
       };
     }
     default:

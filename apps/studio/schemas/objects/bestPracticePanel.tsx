@@ -1,4 +1,4 @@
-import { Box, Card, Flex, Grid, Text } from "@sanity/ui";
+import { Box, Card, Flex, Grid, Heading, Text } from "@sanity/ui";
 import { MdCheck, MdNotInterested } from "react-icons/md";
 import { defineField, defineType } from "sanity";
 import { portableTextToText } from "../../utils/portableTextToText";
@@ -27,15 +27,19 @@ export const bestPracticePanel = defineType({
                   : "caution"
               }
               padding={3}
-              radius={3}
+              radius={6}
             >
-              <Flex gap={3}>
+              <Flex gap={3} marginTop={2}>
                 {example.weight === "positive" ? (
                   <MdCheck color="green" />
                 ) : example.weight === "negative" ? (
                   <MdNotInterested color="red" />
                 ) : null}{" "}
                 <Box flex={1}>
+                  <Heading as="h3" weight="regular" size={2}>
+                    Do{example.weight === "negative" ? "n't" : null}
+                  </Heading>
+                  <Box marginTop={4} />
                   <Text>{portableTextToText(example.content)}</Text>
                 </Box>
               </Flex>
@@ -78,6 +82,7 @@ export const bestPracticePanel = defineType({
             defineField({
               name: "image",
               title: "Image",
+              description: "Add an example image of what (not) to do",
               type: "image",
             }),
             defineField({

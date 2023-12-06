@@ -5,10 +5,15 @@ import {
   PortableTextComponentsProvider as SanityPortableTextComponentsProvider,
 } from "@portabletext/react";
 import { Link } from "@remix-run/react";
-import { FavouriteOutline30Icon } from "@vygruppen/spor-icon-react";
+import {
+  CheckmarkFill30Icon,
+  ErrorOutline30Icon,
+  FavouriteOutline30Icon,
+} from "@vygruppen/spor-icon-react";
 import {
   Box,
   Button,
+  Card,
   Code,
   Divider,
   Flex,
@@ -271,6 +276,70 @@ const components: Partial<PortableTextReactComponents> = {
           <PortableText value={value.content} />
         </Box>
       </Box>
+    ),
+    bestPracticePanel: ({ value }) => (
+      <SimpleGrid
+        columns={[1, 2]}
+        as="article"
+        gap={[2, null, 4]}
+        marginTop={4}
+      >
+        {value.examples.map((example: any) => (
+          <Card
+            key={example._key}
+            colorScheme={
+              example.weight === "positive"
+                ? "green"
+                : example.weight === "negative"
+                ? "red"
+                : "grey"
+            }
+            padding={[2, null, 4]}
+          >
+            {example.image && (
+              <Box>
+                <Image
+                  src={urlBuilder
+                    .image(example.image)
+                    .width(600)
+                    .format("webp")
+                    .url()}
+                  alt={`Example of what ${
+                    example.weight === "negative" ? "not " : ""
+                  }to do`}
+                  width="100%"
+                  aspectRatio="16 / 9"
+                  objectFit="cover"
+                  objectPosition="center"
+                  borderRadius="md"
+                  overflow="hidden"
+                  marginBottom={2}
+                />
+              </Box>
+            )}
+            <Flex gap={2} alignItems="center" marginBottom={2}>
+              {example.weight === "positive" ? (
+                <CheckmarkFill30Icon
+                  color="primaryGreen"
+                  boxSize={[4, null, 5]}
+                />
+              ) : example.weight === "negative" ? (
+                <ErrorOutline30Icon color="brightRed" boxSize={[4, null, 5]} />
+              ) : null}
+              <Heading as="h3" variant="md" fontWeight="bold" flex={1}>
+                {example.weight === "positive"
+                  ? "Do"
+                  : example.weight === "negative"
+                  ? "Don't"
+                  : null}
+              </Heading>
+            </Flex>
+            <Box sx={{ "> :last-child": { marginBottom: 0 } }}>
+              <PortableText value={example.content} />
+            </Box>
+          </Card>
+        ))}
+      </SimpleGrid>
     ),
   },
 };

@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": patch
 ---
 
-button: updated darkmode
+Button: Fix a bug where certain variants got the wrong colors in dark mode

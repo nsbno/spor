@@ -1,5 +1,5 @@
 import { readdirSync, statSync } from "fs";
-import { join, extname, basename } from "path";
+import { basename, extname, join } from "path";
 
 export type TokenFile = {
   category: string;
@@ -27,4 +27,4 @@ function jsonFiles(dir: string): Array<string> {
   return readdirSync(dir).filter((file: string) => extname(file) === ".json");
 }
 
-export const tokens: Array<TokenFile> = dirs(__dirname);
+export const tokens: Array<TokenFile> = dirs(join("."));

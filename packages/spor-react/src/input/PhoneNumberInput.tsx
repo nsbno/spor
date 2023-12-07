@@ -13,6 +13,8 @@ type CountryCodeAndPhoneNumber = {
   nationalNumber: string;
 };
 type PhoneNumberInputProps = Omit<BoxProps, "onChange"> & {
+  /** The label. Defaults to a localized version of "Phone number" */
+  label?: string;
   /** The root name.
    *
    * Please note that when specifying the name, the rendered names will be `${name}-country-code` and `${name}-phone-number`, respectively
@@ -42,10 +44,17 @@ type PhoneNumberInputProps = Omit<BoxProps, "onChange"> & {
  */
 export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
   (
-    { name, value: externalValue, onChange: externalOnChange, ...boxProps },
-    ref
+    {
+      label: externalLabel,
+      name,
+      value: externalValue,
+      onChange: externalOnChange,
+      ...boxProps
+    },
+    ref,
   ) => {
     const { t } = useTranslation();
+    const label = externalLabel ?? t(texts.phoneNumber);
     const [value, onChange] = useControllableState({
       value: externalValue,
       onChange: externalOnChange,
@@ -85,7 +94,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
         <Input
           ref={ref}
           type="tel"
-          label={t(texts.phoneNumber)}
+          label={label}
           value={value.nationalNumber}
           name={name ? `${name}-phone-number` : "phone-number"}
           onChange={(e) => {

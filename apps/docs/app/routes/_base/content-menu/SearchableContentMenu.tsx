@@ -19,7 +19,7 @@ export const SearchableContentMenu = () => {
       menu?.menuItems
         .filter((menuItem) => menuItem._type !== "divider" && menuItem.subItems)
         .flatMap((menuItem) => menuItem.subItems!) ?? [],
-    [menu]
+    [menu],
   );
 
   const hits = React.useMemo(
@@ -29,7 +29,7 @@ export const SearchableContentMenu = () => {
             keys: ["title", "tags"],
           })
         : [],
-    [query, isSearchActive]
+    [query, isSearchActive],
   );
 
   // We reset the query whenever we navigate

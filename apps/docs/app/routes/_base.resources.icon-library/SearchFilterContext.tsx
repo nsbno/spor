@@ -48,7 +48,7 @@ export const useSearchFilter = () => {
   const context = useContext(SearchFilterContext);
   if (!context) {
     throw new Error(
-      "useSearchFilter must be used within a SearchFilterProvider"
+      "useSearchFilter must be used within a SearchFilterProvider",
     );
   }
   const { searchFilter, setSearchFilter, resetSearchFilter } = context;

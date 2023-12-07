@@ -13,7 +13,7 @@ describe("<ActionToast />", () => {
         buttonText="Click me"
       >
         Test text
-      </ActionToast>
+      </ActionToast>,
     );
     getByRole("button").click();
     expect(handleClick).toHaveBeenCalled();

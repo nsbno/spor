@@ -16,15 +16,15 @@ const weekDays: Record<Language, string[]> = {
 };
 
 type CalendarGridProps = AriaCalendarGridProps & {
-  variant: ResponsiveValue<
-   "base" 
-  | "floating"
-  | "ghost"
-  >;
+  variant: ResponsiveValue<"base" | "floating" | "ghost">;
   state: CalendarState | RangeCalendarState;
   offset?: { months?: number };
 };
-export function CalendarGrid({ state, variant ,offset = {} }: CalendarGridProps) {
+export function CalendarGrid({
+  state,
+  variant,
+  offset = {},
+}: CalendarGridProps) {
   const { language } = useTranslation();
   const locale = useCurrentLocale();
   const startDate = state.visibleRange.start.add(offset);
@@ -34,13 +34,13 @@ export function CalendarGrid({ state, variant ,offset = {} }: CalendarGridProps)
       startDate,
       endDate,
     },
-    state
+    state,
   );
 
   // Get the number of weeks in the month so we can render the proper number of rows.
   const weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
   const weeksInMonthRange = new Array(weeksInMonth).fill(0).map((_, i) => i);
-  const styles = useMultiStyleConfig("Datepicker", {variant});
+  const styles = useMultiStyleConfig("Datepicker", { variant });
 
   return (
     <table {...gridProps}>
@@ -76,7 +76,7 @@ export function CalendarGrid({ state, variant ,offset = {} }: CalendarGridProps)
                   />
                 ) : (
                   <td key={dayIndex} />
-                )
+                ),
               )}
           </tr>
         ))}

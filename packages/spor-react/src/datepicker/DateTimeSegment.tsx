@@ -22,7 +22,7 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
     const { segmentProps } = useDateSegment(
       segment,
       state,
-      ref as RefObject<HTMLDivElement>
+      ref as RefObject<HTMLDivElement>,
     );
 
     const styles = useMultiStyleConfig("Datepicker", {
@@ -52,7 +52,7 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
           : segment.text}
       </Box>
     );
-  }
+  },
 );
 
 const isPaddable = (segmentType: DateSegment["type"]) =>

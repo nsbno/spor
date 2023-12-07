@@ -4,7 +4,7 @@
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "rootDir": ".",
-    "module": "ESNext",
+    "module": "ESNext"
   },
   "ts-node": {
     "esm": true

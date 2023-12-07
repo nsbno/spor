@@ -53,6 +53,6 @@ export const getInitialSanityData = async () => {
         keywords,
         socialImage
       }
-    }`
+    }`,
   );
 };

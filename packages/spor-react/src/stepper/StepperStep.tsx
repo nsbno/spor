@@ -18,7 +18,7 @@ export const StepperStep = ({
   const state = getState(stepNumber!, activeStep);
   const style = useMultiStyleConfig("Stepper", {
     state,
-    variant
+    variant,
   });
 
   const adjustedProps = getButtonStylesForState(state);
@@ -48,7 +48,7 @@ export const StepperStep = ({
 };
 
 const getButtonStylesForState = (
-  state: "completed" | "active" | "disabled"
+  state: "completed" | "active" | "disabled",
 ): Record<string, any> => {
   switch (state) {
     case "active":
@@ -76,8 +76,6 @@ const getButtonStylesForState = (
       return {};
   }
 };
-
-
 
 const getState = (stepNumber: number, activeStep: number) => {
   if (stepNumber < activeStep) {

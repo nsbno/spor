@@ -3,6 +3,6 @@
   "include": ["."],
   "exclude": ["dist", "elm", "node_modules"],
   "compilerOptions": {
-    "rootDir": ".",
+    "rootDir": "."
   }
 }

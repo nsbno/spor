@@ -32,7 +32,7 @@ export const TextLink = forwardRef<LinkProps, "a">(
         )}
       </ChakraLink>
     );
-  }
+  },
 );
 
 const texts = createTexts({

@@ -178,7 +178,7 @@ const useTokenInfo = (colorValue: string) => {
 
 const getAliasName = (colorValue: string) => {
   const entry = Object.entries(tokens.color.alias).find(
-    ([_, value]) => colorValue === value
+    ([_, value]) => colorValue === value,
   );
   return entry ? toTitleCase(entry[0]) : null;
 };

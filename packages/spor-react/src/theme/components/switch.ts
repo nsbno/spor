@@ -51,7 +51,7 @@ const config = helpers.defineMultiStyleConfig({
           "none",
           getBoxShadowString({
             borderColor: colors.whiteAlpha[400],
-          })
+          }),
         )({ colorMode }),
 
         ...focusVisible({
@@ -73,7 +73,7 @@ const config = helpers.defineMultiStyleConfig({
                 borderColor: "coralGreen",
                 borderWidth: 2,
                 isInset: false,
-              })
+              }),
             )({ colorMode }),
           },
           notFocus: {
@@ -81,7 +81,7 @@ const config = helpers.defineMultiStyleConfig({
               "none",
               getBoxShadowString({
                 borderColor: colors.whiteAlpha[400],
-              })
+              }),
             )({ colorMode }),
           },
         }),
@@ -89,7 +89,7 @@ const config = helpers.defineMultiStyleConfig({
           backgroundColor: "steel",
           boxShadow: mode(
             "none",
-            getBoxShadowString({ borderColor: colors.white })
+            getBoxShadowString({ borderColor: colors.white }),
           )({ colorMode }),
         },
         _checked: {
@@ -113,13 +113,13 @@ const config = helpers.defineMultiStyleConfig({
                   borderWidth: 2,
                   borderColor: "coralGreen",
                   isInset: false,
-                })
+                }),
               )({ colorMode }),
             },
             notFocus: {
               boxShadow: mode(
                 "none",
-                getBoxShadowString({ borderColor: colors.white })
+                getBoxShadowString({ borderColor: colors.white }),
               )({ colorMode }),
             },
           }),
@@ -128,7 +128,7 @@ const config = helpers.defineMultiStyleConfig({
             backgroundColor: mode("pine", "river")({ colorMode }),
             boxShadow: mode(
               "none",
-              getBoxShadowString({ borderColor: colors.white })
+              getBoxShadowString({ borderColor: colors.white }),
             )({ colorMode }),
           },
         },
@@ -136,13 +136,13 @@ const config = helpers.defineMultiStyleConfig({
           backgroundColor: mode("platinum", "dimGrey")({ colorMode }),
           boxShadow: mode(
             "none",
-            getBoxShadowString({ borderColor: colors.whiteAlpha[400] })
+            getBoxShadowString({ borderColor: colors.whiteAlpha[400] }),
           )({ colorMode }),
           _checked: {
             backgroundColor: mode("platinum", "dimGrey")({ colorMode }),
             boxShadow: mode(
               "none",
-              getBoxShadowString({ borderColor: colors.whiteAlpha[400] })
+              getBoxShadowString({ borderColor: colors.whiteAlpha[400] }),
             )({ colorMode }),
           },
         },

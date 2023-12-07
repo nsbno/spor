@@ -127,7 +127,7 @@ export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
   const title = `${article.title} – ${article?.category?.title ?? "…"} – Spor`;
   const description = blockContentToPlainText(
     article.introduction ??
-      article.content?.find((block) => block._type === "introduction")?.content
+      article.content?.find((block) => block._type === "introduction")?.content,
   );
   const meta = [
     { title },

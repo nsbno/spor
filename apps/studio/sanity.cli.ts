@@ -1,8 +1,8 @@
-import {createCliConfig} from 'sanity/cli'
+import { createCliConfig } from "sanity/cli";
 
 export default createCliConfig({
   api: {
-    projectId: 'tbpd14t4',
-    dataset: 'production'
-  }
-})
+    projectId: "tbpd14t4",
+    dataset: "production",
+  },
+});

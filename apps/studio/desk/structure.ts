@@ -24,8 +24,8 @@ export const structure: StructureResolver = (S) =>
                 .title("Articles")
                 .apiVersion("2023-12-04")
                 .filter('_type == "article" && $categoryId == category._ref')
-                .params({ categoryId })
-            )
+                .params({ categoryId }),
+            ),
         ),
       S.listItem()
         .title("Categories")

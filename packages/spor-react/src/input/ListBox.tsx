@@ -89,7 +89,7 @@ export function ListBox<T extends object>({
           <ListBoxSection key={item.key} section={item} state={state} />
         ) : (
           <Option key={item.key} item={item} state={state} />
-        )
+        ),
       )}
     </List>
   );
@@ -163,7 +163,7 @@ function Option({ item, state }: OptionProps) {
       (event: TouchEvent) => {
         event.preventDefault();
       },
-      { passive: false, once: true }
+      { passive: false, once: true },
     );
   }, []);
 
@@ -221,7 +221,7 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
         {Array.from(state.collection.getChildren(section.key)).map(
           (item: any) => (
             <Option key={item.key} item={item} state={state} />
-          )
+          ),
         )}
       </List>
     </ListItem>

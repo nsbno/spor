@@ -53,7 +53,7 @@ export const PasswordInput = forwardRef<PasswordInputProps, "input">(
         </InputRightElement>
       </InputGroup>
     );
-  }
+  },
 );
 
 const texts = createTexts({

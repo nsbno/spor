@@ -171,7 +171,7 @@ export function InfoSelect<T extends object>({
   const { labelProps, triggerProps, valueProps, menuProps } = useSelect(
     renamedProps,
     state,
-    triggerRef
+    triggerRef,
   );
 
   const styles = useMultiStyleConfig("InfoSelect", {

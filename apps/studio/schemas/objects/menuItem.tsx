@@ -34,7 +34,7 @@ export const menuItem = defineType({
         Rule.custom(
           () =>
             Boolean(Rule.valueOfField("externalLink")) ||
-            "You must choose either an internal or external link, not both"
+            "You must choose either an internal or external link, not both",
         ),
     }),
     defineField({
@@ -47,7 +47,7 @@ export const menuItem = defineType({
         Rule.custom(
           () =>
             Boolean(Rule.valueOfField("internalLink")) ||
-            "You must choose either an internal or external link, not both"
+            "You must choose either an internal or external link, not both",
         ),
     }),
     defineField({

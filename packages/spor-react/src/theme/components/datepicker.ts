@@ -14,7 +14,7 @@ const parts = anatomy("datepicker").parts(
   "weekend",
   "dateCell",
   "inputLabel",
-  "dateTimeSegment"
+  "dateTimeSegment",
 );
 
 const $arrowBackground = cssVar("popper-arrow-bg");
@@ -50,7 +50,7 @@ const config = helpers.defineMultiStyleConfig({
     dateTimeSegment: {
       color: mode(
         "darkGrey",
-        props.isPlaceholder ? "whiteAlpha.400" : "white"
+        props.isPlaceholder ? "whiteAlpha.400" : "white",
       )(props),
     },
     calendarTriggerButton: {

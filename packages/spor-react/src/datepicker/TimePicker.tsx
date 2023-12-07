@@ -96,7 +96,7 @@ export const TimePicker = ({
     state.setValue(
       state.value.subtract({
         minutes: minutesToSubtract,
-      })
+      }),
     );
   };
   const handleForwardClick = () => {
@@ -108,18 +108,18 @@ export const TimePicker = ({
     state.setValue(
       state.value.add({
         minutes: minutesToAdd,
-      })
+      }),
     );
   };
   const backwardsLabel = `${t(texts.backwards)} ${minuteInterval} ${t(
-    texts.minutes
+    texts.minutes,
   )}`;
   const forwardsLabel = `${t(texts.forwards)} ${minuteInterval} ${t(
-    texts.minutes
+    texts.minutes,
   )}`;
   const inputLabel = label ?? t(texts.time);
   const ariaLabel = `${inputLabel} – ${t(
-    texts.selectedTimeIs(`${dateTime?.hour ?? 0} ${dateTime?.minute ?? 0}`)
+    texts.selectedTimeIs(`${dateTime?.hour ?? 0} ${dateTime?.minute ?? 0}`),
   )}`;
   return (
     <StyledField

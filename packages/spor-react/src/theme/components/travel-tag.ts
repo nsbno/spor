@@ -11,7 +11,7 @@ const parts = anatomy("travel-tag").parts(
   "textContainer",
   "title",
   "description",
-  "deviationIcon"
+  "deviationIcon",
 );
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
@@ -166,7 +166,7 @@ const config = helpers.defineMultiStyleConfig({
       title: {
         fontSize: "mobile.xs",
         fontWeight: "normal",
-        color: mode("black", "white")(props)
+        color: mode("black", "white")(props),
       },
       description: {
         display: "none",

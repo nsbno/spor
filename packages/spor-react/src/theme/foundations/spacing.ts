@@ -24,7 +24,7 @@ export const spacing = Object.entries(tokens.size.spacing).reduce(
     ...tokens,
     [Number(key)]: token,
   }),
-  {} as Record<keyof Spacing, string>
+  {} as Record<keyof Spacing, string>,
 );
 
 export const space = spacing;

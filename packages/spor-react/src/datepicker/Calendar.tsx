@@ -13,13 +13,13 @@ import { createTexts, useTranslation } from "../i18n";
 
 type CalendarProps = ReactAriaCalendarProps<DateValue> & {
   showYearNavigation?: boolean;
-  variant: ResponsiveValue<
-   "base"
-  | "floating"
-  | "ghost"
-  >;
+  variant: ResponsiveValue<"base" | "floating" | "ghost">;
 };
-export function Calendar({ showYearNavigation, variant, ...props }: CalendarProps) {
+export function Calendar({
+  showYearNavigation,
+  variant,
+  ...props
+}: CalendarProps) {
   const { t } = useTranslation();
   const locale = useCurrentLocale();
   const state = useCalendarState({

@@ -38,5 +38,5 @@ export type StackProps = Exclude<ChakraStackProps, "direction"> & {
 export const Stack = forwardRef<StackProps, "div">(
   ({ flexDirection, ...props }, ref) => {
     return <ChakraStack {...props} direction={flexDirection} ref={ref} />;
-  }
+  },
 );

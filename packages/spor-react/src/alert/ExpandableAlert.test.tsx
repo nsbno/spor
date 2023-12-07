@@ -9,7 +9,7 @@ describe("<ExpandableAlert />", () => {
     const { getByRole, getByText } = render(
       <ExpandableAlert variant="info" title="Title">
         Test text
-      </ExpandableAlert>
+      </ExpandableAlert>,
     );
     await waitFor(() => expect(getByText("Test text")).not.toBeVisible());
     act(() => {
@@ -27,7 +27,7 @@ describe("<ExpandableAlert />", () => {
     const { getByRole } = render(
       <ExpandableAlert variant="info" title="Title" onToggle={handleClick}>
         Test text
-      </ExpandableAlert>
+      </ExpandableAlert>,
     );
 
     act(() => {
@@ -47,13 +47,13 @@ describe("<ExpandableAlert />", () => {
     const { queryByRole, rerender } = render(
       <ExpandableAlert variant="info" title="Title" headingLevel="h2">
         Test text
-      </ExpandableAlert>
+      </ExpandableAlert>,
     );
     expect(queryByRole("heading", { level: 2 })).toBeInTheDocument();
     rerender(
       <ExpandableAlert variant="info" title="Title" headingLevel="h3">
         Test text
-      </ExpandableAlert>
+      </ExpandableAlert>,
     );
     expect(queryByRole("heading", { level: 2 })).not.toBeInTheDocument();
     expect(queryByRole("heading", { level: 3 })).toBeInTheDocument();
@@ -63,7 +63,7 @@ describe("<ExpandableAlert />", () => {
     const { container, getByRole } = render(
       <ExpandableAlert variant="info" title="Title">
         Test text
-      </ExpandableAlert>
+      </ExpandableAlert>,
     );
     await act(async () => {
       expect(await axe(container)).toHaveNoViolations();

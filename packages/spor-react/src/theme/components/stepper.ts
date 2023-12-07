@@ -71,13 +71,13 @@ const config = helpers.defineMultiStyleConfig({
     }),
     accent: (props) => ({
       root: {
-        backgroundColor: mode("seaMist", "pine") (props),
+        backgroundColor: mode("seaMist", "pine")(props),
       },
     }),
   },
   defaultProps: {
-    variant: "base"
-  }
+    variant: "base",
+  },
 });
 
 export default config;

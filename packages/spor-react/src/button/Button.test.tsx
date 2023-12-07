@@ -10,7 +10,7 @@ describe("<Button />", () => {
     const { getByRole } = render(
       <Button variant="primary" onClick={handleClick}>
         Click me
-      </Button>
+      </Button>,
     );
     getByRole("button").click();
     expect(handleClick).toHaveBeenCalled();

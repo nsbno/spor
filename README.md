@@ -44,7 +44,7 @@ const root = createRoot(document.getElementById("root"));
 root.render(
   <SporProvider language={Language.English}>
     <App />
-  </SporProvider>
+  </SporProvider>,
 );
 ```
 

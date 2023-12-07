@@ -20,14 +20,14 @@ export const getIcon = async ({ category, fileName }: getIconArgs) => {
 };
 
 const getPathToSporIconsFolder = async (
-  currentPath: string = __dirname
+  currentPath: string = __dirname,
 ): Promise<string> => {
   const pathToCheck = path.resolve(
     currentPath,
     "..",
     "node_modules",
     "@vygruppen",
-    "spor-icon"
+    "spor-icon",
   );
 
   if (await doesFileExist(pathToCheck)) {
@@ -35,7 +35,7 @@ const getPathToSporIconsFolder = async (
   }
   if (currentPath === "/") {
     throw new Error(
-      "No @vygruppen/spor-icon package found. Are you sure it's installed?"
+      "No @vygruppen/spor-icon package found. Are you sure it's installed?",
     );
   }
   const nextPath = path.resolve(currentPath, "..");

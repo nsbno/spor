@@ -12,25 +12,20 @@ import { AriaButtonProps } from "react-aria";
 import { createTexts, useTranslation } from "..";
 
 type CalendarTriggerButtonProps = AriaButtonProps<"button"> & {
-  variant: ResponsiveValue<
-     "base" 
-    | "floating" 
-    | "ghost"
-  >;
+  variant: ResponsiveValue<"base" | "floating" | "ghost">;
 };
 export const CalendarTriggerButton = forwardRef<CalendarTriggerButtonProps, As>(
   ({ variant, ...buttonProps }, ref) => {
     const { t } = useTranslation();
-    const styles = useMultiStyleConfig("Datepicker", {variant});
+    const styles = useMultiStyleConfig("Datepicker", { variant });
 
     const { onPress, ...filteredButtonProps } = buttonProps;
 
     const handleOnPress = (event: KeyboardEvent) => {
       if (onPress) {
-        if (event.key == "Enter" || event.key == " ")
-        onPress(event as any)
+        if (event.key == "Enter" || event.key == " ") onPress(event as any);
       }
-    }
+    };
 
     return (
       <PopoverAnchor>
@@ -47,7 +42,7 @@ export const CalendarTriggerButton = forwardRef<CalendarTriggerButtonProps, As>(
         </Box>
       </PopoverAnchor>
     );
-  }
+  },
 );
 
 const texts = createTexts({

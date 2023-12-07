@@ -71,7 +71,7 @@ export const TravelTag = forwardRef<TravelTagProps, As>(
       isDisabled,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const styles = useMultiStyleConfig("TravelTag", {
       variant,
@@ -100,7 +100,7 @@ export const TravelTag = forwardRef<TravelTagProps, As>(
         {DeviationLevelIcon && <DeviationLevelIcon sx={styles.deviationIcon} />}
       </Box>
     );
-  }
+  },
 );
 
 const getDeviationLevelIcon = ({

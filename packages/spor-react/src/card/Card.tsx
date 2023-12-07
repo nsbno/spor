@@ -56,5 +56,5 @@ export const Card = forwardRef<CardProps, As>(
         {children}
       </Box>
     );
-  }
+  },
 );

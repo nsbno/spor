@@ -27,13 +27,11 @@ export const DarkSpinner = ({
   ...props
 }: DarkSpinnerProps) => {
   const { colorMode } = useColorMode();
-  const spinnerData = colorMode === "dark" ? spinnerLightData : spinnerDarkData
+  const spinnerData = colorMode === "dark" ? spinnerLightData : spinnerDarkData;
   return (
     <Center flexDirection="column" {...props}>
       <Box width={width} maxWidth={maxWidth}>
-        <ClientOnly>
-          {() => <Lottie animationData={spinnerData} />}
-        </ClientOnly>
+        <ClientOnly>{() => <Lottie animationData={spinnerData} />}</ClientOnly>
       </Box>
       {children && (
         <Box marginTop={3} fontWeight="bold">

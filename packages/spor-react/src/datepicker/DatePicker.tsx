@@ -54,7 +54,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       width = "auto",
       ...props
     },
-    externalRef
+    externalRef,
   ) => {
     const formControlProps = useFormControlContext();
     const state = useDatePickerState({
@@ -77,7 +77,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     } = useDatePicker(
       props,
       state,
-      ref as React.MutableRefObject<HTMLDivElement>
+      ref as React.MutableRefObject<HTMLDivElement>,
     );
 
     const styles = useMultiStyleConfig("Datepicker", { variant });
@@ -151,5 +151,5 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
         </Box>
       </I18nProvider>
     );
-  }
+  },
 );

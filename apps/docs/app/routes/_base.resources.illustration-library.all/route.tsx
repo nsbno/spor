@@ -18,10 +18,10 @@ type Illustration = {
 export const loader = async () => {
   console.info("Fetching list of illustrations from Sanity");
   const allIllustrations = await getClient().fetch<Illustration[]>(
-    `*[_type == "illustration"] { title, imageLightBackground, imageDarkBackground }`
+    `*[_type == "illustration"] { title, imageLightBackground, imageDarkBackground }`,
   );
   console.info(
-    `Found ${allIllustrations.length} illustrations. Downloading them in parallel…`
+    `Found ${allIllustrations.length} illustrations. Downloading them in parallel…`,
   );
   const zip = Archiver("zip");
   const stream = new PassThrough();

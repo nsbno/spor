@@ -68,7 +68,7 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
         {children}
       </Flex>
     );
-  }
+  },
 );
 
 const getLinkProps = ({ url }: { url: string }): any => {
@@ -79,7 +79,7 @@ const getLinkProps = ({ url }: { url: string }): any => {
 };
 
 const getNextFocusableSibling = (
-  element: HTMLElement | null
+  element: HTMLElement | null,
 ): HTMLElement | null => {
   if (!element) {
     return null;
@@ -95,7 +95,7 @@ const getNextFocusableSibling = (
 };
 
 const getPreviousFocusableSibling = (
-  element: HTMLElement | null
+  element: HTMLElement | null,
 ): HTMLElement | null => {
   if (!element) {
     return null;

@@ -22,5 +22,5 @@ export type TextProps = Omit<ChakraTextProps, "textStyle"> & {
 export const Text = forwardRef<TextProps, "p">(
   ({ variant = "sm", ...props }, ref) => {
     return <ChakraText {...props} textStyle={variant} ref={ref} />;
-  }
+  },
 );

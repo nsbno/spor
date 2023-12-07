@@ -17,7 +17,7 @@ export const isValidPreviewRequest = (request: Request) => {
  **/
 export const filterDataToSingleItem = <T extends { _id: string }>(
   data: T[] = [],
-  isPreview = false
+  isPreview = false,
 ): T => {
   if (!Array.isArray(data)) {
     return data;

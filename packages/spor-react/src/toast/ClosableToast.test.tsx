@@ -9,7 +9,7 @@ describe("<ClosableToast />", () => {
     const { getByRole } = render(
       <ClosableToast variant="success" onClose={handleClick}>
         Test text
-      </ClosableToast>
+      </ClosableToast>,
     );
     getByRole("button").click();
     expect(handleClick).toHaveBeenCalled();

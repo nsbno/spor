@@ -8,7 +8,7 @@ const parts = anatomy("info-tag").parts(
   "icon",
   "textContainer",
   "title",
-  "description"
+  "description",
 );
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
@@ -48,17 +48,16 @@ const config = helpers.defineMultiStyleConfig({
   defaultProps: {
     size: "md",
   },
- variants: {
-    "walk": (props)  => ({
+  variants: {
+    walk: (props) => ({
       iconContainer: {
         backgroundColor: mode("white", "transparent")(props),
         boxShadow: mode(
-          `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.black[200]}`, 
-          `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.whiteAlpha[400]}`
-          )(props),
+          `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.black[200]}`,
+          `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.whiteAlpha[400]}`,
+        )(props),
       },
     }),
-  }
+  },
 });
 export default config;
-

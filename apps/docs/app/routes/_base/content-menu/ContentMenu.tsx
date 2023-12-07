@@ -20,7 +20,7 @@ export const ContentMenu = forwardRef((_, ref) => {
     menu?.menuItems.findIndex(
       (item) =>
         item._type !== "divider" &&
-        item.subItems?.some((subItem) => subItem.url === location.pathname)
+        item.subItems?.some((subItem) => subItem.url === location.pathname),
     ) ?? 0;
   const indexOfDivider =
     menu?.menuItems.findIndex((item) => item._type === "divider") ?? 0;

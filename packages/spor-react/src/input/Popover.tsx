@@ -45,7 +45,7 @@ type PopoverProps = {
    */
   hasBackdrop?: boolean;
   /** The minimum padding required between the popover and the surrounding container
-   * 
+   *
    * Defaults to 12 (the same as React Aria's default)
    */
   containerPadding?: number;
@@ -69,7 +69,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       hasBackdrop = true,
       containerPadding = 12,
     },
-    ref
+    ref,
   ) => {
     const internalRef = useRef<HTMLDivElement>(null);
     const popoverRef = ref ?? (internalRef as any);
@@ -85,7 +85,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         isNonModal,
         containerPadding,
       },
-      state
+      state,
     );
 
     const popoverBox = (
@@ -109,5 +109,5 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         {popoverBox}
       </Overlay>
     );
-  }
+  },
 );

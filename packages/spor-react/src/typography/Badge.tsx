@@ -64,5 +64,5 @@ export const Badge = forwardRef<BadgeProps, As>(
         {children}
       </ChakraBadge>
     );
-  }
+  },
 );

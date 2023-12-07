@@ -52,7 +52,7 @@ export const imageWithCaption = defineType({
     },
     prepare(value) {
       const block = (value.blocks || []).find(
-        (block: any) => block._type === "block"
+        (block: any) => block._type === "block",
       );
       return {
         title: block

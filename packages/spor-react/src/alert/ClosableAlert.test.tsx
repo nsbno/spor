@@ -7,7 +7,7 @@ import { ClosableAlert } from ".";
 describe("<ClosableAlert />", () => {
   it("closes when you click the close button", async () => {
     const { getByRole, queryByRole } = render(
-      <ClosableAlert variant="info">Test text</ClosableAlert>
+      <ClosableAlert variant="info">Test text</ClosableAlert>,
     );
     act(() => {
       getByRole("button").click();
@@ -20,7 +20,7 @@ describe("<ClosableAlert />", () => {
     const { getByRole } = render(
       <ClosableAlert variant="info" onClose={handleClick}>
         Test text
-      </ClosableAlert>
+      </ClosableAlert>,
     );
     act(() => {
       getByRole("button").click();
@@ -30,7 +30,7 @@ describe("<ClosableAlert />", () => {
 
   it("is accessible", async () => {
     const { container } = render(
-      <ClosableAlert variant="info">Test text</ClosableAlert>
+      <ClosableAlert variant="info">Test text</ClosableAlert>,
     );
     expect(await axe(container)).toHaveNoViolations();
   });

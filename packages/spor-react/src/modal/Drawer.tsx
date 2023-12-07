@@ -73,7 +73,7 @@ export const DrawerContent = forwardRef<DrawerContentProps, any>(
         </ChakraDrawerContent>
       </Box>
     );
-  }
+  },
 );
 
 const Notch = forwardRef<BoxProps, any>((props, ref) => {
@@ -90,9 +90,7 @@ const Notch = forwardRef<BoxProps, any>((props, ref) => {
       ref={ref}
     >
       <Center
-        background={
-          placement === "bottom" ? "bottom" : "top"
-        }
+        background={placement === "bottom" ? "bottom" : "top"}
         padding={2}
         borderRadius="md"
       >

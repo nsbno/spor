@@ -13,7 +13,8 @@
     "dev": "turbo run dev --no-cache --parallel --filter=@vygruppen/spor*-react --filter=@vygruppen/docs --filter=@vygruppen/studio",
     "postinstall": "patch-package",
     "prerelease": "npm run build",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "dependencies": {
     "@changesets/cli": "^2.19.0",

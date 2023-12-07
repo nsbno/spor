@@ -2,13 +2,13 @@ import { Box, Flex } from "@chakra-ui/react";
 import { CalendarDateTime, Time } from "@internationalized/date";
 import React, { useRef } from "react";
 import { AriaTimeFieldProps, useTimeField } from "react-aria";
-import { DateFieldState } from "react-stately";
+import { TimeFieldState } from "@react-stately/datepicker";
 import { FormLabel } from "..";
 import { DateTimeSegment } from "./DateTimeSegment";
 import { getTimestampFromTime } from "./utils";
 
 type TimeFieldProps = AriaTimeFieldProps<Time> & {
-  state: DateFieldState;
+  state: TimeFieldState;
   label: string;
   name?: string;
 };

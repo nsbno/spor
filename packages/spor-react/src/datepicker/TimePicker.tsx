@@ -19,9 +19,10 @@ type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> & {
   name?: string;
   /** The controlled value, if any.
    *
-   * A `new Time(hours, minutes)` should be passed
+   * A `new Time(hours, minutes)` should be passed.
+   * Or `null` if the time should be unset.
    **/
-  value?: TimeValue;
+  value?: TimeValue | null;
   /** A default value, if any.
    *
    * A `new Time(hours, minutes)` should be passed.

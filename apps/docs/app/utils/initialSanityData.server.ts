@@ -22,7 +22,7 @@ export type InitialSanityData = {
   siteSettings: SiteSettings;
 };
 export const getInitialSanityData = async () => {
-  return getClient().fetch<MenuItem[]>(
+  return getClient().fetch<InitialSanityData>(
     `{
       "menus": *[_type == "menu"] { 
         "slug": slug.current,

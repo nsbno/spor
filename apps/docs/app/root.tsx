@@ -6,11 +6,11 @@ import {
   Links,
   LiveReload,
   Meta,
+  MetaFunction,
   Outlet,
   Scripts,
   ScrollRestoration,
   useRouteError,
-  V2_MetaFunction,
 } from "@remix-run/react";
 import { ReactNode, useContext, useEffect } from "react";
 import { RootLayout } from "./root/layout/RootLayout";
@@ -29,7 +29,7 @@ import {
 } from "./utils/initialSanityData.server";
 import { urlBuilder } from "./utils/sanity/utils";
 
-export const meta: V2_MetaFunction = ({ data }: { data: LoaderData }) => {
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data || !data.initialSanityData) {
     return [];
   }

@@ -14,6 +14,7 @@
     "postinstall": "patch-package",
     "prerelease": "npm run build",
     "release": "changeset publish",
+    "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "dependencies": {

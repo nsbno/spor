@@ -1,5 +1,5 @@
 ---
-"@vygruppen/spor-react": patch
+"@vygruppen/spor-react": minor
 ---
 
-PhoneNumberInput: Add customizable label
+PhoneNumberInput: Add label prop

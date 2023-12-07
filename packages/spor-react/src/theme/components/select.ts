@@ -1,7 +1,7 @@
-import {selectAnatomy} from "@chakra-ui/anatomy";
-import {createMultiStyleConfigHelpers} from "@chakra-ui/react";
-import {default as Input} from "./input";
-import {mode} from "@chakra-ui/theme-tools";
+import { selectAnatomy } from "@chakra-ui/anatomy";
+import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import { default as Input } from "./input";
+import { mode } from "@chakra-ui/theme-tools";
 
 const parts = selectAnatomy.extend("root");
 

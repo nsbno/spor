@@ -16,7 +16,7 @@ const sortedCallingCodes = getSupportedCallingCodes()
     value: `+${code}`,
   }))
   .filter(
-    (code) => !prioritizedCountryCodes.some((pCode) => pCode.key === code.key)
+    (code) => !prioritizedCountryCodes.some((pCode) => pCode.key === code.key),
   );
 const callingCodes = [...prioritizedCountryCodes, ...sortedCallingCodes];
 

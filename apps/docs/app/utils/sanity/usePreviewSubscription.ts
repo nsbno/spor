@@ -42,14 +42,14 @@ export const usePreviewSubscription = <T>({
           if (err) {
             console.error(
               "An error occurred while fetching preview data from Sanity:",
-              err
+              err,
             );
             return;
           }
           if (result.length) {
             onChange(result);
           }
-        }
+        },
       );
     }
 

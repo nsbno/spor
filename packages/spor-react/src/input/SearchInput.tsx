@@ -71,7 +71,7 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
         )}
       </InputGroup>
     );
-  }
+  },
 );
 
 const texts = createTexts({

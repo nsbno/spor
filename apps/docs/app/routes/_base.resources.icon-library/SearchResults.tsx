@@ -53,7 +53,7 @@ const findMatches = (searchFilter: SearchFilter) => {
       (icon) =>
         matchesSize(searchFilter.size, icon) &&
         matchesVariant(searchFilter.variant, icon) &&
-        matchesSearchString(searchFilter.searchString, icon)
+        matchesSearchString(searchFilter.searchString, icon),
     );
     return prev;
   }, {} as IconsByCategory);

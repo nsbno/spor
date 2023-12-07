@@ -45,13 +45,15 @@ const config = helpers.defineMultiStyleConfig({
           }),
         },
         notFocus: {
-          boxShadow: getBoxShadowString({ borderColor: mode("darkGrey", "white")(props) }),
+          boxShadow: getBoxShadowString({
+            borderColor: mode("darkGrey", "white")(props),
+          }),
         },
       }),
       _disabled: {
         backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
         boxShadow: getBoxShadowString({
-          borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props)
+          borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
         }),
         cursor: "not-allowed",
       },

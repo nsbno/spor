@@ -40,10 +40,10 @@ const config = defineStyleConfig({
         focus: {
           boxShadow: `inset 0 0 0 2px ${mode(
             colors.greenHaze,
-            colors.azure
+            colors.azure,
           )(props)}, inset 0 0 0 4px ${mode(
             colors.white,
-            colors.darkGrey
+            colors.darkGrey,
           )(props)}`,
         },
         notFocus: { boxShadow: "none" },
@@ -67,18 +67,18 @@ const config = defineStyleConfig({
         focus: {
           boxShadow: `inset 0 0 0 2px ${mode(
             colors.greenHaze,
-            colors.primaryGreen
+            colors.primaryGreen,
           )(props)}, inset 0 0 0 4px ${mode(
             colors.white,
-            colors.darkTeal
+            colors.darkTeal,
           )(props)}`,
           _hover: {
             boxShadow: `inset 0 0 0 2px ${mode(
               colors.greenHaze,
-              colors.azure
+              colors.azure,
             )(props)}, inset 0 0 0 4px ${mode(
               colors.white,
-              colors.blackAlpha[500]
+              colors.blackAlpha[500],
             )(props)}`,
           },
         },
@@ -90,18 +90,18 @@ const config = defineStyleConfig({
         backgroundColor: mode("mint", "darkTeal")(props),
         boxShadow: `inset 0 0 0 2px ${mode(
           colors.greenHaze,
-          colors.azure
+          colors.azure,
         )(props)}, inset 0 0 0 4px ${mode(
           colors.white,
-          colors.blackAlpha[600]
+          colors.blackAlpha[600],
         )(props)}`,
         _hover: {
           boxShadow: `inset 0 0 0 2px ${mode(
             colors.greenHaze,
-            colors.azure
+            colors.azure,
           )(props)}, inset 0 0 0 4px ${mode(
             colors.white,
-            colors.blackAlpha[600]
+            colors.blackAlpha[600],
           )(props)}`,
         },
       },
@@ -112,7 +112,7 @@ const config = defineStyleConfig({
       fontWeight: "normal",
       boxShadow: `inset 0 0 0 1px ${mode(
         colors.blackAlpha[400],
-        colors.whiteAlpha[400]
+        colors.whiteAlpha[400],
       )(props)}`,
       ...focusVisible({
         focus: {
@@ -124,7 +124,7 @@ const config = defineStyleConfig({
         notFocus: {
           boxShadow: `inset 0 0 0 1px ${mode(
             colors.blackAlpha[400],
-            colors.whiteAlpha[400]
+            colors.whiteAlpha[400],
           )(props)}`,
         },
       }),
@@ -134,7 +134,7 @@ const config = defineStyleConfig({
       _active: {
         boxShadow: `inset 0 0 0 1px ${mode(
           colors.blackAlpha[400],
-          colors.whiteAlpha[300]
+          colors.whiteAlpha[300],
         )(props)}`,
         backgroundColor: mode("mint", "whiteAlpha.200")(props),
       },

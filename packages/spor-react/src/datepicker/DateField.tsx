@@ -36,7 +36,7 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
     const { fieldProps, labelProps } = useDateField(
       props,
       state,
-      ref as RefObject<HTMLDivElement>
+      ref as RefObject<HTMLDivElement>,
     );
 
     return (
@@ -69,5 +69,5 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
         />
       </Box>
     );
-  }
+  },
 );

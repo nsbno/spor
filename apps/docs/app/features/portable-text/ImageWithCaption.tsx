@@ -40,7 +40,7 @@ export const ImageWithCaption = ({
 };
 
 const mapAlignmentToAlignItems = (
-  alignment: ImageWithCaptionProps["alignment"]
+  alignment: ImageWithCaptionProps["alignment"],
 ) => {
   switch (alignment) {
     case "left":
@@ -53,7 +53,7 @@ const mapAlignmentToAlignItems = (
   }
 };
 const mapAlignmentToTextAlign = (
-  alignment: ImageWithCaptionProps["alignment"]
+  alignment: ImageWithCaptionProps["alignment"],
 ) => {
   switch (alignment) {
     case "left":

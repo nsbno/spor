@@ -114,25 +114,27 @@ async function generateComponent(iconData: IconData) {
       },
       svgo: true,
       svgoConfig: {
-        plugins: [{
-          name: 'preset-default',
-          params: {
-            overrides: {
-              removeViewBox: false,
-            }
-          }
-        }]
+        plugins: [
+          {
+            name: "preset-default",
+            params: {
+              overrides: {
+                removeViewBox: false,
+              },
+            },
+          },
+        ],
       },
       dimensions: true,
       template: componentTemplate,
       plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
-      replaceAttrValues: { 
+      replaceAttrValues: {
         "#2B2B2C": "currentColor",
       },
     },
     {
       componentName: iconData.componentName,
-    }
+    },
   );
   jsCode = jsCode
     .replace("<svg", '<Box as="svg" display="block"')
@@ -143,7 +145,7 @@ async function generateComponent(iconData: IconData) {
 function createComponentFile(iconData: IconData, content: string) {
   return fs.outputFile(
     createFilePath(iconData.metadata.category, iconData.componentName),
-    content
+    content,
   );
 }
 
@@ -157,8 +159,8 @@ function generateIndexFiles(icons: IconData[]) {
   const categoriesIndexFiles = categories.map((category) =>
     generateCategoryIndexFile(
       icons.filter((icon) => icon.metadata.category === category),
-      category
-    )
+      category,
+    ),
   );
   const rootIndexFile = generateRootIndexFile(categories);
   return Promise.all([...categoriesIndexFiles, rootIndexFile]);
@@ -168,8 +170,8 @@ function getUniqueCategories(icons: IconData[]) {
   return Object.keys(
     icons.reduce(
       (prev, icon) => ({ ...prev, [icon.metadata.category]: true }),
-      {}
-    )
+      {},
+    ),
   );
 }
 
@@ -177,7 +179,7 @@ function generateCategoryIndexFile(icons: IconData[], category: string) {
   const content = icons
     .map(
       (icon) =>
-        `export { default as ${icon.componentName} } from "./${icon.componentName}";`
+        `export { default as ${icon.componentName} } from "./${icon.componentName}";`,
     )
     .join("\n");
 
@@ -200,7 +202,7 @@ function generateTypeDefinitions(icons: IconData[]) {
 function generateMetadataJson(icons: IconData[]) {
   const metadata = icons.reduce(
     (all, entry) => ({ ...all, [entry.componentName]: entry.metadata }),
-    {} as { [key: string]: IconMetadata }
+    {} as { [key: string]: IconMetadata },
   );
   return fs.outputJson(`${DIST_PATH}/metadata.json`, metadata);
 }

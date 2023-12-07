@@ -21,7 +21,7 @@ function TableOfContent(props: TableOfContentProps) {
     headings.map(({ id }) => `[id="${id}"]`),
     {
       rootMargin: "0% 0% -24% 0%",
-    }
+    },
   );
 
   const hasHeadings = headings.length > 0;

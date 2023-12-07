@@ -39,5 +39,5 @@ export const NativeSelect = forwardRef<NativeSelectProps, "select">(
         {label && <FormLabel>{label}</FormLabel>}
       </FormControl>
     );
-  }
+  },
 );

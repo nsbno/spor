@@ -106,7 +106,7 @@ export function Combobox<T extends object>({
       listBoxRef,
       popoverRef,
     },
-    state
+    state,
   );
 
   return (

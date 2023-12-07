@@ -43,5 +43,5 @@ export const RadioGroup = forwardRef<RadioGroupProps, "div">(
         <Stack direction={direction}>{children}</Stack>
       </ChakraRadioGroup>
     );
-  }
+  },
 );

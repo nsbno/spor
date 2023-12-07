@@ -10,16 +10,17 @@ import { useCalendarCell } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
 
 type CalendarCellProps = {
-  variant: ResponsiveValue<
-    "base" 
-  | "floating"
-  | "ghost"
-  >;
+  variant: ResponsiveValue<"base" | "floating" | "ghost">;
   state: CalendarState | RangeCalendarState;
   date: CalendarDate;
   currentMonth: DateValue;
 };
-export function CalendarCell({ state, date, currentMonth, variant }: CalendarCellProps) {
+export function CalendarCell({
+  state,
+  date,
+  currentMonth,
+  variant,
+}: CalendarCellProps) {
   const ref = useRef(null);
   const {
     cellProps,
@@ -31,7 +32,7 @@ export function CalendarCell({ state, date, currentMonth, variant }: CalendarCel
   } = useCalendarCell({ date }, state, ref);
 
   const isOutsideMonth = !isSameMonth(currentMonth, date);
-  const styles = useMultiStyleConfig("Datepicker", {variant});
+  const styles = useMultiStyleConfig("Datepicker", { variant });
 
   const stateProps: Record<string, any> = {};
   if (isSelected) {
@@ -58,7 +59,7 @@ export function CalendarCell({ state, date, currentMonth, variant }: CalendarCel
       (event: TouchEvent) => {
         event.preventDefault();
       },
-      { passive: false, once: true }
+      { passive: false, once: true },
     );
   }, []);
 

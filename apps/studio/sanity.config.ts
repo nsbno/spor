@@ -31,7 +31,7 @@ export default defineConfig({
           }
           const category = await configuredClient.fetch(
             `*[_id == $id] { "slug": slug.current }[0]`,
-            { id: (document.category as any)?._ref }
+            { id: (document.category as any)?._ref },
           );
 
           if (!category) {
@@ -41,9 +41,8 @@ export default defineConfig({
           const params = new URLSearchParams();
           params.set("preview", import.meta.env.SANITY_STUDIO_PREVIEW_SECRET);
 
-          return `${host}/${category.slug}/${
-            (document?.slug as any)?.current
-          }?${params}`;
+          return `${host}/${category.slug}/${(document?.slug as any)
+            ?.current}?${params}`;
         }
       } catch (e) {
         console.error(e);

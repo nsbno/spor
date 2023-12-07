@@ -165,7 +165,7 @@ const TypographyTokenTable = ({
                     <Box>
                       <Code>
                         {tokenFormatter(
-                          `font.style.${token.key}.font-size.${viewportSize}`
+                          `font.style.${token.key}.font-size.${viewportSize}`,
                         )}
                       </Code>
                     </Box>

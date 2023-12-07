@@ -63,11 +63,11 @@ const config = helpers.defineMultiStyleConfig({
           _hover: {
             boxShadow: mode(
               getBoxShadowString({ borderColor: "darkTeal", borderWidth: 3 }),
-              getBoxShadowString({ borderColor: "blueGreen", borderWidth: 3 })
+              getBoxShadowString({ borderColor: "blueGreen", borderWidth: 3 }),
             )(props),
             backgroundColor: mode(
               props.colorScheme === "grey" ? "mint" : "coralGreen",
-              "whiteAlpha.200"
+              "whiteAlpha.200",
             )(props),
           },
         },
@@ -83,7 +83,7 @@ const config = helpers.defineMultiStyleConfig({
         border: mode("sm", "md"),
         borderColor: mode(
           props.colorScheme === "grey" ? "silver" : "blackAlpha.200",
-          "whiteAlpha.200"
+          "whiteAlpha.200",
         )(props),
         ...numericStyles,
         _first: {

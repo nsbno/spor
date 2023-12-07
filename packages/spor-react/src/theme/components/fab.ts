@@ -100,8 +100,8 @@ const config = helpers.defineMultiStyleConfig({
         ...focusVisible({
           focus: {
             boxShadow: mode(
-            `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.darkTeal}, inset 0 0 0 6px ${props.theme.colors.white}`, 
-            `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.mint}, inset 0 0 0 6px ${props.theme.colors.darkTeal}`
+              `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.darkTeal}, inset 0 0 0 6px ${props.theme.colors.white}`,
+              `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.mint}, inset 0 0 0 6px ${props.theme.colors.darkTeal}`,
             )(props),
             outline: "none",
           },
@@ -115,20 +115,23 @@ const config = helpers.defineMultiStyleConfig({
       container: {
         backgroundColor: mode("white", "whiteAlpha.100")(props),
         color: mode("darkGrey", "white")(props),
-        _active: { 
+        _active: {
           backgroundColor: mode("mint", "whiteAlpha.100")(props),
-          color: mode("darkGrey", "white")(props)
+          color: mode("darkGrey", "white")(props),
         },
         _hover: {
           backgroundColor: mode("white", "transparent")(props),
-          boxShadow: mode(`inset 0 0 0 2px ${props.theme.colors.darkGrey}`, `inset 0 0 0 2px ${props.theme.colors.white}`)(props),
-          color: mode("darkGrey", "white")(props)
+          boxShadow: mode(
+            `inset 0 0 0 2px ${props.theme.colors.darkGrey}`,
+            `inset 0 0 0 2px ${props.theme.colors.white}`,
+          )(props),
+          color: mode("darkGrey", "white")(props),
         },
         ...focusVisible({
           focus: {
             boxShadow: mode(
-            `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.white}, inset 0 0 0 6px ${props.theme.colors.darkGrey}`, 
-            `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.brightRed }, inset 0 0 0 6px ${props.theme.colors.white}`
+              `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.white}, inset 0 0 0 6px ${props.theme.colors.darkGrey}`,
+              `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.brightRed}, inset 0 0 0 6px ${props.theme.colors.white}`,
             )(props),
             outline: "none",
           },
@@ -142,19 +145,19 @@ const config = helpers.defineMultiStyleConfig({
       container: {
         backgroundColor: mode("mint", "pine")(props),
         color: mode("darkTeal", "white")(props),
-        _active: { 
+        _active: {
           backgroundColor: mode("seaMist", "whiteAlpha.100")(props),
-          color: mode("darkTeal", "white")(props)
+          color: mode("darkTeal", "white")(props),
         },
         _hover: {
           backgroundColor: mode("coralGreen", "whiteAlpha.200")(props),
-          color: mode("darkTeal", "white")(props)
+          color: mode("darkTeal", "white")(props),
         },
         ...focusVisible({
           focus: {
             boxShadow: mode(
-            `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.mint}, inset 0 0 0 6px ${props.theme.colors.azure}`, 
-            `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.pine}, inset 0 0 0 6px ${props.theme.colors.azure}`
+              `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.mint}, inset 0 0 0 6px ${props.theme.colors.azure}`,
+              `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.pine}, inset 0 0 0 6px ${props.theme.colors.azure}`,
             )(props),
             outline: "none",
           },

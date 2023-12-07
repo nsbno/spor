@@ -55,6 +55,6 @@ const useIsActive = (to: string, end: boolean = false) => {
   // See if there's a way we can fix this
   return matches.some(
     (match) =>
-      match.pathname !== "/" && match.pathname.startsWith(resolved.pathname)
+      match.pathname !== "/" && match.pathname.startsWith(resolved.pathname),
   );
 };

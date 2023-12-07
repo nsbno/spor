@@ -18,7 +18,9 @@ const config = defineStyleConfig({
     ...focusVisible({
       focus: {
         outline: "none",
-        boxShadow: getBoxShadowString({ borderColor: mode("greenHaze", "azure")(props) }),
+        boxShadow: getBoxShadowString({
+          borderColor: mode("greenHaze", "azure")(props),
+        }),
         outlineOffset: "2px",
       },
       notFocus: {

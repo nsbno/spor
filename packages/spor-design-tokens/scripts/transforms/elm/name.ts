@@ -8,29 +8,27 @@ export const elmNameTransformer: Named<Transform> = {
   name: "name/elm",
   type: "name",
   transformer: (token) => {
-    const parts = token.path
-      .slice(2)
-      .map(unSnake);
+    const parts = token.path.slice(2).map(unSnake);
 
     const rawName = camelCase(parts);
-    
+
     return avoidSyntaxErrors(rawName);
-  }
+  },
 };
 
 function unSnake(input: string): string {
-    return camelCase(input.split('-'));
+  return camelCase(input.split("-"));
 }
 
 function camelCase(input: Array<string>): string {
-    if (input.length === 1) {
-        return input[0];
-    }
+  if (input.length === 1) {
+    return input[0];
+  }
 
-    const first = input[0];
-    const rest = input.slice(1);
+  const first = input[0];
+  const rest = input.slice(1);
 
-    return first + rest.map((s) => s[0].toUpperCase() + s.slice(1)).join('');
+  return first + rest.map((s) => s[0].toUpperCase() + s.slice(1)).join("");
 }
 
 function avoidSyntaxErrors(input: string): string {

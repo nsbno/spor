@@ -31,10 +31,10 @@ export function CalendarHeader({
   const monthAndYearTitle = `${monthTitle} ${state.focusedDate.year}`;
 
   const isPreviousYearDisabled = state.isInvalid(
-    state.visibleRange.start.subtract({ years: 1 })
+    state.visibleRange.start.subtract({ years: 1 }),
   );
   const isNextYearDisabled = state.isInvalid(
-    state.visibleRange.start.add({ years: 1 })
+    state.visibleRange.start.add({ years: 1 }),
   );
   const areAllOtherYearsDisabled = isPreviousYearDisabled && isNextYearDisabled;
   const isYearPickerVisible = showYearNavigation && !areAllOtherYearsDisabled;

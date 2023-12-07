@@ -10,11 +10,7 @@ import {
 import React from "react";
 
 type StyledFieldProps = BoxProps & {
-  variant: ResponsiveValue< 
-  "base" 
-  | "floating" 
-  | "ghost" 
->;
+  variant: ResponsiveValue<"base" | "floating" | "ghost">;
 };
 export const StyledField = forwardRef<StyledFieldProps, As>(
   ({ children, variant, ...otherProps }, ref) => {
@@ -32,5 +28,5 @@ export const StyledField = forwardRef<StyledFieldProps, As>(
         {children}
       </Box>
     );
-  }
+  },
 );

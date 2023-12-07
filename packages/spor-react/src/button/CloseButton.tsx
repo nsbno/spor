@@ -38,7 +38,7 @@ export const CloseButton = forwardRef<CloseButtonProps, "button">(
         {...props}
       />
     );
-  }
+  },
 );
 
 const getIcon = (size: CloseButtonProps["size"]) => {

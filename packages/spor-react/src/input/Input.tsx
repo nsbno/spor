@@ -60,5 +60,5 @@ export const Input = forwardRef<InputProps, "input">(
         )}
       </InputGroup>
     );
-  }
+  },
 );

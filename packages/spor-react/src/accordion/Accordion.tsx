@@ -64,5 +64,5 @@ export const Accordion = forwardRef<AccordionProps, "div">(
         </ChakraAccordion>
       </AccordionProvider>
     );
-  }
+  },
 );

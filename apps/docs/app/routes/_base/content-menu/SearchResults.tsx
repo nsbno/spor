@@ -35,5 +35,5 @@ export const SearchResults = forwardRef<SearchResultsProps, "button">(
         )}
       </Box>
     );
-  }
+  },
 );

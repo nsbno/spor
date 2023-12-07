@@ -44,10 +44,10 @@ export const FloatingActionButton = forwardRef<
       placement = "bottom right",
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isTextVisible, setIsTextVisible] = React.useState(
-      externalIsTextVisible !== undefined ? externalIsTextVisible : false
+      externalIsTextVisible !== undefined ? externalIsTextVisible : false,
     );
     const scrollDirection = useScrollDirection();
     useEffect(() => {
@@ -56,7 +56,7 @@ export const FloatingActionButton = forwardRef<
       }
       const id = window.setTimeout(
         () => setIsTextVisible(scrollDirection !== "down"),
-        1000
+        1000,
       );
       return () => window.clearTimeout(id);
     }, [scrollDirection, externalIsTextVisible]);
@@ -99,7 +99,7 @@ export const FloatingActionButton = forwardRef<
         </MotionBox>
       </MotionBox>
     );
-  }
+  },
 );
 
 type ScrollDirection = "up" | "down" | null;
@@ -107,7 +107,7 @@ const useScrollDirection = () => {
   const [scrollDirection, setScrollDirection] =
     React.useState<ScrollDirection>(null);
   const lastScrollPosition = React.useRef(
-    typeof window !== "undefined" ? window.scrollY : 0
+    typeof window !== "undefined" ? window.scrollY : 0,
   );
   React.useEffect(() => {
     const onScroll = () => {

@@ -113,7 +113,7 @@ async function generateComponent(iconData: IconData) {
     },
     {
       componentName: iconData.componentName,
-    }
+    },
   );
 
   // Since we don't own the template, we need to change the generated code
@@ -133,7 +133,7 @@ async function generateComponent(iconData: IconData) {
     .replace(/height={(\d+)}/, "height={props.style?.height ?? height ?? $1}")
     .replace(
       "<Svg",
-      "{ \n\tconst theme = useTheme(); \n\treturn <Box {...props}><Svg"
+      "{ \n\tconst theme = useTheme(); \n\treturn <Box {...props}><Svg",
     )
     .replace("</Svg>", "</Svg></Box>}");
 
@@ -152,7 +152,7 @@ function generateRootIndexFile(icons: IconData[]) {
   const content = icons
     .map(
       (icon) =>
-        `export { default as ${icon.componentName}} from "./${icon.componentName}";`
+        `export { default as ${icon.componentName}} from "./${icon.componentName}";`,
     )
     .join("\n");
 

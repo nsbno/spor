@@ -77,9 +77,8 @@ const config = helpers.defineMultiStyleConfig({
         },
       },
     },
-    
-    walk: (props) => ({
 
+    walk: (props) => ({
       iconContainer: {
         backgroundColor: "white",
         borderWidth: 1,

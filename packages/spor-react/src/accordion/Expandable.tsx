@@ -131,8 +131,8 @@ const warnAboutMismatchingIcon = ({ icon, size }: WarnAboutMismatchingIcon) => {
       console.warn(
         `You passed a filled icon. This component requires outlined icons. You passed ${displayName}, replace it with ${displayName.replace(
           "Fill",
-          "Outline"
-        )}.`
+          "Outline",
+        )}.`,
       );
       return;
     }
@@ -140,8 +140,8 @@ const warnAboutMismatchingIcon = ({ icon, size }: WarnAboutMismatchingIcon) => {
       console.warn(
         `The icon you passed was of the wrong size for the lg size. You passed ${displayName}, replace it with ${displayName.replace(
           /(\d{2})Icon/,
-          "30Icon"
-        )}.`
+          "30Icon",
+        )}.`,
       );
       return;
     }
@@ -149,8 +149,8 @@ const warnAboutMismatchingIcon = ({ icon, size }: WarnAboutMismatchingIcon) => {
       console.warn(
         `The icon you passed was of the wrong size for the ${size} size. You passed ${displayName}, replace it with ${displayName.replace(
           /(\d{2})Icon/,
-          "24Icon"
-        )}.`
+          "24Icon",
+        )}.`,
       );
     }
   }

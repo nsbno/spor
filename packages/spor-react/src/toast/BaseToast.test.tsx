@@ -6,21 +6,21 @@ import { BaseToast } from "./BaseToast";
 describe("<BaseToast />", () => {
   it("is accessible in variant success", async () => {
     const { container } = render(
-      <BaseToast variant="success">Test text</BaseToast>
+      <BaseToast variant="success">Test text</BaseToast>,
     );
     expect(await axe(container)).toHaveNoViolations();
   });
 
   it("is accessible in variant info", async () => {
     const { container } = render(
-      <BaseToast variant="info">Test text</BaseToast>
+      <BaseToast variant="info">Test text</BaseToast>,
     );
     expect(await axe(container)).toHaveNoViolations();
   });
 
   it("is accessible in variant error", async () => {
     const { container } = render(
-      <BaseToast variant="error">Test text</BaseToast>
+      <BaseToast variant="error">Test text</BaseToast>,
     );
     expect(await axe(container)).toHaveNoViolations();
   });

@@ -11,7 +11,11 @@ export type BaseAlertProps = BoxProps & {
 /**
  * A base alert box component. Should only be composed by other alert components.
  */
-export const BaseAlert = ({ variant, children, ...boxProps }: BaseAlertProps) => {
+export const BaseAlert = ({
+  variant,
+  children,
+  ...boxProps
+}: BaseAlertProps) => {
   const styles = useMultiStyleConfig("Alert", { variant });
   return (
     <Box __css={styles.container} {...boxProps}>

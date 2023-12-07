@@ -59,5 +59,5 @@ export const IconButton = forwardRef<IconButtonProps, As>(
       spinner={<ColorSpinner margin={1} />}
       ref={ref}
     />
-  )
+  ),
 );

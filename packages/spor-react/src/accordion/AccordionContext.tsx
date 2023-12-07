@@ -20,7 +20,7 @@ export const useAccordionContext = () => {
   const context = React.useContext(AccordionContext);
   if (context === null) {
     throw new Error(
-      "useAccordionContext must be used within AccordionProvider"
+      "useAccordionContext must be used within AccordionProvider",
     );
   }
   return context;

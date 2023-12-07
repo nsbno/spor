@@ -110,7 +110,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
         />
       </AttachedInputs>
     );
-  }
+  },
 );
 
 const texts = createTexts({

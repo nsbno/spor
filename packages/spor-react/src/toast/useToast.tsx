@@ -31,8 +31,8 @@ type BaseToastOptions = {
   duration?: number;
 };
 
-export type ToastOptions =
-  | BaseToastOptions & (ClosableToastOptions | ActionToastOptions | {});
+export type ToastOptions = BaseToastOptions &
+  (ClosableToastOptions | ActionToastOptions | {});
 
 /**
  * Creates a function that can trigger toasts

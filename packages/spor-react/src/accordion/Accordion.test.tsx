@@ -9,7 +9,7 @@ describe("<Accordion />", () => {
     const { container, getByRole } = render(
       <Accordion>
         <ExpandableItem title="Title">Content</ExpandableItem>
-      </Accordion>
+      </Accordion>,
     );
     await act(async () => {
       expect(await axe(container)).toHaveNoViolations();

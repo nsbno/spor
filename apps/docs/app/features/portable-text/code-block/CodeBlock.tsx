@@ -91,12 +91,12 @@ export const CodeBlockContainer = ({
 function getPreviousFocusableElement() {
   const allTabbableElements = Array.from(
     document.querySelectorAll(
-      'a, button, input, select, textarea, [contenteditable], [tabindex]:not([tabindex^="-"])'
-    )
+      'a, button, input, select, textarea, [contenteditable], [tabindex]:not([tabindex^="-"])',
+    ),
   );
 
   const currentlyFocusedElementIndex = allTabbableElements.findIndex(
-    (el) => el === document.activeElement
+    (el) => el === document.activeElement,
   );
 
   return allTabbableElements[currentlyFocusedElementIndex - 1] as HTMLElement;
@@ -123,5 +123,5 @@ export const CopyCodeButton = forwardRef<CopyCodeButtonProps, "button">(
         </Button>
       </DarkMode>
     );
-  }
+  },
 );

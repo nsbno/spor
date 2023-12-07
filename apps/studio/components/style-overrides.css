@@ -2,14 +2,16 @@
 
 @font-face {
   font-family: var(--asset-font-vy-sans-light-name);
-  src: url("https://www.vy.no/styles/font/VySans-Light.woff2") format("woff2"),
+  src:
+    url("https://www.vy.no/styles/font/VySans-Light.woff2") format("woff2"),
     url("https://www.vy.no/styles/font/VySans-Light.woff") format("woff");
   font-style: normal;
   font-weight: 300;
 }
 @font-face {
   font-family: var(--asset-font-vy-sans-light-italic-name);
-  src: url("https://www.vy.no/styles/font/VySans-LightItalic.woff2")
+  src:
+    url("https://www.vy.no/styles/font/VySans-LightItalic.woff2")
       format("woff2"),
     url("https://www.vy.no/styles/font/VySans-LightItalic.woff") format("woff");
   font-style: italic;
@@ -17,14 +19,16 @@
 }
 @font-face {
   font-family: var(--asset-font-vy-sans-medium-name);
-  src: url("https://www.vy.no/styles/font/VySans-Regular.woff2") format("woff2"),
+  src:
+    url("https://www.vy.no/styles/font/VySans-Regular.woff2") format("woff2"),
     url("https://www.vy.no/styles/font/VySans-Regular.woff") format("woff");
   font-style: normal;
   font-weight: 400;
 }
 @font-face {
   font-family: var(--asset-font-vy-sans-medium-italic-name);
-  src: url("https://www.vy.no/styles/font/VySans-RegularItalic.woff2")
+  src:
+    url("https://www.vy.no/styles/font/VySans-RegularItalic.woff2")
       format("woff2"),
     url("https://www.vy.no/styles/font/VySans-RegularItalic.woff")
       format("woff");
@@ -33,23 +37,24 @@
 }
 @font-face {
   font-family: var(--asset-font-vy-sans-bold-name);
-  src: url("https://www.vy.no/styles/font/VySans-Bold.woff2") format("woff2"),
+  src:
+    url("https://www.vy.no/styles/font/VySans-Bold.woff2") format("woff2"),
     url("https://www.vy.no/styles/font/VySans-Bold.woff") format("woff");
   font-style: normal;
   font-weight: 700;
 }
 @font-face {
   font-family: var(--asset-font-vy-sans-bold-italic-name);
-  src: url("https://www.vy.no/styles/font/VySans-BoldItalic.woff2")
-      format("woff2"),
+  src:
+    url("https://www.vy.no/styles/font/VySans-BoldItalic.woff2") format("woff2"),
     url("https://www.vy.no/styles/font/VySans-BoldItalic.woff") format("woff");
   font-style: italic;
   font-weight: 700;
 }
 @font-face {
   font-family: var(--asset-font-vy-display-name);
-  src: url("https://www.vy.no/styles/font/VyDisplay-Medium.woff2")
-      format("woff2"),
+  src:
+    url("https://www.vy.no/styles/font/VyDisplay-Medium.woff2") format("woff2"),
     url("https://www.vy.no/styles/font/VyDisplay-Medium.woff") format("woff");
   font-style: normal;
   font-weight: 400;

@@ -47,7 +47,7 @@ export const LiveEditor = ({ onChange, ...props }: LiveEditorProps) => {
           // This doesn't work without a setTimeout for some reason :shrug:
           setTimeout(
             () => containerRef.current?.querySelector("pre")?.focus(),
-            0
+            0,
           );
         }
       }}

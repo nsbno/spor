@@ -77,7 +77,7 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
       withChevron = true,
       ...props
     },
-    externalRef
+    externalRef,
   ) => {
     const internalRef = useRef<HTMLButtonElement>(null);
     const triggerRef = (externalRef ??
@@ -91,7 +91,7 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
     const { triggerProps, overlayProps } = useOverlayTrigger(
       { type: "dialog" },
       state,
-      triggerRef
+      triggerRef,
     );
 
     const { buttonProps } = useButton(triggerProps, triggerRef);
@@ -142,7 +142,7 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
         )}
       </Box>
     );
-  }
+  },
 );
 
 /**

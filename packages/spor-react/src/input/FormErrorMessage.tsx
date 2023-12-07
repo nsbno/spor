@@ -39,7 +39,7 @@ export const FormErrorMessage = ({
   const formControlContext = useFormControlContext();
   if (!formControlContext) {
     throw new Error(
-      "FormErrorMessage must be used within a FormControl component"
+      "FormErrorMessage must be used within a FormControl component",
     );
   }
   if (!formControlContext.isInvalid) {

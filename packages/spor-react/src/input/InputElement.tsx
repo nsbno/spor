@@ -23,7 +23,7 @@ export type InputElementProps = ChakraInputElementProps;
  * ```
  */
 export const InputLeftElement = forwardRef<InputElementProps, "div">(
-  (props, ref) => <ChakraInputLeftElement {...props} ref={ref} />
+  (props, ref) => <ChakraInputLeftElement {...props} ref={ref} />,
 );
 
 /**
@@ -41,5 +41,5 @@ export const InputLeftElement = forwardRef<InputElementProps, "div">(
  * ```
  */
 export const InputRightElement = forwardRef<InputElementProps, "div">(
-  (props, ref) => <ChakraInputRightElement {...props} ref={ref} />
+  (props, ref) => <ChakraInputRightElement {...props} ref={ref} />,
 );

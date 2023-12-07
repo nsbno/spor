@@ -36,5 +36,5 @@ export type SwitchProps = Exclude<
 export const Switch = forwardRef<SwitchProps, "input">(
   ({ size = "md", ...props }: SwitchProps, ref) => {
     return <ChakraSwitch variant="solid" size={size} {...props} ref={ref} />;
-  }
+  },
 );

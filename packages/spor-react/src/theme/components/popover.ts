@@ -16,7 +16,7 @@ const config = helpers.defineMultiStyleConfig({
       zIndex: "popover",
     },
     content: {
-      [$popperBg.variable]: mode(`colors.darkTeal`, `colors.pine`)(props) ,
+      [$popperBg.variable]: mode(`colors.darkTeal`, `colors.pine`)(props),
       backgroundColor: $popperBg.reference,
       [$arrowBg.variable]: $popperBg.reference,
       [$arrowShadowColor.variable]: `colors.blackAlpha.300`,
@@ -43,7 +43,6 @@ const config = helpers.defineMultiStyleConfig({
       ...focusVisible({
         focus: {
           boxShadow: getBoxShadowString({ borderColor: "azure" }),
-      
         },
         notFocus: {
           boxShadow: "none",

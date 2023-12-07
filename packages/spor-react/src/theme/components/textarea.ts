@@ -10,7 +10,7 @@ const config = defineStyleConfig({
     paddingTop: 2,
     "&:not(:placeholder-shown)": {
       "&:has(+ label)": {
-        paddingTop: 4
+        paddingTop: 4,
       },
       "& + label": {
         transform: "scale(0.825) translateY(-10px)",

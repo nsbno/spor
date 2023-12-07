@@ -100,7 +100,7 @@ export default function IllustrationLibraryPage() {
       .filter(
         (illustration) =>
           illustration.title.toLowerCase().includes(normalizedSearchValue) ||
-          illustration.tags.includes(normalizedSearchValue)
+          illustration.tags.includes(normalizedSearchValue),
       );
   }, [illustrations, searchValue, size]);
 
@@ -192,7 +192,7 @@ export default function IllustrationLibraryPage() {
                     .image(
                       background === "light"
                         ? illustration.imageLightBackground
-                        : illustration.imageDarkBackground
+                        : illustration.imageDarkBackground,
                     )
                     .url() || ""
                 }
@@ -219,7 +219,7 @@ export default function IllustrationLibraryPage() {
                     .image(
                       background === "light"
                         ? illustration.imageLightBackground
-                        : illustration.imageDarkBackground
+                        : illustration.imageDarkBackground,
                     )
                     .forceDownload(`${slugify(illustration.title)}.svg`)
                     .url()}

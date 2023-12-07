@@ -19,7 +19,7 @@ export type IconMetadata = {
 };
 
 export const iconsByCategory = Object.entries(
-  iconsMetadata as unknown as OriginalIconMetadataImportType
+  iconsMetadata as unknown as OriginalIconMetadataImportType,
 ).reduce((prev, [importName, metadata]) => {
   const category = metadata.category || "misc";
   if (!prev[category]) {

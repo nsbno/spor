@@ -48,7 +48,7 @@ export const useStepper = () => {
   const context = React.useContext(StepperContext);
   if (!context) {
     throw new Error(
-      "useStepper must be used within a StepperProvider. Most likely, you forgot to wrap your StepperStep in a Stepper component"
+      "useStepper must be used within a StepperProvider. Most likely, you forgot to wrap your StepperStep in a Stepper component",
     );
   }
   return context;

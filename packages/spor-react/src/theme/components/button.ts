@@ -34,7 +34,7 @@ const config = defineStyleConfig({
     primary: (props) => ({
       // FIXME: Update to use a global defined background color for darkMode whenever it is available.
       // hardcoded background color as alpha-"hack" below is not feasible for dark mode with solid background color
-      backgroundColor: mode("primaryGreen", "coralGreen")(props),
+      backgroundColor: mode("pine", "coralGreen")(props),
       color: mode("white", "darkTeal")(props),
       ...focusVisible({
         focus: {

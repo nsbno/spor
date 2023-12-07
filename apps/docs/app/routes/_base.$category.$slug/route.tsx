@@ -1,5 +1,5 @@
 import { PortableText } from "@portabletext/react";
-import type { LoaderArgs, V2_MetaFunction } from "@remix-run/node";
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { groq } from "@sanity/groq-store";
 import {
   FigmaOutline24Icon,
@@ -68,7 +68,7 @@ type Data = {
 };
 type LoaderData = PreviewableLoaderData<Data>;
 
-export const loader = async ({ params, request }: LoaderArgs) => {
+export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   invariant(params.category, "Expected params.category");
   invariant(params.slug, "Expected params.slug");
 
@@ -119,7 +119,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
   };
 };
 
-export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data) {
     return [];
   }

@@ -15,9 +15,9 @@ import {
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
-import { useDatePickerState } from "@react-stately/datepicker";
-import React, { forwardRef, useRef } from "react";
+import React, { ReactNode, forwardRef, useRef } from "react";
 import { AriaDatePickerProps, I18nProvider, useDatePicker } from "react-aria";
+import { useDatePickerState } from "react-stately";
 import { FormErrorMessage } from "..";
 import { Calendar } from "./Calendar";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
@@ -141,7 +141,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
               </PopoverAnchor>
             </InputGroup>
             <FormErrorMessage {...errorMessageProps}>
-              {errorMessage}
+              {errorMessage as ReactNode}
             </FormErrorMessage>
             {state.isOpen && !props.isDisabled && withPortal && (
               <Portal>{popoverContent}</Portal>

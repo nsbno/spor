@@ -1,9 +1,9 @@
 import { Box, Flex, FormLabel, useMultiStyleConfig } from "@chakra-ui/react";
 import { DateValue, GregorianCalendar } from "@internationalized/date";
-import { useDateFieldState } from "@react-stately/datepicker";
 import { DOMAttributes, FocusableElement } from "@react-types/shared";
 import React, { RefObject, forwardRef, useRef } from "react";
 import { AriaDateFieldProps, useDateField } from "react-aria";
+import { useDateFieldState } from "react-stately";
 import { DateTimeSegment } from "./DateTimeSegment";
 import { useCurrentLocale } from "./utils";
 

@@ -16,13 +16,13 @@ import {
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
-import { useDateRangePickerState } from "@react-stately/datepicker";
 import React, { useRef } from "react";
 import {
   AriaDateRangePickerProps,
   I18nProvider,
   useDateRangePicker,
 } from "react-aria";
+import { useDateRangePickerState } from "react-stately";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
 import { RangeCalendar } from "./RangeCalendar";

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 4.1.1
+
+### Patch Changes
+
+- 85264001: DatePicker, DateRangePicker: Upgrade dependencies
+
 ## 4.1.0
 
 ### Minor Changes

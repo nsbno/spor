@@ -296,27 +296,6 @@ const components: Partial<PortableTextReactComponents> = {
             }
             padding={[2, null, 4]}
           >
-            {example.image && (
-              <Box>
-                <Image
-                  src={urlBuilder
-                    .image(example.image)
-                    .width(600)
-                    .format("webp")
-                    .url()}
-                  alt={`Example of what ${
-                    example.weight === "negative" ? "not " : ""
-                  }to do`}
-                  width="100%"
-                  aspectRatio="16 / 9"
-                  objectFit="cover"
-                  objectPosition="center"
-                  borderRadius="md"
-                  overflow="hidden"
-                  marginBottom={2}
-                />
-              </Box>
-            )}
             <Flex gap={2} alignItems="center" marginBottom={2}>
               {example.weight === "positive" ? (
                 <CheckmarkFill30Icon
@@ -334,9 +313,30 @@ const components: Partial<PortableTextReactComponents> = {
                   : null}
               </Heading>
             </Flex>
-            <Box sx={{ "> :last-child": { marginBottom: 0 } }}>
+
+            <Box sx={{ "> :last-child": { marginBottom: 0 } }} marginBottom={2}>
               <PortableText value={example.content} />
             </Box>
+            {example.image && (
+              <Box>
+                <Image
+                  src={urlBuilder
+                    .image(example.image)
+                    .width(600)
+                    .format("webp")
+                    .url()}
+                  alt={`Example of what ${
+                    example.weight === "negative" ? "not " : ""
+                  }to do`}
+                  width="100%"
+                  aspectRatio="16 / 9"
+                  objectFit="cover"
+                  objectPosition="center"
+                  borderRadius="md"
+                  overflow="hidden"
+                />
+              </Box>
+            )}
           </Card>
         ))}
       </SimpleGrid>

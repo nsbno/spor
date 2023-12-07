@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.3.0
+
+### Minor Changes
+
+- cec9b038: React Native icons now works as expected
+
+### Patch Changes
+
+- d5ad66c1: Format all code and content with Prettier
+
 ## 3.2.1
 
 ### Patch Changes

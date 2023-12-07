@@ -1,5 +1,25 @@
 # @vygruppen/spor-react
 
+## 4.1.0
+
+### Minor Changes
+
+- 84ba515b: Card: Add a new colorScheme – "red". This is great for showing erronous stuff.
+- b411b6b0: PhoneNumberInput: Add label prop
+
+### Patch Changes
+
+- 77e31ebc: Button: Fix a bug where certain variants got the wrong colors in dark mode
+- d5ad66c1: Format all code and content with Prettier
+- d3ae50b2: spinner: added darkmode for Darkspinner
+- fc6371c1: Stepper: added dark mode
+- Updated dependencies [4ac80a10]
+- Updated dependencies [d5ad66c1]
+- Updated dependencies [9cf88825]
+- Updated dependencies [cec9b038]
+  - @vygruppen/spor-icon-react@3.4.0
+  - @vygruppen/spor-design-tokens@3.3.0
+
 ## 4.0.3
 
 ### Patch Changes

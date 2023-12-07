@@ -1,5 +1,15 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.4.0
+
+### Minor Changes
+
+- cec9b038: React Native icons now works as expected
+
+### Patch Changes
+
+- d5ad66c1: Format all code and content with Prettier
+
 ## 2.3.0
 
 ### Minor Changes

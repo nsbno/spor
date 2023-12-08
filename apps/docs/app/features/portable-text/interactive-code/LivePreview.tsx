@@ -23,7 +23,7 @@ export const LivePreview = (props: BoxProps) => {
         <Box position="absolute" top={2} right={2} zIndex="popover">
           <IconButton
             size="sm"
-            variant="additional"
+            variant="tertiary"
             onClick={() => setDarkMode((d) => !d)}
             icon={isDarkMode ? <SummerFill24Icon /> : <NightFill24Icon />}
             aria-label={isDarkMode ? "Dark mode" : "Light mode"}

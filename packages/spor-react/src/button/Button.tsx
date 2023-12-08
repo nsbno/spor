@@ -28,7 +28,7 @@ export type ButtonProps = Exclude<
     | "control"
     | "primary"
     | "secondary"
-    | "additional"
+    | "tertiary"
     | "ghost"
     | "floating";
 };
@@ -40,7 +40,7 @@ export type ButtonProps = Exclude<
  * - `control`: This button is used for ticket controls only.
  * - `primary`: This is our main button. It's used for the main actions in a view, like a call to action. There should only be a single primary button in each view.
  * - `secondary`: Used for secondary actions in a view, and when you need to make several actions available at the same time.
- * - `additional`: Used for additional choices, like a less important secondary action.
+ * - `tertiary`: Used for additional choices, like a less important secondary action.
  * - `ghost`: Used inside other interactive elements, like date pickers and input fields.
  * - `floating`: Used for floating actions, like a menu button in a menu.
  *

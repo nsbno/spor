@@ -109,7 +109,7 @@ export const CopyCodeButton = forwardRef<CopyCodeButtonProps, "button">(
     return (
       <DarkMode>
         <Button
-          variant="additional"
+          variant="tertiary"
           color="white"
           backgroundColor="darkGrey"
           boxShadow="inset 0 0 0 1px white, 0 0 10px 0.25rem rgba(0,0,0,0.7)"

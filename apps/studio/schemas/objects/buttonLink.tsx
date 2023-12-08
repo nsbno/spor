@@ -27,7 +27,7 @@ export const buttonLink = defineType({
         list: [
           { title: "Primary", value: "primary" },
           { title: "Secondary", value: "secondary" },
-          { title: "Additional", value: "additional" },
+          { title: "Tertiary", value: "tertiary" },
           { title: "Control", value: "control" },
         ],
       },

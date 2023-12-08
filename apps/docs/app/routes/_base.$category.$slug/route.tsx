@@ -174,7 +174,7 @@ export default function ArticlePage() {
               key={link.url}
               as="a"
               href={link.url}
-              variant="additional"
+              variant="tertiary"
               size="sm"
               leftIcon={mapLinkToIcon(link.linkType)}
             >

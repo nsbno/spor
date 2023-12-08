@@ -35,7 +35,7 @@ export const StepperStep = ({
           state === "active"
             ? "primary"
             : state === "completed"
-            ? "additional"
+            ? "tertiary"
             : "ghost"
         }
         {...adjustedProps}

@@ -1,5 +1,23 @@
 # @vygruppen/spor-react
 
+## 5.1.0
+
+### Minor Changes
+
+- a16a9972: Expose new methods and components from Chakra:
+
+  - defineStyleConfig
+  - Collapse
+  - useSize
+  - ComponentStyleConfig (type)
+  - CSSWithMultiValues (type)
+
+### Patch Changes
+
+- f3394fb3: DatePicker: Fix bug where field went from uncontrolled to controleld
+- 1a6eb2f8: TimePicker: Allow for null values (so the time can be reset)
+- 6043ebfb: Button, IconButton: Fix a bug that broke loading states
+
 ## 5.0.0
 
 ### Major Changes

@@ -64,7 +64,7 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
         </Flex>
         <input
           type="hidden"
-          value={state.value?.toString()}
+          value={state.value?.toString() ?? ""}
           name={props.name}
         />
       </Box>

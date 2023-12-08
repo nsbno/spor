@@ -1,4 +1,5 @@
-export { extendTheme } from "@chakra-ui/react";
+export { defineStyleConfig, extendTheme } from "@chakra-ui/react";
+export type { ComponentStyleConfig } from "@chakra-ui/react";
 export * as tokens from "@vygruppen/spor-design-tokens";
 export * from "./accordion";
 export * from "./alert";

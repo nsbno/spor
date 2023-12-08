@@ -2,7 +2,11 @@
 export {
   DarkMode,
   LightMode,
+  Collapse,
+  Divider,
   Portal,
+  defineStyleConfig,
+  extendTheme,
   useBreakpointValue,
   useClipboard,
   useColorMode,
@@ -18,8 +22,11 @@ export {
   useToken,
 } from "@chakra-ui/react";
 export type {
+  CSSWithMultiValues,
+  ComponentStyleConfig,
   PortalProps,
   UseClipboardOptions,
   UseDisclosureProps,
   UseOutsideClickProps,
 } from "@chakra-ui/react";
+export { useSize } from "@chakra-ui/react-use-size";

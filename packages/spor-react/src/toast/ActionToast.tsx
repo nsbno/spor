@@ -20,7 +20,7 @@ export const ActionToast = ({
       <Box marginRight={2} flexGrow="1">
         {children}
       </Box>
-      <Button variant="additional" size="sm" onClick={onClick}>
+      <Button variant="tertiary" size="sm" onClick={onClick}>
         {buttonText}
       </Button>
     </BaseToast>

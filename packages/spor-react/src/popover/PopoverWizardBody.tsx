@@ -64,7 +64,7 @@ const NextStepButton = ({ isLastStep, onNext }: NextStepButtonProps) => {
   const { t } = useTranslation();
   return (
     <Button
-      variant="additional"
+      variant="tertiary"
       size="sm"
       color="white"
       leftIcon={isLastStep ? undefined : <ArrowRightFill18Icon />}

@@ -1,9 +1,8 @@
 /** This file works as a proxy for all Chakra UI exports */
 export {
+  Collapse,
   DarkMode,
   LightMode,
-  Collapse,
-  Divider,
   Portal,
   defineStyleConfig,
   extendTheme,

@@ -5,7 +5,6 @@
 Expose new methods and components from Chakra:
 
 - defineStyleConfig
-- Divider
 - Collapse
 - useSize
 - ComponentStyleConfig (type)

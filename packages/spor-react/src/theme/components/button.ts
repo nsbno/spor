@@ -106,7 +106,7 @@ const config = defineStyleConfig({
         },
       },
     }),
-    additional: (props) => ({
+    tertiary: (props) => ({
       backgroundColor: "transparent",
       color: mode("darkGrey", "white")(props),
       fontWeight: "normal",

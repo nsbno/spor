@@ -56,7 +56,9 @@ export const IconButton = forwardRef<IconButtonProps, As>(
     <ChakraIconButton
       title={props["aria-label"]}
       {...props}
-      spinner={<ColorSpinner margin={1} />}
+      spinner={
+        <ColorSpinner width="80%" height="80%" marginX={1} marginTop={1} />
+      }
       ref={ref}
     />
   ),

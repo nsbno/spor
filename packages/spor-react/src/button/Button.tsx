@@ -69,6 +69,7 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
     isDisabled,
     leftIcon,
     rightIcon,
+    ...rest
   } = props;
   const ariaLabel = useCorrectAriaLabel(props);
   const buttonGroup = useButtonGroup();
@@ -83,7 +84,7 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
     <ChakraButton
       size={finalSize}
       variant={finalVariant}
-      {...props}
+      {...rest}
       ref={ref}
       aria-label={ariaLabel}
       aria-busy={isLoading}
@@ -118,8 +119,9 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
         >
           <ColorInlineLoader
             maxWidth={getLoaderWidth(finalSize)}
-            width="100%"
+            width="80%"
             marginX={2}
+            marginY={2}
           />
         </Center>
       )}

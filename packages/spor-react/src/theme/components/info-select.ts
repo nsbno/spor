@@ -2,8 +2,8 @@ import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { focusVisible } from "../utils/focus-utils";
 import { srOnly } from "../utils/sr-utils";
-import { baseBorder } from "../utils/border-utils";
-import { baseBackground } from "../utils/background-utils";
+import { baseBorder, floatingBorder } from "../utils/border-utils";
+import { baseBackground, floatingBackground } from "../utils/background-utils";
 import { PartsStyleInterpolation } from "@chakra-ui/styled-system";
 
 const parts = anatomy("InfoSelect").parts(
@@ -56,7 +56,6 @@ const config = helpers.defineMultiStyleConfig({
         ...baseBorder("focus", props),
       },
       _expanded: {
-        // ...baseBackground("active", props),
         ...baseBorder("focus", props),
       },
       _invalid: {
@@ -80,6 +79,28 @@ const config = helpers.defineMultiStyleConfig({
     base: (props) => ({
     }),
     floating: (props) => ({
+      button: {
+        ...floatingBackground("default", props),
+        ...floatingBorder("default", props),
+        _hover: {
+          ...floatingBorder("hover", props),
+          ...floatingBackground("hover", props),
+        },
+        ...focusVisible({
+          focus: {
+            ...floatingBorder("focus", props),
+            outline: "none",
+          },
+          notFocus: {
+            ...floatingBorder("default", props),
+          },
+        }),
+        _active: {
+          ...floatingBorder("active", props),
+          ...floatingBackground("active", props),
+        },
+
+      }
     }),
   },
   defaultProps: {

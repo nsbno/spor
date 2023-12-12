@@ -1,7 +1,8 @@
 import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { State, Subset } from "./types";
+import { colors } from "../foundations";
 
-type BaseBackgroundState = Subset<State, "active" | "selected" | "disabled">;
+type BaseBackgroundState = Subset<State, "default" | "active" | "selected" | "disabled">;
 export function baseBackground(state: BaseBackgroundState, props: StyleFunctionProps) {
   switch (state) {
     case "active":
@@ -17,7 +18,9 @@ export function baseBackground(state: BaseBackgroundState, props: StyleFunctionP
         backgroundColor: mode("silver", "whiteAlpha.100")(props),
       };
     default:
-      return {};
+      return {
+        backgroundColor: "transparent",
+      };
   }
 }
 
@@ -36,7 +39,7 @@ export function ghostBackground(state: GhostBackgroundState, props: StyleFunctio
       }
     case "focus":
       return {
-        backgroundColor: mode("transparent", "transparent")(props),
+        backgroundColor: "transparent",
       }
     case "selected": {
       return {
@@ -45,6 +48,36 @@ export function ghostBackground(state: GhostBackgroundState, props: StyleFunctio
     }
     case "default":
     default:
-      return {};
+      return {
+        backgroundColor: "transparent",
+      };
+  }
+}
+
+type FloatingBackgroundState = Subset<State, "default" | "hover" | "focus" | "active" | "selected">;
+
+export function floatingBackground(state: FloatingBackgroundState, props: StyleFunctionProps) {
+  switch (state) {
+    case "selected":
+      return {
+        backgroundColor: mode("mint", "pine")(props),
+      }
+    case "active":
+      return {
+        backgroundColor: mode("mint", `color-mix(in srgb, ${props.theme.darkBackgroundColor ?? colors.darkGrey}, ${colors.white} 30%)`)(props),
+      };
+    case "hover":
+      return {
+        backgroundColor: mode("white", `color-mix(in srgb, ${props.theme.darkBackgroundColor ?? colors.darkGrey}, ${colors.white} 20%)`)(props),
+      }
+    case "focus":
+      return {
+        backgroundColor: mode("white", `color-mix(in srgb, ${props.theme.darkBackgroundColor ?? colors.darkGrey}, ${colors.white} 40%)`)(props),
+      }
+    case "default":
+    default:
+      return {
+        backgroundColor: mode("white", `color-mix(in srgb, ${props.theme.darkBackgroundColor ?? colors.darkGrey}, ${colors.white} 10%)`)(props),
+      };
   }
 }

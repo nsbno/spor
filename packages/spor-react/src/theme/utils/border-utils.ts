@@ -51,3 +51,31 @@ export function baseBorder(state: BorderState, props: StyleFunctionProps) {
       };
   }
 }
+
+type FloatingBorderState = Subset<State, "default" | "hover" | "focus" | "active" | "selected">;
+export function floatingBorder(state: FloatingBorderState, props: StyleFunctionProps) {
+  switch (state) {
+    case "hover":
+      return {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("grey.300", "white")(props),
+        }),
+      };
+    case "selected":
+    case "focus":
+    return {
+      boxShadow: getBoxShadowString({
+        borderColor: mode("greenHaze", "azure")(props),
+        borderWidth: 2,
+      }),
+    };
+    case "active":
+    case "default":
+    default:
+      return {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("grey.200", "whiteAlpha.400")(props),
+        }),
+      };
+  }
+}

@@ -2,7 +2,10 @@ import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "./box-shadow-utils";
 import { State, Subset } from "./types";
 
-type BorderState = Subset<State, 'hover' | 'focus' | 'disabled' | 'selected' | 'invalid' | "default">;
+type BorderState = Subset<
+  State,
+  "hover" | "focus" | "disabled" | "selected" | "invalid" | "default"
+>;
 
 export function baseBorder(state: BorderState, props: StyleFunctionProps) {
   switch (state) {
@@ -52,8 +55,14 @@ export function baseBorder(state: BorderState, props: StyleFunctionProps) {
   }
 }
 
-type FloatingBorderState = Subset<State, "default" | "hover" | "focus" | "active" | "selected">;
-export function floatingBorder(state: FloatingBorderState, props: StyleFunctionProps) {
+type FloatingBorderState = Subset<
+  State,
+  "default" | "hover" | "focus" | "active" | "selected"
+>;
+export function floatingBorder(
+  state: FloatingBorderState,
+  props: StyleFunctionProps,
+) {
   switch (state) {
     case "hover":
       return {
@@ -63,12 +72,12 @@ export function floatingBorder(state: FloatingBorderState, props: StyleFunctionP
       };
     case "selected":
     case "focus":
-    return {
-      boxShadow: getBoxShadowString({
-        borderColor: mode("greenHaze", "azure")(props),
-        borderWidth: 2,
-      }),
-    };
+      return {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("greenHaze", "azure")(props),
+          borderWidth: 2,
+        }),
+      };
     case "active":
     case "default":
     default:

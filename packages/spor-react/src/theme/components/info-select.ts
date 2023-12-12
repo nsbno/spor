@@ -76,8 +76,7 @@ const config = helpers.defineMultiStyleConfig({
     arrowIcon: {},
   }),
   variants: {
-    base: (props) => ({
-    }),
+    base: (props) => ({}),
     floating: (props) => ({
       button: {
         ...floatingBackground("default", props),
@@ -99,12 +98,11 @@ const config = helpers.defineMultiStyleConfig({
           ...floatingBorder("active", props),
           ...floatingBackground("active", props),
         },
-
-      }
+      },
     }),
   },
   defaultProps: {
     variant: "base",
-  }
+  },
 });
 export default config;

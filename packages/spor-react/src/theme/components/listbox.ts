@@ -18,7 +18,7 @@ const config = helpers.defineMultiStyleConfig({
     container: {
       // avoiding extra div by blending a transparent color into darkGrey for dark mode
       backgroundColor: mode(
-        "mint",
+        "white",
         `color-mix(in srgb, ${colors.darkGrey}, ${colors.white} 10%)`,
       )(props),
       boxShadow: "sm",

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 5.1.1
+
+### Patch Changes
+
+- 9b62a230: Change color of listbox from mint to green
+
 ## 5.1.0
 
 ### Minor Changes

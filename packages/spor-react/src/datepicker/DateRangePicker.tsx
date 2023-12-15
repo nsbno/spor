@@ -29,7 +29,7 @@ import { RangeCalendar } from "./RangeCalendar";
 import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
 
-type DateRangePickerProps = AriaDateRangePickerProps<DateValue> &
+type DateRangePickerProps = AriaDateRangePickerProps<DateValue | null> &
   Pick<BoxProps, "minHeight"> & {
     startLabel?: string;
     startName?: string;

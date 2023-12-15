@@ -25,7 +25,7 @@ import { DateField } from "./DateField";
 import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
 
-type DatePickerProps = AriaDatePickerProps<DateValue> &
+type DatePickerProps = AriaDatePickerProps<DateValue | null> &
   Pick<BoxProps, "minHeight" | "width"> & {
     variant: ResponsiveValue<"base" | "floating" | "ghost">;
     name?: string;

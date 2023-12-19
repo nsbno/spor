@@ -91,7 +91,7 @@ export function NumericStepper({
   return (
     <Flex alignItems="center" {...boxProps}>
       <VerySmallButton
-        icon={<SubtractIcon color="white" stepLabel={clampedStepSize} />}
+        icon={<SubtractIcon stepLabel={clampedStepSize} />}
         aria-label={t(texts.decrementButtonAriaLabel(clampedStepSize))}
         onClick={() => onChange(Math.max(value - clampedStepSize, minValue))}
         visibility={value <= minValue ? "hidden" : "visible"}
@@ -164,7 +164,7 @@ export function NumericStepper({
         </chakra.text>
       )}
       <VerySmallButton
-        icon={<AddIcon color="white" stepLabel={clampedStepSize} />}
+        icon={<AddIcon stepLabel={clampedStepSize} />}
         aria-label={t(texts.incrementButtonAriaLabel(clampedStepSize))}
         onClick={() => onChange(Math.min(value + clampedStepSize, maxValue))}
         visibility={value >= maxValue ? "hidden" : "visible"}

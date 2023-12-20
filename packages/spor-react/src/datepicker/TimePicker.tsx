@@ -31,7 +31,7 @@ type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> & {
    **/
   defaultValue?: TimeValue | null;
   /** Callback for when the time changes */
-  onChange?: (value: TimeValue) => void;
+  onChange?: (value: TimeValue | null) => void;
   /** The maxiumum number of minutes to move when the step buttons are used.
    *
    * Defaults to 30 minutes.

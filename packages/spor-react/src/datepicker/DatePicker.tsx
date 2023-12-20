@@ -25,12 +25,13 @@ import { DateField } from "./DateField";
 import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
 
-type DatePickerProps = AriaDatePickerProps<DateValue> &
+type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, 'onChange'> &
   Pick<BoxProps, "minHeight" | "width"> & {
     variant: ResponsiveValue<"base" | "floating" | "ghost">;
     name?: string;
     showYearNavigation?: boolean;
     withPortal?: boolean;
+    onChange?: (value: DateValue | null) => void;
   };
 
 /**

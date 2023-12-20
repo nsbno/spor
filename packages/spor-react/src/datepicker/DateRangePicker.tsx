@@ -29,7 +29,10 @@ import { RangeCalendar } from "./RangeCalendar";
 import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
 
-type DateRangePickerProps = AriaDateRangePickerProps<DateValue> &
+type DateRangePickerProps = Omit<
+  AriaDateRangePickerProps<DateValue>,
+  "onChange"
+> &
   Pick<BoxProps, "minHeight"> & {
     startLabel?: string;
     startName?: string;
@@ -37,6 +40,10 @@ type DateRangePickerProps = AriaDateRangePickerProps<DateValue> &
     endName?: string;
     variant: ResponsiveValue<"base" | "floating" | "ghost">;
     withPortal?: boolean;
+    onChange?: (dates: {
+      start: DateValue | null;
+      end: DateValue | null;
+    }) => void;
   };
 /**
  * A date range picker component.

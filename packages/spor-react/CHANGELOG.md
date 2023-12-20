@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 5.2.0
+
+### Minor Changes
+
+- 54c05a9: DatePicker, DateRangePicker, TimePicker: Add null as an onChange value
+
+### Patch Changes
+
+- 18fb096: NumericStepper: Fixed the Icon-color for NumericStepper on dark mode
+
 ## 5.1.1
 
 ### Patch Changes

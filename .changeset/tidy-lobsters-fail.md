@@ -1,5 +1,5 @@
 ---
-"@vygruppen/spor-react": patch
+"@vygruppen/spor-react": minor
 ---
 
-card-select: added dark mode update and new prop for background
+CardSelect: added dark mode update and new prop for background also changed outline to base and card to float in variants

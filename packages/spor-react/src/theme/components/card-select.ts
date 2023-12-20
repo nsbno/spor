@@ -33,7 +33,7 @@ const config = helpers.defineMultiStyleConfig({
     },
   }),
   variants: {
-    outline: (props) => ({
+    base: (props) => ({
       trigger: {
         boxShadow: getBoxShadowString({
           borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
@@ -86,11 +86,11 @@ const config = helpers.defineMultiStyleConfig({
           backgroundColor: mode("mint", "whiteAlpha.200")(props),
         },
         _expanded: {
-          backgroundColor: mode("mint", "whiteAlpha.200")(props)
-        }
+          backgroundColor: mode("mint", "whiteAlpha.200")(props),
+        },
       },
     }),
-    card: (props) => ({
+    floating: (props) => ({
       trigger: {
         backgroundColor: mode("transparent", "whiteAlpha.100")(props),
         boxShadow: "sm",
@@ -112,7 +112,7 @@ const config = helpers.defineMultiStyleConfig({
           }),
         },
         _expanded: {
-          backgroundColor: mode("mint","whiteAlpha.100")(props),
+          backgroundColor: mode("mint", "whiteAlpha.100")(props),
           _hover: {
             boxShadow: getBoxShadowString({
               borderColor: "darkGrey",
@@ -160,13 +160,12 @@ const config = helpers.defineMultiStyleConfig({
 
 export default config;
 
-
 const getBackgroundColor = (props: StyleFunctionProps) => {
   switch (props.backgroundScheme) {
-    case "dark":
-      return mode("white", "darkGrey")(props);;
-    case "green":
-      return mode("white", "night")(props);;
+    case "primary":
+      return mode("white", "darkGrey")(props);
+    case "secondary":
+      return mode("white", "night")(props);
     default:
       return mode("white", "whiteAlpha.100")(props);
   }

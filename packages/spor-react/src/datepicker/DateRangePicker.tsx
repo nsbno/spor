@@ -40,10 +40,12 @@ type DateRangePickerProps = Omit<
     endName?: string;
     variant: ResponsiveValue<"base" | "floating" | "ghost">;
     withPortal?: boolean;
-    onChange?: (dates: {
-      start: DateValue | null;
-      end: DateValue | null;
-    }) => void;
+    onChange?: (
+      dates: {
+        start: DateValue | null;
+        end: DateValue | null;
+      } | null,
+    ) => void;
   };
 /**
  * A date range picker component.

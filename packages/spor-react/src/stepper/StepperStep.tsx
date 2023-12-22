@@ -35,8 +35,8 @@ export const StepperStep = ({
           state === "active"
             ? "primary"
             : state === "completed"
-              ? "tertiary"
-              : "ghost"
+            ? "tertiary"
+            : "ghost"
         }
         {...adjustedProps}
         onClick={() => onClick(stepNumber)}

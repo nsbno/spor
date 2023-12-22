@@ -291,8 +291,8 @@ const components: Partial<PortableTextReactComponents> = {
               example.weight === "positive"
                 ? "green"
                 : example.weight === "negative"
-                  ? "red"
-                  : "grey"
+                ? "red"
+                : "grey"
             }
             padding={[2, null, 4]}
           >
@@ -309,8 +309,8 @@ const components: Partial<PortableTextReactComponents> = {
                 {example.weight === "positive"
                   ? "Do"
                   : example.weight === "negative"
-                    ? "Don't"
-                    : null}
+                  ? "Don't"
+                  : null}
               </Heading>
             </Flex>
 

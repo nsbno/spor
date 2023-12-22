@@ -2,7 +2,8 @@ import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
-import { baseBackground } from "../utils/background-utils";
+import { baseBackground, ghostBackground } from "../utils/background-utils";
+import { baseBorder } from "../utils/border-utils";
 
 const parts = anatomy("ListBox").parts(
   "container",
@@ -19,7 +20,7 @@ const config = helpers.defineMultiStyleConfig({
       // avoiding extra div by blending a transparent color into darkGrey for dark mode
       backgroundColor: mode(
         "white",
-        `color-mix(in srgb, ${colors.darkGrey}, ${colors.white} 10%)`,
+        `color-mix(in srgb, ${props.theme.colors.accent}, ${colors.white} 10%)`,
       )(props),
       boxShadow: "sm",
       overflowY: "auto",
@@ -36,21 +37,18 @@ const config = helpers.defineMultiStyleConfig({
       borderRadius: "sm",
       color: mode("darkGrey", "white")(props),
       cursor: "pointer",
-      _hover: {
-        backgroundColor: mode("seaMist", "pine")(props),
-        outline: "none",
-      },
+      outline: "none",
       _active: {
-        backgroundColor: mode("mint", "pine")(props),
-        outline: "none",
+        ...ghostBackground("active", props),
       },
       _focus: {
-        outline: "none",
-        backgroundColor: mode("seaMist", "pine")(props),
+        ...ghostBackground("focus", props),
+      },
+      _hover: {
+        ...ghostBackground("hover", props),
       },
       _selected: {
-        ...baseBackground("selected", props),
-        color: "white",
+        ...ghostBackground("selected", props),
       },
     },
     label: {},

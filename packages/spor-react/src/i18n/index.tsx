@@ -7,6 +7,11 @@ export enum Language {
   English = "en",
 }
 
+export enum Brand {
+  VyDigital = "VyDigital",
+  VyUtvikling = "VyUtvikling",
+}
+
 type TranslationObject = {
   [key in Language]: string | React.ReactElement;
 };

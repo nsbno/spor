@@ -3,6 +3,7 @@ import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
 import { StyleFunctionProps, mode } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
+import { baseBackground, floatingBackground, ghostBackground } from "../utils/background-utils";
 
 const parts = anatomy("card-select").parts("trigger", "card");
 
@@ -54,20 +55,20 @@ const config = helpers.defineMultiStyleConfig({
           }),
         },
         _active: {
-          backgroundColor: mode("mint", "whiteAlpha.200")(props),
+          ...baseBackground("active", props),
           boxShadow: getBoxShadowString({
             borderColor: mode("darkGrey", "whiteAlpha.400")(props),
             borderWidth: 1,
           }),
         },
         _expanded: {
-          backgroundColor: mode("mint", "whiteAlpha.100")(props),
+          ...baseBackground("active", props),
           _hover: {
-            backgroundColor: mode("seaMist", "todo")(props),
+            ...baseBackground("active", props),
             boxShadow: "none",
           },
           _active: {
-            backgroundColor: mode("mint", "todo")(props),
+            ...baseBackground("active", props),
             boxShadow: getBoxShadowString({
               borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
               borderWidth: 1,
@@ -79,23 +80,23 @@ const config = helpers.defineMultiStyleConfig({
     ghost: (props) => ({
       trigger: {
         _hover: {
-          backgroundColor: mode("seaMist", "pine")(props),
+         ...ghostBackground("hover", props),
         },
         _active: {
-          backgroundColor: mode("mint", "whiteAlpha.200")(props),
+          ...ghostBackground("active", props),
         },
         _expanded: {
-          backgroundColor: mode("mint", "whiteAlpha.200")(props),
+          ...ghostBackground("selected", props),
         },
       },
     }),
     floating: (props) => ({
       trigger: {
-        backgroundColor: mode("transparent", "whiteAlpha.100")(props),
+        ...floatingBackground("default", props),
         boxShadow: "sm",
         transition: "all .1s ease-out",
         _hover: {
-          backgroundColor: mode("seaMist", "pine")(props),
+          ...floatingBackground("hover", props),
           boxShadow: getBoxShadowString({
             borderColor: mode("silver", "whiteAlpha.400")(props),
             borderWidth: 1,
@@ -103,7 +104,7 @@ const config = helpers.defineMultiStyleConfig({
           }),
         },
         _active: {
-          backgroundColor: mode("mint", "whiteAlpha.100")(props),
+          ...floatingBackground("active", props),
           boxShadow: getBoxShadowString({
             borderColor: mode("silver", "whiteAlpha.400")(props),
             borderWidth: mode(0, 1)(props),
@@ -111,7 +112,7 @@ const config = helpers.defineMultiStyleConfig({
           }),
         },
         _expanded: {
-          backgroundColor: mode("mint", "whiteAlpha.100")(props),
+          ...floatingBackground("active", props),
           _hover: {
             boxShadow: getBoxShadowString({
               borderColor: "darkGrey",
@@ -119,7 +120,7 @@ const config = helpers.defineMultiStyleConfig({
             }),
           },
           _active: {
-            backgroundColor: mode("mint", "whiteAlpha.200")(props),
+            ...floatingBackground("active", props),
             boxShadow: "none",
           },
         },

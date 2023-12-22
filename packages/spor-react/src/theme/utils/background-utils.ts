@@ -17,7 +17,7 @@ export function baseBackground(
       };
     case "selected":
       return {
-        backgroundColor: "pine",
+        backgroundColor: mode("pine", "coralGreen")(props),
       };
     case "disabled":
       return {
@@ -85,7 +85,7 @@ export function floatingBackground(
         backgroundColor: mode(
           "mint",
           `color-mix(in srgb, ${
-            props.theme.darkBackgroundColor ?? colors.darkGrey
+            props.theme.colors.accent
           }, ${colors.white} 30%)`,
         )(props),
       };
@@ -94,7 +94,7 @@ export function floatingBackground(
         backgroundColor: mode(
           "white",
           `color-mix(in srgb, ${
-            props.theme.darkBackgroundColor ?? colors.darkGrey
+            props.theme.colors.accent
           }, ${colors.white} 20%)`,
         )(props),
       };
@@ -103,7 +103,7 @@ export function floatingBackground(
         backgroundColor: mode(
           "white",
           `color-mix(in srgb, ${
-            props.theme.darkBackgroundColor ?? colors.darkGrey
+            props.theme.colors.accent
           }, ${colors.white} 40%)`,
         )(props),
       };
@@ -113,7 +113,7 @@ export function floatingBackground(
         backgroundColor: mode(
           "white",
           `color-mix(in srgb, ${
-            props.theme.darkBackgroundColor ?? colors.darkGrey
+            props.theme.colors.accent
           }, ${colors.white} 10%)`,
         )(props),
       };

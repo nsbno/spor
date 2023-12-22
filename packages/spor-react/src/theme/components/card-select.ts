@@ -29,7 +29,6 @@ const config = helpers.defineMultiStyleConfig({
       boxShadow: "md",
       padding: 3,
       color: mode("darkGrey", "white")(props),
-      backgroundColor: getBackgroundColor(props),
     },
   }),
   variants: {
@@ -159,14 +158,3 @@ const config = helpers.defineMultiStyleConfig({
 });
 
 export default config;
-
-const getBackgroundColor = (props: StyleFunctionProps) => {
-  switch (props.backgroundScheme) {
-    case "primary":
-      return mode("white", "darkGrey")(props);
-    case "secondary":
-      return mode("white", "night")(props);
-    default:
-      return mode("white", "whiteAlpha.100")(props);
-  }
-};

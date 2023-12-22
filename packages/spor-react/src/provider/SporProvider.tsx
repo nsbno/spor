@@ -2,10 +2,11 @@ import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
 import React from "react";
 import { Language, LanguageProvider } from "..";
-import { theme as defaultSporTheme, fontFaces } from "../";
+import { brandTheme, fontFaces, theme as defaultSporTheme, Brand } from "../";
 
 type SporProviderProps = ChakraProviderProps & {
   language?: Language;
+  brand?: Brand;
 };
 
 /**
@@ -47,12 +48,20 @@ type SporProviderProps = ChakraProviderProps & {
 export const SporProvider = ({
   theme = defaultSporTheme,
   language = Language.NorwegianBokmal,
+  brand = Brand.VyDigital,
   children,
   ...props
 }: SporProviderProps) => {
+  const brandCustomizations = brandTheme[brand];
+
+  const extendedTheme = {
+    ...theme,
+    ...brandCustomizations,
+  };
+
   return (
     <LanguageProvider language={language}>
-      <ChakraProvider theme={theme} {...props}>
+      <ChakraProvider theme={extendedTheme} {...props}>
         <Global styles={fontFaces} />
         {children}
       </ChakraProvider>

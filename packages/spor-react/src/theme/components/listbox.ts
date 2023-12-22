@@ -20,7 +20,7 @@ const config = helpers.defineMultiStyleConfig({
       // avoiding extra div by blending a transparent color into darkGrey for dark mode
       backgroundColor: mode(
         "white",
-        `color-mix(in srgb, ${colors.darkGrey}, ${colors.white} 10%)`,
+        `color-mix(in srgb, ${props.theme.colors.accent}, ${colors.white} 10%)`,
       )(props),
       boxShadow: "sm",
       overflowY: "auto",

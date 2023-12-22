@@ -23,8 +23,8 @@ export const bestPracticePanel = defineType({
                 example.weight === "positive"
                   ? "positive"
                   : example.weight === "negative"
-                    ? "critical"
-                    : "caution"
+                  ? "critical"
+                  : "caution"
               }
               padding={3}
               radius={6}
@@ -107,8 +107,8 @@ export const bestPracticePanel = defineType({
                   weight === "positive"
                     ? "✅ Do"
                     : weight === "negative"
-                      ? "🚫 Don't"
-                      : "🤷",
+                    ? "🚫 Don't"
+                    : "🤷",
                 subtitle: portableTextToText(content),
                 media: image,
               };

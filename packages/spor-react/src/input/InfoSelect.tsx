@@ -182,7 +182,7 @@ export function InfoSelect<T extends object>({
     isOpen: state.isOpen,
     isLabelSrOnly,
     variant,
-    stateStyle
+    stateStyle,
   });
   const { buttonProps } = useButton(triggerProps, triggerRef);
   const { t } = useTranslation();

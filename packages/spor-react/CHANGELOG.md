@@ -1,5 +1,19 @@
 # @vygruppen/spor-react
 
+## 5.3.0
+
+### Minor Changes
+
+- 2559f03: ProgressIndicator: Brand new component for showing progress across multiple steps
+- fc1b71d: DateRangePicker: Make full date range type nullable in onChange
+
+### Patch Changes
+
+- e0703c8: InfoSelect: Fixes colors slightly to adhere to intended design
+  SporProvider: Added brand-prop to select brand theme customizations
+- a5b9922: ProgressIndicator: Remove ProgressDot import, as it wasn't meant for public exposure.
+- 9d31d59: general: Fix a bug with brand styles overriding all colors
+
 ## 5.2.0
 
 ### Minor Changes

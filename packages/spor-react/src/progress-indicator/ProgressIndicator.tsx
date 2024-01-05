@@ -1,6 +1,6 @@
+import { useMultiStyleConfig } from "@chakra-ui/react";
 import React from "react";
 import { Box, createTexts, useTranslation } from "..";
-import { useMultiStyleConfig } from "@chakra-ui/react";
 import { ProgressDot } from "./ProgressDot";
 
 type ProgressIndicatorProps = {

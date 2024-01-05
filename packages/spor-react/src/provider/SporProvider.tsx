@@ -1,8 +1,9 @@
 import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
+import deepmerge from "deepmerge";
 import React from "react";
 import { Language, LanguageProvider } from "..";
-import { brandTheme, fontFaces, theme as defaultSporTheme, Brand } from "../";
+import { Brand, brandTheme, theme as defaultSporTheme, fontFaces } from "../";
 
 type SporProviderProps = ChakraProviderProps & {
   language?: Language;
@@ -52,12 +53,9 @@ export const SporProvider = ({
   children,
   ...props
 }: SporProviderProps) => {
-  const brandCustomizations = brandTheme[brand];
+  const brandCustomizations = brandTheme[brand] ?? {};
 
-  const extendedTheme = {
-    ...theme,
-    ...brandCustomizations,
-  };
+  const extendedTheme = deepmerge(theme, brandCustomizations);
 
   return (
     <LanguageProvider language={language}>

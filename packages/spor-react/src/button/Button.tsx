@@ -22,7 +22,9 @@ export type ButtonProps = Exclude<
   size?: "xs" | "sm" | "md" | "lg";
   /** The different variants of a button
    *
-   * Defaults to "primary"
+   * Defaults to "primary".
+   *
+   * "control" is deprecated, and will be removed in a future version
    */
   variant?:
     | "control"
@@ -37,7 +39,6 @@ export type ButtonProps = Exclude<
  *
  * There are several button variants. You can specify which one you want with the `variant` prop. The available variants are:
  *
- * - `control`: This button is used for ticket controls only.
  * - `primary`: This is our main button. It's used for the main actions in a view, like a call to action. There should only be a single primary button in each view.
  * - `secondary`: Used for secondary actions in a view, and when you need to make several actions available at the same time.
  * - `tertiary`: Used for additional choices, like a less important secondary action.
@@ -136,7 +137,7 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
   );
 });
 
-function getLoaderWidth(size: any) {
+function getLoaderWidth(size: Required<ButtonProps["size"]>) {
   switch (size) {
     case "xs":
       return "4rem";

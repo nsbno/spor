@@ -8,6 +8,10 @@ import React from "react";
 import { ColorSpinner } from "..";
 
 export type IconButtonProps = Omit<ChakraIconButtonProps, "variant"> & {
+  /** The button variant.
+   *
+   * "control" is deprecated
+   */
   variant:
     | "control"
     | "primary"

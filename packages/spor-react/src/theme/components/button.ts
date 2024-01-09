@@ -218,12 +218,14 @@ const config = defineStyleConfig({
       minHeight: 6,
       minWidth: 6,
       fontSize: "16px",
+      fontWeight: "normal",
     },
     xs: {
       minHeight: 5,
       minWidth: 5,
       fontSize: "16px",
       paddingX: 2,
+      fontWeight: "normal",
     },
   },
   defaultProps: {

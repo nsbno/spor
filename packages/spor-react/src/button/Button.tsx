@@ -1,10 +1,11 @@
 import {
   Box,
   Center,
-  Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
+  Flex,
   forwardRef,
   useButtonGroup,
+  useStyleConfig,
 } from "@chakra-ui/react";
 import React from "react";
 import { createTexts, useTranslation } from "../i18n";
@@ -63,61 +64,42 @@ export type ButtonProps = Exclude<
  */
 export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
   const {
+    as = "button",
     size,
-    variant,
     children,
     isLoading,
     isDisabled,
     leftIcon,
     rightIcon,
+    sx,
     ...rest
   } = props;
   const ariaLabel = useCorrectAriaLabel(props);
   const buttonGroup = useButtonGroup();
-  const finalVariant = (variant ??
-    buttonGroup?.variant ??
-    "primary") as Required<ButtonProps["variant"]>;
   const finalSize = (size ?? buttonGroup?.size ?? "md") as Required<
     ButtonProps["size"]
   >;
+  const styles = useStyleConfig("Button", {
+    ...buttonGroup,
+    ...rest,
+    size: finalSize,
+    leftIcon,
+    rightIcon,
+  });
 
   return (
-    <ChakraButton
-      size={finalSize}
-      variant={finalVariant}
+    <Box
       {...rest}
+      as={as}
+      sx={{ ...styles, ...sx }}
       ref={ref}
       aria-label={ariaLabel}
       aria-busy={isLoading}
-      isDisabled={isDisabled || isLoading}
-      leftIcon={
-        isLoading && leftIcon ? (
-          <Box visibility={isLoading ? "hidden" : "visible"} aria-hidden="true">
-            {leftIcon}
-          </Box>
-        ) : (
-          leftIcon
-        )
-      }
-      rightIcon={
-        isLoading && rightIcon ? (
-          <Box visibility={isLoading ? "hidden" : "visible"} aria-hidden="true">
-            {rightIcon}
-          </Box>
-        ) : (
-          rightIcon
-        )
-      }
+      disabled={isDisabled || isLoading}
       position="relative"
     >
       {isLoading && (
-        <Center
-          position="absolute"
-          right="0"
-          paddingBottom={1}
-          left="0"
-          paddingTop={2}
-        >
+        <Center position="absolute" right={0} left={0} top={1} bottom={0}>
           <ColorInlineLoader
             maxWidth={getLoaderWidth(finalSize)}
             width="80%"
@@ -126,14 +108,26 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
           />
         </Center>
       )}
-      <Box
+      <Flex
+        justifyContent="space-between"
+        alignItems="center"
+        gap={1}
         visibility={isLoading ? "hidden" : "visible"}
-        whiteSpace="normal"
-        textAlign="left"
+        aria-hidden={isLoading}
       >
-        {children}
-      </Box>
-    </ChakraButton>
+        <Flex justifyContent="center" alignItems="center" gap={1}>
+          {leftIcon}
+          <Box
+            visibility={isLoading ? "hidden" : "visible"}
+            whiteSpace="normal"
+            textAlign="left"
+          >
+            {children}
+          </Box>
+        </Flex>
+        {rightIcon}
+      </Flex>
+    </Box>
   );
 });
 

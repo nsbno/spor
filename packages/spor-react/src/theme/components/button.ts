@@ -2,7 +2,6 @@ import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
-import { focusVisible } from "../utils/focus-utils";
 
 const config = defineStyleConfig({
   baseStyle: {
@@ -36,18 +35,15 @@ const config = defineStyleConfig({
       // hardcoded background color as alpha-"hack" below is not feasible for dark mode with solid background color
       backgroundColor: mode("pine", "coralGreen")(props),
       color: mode("white", "darkTeal")(props),
-      ...focusVisible({
-        focus: {
-          boxShadow: `inset 0 0 0 2px ${mode(
-            colors.greenHaze,
-            colors.azure,
-          )(props)}, inset 0 0 0 4px ${mode(
-            colors.white,
-            colors.darkGrey,
-          )(props)}`,
-        },
-        notFocus: { boxShadow: "none" },
-      }),
+      _focusVisible: {
+        boxShadow: `inset 0 0 0 2px ${mode(
+          colors.greenHaze,
+          colors.azure,
+        )(props)}, inset 0 0 0 4px ${mode(
+          colors.white,
+          colors.darkGrey,
+        )(props)}`,
+      },
       _hover: {
         backgroundColor: mode("darkTeal", "blueGreen")(props),
       },
@@ -63,29 +59,24 @@ const config = defineStyleConfig({
       _hover: {
         backgroundColor: mode("coralGreen", "greenHaze")(props),
       },
-      ...focusVisible({
-        focus: {
+      _focusVisible: {
+        boxShadow: `inset 0 0 0 2px ${mode(
+          colors.greenHaze,
+          colors.primaryGreen,
+        )(props)}, inset 0 0 0 4px ${mode(
+          colors.white,
+          colors.darkTeal,
+        )(props)}`,
+        _hover: {
           boxShadow: `inset 0 0 0 2px ${mode(
             colors.greenHaze,
-            colors.primaryGreen,
+            colors.azure,
           )(props)}, inset 0 0 0 4px ${mode(
             colors.white,
-            colors.darkTeal,
+            colors.blackAlpha[500],
           )(props)}`,
-          _hover: {
-            boxShadow: `inset 0 0 0 2px ${mode(
-              colors.greenHaze,
-              colors.azure,
-            )(props)}, inset 0 0 0 4px ${mode(
-              colors.white,
-              colors.blackAlpha[500],
-            )(props)}`,
-          },
         },
-        notFocus: {
-          boxShadow: "none",
-        },
-      }),
+      },
       _active: {
         backgroundColor: mode("mint", "darkTeal")(props),
         boxShadow: `inset 0 0 0 2px ${mode(
@@ -114,20 +105,12 @@ const config = defineStyleConfig({
         colors.blackAlpha[400],
         colors.whiteAlpha[400],
       )(props)}`,
-      ...focusVisible({
-        focus: {
-          boxShadow: getBoxShadowString({
-            borderWidth: 2,
-            borderColor: "azure",
-          }),
-        },
-        notFocus: {
-          boxShadow: `inset 0 0 0 1px ${mode(
-            colors.blackAlpha[400],
-            colors.whiteAlpha[400],
-          )(props)}`,
-        },
-      }),
+      _focusVisible: {
+        boxShadow: getBoxShadowString({
+          borderWidth: 2,
+          borderColor: "azure",
+        }),
+      },
       _hover: {
         boxShadow: `inset 0 0 0 2px currentColor`,
       },
@@ -143,17 +126,12 @@ const config = defineStyleConfig({
       backgroundColor: "transparent",
       color: mode("darkGrey", "white")(props),
       fontWeight: "normal",
-      ...focusVisible({
-        focus: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("greenHaze", "azure")(props),
-            borderWidth: 2,
-          }),
-        },
-        notFocus: {
-          outline: "none",
-        },
-      }),
+      _focusVisible: {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("greenHaze", "azure")(props),
+          borderWidth: 2,
+        }),
+      },
       _hover: {
         backgroundColor: mode("seaMist", "whiteAlpha.200")(props),
         _disabled: {
@@ -181,26 +159,20 @@ const config = defineStyleConfig({
           borderWidth: 2,
         }),
       },
-      ...focusVisible({
-        focus: {
+      _focusVisible: {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("greenHaze", "azure")(props),
+          borderWidth: 2,
+          baseShadow: "sm",
+        }),
+        _hover: {
           boxShadow: getBoxShadowString({
             borderColor: mode("greenHaze", "azure")(props),
             borderWidth: 2,
-            baseShadow: "sm",
+            baseShadow: "md",
           }),
-          _hover: {
-            boxShadow: getBoxShadowString({
-              borderColor: mode("greenHaze", "azure")(props),
-              borderWidth: 2,
-              baseShadow: "md",
-            }),
-          },
         },
-        notFocus: {
-          outline: "none",
-          boxShadow: "sm",
-        },
-      }),
+      },
     }),
   },
   sizes: {

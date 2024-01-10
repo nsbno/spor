@@ -84,27 +84,21 @@ export function floatingBackground(
       return {
         backgroundColor: mode(
           "mint",
-          `color-mix(in srgb, ${
-            props.theme.colors.accent
-          }, ${colors.white} 30%)`,
+          `color-mix(in srgb, ${props.theme.colors.accent}, ${colors.white} 30%)`,
         )(props),
       };
     case "hover":
       return {
         backgroundColor: mode(
           "white",
-          `color-mix(in srgb, ${
-            props.theme.colors.accent
-          }, ${colors.white} 20%)`,
+          `color-mix(in srgb, ${props.theme.colors.accent}, ${colors.white} 20%)`,
         )(props),
       };
     case "focus":
       return {
         backgroundColor: mode(
           "white",
-          `color-mix(in srgb, ${
-            props.theme.colors.accent
-          }, ${colors.white} 40%)`,
+          `color-mix(in srgb, ${props.theme.colors.accent}, ${colors.white} 40%)`,
         )(props),
       };
     case "default":
@@ -112,9 +106,7 @@ export function floatingBackground(
       return {
         backgroundColor: mode(
           "white",
-          `color-mix(in srgb, ${
-            props.theme.colors.accent
-          }, ${colors.white} 10%)`,
+          `color-mix(in srgb, ${props.theme.colors.accent}, ${colors.white} 10%)`,
         )(props),
       };
   }

@@ -54,7 +54,7 @@ const config = defineStyleConfig({
     secondary: (props) => ({
       // FIXME: Update to use global defined background color for darkMode whenever it is available instead of alpha
       backgroundColor: mode("seaMist", "primaryGreen")(props),
-      color: mode("darkTeal", "white")(props),
+      color: mode("darkTeal", "seaMist")(props),
       // order is important here for now while we do not have global defined background color for darkMode
       _hover: {
         backgroundColor: mode("coralGreen", "greenHaze")(props),

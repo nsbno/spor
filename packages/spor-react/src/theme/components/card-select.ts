@@ -3,7 +3,11 @@ import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
 import { StyleFunctionProps, mode } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisible } from "../utils/focus-utils";
-import { baseBackground, floatingBackground, ghostBackground } from "../utils/background-utils";
+import {
+  baseBackground,
+  floatingBackground,
+  ghostBackground,
+} from "../utils/background-utils";
 
 const parts = anatomy("card-select").parts("trigger", "card");
 
@@ -80,7 +84,7 @@ const config = helpers.defineMultiStyleConfig({
     ghost: (props) => ({
       trigger: {
         _hover: {
-         ...ghostBackground("hover", props),
+          ...ghostBackground("hover", props),
         },
         _active: {
           ...ghostBackground("active", props),

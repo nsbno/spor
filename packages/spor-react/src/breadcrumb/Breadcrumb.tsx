@@ -6,6 +6,7 @@ import {
 } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
+import { useColorModeValue } from "@chakra-ui/react";
 
 type BreadcrumbProps = ChakraBreadcrumbProps;
 /**
@@ -25,9 +26,10 @@ type BreadcrumbProps = ChakraBreadcrumbProps;
  * ```
  */
 export const Breadcrumb = (props: BreadcrumbProps) => {
+  const iconColor = useColorModeValue("blackAlpha.400", "whiteAlpha.400");
   return (
     <ChakraBreadcrumb
-      separator={<DropdownRightFill18Icon color="blackAlpha.400" />}
+      separator={<DropdownRightFill18Icon color={iconColor} />}
       {...props}
     />
   );

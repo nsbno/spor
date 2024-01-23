@@ -24,7 +24,16 @@ type CardSelectProps = BoxProps & {
    * - `outline` is a button with a border and text
    * - `card` is a button with a drop shadow (like a card) and text
    */
-  variant: "base" | "ghost" | "floating";
+  variant:
+    | "base"
+    | "ghost"
+    | "floating"
+    /**
+     @deprecated 
+     outline and card is deprecated, please use base or floating instead
+    */
+    | "outline"
+    | "card";
   /** The size of the trigger button */
   size: "sm" | "md" | "lg";
   /** Whether the card select is open / active, if controlled */

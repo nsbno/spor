@@ -34,7 +34,6 @@ const config = helpers.defineMultiStyleConfig({
       boxShadow: "md",
       padding: 3,
       color: mode("darkGrey", "white")(props),
-      ...floatingBackground("default", props),
     },
   }),
   variants: {

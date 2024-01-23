@@ -21,10 +21,10 @@ type CardSelectProps = BoxProps & {
   /** The design of the trigger button.
    *
    * - `ghost` is a transparent button with text
-   * - `outline` is a button with a border and text
-   * - `card` is a button with a drop shadow (like a card) and text
+   * - `base` is a button with a border and text
+   * - `floating` is a button with a drop shadow (like a card) and text
    */
-  variant: "ghost" | "outline" | "card";
+  variant: "base" | "ghost" | "floating";
   /** The size of the trigger button */
   size: "sm" | "md" | "lg";
   /** Whether the card select is open / active, if controlled */

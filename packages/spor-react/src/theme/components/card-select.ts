@@ -82,6 +82,51 @@ const config = helpers.defineMultiStyleConfig({
         },
       },
     }),
+    //TODO: *deprocated remove outline and card 
+    oultine: (props) => ({
+      trigger: {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
+        }),
+        ...focusVisible({
+          notFocus: { boxShadow: "none" },
+          focus: {
+            boxShadow: getBoxShadowString({
+              borderColor: "greenHaze",
+              borderWidth: 3,
+            }),
+            outline: "none",
+          },
+        }),
+        _hover: {
+          boxShadow: getBoxShadowString({
+            borderColor: mode("darkGrey", "white")(props),
+            borderWidth: 3,
+          }),
+        },
+        _active: {
+          ...baseBackground("active", props),
+          boxShadow: getBoxShadowString({
+            borderColor: mode("darkGrey", "whiteAlpha.400")(props),
+            borderWidth: 1,
+          }),
+        },
+        _expanded: {
+          ...baseBackground("active", props),
+          _hover: {
+            ...baseBackground("active", props),
+            boxShadow: "none",
+          },
+          _active: {
+            ...baseBackground("active", props),
+            boxShadow: getBoxShadowString({
+              borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
+              borderWidth: 1,
+            }),
+          },
+        },
+      },
+    }),
     ghost: (props) => ({
       trigger: {
         _hover: {
@@ -96,6 +141,42 @@ const config = helpers.defineMultiStyleConfig({
       },
     }),
     floating: (props) => ({
+      trigger: {
+        ...floatingBackground("default", props),
+        boxShadow: "sm",
+        transition: "all .1s ease-out",
+        _hover: {
+          ...floatingBackground("hover", props),
+          boxShadow: getBoxShadowString({
+            borderColor: mode("silver", "whiteAlpha.400")(props),
+            borderWidth: 1,
+            baseShadow: "sm",
+          }),
+        },
+        _active: {
+          ...floatingBackground("active", props),
+          boxShadow: getBoxShadowString({
+            borderColor: mode("silver", "whiteAlpha.400")(props),
+            borderWidth: mode(0, 1)(props),
+            baseShadow: "sm",
+          }),
+        },
+        _expanded: {
+          ...floatingBackground("active", props),
+          _hover: {
+            boxShadow: getBoxShadowString({
+              borderColor: "darkGrey",
+              borderWidth: 3,
+            }),
+          },
+          _active: {
+            ...floatingBackground("active", props),
+            boxShadow: "none",
+          },
+        },
+      },
+    }),
+    card: (props) => ({
       trigger: {
         ...floatingBackground("default", props),
         boxShadow: "sm",

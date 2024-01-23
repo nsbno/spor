@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": patch
 ---
 
-Breadcrumb: endret farge på dropdown right fill icon for darkmode
+Breadcrumb: Fixed a darkmode bug where the arrow icons between crumbs were always black

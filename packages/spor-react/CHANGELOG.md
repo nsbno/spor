@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 5.5.0
+
+### Minor Changes
+
+- 9be3b2c: cardSelect: darkmode quick fix for background color
+
+### Patch Changes
+
+- 762592e: Breadcrumb: Fixed a darkmode bug where the arrow icons between crumbs were always black
+
 ## 5.4.0
 
 ### Minor Changes

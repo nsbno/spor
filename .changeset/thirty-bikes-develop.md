@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": minor
 ---
 
-cardSelect: updated variants names. please use base or floating instead of: card and outline 
+cardSelect: updated variants names. old "outline" has become "base" and old "card" is now "floating"

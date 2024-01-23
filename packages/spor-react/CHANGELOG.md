@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 5.4.0
+
+### Minor Changes
+
+- 3781bb2: CardSelect: added dark mode update and new prop for background also changed outline to base and card to float in variants
+
 ## 5.3.0
 
 ### Minor Changes

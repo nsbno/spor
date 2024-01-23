@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 6.0.0
+
+### Major Changes
+
+- d8be7e4: CardSelect: _Breaking change_: We have changed some variant prop names, so it's aligned with the rest of the design system.
+  To migrate,. old "outline" has become "base" and old "card" is now "floating".
+
 ## 5.5.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 6.1.0
+
+### Minor Changes
+
+- 81e1ae6: cardselect: removed some code by mistake, adding it back in
+
 ## 6.0.0
 
 ### Major Changes

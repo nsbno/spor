@@ -65,6 +65,7 @@ export type ButtonProps = Exclude<
 export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
   const {
     as = "button",
+    fontWeight,
     size,
     children,
     isLoading,
@@ -86,6 +87,11 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
     leftIcon,
     rightIcon,
   });
+
+  // We want to explicitly allow to override the fontWeight prop
+  if (fontWeight) {
+    styles.fontWeight = fontWeight;
+  }
 
   return (
     <Box

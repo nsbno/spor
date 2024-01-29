@@ -7,7 +7,6 @@ const config = defineStyleConfig({
   baseStyle: {
     border: 0,
     borderRadius: "xl",
-    fontWeight: "bold",
     transitionProperty: "common",
     transitionDuration: "normal",
     textWrap: "wrap",
@@ -100,7 +99,6 @@ const config = defineStyleConfig({
     tertiary: (props) => ({
       backgroundColor: "transparent",
       color: mode("darkGrey", "white")(props),
-      fontWeight: "normal",
       boxShadow: `inset 0 0 0 1px ${mode(
         colors.blackAlpha[400],
         colors.whiteAlpha[400],
@@ -125,7 +123,6 @@ const config = defineStyleConfig({
     ghost: (props) => ({
       backgroundColor: "transparent",
       color: mode("darkGrey", "white")(props),
-      fontWeight: "normal",
       _focusVisible: {
         boxShadow: getBoxShadowString({
           borderColor: mode("greenHaze", "azure")(props),
@@ -180,11 +177,13 @@ const config = defineStyleConfig({
       minHeight: 8,
       minWidth: 8,
       fontSize: "18px",
+      fontWeight: "bold",
     },
     md: {
       minHeight: 7,
       minWidth: 7,
       fontSize: "18px",
+      fontWeight: "bold",
     },
     sm: {
       minHeight: 6,

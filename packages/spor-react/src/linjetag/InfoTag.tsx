@@ -24,6 +24,17 @@ export type InfoTagProps = TagProps;
  * />
  * ```
  *
+ * If required, you can also override the colors and icons in these line tags:
+ *
+ * ```tsx
+ * <InfoTag
+ *  variant="custom"
+ *  customIconVariant="ferry"
+ *  foregroundColor="#b4da55"
+ *  backgroundColor="#c0ffee"
+ * />
+ * ```
+ *
  * @see https://spor.vy.no/components/line-tags
  */
 export const InfoTag = ({
@@ -31,11 +42,21 @@ export const InfoTag = ({
   size = "md",
   title,
   description,
+  ...customProps
 }: InfoTagProps) => {
-  const styles = useMultiStyleConfig("InfoTag", { variant, size });
+  const styles = useMultiStyleConfig("InfoTag", {
+    variant,
+    size,
+    ...customProps,
+  });
   return (
     <Box sx={styles.container}>
-      <LineIcon variant={variant} size={size} sx={styles.iconContainer} />
+      <LineIcon
+        variant={variant}
+        size={size}
+        sx={styles.iconContainer}
+        {...(customProps as any)} // TODO: Fix this
+      />
       <Box sx={styles.textContainer}>
         {title && (
           <Box as="span" sx={styles.title}>

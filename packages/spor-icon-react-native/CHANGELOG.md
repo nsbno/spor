@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.6.0
+
+### Minor Changes
+
+- 1266efd: Adds folder icon to the communication category
+
 ## 2.5.0
 
 ### Minor Changes

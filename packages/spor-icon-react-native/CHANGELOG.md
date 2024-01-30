@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.5.0
+
+### Minor Changes
+
+- 2564f46: Add new play icons
+
 ## 2.4.0
 
 ### Minor Changes

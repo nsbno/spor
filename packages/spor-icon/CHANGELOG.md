@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 2.5.0
+
+### Minor Changes
+
+- 3b64319: added play icon
+
 ## 2.4.0
 
 ### Minor Changes

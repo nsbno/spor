@@ -3,10 +3,23 @@ import React from "react";
 import { getCorrectIcon } from "./icons";
 import { TagProps } from "./types";
 
-export type LineIconProps = BoxProps & {
-  variant: TagProps["variant"];
-  size: TagProps["size"];
+type DefaultVariants = Exclude<TagProps["variant"], "custom">;
+
+type DefaultVariantProps = {
+  variant: DefaultVariants;
 };
+type CustomVariantProps = {
+  variant: "custom";
+  customIconVariant: DefaultVariants;
+  foregroundColor: string;
+  backgroundColor: string;
+};
+type VariantProps = DefaultVariantProps | CustomVariantProps;
+
+export type LineIconProps = Exclude<BoxProps, "variant"> &
+  VariantProps & {
+    size: TagProps["size"];
+  };
 
 /**
  * A line icon component.
@@ -23,6 +36,18 @@ export type LineIconProps = BoxProps & {
  * <LineIcon variant="subway" size="lg" />
  * ```
  *
+ * If you require some one-off colors, but still want to use the line tag component,
+ * you can do so like this:
+ *
+ * ```tsx
+ * <LineIcon
+ *  variant="custom"
+ *  customIconVariant="ferry"
+ *  foregroundColor="#b4da55"
+ *  backgroundColor="#c0ffee"
+ * />
+ * ```
+ *
  * @see https://spor.vy.no/components/line-tags
  */
 export const LineIcon = ({
@@ -31,8 +56,16 @@ export const LineIcon = ({
   sx,
   ...rest
 }: LineIconProps) => {
-  const styles = useMultiStyleConfig("LineIcon", { variant, size });
-  const Icon: any = getCorrectIcon({ variant, size });
+  const styles = useMultiStyleConfig("LineIcon", { variant, size, ...rest });
+  const Icon: any = getCorrectIcon({
+    variant:
+      variant === "custom" && "customIconVariant" in rest
+        ? rest.customIconVariant
+        : variant === "custom"
+          ? "local-train"
+          : variant,
+    size,
+  });
   if (!Icon) {
     return null;
   }

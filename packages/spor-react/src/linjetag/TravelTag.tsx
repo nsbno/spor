@@ -58,6 +58,19 @@ export type TravelTagProps = TagProps &
  * />
  * ```
  *
+ * If required, you can also override the colors and icons in these travel tags:
+ *
+ * ```tsx
+ * <TravelTag
+ *   variant="custom"
+ *   customIconVariant="ferry"
+ *   foregroundColor="#b4da55"
+ *   backgroundColor="#c0ffee"
+ *   title="3"
+ *   description="Ringen"
+ * />
+ * ```
+ *
  * @see https://spor.vy.no/components/line-tags
  */
 export const TravelTag = forwardRef<TravelTagProps, As>(
@@ -77,13 +90,20 @@ export const TravelTag = forwardRef<TravelTagProps, As>(
       variant,
       size,
       deviationLevel,
+      foregroundColor: variant === "custom" ? rest.foregroundColor : undefined,
+      backgroundColor: variant === "custom" ? rest.backgroundColor : undefined,
     });
 
     const DeviationLevelIcon = getDeviationLevelIcon({ deviationLevel, size });
 
     return (
       <Box sx={styles.container} aria-disabled={isDisabled} ref={ref} {...rest}>
-        <LineIcon variant={variant} size={size} sx={styles.iconContainer} />
+        <LineIcon
+          variant={variant}
+          size={size}
+          sx={styles.iconContainer}
+          {...(rest as any)}
+        />
         <Box sx={styles.textContainer}>
           {title && (
             <Box as="span" sx={styles.title}>

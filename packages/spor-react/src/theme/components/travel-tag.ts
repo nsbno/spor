@@ -172,6 +172,11 @@ const config = helpers.defineMultiStyleConfig({
         display: "none",
       },
     }),
+    custom: (props) => ({
+      container: {
+        backgroundColor: props.foregroundColor,
+      },
+    }),
   },
   sizes: {
     sm: {

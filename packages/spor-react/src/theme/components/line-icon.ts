@@ -92,6 +92,11 @@ const config = helpers.defineMultiStyleConfig({
         },
       },
     }),
+    custom: (props) => ({
+      iconContainer: {
+        backgroundColor: props.backgroundColor,
+      },
+    }),
   },
   sizes: {
     sm: {

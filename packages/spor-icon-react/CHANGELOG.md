@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 3.6.0
+
+### Minor Changes
+
+- 1266efd: Adds folder icon to the communication category
+
 ## 3.5.0
 
 ### Minor Changes

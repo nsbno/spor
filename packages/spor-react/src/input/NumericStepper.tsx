@@ -14,7 +14,6 @@ import {
   useTranslation,
 } from "..";
 import { getBoxShadowString } from "../theme/utils/box-shadow-utils";
-import { focusVisible } from "../theme/utils/focus-utils";
 
 type NumericStepperProps = {
   /** The name of the input field */
@@ -197,13 +196,10 @@ const VerySmallButton = (props: VerySmallButtonProps) => {
       size="xs"
       minWidth="24px"
       minHeight="24px"
-      sx={focusVisible({
-        notFocus: { boxShadow: "none" },
-        focus: {
-          boxShadow:
-            "inset 0 0 0 2px var(--spor-colors-pine), inset 0 0 0 3px white",
-        },
-      })}
+      _focusVisible={{
+        boxShadow:
+          "inset 0 0 0 2px var(--spor-colors-pine), inset 0 0 0 3px white",
+      }}
       {...props}
     />
   );

@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 6.2.1
+
+### Patch Changes
+
+- e97dddd: Card, NumericStepper: Fix a bug with the focus styles that showed up when it shouldn't have.
+
+  DatePicker, DateRangePicker: Fix a bug where you wouldn't automatically jump to the next field once a field was filled out
+
 ## 6.2.0
 
 ### Minor Changes

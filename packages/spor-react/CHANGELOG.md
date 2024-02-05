@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 6.2.2
+
+### Patch Changes
+
+- d14a70f: Button: Fix bug with broken buttons when there were links
+
 ## 6.2.1
 
 ### Patch Changes

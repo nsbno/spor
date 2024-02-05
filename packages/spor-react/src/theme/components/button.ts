@@ -7,6 +7,8 @@ const config = defineStyleConfig({
   baseStyle: {
     border: 0,
     borderRadius: "xl",
+    display: "flex",
+    alignItems: "center",
     transitionProperty: "common",
     transitionDuration: "normal",
     textWrap: "wrap",

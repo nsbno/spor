@@ -116,6 +116,7 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
       )}
       <Flex
         justifyContent="space-between"
+        flex={1}
         alignItems="center"
         gap={1}
         visibility={isLoading ? "hidden" : "visible"}

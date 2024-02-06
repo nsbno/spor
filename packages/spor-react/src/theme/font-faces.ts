@@ -28,7 +28,7 @@ export const fontFaces = `
   font-display: swap
 }
 @font-face {
-  font-family: ${tokens.asset.font["vy-sans"]["medium-italic"].name}
+  font-family: ${tokens.asset.font["vy-sans"]["medium-italic"].name};
   src: url("https://www.vy.no/styles/font/VySans-RegularItalic.woff2")
       format("woff2"),
     url("https://www.vy.no/styles/font/VySans-RegularItalic.woff")

@@ -7,11 +7,11 @@
     "jsx": "react",
     "moduleResolution": "node",
     "lib": ["ES2015", "DOM"],
-    "module": "ESNext",
+    "module": "ESNext"
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS",
-    },
-  },
+      "module": "CommonJS"
+    }
+  }
 }

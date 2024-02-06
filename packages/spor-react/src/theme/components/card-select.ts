@@ -37,7 +37,7 @@ const config = helpers.defineMultiStyleConfig({
         _hover: {
           boxShadow: getBoxShadowString({
             borderColor: mode("darkGrey", "white")(props),
-            borderWidth: 3,
+            borderWidth: 2,
           }),
         },
         _active: {
@@ -79,13 +79,17 @@ const config = helpers.defineMultiStyleConfig({
     floating: (props) => ({
       trigger: {
         ...floatingBackground("default", props),
-        boxShadow: "sm",
+        boxShadow: getBoxShadowString({
+          borderColor: mode("silver", "whiteAlpha.400")(props),
+          borderWidth: 1,
+          baseShadow: "sm",
+        }),
         transition: "all .1s ease-out",
         _hover: {
           ...floatingBackground("hover", props),
           boxShadow: getBoxShadowString({
             borderColor: mode("silver", "whiteAlpha.400")(props),
-            borderWidth: 1,
+            borderWidth: 2,
             baseShadow: "sm",
           }),
         },

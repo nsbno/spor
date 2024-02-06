@@ -196,10 +196,6 @@ const VerySmallButton = (props: VerySmallButtonProps) => {
       size="xs"
       minWidth="24px"
       minHeight="24px"
-      _focusVisible={{
-        boxShadow:
-          "inset 0 0 0 2px var(--spor-colors-pine), inset 0 0 0 3px white",
-      }}
       {...props}
     />
   );

@@ -44,10 +44,6 @@ const config = helpers.defineMultiStyleConfig({
       },
       _active: {
         ...baseBackground("active", props),
-        ...baseBorder("focus", props),
-      },
-      _expanded: {
-        ...baseBorder("focus", props),
       },
       _invalid: {
         ...baseBorder("invalid", props),

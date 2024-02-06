@@ -10,6 +10,7 @@ const config = defineStyleConfig({
     borderRadius: "xl",
     display: "flex",
     alignItems: "center",
+    justifyContent: "center",
     transitionProperty: "common",
     transitionDuration: "normal",
     textWrap: "wrap",

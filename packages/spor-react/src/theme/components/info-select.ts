@@ -1,10 +1,9 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { focusVisible } from "../utils/focus-utils";
-import { srOnly } from "../utils/sr-utils";
-import { baseBorder, floatingBorder } from "../utils/border-utils";
 import { baseBackground, floatingBackground } from "../utils/background-utils";
-import { PartsStyleInterpolation } from "@chakra-ui/styled-system";
+import { baseBorder, floatingBorder } from "../utils/border-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
+import { srOnly } from "../utils/sr-utils";
 
 const parts = anatomy("InfoSelect").parts(
   "container",
@@ -36,15 +35,7 @@ const config = helpers.defineMultiStyleConfig({
       _hover: {
         ...baseBorder("hover", props),
       },
-      ...focusVisible({
-        focus: {
-          ...baseBorder("focus", props),
-          outline: "none",
-        },
-        notFocus: {
-          ...baseBorder("default", props),
-        },
-      }),
+      ...focusVisibleStyles(props),
       _disabled: {
         color: "whiteAlpha.400",
         ...baseBackground("disabled", props),
@@ -63,20 +54,12 @@ const config = helpers.defineMultiStyleConfig({
         _hover: {
           ...baseBorder("hover", props),
         },
-        ...focusVisible({
-          focus: {
-            ...baseBorder("focus", props),
-          },
-          notFocus: {
-            ...baseBorder("invalid", props),
-          },
-        }),
       },
     },
     arrowIcon: {},
   }),
   variants: {
-    base: (props) => ({}),
+    base: () => ({}),
     floating: (props) => ({
       button: {
         ...floatingBackground("default", props),
@@ -85,15 +68,6 @@ const config = helpers.defineMultiStyleConfig({
           ...floatingBorder("hover", props),
           ...floatingBackground("hover", props),
         },
-        ...focusVisible({
-          focus: {
-            ...floatingBorder("focus", props),
-            outline: "none",
-          },
-          notFocus: {
-            ...floatingBorder("default", props),
-          },
-        }),
         _active: {
           ...floatingBorder("active", props),
           ...floatingBackground("active", props),

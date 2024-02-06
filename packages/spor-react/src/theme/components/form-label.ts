@@ -4,7 +4,7 @@ const config = defineStyleConfig({
   baseStyle: {
     fontSize: "mobile.sm",
     marginEnd: 3,
-    mb: 2,
+    marginBottom: 2,
     transitionProperty: "common",
     transitionDuration: "normal",
     opacity: 1,

@@ -2,7 +2,7 @@ import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy, cssVar, mode } from "@chakra-ui/theme-tools";
 import { colors, zIndices } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
-import { focusVisible } from "../utils/focus-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const parts = anatomy("datepicker").parts(
   "wrapper",
@@ -55,7 +55,10 @@ const config = helpers.defineMultiStyleConfig({
     },
     calendarTriggerButton: {
       backgroundColor: mode("white", "night")(props),
-      boxShadow: "none",
+      boxShadow: getBoxShadowString({
+        borderColor: mode("darkGrey", "white")(props),
+        borderWidth: 1,
+      }),
       width: 8,
       display: "flex",
       alignItems: "center",
@@ -76,21 +79,7 @@ const config = helpers.defineMultiStyleConfig({
       _active: {
         backgroundColor: mode("mint", "whiteAlpha.200")(props),
       },
-      ...focusVisible({
-        focus: {
-          outline: "none",
-          boxShadow: getBoxShadowString({
-            borderColor: mode("greenHaze", "azure")(props),
-            borderWidth: 2,
-          }),
-        },
-        notFocus: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("darkGrey", "white")(props),
-            borderWidth: 1,
-          }),
-        },
-      }),
+      ...focusVisibleStyles(props),
       _invalid: {
         boxShadow: getBoxShadowString({
           borderColor: "brightRed",
@@ -132,27 +121,7 @@ const config = helpers.defineMultiStyleConfig({
       _hover: {
         backgroundColor: mode("seaMist", "pine")(props),
       },
-      ...focusVisible({
-        focus: {
-          outline: "none",
-          boxShadow: getBoxShadowString({
-            borderWidth: 2,
-            borderColor: mode("greenHaze", "azure")(props),
-          }),
-        },
-        notFocus: {
-          boxShadow: "none",
-          _hover: {
-            boxShadow: getBoxShadowString({
-              borderWidth: 2,
-              borderColor: "osloGrey",
-            }),
-          },
-          _active: {
-            color: mode("darkGrey", "white")(props),
-          },
-        },
-      }),
+      ...focusVisibleStyles(props),
       _active: {
         backgroundColor: "seaMist",
         boxShadow: "none",
@@ -177,13 +146,7 @@ const config = helpers.defineMultiStyleConfig({
           borderWidth: 1,
           borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
         }),
-        _focus: {
-          outline: "none",
-          boxShadow: getBoxShadowString({
-            borderWidth: 2,
-            borderColor: mode("greenHaze", "azure")(props),
-          }),
-        },
+        ...focusVisibleStyles(props),
       },
       "&[data-unavailable]": {
         pointerEvents: "none",

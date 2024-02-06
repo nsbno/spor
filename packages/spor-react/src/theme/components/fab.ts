@@ -1,7 +1,6 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy, mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
-import { focusVisible } from "../utils/focus-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const parts = anatomy("fab").parts("container", "icon", "text");
 
@@ -11,9 +10,9 @@ const config = helpers.defineMultiStyleConfig({
     container: {
       display: "flex",
       alignItems: "center",
-      py: 2,
-      pl: 2,
-      pr: props.isTextVisible ? 3 : 2,
+      paddingY: 2,
+      paddingLeft: 2,
+      paddingRight: props.isTextVisible ? 3 : 2,
       cursor: "pointer",
       overflowX: "hidden",
       whiteSpace: "nowrap",
@@ -27,25 +26,14 @@ const config = helpers.defineMultiStyleConfig({
         backgroundColor: "whiteAlpha.400",
         color: "white",
       },
-      ...focusVisible({
-        focus: {
-          boxShadow: getBoxShadowString({
-            borderColor: "greenHaze",
-            borderWidth: 2,
-            baseShadow: "md",
-          }),
-        },
-        notFocus: {
-          boxShadow: "md",
-        },
-      }),
+      ...focusVisibleStyles(props),
       _hover: {
         backgroundColor: "seaMist",
       },
       zIndex: "sticky",
     },
     icon: {
-      mr: props.isTextVisible ? 1 : 0,
+      marginRight: props.isTextVisible ? 1 : 0,
     },
     text: {
       display: "flex",
@@ -64,15 +52,6 @@ const config = helpers.defineMultiStyleConfig({
         _hover: {
           backgroundColor: "night",
         },
-        ...focusVisible({
-          focus: {
-            boxShadow: `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.darkTeal}, inset 0 0 0 6px ${props.theme.colors.white}`,
-            outline: "none",
-          },
-          notFocus: {
-            boxShadow: "md",
-          },
-        }),
       },
     }),
     light: {
@@ -97,18 +76,6 @@ const config = helpers.defineMultiStyleConfig({
         _hover: {
           backgroundColor: mode("night", "seaMist")(props),
         },
-        ...focusVisible({
-          focus: {
-            boxShadow: mode(
-              `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.darkTeal}, inset 0 0 0 6px ${props.theme.colors.white}`,
-              `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.mint}, inset 0 0 0 6px ${props.theme.colors.darkTeal}`,
-            )(props),
-            outline: "none",
-          },
-          notFocus: {
-            boxShadow: "md",
-          },
-        }),
       },
     }),
     base: (props) => ({
@@ -127,18 +94,6 @@ const config = helpers.defineMultiStyleConfig({
           )(props),
           color: mode("darkGrey", "white")(props),
         },
-        ...focusVisible({
-          focus: {
-            boxShadow: mode(
-              `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.white}, inset 0 0 0 6px ${props.theme.colors.darkGrey}`,
-              `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.brightRed}, inset 0 0 0 6px ${props.theme.colors.white}`,
-            )(props),
-            outline: "none",
-          },
-          notFocus: {
-            boxShadow: "md",
-          },
-        }),
       },
     }),
     accent: (props) => ({
@@ -153,18 +108,6 @@ const config = helpers.defineMultiStyleConfig({
           backgroundColor: mode("coralGreen", "whiteAlpha.200")(props),
           color: mode("darkTeal", "white")(props),
         },
-        ...focusVisible({
-          focus: {
-            boxShadow: mode(
-              `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.mint}, inset 0 0 0 6px ${props.theme.colors.azure}`,
-              `${props.theme.shadows.md}, inset 0 0 0 4px ${props.theme.colors.pine}, inset 0 0 0 6px ${props.theme.colors.azure}`,
-            )(props),
-            outline: "none",
-          },
-          notFocus: {
-            boxShadow: "md",
-          },
-        }),
       },
     }),
   },

@@ -2,9 +2,10 @@ import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const config = defineStyleConfig({
-  baseStyle: {
+  baseStyle: (props) => ({
     border: 0,
     borderRadius: "xl",
     display: "flex",
@@ -18,6 +19,7 @@ const config = defineStyleConfig({
       boxShadow: 0,
       outline: 0,
     },
+    ...focusVisibleStyles(props),
     _disabled: {
       cursor: "not-allowed",
       boxShadow: "none",
@@ -29,22 +31,13 @@ const config = defineStyleConfig({
         background: "silver",
       },
     },
-  },
+  }),
   variants: {
     primary: (props) => ({
       // FIXME: Update to use a global defined background color for darkMode whenever it is available.
       // hardcoded background color as alpha-"hack" below is not feasible for dark mode with solid background color
       backgroundColor: mode("pine", "coralGreen")(props),
       color: mode("white", "darkTeal")(props),
-      _focusVisible: {
-        boxShadow: `inset 0 0 0 2px ${mode(
-          colors.greenHaze,
-          colors.azure,
-        )(props)}, inset 0 0 0 4px ${mode(
-          colors.white,
-          colors.darkGrey,
-        )(props)}`,
-      },
       _hover: {
         backgroundColor: mode("darkTeal", "blueGreen")(props),
       },
@@ -59,24 +52,6 @@ const config = defineStyleConfig({
       // order is important here for now while we do not have global defined background color for darkMode
       _hover: {
         backgroundColor: mode("coralGreen", "greenHaze")(props),
-      },
-      _focusVisible: {
-        boxShadow: `inset 0 0 0 2px ${mode(
-          colors.greenHaze,
-          colors.primaryGreen,
-        )(props)}, inset 0 0 0 4px ${mode(
-          colors.white,
-          colors.darkTeal,
-        )(props)}`,
-        _hover: {
-          boxShadow: `inset 0 0 0 2px ${mode(
-            colors.greenHaze,
-            colors.azure,
-          )(props)}, inset 0 0 0 4px ${mode(
-            colors.white,
-            colors.blackAlpha[500],
-          )(props)}`,
-        },
       },
       _active: {
         backgroundColor: mode("mint", "darkTeal")(props),
@@ -105,12 +80,6 @@ const config = defineStyleConfig({
         colors.blackAlpha[400],
         colors.whiteAlpha[400],
       )(props)}`,
-      _focusVisible: {
-        boxShadow: getBoxShadowString({
-          borderWidth: 2,
-          borderColor: "azure",
-        }),
-      },
       _hover: {
         boxShadow: `inset 0 0 0 2px currentColor`,
       },
@@ -125,12 +94,6 @@ const config = defineStyleConfig({
     ghost: (props) => ({
       backgroundColor: "transparent",
       color: mode("darkGrey", "white")(props),
-      _focusVisible: {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("greenHaze", "azure")(props),
-          borderWidth: 2,
-        }),
-      },
       _hover: {
         backgroundColor: mode("seaMist", "whiteAlpha.200")(props),
         _disabled: {
@@ -157,20 +120,6 @@ const config = defineStyleConfig({
           baseShadow: "md",
           borderWidth: 2,
         }),
-      },
-      _focusVisible: {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("greenHaze", "azure")(props),
-          borderWidth: 2,
-          baseShadow: "sm",
-        }),
-        _hover: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("greenHaze", "azure")(props),
-            borderWidth: 2,
-            baseShadow: "md",
-          }),
-        },
       },
     }),
   },

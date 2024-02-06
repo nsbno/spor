@@ -1,10 +1,11 @@
 import { checkboxAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({
-  baseStyle: {
+  baseStyle: (props) => ({
     container: {
       _hover: {
         "input:enabled:not([aria-invalid]) + .chakra-checkbox__control": {
@@ -48,10 +49,7 @@ const config = helpers.defineMultiStyleConfig({
         borderColor: "primaryGreen",
         color: "white",
 
-        _focus: {
-          backgroundColor: "primaryGreen",
-          borderColor: "azure",
-        },
+        ...focusVisibleStyles(props),
 
         _disabled: {
           backgroundColor: "lightGrey",
@@ -69,12 +67,6 @@ const config = helpers.defineMultiStyleConfig({
         backgroundColor: "lightGrey",
         borderColor: "steel",
       },
-
-      _focus: {
-        backgroundColor: "white",
-        borderColor: "azure",
-      },
-
       _invalid: {
         backgroundColor: "white",
         borderColor: "brightRed",
@@ -84,7 +76,7 @@ const config = helpers.defineMultiStyleConfig({
       userSelect: "none",
       _disabled: { opacity: 0.4 },
     },
-  },
+  }),
 });
 
 export default config;

@@ -2,7 +2,7 @@ import { inputAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
-import { focusVisible } from "../utils/focus-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -18,7 +18,7 @@ const config = helpers.defineMultiStyleConfig({
       transitionProperty: "common",
       transitionDuration: "fast",
       position: "relative",
-      px: 3,
+      paddingX: 3,
       height: "54px",
       fontSize: "mobile.md",
 
@@ -37,19 +37,8 @@ const config = helpers.defineMultiStyleConfig({
           borderWidth: 2,
         }),
       },
-      ...focusVisible({
-        focus: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("greenHaze", "azure")(props),
-            borderWidth: 2,
-          }),
-        },
-        notFocus: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("darkGrey", "white")(props),
-          }),
-        },
-      }),
+      ...focusVisibleStyles(props),
+
       _disabled: {
         backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
         boxShadow: getBoxShadowString({
@@ -68,20 +57,6 @@ const config = helpers.defineMultiStyleConfig({
             borderWidth: 2,
           }),
         },
-        ...focusVisible({
-          focus: {
-            boxShadow: getBoxShadowString({
-              borderColor: mode("greenHaze", "azure")(props),
-              borderWidth: 2,
-            }),
-          },
-          notFocus: {
-            boxShadow: getBoxShadowString({
-              borderColor: "brightRed",
-              borderWidth: 2,
-            }),
-          },
-        }),
       },
       " + label": {
         fontSize: ["mobile.sm", "desktop.sm"],
@@ -89,7 +64,7 @@ const config = helpers.defineMultiStyleConfig({
         left: props.paddingLeft || props.pl || 3,
         zIndex: 2,
         position: "absolute",
-        my: 2,
+        marginY: 2,
         transition: ".1s ease-out",
         transformOrigin: "top left",
         cursor: "text",

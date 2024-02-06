@@ -1,10 +1,11 @@
 import { radioAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({
-  baseStyle: {
+  baseStyle: (props) => ({
     container: {
       _hover: {
         "input:enabled + .chakra-radio__control": {
@@ -28,10 +29,8 @@ const config = helpers.defineMultiStyleConfig({
       borderColor: "primaryGreen",
       borderRadius: "50%",
 
-      _focus: {
-        backgroundColor: "seaMist",
-        borderColor: "azure",
-      },
+      ...focusVisibleStyles(props),
+
       _disabled: {
         backgroundColor: "lightGrey",
         borderColor: "steel",
@@ -48,17 +47,12 @@ const config = helpers.defineMultiStyleConfig({
           borderRadius: "50%",
           background: "currentColor",
         },
-
-        _focus: {
-          backgroundColor: "white",
-          color: "azure",
-        },
         _disabled: {
           backgroundColor: "lightGrey",
           borderColor: "steel",
         },
       },
     },
-  },
+  }),
 });
 export default config;

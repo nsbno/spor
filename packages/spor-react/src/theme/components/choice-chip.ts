@@ -1,8 +1,7 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy, mode } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
-import { colors } from "../foundations";
-import { focusVisible } from "../utils/focus-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const parts = anatomy("choice-chip").parts("container", "icon", "label");
 
@@ -23,15 +22,7 @@ const config = helpers.defineMultiStyleConfig({
         background: "pine",
         boxShadow: getBoxShadowString({ borderColor: "celadon" }),
       },
-      "input:focus-visible + &": {
-        boxShadow: `inset 0 0 0 2px ${mode(
-          colors.greenHaze,
-          colors.azure,
-        )(props)}, inset 0 0 0 4px ${mode(
-          colors.white,
-          colors.darkGrey,
-        )(props)}`,
-      },
+      "input:focus-visible + &": focusVisibleStyles(props)._focusVisible,
       "@media (hover:hover)": {
         _hover: {
           color: mode("darkTeal", "white")(props),

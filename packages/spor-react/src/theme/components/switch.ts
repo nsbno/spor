@@ -3,7 +3,7 @@ import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { calc, cssVar, mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
-import { focusVisible } from "../utils/focus-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const $width = cssVar("switch-track-width");
 const $height = cssVar("switch-track-height");
@@ -53,38 +53,7 @@ const config = helpers.defineMultiStyleConfig({
             borderColor: colors.whiteAlpha[400],
           }),
         )({ colorMode }),
-
-        ...focusVisible({
-          focus: {
-            boxShadow: mode(
-              getBoxShadowString([
-                {
-                  borderColor: "white",
-                  borderWidth: 2,
-                  isInset: false,
-                },
-                {
-                  borderColor: "primaryGreen",
-                  borderWidth: 4,
-                  isInset: false,
-                },
-              ]),
-              getBoxShadowString({
-                borderColor: "coralGreen",
-                borderWidth: 2,
-                isInset: false,
-              }),
-            )({ colorMode }),
-          },
-          notFocus: {
-            boxShadow: mode(
-              "none",
-              getBoxShadowString({
-                borderColor: colors.whiteAlpha[400],
-              }),
-            )({ colorMode }),
-          },
-        }),
+        ...focusVisibleStyles({ colorMode }),
         _hover: {
           backgroundColor: "steel",
           boxShadow: mode(
@@ -94,35 +63,6 @@ const config = helpers.defineMultiStyleConfig({
         },
         _checked: {
           backgroundColor: mode("darkTeal", "celadon")({ colorMode }),
-          ...focusVisible({
-            focus: {
-              boxShadow: mode(
-                getBoxShadowString([
-                  {
-                    borderColor: "white",
-                    borderWidth: 2,
-                    isInset: false,
-                  },
-                  {
-                    borderColor: "primaryGreen",
-                    borderWidth: 4,
-                    isInset: false,
-                  },
-                ]),
-                getBoxShadowString({
-                  borderWidth: 2,
-                  borderColor: "coralGreen",
-                  isInset: false,
-                }),
-              )({ colorMode }),
-            },
-            notFocus: {
-              boxShadow: mode(
-                "none",
-                getBoxShadowString({ borderColor: colors.white }),
-              )({ colorMode }),
-            },
-          }),
 
           _hover: {
             backgroundColor: mode("pine", "river")({ colorMode }),
@@ -161,10 +101,6 @@ const config = helpers.defineMultiStyleConfig({
         boxShadow: getBoxShadowString({
           borderColor: colors.blackAlpha["400"],
         }),
-        _focus: {
-          backgroundColor: "platinum",
-          boxShadow: `0 0 0 2px ${colors.greenHaze}`,
-        },
         _hover: {
           backgroundColor: "white",
         },
@@ -172,10 +108,6 @@ const config = helpers.defineMultiStyleConfig({
           backgroundColor: "white",
           _hover: {
             backgroundColor: "mint",
-          },
-          _focus: {
-            backgroundColor: "white",
-            boxShadow: `0 0 0 4px ${colors.greenHaze}, 0 0 0 2px ${colors.white}`,
           },
         },
       },
@@ -196,7 +128,7 @@ const config = helpers.defineMultiStyleConfig({
       },
       track: {
         borderRadius: "24px",
-        p: "2px",
+        padding: "2px",
       },
     },
     md: {
@@ -206,7 +138,7 @@ const config = helpers.defineMultiStyleConfig({
       },
       track: {
         borderRadius: "30px",
-        p: "3px",
+        padding: "3px",
       },
     },
     lg: {
@@ -216,7 +148,7 @@ const config = helpers.defineMultiStyleConfig({
       },
       track: {
         borderRadius: "36px",
-        p: "3px",
+        padding: "3px",
       },
     },
   },

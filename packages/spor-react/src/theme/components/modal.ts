@@ -28,9 +28,9 @@ const config = helpers.defineMultiStyleConfig({
       boxShadow: "md",
     },
     header: {
-      px: 5,
-      pt: 6,
-      pb: 2,
+      paddingX: 5,
+      paddingTop: 6,
+      paddingBottom: 2,
       fontWeight: "bold",
       fontFamily: "body",
     },
@@ -41,14 +41,14 @@ const config = helpers.defineMultiStyleConfig({
       insetEnd: 3,
     },
     body: {
-      px: 5,
-      pb: 6,
+      paddingX: 5,
+      paddingBottom: 6,
       flex: 1,
       overflow: props.scrollBehavior === "inside" ? "auto" : undefined,
     },
     footer: {
-      px: 3,
-      pb: 3,
+      paddingX: 3,
+      paddingBottom: 3,
     },
   }),
   sizes: {

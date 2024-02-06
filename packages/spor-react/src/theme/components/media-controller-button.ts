@@ -1,13 +1,12 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy } from "@chakra-ui/theme-tools";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
-import { focusVisible } from "../utils/focus-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const parts = anatomy("media-controller-button").parts("container", "icon");
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({
-  baseStyle: {
+  baseStyle: (props) => ({
     container: {
       fontSize: 30,
       transitionProperty: "common",
@@ -21,6 +20,7 @@ const config = helpers.defineMultiStyleConfig({
       padding: 1,
       alignSelf: "center",
       color: "primaryGreen",
+      ...focusVisibleStyles(props),
     },
     icon: {
       flex: "0 0 auto",
@@ -28,7 +28,7 @@ const config = helpers.defineMultiStyleConfig({
       width: "1em",
       height: "1em",
     },
-  },
+  }),
   variants: {
     play: {
       container: {
@@ -39,34 +39,7 @@ const config = helpers.defineMultiStyleConfig({
         _active: {
           color: "greenHaze",
         },
-        ...focusVisible({
-          focus: {
-            position: "relative",
-            outline: "none",
-            _after: {
-              content: '""',
-              display: "block",
-              zIndex: 2,
-              margin: 0.5,
-              borderRadius: "round",
-              borderWidth: 2,
-              borderColor: "white",
-              borderStyle: "solid",
-              pointerEvents: "none",
-              position: "absolute",
-              top: 0,
-              right: 0,
-              bottom: 0,
-              left: 0,
-              outline: "none",
-            },
-          },
-          notFocus: {
-            _after: {
-              display: "none",
-            },
-          },
-        }),
+
         _disabled: {
           color: "silver",
           _hover: {
@@ -80,18 +53,6 @@ const config = helpers.defineMultiStyleConfig({
     },
     jumpSkip: {
       container: {
-        ...focusVisible({
-          focus: {
-            boxShadow: getBoxShadowString({
-              borderColor: "greenHaze",
-              borderWidth: 2,
-            }),
-            outline: "none",
-          },
-          notFocus: {
-            boxShadow: "none",
-          },
-        }),
         _hover: {
           backgroundColor: "seaMist",
         },
@@ -130,5 +91,3 @@ const config = helpers.defineMultiStyleConfig({
 });
 
 export default config;
-
-// 3341 minus hund

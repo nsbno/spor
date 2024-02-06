@@ -1,7 +1,6 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { cssVar, mode } from "@chakra-ui/theme-tools";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
-import { focusVisible } from "../utils/focus-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const $size = cssVar("close-button-size");
 
@@ -15,18 +14,7 @@ const config = defineStyleConfig({
     backgroundColor: "transparent",
     color: mode("darkGrey", "white")(props),
     fontWeight: "normal",
-    ...focusVisible({
-      focus: {
-        outline: "none",
-        boxShadow: getBoxShadowString({
-          borderColor: mode("greenHaze", "azure")(props),
-        }),
-        outlineOffset: "2px",
-      },
-      notFocus: {
-        boxShadow: "none",
-      },
-    }),
+    ...focusVisibleStyles(props),
     _hover: {
       backgroundColor: mode("seaMist", "whiteAlpha.100")(props),
       _disabled: {

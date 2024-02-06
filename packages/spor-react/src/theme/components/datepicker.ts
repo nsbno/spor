@@ -40,6 +40,9 @@ const config = helpers.defineMultiStyleConfig({
       _disabled: {
         pointerEvents: "none",
       },
+      _focusWithin: {
+        ...focusVisibleStyles(props)._focusVisible,
+      },
     },
     inputLabel: {
       fontSize: "mobile.xs",
@@ -99,7 +102,6 @@ const config = helpers.defineMultiStyleConfig({
         baseShadow: "md",
       }),
     },
-
     weekdays: {
       color: mode("darkGrey", "white")(props),
     },
@@ -121,7 +123,11 @@ const config = helpers.defineMultiStyleConfig({
       _hover: {
         backgroundColor: mode("seaMist", "pine")(props),
       },
-      ...focusVisibleStyles(props),
+      _focusVisible: {
+        outlineColor: "greenHaze",
+        outlineWidth: 2,
+        outlineStyle: "solid",
+      },
       _active: {
         backgroundColor: "seaMist",
         boxShadow: "none",
@@ -146,7 +152,6 @@ const config = helpers.defineMultiStyleConfig({
           borderWidth: 1,
           borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
         }),
-        ...focusVisibleStyles(props),
       },
       "&[data-unavailable]": {
         pointerEvents: "none",
@@ -163,12 +168,6 @@ const config = helpers.defineMultiStyleConfig({
         _hover: {
           boxShadow: getBoxShadowString({
             borderColor: mode("darkGrey", "white")(props),
-            borderWidth: 2,
-          }),
-        },
-        _focusWithin: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("greenHaze", "azure")(props),
             borderWidth: 2,
           }),
         },
@@ -225,13 +224,6 @@ const config = helpers.defineMultiStyleConfig({
             baseShadow: "sm",
           }),
         },
-        _focusWithin: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("greenHaze", "azure")(props),
-            borderWidth: 2,
-            baseShadow: "sm",
-          }),
-        },
         _invalid: {
           boxShadow: getBoxShadowString({
             borderColor: "brightRed",
@@ -275,12 +267,6 @@ const config = helpers.defineMultiStyleConfig({
         _hover: {
           boxShadow: getBoxShadowString({
             borderColor: mode("darkGrey", "white")(props),
-            borderWidth: 2,
-          }),
-        },
-        _focusWithin: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("greenHaze", "azure")(props),
             borderWidth: 2,
           }),
         },

@@ -70,7 +70,7 @@ const config = helpers.defineMultiStyleConfig({
         cursor: "text",
       },
       "&:not(:placeholder-shown)": {
-        pt: "16px",
+        paddingTop: "16px",
         "& + label": {
           transform: "scale(0.825) translateY(-10px)",
         },

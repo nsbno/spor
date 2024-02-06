@@ -2,8 +2,8 @@ import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
-import { baseBackground, ghostBackground } from "../utils/background-utils";
-import { baseBorder } from "../utils/border-utils";
+import { ghostBackground } from "../utils/background-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const parts = anatomy("ListBox").parts(
   "container",
@@ -41,12 +41,10 @@ const config = helpers.defineMultiStyleConfig({
       _active: {
         ...ghostBackground("active", props),
       },
-      _focus: {
-        ...ghostBackground("focus", props),
-      },
       _hover: {
         ...ghostBackground("hover", props),
       },
+      ...focusVisibleStyles(props),
       _selected: {
         ...ghostBackground("selected", props),
       },

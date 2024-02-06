@@ -1,8 +1,7 @@
 import { popoverAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { cssVar, mode } from "@chakra-ui/theme-tools";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
-import { focusVisible } from "../utils/focus-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const $popperBg = cssVar("popper-bg");
 const $arrowBg = cssVar("popper-arrow-bg");
@@ -22,7 +21,7 @@ const config = helpers.defineMultiStyleConfig({
       [$arrowShadowColor.variable]: `colors.blackAlpha.300`,
       color: "white",
       borderRadius: "sm",
-      p: 1.5,
+      padding: 1.5,
       zIndex: "inherit",
       maxWidth: "20em",
       _focus: {
@@ -40,14 +39,7 @@ const config = helpers.defineMultiStyleConfig({
       position: "absolute",
       color: "white",
       hover: "whiteAlpha.100",
-      ...focusVisible({
-        focus: {
-          boxShadow: getBoxShadowString({ borderColor: "azure" }),
-        },
-        notFocus: {
-          boxShadow: "none",
-        },
-      }),
+      ...focusVisibleStyles(props),
       _active: {
         backgroundColor: "whiteAlpha.200",
       },
@@ -62,14 +54,14 @@ const config = helpers.defineMultiStyleConfig({
   sizes: {
     sm: {
       content: {
-        px: 1.5,
-        py: 1,
+        paddingX: 1.5,
+        paddingY: 1,
       },
     },
     lg: {
       content: {
-        px: 3,
-        py: 2,
+        paddingX: 3,
+        paddingY: 2,
       },
     },
   },

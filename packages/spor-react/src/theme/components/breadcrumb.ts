@@ -4,8 +4,7 @@ import {
   defineStyle,
 } from "@chakra-ui/styled-system";
 import { mode } from "@chakra-ui/theme-tools";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
-import { focusVisible } from "../utils/focus-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys);
@@ -14,7 +13,6 @@ const baseStyleLink = defineStyle((props) => ({
   transitionProperty: "common",
   transitionDuration: "fast",
   transitionTimingFunction: "ease-out",
-  outline: "none",
   color: "inherit",
   textDecoration: "none",
   textStyle: "xs",
@@ -25,17 +23,7 @@ const baseStyleLink = defineStyle((props) => ({
     _hover: {
       backgroundColor: mode("seaMist", "pine")(props),
     },
-    ...focusVisible({
-      focus: {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("greenHaze", "azure")(props),
-          borderWidth: 2,
-        }),
-      },
-      notFocus: {
-        boxShadow: "none",
-      },
-    }),
+    ...focusVisibleStyles(props),
     _active: {
       backgroundColor: mode("mint", "whiteAlpha.200")(props),
     },

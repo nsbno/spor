@@ -106,16 +106,16 @@ const config = helpers.defineMultiStyleConfig({
         fontSize: ["mobile.xs", "desktop.xs"],
       },
       th: {
-        px: 3,
-        py: 1.5,
+        paddingX: 3,
+        paddingY: 1.5,
       },
       td: {
-        px: 3,
-        py: 1.5,
+        paddingX: 3,
+        paddingY: 1.5,
       },
       caption: {
-        px: 3,
-        py: 1.5,
+        paddingX: 3,
+        paddingY: 1.5,
       },
     },
     md: {
@@ -123,16 +123,16 @@ const config = helpers.defineMultiStyleConfig({
         fontSize: ["mobile.sm", "desktop.sm"],
       },
       th: {
-        px: 3,
-        py: 1.5,
+        paddingX: 3,
+        paddingY: 1.5,
       },
       td: {
-        px: 3,
-        py: 1.5,
+        paddingX: 3,
+        paddingY: 1.5,
       },
       caption: {
-        px: 3,
-        py: 1.5,
+        paddingX: 3,
+        paddingY: 1.5,
       },
     },
     lg: {
@@ -140,16 +140,16 @@ const config = helpers.defineMultiStyleConfig({
         fontSize: ["mobile.sm", "desktop.sm"],
       },
       th: {
-        px: 3,
-        py: "15px",
+        paddingX: 3,
+        paddingY: "15px",
       },
       td: {
-        px: 3,
-        py: "15px",
+        paddingX: 3,
+        paddingY: "15px",
       },
       caption: {
-        px: 3,
-        py: "15px",
+        paddingX: 3,
+        paddingY: "15px",
       },
     },
   },

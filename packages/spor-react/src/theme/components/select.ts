@@ -1,7 +1,7 @@
 import { selectAnatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { default as Input } from "./input";
 import { mode } from "@chakra-ui/theme-tools";
+import { default as Input } from "./input";
 
 const parts = selectAnatomy.extend("root");
 
@@ -19,7 +19,7 @@ const config = helpers.defineMultiStyleConfig({
         left: 3,
         zIndex: 2,
         position: "absolute",
-        my: 2,
+        marginY: 2,
         transformOrigin: "top left",
         transform: [
           "scale(0.825) translateY(-12px)",

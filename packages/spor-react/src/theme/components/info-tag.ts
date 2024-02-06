@@ -1,5 +1,5 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { StyleFunctionProps, anatomy, mode } from "@chakra-ui/theme-tools";
+import { anatomy, mode } from "@chakra-ui/theme-tools";
 import travelTagStyles from "./travel-tag";
 
 const parts = anatomy("info-tag").parts(

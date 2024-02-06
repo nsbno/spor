@@ -2,6 +2,7 @@ import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({
@@ -18,16 +19,8 @@ const config = defineStyleConfig({
     "button&, a&, label&, &.is-clickable": {
       ...getColorSchemeClickableProps(props),
       _hover: getColorSchemeHoverProps(props),
+      ...focusVisibleStyles(props),
       _active: getColorSchemeActiveProps(props),
-      _focusVisible: {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("greenHaze", "azure")(props),
-          borderWidth: 2,
-          isInset: false,
-        }),
-        outline: "none",
-        _active: getColorSchemeActiveProps(props),
-      },
       _disabled: {
         backgroundColor: "platinum",
         boxShadow: getBoxShadowString({

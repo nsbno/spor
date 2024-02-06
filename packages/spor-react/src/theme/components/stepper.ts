@@ -1,5 +1,5 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy, mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
+import { anatomy, mode } from "@chakra-ui/theme-tools";
 
 const parts = anatomy("stepper").parts(
   "root",
@@ -28,9 +28,9 @@ const config = helpers.defineMultiStyleConfig({
       width: "100%",
     },
     container: {
-      px: [2, 2, 0],
+      paddingX: [2, 2, 0],
       maxWidth: "container.lg",
-      mx: "auto",
+      marginX: "auto",
       width: "100%",
     },
     innerContainer: {
@@ -41,7 +41,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     backButton: {
       borderRadius: "xs",
-      px: 0,
+      paddingX: 0,
       width: "auto",
       minWidth: "auto",
     },
@@ -51,7 +51,7 @@ const config = helpers.defineMultiStyleConfig({
       WebkitLineClamp: 2,
       display: "-webkit-box",
       WebkitBoxOrient: "vertical",
-      ml: 2,
+      marginLeft: 2,
       textAlign: "right",
     },
     stepContainer: {
@@ -64,7 +64,7 @@ const config = helpers.defineMultiStyleConfig({
     },
   }),
   variants: {
-    base: (props) => ({
+    base: () => ({
       root: {
         backgroundColor: "transparent",
       },

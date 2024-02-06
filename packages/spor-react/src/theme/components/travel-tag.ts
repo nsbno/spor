@@ -2,7 +2,7 @@ import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import type { StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { anatomy, mode } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
-import { focusVisible } from "../utils/focus-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const parts = anatomy("travel-tag").parts(
   "container",
@@ -37,20 +37,7 @@ const config = helpers.defineMultiStyleConfig({
             baseShadow: "sm",
           }),
         },
-        ...focusVisible({
-          focus: {
-            outline: "none",
-            borderColor: "transparent",
-            boxShadow: getBoxShadowString({
-              borderWidth: 2,
-              borderColor: "darkGrey",
-            }),
-          },
-          notFocus: {
-            boxShadow: "none",
-            borderColor: getDeviationBorderColor(props),
-          },
-        }),
+        ...focusVisibleStyles(props),
         _active: {
           opacity: 0.5,
           boxShadow: "none",

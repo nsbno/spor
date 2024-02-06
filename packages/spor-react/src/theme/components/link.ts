@@ -1,10 +1,9 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
-import { focusVisible } from "../utils/focus-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const config = defineStyleConfig({
-  baseStyle: {
+  baseStyle: (props) => ({
     transitionProperty: "common",
     transitionDuration: "fast",
     transitionTimingFunction: "ease-out",
@@ -27,6 +26,8 @@ const config = defineStyleConfig({
       borderRadius: "xs",
     },
 
+    ...focusVisibleStyles(props),
+
     svg: {
       display: "inline-block",
       width: "1.125em",
@@ -34,25 +35,10 @@ const config = defineStyleConfig({
       position: "relative",
       bottom: "-0.2em",
     },
-  },
+  }),
   variants: {
     primary: (props) => ({
       color: mode("pine", "coralGreen")(props),
-      ...focusVisible({
-        focus: {
-          backgroundColor: mode("pine", "white")(props),
-          color: mode("white", "pine")(props),
-          boxShadow: getBoxShadowString({
-            borderWidth: 2,
-            isInset: false,
-          }),
-        },
-        notFocus: {
-          color: "pine",
-          backgroundColor: "transparent",
-          boxShadow: "none",
-        },
-      }),
       _hover: {
         color: mode("darkTeal", "white")(props),
         backgroundColor: mode("coralGreen", "whiteAlpha.200")(props),
@@ -64,16 +50,6 @@ const config = defineStyleConfig({
     }),
     secondary: (props) => ({
       color: mode("darkGrey", "white")(props),
-      ...focusVisible({
-        focus: {
-          backgroundColor: mode("darkGrey", "white")(props),
-          color: mode("white", "darkTeal")(props),
-        },
-        notFocus: {
-          boxShadow: "none",
-          backgroundColor: "transparent",
-        },
-      }),
       _hover: {
         backgroundColor: mode("blackAlpha.100", "whiteAlpha.200")(props),
         color: mode("darkGrey", "white")(props),

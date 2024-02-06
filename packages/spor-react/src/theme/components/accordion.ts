@@ -1,9 +1,9 @@
 import { accordionAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
+import { mode } from "@chakra-ui/theme-tools";
 import { colors, shadows } from "../foundations";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
-import { focusVisible } from "../utils/focus-utils";
-import { mode } from "@chakra-ui/theme-tools";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 const config = helpers.defineMultiStyleConfig({
@@ -18,25 +18,14 @@ const config = helpers.defineMultiStyleConfig({
       transitionDuration: "normal",
       border: "none",
       borderRadius: "sm",
+      borderColor: "osloGrey",
       display: "flex",
       justifyContent: "space-between",
       color: mode("darkGrey", "white")(props),
       textAlign: "left",
       fontFamily: "body",
       fontWeight: "bold",
-      ...focusVisible({
-        notFocus: {
-          boxShadow: getBoxShadowString({
-            borderColor: "osloGrey",
-          }),
-        },
-        focus: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("greenHaze", "azure")(props),
-            borderWidth: 2,
-          }),
-        },
-      }),
+      ...focusVisibleStyles(props),
       _disabled: {
         opacity: 0.4,
         cursor: "not-allowed",

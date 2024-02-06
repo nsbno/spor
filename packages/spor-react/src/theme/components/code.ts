@@ -8,7 +8,7 @@ const config = defineStyleConfig({
     fontFamily: "monospace",
     fontSize: ["mobile.xs", "desktop.xs"],
     borderRadius: "xs",
-    px: 1,
+    paddingX: 1,
   },
   variants,
   defaultProps,

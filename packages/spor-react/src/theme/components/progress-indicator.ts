@@ -1,5 +1,5 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy, mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
+import { anatomy, mode } from "@chakra-ui/theme-tools";
 
 const parts = anatomy("progress-indicator").parts(
   "root",
@@ -33,10 +33,6 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
   }),
-
-  variants: {
-    base: (props) => ({}),
-  },
   defaultProps: {
     variant: "base",
   },

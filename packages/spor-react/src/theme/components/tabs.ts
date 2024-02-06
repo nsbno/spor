@@ -1,6 +1,7 @@
 import { tabsAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode, type StyleFunctionProps } from "@chakra-ui/theme-tools";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -33,11 +34,7 @@ const config = helpers.defineMultiStyleConfig({
         pointerEvents: "none",
         ...getTabColorSchemeSelectedProps(props),
       },
-      _focus: getTabColorSchemeFocusProps(props),
-      ":focus:not(:focus-visible)": {
-        boxShadow: "none",
-      },
-      _focusVisible: getTabColorSchemeFocusProps(props),
+      ...focusVisibleStyles(props),
       _hover: getTabColorSchemeHoverProps(props),
       _active: getTabColorSchemeActiveProps(props),
       _disabled: getTabColorSchemeDisabledProps(props),
@@ -66,40 +63,40 @@ const config = helpers.defineMultiStyleConfig({
     sm: {
       tablist: {
         height: "30px",
-        p: "2px",
+        padding: "2px",
       },
       tab: {
-        px: 2,
-        py: 0,
+        paddingX: 2,
+        paddingY: 0,
       },
     },
     md: {
       tablist: {
         height: "36px",
-        p: 0.5,
+        padding: 0.5,
       },
       tab: {
-        px: 2,
+        paddingX: 2,
       },
     },
     lg: {
       tablist: {
         height: "42px",
-        p: 0.5,
+        padding: 0.5,
       },
       tab: {
         fontWeight: "bold",
-        px: 2,
+        paddingX: 2,
       },
     },
     xl: {
       tablist: {
         height: "54px",
-        p: "4px",
+        padding: "4px",
       },
       tab: {
         fontWeight: "bold",
-        px: 3,
+        paddingX: 3,
       },
     },
   },

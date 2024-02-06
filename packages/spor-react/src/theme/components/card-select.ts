@@ -1,13 +1,13 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
-import { StyleFunctionProps, mode } from "@chakra-ui/theme-tools";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
-import { focusVisible } from "../utils/focus-utils";
+import { mode } from "@chakra-ui/theme-tools";
 import {
   baseBackground,
   floatingBackground,
   ghostBackground,
 } from "../utils/background-utils";
+import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
 
 const parts = anatomy("card-select").parts("trigger", "card");
 
@@ -18,16 +18,7 @@ const config = helpers.defineMultiStyleConfig({
       appearance: "none",
       display: "flex",
       alignItems: "center",
-      ...focusVisible({
-        notFocus: {},
-        focus: {
-          boxShadow: getBoxShadowString({
-            borderColor: "greenHaze",
-            borderWidth: 3,
-          }),
-          outline: "none",
-        },
-      }),
+      ...focusVisibleStyles(props),
     },
     card: {
       borderRadius: "sm",
@@ -42,16 +33,6 @@ const config = helpers.defineMultiStyleConfig({
       trigger: {
         boxShadow: getBoxShadowString({
           borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-        }),
-        ...focusVisible({
-          notFocus: { boxShadow: "none" },
-          focus: {
-            boxShadow: getBoxShadowString({
-              borderColor: "greenHaze",
-              borderWidth: 3,
-            }),
-            outline: "none",
-          },
         }),
         _hover: {
           boxShadow: getBoxShadowString({

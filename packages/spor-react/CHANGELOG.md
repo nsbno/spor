@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 6.2.3
+
+### Patch Changes
+
+- b3b8e17: Added missing semicolon to font-faces
+
 ## 6.2.2
 
 ### Patch Changes

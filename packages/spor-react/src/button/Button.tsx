@@ -115,19 +115,19 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
         </Center>
       )}
       <Flex
-        justifyContent="space-between"
+        gap={1}
         flex={1}
         alignItems="center"
-        gap={1}
+        justifyContent={rightIcon ? "space-between" : "center"}
         visibility={isLoading ? "hidden" : "visible"}
         aria-hidden={isLoading}
       >
-        <Flex justifyContent="center" alignItems="center" gap={1}>
+        <Flex gap={1}>
           {leftIcon}
           <Box
             visibility={isLoading ? "hidden" : "visible"}
             whiteSpace="normal"
-            textAlign="left"
+            textAlign="center"
           >
             {children}
           </Box>

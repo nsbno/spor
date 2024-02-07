@@ -37,7 +37,10 @@ const config = helpers.defineMultiStyleConfig({
           borderWidth: 2,
         }),
       },
-      ...focusVisibleStyles(props),
+      _focusVisible: {
+        ...focusVisibleStyles(props)._focusVisible,
+        outlineOffset: -2,
+      },
 
       _disabled: {
         backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),

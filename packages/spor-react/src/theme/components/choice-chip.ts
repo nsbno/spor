@@ -19,7 +19,7 @@ const config = helpers.defineMultiStyleConfig({
       display: "inline-flex",
       alignItems: "center",
       fontSize: "16px",
-      px: 5,
+      px: 1,
       _checked: {
         ...accentText("selected", props),
         ...accentBackground("selected", props),
@@ -79,11 +79,10 @@ const config = helpers.defineMultiStyleConfig({
           ...accentBackground("active", props),
         },
       },
-      backgroundColor: "red",
       _active: {
         ...accentText("default", props),
         ...accentBorder("active", props),
-        backgroundColor: "red",
+        ...accentBackground("active", props),
       },
     }),
   },
@@ -91,6 +90,9 @@ const config = helpers.defineMultiStyleConfig({
     sm: {
       container: {
         borderRadius: "15px",
+        _checked: {
+          borderRadius: "11px"
+        },
         height: "30px",
         px: 1.5,
       },
@@ -98,6 +100,9 @@ const config = helpers.defineMultiStyleConfig({
     md: {
       container: {
         borderRadius: "18px",
+        _checked: {
+          borderRadius: "15px"
+        },
         height: "36px",
         px: 2,
       },

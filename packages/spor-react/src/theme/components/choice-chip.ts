@@ -2,6 +2,13 @@ import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy, mode } from "@chakra-ui/theme-tools";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
+import {
+  accentBackground,
+  baseBackground,
+  brandBackground,
+} from "../utils/background-utils";
+import { baseText, accentText } from "../utils/text-utils";
+import { baseBorder, accentBorder,brandBorder } from "../utils/border-utils";
 
 const parts = anatomy("choice-chip").parts("container", "icon", "label");
 
@@ -10,41 +17,50 @@ const helpers = createMultiStyleConfigHelpers(parts.keys);
 const config = helpers.defineMultiStyleConfig({
   baseStyle: (props) => ({
     container: {
-      backgroundColor: mode("white", "transparent")(props),
-      boxShadow: getBoxShadowString({ borderColor: "celadon" }),
-      color: mode("darkTeal", "white")(props),
+      ...baseBackground("default", props),
+      ...baseBorder("default", props),
+      ...baseText("default", props),
       display: "inline-flex",
       alignItems: "center",
       fontSize: "16px",
-      px: 1,
+      px: 5,
       _checked: {
-        color: "white",
-        background: "pine",
-        boxShadow: getBoxShadowString({ borderColor: "celadon" }),
+        ...accentText("selected", props),
+        ...accentBackground("selected", props),
+        ...accentBorder("selected", props),
+        _hover: {
+          ...brandBackground("hover", props),
+          ...baseText("selected", props),
+          ...brandBorder("hover", props),
+        },
+        _active: {
+          ...baseText("selected", props),
+          ...brandBackground("active", props),
+          ...brandBorder("active", props),
+        }
       },
       "input:focus-visible + &": focusVisibleStyles(props)._focusVisible,
       "@media (hover:hover)": {
         _hover: {
-          color: mode("darkTeal", "white")(props),
-          boxShadow: getBoxShadowString({
-            borderColor: "greenHaze",
-            borderWidth: 2,
-          }),
-          background: mode("coralGreen", "whiteAlpha.200")(props),
+          ...baseText("default", props),
+          ...baseBorder("hover", props),
+          ...baseBackground("hover", props),
           cursor: "pointer",
         },
       },
       _active: {
-        backgroundColor: mode("mint", "whiteAlpha.300")(props),
-        boxShadow: getBoxShadowString({
-          borderColor: "pine",
-        }),
+        ...baseBackground("active", props),
+        ...baseBorder("default", props),
       },
     },
     icon: {
       mr: props.hasLabel ? 1 : 0,
     },
   }),
+  variants: {
+    base: (props) => ({}),
+    accent: (props) => ({}),
+  },
   sizes: {
     sm: {
       container: {

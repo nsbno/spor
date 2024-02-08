@@ -89,9 +89,9 @@ const config = helpers.defineMultiStyleConfig({
   sizes: {
     sm: {
       container: {
-        borderRadius: "15px",
+        borderRadius: "30px",
         _checked: {
-          borderRadius: "11px"
+          borderRadius: "9px"
         },
         height: "30px",
         px: 1.5,
@@ -99,9 +99,9 @@ const config = helpers.defineMultiStyleConfig({
     },
     md: {
       container: {
-        borderRadius: "18px",
+        borderRadius: "30px",
         _checked: {
-          borderRadius: "15px"
+          borderRadius: "12px"
         },
         height: "36px",
         px: 2,
@@ -109,14 +109,20 @@ const config = helpers.defineMultiStyleConfig({
     },
     lg: {
       container: {
-        borderRadius: "21px",
+        borderRadius: "30px",
+        _checked: {
+          borderRadius: "12px"
+        },
         height: "42px",
         px: 2,
       },
     },
     xl: {
       container: {
-        borderRadius: "27px",
+        borderRadius: "30px",
+        _checked: {
+          borderRadius: "18px"
+        },
         height: "54px",
         px: 3,
       },

@@ -5,9 +5,15 @@ import {
   accentBackground,
   baseBackground,
   brandBackground,
+  floatingBackground,
 } from "../utils/background-utils";
 import { baseText, accentText } from "../utils/text-utils";
-import { baseBorder, accentBorder, brandBorder } from "../utils/border-utils";
+import {
+  baseBorder,
+  accentBorder,
+  brandBorder,
+  floatingBorder,
+} from "../utils/border-utils";
 
 const parts = anatomy("choice-chip").parts("container", "icon", "label");
 
@@ -41,14 +47,22 @@ const config = helpers.defineMultiStyleConfig({
         boxShadow: "none",
         ...baseText("disabled", props),
         ...baseBackground("disabled", props),
-        _hover: { ...baseBackground("disabled", props), boxShadow: "none", ...baseText("disabled", props) },
+        _hover: {
+          ...baseBackground("disabled", props),
+          boxShadow: "none",
+          ...baseText("disabled", props),
+        },
         _checked: {
           cursor: "not-allowed",
           boxShadow: "none",
           ...baseText("disabled", props),
           ...baseBackground("disabled", props),
-          _hover: { ...baseBackground("disabled", props), boxShadow: "none", ...baseText("disabled", props) },
-        }
+          _hover: {
+            ...baseBackground("disabled", props),
+            boxShadow: "none",
+            ...baseText("disabled", props),
+          },
+        },
       },
       "input:focus-visible + &": focusVisibleStyles(props)._focusVisible,
     },
@@ -99,13 +113,30 @@ const config = helpers.defineMultiStyleConfig({
         ...accentBackground("active", props),
       },
     }),
+    floating: (props) => ({
+      container: {
+        ...floatingBackground("default", props),
+        ...baseText("default", props),
+        ...floatingBorder("default", props),
+        _hover: {
+          ...floatingBackground("hover", props),
+          ...floatingBorder("hover", props),
+          ...baseText("default", props),
+        },
+        _active: {
+          ...floatingBackground("active", props),
+          ...floatingBorder("active", props),
+          ...baseText("default", props),
+        },
+      },
+    }),
   },
   sizes: {
     sm: {
       container: {
         borderRadius: "30px",
         _checked: {
-          borderRadius: "9px"
+          borderRadius: "9px",
         },
         height: "30px",
         px: 1.5,
@@ -115,7 +146,7 @@ const config = helpers.defineMultiStyleConfig({
       container: {
         borderRadius: "30px",
         _checked: {
-          borderRadius: "12px"
+          borderRadius: "12px",
         },
         height: "36px",
         px: 2,
@@ -125,7 +156,7 @@ const config = helpers.defineMultiStyleConfig({
       container: {
         borderRadius: "30px",
         _checked: {
-          borderRadius: "12px"
+          borderRadius: "12px",
         },
         height: "42px",
         px: 2,
@@ -135,7 +166,7 @@ const config = helpers.defineMultiStyleConfig({
       container: {
         borderRadius: "30px",
         _checked: {
-          borderRadius: "18px"
+          borderRadius: "18px",
         },
         height: "54px",
         px: 3,

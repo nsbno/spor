@@ -21,7 +21,7 @@ export type ChoiceChipProps = {
   };
   size?: "sm" | "md" | "lg" | "xl";
   chipType?: "icon" | "choice" | "filter";
-  variant?: "base" | "accent";
+  variant?: "base" | "accent" | "floating";
 };
 /**
  * Choice chips are checkboxes that look like selectable buttons.
@@ -60,7 +60,7 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
     isDisabled,
     size = "md",
     chipType = "choice",
-    variant = "base",
+    variant = "floating",
   } = props;
 
   const {

@@ -1,9 +1,10 @@
 import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { State, Subset } from "./types";
+import { colors } from "../foundations";
 
 type BaseTextState = Subset<
   State,
-  "default" | "selected"
+  "default" | "selected" | "disabled"
 >;
 export function baseText(
   state: BaseTextState,
@@ -14,6 +15,13 @@ export function baseText(
       return {
         color: mode("white", "darkTeal")(props),
       };
+    case "disabled":
+      return {
+        color: mode(
+          "white",
+          `color-mix(in srgb, ${colors.darkGrey}, ${colors.white} 40%)`,
+        )(props),
+      }
     default:
       return {
         color: mode("darkGrey", "white")(props),

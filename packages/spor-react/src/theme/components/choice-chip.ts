@@ -20,6 +20,7 @@ const config = helpers.defineMultiStyleConfig({
       alignItems: "center",
       fontSize: "16px",
       px: 1,
+      cursor: "pointer",
       _checked: {
         ...accentText("selected", props),
         ...accentBackground("selected", props),
@@ -34,6 +35,20 @@ const config = helpers.defineMultiStyleConfig({
           ...brandBackground("active", props),
           ...brandBorder("active", props),
         },
+      },
+      _disabled: {
+        cursor: "not-allowed",
+        boxShadow: "none",
+        ...baseText("disabled", props),
+        ...baseBackground("disabled", props),
+        _hover: { ...baseBackground("disabled", props), boxShadow: "none", ...baseText("disabled", props) },
+        _checked: {
+          cursor: "not-allowed",
+          boxShadow: "none",
+          ...baseText("disabled", props),
+          ...baseBackground("disabled", props),
+          _hover: { ...baseBackground("disabled", props), boxShadow: "none", ...baseText("disabled", props) },
+        }
       },
       "input:focus-visible + &": focusVisibleStyles(props)._focusVisible,
     },
@@ -52,7 +67,6 @@ const config = helpers.defineMultiStyleConfig({
             ...baseText("default", props),
             ...baseBorder("hover", props),
             ...baseBackground("hover", props),
-            cursor: "pointer",
           },
         },
         _active: {

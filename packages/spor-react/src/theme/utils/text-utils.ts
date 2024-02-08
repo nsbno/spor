@@ -19,7 +19,7 @@ export function baseText(
       return {
         color: mode(
           "white",
-          `color-mix(in srgb, ${colors.darkGrey}, ${colors.white} 40%)`,
+          `color-mix(in srgb, ${colors.black}, ${colors.white} 40%)`,
         )(props),
       }
     default:

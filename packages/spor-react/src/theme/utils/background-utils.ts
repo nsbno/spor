@@ -26,7 +26,7 @@ export function baseBackground(
     case "hover":
       return {
         backgroundColor: "transparent",
-      }
+      };
     default:
       return {
         backgroundColor: "transparent",

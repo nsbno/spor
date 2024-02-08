@@ -11,7 +11,7 @@ import React, { ChangeEvent, useId } from "react";
 export type ChoiceChipProps = {
   onChange?: (value: ChangeEvent<HTMLInputElement>) => void;
   isChecked?: boolean;
-  isDisabled?: boolean
+  isDisabled?: boolean;
   defaultChecked?: boolean;
   /** The button text */
   children: React.ReactNode;
@@ -60,7 +60,7 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
     isDisabled,
     size = "md",
     chipType = "choice",
-    variant = "floating",
+    variant = "base",
   } = props;
 
   const {
@@ -86,7 +86,7 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
       {...getRootProps()}
       aria-label={String(children)}
     >
-      <chakra.input {...getInputProps({}, ref)} id={id}  disabled={isDisabled} />
+      <chakra.input {...getInputProps({}, ref)} id={id} disabled={isDisabled} />
       <chakra.div
         {...getLabelProps()}
         __css={styles.container}

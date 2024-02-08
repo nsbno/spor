@@ -2,14 +2,8 @@ import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { State, Subset } from "./types";
 import { colors } from "../foundations";
 
-type BaseTextState = Subset<
-  State,
-  "default" | "selected" | "disabled"
->;
-export function baseText(
-  state: BaseTextState,
-  props: StyleFunctionProps,
-) {
+type BaseTextState = Subset<State, "default" | "selected" | "disabled">;
+export function baseText(state: BaseTextState, props: StyleFunctionProps) {
   switch (state) {
     case "selected":
       return {
@@ -21,7 +15,7 @@ export function baseText(
           "white",
           `color-mix(in srgb, ${props.theme.colors.accent}, ${colors.white} 40%)`,
         )(props),
-      }
+      };
     default:
       return {
         color: mode("darkGrey", "white")(props),
@@ -29,15 +23,9 @@ export function baseText(
   }
 }
 
-type AccentTextState = Subset<
-  State,
-  "default" | "selected"
->;
+type AccentTextState = Subset<State, "default" | "selected">;
 
-export function accentText(
-  state: AccentTextState,
-  props: StyleFunctionProps,
-) {
+export function accentText(state: AccentTextState, props: StyleFunctionProps) {
   switch (state) {
     case "selected":
       return {

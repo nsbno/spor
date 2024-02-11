@@ -13,6 +13,8 @@ const EXPIRATION_DELAY = 1000 * 60 * 60 * 24 * 30; // 30 days
 /** A nudge.
  *
  * A nudge is a tooltip that is shown to the user to guide them through a new feature.
+ *
+ * You're required to set an `introducedTimestamp` to the nudge, which is the timestamp of when the nudge was introduced. After 30 days, the nudge will no longer be shown, and an error will be logged in development mode.
  */
 export const Nudge = ({ introducedTimestamp, name, ...props }: NudgeProps) => {
   if (introducedTimestamp + EXPIRATION_DELAY > Date.now()) {

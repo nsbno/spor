@@ -11,7 +11,15 @@ import {
 import { PopoverBody, usePopoverContext } from "@chakra-ui/react";
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React, { Children, useEffect, useState } from "react";
-import { Box, Button, Flex, Stack, createTexts, useTranslation } from "..";
+import {
+  Box,
+  Button,
+  Flex,
+  ProgressIndicator,
+  Stack,
+  createTexts,
+  useTranslation,
+} from "..";
 
 export type WizardNudgeProps = PopoverProps & {
   /** Steps in the wizard. Each item is its own step */
@@ -82,7 +90,10 @@ const NudgeWizardBody = ({ children }: NudgeWizardBodyProps) => {
       <Stack spacing={1.5}>
         <Box>{React.Children.toArray(children)[currentStep - 1]}</Box>
         <Flex gap={3}>
-          <StepIndicator totalSteps={totalSteps} currentStep={currentStep} />
+          <ProgressIndicator
+            activeStep={currentStep}
+            numberOfSteps={totalSteps}
+          />
           <NextStepButton
             isLastStep={totalSteps === currentStep}
             onNext={() => setCurrentStep((prev) => prev + 1)}
@@ -91,30 +102,6 @@ const NudgeWizardBody = ({ children }: NudgeWizardBodyProps) => {
       </Stack>
     </PopoverBody>
   );
-};
-
-type StepIndicatorProps = { totalSteps: number; currentStep: number };
-const StepIndicator = ({ totalSteps, currentStep }: StepIndicatorProps) => {
-  const steps = createRange(1, totalSteps);
-  return (
-    <Flex gap={1} alignItems="center">
-      {steps.map((step) => (
-        <Box
-          key={step}
-          width={1}
-          height={1}
-          borderRadius="50%"
-          transition="medium"
-          transitionProperty="background-color"
-          backgroundColor={step === currentStep ? "seaMist" : "greenHaze"}
-        />
-      ))}
-    </Flex>
-  );
-};
-
-const createRange = (start: number, end: number) => {
-  return new Array(end - start + 1).fill(null).map((_, i) => i + start);
 };
 
 type NextStepButtonProps = { isLastStep: boolean; onNext: () => void };

@@ -30,7 +30,7 @@ export const StepperStep = ({
       )}
 
       <Button
-        size={"xs"}
+        size="xs"
         variant={
           state === "active"
             ? "primary"

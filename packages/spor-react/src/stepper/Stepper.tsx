@@ -90,7 +90,7 @@ export const Stepper = ({
               </Box>
             )}
           </Box>
-          <Flex justifyContent="center" display={["none", "flex"]}>
+          <Flex justifyContent="center" display={["none", null, "flex"]}>
             {steps.map((step, index) => (
               <StepperStep key={index} stepNumber={index + 1} variant={variant}>
                 {step}

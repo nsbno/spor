@@ -18,24 +18,24 @@ const parts = anatomy("stepper").parts(
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
+  baseStyle: {
     root: {
       display: "flex",
       alignItems: "center",
-      justifyContent: ["space-between", "center"],
-      minHeight: ["48px", "60px"],
+      justifyContent: ["space-between", null, "center"],
+      minHeight: ["48px", null, "60px"],
       overflowX: "auto",
       width: "100%",
     },
     container: {
-      paddingX: [2, 2, 0],
+      paddingX: [2, null, null, 0],
       maxWidth: "container.lg",
       marginX: "auto",
       width: "100%",
     },
     innerContainer: {
       overflow: "hidden",
-      display: ["flex", "none"],
+      display: ["flex", null, "none"],
       alignItems: "center",
       justifyContent: "space-between",
     },
@@ -62,7 +62,7 @@ const config = helpers.defineMultiStyleConfig({
       textStyle: "sm",
       whiteSpace: "nowrap",
     },
-  }),
+  },
   variants: {
     base: () => ({
       root: {

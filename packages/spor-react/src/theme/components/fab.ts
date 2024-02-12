@@ -23,12 +23,16 @@ const config = helpers.defineMultiStyleConfig({
       position: "fixed",
       ...getPositionProps(props),
       _disabled: {
-        backgroundColor: "whiteAlpha.400",
-        color: "white",
+        backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
+        color: mode("blackAlpha.400", "whiteAlpha.400")(props),
       },
       ...focusVisibleStyles(props),
       _hover: {
         backgroundColor: "seaMist",
+        _disabled: {
+          backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
+          color: mode("blackAlpha.400", "whiteAlpha.400")(props),
+        },
       },
       zIndex: "sticky",
     },

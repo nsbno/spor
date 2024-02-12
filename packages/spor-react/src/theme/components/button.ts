@@ -24,12 +24,12 @@ const config = defineStyleConfig({
     _disabled: {
       cursor: "not-allowed",
       boxShadow: "none",
-      backgroundColor: "silver",
-      color: "dimGrey",
+      backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
+      color: mode("blackAlpha.400", "whiteAlpha.400")(props),
     },
     _hover: {
       _disabled: {
-        background: "silver",
+        background: mode("blackAlpha.100", "whiteAlpha.100")(props),
       },
     },
   }),

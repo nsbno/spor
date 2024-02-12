@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 7.0.1
+
+### Patch Changes
+
+- 1e960e1: Button, FAB: Tweak disabled state
+- a7590c8: ProgressIndicator: Change colors of inactive dots
+- 0ccf0c5: Stepper: Change the breakpoint for when the stepper changes from one design to another
+
 ## 7.0.0
 
 ### Major Changes

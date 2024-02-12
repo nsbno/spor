@@ -20,7 +20,7 @@ import {
   NativeSelect,
   SearchInput,
   SimpleGrid,
-  SimplePopover,
+  Tooltip,
   Text,
 } from "@vygruppen/spor-react";
 import { useMemo, useState } from "react";
@@ -176,7 +176,7 @@ export default function IllustrationLibraryPage() {
             <Flex flexDirection="column" height="100%">
               <Flex gap={1} alignItems="center">
                 <Text variant="sm">{illustration.title}</Text>
-                <SimplePopover
+                <Tooltip
                   placement="top"
                   arrowPadding={2}
                   triggerElement={
@@ -184,7 +184,7 @@ export default function IllustrationLibraryPage() {
                   }
                 >
                   {illustration.description}
-                </SimplePopover>
+                </Tooltip>
               </Flex>
               <Image
                 src={

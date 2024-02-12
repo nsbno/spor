@@ -10,7 +10,7 @@ import {
 
 import { PopoverBody, usePopoverContext } from "@chakra-ui/react";
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
-import React, { Children, useEffect, useState } from "react";
+import React, { Children, useState } from "react";
 import {
   Box,
   Button,
@@ -27,28 +27,30 @@ export type WizardNudgeProps = PopoverProps & {
   /** The element that triggers the wizard */
   triggerElement: React.ReactNode;
   /**
-   * Where the popover should be placed by default.
+   * Where the nudge should be placed by default.
    *
    * Note - this is a suggestion, and may be overridden by space concerns.
    */
   placement?: "top" | "bottom" | "left" | "right";
-  /** Should the popover have a close button? */
+  /** Should the nudge have a close button? */
   withCloseButton?: boolean;
 };
 /**
- * A nudge that displays its children one at a time, with a step indicator
+ * A nudge that displays its children one at a time, with a step indicator.
  *
- * Each child is its own step. If you want several components inside a
- * single slide, you want to wrap them in an external component (like a Stack).
+ * Wrap each step in a `<WizardNudgeStep />` component.
  *
  * ```tsx
  * <WizardNudge triggerElement={<Button>Click me</Button>}>
- *  <Text>First step</Text>
- *  <Text>Second step</Text>
- *  <Stack>
- *    <Text>Third step is special.</Text>
- *    <Text>It even has several paragraphs 🤯</Text>
- *  </Stack>
+ *   <WizardNudgeStep>
+ *     <Text>First step</Text>
+ *   </WizardNudgeStep>
+ *   <WizardNudgeStep>
+ *     <Text>Second step</Text>
+ *   </WizardNudgeStep>
+ *   <WizardNudgeStep>
+ *     <Text>Last step</Text>
+ *   </WizardNudgeStep>
  * </WizardNudge>
  * ```
  */
@@ -57,6 +59,14 @@ export const WizardNudge = ({
   triggerElement,
   withCloseButton = false,
 }: WizardNudgeProps) => {
+  const [currentStep, setCurrentStep] = useState(1);
+  const totalSteps = Children.count(children);
+  const isLastStep = totalSteps === currentStep;
+  const { t } = useTranslation();
+
+  const { onClose } = usePopoverContext();
+  const onNext = () => setCurrentStep((prev) => prev + 1);
+
   return (
     <DarkMode>
       <Popover size="lg">
@@ -64,61 +74,42 @@ export const WizardNudge = ({
         <PopoverContent>
           <PopoverArrow />
           {withCloseButton && <PopoverCloseButton />}
-          <NudgeWizardBody>{children}</NudgeWizardBody>
+          <PopoverBody>
+            <Stack spacing={1.5}>
+              <Box>{Children.toArray(children)[currentStep - 1]}</Box>
+              <Flex gap={3}>
+                <ProgressIndicator
+                  activeStep={currentStep}
+                  numberOfSteps={totalSteps}
+                />
+                <Button
+                  variant="tertiary"
+                  size="sm"
+                  color="white"
+                  leftIcon={isLastStep ? undefined : <ArrowRightFill18Icon />}
+                  onClick={isLastStep ? onClose : onNext}
+                >
+                  {t(isLastStep ? texts.finish : texts.nextStep)}
+                </Button>
+              </Flex>
+            </Stack>
+          </PopoverBody>
         </PopoverContent>
       </Popover>
     </DarkMode>
   );
 };
 
-type NudgeWizardBodyProps = {
-  /** Each child will be their own step */
+type NudgeWizardStepProps = {
   children: React.ReactNode;
 };
-const NudgeWizardBody = ({ children }: NudgeWizardBodyProps) => {
-  const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = Children.count(children);
-  const { isOpen } = usePopoverContext();
-  useEffect(() => {
-    if (!isOpen && currentStep > 1) {
-      const id = setTimeout(() => setCurrentStep(1), 500);
-      return () => clearTimeout(id);
-    }
-  }, [isOpen, currentStep]);
-  return (
-    <PopoverBody>
-      <Stack spacing={1.5}>
-        <Box>{React.Children.toArray(children)[currentStep - 1]}</Box>
-        <Flex gap={3}>
-          <ProgressIndicator
-            activeStep={currentStep}
-            numberOfSteps={totalSteps}
-          />
-          <NextStepButton
-            isLastStep={totalSteps === currentStep}
-            onNext={() => setCurrentStep((prev) => prev + 1)}
-          />
-        </Flex>
-      </Stack>
-    </PopoverBody>
-  );
-};
-
-type NextStepButtonProps = { isLastStep: boolean; onNext: () => void };
-const NextStepButton = ({ isLastStep, onNext }: NextStepButtonProps) => {
-  const { onClose } = usePopoverContext();
-  const { t } = useTranslation();
-  return (
-    <Button
-      variant="tertiary"
-      size="sm"
-      color="white"
-      leftIcon={isLastStep ? undefined : <ArrowRightFill18Icon />}
-      onClick={isLastStep ? onClose : onNext}
-    >
-      {t(isLastStep ? texts.finish : texts.nextStep)}
-    </Button>
-  );
+/** A step in a NudgeWizard.
+ *
+ * This component doesn't do anything special, except making things a bit more
+ * explicit code-wise. It just renders a div.
+ */
+export const NudgeWizardStep = ({ children }: NudgeWizardStepProps) => {
+  return <Box>{children}</Box>;
 };
 
 const texts = createTexts({

@@ -29,7 +29,7 @@ const config = helpers.defineMultiStyleConfig({
         },
       },
       circle: {
-        fill: mode("blackAlpha.400", "whiteAlpha.400")(props),
+        fill: mode("blackAlpha.200", "whiteAlpha.200")(props),
       },
     },
   }),

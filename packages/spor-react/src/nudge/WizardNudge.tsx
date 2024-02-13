@@ -1,11 +1,12 @@
 import {
   DarkMode,
   Popover,
+  PopoverAnchor,
   PopoverArrow,
   PopoverCloseButton,
   PopoverContent,
   PopoverProps,
-  PopoverTrigger,
+  chakra,
 } from "@chakra-ui/react";
 
 import { PopoverBody, usePopoverContext } from "@chakra-ui/react";
@@ -22,10 +23,14 @@ import {
 } from "..";
 
 export type WizardNudgeProps = PopoverProps & {
-  /** Steps in the wizard. Each item is its own step */
-  children: React.ReactNode;
-  /** The element that triggers the wizard */
-  triggerElement: React.ReactNode;
+  /** Steps in the wizard. Each item is its own step. Should only be Step components */
+  children: React.ReactElement<WizardNudgeStepProps>[];
+  /** The item the nudge is connected to visually.
+   *
+   * If you want a unique anchor for each step, you can use an array of elements.
+   * TODO: This doesn't work yet.
+   */
+  anchorElementRef: React.ElementRef<any> | React.ElementRef<any>[];
   /**
    * Where the nudge should be placed by default.
    *
@@ -56,41 +61,42 @@ export type WizardNudgeProps = PopoverProps & {
  */
 export const WizardNudge = ({
   children,
-  triggerElement,
+  anchorElementRef,
   withCloseButton = false,
 }: WizardNudgeProps) => {
+  const [isOpen, setOpen] = useState(true);
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = Children.count(children);
   const isLastStep = totalSteps === currentStep;
-  const { t } = useTranslation();
-
-  const { onClose } = usePopoverContext();
   const onNext = () => setCurrentStep((prev) => prev + 1);
+
+  const anchorRef = Array.isArray(anchorElementRef)
+    ? anchorElementRef[currentStep - 1]
+    : anchorElementRef;
 
   return (
     <DarkMode>
-      <Popover size="lg">
-        <PopoverTrigger>{triggerElement}</PopoverTrigger>
+      <Popover size="lg" isOpen={isOpen} onClose={() => setOpen(false)}>
+        <PopoverAnchor>
+          <chakra.div
+            ref={anchorRef}
+            tabIndex={-1}
+            aria-hidden={true}
+            width="fit-content"
+          />
+        </PopoverAnchor>
         <PopoverContent>
           <PopoverArrow />
           {withCloseButton && <PopoverCloseButton />}
           <PopoverBody>
             <Stack spacing={1.5}>
               <Box>{Children.toArray(children)[currentStep - 1]}</Box>
-              <Flex gap={3}>
+              <Flex gap={3} alignItems="center">
                 <ProgressIndicator
                   activeStep={currentStep}
                   numberOfSteps={totalSteps}
                 />
-                <Button
-                  variant="tertiary"
-                  size="sm"
-                  color="white"
-                  leftIcon={isLastStep ? undefined : <ArrowRightFill18Icon />}
-                  onClick={isLastStep ? onClose : onNext}
-                >
-                  {t(isLastStep ? texts.finish : texts.nextStep)}
-                </Button>
+                <NextOrCloseButton isLastStep={isLastStep} onNext={onNext} />
               </Flex>
             </Stack>
           </PopoverBody>
@@ -100,16 +106,37 @@ export const WizardNudge = ({
   );
 };
 
-type NudgeWizardStepProps = {
+type WizardNudgeStepProps = {
   children: React.ReactNode;
 };
-/** A step in a NudgeWizard.
+/** A step in a WizardNudge.
  *
  * This component doesn't do anything special, except making things a bit more
  * explicit code-wise. It just renders a div.
  */
-export const NudgeWizardStep = ({ children }: NudgeWizardStepProps) => {
+export const WizardNudgeStep = ({ children }: WizardNudgeStepProps) => {
   return <Box>{children}</Box>;
+};
+
+type NextOrCloseButtonProps = {
+  isLastStep: boolean;
+  onNext: () => void;
+};
+const NextOrCloseButton = ({ isLastStep, onNext }: NextOrCloseButtonProps) => {
+  const { onClose } = usePopoverContext();
+  const { t } = useTranslation();
+  return (
+    <Button
+      variant="tertiary"
+      size="sm"
+      color="white"
+      minWidth="fit-content"
+      leftIcon={isLastStep ? undefined : <ArrowRightFill18Icon />}
+      onClick={isLastStep ? onClose : onNext}
+    >
+      {t(isLastStep ? texts.finish : texts.nextStep)}
+    </Button>
+  );
 };
 
 const texts = createTexts({

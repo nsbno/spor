@@ -2,7 +2,7 @@ import { Flex, useMultiStyleConfig } from "@chakra-ui/react";
 import { ArrowLeftFill24Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { StepperStep } from ".";
-import { Box, Heading, IconButton, createTexts, useTranslation } from "..";
+import { Box, IconButton, Text, createTexts, useTranslation } from "..";
 import { StepperProvider } from "./StepperContext";
 
 type StepperProps = {
@@ -14,8 +14,19 @@ type StepperProps = {
    * If this is not provided, the back button will not be shown on smaller screens on the first step.
    */
   onBackButtonClick?: (isFirstStep: boolean) => void;
-  /** Title shown on smaller devices */
+  /**
+   * Heading shown on smaller devices
+   * @deprecated Use `heading` instead
+   */
   title?: string;
+  /** Heading shown on smaller devices */
+  heading?: string;
+  /**
+   * The heading level rendered for the heading shown on smaller devices.
+   *
+   * Defaults to h2
+   * */
+  headingLevel?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
   /** The currently active step */
   activeStep: number;
   /** The labels of each step */
@@ -47,6 +58,8 @@ export const Stepper = ({
   steps,
   activeStep: activeStepAsStringOrNumber,
   title,
+  heading,
+  headingLevel,
   variant,
   isDisabled,
 }: StepperProps) => {
@@ -55,6 +68,7 @@ export const Stepper = ({
   const activeStep = Number(activeStepAsStringOrNumber);
   const { t } = useTranslation();
   const hideBackButtonOnFirstStep = activeStep === 1 && !onBackButtonClick;
+  const shownHeading = heading || title;
   return (
     <Box sx={style.root}>
       <StepperProvider
@@ -84,10 +98,10 @@ export const Stepper = ({
                   onClick(activeStep - 1);
                 }}
               />
-              {title && (
-                <Heading flex={1} variant="sm" as="h3" sx={style.title}>
-                  {title}
-                </Heading>
+              {shownHeading && (
+                <Text flex={1} variant="sm" as={headingLevel} sx={style.title}>
+                  {shownHeading}
+                </Text>
               )}
               <Box sx={style.stepCounter}>
                 {t(texts.stepsOf(activeStep, numberOfSteps))}

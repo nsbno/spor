@@ -28,7 +28,8 @@ export const StepperStep = ({
   );
   const iconColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
 
-  const isDisabled = isDisabledOverride || state === "disabled";
+  const isDisabled =
+    (state !== "active" && isDisabledOverride) || state === "disabled";
 
   return (
     <Box sx={style.stepContainer}>

@@ -1,13 +1,14 @@
-import { useMultiStyleConfig } from "@chakra-ui/react";
+import { useColorModeValue, useMultiStyleConfig } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
-import { Box, Button } from "..";
+import { Box, Button, Text } from "..";
 import { useStepper } from "./StepperContext";
 
 type StepperStepProps = {
   children: React.ReactNode;
   stepNumber: number;
   variant: "base" | "accent";
+  isDisabled?: boolean;
 };
 export const StepperStep = ({
   children,
@@ -15,66 +16,52 @@ export const StepperStep = ({
   variant,
 }: StepperStepProps) => {
   const { activeStep, onClick } = useStepper();
-  const state = getState(stepNumber!, activeStep);
+  const state = getState(stepNumber, activeStep);
   const style = useMultiStyleConfig("Stepper", {
     state,
     variant,
   });
-
-  const adjustedProps = getButtonStylesForState(state);
+  const disabledTextColor = useColorModeValue(
+    "blackAlpha.400",
+    "whiteAlpha.400",
+  );
+  const iconColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
 
   return (
-    <Box __css={style.stepContainer}>
+    <Box sx={style.stepContainer}>
       {stepNumber > 1 && (
-        <DropdownRightFill18Icon marginX={5} display={["none", "block"]} />
+        <DropdownRightFill18Icon
+          marginX={5}
+          display={["none", null, "block"]}
+          color={iconColor}
+        />
       )}
-
-      <Button
-        size="xs"
-        variant={
-          state === "active"
-            ? "primary"
-            : state === "completed"
-              ? "tertiary"
-              : "ghost"
-        }
-        {...adjustedProps}
-        onClick={() => onClick(stepNumber)}
-      >
-        {children}
-      </Button>
+      {state === "disabled" ? (
+        <Text
+          variant="xs"
+          fontSize="16px"
+          color={disabledTextColor}
+          cursor="default"
+          paddingX={2}
+        >
+          {children}
+        </Text>
+      ) : (
+        <Button
+          size="xs"
+          variant={state === "active" ? "primary" : "ghost"}
+          onClick={
+            state === "completed" ? () => onClick(stepNumber) : undefined
+          }
+          pointerEvents={state === "active" ? "none" : "auto"}
+          tabIndex={state === "active" ? -1 : undefined}
+          sx={style.stepButton}
+        >
+          {children}
+        </Button>
+      )}
     </Box>
   );
-};
-
-const getButtonStylesForState = (
-  state: "completed" | "active" | "disabled",
-): Record<string, any> => {
-  switch (state) {
-    case "active":
-      return {
-        _hover: {},
-        boxShadow: "none",
-        _focus: {},
-        _active: {},
-        cursor: "auto",
-      };
-    case "completed":
-      return {
-        boxShadow: "none",
-      };
-    case "disabled":
-      return {
-        _disabled: {},
-        _hover: {},
-        _focus: {},
-        _active: {},
-        color: "dimGrey",
-        cursor: "auto",
-      };
-    default:
-      return {};
-  }
 };
 
 const getState = (stepNumber: number, activeStep: number) => {

@@ -1,21 +1,28 @@
-import { Flex, HStack, useMultiStyleConfig } from "@chakra-ui/react";
-import { DropdownLeftFill24Icon } from "@vygruppen/spor-icon-react";
+import { Flex, useMultiStyleConfig } from "@chakra-ui/react";
+import { ArrowLeftFill24Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { StepperStep } from ".";
-import {
-  Box,
-  IconButton,
-  SimplePopover,
-  createTexts,
-  useTranslation,
-} from "..";
+import { Box, Heading, IconButton, createTexts, useTranslation } from "..";
 import { StepperProvider } from "./StepperContext";
 
 type StepperProps = {
-  onClick: (clickedStep: number) => void;
+  /** Callback for when a step is clicked */
+  onStepClick: (clickedStep: number) => void;
+  /** Callback for when the back button is clicked (on smaller screens).
+   * A boolean indicating whether or not the user is on the first step is passed as an argument.
+   *
+   * If this is not provided, the back button will not be shown on smaller screens on the first step.
+   */
+  onBackButtonClick?: (isFirstStep: boolean) => void;
+  /** Title shown on smaller devices */
   title?: string;
+  /** The currently active step */
   activeStep: number;
+  /** The labels of each step */
   steps: string[];
+  /** The variant.
+   * "base" has a transparent background,
+   * while "accent" has a slight accent color  */
   variant: "base" | "accent";
 };
 /**
@@ -25,15 +32,16 @@ type StepperProps = {
  *
  * ```tsx
  * <Stepper
- *   title="Eksempel"
+ *   title="Example"
  *   onClick={handleStepClick}
  *   activeStep={2}
- *   steps={['Velg hvor', 'Velg når', 'Velg hvordan']}
+ *   steps={['Where', 'When', 'How']}
  * />
  * ```
  **/
 export const Stepper = ({
-  onClick = () => {},
+  onStepClick = () => {},
+  onBackButtonClick,
   steps,
   activeStep: activeStepAsStringOrNumber,
   title,
@@ -43,52 +51,45 @@ export const Stepper = ({
   const numberOfSteps = steps.length;
   const activeStep = Number(activeStepAsStringOrNumber);
   const { t } = useTranslation();
+  const hideBackButtonOnFirstStep = activeStep === 1 && !onBackButtonClick;
   return (
-    <Box __css={style.root}>
+    <Box sx={style.root}>
       <StepperProvider
-        onClick={onClick}
+        onClick={onStepClick}
         activeStep={activeStep}
         variant={variant}
         numberOfSteps={numberOfSteps}
       >
-        <Box __css={style.container}>
-          <Box __css={style.innerContainer}>
-            <HStack>
-              {activeStep > 1 && (
-                <IconButton
-                  aria-label={t(texts.back)}
-                  icon={<DropdownLeftFill24Icon />}
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => onClick(activeStep - 1)}
-                  __css={style.backButton}
-                />
+        <Box sx={style.container}>
+          <Box sx={style.innerContainer}>
+            <Flex
+              justifyContent="space-between"
+              alignItems="center"
+              gap={2}
+              flex={1}
+            >
+              <IconButton
+                aria-label={t(texts.back)}
+                icon={<ArrowLeftFill24Icon />}
+                variant="ghost"
+                size="sm"
+                visibility={hideBackButtonOnFirstStep ? "hidden" : "visible"}
+                onClick={() => {
+                  if (onBackButtonClick) {
+                    onBackButtonClick(activeStep === 1);
+                  }
+                  onStepClick(activeStep - 1);
+                }}
+              />
+              {title && (
+                <Heading flex={1} variant="sm" as="h3" sx={style.title}>
+                  {title}
+                </Heading>
               )}
-
-              <SimplePopover
-                triggerElement={
-                  <Box as="button" __css={style.stepCounter}>
-                    {t(texts.stepsOf(activeStep, numberOfSteps))}
-                  </Box>
-                }
-                borderRadius="xs"
-              >
-                {steps.map((step, index) => (
-                  <StepperStep
-                    key={step}
-                    stepNumber={index + 1}
-                    variant={variant}
-                  >
-                    {step}
-                  </StepperStep>
-                ))}
-              </SimplePopover>
-            </HStack>
-            {title && (
-              <Box as="h3" __css={style.title}>
-                {title}
+              <Box sx={style.stepCounter}>
+                {t(texts.stepsOf(activeStep, numberOfSteps))}
               </Box>
-            )}
+            </Flex>
           </Box>
           <Flex justifyContent="center" display={["none", null, "flex"]}>
             {steps.map((step, index) => (
@@ -105,10 +106,10 @@ export const Stepper = ({
 
 const texts = createTexts({
   stepsOf: (activeStep, numberOfSteps) => ({
-    nb: `Steg ${activeStep} av ${numberOfSteps}`,
-    nn: `Steg ${activeStep} av ${numberOfSteps}`,
-    sv: `Steg ${activeStep} av ${numberOfSteps}`,
-    en: `Step ${activeStep} of ${numberOfSteps}`,
+    nb: `Steg ${activeStep}/${numberOfSteps}`,
+    nn: `Steg ${activeStep}/${numberOfSteps}`,
+    sv: `Steg ${activeStep}/${numberOfSteps}`,
+    en: `Step ${activeStep}/${numberOfSteps}`,
   }),
   back: {
     nb: "Tilbake",

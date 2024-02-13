@@ -5,7 +5,6 @@ const parts = anatomy("stepper").parts(
   "root",
   "container",
   "innerContainer",
-  "backButton",
   "title",
   "stepCounter",
   "stepContainer",
@@ -38,12 +37,7 @@ const config = helpers.defineMultiStyleConfig({
       display: ["flex", null, "none"],
       alignItems: "center",
       justifyContent: "space-between",
-    },
-    backButton: {
-      borderRadius: "xs",
-      paddingX: 0,
-      width: "auto",
-      minWidth: "auto",
+      gap: 3,
     },
     title: {
       overflow: "hidden",
@@ -51,8 +45,8 @@ const config = helpers.defineMultiStyleConfig({
       WebkitLineClamp: 2,
       display: "-webkit-box",
       WebkitBoxOrient: "vertical",
-      marginLeft: 2,
-      textAlign: "right",
+      textAlign: "center",
+      maxWidth: "80%",
     },
     stepContainer: {
       display: "flex",
@@ -72,6 +66,26 @@ const config = helpers.defineMultiStyleConfig({
     accent: (props) => ({
       root: {
         backgroundColor: mode("seaMist", "pine")(props),
+        color: mode("darkTeal", "seaMist")(props),
+      },
+      stepButton: {
+        color:
+          props.state === "disabled"
+            ? mode("blackAlpha.400", "whiteAlpha.400")(props)
+            : props.state === "completed"
+              ? mode("darkTeal", "white")(props)
+              : mode("white", "darkTeal")(props),
+        _hover: {
+          backgroundColor:
+            props.state === "disabled"
+              ? "transparent"
+              : mode("coralGreen", "greenHaze")(props),
+        },
+      },
+      backButton: {
+        _hover: {
+          backgroundColor: mode("coralGreen", "greenHaze")(props),
+        },
       },
     }),
   },

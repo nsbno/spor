@@ -7,7 +7,7 @@ import { StepperProvider } from "./StepperContext";
 
 type StepperProps = {
   /** Callback for when a step is clicked */
-  onStepClick: (clickedStep: number) => void;
+  onClick: (clickedStep: number) => void;
   /** Callback for when the back button is clicked (on smaller screens).
    * A boolean indicating whether or not the user is on the first step is passed as an argument.
    *
@@ -40,7 +40,7 @@ type StepperProps = {
  * ```
  **/
 export const Stepper = ({
-  onStepClick = () => {},
+  onClick = () => {},
   onBackButtonClick,
   steps,
   activeStep: activeStepAsStringOrNumber,
@@ -55,7 +55,7 @@ export const Stepper = ({
   return (
     <Box sx={style.root}>
       <StepperProvider
-        onClick={onStepClick}
+        onClick={onClick}
         activeStep={activeStep}
         variant={variant}
         numberOfSteps={numberOfSteps}
@@ -78,7 +78,7 @@ export const Stepper = ({
                   if (onBackButtonClick) {
                     onBackButtonClick(activeStep === 1);
                   }
-                  onStepClick(activeStep - 1);
+                  onClick(activeStep - 1);
                 }}
               />
               {title && (

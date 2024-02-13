@@ -14,6 +14,7 @@ export const StepperStep = ({
   children,
   stepNumber,
   variant,
+  isDisabled: isDisabledOverride,
 }: StepperStepProps) => {
   const { activeStep, onClick } = useStepper();
   const state = getState(stepNumber, activeStep);
@@ -27,6 +28,8 @@ export const StepperStep = ({
   );
   const iconColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
 
+  const isDisabled = isDisabledOverride || state === "disabled";
+
   return (
     <Box sx={style.stepContainer}>
       {stepNumber > 1 && (
@@ -36,7 +39,7 @@ export const StepperStep = ({
           color={iconColor}
         />
       )}
-      {state === "disabled" ? (
+      {isDisabled ? (
         <Text
           variant="xs"
           fontSize="16px"

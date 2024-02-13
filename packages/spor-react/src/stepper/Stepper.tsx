@@ -24,6 +24,8 @@ type StepperProps = {
    * "base" has a transparent background,
    * while "accent" has a slight accent color  */
   variant: "base" | "accent";
+  /** Disables all clicks */
+  isDisabled?: boolean;
 };
 /**
  * A stepper is used to show which step of a process a user is currently in.
@@ -46,6 +48,7 @@ export const Stepper = ({
   activeStep: activeStepAsStringOrNumber,
   title,
   variant,
+  isDisabled,
 }: StepperProps) => {
   const style = useMultiStyleConfig("Stepper", { variant });
   const numberOfSteps = steps.length;
@@ -98,6 +101,7 @@ export const Stepper = ({
                 stepNumber={index + 1}
                 variant={variant}
                 aria-current={index + 1 === activeStep ? "step" : undefined}
+                isDisabled={isDisabled}
               >
                 {step}
               </StepperStep>

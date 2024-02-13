@@ -93,7 +93,12 @@ export const Stepper = ({
           </Box>
           <Flex justifyContent="center" display={["none", null, "flex"]}>
             {steps.map((step, index) => (
-              <StepperStep key={index} stepNumber={index + 1} variant={variant}>
+              <StepperStep
+                key={index}
+                stepNumber={index + 1}
+                variant={variant}
+                aria-current={index + 1 === activeStep ? "step" : undefined}
+              >
                 {step}
               </StepperStep>
             ))}

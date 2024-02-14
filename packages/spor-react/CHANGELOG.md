@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 7.1.1
+
+### Patch Changes
+
+- 10fbe0c: fix issue where icons are not vertically aligned in button component
+
 ## 7.1.0
 
 ### Minor Changes

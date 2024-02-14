@@ -9,11 +9,10 @@ type StepperProps = {
   /** Callback for when a step is clicked */
   onClick: (clickedStep: number) => void;
   /** Callback for when the back button is clicked (on smaller screens).
-   * A boolean indicating whether or not the user is on the first step is passed as an argument.
    *
    * If this is not provided, the back button will not be shown on smaller screens on the first step.
    */
-  onBackButtonClick?: (isFirstStep: boolean) => void;
+  onBackButtonClick?: (stepNumberToGoTo: number) => void;
   /**
    * Heading shown on smaller devices
    * @deprecated Use `heading` instead
@@ -92,10 +91,11 @@ export const Stepper = ({
                 size="sm"
                 visibility={hideBackButtonOnFirstStep ? "hidden" : "visible"}
                 onClick={() => {
+                  const stepToGoTo = activeStep - 1;
                   if (onBackButtonClick) {
-                    onBackButtonClick(activeStep === 1);
+                    onBackButtonClick(stepToGoTo);
                   }
-                  onClick(activeStep - 1);
+                  onClick(stepToGoTo);
                 }}
               />
               {shownHeading && (

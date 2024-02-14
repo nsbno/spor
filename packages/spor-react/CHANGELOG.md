@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 7.2.1
+
+### Patch Changes
+
+- a3159e5: Stepper: Change input to onBackButtonClick
+
 ## 7.2.0
 
 ### Minor Changes

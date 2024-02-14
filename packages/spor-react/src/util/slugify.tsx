@@ -1,7 +1,12 @@
-/** Makes a slug-version of any string */
-export function slugify(text: string): string {
+/**
+ * Makes a slug-version of any string, with a maximum length of 50 characters
+ **/
+export function slugify(text: string | string[]): string {
   if (!text) {
     return text;
+  }
+  if (Array.isArray(text)) {
+    text = text.join(" ");
   }
   return (
     text
@@ -17,5 +22,6 @@ export function slugify(text: string): string {
       .replace(/--+/g, "-") // Replace multiple - with single -
       .replace(/^-+/, "") // Trim - from start of text
       .replace(/-+$/, "")
+      .substring(0, 50)
   );
 }

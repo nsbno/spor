@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 7.2.0
+
+### Minor Changes
+
+- 672d254: Heading: New prop "autoId" lets you autogenerate an ID based on the content
+  slugify: New export that lets you slugify a string
+
 ## 7.1.1
 
 ### Patch Changes

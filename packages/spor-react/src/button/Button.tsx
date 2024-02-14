@@ -122,7 +122,7 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
         visibility={isLoading ? "hidden" : "visible"}
         aria-hidden={isLoading}
       >
-        <Flex gap={1}>
+        <Flex gap={1} alignItems="center">
           {leftIcon}
           <Box
             visibility={isLoading ? "hidden" : "visible"}

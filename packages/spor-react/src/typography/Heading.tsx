@@ -1,5 +1,6 @@
 import { HeadingProps as ChakraHeadingProps, Text } from "@chakra-ui/react";
 import React from "react";
+import { slugify } from "..";
 import type { textStyles } from "../theme/foundations";
 
 export type HeadingProps = Omit<ChakraHeadingProps, "textStyle" | "as"> & {
@@ -7,6 +8,8 @@ export type HeadingProps = Omit<ChakraHeadingProps, "textStyle" | "as"> & {
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   /** The size and style of the heading. Defaults to xl-display */
   variant?: keyof typeof textStyles;
+  /** If true, generate an ID based on the children */
+  autoId?: boolean;
 };
 /**
  * Create your own fancy headings with this component.
@@ -23,11 +26,24 @@ export type HeadingProps = Omit<ChakraHeadingProps, "textStyle" | "as"> & {
  * ```tsx
  * <Heading as="h1" variant="2xl">Look at me!</Heading>
  * ```
+ *
+ * If you want to generate an ID based on the children, you can use the `autoId` prop.
+ * Please note that this only works with string children (not JSX, nor arrays of strings).
+ *
+ * ```tsx
+ * <Heading as="h1" autoId>Page heading</Heading> // Will set id="page-heading"
+ * ```
  */
 export const Heading = ({
   as,
   variant = "xl-display",
+  autoId = false,
+  id: externalId,
   ...props
 }: HeadingProps) => {
-  return <Text as={as} textStyle={variant} {...props} />;
+  const id =
+    externalId ?? (autoId && typeof props.children === "string")
+      ? slugify(props.children as string)
+      : undefined;
+  return <Text as={as} textStyle={variant} id={id} {...props} />;
 };

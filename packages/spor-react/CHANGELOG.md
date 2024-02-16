@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 7.2.2
+
+### Patch Changes
+
+- a36e39c: Lower the zIndex of form error messages
+
 ## 7.2.1
 
 ### Patch Changes

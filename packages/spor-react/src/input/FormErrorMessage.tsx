@@ -60,7 +60,7 @@ export const FormErrorMessage = ({
         position="absolute"
         top={-0.5}
         left={3}
-        zIndex="popover"
+        zIndex="dropdown"
         maxWidth="50ch"
         {...errorMessageProps}
         {...boxProps}

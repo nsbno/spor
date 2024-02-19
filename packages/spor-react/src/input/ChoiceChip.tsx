@@ -11,6 +11,7 @@ import React, { ChangeEvent, useId } from "react";
 export type ChoiceChipProps = {
   onChange?: (value: ChangeEvent<HTMLInputElement>) => void;
   isChecked?: boolean;
+  isDisabled?: boolean;
   defaultChecked?: boolean;
   /** The button text */
   children: React.ReactNode;
@@ -19,7 +20,8 @@ export type ChoiceChipProps = {
     checked: React.ReactNode;
   };
   size?: "sm" | "md" | "lg" | "xl";
-  variant?: "icon" | "choice" | "filter";
+  chipType?: "icon" | "choice" | "filter";
+  variant?: "base" | "accent" | "floating";
 };
 /**
  * Choice chips are checkboxes that look like selectable buttons.
@@ -52,7 +54,14 @@ export type ChoiceChipProps = {
  * ```
  */
 export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
-  const { children, icon, size = "md", variant = "choice" } = props;
+  const {
+    children,
+    icon,
+    isDisabled,
+    size = "md",
+    chipType = "choice",
+    variant = "base",
+  } = props;
 
   const {
     state,
@@ -63,6 +72,7 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
   } = useCheckbox(props);
   const styles = useMultiStyleConfig("ChoiceChip", {
     size,
+    chipType,
     variant,
     icon,
     hasLabel: Boolean(children),
@@ -76,7 +86,7 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
       {...getRootProps()}
       aria-label={String(children)}
     >
-      <chakra.input {...getInputProps({}, ref)} id={id} />
+      <chakra.input {...getInputProps({}, ref)} id={id} disabled={isDisabled} />
       <chakra.div
         {...getLabelProps()}
         __css={styles.container}
@@ -93,9 +103,9 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
         )}
 
         <chakra.span __css={styles.label} {...getCheckboxProps()}>
-          {variant !== "icon" && children}
+          {chipType !== "icon" && children}
         </chakra.span>
-        {variant === "filter" && state.isChecked && (
+        {chipType === "filter" && state.isChecked && (
           <CloseOutline24Icon marginLeft={1.5} />
         )}
       </chakra.div>

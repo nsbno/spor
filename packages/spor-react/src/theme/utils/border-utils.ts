@@ -88,3 +88,88 @@ export function floatingBorder(
       };
   }
 }
+
+type AccentBorderState = Subset<
+  State,
+  "default" | "hover" | "focus" | "active" | "selected"
+>;
+export function accentBorder(
+  state: AccentBorderState,
+  props: StyleFunctionProps,
+) {
+  switch (state) {
+    case "selected":
+      return {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("primaryGreen", "coralGreen")(props),
+          borderWidth: 2,
+        }),
+      };
+    case "active":
+      return {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("mint", "darkTeal")(props),
+          borderWidth: 2,
+        }),
+      };
+    case "hover":
+      return {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("coralGreen", "greenHaze")(props),
+          borderWidth: 2,
+        }),
+      };
+    case "focus":
+      return {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("greenHaze", "azure")(props),
+          borderWidth: 2,
+        }),
+      };
+    case "default":
+    default:
+      return {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("seaMist", "pine")(props),
+          borderWidth: 2,
+        }),
+      };
+  }
+}
+
+type BrandBorderState = Subset<
+  State,
+  "default" | "hover" | "focus" | "active" | "selected"
+>;
+
+export function brandBorder(
+  state: BrandBorderState,
+  props: StyleFunctionProps,
+) {
+  switch (state) {
+    case "selected":
+    case "active":
+      return {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("greenHaze", "seaMist")(props),
+          borderWidth: 2,
+        }),
+      };
+    case "hover":
+      return {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("darkTeal", "blueGreen")(props),
+          borderWidth: 2,
+        }),
+      };
+    case "focus":
+    case "default":
+    default:
+      return {
+        boxShadow: getBoxShadowString({
+          borderColor: mode("pine", "coralGreen")(props),
+          borderWidth: 2,
+        }),
+      };
+  }
+}

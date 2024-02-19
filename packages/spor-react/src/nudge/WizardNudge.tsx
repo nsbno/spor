@@ -22,15 +22,11 @@ import {
   useTranslation,
 } from "..";
 
-export type WizardNudgeProps = PopoverProps & {
+export type WizardNudgeProps = Omit<PopoverProps, "triggerElement"> & {
   /** Steps in the wizard. Each item is its own step. Should only be Step components */
   children: React.ReactElement<WizardNudgeStepProps>[];
-  /** The item the nudge is connected to visually.
-   *
-   * If you want a unique anchor for each step, you can use an array of elements.
-   * TODO: This doesn't work yet.
-   */
-  anchorElementRef: React.ElementRef<any> | React.ElementRef<any>[];
+  /** The element the wizard is anchored in */
+  anchorElement: React.ReactNode;
   /**
    * Where the nudge should be placed by default.
    *

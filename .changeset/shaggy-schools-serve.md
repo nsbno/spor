@@ -3,8 +3,8 @@
 ---
 
 utils:
-lagt til (accent og brand) i background, border,
-lagt til text
+added (accent og brand) to background, border,
+added text
 
 choiceChip:
 - We have renamed the variant prop to chipType. This prop now accepts three values: choice, icon, and filter. 

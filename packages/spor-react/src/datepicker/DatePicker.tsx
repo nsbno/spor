@@ -116,6 +116,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
             isOpen={state.isOpen}
             onOpen={state.open}
             onClose={state.close}
+            flip={false}
           >
             <InputGroup {...groupProps} display="inline-flex">
               <PopoverAnchor>

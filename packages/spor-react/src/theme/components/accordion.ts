@@ -1,11 +1,5 @@
 import { accordionAnatomy as parts } from "@chakra-ui/anatomy";
-import {
-  StyleFunctionProps,
-  createMultiStyleConfigHelpers,
-} from "@chakra-ui/styled-system";
-import { mode } from "@chakra-ui/theme-tools";
-import { colors, shadows } from "../foundations";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
 import { focusVisibleStyles } from "../utils/focus-util";
 import { baseText } from "../utils/text-utils";
 import {
@@ -13,7 +7,7 @@ import {
   floatingBackground,
   ghostBackground,
 } from "../utils/background-utils";
-import { baseBorder } from "../utils/border-utils";
+import { baseBorder, floatingBorder } from "../utils/border-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 const config = helpers.defineMultiStyleConfig({
@@ -81,29 +75,19 @@ const config = helpers.defineMultiStyleConfig({
     card: (props) => ({
       container: {
         ...floatingBackground("default", props),
-        boxShadow: getBoxShadowString({
-          baseShadow: mode<keyof typeof shadows>("sm", "none")(props),
-          borderColor: mode("silver", "whiteAlpha.400")(props),
-        }),
+        ...floatingBorder("default", props),
       },
       button: {
         _expanded: {
           borderBottomRadius: "none",
         },
         _hover: {
-          backgroundColor: mode("seaMist", "whiteAlpha.200")(props),
-          boxShadow: getBoxShadowString({
-            borderColor: mode("darkGrey", "white")(props),
-            borderWidth: 1,
-          }),
+          ...ghostBackground("hover", props),
+          ...floatingBorder("default", props),
         },
         _active: {
-          backgroundColor: mode("mint", "inherit")(props),
-          boxShadow: getBoxShadowString({
-            baseShadow: "none",
-            borderWidth: 1,
-            borderColor: mode("darkGrey", "whiteAlpha.400")(props),
-          }),
+          ...ghostBackground("active", props),
+          ...floatingBorder("default", props),
         },
       },
     }),
@@ -153,13 +137,3 @@ const config = helpers.defineMultiStyleConfig({
 });
 
 export default config;
-function ghostbackground(arg0: string, props: StyleFunctionProps): any {
-  throw new Error("Function not implemented.");
-}
-
-function baseborder(arg0: string, props: StyleFunctionProps): any {
-  throw new Error("Function not implemented.");
-}
-function basebackground(arg0: string, props: StyleFunctionProps): any {
-  throw new Error("Function not implemented.");
-}

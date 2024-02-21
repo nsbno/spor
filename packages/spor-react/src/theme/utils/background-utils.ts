@@ -51,7 +51,7 @@ export function ghostBackground(
     }
     case "active":
       return {
-        backgroundColor: mode("seaMist", "whiteAlpha.200")(props),
+        backgroundColor: mode("mint", "whiteAlpha.200")(props),
       };
     case "focus":
       return {

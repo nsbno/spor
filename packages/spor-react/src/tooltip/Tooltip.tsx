@@ -14,13 +14,13 @@ export type TooltipProps = PopoverProps & {
   /**
    * Whatever is supposed to trigger the tooltip.
    * Must be focusable - like a link or button */
-  triggerElement?: React.ReactNode;
+  children: React.ReactNode;
   /** Callback for when the tooltip is requested to close */
   onClose?: () => void;
   /** Should the tooltip have a close button? */
   withCloseButton?: boolean;
   /** The content of the tooltip */
-  children: React.ReactNode;
+  content: React.ReactNode;
   /** Use this prop if you want to control the open state */
   isOpen?: boolean;
   /** Whether or not the tooltip is open by default */
@@ -41,7 +41,7 @@ export type TooltipProps = PopoverProps & {
 /** A tooltip component. */
 export const Tooltip = ({
   children,
-  triggerElement,
+  content,
   onClose,
   isOpen,
   defaultIsOpen,
@@ -63,11 +63,11 @@ export const Tooltip = ({
         arrowShadowColor="none"
         {...props}
       >
-        {triggerElement && <PopoverTrigger>{triggerElement}</PopoverTrigger>}
+        <PopoverTrigger>{children}</PopoverTrigger>
         <PopoverContent borderRadius={borderRadius}>
           <PopoverArrow />
           {withCloseButton && <PopoverCloseButton />}
-          <PopoverBody>{children}</PopoverBody>
+          <PopoverBody>{content}</PopoverBody>
         </PopoverContent>
       </Popover>
     </DarkMode>

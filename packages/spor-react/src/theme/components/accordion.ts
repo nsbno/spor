@@ -44,7 +44,7 @@ const config = helpers.defineMultiStyleConfig({
     },
   }),
   variants: {
-    list: (props) => ({
+    ghost: (props) => ({
       button: {
         boxShadow: "none",
         _hover: {
@@ -55,7 +55,7 @@ const config = helpers.defineMultiStyleConfig({
         },
       },
     }),
-    outline: (props) => ({
+    base: (props) => ({
       container: {
         ...baseBorder("default", props),
       },
@@ -72,7 +72,7 @@ const config = helpers.defineMultiStyleConfig({
         },
       },
     }),
-    card: (props) => ({
+    floating: (props) => ({
       container: {
         ...floatingBackground("default", props),
         ...floatingBorder("default", props),
@@ -131,7 +131,7 @@ const config = helpers.defineMultiStyleConfig({
     },
   },
   defaultProps: {
-    variant: "list",
+    variant: "ghost",
     size: "sm",
   },
 });

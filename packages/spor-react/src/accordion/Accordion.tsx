@@ -26,12 +26,12 @@ export type AccordionProps = Omit<ChakraAccordionProps, "variant" | "size"> & {
    * - `outline` renders an outlined version
    * - `card` renders a version with a drop shadow
    */
-  variant?: "list" | "outline" | "card";
+  variant?: "ghost" | "base" | "floating";
   size?: "sm" | "md" | "lg";
   /** The margin between accordion items */
   spacing?: StackProps["spacing"];
 };
-/**
+/*
  * Wraps a set of ExpandableItem or AccordionItem components.
  *
  * ```tsx

@@ -35,6 +35,49 @@ type ExpandableAlertProps = BaseAlertProps & {
  * </ExpandableAlert>
  * ```
  */
+
+export function ExpandableAlertStyle (variant: string) {
+  switch (variant) {
+    case "info":
+      return {
+        _hover: {
+          backgroundColor: "lightBlue",
+        }
+       }
+    case "success":
+      return {
+        _hover: {
+          backgroundColor: "red",
+        }
+       }
+    case "warning":
+      return {
+        _hover: {
+          backgroundColor: "blue",
+        }
+       }
+    case "alt-transport":
+      return {
+        _hover: {
+          backgroundColor: "lightBlue",
+        }
+       }
+    case "error":
+      return {
+        _hover: {
+          backgroundColor: "lightBlue",
+        }
+       }
+    default:
+      return {
+        _hover: {
+          backgroundColor: "lightBlue",
+        }
+       }
+  }}
+
+
+
 export const ExpandableAlert = ({
   variant,
   children,
@@ -53,7 +96,9 @@ export const ExpandableAlert = ({
         flexGrow="1"
       >
         <AccordionItem>
-          <AccordionButton paddingX={3} paddingY={2} fontSize="inherit">
+          <AccordionButton paddingX={3} paddingY={2} fontSize="inherit"
+          _hover={{...ExpandableAlertStyle(variant)}}
+          >
             <Flex
               justifyContent="space-between"
               alignItems="center"

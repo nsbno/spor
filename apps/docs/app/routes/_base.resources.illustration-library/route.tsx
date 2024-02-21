@@ -20,8 +20,8 @@ import {
   NativeSelect,
   SearchInput,
   SimpleGrid,
-  Tooltip,
   Text,
+  Tooltip,
 } from "@vygruppen/spor-react";
 import { useMemo, useState } from "react";
 import { getClient } from "~/utils/sanity/client";
@@ -179,11 +179,9 @@ export default function IllustrationLibraryPage() {
                 <Tooltip
                   placement="top"
                   arrowPadding={2}
-                  triggerElement={
-                    <InformationOutline18Icon aria-label="Informasjon" />
-                  }
+                  content={illustration.description}
                 >
-                  {illustration.description}
+                  <InformationOutline18Icon aria-label="Informasjon" />
                 </Tooltip>
               </Flex>
               <Image

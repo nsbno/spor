@@ -36,7 +36,7 @@ type ExpandableProps = Omit<AccordionProps, "title"> & {
  * If you want several expandables in a row, use the `Accordion` and `ExpandableItem` components instead.
  *
  * ```tsx
- * <Expandable title="Click for more" variant="card" size="lg">
+ * <Expandable title="Click for more" variant="base" size="lg">
  *   <Text>MORE! 🎉</Text>
  * </Expandable>
  * ```
@@ -80,7 +80,7 @@ export type ExpandableItemProps = Omit<AccordionItemProps, "title"> & {
  * An item in a set of Expandables. Must be wrapped in an `<Accordion>` component.
  *
  * ```tsx
- * <Accordion variant="list" size="md">
+ * <Accordion variant="ghost" size="md">
  *  <ExpandableItem title="Is Spor easy?" headingLevel="h3">
  *    Yes
  *  </ExpandableItem>

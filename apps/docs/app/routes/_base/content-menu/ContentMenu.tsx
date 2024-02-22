@@ -30,7 +30,7 @@ export const ContentMenu = forwardRef((_, ref) => {
 
   return (
     <Accordion
-      variant="list"
+      variant="ghost"
       size="sm"
       allowToggle
       marginTop={6}

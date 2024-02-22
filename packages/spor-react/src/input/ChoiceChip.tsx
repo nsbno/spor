@@ -35,21 +35,22 @@ export type ChoiceChipProps = {
  * </Stack>
  * ```
  *
- * There are also three different variants - `icon`, `choice` and `filter`.
+ * There are also three different chipType - `icon`, `choice` and `filter`.
  *
  * ```tsx
  * <Stack flexDirection="row">
- *  <ChoiceChip variant="icon" icon={<Bus24Icon />}>Bus</ChoiceChip>
- *  <ChoiceChip variant="choice" icon={<Bus24Icon />}>Bus</ChoiceChip>
- *  <ChoiceChip variant="filter" icon={<Bus24Icon />}>Bus</ChoiceChip>
+ *  <ChoiceChip chipType="icon" icon={<Bus24Icon />}>Bus</ChoiceChip>
+ *  <ChoiceChip chipType="choice" icon={<Bus24Icon />}>Bus</ChoiceChip>
+ *  <ChoiceChip chipType="filter" icon={<Bus24Icon />}>Bus</ChoiceChip>
  * </Stack>
  *
- * You can add an icon as well, if you want to!
+ * There are also three different variants - `base`, `accent` and `floating`.
  *
  * ```tsx
  * <Stack flexDirection="row">
- *   <ChoiceChip size="md" icon={<BusIcon />}>Bus</ChoiceChip>
- *   <ChoiceChip size="lg" icon={<TrainIcon />}>Train</ChoiceChip>
+ *   <ChoiceChip variant="base">Bus</ChoiceChip>
+ *   <ChoiceChip variant="accent">Boat</ChoiceChip>
+ *   <ChoiceChip variant="floating">Train</ChoiceChip>
  * </Stack>
  * ```
  */

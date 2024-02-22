@@ -22,9 +22,9 @@ export type AccordionProps = Omit<ChakraAccordionProps, "variant" | "size"> & {
   /**
    * The display variant of the accordion items.
    *
-   * - `list` renders a pretty unstyled expandable list without any borders
-   * - `outline` renders an outlined version
-   * - `card` renders a version with a drop shadow
+   * - `ghost` renders a pretty unstyled expandable list without any borders
+   * - `base` renders an outlined version
+   * - `floating` renders a version with a drop shadow
    */
   variant?: "ghost" | "base" | "floating";
   size?: "sm" | "md" | "lg";
@@ -35,7 +35,7 @@ export type AccordionProps = Omit<ChakraAccordionProps, "variant" | "size"> & {
  * Wraps a set of ExpandableItem or AccordionItem components.
  *
  * ```tsx
- * <Accordion variant="list" size="md">
+ * <Accordion variant="ghost" size="md">
  *   <ExpandableItem title="Is Spor easy?" headingLevel="h3">
  *     Yes
  *   </ExpandableItem>

@@ -58,10 +58,6 @@ const config = helpers.defineMultiStyleConfig({
     },
     calendarTriggerButton: {
       backgroundColor: mode("white", "night")(props),
-      boxShadow: getBoxShadowString({
-        borderColor: mode("darkGrey", "white")(props),
-        borderWidth: 1,
-      }),
       width: 8,
       display: "flex",
       alignItems: "center",

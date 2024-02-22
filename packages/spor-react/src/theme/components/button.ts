@@ -147,7 +147,7 @@ const config = defineStyleConfig({
       minHeight: 5,
       minWidth: 5,
       fontSize: "16px",
-      
+
       fontWeight: "normal",
     },
   },

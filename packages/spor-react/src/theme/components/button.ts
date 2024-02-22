@@ -14,7 +14,6 @@ const config = defineStyleConfig({
     transitionProperty: "common",
     transitionDuration: "normal",
     textWrap: "wrap",
-    minWidth: "fit-content",
     paddingX: 3,
     paddingY: 1,
     _focus: {
@@ -148,7 +147,7 @@ const config = defineStyleConfig({
       minHeight: 5,
       minWidth: 5,
       fontSize: "16px",
-      paddingX: 2,
+      
       fontWeight: "normal",
     },
   },

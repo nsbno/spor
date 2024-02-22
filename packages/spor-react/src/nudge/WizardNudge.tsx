@@ -1,4 +1,4 @@
-import { usePopoverContext } from "@chakra-ui/react";
+import { Box, usePopoverContext } from "@chakra-ui/react";
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React, { useState } from "react";
 import {
@@ -59,7 +59,9 @@ export const WizardNudge = ({
             activeStep={currentStep}
             numberOfSteps={totalSteps}
           />
-          <NextOrCloseButton isLastStep={isLastStep} onNext={onNext} />
+          <Box>
+            <NextOrCloseButton isLastStep={isLastStep} onNext={onNext} />
+          </Box>
         </Flex>
       }
       {...props}
@@ -80,10 +82,9 @@ const NextOrCloseButton = ({ isLastStep, onNext }: NextOrCloseButtonProps) => {
     <Button
       variant="tertiary"
       size="xs"
-      color="white"
-      minWidth="fit-content"
       leftIcon={isLastStep ? undefined : <ArrowRightFill18Icon />}
       onClick={isLastStep ? onClose : onNext}
+      width="fit-content"
     >
       {t(isLastStep ? texts.finish : texts.nextStep)}
     </Button>

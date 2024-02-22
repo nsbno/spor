@@ -70,7 +70,7 @@ const EXPIRATION_DELAY = 1000 * 60 * 60 * 24 * 30; // 30 days
  *
  * ```tsx
  * <Nudge
- *   introducedDate="2024-02-19"
+ *  introducedDate="2024-02-19"
  *  name="my-nudge"
  *  content="Check out this enormous new feature!"
  * >

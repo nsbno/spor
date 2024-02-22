@@ -36,7 +36,6 @@ export type TooltipProps = PopoverProps & {
    * Tooltips with lots of content should be `lg`. Defaults to `sm`.
    **/
   size?: "sm" | "lg";
-  borderRadius?: string;
 };
 /** A tooltip component. */
 export const Tooltip = ({
@@ -48,7 +47,6 @@ export const Tooltip = ({
   placement = "bottom",
   size = "sm",
   withCloseButton = false,
-  borderRadius,
   ...props
 }: TooltipProps) => {
   return (
@@ -64,7 +62,7 @@ export const Tooltip = ({
         {...props}
       >
         <PopoverTrigger>{children}</PopoverTrigger>
-        <PopoverContent borderRadius={borderRadius}>
+        <PopoverContent>
           <PopoverArrow />
           {withCloseButton && <PopoverCloseButton />}
           <PopoverBody>{content}</PopoverBody>

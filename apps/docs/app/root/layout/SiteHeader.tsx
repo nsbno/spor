@@ -1,4 +1,4 @@
-import { Stack, useDisclosure } from "@chakra-ui/react";
+import { DarkMode, Stack, useDisclosure } from "@chakra-ui/react";
 import { Link, useLocation } from "@remix-run/react";
 import { HamburgerFill24Icon } from "@vygruppen/spor-icon-react";
 import {
@@ -68,19 +68,18 @@ const MobileNavigation = () => {
     // This doesn't close the menu when you're on the page you're clicking on,
     // but that's on you!
     onClose();
-  }, [location.pathname]);
+  }, [location.pathname, onClose]);
   return (
     <Flex display={["flex", null, null, "none"]}>
-      <IconButton
-        icon={<HamburgerFill24Icon />}
-        aria-label="Menu"
-        variant="ghost"
-        onClick={onOpen}
-        color="white"
-        _active={{
-          color: "greenHaze",
-        }}
-      />
+      <DarkMode>
+        <IconButton
+          icon={<HamburgerFill24Icon />}
+          aria-label="Menu"
+          variant="ghost"
+          size="md"
+          onClick={onOpen}
+        />
+      </DarkMode>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent marginX={[2, "auto"]}>

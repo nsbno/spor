@@ -39,7 +39,11 @@ export const ProgressIndicator = ({
     >
       <Box __css={style.container}>
         {Array.from({ length: numberOfSteps }, (_, i) => (
-          <ProgressDot aria-value={i + 1} isActive={activeStep === i + 1} />
+          <ProgressDot
+            key={i}
+            aria-value={i + 1}
+            isActive={activeStep === i + 1}
+          />
         ))}
       </Box>
     </Box>

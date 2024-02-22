@@ -84,6 +84,7 @@ export function floatingBorder(
       return {
         boxShadow: getBoxShadowString({
           borderColor: mode("grey.200", "whiteAlpha.400")(props),
+          baseShadow: "sm",
         }),
       };
   }

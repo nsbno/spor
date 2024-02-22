@@ -1,5 +1,55 @@
 # @vygruppen/spor-react
 
+## 8.0.0
+
+### Major Changes
+
+- 28af053: background.utils: updated active background for ghost
+
+  Accordion: The variation prop has been updated. It now accepts three values: ghost, base, and floating.
+  old list is now ghost,
+  old outline is now base,
+  old card is now floating.
+  bug fixes
+
+- e97614b: utils:
+  added (accent og brand) to background, border,
+  added text
+
+  choiceChip:
+
+  - We have renamed the variant prop to chipType. This prop now accepts three values: choice, icon, and filter.
+    Please update your components to use chipType instead of variant.
+  - We have introduced a new variant prop. This prop accepts three values: base, accent, and floating.
+    You can use this prop to change the appearance of the ChoiceChip.
+  - We have added a new disabled prop. You can use this prop to disable the ChoiceChip. When disabled is true, the ChoiceChip will be grayed out and won't respond to user interactions.
+    Please update your components to use these new props and options. If you have any questions or run into any issues, feel free to reach out to us.
+
+- fdd37ac: Tooltip: Change how the API works, so that it's more aligned with Nudges.
+
+  To migrate, you need to put the content of the tooltip in the `content` prop. The `triggerElement` prop is now renamed to `children`, so you can wrap whatever should trigger your tooltip in the `Tooltip` component:
+
+  ```tsx
+  <Tooltip content="This is my tooltip">
+    <IconButton
+      icon={<QuestionMark24FillIcon />}
+      variant="secondary"
+      aria-label="What's this?"
+    />
+  </Tooltip>
+  ```
+
+- a31e788: Popover, PopoverWizard:
+
+  The Popover component is now known as Nudge.
+  The PopoverWizard component is now known as WizardNudge.
+
+  The APIs have changed dramatically. Migrating shouldn't be too terrible though. Please refer to the new docs for the new ways to use it.
+
+### Patch Changes
+
+- 037412f: Accordion: bugfix, forgot to change to the new names
+
 ## 7.2.2
 
 ### Patch Changes

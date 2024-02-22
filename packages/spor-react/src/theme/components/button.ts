@@ -128,21 +128,25 @@ const config = defineStyleConfig({
   sizes: {
     lg: {
       minHeight: 8,
+      minWidth: 8,
       fontSize: "18px",
       fontWeight: "bold",
     },
     md: {
       minHeight: 7,
+      minWidth: 7,
       fontSize: "18px",
       fontWeight: "bold",
     },
     sm: {
       minHeight: 6,
+      minWidth: 6,
       fontSize: "16px",
       fontWeight: "normal",
     },
     xs: {
       minHeight: 5,
+      minWidth: 5,
       fontSize: "16px",
       paddingX: 2,
       fontWeight: "normal",

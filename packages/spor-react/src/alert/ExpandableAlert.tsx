@@ -10,6 +10,7 @@ import {
 import React from "react";
 import { AlertIcon } from "./AlertIcon";
 import { BaseAlert, BaseAlertProps } from "./BaseAlert";
+import { alertExpandableStyle } from "../theme/components/alert-expandable";
 
 type ExpandableAlertProps = BaseAlertProps & {
   /** The title string  */
@@ -35,49 +36,6 @@ type ExpandableAlertProps = BaseAlertProps & {
  * </ExpandableAlert>
  * ```
  */
-
-export function ExpandableAlertStyle (variant: string) {
-  switch (variant) {
-    case "info":
-      return {
-        _hover: {
-          backgroundColor: "lightBlue",
-        }
-       }
-    case "success":
-      return {
-        _hover: {
-          backgroundColor: "red",
-        }
-       }
-    case "warning":
-      return {
-        _hover: {
-          backgroundColor: "blue",
-        }
-       }
-    case "alt-transport":
-      return {
-        _hover: {
-          backgroundColor: "lightBlue",
-        }
-       }
-    case "error":
-      return {
-        _hover: {
-          backgroundColor: "lightBlue",
-        }
-       }
-    default:
-      return {
-        _hover: {
-          backgroundColor: "lightBlue",
-        }
-       }
-  }}
-
-
-
 export const ExpandableAlert = ({
   variant,
   children,
@@ -96,8 +54,11 @@ export const ExpandableAlert = ({
         flexGrow="1"
       >
         <AccordionItem>
-          <AccordionButton paddingX={3} paddingY={2} fontSize="inherit"
-          _hover={{...ExpandableAlertStyle(variant)}}
+          <AccordionButton
+            paddingX={3}
+            paddingY={2}
+            fontSize="inherit"
+            sx={alertExpandableStyle(variant)}
           >
             <Flex
               justifyContent="space-between"

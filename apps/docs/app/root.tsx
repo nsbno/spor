@@ -1,8 +1,7 @@
-import { ColorModeScript } from "@chakra-ui/react";
+import { ColorModeScript, cookieStorageManagerSSR } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
-import { json, LinksFunction } from "@remix-run/node";
+import { LinksFunction, LoaderFunctionArgs, json } from "@remix-run/node";
 import {
-  isRouteErrorResponse,
   Links,
   LiveReload,
   Meta,
@@ -10,22 +9,25 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  isRouteErrorResponse,
+  useLoaderData,
   useRouteError,
 } from "@remix-run/react";
-import { ReactNode, useContext, useEffect } from "react";
+import { Language, SporProvider } from "@vygruppen/spor-react";
+import { ReactNode, useContext, useEffect, useMemo } from "react";
+import { PortableTextProvider } from "./features/portable-text/PortableText";
+import { PageNotFound } from "./root/PageNotFound";
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";
-import { PageNotFound } from "./root/PageNotFound";
 import {
   ClientStyleContext,
   ServerStyleContext,
 } from "./root/setup/chakra-setup/styleContext";
 import { RootErrorBoundary } from "./root/setup/error-boundary/RootErrorBoundary";
 import { FontPreloading } from "./root/setup/font-loading/FontPreloading";
-import { RootProviders } from "./root/setup/RootProviders";
 import {
-  getInitialSanityData,
   InitialSanityData,
+  getInitialSanityData,
 } from "./utils/initialSanityData.server";
 import { urlBuilder } from "./utils/sanity/utils";
 
@@ -82,11 +84,12 @@ export const links: LinksFunction = () => {
 export type LoaderData = {
   initialSanityData: InitialSanityData;
 };
-export const loader = async () => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   const initialSanityData = await getInitialSanityData();
 
   return json({
     initialSanityData,
+    cookies: request.headers.get("cookie") ?? "",
   });
 };
 
@@ -135,8 +138,18 @@ const Document = withEmotionCache(
       clientStyleData.reset();
     }, []);
 
+    const { cookies } = useLoaderData<typeof loader>();
+
+    const colorMode = useTheColorMode();
+
     return (
-      <html lang="en-gb">
+      <html
+        lang="en-gb"
+        {...(colorMode && {
+          "data-theme": colorMode,
+          style: { colorScheme: colorMode },
+        })}
+      >
         <head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -152,12 +165,21 @@ const Document = withEmotionCache(
             />
           ))}
         </head>
-        <body>
-          <ColorModeScript />
-          <RootProviders>
-            <SkipToContent />
-            {children}
-          </RootProviders>
+        <body
+          {...(colorMode && {
+            className: `chakra-ui-${colorMode}`,
+          })}
+        >
+          <ColorModeScript initialColorMode="light" />
+          <SporProvider
+            language={Language.English}
+            colorModeManager={cookieStorageManagerSSR(cookies)}
+          >
+            <PortableTextProvider>
+              <SkipToContent />
+              {children}
+            </PortableTextProvider>
+          </SporProvider>
           <ScrollRestoration />
           <Scripts />
           {process.env.NODE_ENV === "development" && <LiveReload />}
@@ -176,3 +198,34 @@ export default function App() {
     </Document>
   );
 }
+
+/** Color mode stuff */
+const DEFAULT_COLOR_MODE: "dark" | "light" | null = "light";
+const CHAKRA_COOKIE_COLOR_KEY = "chakra-ui-color-mode";
+
+function getColorModeFromCookie(cookies: string) {
+  const match = cookies.match(
+    new RegExp(`(^| )${CHAKRA_COOKIE_COLOR_KEY}=([^;]+)`),
+  );
+  return match == null ? void 0 : match[2];
+}
+
+function getColorMode(cookies: string) {
+  if (typeof document !== "undefined") {
+    cookies = document.cookie;
+  }
+  return getColorModeFromCookie(cookies) ?? DEFAULT_COLOR_MODE;
+}
+
+const useTheColorMode = () => {
+  const { cookies } = useLoaderData<typeof loader>();
+  return useMemo(() => {
+    let color = getColorMode(cookies);
+
+    if (!color && DEFAULT_COLOR_MODE) {
+      color = DEFAULT_COLOR_MODE;
+    }
+
+    return color;
+  }, [cookies]);
+};

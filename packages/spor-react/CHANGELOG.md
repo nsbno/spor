@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 8.0.1
+
+### Patch Changes
+
+- 0488e4a: Tooltip, Nudge: Fix some bugs
+
 ## 8.0.0
 
 ### Major Changes

@@ -40,21 +40,30 @@ const config = defineStyleConfig({
     primary: (props) => ({
       color: mode("pine", "coralGreen")(props),
       _hover: {
-        color: mode("darkTeal", "white")(props),
-        backgroundColor: mode("coralGreen", "whiteAlpha.200")(props),
+        color: mode("white", "darkTeal")(props),
+        backgroundColor: mode("darkTeal", "blueGreen")(props),
       },
       _active: {
-        color: mode("pine", "white")(props),
-        backgroundColor: mode("mint", "whiteAlpha.100")(props),
+        color: mode("white", "darkTeal")(props),
+        backgroundColor: mode("greenHaze", "seaMist")(props),
       },
     }),
     secondary: (props) => ({
+      backgroundImage: `linear-gradient(${mode(
+        "blackAlpha.400",
+        "whiteAlpha.400",
+      )(props)}, ${mode("blackAlpha.400", "whiteAlpha.400")(props)})`,
       color: mode("darkGrey", "white")(props),
+      "&:focus, &:focus-visible, &:active, &:hover": {
+        outline: "solid",
+        outlineWidth: "1px",
+      },
       _hover: {
-        backgroundColor: mode("blackAlpha.100", "whiteAlpha.200")(props),
         color: mode("darkGrey", "white")(props),
+        outlineColor: mode("darkGrey", "white")(props),
       },
       _active: {
+        outlineColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
         backgroundColor: mode("mint", "whiteAlpha.100")(props),
         color: mode("darkGrey", "white")(props),
       },

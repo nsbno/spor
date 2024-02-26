@@ -1,6 +1,6 @@
 import { popoverAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { cssVar } from "@chakra-ui/theme-tools";
+import { cssVar, mode } from "@chakra-ui/theme-tools";
 import { focusVisibleStyles } from "../utils/focus-util";
 
 const $popperBg = cssVar("popper-bg");
@@ -15,10 +15,10 @@ const config = helpers.defineMultiStyleConfig({
       zIndex: "popover",
     },
     content: {
-      [$popperBg.variable]: `colors.darkTeal`,
+      [$popperBg.variable]: mode("colors.darkTeal", "colors.pine")(props),
       backgroundColor: $popperBg.reference,
       [$arrowBg.variable]: $popperBg.reference,
-      [$arrowShadowColor.variable]: `colors.blackAlpha.300`,
+      [$arrowShadowColor.variable]: "blackAlpha.300",
       color: "white",
       borderRadius: "sm",
       padding: 1.5,
@@ -39,15 +39,15 @@ const config = helpers.defineMultiStyleConfig({
       position: "absolute",
       color: "white",
       ...focusVisibleStyles(props),
+      _hover: {
+        backgroundColor: "whiteAlpha.100",
+      },
       _active: {
         backgroundColor: "whiteAlpha.200",
       },
       borderRadius: "sm",
       top: 2,
-      right: 2,
-      width: 2,
-      height: 2,
-      padding: 1,
+      right: 1,
     },
   }),
   sizes: {

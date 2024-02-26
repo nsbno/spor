@@ -98,15 +98,15 @@ export const Nudge = ({
     return null;
   }
   return (
-    <DarkMode>
-      <Popover
-        arrowSize={12}
-        arrowShadowColor="none"
-        defaultIsOpen={true}
-        {...props}
-      >
-        <PopoverAnchor>{children}</PopoverAnchor>
-        <PopoverContent borderRadius="sm">
+    <Popover
+      arrowSize={12}
+      arrowShadowColor="none"
+      defaultIsOpen={true}
+      {...props}
+    >
+      <PopoverAnchor>{children}</PopoverAnchor>
+      <PopoverContent borderRadius="sm">
+        <DarkMode>
           <PopoverArrow />
           <PopoverCloseButton />
           <PopoverBody margin={1}>
@@ -124,9 +124,9 @@ export const Nudge = ({
               )}
             </Box>
           </PopoverBody>
-        </PopoverContent>
-      </Popover>
-    </DarkMode>
+        </DarkMode>
+      </PopoverContent>
+    </Popover>
   );
 };
 

@@ -1,6 +1,7 @@
 import { checkboxAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-util";
+import { mode } from "@chakra-ui/theme-tools";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -9,17 +10,17 @@ const config = helpers.defineMultiStyleConfig({
     container: {
       _hover: {
         "input:enabled:not([aria-invalid]) + .chakra-checkbox__control": {
-          backgroundColor: "white",
-          borderColor: "primaryGreen",
+          backgroundColor: mode("white", "inherit")(props),
+          borderColor: mode("darkGrey", "white")(props),
         },
-        "input:enabled[aria-invalid] + .chakra-checkbox__control": {
-          backgroundColor: "white",
+        "input:enabled[aria-inval id] + .chakra-checkbox__control": {
+          backgroundColor: mode("white", "inherit")(props),
           borderColor: "brightRed",
         },
         "input:enabled:checked:not([aria-invalid]) + .chakra-checkbox__control":
           {
-            backgroundColor: "darkTeal",
-            borderColor: "darkTeal",
+            backgroundColor: mode("darkTeal", "blueGreen")(props),
+            borderColor: mode("darkTeal", "blueGreen")(props),
           },
         "input:enabled:checked[aria-invalid] + .chakra-checkbox__control": {
           backgroundColor: "brightRed",
@@ -38,23 +39,23 @@ const config = helpers.defineMultiStyleConfig({
       height: 4,
       transitionProperty: "background, border-color",
       transitionDuration: "normal",
-      backgroundColor: "white",
+      backgroundColor: mode("white", "inherit")(props),
       border: "2px solid",
-      borderColor: "darkTeal",
+      borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
       borderRadius: "xs",
-      color: "white",
+      color: mode("white", "darkTeal")(props),
 
       _checked: {
-        backgroundColor: "primaryGreen",
-        borderColor: "primaryGreen",
-        color: "white",
+        backgroundColor: mode("pine", "coralGreen")(props),
+        borderColor: mode("pine", "coralGreen")(props),
+        color: mode("white", "darkTeal")(props),
 
         ...focusVisibleStyles(props),
 
         _disabled: {
-          backgroundColor: "lightGrey",
-          borderColor: "steel",
-          color: "steel",
+          backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
+          borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
+          color: mode("blackAlpha.200", "whiteAlpha.200")(props),
         },
 
         _invalid: {
@@ -64,11 +65,11 @@ const config = helpers.defineMultiStyleConfig({
       },
 
       _disabled: {
-        backgroundColor: "lightGrey",
-        borderColor: "steel",
+        backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
+        borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
       },
       _invalid: {
-        backgroundColor: "white",
+        backgroundColor: mode("white", "inherit")(props),
         borderColor: "brightRed",
       },
     },

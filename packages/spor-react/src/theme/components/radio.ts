@@ -1,6 +1,7 @@
 import { radioAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-util";
+import { mode } from "@chakra-ui/theme-tools";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -9,11 +10,12 @@ const config = helpers.defineMultiStyleConfig({
     container: {
       _hover: {
         "input:enabled + .chakra-radio__control": {
-          backgroundColor: "white",
-          borderColor: "primaryGreen",
+          backgroundColor: "inherit",
+          borderColor: mode("darkGrey", "blueGreen")(props),
         },
         "input:enabled:checked + .chakra-radio__control": {
-          color: "darkTeal",
+          color: mode("darkTeal", "blueGreen")(props),
+          borderColor: mode("darkTeal", "blueGreen")(props),
         },
       },
     },
@@ -24,20 +26,21 @@ const config = helpers.defineMultiStyleConfig({
     control: {
       width: 4,
       height: 4,
-      backgroundColor: "white",
+      backgroundColor: "inherit",
       border: "2px solid",
-      borderColor: "primaryGreen",
+      borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
       borderRadius: "50%",
 
       ...focusVisibleStyles(props),
 
       _disabled: {
-        backgroundColor: "lightGrey",
-        borderColor: "steel",
+        backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
+        borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
+        color: mode("blackAlpha.200", "whiteAlpha.300")(props),
       },
       _checked: {
-        borderColor: "currentColor",
-        color: "primaryGreen",
+        borderColor: mode("pine", "coralGreen")(props),
+        color: mode("pine", "coralGreen")(props),
         _before: {
           content: `""`,
           display: "inline-block",
@@ -48,8 +51,9 @@ const config = helpers.defineMultiStyleConfig({
           background: "currentColor",
         },
         _disabled: {
-          backgroundColor: "lightGrey",
-          borderColor: "steel",
+          backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
+          borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
+          color: mode("blackAlpha.200", "whiteAlpha.300")(props),
         },
       },
     },

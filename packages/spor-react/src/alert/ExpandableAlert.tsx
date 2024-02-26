@@ -59,6 +59,7 @@ export const ExpandableAlert = ({
             paddingX={3}
             paddingY={2}
             fontSize="inherit"
+            _expanded={{borderBottomRadius: "none"}}
             sx={styles}
           >
             <Flex

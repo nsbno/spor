@@ -59,7 +59,7 @@ export const ExpandableAlert = ({
             paddingX={3}
             paddingY={2}
             fontSize="inherit"
-             sx={styles}
+            sx={styles}
           >
             <Flex
               justifyContent="space-between"

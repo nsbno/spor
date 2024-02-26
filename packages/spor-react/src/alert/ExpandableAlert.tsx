@@ -45,6 +45,7 @@ export const ExpandableAlert = ({
   onToggle = () => {},
   ...boxProps
 }: ExpandableAlertProps) => {
+  const styles = alertExpandableStyle(variant);
   return (
     <BaseAlert variant={variant} {...boxProps} paddingX={0} paddingY={0}>
       <Accordion
@@ -58,7 +59,7 @@ export const ExpandableAlert = ({
             paddingX={3}
             paddingY={2}
             fontSize="inherit"
-            sx={alertExpandableStyle(variant)}
+             sx={styles}
           >
             <Flex
               justifyContent="space-between"

@@ -1,9 +1,24 @@
+import { anatomy } from "@chakra-ui/anatomy";
+import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
 import { getBoxShadowString } from "../utils/box-shadow-utils";
 
-export function alertExpandableStyle(variant: string) {
-  switch (variant) {
-    case "info":
-      return {
+const parts = anatomy("alertExpandable").parts("container");
+const helpers = createMultiStyleConfigHelpers(parts.keys);
+
+const config = helpers.defineMultiStyleConfig({
+  baseStyle: {
+    container: {
+      paddingX: 3,
+      paddingY: 2,
+      fontSize: "inherit",
+      _expanded: {
+        borderBottomRadius: "none",
+      },
+    },
+  },
+  variants: {
+    info: {
+      container: {
         _hover: {
           boxShadow: getBoxShadowString({
             borderColor: "sky",
@@ -13,9 +28,10 @@ export function alertExpandableStyle(variant: string) {
         _active: {
           backgroundColor: "icyBlue",
         },
-      };
-    case "success":
-      return {
+      },
+    },
+    success: {
+      container: {
         _hover: {
           boxShadow: getBoxShadowString({
             borderColor: "blueGreen",
@@ -25,9 +41,10 @@ export function alertExpandableStyle(variant: string) {
         _active: {
           backgroundColor: "mint",
         },
-      };
-    case "warning":
-      return {
+      },
+    },
+    warning: {
+      container: {
         _hover: {
           boxShadow: getBoxShadowString({
             borderColor: "sunshine",
@@ -37,9 +54,10 @@ export function alertExpandableStyle(variant: string) {
         _active: {
           backgroundColor: "cornSilk",
         },
-      };
-    case "alt-transport":
-      return {
+      },
+    },
+    "alt-transport": {
+      container: {
         _hover: {
           boxShadow: getBoxShadowString({
             borderColor: "golden",
@@ -49,9 +67,10 @@ export function alertExpandableStyle(variant: string) {
         _active: {
           backgroundColor: "sunshine",
         },
-      };
-    case "error":
-      return {
+      },
+    },
+    error: {
+      container: {
         _hover: {
           boxShadow: getBoxShadowString({
             borderColor: "apricot",
@@ -61,6 +80,12 @@ export function alertExpandableStyle(variant: string) {
         _active: {
           backgroundColor: "pink",
         },
-      };
-  }
-}
+      },
+    },
+  },
+  defaultProps: {
+    variant: "info",
+  },
+});
+
+export default config;

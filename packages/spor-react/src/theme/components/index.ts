@@ -36,3 +36,4 @@ export { default as Tabs } from "./tabs";
 export { default as Textarea } from "./textarea";
 export { default as Toast } from "./toast";
 export { default as TravelTag } from "./travel-tag";
+export { default as AlertExpandable } from "./alert-expandable";

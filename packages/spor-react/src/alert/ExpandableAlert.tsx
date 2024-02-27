@@ -6,6 +6,7 @@ import {
   AccordionPanel,
   Box,
   Flex,
+  useMultiStyleConfig,
 } from "@chakra-ui/react";
 import React from "react";
 import { AlertIcon } from "./AlertIcon";
@@ -44,6 +45,7 @@ export const ExpandableAlert = ({
   onToggle = () => {},
   ...boxProps
 }: ExpandableAlertProps) => {
+  const styles = useMultiStyleConfig("AlertExpandable", { variant });
   return (
     <BaseAlert variant={variant} {...boxProps} paddingX={0} paddingY={0}>
       <Accordion
@@ -53,7 +55,7 @@ export const ExpandableAlert = ({
         flexGrow="1"
       >
         <AccordionItem>
-          <AccordionButton paddingX={3} paddingY={2} fontSize="inherit">
+          <AccordionButton sx={styles.container}>
             <Flex
               justifyContent="space-between"
               alignItems="center"

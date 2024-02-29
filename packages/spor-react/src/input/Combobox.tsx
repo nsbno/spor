@@ -11,6 +11,8 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
   isLoading?: boolean;
   /** Optional UI to show when there are no matching items */
   emptyContent?: React.ReactNode;
+  /** A ref to the input field */
+  inputRef?: React.RefObject<HTMLInputElement>;
 } & Pick<
     InputProps,
     | "marginTop"
@@ -78,11 +80,13 @@ export function Combobox<T extends object>({
   paddingX,
   paddingY,
   emptyContent,
+  inputRef: externalInputRef,
   ...rest
 }: ComboboxProps<T>) {
   const { contains } = useFilter({ sensitivity: "base" });
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const fallbackInputRef = useRef<HTMLInputElement>(null);
+  const inputRef = externalInputRef ?? fallbackInputRef;
   const listBoxRef = useRef(null);
   const popoverRef = useRef(null);
 

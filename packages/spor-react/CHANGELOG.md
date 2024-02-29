@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 8.1.0
+
+### Minor Changes
+
+- 3c599d7: Combobox: Add inputRef prop
+
+### Patch Changes
+
+- c084847: ExpandableAlerts: added new hover and active styling for this component
+
 ## 8.0.1
 
 ### Patch Changes

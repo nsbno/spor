@@ -100,7 +100,7 @@ export default function IllustrationLibraryPage() {
       .filter(
         (illustration) =>
           illustration.title.toLowerCase().includes(normalizedSearchValue) ||
-          illustration.tags.includes(normalizedSearchValue),
+          illustration.tags?.includes(normalizedSearchValue),
       );
   }, [illustrations, searchValue, size]);
 

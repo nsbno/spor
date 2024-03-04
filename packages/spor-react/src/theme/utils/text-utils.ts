@@ -38,3 +38,23 @@ export function accentText(state: AccentTextState, props: StyleFunctionProps) {
       };
   }
 }
+
+type BrandTextState = Subset<State, "hover" | "active" | "default">;
+
+export function brandText(state: BrandTextState, props: StyleFunctionProps) {
+  switch (state) {
+    case "hover":
+      return {
+        color: mode("white", "darkTeal")(props),
+      };
+    case "active":
+      return {
+        color: mode("white", "darkTeal")(props),
+      };
+    case "default":
+    default:
+      return {
+        color: mode("pine", "coralGreen")(props),
+      };
+  }
+}

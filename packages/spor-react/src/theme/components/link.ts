@@ -1,6 +1,8 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { focusVisibleStyles } from "../utils/focus-util";
+import { baseBackground, brandBackground } from "../utils/background-utils";
+import { baseText, brandText } from "../utils/text-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props) => ({
@@ -38,14 +40,14 @@ const config = defineStyleConfig({
   }),
   variants: {
     primary: (props) => ({
-      color: mode("pine", "coralGreen")(props),
+      ...brandText("default", props),
       _hover: {
-        color: mode("white", "darkTeal")(props),
-        backgroundColor: mode("darkTeal", "blueGreen")(props),
+        ...brandText("hover", props),
+        ...brandBackground("hover", props),
       },
       _active: {
-        color: mode("white", "darkTeal")(props),
-        backgroundColor: mode("greenHaze", "seaMist")(props),
+        ...brandText("active", props),
+        ...brandBackground("active", props),
       },
     }),
     secondary: (props) => ({
@@ -53,19 +55,19 @@ const config = defineStyleConfig({
         "blackAlpha.400",
         "whiteAlpha.400",
       )(props)}, ${mode("blackAlpha.400", "whiteAlpha.400")(props)})`,
-      color: mode("darkGrey", "white")(props),
+      ...baseText("default", props),
       "&:focus, &:focus-visible, &:active, &:hover": {
         outline: "solid",
         outlineWidth: "1px",
       },
+      ...baseBackground("default", props),
       _hover: {
-        color: mode("darkGrey", "white")(props),
         outlineColor: mode("darkGrey", "white")(props),
+        ...baseBackground("hover", props),
       },
       _active: {
         outlineColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-        backgroundColor: mode("mint", "whiteAlpha.100")(props),
-        color: mode("darkGrey", "white")(props),
+        ...baseBackground("active", props),
       },
     }),
   },

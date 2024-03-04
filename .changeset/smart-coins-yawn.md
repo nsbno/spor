@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": patch
 ---
 
-Updated TextLink colors for variants primary and secondary to align with figma.
+TextLink: Updated colors for primary and secondary variants to align with Figma

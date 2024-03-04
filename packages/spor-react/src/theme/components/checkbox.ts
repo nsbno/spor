@@ -2,6 +2,8 @@ import { checkboxAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-util";
 import { mode } from "@chakra-ui/theme-tools";
+import { baseBackground } from "../utils/background-utils";
+import { baseText } from "../utils/text-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -10,7 +12,7 @@ const config = helpers.defineMultiStyleConfig({
     container: {
       _hover: {
         "input:enabled:not([aria-invalid]) + .chakra-checkbox__control": {
-          backgroundColor: mode("white", "inherit")(props),
+          ...baseBackground("hover", props),
           borderColor: mode("darkGrey", "white")(props),
         },
         "input:enabled[aria-invalid] + .chakra-checkbox__control": {
@@ -39,21 +41,22 @@ const config = helpers.defineMultiStyleConfig({
       height: 4,
       transitionProperty: "background, border-color",
       transitionDuration: "normal",
-      backgroundColor: mode("white", "inherit")(props),
       border: "2px solid",
       borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
       borderRadius: "xs",
       color: mode("white", "darkTeal")(props),
+      ...baseBackground("default", props),
 
       _checked: {
-        backgroundColor: mode("pine", "coralGreen")(props),
+        ...baseBackground("selected", props),
         borderColor: mode("pine", "coralGreen")(props),
+        ...baseText("default", props),
         color: mode("white", "darkTeal")(props),
 
         ...focusVisibleStyles(props),
 
         _disabled: {
-          backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
+          ...baseBackground("disabled", props),
           borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
           color: mode("blackAlpha.200", "whiteAlpha.200")(props),
         },
@@ -65,11 +68,11 @@ const config = helpers.defineMultiStyleConfig({
       },
 
       _disabled: {
-        backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
+        ...baseBackground("disabled", props),
         borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
       },
       _invalid: {
-        backgroundColor: mode("white", "inherit")(props),
+        ...baseBackground("default", props),
         borderColor: "brightRed",
       },
     },

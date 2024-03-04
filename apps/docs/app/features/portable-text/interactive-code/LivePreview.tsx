@@ -20,7 +20,7 @@ export const LivePreview = (props: BoxProps) => {
         position="relative"
         {...props}
       >
-        <Box position="absolute" top={2} right={2} zIndex="popover">
+        <Box position="absolute" top={2} right={2}>
           <IconButton
             size="sm"
             variant="tertiary"

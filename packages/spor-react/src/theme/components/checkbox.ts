@@ -13,7 +13,7 @@ const config = helpers.defineMultiStyleConfig({
           backgroundColor: mode("white", "inherit")(props),
           borderColor: mode("darkGrey", "white")(props),
         },
-        "input:enabled[aria-inval id] + .chakra-checkbox__control": {
+        "input:enabled[aria-invalid] + .chakra-checkbox__control": {
           backgroundColor: mode("white", "inherit")(props),
           borderColor: "brightRed",
         },

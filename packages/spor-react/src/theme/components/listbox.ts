@@ -44,7 +44,10 @@ const config = helpers.defineMultiStyleConfig({
       _hover: {
         ...ghostBackground("hover", props),
       },
-      ...focusVisibleStyles(props),
+      _focus: {
+        ...ghostBackground("selected", props),
+        ...focusVisibleStyles(props)._focusVisible,
+      },
       _selected: {
         ...ghostBackground("selected", props),
       },

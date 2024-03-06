@@ -13,6 +13,8 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
   emptyContent?: React.ReactNode;
   /** A ref to the input field */
   inputRef?: React.RefObject<HTMLInputElement>;
+  /** If you want to allow an empty collection */
+  allowsEmptyCollection?: boolean;
 } & Pick<
     InputProps,
     | "marginTop"
@@ -81,6 +83,7 @@ export function Combobox<T extends object>({
   paddingY,
   emptyContent,
   inputRef: externalInputRef,
+  allowsEmptyCollection,
   ...rest
 }: ComboboxProps<T>) {
   const { contains } = useFilter({ sensitivity: "base" });

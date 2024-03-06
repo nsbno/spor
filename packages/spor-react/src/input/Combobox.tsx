@@ -93,11 +93,11 @@ export function Combobox<T extends object>({
   const inputWidth = useInputWidth(inputRef);
 
   const state = useComboBoxState({
-    ...rest,
-    defaultFilter: contains,
     allowsEmptyCollection: Boolean(emptyContent),
+    defaultFilter: contains,
     shouldCloseOnBlur: true,
     label,
+    ...rest,
   });
 
   const {

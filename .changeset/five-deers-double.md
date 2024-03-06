@@ -1,5 +1,5 @@
 ---
-"@vygruppen/spor-react": patch
+"@vygruppen/spor-react": minor
 ---
 
 ListBox: Fix a focus bug

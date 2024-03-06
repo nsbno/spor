@@ -45,7 +45,6 @@ const config = helpers.defineMultiStyleConfig({
       },
       _focus: {
         ...ghostBackground("selected", props),
-        //...focusVisibleStyles(props)._focusVisible,
       },
       _selected: {
         ...ghostBackground("selected", props),

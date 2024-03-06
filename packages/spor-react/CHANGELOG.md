@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 8.1.1
+
+### Patch Changes
+
+- 5c87f0c: ListBox: Fix focus styles for listbox
+- 7011328: TextLink: Updated colors for primary and secondary variants to align with Figma
+
 ## 8.1.0
 
 ### Minor Changes

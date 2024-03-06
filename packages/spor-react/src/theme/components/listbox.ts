@@ -3,7 +3,6 @@ import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { ghostBackground } from "../utils/background-utils";
-import { focusVisibleStyles } from "../utils/focus-util";
 
 const parts = anatomy("ListBox").parts(
   "container",
@@ -46,7 +45,7 @@ const config = helpers.defineMultiStyleConfig({
       },
       _focus: {
         ...ghostBackground("selected", props),
-        ...focusVisibleStyles(props)._focusVisible,
+        //...focusVisibleStyles(props)._focusVisible,
       },
       _selected: {
         ...ghostBackground("selected", props),

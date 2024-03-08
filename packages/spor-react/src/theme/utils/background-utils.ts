@@ -1,6 +1,6 @@
 import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
-import { State, Subset } from "./types";
 import { colors } from "../foundations";
+import { State, Subset } from "./types";
 
 type BaseBackgroundState = Subset<
   State,
@@ -13,15 +13,24 @@ export function baseBackground(
   switch (state) {
     case "active":
       return {
-        backgroundColor: mode("mint", "whiteAlpha.100")(props),
+        backgroundColor: mode(
+          "base.button.active.light",
+          "base.button.active.dark",
+        )(props),
       };
     case "selected":
       return {
-        backgroundColor: mode("pine", "coralGreen")(props),
+        backgroundColor: mode(
+          "base.button.selected.light",
+          "base.button.selected.dark",
+        )(props),
       };
     case "disabled":
       return {
-        backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
+        backgroundColor: mode(
+          "surface.disabled.light",
+          "surface.disabled.dark",
+        )(props),
       };
     case "hover":
       return {
@@ -46,17 +55,24 @@ export function ghostBackground(
   switch (state) {
     case "hover": {
       return {
-        backgroundColor: mode("seaMist", "whiteAlpha.100")(props),
+        backgroundColor: mode(
+          "ghost.button.hover.light",
+          "ghost.button.hover.dark",
+        )(props),
       };
     }
     case "active":
       return {
-        backgroundColor: mode("mint", "whiteAlpha.200")(props),
+        backgroundColor: mode(
+          "ghost.button.active.light",
+          "ghost.button.active.dark",
+        )(props),
       };
     case "focus":
       return {
         backgroundColor: "transparent",
       };
+    // TODO: Is this used anywhere?
     case "selected": {
       return {
         backgroundColor: mode("mint", "whiteAlpha.200")(props),
@@ -82,24 +98,28 @@ export function floatingBackground(
   switch (state) {
     case "selected":
       return {
-        backgroundColor: mode("mint", "pine")(props),
+        backgroundColor: mode(
+          "floating.surface.selected.light",
+          "floating.surface.selected.dark",
+        )(props),
       };
     case "active":
       return {
         backgroundColor: mode(
-          "mint",
-          `color-mix(in srgb, ${props.theme.colors.accent}, ${colors.white} 30%)`,
+          "floating.surface.active.light",
+          "floating.surface.active.dark",
         )(props),
       };
     case "hover":
       return {
         backgroundColor: mode(
-          "white",
-          `color-mix(in srgb, ${props.theme.colors.accent}, ${colors.white} 20%)`,
+          "floating.surface.hover.light",
+          "floating.surface.hover.dark",
         )(props),
       };
     case "focus":
       return {
+        // TODO: Is this required?
         backgroundColor: mode(
           "white",
           `color-mix(in srgb, ${props.theme.colors.accent}, ${colors.white} 40%)`,
@@ -109,8 +129,8 @@ export function floatingBackground(
     default:
       return {
         backgroundColor: mode(
-          "white",
-          `color-mix(in srgb, ${props.theme.colors.accent}, ${colors.white} 10%)`,
+          "floating.surface.default.light",
+          "floating.surface.default.dark",
         )(props),
       };
   }
@@ -118,7 +138,7 @@ export function floatingBackground(
 
 type AccentBackgroundState = Subset<
   State,
-  "default" | "hover" | "focus" | "active" | "selected"
+  "default" | "hover" | "active" | "selected"
 >;
 
 export function accentBackground(
@@ -128,24 +148,32 @@ export function accentBackground(
   switch (state) {
     case "selected":
       return {
-        backgroundColor: mode("primaryGreen", "coralGreen")(props),
+        backgroundColor: mode(
+          "accent.button.selected.light",
+          "accent.button.selected.dark",
+        )(props),
       };
     case "active":
       return {
-        backgroundColor: mode("mint", "darkTeal")(props),
+        backgroundColor: mode(
+          "accent.button.active.light",
+          "accent.button.active.dark",
+        )(props),
       };
     case "hover":
       return {
-        backgroundColor: mode("coralGreen", "greenHaze")(props),
-      };
-    case "focus":
-      return {
-        backgroundColor: mode("greenHaze", "azure")(props),
+        backgroundColor: mode(
+          "accent.button.hover.light",
+          "accent.button.hover.dark",
+        )(props),
       };
     case "default":
     default:
       return {
-        backgroundColor: mode("seaMist", "pine")(props),
+        backgroundColor: mode(
+          "accent.button.default.light",
+          "accent.button.default.dark",
+        )(props),
       };
   }
 }
@@ -163,17 +191,26 @@ export function brandBackground(
     case "selected":
     case "active":
       return {
-        backgroundColor: mode("greenHaze", "seaMist")(props),
+        backgroundColor: mode(
+          "brand.button.active.light",
+          "brand.button.active.dark",
+        )(props),
       };
     case "hover":
       return {
-        backgroundColor: mode("darkTeal", "blueGreen")(props),
+        backgroundColor: mode(
+          "brand.button.hover.light",
+          "brand.button.hover.dark",
+        )(props),
       };
     case "focus":
     case "default":
     default:
       return {
-        backgroundColor: mode("pine", "coralGreen")(props),
+        backgroundColor: mode(
+          "brand.button.default.light",
+          "brand.button.default.dark",
+        )(props),
       };
   }
 }

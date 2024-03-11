@@ -1,8 +1,9 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
-import { focusVisibleStyles } from "../utils/focus-util";
 import { baseBackground, brandBackground } from "../utils/background-utils";
-import { baseText, brandText } from "../utils/text-utils";
+import { baseBorder } from "../utils/border-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
+import { accentText, baseText, brandText } from "../utils/text-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props) => ({
@@ -40,7 +41,7 @@ const config = defineStyleConfig({
   }),
   variants: {
     primary: (props) => ({
-      ...brandText("default", props),
+      ...accentText("default", props), // TODO: This must be something else
       _hover: {
         ...brandText("hover", props),
         ...brandBackground("hover", props),
@@ -57,16 +58,15 @@ const config = defineStyleConfig({
       )(props)}, ${mode("blackAlpha.400", "whiteAlpha.400")(props)})`,
       ...baseText("default", props),
       "&:focus, &:focus-visible, &:active, &:hover": {
-        outline: "solid",
-        outlineWidth: "1px",
+        outline: "1px solid",
       },
       ...baseBackground("default", props),
       _hover: {
-        outlineColor: mode("darkGrey", "white")(props),
+        ...baseBorder("hover", props), // TODO: This is also weird
         ...baseBackground("hover", props),
+        outlineWidth: 1,
       },
       _active: {
-        outlineColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
         ...baseBackground("active", props),
       },
     }),

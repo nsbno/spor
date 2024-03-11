@@ -1,24 +1,20 @@
 import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { State, Subset } from "./types";
-import { colors } from "../foundations";
 
 type BaseTextState = Subset<State, "default" | "selected" | "disabled">;
 export function baseText(state: BaseTextState, props: StyleFunctionProps) {
   switch (state) {
     case "selected":
       return {
-        color: mode("white", "darkTeal")(props),
+        color: mode("brand.text.light", "brand.text.dark")(props),
       };
     case "disabled":
       return {
-        color: mode(
-          "white",
-          `color-mix(in srgb, ${props.theme.colors.accent}, ${colors.white} 40%)`,
-        )(props),
+        color: mode("text.disabled.light", "text.disabled.dark")(props),
       };
     default:
       return {
-        color: mode("darkGrey", "white")(props),
+        color: mode("base.text.default.light", "base.text.default.dark")(props),
       };
   }
 }
@@ -29,12 +25,17 @@ export function accentText(state: AccentTextState, props: StyleFunctionProps) {
   switch (state) {
     case "selected":
       return {
-        color: mode("white", "darkTeal")(props),
+        color: mode(
+          "accent.text.selected.light",
+          "accent.text.selected.dark",
+        )(props),
       };
-    case "default":
     default:
       return {
-        color: mode("darkTeal", "seaMist")(props),
+        color: mode(
+          "accent.text.default.light",
+          "accent.text.default.dark",
+        )(props),
       };
   }
 }
@@ -42,19 +43,7 @@ export function accentText(state: AccentTextState, props: StyleFunctionProps) {
 type BrandTextState = Subset<State, "hover" | "active" | "default">;
 
 export function brandText(state: BrandTextState, props: StyleFunctionProps) {
-  switch (state) {
-    case "hover":
-      return {
-        color: mode("white", "darkTeal")(props),
-      };
-    case "active":
-      return {
-        color: mode("white", "darkTeal")(props),
-      };
-    case "default":
-    default:
-      return {
-        color: mode("pine", "coralGreen")(props),
-      };
-  }
+  return {
+    color: mode("brand.text.light", "brand.text.dark")(props),
+  };
 }

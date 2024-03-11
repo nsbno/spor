@@ -1,5 +1,5 @@
 import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
-import { getBoxShadowString } from "./box-shadow-utils";
+import { focusVisibleStyles } from "./focus-util";
 import { State, Subset } from "./types";
 
 type BorderState = Subset<
@@ -11,46 +11,45 @@ export function baseBorder(state: BorderState, props: StyleFunctionProps) {
   switch (state) {
     case "hover":
       return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("darkGrey", "white")(props),
-          borderWidth: 2,
-        }),
+        outline: "2px solid",
+        outlineColor: mode(
+          "outline.default.light",
+          "outline.default.dark",
+        )(props),
       };
     case "focus": {
-      return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("greenHaze", "azure")(props),
-          borderWidth: 2,
-        }),
-      };
+      return focusVisibleStyles(props)._focusVisible;
     }
     case "disabled": {
       return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("platinum", "whiteAlpha.400")(props),
-        }),
+        outline: "1px solid",
+        outlineColor: mode(
+          "outline.disabled.light",
+          "outline.disabled.dark",
+        )(props),
       };
     }
-    case "selected":
-      return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("greenHaze", "azure")(props),
-        }),
-      };
+    // TODO: Base doesn't have selected borders
+    // case "selected":
+    //   return {
+    //     boxShadow: getBoxShadowString({
+    //       borderColor: mode("greenHaze", "azure")(props),
+    //     }),
+    //   };
     case "invalid": {
       return {
-        boxShadow: getBoxShadowString({
-          borderColor: "brightRed",
-          borderWidth: 2,
-        }),
+        outline: "2px solid",
+        outlineColor: mode("outline.error.light", "outline.error.dark")(props),
       };
     }
     case "default":
     default:
       return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-        }),
+        outline: "1px solid",
+        outlineColor: mode(
+          "base.outline.default.light",
+          "base.outline.default.dark",
+        )(props),
       };
   }
 }
@@ -66,111 +65,19 @@ export function floatingBorder(
   switch (state) {
     case "hover":
       return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("grey.300", "white")(props),
-        }),
+        outline: "1px solid",
+        outlineColor: mode(
+          "floating.outline.hover.light",
+          "floating.outline.hover.dark",
+        )(props),
       };
-    case "selected":
-    case "focus":
-      return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("greenHaze", "azure")(props),
-          borderWidth: 2,
-        }),
-      };
-    case "active":
-    case "default":
     default:
       return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("grey.200", "whiteAlpha.400")(props),
-          baseShadow: "sm",
-        }),
-      };
-  }
-}
-
-type AccentBorderState = Subset<
-  State,
-  "default" | "hover" | "focus" | "active" | "selected"
->;
-export function accentBorder(
-  state: AccentBorderState,
-  props: StyleFunctionProps,
-) {
-  switch (state) {
-    case "selected":
-      return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("primaryGreen", "coralGreen")(props),
-          borderWidth: 2,
-        }),
-      };
-    case "active":
-      return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("mint", "darkTeal")(props),
-          borderWidth: 2,
-        }),
-      };
-    case "hover":
-      return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("coralGreen", "greenHaze")(props),
-          borderWidth: 2,
-        }),
-      };
-    case "focus":
-      return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("greenHaze", "azure")(props),
-          borderWidth: 2,
-        }),
-      };
-    case "default":
-    default:
-      return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("seaMist", "pine")(props),
-          borderWidth: 2,
-        }),
-      };
-  }
-}
-
-type BrandBorderState = Subset<
-  State,
-  "default" | "hover" | "focus" | "active" | "selected"
->;
-
-export function brandBorder(
-  state: BrandBorderState,
-  props: StyleFunctionProps,
-) {
-  switch (state) {
-    case "selected":
-    case "active":
-      return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("greenHaze", "seaMist")(props),
-          borderWidth: 2,
-        }),
-      };
-    case "hover":
-      return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("darkTeal", "blueGreen")(props),
-          borderWidth: 2,
-        }),
-      };
-    case "focus":
-    case "default":
-    default:
-      return {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("pine", "coralGreen")(props),
-          borderWidth: 2,
-        }),
+        outline: "1px solid",
+        outlineColor: mode(
+          "floating.outline.default.light",
+          "floating.outline.default.dark",
+        )(props),
       };
   }
 }

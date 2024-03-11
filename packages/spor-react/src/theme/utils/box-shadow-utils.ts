@@ -21,11 +21,11 @@ export const getBoxShadowString = (
   const allShadows: string[] = [];
 
   if (borderColor) {
-    let color = borderColor;
+    let color = borderColor as string;
     if (borderColor in colors) {
       color = colors[borderColor as keyof typeof colors] as string;
     } else {
-      const [subgroup, value] = borderColor.split(".");
+      const [subgroup, value] = String(borderColor).split(".");
       const subgroupValue = (colors[subgroup as keyof ColorsType] as any)?.[
         value
       ];

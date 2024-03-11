@@ -1,6 +1,6 @@
 {
   "color": {
-    "vy": {
+    "vyDigital": {
       "bg": {
         "default": {
           "light": {
@@ -138,14 +138,6 @@
             "value": "{color.alias.darkTeal.value}"
           }
         },
-        "tertiary": {
-          "light": {
-            "value": "{color.alias.darkTeal.value}"
-          },
-          "dark": {
-            "value": "{color.alias.pine.value}"
-          }
-        },
         "disabled": {
           "light": {
             "value": "{color.palette.blackAlpha.100.value}"
@@ -156,7 +148,7 @@
         }
       },
       "base": {
-        "button": {
+        "surface": {
           "active": {
             "light": {
               "value": "{color.alias.mint.value}"
@@ -230,7 +222,7 @@
         }
       },
       "brand": {
-        "button": {
+        "surface": {
           "default": {
             "light": {
               "value": "{color.alias.pine.value}"
@@ -274,7 +266,7 @@
         }
       },
       "accent": {
-        "button": {
+        "surface": {
           "default": {
             "light": {
               "value": "{color.alias.seaMist.value}"
@@ -424,7 +416,7 @@
         }
       },
       "ghost": {
-        "button": {
+        "surface": {
           "hover": {
             "light": {
               "value": "{color.alias.seaMist.value}"

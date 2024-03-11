@@ -14,15 +14,15 @@ export function baseBackground(
     case "active":
       return {
         backgroundColor: mode(
-          "base.button.active.light",
-          "base.button.active.dark",
+          "base.surface.active.light",
+          "base.surface.active.dark",
         )(props),
       };
     case "selected":
       return {
         backgroundColor: mode(
-          "base.button.selected.light",
-          "base.button.selected.dark",
+          "base.surface.selected.light",
+          "base.surface.selected.dark",
         )(props),
       };
     case "disabled":
@@ -56,23 +56,23 @@ export function ghostBackground(
     case "hover": {
       return {
         backgroundColor: mode(
-          "ghost.button.hover.light",
-          "ghost.button.hover.dark",
+          "ghost.surface.hover.light",
+          "ghost.surface.hover.dark",
         )(props),
       };
     }
     case "active":
       return {
         backgroundColor: mode(
-          "ghost.button.active.light",
-          "ghost.button.active.dark",
+          "ghost.surface.active.light",
+          "ghost.surface.active.dark",
         )(props),
       };
     case "focus":
       return {
         backgroundColor: "transparent",
       };
-    // TODO: Is this used anywhere?
+    // TODO: Create a selected state for ghost? Or can we use a different state? Used in listboxes.
     case "selected": {
       return {
         backgroundColor: mode("mint", "whiteAlpha.200")(props),
@@ -149,30 +149,29 @@ export function accentBackground(
     case "selected":
       return {
         backgroundColor: mode(
-          "accent.button.selected.light",
-          "accent.button.selected.dark",
+          "accent.surface.selected.light",
+          "accent.surface.selected.dark",
         )(props),
       };
     case "active":
       return {
         backgroundColor: mode(
-          "accent.button.active.light",
-          "accent.button.active.dark",
+          "accent.surface.active.light",
+          "accent.surface.active.dark",
         )(props),
       };
     case "hover":
       return {
         backgroundColor: mode(
-          "accent.button.hover.light",
-          "accent.button.hover.dark",
+          "accent.surface.hover.light",
+          "accent.surface.hover.dark",
         )(props),
       };
-    case "default":
     default:
       return {
         backgroundColor: mode(
-          "accent.button.default.light",
-          "accent.button.default.dark",
+          "accent.surface.default.light",
+          "accent.surface.default.dark",
         )(props),
       };
   }
@@ -192,15 +191,15 @@ export function brandBackground(
     case "active":
       return {
         backgroundColor: mode(
-          "brand.button.active.light",
-          "brand.button.active.dark",
+          "brand.surface.active.light",
+          "brand.surface.active.dark",
         )(props),
       };
     case "hover":
       return {
         backgroundColor: mode(
-          "brand.button.hover.light",
-          "brand.button.hover.dark",
+          "brand.surface.hover.light",
+          "brand.surface.hover.dark",
         )(props),
       };
     case "focus":
@@ -208,8 +207,8 @@ export function brandBackground(
     default:
       return {
         backgroundColor: mode(
-          "brand.button.default.light",
-          "brand.button.default.dark",
+          "brand.surface.default.light",
+          "brand.surface.default.dark",
         )(props),
       };
   }

@@ -1,19 +1,14 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy } from "@chakra-ui/theme-tools";
-import { focusVisibleStyles } from "../utils/focus-util";
 import {
   accentBackground,
   baseBackground,
   brandBackground,
   floatingBackground,
 } from "../utils/background-utils";
-import { baseText, accentText } from "../utils/text-utils";
-import {
-  baseBorder,
-  accentBorder,
-  brandBorder,
-  floatingBorder,
-} from "../utils/border-utils";
+import { baseBorder, floatingBorder } from "../utils/border-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
+import { accentText, baseText } from "../utils/text-utils";
 
 const parts = anatomy("choice-chip").parts("container", "icon", "label");
 
@@ -30,16 +25,13 @@ const config = helpers.defineMultiStyleConfig({
       _checked: {
         ...accentText("selected", props),
         ...accentBackground("selected", props),
-        ...accentBorder("selected", props),
         _hover: {
           ...brandBackground("hover", props),
           ...baseText("selected", props),
-          ...brandBorder("hover", props),
         },
         _active: {
           ...baseText("selected", props),
           ...brandBackground("active", props),
-          ...brandBorder("active", props),
         },
       },
       _disabled: {
@@ -93,23 +85,19 @@ const config = helpers.defineMultiStyleConfig({
       container: {
         ...accentBackground("default", props),
         ...accentText("default", props),
-        ...accentBorder("default", props),
         "@media (hover:hover)": {
           _hover: {
             ...accentBackground("hover", props),
-            ...accentBorder("hover", props),
             ...accentText("default", props),
           },
         },
         _active: {
           ...accentText("default", props),
-          ...accentBorder("active", props),
           ...accentBackground("active", props),
         },
       },
       _active: {
         ...accentText("default", props),
-        ...accentBorder("active", props),
         ...accentBackground("active", props),
       },
     }),

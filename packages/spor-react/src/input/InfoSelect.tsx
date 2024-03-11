@@ -188,11 +188,10 @@ export function InfoSelect<T extends object>({
   const { t } = useTranslation();
   const formControl = useFormControlProps(props);
 
+  const hasChosenValue = state.selectedItem !== null;
+
   return (
     <Box sx={styles.container}>
-      <chakra.div {...labelProps} sx={styles.label}>
-        {props.label}
-      </chakra.div>
       <HiddenSelect
         state={state}
         triggerRef={triggerRef}
@@ -211,11 +210,33 @@ export function InfoSelect<T extends object>({
         aria-invalid={formControl.isInvalid}
         aria-describedby={formControl["aria-describedby"]}
       >
-        <Box {...valueProps}>
-          {state.selectedItem
-            ? state.selectedItem.textValue ?? state.selectedItem.rendered
-            : placeholder ?? t(texts.selectAnOption)}
-        </Box>
+        <chakra.div sx={styles.innerButton}>
+          <chakra.div
+            {...labelProps}
+            sx={{
+              ...styles.label,
+              ...(hasChosenValue && {
+                transform: "scale(0.825) translateY(-10px) translateX(-10px)",
+                transitionProperty: "var(--spor-transition-property-common)",
+                transitionDuration: "var(--spor-transition-duration-normal)",
+              }),
+            }}
+          >
+            {props.label}
+          </chakra.div>
+          <Box
+            {...valueProps}
+            h={!hasChosenValue ? "0px" : "18px"}
+            hidden={!hasChosenValue}
+            transform={"scale(1) translateY(-10px)"}
+            transitionProperty={"var(--spor-transition-property-common)"}
+            transitionDuration={"var(--spor-transition-duration-normal)"}
+          >
+            {state.selectedItem
+              ? state.selectedItem.textValue ?? state.selectedItem.rendered
+              : placeholder ?? t(texts.selectAnOption)}
+          </Box>
+        </chakra.div>
         <Box sx={styles.arrowIcon}>
           {state.isOpen ? <DropdownUpFill24Icon /> : <DropdownDownFill24Icon />}
         </Box>

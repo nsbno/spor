@@ -16,21 +16,27 @@ const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({
   baseStyle: (props) => ({
-    container: {},
     label: {
       position: "relative",
       ...(props.isLabelSrOnly ? srOnly : {}),
     },
+    innerButton: {
+      display: "flex",
+      flexDir: "column",
+      alignItems: "start",
+      justifyContent: "start",
+    },
     button: {
+      display: "flex",
       appearance: "none",
       borderTopRadius: "sm",
       borderBottomRadius: props.isOpen ? 0 : "sm",
       paddingY: 1.5,
       paddingX: 3,
-      display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
       fontSize: "mobile.md",
+      h: 8,
       ...baseBorder("default", props),
       _hover: {
         ...baseBorder("hover", props),

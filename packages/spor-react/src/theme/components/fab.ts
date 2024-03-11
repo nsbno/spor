@@ -1,6 +1,10 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy, mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
+import { accentBackground, baseBackground } from "../utils/background-utils";
+import { baseBorder } from "../utils/border-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
+import { surface } from "../utils/surface-utils";
+import { accentText, baseText } from "../utils/text-utils";
 
 const parts = anatomy("fab").parts("container", "icon", "text");
 
@@ -23,16 +27,13 @@ const config = helpers.defineMultiStyleConfig({
       position: "fixed",
       ...getPositionProps(props),
       _disabled: {
-        backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
-        color: mode("blackAlpha.400", "whiteAlpha.400")(props),
+        ...surface("disabled", props),
+        ...baseText("disabled", props),
+        pointerEvents: "none",
       },
       ...focusVisibleStyles(props),
       _hover: {
         backgroundColor: "seaMist",
-        _disabled: {
-          backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
-          color: mode("blackAlpha.400", "whiteAlpha.400")(props),
-        },
       },
       zIndex: "sticky",
     },
@@ -48,30 +49,6 @@ const config = helpers.defineMultiStyleConfig({
     },
   }),
   variants: {
-    dark: (props) => ({
-      container: {
-        backgroundColor: "darkTeal",
-        color: "white",
-        _active: { backgroundColor: "pine" },
-        _hover: {
-          backgroundColor: "night",
-        },
-      },
-    }),
-    light: {
-      container: {
-        backgroundColor: "white",
-        color: "darkGrey",
-        _active: { backgroundColor: "mint" },
-      },
-    },
-    green: {
-      container: {
-        backgroundColor: "mint",
-        color: "darkTeal",
-        _active: { color: "darkTeal", backgroundColor: "lightGrey" },
-      },
-    },
     brand: (props) => ({
       container: {
         backgroundColor: mode("darkTeal", "mint")(props),
@@ -84,39 +61,35 @@ const config = helpers.defineMultiStyleConfig({
     }),
     base: (props) => ({
       container: {
-        backgroundColor: mode("white", "whiteAlpha.100")(props),
-        color: mode("darkGrey", "white")(props),
-        _active: {
-          backgroundColor: mode("mint", "whiteAlpha.100")(props),
-          color: mode("darkGrey", "white")(props),
-        },
+        ...baseBackground("default", props),
+        ...baseBorder("default", props),
+        ...baseText("default", props),
         _hover: {
-          backgroundColor: mode("white", "transparent")(props),
-          boxShadow: mode(
-            `inset 0 0 0 2px ${props.theme.colors.darkGrey}`,
-            `inset 0 0 0 2px ${props.theme.colors.white}`,
-          )(props),
-          color: mode("darkGrey", "white")(props),
+          ...baseBackground("hover", props),
+          ...baseBorder("hover", props),
+        },
+        _active: {
+          ...baseBorder("default", props),
+          ...baseBackground("active", props),
         },
       },
     }),
     accent: (props) => ({
       container: {
-        backgroundColor: mode("mint", "pine")(props),
-        color: mode("darkTeal", "white")(props),
-        _active: {
-          backgroundColor: mode("seaMist", "whiteAlpha.100")(props),
-          color: mode("darkTeal", "white")(props),
-        },
+        ...accentBackground("default", props),
+        ...accentText("default", props),
         _hover: {
-          backgroundColor: mode("coralGreen", "whiteAlpha.200")(props),
-          color: mode("darkTeal", "white")(props),
+          ...accentBackground("hover", props),
+          ...accentText("default", props),
+        },
+        _active: {
+          ...accentBackground("active", props),
         },
       },
     }),
   },
   defaultProps: {
-    variant: "dark",
+    variant: "brand",
   },
 });
 

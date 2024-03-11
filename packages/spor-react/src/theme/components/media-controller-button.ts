@@ -1,6 +1,9 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy } from "@chakra-ui/theme-tools";
+import { brandBackground, ghostBackground } from "../utils/background-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
+import { surface } from "../utils/surface-utils";
+import { baseText } from "../utils/text-utils";
 
 const parts = anatomy("media-controller-button").parts("container", "icon");
 const helpers = createMultiStyleConfigHelpers(parts.keys);
@@ -19,7 +22,8 @@ const config = helpers.defineMultiStyleConfig({
       display: "flex",
       padding: 1,
       alignSelf: "center",
-      color: "primaryGreen",
+      // The SVG icon color is set to the brand background color, due to how SVGs work
+      color: brandBackground("default", props).backgroundColor,
       ...focusVisibleStyles(props),
     },
     icon: {
@@ -30,51 +34,41 @@ const config = helpers.defineMultiStyleConfig({
     },
   }),
   variants: {
-    play: {
+    play: (props) => ({
       container: {
         padding: 0,
         _hover: {
-          color: "pine",
+          color: brandBackground("hover", props).backgroundColor,
         },
         _active: {
-          color: "greenHaze",
+          color: brandBackground("active", props).backgroundColor,
         },
 
         _disabled: {
-          color: "silver",
-          _hover: {
-            color: "silver",
-          },
-          _active: {
-            color: "silver",
-          },
+          pointerEvents: "none",
+          color: surface("disabled", props).backgroundColor,
         },
       },
-    },
-    jumpSkip: {
+    }),
+    jumpSkip: (props) => ({
       container: {
         _hover: {
-          backgroundColor: "seaMist",
+          ...ghostBackground("hover", props),
         },
         _active: {
-          backgroundColor: "mint",
+          ...ghostBackground("active", props),
         },
         _disabled: {
-          backgroundColor: "platinum",
-          color: "steel",
-          _hover: {
-            backgroundColor: "platinum",
-          },
-          _active: {
-            backgroundColor: "platinum",
-          },
+          pointerEvents: "none",
+          ...surface("disabled", props),
+          ...baseText("disabled", props),
         },
       },
       icon: {
         width: "0.71em",
         height: "0.71em",
       },
-    },
+    }),
   },
   sizes: {
     sm: {

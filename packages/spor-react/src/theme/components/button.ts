@@ -1,8 +1,15 @@
 import { defineStyleConfig } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
-import { colors } from "../foundations";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
+import {
+  accentBackground,
+  baseBackground,
+  brandBackground,
+  floatingBackground,
+  ghostBackground,
+} from "../utils/background-utils";
+import { baseBorder, floatingBorder } from "../utils/border-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
+import { surface } from "../utils/surface-utils";
+import { accentText, baseText, brandText } from "../utils/text-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props) => ({
@@ -16,111 +23,73 @@ const config = defineStyleConfig({
     textWrap: "wrap",
     paddingX: 3,
     paddingY: 1,
-    _focus: {
-      boxShadow: 0,
-      outline: 0,
-    },
     ...focusVisibleStyles(props),
     _disabled: {
       cursor: "not-allowed",
+      pointerEvents: "none",
       boxShadow: "none",
-      backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
-      color: mode("blackAlpha.400", "whiteAlpha.400")(props),
-    },
-    _hover: {
-      _disabled: {
-        background: mode("blackAlpha.100", "whiteAlpha.100")(props),
-      },
+      ...surface("disabled", props),
+      ...baseText("disabled", props),
     },
   }),
   variants: {
     primary: (props) => ({
-      // FIXME: Update to use a global defined background color for darkMode whenever it is available.
-      // hardcoded background color as alpha-"hack" below is not feasible for dark mode with solid background color
-      backgroundColor: mode("pine", "coralGreen")(props),
-      color: mode("white", "darkTeal")(props),
+      ...brandBackground("default", props),
+      ...brandText("default", props),
       _hover: {
-        backgroundColor: mode("darkTeal", "blueGreen")(props),
+        ...brandBackground("hover", props),
       },
       _active: {
-        backgroundColor: mode("greenHaze", "seaMist")(props),
+        ...brandBackground("active", props),
       },
     }),
     secondary: (props) => ({
-      // FIXME: Update to use global defined background color for darkMode whenever it is available instead of alpha
-      backgroundColor: mode("seaMist", "primaryGreen")(props),
-      color: mode("darkTeal", "seaMist")(props),
-      // order is important here for now while we do not have global defined background color for darkMode
+      ...accentBackground("default", props),
+      ...accentText("default", props),
       _hover: {
-        backgroundColor: mode("coralGreen", "greenHaze")(props),
+        ...accentBackground("hover", props),
       },
       _active: {
-        backgroundColor: mode("mint", "darkTeal")(props),
-        boxShadow: `inset 0 0 0 2px ${mode(
-          colors.greenHaze,
-          colors.azure,
-        )(props)}, inset 0 0 0 4px ${mode(
-          colors.white,
-          colors.blackAlpha[600],
-        )(props)}`,
-        _hover: {
-          boxShadow: `inset 0 0 0 2px ${mode(
-            colors.greenHaze,
-            colors.azure,
-          )(props)}, inset 0 0 0 4px ${mode(
-            colors.white,
-            colors.blackAlpha[600],
-          )(props)}`,
-        },
+        ...accentBackground("active", props),
       },
     }),
     tertiary: (props) => ({
-      backgroundColor: "transparent",
-      color: mode("darkGrey", "white")(props),
-      boxShadow: `inset 0 0 0 1px ${mode(
-        colors.blackAlpha[400],
-        colors.whiteAlpha[400],
-      )(props)}`,
+      ...baseBackground("default", props),
+      ...baseText("default", props),
+      ...baseBorder("default", props),
       _hover: {
-        boxShadow: `inset 0 0 0 2px currentColor`,
+        ...baseBorder("hover", props),
       },
       _active: {
-        boxShadow: `inset 0 0 0 1px ${mode(
-          colors.blackAlpha[400],
-          colors.whiteAlpha[300],
-        )(props)}`,
-        backgroundColor: mode("mint", "whiteAlpha.200")(props),
+        ...baseBorder("default", props), // We want a
+        ...baseBackground("active", props),
       },
     }),
     ghost: (props) => ({
-      backgroundColor: "transparent",
-      color: mode("darkGrey", "white")(props),
+      ...ghostBackground("default", props),
+      ...baseText("default", props),
       _hover: {
-        backgroundColor: mode("seaMist", "whiteAlpha.200")(props),
+        ...ghostBackground("hover", props),
         _disabled: {
-          color: "blackAlpha.300",
+          ...baseText("disabled", props),
         },
       },
       _active: {
-        backgroundColor: mode("mint", "whiteAlpha.100")(props),
+        ...ghostBackground("active", props),
       },
     }),
     floating: (props) => ({
-      backgroundColor: mode("white", "whiteAlpha.100")(props),
-      boxShadow: getBoxShadowString({
-        borderColor: mode("grey.200", "whiteAlpha.400")(props),
-        baseShadow: "sm",
-      }),
-      _active: {
-        backgroundColor: mode("mint", "whiteAlpha.400")(props),
-      },
+      ...floatingBackground("default", props),
+      ...floatingBorder("default", props),
+      boxShadow: "sm",
       _hover: {
-        backgroundColor: mode("white", "whiteAlpha.200")(props),
-        boxShadow: getBoxShadowString({
-          borderColor: mode("grey.300", "white")(props),
-          baseShadow: "md",
-          borderWidth: 2,
-        }),
+        ...floatingBackground("hover", props),
+        ...floatingBorder("hover", props),
+        boxShadow: "md",
+      },
+      _active: {
+        ...floatingBackground("active", props),
+        boxShadow: "sm",
       },
     }),
   },
@@ -147,7 +116,6 @@ const config = defineStyleConfig({
       minHeight: 5,
       minWidth: 5,
       fontSize: "16px",
-
       fontWeight: "normal",
     },
   },

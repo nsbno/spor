@@ -11,7 +11,7 @@ const config = helpers.defineMultiStyleConfig({
       _hover: {
         "input:enabled + .chakra-radio__control": {
           backgroundColor: "inherit",
-          borderColor: mode("darkGrey", "blueGreen")(props),
+          borderColor: mode("darkGrey", "white")(props),
         },
         "input:enabled:checked + .chakra-radio__control": {
           color: mode("darkTeal", "blueGreen")(props),

@@ -1,8 +1,10 @@
 import { inputAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { baseBackground } from "../utils/background-utils";
+import { baseBorder } from "../utils/border-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
+import { surface } from "../utils/surface-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -13,7 +15,7 @@ const config = helpers.defineMultiStyleConfig({
       width: "100%",
       outline: "none",
       border: 0,
-      backgroundColor: mode("white", "darkGrey")(props),
+      ...baseBackground("default", props),
       borderRadius: "sm",
       transitionProperty: "common",
       transitionDuration: "fast",
@@ -22,43 +24,28 @@ const config = helpers.defineMultiStyleConfig({
       height: "54px",
       fontSize: "mobile.md",
 
-      boxShadow: getBoxShadowString({
-        borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-      }),
-      _active: {
-        backgroundColor: mode("mint", "whiteAlpha.100")(props),
-        boxShadow: getBoxShadowString({
-          borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-        }),
-      },
+      ...baseBorder("default", props),
       _hover: {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("darkGrey", "white")(props),
-          borderWidth: 2,
-        }),
+        ...baseBorder("hover", props),
+      },
+      _active: {
+        ...baseBackground("active", props),
+        ...baseBorder("default", props),
       },
       _focusVisible: {
         ...focusVisibleStyles(props)._focusVisible,
-        outlineOffset: -2,
+        outlineOffset: 0,
       },
 
       _disabled: {
-        backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
-        boxShadow: getBoxShadowString({
-          borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
-        }),
-        cursor: "not-allowed",
+        ...surface("disabled", props),
+        ...baseBorder("disabled", props),
+        pointerEvents: "none",
       },
       _invalid: {
-        boxShadow: getBoxShadowString({
-          borderColor: "brightRed",
-          borderWidth: 2,
-        }),
+        ...baseBorder("invalid", props),
         _hover: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("darkGrey", "white")(props),
-            borderWidth: 2,
-          }),
+          ...baseBorder("hover", props),
         },
       },
       " + label": {

@@ -21,7 +21,7 @@ export function baseBackground(
       };
     case "disabled":
       return {
-        backgroundColor: mode("silver", "whiteAlpha.100")(props),
+        backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
       };
     case "hover":
       return {

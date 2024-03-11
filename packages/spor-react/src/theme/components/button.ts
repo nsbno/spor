@@ -115,6 +115,7 @@ const config = defineStyleConfig({
     xs: {
       minHeight: 5,
       minWidth: 5,
+      paddingY: 0.5,
       fontSize: "16px",
       fontWeight: "normal",
     },

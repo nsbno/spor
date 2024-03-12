@@ -29,17 +29,14 @@ const config = helpers.defineMultiStyleConfig({
       transitionDuration: "fast",
       transitionProperty: "common",
       position: "fixed",
+      zIndex: "sticky",
       ...getPositionProps(props),
+      ...focusVisibleStyles(props),
       _disabled: {
         ...surface("disabled", props),
         ...baseText("disabled", props),
         pointerEvents: "none",
       },
-      ...focusVisibleStyles(props),
-      _hover: {
-        backgroundColor: "seaMist",
-      },
-      zIndex: "sticky",
     },
     icon: {
       marginRight: props.isTextVisible ? 1 : 0,

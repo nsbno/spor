@@ -106,7 +106,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
             });
           }}
           position="relative"
-          left="-1px" // Makes the borders overlap
+          left="1px" // Makes the borders overlap
         />
       </AttachedInputs>
     );

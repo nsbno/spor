@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 8.2.1
+
+### Patch Changes
+
+- 6c2a831: Fixes bug where Button component did not have a default type.
+- f259d1d: Checkbox: Facelift and dark mode support
+  Radio: Facelift and dark mode support
+
 ## 8.2.0
 
 ### Minor Changes

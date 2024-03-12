@@ -1,10 +1,10 @@
 import { inputAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
 import { baseBackground } from "../utils/background-utils";
 import { baseBorder } from "../utils/border-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
 import { surface } from "../utils/surface-utils";
+import { baseText } from "../utils/text-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -71,7 +71,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     group: {
       ":has(:disabled)": {
-        color: mode("blackAlpha.400", "whiteAlpha.400")(props),
+        color: baseText("disabled", props),
       },
     },
   }),

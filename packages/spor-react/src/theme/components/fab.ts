@@ -1,10 +1,14 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy, mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
-import { accentBackground, baseBackground } from "../utils/background-utils";
+import { anatomy, StyleFunctionProps } from "@chakra-ui/theme-tools";
+import {
+  accentBackground,
+  baseBackground,
+  brandBackground,
+} from "../utils/background-utils";
 import { baseBorder } from "../utils/border-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
 import { surface } from "../utils/surface-utils";
-import { accentText, baseText } from "../utils/text-utils";
+import { accentText, baseText, brandText } from "../utils/text-utils";
 
 const parts = anatomy("fab").parts("container", "icon", "text");
 
@@ -51,11 +55,13 @@ const config = helpers.defineMultiStyleConfig({
   variants: {
     brand: (props) => ({
       container: {
-        backgroundColor: mode("darkTeal", "mint")(props),
-        color: mode("white", "darkTeal")(props),
-        _active: { backgroundColor: mode("pine", "white")(props) },
+        ...brandBackground("default", props),
+        ...brandText("default", props),
         _hover: {
-          backgroundColor: mode("night", "seaMist")(props),
+          ...brandBackground("hover", props),
+        },
+        _active: {
+          ...brandBackground("active", props),
         },
       },
     }),

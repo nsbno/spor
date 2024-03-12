@@ -71,7 +71,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     group: {
       ":has(:disabled)": {
-        color: baseText("disabled", props),
+        ...baseText("disabled", props),
       },
     },
   }),

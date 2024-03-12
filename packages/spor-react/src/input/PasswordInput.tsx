@@ -43,6 +43,8 @@ export const PasswordInput = forwardRef<PasswordInputProps, "input">(
           <Button
             variant="ghost"
             type="button"
+            fontWeight="normal"
+            size="sm"
             onClick={onToggle}
             borderRadius="sm"
             marginRight={1}

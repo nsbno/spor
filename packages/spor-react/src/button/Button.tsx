@@ -65,6 +65,7 @@ export type ButtonProps = Exclude<
 export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
   const {
     as = "button",
+    type = "button",
     fontWeight,
     size,
     children,
@@ -97,6 +98,7 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
     <Box
       {...rest}
       as={as}
+      type={type}
       sx={{ ...styles, ...sx }}
       ref={ref}
       aria-label={ariaLabel}

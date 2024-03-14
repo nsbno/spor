@@ -24,7 +24,7 @@ export function HeroSection() {
             </Heading>
             <Box marginBottom={[10, null, 0]}>
               <Button
-                variant="secondary"
+                variant="primary"
                 display={["flex", "inline-flex"]}
                 as={Link}
                 size="lg"

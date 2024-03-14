@@ -1,9 +1,10 @@
 import { checkboxAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-util";
 import { mode } from "@chakra-ui/theme-tools";
-import { baseBackground } from "../utils/background-utils";
-import { baseText } from "../utils/text-utils";
+import { baseBackground, brandBackground } from "../utils/background-utils";
+import { baseBorder } from "../utils/border-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
+import { baseText, brandText } from "../utils/text-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -13,7 +14,7 @@ const config = helpers.defineMultiStyleConfig({
       _hover: {
         "input:enabled:not([aria-invalid]) + .chakra-checkbox__control": {
           ...baseBackground("hover", props),
-          borderColor: mode("darkGrey", "white")(props),
+          borderColor: baseBorder("hover", props).outlineColor,
         },
         "input:enabled[aria-invalid] + .chakra-checkbox__control": {
           backgroundColor: mode("white", "inherit")(props),
@@ -21,8 +22,8 @@ const config = helpers.defineMultiStyleConfig({
         },
         "input:enabled:checked:not([aria-invalid]) + .chakra-checkbox__control":
           {
-            backgroundColor: mode("darkTeal", "blueGreen")(props),
-            borderColor: mode("darkTeal", "blueGreen")(props),
+            ...brandBackground("hover", props),
+            borderColor: brandBackground("hover", props).backgroundColor,
           },
         "input:enabled:checked[aria-invalid] + .chakra-checkbox__control": {
           backgroundColor: "brightRed",
@@ -42,23 +43,23 @@ const config = helpers.defineMultiStyleConfig({
       transitionProperty: "background, border-color",
       transitionDuration: "normal",
       border: "2px solid",
-      borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
+      borderColor: mode(
+        "base.outline.default.light",
+        "base.outline.default.dark",
+      )(props),
       borderRadius: "xs",
-      color: mode("white", "darkTeal")(props),
       ...baseBackground("default", props),
+      ...focusVisibleStyles(props),
 
       _checked: {
-        ...baseBackground("selected", props),
-        borderColor: mode("pine", "coralGreen")(props),
-        ...baseText("default", props),
-        color: mode("white", "darkTeal")(props),
-
-        ...focusVisibleStyles(props),
+        ...brandText("default", props),
+        ...brandBackground("default", props),
+        borderColor: brandBackground("default", props).backgroundColor,
 
         _disabled: {
           ...baseBackground("disabled", props),
-          borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
-          color: mode("blackAlpha.200", "whiteAlpha.200")(props),
+          ...baseText("disabled", props),
+          borderColor: "currentColor",
         },
 
         _invalid: {
@@ -69,7 +70,7 @@ const config = helpers.defineMultiStyleConfig({
 
       _disabled: {
         ...baseBackground("disabled", props),
-        borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
+        borderColor: baseText("disabled", props).color,
       },
       _invalid: {
         ...baseBackground("default", props),

@@ -21,8 +21,8 @@ export function baseBackground(
     case "selected":
       return {
         backgroundColor: mode(
-          "base.surface.selected.light",
-          "base.surface.selected.dark",
+          "brand.surface.default.light",
+          "brand.surface.default.dark",
         )(props),
       };
     case "disabled":
@@ -99,8 +99,8 @@ export function floatingBackground(
     case "selected":
       return {
         backgroundColor: mode(
-          "floating.surface.selected.light",
-          "floating.surface.selected.dark",
+          "brand.surface.default.light",
+          "brand.surface.default.dark",
         )(props),
       };
     case "active":
@@ -149,8 +149,8 @@ export function accentBackground(
     case "selected":
       return {
         backgroundColor: mode(
-          "accent.surface.selected.light",
-          "accent.surface.selected.dark",
+          "brand.surface.default.light",
+          "brand.surface.default.dark",
         )(props),
       };
     case "active":

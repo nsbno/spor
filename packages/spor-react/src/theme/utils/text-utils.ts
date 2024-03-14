@@ -25,10 +25,7 @@ export function accentText(state: AccentTextState, props: StyleFunctionProps) {
   switch (state) {
     case "selected":
       return {
-        color: mode(
-          "accent.text.selected.light",
-          "accent.text.selected.dark",
-        )(props),
+        color: mode("brand.text.light", "brand.text.dark")(props),
       };
     default:
       return {

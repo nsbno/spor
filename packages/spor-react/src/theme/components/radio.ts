@@ -1,7 +1,10 @@
 import { radioAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-util";
 import { mode } from "@chakra-ui/theme-tools";
+import { baseBackground, brandBackground } from "../utils/background-utils";
+import { baseBorder } from "../utils/border-utils";
+import { focusVisibleStyles } from "../utils/focus-util";
+import { baseText } from "../utils/text-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -11,11 +14,11 @@ const config = helpers.defineMultiStyleConfig({
       _hover: {
         "input:enabled + .chakra-radio__control": {
           backgroundColor: "inherit",
-          borderColor: mode("darkGrey", "white")(props),
+          borderColor: mode("text.body.light", "text.body.dark")(props),
         },
         "input:enabled:checked + .chakra-radio__control": {
-          color: mode("darkTeal", "blueGreen")(props),
-          borderColor: mode("darkTeal", "blueGreen")(props),
+          color: brandBackground("hover", props).backgroundColor,
+          borderColor: brandBackground("hover", props).backgroundColor,
         },
       },
     },
@@ -28,19 +31,19 @@ const config = helpers.defineMultiStyleConfig({
       height: 4,
       backgroundColor: "inherit",
       border: "2px solid",
-      borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
+      borderColor: baseBorder("default", props).outlineColor,
       borderRadius: "50%",
 
       ...focusVisibleStyles(props),
 
       _disabled: {
-        backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
-        borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
-        color: mode("blackAlpha.200", "whiteAlpha.300")(props),
+        ...baseBackground("disabled", props),
+        ...baseBorder("disabled", props),
+        ...baseText("disabled", props),
       },
       _checked: {
-        borderColor: mode("pine", "coralGreen")(props),
         color: mode("pine", "coralGreen")(props),
+        borderColor: "currentColor",
         _before: {
           content: `""`,
           display: "inline-block",
@@ -51,9 +54,10 @@ const config = helpers.defineMultiStyleConfig({
           background: "currentColor",
         },
         _disabled: {
-          backgroundColor: mode("blackAlpha.100", "whiteAlpha.100")(props),
-          borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
-          color: mode("blackAlpha.200", "whiteAlpha.300")(props),
+          pointerEvents: "none",
+          ...baseBackground("disabled", props),
+          ...baseBorder("disabled", props),
+          ...baseText("disabled", props),
         },
       },
     },

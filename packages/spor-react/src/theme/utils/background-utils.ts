@@ -72,7 +72,6 @@ export function ghostBackground(
       return {
         backgroundColor: "transparent",
       };
-    // TODO: Create a selected state for ghost? Or can we use a different state? Used in listboxes.
     case "selected": {
       return {
         backgroundColor: mode("mint", "whiteAlpha.200")(props),

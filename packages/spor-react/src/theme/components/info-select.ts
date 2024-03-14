@@ -4,6 +4,7 @@ import { baseBackground, floatingBackground } from "../utils/background-utils";
 import { baseBorder, floatingBorder } from "../utils/border-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
 import { srOnly } from "../utils/sr-utils";
+import { baseText } from "../utils/text-utils";
 
 const parts = anatomy("InfoSelect").parts(
   "container",
@@ -37,19 +38,15 @@ const config = helpers.defineMultiStyleConfig({
       },
       ...focusVisibleStyles(props),
       _disabled: {
-        color: "whiteAlpha.400",
+        pointerEvents: "none",
+        ...baseText("disabled", props),
         ...baseBackground("disabled", props),
-        _hover: { ...baseBorder("disabled", props) },
-        _focus: { ...baseBorder("disabled", props) },
       },
       _active: {
         ...baseBackground("active", props),
       },
       _invalid: {
         ...baseBorder("invalid", props),
-        _hover: {
-          ...baseBorder("hover", props),
-        },
       },
     },
     arrowIcon: {},

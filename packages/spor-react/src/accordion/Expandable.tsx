@@ -12,7 +12,10 @@ import { Accordion, AccordionProps } from "./Accordion";
 import { useAccordionContext } from "./AccordionContext";
 
 type HeadingLevel = "h2" | "h3" | "h4" | "h5" | "h6";
-type ExpandableProps = Omit<AccordionProps, "title"> & {
+type ExpandableProps = Omit<
+  AccordionProps,
+  "title" | "index" | "defaultIndex" | "onChange"
+> & {
   /** The hidden content */
   children: React.ReactNode;
   /** The title that's shown inside the toggle button */
@@ -28,6 +31,13 @@ type ExpandableProps = Omit<AccordionProps, "title"> & {
    * If the size is set to `lg`, the icon should be 30px.
    */
   leftIcon?: React.ReactNode;
+
+  /** Controlled value of whether the accordion is open or not */
+  isOpen?: boolean;
+  /** Default value of when the accordion is open or not */
+  defaultOpen?: boolean;
+  /** Callback for when the expandable opens or closes */
+  onChange?: (isOpen: boolean) => void;
 };
 /**
  * A standalone expandable component.
@@ -47,10 +57,20 @@ export const Expandable = ({
   title,
   leftIcon,
   size = "md",
+  defaultOpen,
+  isOpen,
+  onChange = () => {},
   ...rest
 }: ExpandableProps) => {
   return (
-    <Accordion {...rest} size={size}>
+    <Accordion
+      {...rest}
+      index={isOpen ? 0 : undefined}
+      defaultIndex={defaultOpen ? 0 : undefined}
+      allowMultiple={true}
+      size={size}
+      onChange={(expandedIndex) => onChange(expandedIndex === 0)}
+    >
       <ExpandableItem
         headingLevel={headingLevel}
         title={title}

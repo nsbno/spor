@@ -121,6 +121,7 @@ export function DateRangePicker({
           isOpen={state.isOpen}
           onOpen={state.open}
           onClose={state.close}
+          flip={false}
         >
           <InputGroup {...groupProps} width="auto" display="inline-flex">
             <PopoverAnchor>

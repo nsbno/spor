@@ -1,8 +1,14 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy, cssVar, mode } from "@chakra-ui/theme-tools";
-import { colors, zIndices } from "../foundations";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { zIndices } from "../foundations";
+import {
+  baseBackground,
+  brandBackground,
+  ghostBackground,
+} from "../utils/background-utils";
+import { baseBorder, floatingBorder } from "../utils/border-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
+import { accentText, baseText, brandText } from "../utils/text-utils";
 
 const parts = anatomy("datepicker").parts(
   "wrapper",
@@ -23,10 +29,6 @@ const helpers = createMultiStyleConfigHelpers(parts.keys);
 const config = helpers.defineMultiStyleConfig({
   baseStyle: (props) => ({
     wrapper: {
-      backgroundColor: mode("white", "night")(props),
-      boxShadow: getBoxShadowString({
-        borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-      }),
       transitionProperty: "box-shadow",
       transitionDuration: "fast",
       borderRadius: "sm",
@@ -39,6 +41,7 @@ const config = helpers.defineMultiStyleConfig({
       },
       _disabled: {
         pointerEvents: "none",
+        ...baseBackground("disabled", props),
       },
       _focusWithin: {
         ...focusVisibleStyles(props)._focusVisible,
@@ -57,7 +60,6 @@ const config = helpers.defineMultiStyleConfig({
       )(props),
     },
     calendarTriggerButton: {
-      backgroundColor: mode("white", "night")(props),
       width: 8,
       display: "flex",
       alignItems: "center",
@@ -71,42 +73,38 @@ const config = helpers.defineMultiStyleConfig({
       borderRadius: "sm",
       right: "9px",
 
+      ...focusVisibleStyles(props),
       _hover: {
-        boxShadow: "none",
-        backgroundColor: mode("seaMist", "pine")(props),
+        ...ghostBackground("hover", props),
       },
       _active: {
-        backgroundColor: mode("mint", "whiteAlpha.200")(props),
+        ...ghostBackground("active", props),
       },
-      ...focusVisibleStyles(props),
       _invalid: {
-        boxShadow: getBoxShadowString({
-          borderColor: "brightRed",
-          borderWidth: 2,
-        }),
+        ...baseBorder("invalid", props),
       },
     },
     arrow: {
-      [$arrowBackground.variable]: mode("white", colors.night)(props),
+      [$arrowBackground.variable]: mode(
+        "surface.default.light",
+        "surface.default.dark",
+      )(props),
     },
     calendarPopover: {
-      backgroundColor: mode("white", "night")(props),
-      color: mode("darkGrey", "white")(props),
-      boxShadow: getBoxShadowString({
-        borderWidth: 2,
-        borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
-        baseShadow: "md",
-      }),
+      ...baseBackground("default", props),
+      ...baseText("default", props),
+      ...baseBorder("default", props),
+      boxShadow: "md",
     },
     weekdays: {
-      color: mode("darkGrey", "white")(props),
+      ...baseText("default", props),
     },
     weekend: {
-      color: mode("darkTeal", "seaMist")(props),
+      ...accentText("default", props),
     },
     dateCell: {
-      backgroundColor: mode("white", "night")(props),
-      color: mode("darkGrey", "white")(props),
+      ...ghostBackground("default", props),
+      ...baseText("default", props),
       borderRadius: "50%",
       position: "relative",
       transition: ".1s ease-in-out",
@@ -117,187 +115,75 @@ const config = helpers.defineMultiStyleConfig({
       transitionSpeed: "fast",
 
       _hover: {
-        backgroundColor: mode("seaMist", "pine")(props),
+        ...ghostBackground("hover", props),
       },
-      _focusVisible: {
-        outlineColor: "greenHaze",
-        outlineWidth: 2,
-        outlineStyle: "solid",
-      },
+      ...focusVisibleStyles(props),
       _active: {
-        backgroundColor: "seaMist",
-        boxShadow: "none",
-        color: mode("darkGrey", "white")(props),
+        ...ghostBackground("active", props),
       },
       _disabled: {
-        color: "osloGrey",
-        boxShadow: "none",
+        ...baseBackground("disabled", props),
+        ...baseText("disabled", props),
         pointerEvents: "none",
       },
       _selected: {
-        backgroundColor: mode("darkTeal", "pine")(props),
-        color: "white",
+        ...brandBackground("default", props),
+        ...brandText("default", props),
         _active: {
-          backgroundColor: "seaMist",
-          boxShadow: "none",
-          color: "darkGrey",
+          ...brandBackground("active", props),
+          ...brandText("active", props),
         },
       },
       "&[data-today]": {
-        boxShadow: getBoxShadowString({
-          borderWidth: 1,
-          borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-        }),
+        ...baseBorder("default", props),
       },
       "&[data-unavailable]": {
         pointerEvents: "none",
-        color: "osloGrey",
+        ...baseBackground("disabled", props),
+        ...baseText("disabled", props),
       },
     },
   }),
   variants: {
     base: (props) => ({
       wrapper: {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-        }),
+        ...baseBorder("default", props),
+        ...baseBackground("default", props),
+
         _hover: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("darkGrey", "white")(props),
-            borderWidth: 2,
-          }),
+          ...baseBorder("hover", props),
         },
         _invalid: {
-          boxShadow: getBoxShadowString({
-            borderColor: "brightRed",
-            borderWidth: 2,
-          }),
+          ...baseBorder("invalid", props),
         },
         _disabled: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("osloGrey", "whiteAlpha.400")(props),
-            borderWidth: 1,
-          }),
-          _focus: {
-            boxShadow: getBoxShadowString({
-              borderColor: mode("osloGrey", "whiteAlpha.400")(props),
-              borderWidth: 1,
-            }),
-          },
-        },
-      },
-      calendar: {
-        backgroundColor: mode("white", "night")(props),
-        color: mode("darkGrey", "white")(props),
-        boxShadow: getBoxShadowString({
-          borderWidth: 2,
-          borderColor: mode("blackAlpha.200", "whiteAlpha.200")(props),
-        }),
-      },
-      dateCell: {
-        color: mode("darkGrey", "white")(props),
-        _hover: {
-          backgroundColor: mode("seaMist", "pine")(props),
-        },
-        "&[data-today]": {
-          boxShadow: getBoxShadowString({
-            borderWidth: 1,
-            borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-          }),
+          ...baseBorder("disabled", props),
         },
       },
     }),
     floating: (props) => ({
       wrapper: {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-          baseShadow: "sm",
-        }),
+        ...floatingBorder("default", props),
+        boxShadow: "sm",
+
         _hover: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("darkGrey", "white")(props),
-            borderWidth: 2,
-            baseShadow: "sm",
-          }),
+          ...floatingBorder("hover", props),
         },
         _invalid: {
-          boxShadow: getBoxShadowString({
-            borderColor: "brightRed",
-            borderWidth: 2,
-            baseShadow: "sm",
-          }),
+          ...baseBorder("invalid", props),
         },
         _disabled: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("osloGrey", "whiteAlpha.400")(props),
-            borderWidth: 1,
-            baseShadow: "sm",
-          }),
-          _focus: {
-            boxShadow: getBoxShadowString({
-              borderColor: mode("osloGrey", "whiteAlpha.400")(props),
-              borderWidth: 1,
-              baseShadow: "sm",
-            }),
-          },
-        },
-      },
-      calendar: {
-        backgroundColor: mode("white", "night")(props),
-        color: mode("darkGrey", "white")(props),
-        boxShadow: getBoxShadowString({
-          borderColor: mode("grey.200", "whiteAlpha.400")(props),
-          baseShadow: "sm",
-        }),
-      },
-      dateCell: {
-        color: mode("darkGrey", "white")(props),
-        _hover: {
-          backgroundColor: mode("", "")(props),
+          ...baseBorder("disabled", props),
         },
       },
     }),
     ghost: (props) => ({
       wrapper: {
-        boxShadow: "none",
         _hover: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("darkGrey", "white")(props),
-            borderWidth: 2,
-          }),
+          ...baseBorder("hover", props),
         },
         _invalid: {
-          boxShadow: getBoxShadowString({
-            borderColor: "brightRed",
-            borderWidth: 2,
-          }),
-        },
-        _disabled: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("osloGrey", "whiteAlpha.400")(props),
-            borderWidth: 1,
-          }),
-          _focus: {
-            boxShadow: getBoxShadowString({
-              borderColor: mode("osloGrey", "whiteAlpha.400")(props),
-              borderWidth: 1,
-            }),
-          },
-        },
-      },
-      calendar: {
-        backgroundColor: mode("white", "night")(props),
-        color: mode("darkGrey", "white")(props),
-        boxShadow: "none",
-      },
-      dateCell: {
-        color: mode("darkGrey", "white")(props),
-        _hover: {
-          backgroundColor: mode("seaMist", "pine")(props),
-        },
-        _selected: {
-          backgroundColor: mode("transparent", "primaryGreen")(props),
-          color: "darkGrey",
+          ...baseBorder("invalid", props),
         },
       },
     }),

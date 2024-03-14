@@ -20,8 +20,9 @@ const config = helpers.defineMultiStyleConfig({
       display: "inline-flex",
       alignItems: "center",
       fontSize: "16px",
-      px: 1,
       cursor: "pointer",
+      transitionProperty: "all",
+      transitionDuration: "fast",
       _checked: {
         ...accentText("selected", props),
         ...accentBackground("selected", props),
@@ -35,7 +36,7 @@ const config = helpers.defineMultiStyleConfig({
         },
       },
       _disabled: {
-        cursor: "not-allowed",
+        pointerEvents: "none",
         boxShadow: "none",
         ...baseText("disabled", props),
         ...baseBackground("disabled", props),
@@ -59,7 +60,7 @@ const config = helpers.defineMultiStyleConfig({
       "input:focus-visible + &": focusVisibleStyles(props)._focusVisible,
     },
     icon: {
-      mr: props.hasLabel ? 1 : 0,
+      marginRight: props.hasLabel ? 1 : 0,
     },
   }),
   variants: {
@@ -68,12 +69,10 @@ const config = helpers.defineMultiStyleConfig({
         ...baseBackground("default", props),
         ...baseBorder("default", props),
         ...baseText("default", props),
-        "@media (hover:hover)": {
-          _hover: {
-            ...baseText("default", props),
-            ...baseBorder("hover", props),
-            ...baseBackground("hover", props),
-          },
+        _hover: {
+          ...baseText("default", props),
+          ...baseBorder("hover", props),
+          ...baseBackground("hover", props),
         },
         _active: {
           ...baseBackground("active", props),
@@ -85,11 +84,9 @@ const config = helpers.defineMultiStyleConfig({
       container: {
         ...accentBackground("default", props),
         ...accentText("default", props),
-        "@media (hover:hover)": {
-          _hover: {
-            ...accentBackground("hover", props),
-            ...accentText("default", props),
-          },
+        _hover: {
+          ...accentBackground("hover", props),
+          ...accentText("default", props),
         },
         _active: {
           ...accentText("default", props),
@@ -106,10 +103,12 @@ const config = helpers.defineMultiStyleConfig({
         ...floatingBackground("default", props),
         ...baseText("default", props),
         ...floatingBorder("default", props),
+        boxShadow: "sm",
         _hover: {
           ...floatingBackground("hover", props),
           ...floatingBorder("hover", props),
           ...baseText("default", props),
+          boxShadow: "md",
         },
         _active: {
           ...floatingBackground("active", props),
@@ -127,7 +126,7 @@ const config = helpers.defineMultiStyleConfig({
           borderRadius: "9px",
         },
         height: "30px",
-        px: 1.5,
+        paddingX: 1.5,
       },
     },
     sm: {
@@ -137,7 +136,7 @@ const config = helpers.defineMultiStyleConfig({
           borderRadius: "12px",
         },
         height: "36px",
-        px: 2,
+        paddingX: 2,
       },
     },
     md: {
@@ -147,7 +146,7 @@ const config = helpers.defineMultiStyleConfig({
           borderRadius: "12px",
         },
         height: "42px",
-        px: 2,
+        paddingX: 2,
       },
     },
     lg: {

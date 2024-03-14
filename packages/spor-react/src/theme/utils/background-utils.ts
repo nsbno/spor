@@ -33,12 +33,12 @@ export function baseBackground(
         )(props),
       };
     case "hover":
-      return {
-        backgroundColor: "transparent",
-      };
     default:
       return {
-        backgroundColor: "transparent",
+        backgroundColor: mode(
+          "surface.default.light",
+          "surface.default.dark",
+        )(props),
       };
   }
 }

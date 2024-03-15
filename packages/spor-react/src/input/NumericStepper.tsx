@@ -1,8 +1,8 @@
 import {
   chakra,
-  useColorModeValue,
   useControllableState,
   useFormControl,
+  useMultiStyleConfig,
 } from "@chakra-ui/react";
 import React from "react";
 import {
@@ -13,7 +13,6 @@ import {
   createTexts,
   useTranslation,
 } from "..";
-import { getBoxShadowString } from "../theme/utils/box-shadow-utils";
 
 type NumericStepperProps = {
   /** The name of the input field */
@@ -76,19 +75,17 @@ export function NumericStepper({
   ...boxProps
 }: NumericStepperProps) {
   const { t } = useTranslation();
+  const styles = useMultiStyleConfig("NumericStepper", {});
   const [value, onChange] = useControllableState<number>({
     value: valueProp,
     onChange: onChangeProp,
     defaultValue,
   });
   const formControlProps = useFormControl({ id: idProp, isDisabled });
-  const textColor = useColorModeValue("darkGrey", "white");
-  const backgroundColor = useColorModeValue("white", "darkGrey");
-  const focusColor = useColorModeValue("greenHaze", "azure");
   const clampedStepSize = Math.max(Math.min(stepSize, 10), 1);
 
   return (
-    <Flex alignItems="center" {...boxProps}>
+    <Flex __css={styles.container} {...boxProps}>
       <VerySmallButton
         icon={<SubtractIcon stepLabel={clampedStepSize} />}
         aria-label={t(texts.decrementButtonAriaLabel(clampedStepSize))}
@@ -106,38 +103,11 @@ export function NumericStepper({
           value={value}
           {...formControlProps}
           id={!showZero && value === 0 ? undefined : formControlProps.id}
-          fontSize="sm"
-          fontWeight="bold"
+          sx={styles.input}
           width={`${Math.max(value.toString().length + 1, 3)}ch`}
-          marginX={1}
-          paddingX={1}
-          borderRadius="xs"
-          textAlign="center"
-          backgroundColor={backgroundColor}
-          color={textColor}
-          transition="box-shadow .1s ease-out"
           visibility={!showZero && value === 0 ? "hidden" : "visible"}
           aria-live="assertive"
           aria-label={value.toString()}
-          _hover={{
-            boxShadow: getBoxShadowString({
-              borderColor: "currentColor",
-              borderWidth: 1,
-            }),
-            _disabled: {
-              boxShadow: "none",
-            },
-          }}
-          _disabled={{
-            opacity: 0.5,
-          }}
-          _focus={{
-            outline: "none",
-            boxShadow: getBoxShadowString({
-              borderColor: focusColor,
-              borderWidth: 1,
-            }),
-          }}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const numericInput = Number(e.target.value);
             if (Number.isNaN(numericInput)) {
@@ -148,14 +118,7 @@ export function NumericStepper({
         />
       ) : (
         <chakra.text
-          fontSize="sm"
-          fontWeight="bold"
-          width="4ch"
-          marginX={1}
-          paddingX={1}
-          textAlign="center"
-          color={textColor}
-          transition="box-shadow .1s ease-out"
+          sx={styles.text}
           visibility={!showZero && value === 0 ? "hidden" : "visible"}
           aria-label={value.toString()}
         >
@@ -190,14 +153,9 @@ type VerySmallButtonProps = {
 };
 /** Internal override for extra small icon buttons */
 const VerySmallButton = (props: VerySmallButtonProps) => {
+  const styles = useMultiStyleConfig("NumericStepper", {});
   return (
-    <IconButton
-      variant="primary"
-      size="xs"
-      minWidth="24px"
-      minHeight="24px"
-      {...props}
-    />
+    <IconButton variant="primary" size="xs" sx={styles.button} {...props} />
   );
 };
 

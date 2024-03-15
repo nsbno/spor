@@ -13,26 +13,24 @@ const helpers = createMultiStyleConfigHelpers(parts.keys);
 const config = helpers.defineMultiStyleConfig({
   baseStyle: (props) => ({
     container: {
-      border: "none",
       borderRadius: "sm",
     },
     button: {
       transitionProperty:
         "background-color, color, border-radius, box-shadow, opacity",
-      transitionDuration: "normal",
-      border: "none",
+      transitionDuration: "fast",
       borderRadius: "sm",
-      borderColor: "osloGrey",
       display: "flex",
       justifyContent: "space-between",
       ...baseText("default", props),
       textAlign: "left",
       fontFamily: "body",
       fontWeight: "bold",
+      outlineOffset: "-2px",
       ...focusVisibleStyles(props),
       _disabled: {
+        pointerEvents: "none",
         opacity: 0.4,
-        cursor: "not-allowed",
       },
     },
     panel: {
@@ -46,7 +44,6 @@ const config = helpers.defineMultiStyleConfig({
   variants: {
     ghost: (props) => ({
       button: {
-        boxShadow: "none",
         _hover: {
           ...ghostBackground("hover", props),
         },
@@ -65,6 +62,7 @@ const config = helpers.defineMultiStyleConfig({
         },
         _hover: {
           ...baseBorder("hover", props),
+          outlineOffset: 0,
         },
         _active: {
           ...baseBackground("active", props),
@@ -76,14 +74,16 @@ const config = helpers.defineMultiStyleConfig({
       container: {
         ...floatingBackground("default", props),
         ...floatingBorder("default", props),
+        boxShadow: "sm",
       },
       button: {
         _expanded: {
           borderBottomRadius: "none",
         },
         _hover: {
-          ...ghostBackground("hover", props),
-          ...floatingBorder("default", props),
+          ...floatingBackground("hover", props),
+          ...floatingBorder("hover", props),
+          outlineOffset: 1,
         },
         _active: {
           ...ghostBackground("active", props),

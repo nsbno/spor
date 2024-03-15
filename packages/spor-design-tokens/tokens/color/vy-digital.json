@@ -96,12 +96,12 @@
             "value": "{color.palette.whiteAlpha.400.value}"
           }
         },
-        "error": {
+        "hover": {
           "light": {
-            "value": "{color.alias.brightRed.value}"
+            "value": "{color.alias.darkGrey.value}"
           },
           "dark": {
-            "value": "{color.alias.brightRed.value}"
+            "value": "{color.alias.white.value}"
           }
         },
         "focus": {
@@ -110,6 +110,14 @@
           },
           "dark": {
             "value": "{color.alias.azure.value}"
+          }
+        },
+        "error": {
+          "light": {
+            "value": "{color.alias.brightRed.value}"
+          },
+          "dark": {
+            "value": "{color.alias.brightRed.value}"
           }
         },
         "disabled": {

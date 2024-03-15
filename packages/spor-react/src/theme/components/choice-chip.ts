@@ -24,11 +24,13 @@ const config = helpers.defineMultiStyleConfig({
       transitionProperty: "all",
       transitionDuration: "fast",
       _checked: {
+        outlineColor: "transparent",
         ...accentText("selected", props),
         ...accentBackground("selected", props),
         _hover: {
           ...brandBackground("hover", props),
           ...baseText("selected", props),
+          outlineColor: "transparent",
         },
         _active: {
           ...baseText("selected", props),

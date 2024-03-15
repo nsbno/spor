@@ -24,17 +24,17 @@ export type SwitchProps = Exclude<
  * </FormControl>
  * ```
  *
- * Switches are available in three different sizes - `sm`, `md` and `lg`. There are also two variants - `solid` and `outline`.
+ * Switches are available in three different sizes - `sm`, `md` and `lg`.
  *
  * ```tsx
  * <FormControl>
  *   <FormLabel>Enable alerts?</FormLabel>
- *   <Switch variant="outline" size="lg" />
+ *   <Switch size="sm" />
  * </FormControl>
  * ```
  */
 export const Switch = forwardRef<SwitchProps, "input">(
   ({ size = "md", ...props }: SwitchProps, ref) => {
-    return <ChakraSwitch variant="solid" size={size} {...props} ref={ref} />;
+    return <ChakraSwitch size={size} {...props} ref={ref} />;
   },
 );

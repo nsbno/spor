@@ -1,8 +1,8 @@
 import { switchAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { calc, cssVar, mode } from "@chakra-ui/theme-tools";
-import { colors } from "../foundations";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { baseBackground, brandBackground } from "../utils/background-utils";
+import { baseBorder } from "../utils/border-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
 
 const $width = cssVar("switch-track-width");
@@ -14,7 +14,7 @@ const $translateX = cssVar("switch-thumb-x");
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({
-  baseStyle: {
+  baseStyle: (props) => ({
     container: {
       [$diff.variable]: diffValue,
       [$translateX.variable]: $diff.reference,
@@ -27,9 +27,30 @@ const config = helpers.defineMultiStyleConfig({
       height: [$height.reference],
       transitionProperty: "common",
       transitionDuration: "fast",
+      ...baseBackground("default", props),
+      ...baseBorder("default", props),
+      ...focusVisibleStyles(props),
 
+      _hover: {
+        ...baseBackground("hover", props),
+        ...baseBorder("hover", props),
+      },
+      _checked: {
+        ...brandBackground("default", props),
+        outlineColor: "transparent",
+
+        _hover: {
+          ...brandBackground("hover", props),
+        },
+      },
       _disabled: {
         pointerEvents: "none",
+        ...baseBackground("default", props),
+        ...baseBorder("disabled", props),
+        _checked: {
+          ...baseBackground("disabled", props),
+          ...baseBorder("disabled", props),
+        },
       },
     },
     thumb: {
@@ -38,88 +59,23 @@ const config = helpers.defineMultiStyleConfig({
       borderRadius: "50%",
       width: [$height.reference],
       height: [$height.reference],
+
+      backgroundColor: mode(
+        "base.icon.default.light",
+        "base.icon.default.dark",
+      )(props),
+      "[data-disabled] &": {
+        backgroundColor: mode(
+          "icon.disabled.light",
+          "icon.disabled.dark",
+        )(props),
+      },
       _checked: {
+        backgroundColor: mode("brand.icon.light", "brand.icon.dark")(props),
         transform: `translateX(${$translateX.reference})`,
       },
     },
-  },
-  variants: {
-    solid: ({ colorMode }) => ({
-      track: {
-        backgroundColor: "osloGrey",
-        boxShadow: mode(
-          "none",
-          getBoxShadowString({
-            borderColor: colors.whiteAlpha[400],
-          }),
-        )({ colorMode }),
-        ...focusVisibleStyles({ colorMode }),
-        _hover: {
-          backgroundColor: "steel",
-          boxShadow: mode(
-            "none",
-            getBoxShadowString({ borderColor: colors.white }),
-          )({ colorMode }),
-        },
-        _checked: {
-          backgroundColor: mode("darkTeal", "celadon")({ colorMode }),
-
-          _hover: {
-            backgroundColor: mode("pine", "river")({ colorMode }),
-            boxShadow: mode(
-              "none",
-              getBoxShadowString({ borderColor: colors.white }),
-            )({ colorMode }),
-          },
-        },
-        _disabled: {
-          backgroundColor: mode("platinum", "dimGrey")({ colorMode }),
-          boxShadow: mode(
-            "none",
-            getBoxShadowString({ borderColor: colors.whiteAlpha[400] }),
-          )({ colorMode }),
-          _checked: {
-            backgroundColor: mode("platinum", "dimGrey")({ colorMode }),
-            boxShadow: mode(
-              "none",
-              getBoxShadowString({ borderColor: colors.whiteAlpha[400] }),
-            )({ colorMode }),
-          },
-        },
-      },
-
-      thumb: {
-        backgroundColor: "white",
-        "[data-disabled] &": {
-          backgroundColor: "steel",
-        },
-      },
-    }),
-    outline: {
-      track: {
-        backgroundColor: "platinum",
-        boxShadow: getBoxShadowString({
-          borderColor: colors.blackAlpha["400"],
-        }),
-        _hover: {
-          backgroundColor: "white",
-        },
-        _checked: {
-          backgroundColor: "white",
-          _hover: {
-            backgroundColor: "mint",
-          },
-        },
-      },
-      thumb: {
-        backgroundColor: "osloGrey",
-
-        _checked: {
-          backgroundColor: "darkTeal",
-        },
-      },
-    },
-  },
+  }),
   sizes: {
     sm: {
       container: {

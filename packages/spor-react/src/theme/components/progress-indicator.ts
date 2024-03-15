@@ -25,11 +25,14 @@ const config = helpers.defineMultiStyleConfig({
       width: 1,
       "&[aria-current='step']": {
         circle: {
-          fill: mode("pine", "coralGreen")(props),
+          fill: mode(
+            "brand.surface.default.light",
+            "brand.surface.default.dark",
+          )(props),
         },
       },
       circle: {
-        fill: mode("blackAlpha.200", "whiteAlpha.200")(props),
+        fill: mode("icon.disabled.light", "icon.disabled.dark")(props),
       },
     },
   }),

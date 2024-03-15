@@ -5,10 +5,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-export type SwitchProps = Exclude<
-  ChakraSwitchProps,
-  "colorScheme" | "variant"
-> & {
+export type SwitchProps = Omit<ChakraSwitchProps, "colorScheme" | "variant"> & {
   size?: "sm" | "md" | "lg";
 };
 

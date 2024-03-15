@@ -15,19 +15,18 @@ const config = helpers.defineMultiStyleConfig({
       zIndex: "popover",
     },
     content: {
-      [$popperBg.variable]: mode("colors.darkTeal", "colors.pine")(props),
+      [$popperBg.variable]: mode(
+        "colors.surface.tertiary.light",
+        "colors.surface.tertiary.dark",
+      )(props),
       backgroundColor: $popperBg.reference,
       [$arrowBg.variable]: $popperBg.reference,
-      [$arrowShadowColor.variable]: "blackAlpha.300",
-      color: "white",
+      [$arrowShadowColor.variable]: "colors.blackAlpha.300",
+      color: "white", // TODO: Should this be a semantic token? Where does it fit in?
       borderRadius: "sm",
       padding: 1.5,
       zIndex: "inherit",
       maxWidth: "20em",
-      _focus: {
-        outline: 0,
-        boxShadow: "outline",
-      },
     },
     arrow: {
       backgroundColor: "transparent",

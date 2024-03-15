@@ -29,13 +29,6 @@ export function baseBorder(state: BorderState, props: StyleFunctionProps) {
         )(props),
       };
     }
-    // TODO: Base doesn't have selected borders
-    // case "selected":
-    //   return {
-    //     boxShadow: getBoxShadowString({
-    //       borderColor: mode("greenHaze", "azure")(props),
-    //     }),
-    //   };
     case "invalid": {
       return {
         outline: "2px solid",

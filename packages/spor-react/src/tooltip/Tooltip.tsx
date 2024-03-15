@@ -1,5 +1,4 @@
 import {
-  DarkMode,
   Popover,
   PopoverArrow,
   PopoverBody,
@@ -50,24 +49,22 @@ export const Tooltip = ({
   ...props
 }: TooltipProps) => {
   return (
-    <DarkMode>
-      <Popover
-        onClose={onClose}
-        isOpen={isOpen}
-        defaultIsOpen={defaultIsOpen}
-        placement={placement}
-        size={size}
-        arrowSize={12}
-        arrowShadowColor="none"
-        {...props}
-      >
-        <PopoverTrigger>{children}</PopoverTrigger>
-        <PopoverContent>
-          <PopoverArrow />
-          {withCloseButton && <PopoverCloseButton />}
-          <PopoverBody>{content}</PopoverBody>
-        </PopoverContent>
-      </Popover>
-    </DarkMode>
+    <Popover
+      onClose={onClose}
+      isOpen={isOpen}
+      defaultIsOpen={defaultIsOpen}
+      placement={placement}
+      size={size}
+      arrowSize={12}
+      arrowShadowColor="none"
+      {...props}
+    >
+      <PopoverTrigger>{children}</PopoverTrigger>
+      <PopoverContent>
+        <PopoverArrow />
+        {withCloseButton && <PopoverCloseButton />}
+        <PopoverBody>{content}</PopoverBody>
+      </PopoverContent>
+    </Popover>
   );
 };

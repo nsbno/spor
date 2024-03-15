@@ -138,6 +138,14 @@
             "value": "{color.alias.darkTeal.value}"
           }
         },
+        "tertiary": {
+          "light": {
+            "value": "{color.alias.darkTeal.value}"
+          },
+          "dark": {
+            "value": "{color.alias.pine.value}"
+          }
+        },
         "disabled": {
           "light": {
             "value": "{color.palette.blackAlpha.100.value}"

@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 8.3.0
+
+### Minor Changes
+
+- f984752: Expandable: Add defaultOpen, isOpen and onChange props, and remove undocumented defaultIndex and index props.
+
+  This might be breaking if you were using these props, so make sure to double check while updating.
+
 ## 8.2.1
 
 ### Patch Changes

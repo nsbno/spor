@@ -3,7 +3,8 @@ import {
   createMultiStyleConfigHelpers,
   defineStyle,
 } from "@chakra-ui/styled-system";
-import { mode } from "@chakra-ui/theme-tools";
+import { baseBackground } from "../utils/background-utils";
+import { baseBorder } from "../utils/border-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
 
 const { defineMultiStyleConfig, definePartsStyle } =
@@ -21,12 +22,12 @@ const baseStyleLink = defineStyle((props) => ({
   "&:not([aria-current=page])": {
     cursor: "pointer",
     _hover: {
-      backgroundColor: mode("seaMist", "pine")(props),
+      ...baseBackground("hover", props),
+    },
+    _active: {
+      ...baseBackground("active", props),
     },
     ...focusVisibleStyles(props),
-    _active: {
-      backgroundColor: mode("mint", "whiteAlpha.200")(props),
-    },
   },
 }));
 
@@ -39,5 +40,53 @@ const baseStyle = definePartsStyle((props) => ({
 }));
 
 export default defineMultiStyleConfig({
-  baseStyle,
+  baseStyle: definePartsStyle((props) => ({
+    link: {
+      transitionProperty: "common",
+      transitionDuration: "fast",
+      transitionTimingFunction: "ease-out",
+      color: "inherit",
+      textDecoration: "none",
+      textStyle: "xs",
+      paddingX: 0.5,
+      borderRadius: "xs",
+      "&:not([aria-current=page])": {
+        cursor: "pointer",
+        ...focusVisibleStyles(props),
+      },
+    },
+    list: {
+      flexWrap: "wrap",
+      alignItems: "flex-start",
+    },
+  })),
+  variants: {
+    base: (props) => ({
+      link: {
+        "&:not([aria-current=page])": {
+          _hover: {
+            ...baseBorder("hover", props),
+          },
+          _active: {
+            ...baseBackground("active", props),
+          },
+        },
+      },
+    }),
+    ghost: (props) => ({
+      link: {
+        "&:not([aria-current=page])": {
+          _hover: {
+            ...baseBorder("default", props),
+          },
+          _active: {
+            ...baseBackground("active", props),
+          },
+        },
+      },
+    }),
+  },
+  defaultProps: {
+    variant: "base",
+  },
 });

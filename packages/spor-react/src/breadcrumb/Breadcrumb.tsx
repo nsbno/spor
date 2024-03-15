@@ -3,12 +3,14 @@ import {
   BreadcrumbItem as ChakraBreadcrumbItem,
   BreadcrumbLink as ChakraBreadcrumbLink,
   BreadcrumbProps as ChakraBreadcrumbProps,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
-import { useColorModeValue } from "@chakra-ui/react";
 
-type BreadcrumbProps = ChakraBreadcrumbProps;
+type BreadcrumbProps = Omit<ChakraBreadcrumbProps, "variant"> & {
+  variant?: "base" | "ghost";
+};
 /**
  * A breadcrumb component.
  *

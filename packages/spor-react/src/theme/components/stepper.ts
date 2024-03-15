@@ -1,5 +1,7 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy, mode } from "@chakra-ui/theme-tools";
+import { accentBackground, brandBackground } from "../utils/background-utils";
+import { accentText, baseText, brandText } from "../utils/text-utils";
 
 const parts = anatomy("stepper").parts(
   "root",
@@ -65,26 +67,26 @@ const config = helpers.defineMultiStyleConfig({
     }),
     accent: (props) => ({
       root: {
-        backgroundColor: mode("seaMist", "pine")(props),
-        color: mode("darkTeal", "seaMist")(props),
+        backgroundColor: mode("accent.bg.light", "accent.bg.dark")(props),
+        ...accentText("default", props),
       },
       stepButton: {
         color:
           props.state === "disabled"
-            ? mode("blackAlpha.400", "whiteAlpha.400")(props)
+            ? baseText("disabled", props).color
             : props.state === "completed"
-              ? mode("darkTeal", "white")(props)
-              : mode("white", "darkTeal")(props),
+              ? baseText("default", props).color
+              : brandText("default", props).color,
         _hover: {
           backgroundColor:
             props.state === "disabled"
               ? "transparent"
-              : mode("coralGreen", "greenHaze")(props),
+              : accentBackground("hover", props).backgroundColor,
         },
       },
       backButton: {
         _hover: {
-          backgroundColor: mode("coralGreen", "greenHaze")(props),
+          ...brandBackground("hover", props),
         },
       },
     }),

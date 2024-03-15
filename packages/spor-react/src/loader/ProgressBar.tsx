@@ -1,4 +1,4 @@
-import { Box, BoxProps, Flex, Text } from "@chakra-ui/react";
+import { Box, BoxProps, Text, useMultiStyleConfig } from "@chakra-ui/react";
 import React from "react";
 import { useProgressBar } from "react-aria";
 import { createTexts, useTranslation } from "..";
@@ -79,37 +79,20 @@ export const ProgressBar = ({
     value,
     "aria-label": ariaLabel || t(texts.label(value)),
   });
+  const styles = useMultiStyleConfig("ProgressBar", {});
   return (
     <>
       <Box
         {...progressBarProps}
         title={t(texts.label(value))}
-        minWidth="100px"
+        __css={styles.container}
         {...rest}
       >
-        <Flex
-          backgroundColor="coralGreen"
-          borderRadius="sm"
-          width={width}
-          justifyContent="flex-start"
-          marginX="auto"
-        >
-          <Box
-            backgroundColor="greenHaze"
-            borderRadius="sm"
-            height={height}
-            width={`${value}%`}
-            maxWidth="100%"
-            transition="width .2s ease-out"
-          />
-        </Flex>
+        <Box width={width} __css={styles.background}>
+          <Box __css={styles.progress} height={height} width={`${value}%`} />
+        </Box>
         {currentLoadingText && (
-          <Text
-            textAlign="center"
-            marginTop={2}
-            fontWeight="bold"
-            {...labelProps}
-          >
+          <Text sx={styles.description} {...labelProps}>
             {currentLoadingText}
           </Text>
         )}

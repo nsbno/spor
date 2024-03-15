@@ -202,7 +202,10 @@ export default function ArticlePage() {
           </Box>
         )}
         {article.componentSections ? (
-          <ComponentSections sections={article.componentSections} />
+          <ComponentSections
+            id={article._id}
+            sections={article.componentSections}
+          />
         ) : (
           <Box>
             <PortableText value={article.content} />
@@ -239,8 +242,9 @@ const mapLinkToIcon = (linkType: ResourceLink["linkType"]) => {
 
 type ComponentSectionsProps = {
   sections: ComponentSection[];
+  id: string;
 };
-const ComponentSections = ({ sections }: ComponentSectionsProps) => {
+const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
   return (
     <Tabs
       colorScheme="accent"
@@ -249,6 +253,7 @@ const ComponentSections = ({ sections }: ComponentSectionsProps) => {
       marginTop={4}
       isFitted
       isLazy
+      key={id}
     >
       <TabList>
         {sections.map((section) => (

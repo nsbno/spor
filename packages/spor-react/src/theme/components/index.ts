@@ -27,6 +27,7 @@ export { default as MediaControllerButton } from "./media-controller-button";
 export { default as Modal } from "./modal";
 export { default as NumericStepper } from "./numeric-stepper";
 export { default as Popover } from "./popover";
+export { default as ProgressBar } from "./progress-bar";
 export { default as ProgressIndicator } from "./progress-indicator";
 export { default as Radio } from "./radio";
 export { default as Select } from "./select";

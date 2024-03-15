@@ -34,7 +34,7 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
     return platform.split(", ").includes("react");
   });
   return (
-    <Box key={component.name} as="article">
+    <Box key={component.name} as="article" marginBottom={9}>
       <LinkableHeading as="h3" variant="md" fontWeight="bold" marginBottom={1}>
         <Code fontSize="md">{`<${component.name} />`}</Code>
       </LinkableHeading>

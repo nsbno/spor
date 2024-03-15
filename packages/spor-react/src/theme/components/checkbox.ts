@@ -2,7 +2,6 @@ import { checkboxAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { baseBackground, brandBackground } from "../utils/background-utils";
-import { baseBorder } from "../utils/border-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
 import { baseText, brandText } from "../utils/text-utils";
 
@@ -14,11 +13,11 @@ const config = helpers.defineMultiStyleConfig({
       _hover: {
         "input:enabled:not([aria-invalid]) + .chakra-checkbox__control": {
           ...baseBackground("hover", props),
-          borderColor: baseBorder("hover", props).outlineColor,
+          borderColor: brandBackground("hover", props).backgroundColor,
         },
         "input:enabled[aria-invalid] + .chakra-checkbox__control": {
           backgroundColor: mode("white", "inherit")(props),
-          borderColor: "brightRed",
+          borderColor: mode("outline.error.light", "outline.error.dark"),
         },
         "input:enabled:checked:not([aria-invalid]) + .chakra-checkbox__control":
           {
@@ -26,8 +25,8 @@ const config = helpers.defineMultiStyleConfig({
             borderColor: brandBackground("hover", props).backgroundColor,
           },
         "input:enabled:checked[aria-invalid] + .chakra-checkbox__control": {
-          backgroundColor: "brightRed",
-          borderColor: "brightRed",
+          borderColor: mode("outline.error.light", "outline.error.dark"),
+          backgroundColor: mode("outline.error.light", "outline.error.dark"),
         },
       },
     },

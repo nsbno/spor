@@ -3,6 +3,7 @@ import {
   createMultiStyleConfigHelpers,
   defineStyle,
 } from "@chakra-ui/styled-system";
+import { mode } from "@chakra-ui/theme-tools";
 import { baseBackground } from "../utils/background-utils";
 import { baseBorder } from "../utils/border-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
@@ -65,7 +66,7 @@ export default defineMultiStyleConfig({
       link: {
         "&:not([aria-current=page])": {
           _hover: {
-            ...baseBorder("hover", props),
+            ...baseBorder("default", props),
           },
           _active: {
             ...baseBackground("active", props),
@@ -77,10 +78,16 @@ export default defineMultiStyleConfig({
       link: {
         "&:not([aria-current=page])": {
           _hover: {
-            ...baseBorder("default", props),
+            backgroundColor: mode(
+              "ghost.surface.hover.light",
+              "ghost.surface.hover.dark",
+            )(props),
           },
           _active: {
-            ...baseBackground("active", props),
+            backgroundColor: mode(
+              "ghost.surface.active.light",
+              "ghost.surface.active.dark",
+            )(props),
           },
         },
       },

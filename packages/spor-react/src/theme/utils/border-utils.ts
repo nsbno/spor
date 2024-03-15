@@ -12,10 +12,7 @@ export function baseBorder(state: BorderState, props: StyleFunctionProps) {
     case "hover":
       return {
         outline: "2px solid",
-        outlineColor: mode(
-          "outline.default.light",
-          "outline.default.dark",
-        )(props),
+        outlineColor: mode("outline.hover.light", "outline.hover.dark")(props),
       };
     case "focus": {
       return focusVisibleStyles(props)._focusVisible;

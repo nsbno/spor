@@ -9,11 +9,10 @@ export type TabsProps = Exclude<
   ChakraTabsProps,
   "colorScheme" | "variant" | "orientation" | "size"
 > & {
-  colorScheme: "base" | "accent";
+  /** Defaults to `base` */
+  variant: "base" | "accent";
   /** Defaults to `sm` */
   size?: "xs" | "sm" | "md" | "lg";
-  /** Defaults to `round` */
-  variant?: "square" | "round";
 };
 export const Tabs = forwardRef<TabsProps, "div">((props, ref) => {
   return <ChakraTabs {...props} ref={ref} />;

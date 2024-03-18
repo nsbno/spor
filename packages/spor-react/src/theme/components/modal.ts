@@ -1,6 +1,7 @@
 import { modalAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode, type PartsStyleObject } from "@chakra-ui/theme-tools";
+import { baseText } from "../utils/text-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -19,9 +20,9 @@ const config = helpers.defineMultiStyleConfig({
     },
     dialog: {
       borderRadius: "md",
-      background: mode("white", "pine")(props),
-      color: mode("inherit", "white")(props),
-      my: "3.75rem",
+      backgroundColor: mode("bg.default.light", "bg.default.dark")(props),
+      ...baseText("default", props),
+      marginY: "3.75rem",
       zIndex: "modal",
       maxHeight:
         props.scrollBehavior === "inside" ? "calc(100% - 7.5rem)" : undefined,
@@ -84,11 +85,11 @@ function getSize(value: string): PartsStyleObject<typeof parts> {
         "@supports(min-height: -webkit-fill-available)": {
           minHeight: "-webkit-fill-available",
         },
-        my: 0,
+        marginY: 0,
       },
     };
   }
   return {
-    dialog: { maxW: value },
+    dialog: { maxWidth: value },
   };
 }

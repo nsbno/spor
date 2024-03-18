@@ -1,7 +1,8 @@
 import { tableAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { baseBorder } from "../utils/border-utils";
+import { baseText } from "../utils/text-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -12,9 +13,10 @@ const numericStyles = {
 };
 
 const config = helpers.defineMultiStyleConfig({
-  baseStyle: {
+  baseStyle: (props) => ({
     table: {
       borderCollapse: "collapse",
+      ...baseText("default", props),
       width: "100%",
     },
     th: {
@@ -32,18 +34,15 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
     caption: {
-      mt: 4,
+      marginTop: 4,
       fontFamily: "heading",
       textAlign: "center",
       fontWeight: "bold",
       color: "currentColor",
     },
-  },
+  }),
   variants: {
     simple: (props) => ({
-      table: {
-        color: mode("darkGrey", "white")(props),
-      },
       th: {
         borderBottom: "sm",
         borderColor: mode(`blackAlpha.200`, `whiteAlpha.300`)(props),
@@ -61,19 +60,19 @@ const config = helpers.defineMultiStyleConfig({
           transitionDuration: "fast",
           transitionProperty: "background-color, box-shadow",
           _hover: {
-            boxShadow: mode(
-              getBoxShadowString({ borderColor: "darkTeal", borderWidth: 3 }),
-              getBoxShadowString({ borderColor: "blueGreen", borderWidth: 3 }),
-            )(props),
+            ...baseBorder("hover", props),
+            outlineOffset: "-2px",
             backgroundColor: mode(
               props.colorScheme === "grey" ? "mint" : "coralGreen",
               "whiteAlpha.200",
             )(props),
           },
+          _last: {
+            borderBottomRadius: "md",
+          }
         },
       },
       th: {
-        color: mode("darkGrey", "white")(props),
         border: mode("none", "md"),
         borderColor: mode("transparent", `whiteAlpha.200`)(props),
         backgroundColor: mode(`${props.colorScheme}.100`, "darkTeal")(props),

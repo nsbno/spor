@@ -14,7 +14,7 @@ export function baseText(state: BaseTextState, props: StyleFunctionProps) {
       };
     default:
       return {
-        color: mode("base.text.default.light", "base.text.default.dark")(props),
+        color: mode("base.text.light", "base.text.dark")(props),
       };
   }
 }
@@ -30,8 +30,8 @@ export function accentText(state: AccentTextState, props: StyleFunctionProps) {
     default:
       return {
         color: mode(
-          "accent.text.default.light",
-          "accent.text.default.dark",
+          "accent.text.light",
+          "accent.text.dark",
         )(props),
       };
   }

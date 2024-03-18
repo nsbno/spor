@@ -60,10 +60,7 @@ const config = helpers.defineMultiStyleConfig({
       width: [$height.reference],
       height: [$height.reference],
 
-      backgroundColor: mode(
-        "base.icon.default.light",
-        "base.icon.default.dark",
-      )(props),
+      backgroundColor: mode("base.icon.light", "base.icon.dark")(props),
       "[data-disabled] &": {
         backgroundColor: mode(
           "icon.disabled.light",

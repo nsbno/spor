@@ -246,15 +246,7 @@ type ComponentSectionsProps = {
 };
 const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
   return (
-    <Tabs
-      colorScheme="accent"
-      variant="square"
-      size="md"
-      marginTop={4}
-      isFitted
-      isLazy
-      key={id}
-    >
+    <Tabs variant="accent" size="md" marginTop={4} isFitted isLazy key={id}>
       <TabList>
         {sections.map((section) => (
           <Tab key={section.title}>

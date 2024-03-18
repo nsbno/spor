@@ -121,6 +121,7 @@ export default function IllustrationLibraryPage() {
       <Button
         variant="primary"
         size="lg"
+        width="fit-content"
         as="a"
         download="illustrations.zip"
         href="/resources/illustration-library/all"

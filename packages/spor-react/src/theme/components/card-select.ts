@@ -6,7 +6,7 @@ import {
   floatingBackground,
   ghostBackground,
 } from "../utils/background-utils";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { baseBorder, floatingBorder } from "../utils/border-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
 
 const parts = anatomy("card-select").parts("trigger", "card");
@@ -18,6 +18,8 @@ const config = helpers.defineMultiStyleConfig({
       appearance: "none",
       display: "flex",
       alignItems: "center",
+      transitionProperty: "outline",
+      transitionDuration: "fast",
       ...focusVisibleStyles(props),
     },
     card: {
@@ -31,35 +33,16 @@ const config = helpers.defineMultiStyleConfig({
   variants: {
     base: (props) => ({
       trigger: {
-        boxShadow: getBoxShadowString({
-          borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-        }),
+        ...baseBorder("default", props),
         _hover: {
-          boxShadow: getBoxShadowString({
-            borderColor: mode("darkGrey", "white")(props),
-            borderWidth: 2,
-          }),
+          ...baseBorder("hover", props),
         },
         _active: {
           ...baseBackground("active", props),
-          boxShadow: getBoxShadowString({
-            borderColor: mode("darkGrey", "whiteAlpha.400")(props),
-            borderWidth: 1,
-          }),
+          ...baseBorder("default", props),
         },
         _expanded: {
           ...baseBackground("active", props),
-          _hover: {
-            ...baseBackground("active", props),
-            boxShadow: "none",
-          },
-          _active: {
-            ...baseBackground("active", props),
-            boxShadow: getBoxShadowString({
-              borderColor: mode("blackAlpha.400", "whiteAlpha.400")(props),
-              borderWidth: 1,
-            }),
-          },
         },
       },
     }),
@@ -79,40 +62,19 @@ const config = helpers.defineMultiStyleConfig({
     floating: (props) => ({
       trigger: {
         ...floatingBackground("default", props),
-        boxShadow: getBoxShadowString({
-          borderColor: mode("silver", "whiteAlpha.400")(props),
-          borderWidth: 1,
-          baseShadow: "sm",
-        }),
+        boxShadow: "sm",
+        ...floatingBorder("default", props),
         transition: "all .1s ease-out",
         _hover: {
           ...floatingBackground("hover", props),
-          boxShadow: getBoxShadowString({
-            borderColor: mode("silver", "whiteAlpha.400")(props),
-            borderWidth: 2,
-            baseShadow: "sm",
-          }),
+          ...floatingBorder("hover", props),
         },
         _active: {
           ...floatingBackground("active", props),
-          boxShadow: getBoxShadowString({
-            borderColor: mode("silver", "whiteAlpha.400")(props),
-            borderWidth: mode(0, 1)(props),
-            baseShadow: "sm",
-          }),
+          ...floatingBorder("active", props),
         },
         _expanded: {
           ...floatingBackground("active", props),
-          _hover: {
-            boxShadow: getBoxShadowString({
-              borderColor: "darkGrey",
-              borderWidth: 3,
-            }),
-          },
-          _active: {
-            ...floatingBackground("active", props),
-            boxShadow: "none",
-          },
         },
       },
     }),

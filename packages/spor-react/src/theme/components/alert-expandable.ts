@@ -10,6 +10,8 @@ const config = helpers.defineMultiStyleConfig({
       paddingX: 3,
       paddingY: 2,
       fontSize: "inherit",
+      transitionProperty: "outline, border-radius",
+      transitionDuration: "fast",
       _expanded: {
         borderBottomRadius: "none",
       },

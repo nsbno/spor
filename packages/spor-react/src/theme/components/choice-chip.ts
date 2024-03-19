@@ -132,7 +132,7 @@ const config = helpers.defineMultiStyleConfig({
     }),
   },
   sizes: {
-    sm: {
+    xs: {
       container: {
         borderRadius: "30px",
         _checked: {
@@ -142,7 +142,7 @@ const config = helpers.defineMultiStyleConfig({
         px: 1.5,
       },
     },
-    md: {
+    sm: {
       container: {
         borderRadius: "30px",
         _checked: {
@@ -152,7 +152,7 @@ const config = helpers.defineMultiStyleConfig({
         px: 2,
       },
     },
-    lg: {
+    md: {
       container: {
         borderRadius: "30px",
         _checked: {
@@ -162,7 +162,7 @@ const config = helpers.defineMultiStyleConfig({
         px: 2,
       },
     },
-    xl: {
+    lg: {
       container: {
         borderRadius: "30px",
         _checked: {
@@ -174,7 +174,7 @@ const config = helpers.defineMultiStyleConfig({
     },
   },
   defaultProps: {
-    size: "md",
+    size: "sm",
   },
 });
 

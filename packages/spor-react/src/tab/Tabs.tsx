@@ -11,7 +11,7 @@ export type TabsProps = Exclude<
 > & {
   colorScheme: "base" | "accent";
   /** Defaults to `md` */
-  size?: "sm" | "md" | "lg" | "xl";
+  size?: "xs" | "sm" | "md" | "lg";
   /** Defaults to `round` */
   variant?: "square" | "round";
 };

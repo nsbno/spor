@@ -1,7 +1,9 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy } from "@chakra-ui/theme-tools";
+import { baseText } from "../utils/base-utils";
 import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { ghostBackground } from "../utils/ghost-utils";
 import { surface } from "../utils/surface-utils";
 
 const parts = anatomy("media-controller-button").parts("container", "icon");

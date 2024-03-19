@@ -1,6 +1,6 @@
 import { selectAnatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { baseText } from "../utils/text-utils";
+import { baseText } from "../utils/base-utils";
 import { default as Input } from "./input";
 
 const parts = selectAnatomy.extend("root");

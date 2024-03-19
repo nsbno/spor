@@ -1,7 +1,8 @@
 import { modalAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { mode, type PartsStyleObject } from "@chakra-ui/theme-tools";
-import { baseText } from "../utils/text-utils";
+import { type PartsStyleObject } from "@chakra-ui/theme-tools";
+import { baseText } from "../utils/base-utils";
+import { bg } from "../utils/bg-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -20,7 +21,7 @@ const config = helpers.defineMultiStyleConfig({
       overflow: props.scrollBehavior === "inside" ? "hidden" : "auto",
     },
     dialog: {
-      backgroundColor: mode("bg.default.light", "bg.default.dark")(props),
+      ...bg("default", props),
       ...baseText("default", props),
       zIndex: "modal",
       maxHeight:

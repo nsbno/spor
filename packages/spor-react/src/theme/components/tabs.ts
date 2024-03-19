@@ -1,14 +1,10 @@
 import { tabsAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode, type StyleFunctionProps } from "@chakra-ui/theme-tools";
-import {
-  accentBackground,
-  baseBackground,
-  brandBackground,
-} from "../utils/background-utils";
-import { baseBorder } from "../utils/border-utils";
+import { accentBackground, accentText } from "../utils/accent-utils";
+import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { accentText, baseText, brandText } from "../utils/text-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 

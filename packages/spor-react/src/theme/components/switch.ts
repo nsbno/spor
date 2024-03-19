@@ -1,8 +1,8 @@
 import { switchAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { calc, cssVar, mode } from "@chakra-ui/theme-tools";
-import { baseBackground, brandBackground } from "../utils/background-utils";
-import { baseBorder } from "../utils/border-utils";
+import { baseBackground, baseBorder } from "../utils/base-utils";
+import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
 const $width = cssVar("switch-track-width");

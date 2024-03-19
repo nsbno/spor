@@ -1,9 +1,9 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
-import { baseBackground, brandBackground } from "../utils/background-utils";
-import { baseBorder } from "../utils/border-utils";
+import { accentText } from "../utils/accent-utils";
+import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { accentText, baseText, brandText } from "../utils/text-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props) => ({
@@ -41,7 +41,7 @@ const config = defineStyleConfig({
   }),
   variants: {
     primary: (props) => ({
-      ...accentText("default", props), // TODO: This must be something else
+      ...accentText("default", props),
       _hover: {
         ...brandText("hover", props),
         ...brandBackground("hover", props),

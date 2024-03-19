@@ -1,10 +1,9 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { baseBackground, floatingBackground } from "../utils/background-utils";
-import { baseBorder, floatingBorder } from "../utils/border-utils";
+import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { srOnly } from "../utils/sr-utils";
-import { baseText } from "../utils/text-utils";
 
 const parts = anatomy("InfoSelect").parts(
   "container",

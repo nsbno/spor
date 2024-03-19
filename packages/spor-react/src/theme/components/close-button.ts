@@ -1,6 +1,6 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { cssVar, mode } from "@chakra-ui/theme-tools";
-import { focusVisibleStyles } from "../utils/focus-util";
+import { focusVisibleStyles } from "../utils/focus-utils";
 
 const $size = cssVar("close-button-size");
 

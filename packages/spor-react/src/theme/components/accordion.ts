@@ -6,7 +6,7 @@ import {
   ghostBackground,
 } from "../utils/background-utils";
 import { baseBorder, floatingBorder } from "../utils/border-utils";
-import { focusVisibleStyles } from "../utils/focus-util";
+import { focusVisibleStyles } from "../utils/focus-utils";
 import { baseText } from "../utils/text-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);

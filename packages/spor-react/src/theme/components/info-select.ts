@@ -2,7 +2,7 @@ import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { baseBackground, floatingBackground } from "../utils/background-utils";
 import { baseBorder, floatingBorder } from "../utils/border-utils";
-import { focusVisibleStyles } from "../utils/focus-util";
+import { focusVisibleStyles } from "../utils/focus-utils";
 import { srOnly } from "../utils/sr-utils";
 import { baseText } from "../utils/text-utils";
 

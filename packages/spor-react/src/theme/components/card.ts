@@ -3,7 +3,7 @@ import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { baseBackground } from "../utils/background-utils";
 import { baseBorder } from "../utils/border-utils";
-import { focusVisibleStyles } from "../utils/focus-util";
+import { focusVisibleStyles } from "../utils/focus-utils";
 import { baseText } from "../utils/text-utils";
 
 const config = defineStyleConfig({

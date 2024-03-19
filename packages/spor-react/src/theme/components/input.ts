@@ -2,7 +2,7 @@ import { inputAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { baseBackground } from "../utils/background-utils";
 import { baseBorder } from "../utils/border-utils";
-import { focusVisibleStyles } from "../utils/focus-util";
+import { focusVisibleStyles } from "../utils/focus-utils";
 import { surface } from "../utils/surface-utils";
 import { baseText } from "../utils/text-utils";
 

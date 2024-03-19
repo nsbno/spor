@@ -1,5 +1,5 @@
 import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
-import { focusVisibleStyles } from "./focus-util";
+import { focusVisibleStyles } from "./focus-utils";
 import { State, Subset } from "./types";
 
 type BorderState = Subset<

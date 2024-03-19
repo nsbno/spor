@@ -7,7 +7,7 @@ import {
   floatingBackground,
 } from "../utils/background-utils";
 import { baseBorder, floatingBorder } from "../utils/border-utils";
-import { focusVisibleStyles } from "../utils/focus-util";
+import { focusVisibleStyles } from "../utils/focus-utils";
 import { accentText, baseText } from "../utils/text-utils";
 
 const parts = anatomy("choice-chip").parts("container", "icon", "label");

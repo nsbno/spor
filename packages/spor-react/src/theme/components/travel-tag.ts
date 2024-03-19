@@ -1,7 +1,7 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import type { StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { anatomy, mode } from "@chakra-ui/theme-tools";
-import { focusVisibleStyles } from "../utils/focus-util";
+import { focusVisibleStyles } from "../utils/focus-utils";
 
 const parts = anatomy("travel-tag").parts(
   "container",

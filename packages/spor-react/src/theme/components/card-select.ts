@@ -7,7 +7,7 @@ import {
   ghostBackground,
 } from "../utils/background-utils";
 import { baseBorder, floatingBorder } from "../utils/border-utils";
-import { focusVisibleStyles } from "../utils/focus-util";
+import { focusVisibleStyles } from "../utils/focus-utils";
 
 const parts = anatomy("card-select").parts("trigger", "card");
 

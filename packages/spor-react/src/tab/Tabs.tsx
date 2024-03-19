@@ -10,7 +10,7 @@ export type TabsProps = Exclude<
   "colorScheme" | "variant" | "orientation" | "size"
 > & {
   colorScheme: "base" | "accent";
-  /** Defaults to `md` */
+  /** Defaults to `sm` */
   size?: "xs" | "sm" | "md" | "lg";
   /** Defaults to `round` */
   variant?: "square" | "round";

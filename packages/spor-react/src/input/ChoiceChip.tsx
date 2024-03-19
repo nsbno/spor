@@ -37,7 +37,7 @@ export type ChoiceChipProps = {
  *
  * There are also three different chipType - `icon`, `choice` and `filter`.
  *
- * ```tsxx
+ * ```tsx
  * <Stack flexDirection="row">
  *  <ChoiceChip chipType="icon" icon={<Bus24Icon />}>Bus</ChoiceChip>
  *  <ChoiceChip chipType="choice" icon={<Bus24Icon />}>Bus</ChoiceChip>

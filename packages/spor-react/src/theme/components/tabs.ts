@@ -101,7 +101,7 @@ const config = helpers.defineMultiStyleConfig({
     },
   },
   defaultProps: {
-    size: "md",
+    size: "sm",
     variant: "round",
   },
 });

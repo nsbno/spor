@@ -60,7 +60,7 @@ const config = helpers.defineMultiStyleConfig({
     },
   },
   sizes: {
-    sm: {
+    xs: {
       tablist: {
         height: "30px",
         padding: "2px",
@@ -70,7 +70,7 @@ const config = helpers.defineMultiStyleConfig({
         paddingY: 0,
       },
     },
-    md: {
+    sm: {
       tablist: {
         height: "36px",
         padding: 0.5,
@@ -79,7 +79,7 @@ const config = helpers.defineMultiStyleConfig({
         paddingX: 2,
       },
     },
-    lg: {
+    md: {
       tablist: {
         height: "42px",
         padding: 0.5,
@@ -89,7 +89,7 @@ const config = helpers.defineMultiStyleConfig({
         paddingX: 2,
       },
     },
-    xl: {
+    lg: {
       tablist: {
         height: "54px",
         padding: "4px",
@@ -101,7 +101,7 @@ const config = helpers.defineMultiStyleConfig({
     },
   },
   defaultProps: {
-    size: "md",
+    size: "sm",
     variant: "round",
   },
 });

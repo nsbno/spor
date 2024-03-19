@@ -19,14 +19,14 @@ export type ChoiceChipProps = {
     default: React.ReactNode;
     checked: React.ReactNode;
   };
-  size?: "sm" | "md" | "lg" | "xl";
+  size?: "xs" | "sm" | "md" | "lg";
   chipType?: "icon" | "choice" | "filter";
   variant?: "base" | "accent" | "floating";
 };
 /**
  * Choice chips are checkboxes that look like selectable buttons.
  *
- * Choice chips are available in four different sizes - `sm`, `md`, `lg` and `xl`.
+ * Choice chips are available in four different sizes - `xs`, `sm`, `md` and `lg`.
  *
  * ```tsx
  * <Stack flexDirection="row">
@@ -59,7 +59,7 @@ export const ChoiceChip = forwardRef((props: ChoiceChipProps, ref) => {
     children,
     icon,
     isDisabled,
-    size = "md",
+    size = "sm",
     chipType = "choice",
     variant = "base",
   } = props;

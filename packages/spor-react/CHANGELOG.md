@@ -1,5 +1,31 @@
 # @vygruppen/spor-react
 
+## 9.0.0
+
+### Major Changes
+
+- e4945e6: ### Major Changes
+
+  There was a need to change some sizing props to be consistent through the designsystem.
+
+  Sizes that used to be "sm, md, lg, xl" are now "xs, sm, md, lg".
+
+  To migrate, change size
+
+  - "sm" to "xs",
+  - "md" to "sm",
+  - "lg" to "md",
+  - and "xl" to "lg".
+
+  Affected components are:
+
+  - ChoiceChip
+  - Tabs
+
+- f5194ff: Tabs: The `colorScheme` prop is removed. The `variant` prop is now either `base` or `accent`. To migrate, remove the `colorScheme` prop, and set the `variant` prop to either `base` (the default) or `accent`.
+
+  Switch: The `variant` prop is removed. To migrate, remove the `variant` prop.
+
 ## 8.3.0
 
 ### Minor Changes

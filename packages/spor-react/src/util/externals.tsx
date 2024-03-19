@@ -1,6 +1,5 @@
 /** This file works as a proxy for all Chakra UI exports */
 export {
-  Collapse,
   DarkMode,
   LightMode,
   Portal,

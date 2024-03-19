@@ -1,4 +1,8 @@
-import { HeadingProps as ChakraHeadingProps, Text } from "@chakra-ui/react";
+import {
+  HeadingProps as ChakraHeadingProps,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import React from "react";
 import { slugify } from "..";
 import type { textStyles } from "../theme/foundations";
@@ -45,5 +49,6 @@ export const Heading = ({
     externalId ?? (autoId && typeof props.children === "string")
       ? slugify(props.children as string)
       : undefined;
-  return <Text as={as} textStyle={variant} id={id} {...props} />;
+  const color = useColorModeValue("text.primary.light", "text.primary.dark");
+  return <Text as={as} textStyle={variant} id={id} color={color} {...props} />;
 };

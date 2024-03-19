@@ -6,7 +6,7 @@ import {
 import { mode } from "@chakra-ui/theme-tools";
 import { baseBackground } from "../utils/background-utils";
 import { baseBorder } from "../utils/border-utils";
-import { focusVisibleStyles } from "../utils/focus-util";
+import { focusVisibleStyles } from "../utils/focus-utils";
 
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys);

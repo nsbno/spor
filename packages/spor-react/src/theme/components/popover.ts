@@ -1,7 +1,7 @@
 import { popoverAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { cssVar, mode } from "@chakra-ui/theme-tools";
-import { focusVisibleStyles } from "../utils/focus-util";
+import { focusVisibleStyles } from "../utils/focus-utils";
 
 const $popperBg = cssVar("popper-bg");
 const $arrowBg = cssVar("popper-arrow-bg");

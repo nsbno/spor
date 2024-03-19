@@ -1,6 +1,5 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
 
 const parts = anatomy("alertExpandable").parts("container");
 const helpers = createMultiStyleConfigHelpers(parts.keys);
@@ -14,16 +13,16 @@ const config = helpers.defineMultiStyleConfig({
       _expanded: {
         borderBottomRadius: "none",
       },
+      _hover: {
+        outline: "2px solid",
+      },
     },
   },
   variants: {
     info: {
       container: {
         _hover: {
-          boxShadow: getBoxShadowString({
-            borderColor: "sky",
-            borderWidth: 2,
-          }),
+          outlineColor: "sky",
         },
         _active: {
           backgroundColor: "icyBlue",
@@ -33,10 +32,7 @@ const config = helpers.defineMultiStyleConfig({
     success: {
       container: {
         _hover: {
-          boxShadow: getBoxShadowString({
-            borderColor: "blueGreen",
-            borderWidth: 2,
-          }),
+          outlineColor: "blueGreen",
         },
         _active: {
           backgroundColor: "mint",
@@ -46,10 +42,7 @@ const config = helpers.defineMultiStyleConfig({
     warning: {
       container: {
         _hover: {
-          boxShadow: getBoxShadowString({
-            borderColor: "sunshine",
-            borderWidth: 2,
-          }),
+          outlineColor: "sunshine",
         },
         _active: {
           backgroundColor: "cornSilk",
@@ -59,10 +52,7 @@ const config = helpers.defineMultiStyleConfig({
     "alt-transport": {
       container: {
         _hover: {
-          boxShadow: getBoxShadowString({
-            borderColor: "golden",
-            borderWidth: 2,
-          }),
+          outlineColor: "golden",
         },
         _active: {
           backgroundColor: "sunshine",
@@ -72,10 +62,7 @@ const config = helpers.defineMultiStyleConfig({
     error: {
       container: {
         _hover: {
-          boxShadow: getBoxShadowString({
-            borderColor: "apricot",
-            borderWidth: 2,
-          }),
+          outlineColor: "apricot",
         },
         _active: {
           backgroundColor: "pink",

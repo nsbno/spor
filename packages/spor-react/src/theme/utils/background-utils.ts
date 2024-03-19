@@ -1,5 +1,4 @@
 import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
-import { colors } from "../foundations";
 import { State, Subset } from "./types";
 
 type BaseBackgroundState = Subset<
@@ -45,7 +44,7 @@ export function baseBackground(
 
 type GhostBackgroundState = Subset<
   State,
-  "default" | "hover" | "focus" | "active" | "selected"
+  "default" | "hover" | "active" | "selected"
 >;
 
 export function ghostBackground(
@@ -68,17 +67,12 @@ export function ghostBackground(
           "ghost.surface.active.dark",
         )(props),
       };
-    case "focus":
-      return {
-        backgroundColor: "transparent",
-      };
     case "selected": {
       return {
         backgroundColor: mode("mint", "whiteAlpha.200")(props),
       };
     }
     case "default":
-    default:
       return {
         backgroundColor: "transparent",
       };
@@ -87,7 +81,7 @@ export function ghostBackground(
 
 type FloatingBackgroundState = Subset<
   State,
-  "default" | "hover" | "focus" | "active" | "selected"
+  "default" | "hover" | "active" | "selected"
 >;
 
 export function floatingBackground(
@@ -116,16 +110,7 @@ export function floatingBackground(
           "floating.surface.hover.dark",
         )(props),
       };
-    case "focus":
-      return {
-        // TODO: Is this required?
-        backgroundColor: mode(
-          "white",
-          `color-mix(in srgb, ${props.theme.colors.accent}, ${colors.white} 40%)`,
-        )(props),
-      };
     case "default":
-    default:
       return {
         backgroundColor: mode(
           "floating.surface.default.light",
@@ -176,17 +161,13 @@ export function accentBackground(
   }
 }
 
-type BrandBackgroundState = Subset<
-  State,
-  "default" | "hover" | "focus" | "active" | "selected"
->;
+type BrandBackgroundState = Subset<State, "default" | "hover" | "active">;
 
 export function brandBackground(
   state: BrandBackgroundState,
   props: StyleFunctionProps,
 ) {
   switch (state) {
-    case "selected":
     case "active":
       return {
         backgroundColor: mode(
@@ -201,7 +182,6 @@ export function brandBackground(
           "brand.surface.hover.dark",
         )(props),
       };
-    case "focus":
     case "default":
     default:
       return {

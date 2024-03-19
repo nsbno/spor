@@ -69,7 +69,7 @@ const config = helpers.defineMultiStyleConfig({
           },
           _last: {
             borderBottomRadius: "md",
-          }
+          },
         },
       },
       th: {

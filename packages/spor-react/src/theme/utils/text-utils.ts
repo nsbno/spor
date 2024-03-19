@@ -29,10 +29,7 @@ export function accentText(state: AccentTextState, props: StyleFunctionProps) {
       };
     default:
       return {
-        color: mode(
-          "accent.text.light",
-          "accent.text.dark",
-        )(props),
+        color: mode("accent.text.light", "accent.text.dark")(props),
       };
   }
 }

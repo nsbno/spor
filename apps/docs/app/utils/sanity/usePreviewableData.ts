@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { useLoaderData } from "@remix-run/react";
+import { useEffect, useState } from "react";
 import { usePreviewSubscription } from "./usePreviewSubscription";
 import { filterDataToSingleItem } from "./utils";
 
@@ -32,7 +32,7 @@ export const usePreviewableData = <Data extends { _id: string }>() => {
   });
 
   return {
-    data: filterDataToSingleItem(currentData, isPreview),
+    data: filterDataToSingleItem(currentData as any, isPreview) as Data,
     isPreview,
   };
 };

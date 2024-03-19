@@ -47,10 +47,7 @@ export function baseBorder(state: BorderState, props: StyleFunctionProps) {
   }
 }
 
-type FloatingBorderState = Subset<
-  State,
-  "default" | "hover" | "focus" | "active" | "selected"
->;
+type FloatingBorderState = Subset<State, "default" | "hover" | "active">;
 export function floatingBorder(
   state: FloatingBorderState,
   props: StyleFunctionProps,

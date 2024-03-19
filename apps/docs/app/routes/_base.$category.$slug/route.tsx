@@ -245,7 +245,7 @@ const ComponentSections = ({ sections }: ComponentSectionsProps) => {
     <Tabs
       colorScheme="accent"
       variant="square"
-      size="sm"
+      size="md"
       marginTop={4}
       isFitted
       isLazy

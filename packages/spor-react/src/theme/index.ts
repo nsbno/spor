@@ -17,18 +17,7 @@ export const theme = {
 };
 
 export const brandTheme = {
-  [Brand.VyDigital]: {
-    colors: {
-      accent: {
-        surface: {
-          default: {
-            light: foundations.colors.seaMist,
-            dark: foundations.colors.night,
-          },
-        },
-      },
-    },
-  },
+  [Brand.VyDigital]: {},
   [Brand.VyUtvikling]: {
     colors: {
       accent: {

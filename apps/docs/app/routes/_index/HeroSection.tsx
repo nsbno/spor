@@ -7,18 +7,30 @@ import {
   Flex,
   Heading,
   Image,
+  useColorMode,
+  useColorModeValue,
 } from "@vygruppen/spor-react";
 
 export function HeroSection() {
+  const backgroundColor = useColorModeValue(
+    "bg.secondary.dark",
+    "bg.tertiary.dark",
+  );
+
+  const { colorMode } = useColorMode();
   return (
-    <Flex backgroundColor="darkTeal" minHeight="500px">
+    <Flex backgroundColor={backgroundColor} minHeight="500px">
       <Container maxWidth="container.lg" marginTop={[0, 0, 8]}>
         <Flex
           flexDirection={["column-reverse", null, "row"]}
           alignItems="center"
           gap={4}
         >
-          <Flex flexDirection="column" color="white" flex={["auto", "55%"]}>
+          <Flex
+            flexDirection="column"
+            color="text.inverted.light"
+            flex={["auto", "55%"]}
+          >
             <Heading as="h1" variant="2xl">
               Welcome to Spor
             </Heading>
@@ -39,7 +51,7 @@ export function HeroSection() {
           </Flex>
           <Flex flex={["auto", null, "45%"]}>
             <Image
-              src="/illustrations/front-page-illustration.svg"
+              src={`/illustrations/front-page-illustration-dark.svg`}
               alt="An illustration of a person looking out over a landscape with trees, houses, buses, bicycles and roads"
               width="100%"
               aspectRatio="4 / 3"

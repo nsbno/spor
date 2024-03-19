@@ -1,5 +1,5 @@
 import { PortableText } from "@portabletext/react";
-import { Flex, Image, Stack } from "@vygruppen/spor-react";
+import { Flex, Image, Stack, useColorModeValue } from "@vygruppen/spor-react";
 
 type ImageWithCaptionProps = {
   src: string;
@@ -16,6 +16,7 @@ export const ImageWithCaption = ({
   aspectRatio,
   alignment,
 }: ImageWithCaptionProps) => {
+  const color = useColorModeValue("text.detail.light", "text.detail.dark");
   return (
     <Flex
       as="figure"
@@ -28,7 +29,7 @@ export const ImageWithCaption = ({
         <Stack
           as="figcaption"
           textStyle="xs"
-          color="dimGrey"
+          color={color}
           marginTop={1.5}
           textAlign={mapAlignmentToTextAlign(alignment)}
         >

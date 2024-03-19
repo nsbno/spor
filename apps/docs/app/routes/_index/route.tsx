@@ -1,11 +1,15 @@
-import { Box } from "@vygruppen/spor-react";
+import { Box, useColorModeValue } from "@vygruppen/spor-react";
 import { Footer } from "~/root/layout/Footer";
 import { ActionLinks } from "~/routes/_index/ActionLinks";
 import { HeroSection } from "~/routes/_index/HeroSection";
 
 export default function Index() {
+  const backgroundColor = useColorModeValue(
+    "bg.secondary.light",
+    "bg.secondary.dark",
+  );
   return (
-    <Box backgroundColor="lightGrey" flex="1">
+    <Box backgroundColor={backgroundColor} flex="1">
       <Box as="main" id="content">
         <HeroSection />
         <ActionLinks />

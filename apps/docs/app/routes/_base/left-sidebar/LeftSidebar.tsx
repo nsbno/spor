@@ -1,7 +1,8 @@
-import { Box } from "@vygruppen/spor-react";
+import { Box, useColorModeValue } from "@vygruppen/spor-react";
 import { SearchableContentMenu } from "~/routes/_base/content-menu/SearchableContentMenu";
 
 export const LeftSidebar = () => {
+  const borderColor = useColorModeValue("lightGrey", "night");
   return (
     <Box
       display={["none", null, null, "block"]}
@@ -11,7 +12,7 @@ export const LeftSidebar = () => {
       paddingX={1.5}
       paddingY={2}
       borderRight="9px solid"
-      borderRightColor="lightGrey"
+      borderRightColor={borderColor}
     >
       <SearchableContentMenu />
     </Box>

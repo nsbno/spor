@@ -40,7 +40,6 @@ export const LinkableHeading = ({
         variant="ghost"
         icon={hasCopied ? <SuccessOutline24Icon /> : <CopyOutline24Icon />}
         size="sm"
-        color="darkGrey"
         visibility="hidden"
         opacity="0"
         transitionDuration="fast"

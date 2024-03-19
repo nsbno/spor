@@ -1,6 +1,6 @@
-import { forwardRef } from "@chakra-ui/react";
+import { Box, forwardRef } from "@chakra-ui/react";
 import { Link } from "@remix-run/react";
-import { Flex, FlexProps } from "@vygruppen/spor-react";
+import { Button, FlexProps } from "@vygruppen/spor-react";
 import React, { useRef } from "react";
 
 type MenuItemProps = FlexProps & {
@@ -13,6 +13,7 @@ type MenuItemProps = FlexProps & {
  */
 export const MenuItem = forwardRef<MenuItemProps, "a">(
   ({ url, children, isActive, ...rest }, externalRef) => {
+    const color = isActive ? "mint" : "transparent";
     const internalRef = useRef<HTMLAnchorElement>(null);
     const handleKeyUp = (e: React.KeyboardEvent) => {
       if (!internalRef || typeof internalRef === "function") {
@@ -36,25 +37,23 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
       }
     };
     return (
-      <Flex
+      <Button
+        variant="ghost"
         key={url}
         {...getLinkProps({ url })}
-        paddingX={2}
-        fontSize="mobile.xs"
-        borderRadius="sm"
-        alignItems="center"
-        backgroundColor={isActive ? "mint" : "transparent"}
-        _hover={{
-          backgroundColor: "mint",
-        }}
-        _focus={{
-          backgroundColor: "mint",
-          outline: "2px solid",
-          outlineColor: "greenHaze",
-        }}
-        _active={{
-          backgroundColor: "seaMist",
-        }}
+        size="xs"
+        //backgroundColor={isActive ? "mint" : "transparent"}
+        // _hover={{
+        //   backgroundColor: "mint",
+        // }}
+        // _focus={{
+        //   backgroundColor: "mint",
+        //   outline: "2px solid",
+        //   outlineColor: "greenHaze",
+        // }}
+        // _active={{
+        //   backgroundColor: "seaMist",
+        // }}
         ref={(el) => {
           if (externalRef) {
             (externalRef as any).current = el;
@@ -65,8 +64,10 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
         onKeyDown={handleKeyDown}
         {...rest}
       >
-        {children}
-      </Flex>
+        <Box minWidth="200px" textAlign="left">
+          {children}
+        </Box>
+      </Button>
     );
   },
 );

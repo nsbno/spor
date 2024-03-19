@@ -116,7 +116,7 @@ function ActionLinkCard({ to, children }: ActionLinkCardProps) {
   return (
     <Card
       {...linkProps}
-      colorScheme="white"
+      colorScheme="grey"
       padding={4}
       display="flex"
       flexDirection={["row", "column"]}

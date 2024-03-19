@@ -1,9 +1,17 @@
 import { Link } from "@remix-run/react";
-import { Flex, TextLink, VyLogo } from "@vygruppen/spor-react";
+import { NightOutline18Icon } from "@vygruppen/spor-icon-react";
+import {
+  Button,
+  Flex,
+  TextLink,
+  VyLogo,
+  useColorMode,
+} from "@vygruppen/spor-react";
 import { useMenu } from "~/utils/useMenu";
 
 export const Footer = () => {
   const menu = useMenu("footer-menu");
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Flex
       as="footer"
@@ -15,7 +23,7 @@ export const Footer = () => {
       borderColor="blackAlpha.200"
     >
       <Link to="/" aria-label="Go to the front page">
-        <VyLogo colorScheme="light" width="4rem" aria-hidden="true" />
+        <VyLogo colorScheme={colorMode} width="4rem" aria-hidden="true" />
       </Link>
       <Flex
         flexDirection="row"
@@ -27,6 +35,14 @@ export const Footer = () => {
         {menu?.menuItems.map((item) => (
           <MenuItem title={item.title} url={item.url} key={item.title} />
         ))}
+        <Button
+          onClick={toggleColorMode}
+          variant="secondary"
+          size="xs"
+          leftIcon={<NightOutline18Icon />}
+        >
+          {colorMode === "light" ? "Dark mode" : "Light mode"}
+        </Button>
       </Flex>
     </Flex>
   );

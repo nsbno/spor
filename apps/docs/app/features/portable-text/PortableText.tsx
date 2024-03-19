@@ -1,4 +1,9 @@
-import { ListItem, OrderedList, UnorderedList } from "@chakra-ui/react";
+import {
+  ListItem,
+  OrderedList,
+  UnorderedList,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import {
   PortableText,
   PortableTextReactComponents,
@@ -213,6 +218,7 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     staticCodeBlock: ({ value }) => {
+      const color = useColorModeValue("text.detail.light", "text.detail.dark");
       return (
         <Box marginBottom={3}>
           <CodeBlock
@@ -221,7 +227,7 @@ const components: Partial<PortableTextReactComponents> = {
             code={value.code.code}
           />
           {value.caption && (
-            <Text variant="xs" textAlign="center" color="dimGrey" marginTop={1}>
+            <Text variant="xs" textAlign="center" color={color} marginTop={1}>
               {value.caption}
             </Text>
           )}
@@ -262,6 +268,7 @@ const components: Partial<PortableTextReactComponents> = {
       <Box
         as="article"
         backgroundColor="mint"
+        color="text.default.light"
         marginTop={3}
         padding={4}
         borderRadius="md"

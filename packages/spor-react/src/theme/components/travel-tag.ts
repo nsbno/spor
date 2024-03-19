@@ -1,7 +1,6 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import type { StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { anatomy, mode } from "@chakra-ui/theme-tools";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
 
 const parts = anatomy("travel-tag").parts(
@@ -31,11 +30,9 @@ const config = helpers.defineMultiStyleConfig({
         backgroundColor: "silver",
       },
       "button&, a&": {
+        boxShadow: "sm",
         _hover: {
-          boxShadow: getBoxShadowString({
-            borderColor: props.theme.colors.blackAlpha[100],
-            baseShadow: "sm",
-          }),
+          boxShadow: "md",
         },
         ...focusVisibleStyles(props),
         _active: {

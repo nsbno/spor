@@ -16,6 +16,7 @@ import {
   Heading,
   SimpleGrid,
   Text,
+  useColorModeValue,
 } from "@vygruppen/spor-react";
 
 type LinkItem = {
@@ -76,6 +77,10 @@ const links: LinkItem[] = [
 ];
 
 export function ActionLinks() {
+  const backgroundColor = useColorModeValue(
+    "bg.default.light",
+    "bg.default.dark",
+  );
   return (
     <Container maxWidth="container.lg">
       <SimpleGrid
@@ -85,20 +90,26 @@ export function ActionLinks() {
         spacing={[3, 4]}
       >
         {links.map((link) => (
-          <ActionLinkCard key={link.to} to={link.to}>
-            <IconCircle backgroundColor={link.iconColor} icon={link.icon} />
-            <Box>
-              <Heading
-                as="h2"
-                variant="md"
-                marginBottom={1.5}
-                fontWeight="bold"
-              >
-                {link.title}
-              </Heading>
-              <Text variant="sm">{link.description}</Text>
-            </Box>
-          </ActionLinkCard>
+          <Box
+            backgroundColor={backgroundColor}
+            key={link.to}
+            borderRadius="lg"
+          >
+            <ActionLinkCard to={link.to}>
+              <IconCircle backgroundColor={link.iconColor} icon={link.icon} />
+              <Box>
+                <Heading
+                  as="h2"
+                  variant="md"
+                  marginBottom={1.5}
+                  fontWeight="bold"
+                >
+                  {link.title}
+                </Heading>
+                <Text variant="sm">{link.description}</Text>
+              </Box>
+            </ActionLinkCard>
+          </Box>
         ))}
       </SimpleGrid>
     </Container>
@@ -116,11 +127,12 @@ function ActionLinkCard({ to, children }: ActionLinkCardProps) {
   return (
     <Card
       {...linkProps}
-      colorScheme="grey"
-      padding={4}
+      colorScheme="white"
       display="flex"
       flexDirection={["row", "column"]}
       gap={[3, 4]}
+      padding={4}
+      height="100%"
     >
       {children}
     </Card>
@@ -141,6 +153,7 @@ function IconCircle({ backgroundColor, icon: Icon }: IconCircleProps) {
       justifyContent="center"
       borderRadius="round"
       backgroundColor={backgroundColor}
+      color="darkGrey"
     >
       <Icon width={["30px", "60px"]} height={["30px", "60px"]} />
     </Flex>

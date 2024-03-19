@@ -1,8 +1,10 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
-import { getBoxShadowString } from "../utils/box-shadow-utils";
+import { baseBackground } from "../utils/background-utils";
+import { baseBorder } from "../utils/border-utils";
 import { focusVisibleStyles } from "../utils/focus-util";
+import { baseText } from "../utils/text-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({
@@ -14,24 +16,52 @@ const config = defineStyleConfig({
     transitionProperty: "common",
     transitionDuration: "fast",
     borderRadius: "md",
+    // Except for white cards, all cards are light mode always
+    color: "text.default.light",
     ...getColorSchemeBaseProps(props),
 
     "button&, a&, label&, &.is-clickable": {
+      outline: "1px solid",
       ...getColorSchemeClickableProps(props),
-      _hover: getColorSchemeHoverProps(props),
       ...focusVisibleStyles(props),
+      _hover: getColorSchemeHoverProps(props),
       _active: getColorSchemeActiveProps(props),
       _disabled: {
-        backgroundColor: "platinum",
-        boxShadow: getBoxShadowString({
-          borderColor: "silver",
-          isInset: false,
-        }),
-        color: "osloGrey",
+        ...baseBackground("disabled", props),
+        ...baseBorder("disabled", props),
+        ...baseText("disabled", props),
         pointerEvents: "none",
       },
     },
   }),
+  sizes: {
+    sm: {
+      "button&, a&, label&, &.is-clickable": {
+        boxShadow: "sm",
+
+        _hover: {
+          boxShadow: "md",
+        },
+
+        _active: {
+          boxShadow: "none",
+        },
+      },
+    },
+    lg: {
+      "button&, a&, label&, &.is-clickable": {
+        boxShadow: "md",
+
+        _hover: {
+          boxShadow: "lg",
+        },
+
+        _active: {
+          boxShadow: "sm",
+        },
+      },
+    },
+  },
 });
 
 export default config;
@@ -50,17 +80,13 @@ type CardThemeProps = {
 };
 
 const getColorSchemeBaseProps = (props: CardThemeProps) => {
-  const { colorScheme, size } = props;
-  const baseShadow = size === "lg" ? "md" : "sm";
-  switch (colorScheme) {
+  switch (props.colorScheme) {
     case "white":
       return {
+        outline: "1px solid",
+        outlineColor: "silver",
         backgroundColor: mode("white", "whiteAlpha.100")(props),
-        boxShadow: getBoxShadowString({
-          baseShadow,
-          borderColor: "silver",
-          isInset: false,
-        }),
+        color: "inherit",
       };
     case "grey":
       return {
@@ -78,95 +104,64 @@ const getColorSchemeBaseProps = (props: CardThemeProps) => {
     }
     default:
       return {
-        backgroundColor: colors[colorScheme]?.[100] ?? "platinum",
+        backgroundColor: colors[props.colorScheme]?.[100] ?? "platinum",
       };
   }
 };
 
-function getColorSchemeClickableProps({ colorScheme, size }: CardThemeProps) {
-  const baseShadow = size === "lg" ? "md" : "sm";
-  switch (colorScheme) {
+function getColorSchemeClickableProps(props: CardThemeProps) {
+  switch (props.colorScheme) {
     case "white":
       return {
-        boxShadow: getBoxShadowString({
-          baseShadow,
-          borderColor: "silver",
-        }),
+        outlineColor: "silver",
       };
     case "grey":
       return {
-        boxShadow: getBoxShadowString({
-          baseShadow,
-          borderColor: "steel",
-        }),
+        outlineColor: "steel",
       };
     default:
       return {
-        backgroundColor: colors[colorScheme]?.[100] ?? "platinum",
-        boxShadow: getBoxShadowString({
-          baseShadow,
-          borderColor: colors[colorScheme]?.[200] ?? "silver",
-        }),
+        backgroundColor: colors[props.colorScheme]?.[100] ?? "platinum",
+        outlineColor: colors[props.colorScheme]?.[200] ?? "silver",
       };
   }
 }
 
 const getColorSchemeHoverProps = (props: CardThemeProps) => {
-  const { colorScheme, size } = props;
-  const baseShadow = size === "lg" ? "lg" : "md";
-  switch (colorScheme) {
+  switch (props.colorScheme) {
     case "white":
       return {
         backgroundColor: mode("white", "whiteAlpha.200")(props),
-        boxShadow: getBoxShadowString({
-          baseShadow,
-          borderColor: colors.steel,
-        }),
+        outlineColor: "steel",
       };
     case "grey":
       return {
-        boxShadow: getBoxShadowString({
-          baseShadow,
-          borderColor: colors.osloGrey,
-        }),
+        outlineColor: "osloGrey",
       };
     default:
       return {
-        backgroundColor: colors[colorScheme]?.[200] ?? "silver",
-        boxShadow: getBoxShadowString({
-          baseShadow,
-          borderColor: colors[colorScheme]?.[400] ?? colors.silver,
-        }),
+        backgroundColor: colors[props.colorScheme]?.[200] ?? "silver",
+        outlineColor: colors[props.colorScheme]?.[400] ?? "silver",
       };
   }
 };
 const getColorSchemeActiveProps = (props: CardThemeProps) => {
   const { colorScheme, size } = props;
-  const baseShadow = size === "lg" ? "sm" : "none";
   switch (colorScheme) {
     case "white":
       return {
         backgroundColor: mode("mint", "teal")(props),
-        boxShadow: getBoxShadowString({
-          baseShadow,
-          borderColor: colors.silver,
-        }),
+        outlineColor: "silver",
       };
     case "grey":
       return {
         backgroundColor: "white",
-        boxShadow: getBoxShadowString({
-          baseShadow,
-          borderColor: colors.steel,
-        }),
+        outlineColor: "steel",
       };
     default:
       return {
         backgroundColor: colors[colorScheme]?.[50] ?? "lightGrey",
-        boxShadow: getBoxShadowString({
-          baseShadow,
-          borderColor: colors[colorScheme]?.[100] ?? colors.silver,
-        }),
+        outlineColor: colors[colorScheme]?.[100] ?? "silver",
       };
   }
 };

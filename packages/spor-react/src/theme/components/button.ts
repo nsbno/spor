@@ -1,15 +1,11 @@
 import { defineStyleConfig } from "@chakra-ui/react";
-import {
-  accentBackground,
-  baseBackground,
-  brandBackground,
-  floatingBackground,
-  ghostBackground,
-} from "../utils/background-utils";
-import { baseBorder, floatingBorder } from "../utils/border-utils";
+import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { brandBackground, brandText } from "../utils/brand-utils";
+import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { ghostBackground } from "../utils/ghost-utils";
 import { surface } from "../utils/surface-utils";
-import { accentText, baseText, brandText } from "../utils/text-utils";
+import { accentBackground, accentText } from "../utils/accent-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props) => ({

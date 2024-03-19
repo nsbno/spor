@@ -1,7 +1,8 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy, mode } from "@chakra-ui/theme-tools";
-import { accentBackground, brandBackground } from "../utils/background-utils";
-import { accentText, baseText, brandText } from "../utils/text-utils";
+import { baseText } from "../utils/base-utils";
+import { brandBackground, brandText } from "../utils/brand-utils";
+import { accentText, accentBackground } from "../utils/accent-utils";
 
 const parts = anatomy("stepper").parts(
   "root",

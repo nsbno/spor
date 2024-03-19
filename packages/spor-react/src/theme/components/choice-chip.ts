@@ -1,14 +1,10 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy } from "@chakra-ui/theme-tools";
-import {
-  accentBackground,
-  baseBackground,
-  brandBackground,
-  floatingBackground,
-} from "../utils/background-utils";
-import { baseBorder, floatingBorder } from "../utils/border-utils";
+import { accentBackground, accentText } from "../utils/accent-utils";
+import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { brandBackground } from "../utils/brand-utils";
+import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { accentText, baseText } from "../utils/text-utils";
 
 const parts = anatomy("choice-chip").parts("container", "icon", "label");
 

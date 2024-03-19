@@ -4,8 +4,7 @@ import {
   defineStyle,
 } from "@chakra-ui/styled-system";
 import { mode } from "@chakra-ui/theme-tools";
-import { baseBackground } from "../utils/background-utils";
-import { baseBorder } from "../utils/border-utils";
+import { baseBackground, baseBorder } from "../utils/base-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
 const { defineMultiStyleConfig, definePartsStyle } =

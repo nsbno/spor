@@ -1,13 +1,9 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
-import { mode } from "@chakra-ui/theme-tools";
-import {
-  baseBackground,
-  floatingBackground,
-  ghostBackground,
-} from "../utils/background-utils";
-import { baseBorder, floatingBorder } from "../utils/border-utils";
+import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { ghostBackground } from "../utils/ghost-utils";
 
 const parts = anatomy("card-select").parts("trigger", "card");
 
@@ -26,7 +22,7 @@ const config = helpers.defineMultiStyleConfig({
       borderRadius: "sm",
       boxShadow: "md",
       padding: 3,
-      color: mode("darkGrey", "white")(props),
+      ...baseText("default", props),
       ...floatingBackground("default", props),
     },
   }),
@@ -61,8 +57,8 @@ const config = helpers.defineMultiStyleConfig({
     }),
     floating: (props) => ({
       trigger: {
-        ...floatingBackground("default", props),
         boxShadow: "sm",
+        ...floatingBackground("default", props),
         ...floatingBorder("default", props),
         transition: "all .1s ease-out",
         _hover: {

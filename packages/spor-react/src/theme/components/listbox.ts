@@ -1,8 +1,9 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
-import { ghostBackground } from "../utils/background-utils";
-import { baseBorder } from "../utils/border-utils";
+import { baseBorder } from "../utils/base-utils";
+import { ghostBackground } from "../utils/ghost-utils";
+import { surface } from "../utils/surface-utils";
 
 const parts = anatomy("ListBox").parts(
   "container",
@@ -16,11 +17,7 @@ const helpers = createMultiStyleConfigHelpers(parts.keys);
 const config = helpers.defineMultiStyleConfig({
   baseStyle: (props) => ({
     container: {
-      // avoiding extra div by blending a transparent color into darkGrey for dark mode
-      backgroundColor: mode(
-        "surface.default.light",
-        "surface.default.dark",
-      )(props),
+      ...surface("default", props),
       boxShadow: "sm",
       overflowY: "auto",
       maxHeight: "50vh",

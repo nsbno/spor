@@ -1,14 +1,13 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy, cssVar, mode } from "@chakra-ui/theme-tools";
 import { zIndices } from "../foundations";
-import {
-  baseBackground,
-  brandBackground,
-  ghostBackground,
-} from "../utils/background-utils";
-import { baseBorder, floatingBorder } from "../utils/border-utils";
+import { accentText } from "../utils/accent-utils";
+import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { brandBackground, brandText } from "../utils/brand-utils";
+import { floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { accentText, baseText, brandText } from "../utils/text-utils";
+import { ghostBackground } from "../utils/ghost-utils";
+import { surface } from "../utils/surface-utils";
 
 const parts = anatomy("datepicker").parts(
   "wrapper",
@@ -85,10 +84,7 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
     arrow: {
-      [$arrowBackground.variable]: mode(
-        "surface.default.light",
-        "surface.default.dark",
-      )(props),
+      [$arrowBackground.variable]: surface("default", props).backgroundColor,
     },
     calendarPopover: {
       ...baseBackground("default", props),

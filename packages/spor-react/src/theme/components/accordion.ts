@@ -1,13 +1,9 @@
 import { accordionAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
-import {
-  baseBackground,
-  floatingBackground,
-  ghostBackground,
-} from "../utils/background-utils";
-import { baseBorder, floatingBorder } from "../utils/border-utils";
+import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { baseText } from "../utils/text-utils";
+import { ghostBackground } from "../utils/ghost-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 const config = helpers.defineMultiStyleConfig({

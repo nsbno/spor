@@ -1,10 +1,8 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
-import { baseBackground } from "../utils/background-utils";
-import { baseBorder } from "../utils/border-utils";
+import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { baseText } from "../utils/text-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({

@@ -1,9 +1,7 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { baseBackground } from "../utils/background-utils";
-import { baseBorder } from "../utils/border-utils";
+import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { baseText } from "../utils/text-utils";
 
 const parts = anatomy("NumericStepper").parts(
   "container",

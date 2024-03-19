@@ -1,6 +1,34 @@
 import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
+import { brandBackground } from "./brand-utils";
 import { focusVisibleStyles } from "./focus-utils";
+import { surface } from "./surface-utils";
 import { State, Subset } from "./types";
+
+type BaseBackgroundState = Subset<
+  State,
+  "default" | "active" | "selected" | "hover" | "disabled"
+>;
+export function baseBackground(
+  state: BaseBackgroundState,
+  props: StyleFunctionProps,
+) {
+  switch (state) {
+    case "active":
+      return {
+        backgroundColor: mode(
+          "base.surface.active.light",
+          "base.surface.active.dark",
+        )(props),
+      };
+    case "selected":
+      return brandBackground("default", props);
+    case "disabled":
+      return surface("disabled", props);
+    case "hover":
+    default:
+      return surface("default", props);
+  }
+}
 
 type BorderState = Subset<
   State,
@@ -47,27 +75,20 @@ export function baseBorder(state: BorderState, props: StyleFunctionProps) {
   }
 }
 
-type FloatingBorderState = Subset<State, "default" | "hover" | "active">;
-export function floatingBorder(
-  state: FloatingBorderState,
-  props: StyleFunctionProps,
-) {
+type BaseTextState = Subset<State, "default" | "selected" | "disabled">;
+export function baseText(state: BaseTextState, props: StyleFunctionProps) {
   switch (state) {
-    case "hover":
+    case "selected":
       return {
-        outline: "1px solid",
-        outlineColor: mode(
-          "floating.outline.hover.light",
-          "floating.outline.hover.dark",
-        )(props),
+        color: mode("brand.text.light", "brand.text.dark")(props),
+      };
+    case "disabled":
+      return {
+        color: mode("text.disabled.light", "text.disabled.dark")(props),
       };
     default:
       return {
-        outline: "1px solid",
-        outlineColor: mode(
-          "floating.outline.default.light",
-          "floating.outline.default.dark",
-        )(props),
+        color: mode("base.text.light", "base.text.dark")(props),
       };
   }
 }

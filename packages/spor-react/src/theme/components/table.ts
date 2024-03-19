@@ -1,8 +1,7 @@
 import { tableAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
-import { baseBorder } from "../utils/border-utils";
-import { baseText } from "../utils/text-utils";
+import { baseBorder, baseText } from "../utils/base-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 

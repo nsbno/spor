@@ -75,6 +75,7 @@ type CardThemeProps = {
     | "orange"
     | "red";
   size: "sm" | "lg";
+  theme: any;
 };
 
 const getColorSchemeBaseProps = (props: CardThemeProps) => {
@@ -83,7 +84,10 @@ const getColorSchemeBaseProps = (props: CardThemeProps) => {
       return {
         outline: "1px solid",
         outlineColor: "silver",
-        backgroundColor: mode("white", "whiteAlpha.100")(props),
+        backgroundColor: mode(
+          "white",
+          `color-mix(in srgb, white 10%, ${props.theme.colors.surface.default.dark})`,
+        )(props),
         color: "inherit",
       };
     case "grey":
@@ -129,7 +133,10 @@ const getColorSchemeHoverProps = (props: CardThemeProps) => {
   switch (props.colorScheme) {
     case "white":
       return {
-        backgroundColor: mode("white", "whiteAlpha.200")(props),
+        backgroundColor: mode(
+          "white",
+          `color-mix(in srgb, white 20%, ${props.theme.colors.surface.default.dark})`,
+        )(props),
         outlineColor: "steel",
       };
     case "grey":
@@ -144,7 +151,7 @@ const getColorSchemeHoverProps = (props: CardThemeProps) => {
   }
 };
 const getColorSchemeActiveProps = (props: CardThemeProps) => {
-  const { colorScheme, size } = props;
+  const { colorScheme } = props;
   switch (colorScheme) {
     case "white":
       return {

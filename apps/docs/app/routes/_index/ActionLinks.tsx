@@ -90,26 +90,20 @@ export function ActionLinks() {
         spacing={[3, 4]}
       >
         {links.map((link) => (
-          <Box
-            backgroundColor={backgroundColor}
-            key={link.to}
-            borderRadius="lg"
-          >
-            <ActionLinkCard to={link.to}>
-              <IconCircle backgroundColor={link.iconColor} icon={link.icon} />
-              <Box>
-                <Heading
-                  as="h2"
-                  variant="md"
-                  marginBottom={1.5}
-                  fontWeight="bold"
-                >
-                  {link.title}
-                </Heading>
-                <Text variant="sm">{link.description}</Text>
-              </Box>
-            </ActionLinkCard>
-          </Box>
+          <ActionLinkCard to={link.to} key={link.to}>
+            <IconCircle backgroundColor={link.iconColor} icon={link.icon} />
+            <Box>
+              <Heading
+                as="h2"
+                variant="md"
+                marginBottom={1.5}
+                fontWeight="bold"
+              >
+                {link.title}
+              </Heading>
+              <Text variant="sm">{link.description}</Text>
+            </Box>
+          </ActionLinkCard>
         ))}
       </SimpleGrid>
     </Container>

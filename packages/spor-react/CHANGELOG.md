@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 9.0.1
+
+### Patch Changes
+
+- ce90ed5: Use the newest version of our design tokens
+- Updated dependencies [d2cc084]
+  - @vygruppen/spor-design-tokens@3.4.0
+
 ## 9.0.0
 
 ### Major Changes

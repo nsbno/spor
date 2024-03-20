@@ -1,6 +1,6 @@
-import { PortableText } from "@portabletext/react";
 import { Link, useLoaderData } from "@remix-run/react";
 import { Box, Card, Heading, Image, SimpleGrid } from "@vygruppen/spor-react";
+import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";
 

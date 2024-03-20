@@ -3,7 +3,6 @@ import { withEmotionCache } from "@emotion/react";
 import { LinksFunction, LoaderFunctionArgs, json } from "@remix-run/node";
 import {
   Links,
-  LiveReload,
   Meta,
   MetaFunction,
   Outlet,
@@ -14,8 +13,8 @@ import {
   useRouteError,
 } from "@remix-run/react";
 import { Language, SporProvider } from "@vygruppen/spor-react";
-import { ReactNode, useContext, useEffect } from "react";
 import { PortableTextProvider } from "./features/portable-text/PortableText";
+import { ReactNode, useContext, useEffect, useMemo } from "react";
 import { PageNotFound } from "./root/PageNotFound";
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";
@@ -164,14 +163,11 @@ const Document = withEmotionCache(
             language={Language.English}
             colorModeManager={colorModeManager}
           >
-            <PortableTextProvider>
-              <SkipToContent />
-              {children}
-            </PortableTextProvider>
+            <SkipToContent />
+            {children}
           </SporProvider>
           <ScrollRestoration />
           <Scripts />
-          {process.env.NODE_ENV === "development" && <LiveReload />}
         </body>
       </html>
     );

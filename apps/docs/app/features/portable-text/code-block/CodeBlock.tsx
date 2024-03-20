@@ -1,15 +1,8 @@
 import { DarkMode, forwardRef, useClipboard } from "@chakra-ui/react";
 import { Box, BoxProps, Button } from "@vygruppen/spor-react";
-import { Highlight, Prism } from "prism-react-renderer";
+import { Highlight } from "prism-react-renderer";
 import { useRef } from "react";
 import { theme } from "./codeTheme";
-
-// This includes Elm highlighting support
-// It's pretty hacky, so it doesn't play well with TS
-// @ts-ignore
-(typeof global !== "undefined" ? global : window).Prism = Prism;
-require("prismjs/components/prism-elm");
-// Back to normalcy
 
 type CodeBlockProps = Omit<BoxProps, "children"> & {
   /** The code to highlight */

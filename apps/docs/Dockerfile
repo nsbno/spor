@@ -53,8 +53,8 @@ RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases
 # Copy only the production deps to the final image
 COPY --from=production-deps /app/node_modules /app/node_modules
 # Copy the built files as well
-COPY --from=build /app/build /app/build
-COPY --from=build /app/public /app/public
+COPY --from=build /app/build/server /app/build/server
+COPY --from=build /app/build/client /app/build/client
 ADD . .
 
 ENTRYPOINT ["./entrypoint.sh"]

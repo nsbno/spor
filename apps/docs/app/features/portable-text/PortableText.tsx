@@ -5,9 +5,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import {
-  PortableText,
   PortableTextReactComponents,
-  PortableTextComponentsProvider as SanityPortableTextComponentsProvider,
+  PortableText as SanityPortableText,
 } from "@portabletext/react";
 import { Link } from "@remix-run/react";
 import {
@@ -28,6 +27,7 @@ import {
   Text,
   TextLink,
 } from "@vygruppen/spor-react";
+import deepmerge from "deepmerge";
 import React from "react";
 import { urlBuilder } from "~/utils/sanity/utils";
 import { ComponentDocs } from "../../routes/_base.$category.$slug/component-docs/ComponentDocs";
@@ -351,11 +351,17 @@ const components: Partial<PortableTextReactComponents> = {
   },
 };
 
-type PortableTextProps = { children: React.ReactNode };
-export const PortableTextProvider = ({ children }: PortableTextProps) => {
+export const PortableText = ({
+  value,
+  components: componentsOverrides,
+}: {
+  value: any;
+  components?: any;
+}) => {
   return (
-    <SanityPortableTextComponentsProvider components={components}>
-      {children}
-    </SanityPortableTextComponentsProvider>
+    <SanityPortableText
+      value={value}
+      components={deepmerge(components, componentsOverrides)}
+    />
   );
 };

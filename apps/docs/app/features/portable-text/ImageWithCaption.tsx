@@ -1,5 +1,5 @@
-import { PortableText } from "@portabletext/react";
 import { Flex, Image, Stack, useColorModeValue } from "@vygruppen/spor-react";
+import { PortableText } from "./PortableText";
 
 type ImageWithCaptionProps = {
   src: string;

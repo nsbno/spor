@@ -1,4 +1,3 @@
-import { PortableText } from "@portabletext/react";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { SanityAsset } from "@sanity/image-url/lib/types/types";
@@ -25,6 +24,7 @@ import {
   useColorModePreference,
 } from "@vygruppen/spor-react";
 import { useMemo, useState } from "react";
+import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";
 import { slugify } from "~/utils/stringUtils";
@@ -136,7 +136,7 @@ export default function IllustrationLibraryPage() {
           <SearchInput
             label="Find illustration"
             value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={(e: any) => setSearchValue(e.target.value)}
             width="100%"
           />
         </Box>
@@ -144,7 +144,7 @@ export default function IllustrationLibraryPage() {
           <NativeSelect
             label="Size"
             value={size}
-            onChange={(e) => setSize(e.target.value)}
+            onChange={(e: any) => setSize(e.target.value)}
             width="fit-content"
           >
             <option value="all">All</option>

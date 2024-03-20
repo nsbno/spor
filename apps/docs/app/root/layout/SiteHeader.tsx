@@ -1,8 +1,19 @@
-import { DarkMode, Stack, useDisclosure } from "@chakra-ui/react";
+import {
+  DarkMode,
+  Stack,
+  useColorMode,
+  useColorModeValue,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { Link, useLocation } from "@remix-run/react";
-import { HamburgerFill24Icon } from "@vygruppen/spor-icon-react";
+import {
+  HamburgerFill24Icon,
+  NightFill24Icon,
+  SummerFill24Icon,
+} from "@vygruppen/spor-icon-react";
 import {
   Box,
+  Button,
   Flex,
   IconButton,
   Modal,
@@ -43,6 +54,8 @@ export const SiteHeader = () => {
 
 const DesktopNavigation = () => {
   const menu = useMenu("top-menu");
+  const { colorMode, toggleColorMode } = useColorMode();
+  const oppositeColorMode = useColorModeValue("Dark", "Light");
   return (
     <Flex
       display={["none", null, null, "flex"]}
@@ -57,6 +70,19 @@ const DesktopNavigation = () => {
           </NavigationLink>
         ))}
       </SiteNavigation>
+      <DarkMode>
+        <Button
+          leftIcon={
+            colorMode === "dark" ? <SummerFill24Icon /> : <NightFill24Icon />
+          }
+          variant="ghost"
+          size="sm"
+          fontWeight="600"
+          onClick={toggleColorMode}
+        >
+          {oppositeColorMode} mode
+        </Button>
+      </DarkMode>
     </Flex>
   );
 };
@@ -64,6 +90,8 @@ const DesktopNavigation = () => {
 const MobileNavigation = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
+  const { colorMode, toggleColorMode } = useColorMode();
+  const oppositeColorMode = useColorModeValue("Dark", "Light");
   useEffect(() => {
     // This doesn't close the menu when you're on the page you're clicking on,
     // but that's on you!
@@ -72,13 +100,24 @@ const MobileNavigation = () => {
   return (
     <Flex display={["flex", null, null, "none"]}>
       <DarkMode>
-        <IconButton
-          icon={<HamburgerFill24Icon />}
-          aria-label="Menu"
-          variant="ghost"
-          size="md"
-          onClick={onOpen}
-        />
+        <Flex gap={2}>
+          <IconButton
+            icon={
+              colorMode === "dark" ? <SummerFill24Icon /> : <NightFill24Icon />
+            }
+            aria-label={`Toggle ${oppositeColorMode} mode`}
+            variant="ghost"
+            size="md"
+            onClick={toggleColorMode}
+          />
+          <IconButton
+            icon={<HamburgerFill24Icon />}
+            aria-label="Menu"
+            variant="ghost"
+            size="md"
+            onClick={onOpen}
+          />
+        </Flex>
       </DarkMode>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

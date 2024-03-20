@@ -22,6 +22,7 @@ import {
   SimpleGrid,
   Text,
   Tooltip,
+  useColorModePreference,
 } from "@vygruppen/spor-react";
 import { useMemo, useState } from "react";
 import { getClient } from "~/utils/sanity/client";
@@ -90,7 +91,7 @@ export const loader = async () => {
 export default function IllustrationLibraryPage() {
   const { illustrations, article } = useLoaderData<typeof loader>();
   const [searchValue, setSearchValue] = useState("");
-  const [background, setBackground] = useState("light");
+  const colorMode = useColorModePreference();
   const [size, setSize] = useState("all");
 
   const matchingIllustrations = useMemo(() => {
@@ -141,17 +142,6 @@ export default function IllustrationLibraryPage() {
         </Box>
         <Box>
           <NativeSelect
-            label="Background"
-            value={background}
-            onChange={(e) => setBackground(e.target.value)}
-            width="fit-content"
-          >
-            <option value="light">Light background</option>
-            <option value="dark">Dark background</option>
-          </NativeSelect>
-        </Box>
-        <Box>
-          <NativeSelect
             label="Size"
             value={size}
             onChange={(e) => setSize(e.target.value)}
@@ -167,9 +157,7 @@ export default function IllustrationLibraryPage() {
       <SimpleGrid columns={[1, 2, 3]} gap={2}>
         {matchingIllustrations.map((illustration) => (
           <Card
-            colorScheme={background === "light" ? "white" : "teal"}
-            background={background === "light" ? "white" : "darkTeal"}
-            color={background === "light" ? "darkGrey" : "white"}
+            colorScheme="white"
             variant="outline"
             key={illustration._id}
             padding={2}
@@ -189,7 +177,7 @@ export default function IllustrationLibraryPage() {
                 src={
                   urlBuilder
                     .image(
-                      background === "light"
+                      colorMode === "light"
                         ? illustration.imageLightBackground
                         : illustration.imageDarkBackground,
                     )
@@ -206,17 +194,12 @@ export default function IllustrationLibraryPage() {
                 <IconButton
                   variant="ghost"
                   size="sm"
-                  color={background === "light" ? "darkGrey" : "white"}
-                  _hover={{
-                    backgroundColor: "mint",
-                    color: "darkGrey",
-                  }}
                   icon={<DownloadOutline18Icon />}
                   as="a"
                   download={`${slugify(illustration.title)}.svg`}
                   href={urlBuilder
                     .image(
-                      background === "light"
+                      colorMode === "light"
                         ? illustration.imageLightBackground
                         : illustration.imageDarkBackground,
                     )

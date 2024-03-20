@@ -17,7 +17,6 @@ const config = defineStyleConfig({
     // Except for white cards, all cards are light mode always
     color: "text.default.light",
     ...getColorSchemeBaseProps(props),
-
     "button&, a&, label&, &.is-clickable": {
       outline: "1px solid",
       ...getColorSchemeClickableProps(props),
@@ -74,7 +73,6 @@ type CardThemeProps = {
     | "yellow"
     | "orange"
     | "red";
-  size: "sm" | "lg";
   theme: any;
 };
 

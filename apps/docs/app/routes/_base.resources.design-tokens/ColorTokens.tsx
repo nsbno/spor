@@ -134,7 +134,7 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
     : colorValue;
 
   return (
-    <Card colorScheme="grey" borderRadius="sm" overflow="hidden" {...rest}>
+    <Card colorScheme="white" borderRadius="sm" overflow="hidden" {...rest}>
       <Box
         height="60px"
         border="1px solid"

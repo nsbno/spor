@@ -9,6 +9,7 @@ import {
   Th,
   Thead,
   Tr,
+  useColorModeValue,
 } from "@vygruppen/spor-react";
 import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
@@ -57,6 +58,10 @@ type OutlineTokenTableProps = BoxProps;
 
 const OutlineTokensTable = (props: OutlineTokenTableProps) => {
   const tokenFormatter = useTokenFormatter();
+  const borderColor = useColorModeValue(
+    "outline.default.light",
+    "outline.default.dark",
+  );
   return (
     <Box {...props}>
       <Table variant="simple" colorScheme="grey">
@@ -76,7 +81,7 @@ const OutlineTokensTable = (props: OutlineTokenTableProps) => {
                   width={8}
                   border={token.key}
                   borderRadius="xs"
-                  borderColor="darkGrey"
+                  borderColor={borderColor}
                 />
               </Td>
               <Td>

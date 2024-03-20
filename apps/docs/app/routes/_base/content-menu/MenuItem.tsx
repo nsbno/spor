@@ -1,6 +1,6 @@
-import { Box, forwardRef } from "@chakra-ui/react";
+import { Box, chakra, forwardRef, useColorModeValue } from "@chakra-ui/react";
 import { Link } from "@remix-run/react";
-import { Button, FlexProps } from "@vygruppen/spor-react";
+import { FlexProps } from "@vygruppen/spor-react";
 import React, { useRef } from "react";
 
 type MenuItemProps = FlexProps & {
@@ -13,7 +13,19 @@ type MenuItemProps = FlexProps & {
  */
 export const MenuItem = forwardRef<MenuItemProps, "a">(
   ({ url, children, isActive, ...rest }, externalRef) => {
-    const color = isActive ? "mint" : "transparent";
+    const hoverBackground = useColorModeValue(
+      "ghost.surface.hover.light",
+      "ghost.surface.hover.dark",
+    );
+    const activeBackground = useColorModeValue(
+      "ghost.surface.active.light",
+      "ghost.surface.active.dark",
+    );
+    const focusOutlineColor = useColorModeValue(
+      "outline.focus.light",
+      "outline.focus.dark",
+    );
+    const color = useColorModeValue("text.default.light", "text.default.dark");
     const internalRef = useRef<HTMLAnchorElement>(null);
     const handleKeyUp = (e: React.KeyboardEvent) => {
       if (!internalRef || typeof internalRef === "function") {
@@ -37,11 +49,35 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
       }
     };
     return (
-      <Button
-        variant="ghost"
+      <chakra.button
         key={url}
         {...getLinkProps({ url })}
-        size="xs"
+        minHeight={5}
+        minWidth={5}
+        paddingY={0.5}
+        paddingX={2}
+        fontSize="16px"
+        fontWeight="normal"
+        backgroundColor="transparent"
+        borderRadius="lg"
+        color={color}
+        _hover={{ backgroundColor: hoverBackground }}
+        _active={{ backgroundColor: activeBackground }}
+        _focusVisible={{
+          outline: "2px solid",
+          outlineColor: focusOutlineColor,
+          outlineOffset: "1px",
+        }}
+        // sx={{
+        //   ...ghostBackground("default", { colorMode }),
+        //   ...baseText("default", { colorMode }),
+        //   _hover: {
+        //     ...ghostBackground("hover", { colorMode }),
+        //   },
+        //   _active: {
+        //     ...ghostBackground("active", { colorMode }),
+        //   },
+        // }}
         //backgroundColor={isActive ? "mint" : "transparent"}
         // _hover={{
         //   backgroundColor: "mint",
@@ -67,7 +103,7 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
         <Box minWidth="200px" textAlign="left">
           {children}
         </Box>
-      </Button>
+      </chakra.button>
     );
   },
 );

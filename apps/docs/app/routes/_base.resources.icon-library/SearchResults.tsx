@@ -1,4 +1,4 @@
-import { useClipboard } from "@chakra-ui/react";
+import { useClipboard, useColorModeValue } from "@chakra-ui/react";
 import {
   CopyOutline18Icon,
   DownloadOutline18Icon,
@@ -157,10 +157,11 @@ type IconBoxProps = {
 function IconBox({ icon }: IconBoxProps) {
   const { onCopy, hasCopied } = useClipboard(icon.importName);
   const IconComponent = getIconByImportName(icon.importName);
+  const colorScheme = useColorModeValue("grey", "white");
   return (
     <Card
       display="flex"
-      colorScheme="grey"
+      colorScheme={colorScheme}
       borderRadius="sm"
       flexDirection="column"
       alignItems="center"

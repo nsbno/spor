@@ -1,6 +1,6 @@
-import { As, forwardRef, useStyleConfig } from "@chakra-ui/react";
+import { As, chakra, forwardRef, useStyleConfig } from "@chakra-ui/react";
 import React from "react";
-import { Box, BoxProps } from "../layout";
+import { BoxProps } from "../layout";
 
 export type CardProps = Exclude<BoxProps, "size"> & {
   size?: "sm" | "lg";
@@ -51,10 +51,11 @@ export const Card = forwardRef<CardProps, As>(
       colorScheme,
       size,
     });
+
     return (
-      <Box __css={styles} {...props} ref={ref}>
+      <chakra.div sx={styles} {...props} ref={ref}>
         {children}
-      </Box>
+      </chakra.div>
     );
   },
 );

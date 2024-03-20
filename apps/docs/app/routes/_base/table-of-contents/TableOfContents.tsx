@@ -54,7 +54,7 @@ function TableOfContent(props: TableOfContentProps) {
       <Heading as="h2" id="toc-title" variant="sm" fontWeight="bold">
         On this page
       </Heading>
-      <OrderedList spacing={1} marginLeft="0" marginTop="4" styleType="none">
+      <OrderedList spacing={0} marginLeft="0" marginTop="4" styleType="none">
         {headings.map(({ id, text, level }) => (
           <ListItem
             key={id}

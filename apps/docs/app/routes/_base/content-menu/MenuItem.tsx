@@ -52,8 +52,7 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
       <chakra.button
         key={url}
         {...getLinkProps({ url })}
-        minHeight={5}
-        minWidth={5}
+        display="block"
         paddingY={0.5}
         paddingX={2}
         fontWeight="normal"

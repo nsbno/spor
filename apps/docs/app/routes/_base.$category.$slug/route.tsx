@@ -1,4 +1,3 @@
-import { PortableText } from "@portabletext/react";
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { groq } from "@sanity/groq-store";
 import {
@@ -22,6 +21,7 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import invariant from "tiny-invariant";
+import { PortableText } from "~/features/portable-text/PortableText";
 import { ComponentDocs } from "~/routes/_base.$category.$slug/component-docs/ComponentDocs";
 import { getClient } from "~/utils/sanity/client";
 import {
@@ -193,7 +193,7 @@ export default function ArticlePage() {
               value={article.introduction}
               components={{
                 block: {
-                  normal: ({ children }) => (
+                  normal: ({ children }: any) => (
                     <Text variant="md">{children}</Text>
                   ),
                 },

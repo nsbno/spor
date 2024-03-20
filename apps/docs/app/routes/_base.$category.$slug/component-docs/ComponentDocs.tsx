@@ -1,4 +1,3 @@
-import { PortableText } from "@portabletext/react";
 import { SuccessFill24Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
@@ -11,6 +10,7 @@ import {
   Thead,
   Tr,
 } from "@vygruppen/spor-react";
+import { PortableText } from "~/features/portable-text/PortableText";
 import { LinkableHeading } from "../../../features/portable-text/LinkableHeading";
 import { CodeBlock } from "../../../features/portable-text/code-block/CodeBlock";
 

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.0.2
+
+### Patch Changes
+
+- 6bd954e: Use CSS variable to avoid possible nullpointer"
+
 ## 9.0.1
 
 ### Patch Changes

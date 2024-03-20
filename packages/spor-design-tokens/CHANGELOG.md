@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.4.0
+
+### Minor Changes
+
+- d2cc084: Add support for semantic tokens and multibrand
+
 ## 3.3.0
 
 ### Minor Changes

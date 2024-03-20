@@ -7,17 +7,15 @@ import {
   Flex,
   Heading,
   Image,
-  useColorMode,
   useColorModeValue,
 } from "@vygruppen/spor-react";
 
 export function HeroSection() {
   const backgroundColor = useColorModeValue(
-    "bg.secondary.dark",
-    "bg.tertiary.dark",
+    "surface.tertiary.light",
+    "surface.tertiary.dark",
   );
 
-  const { colorMode } = useColorMode();
   return (
     <Flex backgroundColor={backgroundColor} minHeight="500px">
       <Container maxWidth="container.lg" marginTop={[0, 0, 8]}>

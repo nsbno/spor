@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.0.3
+
+### Patch Changes
+
+- 51ff0e7: Card: Fix wrong colors on white card outlines in dark mode
+
 ## 9.0.2
 
 ### Patch Changes

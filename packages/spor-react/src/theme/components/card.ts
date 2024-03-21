@@ -2,6 +2,7 @@ import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
 const config = defineStyleConfig({
@@ -74,14 +75,14 @@ type CardThemeProps = {
     | "orange"
     | "red";
   theme: any;
+  colorMode: "light" | "dark";
 };
 
 const getColorSchemeBaseProps = (props: CardThemeProps) => {
   switch (props.colorScheme) {
     case "white":
       return {
-        outline: "1px solid",
-        outlineColor: "silver",
+        ...baseBorder("default", props),
         backgroundColor: mode(
           "white",
           `color-mix(in srgb, white 10%, var(--spor-colors-surface-default-dark))`,
@@ -113,7 +114,7 @@ function getColorSchemeClickableProps(props: CardThemeProps) {
   switch (props.colorScheme) {
     case "white":
       return {
-        outlineColor: "silver",
+        ...floatingBorder("default", props),
       };
     case "grey":
       return {
@@ -135,7 +136,7 @@ const getColorSchemeHoverProps = (props: CardThemeProps) => {
           "white",
           `color-mix(in srgb, white 20%, var(--spor-colors-surface-default-dark))`,
         )(props),
-        outlineColor: "steel",
+        ...floatingBorder("hover", props),
       };
     case "grey":
       return {
@@ -154,7 +155,7 @@ const getColorSchemeActiveProps = (props: CardThemeProps) => {
     case "white":
       return {
         backgroundColor: mode("mint", "teal")(props),
-        outlineColor: "silver",
+        ...floatingBorder("active", props),
       };
     case "grey":
       return {

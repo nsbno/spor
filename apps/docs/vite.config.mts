@@ -12,9 +12,7 @@ export default defineConfig({
   plugins: [
     remix({
       appDirectory: "app",
-      //serverModuleFormat: "cjs",
       ignoredRouteFiles: [".*"],
-      //watchPaths: ["../../packages/*/dist/index.mjs"],
       future: {},
     }),
     tsconfigPaths(),

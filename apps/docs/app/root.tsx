@@ -12,9 +12,8 @@ import {
   useLoaderData,
   useRouteError,
 } from "@remix-run/react";
-import { Language, SporProvider } from "@vygruppen/spor-react";
-import { PortableTextProvider } from "./features/portable-text/PortableText";
-import { ReactNode, useContext, useEffect, useMemo } from "react";
+import { Brand, Language, SporProvider } from "@vygruppen/spor-react";
+import { ReactNode, useContext, useEffect } from "react";
 import { PageNotFound } from "./root/PageNotFound";
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";
@@ -116,10 +115,11 @@ export function ErrorBoundary() {
 type DocumentProps = {
   children: ReactNode;
   title?: string;
+  colorModeManager?: ReturnType<typeof cookieStorageManagerSSR>;
 };
 
 const Document = withEmotionCache(
-  ({ children, title }: DocumentProps, emotionCache) => {
+  ({ children, title, colorModeManager }: DocumentProps, emotionCache) => {
     const serverStyleData = useContext(ServerStyleContext);
     const clientStyleData = useContext(ClientStyleContext);
 
@@ -136,10 +136,6 @@ const Document = withEmotionCache(
       // reset cache to reapply global styles
       clientStyleData.reset();
     }, []);
-
-    const { cookies } = useLoaderData<typeof loader>();
-
-    const colorModeManager = useConst(cookieStorageManagerSSR(cookies));
 
     return (
       <html lang="en-gb">
@@ -162,6 +158,7 @@ const Document = withEmotionCache(
           <SporProvider
             language={Language.English}
             colorModeManager={colorModeManager}
+            brand={Brand.VyDigital}
           >
             <SkipToContent />
             {children}
@@ -175,8 +172,13 @@ const Document = withEmotionCache(
 );
 
 export default function App() {
+  const loaderData = useLoaderData<typeof loader>();
+
+  const colorModeManager = useConst(
+    cookieStorageManagerSSR(loaderData?.cookies),
+  );
   return (
-    <Document>
+    <Document colorModeManager={colorModeManager}>
       <RootLayout>
         <Outlet />
       </RootLayout>

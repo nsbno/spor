@@ -140,7 +140,7 @@ const Document = withEmotionCache(
 
     const { cookies } = useLoaderData<typeof loader>();
 
-    const cookieManager = useConst(cookieStorageManagerSSR(cookies));
+    const colorModeManager = useConst(cookieStorageManagerSSR(cookies));
 
     return (
       <html lang="en-gb">
@@ -162,7 +162,7 @@ const Document = withEmotionCache(
         <body>
           <SporProvider
             language={Language.English}
-            colorModeManager={cookieManager}
+            colorModeManager={colorModeManager}
           >
             <PortableTextProvider>
               <SkipToContent />

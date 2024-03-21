@@ -29,9 +29,5 @@
     "node": ">=18.0.0"
   },
   "packageManager": "npm@10.0.0",
-  "prettier": {},
-  "devDependencies": {
-    "vite": "^5.2.2",
-    "vite-tsconfig-paths": "^4.3.2"
-  }
+  "prettier": {}
 }

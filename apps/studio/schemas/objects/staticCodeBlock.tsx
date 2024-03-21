@@ -14,6 +14,7 @@ export const staticCodeBlock = defineType({
       title: "Code",
       type: "code",
       options: {
+        language: "tsx",
         languageAlternatives: [
           { title: "TypeScript / React", value: "tsx" },
           { title: "Elm", value: "elm" },

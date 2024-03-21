@@ -353,7 +353,7 @@ const components: Partial<PortableTextReactComponents> = {
 
 export const PortableText = ({
   value,
-  components: componentsOverrides,
+  components: componentsOverrides = {},
 }: {
   value: any;
   components?: any;

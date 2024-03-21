@@ -1,4 +1,4 @@
-import { ColorMode, cookieStorageManagerSSR, useConst } from "@chakra-ui/react";
+import { cookieStorageManagerSSR, useConst } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
 import { LinksFunction, LoaderFunctionArgs, json } from "@remix-run/node";
 import {
@@ -14,7 +14,7 @@ import {
   useRouteError,
 } from "@remix-run/react";
 import { Language, SporProvider } from "@vygruppen/spor-react";
-import { ReactNode, useContext, useEffect, useMemo } from "react";
+import { ReactNode, useContext, useEffect } from "react";
 import { PortableTextProvider } from "./features/portable-text/PortableText";
 import { PageNotFound } from "./root/PageNotFound";
 import { RootLayout } from "./root/layout/RootLayout";
@@ -187,38 +187,3 @@ export default function App() {
     </Document>
   );
 }
-
-/** Color mode stuff */
-const DEFAULT_COLOR_MODE: "dark" | "light" = "light";
-const CHAKRA_COOKIE_COLOR_KEY = "chakra-ui-color-mode";
-
-function getColorModeFromCookie(cookies: string) {
-  const match = cookies.match(
-    new RegExp(`(^| )${CHAKRA_COOKIE_COLOR_KEY}=([^;]+)`),
-  );
-  const colorMode = match == null ? DEFAULT_COLOR_MODE : match[2];
-  if (["light", "dark"].includes(colorMode)) {
-    return colorMode;
-  }
-  return DEFAULT_COLOR_MODE;
-}
-
-function getColorMode(cookies: string) {
-  if (typeof document !== "undefined") {
-    cookies = document.cookie;
-  }
-  return getColorModeFromCookie(cookies) ?? DEFAULT_COLOR_MODE;
-}
-
-const useTheColorMode = () => {
-  const { cookies } = useLoaderData<typeof loader>();
-  return useMemo(() => {
-    let color = getColorMode(cookies);
-
-    if (!color && DEFAULT_COLOR_MODE) {
-      color = DEFAULT_COLOR_MODE;
-    }
-
-    return color as ColorMode;
-  }, [cookies]);
-};

@@ -6,7 +6,7 @@ import {
   MdMenu,
   MdSettings,
 } from "react-icons/md";
-import { StructureResolver } from "sanity/desk";
+import { StructureResolver } from "sanity/structure";
 
 export const structure: StructureResolver = (S) =>
   S.list()

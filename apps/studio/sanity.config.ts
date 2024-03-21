@@ -1,7 +1,7 @@
 import { codeInput } from "@sanity/code-input";
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
-import { deskTool } from "sanity/desk";
+import { structureTool } from "sanity/structure";
 import VyLogo from "./components/VyLogo";
 import { structure } from "./desk/structure";
 import { schemaTypes } from "./schemas";
@@ -11,7 +11,7 @@ export default defineConfig({
   title: "Spor",
   projectId: "tbpd14t4",
   dataset: "production",
-  plugins: [deskTool({ structure: structure }), visionTool(), codeInput()],
+  plugins: [structureTool({ structure }), visionTool(), codeInput()],
   studio: {
     components: {
       logo: VyLogo,

@@ -1,4 +1,4 @@
-import { ColorMode, cookieStorageManagerSSR } from "@chakra-ui/react";
+import { ColorMode, cookieStorageManagerSSR, useConst } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
 import { LinksFunction, LoaderFunctionArgs, json } from "@remix-run/node";
 import {
@@ -140,7 +140,7 @@ const Document = withEmotionCache(
 
     const { cookies } = useLoaderData<typeof loader>();
 
-    const colorMode = useTheColorMode();
+    const cookieManager = useConst(cookieStorageManagerSSR(cookies));
 
     return (
       <html lang="en-gb">
@@ -159,14 +159,10 @@ const Document = withEmotionCache(
             />
           ))}
         </head>
-        <body
-          {...(colorMode && {
-            className: `chakra-ui-${colorMode}`,
-          })}
-        >
+        <body>
           <SporProvider
             language={Language.English}
-            colorModeManager={cookieStorageManagerSSR(cookies)}
+            colorModeManager={cookieManager}
           >
             <PortableTextProvider>
               <SkipToContent />

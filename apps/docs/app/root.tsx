@@ -11,6 +11,7 @@ import {
   isRouteErrorResponse,
   useLoaderData,
   useRouteError,
+  useSearchParams,
 } from "@remix-run/react";
 import { Brand, Language, SporProvider } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect } from "react";
@@ -137,6 +138,15 @@ const Document = withEmotionCache(
       clientStyleData.reset();
     }, []);
 
+    const [searchParams] = useSearchParams();
+    let brand = Brand.VyDigital;
+    const lowercaseBrandParam = searchParams.get("brand")?.toLowerCase();
+    if (lowercaseBrandParam === "cargonet") {
+      brand = Brand.CargoNet;
+    } else if (lowercaseBrandParam === "vyutvikling") {
+      brand = Brand.VyUtvikling;
+    }
+
     return (
       <html lang="en-gb">
         <head>
@@ -158,7 +168,7 @@ const Document = withEmotionCache(
           <SporProvider
             language={Language.English}
             colorModeManager={colorModeManager}
-            brand={Brand.VyDigital}
+            brand={brand}
           >
             <SkipToContent />
             {children}

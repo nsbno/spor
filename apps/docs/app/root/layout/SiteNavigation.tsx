@@ -35,9 +35,9 @@ export const NavigationLink = ({ children, href }: NavigationItemProps) => {
       fontWeight="bold"
       fontStyle="sm"
       _focusVisible={{ borderColor: "greenHaze", outline: "none" }}
-      _hover={{ backgroundColor: "pine" }}
+      _hover={{ backgroundColor: "ghost.surface.hover.dark" }}
       _active={{
-        backgroundColor: "celadon",
+        backgroundColor: "ghost.surface.active.dark",
       }}
       backgroundColor={isActive ? "whiteAlpha.200" : "transparent"}
       transitionDuration="fast"

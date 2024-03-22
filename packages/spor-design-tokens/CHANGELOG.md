@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.5.0
+
+### Minor Changes
+
+- 6fe2534: Add support for Brand.CargoNet
+
 ## 3.4.0
 
 ### Minor Changes

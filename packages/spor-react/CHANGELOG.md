@@ -1,5 +1,16 @@
 # @vygruppen/spor-react
 
+## 9.1.0
+
+### Minor Changes
+
+- 6fe2534: Add support for Brand.CargoNet
+
+### Patch Changes
+
+- Updated dependencies [6fe2534]
+  - @vygruppen/spor-design-tokens@3.5.0
+
 ## 9.0.3
 
 ### Patch Changes

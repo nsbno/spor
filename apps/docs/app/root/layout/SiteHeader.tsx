@@ -36,7 +36,7 @@ export const SiteHeader = () => {
       alignItems="center"
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 7]}
-      backgroundColor="darkTeal"
+      backgroundColor="bg.tertiary.dark"
     >
       <Box as={Link} marginRight={[0, 0, 11]} to="/">
         <VyLogo

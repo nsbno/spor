@@ -257,7 +257,7 @@
             "value": "{color.cargonet.text.default.light.value}"
           },
           "dark": {
-            "value": "{color.cargonet.text.default.dark.value}"
+            "value": "{color.cargonet.text.inverted.dark.value}"
           }
         },
         "icon": {

@@ -17,6 +17,6 @@
     "noEmit": true,
     "allowJs": false,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   }
 }

@@ -7,6 +7,7 @@ import {
   Flex,
   Heading,
   Image,
+  Text,
   useColorModeValue,
 } from "@vygruppen/spor-react";
 
@@ -32,6 +33,9 @@ export function HeroSection() {
             <Heading as="h1" variant="2xl">
               Welcome to Spor
             </Heading>
+            <Text variant="sm" color="text.tertiary.dark">
+              Spor is Vy's design system for digital products.
+            </Text>
             <Box marginBottom={[10, null, 0]}>
               <Button
                 variant="primary"

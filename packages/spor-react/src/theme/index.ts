@@ -22,11 +22,14 @@ export const brandTheme = {
   [Brand.VyDigital]: {},
   [Brand.VyUtvikling]: {
     colors: {
-      accent: {
-        surface: {
-          default: {
-            dark: foundations.colors.darkGrey,
-          },
+      bg: {
+        default: {
+          dark: foundations.colors.darkGrey,
+        },
+      },
+      surface: {
+        default: {
+          dark: foundations.colors.darkGrey,
         },
       },
     },

@@ -173,7 +173,7 @@ function IconBox({ icon }: IconBoxProps) {
       <Text variant="xs" textAlign="center">
         {toTitleCase(icon.name)}
       </Text>
-      <IconComponent marginTop={1} aria-label={icon.name} />
+      <IconComponent marginTop={1} marginX="auto" aria-label={icon.name} />
       <Flex justifyContent="flex-end" width="100%">
         <IconButton
           as="a"

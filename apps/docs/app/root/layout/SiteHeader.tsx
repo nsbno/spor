@@ -1,20 +1,20 @@
-import {
-  DarkMode,
-  Stack,
-  useColorModeValue,
-  useDisclosure,
-} from "@chakra-ui/react";
 import { Link, useLocation } from "@remix-run/react";
 import { HamburgerFill24Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
+  DarkMode,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
   Flex,
   IconButton,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalOverlay,
+  Stack,
   VyLogo,
+  useColorModeValue,
+  useDisclosure,
 } from "@vygruppen/spor-react";
 import { useEffect } from "react";
 import { useMenu } from "~/utils/useMenu";
@@ -95,16 +95,18 @@ const MobileNavigation = () => {
           />
         </DarkMode>
       </Flex>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent marginX={[2, "auto"]}>
-          <ModalBody paddingY={2} paddingX={[1, 2, 3]}>
+      <Drawer placement="right" isOpen={isOpen} onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Explore Spor</DrawerHeader>
+          <DrawerBody paddingY={2} paddingX={[1, 2, 3]}>
             <Stack spacing={2}>
               <SearchableContentMenu />
             </Stack>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </Flex>
   );
 };

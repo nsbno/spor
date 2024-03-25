@@ -1,9 +1,12 @@
-import { DarkMode, FormControl, FormLabel } from "@chakra-ui/react";
+import {} from "@chakra-ui/react";
 import { SettingsX1Fill24Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
   CardSelect,
+  DarkMode,
   Flex,
+  FormControl,
+  FormLabel,
   Heading,
   Stack,
   Switch,

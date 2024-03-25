@@ -10,7 +10,7 @@ export const BrandSwitcher = () => {
     <fetcher.Form method="post" action="/api/brand">
       <NativeSelect
         name="brand"
-        label="Merkevare"
+        label="Brand"
         defaultValue={brand}
         onChange={(e: any) => {
           const formData = new FormData();

@@ -154,7 +154,7 @@ const getColorSchemeActiveProps = (props: CardThemeProps) => {
   switch (colorScheme) {
     case "white":
       return {
-        backgroundColor: mode("mint", "teal")(props),
+        backgroundColor: mode("bg.tertiary.light", `bg.default.dark`)(props),
         ...floatingBorder("active", props),
       };
     case "grey":

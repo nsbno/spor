@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.5.2
+
+### Patch Changes
+
+- c82f7eb: Set the text color of card selects"
+
 ## 3.5.1
 
 ### Patch Changes

@@ -1,6 +1,5 @@
 import { Link } from "@remix-run/react";
 import { Flex, TextLink, VyLogo, useColorMode } from "@vygruppen/spor-react";
-import { BrandSwitcher } from "~/features/brand-switcher/BrandSwitcher";
 import { useMenu } from "~/utils/useMenu";
 
 export const Footer = () => {
@@ -31,7 +30,6 @@ export const Footer = () => {
           <MenuItem title={item.title} url={item.url} key={item.title} />
         ))}
       </Flex>
-      <BrandSwitcher />
     </Flex>
   );
 };

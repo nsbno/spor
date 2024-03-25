@@ -1,5 +1,6 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
+import { mode } from "@chakra-ui/theme-tools";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
@@ -23,7 +24,10 @@ const config = helpers.defineMultiStyleConfig({
       boxShadow: "md",
       padding: 3,
       ...baseText("default", props),
-      ...floatingBackground("default", props),
+      backgroundColor: mode(
+        "white",
+        `color-mix(in srgb, white 10%, var(--spor-colors-bg-default-dark))`,
+      )(props),
     },
   }),
   variants: {
@@ -73,6 +77,7 @@ const config = helpers.defineMultiStyleConfig({
           ...floatingBackground("active", props),
         },
       },
+      card: {},
     }),
   },
   sizes: {

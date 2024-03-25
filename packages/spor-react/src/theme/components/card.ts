@@ -85,7 +85,7 @@ const getColorSchemeBaseProps = (props: CardThemeProps) => {
         ...baseBorder("default", props),
         backgroundColor: mode(
           "white",
-          `color-mix(in srgb, white 10%, var(--spor-colors-surface-default-dark))`,
+          `color-mix(in srgb, white 10%, var(--spor-colors-bg-default-dark))`,
         )(props),
         color: "inherit",
       };
@@ -134,7 +134,7 @@ const getColorSchemeHoverProps = (props: CardThemeProps) => {
       return {
         backgroundColor: mode(
           "white",
-          `color-mix(in srgb, white 20%, var(--spor-colors-surface-default-dark))`,
+          `color-mix(in srgb, white 20%, var(--spor-colors-bg-default-dark))`,
         )(props),
         ...floatingBorder("hover", props),
       };

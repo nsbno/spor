@@ -33,8 +33,6 @@ type CardSelectProps = BoxProps & {
   defaultOpen?: boolean;
   /** Callback for when the card select opens or closes. */
   onToggle?: (isOpen: boolean) => void;
-  /** The text of the trigger button */
-  label: string;
   /** An optional trigger button icon, rendered to the left of the label */
   icon?: React.ReactNode;
   /** The content of the card select */
@@ -45,7 +43,7 @@ type CardSelectProps = BoxProps & {
   placement?: AriaPositionProps["placement"];
   /** Whether or not to show the chevron. Defaults to true */
   withChevron?: boolean;
-};
+} & ({ label: string } | { "aria-label": string });
 
 /**
  * A card select component.
@@ -69,7 +67,6 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
       isOpen: externalIsOpen,
       defaultOpen = false,
       onToggle,
-      label,
       icon,
       children,
       width = "fit-content",
@@ -80,6 +77,7 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
     },
     externalRef,
   ) => {
+    const label = "label" in props ? props.label : props["aria-label"];
     const internalRef = useRef<HTMLButtonElement>(null);
     const triggerRef = (externalRef ??
       internalRef) as React.RefObject<HTMLButtonElement>;
@@ -112,13 +110,16 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
           type="button"
           ref={triggerRef}
           sx={styles.trigger}
+          aria-label={label}
           {...buttonProps}
           width={width}
           data-attachable
         >
           <Flex gap={1.5} alignItems="center">
             {icon}
-            <Box as="span">{label}</Box>
+            <Box as="span" display={props["aria-label"] ? "none" : "inline"}>
+              {label}
+            </Box>
             {withChevron ? (
               <ChevronIcon
                 transform={state.isOpen ? "rotate(180deg)" : "none"}

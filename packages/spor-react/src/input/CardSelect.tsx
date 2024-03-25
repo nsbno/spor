@@ -43,7 +43,16 @@ type CardSelectProps = BoxProps & {
   placement?: AriaPositionProps["placement"];
   /** Whether or not to show the chevron. Defaults to true */
   withChevron?: boolean;
-} & ({ label: string } | { "aria-label": string });
+} & (
+    | {
+        /** The text label of the trigger button */
+        label: string;
+      }
+    | {
+        /** Accessible label for the trigger button */
+        "aria-label": string;
+      }
+  );
 
 /**
  * A card select component.

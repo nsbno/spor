@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Container,
+  DarkMode,
   Flex,
   Heading,
   Image,
@@ -37,18 +38,20 @@ export function HeroSection() {
               Spor is Vy's design system for digital products.
             </Text>
             <Box marginBottom={[10, null, 0]}>
-              <Button
-                variant="primary"
-                display={["flex", "inline-flex"]}
-                as={Link}
-                size="lg"
-                to="/guides/introduction"
-                rightIcon={<ArrowRightFill30Icon />}
-                marginTop={4}
-                width={["100%", null, "fit-content"]}
-              >
-                Get started
-              </Button>
+              <DarkMode>
+                <Button
+                  variant="primary"
+                  display={["flex", "inline-flex"]}
+                  as={Link}
+                  size="lg"
+                  to="/guides/introduction"
+                  rightIcon={<ArrowRightFill30Icon />}
+                  marginTop={4}
+                  width={["100%", null, "fit-content"]}
+                >
+                  Get started
+                </Button>
+              </DarkMode>
             </Box>
           </Flex>
           <Flex flex={["auto", null, "45%"]}>

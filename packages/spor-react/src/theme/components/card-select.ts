@@ -17,6 +17,7 @@ const config = helpers.defineMultiStyleConfig({
       alignItems: "center",
       transitionProperty: "outline",
       transitionDuration: "fast",
+      ...baseText("default", props),
       ...focusVisibleStyles(props),
     },
     card: {

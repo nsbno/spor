@@ -17,7 +17,7 @@ export const BrandSwitcher = () => {
           formData.set("brand", e.target.value);
           fetcher.submit(formData, {
             method: "post",
-            action: "/api/brand",
+            action: "/",
           });
         }}
       >

@@ -1,6 +1,11 @@
 import { cookieStorageManagerSSR, useConst } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
-import { LinksFunction, LoaderFunctionArgs, json } from "@remix-run/node";
+import {
+  ActionFunctionArgs,
+  LinksFunction,
+  LoaderFunctionArgs,
+  json,
+} from "@remix-run/node";
 import {
   Links,
   Meta,
@@ -23,7 +28,10 @@ import {
 } from "./root/setup/chakra-setup/styleContext";
 import { RootErrorBoundary } from "./root/setup/error-boundary/RootErrorBoundary";
 import { FontPreloading } from "./root/setup/font-loading/FontPreloading";
-import { getBrandFromCookie } from "./utils/brand-cookie.server";
+import {
+  getBrandFromCookie,
+  setBrandInCookie,
+} from "./utils/brand-cookie.server";
 import {
   InitialSanityData,
   getInitialSanityData,
@@ -194,4 +202,25 @@ export default function App() {
       </RootLayout>
     </Document>
   );
+}
+
+export const action = async ({ request }: ActionFunctionArgs) => {
+  const formData = await request.formData();
+  const brandString = formData.get("brand") as string;
+  const brand = parseStringToBrand(brandString);
+  if (!brand) {
+    return json({ error: "Brand is required" }, { status: 400 });
+  }
+
+  return json(
+    { status: "ok" },
+    { status: 200, headers: { "Set-Cookie": await setBrandInCookie(brand) } },
+  );
+};
+
+function parseStringToBrand(input: string): Brand | undefined {
+  if (Object.values(Brand).includes(input as Brand)) {
+    return input as Brand;
+  }
+  return undefined;
 }

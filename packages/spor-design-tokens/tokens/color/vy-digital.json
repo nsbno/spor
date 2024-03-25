@@ -351,7 +351,7 @@
         "outline": {
           "default": {
             "light": {
-              "value": "{color.alias.silver.value}"
+              "value": "{color.alias.platinum.value}"
             },
             "dark": {
               "value": "{color.palette.whiteAlpha.400.value}"

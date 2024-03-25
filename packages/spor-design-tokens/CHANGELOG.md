@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.5.1
+
+### Patch Changes
+
+- 84b4bbf: Change the way cards and card selects are rendered
+
 ## 3.5.0
 
 ### Minor Changes

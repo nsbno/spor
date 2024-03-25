@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 9.2.0
+
+### Minor Changes
+
+- 8568d79: CardSelect: Add support for not having a visual label, by passing in aria-label instead of label prop
+
+### Patch Changes
+
+- 84b4bbf: Change the way cards and card selects are rendered
+- Updated dependencies [84b4bbf]
+  - @vygruppen/spor-design-tokens@3.5.1
+
 ## 9.1.0
 
 ### Minor Changes

@@ -11,7 +11,6 @@ import {
   isRouteErrorResponse,
   useLoaderData,
   useRouteError,
-  useSearchParams,
 } from "@remix-run/react";
 import { Brand, Language, SporProvider } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect } from "react";
@@ -24,6 +23,7 @@ import {
 } from "./root/setup/chakra-setup/styleContext";
 import { RootErrorBoundary } from "./root/setup/error-boundary/RootErrorBoundary";
 import { FontPreloading } from "./root/setup/font-loading/FontPreloading";
+import { getBrandFromCookie } from "./utils/brand-cookie.server";
 import {
   InitialSanityData,
   getInitialSanityData,
@@ -85,10 +85,12 @@ export type LoaderData = {
 };
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const initialSanityData = await getInitialSanityData();
+  const brand = await getBrandFromCookie(request.headers.get("cookie") ?? "");
 
   return json({
     initialSanityData,
     cookies: request.headers.get("cookie") ?? "",
+    brand,
   });
 };
 
@@ -116,11 +118,15 @@ export function ErrorBoundary() {
 type DocumentProps = {
   children: ReactNode;
   title?: string;
+  brand?: Brand;
   colorModeManager?: ReturnType<typeof cookieStorageManagerSSR>;
 };
 
 const Document = withEmotionCache(
-  ({ children, title, colorModeManager }: DocumentProps, emotionCache) => {
+  (
+    { children, brand, title, colorModeManager }: DocumentProps,
+    emotionCache,
+  ) => {
     const serverStyleData = useContext(ServerStyleContext);
     const clientStyleData = useContext(ClientStyleContext);
 
@@ -137,15 +143,6 @@ const Document = withEmotionCache(
       // reset cache to reapply global styles
       clientStyleData.reset();
     }, []);
-
-    const [searchParams] = useSearchParams();
-    let brand = Brand.VyDigital;
-    const lowercaseBrandParam = searchParams.get("brand")?.toLowerCase();
-    if (lowercaseBrandParam === "cargonet") {
-      brand = Brand.CargoNet;
-    } else if (lowercaseBrandParam === "vyutvikling") {
-      brand = Brand.VyUtvikling;
-    }
 
     return (
       <html lang="en-gb">
@@ -188,7 +185,10 @@ export default function App() {
     cookieStorageManagerSSR(loaderData?.cookies),
   );
   return (
-    <Document colorModeManager={colorModeManager}>
+    <Document
+      colorModeManager={colorModeManager}
+      brand={loaderData.brand as Brand}
+    >
       <RootLayout>
         <Outlet />
       </RootLayout>

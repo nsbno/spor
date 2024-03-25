@@ -9,6 +9,7 @@ import {
 import {
   Badge,
   Box,
+  Brand,
   Button,
   Card,
   Divider,
@@ -25,6 +26,7 @@ import {
 } from "@vygruppen/spor-react";
 import { useMemo, useState } from "react";
 import { PortableText } from "~/features/portable-text/PortableText";
+import { useBrand } from "~/utils/brand";
 import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";
 import { slugify } from "~/utils/stringUtils";
@@ -93,6 +95,7 @@ export default function IllustrationLibraryPage() {
   const [searchValue, setSearchValue] = useState("");
   const colorMode = useColorModePreference();
   const [size, setSize] = useState("all");
+  const brand = useBrand();
 
   const matchingIllustrations = useMemo(() => {
     const normalizedSearchValue = searchValue.toLowerCase().trim();
@@ -107,7 +110,11 @@ export default function IllustrationLibraryPage() {
 
   return (
     <Box>
-      <Badge colorScheme="light-green">{article.category?.title}</Badge>
+      <Badge
+        colorScheme={brand === Brand.CargoNet ? "light-yellow" : "light-green"}
+      >
+        {article.category?.title}
+      </Badge>
       <Heading as="h1" size="2xl" marginBottom={1}>
         {article.title}
       </Heading>

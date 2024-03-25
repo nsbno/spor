@@ -7,6 +7,7 @@ import {
 import {
   Badge,
   Box,
+  Brand,
   Button,
   Divider,
   Flex,
@@ -23,6 +24,7 @@ import {
 import invariant from "tiny-invariant";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { ComponentDocs } from "~/routes/_base.$category.$slug/component-docs/ComponentDocs";
+import { useBrand } from "~/utils/brand";
 import { getClient } from "~/utils/sanity/client";
 import {
   PreviewableLoaderData,
@@ -154,6 +156,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 
 export default function ArticlePage() {
   const { data: article, isPreview } = usePreviewableData<Data>();
+  const brand = useBrand();
 
   if (!article) {
     return null;
@@ -164,7 +167,13 @@ export default function ArticlePage() {
       <HStack marginBottom={1} justifyContent="space-between">
         <HStack>
           {article?.category?.title && (
-            <Badge colorScheme="light-green">{article?.category?.title}</Badge>
+            <Badge
+              colorScheme={
+                brand === Brand.CargoNet ? "light-yellow" : "light-green"
+              }
+            >
+              {article?.category?.title}
+            </Badge>
           )}
           {isPreview && <Badge colorScheme="yellow">Preview</Badge>}
         </HStack>

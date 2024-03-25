@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 9.2.1
+
+### Patch Changes
+
+- c82f7eb: Set the text color of card selects"
+- Updated dependencies [c82f7eb]
+  - @vygruppen/spor-design-tokens@3.5.2
+
 ## 9.2.0
 
 ### Minor Changes

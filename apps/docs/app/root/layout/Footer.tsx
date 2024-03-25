@@ -1,10 +1,17 @@
 import { Link } from "@remix-run/react";
-import { Flex, TextLink, VyLogo, useColorMode } from "@vygruppen/spor-react";
+import {
+  Flex,
+  TextLink,
+  VyLogo,
+  useColorMode,
+  useColorModeValue,
+} from "@vygruppen/spor-react";
 import { useMenu } from "~/utils/useMenu";
 
 export const Footer = () => {
   const menu = useMenu("footer-menu");
   const { colorMode } = useColorMode();
+  const borderColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
 
   return (
     <Flex
@@ -14,7 +21,7 @@ export const Footer = () => {
       marginTop={3}
       paddingTop={2}
       borderTop="1px solid"
-      borderColor="blackAlpha.200"
+      borderColor={borderColor}
     >
       <Link to="/" aria-label="Go to the front page">
         <VyLogo colorScheme={colorMode} width="4rem" aria-hidden="true" />

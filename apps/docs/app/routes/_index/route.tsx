@@ -5,8 +5,8 @@ import { HeroSection } from "~/routes/_index/HeroSection";
 
 export default function Index() {
   const backgroundColor = useColorModeValue(
-    "bg.secondary.light",
-    "bg.secondary.dark",
+    "bg.default.light",
+    "bg.default.dark",
   );
   return (
     <Box backgroundColor={backgroundColor} flex="1">

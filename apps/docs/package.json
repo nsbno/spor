@@ -7,8 +7,9 @@
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev",
-    "start": "remix-serve ./build/index.js"
+    "start": "remix-serve ./build/server/index.js"
   },
+  "type": "module",
   "dependencies": {
     "@chakra-ui/react": "^2.4.4",
     "@emotion/cache": "^11.10.5",

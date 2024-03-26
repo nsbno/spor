@@ -1,5 +1,12 @@
 import { Link, useLoaderData } from "@remix-run/react";
-import { Box, Card, Heading, Image, SimpleGrid } from "@vygruppen/spor-react";
+import {
+  Box,
+  Card,
+  Heading,
+  Image,
+  SimpleGrid,
+  useColorModeValue,
+} from "@vygruppen/spor-react";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";
@@ -65,6 +72,10 @@ export const loader = async () => {
 
 export default function ComponentsPage() {
   const { components, article } = useLoaderData<typeof loader>();
+  const backgroundColor = useColorModeValue(
+    "bg.tertiary.light",
+    "bg.tertiary.dark",
+  );
   return (
     <Box>
       <Heading as="h1" variant="xl-display" marginBottom={2}>
@@ -83,7 +94,7 @@ export default function ComponentsPage() {
               <Image
                 src={urlBuilder.image(component.mainImage).width(300).url()}
                 alt={component.title}
-                backgroundColor="mint"
+                backgroundColor={backgroundColor}
                 padding="1em"
                 width="100%"
                 height="10em"
@@ -91,7 +102,7 @@ export default function ComponentsPage() {
                 objectPosition="center center"
               />
             ) : (
-              <Box height="10em" backgroundColor="mint" />
+              <Box height="10em" backgroundColor={backgroundColor} />
             )}
             <Heading as="h2" variant="sm" fontWeight="bold" padding={3}>
               {component.title}

@@ -1,6 +1,14 @@
-import { Box } from "@vygruppen/spor-react";
+import { Box, useColorModeValue } from "@vygruppen/spor-react";
 
 export const SkipToContent = () => {
+  const backgroundColor = useColorModeValue(
+    "bg.default.dark",
+    "bg.default.light",
+  );
+  const textColor = useColorModeValue(
+    "text.default.dark",
+    "text.default.light",
+  );
   return (
     <Box
       as="a"
@@ -12,8 +20,8 @@ export const SkipToContent = () => {
       left="0"
       right="0"
       padding={2}
-      backgroundColor="night"
-      color="white"
+      backgroundColor={backgroundColor}
+      color={textColor}
       borderBottomRadius="sm"
       minWidth="40ch"
       boxShadow="md"
@@ -24,7 +32,8 @@ export const SkipToContent = () => {
       _focusVisible={{
         transform: "none",
         opacity: 1,
-        boxShadow: "0 0 0 4px var(--spor-colors-burntYellow)",
+        outline: "4px solid",
+        outlineColor: "burntYellow",
       }}
     >
       Skip to content

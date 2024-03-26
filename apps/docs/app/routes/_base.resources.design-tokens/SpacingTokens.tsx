@@ -11,6 +11,7 @@ import {
   Th,
   Thead,
   Tr,
+  useColorModeValue,
 } from "@vygruppen/spor-react";
 import { Fragment } from "react";
 import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
@@ -43,6 +44,10 @@ type SpacingTokenTableProps = BoxProps;
 
 const SpacingTokensTable = (props: SpacingTokenTableProps) => {
   const tokenFormatter = useTokenFormatter();
+  const backgroundColor = useColorModeValue(
+    "surface.tertiary.light",
+    "surface.tertiary.dark",
+  );
   return (
     <Box {...props}>
       <Table variant="simple" colorScheme="grey">
@@ -63,7 +68,7 @@ const SpacingTokensTable = (props: SpacingTokenTableProps) => {
                     <Box
                       width={token}
                       height={token}
-                      backgroundColor="primaryGreen"
+                      backgroundColor={backgroundColor}
                     />
                   </Td>
                   <Td>

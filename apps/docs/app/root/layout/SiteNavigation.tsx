@@ -34,7 +34,7 @@ export const NavigationLink = ({ children, href }: NavigationItemProps) => {
       whiteSpace="nowrap"
       fontWeight="bold"
       fontStyle="sm"
-      _focusVisible={{ borderColor: "greenHaze", outline: "none" }}
+      _focusVisible={{ borderColor: "outline.focus.dark", outline: "none" }}
       _hover={{ backgroundColor: "ghost.surface.hover.dark" }}
       _active={{
         backgroundColor: "ghost.surface.active.dark",

@@ -4,6 +4,7 @@ import {
   chakra,
   Flex,
   forwardRef,
+  ResponsiveValue,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import {
@@ -43,6 +44,8 @@ type CardSelectProps = BoxProps & {
   placement?: AriaPositionProps["placement"];
   /** Whether or not to show the chevron. Defaults to true */
   withChevron?: boolean;
+  /** Defaults to normal */
+  fontWeight?: ResponsiveValue<"normal" | "bold">;
 } & (
     | {
         /** The text label of the trigger button */
@@ -82,6 +85,7 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
       crossOffset = 0,
       placement = "bottom",
       withChevron = true,
+      fontWeight = "normal",
       ...props
     },
     externalRef,
@@ -118,6 +122,7 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
         <chakra.button
           type="button"
           ref={triggerRef}
+          fontWeight="bold"
           sx={styles.trigger}
           aria-label={label}
           {...buttonProps}

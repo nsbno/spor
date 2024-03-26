@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 9.3.0
+
+### Minor Changes
+
+- d660370: CardSelect: Add fontWeight prop
+
+### Patch Changes
+
+- 162650e: CardSelect: Improve JSDoc
+
 ## 9.2.1
 
 ### Patch Changes

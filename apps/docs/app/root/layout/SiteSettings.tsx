@@ -30,6 +30,7 @@ export const SiteSettings = ({ showLabel }: SiteSettingsProps) => {
         size="md"
         icon={<SettingsX1Fill24Icon />}
         withChevron={false}
+        fontWeight="bold"
         {...labelProps}
       >
         <Flex gap={4} flexDirection="column" maxWidth="30ch">

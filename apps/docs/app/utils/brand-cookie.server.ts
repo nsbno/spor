@@ -4,10 +4,7 @@ import { Brand } from "@vygruppen/spor-react";
 const COOKIE_NAME = "brand";
 
 const cookie = createCookie(COOKIE_NAME, {
-  secure: true,
-  httpOnly: true, // TODO: burde denne kunne endres med js?
-  maxAge: 60 * 60 * 24,
-  path: "/",
+  maxAge: 60 * 60 * 24, // A day
 });
 
 export const getBrandFromCookie = async (cookieHeader: string) => {

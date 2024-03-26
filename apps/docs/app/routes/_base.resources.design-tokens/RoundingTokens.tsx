@@ -11,6 +11,7 @@ import {
   Th,
   Thead,
   Tr,
+  useColorModeValue,
 } from "@vygruppen/spor-react";
 import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
@@ -44,6 +45,14 @@ type RoundingTokenTableProps = BoxProps;
 
 const RoundingTokensTable = (props: RoundingTokenTableProps) => {
   const tokenFormatter = useTokenFormatter();
+  const backgroundColor = useColorModeValue(
+    "bg.tertiary.light",
+    "bg.tertiary.dark",
+  );
+  const outlineColor = useColorModeValue(
+    "outline.default.light",
+    "outline.default.dark",
+  );
   return (
     <Box {...props}>
       <Table variant="simple" colorScheme="grey">
@@ -59,12 +68,12 @@ const RoundingTokensTable = (props: RoundingTokenTableProps) => {
             <Tr key={key}>
               <Td>
                 <Box
-                  width={"150px"}
-                  height={"72px"}
+                  width="150px"
+                  height="72px"
                   borderRadius={key}
                   border="md"
-                  borderColor="greenHaze"
-                  backgroundColor="mint"
+                  borderColor={outlineColor}
+                  backgroundColor={backgroundColor}
                 />
               </Td>
               <Td>

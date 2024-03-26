@@ -264,26 +264,36 @@ const components: Partial<PortableTextReactComponents> = {
       }
       return <CodeBlock code={value.reactImport} marginTop={3} />;
     },
-    tipsPanel: ({ value }) => (
-      <Box
-        as="article"
-        backgroundColor="mint"
-        color="text.default.light"
-        marginTop={3}
-        padding={4}
-        borderRadius="md"
-      >
-        <Flex gap={1} alignItems="end">
-          <FavouriteOutline30Icon />
-          <Heading as="h3" variant="sm" fontWeight="bold">
-            {value.title}
-          </Heading>
-        </Flex>
-        <Box __css={{ " > p:first-of-type": { mt: 1 } }}>
-          <PortableText value={value.content} />
+    tipsPanel: ({ value }) => {
+      const textColor = useColorModeValue(
+        "text.default.light",
+        "text.default.dark",
+      );
+      const backgroundColor = useColorModeValue(
+        "bg.tertiary.light",
+        "bg.tertiary.dark",
+      );
+      return (
+        <Box
+          as="article"
+          backgroundColor={backgroundColor}
+          color={textColor}
+          marginTop={3}
+          padding={4}
+          borderRadius="md"
+        >
+          <Flex gap={1} alignItems="end">
+            <FavouriteOutline30Icon />
+            <Heading as="h3" variant="sm" fontWeight="bold">
+              {value.title}
+            </Heading>
+          </Flex>
+          <Box __css={{ " > p:first-of-type": { mt: 1 } }}>
+            <PortableText value={value.content} />
+          </Box>
         </Box>
-      </Box>
-    ),
+      );
+    },
     bestPracticePanel: ({ value }) => (
       <SimpleGrid
         columns={[1, 2]}

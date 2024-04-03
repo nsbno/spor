@@ -1,5 +1,7 @@
 # Changelog
 
+### Patch Changes
+
 ## 3.5.3
 
 - a824567: Edit color value for VyDigital outline.default.dark

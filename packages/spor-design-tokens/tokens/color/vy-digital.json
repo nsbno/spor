@@ -354,7 +354,7 @@
               "value": "{color.alias.platinum.value}"
             },
             "dark": {
-              "value": "{color.palette.whiteAlpha.400.value}"
+              "value": "{color.palette.whiteAlpha.300.value}"
             }
           },
           "hover": {

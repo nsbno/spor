@@ -29,6 +29,7 @@ const config = helpers.defineMultiStyleConfig({
       transitionProperty: "common",
       transitionDuration: "fast",
       ...baseText("default", props),
+      backgroundColor: 'transparent',
 
       _disabled: {
         pointerEvents: "none",

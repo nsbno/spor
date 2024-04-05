@@ -68,7 +68,7 @@ const config = helpers.defineMultiStyleConfig({
     }),
     floating: (props) => ({
       container: {
-       // ...floatingBackground("default", props),
+        ...floatingBackground("default", props),
         ...floatingBorder("default", props),
         boxShadow: "sm",
       },

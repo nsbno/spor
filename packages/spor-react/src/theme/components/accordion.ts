@@ -61,7 +61,7 @@ const config = helpers.defineMultiStyleConfig({
           outlineOffset: 0,
         },
         _active: {
-          //...baseBackground("active", props),
+          ...baseBackground("active", props),
           ...baseBorder("default", props),
         },
       },

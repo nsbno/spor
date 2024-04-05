@@ -69,7 +69,6 @@ const config = helpers.defineMultiStyleConfig({
         _hover: {
           ...baseText("default", props),
           ...baseBorder("hover", props),
-          ...baseBackground("hover", props),
         },
         _active: {
           ...baseBackground("active", props),

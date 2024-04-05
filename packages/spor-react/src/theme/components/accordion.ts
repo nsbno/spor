@@ -61,14 +61,14 @@ const config = helpers.defineMultiStyleConfig({
           outlineOffset: 0,
         },
         _active: {
-          ...baseBackground("active", props),
+          //...baseBackground("active", props),
           ...baseBorder("default", props),
         },
       },
     }),
     floating: (props) => ({
       container: {
-        ...floatingBackground("default", props),
+       // ...floatingBackground("default", props),
         ...floatingBorder("default", props),
         boxShadow: "sm",
       },

@@ -54,7 +54,7 @@ const config = helpers.defineMultiStyleConfig({
   variants: {
     base: (props) => ({
       tablist: {
-        ...baseBackground("default", props),
+        //...baseBackground("default", props),
         ...baseText("default", props),
         ...baseBorder("default", props),
       },

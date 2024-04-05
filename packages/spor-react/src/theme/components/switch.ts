@@ -27,12 +27,13 @@ const config = helpers.defineMultiStyleConfig({
       height: [$height.reference],
       transitionProperty: "common",
       transitionDuration: "fast",
-      ...baseBackground("default", props),
+      // Not to be used currently due to the background color is to be "inherited" by the background beneath it.
+      // ...baseBackground("default", props),
       ...baseBorder("default", props),
       ...focusVisibleStyles(props),
 
       _hover: {
-        ...baseBackground("hover", props),
+        //...baseBackground("hover", props),
         ...baseBorder("hover", props),
       },
       _checked: {

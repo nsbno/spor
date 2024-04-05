@@ -50,7 +50,8 @@ const config = defineStyleConfig({
       },
     }),
     tertiary: (props) => ({
-      ...baseBackground("default", props),
+      // The color should come from the background, not from setting the background-color directly 
+      // ...baseBackground("default", props),
       ...baseText("default", props),
       ...baseBorder("default", props),
       _hover: {

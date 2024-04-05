@@ -144,7 +144,6 @@ const config = helpers.defineMultiStyleConfig({
     base: (props) => ({
       wrapper: {
         ...baseBorder("default", props),
-        //...baseBackground("default", props),
 
         _hover: {
           ...baseBorder("hover", props),

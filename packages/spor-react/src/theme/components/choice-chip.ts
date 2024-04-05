@@ -64,7 +64,6 @@ const config = helpers.defineMultiStyleConfig({
   variants: {
     base: (props) => ({
       container: {
-        //...baseBackground("default", props),
         ...baseBorder("default", props),
         ...baseText("default", props),
         _hover: {

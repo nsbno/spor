@@ -47,7 +47,6 @@ const config = helpers.defineMultiStyleConfig({
         "base.outline.default.dark",
       )(props),
       borderRadius: "xs",
-      //...baseBackground("default", props),
       ...focusVisibleStyles(props),
 
       _checked: {

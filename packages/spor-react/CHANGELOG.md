@@ -1,5 +1,18 @@
 # @vygruppen/spor-react
 
+## 9.3.0
+
+### Minor Changes
+
+- d660370: CardSelect: Add fontWeight prop
+
+### Patch Changes
+
+- 7838d12: Removed baseBackground from base variant on most of the components.
+- 162650e: CardSelect: Improve JSDoc
+- Updated dependencies [df1ae12]
+  - @vygruppen/spor-design-tokens@3.5.3
+
 ## 9.2.1
 
 ### Patch Changes

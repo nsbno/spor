@@ -21,7 +21,7 @@ type DrawerSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "full";
 type FullScreenDrawerProps = {
   children: React.ReactNode;
   title?: String;
-  drawerPlacement?: DrawerPlacement;
+  placement?: DrawerPlacement;
   size?: DrawerSize;
   leftButton?: React.ReactNode;
   rightButton?: React.ReactNode;
@@ -32,7 +32,7 @@ type FullScreenDrawerProps = {
 export const FullScreenDrawer = ({
   children,
   title,
-  drawerPlacement = "bottom",
+  placement = "bottom",
   size = "full",
   leftButton = null,
   rightButton = <DrawerCloseButton />,
@@ -56,12 +56,7 @@ export const FullScreenDrawer = ({
   }, [isOpen]);
 
   return (
-    <Drawer
-      isOpen={isOpen}
-      onClose={onClose}
-      placement={drawerPlacement}
-      size={size}
-    >
+    <Drawer isOpen={isOpen} onClose={onClose} placement={placement} size={size}>
       <DrawerContent
         height="100vh"
         backgroundSize="100% 285px, 100%"

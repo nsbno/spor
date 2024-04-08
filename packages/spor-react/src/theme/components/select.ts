@@ -31,8 +31,7 @@ const config = helpers.defineMultiStyleConfig({
       ...Input.baseStyle!(props).field,
       appearance: "none",
       paddingTop: "16px",
-      "option, optgroup": {
-      },
+      "option, optgroup": {},
     },
     icon: {
       width: "30px",

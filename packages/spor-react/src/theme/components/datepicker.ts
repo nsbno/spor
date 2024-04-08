@@ -4,7 +4,7 @@ import { zIndices } from "../foundations";
 import { accentText } from "../utils/accent-utils";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
-import { floatingBorder } from "../utils/floating-utils";
+import { floatingBorder, floatingBackground } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 import { surface } from "../utils/surface-utils";
@@ -144,6 +144,7 @@ const config = helpers.defineMultiStyleConfig({
     base: (props) => ({
       wrapper: {
         ...baseBorder("default", props),
+        ...baseBackground("default", props),
 
         _hover: {
           ...baseBorder("hover", props),
@@ -158,7 +159,7 @@ const config = helpers.defineMultiStyleConfig({
     }),
     floating: (props) => ({
       wrapper: {
-        ...baseBackground("default", props),
+        ...floatingBackground("default", props), // denne må være hvit
         ...floatingBorder("default", props),
         boxShadow: "sm",
 

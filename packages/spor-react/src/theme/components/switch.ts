@@ -29,6 +29,7 @@ const config = helpers.defineMultiStyleConfig({
       transitionDuration: "fast",
       ...baseBorder("default", props),
       ...focusVisibleStyles(props),
+      ...baseBackground("default", props),
 
       _hover: {
         ...baseBorder("hover", props),
@@ -38,6 +39,7 @@ const config = helpers.defineMultiStyleConfig({
         outlineColor: "transparent",
 
         _hover: {
+          ...baseBackground("default", props),
           ...brandBackground("hover", props),
         },
       },

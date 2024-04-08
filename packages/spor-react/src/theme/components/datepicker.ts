@@ -159,7 +159,7 @@ const config = helpers.defineMultiStyleConfig({
     }),
     floating: (props) => ({
       wrapper: {
-        ...floatingBackground("default", props), // denne må være hvit
+        ...floatingBackground("default", props),
         ...floatingBorder("default", props),
         boxShadow: "sm",
 

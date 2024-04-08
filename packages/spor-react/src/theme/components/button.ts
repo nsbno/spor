@@ -50,14 +50,14 @@ const config = defineStyleConfig({
       },
     }),
     tertiary: (props) => ({
-      ...baseBackground("default", props), // settes til hvit
+      ...baseBackground("default", props),
       ...baseText("default", props),
       ...baseBorder("default", props),
       _hover: {
         ...baseBorder("hover", props),
       },
       _active: {
-        ...baseBorder("default", props), // We want a
+        ...baseBorder("default", props),
         ...baseBackground("active", props),
       },
     }),

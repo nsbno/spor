@@ -32,7 +32,6 @@ const config = helpers.defineMultiStyleConfig({
       appearance: "none",
       paddingTop: "16px",
       "option, optgroup": {
-        //background: "white",
       },
     },
     icon: {

@@ -27,12 +27,11 @@ const config = helpers.defineMultiStyleConfig({
       height: [$height.reference],
       transitionProperty: "common",
       transitionDuration: "fast",
-      ...baseBackground("default", props),
       ...baseBorder("default", props),
       ...focusVisibleStyles(props),
+      ...baseBackground("default", props),
 
       _hover: {
-        ...baseBackground("hover", props),
         ...baseBorder("hover", props),
       },
       _checked: {
@@ -40,6 +39,7 @@ const config = helpers.defineMultiStyleConfig({
         outlineColor: "transparent",
 
         _hover: {
+          ...baseBackground("default", props),
           ...brandBackground("hover", props),
         },
       },

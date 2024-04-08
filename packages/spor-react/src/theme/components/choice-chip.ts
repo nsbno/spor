@@ -64,13 +64,11 @@ const config = helpers.defineMultiStyleConfig({
   variants: {
     base: (props) => ({
       container: {
-        ...baseBackground("default", props),
         ...baseBorder("default", props),
         ...baseText("default", props),
         _hover: {
           ...baseText("default", props),
           ...baseBorder("hover", props),
-          ...baseBackground("hover", props),
         },
         _active: {
           ...baseBackground("active", props),

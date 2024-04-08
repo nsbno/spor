@@ -57,7 +57,7 @@ const config = defineStyleConfig({
         ...baseBorder("hover", props),
       },
       _active: {
-        ...baseBorder("default", props), // We want a
+        ...baseBorder("default", props),
         ...baseBackground("active", props),
       },
     }),

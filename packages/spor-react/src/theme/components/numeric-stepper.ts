@@ -28,8 +28,8 @@ const config = helpers.defineMultiStyleConfig({
       textAlign: "center",
       transitionProperty: "common",
       transitionDuration: "fast",
-      ...baseBackground("default", props),
       ...baseText("default", props),
+      ...baseBackground("default", props),
 
       _disabled: {
         pointerEvents: "none",

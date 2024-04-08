@@ -13,7 +13,6 @@ const config = helpers.defineMultiStyleConfig({
       width: "100%",
       outline: "none",
       border: 0,
-      ...baseBackground("default", props),
       borderRadius: "sm",
       transitionProperty: "common",
       transitionDuration: "fast",
@@ -21,6 +20,7 @@ const config = helpers.defineMultiStyleConfig({
       paddingX: 3,
       height: "54px",
       fontSize: "mobile.md",
+      ...baseBackground("default", props),
 
       ...baseBorder("default", props),
       _hover: {

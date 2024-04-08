@@ -20,7 +20,7 @@ const config = helpers.defineMultiStyleConfig({
       paddingX: 3,
       height: "54px",
       fontSize: "mobile.md",
-      ...baseBackground('default', props),
+      ...baseBackground("default", props),
 
       ...baseBorder("default", props),
       _hover: {

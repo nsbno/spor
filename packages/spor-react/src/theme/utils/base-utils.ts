@@ -26,7 +26,7 @@ export function baseBackground(
       return surface("disabled", props);
     case "hover":
     default:
-      return { backgroundColor:  "transparent" };
+      return { backgroundColor: "transparent" };
   }
 }
 

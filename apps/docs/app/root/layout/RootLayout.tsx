@@ -14,6 +14,7 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
       flexDirection="column"
       minHeight="100vh"
       backgroundColor={backgroundColor}
+      overflow="auto"
     >
       <SiteHeader />
       <Flex flex="1" flexDirection="column" alignItems="stretch">

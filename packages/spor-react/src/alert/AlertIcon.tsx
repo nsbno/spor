@@ -11,7 +11,7 @@ import { BaseAlertProps } from "./BaseAlert";
 
 type AlertIconProps = { variant: BaseAlertProps["variant"] };
 /**
- * Internal component that shows the correct icon for the alert.
+ * Internal component that shows the correct icon for the alert
  */
 export const AlertIcon = ({ variant }: AlertIconProps) => {
   const Icon = getIcon(variant);

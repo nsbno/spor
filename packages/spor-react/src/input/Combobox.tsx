@@ -3,6 +3,30 @@ import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
 import { ColorSpinner, Input, InputProps, ListBox } from "..";
 import { Popover } from "./Popover";
+import { InputLeftElement } from "@chakra-ui/react";
+
+type OverridableInputProps = Pick<
+InputProps,
+| "marginTop"
+| "marginBottom"
+| "marginRight"
+| "marginLeft"
+| "marginY"
+| "marginX"
+| "paddingTop"
+| "paddingBottom"
+| "paddingLeft"
+| "paddingRight"
+| "paddingY"
+| "paddingX"
+| "leftIcon"
+| "rightIcon"
+| "borderTopRightRadius"
+| "borderTopLeftRadius"
+| "borderBottomRightRadius"
+| "borderBottomLeftRadius"
+| "onFocus"
+>
 
 export type ComboboxProps<T> = AriaComboBoxProps<T> & {
   /** The label of the combobox */
@@ -15,28 +39,7 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
   inputRef?: React.RefObject<HTMLInputElement>;
   /** If you want to allow an empty collection */
   allowsEmptyCollection?: boolean;
-} & Pick<
-    InputProps,
-    | "marginTop"
-    | "marginBottom"
-    | "marginRight"
-    | "marginLeft"
-    | "marginY"
-    | "marginX"
-    | "paddingTop"
-    | "paddingBottom"
-    | "paddingLeft"
-    | "paddingRight"
-    | "paddingY"
-    | "paddingX"
-    | "leftIcon"
-    | "rightIcon"
-    | "borderTopRightRadius"
-    | "borderTopLeftRadius"
-    | "borderBottomRightRadius"
-    | "borderBottomLeftRadius"
-    | "onFocus"
-  >;
+} & OverridableInputProps;
 /**
  * A combobox is a combination of an input and a list of suggestions.
  *
@@ -60,6 +63,7 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
  * </Combobox>
  * ```
  */
+
 export function Combobox<T extends object>({
   label,
   isLoading,
@@ -103,6 +107,26 @@ export function Combobox<T extends object>({
     ...rest,
   });
 
+  const ComboBoxProps: OverridableInputProps = { 
+    borderTopLeftRadius,
+    borderTopRightRadius,
+    marginBottom,
+    marginTop,
+    marginRight,
+    marginLeft,
+    marginX,
+    marginY,
+    paddingBottom,
+    paddingRight,
+    paddingTop,
+    paddingLeft,
+    paddingX,
+    paddingY,
+    leftIcon,
+  };
+
+ 
+
   const {
     inputProps: { size, ...inputProps },
     listBoxProps,
@@ -115,11 +139,18 @@ export function Combobox<T extends object>({
     },
     state,
   );
+ 
+
+  function styleProps(obj: Record<string, unknown>): Record<string, unknown> {
+    return Object.fromEntries(
+      Object.entries(obj).filter(([, value]) => value !== undefined)
+    );
+  }
 
   return (
     <>
       <Input
-        {...inputProps}
+        {...styleProps(ComboBoxProps)}
         aria-haspopup="listbox"
         ref={inputRef}
         label={label}
@@ -129,39 +160,10 @@ export function Combobox<T extends object>({
         borderBottomRightRadius={
           state.isOpen && !isLoading ? 0 : borderBottomRightRadius
         }
-        borderTopLeftRadius={borderTopLeftRadius}
-        borderTopRightRadius={borderTopRightRadius}
-        marginBottom={marginBottom}
-        marginTop={marginTop}
-        marginRight={marginRight}
-        marginLeft={marginLeft}
-        marginX={marginX}
-        marginY={marginY}
-        paddingBottom={paddingBottom}
-        paddingRight={paddingRight}
-        paddingTop={paddingTop}
-        paddingLeft={paddingLeft}
-        paddingX={paddingX}
-        paddingY={paddingY}
-        leftIcon={leftIcon}
-        rightIcon={
-          isLoading ? (
-            <ColorSpinner
-              width="1.5rem"
-              alignSelf="center"
-              paddingRight={paddingRight}
-              css={{
-                div: {
-                  display: "flex",
-                  alignItems: "center",
-                },
-              }}
-            />
-          ) : (
-            rightIcon
-          )
-        }
+        {...inputProps}
+        
       />
+      
       {state.isOpen && !isLoading && (
         <Popover
           state={state}

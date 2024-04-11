@@ -1,5 +1,16 @@
 # @vygruppen/spor-react
 
+## 9.4.0
+
+### Minor Changes
+
+- 8a0e47b: Added static card
+- 18ffc37: FullScreenDrawer: New component for lots of inline information
+
+### Patch Changes
+
+- cb05030: ComboBox: Fix a bug where left icons didn't work as expected.
+
 ## 9.3.0
 
 ### Minor Changes

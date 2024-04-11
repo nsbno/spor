@@ -3,18 +3,17 @@ import {
   DrawerContent,
   DrawerOverlay,
   Flex,
-  Text,
+  Heading,
   useColorModeValue,
   useMediaQuery,
   useModalContext,
-  useToken,
 } from "@chakra-ui/react";
+import tokens from "@vygruppen/spor-design-tokens";
 import { CloseFill30Icon } from "@vygruppen/spor-icon-react";
 import React, { useEffect, useState } from "react";
 import { Button, IconButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
 import { Drawer } from "./Drawer";
-import tokens from "@vygruppen/spor-design-tokens";
 
 type DrawerPlacement = "top" | "right" | "bottom" | "left";
 
@@ -96,14 +95,14 @@ const DrawerTopMenu = ({
   rightButton,
   isScrolled,
 }: DrawerTopMenuProps) => {
-  const backgroundColor = useToken(
-    "colors",
-    useColorModeValue("white", "black"),
-  );
-
-  const boxShadowColor = useToken(
-    "colors",
-    useColorModeValue("black", "white"),
+  const { headerId, setHeaderMounted } = useModalContext();
+  useEffect(() => {
+    setHeaderMounted(true);
+    return () => setHeaderMounted(false);
+  });
+  const backgroundColor = useColorModeValue(
+    "bg.default.light",
+    "bg.default.light",
   );
 
   return (
@@ -116,12 +115,19 @@ const DrawerTopMenu = ({
       paddingLeft={[2, 3, 6, 9]}
       paddingRight={[2, 3, 6, 9]}
       transition="box-shadow 0.2s"
-      boxShadow={isScrolled ? `0px 1px 4px 0px ${boxShadowColor}26` : undefined} // 26 is 15 % opacity
+      boxShadow={isScrolled ? "md" : undefined}
     >
       <Box flex="1">{leftButton}</Box>
-      <Text fontSize="md" fontWeight="bold" textAlign="center" flex="1">
+      <Heading
+        as="h2"
+        fontSize="md"
+        fontWeight="bold"
+        textAlign="center"
+        flex="1"
+        id={headerId}
+      >
         {title}
-      </Text>
+      </Heading>
       <Box flex="1">
         <Box width="fit-content" marginLeft="auto">
           {rightButton}

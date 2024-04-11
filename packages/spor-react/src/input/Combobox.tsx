@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
-import { Input, InputProps, ListBox } from "..";
+import { ColorSpinner,Input, InputProps, ListBox } from "..";
 import { Popover } from "./Popover";
 
 type OverridableInputProps = Pick<
@@ -63,6 +63,8 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
  * ```
  */
 
+
+
 export function Combobox<T extends object>({
   label,
   isLoading,
@@ -106,7 +108,7 @@ export function Combobox<T extends object>({
     ...rest,
   });
 
-  const ComboBoxProps: OverridableInputProps = { 
+  const comboBoxProps: OverridableInputProps = { 
     borderTopLeftRadius,
     borderTopRightRadius,
     marginBottom,
@@ -138,18 +140,12 @@ export function Combobox<T extends object>({
     },
     state,
   );
- 
 
-  function styleProps(obj: Record<string, unknown>): Record<string, unknown> {
-    return Object.fromEntries(
-      Object.entries(obj).filter(([, value]) => value !== undefined)
-    );
-  }
 
   return (
     <>
       <Input
-        {...styleProps(ComboBoxProps)}
+        {...styleProps(comboBoxProps)}
         aria-haspopup="listbox"
         ref={inputRef}
         label={label}
@@ -160,7 +156,23 @@ export function Combobox<T extends object>({
           state.isOpen && !isLoading ? 0 : borderBottomRightRadius
         }
         {...inputProps}
-        
+        rightIcon={
+          isLoading ? (
+            <ColorSpinner
+              width="1.5rem"
+              alignSelf="center"
+              paddingRight={paddingRight}
+              css={{
+                div: {
+                  display: "flex",
+                  alignItems: "center",
+                },
+              }}
+            />
+          ) : (
+            rightIcon
+          )
+        }
       />
       
       {state.isOpen && !isLoading && (
@@ -204,6 +216,12 @@ const useInputWidth = (inputRef: React.RefObject<HTMLInputElement>) => {
   }, []);
   return inputWidth;
 };
+
+function styleProps(obj: Record<string, unknown>): Record<string, unknown> {
+  return Object.fromEntries(
+    Object.entries(obj).filter(([, value]) => value !== undefined)
+  );
+}
 
 const debounce = (fn: () => void, ms = 100) => {
   let timer: any;

@@ -16,13 +16,11 @@ import { Drawer } from "./Drawer";
 import tokens from "@vygruppen/spor-design-tokens";
 
 type DrawerPlacement = "top" | "right" | "bottom" | "left";
-type DrawerSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "full";
 
 type FullScreenDrawerProps = {
   children: React.ReactNode;
   title?: String;
   placement?: DrawerPlacement;
-  size?: DrawerSize;
   leftButton?: React.ReactNode;
   rightButton?: React.ReactNode;
   isOpen: boolean;
@@ -33,7 +31,6 @@ export const FullScreenDrawer = ({
   children,
   title = "",
   placement = "bottom",
-  size = "full",
   leftButton = null,
   rightButton = <DrawerCloseButton />,
   isOpen,
@@ -56,7 +53,7 @@ export const FullScreenDrawer = ({
   }, [isOpen]);
 
   return (
-    <Drawer isOpen={isOpen} onClose={onClose} placement={placement} size={size}>
+    <Drawer isOpen={isOpen} onClose={onClose} placement={placement} size="full">
       <DrawerContent
         height="100vh"
         backgroundSize="100% 285px, 100%"

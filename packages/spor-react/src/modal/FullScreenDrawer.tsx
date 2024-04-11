@@ -1,15 +1,16 @@
 import {
   Box,
+  DrawerBody,
   DrawerContent,
+  DrawerHeader,
   DrawerOverlay,
   Flex,
-  Heading,
   useColorModeValue,
   useMediaQuery,
   useModalContext,
 } from "@chakra-ui/react";
 import tokens from "@vygruppen/spor-design-tokens";
-import { CloseFill30Icon } from "@vygruppen/spor-icon-react";
+import { CloseFill24Icon, CloseFill30Icon } from "@vygruppen/spor-icon-react";
 import React, { useEffect, useState } from "react";
 import { Button, IconButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
@@ -36,27 +37,27 @@ type FullScreenDrawerProps = {
 
 export const FullScreenDrawer = ({
   children,
-  title = "",
+  title,
   placement = "bottom",
   leftButton = null,
   rightButton = <DrawerCloseButton />,
   isOpen,
   onClose,
 }: FullScreenDrawerProps) => {
-  const [isContentBoxScrolled, setIsContentBoxScrolled] = useState(false);
+  const [isContentBoxScrolled, setContentBoxScrolled] = useState(false);
 
   const onContentScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
     const target = e.target as HTMLDivElement;
 
     if (target.scrollTop <= 0) {
-      setIsContentBoxScrolled(false);
+      setContentBoxScrolled(false);
       return;
     }
-    setIsContentBoxScrolled(true);
+    setContentBoxScrolled(true);
   };
 
   useEffect(() => {
-    setIsContentBoxScrolled(false);
+    setContentBoxScrolled(false);
   }, [isOpen]);
 
   return (
@@ -74,18 +75,20 @@ export const FullScreenDrawer = ({
           leftButton={leftButton}
           rightButton={rightButton}
         />
-        <Box overflow="auto" onScroll={onContentScroll}>
+        <DrawerBody overflow="auto" onScroll={onContentScroll}>
           {children}
-        </Box>
+        </DrawerBody>
       </DrawerContent>
     </Drawer>
   );
 };
 
 type DrawerTopMenuProps = {
+  /** Optional title */
   title?: String;
   leftButton?: React.ReactNode;
   rightButton?: React.ReactNode;
+  /** Whether or not the context this menu is placed in is scrolled */
   isScrolled: boolean;
 };
 
@@ -95,14 +98,9 @@ const DrawerTopMenu = ({
   rightButton,
   isScrolled,
 }: DrawerTopMenuProps) => {
-  const { headerId, setHeaderMounted } = useModalContext();
-  useEffect(() => {
-    setHeaderMounted(true);
-    return () => setHeaderMounted(false);
-  });
   const backgroundColor = useColorModeValue(
     "bg.default.light",
-    "bg.default.light",
+    "bg.default.dark",
   );
 
   return (
@@ -118,16 +116,17 @@ const DrawerTopMenu = ({
       boxShadow={isScrolled ? "md" : undefined}
     >
       <Box flex="1">{leftButton}</Box>
-      <Heading
+      <DrawerHeader
         as="h2"
         fontSize="md"
         fontWeight="bold"
         textAlign="center"
         flex="1"
-        id={headerId}
+        margin={0}
+        padding={0}
       >
         {title}
-      </Heading>
+      </DrawerHeader>
       <Box flex="1">
         <Box width="fit-content" marginLeft="auto">
           {rightButton}
@@ -149,7 +148,7 @@ const DrawerCloseButton = () => {
     return (
       <Button
         variant="ghost"
-        leftIcon={<CloseFill30Icon />}
+        leftIcon={<CloseFill24Icon />}
         onClick={onClose}
         aria-label={t(texts.close)}
         width="fit-content"

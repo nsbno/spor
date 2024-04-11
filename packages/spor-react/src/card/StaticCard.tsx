@@ -11,18 +11,15 @@ import { Box, useStyleConfig } from "@chakra-ui/react";
  * </StaticCard>
  * ```
  *
- * Cards are not interactive by default. If you specify the `as` prop to be a link or a button, you can make them work as links or buttons respectively. This will also give it a drop shadow.
+ * Static cards can also be rendered as whatever DOM element you want – like a li (list item) or an article. You do this by specifying the `as` prop:
  *
  * ```tsx
- * <StaticCard colorScheme="blue" as="button" onClick={handleClick}>
- *   Click for profit
- * </StaticCard>
- * <StaticCard colorScheme="green" as="a" href="https://vy.no">
- *   Go to start
+ * <StaticCard colorScheme="green" as="section">
+ *   This is now a <section /> element
  * </StaticCard>
  * ```
  */
 export const StaticCard = ({ colorScheme, ...props }: any) => {
   const styles = useStyleConfig("StaticCard", { colorScheme });
-  return <Box as={props.as} __css={styles} {...props} />;
+  return <Box __css={styles} {...props} />;
 };

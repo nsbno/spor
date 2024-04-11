@@ -152,7 +152,7 @@ const DrawerCloseButton = () => {
         onClick={onClose}
         aria-label={t(texts.close)}
         width="fit-content"
-        marginLeft={"auto"}
+        marginLeft="auto"
       >
         {t(texts.close)}
       </Button>

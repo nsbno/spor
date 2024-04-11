@@ -1,31 +1,31 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
-import { ColorSpinner,Input, InputProps, ListBox } from "..";
+import { ColorSpinner, Input, InputProps, ListBox } from "..";
 import { Popover } from "./Popover";
 
 type OverridableInputProps = Pick<
-InputProps,
-| "marginTop"
-| "marginBottom"
-| "marginRight"
-| "marginLeft"
-| "marginY"
-| "marginX"
-| "paddingTop"
-| "paddingBottom"
-| "paddingLeft"
-| "paddingRight"
-| "paddingY"
-| "paddingX"
-| "leftIcon"
-| "rightIcon"
-| "borderTopRightRadius"
-| "borderTopLeftRadius"
-| "borderBottomRightRadius"
-| "borderBottomLeftRadius"
-| "onFocus"
->
+  InputProps,
+  | "marginTop"
+  | "marginBottom"
+  | "marginRight"
+  | "marginLeft"
+  | "marginY"
+  | "marginX"
+  | "paddingTop"
+  | "paddingBottom"
+  | "paddingLeft"
+  | "paddingRight"
+  | "paddingY"
+  | "paddingX"
+  | "leftIcon"
+  | "rightIcon"
+  | "borderTopRightRadius"
+  | "borderTopLeftRadius"
+  | "borderBottomRightRadius"
+  | "borderBottomLeftRadius"
+  | "onFocus"
+>;
 
 export type ComboboxProps<T> = AriaComboBoxProps<T> & {
   /** The label of the combobox */
@@ -62,8 +62,6 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
  * </Combobox>
  * ```
  */
-
-
 
 export function Combobox<T extends object>({
   label,
@@ -108,7 +106,7 @@ export function Combobox<T extends object>({
     ...rest,
   });
 
-  const comboBoxProps: OverridableInputProps = { 
+  const comboBoxProps: OverridableInputProps = {
     borderTopLeftRadius,
     borderTopRightRadius,
     marginBottom,
@@ -126,8 +124,6 @@ export function Combobox<T extends object>({
     leftIcon,
   };
 
- 
-
   const {
     inputProps: { size, ...inputProps },
     listBoxProps,
@@ -140,7 +136,6 @@ export function Combobox<T extends object>({
     },
     state,
   );
-
 
   return (
     <>
@@ -174,7 +169,7 @@ export function Combobox<T extends object>({
           )
         }
       />
-      
+
       {state.isOpen && !isLoading && (
         <Popover
           state={state}
@@ -219,7 +214,7 @@ const useInputWidth = (inputRef: React.RefObject<HTMLInputElement>) => {
 
 function styleProps(obj: Record<string, unknown>): Record<string, unknown> {
   return Object.fromEntries(
-    Object.entries(obj).filter(([, value]) => value !== undefined)
+    Object.entries(obj).filter(([, value]) => value !== undefined),
   );
 }
 

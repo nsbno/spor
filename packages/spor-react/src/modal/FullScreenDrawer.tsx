@@ -18,12 +18,19 @@ import tokens from "@vygruppen/spor-design-tokens";
 type DrawerPlacement = "top" | "right" | "bottom" | "left";
 
 type FullScreenDrawerProps = {
+  /** The content inside the drawer */
   children: React.ReactNode;
+  /** The title in the middle of the top menu */
   title?: String;
+  /** Determines which side the drawer slides from */
   placement?: DrawerPlacement;
+  /** A React component that will be placed to the left in the modal header */
   leftButton?: React.ReactNode;
+  /** A React component that will be placed to the right in the modal header */
   rightButton?: React.ReactNode;
+  /** Determines if the drawer is open or closed */
   isOpen: boolean;
+  /** Function that will be called when the drawer closes */
   onClose: () => void;
 };
 

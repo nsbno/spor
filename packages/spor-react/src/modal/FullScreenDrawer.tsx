@@ -41,7 +41,7 @@ export const FullScreenDrawer = ({
 }: FullScreenDrawerProps) => {
   const [isContentBoxScrolled, setIsContentBoxScrolled] = useState(false);
 
-  const OnContentScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
+  const onContentScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
     const target = e.target as HTMLDivElement;
 
     if (target.scrollTop <= 0) {
@@ -69,7 +69,7 @@ export const FullScreenDrawer = ({
           leftButton={leftButton}
           rightButton={rightButton}
         />
-        <Box overflow="auto" onScroll={(e) => OnContentScroll(e)}>
+        <Box overflow="auto" onScroll={onContentScroll}>
           {children}
         </Box>
       </DrawerContent>

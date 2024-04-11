@@ -1,6 +1,7 @@
 import {
   Box,
   DrawerContent,
+  DrawerOverlay,
   Flex,
   Text,
   useColorModeValue,
@@ -61,6 +62,7 @@ export const FullScreenDrawer = ({
 
   return (
     <Drawer isOpen={isOpen} onClose={onClose} placement={placement} size="full">
+      <DrawerOverlay />
       <DrawerContent
         height="100vh"
         backgroundSize="100% 285px, 100%"

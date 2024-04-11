@@ -31,7 +31,7 @@ type FullScreenDrawerProps = {
 
 export const FullScreenDrawer = ({
   children,
-  title,
+  title = "",
   placement = "bottom",
   size = "full",
   leftButton = null,

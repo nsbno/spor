@@ -1,6 +1,16 @@
 import React from "react";
-import { Button, ButtonGroup, Center, IconButton, createTexts, useTranslation } from "..";
-import { DropdownLeftFill18Icon, DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
+import {
+  Button,
+  ButtonGroup,
+  Center,
+  IconButton,
+  createTexts,
+  useTranslation,
+} from "..";
+import {
+  DropdownLeftFill18Icon,
+  DropdownRightFill18Icon,
+} from "@vygruppen/spor-icon-react";
 
 type PaginationProps = {
   /** Specify the total amount of pages */
@@ -103,6 +113,8 @@ export const Pagination = ({
                 onPageChange(+pageNumber);
               }
             }}
+            backgroundColor={selectedPage === pageNumber ? "black" : "white"}
+            fontWeight={selectedPage === pageNumber ? "bold" : "normal"}
           >
             {pageNumber}
           </Button>

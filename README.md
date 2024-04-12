@@ -97,3 +97,9 @@ This will start all apps and packages in development mode. You can then visit th
 
 [localhost:3000](http://localhost:3000) - The local version of the docs website
 [localhost:3333](http://localhost:3333) - The local version of the Sanity Studio
+
+### Testing components 🎨
+
+When creating or editing components in Spor, use `/playground` as a testing ground.
+
+[localhost:3000/playground](http://localhost:3000/playground) - Happy testing!

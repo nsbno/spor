@@ -3,6 +3,8 @@ import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { floatingBorder } from "../utils/floating-utils";
+import { focusVisibleStyles } from "../utils/focus-utils";
+import { accentBackground } from "../utils/accent-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({
@@ -16,6 +18,7 @@ const config = defineStyleConfig({
     color: "text.default.light",
     ...getColorSchemeBaseProps(props),
     ...getColorSchemeClickableProps(props),
+    ...focusVisibleStyles(props),
     ...getColorSchemeActiveProps(props),
     _hover: getColorSchemeHoverProps(props),
     _disabled: {
@@ -25,10 +28,64 @@ const config = defineStyleConfig({
       pointerEvents: "none",
     },
   }),
+  variants: {
+    base: (props) => ({
+      ...accentBackground("default", props),
+      _hover: {
+        ...accentBackground("hover", props),
+      },
+      _active: {
+        ...accentBackground("active", props),
+      },
+    }),
+    accent: (props) => ({
+      ...accentBackground("default", props),
+      _hover: {
+        ...accentBackground("hover", props),
+      },
+      _active: {
+        ...accentBackground("active", props),
+      },
+    }),
+    floating: (props) => ({
+      ...accentBackground("default", props),
+      _hover: {
+        ...accentBackground("hover", props),
+      },
+      _active: {
+        ...accentBackground("active", props),
+      },
+    }),
+  },
+  sizes: {
+    sm: {
+      boxShadow: "sm",
+
+      _hover: {
+        boxShadow: "md",
+      },
+
+      _active: {
+        boxShadow: "none",
+      },
+    },
+    lg: {
+      boxShadow: "md",
+
+      _hover: {
+        boxShadow: "lg",
+      },
+
+      _active: {
+        boxShadow: "sm",
+      },
+    },
+  },
 });
 
 export default config;
 
+//Droppe denne evt etter å ha hørt med PØ
 type CardThemeProps = {
   colorScheme:
     | "white"

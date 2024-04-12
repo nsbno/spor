@@ -1,5 +1,10 @@
 import React from "react";
-import { Box, useStyleConfig } from "@chakra-ui/react";
+import { Box, BoxProps, useStyleConfig } from "@chakra-ui/react";
+
+type PressableCardProps = Omit<BoxProps, "as"> & {
+  as: "button" | "a" | "label" | React.ComponentType;
+};
+
 /**
  * Renders a Pressable card.
  *
@@ -19,7 +24,7 @@ import { Box, useStyleConfig } from "@chakra-ui/react";
  * </PressableCard>
  * ```
  */
-export const PressableCard = ({ colorScheme, ...props }: any) => {
-  const styles = useStyleConfig("PressableCard", { colorScheme });
+export const PressableCard = ({ ...props }: PressableCardProps) => {
+  const styles = useStyleConfig("PressableCard");
   return <Box __css={styles} {...props} />;
 };

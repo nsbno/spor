@@ -85,7 +85,6 @@ const config = defineStyleConfig({
 
 export default config;
 
-//Droppe denne evt etter å ha hørt med PØ
 type CardThemeProps = {
   colorScheme:
     | "white"

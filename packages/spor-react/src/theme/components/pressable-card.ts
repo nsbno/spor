@@ -1,10 +1,9 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
-import { colors } from "../foundations";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { accentBackground } from "../utils/accent-utils";
+import { accentBackground, accentText } from "../utils/accent-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({
@@ -14,8 +13,6 @@ const config = defineStyleConfig({
     fontSize: "inherit",
     display: "block",
     borderRadius: "md",
-    // Except for white cards, all cards are light mode always
-    color: "text.default.light",
     ...getColorSchemeBaseProps(props),
     ...getColorSchemeClickableProps(props),
     ...focusVisibleStyles(props),
@@ -86,22 +83,14 @@ const config = defineStyleConfig({
 export default config;
 
 type CardThemeProps = {
-  colorScheme:
-    | "white"
-    | "grey"
-    | "blue"
-    | "green"
-    | "teal"
-    | "yellow"
-    | "orange"
-    | "red";
+  colorScheme: "accent" | "default";
   theme: any;
   colorMode: "light" | "dark";
 };
 
 const getColorSchemeBaseProps = (props: CardThemeProps) => {
   switch (props.colorScheme) {
-    case "white":
+    case "default":
       return {
         ...baseBorder("default", props),
         backgroundColor: mode(
@@ -110,48 +99,43 @@ const getColorSchemeBaseProps = (props: CardThemeProps) => {
         )(props),
         color: "inherit",
       };
-    case "grey":
+    case "accent":
       return {
-        backgroundColor: "lightGrey",
-      };
-    case "green": {
-      return {
-        backgroundColor: "seaMist",
-      };
-    }
-    case "red": {
-      return {
-        backgroundColor: "pink",
-      };
-    }
-    default:
-      return {
-        backgroundColor: colors[props.colorScheme]?.[100] ?? "platinum",
+        ...accentBackground("default", props),
+        ...accentText("default", props),
+        _hover: {
+          ...accentBackground("hover", props),
+        },
+        _active: {
+          ...accentBackground("active", props),
+        },
       };
   }
 };
 
 function getColorSchemeClickableProps(props: CardThemeProps) {
   switch (props.colorScheme) {
-    case "white":
+    case "default":
       return {
         ...floatingBorder("default", props),
       };
-    case "grey":
+    case "accent":
       return {
-        outlineColor: "steel",
-      };
-    default:
-      return {
-        backgroundColor: colors[props.colorScheme]?.[100] ?? "platinum",
-        outlineColor: colors[props.colorScheme]?.[200] ?? "silver",
+        ...accentBackground("default", props),
+        ...accentText("default", props),
+        _hover: {
+          ...accentBackground("hover", props),
+        },
+        _active: {
+          ...accentBackground("active", props),
+        },
       };
   }
 }
 
 const getColorSchemeHoverProps = (props: CardThemeProps) => {
   switch (props.colorScheme) {
-    case "white":
+    case "default":
       return {
         backgroundColor: mode(
           "white",
@@ -159,34 +143,37 @@ const getColorSchemeHoverProps = (props: CardThemeProps) => {
         )(props),
         ...floatingBorder("hover", props),
       };
-    case "grey":
+    case "accent":
       return {
-        outlineColor: "osloGrey",
-      };
-    default:
-      return {
-        backgroundColor: colors[props.colorScheme]?.[200] ?? "silver",
-        outlineColor: colors[props.colorScheme]?.[400] ?? "silver",
+        ...accentBackground("default", props),
+        ...accentText("default", props),
+        _hover: {
+          ...accentBackground("hover", props),
+        },
+        _active: {
+          ...accentBackground("active", props),
+        },
       };
   }
 };
 const getColorSchemeActiveProps = (props: CardThemeProps) => {
   const { colorScheme } = props;
   switch (colorScheme) {
-    case "white":
+    case "default":
       return {
         backgroundColor: mode("bg.tertiary.light", `bg.default.dark`)(props),
         ...floatingBorder("active", props),
       };
-    case "grey":
+    case "accent":
       return {
-        backgroundColor: "white",
-        outlineColor: "steel",
-      };
-    default:
-      return {
-        backgroundColor: colors[colorScheme]?.[50] ?? "lightGrey",
-        outlineColor: colors[colorScheme]?.[100] ?? "silver",
+        ...accentBackground("default", props),
+        ...accentText("default", props),
+        _hover: {
+          ...accentBackground("hover", props),
+        },
+        _active: {
+          ...accentBackground("active", props),
+        },
       };
   }
 };

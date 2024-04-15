@@ -2,6 +2,7 @@ import React from "react";
 import { Box, BoxProps, useStyleConfig } from "@chakra-ui/react";
 
 type PressableCardProps = Omit<BoxProps, "as"> & {
+  size?: "sm" | "lg";
   as: "button" | "a" | "label" | React.ComponentType;
 };
 

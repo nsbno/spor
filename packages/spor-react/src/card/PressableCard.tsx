@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, BoxProps, useStyleConfig } from "@chakra-ui/react";
+import { BoxProps, Card, useStyleConfig } from "@chakra-ui/react";
 
 type PressableCardProps = Omit<BoxProps, "as"> & {
   size?: "sm" | "lg";
@@ -33,7 +33,10 @@ type PressableCardProps = Omit<BoxProps, "as"> & {
  * </PressableCard>
  * ```
  */
-export const PressableCard = ({ ...props }: PressableCardProps) => {
+export const PressableCard = ({
+  as = "button",
+  ...props
+}: PressableCardProps) => {
   const styles = useStyleConfig("PressableCard");
-  return <Box __css={styles} {...props} />;
+  return <Card __css={styles} {...props} />;
 };

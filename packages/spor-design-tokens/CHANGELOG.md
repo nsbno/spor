@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.5.4
+
+### Patch Changes
+
+- 7c6c056: Change hex values of tokens to match designsystem in Figma
+- e9dfee0: Add text-highlight and icon-highlight to tokens.
+
 ## 3.5.3
 
 ### Patch Changes

@@ -26,7 +26,12 @@ export default {
       ],
     },
     javascript: {
-      transforms: ["attribute/cti", "name/cti/pascal", "size/px", "color/css"],
+      transforms: [
+        "attribute/cti",
+        "name/cti/pascal",
+        "size/pxToRem",
+        "color/css",
+      ],
       files: [
         {
           format: "typescript/cjs-module",

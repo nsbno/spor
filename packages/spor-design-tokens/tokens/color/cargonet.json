@@ -60,6 +60,14 @@
             "value": "{color.alias.darkGrey.value}"
           }
         },
+        "highlight": {
+          "light": {
+            "value": "{color.alias.ocean.value}"
+          },
+          "dark": {
+            "value": "{color.alias.sky.value}"
+          }
+        },
         "disabled": {
           "light": {
             "value": "{color.palette.blackAlpha.400.value}"
@@ -92,6 +100,14 @@
           },
           "dark": {
             "value": "{color.alias.darkGrey.value}"
+          }
+        },
+        "highlight": {
+          "light": {
+            "value": "{color.alias.ocean.value}"
+          },
+          "dark": {
+            "value": "{color.alias.sky.value}"
           }
         },
         "disabled": {

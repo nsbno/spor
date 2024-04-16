@@ -1,9 +1,8 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
-import { floatingBorder } from "../utils/floating-utils";
+import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { accentBackground, accentText } from "../utils/accent-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({
@@ -18,6 +17,10 @@ const config = defineStyleConfig({
     ...focusVisibleStyles(props),
     ...getColorSchemeActiveProps(props),
     _hover: getColorSchemeHoverProps(props),
+    _checked: {
+      color: "blue",
+      borderColor: "red",
+    },
     _disabled: {
       ...baseBackground("disabled", props),
       ...baseBorder("disabled", props),
@@ -27,30 +30,29 @@ const config = defineStyleConfig({
   }),
   variants: {
     base: (props) => ({
-      ...accentBackground("default", props),
+      ...baseBackground("default", props),
       _hover: {
-        ...accentBackground("hover", props),
+        ...baseBackground("hover", props),
       },
       _active: {
-        ...accentBackground("active", props),
+        ...baseBackground("active", props),
       },
-    }),
-    accent: (props) => ({
-      ...accentBackground("default", props),
-      _hover: {
-        ...accentBackground("hover", props),
-      },
-      _active: {
-        ...accentBackground("active", props),
+      _selected: {
+        ...baseBackground("selected", props),
+        ...baseBorder("selected", props),
       },
     }),
     floating: (props) => ({
-      ...accentBackground("default", props),
+      ...floatingBackground("default", props),
       _hover: {
-        ...accentBackground("hover", props),
+        ...floatingBackground("hover", props),
       },
       _active: {
-        ...accentBackground("active", props),
+        ...floatingBackground("active", props),
+      },
+      _selected: {
+        ...floatingBackground("selected", props),
+        ...baseBorder("selected", props),
       },
     }),
   },

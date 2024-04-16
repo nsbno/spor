@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 9.4.1
+
+### Patch Changes
+
+- 043fc98: All text tokens are now using rem instead of px
+- Updated dependencies [7c6c056]
+- Updated dependencies [e9dfee0]
+  - @vygruppen/spor-design-tokens@3.5.4
+
 ## 9.4.0
 
 ### Minor Changes

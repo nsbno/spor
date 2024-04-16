@@ -25,7 +25,9 @@ type PressableCardProps = Omit<BoxProps, "as"> & {
  * </PressableCard>
  * ```
  *
- * Pressable cards can also be rendered as button, link or label – like a li (list item) or an article. You do this by specifying the `as` prop:
+ * Pressable cards can also be rendered as button, link or label – like a li (list item) or an article.
+ * You do this by specifying the `as` prop. If no `as` is specified, button is chosen as default:
+ *
  *
  * ```tsx
  * <PressableCard colorScheme="green" as="section">

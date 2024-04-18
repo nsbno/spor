@@ -87,9 +87,9 @@ const config = helpers.defineMultiStyleConfig({
       [$arrowBackground.variable]: surface("default", props).backgroundColor,
     },
     calendarPopover: {
-      ...baseBackground("default", props),
+      ...floatingBackground("default", props),
       ...baseText("default", props),
-      ...baseBorder("default", props),
+      ...floatingBorder("default", props),
       boxShadow: "md",
     },
     weekdays: {

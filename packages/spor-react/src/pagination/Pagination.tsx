@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import {
   Button,
   ButtonGroup,
@@ -6,7 +6,15 @@ import {
   IconButton,
   createTexts,
   useTranslation,
+  Flex,
+  TextLink,
 } from "..";
+import {
+  ListItem,
+  UnorderedList,
+  useMultiStyleConfig,
+  Link,
+} from "@chakra-ui/react";
 import {
   DropdownLeftFill18Icon,
   DropdownRightFill18Icon,
@@ -42,92 +50,101 @@ export const Pagination = ({
 }: PaginationProps) => {
   const { t } = useTranslation();
 
-  if (selectedPage === 0) {
-    selectedPage = 1;
-  }
+  const style = useMultiStyleConfig("Pagination", { selectedPage });
 
-  if (totalPages <= 1) {
-    return null;
-  }
+  const hasPreviousPage = selectedPage > 1;
+  const hasNextPage = selectedPage < totalPages;
 
-  const displayPageNumbers = [];
-  const maxVisiblePages = 6;
-
-  if (totalPages <= maxVisiblePages) {
-    displayPageNumbers.push(
-      ...Array.from({ length: totalPages }, (_, i) => i + 1),
-    );
-  } else {
-    if (selectedPage <= Math.floor(maxVisiblePages / 2) + 1) {
-      // If selectedPage is near the beginning, display the first pages.
+  const renderPaginationButtons = () => {
+    const displayPageNumbers = [];
+    const maxVisiblePages = 6;
+    if (totalPages <= maxVisiblePages) {
       displayPageNumbers.push(
-        ...Array.from({ length: maxVisiblePages - 1 }, (_, i) => i + 1),
-      );
-      displayPageNumbers.push("...");
-      displayPageNumbers.push(totalPages);
-    } else if (selectedPage >= totalPages - Math.floor(maxVisiblePages / 2)) {
-      // If selectedPage is near the end, display the last pages.
-      displayPageNumbers.push(1);
-      displayPageNumbers.push("...");
-      displayPageNumbers.push(
-        ...Array.from(
-          { length: maxVisiblePages - 1 },
-          (_, i) => totalPages - maxVisiblePages + 2 + i,
-        ),
+        ...Array.from({ length: totalPages }, (_, i) => i + 1),
       );
     } else {
-      // Display pages with "..." in the middle.
-      displayPageNumbers.push(1);
-      displayPageNumbers.push("...");
-      for (
-        let i = selectedPage - Math.floor((maxVisiblePages - 3) / 2);
-        i <= selectedPage + Math.floor((maxVisiblePages - 3) / 2);
-        i++
-      ) {
-        displayPageNumbers.push(i);
+      if (selectedPage <= Math.floor(maxVisiblePages / 2) + 1) {
+        // If selectedPage is near the beginning, display the first pages.
+        displayPageNumbers.push(
+          ...Array.from({ length: maxVisiblePages - 1 }, (_, i) => i + 1),
+        );
+        displayPageNumbers.push("...");
+        displayPageNumbers.push(totalPages);
+      } else if (selectedPage >= totalPages - Math.floor(maxVisiblePages / 2)) {
+        // If selectedPage is near the end, display the last pages.
+        displayPageNumbers.push(1);
+        displayPageNumbers.push("...");
+        displayPageNumbers.push(
+          ...Array.from(
+            { length: maxVisiblePages - 1 },
+            (_, i) => totalPages - maxVisiblePages + 2 + i,
+          ),
+        );
+      } else {
+        // Display pages with "..." in the middle.
+        displayPageNumbers.push(1);
+        displayPageNumbers.push("...");
+        for (
+          let i = selectedPage - Math.floor((maxVisiblePages - 3) / 2);
+          i <= selectedPage + Math.floor((maxVisiblePages - 3) / 2);
+          i++
+        ) {
+          displayPageNumbers.push(i);
+        }
+        displayPageNumbers.push("...");
+        displayPageNumbers.push(totalPages);
       }
-      displayPageNumbers.push("...");
-      displayPageNumbers.push(totalPages);
     }
-  }
+    return displayPageNumbers.map((pageNumber, index) =>
+      pageNumber === "..." ? (
+        <ListItem key={index}>
+          <Center>...</Center>
+        </ListItem>
+      ) : (
+        <Link
+          key={index}
+          as={ListItem}
+          onClick={() => {
+            if (pageNumber !== "...") {
+              onPageChange(+pageNumber);
+            }
+          }}
+          sx={pageNumber === selectedPage ? style.activeButton : style.link}
+        >
+          {pageNumber}
+        </Link>
+      ),
+    );
+  };
+
   return (
-    <ButtonGroup spacing={[0, 1]}>
-      <IconButton
-        aria-label={t(texts.previousPage)}
-        icon={<DropdownLeftFill18Icon />}
-        variant="ghost"
-        visibility={selectedPage === 1 ? "hidden" : "visible"}
-        onClick={() => onPageChange(selectedPage - 1)}
-      />
-      {displayPageNumbers.map((pageNumber, index) =>
-        pageNumber === "..." ? (
-          <Center key={index}>...</Center>
-        ) : (
-          <Button
-            key={index}
-            size="xs"
-            padding={pageNumber === "..." ? 0 : undefined}
-            variant={pageNumber === selectedPage ? "tertiary" : "ghost"}
-            onClick={() => {
-              if (pageNumber !== "...") {
-                onPageChange(+pageNumber);
-              }
-            }}
-            backgroundColor={selectedPage === pageNumber ? "black" : "white"}
-            fontWeight={selectedPage === pageNumber ? "bold" : "normal"}
+    <Flex as="nav" aria-label="pagination">
+      <UnorderedList
+        display="flex"
+        listStyleType="none"
+        gap={[0, 1]}
+        padding={0}
+        margin={0}
+      >
+        <ListItem aria-label={t(texts.previousPage)} sx={style.listItem}>
+          <TextLink
+            onClick={() => onPageChange(selectedPage - 1)}
+            sx={hasPreviousPage ? style.link : style.disabled}
           >
-            {pageNumber}
-          </Button>
-        ),
-      )}
-      <IconButton
-        aria-label={t(texts.nextPage)}
-        icon={<DropdownRightFill18Icon />}
-        variant="ghost"
-        visibility={selectedPage === totalPages ? "hidden" : "visible"}
-        onClick={() => onPageChange(selectedPage + 1)}
-      />
-    </ButtonGroup>
+            <DropdownLeftFill18Icon />
+          </TextLink>
+        </ListItem>
+        {renderPaginationButtons()}
+        <ListItem aria-label={t(texts.nextPage)} sx={style.listItem}>
+          <TextLink
+            onClick={() => onPageChange(selectedPage + 1)}
+            sx={hasNextPage ? style.link : style.disabled}
+          >
+            <DropdownRightFill18Icon />
+          </TextLink>
+        </ListItem>
+      </UnorderedList>
+    </Flex>
   );
 };
 

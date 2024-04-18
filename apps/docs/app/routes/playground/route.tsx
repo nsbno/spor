@@ -1,4 +1,4 @@
-import { Center, Pagination, Stack } from "@vygruppen/spor-react";
+import { Stack } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
 import { LivePreview } from "react-live";
 import { LiveEditor } from "~/features/portable-text/interactive-code/LiveEditor";
@@ -25,7 +25,6 @@ export default function PlaygroundPage() {
     setPlaygroundData(newCode);
     localStorage.setItem("playgroundData", newCode);
   };
-  const [pageNumber, setPageNumber] = useState(1);
   return (
     <LiveProvider code={playgroundData}>
       <Stack spacing={2} id="content">
@@ -37,13 +36,6 @@ export default function PlaygroundPage() {
         <LiveError />
         <LivePreview />
       </Stack>
-      <Center>
-        <Pagination
-          totalPages={100}
-          selectedPage={pageNumber}
-          onPageChange={(page) => setPageNumber(page)}
-        />
-      </Center>
     </LiveProvider>
   );
 }

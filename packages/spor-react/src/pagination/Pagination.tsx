@@ -1,14 +1,5 @@
-import React, { forwardRef } from "react";
-import {
-  Button,
-  ButtonGroup,
-  Center,
-  IconButton,
-  createTexts,
-  useTranslation,
-  Flex,
-  TextLink,
-} from "..";
+import React from "react";
+import { Center, createTexts, useTranslation, Flex, TextLink } from "..";
 import {
   ListItem,
   UnorderedList,
@@ -57,7 +48,7 @@ export const Pagination = ({
 
   const renderPaginationButtons = () => {
     const displayPageNumbers = [];
-    const maxVisiblePages = 6;
+    const maxVisiblePages = 8;
     if (totalPages <= maxVisiblePages) {
       displayPageNumbers.push(
         ...Array.from({ length: totalPages }, (_, i) => i + 1),
@@ -97,7 +88,7 @@ export const Pagination = ({
     }
     return displayPageNumbers.map((pageNumber, index) =>
       pageNumber === "..." ? (
-        <ListItem key={index}>
+        <ListItem key={index} sx={style.listItem}>
           <Center>...</Center>
         </ListItem>
       ) : (
@@ -109,6 +100,7 @@ export const Pagination = ({
               onPageChange(+pageNumber);
             }
           }}
+          padding={pageNumber === "..." ? 0 : undefined}
           sx={pageNumber === selectedPage ? style.activeButton : style.link}
         >
           {pageNumber}
@@ -126,21 +118,21 @@ export const Pagination = ({
         padding={0}
         margin={0}
       >
-        <ListItem aria-label={t(texts.previousPage)} sx={style.listItem}>
+        <ListItem aria-label={t(texts.previousPage)}>
           <TextLink
             onClick={() => onPageChange(selectedPage - 1)}
             sx={hasPreviousPage ? style.link : style.disabled}
           >
-            <DropdownLeftFill18Icon />
+            <DropdownLeftFill18Icon sx={style.icon} />
           </TextLink>
         </ListItem>
         {renderPaginationButtons()}
-        <ListItem aria-label={t(texts.nextPage)} sx={style.listItem}>
+        <ListItem aria-label={t(texts.nextPage)}>
           <TextLink
             onClick={() => onPageChange(selectedPage + 1)}
             sx={hasNextPage ? style.link : style.disabled}
           >
-            <DropdownRightFill18Icon />
+            <DropdownRightFill18Icon sx={style.icon} />
           </TextLink>
         </ListItem>
       </UnorderedList>

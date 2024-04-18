@@ -1,7 +1,6 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy } from "@chakra-ui/theme-tools";
 import { ghostBackground } from "../utils/ghost-utils";
-import { surface } from "../utils/surface-utils";
 import { baseText } from "../utils/base-utils";
 
 const parts = anatomy("Pagination").parts(
@@ -9,6 +8,7 @@ const parts = anatomy("Pagination").parts(
   "link",
   "activeButton",
   "disabled",
+  "icon",
 );
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
@@ -22,9 +22,6 @@ const config = helpers.defineMultiStyleConfig({
       _hover: {
         ...ghostBackground("hover", props),
         borderRadius: 50,
-        _disabled: {
-          ...baseText("disabled", props),
-        },
       },
       _active: {
         borderRadius: 50,
@@ -57,6 +54,9 @@ const config = helpers.defineMultiStyleConfig({
         ...ghostBackground("active", props),
       },
     },
+    icon: {
+      bottom: "-0.03em !important",
+    },
   }),
 });
 
@@ -64,8 +64,8 @@ const commonStyles = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  width: 6,
-  height: 6,
+  width: 5,
+  height: 5,
   backgroundImage: "none",
   borderRadius: 50,
   fontSize: "xs",

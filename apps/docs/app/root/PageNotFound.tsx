@@ -15,7 +15,7 @@ export const PageNotFound = () => {
           happened, there's nothing here.
         </Text>
         <Button variant="primary" as={Link} to="/">
-          Go back to the front page
+          Go back to the Spor front page
         </Button>
       </Box>
     </Center>

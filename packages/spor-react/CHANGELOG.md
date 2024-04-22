@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 9.5.0
+
+### Minor Changes
+
+- 03f9162: ## New component update
+
+  New component for Pagination has been added.
+
+### Patch Changes
+
+- 4a4f271: Added missing floating background color and floating border to datepicker.
+
 ## 9.4.1
 
 ### Patch Changes

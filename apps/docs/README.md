@@ -15,4 +15,4 @@ Next, start the development server with `npm run dev`. The site will open on `lo
 
 ## New release?
 
-Bump version in `package.json` to push it out.
+Bump version in `package.json` to push it out. 

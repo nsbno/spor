@@ -40,5 +40,4 @@ export { default as Tabs } from "./tabs";
 export { default as Textarea } from "./textarea";
 export { default as Toast } from "./toast";
 export { default as StaticCard } from "./static-card";
-export { default as PressableCard } from "./pressable-card";
 export { default as TravelTag } from "./travel-tag";

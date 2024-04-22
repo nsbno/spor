@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.6.1
+
+### Patch Changes
+
+- b83b35f: Require minimum versions of spor dependencies
+
 ## 9.6.0
 
 ### Minor Changes

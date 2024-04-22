@@ -1,7 +1,7 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
-import { baseBorder } from "../utils/base-utils";
+import { baseBorder, baseText } from "../utils/base-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({
@@ -60,7 +60,8 @@ const getColorSchemeBaseProps = (props: CardThemeProps) => {
     }
     default:
       return {
-        backgroundColor: colors[props.colorScheme]?.[100] ?? "platinum",
+        backgroundColor: colors[props.colorScheme]?.[100] ?? "default",
+        ...baseText("default", props),
       };
   }
 };

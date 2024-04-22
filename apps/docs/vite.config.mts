@@ -8,6 +8,7 @@ installGlobals();
 export default defineConfig({
   server: {
     port: 3000,
+    fs: {cachedChecks: false}
   },
   plugins: [
     remix({

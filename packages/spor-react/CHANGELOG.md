@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.6.3
+
+### Patch Changes
+
+- d998cb8: Improve layout of tables when content overflow and in responsive views
+
 ## 9.6.2
 
 ### Patch Changes

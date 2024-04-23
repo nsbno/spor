@@ -3,6 +3,7 @@ import { mode } from "@chakra-ui/theme-tools";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { accentBackground, accentText } from "../utils/accent-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({
@@ -101,6 +102,17 @@ const getColorSchemeBaseProps = (props: CardThemeProps) => {
         )(props),
         color: "inherit",
       };
+    case "accent":
+      return {
+        ...accentBackground("default", props),
+        ...accentText("default", props),
+        _hover: {
+          ...accentBackground("hover", props),
+        },
+        _active: {
+          ...accentBackground("active", props),
+        },
+      };
   }
 };
 
@@ -109,6 +121,17 @@ function getColorSchemeClickableProps(props: CardThemeProps) {
     case "default":
       return {
         ...floatingBorder("default", props),
+      };
+    case "accent":
+      return {
+        ...accentBackground("default", props),
+        ...accentText("default", props),
+        _hover: {
+          ...accentBackground("hover", props),
+        },
+        _active: {
+          ...accentBackground("active", props),
+        },
       };
   }
 }
@@ -123,8 +146,20 @@ const getColorSchemeHoverProps = (props: CardThemeProps) => {
         )(props),
         ...floatingBorder("hover", props),
       };
+    case "accent":
+      return {
+        ...accentBackground("default", props),
+        ...accentText("default", props),
+        _hover: {
+          ...accentBackground("hover", props),
+        },
+        _active: {
+          ...accentBackground("active", props),
+        },
+      };
   }
 };
+
 const getColorSchemeActiveProps = (props: CardThemeProps) => {
   const { colorScheme } = props;
   switch (colorScheme) {
@@ -132,6 +167,17 @@ const getColorSchemeActiveProps = (props: CardThemeProps) => {
       return {
         backgroundColor: mode("bg.tertiary.light", `bg.default.dark`)(props),
         ...floatingBorder("active", props),
+      };
+    case "accent":
+      return {
+        ...accentBackground("default", props),
+        ...accentText("default", props),
+        _hover: {
+          ...accentBackground("hover", props),
+        },
+        _active: {
+          ...accentBackground("active", props),
+        },
       };
   }
 };

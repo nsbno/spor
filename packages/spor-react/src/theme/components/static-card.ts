@@ -2,6 +2,7 @@ import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
 import { baseBorder } from "../utils/base-utils";
+import { focusVisibleStyles } from "../utils/focus-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({
@@ -13,6 +14,7 @@ const config = defineStyleConfig({
     borderRadius: "md",
     // Except for white cards, all cards are light mode always
     color: "text.default.light",
+    ...focusVisibleStyles(props),
     ...getColorSchemeBaseProps(props),
   }),
 });

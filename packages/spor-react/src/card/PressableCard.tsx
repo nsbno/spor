@@ -1,10 +1,12 @@
 import React from "react";
 import { Box, BoxProps, Card, useStyleConfig } from "@chakra-ui/react";
 
+type PressableRole = "button" | "a" | "label" | React.ComponentType;
+
 type PressableCardProps = Omit<BoxProps, "as"> & {
   variant: "floating" | "accent" | "base";
   size?: "sm" | "lg";
-  as: "button" | "a" | "label" | React.ComponentType;
+  role: PressableRole;
 };
 
 /**
@@ -38,14 +40,14 @@ type PressableCardProps = Omit<BoxProps, "as"> & {
  */
 export const PressableCard = ({
   children,
-  as = "button",
+  role = "button",
   size = "sm",
   variant = "base",
   ...props
 }: PressableCardProps) => {
   const styles = useStyleConfig("PressableCard", { variant, size });
   return (
-    <Box as={as} __css={styles} {...props}>
+    <Box as={role} __css={styles} {...props}>
       {children}
     </Box>
   );

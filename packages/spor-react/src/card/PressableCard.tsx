@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, BoxProps, Card, useStyleConfig } from "@chakra-ui/react";
+import { Box, BoxProps, useStyleConfig } from "@chakra-ui/react";
 
 type PressableCardProps = Omit<BoxProps, "as"> & {
   variant: "floating" | "accent" | "base";

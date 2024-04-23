@@ -1,10 +1,20 @@
 # @vygruppen/spor-react
 
+## 9.6.1
+
+### Patch Changes
+
+- b83b35f: Require minimum versions of spor dependencies
+
 ## 9.6.0
 
 ### Minor Changes
 
-- 0e0b6b1: Added pressable card, and small changes to default color in static card
+- 074a3d3: Added pressable card, and small changes to default color in static card
+
+### Patch Changes
+
+- 0def6ed: remove pressable card
 
 ## 9.5.0
 

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.6.2
+
+### Patch Changes
+
+- f5c9213: Added pressable card, small changes to default color in static card and bumped package version
+
 ## 9.6.1
 
 ### Patch Changes

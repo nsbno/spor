@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.6.4
+
+### Patch Changes
+
+- 457fd2a: Stop Card from disregarding allowed styling related props
+
 ## 9.6.3
 
 ### Patch Changes

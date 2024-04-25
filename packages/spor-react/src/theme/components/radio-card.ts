@@ -1,3 +1,4 @@
+import { radioAnatomy as parts } from "@chakra-ui/anatomy";
 import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
@@ -12,6 +13,7 @@ const config = defineStyleConfig({
     overflow: "hidden",
     fontSize: "inherit",
     display: "block",
+    color: "red",
     borderRadius: "md",
     ...getColorSchemeBaseProps(props),
     ...getColorSchemeClickableProps(props),
@@ -20,13 +22,13 @@ const config = defineStyleConfig({
     _hover: getColorSchemeHoverProps(props),
     _checked: {
       color: "blue",
-      borderColor: "red",
-    },
-    _disabled: {
-      ...baseBackground("disabled", props),
-      ...baseBorder("disabled", props),
-      ...baseText("disabled", props),
-      pointerEvents: "none",
+      backgroundColor: "Green",
+      _disabled: {
+        pointerEvents: "none",
+        ...baseBackground("disabled", props),
+        ...baseBorder("disabled", props),
+        ...baseText("disabled", props),
+      },
     },
   }),
   variants: {
@@ -95,12 +97,7 @@ const getColorSchemeBaseProps = (props: CardThemeProps) => {
   switch (props.colorScheme) {
     case "default":
       return {
-        ...baseBorder("default", props),
-        backgroundColor: mode(
-          "white",
-          `color-mix(in srgb, white 10%, var(--spor-colors-bg-default-dark))`,
-        )(props),
-        color: "inherit",
+        backgroundColor: "blue",
       };
     case "accent":
       return {

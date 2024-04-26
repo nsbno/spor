@@ -1,6 +1,6 @@
-import React, { ChangeEvent } from "react";
-import { HStack, useRadioGroup, useStyleConfig } from "@chakra-ui/react";
-import { Box, Radio as ChakraRadio } from "@chakra-ui/react";
+import React from "react";
+import { useStyleConfig, Radio as ChakraRadio } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { useRadio } from "@chakra-ui/react";
 
 /**
@@ -45,34 +45,3 @@ export const RadioCard = (props: any) => {
     </Box>
   );
 };
-
-// Step 2: Use the `useRadioGroup` hook to control a group of custom radios.
-/* export const CardRadio = () => {
-  const options = ["react", "vue", "svelte"];
-
-  const { getRootProps, getRadioProps } = useRadioGroup({
-    name: "framework",
-    defaultValue: "react",
-    onChange: console.log,
-  });
-
-  const group = getRootProps();
-
-  return (
-    <HStack {...group}>
-      {options.map((value) => {
-        const radio = getRadioProps({ value });
-        return (
-          <RadioCard key={value} {...radio}>
-            {value}
-          </RadioCard>
-        );
-      })}
-    </HStack>
-  );
-}; */
-
-/* export const RadioCard = forwardRef<RadioCardProps, "input">((props, ref) => {
-  const styles = useStyleConfig("RadioCard");
-  return <Box as={"button"} __css={styles} {...props} ref={ref} />;
-}); */

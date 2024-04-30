@@ -5,6 +5,9 @@ export const styles = {
     "html, body": {
       color: mode("darkGrey", "lightGrey")(props),
     },
+    "select>option": {
+      color: "darkGrey",
+    },
     svg: {
       display: "initial",
     },

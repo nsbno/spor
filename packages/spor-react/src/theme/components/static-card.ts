@@ -23,12 +23,14 @@ type CardThemeProps = {
   colorScheme:
     | "white"
     | "grey"
-    | "blue"
     | "green"
-    | "teal"
-    | "yellow"
     | "orange"
-    | "red";
+    | "red"
+    | "yellow"
+    | "blue"
+    | "darkBlue"
+    | "darkGreen"
+    | "darkYellow";
   theme: any;
   colorMode: "light" | "dark";
 };
@@ -56,6 +58,21 @@ const getColorSchemeBaseProps = (props: CardThemeProps) => {
     case "red": {
       return {
         backgroundColor: "pink",
+      };
+    }
+    case "darkBlue": {
+      return {
+        backgroundColor: "darkBlue",
+      };
+    }
+    case "darkGreen": {
+      return {
+        backgroundColor: "pine",
+      };
+    }
+    case "darkYellow": {
+      return {
+        backgroundColor: "banana",
       };
     }
     default:

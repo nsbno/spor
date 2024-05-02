@@ -1,7 +1,16 @@
-import React from "react";
-import { useStyleConfig, Radio as ChakraRadio } from "@chakra-ui/react";
+import React, { forwardRef } from "react";
+import {
+  useStyleConfig,
+  Radio as ChakraRadio,
+  RadioProps as ChakraRadioProps,
+} from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { useRadio } from "@chakra-ui/react";
+
+export type RadioProps = Exclude<
+  ChakraRadioProps,
+  "colorScheme" | "size" | "variant"
+>;
 
 /**
  * Renders a radio card.
@@ -45,3 +54,12 @@ export const RadioCard = (props: any) => {
     </Box>
   );
 };
+
+export const RadioTestCard = forwardRef<RadioProps>((props, ref) => {
+  const { getInputProps, getRadioProps } = useRadio(props);
+
+  const input = getInputProps();
+  const radio = getRadioProps();
+  const styles = useStyleConfig("RadioCard");
+  return <Box __css={styles} {...radio} {...input} {...props} />;
+});

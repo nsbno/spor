@@ -63,11 +63,13 @@ const getColorSchemeBaseProps = (props: CardThemeProps) => {
     case "darkBlue": {
       return {
         backgroundColor: "darkBlue",
+        color: "white",
       };
     }
     case "darkGreen": {
       return {
         backgroundColor: "pine",
+        color: "white",
       };
     }
     case "darkYellow": {

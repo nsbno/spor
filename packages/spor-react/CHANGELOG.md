@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.6.5
+
+### Patch Changes
+
+- 50935a3: Added dark color variants to static card
+
 ## 9.6.4
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.7.0
+
+### Minor Changes
+
+- 46ee976: Fixing bug where Metro can't find the index.mjs-file.
+
 ## 2.6.0
 
 ### Minor Changes

@@ -19,6 +19,7 @@ export * from "./PasswordInput";
 export * from "./PhoneNumberInput";
 export * from "./Radio";
 export * from "./RadioGroup";
+export * from "./RadioCardGroup";
 export * from "./SearchInput";
 export * from "./Switch";
 export * from "./Textarea";

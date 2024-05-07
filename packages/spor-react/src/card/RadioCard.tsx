@@ -1,16 +1,13 @@
-import React, { forwardRef } from "react";
 import {
-  useStyleConfig,
+  As,
+  Box,
   Radio as ChakraRadio,
   RadioProps as ChakraRadioProps,
+  forwardRef,
+  useRadio,
+  useStyleConfig,
 } from "@chakra-ui/react";
-import { Box } from "@chakra-ui/react";
-import { useRadio } from "@chakra-ui/react";
-
-export type RadioProps = Exclude<
-  ChakraRadioProps,
-  "colorScheme" | "size" | "variant"
->;
+import React from "react";
 
 /**
  * Renders a radio card.
@@ -37,29 +34,47 @@ export type RadioProps = Exclude<
   return <Box __css={styles} {...props} />;
 }; */
 
-export const RadioCard = (props: any) => {
-  const { getInputProps, getRadioProps } = useRadio(props);
-
-  const input = getInputProps();
-  const radio = getRadioProps();
+/* export const RadioCard = (props: any) => {
+  const { state, getInputProps, getRadioProps } = useRadio(props);
 
   const styles = useStyleConfig("RadioCard");
 
   return (
     <Box as="label">
-      <input {...input} />
-      <Box __css={styles} {...radio} {...props}>
+      <input {...getInputProps} />
+      <Box __css={styles} {...getRadioProps} {...props}>
         {props.children}
       </Box>
     </Box>
   );
-};
+}; */
 
-export const RadioTestCard = forwardRef<RadioProps>((props, ref) => {
-  const { getInputProps, getRadioProps } = useRadio(props);
+export const RadioCard = forwardRef<ChakraRadioProps, "input">((props, ref) => {
+  const { getInputProps, getRadioProps, htmlProps } = useRadio(props);
 
-  const input = getInputProps();
-  const radio = getRadioProps();
-  const styles = useStyleConfig("RadioCard");
-  return <Box __css={styles} {...radio} {...input} {...props} />;
+  return (
+    <Box as="label" {...htmlProps}>
+      <input {...getInputProps()} ref={ref} />
+      <Box
+        cursor="pointer"
+        borderWidth="1px"
+        borderRadius="md"
+        boxShadow="md"
+        _checked={{
+          bg: "teal.600",
+          color: "white",
+          borderColor: "teal.600",
+        }}
+        _focus={{
+          boxShadow: "outline",
+        }}
+        p={5}
+        textAlign="center"
+        transition="all 0.3s cubic-bezier(.08,.52,.52,1)"
+        {...getRadioProps()}
+      >
+        {props.children}
+      </Box>
+    </Box>
+  );
 });

@@ -4,16 +4,12 @@ import {
   RadioGroupProps as ChakraRadioGroupProps,
   Stack,
   StackDirection,
+  RadioGroup,
 } from "@chakra-ui/react";
 import React from "react";
-import { useRadioGroup } from "react-aria";
+import { useRadio, useRadioGroup } from "react-aria";
+import { RadioCard } from "../card/RadioCard";
 
-export type RadioGroupProps = Exclude<
-  ChakraRadioGroupProps,
-  "colorScheme" | "size" | "variant"
-> & {
-  direction?: StackDirection;
-};
 /**
  * Radio groups are used to group several radio buttons together.
  *
@@ -37,12 +33,24 @@ export type RadioGroupProps = Exclude<
  * </RadioGroup>
  * ```
  */
-export const RadioCardGroup = forwardRef<RadioGroupProps, "div">(
-  ({ children, direction = "row", ...rest }, ref) => {
-    return (
-      <ChakraRadioGroup {...rest} ref={ref}>
-        <Stack direction={direction}>{children}</Stack>
-      </ChakraRadioGroup>
-    );
-  },
-);
+
+export const RadioCardGroup = () => {
+  const options = ["Option 1", "Option 2", "Option 3"];
+  const [value, setValue] = React.useState("Option 1");
+
+  const handleValueChange = (nextValue: string) => {
+    setValue(nextValue);
+  };
+
+  return (
+    <RadioGroup onChange={handleValueChange} value={value}>
+      <Stack direction="row">
+        {options.map((option) => (
+          <RadioCard key={option} value={option}>
+            {option}
+          </RadioCard>
+        ))}
+      </Stack>
+    </RadioGroup>
+  );
+};

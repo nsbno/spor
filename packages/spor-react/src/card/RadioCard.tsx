@@ -3,11 +3,14 @@ import {
   Box,
   Radio as ChakraRadio,
   RadioProps as ChakraRadioProps,
+  UseRadioProps,
+  chakra,
   forwardRef,
   useRadio,
   useStyleConfig,
 } from "@chakra-ui/react";
-import React from "react";
+import { dataAttr } from "@chakra-ui/utils";
+import React, { useId } from "react";
 
 /**
  * Renders a radio card.
@@ -29,52 +32,52 @@ import React from "react";
  * ```
  */
 
-/* export const RadioCard = ({ colorScheme, ...props }: RadioProps) => {
-  const styles = useStyleConfig("RadioCard", { colorScheme });
-  return <Box __css={styles} {...props} />;
-}; */
+type RadioCardProps = UseRadioProps & {
+  children: React.ReactNode;
+};
 
-/* export const RadioCard = (props: any) => {
-  const { state, getInputProps, getRadioProps } = useRadio(props);
+export const RadioCard = forwardRef<RadioCardProps, "div">(
+  ({ children, ...rest }, ref) => {
+    const { getInputProps, getRadioProps, getRootProps, state } =
+      useRadio(rest);
 
-  const styles = useStyleConfig("RadioCard");
+    const input = getInputProps({}, ref);
+    const radio = getRadioProps();
 
-  return (
-    <Box as="label">
-      <input {...getInputProps} />
-      <Box __css={styles} {...getRadioProps} {...props}>
-        {props.children}
-      </Box>
-    </Box>
-  );
-}; */
+    const id = `radio-card-${useId()}`;
 
-export const RadioCard = forwardRef<ChakraRadioProps, "input">((props, ref) => {
-  const { getInputProps, getRadioProps, htmlProps } = useRadio(props);
-
-  return (
-    <Box as="label" {...htmlProps}>
-      <input {...getInputProps()} ref={ref} />
-      <Box
-        cursor="pointer"
-        borderWidth="1px"
-        borderRadius="md"
-        boxShadow="md"
-        _checked={{
-          bg: "teal.600",
-          color: "white",
-          borderColor: "teal.600",
-        }}
-        _focus={{
-          boxShadow: "outline",
-        }}
-        p={5}
-        textAlign="center"
-        transition="all 0.3s cubic-bezier(.08,.52,.52,1)"
-        {...getRadioProps()}
+    return (
+      <chakra.label
+        htmlFor={id}
+        {...getRootProps()}
+        aria-label={String(children)}
       >
-        {props.children}
-      </Box>
-    </Box>
-  );
-});
+        <chakra.input {...input} id={id} disabled={state.isDisabled} />
+        <chakra.div
+          {...radio}
+          data-checked={dataAttr(state.isChecked)}
+          data-hover={dataAttr(state.isHovered)}
+          data-focus={dataAttr(state.isFocused)}
+          data-active={dataAttr(state.isActive)}
+          data-disabled={dataAttr(state.isDisabled)}
+          cursor="pointer"
+          borderWidth="1px"
+          borderRadius="md"
+          boxShadow="md"
+          _checked={{
+            bg: "teal.600",
+            color: "white",
+            borderColor: "teal.600",
+          }}
+          _focus={{
+            boxShadow: "outline",
+          }}
+          px={5}
+          py={3}
+        >
+          {children}
+        </chakra.div>
+      </chakra.label>
+    );
+  },
+);

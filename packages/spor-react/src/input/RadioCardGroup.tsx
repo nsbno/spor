@@ -1,56 +1,39 @@
 import {
-  forwardRef,
-  RadioGroup as ChakraRadioGroup,
-  RadioGroupProps as ChakraRadioGroupProps,
-  Stack,
-  StackDirection,
-  RadioGroup,
+  HStack,
+  useRadioGroup,
+  RadioGroupProps,
+  RadioProps,
 } from "@chakra-ui/react";
-import React from "react";
-import { useRadio, useRadioGroup } from "react-aria";
-import { RadioCard } from "../card/RadioCard";
+import React, { Children } from "react";
 
-/**
- * Radio groups are used to group several radio buttons together.
- *
- * You can pass the common `name` prop to the `RadioGroup`, instead of to each `Radio` component.
- *
- * ```tsx
- * <RadioGroup name="ticket">
- *   <Radio>Economy</Radio>
- *   <Radio>Business</Radio>
- *   <Radio>First Class</Radio>
- * </RadioGroup>
- * ```
- *
- * By default, radio buttons show up horizontally. If you want them to show up vertically, please specify the `direction="column"` prop.
- *
- * ```tsx
- * <RadioGroup name="ticket" direction="column">
- *   <Radio>Economy</Radio>
- *   <Radio>Business</Radio>
- *   <Radio>First Class</Radio>
- * </RadioGroup>
- * ```
- */
+type RadioCardGroupProps = RadioGroupProps & {
+  children: React.ReactNode;
+  props?: RadioGroupProps;
+};
 
-export const RadioCardGroup = () => {
-  const options = ["Option 1", "Option 2", "Option 3"];
-  const [value, setValue] = React.useState("Option 1");
+export const RadioCardGroup = ({
+  children,
+  name,
+  onChange,
+  defaultValue,
+  ...props
+}: RadioCardGroupProps) => {
+  const { getRootProps, getRadioProps } = useRadioGroup({
+    defaultValue: defaultValue,
+    name: name,
+    onChange: onChange,
+    ...props,
+  });
 
-  const handleValueChange = (nextValue: string) => {
-    setValue(nextValue);
-  };
+  const group = getRootProps();
 
   return (
-    <RadioGroup onChange={handleValueChange} value={value}>
-      <Stack direction="row">
-        {options.map((option) => (
-          <RadioCard key={option} value={option}>
-            {option}
-          </RadioCard>
-        ))}
-      </Stack>
-    </RadioGroup>
+    <HStack {...group}>
+      {Children.map(children, (child: any) => {
+        /* This any value needs to be looked at ^ */
+        const radio = getRadioProps({ value: child.props.value });
+        return React.cloneElement(child as React.ReactElement, radio);
+      })}
+    </HStack>
   );
 };

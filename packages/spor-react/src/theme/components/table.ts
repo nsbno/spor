@@ -22,12 +22,10 @@ const config = helpers.defineMultiStyleConfig({
     th: {
       fontWeight: "bold",
       textAlign: "start",
-      verticalAlign: "top",
       minWidth: "68px",
     },
     td: {
       textAlign: "start",
-      verticalAlign: "top",
     },
     tfoot: {
       tr: {

@@ -1,9 +1,4 @@
-import {
-  HStack,
-  useRadioGroup,
-  RadioGroupProps,
-  RadioProps,
-} from "@chakra-ui/react";
+import { HStack, useRadioGroup, RadioGroupProps } from "@chakra-ui/react";
 import React, { Children } from "react";
 
 type RadioCardGroupProps = RadioGroupProps & {
@@ -29,11 +24,13 @@ export const RadioCardGroup = ({
 
   return (
     <HStack {...group}>
-      {Children.map(children, (child: any) => {
-        /* This any value needs to be looked at ^ */
-        const radio = getRadioProps({ value: child.props.value });
-        return React.cloneElement(child as React.ReactElement, radio);
-      })}
+      {Children.map(
+        children as React.ReactElement[],
+        (child: React.ReactElement) => {
+          const radio = getRadioProps({ value: child.props.value });
+          return React.cloneElement(child, radio);
+        },
+      )}
     </HStack>
   );
 };

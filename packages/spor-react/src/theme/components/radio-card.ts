@@ -13,7 +13,6 @@ const config = defineStyleConfig({
     overflow: "hidden",
     fontSize: "inherit",
     display: "block",
-    color: "red",
     borderRadius: "md",
     ...getColorSchemeBaseProps(props),
     ...getColorSchemeClickableProps(props),
@@ -21,8 +20,7 @@ const config = defineStyleConfig({
     ...getColorSchemeActiveProps(props),
     _hover: getColorSchemeHoverProps(props),
     _checked: {
-      color: "blue",
-      backgroundColor: "Green",
+      backgroundColor: "#E5F4F1",
       _disabled: {
         pointerEvents: "none",
         ...baseBackground("disabled", props),
@@ -36,6 +34,7 @@ const config = defineStyleConfig({
       ...baseBackground("default", props),
       _hover: {
         ...baseBackground("hover", props),
+        ...baseBorder("hover", props),
       },
       _active: {
         ...baseBackground("active", props),
@@ -49,6 +48,7 @@ const config = defineStyleConfig({
       ...floatingBackground("default", props),
       _hover: {
         ...floatingBackground("hover", props),
+        ...floatingBorder("hover", props),
       },
       _active: {
         ...floatingBackground("active", props),
@@ -88,7 +88,7 @@ const config = defineStyleConfig({
 export default config;
 
 type CardThemeProps = {
-  colorScheme: "accent" | "default";
+  colorScheme: "default" | "accent";
   theme: any;
   colorMode: "light" | "dark";
 };
@@ -109,6 +109,7 @@ const getColorSchemeBaseProps = (props: CardThemeProps) => {
         _active: {
           ...accentBackground("active", props),
         },
+        _focus: {},
       };
   }
 };

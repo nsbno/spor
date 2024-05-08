@@ -1,9 +1,17 @@
-import { UseRadioProps, chakra, forwardRef, useRadio } from "@chakra-ui/react";
+import {
+  UseRadioProps,
+  chakra,
+  forwardRef,
+  useRadio,
+  useStyleConfig,
+} from "@chakra-ui/react";
 import { dataAttr } from "@chakra-ui/utils";
 import React, { useId } from "react";
 
 type RadioCardProps = UseRadioProps & {
   children: React.ReactNode;
+  variant: "floating" | "base";
+  size?: "sm" | "lg";
 };
 
 /**
@@ -27,9 +35,11 @@ type RadioCardProps = UseRadioProps & {
  */
 
 export const RadioCard = forwardRef<RadioCardProps, "div">(
-  ({ children, ...rest }, ref) => {
+  ({ children, size = "sm", variant = "base", ...rest }, ref) => {
     const { getInputProps, getRadioProps, getRootProps, state } =
       useRadio(rest);
+
+    const styles = useStyleConfig("RadioCard", { variant, size });
 
     const input = getInputProps({}, ref);
     const radio = getRadioProps();
@@ -44,26 +54,13 @@ export const RadioCard = forwardRef<RadioCardProps, "div">(
       >
         <chakra.input {...input} id={id} disabled={state.isDisabled} />
         <chakra.div
+          __css={styles}
           {...radio}
           data-checked={dataAttr(state.isChecked)}
           data-hover={dataAttr(state.isHovered)}
           data-focus={dataAttr(state.isFocused)}
           data-active={dataAttr(state.isActive)}
           data-disabled={dataAttr(state.isDisabled)}
-          cursor="pointer"
-          borderWidth="1px"
-          borderRadius="md"
-          boxShadow="md"
-          _checked={{
-            bg: "teal.600",
-            color: "white",
-            borderColor: "teal.600",
-          }}
-          _focus={{
-            boxShadow: "outline",
-          }}
-          px={5}
-          py={3}
         >
           {children}
         </chakra.div>

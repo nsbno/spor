@@ -1,4 +1,3 @@
-import { radioAnatomy as parts } from "@chakra-ui/anatomy";
 import { defineStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
@@ -17,7 +16,7 @@ const config = defineStyleConfig({
     ...focusVisibleStyles(props),
     _hover: getColorSchemeHoverProps(props),
     _checked: {
-      backgroundColor: "#E5F4F1",
+      backgroundColor: "mint",
       _disabled: {
         pointerEvents: "none",
         ...baseBackground("disabled", props),

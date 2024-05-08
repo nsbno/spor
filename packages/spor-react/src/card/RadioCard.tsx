@@ -2,6 +2,10 @@ import { UseRadioProps, chakra, forwardRef, useRadio } from "@chakra-ui/react";
 import { dataAttr } from "@chakra-ui/utils";
 import React, { useId } from "react";
 
+type RadioCardProps = UseRadioProps & {
+  children: React.ReactNode;
+};
+
 /**
  * Renders a radio card.
  *
@@ -21,10 +25,6 @@ import React, { useId } from "react";
  * </RadioCard>
  * ```
  */
-
-type RadioCardProps = UseRadioProps & {
-  children: React.ReactNode;
-};
 
 export const RadioCard = forwardRef<RadioCardProps, "div">(
   ({ children, ...rest }, ref) => {

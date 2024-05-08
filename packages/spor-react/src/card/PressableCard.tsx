@@ -26,7 +26,7 @@ type PressableCardProps = Omit<BoxProps, "as"> & {
  *   This is now a <a /> element
  * </PressableCard>
  * ```
- * 
+ *
  * For a static card with other color schemes, use the `StaticCard` component.
  * @see StaticCard
  */

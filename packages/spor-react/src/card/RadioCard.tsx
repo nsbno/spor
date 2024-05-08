@@ -25,12 +25,14 @@ type RadioCardProps = UseRadioProps & {
  * </RadioCard>
  * ```
  *
- * Radio cards can also be rendered as whatever DOM element you want – like a li (list item) or an article. You do this by specifying the `as` prop:
+ * In order to use RadioCard, you typically want to place these components in a group with several other RadioCards.
  *
  * ```tsx
- * <RadioCard colorScheme="green" as="section">
- *   This is now a <section /> element
- * </RadioCard>
+ * <RadioCardGroup name="ticket">
+ *   <RadioCard value="economy">Economy</RadioCard>
+ *   <RadioCard value="business">Business</RadioCard>
+ *   <RadioCard value="first-class">First Class</RadioCard>
+ * </RadioCardGroup>
  * ```
  */
 

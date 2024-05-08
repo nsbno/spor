@@ -1,14 +1,4 @@
-import {
-  As,
-  Box,
-  Radio as ChakraRadio,
-  RadioProps as ChakraRadioProps,
-  UseRadioProps,
-  chakra,
-  forwardRef,
-  useRadio,
-  useStyleConfig,
-} from "@chakra-ui/react";
+import { UseRadioProps, chakra, forwardRef, useRadio } from "@chakra-ui/react";
 import { dataAttr } from "@chakra-ui/utils";
 import React, { useId } from "react";
 

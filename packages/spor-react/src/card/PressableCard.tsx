@@ -18,24 +18,19 @@ type PressableCardProps = Omit<BoxProps, "as"> & {
  * </PressableCard>
  * ```
  *
- * There are lots of color schemes available. You can also set the size as either `sm` or `lg`. The default is `sm`.
- *
- * ```tsx
- * <PressableCard colorScheme="orange" size="lg">
- *   A smaller card
- * </PressableCard>
- * ```
- *
  * Pressable cards can also be rendered as button, link or label – like a li (list item) or an article.
  * You do this by specifying the `as` prop. If no `as` is specified, button is chosen as default:
  *
- *
  * ```tsx
- * <PressableCard colorScheme="green" as="section">
- *   This is now a <section /> element
+ * <PressableCard as="a">
+ *   This is now a <a /> element
  * </PressableCard>
  * ```
+ * 
+ * For a static card with other color schemes, use the `StaticCard` component.
+ * @see StaticCard
  */
+
 export const PressableCard = ({
   children,
   as = "button",

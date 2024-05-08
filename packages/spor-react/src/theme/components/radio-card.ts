@@ -14,10 +14,7 @@ const config = defineStyleConfig({
     fontSize: "inherit",
     display: "block",
     borderRadius: "md",
-    ...getColorSchemeBaseProps(props),
-    ...getColorSchemeClickableProps(props),
     ...focusVisibleStyles(props),
-    ...getColorSchemeActiveProps(props),
     _hover: getColorSchemeHoverProps(props),
     _checked: {
       backgroundColor: "#E5F4F1",
@@ -93,47 +90,6 @@ type CardThemeProps = {
   colorMode: "light" | "dark";
 };
 
-const getColorSchemeBaseProps = (props: CardThemeProps) => {
-  switch (props.colorScheme) {
-    case "default":
-      return {
-        backgroundColor: "blue",
-      };
-    case "accent":
-      return {
-        ...accentBackground("default", props),
-        ...accentText("default", props),
-        _hover: {
-          ...accentBackground("hover", props),
-        },
-        _active: {
-          ...accentBackground("active", props),
-        },
-        _focus: {},
-      };
-  }
-};
-
-function getColorSchemeClickableProps(props: CardThemeProps) {
-  switch (props.colorScheme) {
-    case "default":
-      return {
-        ...floatingBorder("default", props),
-      };
-    case "accent":
-      return {
-        ...accentBackground("default", props),
-        ...accentText("default", props),
-        _hover: {
-          ...accentBackground("hover", props),
-        },
-        _active: {
-          ...accentBackground("active", props),
-        },
-      };
-  }
-}
-
 const getColorSchemeHoverProps = (props: CardThemeProps) => {
   switch (props.colorScheme) {
     case "default":
@@ -143,28 +99,6 @@ const getColorSchemeHoverProps = (props: CardThemeProps) => {
           `color-mix(in srgb, white 20%, var(--spor-colors-bg-default-dark))`,
         )(props),
         ...floatingBorder("hover", props),
-      };
-    case "accent":
-      return {
-        ...accentBackground("default", props),
-        ...accentText("default", props),
-        _hover: {
-          ...accentBackground("hover", props),
-        },
-        _active: {
-          ...accentBackground("active", props),
-        },
-      };
-  }
-};
-
-const getColorSchemeActiveProps = (props: CardThemeProps) => {
-  const { colorScheme } = props;
-  switch (colorScheme) {
-    case "default":
-      return {
-        backgroundColor: mode("bg.tertiary.light", `bg.default.dark`)(props),
-        ...floatingBorder("active", props),
       };
     case "accent":
       return {

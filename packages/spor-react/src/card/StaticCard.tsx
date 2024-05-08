@@ -39,15 +39,15 @@ export type StaticCardProps = BoxProps & {
  *   This is now a <section /> element
  * </StaticCard>
  * ```
- * 
+ *
  * There are lots of color schemes available. The default is `white`.
- * 
+ *
  * ```tsx
  * <StaticCard colorScheme="orange">
  *  An orange card
  * </StaticCard>
  * ```
- * 
+ *
  * For click functionality, use the `PressableCard` component.
  * @see PressableCard
  */

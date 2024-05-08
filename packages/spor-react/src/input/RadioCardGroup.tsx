@@ -1,14 +1,22 @@
-import { HStack, useRadioGroup, RadioGroupProps } from "@chakra-ui/react";
+import {
+  HStack,
+  useRadioGroup,
+  RadioGroupProps,
+  StackDirection,
+  Stack,
+} from "@chakra-ui/react";
 import React, { Children } from "react";
 
 type RadioCardGroupProps = RadioGroupProps & {
   children: React.ReactNode;
   props?: RadioGroupProps;
+  direction?: StackDirection;
 };
 
 export const RadioCardGroup = ({
   children,
   name,
+  direction = "row",
   onChange,
   defaultValue,
   ...props
@@ -23,7 +31,7 @@ export const RadioCardGroup = ({
   const group = getRootProps();
 
   return (
-    <HStack {...group}>
+    <Stack direction={direction} {...group}>
       {Children.map(
         children as React.ReactElement[],
         (child: React.ReactElement) => {
@@ -31,6 +39,6 @@ export const RadioCardGroup = ({
           return React.cloneElement(child, radio);
         },
       )}
-    </HStack>
+    </Stack>
   );
 };

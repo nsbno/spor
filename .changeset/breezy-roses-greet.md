@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": minor
 ---
 
-Added radio card
+Added radio card and radio card group

@@ -25,7 +25,7 @@ type RadioCardGroupProps = RadioGroupProps & {
  * </RadioCardGroup>
  * ```
  *
- * By default, radio buttons show up horizontally. If you want them to show up vertically, please specify the `direction="column"` prop.
+ * By default, radio cards show up horizontally. If you want them to show up vertically, please specify the `direction="column"` prop.
  *
  * ```tsx
  * <RadioCardGroup name="ticket" direction="column">

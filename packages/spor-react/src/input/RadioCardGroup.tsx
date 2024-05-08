@@ -12,6 +12,30 @@ type RadioCardGroupProps = RadioGroupProps & {
   direction?: StackDirection;
 };
 
+/**
+ * Radio card groups are used to group several radio cards together.
+ *
+ * You can pass the common `name` prop to the `RadioGroup`, instead of to each `Radio` component.
+ *
+ * ```tsx
+ * <RadioCardGroup name="ticket">
+ *   <RadioCard>Economy</RadioCard>
+ *   <RadioCard>Business</RadioCard>
+ *   <RadioCard>First Class</RadioCard>
+ * </RadioCardGroup>
+ * ```
+ *
+ * By default, radio buttons show up horizontally. If you want them to show up vertically, please specify the `direction="column"` prop.
+ *
+ * ```tsx
+ * <RadioCardGroup name="ticket" direction="column">
+ *   <RadioCard>Economy</RadioCard>
+ *   <RadioCard>Business</RadioCard>
+ *   <RadioCard>First Class</RadioCard>
+ * </RadioCardGroup>
+ * ```
+ */
+
 export const RadioCardGroup = ({
   children,
   name,

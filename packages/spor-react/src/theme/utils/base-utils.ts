@@ -22,6 +22,7 @@ export function baseBackground(
       };
     case "selected":
       return brandBackground("default", props);
+
     case "disabled":
       return surface("disabled", props);
     case "hover":
@@ -32,7 +33,7 @@ export function baseBackground(
 
 type BorderState = Subset<
   State,
-  "hover" | "focus" | "disabled" | "selected" | "invalid" | "default"
+  "hover" | "focus" | "active" | "disabled" | "selected" | "invalid" | "default"
 >;
 
 export function baseBorder(state: BorderState, props: StyleFunctionProps) {
@@ -55,6 +56,12 @@ export function baseBorder(state: BorderState, props: StyleFunctionProps) {
           "outline.disabled.light",
           "outline.disabled.dark",
         )(props),
+      };
+    }
+    case "active": {
+      return {
+        outline: "2px solid",
+        outlineColor: mode("base.outline.light", "base.outline.dark")(props),
       };
     }
     case "invalid": {

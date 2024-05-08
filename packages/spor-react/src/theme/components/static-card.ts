@@ -11,7 +11,6 @@ const config = defineStyleConfig({
     fontSize: "inherit",
     display: "block",
     borderRadius: "md",
-    // Except for white cards, all cards are light mode always
     color: "text.default.light",
     ...getColorSchemeBaseProps(props),
   }),
@@ -39,12 +38,8 @@ const getColorSchemeBaseProps = (props: CardThemeProps) => {
   switch (props.colorScheme) {
     case "white":
       return {
-        ...baseBorder("default", props),
-        backgroundColor: mode(
-          "white",
-          `color-mix(in srgb, white 10%, var(--spor-colors-bg-default-dark))`,
-        )(props),
-        color: "inherit",
+        backgroundColor: "white",
+        color: "darkGrey",
       };
     case "grey":
       return {
@@ -80,7 +75,6 @@ const getColorSchemeBaseProps = (props: CardThemeProps) => {
     default:
       return {
         backgroundColor: colors[props.colorScheme]?.[100] ?? "default",
-        ...baseText("default", props),
       };
   }
 };

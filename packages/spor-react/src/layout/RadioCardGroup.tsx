@@ -34,9 +34,9 @@ type RadioCardGroupProps = RadioGroupProps & {
  *   <RadioCard>First Class</RadioCard>
  * </RadioCardGroup>
  * ```
- * 
+ *
  * You can also specify the `defaultValue` prop to set the default value of the radio group.
- * 
+ *
  * ```tsx
  * <RadioCardGroup name="ticket" defaultValue="Economy">
  *    <RadioCard>Economy</RadioCard>
@@ -44,7 +44,7 @@ type RadioCardGroupProps = RadioGroupProps & {
  *    <RadioCard>First Class</RadioCard>
  * </RadioCardGroup>
  * ```
- * 
+ *
  * Check out RadioCard for more information on how to style the radio cards.
  * @see RadioCard
  */

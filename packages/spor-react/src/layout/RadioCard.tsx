@@ -35,12 +35,12 @@ type RadioCardProps = UseRadioProps &
  *   <RadioCard value="first-class">First Class</RadioCard>
  * </RadioCardGroup>
  * ```
- * 
+ *
  * You can add styling to each card seperately, or you can add a common style to the group.
  * Group styling overrides single styling if both are present.
- * 
+ *
  * This example shows how to style all cards in a group:
- * 
+ *
  * ```tsx
  * <RadioCardGroup name="ticket" variant="floating" padding={3}>
  *  <RadioCard value="economy">Economy</RadioCard>
@@ -48,9 +48,9 @@ type RadioCardProps = UseRadioProps &
  *  <RadioCard value="first-class">First Class</RadioCard>
  * </RadioCardGroup>
  * ```
- * 
+ *
  * This example shows how to style a single card:
- * 
+ *
  * ```tsx
  * <RadioCard variant="floating" padding={3}>
  *  Economy

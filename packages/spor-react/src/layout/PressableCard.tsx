@@ -8,9 +8,16 @@ type PressableCardProps = Omit<BoxProps, "as"> & {
 };
 
 /**
- * Renders a Pressable card.
+ * `PressableCard` is a component that renders a pressable card.
  *
- * The most basic version looks like this:
+ * The `PressableCard` component can be used to create a card that responds to user interactions.
+ * It can be rendered as a button, link, label, or any other HTML element by specifying the `as` prop.
+ * If no `as` prop is provided, it defaults to a button.
+ *
+ * The `size` prop can be used to control the size of the card. It defaults to "sm".
+ * The `variant` prop can be used to control the style variant of the card. It defaults to "base".
+ *
+ * Example usage:
  *
  * ```tsx
  * <PressableCard>
@@ -18,8 +25,7 @@ type PressableCardProps = Omit<BoxProps, "as"> & {
  * </PressableCard>
  * ```
  *
- * Pressable cards can also be rendered as button, link or label – like a li (list item) or an article.
- * You do this by specifying the `as` prop. If no `as` is specified, button is chosen as default:
+ * To render the card as a different HTML element, specify the `as` prop:
  *
  * ```tsx
  * <PressableCard as="a">
@@ -28,6 +34,7 @@ type PressableCardProps = Omit<BoxProps, "as"> & {
  * ```
  *
  * For a static card with other color schemes, use the `StaticCard` component.
+ *
  * @see StaticCard
  */
 

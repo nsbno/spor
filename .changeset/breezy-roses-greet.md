@@ -2,4 +2,5 @@
 "@vygruppen/spor-react": minor
 ---
 
-Added radio card and radio card group
+New component: RadioCard & RadioCardGroup
+- Should be used togehter for optimal functionality

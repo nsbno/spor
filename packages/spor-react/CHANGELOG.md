@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 9.7.0
+
+### Minor Changes
+
+- a3d2ca4: New component: RadioCard & RadioCardGroup
+
+  - Should be used togehter for optimal functionality
+
+### Patch Changes
+
+- eade049: Remove vertical align from table. Can be added manually if other value is needed.
+
 ## 9.6.5
 
 ### Patch Changes

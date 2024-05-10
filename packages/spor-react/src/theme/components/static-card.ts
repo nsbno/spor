@@ -28,8 +28,6 @@ type CardThemeProps = {
     | "darkBlue"
     | "darkGreen"
     | "darkYellow";
-  theme: any;
-  colorMode: "light" | "dark";
 };
 
 const getColorSchemeBaseProps = (props: CardThemeProps) => {

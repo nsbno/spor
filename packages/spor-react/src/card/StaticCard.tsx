@@ -13,12 +13,14 @@ export type StaticCardProps = BoxProps & {
   colorScheme:
     | "white"
     | "grey"
-    | "blue"
     | "green"
-    | "teal"
-    | "yellow"
     | "orange"
-    | "red";
+    | "red"
+    | "yellow"
+    | "blue"
+    | "darkBlue"
+    | "darkGreen"
+    | "darkYellow";
 };
 
 /**

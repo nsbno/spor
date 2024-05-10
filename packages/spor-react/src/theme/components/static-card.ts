@@ -1,5 +1,6 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { colors } from "../foundations";
+import { focusVisibleStyles } from "../utils/focus-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({
@@ -10,6 +11,7 @@ const config = defineStyleConfig({
     display: "block",
     borderRadius: "md",
     color: "text.default.light",
+    ...focusVisibleStyles(props),
     ...getColorSchemeBaseProps(props),
   }),
 });

@@ -25,6 +25,7 @@ export default function PlaygroundPage() {
     setPlaygroundData(newCode);
     localStorage.setItem("playgroundData", newCode);
   };
+
   return (
     <LiveProvider code={playgroundData}>
       <Stack spacing={2} id="content">

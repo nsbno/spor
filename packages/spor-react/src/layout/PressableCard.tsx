@@ -2,8 +2,11 @@ import React from "react";
 import { Box, BoxProps, useStyleConfig } from "@chakra-ui/react";
 
 type PressableCardProps = Omit<BoxProps, "as"> & {
+  /** Use "floating" | "accent" | "base". Defaults to base  */
   variant: "floating" | "accent" | "base";
+  /** Use "sm" | "lg". Defaults to sm  */
   size?: "sm" | "lg";
+  /** Use "button" | "a" | "label". Defaults to button  */
   as: "button" | "a" | "label";
 };
 

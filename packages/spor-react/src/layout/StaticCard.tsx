@@ -10,6 +10,7 @@ import {
 
 export type StaticCardProps = BoxProps & {
   children: React.ReactNode;
+  /** Defaults to "white" */
   colorScheme:
     | "white"
     | "grey"
@@ -24,9 +25,14 @@ export type StaticCardProps = BoxProps & {
 };
 
 /**
- * Renders a static card.
+ * `StaticCard` is a component that renders a static card.
  *
- * The most basic version looks like this:
+ * The `StaticCard` component can be used to create a card that does not respond to user interactions.
+ * It can be rendered as any HTML element by specifying the `as` prop.
+ *
+ * The `colorScheme` prop can be used to control the color scheme of the card. It defaults to "white".
+ *
+ * Example usage:
  *
  * ```tsx
  * <StaticCard>
@@ -34,23 +40,24 @@ export type StaticCardProps = BoxProps & {
  * </StaticCard>
  * ```
  *
- * Static cards can also be rendered as whatever DOM element you want – like a li (list item) or an article. You do this by specifying the `as` prop:
+ * To render the card as a different HTML element, specify the `as` prop:
  *
  * ```tsx
- * <StaticCard colorScheme="green" as="section">
+ * <StaticCard as="section">
  *   This is now a <section /> element
  * </StaticCard>
  * ```
  *
- * There are lots of color schemes available. The default is `white`.
+ * To change the color scheme of the card, specify the `colorScheme` prop:
  *
  * ```tsx
  * <StaticCard colorScheme="orange">
- *  An orange card
+ *   An orange card
  * </StaticCard>
  * ```
  *
- * For click functionality, use the `PressableCard` component.
+ * For a card with click functionality, use the `PressableCard` component.
+ *
  * @see PressableCard
  */
 

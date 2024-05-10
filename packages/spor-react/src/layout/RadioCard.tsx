@@ -1,4 +1,5 @@
 import {
+  BoxProps,
   UseRadioProps,
   chakra,
   forwardRef,
@@ -8,11 +9,11 @@ import {
 import { dataAttr } from "@chakra-ui/utils";
 import React, { useId } from "react";
 
-type RadioCardProps = UseRadioProps & {
-  children: React.ReactNode;
-  variant: "floating" | "base";
-  size?: "sm" | "lg";
-};
+type RadioCardProps = UseRadioProps &
+  BoxProps & {
+    children: React.ReactNode;
+    variant: "floating" | "base";
+  };
 
 /**
  * Renders a radio card.
@@ -37,11 +38,11 @@ type RadioCardProps = UseRadioProps & {
  */
 
 export const RadioCard = forwardRef<RadioCardProps, "div">(
-  ({ children, size = "sm", variant = "base", ...rest }, ref) => {
+  ({ children, variant = "base", ...props }, ref) => {
     const { getInputProps, getRadioProps, getRootProps, state } =
-      useRadio(rest);
+      useRadio(props);
 
-    const styles = useStyleConfig("RadioCard", { variant, size });
+    const styles = useStyleConfig("RadioCard", { variant });
 
     const input = getInputProps({}, ref);
     const radio = getRadioProps();
@@ -63,6 +64,7 @@ export const RadioCard = forwardRef<RadioCardProps, "div">(
           data-focus={dataAttr(state.isFocused)}
           data-active={dataAttr(state.isActive)}
           data-disabled={dataAttr(state.isDisabled)}
+          {...props}
         >
           {children}
         </chakra.div>

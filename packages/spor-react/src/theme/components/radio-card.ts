@@ -1,9 +1,7 @@
 import { defineStyleConfig } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { accentBackground, accentText } from "../utils/accent-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({
@@ -12,22 +10,27 @@ const config = defineStyleConfig({
     overflow: "hidden",
     fontSize: "inherit",
     display: "block",
-    borderRadius: "md",
+    borderRadius: "sm",
     ...focusVisibleStyles(props),
-    _hover: getColorSchemeHoverProps(props),
     _checked: {
-      backgroundColor: "mint",
-      _disabled: {
-        pointerEvents: "none",
-        ...baseBackground("disabled", props),
-        ...baseBorder("disabled", props),
-        ...baseText("disabled", props),
+      outline: "1px solid",
+      outlineColor: "greenHaze",
+      ...floatingBackground("active", props),
+      _hover: {
+        ...floatingBackground("active", props),
       },
+    },
+    _disabled: {
+      pointerEvents: "none",
+      ...baseBackground("disabled", props),
+      ...baseBorder("disabled", props),
+      ...baseText("disabled", props),
     },
   }),
   variants: {
     base: (props) => ({
       ...baseBackground("default", props),
+      ...baseBorder("default", props),
       _hover: {
         ...baseBackground("hover", props),
         ...baseBorder("hover", props),
@@ -35,80 +38,27 @@ const config = defineStyleConfig({
       _active: {
         ...baseBackground("active", props),
       },
-      _selected: {
-        ...baseBackground("selected", props),
-        ...baseBorder("selected", props),
-      },
     }),
     floating: (props) => ({
       ...floatingBackground("default", props),
+      boxShadow: "sm",
       _hover: {
         ...floatingBackground("hover", props),
         ...floatingBorder("hover", props),
+        boxShadow: "md",
       },
       _active: {
         ...floatingBackground("active", props),
+        ...floatingBorder("active", props),
       },
-      _selected: {
-        ...floatingBackground("selected", props),
-        ...baseBorder("selected", props),
+      _checked: {
+        _hover: {
+          outline: "1px solid",
+          outlineColor: "silver",
+        },
       },
     }),
-  },
-  sizes: {
-    sm: {
-      boxShadow: "sm",
-
-      _hover: {
-        boxShadow: "md",
-      },
-
-      _active: {
-        boxShadow: "none",
-      },
-    },
-    lg: {
-      boxShadow: "md",
-
-      _hover: {
-        boxShadow: "lg",
-      },
-
-      _active: {
-        boxShadow: "sm",
-      },
-    },
   },
 });
 
 export default config;
-
-type CardThemeProps = {
-  colorScheme: "default" | "accent";
-  theme: any;
-  colorMode: "light" | "dark";
-};
-
-const getColorSchemeHoverProps = (props: CardThemeProps) => {
-  switch (props.colorScheme) {
-    case "default":
-      return {
-        backgroundColor: mode(
-          "white",
-          `color-mix(in srgb, white 20%, var(--spor-colors-bg-default-dark))`,
-        )(props),
-        ...floatingBorder("hover", props),
-      };
-    case "accent":
-      return {
-        ...accentBackground("default", props),
-        ...accentText("default", props),
-        _hover: {
-          ...accentBackground("hover", props),
-        },
-        _active: {
-          ...accentBackground("active", props),
-        },
-      };
-  }
-};

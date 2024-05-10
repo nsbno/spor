@@ -38,7 +38,10 @@ export function floatingBackground(
   }
 }
 
-type FloatingBorderState = Subset<State, "default" | "hover" | "active">;
+type FloatingBorderState = Subset<
+  State,
+  "default" | "hover" | "active" | "selected"
+>;
 export function floatingBorder(
   state: FloatingBorderState,
   props: StyleFunctionProps,
@@ -50,6 +53,19 @@ export function floatingBorder(
         outlineColor: mode(
           "floating.outline.hover.light",
           "floating.outline.hover.dark",
+        )(props),
+      };
+    case "selected":
+      return {
+        outline: "1px solid",
+        outlineColor: mode("outline.focus.light", "outline.focus.dark")(props),
+      };
+    case "active":
+      return {
+        outline: "1px solid",
+        outlineColor: mode(
+          "floating.outline.active.light",
+          "floating.outline.active.dark",
         )(props),
       };
     default:

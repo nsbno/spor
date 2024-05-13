@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.8.1
+
+### Patch Changes
+
+- 6852a42: Update docs for PressableCard and RadioCard
+
 ## 9.8.0
 
 ### Minor Changes

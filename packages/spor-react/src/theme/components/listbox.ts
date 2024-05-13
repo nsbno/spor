@@ -45,7 +45,7 @@ const config = helpers.defineMultiStyleConfig({
         ...ghostBackground("selected", props),
       },
       _selected: {
-        ...ghostBackground("selected", props),
+        ...ghostBackground("active", props),
       },
     },
     label: {},

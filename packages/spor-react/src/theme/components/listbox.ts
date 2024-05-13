@@ -2,7 +2,7 @@ import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { baseBorder } from "../utils/base-utils";
-import { ghostBackground } from "../utils/ghost-utils";
+import { ghostBackground, ghostText } from "../utils/ghost-utils";
 import { surface } from "../utils/surface-utils";
 
 const parts = anatomy("ListBox").parts(
@@ -32,7 +32,7 @@ const config = helpers.defineMultiStyleConfig({
       marginY: 1,
       marginX: 1,
       borderRadius: "sm",
-      color: mode("darkGrey", "white")(props),
+      ...ghostText("default", props),
       cursor: "pointer",
       outline: "none",
       _active: {
@@ -51,9 +51,9 @@ const config = helpers.defineMultiStyleConfig({
     label: {},
     description: {
       fontSize: ["mobile.xs", "desktop.xs"],
-      color: mode("dimGrey", "silver")(props),
+      ...ghostText("default", props),
       "[aria-selected='true'] &": {
-        color: mode("lightGrey", "platinum")(props),
+      ...ghostText("selected", props)
       },
     },
   }),

@@ -19,6 +19,7 @@ const config = helpers.defineMultiStyleConfig({
     container: {},
     label: {
       position: "relative",
+      fontSize: ["mobile.xs", "desktop.sm"],
       ...(props.isLabelSrOnly ? srOnly : {}),
     },
     innerButton: {

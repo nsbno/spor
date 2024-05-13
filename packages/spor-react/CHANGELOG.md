@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 9.8.0
+
+### Minor Changes
+
+- 37c8580: Card is deprecated
+
+  - Update styling for PressableCard
+  - Update styling for StaticCard
+  - Make Card deprecated, is replaced by the above components
+
 ## 9.7.0
 
 ### Minor Changes

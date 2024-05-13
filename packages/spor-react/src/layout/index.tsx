@@ -28,3 +28,5 @@ export * from "./Divider";
 export * from "./Stack";
 export * from "./RadioCard";
 export * from "./RadioCardGroup";
+export * from "./StaticCard";
+export * from "./PressableCard";

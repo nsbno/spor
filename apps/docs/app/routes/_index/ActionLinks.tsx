@@ -10,7 +10,7 @@ import {
 import {
   Box,
   BoxProps,
-  Card,
+  PressableCard,
   Container,
   Flex,
   Heading,
@@ -119,17 +119,18 @@ function ActionLinkCard({ to, children }: ActionLinkCardProps) {
     ? { as: "a", href: to }
     : { as: Link, to };
   return (
-    <Card
+    <PressableCard
       {...linkProps}
       colorScheme="white"
       display="flex"
       flexDirection={["row", "column"]}
       gap={[3, 4]}
+      variant="floating"
       padding={4}
       height="100%"
     >
       {children}
-    </Card>
+    </PressableCard>
   );
 }
 

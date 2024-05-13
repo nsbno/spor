@@ -6,7 +6,7 @@ import {
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
-  Card,
+  StaticCard,
   Flex,
   Heading,
   IconButton,
@@ -159,7 +159,7 @@ function IconBox({ icon }: IconBoxProps) {
   const IconComponent = getIconByImportName(icon.importName);
   const colorScheme = useColorModeValue("grey", "white");
   return (
-    <Card
+    <StaticCard
       display="flex"
       colorScheme={colorScheme}
       borderRadius="sm"
@@ -196,7 +196,7 @@ function IconBox({ icon }: IconBoxProps) {
           borderRadius="sm"
         />
       </Flex>
-    </Card>
+    </StaticCard>
   );
 }
 

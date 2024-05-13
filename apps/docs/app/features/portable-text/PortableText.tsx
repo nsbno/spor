@@ -17,13 +17,13 @@ import {
 import {
   Box,
   Button,
-  Card,
   Code,
   Divider,
   Flex,
   Heading,
   Image,
   SimpleGrid,
+  StaticCard,
   Text,
   TextLink,
 } from "@vygruppen/spor-react";
@@ -302,7 +302,7 @@ const components: Partial<PortableTextReactComponents> = {
         marginTop={4}
       >
         {value.examples.map((example: any) => (
-          <Card
+          <StaticCard
             key={example._key}
             colorScheme={
               example.weight === "positive"
@@ -354,7 +354,7 @@ const components: Partial<PortableTextReactComponents> = {
                 />
               </Box>
             )}
-          </Card>
+          </StaticCard>
         ))}
       </SimpleGrid>
     ),

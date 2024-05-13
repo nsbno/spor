@@ -22,11 +22,12 @@ export default function BaseLayout() {
       <Box
         as="main"
         id="content"
-        flex="1"
+        /* flex="1" */
         marginTop={6}
         marginX={[3, null, 6, 10]}
         marginBottom={["60px", null, "120px", "180px"]}
         maxWidth="924px"
+        justifyContent={"center"}
         ref={contentRef}
       >
         <Outlet />

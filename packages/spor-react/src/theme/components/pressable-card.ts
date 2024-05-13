@@ -1,6 +1,6 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
-import { floatingBackground } from "../utils/floating-utils";
+import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { accentBackground } from "../utils/accent-utils";
 
@@ -48,6 +48,7 @@ const config = defineStyleConfig({
       boxShadow: "sm",
       _hover: {
         ...floatingBackground("hover", props),
+        ...floatingBorder("hover", props),
         boxShadow: "md",
       },
       _active: {

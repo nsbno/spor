@@ -9,7 +9,16 @@ import React, { Children } from "react";
 type RadioCardGroupProps = RadioGroupProps & {
   children: React.ReactNode;
   props?: RadioGroupProps;
+  /** Defaults to "row" */
   direction?: StackDirection;
+  /** Defaults to "base" */
+  variant?: string;
+  /** The name of the radio group */
+  name?: string;
+  /** The default value of the radio group */
+  defaultValue?: string;
+  /** The callback function to be called when the radio group value changes */
+  onChange?: (value: string) => void;
 };
 
 /**

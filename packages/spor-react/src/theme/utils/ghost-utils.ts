@@ -29,7 +29,10 @@ export function ghostBackground(
       };
     case "selected": {
       return {
-        backgroundColor: mode("ghost.surface.selected.light", "ghost.surface.selected.dark")(props),
+        backgroundColor: mode(
+          "ghost.surface.selected.light",
+          "ghost.surface.selected.dark",
+        )(props),
       };
     }
     case "default":
@@ -38,9 +41,6 @@ export function ghostBackground(
       };
   }
 }
-
-
-
 
 type GhostTextState = Subset<State, "default" | "selected">;
 
@@ -56,4 +56,3 @@ export function ghostText(state: GhostTextState, props: StyleFunctionProps) {
       };
   }
 }
-

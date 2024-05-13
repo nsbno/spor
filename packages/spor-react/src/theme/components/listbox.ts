@@ -53,7 +53,7 @@ const config = helpers.defineMultiStyleConfig({
       fontSize: ["mobile.xs", "desktop.xs"],
       ...ghostText("default", props),
       "[aria-selected='true'] &": {
-      ...ghostText("selected", props)
+        ...ghostText("selected", props),
       },
     },
   }),

@@ -12,6 +12,7 @@ import React, { useId } from "react";
 type RadioCardProps = UseRadioProps &
   BoxProps & {
     children: React.ReactNode;
+    /** Defaults to "base" */
     variant: "floating" | "base";
   };
 

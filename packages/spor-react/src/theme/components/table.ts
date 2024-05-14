@@ -17,12 +17,10 @@ const config = helpers.defineMultiStyleConfig({
       borderCollapse: "collapse",
       ...baseText("default", props),
       width: "100%",
-      minWidth: "600px",
     },
     th: {
       fontWeight: "bold",
       textAlign: "start",
-      minWidth: "68px",
     },
     td: {
       textAlign: "start",

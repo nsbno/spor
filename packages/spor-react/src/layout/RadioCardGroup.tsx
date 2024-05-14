@@ -5,6 +5,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import React, { Children } from "react";
+import { RadioCard, RadioCardProps } from "./RadioCard";
 
 type RadioCardGroupProps = RadioGroupProps & {
   children: React.ReactNode;
@@ -78,13 +79,38 @@ export const RadioCardGroup = ({
 
   return (
     <Stack direction={direction} {...group}>
-      {Children.map(
-        children as React.ReactElement[],
-        (child: React.ReactElement) => {
+      {recursiveMap(children, (child: React.ReactElement) => {
+        if (child.type === RadioCard) {
           const radio = getRadioProps({ value: child.props.value });
-          return React.cloneElement(child, { ...radio, variant, ...props });
-        },
-      )}
+          const variantValue = variant as "base" | "floating" | undefined;
+          return React.cloneElement(
+            child as React.ReactElement<RadioCardProps>,
+            { ...radio, variant: variantValue, ...props },
+          );
+        }
+        return child;
+      })}
     </Stack>
   );
 };
+
+function recursiveMap(
+  children: React.ReactNode,
+  fn: (child: React.ReactElement) => React.ReactElement,
+): React.ReactNode {
+  return React.Children.map(children, (child) => {
+    // If this child is a React element and has children, recurse
+    if (React.isValidElement(child) && child.props.children) {
+      child = React.cloneElement(child as React.ReactElement<any>, {
+        children: recursiveMap(child.props.children, fn),
+      });
+    }
+
+    // Apply the function to the child (if it's a React element)
+    if (React.isValidElement(child)) {
+      return fn(child);
+    }
+
+    return child;
+  });
+}

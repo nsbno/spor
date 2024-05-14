@@ -12,6 +12,7 @@ const config = defineStyleConfig({
     fontSize: "inherit",
     display: "block",
     borderRadius: "md",
+    cursor: "pointer",
     ...focusVisibleStyles(props),
     _disabled: {
       ...baseBackground("disabled", props),

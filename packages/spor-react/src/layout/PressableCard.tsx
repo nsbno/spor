@@ -1,11 +1,15 @@
 import React from "react";
-import { Box, BoxProps, useStyleConfig } from "@chakra-ui/react";
+import {
+  As,
+  Box,
+  BoxProps,
+  forwardRef,
+  useStyleConfig,
+} from "@chakra-ui/react";
 
-type PressableCardProps = Omit<BoxProps, "as"> & {
+type PressableCardProps = BoxProps & {
   /** Defaults to "base"  */
   variant: "floating" | "accent" | "base";
-  /** Defaults to "button"  */
-  as: "button" | "a" | "label";
 };
 
 /**
@@ -15,7 +19,6 @@ type PressableCardProps = Omit<BoxProps, "as"> & {
  * It can be rendered as a button, link, label, or any other HTML element by specifying the `as` prop.
  * If no `as` prop is provided, it defaults to a button.
  *
- * The `size` prop can be used to control the size of the card. It defaults to "sm".
  * The `variant` prop can be used to control the style variant of the card. It defaults to "base".
  *
  * Example usage:
@@ -39,16 +42,16 @@ type PressableCardProps = Omit<BoxProps, "as"> & {
  * @see StaticCard
  */
 
-export const PressableCard = ({
-  children,
-  as = "button",
-  variant = "base",
-  ...props
-}: PressableCardProps) => {
-  const styles = useStyleConfig("PressableCard", { variant });
-  return (
-    <Box as={as} __css={styles} {...props}>
-      {children}
-    </Box>
-  );
-};
+export const PressableCard = forwardRef<PressableCardProps, As>(
+  ({ children, as = "button", variant = "base", ...props }, ref) => {
+    const styles = useStyleConfig("PressableCard", {
+      variant,
+    });
+
+    return (
+      <Box __css={styles} {...props} ref={ref}>
+        {children}
+      </Box>
+    );
+  },
+);

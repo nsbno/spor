@@ -27,57 +27,55 @@ function TableOfContent(props: TableOfContentProps) {
   const hasHeadings = headings.length > 0;
 
   return (
-    <Box position={"relative"}>
-      <Box
-        as="nav"
-        aria-labelledby="toc-title"
-        width="16rem"
-        flexShrink={0}
-        display={["none", null, null, null, "block"]}
-        visibility={hasHeadings ? "visible" : "hidden"}
-        opacity={hasHeadings ? 1 : 0}
-        transform={hasHeadings ? "translateY(0)" : "translateY(10px)"}
-        transitionDuration="fast"
-        transitionProperty="common"
-        position="sticky"
-        paddingY={10}
-        paddingRight={4}
-        paddingLeft={1}
-        style={{ top: "4rem" }}
-        right="0"
-        fontSize="sm"
-        alignSelf="start"
-        maxHeight="calc(100vh - 8rem)"
-        overflowY="auto"
-        sx={{ overscrollBehavior: "contain" }}
-        {...rest}
-      >
-        <Heading as="h2" id="toc-title" variant="sm" fontWeight="bold">
-          On this page
-        </Heading>
-        <OrderedList spacing={0} marginLeft="0" marginTop="4" styleType="none">
-          {headings.map(({ id, text, level }) => (
-            <ListItem
-              key={id}
+    <Box
+      as="nav"
+      aria-labelledby="toc-title"
+      width="16rem"
+      flexShrink={0}
+      display={["none", null, null, null, "block"]}
+      visibility={hasHeadings ? "visible" : "hidden"}
+      opacity={hasHeadings ? 1 : 0}
+      transform={hasHeadings ? "translateY(0)" : "translateY(10px)"}
+      transitionDuration="fast"
+      transitionProperty="common"
+      position="sticky"
+      paddingY={10}
+      paddingRight={4}
+      paddingLeft={1}
+      style={{ top: "4rem" }}
+      right="0"
+      fontSize="sm"
+      alignSelf="start"
+      maxHeight="calc(100vh - 8rem)"
+      overflowY="auto"
+      sx={{ overscrollBehavior: "contain" }}
+      {...rest}
+    >
+      <Heading as="h2" id="toc-title" variant="sm" fontWeight="bold">
+        On this page
+      </Heading>
+      <OrderedList spacing={0} marginLeft="0" marginTop="4" styleType="none">
+        {headings.map(({ id, text, level }) => (
+          <ListItem
+            key={id}
+            title={text}
+            marginLeft={
+              Number(level.substring(1)) > 2
+                ? Number(level.substring(1))
+                : undefined
+            }
+          >
+            <MenuItem
               title={text}
-              marginLeft={
-                Number(level.substring(1)) > 2
-                  ? Number(level.substring(1))
-                  : undefined
-              }
+              url={`#${id}`}
+              aria-current={id === activeId ? "location" : undefined}
+              isActive={id === activeId}
             >
-              <MenuItem
-                title={text}
-                url={`#${id}`}
-                aria-current={id === activeId ? "location" : undefined}
-                isActive={id === activeId}
-              >
-                {text}
-              </MenuItem>
-            </ListItem>
-          ))}
-        </OrderedList>
-      </Box>
+              {text}
+            </MenuItem>
+          </ListItem>
+        ))}
+      </OrderedList>
     </Box>
   );
 }

@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Link, useNavigate } from "@remix-run/react";
 import {
   ComponentsOutline30Icon,
   GuidelinesOutline30Icon,
@@ -115,19 +115,20 @@ type ActionLinkCardProps = {
   children: React.ReactNode;
 };
 function ActionLinkCard({ to, children }: ActionLinkCardProps) {
-  const linkProps: any = to.match(/^https?:\/\//)
-    ? { as: "a", href: to }
-    : { as: Link, to };
+  const navigate = useNavigate();
+  const backgroundColor = useColorModeValue(
+    "bg.default.light",
+    "bg.default.dark",
+  );
   return (
     <PressableCard
-      {...linkProps}
-      colorScheme="white"
       display="flex"
       flexDirection={["row", "column"]}
       gap={[3, 4]}
       variant="floating"
       padding={4}
       height="100%"
+      onClick={() => navigate(to)}
     >
       {children}
     </PressableCard>

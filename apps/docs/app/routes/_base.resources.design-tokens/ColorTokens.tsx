@@ -152,7 +152,12 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
         backgroundPosition="center center"
         backgroundRepeat="repeat"
       />
-      <Flex flexDirection="column" justifyContent="space-between" paddingX={2} paddingTop={1}>
+      <Flex
+        flexDirection="column"
+        justifyContent="space-between"
+        paddingX={2}
+        paddingTop={1}
+      >
         <Box>
           <Text variant="xs" fontWeight="bold" whiteSpace="nowrap">
             {aliasName}

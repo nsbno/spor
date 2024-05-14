@@ -89,7 +89,6 @@ export default function ComponentsPage() {
             as={Link}
             to={`/components/${component.slug}`}
             variant="floating"
-            colorScheme="white"
           >
             {component.mainImage ? (
               <Image

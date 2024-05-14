@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 9.8.2
+
+### Patch Changes
+
+- 5503c91: Fixes on new Cards
+  - Make PressableCard more scalable (removed as)
+  - Edit "white" colorScheme on StaticCard to support darkmode
+
 ## 9.8.1
 
 ### Patch Changes

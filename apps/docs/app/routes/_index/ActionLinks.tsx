@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Link, useNavigate } from "@remix-run/react";
 import {
   ComponentsOutline30Icon,
   GuidelinesOutline30Icon,
@@ -10,7 +10,7 @@ import {
 import {
   Box,
   BoxProps,
-  Card,
+  PressableCard,
   Container,
   Flex,
   Heading,
@@ -115,21 +115,22 @@ type ActionLinkCardProps = {
   children: React.ReactNode;
 };
 function ActionLinkCard({ to, children }: ActionLinkCardProps) {
-  const linkProps: any = to.match(/^https?:\/\//)
-    ? { as: "a", href: to }
+  const linkProps = to.match(/^https?:\/\//)
+    ? { as: "a", href: to, target: "_blank", rel: "noopener noreferrer" }
     : { as: Link, to };
+
   return (
-    <Card
+    <PressableCard
       {...linkProps}
-      colorScheme="white"
       display="flex"
       flexDirection={["row", "column"]}
       gap={[3, 4]}
+      variant="floating"
       padding={4}
       height="100%"
     >
       {children}
-    </Card>
+    </PressableCard>
   );
 }
 

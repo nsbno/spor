@@ -30,9 +30,9 @@ export type WizardNudgeProps = Omit<NudgeProps, "actions" | "content"> & {
  *  name="my-wizard-nudge"
  *  introducedDate="2024-02-19"
  * >
- *   <Card width="fit-content" padding={2}>
+ *   <StaticCard width="fit-content" padding={2}>
  *    My new feature
- *  </Card>
+ *  </StaticCard>
  * </WizardNudge>
  * ```
  */

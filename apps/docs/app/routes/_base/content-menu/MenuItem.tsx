@@ -57,6 +57,7 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
         paddingX={2}
         fontWeight="normal"
         backgroundColor="transparent"
+        style={{ height: "auto" }}
         borderRadius="lg"
         fontSize={["mobile.xs", null, "desktop.xs"]}
         color={color}
@@ -67,28 +68,6 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
           outlineColor: focusOutlineColor,
           outlineOffset: "1px",
         }}
-        // sx={{
-        //   ...ghostBackground("default", { colorMode }),
-        //   ...baseText("default", { colorMode }),
-        //   _hover: {
-        //     ...ghostBackground("hover", { colorMode }),
-        //   },
-        //   _active: {
-        //     ...ghostBackground("active", { colorMode }),
-        //   },
-        // }}
-        //backgroundColor={isActive ? "mint" : "transparent"}
-        // _hover={{
-        //   backgroundColor: "mint",
-        // }}
-        // _focus={{
-        //   backgroundColor: "mint",
-        //   outline: "2px solid",
-        //   outlineColor: "greenHaze",
-        // }}
-        // _active={{
-        //   backgroundColor: "seaMist",
-        // }}
         ref={(el) => {
           if (externalRef) {
             (externalRef as any).current = el;

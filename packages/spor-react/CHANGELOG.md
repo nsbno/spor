@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 9.8.3
+
+### Patch Changes
+
+- 50a42b2: Fix render of RadioCardGroup and RadioCard
+- 72afbd7: Removed static values Table styles
+
 ## 9.8.2
 
 ### Patch Changes

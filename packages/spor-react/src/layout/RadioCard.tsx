@@ -9,7 +9,7 @@ import {
 import { dataAttr } from "@chakra-ui/utils";
 import React, { useId } from "react";
 
-type RadioCardProps = UseRadioProps &
+export type RadioCardProps = UseRadioProps &
   BoxProps & {
     children: React.ReactNode;
     /** Defaults to "base" */

@@ -43,7 +43,7 @@ type PressableCardProps = BoxProps & {
  */
 
 export const PressableCard = forwardRef<PressableCardProps, As>(
-  ({ children, as = "button", variant = "base", ...props }, ref) => {
+  ({ children, variant = "base", ...props }, ref) => {
     const styles = useStyleConfig("PressableCard", {
       variant,
     });

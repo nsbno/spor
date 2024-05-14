@@ -115,20 +115,19 @@ type ActionLinkCardProps = {
   children: React.ReactNode;
 };
 function ActionLinkCard({ to, children }: ActionLinkCardProps) {
-  const navigate = useNavigate();
-  const backgroundColor = useColorModeValue(
-    "bg.default.light",
-    "bg.default.dark",
-  );
+  const linkProps = to.match(/^https?:\/\//)
+    ? { as: "a", href: to, target: "_blank", rel: "noopener noreferrer" }
+    : { as: Link, to };
+
   return (
     <PressableCard
+      {...linkProps}
       display="flex"
       flexDirection={["row", "column"]}
       gap={[3, 4]}
       variant="floating"
       padding={4}
       height="100%"
-      onClick={() => navigate(to)}
     >
       {children}
     </PressableCard>

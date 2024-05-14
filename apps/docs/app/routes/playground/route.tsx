@@ -37,9 +37,6 @@ export default function PlaygroundPage() {
         <LiveError />
         <LivePreview />
       </Stack>
-      <Stack>
-        <PressableCard>Pressable Card</PressableCard>
-      </Stack>
     </LiveProvider>
   );
 }

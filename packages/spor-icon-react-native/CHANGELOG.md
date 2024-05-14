@@ -1,11 +1,5 @@
 # @vygruppen/spor-icon-react-native
 
-## 2.8.0
-
-### Minor Changes
-
-- 175edaf: Added new fancy outline icons for Dropdown
-
 ## 2.7.0
 
 ### Minor Changes

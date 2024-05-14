@@ -165,9 +165,10 @@ export default function IllustrationLibraryPage() {
         {matchingIllustrations.map((illustration) => (
           <StaticCard
             colorScheme="white"
-            variant="outline"
             key={illustration._id}
             padding={2}
+            border="1px solid"
+            borderColor="silver"
           >
             <Flex flexDirection="column" height="100%">
               <Flex gap={1} alignItems="center">

@@ -1,6 +1,9 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { colors } from "../foundations";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { bg } from "../utils/bg-utils";
+import { floatingBackground } from "../utils/floating-utils";
+import { mode } from "@chakra-ui/theme-tools";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({
@@ -32,12 +35,12 @@ type CardThemeProps = {
     | "darkYellow";
 };
 
-const getColorSchemeBaseProps = (props: CardThemeProps) => {
+const getColorSchemeBaseProps = (props: any) => {
   switch (props.colorScheme) {
     case "white":
       return {
-        backgroundColor: "white",
-        color: "darkGrey",
+        ...floatingBackground("default", props),
+        color: mode("text.default.light", "text.default.dark")(props),
       };
     case "grey":
       return {

@@ -1,11 +1,5 @@
 # @vygruppen/spor-icon
 
-## 2.7.0
-
-### Minor Changes
-
-- 175edaf: Added new fancy outline icons for Dropdown
-
 ## 2.6.0
 
 ### Minor Changes

@@ -4,10 +4,9 @@
 
 ### Patch Changes
 
-- 0b33322: - Make PressableCard more scalable (removed as)
+- 5503c91: Fixes on new Cards
+  - Make PressableCard more scalable (removed as)
   - Edit "white" colorScheme on StaticCard to support darkmode
-- Updated dependencies [175edaf]
-  - @vygruppen/spor-icon-react@3.7.0
 
 ## 9.8.1
 

@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- 175edaf: Added new fancy outline icons for Dropdown
+- 5503c91: Added new fancy outline icons for Dropdown
 
 ## 3.6.0
 

@@ -1,6 +1,8 @@
 import {
   Box,
   chakra,
+  Flex,
+  FormLabel,
   ResponsiveValue,
   useFormControlProps,
   useMultiStyleConfig,
@@ -11,7 +13,7 @@ import {
 } from "@vygruppen/spor-icon-react";
 import React, { useRef } from "react";
 import { HiddenSelect, useButton, useSelect } from "react-aria";
-import { useSelectState } from "react-stately";
+import { Column, useSelectState } from "react-stately";
 import { createTexts, useTranslation } from "../";
 import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
@@ -152,13 +154,11 @@ type InfoSelectProps<T extends object> = {
  */
 export function InfoSelect<T extends object>({
   placeholder,
-  width = "100%",
-  height = "auto",
   onChange,
   value,
   isLabelSrOnly,
   defaultValue,
-  variant = "base",
+  variant,
   ...props
 }: InfoSelectProps<T>) {
   const renamedProps = {
@@ -188,11 +188,10 @@ export function InfoSelect<T extends object>({
   const { t } = useTranslation();
   const formControl = useFormControlProps(props);
 
+  const hasChosenValue = state.selectedItem !== null;
+
   return (
     <Box sx={styles.container}>
-      <chakra.div {...labelProps} sx={styles.label}>
-        {props.label}
-      </chakra.div>
       <HiddenSelect
         state={state}
         triggerRef={triggerRef}
@@ -205,17 +204,37 @@ export function InfoSelect<T extends object>({
         ref={triggerRef}
         sx={styles.button}
         {...buttonProps}
-        width={width}
-        height={height}
         data-attachable
         aria-invalid={formControl.isInvalid}
         aria-describedby={formControl["aria-describedby"]}
       >
-        <Box {...valueProps}>
-          {state.selectedItem
-            ? state.selectedItem.textValue ?? state.selectedItem.rendered
-            : placeholder ?? t(texts.selectAnOption)}
-        </Box>
+        <chakra.div sx={styles.innerButton}>
+          <chakra.div
+            {...labelProps}
+            sx={{
+              ...styles.label,
+              ...(hasChosenValue && {
+                transform: "scale(0.825) translateY(-10px) translateX(-10%)",
+                transitionProperty: "var(--spor-transition-property-common)",
+                transitionDuration: "var(--spor-transition-duration-normal)",
+              }),
+            }}
+          >
+            {props.label}
+          </chakra.div>
+          <Box
+            {...valueProps}
+            h={!hasChosenValue ? "0px" : "18px"}
+            hidden={!hasChosenValue}
+            transform={"scale(1) translateY(-10px)"}
+            transitionProperty={"var(--spor-transition-property-common)"}
+            transitionDuration={"var(--spor-transition-duration-normal)"}
+          >
+            {state.selectedItem
+              ? state.selectedItem.textValue ?? state.selectedItem.rendered
+              : placeholder ?? t(texts.selectAnOption)}
+          </Box>
+        </chakra.div>
         <Box sx={styles.arrowIcon}>
           {state.isOpen ? <DropdownUpFill24Icon /> : <DropdownDownFill24Icon />}
         </Box>

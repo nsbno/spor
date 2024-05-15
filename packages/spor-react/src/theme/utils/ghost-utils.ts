@@ -29,12 +29,30 @@ export function ghostBackground(
       };
     case "selected": {
       return {
-        backgroundColor: mode("mint", "whiteAlpha.200")(props),
+        backgroundColor: mode(
+          "ghost.surface.selected.light",
+          "ghost.surface.selected.dark",
+        )(props),
       };
     }
     case "default":
       return {
         backgroundColor: "transparent",
+      };
+  }
+}
+
+type GhostTextState = Subset<State, "default" | "selected">;
+
+export function ghostText(state: GhostTextState, props: StyleFunctionProps) {
+  switch (state) {
+    case "selected":
+      return {
+        color: mode("ghost.text.light", "ghost.text.dark")(props),
+      };
+    default:
+      return {
+        color: mode("ghost.text.light", "ghost.text.dark")(props),
       };
   }
 }

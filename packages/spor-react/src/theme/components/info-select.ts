@@ -19,18 +19,28 @@ const config = helpers.defineMultiStyleConfig({
     container: {},
     label: {
       position: "relative",
+      fontSize: ["mobile.xs", "desktop.sm"],
       ...(props.isLabelSrOnly ? srOnly : {}),
     },
+    innerButton: {
+      display: "flex",
+      flexDir: "column",
+      alignItems: "start",
+      justifyContent: "start",
+    },
     button: {
+      display: "flex",
       appearance: "none",
+      width: "100%",
+      height: "54px",
       borderTopRadius: "sm",
       borderBottomRadius: props.isOpen ? 0 : "sm",
       paddingY: 1.5,
       paddingX: 3,
-      display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
       fontSize: "mobile.md",
+      h: 8,
       ...baseBorder("default", props),
       _hover: {
         ...baseBorder("hover", props),
@@ -48,6 +58,7 @@ const config = helpers.defineMultiStyleConfig({
         ...baseBorder("invalid", props),
       },
     },
+    placeholder: {},
     arrowIcon: {},
   }),
   variants: {

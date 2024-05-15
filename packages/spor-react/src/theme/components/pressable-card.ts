@@ -51,11 +51,11 @@ const config = defineStyleConfig({
     }),
     floating: (props) => ({
       ...floatingBackground("default", props),
-      boxShadow: "md",
+      boxShadow: "sm",
       _hover: {
         ...floatingBackground("hover", props),
         ...floatingBorder("hover", props),
-        boxShadow: "lg",
+        boxShadow: "md",
       },
       _active: {
         ...floatingBackground("active", props),

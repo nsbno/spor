@@ -13,6 +13,7 @@ const config = defineStyleConfig({
     display: "block",
     borderRadius: "md",
     cursor: "pointer",
+    transition: "all 0.1s",
     ...focusVisibleStyles(props),
     _disabled: {
       ...baseBackground("disabled", props),

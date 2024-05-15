@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 3.7.0
+
+### Minor Changes
+
+- 5503c91: Added new fancy outline icons for Dropdown
+
 ## 3.6.0
 
 ### Minor Changes

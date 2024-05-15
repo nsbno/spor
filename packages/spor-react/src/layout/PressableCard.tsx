@@ -9,7 +9,7 @@ import {
 
 type PressableCardProps = BoxProps & {
   /** Defaults to "base"  */
-  variant: "floating" | "accent" | "base";
+  variant?: "floating" | "accent" | "base";
 };
 
 /**
@@ -43,7 +43,7 @@ type PressableCardProps = BoxProps & {
  */
 
 export const PressableCard = forwardRef<PressableCardProps, As>(
-  ({ children, variant = "base", ...props }, ref) => {
+  ({ children, variant = "floating", ...props }, ref) => {
     const styles = useStyleConfig("PressableCard", {
       variant,
     });

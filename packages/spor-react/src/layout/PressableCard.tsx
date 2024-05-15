@@ -9,7 +9,7 @@ import {
 
 type PressableCardProps = BoxProps & {
   /** Defaults to "base"  */
-  variant: "floating" | "accent" | "base";
+  variant?: "floating" | "accent" | "base";
 };
 
 /**

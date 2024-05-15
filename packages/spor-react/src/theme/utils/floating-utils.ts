@@ -31,8 +31,8 @@ export function floatingBackground(
     case "default":
       return {
         backgroundColor: mode(
-          "floating.surface.default.light",
-          "floating.surface.default.dark",
+          "white",
+          `color-mix(in srgb, white 10%, var(--spor-colors-bg-default-dark))`,
         )(props),
       };
   }

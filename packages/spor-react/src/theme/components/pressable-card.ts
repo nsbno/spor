@@ -13,12 +13,16 @@ const config = defineStyleConfig({
     display: "block",
     borderRadius: "md",
     cursor: "pointer",
-    transition: "all 0.1s",
-    ...focusVisibleStyles(props),
+    transitionProperty: "common",
+    transitionDuration: "fast",
+    "button&, a&, label&, &.is-clickable": {
+      outline: "1px solid",
+      ...focusVisibleStyles(props),
+    },
     _disabled: {
       ...baseBackground("disabled", props),
+      ...baseBorder("disabled", props),
       ...baseText("disabled", props),
-      outline: "none",
       pointerEvents: "none",
     },
   }),
@@ -47,11 +51,11 @@ const config = defineStyleConfig({
     }),
     floating: (props) => ({
       ...floatingBackground("default", props),
-      boxShadow: "sm",
+      boxShadow: "md",
       _hover: {
         ...floatingBackground("hover", props),
         ...floatingBorder("hover", props),
-        boxShadow: "md",
+        boxShadow: "lg",
       },
       _active: {
         ...floatingBackground("active", props),

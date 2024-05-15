@@ -42,7 +42,7 @@ function TableOfContent(props: TableOfContentProps) {
       paddingY={10}
       paddingRight={4}
       paddingLeft={1}
-      top="6rem"
+      style={{ top: "4rem" }}
       right="0"
       fontSize="sm"
       alignSelf="start"

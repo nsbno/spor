@@ -30,8 +30,8 @@ export type StackProps = Exclude<ChakraStackProps, "direction"> & {
  *
  * ```tsx
  * <Stack spacing={4}>
- *   <Card>Here's one card</Card>
- *   <Card>Here's another card, with a lot of space between it</Card>
+ *   <StaticCard>Here's one card</StaticCard>
+ *   <StaticCard>Here's another card, with a lot of space between it</StaticCard>
  * </Stack>
  * ```
  */

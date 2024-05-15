@@ -50,8 +50,15 @@ export type CardProps = Exclude<BoxProps, "size"> & {
  * </Card>
  * ```
  */
+
+/**
+ * @deprecated Card is deprecated. Use `StaticCard` or `PressableCard` instead.
+ */
 export const Card = forwardRef<CardProps, As>(
   ({ size = "sm", colorScheme = "white", children, ...props }, ref) => {
+    console.warn(
+      "Warning: Card is deprecated. Use `StaticCard` or `PressableCard` instead.",
+    );
     const styles = useStyleConfig("Card", {
       colorScheme,
       size,

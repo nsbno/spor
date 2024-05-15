@@ -2,10 +2,10 @@ import tokens from "@vygruppen/spor-design-tokens";
 import {
   Box,
   BoxProps,
-  Card,
   Flex,
   SimpleGrid,
   Stack,
+  StaticCard,
   Text,
 } from "@vygruppen/spor-react";
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
@@ -134,10 +134,17 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
     : colorValue;
 
   return (
-    <Card colorScheme="white" borderRadius="sm" overflow="hidden" {...rest}>
+    <StaticCard
+      colorScheme="white"
+      border="1px solid"
+      borderColor={"silver"}
+      borderRadius="sm"
+      overflow="hidden"
+      {...rest}
+    >
       <Box
         height="60px"
-        border="1px solid"
+        borderBottom="1px solid"
         borderColor={isWhite ? "silver" : colorValue}
         borderTopRadius="sm"
         position="relative"
@@ -145,7 +152,12 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
         backgroundPosition="center center"
         backgroundRepeat="repeat"
       />
-      <Flex flexDirection="column" justifyContent="space-between" paddingX={2}>
+      <Flex
+        flexDirection="column"
+        justifyContent="space-between"
+        paddingX={2}
+        paddingTop={1}
+      >
         <Box>
           <Text variant="xs" fontWeight="bold" whiteSpace="nowrap">
             {aliasName}
@@ -158,7 +170,7 @@ const ColorToken = ({ token, ...rest }: ColorTokenProps) => {
           {colorValue}
         </Text>
       </Flex>
-    </Card>
+    </StaticCard>
   );
 };
 

@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "@remix-run/react";
 import {
   Box,
-  Card,
+  PressableCard,
   Heading,
   Image,
   SimpleGrid,
@@ -84,11 +84,11 @@ export default function ComponentsPage() {
       <PortableText value={article.content} />
       <SimpleGrid columns={[1, 2, 3]} gap={3} marginTop={6}>
         {components.map((component) => (
-          <Card
+          <PressableCard
             key={component._id}
             as={Link}
             to={`/components/${component.slug}`}
-            colorScheme="white"
+            variant="floating"
           >
             {component.mainImage ? (
               <Image
@@ -107,7 +107,7 @@ export default function ComponentsPage() {
             <Heading as="h2" variant="sm" fontWeight="bold" padding={3}>
               {component.title}
             </Heading>
-          </Card>
+          </PressableCard>
         ))}
       </SimpleGrid>
     </Box>

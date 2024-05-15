@@ -1,5 +1,54 @@
 # @vygruppen/spor-react
 
+## 9.8.3
+
+### Patch Changes
+
+- 50a42b2: Fix render of RadioCardGroup and RadioCard
+- 72afbd7: Removed static values Table styles
+
+## 9.8.2
+
+### Patch Changes
+
+- 5503c91: Fixes on new Cards
+  - Make PressableCard more scalable (removed as)
+  - Edit "white" colorScheme on StaticCard to support darkmode
+
+## 9.8.1
+
+### Patch Changes
+
+- 6852a42: Update docs for PressableCard and RadioCard
+
+## 9.8.0
+
+### Minor Changes
+
+- 37c8580: Card is deprecated
+
+  - Update styling for PressableCard
+  - Update styling for StaticCard
+  - Make Card deprecated, is replaced by the above components
+
+## 9.7.0
+
+### Minor Changes
+
+- a3d2ca4: New component: RadioCard & RadioCardGroup
+
+  - Should be used togehter for optimal functionality
+
+### Patch Changes
+
+- eade049: Remove vertical align from table. Can be added manually if other value is needed.
+
+## 9.6.5
+
+### Patch Changes
+
+- 50935a3: Added dark color variants to static card
+
 ## 9.6.4
 
 ### Patch Changes

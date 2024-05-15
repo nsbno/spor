@@ -17,17 +17,13 @@ const config = helpers.defineMultiStyleConfig({
       borderCollapse: "collapse",
       ...baseText("default", props),
       width: "100%",
-      minWidth: "600px",
     },
     th: {
       fontWeight: "bold",
       textAlign: "start",
-      verticalAlign: "top",
-      minWidth: "68px",
     },
     td: {
       textAlign: "start",
-      verticalAlign: "top",
     },
     tfoot: {
       tr: {

@@ -1,7 +1,9 @@
 import { defineStyleConfig } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
 import { colors } from "../foundations";
-import { baseBorder, baseText } from "../utils/base-utils";
+import { focusVisibleStyles } from "../utils/focus-utils";
+import { bg } from "../utils/bg-utils";
+import { floatingBackground } from "../utils/floating-utils";
+import { mode } from "@chakra-ui/theme-tools";
 
 const config = defineStyleConfig({
   baseStyle: (props: any) => ({
@@ -11,8 +13,8 @@ const config = defineStyleConfig({
     fontSize: "inherit",
     display: "block",
     borderRadius: "md",
-    // Except for white cards, all cards are light mode always
     color: "text.default.light",
+    ...focusVisibleStyles(props),
     ...getColorSchemeBaseProps(props),
   }),
 });
@@ -23,26 +25,22 @@ type CardThemeProps = {
   colorScheme:
     | "white"
     | "grey"
-    | "blue"
     | "green"
-    | "teal"
-    | "yellow"
     | "orange"
-    | "red";
-  theme: any;
-  colorMode: "light" | "dark";
+    | "red"
+    | "yellow"
+    | "blue"
+    | "darkBlue"
+    | "darkGreen"
+    | "darkYellow";
 };
 
-const getColorSchemeBaseProps = (props: CardThemeProps) => {
+const getColorSchemeBaseProps = (props: any) => {
   switch (props.colorScheme) {
     case "white":
       return {
-        ...baseBorder("default", props),
-        backgroundColor: mode(
-          "white",
-          `color-mix(in srgb, white 10%, var(--spor-colors-bg-default-dark))`,
-        )(props),
-        color: "inherit",
+        ...floatingBackground("default", props),
+        color: mode("text.default.light", "text.default.dark")(props),
       };
     case "grey":
       return {
@@ -58,10 +56,26 @@ const getColorSchemeBaseProps = (props: CardThemeProps) => {
         backgroundColor: "pink",
       };
     }
+    case "darkBlue": {
+      return {
+        backgroundColor: "darkBlue",
+        color: "white",
+      };
+    }
+    case "darkGreen": {
+      return {
+        backgroundColor: "pine",
+        color: "white",
+      };
+    }
+    case "darkYellow": {
+      return {
+        backgroundColor: "banana",
+      };
+    }
     default:
       return {
         backgroundColor: colors[props.colorScheme]?.[100] ?? "default",
-        ...baseText("default", props),
       };
   }
 };

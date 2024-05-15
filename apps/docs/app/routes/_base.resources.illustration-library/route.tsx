@@ -11,7 +11,7 @@ import {
   Box,
   Brand,
   Button,
-  Card,
+  StaticCard,
   Divider,
   Flex,
   Heading,
@@ -163,11 +163,12 @@ export default function IllustrationLibraryPage() {
       </Flex>
       <SimpleGrid columns={[1, 2, 3]} gap={2}>
         {matchingIllustrations.map((illustration) => (
-          <Card
+          <StaticCard
             colorScheme="white"
-            variant="outline"
             key={illustration._id}
             padding={2}
+            border="1px solid"
+            borderColor="silver"
           >
             <Flex flexDirection="column" height="100%">
               <Flex gap={1} alignItems="center">
@@ -217,7 +218,7 @@ export default function IllustrationLibraryPage() {
                 />
               </Flex>
             </Flex>
-          </Card>
+          </StaticCard>
         ))}
       </SimpleGrid>
     </Box>

@@ -54,7 +54,6 @@ export const ContentMenu = forwardRef((_, ref) => {
                   <MenuItem
                     key={subItem.url}
                     url={subItem.url}
-                    height={5}
                     isActive={subItem.url === location.pathname}
                   >
                     {subItem.title}

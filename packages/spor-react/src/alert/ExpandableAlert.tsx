@@ -73,7 +73,7 @@ export const ExpandableAlert = ({
                     "-webkit-line-clamp": "1",
                     "-webkit-box-orient": "vertical",
                   }}
-                  color={"darkGrey"}
+                  color="darkGrey"
                 >
                   {title}
                 </Box>

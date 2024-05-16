@@ -1,5 +1,16 @@
 # @vygruppen/spor-react
 
+## 9.9.0
+
+### Minor Changes
+
+- 70e5a92: InfoSelect: bugfixes. #1043
+- d4f8abf: Added possibility for title with ClosableAlert and StaticAlert. Some minor bugfixes with colors on darkmode.
+
+### Patch Changes
+
+- 0baf753: PressableCard: Make variant optional. Fix background on darkmode.
+
 ## 9.8.3
 
 ### Patch Changes

@@ -48,7 +48,7 @@ export const SiteSettings = ({ showLabel }: SiteSettingsProps) => {
               <FormLabel margin="0">Dark mode</FormLabel>
               <Switch
                 size="sm"
-                onChange={toggleColorMode}
+                onChange={() => toggleColorMode()}
                 defaultChecked={colorMode === "dark"}
               />
             </FormControl>

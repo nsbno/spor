@@ -63,6 +63,7 @@ export const ExpandableAlert = ({
             >
               <Flex as={headingLevel} alignItems="center">
                 <AlertIcon variant={variant} />
+
                 <Box
                   as="span"
                   sx={{
@@ -72,11 +73,12 @@ export const ExpandableAlert = ({
                     "-webkit-line-clamp": "1",
                     "-webkit-box-orient": "vertical",
                   }}
+                  color="darkGrey"
                 >
                   {title}
                 </Box>
               </Flex>
-              <AccordionIcon />
+              <AccordionIcon color="darkGrey" />
             </Flex>
           </AccordionButton>
           <AccordionPanel>{children}</AccordionPanel>

@@ -6,6 +6,8 @@ export type BaseAlertProps = BoxProps & {
   variant: "info" | "success" | "warning" | "alt-transport" | "error";
   /** The body content of the alert */
   children: React.ReactNode;
+  /** The title of the alert */
+  title?: string;
 };
 
 /**

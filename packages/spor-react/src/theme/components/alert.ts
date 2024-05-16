@@ -22,6 +22,7 @@ const config = helpers.defineMultiStyleConfig({
       position: "absolute",
       top: 1,
       right: 1,
+      color: "darkGrey",
     },
   },
   variants: {

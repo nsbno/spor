@@ -1,4 +1,9 @@
-import { useDisclosure, useMultiStyleConfig } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  useDisclosure,
+  useMultiStyleConfig,
+} from "@chakra-ui/react";
 import { CloseFill18Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { IconButton } from "../button";
@@ -34,6 +39,7 @@ type ClosableAlertProps = BaseAlertProps & {
  */
 export const ClosableAlert = ({
   variant,
+  title,
   children,
   onClose: externalOnClose = () => {},
 }: ClosableAlertProps) => {
@@ -60,7 +66,10 @@ export const ClosableAlert = ({
         sx={styles.closeButton}
       />
       <AlertIcon variant={variant} />
-      {children}
+      <Flex direction="column" gap={title ? 2 : undefined} textAlign="left">
+        {title && <Box fontWeight="bold">{title}</Box>}
+        <Box marginRight={1}>{children}</Box>
+      </Flex>
     </BaseAlert>
   );
 };

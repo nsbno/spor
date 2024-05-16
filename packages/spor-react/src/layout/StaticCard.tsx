@@ -70,7 +70,6 @@ export const StaticCard = forwardRef<StaticCardProps, As>(
     return (
       <Box __css={styles} {...props} ref={ref}>
         {children}
-        <Card />
       </Box>
     );
   },

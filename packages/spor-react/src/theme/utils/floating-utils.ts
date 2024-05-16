@@ -25,14 +25,14 @@ export function floatingBackground(
       return {
         backgroundColor: mode(
           "floating.surface.hover.light",
-          "floating.surface.hover.dark",
+          `color-mix(in srgb, white 10%, var(--spor-colors-bg-default-dark))`,
         )(props),
       };
     case "default":
       return {
         backgroundColor: mode(
-          "floating.surface.default.light",
-          "floating.surface.default.dark",
+          "white",
+          `color-mix(in srgb, white 10%, var(--spor-colors-bg-default-dark))`,
         )(props),
       };
   }

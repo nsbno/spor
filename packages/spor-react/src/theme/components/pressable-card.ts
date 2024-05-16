@@ -13,9 +13,14 @@ const config = defineStyleConfig({
     display: "block",
     borderRadius: "md",
     cursor: "pointer",
-    ...focusVisibleStyles(props),
+    transitionProperty: "common",
+    transitionDuration: "fast",
+    "button&, a&, label&, &.is-clickable": {
+      ...focusVisibleStyles(props),
+    },
     _disabled: {
       ...baseBackground("disabled", props),
+      ...baseBorder("disabled", props),
       ...baseText("disabled", props),
       outline: "none",
       pointerEvents: "none",

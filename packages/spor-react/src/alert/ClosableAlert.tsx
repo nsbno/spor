@@ -66,7 +66,7 @@ export const ClosableAlert = ({
         sx={styles.closeButton}
       />
       <AlertIcon variant={variant} />
-      <Flex direction="column" gap={title ? 2 : undefined} textAlign={"left"}>
+      <Flex direction="column" gap={title ? 2 : undefined} textAlign="left">
         {title && <Box fontWeight="bold">{title}</Box>}
         <Box marginRight={1}>{children}</Box>
       </Flex>

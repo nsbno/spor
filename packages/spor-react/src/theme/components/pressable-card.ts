@@ -16,7 +16,6 @@ const config = defineStyleConfig({
     transitionProperty: "common",
     transitionDuration: "fast",
     "button&, a&, label&, &.is-clickable": {
-      outline: "1px solid",
       ...focusVisibleStyles(props),
     },
     _disabled: {

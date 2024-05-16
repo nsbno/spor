@@ -25,11 +25,7 @@ export const StaticAlert = ({
     <BaseAlert {...props}>
       <AlertIcon variant={props.variant} />
       <Flex direction="column" gap={title ? 2 : undefined} textAlign={"left"}>
-        {title && (
-          <Box fontWeight="bold">
-            {title}
-          </Box>
-        )}
+        {title && <Box fontWeight="bold">{title}</Box>}
         <Box>{children}</Box>
       </Flex>
     </BaseAlert>

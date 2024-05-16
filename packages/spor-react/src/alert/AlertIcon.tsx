@@ -21,6 +21,7 @@ export const AlertIcon = ({ variant }: AlertIconProps) => {
       flexShrink={0}
       aria-label={t(texts[variant])}
       marginRight={1}
+      color="darkGrey"
     />
   );
 };

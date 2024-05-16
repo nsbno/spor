@@ -78,7 +78,7 @@ export const ExpandableAlert = ({
                   {title}
                 </Box>
               </Flex>
-              <AccordionIcon color={"darkGrey"} />
+              <AccordionIcon color="darkGrey" />
             </Flex>
           </AccordionButton>
           <AccordionPanel>{children}</AccordionPanel>

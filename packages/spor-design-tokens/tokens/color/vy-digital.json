@@ -15,7 +15,7 @@
             "value": "{color.alias.lightGrey.value}"
           },
           "dark": {
-            "value": "{color.alias.darkTeal.value}"
+            "value": "{color.alias.night.value}"
           }
         },
         "tertiary": {
@@ -167,7 +167,7 @@
             "value": "{color.alias.white.value}"
           },
           "dark": {
-            "value": "{color.alias.night.value}"
+            "value": "{color.alias.darkTeal.value}"
           }
         },
         "secondary": {
@@ -175,7 +175,7 @@
             "value": "{color.alias.seaMist.value}"
           },
           "dark": {
-            "value": "{color.alias.darkTeal.value}"
+            "value": "{color.alias.night.value}"
           }
         },
         "tertiary": {

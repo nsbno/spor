@@ -15,15 +15,15 @@
             "value": "{color.alias.lightGrey.value}"
           },
           "dark": {
-            "value": "{color.alias.darkGrey.value}"
+            "value": "{color.alias.black.value}"
           }
         },
         "tertiary": {
           "light": {
-            "value": "{color.alias.cornsilk.value}"
+            "value": "{color.alias.bisque.value}"
           },
           "dark": {
-            "value": "{color.alias.golden.value}"
+            "value": "{color.alias.darkGrey.value}"
           }
         }
       },
@@ -38,10 +38,10 @@
         },
         "secondary": {
           "light": {
-            "value": "{color.alias.wood.value}"
+            "value": "{color.alias.dimGrey.value}"
           },
           "dark": {
-            "value": "{color.alias.banana.value}"
+            "value": "{color.alias.champagne.value}"
           }
         },
         "tertiary": {
@@ -62,7 +62,7 @@
         },
         "highlight": {
           "light": {
-            "value": "{color.alias.ocean.value}"
+            "value": "{color.alias.wood.value}"
           },
           "dark": {
             "value": "{color.alias.sky.value}"
@@ -91,7 +91,7 @@
             "value": "{color.alias.wood.value}"
           },
           "dark": {
-            "value": "{color.alias.banana.value}"
+            "value": "{color.alias.champagne.value}"
           }
         },
         "inverted": {
@@ -104,7 +104,7 @@
         },
         "highlight": {
           "light": {
-            "value": "{color.alias.ocean.value}"
+            "value": "{color.alias.wood.value}"
           },
           "dark": {
             "value": "{color.alias.sky.value}"
@@ -138,10 +138,10 @@
         },
         "focus": {
           "light": {
-            "value": "{color.alias.darkGrey.value}"
+            "value": "{color.alias.pumpkin.value}"
           },
           "dark": {
-            "value": "{color.alias.burntYellow.value}"
+            "value": "{color.alias.rajah.value}"
           }
         },
         "error": {
@@ -172,7 +172,7 @@
         },
         "secondary": {
           "light": {
-            "value": "{color.alias.primrose.value}"
+            "value": "{color.alias.champagne.value}"
           },
           "dark": {
             "value": "{color.alias.black.value}"
@@ -199,7 +199,7 @@
         "surface": {
           "active": {
             "light": {
-              "value": "{color.alias.cornsilk.value}"
+              "value": "{color.alias.bisque.value}"
             },
             "dark": {
               "value": "{color.palette.whiteAlpha.100.value}"
@@ -245,43 +245,43 @@
         "surface": {
           "default": {
             "light": {
-              "value": "{color.alias.banana.value}"
+              "value": "{color.alias.saffron.value}"
             },
             "dark": {
-              "value": "{color.alias.banana.value}"
+              "value": "{color.alias.saffron.value}"
             }
           },
           "hover": {
             "light": {
-              "value": "{color.alias.burntYellow.value}"
+              "value": "{color.alias.pumpkin.value}"
             },
             "dark": {
-              "value": "{color.alias.burntYellow.value}"
+              "value": "{color.alias.pumpkin.value}"
             }
           },
           "active": {
             "light": {
-              "value": "{color.alias.sunshine.value}"
+              "value": "{color.alias.rajah.value}"
             },
             "dark": {
-              "value": "{color.alias.primrose.value}"
+              "value": "{color.alias.rajah.value}"
             }
           }
         },
         "text": {
           "light": {
-            "value": "{color.cargonet.text.default.light.value}"
+            "value": "{color.alias.black.value}"
           },
           "dark": {
-            "value": "{color.cargonet.text.inverted.dark.value}"
+            "value": "{color.alias.black.value}"
           }
         },
         "icon": {
           "light": {
-            "value": "{color.cargonet.icon.default.light.value}"
+            "value": "{color.alias.black.value}"
           },
           "dark": {
-            "value": "{color.cargonet.icon.inverted.dark.value}"
+            "value": "{color.alias.black.value}"
           }
         }
       },
@@ -314,7 +314,7 @@
         },
         "text": {
           "light": {
-            "value": "{color.cargonet.text.inverted.light.value}"
+            "value": "{color.alias.champagne.value}"
           },
           "dark": {
             "value": "{color.cargonet.text.default.dark.value}"
@@ -322,7 +322,7 @@
         },
         "icon": {
           "light": {
-            "value": "{color.cargonet.icon.inverted.light.value}"
+            "value": "{color.alias.champagne.value}"
           },
           "dark": {
             "value": "{color.cargonet.icon.default.dark.value}"
@@ -357,7 +357,7 @@
           },
           "active": {
             "light": {
-              "value": "{color.alias.cornsilk.value}"
+              "value": "{color.alias.bisque.value}"
             },
             "dark": {
               "value": "transparent"
@@ -403,7 +403,7 @@
         "surface": {
           "hover": {
             "light": {
-              "value": "{color.alias.blonde.value}"
+              "value": "{color.alias.champagne.value}"
             },
             "dark": {
               "value": "{color.palette.whiteAlpha.200.value}"
@@ -411,7 +411,7 @@
           },
           "active": {
             "light": {
-              "value": "{color.alias.cornsilk.value}"
+              "value": "{color.alias.bisque.value}"
             },
             "dark": {
               "value": "{color.palette.whiteAlpha.100.value}"

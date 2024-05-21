@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.6.0
+
+### Minor Changes
+
+- 2bc3e94: Update color-tokens for CargoNet and Vy Digital
+
 ## 3.5.4
 
 ### Patch Changes

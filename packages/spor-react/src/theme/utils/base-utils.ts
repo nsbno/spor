@@ -60,8 +60,8 @@ export function baseBorder(state: BorderState, props: StyleFunctionProps) {
     }
     case "active": {
       return {
-        outline: "2px solid",
-        outlineColor: mode("base.outline.light", "base.outline.dark")(props),
+        outline: "1px solid",
+        outlineColor: mode("base.outline.default.light", "base.outline.default.dark")(props),
       };
     }
     case "invalid": {

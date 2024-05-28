@@ -63,6 +63,7 @@ const config = helpers.defineMultiStyleConfig({
         ...baseText("default", props),
         ...baseBackground("default", props),
         ...floatingBackground("default", props),
+        ...floatingBorder("default", props),
         boxShadow: "sm",
         _hover: {
           ...floatingBackground("hover", props),

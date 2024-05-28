@@ -19,6 +19,14 @@ import React, { useId } from "react";
  * </RadioCard>
  * ```
  *
+ * In order to use RadioCard outside a RadioCardGroup, you need to pass the `isChecked` and `onChange` props.
+ *
+ * ```tsx
+ * <RadioCard isChecked={true} onChange={(e) => console.log(e.target.value)}>
+ *  Content
+ * </RadioCard>
+ * ```
+ *
  * In order to use RadioCard, you typically want to place these components in a group with several other RadioCards.
  *
  * ```tsx
@@ -56,17 +64,32 @@ export type RadioCardProps = UseRadioProps &
     children: React.ReactNode;
     /** Defaults to "base" */
     variant?: "floating" | "base";
+    /** Needs to be defined if RadioCard is used outside RadioCardGroup */
+    isChecked?: boolean;
+    /** Needs to be defined if RadioCard is used outside RadioCardGroup */
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
 export const RadioCard = forwardRef<RadioCardProps, "div">(
-  ({ children, variant = "base", isChecked, ...props }, ref) => {
+  ({ children, variant = "base", isChecked, onChange, ...props }, ref) => {
     const styles = useMultiStyleConfig("RadioCard", { variant });
 
     const id = `radio-card-${useId()}`;
 
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      onChange && onChange(event);
+    };
+
     return (
       <Box as="label" htmlFor={id} aria-label={String(children)} ref={ref}>
-        <chakra.input type="radio" id={id} {...props} sx={styles.radioInput} />
+        <chakra.input
+          type="radio"
+          id={id}
+          checked={isChecked}
+          onChange={handleChange}
+          {...props}
+          sx={styles.radioInput}
+        />
         <Box
           {...props}
           __css={{

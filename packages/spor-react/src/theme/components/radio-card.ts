@@ -6,6 +6,7 @@ import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { anatomy } from "@chakra-ui/theme-tools";
+import { outlineBorder } from "../utils/outline-utils";
 
 const parts = anatomy("radio-card").parts("container", "checked", "radioInput");
 const helpers = createMultiStyleConfigHelpers(parts.keys);
@@ -21,6 +22,8 @@ const config = helpers.defineMultiStyleConfig({
       cursor: "pointer",
       borderRadius: "sm",
       ...focusVisibleStyles(props),
+      transitionProperty: "common",
+      transitionDuration: "fast",
       _disabled: {
         pointerEvents: "none",
         ...baseBackground("disabled", props),
@@ -29,12 +32,9 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
     checked: {
-      outline: "1px solid",
-      outlineColor: "greenHaze",
+      outline: "2px solid",
+      ...outlineBorder("focus", props),
       ...floatingBackground("active", props),
-      _hover: {
-        ...floatingBackground("active", props),
-      },
     },
     radioInput: {
       appearance: "none",
@@ -55,6 +55,16 @@ const config = helpers.defineMultiStyleConfig({
         },
         _active: {
           ...baseBackground("active", props),
+          ...baseBorder("active", props),
+        },
+      },
+      checked: {
+        _hover: {
+          ...baseBorder("hover", props),
+        },
+        _active: {
+          ...baseBackground("active", props),
+          ...baseBorder("active", props),
         },
       },
     }),
@@ -76,9 +86,14 @@ const config = helpers.defineMultiStyleConfig({
         },
       },
       checked: {
+        cursor: "normal",
+
         _hover: {
-          outline: "1px solid",
-          outlineColor: "silver",
+          ...floatingBorder("hover", props),
+        },
+        _active: {
+          ...floatingBackground("active", props),
+          ...floatingBorder("active", props),
         },
       },
     }),

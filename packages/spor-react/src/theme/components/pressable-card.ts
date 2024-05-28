@@ -28,6 +28,7 @@ const config = defineStyleConfig({
   }),
   variants: {
     base: (props) => ({
+      cursor: "pointer",
       ...baseBorder("default", props),
       _hover: {
         ...baseBorder("hover", props),
@@ -42,7 +43,7 @@ const config = defineStyleConfig({
       boxShadow: "sm",
       _hover: {
         ...accentBackground("hover", props),
-        boxShadow: "sm",
+        boxShadow: "md",
       },
       _active: {
         ...accentBackground("active", props),
@@ -51,6 +52,7 @@ const config = defineStyleConfig({
     }),
     floating: (props) => ({
       ...floatingBackground("default", props),
+      ...floatingBorder("default", props),
       boxShadow: "sm",
       _hover: {
         ...floatingBackground("hover", props),
@@ -58,6 +60,7 @@ const config = defineStyleConfig({
         boxShadow: "md",
       },
       _active: {
+        ...floatingBorder("default", props),
         ...floatingBackground("active", props),
         boxShadow: "none",
       },

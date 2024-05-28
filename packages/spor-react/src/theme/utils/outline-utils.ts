@@ -13,10 +13,7 @@ export function outlineBorder(
       };
     case "focus":
       return {
-        outlineColor: mode(
-          "outline.focus.light",
-          "outline.focus.dark",
-        )(props),
+        outlineColor: mode("outline.focus.light", "outline.focus.dark")(props),
       };
     default:
       return {

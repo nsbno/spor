@@ -1,29 +1,29 @@
 import {
+  Box,
   BoxProps,
   UseRadioProps,
   chakra,
   forwardRef,
-  useRadio,
-  useStyleConfig,
+  useMultiStyleConfig,
 } from "@chakra-ui/react";
-import { dataAttr } from "@chakra-ui/utils";
 import React, { useId } from "react";
 
-export type RadioCardProps = UseRadioProps &
-  BoxProps & {
-    children: React.ReactNode;
-    /** Defaults to "base" */
-    variant: "floating" | "base";
-  };
-
 /**
- * Renders a radio card.
+ * Radio cards are used to present a set of options where only one option can be selected.
  *
  * The most basic version looks like this:
  *
  * ```tsx
  * <RadioCard>
  *   Content
+ * </RadioCard>
+ * ```
+ *
+ * In order to use RadioCard outside a RadioCardGroup, you need to pass the `isChecked` and `onChange` props.
+ *
+ * ```tsx
+ * <RadioCard isChecked={true} onChange={(e) => console.log(e.target.value)}>
+ *  Content
  * </RadioCard>
  * ```
  *
@@ -59,38 +59,47 @@ export type RadioCardProps = UseRadioProps &
  * ```
  */
 
+export type RadioCardProps = UseRadioProps &
+  BoxProps & {
+    children: React.ReactNode;
+    /** Defaults to "base" */
+    variant?: "floating" | "base";
+    /** Needs to be defined if RadioCard is used outside RadioCardGroup */
+    isChecked?: boolean;
+    /** Needs to be defined if RadioCard is used outside RadioCardGroup */
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  };
+
 export const RadioCard = forwardRef<RadioCardProps, "div">(
-  ({ children, variant = "base", ...props }, ref) => {
-    const { getInputProps, getRadioProps, getRootProps, state } =
-      useRadio(props);
-
-    const styles = useStyleConfig("RadioCard", { variant });
-
-    const input = getInputProps({}, ref);
-    const radio = getRadioProps();
+  ({ children, variant = "base", isChecked, onChange, ...props }, ref) => {
+    const styles = useMultiStyleConfig("RadioCard", { variant });
 
     const id = `radio-card-${useId()}`;
 
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      onChange && onChange(event);
+    };
+
     return (
-      <chakra.label
-        htmlFor={id}
-        {...getRootProps()}
-        aria-label={String(children)}
-      >
-        <chakra.input {...input} id={id} disabled={state.isDisabled} />
-        <chakra.div
-          __css={styles}
-          {...radio}
-          data-checked={dataAttr(state.isChecked)}
-          data-hover={dataAttr(state.isHovered)}
-          data-focus={dataAttr(state.isFocused)}
-          data-active={dataAttr(state.isActive)}
-          data-disabled={dataAttr(state.isDisabled)}
+      <Box as="label" htmlFor={id} aria-label={String(children)} ref={ref}>
+        <chakra.input
+          type="radio"
+          id={id}
+          checked={isChecked}
+          onChange={handleChange}
           {...props}
+          sx={styles.radioInput}
+        />
+        <Box
+          {...props}
+          __css={{
+            ...styles.container,
+            ...(isChecked && styles.checked),
+          }}
         >
           {children}
-        </chakra.div>
-      </chakra.label>
+        </Box>
+      </Box>
     );
   },
 );

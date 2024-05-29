@@ -380,6 +380,14 @@
             "dark": {
               "value": "{color.alias.white.value}"
             }
+          },
+          "active": {
+            "light": {
+              "value": "{color.alias.silver.value}"
+            },
+            "dark": {
+              "value": "{color.alias.white.value}"
+            }
           }
         },
         "text": {

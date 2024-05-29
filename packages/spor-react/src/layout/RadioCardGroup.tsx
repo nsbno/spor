@@ -4,7 +4,7 @@ import {
   StackDirection,
   Stack,
 } from "@chakra-ui/react";
-import React, { Children } from "react";
+import React from "react";
 import { RadioCard, RadioCardProps } from "./RadioCard";
 
 type RadioCardGroupProps = RadioGroupProps & {
@@ -75,17 +75,21 @@ export const RadioCardGroup = ({
     ...props,
   });
 
-  const group = getRootProps();
+  const rootProps = getRootProps();
 
   return (
-    <Stack direction={direction} {...group}>
+    <Stack direction={direction} {...rootProps}>
       {recursiveMap(children, (child: React.ReactElement) => {
         if (child.type === RadioCard) {
-          const radio = getRadioProps({ value: child.props.value });
+          const radioProps = getRadioProps({ value: child.props.value });
           const variantValue = variant as "base" | "floating" | undefined;
           return React.cloneElement(
             child as React.ReactElement<RadioCardProps>,
-            { ...radio, variant: variantValue, ...props },
+            {
+              ...radioProps,
+              variant: variantValue,
+              ...props,
+            },
           );
         }
         return child;

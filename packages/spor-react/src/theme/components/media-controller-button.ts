@@ -1,7 +1,7 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { anatomy, mode } from "@chakra-ui/theme-tools";
 import { baseText } from "../utils/base-utils";
-import { brandBackground } from "../utils/brand-utils";
+import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 import { surface } from "../utils/surface-utils";
@@ -38,14 +38,14 @@ const config = helpers.defineMultiStyleConfig({
     play: (props) => ({
       container: {
         padding: 0,
-        color: mode("brand.text.light", "brand.text.dark")(props),
+        ...brandText("default", props),
         ...brandBackground("default", props),
         _hover: {
-          color: mode("brand.text.light", "brand.text.dark")(props),
+          ...brandText("default", props),
           ...brandBackground("hover", props),
         },
         _active: {
-          color: mode("brand.text.light", "brand.text.dark")(props),
+          ...brandText("default", props),
           ...brandBackground("active", props),
         },
 

@@ -107,6 +107,8 @@ const getCategoryDisplayName = (category: string) => {
       return "Feedback";
     case "layout":
       return "Layout";
+    case "media-controller":
+      return "Media Controller";
     case "map":
       return "Map";
     case "misc":

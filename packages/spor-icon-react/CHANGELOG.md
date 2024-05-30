@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 3.8.0
+
+### Minor Changes
+
+- 8b386fd: Add icons for media controller
+
 ## 3.7.0
 
 ### Minor Changes

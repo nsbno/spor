@@ -1,11 +1,5 @@
 # Changelog
 
-## 3.6.1
-
-### Patch Changes
-
-- ad7aad4: Added tokens for outline values.
-
 ## 3.6.0
 
 ### Minor Changes

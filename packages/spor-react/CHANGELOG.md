@@ -1,17 +1,5 @@
 # @vygruppen/spor-react
 
-## 9.10.0
-
-### Minor Changes
-
-- ad7aad4: Fixed crusial error with RadioCard and updated styling.
-- c16b892: Fix values on PressableCard
-
-### Patch Changes
-
-- Updated dependencies [ad7aad4]
-  - @vygruppen/spor-design-tokens@3.6.1
-
 ## 9.9.0
 
 ### Minor Changes

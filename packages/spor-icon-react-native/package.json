@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-icon-react-native",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "main": "./dist/index.mjs",
   "types": "./dist/types.d.ts",
   "license": "MIT",

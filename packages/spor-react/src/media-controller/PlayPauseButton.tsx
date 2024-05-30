@@ -1,7 +1,12 @@
 import { BoxProps, Center, useMultiStyleConfig } from "@chakra-ui/react";
 import React from "react";
-import { createTexts, useTranslation } from "..";
-import { PauseIcon, PlayIcon } from "./icons";
+import { IconButton, createTexts, useTranslation } from "..";
+import {
+  PauseMediaControllerFill24Icon,
+  PauseMediaControllerFill30Icon,
+  PlayMediaControllerFill24Icon,
+  PlayMediaControllerFill30Icon,
+} from "@vygruppen/spor-icon-react";
 
 type PlayPauseButtonProps = BoxProps & {
   onClick: () => void;
@@ -43,9 +48,9 @@ export const PlayPauseButton = ({
       {...props}
     >
       {isPlaying ? (
-        <PauseIcon sx={styles.icon} />
+        <PauseMediaControllerFill24Icon sx={styles.icon} />
       ) : (
-        <PlayIcon sx={styles.icon} />
+        <PlayMediaControllerFill24Icon sx={styles.icon} />
       )}
     </Center>
   );

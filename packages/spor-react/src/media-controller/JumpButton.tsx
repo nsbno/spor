@@ -1,7 +1,10 @@
 import { BoxProps, Center, useMultiStyleConfig } from "@chakra-ui/react";
 import React from "react";
 import { createTexts, useTranslation } from "..";
-import { JumpBackwardIcon, JumpForwardIcon } from "./icons";
+import {
+  Backward15MediaControllerFill30Icon,
+  Forward15MediaControllerFill30Icon,
+} from "@vygruppen/spor-icon-react";
 
 type JumpButtonProps = BoxProps & {
   onClick: () => void;
@@ -45,9 +48,9 @@ export const JumpButton = ({
       {...props}
     >
       {direction === "forward" ? (
-        <JumpForwardIcon sx={styles.icon} />
+        <Forward15MediaControllerFill30Icon sx={styles.icon} />
       ) : (
-        <JumpBackwardIcon sx={styles.icon} />
+        <Backward15MediaControllerFill30Icon sx={styles.icon} />
       )}
     </Center>
   );

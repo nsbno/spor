@@ -1,11 +1,9 @@
 import { BoxProps, Center, useMultiStyleConfig } from "@chakra-ui/react";
 import React from "react";
-import { IconButton, createTexts, useTranslation } from "..";
+import { createTexts, useTranslation } from "..";
 import {
   PauseMediaControllerFill24Icon,
-  PauseMediaControllerFill30Icon,
   PlayMediaControllerFill24Icon,
-  PlayMediaControllerFill30Icon,
 } from "@vygruppen/spor-icon-react";
 
 type PlayPauseButtonProps = BoxProps & {

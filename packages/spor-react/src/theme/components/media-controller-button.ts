@@ -6,11 +6,7 @@ import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 import { surface } from "../utils/surface-utils";
 
-const parts = anatomy("media-controller-button").parts(
-  "container",
-  "icon",
-  "playPauseIcon",
-);
+const parts = anatomy("media-controller-button").parts("container", "icon");
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({

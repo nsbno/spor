@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 2.8.0
+
+### Minor Changes
+
+- 8b386fd: Add icons for media controller
+
 ## 2.7.0
 
 ### Minor Changes

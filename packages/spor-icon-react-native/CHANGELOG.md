@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.9.0
+
+### Minor Changes
+
+- 8b386fd: Add icons for media controller
+
 ## 2.8.0
 
 ### Minor Changes

@@ -8,7 +8,3 @@ export * from "./animation-data/inline-loader-light-color";
 export * from "./animation-data/spinner-color";
 export * from "./animation-data/spinner-dark";
 export * from "./animation-data/spinner-light";
-export * from "./animation-data/vy-logo-pride";
-export * from "./animation-data/content-loader-pride";
-export * from "./animation-data/inline-loader-color-pride";
-export * from "./animation-data/spinner-color-pride";

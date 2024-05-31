@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.10.1
+
+### Patch Changes
+
+- 47c0496: Changed icons used in MediaController component
+
 ## 9.10.0
 
 ### Minor Changes

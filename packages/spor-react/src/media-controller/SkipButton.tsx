@@ -1,7 +1,10 @@
 import { BoxProps, Center, useMultiStyleConfig } from "@chakra-ui/react";
 import React from "react";
 import { createTexts, useTranslation } from "..";
-import { SkipNextIcon, SkipPreviousIcon } from "./icons";
+import {
+  NextMediaControllerFill30Icon,
+  PreviousMediaControllerFill30Icon,
+} from "@vygruppen/spor-icon-react";
 
 type SkipButtonProps = BoxProps & {
   onClick: () => void;
@@ -42,9 +45,9 @@ export const SkipButton = ({
       {...props}
     >
       {direction === "forward" ? (
-        <SkipNextIcon sx={styles.icon} />
+        <NextMediaControllerFill30Icon sx={styles.icon} />
       ) : (
-        <SkipPreviousIcon sx={styles.icon} />
+        <PreviousMediaControllerFill30Icon sx={styles.icon} />
       )}
     </Center>
   );

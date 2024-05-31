@@ -1,7 +1,7 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy } from "@chakra-ui/theme-tools";
+import { anatomy, mode } from "@chakra-ui/theme-tools";
 import { baseText } from "../utils/base-utils";
-import { brandBackground } from "../utils/brand-utils";
+import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 import { surface } from "../utils/surface-utils";
@@ -38,16 +38,21 @@ const config = helpers.defineMultiStyleConfig({
     play: (props) => ({
       container: {
         padding: 0,
+        ...brandText("default", props),
+        ...brandBackground("default", props),
         _hover: {
-          color: brandBackground("hover", props).backgroundColor,
+          ...brandText("default", props),
+          ...brandBackground("hover", props),
         },
         _active: {
-          color: brandBackground("active", props).backgroundColor,
+          ...brandText("default", props),
+          ...brandBackground("active", props),
         },
 
         _disabled: {
           pointerEvents: "none",
-          color: surface("disabled", props).backgroundColor,
+          color: mode("icon.disabled.light", "icon.disabled.dark")(props),
+          ...surface("disabled", props),
         },
       },
     }),
@@ -72,16 +77,20 @@ const config = helpers.defineMultiStyleConfig({
     }),
   },
   sizes: {
-    sm: {
+    sm: (props) => ({
       container: {
-        fontSize: 42,
+        fontSize: props.variant === "play" ? 24 : 42,
+        width: props.variant === "play" ? "2.625rem" : undefined,
+        height: props.variant === "play" ? "2.625rem" : undefined,
       },
-    },
-    lg: {
+    }),
+    lg: (props) => ({
       container: {
-        fontSize: 60,
+        fontSize: props.variant === "play" ? 38 : 60,
+        width: props.variant === "play" ? "3.75rem" : undefined,
+        height: props.variant === "play" ? "3.75rem" : undefined,
       },
-    },
+    }),
   },
 });
 

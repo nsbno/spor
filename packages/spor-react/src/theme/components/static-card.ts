@@ -1,4 +1,4 @@
-import { defineStyleConfig } from "@chakra-ui/react";
+import { Theme, defineStyleConfig } from "@chakra-ui/react";
 import { colors } from "../foundations";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { bg } from "../utils/bg-utils";
@@ -33,9 +33,11 @@ type CardThemeProps = {
     | "darkBlue"
     | "darkGreen"
     | "darkYellow";
+  theme: Theme;
+  colorMode: "light" | "dark";
 };
 
-const getColorSchemeBaseProps = (props: any) => {
+const getColorSchemeBaseProps = (props: CardThemeProps) => {
   switch (props.colorScheme) {
     case "white":
       return {

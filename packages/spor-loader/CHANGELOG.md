@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader
 
+## 0.4.0
+
+### Minor Changes
+
+- 1812e4e: Add loaders for pride month
+
 ## 0.3.2
 
 ### Patch Changes

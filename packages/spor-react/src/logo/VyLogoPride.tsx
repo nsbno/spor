@@ -11,15 +11,15 @@ export type VyLogoPrideProps = {
 } & BoxProps;
 export const VyLogoPride = ({ colorScheme, ...boxProps }: VyLogoPrideProps) => {
   // These colors should not be tokenized, as they are logo specific.
-  const pinkColor = colorScheme === "dark" ? "#ED6F99" : "#ffffff";
-  const purpleColor = colorScheme === "dark" ? "#C06CF7" : "#ffffff";
-  const darkPurpleColor = colorScheme === "dark" ? "#821889" : "#ffffff";
-  const greenColor = colorScheme === "dark" ? "#56BDBF" : "#ffffff";
-  const darkGreenColor = colorScheme === "dark" ? "#3E8C26" : "#ffffff";
-  const blueColor = colorScheme === "dark" ? "#3A0692" : "#ffffff";
-  const redColor = colorScheme === "dark" ? "#EA3323" : "#ffffff";
-  const orangeColor = colorScheme === "dark" ? "#F09436" : "#ffffff";
-  const yellowColor = colorScheme === "dark" ? "#FFFF54" : "#ffffff";
+  const pinkColor = colorScheme === "light" ? "#ED6F99" : "#ffffff";
+  const purpleColor = colorScheme === "light" ? "#C06CF7" : "#ffffff";
+  const darkPurpleColor = colorScheme === "light" ? "#821889" : "#ffffff";
+  const greenColor = colorScheme === "light" ? "#56BDBF" : "#ffffff";
+  const darkGreenColor = colorScheme === "light" ? "#3E8C26" : "#ffffff";
+  const blueColor = colorScheme === "light" ? "#3A0692" : "#ffffff";
+  const redColor = colorScheme === "light" ? "#EA3323" : "#ffffff";
+  const orangeColor = colorScheme === "light" ? "#F09436" : "#ffffff";
+  const yellowColor = colorScheme === "light" ? "#FFFF54" : "#ffffff";
 
   const id = useId();
   return (

@@ -4,7 +4,7 @@ import { usePride } from "./PrideProvider";
 import { FormControl, FormLabel, Switch } from "../input";
 
 type TogglePrideProps = {
-  label?: string;
+  label: string;
 };
 
 export const TogglePride = ({ label }: TogglePrideProps) => {

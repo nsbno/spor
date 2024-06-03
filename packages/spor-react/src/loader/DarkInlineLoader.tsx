@@ -1,8 +1,12 @@
 import { Box, BoxProps, Center } from "@chakra-ui/react";
-import { inlineLoaderDarkData } from "@vygruppen/spor-loader";
+import {
+  inlineLoaderColorPrideData,
+  inlineLoaderDarkData,
+} from "@vygruppen/spor-loader";
 import React from "react";
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
+import { usePride } from "../pride/PrideProvider";
 
 export type DarkInlineLoaderProps = Exclude<BoxProps, "children">;
 /**
@@ -13,11 +17,18 @@ export const DarkInlineLoader = ({
   maxWidth,
   ...props
 }: DarkInlineLoaderProps) => {
+  const { isPride } = usePride();
   return (
     <Center {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={inlineLoaderDarkData} />}
+          {() => (
+            <Lottie
+              animationData={
+                isPride ? inlineLoaderColorPrideData : inlineLoaderDarkData
+              }
+            />
+          )}
         </ClientOnly>
       </Box>
     </Center>

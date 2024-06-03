@@ -1,8 +1,12 @@
 import { Box, BoxProps, Center } from "@chakra-ui/react";
-import { spinnerColorData } from "@vygruppen/spor-loader";
+import {
+  spinnerColorData,
+  spinnerColorPrideData,
+} from "@vygruppen/spor-loader";
 import React from "react";
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
+import { usePride } from "../pride/PrideProvider";
 
 export type SpinnerProps = BoxProps;
 export type ColorSpinnerProps = SpinnerProps;
@@ -25,13 +29,19 @@ export const ColorSpinner = ({
   children,
   width,
   maxWidth,
+
   ...props
 }: SpinnerProps) => {
+  const { isPride } = usePride();
   return (
     <Center flexDirection="column" {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={spinnerColorData} />}
+          {() => (
+            <Lottie
+              animationData={isPride ? spinnerColorPrideData : spinnerColorData}
+            />
+          )}
         </ClientOnly>
       </Box>
       {children && (

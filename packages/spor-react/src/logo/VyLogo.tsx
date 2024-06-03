@@ -1,5 +1,7 @@
 import { Box, BoxProps } from "@chakra-ui/react";
 import React, { useId } from "react";
+import { usePride } from "../pride";
+import { VyLogoPride } from "./VyLogoPride";
 
 export type VyLogoProps = {
   /** The color of the logo
@@ -10,6 +12,11 @@ export type VyLogoProps = {
   colorScheme: "light" | "dark";
 } & BoxProps;
 export const VyLogo = ({ colorScheme, ...boxProps }: VyLogoProps) => {
+  const { isPride } = usePride();
+
+  if (isPride) {
+    return <VyLogoPride colorScheme={colorScheme} {...boxProps} />;
+  }
   // These colors should not be tokenized, as they are logo specific.
   const mainColor = colorScheme === "light" ? "#1d211c" : "#ffffff";
   const accentColor = colorScheme === "light" ? "#138c6e" : "#ffffff";

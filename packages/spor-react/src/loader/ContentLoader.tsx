@@ -1,8 +1,12 @@
 import { Box, BoxProps } from "@chakra-ui/react";
-import { contentLoaderData } from "@vygruppen/spor-loader";
+import {
+  contentLoaderData,
+  contentLoaderPrideData,
+} from "@vygruppen/spor-loader";
 import React from "react";
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
+import { usePride } from "../pride/PrideProvider";
 
 export type ContentLoaderProps = BoxProps;
 /**
@@ -10,11 +14,18 @@ export type ContentLoaderProps = BoxProps;
  * It should mostly be used for
  */
 export const ContentLoader = ({ children, ...props }: ContentLoaderProps) => {
+  const { isPride } = usePride();
   return (
     <Box {...props}>
       <Box maxWidth="140px" marginX="auto">
         <ClientOnly>
-          {() => <Lottie animationData={contentLoaderData} />}
+          {() => (
+            <Lottie
+              animationData={
+                isPride ? contentLoaderPrideData : contentLoaderData
+              }
+            />
+          )}
         </ClientOnly>
       </Box>
       {children && (

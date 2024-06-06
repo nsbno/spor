@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.11.3
+
+### Patch Changes
+
+- c644d2e: Bump versions
+
 ## 9.11.2
 
 ### Patch Changes

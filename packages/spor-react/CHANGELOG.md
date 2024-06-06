@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.11.1
+
+### Patch Changes
+
+- 33a6ee0: Update versions and add types for modules
+
 ## 9.11.0
 
 ### Minor Changes

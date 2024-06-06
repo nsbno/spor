@@ -13,19 +13,21 @@ export const PrideProvider: React.FC<React.PropsWithChildren<{}>> = ({
 }) => {
   const isBrowser = typeof window !== "undefined";
 
+  const key = "spor__isPride";
+
   const [isPride, setIsPride] = useState<boolean>(() => {
     if (isBrowser) {
-      const savedState = localStorage.getItem("isPride");
-      return savedState ? JSON.parse(savedState) : false;
+      const savedState = localStorage.getItem(key);
+      return savedState ? JSON.parse(savedState) : true;
     }
-    return false;
+    return true;
   });
 
   const togglePride = () => {
     setIsPride((prev) => {
       const newState = !prev;
       if (isBrowser) {
-        localStorage.setItem("isPride", JSON.stringify(newState));
+        localStorage.setItem(key, JSON.stringify(newState));
       }
       return newState;
     });
@@ -33,7 +35,7 @@ export const PrideProvider: React.FC<React.PropsWithChildren<{}>> = ({
 
   useEffect(() => {
     if (isBrowser) {
-      const savedState = localStorage.getItem("isPride");
+      const savedState = localStorage.getItem(key);
       if (savedState) {
         setIsPride(JSON.parse(savedState));
       }

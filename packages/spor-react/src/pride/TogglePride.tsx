@@ -10,18 +10,14 @@ type TogglePrideProps = {
 export const TogglePride = ({ label }: TogglePrideProps) => {
   const { isPride, togglePride } = usePride();
 
-  console.log(isPride);
-
   return (
-    <button onClick={togglePride}>
-      <FormControl display="flex" alignItems="center" gap={3}>
-        <FormLabel margin="0">{label}</FormLabel>
-        <Switch
-          size="sm"
-          onChange={() => togglePride()}
-          defaultChecked={isPride}
-        />
-      </FormControl>
-    </button>
+    <FormControl display="flex" alignItems="center" gap={3}>
+      <FormLabel margin="0">{label}</FormLabel>
+      <Switch
+        size="sm"
+        onChange={() => togglePride()}
+        defaultChecked={isPride}
+      />
+    </FormControl>
   );
 };

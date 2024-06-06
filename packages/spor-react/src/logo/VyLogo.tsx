@@ -1,5 +1,5 @@
-import { Box, BoxProps } from "@chakra-ui/react";
-import React, { useId } from "react";
+import { BoxProps } from "@chakra-ui/react";
+import React from "react";
 import { usePride } from "../pride";
 import { VyLogoPride } from "./VyLogoPride";
 import { VyLogoDefault } from "./VyLogoDefault";

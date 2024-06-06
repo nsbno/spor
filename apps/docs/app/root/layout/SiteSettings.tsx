@@ -12,6 +12,7 @@ import {
   Switch,
   Text,
   useColorMode,
+  TogglePride,
 } from "@vygruppen/spor-react";
 import { BrandSwitcher } from "~/features/brand-switcher/BrandSwitcher";
 
@@ -23,6 +24,7 @@ export const SiteSettings = ({ showLabel }: SiteSettingsProps) => {
   const labelProps = showLabel
     ? { label: "Settings" }
     : { "aria-label": "Settings" };
+
   return (
     <DarkMode>
       <CardSelect
@@ -52,6 +54,7 @@ export const SiteSettings = ({ showLabel }: SiteSettingsProps) => {
                 defaultChecked={colorMode === "dark"}
               />
             </FormControl>
+            <TogglePride label="Make it pride" />
           </Stack>
         </Flex>
       </CardSelect>

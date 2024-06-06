@@ -3,6 +3,8 @@ import { inlineLoaderColorData } from "@vygruppen/spor-loader";
 import React from "react";
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
+import { inlineLoaderColorPrideData } from "@vygruppen/spor-loader";
+import { usePride } from "../pride";
 
 export type ColorInlineLoaderProps = Exclude<BoxProps, "children">;
 /**
@@ -15,11 +17,18 @@ export const ColorInlineLoader = ({
   maxWidth,
   ...props
 }: ColorInlineLoaderProps) => {
+  const { isPride } = usePride();
   return (
     <Center {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={inlineLoaderColorData} />}
+          {() => (
+            <Lottie
+              animationData={
+                isPride ? inlineLoaderColorPrideData : inlineLoaderColorData
+              }
+            />
+          )}
         </ClientOnly>
       </Box>
     </Center>

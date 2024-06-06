@@ -39,7 +39,7 @@ export const VyLogoPride = ({ colorScheme, ...boxProps }: VyLogoPrideProps) => {
           fill={pinkColor}
         />
         <mask
-          id="mask0_4247_11084"
+          id={`${id}-a-pride`}
           style={{ maskType: "luminance" }}
           maskUnits="userSpaceOnUse"
           x="0"
@@ -54,7 +54,7 @@ export const VyLogoPride = ({ colorScheme, ...boxProps }: VyLogoPrideProps) => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask0_4247_11084)">
+        <g mask={`url(#${id}-a-pride)`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -105,7 +105,7 @@ export const VyLogoPride = ({ colorScheme, ...boxProps }: VyLogoPrideProps) => {
           fill={greenColor}
         />
         <mask
-          id="mask1_4247_11084"
+          id={`${id}-b-pride`}
           style={{ maskType: "luminance" }}
           maskUnits="userSpaceOnUse"
           x="30"
@@ -120,7 +120,7 @@ export const VyLogoPride = ({ colorScheme, ...boxProps }: VyLogoPrideProps) => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_4247_11084)">
+        <g mask={`url(#${id}-b-pride)`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.11.0
+
+### Minor Changes
+
+- 4129826: Added support for Pride colors for VyDigital theme
+
 ## 9.10.1
 
 ### Patch Changes

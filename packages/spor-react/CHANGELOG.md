@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.11.2
+
+### Patch Changes
+
+- 2de6b4d: Remove type declaration
+
 ## 9.11.1
 
 ### Patch Changes

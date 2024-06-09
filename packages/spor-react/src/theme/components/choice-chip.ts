@@ -15,9 +15,10 @@ const config = helpers.defineMultiStyleConfig({
     container: {
       display: "inline-flex",
       alignItems: "center",
-      fontSize: "16px",
+      fontSize: "xs",
       cursor: "pointer",
       transitionProperty: "all",
+      borderRadius: "xl",
       transitionDuration: "fast",
       _checked: {
         outlineColor: "transparent",
@@ -117,42 +118,38 @@ const config = helpers.defineMultiStyleConfig({
   sizes: {
     xs: {
       container: {
-        borderRadius: "30px",
         _checked: {
-          borderRadius: "9px",
+          borderRadius: "0.563rem",
         },
-        height: "30px",
+        height: 5,
         paddingX: 1.5,
       },
     },
     sm: {
       container: {
-        borderRadius: "30px",
         _checked: {
-          borderRadius: "12px",
+          borderRadius: "sm",
         },
-        height: "36px",
+        height: 6,
         paddingX: 2,
       },
     },
     md: {
       container: {
-        borderRadius: "30px",
         _checked: {
-          borderRadius: "12px",
+          borderRadius: "sm",
         },
-        height: "42px",
+        height: 7,
         paddingX: 2,
       },
     },
     lg: {
       container: {
-        borderRadius: "30px",
         _checked: {
-          borderRadius: "18px",
+          borderRadius: "md",
         },
-        height: "54px",
-        px: 3,
+        height: 8,
+        paddingX: 3,
       },
     },
   },

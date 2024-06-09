@@ -64,27 +64,7 @@ export function CalendarCell({
   }, []);
 
   return (
-    <Box
-      as="td"
-      {...cellProps}
-      textAlign="center"
-      sx={{
-        '&[aria-selected="true"] + [aria-selected="true"] > button': {
-          "&::before": {
-            content: '""',
-            display: "block",
-            width: "100%",
-            height: "100%",
-            backgroundColor: "darkTeal",
-            position: "absolute",
-            left: "-50%",
-            top: 0,
-            bottom: 0,
-            zIndex: -1,
-          },
-        },
-      }}
-    >
+    <Box as="td" {...cellProps} textAlign="center" sx={styles.cell}>
       <Box
         as="button"
         type="button"

@@ -20,6 +20,6 @@
     "build": "mkdir dist && bestzip dist/spor-icons.zip svg/*"
   },
   "devDependencies": {
-    "bestzip": "^2.2.0"
+    "bestzip": "^2.2.1"
   }
 }

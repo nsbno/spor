@@ -1,6 +1,7 @@
 import { defineStyleConfig } from "@chakra-ui/react";
 import { cssVar, mode } from "@chakra-ui/theme-tools";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { ghostBackground } from "../utils/ghost-utils";
 
 const $size = cssVar("close-button-size");
 
@@ -16,27 +17,27 @@ const config = defineStyleConfig({
     fontWeight: "normal",
     ...focusVisibleStyles(props),
     _hover: {
-      backgroundColor: mode("seaMist", "whiteAlpha.100")(props),
+      ...ghostBackground("hover", props),
       _disabled: {
         color: "dimGrey",
       },
     },
     _active: {
-      backgroundColor: mode("mint", "whiteAlpha.200")(props),
+      ...ghostBackground("active", props),
     },
   }),
   sizes: {
     lg: {
       [$size.variable]: "40px",
-      fontSize: "16px",
+      fontSize: "xs",
     },
     md: {
       [$size.variable]: "32px",
-      fontSize: "12px",
+      fontSize: "0.75rem",
     },
     sm: {
       [$size.variable]: "24px",
-      fontSize: "10px",
+      fontSize: "0.625rem",
     },
   },
   defaultProps: {

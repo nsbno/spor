@@ -2,7 +2,7 @@ import { defineStyleConfig } from "@chakra-ui/react";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { accentBackground } from "../utils/accent-utils";
+import { accentBackground, accentText } from "../utils/accent-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props) => ({
@@ -39,6 +39,7 @@ const config = defineStyleConfig({
       },
     }),
     accent: (props) => ({
+      ...accentText("default", props),
       ...accentBackground("default", props),
       boxShadow: "sm",
       _hover: {

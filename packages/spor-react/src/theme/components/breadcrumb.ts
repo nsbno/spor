@@ -1,43 +1,11 @@
 import { breadcrumbAnatomy as parts } from "@chakra-ui/anatomy";
-import {
-  createMultiStyleConfigHelpers,
-  defineStyle,
-} from "@chakra-ui/styled-system";
-import { mode } from "@chakra-ui/theme-tools";
+import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
 import { baseBackground, baseBorder } from "../utils/base-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { ghostBackground } from "../utils/ghost-utils";
 
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys);
-
-const baseStyleLink = defineStyle((props) => ({
-  transitionProperty: "common",
-  transitionDuration: "fast",
-  transitionTimingFunction: "ease-out",
-  color: "inherit",
-  textDecoration: "none",
-  textStyle: "xs",
-  paddingX: 0.5,
-  borderRadius: "xs",
-  "&:not([aria-current=page])": {
-    cursor: "pointer",
-    _hover: {
-      ...baseBackground("hover", props),
-    },
-    _active: {
-      ...baseBackground("active", props),
-    },
-    ...focusVisibleStyles(props),
-  },
-}));
-
-const baseStyle = definePartsStyle((props) => ({
-  link: baseStyleLink(props),
-  list: {
-    flexWrap: "wrap",
-    alignItems: "flex-start",
-  },
-}));
 
 export default defineMultiStyleConfig({
   baseStyle: definePartsStyle((props) => ({
@@ -77,16 +45,10 @@ export default defineMultiStyleConfig({
       link: {
         "&:not([aria-current=page])": {
           _hover: {
-            backgroundColor: mode(
-              "ghost.surface.hover.light",
-              "ghost.surface.hover.dark",
-            )(props),
+            ...ghostBackground("hover", props),
           },
           _active: {
-            backgroundColor: mode(
-              "ghost.surface.active.light",
-              "ghost.surface.active.dark",
-            )(props),
+            ...ghostBackground("active", props),
           },
         },
       },

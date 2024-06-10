@@ -30,17 +30,17 @@ const config = helpers.defineMultiStyleConfig({
     field: {
       ...Input.baseStyle!(props).field,
       appearance: "none",
-      paddingTop: "16px",
+      paddingTop: "1rem",
       "option, optgroup": {},
     },
     icon: {
-      width: "30px",
-      height: "30px",
+      width: 5,
+      height: 5,
       insetEnd: "0.5rem",
       position: "relative",
       color: "currentColor",
       strokeLinecap: "round",
-      fontSize: "1.125rem",
+      fontSize: "sm",
       _disabled: {
         ...baseText("disabled", props),
       },

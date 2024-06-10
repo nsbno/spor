@@ -20,6 +20,7 @@ const parts = anatomy("datepicker").parts(
   "dateCell",
   "inputLabel",
   "dateTimeSegment",
+  "cell",
 );
 
 const $arrowBackground = cssVar("popper-arrow-bg");
@@ -57,6 +58,10 @@ const config = helpers.defineMultiStyleConfig({
         "darkGrey",
         props.isPlaceholder ? "whiteAlpha.400" : "white",
       )(props),
+      _focus: {
+        ...brandBackground("hover", props),
+        color: "white",
+      },
     },
     calendarTriggerButton: {
       width: 8,
@@ -97,6 +102,22 @@ const config = helpers.defineMultiStyleConfig({
     },
     weekend: {
       ...accentText("default", props),
+    },
+    cell: {
+      '&[aria-selected="true"] + [aria-selected="true"] > button': {
+        "&::before": {
+          content: '""',
+          display: "block",
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          left: "-50%",
+          top: 0,
+          bottom: 0,
+          zIndex: -1,
+          ...brandBackground("default", props),
+        },
+      },
     },
     dateCell: {
       ...ghostBackground("default", props),

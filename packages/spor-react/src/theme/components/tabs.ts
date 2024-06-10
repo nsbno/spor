@@ -1,6 +1,6 @@
 import { tabsAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { mode, type StyleFunctionProps } from "@chakra-ui/theme-tools";
+import { mode } from "@chakra-ui/theme-tools";
 import { accentBackground, accentText } from "../utils/accent-utils";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
@@ -88,7 +88,7 @@ const config = helpers.defineMultiStyleConfig({
   sizes: {
     xs: {
       tablist: {
-        height: "30px",
+        height: 5,
         padding: "2px",
       },
       tab: {
@@ -98,7 +98,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     sm: {
       tablist: {
-        height: "36px",
+        height: 6,
         padding: 0.5,
       },
       tab: {
@@ -107,7 +107,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     md: {
       tablist: {
-        height: "42px",
+        height: 7,
         padding: 0.5,
       },
       tab: {
@@ -117,7 +117,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     lg: {
       tablist: {
-        height: "54px",
+        height: 8,
         padding: "4px",
       },
       tab: {
@@ -133,29 +133,3 @@ const config = helpers.defineMultiStyleConfig({
 });
 
 export default config;
-
-const getTabColorSchemeHoverProps = (props: StyleFunctionProps) => {
-  switch (props.colorScheme) {
-    case "base":
-      return {
-        ...baseBorder("hover", props),
-      };
-    case "accent":
-      return {
-        ...accentBackground("hover", props),
-      };
-  }
-};
-
-const getTabColorSchemeActiveProps = (props: StyleFunctionProps) => {
-  switch (props.colorScheme) {
-    case "base":
-      return {
-        ...baseBackground("active", props),
-      };
-    case "accent":
-      return {
-        ...accentBackground("active", props),
-      };
-  }
-};

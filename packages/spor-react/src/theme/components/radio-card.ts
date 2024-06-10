@@ -58,7 +58,7 @@ const config = helpers.defineMultiStyleConfig({
           ...baseBorder("active", props),
         },
       },
-      checked: {
+      _checked: {
         _hover: {
           ...baseBorder("hover", props),
         },
@@ -85,7 +85,7 @@ const config = helpers.defineMultiStyleConfig({
           ...floatingBorder("active", props),
         },
       },
-      checked: {
+      _checked: {
         cursor: "normal",
 
         _hover: {

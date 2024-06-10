@@ -5,6 +5,7 @@ import {
   chakra,
   forwardRef,
   useMultiStyleConfig,
+  useRadio,
 } from "@chakra-ui/react";
 import React, { useId } from "react";
 
@@ -70,36 +71,37 @@ export type RadioCardProps = UseRadioProps &
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
-export const RadioCard = forwardRef<RadioCardProps, "div">(
-  ({ children, variant = "base", isChecked, onChange, ...props }, ref) => {
-    const styles = useMultiStyleConfig("RadioCard", { variant });
+export const RadioCard = ({
+  children,
+  variant = "base",
+  isChecked,
+  onChange,
+  ...props
+}: RadioCardProps) => {
+  const { getInputProps, getRadioProps } = useRadio(props);
 
-    const id = `radio-card-${useId()}`;
+  const inputProps = getInputProps();
+  const { onChange: _, ...radioProps } = getRadioProps();
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      onChange && onChange(event);
-    };
+  const styles = useMultiStyleConfig("RadioCard", { variant });
 
-    return (
-      <Box as="label" htmlFor={id} aria-label={String(children)} ref={ref}>
-        <chakra.input
-          type="radio"
-          id={id}
-          checked={isChecked}
-          onChange={handleChange}
-          {...props}
-          sx={styles.radioInput}
-        />
-        <Box
-          {...props}
-          __css={{
-            ...styles.container,
-            ...(isChecked && styles.checked),
-          }}
-        >
-          {children}
-        </Box>
+  const id = `radio-card-${useId()}`;
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange && onChange(event);
+  };
+
+  return (
+    <Box as="label" htmlFor={id} aria-label={String(children)}>
+      <chakra.input type="radio" id={id} {...inputProps} />
+      <Box
+        {...radioProps}
+        __css={{
+          ...styles.container,
+        }}
+      >
+        {children}
       </Box>
-    );
-  },
-);
+    </Box>
+  );
+};

@@ -14,12 +14,6 @@ type RadioCardGroupProps = RadioGroupProps & {
   direction?: StackDirection;
   /** Defaults to "base" */
   variant?: string;
-  /** The name of the radio group */
-  name?: string;
-  /** The default value of the radio group */
-  defaultValue?: string;
-  /** The callback function to be called when the radio group value changes */
-  onChange?: (value: string) => void;
 };
 
 /**
@@ -63,58 +57,18 @@ export const RadioCardGroup = ({
   children,
   name,
   direction = "row",
-  onChange,
   defaultValue,
-  variant = "base",
-  ...props
 }: RadioCardGroupProps) => {
-  const { getRootProps, getRadioProps } = useRadioGroup({
+  const { getRootProps } = useRadioGroup({
     defaultValue: defaultValue,
     name: name,
-    onChange: onChange,
-    ...props,
   });
 
   const rootProps = getRootProps();
 
   return (
     <Stack direction={direction} {...rootProps}>
-      {recursiveMap(children, (child: React.ReactElement) => {
-        if (child.type === RadioCard) {
-          const radioProps = getRadioProps({ value: child.props.value });
-          const variantValue = variant as "base" | "floating" | undefined;
-          return React.cloneElement(
-            child as React.ReactElement<RadioCardProps>,
-            {
-              ...radioProps,
-              variant: variantValue,
-              ...props,
-            },
-          );
-        }
-        return child;
-      })}
+      {children}
     </Stack>
   );
 };
-
-function recursiveMap(
-  children: React.ReactNode,
-  fn: (child: React.ReactElement) => React.ReactElement,
-): React.ReactNode {
-  return React.Children.map(children, (child) => {
-    // If this child is a React element and has children, recurse
-    if (React.isValidElement(child) && child.props.children) {
-      child = React.cloneElement(child as React.ReactElement<any>, {
-        children: recursiveMap(child.props.children, fn),
-      });
-    }
-
-    // Apply the function to the child (if it's a React element)
-    if (React.isValidElement(child)) {
-      return fn(child);
-    }
-
-    return child;
-  });
-}

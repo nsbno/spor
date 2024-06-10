@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.11.4
+
+### Patch Changes
+
+- 99eba82: Clean up colors with mode and px to rem
+
 ## 9.11.3
 
 ### Patch Changes

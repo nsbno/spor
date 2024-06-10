@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "remix vite:build",
-    "dev": "remix vite:dev",
+    "dev": "remix vite:dev --force",
     "start": "remix-serve ./build/server/index.js"
   },
   "type": "module",

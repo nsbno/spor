@@ -1,11 +1,8 @@
-import {
-  createMultiStyleConfigHelpers,
-  defineStyleConfig,
-} from "@chakra-ui/react";
+import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { anatomy } from "@chakra-ui/theme-tools";
+import { anatomy, mode } from "@chakra-ui/theme-tools";
 import { outlineBorder } from "../utils/outline-utils";
 
 const parts = anatomy("radio-card").parts("container", "checked", "radioInput");
@@ -57,14 +54,21 @@ const config = helpers.defineMultiStyleConfig({
           ...baseBackground("active", props),
           ...baseBorder("active", props),
         },
+        _focus: {
+          ...outlineBorder("focus", props),
+        },
       },
-      _checked: {
+      checked: {
         _hover: {
           ...baseBorder("hover", props),
+          ...baseBackground("default", props),
         },
         _active: {
           ...baseBackground("active", props),
           ...baseBorder("active", props),
+        },
+        _focus: {
+          ...outlineBorder("focus", props),
         },
       },
     }),
@@ -84,16 +88,21 @@ const config = helpers.defineMultiStyleConfig({
           ...floatingBackground("active", props),
           ...floatingBorder("active", props),
         },
+        _focus: {
+          ...outlineBorder("focus", props),
+        },
       },
-      _checked: {
-        cursor: "normal",
-
+      checked: {
         _hover: {
+          ...baseBackground("default", props),
           ...floatingBorder("hover", props),
         },
         _active: {
           ...floatingBackground("active", props),
           ...floatingBorder("active", props),
+        },
+        _focus: {
+          ...outlineBorder("focus", props),
         },
       },
     }),

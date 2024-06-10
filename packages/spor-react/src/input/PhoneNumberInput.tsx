@@ -69,7 +69,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
           fallback={
             <InfoSelect
               isLabelSrOnly
-              label=""
+              label={t(texts.countryCodeLabel)}
               width="6.25rem"
               height="100%"
               value="+47"
@@ -119,6 +119,12 @@ const texts = createTexts({
     nn: "Telefonnummer",
     en: "Phone number",
     sv: "Telefonnummer",
+  },
+  countryCodeLabel: {
+    nb: "Landskode",
+    nn: "Landskode",
+    en: "Country code",
+    sv: "Landskod",
   },
 });
 

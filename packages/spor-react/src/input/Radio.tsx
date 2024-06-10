@@ -1,5 +1,4 @@
 import {
-  As,
   Radio as ChakraRadio,
   RadioProps as ChakraRadioProps,
   forwardRef,

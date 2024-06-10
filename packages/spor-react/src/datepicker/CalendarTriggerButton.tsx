@@ -7,7 +7,7 @@ import {
   ResponsiveValue,
 } from "@chakra-ui/react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, { useEffect } from "react";
+import React from "react";
 import { AriaButtonProps } from "react-aria";
 import { createTexts, useTranslation } from "..";
 

@@ -42,10 +42,6 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
         borderRadius="xs"
         fontSize={["mobile.sm", "desktop.sm"]}
         sx={styles.dateTimeSegment}
-        _focus={{
-          backgroundColor: "darkTeal",
-          color: "white",
-        }}
       >
         {isPaddable(segment.type)
           ? segment.text.padStart(2, "0")

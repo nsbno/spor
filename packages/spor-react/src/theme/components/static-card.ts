@@ -1,7 +1,6 @@
 import { Theme, defineStyleConfig } from "@chakra-ui/react";
 import { colors } from "../foundations";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { bg } from "../utils/bg-utils";
 import { floatingBackground } from "../utils/floating-utils";
 import { mode } from "@chakra-ui/theme-tools";
 

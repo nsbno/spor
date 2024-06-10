@@ -18,7 +18,7 @@ const config = helpers.defineMultiStyleConfig({
       transitionDuration: "fast",
       position: "relative",
       paddingX: 3,
-      height: "54px",
+      height: 8,
       fontSize: "mobile.md",
       ...baseBackground("default", props),
 
@@ -58,7 +58,7 @@ const config = helpers.defineMultiStyleConfig({
         cursor: "text",
       },
       "&:not(:placeholder-shown)": {
-        paddingTop: "16px",
+        paddingTop: "1rem",
         "& + label": {
           transform: "scale(0.825) translateY(-10px)",
         },

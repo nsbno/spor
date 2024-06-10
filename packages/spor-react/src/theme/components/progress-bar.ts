@@ -17,7 +17,10 @@ const config = helpers.defineMultiStyleConfig({
     },
     background: {
       display: "flex",
-      backgroundColor: mode("coralGreen", "pine")(props), // TODO: Replace with semantic tokens
+      backgroundColor: mode(
+        "brand.surface.default.dark",
+        "brand.surface.default.light",
+      )(props),
       borderRadius: "sm",
       justifyContent: "flex-start",
       marginX: "auto",

@@ -32,7 +32,7 @@ const config = helpers.defineMultiStyleConfig({
       display: "flex",
       appearance: "none",
       width: "100%",
-      height: "54px",
+      height: 8,
       borderTopRadius: "sm",
       borderBottomRadius: props.isOpen ? 0 : "sm",
       paddingY: 1.5,

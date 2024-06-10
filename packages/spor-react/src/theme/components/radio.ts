@@ -2,7 +2,7 @@ import { radioAnatomy as parts } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
-import { brandBackground } from "../utils/brand-utils";
+import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
@@ -41,7 +41,10 @@ const config = helpers.defineMultiStyleConfig({
         ...baseText("disabled", props),
       },
       _checked: {
-        color: mode("pine", "coralGreen")(props),
+        color: mode(
+          "brand.surface.default.light",
+          "brand.surface.default.dark",
+        )(props),
         borderColor: "currentColor",
         _before: {
           content: `""`,

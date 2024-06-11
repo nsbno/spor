@@ -73,7 +73,9 @@ export const RadioCard = forwardRef(
       ) {
         const nextRadioCard = event.currentTarget
           .nextElementSibling as HTMLElement;
-        nextRadioCard.focus();
+        if (nextRadioCard) {
+          nextRadioCard.focus();
+        }
       }
     };
 

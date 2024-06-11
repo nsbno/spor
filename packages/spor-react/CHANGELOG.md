@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.12.0
+
+### Minor Changes
+
+- 892067c: Update RadioCard to support accessibility and more styling
+
 ## 9.11.4
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.10.0
+
+### Minor Changes
+
+- 5d80df3: Updated packages
+
 ## 2.9.0
 
 ### Minor Changes

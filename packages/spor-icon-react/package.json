@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-icon-react",
-  "version": "3.8.0",
+  "version": "3.9.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/types.d.ts",
@@ -33,7 +33,7 @@
     "@svgr/plugin-jsx": "^8.1.0",
     "@svgr/plugin-svgo": "^8.1.0",
     "@types/fs-extra": "^11.0.4",
-    "@vygruppen/spor-icon": "^2.8.0",
+    "@vygruppen/spor-icon": "^2.9.0",
     "case": "^1.6.3",
     "fs-extra": "^11.2.0",
     "react": "^18.3.1",

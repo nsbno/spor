@@ -11,7 +11,6 @@ const helpers = createMultiStyleConfigHelpers(parts.keys);
 const config = helpers.defineMultiStyleConfig({
   baseStyle: (props: any) => ({
     container: {
-      appearance: "none",
       border: "none",
       overflow: "hidden",
       fontSize: "inherit",
@@ -100,6 +99,7 @@ const config = helpers.defineMultiStyleConfig({
         },
         _focus: {
           ...outlineBorder("focus", props),
+          borderRadius: "lg",
         },
       },
     }),

@@ -92,6 +92,7 @@ const config = helpers.defineMultiStyleConfig({
       checked: {
         _hover: {
           ...floatingBorder("hover", props),
+          boxShadow: "md",
         },
         _active: {
           ...floatingBackground("active", props),

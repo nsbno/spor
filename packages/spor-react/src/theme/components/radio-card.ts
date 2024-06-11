@@ -66,7 +66,10 @@ const config = helpers.defineMultiStyleConfig({
           ...baseBorder("active", props),
         },
         _focus: {
+          outline: "4px solid",
+          outlineStyle: "double",
           ...outlineBorder("focus", props),
+          outlineOffset: "-1px",
         },
       },
     }),
@@ -98,8 +101,10 @@ const config = helpers.defineMultiStyleConfig({
           ...floatingBorder("active", props),
         },
         _focus: {
+          outline: "4px solid",
+          outlineStyle: "double",
           ...outlineBorder("focus", props),
-          borderRadius: "lg",
+          outlineOffset: "-1px",
         },
       },
     }),

@@ -1,6 +1,7 @@
 import { BoxProps, Stack } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { FormLabel } from "../input";
+import { RadioCard } from "./RadioCard";
 
 /**
  * RadioCardGroupContext is used to pass down the state and handlers to the RadioCard components.
@@ -58,8 +59,9 @@ export const RadioCardGroup: React.FC<RadioCardGroupProps> = ({
       <Stack
         as="fieldset"
         direction={direction}
-        aria-labelledby={groupLabel}
+        aria-labelledby={groupLabel || name}
         role="radiogroup"
+        tabIndex={0}
         {...props}
       >
         {groupLabel && (

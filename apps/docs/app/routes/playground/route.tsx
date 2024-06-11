@@ -1,5 +1,5 @@
-import { Stack, PressableCard } from "@vygruppen/spor-react";
-import { useEffect, useState } from "react";
+import { Stack } from "@vygruppen/spor-react";
+import { StrictMode, useEffect, useState } from "react";
 import { LivePreview } from "react-live";
 import { LiveEditor } from "~/features/portable-text/interactive-code/LiveEditor";
 import { LiveError } from "~/features/portable-text/interactive-code/LiveError";
@@ -27,16 +27,18 @@ export default function PlaygroundPage() {
   };
 
   return (
-    <LiveProvider code={playgroundData}>
-      <Stack spacing={2} id="content">
-        <LiveEditor
-          borderRadius="none"
-          minHeight="200px"
-          onChange={handleChange}
-        />
-        <LiveError />
-        <LivePreview />
-      </Stack>
-    </LiveProvider>
+    <StrictMode>
+      <LiveProvider code={playgroundData}>
+        <Stack spacing={2} id="content">
+          <LiveEditor
+            borderRadius="none"
+            minHeight="200px"
+            onChange={handleChange}
+          />
+          <LiveError />
+          <LivePreview />
+        </Stack>
+      </LiveProvider>
+    </StrictMode>
   );
 }

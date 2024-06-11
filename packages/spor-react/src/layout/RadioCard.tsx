@@ -5,7 +5,7 @@ import {
   forwardRef,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
-import React, { useContext, useId } from "react";
+import React, { useContext, useEffect, useId } from "react";
 import { RadioCardGroupContext } from "./RadioCardGroup";
 
 /**
@@ -55,14 +55,35 @@ export const RadioCard = forwardRef(
 
     const radioCardId = `radio-card-${useId()}`;
 
+    useEffect(() => {
+      if (isChecked && typeof ref !== "function" && ref?.current) {
+        ref.current.focus();
+      }
+    }, [isChecked]);
+
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === "Enter" || event.key === " ") {
+        onChange(value);
+      }
+      if (
+        event.key === "ArrowRight" ||
+        event.key === "ArrowDown" ||
+        event.key === "ArrowLeft" ||
+        event.key === "ArrowUp"
+      ) {
+        const nextRadioCard = event.currentTarget
+          .nextElementSibling as HTMLElement;
+        nextRadioCard.focus();
+      }
+    };
+
     return (
-      <Box as="label" aria-label={String(children)}>
+      <Box as="label" aria-label={String(children)} onKeyDown={handleKeyDown}>
         <chakra.input
           type="radio"
           id={radioCardId}
           ref={ref}
           value={value}
-          tabIndex={0}
           name={name}
           checked={isChecked}
           onChange={() => onChange(value)}
@@ -71,6 +92,11 @@ export const RadioCard = forwardRef(
         />
         <Box
           {...props}
+          tabIndex={0}
+          ref={ref}
+          role="radio"
+          aria-checked={isChecked}
+          aria-labelledby={radioCardId}
           __css={{ ...styles.container, ...(isChecked && styles.checked) }}
           data-checked={isChecked}
           data-disabled={isDisabled}

@@ -64,7 +64,7 @@ export const RadioCardGroup: React.FC<RadioCardGroupProps> = ({
         direction={direction}
         aria-labelledby={groupLabel || name}
         role="radiogroup"
-        tabIndex={0}
+        /* tabIndex={0} */
         {...props}
       >
         {groupLabel && (

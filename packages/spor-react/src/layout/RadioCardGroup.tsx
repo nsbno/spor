@@ -27,6 +27,7 @@ type RadioCardGroupProps = BoxProps & {
   direction?: "row" | "column";
   groupLabel?: string;
   defaultValue?: string;
+  onChange?: (value: string) => void;
 };
 
 export const RadioCardGroup: React.FC<RadioCardGroupProps> = ({
@@ -36,6 +37,7 @@ export const RadioCardGroup: React.FC<RadioCardGroupProps> = ({
   direction = "row",
   groupLabel,
   defaultValue,
+  onChange,
   ...props
 }: RadioCardGroupProps) => {
   const [selectedValue, setSelectedValue] = useState<string>(
@@ -44,6 +46,7 @@ export const RadioCardGroup: React.FC<RadioCardGroupProps> = ({
 
   const handleChange = (value: string) => {
     setSelectedValue(value);
+    onChange && onChange(value);
   };
 
   return (

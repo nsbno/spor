@@ -61,7 +61,6 @@ const config = helpers.defineMultiStyleConfig({
       checked: {
         _hover: {
           ...baseBorder("hover", props),
-          ...baseBackground("default", props),
         },
         _active: {
           ...baseBackground("active", props),
@@ -74,8 +73,6 @@ const config = helpers.defineMultiStyleConfig({
     }),
     floating: (props) => ({
       container: {
-        ...baseText("default", props),
-        ...baseBackground("default", props),
         ...floatingBackground("default", props),
         ...floatingBorder("default", props),
         boxShadow: "sm",
@@ -94,7 +91,6 @@ const config = helpers.defineMultiStyleConfig({
       },
       checked: {
         _hover: {
-          ...baseBackground("default", props),
           ...floatingBorder("hover", props),
         },
         _active: {

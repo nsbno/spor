@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 9.13.0
+
+### Minor Changes
+
+- 5d80df3: Updated packages
+
+### Patch Changes
+
+- Updated dependencies [5d80df3]
+  - @vygruppen/spor-design-tokens@3.7.0
+  - @vygruppen/spor-icon-react@3.9.0
+
 ## 9.12.0
 
 ### Minor Changes

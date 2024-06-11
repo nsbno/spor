@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 3.9.0
+
+### Minor Changes
+
+- 5d80df3: Updated packages
+
 ## 3.8.0
 
 ### Minor Changes

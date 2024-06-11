@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.7.0
+
+### Minor Changes
+
+- 5d80df3: Updated packages
+
 ## 3.6.1
 
 ### Patch Changes

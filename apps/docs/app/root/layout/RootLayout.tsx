@@ -22,6 +22,7 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
       minHeight="100vh"
       backgroundColor={backgroundColor}
       overflow="auto"
+      fontFamily="Vy Sans"
     >
       <SiteHeader />
       <Flex flex="1" flexDirection="column" alignItems="stretch">

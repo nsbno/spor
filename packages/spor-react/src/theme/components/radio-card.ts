@@ -1,11 +1,8 @@
-import {
-  createMultiStyleConfigHelpers,
-  defineStyleConfig,
-} from "@chakra-ui/react";
+import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { anatomy } from "@chakra-ui/theme-tools";
+import { anatomy, mode } from "@chakra-ui/theme-tools";
 import { outlineBorder } from "../utils/outline-utils";
 
 const parts = anatomy("radio-card").parts("container", "checked", "radioInput");
@@ -14,7 +11,6 @@ const helpers = createMultiStyleConfigHelpers(parts.keys);
 const config = helpers.defineMultiStyleConfig({
   baseStyle: (props: any) => ({
     container: {
-      appearance: "none",
       border: "none",
       overflow: "hidden",
       fontSize: "inherit",
@@ -57,6 +53,9 @@ const config = helpers.defineMultiStyleConfig({
           ...baseBackground("active", props),
           ...baseBorder("active", props),
         },
+        _focus: {
+          ...outlineBorder("focus", props),
+        },
       },
       checked: {
         _hover: {
@@ -66,12 +65,16 @@ const config = helpers.defineMultiStyleConfig({
           ...baseBackground("active", props),
           ...baseBorder("active", props),
         },
+        _focus: {
+          outline: "4px solid",
+          outlineStyle: "double",
+          ...outlineBorder("focus", props),
+          outlineOffset: "-1px",
+        },
       },
     }),
     floating: (props) => ({
       container: {
-        ...baseText("default", props),
-        ...baseBackground("default", props),
         ...floatingBackground("default", props),
         ...floatingBorder("default", props),
         boxShadow: "sm",
@@ -84,16 +87,24 @@ const config = helpers.defineMultiStyleConfig({
           ...floatingBackground("active", props),
           ...floatingBorder("active", props),
         },
+        _focus: {
+          ...outlineBorder("focus", props),
+        },
       },
       checked: {
-        cursor: "normal",
-
         _hover: {
           ...floatingBorder("hover", props),
+          boxShadow: "md",
         },
         _active: {
           ...floatingBackground("active", props),
           ...floatingBorder("active", props),
+        },
+        _focus: {
+          outline: "4px solid",
+          outlineStyle: "double",
+          ...outlineBorder("focus", props),
+          outlineOffset: "-1px",
         },
       },
     }),

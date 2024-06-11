@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.13.1
+
+### Patch Changes
+
+- 366d1f9: Adds onChange and fixes bug on RadioCard
+
 ## 9.13.0
 
 ### Minor Changes

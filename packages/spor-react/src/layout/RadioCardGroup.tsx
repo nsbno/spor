@@ -62,7 +62,11 @@ export const RadioCardGroup: React.FC<RadioCardGroupProps> = ({
         role="radiogroup"
         {...props}
       >
-        {groupLabel && <FormLabel as="legend">{groupLabel}</FormLabel>}
+        {groupLabel && (
+          <FormLabel as="legend" id={groupLabel}>
+            {groupLabel}
+          </FormLabel>
+        )}
         {children}
       </Stack>
     </RadioCardGroupContext.Provider>

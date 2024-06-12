@@ -2,7 +2,7 @@ import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { anatomy, mode } from "@chakra-ui/theme-tools";
+import { anatomy } from "@chakra-ui/theme-tools";
 import { outlineBorder } from "../utils/outline-utils";
 
 const parts = anatomy("radio-card").parts(
@@ -24,12 +24,17 @@ const config = helpers.defineMultiStyleConfig({
       borderRadius: "sm",
       transitionProperty: "common",
       transitionDuration: "fast",
+
       _disabled: {
         pointerEvents: "none",
         ...baseBackground("disabled", props),
         ...baseBorder("disabled", props),
         ...baseText("disabled", props),
       },
+    },
+    focused: {
+      outline: "1px solid",
+      ...outlineBorder("focus", props),
     },
     checked: {
       outline: "2px solid",

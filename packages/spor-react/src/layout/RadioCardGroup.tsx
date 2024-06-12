@@ -1,5 +1,5 @@
 import { BoxProps, Stack } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormLabel } from "../input";
 
 /**
@@ -43,6 +43,12 @@ export const RadioCardGroup: React.FC<RadioCardGroupProps> = ({
   const [selectedValue, setSelectedValue] = useState<string>(
     defaultValue || "",
   );
+
+  useEffect(() => {
+    if (defaultValue) {
+      setSelectedValue(defaultValue);
+    }
+  }, [defaultValue]);
 
   const handleChange = (value: string) => {
     setSelectedValue(value);

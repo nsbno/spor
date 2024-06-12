@@ -5,7 +5,7 @@ import {
   forwardRef,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
-import React, { useContext, useEffect, useId } from "react";
+import React, { useContext, useEffect, useId, useState } from "react";
 import { RadioCardGroupContext } from "./RadioCardGroup";
 
 /**
@@ -51,8 +51,10 @@ export const RadioCard = forwardRef(
 
     const styles = useMultiStyleConfig("RadioCard", { variant });
 
-    const [isKeyboardUser, setKeyboardUser] = React.useState(false);
-    const [isFocused, setFocus] = React.useState(false);
+    const [isKeyboardUser, setKeyboardUser] = useState(false);
+    const [isFocused, setFocus] = useState(false);
+
+    const isChecked = selectedValue === value;
 
     useEffect(() => {
       const handleMouseDown = () => setKeyboardUser(false);
@@ -73,8 +75,6 @@ export const RadioCard = forwardRef(
       };
     }, []);
 
-    const isChecked = selectedValue === value;
-
     useEffect(() => {
       if (isKeyboardUser && isChecked) {
         setFocus(true);
@@ -86,7 +86,10 @@ export const RadioCard = forwardRef(
     const inputId = `radio-card-${useId()}`;
 
     return (
-      <Box>
+      <Box
+        onFocus={() => isKeyboardUser && setFocus(true)}
+        onBlur={() => setFocus(false)}
+      >
         <chakra.input
           type="radio"
           id={inputId}
@@ -99,13 +102,12 @@ export const RadioCard = forwardRef(
         />
         <Box
           as="label"
+          name={name}
           htmlFor={inputId}
           aria-checked={isChecked}
           data-checked={isChecked}
           data-disabled={isDisabled}
           {...props}
-          onFocus={() => isKeyboardUser && setFocus(true)}
-          onBlur={() => setFocus(false)}
           __css={{
             ...styles.container,
             ...(isChecked && styles.checked),

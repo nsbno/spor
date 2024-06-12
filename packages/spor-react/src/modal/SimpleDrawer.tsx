@@ -8,7 +8,7 @@ import {
   DrawerOverlay,
 } from "./Drawer";
 
-type DrawerBodyProps = {
+export type DrawerBodyProps = {
   id?: string;
 };
 

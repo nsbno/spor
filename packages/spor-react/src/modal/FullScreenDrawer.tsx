@@ -15,12 +15,9 @@ import React, { useEffect, useState } from "react";
 import { Button, IconButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
 import { Drawer } from "./Drawer";
+import { DrawerBodyProps } from "./SimpleDrawer";
 
 type DrawerPlacement = "top" | "right" | "bottom" | "left";
-
-type DrawerBodyProps = {
-  id?: string;
-};
 
 type FullScreenDrawerProps = {
   /** The content inside the drawer */

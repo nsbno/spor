@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 9.13.2
+
+### Patch Changes
+
+- 59c1cc8: RadioCard: Fix accessibility features
+- 4aa7c96: Added body prop for FullScreenDrawer and SimpleDrawer for accessability reasons
+
 ## 9.13.1
 
 ### Patch Changes

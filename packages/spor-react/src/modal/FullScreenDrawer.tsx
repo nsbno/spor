@@ -15,6 +15,7 @@ import React, { useEffect, useState } from "react";
 import { Button, IconButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
 import { Drawer } from "./Drawer";
+import { DrawerBodyProps } from "./SimpleDrawer";
 
 type DrawerPlacement = "top" | "right" | "bottom" | "left";
 
@@ -33,6 +34,8 @@ type FullScreenDrawerProps = {
   isOpen: boolean;
   /** Function that will be called when the drawer closes */
   onClose: () => void;
+  /** Props for drawer body */
+  body?: DrawerBodyProps;
 };
 
 export const FullScreenDrawer = ({
@@ -43,6 +46,7 @@ export const FullScreenDrawer = ({
   rightButton = <DrawerCloseButton />,
   isOpen,
   onClose,
+  body,
 }: FullScreenDrawerProps) => {
   const [isContentBoxScrolled, setContentBoxScrolled] = useState(false);
 
@@ -75,7 +79,7 @@ export const FullScreenDrawer = ({
           leftButton={leftButton}
           rightButton={rightButton}
         />
-        <DrawerBody overflow="auto" onScroll={onContentScroll}>
+        <DrawerBody overflow="auto" onScroll={onContentScroll} {...body}>
           {children}
         </DrawerBody>
       </DrawerContent>

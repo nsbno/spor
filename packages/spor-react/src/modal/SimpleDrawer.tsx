@@ -8,12 +8,18 @@ import {
   DrawerOverlay,
 } from "./Drawer";
 
+export type DrawerBodyProps = {
+  id?: string;
+};
+
 export type SimpleDrawerProps = {
   children: React.ReactNode;
   title?: React.ReactNode;
   placement: "top" | "right" | "bottom" | "left";
   isOpen: boolean;
   onClose: () => void;
+  /** Props for drawer body */
+  body?: DrawerBodyProps;
 };
 /** A very basic drawer component that's easy to use
  *
@@ -29,6 +35,7 @@ export const SimpleDrawer = ({
   placement,
   children,
   title,
+  body,
   ...props
 }: SimpleDrawerProps) => {
   return (
@@ -37,7 +44,7 @@ export const SimpleDrawer = ({
       <DrawerContent>
         <DrawerCloseButton />
         {title && <DrawerHeader>{title}</DrawerHeader>}
-        <DrawerBody>{children}</DrawerBody>
+        <DrawerBody {...body}>{children}</DrawerBody>
       </DrawerContent>
     </Drawer>
   );

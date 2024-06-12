@@ -38,7 +38,7 @@ export type RadioCardProps = BoxProps & {
 };
 
 export const RadioCard = forwardRef(
-  ({ children, value = "base", isDisabled, ...props }: RadioCardProps, ref) => {
+  ({ children, value, isDisabled, ...props }: RadioCardProps, ref) => {
     const context = useContext(RadioCardGroupContext);
 
     if (!context) {
@@ -51,57 +51,66 @@ export const RadioCard = forwardRef(
 
     const styles = useMultiStyleConfig("RadioCard", { variant });
 
-    const isChecked = selectedValue === value;
-
-    const radioCardId = `radio-card-${useId()}`;
+    const [isKeyboardUser, setKeyboardUser] = React.useState(false);
+    const [isFocused, setFocus] = React.useState(false);
 
     useEffect(() => {
-      if (isChecked && typeof ref !== "function" && ref?.current) {
-        ref.current.focus();
-      }
-    }, [isChecked]);
-
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === "Enter" || event.key === " ") {
-        onChange(value);
-      }
-      if (
-        event.key === "ArrowRight" ||
-        event.key === "ArrowDown" ||
-        event.key === "ArrowLeft" ||
-        event.key === "ArrowUp"
-      ) {
-        const nextRadioCard = event.currentTarget
-          .nextElementSibling as HTMLElement;
-        if (nextRadioCard) {
-          nextRadioCard.focus();
+      const handleMouseDown = () => setKeyboardUser(false);
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === " ") {
+          setFocus(false);
+        } else {
+          setKeyboardUser(true);
         }
+      };
+
+      window.addEventListener("mousedown", handleMouseDown);
+      window.addEventListener("keydown", handleKeyDown);
+
+      return () => {
+        window.removeEventListener("mousedown", handleMouseDown);
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }, []);
+
+    const isChecked = selectedValue === value;
+
+    useEffect(() => {
+      if (isKeyboardUser && isChecked) {
+        setFocus(true);
+      } else {
+        setFocus(false);
       }
-    };
+    }, [isKeyboardUser, isChecked]);
+
+    const inputId = `radio-card-${useId()}`;
 
     return (
-      <Box as="label" aria-label={String(children)} onKeyDown={handleKeyDown}>
+      <Box>
         <chakra.input
           type="radio"
-          id={radioCardId}
-          ref={ref}
-          value={value}
+          id={inputId}
           name={name}
+          ref={ref}
           checked={isChecked}
           onChange={() => onChange(value)}
           disabled={isDisabled}
           __css={styles.radioInput}
         />
         <Box
-          {...props}
-          tabIndex={0}
-          ref={ref}
-          role="radio"
+          as="label"
+          htmlFor={inputId}
           aria-checked={isChecked}
-          aria-labelledby={radioCardId}
-          __css={{ ...styles.container, ...(isChecked && styles.checked) }}
           data-checked={isChecked}
           data-disabled={isDisabled}
+          {...props}
+          onFocus={() => isKeyboardUser && setFocus(true)}
+          onBlur={() => setFocus(false)}
+          __css={{
+            ...styles.container,
+            ...(isChecked && styles.checked),
+            ...(isFocused && styles.focused),
+          }}
         >
           {children}
         </Box>

@@ -5,7 +5,12 @@ import { focusVisibleStyles } from "../utils/focus-utils";
 import { anatomy, mode } from "@chakra-ui/theme-tools";
 import { outlineBorder } from "../utils/outline-utils";
 
-const parts = anatomy("radio-card").parts("container", "checked", "radioInput");
+const parts = anatomy("radio-card").parts(
+  "container",
+  "checked",
+  "radioInput",
+  "focused",
+);
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({
@@ -17,7 +22,6 @@ const config = helpers.defineMultiStyleConfig({
       display: "block",
       cursor: "pointer",
       borderRadius: "sm",
-      ...focusVisibleStyles(props),
       transitionProperty: "common",
       transitionDuration: "fast",
       _disabled: {
@@ -53,9 +57,6 @@ const config = helpers.defineMultiStyleConfig({
           ...baseBackground("active", props),
           ...baseBorder("active", props),
         },
-        _focus: {
-          ...outlineBorder("focus", props),
-        },
       },
       checked: {
         _hover: {
@@ -65,12 +66,12 @@ const config = helpers.defineMultiStyleConfig({
           ...baseBackground("active", props),
           ...baseBorder("active", props),
         },
-        _focus: {
-          outline: "4px solid",
-          outlineStyle: "double",
-          ...outlineBorder("focus", props),
-          outlineOffset: "-1px",
-        },
+      },
+      focused: {
+        outline: "4px solid",
+        outlineStyle: "double",
+        ...outlineBorder("focus", props),
+        outlineOffset: "-1px",
       },
     }),
     floating: (props) => ({
@@ -87,9 +88,6 @@ const config = helpers.defineMultiStyleConfig({
           ...floatingBackground("active", props),
           ...floatingBorder("active", props),
         },
-        _focus: {
-          ...outlineBorder("focus", props),
-        },
       },
       checked: {
         _hover: {
@@ -100,12 +98,12 @@ const config = helpers.defineMultiStyleConfig({
           ...floatingBackground("active", props),
           ...floatingBorder("active", props),
         },
-        _focus: {
-          outline: "4px solid",
-          outlineStyle: "double",
-          ...outlineBorder("focus", props),
-          outlineOffset: "-1px",
-        },
+      },
+      focused: {
+        outline: "4px solid",
+        outlineStyle: "double",
+        ...outlineBorder("focus", props),
+        outlineOffset: "-1px",
       },
     }),
   },

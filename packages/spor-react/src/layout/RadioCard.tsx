@@ -111,7 +111,8 @@ export const RadioCard = forwardRef(
           __css={{
             ...styles.container,
             ...(isChecked && styles.checked),
-            ...(isFocused && styles.focused),
+            ...(isFocused && !isChecked && styles.focused),
+            ...(isChecked && isFocused && styles.focusedChecked),
           }}
         >
           {children}

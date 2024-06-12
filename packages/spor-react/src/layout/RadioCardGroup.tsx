@@ -44,12 +44,6 @@ export const RadioCardGroup: React.FC<RadioCardGroupProps> = ({
     defaultValue || "",
   );
 
-  useEffect(() => {
-    if (defaultValue) {
-      setSelectedValue(defaultValue);
-    }
-  }, [defaultValue]);
-
   const handleChange = (value: string) => {
     setSelectedValue(value);
     onChange && onChange(value);

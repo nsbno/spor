@@ -118,6 +118,7 @@ const DrawerTopMenu = ({
       paddingRight={[2, 3, 6, 9]}
       transition="box-shadow 0.2s"
       boxShadow={isScrolled ? "md" : undefined}
+      fontFamily="Vy Sans"
     >
       <Box flex="1">{leftButton}</Box>
       <DrawerHeader

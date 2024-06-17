@@ -55,7 +55,7 @@ export const DrawerContent = forwardRef<DrawerContentProps, any>(
       ? { width: ["100%", "37.5rem"], mx: "auto" }
       : {};
     return (
-      <Box {...handlers}>
+      <Box {...handlers} fontFamily="Vy Sans">
         <ChakraDrawerContent
           {...widthConstraits}
           borderTopRadius={placement === "bottom" ? "md" : "none"}

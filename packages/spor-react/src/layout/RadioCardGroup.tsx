@@ -21,12 +21,19 @@ export const RadioCardGroupContext =
   React.createContext<RadioGroupContextProps | null>(null);
 
 type RadioCardGroupProps = BoxProps & {
+  /** A string that will be assigned as the name attribute to all RadioCard components within the group. */
   name: string;
+  /** The RadioCard components that make up the group. */
   children: React.ReactNode;
+  /** Optional. Determines the style of the RadioCard. Can be either "base" or "floating". */
   variant?: "base" | "floating";
+  /** Optional. Determines the direction of the group. Can be either "row" or "column". */
   direction?: "row" | "column";
+  /** Optional. A label for the group. */
   groupLabel?: string;
+  /** Optional. The default value of the RadioCard group. */
   defaultValue?: string;
+  /** Optional. A function that will be called when the selected value changes. The function receives the value of the selected RadioCard. */
   onChange?: (value: string) => void;
 };
 

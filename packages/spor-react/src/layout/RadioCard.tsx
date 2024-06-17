@@ -32,8 +32,11 @@ import { RadioCardGroupContext } from "./RadioCardGroup";
  */
 
 export type RadioCardProps = BoxProps & {
+  /** The value that will be passed to the `RadioCardGroup`'s `onChange` function if this `RadioCard` is selected.. */
   value: string;
+  /** The content of the RadioCard. */
   children: React.ReactNode;
+  /** Determines if the RadioCard is disabled. */
   isDisabled?: boolean;
 };
 

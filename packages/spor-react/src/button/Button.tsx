@@ -105,6 +105,7 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
       aria-busy={isLoading}
       disabled={isDisabled || isLoading}
       position="relative"
+      fontFamily={"Vy Sans"}
     >
       {isLoading && (
         <Center position="absolute" right={0} left={0} top={1} bottom={0}>

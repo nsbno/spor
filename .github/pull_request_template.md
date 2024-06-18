@@ -15,6 +15,10 @@ Describe what has been done.
 [ ] It works with VoiceOver
 [ ] There are no errors in aXe / SiteImprove-plugins / Wave
 
+## How to test
+
+Desribe how code reviewer may test your solution (what page, expected result).
+
 ## Screenshots
 
 | Before | After |

@@ -1,6 +1,5 @@
-import type { BoxProps } from "@vygruppen/spor-react";
-import { Box } from "@vygruppen/spor-react";
-import React from "react";
+import { Box, BoxProps } from "@chakra-ui/react";
+import React, { useId } from "react";
 
 export type CargonetLogoProps = {
   /** The color of the logo

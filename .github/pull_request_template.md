@@ -22,5 +22,5 @@ Desribe how code reviewer may test your solution (what page, expected result).
 ## Screenshots
 
 | Before | After |
-|--------|-------|
+| ------ | ----- |
 |        |       |

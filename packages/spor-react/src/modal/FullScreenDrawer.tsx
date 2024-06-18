@@ -194,7 +194,7 @@ const DrawerBackButton = () => {
         variant="ghost"
         leftIcon={<ArrowLeftFill24Icon />}
         onClick={onClose}
-        aria-label={t(texts.close)}
+        aria-label={t(texts.backAriaLabel)}
         width="fit-content"
         marginLeft="auto"
       >
@@ -219,6 +219,12 @@ const texts = createTexts({
     nn: "Lukk",
     en: "Close",
     sv: "Stäng",
+  },
+  closeAriaLabel: {
+    nb: "Lukk vindu",
+    nn: "Lukk vindauge",
+    en: "Close window",
+    sv: "Stäng fönster",
   },
   back: {
     nb: "Tilbake",

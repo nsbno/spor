@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 9.13.3
+
+### Patch Changes
+
+- bec48fc: Add font-family to global CSS file
+- e606bf3: RadioCardGroup & RadioCard: Add documentation for props
+
 ## 9.13.2
 
 ### Patch Changes

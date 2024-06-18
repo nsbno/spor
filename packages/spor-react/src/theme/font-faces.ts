@@ -63,4 +63,7 @@ export const fontFaces = `
   font-weight: 400;
   font-display: swap
 }
+  body {
+    font-family: "Vy Sans", sans-serif;
+  }
 `;

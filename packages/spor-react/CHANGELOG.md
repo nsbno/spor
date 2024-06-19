@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 9.14.0
+
+### Minor Changes
+
+- 4481b5a: Add logo file for Cargonet
+- 98968e7: FullScreenDrawer: Added back button as default view. Title gets more space on mobile.
+
 ## 9.13.3
 
 ### Patch Changes

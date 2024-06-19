@@ -10,7 +10,12 @@ import {
   useModalContext,
 } from "@chakra-ui/react";
 import tokens from "@vygruppen/spor-design-tokens";
-import { CloseFill24Icon, CloseFill30Icon } from "@vygruppen/spor-icon-react";
+import {
+  ArrowLeftFill24Icon,
+  ArrowLeftFill30Icon,
+  CloseFill24Icon,
+  CloseFill30Icon,
+} from "@vygruppen/spor-icon-react";
 import React, { useEffect, useState } from "react";
 import { Button, IconButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
@@ -42,7 +47,7 @@ export const FullScreenDrawer = ({
   children,
   title,
   placement = "bottom",
-  leftButton = null,
+  leftButton = <DrawerBackButton />,
   rightButton = <DrawerCloseButton />,
   isOpen,
   onClose,
@@ -119,13 +124,15 @@ const DrawerTopMenu = ({
       transition="box-shadow 0.2s"
       boxShadow={isScrolled ? "md" : undefined}
     >
-      <Box flex="1">{leftButton}</Box>
+      <Box flex="1">
+        <Box width="fit-content">{leftButton}</Box>
+      </Box>
       <DrawerHeader
         as="h2"
         fontSize="md"
         fontWeight="bold"
         textAlign="center"
-        flex="1"
+        flex="2"
         margin={0}
         padding={0}
       >
@@ -173,11 +180,62 @@ const DrawerCloseButton = () => {
   );
 };
 
+const DrawerBackButton = () => {
+  const { onClose } = useModalContext();
+  const { t } = useTranslation();
+
+  const [isScreenSizeMinSm] = useMediaQuery(
+    `(min-width: ${tokens.size.breakpoint.sm})`,
+  );
+
+  if (isScreenSizeMinSm) {
+    return (
+      <Button
+        variant="ghost"
+        leftIcon={<ArrowLeftFill24Icon />}
+        onClick={onClose}
+        aria-label={t(texts.backAriaLabel)}
+        width="fit-content"
+        marginLeft="auto"
+      >
+        {t(texts.back)}
+      </Button>
+    );
+  }
+
+  return (
+    <IconButton
+      variant="ghost"
+      icon={<ArrowLeftFill30Icon />}
+      onClick={onClose}
+      aria-label={t(texts.close)}
+    />
+  );
+};
+
 const texts = createTexts({
   close: {
     nb: "Lukk",
     nn: "Lukk",
     en: "Close",
     sv: "Stäng",
+  },
+  closeAriaLabel: {
+    nb: "Lukk vindu",
+    nn: "Lukk vindauge",
+    en: "Close window",
+    sv: "Stäng fönster",
+  },
+  back: {
+    nb: "Tilbake",
+    nn: "Tilbake",
+    en: "Back",
+    sv: "Tillbaka",
+  },
+  backAriaLabel: {
+    nb: "Gå tilbake",
+    nn: "Gå tilbake",
+    en: "Go back",
+    sv: "Gå tillbaka",
   },
 });

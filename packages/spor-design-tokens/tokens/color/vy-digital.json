@@ -23,7 +23,7 @@
             "value": "{color.alias.mint.value}"
           },
           "dark": {
-            "value": "{color.alias.pine.value}"
+            "value": "{color.alias.darkTeal.value}"
           }
         }
       },
@@ -167,7 +167,7 @@
             "value": "{color.alias.white.value}"
           },
           "dark": {
-            "value": "{color.alias.darkTeal.value}"
+            "value": "{color.alias.night.value}"
           }
         },
         "secondary": {
@@ -175,7 +175,7 @@
             "value": "{color.alias.seaMist.value}"
           },
           "dark": {
-            "value": "{color.alias.night.value}"
+            "value": "{color.alias.darkTeal.value}"
           }
         },
         "tertiary": {

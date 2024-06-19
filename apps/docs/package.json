@@ -22,7 +22,7 @@
     "@remix-run/serve": "^2.9.2",
     "@sanity/groq-store": "^1.1.5",
     "@sanity/image-url": "^1.0.2",
-    "@vygruppen/spor-design-tokens": "^3.7.0",
+    "@vygruppen/spor-design-tokens": "^3.8.0",
     "@vygruppen/spor-icon": "^2.9.0",
     "@vygruppen/spor-icon-react": "^3.9.0",
     "@vygruppen/spor-react": "^9.14.0",

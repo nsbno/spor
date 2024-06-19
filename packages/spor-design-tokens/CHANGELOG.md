@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.8.0
+
+### Minor Changes
+
+- 74dc777: Update tokens for Cargonet light/dark and Vy digital darkmode
+
 ## 3.7.0
 
 ### Minor Changes

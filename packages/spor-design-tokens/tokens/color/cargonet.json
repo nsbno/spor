@@ -314,18 +314,18 @@
         },
         "text": {
           "light": {
-            "value": "{color.alias.champagne.value}"
+            "value": "{color.cargonet.text.default.light.value}"
           },
           "dark": {
-            "value": "{color.cargonet.text.default.dark.value}"
+            "value": "{color.alias.champagne.value}"
           }
         },
         "icon": {
           "light": {
-            "value": "{color.alias.champagne.value}"
+            "value": "{color.cargonet.icon.default.light.value}"
           },
           "dark": {
-            "value": "{color.cargonet.icon.default.dark.value}"
+            "value": "{color.alias.champagne.value}"
           }
         },
         "bg": {

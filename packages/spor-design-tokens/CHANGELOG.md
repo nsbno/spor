@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.8.1
+
+### Patch Changes
+
+- 7a97829: Update Cargonet accent tokens with correct value
+
 ## 3.8.0
 
 ### Minor Changes

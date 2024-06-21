@@ -14,6 +14,10 @@ Describe what has been done.
 - [ ] It works in both Chrome, Safari and Firefox
 - [ ] It works with VoiceOver
 - [ ] There are no errors in aXe / SiteImprove-plugins / Wave
+- [ ] Sanity documentation has been / will be updated (if neccessary)
+- [ ] Documentation version has been bumped (package.json in docs)
+
+Note: To trigger pipeline for the documentation site (spor.vy.no) you need to bump the version.
 
 ## How to test
 

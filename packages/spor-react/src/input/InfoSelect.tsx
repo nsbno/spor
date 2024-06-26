@@ -224,9 +224,9 @@ export function InfoSelect<T extends object>({
           </chakra.div>
           <Box
             {...valueProps}
-            h={isLabelSrOnly ? "" : (!hasChosenValue  ? "0px" : "18px")}
+            h={isLabelSrOnly ? "" : !hasChosenValue ? "0px" : "18px"}
             hidden={!hasChosenValue}
-            transform={isLabelSrOnly ? "" :"scale(1) translateY(-10px)"}
+            transform={isLabelSrOnly ? "" : "scale(1) translateY(-10px)"}
             transitionProperty={"var(--spor-transition-property-common)"}
             transitionDuration={"var(--spor-transition-duration-normal)"}
           >

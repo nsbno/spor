@@ -40,7 +40,6 @@ const config = helpers.defineMultiStyleConfig({
       justifyContent: "space-between",
       alignItems: "center",
       fontSize: "mobile.md",
-      h: 8,
       ...baseBorder("default", props),
       _hover: {
         ...baseBorder("hover", props),

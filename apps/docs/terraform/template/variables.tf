@@ -8,8 +8,7 @@ variable "application_name" {
   type        = string
 }
 
-variable "tags" {
-  description = "A map of tags (key-value pairs) passed to resources."
-  type        = map(string)
-  default     = {}
+variable "environment" {
+  description = "The environment the application is running in."
+  type        = string
 }

@@ -1,0 +1,16 @@
+artifacts:
+  - name: spor-tf
+    branch: migrate-to-common-services
+    location: s3
+  - name: graphs
+    branch: migrate-to-common-services
+    location: ecr
+
+steps:
+  - terraform:
+      artifact: graphs-frontend-tf
+      version: 1.8.4
+
+environments:
+  - [service]
+  - [prod]

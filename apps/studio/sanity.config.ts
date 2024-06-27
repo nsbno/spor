@@ -23,7 +23,7 @@ export default defineConfig({
         const configuredClient = getClient({ apiVersion: "2022-10-06" });
         const host = window.location.href?.includes("localhost")
           ? "http://localhost:3000"
-          : "https://spor.vy.no";
+          : "https://spor.digital-common-services.vydev.io";
 
         if (document._type === "article") {
           if (!document.category) {

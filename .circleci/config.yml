@@ -1,77 +1,96 @@
 version: 2.1
+orbs:
+  deployment: vydev/deployment@0.7.0
+  terraform: circleci/terraform@3.2.1
+  aws-ecr: circleci/aws-ecr@9.1.0
+  aws-cli: circleci/aws-cli@4.1.3
+
 parameters:
   ecr_repo_name:
     type: string
-    default: "digitalekanaler-spor"
-  ecr_endpoint:
+    default: "spor"
+  pipeline_name:
     type: string
-    default: "635004941268.dkr.ecr.eu-west-1.amazonaws.com"
+    default: "spor-delivery-pipeline"
+  terraform_version:
+    type: string
+    default: "1.8.4"
+  terraform_artifact_name:
+    type: string
+    default: "spor-tf"
 
 jobs:
-  validate-terraform:
-    docker:
-      - image: vydev/terraform:1.0.8
-    steps:
-      - checkout:
-          path: ~/repo
-      - run:
-          name: Validate terraform code
-          command: |
-            printf "Validating terraform code\n"
-            cd ~/repo/apps/docs/terraform/prod
-            terraform init -backend=false && terraform validate
-
-  build-docker:
+  build-and-push-docker:
     parameters:
-      ecr_repo_name:
+      tags:
         type: string
-        description: "The name of the ECR repository to push Docker images to"
-      ecr_endpoint:
-        type: string
-        description: "The ECR endpoint to use (note: the CircleCI project environment variable ECR_ENDPOINT takes higher precedence than this parameter)."
-        default: ""
+        default: "${CIRCLE_SHA1:0:7}"
     docker:
-      - image: 'vydev/circleci-ecr:latest'
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-    working_directory: /tmp/workspace/apps/docs
+      - image: cimg/base:stable
     steps:
-      - setup_remote_docker:
-          version: 19.03.13
-          docker_layer_caching: true
-      - checkout:
-          path: ../../
-      - run:
-          name: "Build Docker image"
-          command: |
-            ECR_ENDPOINT="${ECR_ENDPOINT:-<< parameters.ecr_endpoint >>}"
-            if [ -z "$ECR_ENDPOINT" ]; then
-              echo "ECR endpoint has not been set"
-              exit 1
-            fi
-            aws ecr get-login-password --region eu-west-1 \
-              | docker login --username AWS --password-stdin "$ECR_ENDPOINT"
-            SHORT_SHA1=`echo ${CIRCLE_SHA1}|cut -c1-7`
-            docker build -t ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> -f Dockerfile .
-            docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${SHORT_SHA1}"
-            docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${SHORT_SHA1}"
-            docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
-            docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
+      - checkout
+      - attach_workspace:
+          at: .
+      - setup_remote_docker
+      - aws-ecr/build_and_push_image:
+          attach_workspace: true
+          region: eu-west-1
+          repo: << pipeline.parameters.ecr_repo_name >>
+          tag: "latest,commit-${CIRCLE_SHA1:0:7},${CIRCLE_BRANCH}-branch"
+          auth:
+            - aws-cli/setup:
+              region: eu-west-1
+
+  upload-terraform-artifacts:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - deployment/zip-and-upload-artifact:
+          application-name: << pipeline.parameters.terraform_artifact_name >>
+          source-directory: ./apps/docs/
+          source: terraform
 
 
 workflows:
   version: 2
   build:
     jobs:
-      - validate-terraform
-      - build-docker:
-          context: omnikanal
-          ecr_repo_name: << pipeline.parameters.ecr_repo_name >>
-          ecr_endpoint: << pipeline.parameters.ecr_endpoint >>
+      - terraform/validate:
+          tag: << pipeline.parameters.terraform_version >>
+          checkout: true
+          backend: false
+          matrix:
+            parameters:
+              path:
+                - apps/docs/terraform/service
+                - apps/docs/terraform/prod
+
+      - build-and-push-docker:
+          tags: "latest,<< pipeline.git.branch >>-branch,${CIRCLE_SHA1:0:7}"
+          context:
+            - digital-common-services
           requires:
-            - validate-terraform
+            - terraform/validate
           filters:
             branches:
-              only:
-                - main
+              only: migrate-to-common-services
+
+      - upload-terraform-artifacts:
+          context:
+            - digital-common-services
+          requires:
+            - build-and-push-docker
+          filters:
+            branches:
+              only: migrate-to-common-services
+
+      - deployment/trigger-deployment:
+          context:
+            - digital-common-services
+          requires:
+            - upload-terraform-artifacts
+            - build-and-push-docker
+          filters:
+            branches:
+              only: migrate-to-common-services

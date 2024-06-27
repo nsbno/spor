@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.14.1
+
+### Patch Changes
+
+- c71b156: Vertical align for infoselect
+
 ## 9.14.0
 
 ### Minor Changes

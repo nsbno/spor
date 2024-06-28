@@ -30,10 +30,11 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ./apps/docs
+          at: .
       - setup_remote_docker
       - aws-ecr/build_and_push_image:
           attach_workspace: true
+          dockerfile: apps/docs/Dockerfile
           region: eu-west-1
           repo: << pipeline.parameters.ecr_repo_name >>
           tag: "latest,commit-${CIRCLE_SHA1:0:7},${CIRCLE_BRANCH}-branch"

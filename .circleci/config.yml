@@ -26,7 +26,7 @@ jobs:
         type: string
         default: "${CIRCLE_SHA1:0:7}"
     docker:
-      - image: cimg/base:stable
+      - image: 'vydev/circleci-ecr:latest'
     steps:
       - checkout
       - attach_workspace:

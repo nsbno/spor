@@ -30,7 +30,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: .
+          at: ./apps/docs
       - setup_remote_docker
       - aws-ecr/build_and_push_image:
           attach_workspace: true

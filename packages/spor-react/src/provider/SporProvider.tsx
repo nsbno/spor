@@ -4,7 +4,6 @@ import deepmerge from "deepmerge";
 import React from "react";
 import { Language, LanguageProvider } from "..";
 import { Brand, brandTheme, theme as defaultSporTheme, fontFaces } from "../";
-import { PrideProvider } from "../pride/PrideProvider";
 
 type SporProviderProps = ChakraProviderProps & {
   language?: Language;
@@ -60,12 +59,10 @@ export const SporProvider = ({
 
   return (
     <LanguageProvider language={language}>
-      <PrideProvider>
-        <ChakraProvider theme={extendedTheme} {...props}>
-          <Global styles={fontFaces} />
-          {children}
-        </ChakraProvider>
-      </PrideProvider>
+      <ChakraProvider theme={extendedTheme} {...props}>
+        <Global styles={fontFaces} />
+        {children}
+      </ChakraProvider>
     </LanguageProvider>
   );
 };

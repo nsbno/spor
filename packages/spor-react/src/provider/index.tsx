@@ -1,2 +1,2 @@
 export * from "./SporProvider";
-export * from "../pride/PrideProvider";
+export * from "./HolidayProvider";

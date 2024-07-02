@@ -18,7 +18,6 @@ export * from "./media-controller";
 export * from "./modal";
 export * from "./nudge";
 export * from "./pagination";
-export * from "./pride";
 export * from "./progress-indicator";
 export * from "./provider";
 export * from "./stepper";

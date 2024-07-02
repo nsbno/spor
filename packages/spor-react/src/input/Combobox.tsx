@@ -139,18 +139,6 @@ export function Combobox<T extends object>({
     state,
   );
 
-  /* useEffect(() => {
-    const handleMouseOver = (e: MouseEvent) => {
-      if (state.isOpen && !inputRef.current?.contains(e.target as Node)) {
-        state.close();
-      }
-    };
-    window.addEventListener("mouseover", handleMouseOver);
-    return () => window.removeEventListener("mouseover", handleMouseOver);
-  }); */
-
-  console.log(state.selectedItem);
-
   return (
     <>
       <Input

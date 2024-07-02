@@ -156,7 +156,6 @@ function Option({ item, state }: OptionProps) {
     dataFields["data-focus-visible"] = true;
   }
 
-
   /* 
   Workaround to fix click througs on mobile devices
   Related to https://github.com/adobe/react-spectrum/issues/4970

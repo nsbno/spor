@@ -104,7 +104,7 @@ export function Combobox<T extends object>({
     allowsEmptyCollection: Boolean(emptyContent),
     defaultFilter: contains,
     shouldCloseOnBlur: true,
-    label,
+    /* label, */
     ...rest,
   });
 
@@ -135,6 +135,7 @@ export function Combobox<T extends object>({
       inputRef,
       listBoxRef,
       popoverRef,
+      label,
     },
     state,
   );

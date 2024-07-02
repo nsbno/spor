@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.15.0
+
+### Minor Changes
+
+- 9fb5ab7: Remove Pride design
+
 ## 9.14.1
 
 ### Patch Changes

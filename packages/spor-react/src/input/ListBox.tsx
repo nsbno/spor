@@ -135,6 +135,7 @@ function Option({ item, state }: OptionProps) {
     optionProps,
     isSelected,
     isDisabled,
+    isFocusVisible,
     isFocused,
     labelProps,
     descriptionProps,
@@ -151,6 +152,10 @@ function Option({ item, state }: OptionProps) {
   if (isFocused) {
     dataFields["data-focus"] = true;
   }
+  if (isFocusVisible) {
+    dataFields["data-focus-visible"] = true;
+  }
+
 
   /* 
   Workaround to fix click througs on mobile devices

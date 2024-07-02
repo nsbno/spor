@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 9.16.0
+
+### Minor Changes
+
+- f7c43e4: Combobox & ListBox: Add semantics for accessibility
+
 ## 9.15.0
 
 ### Minor Changes

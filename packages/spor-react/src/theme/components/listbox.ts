@@ -4,6 +4,7 @@ import { mode } from "@chakra-ui/theme-tools";
 import { baseBorder } from "../utils/base-utils";
 import { ghostBackground, ghostText } from "../utils/ghost-utils";
 import { surface } from "../utils/surface-utils";
+import { outlineBorder } from "../utils/outline-utils";
 
 const parts = anatomy("ListBox").parts(
   "container",
@@ -38,11 +39,11 @@ const config = helpers.defineMultiStyleConfig({
       _active: {
         ...ghostBackground("active", props),
       },
+      _focusVisible: {
+        ...outlineBorder("focus", props),
+      },
       _hover: {
         ...ghostBackground("hover", props),
-      },
-      _focus: {
-        ...ghostBackground("selected", props),
       },
       _selected: {
         ...ghostBackground("active", props),

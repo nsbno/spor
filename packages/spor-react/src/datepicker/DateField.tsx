@@ -1,7 +1,7 @@
 import { Box, Flex, FormLabel, useMultiStyleConfig } from "@chakra-ui/react";
 import { DateValue, GregorianCalendar } from "@internationalized/date";
 import { DOMAttributes, FocusableElement } from "@react-types/shared";
-import React, { RefObject, forwardRef, useRef } from "react";
+import React, { RefObject, forwardRef, useId, useRef } from "react";
 import { AriaDateFieldProps, useDateField } from "react-aria";
 import { useDateFieldState } from "react-stately";
 import { DateTimeSegment } from "./DateTimeSegment";
@@ -20,6 +20,7 @@ type DateFieldProps = AriaDateFieldProps<DateValue> & {
   label?: React.ReactNode;
   labelProps?: DOMAttributes<FocusableElement>;
   name?: string;
+  labelId?: string;
 };
 export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
   (props, externalRef) => {
@@ -33,7 +34,7 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
 
     const internalRef = useRef(null);
     const ref = externalRef ?? internalRef;
-    const { fieldProps, labelProps } = useDateField(
+    const { fieldProps } = useDateField(
       props,
       state,
       ref as RefObject<HTMLDivElement>,
@@ -43,18 +44,22 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
       <Box minWidth="6rem" width="100%">
         {props.label && (
           <FormLabel
-            {...props.labelProps}
-            {...labelProps}
             sx={styles.inputLabel}
             position="absolute"
             paddingTop="2px"
+            id={props.labelId}
           >
             {props.label}
           </FormLabel>
         )}
         <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
           {state.segments.map((segment, i) => (
-            <DateTimeSegment key={i} segment={segment} state={state} />
+            <DateTimeSegment
+              key={i}
+              segment={segment}
+              ariaLabelledby={props.labelId}
+              state={state}
+            />
           ))}
         </Flex>
         <input

@@ -2,7 +2,6 @@ import {
   Box,
   BoxProps,
   FocusLock,
-  InputGroup,
   Popover,
   PopoverAnchor,
   PopoverArrow,
@@ -10,12 +9,13 @@ import {
   PopoverContent,
   PopoverTrigger,
   Portal,
+  InputGroup,
   ResponsiveValue,
   useFormControlContext,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
-import React, { ReactNode, forwardRef, useRef } from "react";
+import React, { ReactNode, forwardRef, useId, useRef } from "react";
 import { AriaDatePickerProps, I18nProvider, useDatePicker } from "react-aria";
 import { useDatePickerState } from "react-stately";
 import { FormErrorMessage } from "..";
@@ -68,7 +68,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     const internalRef = useRef<HTMLDivElement>(null);
     const ref = externalRef ?? internalRef;
     const {
-      groupProps,
       labelProps,
       fieldProps,
       buttonProps,
@@ -80,6 +79,9 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       state,
       ref as React.MutableRefObject<HTMLDivElement>,
     );
+
+    const labelId = `label-${useId()}`;
+    const inputGroupId = `input-group-${useId()}`;
 
     const styles = useMultiStyleConfig("Datepicker", { variant });
     const locale = useCurrentLocale();
@@ -118,24 +120,33 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
             onClose={state.close}
             flip={false}
           >
-            <InputGroup {...groupProps} display="inline-flex">
+            <InputGroup
+              display="inline-flex"
+              id={inputGroupId}
+              aria-labelledby={labelId}
+            >
               <PopoverAnchor>
                 <StyledField
                   variant={variant}
                   onClick={onFieldClick}
                   paddingX={3}
                   minHeight={minHeight}
+                  isDisabled={props.isDisabled}
+                  ariaLabelledby={labelId}
                 >
                   <PopoverTrigger>
                     <CalendarTriggerButton
                       variant={variant}
                       ref={ref}
+                      isDisabled={props.isDisabled}
+                      ariaLabelledby={labelId}
                       {...buttonProps}
                     />
                   </PopoverTrigger>
                   <DateField
                     label={props.label}
                     labelProps={labelProps}
+                    labelId={labelId}
                     name={props.name}
                     {...fieldProps}
                   />

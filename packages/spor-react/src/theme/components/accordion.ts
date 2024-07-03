@@ -20,9 +20,13 @@ const config = helpers.defineMultiStyleConfig({
       justifyContent: "space-between",
       ...baseText("default", props),
       textAlign: "left",
+      fontSize: ["mobile.sm", null, "desktop.sm"],
       fontFamily: "body",
       fontWeight: "bold",
       outlineOffset: "-2px",
+      paddingX: [2, null, 3],
+      paddingY: [1, null, 1.5],
+      minHeight: [6, null, 7],
       ...focusVisibleStyles(props),
       _disabled: {
         pointerEvents: "none",
@@ -31,7 +35,9 @@ const config = helpers.defineMultiStyleConfig({
     },
     panel: {
       paddingY: 2,
+      paddingX: [2, null, 3],
       borderBottomRadius: "sm",
+      fontSize: ["mobile.sm", null, "desktop.sm"],
     },
     icon: {
       fontSize: "1.25em",
@@ -88,47 +94,8 @@ const config = helpers.defineMultiStyleConfig({
       },
     }),
   },
-  sizes: {
-    sm: {
-      button: {
-        fontSize: ["mobile.xs", null, "desktop.xs"],
-        paddingX: 2,
-        paddingY: 1,
-        minHeight: 6,
-      },
-      panel: {
-        fontSize: ["mobile.xs", null, "desktop.xs"],
-        paddingX: 2,
-      },
-    },
-    md: {
-      button: {
-        fontSize: ["mobile.sm", null, "desktop.sm"],
-        paddingX: 3,
-        paddingY: 1,
-        minHeight: 7,
-      },
-      panel: {
-        fontSize: ["mobile.sm", null, "desktop.sm"],
-        paddingX: 3,
-      },
-    },
-    lg: {
-      button: {
-        fontSize: ["mobile.sm", null, "desktop.sm"],
-        paddingX: 3,
-        paddingY: 2,
-        minHeight: 8,
-      },
-      panel: {
-        fontSize: ["mobile.sm", null, "desktop.sm"],
-        paddingX: 3,
-      },
-    },
-  },
   defaultProps: {
-    variant: "ghost",
-    size: "sm",
+    variant: "base",
   },
 });
 

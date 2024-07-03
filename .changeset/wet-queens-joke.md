@@ -2,4 +2,8 @@
 "@vygruppen/spor-react": major
 ---
 
-Accordion: Size prop is removed and will no longer work. Sizes are decided from responsiveness (sm on mobile, md on desktop).
+Breaking change: Accordion
+
+The size prop is no longer supported, and replaced by responsive sizes (sm on mobile, md on desktop).
+
+The sizing will happen automatically according to breakpoints.

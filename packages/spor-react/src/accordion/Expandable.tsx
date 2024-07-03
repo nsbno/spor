@@ -26,8 +26,7 @@ type ExpandableProps = Omit<
    *
    * Make sure it's the outlined version of the icon.
    *
-   * If the size is set to `sm` or `md` the icon should be 24px.
-   * If the size is set to `lg`, the icon should be 30px.
+   * The icon size should be 24px.
    */
   leftIcon?: React.ReactNode;
 
@@ -45,7 +44,7 @@ type ExpandableProps = Omit<
  * If you want several expandables in a row, use the `Accordion` and `ExpandableItem` components instead.
  *
  * ```tsx
- * <Expandable title="Click for more" variant="base" size="lg">
+ * <Expandable title="Click for more" variant="base">
  *   <Text>MORE! 🎉</Text>
  * </Expandable>
  * ```
@@ -89,7 +88,7 @@ export type ExpandableItemProps = Omit<AccordionItemProps, "title"> & {
   /**
    * Icon shown to the left of the title
    *
-   * Make sure it's the 30px outlined version of the icon
+   * Make sure it's the 24px outlined version of the icon
    */
   leftIcon?: React.ReactNode;
 };
@@ -97,7 +96,7 @@ export type ExpandableItemProps = Omit<AccordionItemProps, "title"> & {
  * An item in a set of Expandables. Must be wrapped in an `<Accordion>` component.
  *
  * ```tsx
- * <Accordion variant="ghost" size="md">
+ * <Accordion variant="ghost">
  *  <ExpandableItem title="Is Spor easy?" headingLevel="h3">
  *    Yes
  *  </ExpandableItem>

@@ -33,7 +33,7 @@ export type AccordionProps = Omit<ChakraAccordionProps, "variant" | "size"> & {
  * Wraps a set of ExpandableItem or AccordionItem components.
  *
  * ```tsx
- * <Accordion variant="ghost" size="md">
+ * <Accordion variant="ghost">
  *   <ExpandableItem title="Is Spor easy?" headingLevel="h3">
  *     Yes
  *   </ExpandableItem>

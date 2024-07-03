@@ -24,9 +24,7 @@ type ExpandableProps = Omit<
   /**
    * Icon shown to the left of the title
    *
-   * Make sure it's the outlined version of the icon.
-   *
-   * The icon size should be 24px.
+   * Make sure it's the 24px outlined version of the icon
    */
   leftIcon?: React.ReactNode;
 

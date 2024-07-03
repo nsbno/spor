@@ -62,7 +62,7 @@ export const ChoiceChip = forwardRef(
       isChecked,
       isDisabled,
       size = "sm",
-      chipType,
+      chipType = "choice",
       variant = "base",
       ...props
     }: ChoiceChipProps,

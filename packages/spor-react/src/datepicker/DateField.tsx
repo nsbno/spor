@@ -3,9 +3,10 @@ import { DateValue, GregorianCalendar } from "@internationalized/date";
 import { DOMAttributes, FocusableElement } from "@react-types/shared";
 import React, { RefObject, forwardRef, useId, useRef } from "react";
 import { AriaDateFieldProps, useDateField } from "react-aria";
-import { useDateFieldState } from "react-stately";
+import { DateSegment, useDateFieldState } from "react-stately";
 import { DateTimeSegment } from "./DateTimeSegment";
 import { useCurrentLocale } from "./utils";
+import { createTexts, useTranslation } from "../i18n";
 
 function createCalendar(identifier: string) {
   switch (identifier) {
@@ -23,7 +24,7 @@ type DateFieldProps = AriaDateFieldProps<DateValue> & {
   labelId?: string;
 };
 export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
-  (props, externalRef) => {
+  ({ labelId, ...props }, externalRef) => {
     const locale = useCurrentLocale();
     const styles = useMultiStyleConfig("Datepicker", {});
     const state = useDateFieldState({
@@ -31,6 +32,8 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
       locale,
       createCalendar,
     });
+
+    const { t } = useTranslation();
 
     const internalRef = useRef(null);
     const ref = externalRef ?? internalRef;
@@ -47,7 +50,7 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
             sx={styles.inputLabel}
             position="absolute"
             paddingTop="2px"
-            id={props.labelId}
+            id={labelId}
           >
             {props.label}
           </FormLabel>
@@ -57,7 +60,8 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
             <DateTimeSegment
               key={i}
               segment={segment}
-              ariaLabelledby={props.labelId}
+              ariaDescription={t(getAriaLabel(segment.type))}
+              ariaLabel={labelId}
               state={state}
             />
           ))}
@@ -71,3 +75,37 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
     );
   },
 );
+
+const texts = createTexts({
+  day: {
+    nb: "Velg dag",
+    nn: "Vel dag",
+    sv: "Välj dag",
+    en: "Choose day",
+  },
+  month: {
+    nb: "Velg måned",
+    nn: "Vel månad",
+    sv: "Välj månad",
+    en: "Choose month",
+  },
+  year: {
+    nb: "Velg år",
+    nn: "Vel år",
+    sv: "Välj år",
+    en: "Choose year",
+  },
+});
+
+const getAriaLabel = (segmentType: DateSegment["type"]) => {
+  switch (segmentType) {
+    case "day":
+      return texts.day;
+    case "month":
+      return texts.month;
+    case "year":
+      return texts.year;
+    default:
+      return texts.day;
+  }
+};

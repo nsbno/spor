@@ -110,11 +110,10 @@ export const ChoiceChip = forwardRef(
               {state.isChecked ? icon.checked : icon.default}
             </chakra.span>
           )}
-          {chipType !== "icon" && (
-            <chakra.span __css={styles.label} {...getCheckboxProps()}>
-              {children}
-            </chakra.span>
-          )}
+
+          <chakra.span __css={styles.label} {...getCheckboxProps()}>
+            {chipType !== "icon" && children}
+          </chakra.span>
 
           {chipType === "filter" && state.isChecked && (
             <CloseOutline24Icon marginLeft={1.5} />

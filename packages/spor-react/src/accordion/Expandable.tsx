@@ -147,5 +147,13 @@ const warnAboutMismatchingIcon = ({ icon }: WarnAboutMismatchingIcon) => {
       );
       return;
     }
+    if (!displayName.includes("24Icon")) {
+      console.warn(
+        `The icon you passed was of the wrong size. You passed ${displayName}, replace it with ${displayName.replace(
+          /(\d{2})Icon/,
+          "24Icon",
+        )}.`,
+      );
+    }
   }
 };

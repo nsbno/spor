@@ -56,7 +56,7 @@ type NumericStepperProps = {
  * ```tsx
  * <FormControl>
  *   <FormLabel>Number of adults</FormLabel>
- *   <NumericStepper />
+ *   <NumericStepper /> 
  * </FormControl>
  * ```
  */

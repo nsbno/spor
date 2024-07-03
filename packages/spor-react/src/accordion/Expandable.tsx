@@ -62,7 +62,6 @@ export const Expandable = ({
       {...rest}
       index={isOpen ? 0 : undefined}
       defaultIndex={defaultOpen ? 0 : undefined}
-      allowMultiple={true}
       onChange={(expandedIndex) => onChange(expandedIndex === 0)}
     >
       <ExpandableItem

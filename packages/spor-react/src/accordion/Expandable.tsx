@@ -9,7 +9,6 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { Accordion, AccordionProps } from "./Accordion";
-import { useAccordionContext } from "./AccordionContext";
 
 type HeadingLevel = "h2" | "h3" | "h4" | "h5" | "h6";
 type ExpandableProps = Omit<
@@ -56,7 +55,6 @@ export const Expandable = ({
   headingLevel,
   title,
   leftIcon,
-  size = "md",
   defaultOpen,
   isOpen,
   onChange = () => {},
@@ -68,7 +66,6 @@ export const Expandable = ({
       index={isOpen ? 0 : undefined}
       defaultIndex={defaultOpen ? 0 : undefined}
       allowMultiple={true}
-      size={size}
       onChange={(expandedIndex) => onChange(expandedIndex === 0)}
     >
       <ExpandableItem
@@ -119,8 +116,7 @@ export const ExpandableItem = ({
   leftIcon,
   ...rest
 }: ExpandableItemProps) => {
-  const { size } = useAccordionContext();
-  warnAboutMismatchingIcon({ icon: leftIcon, size });
+  warnAboutMismatchingIcon({ icon: leftIcon });
   return (
     <AccordionItem {...rest}>
       <Box as={headingLevel}>
@@ -139,9 +135,8 @@ export const ExpandableItem = ({
 
 type WarnAboutMismatchingIcon = {
   icon: any;
-  size: AccordionProps["size"];
 };
-const warnAboutMismatchingIcon = ({ icon, size }: WarnAboutMismatchingIcon) => {
+const warnAboutMismatchingIcon = ({ icon }: WarnAboutMismatchingIcon) => {
   if (process.env.NODE_ENV !== "production") {
     const displayName = icon?.type?.render?.displayName;
     if (!displayName) {
@@ -155,23 +150,6 @@ const warnAboutMismatchingIcon = ({ icon, size }: WarnAboutMismatchingIcon) => {
         )}.`,
       );
       return;
-    }
-    if (size === "lg" && !displayName.includes("30Icon")) {
-      console.warn(
-        `The icon you passed was of the wrong size for the lg size. You passed ${displayName}, replace it with ${displayName.replace(
-          /(\d{2})Icon/,
-          "30Icon",
-        )}.`,
-      );
-      return;
-    }
-    if (["md" || "sm"].includes(size!) && !displayName.includes("24Icon")) {
-      console.warn(
-        `The icon you passed was of the wrong size for the ${size} size. You passed ${displayName}, replace it with ${displayName.replace(
-          /(\d{2})Icon/,
-          "24Icon",
-        )}.`,
-      );
     }
   }
 };

@@ -5,7 +5,6 @@ import {
   BoxProps,
   useStyleConfig,
   forwardRef,
-  Card,
 } from "@chakra-ui/react";
 
 export type StaticCardProps = BoxProps & {

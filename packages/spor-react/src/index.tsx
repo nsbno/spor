@@ -3,7 +3,6 @@ export * from "./accordion";
 export * from "./alert";
 export * from "./breadcrumb";
 export * from "./button";
-export * from "./card";
 export * from "./datepicker";
 export * from "./i18n";
 export * from "./image";

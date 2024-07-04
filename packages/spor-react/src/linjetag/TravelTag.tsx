@@ -21,6 +21,9 @@ export type TravelTagProps = TagProps &
   BoxProps & {
     deviationLevel?: "critical" | "major" | "minor" | "info" | "none";
     isDisabled?: boolean;
+    foregroundColor?: string;
+    backgroundColor?: string;
+    customIconVariant?: string;
   };
 
 /**
@@ -82,6 +85,9 @@ export const TravelTag = forwardRef<TravelTagProps, As>(
       title,
       description,
       isDisabled,
+      foregroundColor,
+      backgroundColor,
+      customIconVariant,
       ...rest
     },
     ref,
@@ -90,8 +96,8 @@ export const TravelTag = forwardRef<TravelTagProps, As>(
       variant,
       size,
       deviationLevel,
-      foregroundColor: variant === "custom" ? rest.foregroundColor : undefined,
-      backgroundColor: variant === "custom" ? rest.backgroundColor : undefined,
+      foregroundColor: variant === "custom" ? foregroundColor : undefined,
+      backgroundColor: variant === "custom" ? backgroundColor : undefined,
     });
 
     const DeviationLevelIcon = getDeviationLevelIcon({ deviationLevel, size });
@@ -102,6 +108,9 @@ export const TravelTag = forwardRef<TravelTagProps, As>(
           variant={variant}
           size={size}
           sx={styles.iconContainer}
+          foregroundColor={foregroundColor}
+          backgroundColor={backgroundColor}
+          customIconVariant={customIconVariant}
           {...(rest as any)}
         />
         <Box sx={styles.textContainer}>

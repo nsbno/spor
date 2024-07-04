@@ -1,19 +1,14 @@
 import { Box, BoxProps, useMultiStyleConfig } from "@chakra-ui/react";
 import React from "react";
 import { getCorrectIcon } from "./icons";
-import { TagProps } from "./types";
+import { CustomVariantProps, TagProps } from "./types";
 
 type DefaultVariants = Exclude<TagProps["variant"], "custom">;
 
 type DefaultVariantProps = {
   variant: DefaultVariants;
 };
-type CustomVariantProps = {
-  variant: "custom";
-  customIconVariant: DefaultVariants;
-  foregroundColor: string;
-  backgroundColor: string;
-};
+
 type VariantProps = DefaultVariantProps | CustomVariantProps;
 
 export type LineIconProps = Exclude<BoxProps, "variant"> &
@@ -70,7 +65,7 @@ export const LineIcon = ({
     return null;
   }
   return (
-    <Box sx={{ ...styles.iconContainer, ...sx }} {...rest}>
+    <Box sx={{ ...styles.iconContainer, ...sx }}>
       <Icon sx={styles.icon} />
     </Box>
   );

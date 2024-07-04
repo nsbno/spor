@@ -59,7 +59,6 @@ export const ChoiceChip = forwardRef(
     {
       children,
       icon,
-      isChecked,
       isDisabled,
       size = "sm",
       chipType = "choice",

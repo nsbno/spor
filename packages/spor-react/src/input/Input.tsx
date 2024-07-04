@@ -38,6 +38,7 @@ export const Input = forwardRef<InputProps, "input">(
     const formControlProps = useFormControlContext();
     const fallbackId = `input-${useId()}`;
     const inputId = id ?? formControlProps?.id ?? fallbackId;
+
     return (
       <InputGroup position="relative">
         {leftIcon && (
@@ -49,7 +50,6 @@ export const Input = forwardRef<InputProps, "input">(
           paddingRight={rightIcon ? 7 : undefined}
           {...props}
           id={inputId}
-          aria-labelledby={inputId}
           ref={ref}
           placeholder=" " // This is needed to make the label work as expected
         />

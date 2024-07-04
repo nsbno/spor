@@ -159,7 +159,9 @@ const VerySmallButton = (props: VerySmallButtonProps) => {
   );
 };
 
-const SubtractIcon = (props: BoxProps & { stepLabel: number }) => (
+type IconPropTypes = BoxProps & { stepLabel: number };
+
+const SubtractIcon = ({ stepLabel, ...props }: IconPropTypes) => (
   <>
     <Box
       as="svg"
@@ -178,13 +180,13 @@ const SubtractIcon = (props: BoxProps & { stepLabel: number }) => (
         strokeLinecap="round"
       />
     </Box>
-    {props.stepLabel > 1 && (
-      <chakra.span paddingRight="1">{props.stepLabel.toString()}</chakra.span>
+    {stepLabel > 1 && (
+      <chakra.span paddingRight="1">{stepLabel.toString()}</chakra.span>
     )}
   </>
 );
 
-const AddIcon = (props: BoxProps & { stepLabel: number }) => (
+const AddIcon = ({ stepLabel, ...props }: IconPropTypes) => (
   <>
     <Box
       as="svg"
@@ -212,8 +214,8 @@ const AddIcon = (props: BoxProps & { stepLabel: number }) => (
       />
     </Box>
 
-    {props.stepLabel > 1 && (
-      <chakra.span paddingRight="1">{props.stepLabel.toString()}</chakra.span>
+    {stepLabel > 1 && (
+      <chakra.span paddingRight="1">{stepLabel.toString()}</chakra.span>
     )}
   </>
 );

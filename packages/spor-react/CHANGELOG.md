@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 10.1.0
+
+### Minor Changes
+
+- d63e3c6: ChoiceChip: Fix isChecked bug
+
 ## 10.0.0
 
 ### Major Changes

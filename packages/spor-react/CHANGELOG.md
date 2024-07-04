@@ -1,5 +1,33 @@
 # @vygruppen/spor-react
 
+## 10.0.0
+
+### Major Changes
+
+- 1e3a7bd: Major update: Card is removed
+
+  Card is replaced by StaticCard, PressableCard and RadioCard.
+
+- ec68649: Breaking change: Accordion
+
+  The `size` prop is no longer supported, and replaced by responsive sizes (sm on mobile, md on desktop).
+
+  The sizing will happen automatically according to breakpoints.
+
+  `allowMultiple` is also removed as default (Accordion will ignore allowToggle when allowMultiple is allowed).
+
+### Minor Changes
+
+- 35427e9: DatePicker: Fix warnings and accessibility
+- 1c030d2: Input: Rearranging the accessibility labels
+
+### Patch Changes
+
+- 94ecba7: ExpandableAlert: Fix warning in console for kebab-case
+- 3211116: LineTag: Fix bugs with props
+- bb0ded9: NumericStepper: Fix type error in console
+- 5935a32: ChoiceChip: Minor bugfix on types
+
 ## 9.16.0
 
 ### Minor Changes

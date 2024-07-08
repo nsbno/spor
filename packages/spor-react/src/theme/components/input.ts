@@ -1,8 +1,16 @@
-import { inputAnatomy as parts } from "@chakra-ui/anatomy";
+// import { inputAnatomy as parts } from "@chakra-ui/anatomy";
+import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { surface } from "../utils/surface-utils";
+import { floatingBackground, floatingBorder } from "../utils/floating-utils";
+
+const parts = anatomy("Input").parts(
+  "field",
+  "element",
+  "group"
+)
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
@@ -20,9 +28,6 @@ const config = helpers.defineMultiStyleConfig({
       paddingX: 3,
       height: 8,
       fontSize: "mobile.md",
-      ...baseBackground("default", props),
-
-      ...baseBorder("default", props),
       _hover: {
         ...baseBorder("hover", props),
       },
@@ -73,6 +78,37 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
   }),
+  variants: {
+    base: (props) => ({
+      field: {
+        ...baseBackground("default", props),
+        ...baseBorder("default", props),
+      }
+    }),
+    floating: (props) => ({
+      field: {
+        boxShadow: "sm",
+        ...floatingBackground("default", props),
+        ...floatingBorder("default", props),
+        
+        _hover: {
+          ...floatingBorder("hover", props),
+          ...floatingBackground("hover", props),
+        },
+        _active: {
+          ...floatingBorder("active", props),
+          ...floatingBackground("active", props),
+        },
+        _selected: {
+          ...floatingBorder("selected", props),
+          ...floatingBackground("selected", props),
+        }
+      },
+    }),
+  },
+  defaultProps: {
+    variant: "base"
+  }
 });
 
 export default config;

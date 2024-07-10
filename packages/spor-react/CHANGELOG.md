@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 10.2.0
+
+### Minor Changes
+
+- 0a56c3b: Added variant floating to input component.
+
+### Patch Changes
+
+- da227b9: Modal: Add h1 tag to title
+
 ## 10.1.0
 
 ### Minor Changes

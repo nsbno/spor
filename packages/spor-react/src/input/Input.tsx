@@ -6,7 +6,7 @@ import {
   InputLeftElement,
   InputRightElement,
   forwardRef,
-  useFormControlContext,
+  useFormControlContext
 } from "@chakra-ui/react";
 import React, { useId } from "react";
 
@@ -46,7 +46,7 @@ export const Input = forwardRef<InputProps, "input">(
     const inputId = id ?? formControlProps?.id ?? fallbackId;
     const labelId = `${useId()}-label`;
     return (
-      <InputGroup position="relative">
+      <InputGroup position="relative" overflow="hidden" padding="1px">
         {leftIcon && (
           <InputLeftElement pointerEvents="none">{leftIcon}</InputLeftElement>
         )}

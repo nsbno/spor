@@ -241,7 +241,7 @@ const getDeviationIconStyle = (props: StyleFunctionProps) => {
     top: "0",
     right: "0",
     transform: "translate(50%, -50%)",
-    zIndex: "banner",
+    zIndex: "docked",
     color:
       deviationIconColor[
         props.deviationLevel as keyof typeof deviationIconColor

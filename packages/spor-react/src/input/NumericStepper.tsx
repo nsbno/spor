@@ -93,11 +93,7 @@ export function NumericStepper({
   };
 
   return (
-    <Flex
-      __css={styles.container}
-      {...boxProps}
-      // aria-label={t(texts.groupAriaLabel(ariaLabelContext.plural, value))}
-    >
+    <Flex __css={styles.container} {...boxProps}>
       <VerySmallButton
         icon={<SubtractIcon stepLabel={clampedStepSize} />}
         aria-label={t(
@@ -128,6 +124,7 @@ export function NumericStepper({
           sx={styles.input}
           width={`${Math.max(value.toString().length + 1, 3)}ch`}
           visibility={!showZero && value === 0 ? "hidden" : "visible"}
+          aria-live="assertive"
           aria-label={t(texts.currentNumberAriaLabel(ariaLabelContext.plural))}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const numericInput = Number(e.target.value);
@@ -147,6 +144,7 @@ export function NumericStepper({
         <chakra.text
           sx={styles.text}
           visibility={!showZero && value === 0 ? "hidden" : "visible"}
+          aria-live="assertive"
           aria-label={t(texts.currentNumberAriaLabel(ariaLabelContext.plural))}
         >
           {value}
@@ -260,14 +258,6 @@ const AddIcon = ({ stepLabel, ...props }: IconPropTypes) => (
 );
 
 const texts = createTexts({
-  groupAriaLabel(ariaContext, value) {
-    return {
-      nb: `Legg til eller fjern antall ${ariaContext || "elementer"}. Verdien er nå ${value}.`,
-      en: `Add or remove number of ${ariaContext || "elements"}. Current value is ${value}.`,
-      nn: `Legg til eller fjern antall ${ariaContext || "elementer"}. Nå er verdien ${value}.`,
-      sv: `Lägg till eller fjern antall ${ariaContext || "elementer"}. Nu er verdien ${value}.`,
-    };
-  },
   currentNumberAriaLabel(ariaContext) {
     return {
       nb: `Valgt antall ${ariaContext}`,

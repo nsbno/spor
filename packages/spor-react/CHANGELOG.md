@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 10.3.0
+
+### Minor Changes
+
+- d3cd54d: Added input field ariaLabelContext to NummericStepper to improve functionality with screen readers.
+
 ## 10.2.0
 
 ### Minor Changes

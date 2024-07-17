@@ -125,7 +125,11 @@ export function NumericStepper({
           width={`${Math.max(value.toString().length + 1, 3)}ch`}
           visibility={!showZero && value === 0 ? "hidden" : "visible"}
           aria-live="assertive"
-          aria-label={t(texts.currentNumberAriaLabel(ariaLabelContext.plural))}
+          aria-label={
+            ariaLabelContext.plural !== ""
+              ? t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
+              : ""
+          }
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const numericInput = Number(e.target.value);
             if (Number.isNaN(numericInput)) {
@@ -145,7 +149,11 @@ export function NumericStepper({
           sx={styles.text}
           visibility={!showZero && value === 0 ? "hidden" : "visible"}
           aria-live="assertive"
-          aria-label={t(texts.currentNumberAriaLabel(ariaLabelContext.plural))}
+          aria-label={
+            ariaLabelContext.plural !== ""
+              ? t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
+              : ""
+          }
         >
           {value}
         </chakra.text>
@@ -261,7 +269,7 @@ const texts = createTexts({
   currentNumberAriaLabel(ariaContext) {
     return {
       nb: `Valgt antall ${ariaContext}`,
-      en: `Chosen number of ${ariaContext || "elements"}`,
+      en: `Chosen number of ${ariaContext}`,
       nn: `Valgt antall ${ariaContext}`,
       sv: `Valgt antall ${ariaContext}`,
     };

@@ -32,6 +32,6 @@ export type SwitchProps = Omit<ChakraSwitchProps, "colorScheme" | "variant"> & {
  */
 export const Switch = forwardRef<SwitchProps, "input">(
   ({ size = "md", ...props }: SwitchProps, ref) => {
-    return <ChakraSwitch size={size} {...props} ref={ref} />;
+    return <ChakraSwitch as="div" size={size} {...props} ref={ref} />;
   },
 );

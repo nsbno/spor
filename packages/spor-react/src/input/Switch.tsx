@@ -1,4 +1,5 @@
 import {
+  As,
   Switch as ChakraSwitch,
   SwitchProps as ChakraSwitchProps,
   forwardRef,
@@ -7,6 +8,7 @@ import React from "react";
 
 export type SwitchProps = Omit<ChakraSwitchProps, "colorScheme" | "variant"> & {
   size?: "sm" | "md" | "lg";
+  as?: As;
 };
 
 /**
@@ -31,7 +33,7 @@ export type SwitchProps = Omit<ChakraSwitchProps, "colorScheme" | "variant"> & {
  * ```
  */
 export const Switch = forwardRef<SwitchProps, "input">(
-  ({ size = "md", ...props }: SwitchProps, ref) => {
-    return <ChakraSwitch size={size} {...props} ref={ref} />;
+  ({ size = "md", as = "div", ...props }: SwitchProps, ref) => {
+    return <ChakraSwitch as={as} size={size} {...props} ref={ref} />;
   },
 );

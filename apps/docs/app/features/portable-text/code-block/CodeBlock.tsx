@@ -26,7 +26,11 @@ export const CodeBlock = ({
     >
       <Highlight theme={theme} code={code} language={language as any}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <Box as="pre" className={className} style={style}>
+          <Box
+            as="pre"
+            className={className}
+            style={{ ...style, overflowX: "auto" }}
+          >
             {tokens.map((line, i) => (
               <Box {...getLineProps({ line, key: i })}>
                 {line.map((token, key) => (

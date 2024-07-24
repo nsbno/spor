@@ -10,14 +10,12 @@ type CodeBlockProps = Omit<BoxProps, "children"> & {
   /** The code language to highlight */
   language?: "tsx" | "elm" | "bash";
 };
+
 export const CodeBlock = ({
   code,
   language = "tsx",
   ...props
 }: CodeBlockProps) => {
-  if (!code) {
-    return null;
-  }
   return (
     <CodeBlockContainer
       maxWidth={`calc(100vw - var(--spor-space-6))`}
@@ -74,7 +72,7 @@ export const CodeBlockContainer = ({
       fontSize={["mobile.sm", null, "desktop.sm"]}
       padding={2}
       position="relative"
-      onKeyUp={handleKeyUp}
+      handleKeyUp={handleKeyUp}
       {...props}
     >
       <Box position="absolute" top={2} right={2} zIndex="docked">

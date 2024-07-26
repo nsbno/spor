@@ -6,15 +6,19 @@ import {
   AccordionPanel,
   Box,
   Flex,
+  Text,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import React from "react";
 import { AlertIcon } from "./AlertIcon";
 import { BaseAlert, BaseAlertProps } from "./BaseAlert";
+import { createTexts, useTranslation } from "../i18n";
 
 type ExpandableAlertProps = BaseAlertProps & {
   /** The title string  */
   title: string;
+  /** The number of notifications when there is a list of multiple alerts */
+  notification: number;
   /** Callback for when the expandable panel is opened or closed */
   onToggle?: (isOpen: boolean) => void;
   /** Whether or not the default state of the expandable alert is open */
@@ -40,11 +44,13 @@ export const ExpandableAlert = ({
   variant,
   children,
   title,
+  notification,
   headingLevel = "h3",
   defaultOpen = false,
   onToggle = () => {},
   ...boxProps
 }: ExpandableAlertProps) => {
+  const { t } = useTranslation();
   const styles = useMultiStyleConfig("AlertExpandable", { variant });
   return (
     <BaseAlert variant={variant} {...boxProps} paddingX={0} paddingY={0}>
@@ -73,17 +79,39 @@ export const ExpandableAlert = ({
                     "-webkit-line-clamp": "1",
                     "-webkit-box-orient": "vertical",
                   }}
-                  color="darkGrey"
+                  color={variant === "service" ? "white" : "darkGrey"}
                 >
                   {title}
                 </Box>
               </Flex>
-              <AccordionIcon color="darkGrey" />
+
+              <Flex alignItems="center">
+                <Text 
+                  color={variant === "service" ? "white" : "darkGrey"}
+                  fontWeight={400}
+                  fontSize={16}
+                  pr="6px"
+                >
+                  {t(texts.notification(notification))}
+                </Text>
+
+              <AccordionIcon color={variant === "service" ? "white" : "darkGrey"} />
+              </Flex>
+              
             </Flex>
           </AccordionButton>
-          <AccordionPanel>{children}</AccordionPanel>
+          <AccordionPanel color={variant === "service" ? "white" : "darkGrey"}>{children}</AccordionPanel>
         </AccordionItem>
       </Accordion>
     </BaseAlert>
   );
 };
+
+const texts = createTexts({
+  notification: (notification) => ({
+    nb: `${notification} varsel`,
+    nn: `${notification} varsel`,
+    sv: `${notification} ${notification > 1 ? 'underrättelser' : 'underrättelse'}`,
+    en: `${notification} ${notification > 1 ? 'notifications' : 'notification'}`,
+  }),
+});

@@ -1,5 +1,5 @@
 # base node image
-FROM node:20-alpine as base
+FROM node:20-alpine AS base
 
 # set for base and all that inherit from it
 ENV NODE_ENV=production
@@ -16,7 +16,7 @@ ADD package.json ./
 RUN npm install --production=false
 
 # Setup production node_modules
-FROM base as production-deps
+FROM base AS production-deps
 
 RUN mkdir /app
 WORKDIR /app
@@ -28,7 +28,7 @@ ADD package.json ./
 RUN npm prune --omit=dev
 
 # Build the app
-FROM base as build
+FROM base AS build
 
 RUN mkdir /app
 WORKDIR /app
@@ -39,7 +39,7 @@ ADD . .
 RUN npm run build
 
 # Finally, build the production image with minimal footprint
-FROM base as final
+FROM base AS final
 
 ENV NODE_ENV=production
 

@@ -15,7 +15,7 @@ ADD package.json ./
 # (even when NODE_ENV=production)
 RUN npm install --production=false
 
-RUN npm install esbuild
+RUN npm i turbo
 
 # Setup production node_modules
 FROM base as production-deps

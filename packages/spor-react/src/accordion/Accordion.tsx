@@ -5,7 +5,6 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { Stack, StackProps } from "../layout";
-import { AccordionProvider } from "./AccordionContext";
 export {
   AccordionButton,
   AccordionIcon,
@@ -27,7 +26,6 @@ export type AccordionProps = Omit<ChakraAccordionProps, "variant" | "size"> & {
    * - `floating` renders a version with a drop shadow
    */
   variant?: "ghost" | "base" | "floating";
-  size?: "sm" | "md" | "lg";
   /** The margin between accordion items */
   spacing?: StackProps["spacing"];
 };
@@ -35,7 +33,7 @@ export type AccordionProps = Omit<ChakraAccordionProps, "variant" | "size"> & {
  * Wraps a set of ExpandableItem or AccordionItem components.
  *
  * ```tsx
- * <Accordion variant="ghost" size="md">
+ * <Accordion variant="ghost">
  *   <ExpandableItem title="Is Spor easy?" headingLevel="h3">
  *     Yes
  *   </ExpandableItem>
@@ -54,15 +52,13 @@ export const Accordion = forwardRef<AccordionProps, "div">(
         ? [props.defaultIndex]
         : props.defaultIndex;
     return (
-      <AccordionProvider size={props.size}>
-        <ChakraAccordion
-          {...props}
-          ref={ref}
-          defaultIndex={defaultIndex as number[] | undefined}
-        >
-          <Stack spacing={spacing}>{children}</Stack>
-        </ChakraAccordion>
-      </AccordionProvider>
+      <ChakraAccordion
+        {...props}
+        ref={ref}
+        defaultIndex={defaultIndex as number[] | undefined}
+      >
+        <Stack spacing={spacing}>{children}</Stack>
+      </ChakraAccordion>
     );
   },
 );

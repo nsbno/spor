@@ -12,7 +12,6 @@ import {
   Switch,
   Text,
   useColorMode,
-  TogglePride,
 } from "@vygruppen/spor-react";
 import { BrandSwitcher } from "~/features/brand-switcher/BrandSwitcher";
 
@@ -47,14 +46,16 @@ export const SiteSettings = ({ showLabel }: SiteSettingsProps) => {
           <Stack gap={3}>
             <BrandSwitcher />
             <FormControl display="flex" alignItems="center" gap={3}>
-              <FormLabel margin="0">Dark mode</FormLabel>
+              <FormLabel margin="0" htmlFor="site-settings-dark-mode">
+                Dark mode
+              </FormLabel>
               <Switch
+                id="site-settings-dark-mode"
                 size="sm"
                 onChange={() => toggleColorMode()}
                 defaultChecked={colorMode === "dark"}
               />
             </FormControl>
-            <TogglePride label="Make it pride" />
           </Stack>
         </Flex>
       </CardSelect>

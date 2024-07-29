@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
 import { ColorSpinner, Input, InputProps, ListBox } from "..";
@@ -93,8 +93,10 @@ export function Combobox<T extends object>({
 
   const fallbackInputRef = useRef<HTMLInputElement>(null);
   const inputRef = externalInputRef ?? fallbackInputRef;
-  const listBoxRef = useRef(null);
+  const listBoxRef = useRef<HTMLUListElement>(null);
   const popoverRef = useRef(null);
+
+  const listboxId = `${useId()}-listbox`;
 
   const inputWidth = useInputWidth(inputRef);
 
@@ -102,7 +104,6 @@ export function Combobox<T extends object>({
     allowsEmptyCollection: Boolean(emptyContent),
     defaultFilter: contains,
     shouldCloseOnBlur: true,
-    label,
     ...rest,
   });
 
@@ -133,6 +134,7 @@ export function Combobox<T extends object>({
       inputRef,
       listBoxRef,
       popoverRef,
+      label,
     },
     state,
   );
@@ -143,7 +145,11 @@ export function Combobox<T extends object>({
         {...styleProps(comboBoxProps)}
         aria-haspopup="listbox"
         ref={inputRef}
+        role="combobox"
         label={label}
+        aria-expanded={state.isOpen}
+        aria-autocomplete="list"
+        aria-controls={listboxId}
         borderBottomLeftRadius={
           state.isOpen && !isLoading ? 0 : borderBottomLeftRadius
         }
@@ -169,7 +175,7 @@ export function Combobox<T extends object>({
           )
         }
       />
-
+      <span aria-hidden="true" data-trigger="multiselect"></span>
       {state.isOpen && !isLoading && (
         <Popover
           state={state}
@@ -186,6 +192,7 @@ export function Combobox<T extends object>({
           <ListBox
             {...listBoxProps}
             state={state}
+            id={listboxId}
             listBoxRef={listBoxRef}
             emptyContent={emptyContent}
             maxWidth={inputWidth}

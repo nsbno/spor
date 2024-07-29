@@ -4,7 +4,7 @@ import {
   useFormControl,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useRef } from "react";
 import {
   Box,
   BoxProps,
@@ -35,6 +35,8 @@ type NumericStepperProps = {
   stepSize?: number;
   /** Whether to show the number input when value is zero  */
   showZero?: boolean;
+  /** Name added to the aria-label of subtract and add buttons. */
+  ariaLabelContext?: { singular: string; plural: string };
 } & Omit<BoxProps, "onChange">;
 /** A simple stepper component for integer values
  *
@@ -72,8 +74,10 @@ export function NumericStepper({
   withInput = true,
   stepSize = 1,
   showZero = false,
+  ariaLabelContext = { singular: "", plural: "" },
   ...boxProps
 }: NumericStepperProps) {
+  const addButtonRef = useRef<HTMLButtonElement>(null);
   const { t } = useTranslation();
   const styles = useMultiStyleConfig("NumericStepper", {});
   const [value, onChange] = useControllableState<number>({
@@ -84,12 +88,26 @@ export function NumericStepper({
   const formControlProps = useFormControl({ id: idProp, isDisabled });
   const clampedStepSize = Math.max(Math.min(stepSize, 10), 1);
 
+  const focusOnAddButton = () => {
+    addButtonRef.current?.focus();
+  };
+
   return (
     <Flex __css={styles.container} {...boxProps}>
       <VerySmallButton
         icon={<SubtractIcon stepLabel={clampedStepSize} />}
-        aria-label={t(texts.decrementButtonAriaLabel(clampedStepSize))}
-        onClick={() => onChange(Math.max(value - clampedStepSize, minValue))}
+        aria-label={t(
+          texts.decrementButtonAriaLabel(
+            clampedStepSize,
+            stepSize == 1 ? ariaLabelContext.singular : ariaLabelContext.plural,
+          ),
+        )}
+        onClick={() => {
+          onChange(Math.max(value - clampedStepSize, minValue));
+          if (Math.max(value - clampedStepSize, minValue) <= minValue) {
+            focusOnAddButton();
+          }
+        }}
         visibility={value <= minValue ? "hidden" : "visible"}
         isDisabled={formControlProps.disabled}
         id={value <= minValue ? undefined : formControlProps.id}
@@ -107,27 +125,48 @@ export function NumericStepper({
           width={`${Math.max(value.toString().length + 1, 3)}ch`}
           visibility={!showZero && value === 0 ? "hidden" : "visible"}
           aria-live="assertive"
-          aria-label={value.toString()}
+          aria-label={
+            ariaLabelContext.plural !== ""
+              ? t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
+              : ""
+          }
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const numericInput = Number(e.target.value);
             if (Number.isNaN(numericInput)) {
               return;
             }
             onChange(Math.max(Math.min(numericInput, maxValue), minValue));
+            if (
+              !showZero &&
+              Math.max(Math.min(numericInput, maxValue), minValue) === 0
+            ) {
+              focusOnAddButton();
+            }
           }}
         />
       ) : (
         <chakra.text
           sx={styles.text}
           visibility={!showZero && value === 0 ? "hidden" : "visible"}
-          aria-label={value.toString()}
+          aria-live="assertive"
+          aria-label={
+            ariaLabelContext.plural !== ""
+              ? t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
+              : ""
+          }
         >
           {value}
         </chakra.text>
       )}
       <VerySmallButton
+        ref={addButtonRef}
         icon={<AddIcon stepLabel={clampedStepSize} />}
-        aria-label={t(texts.incrementButtonAriaLabel(clampedStepSize))}
+        aria-label={t(
+          texts.incrementButtonAriaLabel(
+            clampedStepSize,
+            stepSize == 1 ? ariaLabelContext.singular : ariaLabelContext.plural,
+          ),
+        )}
         onClick={() => onChange(Math.min(value + clampedStepSize, maxValue))}
         visibility={value >= maxValue ? "hidden" : "visible"}
         isDisabled={formControlProps.disabled}
@@ -152,14 +191,22 @@ type VerySmallButtonProps = {
   id?: string;
 };
 /** Internal override for extra small icon buttons */
-const VerySmallButton = (props: VerySmallButtonProps) => {
+const VerySmallButton = React.forwardRef((props: VerySmallButtonProps, ref) => {
   const styles = useMultiStyleConfig("NumericStepper", {});
   return (
-    <IconButton variant="primary" size="xs" sx={styles.button} {...props} />
+    <IconButton
+      variant="primary"
+      size="xs"
+      sx={styles.button}
+      ref={ref}
+      {...props}
+    />
   );
-};
+});
 
-const SubtractIcon = (props: BoxProps & { stepLabel: number }) => (
+type IconPropTypes = BoxProps & { stepLabel: number };
+
+const SubtractIcon = ({ stepLabel, ...props }: IconPropTypes) => (
   <>
     <Box
       as="svg"
@@ -178,13 +225,13 @@ const SubtractIcon = (props: BoxProps & { stepLabel: number }) => (
         strokeLinecap="round"
       />
     </Box>
-    {props.stepLabel > 1 && (
-      <chakra.span paddingRight="1">{props.stepLabel.toString()}</chakra.span>
+    {stepLabel > 1 && (
+      <chakra.span paddingRight="1">{stepLabel.toString()}</chakra.span>
     )}
   </>
 );
 
-const AddIcon = (props: BoxProps & { stepLabel: number }) => (
+const AddIcon = ({ stepLabel, ...props }: IconPropTypes) => (
   <>
     <Box
       as="svg"
@@ -212,27 +259,35 @@ const AddIcon = (props: BoxProps & { stepLabel: number }) => (
       />
     </Box>
 
-    {props.stepLabel > 1 && (
-      <chakra.span paddingRight="1">{props.stepLabel.toString()}</chakra.span>
+    {stepLabel > 1 && (
+      <chakra.span paddingRight="1">{stepLabel.toString()}</chakra.span>
     )}
   </>
 );
 
 const texts = createTexts({
-  decrementButtonAriaLabel(stepSize) {
+  currentNumberAriaLabel(ariaContext) {
     return {
-      nb: `Trekk fra ${stepSize}`,
-      en: `Subtract ${stepSize}`,
-      nn: `Trekk frå ${stepSize}`,
-      sv: `Subtrahera ${stepSize}`,
+      nb: `Valgt antall ${ariaContext}`,
+      en: `Chosen number of ${ariaContext}`,
+      nn: `Valgt antall ${ariaContext}`,
+      sv: `Valgt antall ${ariaContext}`,
     };
   },
-  incrementButtonAriaLabel(stepSize) {
+  decrementButtonAriaLabel(stepSize, ariaContext) {
     return {
-      nb: `Legg til ${stepSize}`,
-      en: `Add ${stepSize}`,
-      nn: `Legg til ${stepSize}`,
-      sv: `Lägg till ${stepSize}`,
+      nb: `Trekk fra ${stepSize} ${ariaContext}`,
+      en: `Subtract ${stepSize} ${ariaContext}`,
+      nn: `Trekk frå ${stepSize} ${ariaContext}`,
+      sv: `Subtrahera ${stepSize} ${ariaContext}`,
+    };
+  },
+  incrementButtonAriaLabel(stepSize, ariaContext) {
+    return {
+      nb: `Legg til ${stepSize} ${ariaContext}`,
+      en: `Add ${stepSize} ${ariaContext}`,
+      nn: `Legg til ${stepSize} ${ariaContext}`,
+      sv: `Lägg till ${stepSize} ${ariaContext}`,
     };
   },
 });

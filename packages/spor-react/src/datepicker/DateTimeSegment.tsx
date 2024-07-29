@@ -6,6 +6,8 @@ import { DateFieldState, DateSegment } from "react-stately";
 type DateTimeSegmentProps = {
   segment: DateSegment;
   state: DateFieldState;
+  ariaLabel?: string;
+  ariaDescription?: string;
 };
 /**
  * A date time segment is a part of a date or a time stamp.
@@ -15,7 +17,7 @@ type DateTimeSegmentProps = {
  * This component should be used with the react-aria library, and is not meant to be used directly.
  * */
 export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
-  ({ segment, state }, externalRef) => {
+  ({ segment, state, ariaLabel, ariaDescription }, externalRef) => {
     const internalRef = useRef(null);
     const ref = externalRef ?? internalRef;
 
@@ -42,6 +44,8 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
         borderRadius="xs"
         fontSize={["mobile.sm", "desktop.sm"]}
         sx={styles.dateTimeSegment}
+        aria-description={ariaDescription}
+        aria-labelledby={ariaLabel}
       >
         {isPaddable(segment.type)
           ? segment.text.padStart(2, "0")

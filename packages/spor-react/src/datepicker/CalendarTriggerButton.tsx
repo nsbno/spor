@@ -7,39 +7,43 @@ import {
   ResponsiveValue,
 } from "@chakra-ui/react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
-import React from "react";
+import React, { KeyboardEventHandler } from "react";
 import { AriaButtonProps } from "react-aria";
-import { createTexts, useTranslation } from "..";
+import { IconButton, createTexts, useTranslation } from "..";
 
 type CalendarTriggerButtonProps = AriaButtonProps<"button"> & {
   variant: ResponsiveValue<"base" | "floating" | "ghost">;
+  isDisabled?: boolean;
+  ariaLabelledby?: string;
 };
 export const CalendarTriggerButton = forwardRef<CalendarTriggerButtonProps, As>(
-  ({ variant, ...buttonProps }, ref) => {
+  ({ variant, isDisabled, ariaLabelledby, ...buttonProps }, ref) => {
     const { t } = useTranslation();
     const styles = useMultiStyleConfig("Datepicker", { variant });
 
     const { onPress, ...filteredButtonProps } = buttonProps;
 
-    const handleOnPress = (event: KeyboardEvent) => {
-      if (onPress) {
-        if (event.key == "Enter" || event.key == " ") onPress(event as any);
+    const handleCommand: KeyboardEventHandler = (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        onPress?.(event as any);
       }
     };
 
     return (
       <PopoverAnchor>
-        <Box
+        <IconButton
           ref={ref}
-          as="button"
-          type="button"
+          role="button"
+          icon={<CalendarOutline24Icon />}
           aria-label={t(texts.openCalendar)}
           sx={styles.calendarTriggerButton}
+          variant="ghost"
           {...filteredButtonProps}
-          onKeyUp={handleOnPress}
-        >
-          <CalendarOutline24Icon />
-        </Box>
+          isDisabled={isDisabled}
+          onKeyDown={handleCommand}
+          aria-labelledby={ariaLabelledby}
+        />
       </PopoverAnchor>
     );
   },

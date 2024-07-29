@@ -9,7 +9,6 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { Accordion, AccordionProps } from "./Accordion";
-import { useAccordionContext } from "./AccordionContext";
 
 type HeadingLevel = "h2" | "h3" | "h4" | "h5" | "h6";
 type ExpandableProps = Omit<
@@ -25,10 +24,7 @@ type ExpandableProps = Omit<
   /**
    * Icon shown to the left of the title
    *
-   * Make sure it's the outlined version of the icon.
-   *
-   * If the size is set to `sm` or `md` the icon should be 24px.
-   * If the size is set to `lg`, the icon should be 30px.
+   * Make sure it's the 24px outlined version of the icon
    */
   leftIcon?: React.ReactNode;
 
@@ -46,7 +42,7 @@ type ExpandableProps = Omit<
  * If you want several expandables in a row, use the `Accordion` and `ExpandableItem` components instead.
  *
  * ```tsx
- * <Expandable title="Click for more" variant="base" size="lg">
+ * <Expandable title="Click for more" variant="base">
  *   <Text>MORE! 🎉</Text>
  * </Expandable>
  * ```
@@ -56,7 +52,6 @@ export const Expandable = ({
   headingLevel,
   title,
   leftIcon,
-  size = "md",
   defaultOpen,
   isOpen,
   onChange = () => {},
@@ -67,8 +62,6 @@ export const Expandable = ({
       {...rest}
       index={isOpen ? 0 : undefined}
       defaultIndex={defaultOpen ? 0 : undefined}
-      allowMultiple={true}
-      size={size}
       onChange={(expandedIndex) => onChange(expandedIndex === 0)}
     >
       <ExpandableItem
@@ -92,7 +85,7 @@ export type ExpandableItemProps = Omit<AccordionItemProps, "title"> & {
   /**
    * Icon shown to the left of the title
    *
-   * Make sure it's the 30px outlined version of the icon
+   * Make sure it's the 24px outlined version of the icon
    */
   leftIcon?: React.ReactNode;
 };
@@ -100,7 +93,7 @@ export type ExpandableItemProps = Omit<AccordionItemProps, "title"> & {
  * An item in a set of Expandables. Must be wrapped in an `<Accordion>` component.
  *
  * ```tsx
- * <Accordion variant="ghost" size="md">
+ * <Accordion variant="ghost">
  *  <ExpandableItem title="Is Spor easy?" headingLevel="h3">
  *    Yes
  *  </ExpandableItem>
@@ -119,8 +112,7 @@ export const ExpandableItem = ({
   leftIcon,
   ...rest
 }: ExpandableItemProps) => {
-  const { size } = useAccordionContext();
-  warnAboutMismatchingIcon({ icon: leftIcon, size });
+  warnAboutMismatchingIcon({ icon: leftIcon });
   return (
     <AccordionItem {...rest}>
       <Box as={headingLevel}>
@@ -139,9 +131,8 @@ export const ExpandableItem = ({
 
 type WarnAboutMismatchingIcon = {
   icon: any;
-  size: AccordionProps["size"];
 };
-const warnAboutMismatchingIcon = ({ icon, size }: WarnAboutMismatchingIcon) => {
+const warnAboutMismatchingIcon = ({ icon }: WarnAboutMismatchingIcon) => {
   if (process.env.NODE_ENV !== "production") {
     const displayName = icon?.type?.render?.displayName;
     if (!displayName) {
@@ -156,18 +147,9 @@ const warnAboutMismatchingIcon = ({ icon, size }: WarnAboutMismatchingIcon) => {
       );
       return;
     }
-    if (size === "lg" && !displayName.includes("30Icon")) {
+    if (!displayName.includes("24Icon")) {
       console.warn(
-        `The icon you passed was of the wrong size for the lg size. You passed ${displayName}, replace it with ${displayName.replace(
-          /(\d{2})Icon/,
-          "30Icon",
-        )}.`,
-      );
-      return;
-    }
-    if (["md" || "sm"].includes(size!) && !displayName.includes("24Icon")) {
-      console.warn(
-        `The icon you passed was of the wrong size for the ${size} size. You passed ${displayName}, replace it with ${displayName.replace(
+        `The icon you passed was of the wrong size. You passed ${displayName}, replace it with ${displayName.replace(
           /(\d{2})Icon/,
           "24Icon",
         )}.`,

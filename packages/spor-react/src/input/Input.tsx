@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useId } from "react";
 
-export type InputProps = Omit<ChakraInputProps, "variant" | "size"> & {
+export type InputProps = Omit<ChakraInputProps, "size"> & {
   /** The input's label */
   label: string;
   /** Icon that shows up to the left */
@@ -32,12 +32,19 @@ export type InputProps = Omit<ChakraInputProps, "variant" | "size"> & {
  * ```tsx
  * <Input label="E-mail" leftIcon={<EmailOutline24Icon />} />
  * ```
+ *
+ * Input has two variants base, and floating.
+ *
+ * ```tsx
+ * <Input label="E-mail" leftIcon={<EmailOutline24Icon />} variant="floating" />
+ * ```
  */
 export const Input = forwardRef<InputProps, "input">(
   ({ label, leftIcon, rightIcon, id, size, ...props }, ref) => {
     const formControlProps = useFormControlContext();
     const fallbackId = `input-${useId()}`;
     const inputId = id ?? formControlProps?.id ?? fallbackId;
+    const labelId = `${useId()}-label`;
     return (
       <InputGroup position="relative">
         {leftIcon && (
@@ -49,10 +56,13 @@ export const Input = forwardRef<InputProps, "input">(
           paddingRight={rightIcon ? 7 : undefined}
           {...props}
           id={inputId}
+          aria-labelledby={labelId}
           ref={ref}
           placeholder=" " // This is needed to make the label work as expected
         />
-        <FormLabel htmlFor={inputId}>{label}</FormLabel>
+        <FormLabel htmlFor={inputId} id={labelId}>
+          {label}
+        </FormLabel>
         {rightIcon && (
           <InputRightElement pointerEvents="none">
             {rightIcon}

@@ -26,6 +26,6 @@ export const ModalHeader = forwardRef<ModalHeaderProps, "header">(
           ? "center"
           : ("left" as ChakraModalHeaderProps["textAlign"]),
     };
-    return <ChakraModalHeader {...props} ref={ref} {...styles} />;
+    return <ChakraModalHeader as={"h1"} {...props} ref={ref} {...styles} />;
   },
 );

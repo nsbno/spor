@@ -25,7 +25,7 @@ export type TagProps = VariantProps & {
 type DefaultVariantProps = {
   variant: Variant;
 };
-type CustomVariantProps = {
+export type CustomVariantProps = {
   variant: "custom";
   /** When variant="custom", the foreground color of the tag */
   foregroundColor: string;

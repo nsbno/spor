@@ -42,6 +42,8 @@ const config = helpers.defineMultiStyleConfig({
       _disabled: {
         pointerEvents: "none",
         ...baseBackground("disabled", props),
+        ...baseBorder("disabled", props),
+        ...baseText("disabled", props),
       },
       _focusWithin: {
         ...focusVisibleStyles(props)._focusVisible,
@@ -49,15 +51,10 @@ const config = helpers.defineMultiStyleConfig({
     },
     inputLabel: {
       fontSize: "mobile.xs",
-      color: mode("darkGrey", "white")(props),
       margin: 0,
       cursor: "text",
     },
     dateTimeSegment: {
-      color: mode(
-        "darkGrey",
-        props.isPlaceholder ? "whiteAlpha.400" : "white",
-      )(props),
       _focus: {
         ...brandBackground("hover", props),
         color: "white",
@@ -68,13 +65,9 @@ const config = helpers.defineMultiStyleConfig({
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      borderLeftRadius: "sm",
       transitionProperty: "box-shadow, background-color",
       transitionSpeed: "fast",
       position: "relative",
-      paddingTop: 1,
-      paddingBottom: 1,
-      borderRadius: "sm",
       right: "9px",
 
       ...focusVisibleStyles(props),
@@ -173,9 +166,6 @@ const config = helpers.defineMultiStyleConfig({
         _invalid: {
           ...baseBorder("invalid", props),
         },
-        _disabled: {
-          ...baseBorder("disabled", props),
-        },
       },
     }),
     floating: (props) => ({
@@ -189,9 +179,6 @@ const config = helpers.defineMultiStyleConfig({
         },
         _invalid: {
           ...baseBorder("invalid", props),
-        },
-        _disabled: {
-          ...baseBorder("disabled", props),
         },
       },
     }),

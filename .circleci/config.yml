@@ -57,12 +57,15 @@ jobs:
             fi
             aws ecr get-login-password --region eu-west-1 \
               | docker login --username AWS --password-stdin "$ECR_ENDPOINT"
-            SHORT_SHA1=`echo ${CIRCLE_SHA1}|cut -c1-7`
             docker build -t ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> -f Dockerfile .
-            docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${SHORT_SHA1}"
-            docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${SHORT_SHA1}"
             docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
             docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
+            docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${CIRCLE_SHA1:0:7}"
+            docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${CIRCLE_SHA1:0:7}"
+            docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:<< pipeline.git.branch >>-branch"
+            docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:<< pipeline.git.branch >>-branch"
+            docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:${CIRCLE_SHA1:0:7}"
+            docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:${CIRCLE_SHA1:0:7}"
 
   upload-terraform-artifacts:
     docker:

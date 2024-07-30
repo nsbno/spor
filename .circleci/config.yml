@@ -27,10 +27,10 @@ jobs:
         default: "${CIRCLE_SHA1:0:7}"
     docker:
       - image: cimg/base:stable
+    working_directory: /tmp/workspace/apps/docs
     steps:
-      - checkout
-      - attach_workspace:
-          at: .
+      - checkout:
+          path: ../../
       - setup_remote_docker
       - aws-ecr/build_and_push_image:
           attach_workspace: true

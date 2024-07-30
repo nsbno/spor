@@ -29,12 +29,11 @@ jobs:
       - image: cimg/base:stable
     working_directory: /tmp/workspace/apps/docs
     steps:
-      - checkout:
-          path: ../../
+      - checkout
       - setup_remote_docker
       - aws-ecr/build_and_push_image:
           attach_workspace: true
-          dockerfile: apps/docs/Dockerfile
+          path: apps/docs/
           region: eu-west-1
           repo: << pipeline.parameters.ecr_repo_name >>
           tag: "latest,commit-${CIRCLE_SHA1:0:7},${CIRCLE_BRANCH}-branch"

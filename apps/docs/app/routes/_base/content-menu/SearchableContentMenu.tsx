@@ -59,18 +59,28 @@ export const SearchableContentMenu = () => {
       as="nav"
       aria-label={isSearchActive ? "Search results" : "Content"}
       width={"100%"}
-      sx={{ position: "sticky", top: "7.5rem" }}
+      position="sticky"
+      top="7.5rem"
+      overflowY="scroll"
+      height="90vh"
+      paddingBottom={3}
+      paddingRight={3}
     >
-      <Box as="form" onSubmit={handleSubmit}>
+      {/* <Box as="form" onSubmit={handleSubmit}>
         <GlobalSearchInput
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyUp={handleKeyUp}
           onReset={() => setQuery("")}
         />
-      </Box>
+      </Box> */}
       {isSearchActive ? (
-        <SearchResults ref={focusableRef} hits={hits} query={query} />
+        <SearchResults
+          ref={focusableRef}
+          hits={hits}
+          query={query}
+          onResultClick={() => {}}
+        />
       ) : (
         <ContentMenu ref={focusableRef} />
       )}

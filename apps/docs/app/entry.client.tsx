@@ -4,6 +4,7 @@ import { useState } from "react";
 import { hydrateRoot } from "react-dom/client";
 import { createEmotionCache } from "./root/setup/chakra-setup/createEmotionCache";
 import { ClientStyleContext } from "./root/setup/chakra-setup/styleContext";
+import "./styles/style-overrides.css";
 
 type ClientCacheProviderProps = {
   children: React.ReactNode;

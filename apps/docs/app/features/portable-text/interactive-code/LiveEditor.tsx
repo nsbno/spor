@@ -70,7 +70,10 @@ export const LiveEditor = ({ onChange, ...props }: LiveEditorProps) => {
         >
           <ReactLiveEditor
             theme={theme}
-            style={{ overflow: "scroll", height: "100%" }}
+            style={{
+              overflow: "scroll",
+              height: "100%",
+            }}
             disabled={isDisabled}
             {...(onChange ? { onChange } : {})}
           />

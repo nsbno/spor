@@ -23,6 +23,8 @@ export const GlobalSearchInput = ({
         onKeyUp={onKeyUp}
         onReset={onReset}
         aria-keyshortcuts="Meta+K"
+        label="F.ex. icons, components, or pages"
+        autoFocus={true}
       />
     </FormControl>
   );

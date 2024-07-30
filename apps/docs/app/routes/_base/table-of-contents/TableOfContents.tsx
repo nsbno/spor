@@ -41,7 +41,7 @@ function TableOfContent(props: TableOfContentProps) {
       alignSelf="start"
       fontSize="sm"
       maxHeight="calc(100vh - 8rem)"
-      width={"20rem"}
+      minWidth={"20rem"}
       position="sticky"
       top="7.5rem"
       overflowY="auto"

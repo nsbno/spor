@@ -6,10 +6,11 @@ import { MenuItem } from "./MenuItem";
 export type SearchResultsProps = {
   query: string;
   hits: MenuItemType[];
+  onResultClick: () => void;
 };
 /** Given a query, this view shows any hits in the menu structure */
 export const SearchResults = forwardRef<SearchResultsProps, "button">(
-  ({ query, hits }, ref) => {
+  ({ query, hits, onResultClick }, ref) => {
     return (
       <Box
         marginTop={2}
@@ -17,6 +18,7 @@ export const SearchResults = forwardRef<SearchResultsProps, "button">(
         aria-label={`${hits.length || "No"} hit${
           hits.length !== 1 ? "s" : ""
         } for ${query}.`}
+        onClick={onResultClick}
       >
         {hits
           .filter((item) => item.url)

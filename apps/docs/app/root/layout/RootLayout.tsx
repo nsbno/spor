@@ -22,10 +22,9 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
       minHeight="100vh"
       backgroundColor={backgroundColor}
       fontFamily="Vy Sans"
-      position="relative"
     >
       <SiteHeader />
-      <Flex flex={1} flexDirection="column" width={"100%"}>
+      <Flex flex={1} flexDirection="column">
         {children}
       </Flex>
     </Flex>

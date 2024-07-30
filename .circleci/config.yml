@@ -9,6 +9,9 @@ parameters:
   ecr_repo_name:
     type: string
     default: "spor"
+  ecr_endpoint:
+    type: string
+    default: "637423315721.dkr.ecr.eu-west-1.amazonaws.com"
   pipeline_name:
     type: string
     default: "spor-delivery-pipeline"
@@ -25,31 +28,51 @@ jobs:
       tags:
         type: string
         default: "${CIRCLE_SHA1:0:7}"
+      ecr_repo_name:
+        type: string
+        description: "The name of the ECR repository to push Docker images to"
+      ecr_endpoint:
+        type: string
+        description: "The ECR endpoint to use (note: the CircleCI project environment variable ECR_ENDPOINT takes higher precedence than this parameter)."
+        default: ""
     docker:
-      - image: cimg/base:stable
+      - image: 'vydev/circleci-ecr:latest'
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+    working_directory: /tmp/workspace/apps/docs
     steps:
-      - checkout
+      - setup_remote_docker:
+          version: 19.03.13
+          docker_layer_caching: true
+      - checkout:
+          path: ../../
       - run:
-          command: cd apps/docs/
-      - aws-ecr/build_and_push_image:
-          attach_workspace: true
-          region: eu-west-1
-          repo: << pipeline.parameters.ecr_repo_name >>
-          tag: "latest,commit-${CIRCLE_SHA1:0:7},${CIRCLE_BRANCH}-branch"
-          auth:
-            - aws-cli/setup:
-              region: eu-west-1
+          name: "Build Docker image"
+          command: |
+            ECR_ENDPOINT="${ECR_ENDPOINT:-<< parameters.ecr_endpoint >>}"
+            if [ -z "$ECR_ENDPOINT" ]; then
+              echo "ECR endpoint has not been set"
+              exit 1
+            fi
+            aws ecr get-login-password --region eu-west-1 \
+              | docker login --username AWS --password-stdin "$ECR_ENDPOINT"
+            SHORT_SHA1=`echo ${CIRCLE_SHA1}|cut -c1-7`
+            docker build -t ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> -f Dockerfile .
+            docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${SHORT_SHA1}"
+            docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${SHORT_SHA1}"
+            docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
+            docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
 
   upload-terraform-artifacts:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - deployment/zip-and-upload-artifact:
-          application-name: << pipeline.parameters.terraform_artifact_name >>
-          source-directory: ./apps/docs/
-          source: terraform
-
+  docker:
+    - image: cimg/base:stable
+  steps:
+    - checkout
+    - deployment/zip-and-upload-artifact:
+        application-name: << pipeline.parameters.terraform_artifact_name >>
+        source-directory: ./apps/docs/
+        source: terraform
 
 workflows:
   version: 2
@@ -66,14 +89,15 @@ workflows:
                 - apps/docs/terraform/prod
 
       - build-and-push-docker:
-          tags: "latest,<< pipeline.git.branch >>-branch,${CIRCLE_SHA1:0:7}"
-          context:
-            - digital-common-services
+          context: digital-common-services
+          ecr_repo_name: << pipeline.parameters.ecr_repo_name >>
+          ecr_endpoint: << pipeline.parameters.ecr_endpoint >>
           requires:
-            - terraform/validate
+            - validate-terraform
           filters:
             branches:
-              only: migrate-to-common-services
+              only:
+                - main
 
       - upload-terraform-artifacts:
           context:

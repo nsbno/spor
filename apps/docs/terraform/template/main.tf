@@ -60,7 +60,7 @@ module "app_runner" {
 ##################################
 data "aws_iam_policy_document" "task_policy" {
   statement {
-    actions = ["ssm:GetParameter"]
+    actions = ["ssm:GetParameters"]
 
     resources = [
       aws_ssm_parameter.sanity_preview_api_token.arn,

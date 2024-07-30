@@ -57,5 +57,4 @@ COPY --from=build /app/build/server /app/build/server
 COPY --from=build /app/build/client /app/build/client
 ADD . .
 
-ENTRYPOINT ["./entrypoint.sh"]
 CMD ["npm", "run", "start"]

@@ -97,7 +97,7 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - migrate-to-common-services
 
       - upload-terraform-artifacts:
           context:

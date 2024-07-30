@@ -108,10 +108,13 @@ export const ExpandableAlert = ({
 };
 
 const texts = createTexts({
-  notification: (notification) => ({
-    nb: `${notification} varsel`,
-    nn: `${notification} varsel`,
-    sv: `${notification} ${notification > 1 ? 'underrättelser' : 'underrättelse'}`,
-    en: `${notification} ${notification > 1 ? 'notifications' : 'notification'}`,
-  }),
+  notification: (notification) => {
+    const numNotification = Number(notification);
+    return {
+      nb: `${numNotification} varsel`,
+      nn: `${numNotification} varsel`,
+      sv: `${numNotification} ${numNotification > 1 ? 'underrättelser' : 'underrättelse'}`,
+      en: `${numNotification} ${numNotification > 1 ? 'notifications' : 'notification'}`,
+    };
+  },
 });

@@ -164,7 +164,7 @@ export default function ArticlePage() {
 
   return (
     <>
-      <HStack marginBottom={1} justifyContent="space-between">
+      <Flex marginBottom={1} gap={1} justifyContent="space-between">
         <HStack>
           {article?.category?.title && (
             <Badge
@@ -177,7 +177,7 @@ export default function ArticlePage() {
           )}
           {isPreview && <Badge colorScheme="yellow">Preview</Badge>}
         </HStack>
-        <Flex flexWrap="wrap" gap={2}>
+        <Flex wrap="wrap" gap={2} marginLeft={"auto"} justifyContent={"end"}>
           {article.resourceLinks?.map((link) => (
             <Button
               key={link.url}
@@ -191,8 +191,8 @@ export default function ArticlePage() {
             </Button>
           ))}
         </Flex>
-      </HStack>
-      <Box>
+      </Flex>
+      <Flex direction={"column"}>
         <Heading as="h1" variant="xl-display" marginBottom={2}>
           {article.title}
         </Heading>
@@ -220,7 +220,7 @@ export default function ArticlePage() {
             <PortableText value={article.content} />
           </Box>
         )}
-      </Box>
+      </Flex>
     </>
   );
 }

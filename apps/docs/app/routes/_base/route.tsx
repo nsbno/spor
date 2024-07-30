@@ -16,24 +16,38 @@ export const loader = async () => {
 
 export default function BaseLayout() {
   const { headings, contentRef } = useHeadings();
+
+  const hasHeadings = headings.length > 1;
   return (
-    <Flex flex="1">
+    <Flex sx={{ position: "relative" }}>
       <LeftSidebar />
       <Box
         as="main"
         id="content"
-        flex="1"
-        marginTop={6}
-        marginX={[3, null, 6, 10]}
-        marginBottom={["60px", null, "120px", "180px"]}
-        maxWidth="924px"
-        justifyContent={"center"}
+        display={"flex"}
+        marginTop={3}
+        paddingX={[3, null, 6, 4, 8]}
+        marginX="auto"
+        marginBottom={["3.75rem", null, "5rem", "5rem"]}
+        sx={{ position: "relative" }}
         ref={contentRef}
       >
-        <Outlet />
-        <Footer />
+        <Flex
+          direction={"column"}
+          minWidth={[
+            "100%",
+            null,
+            null,
+            "47rem",
+            hasHeadings ? "56rem" : "76rem",
+          ]}
+          maxWidth={["100%", null, null, "56rem"]}
+        >
+          <Outlet />
+          <Footer />
+        </Flex>
+        <TableOfContent headings={headings} />
       </Box>
-      <TableOfContent headings={headings} />
     </Flex>
   );
 }

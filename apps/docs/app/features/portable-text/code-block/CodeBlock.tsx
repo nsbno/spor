@@ -72,7 +72,7 @@ export const CodeBlockContainer = ({
       fontSize={["mobile.sm", null, "desktop.sm"]}
       padding={2}
       position="relative"
-      handleKeyUp={handleKeyUp}
+      onKeyUp={handleKeyUp}
       {...props}
     >
       <Box position="absolute" top={2} right={2} zIndex="docked">

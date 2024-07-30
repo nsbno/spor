@@ -78,7 +78,7 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
         onKeyDown={handleKeyDown}
         {...rest}
       >
-        <Box minWidth="200px" textAlign="left">
+        <Box width="100%" textAlign="left">
           {children}
         </Box>
       </chakra.button>

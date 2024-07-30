@@ -55,7 +55,12 @@ export const SearchableContentMenu = () => {
   };
 
   return (
-    <Box as="nav" aria-label={isSearchActive ? "Search results" : "Content"}>
+    <Box
+      as="nav"
+      aria-label={isSearchActive ? "Search results" : "Content"}
+      width={"100%"}
+      sx={{ position: "sticky", top: "7.5rem" }}
+    >
       <Box as="form" onSubmit={handleSubmit}>
         <GlobalSearchInput
           value={query}

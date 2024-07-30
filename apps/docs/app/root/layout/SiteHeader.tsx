@@ -28,14 +28,20 @@ export const SiteHeader = () => {
     "surface.tertiary.light",
     "surface.tertiary.dark",
   );
+
   return (
     <Flex
       color="white"
       justifyContent="space-between"
       alignItems="center"
       paddingX={[3, 4, 7]}
-      paddingY={[3, 4, 5, 7]}
+      paddingY={[3, 4, 5, 4]}
       backgroundColor={backgroundColor}
+      sx={{
+        position: "sticky",
+        top: "0",
+        zIndex: "sticky",
+      }}
     >
       <Box as={Link} marginRight={[0, 0, 11]} to="/">
         <VyLogo

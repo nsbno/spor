@@ -26,7 +26,7 @@ export const NavigationLink = ({ children, href }: NavigationItemProps) => {
   return (
     <Center
       {...linkProps}
-      height="42px"
+      height="2.625rem"
       paddingX={3}
       borderRadius="sm"
       border="solid transparent"

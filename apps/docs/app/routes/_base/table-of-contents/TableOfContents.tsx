@@ -24,31 +24,27 @@ function TableOfContent(props: TableOfContentProps) {
     },
   );
 
-  const hasHeadings = headings.length > 0;
+  const hasHeadings = headings.length > 1;
 
   return (
     <Box
       as="nav"
       aria-labelledby="toc-title"
-      width="16rem"
-      flexShrink={0}
-      display={["none", null, null, null, "block"]}
+      display={["none", null, null, "none", hasHeadings ? "flex" : "none"]}
       visibility={hasHeadings ? "visible" : "hidden"}
-      opacity={hasHeadings ? 1 : 0}
+      flexDirection={"column"}
       transform={hasHeadings ? "translateY(0)" : "translateY(10px)"}
       transitionDuration="fast"
       transitionProperty="common"
-      position="sticky"
-      paddingY={10}
-      paddingRight={4}
-      paddingLeft={1}
-      style={{ top: "4rem" }}
-      right="0"
-      fontSize="sm"
+      paddingY={8}
+      paddingX={5}
       alignSelf="start"
+      fontSize="sm"
       maxHeight="calc(100vh - 8rem)"
+      width={"20rem"}
+      position="sticky"
+      top="7.5rem"
       overflowY="auto"
-      sx={{ overscrollBehavior: "contain" }}
       {...rest}
     >
       <Heading as="h2" id="toc-title" variant="sm" fontWeight="bold">

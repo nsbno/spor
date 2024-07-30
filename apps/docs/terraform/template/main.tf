@@ -7,11 +7,6 @@ resource "aws_kms_key" "application_key" {
   description = "Key for ${var.application_name}"
 }
 
-resource "aws_kms_alias" "application_key_alias" {
-  name          = "alias/${var.application_name}"
-  target_key_id = aws_kms_key.application_key.id
-}
-
 ##################################
 #                                #
 # Application config             #

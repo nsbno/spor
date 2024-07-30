@@ -77,7 +77,7 @@ const config = helpers.defineMultiStyleConfig({
           outlineColor: "pine",
         },
         _active: {
-          backgroundColor: "darkTeal",
+          backgroundColor: "pine",
         },
       },
     },

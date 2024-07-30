@@ -65,14 +65,14 @@ jobs:
             docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
 
   upload-terraform-artifacts:
-  docker:
-    - image: cimg/base:stable
-  steps:
-    - checkout
-    - deployment/zip-and-upload-artifact:
-        application-name: << pipeline.parameters.terraform_artifact_name >>
-        source-directory: ./apps/docs/
-        source: terraform
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - deployment/zip-and-upload-artifact:
+          application-name: << pipeline.parameters.terraform_artifact_name >>
+          source-directory: ./apps/docs/
+          source: terraform
 
 workflows:
   version: 2
@@ -93,7 +93,7 @@ workflows:
           ecr_repo_name: << pipeline.parameters.ecr_repo_name >>
           ecr_endpoint: << pipeline.parameters.ecr_endpoint >>
           requires:
-            - validate-terraform
+            - terraform/validate
           filters:
             branches:
               only:

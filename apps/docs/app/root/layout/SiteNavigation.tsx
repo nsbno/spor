@@ -6,7 +6,7 @@ type SiteNavigationProps = {
 };
 export const SiteNavigation = ({ children }: SiteNavigationProps) => {
   return (
-    <Flex as="nav" aria-label="Main" display={["none", "flex"]}>
+    <Flex as="nav" aria-label="Main" display={["none", "flex"]} gap={0.5}>
       {children}
     </Flex>
   );

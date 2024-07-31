@@ -117,7 +117,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
             label={
               <Flex alignItems="center" gap={1}>
                 Search docs{" "}
-                <Text size="sm" fontSize="12">
+                <Text size="sm" fontSize="12" paddingTop={0.5}>
                   ({isMac ? "cmd" : "ctrl"} + K)
                 </Text>
               </Flex>

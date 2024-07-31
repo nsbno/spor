@@ -27,13 +27,14 @@ export const NavigationLink = ({ children, href }: NavigationItemProps) => {
     <Center
       {...linkProps}
       height="2.625rem"
-      paddingX={3}
+      paddingX={2}
       borderRadius="sm"
       border="solid transparent"
       borderWidth="strokes.md"
       whiteSpace="nowrap"
       fontWeight="bold"
       fontStyle="sm"
+      fontSize={"xs"}
       _focusVisible={{ borderColor: "outline.focus.dark", outline: "none" }}
       _hover={{ backgroundColor: "ghost.surface.hover.dark" }}
       _active={{

@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "@remix-run/react";
+import { Link, useLocation } from "@remix-run/react";
 import {
   HamburgerFill24Icon,
   SearchFill24Icon,
@@ -14,11 +14,6 @@ import {
   DrawerOverlay,
   Flex,
   IconButton,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalOverlay,
   SearchInput,
   Stack,
   Text,
@@ -26,15 +21,12 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@vygruppen/spor-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useMenu } from "~/utils/useMenu";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
 import { NavigationLink, SiteNavigation } from "./SiteNavigation";
 import { SiteSettings } from "./SiteSettings";
-import { matchSorter } from "match-sorter";
-import { GlobalSearchInput } from "~/routes/_base/content-menu/GlobalSearchInput";
-import { SearchResults } from "~/routes/_base/content-menu/SearchResults";
-import { ModalFooter, ModalHeader } from "@chakra-ui/react";
+import { SiteSearchModal } from "./SiteSearchModal";
 
 /** The site header shown at the top of every part of our site */
 export const SiteHeader = () => {
@@ -43,52 +35,7 @@ export const SiteHeader = () => {
     "surface.tertiary.dark",
   );
 
-  const menu = useMenu("side-menu");
-  const [query, setQuery] = useState("");
-  const isSearchActive = query.length > 0;
-  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const location = useLocation();
-  const focusableRef = useRef<HTMLButtonElement>(null);
-  const searchableMenuStructure = useMemo(
-    () =>
-      menu?.menuItems
-        .filter((menuItem) => menuItem._type !== "divider" && menuItem.subItems)
-        .flatMap((menuItem) => menuItem.subItems!) ?? [],
-    [menu],
-  );
-
-  const hits = useMemo(
-    () =>
-      isSearchActive
-        ? matchSorter(searchableMenuStructure, query, {
-            keys: ["title", "tags"],
-          })
-        : [],
-    [query, isSearchActive],
-  );
-
-  // We reset the query whenever we navigate
-  useEffect(() => {
-    setQuery("");
-  }, [location.pathname]);
-
-  // If there's only a single item left in the search results,
-  // we navigate to it whenever the user presses enter
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (query && hits.length === 1) {
-      navigate(hits[0].url);
-      setQuery("");
-    }
-  };
-
-  // If you press the down arrow, you should focus the first item in the list
-  const handleKeyUp = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowDown") {
-      focusableRef.current?.focus();
-    }
-  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -132,37 +79,10 @@ export const SiteHeader = () => {
       <DesktopNavigation onSearchClick={() => setIsModalOpen(!isModalOpen)} />
       <MobileNavigation onSearchClick={() => setIsModalOpen(!isModalOpen)} />
       {isModalOpen && (
-        <Modal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(!isModalOpen)}
-          closeOnOverlayClick={true}
-          closeOnEsc={true}
-          size={"xl"}
-        >
-          <ModalOverlay />
-          <ModalContent>
-            <ModalCloseButton />
-            <ModalHeader>Search docs</ModalHeader>
-            <ModalBody>
-              <Box as="form" onSubmit={handleSubmit}>
-                <GlobalSearchInput
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onKeyUp={handleKeyUp}
-                  onReset={() => setQuery("")}
-                />
-                {isSearchActive && (
-                  <SearchResults
-                    ref={focusableRef}
-                    hits={hits}
-                    query={query}
-                    onResultClick={() => setIsModalOpen(false)}
-                  />
-                )}
-              </Box>
-            </ModalBody>
-          </ModalContent>
-        </Modal>
+        <SiteSearchModal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
       )}
     </Flex>
   );
@@ -174,28 +94,40 @@ type SearchFieldProps = {
 
 const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
   const menu = useMenu("top-menu");
-  const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.userAgent);
+  const [isMac, setIsMac] = useState(false);
+
+  useEffect(() => {
+    if (typeof navigator !== "undefined") {
+      setIsMac(/Mac|iPod|iPhone|iPad/.test(navigator.userAgent));
+    }
+  }, []);
   return (
     <>
-      <Flex display={["none", null, null, "flex"]} flex={[1, 1, 2, 2, 2]}>
+      <Flex
+        display={["none", null, null, "flex"]}
+        flex={[1, null, null, 2, 2]}
+        maxWidth={[null, null, null, "container.lg", "container.xl"]}
+        marginX="auto"
+        paddingX={[3, null, 7, 5, 9]}
+      >
         <DarkMode>
           <SearchInput
             onClick={onSearchClick}
             readOnly
             label={
-              <Text size="sm" display="flex" alignItems="center" gap={1}>
+              <Flex alignItems="center" gap={1}>
                 Search docs{" "}
                 <Text size="sm" fontSize="12">
                   ({isMac ? "cmd" : "ctrl"} + K)
                 </Text>
-              </Text>
+              </Flex>
             }
           />
         </DarkMode>
       </Flex>
       <Flex
         display={["none", null, null, "flex"]}
-        flex="1"
+        flex={[0, 0, 0, 0, 1]}
         justifyContent="flex-end"
         alignItems="center"
       >

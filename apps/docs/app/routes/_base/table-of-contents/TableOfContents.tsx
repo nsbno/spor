@@ -30,7 +30,7 @@ function TableOfContent(props: TableOfContentProps) {
     <Box
       as="nav"
       aria-labelledby="toc-title"
-      display={["none", null, null, "none", hasHeadings ? "flex" : "none"]}
+      display={["none", null, null, "none", "flex"]}
       visibility={hasHeadings ? "visible" : "hidden"}
       flexDirection={"column"}
       transform={hasHeadings ? "translateY(0)" : "translateY(10px)"}

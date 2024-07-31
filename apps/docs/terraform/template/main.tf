@@ -47,7 +47,6 @@ module "app_runner" {
   ecr_repository_name   = var.application_name
   service_account_id    = "637423315721"
   environment           = var.environment
-  subnet_placement      = "public"
   environment_secrets = {
     SANITY_PREVIEW_API_TOKEN = aws_ssm_parameter.sanity_preview_api_token.arn
     SANITY_PREVIEW_SECRET    = aws_ssm_parameter.sanity_preview_secret.arn

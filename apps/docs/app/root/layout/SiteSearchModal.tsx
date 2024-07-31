@@ -10,8 +10,7 @@ import {
 } from "@vygruppen/spor-react";
 import { matchSorter } from "match-sorter";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { GlobalSearchInput } from "~/routes/_base/content-menu/GlobalSearchInput";
-import { SearchResults } from "~/routes/_base/content-menu/SearchResults";
+import { GlobalSearchInput, SearchResults } from "./components";
 import { useMenu } from "~/utils/useMenu";
 
 type SiteSearchModalProps = {

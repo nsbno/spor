@@ -7,7 +7,7 @@ type GlobalSearchInputProps = {
   onKeyUp: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   onReset: () => void;
 };
-export const GlobalSearchInput = ({
+const GlobalSearchInput = ({
   value,
   onChange,
   onKeyUp,
@@ -51,3 +51,5 @@ const useSearchHotkey = () => {
   });
   return inputRef;
 };
+
+export default GlobalSearchInput;

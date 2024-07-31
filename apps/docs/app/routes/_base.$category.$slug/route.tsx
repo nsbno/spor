@@ -164,7 +164,12 @@ export default function ArticlePage() {
 
   return (
     <>
-      <Flex marginBottom={1} gap={1} justifyContent="space-between" alignContent={"stretch"}>
+      <Flex
+        marginBottom={1}
+        gap={1}
+        justifyContent="space-between"
+        alignContent={"stretch"}
+      >
         <HStack>
           {article?.category?.title && (
             <Badge

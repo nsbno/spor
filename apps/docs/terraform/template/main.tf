@@ -53,6 +53,15 @@ module "app_runner" {
   }
 }
 
+resource "aws_security_group_rule" "allow_all_outgoing_traffic_from_apprunner" {
+  security_group_id = module.app_runner.security_group_id
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks = ["0.0.0.0/0"]
+}
+
 ##################################
 #                                #
 # App Runner task policy         #

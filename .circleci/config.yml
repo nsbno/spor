@@ -100,7 +100,7 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - migrate-to-common-services
 
       - upload-terraform-artifacts:
           context:
@@ -109,7 +109,7 @@ workflows:
             - build-and-push-docker
           filters:
             branches:
-              only: main
+              only: migrate-to-common-services
 
       - deployment/trigger-deployment:
           context:
@@ -119,4 +119,4 @@ workflows:
             - build-and-push-docker
           filters:
             branches:
-              only: main
+              only: migrate-to-common-services

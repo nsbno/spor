@@ -41,7 +41,7 @@ resource "aws_ssm_parameter" "sanity_preview_secret" {
 #                                #
 ##################################
 module "app_runner" {
-  source                = "github.com/nsbno/terraform-digitalekanaler-modules//apprunner-internal?ref=2.3.1"
+  source                = "github.com/nsbno/terraform-digitalekanaler-modules?ref=vylabs-for-apprunner//apprunner-internal"
   application_port      = 3000
   application_name      = var.application_name
   ecr_repository_name   = var.application_name

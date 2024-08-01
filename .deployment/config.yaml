@@ -1,9 +1,9 @@
 artifacts:
   - name: spor-tf
-    branch: main
+    branch: migrate-to-common-services
     location: s3
   - name: spor
-    branch: main
+    branch: migrate-to-common-services
     location: ecr
 
 steps:

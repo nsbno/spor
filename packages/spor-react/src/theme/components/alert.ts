@@ -54,6 +54,7 @@ const config = helpers.defineMultiStyleConfig({
     service: {
       container: {
         backgroundColor: "darkTeal",
+        color: "white"
       },
     },
     

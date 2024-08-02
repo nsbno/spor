@@ -6,19 +6,15 @@ import {
   AccordionPanel,
   Box,
   Flex,
-  Text,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import React from "react";
 import { AlertIcon } from "./AlertIcon";
 import { BaseAlert, BaseAlertProps } from "./BaseAlert";
-import { createTexts, useTranslation } from "../i18n";
 
 type ExpandableAlertProps = BaseAlertProps & {
   /** The title string  */
   title: string;
-  /** The number of notifications when there is a list of multiple alerts */
-  notification: number;
   /** Callback for when the expandable panel is opened or closed */
   onToggle?: (isOpen: boolean) => void;
   /** Whether or not the default state of the expandable alert is open */
@@ -44,13 +40,11 @@ export const ExpandableAlert = ({
   variant,
   children,
   title,
-  notification,
   headingLevel = "h3",
   defaultOpen = false,
   onToggle = () => {},
   ...boxProps
 }: ExpandableAlertProps) => {
-  const { t } = useTranslation();
   const styles = useMultiStyleConfig("AlertExpandable", { variant });
   return (
     <BaseAlert variant={variant} {...boxProps} paddingX={0} paddingY={0}>
@@ -84,20 +78,7 @@ export const ExpandableAlert = ({
                   {title}
                 </Box>
               </Flex>
-
-              <Flex alignItems="center">
-                <Text 
-                  color={variant === "service" ? "white" : "darkGrey"}
-                  fontWeight={400}
-                  fontSize={16}
-                  pr="6px"
-                >
-                  {t(texts.notification(notification))}
-                </Text>
-
               <AccordionIcon color={variant === "service" ? "white" : "darkGrey"} />
-              </Flex>
-              
             </Flex>
           </AccordionButton>
           <AccordionPanel color={variant === "service" ? "white" : "darkGrey"}>{children}</AccordionPanel>
@@ -106,15 +87,3 @@ export const ExpandableAlert = ({
     </BaseAlert>
   );
 };
-
-const texts = createTexts({
-  notification: (notification) => {
-    const numNotification = Number(notification);
-    return {
-      nb: `${numNotification} varsel`,
-      nn: `${numNotification} varsel`,
-      sv: `${numNotification} ${numNotification > 1 ? 'underrättelser' : 'underrättelse'}`,
-      en: `${numNotification} ${numNotification > 1 ? 'notifications' : 'notification'}`,
-    };
-  },
-});

@@ -4,7 +4,7 @@ import {
   InformationOutline24Icon,
   SuccessOutline24Icon,
   WarningOutline24Icon,
-  WarningFill30Icon,
+  WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { createTexts, useTranslation } from "../i18n";
@@ -40,7 +40,7 @@ const getIcon = (variant: BaseAlertProps["variant"]) => {
     case "error":
       return ErrorOutline24Icon;
     case "service":
-      return WarningFill30Icon;
+      return WarningFill24Icon;
   }
 };
 

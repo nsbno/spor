@@ -58,6 +58,9 @@ const config = helpers.defineMultiStyleConfig({
       },
     }),
   },
+  defaultProps: {
+    variant: "base",
+  },
 });
 
 export default config;

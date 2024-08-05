@@ -202,7 +202,7 @@ export default function ArticlePage() {
           {article.title}
         </Heading>
         {article.introduction && (
-          <Box marginBottom={8}>
+          <Box marginBottom={3}>
             <PortableText
               value={article.introduction}
               components={{

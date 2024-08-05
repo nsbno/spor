@@ -174,7 +174,7 @@ const components: Partial<PortableTextReactComponents> = {
         "flex-start";
       return (
         <Flex justifyContent="center" alignItems={alignItems}>
-          <Box sx={{ "& > :first-child": { marginTop: 0 } }}>
+          <Box sx={{ "& > :first-of-type": { marginTop: 0 } }}>
             <PortableText value={value.content} />
           </Box>
         </Flex>
@@ -265,7 +265,7 @@ const components: Partial<PortableTextReactComponents> = {
       return <CodeBlock code={value.reactImport} marginTop={3} />;
     },
     introduction: ({ value }) => (
-      <Box marginBottom={8}>
+      <Box marginBottom={4}>
         <PortableText
           value={value.introduction}
           components={{

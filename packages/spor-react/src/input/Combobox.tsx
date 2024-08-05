@@ -38,6 +38,7 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
   inputRef?: React.RefObject<HTMLInputElement>;
   /** If you want to allow an empty collection */
   allowsEmptyCollection?: boolean;
+  variant?: "base" | "floating";
 } & OverridableInputProps;
 /**
  * A combobox is a combination of an input and a list of suggestions.
@@ -87,6 +88,7 @@ export function Combobox<T extends object>({
   emptyContent,
   inputRef: externalInputRef,
   allowsEmptyCollection,
+  variant,
   ...rest
 }: ComboboxProps<T>) {
   const { contains } = useFilter({ sensitivity: "base" });
@@ -147,6 +149,7 @@ export function Combobox<T extends object>({
         ref={inputRef}
         role="combobox"
         label={label}
+        variant={variant}
         aria-expanded={state.isOpen}
         aria-autocomplete="list"
         aria-controls={listboxId}
@@ -196,6 +199,7 @@ export function Combobox<T extends object>({
             listBoxRef={listBoxRef}
             emptyContent={emptyContent}
             maxWidth={inputWidth}
+            variant={variant}
           >
             {rest.children}
           </ListBox>

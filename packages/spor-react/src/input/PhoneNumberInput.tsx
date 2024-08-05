@@ -24,6 +24,7 @@ type PhoneNumberInputProps = Omit<BoxProps, "onChange"> & {
   onChange?: (change: CountryCodeAndPhoneNumber) => void;
   /** The optional value of the country code and phone number */
   value?: CountryCodeAndPhoneNumber;
+  variant?: "base" | "floating";
 };
 /**
  * A component for entering phone numbers.
@@ -49,6 +50,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
       name,
       value: externalValue,
       onChange: externalOnChange,
+      variant,
       ...boxProps
     },
     ref,
@@ -73,6 +75,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
               width="6.25rem"
               height="100%"
               value="+47"
+              variant={variant}
             >
               <Item key="+47">+47</Item>
             </InfoSelect>
@@ -89,6 +92,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
             name={name ? `${name}-country-code` : "country-code"}
             height="100%"
             width="6.25rem"
+            variant={variant}
           />
         </Suspense>
         <Input
@@ -107,6 +111,7 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
           }}
           position="relative"
           left="1px" // Makes the borders overlap
+          variant={variant}
         />
       </AttachedInputs>
     );

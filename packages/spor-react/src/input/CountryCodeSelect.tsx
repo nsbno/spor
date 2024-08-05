@@ -26,6 +26,7 @@ type CountryCodeSelectProps = {
   name: string;
   width?: BoxProps["width"];
   height?: BoxProps["height"];
+  variant?: "base" | "floating";
 };
 export const CountryCodeSelect = (props: CountryCodeSelectProps) => {
   const { t } = useTranslation();
@@ -35,6 +36,7 @@ export const CountryCodeSelect = (props: CountryCodeSelectProps) => {
       label={t(texts.countryCode)}
       isLabelSrOnly={true}
       items={callingCodes as any}
+      variant={props.variant}
       {...props}
     >
       {(item) => <Item key={item.key}>{item.key}</Item>}

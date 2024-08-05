@@ -24,7 +24,6 @@ import {
 import { useEffect, useState } from "react";
 import { useMenu } from "~/utils/useMenu";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
-import { NavigationLink, SiteNavigation } from "./SiteNavigation";
 import { SiteSettings } from "./SiteSettings";
 import { SiteSearchModal } from "./SiteSearchModal";
 

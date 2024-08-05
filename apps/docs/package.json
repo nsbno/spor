@@ -25,7 +25,7 @@
     "@vygruppen/spor-design-tokens": "^3.8.1",
     "@vygruppen/spor-icon": "^2.9.0",
     "@vygruppen/spor-icon-react": "^3.9.0",
-    "@vygruppen/spor-react": "^10.3.0",
+    "@vygruppen/spor-react": "^10.4.0",
     "archiver": "^5.3.2",
     "deepmerge": "^4.3.1",
     "framer-motion": "^8.5.5",

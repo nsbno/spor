@@ -105,7 +105,6 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
     <>
       <Flex
         display={["none", null, null, "flex"]}
-        flex={[1, null, null, 2, 2]}
         maxWidth={[null, null, null, "container.lg", "container.xl"]}
         marginX="auto"
         paddingX={[3, null, 7, 5, 9]}
@@ -113,6 +112,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         <DarkMode>
           <SearchInput
             onClick={onSearchClick}
+            width={[null, null, null, "37.5rem"]}
             readOnly
             label={
               <Flex alignItems="center" gap={1}>
@@ -131,14 +131,6 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         justifyContent="flex-end"
         alignItems="center"
       >
-        <SiteNavigation>
-          {menu?.menuItems.map((menuItem) => (
-            <NavigationLink key={menuItem.url} href={menuItem.url}>
-              {menuItem.title}
-            </NavigationLink>
-          ))}
-        </SiteNavigation>
-
         <SiteSettings showLabel={true} />
       </Flex>
     </>

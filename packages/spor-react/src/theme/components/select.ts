@@ -2,6 +2,7 @@ import { selectAnatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { baseText } from "../utils/base-utils";
 import { default as Input } from "./input";
+import { inputBaseStyle, inputVariant } from "../utils/input-utils";
 
 const parts = selectAnatomy.extend("root");
 
@@ -15,7 +16,7 @@ const config = helpers.defineMultiStyleConfig({
       position: "relative",
       "& + label": {
         fontSize: ["mobile.sm", "desktop.sm"],
-        top: "2px",
+        top: "0.2rem",
         left: 3,
         zIndex: 2,
         position: "absolute",
@@ -28,10 +29,9 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
     field: {
-      ...Input.baseStyle!(props).field,
+      ...inputBaseStyle(props).field,
       appearance: "none",
       paddingTop: "1rem",
-      "option, optgroup": {},
     },
     icon: {
       width: 5,
@@ -46,6 +46,18 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
   }),
+  variants: {
+    base: (props) => ({
+      field: {
+        ...inputVariant("base", props),
+      },
+    }),
+    floating: (props) => ({
+      field: {
+        ...inputVariant("floating", props),
+      },
+    }),
+  },
 });
 
 export default config;

@@ -1,10 +1,10 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
 import { baseBorder } from "../utils/base-utils";
 import { ghostBackground, ghostText } from "../utils/ghost-utils";
 import { surface } from "../utils/surface-utils";
 import { outlineBorder } from "../utils/outline-utils";
+import { floatingBorder } from "../utils/floating-utils";
 
 const parts = anatomy("ListBox").parts(
   "container",
@@ -25,7 +25,6 @@ const config = helpers.defineMultiStyleConfig({
       width: "100%",
       listStyle: "none",
       borderBottomRadius: "sm",
-      ...baseBorder("default", props),
     },
     item: {
       paddingX: 2,
@@ -58,6 +57,21 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
   }),
+  variants: {
+    base: (props) => ({
+      container: {
+        ...baseBorder("default", props),
+      },
+    }),
+    floating: (props) => ({
+      container: {
+        ...floatingBorder("default", props),
+      },
+    }),
+  },
+  defaultProps: {
+    variant: "base",
+  },
 });
 
 export default config;

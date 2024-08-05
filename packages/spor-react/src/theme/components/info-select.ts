@@ -20,6 +20,7 @@ const config = helpers.defineMultiStyleConfig({
     label: {
       position: "relative",
       fontSize: ["mobile.xs", "desktop.sm"],
+      marginTop: props.hasChosenValue ? 2 : 0,
       ...(props.isLabelSrOnly ? srOnly : {}),
     },
     innerButton: {

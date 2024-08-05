@@ -1,9 +1,9 @@
 import {
-  AltTransportOutline24Icon,
-  ErrorOutline24Icon,
-  InformationOutline24Icon,
-  SuccessOutline24Icon,
-  WarningOutline24Icon,
+  AltTransportOutline18Icon,
+  ErrorOutline18Icon,
+  InformationOutline18Icon,
+  SuccessOutline18Icon,
+  WarningOutline18Icon,
 } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { createTexts, useTranslation } from "../i18n";
@@ -21,6 +21,7 @@ export const AlertIcon = ({ variant }: AlertIconProps) => {
       flexShrink={0}
       aria-label={t(texts[variant])}
       marginRight={1}
+      marginTop={0.5}
       color="darkGrey"
     />
   );
@@ -29,15 +30,15 @@ export const AlertIcon = ({ variant }: AlertIconProps) => {
 const getIcon = (variant: BaseAlertProps["variant"]) => {
   switch (variant) {
     case "info":
-      return InformationOutline24Icon;
+      return InformationOutline18Icon;
     case "success":
-      return SuccessOutline24Icon;
+      return SuccessOutline18Icon;
     case "warning":
-      return WarningOutline24Icon;
+      return WarningOutline18Icon;
     case "alt-transport":
-      return AltTransportOutline24Icon;
+      return AltTransportOutline18Icon;
     case "error":
-      return ErrorOutline24Icon;
+      return ErrorOutline18Icon;
   }
 };
 

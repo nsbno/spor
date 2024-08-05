@@ -21,11 +21,10 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
       flexDirection="column"
       minHeight="100vh"
       backgroundColor={backgroundColor}
-      overflow="auto"
       fontFamily="Vy Sans"
     >
       <SiteHeader />
-      <Flex flex="1" flexDirection="column" alignItems="stretch">
+      <Flex flex={1} flexDirection="column">
         {children}
       </Flex>
     </Flex>

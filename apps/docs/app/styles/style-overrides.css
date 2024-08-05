@@ -1,0 +1,4 @@
+/* This should probably be fixed somewhere else but is the only way to fix the layout issues with react-live */
+.prism-code {
+  white-space: pre-wrap !important;
+}

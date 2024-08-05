@@ -76,3 +76,7 @@
   --main-navigation-color: var(--brand-primary);
   --main-navigation-color--inverted: var(--brand-primary--inverted);
 }
+
+.prism-code {
+  white-space: pre-wrap !important;
+}

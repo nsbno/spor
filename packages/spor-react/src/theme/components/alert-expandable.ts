@@ -73,7 +73,6 @@ const config = helpers.defineMultiStyleConfig({
     },
     service: {
       container: {
-        paddingX: 0,
         _hover: {
           outlineColor: "blueGreen",
         },

@@ -118,8 +118,7 @@ import {
                   flexGrow="1"
                   maxWidth={contentWidth}
                 >
-                <Stack >
-                {children}</Stack>
+                {children}
                 </Flex>
               </Stack></AccordionPanel>
             </AccordionItem>

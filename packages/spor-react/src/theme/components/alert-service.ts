@@ -1,7 +1,12 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
 
-const parts = anatomy("alertService").parts("container", "box", "notificationText", "serviceMessageContent");
+const parts = anatomy("alertService").parts(
+  "container",
+  "box",
+  "notificationText",
+  "serviceMessageContent",
+);
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({
@@ -24,24 +29,24 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
     box: {
-        outline: "1px solid",
-        outlineColor: "blueGreen",
-        backgroundColor: "darkTeal",
-        borderBottomRadius: "18px",
-        borderTopRadius: "none"
+      outline: "1px solid",
+      outlineColor: "blueGreen",
+      backgroundColor: "darkTeal",
+      borderBottomRadius: "18px",
+      borderTopRadius: "none",
     },
     notificationText: {
-        color: "white",
-        fontWeight: "400",
-        fontSize: "16",
-        pr: "6px"
+      color: "white",
+      fontWeight: "400",
+      fontSize: "16",
+      pr: "6px",
     },
     serviceMessageContent: {
-        paddingX: "0",
-        paddingTop: "6px",
-        paddingBottom: "15px",
-        color: "white"
-    }
+      paddingX: "0",
+      paddingTop: "6px",
+      paddingBottom: "15px",
+      color: "white",
+    },
   },
 });
 

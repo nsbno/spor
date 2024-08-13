@@ -120,11 +120,7 @@ export const ServiceAlert = ({
             </AccordionButton>
 
             <AccordionPanel sx={styles.serviceMessageContent}>
-              <Stack
-                flexDirection="row"
-                justifyContent="center"
-                width="100%"
-              >
+              <Stack flexDirection="row" justifyContent="center" width="100%">
                 <Flex
                   justifyContent="space-between"
                   alignItems="center"

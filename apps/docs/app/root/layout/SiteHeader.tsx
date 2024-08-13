@@ -1,5 +1,8 @@
 import { Link, useLocation } from "@remix-run/react";
-import { HamburgerFill24Icon } from "@vygruppen/spor-icon-react";
+import {
+  HamburgerFill24Icon,
+  SearchFill24Icon,
+} from "@vygruppen/spor-icon-react";
 import {
   Box,
   DarkMode,
@@ -11,16 +14,18 @@ import {
   DrawerOverlay,
   Flex,
   IconButton,
+  SearchInput,
   Stack,
+  Text,
   VyLogo,
   useColorModeValue,
   useDisclosure,
 } from "@vygruppen/spor-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useMenu } from "~/utils/useMenu";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
-import { NavigationLink, SiteNavigation } from "./SiteNavigation";
 import { SiteSettings } from "./SiteSettings";
+import { SiteSearchModal } from "./SiteSearchModal";
 
 /** The site header shown at the top of every part of our site */
 export const SiteHeader = () => {
@@ -28,16 +33,40 @@ export const SiteHeader = () => {
     "surface.tertiary.light",
     "surface.tertiary.dark",
   );
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setIsModalOpen(true);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <Flex
       color="white"
       justifyContent="space-between"
       alignItems="center"
       paddingX={[3, 4, 7]}
-      paddingY={[3, 4, 5, 7]}
+      paddingY={[3, 4, 5, 4]}
       backgroundColor={backgroundColor}
+      sx={{
+        position: "sticky",
+        top: "0",
+        zIndex: "sticky",
+      }}
+      gap={1}
     >
-      <Box as={Link} marginRight={[0, 0, 11]} to="/">
+      <Box as={Link} marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]} to="/">
         <VyLogo
           colorScheme="dark"
           width="auto"
@@ -45,35 +74,69 @@ export const SiteHeader = () => {
           aria-label="Vy"
         />
       </Box>
-      <DesktopNavigation />
-      <MobileNavigation />
+
+      <DesktopNavigation onSearchClick={() => setIsModalOpen(!isModalOpen)} />
+      <MobileNavigation onSearchClick={() => setIsModalOpen(!isModalOpen)} />
+      {isModalOpen && (
+        <SiteSearchModal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
     </Flex>
   );
 };
 
-const DesktopNavigation = () => {
+type SearchFieldProps = {
+  onSearchClick: () => void;
+};
+
+const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
   const menu = useMenu("top-menu");
-  return (
-    <Flex
-      display={["none", null, null, "flex"]}
-      flex="1"
-      justifyContent="space-between"
-      alignItems="center"
-    >
-      <SiteNavigation>
-        {menu?.menuItems.map((menuItem) => (
-          <NavigationLink key={menuItem.url} href={menuItem.url}>
-            {menuItem.title}
-          </NavigationLink>
-        ))}
-      </SiteNavigation>
+  const [isMac, setIsMac] = useState(false);
 
-      <SiteSettings showLabel={true} />
-    </Flex>
+  useEffect(() => {
+    if (typeof navigator !== "undefined") {
+      setIsMac(/Mac|iPod|iPhone|iPad/.test(navigator.userAgent));
+    }
+  }, []);
+  return (
+    <>
+      <Flex
+        display={["none", null, null, "flex"]}
+        maxWidth={[null, null, null, "container.lg", "container.xl"]}
+        marginX="auto"
+        paddingX={[3, null, 7, 5, 9]}
+      >
+        <DarkMode>
+          <SearchInput
+            onClick={onSearchClick}
+            width={[null, null, null, "37.5rem"]}
+            readOnly
+            label={
+              <Flex alignItems="center" gap={1}>
+                Search docs{" "}
+                <Text size="sm" fontSize="12" paddingTop={0.5}>
+                  ({isMac ? "cmd" : "ctrl"} + K)
+                </Text>
+              </Flex>
+            }
+          />
+        </DarkMode>
+      </Flex>
+      <Flex
+        display={["none", null, null, "flex"]}
+        flex={[0, 0, 0, 0, 1]}
+        justifyContent="flex-end"
+        alignItems="center"
+      >
+        <SiteSettings showLabel={true} />
+      </Flex>
+    </>
   );
 };
 
-const MobileNavigation = () => {
+const MobileNavigation = ({ onSearchClick }: SearchFieldProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
   useEffect(() => {
@@ -84,6 +147,15 @@ const MobileNavigation = () => {
   return (
     <Flex display={["flex", null, null, "none"]}>
       <Flex gap={2}>
+        <DarkMode>
+          <IconButton
+            icon={<SearchFill24Icon />}
+            variant="ghost"
+            size="md"
+            aria-label="Search documentation"
+            onClick={onSearchClick}
+          />
+        </DarkMode>
         <SiteSettings showLabel={false} />
         <DarkMode>
           <IconButton

@@ -1,5 +1,23 @@
 # @vygruppen/spor-react
 
+## 10.4.0
+
+### Minor Changes
+
+- 5c24b42: Add variants to all form components
+
+  Components: Input, Textarea, PasswordInput, PhoneNumberInput, Textarea, NativeSelect, InfoSelect, Combobox
+
+### Patch Changes
+
+- 80669c3: Switch: Update accessibility
+
+## 10.3.0
+
+### Minor Changes
+
+- d3cd54d: Added input field ariaLabelContext to NummericStepper to improve functionality with screen readers.
+
 ## 10.2.0
 
 ### Minor Changes

@@ -1,3 +1,4 @@
+import "./styles/style-overrides.css";
 import { cookieStorageManagerSSR, useConst } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
 import {

@@ -178,17 +178,18 @@ export function InfoSelect<T extends object>({
 
   const stateStyle = "completed";
 
+  const hasChosenValue = state.selectedItem !== null;
+
   const styles = useMultiStyleConfig("InfoSelect", {
     isOpen: state.isOpen,
     isLabelSrOnly,
     variant,
     stateStyle,
+    hasChosenValue,
   });
   const { buttonProps } = useButton(triggerProps, triggerRef);
   const { t } = useTranslation();
   const formControl = useFormControlProps(props);
-
-  const hasChosenValue = state.selectedItem !== null;
 
   return (
     <Box sx={styles.container}>
@@ -226,7 +227,7 @@ export function InfoSelect<T extends object>({
             {...valueProps}
             h={isLabelSrOnly ? "" : !hasChosenValue ? "0px" : "18px"}
             hidden={!hasChosenValue}
-            transform={isLabelSrOnly ? "" : "scale(1) translateY(-10px)"}
+            transform={isLabelSrOnly ? "" : "scale(1) translateY(-12px)"}
             transitionProperty={"var(--spor-transition-property-common)"}
             transitionDuration={"var(--spor-transition-duration-normal)"}
           >
@@ -253,6 +254,7 @@ export function InfoSelect<T extends object>({
             state={state}
             listBoxRef={listboxRef}
             borderBottomRadius="sm"
+            variant={variant}
           >
             {props.children}
           </ListBox>

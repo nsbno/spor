@@ -29,13 +29,7 @@ export const ContentMenu = forwardRef((_, ref) => {
   }
 
   return (
-    <Accordion
-      variant="ghost"
-      size="sm"
-      allowToggle
-      marginTop={6}
-      defaultIndex={activeIndex}
-    >
+    <Accordion variant="ghost" size="sm" allowToggle defaultIndex={activeIndex}>
       {menu?.menuItems.map((item, index) => {
         if (item._type === "divider") {
           return <Divider key={index} marginY={2} height="1px" />;

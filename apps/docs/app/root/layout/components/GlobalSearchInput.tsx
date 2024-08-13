@@ -7,7 +7,7 @@ type GlobalSearchInputProps = {
   onKeyUp: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   onReset: () => void;
 };
-export const GlobalSearchInput = ({
+const GlobalSearchInput = ({
   value,
   onChange,
   onKeyUp,
@@ -23,6 +23,8 @@ export const GlobalSearchInput = ({
         onKeyUp={onKeyUp}
         onReset={onReset}
         aria-keyshortcuts="Meta+K"
+        label="F.ex. icons, components, or pages"
+        autoFocus={true}
       />
     </FormControl>
   );
@@ -49,3 +51,5 @@ const useSearchHotkey = () => {
   });
   return inputRef;
 };
+
+export default GlobalSearchInput;

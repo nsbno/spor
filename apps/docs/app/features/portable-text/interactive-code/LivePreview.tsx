@@ -22,7 +22,7 @@ export const LivePreview = (props: BoxProps) => {
       {...props}
     >
       {/** @ts-ignore Bad typing in React Live */}
-      <ReactLivePreview Component={Box} width="100%" />
+      <ReactLivePreview Component={Box} />
     </Box>
   );
 };

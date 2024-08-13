@@ -97,8 +97,8 @@ export const ServiceAlert = ({
                         // Truncate the title to one line
                         display: "-webkit-box",
                         overflow: "hidden",
-                        "-webkit-line-clamp": "1",
-                        "-webkit-box-orient": "vertical",
+                        WebkitLineClamp: "1",
+                        WebkitBoxOrient: "vertical",
                       }}
                       color="white"
                     >
@@ -124,7 +124,6 @@ export const ServiceAlert = ({
                 flexDirection="row"
                 justifyContent="center"
                 width="100%"
-                paddingX="12px"
               >
                 <Flex
                   justifyContent="space-between"

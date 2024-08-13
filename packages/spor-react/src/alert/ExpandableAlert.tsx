@@ -70,8 +70,8 @@ export const ExpandableAlert = ({
                     // Truncate the title to one line
                     display: "-webkit-box",
                     overflow: "hidden",
-                    "-webkit-line-clamp": "1",
-                    "-webkit-box-orient": "vertical",
+                    WebkitLineClamp: "1",
+                    WebkitBoxOrient: "vertical",
                   }}
                   color={variant === "service" ? "white" : "darkGrey"}
                 >

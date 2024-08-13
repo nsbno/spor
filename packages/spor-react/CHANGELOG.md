@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 10.4.1
+
+### Patch Changes
+
+- aeefe3f: Changed styling of LineTag deviation icons to be more similar to the design
+- 72b88be: adjusted z-index of the TravelTag deviation icon, so that it does not end atop banners and dropdowns e.t.c
+
 ## 10.4.0
 
 ### Minor Changes

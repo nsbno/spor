@@ -42,7 +42,7 @@ const config = helpers.defineMultiStyleConfig({
       pr: "6px",
     },
     serviceMessageContent: {
-      paddingX: "0",
+      paddingX: "12px",
       paddingTop: "6px",
       paddingBottom: "15px",
       color: "white",

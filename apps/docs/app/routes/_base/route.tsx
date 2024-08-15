@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Stack } from "@chakra-ui/react";
 import { Outlet } from "@remix-run/react";
 import { Footer } from "~/root/layout/Footer";
 import { LeftSidebar } from "~/routes/_base/left-sidebar/LeftSidebar";
@@ -16,24 +16,29 @@ export const loader = async () => {
 
 export default function BaseLayout() {
   const { headings, contentRef } = useHeadings();
+
   return (
-    <Flex flex="1">
+    <Flex flex={1}>
       <LeftSidebar />
       <Box
         as="main"
         id="content"
-        flex="1"
-        marginTop={6}
-        marginX={[3, null, 6, 10]}
-        marginBottom={["60px", null, "120px", "180px"]}
-        maxWidth="924px"
-        justifyContent={"center"}
+        display="flex"
+        marginTop={3}
+        paddingX={[3, null, 6, 4, 8]}
+        marginX="auto"
+        marginBottom={["3.75rem", null, "5rem", "5rem"]}
+        maxWidth={[null, null, null, "container.lg", "container.xl"]}
+        flex={1}
         ref={contentRef}
       >
-        <Outlet />
-        <Footer />
+        <Stack flexGrow={1} overflow={"hidden"} padding={1}>
+          <Outlet />
+          <Footer />
+        </Stack>
+
+        <TableOfContent headings={headings} />
       </Box>
-      <TableOfContent headings={headings} />
     </Flex>
   );
 }

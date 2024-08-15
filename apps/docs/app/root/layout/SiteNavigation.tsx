@@ -6,7 +6,7 @@ type SiteNavigationProps = {
 };
 export const SiteNavigation = ({ children }: SiteNavigationProps) => {
   return (
-    <Flex gap={3} as="nav" aria-label="Main" display={["none", "flex"]}>
+    <Flex as="nav" aria-label="Main" display={["none", "flex"]} gap={0.5}>
       {children}
     </Flex>
   );
@@ -26,14 +26,15 @@ export const NavigationLink = ({ children, href }: NavigationItemProps) => {
   return (
     <Center
       {...linkProps}
-      height="42px"
-      paddingX={3}
+      height="2.625rem"
+      paddingX={2}
       borderRadius="sm"
       border="solid transparent"
       borderWidth="strokes.md"
       whiteSpace="nowrap"
       fontWeight="bold"
       fontStyle="sm"
+      fontSize={"xs"}
       _focusVisible={{ borderColor: "outline.focus.dark", outline: "none" }}
       _hover={{ backgroundColor: "ghost.surface.hover.dark" }}
       _active={{

@@ -1,9 +1,9 @@
 import { defineStyleConfig } from "@chakra-ui/react";
-import Input from "./input";
+import { inputBaseStyle, inputVariant } from "../utils/input-utils";
 
 const config = defineStyleConfig({
   baseStyle: (props) => ({
-    ...Input.baseStyle!(props).field,
+    ...inputBaseStyle(props).field,
     minHeight: "5rem",
     verticalAlign: "top",
     appearance: "none",
@@ -17,6 +17,17 @@ const config = defineStyleConfig({
       },
     },
   }),
+  variants: {
+    base: (props) => ({
+      ...inputVariant("base", props),
+    }),
+    floating: (props) => ({
+      ...inputVariant("floating", props),
+    }),
+  },
+  defaultProps: {
+    variant: "base",
+  },
 });
 
 export default config;

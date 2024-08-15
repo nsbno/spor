@@ -1,7 +1,7 @@
 import { DarkMode, forwardRef, useClipboard } from "@chakra-ui/react";
 import { Box, BoxProps, Button } from "@vygruppen/spor-react";
 import { Highlight } from "prism-react-renderer";
-import { useRef } from "react";
+import { Key, useRef } from "react";
 import { theme } from "./codeTheme";
 
 type CodeBlockProps = Omit<BoxProps, "children"> & {
@@ -10,14 +10,12 @@ type CodeBlockProps = Omit<BoxProps, "children"> & {
   /** The code language to highlight */
   language?: "tsx" | "elm" | "bash";
 };
+
 export const CodeBlock = ({
   code,
   language = "tsx",
   ...props
 }: CodeBlockProps) => {
-  if (!code) {
-    return null;
-  }
   return (
     <CodeBlockContainer
       maxWidth={`calc(100vw - var(--spor-space-6))`}
@@ -26,14 +24,30 @@ export const CodeBlock = ({
     >
       <Highlight theme={theme} code={code} language={language as any}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <Box as="pre" className={className} style={style}>
-            {tokens.map((line, i) => (
-              <Box {...getLineProps({ line, key: i })}>
-                {line.map((token, key) => (
-                  <Box as="span" {...getTokenProps({ token, key })} />
-                ))}
-              </Box>
-            ))}
+          <Box
+            as="pre"
+            className={className}
+            style={{ ...style, overflowX: "auto" }}
+          >
+            {tokens.map((line, i) => {
+              const lineProps = getLineProps({ line, key: i });
+              const { key, ...restLineProps } = lineProps;
+              return (
+                <Box key={key as Key} {...restLineProps}>
+                  {line.map((token, key) => {
+                    const tokenProps = getTokenProps({ token, key });
+                    const { key: tokenKey, ...restTokenProps } = tokenProps;
+                    return (
+                      <Box
+                        as="span"
+                        key={tokenKey as Key}
+                        {...restTokenProps}
+                      />
+                    );
+                  })}
+                </Box>
+              );
+            })}
           </Box>
         )}
       </Highlight>

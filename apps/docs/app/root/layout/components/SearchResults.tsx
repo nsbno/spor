@@ -1,15 +1,16 @@
 import { forwardRef } from "@chakra-ui/react";
 import { Box, Text } from "@vygruppen/spor-react";
 import { MenuItem as MenuItemType } from "~/utils/initialSanityData.server";
-import { MenuItem } from "./MenuItem";
+import { MenuItem } from "../../../routes/_base/content-menu/MenuItem";
 
 export type SearchResultsProps = {
   query: string;
   hits: MenuItemType[];
+  onResultClick: () => void;
 };
 /** Given a query, this view shows any hits in the menu structure */
-export const SearchResults = forwardRef<SearchResultsProps, "button">(
-  ({ query, hits }, ref) => {
+const SearchResults = forwardRef<SearchResultsProps, "button">(
+  ({ query, hits, onResultClick }, ref) => {
     return (
       <Box
         marginTop={2}
@@ -17,6 +18,7 @@ export const SearchResults = forwardRef<SearchResultsProps, "button">(
         aria-label={`${hits.length || "No"} hit${
           hits.length !== 1 ? "s" : ""
         } for ${query}.`}
+        onClick={onResultClick}
       >
         {hits
           .filter((item) => item.url)
@@ -37,3 +39,5 @@ export const SearchResults = forwardRef<SearchResultsProps, "button">(
     );
   },
 );
+
+export default SearchResults;

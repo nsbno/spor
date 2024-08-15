@@ -4,7 +4,7 @@ import { mode } from "@chakra-ui/theme-tools";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { ghostBackground } from "../utils/ghost-utils";
+import { ghostBackground, ghostText } from "../utils/ghost-utils";
 
 const parts = anatomy("card-select").parts("trigger", "card");
 

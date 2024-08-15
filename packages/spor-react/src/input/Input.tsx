@@ -46,7 +46,7 @@ export const Input = forwardRef<InputProps, "input">(
     const inputId = id ?? formControlProps?.id ?? fallbackId;
     const labelId = `${useId()}-label`;
     return (
-      <InputGroup position="relative" overflow="hidden" padding="1px">
+      <InputGroup position="relative">
         {leftIcon && (
           <InputLeftElement pointerEvents="none">{leftIcon}</InputLeftElement>
         )}
@@ -58,6 +58,7 @@ export const Input = forwardRef<InputProps, "input">(
           id={inputId}
           aria-labelledby={labelId}
           ref={ref}
+          overflow="hidden"
           placeholder=" " // This is needed to make the label work as expected
         />
         <FormLabel htmlFor={inputId} id={labelId}>

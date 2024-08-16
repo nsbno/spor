@@ -6,7 +6,7 @@ import {
   InputLeftElement,
   InputRightElement,
   forwardRef,
-  useFormControlContext
+  useFormControlContext,
 } from "@chakra-ui/react";
 import React, { useId } from "react";
 

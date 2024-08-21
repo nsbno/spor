@@ -8,4 +8,4 @@
 "@vygruppen/spor-loader": patch
 ---
 
-Add the ServiceAlert component
+New component: ServiceAlert

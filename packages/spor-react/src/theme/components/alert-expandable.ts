@@ -71,16 +71,6 @@ const config = helpers.defineMultiStyleConfig({
         },
       },
     },
-    service: {
-      container: {
-        _hover: {
-          outlineColor: "blueGreen",
-        },
-        _active: {
-          backgroundColor: "pine",
-        },
-      },
-    },
   },
   defaultProps: {
     variant: "info",

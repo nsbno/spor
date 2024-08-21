@@ -73,19 +73,15 @@ export const ExpandableAlert = ({
                     WebkitLineClamp: "1",
                     WebkitBoxOrient: "vertical",
                   }}
-                  color={variant === "service" ? "white" : "darkGrey"}
+                  color="darkGrey"
                 >
                   {title}
                 </Box>
               </Flex>
-              <AccordionIcon
-                color={variant === "service" ? "white" : "darkGrey"}
-              />
+              <AccordionIcon color="darkGrey" />
             </Flex>
           </AccordionButton>
-          <AccordionPanel color={variant === "service" ? "white" : "darkGrey"}>
-            {children}
-          </AccordionPanel>
+          <AccordionPanel>{children}</AccordionPanel>
         </AccordionItem>
       </Accordion>
     </BaseAlert>

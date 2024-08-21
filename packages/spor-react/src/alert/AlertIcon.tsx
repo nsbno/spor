@@ -4,7 +4,6 @@ import {
   InformationOutline24Icon,
   SuccessOutline24Icon,
   WarningOutline24Icon,
-  WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { createTexts, useTranslation } from "../i18n";
@@ -39,8 +38,6 @@ const getIcon = (variant: BaseAlertProps["variant"]) => {
       return AltTransportOutline24Icon;
     case "error":
       return ErrorOutline24Icon;
-    case "service":
-      return WarningFill24Icon;
   }
 };
 
@@ -74,11 +71,5 @@ const texts = createTexts({
     nn: "Alternativ transport",
     sv: "Alternativ transport",
     en: "Alternative transport",
-  },
-  service: {
-    nb: "Driftsmelding",
-    nn: "Driftsmelding",
-    sv: "Servicemeddelande",
-    en: "Service message",
   },
 });

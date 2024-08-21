@@ -3,13 +3,7 @@ import React from "react";
 
 export type BaseAlertProps = BoxProps & {
   /** The color scheme and icon of the alert */
-  variant:
-    | "info"
-    | "success"
-    | "warning"
-    | "alt-transport"
-    | "error"
-    | "service";
+  variant: "info" | "success" | "warning" | "alt-transport" | "error";
   /** The body content of the alert */
   children: React.ReactNode;
   /** The title of the alert */

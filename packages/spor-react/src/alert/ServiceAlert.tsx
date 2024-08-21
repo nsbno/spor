@@ -126,6 +126,17 @@ export const ServiceAlert = ({
                   alignItems="center"
                   flexGrow="1"
                   maxWidth={contentWidth}
+                  flexFlow="column"
+                  gap={2}
+                  sx={{
+                    p: {
+                      padding: "0.8rem 0",
+                      borderBottom: "0.08rem solid rgba(255, 255, 255, 0.4)",
+                    },
+                    "p:last-child": {
+                      borderBottom: "none",
+                    },
+                  }}
                 >
                   {children}
                 </Flex>

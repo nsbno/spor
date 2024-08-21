@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 3.9.1
+
+### Patch Changes
+
+- de99704: New component: ServiceAlert
+
 ## 3.9.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.8.2
+
+### Patch Changes
+
+- de99704: New component: ServiceAlert
+
 ## 3.8.1
 
 ### Patch Changes

@@ -1,5 +1,18 @@
 # @vygruppen/spor-react
 
+## 10.5.0
+
+### Minor Changes
+
+- de99704: New component: ServiceAlert
+
+### Patch Changes
+
+- Updated dependencies [de99704]
+  - @vygruppen/spor-design-tokens@3.8.2
+  - @vygruppen/spor-icon-react@3.9.1
+  - @vygruppen/spor-loader@0.4.1
+
 ## 10.4.1
 
 ### Patch Changes

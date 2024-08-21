@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 2.9.1
+
+### Patch Changes
+
+- de99704: New component: ServiceAlert
+
 ## 2.9.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader
 
+## 0.4.1
+
+### Patch Changes
+
+- de99704: New component: ServiceAlert
+
 ## 0.4.0
 
 ### Minor Changes

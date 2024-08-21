@@ -39,7 +39,7 @@ export const CountryCodeSelect = (props: CountryCodeSelectProps) => {
       variant={props.variant}
       {...props}
     >
-      {(item) => <Item key={item.key}>{item.key}</Item>}
+      {(item: any) => <Item key={item.key}>{item.key}</Item>}
     </InfoSelect>
   );
 };

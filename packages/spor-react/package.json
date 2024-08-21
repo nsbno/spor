@@ -6,6 +6,17 @@
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./dist": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "scripts": {
     "build": "tsup src/index.tsx --dts --treeshake --format cjs,esm",
     "dev": "tsup src/index.tsx --watch --format esm"

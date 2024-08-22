@@ -43,8 +43,7 @@ jobs:
     working_directory: /tmp/workspace/apps/docs
     steps:
       - setup_remote_docker:
-          version: 19.03.13
-          docker_layer_caching: true
+          version: docker24
       - checkout:
           path: ../../
       - run:

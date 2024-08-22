@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 10.5.0
+
+### Minor Changes
+
+- 8184ed1: ### New component
+
+  - ServiceAlert added to the bunch
+  - Alert: New variant "service"
+
 ## 10.4.1
 
 ### Patch Changes

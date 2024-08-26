@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 10.6.0
+
+### Minor Changes
+
+- be4754b: PhoneNumberInput: Added the option to display the input as optional
+
 ## 10.5.0
 
 ### Minor Changes

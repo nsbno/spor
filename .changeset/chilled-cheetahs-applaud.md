@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": minor
 ---
 
-Added the option to display phonenumber as optional
+PhoneNumberInput: Added the option to display the input as optional

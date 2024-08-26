@@ -25,6 +25,7 @@ type PhoneNumberInputProps = Omit<BoxProps, "onChange"> & {
   /** The optional value of the country code and phone number */
   value?: CountryCodeAndPhoneNumber;
   variant?: "base" | "floating";
+  isOptional?: boolean;
 };
 /**
  * A component for entering phone numbers.
@@ -51,12 +52,16 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
       value: externalValue,
       onChange: externalOnChange,
       variant,
+      isOptional,
       ...boxProps
     },
     ref,
   ) => {
     const { t } = useTranslation();
-    const label = externalLabel ?? t(texts.phoneNumber);
+    const label =
+      externalLabel ?? isOptional
+        ? t(texts.phoneNumberOptional)
+        : t(texts.phoneNumber);
     const [value, onChange] = useControllableState({
       value: externalValue,
       onChange: externalOnChange,
@@ -124,6 +129,12 @@ const texts = createTexts({
     nn: "Telefonnummer",
     en: "Phone number",
     sv: "Telefonnummer",
+  },
+  phoneNumberOptional: {
+    nb: "Telefonnummer (valgfritt)",
+    nn: "Telefonnummer (valgfritt)",
+    en: "Phone number (optional)",
+    sv: "Telefonnummer (valfritt)",
   },
   countryCodeLabel: {
     nb: "Landskode",

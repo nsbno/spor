@@ -58,7 +58,10 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
     ref,
   ) => {
     const { t } = useTranslation();
-    const label = externalLabel ?? isOptional ? t(texts.phoneNumberOptional) : t(texts.phoneNumber);
+    const label =
+      externalLabel ?? isOptional
+        ? t(texts.phoneNumberOptional)
+        : t(texts.phoneNumber);
     const [value, onChange] = useControllableState({
       value: externalValue,
       onChange: externalOnChange,

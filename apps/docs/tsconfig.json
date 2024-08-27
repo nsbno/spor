@@ -1,5 +1,11 @@
 {
-  "include": ["env.d.ts", "**/*.ts", "**/*.tsx", "vite.config.mts"],
+  "include": [
+    "env.d.ts",
+    "types.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "vite.config.mts"
+  ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2019"],
     "isolatedModules": true,

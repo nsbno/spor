@@ -23,7 +23,7 @@ const config = helpers.defineMultiStyleConfig({
   variants: {
     info: {
       accordion: {
-        outlineColor: "cloudy"
+        outlineColor: "cloudy",
       },
       container: {
         _hover: {
@@ -36,7 +36,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     success: {
       accordion: {
-        outlineColor: "coralGreen"
+        outlineColor: "coralGreen",
       },
       container: {
         _hover: {
@@ -49,7 +49,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     warning: {
       accordion: {
-        outlineColor: "primrose"
+        outlineColor: "primrose",
       },
       container: {
         _hover: {
@@ -62,7 +62,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     "alt-transport": {
       accordion: {
-        outlineColor: "burntYellow"
+        outlineColor: "burntYellow",
       },
       container: {
         _hover: {
@@ -75,7 +75,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     error: {
       accordion: {
-        outlineColor: "salmon"
+        outlineColor: "salmon",
       },
       container: {
         _hover: {

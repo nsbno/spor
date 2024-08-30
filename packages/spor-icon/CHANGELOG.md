@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 2.9.1
+
+### Patch Changes
+
+- 7452b45: Updated realtime icons to have better contrast
+
 ## 2.9.0
 
 ### Minor Changes

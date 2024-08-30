@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 10.6.1
+
+### Patch Changes
+
+- 519a2c4: Added outline color of ExpandableAlert like the design
+
 ## 10.6.0
 
 ### Minor Changes

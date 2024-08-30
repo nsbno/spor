@@ -1,6 +1,6 @@
 # Spor
 
-This is the monorepo containing Vy's design system, **Spor**, and its supporting applications.
+This is the monorepo containing Vy's design system, **Spor**, and its supporting applications. Scroll to find contribute!
 
 ## What's inside?
 
@@ -68,6 +68,16 @@ You'll find lots of components, and extensive documentation on the [documentatio
 ## Usage (React Native)
 
 The React Native version of Spor lives in the [app repo](https://github.com/nsbno/salgsapp-react-native/tree/master/app/spor). The APIs should be pretty much the same as in React, but there might be some differences. Look at the relevant documentation for more information.
+
+# CONTRIBUTE 
+
+All documentation on how to contribute is available on https://spor.vy.no.
+
+How to make a React component(and change it): https://spor.vy.no/guides/how-to-make-new-react-components
+
+HOW TO MAKE A CHANGESET: https://spor.vy.no/guides/how-to-make-new-react-components#creating-a-pr-and-publish-package
+
+ALL ABOUT CHANGESETS: https://spor.vy.no/guides/releasing-new-versions
 
 ## Setup
 

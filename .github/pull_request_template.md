@@ -15,9 +15,15 @@ Describe what has been done.
 - [ ] It works with VoiceOver
 - [ ] There are no errors in aXe / SiteImprove-plugins / Wave
 - [ ] Sanity documentation has been / will be updated (if neccessary)
+
+If no packages, only docs has been changed:
 - [ ] Documentation version has been bumped (package.json in docs)
 
-Note: To trigger pipeline for the documentation site (spor.vy.no) you need to bump the version.
+Everything about making a React component:
+https://spor.vy.no/guides/how-to-make-new-react-components
+
+HOW TO MAKE A CHANGESET:
+Go here: https://spor.vy.no/guides/how-to-make-new-react-components#creating-a-pr-and-publish-package
 
 ## How to test
 

@@ -17,6 +17,7 @@ Describe what has been done.
 - [ ] Sanity documentation has been / will be updated (if neccessary)
 
 If no packages, only docs has been changed:
+
 - [ ] Documentation version has been bumped (package.json in docs)
 
 Everything about making a React component:

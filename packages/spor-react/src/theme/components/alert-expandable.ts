@@ -1,7 +1,7 @@
 import { anatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
 
-const parts = anatomy("alertExpandable").parts("container");
+const parts = anatomy("alertExpandable").parts("container", "accordion");
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({
@@ -22,6 +22,9 @@ const config = helpers.defineMultiStyleConfig({
   },
   variants: {
     info: {
+      accordion: {
+        outlineColor: "cloudy",
+      },
       container: {
         _hover: {
           outlineColor: "sky",
@@ -32,6 +35,9 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
     success: {
+      accordion: {
+        outlineColor: "coralGreen",
+      },
       container: {
         _hover: {
           outlineColor: "blueGreen",
@@ -42,6 +48,9 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
     warning: {
+      accordion: {
+        outlineColor: "primrose",
+      },
       container: {
         _hover: {
           outlineColor: "sunshine",
@@ -52,6 +61,9 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
     "alt-transport": {
+      accordion: {
+        outlineColor: "burntYellow",
+      },
       container: {
         _hover: {
           outlineColor: "golden",
@@ -62,6 +74,9 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
     error: {
+      accordion: {
+        outlineColor: "salmon",
+      },
       container: {
         _hover: {
           outlineColor: "apricot",

@@ -54,7 +54,7 @@ export const ExpandableAlert = ({
         allowToggle
         flexGrow="1"
       >
-        <AccordionItem>
+        <AccordionItem sx={styles.accordion}>
           <AccordionButton sx={styles.container}>
             <Flex
               justifyContent="space-between"

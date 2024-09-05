@@ -77,7 +77,7 @@ export default function ComponentsPage() {
     "bg.tertiary.dark",
   );
   return (
-    <Box>
+    <>
       <Heading as="h1" variant="xl-display" marginBottom={2}>
         {article.title}
       </Heading>
@@ -110,6 +110,6 @@ export default function ComponentsPage() {
           </PressableCard>
         ))}
       </SimpleGrid>
-    </Box>
+    </>
   );
 }

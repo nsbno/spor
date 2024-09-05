@@ -54,7 +54,7 @@ export const ExpandableAlert = ({
         allowToggle
         flexGrow="1"
       >
-        <AccordionItem>
+        <AccordionItem sx={styles.accordion}>
           <AccordionButton sx={styles.container}>
             <Flex
               justifyContent="space-between"
@@ -73,15 +73,19 @@ export const ExpandableAlert = ({
                     WebkitLineClamp: "1",
                     WebkitBoxOrient: "vertical",
                   }}
-                  color="darkGrey"
+                  color={variant === "service" ? "white" : "darkGrey"}
                 >
                   {title}
                 </Box>
               </Flex>
-              <AccordionIcon color="darkGrey" />
+              <AccordionIcon
+                color={variant === "service" ? "white" : "darkGrey"}
+              />
             </Flex>
           </AccordionButton>
-          <AccordionPanel>{children}</AccordionPanel>
+          <AccordionPanel color={variant === "service" ? "white" : "darkGrey"}>
+            {children}
+          </AccordionPanel>
         </AccordionItem>
       </Accordion>
     </BaseAlert>

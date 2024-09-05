@@ -1,5 +1,45 @@
 # @vygruppen/spor-react
 
+## 10.6.1
+
+### Patch Changes
+
+- 22459d4: Added outline color of ExpandableAlert like the design
+
+## 10.6.0
+
+### Minor Changes
+
+- be4754b: PhoneNumberInput: Added the option to display the input as optional
+
+## 10.5.0
+
+### Minor Changes
+
+- 8184ed1: ### New component
+
+  - ServiceAlert added to the bunch
+  - Alert: New variant "service"
+
+## 10.4.1
+
+### Patch Changes
+
+- aeefe3f: Changed styling of LineTag deviation icons to be more similar to the design
+- 72b88be: adjusted z-index of the TravelTag deviation icon, so that it does not end atop banners and dropdowns e.t.c
+
+## 10.4.0
+
+### Minor Changes
+
+- 5c24b42: Add variants to all form components
+
+  Components: Input, Textarea, PasswordInput, PhoneNumberInput, Textarea, NativeSelect, InfoSelect, Combobox
+
+### Patch Changes
+
+- 80669c3: Switch: Update accessibility
+
 ## 10.3.0
 
 ### Minor Changes

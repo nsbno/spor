@@ -58,6 +58,7 @@ export const Input = forwardRef<InputProps, "input">(
           id={inputId}
           aria-labelledby={labelId}
           ref={ref}
+          overflow="hidden"
           placeholder=" " // This is needed to make the label work as expected
         />
         <FormLabel htmlFor={inputId} id={labelId}>

@@ -1,5 +1,4 @@
 import {
-  Box,
   FormLabel,
   forwardRef,
   Textarea as ChakraTextarea,
@@ -9,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useId } from "react";
 
-export type TextareaProps = Exclude<ChakraTextareaProps, "variant" | "size"> & {
+export type TextareaProps = Exclude<ChakraTextareaProps, "size"> & {
   label?: string;
 };
 /**

@@ -2,8 +2,8 @@ version: 2.1
 orbs:
   deployment: vydev/deployment@0.7.0
   terraform: circleci/terraform@3.2.1
-  aws-ecr: circleci/aws-ecr@9.1.0
-  aws-cli: circleci/aws-cli@4.1.3
+  aws-ecr: circleci/aws-ecr@9.3.1
+  aws-cli: circleci/aws-cli@5.0.0
 
 parameters:
   ecr_repo_name:

@@ -21,8 +21,3 @@ module "ecr" {
   trusted_accounts    = [local.prod_account, local.service_account]
   max_images_retained = 10
 }
-
-moved {
-  from = module.ecr_railyard
-  to   = module.ecr
-}

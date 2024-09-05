@@ -15,9 +15,14 @@ locals {
   prod_account        = "471112960535"
 }
 
-module "ecr_railyard" {
+module "ecr" {
   source              = "github.com/nsbno/terraform-aws-ecr?ref=1.4.1"
   name_prefix         = local.ecr_repository_name
   trusted_accounts    = [local.prod_account, local.service_account]
   max_images_retained = 10
+}
+
+moved {
+  from = module.ecr_railyard
+  to   = module.ecr
 }

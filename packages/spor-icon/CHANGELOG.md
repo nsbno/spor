@@ -1,13 +1,5 @@
 # @vygruppen/spor-icon
 
-## 3.0.0
-
-### Major Changes
-
-- d4cc8ad: Rename stars icons from "icons" to "stars"
-
-  This is a breaking change, as it requires direct consumers to change their imports for some icons. Vhen updating to this major version, make sure to import "stars-(outline|fill)-[size].svg" instead of "iconss-(outline|fill)-[size].svg" wherever necessary.
-
 ## 2.9.1
 
 ### Patch Changes

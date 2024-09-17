@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 3.0.1
+
+### Patch Changes
+
+- 5ecd37f: Fixes build for icons package
+
 ## 3.0.0
 
 ### Major Changes

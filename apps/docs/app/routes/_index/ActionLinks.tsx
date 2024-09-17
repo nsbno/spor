@@ -16,7 +16,6 @@ import {
   Heading,
   SimpleGrid,
   Text,
-  useColorModeValue,
 } from "@vygruppen/spor-react";
 
 type LinkItem = {

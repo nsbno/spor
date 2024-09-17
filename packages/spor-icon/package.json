@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-icon",
-  "version": "2.9.1",
+  "version": "3.0.0",
   "main": "./dist/spor-icons.zip",
   "license": "MIT",
   "files": [

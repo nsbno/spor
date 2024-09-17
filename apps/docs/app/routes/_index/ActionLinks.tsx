@@ -3,7 +3,7 @@ import {
   ComponentsOutline30Icon,
   GuidelinesOutline30Icon,
   HomeOutline30Icon,
-  IconsOutline30Icon,
+  StarsOutline30Icon,
   TokensOutline30Icon,
   TrainOutline30Icon,
 } from "@vygruppen/spor-icon-react";
@@ -64,7 +64,7 @@ const links: LinkItem[] = [
     to: "/resources/icon-library",
     title: "Icons",
     description: "Explore Spor's custom icon library",
-    icon: IconsOutline30Icon,
+    icon: StarsOutline30Icon,
     iconColor: "primrose",
   },
   {
@@ -77,10 +77,6 @@ const links: LinkItem[] = [
 ];
 
 export function ActionLinks() {
-  const backgroundColor = useColorModeValue(
-    "bg.default.light",
-    "bg.default.dark",
-  );
   return (
     <Container maxWidth="container.lg">
       <SimpleGrid

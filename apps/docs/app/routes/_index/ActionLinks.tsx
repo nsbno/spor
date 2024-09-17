@@ -112,7 +112,7 @@ type ActionLinkCardProps = {
 };
 function ActionLinkCard({ to, children }: ActionLinkCardProps) {
   const linkProps = to.match(/^https?:\/\//)
-    ? { as: "a", href: to, target: "_blank", rel: "noopener noreferrer" }
+    ? { href: to, target: "_blank", rel: "noopener noreferrer" }
     : { as: Link, to };
 
   return (

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 10.6.2
+
+### Patch Changes
+
+- 297ab85: ServiceAlert: Fix bug with border
+
 ## 10.6.1
 
 ### Patch Changes

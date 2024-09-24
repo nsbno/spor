@@ -2,3 +2,7 @@
 .prism-code {
   white-space: pre-wrap !important;
 }
+
+img {
+  border-radius: 12px;
+}

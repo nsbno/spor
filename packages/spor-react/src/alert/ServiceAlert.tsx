@@ -71,7 +71,7 @@ export const ServiceAlert = ({
         onChange={(expandedIndex) => onToggle(expandedIndex === 0)}
         defaultIndex={defaultOpen ? 0 : -1}
         allowToggle
-        flexGrow="1"
+        flexGrow={1}
         sx={{ outline: "none" }}
         variant={variant}
       >
@@ -81,12 +81,12 @@ export const ServiceAlert = ({
               flexDirection="row"
               justifyContent="center"
               width="100%"
-              paddingX="12px"
+              paddingX={2}
             >
               <Flex
                 justifyContent="space-between"
                 alignItems="center"
-                flexGrow="1"
+                flexGrow={1}
                 maxWidth={contentWidth}
               >
                 <Flex as={headingLevel} alignItems="center">
@@ -125,7 +125,7 @@ export const ServiceAlert = ({
               <Stack
                 justifyContent="center"
                 alignItems="center"
-                flexGrow="1"
+                flexGrow={1}
                 maxWidth={contentWidth}
                 flexFlow="column"
                 gap={2}

@@ -24,7 +24,14 @@ export const ImageWithCaption = ({
       flexDirection="column"
       alignItems={mapAlignmentToAlignItems(alignment)}
     >
-      {src && <Image src={src} alt={alt || ""} sx={{ aspectRatio }} />}
+      {src && (
+        <Image
+          src={src}
+          alt={alt || ""}
+          sx={{ aspectRatio }}
+          __css={{ borderRadius: "12px" }}
+        />
+      )}
       {caption && (
         <Stack
           as="figcaption"

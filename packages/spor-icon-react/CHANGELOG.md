@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 3.10.0
+
+### Minor Changes
+
+- 94cb2ee: Fixes version clash with icons
+
 ## 3.9.0
 
 ### Minor Changes

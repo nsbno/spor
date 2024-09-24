@@ -7,6 +7,7 @@ import {
   Stack,
   StaticCard,
   Text,
+  useColorModeValue,
 } from "@vygruppen/spor-react";
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
@@ -51,7 +52,10 @@ export function ColorTokens(props: BoxProps) {
           Background colors
         </LinkableHeading>
         <ColorGrid
-          colors={[tokens.color.alias.white, tokens.color.alias.lightGrey]}
+          colors={[
+            useColorModeValue("bg.default.light", "bg.default.dark"),
+            useColorModeValue("bg.secondary.light", "bg.secondary.dark"),
+          ]}
         />
 
         <LinkableHeading as="h3" variant="md">
@@ -192,6 +196,7 @@ const getAliasName = (colorValue: string) => {
   const entry = Object.entries(tokens.color.alias).find(
     ([_, value]) => colorValue === value,
   );
+  console.log(entry);
   return entry ? toTitleCase(entry[0]) : null;
 };
 

@@ -60,92 +60,92 @@ export const ServiceAlert = ({
   const { t } = useTranslation();
   const styles = useMultiStyleConfig("AlertService");
   return (
-    <Box flexDirection="column" sx={styles.box}>
-      <BaseAlert
+    <BaseAlert
+      variant={variant}
+      {...boxProps}
+      paddingX={0}
+      paddingY={0}
+      sx={styles.outerBox}
+    >
+      <Accordion
+        onChange={(expandedIndex) => onToggle(expandedIndex === 0)}
+        defaultIndex={defaultOpen ? 0 : -1}
+        allowToggle
+        flexGrow={1}
+        sx={{ outline: "none" }}
         variant={variant}
-        {...boxProps}
-        paddingX={0}
-        paddingY={0}
-        sx={styles.box}
       >
-        <Accordion
-          onChange={(expandedIndex) => onToggle(expandedIndex === 0)}
-          defaultIndex={defaultOpen ? 0 : -1}
-          allowToggle
-          flexGrow="1"
-        >
-          <AccordionItem>
-            <AccordionButton sx={styles.container}>
-              <Stack
-                flexDirection="row"
-                justifyContent="center"
-                width="100%"
-                paddingX="12px"
+        <AccordionItem>
+          <AccordionButton sx={styles.container}>
+            <Stack
+              flexDirection="row"
+              justifyContent="center"
+              width="100%"
+              paddingX={2}
+            >
+              <Flex
+                justifyContent="space-between"
+                alignItems="center"
+                flexGrow={1}
+                maxWidth={contentWidth}
               >
-                <Flex
-                  justifyContent="space-between"
-                  alignItems="center"
-                  flexGrow="1"
-                  maxWidth={contentWidth}
-                >
-                  <Flex as={headingLevel} alignItems="center">
-                    <AlertIcon variant={variant} />
+                <Flex as={headingLevel} alignItems="center">
+                  <AlertIcon variant={variant} />
 
-                    <Box
-                      as="span"
-                      sx={{
-                        // Truncate the title to one line
-                        display: "-webkit-box",
-                        overflow: "hidden",
-                        WebkitLineClamp: "1",
-                        WebkitBoxOrient: "vertical",
-                      }}
-                      color="white"
-                    >
-                      {title}
-                    </Box>
-                  </Flex>
-
-                  <Flex alignItems="center">
-                    {notification && (
-                      <Text sx={styles.notificationText}>
-                        {t(texts.notification(notification))}
-                      </Text>
-                    )}
-
-                    <AccordionIcon color="white" />
-                  </Flex>
+                  <Box
+                    as="span"
+                    sx={{
+                      // Truncate the title to one line
+                      display: "-webkit-box",
+                      overflow: "hidden",
+                      WebkitLineClamp: "1",
+                      WebkitBoxOrient: "vertical",
+                    }}
+                    color="white"
+                  >
+                    {title}
+                  </Box>
                 </Flex>
-              </Stack>
-            </AccordionButton>
 
-            <AccordionPanel sx={styles.serviceMessageContent}>
-              <Stack flexDirection="row" justifyContent="center" width="100%">
-                <Flex
-                  justifyContent="space-between"
-                  alignItems="center"
-                  flexGrow="1"
-                  maxWidth={contentWidth}
-                  flexFlow="column"
-                  gap={2}
-                  sx={{
-                    p: {
-                      padding: "0.8rem 0",
-                      borderBottom: "0.08rem solid rgba(255, 255, 255, 0.4)",
-                    },
-                    "p:last-child": {
-                      borderBottom: "none",
-                    },
-                  }}
-                >
-                  {children}
+                <Flex alignItems="center">
+                  {notification && (
+                    <Text sx={styles.notificationText}>
+                      {t(texts.notification(notification))}
+                    </Text>
+                  )}
+
+                  <AccordionIcon color="white" />
                 </Flex>
+              </Flex>
+            </Stack>
+          </AccordionButton>
+
+          <AccordionPanel sx={styles.serviceMessageContent}>
+            <Stack flexDirection="row" justifyContent="center" width="100%">
+              <Stack
+                justifyContent="center"
+                alignItems="center"
+                flexGrow={1}
+                maxWidth={contentWidth}
+                flexFlow="column"
+                gap={2}
+                sx={{
+                  p: {
+                    padding: "0.8rem 0",
+                    borderBottom: "0.08rem solid rgba(255, 255, 255, 0.4)",
+                  },
+                  "p:last-child": {
+                    borderBottom: "none",
+                  },
+                }}
+              >
+                {children}
               </Stack>
-            </AccordionPanel>
-          </AccordionItem>
-        </Accordion>
-      </BaseAlert>
-    </Box>
+            </Stack>
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
+    </BaseAlert>
   );
 };
 

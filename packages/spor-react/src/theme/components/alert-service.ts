@@ -3,7 +3,7 @@ import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
 
 const parts = anatomy("alertService").parts(
   "container",
-  "box",
+  "outerBox",
   "notificationText",
   "serviceMessageContent",
 );
@@ -18,7 +18,7 @@ const config = helpers.defineMultiStyleConfig({
       transitionProperty: "outline, border-radius",
       transitionDuration: "fast",
       borderTopRadius: "none",
-      borderBottomRadius: "18px",
+      borderBottomRadius: "md",
       _hover: {
         outline: "2px solid",
         outlineColor: "blueGreen",
@@ -28,12 +28,13 @@ const config = helpers.defineMultiStyleConfig({
         outlineColor: "pine",
       },
     },
-    box: {
+    outerBox: {
       outline: "1px solid",
       outlineColor: "blueGreen",
       backgroundColor: "darkTeal",
-      borderBottomRadius: "1.125rem",
+      borderBottomRadius: "md",
       borderTopRadius: "none",
+      width: "100%",
     },
     notificationText: {
       color: "white",

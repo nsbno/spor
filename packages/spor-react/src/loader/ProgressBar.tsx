@@ -31,6 +31,7 @@ type ProgressBarProps = BoxProps & {
    * Defaults to 5000 (5 seconds).
    */
   labelRotationDelay?: number;
+  
   /** Pass to disable the color of the component */
   isDisabled?: boolean;
 };

@@ -2,7 +2,6 @@ import tokens from "@vygruppen/spor-design-tokens";
 import {
   BoxProps,
   Flex,
-  Heading,
   Stack,
   Text,
   useColorModeValue,
@@ -187,7 +186,7 @@ export function ColorTokens(props: BoxProps) {
   return (
     <SharedTokenLayout
       {...props}
-      title="Colors"
+      title="Elements"
       description={
         <Text>
           Our main colors are the ones we use the most. These are used for,
@@ -207,6 +206,7 @@ export function ColorTokens(props: BoxProps) {
             <ColorGrid colors={generateColorArray(element.values)} />
           </Flex>
         ))}
+
         <LinkableHeading as="h2" variant="xl-display" mt={3}>
           Styles
         </LinkableHeading>
@@ -219,8 +219,8 @@ export function ColorTokens(props: BoxProps) {
           </Flex>
         ))}
 
-        <Flex flexDirection="column" gap={2}>
-          <LinkableHeading as="h3" variant="xl-display">
+        <Flex flexDirection="column" gap={3} mt={3}>
+          <LinkableHeading as="h2" variant="xl-display">
             Complete palette
           </LinkableHeading>
           <ColorGrid
@@ -228,8 +228,8 @@ export function ColorTokens(props: BoxProps) {
             colors={generateColorArray(mergedPalette)}
           />
         </Flex>
-        <Flex flexDirection="column" gap={2}>
-          <LinkableHeading as="h3" variant="xl-display">
+        <Flex flexDirection="column" gap={3} mt={3}>
+          <LinkableHeading as="h2" variant="xl-display">
             Alpha colors
           </LinkableHeading>
           <ColorGrid

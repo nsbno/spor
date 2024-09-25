@@ -1,4 +1,16 @@
-import { Box, Divider, Heading, Stack, Text } from "@vygruppen/spor-react";
+import {
+  Box,
+  Brand,
+  Divider,
+  Heading,
+  HStack,
+  Stack,
+  Tab,
+  TabList,
+  Tabs,
+  Text,
+  useColorMode,
+} from "@vygruppen/spor-react";
 import { AnimationTokens } from "~/routes/_base.resources.design-tokens/AnimationTokens";
 import { BreakpointTokens } from "./BreakpointTokens";
 import { ColorTokens } from "./color-tokens/ColorTokens";
@@ -8,8 +20,15 @@ import { ShadowTokens } from "./ShadowTokens";
 import { SpacingTokens } from "./SpacingTokens";
 import { TypographyTokens } from "./TypographyTokens";
 import { ZIndexTokens } from "./ZIndexTokens";
+import { useFetcher } from "@remix-run/react";
+import { useMatchesData } from "~/utils/useMatchesData";
 
 export default function DesignTokensPage() {
+  const { toggleColorMode } = useColorMode();
+  const fetcher = useFetcher();
+  const data = useMatchesData("root");
+  const brand = data?.brand ?? Brand.VyDigital;
+
   return (
     <Box>
       <Heading as="h1" variant="xl-display" marginBottom={2}>
@@ -30,7 +49,59 @@ export default function DesignTokensPage() {
           and more.
         </Text>
       </Stack>
-      <Divider marginY={8} />
+      <HStack gap={5} mt={5}>
+        <Stack>
+          <Heading as="h2" variant="md" fontWeight="bold">
+            Theme
+          </Heading>
+          <fetcher.Form method="post" action="/api/brand">
+            <Tabs
+              variant={"accent"}
+              size="md"
+              isFitted
+              defaultValue={brand}
+              onChange={(index: number) => {
+                const selectedTab = [
+                  Brand.VyDigital,
+                  Brand.CargoNet,
+                  Brand.VyUtvikling,
+                ][index];
+                const formData = new FormData();
+                formData.set("brand", selectedTab);
+                fetcher.submit(formData, {
+                  method: "post",
+                  action: "/",
+                });
+              }}
+            >
+              <TabList>
+                <Tab>{Brand.VyDigital}</Tab>
+                <Tab>{Brand.CargoNet}</Tab>
+                <Tab>{Brand.VyUtvikling}</Tab>
+              </TabList>
+            </Tabs>
+          </fetcher.Form>
+        </Stack>
+        <Stack>
+          <Heading as="h2" variant="md" fontWeight="bold">
+            Color mode
+          </Heading>
+          <Tabs
+            variant={"accent"}
+            size="md"
+            isFitted
+            isLazy
+            onChange={() => toggleColorMode()}
+          >
+            <TabList>
+              <Tab>Light</Tab>
+              <Tab>Dark</Tab>
+            </TabList>
+          </Tabs>
+        </Stack>
+      </HStack>
+
+      <Divider marginBottom={8} marginTop={4} />
       <Stack spacing={9}>
         <ColorTokens />
         <TypographyTokens />

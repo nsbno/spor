@@ -2,6 +2,10 @@ import tokens from "@vygruppen/spor-design-tokens";
 import { useTheme } from "@vygruppen/spor-react";
 import { toTitleCase } from "~/utils/stringUtils";
 
+export type Palette = {
+  [key: string]: string[];
+};
+
 export const useTokenInfo = (colorValue: string) => {
   const normalizedColorValue = colorValue?.toLowerCase() ?? "";
   const aliasName = getAliasName(normalizedColorValue);
@@ -66,3 +70,9 @@ export const useTokenAlias = (token: string) => {
 
   return alias;
 };
+
+export const generateColorArray = (tokens: string[]) =>
+  tokens.map((token) => ({
+    token,
+    alias: useTokenAlias(token),
+  }));

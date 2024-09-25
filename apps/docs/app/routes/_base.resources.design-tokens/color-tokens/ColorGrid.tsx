@@ -2,8 +2,7 @@ import {
   Box,
   BoxProps,
   Flex,
-  SimpleGrid,
-  Stack,
+  HStack,
   StaticCard,
   Text,
 } from "@vygruppen/spor-react";
@@ -17,13 +16,7 @@ type ColorGridProps = {
 
 export const ColorGrid = ({ colors, isVertical, ...rest }: ColorGridProps) => {
   return (
-    <Stack
-      gap={2}
-      display="flex"
-      flexDirection="row"
-      flexWrap={"wrap"}
-      {...rest}
-    >
+    <HStack gap={2} display="flex" flexWrap="wrap" {...rest}>
       {colors.map((color, i) => (
         <ColorToken
           key={i}
@@ -32,7 +25,7 @@ export const ColorGrid = ({ colors, isVertical, ...rest }: ColorGridProps) => {
           isVertical={isVertical}
         />
       ))}
-    </Stack>
+    </HStack>
   );
 };
 
@@ -49,12 +42,9 @@ export const ColorToken = ({
   ...rest
 }: ColorTokenProps) => {
   const { aliasName, paletteName, colorValue } = useTokenInfo(token);
+  const isTranslucent =
+    alias?.includes("Alpha") || paletteName?.includes("Alpha");
   const isWhite = aliasName?.includes("White");
-  const isTranslucent = paletteName?.includes("Alpha");
-
-  const colorBackground = isTranslucent
-    ? `linear-gradient(to right, ${colorValue}, ${colorValue}), url(${translucentBackgroundUrl})`
-    : colorValue;
 
   const tokenParts = token
     .split(".")
@@ -71,27 +61,60 @@ export const ColorToken = ({
       border="1px solid"
       borderColor="silver"
       borderRadius="sm"
-      width={[
-        "100%",
-        "calc(50% - 1.5rem)",
-        "calc(50% - 1.5rem)",
-        "250px",
-      ]}
+      width={
+        isVertical
+          ? ["100%", "calc(50% - 1.5rem)", "calc(50% - 1.5rem)", "250px"]
+          : ["100%", "100%", "31%", "16.666%"]
+      }
       display={isVertical ? "flex" : "block"}
       {...rest}
     >
       <Box
         height="60px"
         minWidth="44px"
-        borderRight="1px solid"
-        borderColor="silver"
+        borderRight={isVertical ? "1px solid" : "none"}
+        borderBottom={!isVertical ? "1px solid" : "none"}
+        borderColor={!isVertical && isWhite ? "silver" : colorValue}
         borderTopLeftRadius="sm"
-        borderBottomLeftRadius="sm"
+        borderTopRightRadius={!isVertical ? "sm" : "none"}
+        borderBottomLeftRadius={isVertical ? "sm" : "none"}
         position="relative"
-        background={colorBackground}
+        backgroundColor={!isTranslucent ? colorValue : undefined}
         backgroundPosition="center center"
         backgroundRepeat="repeat"
-      />
+      >
+        {isTranslucent && (
+          <>
+            <Box
+              height="60px"
+              minWidth="100%"
+              borderTopLeftRadius="sm"
+              borderBottomLeftRadius="sm"
+              position="absolute"
+              zIndex={1}
+              bgGradient={
+                isTranslucent
+                  ? `linear(to-r, ${colorValue}, ${colorValue})`
+                  : undefined
+              }
+              backgroundPosition="center center"
+              backgroundRepeat="repeat"
+            />
+            <Box
+              height="60px"
+              minWidth="100%"
+              borderTopLeftRadius="sm"
+              borderBottomLeftRadius="sm"
+              position="absolute"
+              backgroundImage={
+                isTranslucent ? `${translucentBackgroundUrl}` : undefined
+              }
+              backgroundPosition="center center"
+              backgroundRepeat="repeat"
+            />
+          </>
+        )}
+      </Box>
       <Flex flexDirection="column" paddingX={2} paddingTop={1} gap={0.5}>
         {isVertical ? (
           <>
@@ -102,15 +125,14 @@ export const ColorToken = ({
           </>
         ) : (
           <>
-            <Box>
-              <Text variant="xs" fontWeight="bold" whiteSpace="nowrap">
-                {aliasName}
-              </Text>
-              <Text variant="xs">
-                {aliasName !== paletteName ? paletteName : " "}
-              </Text>
-            </Box>
-            <Text variant="xs" marginTop={3} marginBottom={2}>
+            <Text variant="xs" fontWeight="bold" whiteSpace="wrap">
+              {aliasName}
+            </Text>
+            {aliasName !== paletteName && (
+              <Text variant="xs">{paletteName}</Text>
+            )}
+
+            <Text variant="xs" marginTop={1} marginBottom={2}>
               {colorValue}
             </Text>
           </>

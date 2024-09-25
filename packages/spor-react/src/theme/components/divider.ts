@@ -1,5 +1,8 @@
 import { defineStyleConfig } from "@chakra-ui/styled-system";
-import { mode } from "@chakra-ui/theme-tools";
+import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
+
+const isSolid = (props: StyleFunctionProps) => props.variant === "solid";
+const isDashed = (props: StyleFunctionProps) => props.variant === "dashed";
 
 export default defineStyleConfig({
   baseStyle: (props) => ({
@@ -20,19 +23,19 @@ export default defineStyleConfig({
   },
   sizes: {
     sm: (props) => ({
-      borderWidth: props.variant === "solid" ? "1px" : undefined,
-      borderRadius: props.variant === "solid" ? "0.5px" : undefined,
-      height: props.variant === "dashed" ? "1px" : undefined,
+      borderWidth: isSolid(props) ? "1px" : undefined,
+      borderRadius: isSolid(props) ? "0.5px" : undefined,
+      height: isDashed(props) ? "1px" : undefined,
     }),
     md: (props) => ({
-      borderWidth: props.variant === "solid" ? "2px" : undefined,
-      borderRadius: props.variant === "solid" ? "1px" : "10px",
-      height: props.variant === "dashed" ? "2px" : undefined,
+      borderWidth: isSolid(props) ? "2px" : undefined,
+      borderRadius: isSolid(props) ? "1px" : "10px",
+      height: isDashed(props) ? "2px" : undefined,
     }),
     lg: (props) => ({
-      borderWidth: props.variant === "solid" ? "3px" : undefined,
-      borderRadius: props.variant === "solid" ? "1.5px" : undefined,
-      height: props.variant === "dashed" ? "3px" : undefined,
+      borderWidth: isSolid(props) ? "3px" : undefined,
+      borderRadius: isSolid(props) ? "1.5px" : undefined,
+      height: isDashed(props) ? "3px" : undefined,
     }),
   },
   defaultProps: {

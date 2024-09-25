@@ -58,7 +58,6 @@ export default function DesignTokensPage() {
             <Tabs
               variant={"accent"}
               size="md"
-              isFitted
               defaultValue={brand}
               onChange={(index: number) => {
                 const selectedTab = [
@@ -75,9 +74,15 @@ export default function DesignTokensPage() {
               }}
             >
               <TabList>
-                <Tab>{Brand.VyDigital}</Tab>
-                <Tab>{Brand.CargoNet}</Tab>
-                <Tab>{Brand.VyUtvikling}</Tab>
+                <Tab width={[null, 100]} value={Brand.VyDigital}>
+                  Vy
+                </Tab>
+                <Tab width={[null, 100]} value={Brand.CargoNet}>
+                  {Brand.CargoNet}
+                </Tab>
+                <Tab width={[null, 100]} value={Brand.VyUtvikling}>
+                  IT
+                </Tab>
               </TabList>
             </Tabs>
           </fetcher.Form>
@@ -86,16 +91,10 @@ export default function DesignTokensPage() {
           <Heading as="h2" variant="md" fontWeight="bold">
             Color mode
           </Heading>
-          <Tabs
-            variant={"accent"}
-            size="md"
-            isFitted
-            isLazy
-            onChange={() => toggleColorMode()}
-          >
+          <Tabs variant={"accent"} size="md" onChange={() => toggleColorMode()}>
             <TabList>
-              <Tab>Light</Tab>
-              <Tab>Dark</Tab>
+              <Tab width={[null, 100]}>Light</Tab>
+              <Tab width={[null, 100]}>Dark</Tab>
             </TabList>
           </Tabs>
         </Stack>

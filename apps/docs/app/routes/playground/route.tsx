@@ -1,4 +1,11 @@
-import { Stack } from "@vygruppen/spor-react";
+import {
+  Box,
+  Checkbox,
+  Heading,
+  Stack,
+  Text,
+  StaticCard,
+} from "@vygruppen/spor-react";
 import { StrictMode, useEffect, useState } from "react";
 import { LivePreview } from "react-live";
 import { LiveEditor } from "~/features/portable-text/interactive-code/LiveEditor";
@@ -37,6 +44,17 @@ export default function PlaygroundPage() {
           />
           <LiveError />
           <LivePreview />
+        </Stack>
+        <Stack>
+          <Checkbox id="checkbox" aria-labelledby="static-card" />
+          <StaticCard colorScheme="blue">
+            <Heading variant={"md"} as={"h1"}>
+              Accept the terms
+            </Heading>
+            <Text variant={"lg"} id="static-card" aria-describedby="checkbox">
+              Dette er en test
+            </Text>
+          </StaticCard>
         </Stack>
       </LiveProvider>
     </StrictMode>

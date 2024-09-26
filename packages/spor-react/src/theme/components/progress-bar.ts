@@ -17,7 +17,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     background: {
       display: "flex",
-      backgroundColor: !props.isDisabled
+      backgroundColor: props.isActive
         ? mode(
             "brand.surface.default.dark",
             "brand.surface.default.light",
@@ -28,7 +28,7 @@ const config = helpers.defineMultiStyleConfig({
       marginX: "auto",
     },
     progress: {
-      backgroundColor: !props.isDisabled
+      backgroundColor: props.isActive
         ? mode("brand.surface.active.light", "brand.surface.active.dark")(props)
         : mode("icon.disabled.light", "icon.disabled.dark")(props),
       borderRadius: "sm",

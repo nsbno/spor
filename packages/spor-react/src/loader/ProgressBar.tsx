@@ -33,7 +33,7 @@ type ProgressBarProps = BoxProps & {
   labelRotationDelay?: number;
 
   /** Pass to disable the color of the component */
-  isDisabled?: boolean;
+  isActive?: boolean;
 };
 
 /**
@@ -70,7 +70,7 @@ export const ProgressBar = ({
   height = "0.5rem",
   width = "100%",
   "aria-label": ariaLabel,
-  isDisabled = false,
+  isActive = true,
   ...rest
 }: ProgressBarProps) => {
   const { t } = useTranslation();
@@ -83,7 +83,7 @@ export const ProgressBar = ({
     value,
     "aria-label": ariaLabel || t(texts.label(value)),
   });
-  const styles = useMultiStyleConfig("ProgressBar", { isDisabled });
+  const styles = useMultiStyleConfig("ProgressBar", { isActive });
   return (
     <>
       <Box
@@ -96,7 +96,7 @@ export const ProgressBar = ({
           <Box
             __css={styles.progress}
             height={height}
-            width={isDisabled ? "100%" : `${value}%`}
+            width={isActive ? `${value}%` : "100%"}
           />
         </Box>
         {currentLoadingText && (

@@ -7,7 +7,6 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import { useTokenInfo } from "./utils";
-import translucentBackgroundUrl from "../translucent-background.svg";
 
 type ColorGridProps = {
   colors: { token: string; alias?: string }[];
@@ -108,9 +107,7 @@ export const ColorToken = ({
               borderTopRightRadius={!isVertical ? "sm" : "none"}
               borderBottomLeftRadius={isVertical ? "sm" : "none"}
               position="absolute"
-              backgroundImage={
-                isTranslucent ? `${translucentBackgroundUrl}` : undefined
-              }
+              backgroundImage={`url(/images/translucent-background.svg)`}
               backgroundPosition="center center"
               backgroundRepeat="repeat"
             />

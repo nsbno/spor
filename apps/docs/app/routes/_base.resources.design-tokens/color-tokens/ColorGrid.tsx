@@ -92,11 +92,7 @@ export const ColorToken = ({
               borderBottomLeftRadius={isVertical ? "sm" : "none"}
               position="absolute"
               zIndex={1}
-              bgGradient={
-                isTranslucent
-                  ? `linear(to-r, ${colorValue}, ${colorValue})`
-                  : undefined
-              }
+              bgGradient={`linear(to-r, ${colorValue}, ${colorValue})`}
               backgroundPosition="center center"
               backgroundRepeat="repeat"
             />

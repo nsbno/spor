@@ -17,20 +17,20 @@ const config = helpers.defineMultiStyleConfig({
     },
     background: {
       display: "flex",
-      backgroundColor: mode(
-        "brand.surface.default.dark",
-        "brand.surface.default.light",
-      )(props),
-
+      backgroundColor: props.isActive
+        ? mode(
+            "brand.surface.default.dark",
+            "brand.surface.default.light",
+          )(props)
+        : undefined,
       borderRadius: "sm",
       justifyContent: "flex-start",
       marginX: "auto",
     },
     progress: {
-      backgroundColor: mode(
-        "brand.surface.active.light",
-        "brand.surface.active.dark",
-      )(props),
+      backgroundColor: props.isActive
+        ? mode("brand.surface.active.light", "brand.surface.active.dark")(props)
+        : mode("icon.disabled.light", "icon.disabled.dark")(props),
       borderRadius: "sm",
       maxWidth: "100%",
       transition: "width .2s ease-out",

@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": minor
 ---
 
-ProgressBar: New isDisabled prop
+ProgressBar: New isActive prop

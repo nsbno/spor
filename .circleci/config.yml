@@ -59,8 +59,6 @@ jobs:
             docker build -t ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> -f Dockerfile .
             docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
             docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
-            docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${CIRCLE_SHA1:0:7}"
-            docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:commit-${CIRCLE_SHA1:0:7}"
             docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:<< pipeline.git.branch >>-branch"
             docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:<< pipeline.git.branch >>-branch"
             docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:${CIRCLE_SHA1:0:7}"

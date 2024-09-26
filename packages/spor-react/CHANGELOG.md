@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 10.7.0
+
+### Minor Changes
+
+- 13a1c22: ProgressBar: New isActive prop
+
+### Patch Changes
+
+- 4603ee1: Divider: Update styling for dashed variant
+
 ## 10.6.2
 
 ### Patch Changes

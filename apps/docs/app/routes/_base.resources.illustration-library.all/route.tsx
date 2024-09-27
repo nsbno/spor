@@ -48,7 +48,7 @@ export const loader = async () => {
   const headers = new Headers();
   headers.set("Content-Type", "application/zip");
   headers.set("Content-Disposition", "attachment; filename=illustrations.zip");
-  headers.set("Cache-Control", "max-age=60");
+  headers.set("Cache-Control", "max-age=3600");
 
   return new Response(stream as any, {
     status: 200,

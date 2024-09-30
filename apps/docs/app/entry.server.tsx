@@ -33,7 +33,10 @@ export default function handleRequest(
     </ServerStyleContext.Provider>,
   );
 
+  const cacheControl = "public, max-age=1800"; // 30 minute cache
+
   responseHeaders.set("Content-Type", "text/html");
+  responseHeaders.set("Cache-Control", cacheControl);
 
   return new Response(`<!DOCTYPE html>${markup}`, {
     status: responseStatusCode,

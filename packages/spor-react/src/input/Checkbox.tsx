@@ -22,12 +22,14 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     const {
       label,
       id,
-      checked = false,
+      checked,
       onChange,
       children,
       defaultChecked,
       ...rest
     } = props;
+
+    console.log(checked);
     const [isChecked, setIsChecked] = useState(checked || defaultChecked);
     const checkboxId = id || `checkbox-${useId()}`; // Remove extra curly brace
 
@@ -64,31 +66,29 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           {...getCheckboxProps()}
           {...rest}
         >
-          {isChecked && (
-            <chakra.span>
-              <svg
-                className="checkmark"
-                width="100%"
-                height="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 52 52"
-              >
-                <motion.path
-                  d="M14 27 L22 34 L38 16"
-                  fill="none"
-                  stroke="#fff"
-                  strokeWidth="5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  initial={{ pathLength: 0 }}
-                  animate={{
-                    pathLength: isChecked ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                />
-              </svg>
-            </chakra.span>
-          )}
+          <chakra.span>
+            <svg
+              className="checkmark"
+              width="100%"
+              height="100%"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 52 52"
+            >
+              <motion.path
+                d="M14 27 L22 34 L38 16"
+                fill="none"
+                stroke="#fff"
+                strokeWidth="5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                initial={{ pathLength: 0 }}
+                animate={{
+                  pathLength: isChecked ? 1 : 0,
+                }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+              />
+            </svg>
+          </chakra.span>
         </Flex>
         {(label || children) && (
           <chakra.label

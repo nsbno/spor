@@ -1,14 +1,4 @@
-import {
-  Box,
-  Checkbox,
-  Heading,
-  Stack,
-  Text,
-  StaticCard,
-  PressableCard,
-  Center,
-  CheckboxGroup,
-} from "@vygruppen/spor-react";
+import { Stack } from "@vygruppen/spor-react";
 import { StrictMode, useEffect, useState } from "react";
 import { LivePreview } from "react-live";
 import { LiveEditor } from "~/features/portable-text/interactive-code/LiveEditor";
@@ -47,16 +37,6 @@ export default function PlaygroundPage() {
           />
           <LiveError />
           <LivePreview />
-        </Stack>
-        <Stack>
-          <Checkbox defaultChecked>
-            <PressableCard>
-              <Heading variant={"md"} as={"h1"}>
-                Accept the terms
-              </Heading>
-              <Text variant={"lg"}>Dette er en test</Text>
-            </PressableCard>
-          </Checkbox>
         </Stack>
       </LiveProvider>
     </StrictMode>

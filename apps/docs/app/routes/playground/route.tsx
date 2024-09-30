@@ -5,6 +5,9 @@ import {
   Stack,
   Text,
   StaticCard,
+  PressableCard,
+  Center,
+  CheckboxGroup,
 } from "@vygruppen/spor-react";
 import { StrictMode, useEffect, useState } from "react";
 import { LivePreview } from "react-live";
@@ -46,15 +49,14 @@ export default function PlaygroundPage() {
           <LivePreview />
         </Stack>
         <Stack>
-          <Checkbox id="checkbox" aria-labelledby="static-card" />
-          <StaticCard colorScheme="blue">
-            <Heading variant={"md"} as={"h1"}>
-              Accept the terms
-            </Heading>
-            <Text variant={"lg"} id="static-card" aria-describedby="checkbox">
-              Dette er en test
-            </Text>
-          </StaticCard>
+          <Checkbox defaultChecked>
+            <PressableCard>
+              <Heading variant={"md"} as={"h1"}>
+                Accept the terms
+              </Heading>
+              <Text variant={"lg"}>Dette er en test</Text>
+            </PressableCard>
+          </Checkbox>
         </Stack>
       </LiveProvider>
     </StrictMode>

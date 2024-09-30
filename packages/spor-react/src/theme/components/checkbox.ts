@@ -1,83 +1,74 @@
 import { checkboxAnatomy as parts } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import { createMultiStyleConfigHelpers, css } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
-import { baseBackground, baseText } from "../utils/base-utils";
+import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { outlineBorder } from "../utils/outline-utils";
 
 const helpers = createMultiStyleConfigHelpers(parts.keys);
 
 const config = helpers.defineMultiStyleConfig({
   baseStyle: (props) => ({
     container: {
-      _hover: {
-        "input:enabled:not([aria-invalid]) + .chakra-checkbox__control": {
-          ...baseBackground("hover", props),
-          borderColor: brandBackground("hover", props).backgroundColor,
-        },
-        "input:enabled[aria-invalid] + .chakra-checkbox__control": {
-          backgroundColor: mode("white", "inherit")(props),
-          borderColor: mode("outline.error.light", "outline.error.dark"),
-        },
-        "input:enabled:checked:not([aria-invalid]) + .chakra-checkbox__control":
-          {
-            ...brandBackground("hover", props),
-            borderColor: brandBackground("hover", props).backgroundColor,
-          },
-        "input:enabled:checked[aria-invalid] + .chakra-checkbox__control": {
-          borderColor: mode("outline.error.light", "outline.error.dark"),
-          backgroundColor: mode("outline.error.light", "outline.error.dark"),
-        },
-      },
-    },
-    icon: {
-      fontSize: "1em",
-      transitionProperty: "transform",
-      transitionDuration: "normal",
-      strokeWidth: "1.5px !important", // Required to make the default icon look correct
+      display: "flex",
+      alignItems: "center",
     },
     control: {
-      width: 4,
-      height: 4,
-      transitionProperty: "background, border-color",
+      width: "22px",
+      height: "22px",
+      transitionProperty: "background, outline",
       transitionDuration: "normal",
-      border: "2px solid",
-      borderColor: mode(
-        "base.outline.default.light",
-        "base.outline.default.dark",
-      )(props),
       borderRadius: "xs",
       ...baseBackground("default", props),
       ...focusVisibleStyles(props),
-
+      outline: "2px solid",
+      outlineColor: baseBorder("default", props).outlineColor,
+      _hover: {
+        ...baseBorder("hover", props),
+      },
+      _focus: {
+        outline: "4px solid",
+        outlineStyle: "double",
+        ...outlineBorder("focus", props),
+        outlineOffset: "-1px",
+      },
       _checked: {
         ...brandText("default", props),
         ...brandBackground("default", props),
-        borderColor: brandBackground("default", props).backgroundColor,
+        outlineColor: brandBackground("default", props).backgroundColor,
+        _hover: {
+          ...brandBackground("hover", props),
+          outlineColor: brandBackground("hover", props).backgroundColor,
+        },
 
         _disabled: {
+          pointerEvents: "none",
           ...baseBackground("disabled", props),
+          ...baseBorder("disabled", props),
           ...baseText("disabled", props),
-          borderColor: "currentColor",
         },
 
         _invalid: {
           backgroundColor: "brightRed",
-          borderColor: "brightRed",
+          outlineColor: "brightRed",
         },
       },
 
       _disabled: {
+        pointerEvents: "none",
         ...baseBackground("disabled", props),
-        borderColor: baseText("disabled", props).color,
+        ...baseBorder("disabled", props),
+        ...baseText("disabled", props),
       },
       _invalid: {
         ...baseBackground("default", props),
-        borderColor: "brightRed",
+        outlineColor: "brightRed",
       },
     },
     label: {
       userSelect: "none",
+      marginLeft: 1.5,
       _disabled: { opacity: 0.4 },
     },
   }),

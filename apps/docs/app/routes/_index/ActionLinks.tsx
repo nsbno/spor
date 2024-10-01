@@ -1,19 +1,19 @@
-import { Link, useNavigate } from "@remix-run/react";
+import { Link } from "@remix-run/react";
 import {
   ComponentsOutline30Icon,
   GuidelinesOutline30Icon,
   HomeOutline30Icon,
-  StarsOutline30Icon,
   TokensOutline30Icon,
   TrainOutline30Icon,
+  StarsOutline30Icon,
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
   BoxProps,
-  PressableCard,
   Container,
   Flex,
   Heading,
+  PressableCard,
   SimpleGrid,
   Text,
 } from "@vygruppen/spor-react";
@@ -110,8 +110,14 @@ type ActionLinkCardProps = {
   children: React.ReactNode;
 };
 function ActionLinkCard({ to, children }: ActionLinkCardProps) {
-  const linkProps = to.match(/^https?:\/\//)
-    ? { href: to, target: "_blank", rel: "noopener noreferrer" }
+  const linkProps: {
+    href?: string;
+    target?: string;
+    rel?: string;
+    as?: React.ElementType;
+    to?: string;
+  } = to.match(/^https?:\/\//)
+    ? { href: to, target: "_blank", rel: "noopener noreferrer", as: "a" }
     : { as: Link, to };
 
   return (

@@ -22,10 +22,9 @@ import {
   useDisclosure,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
-import { useMenu } from "~/utils/useMenu";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
-import { SiteSettings } from "./SiteSettings";
 import { SiteSearchModal } from "./SiteSearchModal";
+import { SiteSettings } from "./SiteSettings";
 
 /** The site header shown at the top of every part of our site */
 export const SiteHeader = () => {
@@ -92,7 +91,6 @@ type SearchFieldProps = {
 };
 
 const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
-  const menu = useMenu("top-menu");
   const [isMac, setIsMac] = useState(false);
 
   useEffect(() => {

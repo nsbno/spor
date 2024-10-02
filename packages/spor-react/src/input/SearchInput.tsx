@@ -18,7 +18,7 @@ export type SearchInputProps = Exclude<
   "variant" | "size" | "leftIcon" | "rightIcon"
 > & {
   /** Optional label. Defaults to the localized version of "search" */
-  label?: string;
+  label?: string | React.ReactNode;
   /** Callback for when the clear button is clicked */
   onReset?: () => void;
 };

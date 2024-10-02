@@ -1,5 +1,5 @@
 import "./styles/style-overrides.css";
-import { cookieStorageManagerSSR, useConst } from "@chakra-ui/react";
+import { cookieStorageManagerSSR } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
 import {
   ActionFunctionArgs,
@@ -19,7 +19,7 @@ import {
   useRouteError,
 } from "@remix-run/react";
 import { Brand, Language, SporProvider } from "@vygruppen/spor-react";
-import { ReactNode, useContext, useEffect } from "react";
+import { ReactNode, useContext, useEffect, useRef } from "react";
 import { PageNotFound } from "./root/PageNotFound";
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";
@@ -186,6 +186,11 @@ const Document = withEmotionCache(
     );
   },
 );
+
+function useConst<T>(value: T): T {
+  const ref = useRef(value);
+  return ref.current;
+}
 
 export default function App() {
   const loaderData = useLoaderData<typeof loader>();

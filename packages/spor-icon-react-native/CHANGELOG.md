@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.11.0
+
+### Minor Changes
+
+- b772371: Update tickets and QR code icons, add icons for Cargonet
+
 ## 2.10.0
 
 ### Minor Changes

@@ -125,6 +125,8 @@ const getCategoryDisplayName = (category: string) => {
       return "Transportation";
     case "travel":
       return "Travel";
+    case "cargonet":
+      return "CargoNet";
     default:
       return "Other";
   }

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 10.8.0
+
+### Minor Changes
+
+- cd0f5b8: Exports type TranslationObject
+
 ## 10.7.0
 
 ### Minor Changes

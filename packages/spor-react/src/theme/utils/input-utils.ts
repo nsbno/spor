@@ -90,7 +90,7 @@ export const inputBaseStyle = (props: StyleFunctionProps) => ({
         ...baseBorder("hover", props),
       },
     },
-    " + label": {
+    " + label, + div[data-lastpass-icon-root] + label": {
       fontSize: ["mobile.sm", "desktop.sm"],
       top: "2px",
       left: props.paddingLeft || props.pl || 3,
@@ -103,7 +103,7 @@ export const inputBaseStyle = (props: StyleFunctionProps) => ({
     },
     "&:not(:placeholder-shown)": {
       paddingTop: "1rem",
-      "& + label": {
+      "& + label, & + div[data-lastpass-icon-root] + label": {
         transform: "scale(0.825) translateY(-10px)",
       },
     },

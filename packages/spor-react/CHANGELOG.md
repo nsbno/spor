@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 10.8.1
+
+### Patch Changes
+
+- 9031c6e: Fix input label style bug caused by LastPass extension
+
 ## 10.8.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 10.8.2
+
+### Patch Changes
+
+- 96f0dca: Fixed buggy label logic for PhoneNumberInput
+
 ## 10.8.1
 
 ### Patch Changes

@@ -81,8 +81,8 @@ const config = helpers.defineMultiStyleConfig({
       serviceMessageContent: {
         color: "white",
       },
-    }
-  }
+    },
+  },
 });
 
 export default config;

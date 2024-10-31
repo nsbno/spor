@@ -43,7 +43,7 @@ const getIcon = (variant: BaseAlertProps["variant"]) => {
     case "operational":
       return WarningFill24Icon;
     case "service":
-      return ServiceFill24Icon
+      return ServiceFill24Icon;
   }
 };
 

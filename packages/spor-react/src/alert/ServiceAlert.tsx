@@ -33,6 +33,8 @@ type ServiceAlertProps = BaseAlertProps & {
    *
    * Defaults to h3 */
   headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
+  /** The variant of Service Alert. Default: service */
+  variant: string;
 };
 /**
  * A service alert component.
@@ -56,9 +58,8 @@ export const ServiceAlert = ({
   onToggle = () => {},
   ...boxProps
 }: ServiceAlertProps) => {
-  variant = "service";
   const { t } = useTranslation();
-  const styles = useMultiStyleConfig("AlertService");
+  const styles = useMultiStyleConfig("AlertService", { variant });
   return (
     <BaseAlert
       variant={variant}
@@ -101,7 +102,7 @@ export const ServiceAlert = ({
                       WebkitLineClamp: "1",
                       WebkitBoxOrient: "vertical",
                     }}
-                    color="white"
+                    color={variant=="operational"? "black" : "white"} // har ikke noe å si?
                   >
                     {title}
                   </Box>
@@ -114,7 +115,7 @@ export const ServiceAlert = ({
                     </Text>
                   )}
 
-                  <AccordionIcon color="white" />
+                  <AccordionIcon color={variant=="operational"? "black" : "white"} />
                 </Flex>
               </Flex>
             </Stack>

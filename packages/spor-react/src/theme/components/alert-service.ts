@@ -8,7 +8,6 @@ const parts = anatomy("alertService").parts(
   "serviceMessageContent",
 );
 const helpers = createMultiStyleConfigHelpers(parts.keys);
-
 const config = helpers.defineMultiStyleConfig({
   baseStyle: {
     container: {
@@ -21,23 +20,15 @@ const config = helpers.defineMultiStyleConfig({
       borderBottomRadius: "md",
       _hover: {
         outline: "2px solid",
-        outlineColor: "blueGreen",
-      },
-      _active: {
-        backgroundColor: "pine",
-        outlineColor: "pine",
       },
     },
     outerBox: {
       outline: "1px solid",
-      outlineColor: "blueGreen",
-      backgroundColor: "darkTeal",
       borderBottomRadius: "md",
       borderTopRadius: "none",
       width: "100%",
     },
     notificationText: {
-      color: "white",
       fontWeight: "400",
       fontSize: "1rem",
       pr: "0.375rem",
@@ -46,9 +37,52 @@ const config = helpers.defineMultiStyleConfig({
       paddingX: "0.75rem",
       paddingTop: "0.375rem",
       paddingBottom: "0.9375rem",
-      color: "white",
     },
   },
+  variants: {
+    operational: {
+      container: {
+        _hover: {
+          outlineColor: "primrose",
+        },
+        _active: {
+          backgroundColor: "blonde",
+          outlineColor: "primrose",
+        },
+      },
+      outerBox: {
+        outlineColor: "primrose",
+        backgroundColor: "blonde",
+      },
+      notificationText: {
+        color: "black",
+      },
+      serviceMessageContent: {
+        color: "black",
+      },
+    },
+    service: {
+      container: {
+        _hover: {
+          outlineColor: "blueGreen",
+        },
+        _active: {
+          backgroundColor: "pine",
+          outlineColor: "pine",
+        },
+      },
+      outerBox: {
+        outlineColor: "blueGreen",
+        backgroundColor: "darkTeal",
+      },
+      notificationText: {
+        color: "white",
+      },
+      serviceMessageContent: {
+        color: "white",
+      },
+    }
+  }
 });
 
 export default config;

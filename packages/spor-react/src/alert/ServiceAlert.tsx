@@ -34,7 +34,7 @@ type ServiceAlertProps = BaseAlertProps & {
    * Defaults to h3 */
   headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
   /** The variant of Service Alert. Default: service */
-  variant: string;
+  variant?: "service" | "operational";
 };
 /**
  * A service alert component.
@@ -48,7 +48,7 @@ type ServiceAlertProps = BaseAlertProps & {
  * ```
  */
 export const ServiceAlert = ({
-  variant,
+  variant = "service",
   children,
   title,
   notification,

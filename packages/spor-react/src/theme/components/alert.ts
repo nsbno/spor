@@ -51,7 +51,7 @@ const config = helpers.defineMultiStyleConfig({
         backgroundColor: "banana",
       },
     },
-    operational: {
+    "global-deviation": {
       container: {
         backgroundColor: "blonde",
       },

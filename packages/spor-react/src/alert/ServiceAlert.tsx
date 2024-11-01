@@ -34,7 +34,7 @@ type ServiceAlertProps = BaseAlertProps & {
    * Defaults to h3 */
   headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
   /** The variant of Service Alert. Default: service */
-  variant?: "service" | "operational";
+  variant?: "service" | "global-deviation";
 };
 /**
  * A service alert component.
@@ -102,7 +102,7 @@ export const ServiceAlert = ({
                       WebkitLineClamp: "1",
                       WebkitBoxOrient: "vertical",
                     }}
-                    color={variant === "operational" ? "black" : "white"}
+                    color={variant === "global-deviation" ? "black" : "white"}
                   >
                     {title}
                   </Box>
@@ -116,7 +116,7 @@ export const ServiceAlert = ({
                   )}
 
                   <AccordionIcon
-                    color={variant === "operational" ? "black" : "white"}
+                    color={variant === "global-deviation" ? "black" : "white"}
                   />
                 </Flex>
               </Flex>

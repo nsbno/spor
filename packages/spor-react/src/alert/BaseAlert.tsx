@@ -10,7 +10,7 @@ export type BaseAlertProps = BoxProps & {
     | "alt-transport"
     | "error"
     | "service"
-    | "operational";
+    | "global-deviation";
   /** The body content of the alert */
   children: React.ReactNode;
   /** The title of the alert */

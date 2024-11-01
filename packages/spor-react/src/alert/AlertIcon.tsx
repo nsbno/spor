@@ -40,7 +40,7 @@ const getIcon = (variant: BaseAlertProps["variant"]) => {
       return AltTransportOutline24Icon;
     case "error":
       return ErrorOutline24Icon;
-    case "operational":
+    case "global-deviation":
       return WarningFill24Icon;
     case "service":
       return ServiceFill24Icon;
@@ -84,7 +84,7 @@ const texts = createTexts({
     sv: "Servicemeddelande",
     en: "Service message",
   },
-  operational: {
+  "global-deviation": {
     nb: "Dropsmelding",
     nn: "Dropsmelding",
     sv: "Dropsmelding",

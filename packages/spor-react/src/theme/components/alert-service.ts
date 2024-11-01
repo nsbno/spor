@@ -40,7 +40,7 @@ const config = helpers.defineMultiStyleConfig({
     },
   },
   variants: {
-    operational: {
+    "global-deviation": {
       container: {
         _hover: {
           outlineColor: "primrose",

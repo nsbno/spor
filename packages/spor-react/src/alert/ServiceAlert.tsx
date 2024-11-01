@@ -102,7 +102,7 @@ export const ServiceAlert = ({
                       WebkitLineClamp: "1",
                       WebkitBoxOrient: "vertical",
                     }}
-                    color={variant == "operational" ? "black" : "white"}
+                    color={variant === "operational" ? "black" : "white"}
                   >
                     {title}
                   </Box>
@@ -116,7 +116,7 @@ export const ServiceAlert = ({
                   )}
 
                   <AccordionIcon
-                    color={variant == "operational" ? "black" : "white"}
+                    color={variant === "operational" ? "black" : "white"}
                   />
                 </Flex>
               </Flex>

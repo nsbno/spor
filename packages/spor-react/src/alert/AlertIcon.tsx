@@ -85,9 +85,9 @@ const texts = createTexts({
     en: "Service message",
   },
   "global-deviation": {
-    nb: "Dropsmelding",
-    nn: "Dropsmelding",
-    sv: "Dropsmelding",
-    en: "Dropsmelding",
+    nb: "Trafikkmelding",
+    nn: "Trafikkmelding",
+    sv: "Trafikmeddelande",
+    en: "Traffic announcement",
   },
 });

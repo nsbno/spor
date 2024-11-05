@@ -116,9 +116,7 @@ export const ServiceAlert = ({
                     </Text>
                   )}
 
-                  <AccordionIcon
-                    color={isGlobalDeviation}
-                  />
+                  <AccordionIcon color={isGlobalDeviation} />
                 </Flex>
               </Flex>
             </Stack>

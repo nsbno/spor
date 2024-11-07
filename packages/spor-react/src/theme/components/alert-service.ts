@@ -71,7 +71,7 @@ const config = helpers.defineMultiStyleConfig({
           backgroundColor: "pine",
           outlineColor: "pine",
         },
-          color: "white",
+        color: "white",
       },
       outerBox: {
         outlineColor: "blueGreen",

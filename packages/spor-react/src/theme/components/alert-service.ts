@@ -49,16 +49,17 @@ const config = helpers.defineMultiStyleConfig({
           backgroundColor: "blonde",
           outlineColor: "primrose",
         },
+        color: "darkGrey",
       },
       outerBox: {
         outlineColor: "primrose",
         backgroundColor: "blonde",
       },
       notificationText: {
-        color: "black",
+        color: "darkGrey",
       },
       serviceMessageContent: {
-        color: "black",
+        color: "darkGrey",
       },
     },
     service: {
@@ -70,6 +71,7 @@ const config = helpers.defineMultiStyleConfig({
           backgroundColor: "pine",
           outlineColor: "pine",
         },
+          color: "white",
       },
       outerBox: {
         outlineColor: "blueGreen",

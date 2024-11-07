@@ -60,7 +60,6 @@ export const ServiceAlert = ({
 }: ServiceAlertProps) => {
   const { t } = useTranslation();
   const styles = useMultiStyleConfig("AlertService", { variant });
-  let isGlobalDeviation = variant === "global-deviation" ? "black" : "white";
   return (
     <BaseAlert
       variant={variant}
@@ -103,7 +102,6 @@ export const ServiceAlert = ({
                       WebkitLineClamp: "1",
                       WebkitBoxOrient: "vertical",
                     }}
-                    color={isGlobalDeviation}
                   >
                     {title}
                   </Box>
@@ -116,7 +114,7 @@ export const ServiceAlert = ({
                     </Text>
                   )}
 
-                  <AccordionIcon color={isGlobalDeviation} />
+                  <AccordionIcon color={styles} />
                 </Flex>
               </Flex>
             </Stack>
@@ -134,7 +132,7 @@ export const ServiceAlert = ({
                 sx={{
                   p: {
                     padding: "0.8rem 0",
-                    borderBottom: "0.08rem solid rgba(255, 255, 255, 0.4)",
+                    borderBottom: "0.08rem solid",
                   },
                   "p:last-child": {
                     borderBottom: "none",

@@ -1,5 +1,16 @@
 # @vygruppen/spor-react
 
+## 10.9.0
+
+### Minor Changes
+
+- 288d5e4: new variant for ServiceAlert
+
+### Patch Changes
+
+- Updated dependencies [288d5e4]
+  - @vygruppen/spor-icon-react@3.12.0
+
 ## 10.8.2
 
 ### Patch Changes

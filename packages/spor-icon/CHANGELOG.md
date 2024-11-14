@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 3.2.0
+
+### Minor Changes
+
+- 288d5e4: new variant for ServiceAlert
+
 ## 3.1.0
 
 ### Minor Changes

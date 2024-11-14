@@ -114,7 +114,7 @@ export const ServiceAlert = ({
                     </Text>
                   )}
 
-                  <AccordionIcon color={styles} />
+                  <AccordionIcon />
                 </Flex>
               </Flex>
             </Stack>
@@ -133,6 +133,10 @@ export const ServiceAlert = ({
                   p: {
                     padding: "0.8rem 0",
                     borderBottom: "0.08rem solid",
+                    borderColor:
+                      variant === "global-deviation"
+                        ? "blackAlpha.400"
+                        : "whiteAlpha.400",
                   },
                   "p:last-child": {
                     borderBottom: "none",

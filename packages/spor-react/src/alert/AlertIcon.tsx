@@ -5,11 +5,11 @@ import {
   SuccessOutline24Icon,
   WarningOutline24Icon,
   WarningFill24Icon,
+  ServiceFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { BaseAlertProps } from "./BaseAlert";
-import { ServiceFill24Icon } from "@vygruppen/spor-icon-react";
 
 type AlertIconProps = { variant: BaseAlertProps["variant"] };
 /**

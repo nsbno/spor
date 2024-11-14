@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 3.12.0
+
+### Minor Changes
+
+- 6c3e196: new variant for ServiceAlert
+
 ## 3.11.0
 
 ### Minor Changes

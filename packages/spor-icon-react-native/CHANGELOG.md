@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.12.0
+
+### Minor Changes
+
+- 6c3e196: new variant for ServiceAlert
+
 ## 2.11.0
 
 ### Minor Changes

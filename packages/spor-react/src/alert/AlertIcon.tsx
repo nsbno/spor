@@ -9,7 +9,7 @@ import {
 import React from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { BaseAlertProps } from "./BaseAlert";
-import { ServiceFill24Icon } from "@vygruppen/spor-icon-react/tmp";
+import { ServiceFill24Icon } from "@vygruppen/spor-icon-react";
 
 type AlertIconProps = { variant: BaseAlertProps["variant"] };
 /**

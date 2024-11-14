@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 10.9.1
+
+### Patch Changes
+
+- 0299f59: Fix import bug in file for ServiceAlert
+
 ## 10.9.0
 
 ### Minor Changes

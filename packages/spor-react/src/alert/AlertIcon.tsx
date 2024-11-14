@@ -9,6 +9,7 @@ import {
 import React from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { BaseAlertProps } from "./BaseAlert";
+import { ServiceFill24Icon } from "@vygruppen/spor-icon-react/tmp";
 
 type AlertIconProps = { variant: BaseAlertProps["variant"] };
 /**
@@ -39,8 +40,10 @@ const getIcon = (variant: BaseAlertProps["variant"]) => {
       return AltTransportOutline24Icon;
     case "error":
       return ErrorOutline24Icon;
-    case "service":
+    case "global-deviation":
       return WarningFill24Icon;
+    case "service":
+      return ServiceFill24Icon;
   }
 };
 
@@ -80,5 +83,11 @@ const texts = createTexts({
     nn: "Driftsmelding",
     sv: "Servicemeddelande",
     en: "Service message",
+  },
+  "global-deviation": {
+    nb: "Trafikkmelding",
+    nn: "Trafikkmelding",
+    sv: "Trafikmeddelande",
+    en: "Traffic announcement",
   },
 });

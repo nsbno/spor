@@ -33,6 +33,8 @@ type ServiceAlertProps = BaseAlertProps & {
    *
    * Defaults to h3 */
   headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
+  /** The variant of Service Alert. Default: service */
+  variant?: "service" | "global-deviation";
 };
 /**
  * A service alert component.
@@ -46,7 +48,7 @@ type ServiceAlertProps = BaseAlertProps & {
  * ```
  */
 export const ServiceAlert = ({
-  variant,
+  variant = "service",
   children,
   title,
   notification,
@@ -56,9 +58,8 @@ export const ServiceAlert = ({
   onToggle = () => {},
   ...boxProps
 }: ServiceAlertProps) => {
-  variant = "service";
   const { t } = useTranslation();
-  const styles = useMultiStyleConfig("AlertService");
+  const styles = useMultiStyleConfig("AlertService", { variant });
   return (
     <BaseAlert
       variant={variant}
@@ -101,7 +102,6 @@ export const ServiceAlert = ({
                       WebkitLineClamp: "1",
                       WebkitBoxOrient: "vertical",
                     }}
-                    color="white"
                   >
                     {title}
                   </Box>
@@ -114,7 +114,7 @@ export const ServiceAlert = ({
                     </Text>
                   )}
 
-                  <AccordionIcon color="white" />
+                  <AccordionIcon />
                 </Flex>
               </Flex>
             </Stack>
@@ -132,7 +132,11 @@ export const ServiceAlert = ({
                 sx={{
                   p: {
                     padding: "0.8rem 0",
-                    borderBottom: "0.08rem solid rgba(255, 255, 255, 0.4)",
+                    borderBottom: "0.08rem solid",
+                    borderColor:
+                      variant === "global-deviation"
+                        ? "blackAlpha.400"
+                        : "whiteAlpha.400",
                   },
                   "p:last-child": {
                     borderBottom: "none",

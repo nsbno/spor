@@ -89,7 +89,6 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
     rightIcon,
   });
 
-  // We want to explicitly allow to override the fontWeight prop
   if (fontWeight) {
     styles.fontWeight = fontWeight;
   }

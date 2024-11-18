@@ -2,6 +2,8 @@ import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import type { StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { anatomy, mode } from "@chakra-ui/theme-tools";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { surface } from "../utils/surface-utils";
+import { baseText } from "../utils/base-utils";
 
 const parts = anatomy("travel-tag").parts(
   "container",
@@ -27,7 +29,7 @@ const config = helpers.defineMultiStyleConfig({
       transitionDuration: "fast",
       transitionProperty: "common",
       _disabled: {
-        backgroundColor: "silver",
+        ...surface("disabled", props),
       },
       "button&, a&": {
         boxShadow: "sm",
@@ -44,8 +46,7 @@ const config = helpers.defineMultiStyleConfig({
     iconContainer: {
       padding: 0.5,
       "[aria-disabled=true] &": {
-        backgroundColor: "osloGrey",
-        color: "white",
+        ...surface("disabled", props),
       },
     },
     textContainer: {
@@ -53,7 +54,7 @@ const config = helpers.defineMultiStyleConfig({
       paddingRight: 0.5,
       whiteSpace: "nowrap",
       "[aria-disabled=true] &": {
-        color: "dimGrey",
+        ...baseText("disabled", props),
       },
     },
     title: {

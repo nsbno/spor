@@ -19,10 +19,23 @@ import type { TagProps } from "./types";
 
 export type TravelTagProps = TagProps &
   BoxProps & {
+    /**
+     * Defines the level of importance
+     * Default to none
+     */
     deviationLevel?: "critical" | "major" | "minor" | "info" | "none";
     isDisabled?: boolean;
+    /**
+     * Needs to be defined if variant is custom
+     */
     foregroundColor?: string;
+     /**
+     * Needs to be defined if variant is custom
+     */
     backgroundColor?: string;
+    /**
+     * Define a custom icon variant
+     */
     customIconVariant?: string;
   };
 

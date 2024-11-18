@@ -46,7 +46,7 @@ const config = helpers.defineMultiStyleConfig({
     iconContainer: {
       padding: 0.5,
       "[aria-disabled=true] &": {
-       ...surface("disabled", props),
+        ...surface("disabled", props),
       },
     },
     textContainer: {
@@ -54,7 +54,7 @@ const config = helpers.defineMultiStyleConfig({
       paddingRight: 0.5,
       whiteSpace: "nowrap",
       "[aria-disabled=true] &": {
-       ...baseText("disabled", props),
+        ...baseText("disabled", props),
       },
     },
     title: {

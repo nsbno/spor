@@ -13,9 +13,9 @@ const config = helpers.defineMultiStyleConfig({
     },
     icon: {
       color: "white",
-       "[aria-disabled=true] &": {
+      "[aria-disabled=true] &": {
         color: mode("icon.disabled.light", "icon.disabled.dark"),
-       }
+      },
     },
   },
   variants: {

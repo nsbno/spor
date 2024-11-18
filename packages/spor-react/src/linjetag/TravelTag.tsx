@@ -29,7 +29,7 @@ export type TravelTagProps = TagProps &
      * Needs to be defined if variant is custom
      */
     foregroundColor?: string;
-     /**
+    /**
      * Needs to be defined if variant is custom
      */
     backgroundColor?: string;

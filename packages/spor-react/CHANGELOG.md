@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 10.9.2
+
+### Patch Changes
+
+- 96e8a8a: TravelTag: updated disabled variant colors
+
 ## 10.9.1
 
 ### Patch Changes

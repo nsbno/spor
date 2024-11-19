@@ -67,7 +67,6 @@ const config = helpers.defineMultiStyleConfig({
         _hover: {
           backgroundColor: "teal.600",
           outlineColor: "teal.600",
-
         },
         _focus: {
           outlineColor: "green.500",

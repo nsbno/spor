@@ -1,5 +1,6 @@
 import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { State, Subset } from "./types";
+import { fontWeights } from "../foundations";
 
 type GhostBackgroundState = Subset<
   State,
@@ -30,8 +31,8 @@ export function ghostBackground(
     case "selected": {
       return {
         backgroundColor: mode(
-          "ghost.surface.selected.light",
-          "ghost.surface.selected.dark",
+          "ghost.surface.hover.light",
+          "ghost.surface.hover.dark",
         )(props),
       };
     }
@@ -49,6 +50,7 @@ export function ghostText(state: GhostTextState, props: StyleFunctionProps) {
     case "selected":
       return {
         color: mode("ghost.text.light", "ghost.text.dark")(props),
+        fontWeights: fontWeights.bold,
       };
     default:
       return {

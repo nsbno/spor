@@ -22,8 +22,8 @@ const config = helpers.defineMultiStyleConfig({
     },
     card: {
       borderRadius: "sm",
-      boxShadow: "md",
-      padding: 3,
+      boxShadow: "xs",
+      padding: 2,
       ...baseText("default", props),
       backgroundColor: mode(
         "white",
@@ -88,7 +88,7 @@ const config = helpers.defineMultiStyleConfig({
         paddingY: 1,
         minHeight: "1.25rem",
         fontSize: "xs",
-        borderRadius: "sm",
+        borderRadius: "lg",
       },
     },
     md: {
@@ -96,8 +96,8 @@ const config = helpers.defineMultiStyleConfig({
         paddingX: 2,
         paddingY: 1.5,
         minHeight: "2.625rem",
-        fontSize: "sm",
-        borderRadius: "sm",
+        fontSize: "xs",
+        borderRadius: "lg",
       },
     },
     lg: {
@@ -106,7 +106,7 @@ const config = helpers.defineMultiStyleConfig({
         paddingY: 2,
         minHeight: "3.375rem",
         fontSize: "sm",
-        borderRadius: "sm",
+        borderRadius: "lg",
       },
     },
   },

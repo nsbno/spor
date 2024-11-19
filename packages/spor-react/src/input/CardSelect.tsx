@@ -122,7 +122,6 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
         <chakra.button
           type="button"
           ref={triggerRef}
-          fontWeight="bold"
           sx={styles.trigger}
           aria-label={label}
           {...buttonProps}
@@ -148,14 +147,17 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
             offset={size === "sm" ? 6 : 12}
             crossOffset={crossOffset}
             placement={placement}
+            containerPadding={0}
           >
             <StaticCard
               colorScheme="white"
-              size="lg"
+              size="md"
+              fontSize={"xs"}
               border={"sm"}
-              borderColor={"grey"}
+              borderColor={"silver"}
               sx={styles.card}
               {...overlayProps}
+              maxWidth={(triggerRef.current?.clientWidth ?? 1) * 2}
             >
               <Dialog aria-label={label}>{children}</Dialog>
             </StaticCard>

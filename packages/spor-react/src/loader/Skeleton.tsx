@@ -12,5 +12,11 @@ export type SkeletonProps = BoxProps & {
  * Skeleton renders a loading animation for a given box. It works great as a placeholder to avoid layout shifts.
  */
 export const Skeleton = forwardRef<SkeletonProps, "div">((props, ref) => (
-  <ChakraSkeleton {...props} ref={ref} />
+  <ChakraSkeleton
+    {...props}
+    ref={ref}
+    aria-busy="true"
+    aria-hidden="true"
+    role="alert"
+  />
 ));

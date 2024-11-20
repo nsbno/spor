@@ -33,3 +33,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Trigger CircleCI pipeline
+        id: github-action-trigger
+        uses: circleci/trigger_circleci_pipeline@v1.2.0
+        env:
+          CCI_TOKEN: ${{ secrets.CCI_TOKEN }}

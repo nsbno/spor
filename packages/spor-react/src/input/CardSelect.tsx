@@ -132,7 +132,7 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
             {icon}
             <Box
               as="span"
-              paddingRight={state.isOpen ? 0 : 1}
+              paddingRight={state.isOpen && variant === "ghost" ? 0 : "5px"}
               display={props["aria-label"] ? "none" : "inline"}
             >
               {label}

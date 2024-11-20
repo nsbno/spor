@@ -33,11 +33,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Trigger CircleCI pipeline
-        id: github-action-trigger
-        uses: CircleCI-Public/trigger-circleci-pipeline-action@v1.0.5
-        with:
-          target-slug: "github/nsbno/spor"
-        env:
-          CCI_TOKEN: ${{ secrets.CCI_TOKEN }}

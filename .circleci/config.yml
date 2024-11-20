@@ -80,8 +80,6 @@ jobs:
 workflows:
   version: 2
   build:
-    when:
-      equal: [ "github-action-trigger", << pipeline.parameters.GHA_Action >> ]
     jobs:
       - terraform/validate:
           tag: << pipeline.parameters.terraform_version >>

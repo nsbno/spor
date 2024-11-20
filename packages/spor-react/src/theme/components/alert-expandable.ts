@@ -27,10 +27,14 @@ const config = helpers.defineMultiStyleConfig({
       },
       container: {
         _hover: {
+          backgroundColor: "cloudy",
           outlineColor: "sky",
         },
         _active: {
           backgroundColor: "icyBlue",
+        },
+        _focus: {
+          outlineColor: "greenHaze",
         },
       },
     },
@@ -40,10 +44,14 @@ const config = helpers.defineMultiStyleConfig({
       },
       container: {
         _hover: {
+          backgroundColor: "coralGreen",
           outlineColor: "blueGreen",
         },
         _active: {
           backgroundColor: "mint",
+        },
+        _focus: {
+          outlineColor: "greenHaze",
         },
       },
     },
@@ -53,7 +61,11 @@ const config = helpers.defineMultiStyleConfig({
       },
       container: {
         _hover: {
-          outlineColor: "sunshine",
+          backgroundColor: "primrose",
+          outlineColor: "banana",
+        },
+        _focus: {
+          outlineColor: "greenHaze",
         },
         _active: {
           backgroundColor: "cornSilk",
@@ -66,7 +78,11 @@ const config = helpers.defineMultiStyleConfig({
       },
       container: {
         _hover: {
+          backgroundColor: "burntYellow",
           outlineColor: "golden",
+        },
+        _focus: {
+          outlineColor: "greenHaze",
         },
         _active: {
           backgroundColor: "sunshine",
@@ -79,10 +95,14 @@ const config = helpers.defineMultiStyleConfig({
       },
       container: {
         _hover: {
+          backgroundColor: "salmon",
           outlineColor: "apricot",
         },
         _active: {
           backgroundColor: "pink",
+        },
+        _focus: {
+          outlineColor: "greenHaze",
         },
       },
     },

@@ -6,6 +6,9 @@ orbs:
   aws-cli: circleci/aws-cli@5.0.0
 
 parameters:
+  GHA_Action:
+    type: string
+    default: ""
   ecr_repo_name:
     type: string
     default: "spor"
@@ -77,6 +80,8 @@ jobs:
 workflows:
   version: 2
   build:
+    when:
+      equal: [ "github-action-trigger", << pipeline.parameters.GHA_Action >> ]
     jobs:
       - terraform/validate:
           tag: << pipeline.parameters.terraform_version >>

@@ -4,6 +4,7 @@ import {
   ButtonProps as ChakraButtonProps,
   Flex,
   forwardRef,
+  SpaceProps,
   useButtonGroup,
   useStyleConfig,
 } from "@chakra-ui/react";
@@ -11,9 +12,12 @@ import React from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
 
-export type ButtonProps = Exclude<
-  ChakraButtonProps,
-  "colorScheme" | "loadingText" | "size" | "variant"
+export type ButtonProps = Omit<
+  Exclude<
+    ChakraButtonProps,
+    "colorScheme" | "loadingText" | "size" | "variant"
+  >,
+  keyof SpaceProps
 > & {
   /**
    * The size of the button.

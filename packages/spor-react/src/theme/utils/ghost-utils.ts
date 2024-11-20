@@ -50,7 +50,6 @@ export function ghostText(state: GhostTextState, props: StyleFunctionProps) {
     case "selected":
       return {
         color: mode("ghost.text.light", "ghost.text.dark")(props),
-        fontWeights: fontWeights.bold,
       };
     default:
       return {

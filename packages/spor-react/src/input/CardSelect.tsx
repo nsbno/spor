@@ -130,7 +130,11 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
         >
           <Flex gap={1.5} alignItems="center">
             {icon}
-            <Box as="span" display={props["aria-label"] ? "none" : "inline"}>
+            <Box
+              as="span"
+              paddingRight={state.isOpen ? 0 : 1}
+              display={props["aria-label"] ? "none" : "inline"}
+            >
               {label}
             </Box>
             {withChevron ? (

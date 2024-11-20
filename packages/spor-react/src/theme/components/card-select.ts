@@ -56,7 +56,8 @@ const config = helpers.defineMultiStyleConfig({
           ...ghostBackground("active", props),
         },
         _expanded: {
-          ...ghostBackground("selected", props),
+          ...ghostBackground("active", props),
+          fontWeight: "bold",
         },
       },
     }),

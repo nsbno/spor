@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": minor
 ---
 
-Added support for width-related props
+SearchInput: Added support for width-related props

@@ -1,4 +1,3 @@
-
 import { Global } from "@emotion/react";
 import deepmerge from "deepmerge";
 import React from "react";
@@ -6,6 +5,7 @@ import { Language, LanguageProvider } from "..";
 import { Brand, brandTheme, fontFaces } from "../";
 import { system as defaultSporTheme } from "../theme/theme";
 import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
+import { ColorModeProvider } from "../components/ui/color-mode";
 
 type SporProviderProps = ChakraProviderProps & {
   language?: Language;
@@ -64,8 +64,10 @@ export const SporProvider = ({
   return (
     <LanguageProvider language={language}>
       <ChakraProvider value={extendedTheme}>
-        <Global styles={fontFaces} />
-        {children}
+        <ColorModeProvider>
+          <Global styles={fontFaces} />
+          {children}
+        </ColorModeProvider>
       </ChakraProvider>
     </LanguageProvider>
   );

@@ -2,39 +2,24 @@ import {
   Box,
   Center,
   ButtonProps as ChakraButtonProps,
+  Button as ChakraButton,
   Flex,
-  forwardRef,
-  useButtonGroup,
-  useStyleConfig,
+  AbsoluteCenter,
+  Spinner,
+  Span,
+  useRecipe,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { forwardRef } from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
+import { buttonRecipe } from "./button.recipe";
 
-export type ButtonProps = Exclude<
-  ChakraButtonProps,
-  "colorScheme" | "loadingText" | "size" | "variant"
-> & {
-  /**
-   * The size of the button.
-   *
-   * Defaults to "md"
-   * */
-  size?: "xs" | "sm" | "md" | "lg";
-  /** The different variants of a button
-   *
-   * Defaults to "primary".
-   *
-   * "control" is deprecated, and will be removed in a future version
-   */
-  variant?:
-    | "control"
-    | "primary"
-    | "secondary"
-    | "tertiary"
-    | "ghost"
-    | "floating";
+type ButtonLoadingProps = {
+  loading?: boolean;
+  loadingText?: React.ReactNode;
 };
+
+export type ButtonProps = ChakraButtonProps & ButtonLoadingProps;
 /**
  * Buttons are used to trigger actions.
  *
@@ -62,7 +47,40 @@ export type ButtonProps = Exclude<
  *
  * @see https://spor.vy.no/components/button
  */
-export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
+
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button(props, ref) {
+    const { loading, disabled, loadingText, variant, size, children, ...rest } =
+      props;
+    const recipe = useRecipe({ recipe: buttonRecipe });
+    const styles = recipe({ variant, size });
+    return (
+      <ChakraButton
+        disabled={loading || disabled}
+        css={styles}
+        ref={ref}
+        {...rest}
+      >
+        {loading && !loadingText ? (
+          <>
+            <AbsoluteCenter display="inline-flex">
+              <Spinner size="inherit" color="inherit" />
+            </AbsoluteCenter>
+            <Span opacity={0}>{children}</Span>
+          </>
+        ) : loading && loadingText ? (
+          <>
+            <Spinner size="inherit" color="inherit" />
+            {loadingText}
+          </>
+        ) : (
+          children
+        )}
+      </ChakraButton>
+    );
+  },
+);
+/* export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
   const {
     as = "button",
     type = "button",
@@ -139,7 +157,7 @@ export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
       </Flex>
     </Box>
   );
-});
+}); */
 
 function getLoaderWidth(size: Required<ButtonProps["size"]>) {
   switch (size) {
@@ -157,7 +175,7 @@ function getLoaderWidth(size: Required<ButtonProps["size"]>) {
 
 function useCorrectAriaLabel(props: ButtonProps): string {
   const { t } = useTranslation();
-  if (props.isLoading) {
+  if (props.loading) {
     return String(props.loadingText) ?? t(texts.loadingText);
   }
   return props["aria-label"] as string;

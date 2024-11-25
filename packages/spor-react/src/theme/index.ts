@@ -1,7 +1,8 @@
-import { theme as defaultTheme } from "@chakra-ui/theme";
 import tokens from "@vygruppen/spor-design-tokens";
 import * as components from "./components";
 import * as foundations from "./foundations";
+import { defaultSystem } from '@chakra-ui/react';
+
 
 export enum Brand {
   VyDigital = "VyDigital",
@@ -10,10 +11,10 @@ export enum Brand {
 }
 
 export const theme = {
-  ...defaultTheme,
+  ...defaultSystem,
   ...foundations,
   components: {
-    ...defaultTheme.components,
+    ...defaultSystem,
     ...components,
   },
 };

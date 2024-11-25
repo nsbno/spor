@@ -1,9 +1,7 @@
-import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
-
-export const focusVisibleStyles = (props: StyleFunctionProps) => ({
+export const focusVisibleStyles = () => ({
   _focusVisible: {
     outlineWidth: "2px",
-    outlineColor: mode("outline.focus.light", "outline.focus.dark")(props),
+    outlineColor: "outline.focus",
     outlineStyle: "solid",
     outlineOffset: "1px",
   },

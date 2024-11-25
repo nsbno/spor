@@ -1,12 +1,6 @@
-import {
-  Box,
-  BoxProps,
-  ComponentWithAs,
-  forwardRef,
-  useMultiStyleConfig,
-} from "@chakra-ui/react";
+import { Box, BoxProps } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import React, { useEffect } from "react";
+import React, { forwardRef, useEffect } from "react";
 
 const MotionBox = motion(Box);
 

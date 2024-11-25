@@ -1,19 +1,17 @@
-import { mode } from "@chakra-ui/theme-tools";
-
 type Bg = "default" | "secondary" | "tertiary";
-export const bg = (bg: Bg, props: any) => {
+export const bg = (bg: Bg) => {
   switch (bg) {
     case "default":
       return {
-        backgroundColor: mode("bg.default.light", "bg.default.dark")(props),
+        backgroundColor: "bg.default",
       };
     case "secondary":
       return {
-        backgroundColor: mode("bg.secondary.light", "bg.secondary.dark")(props),
+        backgroundColor: "bg.secondary",
       };
     case "tertiary":
       return {
-        backgroundColor: mode("bg.tertiary.light", "bg.tertiary.dark")(props),
+        backgroundColor: "bg.tertiary",
       };
   }
 };

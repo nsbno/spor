@@ -1,4 +1,3 @@
-import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { brandBackground } from "./brand-utils";
 import { focusVisibleStyles } from "./focus-utils";
 import { surface } from "./surface-utils";
@@ -8,23 +7,17 @@ type BaseBackgroundState = Subset<
   State,
   "default" | "active" | "selected" | "hover" | "disabled"
 >;
-export function baseBackground(
-  state: BaseBackgroundState,
-  props: StyleFunctionProps,
-) {
+export function baseBackground(state: BaseBackgroundState) {
   switch (state) {
     case "active":
       return {
-        backgroundColor: mode(
-          "base.surface.active.light",
-          "base.surface.active.dark",
-        )(props),
+        backgroundColor: "base.surface.active",
       };
     case "selected":
-      return brandBackground("default", props);
+      return brandBackground("default");
 
     case "disabled":
-      return surface("disabled", props);
+      return surface("disabled");
     case "hover":
     default:
       return { backgroundColor: "transparent" };
@@ -36,69 +29,57 @@ type BorderState = Subset<
   "hover" | "focus" | "active" | "disabled" | "selected" | "invalid" | "default"
 >;
 
-export function baseBorder(state: BorderState, props: StyleFunctionProps) {
+export function baseBorder(state: BorderState) {
   switch (state) {
     case "hover":
       return {
         outline: "2px solid",
-        outlineColor: mode(
-          "base.outline.hover.light",
-          "base.outline.hover.dark",
-        )(props),
+        outlineColor: "base.outline.hover",
       };
     case "focus": {
-      return focusVisibleStyles(props)._focusVisible;
+      return focusVisibleStyles()._focusVisible;
     }
     case "disabled": {
       return {
         outline: "1px solid",
-        outlineColor: mode(
-          "outline.disabled.light",
-          "outline.disabled.dark",
-        )(props),
+        outlineColor: "outline.disabled",
       };
     }
     case "active": {
       return {
         outline: "1px solid",
-        outlineColor: mode(
-          "base.outline.default.light",
-          "base.outline.default.dark",
-        )(props),
+        outlineColor: "base.outline.default",
       };
     }
     case "invalid": {
       return {
         outline: "2px solid",
-        outlineColor: mode("outline.error.light", "outline.error.dark")(props),
+        outlineColor: "outline.error",
       };
     }
     case "default":
     default:
       return {
         outline: "1px solid",
-        outlineColor: mode(
-          "base.outline.default.light",
-          "base.outline.default.dark",
-        )(props),
+        outlineColor: "base.outline.default",
       };
   }
 }
 
 type BaseTextState = Subset<State, "default" | "selected" | "disabled">;
-export function baseText(state: BaseTextState, props: StyleFunctionProps) {
+export function baseText(state: BaseTextState) {
   switch (state) {
     case "selected":
       return {
-        color: mode("brand.text.light", "brand.text.dark")(props),
+        color: "brand.text",
       };
     case "disabled":
       return {
-        color: mode("text.disabled.light", "text.disabled.dark")(props),
+        color: "text.disabled",
       };
     default:
       return {
-        color: mode("base.text.light", "base.text.dark")(props),
+        color: "base.text",
       };
   }
 }

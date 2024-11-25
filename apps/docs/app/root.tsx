@@ -1,5 +1,4 @@
 import "./styles/style-overrides.css";
-import { cookieStorageManagerSSR } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
 import {
   ActionFunctionArgs,
@@ -128,14 +127,10 @@ type DocumentProps = {
   children: ReactNode;
   title?: string;
   brand?: Brand;
-  colorModeManager?: ReturnType<typeof cookieStorageManagerSSR>;
 };
 
 const Document = withEmotionCache(
-  (
-    { children, brand, title, colorModeManager }: DocumentProps,
-    emotionCache,
-  ) => {
+  ({ children, brand, title }: DocumentProps, emotionCache) => {
     const serverStyleData = useContext(ServerStyleContext);
     const clientStyleData = useContext(ClientStyleContext);
 
@@ -171,11 +166,7 @@ const Document = withEmotionCache(
           ))}
         </head>
         <body>
-          <SporProvider
-            language={Language.English}
-            colorModeManager={colorModeManager}
-            brand={brand}
-          >
+          <SporProvider language={Language.English} brand={brand}>
             <SkipToContent />
             {children}
           </SporProvider>
@@ -195,14 +186,8 @@ function useConst<T>(value: T): T {
 export default function App() {
   const loaderData = useLoaderData<typeof loader>();
 
-  const colorModeManager = useConst(
-    cookieStorageManagerSSR(loaderData?.cookies),
-  );
   return (
-    <Document
-      colorModeManager={colorModeManager}
-      brand={loaderData.brand as Brand}
-    >
+    <Document brand={loaderData.brand as Brand}>
       <RootLayout>
         <Outlet />
       </RootLayout>

@@ -1,4 +1,3 @@
-import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { State, Subset } from "./types";
 
 type GhostBackgroundState = Subset<
@@ -7,32 +6,20 @@ type GhostBackgroundState = Subset<
 >;
 
 /** 👻👻👻👻👻👻👻👻👻👻👻👻👻👻 */
-export function ghostBackground(
-  state: GhostBackgroundState,
-  props: StyleFunctionProps,
-) {
+export function ghostBackground(state: GhostBackgroundState) {
   switch (state) {
     case "hover": {
       return {
-        backgroundColor: mode(
-          "ghost.surface.hover.light",
-          "ghost.surface.hover.dark",
-        )(props),
+        backgroundColor: "ghost.surface.hover",
       };
     }
     case "active":
       return {
-        backgroundColor: mode(
-          "ghost.surface.active.light",
-          "ghost.surface.active.dark",
-        )(props),
+        backgroundColor: "ghost.surface.active",
       };
     case "selected": {
       return {
-        backgroundColor: mode(
-          "ghost.surface.selected.light",
-          "ghost.surface.selected.dark",
-        )(props),
+        backgroundColor: "ghost.surface.selected",
       };
     }
     case "default":
@@ -44,15 +31,15 @@ export function ghostBackground(
 
 type GhostTextState = Subset<State, "default" | "selected">;
 
-export function ghostText(state: GhostTextState, props: StyleFunctionProps) {
+export function ghostText(state: GhostTextState) {
   switch (state) {
     case "selected":
       return {
-        color: mode("ghost.text.light", "ghost.text.dark")(props),
+        color: "ghost.text",
       };
     default:
       return {
-        color: mode("ghost.text.light", "ghost.text.dark")(props),
+        color: "ghost.text",
       };
   }
 }

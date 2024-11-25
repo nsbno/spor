@@ -1,42 +1,29 @@
-import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { State, Subset } from "./types";
 
 type BrandBackgroundState = Subset<State, "default" | "hover" | "active">;
 
-export function brandBackground(
-  state: BrandBackgroundState,
-  props: StyleFunctionProps,
-) {
+export function brandBackground(state: BrandBackgroundState) {
   switch (state) {
     case "active":
       return {
-        backgroundColor: mode(
-          "brand.surface.active.light",
-          "brand.surface.active.dark",
-        )(props),
+        backgroundColor: "brand.surface.active",
       };
     case "hover":
       return {
-        backgroundColor: mode(
-          "brand.surface.hover.light",
-          "brand.surface.hover.dark",
-        )(props),
+        backgroundColor: "brand.surface.hover",
       };
     case "default":
     default:
       return {
-        backgroundColor: mode(
-          "brand.surface.default.light",
-          "brand.surface.default.dark",
-        )(props),
+        backgroundColor: "brand.surface.default",
       };
   }
 }
 
 type BrandTextState = Subset<State, "hover" | "active" | "default">;
 
-export function brandText(state: BrandTextState, props: StyleFunctionProps) {
+export function brandText(state: BrandTextState) {
   return {
-    color: mode("brand.text.light", "brand.text.dark")(props),
+    color: "brand.text",
   };
 }

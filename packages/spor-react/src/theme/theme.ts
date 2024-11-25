@@ -1,13 +1,10 @@
-import { createSystem, defaultConfig } from "@chakra-ui/react";
-import { theme as defaultTheme } from "@chakra-ui/theme";
-import * as components from "./components";
+import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
 import * as foundations from "./foundations";
 
-export const system = createSystem(defaultConfig, {
-  ...defaultTheme,
-  ...foundations,
-  components: {
-    ...defaultTheme.components,
-    ...components,
+export const config = defineConfig({
+  theme: {
+    ...foundations,
   },
-})
+});
+
+export const system = createSystem(config);

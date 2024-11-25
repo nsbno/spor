@@ -1,5 +1,25 @@
 # @vygruppen/spor-react
 
+## 11.0.0
+
+### Major Changes
+
+- 137bc96: The Button component has been updated to remove SpaceProps from its ButtonProps interface. This change eliminates direct support for spacing-related properties (e.g., margin, padding).
+- 70b1a86: Theme container tokens: Update values to mirror breakpoint values
+
+  You will need to update your implementation if you have static values related to the container sizes.
+
+### Minor Changes
+
+- 47dc850: Update styling for dashed divider
+- 7c1ab44: CardSelect: adjust css values and component logic to adapt to new design
+- 717158c: SearchInput: Added support for width-related props
+
+### Patch Changes
+
+- e9b34da: ExpandableAlert: made some updates in the styling for different states
+- f87a8f7: Skeletons: add aria attributes and role
+
 ## 10.9.2
 
 ### Patch Changes

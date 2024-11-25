@@ -33,8 +33,14 @@ export const SiteSettings = ({ showLabel }: SiteSettingsProps) => {
         withChevron={false}
         fontWeight="bold"
         {...labelProps}
+        position={"relative"}
       >
-        <Flex gap={4} flexDirection="column" maxWidth="30ch">
+        <Flex
+          gap={4}
+          flexDirection="column"
+          maxWidth="30ch"
+          width={["100%", "30ch"]}
+        >
           <Box>
             <Heading as="h2" variant="md">
               Site settings

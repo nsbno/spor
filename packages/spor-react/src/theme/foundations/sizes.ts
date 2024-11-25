@@ -1,3 +1,4 @@
+import tokens from "@vygruppen/spor-design-tokens";
 import { spacing } from "./spacing";
 
 const largeSizes = {
@@ -21,10 +22,11 @@ const largeSizes = {
 };
 
 const container = {
-  sm: "640px",
-  md: "768px",
-  lg: "1024px",
-  xl: "1280px",
+  base: "0px",
+  sm: tokens.size.breakpoint.sm,
+  md: tokens.size.breakpoint.md,
+  lg: tokens.size.breakpoint.lg,
+  xl: tokens.size.breakpoint.xl,
 };
 
 export const sizes = {

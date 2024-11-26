@@ -6,7 +6,6 @@ import {
   DrawerContent as ChakraDrawerContent,
   DrawerContentProps as ChakraDrawerContentProps,
   DrawerProps as ChakraDrawerProps,
-  forwardRef,
   useModalContext,
 } from "@chakra-ui/react";
 import React from "react";

@@ -1,9 +1,9 @@
 import { defineRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { baseText } from "../utils/base-utils";
 import { surface } from "../utils/surface-utils";
+import { baseText } from "../utils/base-utils";
 
-export default defineRecipe({
+export const buttonRecipe = defineRecipe({
   base: {
     border: 0,
     borderRadius: "xl",

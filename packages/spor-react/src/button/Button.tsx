@@ -4,9 +4,6 @@ import {
   ButtonProps as ChakraButtonProps,
   Button as ChakraButton,
   Flex,
-  AbsoluteCenter,
-  Spinner,
-  Span,
   useRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
@@ -14,12 +11,14 @@ import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
 import { buttonRecipe } from "./button.recipe";
 
-type ButtonLoadingProps = {
+export type ButtonProps = Exclude<ChakraButtonProps, "size" | "variant"> & {
   loading?: boolean;
   loadingText?: React.ReactNode;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  variant: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
+  size: "lg" | "md" | "sm" | "xs";
 };
-
-export type ButtonProps = ChakraButtonProps & ButtonLoadingProps;
 /**
  * Buttons are used to trigger actions.
  *
@@ -50,114 +49,67 @@ export type ButtonProps = ChakraButtonProps & ButtonLoadingProps;
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(props, ref) {
-    const { loading, disabled, loadingText, variant, size, children, ...rest } =
-      props;
+    const {
+      loading,
+      disabled,
+      loadingText,
+      variant = "primary",
+      size = "md",
+      leftIcon,
+      rightIcon,
+      type = "button",
+      style,
+      children,
+      ...rest
+    } = props;
+    const ariaLabel = useCorrectAriaLabel(props);
     const recipe = useRecipe({ recipe: buttonRecipe });
     const styles = recipe({ variant, size });
     return (
       <ChakraButton
-        disabled={loading || disabled}
-        css={styles}
-        ref={ref}
         {...rest}
+        type={type}
+        ref={ref}
+        aria-label={ariaLabel}
+        aria-busy={loading}
+        disabled={disabled || loading}
+        position="relative"
+        fontFamily={"Vy Sans"}
       >
-        {loading && !loadingText ? (
-          <>
-            <AbsoluteCenter display="inline-flex">
-              <Spinner size="inherit" color="inherit" />
-            </AbsoluteCenter>
-            <Span opacity={0}>{children}</Span>
-          </>
-        ) : loading && loadingText ? (
-          <>
-            <Spinner size="inherit" color="inherit" />
-            {loadingText}
-          </>
-        ) : (
-          children
+        {loading && (
+          <Center position="absolute" right={0} left={0} top={1} bottom={0}>
+            <ColorInlineLoader
+              maxWidth={getLoaderWidth(size)}
+              width="80%"
+              marginX={2}
+              marginY={2}
+            />
+          </Center>
         )}
+        <Flex
+          gap={1}
+          flex={1}
+          alignItems="center"
+          justifyContent={rightIcon ? "space-between" : "center"}
+          visibility={loading ? "hidden" : "visible"}
+          aria-hidden={loading}
+        >
+          <Flex gap={1} alignItems="center">
+            {leftIcon}
+            <Box
+              visibility={loading ? "hidden" : "visible"}
+              whiteSpace="normal"
+              textAlign="center"
+            >
+              {children}
+            </Box>
+          </Flex>
+          {rightIcon}
+        </Flex>
       </ChakraButton>
     );
   },
 );
-/* export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
-  const {
-    as = "button",
-    type = "button",
-    fontWeight,
-    size,
-    children,
-    isLoading,
-    isDisabled,
-    leftIcon,
-    rightIcon,
-    sx,
-    ...rest
-  } = props;
-  const ariaLabel = useCorrectAriaLabel(props);
-  const buttonGroup = useButtonGroup();
-  const finalSize = (size ?? buttonGroup?.size ?? "md") as Required<
-    ButtonProps["size"]
-  >;
-  const styles = useStyleConfig("Button", {
-    ...buttonGroup,
-    ...rest,
-    size: finalSize,
-    leftIcon,
-    rightIcon,
-  });
-
-  // We want to explicitly allow to override the fontWeight prop
-  if (fontWeight) {
-    styles.fontWeight = fontWeight;
-  }
-
-  return (
-    <Box
-      {...rest}
-      as={as}
-      type={type}
-      sx={{ ...styles, ...sx }}
-      ref={ref}
-      aria-label={ariaLabel}
-      aria-busy={isLoading}
-      disabled={isDisabled || isLoading}
-      position="relative"
-      fontFamily={"Vy Sans"}
-    >
-      {isLoading && (
-        <Center position="absolute" right={0} left={0} top={1} bottom={0}>
-          <ColorInlineLoader
-            maxWidth={getLoaderWidth(finalSize)}
-            width="80%"
-            marginX={2}
-            marginY={2}
-          />
-        </Center>
-      )}
-      <Flex
-        gap={1}
-        flex={1}
-        alignItems="center"
-        justifyContent={rightIcon ? "space-between" : "center"}
-        visibility={isLoading ? "hidden" : "visible"}
-        aria-hidden={isLoading}
-      >
-        <Flex gap={1} alignItems="center">
-          {leftIcon}
-          <Box
-            visibility={isLoading ? "hidden" : "visible"}
-            whiteSpace="normal"
-            textAlign="center"
-          >
-            {children}
-          </Box>
-        </Flex>
-        {rightIcon}
-      </Flex>
-    </Box>
-  );
-}); */
 
 function getLoaderWidth(size: Required<ButtonProps["size"]>) {
   switch (size) {

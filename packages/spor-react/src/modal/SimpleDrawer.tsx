@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import {
   Drawer,
   DrawerBody,
@@ -7,20 +7,25 @@ import {
   DrawerHeader,
   DrawerOverlay,
 } from "./Drawer";
+import {
+  type RecipeVariantProps,
+  Drawer as ChakraDrawer,
+} from "@chakra-ui/react";
+import { drawerRecipe } from "../theme/components/drawer";
+
+type DrawerVariantProps = RecipeVariantProps<typeof drawerRecipe>;
 
 export type DrawerBodyProps = {
   id?: string;
 };
 
-export type SimpleDrawerProps = {
-  children: React.ReactNode;
-  title?: React.ReactNode;
-  placement: "top" | "right" | "bottom" | "left";
-  isOpen: boolean;
-  onClose: () => void;
-  /** Props for drawer body */
-  body?: DrawerBodyProps;
-};
+export type SimpleDrawerProps = ChakraDrawer.ContentProps &
+  DrawerVariantProps & {
+    children: React.ReactNode;
+    title?: React.ReactNode;
+    /** Props for drawer body */
+    body?: DrawerBodyProps;
+  };
 /** A very basic drawer component that's easy to use
  *
  * ```tsx
@@ -31,21 +36,18 @@ export type SimpleDrawerProps = {
  *
  * For more advanced use cases, see the [Drawer](./Drawer.tsx) component.
  */
-export const SimpleDrawer = ({
-  placement,
-  children,
-  title,
-  body,
-  ...props
-}: SimpleDrawerProps) => {
-  return (
-    <Drawer placement={placement} {...props}>
-      <DrawerOverlay />
-      <DrawerContent>
-        <DrawerCloseButton />
-        {title && <DrawerHeader>{title}</DrawerHeader>}
-        <DrawerBody {...body}>{children}</DrawerBody>
-      </DrawerContent>
-    </Drawer>
-  );
-};
+
+export const SimpleDrawer = forwardRef<HTMLDialogElement, SimpleDrawerProps>(
+  ({ children, title, body, ...props }, ref) => {
+    return (
+      <Drawer {...props} ref={ref}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          {title && <DrawerHeader>{title}</DrawerHeader>}
+          <DrawerBody {...body}>{children}</DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    );
+  },
+);

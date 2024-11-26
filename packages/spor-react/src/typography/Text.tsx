@@ -19,7 +19,9 @@ export type TextProps = Omit<ChakraTextProps, "textStyle"> & {
  * ```
  */
 
-export const Text = forwardRef<TextProps, "p">(function Text(props, ref) {
-  const { variant = "sm", ...rest } = props;
-  return <ChakraText {...rest} textStyle={variant} ref={ref} />;
-});
+export const Text = forwardRef<HTMLParagraphElement, TextProps>(
+  function Text(props, ref) {
+    const { variant = "sm", ...rest } = props;
+    return <ChakraText {...rest} textStyle={variant} ref={ref} />;
+  },
+);

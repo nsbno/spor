@@ -1,32 +1,44 @@
 import {
-  As,
   Code as ChakraCode,
   CodeProps as ChakraCodeProps,
-  forwardRef,
+  RecipeVariantProps,
+  useRecipe,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import codeRecipie from "../theme/components/code";
 
-export type CodeProps = ChakraCodeProps & {
-  /**
-   * The color scheme of the inline code.
-   */
-  colorScheme?:
-    | "yellow"
-    | "light-yellow"
-    | "red"
-    | "green"
-    | "orange"
-    | "blue"
-    | "grey"
-    | "white";
-  /** The design variant – "solid" by default.
-   *
-   * Can be specified as `outline` to render a border around the badge. */
-  variant?: "solid" | "outline";
-};
+type CodeVariantProps = RecipeVariantProps<typeof codeRecipie>;
+
+type CodeColorPalette =
+  | "yellow"
+  | "light-yellow"
+  | "red"
+  | "green"
+  | "orange"
+  | "blue"
+  | "grey"
+  | "white";
+
+export type CodeProps = Exclude<ChakraCodeProps, "colorPalette" | "variant"> &
+  PropsWithChildren<CodeVariantProps> & {
+    /**
+     * The color scheme of the inline code.
+     */
+    colorPalette?: CodeColorPalette;
+    /** The design variant – "solid" by default.
+     *
+     * Can be specified as `outline` to render a border around the badge. */
+    variant?: "solid" | "outline";
+  };
 /**
  * Shows inline code.
  */
-export const Code = forwardRef<CodeProps, As>((props, ref) => (
-  <ChakraCode {...props} ref={ref} />
-));
+
+export const Code = forwardRef<HTMLElement, CodeProps>(
+  function Code(props, ref) {
+    const { colorPalette, variant, ...rest } = props;
+    const recipe = useRecipe({ recipe: codeRecipie });
+    const styles = recipe({ variant, colorPalette });
+    return <ChakraCode {...rest} ref={ref} css={styles} />;
+  },
+);

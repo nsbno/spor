@@ -1,9 +1,5 @@
-import {
-  HeadingProps as ChakraHeadingProps,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import React from "react";
+import { HeadingProps as ChakraHeadingProps, Text } from "@chakra-ui/react";
+import React, { forwardRef } from "react";
 import { slugify } from "..";
 import type { textStyles } from "../theme/foundations";
 
@@ -38,17 +34,31 @@ export type HeadingProps = Omit<ChakraHeadingProps, "textStyle" | "as"> & {
  * <Heading as="h1" autoId>Page heading</Heading> // Will set id="page-heading"
  * ```
  */
-export const Heading = ({
-  as,
-  variant = "xl-display",
-  autoId = false,
-  id: externalId,
-  ...props
-}: HeadingProps) => {
-  const id =
-    externalId ?? (autoId && typeof props.children === "string")
-      ? slugify(props.children as string)
-      : undefined;
-  const color = useColorModeValue("text.primary.light", "text.primary.dark");
-  return <Text as={as} textStyle={variant} id={id} color={color} {...props} />;
-};
+
+export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
+  function Heading(props, ref) {
+    const {
+      as,
+      variant = "xl-display",
+      autoId = false,
+      id: externalId,
+      ...rest
+    } = props;
+
+    const id =
+      externalId ?? (autoId && typeof rest.children === "string")
+        ? slugify(rest.children as string)
+        : undefined;
+
+    return (
+      <Text
+        as={as}
+        textStyle={variant}
+        id={id}
+        color={"text.default"}
+        ref={ref}
+        {...rest}
+      />
+    );
+  },
+);

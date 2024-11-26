@@ -24,7 +24,7 @@ export type CloseButtonProps = Omit<
  * <CloseButton onClick={closeModal} />
  * ```
  */
-export const CloseButton = forwardRef<CloseButtonProps, "button">(
+export const CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>(
   ({ size = "sm", ...props }, ref) => {
     const { t } = useTranslation();
     return (

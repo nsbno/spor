@@ -1,17 +1,16 @@
-import { defineStyleConfig } from "@chakra-ui/react";
+import { defineRecipe } from "@chakra-ui/react";
 import Badge from "./badge";
 
-const { variants, defaultProps } = Badge;
+const { variants } = Badge;
 
-const config = defineStyleConfig({
-  baseStyle: {
+const codeRecipie = defineRecipe({
+  base: {
     fontFamily: "monospace",
     fontSize: ["mobile.xs", "desktop.xs"],
     borderRadius: "xs",
     paddingX: 1,
   },
   variants,
-  defaultProps,
 });
 
-export default config;
+export default codeRecipie;

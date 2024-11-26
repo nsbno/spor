@@ -1,19 +1,17 @@
 import {
-  As,
   Badge as ChakraBadge,
   BadgeProps as ChakraBadgeProps,
-  forwardRef,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { forwardRef } from "react";
 
 export type BadgeProps = Omit<
   ChakraBadgeProps,
-  "variant" | "colorScheme" | "size"
+  "variant" | "colorPalette" | "size"
 > & {
   /**
    * The color scheme of the badge.
    */
-  colorScheme?:
+  colorPalette?:
     | "yellow"
     | "light-yellow"
     | "red"
@@ -51,18 +49,19 @@ export type BadgeProps = Omit<
  * </Badge>
  * ```
  */
-export const Badge = forwardRef<BadgeProps, As>(
-  ({ icon, colorScheme = "grey", children, ...props }, ref) => {
-    return (
-      <ChakraBadge
-        colorScheme={colorScheme}
-        {...props}
-        paddingLeft={icon ? 1 : undefined}
-        ref={ref}
-      >
-        {icon && React.cloneElement(icon, { marginRight: 1 })}
-        {children}
-      </ChakraBadge>
-    );
-  },
-);
+export const Badge = forwardRef<HTMLElement, BadgeProps>(function Badge(
+  { icon, colorScheme = "grey", children, ...props },
+  ref,
+) {
+  return (
+    <ChakraBadge
+      colorScheme={colorScheme}
+      {...props}
+      paddingLeft={icon ? 1 : undefined}
+      ref={ref}
+    >
+      {icon && React.cloneElement(icon, { marginRight: 1 })}
+      {children}
+    </ChakraBadge>
+  );
+});

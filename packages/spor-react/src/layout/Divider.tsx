@@ -1,13 +1,10 @@
-import {
-  As,
-  BoxProps,
-  Divider as ChakraDivider,
-  DividerProps as ChakraDividerProps,
-  forwardRef,
-} from "@chakra-ui/react";
-import React from "react";
+import { Box, BoxProps, RecipeVariantProps } from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { dividerRecipe } from "../theme/components";
 
-export type DividerProps = ChakraDividerProps & {
+type DividerVariantProps = RecipeVariantProps<typeof dividerRecipe>;
+
+export type DividerProps = PropsWithChildren<DividerVariantProps> & {
   size?: "sm" | "md" | "lg";
   variant?: "solid" | "dashed";
 };
@@ -22,6 +19,6 @@ export type DividerProps = ChakraDividerProps & {
  * There are three different sizes available: `sm`, `md` and `lg`. The default is `md`.
  * There are two different variants available: `solid` and `dashed`. The default is `solid`.
  */
-export const Divider = forwardRef<BoxProps, As>((props, ref) => {
-  return <ChakraDivider {...props} ref={ref} />;
+export const Divider = forwardRef<HTMLDivElement, BoxProps>((props, ref) => {
+  return <Box as="hr" {...props} ref={ref} />;
 });

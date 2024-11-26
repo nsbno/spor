@@ -12,7 +12,7 @@ export { default as CloseButton } from "./close-button";
 export * from "./code";
 export { default as Datepicker } from "./datepicker";
 export * from "./dialog";
-export { default as Divider } from "./divider";
+export * from "./divider";
 export * from "./drawer";
 export { default as FloatingActionButton } from "./fab";
 export { default as Form } from "./form";

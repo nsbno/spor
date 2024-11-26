@@ -1,6 +1,8 @@
 import { defineRecipe } from "@chakra-ui/react";
+import { defineRecipe } from "@chakra-ui/react";
 import Badge from "./badge";
 
+const { variants } = Badge;
 const { variants } = Badge;
 
 export const codeRecipie = defineRecipe({

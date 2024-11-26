@@ -1,17 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { anatomy, mode } from "@chakra-ui/theme-tools";
-import travelTagStyles from "./travel-tag";
-import { useColorModeValue } from "../../color-mode";
-import { tokens } from "../..";
-
-const parts = anatomy("info-tag").parts(
-  "container",
-  "iconContainer",
-  "icon",
-  "textContainer",
-  "title",
-  "description",
-);
+import { travelTagSlotRecipe } from "./travel-tag";
 
 export const infoTagSlotRecipe = defineSlotRecipe({
   slots: [
@@ -25,9 +13,9 @@ export const infoTagSlotRecipe = defineSlotRecipe({
   ],
   className: "spor-info-tag",
   base: {
-    ...travelTagStyles.base,
+    ...travelTagSlotRecipe.base,
     iconContainer: {
-      ...travelTagStyles.base.iconContainer,
+      ...travelTagSlotRecipe.base?.iconContainer,
       padding: 1,
     },
     textContainer: {
@@ -36,21 +24,21 @@ export const infoTagSlotRecipe = defineSlotRecipe({
   },
   variants: {
     size: {
-      ...travelTagStyles.sizes,
+      ...travelTagSlotRecipe.variants?.size,
       sm: {
-        ...travelTagStyles.sizes!.sm,
+        ...travelTagSlotRecipe.variants?.size!.sm,
         iconContainer: {
           borderRadius: "0.375rem",
         },
       },
       md: {
-        ...travelTagStyles.sizes!.md,
+        ...travelTagSlotRecipe.variants?.size!.md,
         iconContainer: {
           borderRadius: "0.375rem",
         },
       },
       lg: {
-        ...travelTagStyles.sizes!.lg,
+        ...travelTagSlotRecipe.variants?.size!.lg,
         iconContainer: {
           borderRadius: "sm",
         },

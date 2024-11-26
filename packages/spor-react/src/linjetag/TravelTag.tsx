@@ -1,9 +1,8 @@
 import {
-  As,
   Box,
   BoxProps,
-  forwardRef,
-  useMultiStyleConfig,
+  RecipeVariantProps,
+  useSlotRecipe,
 } from "@chakra-ui/react";
 import {
   ErrorFill18Icon,
@@ -13,14 +12,20 @@ import {
   WarningFill18Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { LineIcon } from "./LineIcon";
 import type { TagProps } from "./types";
+import { travelTagSlotRecipe } from "../theme/components/travel-tag";
+
+type TravelTagVariantProps = RecipeVariantProps<typeof travelTagSlotRecipe>;
+
+type DeviationLevels = "critical" | "major" | "minor" | "info" | "none";
 
 export type TravelTagProps = TagProps &
-  BoxProps & {
-    deviationLevel?: "critical" | "major" | "minor" | "info" | "none";
-    isDisabled?: boolean;
+  BoxProps &
+  PropsWithChildren<TravelTagVariantProps> & {
+    deviationLevel?: DeviationLevels;
+    disabled?: boolean;
     foregroundColor?: string;
     backgroundColor?: string;
     customIconVariant?: string;
@@ -76,23 +81,25 @@ export type TravelTagProps = TagProps &
  *
  * @see https://spor.vy.no/components/line-tags
  */
-export const TravelTag = forwardRef<TravelTagProps, As>(
-  (
+
+export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
+  function TravelTag(
     {
       variant,
       size = "md",
       deviationLevel = "none",
       title,
       description,
-      isDisabled,
+      disabled,
       foregroundColor,
       backgroundColor,
       customIconVariant,
       ...rest
     },
     ref,
-  ) => {
-    const styles = useMultiStyleConfig("TravelTag", {
+  ) {
+    const recipie = useSlotRecipe({ key: "travel-tag" });
+    const styles = recipie({
       variant,
       size,
       deviationLevel,
@@ -101,9 +108,8 @@ export const TravelTag = forwardRef<TravelTagProps, As>(
     });
 
     const DeviationLevelIcon = getDeviationLevelIcon({ deviationLevel, size });
-
     return (
-      <Box sx={styles.container} aria-disabled={isDisabled} ref={ref} {...rest}>
+      <Box css={styles.container} aria-disabled={disabled} ref={ref} {...rest}>
         <LineIcon
           variant={variant}
           size={size}
@@ -113,20 +119,22 @@ export const TravelTag = forwardRef<TravelTagProps, As>(
           customIconVariant={customIconVariant}
           {...(rest as any)}
         />
-        <Box sx={styles.textContainer}>
+        <Box css={styles.textContainer}>
           {title && (
-            <Box as="span" sx={styles.title}>
+            <Box as="span" css={styles.title}>
               {title}
             </Box>
           )}
           {title && description && " "}
           {description && (
-            <Box as="span" sx={styles.description}>
+            <Box as="span" css={styles.description}>
               {description}
             </Box>
           )}
         </Box>
-        {DeviationLevelIcon && <DeviationLevelIcon sx={styles.deviationIcon} />}
+        {DeviationLevelIcon && (
+          <DeviationLevelIcon css={styles.deviationIcon} />
+        )}
       </Box>
     );
   },
@@ -144,6 +152,7 @@ const getDeviationLevelIcon = ({
       return size === "lg" ? WarningFill24Icon : WarningFill18Icon;
     case "info":
       return size === "lg" ? InformationFill24Icon : InformationFill18Icon;
+    case "none":
     default:
       return null;
   }

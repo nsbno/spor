@@ -1,29 +1,25 @@
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import type { StyleFunctionProps } from "@chakra-ui/theme-tools";
-import { anatomy, mode } from "@chakra-ui/theme-tools";
+import { defineSlotRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { useColorModeValue } from "../../color-mode";
 
-const parts = anatomy("travel-tag").parts(
-  "container",
-  "iconContainer",
-  "icon",
-  "textContainer",
-  "title",
-  "description",
-  "deviationIcon",
-);
-
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
+export const travelTagSlotRecipe = defineSlotRecipe({
+  slots: [
+    "container",
+    "iconContainer",
+    "icon",
+    "textContainer",
+    "title",
+    "description",
+    "deviationIcon",
+  ],
+  className: "spor-travel-tag",
+  base: {
     container: {
       position: "relative",
       display: "flex",
       alignItems: "center",
       padding: 0.5,
       width: "fit-content",
-      ...getDeviationContainerStyle(props),
       transitionDuration: "fast",
       transitionProperty: "common",
       _disabled: {
@@ -34,7 +30,7 @@ const config = helpers.defineMultiStyleConfig({
         _hover: {
           boxShadow: "md",
         },
-        ...focusVisibleStyles(props),
+        ...focusVisibleStyles(),
         _active: {
           opacity: 0.5,
           boxShadow: "none",
@@ -63,193 +59,162 @@ const config = helpers.defineMultiStyleConfig({
       fontWeight: "normal",
     },
     deviationIcon: {
-      ...getDeviationIconStyle(props),
+      position: "absolute",
+      top: "0",
+      right: "0",
+      transform: "translate(50%, -50%)",
+      zIndex: "docked",
     },
-  }),
+  },
   variants: {
-    "local-train": {
-      container: {
-        backgroundColor: "linjetag.lokaltogLight",
-      },
-    },
-    "region-train": {
-      container: {
-        backgroundColor: "linjetag.regiontogLight",
-      },
-    },
-    "region-express-train": {
-      container: {
-        backgroundColor: "linjetag.regionEkspressLight",
-      },
-    },
-    "long-distance-train": {
-      container: {
-        backgroundColor: "linjetag.fjerntogLight",
-      },
-    },
-    "airport-express-train": {
-      container: {
-        backgroundColor: "linjetag.flytogLight",
-      },
-    },
-    "vy-bus": {
-      container: {
-        backgroundColor: "linjetag.vyBussLight",
-      },
-    },
-    "local-bus": {
-      container: {
-        backgroundColor: "linjetag.lokalbussLight",
-      },
-    },
-    ferry: {
-      container: {
-        backgroundColor: "linjetag.fergeLight",
-      },
-    },
-    subway: {
-      container: {
-        backgroundColor: "linjetag.tbaneLight",
-      },
-    },
-    tram: {
-      container: {
-        backgroundColor: "linjetag.trikkLight",
-      },
-    },
-    "alt-transport": {
-      container: {
-        backgroundColor: "linjetag.altTransportLight",
-      },
-    },
-    walk: (props) => ({
-      container: {
-        backgroundColor: mode("white", "transparent")(props),
-        _disabled: {
-          backgroundColor: "white",
+    deviationLevel: {
+      critical: {
+        container: {
+          border: "1px solid",
+          borderColor: "brightRed",
         },
       },
-      iconContainer: {
-        border: "none",
-        position: "relative",
-        left: -1,
-        backgroundColor: mode("white", "transparent")(props),
-        "[aria-disabled=true] &": {
-          backgroundColor: "transparent",
-          color: "osloGrey",
+      major: {
+        container: {
+          border: "1px solid",
+          borderColor: "golden",
         },
       },
-      textContainer: {
-        position: "absolute",
-        left: 2,
-        bottom: -0.5,
-        "[aria-disabled=true] &": {
-          color: "osloGrey",
+      minor: {},
+      info: {},
+      none: {},
+    },
+    variant: {
+      "local-train": {
+        container: {
+          backgroundColor: "linjetag.lokaltogLight",
         },
       },
-      title: {
-        fontSize: "mobile.xs",
-        fontWeight: "normal",
-        color: mode("black", "white")(props),
+      "region-train": {
+        container: {
+          backgroundColor: "linjetag.regiontogLight",
+        },
       },
-      description: {
-        display: "none",
+      "region-express-train": {
+        container: {
+          backgroundColor: "linjetag.regionEkspressLight",
+        },
       },
-    }),
-    custom: (props) => ({
-      container: {
-        backgroundColor: props.foregroundColor,
+      "long-distance-train": {
+        container: {
+          backgroundColor: "linjetag.fjerntogLight",
+        },
       },
-    }),
+      "airport-express-train": {
+        container: {
+          backgroundColor: "linjetag.flytogLight",
+        },
+      },
+      "vy-bus": {
+        container: {
+          backgroundColor: "linjetag.vyBussLight",
+        },
+      },
+      "local-bus": {
+        container: {
+          backgroundColor: "linjetag.lokalbussLight",
+        },
+      },
+      ferry: {
+        container: {
+          backgroundColor: "linjetag.fergeLight",
+        },
+      },
+      subway: {
+        container: {
+          backgroundColor: "linjetag.tbaneLight",
+        },
+      },
+      tram: {
+        container: {
+          backgroundColor: "linjetag.trikkLight",
+        },
+      },
+      "alt-transport": {
+        container: {
+          backgroundColor: "linjetag.altTransportLight",
+        },
+      },
+      walk: {
+        container: {
+          backgroundColor: useColorModeValue("white", "transparent"),
+          _disabled: {
+            backgroundColor: "white",
+          },
+        },
+        iconContainer: {
+          border: "none",
+          position: "relative",
+          left: -1,
+          backgroundColor: useColorModeValue("white", "transparent"),
+          "[aria-disabled=true] &": {
+            backgroundColor: "transparent",
+            color: "osloGrey",
+          },
+        },
+        textContainer: {
+          position: "absolute",
+          left: 2,
+          bottom: -0.5,
+          "[aria-disabled=true] &": {
+            color: "osloGrey",
+          },
+        },
+        title: {
+          fontSize: "mobile.xs",
+          fontWeight: "normal",
+          color: "text.default",
+        },
+        description: {
+          display: "none",
+        },
+      },
+    },
+    size: {
+      sm: {
+        container: {
+          borderRadius: "sm",
+        },
+        iconContainer: {
+          borderRadius: "xs",
+        },
+        textContainer: {
+          marginLeft: 1,
+          fontSize: "mobile.sm",
+        },
+      },
+      md: {
+        container: {
+          borderRadius: "sm",
+        },
+        iconContainer: {
+          borderRadius: "0.5625rem", // 9px
+        },
+        textContainer: {
+          marginLeft: 1.5,
+          fontSize: "mobile.sm",
+        },
+      },
+      lg: {
+        container: {
+          borderRadius: "sm",
+        },
+        iconContainer: {
+          borderRadius: "0.5625rem", // 9px
+        },
+        textContainer: {
+          marginLeft: 2,
+          fontSize: "mobile.md",
+        },
+      },
+    },
   },
-  sizes: {
-    sm: {
-      container: {
-        borderRadius: "sm",
-      },
-      iconContainer: {
-        borderRadius: "xs",
-      },
-      textContainer: {
-        marginLeft: 1,
-        fontSize: "mobile.sm",
-      },
-    },
-    md: {
-      container: {
-        borderRadius: "sm",
-      },
-      iconContainer: {
-        borderRadius: "0.5625rem", // 9px
-      },
-      textContainer: {
-        marginLeft: 1.5,
-        fontSize: "mobile.sm",
-      },
-    },
-    lg: {
-      container: {
-        borderRadius: "sm",
-      },
-      iconContainer: {
-        borderRadius: "0.5625rem", // 9px
-      },
-      textContainer: {
-        marginLeft: 2,
-        fontSize: "mobile.md",
-      },
-    },
-  },
-  defaultProps: {
+  defaultVariants: {
     size: "md",
   },
 });
-
-export default config;
-
-const getDeviationContainerStyle = (props: StyleFunctionProps) => {
-  switch (props.deviationLevel) {
-    case "critical":
-      return {
-        border: "1px solid",
-        borderColor: getDeviationBorderColor(props),
-      };
-    case "major":
-      return {
-        border: "1px solid",
-        borderColor: getDeviationBorderColor(props),
-      };
-    default:
-      return {};
-  }
-};
-
-const getDeviationBorderColor = (props: StyleFunctionProps) => {
-  switch (props.deviationLevel) {
-    case "critical":
-      return "brightRed";
-    case "major":
-      return "golden";
-    default:
-      return "transparent";
-  }
-};
-
-const getDeviationIconStyle = (props: StyleFunctionProps) => {
-  return {
-    position: "absolute",
-    top: "0",
-    right: "0",
-    transform: "translate(50%, -50%)",
-    zIndex: "docked",
-    color:
-      deviationIconColor[
-        props.deviationLevel as keyof typeof deviationIconColor
-      ] || "inherit",
-  };
-};
-
-const deviationIconColor = {
-  critical: "brightRed",
-  info: "ocean",
-} as const;

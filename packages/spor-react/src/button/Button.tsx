@@ -11,7 +11,10 @@ import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
 import { buttonRecipe } from "./button.recipe";
 
-export type ButtonProps = Exclude<ChakraButtonProps, "size" | "variant"> & {
+export type ButtonProps = Exclude<
+  ChakraButtonProps,
+  "size" | "variant" | "colorPalette"
+> & {
   loading?: boolean;
   loadingText?: React.ReactNode;
   leftIcon?: React.ReactNode;
@@ -47,13 +50,13 @@ export type ButtonProps = Exclude<ChakraButtonProps, "size" | "variant"> & {
  * @see https://spor.vy.no/components/button
  */
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(props, ref) {
     const {
       loading,
       disabled,
       loadingText,
-      variant = "primary",
+      variant,
       size = "md",
       leftIcon,
       rightIcon,
@@ -70,6 +73,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...rest}
         type={type}
         ref={ref}
+        css={styles}
         aria-label={ariaLabel}
         aria-busy={loading}
         disabled={disabled || loading}

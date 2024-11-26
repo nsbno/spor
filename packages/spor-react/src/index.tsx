@@ -15,7 +15,7 @@ export * from "./list";
 export * from "./loader";
 export * from "./logo";
 export * from "./media-controller";
-export * from "./modal";
+export * from "./dialog";
 export * from "./nudge";
 export * from "./pagination";
 export * from "./progress-indicator";

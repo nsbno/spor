@@ -12,7 +12,10 @@ Spor is getting a major update with Chakra 3.
 * `isLoading` is now `loading`
 * `sx` and `__css` is gone, use `css` or `style`
 
-### Externals from Chakra:
-Removed (as they have been removed from Chakra): DarkMode, LightMode, defineStyleConfig, useColorModePreference, useMergeRefs, usePreferReducedMotion, CSSWithMultiValues, ComponentStyleConfig, UseClipboardOptions, UseOutsideClickProps, useSize
+### Updated components
+* `Dialog` replaces `Modal` - And all sizes and placements are now available from the same component
 
-Added: defineRecipe, defineStyle, For, FormatNumber, FormatByte, LocaleProvider, Show, VisuallyHidden, useMap, useOnClickOutside, useIsClient
+### Externals from Chakra:
+Removed (as they have been removed from Chakra): `DarkMode, LightMode, defineStyleConfig, useColorModePreference, useMergeRefs, usePreferReducedMotion, CSSWithMultiValues, ComponentStyleConfig, UseClipboardOptions, UseOutsideClickProps, useSize`
+
+Added: `defineRecipe, defineStyle, For, FormatNumber, FormatByte, LocaleProvider, Show, VisuallyHidden, useMap, useOnClickOutside, useIsClient`

@@ -1,13 +1,21 @@
-import { modalAnatomy as parts } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import { drawerAnatomy, modalAnatomy as parts } from "@chakra-ui/anatomy";
+import { defineSlotRecipe } from "@chakra-ui/react";
 import { type PartsStyleObject } from "@chakra-ui/theme-tools";
 import { baseText } from "../utils/base-utils";
 import { bg } from "../utils/bg-utils";
 
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
+export const drawerRecipe = defineSlotRecipe({
+  slots: [
+    "overlay",
+    "dialogContainer",
+    "dialog",
+    "header",
+    "closeButton",
+    "body",
+    "footer",
+  ],
+  className: "spor-drawer",
+  base: {
     overlay: {
       backgroundColor: "blackAlpha.600",
       zIndex: "modal",
@@ -17,15 +25,14 @@ const config = helpers.defineMultiStyleConfig({
       display: "flex",
       zIndex: "modal",
       justifyContent: "center",
-      alignItems: props.isCentered ? "center" : "flex-start",
-      overflow: props.scrollBehavior === "inside" ? "hidden" : "auto",
+      alignItems: "flex-start",
+      overflow: "auto",
     },
     dialog: {
-      ...bg("default", props),
-      ...baseText("default", props),
+      ...bg("default"),
+      ...baseText("default"),
       zIndex: "modal",
-      maxHeight:
-        props.scrollBehavior === "inside" ? "calc(100% - 7.5rem)" : undefined,
+      maxHeight: "calc(100% - 7.5rem)",
       boxShadow: "md",
     },
     header: {
@@ -45,29 +52,14 @@ const config = helpers.defineMultiStyleConfig({
       paddingX: 3,
       paddingBottom: 6,
       flex: 1,
-      overflow: props.scrollBehavior === "inside" ? "auto" : undefined,
+      overflow: "auto",
     },
     footer: {
       paddingX: 3,
       paddingBottom: 3,
     },
-  }),
-  sizes: {
-    xs: getSize("xs"),
-    sm: getSize("sm"),
-    md: getSize("md"),
-    lg: getSize("lg"),
-    xl: getSize("xl"),
-    "2xl": getSize("2xl"),
-    "3xl": getSize("3xl"),
-    "4xl": getSize("4xl"),
-    "5xl": getSize("5xl"),
-    "6xl": getSize("6xl"),
-    full: getSize("full"),
   },
-  defaultProps: {
-    size: "md",
-  },
+  variants: {},
 });
 
 /**
@@ -91,5 +83,3 @@ function getSize(value: string): PartsStyleObject<typeof parts> {
     dialog: { maxWidth: value },
   };
 }
-
-export default config;

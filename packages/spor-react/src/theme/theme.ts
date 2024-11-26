@@ -6,6 +6,10 @@ import {
 } from "@chakra-ui/react";
 import * as foundations from "./foundations";
 import tokens from "@vygruppen/spor-design-tokens";
+import { drawerRecipe } from "./components/drawer";
+import { buttonRecipe } from "./components/button";
+import badgeRecipie from "./components/badge";
+import { dialogRecipe } from "./components";
 
 export type ColorsType = typeof tokens.color.alias &
   typeof tokens.color.palette &
@@ -35,6 +39,14 @@ export const config = defineConfig({
       fonts: {
         ...foundations.fonts,
       },
+    },
+    recipes: {
+      button: buttonRecipe,
+      badge: badgeRecipie,
+    },
+    slotRecipes: {
+      drawer: drawerRecipe,
+      dialog: dialogRecipe,
     },
   },
 });

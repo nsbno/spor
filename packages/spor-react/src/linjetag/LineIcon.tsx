@@ -57,7 +57,7 @@ export type LineIconProps = Exclude<BoxProps, "variant"> &
 
 export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
   function LineIcon({ variant, size = "md", style, ...rest }, ref) {
-    const recipe = useSlotRecipe({ recipe: lineIconSlotRecipe });
+    const recipe = useSlotRecipe({ key: "line-icon" });
     const styles = recipe({ variant, size, ...rest });
 
     const Icon: any = getCorrectIcon({

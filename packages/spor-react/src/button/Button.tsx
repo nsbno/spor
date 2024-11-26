@@ -9,7 +9,7 @@ import {
 import React, { forwardRef } from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
-import { buttonRecipe } from "./button.recipe";
+import { buttonRecipe } from "../theme/components/button";
 
 export type ButtonProps = Exclude<
   ChakraButtonProps,

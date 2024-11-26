@@ -10,7 +10,7 @@ Spor is getting a major update with Chakra 3.
 ### Update props
 * `isDisabled` is now `disabled`
 * `isLoading` is now `loading`
-* `sx` and `__css` is gone, use `css` or `style`
+* `sx` and `__css` is gone, use `css` or `style` instead
 
 ### Updated components
 * `Dialog` replaces `Modal` - And all sizes and placements are now available from the same component

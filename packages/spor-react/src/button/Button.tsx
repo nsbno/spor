@@ -1,27 +1,31 @@
 import {
   Box,
   Center,
-  ButtonProps as ChakraButtonProps,
+  type ButtonProps as ChakraButtonProps,
   Button as ChakraButton,
   Flex,
   useRecipe,
+  type RecipeVariantProps,
 } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
 import { buttonRecipe } from "../theme/components/button";
 
+type ButtonVariantProps = RecipeVariantProps<typeof buttonRecipe>;
+
 export type ButtonProps = Exclude<
   ChakraButtonProps,
   "size" | "variant" | "colorPalette"
-> & {
-  loading?: boolean;
-  loadingText?: React.ReactNode;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
-  variant: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
-  size: "lg" | "md" | "sm" | "xs";
-};
+> &
+  PropsWithChildren<ButtonVariantProps> & {
+    loading?: boolean;
+    loadingText?: React.ReactNode;
+    leftIcon?: React.ReactNode;
+    rightIcon?: React.ReactNode;
+    variant: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
+    size: "lg" | "md" | "sm" | "xs";
+  };
 /**
  * Buttons are used to trigger actions.
  *

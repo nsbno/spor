@@ -1,37 +1,45 @@
 import {
   Badge as ChakraBadge,
   BadgeProps as ChakraBadgeProps,
+  RecipeVariantProps,
+  useRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import badgeRecipie from "../theme/components/badge";
 
-export type BadgeProps = Omit<
+type BadgeVariantProps = RecipeVariantProps<typeof badgeRecipie>;
+
+type BadgeColorPalette =
+  | "yellow"
+  | "light-yellow"
+  | "red"
+  | "light-green"
+  | "dark-green"
+  | "orange"
+  | "light-blue"
+  | "dark-blue"
+  | "grey"
+  | "white";
+
+export type BadgeProps = Exclude<
   ChakraBadgeProps,
   "variant" | "colorPalette" | "size"
-> & {
-  /**
-   * The color scheme of the badge.
-   */
-  colorPalette?:
-    | "yellow"
-    | "light-yellow"
-    | "red"
-    | "light-green"
-    | "dark-green"
-    | "orange"
-    | "light-blue"
-    | "dark-blue"
-    | "grey"
-    | "white";
-  /** The design variant – "solid" by default.
-   *
-   * Can be specified as `outline` to render a border around the badge. */
-  variant?: "solid" | "outline";
-  /** Optional badge icon. Will be rendered to the left of the text.
-   *
-   * Make sure you pass in the 18px version of the icon.
-   */
-  icon?: React.ReactElement;
-};
+> &
+  PropsWithChildren<BadgeVariantProps> & {
+    /**
+     * The color scheme of the badge.
+     */
+    colorPalette?: BadgeColorPalette;
+    /** The design variant – "solid" by default.
+     *
+     * Can be specified as `outline` to render a border around the badge. */
+    variant?: "solid" | "outline";
+    /** Optional badge icon. Will be rendered to the left of the text.
+     *
+     * Make sure you pass in the 18px version of the icon.
+     */
+    icon?: React.ReactElement;
+  };
 /**
  * Shows some additional information about the component it's used within.
  *
@@ -47,21 +55,25 @@ export type BadgeProps = Omit<
  * <Badge colorScheme="light-blue" icon={<InformationOutline18Icon />}>
  *   Information
  * </Badge>
- * ```
+ * ```
  */
-export const Badge = forwardRef<HTMLElement, BadgeProps>(function Badge(
-  { icon, colorScheme = "grey", children, ...props },
-  ref,
-) {
-  return (
-    <ChakraBadge
-      colorScheme={colorScheme}
-      {...props}
-      paddingLeft={icon ? 1 : undefined}
-      ref={ref}
-    >
-      {icon && React.cloneElement(icon, { marginRight: 1 })}
-      {children}
-    </ChakraBadge>
-  );
-});
+
+export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
+  function Badge(props, ref) {
+    const { icon, colorPalette = "grey", children, variant } = props;
+
+    const recipe = useRecipe({ recipe: badgeRecipie });
+    const styles = recipe({ variant, colorPalette });
+    return (
+      <ChakraBadge
+        ref={ref}
+        {...props}
+        paddingLeft={icon ? 1 : undefined}
+        css={styles}
+      >
+        {icon && React.cloneElement(icon, { marginRight: 1 })}
+        {children}
+      </ChakraBadge>
+    );
+  },
+);

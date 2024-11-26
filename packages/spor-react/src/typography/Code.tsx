@@ -1,16 +1,14 @@
 import {
-  As,
   Code as ChakraCode,
   CodeProps as ChakraCodeProps,
-  forwardRef,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { forwardRef } from "react";
 
-export type CodeProps = ChakraCodeProps & {
+export type CodeProps = Exclude<ChakraCodeProps, "colorPalette" | "variant"> & {
   /**
    * The color scheme of the inline code.
    */
-  colorScheme?:
+  colorPalette?:
     | "yellow"
     | "light-yellow"
     | "red"
@@ -27,6 +25,9 @@ export type CodeProps = ChakraCodeProps & {
 /**
  * Shows inline code.
  */
-export const Code = forwardRef<CodeProps, As>((props, ref) => (
-  <ChakraCode {...props} ref={ref} />
-));
+
+export const Code = forwardRef<HTMLElement, CodeProps>(
+  function Code(props, ref) {
+    return <ChakraCode {...props} ref={ref} />;
+  },
+);

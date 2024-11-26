@@ -1,0 +1,38 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "fortnightly"
+  - package-ecosystem: "npm"
+    directory: "/apps/docs"
+    schedule:
+      interval: "fortnightly"
+  - package-ecosystem: "npm"
+    directory: "/apps/studio"
+    schedule:
+      interval: "fortnightly"
+  - package-ecosystem: "npm"
+    directory: "/packages/spor-design-tokens"
+    schedule:
+      interval: "fortnightly"
+  - package-ecosystem: "npm"
+    directory: "/packages/spor-icon"
+    schedule:
+      interval: "fortnightly"
+  - package-ecosystem: "npm"
+    directory: "/packages/spor-icon-react"
+    schedule:
+      interval: "fortnightly"
+  - package-ecosystem: "npm"
+    directory: "/packages/spor-icon-react-native"
+    schedule:
+      interval: "fortnightly"
+  - package-ecosystem: "npm"
+    directory: "/packages/spor-loader"
+    schedule:
+      interval: "fortnightly"
+  - package-ecosystem: "npm"
+    directory: "/packages/spor-react"
+    schedule:
+      interval: "fortnightly"

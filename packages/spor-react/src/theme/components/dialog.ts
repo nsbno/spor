@@ -1,13 +1,19 @@
-import { modalAnatomy as parts } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { type PartsStyleObject } from "@chakra-ui/theme-tools";
-import { baseText } from "../utils/base-utils";
+import { defineSlotRecipe } from "@chakra-ui/react";
 import { bg } from "../utils/bg-utils";
+import { baseText } from "../utils/base-utils";
 
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
+export const dialogRecipe = defineSlotRecipe({
+  slots: [
+    "overlay",
+    "dialogContainer",
+    "dialog",
+    "header",
+    "closeButton",
+    "body",
+    "footer",
+  ],
+  className: "spor-modal",
+  base: {
     overlay: {
       backgroundColor: "blackAlpha.600",
       zIndex: "modal",
@@ -16,17 +22,15 @@ const config = helpers.defineMultiStyleConfig({
       display: "flex",
       zIndex: "modal",
       justifyContent: "center",
-      alignItems: props.isCentered ? "center" : "flex-start",
-      overflow: props.scrollBehavior === "inside" ? "hidden" : "auto",
+      alignItems: "flex-start",
+      overflow: "auto",
     },
     dialog: {
       borderRadius: "md",
-      ...bg("default", props),
-      ...baseText("default", props),
+      ...bg("default"),
+      ...baseText("default"),
       marginY: "3.75rem",
       zIndex: "modal",
-      maxHeight:
-        props.scrollBehavior === "inside" ? "calc(100% - 7.5rem)" : undefined,
       boxShadow: "md",
     },
     header: {
@@ -46,38 +50,34 @@ const config = helpers.defineMultiStyleConfig({
       paddingX: 5,
       paddingBottom: 6,
       flex: 1,
-      overflow: props.scrollBehavior === "inside" ? "auto" : undefined,
     },
     footer: {
       paddingX: 3,
       paddingBottom: 3,
     },
-  }),
-  sizes: {
-    xs: getSize("xs"),
-    sm: getSize("sm"),
-    md: getSize("md"),
-    lg: getSize("lg"),
-    xl: getSize("xl"),
-    "2xl": getSize("2xl"),
-    "3xl": getSize("3xl"),
-    "4xl": getSize("4xl"),
-    "5xl": getSize("5xl"),
-    "6xl": getSize("6xl"),
-    full: getSize("full"),
   },
-  defaultProps: {
-    size: "md",
+  variants: {
+    size: {
+      xs: getSize("xs"),
+      sm: getSize("sm"),
+      md: getSize("md"),
+      lg: getSize("lg"),
+      xl: getSize("xl"),
+      "2xl": getSize("2xl"),
+      "3xl": getSize("3xl"),
+      "4xl": getSize("4xl"),
+      "5xl": getSize("5xl"),
+      "6xl": getSize("6xl"),
+      full: getSize("full"),
+    },
   },
 });
-
-export default config;
 
 /**
  * Since the `maxWidth` prop references theme.sizes internally,
  * we can leverage that to size our modals.
  */
-function getSize(value: string): PartsStyleObject<typeof parts> {
+function getSize(value: string) {
   if (value === "full") {
     return {
       dialog: {

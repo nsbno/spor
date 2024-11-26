@@ -59,21 +59,7 @@ export const drawerRecipe = defineSlotRecipe({
       paddingBottom: 3,
     },
   },
-  variants: {
-    size: {
-      xs: getSize("xs"),
-      sm: getSize("sm"),
-      md: getSize("md"),
-      lg: getSize("lg"),
-      xl: getSize("xl"),
-      "2xl": getSize("2xl"),
-      "3xl": getSize("3xl"),
-      "4xl": getSize("4xl"),
-      "5xl": getSize("5xl"),
-      "6xl": getSize("6xl"),
-      full: getSize("full"),
-    },
-  },
+  variants: {},
 });
 
 /**

@@ -31,6 +31,14 @@ export const dividerRecipe = defineRecipe({
         borderRadius: "1.5px",
       },
     },
+    orientation: {
+      horizontal: {
+        width: "100%",
+      },
+      vertical: {
+        height: "100%",
+      },
+    },
   },
   compoundVariants: [
     {
@@ -65,5 +73,6 @@ export const dividerRecipe = defineRecipe({
   defaultVariants: {
     variant: "solid",
     size: "md",
+    orientation: "horizontal",
   },
 });

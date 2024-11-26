@@ -7,6 +7,7 @@ type DividerVariantProps = RecipeVariantProps<typeof dividerRecipe>;
 export type DividerProps = PropsWithChildren<DividerVariantProps> & {
   size?: "sm" | "md" | "lg";
   variant?: "solid" | "dashed";
+  orientation?: "horizontal" | "vertical";
 };
 /** A dividing line, used to divide content.
  *

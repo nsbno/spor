@@ -4,6 +4,7 @@ import { surface } from "../utils/surface-utils";
 import { baseText } from "../utils/base-utils";
 
 export const buttonRecipe = defineRecipe({
+  className: "spor-button",
   base: {
     border: 0,
     borderRadius: "xl",
@@ -25,7 +26,7 @@ export const buttonRecipe = defineRecipe({
     },
   },
   variants: {
-    visual: {
+    variant: {
       primary: {
         backgroundColor: "brand.default",
         color: "brand.text.default",
@@ -107,7 +108,7 @@ export const buttonRecipe = defineRecipe({
     },
   },
   defaultVariants: {
-    visual: "primary",
+    variant: "primary",
     size: "md",
   },
 });

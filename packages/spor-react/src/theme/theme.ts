@@ -6,10 +6,11 @@ import {
 } from "@chakra-ui/react";
 import * as foundations from "./foundations";
 import tokens from "@vygruppen/spor-design-tokens";
-import { drawerRecipe } from "./components/drawer";
+import { drawerSlotRecipe } from "./components/drawer";
 import { buttonRecipe } from "./components/button";
 import badgeRecipie from "./components/badge";
-import { dialogRecipe } from "./components";
+import { dialogSlotRecipe } from "./components";
+import { lineIconSlotRecipe } from "./components/line-icon";
 
 export type ColorsType = typeof tokens.color.alias &
   typeof tokens.color.palette &
@@ -45,8 +46,9 @@ export const config = defineConfig({
       badge: badgeRecipie,
     },
     slotRecipes: {
-      drawer: drawerRecipe,
-      dialog: dialogRecipe,
+      drawer: drawerSlotRecipe,
+      dialog: dialogSlotRecipe,
+      lineIcon: lineIconSlotRecipe,
     },
   },
 });

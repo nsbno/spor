@@ -1,63 +1,51 @@
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy, mode } from "@chakra-ui/theme-tools";
-import travelTagStyles from "./travel-tag";
+import { defineSlotRecipe } from "@chakra-ui/react";
+import { travelTagSlotRecipe } from "./travel-tag";
 
-const parts = anatomy("info-tag").parts(
-  "container",
-  "iconContainer",
-  "icon",
-  "textContainer",
-  "title",
-  "description",
-);
-
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
-    ...travelTagStyles.baseStyle!(props),
+export const infoTagSlotRecipe = defineSlotRecipe({
+  slots: [
+    "container",
+    "iconContainer",
+    "icon",
+    "textContainer",
+    "title",
+    "description",
+    "walk",
+  ],
+  className: "spor-info-tag",
+  base: {
+    ...travelTagSlotRecipe.base,
     iconContainer: {
-      ...travelTagStyles.baseStyle!(props).iconContainer,
+      ...travelTagSlotRecipe.base?.iconContainer,
       padding: 1,
     },
     textContainer: {
-      color: mode("darkGrey", "white")(props),
+      color: "text.default",
     },
-  }),
-  sizes: {
-    ...travelTagStyles.sizes,
-    sm: {
-      ...travelTagStyles.sizes!.sm,
-      iconContainer: {
-        borderRadius: "0.375rem",
-      },
-    },
-    md: {
-      ...travelTagStyles.sizes!.md,
-      iconContainer: {
-        borderRadius: "0.375rem",
-      },
-    },
-    lg: {
-      ...travelTagStyles.sizes!.lg,
-      iconContainer: {
-        borderRadius: "sm",
-      },
-    },
-  },
-  defaultProps: {
-    size: "md",
   },
   variants: {
-    walk: (props) => ({
-      iconContainer: {
-        backgroundColor: mode("white", "transparent")(props),
-        boxShadow: mode(
-          `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.black[200]}`,
-          `${props.theme.shadows.md}, inset 0 0 0 2px ${props.theme.colors.whiteAlpha[400]}`,
-        )(props),
+    size: {
+      ...travelTagSlotRecipe.variants?.size,
+      sm: {
+        ...travelTagSlotRecipe.variants?.size!.sm,
+        iconContainer: {
+          borderRadius: "0.375rem",
+        },
       },
-    }),
+      md: {
+        ...travelTagSlotRecipe.variants?.size!.md,
+        iconContainer: {
+          borderRadius: "0.375rem",
+        },
+      },
+      lg: {
+        ...travelTagSlotRecipe.variants?.size!.lg,
+        iconContainer: {
+          borderRadius: "sm",
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    size: "md",
   },
 });
-export default config;

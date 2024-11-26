@@ -2,7 +2,7 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 import { bg } from "../utils/bg-utils";
 import { baseText } from "../utils/base-utils";
 
-export const dialogRecipe = defineSlotRecipe({
+export const dialogSlotRecipe = defineSlotRecipe({
   slots: [
     "overlay",
     "dialogContainer",

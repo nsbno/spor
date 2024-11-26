@@ -1,7 +1,15 @@
-import { Box, BoxProps, useMultiStyleConfig } from "@chakra-ui/react";
-import React from "react";
+import {
+  Box,
+  BoxProps,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { getCorrectIcon } from "./icons";
 import { CustomVariantProps, TagProps } from "./types";
+import { lineIconSlotRecipe } from "../theme/components/line-icon";
+
+type LineIconVariantProps = RecipeVariantProps<typeof lineIconSlotRecipe>;
 
 type DefaultVariants = Exclude<TagProps["variant"], "custom">;
 
@@ -12,7 +20,8 @@ type DefaultVariantProps = {
 type VariantProps = DefaultVariantProps | CustomVariantProps;
 
 export type LineIconProps = Exclude<BoxProps, "variant"> &
-  VariantProps & {
+  VariantProps &
+  PropsWithChildren<LineIconVariantProps> & {
     size: TagProps["size"];
   };
 
@@ -45,28 +54,28 @@ export type LineIconProps = Exclude<BoxProps, "variant"> &
  *
  * @see https://spor.vy.no/components/line-tags
  */
-export const LineIcon = ({
-  variant,
-  size = "md",
-  sx,
-  ...rest
-}: LineIconProps) => {
-  const styles = useMultiStyleConfig("LineIcon", { variant, size, ...rest });
-  const Icon: any = getCorrectIcon({
-    variant:
-      variant === "custom" && "customIconVariant" in rest
-        ? rest.customIconVariant
-        : variant === "custom"
-          ? "local-train"
-          : variant,
-    size,
-  });
-  if (!Icon) {
-    return null;
-  }
-  return (
-    <Box sx={{ ...styles.iconContainer, ...sx }}>
-      <Icon sx={styles.icon} />
-    </Box>
-  );
-};
+
+export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
+  function LineIcon({ variant, size = "md", style, ...rest }, ref) {
+    const recipe = useSlotRecipe({ recipe: lineIconSlotRecipe });
+    const styles = recipe({ variant, size, ...rest });
+
+    const Icon: any = getCorrectIcon({
+      variant:
+        variant === "custom" && "customIconVariant" in rest
+          ? rest.customIconVariant
+          : variant === "custom"
+            ? "local-train"
+            : variant,
+      size,
+    });
+    if (!Icon) {
+      return null;
+    }
+    return (
+      <Box css={styles.iconContainer}>
+        <Icon sx={styles.icon} />
+      </Box>
+    );
+  },
+);

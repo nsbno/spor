@@ -11,6 +11,7 @@ import { buttonRecipe } from "./components/button";
 import badgeRecipie from "./components/badge";
 import { dialogSlotRecipe } from "./components";
 import { lineIconSlotRecipe } from "./components/line-icon";
+import { listSlotRecipe } from "./components/list";
 
 export type ColorsType = typeof tokens.color.alias &
   typeof tokens.color.palette &
@@ -49,6 +50,7 @@ export const config = defineConfig({
       drawer: drawerSlotRecipe,
       dialog: dialogSlotRecipe,
       lineIcon: lineIconSlotRecipe,
+      list: listSlotRecipe,
     },
   },
 });

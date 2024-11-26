@@ -14,6 +14,14 @@ import { buttonRecipe } from "../theme/components/button";
 
 type ButtonVariantProps = RecipeVariantProps<typeof buttonRecipe>;
 
+type ButtonVariants =
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "ghost"
+  | "floating";
+type ButtonSizes = "lg" | "md" | "sm" | "xs";
+
 export type ButtonProps = Exclude<
   ChakraButtonProps,
   "size" | "variant" | "colorPalette"
@@ -23,8 +31,8 @@ export type ButtonProps = Exclude<
     loadingText?: React.ReactNode;
     leftIcon?: React.ReactNode;
     rightIcon?: React.ReactNode;
-    variant: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
-    size: "lg" | "md" | "sm" | "xs";
+    variant: ButtonVariants;
+    size: ButtonSizes;
   };
 /**
  * Buttons are used to trigger actions.

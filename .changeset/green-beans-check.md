@@ -5,6 +5,7 @@
 
 ## Migrate to Chakra 3
 
-Spor is getting a major update with Chakra 3. Components has gotten these updates:
+Spor is getting a major update with Chakra 3.
 
-Button: To be continued..
+Components:
+* Button - style 

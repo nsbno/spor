@@ -25,7 +25,7 @@
   "devDependencies": {
     "@shopify/restyle": "^2.1.0",
     "@svgr/core": "^6.2.0",
-    "@svgr/plugin-jsx": "^6.2.0",
+    "@svgr/plugin-jsx": "^8.1.0",
     "@svgr/plugin-svgo": "^6.2.0",
     "@types/fs-extra": "^11.0.4",
     "@vygruppen/spor-icon": "^3.2.0",

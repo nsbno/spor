@@ -22,7 +22,7 @@
   "sideEffects": false,
   "license": "MIT",
   "devDependencies": {
-    "json-to-ts": "^1.7.0",
+    "json-to-ts": "^2.1.0",
     "patch-package": "^6.4.7",
     "prettier": "^2.4.1",
     "style-dictionary": "^3.9.2",

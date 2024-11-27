@@ -6,7 +6,7 @@ export { default as Badge } from "./badge";
 export { default as Breadcrumb } from "./breadcrumb";
 export * from "./button";
 export { default as CardSelect } from "./card-select";
-export { default as Checkbox } from "./checkbox";
+export * from "./checkbox";
 export { default as ChoiceChip } from "./choice-chip";
 export { default as CloseButton } from "./close-button";
 export * from "./code";

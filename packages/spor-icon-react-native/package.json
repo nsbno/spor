@@ -32,7 +32,7 @@
     "case": "^1.6.3",
     "fs-extra": "^11.2.0",
     "react": ">17.0.0",
-    "react-native": "^0.74.2",
+    "react-native": "^0.76.3",
     "react-native-svg": "^12.3.0",
     "rimraf": "^5.0.7",
     "tsm": "^2.3.0",
@@ -41,7 +41,7 @@
   "peerDependencies": {
     "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
-    "react-native": "^0.74.2",
+    "react-native": "^0.76.3",
     "react-native-svg": "^12.3.0"
   }
 }

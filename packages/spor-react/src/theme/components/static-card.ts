@@ -1,11 +1,8 @@
-import { Theme, defineStyleConfig } from "@chakra-ui/react";
-import { colors } from "../foundations";
+import { defineRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { floatingBackground } from "../utils/floating-utils";
-import { mode } from "@chakra-ui/theme-tools";
 
-const config = defineStyleConfig({
-  baseStyle: (props: any) => ({
+export const staticCardRecipe = defineRecipe({
+  base: {
     appearance: "none",
     border: "none",
     overflow: "hidden",
@@ -13,70 +10,37 @@ const config = defineStyleConfig({
     display: "block",
     borderRadius: "md",
     color: "text.default.light",
-    ...focusVisibleStyles(props),
-    ...getColorSchemeBaseProps(props),
-  }),
-});
-
-export default config;
-
-type CardThemeProps = {
-  colorScheme:
-    | "white"
-    | "grey"
-    | "green"
-    | "orange"
-    | "red"
-    | "yellow"
-    | "blue"
-    | "darkBlue"
-    | "darkGreen"
-    | "darkYellow";
-  theme: Theme;
-  colorMode: "light" | "dark";
-};
-
-const getColorSchemeBaseProps = (props: CardThemeProps) => {
-  switch (props.colorScheme) {
-    case "white":
-      return {
-        ...floatingBackground("default", props),
-        color: mode("text.default.light", "text.default.dark")(props),
-      };
-    case "grey":
-      return {
+    ...focusVisibleStyles(),
+  },
+  variants: {
+    colorPalette: {
+      white: {
+        backgroundColor: "default",
+        color: "text.default.light",
+      },
+      grey: {
         backgroundColor: "lightGrey",
-      };
-    case "green": {
-      return {
+      },
+      green: {
         backgroundColor: "seaMist",
-      };
-    }
-    case "red": {
-      return {
+      },
+      red: {
         backgroundColor: "pink",
-      };
-    }
-    case "darkBlue": {
-      return {
+      },
+      darkBlue: {
         backgroundColor: "darkBlue",
         color: "white",
-      };
-    }
-    case "darkGreen": {
-      return {
+      },
+      darkGreen: {
         backgroundColor: "pine",
         color: "white",
-      };
-    }
-    case "darkYellow": {
-      return {
+      },
+      darkYellow: {
         backgroundColor: "banana",
-      };
-    }
-    default:
-      return {
-        backgroundColor: colors[props.colorScheme]?.[100] ?? "default",
-      };
-  }
-};
+      },
+    },
+  },
+  defaultVariants: {
+    colorPalette: "white",
+  },
+});

@@ -20,6 +20,6 @@
     "dev": "tsup src/index.ts --watch"
   },
   "devDependencies": {
-    "tsup": "^7.2.0"
+    "tsup": "^8.3.5"
   }
 }

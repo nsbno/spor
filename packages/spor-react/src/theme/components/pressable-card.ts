@@ -4,7 +4,7 @@ import { accentBackground, accentText } from "../utils/accent-utils";
 import { defineRecipe } from "../../util";
 
 export const pressableCardRecipe = defineRecipe({
-  base: ({
+  base: {
     appearance: "none",
     border: "none",
     overflow: "hidden",
@@ -22,7 +22,7 @@ export const pressableCardRecipe = defineRecipe({
       outline: "none",
       pointerEvents: "none",
     },
-  }),
+  },
 
   variants: {
     variant: {

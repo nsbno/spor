@@ -46,8 +46,8 @@ PropsWithChildren<PressableCardVariants> & {
 
 export const PressableCard = forwardRef<HTMLDivElement, PressableCardProps>(
   ({ variant = "base", children, ...props }, ref) => {
-    const styles = useRecipe({ recipe: pressableCardRecipe });
-    
+    const recipe = useRecipe({ recipe: pressableCardRecipe });
+    const styles = recipe({ variant });    
     return (
       <Box css={styles} {...props} ref={ref}>
         {children}

@@ -1,11 +1,11 @@
-import { defineStyleConfig } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
+import { defineRecipe } from "@chakra-ui/react";
+import { useColorModeValue } from "../../color-mode";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
-const config = defineStyleConfig({
-  baseStyle: (props) => ({
+const config = defineRecipe({
+  base: {
     transitionProperty: "common",
     transitionDuration: "fast",
     transitionTimingFunction: "ease-out",
@@ -28,7 +28,7 @@ const config = defineStyleConfig({
       borderRadius: "xs",
     },
 
-    ...focusVisibleStyles(props),
+    ...focusVisibleStyles(),
 
     svg: {
       display: "inline-block",
@@ -37,39 +37,41 @@ const config = defineStyleConfig({
       position: "relative",
       bottom: "-0.2em",
     },
-  }),
-  variants: {
-    primary: (props) => ({
-      ...baseText("default", props),
+  },
+  compoundVariants: [
+    {
+      variant: "primary",
+      css: {
+        ...baseText("default"),
+      },
       _hover: {
-        ...brandText("hover", props),
-        ...brandBackground("hover", props),
+        ...brandText("hover"),
+        ...brandBackground("hover"),
       },
-      _active: {
-        ...brandText("active", props),
-        ...brandBackground("active", props),
+    },
+    {
+      variant: "secondary",
+      css: {
+        backgroundImage: `linear-gradient(${useColorModeValue(
+          "blackAlpha.400",
+          "whiteAlpha.400",
+        )}, ${useColorModeValue("blackAlpha.400", "whiteAlpha.400")})`,
+        ...baseText("default"),
+        "&:focus, &:focus-visible, &:active, &:hover": {
+          outline: "1px solid",
+        },
       },
-    }),
-    secondary: (props) => ({
-      backgroundImage: `linear-gradient(${mode(
-        "blackAlpha.400",
-        "whiteAlpha.400",
-      )(props)}, ${mode("blackAlpha.400", "whiteAlpha.400")(props)})`,
-      ...baseText("default", props),
-      "&:focus, &:focus-visible, &:active, &:hover": {
-        outline: "1px solid",
-      },
-      ...baseBackground("default", props),
+      ...baseBackground("default"),
       _hover: {
-        ...baseBorder("hover", props), // TODO: This is also weird
-        ...baseBackground("hover", props),
+        ...baseBorder("hover"), // TODO: This is also weird
+        ...baseBackground("hover"),
         outlineWidth: 1,
       },
       _active: {
-        ...baseBackground("active", props),
+        ...baseBackground("active"),
       },
-    }),
-  },
+    },
+  ],
   defaultProps: {
     variant: "primary",
   },

@@ -1,6 +1,7 @@
-import { Box, BoxProps } from "@chakra-ui/react";
+import { Box, BoxProps, useRecipe } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React, { forwardRef, useEffect } from "react";
+import { buttonRecipe } from "../theme/components/button";
 
 const MotionBox = motion(Box);
 
@@ -25,8 +26,8 @@ type FloatingActionButtonProps = BoxProps & {
  * />
  */
 export const FloatingActionButton = forwardRef<
-  FloatingActionButtonProps,
-  ComponentWithAs<"a" | "button">
+  HTMLButtonElement,
+  FloatingActionButtonProps
 >(
   (
     {
@@ -59,19 +60,26 @@ export const FloatingActionButton = forwardRef<
       setIsTextVisible(!!externalIsTextVisible);
     }, [externalIsTextVisible]);
 
-    const style = useMultiStyleConfig("FloatingActionButton", {
+    const recipe = useRecipe({ recipe: buttonRecipe });
+    const style = recipe({
       variant,
       isTextVisible,
       placement,
     });
+
+    /* const style = useMultiStyleConfig("FloatingActionButton", {
+      variant,
+      isTextVisible,
+      placement,
+    }); */
     return (
       <MotionBox
-        __css={style.container}
+        css={style.container}
         aria-label={children}
         ref={ref}
         {...props}
       >
-        <Box __css={style.icon}>{icon}</Box>
+        <Box css={style._icon}>{icon}</Box>
         <MotionBox
           animate={isTextVisible ? "show" : "hide"}
           initial={externalIsTextVisible ? "show" : "hide"}
@@ -87,7 +95,7 @@ export const FloatingActionButton = forwardRef<
               visibility: "hidden",
             },
           }}
-          __css={style.text}
+          css={style.text}
         >
           {children}
         </MotionBox>

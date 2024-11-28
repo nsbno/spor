@@ -1,15 +1,18 @@
-import {
-  As,
-  Switch as ChakraSwitch,
-  SwitchProps as ChakraSwitchProps,
-  forwardRef,
-} from "@chakra-ui/react";
-import React from "react";
 
-export type SwitchProps = Omit<ChakraSwitchProps, "colorScheme" | "variant"> & {
+import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { switchRecipe } from "../theme/components";
+
+
+type SwitchVariants = RecipeVariantProps<typeof switchRecipe>;
+
+export type SwitchProps =  BoxProps &
+PropsWithChildren<SwitchVariants> & {
+  children: React.ReactNode;
   size?: "sm" | "md" | "lg";
-  as?: As;
-};
+}
+
+
 
 /**
  * A switch lets you toggle between on and off, yes and no. It's an alternative to a checkbox.
@@ -32,8 +35,16 @@ export type SwitchProps = Omit<ChakraSwitchProps, "colorScheme" | "variant"> & {
  * </FormControl>
  * ```
  */
-export const Switch = forwardRef<SwitchProps, "input">(
-  ({ size = "md", as = "div", ...props }: SwitchProps, ref) => {
-    return <ChakraSwitch as={as} size={size} {...props} ref={ref} />;
+export const Switch = forwardRef<HTMLDivElement, SwitchProps>(
+  ({ colorPalette = "white", children, ...props }, ref) => {
+    const recipe = useRecipe({ recipe: switchRecipe });
+    const styles = recipe({ colorPalette });
+
+    return (
+      <Box css={styles} {...props} ref={ref}>
+        {children}
+      </Box>
+    );
   },
 );
+   

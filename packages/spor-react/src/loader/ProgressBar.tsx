@@ -1,10 +1,13 @@
-import { Box, BoxProps, Text, useMultiStyleConfig } from "@chakra-ui/react";
-import React from "react";
-import { useProgressBar } from "react-aria";
-import { createTexts, useTranslation } from "..";
-import { useRotatingLabel } from "./useRotatingLabel";
+import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { progressBarRecipe } from "../theme/components/progress-bar";
 
-type ProgressBarProps = BoxProps & {
+
+type ProgressBarVariants = RecipeVariantProps<typeof progressBarRecipe>;
+
+export type ProgressBarProps = BoxProps &
+  PropsWithChildren<ProgressBarVariants> & {
+    children: React.ReactNode;
   /** The percentage of progress made.
    *
    * The value must be between 0 and 100 */
@@ -63,57 +66,15 @@ type ProgressBarProps = BoxProps & {
  * <ProgressBar value={50} aria-label="Loading..." />
  * ```
  */
-export const ProgressBar = ({
-  value,
-  label,
-  labelRotationDelay = 5000,
-  height = "0.5rem",
-  width = "100%",
-  "aria-label": ariaLabel,
-  isActive = true,
-  ...rest
-}: ProgressBarProps) => {
-  const { t } = useTranslation();
-  const currentLoadingText = useRotatingLabel({
-    label,
-    delay: labelRotationDelay,
-  });
-  const { labelProps, progressBarProps } = useProgressBar({
-    isIndeterminate: value === undefined,
-    value,
-    "aria-label": ariaLabel || t(texts.label(value)),
-  });
-  const styles = useMultiStyleConfig("ProgressBar", { isActive });
-  return (
-    <>
-      <Box
-        {...progressBarProps}
-        title={t(texts.label(value))}
-        __css={styles.container}
-        {...rest}
-      >
-        <Box width={width} __css={styles.background}>
-          <Box
-            __css={styles.progress}
-            height={height}
-            width={isActive ? `${value}%` : "100%"}
-          />
-        </Box>
-        {currentLoadingText && (
-          <Text sx={styles.description} {...labelProps}>
-            {currentLoadingText}
-          </Text>
-        )}
-      </Box>
-    </>
-  );
-};
+    export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
+      ({ colorPalette = "white", children, ...props }, ref) => {
+        const recipe = useRecipe({ recipe: progressBarRecipe });
+        const styles = recipe({ colorPalette });
+    
+        return (
+          <Box css={styles} {...props} ref={ref}>
+            {children}
+          </Box>
+       )}
+      );
 
-const texts = createTexts({
-  label: (value) => ({
-    nb: `${value}% ferdig`,
-    nn: `${value}% ferdig`,
-    sv: `${value}% klart`,
-    en: `${value}% done`,
-  }),
-});

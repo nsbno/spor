@@ -28,7 +28,7 @@ export { default as MediaControllerButton } from "./media-controller-button";
 export { default as NumericStepper } from "./numeric-stepper";
 export { default as Pagination } from "./pagination";
 export { default as Popover } from "./popover";
-export { default as ProgressBar } from "./progress-bar";
+export * from "./progress-bar";
 export { default as ProgressIndicator } from "./progress-indicator";
 export { default as RadioCard } from "./radio-card";
 export { default as Radio } from "./radio";

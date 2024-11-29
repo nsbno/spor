@@ -1,20 +1,25 @@
 import {
   Link as ChakraLink,
   LinkProps as ChakraLinkProps,
-  forwardRef,
+  RecipeVariantProps,
 } from "@chakra-ui/react";
 import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
-import React from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { createTexts, useTranslation } from "..";
+import linkRecipie from "../theme/components/link";
 
-type LinkProps = Omit<ChakraLinkProps, "variant"> & {
-  variant?: "primary" | "secondary";
-};
+type linkVariantProps = RecipeVariantProps<typeof linkRecipie>;
+
+export type LinkProps = Exclude<ChakraLinkProps, "variant"> &
+  PropsWithChildren<linkVariantProps> & {
+    variant?: "primary" | "secondary";
+  };
+
 /** Link to different sites or parts of site
  *
  * You can specify the `variant` prop to get different link designs.
  */
-export const TextLink = forwardRef<LinkProps, "a">(
+export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ children, ...props }, ref) => {
     const { t } = useTranslation();
     const isExternal =

@@ -3,7 +3,7 @@ export { default as Alert } from "./alert";
 export { default as AlertExpandable } from "./alert-expandable";
 export { default as AlertService } from "./alert-service";
 export { default as Badge } from "./badge";
-export { default as Breadcrumb } from "./breadcrumb";
+export * from "./breadcrumb";
 export * from "./button";
 export { default as CardSelect } from "./card-select";
 export { default as Checkbox } from "./checkbox";

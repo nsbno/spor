@@ -35,7 +35,8 @@ export type BreadcrumbProps = BoxProps &
  *  </BreadcrumbItem>
  * </Breadcrumb>
  * ```
- */export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
+ */
+export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
   ({ variant = "base", separator, separatorGap = "0.5rem", children, ...props }, ref) => {
     const recipe = useRecipe({ recipe: breadcrumbRecipe });
     const styles = recipe({});

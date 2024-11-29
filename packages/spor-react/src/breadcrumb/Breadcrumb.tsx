@@ -1,10 +1,8 @@
-import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { BoxProps } from "../layout";
 import { breadcrumbRecipe } from "../theme/components";
 import { RecipeVariantProps, useRecipe } from "@chakra-ui/react";
 import { useColorModeValue } from "../color-mode";
-import { Breadcrumb as ChakraBreadcrumb } from "@chakra-ui/react";
 import { BreadcrumbRoot } from "../components/ui/breadcrumb";
 
 type BreadcrumbVariants = RecipeVariantProps<typeof breadcrumbRecipe>;

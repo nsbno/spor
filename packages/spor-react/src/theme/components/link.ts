@@ -4,6 +4,18 @@ import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
+const svgStyles = () => {
+  return {
+    "& svg": {
+      display: "inline-block",
+      width: "1.125em",
+      height: "1.125em",
+      position: "relative",
+      bottom: "-0.2em",
+    },
+  };
+};
+
 const config = defineRecipe({
   base: {
     transitionProperty: "common",
@@ -30,13 +42,7 @@ const config = defineRecipe({
 
     ...focusVisibleStyles(),
 
-    svg: {
-      display: "inline-block",
-      width: "1.125em",
-      height: "1.125em",
-      position: "relative",
-      bottom: "-0.2em",
-    },
+    ...svgStyles(),
   },
   compoundVariants: [
     {
@@ -72,9 +78,6 @@ const config = defineRecipe({
       },
     },
   ],
-  defaultProps: {
-    variant: "primary",
-  },
 });
 
 export default config;

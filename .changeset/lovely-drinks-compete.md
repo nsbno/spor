@@ -3,4 +3,4 @@
 "@vygruppen/spor-react": patch
 ---
 
-Breadcrumb: updated to chakra 3
+Textarea: updated to chakra 3

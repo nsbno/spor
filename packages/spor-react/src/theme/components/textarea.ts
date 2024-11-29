@@ -22,7 +22,7 @@ export const textareaRecipe = defineRecipe({
       cursor: "not-allowed",
       pointerEvents: "none",
       boxShadow: "none",
-      ...inputBaseStyle().field, 
+      ...inputBaseStyle().field,
     },
   },
   variants: {

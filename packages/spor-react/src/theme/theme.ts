@@ -10,6 +10,8 @@ import { drawerSlotRecipe } from "./components/drawer";
 import { buttonRecipe } from "./components/button";
 import badgeRecipie from "./components/badge";
 import { dialogSlotRecipe, staticCardRecipe, pressableCardRecipe, breadcrumbRecipe } from "./components";
+
+
 import { lineIconSlotRecipe } from "./components/line-icon";
 import { listSlotRecipe } from "./components/list";
 
@@ -48,6 +50,7 @@ export const config = defineConfig({
       staticCard: staticCardRecipe,
       pressableCard: pressableCardRecipe,
       breadcrumb: breadcrumbRecipe,
+
     },
     slotRecipes: {
       drawer: drawerSlotRecipe,

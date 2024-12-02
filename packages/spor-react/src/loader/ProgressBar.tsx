@@ -1,6 +1,6 @@
-import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import { BoxProps, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
-import { progressBarRecipe } from "../theme/components/progress-bar";
+import { progressBarRecipe } from "../theme/components";
 
 
 type ProgressBarVariants = RecipeVariantProps<typeof progressBarRecipe>;
@@ -66,15 +66,16 @@ export type ProgressBarProps = BoxProps &
  * <ProgressBar value={50} aria-label="Loading..." />
  * ```
  */
-    export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
-      ({ colorPalette = "white", children, ...props }, ref) => {
-        const recipe = useRecipe({ recipe: progressBarRecipe });
-        const styles = recipe({ colorPalette });
-    
-        return (
-          <Box css={styles} {...props} ref={ref}>
-            {children}
-          </Box>
-       )}
-      );
+export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
+  ({ colorPalette = "white", children, ...props }, ref) => {
+    const recipe = useSlotRecipe({ recipe: progressBarRecipe });
+    const styles = recipe({ colorPalette });
+
+    return (
+      <ProgressBar css={styles} {...props} ref={ref}>
+        {children}
+      </ProgressBar>
+    );
+  }
+);
 

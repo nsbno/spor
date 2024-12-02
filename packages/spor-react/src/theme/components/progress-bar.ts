@@ -1,13 +1,4 @@
-import { anatomy } from "@chakra-ui/anatomy";
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
-
-const parts = anatomy("progressBar").parts(
-  "container",
-  "background",
-  "progress",
-  "description",
-);
 
 export const progressBarRecipe = defineSlotRecipe({
   slots: ["container", "background", "progress", "description"],

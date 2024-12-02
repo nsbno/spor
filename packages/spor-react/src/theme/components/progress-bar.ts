@@ -1,5 +1,6 @@
 import { anatomy } from "@chakra-ui/anatomy";
-import { defineRecipe } from "@chakra-ui/react";
+import { defineSlotRecipe } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
 
 const parts = anatomy("progressBar").parts(
   "container",
@@ -8,29 +9,51 @@ const parts = anatomy("progressBar").parts(
   "description",
 );
 
-export const progressBarRecipe = defineRecipe({
+export const progressBarRecipe = defineSlotRecipe({
+  slots: ["container", "background", "progress", "description"],
   base: {
-    minWidth: "100px",
-    display: "flex",
-    borderRadius: "sm",
-    justifyContent: "flex-start",
-    marginX: "auto",
-    textAlign: "center",
+    container: {
+      minWidth: "100px",
+    },
+    background:  ({
+      display: "flex",
+      backgroundColor:"brand.surface.default.light",     
+      borderRadius: "sm",
+      justifyContent: "flex-start",
+      marginX: "auto",
+    }),
+    progress: ({
+      backgroundColor: "brand.surface.active.light",
+      borderRadius: "sm",
+      maxWidth: "100%",
+      transition: "width .2s ease-out",
+    }),
+    description: {
+      textAlign: "center",
       marginTop: 2,
+      marginX: "auto",
       fontWeight: "bold",
+    },
   },
   variants: {
     variant: {
       primary: {
-        backgroundColor: "brand.default",
-        color: "brand.text.default",
-        _hover: {
-          backgroundColor: "brand.hover",
-        },
-        _active: {
-          backgroundColor: "brand.active",
+        container: {
+          backgroundColor: "brand.default",
+          color: "brand.text.default",
+          _hover: {
+            backgroundColor: "brand.hover",
+          },
+          _active: {
+            backgroundColor: "brand.active",
+          },
         },
       },
+    },
   },
+  defaultVariants: {
+    variant: "primary",
   },
 });
+
+export default progressBarRecipe;

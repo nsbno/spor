@@ -1,14 +1,17 @@
-import {
-  Radio as ChakraRadio,
-  RadioProps as ChakraRadioProps,
-  forwardRef,
-} from "@chakra-ui/react";
-import React from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import { radioRecipe } from "../theme/components";
+type RadioVariants = RecipeVariantProps<typeof radioRecipe>;
 
-export type RadioProps = Exclude<
+export type RadioProps = BoxProps &
+PropsWithChildren<RadioVariants> &{
+  children: ReactNode.ReactNode;
+   
+}
+/* export type RadioProps = Exclude<
   ChakraRadioProps,
   "colorScheme" | "size" | "variant"
->;
+>; */
 
 /**
  * The humble radio button.
@@ -28,6 +31,11 @@ export type RadioProps = Exclude<
  *   <Radio value="first-class">First Class</Radio>
  * </RadioGroup>
  */
-export const Radio = forwardRef<RadioProps, "input">((props, ref) => {
-  return <ChakraRadio {...props} ref={ref} />;
-});
+export const RadioCard = forwardRef<HTMLDivElement, RadioProps>(
+  ({ colorPalette = "white", children, ...props }, ref) => {
+    const recipe = useRecipe({ recipe: radioRecipe });
+    const styles = recipe({ colorPalette });
+    return (
+      <Radio {...props} ref={ref} />
+    )});
+

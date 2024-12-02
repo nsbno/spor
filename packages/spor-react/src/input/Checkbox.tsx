@@ -1,11 +1,10 @@
-import {  Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import {   RecipeVariantProps, useRecipe, CheckboxRootProps as ChakraCheckboxProp } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { checkboxRecipe } from "../theme/components";
 
-
 type CheckboxVariants = RecipeVariantProps<typeof checkboxRecipe>;
 
-export type CheckboxProps = BoxProps &
+export type CheckboxProps = Exclude<ChakraCheckboxProp, "variant"> &
   PropsWithChildren<CheckboxVariants> & {
     children: React.ReactNode;}
 
@@ -22,17 +21,15 @@ export type CheckboxProps = BoxProps &
  *
  * You can group several of these together with a `CheckboxGroup`.
  */
-export const Checkbox = forwardRef<HTMLDivElement, CheckboxProps>(
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ colorPalette = "white", children, ...props }, ref) => {
     const recipe = useRecipe({ recipe: checkboxRecipe });
     const styles = recipe({ colorPalette });
 
     return (
-      <Box css={styles} {...props} ref={ref}>
+      <Checkbox css={styles} {...props} ref={ref}>
         {children}
-      </Box>
+      </Checkbox>
     );
   }
 ) 
-
-

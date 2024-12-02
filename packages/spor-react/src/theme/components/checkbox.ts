@@ -1,25 +1,31 @@
 import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { defineRecipe } from "@chakra-ui/react";
+import { defineSlotRecipe } from "@chakra-ui/react";
 
-export const checkboxRecipe = defineRecipe({
+export const checkboxRecipe = defineSlotRecipe({
+  slots: ["control", "label"],
   base: {
-    appearance: "none",
-    display: "inline-flex",
-    alignItems: "center",
-    verticalAlign: "top",
-    outline: "none",
-    userSelect: "none",
-    position: "relative",
-    _disabled: {
-      cursor: "not-allowed",
-      opacity: 0.5,
+    control: {
+      appearance: "none",
+      display: "inline-flex",
+      alignItems: "center",
+      verticalAlign: "top",
+      outline: "none",
+      userSelect: "none",
+      position: "relative",
+      _disabled: {
+        cursor: "not-allowed",
+        opacity: 0.5,
+      },
+      _hover: {
+        cursor: "pointer",
+      },
+      _focus: {
+        ...focusVisibleStyles(),
+      },
     },
-    _hover: {
-      cursor: "pointer",
-    },
-    _focus: {
-      ...focusVisibleStyles(),
+    label: {
+      marginLeft: 2,
     },
   },
   variants: {

@@ -14,6 +14,9 @@ import {
   staticCardRecipe,
   pressableCardRecipe,
   dividerRecipe,
+  breadcrumbRecipe,
+  switchRecipe,
+  checkboxRecipe,
 } from "./components";
 import { lineIconSlotRecipe } from "./components/line-icon";
 import { listSlotRecipe } from "./components/list";
@@ -53,6 +56,9 @@ export const config = defineConfig({
       divider: dividerRecipe,
       staticCard: staticCardRecipe,
       pressableCard: pressableCardRecipe,
+      checkbox: checkboxRecipe,
+      switch: switchRecipe,
+      breadcrumb: breadcrumbRecipe,
     },
     slotRecipes: {
       drawer: drawerSlotRecipe,

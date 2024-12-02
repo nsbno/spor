@@ -9,7 +9,7 @@ import tokens from "@vygruppen/spor-design-tokens";
 import { drawerSlotRecipe } from "./components/drawer";
 import { buttonRecipe } from "./components/button";
 import badgeRecipie from "./components/badge";
-import { dialogSlotRecipe, staticCardRecipe, pressableCardRecipe, checkboxRecipe } from "./components";
+import { dialogSlotRecipe, staticCardRecipe, pressableCardRecipe, breadcrumbRecipe, switchRecipe, checkboxRecipe } from "./components";
 import { lineIconSlotRecipe } from "./components/line-icon";
 import { listSlotRecipe } from "./components/list";
 import { check } from "prettier";
@@ -49,6 +49,9 @@ export const config = defineConfig({
       staticCard: staticCardRecipe,
       pressableCard: pressableCardRecipe,
       checkbox: checkboxRecipe,
+      switch: switchRecipe,
+      breadcrumb: breadcrumbRecipe,
+
     },
     slotRecipes: {
       drawer: drawerSlotRecipe,

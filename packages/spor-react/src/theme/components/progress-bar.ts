@@ -6,45 +6,43 @@ export const progressBarRecipe = defineSlotRecipe({
     container: {
       minWidth: "100px",
     },
-    background:  ({
+    background: {
       display: "flex",
-      backgroundColor:"brand.surface.default.light",     
+      backgroundColor: "brand.surface.default.light",
       borderRadius: "sm",
       justifyContent: "flex-start",
       marginX: "auto",
-    }),
-    progress: ({
+    },
+    progress: {
       backgroundColor: "brand.surface.active.light",
       borderRadius: "sm",
       maxWidth: "100%",
       transition: "width .2s ease-out",
-    }),
+    },
     description: {
       textAlign: "center",
       marginTop: 2,
       marginX: "auto",
       fontWeight: "bold",
     },
+   
   },
   variants: {
-    variant: {
+    colorPalette: {
       primary: {
         container: {
-          backgroundColor: "brand.default",
+          background: "brand.default",
           color: "brand.text.default",
           _hover: {
-            backgroundColor: "brand.hover",
+            background: "brand.hover",
           },
           _active: {
-            backgroundColor: "brand.active",
+            background: "brand.active",
           },
         },
       },
     },
-  },
-  defaultVariants: {
-    variant: "primary",
-  },
+    },
 });
 
 export default progressBarRecipe;

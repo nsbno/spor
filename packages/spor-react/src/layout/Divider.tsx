@@ -1,16 +1,15 @@
-import {
-  As,
-  BoxProps,
-  Divider as ChakraDivider,
-  DividerProps as ChakraDividerProps,
-  forwardRef,
-} from "@chakra-ui/react";
-import React from "react";
+import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { dividerRecipe } from "../theme/components";
 
-export type DividerProps = ChakraDividerProps & {
-  size?: "sm" | "md" | "lg";
-  variant?: "solid" | "dashed";
-};
+type DividerVariantProps = RecipeVariantProps<typeof dividerRecipe>;
+
+export type DividerProps = PropsWithChildren<DividerVariantProps> &
+  BoxProps & {
+    size?: "sm" | "md" | "lg";
+    variant?: "solid" | "dashed";
+    orientation?: "horizontal" | "vertical";
+  };
 /** A dividing line, used to divide content.
  *
  * You can specify margins if you need to give the content some space, or use a `Stack` component to do it for you
@@ -22,6 +21,15 @@ export type DividerProps = ChakraDividerProps & {
  * There are three different sizes available: `sm`, `md` and `lg`. The default is `md`.
  * There are two different variants available: `solid` and `dashed`. The default is `solid`.
  */
-export const Divider = forwardRef<BoxProps, As>((props, ref) => {
-  return <ChakraDivider {...props} ref={ref} />;
-});
+export const Divider = forwardRef<HTMLDivElement, DividerProps>(
+  (props, ref) => {
+    const {
+      size = "md",
+      variant = "solid",
+      orientation = "horizontal",
+    } = props;
+    const recipe = useRecipe({ recipe: dividerRecipe });
+    const styles = recipe({ size, variant, orientation });
+    return <Box as="hr" css={styles} {...props} ref={ref} />;
+  },
+);

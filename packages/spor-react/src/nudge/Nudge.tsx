@@ -96,7 +96,7 @@ export const Nudge = forwardRef<HTMLDivElement, NudgeProps>(
       <PopoverRoot
         arrowSize={12}
         arrowShadowColor="none"
-        defaultIsOpen={true}
+        defaultOpen={true}
         ref={ref}
         {...props}
       >

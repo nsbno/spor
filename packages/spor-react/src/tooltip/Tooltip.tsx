@@ -14,16 +14,10 @@ export type TooltipProps = ChakraPopoverRootProps & {
    * Whatever is supposed to trigger the tooltip.
    * Must be focusable - like a link or button */
   children: React.ReactNode;
-  /** Callback for when the tooltip is requested to close */
-  onClose?: () => void;
   /** Should the tooltip have a close button? */
   withCloseButton?: boolean;
   /** The content of the tooltip */
   content: React.ReactNode;
-  /** Use this prop if you want to control the open state */
-  isOpen?: boolean;
-  /** Whether or not the tooltip is open by default */
-  defaultIsOpen?: boolean;
   /**
    * Where the tooltip should be placed by default.
    *
@@ -42,18 +36,12 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     const {
       children,
       content,
-      onClose,
-      isOpen,
-      defaultIsOpen,
       placement = "bottom",
       size = "sm",
       withCloseButton = false,
     } = props;
     return (
       <PopoverRoot
-        onClose={onClose}
-        isOpen={isOpen}
-        defaultIsOpen={defaultIsOpen}
         placement={placement}
         size={size}
         arrowSize={12}

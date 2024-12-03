@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
 import type {
   ButtonProps,
   GroupProps,
   InputProps,
   StackProps,
-} from "@chakra-ui/react"
+} from "@chakra-ui/react";
 import {
   Box,
   HStack,
@@ -14,22 +14,22 @@ import {
   Stack,
   mergeRefs,
   useControllableState,
-} from "@chakra-ui/react"
-import * as React from "react"
-import { LuEye, LuEyeOff } from "react-icons/lu"
-import { InputGroup } from "./input-group"
+} from "@chakra-ui/react";
+import * as React from "react";
+import { LuEye, LuEyeOff } from "react-icons/lu";
+import { InputGroup } from "./input-group";
 
 export interface PasswordVisibilityProps {
-  defaultVisible?: boolean
-  visible?: boolean
-  onVisibleChange?: (visible: boolean) => void
-  visibilityIcon?: { on: React.ReactNode; off: React.ReactNode }
+  defaultVisible?: boolean;
+  visible?: boolean;
+  onVisibleChange?: (visible: boolean) => void;
+  visibilityIcon?: { on: React.ReactNode; off: React.ReactNode };
 }
 
 export interface PasswordInputProps
   extends InputProps,
     PasswordVisibilityProps {
-  rootProps?: GroupProps
+  rootProps?: GroupProps;
 }
 
 export const PasswordInput = React.forwardRef<
@@ -43,15 +43,15 @@ export const PasswordInput = React.forwardRef<
     onVisibleChange,
     visibilityIcon = { on: <LuEye />, off: <LuEyeOff /> },
     ...rest
-  } = props
+  } = props;
 
   const [visible, setVisible] = useControllableState({
     value: visibleProp,
     defaultValue: defaultVisible || false,
     onChange: onVisibleChange,
-  })
+  });
 
-  const inputRef = React.useRef<HTMLInputElement>(null)
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   return (
     <InputGroup
@@ -60,10 +60,10 @@ export const PasswordInput = React.forwardRef<
         <VisibilityTrigger
           disabled={rest.disabled}
           onPointerDown={(e) => {
-            if (rest.disabled) return
-            if (e.button !== 0) return
-            e.preventDefault()
-            setVisible(!visible)
+            if (rest.disabled) return;
+            if (e.button !== 0) return;
+            e.preventDefault();
+            setVisible(!visible);
           }}
         >
           {visible ? visibilityIcon.off : visibilityIcon.on}
@@ -77,8 +77,8 @@ export const PasswordInput = React.forwardRef<
         type={visible ? "text" : "password"}
       />
     </InputGroup>
-  )
-})
+  );
+});
 
 const VisibilityTrigger = React.forwardRef<HTMLButtonElement, ButtonProps>(
   function VisibilityTrigger(props, ref) {
@@ -94,23 +94,23 @@ const VisibilityTrigger = React.forwardRef<HTMLButtonElement, ButtonProps>(
         aria-label="Toggle password visibility"
         {...props}
       />
-    )
+    );
   },
-)
+);
 
 interface PasswordStrengthMeterProps extends StackProps {
-  max?: number
-  value: number
+  max?: number;
+  value: number;
 }
 
 export const PasswordStrengthMeter = React.forwardRef<
   HTMLDivElement,
   PasswordStrengthMeterProps
 >(function PasswordStrengthMeter(props, ref) {
-  const { max = 4, value, ...rest } = props
+  const { max = 4, value, ...rest } = props;
 
-  const percent = (value / max) * 100
-  const { label, colorPalette } = getColorPalette(percent)
+  const percent = (value / max) * 100;
+  const { label, colorPalette } = getColorPalette(percent);
 
   return (
     <Stack align="flex-end" gap="1" ref={ref} {...rest}>
@@ -133,16 +133,16 @@ export const PasswordStrengthMeter = React.forwardRef<
       </HStack>
       {label && <HStack textStyle="xs">{label}</HStack>}
     </Stack>
-  )
-})
+  );
+});
 
 function getColorPalette(percent: number) {
   switch (true) {
     case percent < 33:
-      return { label: "Low", colorPalette: "red" }
+      return { label: "Low", colorPalette: "red" };
     case percent < 66:
-      return { label: "Medium", colorPalette: "orange" }
+      return { label: "Medium", colorPalette: "orange" };
     default:
-      return { label: "High", colorPalette: "green" }
+      return { label: "High", colorPalette: "green" };
   }
 }

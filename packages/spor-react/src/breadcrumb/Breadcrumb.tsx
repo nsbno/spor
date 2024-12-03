@@ -37,17 +37,33 @@ export type BreadcrumbProps = BoxProps &
  * ```
  */
 export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
-  ({ variant = "base", separator, separatorGap = "0.5rem", children, ...props }, ref) => {
+  (
+    {
+      variant = "base",
+      separator,
+      separatorGap = "0.5rem",
+      children,
+      ...props
+    },
+    ref,
+  ) => {
     const recipe = useRecipe({ recipe: breadcrumbRecipe });
     const styles = recipe({});
     const iconColor = useColorModeValue("blackAlpha.400", "whiteAlpha.400");
 
     const chakraVariant = variant === "ghost" ? "plain" : "underline";
 
-    const validChildren = React.Children.toArray(children).filter(React.isValidElement);
+    const validChildren = React.Children.toArray(children).filter(
+      React.isValidElement,
+    );
 
     return (
-      <ChakraBreadcrumb.Root ref={ref} variant={chakraVariant} css={styles} {...props}>
+      <ChakraBreadcrumb.Root
+        ref={ref}
+        variant={chakraVariant}
+        css={styles}
+        {...props}
+      >
         <ChakraBreadcrumb.List gap={separatorGap}>
           {validChildren.map((child, index) => {
             const isLast = index === validChildren.length - 1;
@@ -65,9 +81,8 @@ export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
         </ChakraBreadcrumb.List>
       </ChakraBreadcrumb.Root>
     );
-  }
+  },
 );
-
 
 export const BreadcrumbLink = ChakraBreadcrumbLink;
 export const BreadcrumbCurrentLink = ChakraBreadcrumbCurrentLink;

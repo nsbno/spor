@@ -18,7 +18,6 @@ export * from "./NumericStepper";
 export * from "./PasswordInput";
 export * from "./PhoneNumberInput";
 export * from "./Radio";
-export * from "./RadioGroup";
 export * from "./SearchInput";
 export * from "./Switch";
 export * from "./Textarea";

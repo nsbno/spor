@@ -14,7 +14,7 @@ export const pressableCardRecipe = defineRecipe({
     cursor: "pointer",
     transitionProperty: "common",
     transitionDuration: "fast",
-    
+
     _disabled: {
       ...baseBackground("disabled"),
       ...baseBorder("disabled"),

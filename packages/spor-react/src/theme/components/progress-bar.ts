@@ -8,13 +8,13 @@ export const progressBarRecipe = defineSlotRecipe({
     },
     background: {
       display: "flex",
-      backgroundColor: "brand.surface.default.light",
+      backgroundColor: "brand.surface.default",
       borderRadius: "sm",
       justifyContent: "flex-start",
       marginX: "auto",
     },
     progress: {
-      backgroundColor: "brand.surface.active.light",
+      backgroundColor: "brand.surface.active",
       borderRadius: "sm",
       maxWidth: "100%",
       transition: "width .2s ease-out",

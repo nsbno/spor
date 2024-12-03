@@ -1,4 +1,4 @@
-import { BoxProps, ProgressLabel, ProgressRoot, ProgressValueText, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
+import { BoxProps, ProgressLabel, ProgressRoot, ProgressValueText, RecipeVariantProps } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { progressBarRecipe } from "../theme/components";
 import { useTranslation } from "react-i18next";

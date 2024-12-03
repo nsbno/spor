@@ -7,14 +7,17 @@
 Spor is getting a major update with Chakra 3.
 
 ### Update props
-* `isDisabled` is now `disabled`
-* `isLoading` is now `loading`
-* `sx` and `__css` is gone, use `css` or `style` instead
-* `colorScheme` is now `colorPalette`
+
+- `isDisabled` is now `disabled`
+- `isLoading` is now `loading`
+- `sx` and `__css` is gone, use `css` or `style` instead
+- `colorScheme` is now `colorPalette`
 
 ### Updated components
-* `Dialog` replaces `Modal` - And all sizes and placements are now available from the same component
-* `Table` components has many changes. Instead of the generic HTML names (Td, Tr etc.), it will now work with full names. Please see docs. Variant `simple` is now `line`.
+
+- `Dialog` replaces `Modal` - And all sizes and placements are now available from the same component
+- `Accordion` now has a different syntax. Consult the documentation for name changes.
+- `Table` components has many changes. Instead of the generic HTML names (Td, Tr etc.), it will now work with full names. Please see docs. Variant `simple` is now `line`.
 
 ### Externals from Chakra:
 

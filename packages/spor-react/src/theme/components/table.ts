@@ -57,7 +57,7 @@ export const tableSlotRecipe = defineSlotRecipe({
       outline: {
         cell: {
           border: "sm",
-          borderColor: "blackAlpha.200",
+          borderColor: "whiteAlpha.200",
           ...numericStyles,
           _first: {
             borderLeft: "none",

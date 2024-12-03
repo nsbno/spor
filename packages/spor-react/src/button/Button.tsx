@@ -22,7 +22,7 @@ type ButtonVariants =
   | "floating";
 type ButtonSizes = "lg" | "md" | "sm" | "xs";
 
-export type ButtonProps = Exclude<
+export type ButtonProps = Omit<
   ChakraButtonProps,
   "size" | "variant" | "colorPalette"
 > &

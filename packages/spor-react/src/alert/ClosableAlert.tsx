@@ -1,20 +1,17 @@
-import {
-  Box,
-  Flex,
-  useDisclosure,
-  useMultiStyleConfig,
-} from "@chakra-ui/react";
+import { Box, Flex, useDisclosure, useSlotRecipe } from "@chakra-ui/react";
 import { CloseFill18Icon } from "@vygruppen/spor-icon-react";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { IconButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
 import { AlertIcon } from "./AlertIcon";
 import { BaseAlert, BaseAlertProps } from "./BaseAlert";
+import { AlertVariantProps } from "@chakra-ui/react/dist/types/styled-system/generated/recipes.gen";
 
-type ClosableAlertProps = BaseAlertProps & {
-  /** Callback for when the close button is clicked */
-  onClose?: () => void;
-};
+type ClosableAlertProps = BaseAlertProps &
+  PropsWithChildren<AlertVariantProps> & {
+    /** Callback for when the close button is clicked */
+    onClose?: () => void;
+  };
 /**
  * A closable alert component.
  *
@@ -43,10 +40,11 @@ export const ClosableAlert = ({
   children,
   onClose: externalOnClose = () => {},
 }: ClosableAlertProps) => {
-  const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true });
-  const styles = useMultiStyleConfig("Alert", { variant });
+  const { open, onClose } = useDisclosure({ defaultOpen: true });
+  const recipe = useSlotRecipe({ key: "alert" });
+  const style = recipe({ variant });
   const { t } = useTranslation();
-  if (!isOpen) {
+  if (!open) {
     return null;
   }
 
@@ -63,7 +61,7 @@ export const ClosableAlert = ({
         onClick={handleClose}
         icon={<CloseFill18Icon />}
         aria-label={t(texts.close)}
-        sx={styles.closeButton}
+        css={style}
       />
       <AlertIcon variant={variant} />
       <Flex direction="column" gap={title ? 2 : undefined} textAlign="left">

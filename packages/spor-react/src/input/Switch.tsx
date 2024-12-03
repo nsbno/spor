@@ -1,18 +1,14 @@
-
 import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { switchRecipe } from "../theme/components";
 
-
 type SwitchVariants = RecipeVariantProps<typeof switchRecipe>;
 
-export type SwitchProps =  BoxProps &
-PropsWithChildren<SwitchVariants> & {
-  children: React.ReactNode;
-  size?: "sm" | "md" | "lg";
-}
-
-
+export type SwitchProps = BoxProps &
+  PropsWithChildren<SwitchVariants> & {
+    children: React.ReactNode;
+    size?: "sm" | "md" | "lg";
+  };
 
 /**
  * A switch lets you toggle between on and off, yes and no. It's an alternative to a checkbox.
@@ -47,4 +43,3 @@ export const Switch = forwardRef<HTMLDivElement, SwitchProps>(
     );
   },
 );
-   

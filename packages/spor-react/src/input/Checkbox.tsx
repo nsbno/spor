@@ -1,4 +1,8 @@
-import {   RecipeVariantProps, useRecipe, CheckboxRootProps as ChakraCheckboxProp } from "@chakra-ui/react";
+import {
+  RecipeVariantProps,
+  useRecipe,
+  CheckboxRootProps as ChakraCheckboxProp,
+} from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { checkboxRecipe } from "../theme/components";
 
@@ -6,7 +10,8 @@ type CheckboxVariants = RecipeVariantProps<typeof checkboxRecipe>;
 
 export type CheckboxProps = Exclude<ChakraCheckboxProp, "variant"> &
   PropsWithChildren<CheckboxVariants> & {
-    children: React.ReactNode;}
+    children: React.ReactNode;
+  };
 
 /**
  * Creates a checkbox.
@@ -31,5 +36,5 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         {children}
       </Checkbox>
     );
-  }
-) 
+  },
+);

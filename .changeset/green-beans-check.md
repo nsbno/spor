@@ -15,6 +15,7 @@ Spor is getting a major update with Chakra 3.
 ### Updated components
 
 - `Dialog` replaces `Modal` - And all sizes and placements are now available from the same component
+- `RadioCard` and `RadioCardGroup` is replaced by new syntax. Please consult the docs for more information.
 
 ### Externals from Chakra:
 

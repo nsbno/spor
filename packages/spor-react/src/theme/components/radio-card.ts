@@ -1,21 +1,20 @@
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import { defineSlotRecipe } from "@chakra-ui/react";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
-import { anatomy } from "@chakra-ui/theme-tools";
 import { outlineBorder } from "../utils/outline-utils";
 
-const parts = anatomy("radio-card").parts(
-  "container",
-  "checked",
-  "radioInput",
-  "focused",
-  "focusedChecked",
-);
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props: any) => ({
-    container: {
+export const radioCardSlotRecipe = defineSlotRecipe({
+  slots: [
+    "root",
+    "item",
+    "label",
+    "itemText",
+    "itemDescription",
+    "itemContent",
+  ],
+  className: "spor-radio-card",
+  base: {
+    root: {
       overflow: "hidden",
       fontSize: "inherit",
       display: "block",
@@ -26,109 +25,103 @@ const config = helpers.defineMultiStyleConfig({
 
       _disabled: {
         pointerEvents: "none",
-        ...baseBackground("disabled", props),
-        ...baseBorder("disabled", props),
-        ...baseText("disabled", props),
+        ...baseBackground("disabled"),
+        ...baseBorder("disabled"),
+        ...baseText("disabled"),
+      },
+      _checked: {
+        outline: "2px solid",
+        ...outlineBorder("focus"),
+        ...floatingBackground("active"),
       },
     },
-    checked: {
-      outline: "2px solid",
-      ...outlineBorder("focus", props),
-      ...floatingBackground("active", props),
-    },
-    radioInput: {
-      appearance: "none",
-      position: "absolute",
-      opacity: 0,
-      zIndex: -1,
-    },
-  }),
+  },
   variants: {
-    base: (props) => ({
-      container: {
-        ...baseText("default", props),
-        ...baseBackground("default", props),
-        ...baseBorder("default", props),
-        _hover: {
-          ...baseBackground("hover", props),
-          ...baseBorder("hover", props),
+    variant: {
+      base: {
+        root: {
+          ...baseText("default"),
+          ...baseBackground("default"),
+          ...baseBorder("default"),
+          _hover: {
+            ...baseBackground("hover"),
+            ...baseBorder("hover"),
+          },
+          _active: {
+            ...baseBackground("active"),
+            ...baseBorder("active"),
+          },
         },
-        _active: {
-          ...baseBackground("active", props),
-          ...baseBorder("active", props),
+        _checked: {
+          _hover: {
+            ...baseBorder("hover"),
+          },
+          _active: {
+            ...baseBackground("active"),
+            ...baseBorder("active"),
+          },
         },
-      },
-      checked: {
-        _hover: {
-          ...baseBorder("hover", props),
+        _focusedChecked: {
+          outline: "4px solid",
+          outlineStyle: "double",
+          ...outlineBorder("focus"),
+          outlineOffset: "-1px",
         },
-        _active: {
-          ...baseBackground("active", props),
-          ...baseBorder("active", props),
-        },
-      },
-      focusedChecked: {
-        outline: "4px solid",
-        outlineStyle: "double",
-        ...outlineBorder("focus", props),
-        outlineOffset: "-1px",
-      },
-      focused: {
-        outline: "2px solid",
-        ...outlineBorder("focus", props),
-        outlineOffset: "1px",
-        boxShadow: `inset 0 0 0 1px rgba(0, 0, 0, 0.40)`,
-        _hover: {
-          ...baseBorder("hover", props),
-          boxShadow: "none",
-          outlineOffset: "0px",
-        },
-      },
-    }),
-    floating: (props) => ({
-      container: {
-        ...floatingBackground("default", props),
-        ...floatingBorder("default", props),
-        boxShadow: "sm",
-        _hover: {
-          ...floatingBackground("hover", props),
-          ...floatingBorder("hover", props),
-          boxShadow: "md",
-        },
-        _active: {
-          ...floatingBackground("active", props),
-          ...floatingBorder("active", props),
+        _focused: {
+          outline: "2px solid",
+          ...outlineBorder("focus"),
+          outlineOffset: "1px",
+          boxShadow: `inset 0 0 0 1px rgba(0, 0, 0, 0.40)`,
+          _hover: {
+            ...baseBorder("hover"),
+            boxShadow: "none",
+            outlineOffset: "0px",
+          },
         },
       },
-      checked: {
-        _hover: {
-          ...floatingBorder("hover", props),
-          boxShadow: "md",
+      floating: {
+        root: {
+          ...floatingBackground("default"),
+          ...floatingBorder("default"),
+          boxShadow: "sm",
+          _hover: {
+            ...floatingBackground("hover"),
+            ...floatingBorder("hover"),
+            boxShadow: "md",
+          },
+          _active: {
+            ...floatingBackground("active"),
+            ...floatingBorder("active"),
+          },
         },
-        _active: {
-          ...floatingBackground("active", props),
-          ...floatingBorder("active", props),
+        _checked: {
+          _hover: {
+            ...floatingBorder("hover"),
+            boxShadow: "md",
+          },
+          _active: {
+            ...floatingBackground("active"),
+            ...floatingBorder("active"),
+          },
+        },
+        _focusedChecked: {
+          outline: "4px solid",
+          outlineStyle: "double",
+          ...outlineBorder("focus"),
+          outlineOffset: "-1px",
+        },
+        _focused: {
+          outline: "2px solid",
+          ...outlineBorder("focus"),
+          outlineOffset: "1px",
+          boxShadow: `inset 0 0 0 1px rgba(0, 0, 0, 0.10)`,
+          _hover: {
+            ...floatingBorder("hover"),
+            boxShadow: "md",
+            outlineOffset: "0px",
+          },
         },
       },
-      focusedChecked: {
-        outline: "4px solid",
-        outlineStyle: "double",
-        ...outlineBorder("focus", props),
-        outlineOffset: "-1px",
-      },
-      focused: {
-        outline: "2px solid",
-        ...outlineBorder("focus", props),
-        outlineOffset: "1px",
-        boxShadow: `inset 0 0 0 1px rgba(0, 0, 0, 0.10)`,
-        _hover: {
-          ...floatingBorder("hover", props),
-          boxShadow: "md",
-          outlineOffset: "0px",
-        },
-      },
-    }),
+    },
   },
 });
-
-export default config;

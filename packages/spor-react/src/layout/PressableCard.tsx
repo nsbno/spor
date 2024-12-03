@@ -1,16 +1,18 @@
-import React from "react";
-import {
-  As,
-  Box,
-  BoxProps,
-  forwardRef,
-  useStyleConfig,
-} from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import { pressableCardRecipe } from "../theme/components";
 
-type PressableCardProps = BoxProps & {
-  /** Defaults to "base"  */
+
+type PressableCardVariants = RecipeVariantProps<typeof pressableCardRecipe>;
+
+ type PressableCardProps = BoxProps & 
+PropsWithChildren<PressableCardVariants> & {
+  children: React.ReactNode;
   variant?: "floating" | "accent" | "base";
 };
+
+
+
 
 /**
  * `PressableCard` is a component that renders a pressable card.
@@ -37,21 +39,20 @@ type PressableCardProps = BoxProps & {
  * </PressableCard>
  * ```
  *
- * For a static card with other color schemes, use the `StaticCard` component.
+ * For a static card with other color palette, use the `StaticCard` component.
  *
  * @see StaticCard
  */
 
-export const PressableCard = forwardRef<PressableCardProps, As>(
-  ({ children, variant = "floating", ...props }, ref) => {
-    const styles = useStyleConfig("PressableCard", {
-      variant,
-    });
-
+export const PressableCard = forwardRef<HTMLDivElement, PressableCardProps>(
+  ({ variant = "base", children, ...props }, ref) => {
+    const recipe = useRecipe({ recipe: pressableCardRecipe });
+    const styles = recipe({ variant });    
     return (
-      <Box __css={styles} {...props} ref={ref}>
+      <Box css={styles} {...props} ref={ref}>
         {children}
       </Box>
     );
   },
-);
+)
+

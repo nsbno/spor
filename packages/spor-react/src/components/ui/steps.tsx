@@ -1,22 +1,22 @@
-import { Box, Steps as ChakraSteps } from "@chakra-ui/react"
-import * as React from "react"
-import { LuCheck } from "react-icons/lu"
+import { Box, Steps as ChakraSteps } from "@chakra-ui/react";
+import * as React from "react";
+import { LuCheck } from "react-icons/lu";
 
 interface StepInfoProps {
-  title?: React.ReactNode
-  description?: React.ReactNode
+  title?: React.ReactNode;
+  description?: React.ReactNode;
 }
 
 export interface StepsItemProps
   extends Omit<ChakraSteps.ItemProps, "title">,
     StepInfoProps {
-  completedIcon?: React.ReactNode
-  icon?: React.ReactNode
+  completedIcon?: React.ReactNode;
+  icon?: React.ReactNode;
 }
 
 export const StepsItem = React.forwardRef<HTMLDivElement, StepsItemProps>(
   function StepsItem(props, ref) {
-    const { title, description, completedIcon, icon, ...rest } = props
+    const { title, description, completedIcon, icon, ...rest } = props;
     return (
       <ChakraSteps.Item {...rest} ref={ref}>
         <ChakraSteps.Trigger>
@@ -30,12 +30,12 @@ export const StepsItem = React.forwardRef<HTMLDivElement, StepsItemProps>(
         </ChakraSteps.Trigger>
         <ChakraSteps.Separator />
       </ChakraSteps.Item>
-    )
+    );
   },
-)
+);
 
 const StepInfo = (props: StepInfoProps) => {
-  const { title, description } = props
+  const { title, description } = props;
 
   if (title && description) {
     return (
@@ -43,7 +43,7 @@ const StepInfo = (props: StepInfoProps) => {
         <ChakraSteps.Title>{title}</ChakraSteps.Title>
         <ChakraSteps.Description>{description}</ChakraSteps.Description>
       </Box>
-    )
+    );
   }
 
   return (
@@ -53,30 +53,30 @@ const StepInfo = (props: StepInfoProps) => {
         <ChakraSteps.Description>{description}</ChakraSteps.Description>
       )}
     </>
-  )
-}
+  );
+};
 
 interface StepsIndicatorProps {
-  completedIcon: React.ReactNode
-  icon?: React.ReactNode
+  completedIcon: React.ReactNode;
+  icon?: React.ReactNode;
 }
 
 export const StepsIndicator = React.forwardRef<
   HTMLDivElement,
   StepsIndicatorProps
 >(function StepsIndicator(props, ref) {
-  const { icon = <ChakraSteps.Number />, completedIcon } = props
+  const { icon = <ChakraSteps.Number />, completedIcon } = props;
   return (
     <ChakraSteps.Indicator ref={ref}>
       <ChakraSteps.Status complete={completedIcon} incomplete={icon} />
     </ChakraSteps.Indicator>
-  )
-})
+  );
+});
 
-export const StepsList = ChakraSteps.List
-export const StepsRoot = ChakraSteps.Root
-export const StepsContent = ChakraSteps.Content
-export const StepsCompletedContent = ChakraSteps.CompletedContent
+export const StepsList = ChakraSteps.List;
+export const StepsRoot = ChakraSteps.Root;
+export const StepsContent = ChakraSteps.Content;
+export const StepsCompletedContent = ChakraSteps.CompletedContent;
 
-export const StepsNextTrigger = ChakraSteps.NextTrigger
-export const StepsPrevTrigger = ChakraSteps.PrevTrigger
+export const StepsNextTrigger = ChakraSteps.NextTrigger;
+export const StepsPrevTrigger = ChakraSteps.PrevTrigger;

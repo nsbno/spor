@@ -1,17 +1,17 @@
 import React, { forwardRef, PropsWithChildren } from "react";
-import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import { RecipeVariantProps, BoxProps } from "@chakra-ui/react";
 import { radioRecipe } from "../theme/components";
+import { RadioGroup as ChakraRadioGroup } from "@chakra-ui/react";
+
 type RadioVariants = RecipeVariantProps<typeof radioRecipe>;
 
 export type RadioProps = BoxProps &
-PropsWithChildren<RadioVariants> &{
-  children: ReactNode.ReactNode;
-   
-}
-/* export type RadioProps = Exclude<
-  ChakraRadioProps,
-  "colorScheme" | "size" | "variant"
->; */
+  PropsWithChildren<RadioVariants> &
+  ChakraRadioGroup.ItemProps & {
+    children?: React.ReactNode;
+    rootRef?: React.Ref<HTMLDivElement>;
+    inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+  };
 
 /**
  * The humble radio button.
@@ -31,11 +31,20 @@ PropsWithChildren<RadioVariants> &{
  *   <Radio value="first-class">First Class</Radio>
  * </RadioGroup>
  */
-export const RadioCard = forwardRef<HTMLDivElement, RadioProps>(
-  ({ colorPalette = "white", children, ...props }, ref) => {
-    const recipe = useRecipe({ recipe: radioRecipe });
-    const styles = recipe({ colorPalette });
-    return (
-      <Radio {...props} ref={ref} />
-    )});
+export const RadioCard = forwardRef<HTMLInputElement, RadioProps>(
+  (props, ref) => {
+    const { children, inputProps, rootRef, ...rest } = props;
 
+    return (
+      <ChakraRadioGroup.Item ref={rootRef} {...rest}>
+        <ChakraRadioGroup.ItemHiddenInput ref={ref} {...inputProps} />
+        <ChakraRadioGroup.ItemIndicator />
+        {children && (
+          <ChakraRadioGroup.ItemText>{children}</ChakraRadioGroup.ItemText>
+        )}
+      </ChakraRadioGroup.Item>
+    );
+  },
+);
+
+export const RadioGroup = ChakraRadioGroup.Root;

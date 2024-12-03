@@ -2,17 +2,13 @@ import React, { forwardRef, PropsWithChildren } from "react";
 import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
 import { pressableCardRecipe } from "../theme/components";
 
-
 type PressableCardVariants = RecipeVariantProps<typeof pressableCardRecipe>;
 
- type PressableCardProps = BoxProps & 
-PropsWithChildren<PressableCardVariants> & {
-  children: React.ReactNode;
-  variant?: "floating" | "accent" | "base";
-};
-
-
-
+type PressableCardProps = BoxProps &
+  PropsWithChildren<PressableCardVariants> & {
+    children: React.ReactNode;
+    variant?: "floating" | "accent" | "base";
+  };
 
 /**
  * `PressableCard` is a component that renders a pressable card.
@@ -47,12 +43,11 @@ PropsWithChildren<PressableCardVariants> & {
 export const PressableCard = forwardRef<HTMLDivElement, PressableCardProps>(
   ({ variant = "base", children, ...props }, ref) => {
     const recipe = useRecipe({ recipe: pressableCardRecipe });
-    const styles = recipe({ variant });    
+    const styles = recipe({ variant });
     return (
       <Box css={styles} {...props} ref={ref}>
         {children}
       </Box>
     );
   },
-)
-
+);

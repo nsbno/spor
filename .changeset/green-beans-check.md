@@ -15,6 +15,7 @@ Spor is getting a major update with Chakra 3.
 ### Updated components
 
 - `Dialog` replaces `Modal` - And all sizes and placements are now available from the same component
+- `Accordion` now has a different syntax. Consult the documentation for name changes. 
 
 ### Externals from Chakra:
 

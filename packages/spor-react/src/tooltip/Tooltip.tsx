@@ -1,15 +1,15 @@
+import React, { forwardRef } from "react";
+import { PopoverRootProps as ChakraPopoverRootProps } from "@chakra-ui/react";
 import {
-  Popover,
   PopoverArrow,
   PopoverBody,
-  PopoverCloseButton,
+  PopoverCloseTrigger,
   PopoverContent,
-  PopoverProps,
+  PopoverRoot,
   PopoverTrigger,
-} from "@chakra-ui/react";
-import React from "react";
+} from "../popover";
 
-export type TooltipProps = PopoverProps & {
+export type TooltipProps = ChakraPopoverRootProps & {
   /**
    * Whatever is supposed to trigger the tooltip.
    * Must be focusable - like a link or button */
@@ -37,34 +37,37 @@ export type TooltipProps = PopoverProps & {
   size?: "sm" | "lg";
 };
 /** A tooltip component. */
-export const Tooltip = ({
-  children,
-  content,
-  onClose,
-  isOpen,
-  defaultIsOpen,
-  placement = "bottom",
-  size = "sm",
-  withCloseButton = false,
-  ...props
-}: TooltipProps) => {
-  return (
-    <Popover
-      onClose={onClose}
-      isOpen={isOpen}
-      defaultIsOpen={defaultIsOpen}
-      placement={placement}
-      size={size}
-      arrowSize={12}
-      arrowShadowColor="none"
-      {...props}
-    >
-      <PopoverTrigger>{children}</PopoverTrigger>
-      <PopoverContent>
-        <PopoverArrow />
-        {withCloseButton && <PopoverCloseButton />}
-        <PopoverBody>{content}</PopoverBody>
-      </PopoverContent>
-    </Popover>
-  );
-};
+export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
+  function Tooltip(props, ref) {
+    const {
+      children,
+      content,
+      onClose,
+      isOpen,
+      defaultIsOpen,
+      placement = "bottom",
+      size = "sm",
+      withCloseButton = false,
+    } = props;
+    return (
+      <PopoverRoot
+        onClose={onClose}
+        isOpen={isOpen}
+        defaultIsOpen={defaultIsOpen}
+        placement={placement}
+        size={size}
+        arrowSize={12}
+        arrowShadowColor="none"
+        ref={ref}
+        {...props}
+      >
+        <PopoverTrigger>{children}</PopoverTrigger>
+        <PopoverContent>
+          <PopoverArrow />
+          {withCloseButton && <PopoverCloseTrigger />}
+          <PopoverBody>{content}</PopoverBody>
+        </PopoverContent>
+      </PopoverRoot>
+    );
+  },
+);

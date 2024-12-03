@@ -1,26 +1,23 @@
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy, mode } from "@chakra-ui/theme-tools";
+import { defineSlotRecipe } from "@chakra-ui/react";
 import { baseText } from "../utils/base-utils";
-import { brandBackground, brandText } from "../utils/brand-utils";
+import { brandBackground } from "../utils/brand-utils";
 import { accentText, accentBackground } from "../utils/accent-utils";
 
-const parts = anatomy("stepper").parts(
-  "root",
-  "container",
-  "innerContainer",
-  "title",
-  "stepCounter",
-  "stepContainer",
-  "stepButton",
-  "stepNumber",
-  "stepTitle",
-  "closeButton",
-);
-
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: {
+export const stepperSlotRecipe = defineSlotRecipe({
+  slots: [
+    "root",
+    "container",
+    "innerContainer",
+    "title",
+    "stepCounter",
+    "stepContainer",
+    "stepButton",
+    "stepNumber",
+    "stepTitle",
+    "closeButton",
+  ],
+  className: "spor-stepper",
+  base: {
     root: {
       display: "flex",
       alignItems: "center",
@@ -47,7 +44,6 @@ const config = helpers.defineMultiStyleConfig({
       fontWeight: "bold",
       WebkitLineClamp: 2,
       display: "-webkit-box",
-      WebkitBoxOrient: "vertical",
       textAlign: "center",
       maxWidth: "80%",
     },
@@ -61,40 +57,38 @@ const config = helpers.defineMultiStyleConfig({
     },
   },
   variants: {
-    base: () => ({
-      root: {
-        backgroundColor: "transparent",
-      },
-    }),
-    accent: (props) => ({
-      root: {
-        backgroundColor: mode("accent.bg.light", "accent.bg.dark")(props),
-        ...accentText("default", props),
-      },
-      stepButton: {
-        color:
-          props.state === "disabled"
-            ? baseText("disabled", props).color
-            : props.state === "completed"
-              ? baseText("default", props).color
-              : brandText("default", props).color,
-        _hover: {
-          backgroundColor:
-            props.state === "disabled"
-              ? "transparent"
-              : accentBackground("hover", props).backgroundColor,
+    variant: {
+      base: {
+        root: {
+          backgroundColor: "transparent",
         },
       },
-      backButton: {
-        _hover: {
-          ...brandBackground("hover", props),
+      accent: {
+        root: {
+          backgroundColor: "accent.bg",
+          ...accentText("default"),
+        },
+        stepButton: {
+          color: baseText("default").color,
+          _disabled: {
+            color: baseText("disabled").color,
+          },
+          _hover: {
+            backgroundColor: accentBackground("hover").backgroundColor,
+            _disabled: {
+              backgroundColor: "transparent",
+            },
+          },
+        },
+        backButton: {
+          _hover: {
+            ...brandBackground("hover"),
+          },
         },
       },
-    }),
+    },
   },
-  defaultProps: {
+  defaultVariants: {
     variant: "base",
   },
 });
-
-export default config;

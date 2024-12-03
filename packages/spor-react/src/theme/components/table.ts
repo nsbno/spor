@@ -1,9 +1,6 @@
-import { tableAnatomy as parts } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
-import { baseBorder, baseText } from "../utils/base-utils";
-
-const helpers = createMultiStyleConfigHelpers(parts.keys);
+import { defineSlotRecipe } from "@chakra-ui/react";
+import { baseText } from "../utils/base-utils";
+import { useColorModeValue } from "../../color-mode";
 
 const numericStyles = {
   "&[data-is-numeric=true]": {
@@ -11,151 +8,131 @@ const numericStyles = {
   },
 };
 
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
-    table: {
+export const tableSlotRecipe = defineSlotRecipe({
+  slots: [
+    "root",
+    "body",
+    "row",
+    "cell",
+    "columnHeader",
+    "caption",
+    "footer",
+    "header",
+  ],
+  className: "spor-table",
+  base: {
+    root: {
+      tableLayout: "fixed",
       borderCollapse: "collapse",
-      ...baseText("default", props),
       width: "100%",
+      ...baseText("default"),
     },
-    th: {
+    body: {
+      ...baseText("default"),
+    },
+    columnHeader: {
       fontWeight: "bold",
       textAlign: "start",
     },
-    td: {
-      textAlign: "start",
-    },
-    tfoot: {
-      tr: {
-        "&:last-of-type": {
-          th: { borderBottomWidth: 0 },
+  },
+  variants: {
+    variant: {
+      line: {
+        cell: {
+          borderBottom: "sm",
+          borderColor: useColorModeValue(`blackAlpha.200`, `whiteAlpha.300`),
+          ...numericStyles,
+        },
+        row: {
+          borderBottom: "sm",
+          borderColor: useColorModeValue(`blackAlpha.200`, `whiteAlpha.300`),
+          ...numericStyles,
+          "&:last-of-type": {
+            td: {
+              borderBottomWidth: 0,
+            },
+          },
         },
       },
-    },
-    caption: {
-      marginTop: 4,
-      fontFamily: "heading",
-      textAlign: "center",
-      fontWeight: "bold",
-      color: "currentColor",
-    },
-  }),
-  variants: {
-    simple: (props) => ({
-      th: {
-        borderBottom: "sm",
-        borderColor: mode(`blackAlpha.200`, `whiteAlpha.300`)(props),
-        ...numericStyles,
-      },
-      td: {
-        borderBottom: "sm",
-        borderColor: mode(`blackAlpha.200`, `whiteAlpha.300`)(props),
-        ...numericStyles,
-      },
-    }),
-    outline: (props) => ({
-      tbody: {
-        tr: {
+      outline: {
+        cell: {
+          border: "sm",
+          borderColor: "blackAlpha.200",
+          ...numericStyles,
+          _first: {
+            borderLeft: "none",
+          },
+        },
+        row: {
           transitionDuration: "fast",
           transitionProperty: "background-color, box-shadow",
           _hover: {
-            ...baseBorder("hover", props),
-            outlineOffset: "-2px",
-            backgroundColor: mode(
-              props.colorScheme === "grey" ? "mint" : "coralGreen",
-              "whiteAlpha.200",
-            )(props),
+            backgroundColor: "blackAlpha.200",
           },
           _last: {
-            borderBottomRadius: "md",
+            td: {
+              borderBottom: "none",
+            },
           },
         },
       },
-      th: {
-        border: mode("none", "md"),
-        borderColor: mode("transparent", `whiteAlpha.200`)(props),
-        backgroundColor: mode(`${props.colorScheme}.100`, "darkTeal")(props),
-        ...numericStyles,
-      },
-      td: {
-        border: mode("sm", "md"),
-        borderColor: mode(
-          props.colorScheme === "grey" ? "silver" : "blackAlpha.200",
-          "whiteAlpha.200",
-        )(props),
-        ...numericStyles,
-        _first: {
-          borderLeft: "none",
+    },
+    size: {
+      sm: {
+        table: {
+          fontSize: ["mobile.xs", "desktop.xs"],
+        },
+        th: {
+          paddingX: 3,
+          paddingY: 1.5,
+        },
+        td: {
+          paddingX: 3,
+          paddingY: 1.5,
+        },
+        caption: {
+          paddingX: 3,
+          paddingY: 1.5,
         },
       },
-      tr: {
-        _last: {
-          td: {
-            borderBottom: "none",
-          },
+      md: {
+        table: {
+          fontSize: ["mobile.sm", "desktop.sm"],
+        },
+        th: {
+          paddingX: 3,
+          paddingY: 1.5,
+        },
+        td: {
+          paddingX: 3,
+          paddingY: 1.5,
+        },
+        caption: {
+          paddingX: 3,
+          paddingY: 1.5,
         },
       },
-    }),
-    unstyled: {},
-  },
-  sizes: {
-    sm: {
-      table: {
-        fontSize: ["mobile.xs", "desktop.xs"],
-      },
-      th: {
-        paddingX: 3,
-        paddingY: 1.5,
-      },
-      td: {
-        paddingX: 3,
-        paddingY: 1.5,
-      },
-      caption: {
-        paddingX: 3,
-        paddingY: 1.5,
-      },
-    },
-    md: {
-      table: {
-        fontSize: ["mobile.sm", "desktop.sm"],
-      },
-      th: {
-        paddingX: 3,
-        paddingY: 1.5,
-      },
-      td: {
-        paddingX: 3,
-        paddingY: 1.5,
-      },
-      caption: {
-        paddingX: 3,
-        paddingY: 1.5,
-      },
-    },
-    lg: {
-      table: {
-        fontSize: ["mobile.sm", "desktop.sm"],
-      },
-      th: {
-        paddingX: 3,
-        paddingY: "15px",
-      },
-      td: {
-        paddingX: 3,
-        paddingY: "15px",
-      },
-      caption: {
-        paddingX: 3,
-        paddingY: "15px",
+      lg: {
+        table: {
+          fontSize: ["mobile.sm", "desktop.sm"],
+        },
+        th: {
+          paddingX: 3,
+          paddingY: "15px",
+        },
+        td: {
+          paddingX: 3,
+          paddingY: "15px",
+        },
+        caption: {
+          paddingX: 3,
+          paddingY: "15px",
+        },
       },
     },
   },
-  defaultProps: {
-    variant: "simple",
+  defaultVariants: {
+    variant: "line",
     size: "md",
-    colorScheme: "grey",
   },
 });
-
-export default config;

@@ -1,11 +1,9 @@
-import { anatomy } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
+import { defineSlotRecipe } from "@chakra-ui/react";
 
-const parts = anatomy("alertExpandable").parts("container", "accordion");
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: {
+export const alertExpandableSlotRecipe = defineSlotRecipe({
+  slots: ["container", "accordion"],
+  className: "spor-alert-expandable",
+  base: {
     container: {
       paddingX: 3,
       paddingY: 2,
@@ -21,85 +19,85 @@ const config = helpers.defineMultiStyleConfig({
     },
   },
   variants: {
-    info: {
-      accordion: {
-        outlineColor: "cloudy",
-      },
-      container: {
-        _hover: {
-          outlineColor: "sky",
+    variant: {
+      info: {
+        accordion: {
+          outlineColor: "cloudy",
         },
-        _active: {
-          backgroundColor: "icyBlue",
-        },
-      },
-    },
-    success: {
-      accordion: {
-        outlineColor: "coralGreen",
-      },
-      container: {
-        _hover: {
-          outlineColor: "blueGreen",
-        },
-        _active: {
-          backgroundColor: "mint",
+        container: {
+          _hover: {
+            outlineColor: "sky",
+          },
+          _active: {
+            backgroundColor: "icyBlue",
+          },
         },
       },
-    },
-    warning: {
-      accordion: {
-        outlineColor: "primrose",
-      },
-      container: {
-        _hover: {
-          outlineColor: "sunshine",
+      success: {
+        accordion: {
+          outlineColor: "coralGreen",
         },
-        _active: {
-          backgroundColor: "cornSilk",
-        },
-      },
-    },
-    "alt-transport": {
-      accordion: {
-        outlineColor: "burntYellow",
-      },
-      container: {
-        _hover: {
-          outlineColor: "golden",
-        },
-        _active: {
-          backgroundColor: "sunshine",
+        container: {
+          _hover: {
+            outlineColor: "blueGreen",
+          },
+          _active: {
+            backgroundColor: "mint",
+          },
         },
       },
-    },
-    error: {
-      accordion: {
-        outlineColor: "salmon",
+      warning: {
+        accordion: {
+          outlineColor: "primrose",
+        },
+        container: {
+          _hover: {
+            outlineColor: "sunshine",
+          },
+          _active: {
+            backgroundColor: "cornSilk",
+          },
+        },
       },
-      container: {
-        _hover: {
-          outlineColor: "apricot",
+      "alt-transport": {
+        accordion: {
+          outlineColor: "burntYellow",
         },
-        _active: {
-          backgroundColor: "pink",
+        container: {
+          _hover: {
+            outlineColor: "golden",
+          },
+          _active: {
+            backgroundColor: "sunshine",
+          },
         },
       },
-    },
-    service: {
-      container: {
-        _hover: {
-          outlineColor: "blueGreen",
+      error: {
+        accordion: {
+          outlineColor: "salmon",
         },
-        _active: {
-          backgroundColor: "pine",
+        container: {
+          _hover: {
+            outlineColor: "apricot",
+          },
+          _active: {
+            backgroundColor: "pink",
+          },
+        },
+      },
+      service: {
+        container: {
+          _hover: {
+            outlineColor: "blueGreen",
+          },
+          _active: {
+            backgroundColor: "pine",
+          },
         },
       },
     },
   },
-  defaultProps: {
+  defaultVariants: {
     variant: "info",
   },
 });
-
-export default config;

@@ -1,27 +1,26 @@
-import { popoverAnatomy as parts } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { cssVar, mode } from "@chakra-ui/theme-tools";
+import { defineSlotRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
-const $popperBg = cssVar("popper-bg");
-const $arrowBg = cssVar("popper-arrow-bg");
-const $arrowShadowColor = cssVar("popper-arrow-shadow-color");
-
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
-    popper: {
+export const popoverSlotRecipe = defineSlotRecipe({
+  slots: [
+    "content",
+    "header",
+    "body",
+    "footer",
+    "arrow",
+    "arrowTip",
+    "closeTrigger",
+  ],
+  className: "spor-popover",
+  base: {
+    content: {
       zIndex: "popover",
     },
-    content: {
-      [$popperBg.variable]: mode(
-        "colors.surface.tertiary.light",
-        "colors.surface.tertiary.dark",
-      )(props),
-      backgroundColor: $popperBg.reference,
-      [$arrowBg.variable]: $popperBg.reference,
-      [$arrowShadowColor.variable]: "colors.blackAlpha.300",
+    body: {
+      "--popover-bg": "brand.surface.tertiary",
+      backgroundColor: "---popover-bg",
+      "--arrow-bg": "---popover-bg",
+      "--arrow-shadow-color": "blackAlpha.300",
       color: "white", // TODO: Should this be a semantic token? Where does it fit in?
       borderRadius: "sm",
       padding: 1.5,
@@ -34,10 +33,10 @@ const config = helpers.defineMultiStyleConfig({
       clipPath:
         "path('M 0 0 Q 2.4 6 0 12 Q 6 9.6 12 12 Q 9.6 6 12 0 Q 6 2.4 0 0 z')",
     },
-    closeButton: {
+    closeTrigger: {
       position: "absolute",
       color: "white",
-      ...focusVisibleStyles(props),
+      ...focusVisibleStyles(),
       _hover: {
         backgroundColor: "whiteAlpha.100",
       },
@@ -48,21 +47,24 @@ const config = helpers.defineMultiStyleConfig({
       top: 2,
       right: 1,
     },
-  }),
-  sizes: {
-    sm: {
-      content: {
-        paddingX: 1.5,
-        paddingY: 1,
+  },
+  variants: {
+    size: {
+      sm: {
+        content: {
+          paddingX: 1.5,
+          paddingY: 1,
+        },
       },
-    },
-    lg: {
-      content: {
-        paddingX: 3,
-        paddingY: 2,
+      lg: {
+        content: {
+          paddingX: 3,
+          paddingY: 2,
+        },
       },
     },
   },
+  defaultVariants: {
+    size: "sm",
+  },
 });
-
-export default config;

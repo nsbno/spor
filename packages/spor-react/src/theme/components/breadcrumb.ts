@@ -43,5 +43,4 @@ export const breadcrumbRecipe = defineRecipe({
       },
     },
   },
- 
 });

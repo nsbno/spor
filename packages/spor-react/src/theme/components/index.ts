@@ -31,7 +31,7 @@ export { default as Popover } from "./popover";
 export * from "./progress-bar";
 export { default as ProgressIndicator } from "./progress-indicator";
 export { default as RadioCard } from "./radio-card";
-export { default as Radio } from "./radio";
+export * from "./radio";
 export { default as Select } from "./select";
 export { default as Stepper } from "./stepper";
 export * from "./switch";

@@ -1,24 +1,17 @@
-import { radioAnatomy as parts } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
+import { defineSlotRecipe } from "@chakra-ui/react";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
-import { brandBackground, brandText } from "../utils/brand-utils";
+import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
+export const radioRecipe = defineSlotRecipe({
+  slots: ["container", "label", "control"],
+  className: "spor-radio",
+  base: {
     container: {
       _hover: {
-        "input:enabled + .chakra-radio__control": {
-          backgroundColor: "inherit",
-          borderColor: mode("text.default.light", "text.default.dark")(props),
-        },
-        "input:enabled:checked + .chakra-radio__control": {
-          color: brandBackground("hover", props).backgroundColor,
-          borderColor: brandBackground("hover", props).backgroundColor,
-        },
+        backgroundColor: "inherit",
+        borderColor: "text.default.light",
+        color: brandBackground("hover").backgroundColor,
       },
     },
     label: {
@@ -26,25 +19,20 @@ const config = helpers.defineMultiStyleConfig({
       _disabled: { opacity: 0.4 },
     },
     control: {
-      width: 4,
-      height: 4,
+      width: "1rem",
+      height: "1rem",
       backgroundColor: "inherit",
       border: "2px solid",
-      borderColor: baseBorder("default", props).outlineColor,
+      borderColor: baseBorder("default").outlineColor,
       borderRadius: "50%",
-
-      ...focusVisibleStyles(props),
-
+      ...focusVisibleStyles(),
       _disabled: {
-        ...baseBackground("disabled", props),
-        ...baseBorder("disabled", props),
-        ...baseText("disabled", props),
+        ...baseBackground("disabled"),
+        ...baseBorder("disabled"),
+        ...baseText("disabled"),
       },
       _checked: {
-        color: mode(
-          "brand.surface.default.light",
-          "brand.surface.default.dark",
-        )(props),
+        color: "brand.surface.default",
         borderColor: "currentColor",
         _before: {
           content: `""`,
@@ -57,12 +45,11 @@ const config = helpers.defineMultiStyleConfig({
         },
         _disabled: {
           pointerEvents: "none",
-          ...baseBackground("disabled", props),
-          ...baseBorder("disabled", props),
-          ...baseText("disabled", props),
+          ...baseBackground("disabled"),
+          ...baseBorder("disabled"),
+          ...baseText("disabled"),
         },
       },
     },
-  }),
+  },
 });
-export default config;

@@ -1,17 +1,29 @@
-import { Popover as ChakraPopover, Portal } from "@chakra-ui/react";
-import { CloseButton } from "./close-button";
+import {
+  BoxProps,
+  Popover as ChakraPopover,
+  Portal,
+  RecipeVariantProps,
+} from "@chakra-ui/react";
+import { CloseButton } from "../components/ui/close-button";
 import * as React from "react";
+import { popoverSlotRecipe } from "../theme/components/popover";
+import { PropsWithChildren } from "react";
 
-interface PopoverContentProps extends ChakraPopover.ContentProps {
-  portalled?: boolean;
-  portalRef?: React.RefObject<HTMLElement>;
-}
+type PopoverVariantProps = RecipeVariantProps<typeof popoverSlotRecipe>;
+
+type PopoverContentProps = ChakraPopover.ContentProps &
+  BoxProps &
+  PropsWithChildren<PopoverVariantProps> & {
+    portalled?: boolean;
+    portalRef?: React.RefObject<HTMLElement>;
+    children?: React.ReactNode;
+  };
 
 export const PopoverContent = React.forwardRef<
   HTMLDivElement,
   PopoverContentProps
 >(function PopoverContent(props, ref) {
-  const { portalled = true, portalRef, ...rest } = props;
+  const { portalled = true, portalRef, children, ...rest } = props;
   return (
     <Portal disabled={!portalled} container={portalRef}>
       <ChakraPopover.Positioner>

@@ -1,45 +1,78 @@
-import { defineStyleConfig } from "@chakra-ui/styled-system";
-import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
+import { defineRecipe } from "@chakra-ui/react";
+import { useColorModeValue } from "../../color-mode";
 
-const isSolid = (props: StyleFunctionProps) => props.variant === "solid";
-const isDashed = (props: StyleFunctionProps) => props.variant === "dashed";
-
-export default defineStyleConfig({
-  baseStyle: (props) => ({
-    borderColor: mode("blackAlpha.300", "whiteAlpha.300")(props),
-  }),
+export const dividerRecipe = defineRecipe({
+  base: {
+    borderColor: useColorModeValue("blackAlpha.300", "whiteAlpha.300"),
+  },
   variants: {
-    solid: {
-      borderStyle: "solid",
+    variant: {
+      solid: {
+        borderStyle: "solid",
+      },
+      dashed: {
+        backgroundImage: `repeating-linear-gradient(90deg, ${useColorModeValue("blackAlpha.300", "whiteAlpha.300")}, ${useColorModeValue("blackAlpha.300", "whiteAlpha.300")} 4px, transparent 4px, transparent 10px)`,
+        backgroundPosition: "left bottom",
+        backgroundRepeat: "repeat-x",
+        backgroundSize: "100% 3px",
+      },
     },
-    dashed: (props) => ({
-      backgroundImage: `repeating-linear-gradient(90deg, ${mode("blackAlpha.300", "whiteAlpha.300")(props)}, ${mode("blackAlpha.300", "whiteAlpha.300")(props)} 4px, transparent 4px, transparent 10px)`,
-      backgroundPosition: "left bottom",
-      backgroundRepeat: "repeat-x",
-      backgroundSize: "100% 3px",
-      borderRadius:
-        props.size === "sm" ? "0.5px" : props.size === "md" ? "1px" : "1.5px",
-    }),
+    size: {
+      sm: {
+        borderWidth: "1px",
+        borderRadius: "0.5px",
+      },
+      md: {
+        borderWidth: "2px",
+        borderRadius: "1px",
+      },
+      lg: {
+        borderWidth: "3px",
+        borderRadius: "1.5px",
+      },
+    },
+    orientation: {
+      horizontal: {
+        width: "100%",
+      },
+      vertical: {
+        height: "100%",
+      },
+    },
   },
-  sizes: {
-    sm: (props) => ({
-      borderWidth: isSolid(props) ? "1px" : undefined,
-      borderRadius: isSolid(props) ? "0.5px" : undefined,
-      height: isDashed(props) ? "1px" : undefined,
-    }),
-    md: (props) => ({
-      borderWidth: isSolid(props) ? "2px" : undefined,
-      borderRadius: isSolid(props) ? "1px" : "10px",
-      height: isDashed(props) ? "2px" : undefined,
-    }),
-    lg: (props) => ({
-      borderWidth: isSolid(props) ? "3px" : undefined,
-      borderRadius: isSolid(props) ? "1.5px" : undefined,
-      height: isDashed(props) ? "3px" : undefined,
-    }),
-  },
-  defaultProps: {
+  compoundVariants: [
+    {
+      variant: "dashed",
+      size: "sm",
+      css: {
+        height: "1px",
+      },
+    },
+    {
+      variant: "dashed",
+      size: "md",
+      css: {
+        height: "2px",
+      },
+    },
+    {
+      variant: "dashed",
+      size: "lg",
+      css: {
+        height: "3px",
+      },
+    },
+    {
+      variant: "dashed",
+      css: {
+        borderRadius: "unset",
+        borderWidth: "unset",
+      },
+    },
+  ],
+  defaultVariants: {
     variant: "solid",
     size: "md",
+    orientation: "horizontal",
   },
 });

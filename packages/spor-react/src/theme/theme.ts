@@ -13,13 +13,13 @@ import {
   dialogSlotRecipe,
   staticCardRecipe,
   pressableCardRecipe,
+  dividerRecipe,
   breadcrumbRecipe,
   switchRecipe,
   checkboxRecipe,
 } from "./components";
 import { lineIconSlotRecipe } from "./components/line-icon";
 import { listSlotRecipe } from "./components/list";
-import { check } from "prettier";
 
 export type ColorsType = typeof tokens.color.alias &
   typeof tokens.color.palette &
@@ -53,6 +53,7 @@ export const config = defineConfig({
     recipes: {
       button: buttonRecipe,
       badge: badgeRecipie,
+      divider: dividerRecipe,
       staticCard: staticCardRecipe,
       pressableCard: pressableCardRecipe,
       checkbox: checkboxRecipe,

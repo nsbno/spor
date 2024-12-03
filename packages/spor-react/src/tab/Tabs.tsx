@@ -1,19 +1,29 @@
 import {
   Tabs as ChakraTabs,
-  TabsProps as ChakraTabsProps,
-  forwardRef,
+  TabsRootProps as ChakraTabsRootProps,
+  RecipeVariantProps,
 } from "@chakra-ui/react";
 import * as React from "react";
+import { forwardRef, PropsWithChildren } from "react";
+import { tabsSlotRecipe } from "../theme/components/tabs";
+
+type TabsVariantProps = RecipeVariantProps<typeof tabsSlotRecipe>;
 
 export type TabsProps = Exclude<
-  ChakraTabsProps,
+  ChakraTabsRootProps,
   "colorScheme" | "variant" | "orientation" | "size"
-> & {
-  /** Defaults to `base` */
-  variant: "base" | "accent";
-  /** Defaults to `sm` */
-  size?: "xs" | "sm" | "md" | "lg";
-};
-export const Tabs = forwardRef<TabsProps, "div">((props, ref) => {
-  return <ChakraTabs {...props} ref={ref} />;
+> &
+  PropsWithChildren<TabsVariantProps> & {
+    /** Defaults to `base` */
+    variant: "base" | "accent";
+    /** Defaults to `sm` */
+    size?: "xs" | "sm" | "md" | "lg";
+  };
+export const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
+  return <ChakraTabs.Root {...props} ref={ref} />;
 });
+
+export const TabsList = ChakraTabs.List;
+export const TabsTrigger = ChakraTabs.Trigger;
+export const TabsIndicator = ChakraTabs.Indicator;
+export const TabsContent = ChakraTabs.Content;

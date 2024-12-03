@@ -16,10 +16,8 @@ Spor is getting a major update with Chakra 3.
 ### Updated components
 
 - `Dialog` replaces `Modal` - And all sizes and placements are now available from the same component
-- `RadioCard` and `RadioCardGroup` is replaced by new syntax. Please consult the docs for more information.
-- `Accordion` now has a different syntax. Consult the documentation for name changes.
+- `Accordion`, `Pagination`, `Tabs`, `RadioCard` and `RadioCardGroup` now have a different syntax. Please consult the documentation for name changes.
 - `Table` components has many changes. Instead of the generic HTML names (Td, Tr etc.), it will now work with full names. Please see docs. Variant `simple` is now `line`.
-- `Pagination` have gotten new syntax. Consult the docs for more information.
 
 ### Externals from Chakra:
 

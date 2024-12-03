@@ -20,6 +20,7 @@ import {
 } from "./components";
 import { lineIconSlotRecipe } from "./components/line-icon";
 import { listSlotRecipe } from "./components/list";
+import { alertSlotRecipe } from "./components/alert";
 
 export type ColorsType = typeof tokens.color.alias &
   typeof tokens.color.palette &
@@ -65,6 +66,7 @@ export const config = defineConfig({
       dialog: dialogSlotRecipe,
       lineIcon: lineIconSlotRecipe,
       list: listSlotRecipe,
+      alert: alertSlotRecipe,
     },
   },
 });

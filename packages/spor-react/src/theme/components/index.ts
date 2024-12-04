@@ -29,7 +29,7 @@ export { default as NumericStepper } from "./numeric-stepper";
 export { default as Pagination } from "./pagination";
 export { default as Popover } from "./popover";
 export * from "./progress-bar";
-export { default as ProgressIndicator } from "./progress-indicator";
+export * from "./progress-indicator";
 export { default as RadioCard } from "./radio-card";
 export * from "./radio";
 export { default as Select } from "./select";

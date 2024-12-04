@@ -1,9 +1,14 @@
-import { useMultiStyleConfig } from "@chakra-ui/react";
-import React from "react";
+import { BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { Box, createTexts, useTranslation } from "..";
 import { ProgressDot } from "./ProgressDot";
+import { progressIndicatorRecipe, staticCardRecipe } from "../theme/components";
 
-type ProgressIndicatorProps = {
+type ProgressIndicatorVariants = RecipeVariantProps<typeof progressIndicatorRecipe>;
+
+export type ProgressIndicatorProps = BoxProps &
+PropsWithChildren<ProgressIndicatorVariants> & {
+  children: React.ReactNode;
   numberOfSteps: number;
   activeStep: number;
 };
@@ -21,40 +26,42 @@ type ProgressIndicatorProps = {
  * />
  * ```
  */
-export const ProgressIndicator = ({
-  numberOfSteps,
-  activeStep,
-}: ProgressIndicatorProps) => {
-  const { t } = useTranslation();
-  const style = useMultiStyleConfig("ProgressIndicator");
 
-  return (
-    <Box
-      __css={style.root}
-      role="progressbar"
-      aria-valuemin={1}
-      aria-valuemax={numberOfSteps}
-      aria-valuenow={activeStep}
-      aria-valuetext={t(texts.stepsOf(activeStep, numberOfSteps))}
-    >
-      <Box __css={style.container}>
-        {Array.from({ length: numberOfSteps }, (_, i) => (
-          <ProgressDot
-            key={i}
-            aria-value={i + 1}
-            isActive={activeStep === i + 1}
-          />
-        ))}
+export const ProgressIndicator = forwardRef<HTMLDivElement, ProgressIndicatorProps>(
+  ({
+    numberOfSteps,
+    activeStep,
+  }: ProgressIndicatorProps) => {
+    const { t } = useTranslation();
+    const recipe = useRecipe({ recipe: staticCardRecipe });
+    const colorPalette = "brand";
+    const styles = recipe({ colorPalette });
+    const texts = createTexts({
+      stepsOf: (activeStep, numberOfSteps) => ({
+        nb: `Steg ${activeStep} av ${numberOfSteps}`,
+        nn: `Steg ${activeStep} av ${numberOfSteps}`,
+        sv: `Steg ${activeStep} av ${numberOfSteps}`,
+        en: `Step ${activeStep} of ${numberOfSteps}`,
+      }),
+    });
+    return (
+      <Box
+        css={styles}
+        role="progressbar"
+        aria-valuemin={1}
+        aria-valuemax={numberOfSteps}
+        aria-valuenow={activeStep}
+        aria-valuetext={t(texts.stepsOf(activeStep, numberOfSteps))}
+      >
+        <Box css={styles.container}>
+          {Array.from({ length: numberOfSteps }, (_, i) => (
+            <ProgressDot
+              key={i}
+              aria-value={i + 1}
+              isActive={activeStep === i + 1}
+            />
+          ))}
+        </Box>
       </Box>
-    </Box>
-  );
-};
-
-const texts = createTexts({
-  stepsOf: (activeStep, numberOfSteps) => ({
-    nb: `Steg ${activeStep} av ${numberOfSteps}`,
-    nn: `Steg ${activeStep} av ${numberOfSteps}`,
-    sv: `Steg ${activeStep} av ${numberOfSteps}`,
-    en: `Step ${activeStep} of ${numberOfSteps}`,
-  }),
-});
+    );
+  });

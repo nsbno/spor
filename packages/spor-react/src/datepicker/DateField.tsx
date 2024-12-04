@@ -1,12 +1,20 @@
-import { Box, Flex, FormLabel, useMultiStyleConfig } from "@chakra-ui/react";
+import { Box, Flex, useSlotRecipe } from "@chakra-ui/react";
 import { DateValue, GregorianCalendar } from "@internationalized/date";
 import { DOMAttributes, FocusableElement } from "@react-types/shared";
-import React, { RefObject, forwardRef, useId, useRef } from "react";
+import React, {
+  PropsWithChildren,
+  RefObject,
+  forwardRef,
+  useId,
+  useRef,
+} from "react";
 import { AriaDateFieldProps, useDateField } from "react-aria";
 import { DateSegment, useDateFieldState } from "react-stately";
 import { DateTimeSegment } from "./DateTimeSegment";
 import { useCurrentLocale } from "./utils";
 import { createTexts, useTranslation } from "../i18n";
+import { DatePickerVariantProps } from "./DatePicker";
+import { datePickerSlotRecipe } from "../theme/components/datepicker";
 
 function createCalendar(identifier: string) {
   switch (identifier) {
@@ -17,16 +25,18 @@ function createCalendar(identifier: string) {
   }
 }
 
-type DateFieldProps = AriaDateFieldProps<DateValue> & {
-  label?: React.ReactNode;
-  labelProps?: DOMAttributes<FocusableElement>;
-  name?: string;
-  labelId?: string;
-};
+type DateFieldProps = AriaDateFieldProps<DateValue> &
+  PropsWithChildren<DatePickerVariantProps> & {
+    label?: React.ReactNode;
+    labelProps?: DOMAttributes<FocusableElement>;
+    name?: string;
+    labelId?: string;
+  };
 export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
   ({ labelId, ...props }, externalRef) => {
     const locale = useCurrentLocale();
-    const styles = useMultiStyleConfig("Datepicker", {});
+    const recipe = useSlotRecipe({ recipe: datePickerSlotRecipe });
+    const styles = recipe({});
     const state = useDateFieldState({
       ...props,
       locale,
@@ -46,14 +56,15 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
     return (
       <Box minWidth="6rem" width="100%">
         {props.label && (
-          <FormLabel
-            sx={styles.inputLabel}
+          <Box
+            as="label"
+            css={styles.inputLabel}
             position="absolute"
             paddingTop="2px"
             id={labelId}
           >
             {props.label}
-          </FormLabel>
+          </Box>
         )}
         <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
           {state.segments.map((segment, i) => (

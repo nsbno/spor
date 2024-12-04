@@ -10,7 +10,7 @@ import { tableSlotRecipe } from "../theme/components/table";
 
 type TableVariantProps = RecipeVariantProps<typeof tableSlotRecipe>;
 
-export type TableProps = Omit<ChakraTableProps, "variant" | "colorPalette"> &
+export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   PropsWithChildren<TableVariantProps> & {
     variant?: "line" | "outline";
     colorPalette?: "grey" | "green";

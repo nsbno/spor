@@ -1,4 +1,10 @@
-import { Flex, useRecipe, RecipeVariantProps, Icon } from "@chakra-ui/react";
+import {
+  Flex,
+  useRecipe,
+  RecipeVariantProps,
+  Icon,
+  ConditionalValue,
+} from "@chakra-ui/react";
 import {
   ErrorOutline24Icon,
   InformationOutline24Icon,
@@ -12,7 +18,7 @@ export type ToastVariantProps = RecipeVariantProps<typeof toastRecipe>;
 
 export type BaseToastProps = PropsWithChildren<ToastVariantProps> & {
   children: React.ReactNode;
-  variant: "success" | "info" | "error";
+  variant: ConditionalValue<"success" | "info" | "error">;
   id?: string;
 };
 /**
@@ -34,10 +40,12 @@ type ToastIconProps = Pick<BaseToastProps, "variant">;
 /** Internal component for selecting the correct icon to show */
 const ToastIcon = ({ variant }: ToastIconProps) => {
   const { t } = useTranslation();
+
+  const ariaLabel = t(texts[variant as keyof typeof texts]);
   return (
     <Icon
       flexShrink={0}
-      aria-label={t(texts[variant])}
+      aria-label={ariaLabel}
       marginRight={1}
       marginY={1.5}
       color="darkGrey"

@@ -1,9 +1,4 @@
-import {
-  createSystem,
-  defaultConfig,
-  defineConfig,
-  defineTokens,
-} from "@chakra-ui/react";
+import { createSystem, defineConfig, defineTokens } from "@chakra-ui/react";
 import * as foundations from "./foundations";
 import tokens from "@vygruppen/spor-design-tokens";
 import { drawerSlotRecipe } from "./components/drawer";
@@ -18,12 +13,8 @@ import {
   accordionSlotRecipe,
   alertExpandableSlotRecipe,
   serviceAlertSlotRecipe,
-  cardSelectSlotRecipe,
   checkboxSlotRecipe,
-  choiceChipSlotRecipe,
-  closeButtonRecipe,
   codeRecipie,
-  datePickerSlotRecipe,
   infoTagSlotRecipe,
   nativeSelectSlotRecipe,
   popoverSlotRecipe,
@@ -37,12 +28,6 @@ import {
   textareaRecipe,
   toastRecipe,
   travelTagSlotRecipe,
-  inputSlotRecipe,
-  fabSlotRecipe,
-  linkRecipe,
-  listBoxSlotRecipe,
-  mediaControllerButtonSlotRecipe,
-  numericStepperSlotRecipe,
   badgeRecipie,
 } from "./components";
 import { lineIconSlotRecipe } from "./components/line-icon";
@@ -65,7 +50,7 @@ const tokensConfig = defineTokens({
 
 export const config = defineConfig({
   theme: {
-    /*     breakpoints: {
+    breakpoints: {
       ...foundations.breakpoints,
     },
     tokens: {
@@ -78,7 +63,7 @@ export const config = defineConfig({
       fonts: {
         ...foundations.fonts,
       },
-    }, */
+    },
     recipes: {
       button: buttonRecipe,
       badge: badgeRecipie,
@@ -87,11 +72,9 @@ export const config = defineConfig({
       pressableCard: pressableCardRecipe,
       switch: switchRecipe,
       breadcrumb: breadcrumbRecipe,
-      closeButton: closeButtonRecipe,
       code: codeRecipie,
       textarea: textareaRecipe,
       toast: toastRecipe,
-      link: linkRecipe,
     },
     slotRecipes: {
       drawer: drawerSlotRecipe,
@@ -102,10 +85,7 @@ export const config = defineConfig({
       accordion: accordionSlotRecipe,
       alertExpandable: alertExpandableSlotRecipe,
       serviceAlert: serviceAlertSlotRecipe,
-      cardSelect: cardSelectSlotRecipe,
       checkbox: checkboxSlotRecipe,
-      choiceChip: choiceChipSlotRecipe,
-      datePicker: datePickerSlotRecipe,
       field: fieldSlotRecipe,
       infoTag: infoTagSlotRecipe,
       nativeSelect: nativeSelectSlotRecipe,
@@ -119,11 +99,6 @@ export const config = defineConfig({
       table: tableSlotRecipe,
       tabs: tabsSlotRecipe,
       trabelTag: travelTagSlotRecipe,
-      input: inputSlotRecipe,
-      fab: fabSlotRecipe,
-      listBox: listBoxSlotRecipe,
-      mediaControllerButton: mediaControllerButtonSlotRecipe,
-      numericStepper: numericStepperSlotRecipe,
     },
   },
 });

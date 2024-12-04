@@ -3,7 +3,6 @@ import {
   BoxProps,
   Field as ChakraField,
   RecipeVariantProps,
-  useSlotRecipe,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { fieldSlotRecipe } from "../theme/components/field";

@@ -1,66 +1,84 @@
-import { selectAnatomy } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { baseText } from "../utils/base-utils";
-import { default as Input } from "./input";
-import { inputBaseStyle, inputVariant } from "../utils/input-utils";
+import { defineSlotRecipe } from "@chakra-ui/react";
+import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { floatingBackground, floatingBorder } from "../utils/floating-utils";
+import { focusVisibleStyles } from "../utils/focus-utils";
 
-const parts = selectAnatomy.extend("root");
-
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
-    root: {
-      width: "100%",
-      height: "fit-content",
+export const selectSlotRecipe = defineSlotRecipe({
+  slots: [
+    "root",
+    "trigger",
+    "indicatorGroup",
+    "indicator",
+    "content",
+    "item",
+    "control",
+    "itemText",
+    "itemGroup",
+    "itemGroupLabel",
+    "label",
+    "valueText",
+  ],
+  className: "spor-select",
+  base: {
+    root: {},
+    label: {
       position: "relative",
-      "& + label": {
-        fontSize: ["mobile.sm", "desktop.sm"],
-        top: "0.2rem",
-        left: 3,
-        zIndex: 2,
-        position: "absolute",
-        marginY: 2,
-        transformOrigin: "top left",
-        transform: [
-          "scale(0.825) translateY(-12px)",
-          "scale(0.825) translateY(-14px)",
-        ],
-      },
+      fontSize: ["mobile.xs", "desktop.sm"],
+      marginTop: 2,
     },
-    field: {
-      ...inputBaseStyle(props).field,
+    trigger: {
+      display: "flex",
       appearance: "none",
-      paddingTop: "1rem",
-    },
-    icon: {
-      width: 5,
-      height: 5,
-      insetEnd: "0.5rem",
-      position: "relative",
-      color: "currentColor",
-      strokeLinecap: "round",
-      fontSize: "sm",
+      width: "100%",
+      height: 8,
+      borderTopRadius: "sm",
+      borderBottomRadius: "sm",
+      paddingY: 1.5,
+      paddingX: 3,
+      justifyContent: "space-between",
+      alignItems: "center",
+      fontSize: "mobile.md",
+      ...baseBorder("default"),
+      _hover: {
+        ...baseBorder("hover"),
+      },
+      ...focusVisibleStyles(),
       _disabled: {
-        ...baseText("disabled", props),
+        pointerEvents: "none",
+        ...baseText("disabled"),
+        ...baseBackground("disabled"),
+      },
+      _active: {
+        ...baseBackground("active"),
+      },
+      _invalid: {
+        ...baseBorder("invalid"),
+      },
+      _open: {
+        borderBottomRadius: 0,
       },
     },
-  }),
-  variants: {
-    base: (props) => ({
-      field: {
-        ...inputVariant("base", props),
-      },
-    }),
-    floating: (props) => ({
-      field: {
-        ...inputVariant("floating", props),
-      },
-    }),
   },
-  defaultProps: {
+  variants: {
+    variant: {
+      base: {},
+      floating: {
+        trigger: {
+          ...floatingBackground("default"),
+          ...floatingBorder("default"),
+          _hover: {
+            ...floatingBorder("hover"),
+            ...floatingBackground("hover"),
+          },
+          _active: {
+            ...floatingBorder("active"),
+            ...floatingBackground("active"),
+          },
+        },
+      },
+    },
+  },
+  defaultVariants: {
     variant: "base",
   },
 });
-
-export default config;

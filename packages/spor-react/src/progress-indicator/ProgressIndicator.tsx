@@ -1,4 +1,4 @@
-import { BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import { BoxProps, RecipeVariantProps, useRecipe, useSlotRecipe } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { Box, createTexts, useTranslation } from "..";
 import { ProgressDot } from "./ProgressDot";
@@ -33,17 +33,10 @@ export const ProgressIndicator = forwardRef<HTMLDivElement, ProgressIndicatorPro
     activeStep,
   }: ProgressIndicatorProps) => {
     const { t } = useTranslation();
-    const recipe = useRecipe({ recipe: staticCardRecipe });
+    const recipe = useSlotRecipe({ recipe: progressIndicatorRecipe });
     const colorPalette = "brand";
     const styles = recipe({ colorPalette });
-    const texts = createTexts({
-      stepsOf: (activeStep, numberOfSteps) => ({
-        nb: `Steg ${activeStep} av ${numberOfSteps}`,
-        nn: `Steg ${activeStep} av ${numberOfSteps}`,
-        sv: `Steg ${activeStep} av ${numberOfSteps}`,
-        en: `Step ${activeStep} of ${numberOfSteps}`,
-      }),
-    });
+    
     return (
       <Box
         css={styles}
@@ -53,7 +46,7 @@ export const ProgressIndicator = forwardRef<HTMLDivElement, ProgressIndicatorPro
         aria-valuenow={activeStep}
         aria-valuetext={t(texts.stepsOf(activeStep, numberOfSteps))}
       >
-        <Box css={styles.container}>
+        <Box css={styles}>
           {Array.from({ length: numberOfSteps }, (_, i) => (
             <ProgressDot
               key={i}
@@ -64,4 +57,12 @@ export const ProgressIndicator = forwardRef<HTMLDivElement, ProgressIndicatorPro
         </Box>
       </Box>
     );
+  });
+  const texts = createTexts({
+    stepsOf: (activeStep, numberOfSteps) => ({
+      nb: `Steg ${activeStep} av ${numberOfSteps}`,
+      nn: `Steg ${activeStep} av ${numberOfSteps}`,
+      sv: `Steg ${activeStep} av ${numberOfSteps}`,
+      en: `Step ${activeStep} of ${numberOfSteps}`,
+    }),
   });

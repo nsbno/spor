@@ -1,11 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { anatomy } from "@chakra-ui/theme-tools";
-
-const parts = anatomy("progress-indicator").parts(
-  "root",
-  "container",
-  "progressDot",
-);
 
 export const progressIndicatorRecipe = defineSlotRecipe ({
   slots: ["root", "container", "progressDot", "circle"],

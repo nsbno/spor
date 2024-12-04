@@ -3,7 +3,6 @@ import {
   BoxProps,
   Field as ChakraField,
   RecipeVariantProps,
-  useSlotRecipe,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { fieldSlotRecipe } from "../theme/components/field";
@@ -46,6 +45,8 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
     );
   },
 );
+
+export const FieldLabel = ChakraField.Label;
 
 const Arrow = (props: BoxProps) => {
   return (

@@ -1,16 +1,18 @@
-import { Box, ResponsiveValue, useMultiStyleConfig } from "@chakra-ui/react";
+import { Box, ConditionalValue, useSlotRecipe } from "@chakra-ui/react";
 import {
   CalendarDate,
   DateValue,
   isSameMonth,
   isToday,
 } from "@internationalized/date";
-import React, { useEffect, useRef } from "react";
+import React, { PropsWithChildren, useEffect, useRef } from "react";
 import { useCalendarCell } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
+import { datePickerSlotRecipe } from "../theme/components/datepicker";
+import { DatePickerVariantProps } from "./DatePicker";
 
-type CalendarCellProps = {
-  variant: ResponsiveValue<"base" | "floating" | "ghost">;
+type CalendarCellProps = PropsWithChildren<DatePickerVariantProps> & {
+  variant: ConditionalValue<"base" | "floating" | "ghost">;
   state: CalendarState | RangeCalendarState;
   date: CalendarDate;
   currentMonth: DateValue;
@@ -32,7 +34,8 @@ export function CalendarCell({
   } = useCalendarCell({ date }, state, ref);
 
   const isOutsideMonth = !isSameMonth(currentMonth, date);
-  const styles = useMultiStyleConfig("Datepicker", { variant });
+  const recipe = useSlotRecipe({ recipe: datePickerSlotRecipe });
+  const styles = recipe({ variant });
 
   const stateProps: Record<string, any> = {};
   if (isSelected) {
@@ -64,14 +67,14 @@ export function CalendarCell({
   }, []);
 
   return (
-    <Box as="td" {...cellProps} textAlign="center" sx={styles.cell}>
+    <Box as="td" {...cellProps} textAlign="center" css={styles.cell}>
       <Box
         as="button"
         type="button"
         {...buttonProps}
         {...stateProps}
         ref={ref}
-        sx={styles.dateCell}
+        css={styles.dateCell}
         hidden={isOutsideVisibleRange}
         width="100%"
       >

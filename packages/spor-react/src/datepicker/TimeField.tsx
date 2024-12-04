@@ -3,7 +3,6 @@ import { CalendarDateTime, Time } from "@internationalized/date";
 import React, { useRef } from "react";
 import { AriaTimeFieldProps, useTimeField } from "react-aria";
 import { TimeFieldState } from "@react-stately/datepicker";
-import { FormLabel } from "..";
 import { DateTimeSegment } from "./DateTimeSegment";
 import { getTimestampFromTime } from "./utils";
 
@@ -23,7 +22,8 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
 
   return (
     <Box>
-      <FormLabel
+      <Box
+        as="label"
         {...labelProps}
         htmlFor={fieldProps.id}
         marginBottom={0}
@@ -33,7 +33,7 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
         paddingTop="2px"
       >
         {props.label}
-      </FormLabel>
+      </Box>
       <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
         {state.segments.map((segment) => (
           <DateTimeSegment key={segment.type} segment={segment} state={state} />

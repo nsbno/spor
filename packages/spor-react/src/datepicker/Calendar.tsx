@@ -1,4 +1,4 @@
-import { Box, ResponsiveValue } from "@chakra-ui/react";
+import { Box, ConditionalValue } from "@chakra-ui/react";
 import { DateValue, createCalendar } from "@internationalized/date";
 import React from "react";
 import {
@@ -13,7 +13,7 @@ import { useCurrentLocale } from "./utils";
 
 type CalendarProps = ReactAriaCalendarProps<DateValue> & {
   showYearNavigation?: boolean;
-  variant: ResponsiveValue<"base" | "floating" | "ghost">;
+  variant: ConditionalValue<"base" | "floating" | "ghost">;
 };
 export function Calendar({
   showYearNavigation,

@@ -46,6 +46,8 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
   },
 );
 
+export const FieldLabel = ChakraField.Label;
+
 const Arrow = (props: BoxProps) => {
   return (
     <Box

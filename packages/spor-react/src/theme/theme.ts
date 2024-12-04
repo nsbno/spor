@@ -1,14 +1,8 @@
-import {
-  createSystem,
-  defaultConfig,
-  defineConfig,
-  defineTokens,
-} from "@chakra-ui/react";
+import { createSystem, defineConfig, defineTokens } from "@chakra-ui/react";
 import * as foundations from "./foundations";
 import tokens from "@vygruppen/spor-design-tokens";
 import { drawerSlotRecipe } from "./components/drawer";
 import { buttonRecipe } from "./components/button";
-import badgeRecipie from "./components/badge";
 import {
   dialogSlotRecipe,
   staticCardRecipe,
@@ -16,11 +10,30 @@ import {
   dividerRecipe,
   breadcrumbRecipe,
   switchRecipe,
-  checkboxRecipe,
+  accordionSlotRecipe,
+  alertExpandableSlotRecipe,
+  serviceAlertSlotRecipe,
+  checkboxSlotRecipe,
+  codeRecipie,
+  infoTagSlotRecipe,
+  nativeSelectSlotRecipe,
+  popoverSlotRecipe,
+  progressBarRecipe,
+  progressIndicatorRecipe,
+  radioCardSlotRecipe,
+  selectSlotRecipe,
+  stepperSlotRecipe,
+  tableSlotRecipe,
+  tabsSlotRecipe,
+  textareaRecipe,
+  toastRecipe,
+  travelTagSlotRecipe,
+  badgeRecipie,
 } from "./components";
 import { lineIconSlotRecipe } from "./components/line-icon";
 import { listSlotRecipe } from "./components/list";
 import { alertSlotRecipe } from "./components/alert";
+import { fieldSlotRecipe } from "./components/field";
 
 export type ColorsType = typeof tokens.color.alias &
   typeof tokens.color.palette &
@@ -57,9 +70,11 @@ export const config = defineConfig({
       divider: dividerRecipe,
       staticCard: staticCardRecipe,
       pressableCard: pressableCardRecipe,
-      checkbox: checkboxRecipe,
       switch: switchRecipe,
       breadcrumb: breadcrumbRecipe,
+      code: codeRecipie,
+      textarea: textareaRecipe,
+      toast: toastRecipe,
     },
     slotRecipes: {
       drawer: drawerSlotRecipe,
@@ -67,6 +82,23 @@ export const config = defineConfig({
       lineIcon: lineIconSlotRecipe,
       list: listSlotRecipe,
       alert: alertSlotRecipe,
+      accordion: accordionSlotRecipe,
+      alertExpandable: alertExpandableSlotRecipe,
+      serviceAlert: serviceAlertSlotRecipe,
+      checkbox: checkboxSlotRecipe,
+      field: fieldSlotRecipe,
+      infoTag: infoTagSlotRecipe,
+      nativeSelect: nativeSelectSlotRecipe,
+      popover: popoverSlotRecipe,
+      progressBar: progressBarRecipe,
+      progressIndicator: progressIndicatorRecipe,
+      radioCard: radioCardSlotRecipe,
+      radio: radioCardSlotRecipe,
+      select: selectSlotRecipe,
+      stepper: stepperSlotRecipe,
+      table: tableSlotRecipe,
+      tabs: tabsSlotRecipe,
+      trabelTag: travelTagSlotRecipe,
     },
   },
 });

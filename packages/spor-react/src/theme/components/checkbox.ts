@@ -2,7 +2,7 @@ import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
 
-export const checkboxRecipe = defineSlotRecipe({
+export const checkboxSlotRecipe = defineSlotRecipe({
   slots: ["control", "label"],
   base: {
     control: {

@@ -6,10 +6,11 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { selectSlotRecipe } from "../theme/components/select";
+import { SelectVariantProps } from "./InfoSelect";
+import { nativeSelectSlotRecipe } from "../theme/components";
 
-export type NativeSelectVariantProps = RecipeVariantProps<
-  typeof selectSlotRecipe
+type NativeSelectVariantProps = RecipeVariantProps<
+  typeof nativeSelectSlotRecipe
 >;
 
 type NativeSelectRootProps = Exclude<
@@ -56,7 +57,7 @@ export const NativeSelectRoot = React.forwardRef<
   NativeSelectRootProps
 >(function NativeSelect(props, ref) {
   const { icon, children, ...rest } = props;
-  const recipe = useSlotRecipe({ recipe: selectSlotRecipe });
+  const recipe = useSlotRecipe({ recipe: nativeSelectSlotRecipe });
   const styles = recipe({ icon });
   return (
     <Select.Root ref={ref} {...rest} css={styles}>
@@ -90,7 +91,7 @@ export const NativeSelectField = React.forwardRef<
     [itemsProp],
   );
 
-  const recipe = useSlotRecipe({ recipe: selectSlotRecipe });
+  const recipe = useSlotRecipe({ recipe: nativeSelectSlotRecipe });
   const styles = recipe();
 
   return (

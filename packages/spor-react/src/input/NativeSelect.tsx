@@ -1,14 +1,24 @@
 "use client";
 
-import { NativeSelect as Select } from "@chakra-ui/react";
+import {
+  RecipeVariantProps,
+  NativeSelect as Select,
+  useSlotRecipe,
+} from "@chakra-ui/react";
 import * as React from "react";
+import { selectSlotRecipe } from "../theme/components/select";
+
+export type NativeSelectVariantProps = RecipeVariantProps<
+  typeof selectSlotRecipe
+>;
 
 type NativeSelectRootProps = Exclude<
   Select.RootProps,
   "size" | "colorPalette"
-> & {
-  icon?: React.ReactNode;
-};
+> &
+  React.PropsWithChildren<NativeSelectVariantProps> & {
+    icon?: React.ReactNode;
+  };
 
 /**
  * Selects let you choose between several options
@@ -46,8 +56,10 @@ export const NativeSelectRoot = React.forwardRef<
   NativeSelectRootProps
 >(function NativeSelect(props, ref) {
   const { icon, children, ...rest } = props;
+  const recipe = useSlotRecipe({ recipe: selectSlotRecipe });
+  const styles = recipe({ icon });
   return (
-    <Select.Root ref={ref} {...rest}>
+    <Select.Root ref={ref} {...rest} css={styles}>
       {children}
       <Select.Indicator>{icon}</Select.Indicator>
     </Select.Root>
@@ -78,8 +90,11 @@ export const NativeSelectField = React.forwardRef<
     [itemsProp],
   );
 
+  const recipe = useSlotRecipe({ recipe: selectSlotRecipe });
+  const styles = recipe();
+
   return (
-    <Select.Field ref={ref} {...rest}>
+    <Select.Field ref={ref} {...rest} css={styles}>
       {children}
       {items?.map((item) => (
         <option key={item.value} value={item.value} disabled={item.disabled}>

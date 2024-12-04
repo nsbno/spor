@@ -1,15 +1,11 @@
-import { selectAnatomy } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { baseText } from "../utils/base-utils";
-import { default as Input } from "./input";
 import { inputBaseStyle, inputVariant } from "../utils/input-utils";
+import { defineSlotRecipe } from "@chakra-ui/react";
 
-const parts = selectAnatomy.extend("root");
-
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
+export const selectSlotRecipe = defineSlotRecipe({
+  slots: ["root", "field", "indicator", "icon"],
+  className: "spor-select",
+  base: {
     root: {
       width: "100%",
       height: "fit-content",
@@ -29,7 +25,7 @@ const config = helpers.defineMultiStyleConfig({
       },
     },
     field: {
-      ...inputBaseStyle(props).field,
+      ...inputBaseStyle().field,
       appearance: "none",
       paddingTop: "1rem",
     },
@@ -42,25 +38,25 @@ const config = helpers.defineMultiStyleConfig({
       strokeLinecap: "round",
       fontSize: "sm",
       _disabled: {
-        ...baseText("disabled", props),
+        ...baseText("disabled"),
       },
     },
-  }),
-  variants: {
-    base: (props) => ({
-      field: {
-        ...inputVariant("base", props),
-      },
-    }),
-    floating: (props) => ({
-      field: {
-        ...inputVariant("floating", props),
-      },
-    }),
   },
-  defaultProps: {
+  variants: {
+    variant: {
+      base: {
+        field: {
+          ...inputVariant("base"),
+        },
+      },
+      floating: {
+        field: {
+          ...inputVariant("floating"),
+        },
+      },
+    },
+  },
+  defaultVariants: {
     variant: "base",
   },
 });
-
-export default config;

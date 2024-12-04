@@ -33,7 +33,7 @@ import {
 } from "../popover";
 import { Field } from "../input";
 
-type DatePickerVariantProps = RecipeVariantProps<typeof datePickerSlotRecipe>;
+export type DatePickerVariantProps = RecipeVariantProps<typeof datePickerSlotRecipe>;
 
 type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
   Pick<BoxProps, "minHeight" | "width"> &

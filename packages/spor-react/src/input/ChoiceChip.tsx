@@ -1,14 +1,22 @@
 import {
   chakra,
-  forwardRef,
+  RecipeVariantProps,
   useCheckbox,
-  useMultiStyleConfig,
+  useSlotRecipe,
 } from "@chakra-ui/react";
 import { dataAttr } from "@chakra-ui/utils";
 import { CloseOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, { ChangeEvent, useId } from "react";
+import React, {
+  ChangeEvent,
+  forwardRef,
+  PropsWithChildren,
+  useId,
+} from "react";
+import { choiceChipSlotRecipe } from "../theme/components/choice-chip";
 
-export type ChoiceChipProps = {
+type ChoiceChipVariantProps = RecipeVariantProps<typeof choiceChipSlotRecipe>;
+
+export type ChoiceChipProps = PropsWithChildren<ChoiceChipVariantProps> & {
   onChange?: (value: ChangeEvent<HTMLInputElement>) => void;
   isChecked?: boolean;
   isDisabled?: boolean;
@@ -74,7 +82,8 @@ export const ChoiceChip = forwardRef(
       getRootProps,
       getLabelProps,
     } = useCheckbox(props);
-    const styles = useMultiStyleConfig("ChoiceChip", {
+    const recipe = useSlotRecipe({ key: "choice-chip" });
+    const styles = recipe({
       size,
       chipType,
       variant,
@@ -97,7 +106,7 @@ export const ChoiceChip = forwardRef(
         />
         <chakra.div
           {...getLabelProps()}
-          __css={styles.container}
+          css={styles.root}
           data-checked={dataAttr(state.isChecked)}
           data-hover={dataAttr(state.isHovered)}
           data-focus={dataAttr(state.isFocused)}
@@ -105,12 +114,12 @@ export const ChoiceChip = forwardRef(
           data-disabled={dataAttr(state.isDisabled)}
         >
           {icon && (
-            <chakra.span __css={styles.icon}>
+            <chakra.span css={styles.icon}>
               {state.isChecked ? icon.checked : icon.default}
             </chakra.span>
           )}
           {chipType !== "icon" && (
-            <chakra.span __css={styles.label} {...getCheckboxProps()}>
+            <chakra.span css={styles.label} {...getCheckboxProps()}>
               {children}
             </chakra.span>
           )}

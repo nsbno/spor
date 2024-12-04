@@ -1,4 +1,4 @@
-import { Box, BoxProps, RecipeVariantProps, Text } from "@chakra-ui/react";
+import { Box, BoxProps, chakra, RecipeVariantProps, Text } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren, useId, useRef } from "react";
 import { useProgressBar } from "react-aria";
 import { createTexts, useTranslation } from "..";
@@ -83,7 +83,7 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
     const id = useId();
     return (
       <Box {...progressBarProps} minWidth="100px" width={width} {...rest}>
-        <Box as="svg" fill="none">
+        <chakra.svg as="svg" viewBox="0 0 246 78" fill="none">
           <path
             id={`${id}-start-dot`}
             d="M14.0479 44.8251C19.4332 44.8251 23.7988 40.5242 23.7988 35.2187C23.7988 29.9133 19.4332 25.6124 14.0479 25.6124C8.66254 25.6124 4.29688 29.9133 4.29688 35.2187C4.29688 40.5242 8.66254 44.8251 14.0479 44.8251Z"
@@ -114,7 +114,7 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
             d="M226.025 44.8251C231.411 44.8251 235.776 40.5242 235.776 35.2187C235.776 29.9133 231.411 25.6124 226.025 25.6124C220.64 25.6124 216.274 29.9133 216.274 35.2187C216.274 40.5242 220.64 44.8251 226.025 44.8251Z"
             fill="#688CBA"
           />
-        </Box>
+        </chakra.svg>
         {currentLoadingText && (
           <Text
             textAlign="center"

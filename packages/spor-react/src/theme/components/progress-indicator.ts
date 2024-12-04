@@ -1,16 +1,8 @@
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy, mode } from "@chakra-ui/theme-tools";
+import { defineSlotRecipe } from "@chakra-ui/react";
 
-const parts = anatomy("progress-indicator").parts(
-  "root",
-  "container",
-  "progressDot",
-);
-
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
+export const progressIndicatorRecipe = defineSlotRecipe({
+  slots: ["root", "container", "progressDot", "circle"],
+  base: {
     root: {
       width: "100%",
     },
@@ -23,22 +15,10 @@ const config = helpers.defineMultiStyleConfig({
     progressDot: {
       height: 1,
       width: 1,
-      "&[aria-current='step']": {
-        circle: {
-          fill: mode(
-            "brand.surface.default.light",
-            "brand.surface.default.dark",
-          )(props),
-        },
-      },
-      circle: {
-        fill: mode("icon.disabled.light", "icon.disabled.dark")(props),
-      },
+      fill: "brand.surface.default",
     },
-  }),
-  defaultProps: {
-    variant: "base",
+    circle: {
+      fill: "icon.disabled",
+    },
   },
 });
-
-export default config;

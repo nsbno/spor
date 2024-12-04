@@ -1,6 +1,10 @@
 "use client";
 
-import type { CollectionItem, RecipeVariantProps } from "@chakra-ui/react";
+import type {
+  CollectionItem,
+  ConditionalValue,
+  RecipeVariantProps,
+} from "@chakra-ui/react";
 import { Select as ChakraSelect, Portal } from "@chakra-ui/react";
 import { CloseButton } from "../button/CloseButton";
 import * as React from "react";
@@ -92,7 +96,7 @@ export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
 type SelectValueTextProps = Omit<ChakraSelect.ValueTextProps, "children"> &
   React.PropsWithChildren<SelectVariantProps> & {
     children?(items: CollectionItem[]): React.ReactNode;
-    placeholder?: React.ReactNode;
+    placeholder?: string;
   };
 
 export const SelectValueText = React.forwardRef<
@@ -119,27 +123,32 @@ export const SelectValueText = React.forwardRef<
   );
 });
 
-export const SelectRoot = React.forwardRef<
-  HTMLDivElement,
-  ChakraSelect.RootProps
->(function SelectRoot(props, ref) {
-  return (
-    <ChakraSelect.Root
-      {...props}
-      ref={ref}
-      positioning={{ sameWidth: true, ...props.positioning }}
-    >
-      {props.asChild ? (
-        props.children
-      ) : (
-        <>
-          <ChakraSelect.HiddenSelect />
-          {props.children}
-        </>
-      )}
-    </ChakraSelect.Root>
-  );
-}) as ChakraSelect.RootComponent;
+type SelectRootProps = Exclude<ChakraSelect.RootProps, "variant"> & {
+  variant?: ConditionalValue<"base" | "floating">;
+};
+
+export const SelectRoot = React.forwardRef<HTMLDivElement, SelectRootProps>(
+  function SelectRoot(props, ref) {
+    const { variant, children, positioning, asChild, ...rest } = props;
+    return (
+      <ChakraSelect.Root
+        {...props}
+        ref={ref}
+        positioning={{ sameWidth: true, ...positioning }}
+        variant={variant}
+      >
+        {asChild ? (
+          children
+        ) : (
+          <>
+            <ChakraSelect.HiddenSelect />
+            {children}
+          </>
+        )}
+      </ChakraSelect.Root>
+    );
+  },
+) as ChakraSelect.RootComponent;
 
 type SelectItemGroupProps = ChakraSelect.ItemGroupProps &
   React.PropsWithChildren<SelectVariantProps> & {

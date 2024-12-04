@@ -46,7 +46,7 @@ export const AttachedInputs = ({
   return (
     <Flex
       role="group"
-      __css={attachedStyles[direction]}
+      css={attachedStyles[direction]}
       display="flex"
       flexDirection={flexDirection}
       {...rest}

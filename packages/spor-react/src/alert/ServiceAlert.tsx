@@ -1,41 +1,45 @@
 import {
   Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
   Box,
   Flex,
+  Icon,
+  RecipeVariantProps,
   Stack,
   Text,
-  useMultiStyleConfig,
+  useSlotRecipe,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { AlertIcon } from "./AlertIcon";
 import { BaseAlert, BaseAlertProps } from "./BaseAlert";
 import { createTexts, useTranslation } from "../i18n";
+import { serviceAlertSlotRecipe } from "../theme/components/alert-service";
 
-type ServiceAlertProps = BaseAlertProps & {
-  /** The title string  */
-  title: string;
-  /** The number of notifications when there is a list of multiple alerts */
-  notification: number;
-  /** The maximum width to display the service message
-   *
-   * Defaults to container.md */
-  contentWidth: string;
-  /** Callback for when the expandable panel is opened or closed */
-  onToggle?: (isOpen: boolean) => void;
-  /** Whether or not the default state of the alert is open */
-  defaultOpen?: boolean;
-  /**
-   * The HTML element used for the `title` prop.
-   *
-   * Defaults to h3 */
-  headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
-  /** The variant of Service Alert. Default: service */
-  variant?: "service" | "global-deviation";
-};
+type ServiceAlertVariantProps = RecipeVariantProps<
+  typeof serviceAlertSlotRecipe
+>;
+
+type ServiceAlertProps = BaseAlertProps &
+  PropsWithChildren<ServiceAlertVariantProps> & {
+    /** The title string  */
+    title: string;
+    /** The number of notifications when there is a list of multiple alerts */
+    notification: number;
+    /** The maximum width to display the service message
+     *
+     * Defaults to container.md */
+    contentWidth: string;
+    /** Callback for when the expandable panel is opened or closed */
+    onToggle?: (isOpen: boolean) => void;
+    /** Whether or not the default state of the alert is open */
+    defaultOpen?: boolean;
+    /**
+     * The HTML element used for the `title` prop.
+     *
+     * Defaults to h3 */
+    headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
+    /** The variant of Service Alert. Default: service */
+    variant?: "service" | "global-deviation";
+  };
 /**
  * A service alert component.
  *
@@ -59,7 +63,8 @@ export const ServiceAlert = ({
   ...boxProps
 }: ServiceAlertProps) => {
   const { t } = useTranslation();
-  const styles = useMultiStyleConfig("AlertService", { variant });
+  const recipe = useSlotRecipe({ key: "alert-service" });
+  const styles = recipe({ variant });
   return (
     <BaseAlert
       variant={variant}
@@ -68,16 +73,16 @@ export const ServiceAlert = ({
       paddingY={0}
       sx={styles.outerBox}
     >
-      <Accordion
-        onChange={(expandedIndex) => onToggle(expandedIndex === 0)}
+      <Accordion.Root
+        onChange={(expandedIndex: number) => onToggle(expandedIndex === 0)}
         defaultIndex={defaultOpen ? 0 : -1}
         allowToggle
         flexGrow={1}
         sx={{ outline: "none" }}
         variant={variant}
       >
-        <AccordionItem>
-          <AccordionButton sx={styles.container}>
+        <Accordion.Item>
+          <Accordion.ItemTrigger css={styles.container}>
             <Stack
               flexDirection="row"
               justifyContent="center"
@@ -95,7 +100,7 @@ export const ServiceAlert = ({
 
                   <Box
                     as="span"
-                    sx={{
+                    css={{
                       // Truncate the title to one line
                       display: "-webkit-box",
                       overflow: "hidden",
@@ -109,18 +114,18 @@ export const ServiceAlert = ({
 
                 <Flex alignItems="center">
                   {notification && (
-                    <Text sx={styles.notificationText}>
+                    <Text css={styles.notificationText}>
                       {t(texts.notification(notification))}
                     </Text>
                   )}
 
-                  <AccordionIcon />
+                  <Icon />
                 </Flex>
               </Flex>
             </Stack>
-          </AccordionButton>
+          </Accordion.ItemTrigger>
 
-          <AccordionPanel sx={styles.serviceMessageContent}>
+          <Accordion.ItemBody css={styles.serviceMessageContent}>
             <Stack flexDirection="row" justifyContent="center" width="100%">
               <Stack
                 justifyContent="center"
@@ -129,7 +134,7 @@ export const ServiceAlert = ({
                 maxWidth={contentWidth}
                 flexFlow="column"
                 gap={2}
-                sx={{
+                css={{
                   p: {
                     padding: "0.8rem 0",
                     borderBottom: "0.08rem solid",
@@ -146,9 +151,9 @@ export const ServiceAlert = ({
                 {children}
               </Stack>
             </Stack>
-          </AccordionPanel>
-        </AccordionItem>
-      </Accordion>
+          </Accordion.ItemBody>
+        </Accordion.Item>
+      </Accordion.Root>
     </BaseAlert>
   );
 };

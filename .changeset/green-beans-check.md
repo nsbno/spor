@@ -21,6 +21,7 @@ Spor is getting a major update with Chakra 3.
 - `Accordion`, `Pagination`, `Tabs`, `RadioCard` and `RadioCardGroup` now have a different syntax. Please consult the documentation for name changes.
 - `Table` components has many changes. Instead of the generic HTML names (Td, Tr etc.), it will now work with full names. Please see docs. Variant `simple` is now `line`.
 - `Toast` prop `isClosable` is now `closable`. `useToast` is now `createToaster`.
+- `FormControl`, `FormLabel` and `FormErrorMessage` are removed and replaced by `Field`. `Field` supports the necessary props to support this.
 
 ### Externals from Chakra:
 

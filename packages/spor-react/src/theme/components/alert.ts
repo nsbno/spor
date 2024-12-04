@@ -1,11 +1,9 @@
-import { anatomy } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
+import { defineSlotRecipe } from "@chakra-ui/react";
 
-const parts = anatomy("alert").parts("container", "icon", "closeButton");
-
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: {
+export const alertSlotRecipe = defineSlotRecipe({
+  slots: ["container", "icon", "closeButton"],
+  className: "spor-alert",
+  base: {
     container: {
       borderRadius: "sm",
       color: "darkGrey",
@@ -26,46 +24,46 @@ const config = helpers.defineMultiStyleConfig({
     },
   },
   variants: {
-    success: {
-      container: {
-        backgroundColor: "seaMist",
+    variant: {
+      success: {
+        container: {
+          backgroundColor: "seaMist",
+        },
       },
-    },
-    info: {
-      container: {
-        backgroundColor: "lightBlue",
+      info: {
+        container: {
+          backgroundColor: "lightBlue",
+        },
       },
-    },
-    warning: {
-      container: {
-        backgroundColor: "blonde",
+      warning: {
+        container: {
+          backgroundColor: "blonde",
+        },
       },
-    },
-    error: {
-      container: {
-        backgroundColor: "lightRed",
+      error: {
+        container: {
+          backgroundColor: "lightRed",
+        },
       },
-    },
-    "alt-transport": {
-      container: {
-        backgroundColor: "banana",
+      "alt-transport": {
+        container: {
+          backgroundColor: "banana",
+        },
       },
-    },
-    "global-deviation": {
-      container: {
-        backgroundColor: "blonde",
+      "global-deviation": {
+        container: {
+          backgroundColor: "blonde",
+        },
       },
-    },
-    service: {
-      container: {
-        backgroundColor: "darkTeal",
-        color: "white",
+      service: {
+        container: {
+          backgroundColor: "darkTeal",
+          color: "white",
+        },
       },
     },
   },
-  defaultProps: {
+  defaultVariants: {
     variant: "info",
   },
 });
-
-export default config;

@@ -1,8 +1,8 @@
-import { BoxProps, RecipeVariantProps, useRecipe, useSlotRecipe } from "@chakra-ui/react";
+import { BoxProps, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { Box, createTexts, useTranslation } from "..";
 import { ProgressDot } from "./ProgressDot";
-import { progressIndicatorRecipe, staticCardRecipe } from "../theme/components";
+import { progressIndicatorRecipe } from "../theme/components";
 
 type ProgressIndicatorVariants = RecipeVariantProps<typeof progressIndicatorRecipe>;
 

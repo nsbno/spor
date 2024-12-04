@@ -1,6 +1,6 @@
 import { defineRecipe } from "@chakra-ui/react";
 
-const badgeRecipie = defineRecipe({
+export const badgeRecipie = defineRecipe({
   className: "spor-badge",
   base: {
     borderStyle: "solid",
@@ -80,5 +80,3 @@ const badgeRecipie = defineRecipe({
     variant: "solid",
   },
 });
-
-export default badgeRecipie;

@@ -8,7 +8,6 @@ import * as foundations from "./foundations";
 import tokens from "@vygruppen/spor-design-tokens";
 import { drawerSlotRecipe } from "./components/drawer";
 import { buttonRecipe } from "./components/button";
-import badgeRecipie from "./components/badge";
 import {
   dialogSlotRecipe,
   staticCardRecipe,
@@ -16,11 +15,40 @@ import {
   dividerRecipe,
   breadcrumbRecipe,
   switchRecipe,
-  checkboxRecipe,
+  accordionSlotRecipe,
+  alertExpandableSlotRecipe,
+  serviceAlertSlotRecipe,
+  cardSelectSlotRecipe,
+  checkboxSlotRecipe,
+  choiceChipSlotRecipe,
+  closeButtonRecipe,
+  codeRecipie,
+  datePickerSlotRecipe,
+  infoTagSlotRecipe,
+  nativeSelectSlotRecipe,
+  popoverSlotRecipe,
+  progressBarRecipe,
+  progressIndicatorRecipe,
+  radioCardSlotRecipe,
+  selectSlotRecipe,
+  stepperSlotRecipe,
+  tableSlotRecipe,
+  tabsSlotRecipe,
+  textareaRecipe,
+  toastRecipe,
+  travelTagSlotRecipe,
+  inputSlotRecipe,
+  fabSlotRecipe,
+  linkRecipe,
+  listBoxSlotRecipe,
+  mediaControllerButtonSlotRecipe,
+  numericStepperSlotRecipe,
+  badgeRecipie,
 } from "./components";
 import { lineIconSlotRecipe } from "./components/line-icon";
 import { listSlotRecipe } from "./components/list";
 import { alertSlotRecipe } from "./components/alert";
+import { fieldSlotRecipe } from "./components/field";
 
 export type ColorsType = typeof tokens.color.alias &
   typeof tokens.color.palette &
@@ -37,7 +65,7 @@ const tokensConfig = defineTokens({
 
 export const config = defineConfig({
   theme: {
-    breakpoints: {
+    /*     breakpoints: {
       ...foundations.breakpoints,
     },
     tokens: {
@@ -50,16 +78,20 @@ export const config = defineConfig({
       fonts: {
         ...foundations.fonts,
       },
-    },
+    }, */
     recipes: {
       button: buttonRecipe,
       badge: badgeRecipie,
       divider: dividerRecipe,
       staticCard: staticCardRecipe,
       pressableCard: pressableCardRecipe,
-      checkbox: checkboxRecipe,
       switch: switchRecipe,
       breadcrumb: breadcrumbRecipe,
+      closeButton: closeButtonRecipe,
+      code: codeRecipie,
+      textarea: textareaRecipe,
+      toast: toastRecipe,
+      link: linkRecipe,
     },
     slotRecipes: {
       drawer: drawerSlotRecipe,
@@ -67,6 +99,31 @@ export const config = defineConfig({
       lineIcon: lineIconSlotRecipe,
       list: listSlotRecipe,
       alert: alertSlotRecipe,
+      accordion: accordionSlotRecipe,
+      alertExpandable: alertExpandableSlotRecipe,
+      serviceAlert: serviceAlertSlotRecipe,
+      cardSelect: cardSelectSlotRecipe,
+      checkbox: checkboxSlotRecipe,
+      choiceChip: choiceChipSlotRecipe,
+      datePicker: datePickerSlotRecipe,
+      field: fieldSlotRecipe,
+      infoTag: infoTagSlotRecipe,
+      nativeSelect: nativeSelectSlotRecipe,
+      popover: popoverSlotRecipe,
+      progressBar: progressBarRecipe,
+      progressIndicator: progressIndicatorRecipe,
+      radioCard: radioCardSlotRecipe,
+      radio: radioCardSlotRecipe,
+      select: selectSlotRecipe,
+      stepper: stepperSlotRecipe,
+      table: tableSlotRecipe,
+      tabs: tabsSlotRecipe,
+      trabelTag: travelTagSlotRecipe,
+      input: inputSlotRecipe,
+      fab: fabSlotRecipe,
+      listBox: listBoxSlotRecipe,
+      mediaControllerButton: mediaControllerButtonSlotRecipe,
+      numericStepper: numericStepperSlotRecipe,
     },
   },
 });

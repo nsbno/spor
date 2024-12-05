@@ -2,7 +2,6 @@ import {
   Box,
   Accordion as ChakraAccordion,
   AccordionRootProps as ChakraAccordionProps,
-  Flex,
   HStack,
 } from "@chakra-ui/react";
 import { DropdownDownFill24Icon } from "@vygruppen/spor-icon-react";

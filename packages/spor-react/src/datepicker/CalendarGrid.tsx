@@ -7,7 +7,7 @@ import { Text } from "../typography";
 import { CalendarCell } from "./CalendarCell";
 import { useCurrentLocale } from "./utils";
 import { ConditionalValue, useSlotRecipe } from "@chakra-ui/react";
-import { datePickerSlotRecipe } from "../theme/components/datepicker";
+import { datePickerSlotRecipe } from "../theme/components";
 
 const weekDays: Record<Language, string[]> = {
   nb: ["Ma", "Ti", "On", "To", "Fr", "Lø", "Sø"],
@@ -41,7 +41,10 @@ export function CalendarGrid({
   // Get the number of weeks in the month so we can render the proper number of rows.
   const weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
   const weeksInMonthRange = new Array(weeksInMonth).fill(0).map((_, i) => i);
-  const recipe = useSlotRecipe({ recipe: datePickerSlotRecipe });
+  const recipe = useSlotRecipe({
+    key: "datePicker",
+    recipe: datePickerSlotRecipe,
+  });
   const styles = recipe({ variant });
 
   return (

@@ -14,7 +14,7 @@ import { DateTimeSegment } from "./DateTimeSegment";
 import { useCurrentLocale } from "./utils";
 import { createTexts, useTranslation } from "../i18n";
 import { DatePickerVariantProps } from "./DatePicker";
-import { datePickerSlotRecipe } from "../theme/components/datepicker";
+import { datePickerSlotRecipe } from "../theme/components";
 
 function createCalendar(identifier: string) {
   switch (identifier) {
@@ -35,7 +35,10 @@ type DateFieldProps = AriaDateFieldProps<DateValue> &
 export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
   ({ labelId, ...props }, externalRef) => {
     const locale = useCurrentLocale();
-    const recipe = useSlotRecipe({ recipe: datePickerSlotRecipe });
+    const recipe = useSlotRecipe({
+      key: "datePicker",
+      recipe: datePickerSlotRecipe,
+    });
     const styles = recipe({});
     const state = useDateFieldState({
       ...props,

@@ -22,18 +22,19 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
 
   return (
     <Box>
-      <Box
-        as="label"
+      <label
         {...labelProps}
         htmlFor={fieldProps.id}
-        marginBottom={0}
-        fontSize="mobile.xs"
-        cursor="text"
-        position="absolute"
-        paddingTop="2px"
+        style={{
+          marginBottom: 0,
+          fontSize: "mobile.xs",
+          cursor: "text",
+          position: "absolute",
+          paddingTop: "2px",
+        }}
       >
         {props.label}
-      </Box>
+      </label>
       <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
         {state.segments.map((segment) => (
           <DateTimeSegment key={segment.type} segment={segment} state={state} />

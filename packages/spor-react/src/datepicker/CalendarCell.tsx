@@ -8,8 +8,8 @@ import {
 import React, { PropsWithChildren, useEffect, useRef } from "react";
 import { useCalendarCell } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
-import { datePickerSlotRecipe } from "../theme/components/datepicker";
 import { DatePickerVariantProps } from "./DatePicker";
+import { datePickerSlotRecipe } from "../theme/components";
 
 type CalendarCellProps = PropsWithChildren<DatePickerVariantProps> & {
   variant: ConditionalValue<"base" | "floating" | "ghost">;
@@ -34,7 +34,10 @@ export function CalendarCell({
   } = useCalendarCell({ date }, state, ref);
 
   const isOutsideMonth = !isSameMonth(currentMonth, date);
-  const recipe = useSlotRecipe({ recipe: datePickerSlotRecipe });
+  const recipe = useSlotRecipe({
+    key: "datePicker",
+    recipe: datePickerSlotRecipe,
+  });
   const styles = recipe({ variant });
 
   const stateProps: Record<string, any> = {};
@@ -70,7 +73,6 @@ export function CalendarCell({
     <Box as="td" {...cellProps} textAlign="center" css={styles.cell}>
       <Box
         as="button"
-        type="button"
         {...buttonProps}
         {...stateProps}
         ref={ref}

@@ -23,7 +23,7 @@ export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
       isInvalid: false,
     };
 
-    const recipe = useSlotRecipe({ recipe: datePickerSlotRecipe });
+    const recipe = useSlotRecipe({ key: "datePicker", recipe: datePickerSlotRecipe });
     const styles = recipe({ variant });
 
     return (

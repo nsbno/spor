@@ -29,7 +29,7 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
       ref as RefObject<HTMLDivElement>,
     );
 
-    const recipe = useSlotRecipe({ recipe: datePickerSlotRecipe });
+    const recipe = useSlotRecipe({ key: "datePicker", recipe: datePickerSlotRecipe });
     const styles = recipe({
       isPlaceholder: segment.isPlaceholder,
       isEditable: segment.isEditable,

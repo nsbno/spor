@@ -1,5 +1,6 @@
 import {
   Box,
+  BoxProps,
   ConditionalValue,
   PopoverAnchor,
   useSlotRecipe,
@@ -17,20 +18,24 @@ import {
   createTexts,
   useTranslation,
 } from "..";
-import { datePickerSlotRecipe } from "../theme/components/datepicker";
+import { datePickerSlotRecipe } from "../theme/components";
 
 type CalendarTriggerButtonProps = AriaButtonProps<"button"> &
-  PropsWithChildren<DatePickerVariantProps> & {
+  PropsWithChildren<DatePickerVariantProps> &
+  BoxProps & {
     variant: ConditionalValue<"base" | "floating" | "ghost">;
-    isDisabled?: boolean;
+    disabled?: boolean;
     ariaLabelledby?: string;
   };
 export const CalendarTriggerButton = forwardRef<
   HTMLDivElement,
   CalendarTriggerButtonProps
->(({ variant, isDisabled, ariaLabelledby, ...buttonProps }, ref) => {
+>(({ variant, disabled, ariaLabelledby, ...buttonProps }, ref) => {
   const { t } = useTranslation();
-  const recipe = useSlotRecipe({ recipe: datePickerSlotRecipe });
+  const recipe = useSlotRecipe({
+    key: "datePicker",
+    recipe: datePickerSlotRecipe,
+  });
   const styles = recipe({ variant });
 
   const { onPress, ...filteredButtonProps } = buttonProps;
@@ -43,7 +48,7 @@ export const CalendarTriggerButton = forwardRef<
   };
 
   return (
-    <PopoverAnchor>
+    <PopoverAnchor {...buttonProps}>
       <IconButton
         ref={ref}
         role="button"
@@ -52,7 +57,7 @@ export const CalendarTriggerButton = forwardRef<
         css={styles.calendarTriggerButton}
         variant="ghost"
         {...filteredButtonProps}
-        isDisabled={isDisabled}
+        disabled={disabled}
         onKeyDown={handleCommand}
         aria-labelledby={ariaLabelledby}
       />

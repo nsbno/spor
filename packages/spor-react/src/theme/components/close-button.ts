@@ -6,7 +6,7 @@ import { ghostBackground } from "../utils/ghost-utils";
 
 const $size = cssVar("close-button-size");
 
-const config = defineRecipe({
+export const closeButtonRecipe = defineRecipe({
   base: {
     w: [$size.reference],
     h: [$size.reference],
@@ -50,5 +50,3 @@ const config = defineRecipe({
     },
   ],
 });
-
-export default config;

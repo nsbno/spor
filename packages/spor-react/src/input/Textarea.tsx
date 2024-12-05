@@ -33,7 +33,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const fallbackId = `textarea-${useId()}`;
 
     return (
-      <ChakraField.Root position="relative">
+      <ChakraField.Root position="relative" css={styles}>
         <ChakraTextarea {...props} id={fallbackId} ref={ref} placeholder=" " />
         {label && <ChakraField.Label>{label}</ChakraField.Label>}
       </ChakraField.Root>

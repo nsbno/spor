@@ -8,7 +8,10 @@ import { checkboxSlotRecipe } from "../theme/components";
 
 type CheckboxVariants = RecipeVariantProps<typeof checkboxSlotRecipe>;
 
-export type CheckboxProps = Exclude<ChakraCheckboxProp, "variant"> &
+export type CheckboxProps = Exclude<
+  ChakraCheckboxProp,
+  "variant" | "colorPalette"
+> &
   PropsWithChildren<CheckboxVariants> & {
     children: React.ReactNode;
   };
@@ -27,9 +30,9 @@ export type CheckboxProps = Exclude<ChakraCheckboxProp, "variant"> &
  * You can group several of these together with a `CheckboxGroup`.
  */
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ colorPalette = "white", children, ...props }, ref) => {
+  ({ children, ...props }, ref) => {
     const recipe = useRecipe({ recipe: checkboxSlotRecipe });
-    const styles = recipe({ colorPalette });
+    const styles = recipe({});
 
     return (
       <Checkbox css={styles} {...props} ref={ref}>

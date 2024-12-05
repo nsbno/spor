@@ -1,8 +1,8 @@
 import {
+  Box,
   Input as ChakraInput,
   InputProps as ChakraInputProps,
   type RecipeVariantProps,
-  Box,
 } from "@chakra-ui/react";
 import React, { forwardRef, useId, PropsWithChildren } from "react";
 import inputSlotRecipe from "../theme/components/input";

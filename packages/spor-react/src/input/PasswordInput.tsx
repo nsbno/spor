@@ -1,6 +1,12 @@
-import { Button, Input as ChakraInput, useDisclosure } from "@chakra-ui/react";
+import {
+  Button,
+  Input as ChakraInput,
+  useDisclosure,
+  Box as InputLeftElement,
+  Box as InputRightElement,
+} from "@chakra-ui/react";
 import React, { useId, forwardRef } from "react";
-import { InputLeftElement, InputProps, InputRightElement } from ".";
+import { InputProps } from ".";
 import { createTexts, useTranslation } from "..";
 import { Field } from "../components/ui/field";
 import { InputGroup } from "../components/ui/input-group";

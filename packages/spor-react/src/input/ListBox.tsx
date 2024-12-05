@@ -2,6 +2,7 @@ import {
   Box,
   ListRoot,
   ListItem,
+  ListRootProps,
   RecipeVariantProps,
   useSlotRecipe,
   type BoxProps,
@@ -31,11 +32,12 @@ type ListBoxVariantProps = RecipeVariantProps<typeof listBoxSlotRecipe>;
 
 type ListBoxProps<T> = AriaListBoxProps<T> &
   Omit<BoxProps, "filter" | "autoFocus" | "children"> &
-  PropsWithChildren<ListBoxVariantProps> & {
+  PropsWithChildren<ListBoxVariantProps> &
+  Exclude<ListRootProps, "variant"> & {
     /** External reference to the ListBox itself */
     listBoxRef: React.RefObject<HTMLUListElement>;
     /** Whether or not the listbox is waiting on new data, i.e. through a autosuggest search */
-    isLoading?: boolean;
+    loading?: boolean;
     /** The state of the listbox, provided externally somehow. */
     state: ListState<T> | SelectState<T>;
     /** UI to render if the collection is empty */
@@ -79,38 +81,33 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
  * ```
  */
 
-export function ListBox<T extends object>({
-  isLoading,
-  listBoxRef,
-  state,
-  maxWidth,
-  variant,
-  ...props
-}: ListBoxProps<T>) {
-  const { listBoxProps } = useListBox(props, state, listBoxRef);
-  const recipe = useSlotRecipe({ key: "listbox" });
-  const styles = recipe({ variant });
-
-  return (
-    <ListRoot
-      {...listBoxProps}
-      ref={listBoxRef}
-      css={styles.root}
-      aria-busy={isLoading}
-      maxWidth={maxWidth}
-      variant={variant}
-    >
-      {state.collection.size === 0 && props.emptyContent}
-      {Array.from(state.collection).map((item) =>
-        item.type === "section" ? (
-          <ListBoxSection key={item.key} section={item} state={state} />
-        ) : (
-          <Option key={item.key} item={item} state={state} />
-        ),
-      )}
-    </ListRoot>
-  );
-}
+export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
+  (props) => {
+    const { loading, listBoxRef, state, maxWidth, variant } = props;
+    const { listBoxProps } = useListBox(props, state, listBoxRef);
+    const recipe = useSlotRecipe({ key: "listbox" });
+    const styles = recipe({ variant });
+    return (
+      <ListRoot
+        {...listBoxProps}
+        ref={listBoxRef}
+        css={styles.root}
+        aria-busy={loading}
+        maxWidth={maxWidth}
+        variant={variant}
+      >
+        {state.collection.size === 0 && props.emptyContent}
+        {Array.from(state.collection).map((item) =>
+          item.type === "section" ? (
+            <ListBoxSection key={item.key} section={item} state={state} />
+          ) : (
+            <Option key={item.key} item={item} state={state} />
+          ),
+        )}
+      </ListRoot>
+    );
+  },
+);
 
 /**
  * Renders a label for a listbox item.

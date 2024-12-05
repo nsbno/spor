@@ -41,7 +41,7 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
   allowsEmptyCollection?: boolean;
   variant?: ConditionalValue<"base" | "floating">;
   children?: (item: T) => React.ReactNode;
-} & OverridableInputProps;
+} & Exclude<OverridableInputProps, "variant">;
 /**
  * A combobox is a combination of an input and a list of suggestions.
  *

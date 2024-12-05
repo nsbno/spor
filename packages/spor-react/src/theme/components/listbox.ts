@@ -1,16 +1,24 @@
-import { defineSlotRecipe } from "@chakra-ui/react";
+import { anatomy } from "@chakra-ui/anatomy";
+import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { baseBorder } from "../utils/base-utils";
 import { ghostBackground, ghostText } from "../utils/ghost-utils";
 import { surface } from "../utils/surface-utils";
 import { outlineBorder } from "../utils/outline-utils";
 import { floatingBorder } from "../utils/floating-utils";
 
-export const listBoxSlotRecipe = defineSlotRecipe({
-  slots: ["root", "item", "label", "description"],
-  className: "spor-listbox",
-  base: {
-    root: {
-      ...surface("default"),
+const parts = anatomy("ListBox").parts(
+  "container",
+  "item",
+  "label",
+  "description",
+);
+
+const helpers = createMultiStyleConfigHelpers(parts.keys);
+
+const config = helpers.defineMultiStyleConfig({
+  baseStyle: (props) => ({
+    container: {
+      ...surface("default", props),
       boxShadow: "sm",
       overflowY: "auto",
       maxHeight: "50vh",
@@ -24,46 +32,46 @@ export const listBoxSlotRecipe = defineSlotRecipe({
       marginY: 1,
       marginX: 1,
       borderRadius: "sm",
-      ...ghostText("default"),
+      ...ghostText("default", props),
       cursor: "pointer",
       outline: "none",
       _active: {
-        ...ghostBackground("active"),
+        ...ghostBackground("active", props),
       },
       _focusVisible: {
-        ...outlineBorder("focus"),
+        ...outlineBorder("focus", props),
       },
       _hover: {
-        ...ghostBackground("hover"),
+        ...ghostBackground("hover", props),
       },
       _selected: {
-        ...ghostBackground("active"),
+        ...ghostBackground("active", props),
       },
     },
     label: {},
     description: {
       fontSize: ["mobile.xs", "desktop.xs"],
-      ...ghostText("default"),
+      ...ghostText("default", props),
       "[aria-selected='true'] &": {
-        ...ghostText("selected"),
+        ...ghostText("selected", props),
       },
     },
-  },
+  }),
   variants: {
-    variant: {
-      base: {
-        root: {
-          ...baseBorder("default"),
-        },
+    base: (props) => ({
+      container: {
+        ...baseBorder("default", props),
       },
-      floating: {
-        root: {
-          ...floatingBorder("default"),
-        },
+    }),
+    floating: (props) => ({
+      container: {
+        ...floatingBorder("default", props),
       },
-    },
+    }),
   },
-  defaultVariants: {
+  defaultProps: {
     variant: "base",
   },
 });
+
+export default config;

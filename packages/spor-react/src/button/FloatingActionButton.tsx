@@ -1,9 +1,6 @@
 import { Box, BoxProps, useRecipe } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import React, { forwardRef, useEffect } from "react";
 import { buttonRecipe } from "../theme/components/button";
-
-const MotionBox = motion(Box);
 
 type FloatingActionButtonProps = BoxProps & {
   variant?: "accent" | "base" | "brand";
@@ -67,39 +64,16 @@ export const FloatingActionButton = forwardRef<
       placement,
     });
 
-    /* const style = useMultiStyleConfig("FloatingActionButton", {
-      variant,
-      isTextVisible,
-      placement,
-    }); */
     return (
-      <MotionBox
+      <Box
         css={style.container}
-        aria-label={children}
+        aria-label={typeof children === "string" ? children : undefined}
         ref={ref}
         {...props}
       >
         <Box css={style._icon}>{icon}</Box>
-        <MotionBox
-          animate={isTextVisible ? "show" : "hide"}
-          initial={externalIsTextVisible ? "show" : "hide"}
-          variants={{
-            show: {
-              opacity: 1,
-              width: "auto",
-              visibility: "visible",
-            },
-            hide: {
-              opacity: 0,
-              width: 0,
-              visibility: "hidden",
-            },
-          }}
-          css={style.text}
-        >
-          {children}
-        </MotionBox>
-      </MotionBox>
+        <Box>{children}</Box>
+      </Box>
     );
   },
 );

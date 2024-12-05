@@ -6,6 +6,7 @@ import {
   Flex,
   useRecipe,
   type RecipeVariantProps,
+  ConditionalValue,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { createTexts, useTranslation } from "../i18n";
@@ -14,15 +15,7 @@ import { buttonRecipe } from "../theme/components/button";
 
 type ButtonVariantProps = RecipeVariantProps<typeof buttonRecipe>;
 
-type ButtonVariants =
-  | "primary"
-  | "secondary"
-  | "tertiary"
-  | "ghost"
-  | "floating";
-type ButtonSizes = "lg" | "md" | "sm" | "xs";
-
-export type ButtonProps = Omit<
+export type ButtonProps = Exclude<
   ChakraButtonProps,
   "size" | "variant" | "colorPalette"
 > &
@@ -31,8 +24,10 @@ export type ButtonProps = Omit<
     loadingText?: React.ReactNode;
     leftIcon?: React.ReactNode;
     rightIcon?: React.ReactNode;
-    variant: ButtonVariants;
-    size: ButtonSizes;
+    variant: ConditionalValue<
+      "primary" | "secondary" | "tertiary" | "ghost" | "floating"
+    >;
+    size: ConditionalValue<"lg" | "md" | "sm" | "xs">;
   };
 /**
  * Buttons are used to trigger actions.
@@ -127,7 +122,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   },
 );
 
-function getLoaderWidth(size: Required<ButtonProps["size"]>) {
+function getLoaderWidth(size: ButtonProps["size"]): string {
   switch (size) {
     case "xs":
       return "4rem";

@@ -2,14 +2,13 @@ import {
   CheckboxGroup as ChakraCheckboxGroup,
   CheckboxGroupProps as ChakraCheckboxGroupProps,
   Stack,
-  StackDirection,
 } from "@chakra-ui/react";
 import React from "react";
 
 export type CheckboxGroupProps = Exclude<
   ChakraCheckboxGroupProps,
   "colorScheme" | "size" | "variant"
-> & { direction?: StackDirection };
+> & { direction?: "row" | "column"; children: React.ReactNode };
 /**
  * Used to group several checkboxes together. You can pass the default value, as well as whether or not they're all disabled
  *

@@ -13,6 +13,7 @@ export type ProgressIndicatorProps = BoxProps &
     children?: React.ReactNode;
     numberOfSteps: number;
     activeStep: number;
+    colorPalette?: string;
   };
 
 /**
@@ -32,10 +33,10 @@ export type ProgressIndicatorProps = BoxProps &
 export const ProgressIndicator = forwardRef<
   HTMLDivElement,
   ProgressIndicatorProps
->(({ numberOfSteps, activeStep }: ProgressIndicatorProps) => {
+>(({ numberOfSteps, activeStep, colorPalette = "brand" }) => {
   const { t } = useTranslation();
   const recipe = useSlotRecipe({ recipe: progressIndicatorRecipe });
-  const colorPalette = "brand";
+
   const styles = recipe({ colorPalette });
 
   return (

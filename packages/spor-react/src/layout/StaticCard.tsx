@@ -4,7 +4,7 @@ import { staticCardRecipe } from "../theme/components";
 
 type StaticCardVariants = RecipeVariantProps<typeof staticCardRecipe>;
 
-export type StaticCardProps = BoxProps &
+export type StaticCardProps = Exclude<BoxProps, "colorPalette"> &
   PropsWithChildren<StaticCardVariants> & {
     children: React.ReactNode;
     /** Defaults to "white" */

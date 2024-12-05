@@ -2,14 +2,12 @@ import {
   Input as ChakraInput,
   InputProps as ChakraInputProps,
   type RecipeVariantProps,
-  HStack,
   Box,
-  Box as InputLeftElement,
-  Box as InputRightElement,
 } from "@chakra-ui/react";
 import React, { forwardRef, useId, PropsWithChildren } from "react";
 import inputSlotRecipe from "../theme/components/input";
 import { Field } from "../components/ui/field";
+import { InputLeftElement, InputRightElement } from ".";
 
 type inputVariantProps = RecipeVariantProps<typeof inputSlotRecipe>;
 
@@ -54,21 +52,19 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           {props.leftIcon}
         </InputLeftElement>
       )}
-      <HStack>
-        <Field label={props.label}>
-          <ChakraInput
-            data-attachable
-            paddingLeft={props.leftIcon ? 7 : undefined}
-            paddingRight={props.rightIcon ? 7 : undefined}
-            {...props}
-            id={inputId}
-            aria-labelledby={labelId}
-            ref={ref}
-            overflow="hidden"
-            placeholder=" " // This is needed to make the label work as expected
-          />
-        </Field>
-      </HStack>
+      <Field label={props.label}>
+        <ChakraInput
+          data-attachable
+          paddingLeft={props.leftIcon ? 7 : undefined}
+          paddingRight={props.rightIcon ? 7 : undefined}
+          {...props}
+          id={inputId}
+          aria-labelledby={labelId}
+          ref={ref}
+          overflow="hidden"
+          placeholder=" " // This is needed to make the label work as expected
+        />
+      </Field>
       {props.rightIcon && (
         <InputRightElement pointerEvents="none">
           {props.rightIcon}

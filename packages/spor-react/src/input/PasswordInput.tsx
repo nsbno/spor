@@ -1,13 +1,15 @@
 import {
   Button,
   Input as ChakraInput,
-  Box,
   useDisclosure,
+  Box as InputLeftElement,
+  Box as InputRightElement,
 } from "@chakra-ui/react";
 import React, { useId, forwardRef } from "react";
-import { InputGroup, InputProps } from ".";
+import { InputProps } from ".";
 import { createTexts, useTranslation } from "..";
 import { Field } from "../components/ui/field";
+import { InputGroup } from "../components/ui/input-group";
 
 export type PasswordInputProps = Omit<InputProps, "isDisabled"> & {
   isDisabled?: boolean;

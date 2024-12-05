@@ -1,13 +1,16 @@
 import {
   Input as ChakraInput,
   InputProps as ChakraInputProps,
+  Box as InputLeftElement,
+  Box as InputRightElement,
 } from "@chakra-ui/react";
 import {
   CloseOutline24Icon,
   SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, useId } from "react";
-import { createTexts, InputGroup, useTranslation } from "..";
+import { createTexts, useTranslation } from "..";
+import { InputGroup } from "../components/ui/input-group";
 import { Field } from "../components/ui/field";
 import { IconButton } from "../button/IconButton";
 

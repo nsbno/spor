@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import {
   BoxProps,
   SelectRoot,
@@ -11,7 +11,7 @@ import {
   SelectValueText,
 } from "..";
 import { getSupportedCallingCodes } from "awesome-phonenumber";
-import { ConditionalValue } from "@chakra-ui/react";
+import { ConditionalValue, Select } from "@chakra-ui/react";
 
 const prioritizedCountryCodes = [
   { key: "+47", value: "+47" },
@@ -30,19 +30,24 @@ const sortedCallingCodes = getSupportedCallingCodes()
   );
 const callingCodes = [...prioritizedCountryCodes, ...sortedCallingCodes];
 
-type CountryCodeSelectProps = {
-  value: string;
-  onChange: (value: string | number) => void;
-  name: string;
-  width?: BoxProps["width"];
-  height?: BoxProps["height"];
+type CountryCodeSelectProps = Exclude<Select.RootProps, "variant"> & {
   variant?: ConditionalValue<"base" | "floating">;
 };
-export const CountryCodeSelect = (props: CountryCodeSelectProps) => {
+
+export const CountryCodeSelect = forwardRef<
+  HTMLDivElement,
+  CountryCodeSelectProps
+>((props, ref) => {
+  const { variant } = props;
   const { t } = useTranslation();
 
   return (
-    <SelectRoot collection={callingCodes} variant={props.variant} {...props}>
+    <SelectRoot
+      collection={callingCodes}
+      variant={variant}
+      {...props}
+      ref={ref}
+    >
       <SelectLabel>{t(texts.countryCode)}</SelectLabel>
       <SelectTrigger>
         <SelectValueText placeholder={t(texts.countryCode)} />
@@ -56,7 +61,7 @@ export const CountryCodeSelect = (props: CountryCodeSelectProps) => {
       </SelectContent>
     </SelectRoot>
   );
-};
+});
 
 export default CountryCodeSelect;
 

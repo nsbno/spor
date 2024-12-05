@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { Flex, FlexProps } from "..";
 
 type AttachedInputsProps = FlexProps;
@@ -14,42 +14,44 @@ type AttachedInputsProps = FlexProps;
  * </AttachedInputs>
  * ```
  */
-export const AttachedInputs = ({
-  flexDirection = "row",
-  ...rest
-}: AttachedInputsProps) => {
-  const attachedStyles = {
-    horizontal: {
-      "> *:first-of-type:not(:last-of-type) [data-attachable]": {
-        borderEndRadius: 0,
+
+export const AttachedInputs = forwardRef<HTMLDivElement, AttachedInputsProps>(
+  (props, ref) => {
+    const { direction = "row", ...rest } = props;
+    const attachedStyles = {
+      horizontal: {
+        "> *:first-of-type:not(:last-of-type) [data-attachable]": {
+          borderEndRadius: 0,
+        },
+        "> *:not(:first-of-type):not(:last-of-type) [data-attachable]": {
+          borderRadius: 0,
+        },
+        "> *:not(:first-of-type):last-of-type [data-attachable]": {
+          borderStartRadius: 0,
+        },
       },
-      "> *:not(:first-of-type):not(:last-of-type) [data-attachable]": {
-        borderRadius: 0,
+      vertical: {
+        "> *:first-of-type:not(:last-of-type) [data-attachable]": {
+          borderBottomRadius: 0,
+        },
+        "> *:not(:first-of-type):not(:last-of-type) [data-attachable]": {
+          borderRadius: 0,
+        },
+        "> *:not(:first-of-type):last-of-type [data-attachable]": {
+          borderTopRadius: 0,
+        },
       },
-      "> *:not(:first-of-type):last-of-type [data-attachable]": {
-        borderStartRadius: 0,
-      },
-    },
-    vertical: {
-      "> *:first-of-type:not(:last-of-type) [data-attachable]": {
-        borderBottomRadius: 0,
-      },
-      "> *:not(:first-of-type):not(:last-of-type) [data-attachable]": {
-        borderRadius: 0,
-      },
-      "> *:not(:first-of-type):last-of-type [data-attachable]": {
-        borderTopRadius: 0,
-      },
-    },
-  };
-  const direction = flexDirection === "row" ? "horizontal" : "vertical";
-  return (
-    <Flex
-      role="group"
-      css={attachedStyles[direction]}
-      display="flex"
-      flexDirection={flexDirection}
-      {...rest}
-    />
-  );
-};
+    };
+    const flexDirection = direction === "row" ? "horizontal" : "vertical";
+    return (
+      <Flex
+        role="group"
+        css={attachedStyles[flexDirection]}
+        display="flex"
+        flexDirection={direction}
+        ref={ref}
+        {...rest}
+      />
+    );
+  },
+);

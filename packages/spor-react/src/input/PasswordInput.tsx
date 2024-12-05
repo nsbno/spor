@@ -2,8 +2,7 @@ import {
   Button,
   Input as ChakraInput,
   useDisclosure,
-  Box as InputLeftElement,
-  Box as InputRightElement,
+  Box,
 } from "@chakra-ui/react";
 import React, { useId, forwardRef } from "react";
 import { InputProps } from ".";

@@ -7,7 +7,7 @@ import {
 import React, { forwardRef, useId, PropsWithChildren } from "react";
 import inputSlotRecipe from "../theme/components/input";
 import { Field } from "../components/ui/field";
-import { InputLeftElement, InputRightElement } from ".";
+import { InputGroup } from ".";
 
 type inputVariantProps = RecipeVariantProps<typeof inputSlotRecipe>;
 
@@ -47,29 +47,25 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const labelId = `${useId()}-label`;
   return (
     <Box position="relative" display="flex" flexDirection="row" gap={2}>
-      {props.leftIcon && (
-        <InputLeftElement pointerEvents="none">
-          {props.leftIcon}
-        </InputLeftElement>
-      )}
       <Field label={props.label}>
-        <ChakraInput
-          data-attachable
-          paddingLeft={props.leftIcon ? 7 : undefined}
-          paddingRight={props.rightIcon ? 7 : undefined}
-          {...props}
-          id={inputId}
-          aria-labelledby={labelId}
-          ref={ref}
-          overflow="hidden"
-          placeholder=" " // This is needed to make the label work as expected
-        />
+        <InputGroup
+          flex={1}
+          endElement={props.rightIcon && props.rightIcon}
+          startElement={props.leftIcon && props.leftIcon}
+        >
+          <ChakraInput
+            data-attachable
+            paddingLeft={props.leftIcon ? 7 : undefined}
+            paddingRight={props.rightIcon ? 7 : undefined}
+            {...props}
+            id={inputId}
+            aria-labelledby={labelId}
+            ref={ref}
+            overflow="hidden"
+            placeholder=" " // This is needed to make the label work as expected
+          />
+        </InputGroup>
       </Field>
-      {props.rightIcon && (
-        <InputRightElement pointerEvents="none">
-          {props.rightIcon}
-        </InputRightElement>
-      )}
     </Box>
   );
 });

@@ -7,7 +7,6 @@ export * from "./Combobox";
 export * from "./Field";
 export * from "./Input";
 export * from "./InputGroup";
-export * from "./InputElement";
 export * from "./ListBox";
 export * from "./NativeSelect";
 export * from "./NumericStepper";

@@ -1,5 +1,5 @@
-import { useInterval } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
+import { useInterval } from "usehooks-ts";
 
 type UseRotatingLabelArgs = {
   label?: string | string[];

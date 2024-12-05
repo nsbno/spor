@@ -1,5 +1,5 @@
-import { Box, BoxProps, chakra, RecipeVariantProps, Text } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren, useId, useRef } from "react";
+import { Box, BoxProps, chakra, Text } from "@chakra-ui/react";
+import React, { forwardRef, useId, useRef } from "react";
 import { useProgressBar } from "react-aria";
 import { createTexts, useTranslation } from "..";
 import { useRotatingLabel } from "./useRotatingLabel";

@@ -67,7 +67,7 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
  */
 
 export const Combobox = forwardRef<HTMLInputElement, ComboboxProps<object>>(
-  (props, ref) => {
+  (props) => {
     const {
       label,
       isLoading,
@@ -91,7 +91,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps<object>>(
       paddingY,
       emptyContent,
       inputRef: externalInputRef,
-      allowsEmptyCollection,
+      allowsEmptyCollection /* Is this being used? */,
       children,
       variant,
     } = props;

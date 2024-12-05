@@ -10,16 +10,18 @@ import {
 import React from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { BaseAlertProps } from "./BaseAlert";
+import { Icon } from "@chakra-ui/react";
 
 type AlertIconProps = { variant: BaseAlertProps["variant"] };
 /**
  * Internal component that shows the correct icon for the alert
  */
 export const AlertIcon = ({ variant }: AlertIconProps) => {
-  const Icon = getIcon(variant);
+  /* const Icon = getIcon(variant); */
   const { t } = useTranslation();
   return (
     <Icon
+      as={getIcon(variant)}
       flexShrink={0}
       aria-label={t(texts[variant])}
       marginRight={1}

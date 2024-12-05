@@ -63,7 +63,7 @@ export type ButtonProps = Omit<
  */
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  function Button(props, ref) {
+  (props, ref) => {
     const {
       loading,
       disabled,

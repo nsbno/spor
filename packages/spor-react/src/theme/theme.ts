@@ -7,7 +7,6 @@ import {
   dialogSlotRecipe,
   staticCardRecipe,
   pressableCardRecipe,
-  dividerRecipe,
   breadcrumbRecipe,
   switchRecipe,
   accordionSlotRecipe,
@@ -34,6 +33,7 @@ import { lineIconSlotRecipe } from "./components/line-icon";
 import { listSlotRecipe } from "./components/list";
 import { alertSlotRecipe } from "./components/alert";
 import { fieldSlotRecipe } from "./components/field";
+import { separatorRecipe } from "./components/separator";
 
 export type ColorsType = typeof tokens.color.alias &
   typeof tokens.color.palette &
@@ -67,7 +67,6 @@ export const config = defineConfig({
     recipes: {
       button: buttonRecipe,
       badge: badgeRecipie,
-      divider: dividerRecipe,
       staticCard: staticCardRecipe,
       pressableCard: pressableCardRecipe,
       switch: switchRecipe,
@@ -75,6 +74,7 @@ export const config = defineConfig({
       code: codeRecipie,
       textarea: textareaRecipe,
       toast: toastRecipe,
+      separator: separatorRecipe,
     },
     slotRecipes: {
       drawer: drawerSlotRecipe,
@@ -98,7 +98,7 @@ export const config = defineConfig({
       stepper: stepperSlotRecipe,
       table: tableSlotRecipe,
       tabs: tabsSlotRecipe,
-      trabelTag: travelTagSlotRecipe,
+      travelTag: travelTagSlotRecipe,
     },
   },
 });

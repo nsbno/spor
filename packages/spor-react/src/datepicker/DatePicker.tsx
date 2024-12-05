@@ -33,7 +33,9 @@ import {
 } from "../popover";
 import { Field } from "../input";
 
-export type DatePickerVariantProps = RecipeVariantProps<typeof datePickerSlotRecipe>;
+export type DatePickerVariantProps = RecipeVariantProps<
+  typeof datePickerSlotRecipe
+>;
 
 type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
   Pick<BoxProps, "minHeight" | "width"> &
@@ -94,7 +96,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     const labelId = `label-${useId()}`;
     const inputGroupId = `input-group-${useId()}`;
 
-    const recipe = useSlotRecipe({ recipe: datePickerSlotRecipe });
+    const recipe = useSlotRecipe({ key: "datePicker", recipe: datePickerSlotRecipe });
     const styles = recipe({ variant });
     const locale = useCurrentLocale();
 
@@ -104,7 +106,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 
     const popoverContent = (
       <PopoverContent color="darkGrey" css={styles.calendarPopover}>
-        <PopoverArrow css={styles.arrow} />
+        <PopoverArrow />
         <PopoverBody>
           <Calendar
             {...calendarProps}

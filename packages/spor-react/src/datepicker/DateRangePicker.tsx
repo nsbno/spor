@@ -21,7 +21,6 @@ import { DateField } from "./DateField";
 import { RangeCalendar } from "./RangeCalendar";
 import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
-import { datePickerSlotRecipe } from "../theme/components/datepicker";
 import {
   PopoverArrow,
   PopoverBody,
@@ -31,6 +30,7 @@ import {
 } from "../popover";
 import { Field } from "../input";
 import { DatePickerVariantProps } from "./DatePicker";
+import { datePickerSlotRecipe } from "../theme/components";
 
 type DateRangePickerProps = Omit<
   AriaDateRangePickerProps<DateValue>,
@@ -86,7 +86,10 @@ export function DateRangePicker({
     calendarProps,
   } = useDateRangePicker(props, state, ref);
 
-  const recipe = useSlotRecipe({ recipe: datePickerSlotRecipe });
+  const recipe = useSlotRecipe({
+    key: "datePicker",
+    recipe: datePickerSlotRecipe,
+  });
   const styles = recipe({ variant });
   const locale = useCurrentLocale();
 
@@ -104,7 +107,7 @@ export function DateRangePicker({
 
   const popoverContent = (
     <PopoverContent css={styles.calendarPopover} maxWidth="none">
-      <PopoverArrow css={styles.arrow} />
+      <PopoverArrow />
       <PopoverBody>
         <RangeCalendar variant={"base"} {...calendarProps} />
       </PopoverBody>

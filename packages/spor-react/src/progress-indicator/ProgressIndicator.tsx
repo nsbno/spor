@@ -4,13 +4,13 @@ import { Box, createTexts, useTranslation } from "..";
 import { ProgressDot } from "./ProgressDot";
 import { progressIndicatorRecipe } from "../theme/components";
 
-type ProgressIndicatorVariants = RecipeVariantProps<
+export type ProgressIndicatorVariantProps = RecipeVariantProps<
   typeof progressIndicatorRecipe
 >;
 
 export type ProgressIndicatorProps = BoxProps &
-  PropsWithChildren<ProgressIndicatorVariants> & {
-    children: React.ReactNode;
+  PropsWithChildren<ProgressIndicatorVariantProps> & {
+    children?: React.ReactNode;
     numberOfSteps: number;
     activeStep: number;
   };

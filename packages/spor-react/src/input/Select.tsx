@@ -4,6 +4,7 @@ import type {
   CollectionItem,
   ConditionalValue,
   RecipeVariantProps,
+  SelectRootProps as ChakraSelectRootProps,
 } from "@chakra-ui/react";
 import { Select as ChakraSelect, Portal } from "@chakra-ui/react";
 import { CloseButton } from "../button/CloseButton";
@@ -123,7 +124,7 @@ export const SelectValueText = React.forwardRef<
   );
 });
 
-type SelectRootProps = Exclude<ChakraSelect.RootProps, "variant"> & {
+type SelectRootProps = Exclude<ChakraSelectRootProps, "variant"> & {
   variant?: ConditionalValue<"base" | "floating">;
 };
 

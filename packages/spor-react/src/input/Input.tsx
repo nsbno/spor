@@ -8,10 +8,10 @@ import {
   Box as InputRightElement,
 } from "@chakra-ui/react";
 import React, { forwardRef, useId, PropsWithChildren } from "react";
-import inputRecipe from "../theme/components/input";
+import inputSlotRecipe from "../theme/components/input";
 import { Field } from "../components/ui/field";
 
-type inputVariantProps = RecipeVariantProps<typeof inputRecipe>;
+type inputVariantProps = RecipeVariantProps<typeof inputSlotRecipe>;
 
 export type InputProps = Omit<ChakraInputProps, "size"> &
   PropsWithChildren<inputVariantProps> & {

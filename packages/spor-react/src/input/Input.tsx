@@ -2,12 +2,12 @@ import {
   Input as ChakraInput,
   InputProps as ChakraInputProps,
   type RecipeVariantProps,
-  Box,
 } from "@chakra-ui/react";
 import React, { forwardRef, useId, PropsWithChildren } from "react";
 import inputSlotRecipe from "../theme/components/input";
 import { Field } from "../components/ui/field";
 import { InputLeftElement, InputRightElement } from ".";
+import { InputGroup } from "../components/ui/input-group";
 
 type inputVariantProps = RecipeVariantProps<typeof inputSlotRecipe>;
 
@@ -46,30 +46,32 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const inputId = props.id ?? props?.id ?? fallbackId;
   const labelId = `${useId()}-label`;
   return (
-    <Box position="relative" display="flex" flexDirection="row" gap={2}>
-      {props.leftIcon && (
-        <InputLeftElement pointerEvents="none">
-          {props.leftIcon}
-        </InputLeftElement>
-      )}
-      <Field label={props.label}>
-        <ChakraInput
-          data-attachable
-          paddingLeft={props.leftIcon ? 7 : undefined}
-          paddingRight={props.rightIcon ? 7 : undefined}
-          {...props}
-          id={inputId}
-          aria-labelledby={labelId}
-          ref={ref}
-          overflow="hidden"
-          placeholder=" " // This is needed to make the label work as expected
-        />
-      </Field>
-      {props.rightIcon && (
-        <InputRightElement pointerEvents="none">
-          {props.rightIcon}
-        </InputRightElement>
-      )}
-    </Box>
+    <InputGroup position="relative">
+      <>
+        {props.leftIcon && (
+          <InputLeftElement pointerEvents="none">
+            {props.leftIcon}
+          </InputLeftElement>
+        )}
+        <Field label={props.label}>
+          <ChakraInput
+            data-attachable
+            paddingLeft={props.leftIcon ? 7 : undefined}
+            paddingRight={props.rightIcon ? 7 : undefined}
+            {...props}
+            id={inputId}
+            aria-labelledby={labelId}
+            ref={ref}
+            overflow="hidden"
+            placeholder=" " // This is needed to make the label work as expected
+          />
+        </Field>
+        {props.rightIcon && (
+          <InputRightElement pointerEvents="none">
+            {props.rightIcon}
+          </InputRightElement>
+        )}
+      </>
+    </InputGroup>
   );
 });

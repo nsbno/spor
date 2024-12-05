@@ -1,7 +1,7 @@
-import { defineStyleConfig } from "@chakra-ui/react";
+import { defineRecipe } from "@chakra-ui/react";
 
-const config = defineStyleConfig({
-  baseStyle: {
+export const toastRecipe = defineRecipe({
+  base: {
     display: "flex",
     alignItems: "center",
     width: "fit-content",
@@ -13,16 +13,16 @@ const config = defineStyleConfig({
     borderRadius: "sm",
   },
   variants: {
-    success: {
-      backgroundColor: "seaMist",
-    },
-    info: {
-      backgroundColor: "lightBlue",
-    },
-    error: {
-      backgroundColor: "lightRed",
+    variant: {
+      success: {
+        backgroundColor: "seaMist",
+      },
+      info: {
+        backgroundColor: "lightBlue",
+      },
+      error: {
+        backgroundColor: "lightRed",
+      },
     },
   },
 });
-
-export default config;

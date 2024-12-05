@@ -1,24 +1,34 @@
-import { Flex, useStyleConfig } from "@chakra-ui/react";
+import {
+  Flex,
+  useRecipe,
+  RecipeVariantProps,
+  Icon,
+  ConditionalValue,
+} from "@chakra-ui/react";
 import {
   ErrorOutline24Icon,
   InformationOutline24Icon,
   SuccessOutline24Icon,
 } from "@vygruppen/spor-icon-react";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { createTexts, useTranslation } from "..";
+import { toastRecipe } from "../theme/components/toast";
 
-export type BaseToastProps = {
+export type ToastVariantProps = RecipeVariantProps<typeof toastRecipe>;
+
+export type BaseToastProps = PropsWithChildren<ToastVariantProps> & {
   children: React.ReactNode;
-  variant: "success" | "info" | "error";
+  variant: ConditionalValue<"success" | "info" | "error">;
   id?: string;
 };
 /**
  * A basic toast component.
  **/
 export const BaseToast = ({ children, variant, id }: BaseToastProps) => {
-  const styles = useStyleConfig("Toast", { variant });
+  const recipe = useRecipe({ recipe: toastRecipe });
+  const style = recipe({ variant });
   return (
-    <Flex sx={styles} id={id}>
+    <Flex css={style} id={id}>
       <ToastIcon variant={variant} />
       {children}
     </Flex>
@@ -29,16 +39,19 @@ type ToastIconProps = Pick<BaseToastProps, "variant">;
 
 /** Internal component for selecting the correct icon to show */
 const ToastIcon = ({ variant }: ToastIconProps) => {
-  const Icon = getIcon(variant);
   const { t } = useTranslation();
+
+  const ariaLabel = t(texts[variant as keyof typeof texts]);
   return (
     <Icon
       flexShrink={0}
-      aria-label={t(texts[variant])}
+      aria-label={ariaLabel}
       marginRight={1}
       marginY={1.5}
       color="darkGrey"
-    />
+    >
+      {getIcon(variant) as any}
+    </Icon>
   );
 };
 

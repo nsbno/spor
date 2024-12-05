@@ -1,53 +1,69 @@
 import {
   Box,
+  BoxProps,
+  ConditionalValue,
   PopoverAnchor,
-  useMultiStyleConfig,
-  forwardRef,
-  As,
-  ResponsiveValue,
+  useSlotRecipe,
 } from "@chakra-ui/react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, { KeyboardEventHandler } from "react";
+import React, {
+  forwardRef,
+  KeyboardEventHandler,
+  PropsWithChildren,
+} from "react";
 import { AriaButtonProps } from "react-aria";
-import { IconButton, createTexts, useTranslation } from "..";
+import {
+  DatePickerVariantProps,
+  IconButton,
+  createTexts,
+  useTranslation,
+} from "..";
+import { datePickerSlotRecipe } from "../theme/components";
 
-type CalendarTriggerButtonProps = AriaButtonProps<"button"> & {
-  variant: ResponsiveValue<"base" | "floating" | "ghost">;
-  isDisabled?: boolean;
-  ariaLabelledby?: string;
-};
-export const CalendarTriggerButton = forwardRef<CalendarTriggerButtonProps, As>(
-  ({ variant, isDisabled, ariaLabelledby, ...buttonProps }, ref) => {
-    const { t } = useTranslation();
-    const styles = useMultiStyleConfig("Datepicker", { variant });
+type CalendarTriggerButtonProps = AriaButtonProps<"button"> &
+  PropsWithChildren<DatePickerVariantProps> &
+  BoxProps & {
+    variant: ConditionalValue<"base" | "floating" | "ghost">;
+    disabled?: boolean;
+    ariaLabelledby?: string;
+  };
+export const CalendarTriggerButton = forwardRef<
+  HTMLDivElement,
+  CalendarTriggerButtonProps
+>(({ variant, disabled, ariaLabelledby, ...buttonProps }, ref) => {
+  const { t } = useTranslation();
+  const recipe = useSlotRecipe({
+    key: "datePicker",
+    recipe: datePickerSlotRecipe,
+  });
+  const styles = recipe({ variant });
 
-    const { onPress, ...filteredButtonProps } = buttonProps;
+  const { onPress, ...filteredButtonProps } = buttonProps;
 
-    const handleCommand: KeyboardEventHandler = (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        onPress?.(event as any);
-      }
-    };
+  const handleCommand: KeyboardEventHandler = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      onPress?.(event as any);
+    }
+  };
 
-    return (
-      <PopoverAnchor>
-        <IconButton
-          ref={ref}
-          role="button"
-          icon={<CalendarOutline24Icon />}
-          aria-label={t(texts.openCalendar)}
-          sx={styles.calendarTriggerButton}
-          variant="ghost"
-          {...filteredButtonProps}
-          isDisabled={isDisabled}
-          onKeyDown={handleCommand}
-          aria-labelledby={ariaLabelledby}
-        />
-      </PopoverAnchor>
-    );
-  },
-);
+  return (
+    <PopoverAnchor {...buttonProps}>
+      <IconButton
+        ref={ref}
+        role="button"
+        icon={<CalendarOutline24Icon />}
+        aria-label={t(texts.openCalendar)}
+        css={styles.calendarTriggerButton}
+        variant="ghost"
+        {...filteredButtonProps}
+        disabled={disabled}
+        onKeyDown={handleCommand}
+        aria-labelledby={ariaLabelledby}
+      />
+    </PopoverAnchor>
+  );
+});
 
 const texts = createTexts({
   openCalendar: {

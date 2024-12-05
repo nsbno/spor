@@ -22,7 +22,7 @@ type ButtonVariants =
   | "floating";
 type ButtonSizes = "lg" | "md" | "sm" | "xs";
 
-export type ButtonProps = Exclude<
+export type ButtonProps = Omit<
   ChakraButtonProps,
   "size" | "variant" | "colorPalette"
 > &
@@ -63,7 +63,7 @@ export type ButtonProps = Exclude<
  */
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  function Button(props, ref) {
+  (props, ref) => {
     const {
       loading,
       disabled,

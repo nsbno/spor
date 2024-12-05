@@ -5,7 +5,10 @@ import {
 import React, { forwardRef } from "react";
 import { ColorSpinner } from "..";
 
-export type IconButtonProps = Exclude<ChakraIconButtonProps, "variant"> & {
+export type IconButtonProps = Exclude<
+  ChakraIconButtonProps,
+  "variant" | "spinner" | "icon"
+> & {
   /** The button variant.
    *
    */

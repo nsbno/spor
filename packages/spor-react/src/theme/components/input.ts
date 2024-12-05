@@ -1,28 +1,28 @@
-import { inputAnatomy as parts } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { inputBaseStyle, inputVariant } from "../utils/input-utils";
+import { defineSlotRecipe } from "@chakra-ui/react";
 
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
-    ...inputBaseStyle(props),
-  }),
-  variants: {
-    base: (props) => ({
-      field: {
-        ...inputVariant("base", props),
-      },
-    }),
-    floating: (props) => ({
-      field: {
-        ...inputVariant("floating", props),
-      },
-    }),
+const inputSlotRecipe = defineSlotRecipe({
+  slots: ["group", "addon", "field", "element"],
+  base: {
+    ...inputBaseStyle(),
   },
-  defaultProps: {
+  variants: {
+    variant: {
+      base: {
+        field: {
+          ...inputVariant("base"),
+        },
+      },
+      floating: {
+        field: {
+          ...inputVariant("floating"),
+        },
+      },
+    },
+  },
+  defaultVariants: {
     variant: "base",
   },
 });
 
-export default config;
+export default inputSlotRecipe;

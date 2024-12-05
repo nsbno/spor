@@ -1,6 +1,4 @@
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy, cssVar, mode } from "@chakra-ui/theme-tools";
-import { zIndices } from "../foundations";
+import { defineSlotRecipe } from "@chakra-ui/react";
 import { accentText } from "../utils/accent-utils";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
@@ -9,25 +7,22 @@ import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 import { surface } from "../utils/surface-utils";
 
-const parts = anatomy("datepicker").parts(
-  "wrapper",
-  "calendarTriggerButton",
-  "arrow",
-  "calendarPopover",
-  "calendar",
-  "weekdays",
-  "weekend",
-  "dateCell",
-  "inputLabel",
-  "dateTimeSegment",
-  "cell",
-);
-
-const $arrowBackground = cssVar("popper-arrow-bg");
-
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
+export const datePickerSlotRecipe = defineSlotRecipe({
+  slots: [
+    "wrapper",
+    "calendarTriggerButton",
+    "arrow",
+    "calendarPopover",
+    "calendar",
+    "weekdays",
+    "weekend",
+    "dateCell",
+    "inputLabel",
+    "dateTimeSegment",
+    "cell",
+  ],
+  className: "spor-datepicker",
+  base: {
     wrapper: {
       transitionProperty: "box-shadow",
       transitionDuration: "fast",
@@ -37,16 +32,16 @@ const config = helpers.defineMultiStyleConfig({
       paddingY: 0.5,
       alignItems: "center",
       _hover: {
-        zIndex: zIndices.docked,
+        zIndex: "docked",
       },
       _disabled: {
         pointerEvents: "none",
-        ...baseBackground("disabled", props),
-        ...baseBorder("disabled", props),
-        ...baseText("disabled", props),
+        ...baseBackground("disabled"),
+        ...baseBorder("disabled"),
+        ...baseText("disabled"),
       },
       _focusWithin: {
-        ...focusVisibleStyles(props)._focusVisible,
+        ...focusVisibleStyles()._focusVisible,
       },
     },
     inputLabel: {
@@ -56,7 +51,7 @@ const config = helpers.defineMultiStyleConfig({
     },
     dateTimeSegment: {
       _focus: {
-        ...brandBackground("hover", props),
+        ...brandBackground("hover"),
         color: "white",
       },
     },
@@ -66,35 +61,34 @@ const config = helpers.defineMultiStyleConfig({
       alignItems: "center",
       justifyContent: "center",
       transitionProperty: "box-shadow, background-color",
-      transitionSpeed: "fast",
       position: "relative",
       right: "9px",
 
-      ...focusVisibleStyles(props),
+      ...focusVisibleStyles(),
       _hover: {
-        ...ghostBackground("hover", props),
+        ...ghostBackground("hover"),
       },
       _active: {
-        ...ghostBackground("active", props),
+        ...ghostBackground("active"),
       },
       _invalid: {
-        ...baseBorder("invalid", props),
+        ...baseBorder("invalid"),
       },
     },
     arrow: {
-      [$arrowBackground.variable]: surface("default", props).backgroundColor,
+      ...surface("default"),
     },
     calendarPopover: {
-      ...floatingBackground("default", props),
-      ...baseText("default", props),
-      ...floatingBorder("default", props),
+      ...floatingBackground("default"),
+      ...baseText("default"),
+      ...floatingBorder("default"),
       boxShadow: "md",
     },
     weekdays: {
-      ...baseText("default", props),
+      ...baseText("default"),
     },
     weekend: {
-      ...accentText("default", props),
+      ...accentText("default"),
     },
     cell: {
       '&[aria-selected="true"] + [aria-selected="true"] > button': {
@@ -108,13 +102,13 @@ const config = helpers.defineMultiStyleConfig({
           top: 0,
           bottom: 0,
           zIndex: -1,
-          ...brandBackground("default", props),
+          ...brandBackground("default"),
         },
       },
     },
     dateCell: {
-      ...ghostBackground("default", props),
-      ...baseText("default", props),
+      ...ghostBackground("default"),
+      ...baseText("default"),
       borderRadius: "50%",
       position: "relative",
       transition: ".1s ease-in-out",
@@ -122,77 +116,79 @@ const config = helpers.defineMultiStyleConfig({
       width: [6, 7],
       height: [6, 7],
       transitionProperty: "common",
-      transitionSpeed: "fast",
 
       _hover: {
-        ...ghostBackground("hover", props),
+        ...ghostBackground("hover"),
       },
-      ...focusVisibleStyles(props),
+      ...focusVisibleStyles(),
       _active: {
-        ...ghostBackground("active", props),
+        ...ghostBackground("active"),
       },
       _disabled: {
-        ...baseBackground("disabled", props),
-        ...baseText("disabled", props),
+        ...baseBackground("disabled"),
+        ...baseText("disabled"),
         pointerEvents: "none",
       },
       _selected: {
-        ...brandBackground("default", props),
-        ...brandText("default", props),
+        ...brandBackground("default"),
+        ...brandText("default"),
         _active: {
-          ...brandBackground("active", props),
-          ...brandText("active", props),
+          ...brandBackground("active"),
+          ...brandText("active"),
         },
       },
       "&[data-today]": {
-        ...baseBorder("default", props),
+        ...baseBorder("default"),
       },
       "&[data-unavailable]": {
         pointerEvents: "none",
-        ...baseBackground("disabled", props),
-        ...baseText("disabled", props),
+        ...baseBackground("disabled"),
+        ...baseText("disabled"),
       },
     },
-  }),
+  },
   variants: {
-    base: (props) => ({
-      wrapper: {
-        ...baseBorder("default", props),
-        ...baseBackground("default", props),
+    variant: {
+      base: {
+        wrapper: {
+          ...baseBorder("default"),
+          ...baseBackground("default"),
 
-        _hover: {
-          ...baseBorder("hover", props),
-        },
-        _invalid: {
-          ...baseBorder("invalid", props),
+          _hover: {
+            ...baseBorder("hover"),
+          },
+          _invalid: {
+            ...baseBorder("invalid"),
+          },
         },
       },
-    }),
-    floating: (props) => ({
-      wrapper: {
-        ...floatingBackground("default", props),
-        ...floatingBorder("default", props),
-        boxShadow: "sm",
+      floating: {
+        wrapper: {
+          ...floatingBackground("default"),
+          ...floatingBorder("default"),
+          boxShadow: "sm",
 
-        _hover: {
-          ...floatingBorder("hover", props),
-        },
-        _invalid: {
-          ...baseBorder("invalid", props),
-        },
-      },
-    }),
-    ghost: (props) => ({
-      wrapper: {
-        _hover: {
-          ...baseBorder("hover", props),
-        },
-        _invalid: {
-          ...baseBorder("invalid", props),
+          _hover: {
+            ...floatingBorder("hover"),
+          },
+          _invalid: {
+            ...baseBorder("invalid"),
+          },
         },
       },
-    }),
+      ghost: {
+        wrapper: {
+          _hover: {
+            ...baseBorder("hover"),
+          },
+          _invalid: {
+            ...baseBorder("invalid"),
+          },
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "base",
   },
 });
-
-export default config;

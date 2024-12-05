@@ -1,14 +1,5 @@
-import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
-  Box,
-  Flex,
-  useMultiStyleConfig,
-} from "@chakra-ui/react";
-import React from "react";
+import { Accordion, Box, Flex, Icon, useSlotRecipe } from "@chakra-ui/react";
+import React, { forwardRef } from "react";
 import { AlertIcon } from "./AlertIcon";
 import { BaseAlert, BaseAlertProps } from "./BaseAlert";
 
@@ -36,26 +27,30 @@ type ExpandableAlertProps = BaseAlertProps & {
  * </ExpandableAlert>
  * ```
  */
-export const ExpandableAlert = ({
-  variant,
-  children,
-  title,
-  headingLevel = "h3",
-  defaultOpen = false,
-  onToggle = () => {},
-  ...boxProps
-}: ExpandableAlertProps) => {
-  const styles = useMultiStyleConfig("AlertExpandable", { variant });
+export const ExpandableAlert = forwardRef<
+  HTMLButtonElement,
+  ExpandableAlertProps
+>((props, ref) => {
+  const {
+    variant,
+    children,
+    title,
+    headingLevel = "h3",
+    defaultOpen = false,
+    onToggle = () => {},
+  } = props;
+  const recipe = useSlotRecipe({ key: "alert-expandable" });
+  const styles = recipe({ variant });
   return (
-    <BaseAlert variant={variant} {...boxProps} paddingX={0} paddingY={0}>
-      <Accordion
-        onChange={(expandedIndex) => onToggle(expandedIndex === 0)}
+    <BaseAlert variant={variant} {...props} paddingX={0} paddingY={0} ref={ref}>
+      <Accordion.Root
+        onChange={(expandedIndex: number) => onToggle(expandedIndex === 0)}
         defaultIndex={defaultOpen ? 0 : -1}
         allowToggle
         flexGrow="1"
       >
-        <AccordionItem sx={styles.accordion}>
-          <AccordionButton sx={styles.container}>
+        <Accordion.Item css={styles.accordion}>
+          <Accordion.ItemTrigger css={styles.container}>
             <Flex
               justifyContent="space-between"
               alignItems="center"
@@ -66,7 +61,7 @@ export const ExpandableAlert = ({
 
                 <Box
                   as="span"
-                  sx={{
+                  css={{
                     // Truncate the title to one line
                     display: "-webkit-box",
                     overflow: "hidden",
@@ -78,16 +73,16 @@ export const ExpandableAlert = ({
                   {title}
                 </Box>
               </Flex>
-              <AccordionIcon
-                color={variant === "service" ? "white" : "darkGrey"}
-              />
+              <Icon color={variant === "service" ? "white" : "darkGrey"} />
             </Flex>
-          </AccordionButton>
-          <AccordionPanel color={variant === "service" ? "white" : "darkGrey"}>
+          </Accordion.ItemTrigger>
+          <Accordion.ItemBody
+            color={variant === "service" ? "white" : "darkGrey"}
+          >
             {children}
-          </AccordionPanel>
-        </AccordionItem>
-      </Accordion>
+          </Accordion.ItemBody>
+        </Accordion.Item>
+      </Accordion.Root>
     </BaseAlert>
   );
-};
+});

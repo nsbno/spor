@@ -1,24 +1,16 @@
-import { anatomy } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import { defineSlotRecipe } from "@chakra-ui/react";
 import { baseBorder } from "../utils/base-utils";
 import { ghostBackground, ghostText } from "../utils/ghost-utils";
 import { surface } from "../utils/surface-utils";
 import { outlineBorder } from "../utils/outline-utils";
 import { floatingBorder } from "../utils/floating-utils";
 
-const parts = anatomy("ListBox").parts(
-  "container",
-  "item",
-  "label",
-  "description",
-);
-
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
-    container: {
-      ...surface("default", props),
+export const listBoxSlotRecipe = defineSlotRecipe({
+  slots: ["root", "item", "label", "description"],
+  className: "spor-listbox",
+  base: {
+    root: {
+      ...surface("default"),
       boxShadow: "sm",
       overflowY: "auto",
       maxHeight: "50vh",
@@ -32,46 +24,46 @@ const config = helpers.defineMultiStyleConfig({
       marginY: 1,
       marginX: 1,
       borderRadius: "sm",
-      ...ghostText("default", props),
+      ...ghostText("default"),
       cursor: "pointer",
       outline: "none",
       _active: {
-        ...ghostBackground("active", props),
+        ...ghostBackground("active"),
       },
       _focusVisible: {
-        ...outlineBorder("focus", props),
+        ...outlineBorder("focus"),
       },
       _hover: {
-        ...ghostBackground("hover", props),
+        ...ghostBackground("hover"),
       },
       _selected: {
-        ...ghostBackground("active", props),
+        ...ghostBackground("active"),
       },
     },
     label: {},
     description: {
       fontSize: ["mobile.xs", "desktop.xs"],
-      ...ghostText("default", props),
+      ...ghostText("default"),
       "[aria-selected='true'] &": {
-        ...ghostText("selected", props),
+        ...ghostText("selected"),
       },
     },
-  }),
-  variants: {
-    base: (props) => ({
-      container: {
-        ...baseBorder("default", props),
-      },
-    }),
-    floating: (props) => ({
-      container: {
-        ...floatingBorder("default", props),
-      },
-    }),
   },
-  defaultProps: {
+  variants: {
+    variant: {
+      base: {
+        root: {
+          ...baseBorder("default"),
+        },
+      },
+      floating: {
+        root: {
+          ...floatingBorder("default"),
+        },
+      },
+    },
+  },
+  defaultVariants: {
     variant: "base",
   },
 });
-
-export default config;

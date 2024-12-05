@@ -1,15 +1,9 @@
-import { anatomy } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
+import { defineSlotRecipe } from "@chakra-ui/react";
 
-const parts = anatomy("alertService").parts(
-  "container",
-  "outerBox",
-  "notificationText",
-  "serviceMessageContent",
-);
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: {
+export const serviceAlertSlotRecipe = defineSlotRecipe({
+  slots: ["container", "outerBox", "notificationText", "serviceMessageContent"],
+  className: "spor-service-alert",
+  base: {
     container: {
       paddingX: 0,
       paddingY: 2,
@@ -40,51 +34,54 @@ const config = helpers.defineMultiStyleConfig({
     },
   },
   variants: {
-    "global-deviation": {
-      container: {
-        _hover: {
-          outlineColor: "primrose",
+    variant: {
+      "global-deviation": {
+        container: {
+          _hover: {
+            outlineColor: "primrose",
+          },
+          _active: {
+            backgroundColor: "blonde",
+            outlineColor: "primrose",
+          },
+          color: "darkGrey",
         },
-        _active: {
+        outerBox: {
+          outlineColor: "primrose",
           backgroundColor: "blonde",
-          outlineColor: "primrose",
         },
-        color: "darkGrey",
+        notificationText: {
+          color: "darkGrey",
+        },
+        serviceMessageContent: {
+          color: "darkGrey",
+        },
       },
-      outerBox: {
-        outlineColor: "primrose",
-        backgroundColor: "blonde",
-      },
-      notificationText: {
-        color: "darkGrey",
-      },
-      serviceMessageContent: {
-        color: "darkGrey",
-      },
-    },
-    service: {
-      container: {
-        _hover: {
+      service: {
+        container: {
+          _hover: {
+            outlineColor: "blueGreen",
+          },
+          _active: {
+            backgroundColor: "pine",
+            outlineColor: "pine",
+          },
+          color: "white",
+        },
+        outerBox: {
           outlineColor: "blueGreen",
+          backgroundColor: "darkTeal",
         },
-        _active: {
-          backgroundColor: "pine",
-          outlineColor: "pine",
+        notificationText: {
+          color: "white",
         },
-        color: "white",
-      },
-      outerBox: {
-        outlineColor: "blueGreen",
-        backgroundColor: "darkTeal",
-      },
-      notificationText: {
-        color: "white",
-      },
-      serviceMessageContent: {
-        color: "white",
+        serviceMessageContent: {
+          color: "white",
+        },
       },
     },
   },
+  defaultVariants: {
+    variant: "service",
+  },
 });
-
-export default config;

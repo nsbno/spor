@@ -1,17 +1,17 @@
-import { useToast as useChakraToast } from "@chakra-ui/react";
+import { createToaster as createChakraToast } from "@chakra-ui/react";
 import React, { useCallback } from "react";
 import { ActionToast } from "./ActionToast";
 import { BaseToast, BaseToastProps } from "./BaseToast";
 import { ClosableToast } from "./ClosableToast";
 
 type ClosableToastOptions = {
-  isClosable: true;
+  closable: true;
   /** Callback for when the close button is clicked */
-  onClose?: () => void;
+  close?: () => void;
 };
 
 type ActionToastOptions = {
-  isClosable?: false;
+  closable?: false;
   /** Callback for when the button is clicked */
   onClick: () => void;
   /** The button text */
@@ -49,8 +49,8 @@ export type ToastOptions = BaseToastOptions &
  *   </Button>
  * ```
  */
-export const useToast = () => {
-  const toast = useChakraToast();
+export const createToaster = () => {
+  const toast = createChakraToast();
   const wrappedToast = useCallback((opts: ToastOptions) => {
     const Toast = getToastComponent(opts);
     toast({
@@ -61,18 +61,18 @@ export const useToast = () => {
   return wrappedToast;
 };
 
-type RenderArgs = { onClose: () => void; id: string };
+type RenderArgs = { close: () => void; id: string };
 const getToastComponent = (opts: ToastOptions) => {
-  if ("isClosable" in opts && opts.isClosable) {
-    return ({ onClose, id }: RenderArgs) => (
+  if ("closable" in opts && opts.closable) {
+    return ({ close, id }: RenderArgs) => (
       <ClosableToast
         id={id}
         variant={opts.variant}
-        onClose={() => {
-          if (opts.onClose) {
-            opts.onClose();
+        close={() => {
+          if (opts.close) {
+            opts.close();
           }
-          onClose();
+          close();
         }}
       >
         {opts.text}

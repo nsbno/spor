@@ -1,7 +1,7 @@
 import { defineRecipe } from "@chakra-ui/react";
-import Badge from "./badge";
+import { badgeRecipie } from "./badge";
 
-const { variants } = Badge;
+const { variants } = badgeRecipie;
 
 export const codeRecipie = defineRecipe({
   base: {

@@ -1,18 +1,29 @@
-import { BoxProps, Center, useMultiStyleConfig } from "@chakra-ui/react";
-import React from "react";
+import {
+  BoxProps,
+  Center,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { createTexts, useTranslation } from "..";
 import {
   Backward15MediaControllerFill30Icon,
   Forward15MediaControllerFill30Icon,
 } from "@vygruppen/spor-icon-react";
+import { mediaControllerSlotRecipe } from "../theme/components/media-controller-button";
 
-type JumpButtonProps = BoxProps & {
-  onClick: () => void;
-  "aria-label"?: string;
-  isDisabled?: boolean;
-  direction: "backward" | "forward";
-  size: "sm" | "lg";
-};
+export type MediaControllerVariantProps = RecipeVariantProps<
+  typeof mediaControllerSlotRecipe
+>;
+
+type JumpButtonProps = BoxProps &
+  PropsWithChildren<MediaControllerVariantProps> & {
+    onClick: () => void;
+    "aria-label"?: string;
+    disabled?: boolean;
+    direction: "backward" | "forward";
+    size: "sm" | "lg";
+  };
 
 /**
  * A jump button.
@@ -25,36 +36,34 @@ type JumpButtonProps = BoxProps & {
  * <JumpButton direction="forward" onClick={onGoForward} />
  * ```
  */
-export const JumpButton = ({
-  direction,
-  isDisabled,
-  size = "sm",
-  ...props
-}: JumpButtonProps) => {
-  const { t } = useTranslation();
-  const styles = useMultiStyleConfig("MediaControllerButton", {
-    variant: "jumpSkip",
-    size,
-  });
+export const JumpButton = forwardRef<HTMLButtonElement, JumpButtonProps>(
+  (props, ref) => {
+    const { direction, disabled, size = "sm" } = props;
+    const { t } = useTranslation();
 
-  return (
-    <Center
-      as="button"
-      sx={styles.container}
-      aria-label={
-        direction === "forward" ? t(texts.forward) : t(texts.backward)
-      }
-      disabled={isDisabled}
-      {...props}
-    >
-      {direction === "forward" ? (
-        <Forward15MediaControllerFill30Icon sx={styles.icon} />
-      ) : (
-        <Backward15MediaControllerFill30Icon sx={styles.icon} />
-      )}
-    </Center>
-  );
-};
+    const recipe = useSlotRecipe({ key: "mediaControllerButton" });
+    const styles = recipe({ variant: "jumpSkip", size });
+
+    return (
+      <Center
+        as="button"
+        ref={ref}
+        css={styles.root}
+        aria-label={
+          direction === "forward" ? t(texts.forward) : t(texts.backward)
+        }
+        disabled={disabled}
+        {...props}
+      >
+        {direction === "forward" ? (
+          <Forward15MediaControllerFill30Icon css={styles.icon} />
+        ) : (
+          <Backward15MediaControllerFill30Icon css={styles.icon} />
+        )}
+      </Center>
+    );
+  },
+);
 
 const texts = createTexts({
   forward: {

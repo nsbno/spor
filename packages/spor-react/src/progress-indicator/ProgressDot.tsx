@@ -1,23 +1,23 @@
-import React from "react";
-import { Box } from "..";
-import { useMultiStyleConfig } from "@chakra-ui/react";
+import React, { PropsWithChildren } from "react";
+import { chakra, useSlotRecipe } from "@chakra-ui/react";
+import { ProgressIndicatorVariantProps } from "./ProgressIndicator";
 
-type ProgressDot = {
+type ProgressDot = PropsWithChildren<ProgressIndicatorVariantProps> & {
   isActive: boolean;
 };
 
 export const ProgressDot = ({ isActive }: ProgressDot) => {
-  const style = useMultiStyleConfig("ProgressIndicator");
+  const recipe = useSlotRecipe({ key: "progressIndicatpr" });
+  const style = recipe({});
   return (
-    <Box
-      as="svg"
+    <chakra.svg
       display="block"
-      __css={style.progressDot}
+      css={style.progressDot}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
       aria-current={isActive ? "step" : undefined}
     >
-      <Box as="circle" cx="50" cy="50" r="50" />
-    </Box>
+      <chakra.circle as="circle" cx="50" cy="50" r="50" />
+    </chakra.svg>
   );
 };

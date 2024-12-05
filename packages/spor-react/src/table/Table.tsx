@@ -1,21 +1,26 @@
 import {
   Box,
-  forwardRef,
   Table as ChakraTable,
-  TableProps as ChakraTableProps,
+  TableRootProps as ChakraTableProps,
+  RecipeVariantProps,
+  useSlotRecipe,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { tableSlotRecipe } from "../theme/components/table";
 
-export type TableProps = Omit<ChakraTableProps, "variant" | "colorScheme"> & {
-  variant?: "simple" | "outline";
-  colorScheme?: "grey" | "green";
-};
+type TableVariantProps = RecipeVariantProps<typeof tableSlotRecipe>;
+
+export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
+  PropsWithChildren<TableVariantProps> & {
+    variant?: "line" | "outline";
+    colorPalette?: "grey" | "green";
+  };
 /**
  * These components are used the same way as in Chakra UI. Please refer to [their documentation](https://chakra-ui.com/docs/data-display/table).
  *
- * The `Table` component has support for two different variants - `simple` and `outline`. The `simple` variant has basic lines between rows, while the `outline` variant has borders for each cell, plus a hover effect per row.
+ * The `Table` component has support for two different variants - `line` and `outline`. The `line` variant has basic lines between rows, while the `outline` variant has borders for each cell, plus a hover effect per row.
  *
- * You can also specify a `grey` or `green` `colorScheme` prop. Use `green` if you want to place the table on a light green background.
+ * You can also specify a `grey` or `green` `colorPalette` prop. Use `green` if you want to place the table on a light green background.
  *
  * Finally, there are three different `size` props you can specify - `sm`, `md` and `lg`.
  *
@@ -28,19 +33,24 @@ export type TableProps = Omit<ChakraTableProps, "variant" | "colorScheme"> & {
  * </Table>
  * ```
  */
-export const Table = forwardRef<TableProps, "table">((props, ref) => {
-  const { variant, size, colorScheme, children, ...rest } = props;
+export const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
+  const { variant, size, colorPalette, children, ...rest } = props;
+
+  const recipe = useSlotRecipe({ recipe: tableSlotRecipe });
+  const styles = recipe({ variant, colorPalette, size });
   return (
-    <Box {...rest} {...getStyleProps(props)}>
+    <Box {...getStyleProps(props)}>
       <Box overflowX="auto" role="region">
-        <ChakraTable
+        <ChakraTable.Root
           variant={variant}
           size={size}
-          colorScheme={colorScheme}
+          colorPalette={colorPalette}
+          css={styles}
           ref={ref}
+          {...rest}
         >
           {children}
-        </ChakraTable>
+        </ChakraTable.Root>
       </Box>
     </Box>
   );
@@ -50,7 +60,8 @@ function getStyleProps(props: TableProps) {
   return props.variant === "outline"
     ? {
         border: "1px solid",
-        borderColor: props.colorScheme === "grey" ? "silver" : "blackAlpha.200",
+        borderColor:
+          props.colorPalette === "grey" ? "silver" : "blackAlpha.200",
         overflow: "hidden",
         borderRadius: "md",
       }

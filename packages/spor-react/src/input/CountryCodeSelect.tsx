@@ -1,7 +1,17 @@
-import React from "react";
-import { BoxProps, InfoSelect, Item, createTexts, useTranslation } from "..";
-
+import React, { forwardRef } from "react";
+import {
+  BoxProps,
+  SelectRoot,
+  createTexts,
+  useTranslation,
+  SelectLabel,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectValueText,
+} from "..";
 import { getSupportedCallingCodes } from "awesome-phonenumber";
+import { ConditionalValue, Select } from "@chakra-ui/react";
 
 const prioritizedCountryCodes = [
   { key: "+47", value: "+47" },
@@ -20,29 +30,38 @@ const sortedCallingCodes = getSupportedCallingCodes()
   );
 const callingCodes = [...prioritizedCountryCodes, ...sortedCallingCodes];
 
-type CountryCodeSelectProps = {
-  value: string;
-  onChange: (value: string | number) => void;
-  name: string;
-  width?: BoxProps["width"];
-  height?: BoxProps["height"];
-  variant?: "base" | "floating";
+type CountryCodeSelectProps = Exclude<Select.RootProps, "variant"> & {
+  variant?: ConditionalValue<"base" | "floating">;
 };
-export const CountryCodeSelect = (props: CountryCodeSelectProps) => {
+
+export const CountryCodeSelect = forwardRef<
+  HTMLDivElement,
+  CountryCodeSelectProps
+>((props, ref) => {
+  const { variant } = props;
   const { t } = useTranslation();
 
   return (
-    <InfoSelect
-      label={t(texts.countryCode)}
-      isLabelSrOnly={true}
-      items={callingCodes as any}
-      variant={props.variant}
+    <SelectRoot
+      collection={callingCodes}
+      variant={variant}
       {...props}
+      ref={ref}
     >
-      {(item) => <Item key={item.key}>{item.key}</Item>}
-    </InfoSelect>
+      <SelectLabel>{t(texts.countryCode)}</SelectLabel>
+      <SelectTrigger>
+        <SelectValueText placeholder={t(texts.countryCode)} />
+      </SelectTrigger>
+      <SelectContent>
+        {callingCodes.map((code) => (
+          <SelectItem key={code.key} item={code}>
+            {code.key}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </SelectRoot>
   );
-};
+});
 
 export default CountryCodeSelect;
 

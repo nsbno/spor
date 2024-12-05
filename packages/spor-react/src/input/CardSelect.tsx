@@ -2,51 +2,61 @@ import {
   Box,
   BoxProps,
   chakra,
+  ConditionalValue,
   Flex,
-  forwardRef,
-  ResponsiveValue,
-  useMultiStyleConfig,
+  RecipeVariantProps,
+  useSlotRecipe,
 } from "@chakra-ui/react";
 import {
   DropdownDownFill18Icon,
   DropdownDownFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  forwardRef,
+  PropsWithChildren,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { AriaPositionProps, useButton, useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
 import { StaticCard } from "..";
 import { Dialog } from "./Dialog";
 import { Popover } from "./Popover";
+import { cardSelectSlotRecipe } from "../theme/components/card-select";
 
-type CardSelectProps = BoxProps & {
-  /** The design of the trigger button.
-   *
-   * - `ghost` is a transparent button with text
-   * - `base` is a button with a border and text
-   * - `floating` is a button with a drop shadow (like a card) and text
-   */
-  variant: "base" | "ghost" | "floating";
-  /** The size of the trigger button */
-  size: "sm" | "md" | "lg";
-  /** Whether the card select is open / active, if controlled */
-  isOpen?: boolean;
-  /** The default state of the card select. Defaults to false (closed) */
-  defaultOpen?: boolean;
-  /** Callback for when the card select opens or closes. */
-  onToggle?: (isOpen: boolean) => void;
-  /** An optional trigger button icon, rendered to the left of the label */
-  icon?: React.ReactNode;
-  /** The content of the card select */
-  children: React.ReactNode;
-  /** The horizontalOffset of the popover card */
-  crossOffset?: number;
-  /** The position of the popover card */
-  placement?: AriaPositionProps["placement"];
-  /** Whether or not to show the chevron. Defaults to true */
-  withChevron?: boolean;
-  /** Defaults to normal */
-  fontWeight?: ResponsiveValue<"normal" | "bold">;
-} & (
+type CardSelectVariantProps = RecipeVariantProps<typeof cardSelectSlotRecipe>;
+
+type CardSelectProps = BoxProps &
+  PropsWithChildren<CardSelectVariantProps> & {
+    /** The design of the trigger button.
+     *
+     * - `ghost` is a transparent button with text
+     * - `base` is a button with a border and text
+     * - `floating` is a button with a drop shadow (like a card) and text
+     */
+    variant: "base" | "ghost" | "floating";
+    /** The size of the trigger button */
+    size: "sm" | "md" | "lg";
+    /** Whether the card select is open / active, if controlled */
+    isOpen?: boolean;
+    /** The default state of the card select. Defaults to false (closed) */
+    defaultOpen?: boolean;
+    /** Callback for when the card select opens or closes. */
+    onToggle?: (isOpen: boolean) => void;
+    /** An optional trigger button icon, rendered to the left of the label */
+    icon?: React.ReactNode;
+    /** The content of the card select */
+    children: React.ReactNode;
+    /** The horizontalOffset of the popover card */
+    crossOffset?: number;
+    /** The position of the popover card */
+    placement?: AriaPositionProps["placement"];
+    /** Whether or not to show the chevron. Defaults to true */
+    withChevron?: boolean;
+    /** Defaults to normal */
+    fontWeight?: ConditionalValue<"normal" | "bold">;
+  } & (
     | {
         /** The text label of the trigger button */
         label: string;
@@ -71,7 +81,7 @@ type CardSelectProps = BoxProps & {
  * @see https://spor.vy.no/components/card-select
  *
  */
-export const CardSelect = forwardRef<CardSelectProps, "button">(
+export const CardSelect = forwardRef<HTMLButtonElement, CardSelectProps>(
   (
     {
       variant,
@@ -108,10 +118,9 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
 
     const { buttonProps } = useButton(triggerProps, triggerRef);
 
-    const styles = useMultiStyleConfig("CardSelect", {
-      variant,
-      size,
-    });
+    const recipe = useSlotRecipe({ key: "cardSelect" });
+    const styles = recipe({ variant, size });
+
     useForceRerender(state.isOpen);
 
     const ChevronIcon =
@@ -123,7 +132,7 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
           type="button"
           ref={triggerRef}
           fontWeight="bold"
-          sx={styles.trigger}
+          css={styles.trigger}
           aria-label={label}
           {...buttonProps}
           width={width}
@@ -150,11 +159,10 @@ export const CardSelect = forwardRef<CardSelectProps, "button">(
             placement={placement}
           >
             <StaticCard
-              colorScheme="white"
-              size="lg"
-              border={"sm"}
-              borderColor={"grey"}
-              sx={styles.card}
+              colorPalette="white"
+              border="sm"
+              borderColor="grey"
+              css={styles.card}
               {...overlayProps}
             >
               <Dialog aria-label={label}>{children}</Dialog>

@@ -1,8 +1,6 @@
 import {
   Input as ChakraInput,
   InputProps as ChakraInputProps,
-  Box as InputLeftElement,
-  Box as InputRightElement,
 } from "@chakra-ui/react";
 import {
   CloseOutline24Icon,

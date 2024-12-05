@@ -1,28 +1,22 @@
-import { inputAnatomy as parts } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { inputBaseStyle, inputVariant } from "../utils/input-utils";
+import { defineRecipe } from "@chakra-ui/react";
 
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
-    ...inputBaseStyle(props),
-  }),
-  variants: {
-    base: (props) => ({
-      field: {
-        ...inputVariant("base", props),
-      },
-    }),
-    floating: (props) => ({
-      field: {
-        ...inputVariant("floating", props),
-      },
-    }),
+const inputRecipe = defineRecipe({
+  base: {
+    ...inputBaseStyle(),
   },
-  defaultProps: {
-    variant: "base",
+  variants: {
+    base: {
+      field: {
+        ...inputVariant("base"),
+      },
+    },
+    floating: {
+      field: {
+        ...inputVariant("floating"),
+      },
+    },
   },
 });
 
-export default config;
+export default inputRecipe;

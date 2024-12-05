@@ -1,7 +1,8 @@
 import { defineRecipe } from "@chakra-ui/react";
 import { useColorModeValue } from "../../color-mode";
 
-export const dividerRecipe = defineRecipe({
+export const separatorRecipe = defineRecipe({
+  className: "spor-separator",
   base: {
     borderColor: useColorModeValue("blackAlpha.300", "whiteAlpha.300"),
   },

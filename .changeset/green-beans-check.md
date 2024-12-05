@@ -22,6 +22,7 @@ Spor is getting a major update with Chakra 3.
 - `Table` components has many changes. Instead of the generic HTML names (Td, Tr etc.), it will now work with full names. Please see docs. Variant `simple` is now `line`.
 - `Toast` prop `isClosable` is now `closable`. `useToast` is now `createToaster`.
 - `FormControl`, `FormLabel` and `FormErrorMessage` are removed and replaced by `Field`. `Field` supports the necessary props to support this.
+- `Separator` replaces `Divider`.
 
 ### Externals from Chakra:
 

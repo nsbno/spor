@@ -26,7 +26,7 @@ type SkipButtonProps = BoxProps &
  * ```
  */
 export const SkipButton = forwardRef<HTMLButtonElement, SkipButtonProps>(
-  function SkipButton(props, ref) {
+  (props, ref) => {
     const { direction, disabled, size = "sm" } = props;
 
     const { t } = useTranslation();

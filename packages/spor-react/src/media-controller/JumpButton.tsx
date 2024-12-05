@@ -37,7 +37,7 @@ type JumpButtonProps = BoxProps &
  * ```
  */
 export const JumpButton = forwardRef<HTMLButtonElement, JumpButtonProps>(
-  function JumpButton(props, ref) {
+  (props, ref) => {
     const { direction, disabled, size = "sm" } = props;
     const { t } = useTranslation();
 

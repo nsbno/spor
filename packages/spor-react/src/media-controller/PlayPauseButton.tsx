@@ -29,7 +29,7 @@ type PlayPauseButtonProps = BoxProps &
 export const PlayPauseButton = forwardRef<
   HTMLButtonElement,
   PlayPauseButtonProps
->(function PlayPauseButton(props, ref) {
+>((props, ref) => {
   const { playing, disabled, size = "sm" } = props;
 
   const { t } = useTranslation();

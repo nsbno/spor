@@ -1,13 +1,20 @@
 import {
   Box,
-  List,
+  ListRoot,
   ListItem,
-  useColorModeValue,
-  useMultiStyleConfig,
+  RecipeVariantProps,
+  useSlotRecipe,
   type BoxProps,
+  ConditionalValue,
 } from "@chakra-ui/react";
 import type { Node } from "@react-types/shared";
-import React, { useContext, useEffect, useRef } from "react";
+import React, {
+  forwardRef,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useRef,
+} from "react";
 import {
   AriaListBoxProps,
   useListBox,
@@ -15,11 +22,16 @@ import {
   useOption,
 } from "react-aria";
 import { type ListState, type SelectState } from "react-stately";
+import { listBoxSlotRecipe } from "../theme/components/listbox";
+import { useColorModeValue } from "../color-mode";
 
 export { Item, Section } from "react-stately";
 
+type ListBoxVariantProps = RecipeVariantProps<typeof listBoxSlotRecipe>;
+
 type ListBoxProps<T> = AriaListBoxProps<T> &
-  Omit<BoxProps, "filter" | "autoFocus" | "children"> & {
+  Omit<BoxProps, "filter" | "autoFocus" | "children"> &
+  PropsWithChildren<ListBoxVariantProps> & {
     /** External reference to the ListBox itself */
     listBoxRef: React.RefObject<HTMLUListElement>;
     /** Whether or not the listbox is waiting on new data, i.e. through a autosuggest search */
@@ -29,7 +41,7 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
     /** UI to render if the collection is empty */
     emptyContent?: React.ReactNode;
     maxWidth?: BoxProps["maxWidth"];
-    variant?: "base" | "floating";
+    variant?: ConditionalValue<"base" | "floating">;
   };
 
 /**
@@ -66,6 +78,7 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
  * );
  * ```
  */
+
 export function ListBox<T extends object>({
   isLoading,
   listBoxRef,
@@ -75,13 +88,14 @@ export function ListBox<T extends object>({
   ...props
 }: ListBoxProps<T>) {
   const { listBoxProps } = useListBox(props, state, listBoxRef);
-  const styles = useMultiStyleConfig("ListBox", { variant });
+  const recipe = useSlotRecipe({ key: "listbox" });
+  const styles = recipe({ variant });
 
   return (
-    <List
+    <ListRoot
       {...listBoxProps}
       ref={listBoxRef}
-      sx={styles.container}
+      css={styles.root}
       aria-busy={isLoading}
       maxWidth={maxWidth}
       variant={variant}
@@ -94,7 +108,7 @@ export function ListBox<T extends object>({
           <Option key={item.key} item={item} state={state} />
         ),
       )}
-    </List>
+    </ListRoot>
   );
 }
 
@@ -105,12 +119,8 @@ export function ListBox<T extends object>({
  */
 export function ItemLabel({ children }: { children: React.ReactNode }) {
   let { labelProps } = useOptionContext();
-  const styles = useMultiStyleConfig("ListBox", {});
-  return (
-    <Box {...labelProps} sx={styles.label}>
-      {children}
-    </Box>
-  );
+
+  return <Box {...labelProps}>{children}</Box>;
 }
 
 /**
@@ -120,9 +130,10 @@ export function ItemLabel({ children }: { children: React.ReactNode }) {
  */
 export function ItemDescription({ children }: { children: React.ReactNode }) {
   let { descriptionProps } = useOptionContext();
-  const styles = useMultiStyleConfig("ListBox", {});
+  const recipe = useSlotRecipe({ key: "listbox" });
+  const styles = recipe({});
   return (
-    <Box {...descriptionProps} sx={styles.description}>
+    <Box {...descriptionProps} css={styles}>
       {children}
     </Box>
   );
@@ -144,7 +155,8 @@ function Option({ item, state }: OptionProps) {
     descriptionProps,
   } = useOption({ key: item.key }, state, ref);
 
-  const styles = useMultiStyleConfig("ListBox", {});
+  const recipe = useSlotRecipe({ key: "listbox" });
+  const styles = recipe({});
   let dataFields: Record<string, boolean> = {};
   if (isSelected) {
     dataFields["data-selected"] = true;
@@ -176,7 +188,7 @@ function Option({ item, state }: OptionProps) {
 
   return (
     <OptionContext.Provider value={{ labelProps, descriptionProps }}>
-      <ListItem {...optionProps} {...dataFields} ref={ref} sx={styles.item}>
+      <ListItem {...optionProps} {...dataFields} ref={ref} css={styles.item}>
         {item.rendered}
       </ListItem>
     </OptionContext.Provider>
@@ -225,13 +237,13 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
           {section.rendered}
         </Box>
       )}
-      <List {...groupProps} padding={0} listStyleType="none">
+      <ListRoot {...groupProps} padding={0} listStyleType="none">
         {Array.from(state.collection.getChildren(section.key)).map(
           (item: any) => (
             <Option key={item.key} item={item} state={state} />
           ),
         )}
-      </List>
+      </ListRoot>
     </ListItem>
   );
 }

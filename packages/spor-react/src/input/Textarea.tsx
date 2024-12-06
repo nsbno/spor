@@ -2,41 +2,43 @@ import {
   RecipeVariantProps,
   useRecipe,
   Textarea as ChakraTextarea,
-  Field as ChakraField,
   TextareaProps as ChakraTextareaProps,
 } from "@chakra-ui/react";
-import React, { forwardRef, useId } from "react";
+import React, { forwardRef } from "react";
 import { textareaRecipe } from "../theme/components";
 
 type TextareaVariants = RecipeVariantProps<typeof textareaRecipe>;
-export type TextareaProps = Exclude<ChakraTextareaProps, "size"> &
+export type TextareaProps = Exclude<
+  ChakraTextareaProps,
+  "size" | "variant" | "colorPalette"
+> &
   TextareaVariants & {
-    label?: string;
+    placeholder?: string;
   };
 /**
  * Text area that works with the `Field` component.
  *
- * Providing a label is optional.
+ * To use Textarea with a label, wrap it in a `Field` component:
  *
  * ```tsx
- * <Field>
- *   <Textarea label="E-mail" />
+ * <Field label="Description">
+ *   <Textarea />
  * </Field>
  * ```
  */
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ colorPalette = "white", label, ...props }, ref) => {
+  ({ placeholder, ...props }, ref) => {
     const recipe = useRecipe({ recipe: textareaRecipe });
-    const styles = recipe({ colorPalette });
-
-    const fallbackId = `textarea-${useId()}`;
+    const styles = recipe({});
 
     return (
-      <ChakraField.Root position="relative">
-        <ChakraTextarea {...props} id={fallbackId} ref={ref} placeholder=" " />
-        {label && <ChakraField.Label>{label}</ChakraField.Label>}
-      </ChakraField.Root>
+      <ChakraTextarea
+        {...props}
+        css={styles}
+        ref={ref}
+        placeholder={placeholder}
+      />
     );
   },
 );

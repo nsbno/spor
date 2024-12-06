@@ -2,7 +2,7 @@ import {
   RadioCard as ChakraRadioCard,
   RecipeVariantProps,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { forwardRef } from "react";
 import { radioCardSlotRecipe } from "../theme/components/radio-card";
 
 /**
@@ -12,10 +12,11 @@ import { radioCardSlotRecipe } from "../theme/components/radio-card";
  * ```tsx
  * <RadioCardRoot defaultValue="economy">
  *   <RadioCardLabel>Choose your class</RadioCardLabel>
- *   <HStack align="stretch">
- *   <RadioCardItem value="economy" label="Economy" />
- *   <RadioCardItem value="business" label="Business" />
- *   <RadioCardItem value="first-class" label="First Class" />
+ *   <Stack align="stretch">
+ *      <RadioCardItem value="economy" label="Economy" />
+ *      <RadioCardItem value="business" label="Business" />
+ *      <RadioCardItem value="first-class" label="First Class" />
+ *   </Stack>
  * </RadioCardRoot>
  * ```
  *
@@ -42,13 +43,12 @@ export const RadioCardItem = React.forwardRef<
   HTMLInputElement,
   RadioCardItemProps
 >(function RadioCardItem(props, ref) {
-  const { inputProps, label, description, addon, icon, variant, ...rest } =
-    props;
+  const { inputProps, label, description, addon, icon } = props;
 
   const hasContent = label || description || icon;
 
   return (
-    <ChakraRadioCard.Item {...rest}>
+    <ChakraRadioCard.Item {...props}>
       <ChakraRadioCard.ItemHiddenInput ref={ref} {...inputProps} />
       <ChakraRadioCard.ItemControl>
         {hasContent && (
@@ -70,5 +70,17 @@ export const RadioCardItem = React.forwardRef<
   );
 });
 
-export const RadioCardRoot = ChakraRadioCard.Root;
+type RadioCardRootProps = RadioCardVariantProps &
+  Exclude<ChakraRadioCard.RootProps, "variant"> & {
+    children: React.ReactNode;
+    variant?: "base" | "floating";
+  };
+
+export const RadioCardRoot = forwardRef<HTMLDivElement, RadioCardRootProps>(
+  (props, ref) => {
+    const { variant } = props;
+    return <ChakraRadioCard.Root ref={ref} {...props} variant={variant} />;
+  },
+);
+
 export const RadioCardLabel = ChakraRadioCard.Label;

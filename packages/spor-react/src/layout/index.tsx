@@ -5,6 +5,7 @@ export {
   Flex,
   Grid,
   GridItem,
+  Stack,
   HStack,
   SimpleGrid,
   Spacer,
@@ -20,8 +21,7 @@ export type {
   SimpleGridProps,
   SpacerProps,
 } from "@chakra-ui/react";
-export * from "./Divider";
-export * from "./Stack";
+export * from "./Separator";
 export * from "./RadioCard";
 export * from "./StaticCard";
 export * from "./PressableCard";

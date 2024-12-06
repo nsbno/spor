@@ -37,6 +37,13 @@ export type ButtonGroupProps = GroupProps & {
  * ```
  */
 
-export const ButtonGroup = ({ children, ...props }: ButtonGroupProps) => {
-  return <Group {...props}>{children}</Group>;
-};
+export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
+  (props, ref) => {
+    const { children } = props;
+    return (
+      <Group {...props} ref={ref}>
+        {children}
+      </Group>
+    );
+  },
+);

@@ -13,6 +13,7 @@ type linkVariantProps = RecipeVariantProps<typeof linkRecipie>;
 export type LinkProps = Exclude<ChakraLinkProps, "variant"> &
   PropsWithChildren<linkVariantProps> & {
     variant?: "primary" | "secondary";
+    external?: boolean;
   };
 
 /** Link to different sites or parts of site
@@ -22,14 +23,14 @@ export type LinkProps = Exclude<ChakraLinkProps, "variant"> &
 export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ children, ...props }, ref) => {
     const { t } = useTranslation();
-    const isExternal =
-      props.isExternal !== undefined
-        ? props.isExternal
+    const external =
+      props.external !== undefined
+        ? props.external
         : Boolean(props.href?.match(/^https?:\/\//));
     return (
-      <ChakraLink {...props} ref={ref} isExternal={isExternal}>
+      <ChakraLink {...props} ref={ref}>
         {children}
-        {isExternal && (
+        {external && (
           <LinkOutOutline24Icon
             marginLeft={0.5}
             aria-label={t(texts.externalLink)}

@@ -1,4 +1,4 @@
-import { Box, ResponsiveValue } from "@chakra-ui/react";
+import { Box, ConditionalValue } from "@chakra-ui/react";
 import { DateValue, createCalendar } from "@internationalized/date";
 import React, { useRef } from "react";
 import {
@@ -11,7 +11,7 @@ import { CalendarHeader } from "./CalendarHeader";
 import { useCurrentLocale } from "./utils";
 
 type RangeCalendarProps = ReactAriaRangeCalendarProps<DateValue> & {
-  variant: ResponsiveValue<"base" | "floating" | "ghost">;
+  variant: ConditionalValue<"base" | "floating" | "ghost">;
 };
 
 export function RangeCalendar(props: RangeCalendarProps) {

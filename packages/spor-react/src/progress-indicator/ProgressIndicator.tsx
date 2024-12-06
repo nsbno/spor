@@ -4,15 +4,16 @@ import { Box, createTexts, useTranslation } from "..";
 import { ProgressDot } from "./ProgressDot";
 import { progressIndicatorRecipe } from "../theme/components";
 
-type ProgressIndicatorVariants = RecipeVariantProps<
+export type ProgressIndicatorVariantProps = RecipeVariantProps<
   typeof progressIndicatorRecipe
 >;
 
 export type ProgressIndicatorProps = BoxProps &
-  PropsWithChildren<ProgressIndicatorVariants> & {
-    children: React.ReactNode;
+  PropsWithChildren<ProgressIndicatorVariantProps> & {
+    children?: React.ReactNode;
     numberOfSteps: number;
     activeStep: number;
+    colorPalette?: string;
   };
 
 /**
@@ -32,10 +33,10 @@ export type ProgressIndicatorProps = BoxProps &
 export const ProgressIndicator = forwardRef<
   HTMLDivElement,
   ProgressIndicatorProps
->(({ numberOfSteps, activeStep }: ProgressIndicatorProps) => {
+>(({ numberOfSteps, activeStep, colorPalette = "brand" }) => {
   const { t } = useTranslation();
   const recipe = useSlotRecipe({ recipe: progressIndicatorRecipe });
-  const colorPalette = "brand";
+
   const styles = recipe({ colorPalette });
 
   return (

@@ -6,7 +6,6 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { SelectVariantProps } from "./InfoSelect";
 import { nativeSelectSlotRecipe } from "../theme/components";
 
 type NativeSelectVariantProps = RecipeVariantProps<

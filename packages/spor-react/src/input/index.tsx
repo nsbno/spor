@@ -6,7 +6,7 @@ export * from "./ChoiceChip";
 export * from "./Combobox";
 export * from "./Field";
 export * from "./Input";
-export * from "./InputElement";
+export * from "./InputGroup";
 export * from "./ListBox";
 export * from "./NativeSelect";
 export * from "./NumericStepper";

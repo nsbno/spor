@@ -1,6 +1,7 @@
 import {
   Box,
   BoxProps,
+  chakra,
   Field as ChakraField,
   RecipeVariantProps,
 } from "@chakra-ui/react";
@@ -46,22 +47,22 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
   },
 );
 
+export const FieldLabel = ChakraField.Label;
+
 const Arrow = (props: BoxProps) => {
   return (
-    <Box
+    <chakra.svg
       {...(props as any)}
-      as="svg"
       width="16"
       height="16"
       viewBox="0 0 16 16"
       fill="none"
       transform="rotate(45deg)"
     >
-      <Box
-        as="path"
+      <path
         fill="lightRed"
         d="M 0 0 Q 2.4 6 0 12 Q 6 9.6 12 12 Q 9.6 6 12 0 Q 6 2.4 0 0 z"
       />
-    </Box>
+    </chakra.svg>
   );
 };

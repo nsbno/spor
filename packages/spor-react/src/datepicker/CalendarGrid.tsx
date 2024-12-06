@@ -6,7 +6,8 @@ import { Language, useTranslation } from "../i18n";
 import { Text } from "../typography";
 import { CalendarCell } from "./CalendarCell";
 import { useCurrentLocale } from "./utils";
-import { ResponsiveValue, useMultiStyleConfig } from "@chakra-ui/react";
+import { ConditionalValue, useSlotRecipe } from "@chakra-ui/react";
+import { datePickerSlotRecipe } from "../theme/components";
 
 const weekDays: Record<Language, string[]> = {
   nb: ["Ma", "Ti", "On", "To", "Fr", "Lø", "Sø"],
@@ -16,7 +17,7 @@ const weekDays: Record<Language, string[]> = {
 };
 
 type CalendarGridProps = AriaCalendarGridProps & {
-  variant: ResponsiveValue<"base" | "floating" | "ghost">;
+  variant: ConditionalValue<"base" | "floating" | "ghost">;
   state: CalendarState | RangeCalendarState;
   offset?: { months?: number };
 };
@@ -40,7 +41,11 @@ export function CalendarGrid({
   // Get the number of weeks in the month so we can render the proper number of rows.
   const weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
   const weeksInMonthRange = new Array(weeksInMonth).fill(0).map((_, i) => i);
-  const styles = useMultiStyleConfig("Datepicker", { variant });
+  const recipe = useSlotRecipe({
+    key: "datePicker",
+    recipe: datePickerSlotRecipe,
+  });
+  const styles = recipe({ variant });
 
   return (
     <table {...gridProps}>
@@ -51,7 +56,7 @@ export function CalendarGrid({
               <Text
                 as="th"
                 key={index}
-                sx={index < 5 ? styles.weekdays : styles.weekend}
+                css={index < 5 ? styles.weekdays : styles.weekend}
                 variant="sm"
               >
                 {day}

@@ -1,17 +1,15 @@
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy, mode } from "@chakra-ui/theme-tools";
+import { defineSlotRecipe } from "@chakra-ui/react";
 import { baseText } from "../utils/base-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 import { surface } from "../utils/surface-utils";
 
-const parts = anatomy("media-controller-button").parts("container", "icon");
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
-    container: {
+export const mediaControllerSlotRecipe = defineSlotRecipe({
+  slots: ["root", "icon"],
+  className: "spor-media-controller-button",
+  base: {
+    root: {
       fontSize: 30,
       transitionProperty: "common",
       transitionDuration: "fast",
@@ -24,8 +22,8 @@ const config = helpers.defineMultiStyleConfig({
       padding: 1,
       alignSelf: "center",
       // The SVG icon color is set to the brand background color, due to how SVGs work
-      color: brandBackground("default", props).backgroundColor,
-      ...focusVisibleStyles(props),
+      color: brandBackground("default").backgroundColor,
+      ...focusVisibleStyles(),
     },
     icon: {
       flex: "0 0 auto",
@@ -33,65 +31,85 @@ const config = helpers.defineMultiStyleConfig({
       width: "1em",
       height: "1em",
     },
-  }),
+  },
   variants: {
-    play: (props) => ({
-      container: {
-        padding: 0,
-        ...brandText("default", props),
-        ...brandBackground("default", props),
-        _hover: {
-          ...brandText("default", props),
-          ...brandBackground("hover", props),
-        },
-        _active: {
-          ...brandText("default", props),
-          ...brandBackground("active", props),
-        },
+    variant: {
+      play: {
+        root: {
+          padding: 0,
+          ...brandText("default"),
+          ...brandBackground("default"),
+          _hover: {
+            ...brandText("default"),
+            ...brandBackground("hover"),
+          },
+          _active: {
+            ...brandText("default"),
+            ...brandBackground("active"),
+          },
 
-        _disabled: {
-          pointerEvents: "none",
-          color: mode("icon.disabled.light", "icon.disabled.dark")(props),
-          ...surface("disabled", props),
+          _disabled: {
+            pointerEvents: "none",
+            color: "icon.disabled",
+            ...surface("disabled"),
+          },
         },
       },
-    }),
-    jumpSkip: (props) => ({
-      container: {
-        _hover: {
-          ...ghostBackground("hover", props),
+      jumpSkip: {
+        root: {
+          _hover: {
+            ...ghostBackground("hover"),
+          },
+          _active: {
+            ...ghostBackground("active"),
+          },
+          _disabled: {
+            pointerEvents: "none",
+            ...surface("disabled"),
+            ...baseText("disabled"),
+          },
         },
-        _active: {
-          ...ghostBackground("active", props),
-        },
-        _disabled: {
-          pointerEvents: "none",
-          ...surface("disabled", props),
-          ...baseText("disabled", props),
+        icon: {
+          width: "0.71em",
+          height: "0.71em",
         },
       },
-      icon: {
-        width: "0.71em",
-        height: "0.71em",
+    },
+    size: {
+      sm: {
+        root: {
+          fontSize: 42,
+        },
       },
-    }),
+      lg: {
+        root: {
+          fontSize: 60,
+        },
+      },
+    },
   },
-  sizes: {
-    sm: (props) => ({
-      container: {
-        fontSize: props.variant === "play" ? 24 : 42,
-        width: props.variant === "play" ? "2.625rem" : undefined,
-        height: props.variant === "play" ? "2.625rem" : undefined,
+  compoundVariants: [
+    {
+      variant: "play",
+      size: "sm",
+      css: {
+        root: {
+          fontSize: 24,
+          width: "2.625rem",
+          height: "2.625rem",
+        },
       },
-    }),
-    lg: (props) => ({
-      container: {
-        fontSize: props.variant === "play" ? 38 : 60,
-        width: props.variant === "play" ? "3.75rem" : undefined,
-        height: props.variant === "play" ? "3.75rem" : undefined,
+    },
+    {
+      variant: "play",
+      size: "lg",
+      css: {
+        root: {
+          fontSize: 38,
+          width: "3.75rem",
+          height: "3.75rem",
+        },
       },
-    }),
-  },
+    },
+  ],
 });
-
-export default config;

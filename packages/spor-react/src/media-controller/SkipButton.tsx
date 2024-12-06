@@ -1,18 +1,19 @@
-import { BoxProps, Center, useMultiStyleConfig } from "@chakra-ui/react";
-import React from "react";
-import { createTexts, useTranslation } from "..";
+import { BoxProps, Center, useSlotRecipe } from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { createTexts, MediaControllerVariantProps, useTranslation } from "..";
 import {
   NextMediaControllerFill30Icon,
   PreviousMediaControllerFill30Icon,
 } from "@vygruppen/spor-icon-react";
 
-type SkipButtonProps = BoxProps & {
-  onClick: () => void;
-  "aria-label"?: string;
-  isDisabled?: boolean;
-  direction: "backward" | "forward";
-  size: "sm" | "lg";
-};
+type SkipButtonProps = BoxProps &
+  PropsWithChildren<MediaControllerVariantProps> & {
+    onClick: () => void;
+    "aria-label"?: string;
+    disabled?: boolean;
+    direction: "backward" | "forward";
+    size: "sm" | "lg";
+  };
 /**
  * A skip button.
  *
@@ -24,34 +25,33 @@ type SkipButtonProps = BoxProps & {
  * <SkipButton direction="forward" onClick={onNextChapter} />
  * ```
  */
-export const SkipButton = ({
-  direction,
-  isDisabled,
-  size = "sm",
-  ...props
-}: SkipButtonProps) => {
-  const { t } = useTranslation();
-  const styles = useMultiStyleConfig("MediaControllerButton", {
-    variant: "jumpSkip",
-    size,
-  });
+export const SkipButton = forwardRef<HTMLButtonElement, SkipButtonProps>(
+  (props, ref) => {
+    const { direction, disabled, size = "sm" } = props;
 
-  return (
-    <Center
-      as="button"
-      sx={styles.container}
-      aria-label={direction === "forward" ? t(texts.next) : t(texts.previous)}
-      disabled={isDisabled}
-      {...props}
-    >
-      {direction === "forward" ? (
-        <NextMediaControllerFill30Icon sx={styles.icon} />
-      ) : (
-        <PreviousMediaControllerFill30Icon sx={styles.icon} />
-      )}
-    </Center>
-  );
-};
+    const { t } = useTranslation();
+
+    const recipe = useSlotRecipe({ key: "mediaControllerButton" });
+    const styles = recipe({ variant: "jumpSkip", size });
+
+    return (
+      <Center
+        ref={ref}
+        as="button"
+        css={styles.container}
+        aria-label={direction === "forward" ? t(texts.next) : t(texts.previous)}
+        disabled={disabled}
+        {...props}
+      >
+        {direction === "forward" ? (
+          <NextMediaControllerFill30Icon css={styles.icon} />
+        ) : (
+          <PreviousMediaControllerFill30Icon css={styles.icon} />
+        )}
+      </Center>
+    );
+  },
+);
 
 const texts = createTexts({
   next: {

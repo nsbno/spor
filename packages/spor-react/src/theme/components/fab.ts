@@ -1,23 +1,20 @@
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
-import { anatomy, StyleFunctionProps } from "@chakra-ui/theme-tools";
-
+import { defineSlotRecipe } from "@chakra-ui/react";
 import { accentBackground, accentText } from "../utils/accent-utils";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { surface } from "../utils/surface-utils";
 
-const parts = anatomy("fab").parts("container", "icon", "text");
-
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
-    container: {
+export const floatingActionButtonSlotRecipe = defineSlotRecipe({
+  slots: ["root", "icon", "text"],
+  className: "spor-floating-action-button",
+  base: {
+    root: {
       display: "flex",
       alignItems: "center",
       paddingY: 2,
       paddingLeft: 2,
-      paddingRight: props.isTextVisible ? 3 : 2,
+      paddingRight: 2,
       cursor: "pointer",
       overflowX: "hidden",
       whiteSpace: "nowrap",
@@ -27,83 +24,94 @@ const config = helpers.defineMultiStyleConfig({
       transitionProperty: "common",
       position: "fixed",
       zIndex: "sticky",
-      ...getPositionProps(props),
-      ...focusVisibleStyles(props),
+      ...focusVisibleStyles(),
       _disabled: {
-        ...surface("disabled", props),
-        ...baseText("disabled", props),
+        ...surface("disabled"),
+        ...baseText("disabled"),
         pointerEvents: "none",
       },
     },
-    icon: {
-      marginRight: props.isTextVisible ? 1 : 0,
-    },
+    icon: {},
     text: {
       display: "flex",
       flex: "none",
       alignItems: "center",
       fontWeight: "bold",
       textStyle: "sm",
+      paddingLeft: 3,
     },
-  }),
-  variants: {
-    brand: (props) => ({
-      container: {
-        ...brandBackground("default", props),
-        ...brandText("default", props),
-        _hover: {
-          ...brandBackground("hover", props),
-        },
-        _active: {
-          ...brandBackground("active", props),
-        },
-      },
-    }),
-    base: (props) => ({
-      container: {
-        ...baseBackground("default", props),
-        ...baseBorder("default", props),
-        ...baseText("default", props),
-        _hover: {
-          ...baseBackground("hover", props),
-          ...baseBorder("hover", props),
-        },
-        _active: {
-          ...baseBorder("default", props),
-          ...baseBackground("active", props),
-        },
-      },
-    }),
-    accent: (props) => ({
-      container: {
-        ...accentBackground("default", props),
-        ...accentText("default", props),
-        _hover: {
-          ...accentBackground("hover", props),
-          ...accentText("default", props),
-        },
-        _active: {
-          ...accentBackground("active", props),
-        },
-      },
-    }),
   },
-  defaultProps: {
+  variants: {
+    variant: {
+      brand: {
+        root: {
+          ...brandBackground("default"),
+          ...brandText("default"),
+          _hover: {
+            ...brandBackground("hover"),
+          },
+          _active: {
+            ...brandBackground("active"),
+          },
+        },
+      },
+      base: {
+        root: {
+          ...baseBackground("default"),
+          ...baseBorder("default"),
+          ...baseText("default"),
+          _hover: {
+            ...baseBackground("hover"),
+            ...baseBorder("hover"),
+          },
+          _active: {
+            ...baseBorder("default"),
+            ...baseBackground("active"),
+          },
+        },
+      },
+      accent: {
+        root: {
+          ...accentBackground("default"),
+          ...accentText("default"),
+          _hover: {
+            ...accentBackground("hover"),
+            ...accentText("default"),
+          },
+          _active: {
+            ...accentBackground("active"),
+          },
+        },
+      },
+    },
+    placement: {
+      "top left": {
+        root: {
+          top: "1em",
+          left: "1em",
+        },
+      },
+      "top right": {
+        root: {
+          top: "1em",
+          right: "1em",
+        },
+      },
+      "bottom left": {
+        root: {
+          bottom: "1em",
+          left: "1em",
+        },
+      },
+      "bottom right": {
+        root: {
+          bottom: "1em",
+          right: "1em",
+        },
+      },
+    },
+  },
+  defaultVariants: {
     variant: "brand",
   },
 });
-
-export default config;
-
-const getPositionProps = (props: StyleFunctionProps) => {
-  switch (props.placement) {
-    case "top left":
-      return { top: "1em", left: "1em" };
-    case "top right":
-      return { top: "1em", right: "1em" };
-    case "bottom left":
-      return { bottom: "1em", left: "1em" };
-    case "bottom right":
-      return { bottom: "1em", right: "1em" };
-  }
-};

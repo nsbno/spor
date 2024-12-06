@@ -13,7 +13,7 @@ export * from "./code";
 export * from "./datepicker";
 export * from "./dialog";
 export * from "./drawer";
-export { default as FloatingActionButton } from "./fab";
+export { default as FloatingActionButton } from "./floating-action-button";
 export * from "./select";
 export * from "./info-tag";
 export { default as Input } from "./input";

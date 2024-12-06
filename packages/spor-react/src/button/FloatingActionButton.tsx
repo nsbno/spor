@@ -1,14 +1,19 @@
-import { Box, BoxProps, useRecipe } from "@chakra-ui/react";
-import React, { forwardRef, useEffect } from "react";
-import { buttonRecipe } from "../theme/components/button";
+import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren, useEffect } from "react";
+import { floatingActionButtonSlotRecipe } from "../theme/components/floating-action-button";
 
-type FloatingActionButtonProps = BoxProps & {
-  variant?: "accent" | "base" | "brand";
-  placement?: "bottom right" | "bottom left" | "top right" | "top left";
-  icon: React.ReactNode;
-  children: React.ReactNode;
-  isTextVisible?: boolean;
-};
+type FloatingActionButtonVariantProps = RecipeVariantProps<
+  typeof floatingActionButtonSlotRecipe
+>;
+
+type FloatingActionButtonProps = BoxProps &
+  PropsWithChildren<FloatingActionButtonVariantProps> & {
+    variant?: "accent" | "base" | "brand";
+    placement?: "bottom right" | "bottom left" | "top right" | "top left";
+    icon: React.ReactNode;
+    children: React.ReactNode;
+    isTextVisible?: boolean;
+  };
 
 /**
  * Creates a floating action button.
@@ -57,7 +62,7 @@ export const FloatingActionButton = forwardRef<
       setIsTextVisible(!!externalIsTextVisible);
     }, [externalIsTextVisible]);
 
-    const recipe = useRecipe({ recipe: buttonRecipe });
+    const recipe = useRecipe({ recipe: floatingActionButtonSlotRecipe });
     const style = recipe({
       variant,
       isTextVisible,

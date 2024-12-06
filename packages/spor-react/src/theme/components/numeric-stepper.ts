@@ -1,19 +1,10 @@
-import { anatomy } from "@chakra-ui/anatomy";
-import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import { defineSlotRecipe } from "@chakra-ui/react";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
-const parts = anatomy("NumericStepper").parts(
-  "container",
-  "button",
-  "text",
-  "input",
-);
-
-const helpers = createMultiStyleConfigHelpers(parts.keys);
-
-const config = helpers.defineMultiStyleConfig({
-  baseStyle: (props) => ({
+export const numericStepperRecipe = defineSlotRecipe({
+  slots: ["container", "input", "text", "button"],
+  base: {
     container: {
       display: "flex",
       flexDirection: "row",
@@ -28,8 +19,8 @@ const config = helpers.defineMultiStyleConfig({
       textAlign: "center",
       transitionProperty: "common",
       transitionDuration: "fast",
-      ...baseText("default", props),
-      ...baseBackground("default", props),
+      ...baseText("default"),
+      ...baseBackground("default"),
 
       _disabled: {
         pointerEvents: "none",
@@ -37,14 +28,14 @@ const config = helpers.defineMultiStyleConfig({
       },
 
       _hover: {
-        ...baseBorder("default", props),
+        ...baseBorder("default"),
       },
 
       _active: {
-        ...baseBackground("active", props),
+        ...baseBackground("active"),
       },
 
-      ...focusVisibleStyles(props),
+      ...focusVisibleStyles,
     },
     text: {
       fontSize: "sm",
@@ -53,13 +44,11 @@ const config = helpers.defineMultiStyleConfig({
       paddingX: 1,
       textAlign: "center",
       width: "4ch",
-      ...baseText("default", props),
+      ...baseText("default"),
     },
     button: {
       minWidth: "24px",
       minHeight: "24px",
     },
-  }),
+  },
 });
-
-export default config;

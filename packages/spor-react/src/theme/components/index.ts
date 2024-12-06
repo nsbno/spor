@@ -23,7 +23,7 @@ export { default as Link } from "./link";
 export * from "./list";
 export { default as ListBox } from "./listbox";
 export { default as MediaControllerButton } from "./media-controller-button";
-export { default as NumericStepper } from "./numeric-stepper";
+export * from "./numeric-stepper";
 export * from "./popover";
 export * from "./progress-bar";
 export * from "./progress-indicator";

@@ -1,8 +1,8 @@
-import { DarkMode, forwardRef, useClipboard } from "@chakra-ui/react";
 import { Box, BoxProps, Button } from "@vygruppen/spor-react";
 import { Highlight } from "prism-react-renderer";
-import { Key, useRef } from "react";
+import { forwardRef, Key, useRef } from "react";
 import { theme } from "./codeTheme";
+import { useClipboard } from "@chakra-ui/react";
 
 type CodeBlockProps = Omit<BoxProps, "children"> & {
   /** The code to highlight */
@@ -114,18 +114,16 @@ export const CopyCodeButton = forwardRef<CopyCodeButtonProps, "button">(
   ({ code }, ref) => {
     const { onCopy, hasCopied } = useClipboard(code);
     return (
-      <DarkMode>
-        <Button
-          variant="primary"
-          size="xs"
-          onClick={onCopy}
-          _active={{ backgroundColor: "mint", color: "darkGrey" }}
-          fontFamily="body"
-          ref={ref}
-        >
-          {hasCopied ? "Copied" : "Copy"}
-        </Button>
-      </DarkMode>
+      <Button
+        variant="primary"
+        size="xs"
+        onClick={onCopy}
+        _active={{ backgroundColor: "mint", color: "darkGrey" }}
+        fontFamily="body"
+        ref={ref}
+      >
+        {hasCopied ? "Copied" : "Copy"}
+      </Button>
     );
   },
 );

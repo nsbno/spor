@@ -1,4 +1,4 @@
-export * from "./accordion";
+export { default as Accordion } from "./accordion";
 export * from "./alert";
 export * from "./alert-expandable";
 export * from "./alert-service";
@@ -13,7 +13,7 @@ export * from "./code";
 export * from "./datepicker";
 export * from "./dialog";
 export * from "./drawer";
-export { default as FloatingActionButton } from "./floating-action-button";
+export * from "./floating-action-button";
 export * from "./select";
 export * from "./info-tag";
 export { default as Input } from "./input";

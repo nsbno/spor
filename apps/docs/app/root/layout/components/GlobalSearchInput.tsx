@@ -1,4 +1,4 @@
-import { FormControl, SearchInput } from "@vygruppen/spor-react";
+import { Field, SearchInput } from "@vygruppen/spor-react";
 import React from "react";
 
 type GlobalSearchInputProps = {
@@ -15,7 +15,7 @@ const GlobalSearchInput = ({
 }: GlobalSearchInputProps) => {
   const inputRef = useSearchHotkey();
   return (
-    <FormControl>
+    <Field>
       <SearchInput
         ref={inputRef}
         value={value}
@@ -26,7 +26,7 @@ const GlobalSearchInput = ({
         label="F.ex. icons, components, or pages"
         autoFocus={true}
       />
-    </FormControl>
+    </Field>
   );
 };
 

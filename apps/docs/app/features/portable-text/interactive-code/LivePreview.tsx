@@ -1,5 +1,4 @@
-import { useColorModeValue } from "@chakra-ui/react";
-import { Box, BoxProps } from "@vygruppen/spor-react";
+import { Box, BoxProps, useColorModeValue } from "@vygruppen/spor-react";
 import { LivePreview as ReactLivePreview } from "react-live";
 
 export const LivePreview = (props: BoxProps) => {

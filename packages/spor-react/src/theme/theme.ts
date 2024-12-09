@@ -9,7 +9,6 @@ import {
   pressableCardRecipe,
   breadcrumbRecipe,
   switchRecipe,
-  accordionSlotRecipe,
   alertExpandableSlotRecipe,
   serviceAlertSlotRecipe,
   checkboxSlotRecipe,
@@ -34,6 +33,7 @@ import { listSlotRecipe } from "./components/list";
 import { alertSlotRecipe } from "./components/alert";
 import { fieldSlotRecipe } from "./components/field";
 import { separatorRecipe } from "./components/separator";
+import accordionSlotRecipe from "./components/accordion";
 
 export type ColorsType = typeof tokens.color.alias &
   typeof tokens.color.palette &

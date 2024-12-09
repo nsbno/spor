@@ -1,9 +1,4 @@
-import {
-  ListItem,
-  OrderedList,
-  UnorderedList,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { ListItem } from "@chakra-ui/react";
 import {
   PortableTextReactComponents,
   PortableText as SanityPortableText,
@@ -26,6 +21,7 @@ import {
   StaticCard,
   Text,
   TextLink,
+  useColorModeValue,
 } from "@vygruppen/spor-react";
 import deepmerge from "deepmerge";
 import React from "react";
@@ -117,19 +113,14 @@ const components: Partial<PortableTextReactComponents> = {
   },
   list: {
     bullet: ({ children }) => (
-      <UnorderedList
-        paddingLeft={3}
-        marginTop={0}
-        marginBottom={3}
-        variant="sm"
-      >
+      <Box as="ul" paddingLeft={3} marginTop={0} marginBottom={3} variant="sm">
         {children}
-      </UnorderedList>
+      </Box>
     ),
     number: ({ children }) => (
-      <OrderedList paddingLeft={3} marginTop={0} marginBottom={3} variant="sm">
+      <Box as="ol" paddingLeft={3} marginTop={0} marginBottom={3} variant="sm">
         {children}
-      </OrderedList>
+      </Box>
     ),
   },
   listItem: ({ children }) => (

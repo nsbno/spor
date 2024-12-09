@@ -70,6 +70,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
         {...props}
         paddingLeft={icon ? 1 : undefined}
         css={styles}
+        variant={variant}
       >
         {icon && React.cloneElement(icon, { marginRight: 1 })}
         {children}

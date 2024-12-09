@@ -5,11 +5,14 @@
   "include": ["src"],
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "lib": ["ES2015", "DOM"],
     "module": "ESNext",
     "rootDir": "src",
     "outDir": "dist",
-    "jsx": "react"
+    "jsx": "react",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }

@@ -8,7 +8,7 @@ import {
 import React, { PropsWithChildren } from "react";
 import { alertSlotRecipe } from "../theme/components/alert";
 
-type AlertVariantProps = RecipeVariantProps<typeof alertSlotRecipe>;
+export type AlertVariantProps = RecipeVariantProps<typeof alertSlotRecipe>;
 
 export type BaseAlertProps = BoxProps &
   Exclude<ConditionalValue<any>, "variant"> &

@@ -9,15 +9,6 @@ export enum Brand {
   CargoNet = "CargoNet",
 }
 
-export const theme = {
-  ...defaultSystem,
-  ...foundations,
-  components: {
-    ...defaultSystem,
-    ...components,
-  },
-};
-
 export const brandTheme = {
   [Brand.VyDigital]: {},
   [Brand.VyUtvikling]: {

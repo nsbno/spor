@@ -1,5 +1,5 @@
 import { createToaster as createChakraToast } from "@chakra-ui/react";
-import React, { useCallback } from "react";
+import React, { forwardRef, useCallback } from "react";
 import { ActionToast } from "./ActionToast";
 import { BaseToast, BaseToastProps } from "./BaseToast";
 import { ClosableToast } from "./ClosableToast";
@@ -50,12 +50,12 @@ export type ToastOptions = BaseToastOptions &
  * ```
  */
 export const createToaster = () => {
-  const toast = createChakraToast();
   const wrappedToast = useCallback((opts: ToastOptions) => {
     const Toast = getToastComponent(opts);
-    toast({
+    createChakraToast({
       ...opts,
-      render: Toast,
+      placement: "bottom-end",
+      pauseOnPageIdle: true,
     });
   }, []);
   return wrappedToast;

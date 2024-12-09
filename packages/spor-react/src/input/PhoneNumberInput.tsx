@@ -5,8 +5,15 @@ import {
   Select,
   useControllableState,
 } from "@chakra-ui/react";
-import React, { forwardRef, Suspense } from "react";
-import { SelectRoot, Input, createTexts, useTranslation, SelectItem } from "..";
+import React, { FormEventHandler, forwardRef, Suspense } from "react";
+import {
+  SelectRoot,
+  Input,
+  createTexts,
+  useTranslation,
+  SelectItem,
+  SelectLabel,
+} from "..";
 import { AttachedInputs } from "./AttachedInputs";
 
 type CountryCodeAndPhoneNumber = {
@@ -30,6 +37,7 @@ type PhoneNumberInputProps = Omit<BoxProps, "onChange"> &
     value?: CountryCodeAndPhoneNumber;
     variant?: ConditionalValue<"base" | "floating">;
     isOptional?: boolean;
+    collection: Record<string, string>;
   };
 /**
  * A component for entering phone numbers.
@@ -60,6 +68,7 @@ export const PhoneNumberInput = forwardRef<
     onChange: externalOnChange,
     variant,
     isOptional,
+    collection,
     ...boxProps
   } = props;
 
@@ -75,30 +84,34 @@ export const PhoneNumberInput = forwardRef<
       nationalNumber: "",
     },
   });
+
+  const handleCountryCodeChange = (event: React.FormEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLSelectElement;
+    const countryCode = target.value;
+    onChange({
+      countryCode: countryCode,
+      nationalNumber: value.nationalNumber,
+    });
+  };
   return (
     <AttachedInputs {...boxProps}>
       <Suspense
         fallback={
           <SelectRoot
-            isLabelSrOnly
-            label={t(texts.countryCodeLabel)}
             width="6.25rem"
             height="100%"
-            value="+47"
+            value={["+47"]}
             variant={variant}
+            collection={collection}
           >
-            <SelectItem item="+47">+47</SelectItem>
+            <SelectLabel>+47</SelectLabel>
           </SelectRoot>
         }
       >
         <LazyCountryCodeSelect
-          value={value.countryCode}
-          onChange={(countryCode: string) =>
-            onChange({
-              countryCode: countryCode,
-              nationalNumber: value.nationalNumber,
-            })
-          }
+          value={[value.countryCode]}
+          collection={collection}
+          onChange={handleCountryCodeChange}
           name={name ? `${name}-country-code` : "country-code"}
           height="100%"
           width="6.25rem"

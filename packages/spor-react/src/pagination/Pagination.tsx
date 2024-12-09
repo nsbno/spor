@@ -1,220 +1,141 @@
-"use client";
-
-import type { ButtonProps, TextProps } from "@chakra-ui/react";
-import {
-  Pagination as ChakraPagination,
-  Text,
-  createContext,
-  usePaginationContext,
-} from "@chakra-ui/react";
-import * as React from "react";
-import { Button, IconButton, LinkButton } from "../button";
-import { createTexts, useTranslation } from "../i18n";
+import React from "react";
+import { Center, createTexts, useTranslation, Flex, TextLink } from "..";
+import { ListItem, Link, useSlotRecipe, Box } from "@chakra-ui/react";
 import {
   DropdownLeftFill18Icon,
   DropdownRightFill18Icon,
-  OptionsFill18Icon,
 } from "@vygruppen/spor-icon-react";
 
+type PaginationProps = {
+  /** Specify the total amount of pages */
+  totalPages: number;
+  /** Specify the currently selected page */
+  selectedPage: number;
+  /** Callback for when a page is clicked */
+  onPageChange: (selected: number) => void;
+};
+
 /**
- * 
- * Example:
- * <PaginationRoot count={20} pageSize={2} defaultPage={1}>
-      <HStack>
-        <PaginationPrevTrigger />
-        <PaginationItems />
-        <PaginationNextTrigger />
-      </HStack>
-    </PaginationRoot>
- * @see https://spor.vy.no/components/pagination
- */
+ * A pagination component is used to navigate between multiple pages.
+ *
+ * You specify the total amount of pages and the currently selected page.
+ *
+ * ```tsx
+ * <Pagination
+ *   totalPages={10}
+ *   selectedPage={3}
+ *   onPageChange={handlePageChange}
+ * />
+ * ```
+ **/
 
-interface ButtonVariantMap {
-  current: ButtonProps["variant"];
-  default: ButtonProps["variant"];
-  ellipsis: ButtonProps["variant"];
-}
-
-type PaginationVariant = "outline" | "solid" | "subtle";
-
-interface ButtonVariantContext {
-  size: ButtonProps["size"];
-  variantMap: ButtonVariantMap;
-  getHref?: (page: number) => string;
-}
-
-const [RootPropsProvider, useRootProps] = createContext<ButtonVariantContext>({
-  name: "RootPropsProvider",
-});
-
-export interface PaginationRootProps
-  extends Omit<ChakraPagination.RootProps, "type" | "variant"> {
-  size?: ButtonProps["size"];
-  getHref?: (page: number) => string;
-}
-
-const variantMap: Record<PaginationVariant, ButtonVariantMap> = {
-  outline: { default: "ghost", ellipsis: "plain", current: "outline" },
-  solid: { default: "outline", ellipsis: "outline", current: "solid" },
-  subtle: { default: "ghost", ellipsis: "plain", current: "subtle" },
-};
-
-export const PaginationRoot = React.forwardRef<
-  HTMLDivElement,
-  PaginationRootProps
->(function PaginationRoot(props, ref) {
-  const { size = "sm", getHref, ...rest } = props;
-  return (
-    <RootPropsProvider value={{ size, variantMap: null, getHref }}>
-      <ChakraPagination.Root
-        ref={ref}
-        type={getHref ? "link" : "button"}
-        {...rest}
-      />
-    </RootPropsProvider>
-  );
-});
-
-export const PaginationEllipsis = React.forwardRef<
-  HTMLDivElement,
-  ChakraPagination.EllipsisProps
->(function PaginationEllipsis(props, ref) {
-  const { size, variantMap } = useRootProps();
-  return (
-    <ChakraPagination.Ellipsis ref={ref} {...props} asChild>
-      <Button as="span" variant={variantMap.ellipsis} size={size}>
-        <OptionsFill18Icon />
-      </Button>
-    </ChakraPagination.Ellipsis>
-  );
-});
-
-export const PaginationItem = React.forwardRef<
-  HTMLButtonElement,
-  ChakraPagination.ItemProps
->(function PaginationItem(props, ref) {
-  const { page } = usePaginationContext();
-  const { size, variantMap, getHref } = useRootProps();
-
-  const current = page === props.value;
-  const variant = current ? variantMap.current : variantMap.default;
-
-  if (getHref) {
-    return (
-      <LinkButton href={getHref(props.value)} variant={variant} size={size}>
-        {props.value}
-      </LinkButton>
-    );
-  }
-
-  return (
-    <ChakraPagination.Item ref={ref} {...props} asChild>
-      <Button variant={variant} size={size}>
-        {props.value}
-      </Button>
-    </ChakraPagination.Item>
-  );
-});
-
-export const PaginationPrevTrigger = React.forwardRef<
-  HTMLButtonElement,
-  ChakraPagination.PrevTriggerProps
->(function PaginationPrevTrigger(props, ref) {
-  const { size, variantMap, getHref } = useRootProps();
-  const { previousPage } = usePaginationContext();
-
-  if (getHref) {
-    return (
-      <LinkButton
-        href={previousPage != null ? getHref(previousPage) : undefined}
-        variant={variantMap.default}
-        size={size}
-      >
-        <DropdownLeftFill18Icon />
-      </LinkButton>
-    );
-  }
-
-  return (
-    <ChakraPagination.PrevTrigger ref={ref} asChild {...props}>
-      <IconButton variant="ghost">
-        <DropdownLeftFill18Icon />
-      </IconButton>
-    </ChakraPagination.PrevTrigger>
-  );
-});
-
-export const PaginationNextTrigger = React.forwardRef<
-  HTMLButtonElement,
-  ChakraPagination.NextTriggerProps
->(function PaginationNextTrigger(props, ref) {
-  const { size, variantMap, getHref } = useRootProps();
-  const { nextPage } = usePaginationContext();
-
-  if (getHref) {
-    return (
-      <LinkButton
-        href={nextPage != null ? getHref(nextPage) : undefined}
-        variant="ghost"
-      >
-        <DropdownRightFill18Icon />
-      </LinkButton>
-    );
-  }
-
-  return (
-    <ChakraPagination.NextTrigger ref={ref} asChild {...props}>
-      <IconButton variant="ghost">
-        <DropdownRightFill18Icon />
-      </IconButton>
-    </ChakraPagination.NextTrigger>
-  );
-});
-
-export const PaginationItems = (props: React.HTMLAttributes<HTMLElement>) => {
-  return (
-    <ChakraPagination.Context>
-      {({ pages }) =>
-        pages.map((page, index) => {
-          return page.type === "ellipsis" ? (
-            <PaginationEllipsis key={index} index={index} {...props} />
-          ) : (
-            <PaginationItem
-              key={index}
-              type="page"
-              value={page.value}
-              {...props}
-            />
-          );
-        })
-      }
-    </ChakraPagination.Context>
-  );
-};
-
-interface PageTextProps extends TextProps {
-  format?: "short" | "compact" | "long";
-}
-
-export const PaginationPageText = React.forwardRef<
-  HTMLParagraphElement,
-  PageTextProps
->(function PaginationPageText(props, ref) {
-  const { format = "compact", ...rest } = props;
-  const { page, totalPages, pageRange, count } = usePaginationContext();
+export const Pagination = ({
+  totalPages,
+  selectedPage,
+  onPageChange,
+}: PaginationProps) => {
   const { t } = useTranslation();
-  const content = React.useMemo(() => {
-    if (format === "short") return `${page} / ${totalPages}`;
-    if (format === "compact") return `${page} ${t(texts.of)} ${totalPages}`;
-    return `${pageRange.start + 1} - ${pageRange.end} ${t(texts.of)} ${count}`;
-  }, [format, page, totalPages, pageRange, count]);
+
+  const recipe = useSlotRecipe({ key: "pagination" });
+  const styles = recipe({});
+
+  const hasPreviousPage = selectedPage > 1;
+  const hasNextPage = selectedPage < totalPages;
+
+  const renderPaginationButtons = () => {
+    const displayPageNumbers = [];
+    const maxVisiblePages = 8;
+    if (totalPages <= maxVisiblePages) {
+      displayPageNumbers.push(
+        ...Array.from({ length: totalPages }, (_, i) => i + 1),
+      );
+    } else {
+      if (selectedPage <= Math.floor(maxVisiblePages / 2) + 1) {
+        // If selectedPage is near the beginning, display the first pages.
+        displayPageNumbers.push(
+          ...Array.from({ length: maxVisiblePages - 1 }, (_, i) => i + 1),
+        );
+        displayPageNumbers.push("...");
+        displayPageNumbers.push(totalPages);
+      } else if (selectedPage >= totalPages - Math.floor(maxVisiblePages / 2)) {
+        // If selectedPage is near the end, display the last pages.
+        displayPageNumbers.push(1);
+        displayPageNumbers.push("...");
+        displayPageNumbers.push(
+          ...Array.from(
+            { length: maxVisiblePages - 1 },
+            (_, i) => totalPages - maxVisiblePages + 2 + i,
+          ),
+        );
+      } else {
+        // Display pages with "..." in the middle.
+        displayPageNumbers.push(1);
+        displayPageNumbers.push("...");
+        for (
+          let i = selectedPage - Math.floor((maxVisiblePages - 3) / 2);
+          i <= selectedPage + Math.floor((maxVisiblePages - 3) / 2);
+          i++
+        ) {
+          displayPageNumbers.push(i);
+        }
+        displayPageNumbers.push("...");
+        displayPageNumbers.push(totalPages);
+      }
+    }
+    return displayPageNumbers.map((pageNumber, index) =>
+      pageNumber === "..." ? (
+        <ListItem key={index} css={styles.listItem}>
+          <Center>...</Center>
+        </ListItem>
+      ) : (
+        <Link
+          key={index}
+          as={ListItem}
+          onClick={() => {
+            if (pageNumber !== "...") {
+              onPageChange(+pageNumber);
+            }
+          }}
+          padding={pageNumber === "..." ? 0 : undefined}
+          css={pageNumber === selectedPage ? styles.activeButton : styles.link}
+        >
+          {pageNumber}
+        </Link>
+      ),
+    );
+  };
 
   return (
-    <Text fontWeight="medium" ref={ref} {...rest}>
-      {content}
-    </Text>
+    <Flex as="nav" aria-label="pagination">
+      <Box
+        as="ul"
+        display="flex"
+        listStyleType="none"
+        gap={[0, 1]}
+        padding={0}
+        margin={0}
+      >
+        <ListItem aria-label={t(texts.previousPage)}>
+          <TextLink
+            onClick={() => onPageChange(selectedPage - 1)}
+            css={hasPreviousPage ? styles.link : styles.disabled}
+          >
+            <DropdownLeftFill18Icon sx={styles.icon} />
+          </TextLink>
+        </ListItem>
+        {renderPaginationButtons()}
+        <ListItem aria-label={t(texts.nextPage)}>
+          <TextLink
+            onClick={() => onPageChange(selectedPage + 1)}
+            css={hasNextPage ? styles.link : styles.disabled}
+          >
+            <DropdownRightFill18Icon css={styles.icon} />
+          </TextLink>
+        </ListItem>
+      </Box>
+    </Flex>
   );
-});
+};
 
 const texts = createTexts({
   previousPage: {
@@ -228,11 +149,5 @@ const texts = createTexts({
     nn: "Neste side",
     en: "Next page",
     sv: "Nästa sida",
-  },
-  of: {
-    nb: "av",
-    nn: "av",
-    en: "of",
-    sv: "av",
   },
 });

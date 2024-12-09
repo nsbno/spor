@@ -93,13 +93,7 @@ export const Nudge = forwardRef<HTMLDivElement, NudgeProps>(
       return null;
     }
     return (
-      <PopoverRoot
-        arrowSize={12}
-        arrowShadowColor="none"
-        defaultOpen={true}
-        ref={ref}
-        {...props}
-      >
+      <PopoverRoot defaultOpen={true} {...props}>
         <PopoverTrigger>{children}</PopoverTrigger>
         <PopoverContent borderRadius="sm">
           <PopoverArrow />

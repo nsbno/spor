@@ -39,6 +39,7 @@ type ServiceAlertProps = BaseAlertProps &
     headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
     /** The variant of Service Alert. Default: service */
     variant?: "service" | "global-deviation";
+    value?: string;
   };
 /**
  * A service alert component.
@@ -60,11 +61,17 @@ export const ServiceAlert = ({
   headingLevel = "h3",
   defaultOpen = false,
   onToggle = () => {},
+  value,
   ...boxProps
 }: ServiceAlertProps) => {
   const { t } = useTranslation();
   const recipe = useSlotRecipe({ key: "alert-service" });
   const styles = recipe({ variant });
+
+  const handleChange = (event: React.FormEvent<HTMLDivElement>) => {
+    const expandedIndex = (event.target as HTMLDivElement).dataset.index;
+    onToggle(expandedIndex === "0");
+  };
   return (
     <BaseAlert
       variant={variant}
@@ -74,14 +81,14 @@ export const ServiceAlert = ({
       sx={styles.outerBox}
     >
       <Accordion.Root
-        onChange={(expandedIndex: number) => onToggle(expandedIndex === 0)}
-        defaultIndex={defaultOpen ? 0 : -1}
-        allowToggle
+        onChange={handleChange}
+        defaultValue={value}
+        collapsible
         flexGrow={1}
-        sx={{ outline: "none" }}
+        css={{ outline: "none" }}
         variant={variant}
       >
-        <Accordion.Item>
+        <Accordion.Item value={value}>
           <Accordion.ItemTrigger css={styles.container}>
             <Stack
               flexDirection="row"

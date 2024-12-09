@@ -44,6 +44,7 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
     emptyContent?: React.ReactNode;
     maxWidth?: BoxProps["maxWidth"];
     variant?: ConditionalValue<"base" | "floating">;
+    children: React.ReactNode;
   };
 
 /**
@@ -83,7 +84,7 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
 
 export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
   (props) => {
-    const { loading, listBoxRef, state, maxWidth, variant } = props;
+    const { loading, listBoxRef, state, maxWidth, variant, children } = props;
     const { listBoxProps } = useListBox(props, state, listBoxRef);
     const recipe = useSlotRecipe({ key: "listbox" });
     const styles = recipe({ variant });
@@ -104,6 +105,7 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
             <Option key={item.key} item={item} state={state} />
           ),
         )}
+        {children}
       </ListRoot>
     );
   },

@@ -2,7 +2,7 @@ import { Global } from "@emotion/react";
 import deepmerge from "deepmerge";
 import React from "react";
 import { Language, LanguageProvider } from "..";
-import { Brand, brandTheme, fontFaces } from "../";
+import { Brand, brandTheme, fontFaces } from "../theme/brand";
 import { system as defaultSporTheme } from "../theme/theme";
 import {
   ChakraProvider,

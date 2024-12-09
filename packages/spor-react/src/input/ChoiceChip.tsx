@@ -18,8 +18,8 @@ type ChoiceChipVariantProps = RecipeVariantProps<typeof choiceChipSlotRecipe>;
 
 export type ChoiceChipProps = PropsWithChildren<ChoiceChipVariantProps> & {
   onChange?: (value: ChangeEvent<HTMLInputElement>) => void;
-  isChecked?: boolean;
-  isDisabled?: boolean;
+  checked?: boolean;
+  disabled?: boolean;
   defaultChecked?: boolean;
   /** The button text */
   children: React.ReactNode;
@@ -67,7 +67,8 @@ export const ChoiceChip = forwardRef(
     {
       children,
       icon,
-      isDisabled,
+      disabled,
+      checked,
       size = "sm",
       chipType = "choice",
       variant = "base",
@@ -75,13 +76,7 @@ export const ChoiceChip = forwardRef(
     }: ChoiceChipProps,
     ref,
   ) => {
-    const {
-      state,
-      getInputProps,
-      getCheckboxProps,
-      getRootProps,
-      getLabelProps,
-    } = useCheckbox(props);
+    const { getRootProps, getLabelProps } = useCheckbox(props);
     const recipe = useSlotRecipe({ key: "choice-chip" });
     const styles = recipe({
       size,
@@ -100,31 +95,29 @@ export const ChoiceChip = forwardRef(
         aria-label={String(children)}
       >
         <chakra.input
-          {...getInputProps({}, ref)}
+          /* {...getInputProps({}, ref)} */
           id={id}
-          disabled={isDisabled}
+          disabled={disabled}
         />
         <chakra.div
           {...getLabelProps()}
           css={styles.root}
-          data-checked={dataAttr(state.isChecked)}
+          /* data-checked={dataAttr(state.isChecked)}
           data-hover={dataAttr(state.isHovered)}
           data-focus={dataAttr(state.isFocused)}
           data-active={dataAttr(state.isActive)}
-          data-disabled={dataAttr(state.isDisabled)}
+          data-disabled={dataAttr(state.isDisabled)} */
         >
           {icon && (
             <chakra.span css={styles.icon}>
-              {state.isChecked ? icon.checked : icon.default}
+              {checked ? icon.checked : icon.default}
             </chakra.span>
           )}
           {chipType !== "icon" && (
-            <chakra.span css={styles.label} {...getCheckboxProps()}>
-              {children}
-            </chakra.span>
+            <chakra.span css={styles.label}>{children}</chakra.span>
           )}
 
-          {chipType === "filter" && state.isChecked && (
+          {chipType === "filter" && checked && (
             <CloseOutline24Icon marginLeft={1.5} />
           )}
         </chakra.div>

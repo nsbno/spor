@@ -72,8 +72,8 @@ export function DateRangePicker({
   const state = useDateRangePickerState({
     ...props,
     shouldCloseOnSelect: true,
-    isRequired: props.isRequired ?? fieldContextPRops?.isRequired,
-    validationState: fieldContextPRops.isInvalid ? "invalid" : "valid",
+    isRequired: props.isRequired ?? fieldContextPRops?.required,
+    validationState: fieldContextPRops.invalid ? "invalid" : "valid",
   });
   const ref = useRef(null);
   const {
@@ -119,10 +119,9 @@ export function DateRangePicker({
       <Box position="relative" display="inline-flex" flexDirection="column">
         <PopoverRoot
           {...dialogProps}
-          isOpen={state.isOpen}
-          onOpen={state.open}
-          onClose={state.close}
-          flip={false}
+          open={state.isOpen}
+          onOpenChange={state.open}
+          onExitComplete={state.close}
         >
           <Field
             {...groupProps}

@@ -8,7 +8,6 @@ import {
   useFieldContext,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import { DateValue } from "@internationalized/date";
 import React, {
   PropsWithChildren,
   ReactNode,
@@ -16,7 +15,12 @@ import React, {
   useId,
   useRef,
 } from "react";
-import { AriaDatePickerProps, I18nProvider, useDatePicker } from "react-aria";
+import {
+  AriaDatePickerProps,
+  I18nProvider,
+  useDatePicker,
+  DateValue,
+} from "react-aria";
 import { useDatePickerState } from "react-stately";
 import { Calendar } from "./Calendar";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
@@ -45,6 +49,7 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
     showYearNavigation?: boolean;
     withPortal?: boolean;
     onChange?: (value: DateValue | null) => void;
+    errorMessage?: ReactNode;
   };
 
 /**
@@ -75,8 +80,8 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       ...props,
       shouldCloseOnSelect: true,
       errorMessage,
-      isRequired: props.isRequired ?? chakraFieldProps?.isRequired,
-      validationState: chakraFieldProps?.isInvalid ? "invalid" : "valid",
+      isRequired: props.isRequired ?? chakraFieldProps?.required,
+      validationState: chakraFieldProps?.invalid ? "invalid" : "valid",
     });
     const internalRef = useRef<HTMLDivElement>(null);
     const ref = externalRef ?? internalRef;
@@ -96,7 +101,10 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     const labelId = `label-${useId()}`;
     const inputGroupId = `input-group-${useId()}`;
 
-    const recipe = useSlotRecipe({ key: "datePicker", recipe: datePickerSlotRecipe });
+    const recipe = useSlotRecipe({
+      key: "datePicker",
+      recipe: datePickerSlotRecipe,
+    });
     const styles = recipe({ variant });
     const locale = useCurrentLocale();
 
@@ -127,10 +135,9 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
         >
           <PopoverRoot
             {...dialogProps}
-            isOpen={state.isOpen}
-            onOpen={state.open}
-            onClose={state.close}
-            flip={false}
+            open={state.isOpen}
+            onOpenChange={state.open}
+            onExitComplete={state.close}
           >
             <Field
               display="inline-flex"

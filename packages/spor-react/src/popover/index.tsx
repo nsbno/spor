@@ -4,10 +4,10 @@ import {
   Portal,
   RecipeVariantProps,
 } from "@chakra-ui/react";
-import { CloseButton } from "../components/ui/close-button";
 import * as React from "react";
 import { popoverSlotRecipe } from "../theme/components/popover";
 import { PropsWithChildren } from "react";
+import { CloseButton } from "@/button";
 
 type PopoverVariantProps = RecipeVariantProps<typeof popoverSlotRecipe>;
 

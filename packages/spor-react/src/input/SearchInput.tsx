@@ -7,9 +7,7 @@ import {
   SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, useId } from "react";
-import { createTexts, useTranslation } from "..";
-import { InputGroup } from "../components/ui/input-group";
-import { Field } from "../components/ui/field";
+import { createTexts, Field, InputGroup, useTranslation } from "..";
 import { IconButton } from "../button/IconButton";
 
 export type SearchInputProps = Exclude<

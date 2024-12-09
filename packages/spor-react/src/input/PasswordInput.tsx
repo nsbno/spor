@@ -5,10 +5,8 @@ import {
   Box,
 } from "@chakra-ui/react";
 import React, { useId, forwardRef } from "react";
-import { InputProps } from ".";
+import { Field, InputGroup, InputProps } from ".";
 import { createTexts, useTranslation } from "..";
-import { Field } from "../components/ui/field";
-import { InputGroup } from "../components/ui/input-group";
 
 export type PasswordInputProps = Omit<InputProps, "isDisabled"> & {
   isDisabled?: boolean;

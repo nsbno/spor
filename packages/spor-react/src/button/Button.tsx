@@ -27,7 +27,7 @@ export type ButtonProps = Exclude<
     variant: ConditionalValue<
       "primary" | "secondary" | "tertiary" | "ghost" | "floating"
     >;
-    size: ConditionalValue<"lg" | "md" | "sm" | "xs">;
+    size?: ConditionalValue<"lg" | "md" | "sm" | "xs">;
   };
 /**
  * Buttons are used to trigger actions.

@@ -5,6 +5,8 @@ export * from "./breadcrumb";
 export * from "./button";
 export * from "./color-mode";
 export * from "./datepicker";
+export * from "./theme/brand";
+export * from "./theme/theme";
 export * from "./i18n";
 export * from "./image";
 export * from "./input";

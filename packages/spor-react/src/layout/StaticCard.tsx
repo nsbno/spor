@@ -1,24 +1,33 @@
 import React, { forwardRef, PropsWithChildren } from "react";
-import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import {
+  Box,
+  BoxProps,
+  ConditionalValue,
+  RecipeVariantProps,
+  useRecipe,
+} from "@chakra-ui/react";
 import { staticCardRecipe } from "../theme/components";
 
 type StaticCardVariants = RecipeVariantProps<typeof staticCardRecipe>;
+
+type ColorPalette = ConditionalValue<
+  | "white"
+  | "grey"
+  | "green"
+  | "orange"
+  | "red"
+  | "yellow"
+  | "blue"
+  | "darkBlue"
+  | "darkGreen"
+  | "darkYellow"
+>;
 
 export type StaticCardProps = Exclude<BoxProps, "colorPalette"> &
   PropsWithChildren<StaticCardVariants> & {
     children: React.ReactNode;
     /** Defaults to "white" */
-    colorPalette:
-      | "white"
-      | "grey"
-      | "green"
-      | "orange"
-      | "red"
-      | "yellow"
-      | "blue"
-      | "darkBlue"
-      | "darkGreen"
-      | "darkYellow";
+    colorPalette: ColorPalette;
   };
 
 /**

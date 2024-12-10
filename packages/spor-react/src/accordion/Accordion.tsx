@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   Accordion as ChakraAccordion,
@@ -16,7 +17,6 @@ export type AccordionProps = Omit<ChakraAccordionProps, "variant" | "size"> & {
    * - `floating` renders a version with a drop shadow
    */
   variant?: "ghost" | "base" | "floating";
-  /** The margin between accordion items */
 };
 /*
  * Wraps a set of AccordionItem or AccordionItem components.
@@ -103,7 +103,16 @@ export const AccordionItemContent = forwardRef<
   );
 });
 
-export const AccordionRoot = ChakraAccordion.Root;
+export const AccordionRoot = forwardRef<HTMLDivElement, AccordionProps>(
+  (props, ref) => {
+    const { variant = "base", children, ...rest } = props;
+    return (
+      <ChakraAccordion.Root {...rest} ref={ref}>
+        {children}
+      </ChakraAccordion.Root>
+    );
+  },
+);
 export const AccordionItem = ChakraAccordion.Item;
 
 type WarnAboutMismatchingIcon = {

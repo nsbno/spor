@@ -1,6 +1,6 @@
 import React, { forwardRef, PropsWithChildren } from "react";
 import { BoxProps } from "../layout";
-import { breadcrumbRecipe } from "../theme/components";
+import { breadcrumbRecipe } from "../theme/components/breadcrumb";
 import { RecipeVariantProps, useRecipe } from "@chakra-ui/react";
 import { useColorModeValue } from "../color-mode";
 import {

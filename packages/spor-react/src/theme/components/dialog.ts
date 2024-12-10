@@ -73,6 +73,8 @@ export const dialogSlotRecipe = defineSlotRecipe({
   },
 });
 
+export default dialogSlotRecipe;
+
 /**
  * Since the `maxWidth` prop references theme.sizes internally,
  * we can leverage that to size our modals.

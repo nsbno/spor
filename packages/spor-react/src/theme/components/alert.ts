@@ -67,3 +67,5 @@ export const alertSlotRecipe = defineSlotRecipe({
     variant: "info",
   },
 });
+
+export default alertSlotRecipe;

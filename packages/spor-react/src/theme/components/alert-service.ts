@@ -85,3 +85,5 @@ export const serviceAlertSlotRecipe = defineSlotRecipe({
     variant: "service",
   },
 });
+
+export default serviceAlertSlotRecipe;

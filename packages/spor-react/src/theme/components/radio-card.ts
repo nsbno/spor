@@ -125,3 +125,5 @@ export const radioCardSlotRecipe = defineSlotRecipe({
     },
   },
 });
+
+export default radioCardSlotRecipe;

@@ -18,7 +18,7 @@ import {
   createTexts,
   useTranslation,
 } from "..";
-import { datePickerSlotRecipe } from "../theme/components";
+import { datePickerSlotRecipe } from "../theme/components/datepicker";
 
 type CalendarTriggerButtonProps = AriaButtonProps<"button"> &
   PropsWithChildren<DatePickerVariantProps> &

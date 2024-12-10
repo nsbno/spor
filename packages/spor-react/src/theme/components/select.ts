@@ -82,3 +82,5 @@ export const selectSlotRecipe = defineSlotRecipe({
     variant: "base",
   },
 });
+
+export default selectSlotRecipe;

@@ -4,7 +4,7 @@ import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
 
-const accordionSlotRecipe = defineSlotRecipe({
+export const accordionSlotRecipe = defineSlotRecipe({
   slots: [
     "root",
     "itemTrigger",

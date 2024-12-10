@@ -1,9 +1,8 @@
 import { spinnerDarkData, spinnerLightData } from "@vygruppen/spor-loader";
 import React from "react";
-import { Box, BoxProps, Center } from "..";
+import { Box, BoxProps, Center, useColorMode } from "..";
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
-import { useColorMode } from "../color-mode/color-mode";
 
 export type DarkSpinnerProps = BoxProps;
 /** A circular spinner

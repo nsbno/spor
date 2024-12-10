@@ -9,7 +9,7 @@ import React, { PropsWithChildren, useEffect, useRef } from "react";
 import { useCalendarCell } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
 import { DatePickerVariantProps } from "./DatePicker";
-import { datePickerSlotRecipe } from "../theme/components";
+import { datePickerSlotRecipe } from "../theme/components/datepicker";
 
 type CalendarCellProps = PropsWithChildren<DatePickerVariantProps> & {
   variant: ConditionalValue<"base" | "floating" | "ghost">;

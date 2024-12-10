@@ -44,3 +44,5 @@ export const staticCardRecipe = defineRecipe({
     colorPalette: "white",
   },
 });
+
+export default staticCardRecipe;

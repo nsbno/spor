@@ -3,7 +3,7 @@ import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
-export const radioRecipe = defineSlotRecipe({
+export const radioSlotRecipe = defineSlotRecipe({
   slots: ["container", "label", "control"],
   className: "spor-radio",
   base: {
@@ -53,3 +53,5 @@ export const radioRecipe = defineSlotRecipe({
     },
   },
 });
+
+export default radioSlotRecipe;

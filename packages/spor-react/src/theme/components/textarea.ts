@@ -57,3 +57,5 @@ export const textareaRecipe = defineRecipe({
     size: "md",
   },
 });
+
+export default textareaRecipe;

@@ -158,3 +158,5 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
     size: "sm",
   },
 });
+
+export default choiceChipSlotRecipe;

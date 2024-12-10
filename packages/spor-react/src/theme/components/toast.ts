@@ -26,3 +26,5 @@ export const toastRecipe = defineRecipe({
     },
   },
 });
+
+export default toastRecipe;

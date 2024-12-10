@@ -121,3 +121,5 @@ export const lineIconSlotRecipe = defineSlotRecipe({
     size: "md",
   },
 });
+
+export default lineIconSlotRecipe;

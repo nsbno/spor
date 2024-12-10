@@ -129,3 +129,5 @@ export const tabsSlotRecipe = defineSlotRecipe({
     variant: "base",
   },
 });
+
+export default tabsSlotRecipe;

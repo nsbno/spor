@@ -60,3 +60,5 @@ export const nativeSelectSlotRecipe = defineSlotRecipe({
     variant: "base",
   },
 });
+
+export default nativeSelectSlotRecipe;

@@ -1,6 +1,12 @@
-import { BoxProps, ProgressLabel, ProgressRoot, ProgressValueText, RecipeVariantProps } from "@chakra-ui/react";
+import {
+  BoxProps,
+  ProgressLabel,
+  ProgressRoot,
+  ProgressValueText,
+  RecipeVariantProps,
+} from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
-import { progressBarRecipe } from "../theme/components";
+import { progressBarRecipe } from "../theme/components/progress-bar";
 import { useTranslation } from "react-i18next";
 import { useRotatingLabel } from "./useRotatingLabel";
 import { createTexts } from "../i18n";
@@ -84,7 +90,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
       "aria-label": ariaLabel,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const { t } = useTranslation();
     const currentLoadingText = useRotatingLabel({
@@ -101,23 +107,26 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
         }}
         {...rest}
       >
-        {label && (
-          <ProgressLabel>{t(texts.label(value).en)}</ProgressLabel>
-
-        )}
-        <ProgressBar children={undefined} aria-label={""} value={0} label={""} />
+        {label && <ProgressLabel>{t(texts.label(value).en)}</ProgressLabel>}
+        <ProgressBar
+          children={undefined}
+          aria-label={""}
+          value={0}
+          label={""}
+        />
         <ProgressValueText>{`${value}%`}</ProgressValueText>
       </ProgressRoot>
     );
-  }
+  },
 );
 
- const texts: { label: (value: number) => { nb: string; nn: string; sv: string; en: string } } = createTexts({
-      label: (value) => ({
-        nb: `${value}% ferdig`,
-        nn: `${value}% ferdig`,
-        sv: `${value}% klart`,
-        en: `${value}% done`,
-      }),
-    });
-    
+const texts: {
+  label: (value: number) => { nb: string; nn: string; sv: string; en: string };
+} = createTexts({
+  label: (value) => ({
+    nb: `${value}% ferdig`,
+    nn: `${value}% ferdig`,
+    sv: `${value}% klart`,
+    en: `${value}% done`,
+  }),
+});

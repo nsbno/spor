@@ -52,3 +52,5 @@ export const numericStepperRecipe = defineSlotRecipe({
     },
   },
 });
+
+export default numericStepperRecipe;

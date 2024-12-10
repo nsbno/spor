@@ -4,9 +4,12 @@ import React from "react";
 import { Language, LanguageProvider } from "..";
 import { Brand, brandTheme, fontFaces } from "../theme/brand";
 import { system as defaultSporTheme } from "../theme/theme";
-import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  ChakraProviderProps,
+  defaultSystem,
+} from "@chakra-ui/react";
 import { ColorModeProvider } from "../color-mode/color-mode";
-import { ThemeProvider } from "next-themes";
 
 type SporProviderProps = ChakraProviderProps & {
   language?: Language;
@@ -64,7 +67,7 @@ export const SporProvider = ({
 
   return (
     <LanguageProvider language={language}>
-      <ChakraProvider {...props} value={extendedTheme}>
+      <ChakraProvider {...props} value={defaultSystem}>
         <ColorModeProvider>
           <Global styles={fontFaces} />
           {children}

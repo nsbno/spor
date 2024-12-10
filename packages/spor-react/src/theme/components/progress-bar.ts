@@ -25,7 +25,6 @@ export const progressBarRecipe = defineSlotRecipe({
       marginX: "auto",
       fontWeight: "bold",
     },
-   
   },
   variants: {
     colorPalette: {
@@ -42,7 +41,7 @@ export const progressBarRecipe = defineSlotRecipe({
         },
       },
     },
-    },
+  },
 });
 
 export default progressBarRecipe;

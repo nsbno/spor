@@ -1,7 +1,7 @@
 import { inputBaseStyle, inputVariant } from "../utils/input-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
 
-const inputSlotRecipe = defineSlotRecipe({
+export const inputSlotRecipe = defineSlotRecipe({
   slots: ["group", "addon", "field", "element"],
   base: {
     ...inputBaseStyle(),

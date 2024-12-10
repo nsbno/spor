@@ -115,3 +115,5 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
     variant: "brand",
   },
 });
+
+export default floatingActionButtonSlotRecipe;

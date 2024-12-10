@@ -30,7 +30,7 @@ import {
 } from "../popover";
 import { Field } from "../input";
 import { DatePickerVariantProps } from "./DatePicker";
-import { datePickerSlotRecipe } from "../theme/components";
+import { datePickerSlotRecipe } from "../theme/components/datepicker";
 
 type DateRangePickerProps = Omit<
   AriaDateRangePickerProps<DateValue>,

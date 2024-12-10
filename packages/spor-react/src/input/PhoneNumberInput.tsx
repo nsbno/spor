@@ -5,13 +5,12 @@ import {
   Select,
   useControllableState,
 } from "@chakra-ui/react";
-import React, { FormEventHandler, forwardRef, Suspense } from "react";
+import React, { forwardRef, Suspense } from "react";
 import {
   SelectRoot,
   Input,
   createTexts,
   useTranslation,
-  SelectItem,
   SelectLabel,
 } from "..";
 import { AttachedInputs } from "./AttachedInputs";

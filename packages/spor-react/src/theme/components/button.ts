@@ -112,3 +112,5 @@ export const buttonRecipe = defineRecipe({
     size: "md",
   },
 });
+
+export default buttonRecipe;

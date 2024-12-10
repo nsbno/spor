@@ -1,6 +1,6 @@
 import React, { forwardRef, PropsWithChildren, useRef } from "react";
 import { BoxProps, Field, IconButton, createTexts, useTranslation } from "..";
-import { numericStepperRecipe } from "../theme/components";
+import { numericStepperRecipe } from "../theme/components/numeric-stepper";
 import {
   chakra,
   RecipeVariantProps,

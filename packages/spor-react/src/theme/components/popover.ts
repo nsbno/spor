@@ -68,3 +68,5 @@ export const popoverSlotRecipe = defineSlotRecipe({
     size: "sm",
   },
 });
+
+export default popoverSlotRecipe;

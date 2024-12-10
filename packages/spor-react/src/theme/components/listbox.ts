@@ -67,3 +67,5 @@ export const listBoxSlotRecipe = defineSlotRecipe({
     variant: "base",
   },
 });
+
+export default listBoxSlotRecipe;

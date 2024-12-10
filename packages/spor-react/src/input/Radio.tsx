@@ -1,6 +1,6 @@
 import React, { forwardRef, PropsWithChildren } from "react";
 import { RecipeVariantProps, BoxProps } from "@chakra-ui/react";
-import { radioRecipe } from "../theme/components";
+import radioRecipe from "../theme/components/radio";
 import { RadioGroup as ChakraRadioGroup } from "@chakra-ui/react";
 
 type RadioVariants = RecipeVariantProps<typeof radioRecipe>;

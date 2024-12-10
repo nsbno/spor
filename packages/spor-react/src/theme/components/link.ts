@@ -1,5 +1,5 @@
 import { defineRecipe } from "@chakra-ui/react";
-import { useColorModeValue } from "../../color-mode";
+import { useColorModeValue } from "../..";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
@@ -16,7 +16,7 @@ const svgStyles = () => {
   };
 };
 
-const config = defineRecipe({
+export const linkRecipe = defineRecipe({
   base: {
     transitionProperty: "common",
     transitionDuration: "fast",
@@ -80,4 +80,4 @@ const config = defineRecipe({
   ],
 });
 
-export default config;
+export default linkRecipe;

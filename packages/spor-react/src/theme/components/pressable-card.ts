@@ -71,3 +71,5 @@ export const pressableCardRecipe = defineRecipe({
     variant: "base",
   },
 });
+
+export default pressableCardRecipe;

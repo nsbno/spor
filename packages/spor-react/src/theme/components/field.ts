@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { useColorModeValue } from "../../color-mode";
+import { useColorModeValue } from "../..";
 
 export const fieldSlotRecipe = defineSlotRecipe({
   slots: ["root", "label", "requiredIndicator", "helperText", "errorText"],
@@ -48,3 +48,5 @@ export const fieldSlotRecipe = defineSlotRecipe({
     },
   },
 });
+
+export default fieldSlotRecipe;

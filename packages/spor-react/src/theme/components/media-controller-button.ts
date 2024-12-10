@@ -113,3 +113,5 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
     },
   ],
 });
+
+export default mediaControllerSlotRecipe;

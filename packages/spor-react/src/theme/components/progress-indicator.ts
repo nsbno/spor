@@ -22,3 +22,5 @@ export const progressIndicatorRecipe = defineSlotRecipe({
     },
   },
 });
+
+export default progressIndicatorRecipe;

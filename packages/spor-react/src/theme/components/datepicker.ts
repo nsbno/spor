@@ -192,3 +192,5 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     variant: "base",
   },
 });
+
+export default datePickerSlotRecipe;

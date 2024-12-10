@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { useColorModeValue } from "../../color-mode";
+import { useColorModeValue } from "../..";
 
 export const travelTagSlotRecipe = defineSlotRecipe({
   slots: [
@@ -218,3 +218,5 @@ export const travelTagSlotRecipe = defineSlotRecipe({
     size: "md",
   },
 });
+
+export default travelTagSlotRecipe;

@@ -49,3 +49,5 @@ export const infoTagSlotRecipe = defineSlotRecipe({
     size: "md",
   },
 });
+
+export default infoTagSlotRecipe;

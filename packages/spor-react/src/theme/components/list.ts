@@ -17,3 +17,5 @@ export const listSlotRecipe = defineSlotRecipe({
     },
   },
 });
+
+export default listSlotRecipe;

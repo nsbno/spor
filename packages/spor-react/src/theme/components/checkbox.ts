@@ -1,4 +1,4 @@
-import { useColorModeValue } from "../../color-mode";
+import { useColorModeValue } from "../..";
 import { baseBackground, baseText } from "../utils/base-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
@@ -71,3 +71,5 @@ export const checkboxSlotRecipe = defineSlotRecipe({
     },
   },
 });
+
+export default checkboxSlotRecipe;

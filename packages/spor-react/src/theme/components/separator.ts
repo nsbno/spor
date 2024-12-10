@@ -1,5 +1,5 @@
 import { defineRecipe } from "@chakra-ui/react";
-import { useColorModeValue } from "../../color-mode";
+import { useColorModeValue } from "../..";
 
 export const separatorRecipe = defineRecipe({
   className: "spor-separator",
@@ -77,3 +77,5 @@ export const separatorRecipe = defineRecipe({
     orientation: "horizontal",
   },
 });
+
+export default separatorRecipe;

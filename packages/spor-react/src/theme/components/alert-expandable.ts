@@ -101,3 +101,5 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
     variant: "info",
   },
 });
+
+export default alertExpandableSlotRecipe;

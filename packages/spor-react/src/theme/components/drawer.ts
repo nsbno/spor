@@ -1,6 +1,4 @@
-import { drawerAnatomy, modalAnatomy as parts } from "@chakra-ui/anatomy";
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { type PartsStyleObject } from "@chakra-ui/theme-tools";
 import { baseText } from "../utils/base-utils";
 import { bg } from "../utils/bg-utils";
 
@@ -75,6 +73,8 @@ export const drawerSlotRecipe = defineSlotRecipe({
     },
   },
 });
+
+export default drawerSlotRecipe;
 
 /**
  * Since the `maxWidth` prop references theme.sizes internally,

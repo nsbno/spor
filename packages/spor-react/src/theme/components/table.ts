@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { baseText } from "../utils/base-utils";
-import { useColorModeValue } from "../../color-mode";
+import { useColorModeValue } from "../..";
 
 const numericStyles = {
   "&[data-is-numeric=true]": {
@@ -136,3 +136,5 @@ export const tableSlotRecipe = defineSlotRecipe({
     size: "md",
   },
 });
+
+export default tableSlotRecipe;

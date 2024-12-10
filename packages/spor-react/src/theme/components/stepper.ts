@@ -92,3 +92,5 @@ export const stepperSlotRecipe = defineSlotRecipe({
     variant: "base",
   },
 });
+
+export default stepperSlotRecipe;

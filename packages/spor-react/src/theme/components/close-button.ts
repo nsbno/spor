@@ -1,5 +1,5 @@
 import { defineRecipe } from "@chakra-ui/react";
-import { useColorModeValue } from "../../color-mode";
+import { useColorModeValue } from "../..";
 import { cssVar } from "@chakra-ui/theme-tools";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
@@ -50,3 +50,5 @@ export const closeButtonRecipe = defineRecipe({
     },
   ],
 });
+
+export default closeButtonRecipe;

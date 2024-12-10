@@ -7,7 +7,7 @@ import { Text } from "../typography";
 import { CalendarCell } from "./CalendarCell";
 import { useCurrentLocale } from "./utils";
 import { ConditionalValue, useSlotRecipe } from "@chakra-ui/react";
-import { datePickerSlotRecipe } from "../theme/components";
+import { datePickerSlotRecipe } from "../theme/components/datepicker";
 
 const weekDays: Record<Language, string[]> = {
   nb: ["Ma", "Ti", "On", "To", "Fr", "Lø", "Sø"],

@@ -4,7 +4,6 @@ import {
   useCheckbox,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import { dataAttr } from "@chakra-ui/utils";
 import { CloseOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, {
   ChangeEvent,

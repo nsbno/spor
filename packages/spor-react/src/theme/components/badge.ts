@@ -80,3 +80,5 @@ export const badgeRecipie = defineRecipe({
     variant: "solid",
   },
 });
+
+export default badgeRecipie;

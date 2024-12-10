@@ -1,3 +1,4 @@
+"use client";
 import {
   Code as ChakraCode,
   CodeProps as ChakraCodeProps,

@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   BoxProps,
@@ -19,11 +20,14 @@ export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
   function StyledField(props, ref) {
     const { children, variant, isDisabled, ariaLabelledby, ...otherProps } =
       props;
-    const { isInvalid } = useFieldContext() ?? {
+    const { invalid } = useFieldContext() ?? {
       isInvalid: false,
     };
 
-    const recipe = useSlotRecipe({ key: "datePicker", recipe: datePickerSlotRecipe });
+    const recipe = useSlotRecipe({
+      key: "datePicker",
+      recipe: datePickerSlotRecipe,
+    });
     const styles = recipe({ variant });
 
     return (
@@ -31,7 +35,7 @@ export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
         {...otherProps}
         css={styles.wrapper}
         ref={ref}
-        aria-invalid={isInvalid}
+        aria-invalid={invalid}
         aria-disabled={isDisabled}
         aria-labelledby={ariaLabelledby}
       >

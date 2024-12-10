@@ -1,3 +1,5 @@
+"use client";
+
 import { Group, GroupProps } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
 

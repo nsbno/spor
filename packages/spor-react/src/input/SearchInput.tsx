@@ -1,3 +1,4 @@
+"use client";
 import {
   Input as ChakraInput,
   InputProps as ChakraInputProps,

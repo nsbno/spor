@@ -1,6 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { useColorModeValue } from "../..";
 
 export const travelTagSlotRecipe = defineSlotRecipe({
   slots: [
@@ -142,7 +141,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       },
       walk: {
         container: {
-          backgroundColor: useColorModeValue("white", "transparent"),
+          backgroundColor: "white",
           _disabled: {
             backgroundColor: "white",
           },
@@ -151,7 +150,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
           border: "none",
           position: "relative",
           left: -1,
-          backgroundColor: useColorModeValue("white", "transparent"),
+          backgroundColor: "white",
           "[aria-disabled=true] &": {
             backgroundColor: "transparent",
             color: "osloGrey",

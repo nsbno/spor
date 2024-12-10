@@ -1,6 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { baseText } from "../utils/base-utils";
-import { useColorModeValue } from "../..";
 
 const numericStyles = {
   "&[data-is-numeric=true]": {
@@ -40,12 +39,12 @@ export const tableSlotRecipe = defineSlotRecipe({
       line: {
         cell: {
           borderBottom: "sm",
-          borderColor: useColorModeValue(`blackAlpha.200`, `whiteAlpha.300`),
+          borderColor: "blackAlpha.200",
           ...numericStyles,
         },
         row: {
           borderBottom: "sm",
-          borderColor: useColorModeValue(`blackAlpha.200`, `whiteAlpha.300`),
+          borderColor: "blackAlpha.200",
           ...numericStyles,
           "&:last-of-type": {
             td: {

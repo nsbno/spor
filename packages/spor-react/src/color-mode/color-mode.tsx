@@ -1,32 +1,61 @@
-"use client";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 
-import { ThemeProvider, useTheme } from "next-themes";
-import type { ThemeProviderProps } from "next-themes";
-import * as React from "react";
+type Theme = "light" | "dark";
 
-export interface ColorModeProviderProps extends ThemeProviderProps {}
-
-export function ColorModeProvider(props: ColorModeProviderProps) {
-  return (
-    <ThemeProvider attribute="class" disableTransitionOnChange {...props}>
-      {props.children}
-    </ThemeProvider>
-  );
+interface ColorModeContextProps {
+  colorMode: Theme;
+  setColorMode: (theme: Theme) => void;
+  toggleColorMode: () => void;
 }
 
-export function useColorMode() {
-  const { resolvedTheme, setTheme } = useTheme();
+const ColorModeContext = createContext<ColorModeContextProps | undefined>(
+  undefined,
+);
+
+export const ColorModeProvider = ({ children }: { children: ReactNode }) => {
+  const [colorMode, setColorMode] = useState<Theme>(() => {
+    if (typeof window !== "undefined") {
+      const savedTheme = localStorage.getItem("theme");
+      return (savedTheme as Theme) || "light";
+    }
+    return "light";
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("theme", colorMode);
+      document.body.className = colorMode;
+    }
+  }, [colorMode]);
+
   const toggleColorMode = () => {
-    setTheme(resolvedTheme === "light" ? "dark" : "light");
+    setColorMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
   };
-  return {
-    colorMode: resolvedTheme,
-    setColorMode: setTheme,
-    toggleColorMode,
-  };
-}
 
-export function useColorModeValue<T>(light: T, dark: T) {
+  return (
+    <ColorModeContext.Provider
+      value={{ colorMode, setColorMode, toggleColorMode }}
+    >
+      {children}
+    </ColorModeContext.Provider>
+  );
+};
+
+export const useColorMode = () => {
+  const context = useContext(ColorModeContext);
+  if (!context) {
+    throw new Error("useColorMode must be used within a ColorModeProvider");
+  }
+  return context;
+};
+
+export const useColorModeValue = <T,>(light: T, dark: T): T => {
   const { colorMode } = useColorMode();
   return colorMode === "light" ? light : dark;
-}
+};

@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Flex, useDisclosure, useSlotRecipe } from "@chakra-ui/react";
 import { CloseFill18Icon } from "@vygruppen/spor-icon-react";
 import React, { PropsWithChildren } from "react";

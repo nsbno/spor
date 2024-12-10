@@ -1,10 +1,10 @@
+"use client";
 import {
   Box,
   BoxProps,
   ConditionalValue,
   PopoverAnchor,
   Portal,
-  RecipeVariantProps,
   useFieldContext,
   useSlotRecipe,
 } from "@chakra-ui/react";

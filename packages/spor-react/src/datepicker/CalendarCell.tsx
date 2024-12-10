@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, ConditionalValue, useSlotRecipe } from "@chakra-ui/react";
 import {
   CalendarDate,

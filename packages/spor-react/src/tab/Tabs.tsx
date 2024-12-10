@@ -1,3 +1,4 @@
+"use client";
 import {
   Tabs as ChakraTabs,
   TabsRootProps as ChakraTabsRootProps,

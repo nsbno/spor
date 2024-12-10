@@ -1,3 +1,4 @@
+"use client";
 import { Box, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
 import React, { PropsWithChildren } from "react";
 import { LineIcon } from "./LineIcon";

@@ -1,4 +1,5 @@
-import { Box, useRecipe } from "@chakra-ui/react";
+"use client";import { Box, useRecipe } from "@chakra-ui/react";
+
 import { CloseFill18Icon } from "@vygruppen/spor-icon-react";
 import React, { PropsWithChildren } from "react";
 import { IconButton, createTexts, useTranslation } from "..";

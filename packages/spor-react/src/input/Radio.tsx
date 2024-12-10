@@ -1,3 +1,4 @@
+"use client";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { RecipeVariantProps, BoxProps } from "@chakra-ui/react";
 import radioRecipe from "../theme/components/radio";

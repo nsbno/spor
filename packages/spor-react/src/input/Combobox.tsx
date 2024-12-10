@@ -1,3 +1,4 @@
+"use client";
 import React, { forwardRef, useEffect, useId, useRef, useState } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";

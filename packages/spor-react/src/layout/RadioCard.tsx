@@ -1,3 +1,4 @@
+"use client";
 import {
   RadioCard as ChakraRadioCard,
   RecipeVariantProps,

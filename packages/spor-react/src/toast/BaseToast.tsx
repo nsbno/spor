@@ -1,3 +1,4 @@
+"use client";
 import {
   Flex,
   useRecipe,

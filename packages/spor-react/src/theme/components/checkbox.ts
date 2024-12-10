@@ -1,4 +1,3 @@
-import { useColorModeValue } from "../..";
 import { baseBackground, baseText } from "../utils/base-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
@@ -14,7 +13,7 @@ export const checkboxSlotRecipe = defineSlotRecipe({
         borderColor: brandBackground("hover").backgroundColor,
       },
       _invalid: {
-        backgroundColor: useColorModeValue("white", "inherit"),
+        backgroundColor: "white",
         borderColor: "outline.error",
       },
       _checked: {

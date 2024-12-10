@@ -1,3 +1,4 @@
+"use client";
 import { Box, Flex, useSlotRecipe } from "@chakra-ui/react";
 import { DateValue, GregorianCalendar } from "@internationalized/date";
 import { DOMAttributes, FocusableElement } from "@react-types/shared";

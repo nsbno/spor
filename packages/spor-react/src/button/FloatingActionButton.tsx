@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren, useEffect } from "react";
 import { floatingActionButtonSlotRecipe } from "../theme/components/floating-action-button";

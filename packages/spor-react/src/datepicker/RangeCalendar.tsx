@@ -1,3 +1,4 @@
+"use client";
 import { Box, ConditionalValue } from "@chakra-ui/react";
 import { DateValue, createCalendar } from "@internationalized/date";
 import React, { useRef } from "react";

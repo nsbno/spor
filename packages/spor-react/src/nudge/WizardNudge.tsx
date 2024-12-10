@@ -1,3 +1,4 @@
+"use client";
 import { Box } from "@chakra-ui/react";
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React, { useState } from "react";

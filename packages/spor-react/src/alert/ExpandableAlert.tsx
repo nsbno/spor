@@ -1,3 +1,5 @@
+"use client";
+
 import { Accordion, Box, Flex, Icon, useSlotRecipe } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
 import { AlertIcon } from "./AlertIcon";

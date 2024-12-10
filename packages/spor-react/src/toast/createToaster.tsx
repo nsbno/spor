@@ -1,3 +1,4 @@
+"use client";
 import { createToaster as createChakraToast } from "@chakra-ui/react";
 import React, { forwardRef, useCallback } from "react";
 import { ActionToast } from "./ActionToast";

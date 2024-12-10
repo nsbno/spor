@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Center, createTexts, useTranslation, Flex, TextLink } from "..";
 import { ListItem, Link, useSlotRecipe, Box } from "@chakra-ui/react";

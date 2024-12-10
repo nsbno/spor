@@ -1,3 +1,4 @@
+"use client";
 import { Dialog as ChakraDialog, Portal } from "@chakra-ui/react";
 import * as React from "react";
 import { CloseButton } from "../button";

@@ -2,7 +2,6 @@ import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { useColorModeValue } from "../..";
 
 export const cardSelectSlotRecipe = defineSlotRecipe({
   slots: ["trigger", "card"],
@@ -22,10 +21,7 @@ export const cardSelectSlotRecipe = defineSlotRecipe({
       boxShadow: "md",
       padding: 3,
       ...baseText("default"),
-      backgroundColor: useColorModeValue(
-        "white",
-        `color-mix(in srgb, white 10%, var(--spor-colors-bg-default-dark))`,
-      ),
+      backgroundColor: `color-mix(in srgb, white 10%, var(--spor-colors-bg-default-dark))`,
     },
   },
   variants: {

@@ -1,3 +1,4 @@
+"use client";
 import { Box, useSlotRecipe } from "@chakra-ui/react";
 import React, { PropsWithChildren, RefObject, forwardRef, useRef } from "react";
 import { useDateSegment } from "react-aria";
@@ -29,7 +30,10 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
       ref as RefObject<HTMLDivElement>,
     );
 
-    const recipe = useSlotRecipe({ key: "datePicker", recipe: datePickerSlotRecipe });
+    const recipe = useSlotRecipe({
+      key: "datePicker",
+      recipe: datePickerSlotRecipe,
+    });
     const styles = recipe({
       isPlaceholder: segment.isPlaceholder,
       isEditable: segment.isEditable,

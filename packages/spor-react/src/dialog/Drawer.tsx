@@ -1,3 +1,4 @@
+"use client";
 import {
   Drawer as ChakraDrawer,
   RecipeVariantProps,

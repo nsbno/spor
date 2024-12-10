@@ -1,3 +1,4 @@
+"use client";
 import { endOfMonth, getWeeksInMonth } from "@internationalized/date";
 import React from "react";
 import { AriaCalendarGridProps, useCalendarGrid } from "react-aria";

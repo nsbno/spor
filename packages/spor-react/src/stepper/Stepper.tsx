@@ -1,3 +1,4 @@
+"use client";
 import { Flex, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
 import { ArrowLeftFill24Icon } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, PropsWithChildren } from "react";

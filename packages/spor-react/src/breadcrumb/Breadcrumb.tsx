@@ -1,3 +1,5 @@
+"use client";
+
 import React, { forwardRef, PropsWithChildren } from "react";
 import { BoxProps } from "../layout";
 import { breadcrumbRecipe } from "../theme/components/breadcrumb";

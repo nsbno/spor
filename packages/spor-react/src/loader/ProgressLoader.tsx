@@ -1,3 +1,4 @@
+"use client";
 import { Box, BoxProps, chakra, Text } from "@chakra-ui/react";
 import React, { forwardRef, useId, useRef } from "react";
 import { useProgressBar } from "react-aria";

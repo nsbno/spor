@@ -1,10 +1,9 @@
 import { defineRecipe } from "@chakra-ui/react";
-import { useColorModeValue } from "../..";
 
 export const separatorRecipe = defineRecipe({
   className: "spor-separator",
   base: {
-    borderColor: useColorModeValue("blackAlpha.300", "whiteAlpha.300"),
+    borderColor: "blackAlpha.300",
   },
   variants: {
     variant: {
@@ -12,7 +11,7 @@ export const separatorRecipe = defineRecipe({
         borderStyle: "solid",
       },
       dashed: {
-        backgroundImage: `repeating-linear-gradient(90deg, ${useColorModeValue("blackAlpha.300", "whiteAlpha.300")}, ${useColorModeValue("blackAlpha.300", "whiteAlpha.300")} 4px, transparent 4px, transparent 10px)`,
+        backgroundImage: `repeating-linear-gradient(90deg, blackAlpha.400, blackAlpha.300", 4px, transparent 4px, transparent 10px)`,
         backgroundPosition: "left bottom",
         backgroundRepeat: "repeat-x",
         backgroundSize: "100% 3px",

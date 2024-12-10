@@ -1,4 +1,9 @@
-import { createSystem, defineConfig, defineTokens } from "@chakra-ui/react";
+import {
+  createSystem,
+  defaultConfig,
+  defineConfig,
+  defineTokens,
+} from "@chakra-ui/react";
 import * as foundations from "./foundations";
 import tokens from "@vygruppen/spor-design-tokens";
 import { recipes, slotRecipes } from "./components";
@@ -16,7 +21,7 @@ const tokensConfig = defineTokens({
   },
 });
 
-export const config = defineConfig({
+export const system = defineConfig({
   theme: {
     breakpoints: {
       ...foundations.breakpoints,
@@ -26,7 +31,12 @@ export const config = defineConfig({
     },
     semanticTokens: {
       colors: {
-        ...(tokens.color.vyDigital as any),
+        danger: {
+          value: { base: "{colors.red}", _dark: "{colors.darkred}" },
+        },
+        success: {
+          value: { base: "{colors.green}", _dark: "{colors.darkgreen}" },
+        },
       },
       fonts: {
         ...foundations.fonts,
@@ -39,4 +49,4 @@ export const config = defineConfig({
   },
 });
 
-export const system = createSystem(config);
+export const sporSystem = createSystem(system, defaultConfig);

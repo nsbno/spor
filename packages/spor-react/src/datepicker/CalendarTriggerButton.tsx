@@ -1,5 +1,6 @@
+"use client";
+
 import {
-  Box,
   BoxProps,
   ConditionalValue,
   PopoverAnchor,

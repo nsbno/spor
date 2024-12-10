@@ -1,5 +1,4 @@
 import { defineRecipe } from "@chakra-ui/react";
-import { useColorModeValue } from "../..";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
@@ -58,10 +57,7 @@ export const linkRecipe = defineRecipe({
     {
       variant: "secondary",
       css: {
-        backgroundImage: `linear-gradient(${useColorModeValue(
-          "blackAlpha.400",
-          "whiteAlpha.400",
-        )}, ${useColorModeValue("blackAlpha.400", "whiteAlpha.400")})`,
+        backgroundImage: `linear-gradient("blackAlpha.400", "blackAlpha.400")`,
         ...baseText("default"),
         "&:focus, &:focus-visible, &:active, &:hover": {
           outline: "1px solid",

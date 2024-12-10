@@ -1,3 +1,4 @@
+"use client";
 import {
   CheckboxGroup as ChakraCheckboxGroup,
   CheckboxGroupProps as ChakraCheckboxGroupProps,

@@ -1,3 +1,4 @@
+"use client";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React, { PropsWithChildren } from "react";
 import { Box, Button, StepperVariantProps, Text, useColorModeValue } from "..";

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { AlertIcon } from "./AlertIcon";
 import { BaseAlert, BaseAlertProps } from "./BaseAlert";

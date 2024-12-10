@@ -1,3 +1,4 @@
+"use client";
 import { BoxProps, Center, useSlotRecipe } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { createTexts, MediaControllerVariantProps, useTranslation } from "..";

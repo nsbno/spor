@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { useColorModeValue } from "../..";
 
 export const fieldSlotRecipe = defineSlotRecipe({
   slots: ["root", "label", "requiredIndicator", "helperText", "errorText"],
@@ -24,11 +23,11 @@ export const fieldSlotRecipe = defineSlotRecipe({
     },
     requiredIndicator: {
       marginStart: 1,
-      color: useColorModeValue("brightRed", "lightRed"),
+      color: "brightRed",
     },
     helperText: {
       marginTop: 2,
-      color: useColorModeValue("dimGrey", "whiteAlpha.600"),
+      color: "dimGrey",
       lineHeight: "normal",
       fontSize: "sm",
     },

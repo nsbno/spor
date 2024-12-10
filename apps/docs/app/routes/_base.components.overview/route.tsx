@@ -84,29 +84,27 @@ export default function ComponentsPage() {
       <PortableText value={article.content} />
       <SimpleGrid columns={[1, 2, 3]} gap={3} marginTop={6}>
         {components.map((component) => (
-          <PressableCard
-            key={component._id}
-            as={Link}
-            to={`/components/${component.slug}`}
-            variant="floating"
-          >
-            {component.mainImage ? (
-              <Image
-                src={urlBuilder.image(component.mainImage).width(300).url()}
-                alt={component.title}
-                backgroundColor={backgroundColor}
-                padding="1em"
-                width="100%"
-                height="10em"
-                objectFit="cover"
-                objectPosition="center center"
-              />
-            ) : (
-              <Box height="10em" backgroundColor={backgroundColor} />
-            )}
-            <Heading as="h2" variant="sm" fontWeight="bold" padding={3}>
-              {component.title}
-            </Heading>
+          <PressableCard key={component._id} asChild variant="floating">
+            <Link to={`/components/${component.slug}`}>
+              {component.mainImage ? (
+                <Image
+                  src={urlBuilder.image(component.mainImage).width(300).url()}
+                  alt={component.title}
+                  backgroundColor={backgroundColor}
+                  padding="1em"
+                  width="100%"
+                  height="10em"
+                  objectFit="cover"
+                  objectPosition="center center"
+                />
+              ) : (
+                <Box height="10em" backgroundColor={backgroundColor} />
+              )}
+
+              <Heading as="h2" variant="sm" fontWeight="bold" padding={3}>
+                {component.title}
+              </Heading>
+            </Link>
           </PressableCard>
         ))}
       </SimpleGrid>

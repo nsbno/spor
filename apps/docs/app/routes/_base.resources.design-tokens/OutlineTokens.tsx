@@ -4,11 +4,11 @@ import {
   Code,
   Stack,
   Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
+  TableBody,
+  TableCell,
+  TableColumnHeader,
+  TableHeader,
+  TableRow,
   useColorModeValue,
 } from "@vygruppen/spor-react";
 import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
@@ -64,18 +64,18 @@ const OutlineTokensTable = (props: OutlineTokenTableProps) => {
   );
   return (
     <Box {...props}>
-      <Table variant="simple" colorScheme="grey">
-        <Thead>
-          <Tr>
-            <Th>Example</Th>
-            <Th>Value</Th>
-            <Th>Code</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
+      <Table variant="line" colorScheme="grey">
+        <TableHeader>
+          <TableRow>
+            <TableColumnHeader>Example</TableColumnHeader>
+            <TableColumnHeader>Value</TableColumnHeader>
+            <TableColumnHeader>Code</TableColumnHeader>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {outlineTokens.map((token) => (
-            <Tr key={token.key}>
-              <Td>
+            <TableRow key={token.key}>
+              <TableCell>
                 <Box
                   height={8}
                   width={8}
@@ -83,20 +83,20 @@ const OutlineTokensTable = (props: OutlineTokenTableProps) => {
                   borderRadius="xs"
                   borderColor={borderColor}
                 />
-              </Td>
-              <Td>
+              </TableCell>
+              <TableCell>
                 {token.value} / {token.key}
-              </Td>
-              <Td>
-                <Stack spacing={1}>
+              </TableCell>
+              <TableCell>
+                <Stack padding={1}>
                   <Box>
                     <Code>{tokenFormatter(`size.stroke.${token.key}`)}</Code>
                   </Box>
                 </Stack>
-              </Td>
-            </Tr>
+              </TableCell>
+            </TableRow>
           ))}
-        </Tbody>
+        </TableBody>
       </Table>
     </Box>
   );

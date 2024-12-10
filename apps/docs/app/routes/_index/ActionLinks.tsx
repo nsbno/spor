@@ -82,7 +82,7 @@ export function ActionLinks() {
         position="relative"
         top={["-62px", -8]}
         columns={[1, 2, 3]}
-        spacing={[3, 4]}
+        gap={[3, 4]}
       >
         {links.map((link) => (
           <ActionLinkCard to={link.to} key={link.to}>

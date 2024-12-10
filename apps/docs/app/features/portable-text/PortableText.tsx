@@ -13,7 +13,7 @@ import {
   Box,
   Button,
   Code,
-  Divider,
+  Separator,
   Flex,
   Heading,
   Image,
@@ -21,7 +21,6 @@ import {
   StaticCard,
   Text,
   TextLink,
-  useColorModeValue,
 } from "@vygruppen/spor-react";
 import deepmerge from "deepmerge";
 import React from "react";
@@ -39,7 +38,7 @@ const components: Partial<PortableTextReactComponents> = {
       const isInternal = value.href.startsWith("/");
       if (isInternal) {
         return (
-          <TextLink variant="primary" as={Link} to={value.href}>
+          <TextLink variant="primary" as={Link} href={value.href}>
             {children}
           </TextLink>
         );
@@ -97,7 +96,7 @@ const components: Partial<PortableTextReactComponents> = {
       return (
         <Text
           variant="sm"
-          sx={{
+          css={{
             "& + &": {
               marginTop: 3,
             },
@@ -113,12 +112,12 @@ const components: Partial<PortableTextReactComponents> = {
   },
   list: {
     bullet: ({ children }) => (
-      <Box as="ul" paddingLeft={3} marginTop={0} marginBottom={3} variant="sm">
+      <Box as="ul" paddingLeft={3} marginTop={0} marginBottom={3}>
         {children}
       </Box>
     ),
     number: ({ children }) => (
-      <Box as="ol" paddingLeft={3} marginTop={0} marginBottom={3} variant="sm">
+      <Box as="ol" paddingLeft={3} marginTop={0} marginBottom={3}>
         {children}
       </Box>
     ),
@@ -142,7 +141,7 @@ const components: Partial<PortableTextReactComponents> = {
         </Box>
       );
     },
-    divider: () => <Divider height="1px" marginY={8} />,
+    divider: () => <Separator height="1px" marginY={8} />,
     grid: ({ value }) => (
       <SimpleGrid
         columns={[1, 1, 2, value.maxNumberOfColumns]}
@@ -165,7 +164,7 @@ const components: Partial<PortableTextReactComponents> = {
         "flex-start";
       return (
         <Flex justifyContent="center" alignItems={alignItems}>
-          <Box sx={{ "& > :first-of-type": { marginTop: 0 } }}>
+          <Box css={{ "& > :first-of-type": { marginTop: 0 } }}>
             <PortableText value={value.content} />
           </Box>
         </Flex>
@@ -209,7 +208,6 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     staticCodeBlock: ({ value }) => {
-      const color = useColorModeValue("text.detail.light", "text.detail.dark");
       return (
         <Box marginBottom={3}>
           <CodeBlock
@@ -218,7 +216,12 @@ const components: Partial<PortableTextReactComponents> = {
             code={value.code.code}
           />
           {value.caption && (
-            <Text variant="xs" textAlign="center" color={color} marginTop={1}>
+            <Text
+              variant="xs"
+              textAlign="center"
+              color={"text.detail"}
+              marginTop={1}
+            >
               {value.caption}
             </Text>
           )}
@@ -270,19 +273,11 @@ const components: Partial<PortableTextReactComponents> = {
       </Box>
     ),
     tipsPanel: ({ value }) => {
-      const textColor = useColorModeValue(
-        "text.default.light",
-        "text.default.dark",
-      );
-      const backgroundColor = useColorModeValue(
-        "bg.tertiary.light",
-        "bg.tertiary.dark",
-      );
       return (
         <Box
           as="article"
-          backgroundColor={backgroundColor}
-          color={textColor}
+          backgroundColor="bg.tertiary"
+          color="text.default"
           marginTop={3}
           padding={4}
           borderRadius="md"
@@ -293,7 +288,7 @@ const components: Partial<PortableTextReactComponents> = {
               {value.title}
             </Heading>
           </Flex>
-          <Box __css={{ " > p:first-of-type": { mt: 1 } }}>
+          <Box css={{ " > p:first-of-type": { mt: 1 } }}>
             <PortableText value={value.content} />
           </Box>
         </Box>
@@ -309,7 +304,7 @@ const components: Partial<PortableTextReactComponents> = {
         {value.examples.map((example: any) => (
           <StaticCard
             key={example._key}
-            colorScheme={
+            colorPalette={
               example.weight === "positive"
                 ? "green"
                 : example.weight === "negative"
@@ -336,7 +331,10 @@ const components: Partial<PortableTextReactComponents> = {
               </Heading>
             </Flex>
 
-            <Box sx={{ "> :last-child": { marginBottom: 0 } }} marginBottom={2}>
+            <Box
+              css={{ "> :last-child": { marginBottom: 0 } }}
+              marginBottom={2}
+            >
               <PortableText value={example.content} />
             </Box>
             {example.image && (

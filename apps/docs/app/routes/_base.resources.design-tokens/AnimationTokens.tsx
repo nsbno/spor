@@ -5,12 +5,12 @@ import {
   Code,
   Stack,
   Table,
-  Tbody,
-  Td,
+  TableBody,
+  TableCell,
+  TableColumnHeader,
+  TableHeader,
+  TableRow,
   Text,
-  Th,
-  Thead,
-  Tr,
 } from "@vygruppen/spor-react";
 import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
@@ -42,29 +42,29 @@ const AnimationTokensTable = (props: AnimationTokenTableProps) => {
   const tokenFormatter = useTokenFormatter();
   return (
     <Box {...props}>
-      <Table variant="simple" colorScheme="grey">
-        <Thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Value</Th>
-            <Th>Code</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {Object.entries(tokens.time.transition).map(([key, token]) => (
-            <Tr key={key}>
-              <Td>{key}</Td>
-              <Td>{token.value}</Td>
-              <Td>
-                <Stack spacing={1}>
+      <Table variant="line" colorPalette="grey">
+        <TableHeader>
+          <TableRow>
+            <TableColumnHeader>Name</TableColumnHeader>
+            <TableColumnHeader>Value</TableColumnHeader>
+            <TableColumnHeader>Code</TableColumnHeader>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {Object.entries(tokens.time.transition).map(([key, token]: any) => (
+            <TableRow key={key}>
+              <TableCell>{key}</TableCell>
+              <TableCell>{token.value}</TableCell>
+              <TableCell>
+                <Stack padding={1}>
                   <Box>
                     <Code>{tokenFormatter(`time.transition.${key}`)}</Code>
                   </Box>
                 </Stack>
-              </Td>
-            </Tr>
+              </TableCell>
+            </TableRow>
           ))}
-        </Tbody>
+        </TableBody>
       </Table>
     </Box>
   );

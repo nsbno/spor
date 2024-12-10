@@ -1,25 +1,19 @@
-import { Link } from "@remix-run/react";
+import { Link, useNavigate } from "@remix-run/react";
 import { ArrowRightFill30Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
   Button,
   Container,
-  DarkMode,
   Flex,
   Heading,
   Image,
   Text,
-  useColorModeValue,
 } from "@vygruppen/spor-react";
 
 export function HeroSection() {
-  const backgroundColor = useColorModeValue(
-    "surface.tertiary.light",
-    "surface.tertiary.dark",
-  );
-
+  const navigate = useNavigate();
   return (
-    <Flex backgroundColor={backgroundColor} minHeight="500px">
+    <Flex backgroundColor={"surface.tertiary"} minHeight="500px">
       <Container maxWidth="container.lg" marginTop={[0, 0, 8]}>
         <Flex
           flexDirection={["column-reverse", null, "row"]}
@@ -38,20 +32,19 @@ export function HeroSection() {
               Spor is Vy's design system for digital products.
             </Text>
             <Box marginBottom={[10, null, 0]}>
-              <DarkMode>
-                <Button
-                  variant="primary"
-                  display={["flex", "inline-flex"]}
-                  as={Link}
-                  size="lg"
-                  to="/guides/introduction"
-                  rightIcon={<ArrowRightFill30Icon />}
-                  marginTop={4}
-                  width={["100%", null, "fit-content"]}
-                >
-                  Get started
-                </Button>
-              </DarkMode>
+              <Button
+                variant="primary"
+                display={["flex", "inline-flex"]}
+                className="dark"
+                as={Link}
+                size="lg"
+                onClick={() => navigate("/guides/introduction")}
+                rightIcon={<ArrowRightFill30Icon />}
+                marginTop={4}
+                width={["100%", null, "fit-content"]}
+              >
+                Get started
+              </Button>
             </Box>
           </Flex>
           <Flex flex={["auto", null, "45%"]}>

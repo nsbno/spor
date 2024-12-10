@@ -1,12 +1,12 @@
 import { useLocation, useNavigate } from "@remix-run/react";
 import {
   Box,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
+  DialogBackdrop,
+  DialogBody,
+  DialogCloseTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogRoot,
 } from "@vygruppen/spor-react";
 import { matchSorter } from "match-sorter";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -69,18 +69,18 @@ export const SiteSearchModal = ({
     }
   };
   return (
-    <Modal
-      isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(!isModalOpen)}
-      closeOnOverlayClick={true}
-      closeOnEsc={true}
+    <DialogRoot
+      open={isModalOpen}
+      onExitComplete={() => setIsModalOpen(!isModalOpen)}
+      closeOnInteractOutside={true}
+      closeOnEscape={true}
       size={"xl"}
     >
-      <ModalOverlay />
-      <ModalContent>
-        <ModalCloseButton />
-        <ModalHeader>Search docs</ModalHeader>
-        <ModalBody>
+      <DialogBackdrop />
+      <DialogContent>
+        <DialogCloseTrigger />
+        <DialogHeader>Search docs</DialogHeader>
+        <DialogBody>
           <Box as="form" onSubmit={handleSubmit}>
             <GlobalSearchInput
               value={query}
@@ -97,8 +97,8 @@ export const SiteSearchModal = ({
               />
             )}
           </Box>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
+        </DialogBody>
+      </DialogContent>
+    </DialogRoot>
   );
 };

@@ -1,43 +1,18 @@
-import { defineTokens } from "@chakra-ui/react"
+import { defineTokens } from "@chakra-ui/react";
+import tokens from "@vygruppen/spor-design-tokens";
 
 export const zIndex = defineTokens.zIndex({
-  hide: {
-    value: -1,
-  },
-  base: {
-    value: 0,
-  },
-  docked: {
-    value: 10,
-  },
-  dropdown: {
-    value: 1000,
-  },
-  sticky: {
-    value: 1100,
-  },
-  banner: {
-    value: 1200,
-  },
-  overlay: {
-    value: 1300,
-  },
-  modal: {
-    value: 1400,
-  },
-  popover: {
-    value: 1500,
-  },
-  skipNav: {
-    value: 1600,
-  },
-  toast: {
-    value: 1700,
-  },
-  tooltip: {
-    value: 1800,
-  },
-  max: {
-    value: 2147483647,
-  },
-})
+  hide: { value: tokens.depth["z-index"].hide },
+  auto: { value: "auto" },
+  base: { value: tokens.depth["z-index"].base },
+  docked: { value: tokens.depth["z-index"].docked },
+  dropdown: { value: tokens.depth["z-index"].dropdown },
+  sticky: { value: tokens.depth["z-index"].sticky },
+  banner: { value: tokens.depth["z-index"].banner },
+  overlay: { value: tokens.depth["z-index"].overlay },
+  modal: { value: tokens.depth["z-index"].modal },
+  popover: { value: tokens.depth["z-index"].popover },
+  skipLink: { value: tokens.depth["z-index"].skipLink },
+  toast: { value: tokens.depth["z-index"].toast },
+  tooltip: { value: tokens.depth["z-index"].tooltip },
+});

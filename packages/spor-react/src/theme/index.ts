@@ -6,7 +6,7 @@ import {
 } from "@chakra-ui/react";
 import { animationStyles } from "./tokens/animation-styles";
 import { breakpoints } from "./tokens/breakpoints";
-import { globalCss } from "./global-css";
+import { globalCss } from "./tokens/global-css";
 import { keyframes } from "./tokens/keyframes";
 import { layerStyles } from "./tokens/layer-styles";
 import { recipes } from "./recipes";
@@ -14,8 +14,8 @@ import { semanticTokens } from "./semantic-tokens";
 import { slotRecipes } from "./slot-recipes";
 import { textStyles } from "./tokens/text-styles";
 import { tokens } from "./tokens";
-import { config } from "./foundations";
 import { brandTheme } from "./brand";
+import { config } from "./tokens/config";
 
 const themeConfig = defineConfig({
   ...config,

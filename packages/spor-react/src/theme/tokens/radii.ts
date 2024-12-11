@@ -1,37 +1,13 @@
-import { defineTokens } from "@chakra-ui/react"
+import { defineTokens } from "@chakra-ui/react";
+import tokens from "@vygruppen/spor-design-tokens";
 
 export const radii = defineTokens.radii({
-  none: {
-    value: "0",
-  },
-  "2xs": {
-    value: "0.0625rem",
-  },
-  xs: {
-    value: "0.125rem",
-  },
-  sm: {
-    value: "0.25rem",
-  },
-  md: {
-    value: "0.375rem",
-  },
-  lg: {
-    value: "0.5rem",
-  },
-  xl: {
-    value: "0.75rem",
-  },
-  "2xl": {
-    value: "1rem",
-  },
-  "3xl": {
-    value: "1.5rem",
-  },
-  "4xl": {
-    value: "2rem",
-  },
-  full: {
-    value: "9999px",
-  },
-})
+  none: { value: tokens.size["border-radius"].none },
+  xs: { value: tokens.size["border-radius"].xs },
+  sm: { value: tokens.size["border-radius"].sm },
+  md: { value: tokens.size["border-radius"].md },
+  lg: { value: tokens.size["border-radius"].lg },
+  xl: { value: tokens.size["border-radius"].xl },
+  "2xl": { value: tokens.size["border-radius"]["2xl"] },
+  round: { value: "50%" },
+});

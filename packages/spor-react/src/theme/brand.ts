@@ -1,7 +1,4 @@
 import tokens from "@vygruppen/spor-design-tokens";
-import * as components from "./components";
-import * as foundations from "./foundations";
-import { defaultSystem } from "@chakra-ui/react";
 
 export enum Brand {
   VyDigital = "VyDigital",
@@ -15,12 +12,12 @@ export const brandTheme = {
     colors: {
       bg: {
         default: {
-          dark: foundations.colors.darkGrey,
+          dark: "darkGrey",
         },
       },
       surface: {
         default: {
-          dark: foundations.colors.darkGrey,
+          dark: "darkGrey",
         },
       },
     },

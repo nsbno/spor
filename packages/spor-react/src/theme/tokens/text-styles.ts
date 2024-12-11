@@ -1,83 +1,89 @@
-import { defineTextStyles } from "@chakra-ui/react"
+import { defineTextStyles } from "@chakra-ui/react";
+import tokens from "@vygruppen/spor-design-tokens";
 
 export const textStyles = defineTextStyles({
-  "2xs": {
+  "2xl": {
     value: {
-      fontSize: "2xs",
-      lineHeight: "0.75rem",
+      fontSize: [
+        tokens.font.style.xxl["font-size"].mobile,
+        null,
+        null,
+        tokens.font.style.xxl["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style.xxl["font-family"],
+      lineHeight: tokens.font.style.xxl["line-height"],
     },
   },
-  xs: {
+  "xl-display": {
     value: {
-      fontSize: "xs",
-      lineHeight: "1rem",
+      fontSize: [
+        tokens.font.style["xl-display"]["font-size"].mobile,
+        null,
+        null,
+        tokens.font.style["xl-display"]["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style["xl-display"]["font-family"],
+      lineHeight: tokens.font.style["xl-display"]["line-height"],
     },
   },
-  sm: {
+  "xl-sans": {
     value: {
-      fontSize: "sm",
-      lineHeight: "1.25rem",
-    },
-  },
-  md: {
-    value: {
-      fontSize: "md",
-      lineHeight: "1.5rem",
+      fontSize: [
+        tokens.font.style["xl-sans"]["font-size"].mobile,
+        null,
+        null,
+        tokens.font.style["xl-sans"]["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style["xl-sans"]["font-family"],
+      lineHeight: tokens.font.style["xl-sans"]["line-height"],
     },
   },
   lg: {
     value: {
-      fontSize: "lg",
-      lineHeight: "1.75rem",
+      fontSize: [
+        tokens.font.style.lg["font-size"].mobile,
+        null,
+        null,
+        tokens.font.style.lg["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style.lg["font-family"],
+      lineHeight: tokens.font.style.lg["line-height"],
     },
   },
-  xl: {
+  md: {
     value: {
-      fontSize: "xl",
-      lineHeight: "1.875rem",
+      fontSize: [
+        tokens.font.style.md["font-size"].mobile,
+        null,
+        null,
+        tokens.font.style.md["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style.md["font-family"],
+      lineHeight: tokens.font.style.md["line-height"],
     },
   },
-  "2xl": {
+  sm: {
     value: {
-      fontSize: "2xl",
-      lineHeight: "2rem",
+      fontSize: [
+        tokens.font.style.sm["font-size"].mobile,
+        null,
+        null,
+        tokens.font.style.sm["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style.sm["font-family"],
+      lineHeight: tokens.font.style.sm["line-height"],
     },
   },
-  "3xl": {
+  xs: {
     value: {
-      fontSize: "3xl",
-      lineHeight: "2.375rem",
+      fontSize: [
+        tokens.font.style.xs["font-size"].mobile,
+        null,
+        null,
+        tokens.font.style.xs["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style.xs["font-family"],
+      lineHeight: tokens.font.style.xs["line-height"],
     },
   },
-  "4xl": {
-    value: {
-      fontSize: "4xl",
-      lineHeight: "2.75rem",
-      letterSpacing: "-0.025em",
-    },
-  },
-  "5xl": {
-    value: {
-      fontSize: "5xl",
-      lineHeight: "3.75rem",
-      letterSpacing: "-0.025em",
-    },
-  },
-  "6xl": {
-    value: {
-      fontSize: "6xl",
-      lineHeight: "4.5rem",
-      letterSpacing: "-0.025em",
-    },
-  },
-  "7xl": {
-    value: {
-      fontSize: "7xl",
-      lineHeight: "5.75rem",
-      letterSpacing: "-0.025em",
-    },
-  },
-  none: {
-    value: {},
-  },
-})
+});

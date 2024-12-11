@@ -14,10 +14,10 @@ import React, { PropsWithChildren } from "react";
 import { AlertIcon } from "./AlertIcon";
 import { BaseAlert, BaseAlertProps } from "./BaseAlert";
 import { createTexts, useTranslation } from "../i18n";
-import { serviceAlertSlotRecipe } from "../theme/components/alert-service";
+import { alertServiceSlotRecipe } from "../theme/slot-recipes/alert-service";
 
 type ServiceAlertVariantProps = RecipeVariantProps<
-  typeof serviceAlertSlotRecipe
+  typeof alertServiceSlotRecipe
 >;
 
 type ServiceAlertProps = BaseAlertProps &

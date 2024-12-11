@@ -9,7 +9,7 @@ import type {
 import { Select as ChakraSelect, Portal } from "@chakra-ui/react";
 import { CloseButton } from "../button/CloseButton";
 import * as React from "react";
-import { selectSlotRecipe } from "../theme/components/select";
+import { selectSlotRecipe } from "../theme/slot-recipes/select";
 
 type SelectVariantProps = RecipeVariantProps<typeof selectSlotRecipe>;
 

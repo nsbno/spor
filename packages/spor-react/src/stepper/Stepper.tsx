@@ -5,7 +5,7 @@ import React, { forwardRef, PropsWithChildren } from "react";
 import { StepperStep } from ".";
 import { Box, IconButton, Text, createTexts, useTranslation } from "..";
 import { StepperProvider } from "./StepperContext";
-import { stepperSlotRecipe } from "../theme/components/stepper";
+import { stepperSlotRecipe } from "../theme/slot-recipes/stepper";
 
 export type StepperVariantProps = RecipeVariantProps<typeof stepperSlotRecipe>;
 

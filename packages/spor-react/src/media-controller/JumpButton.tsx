@@ -11,7 +11,7 @@ import {
   Backward15MediaControllerFill30Icon,
   Forward15MediaControllerFill30Icon,
 } from "@vygruppen/spor-icon-react";
-import { mediaControllerSlotRecipe } from "../theme/components/media-controller-button";
+import { mediaControllerSlotRecipe } from "../theme/slot-recipes/media-controller-button";
 
 export type MediaControllerVariantProps = RecipeVariantProps<
   typeof mediaControllerSlotRecipe

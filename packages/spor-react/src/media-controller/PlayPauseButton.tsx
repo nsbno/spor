@@ -42,7 +42,7 @@ export const PlayPauseButton = forwardRef<
     <Center
       ref={ref}
       as="button"
-      css={styles.container}
+      css={styles.root}
       aria-label={playing ? t(texts.pause) : t(texts.play)}
       disabled={disabled}
       {...props}

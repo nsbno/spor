@@ -4,7 +4,7 @@ import React, { PropsWithChildren, RefObject, forwardRef, useRef } from "react";
 import { useDateSegment } from "react-aria";
 import { DateFieldState, DateSegment } from "react-stately";
 import { DatePickerVariantProps } from "./DatePicker";
-import { datePickerSlotRecipe } from "../theme/components/datepicker";
+import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 
 type DateTimeSegmentProps = PropsWithChildren<DatePickerVariantProps> & {
   segment: DateSegment;

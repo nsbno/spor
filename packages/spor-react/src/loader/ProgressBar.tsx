@@ -7,7 +7,7 @@ import {
   RecipeVariantProps,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
-import { progressBarRecipe } from "../theme/components/progress-bar";
+import { progressBarRecipe } from "../theme/slot-recipes/progress-bar";
 import { useTranslation } from "react-i18next";
 import { useRotatingLabel } from "./useRotatingLabel";
 import { createTexts } from "../i18n";

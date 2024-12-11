@@ -13,7 +13,7 @@ import {
 import React, { forwardRef, PropsWithChildren } from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
-import { buttonRecipe } from "../theme/components/button";
+import { buttonRecipe } from "../theme/recipes/button";
 
 type ButtonVariantProps = RecipeVariantProps<typeof buttonRecipe>;
 

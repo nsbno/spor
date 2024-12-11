@@ -28,7 +28,7 @@ import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
 import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
-import { datePickerSlotRecipe } from "../theme/components/datepicker";
+import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import {
   PopoverArrow,
   PopoverBody,

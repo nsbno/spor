@@ -5,7 +5,7 @@ import {
   Portal,
 } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
-import { drawerSlotRecipe } from "../theme/components/drawer";
+import { drawerSlotRecipe } from "../theme/slot-recipes/drawer";
 import { CloseButton } from "../button";
 
 type DrawerVariantProps = RecipeVariantProps<typeof drawerSlotRecipe>;

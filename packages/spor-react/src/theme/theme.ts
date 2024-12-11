@@ -3,6 +3,8 @@ import {
   defaultConfig,
   defineConfig,
   defineTokens,
+  SystemConfig,
+  SystemContext,
 } from "@chakra-ui/react";
 import * as foundations from "./foundations";
 import tokens from "@vygruppen/spor-design-tokens";
@@ -21,7 +23,7 @@ const tokensConfig = defineTokens({
   },
 });
 
-export const system = defineConfig({
+export const system: SystemConfig = defineConfig({
   theme: {
     breakpoints: {
       ...foundations.breakpoints,
@@ -49,4 +51,4 @@ export const system = defineConfig({
   },
 });
 
-export const sporSystem = createSystem(system, defaultConfig);
+export default createSystem(system, defaultConfig);

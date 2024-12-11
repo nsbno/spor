@@ -6,7 +6,7 @@ import {
   RecipeVariantProps,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { popoverSlotRecipe } from "../theme/components/popover";
+import { popoverSlotRecipe } from "../theme/slot-recipes/popover";
 import { PropsWithChildren } from "react";
 import { CloseButton } from "@/button";
 

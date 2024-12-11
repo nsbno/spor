@@ -6,7 +6,7 @@ import {
   TextareaProps as ChakraTextareaProps,
 } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
-import { textareaRecipe } from "../theme/components/textarea";
+import { textareaRecipe } from "../theme/recipes/textarea";
 
 type TextareaVariants = RecipeVariantProps<typeof textareaRecipe>;
 export type TextareaProps = Exclude<

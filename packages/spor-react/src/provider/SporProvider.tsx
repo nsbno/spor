@@ -4,7 +4,7 @@ import deepmerge from "deepmerge";
 import React from "react";
 import { Language, LanguageProvider } from "..";
 import { Brand, brandTheme, fontFaces } from "../theme/brand";
-import { sporSystem } from "../theme/theme";
+import { system as sporSystem } from "../theme";
 import {
   ChakraProvider,
   ChakraProviderProps,
@@ -68,7 +68,7 @@ export const SporProvider = ({
 
   return (
     <LanguageProvider language={language}>
-      <ChakraProvider {...props} value={theme}>
+      <ChakraProvider {...props} value={sporSystem}>
         <ColorModeProvider>
           <Global styles={fontFaces} />
           {children}

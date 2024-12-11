@@ -6,7 +6,7 @@ import {
   type RecipeVariantProps,
 } from "@chakra-ui/react";
 import React, { forwardRef, useId, PropsWithChildren } from "react";
-import inputSlotRecipe from "../theme/components/input";
+import { inputSlotRecipe } from "../theme/slot-recipes/input";
 import { Field } from "./Field";
 import { InputGroup } from "./InputGroup";
 

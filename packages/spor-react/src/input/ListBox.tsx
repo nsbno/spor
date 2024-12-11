@@ -24,7 +24,7 @@ import {
   useOption,
 } from "react-aria";
 import { type ListState, type SelectState } from "react-stately";
-import { listBoxSlotRecipe } from "../theme/components/listbox";
+import { listBoxSlotRecipe } from "../theme/slot-recipes/listbox";
 import { useColorModeValue } from "../color-mode";
 
 export { Item, Section } from "react-stately";
@@ -96,7 +96,6 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
         css={styles.root}
         aria-busy={loading}
         maxWidth={maxWidth}
-        variant={variant}
       >
         {state.collection.size === 0 && props.emptyContent}
         {Array.from(state.collection).map((item) =>

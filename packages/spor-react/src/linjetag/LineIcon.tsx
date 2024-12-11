@@ -8,7 +8,7 @@ import {
 import React, { forwardRef, PropsWithChildren } from "react";
 import { getCorrectIcon } from "./icons";
 import { CustomVariantProps, TagProps } from "./types";
-import { lineIconSlotRecipe } from "../theme/components/line-icon";
+import { lineIconSlotRecipe } from "../theme/slot-recipes/line-icon";
 
 type LineIconVariantProps = RecipeVariantProps<typeof lineIconSlotRecipe>;
 

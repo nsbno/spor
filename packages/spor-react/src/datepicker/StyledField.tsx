@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { DatePickerVariantProps } from "./DatePicker";
-import { datePickerSlotRecipe } from "../theme/components/datepicker";
+import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 
 type StyledFieldProps = BoxProps &
   PropsWithChildren<DatePickerVariantProps> & {

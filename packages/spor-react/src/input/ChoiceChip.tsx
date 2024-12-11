@@ -12,7 +12,7 @@ import React, {
   PropsWithChildren,
   useId,
 } from "react";
-import { choiceChipSlotRecipe } from "../theme/components/choice-chip";
+import { choiceChipSlotRecipe } from "../theme/slot-recipes/choice-chip";
 
 type ChoiceChipVariantProps = RecipeVariantProps<typeof choiceChipSlotRecipe>;
 

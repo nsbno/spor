@@ -7,7 +7,7 @@ import {
   RecipeVariantProps,
   useRecipe,
 } from "@chakra-ui/react";
-import { staticCardRecipe } from "../theme/components/static-card";
+import { staticCardRecipe } from "../theme/recipes/static-card";
 
 type StaticCardVariants = RecipeVariantProps<typeof staticCardRecipe>;
 

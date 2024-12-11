@@ -6,7 +6,7 @@ import {
   useRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
-import { codeRecipie } from "../theme/components/code";
+import { codeRecipie } from "../theme/recipes/code";
 
 type CodeVariantProps = RecipeVariantProps<typeof codeRecipie>;
 

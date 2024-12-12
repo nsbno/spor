@@ -8,8 +8,8 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
   return (
     <Flex
       flexDirection="column"
-      minHeight="100vh"
-      backgroundColor={"bg.default"}
+      minHeight="vh"
+      backgroundColor="bg"
       fontFamily="Vy Sans"
     >
       <SiteHeader />

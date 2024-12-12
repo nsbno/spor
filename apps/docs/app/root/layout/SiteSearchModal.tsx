@@ -14,13 +14,13 @@ import { GlobalSearchInput, SearchResults } from "./components";
 import { useMenu } from "~/utils/useMenu";
 
 type SiteSearchModalProps = {
-  isModalOpen: boolean;
-  setIsModalOpen: (value: boolean) => void;
+  searchDialogOpen: boolean;
+  setSearchDialogOpen: (value: boolean) => void;
 };
 
 export const SiteSearchModal = ({
-  isModalOpen,
-  setIsModalOpen,
+  searchDialogOpen,
+  setSearchDialogOpen,
 }: SiteSearchModalProps) => {
   const menu = useMenu("side-menu");
   const [query, setQuery] = useState("");
@@ -70,8 +70,8 @@ export const SiteSearchModal = ({
   };
   return (
     <DialogRoot
-      open={isModalOpen}
-      onExitComplete={() => setIsModalOpen(!isModalOpen)}
+      open={searchDialogOpen}
+      onExitComplete={() => setSearchDialogOpen(!searchDialogOpen)}
       closeOnInteractOutside={true}
       closeOnEscape={true}
       size={"xl"}
@@ -93,7 +93,7 @@ export const SiteSearchModal = ({
                 ref={focusableRef}
                 hits={hits}
                 query={query}
-                onResultClick={() => setIsModalOpen(false)}
+                onResultClick={() => setSearchDialogOpen(false)}
               />
             )}
           </Box>

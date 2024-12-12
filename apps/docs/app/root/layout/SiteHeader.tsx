@@ -17,7 +17,6 @@ import {
   Stack,
   Text,
   VyLogo,
-  useColorModeValue,
   useDisclosure,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
@@ -27,18 +26,13 @@ import { SiteSettings } from "./SiteSettings";
 
 /** The site header shown at the top of every part of our site */
 export const SiteHeader = () => {
-  const backgroundColor = useColorModeValue(
-    "darkTeal",
-    "surface.tertiary.dark",
-  );
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchDialogOpen, setSearchDialogOpen] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
-        setIsModalOpen(true);
+        setSearchDialogOpen(true);
       }
     };
 
@@ -56,7 +50,7 @@ export const SiteHeader = () => {
       alignItems="center"
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
-      backgroundColor={"surface.tertiary._dark"}
+      backgroundColor={"surface.tertiary"}
       css={{
         position: "sticky",
         top: "0",
@@ -64,22 +58,27 @@ export const SiteHeader = () => {
       }}
       gap={1}
     >
-      <Box asChild marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
+      <Box marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
         <Link to="/" aria-label="Go to the front page">
           <VyLogo
             width="auto"
             height={["30px", "36px", null, "48px"]}
             aria-label="Vy"
+            className="dark"
           />
         </Link>
       </Box>
 
-      <DesktopNavigation onSearchClick={() => setIsModalOpen(!isModalOpen)} />
-      <MobileNavigation onSearchClick={() => setIsModalOpen(!isModalOpen)} />
-      {isModalOpen && (
+      <DesktopNavigation
+        onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
+      />
+      <MobileNavigation
+        onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
+      />
+      {searchDialogOpen && (
         <SiteSearchModal
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
+          searchDialogOpen={searchDialogOpen}
+          setSearchDialogOpen={setSearchDialogOpen}
         />
       )}
     </Flex>
@@ -102,7 +101,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
     <>
       <Flex
         display={["none", null, null, "flex"]}
-        maxWidth={[null, null, null, "container.lg", "container.xl"]}
+        maxWidth={[null, null, null, "breakpoints.lg", "breakpoints.xl"]}
         marginX="auto"
         paddingX={[3, null, 7, 5, 9]}
       >

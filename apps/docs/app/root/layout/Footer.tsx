@@ -22,7 +22,11 @@ export const Footer = () => {
       borderColor={borderColor}
     >
       <Link to="/" aria-label="Go to the front page">
-        <VyLogo aria-hidden="true" />
+        <VyLogo
+          aria-hidden="true"
+          width="auto"
+          height={["30px", "36px", null, "48px"]}
+        />
       </Link>
       <Flex
         flexDirection="row"

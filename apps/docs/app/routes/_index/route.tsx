@@ -5,7 +5,7 @@ import { HeroSection } from "~/routes/_index/HeroSection";
 
 export default function Index() {
   return (
-    <Box backgroundColor={"bg.default"} flex="1">
+    <Box backgroundColor="bg" flex="1">
       <Box as="main" id="content">
         <HeroSection />
         <ActionLinks />

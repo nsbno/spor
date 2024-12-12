@@ -5,6 +5,7 @@ import {
   chakra,
   ConditionalValue,
   Flex,
+  Icon,
   RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";

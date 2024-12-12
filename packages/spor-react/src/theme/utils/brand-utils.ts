@@ -15,7 +15,7 @@ export function brandBackground(state: BrandBackgroundState) {
     case "default":
     default:
       return {
-        backgroundColor: "brand.surface.default",
+        backgroundColor: "brand.surface",
       };
   }
 }

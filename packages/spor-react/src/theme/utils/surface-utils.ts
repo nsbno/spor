@@ -3,7 +3,7 @@ export const surface = (surface: Surface) => {
   switch (surface) {
     case "default":
       return {
-        backgroundColor: "surface.default",
+        backgroundColor: "surface",
       };
     case "secondary":
       return {

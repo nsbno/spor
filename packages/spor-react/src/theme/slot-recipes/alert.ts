@@ -1,5 +1,7 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 
+
+
 export const alertSlotRecipe = defineSlotRecipe({
   slots: ["container", "icon", "closeButton"],
   className: "spor-alert",

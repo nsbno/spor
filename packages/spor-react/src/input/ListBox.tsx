@@ -102,7 +102,7 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
           item.type === "section" ? (
             <ListBoxSection key={item.key} section={item} state={state} />
           ) : (
-            <Option key={item.key} item={item} state={state} />
+            <ListItem key={item.key} />
           ),
         )}
         {children}
@@ -221,28 +221,30 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
   const isFirstSection = section.key === state.collection.getFirstKey();
   const titleColor = useColorModeValue("darkGrey", "white");
   return (
-    <ListItem {...itemProps}>
-      {section.rendered && (
-        <Box
-          fontSize="mobile.xs"
-          color={titleColor}
-          paddingX={3}
-          paddingY={1}
-          marginTop={isFirstSection ? 0 : 3}
-          textTransform="uppercase"
-          fontWeight="bold"
-          {...headingProps}
-        >
-          {section.rendered}
-        </Box>
-      )}
-      <ListRoot {...groupProps} padding={0} listStyleType="none">
-        {Array.from(state.collection.getChildren(section.key)).map(
-          (item: any) => (
-            <Option key={item.key} item={item} state={state} />
-          ),
+    <ListRoot>
+      <ListItem {...itemProps}>
+        {section.rendered && (
+          <Box
+            fontSize="mobile.xs"
+            color={titleColor}
+            paddingX={3}
+            paddingY={1}
+            marginTop={isFirstSection ? 0 : 3}
+            textTransform="uppercase"
+            fontWeight="bold"
+            {...headingProps}
+          >
+            {section.rendered}
+          </Box>
         )}
-      </ListRoot>
-    </ListItem>
+        <ListRoot {...groupProps} padding={0} listStyleType="none">
+          {Array.from(state.collection.getChildren(section.key)).map(
+            (item: any) => (
+              <ListItem key={item.key}  />
+            ),
+          )}
+        </ListRoot>
+      </ListItem>
+    </ListRoot>
   );
 }

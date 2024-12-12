@@ -3,3 +3,4 @@ declare module "@chakra-ui/system/dist/system.types" {
 }
 
 declare module "@vygruppen/spor-design-tokens";
+declare module "@vygruppen/spor-react";

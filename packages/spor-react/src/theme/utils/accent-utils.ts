@@ -20,7 +20,7 @@ export function accentBackground(state: AccentBackgroundState) {
       };
     default:
       return {
-        backgroundColor: "accent.surface.default",
+        backgroundColor: "accent.surface",
       };
   }
 }

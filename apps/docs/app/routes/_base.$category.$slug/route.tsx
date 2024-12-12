@@ -258,7 +258,14 @@ type ComponentSectionsProps = {
 };
 const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
   return (
-    <Tabs variant="accent" size="md" marginTop={4} fitted lazyMount key={id}>
+    <Tabs
+      variant="accent"
+      size="md"
+      marginTop={4}
+      fitted={true}
+      lazyMount
+      key={id}
+    >
       <TabsList>
         {sections.map((section) => (
           <TabsTrigger key={section.title} value={section.title}>

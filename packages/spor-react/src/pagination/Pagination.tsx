@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Center, createTexts, useTranslation, Flex, TextLink } from "..";
-import { ListItem, Link, useSlotRecipe, Box } from "@chakra-ui/react";
+import { Link, useSlotRecipe, Box } from "@chakra-ui/react";
 import {
   DropdownLeftFill18Icon,
   DropdownRightFill18Icon,
@@ -85,13 +85,13 @@ export const Pagination = ({
     }
     return displayPageNumbers.map((pageNumber, index) =>
       pageNumber === "..." ? (
-        <ListItem key={index} css={styles.listItem}>
+        <Box as="li" key={index} css={styles.listItem}>
           <Center>...</Center>
-        </ListItem>
+        </Box>
       ) : (
         <Link
           key={index}
-          as={ListItem}
+          as={Box}
           onClick={() => {
             if (pageNumber !== "...") {
               onPageChange(+pageNumber);
@@ -116,23 +116,23 @@ export const Pagination = ({
         padding={0}
         margin={0}
       >
-        <ListItem aria-label={t(texts.previousPage)}>
+        <Box as="li" aria-label={t(texts.previousPage)}>
           <TextLink
             onClick={() => onPageChange(selectedPage - 1)}
             css={hasPreviousPage ? styles.link : styles.disabled}
           >
             <DropdownLeftFill18Icon sx={styles.icon} />
           </TextLink>
-        </ListItem>
+        </Box>
         {renderPaginationButtons()}
-        <ListItem aria-label={t(texts.nextPage)}>
+        <Box as="li" aria-label={t(texts.nextPage)}>
           <TextLink
             onClick={() => onPageChange(selectedPage + 1)}
             css={hasNextPage ? styles.link : styles.disabled}
           >
             <DropdownRightFill18Icon css={styles.icon} />
           </TextLink>
-        </ListItem>
+        </Box>
       </Box>
     </Flex>
   );

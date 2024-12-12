@@ -124,10 +124,12 @@ export function ErrorBoundary() {
   );
 }
 
+type BrandType = typeof Brand[keyof typeof Brand];
+
 type DocumentProps = {
   children: ReactNode;
   title?: string;
-  brand?: Brand;
+  brand?: BrandType;
 };
 
 const Document = withEmotionCache(
@@ -169,8 +171,8 @@ const Document = withEmotionCache(
         <body>
           <SporProvider
             language={Language.English}
-            /* brand={brand} */
-            /* value={defaultSystem} */
+            brand={brand}
+            value={defaultSystem}
           >
             <SkipToContent />
             {children}
@@ -192,7 +194,7 @@ export default function App() {
   const loaderData = useLoaderData<typeof loader>();
 
   return (
-    <Document brand={loaderData.brand as Brand}>
+    <Document brand={loaderData.brand as BrandType}>
       <RootLayout>
         <Outlet />
       </RootLayout>
@@ -214,9 +216,9 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   );
 };
 
-function parseStringToBrand(input: string): Brand | undefined {
-  if (Object.values(Brand).includes(input as Brand)) {
-    return input as Brand;
+function parseStringToBrand(input: string): BrandType | undefined {
+  if (Object.values(Brand).includes(input as BrandType)) {
+    return input as BrandType;
   }
   return undefined;
 }

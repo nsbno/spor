@@ -1,4 +1,3 @@
-import { ListItem } from "@chakra-ui/react";
 import {
   PortableTextReactComponents,
   PortableText as SanityPortableText,
@@ -123,9 +122,9 @@ const components: Partial<PortableTextReactComponents> = {
     ),
   },
   listItem: ({ children }) => (
-    <ListItem marginTop={0.5} textStyle="sm">
+    <Box as="li" marginTop={0.5} textStyle="sm">
       {children}
-    </ListItem>
+    </Box>
   ),
   types: {
     buttonLink: ({ value }) => {

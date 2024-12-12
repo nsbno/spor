@@ -49,7 +49,7 @@ export function floatingBorder(state: FloatingBorderState) {
     default:
       return {
         outline: "1px solid",
-        outlineColor: "floating.outline.default",
+        outlineColor: "floating.outline",
       };
   }
 }

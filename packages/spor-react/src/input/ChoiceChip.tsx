@@ -93,7 +93,7 @@ export const ChoiceChip = forwardRef(
         <chakra.input
           {...getInputProps({}, ref)}
           id={id}
-          disabled={isDisabled}
+          disabled={isDisabled || state.isDisabled}
         />
         <chakra.div
           {...getLabelProps()}

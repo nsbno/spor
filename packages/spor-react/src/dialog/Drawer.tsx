@@ -4,14 +4,14 @@ import {
   RecipeVariantProps,
   Portal,
 } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { drawerSlotRecipe } from "../theme/slot-recipes/drawer";
 import { CloseButton } from "../button";
 
 type DrawerVariantProps = RecipeVariantProps<typeof drawerSlotRecipe>;
 
 type DrawerContentProps = ChakraDrawer.ContentProps &
-  DrawerVariantProps & {
+  PropsWithChildren<DrawerVariantProps> & {
     children: React.ReactNode;
     portalled?: boolean;
     portalRef?: React.RefObject<HTMLElement>;

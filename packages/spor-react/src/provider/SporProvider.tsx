@@ -12,10 +12,11 @@ import {
 } from "@chakra-ui/react";
 import { ColorModeProvider } from "../color-mode";
 
-type SporProviderProps = ChakraProviderProps & {
+type SporProviderProps = Exclude<ChakraProviderProps, "value"> & {
   language?: Language;
   brand?: Brand;
   theme?: typeof sporSystem;
+  value?: typeof sporSystem;
 };
 
 /**

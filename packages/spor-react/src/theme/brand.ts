@@ -9,21 +9,10 @@ export enum Brand {
 export const brandTheme = {
   [Brand.VyDigital]: {},
   [Brand.VyUtvikling]: {
-    colors: {
-      bg: {
-        default: {
-          dark: "darkGrey",
-        },
-      },
-      surface: {
-        default: {
-          dark: "darkGrey",
-        },
-      },
-    },
+    colors: tokens.color.vyDigital,
   },
   [Brand.CargoNet]: {
-    colors: tokens.color.cargonet as any,
+    colors: tokens.color.cargonet,
   },
 };
 

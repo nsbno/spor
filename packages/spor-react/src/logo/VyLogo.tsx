@@ -11,7 +11,7 @@ export const VyLogo = forwardRef<HTMLDivElement, VyLogoProps>((props, ref) => {
   const id = useId();
   return (
     <Box {...props}>
-      <chakra.svg viewBox="0 0 107 54" ref={ref}>
+      <chakra.svg viewBox="0 0 107 54" ref={ref} >
         <title>Vy logo</title>
         <path
           fillRule="evenodd"

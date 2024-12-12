@@ -19,7 +19,7 @@ import { config } from "./tokens/config";
 
 const themeConfig = defineConfig({
   ...config,
-  ...brandTheme,
+  /* ...brandTheme, */
   globalCss,
   theme: {
     breakpoints,

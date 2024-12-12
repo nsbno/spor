@@ -28,7 +28,7 @@ import { SiteSettings } from "./SiteSettings";
 /** The site header shown at the top of every part of our site */
 export const SiteHeader = () => {
   const backgroundColor = useColorModeValue(
-    "surface.tertiary.light",
+    "darkTeal",
     "surface.tertiary.dark",
   );
 
@@ -56,7 +56,7 @@ export const SiteHeader = () => {
       alignItems="center"
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
-      backgroundColor={backgroundColor}
+      backgroundColor={"surface.tertiary._dark"}
       css={{
         position: "sticky",
         top: "0",

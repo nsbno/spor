@@ -1,3 +1,4 @@
+"use client";
 import React, { PropsWithChildren } from "react";
 import { chakra, useSlotRecipe } from "@chakra-ui/react";
 import { ProgressIndicatorVariantProps } from "./ProgressIndicator";

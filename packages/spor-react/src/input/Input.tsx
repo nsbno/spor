@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   Input as ChakraInput,
@@ -5,9 +6,9 @@ import {
   type RecipeVariantProps,
 } from "@chakra-ui/react";
 import React, { forwardRef, useId, PropsWithChildren } from "react";
-import inputSlotRecipe from "../theme/components/input";
-import { Field } from "../components/ui/field";
-import { InputGroup } from "../components/ui/input-group";
+import { inputSlotRecipe } from "../theme/slot-recipes/input";
+import { Field } from "./Field";
+import { InputGroup } from "./InputGroup";
 
 type inputVariantProps = RecipeVariantProps<typeof inputSlotRecipe>;
 

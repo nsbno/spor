@@ -1,3 +1,4 @@
+"use client";
 import { BoxProps, Center, useSlotRecipe } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { createTexts, MediaControllerVariantProps, useTranslation } from "..";
@@ -38,7 +39,7 @@ export const SkipButton = forwardRef<HTMLButtonElement, SkipButtonProps>(
       <Center
         ref={ref}
         as="button"
-        css={styles.container}
+        css={styles.root}
         aria-label={direction === "forward" ? t(texts.next) : t(texts.previous)}
         disabled={disabled}
         {...props}

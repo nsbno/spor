@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Accordion,
   Box,
@@ -12,10 +14,10 @@ import React, { PropsWithChildren } from "react";
 import { AlertIcon } from "./AlertIcon";
 import { BaseAlert, BaseAlertProps } from "./BaseAlert";
 import { createTexts, useTranslation } from "../i18n";
-import { serviceAlertSlotRecipe } from "../theme/components/alert-service";
+import { alertServiceSlotRecipe } from "../theme/slot-recipes/alert-service";
 
 type ServiceAlertVariantProps = RecipeVariantProps<
-  typeof serviceAlertSlotRecipe
+  typeof alertServiceSlotRecipe
 >;
 
 type ServiceAlertProps = BaseAlertProps &
@@ -39,6 +41,7 @@ type ServiceAlertProps = BaseAlertProps &
     headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
     /** The variant of Service Alert. Default: service */
     variant?: "service" | "global-deviation";
+    value?: string;
   };
 /**
  * A service alert component.
@@ -60,11 +63,17 @@ export const ServiceAlert = ({
   headingLevel = "h3",
   defaultOpen = false,
   onToggle = () => {},
+  value,
   ...boxProps
 }: ServiceAlertProps) => {
   const { t } = useTranslation();
   const recipe = useSlotRecipe({ key: "alert-service" });
   const styles = recipe({ variant });
+
+  const handleChange = (event: React.FormEvent<HTMLDivElement>) => {
+    const expandedIndex = (event.target as HTMLDivElement).dataset.index;
+    onToggle(expandedIndex === "0");
+  };
   return (
     <BaseAlert
       variant={variant}
@@ -74,14 +83,14 @@ export const ServiceAlert = ({
       sx={styles.outerBox}
     >
       <Accordion.Root
-        onChange={(expandedIndex: number) => onToggle(expandedIndex === 0)}
-        defaultIndex={defaultOpen ? 0 : -1}
-        allowToggle
+        onChange={handleChange}
+        defaultValue={value}
+        collapsible
         flexGrow={1}
-        sx={{ outline: "none" }}
+        css={{ outline: "none" }}
         variant={variant}
       >
-        <Accordion.Item>
+        <Accordion.Item value={value}>
           <Accordion.ItemTrigger css={styles.container}>
             <Stack
               flexDirection="row"

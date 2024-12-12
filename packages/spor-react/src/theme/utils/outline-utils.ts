@@ -13,7 +13,7 @@ export function outlineBorder(state: OutlineBorderState) {
       };
     default:
       return {
-        outlineColor: "outline.default",
+        outlineColor: "outline",
       };
   }
 }

@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   ListRoot,
@@ -23,7 +24,7 @@ import {
   useOption,
 } from "react-aria";
 import { type ListState, type SelectState } from "react-stately";
-import { listBoxSlotRecipe } from "../theme/components/listbox";
+import { listBoxSlotRecipe } from "../theme/slot-recipes/listbox";
 import { useColorModeValue } from "../color-mode";
 
 export { Item, Section } from "react-stately";
@@ -44,6 +45,7 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
     emptyContent?: React.ReactNode;
     maxWidth?: BoxProps["maxWidth"];
     variant?: ConditionalValue<"base" | "floating">;
+    children: React.ReactNode;
   };
 
 /**
@@ -83,7 +85,7 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
 
 export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
   (props) => {
-    const { loading, listBoxRef, state, maxWidth, variant } = props;
+    const { loading, listBoxRef, state, maxWidth, variant, children } = props;
     const { listBoxProps } = useListBox(props, state, listBoxRef);
     const recipe = useSlotRecipe({ key: "listbox" });
     const styles = recipe({ variant });
@@ -94,16 +96,16 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
         css={styles.root}
         aria-busy={loading}
         maxWidth={maxWidth}
-        variant={variant}
       >
         {state.collection.size === 0 && props.emptyContent}
         {Array.from(state.collection).map((item) =>
           item.type === "section" ? (
             <ListBoxSection key={item.key} section={item} state={state} />
           ) : (
-            <Option key={item.key} item={item} state={state} />
+            <ListItem key={item.key} />
           ),
         )}
+        {children}
       </ListRoot>
     );
   },
@@ -219,28 +221,30 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
   const isFirstSection = section.key === state.collection.getFirstKey();
   const titleColor = useColorModeValue("darkGrey", "white");
   return (
-    <ListItem {...itemProps}>
-      {section.rendered && (
-        <Box
-          fontSize="mobile.xs"
-          color={titleColor}
-          paddingX={3}
-          paddingY={1}
-          marginTop={isFirstSection ? 0 : 3}
-          textTransform="uppercase"
-          fontWeight="bold"
-          {...headingProps}
-        >
-          {section.rendered}
-        </Box>
-      )}
-      <ListRoot {...groupProps} padding={0} listStyleType="none">
-        {Array.from(state.collection.getChildren(section.key)).map(
-          (item: any) => (
-            <Option key={item.key} item={item} state={state} />
-          ),
+    <ListRoot>
+      <ListItem {...itemProps}>
+        {section.rendered && (
+          <Box
+            fontSize="mobile.xs"
+            color={titleColor}
+            paddingX={3}
+            paddingY={1}
+            marginTop={isFirstSection ? 0 : 3}
+            textTransform="uppercase"
+            fontWeight="bold"
+            {...headingProps}
+          >
+            {section.rendered}
+          </Box>
         )}
-      </ListRoot>
-    </ListItem>
+        <ListRoot {...groupProps} padding={0} listStyleType="none">
+          {Array.from(state.collection.getChildren(section.key)).map(
+            (item: any) => (
+              <ListItem key={item.key}  />
+            ),
+          )}
+        </ListRoot>
+      </ListItem>
+    </ListRoot>
   );
 }

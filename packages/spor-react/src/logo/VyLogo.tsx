@@ -1,22 +1,18 @@
-import { Box, BoxProps, chakra } from "@chakra-ui/react";
+import { Box, BoxProps, chakra, Icon } from "@chakra-ui/react";
 import React, { forwardRef, useId } from "react";
+import { useColorMode } from "..";
 
-export type VyLogoProps = {
-  /** The color of the logo
-   *
-   * Use `"light"` when the logo is used on a light background.
-   * Use `"dark"` when the logo is used on a dark background.
-   */
-  colorPalette: "light" | "dark";
-};
-export const VyLogo = forwardRef<SVGSVGElement, VyLogoProps>((props, ref) => {
+export const SvgBox = chakra("svg");
+
+export type VyLogoProps = BoxProps;
+export const VyLogo = forwardRef<SVGSVGElement, BoxProps>((props, ref) => {
   // These colors should not be tokenized, as they are logo specific.
-  const { colorPalette } = props;
-  const mainColor = colorPalette === "light" ? "#1d211c" : "#ffffff";
-  const accentColor = colorPalette === "light" ? "#138c6e" : "#ffffff";
+  const { colorMode } = useColorMode();
+  const mainColor = colorMode === "light" ? "#1d211c" : "#ffffff";
+  const accentColor = colorMode === "light" ? "#138c6e" : "#ffffff";
   const id = useId();
   return (
-    <chakra.svg viewBox="0 0 107 54" ref={ref} {...props}>
+    <SvgBox ref={ref} viewBox="0 0 107 54" {...props as any}>
       <title>Vy logo</title>
       <path
         fillRule="evenodd"
@@ -97,6 +93,6 @@ export const VyLogo = forwardRef<SVGSVGElement, VyLogoProps>((props, ref) => {
         d="M26.55 50.33a9.09 9.09 0 0 1-1.24-2.7c-.44-1.54-12.46-42.5-12.46-42.5C11.82 1.56 10.2.07 7.22.07H5.4a.04.04 0 0 0 0 .08C7.67.5 9 2.04 9.9 5.13l12.46 42.5c.65 2.28 1.53 3.74 2.5 4.65.7-.4 1.29-1.05 1.69-1.95Z"
         fill={mainColor}
       />
-    </chakra.svg>
+    </SvgBox>
   );
 });

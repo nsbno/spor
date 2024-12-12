@@ -1,3 +1,5 @@
+"use client";
+
 import {
   AltTransportOutline24Icon,
   ErrorOutline24Icon,

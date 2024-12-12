@@ -1,9 +1,10 @@
+"use client";
 import {
   RadioCard as ChakraRadioCard,
   RecipeVariantProps,
 } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
-import { radioCardSlotRecipe } from "../theme/components/radio-card";
+import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
 
 /**
  * Radio cards are used to present a set of options where only one option can be selected.

@@ -1,11 +1,12 @@
+"use client";
+
 import { Box, Flex, useDisclosure, useSlotRecipe } from "@chakra-ui/react";
 import { CloseFill18Icon } from "@vygruppen/spor-icon-react";
 import React, { PropsWithChildren } from "react";
 import { IconButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
 import { AlertIcon } from "./AlertIcon";
-import { BaseAlert, BaseAlertProps } from "./BaseAlert";
-import { AlertVariantProps } from "@chakra-ui/react/dist/types/styled-system/generated/recipes.gen";
+import { AlertVariantProps, BaseAlert, BaseAlertProps } from "./BaseAlert";
 
 type ClosableAlertProps = BaseAlertProps &
   PropsWithChildren<AlertVariantProps> & {

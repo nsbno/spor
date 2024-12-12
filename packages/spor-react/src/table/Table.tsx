@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   Table as ChakraTable,
@@ -6,7 +7,7 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
-import { tableSlotRecipe } from "../theme/components/table";
+import { tableSlotRecipe } from "../theme/slot-recipes/table";
 
 type TableVariantProps = RecipeVariantProps<typeof tableSlotRecipe>;
 

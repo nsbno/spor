@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Box,
   Center,
@@ -11,7 +13,7 @@ import {
 import React, { forwardRef, PropsWithChildren } from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
-import { buttonRecipe } from "../theme/components/button";
+import { buttonRecipe } from "../theme/recipes/button";
 
 type ButtonVariantProps = RecipeVariantProps<typeof buttonRecipe>;
 
@@ -27,7 +29,7 @@ export type ButtonProps = Exclude<
     variant: ConditionalValue<
       "primary" | "secondary" | "tertiary" | "ghost" | "floating"
     >;
-    size: ConditionalValue<"lg" | "md" | "sm" | "xs">;
+    size?: ConditionalValue<"lg" | "md" | "sm" | "xs">;
   };
 /**
  * Buttons are used to trigger actions.

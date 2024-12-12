@@ -1,3 +1,4 @@
+"use client";
 import React, { forwardRef } from "react";
 import { PopoverRootProps as ChakraPopoverRootProps } from "@chakra-ui/react";
 import {
@@ -32,7 +33,7 @@ export type TooltipProps = ChakraPopoverRootProps & {
 };
 /** A tooltip component. */
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
-  function Tooltip(props, ref) {
+  (props, ref) => {
     const {
       children,
       content,
@@ -41,14 +42,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       withCloseButton = false,
     } = props;
     return (
-      <PopoverRoot
-        placement={placement}
-        size={size}
-        arrowSize={12}
-        arrowShadowColor="none"
-        ref={ref}
-        {...props}
-      >
+      <PopoverRoot placement={placement} size={size} {...props}>
         <PopoverTrigger>{children}</PopoverTrigger>
         <PopoverContent>
           <PopoverArrow />

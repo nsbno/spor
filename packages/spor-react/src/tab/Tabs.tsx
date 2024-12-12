@@ -1,3 +1,4 @@
+"use client";
 import {
   Tabs as ChakraTabs,
   TabsRootProps as ChakraTabsRootProps,
@@ -5,7 +6,7 @@ import {
 } from "@chakra-ui/react";
 import * as React from "react";
 import { forwardRef, PropsWithChildren } from "react";
-import { tabsSlotRecipe } from "../theme/components/tabs";
+import { tabsSlotRecipe } from "../theme/slot-recipes/tabs";
 
 type TabsVariantProps = RecipeVariantProps<typeof tabsSlotRecipe>;
 

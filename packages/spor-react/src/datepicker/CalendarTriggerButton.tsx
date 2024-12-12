@@ -1,5 +1,6 @@
+"use client";
+
 import {
-  Box,
   BoxProps,
   ConditionalValue,
   PopoverAnchor,
@@ -18,7 +19,7 @@ import {
   createTexts,
   useTranslation,
 } from "..";
-import { datePickerSlotRecipe } from "../theme/components";
+import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 
 type CalendarTriggerButtonProps = AriaButtonProps<"button"> &
   PropsWithChildren<DatePickerVariantProps> &

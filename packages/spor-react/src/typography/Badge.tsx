@@ -1,3 +1,4 @@
+"use client";
 import {
   Badge as ChakraBadge,
   BadgeProps as ChakraBadgeProps,
@@ -5,7 +6,7 @@ import {
   useRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
-import { badgeRecipie } from "../theme/components";
+import { badgeRecipie } from "../theme/recipes/badge";
 
 type BadgeVariantProps = RecipeVariantProps<typeof badgeRecipie>;
 

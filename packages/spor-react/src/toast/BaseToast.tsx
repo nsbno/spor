@@ -1,3 +1,4 @@
+"use client";
 import {
   Flex,
   useRecipe,
@@ -12,7 +13,7 @@ import {
 } from "@vygruppen/spor-icon-react";
 import React, { PropsWithChildren } from "react";
 import { createTexts, useTranslation } from "..";
-import { toastRecipe } from "../theme/components/toast";
+import { toastRecipe } from "../theme/recipes/toast";
 
 export type ToastVariantProps = RecipeVariantProps<typeof toastRecipe>;
 

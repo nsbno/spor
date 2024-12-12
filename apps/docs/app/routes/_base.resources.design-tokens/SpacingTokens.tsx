@@ -5,12 +5,12 @@ import {
   Code,
   Stack,
   Table,
-  Tbody,
-  Td,
+  TableBody,
+  TableCell,
+  TableColumnHeader,
+  TableHeader,
+  TableRow,
   Text,
-  Th,
-  Thead,
-  Tr,
   useColorModeValue,
 } from "@vygruppen/spor-react";
 import { Fragment } from "react";
@@ -33,7 +33,7 @@ export function SpacingTokens(props: BoxProps) {
         </Text>
       }
     >
-      <Stack spacing={9}>
+      <Stack gap={9}>
         <SpacingTokensTable />
       </Stack>
     </SharedTokenLayout>
@@ -44,47 +44,43 @@ type SpacingTokenTableProps = BoxProps;
 
 const SpacingTokensTable = (props: SpacingTokenTableProps) => {
   const tokenFormatter = useTokenFormatter();
-  const backgroundColor = useColorModeValue(
-    "surface.tertiary.light",
-    "surface.tertiary.dark",
-  );
   return (
     <Box {...props}>
-      <Table variant="simple" colorScheme="grey">
-        <Thead>
-          <Tr>
-            <Th>Example</Th>
-            <Th>Value</Th>
-            <Th>Code</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
+      <Table variant="line" colorScheme="grey">
+        <TableHeader>
+          <TableRow>
+            <TableColumnHeader>Example</TableColumnHeader>
+            <TableColumnHeader>Value</TableColumnHeader>
+            <TableColumnHeader>Code</TableColumnHeader>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {Object.entries(spacingSizes)
             .sort(([a], [b]) => Number(a) - Number(b))
             .map(([key, token]) => (
               <Fragment key={key}>
-                <Tr>
-                  <Td>
+                <TableRow>
+                  <TableCell>
                     <Box
-                      width={token}
-                      height={token}
-                      backgroundColor={backgroundColor}
+                      width={token as string}
+                      height={token as string}
+                      backgroundColor={"surface.tertiary"}
                     />
-                  </Td>
-                  <Td>
-                    {key} / {token}
-                  </Td>
-                  <Td>
-                    <Stack spacing={1}>
+                  </TableCell>
+                  <TableCell>
+                    {key} / {token as string}
+                  </TableCell>
+                  <TableCell>
+                    <Stack gap={1}>
                       <Box>
                         <Code>{tokenFormatter(`size.spacing.[${key}]`)}</Code>
                       </Box>
                     </Stack>
-                  </Td>
-                </Tr>
+                  </TableCell>
+                </TableRow>
               </Fragment>
             ))}
-        </Tbody>
+        </TableBody>
       </Table>
     </Box>
   );

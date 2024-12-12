@@ -1,3 +1,5 @@
+"use client";
+
 import { Accordion, Box, Flex, Icon, useSlotRecipe } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
 import { AlertIcon } from "./AlertIcon";
@@ -15,6 +17,7 @@ type ExpandableAlertProps = BaseAlertProps & {
    *
    * Defaults to h3 */
   headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
+  value?: string;
 };
 /**
  * An expandable alert component.
@@ -38,18 +41,24 @@ export const ExpandableAlert = forwardRef<
     headingLevel = "h3",
     defaultOpen = false,
     onToggle = () => {},
+    value,
   } = props;
   const recipe = useSlotRecipe({ key: "alert-expandable" });
   const styles = recipe({ variant });
+
+  const handleChange = (event: React.FormEvent<HTMLDivElement>) => {
+    const expandedIndex = (event.target as HTMLDivElement).dataset.index;
+    onToggle(expandedIndex === "0");
+  };
   return (
     <BaseAlert variant={variant} {...props} paddingX={0} paddingY={0} ref={ref}>
       <Accordion.Root
-        onChange={(expandedIndex: number) => onToggle(expandedIndex === 0)}
-        defaultIndex={defaultOpen ? 0 : -1}
-        allowToggle
+        onChange={handleChange}
+        defaultValue={value}
+        collapsible
         flexGrow="1"
       >
-        <Accordion.Item css={styles.accordion}>
+        <Accordion.Item css={styles.accordion} value={value}>
           <Accordion.ItemTrigger css={styles.container}>
             <Flex
               justifyContent="space-between"

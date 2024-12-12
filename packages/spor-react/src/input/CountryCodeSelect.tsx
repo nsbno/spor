@@ -1,6 +1,6 @@
+"use client";
 import React, { forwardRef } from "react";
 import {
-  BoxProps,
   SelectRoot,
   createTexts,
   useTranslation,
@@ -28,7 +28,7 @@ const sortedCallingCodes = getSupportedCallingCodes()
   .filter(
     (code) => !prioritizedCountryCodes.some((pCode) => pCode.key === code.key),
   );
-const callingCodes = [...prioritizedCountryCodes, ...sortedCallingCodes];
+export const callingCodes = [...prioritizedCountryCodes, ...sortedCallingCodes];
 
 type CountryCodeSelectProps = Exclude<Select.RootProps, "variant"> & {
   variant?: ConditionalValue<"base" | "floating">;
@@ -42,12 +42,7 @@ export const CountryCodeSelect = forwardRef<
   const { t } = useTranslation();
 
   return (
-    <SelectRoot
-      collection={callingCodes}
-      variant={variant}
-      {...props}
-      ref={ref}
-    >
+    <SelectRoot variant={variant} {...props} ref={ref}>
       <SelectLabel>{t(texts.countryCode)}</SelectLabel>
       <SelectTrigger>
         <SelectValueText placeholder={t(texts.countryCode)} />

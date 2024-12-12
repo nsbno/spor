@@ -1,13 +1,19 @@
-import { HeadingProps as ChakraHeadingProps, Text } from "@chakra-ui/react";
+"use client";
+import {
+  HeadingProps as ChakraHeadingProps,
+  ConditionalValue,
+  Text,
+} from "@chakra-ui/react";
 import React, { forwardRef } from "react";
 import { slugify } from "..";
-import type { textStyles } from "../theme/foundations";
 
 export type HeadingProps = Omit<ChakraHeadingProps, "textStyle" | "as"> & {
   /** The heading level, e.g. h1, h2, h3... **/
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   /** The size and style of the heading. Defaults to xl-display */
-  variant?: keyof typeof textStyles;
+  variant?: ConditionalValue<
+    "sm" | "md" | "lg" | "2xl" | "xl-display" | "xl-sans" | "xs"
+  >;
   /** If true, generate an ID based on the children */
   autoId?: boolean;
 };
@@ -46,7 +52,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
     } = props;
 
     const id =
-      externalId ?? (autoId && typeof rest.children === "string")
+      (externalId ?? (autoId && typeof rest.children === "string"))
         ? slugify(rest.children as string)
         : undefined;
 

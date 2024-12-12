@@ -1,3 +1,4 @@
+"use client";
 import {
   Link as ChakraLink,
   LinkProps as ChakraLinkProps,
@@ -6,9 +7,9 @@ import {
 import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { createTexts, useTranslation } from "..";
-import linkRecipie from "../theme/components/link";
+import { linkRecipe } from "../theme/recipes/link";
 
-type linkVariantProps = RecipeVariantProps<typeof linkRecipie>;
+type linkVariantProps = RecipeVariantProps<typeof linkRecipe>;
 
 export type LinkProps = Exclude<ChakraLinkProps, "variant"> &
   PropsWithChildren<linkVariantProps> & {

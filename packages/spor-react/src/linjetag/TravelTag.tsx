@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   BoxProps,
@@ -15,7 +16,7 @@ import {
 import React, { forwardRef, PropsWithChildren } from "react";
 import { LineIcon } from "./LineIcon";
 import type { TagProps } from "./types";
-import { travelTagSlotRecipe } from "../theme/components/travel-tag";
+import { travelTagSlotRecipe } from "../theme/slot-recipes/travel-tag";
 
 type TravelTagVariantProps = RecipeVariantProps<typeof travelTagSlotRecipe>;
 

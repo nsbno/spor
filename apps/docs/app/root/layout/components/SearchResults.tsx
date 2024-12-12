@@ -9,7 +9,7 @@ export type SearchResultsProps = {
   onResultClick: () => void;
 };
 /** Given a query, this view shows any hits in the menu structure */
-const SearchResults = forwardRef<SearchResultsProps, "button">(
+const SearchResults = forwardRef<HTMLButtonElement, SearchResultsProps>(
   ({ query, hits, onResultClick }, ref) => {
     return (
       <Box

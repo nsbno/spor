@@ -1,20 +1,22 @@
+"use client";
 import { Global } from "@emotion/react";
 import deepmerge from "deepmerge";
 import React from "react";
 import { Language, LanguageProvider } from "..";
-import { Brand, brandTheme, fontFaces } from "../";
-import { system as defaultSporTheme } from "../theme/theme";
+import { Brand, brandTheme, fontFaces } from "../theme/brand";
+import { system as sporSystem } from "../theme";
 import {
   ChakraProvider,
   ChakraProviderProps,
   defaultSystem,
 } from "@chakra-ui/react";
-import { ColorModeProvider } from "../color-mode/color-mode";
+import { ColorModeProvider } from "../color-mode";
 
-type SporProviderProps = ChakraProviderProps & {
+type SporProviderProps = Exclude<ChakraProviderProps, "value"> & {
   language?: Language;
   brand?: Brand;
-  theme?: typeof defaultSporTheme;
+  theme?: typeof sporSystem;
+  value?: typeof sporSystem;
 };
 
 /**
@@ -55,7 +57,7 @@ import { theme } from '../../../../apps/docs/app/features/portable-text/code-blo
  * ```
  */
 export const SporProvider = ({
-  theme = defaultSporTheme,
+  theme = sporSystem,
   language = Language.NorwegianBokmal,
   brand = Brand.VyDigital,
   children,
@@ -67,7 +69,7 @@ export const SporProvider = ({
 
   return (
     <LanguageProvider language={language}>
-      <ChakraProvider value={defaultSystem}>
+      <ChakraProvider {...props} value={extendedTheme}>
         <ColorModeProvider>
           <Global styles={fontFaces} />
           {children}

@@ -1,9 +1,11 @@
+"use client";
 import {
   Box,
   BoxProps,
   chakra,
   ConditionalValue,
   Flex,
+  Icon,
   RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
@@ -23,7 +25,7 @@ import { useOverlayTriggerState } from "react-stately";
 import { StaticCard } from "..";
 import { Dialog } from "./Dialog";
 import { Popover } from "./Popover";
-import { cardSelectSlotRecipe } from "../theme/components/card-select";
+import { cardSelectSlotRecipe } from "../theme/slot-recipes/card-select";
 
 type CardSelectVariantProps = RecipeVariantProps<typeof cardSelectSlotRecipe>;
 

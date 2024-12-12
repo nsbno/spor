@@ -5,20 +5,18 @@ import {
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
-  DarkMode,
-  Drawer,
+  DrawerRoot,
   DrawerBody,
-  DrawerCloseButton,
+  DrawerCloseTrigger,
   DrawerContent,
   DrawerHeader,
-  DrawerOverlay,
+  DrawerBackdrop,
   Flex,
   IconButton,
   SearchInput,
   Stack,
   Text,
   VyLogo,
-  useColorModeValue,
   useDisclosure,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
@@ -28,18 +26,13 @@ import { SiteSettings } from "./SiteSettings";
 
 /** The site header shown at the top of every part of our site */
 export const SiteHeader = () => {
-  const backgroundColor = useColorModeValue(
-    "surface.tertiary.light",
-    "surface.tertiary.dark",
-  );
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchDialogOpen, setSearchDialogOpen] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
-        setIsModalOpen(true);
+        setSearchDialogOpen(true);
       }
     };
 
@@ -57,29 +50,35 @@ export const SiteHeader = () => {
       alignItems="center"
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
-      backgroundColor={backgroundColor}
-      sx={{
+      backgroundColor={"surface.tertiary"}
+      css={{
         position: "sticky",
         top: "0",
         zIndex: "sticky",
       }}
       gap={1}
     >
-      <Box as={Link} marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]} to="/">
-        <VyLogo
-          colorScheme="dark"
-          width="auto"
-          height={["30px", "36px", null, "48px"]}
-          aria-label="Vy"
-        />
+      <Box marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
+        <Link to="/" aria-label="Go to the front page">
+          <VyLogo
+            width="auto"
+            height={["30px", "36px", null, "48px"]}
+            aria-label="Vy"
+            className="dark"
+          />
+        </Link>
       </Box>
 
-      <DesktopNavigation onSearchClick={() => setIsModalOpen(!isModalOpen)} />
-      <MobileNavigation onSearchClick={() => setIsModalOpen(!isModalOpen)} />
-      {isModalOpen && (
+      <DesktopNavigation
+        onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
+      />
+      <MobileNavigation
+        onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
+      />
+      {searchDialogOpen && (
         <SiteSearchModal
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
+          searchDialogOpen={searchDialogOpen}
+          setSearchDialogOpen={setSearchDialogOpen}
         />
       )}
     </Flex>
@@ -102,25 +101,24 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
     <>
       <Flex
         display={["none", null, null, "flex"]}
-        maxWidth={[null, null, null, "container.lg", "container.xl"]}
+        maxWidth={[null, null, null, "breakpoints.lg", "breakpoints.xl"]}
         marginX="auto"
         paddingX={[3, null, 7, 5, 9]}
       >
-        <DarkMode>
-          <SearchInput
-            onClick={onSearchClick}
-            width={[null, null, null, "37.5rem"]}
-            readOnly
-            label={
-              <Flex alignItems="center" gap={1}>
-                Search docs{" "}
-                <Text size="sm" fontSize="12" paddingTop={0.5}>
-                  ({isMac ? "cmd" : "ctrl"} + K)
-                </Text>
-              </Flex>
-            }
-          />
-        </DarkMode>
+        <SearchInput
+          onClick={onSearchClick}
+          width={[null, null, null, "37.5rem"]}
+          readOnly
+          className="dark"
+          label={
+            <Flex alignItems="center" gap={1}>
+              Search docs{" "}
+              <Text variant="sm" fontSize="12" paddingTop={0.5}>
+                ({isMac ? "cmd" : "ctrl"} + K)
+              </Text>
+            </Flex>
+          }
+        />
       </Flex>
       <Flex
         display={["none", null, null, "flex"]}
@@ -135,7 +133,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
 };
 
 const MobileNavigation = ({ onSearchClick }: SearchFieldProps) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
   const location = useLocation();
   useEffect(() => {
     // This doesn't close the menu when you're on the page you're clicking on,
@@ -145,38 +143,38 @@ const MobileNavigation = ({ onSearchClick }: SearchFieldProps) => {
   return (
     <Flex display={["flex", null, null, "none"]}>
       <Flex gap={2}>
-        <DarkMode>
-          <IconButton
-            icon={<SearchFill24Icon />}
-            variant="ghost"
-            size="md"
-            aria-label="Search documentation"
-            onClick={onSearchClick}
-          />
-        </DarkMode>
+        <IconButton
+          icon={<SearchFill24Icon />}
+          variant="ghost"
+          size="md"
+          aria-label="Search documentation"
+          onClick={onSearchClick}
+          className="dark"
+        />
+
         <SiteSettings showLabel={false} />
-        <DarkMode>
-          <IconButton
-            icon={<HamburgerFill24Icon />}
-            aria-label="Menu"
-            variant="ghost"
-            size="md"
-            onClick={onOpen}
-          />
-        </DarkMode>
+
+        <IconButton
+          icon={<HamburgerFill24Icon />}
+          aria-label="Menu"
+          variant="ghost"
+          size="md"
+          onClick={onOpen}
+          className="dark"
+        />
       </Flex>
-      <Drawer placement="right" isOpen={isOpen} onClose={onClose}>
-        <DrawerOverlay />
+      <DrawerRoot placement="end" open={open} onExitComplete={onClose}>
+        <DrawerBackdrop />
         <DrawerContent>
-          <DrawerCloseButton />
+          <DrawerCloseTrigger />
           <DrawerHeader>Explore Spor</DrawerHeader>
           <DrawerBody paddingY={2} paddingX={[1, 2, 3]}>
-            <Stack spacing={2}>
+            <Stack padding={2}>
               <SearchableContentMenu />
             </Stack>
           </DrawerBody>
         </DrawerContent>
-      </Drawer>
+      </DrawerRoot>
     </Flex>
   );
 };

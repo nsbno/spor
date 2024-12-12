@@ -56,7 +56,7 @@ export const ColorToken = ({
 
   return (
     <StaticCard
-      colorScheme="white"
+      colorPalette={"white"}
       border="1px solid"
       borderColor="silver"
       borderRadius="sm"

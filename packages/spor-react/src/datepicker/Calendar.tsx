@@ -1,9 +1,12 @@
+"use client";
+
 import { Box, ConditionalValue } from "@chakra-ui/react";
-import { DateValue, createCalendar } from "@internationalized/date";
+import { createCalendar } from "@internationalized/date";
 import React from "react";
 import {
   CalendarProps as ReactAriaCalendarProps,
   useCalendar,
+  DateValue,
 } from "react-aria";
 import { useCalendarState } from "react-stately";
 import { createTexts, useTranslation } from "../i18n";

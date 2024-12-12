@@ -1,12 +1,12 @@
 import { useLocation, useNavigate } from "@remix-run/react";
 import {
   Box,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
+  DialogBackdrop,
+  DialogBody,
+  DialogCloseTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogRoot,
 } from "@vygruppen/spor-react";
 import { matchSorter } from "match-sorter";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -14,13 +14,13 @@ import { GlobalSearchInput, SearchResults } from "./components";
 import { useMenu } from "~/utils/useMenu";
 
 type SiteSearchModalProps = {
-  isModalOpen: boolean;
-  setIsModalOpen: (value: boolean) => void;
+  searchDialogOpen: boolean;
+  setSearchDialogOpen: (value: boolean) => void;
 };
 
 export const SiteSearchModal = ({
-  isModalOpen,
-  setIsModalOpen,
+  searchDialogOpen,
+  setSearchDialogOpen,
 }: SiteSearchModalProps) => {
   const menu = useMenu("side-menu");
   const [query, setQuery] = useState("");
@@ -69,18 +69,18 @@ export const SiteSearchModal = ({
     }
   };
   return (
-    <Modal
-      isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(!isModalOpen)}
-      closeOnOverlayClick={true}
-      closeOnEsc={true}
+    <DialogRoot
+      open={searchDialogOpen}
+      onExitComplete={() => setSearchDialogOpen(!searchDialogOpen)}
+      closeOnInteractOutside={true}
+      closeOnEscape={true}
       size={"xl"}
     >
-      <ModalOverlay />
-      <ModalContent>
-        <ModalCloseButton />
-        <ModalHeader>Search docs</ModalHeader>
-        <ModalBody>
+      <DialogBackdrop />
+      <DialogContent>
+        <DialogCloseTrigger />
+        <DialogHeader>Search docs</DialogHeader>
+        <DialogBody>
           <Box as="form" onSubmit={handleSubmit}>
             <GlobalSearchInput
               value={query}
@@ -93,12 +93,12 @@ export const SiteSearchModal = ({
                 ref={focusableRef}
                 hits={hits}
                 query={query}
-                onResultClick={() => setIsModalOpen(false)}
+                onResultClick={() => setSearchDialogOpen(false)}
               />
             )}
           </Box>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
+        </DialogBody>
+      </DialogContent>
+    </DialogRoot>
   );
 };

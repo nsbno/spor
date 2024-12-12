@@ -1,9 +1,11 @@
+"use client";
 import { Box, useRecipe } from "@chakra-ui/react";
+
 import { CloseFill18Icon } from "@vygruppen/spor-icon-react";
 import React, { PropsWithChildren } from "react";
 import { IconButton, createTexts, useTranslation } from "..";
 import { BaseToast, BaseToastProps, ToastVariantProps } from "./BaseToast";
-import { toastRecipe } from "../theme/components/toast";
+import { toastRecipe } from "../theme/recipes/toast";
 
 type ClosableToastProps = BaseToastProps &
   PropsWithChildren<ToastVariantProps> & {

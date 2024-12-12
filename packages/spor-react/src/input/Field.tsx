@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   BoxProps,
@@ -6,7 +7,7 @@ import {
   RecipeVariantProps,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { fieldSlotRecipe } from "../theme/components/field";
+import { fieldSlotRecipe } from "../theme/slot-recipes/field";
 
 type FieldVariantProps = RecipeVariantProps<typeof fieldSlotRecipe>;
 

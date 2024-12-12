@@ -1,13 +1,12 @@
+"use client";
 import {
-  Box,
-  BoxProps,
   RecipeVariantProps,
   useRecipe,
   Switch as ChakraSwitch,
   ConditionalValue,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
-import { switchRecipe } from "../theme/components";
+import { switchRecipe } from "../theme/recipes/switch";
 
 type SwitchVariants = RecipeVariantProps<typeof switchRecipe>;
 

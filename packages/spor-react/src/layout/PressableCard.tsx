@@ -1,6 +1,7 @@
+"use client";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
-import { pressableCardRecipe } from "../theme/components";
+import { pressableCardRecipe } from "../theme/recipes/pressable-card";
 
 type PressableCardVariants = RecipeVariantProps<typeof pressableCardRecipe>;
 

@@ -1,3 +1,4 @@
+"use client";
 import React, { forwardRef, useEffect, useId, useRef, useState } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
@@ -40,7 +41,7 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
   /** If you want to allow an empty collection */
   allowsEmptyCollection?: boolean;
   variant?: ConditionalValue<"base" | "floating">;
-  children?: (item: T) => React.ReactNode;
+  children?: React.ReactNode;
 } & Exclude<OverridableInputProps, "variant">;
 /**
  * A combobox is a combination of an input and a list of suggestions.
@@ -66,7 +67,7 @@ export type ComboboxProps<T> = AriaComboBoxProps<T> & {
  * ```
  */
 
-export const Combobox = forwardRef<HTMLInputElement, ComboboxProps<object>>(
+export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
   (props) => {
     const {
       label,
@@ -196,7 +197,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps<object>>(
             containerPadding={0}
           >
             <ListBox
-              {...listBoxProps}
+              /* {...listBoxProps} */
               state={state}
               id={listboxId}
               listBoxRef={listBoxRef}

@@ -1,42 +1,37 @@
-import tokens from "@vygruppen/spor-design-tokens";
-import * as components from "./components";
-import * as foundations from "./foundations";
-import { defaultSystem } from "@chakra-ui/react";
+import {
+  createSystem,
+  defaultBaseConfig,
+  defineConfig,
+  mergeConfigs,
+} from "@chakra-ui/react";
+import { animationStyles } from "./tokens/animation-styles";
+import { breakpoints } from "./tokens/breakpoints";
+import { globalCss } from "./tokens/global-css";
+import { keyframes } from "./tokens/keyframes";
+import { layerStyles } from "./tokens/layer-styles";
+import { recipes } from "./recipes";
+import { semanticTokens } from "./semantic-tokens";
+import { slotRecipes } from "./slot-recipes";
+import { textStyles } from "./tokens/text-styles";
+import { tokens } from "./tokens";
+import { brandTheme } from "./brand";
+import { config } from "./tokens/config";
 
-export enum Brand {
-  VyDigital = "VyDigital",
-  VyUtvikling = "VyUtvikling",
-  CargoNet = "CargoNet",
-}
-
-export const theme = {
-  ...defaultSystem,
-  ...foundations,
-  components: {
-    ...defaultSystem,
-    ...components,
+const themeConfig = defineConfig({
+  ...config,
+  ...brandTheme,
+  globalCss,
+  theme: {
+    breakpoints,
+    keyframes,
+    tokens,
+    semanticTokens,
+    recipes,
+    slotRecipes,
+    textStyles,
+    layerStyles,
+    animationStyles,
   },
-};
+});
 
-export const brandTheme = {
-  [Brand.VyDigital]: {},
-  [Brand.VyUtvikling]: {
-    colors: {
-      bg: {
-        default: {
-          dark: foundations.colors.darkGrey,
-        },
-      },
-      surface: {
-        default: {
-          dark: foundations.colors.darkGrey,
-        },
-      },
-    },
-  },
-  [Brand.CargoNet]: {
-    colors: tokens.color.cargonet as any,
-  },
-};
-
-export { fontFaces } from "./font-faces";
+export const system = createSystem(defaultBaseConfig, themeConfig);

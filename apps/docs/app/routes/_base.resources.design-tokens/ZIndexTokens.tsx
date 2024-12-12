@@ -5,11 +5,11 @@ import {
   Code,
   Stack,
   Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
+  TableBody,
+  TableCell,
+  TableColumnHeader,
+  TableHeader,
+  TableRow,
 } from "@vygruppen/spor-react";
 import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
@@ -28,29 +28,29 @@ const ZIndexTokensTable = (props: ZIndexTokenTableProps) => {
   const tokenFormatter = useTokenFormatter();
   return (
     <Box {...props}>
-      <Table variant="simple" colorScheme="grey">
-        <Thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Value</Th>
-            <Th>Code</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
+      <Table variant="line" colorScheme="grey">
+        <TableHeader>
+          <TableRow>
+            <TableColumnHeader>Name</TableColumnHeader>
+            <TableColumnHeader>Value</TableColumnHeader>
+            <TableColumnHeader>Code</TableColumnHeader>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {Object.entries(tokens.depth["z-index"]).map(([key, token]) => (
-            <Tr key={key}>
-              <Td>{key}</Td>
-              <Td>{token}</Td>
-              <Td>
-                <Stack spacing={1}>
+            <TableRow key={key}>
+              <TableCell>{key}</TableCell>
+              <TableCell>{token as string}</TableCell>
+              <TableCell>
+                <Stack gap={1}>
                   <Box>
                     <Code>{tokenFormatter(`depth.z-index.${key}`)}</Code>
                   </Box>
                 </Stack>
-              </Td>
-            </Tr>
+              </TableCell>
+            </TableRow>
           ))}
-        </Tbody>
+        </TableBody>
       </Table>
     </Box>
   );

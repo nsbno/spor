@@ -48,7 +48,7 @@ export function baseBorder(state: BorderState) {
     case "active": {
       return {
         outline: "1px solid",
-        outlineColor: "base.outline.default",
+        outlineColor: "base.outline",
       };
     }
     case "invalid": {
@@ -61,7 +61,7 @@ export function baseBorder(state: BorderState) {
     default:
       return {
         outline: "1px solid",
-        outlineColor: "base.outline.default",
+        outlineColor: "base.outline",
       };
   }
 }

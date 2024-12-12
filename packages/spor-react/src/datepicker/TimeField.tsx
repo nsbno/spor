@@ -1,3 +1,4 @@
+"use client";
 import { Box, Flex } from "@chakra-ui/react";
 import { CalendarDateTime, Time } from "@internationalized/date";
 import React, { useRef } from "react";

@@ -11,8 +11,7 @@ export const SkipToContent = () => {
   );
   return (
     <Box
-      as="a"
-      href="#content"
+      asChild
       position="fixed"
       zIndex="banner"
       outline="none"
@@ -36,7 +35,7 @@ export const SkipToContent = () => {
         outlineColor: "burntYellow",
       }}
     >
-      Skip to content
+      <a href="#content">Skip to content</a>
     </Box>
   );
 };

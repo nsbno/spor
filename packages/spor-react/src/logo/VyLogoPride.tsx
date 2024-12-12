@@ -1,32 +1,26 @@
-import { chakra } from "@chakra-ui/react";
+import { BoxProps } from "@chakra-ui/react";
 import React, { forwardRef, useId } from "react";
+import { SvgBox } from "./VyLogo";
 
-export type VyLogoPrideProps = {
-  /** The color of the logo
-   *
-   * Use `"light"` when the logo is used on a light background.
-   * Use `"dark"` when the logo is used on a dark background.
-   */
-  colorPalette: "light" | "dark";
-};
+export type VyLogoPrideProps = BoxProps;
 
 export const VyLogoPride = forwardRef<SVGSVGElement, VyLogoPrideProps>(
   (props, ref) => {
     // These colors should not be tokenized, as they are logo specific.
-    const { colorPalette } = props;
-    const pinkColor = colorPalette === "light" ? "#ED6F99" : "#ffffff";
-    const purpleColor = colorPalette === "light" ? "#C06CF7" : "#ffffff";
-    const darkPurpleColor = colorPalette === "light" ? "#821889" : "#ffffff";
-    const greenColor = colorPalette === "light" ? "#56BDBF" : "#ffffff";
-    const darkGreenColor = colorPalette === "light" ? "#3E8C26" : "#ffffff";
-    const blueColor = colorPalette === "light" ? "#3A0692" : "#ffffff";
-    const redColor = colorPalette === "light" ? "#EA3323" : "#ffffff";
-    const orangeColor = colorPalette === "light" ? "#F09436" : "#ffffff";
-    const yellowColor = colorPalette === "light" ? "#FFFF54" : "#ffffff";
+
+    const pinkColor = "#ED6F99";
+    const purpleColor = "#C06CF7";
+    const darkPurpleColor = "#821889";
+    const greenColor = "#56BDBF";
+    const darkGreenColor = "#3E8C26";
+    const blueColor = "#3A0692";
+    const redColor = "#EA3323";
+    const orangeColor = "#F09436";
+    const yellowColor = "#FFFF54";
 
     const id = useId();
     return (
-      <chakra.svg viewBox="0 0 107 54" {...props} ref={ref}>
+      <SvgBox ref={ref} viewBox="0 0 107 54" {...(props as any)}>
         <title>Vy logo pride</title>
         <svg
           width="108"
@@ -162,7 +156,7 @@ export const VyLogoPride = forwardRef<SVGSVGElement, VyLogoPrideProps>(
             fill={blueColor}
           />
         </svg>
-      </chakra.svg>
+      </SvgBox>
     );
   },
 );

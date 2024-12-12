@@ -5,12 +5,12 @@ import {
   Code,
   Stack,
   Table,
-  Tbody,
-  Td,
+  TableBody,
+  TableCell,
+  TableColumnHeader,
+  TableHeader,
+  TableRow,
   Text,
-  Th,
-  Thead,
-  Tr,
 } from "@vygruppen/spor-react";
 import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
@@ -44,38 +44,38 @@ const ShadowTokensTable = (props: ShadowTokenTableProps) => {
   const tokenFormatter = useTokenFormatter();
   return (
     <Box {...props}>
-      <Table variant="simple" colorScheme="grey">
-        <Thead>
-          <Tr>
-            <Th>Example</Th>
-            <Th>Value</Th>
-            <Th>Code</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {Object.entries(tokens.depth.shadow).map(([key, token]) => (
-            <Tr key={key}>
-              <Td>
+      <Table variant="line" colorScheme="grey">
+        <TableHeader>
+          <TableRow>
+            <TableColumnHeader>Example</TableColumnHeader>
+            <TableColumnHeader>Value</TableColumnHeader>
+            <TableColumnHeader>Code</TableColumnHeader>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {Object.entries(tokens.depth.shadow).map(([key, token]: any) => (
+            <TableRow key={key}>
+              <TableCell>
                 <Box
                   width={8}
                   height={8}
                   boxShadow={token.value}
                   borderRadius="xs"
                 />
-              </Td>
-              <Td>
+              </TableCell>
+              <TableCell>
                 {key} / {token.value}
-              </Td>
-              <Td>
-                <Stack spacing={1}>
+              </TableCell>
+              <TableCell>
+                <Stack gap={1}>
                   <Box>
                     <Code>{tokenFormatter(`depth.shadow.${key}`)}</Code>
                   </Box>
                 </Stack>
-              </Td>
-            </Tr>
+              </TableCell>
+            </TableRow>
           ))}
-        </Tbody>
+        </TableBody>
       </Table>
     </Box>
   );

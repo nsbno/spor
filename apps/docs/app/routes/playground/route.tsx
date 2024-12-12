@@ -29,7 +29,7 @@ export default function PlaygroundPage() {
   return (
     <StrictMode>
       <LiveProvider code={playgroundData}>
-        <Stack spacing={2} id="content">
+        <Stack gap={2} id="content">
           <LiveEditor
             borderRadius="none"
             minHeight="200px"

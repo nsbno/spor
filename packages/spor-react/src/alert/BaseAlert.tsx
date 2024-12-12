@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Box,
   BoxProps,
@@ -6,9 +8,9 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import React, { PropsWithChildren } from "react";
-import { alertSlotRecipe } from "../theme/components/alert";
+import { alertSlotRecipe } from "../theme/slot-recipes/alert";
 
-type AlertVariantProps = RecipeVariantProps<typeof alertSlotRecipe>;
+export type AlertVariantProps = RecipeVariantProps<typeof alertSlotRecipe>;
 
 export type BaseAlertProps = BoxProps &
   Exclude<ConditionalValue<any>, "variant"> &

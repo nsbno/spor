@@ -93,7 +93,7 @@ export const ChoiceChip = forwardRef(
         <chakra.input
           {...getInputProps({}, ref)}
           id={id}
-          disabled={isDisabled}
+          disabled={isDisabled || state.isDisabled}
         />
         <chakra.div
           {...getLabelProps()}
@@ -102,7 +102,7 @@ export const ChoiceChip = forwardRef(
           data-hover={dataAttr(state.isHovered)}
           data-focus={dataAttr(state.isFocused)}
           data-active={dataAttr(state.isActive)}
-          data-disabled={dataAttr(state.isDisabled)}
+          data-disabled={dataAttr(isDisabled || state.isDisabled)}
         >
           {icon && (
             <chakra.span __css={styles.icon}>

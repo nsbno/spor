@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useContext, useEffect, useId, useState } from "react";
 import { RadioCardGroupContext } from "./RadioCardGroup";
+import { dataAttr } from "@chakra-ui/utils";
 
 /**
  * Radio cards are used to present a set of options where only one option can be selected.
@@ -107,9 +108,9 @@ export const RadioCard = forwardRef(
           as="label"
           name={name}
           htmlFor={inputId}
-          aria-checked={isChecked}
-          data-checked={isChecked}
-          data-disabled={isDisabled}
+          aria-checked={dataAttr(isChecked)}
+          data-checked={dataAttr(isChecked)}
+          data-disabled={dataAttr(isDisabled)}
           {...props}
           __css={{
             ...styles.container,

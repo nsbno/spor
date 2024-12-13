@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.0.1
+
+### Patch Changes
+
+- e2d26fd: Fix isDisabled for RadioCard and ChoiceChip
+
 ## 11.0.0
 
 ### Major Changes

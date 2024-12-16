@@ -37,7 +37,7 @@ import { warnAboutMismatchingIcon } from "./helpers";
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
   (props, ref) => {
-    const { variant = "default", children, gap = 2, ...rest } = props;
+    const { variant = "ghost", children, gap = 2, ...rest } = props;
     const recipe = useSlotRecipe({ key: "accordion" });
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);

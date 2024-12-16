@@ -10,7 +10,7 @@ import { ExpandableProps } from "./types";
 export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
   (props, ref) => {
     const {
-      variant = "default",
+      variant = "ghost",
       gap,
       title,
       children,
@@ -34,16 +34,7 @@ export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
 
 export const ExpandableItem = forwardRef<HTMLDivElement, ExpandableProps>(
   (props, ref) => {
-    const {
-      variant = "default",
-      gap,
-      title,
-      children,
-      value,
-      headingLevel,
-      leftIcon,
-      ...rest
-    } = props;
+    const { title, children, value, headingLevel, leftIcon, ...rest } = props;
     return (
       <AccordionItem value={value} {...rest} ref={ref}>
         <AccordionItemTrigger headingLevel={headingLevel} leftIcon={leftIcon}>

@@ -10,16 +10,19 @@ export type AccordionVariantProps = RecipeVariantProps<
   typeof accordionSlotRecipe
 >;
 
-export type AccordionProps = Exclude<ChakraAccordionProps, "variant" | "size"> &
+export type AccordionProps = Exclude<
+  ChakraAccordionProps,
+  "variant" | "size" | "orientation"
+> &
   PropsWithChildren<AccordionVariantProps> & {
     /**
      * The display variant of the accordion items.
      *
-     * - `ghost` renders a pretty unstyled expandable list without any borders
+     * - `core` renders a pretty unstyled expandable list without any borders
      * - `base` renders an outlined version
      * - `floating` renders a version with a drop shadow
      */
-    variant?: "ghost" | "default" | "floating";
+    variant?: "ghost" | "core" | "floating";
     gap?: string | number;
   };
 

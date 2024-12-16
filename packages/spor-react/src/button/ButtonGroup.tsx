@@ -7,7 +7,7 @@ export type ButtonGroupProps = GroupProps & {
   children: React.ReactNode;
 };
 /**
- * Group buttons together with a `ButtonGroup`!
+ * Used to group or attach buttons together.
  *
  * If you have more than one button next to eachother, you might want to add a `ButtonGroup` to group them.
  *
@@ -18,25 +18,25 @@ export type ButtonGroupProps = GroupProps & {
  * </ButtonGroup>
  * ```
  *
- * You can specify the size of all buttons in a group with the `size` prop. You can also set the same variant across all buttons with the `variant` prop.
+ *
+ * Attach buttons together with the `attached` prop.
  *
  * ```tsx
- * <ButtonGroup variant="secondary" size="md">
- *   <Button>Open</Button>
- *   <Button>Save</Button>
- * </ButtonGroup>
- * ```
- *
- * Finally, you can join several buttons together with the `isAttached` prop.
- *
- * ```tsx
- * <ButtonGroup variant="secondary" size="md" isAttached>
- *   <Button>Open</Button>
- *   <IconButton>
+ * <ButtonGroup attached>
+ *   <Button variant="primary">Open</Button>
+ *   <IconButton variant="ghost">
  *     <SaveIcon aria-label="Save"/>
  *   </IconButton>
  * </ButtonGroup>
  * ```
+ *
+ * Use the `grow` prop to make the buttons grow to fill the available space.
+ *
+ * ```tsx
+ * <ButtonGroup grow>
+ *  <Button variant="primary">Open</Button>
+ *  <Button variant="secondary">Save</Button>
+ * </ButtonGroup>
  */
 
 export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(

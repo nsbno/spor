@@ -91,7 +91,7 @@ export const accordionSlotRecipe = defineSlotRecipe({
           },
         },
       },
-      default: {
+      core: {
         itemTrigger: {
           ...baseBorder("default"),
           _expanded: {

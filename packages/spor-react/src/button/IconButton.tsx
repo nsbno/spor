@@ -14,9 +14,9 @@ export type IconButtonProps = Exclude<
      *
      */
     variant: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
-
     spinner?: React.JSX.Element;
     icon?: React.JSX.Element;
+    loading?: boolean;
   };
 
 /**
@@ -55,19 +55,19 @@ export type IconButtonProps = Exclude<
  */
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   (props, ref) => {
-    const { icon } = props;
+    const { icon, size = "sm", loading = false } = props;
     return (
       <ChakraIconButton
         aria-label={props["aria-label"]}
         {...props}
-        {...(props.spinner && {
-          spinner: (
-            <ColorSpinner width="80%" height="80%" marginX={1} marginTop={1} />
-          ),
-        })}
+        size={size}
         ref={ref}
       >
-        {icon}
+        {loading ? (
+          <ColorSpinner width="80%" height="80%" marginX={1} marginTop={1} />
+        ) : (
+          icon
+        )}
       </ChakraIconButton>
     );
   },

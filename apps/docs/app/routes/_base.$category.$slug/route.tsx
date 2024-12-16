@@ -1,4 +1,5 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import { Link } from "@remix-run/react";
 import { groq } from "@sanity/groq-store";
 import {
   FigmaOutline24Icon,
@@ -172,25 +173,25 @@ export default function ArticlePage() {
         <HStack>
           {article?.category?.title && (
             <Badge
-              colorScheme={
+              colorPalette={
                 brand === Brand.CargoNet ? "light-yellow" : "light-green"
               }
             >
               {article?.category?.title}
             </Badge>
           )}
-          {isPreview && <Badge colorScheme="yellow">Preview</Badge>}
+          {isPreview && <Badge colorPalette="yellow">Preview</Badge>}
         </HStack>
         <Flex wrap="wrap" gap={2} marginLeft={"auto"} justifyContent={"end"}>
           {article.resourceLinks?.map((link) => (
             <Button
               key={link.url}
-              asChild
               variant="tertiary"
               size="sm"
               leftIcon={mapLinkToIcon(link.linkType)}
+              onClick={() => window.open(link.url, "_blank")}
             >
-              <a href={link.url}>{mapLinkToLabel(link.linkType)}</a>
+              {mapLinkToLabel(link.linkType)}
             </Button>
           ))}
         </Flex>
@@ -265,6 +266,7 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
       fitted={"true"}
       lazyMount
       key={id}
+      defaultValue={sections[0].customTitle || sections[0].title}
     >
       <TabsList>
         {sections.map((section) => (

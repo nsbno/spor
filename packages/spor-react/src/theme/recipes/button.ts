@@ -17,6 +17,7 @@ export const buttonRecipe = defineRecipe({
     justifyContent: "center",
     transitionProperty: "common",
     transitionDuration: "normal",
+    cursor: "pointer",
     textWrap: "wrap",
     paddingX: 3,
     paddingY: 1,
@@ -36,9 +37,9 @@ export const buttonRecipe = defineRecipe({
         ...brandText("default"),
         _hover: {
           ...brandBackground("hover"),
-        },
-        _active: {
-          ...brandBackground("active"),
+          _active: {
+            ...brandBackground("active"),
+          },
         },
       },
       secondary: {
@@ -46,21 +47,23 @@ export const buttonRecipe = defineRecipe({
         ...accentText("default"),
         _hover: {
           ...accentBackground("hover"),
-        },
-        _active: {
-          ...accentBackground("active"),
+          _active: {
+            ...accentBackground("active"),
+          },
         },
       },
       tertiary: {
         ...baseBackground("default"),
         ...baseText("default"),
         ...baseBorder("default"),
+
         _hover: {
           ...baseBorder("hover"),
-        },
-        _active: {
-          ...baseBorder("default"),
-          ...baseBackground("active"),
+          ...baseBackground("hover"),
+          _active: {
+            ...baseBorder("default"),
+            ...baseBackground("active"),
+          },
         },
       },
       ghost: {
@@ -71,9 +74,12 @@ export const buttonRecipe = defineRecipe({
           _disabled: {
             ...baseText("disabled"),
           },
+          _active: {
+            ...ghostBackground("active"),
+          },
         },
-        _active: {
-          ...ghostBackground("active"),
+        _icon: {
+          color: "darkGrey",
         },
       },
       floating: {
@@ -84,10 +90,10 @@ export const buttonRecipe = defineRecipe({
           ...floatingBackground("hover"),
           ...floatingBorder("hover"),
           boxShadow: "md",
-        },
-        _active: {
-          ...floatingBackground("active"),
-          boxShadow: "sm",
+          _active: {
+            ...floatingBackground("active"),
+            boxShadow: "sm",
+          },
         },
       },
     },
@@ -118,9 +124,5 @@ export const buttonRecipe = defineRecipe({
         fontWeight: "bold",
       },
     },
-  },
-  defaultVariants: {
-    variant: "primary",
-    size: "md",
   },
 });

@@ -17,7 +17,7 @@ export const InteractiveCode = ({
   return (
     <Box {...rest}>
       <LiveProvider code={code}>
-        <Stack spacing={2} aria-live="polite">
+        <Stack gap={2} aria-live="polite">
           {layout === "simple" && (
             <>
               <LivePreview />

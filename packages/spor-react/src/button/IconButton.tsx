@@ -2,26 +2,22 @@ import {
   IconButton as ChakraIconButton,
   type IconButtonProps as ChakraIconButtonProps,
 } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
-import { ColorSpinner } from "..";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { ButtonVariantProps, ColorSpinner } from "..";
 
 export type IconButtonProps = Exclude<
   ChakraIconButtonProps,
   "variant" | "spinner" | "icon"
-> & {
-  /** The button variant.
-   *
-   */
-  variant:
-    | "primary"
-    | "secondary"
-    | "tertiary"
-    | "ghost"
-    | "floating"
-    | "solid";
-  spinner?: React.JSX.Element;
-  icon?: React.JSX.Element;
-};
+> &
+  PropsWithChildren<ButtonVariantProps> & {
+    /** The button variant.
+     *
+     */
+    variant: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
+    spinner?: React.JSX.Element;
+    icon?: React.JSX.Element;
+    loading?: boolean;
+  };
 
 /**
  * An icon-only button.
@@ -58,16 +54,21 @@ export type IconButtonProps = Exclude<
  * ```
  */
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  (props, ref) => (
-    <ChakraIconButton
-      aria-label={props["aria-label"]}
-      {...props}
-      {...(props.spinner && {
-        spinner: (
+  (props, ref) => {
+    const { icon, size = "sm", loading = false } = props;
+    return (
+      <ChakraIconButton
+        aria-label={props["aria-label"]}
+        {...props}
+        size={size}
+        ref={ref}
+      >
+        {loading ? (
           <ColorSpinner width="80%" height="80%" marginX={1} marginTop={1} />
-        ),
-      })}
-      ref={ref}
-    />
-  ),
+        ) : (
+          icon
+        )}
+      </ChakraIconButton>
+    );
+  },
 );

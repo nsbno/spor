@@ -53,17 +53,17 @@ export const accordionSlotRecipe = defineSlotRecipe({
       },
       _open: {
         animationName: "expand-height, fade-in",
-        animationDuration: "slow",
+        animationDuration: "moderate",
       },
       _closed: {
         animationName: "collapse-height, fade-out",
-        animationDuration: "slow",
+        animationDuration: "moderate",
       },
     },
     itemIndicator: {
       transition: "rotate 0.2s",
       transformOrigin: "center",
-      color: "fg.subtle",
+
       _open: {
         rotate: "180deg",
       },

@@ -37,7 +37,13 @@ import { warnAboutMismatchingIcon } from "./helpers";
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
   (props, ref) => {
-    const { variant = "ghost", children, gap = 2, ...rest } = props;
+    const {
+      variant = "ghost",
+      children,
+      gap = 2,
+      collapsible = true,
+      ...rest
+    } = props;
     const recipe = useSlotRecipe({ key: "accordion" });
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);
@@ -48,6 +54,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
         css={styles.root}
         {...restProps}
         variant={variant}
+        collapsible={collapsible}
       >
         <Stack gap={gap}>{children}</Stack>
       </ChakraAccordion.Root>
@@ -79,7 +86,7 @@ export const AccordionItemTrigger = forwardRef<
         </ChakraAccordion.ItemIndicator>
       )}
 
-      <HStack as={headingLevel} gap="4" flex="1" textAlign="start" width="full">
+      <HStack as={headingLevel} flex="1" textAlign="start" width="full">
         {leftIcon && <Box marginRight={1}>{leftIcon}</Box>}
         {children}
       </HStack>

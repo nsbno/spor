@@ -16,6 +16,7 @@ export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
       children,
       value,
       headingLevel,
+      collapsible = true,
       leftIcon,
       ...rest
     } = props;

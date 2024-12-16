@@ -4,3 +4,4 @@ export * from "./CloseButton";
 export * from "./FloatingActionButton";
 export * from "./IconButton";
 export * from "./LinkButton";
+export * from "./Clipboard";

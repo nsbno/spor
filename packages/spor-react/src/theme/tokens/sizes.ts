@@ -1,5 +1,6 @@
 import { defineTokens } from "@chakra-ui/react";
 import tokens from "@vygruppen/spor-design-tokens";
+import { spacing } from "./spacing";
 
 export const largeSizes = defineTokens.sizes({
   max: { value: "max-content" },
@@ -48,5 +49,6 @@ const container = defineTokens.sizes({
 export const sizes = defineTokens.sizes({
   ...largeSizes,
   ...namedSizes,
+  ...spacing,
   container,
 });

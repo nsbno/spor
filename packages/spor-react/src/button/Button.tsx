@@ -1,14 +1,10 @@
-"use client";
-
 import {
   Box,
   Center,
   type ButtonProps as ChakraButtonProps,
   Button as ChakraButton,
   Flex,
-  useRecipe,
   type RecipeVariantProps,
-  ConditionalValue,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { createTexts, useTranslation } from "../i18n";
@@ -26,10 +22,8 @@ export type ButtonProps = Exclude<
     loadingText?: React.ReactNode;
     leftIcon?: React.ReactNode;
     rightIcon?: React.ReactNode;
-    variant: ConditionalValue<
-      "primary" | "secondary" | "tertiary" | "ghost" | "floating"
-    >;
-    size?: ConditionalValue<"lg" | "md" | "sm" | "xs">;
+    variant: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
+    size?: "lg" | "md" | "sm" | "xs";
   };
 /**
  * Buttons are used to trigger actions.
@@ -70,24 +64,20 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       leftIcon,
       rightIcon,
       type = "button",
-      style,
       children,
-      ...rest
     } = props;
     const ariaLabel = useCorrectAriaLabel(props);
-    const recipe = useRecipe({ recipe: buttonRecipe });
-    const styles = recipe({ variant, size });
     return (
       <ChakraButton
-        {...rest}
+        {...props}
         type={type}
         ref={ref}
-        css={styles}
         aria-label={ariaLabel}
         aria-busy={loading}
         disabled={disabled || loading}
         position="relative"
-        fontFamily={"Vy Sans"}
+        variant={variant}
+        size={size}
       >
         {loading && (
           <Center position="absolute" right={0} left={0} top={1} bottom={0}>
@@ -97,6 +87,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               marginX={2}
               marginY={2}
             />
+            {loadingText && <Box>{loadingText}</Box>}
           </Center>
         )}
         <Flex

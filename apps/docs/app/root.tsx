@@ -37,7 +37,6 @@ import {
   getInitialSanityData,
 } from "./utils/initialSanityData.server";
 import { urlBuilder } from "./utils/sanity/utils";
-import { defaultSystem } from "@chakra-ui/react";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data || !data.initialSanityData) {
@@ -124,7 +123,7 @@ export function ErrorBoundary() {
   );
 }
 
-type BrandType = typeof Brand[keyof typeof Brand];
+type BrandType = (typeof Brand)[keyof typeof Brand];
 
 type DocumentProps = {
   children: ReactNode;
@@ -158,7 +157,7 @@ const Document = withEmotionCache(
           <meta name="viewport" content="width=device-width,initial-scale=1" />
           {title ? <title>{title}</title> : null}
           <Meta />
-          <Links />
+          {/* <Links /> */}
           <FontPreloading />
           {serverStyleData?.map(({ key, ids, css }) => (
             <style
@@ -169,11 +168,7 @@ const Document = withEmotionCache(
           ))}
         </head>
         <body>
-          <SporProvider
-            language={Language.English}
-            brand={brand}
-            /* value={defaultSystem} */
-          >
+          <SporProvider language={Language.English} brand={brand}>
             <SkipToContent />
             {children}
           </SporProvider>

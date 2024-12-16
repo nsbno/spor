@@ -11,7 +11,7 @@ import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
 import { buttonRecipe } from "../theme/recipes/button";
 
-type ButtonVariantProps = RecipeVariantProps<typeof buttonRecipe>;
+export type ButtonVariantProps = RecipeVariantProps<typeof buttonRecipe>;
 
 export type ButtonProps = Exclude<
   ChakraButtonProps,

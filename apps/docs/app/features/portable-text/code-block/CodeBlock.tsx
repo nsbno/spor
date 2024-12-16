@@ -1,8 +1,12 @@
-import { Box, BoxProps, Button } from "@vygruppen/spor-react";
+import {
+  Box,
+  BoxProps,
+  Clipboard,
+  ClipboardButton,
+} from "@vygruppen/spor-react";
 import { Highlight } from "prism-react-renderer";
-import { forwardRef, Key, useRef } from "react";
+import { Key, useRef } from "react";
 import { theme } from "./codeTheme";
-import { useClipboard } from "@chakra-ui/react";
 
 type CodeBlockProps = Omit<BoxProps, "children"> & {
   /** The code to highlight */
@@ -87,8 +91,14 @@ export const CodeBlockContainer = ({
       onKeyUp={handleKeyUp}
       {...props}
     >
-      <Box position="absolute" top={2} right={2} zIndex="docked">
-        <CopyCodeButton ref={copyButtonRef} code={code} />
+      <Box
+        position="absolute"
+        top={2}
+        right={2}
+        zIndex="docked"
+        ref={copyButtonRef}
+      >
+        <CopyCodeButton code={code} />
       </Box>
       <Box>{children}</Box>
     </Box>
@@ -110,20 +120,10 @@ function getPreviousFocusableElement() {
 }
 
 type CopyCodeButtonProps = { code: string };
-export const CopyCodeButton = forwardRef<CopyCodeButtonProps, "button">(
-  ({ code }, ref) => {
-    const { onCopy, hasCopied } = useClipboard(code);
-    return (
-      <Button
-        variant="primary"
-        size="xs"
-        onClick={onCopy}
-        _active={{ backgroundColor: "mint", color: "darkGrey" }}
-        fontFamily="body"
-        ref={ref}
-      >
-        {hasCopied ? "Copied" : "Copy"}
-      </Button>
-    );
-  },
-);
+export const CopyCodeButton = ({ code }: CopyCodeButtonProps) => {
+  return (
+    <Clipboard value={code}>
+      <ClipboardButton className="dark" variant="primary" />
+    </Clipboard>
+  );
+};

@@ -77,7 +77,7 @@ const links: LinkItem[] = [
 
 export function ActionLinks() {
   return (
-    <Container maxWidth="container.lg">
+    <Container maxWidth="container.lg" marginX="auto">
       <SimpleGrid
         position="relative"
         top={["-62px", -8]}

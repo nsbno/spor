@@ -172,7 +172,7 @@ const Document = withEmotionCache(
           <SporProvider
             language={Language.English}
             brand={brand}
-            value={defaultSystem}
+            /* value={defaultSystem} */
           >
             <SkipToContent />
             {children}

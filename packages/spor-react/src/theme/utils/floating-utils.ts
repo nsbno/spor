@@ -33,23 +33,23 @@ export function floatingBorder(state: FloatingBorderState) {
   switch (state) {
     case "hover":
       return {
-        outline: "1px solid",
-        outlineColor: "floating.outline.hover",
+        border: "1px solid",
+        borderColor: "floating.outline.hover",
       };
     case "selected":
       return {
-        outline: "1px solid",
-        outlineColor: "outline.focus",
+        border: "1px solid",
+        borderColor: "outline.focus",
       };
     case "active":
       return {
-        outline: "1px solid",
-        outlineColor: "floating.outline.active",
+        border: "1px solid",
+        borderColor: "floating.outline.active",
       };
     default:
       return {
-        outline: "1px solid",
-        outlineColor: "floating.outline",
+        border: "1px solid",
+        borderColor: "floating.outline",
       };
   }
 }

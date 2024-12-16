@@ -3,14 +3,14 @@ import {
   AccordionItem,
   AccordionItemContent,
   AccordionItemTrigger,
-  AccordionRoot,
+  Accordion,
   Stack,
   Text,
 } from "@vygruppen/spor-react";
 import { useMenu } from "~/utils/useMenu";
 import { MenuItem } from "./MenuItem";
 import { forwardRef } from "react";
-import { Separator } from "@chakra-ui/react";
+import { Separator } from "@vygruppen/spor-react";
 
 export const ContentMenu = forwardRef<HTMLButtonElement>((_, ref) => {
   const menu = useMenu("side-menu");
@@ -28,14 +28,10 @@ export const ContentMenu = forwardRef<HTMLButtonElement>((_, ref) => {
   }
 
   return (
-    <AccordionRoot
-      variant="ghost"
-      collapsible
-      defaultValue={[location.pathname]}
-    >
+    <Accordion variant="ghost" collapsible defaultValue={[location.pathname]}>
       {menu?.menuItems.map((item, index) => {
         if (item._type === "divider") {
-          return <Separator key={index} marginY={2} height="1px" />;
+          return <Separator key={index} marginY={2} size="sm" />;
         }
         const subItems = item.subItems?.filter((subItem) => subItem.url);
         const hasSubItems = Boolean(subItems?.length);
@@ -66,6 +62,6 @@ export const ContentMenu = forwardRef<HTMLButtonElement>((_, ref) => {
           </AccordionItem>
         );
       })}
-    </AccordionRoot>
+    </Accordion>
   );
 });

@@ -11,7 +11,7 @@ export function baseBackground(state: BaseBackgroundState) {
   switch (state) {
     case "active":
       return {
-        backgroundColor: "base.surface.active",
+        backgroundColor: "default.surface.active",
       };
     case "selected":
       return brandBackground("default");
@@ -34,7 +34,7 @@ export function baseBorder(state: BorderState) {
     case "hover":
       return {
         outline: "2px solid",
-        outlineColor: "base.outline.hover",
+        outlineColor: "default.outline.hover",
       };
     case "focus": {
       return focusVisibleStyles()._focusVisible;
@@ -48,7 +48,7 @@ export function baseBorder(state: BorderState) {
     case "active": {
       return {
         outline: "1px solid",
-        outlineColor: "base.outline",
+        outlineColor: "default.outline",
       };
     }
     case "invalid": {
@@ -61,7 +61,7 @@ export function baseBorder(state: BorderState) {
     default:
       return {
         outline: "1px solid",
-        outlineColor: "base.outline",
+        outlineColor: "default.outline",
       };
   }
 }
@@ -79,7 +79,7 @@ export function baseText(state: BaseTextState) {
       };
     default:
       return {
-        color: "base.text",
+        color: "default.text",
       };
   }
 }

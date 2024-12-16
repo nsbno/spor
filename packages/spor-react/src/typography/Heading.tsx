@@ -61,7 +61,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
         as={as}
         textStyle={variant}
         id={id}
-        color={"text.default"}
+        color={"text"}
         ref={ref}
         {...rest}
       />

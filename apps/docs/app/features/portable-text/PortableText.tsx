@@ -276,7 +276,7 @@ const components: Partial<PortableTextReactComponents> = {
         <Box
           as="article"
           backgroundColor="bg.tertiary"
-          color="text.default"
+          color="text"
           marginTop={3}
           padding={4}
           borderRadius="md"

@@ -8,6 +8,7 @@ type InteractiveCodeProps = {
   code: string;
   layout: "simple" | "preview-only" | "code-only" | "advanced";
 } & BoxProps;
+
 export const InteractiveCode = ({
   code,
   layout = "simple",

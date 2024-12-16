@@ -7,15 +7,14 @@ export const LivePreview = (props: BoxProps) => {
       borderRadius="sm"
       border="sm"
       borderColor="osloGrey"
-      backgroundColor="bg.default"
-      color="text.default"
+      backgroundColor="bg"
+      color="text"
       transition="all .1s ease-out"
       padding={4}
       paddingRight={8}
       position="relative"
       {...props}
     >
-      {/** @ts-ignore Bad typing in React Live */}
       <ReactLivePreview Component={Box} />
     </Box>
   );

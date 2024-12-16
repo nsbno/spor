@@ -1,7 +1,11 @@
 import { defineRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { surface } from "../utils/surface-utils";
-import { baseText } from "../utils/base-utils";
+import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { floatingBackground, floatingBorder } from "../utils/floating-utils";
+import { ghostBackground } from "../utils/ghost-utils";
+import { accentBackground, accentText } from "../utils/accent-utils";
+import { brandBackground, brandText } from "../utils/brand-utils";
 
 export const buttonRecipe = defineRecipe({
   className: "spor-button",
@@ -28,54 +32,62 @@ export const buttonRecipe = defineRecipe({
   variants: {
     variant: {
       primary: {
-        backgroundColor: "brand.default",
-        color: "brand.text.default",
+        ...brandBackground("default"),
+        ...brandText("default"),
         _hover: {
-          backgroundColor: "brand.hover",
+          ...brandBackground("hover"),
         },
         _active: {
-          backgroundColor: "brand.active",
+          ...brandBackground("active"),
         },
       },
       secondary: {
-        backgroundColor: "accent.default",
-        color: "accent.text.default",
+        ...accentBackground("default"),
+        ...accentText("default"),
         _hover: {
-          backgroundColor: "accent.hover",
+          ...accentBackground("hover"),
         },
         _active: {
-          backgroundColor: "accent.active",
+          ...accentBackground("active"),
         },
       },
       tertiary: {
-        backgroundColor: "base.default",
-        color: "base.text.default",
+        ...baseBackground("default"),
+        ...baseText("default"),
+        ...baseBorder("default"),
         _hover: {
-          backgroundColor: "base.hover",
+          ...baseBorder("hover"),
         },
         _active: {
-          backgroundColor: "base.active",
+          ...baseBorder("default"),
+          ...baseBackground("active"),
         },
       },
       ghost: {
-        backgroundColor: "transparent",
-        color: "brand.text.default",
+        ...ghostBackground("default"),
+        ...baseText("default"),
         _hover: {
-          backgroundColor: "brand.hover",
+          ...ghostBackground("hover"),
+          _disabled: {
+            ...baseText("disabled"),
+          },
         },
         _active: {
-          backgroundColor: "brand.active",
+          ...ghostBackground("active"),
         },
       },
       floating: {
+        ...floatingBackground("default"),
+        ...floatingBorder("default"),
         boxShadow: "sm",
-        backgroundColor: "base.default",
-        color: "base.text.default",
         _hover: {
-          backgroundColor: "base.hover",
+          ...floatingBackground("hover"),
+          ...floatingBorder("hover"),
+          boxShadow: "md",
         },
         _active: {
-          backgroundColor: "base.active",
+          ...floatingBackground("active"),
+          boxShadow: "sm",
         },
       },
     },

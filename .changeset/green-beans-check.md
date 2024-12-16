@@ -6,6 +6,10 @@
 
 Spor is getting a major update with Chakra 3.
 
+## Updated variants
+
+- `base` is now `default`
+
 ### Update props
 
 - `isDisabled` is now `disabled`

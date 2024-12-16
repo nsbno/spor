@@ -167,7 +167,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
         title: {
           fontSize: "mobile.xs",
           fontWeight: "normal",
-          color: "text.default",
+          color: "text",
         },
         description: {
           display: "none",

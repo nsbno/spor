@@ -1,14 +1,14 @@
 "use client";
 import {
   RecipeVariantProps,
-  useRecipe,
   Switch as ChakraSwitch,
   ConditionalValue,
+  useSlotRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
-import { switchRecipe } from "../theme/recipes/switch";
+import { switchSlotRecipe } from "../theme/slot-recipes/switch";
 
-type SwitchVariants = RecipeVariantProps<typeof switchRecipe>;
+type SwitchVariants = RecipeVariantProps<typeof switchSlotRecipe>;
 
 export type SwitchProps = Exclude<
   ChakraSwitch.RootProps,
@@ -20,15 +20,6 @@ export type SwitchProps = Exclude<
     trackLabel?: { on: React.ReactNode; off: React.ReactNode };
     thumbLabel?: { on: React.ReactNode; off: React.ReactNode };
     size?: ConditionalValue<"sm" | "md" | "lg">;
-    colorPalette?: ConditionalValue<
-      | "white"
-      | "grey"
-      | "green"
-      | "red"
-      | "darkBlue"
-      | "darkGreen"
-      | "darkYellow"
-    >;
   };
 
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
@@ -39,13 +30,12 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       rootRef,
       trackLabel,
       thumbLabel,
-      colorPalette = "white",
       size,
       ...rest
     } = props;
 
-    const recipe = useRecipe({ recipe: switchRecipe });
-    const styles = recipe({ colorPalette, size });
+    const recipe = useSlotRecipe({ key: "switch" });
+    const styles = recipe({ size });
 
     return (
       <ChakraSwitch.Root ref={rootRef} {...rest} css={styles}>

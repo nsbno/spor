@@ -72,7 +72,7 @@ export const separatorRecipe = defineRecipe({
   ],
   defaultVariants: {
     variant: "solid",
-    size: "md",
+    size: "sm",
     orientation: "horizontal",
   },
 });

@@ -84,7 +84,7 @@ export default function ComponentsPage() {
       <PortableText value={article.content} />
       <SimpleGrid columns={[1, 2, 3]} gap={3} marginTop={6}>
         {components.map((component) => (
-          <PressableCard key={component._id} asChild variant="floating">
+          <PressableCard key={component._id} variant="floating">
             <Link to={`/components/${component.slug}`}>
               {component.mainImage ? (
                 <Image

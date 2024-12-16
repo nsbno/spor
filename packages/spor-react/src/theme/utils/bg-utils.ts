@@ -3,7 +3,7 @@ export const bg = (bg: Bg) => {
   switch (bg) {
     case "default":
       return {
-        backgroundColor: "bg.default",
+        backgroundColor: "bg",
       };
     case "secondary":
       return {

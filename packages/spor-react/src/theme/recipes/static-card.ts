@@ -9,14 +9,14 @@ export const staticCardRecipe = defineRecipe({
     fontSize: "inherit",
     display: "block",
     borderRadius: "md",
-    color: "text.default.light",
+    color: "text",
     ...focusVisibleStyles(),
   },
   variants: {
     colorPalette: {
       white: {
-        backgroundColor: "default",
-        color: "text.default.light",
+        backgroundColor: "white",
+        color: "text",
       },
       grey: {
         backgroundColor: "lightGrey",

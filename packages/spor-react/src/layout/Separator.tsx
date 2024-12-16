@@ -1,4 +1,5 @@
 "use client";
+
 import {
   RecipeVariantProps,
   useRecipe,
@@ -10,13 +11,20 @@ import { separatorRecipe } from "../theme/recipes/separator";
 
 type SeparatorVariantProps = RecipeVariantProps<typeof separatorRecipe>;
 
-type SeparatorProps = ChakraSeparatorProps &
-  PropsWithChildren<SeparatorVariantProps>;
+type SeparatorProps = Exclude<
+  ChakraSeparatorProps,
+  "size" | "variant" | "colorPalette"
+> &
+  PropsWithChildren<SeparatorVariantProps> & {
+    size?: "sm" | "md" | "lg";
+    variant?: "solid" | "dashed";
+  };
 
 export const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
   (props, ref) => {
+    const { size = "sm", variant = "solid" } = props;
     const recipe = useRecipe({ recipe: separatorRecipe });
-    const styles = recipe({});
+    const styles = recipe({ size, variant });
     return <ChakraSeparator css={styles} {...props} ref={ref} />;
   },
 );

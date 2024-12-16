@@ -262,7 +262,7 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
       variant="accent"
       size="md"
       marginTop={4}
-      fitted={true}
+      fitted={"true"}
       lazyMount
       key={id}
     >

@@ -7,7 +7,6 @@ import { linkRecipe } from "./link";
 import { pressableCardRecipe } from "./pressable-card";
 import { separatorRecipe } from "./separator";
 import { staticCardRecipe } from "./static-card";
-import { switchRecipe } from "./switch";
 import { textareaRecipe } from "./textarea";
 import { toastRecipe } from "./toast";
 
@@ -21,7 +20,6 @@ export const recipes = {
   pressableCard: pressableCardRecipe,
   seperator: separatorRecipe,
   staticCard: staticCardRecipe,
-  switch: switchRecipe,
   textarea: textareaRecipe,
   toast: toastRecipe,
 };

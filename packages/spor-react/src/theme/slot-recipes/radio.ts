@@ -10,7 +10,7 @@ export const radioSlotRecipe = defineSlotRecipe({
     container: {
       _hover: {
         backgroundColor: "inherit",
-        borderColor: "text.default.light",
+        borderColor: "text",
         color: brandBackground("hover").backgroundColor,
       },
     },

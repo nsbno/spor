@@ -19,7 +19,7 @@ export const infoTagSlotRecipe = defineSlotRecipe({
       padding: 1,
     },
     textContainer: {
-      color: "text.default",
+      color: "text",
     },
   },
   variants: {

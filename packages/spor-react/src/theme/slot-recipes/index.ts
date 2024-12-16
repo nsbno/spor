@@ -25,6 +25,7 @@ import { radioSlotRecipe } from "./radio";
 import { radioCardSlotRecipe } from "./radio-card";
 import { selectSlotRecipe } from "./select";
 import { stepperSlotRecipe } from "./stepper";
+import { switchSlotRecipe } from "./switch";
 import { tableSlotRecipe } from "./table";
 import { tabsSlotRecipe } from "./tabs";
 import { travelTagSlotRecipe } from "./travel-tag";
@@ -57,6 +58,7 @@ export const slotRecipes = {
   radio: radioSlotRecipe,
   select: selectSlotRecipe,
   stepper: stepperSlotRecipe,
+  switch: switchSlotRecipe,
   table: tableSlotRecipe,
   tabs: tabsSlotRecipe,
   travelTag: travelTagSlotRecipe,

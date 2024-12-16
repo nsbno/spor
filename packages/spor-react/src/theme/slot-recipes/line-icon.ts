@@ -84,7 +84,7 @@ export const lineIconSlotRecipe = defineSlotRecipe({
           borderColor: "blackAlpha.200",
         },
         icon: {
-          color: "text.default",
+          color: "text",
           "[aria-disabled=true] &": {
             color: "osloGrey",
           },

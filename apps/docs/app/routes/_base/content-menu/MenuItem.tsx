@@ -1,6 +1,6 @@
-import { Box, chakra } from "@chakra-ui/react";
+import { chakra } from "@chakra-ui/react";
 import { Link } from "@remix-run/react";
-import { FlexProps } from "@vygruppen/spor-react";
+import { FlexProps, Box } from "@vygruppen/spor-react";
 import React, { forwardRef, useRef } from "react";
 
 type MenuItemProps = FlexProps & {
@@ -47,7 +47,7 @@ export const MenuItem = forwardRef<HTMLAnchorElement, MenuItemProps>(
         style={{ height: "auto" }}
         borderRadius="lg"
         fontSize={["mobile.xs", null, "desktop.xs"]}
-        color="text.default"
+        color="text"
         _hover={{ backgroundColor: "ghost.surface.hover" }}
         _active={{ backgroundColor: "ghost.surface.active" }}
         _focusVisible={{

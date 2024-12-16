@@ -27,6 +27,8 @@ export const accordionSlotRecipe = defineSlotRecipe({
       justifyContent: "space-between",
       ...baseText("default"),
       textAlign: "left",
+      width: "100%",
+      alignItems: "center",
       fontSize: ["mobile.sm", null, "desktop.sm"],
       fontFamily: "body",
       fontWeight: "bold",
@@ -45,14 +47,38 @@ export const accordionSlotRecipe = defineSlotRecipe({
       paddingX: [2, null, 3],
       borderBottomRadius: "sm",
       fontSize: ["mobile.sm", null, "desktop.sm"],
+      color: "text",
       _icon: {
         fontSize: "1.25em",
+      },
+      _open: {
+        animationName: "expand-height, fade-in",
+        animationDuration: "slow",
+      },
+      _closed: {
+        animationName: "collapse-height, fade-out",
+        animationDuration: "slow",
+      },
+    },
+    itemIndicator: {
+      transition: "rotate 0.2s",
+      transformOrigin: "center",
+      color: "fg.subtle",
+      _open: {
+        rotate: "180deg",
+      },
+      _icon: {
+        width: "1.2em",
+        height: "1.2em",
       },
     },
   },
   variants: {
     variant: {
       ghost: {
+        root: {
+          outline: "none",
+        },
         itemTrigger: {
           _hover: {
             ...ghostBackground("hover"),
@@ -60,13 +86,14 @@ export const accordionSlotRecipe = defineSlotRecipe({
           _active: {
             ...ghostBackground("active"),
           },
+          _pressed: {
+            ...ghostBackground("active"),
+          },
         },
       },
-      base: {
-        root: {
-          ...baseBorder("default"),
-        },
+      default: {
         itemTrigger: {
+          ...baseBorder("default"),
           _expanded: {
             borderBottomRadius: "none",
           },
@@ -81,19 +108,16 @@ export const accordionSlotRecipe = defineSlotRecipe({
         },
       },
       floating: {
-        root: {
+        itemTrigger: {
           ...floatingBackground("default"),
           ...floatingBorder("default"),
           boxShadow: "sm",
-        },
-        itemTrigger: {
           _expanded: {
             borderBottomRadius: "none",
           },
           _hover: {
             ...floatingBackground("hover"),
             ...floatingBorder("hover"),
-            outlineOffset: 1,
           },
           _active: {
             ...ghostBackground("active"),
@@ -102,8 +126,5 @@ export const accordionSlotRecipe = defineSlotRecipe({
         },
       },
     },
-  },
-  defaultVariants: {
-    variant: "base",
   },
 });

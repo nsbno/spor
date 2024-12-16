@@ -18,7 +18,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
       gap: 0.5,
       borderRadius: "xl",
     },
-    content: {
+    trigger: {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -28,34 +28,17 @@ export const tabsSlotRecipe = defineSlotRecipe({
       whiteSpace: "nowrap",
       borderRadius: "xl",
       ...focusVisibleStyles(),
-      _disabled: {
-        ...baseBackground("disabled"),
-        ...baseText("disabled"),
-      },
-      _selected: {
-        pointerEvents: "none",
-        ...brandBackground("default"),
-        ...brandText("default"),
-        _hover: {
-          ...brandBackground("hover"),
-          ...brandText("hover"),
-        },
-        _active: {
-          ...brandBackground("active"),
-          ...brandText("active"),
-        },
-      },
     },
   },
   variants: {
     variant: {
-      base: {
+      default: {
         list: {
           ...baseBackground("default"),
           ...baseText("default"),
           ...baseBorder("default"),
         },
-        content: {
+        trigger: {
           ...baseText("default"),
           _hover: {
             ...baseBorder("hover"),
@@ -71,7 +54,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
           backgroundColor: "accent.bg",
           ...accentText("default"),
         },
-        content: {
+        trigger: {
           ...accentText("default"),
           _hover: {
             ...accentBackground("hover"),
@@ -88,7 +71,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
           height: 5,
           padding: "2px",
         },
-        content: {
+        trigger: {
           paddingX: 2,
           paddingY: 0,
         },
@@ -98,7 +81,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
           height: 6,
           padding: 0.5,
         },
-        content: {
+        trigger: {
           paddingX: 2,
         },
       },
@@ -107,7 +90,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
           height: 7,
           padding: 0.5,
         },
-        content: {
+        trigger: {
           fontWeight: "bold",
           paddingX: 2,
         },
@@ -117,15 +100,11 @@ export const tabsSlotRecipe = defineSlotRecipe({
           height: 8,
           padding: "4px",
         },
-        content: {
+        trigger: {
           fontWeight: "bold",
           paddingX: 3,
         },
       },
     },
-  },
-  defaultVariants: {
-    size: "sm",
-    variant: "base",
   },
 });

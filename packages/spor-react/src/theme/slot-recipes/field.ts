@@ -5,18 +5,37 @@ export const fieldSlotRecipe = defineSlotRecipe({
   className: "spor-field",
   base: {
     root: {
+      display: "flex",
       width: "100%",
       position: "relative",
-      transitionProperty: "common",
-      transitionDuration: "fast",
+      gap: "1.5",
     },
     label: {
-      fontSize: "mobile.sm",
-      marginEnd: 3,
-      marginBottom: 2,
-      transitionProperty: "common",
-      transitionDuration: "normal",
-      opacity: 1,
+      /* For when input is filled */
+      pos: "absolute",
+      paddingX: 3,
+      top: "0.5",
+      fontWeight: "normal",
+      fontSize: ["mobile.xs", "desktop.xs"],
+      color: "text",
+      pointerEvents: "none",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      transition: "position",
+      zIndex: "docked",
+      _peerPlaceholderShown: {
+        /* For when input is not in focus */
+        top: "0.9rem",
+        color: "text",
+        fontSize: ["mobile.sm", "desktop.sm"],
+      },
+      _peerFocusVisible: {
+        /* For when input is in focus */
+        fontSize: ["mobile.xs", "desktop.xs"],
+        color: "text",
+        top: "0.5",
+      },
       _disabled: {
         opacity: 0.4,
       },

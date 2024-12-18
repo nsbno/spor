@@ -1,29 +1,18 @@
 "use client";
-import {
-  BoxProps,
-  ConditionalValue,
-  FlexProps,
-  Select,
-  useControllableState,
-} from "@chakra-ui/react";
-import React, { forwardRef, Suspense } from "react";
-import {
-  SelectRoot,
-  Input,
-  createTexts,
-  useTranslation,
-  SelectLabel,
-} from "..";
+import { BoxProps, FlexProps, useControllableState } from "@chakra-ui/react";
+import React, { forwardRef } from "react";
+import { Input, createTexts, useTranslation, SelectProps } from "..";
 import { AttachedInputs } from "./AttachedInputs";
+import { CountryCodeSelect } from "./CountryCodeSelect";
 
 type CountryCodeAndPhoneNumber = {
   countryCode: string;
   nationalNumber: string;
 };
 
-type PhoneNumberInputProps = Omit<BoxProps, "onChange"> &
+type PhoneNumberInputProps = Omit<BoxProps, "onValueChange"> &
   FlexProps &
-  Exclude<Select.RootProps, "variant"> & {
+  Exclude<SelectProps, "variant"> & {
     /** The label. Defaults to a localized version of "Phone number" */
     label?: string;
     /** The root name.
@@ -32,10 +21,10 @@ type PhoneNumberInputProps = Omit<BoxProps, "onChange"> &
      */
     name?: string;
     /** Callback for when the country code or phone number changes */
-    onChange?: (change: CountryCodeAndPhoneNumber) => void;
+    onValueChange?: (change: CountryCodeAndPhoneNumber) => void;
     /** The optional value of the country code and phone number */
     value?: CountryCodeAndPhoneNumber;
-    variant?: ConditionalValue<"base" | "floating">;
+    variant?: "core" | "floating";
     isOptional?: boolean;
     collection: Record<string, string>;
   };
@@ -65,7 +54,7 @@ export const PhoneNumberInput = forwardRef<
     label: externalLabel,
     name,
     value: externalValue,
-    onChange: externalOnChange,
+    onValueChange: externalOnChange,
     variant,
     isOptional,
     collection,
@@ -76,6 +65,7 @@ export const PhoneNumberInput = forwardRef<
   const label =
     externalLabel ??
     (isOptional ? t(texts.phoneNumberOptional) : t(texts.phoneNumber));
+
   const [value, onChange] = useControllableState({
     value: externalValue,
     onChange: externalOnChange,
@@ -85,57 +75,46 @@ export const PhoneNumberInput = forwardRef<
     },
   });
 
-  const handleCountryCodeChange = (event: React.FormEvent<HTMLDivElement>) => {
-    const target = event.target as HTMLSelectElement;
-    const countryCode = target.value;
+  const handleCountryCodeChange = (details: { value: string[] }) => {
+    const countryCode = details.value[0];
     onChange({
       countryCode: countryCode,
       nationalNumber: value.nationalNumber,
     });
   };
+
   return (
-    <AttachedInputs {...boxProps}>
-      <Suspense
-        fallback={
-          <SelectRoot
-            width="6.25rem"
-            height="100%"
-            value={["+47"]}
-            variant={variant}
-            collection={collection}
-          >
-            <SelectLabel>+47</SelectLabel>
-          </SelectRoot>
-        }
-      >
-        <LazyCountryCodeSelect
+    <AttachedInputs>
+      <>
+        <CountryCodeSelect
           value={[value.countryCode]}
           collection={collection}
-          onChange={handleCountryCodeChange}
+          onValueChange={handleCountryCodeChange}
           name={name ? `${name}-country-code` : "country-code"}
           height="100%"
           width="6.25rem"
           variant={variant}
+          data-state="on"
         />
-      </Suspense>
-      <Input
-        ref={ref}
-        type="tel"
-        label={label}
-        value={value.nationalNumber}
-        name={name ? `${name}-phone-number` : "phone-number"}
-        onChange={(e) => {
-          // Removes everything but numbers, spaces and dashes
-          const strippedValue = e.target.value.replace(/[^\d\s-]/g, "");
-          onChange({
-            countryCode: value.countryCode,
-            nationalNumber: strippedValue,
-          });
-        }}
-        position="relative"
-        left="1px" // Makes the borders overlap
-        variant={variant}
-      />
+
+        <Input
+          ref={ref}
+          type="tel"
+          label={label}
+          value={value.nationalNumber}
+          name={name ? `${name}-phone-number` : "phone-number"}
+          onChange={(e) => {
+            // Removes everything but numbers, spaces and dashes
+            const strippedValue = e.target.value.replace(/[^\d\s-]/g, "");
+            onChange({
+              countryCode: value.countryCode,
+              nationalNumber: strippedValue,
+            });
+          }}
+          variant={variant}
+          data-state="on"
+        />
+      </>
     </AttachedInputs>
   );
 });
@@ -160,5 +139,3 @@ const texts = createTexts({
     sv: "Landskod",
   },
 });
-
-const LazyCountryCodeSelect = React.lazy(() => import("./CountryCodeSelect"));

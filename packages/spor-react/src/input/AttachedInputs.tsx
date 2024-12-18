@@ -1,8 +1,23 @@
 "use client";
-import React, { forwardRef } from "react";
-import { Flex, FlexProps } from "..";
 
-type AttachedInputsProps = FlexProps;
+import React, { forwardRef, PropsWithChildren } from "react";
+import { InputGroupProps } from "..";
+import {
+  defineStyle,
+  Group,
+  RecipeVariantProps,
+  useRecipe,
+} from "@chakra-ui/react";
+import { attachedInputsRecipe } from "@/theme/recipes/attached-inputs";
+
+type AttachedInputsVariantProps = RecipeVariantProps<
+  typeof attachedInputsRecipe
+>;
+
+type AttachedInputsProps = Exclude<InputGroupProps, "orientation"> &
+  PropsWithChildren<AttachedInputsVariantProps> & {
+    orientation?: "horizontal" | "vertical";
+  };
 /**
  * Attaches several inputs together, so that they look like one input.
  *
@@ -18,41 +33,15 @@ type AttachedInputsProps = FlexProps;
 
 export const AttachedInputs = forwardRef<HTMLDivElement, AttachedInputsProps>(
   (props, ref) => {
-    const { direction = "row", ...rest } = props;
-    const attachedStyles = {
-      horizontal: {
-        "> *:first-of-type:not(:last-of-type) [data-attachable]": {
-          borderEndRadius: 0,
-        },
-        "> *:not(:first-of-type):not(:last-of-type) [data-attachable]": {
-          borderRadius: 0,
-        },
-        "> *:not(:first-of-type):last-of-type [data-attachable]": {
-          borderStartRadius: 0,
-        },
-      },
-      vertical: {
-        "> *:first-of-type:not(:last-of-type) [data-attachable]": {
-          borderBottomRadius: 0,
-        },
-        "> *:not(:first-of-type):not(:last-of-type) [data-attachable]": {
-          borderRadius: 0,
-        },
-        "> *:not(:first-of-type):last-of-type [data-attachable]": {
-          borderTopRadius: 0,
-        },
-      },
-    };
-    const flexDirection = direction === "row" ? "horizontal" : "vertical";
+    const { orientation = "horizontal", children } = props;
+
+    const recipe = useRecipe({ key: "attachedInputs" });
+    const styles = recipe({ orientation });
+
     return (
-      <Flex
-        role="group"
-        css={attachedStyles[flexDirection]}
-        display="flex"
-        flexDirection={direction}
-        ref={ref}
-        {...rest}
-      />
+      <Group ref={ref} attached css={styles}>
+        {children}
+      </Group>
     );
   },
 );

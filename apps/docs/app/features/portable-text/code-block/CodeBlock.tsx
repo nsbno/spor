@@ -5,7 +5,7 @@ import {
   ClipboardButton,
 } from "@vygruppen/spor-react";
 import { Highlight } from "prism-react-renderer";
-import { Key, useRef } from "react";
+import { Key, LegacyRef, RefObject, useRef } from "react";
 import { theme } from "./codeTheme";
 
 type CodeBlockProps = Omit<BoxProps, "children"> & {

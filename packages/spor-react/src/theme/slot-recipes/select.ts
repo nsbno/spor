@@ -2,6 +2,9 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { surface } from "../utils/surface-utils";
+import { ghostBackground, ghostText } from "../utils/ghost-utils";
+import { outlineBorder } from "../utils/outline-utils";
 
 export const selectSlotRecipe = defineSlotRecipe({
   slots: [
@@ -9,7 +12,7 @@ export const selectSlotRecipe = defineSlotRecipe({
     "trigger",
     "indicatorGroup",
     "indicator",
-    "content",
+    "selectContent",
     "item",
     "control",
     "itemText",
@@ -20,33 +23,120 @@ export const selectSlotRecipe = defineSlotRecipe({
   ],
   className: "spor-select",
   base: {
-    root: {},
+    root: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "1.5",
+    },
     label: {
-      position: "relative",
       fontSize: ["mobile.xs", "desktop.sm"],
       marginTop: 2,
+      border: "0 !important",
+      clip: "rect(1px, 1px, 1px, 1px) !important",
+      clipPath: "inset(50%) !important",
+      height: "1px !important",
+      margin: "-1px !important",
+      overflow: "hidden !important",
+      padding: "0 !important",
+      position: "absolute !important",
+      width: "1px !important",
+      whiteSpace: "nowrap !important",
     },
     trigger: {
       display: "flex",
       appearance: "none",
       width: "100%",
       height: 8,
-      borderTopRadius: "sm",
-      borderBottomRadius: "sm",
       paddingY: 1.5,
       paddingX: 3,
       justifyContent: "space-between",
       alignItems: "center",
       fontSize: "mobile.md",
+    },
+    indicatorGroup: {
+      display: "flex",
+      alignItems: "center",
+      gap: "1",
+      position: "absolute",
+      right: "0",
+      top: "0",
+      bottom: "0",
+      paddingX: 2,
+      pointerEvents: "none",
+    },
+    indicator: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      color: {
+        base: "text",
+        _disabled: "text.disabled",
+        _invalid: "text.secondary",
+      },
+      _icon: {
+        width: 3,
+        height: 3,
+      },
+    },
+    selectContent: {
+      ...surface("default"),
+      boxShadow: "sm",
+      overflowY: "auto",
+      maxHeight: "50vh",
+      width: "100%",
+      listStyle: "none",
+      borderBottomRadius: "sm",
+      _open: {
+        animationStyle: "slide-fade-in",
+        animationDuration: "fast",
+      },
+      _closed: {
+        animationStyle: "slide-fade-out",
+        animationDuration: "fastest",
+      },
+    },
+    item: {
+      paddingX: 2,
+      paddingY: 1,
+      marginY: 1,
+      marginX: 1,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: 1,
+      borderRadius: "sm",
+      ...ghostText("default"),
+      cursor: "pointer",
+      outline: "none",
+
+      _active: {
+        ...ghostBackground("active"),
+      },
+      _focusVisible: {
+        ...outlineBorder("focus"),
+      },
+      _hover: {
+        ...ghostBackground("hover"),
+      },
+      _selected: {
+        ...ghostBackground("active"),
+      },
+      _icon: {
+        width: 3,
+        height: 3,
+      },
+    },
+    control: {
+      position: "relative",
+      borderTopRadius: "sm",
+      borderBottomRadius: "sm",
+      _open: {
+        borderBottomRadius: 0,
+      },
+      ...focusVisibleStyles(),
       ...baseBorder("default"),
       _hover: {
         ...baseBorder("hover"),
-      },
-      ...focusVisibleStyles(),
-      _disabled: {
-        pointerEvents: "none",
-        ...baseText("disabled"),
-        ...baseBackground("disabled"),
       },
       _active: {
         ...baseBackground("active"),
@@ -54,16 +144,34 @@ export const selectSlotRecipe = defineSlotRecipe({
       _invalid: {
         ...baseBorder("invalid"),
       },
-      _open: {
-        borderBottomRadius: 0,
+      _disabled: {
+        pointerEvents: "none",
+        ...baseText("disabled"),
+        ...baseBackground("disabled"),
       },
+    },
+    itemText: {
+      flex: "1",
+    },
+    itemGroup: {
+      _first: { mt: "0" },
+    },
+    itemGroupLabel: {
+      py: "1",
+      fontWeight: "medium",
+    },
+    valueText: {
+      lineClamp: "1",
+      maxW: "80%",
     },
   },
   variants: {
     variant: {
-      base: {},
+      core: {
+        control: {},
+      },
       floating: {
-        trigger: {
+        control: {
           ...floatingBackground("default"),
           ...floatingBorder("default"),
           _hover: {
@@ -77,8 +185,5 @@ export const selectSlotRecipe = defineSlotRecipe({
         },
       },
     },
-  },
-  defaultVariants: {
-    variant: "base",
   },
 });

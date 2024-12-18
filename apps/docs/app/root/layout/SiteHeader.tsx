@@ -105,7 +105,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         marginX="auto"
         paddingX={[3, null, 7, 5, 9]}
       >
-        <SearchInput
+        {/* <SearchInput
           onClick={onSearchClick}
           width={[null, null, null, "37.5rem"]}
           readOnly
@@ -118,7 +118,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
               </Text>
             </Flex>
           }
-        />
+        /> */}
       </Flex>
       <Flex
         display={["none", null, null, "flex"]}

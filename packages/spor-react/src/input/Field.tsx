@@ -1,10 +1,13 @@
 "use client";
+
 import {
   Box,
   BoxProps,
   chakra,
   Field as ChakraField,
+  defineStyle,
   RecipeVariantProps,
+  useSlotRecipe,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { fieldSlotRecipe } from "../theme/slot-recipes/field";
@@ -20,23 +23,23 @@ export type FieldProps = Omit<ChakraField.RootProps, "label"> &
   };
 
 export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
-  function Field(props, ref) {
+  (props, ref) => {
     const { label, children, helperText, errorText, optionalText, ...rest } =
       props;
+    const recipe = useSlotRecipe({ key: "field" });
+    const styles = recipe({ label, helperText, errorText });
     return (
-      <ChakraField.Root ref={ref} {...rest}>
-        {label && (
-          <ChakraField.Label>
-            {label}
-            <ChakraField.RequiredIndicator fallback={optionalText} />
-          </ChakraField.Label>
-        )}
+      <ChakraField.Root ref={ref} {...rest} css={styles.root}>
         {children}
+
         {helperText && (
           <ChakraField.HelperText>{helperText}</ChakraField.HelperText>
         )}
+        {label && (
+          <ChakraField.Label css={styles.label}>{label}</ChakraField.Label>
+        )}
         {errorText && (
-          <Box position="relative">
+          <Box position="relative" ref={ref}>
             <ChakraField.ErrorText>
               <Arrow position="absolute" top="-0.25em" left="1em" />
               {errorText}
@@ -47,6 +50,20 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
     );
   },
 );
+
+export const FieldErrorText = React.forwardRef<
+  HTMLDivElement,
+  ChakraField.ErrorTextProps
+>((props, ref) => {
+  return (
+    <Box position="relative" ref={ref}>
+      <ChakraField.ErrorText>
+        <Arrow position="absolute" top="-0.25em" left="1em" />
+        {props.}
+      </ChakraField.ErrorText>
+    </Box>
+  );
+});
 
 export const FieldLabel = ChakraField.Label;
 

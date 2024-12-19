@@ -47,11 +47,13 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         css={styles.root}
       >
         <ChakraSelect.HiddenSelect />
-        {label && <SelectLabel>{label}</SelectLabel>}
+
         <SelectTrigger data-attachable>
-          <SelectValueText placeholder={placeholder} />
+          {/* <SelectValueText placeholder={placeholder} /> */}
         </SelectTrigger>
+
         <SelectContent css={styles.selectContent}>{children}</SelectContent>
+        {label && <SelectLabel>{label}</SelectLabel>}
       </ChakraSelect.Root>
     );
   },
@@ -64,7 +66,7 @@ type SelectItemProps = ChakraSelect.ItemProps &
   };
 
 export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
-  function SelectItem(props, ref) {
+  (props, ref) => {
     const { item, children, ...rest } = props;
     return (
       <ChakraSelect.Item key={item.value} item={item} {...rest} ref={ref}>

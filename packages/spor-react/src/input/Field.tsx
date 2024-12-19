@@ -1,11 +1,7 @@
 "use client";
 
 import {
-  Box,
-  BoxProps,
-  chakra,
   Field as ChakraField,
-  defineStyle,
   RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
@@ -31,7 +27,6 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
     return (
       <ChakraField.Root ref={ref} {...rest} css={styles.root}>
         {children}
-
         {helperText && (
           <ChakraField.HelperText>{helperText}</ChakraField.HelperText>
         )}
@@ -39,12 +34,7 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
           <ChakraField.Label css={styles.label}>{label}</ChakraField.Label>
         )}
         {errorText && (
-          <Box position="relative" ref={ref}>
-            <ChakraField.ErrorText>
-              <Arrow position="absolute" top="-0.25em" left="1em" />
-              {errorText}
-            </ChakraField.ErrorText>
-          </Box>
+          <ChakraField.ErrorText>{errorText}</ChakraField.ErrorText>
         )}
       </ChakraField.Root>
     );
@@ -56,31 +46,8 @@ export const FieldErrorText = React.forwardRef<
   ChakraField.ErrorTextProps
 >((props, ref) => {
   return (
-    <Box position="relative" ref={ref}>
-      <ChakraField.ErrorText>
-        <Arrow position="absolute" top="-0.25em" left="1em" />
-        {props.}
-      </ChakraField.ErrorText>
-    </Box>
+    <ChakraField.ErrorText ref={ref}>{props.children}</ChakraField.ErrorText>
   );
 });
 
 export const FieldLabel = ChakraField.Label;
-
-const Arrow = (props: BoxProps) => {
-  return (
-    <chakra.svg
-      {...(props as any)}
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      transform="rotate(45deg)"
-    >
-      <path
-        fill="lightRed"
-        d="M 0 0 Q 2.4 6 0 12 Q 6 9.6 12 12 Q 9.6 6 12 0 Q 6 2.4 0 0 z"
-      />
-    </chakra.svg>
-  );
-};

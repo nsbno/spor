@@ -27,20 +27,37 @@ export const selectSlotRecipe = defineSlotRecipe({
       display: "flex",
       flexDirection: "column",
       gap: "1.5",
+      position: "relative",
     },
     label: {
-      fontSize: ["mobile.xs", "desktop.sm"],
-      marginTop: 2,
-      border: "0 !important",
-      clip: "rect(1px, 1px, 1px, 1px) !important",
-      clipPath: "inset(50%) !important",
-      height: "1px !important",
-      margin: "-1px !important",
-      overflow: "hidden !important",
-      padding: "0 !important",
-      position: "absolute !important",
-      width: "1px !important",
-      whiteSpace: "nowrap !important",
+      /* For when input is filled */
+      pos: "absolute",
+      paddingX: 3,
+      top: "0.9.rem",
+      fontWeight: "normal",
+      fontSize: ["mobile.sm", "desktop.sm"],
+      color: "blue",
+      pointerEvents: "none",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      transition: "position",
+      zIndex: "docked",
+      _peerActive: {
+        /* For when input is not in focus */
+        top: "0.9rem",
+        color: "green",
+        fontSize: ["mobile.sm", "desktop.sm"],
+      },
+      _peerFocusVisible: {
+        /* For when input is in focus */
+        fontSize: ["mobile.xs", "desktop.xs"],
+        color: "hotpink",
+        top: "0.5",
+      },
+      _disabled: {
+        opacity: 0.4,
+      },
     },
     trigger: {
       display: "flex",
@@ -161,8 +178,34 @@ export const selectSlotRecipe = defineSlotRecipe({
       fontWeight: "medium",
     },
     valueText: {
-      lineClamp: "1",
-      maxW: "80%",
+      /* For when input is filled */
+      pos: "absolute",
+      paddingX: 3,
+      top: "0.5",
+      fontWeight: "normal",
+      fontSize: ["mobile.xs", "desktop.xs"],
+      color: "text",
+      pointerEvents: "none",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      transition: "position",
+      zIndex: "docked",
+      _peerPlaceholderShown: {
+        /* For when input is not in focus */
+        top: "0.9rem",
+        color: "text",
+        fontSize: ["mobile.sm", "desktop.sm"],
+      },
+      _peerFocusVisible: {
+        /* For when input is in focus */
+        fontSize: ["mobile.xs", "desktop.xs"],
+        color: "text",
+        top: "0.5",
+      },
+      _disabled: {
+        opacity: 0.4,
+      },
     },
   },
   variants: {

@@ -53,7 +53,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     startElement,
     endElement,
     label,
-    errorText,
     ...fieldProps
   } = props;
 
@@ -79,14 +78,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           paddingRight={endElement ? "2.6rem" : undefined}
           placeholder=""
         />
-        {errorText && (
-          <Box position="relative" ref={ref}>
-            <ChakraField.ErrorText>
-              <Arrow position="absolute" top="-0.25em" left="1em" />
-              {errorText}
-            </ChakraField.ErrorText>
-          </Box>
-        )}
       </InputGroup>
     </Field>
   );

@@ -28,7 +28,7 @@
     "@vygruppen/spor-react": "^11.0.2",
     "archiver": "^5.3.2",
     "deepmerge": "^4.3.1",
-    "framer-motion": "^8.5.5",
+    "framer-motion": "^11.15.0",
     "fs-extra": "^11.2.0",
     "match-sorter": "^6.3.4",
     "picosanity": "^4.1.1",

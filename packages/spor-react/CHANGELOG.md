@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.0.2
+
+### Patch Changes
+
+- 89d1702: Text for multiple notifications
+
 ## 11.0.1
 
 ### Patch Changes

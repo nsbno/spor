@@ -30,10 +30,9 @@ export const selectSlotRecipe = defineSlotRecipe({
       position: "relative",
     },
     label: {
-      /* For when input is filled */
-      pos: "absolute",
+      position: "absolute",
+      top: "0.9rem",
       paddingX: 3,
-      top: "0.9.rem",
       fontWeight: "normal",
       fontSize: ["mobile.sm", "desktop.sm"],
       color: "blue",
@@ -43,17 +42,14 @@ export const selectSlotRecipe = defineSlotRecipe({
       whiteSpace: "nowrap",
       transition: "position",
       zIndex: "docked",
-      _peerActive: {
+      _peerPlaceholderShown: {
         /* For when input is not in focus */
-        top: "0.9rem",
+
         color: "green",
-        fontSize: ["mobile.sm", "desktop.sm"],
       },
       _peerFocusVisible: {
         /* For when input is in focus */
-        fontSize: ["mobile.xs", "desktop.xs"],
         color: "hotpink",
-        top: "0.5",
       },
       _disabled: {
         opacity: 0.4,
@@ -177,36 +173,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       py: "1",
       fontWeight: "medium",
     },
-    valueText: {
-      /* For when input is filled */
-      pos: "absolute",
-      paddingX: 3,
-      top: "0.5",
-      fontWeight: "normal",
-      fontSize: ["mobile.xs", "desktop.xs"],
-      color: "text",
-      pointerEvents: "none",
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-      whiteSpace: "nowrap",
-      transition: "position",
-      zIndex: "docked",
-      _peerPlaceholderShown: {
-        /* For when input is not in focus */
-        top: "0.9rem",
-        color: "text",
-        fontSize: ["mobile.sm", "desktop.sm"],
-      },
-      _peerFocusVisible: {
-        /* For when input is in focus */
-        fontSize: ["mobile.xs", "desktop.xs"],
-        color: "text",
-        top: "0.5",
-      },
-      _disabled: {
-        opacity: 0.4,
-      },
-    },
+    valueText: {},
   },
   variants: {
     variant: {

@@ -5,6 +5,7 @@ import {
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
+  Button,
   DarkMode,
   Drawer,
   DrawerBody,
@@ -127,7 +128,11 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         flex={[0, 0, 0, 0, 1]}
         justifyContent="flex-end"
         alignItems="center"
+        gap={2}
       >
+        <Button width={"11rem"} as="a" href="/v1">
+          Using Spor V1?
+        </Button>
         <SiteSettings showLabel={true} />
       </Flex>
     </>

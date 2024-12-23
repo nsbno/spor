@@ -51,7 +51,6 @@ export const CountryCodeSelect = forwardRef<
       lazyMount
       aria-label={t(texts.countryCode)}
       label={t(texts.countryCode)}
-      placeholder={t(texts.countryCode)}
       variant={variant}
     >
       {callingCodes.items.map((code) => (

@@ -6,6 +6,7 @@ import type {
   SelectRootProps as ChakraSelectRootProps,
 } from "@chakra-ui/react";
 import {
+  Box,
   Select as ChakraSelect,
   createListCollection,
   Flex,
@@ -20,7 +21,6 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { selectSlotRecipe } from "@/theme/slot-recipes/select";
 import { CloseButton } from "@/button";
-import { Text } from "@/typography";
 import { PropsWithChildren } from "react";
 
 type SelectVariantProps = RecipeVariantProps<typeof selectSlotRecipe>;
@@ -28,19 +28,11 @@ type SelectVariantProps = RecipeVariantProps<typeof selectSlotRecipe>;
 export type SelectProps = ChakraSelectRootProps &
   PropsWithChildren<SelectVariantProps> & {
     label?: string;
-    placeholder?: string;
   };
 
 export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
   (props, ref) => {
-    const {
-      variant = "core",
-      children,
-      positioning,
-      label,
-      placeholder,
-      ...rest
-    } = props;
+    const { variant = "core", children, positioning, label, ...rest } = props;
     const recipe = useSlotRecipe({ key: "select" });
     const styles = recipe({ variant });
 
@@ -52,10 +44,9 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         variant={variant}
         css={styles.root}
       >
-        <ChakraSelect.HiddenSelect />
-        {label && <SelectLabel>{label}</SelectLabel>}
+        {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
         <SelectTrigger data-attachable>
-          <SelectValueText />
+          <SelectValueText placeholder={label} />
         </SelectTrigger>
         <SelectContent css={styles.selectContent}>{children}</SelectContent>
       </ChakraSelect.Root>
@@ -66,23 +57,22 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 type SelectItemProps = ChakraSelect.ItemProps &
   React.PropsWithChildren<SelectVariantProps> & {
     children: React.ReactNode;
-    item: CollectionItem;
-    icon?: React.ReactNode;
     description?: React.ReactNode;
   };
 
 export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
   (props, ref) => {
-    const { item, children, icon, description, ...rest } = props;
+    const { item, children, description, ...rest } = props;
+    const recipe = useSlotRecipe({ key: "select" });
+    const styles = recipe();
     return (
-      <ChakraSelect.Item key={item.value} item={item} {...rest} ref={ref}>
-        <Flex>
-          {icon && <Icon>{icon}</Icon>}
+      <ChakraSelect.Item item={item} {...rest} ref={ref} css={styles.item}>
+        <Box>
           <ChakraSelect.ItemText display="flex">
             {children}
           </ChakraSelect.ItemText>
-          {description && <Text>{description}</Text>}
-        </Flex>
+          {description && <Box css={styles.itemDescription}>{description}</Box>}
+        </Box>
 
         <ChakraSelect.ItemIndicator>
           <CheckmarkFill18Icon />
@@ -122,12 +112,18 @@ export const SelectTrigger = React.forwardRef<
   SelectTriggerProps
 >(function SelectTrigger(props, ref) {
   const { children, clearable, ...rest } = props;
+  const recipe = useSlotRecipe({ key: "select" });
+  const styles = recipe();
   return (
-    <ChakraSelect.Control {...rest}>
-      <ChakraSelect.Trigger ref={ref}>{children}</ChakraSelect.Trigger>
-      <ChakraSelect.IndicatorGroup>
+    <ChakraSelect.Control {...rest} css={styles.control}>
+      <ChakraSelect.Trigger ref={ref} css={styles.trigger}>
+        {children}
+      </ChakraSelect.Trigger>
+      <ChakraSelect.IndicatorGroup css={styles.indicatorGroup}>
         {clearable && <SelectClearTrigger />}
-        <DropdownDownFill24Icon />
+        <Box css={styles.indicator}>
+          <DropdownDownFill24Icon />
+        </Box>
       </ChakraSelect.IndicatorGroup>
     </ChakraSelect.Control>
   );

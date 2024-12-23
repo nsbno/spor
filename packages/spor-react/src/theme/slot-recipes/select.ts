@@ -27,34 +27,20 @@ export const selectSlotRecipe = defineSlotRecipe({
     root: {
       display: "flex",
       flexDirection: "column",
-      gap: "1.5",
       position: "relative",
+      ...focusVisibleStyles(),
     },
     label: {
-      position: "absolute",
-      top: "0.9rem",
-      paddingX: 3,
-      fontWeight: "normal",
-      fontSize: ["mobile.sm", "desktop.sm"],
-      color: "blue",
-      pointerEvents: "none",
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-      whiteSpace: "nowrap",
-      transition: "position",
-      zIndex: "docked",
-      _peerPlaceholderShown: {
-        /* For when input is not in focus */
-
-        color: "green",
-      },
-      _peerFocusVisible: {
-        /* For when input is in focus */
-        color: "hotpink",
-      },
-      _disabled: {
-        opacity: 0.4,
-      },
+      border: "0 !important",
+      clip: "rect(1px, 1px, 1px, 1px) !important",
+      clipPath: "inset(50%) !important",
+      height: "1px !important",
+      margin: "-1px !important",
+      overflow: "hidden !important",
+      padding: "0 !important",
+      position: "absolute !important",
+      width: "1px !important",
+      whiteSpace: "nowrap !important",
     },
     trigger: {
       display: "flex",
@@ -66,6 +52,10 @@ export const selectSlotRecipe = defineSlotRecipe({
       justifyContent: "space-between",
       alignItems: "center",
       fontSize: "mobile.md",
+      _focusVisible: {
+        ...focusVisibleStyles()._focusVisible,
+        borderRadius: "sm",
+      },
     },
     indicatorGroup: {
       display: "flex",
@@ -91,6 +81,10 @@ export const selectSlotRecipe = defineSlotRecipe({
         width: 3,
         height: 3,
       },
+      _open: {
+        transform: "rotate(180deg)",
+        color: "hotpink",
+      },
     },
     selectContent: {
       ...surface("default"),
@@ -100,6 +94,11 @@ export const selectSlotRecipe = defineSlotRecipe({
       width: "100%",
       listStyle: "none",
       borderBottomRadius: "sm",
+      marginTop: -1,
+      _focusVisible: {
+        ...focusVisibleStyles()._focusVisible,
+        borderBottomRadius: "sm",
+      },
       _open: {
         animationStyle: "slide-fade-in",
         animationDuration: "fast",
@@ -125,12 +124,14 @@ export const selectSlotRecipe = defineSlotRecipe({
 
       _active: {
         ...ghostBackground("active"),
+        color: "green",
       },
-      _focusVisible: {
-        ...outlineBorder("focus"),
+      _highlighted: {
+        ...focusVisibleStyles()._focusVisible,
       },
       _hover: {
         ...ghostBackground("hover"),
+        outline: "none",
       },
       _selected: {
         ...ghostBackground("active"),
@@ -175,6 +176,13 @@ export const selectSlotRecipe = defineSlotRecipe({
       fontWeight: "medium",
     },
     valueText: {},
+    itemDescription: {
+      fontSize: ["mobile.xs", "desktop.xs"],
+      ...ghostText("default"),
+      "[aria-selected='true'] &": {
+        ...ghostText("selected"),
+      },
+    },
   },
   variants: {
     variant: {
@@ -193,6 +201,9 @@ export const selectSlotRecipe = defineSlotRecipe({
             ...floatingBorder("active"),
             ...floatingBackground("active"),
           },
+        },
+        selectContent: {
+          ...floatingBorder("default"),
         },
       },
     },

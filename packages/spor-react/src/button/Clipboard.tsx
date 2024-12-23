@@ -21,7 +21,7 @@ import { Text } from "@/typography";
 const ClipboardIcon = React.forwardRef<
   HTMLDivElement,
   ChakraClipboard.IndicatorProps
->(function ClipboardIcon(props, ref) {
+>((props, ref) => {
   return (
     <ChakraClipboard.Indicator
       copied={<CheckmarkFill18Icon />}
@@ -36,7 +36,7 @@ const ClipboardIcon = React.forwardRef<
 const ClipboardCopyText = React.forwardRef<
   HTMLDivElement,
   ChakraClipboard.IndicatorProps
->(function ClipboardCopyText(props, ref) {
+>((props, ref) => {
   const { t } = useTranslation();
   return (
     <ChakraClipboard.Indicator
@@ -54,7 +54,7 @@ type ClipboardButtonProps = ButtonProps;
 export const ClipboardButton = React.forwardRef<
   HTMLButtonElement,
   ClipboardButtonProps
->(function ClipboardButton(props, ref) {
+>((props, ref) => {
   return (
     <ChakraClipboard.Trigger asChild>
       <Button ref={ref} size="xs" leftIcon={<ClipboardIcon />} {...props}>

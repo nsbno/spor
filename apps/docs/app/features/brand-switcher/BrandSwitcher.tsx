@@ -1,5 +1,5 @@
 import { useFetcher } from "@remix-run/react";
-import { Brand, SelectRoot } from "@vygruppen/spor-react";
+import { Brand, Select } from "@vygruppen/spor-react";
 import { useMatchesData } from "~/utils/useMatchesData";
 
 export const BrandSwitcher = () => {
@@ -8,7 +8,7 @@ export const BrandSwitcher = () => {
   const brand = data?.brand ?? Brand.VyDigital;
   return (
     <fetcher.Form method="post" action="/api/brand">
-      <SelectRoot
+      <Select
         name="brand"
         defaultValue={brand as any}
         collection={brand}
@@ -24,7 +24,7 @@ export const BrandSwitcher = () => {
         <option value="VyDigital">Vy Digital</option>
         <option value="VyUtvikling">Vy Utvikling</option>
         <option value="CargoNet">CargoNet</option>
-      </SelectRoot>
+      </Select>
     </fetcher.Form>
   );
 };

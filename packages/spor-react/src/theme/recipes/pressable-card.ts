@@ -51,7 +51,7 @@ export const pressableCardRecipe = defineRecipe({
         },
       },
       floating: {
-        backgroundColor: "floating.surface",
+        ...floatingBackground("default"),
         ...floatingBorder("default"),
         boxShadow: "sm",
         _hover: {

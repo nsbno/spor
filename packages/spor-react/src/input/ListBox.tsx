@@ -44,7 +44,7 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
     /** UI to render if the collection is empty */
     emptyContent?: React.ReactNode;
     maxWidth?: BoxProps["maxWidth"];
-    variant?: ConditionalValue<"base" | "floating">;
+    variant?: "core" | "floating";
     children: React.ReactNode;
   };
 
@@ -240,7 +240,7 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
         <ListRoot {...groupProps} padding={0} listStyleType="none">
           {Array.from(state.collection.getChildren(section.key)).map(
             (item: any) => (
-              <ListItem key={item.key}  />
+              <ListItem key={item.key} />
             ),
           )}
         </ListRoot>

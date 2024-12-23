@@ -2,12 +2,7 @@
 
 import React, { forwardRef, PropsWithChildren } from "react";
 import { InputGroupProps } from "..";
-import {
-  defineStyle,
-  Group,
-  RecipeVariantProps,
-  useRecipe,
-} from "@chakra-ui/react";
+import { Group, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
 import { attachedInputsRecipe } from "@/theme/recipes/attached-inputs";
 
 type AttachedInputsVariantProps = RecipeVariantProps<

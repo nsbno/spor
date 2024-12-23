@@ -16,6 +16,7 @@ export const selectSlotRecipe = defineSlotRecipe({
     "item",
     "control",
     "itemText",
+    "itemDescription",
     "itemGroup",
     "itemGroupLabel",
     "label",

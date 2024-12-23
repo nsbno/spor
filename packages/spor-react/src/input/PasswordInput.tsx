@@ -2,7 +2,7 @@
 
 import { Button, useDisclosure } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
-import { Input, InputProps } from ".";
+import { Input, InputProps } from "..";
 import { createTexts, useTranslation } from "..";
 
 export const PasswordInput = forwardRef<HTMLInputElement, InputProps>(

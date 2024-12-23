@@ -7,6 +7,9 @@ import type {
 } from "@chakra-ui/react";
 import {
   Select as ChakraSelect,
+  createListCollection,
+  Flex,
+  Icon,
   Portal,
   useSlotRecipe,
 } from "@chakra-ui/react";
@@ -17,11 +20,13 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { selectSlotRecipe } from "@/theme/slot-recipes/select";
 import { CloseButton } from "@/button";
+import { Text } from "@/typography";
+import { PropsWithChildren } from "react";
 
 type SelectVariantProps = RecipeVariantProps<typeof selectSlotRecipe>;
 
-export type SelectProps = Exclude<ChakraSelectRootProps, "variant"> &
-  React.PropsWithChildren<SelectVariantProps> & {
+export type SelectProps = ChakraSelectRootProps &
+  PropsWithChildren<SelectVariantProps> & {
     label?: string;
     placeholder?: string;
   };
@@ -38,6 +43,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     } = props;
     const recipe = useSlotRecipe({ key: "select" });
     const styles = recipe({ variant });
+
     return (
       <ChakraSelect.Root
         {...rest}
@@ -61,14 +67,23 @@ type SelectItemProps = ChakraSelect.ItemProps &
   React.PropsWithChildren<SelectVariantProps> & {
     children: React.ReactNode;
     item: CollectionItem;
+    icon?: React.ReactNode;
+    description?: React.ReactNode;
   };
 
 export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
   (props, ref) => {
-    const { item, children, ...rest } = props;
+    const { item, children, icon, description, ...rest } = props;
     return (
       <ChakraSelect.Item key={item.value} item={item} {...rest} ref={ref}>
-        {children}
+        <Flex>
+          {icon && <Icon>{icon}</Icon>}
+          <ChakraSelect.ItemText display="flex">
+            {children}
+          </ChakraSelect.ItemText>
+          {description && <Text>{description}</Text>}
+        </Flex>
+
         <ChakraSelect.ItemIndicator>
           <CheckmarkFill18Icon />
         </ChakraSelect.ItemIndicator>

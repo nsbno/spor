@@ -1,4 +1,5 @@
 "use client";
+
 import React, { forwardRef } from "react";
 import {
   Select,
@@ -26,11 +27,12 @@ const sortedCallingCodes = getSupportedCallingCodes()
     (code) =>
       !prioritizedCountryCodes.some((pCode) => pCode.label === code.label),
   );
+
 export const callingCodes = createListCollection({
   items: [...prioritizedCountryCodes, ...sortedCallingCodes],
 });
 
-type CountryCodeSelectProps = Exclude<SelectProps, "label">;
+type CountryCodeSelectProps = Omit<SelectProps, "label" | "collection">;
 
 export const CountryCodeSelect = forwardRef<
   HTMLDivElement,

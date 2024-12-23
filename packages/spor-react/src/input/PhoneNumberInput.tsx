@@ -1,7 +1,12 @@
 "use client";
-import { BoxProps, FlexProps, useControllableState } from "@chakra-ui/react";
+import {
+  BoxProps,
+  CollectionItem,
+  FlexProps,
+  useControllableState,
+} from "@chakra-ui/react";
 import React, { forwardRef } from "react";
-import { Input, createTexts, useTranslation, SelectProps } from "..";
+import { Input, createTexts, useTranslation } from "..";
 import { AttachedInputs } from "./AttachedInputs";
 import { CountryCodeSelect } from "./CountryCodeSelect";
 
@@ -10,9 +15,8 @@ type CountryCodeAndPhoneNumber = {
   nationalNumber: string;
 };
 
-type PhoneNumberInputProps = Omit<BoxProps, "onValueChange"> &
-  FlexProps &
-  Exclude<SelectProps, "variant"> & {
+type PhoneNumberInputProps = Exclude<BoxProps, "onValueChange"> &
+  FlexProps & {
     /** The label. Defaults to a localized version of "Phone number" */
     label?: string;
     /** The root name.
@@ -26,7 +30,7 @@ type PhoneNumberInputProps = Omit<BoxProps, "onValueChange"> &
     value?: CountryCodeAndPhoneNumber;
     variant?: "core" | "floating";
     isOptional?: boolean;
-    collection: Record<string, string>;
+    items: CollectionItem[];
   };
 /**
  * A component for entering phone numbers.
@@ -57,7 +61,7 @@ export const PhoneNumberInput = forwardRef<
     onValueChange: externalOnChange,
     variant,
     isOptional,
-    collection,
+    items,
     ...boxProps
   } = props;
 
@@ -88,7 +92,6 @@ export const PhoneNumberInput = forwardRef<
       <>
         <CountryCodeSelect
           value={[value.countryCode]}
-          collection={collection}
           onValueChange={handleCountryCodeChange}
           name={name ? `${name}-country-code` : "country-code"}
           height="100%"

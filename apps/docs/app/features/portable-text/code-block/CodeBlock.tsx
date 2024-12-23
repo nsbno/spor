@@ -91,13 +91,7 @@ export const CodeBlockContainer = ({
       onKeyUp={handleKeyUp}
       {...props}
     >
-      <Box
-        position="absolute"
-        top={2}
-        right={2}
-        zIndex="docked"
-        ref={copyButtonRef}
-      >
+      <Box position="absolute" top={2} right={2} ref={copyButtonRef}>
         <CopyCodeButton code={code} />
       </Box>
       <Box>{children}</Box>

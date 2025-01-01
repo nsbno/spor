@@ -52,7 +52,7 @@
     "tsconfig": "^7.0.0",
     "typescript": "^5.0.4",
     "vite": "^5.2.13",
-    "vite-tsconfig-paths": "^4.3.2"
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "engines": {
     "node": ">=14"

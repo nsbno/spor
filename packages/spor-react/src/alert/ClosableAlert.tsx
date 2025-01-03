@@ -42,6 +42,7 @@ export const ClosableAlert = ({
   title,
   children,
   onClose: externalOnClose = () => {},
+  ...boxProps
 }: ClosableAlertProps) => {
   const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true });
   const styles = useMultiStyleConfig("Alert", { variant });
@@ -56,7 +57,7 @@ export const ClosableAlert = ({
   };
 
   return (
-    <BaseAlert variant={variant}>
+    <BaseAlert variant={variant} {...boxProps}>
       <IconButton
         variant="ghost"
         size="sm"

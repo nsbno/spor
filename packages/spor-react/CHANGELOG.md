@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.0.3
+
+### Patch Changes
+
+- 5fe5e88: Add boxProps to ClosaleAlert"
+
 ## 11.0.2
 
 ### Patch Changes

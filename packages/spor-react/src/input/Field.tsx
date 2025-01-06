@@ -12,16 +12,34 @@ type FieldVariantProps = RecipeVariantProps<typeof fieldSlotRecipe>;
 
 export type FieldProps = Omit<ChakraField.RootProps, "label"> &
   React.PropsWithChildren<FieldVariantProps> & {
+    /** Label for the component */
     label?: React.ReactNode;
+    /** Add helpertext underneath the input */
     helperText?: React.ReactNode;
+    /** Add error text underneath the input */
     errorText?: React.ReactNode;
-    optionalText?: React.ReactNode;
   };
+
+/**
+ *
+ * Field is a component that wraps around other input components, like `Input` and `Select`.
+ *
+ * It can have a label, helper text, and error text.
+ *
+ * ```tsx
+ *
+ * <Field label="E-mail">
+ *  <Input />
+ * </Field>
+ *
+ * ```
+ *
+ * @see https://spor.vy.no/components/field
+ */
 
 export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
   (props, ref) => {
-    const { label, children, helperText, errorText, optionalText, ...rest } =
-      props;
+    const { label, children, helperText, errorText, ...rest } = props;
     const recipe = useSlotRecipe({ key: "field" });
     const styles = recipe({ label, helperText, errorText });
     return (

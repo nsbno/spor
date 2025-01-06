@@ -1,20 +1,17 @@
 "use client";
 
-import {
-  Button,
-  mergeRefs,
-  useControllableState,
-  Input,
-} from "@chakra-ui/react";
+import { Button, useControllableState } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
-import { ButtonProps, InputGroup, InputGroupProps, InputProps } from "..";
+import { ButtonProps, Input, InputGroupProps, InputProps } from "..";
 import { createTexts, useTranslation } from "..";
 
 export interface PasswordVisibilityProps {
+  /** Default visibility state */
   defaultVisible?: boolean;
+  /** Visibility state */
   visible?: boolean;
+  /** Callback for when the visibility state changes */
   onVisibleChange?: (visible: boolean) => void;
-  visibilityIcon?: { on: React.ReactNode; off: React.ReactNode };
 }
 
 export interface PasswordInputProps
@@ -22,6 +19,28 @@ export interface PasswordInputProps
     PasswordVisibilityProps {
   rootProps?: InputGroupProps;
 }
+
+/**
+ * A password input field with a visibility toggle.
+ *
+ * ```tsx
+ * <PasswordInput label="Password" />
+ * ```
+ * 
+ * You can also control the visibility state:
+ * 
+ * ```tsx
+ * <PasswordInput label="Password" visible={visible} onVisibleChange={setVisible} />
+ * ```
+ * 
+ * You can also set the default visibility state:
+ * 
+ * ```tsx
+ * <PasswordInput label="Password" defaultVisible />
+ * ```
+ * 
+ * @see https://spor.vy.no/components/password-input
+ */
 
 export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
   (props, ref) => {
@@ -42,13 +61,12 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
     });
     const { t } = useTranslation();
 
-    const inputRef = React.useRef<HTMLInputElement>(null);
-
     return (
-      <InputGroup
-        width="full"
+      <Input
+        ref={ref}
         startElement={startElement && startElement}
         label={label}
+        type={visible ? "text" : "password"}
         endElement={
           <VisibilityTrigger
             variant="ghost"
@@ -63,15 +81,8 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             {visible ? t(texts.hidePassword) : t(texts.showPassword)}
           </VisibilityTrigger>
         }
-        {...rootProps}
-      >
-        <Input
-          {...rest}
-          ref={mergeRefs(ref, inputRef)}
-          type={visible ? "text" : "password"}
-          placeholder=" "
-        />
-      </InputGroup>
+        {...rest}
+      />
     );
   },
 );

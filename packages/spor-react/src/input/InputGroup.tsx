@@ -1,10 +1,6 @@
 "use client";
 
-import type {
-  InputElementProps,
-  GroupProps,
-  FieldLabelProps,
-} from "@chakra-ui/react";
+import type { InputElementProps, GroupProps } from "@chakra-ui/react";
 import { Group, InputElement } from "@chakra-ui/react";
 import * as React from "react";
 import { FieldLabel } from "./Field";
@@ -18,8 +14,16 @@ export type InputGroupProps = GroupProps & {
   label?: string;
 };
 
+/**
+ * 
+ * InputGroup is a wrapper for inputs that have a startElement and/or endElement.
+ * 
+ * It is not exported to users, but used internally in the Input component.
+ * 
+ */
+
 export const InputGroup = React.forwardRef<HTMLDivElement, InputGroupProps>(
-  function InputGroup(props, ref) {
+  (props, ref) => {
     const {
       startElement,
       startElementProps,
@@ -60,15 +64,3 @@ export const InputGroup = React.forwardRef<HTMLDivElement, InputGroupProps>(
     );
   },
 );
-
-const attachedStyles = {
-  "> *:first-of-type:not(:last-of-type) [data-attachable]": {
-    borderEndRadius: 0,
-  },
-  "> *:not(:first-of-type):not(:last-of-type) [data-attachable]": {
-    borderRadius: 0,
-  },
-  "> *:not(:first-of-type):last-of-type [data-attachable]": {
-    borderStartRadius: 0,
-  },
-};

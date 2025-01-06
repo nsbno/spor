@@ -8,7 +8,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
       display: "flex",
       width: "100%",
       position: "relative",
-      gap: "1.5",
+      flexDirection: "column",
     },
     label: {
       /* For when input is filled */

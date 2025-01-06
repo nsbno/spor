@@ -1,5 +1,4 @@
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { inputVariant } from "../utils/input-utils";
 import { defineRecipe } from "@chakra-ui/react";
 import { surface } from "../utils/surface-utils";
 import { baseBackground, baseBorder } from "../utils/base-utils";
@@ -16,7 +15,7 @@ export const inputRecipe = defineRecipe({
     transitionDuration: "fast",
     position: "relative",
     paddingX: 3,
-    paddingTop: 2 + 1,
+    paddingTop: 3,
     height: 8,
     fontSize: "mobile.md",
     _focusVisible: {

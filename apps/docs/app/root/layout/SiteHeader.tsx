@@ -18,6 +18,7 @@ import {
   Text,
   VyLogo,
   useDisclosure,
+  Input,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
@@ -119,6 +120,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
             </Flex>
           }
         /> */}
+        <Input label="Label" />
       </Flex>
       <Flex
         display={["none", null, null, "flex"]}

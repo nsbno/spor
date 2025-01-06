@@ -7,15 +7,15 @@ import {
   type RecipeVariantProps,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
-import { inputRecipe } from "../theme/recipes/input";
 import { Field, FieldProps } from "./Field";
 import { InputGroup } from "./InputGroup";
+import { inputRecipe } from "@/theme/recipes/input";
 
 export type InputVariantProps = RecipeVariantProps<typeof inputRecipe>;
 
 export type InputProps = Exclude<
   ChakraInputProps,
-  "size" | "variant" | "colorPalette"
+  "size" | "label" | "colorPalette"
 > &
   FieldProps &
   PropsWithChildren<InputVariantProps> & {
@@ -41,11 +41,19 @@ export type InputProps = Exclude<
  * <Input label="E-mail" startElement={<EmailOutline24Icon />} />
  * ```
  *
- * Input has two variants base, and floating.
+ * Input has two variants core, and floating.
  *
  * ```tsx
  * <Input label="E-mail" startElement={<EmailOutline24Icon />} variant="floating" />
  * ```
+ * 
+ * Field is added to Input, so you can add helperText, errorText, and optionalText.
+ * 
+ * ```tsx
+ * <Input label="E-mail" startElement={<EmailOutline24Icon />} helperText="We will never share your email." />
+ * ```
+ * 
+ * @see https://spor.vy.no/components/input
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const {
@@ -70,13 +78,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         <ChakraInput
           data-attachable
           css={styles}
-          variant={variant}
           ref={ref}
           className="peer"
           overflow="hidden"
           paddingLeft={startElement ? "2.6rem" : undefined}
           paddingRight={endElement ? "2.6rem" : undefined}
           placeholder=""
+          {...props}
         />
       </InputGroup>
     </Field>

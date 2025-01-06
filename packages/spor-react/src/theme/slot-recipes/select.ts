@@ -149,21 +149,6 @@ export const selectSlotRecipe = defineSlotRecipe({
         borderBottomRadius: 0,
       },
       ...focusVisibleStyles(),
-      ...baseBorder("default"),
-      _hover: {
-        ...baseBorder("hover"),
-      },
-      _active: {
-        ...baseBackground("active"),
-      },
-      _invalid: {
-        ...baseBorder("invalid"),
-      },
-      _disabled: {
-        pointerEvents: "none",
-        ...baseText("disabled"),
-        ...baseBackground("disabled"),
-      },
     },
     itemText: {
       flex: "1",
@@ -187,7 +172,23 @@ export const selectSlotRecipe = defineSlotRecipe({
   variants: {
     variant: {
       core: {
-        control: {},
+        control: {
+          ...baseBorder("default"),
+          _hover: {
+            ...baseBorder("hover"),
+          },
+          _active: {
+            ...baseBackground("active"),
+          },
+          _invalid: {
+            ...baseBorder("invalid"),
+          },
+          _disabled: {
+            pointerEvents: "none",
+            ...baseText("disabled"),
+            ...baseBackground("disabled"),
+          },
+        },
       },
       floating: {
         control: {

@@ -1,12 +1,7 @@
 "use client";
-import {
-  BoxProps,
-  CollectionItem,
-  FlexProps,
-  useControllableState,
-} from "@chakra-ui/react";
+import { useControllableState } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
-import { Input, createTexts, useTranslation } from "..";
+import { Input, InputProps, createTexts, useTranslation } from "..";
 import { AttachedInputs } from "./AttachedInputs";
 import { CountryCodeSelect } from "./CountryCodeSelect";
 
@@ -15,23 +10,16 @@ type CountryCodeAndPhoneNumber = {
   nationalNumber: string;
 };
 
-type PhoneNumberInputProps = Exclude<BoxProps, "onValueChange"> &
-  FlexProps & {
-    /** The label. Defaults to a localized version of "Phone number" */
-    label?: string;
-    /** The root name.
-     *
-     * Please note that when specifying the name, the rendered names will be `${name}-country-code` and `${name}-phone-number`, respectively
-     */
-    name?: string;
-    /** Callback for when the country code or phone number changes */
-    onValueChange?: (change: CountryCodeAndPhoneNumber) => void;
-    /** The optional value of the country code and phone number */
-    value?: CountryCodeAndPhoneNumber;
-    variant?: "core" | "floating";
-    isOptional?: boolean;
-    items: CollectionItem[];
-  };
+type PhoneNumberInputProps = InputProps & {
+  /** The label. Defaults to a localized version of "Phone number" */
+  label?: string;
+  /** Callback for when the country code or phone number changes */
+  onValueChange?: (change: CountryCodeAndPhoneNumber) => void;
+  /** The optional value of the country code and phone number */
+  value?: CountryCodeAndPhoneNumber;
+  /** Returns an extra optional text when true */
+  optional?: boolean;
+};
 /**
  * A component for entering phone numbers.
  *
@@ -56,19 +44,16 @@ export const PhoneNumberInput = forwardRef<
 >((props, ref) => {
   const {
     label: externalLabel,
-    name,
     value: externalValue,
     onValueChange: externalOnChange,
     variant,
-    isOptional,
-    items,
-    ...boxProps
+    optional,
   } = props;
 
   const { t } = useTranslation();
   const label =
     externalLabel ??
-    (isOptional ? t(texts.phoneNumberOptional) : t(texts.phoneNumber));
+    (optional ? t(texts.phoneNumberOptional) : t(texts.phoneNumber));
 
   const [value, onChange] = useControllableState({
     value: externalValue,
@@ -93,7 +78,6 @@ export const PhoneNumberInput = forwardRef<
         <CountryCodeSelect
           value={[value.countryCode]}
           onValueChange={handleCountryCodeChange}
-          name={name ? `${name}-country-code` : "country-code"}
           height="100%"
           width="6.25rem"
           variant={variant}
@@ -105,7 +89,6 @@ export const PhoneNumberInput = forwardRef<
           type="tel"
           label={label}
           value={value.nationalNumber}
-          name={name ? `${name}-phone-number` : "phone-number"}
           onChange={(e) => {
             const target = e.target as HTMLInputElement;
             // Removes everything but numbers, spaces and dashes

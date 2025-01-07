@@ -85,15 +85,12 @@ export const ChoiceChip = forwardRef(
     const id = `choice-chip-${useId()}`;
 
     return (
-      <chakra.label
-        htmlFor={id}
-        {...getRootProps()}
-        aria-label={String(children)}
-      >
+      <chakra.label htmlFor={id} {...getRootProps()}>
         <chakra.input
           {...getInputProps({}, ref)}
           id={id}
           disabled={isDisabled}
+          aria-label={String(children)}
         />
         <chakra.div
           {...getLabelProps()}

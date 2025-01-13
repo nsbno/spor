@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.0.4
+
+### Patch Changes
+
+- a10004c: Added deprecated warning on useMediaQuery
+
 ## 11.0.3
 
 ### Patch Changes

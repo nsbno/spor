@@ -12,7 +12,6 @@ export {
   useColorModeValue,
   useControllableProp,
   useDisclosure,
-  useMediaQuery,
   useMergeRefs,
   useOutsideClick,
   usePrefersReducedMotion,
@@ -27,4 +26,11 @@ export type {
   UseDisclosureProps,
   UseOutsideClickProps,
 } from "@chakra-ui/react";
+import { useMediaQuery as useMediaQueryChakra } from "@chakra-ui/react";
+
+/**
+ * @deprecated useMediaQuery is deprecated. Use CSS only to determine the media query. - SSR is not supported and usage of useMediaQuery for rendering will cause hydration errors.
+ */
+export const useMediaQuery = useMediaQueryChakra;
+
 export { useSize } from "@chakra-ui/react-use-size";

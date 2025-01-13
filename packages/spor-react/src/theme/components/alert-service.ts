@@ -43,23 +43,27 @@ const config = helpers.defineMultiStyleConfig({
     "global-deviation": {
       container: {
         _hover: {
-          outlineColor: "primrose",
+          backgroundColor: "teal.600",
+          outlineColor: "teal.600",
+        },
+        _focus: {
+          outlineColor: "green.500",
         },
         _active: {
-          backgroundColor: "blonde",
-          outlineColor: "primrose",
+          backgroundColor: "teal.400",
+          outlineColor: "pine",
         },
-        color: "darkGrey",
+        color: "white",
       },
       outerBox: {
-        outlineColor: "primrose",
-        backgroundColor: "blonde",
+        outlineColor: "blueGreen",
+        backgroundColor: "darkTeal",
       },
       notificationText: {
-        color: "darkGrey",
+        color: "white",
       },
       serviceMessageContent: {
-        color: "darkGrey",
+        color: "white",
       },
     },
     service: {

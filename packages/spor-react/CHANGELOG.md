@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.0.5
+
+### Patch Changes
+
+- 793e13f: Changed color of the ServiceAlert varient global-deviation to be the same as a regular service alert
+
 ## 11.0.4
 
 ### Patch Changes

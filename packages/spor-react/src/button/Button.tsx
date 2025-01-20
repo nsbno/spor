@@ -12,13 +12,50 @@ import React from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
 
-export type ButtonProps = Omit<
-  Exclude<
-    ChakraButtonProps,
-    "colorScheme" | "loadingText" | "size" | "variant"
-  >,
-  keyof SpaceProps
-> & {
+type PickedButtonProps = Pick<
+  ChakraButtonProps,
+  | "isLoading"
+  | "isDisabled"
+  | "leftIcon"
+  | "rightIcon"
+  | "loadingText"
+  | "fontWeight"
+  | "as"
+  | "type"
+  | "sx"
+  | "children"
+  | "aria-label"
+  | "margin"
+  | "marginTop"
+  | "m"
+  | "mt"
+  | "marginBlockStart"
+  | "marginTop"
+  | "mr"
+  | "marginInlineEnd"
+  | "marginEnd"
+  | "me"
+  | "marginRight"
+  | "mb"
+  | "marginBlockEnd"
+  | "marginBottom"
+  | "ml"
+  | "marginInlineStart"
+  | "marginStart"
+  | "ms"
+  | "marginLeft"
+  | "mx"
+  | "marginInline"
+  | "my"
+  | "marginBlock"
+  | "marginY"
+  | "width"
+  | "pointerEvents"
+  | "maxWidth"
+  | "minWidth"
+>;
+
+export type ButtonProps = PickedButtonProps & {
   /**
    * The size of the button.
    *

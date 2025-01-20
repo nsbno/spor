@@ -12,12 +12,9 @@ import React from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
 
-export type ButtonProps = Omit<
-  Exclude<
-    ChakraButtonProps,
-    "colorScheme" | "loadingText" | "size" | "variant"
-  >,
-  keyof SpaceProps
+export type ButtonProps = Exclude<
+  ChakraButtonProps,
+  "colorScheme" | "size" | "variant"
 > & {
   /**
    * The size of the button.

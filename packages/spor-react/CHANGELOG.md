@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.1.0
+
+### Minor Changes
+
+- c0a8332: Button: Update props to support margins
+
 ## 11.0.5
 
 ### Patch Changes

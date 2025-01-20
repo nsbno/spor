@@ -17,16 +17,16 @@ export const separatorRecipe = defineRecipe({
     },
     size: {
       sm: {
-        borderWidth: "0.5px",
-        borderRadius: "1px",
+        borderWidth: "1px",
+        borderRadius: "0.5px",
       },
       md: {
-        borderWidth: "1.5px",
+        borderWidth: "2px",
         borderRadius: "1px",
       },
       lg: {
-        borderWidth: "2px",
-        borderRadius: "1px",
+        borderWidth: "3px",
+        borderRadius: "1.5px",
       },
     },
     orientation: {

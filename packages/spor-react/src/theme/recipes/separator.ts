@@ -63,6 +63,7 @@ export const separatorRecipe = defineRecipe({
     {
       variant: "dashed",
       css: {
+        borderRadius: "unset",
         borderWidth: "unset",
       },
     },

@@ -26,7 +26,6 @@ export const separatorRecipe = defineRecipe({
         backgroundSize: "100% 3px",
         height: "1px",
         borderStyle: "dashed",
-
       },
     },
     size: {
@@ -41,6 +40,14 @@ export const separatorRecipe = defineRecipe({
       lg: {
         borderWidth: "3px",
         borderRadius: "1.5px",
+      },
+    },
+    orientation: {
+      horizontal: {
+        width: "100%",
+      },
+      vertical: {
+        height: "100%",
       },
     },
   },

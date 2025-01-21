@@ -12,7 +12,19 @@ export const separatorRecipe = defineRecipe({
         borderStyle: "solid",
       },
       dashed: {
+        backgroundImage: `
+          linear-gradient(
+            90deg, 
+            blackAlpha.300 1px, 
+            transparent 1px, 
+            transparent 4px
+          )
+        `,
+        backgroundRepeat: "repeat-x",
+        backgroundSize: "4px 1px",
+        height: "1px",
         borderStyle: "dashed",
+
       },
     },
     size: {
@@ -27,14 +39,6 @@ export const separatorRecipe = defineRecipe({
       lg: {
         borderWidth: "3px",
         borderRadius: "1.5px",
-      },
-    },
-    orientation: {
-      horizontal: {
-        width: "100%",
-      },
-      vertical: {
-        height: "100%",
       },
     },
   },
@@ -58,13 +62,6 @@ export const separatorRecipe = defineRecipe({
       size: "lg",
       css: {
         height: "3px",
-      },
-    },
-    {
-      variant: "dashed",
-      css: {
-        borderRadius: "unset",
-        borderWidth: "unset",
       },
     },
   ],

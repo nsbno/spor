@@ -13,12 +13,11 @@ type SeparatorVariantProps = RecipeVariantProps<typeof separatorRecipe>;
 
 type SeparatorProps = Exclude<
   ChakraSeparatorProps,
-  "size" | "variant" | "colorPalette"
+  "size" | "variant" 
 > &
   PropsWithChildren<SeparatorVariantProps> & {
     size?: "sm" | "md" | "lg";
     variant?: "solid" | "dashed";
-    orientation?: "horizontal" | "vertical";
   };
 
 export const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
@@ -26,11 +25,10 @@ export const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
     const {
       size = "sm",
       variant = "solid",
-      orientation = "horizontal",
       
     } = props;
     const recipe = useRecipe({ recipe: separatorRecipe });
-    const styles = recipe({ size, variant, orientation });
-    return <ChakraSeparator css={styles} ref={ref} />;
+    const styles = recipe({ size, variant });
+    return <ChakraSeparator css={styles} {...props} ref={ref} />;
   },
 );

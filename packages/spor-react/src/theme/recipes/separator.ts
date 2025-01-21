@@ -15,13 +15,15 @@ export const separatorRecipe = defineRecipe({
         backgroundImage: `
           linear-gradient(
             90deg, 
-            blackAlpha.300 1px, 
-            transparent 1px, 
-            transparent 4px
+            blackAlpha.400
+             blackAlpha.300", 4px, 
+            transparent 4px, 
+            transparent 10px
           )
         `,
+        backgroundPosition: "left bottom",
         backgroundRepeat: "repeat-x",
-        backgroundSize: "4px 1px",
+        backgroundSize: "100% 3px",
         height: "1px",
         borderStyle: "dashed",
 

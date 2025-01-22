@@ -27,7 +27,6 @@ import {
   ServerStyleContext,
 } from "./root/setup/chakra-setup/styleContext";
 import { RootErrorBoundary } from "./root/setup/error-boundary/RootErrorBoundary";
-import { FontPreloading } from "./root/setup/font-loading/FontPreloading";
 import "./styles/style-overrides.css";
 import {
   getBrandFromCookie,
@@ -77,12 +76,27 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 };
 
 export const links: LinksFunction = () => {
+  const fontNames = [
+    "VyDisplay-Medium",
+    "VySans-Regular",
+    "VySans-Light",
+    "VySans-Bold",
+  ];
+
+  const fonts = fontNames.map((fontName) => ({
+    rel: "preconnect",
+    href: `https://www.vy.no/styles/font/${fontName}.woff2`,
+    as: "font",
+    type: "font/woff2",
+  }));
+
   return [
     {
       rel: "icon",
       href: "/favicon.svg",
       type: "image/svg+xml",
     },
+    ...fonts,
   ];
 };
 
@@ -163,7 +177,6 @@ const Document = withEmotionCache(
           {title ? <title>{title}</title> : null}
           <Meta />
           <Links />
-          <FontPreloading />
           {serverStyleData?.map(({ key, ids, css }) => (
             <style
               key={key}

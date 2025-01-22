@@ -108,6 +108,12 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
           <SearchInput
             role="button"
             onClick={onSearchClick}
+            onKeyDown={(e) => {
+              console.log(e.key);
+              if (e.key === "Enter" || e.key === " ") {
+                onSearchClick();
+              }
+            }}
             width={[null, null, null, "37.5rem"]}
             readOnly
             label={

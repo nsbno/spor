@@ -55,7 +55,6 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
           }}
           ref={ref}
           data-attachable
-          placeholder=""
           data-has-value={Boolean(props.value) || undefined}
         />
         <FormLabel

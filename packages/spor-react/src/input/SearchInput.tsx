@@ -48,6 +48,7 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
           {...innerProps}
           id={inputId}
           type="search"
+          placeholder=" "
           css={{
             "&::-webkit-search-cancel-button": {
               WebkitAppearance: "none",
@@ -55,7 +56,6 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
           }}
           ref={ref}
           data-attachable
-          data-has-value={Boolean(props.value) || undefined}
         />
         <FormLabel
           htmlFor={inputId}

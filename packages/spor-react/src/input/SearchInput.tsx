@@ -54,10 +54,28 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
             },
           }}
           ref={ref}
-          placeholder=" " // This is needed to make the label work as expected
           data-attachable
+          placeholder=""
+          data-has-value={Boolean(props.value) || undefined}
         />
-        <FormLabel htmlFor={inputId} pointerEvents="none">
+        <FormLabel
+          htmlFor={inputId}
+          sx={{
+            position: "absolute",
+            left: "2.6rem",
+            top: "26.9%",
+            fontSize: "1.13rem",
+            pointerEvents: "none",
+            margin: 0,
+            zIndex: 2,
+            "input:focus + &, input[data-has-value] + &": {
+              color: "var(--chakra-colors-gray-600)",
+            },
+            "input[data-has-value] + &": {
+              transform: "translateY(-40%) scale(0.9)",
+            },
+          }}
+        >
           {label ?? t(texts.label)}
         </FormLabel>
         {showClearButton && (

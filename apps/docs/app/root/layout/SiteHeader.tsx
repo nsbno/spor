@@ -1,10 +1,12 @@
-import { Link, useLocation } from "@remix-run/react";
+import { Link, useLocation, useRouteLoaderData } from "@remix-run/react";
 import {
   HamburgerFill24Icon,
   SearchFill24Icon,
+  SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
+  Button,
   DarkMode,
   Drawer,
   DrawerBody,
@@ -22,6 +24,7 @@ import {
   useDisclosure,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
+import { loader } from "~/root";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
 import { SiteSearchModal } from "./SiteSearchModal";
 import { SiteSettings } from "./SiteSettings";
@@ -91,13 +94,8 @@ type SearchFieldProps = {
 };
 
 const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
-  const [isMac, setIsMac] = useState(false);
+  const isMac = useRouteLoaderData<typeof loader>("root")?.isMac;
 
-  useEffect(() => {
-    if (typeof navigator !== "undefined") {
-      setIsMac(/Mac|iPod|iPhone|iPad/.test(navigator.userAgent));
-    }
-  }, []);
   return (
     <>
       <Flex
@@ -107,7 +105,26 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         paddingX={[3, null, 7, 5, 9]}
       >
         <DarkMode>
+          {/* <Box
+            as="button"
+            onClick={onSearchClick}
+            width={[null, null, null, "37.5rem"]}
+            sx={{
+              textAlign: "left",
+              justifyContent: "flex-start",
+              paddingLeft: 7,
+              border: "1px solid",
+              borderColor: "border.secondary",
+              borderRadius: "full",
+            }}
+          >
+            Search docs{" "}
+            <Text as="span" fontSize="12" paddingTop={0.5}>
+              ({isMac ? "⌘" : "Ctrl"} + K)
+            </Text>
+          </Box> */}
           <SearchInput
+            role="button"
             onClick={onSearchClick}
             width={[null, null, null, "37.5rem"]}
             readOnly
@@ -142,6 +159,7 @@ const MobileNavigation = ({ onSearchClick }: SearchFieldProps) => {
     // but that's on you!
     onClose();
   }, [location.pathname, onClose]);
+
   return (
     <Flex display={["flex", null, null, "none"]}>
       <Flex gap={2}>

@@ -1,11 +1,10 @@
-import "./styles/style-overrides.css";
 import { cookieStorageManagerSSR } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
 import {
   ActionFunctionArgs,
   LinksFunction,
   LoaderFunctionArgs,
-  json,
+  data,
 } from "@remix-run/node";
 import {
   Links,
@@ -29,14 +28,12 @@ import {
 } from "./root/setup/chakra-setup/styleContext";
 import { RootErrorBoundary } from "./root/setup/error-boundary/RootErrorBoundary";
 import { FontPreloading } from "./root/setup/font-loading/FontPreloading";
+import "./styles/style-overrides.css";
 import {
   getBrandFromCookie,
   setBrandInCookie,
 } from "./utils/brand-cookie.server";
-import {
-  InitialSanityData,
-  getInitialSanityData,
-} from "./utils/initialSanityData.server";
+import { getInitialSanityData } from "./utils/initialSanityData.server";
 import { urlBuilder } from "./utils/sanity/utils";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
@@ -89,18 +86,20 @@ export const links: LinksFunction = () => {
   ];
 };
 
-export type LoaderData = {
-  initialSanityData: InitialSanityData;
-};
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const initialSanityData = await getInitialSanityData();
   const brand = await getBrandFromCookie(request.headers.get("cookie") ?? "");
 
-  return json({
+  const isMac = /Mac|iPod|iPhone|iPad/.test(
+    request.headers.get("user-agent") ?? "",
+  );
+
+  return {
     initialSanityData,
     cookies: request.headers.get("cookie") ?? "",
     brand,
-  });
+    isMac,
+  };
 };
 
 /**
@@ -147,10 +146,13 @@ const Document = withEmotionCache(
       const tags = emotionCache.sheet.tags;
       emotionCache.sheet.flush();
       tags.forEach((tag) => {
+        // eslint-disable-next-line
         (emotionCache.sheet as any)._insertTag(tag);
       });
       // reset cache to reapply global styles
       clientStyleData.reset();
+      // We need to exclude the clientStyleData and emotionCache from the dependency array, due to infinite re-renders
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -215,10 +217,10 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const brandString = formData.get("brand") as string;
   const brand = parseStringToBrand(brandString);
   if (!brand) {
-    return json({ error: "Brand is required" }, { status: 400 });
+    return data({ error: "Brand is required" }, { status: 400 });
   }
 
-  return json(
+  return data(
     { status: "ok" },
     { status: 200, headers: { "Set-Cookie": await setBrandInCookie(brand) } },
   );

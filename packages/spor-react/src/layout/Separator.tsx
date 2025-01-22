@@ -23,7 +23,7 @@ type SeparatorProps = Exclude<
 export const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
   (props, ref) => {
     const {
-      size = "sm",
+      size = "md",
       variant = "solid",
       orientation = "horizontal",
 

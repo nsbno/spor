@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.1.1
+
+### Patch Changes
+
+- c0e50b7: Fixed searchinput so it is more SSR friendly
+
 ## 11.1.0
 
 ### Minor Changes

@@ -36,13 +36,7 @@ export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
     return (
       <ChakraLink {...props} ref={ref}>
         {children}
-        {external && (
-          <LinkOutOutline24Icon
-            aria-label={
-              external ? `${children}, ${t(texts.externalLink)}` : children
-            }
-          />
-        )}
+        {external && <LinkOutOutline24Icon aria-hidden />}
       </ChakraLink>
     );
   },

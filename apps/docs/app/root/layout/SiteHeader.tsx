@@ -105,24 +105,6 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         paddingX={[3, null, 7, 5, 9]}
       >
         <DarkMode>
-          {/* <Box
-            as="button"
-            onClick={onSearchClick}
-            width={[null, null, null, "37.5rem"]}
-            sx={{
-              textAlign: "left",
-              justifyContent: "flex-start",
-              paddingLeft: 7,
-              border: "1px solid",
-              borderColor: "border.secondary",
-              borderRadius: "full",
-            }}
-          >
-            Search docs{" "}
-            <Text as="span" fontSize="12" paddingTop={0.5}>
-              ({isMac ? "⌘" : "Ctrl"} + K)
-            </Text>
-          </Box> */}
           <SearchInput
             role="button"
             onClick={onSearchClick}

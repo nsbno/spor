@@ -10,7 +10,6 @@ const svgStyles = () => {
       width: "1.125em",
       height: "1.125em",
       position: "relative",
-      bottom: "-0.2em",
     },
   };
 };
@@ -28,7 +27,10 @@ export const linkRecipe = defineRecipe({
     borderRadius: "none",
     padding: "2px",
     color: "inherit",
-    display: "inline",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyItems: "center",
+    gap: "4px",
     position: "relative",
     boxDecorationBreak: "clone",
 
@@ -43,35 +45,31 @@ export const linkRecipe = defineRecipe({
 
     ...svgStyles(),
   },
-  compoundVariants: [
-    {
-      variant: "primary",
-      css: {
+  variants: {
+    variant: {
+      primary: {
         ...baseText("default"),
+        _hover: {
+          ...brandText("hover"),
+          ...brandBackground("hover"),
+        },
       },
-      _hover: {
-        ...brandText("hover"),
-        ...brandBackground("hover"),
-      },
-    },
-    {
-      variant: "secondary",
-      css: {
-        backgroundImage: `linear-gradient("blackAlpha.400", "blackAlpha.400")`,
+      secondary: {
+        backgroundImage: "linear-gradient(blackAlpha.400, blackAlpha.400)",
         ...baseText("default"),
         "&:focus, &:focus-visible, &:active, &:hover": {
           outline: "1px solid",
         },
-      },
-      ...baseBackground("default"),
-      _hover: {
-        ...baseBorder("hover"), // TODO: This is also weird
-        ...baseBackground("hover"),
-        outlineWidth: 1,
-      },
-      _active: {
-        ...baseBackground("active"),
+        ...baseBackground("default"),
+        _hover: {
+          ...baseBorder("hover"),
+          ...baseBackground("hover"),
+          outlineWidth: 1,
+        },
+        _active: {
+          ...baseBackground("active"),
+        },
       },
     },
-  ],
+  },
 });

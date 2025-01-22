@@ -1,4 +1,3 @@
-
 import { defineRecipe } from "@chakra-ui/react";
 
 export const separatorRecipe = defineRecipe({
@@ -77,4 +76,3 @@ export const separatorRecipe = defineRecipe({
     orientation: "horizontal",
   },
 });
-

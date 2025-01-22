@@ -18,19 +18,13 @@ type SeparatorProps = Exclude<
   PropsWithChildren<SeparatorVariantProps> & {
     size?: "sm" | "md" | "lg";
     variant?: "solid" | "dashed";
-    orientation?: "horizontal" | "vertical";
   };
 
 export const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
   (props, ref) => {
-    const {
-      size = "sm",
-      variant = "solid",
-      orientation = "horizontal",
-      
-    } = props;
+    const { size = "sm", variant = "solid" } = props;
     const recipe = useRecipe({ recipe: separatorRecipe });
-    const styles = recipe({ size, variant, orientation });
-    return <ChakraSeparator css={styles} ref={ref} />;
+    const styles = recipe({ size, variant });
+    return <ChakraSeparator css={styles} {...props} ref={ref} />;
   },
 );

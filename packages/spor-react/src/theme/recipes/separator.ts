@@ -1,10 +1,10 @@
+
 import { defineRecipe } from "@chakra-ui/react";
 
 export const separatorRecipe = defineRecipe({
   className: "spor-separator",
   base: {
     borderColor: "blackAlpha.300",
-    display: "block",
   },
   variants: {
     variant: {
@@ -12,21 +12,24 @@ export const separatorRecipe = defineRecipe({
         borderStyle: "solid",
       },
       dashed: {
-        borderStyle: "dashed",
+        backgroundImage: `repeating-linear-gradient(90deg, blackAlpha.400, blackAlpha.300", 4px, transparent 4px, transparent 10px)`,
+        backgroundPosition: "left bottom",
+        backgroundRepeat: "repeat-x",
+        backgroundSize: "100% 3px",
       },
     },
     size: {
       sm: {
-        borderWidth: "0.5px",
-        borderRadius: "1px",
+        borderWidth: "1px",
+        borderRadius: "0.5px",
       },
       md: {
-        borderWidth: "1.5px",
+        borderWidth: "2px",
         borderRadius: "1px",
       },
       lg: {
-        borderWidth: "2px",
-        borderRadius: "1px",
+        borderWidth: "3px",
+        borderRadius: "1.5px",
       },
     },
     orientation: {
@@ -43,31 +46,35 @@ export const separatorRecipe = defineRecipe({
       variant: "dashed",
       size: "sm",
       css: {
-        borderWidth: "0.5px",
-        height: "0.5px",
+        height: "1px",
       },
     },
     {
       variant: "dashed",
       size: "md",
       css: {
-        borderWidth: "1px",
-        height: "1px",
+        height: "2px",
       },
     },
     {
       variant: "dashed",
       size: "lg",
       css: {
-        borderWidth: "1.5px",
-        height: "1.5px",
+        height: "3px",
       },
     },
     {
       variant: "dashed",
       css: {
         borderRadius: "unset",
+        borderWidth: "unset",
       },
     },
   ],
+  defaultVariants: {
+    variant: "solid",
+    size: "sm",
+    orientation: "horizontal",
+  },
 });
+

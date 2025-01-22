@@ -109,7 +109,6 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
             role="button"
             onClick={onSearchClick}
             onKeyDown={(e) => {
-              console.log(e.key);
               if (e.key === "Enter" || e.key === " ") {
                 onSearchClick();
               }

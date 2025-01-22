@@ -6,53 +6,80 @@ import VyLogo from "./components/VyLogo";
 import { structure } from "./desk/structure";
 import { schemaTypes } from "./schemas";
 
-export default defineConfig({
-  name: "default",
-  title: "Spor",
-  projectId: "tbpd14t4",
-  dataset: "production",
-  plugins: [structureTool({ structure }), visionTool(), codeInput()],
-  studio: {
-    components: {
-      logo: VyLogo,
-    },
-  },
-  document: {
-    productionUrl: async (prev, { document, getClient }) => {
-      try {
-        const configuredClient = getClient({ apiVersion: "2022-10-06" });
-        const host = window.location.href?.includes("localhost")
-          ? "http://localhost:3000"
-          : "https://spor.vy.no";
+const projectId = "tbpd14t4";
 
-        if (document._type === "article") {
-          if (!document.category) {
-            return host;
-          }
-          const category = await configuredClient.fetch(
-            `*[_id == $id] { "slug": slug.current }[0]`,
-            { id: (document.category as any)?._ref },
-          );
+const documentConfig = {
+  productionUrl: async (
+    prev: string | undefined,
+    { document, getClient }: { document: any; getClient: any },
+  ) => {
+    try {
+      const configuredClient = getClient({ apiVersion: "2022-10-06" });
+      const host = window.location.href?.includes("localhost")
+        ? "http://localhost:3000"
+        : "https://spor.vy.no";
 
-          if (!category) {
-            return host;
-          }
-
-          const params = new URLSearchParams();
-          params.set("preview", import.meta.env.SANITY_STUDIO_PREVIEW_SECRET);
-
-          return `${host}/${category.slug}/${
-            (document?.slug as any)?.current
-          }?${params}`;
+      if (document._type === "article") {
+        if (!document.category) {
+          return host;
         }
-      } catch (e) {
-        console.error(e);
+        const category = await configuredClient.fetch(
+          `*[_id == $id] { "slug": slug.current }[0]`,
+          { id: document.category?._ref },
+        );
+
+        if (!category) {
+          return host;
+        }
+
+        const params = new URLSearchParams();
+        params.set("preview", import.meta.env.SANITY_STUDIO_PREVIEW_SECRET);
+
+        return `${host}/${category.slug}/${document?.slug.current}?${params}`;
       }
-      return prev;
+    } catch (e) {
+      console.error(e);
+    }
+    return prev;
+  },
+};
+
+export default defineConfig([
+  {
+    name: "default",
+    title: "Spor 2",
+    subtitle: "New version based on Chakra 3.0",
+    projectId: projectId,
+    dataset: "production-v2",
+    basePath: "/production-v2",
+    plugins: [structureTool({ structure }), visionTool(), codeInput()],
+    studio: {
+      components: {
+        logo: VyLogo,
+      },
+    },
+    document: documentConfig,
+    schema: {
+      types: schemaTypes,
     },
   },
+  {
+    name: "sporV1",
+    title: "Spor 1",
+    subtitle: "First version based on Chakra 2.0",
+    projectId: projectId,
+    dataset: "production",
+    basePath: "/production",
+    plugins: [structureTool({ structure }), visionTool(), codeInput()],
+    studio: {
+      components: {
+        logo: VyLogo,
+      },
+    },
+    document: documentConfig,
 
-  schema: {
-    types: schemaTypes,
+    schema: {
+      types: schemaTypes,
+    },
   },
-});
+]);

@@ -13,7 +13,9 @@ type linkVariantProps = RecipeVariantProps<typeof linkRecipe>;
 
 export type LinkProps = Exclude<ChakraLinkProps, "variant"> &
   PropsWithChildren<linkVariantProps> & {
+    /** Defaults to primary */
     variant?: "primary" | "secondary";
+    /** Define if the link shows an icon on the right that indicate it is an external link */
     external?: boolean;
   };
 

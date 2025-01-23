@@ -4,9 +4,10 @@ import {
   forwardRef,
   useControllableState,
 } from "@chakra-ui/react";
-import React, { Suspense } from "react";
-import { InfoSelect, Input, Item, createTexts, useTranslation } from "..";
+import React from "react";
+import { Input, createTexts, useTranslation } from "..";
 import { AttachedInputs } from "./AttachedInputs";
+import { CountryCodeSelect } from "./CountryCodeSelect";
 
 type CountryCodeAndPhoneNumber = {
   countryCode: string;
@@ -71,34 +72,19 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
     });
     return (
       <AttachedInputs {...boxProps}>
-        <Suspense
-          fallback={
-            <InfoSelect
-              isLabelSrOnly
-              label={t(texts.countryCodeLabel)}
-              width="6.25rem"
-              height="100%"
-              value="+47"
-              variant={variant}
-            >
-              <Item key="+47">+47</Item>
-            </InfoSelect>
+        <CountryCodeSelect
+          value={value.countryCode}
+          onChange={(countryCode) =>
+            onChange({
+              countryCode: countryCode as string,
+              nationalNumber: value.nationalNumber,
+            })
           }
-        >
-          <LazyCountryCodeSelect
-            value={value.countryCode}
-            onChange={(countryCode) =>
-              onChange({
-                countryCode: countryCode as string,
-                nationalNumber: value.nationalNumber,
-              })
-            }
-            name={name ? `${name}-country-code` : "country-code"}
-            height="100%"
-            width="6.25rem"
-            variant={variant}
-          />
-        </Suspense>
+          name={name ? `${name}-country-code` : "country-code"}
+          height="100%"
+          width="6.25rem"
+          variant={variant}
+        />
         <Input
           ref={ref}
           type="tel"
@@ -142,5 +128,3 @@ const texts = createTexts({
     sv: "Landskod",
   },
 });
-
-const LazyCountryCodeSelect = React.lazy(() => import("./CountryCodeSelect"));

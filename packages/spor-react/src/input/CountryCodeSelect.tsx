@@ -35,7 +35,7 @@ export const CountryCodeSelect = (props: CountryCodeSelectProps) => {
     <InfoSelect
       label={t(texts.countryCode)}
       isLabelSrOnly={true}
-      items={callingCodes as typeof callingCodes}
+      items={callingCodes}
       variant={props.variant}
       {...props}
     >

@@ -17,18 +17,16 @@ export const separatorRecipe = defineRecipe({
     },
     size: {
       sm: {
-        borderWidth: "1px",
+        borderBottomWidth: "1px",
         height: "1px",
       },
       md: {
+        borderBottomWidth: "2px",
         height: "2px",
-        borderWidth: "2px",
-
       },
       lg: {
+        borderBottomWidth: "3px",
         height: "3px",
-        borderWidth: "3px",
-
       },
     },
     orientation: {

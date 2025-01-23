@@ -55,16 +55,11 @@ export const linkRecipe = defineRecipe({
         },
       },
       secondary: {
-        backgroundImage: "linear-gradient(blackAlpha.400, blackAlpha.400)",
         ...baseText("default"),
-        "&:focus, &:focus-visible, &:active, &:hover": {
-          outline: "1px solid",
-        },
-        ...baseBackground("default"),
         _hover: {
           ...baseBorder("hover"),
           ...baseBackground("hover"),
-          outlineWidth: 1,
+          outlineWidth: "1px",
         },
         _active: {
           ...baseBackground("active"),

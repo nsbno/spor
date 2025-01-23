@@ -128,5 +128,3 @@ const texts = createTexts({
     sv: "Landskod",
   },
 });
-
-// const LazyCountryCodeSelect = React.lazy(() => import("./CountryCodeSelect"));

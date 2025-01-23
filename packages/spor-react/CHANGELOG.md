@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.1.2
+
+### Patch Changes
+
+- 902cd66: Removed lazy from phone number input
+
 ## 11.1.1
 
 ### Patch Changes

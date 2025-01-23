@@ -1,16 +1,10 @@
+
 import { defineRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const staticCardRecipe = defineRecipe({
   base: {
-    appearance: "none",
-    border: "none",
-    overflow: "hidden",
-    fontSize: "inherit",
-    display: "block",
     borderRadius: "md",
-    color: "text",
-    ...focusVisibleStyles(),
   },
   variants: {
     colorPalette: {
@@ -19,28 +13,34 @@ export const staticCardRecipe = defineRecipe({
         color: "text",
       },
       grey: {
-        backgroundColor: "lightGrey",
+        backgroundColor: "silver",
       },
       green: {
         backgroundColor: "seaMist",
       },
-      red: {
-        backgroundColor: "pink",
-      },
-      darkBlue: {
-        backgroundColor: "darkBlue",
-        color: "white",
-      },
       darkGreen: {
         backgroundColor: "pine",
         color: "white",
+      }, 
+      orange: {
+        backgroundColor: "champagne",
+      },
+      red: {
+        backgroundColor: "lightRed",
+      },
+      yellow: {
+        backgroundColor: "blonde",
       },
       darkYellow: {
         backgroundColor: "banana",
       },
+      blue: {
+        backgroundColor: "lightBlue",
+      },
+      darkBlue: {
+        backgroundColor: "darkBlue",
+        color: "white",
+      }, 
     },
-  },
-  defaultVariants: {
-    colorPalette: "white",
   },
 });

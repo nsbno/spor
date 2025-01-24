@@ -52,6 +52,9 @@ export const linkRecipe = defineRecipe({
         _hover: {
           ...brandText("hover"),
           ...brandBackground("hover"),
+          _active: {
+            ...baseBackground("active"),
+          },
         },
       },
       secondary: {
@@ -60,9 +63,9 @@ export const linkRecipe = defineRecipe({
           ...baseBorder("hover"),
           ...baseBackground("hover"),
           outlineWidth: "1px",
-        },
-        _active: {
-          ...baseBackground("active"),
+          _active: {
+            ...baseBackground("active"),
+          },
         },
       },
     },

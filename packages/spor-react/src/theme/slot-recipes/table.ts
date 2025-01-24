@@ -1,24 +1,16 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { baseText } from "../utils/base-utils";
+import { tableAnatomy } from "./anatomy";
 
 const numericStyles = {
   "&[data-is-numeric=true]": {
-    textAlign: "end",
+    textAlign: "right",
   },
 };
 
 export const tableSlotRecipe = defineSlotRecipe({
-  slots: [
-    "root",
-    "body",
-    "row",
-    "cell",
-    "columnHeader",
-    "caption",
-    "footer",
-    "header",
-  ],
   className: "spor-table",
+  slots: tableAnatomy.keys(),
   base: {
     root: {
       tableLayout: "fixed",
@@ -29,107 +21,199 @@ export const tableSlotRecipe = defineSlotRecipe({
     body: {
       ...baseText("default"),
     },
+    header: {
+      ...baseText("default"),
+    },
     columnHeader: {
       fontWeight: "bold",
       textAlign: "start",
+      borderBottom: "sm",
+      borderColor: "blackAlpha.200",
+      ...numericStyles,
+    },
+    row: {
+      borderBottom: "sm",
+      borderColor: "blackAlpha.200",
+      ...numericStyles,
+    },
+    cell: {
+      ...numericStyles,
+    },
+    footer: {
+      fontWeight: "medium",
     },
   },
+
   variants: {
+    colorPallette: {
+      green: {
+        root: {
+          backgroundColor: "mint",
+          color: "brand.text",
+        },
+        columnHeader: {
+          backgroundColor: "brand.surface",
+          color: "brand.text",
+        },
+        row: {
+          backgroundColor: "brand.surface",
+          color: "brand.text",
+          _hover: {
+            backgroundColor: "brand.hover",
+          },
+        },
+        cell: {
+          backgroundColor: "brand.surface",
+          color: "brand.text",
+        },
+        footer: {
+          backgroundColor: "brand.surface",
+          color: "brand.text",
+        },
+      },
+      gray: {
+        root: {
+          backgroundColor: "grey.50",
+          color: "brand.text",
+        },
+        columnHeader: {
+          backgroundColor: "grey.100",
+          color: "brand.text",
+        },
+        row: {
+          backgroundColor: "grey.100",
+          color: "brand.text",
+          _hover: {
+            backgroundColor: "grey.200",
+          },
+        },
+        cell: {
+          backgroundColor: "grey.100",
+          color: "brand.text",
+        },
+        footer: {
+          backgroundColor: "grey.100",
+          color: "brand.text",
+        },
+      },
+    },
     variant: {
       line: {
         cell: {
           borderBottom: "sm",
           borderColor: "blackAlpha.200",
           ...numericStyles,
+          _first: {
+            borderLeft: "none",
+          },
         },
         row: {
           borderBottom: "sm",
           borderColor: "blackAlpha.200",
           ...numericStyles,
-          "&:last-of-type": {
-            td: {
-              borderBottomWidth: 0,
-            },
-          },
         },
       },
+
       outline: {
+        table: {
+          borderRadius: "md",
+          overflow: "hidden",
+        },
         cell: {
-          border: "sm",
-          borderColor: "whiteAlpha.200",
+          borderLeft: "sm",
+          borderColor: "blackAlpha.200",
+          ...numericStyles,
+          _first: {
+            borderLeft: "none",
+          },
+        },
+        header: {
+          backgroundColor: "mint",
+          border: "none",
+        },
+        columnHeader: {
+          borderLeft: "sm",
+          bordeLeftColor: "blackAlpha.10",
+          borderColor: "blackAlpha.200",
           ...numericStyles,
           _first: {
             borderLeft: "none",
           },
         },
         row: {
-          transitionDuration: "fast",
-          transitionProperty: "background-color, box-shadow",
-          _hover: {
-            backgroundColor: "blackAlpha.200",
-          },
+          ...numericStyles,
           _last: {
-            td: {
-              borderBottom: "none",
-            },
+            borderBottom: "none",
+          },
+          _hover: {
+            backgroundColor: "grey.50",
           },
         },
       },
     },
+
     size: {
       sm: {
         table: {
-          fontSize: ["mobile.xs", "desktop.xs"],
+          fontSize: ["mobile.sm", "desktop.sm"],
         },
-        th: {
-          paddingX: 3,
-          paddingY: 1.5,
+        cell: {
+          paddingX: 1,
+          paddingY: 0.5,
+          fontSize: ["mobile.sm", "desktop.sm"],
         },
-        td: {
-          paddingX: 3,
-          paddingY: 1.5,
+        columnHeader: {
+          paddingX: 1,
+          paddingY: 0.5,
         },
         caption: {
-          paddingX: 3,
-          paddingY: 1.5,
+          paddingX: 1,
+          paddingY: 0.5,
         },
       },
       md: {
         table: {
-          fontSize: ["mobile.sm", "desktop.sm"],
+          fontSize: ["mobile.md", "desktop.md"],
         },
-        th: {
-          paddingX: 3,
-          paddingY: 1.5,
+        cell: {
+          paddingX: 1.5,
+          paddingY: 1,
+          fontSize: ["mobile.md", "desktop.md"],
         },
-        td: {
-          paddingX: 3,
-          paddingY: 1.5,
+
+        columnHeader: {
+          paddingX: 1.5,
+          paddingY: 1,
+          fontSize: ["mobile.md", "desktop.md"],
         },
         caption: {
-          paddingX: 3,
-          paddingY: 1.5,
+          paddingX: 1.5,
+          paddingY: 1,
+          fontSize: ["mobile.md", "desktop.md"],
         },
       },
       lg: {
         table: {
-          fontSize: ["mobile.sm", "desktop.sm"],
+          fontSize: ["mobile.lg", "desktop.lg"],
         },
-        th: {
+        cell: {
           paddingX: 3,
-          paddingY: "15px",
+          paddingY: 2,
+          fontSize: ["mobile.lg", "desktop.lg"],
         },
-        td: {
+        columnHeader: {
           paddingX: 3,
-          paddingY: "15px",
+          paddingY: 2,
+          fontSize: ["mobile.lg", "desktop.lg"],
         },
         caption: {
           paddingX: 3,
-          paddingY: "15px",
+          paddingY: 2,
         },
       },
     },
   },
+
   defaultVariants: {
     variant: "line",
     size: "md",

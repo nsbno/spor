@@ -51,6 +51,9 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
         {label && (
           <ChakraField.Label css={styles.label}>{label}</ChakraField.Label>
         )}
+        {label && (
+          <ChakraField.Label css={styles.label}>{label}</ChakraField.Label>
+        )}
         {errorText && (
           <ChakraField.ErrorText>{errorText}</ChakraField.ErrorText>
         )}

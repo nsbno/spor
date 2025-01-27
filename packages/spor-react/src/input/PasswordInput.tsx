@@ -60,6 +60,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
       defaultValue: defaultVisible || false,
       onChange: onVisibleChange,
     });
+
     const { t } = useTranslation();
 
     return (

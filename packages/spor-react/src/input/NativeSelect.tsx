@@ -51,7 +51,7 @@ type NativeSelectRootProps = Exclude<
  * ```
  */
 
-export const NativeSelectRoot = React.forwardRef<
+export const NativeSelect = React.forwardRef<
   HTMLDivElement,
   NativeSelectRootProps
 >(function NativeSelect(props, ref) {

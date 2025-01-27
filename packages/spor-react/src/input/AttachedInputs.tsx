@@ -1,9 +1,9 @@
 "use client";
 
 import React, { forwardRef, PropsWithChildren } from "react";
-import { InputGroupProps } from "..";
 import { Group, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
 import { attachedInputsRecipe } from "@/theme/recipes/attached-inputs";
+import { InputGroupProps } from "./InputGroup";
 
 type AttachedInputsVariantProps = RecipeVariantProps<
   typeof attachedInputsRecipe

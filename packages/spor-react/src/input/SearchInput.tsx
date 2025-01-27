@@ -12,10 +12,12 @@ export type SearchInputProps = InputProps & {
   /** Callback for when the clear button is clicked */
   onReset?: () => void;
 };
+
 /** Simple search input component.
  *
  * Includes a search icon, a localized label and a reset button.
  */
+
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
   (props, ref) => {
     const { t } = useTranslation();

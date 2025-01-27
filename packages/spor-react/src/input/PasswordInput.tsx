@@ -2,8 +2,9 @@
 
 import { Button, useControllableState } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
-import { ButtonProps, Input, InputGroupProps, InputProps } from "..";
+import { ButtonProps, Input, InputProps } from "..";
 import { createTexts, useTranslation } from "..";
+import { InputGroupProps } from "./InputGroup";
 
 export interface PasswordVisibilityProps {
   /** Default visibility state */
@@ -26,19 +27,19 @@ export interface PasswordInputProps
  * ```tsx
  * <PasswordInput label="Password" />
  * ```
- * 
+ *
  * You can also control the visibility state:
- * 
+ *
  * ```tsx
  * <PasswordInput label="Password" visible={visible} onVisibleChange={setVisible} />
  * ```
- * 
+ *
  * You can also set the default visibility state:
- * 
+ *
  * ```tsx
  * <PasswordInput label="Password" defaultVisible />
  * ```
- * 
+ *
  * @see https://spor.vy.no/components/password-input
  */
 

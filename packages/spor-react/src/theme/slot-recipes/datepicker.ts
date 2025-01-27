@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { accentText } from "../utils/accent-utils";
-import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { floatingBorder, floatingBackground } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
@@ -36,9 +36,9 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       },
       _disabled: {
         pointerEvents: "none",
-        ...baseBackground("disabled"),
-        ...baseBorder("disabled"),
-        ...baseText("disabled"),
+        ...coreBackground("disabled"),
+        ...coreBorder("disabled"),
+        ...coreText("disabled"),
       },
       _focusWithin: {
         ...focusVisibleStyles()._focusVisible,
@@ -72,7 +72,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         ...ghostBackground("active"),
       },
       _invalid: {
-        ...baseBorder("invalid"),
+        ...coreBorder("invalid"),
       },
     },
     arrow: {
@@ -80,12 +80,12 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     },
     calendarPopover: {
       ...floatingBackground("default"),
-      ...baseText("default"),
+      ...coreText("default"),
       ...floatingBorder("default"),
       boxShadow: "md",
     },
     weekdays: {
-      ...baseText("default"),
+      ...coreText("default"),
     },
     weekend: {
       ...accentText("default"),
@@ -108,7 +108,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     },
     dateCell: {
       ...ghostBackground("default"),
-      ...baseText("default"),
+      ...coreText("default"),
       borderRadius: "50%",
       position: "relative",
       transition: ".1s ease-in-out",
@@ -125,8 +125,8 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         ...ghostBackground("active"),
       },
       _disabled: {
-        ...baseBackground("disabled"),
-        ...baseText("disabled"),
+        ...coreBackground("disabled"),
+        ...coreText("disabled"),
         pointerEvents: "none",
       },
       _selected: {
@@ -138,12 +138,12 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         },
       },
       "&[data-today]": {
-        ...baseBorder("default"),
+        ...coreBorder("default"),
       },
       "&[data-unavailable]": {
         pointerEvents: "none",
-        ...baseBackground("disabled"),
-        ...baseText("disabled"),
+        ...coreBackground("disabled"),
+        ...coreText("disabled"),
       },
     },
   },
@@ -151,14 +151,14 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         wrapper: {
-          ...baseBorder("default"),
-          ...baseBackground("default"),
+          ...coreBorder("default"),
+          ...coreBackground("default"),
 
           _hover: {
-            ...baseBorder("hover"),
+            ...coreBorder("hover"),
           },
           _invalid: {
-            ...baseBorder("invalid"),
+            ...coreBorder("invalid"),
           },
         },
       },
@@ -172,17 +172,17 @@ export const datePickerSlotRecipe = defineSlotRecipe({
             ...floatingBorder("hover"),
           },
           _invalid: {
-            ...baseBorder("invalid"),
+            ...coreBorder("invalid"),
           },
         },
       },
       ghost: {
         wrapper: {
           _hover: {
-            ...baseBorder("hover"),
+            ...coreBorder("hover"),
           },
           _invalid: {
-            ...baseBorder("invalid"),
+            ...coreBorder("invalid"),
           },
         },
       },

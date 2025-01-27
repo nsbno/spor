@@ -1,4 +1,4 @@
-import { baseText } from "../utils/base-utils";
+import { coreText } from "../utils/core-utils";
 import { inputBaseStyle, inputVariant } from "../utils/input-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
 
@@ -38,7 +38,7 @@ export const nativeSelectSlotRecipe = defineSlotRecipe({
       strokeLinecap: "round",
       fontSize: "sm",
       _disabled: {
-        ...baseText("disabled"),
+        ...coreText("disabled"),
       },
     },
   },

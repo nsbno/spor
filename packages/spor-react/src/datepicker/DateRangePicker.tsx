@@ -109,7 +109,7 @@ export function DateRangePicker({
     <PopoverContent css={styles.calendarPopover} maxWidth="none">
       <PopoverArrow />
       <PopoverBody>
-        <RangeCalendar variant={"bcorease"} {...calendarProps} />
+        <RangeCalendar variant={"core"} {...calendarProps} />
       </PopoverBody>
     </PopoverContent>
   );

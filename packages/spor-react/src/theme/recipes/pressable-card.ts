@@ -1,4 +1,4 @@
-import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { accentBackground, accentText } from "../utils/accent-utils";
 import { defineRecipe } from "../../util";
@@ -16,9 +16,9 @@ export const pressableCardRecipe = defineRecipe({
     transitionDuration: "fast",
 
     _disabled: {
-      ...baseBackground("disabled"),
-      ...baseBorder("disabled"),
-      ...baseText("disabled"),
+      ...coreBackground("disabled"),
+      ...coreBorder("disabled"),
+      ...coreText("disabled"),
       outline: "none",
       pointerEvents: "none",
     },
@@ -28,13 +28,13 @@ export const pressableCardRecipe = defineRecipe({
     variant: {
       core: {
         cursor: "pointer",
-        ...baseBorder("default"),
+        ...coreBorder("default"),
         _hover: {
-          ...baseBorder("hover"),
+          ...coreBorder("hover"),
         },
         _active: {
-          ...baseBackground("active"),
-          ...baseBorder("active"),
+          ...coreBackground("active"),
+          ...coreBorder("active"),
         },
       },
       accent: {

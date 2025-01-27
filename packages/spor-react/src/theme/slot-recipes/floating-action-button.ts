@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { accentBackground, accentText } from "../utils/accent-utils";
-import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { surface } from "../utils/surface-utils";
@@ -27,7 +27,7 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
       ...focusVisibleStyles(),
       _disabled: {
         ...surface("disabled"),
-        ...baseText("disabled"),
+        ...coreText("disabled"),
         pointerEvents: "none",
       },
     },
@@ -57,16 +57,16 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
       },
       core: {
         root: {
-          ...baseBackground("default"),
-          ...baseBorder("default"),
-          ...baseText("default"),
+          ...coreBackground("default"),
+          ...coreBorder("default"),
+          ...coreText("default"),
           _hover: {
-            ...baseBackground("hover"),
-            ...baseBorder("hover"),
+            ...coreBackground("hover"),
+            ...coreBorder("hover"),
           },
           _active: {
-            ...baseBorder("default"),
-            ...baseBackground("active"),
+            ...coreBorder("default"),
+            ...coreBackground("active"),
           },
         },
       },

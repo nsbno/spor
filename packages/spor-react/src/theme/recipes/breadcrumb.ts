@@ -1,4 +1,4 @@
-import { baseBackground, baseBorder } from "../utils/base-utils";
+import { coreBackground, coreBorder } from "../utils/core-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 import { defineRecipe } from "@chakra-ui/react";
@@ -25,10 +25,10 @@ export const breadcrumbRecipe = defineRecipe({
     core: {
       "&:not([aria-current=page])": {
         _hover: {
-          ...baseBorder("default"),
+          ...coreBorder("default"),
         },
         _active: {
-          ...baseBackground("active"),
+          ...coreBackground("active"),
         },
       },
     },

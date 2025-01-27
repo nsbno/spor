@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { outlineBorder } from "../utils/outline-utils";
 
@@ -25,9 +25,9 @@ export const radioCardSlotRecipe = defineSlotRecipe({
 
       _disabled: {
         pointerEvents: "none",
-        ...baseBackground("disabled"),
-        ...baseBorder("disabled"),
-        ...baseText("disabled"),
+        ...coreBackground("disabled"),
+        ...coreBorder("disabled"),
+        ...coreText("disabled"),
       },
       _checked: {
         outline: "2px solid",
@@ -40,25 +40,25 @@ export const radioCardSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         root: {
-          ...baseText("default"),
-          ...baseBackground("default"),
-          ...baseBorder("default"),
+          ...coreText("default"),
+          ...coreBackground("default"),
+          ...coreBorder("default"),
           _hover: {
-            ...baseBackground("hover"),
-            ...baseBorder("hover"),
+            ...coreBackground("hover"),
+            ...coreBorder("hover"),
           },
           _active: {
-            ...baseBackground("active"),
-            ...baseBorder("active"),
+            ...coreBackground("active"),
+            ...coreBorder("active"),
           },
         },
         _checked: {
           _hover: {
-            ...baseBorder("hover"),
+            ...coreBorder("hover"),
           },
           _active: {
-            ...baseBackground("active"),
-            ...baseBorder("active"),
+            ...coreBackground("active"),
+            ...coreBorder("active"),
           },
         },
         _focusedChecked: {
@@ -73,7 +73,7 @@ export const radioCardSlotRecipe = defineSlotRecipe({
           outlineOffset: "1px",
           boxShadow: `inset 0 0 0 1px rgba(0, 0, 0, 0.40)`,
           _hover: {
-            ...baseBorder("hover"),
+            ...coreBorder("hover"),
             boxShadow: "none",
             outlineOffset: "0px",
           },

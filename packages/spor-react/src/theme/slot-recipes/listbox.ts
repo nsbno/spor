@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { baseBorder } from "../utils/base-utils";
+import { coreBorder } from "../utils/core-utils";
 import { ghostBackground, ghostText } from "../utils/ghost-utils";
 import { surface } from "../utils/surface-utils";
 import { outlineBorder } from "../utils/outline-utils";
@@ -53,7 +53,7 @@ export const listBoxSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         root: {
-          ...baseBorder("default"),
+          ...coreBorder("default"),
         },
       },
       floating: {

@@ -24,7 +24,7 @@ type ColorPalette = ConditionalValue<
   | "darkYellow"
 >;
 
-export type StaticCardProps = 
+export type StaticCardProps = Exclude<BoxProps, "colorPalette"> &
   PropsWithChildren<StaticCardVariants> & {
     children: React.ReactNode;
     /** Defaults to "white" */

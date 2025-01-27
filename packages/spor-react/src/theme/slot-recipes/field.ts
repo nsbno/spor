@@ -59,7 +59,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
       textStyle: "xs",
       width: "fit-content",
       position: "absolute",
-      top: 8,
+      bottom: -4,
       left: 3,
       zIndex: "dropdown",
       maxWidth: "50ch",

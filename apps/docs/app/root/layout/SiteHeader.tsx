@@ -19,6 +19,10 @@ import {
   VyLogo,
   useDisclosure,
   Input,
+  Switch,
+  useColorMode,
+  Button,
+  ColorModeButton,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
@@ -69,7 +73,7 @@ export const SiteHeader = () => {
           />
         </Link>
       </Box>
-
+      <ColorModeButton /> {/* temp solution */}
       <DesktopNavigation
         onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
       />

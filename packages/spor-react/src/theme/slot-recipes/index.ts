@@ -11,7 +11,6 @@ import { drawerSlotRecipe } from "./drawer";
 import { fieldSlotRecipe } from "./field";
 import { floatingActionButtonSlotRecipe } from "./floating-action-button";
 import { infoTagSlotRecipe } from "./info-tag";
-import { inputSlotRecipe } from "./input";
 import { lineIconSlotRecipe } from "./line-icon";
 import { listSlotRecipe } from "./list";
 import { listBoxSlotRecipe } from "./listbox";
@@ -44,7 +43,6 @@ export const slotRecipes = {
   field: fieldSlotRecipe,
   floatingActionButton: floatingActionButtonSlotRecipe,
   infoTag: infoTagSlotRecipe,
-  input: inputSlotRecipe,
   lineIcon: lineIconSlotRecipe,
   list: listSlotRecipe,
   listBox: listBoxSlotRecipe,

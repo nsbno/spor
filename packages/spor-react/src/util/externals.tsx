@@ -15,6 +15,7 @@ export {
   LocaleProvider,
   Show,
   VisuallyHidden,
+  createListCollection,
 } from "@chakra-ui/react";
 export { useMap, useOnClickOutside, useIsClient } from "usehooks-ts";
 export type { PortalProps, UseDisclosureProps } from "@chakra-ui/react";

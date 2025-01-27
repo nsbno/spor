@@ -51,7 +51,7 @@ export const listBoxSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      base: {
+      core: {
         root: {
           ...baseBorder("default"),
         },
@@ -64,6 +64,6 @@ export const listBoxSlotRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    variant: "base",
+    variant: "core",
   },
 });

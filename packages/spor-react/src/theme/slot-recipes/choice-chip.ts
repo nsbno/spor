@@ -62,7 +62,7 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      base: {
+      core: {
         root: {
           ...baseBorder("default"),
           ...baseText("default"),
@@ -154,7 +154,7 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    variant: "base",
+    variant: "core",
     size: "sm",
   },
 });

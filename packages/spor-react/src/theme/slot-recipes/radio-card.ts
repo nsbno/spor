@@ -38,7 +38,7 @@ export const radioCardSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      base: {
+      core: {
         root: {
           ...baseText("default"),
           ...baseBackground("default"),

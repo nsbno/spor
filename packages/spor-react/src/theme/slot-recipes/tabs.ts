@@ -32,7 +32,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      default: {
+      core: {
         list: {
           ...baseBackground("default"),
           ...baseText("default"),

@@ -44,7 +44,7 @@ export const nativeSelectSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      base: {
+      core: {
         field: {
           ...inputVariant("base"),
         },
@@ -57,6 +57,6 @@ export const nativeSelectSlotRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    variant: "base",
+    variant: "core",
   },
 });

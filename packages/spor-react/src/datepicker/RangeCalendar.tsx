@@ -1,5 +1,5 @@
 "use client";
-import { Box, ConditionalValue } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { DateValue, createCalendar } from "@internationalized/date";
 import React, { useRef } from "react";
 import {
@@ -10,9 +10,10 @@ import { useRangeCalendarState } from "react-stately";
 import { CalendarGrid } from "./CalendarGrid";
 import { CalendarHeader } from "./CalendarHeader";
 import { useCurrentLocale } from "./utils";
+import { CalendarVariants } from "./types";
 
 type RangeCalendarProps = ReactAriaRangeCalendarProps<DateValue> & {
-  variant: ConditionalValue<"base" | "floating" | "ghost">;
+  variant: CalendarVariants;
 };
 
 export function RangeCalendar(props: RangeCalendarProps) {

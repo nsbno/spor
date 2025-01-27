@@ -55,7 +55,7 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
           },
         },
       },
-      base: {
+      core: {
         root: {
           ...baseBackground("default"),
           ...baseBorder("default"),

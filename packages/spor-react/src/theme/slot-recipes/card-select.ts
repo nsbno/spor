@@ -26,7 +26,7 @@ export const cardSelectSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      base: {
+      core: {
         trigger: {
           ...baseBorder("default"),
           _hover: {
@@ -92,7 +92,7 @@ export const cardSelectSlotRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    variant: "base",
+    variant: "core",
     size: "md",
   },
 });

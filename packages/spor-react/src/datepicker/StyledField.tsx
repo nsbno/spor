@@ -2,17 +2,17 @@
 import {
   Box,
   BoxProps,
-  ConditionalValue,
   useFieldContext,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { DatePickerVariantProps } from "./DatePicker";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { CalendarVariants } from "./types";
 
 type StyledFieldProps = BoxProps &
   PropsWithChildren<DatePickerVariantProps> & {
-    variant: ConditionalValue<"base" | "floating" | "ghost">;
+    variant: CalendarVariants;
     isDisabled?: boolean;
     ariaLabelledby?: string;
   };

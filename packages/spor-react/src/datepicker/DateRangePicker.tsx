@@ -2,7 +2,6 @@
 import {
   Box,
   BoxProps,
-  ConditionalValue,
   PopoverAnchor,
   Portal,
   useFieldContext,
@@ -31,6 +30,7 @@ import {
 import { Field } from "../input/Field";
 import { DatePickerVariantProps } from "./DatePicker";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { CalendarVariants } from "./types";
 
 type DateRangePickerProps = Omit<
   AriaDateRangePickerProps<DateValue>,
@@ -42,7 +42,7 @@ type DateRangePickerProps = Omit<
     startName?: string;
     endLabel?: string;
     endName?: string;
-    variant: ConditionalValue<"base" | "floating" | "ghost">;
+    variant?: CalendarVariants;
     withPortal?: boolean;
     onChange?: (
       dates: {
@@ -54,10 +54,10 @@ type DateRangePickerProps = Omit<
 /**
  * A date range picker component.
  *
- * There are three variants to choose from – `base`, `floating` and `ghost`.
+ * There are three variants to choose from – `core`, `floating` and `ghost`.
  *
  * ```tsx
- * <DateRangePicker startLabel="From" startName="from" endLabel="To" endName="to" variant="base" />
+ * <DateRangePicker startLabel="From" startName="from" endLabel="To" endName="to" variant="core" />
  * ```
  */
 export function DateRangePicker({
@@ -94,7 +94,7 @@ export function DateRangePicker({
   const locale = useCurrentLocale();
 
   const handleEnterClick = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !state.isOpen && variant === "base") {
+    if (e.key === "Enter" && !state.isOpen && variant === "core") {
       // Don't submit the form
       e.stopPropagation();
       state.setOpen(true);
@@ -109,7 +109,7 @@ export function DateRangePicker({
     <PopoverContent css={styles.calendarPopover} maxWidth="none">
       <PopoverArrow />
       <PopoverBody>
-        <RangeCalendar variant={"base"} {...calendarProps} />
+        <RangeCalendar variant={"bcorease"} {...calendarProps} />
       </PopoverBody>
     </PopoverContent>
   );

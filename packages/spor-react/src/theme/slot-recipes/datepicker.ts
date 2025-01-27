@@ -149,7 +149,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      base: {
+      core: {
         wrapper: {
           ...baseBorder("default"),
           ...baseBackground("default"),
@@ -189,6 +189,6 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    variant: "base",
+    variant: "core",
   },
 });

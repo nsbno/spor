@@ -22,7 +22,7 @@ export const breadcrumbRecipe = defineRecipe({
     },
   },
   variants: {
-    base: {
+    core: {
       "&:not([aria-current=page])": {
         _hover: {
           ...baseBorder("default"),

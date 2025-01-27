@@ -26,7 +26,7 @@ export const pressableCardRecipe = defineRecipe({
 
   variants: {
     variant: {
-      base: {
+      core: {
         cursor: "pointer",
         ...baseBorder("default"),
         _hover: {
@@ -68,6 +68,6 @@ export const pressableCardRecipe = defineRecipe({
     },
   },
   defaultVariants: {
-    variant: "base",
+    variant: "core",
   },
 });

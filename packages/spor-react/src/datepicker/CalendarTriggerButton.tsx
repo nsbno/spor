@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  BoxProps,
-  ConditionalValue,
-  PopoverAnchor,
-  useSlotRecipe,
-} from "@chakra-ui/react";
+import { BoxProps, PopoverAnchor, useSlotRecipe } from "@chakra-ui/react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, {
   forwardRef,
@@ -20,11 +15,12 @@ import {
   useTranslation,
 } from "..";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { CalendarVariants } from "./types";
 
 type CalendarTriggerButtonProps = AriaButtonProps<"button"> &
   PropsWithChildren<DatePickerVariantProps> &
   BoxProps & {
-    variant: ConditionalValue<"base" | "floating" | "ghost">;
+    variant: CalendarVariants;
     disabled?: boolean;
     ariaLabelledby?: string;
   };

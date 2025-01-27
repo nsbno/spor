@@ -58,7 +58,7 @@ export const stepperSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      base: {
+      core: {
         root: {
           backgroundColor: "transparent",
         },
@@ -87,8 +87,5 @@ export const stepperSlotRecipe = defineSlotRecipe({
         },
       },
     },
-  },
-  defaultVariants: {
-    variant: "base",
   },
 });

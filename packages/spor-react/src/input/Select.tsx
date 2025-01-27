@@ -43,11 +43,12 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         positioning={{ sameWidth: true, ...positioning }}
         variant={variant}
         css={styles.root}
+        position={"relative"}
       >
-        {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
         <SelectTrigger data-attachable>
-          <SelectValueText placeholder={label} />
+          <SelectValueText placeholder=" " />
         </SelectTrigger>
+        {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
         <SelectContent css={styles.selectContent}>{children}</SelectContent>
       </ChakraSelect.Root>
     );

@@ -29,18 +29,32 @@ export const selectSlotRecipe = defineSlotRecipe({
       flexDirection: "column",
       position: "relative",
       ...focusVisibleStyles(),
+      "& + label": {
+        fontSize: ["mobile.sm", "desktop.sm"],
+        top: 0,
+        left: 3,
+        zIndex: 2,
+        position: "absolute",
+        marginY: 2,
+        transformOrigin: "top left",
+        transform: [
+          "scale(0.825) translateY(-12px)",
+          "scale(0.825) translateY(-14px)",
+        ],
+      },
     },
     label: {
-      border: "0 !important",
-      clip: "rect(1px, 1px, 1px, 1px) !important",
-      clipPath: "inset(50%) !important",
-      height: "1px !important",
-      margin: "-1px !important",
-      overflow: "hidden !important",
-      padding: "0 !important",
-      position: "absolute !important",
-      width: "1px !important",
-      whiteSpace: "nowrap !important",
+      fontSize: ["mobile.sm", "desktop.sm"],
+      top: 0,
+      left: 3,
+      zIndex: 2,
+      position: "absolute",
+      marginY: 2,
+      transformOrigin: "top left",
+      transform: [
+        "scale(0.825) translateY(-12px)",
+        "scale(0.825) translateY(-14px)",
+      ],
     },
     trigger: {
       display: "flex",
@@ -52,9 +66,9 @@ export const selectSlotRecipe = defineSlotRecipe({
       justifyContent: "space-between",
       alignItems: "center",
       fontSize: "mobile.md",
+      borderRadius: "sm",
       _focusVisible: {
         ...focusVisibleStyles()._focusVisible,
-        borderRadius: "sm",
       },
     },
     indicatorGroup: {
@@ -97,7 +111,6 @@ export const selectSlotRecipe = defineSlotRecipe({
       marginTop: -1,
       _focusVisible: {
         ...focusVisibleStyles()._focusVisible,
-        borderBottomRadius: "sm",
       },
       _open: {
         animationStyle: "slide-fade-in",

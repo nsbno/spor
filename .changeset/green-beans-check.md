@@ -8,7 +8,7 @@ Spor is getting a major update with Chakra 3.
 
 ## Updated variants
 
-- `base` is now `default`
+- `base` is now `core`
 
 ### Update props
 
@@ -27,6 +27,7 @@ Spor is getting a major update with Chakra 3.
 - `Toast` prop `isClosable` is now `closable`. `useToast` is now `createToaster`.
 - `FormControl`, `FormLabel` and `FormErrorMessage` are removed and replaced by `Field`. `Field` supports the necessary props to support this.
 - `Separator` replaces `Divider`.
+- `UnorderedList` and ?  is deprecated. Use "as" prop instead.
 
 ### Externals from Chakra:
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, useSlotRecipe } from "@chakra-ui/react";
+import { Box, ConditionalValue, useSlotRecipe } from "@chakra-ui/react";
 import {
   CalendarDate,
   DateValue,
@@ -14,12 +14,12 @@ import { DatePickerVariantProps } from "./DatePicker";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { CalendarVariants } from "./types";
 
-type CalendarCellProps = PropsWithChildren<DatePickerVariantProps> & {
-  variant: CalendarVariants;
-  state: CalendarState | RangeCalendarState;
-  date: CalendarDate;
-  currentMonth: DateValue;
-};
+type CalendarCellProps = PropsWithChildren<DatePickerVariantProps> &
+  CalendarVariants & {
+    state: CalendarState | RangeCalendarState;
+    date: CalendarDate;
+    currentMonth: DateValue;
+  };
 export function CalendarCell({
   state,
   date,

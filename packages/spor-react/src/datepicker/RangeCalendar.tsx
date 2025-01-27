@@ -12,9 +12,8 @@ import { CalendarHeader } from "./CalendarHeader";
 import { useCurrentLocale } from "./utils";
 import { CalendarVariants } from "./types";
 
-type RangeCalendarProps = ReactAriaRangeCalendarProps<DateValue> & {
-  variant: CalendarVariants;
-};
+type RangeCalendarProps = ReactAriaRangeCalendarProps<DateValue> &
+  CalendarVariants;
 
 export function RangeCalendar(props: RangeCalendarProps) {
   const locale = useCurrentLocale();

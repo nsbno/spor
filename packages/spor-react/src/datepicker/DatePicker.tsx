@@ -44,8 +44,8 @@ export type DatePickerVariantProps = RecipeVariantProps<
 
 type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
   Pick<BoxProps, "minHeight" | "width"> &
-  PropsWithChildren<DatePickerVariantProps> & {
-    variant: CalendarVariants;
+  PropsWithChildren<DatePickerVariantProps> &
+  CalendarVariants & {
     name?: string;
     showYearNavigation?: boolean;
     withPortal?: boolean;

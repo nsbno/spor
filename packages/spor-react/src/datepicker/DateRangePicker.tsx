@@ -2,6 +2,7 @@
 import {
   Box,
   BoxProps,
+  ConditionalValue,
   PopoverAnchor,
   Portal,
   useFieldContext,
@@ -37,12 +38,12 @@ type DateRangePickerProps = Omit<
   "onChange"
 > &
   Pick<BoxProps, "minHeight"> &
-  PropsWithChildren<DatePickerVariantProps> & {
+  PropsWithChildren<DatePickerVariantProps> &
+  CalendarVariants & {
     startLabel?: string;
     startName?: string;
     endLabel?: string;
     endName?: string;
-    variant?: CalendarVariants;
     withPortal?: boolean;
     onChange?: (
       dates: {

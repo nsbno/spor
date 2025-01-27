@@ -15,10 +15,10 @@ import { CalendarHeader } from "./CalendarHeader";
 import { useCurrentLocale } from "./utils";
 import { CalendarVariants } from "./types";
 
-type CalendarProps = ReactAriaCalendarProps<DateValue> & {
-  showYearNavigation?: boolean;
-  variant: CalendarVariants;
-};
+type CalendarProps = ReactAriaCalendarProps<DateValue> &
+  CalendarVariants & {
+    showYearNavigation?: boolean;
+  };
 export function Calendar({
   showYearNavigation,
   variant,

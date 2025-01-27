@@ -11,8 +11,8 @@ import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { CalendarVariants } from "./types";
 
 type StyledFieldProps = BoxProps &
-  PropsWithChildren<DatePickerVariantProps> & {
-    variant: CalendarVariants;
+  PropsWithChildren<DatePickerVariantProps> &
+  CalendarVariants & {
     isDisabled?: boolean;
     ariaLabelledby?: string;
   };

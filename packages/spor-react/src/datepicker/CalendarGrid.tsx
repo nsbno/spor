@@ -8,7 +8,7 @@ import { Language, useTranslation } from "../i18n";
 import { Text } from "../typography";
 import { CalendarCell } from "./CalendarCell";
 import { useCurrentLocale } from "./utils";
-import { useSlotRecipe } from "@chakra-ui/react";
+import { ConditionalValue, useSlotRecipe } from "@chakra-ui/react";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { CalendarVariants } from "./types";
 
@@ -19,11 +19,11 @@ const weekDays: Record<Language, string[]> = {
   en: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
 };
 
-type CalendarGridProps = AriaCalendarGridProps & {
-  variant: CalendarVariants;
-  state: CalendarState | RangeCalendarState;
-  offset?: { months?: number };
-};
+type CalendarGridProps = AriaCalendarGridProps &
+  CalendarVariants & {
+    state: CalendarState | RangeCalendarState;
+    offset?: { months?: number };
+  };
 export function CalendarGrid({
   state,
   variant,

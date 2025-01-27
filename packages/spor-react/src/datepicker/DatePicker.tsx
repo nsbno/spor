@@ -36,7 +36,7 @@ import {
   PopoverRoot,
   PopoverTrigger,
 } from "../popover";
-import { Field } from "../input";
+import { Field } from "../input/Field";
 
 export type DatePickerVariantProps = RecipeVariantProps<
   typeof datePickerSlotRecipe

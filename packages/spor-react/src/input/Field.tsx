@@ -34,7 +34,7 @@ export type FieldProps = Omit<ChakraField.RootProps, "label"> &
  *
  * ```
  *
- * @see https://spor.vy.no/components/field
+ * This component is not exported and should be used as a wrapper for other input components.
  */
 
 export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
@@ -47,6 +47,9 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
         {children}
         {helperText && (
           <ChakraField.HelperText>{helperText}</ChakraField.HelperText>
+        )}
+        {label && (
+          <ChakraField.Label css={styles.label}>{label}</ChakraField.Label>
         )}
         {label && (
           <ChakraField.Label css={styles.label}>{label}</ChakraField.Label>

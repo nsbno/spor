@@ -60,11 +60,11 @@ export const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
 function getStyleProps(props: TableProps) {
   return props.variant === "outline"
     ? {
-        border: "1px solid",
+        border: "sm",
         borderColor:
           props.colorPalette === "grey" ? "silver" : "blackAlpha.200",
         overflow: "hidden",
-        borderRadius: "md",
+        borderRadius: "sm",
       }
     : {};
 }

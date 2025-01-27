@@ -155,12 +155,12 @@ export const tableSlotRecipe = defineSlotRecipe({
     size: {
       sm: {
         table: {
-          fontSize: ["mobile.sm", "desktop.sm"],
+          fontSize: "mobile.sm",
         },
         cell: {
           paddingX: 1,
           paddingY: 0.5,
-          fontSize: ["mobile.sm", "desktop.sm"],
+          fontSize: "mobile.sm",
         },
         columnHeader: {
           paddingX: 1,
@@ -173,38 +173,38 @@ export const tableSlotRecipe = defineSlotRecipe({
       },
       md: {
         table: {
-          fontSize: ["mobile.md", "desktop.md"],
+          fontSize: "mobile.md",
         },
         cell: {
           paddingX: 1.5,
           paddingY: 1,
-          fontSize: ["mobile.md", "desktop.md"],
+          fontSize: "mobile.md",
         },
 
         columnHeader: {
           paddingX: 1.5,
           paddingY: 1,
-          fontSize: ["mobile.md", "desktop.md"],
+          fontSize: "mobile.md",
         },
         caption: {
           paddingX: 1.5,
           paddingY: 1,
-          fontSize: ["mobile.md", "desktop.md"],
+          fontSize: "mobile.md",
         },
       },
       lg: {
         table: {
-          fontSize: ["mobile.lg", "desktop.lg"],
+          fontSize: "mobile.md",
         },
         cell: {
           paddingX: 3,
-          paddingY: 2,
-          fontSize: ["mobile.lg", "desktop.lg"],
+          paddingY: 3,
+          fontSize: "mobile.md",
         },
         columnHeader: {
           paddingX: 3,
           paddingY: 2,
-          fontSize: ["mobile.lg", "desktop.lg"],
+          fontSize: "mobile.md",
         },
         caption: {
           paddingX: 3,

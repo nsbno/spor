@@ -15,7 +15,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
       /* For when input is filled */
       pos: "absolute",
       paddingX: 3,
-      top: 1,
+      top: "0.3rem",
       fontWeight: "normal",
       fontSize: ["mobile.xs", "desktop.xs"],
       color: "text",
@@ -35,7 +35,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
         /* For when input is in focus */
         fontSize: ["mobile.xs", "desktop.xs"],
         color: "text",
-        top: 1,
+        top: "0.3rem",
       },
       _disabled: {
         opacity: 0.4,

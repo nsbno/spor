@@ -3,4 +3,4 @@
 "@vygruppen/spor-react": major
 ---
 
-Name update: "base" is not "core" on all platforms. Colors and variants.
+Name update: "base" is now "core" on all platforms. Colors and variants.

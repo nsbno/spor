@@ -209,10 +209,10 @@
         "outline": {
           "default": {
             "light": {
-              "value": "{color.cargonet.outline.core.light.value}"
+              "value": "{color.cargonet.outline.default.light.value}"
             },
             "dark": {
-              "value": "{color.cargonet.outline.core.dark.value}"
+              "value": "{color.cargonet.outline.default.dark.value}"
             }
           },
           "hover": {
@@ -226,18 +226,18 @@
         },
         "text": {
           "light": {
-            "value": "{color.cargonet.text.core.light.value}"
+            "value": "{color.cargonet.text.default.light.value}"
           },
           "dark": {
-            "value": "{color.cargonet.text.core.dark.value}"
+            "value": "{color.cargonet.text.default.dark.value}"
           }
         },
         "icon": {
           "light": {
-            "value": "{color.cargonet.icon.core.light.value}"
+            "value": "{color.cargonet.icon.default.light.value}"
           },
           "dark": {
-            "value": "{color.cargonet.icon.core.dark.value}"
+            "value": "{color.cargonet.icon.default.dark.value}"
           }
         }
       },
@@ -314,7 +314,7 @@
         },
         "text": {
           "light": {
-            "value": "{color.cargonet.text.core.light.value}"
+            "value": "{color.cargonet.text.default.light.value}"
           },
           "dark": {
             "value": "{color.alias.champagne.value}"
@@ -322,7 +322,7 @@
         },
         "icon": {
           "light": {
-            "value": "{color.cargonet.icon.core.light.value}"
+            "value": "{color.cargonet.icon.default.light.value}"
           },
           "dark": {
             "value": "{color.alias.champagne.value}"
@@ -384,18 +384,18 @@
         },
         "text": {
           "light": {
-            "value": "{color.cargonet.text.core.light.value}"
+            "value": "{color.cargonet.text.default.light.value}"
           },
           "dark": {
-            "value": "{color.cargonet.text.core.dark.value}"
+            "value": "{color.cargonet.text.default.dark.value}"
           }
         },
         "icon": {
           "light": {
-            "value": "{color.cargonet.icon.core.light.value}"
+            "value": "{color.cargonet.icon.default.light.value}"
           },
           "dark": {
-            "value": "{color.cargonet.icon.core.dark.value}"
+            "value": "{color.cargonet.icon.default.dark.value}"
           }
         }
       },
@@ -420,18 +420,18 @@
         },
         "text": {
           "light": {
-            "value": "{color.cargonet.text.core.light.value}"
+            "value": "{color.cargonet.text.default.light.value}"
           },
           "dark": {
-            "value": "{color.cargonet.text.core.dark.value}"
+            "value": "{color.cargonet.text.default.dark.value}"
           }
         },
         "icon": {
           "light": {
-            "value": "{color.cargonet.icon.core.light.value}"
+            "value": "{color.cargonet.icon.default.light.value}"
           },
           "dark": {
-            "value": "{color.cargonet.icon.core.dark.value}"
+            "value": "{color.cargonet.icon.default.dark.value}"
           }
         }
       }

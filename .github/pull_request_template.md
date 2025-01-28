@@ -9,7 +9,8 @@ Describe what has been done.
 ## Chakra update checklist
 - [ ] Updated Sanity documentation in v2 dataset (English, links, component props and content)
 - [ ] Updated documentation in the component file
-- [ ] Added changeset
+- [ ] Update green-beans-check.md with any major changes
+- [ ] Add changeset
 - [ ] Double check design in Figma
 
 ## UU checks

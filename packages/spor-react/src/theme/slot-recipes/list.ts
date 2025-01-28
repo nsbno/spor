@@ -7,19 +7,17 @@ export const listSlotRecipe = defineSlotRecipe({
   base: {
     root: {
       listStyle: "none",
+      position: "relative",
     },
     item: {
       fontFamily: "body",
       position: "relative",
-      marginLeft: 0,
       whiteSpace: "normal",
       display: "list-item",
       fontSize: "mobile.md",
       paddingLeft: 0,
       _marker: {
         display: "inline-block",
-        position: "relative",
-        marginLeft: 4,
       },
     },
     icon: {

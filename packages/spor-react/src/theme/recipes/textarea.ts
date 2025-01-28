@@ -27,7 +27,7 @@ export const textareaRecipe = defineRecipe({
   },
   variants: {
     variant: {
-      base: {
+      core: {
         ...inputVariant("base"),
       },
       floating: {
@@ -53,7 +53,7 @@ export const textareaRecipe = defineRecipe({
     },
   },
   defaultVariants: {
-    variant: "base",
+    variant: "core",
     size: "md",
   },
 });

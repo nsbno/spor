@@ -16,13 +16,13 @@ export type TabsProps = Exclude<
   "colorPalette" | "variant" | "orientation" | "size"
 > &
   PropsWithChildren<TabsVariantProps> & {
-    /** Defaults to `default` */
-    variant?: "default" | "accent";
+    /** Defaults to `core` */
+    variant?: "core" | "accent";
     /** Defaults to `sm` */
     size?: "xs" | "sm" | "md" | "lg";
   };
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
-  const { variant = "default", size = "sm" } = props;
+  const { variant = "core", size = "sm" } = props;
   return <ChakraTabs.Root {...props} ref={ref} variant={variant} size={size} />;
 });
 

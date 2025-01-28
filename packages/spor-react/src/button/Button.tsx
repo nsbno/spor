@@ -18,11 +18,17 @@ export type ButtonProps = Exclude<
   "size" | "variant" | "colorPalette"
 > &
   PropsWithChildren<ButtonVariantProps> & {
+    /* Boolean value for loading state */
     loading?: boolean;
+    /* You may display a different loading text */
     loadingText?: React.ReactNode;
+    /* Display icon to the left */
     leftIcon?: React.ReactNode;
+    /* Display icon to the right */
     rightIcon?: React.ReactNode;
+    /* "primary" | "secondary" | "tertiary" | "ghost" | "floating". Defaults to primary. */
     variant: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
+    /* "lg" | "md" | "sm" | "xs". Defaults to md. */
     size?: "lg" | "md" | "sm" | "xs";
   };
 /**
@@ -59,7 +65,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       loading,
       disabled,
       loadingText,
-      variant,
+      variant = "primary",
       size = "md",
       leftIcon,
       rightIcon,

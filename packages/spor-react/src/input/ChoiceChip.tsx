@@ -29,7 +29,7 @@ export type ChoiceChipProps = PropsWithChildren<ChoiceChipVariantProps> & {
   };
   size?: "xs" | "sm" | "md" | "lg";
   chipType?: "icon" | "choice" | "filter";
-  variant?: "base" | "accent" | "floating";
+  variant?: "core" | "accent" | "floating";
 };
 /**
  * Choice chips are checkboxes that look like selectable buttons.
@@ -52,11 +52,11 @@ export type ChoiceChipProps = PropsWithChildren<ChoiceChipVariantProps> & {
  *  <ChoiceChip chipType="filter" icon={<Bus24Icon />}>Bus</ChoiceChip>
  * </Stack>
  *
- * There are also three different variants - `base`, `accent` and `floating`.
+ * There are also three different variants - `core`, `accent` and `floating`.
  *
  * ```tsx
  * <Stack flexDirection="row">
- *   <ChoiceChip variant="base">Bus</ChoiceChip>
+ *   <ChoiceChip variant="core">Bus</ChoiceChip>
  *   <ChoiceChip variant="accent">Boat</ChoiceChip>
  *   <ChoiceChip variant="floating">Train</ChoiceChip>
  * </Stack>
@@ -71,7 +71,7 @@ export const ChoiceChip = forwardRef(
       checked,
       size = "sm",
       chipType = "choice",
-      variant = "base",
+      variant = "core",
       ...props
     }: ChoiceChipProps,
     ref,

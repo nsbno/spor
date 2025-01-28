@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { bg } from "../utils/bg-utils";
-import { baseText } from "../utils/base-utils";
+import { coreText } from "../utils/core-utils";
 
 export const dialogSlotRecipe = defineSlotRecipe({
   slots: [
@@ -28,7 +28,7 @@ export const dialogSlotRecipe = defineSlotRecipe({
     dialog: {
       borderRadius: "md",
       ...bg("default"),
-      ...baseText("default"),
+      ...coreText("default"),
       marginY: "3.75rem",
       zIndex: "modal",
       boxShadow: "md",

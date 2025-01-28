@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { baseText } from "../utils/base-utils";
+import { coreText } from "../utils/core-utils";
 import { brandBackground } from "../utils/brand-utils";
 import { accentText, accentBackground } from "../utils/accent-utils";
 
@@ -58,7 +58,7 @@ export const stepperSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      base: {
+      core: {
         root: {
           backgroundColor: "transparent",
         },
@@ -69,9 +69,9 @@ export const stepperSlotRecipe = defineSlotRecipe({
           ...accentText("default"),
         },
         stepButton: {
-          color: baseText("default").color,
+          color: coreText("default").color,
           _disabled: {
-            color: baseText("disabled").color,
+            color: coreText("disabled").color,
           },
           _hover: {
             backgroundColor: accentBackground("hover").backgroundColor,
@@ -87,8 +87,5 @@ export const stepperSlotRecipe = defineSlotRecipe({
         },
       },
     },
-  },
-  defaultVariants: {
-    variant: "base",
   },
 });

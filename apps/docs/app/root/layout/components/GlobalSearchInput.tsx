@@ -1,4 +1,4 @@
-import { Field, SearchInput } from "@vygruppen/spor-react";
+import { SearchInput } from "@vygruppen/spor-react";
 import React from "react";
 
 type GlobalSearchInputProps = {
@@ -15,18 +15,16 @@ const GlobalSearchInput = ({
 }: GlobalSearchInputProps) => {
   const inputRef = useSearchHotkey();
   return (
-    <Field>
-      <SearchInput
-        ref={inputRef}
-        value={value}
-        onChange={onChange}
-        onKeyUp={onKeyUp}
-        onReset={onReset}
-        aria-keyshortcuts="Meta+K"
-        label="F.ex. icons, components, or pages"
-        autoFocus={true}
-      />
-    </Field>
+    <SearchInput
+      ref={inputRef}
+      value={value}
+      onChange={onChange}
+      onKeyUp={onKeyUp}
+      onReset={onReset}
+      aria-keyshortcuts="Meta+K"
+      label="F.ex. icons, components, or pages"
+      autoFocus={true}
+    />
   );
 };
 

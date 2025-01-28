@@ -12,13 +12,14 @@ import { useCalendarCell } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
 import { DatePickerVariantProps } from "./DatePicker";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { CalendarVariants } from "./types";
 
-type CalendarCellProps = PropsWithChildren<DatePickerVariantProps> & {
-  variant: ConditionalValue<"base" | "floating" | "ghost">;
-  state: CalendarState | RangeCalendarState;
-  date: CalendarDate;
-  currentMonth: DateValue;
-};
+type CalendarCellProps = PropsWithChildren<DatePickerVariantProps> &
+  CalendarVariants & {
+    state: CalendarState | RangeCalendarState;
+    date: CalendarDate;
+    currentMonth: DateValue;
+  };
 export function CalendarCell({
   state,
   date,

@@ -1,6 +1,6 @@
 "use client";
 import React, { forwardRef, PropsWithChildren, useRef } from "react";
-import { BoxProps, Field, IconButton, createTexts, useTranslation } from "..";
+import { BoxProps, IconButton, createTexts, useTranslation } from "..";
 import { numericStepperRecipe } from "../theme/slot-recipes/numeric-stepper";
 import {
   chakra,
@@ -8,6 +8,7 @@ import {
   useControllableState,
   useSlotRecipe,
 } from "@chakra-ui/react";
+import { Field } from "./Field";
 
 type NumericStepperVariants = RecipeVariantProps<typeof numericStepperRecipe>;
 

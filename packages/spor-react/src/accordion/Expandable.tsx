@@ -6,11 +6,12 @@ import {
   AccordionItemTrigger,
 } from "./Accordion";
 import { ExpandableProps } from "./types";
+import { warnAboutMismatchingIcon } from "./helpers";
 
 export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
   (props, ref) => {
     const {
-      variant = "ghost",
+      variant = "core",
       gap,
       title,
       children,
@@ -21,13 +22,22 @@ export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
       ...rest
     } = props;
     return (
-      <Accordion {...props} ref={ref} variant={variant} gap={gap} {...rest}>
-        <AccordionItem value={value}>
-          <AccordionItemTrigger headingLevel={headingLevel} leftIcon={leftIcon}>
-            {title}
-          </AccordionItemTrigger>
-          <AccordionItemContent>{children}</AccordionItemContent>
-        </AccordionItem>
+      <Accordion
+        {...props}
+        ref={ref}
+        variant={variant}
+        gap={gap}
+        {...rest}
+        collapsible={collapsible}
+      >
+        <ExpandableItem
+          title={title}
+          headingLevel={headingLevel}
+          value={value}
+          leftIcon={leftIcon}
+        >
+          {children}
+        </ExpandableItem>
       </Accordion>
     );
   },
@@ -36,6 +46,7 @@ export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
 export const ExpandableItem = forwardRef<HTMLDivElement, ExpandableProps>(
   (props, ref) => {
     const { title, children, value, headingLevel, leftIcon, ...rest } = props;
+    warnAboutMismatchingIcon({ icon: leftIcon });
     return (
       <AccordionItem value={value} {...rest} ref={ref}>
         <AccordionItemTrigger headingLevel={headingLevel} leftIcon={leftIcon}>

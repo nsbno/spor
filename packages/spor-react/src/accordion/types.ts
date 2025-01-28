@@ -23,6 +23,7 @@ export type AccordionProps = Exclude<
      * - `floating` renders a version with a drop shadow
      */
     variant?: "ghost" | "core" | "floating";
+    /* Gap between accordions */
     gap?: string | number;
   };
 

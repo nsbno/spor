@@ -3,17 +3,11 @@ import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
+import { accordionAnatomy } from "./anatomy";
 
 export const accordionSlotRecipe = defineSlotRecipe({
-  slots: [
-    "root",
-    "itemTrigger",
-    "item",
-    "itemBody",
-    "itemContent",
-    "itemIndicator",
-  ],
   className: "spor-accordion",
+  slots: accordionAnatomy.keys(),
   base: {
     root: {
       borderRadius: "sm",
@@ -93,7 +87,6 @@ export const accordionSlotRecipe = defineSlotRecipe({
       },
       core: {
         itemTrigger: {
-          ...baseBorder("default"),
           _expanded: {
             borderBottomRadius: "none",
           },
@@ -106,6 +99,7 @@ export const accordionSlotRecipe = defineSlotRecipe({
             ...baseBorder("default"),
           },
         },
+        itemContent: {},
       },
       floating: {
         itemTrigger: {

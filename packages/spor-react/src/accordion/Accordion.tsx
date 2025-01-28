@@ -20,7 +20,7 @@ import { warnAboutMismatchingIcon } from "./helpers";
  * Wraps a set of AccordionItem or AccordionItem components.
  *
  * ```tsx
- * <AccordionRoot variant="ghost">
+ * <Accordion variant="ghost">
  *   <AccordionItem>
  *      <AccordionItemTrigger headingLevel="h3" title="Is Spor easy?" />
  *      <AccordionItemContent>Yes</AccordionItemContent>
@@ -29,7 +29,7 @@ import { warnAboutMismatchingIcon } from "./helpers";
  *      <AccordionItemTrigger headingLevel="h3" title="Is Spor lovable?" />
  *      <AccordionItemContent>Yes</AccordionItemContent>
  *   </AccordionItem>
- * </AccordionRoot>
+ * </Accordion>
  * ```
  *
  * If you only have one expandable item, you can use the `<Expandable />` component instead.
@@ -38,21 +38,19 @@ import { warnAboutMismatchingIcon } from "./helpers";
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
   (props, ref) => {
     const {
-      variant = "ghost",
+      variant = "core",
       children,
       gap = 2,
       collapsible = true,
       ...rest
     } = props;
     const recipe = useSlotRecipe({ key: "accordion" });
-    const [recipeProps, restProps] = recipe.splitVariantProps(props);
-    const styles = recipe(recipeProps);
+    const styles = recipe({ variant });
     return (
       <ChakraAccordion.Root
         {...rest}
         ref={ref}
         css={styles.root}
-        {...restProps}
         variant={variant}
         collapsible={collapsible}
       >

@@ -1,7 +1,7 @@
 import { defineRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { surface } from "../utils/surface-utils";
-import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 import { accentBackground, accentText } from "../utils/accent-utils";
@@ -27,7 +27,7 @@ export const buttonRecipe = defineRecipe({
       pointerEvents: "none",
       boxShadow: "none",
       ...surface("disabled"),
-      ...baseText("disabled"),
+      ...coreText("disabled"),
     },
   },
   variants: {
@@ -53,26 +53,26 @@ export const buttonRecipe = defineRecipe({
         },
       },
       tertiary: {
-        ...baseBackground("default"),
-        ...baseText("default"),
-        ...baseBorder("default"),
+        ...coreBackground("default"),
+        ...coreText("default"),
+        ...coreBorder("default"),
 
         _hover: {
-          ...baseBorder("hover"),
-          ...baseBackground("hover"),
+          ...coreBorder("hover"),
+          ...coreBackground("hover"),
           _active: {
-            ...baseBorder("default"),
-            ...baseBackground("active"),
+            ...coreBorder("default"),
+            ...coreBackground("active"),
           },
         },
       },
       ghost: {
         ...ghostBackground("default"),
-        ...baseText("default"),
+        ...coreText("default"),
         _hover: {
           ...ghostBackground("hover"),
           _disabled: {
-            ...baseText("disabled"),
+            ...coreText("disabled"),
           },
           _active: {
             ...ghostBackground("active"),

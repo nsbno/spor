@@ -1,7 +1,7 @@
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { defineRecipe } from "@chakra-ui/react";
 import { surface } from "../utils/surface-utils";
-import { baseBackground, baseBorder } from "../utils/base-utils";
+import { coreBackground, coreBorder } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 
 /* FYI: The styling in this file is also used in Textarea */
@@ -27,35 +27,35 @@ export const inputRecipe = defineRecipe({
 
     _disabled: {
       ...surface("disabled"),
-      ...baseBorder("disabled"),
+      ...coreBorder("disabled"),
       pointerEvents: "none",
     },
     _invalid: {
-      ...baseBorder("invalid"),
+      ...coreBorder("invalid"),
       _active: {
-        ...baseBorder("invalid"),
+        ...coreBorder("invalid"),
       },
       _focus: {
-        ...baseBorder("invalid"),
+        ...coreBorder("invalid"),
       },
       _hover: {
-        ...baseBorder("hover"),
+        ...coreBorder("hover"),
       },
     },
   },
   variants: {
     variant: {
       core: {
-        ...baseBackground("default"),
-        ...baseBorder("default"),
+        ...coreBackground("default"),
+        ...coreBorder("default"),
         _hover: {
-          ...baseBorder("hover"),
+          ...coreBorder("hover"),
         },
         _active: {
-          ...baseBorder("active"),
+          ...coreBorder("active"),
         },
         _focus: {
-          ...baseBorder("focus"),
+          ...coreBorder("focus"),
         },
       },
       floating: {

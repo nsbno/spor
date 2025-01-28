@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { accentBackground, accentText } from "../utils/accent-utils";
-import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { brandBackground } from "../utils/brand-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
@@ -23,33 +23,33 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         ...accentBackground("selected"),
         _hover: {
           ...brandBackground("hover"),
-          ...baseText("selected"),
+          ...coreText("selected"),
           outlineColor: "transparent",
         },
         _active: {
-          ...baseText("selected"),
+          ...coreText("selected"),
           ...brandBackground("active"),
         },
       },
       _disabled: {
         pointerEvents: "none",
         boxShadow: "none",
-        ...baseText("disabled"),
-        ...baseBackground("disabled"),
+        ...coreText("disabled"),
+        ...coreBackground("disabled"),
         _hover: {
-          ...baseBackground("disabled"),
+          ...coreBackground("disabled"),
           boxShadow: "none",
-          ...baseText("disabled"),
+          ...coreText("disabled"),
         },
         _checked: {
           cursor: "not-allowed",
           boxShadow: "none",
-          ...baseText("disabled"),
-          ...baseBackground("disabled"),
+          ...coreText("disabled"),
+          ...coreBackground("disabled"),
           _hover: {
-            ...baseBackground("disabled"),
+            ...coreBackground("disabled"),
             boxShadow: "none",
-            ...baseText("disabled"),
+            ...coreText("disabled"),
           },
         },
       },
@@ -62,17 +62,17 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      base: {
+      core: {
         root: {
-          ...baseBorder("default"),
-          ...baseText("default"),
+          ...coreBorder("default"),
+          ...coreText("default"),
           _hover: {
-            ...baseText("default"),
-            ...baseBorder("hover"),
+            ...coreText("default"),
+            ...coreBorder("hover"),
           },
           _active: {
-            ...baseBackground("active"),
-            ...baseBorder("default"),
+            ...coreBackground("active"),
+            ...coreBorder("default"),
           },
         },
       },
@@ -97,19 +97,19 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
       floating: {
         root: {
           ...floatingBackground("default"),
-          ...baseText("default"),
+          ...coreText("default"),
           ...floatingBorder("default"),
           boxShadow: "sm",
           _hover: {
             ...floatingBackground("hover"),
             ...floatingBorder("hover"),
-            ...baseText("default"),
+            ...coreText("default"),
             boxShadow: "md",
           },
           _active: {
             ...floatingBackground("active"),
             ...floatingBorder("active"),
-            ...baseText("default"),
+            ...coreText("default"),
           },
         },
       },
@@ -154,7 +154,7 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    variant: "base",
+    variant: "core",
     size: "sm",
   },
 });

@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { surface } from "../utils/surface-utils";
@@ -186,20 +186,20 @@ export const selectSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         control: {
-          ...baseBorder("default"),
+          ...coreBorder("default"),
           _hover: {
-            ...baseBorder("hover"),
+            ...coreBorder("hover"),
           },
           _active: {
-            ...baseBackground("active"),
+            ...coreBackground("active"),
           },
           _invalid: {
-            ...baseBorder("invalid"),
+            ...coreBorder("invalid"),
           },
           _disabled: {
             pointerEvents: "none",
-            ...baseText("disabled"),
-            ...baseBackground("disabled"),
+            ...coreText("disabled"),
+            ...coreBackground("disabled"),
           },
         },
       },

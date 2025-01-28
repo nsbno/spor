@@ -1,4 +1,4 @@
-import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
@@ -13,31 +13,31 @@ export const cardSelectSlotRecipe = defineSlotRecipe({
       alignItems: "center",
       transitionProperty: "outline",
       transitionDuration: "fast",
-      ...baseText("default"),
+      ...coreText("default"),
       ...focusVisibleStyles(),
     },
     card: {
       borderRadius: "sm",
       boxShadow: "md",
       padding: 3,
-      ...baseText("default"),
+      ...coreText("default"),
       backgroundColor: `color-mix(in srgb, white 10%, var(--spor-colors-bg-default-dark))`,
     },
   },
   variants: {
     variant: {
-      base: {
+      core: {
         trigger: {
-          ...baseBorder("default"),
+          ...coreBorder("default"),
           _hover: {
-            ...baseBorder("hover"),
+            ...coreBorder("hover"),
           },
           _active: {
-            ...baseBackground("active"),
-            ...baseBorder("default"),
+            ...coreBackground("active"),
+            ...coreBorder("default"),
           },
           _expanded: {
-            ...baseBackground("active"),
+            ...coreBackground("active"),
           },
         },
       },
@@ -92,7 +92,7 @@ export const cardSelectSlotRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    variant: "base",
+    variant: "core",
     size: "md",
   },
 });

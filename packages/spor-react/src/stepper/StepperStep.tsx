@@ -8,7 +8,7 @@ import { useSlotRecipe } from "@chakra-ui/react";
 type StepperStepProps = PropsWithChildren<StepperVariantProps> & {
   children: React.ReactNode;
   stepNumber: number;
-  variant: "base" | "accent";
+  variant: "core" | "accent";
   disabled?: boolean;
 };
 export const StepperStep = ({

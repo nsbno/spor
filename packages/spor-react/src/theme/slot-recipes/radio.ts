@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
@@ -23,13 +23,13 @@ export const radioSlotRecipe = defineSlotRecipe({
       height: "1rem",
       backgroundColor: "inherit",
       border: "2px solid",
-      borderColor: baseBorder("default").outlineColor,
+      borderColor: coreBorder("default").outlineColor,
       borderRadius: "50%",
       ...focusVisibleStyles(),
       _disabled: {
-        ...baseBackground("disabled"),
-        ...baseBorder("disabled"),
-        ...baseText("disabled"),
+        ...coreBackground("disabled"),
+        ...coreBorder("disabled"),
+        ...coreText("disabled"),
       },
       _checked: {
         color: "brand.surface.default",
@@ -45,9 +45,9 @@ export const radioSlotRecipe = defineSlotRecipe({
         },
         _disabled: {
           pointerEvents: "none",
-          ...baseBackground("disabled"),
-          ...baseBorder("disabled"),
-          ...baseText("disabled"),
+          ...coreBackground("disabled"),
+          ...coreBorder("disabled"),
+          ...coreText("disabled"),
         },
       },
     },

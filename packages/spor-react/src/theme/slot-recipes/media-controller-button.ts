@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { baseText } from "../utils/base-utils";
+import { coreText } from "../utils/core-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
@@ -66,7 +66,7 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
           _disabled: {
             pointerEvents: "none",
             ...surface("disabled"),
-            ...baseText("disabled"),
+            ...coreText("disabled"),
           },
         },
         icon: {

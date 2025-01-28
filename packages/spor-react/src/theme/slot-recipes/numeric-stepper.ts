@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const numericStepperRecipe = defineSlotRecipe({
@@ -19,8 +19,8 @@ export const numericStepperRecipe = defineSlotRecipe({
       textAlign: "center",
       transitionProperty: "common",
       transitionDuration: "fast",
-      ...baseText("default"),
-      ...baseBackground("default"),
+      ...coreText("default"),
+      ...coreBackground("default"),
 
       _disabled: {
         pointerEvents: "none",
@@ -28,11 +28,11 @@ export const numericStepperRecipe = defineSlotRecipe({
       },
 
       _hover: {
-        ...baseBorder("default"),
+        ...coreBorder("default"),
       },
 
       _active: {
-        ...baseBackground("active"),
+        ...coreBackground("active"),
       },
 
       ...focusVisibleStyles,
@@ -44,7 +44,7 @@ export const numericStepperRecipe = defineSlotRecipe({
       paddingX: 1,
       textAlign: "center",
       width: "4ch",
-      ...baseText("default"),
+      ...coreText("default"),
     },
     button: {
       minWidth: "24px",

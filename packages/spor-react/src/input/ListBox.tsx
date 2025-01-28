@@ -7,7 +7,6 @@ import {
   RecipeVariantProps,
   useSlotRecipe,
   type BoxProps,
-  ConditionalValue,
 } from "@chakra-ui/react";
 import type { Node } from "@react-types/shared";
 import React, {

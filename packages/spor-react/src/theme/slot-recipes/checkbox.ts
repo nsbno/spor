@@ -1,4 +1,4 @@
-import { baseBackground, baseText } from "../utils/base-utils";
+import { coreBackground, coreText } from "../utils/core-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
@@ -9,7 +9,7 @@ export const checkboxSlotRecipe = defineSlotRecipe({
   base: {
     root: {
       _hover: {
-        ...baseBackground("hover"),
+        ...coreBackground("hover"),
         borderColor: brandBackground("hover").backgroundColor,
       },
       _invalid: {
@@ -35,7 +35,7 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       border: "2px solid",
       borderColor: "base.outline.default",
       borderRadius: "xs",
-      ...baseBackground("default"),
+      ...coreBackground("default"),
       ...focusVisibleStyles(),
 
       _checked: {
@@ -44,8 +44,8 @@ export const checkboxSlotRecipe = defineSlotRecipe({
         borderColor: brandBackground("default").backgroundColor,
 
         _disabled: {
-          ...baseBackground("disabled"),
-          ...baseText("disabled"),
+          ...coreBackground("disabled"),
+          ...coreText("disabled"),
           borderColor: "currentColor",
         },
 
@@ -56,11 +56,11 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       },
 
       _disabled: {
-        ...baseBackground("disabled"),
-        borderColor: baseText("disabled").color,
+        ...coreBackground("disabled"),
+        borderColor: coreText("disabled").color,
       },
       _invalid: {
-        ...baseBackground("default"),
+        ...coreBackground("default"),
         borderColor: "brightRed",
       },
     },

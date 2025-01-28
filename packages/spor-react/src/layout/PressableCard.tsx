@@ -8,7 +8,7 @@ type PressableCardVariants = RecipeVariantProps<typeof pressableCardRecipe>;
 type PressableCardProps = BoxProps &
   PropsWithChildren<PressableCardVariants> & {
     children: React.ReactNode;
-    variant?: "floating" | "accent" | "base";
+    variant?: "floating" | "accent" | "core";
   };
 
 /**
@@ -18,7 +18,7 @@ type PressableCardProps = BoxProps &
  * It can be rendered as a button, link, label, or any other HTML element by specifying the `as` prop.
  * If no `as` prop is provided, it defaults to a button.
  *
- * The `variant` prop can be used to control the style variant of the card. It defaults to "base".
+ * The `variant` prop can be used to control the style variant of the card. It defaults to "core".
  *
  * Example usage:
  *
@@ -42,7 +42,7 @@ type PressableCardProps = BoxProps &
  */
 
 export const PressableCard = forwardRef<HTMLDivElement, PressableCardProps>(
-  ({ variant = "base", children, ...props }, ref) => {
+  ({ variant = "core", children, ...props }, ref) => {
     const recipe = useRecipe({ recipe: pressableCardRecipe });
     const styles = recipe({ variant });
     return (

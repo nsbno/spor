@@ -6,3 +6,11 @@ export const listAnatomy = createAnatomy("list").parts(
   "icon",
   "indicator",
 );
+
+export const fieldAnatomy = createAnatomy("field").parts(
+  "root",
+  "label",
+  "requiredIndicator",
+  "helperText",
+  "errorText",
+);

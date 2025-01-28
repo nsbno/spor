@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { baseBackground, baseBorder } from "../utils/base-utils";
+import { coreBackground, coreBorder } from "../utils/core-utils";
 import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
@@ -22,29 +22,29 @@ export const switchSlotRecipe = defineSlotRecipe({
     track: {
       transitionProperty: "common",
       transitionDuration: "fast",
-      ...baseBorder("default"),
+      ...coreBorder("default"),
       ...focusVisibleStyles(),
-      ...baseBackground("default"),
+      ...coreBackground("default"),
 
       _hover: {
-        ...baseBorder("hover"),
+        ...coreBorder("hover"),
       },
       _checked: {
         ...brandBackground("default"),
         outlineColor: "transparent",
 
         _hover: {
-          ...baseBackground("default"),
+          ...coreBackground("default"),
           ...brandBackground("hover"),
         },
       },
       _disabled: {
         pointerEvents: "none",
-        ...baseBackground("default"),
-        ...baseBorder("disabled"),
+        ...coreBackground("default"),
+        ...coreBorder("disabled"),
         _checked: {
-          ...baseBackground("disabled"),
-          ...baseBorder("disabled"),
+          ...coreBackground("disabled"),
+          ...coreBorder("disabled"),
         },
       },
     },

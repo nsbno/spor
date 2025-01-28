@@ -147,7 +147,7 @@ export const vyDigital = {
       },
     },
   },
-  default: {
+  core: {
     surface: {
       active: {
         value: {

@@ -8,7 +8,8 @@ import React, { forwardRef } from "react";
 export type TextProps = Omit<ChakraTextProps, "textStyle"> & {
   /** The size and style of the text.
    *
-   * Defaults to "sm" */
+   * Defaults to "sm"
+   * textStyle values are: "sm" | "md" | "lg" | "2xl" | "xl-display" | "xl-sans" | "xs" */
   variant?: ChakraTextProps["textStyle"];
 };
 

@@ -75,7 +75,6 @@ export const AccordionItemTrigger = forwardRef<
   const {
     startElement,
     indicatorPlacement = "end",
-    headingLevel = "h3",
     children,
     ...rest
   } = props;
@@ -92,7 +91,7 @@ export const AccordionItemTrigger = forwardRef<
         </ChakraAccordion.ItemIndicator>
       )}
 
-      <HStack as={headingLevel} flex="1" gap={1} textAlign="start" width="full">
+      <HStack flex="1" gap={1} textAlign="start" width="full">
         {startElement && startElement}
         {children}
       </HStack>

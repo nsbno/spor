@@ -9,6 +9,7 @@ import {
 } from "./Accordion";
 import { ExpandableItemProps, ExpandableProps } from "./types";
 import { warnAboutMismatchingIcon } from "./helpers";
+import { Box } from "@/layout";
 
 /**
  * A standalone expandable component.
@@ -76,16 +77,22 @@ export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
  */
 
 export const ExpandableItem = (props: ExpandableItemProps) => {
-  const { title, children, value, headingLevel, startElement, ...rest } = props;
+  const {
+    title,
+    children,
+    value,
+    headingLevel = "h3",
+    startElement,
+    ...rest
+  } = props;
   warnAboutMismatchingIcon({ icon: startElement });
   return (
     <AccordionItem value={value} {...rest}>
-      <AccordionItemTrigger
-        headingLevel={headingLevel}
-        startElement={startElement}
-      >
-        {title}
-      </AccordionItemTrigger>
+      <Box as={headingLevel}>
+        <AccordionItemTrigger startElement={startElement}>
+          {title}
+        </AccordionItemTrigger>
+      </Box>
       <AccordionItemContent>{children}</AccordionItemContent>
     </AccordionItem>
   );

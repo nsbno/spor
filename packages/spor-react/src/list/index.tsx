@@ -10,7 +10,7 @@ import { List as ChakraList } from "@chakra-ui/react";
  *     - "ol": Ordered list
  * - "variant" (default: "marker") not required: The style of the list.
  *    - "marker": A list with markers
- *    - "plain": A plain list in one line
+ *    - "plain": A plain list without markers
  *
  * ```tsx
  * <List>

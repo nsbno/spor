@@ -5,11 +5,22 @@ export const listSlotRecipe = defineSlotRecipe({
   slots: listAnatomy.keys(),
   className: "spor-list",
   base: {
+    root: {
+      listStyle: "none",
+    },
     item: {
       fontFamily: "body",
+      position: "relative",
+      marginLeft: 0,
       whiteSpace: "normal",
       display: "list-item",
-      fontSize: ["mobile.sm", "desktop.sm"],
+      fontSize: "mobile.md",
+      paddingLeft: 0,
+      _marker: {
+        display: "inline-block",
+        position: "relative",
+        marginLeft: 4,
+      },
     },
     icon: {
       marginEnd: "2",
@@ -33,8 +44,7 @@ export const listSlotRecipe = defineSlotRecipe({
 
       plain: {
         item: {
-          alignItems: "flex-start",
-          display: "inline-flex",
+          display: "block",
         },
       },
     },

@@ -1,6 +1,6 @@
 import { defineRecipe } from "@chakra-ui/react";
-import { baseBorder, baseText } from "../utils/base-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
+import { coreBorder, coreText } from "../utils/core-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
 const svgStyles = () => {
@@ -48,7 +48,7 @@ export const linkRecipe = defineRecipe({
   variants: {
     variant: {
       primary: {
-        ...baseText("default"),
+        ...coreText("default"),
         _hover: {
           ...brandText("hover"),
           ...brandBackground("hover"),
@@ -58,9 +58,9 @@ export const linkRecipe = defineRecipe({
         },
       },
       secondary: {
-        ...baseText("default"),
+        ...coreText("default"),
         _hover: {
-          ...baseBorder("hover"),
+          ...coreBorder("hover"),
           outlineWidth: "1px",
           _active: {
             ...brandBackground("active"),

@@ -82,7 +82,7 @@ export const SiteSearchModal = ({
         <DialogHeader>Search docs</DialogHeader>
         <DialogBody>
           <Box as="form" onSubmit={handleSubmit}>
-            <GlobalSearchInput
+            {/* <GlobalSearchInput
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyUp={handleKeyUp}
@@ -95,7 +95,7 @@ export const SiteSearchModal = ({
                 query={query}
                 onResultClick={() => setSearchDialogOpen(false)}
               />
-            )}
+            )} */}
           </Box>
         </DialogBody>
       </DialogContent>

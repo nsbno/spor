@@ -74,7 +74,7 @@ const EXPIRATION_DELAY = 1000 * 60 * 60 * 24 * 30; // 30 days
  *  name="my-nudge"
  *  content="Check out this enormous new feature!"
  * >
- *   <StaticCard variant="base" padding={2} width="fit-content">My new feature</StaticCard>
+ *   <StaticCard colorPalette="blue" padding={2} width="fit-content">My new feature</StaticCard>
  * </Nudge>
  * ```
  */

@@ -147,7 +147,7 @@ export const cargonet = {
       },
     },
   },
-  default: {
+  core: {
     surface: {
       active: {
         value: {

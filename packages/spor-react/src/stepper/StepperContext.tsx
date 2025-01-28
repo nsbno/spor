@@ -9,7 +9,7 @@ type StepperContextType = {
 };
 const StepperContext = React.createContext<StepperContextType | null>(null);
 
-type Variant = "base" | "accent";
+type Variant = "core" | "accent";
 
 type StepperProviderProps = {
   /** Stepper steps */

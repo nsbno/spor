@@ -10,7 +10,7 @@ type FloatingActionButtonVariantProps = RecipeVariantProps<
 
 type FloatingActionButtonProps = BoxProps &
   PropsWithChildren<FloatingActionButtonVariantProps> & {
-    variant?: "accent" | "base" | "brand";
+    variant?: "accent" | "core" | "brand";
     placement?: "bottom right" | "bottom left" | "top right" | "top left";
     icon: React.ReactNode;
     children: React.ReactNode;

@@ -1,4 +1,5 @@
 "use client";
+
 import { endOfMonth, getWeeksInMonth } from "@internationalized/date";
 import React from "react";
 import { AriaCalendarGridProps, useCalendarGrid } from "react-aria";
@@ -9,6 +10,7 @@ import { CalendarCell } from "./CalendarCell";
 import { useCurrentLocale } from "./utils";
 import { ConditionalValue, useSlotRecipe } from "@chakra-ui/react";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { CalendarVariants } from "./types";
 
 const weekDays: Record<Language, string[]> = {
   nb: ["Ma", "Ti", "On", "To", "Fr", "Lø", "Sø"],
@@ -17,11 +19,11 @@ const weekDays: Record<Language, string[]> = {
   en: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
 };
 
-type CalendarGridProps = AriaCalendarGridProps & {
-  variant: ConditionalValue<"base" | "floating" | "ghost">;
-  state: CalendarState | RangeCalendarState;
-  offset?: { months?: number };
-};
+type CalendarGridProps = AriaCalendarGridProps &
+  CalendarVariants & {
+    state: CalendarState | RangeCalendarState;
+    offset?: { months?: number };
+  };
 export function CalendarGrid({
   state,
   variant,

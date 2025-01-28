@@ -1,4 +1,4 @@
-import { baseBackground, baseBorder, baseText } from "./base-utils";
+import { coreBackground, coreBorder, coreText } from "./core-utils";
 import { floatingBackground, floatingBorder } from "./floating-utils";
 import { InputState } from "./types";
 import { focusVisibleStyles } from "./focus-utils";
@@ -8,18 +8,18 @@ export function inputVariant(state: InputState) {
   switch (state) {
     case "base":
       return {
-        ...baseBackground("default"),
-        ...baseBorder("default"),
+        ...coreBackground("default"),
+        ...coreBorder("default"),
         _hover: {
-          ...baseBorder("hover"),
+          ...coreBorder("hover"),
         },
         _active: {
-          ...baseBackground("active"),
-          ...baseBorder("default"),
+          ...coreBackground("active"),
+          ...coreBorder("default"),
         },
         _selected: {
-          ...baseBackground("selected"),
-          ...baseBorder("selected"),
+          ...coreBackground("selected"),
+          ...coreBorder("selected"),
         },
       };
     case "floating":
@@ -44,18 +44,18 @@ export function inputVariant(state: InputState) {
     case "default":
     default:
       return {
-        ...baseBackground("default"),
-        ...baseBorder("default"),
+        ...coreBackground("default"),
+        ...coreBorder("default"),
         _hover: {
-          ...baseBorder("hover"),
+          ...coreBorder("hover"),
         },
         _active: {
-          ...baseBackground("active"),
-          ...baseBorder("default"),
+          ...coreBackground("active"),
+          ...coreBorder("default"),
         },
         _selected: {
-          ...baseBackground("selected"),
-          ...baseBorder("selected"),
+          ...coreBackground("selected"),
+          ...coreBorder("selected"),
         },
       };
   }
@@ -80,13 +80,13 @@ export const inputBaseStyle = () => ({
     },
     _disabled: {
       ...surface("disabled"),
-      ...baseBorder("disabled"),
+      ...coreBorder("disabled"),
       pointerEvents: "none",
     },
     _invalid: {
-      ...baseBorder("invalid"),
+      ...coreBorder("invalid"),
       _hover: {
-        ...baseBorder("hover"),
+        ...coreBorder("hover"),
       },
     },
     " + label, + div[data-lastpass-icon-root] + label": {
@@ -112,7 +112,7 @@ export const inputBaseStyle = () => ({
   },
   group: {
     ":has(:disabled)": {
-      ...baseText("disabled"),
+      ...coreText("disabled"),
     },
   },
 });

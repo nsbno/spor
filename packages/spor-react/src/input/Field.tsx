@@ -1,10 +1,9 @@
 "use client";
+
 import {
-  Box,
-  BoxProps,
-  chakra,
   Field as ChakraField,
   RecipeVariantProps,
+  useSlotRecipe,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { fieldSlotRecipe } from "../theme/slot-recipes/field";
@@ -13,57 +12,63 @@ type FieldVariantProps = RecipeVariantProps<typeof fieldSlotRecipe>;
 
 export type FieldProps = Omit<ChakraField.RootProps, "label"> &
   React.PropsWithChildren<FieldVariantProps> & {
+    /** Label for the component */
     label?: React.ReactNode;
+    /** Add helpertext underneath the input */
     helperText?: React.ReactNode;
+    /** Add error text underneath the input */
     errorText?: React.ReactNode;
-    optionalText?: React.ReactNode;
   };
 
+/**
+ *
+ * Field is a component that wraps around other input components, like `Input` and `Select`.
+ *
+ * It can have a label, helper text, and error text.
+ *
+ * ```tsx
+ *
+ * <Field label="E-mail">
+ *  <Input />
+ * </Field>
+ *
+ * ```
+ *
+ * This component is not exported and should be used as a wrapper for other input components.
+ */
+
 export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
-  function Field(props, ref) {
-    const { label, children, helperText, errorText, optionalText, ...rest } =
-      props;
+  (props, ref) => {
+    const { label, children, helperText, errorText, ...rest } = props;
+    const recipe = useSlotRecipe({ key: "field" });
+    const styles = recipe({ label, helperText, errorText });
     return (
-      <ChakraField.Root ref={ref} {...rest}>
-        {label && (
-          <ChakraField.Label>
-            {label}
-            <ChakraField.RequiredIndicator fallback={optionalText} />
-          </ChakraField.Label>
-        )}
+      <ChakraField.Root ref={ref} {...rest} css={styles.root}>
         {children}
         {helperText && (
           <ChakraField.HelperText>{helperText}</ChakraField.HelperText>
         )}
+        {label && (
+          <ChakraField.Label css={styles.label}>{label}</ChakraField.Label>
+        )}
+        {label && (
+          <ChakraField.Label css={styles.label}>{label}</ChakraField.Label>
+        )}
         {errorText && (
-          <Box position="relative">
-            <ChakraField.ErrorText>
-              <Arrow position="absolute" top="-0.25em" left="1em" />
-              {errorText}
-            </ChakraField.ErrorText>
-          </Box>
+          <ChakraField.ErrorText>{errorText}</ChakraField.ErrorText>
         )}
       </ChakraField.Root>
     );
   },
 );
 
-export const FieldLabel = ChakraField.Label;
-
-const Arrow = (props: BoxProps) => {
+export const FieldErrorText = React.forwardRef<
+  HTMLDivElement,
+  ChakraField.ErrorTextProps
+>((props, ref) => {
   return (
-    <chakra.svg
-      {...(props as any)}
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      transform="rotate(45deg)"
-    >
-      <path
-        fill="lightRed"
-        d="M 0 0 Q 2.4 6 0 12 Q 6 9.6 12 12 Q 9.6 6 12 0 Q 6 2.4 0 0 z"
-      />
-    </chakra.svg>
+    <ChakraField.ErrorText ref={ref}>{props.children}</ChakraField.ErrorText>
   );
-};
+});
+
+export const FieldLabel = ChakraField.Label;

@@ -3,6 +3,6 @@ export const focusVisibleStyles = () => ({
     outlineWidth: "2px",
     outlineColor: "outline.focus",
     outlineStyle: "solid",
-    outlineOffset: "1px",
+    /* outlineOffset: "1px", */
   },
 });

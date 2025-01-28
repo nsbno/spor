@@ -1,4 +1,4 @@
-import { Stack } from "@vygruppen/spor-react";
+import { Input, Stack } from "@vygruppen/spor-react";
 import { StrictMode, useEffect, useState } from "react";
 import { LivePreview } from "react-live";
 import { LiveEditor } from "~/features/portable-text/interactive-code/LiveEditor";

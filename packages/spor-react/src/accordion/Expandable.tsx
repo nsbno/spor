@@ -42,7 +42,6 @@ export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
         ref={ref}
         variant={variant}
         defaultValue={value}
-        collapsible
         {...rest}
       >
         <ExpandableItem

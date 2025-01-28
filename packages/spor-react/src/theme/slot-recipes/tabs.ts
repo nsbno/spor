@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { accentBackground, accentText } from "../utils/accent-utils";
-import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
@@ -32,20 +32,20 @@ export const tabsSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      default: {
+      core: {
         list: {
-          ...baseBackground("default"),
-          ...baseText("default"),
-          ...baseBorder("default"),
+          ...coreBackground("default"),
+          ...coreText("default"),
+          ...coreBorder("default"),
         },
         trigger: {
-          ...baseText("default"),
+          ...coreText("default"),
           _hover: {
-            ...baseBorder("hover"),
+            ...coreBorder("hover"),
             outlineOffset: "-2px",
           },
           _active: {
-            ...baseBackground("active"),
+            ...coreBackground("active"),
           },
         },
       },

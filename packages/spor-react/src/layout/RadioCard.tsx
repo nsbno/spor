@@ -37,7 +37,7 @@ type RadioCardItemProps = Exclude<
     description?: React.ReactNode;
     addon?: React.ReactNode;
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
-    variant?: "base" | "floating";
+    variant?: "core" | "floating";
   };
 
 export const RadioCardItem = React.forwardRef<
@@ -74,7 +74,7 @@ export const RadioCardItem = React.forwardRef<
 type RadioCardRootProps = RadioCardVariantProps &
   Exclude<ChakraRadioCard.RootProps, "variant"> & {
     children: React.ReactNode;
-    variant?: "base" | "floating";
+    variant?: "core" | "floating";
   };
 
 export const RadioCardRoot = forwardRef<HTMLDivElement, RadioCardRootProps>(

@@ -17,3 +17,11 @@ export const tableAnatomy = createAnatomy("table").parts(
   "footer",
   "header",
 );
+
+export const fieldAnatomy = createAnatomy("field").parts(
+  "root",
+  "label",
+  "requiredIndicator",
+  "helperText",
+  "errorText",
+);

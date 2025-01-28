@@ -195,7 +195,7 @@
           }
         }
       },
-      "base": {
+      "core": {
         "surface": {
           "active": {
             "light": {

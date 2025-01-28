@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { baseText } from "../utils/base-utils";
 import { tableAnatomy } from "./anatomy";
+import { coreText } from "../utils/core-utils";
 
 const numericStyles = {
   "&[data-is-numeric=true]": {
@@ -16,13 +16,13 @@ export const tableSlotRecipe = defineSlotRecipe({
       tableLayout: "fixed",
       borderCollapse: "collapse",
       width: "100%",
-      ...baseText("default"),
+      ...coreText("default"),
     },
     body: {
-      ...baseText("default"),
+      ...coreText("default"),
     },
     header: {
-      ...baseText("default"),
+      ...coreText("default"),
     },
     columnHeader: {
       fontWeight: "bold",

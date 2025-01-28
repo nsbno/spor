@@ -5,7 +5,6 @@ import {
   chakra,
   ConditionalValue,
   Flex,
-  Icon,
   RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
@@ -34,10 +33,10 @@ type CardSelectProps = BoxProps &
     /** The design of the trigger button.
      *
      * - `ghost` is a transparent button with text
-     * - `base` is a button with a border and text
+     * - `core` is a button with a border and text
      * - `floating` is a button with a drop shadow (like a card) and text
      */
-    variant: "base" | "ghost" | "floating";
+    variant: "core" | "ghost" | "floating";
     /** The size of the trigger button */
     size: "sm" | "md" | "lg";
     /** Whether the card select is open / active, if controlled */

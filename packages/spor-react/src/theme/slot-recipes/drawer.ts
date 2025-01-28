@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { baseText } from "../utils/base-utils";
+import { coreText } from "../utils/core-utils";
 import { bg } from "../utils/bg-utils";
 
 export const drawerSlotRecipe = defineSlotRecipe({
@@ -28,7 +28,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
     },
     dialog: {
       ...bg("default"),
-      ...baseText("default"),
+      ...coreText("default"),
       zIndex: "modal",
       maxHeight: "calc(100% - 7.5rem)",
       boxShadow: "md",

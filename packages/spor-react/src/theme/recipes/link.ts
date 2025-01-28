@@ -1,5 +1,5 @@
 import { defineRecipe } from "@chakra-ui/react";
-import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
@@ -47,7 +47,7 @@ export const linkRecipe = defineRecipe({
     {
       variant: "primary",
       css: {
-        ...baseText("default"),
+        ...coreText("default"),
       },
       _hover: {
         ...brandText("hover"),
@@ -58,19 +58,19 @@ export const linkRecipe = defineRecipe({
       variant: "secondary",
       css: {
         backgroundImage: `linear-gradient("blackAlpha.400", "blackAlpha.400")`,
-        ...baseText("default"),
+        ...coreText("default"),
         "&:focus, &:focus-visible, &:active, &:hover": {
           outline: "1px solid",
         },
       },
-      ...baseBackground("default"),
+      ...coreBackground("default"),
       _hover: {
-        ...baseBorder("hover"), // TODO: This is also weird
-        ...baseBackground("hover"),
+        ...coreBorder("hover"), // TODO: This is also weird
+        ...coreBackground("hover"),
         outlineWidth: 1,
       },
       _active: {
-        ...baseBackground("active"),
+        ...coreBackground("active"),
       },
     },
   ],

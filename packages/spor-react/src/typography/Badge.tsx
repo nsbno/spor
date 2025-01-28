@@ -44,16 +44,16 @@ export type BadgeProps = Exclude<
 /**
  * Shows some additional information about the component it's used within.
  *
- * You have to specify some content (icons should be placed to the left, if present), and a colorScheme.
+ * You have to specify some content (icons should be placed to the left, if present), and a colorPalette.
  *
  * ```tsx
- * <Badge colorScheme="light-green">Hello</Badge>
+ * <Badge colorPalette="light-green">Hello</Badge>
  * ```
  *
  * If you want an icon, pass it in through the `icon` prop:
  *
  * ```tsx
- * <Badge colorScheme="light-blue" icon={<InformationOutline18Icon />}>
+ * <Badge colorPalette="light-blue" icon={<InformationOutline18Icon />}>
  *   Information
  * </Badge>
  * ```

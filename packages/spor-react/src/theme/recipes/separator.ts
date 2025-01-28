@@ -68,5 +68,15 @@ export const separatorRecipe = defineRecipe({
         backgroundRepeat: "repeat-x",
       },
     },
+    {
+      variant: "dashed",
+      orientation: "vertical",
+      css: {
+        background: "0",
+        width: "0%",
+        height: "100%",  
+
+      },
+    }
   ], 
 });

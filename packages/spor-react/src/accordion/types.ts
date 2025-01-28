@@ -27,38 +27,33 @@ export type AccordionProps = Exclude<
     gap?: string | number;
   };
 
-export type AccordionItemTriggerProps = ChakraAccordion.ItemTriggerProps & {
-  indicatorPlacement?: "start" | "end";
-  /** Title of the trigger button */
-  title?: string;
-  /** Icon to be displayed on the left of the trigger button */
-  startElement?: React.ReactNode;
+export type HeadingLevel = {
+  /** Heading level of the trigger button */
+  headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
 };
 
-export type HeadingLevel = "h2" | "h3" | "h4" | "h5" | "h6";
+export type AccordionItemTriggerProps = Omit<
+  ChakraAccordion.ItemTriggerProps,
+  "indicatorElement"
+> &
+  HeadingLevel & {
+    /** Icon to be displayed on the left of the trigger button. Use 24px outline. */
+    startElement?: React.ReactNode;
+  };
 
 export type AccordionItemContentProps = ChakraAccordion.ItemContentProps & {
   children?: React.ReactNode;
 };
 
 export type ExpandableProps = AccordionProps &
-  AccordionItemTriggerProps & {
-    value: string[];
-    items?: ExpandableItemsProps[];
-    [key: string]: any;
+  AccordionItemTriggerProps &
+  HeadingLevel & {
+    title: string;
   };
 
-export type ExpandableItemProps = {
+export type ExpandableItemProps = HeadingLevel & {
   value: string;
   title: string;
   children?: React.ReactNode;
-  headingLevel?: HeadingLevel;
   startElement?: React.ReactNode;
-};
-
-export type ExpandableItemsProps = {
-  value: string;
-  title: string;
-  content: string;
-  [key: string]: any;
 };

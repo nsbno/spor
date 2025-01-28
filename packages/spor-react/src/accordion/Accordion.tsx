@@ -72,35 +72,23 @@ export const AccordionItemTrigger = forwardRef<
   HTMLButtonElement,
   AccordionItemTriggerProps
 >(function AccordionItemTrigger(props, ref) {
-  const {
-    startElement,
-    indicatorPlacement = "end",
-    children,
-    ...rest
-  } = props;
+  const { startElement, children, headingLevel, ...rest } = props;
   warnAboutMismatchingIcon({ icon: startElement });
   const recipe = useSlotRecipe({ key: "accordion" });
   const styles = recipe();
   return (
-    <ChakraAccordion.ItemTrigger {...rest} ref={ref} css={styles.itemTrigger}>
-      {indicatorPlacement === "start" && (
-        <ChakraAccordion.ItemIndicator
-          rotate={{ base: "-90deg", _open: "0deg" }}
-        >
-          <DropdownDownFill24Icon />
-        </ChakraAccordion.ItemIndicator>
-      )}
+    <Box as={headingLevel}>
+      <ChakraAccordion.ItemTrigger {...rest} ref={ref} css={styles.itemTrigger}>
+        <HStack flex="1" gap={1} textAlign="start" width="full">
+          {startElement && startElement}
+          {children}
+        </HStack>
 
-      <HStack flex="1" gap={1} textAlign="start" width="full">
-        {startElement && startElement}
-        {children}
-      </HStack>
-      {indicatorPlacement === "end" && (
         <ChakraAccordion.ItemIndicator>
           <DropdownDownFill24Icon />
         </ChakraAccordion.ItemIndicator>
-      )}
-    </ChakraAccordion.ItemTrigger>
+      </ChakraAccordion.ItemTrigger>
+    </Box>
   );
 });
 

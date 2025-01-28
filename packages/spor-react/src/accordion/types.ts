@@ -29,16 +29,22 @@ export type AccordionProps = Exclude<
 
 export type AccordionItemTriggerProps = ChakraAccordion.ItemTriggerProps & {
   indicatorPlacement?: "start" | "end";
+  /** Title of the trigger button */
   title?: string;
+  /** Heading-levels: "h2" | "h3" | "h4" | "h5" | "h6" */
   headingLevel?: HeadingLevel;
+  /** Icon to be displayed on the left of the trigger button */
   leftIcon?: React.ReactNode;
 };
 
 export type HeadingLevel = "h2" | "h3" | "h4" | "h5" | "h6";
 
 export type AccordionItemContentProps = ChakraAccordion.ItemContentProps & {
+  /** Heading-levels: "h2" | "h3" | "h4" | "h5" | "h6" */
   headingLevel?: HeadingLevel;
+  /** Title of the accordion conent */
   title?: string;
+  /** Icon to be displayed on the left of the accordion content */
   leftIcon?: React.ReactNode;
   children?: React.ReactNode;
 };

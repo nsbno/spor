@@ -41,7 +41,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
       variant = "core",
       children,
       gap = 2,
-      collapsible = true,
+
       ...rest
     } = props;
     const recipe = useSlotRecipe({ key: "accordion" });
@@ -52,7 +52,6 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
         ref={ref}
         css={styles.root}
         variant={variant}
-        collapsible={collapsible}
       >
         <Stack gap={gap}>{children}</Stack>
       </ChakraAccordion.Root>

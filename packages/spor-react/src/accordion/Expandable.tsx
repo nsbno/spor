@@ -17,19 +17,11 @@ export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
       children,
       value,
       headingLevel,
-      collapsible = true,
       leftIcon,
       ...rest
     } = props;
     return (
-      <Accordion
-        {...props}
-        ref={ref}
-        variant={variant}
-        gap={gap}
-        {...rest}
-        collapsible={collapsible}
-      >
+      <Accordion {...props} ref={ref} variant={variant} gap={gap} {...rest}>
         <ExpandableItem
           title={title}
           headingLevel={headingLevel}
@@ -43,17 +35,15 @@ export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
   },
 );
 
-export const ExpandableItem = forwardRef<HTMLDivElement, ExpandableProps>(
-  (props, ref) => {
-    const { title, children, value, headingLevel, leftIcon, ...rest } = props;
-    warnAboutMismatchingIcon({ icon: leftIcon });
-    return (
-      <AccordionItem value={value} {...rest} ref={ref}>
-        <AccordionItemTrigger headingLevel={headingLevel} leftIcon={leftIcon}>
-          {title}
-        </AccordionItemTrigger>
-        <AccordionItemContent>{children}</AccordionItemContent>
-      </AccordionItem>
-    );
-  },
-);
+export const ExpandableItem = (props: ExpandableProps) => {
+  const { title, children, value, headingLevel, leftIcon, ...rest } = props;
+  warnAboutMismatchingIcon({ icon: leftIcon });
+  return (
+    <AccordionItem value={value} {...rest}>
+      <AccordionItemTrigger headingLevel={headingLevel} leftIcon={leftIcon}>
+        {title}
+      </AccordionItemTrigger>
+      <AccordionItemContent>{children}</AccordionItemContent>
+    </AccordionItem>
+  );
+};

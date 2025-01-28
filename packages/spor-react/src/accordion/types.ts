@@ -34,7 +34,7 @@ export type AccordionItemTriggerProps = ChakraAccordion.ItemTriggerProps & {
   /** Heading-levels: "h2" | "h3" | "h4" | "h5" | "h6" */
   headingLevel?: HeadingLevel;
   /** Icon to be displayed on the left of the trigger button */
-  leftIcon?: React.ReactNode;
+  startElement?: React.ReactNode;
 };
 
 export type HeadingLevel = "h2" | "h3" | "h4" | "h5" | "h6";
@@ -45,13 +45,28 @@ export type AccordionItemContentProps = ChakraAccordion.ItemContentProps & {
   /** Title of the accordion conent */
   title?: string;
   /** Icon to be displayed on the left of the accordion content */
-  leftIcon?: React.ReactNode;
+  startElement?: React.ReactNode;
   children?: React.ReactNode;
 };
 
 export type ExpandableProps = AccordionProps &
   AccordionItemTriggerProps & {
-    title?: string;
-    value: string;
-    headingLevel?: HeadingLevel;
+    value: string[];
+    items?: ExpandableItemsProps[];
+    [key: string]: any;
   };
+
+export type ExpandableItemProps = {
+  value: string;
+  title: string;
+  children?: React.ReactNode;
+  headingLevel?: HeadingLevel;
+  startElement?: React.ReactNode;
+};
+
+export type ExpandableItemsProps = {
+  value: string;
+  title: string;
+  content: string;
+  [key: string]: any;
+};

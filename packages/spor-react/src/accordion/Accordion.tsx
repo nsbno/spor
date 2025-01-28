@@ -32,18 +32,27 @@ import { warnAboutMismatchingIcon } from "./helpers";
  * </Accordion>
  * ```
  *
+ * If you need to have a default open item, you can use the `defaultValue` prop.
+ *
+ * ```tsx
+ * <Accordion defaultValue="a">
+ *  <AccordionItem value="a">
+ *    <AccordionItemTrigger headingLevel="h3" title="Is Spor easy?" />
+ *    <AccordionItemContent>Yes</AccordionItemContent>
+ *  </AccordionItem>
+ *  <AccordionItem value="b">
+ *    <AccordionItemTrigger headingLevel="h3" title="Is Spor lovable?" />
+ *    <AccordionItemContent>Yes</AccordionItemContent>
+ *  </AccordionItem>
+ * </Accordion>
+ * ```
+ *
  * If you only have one expandable item, you can use the `<Expandable />` component instead.
  */
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
   (props, ref) => {
-    const {
-      variant = "core",
-      children,
-      gap = 2,
-
-      ...rest
-    } = props;
+    const { variant = "core", children, gap = 2, ...rest } = props;
     const recipe = useSlotRecipe({ key: "accordion" });
     const styles = recipe({ variant });
     return (
@@ -64,13 +73,13 @@ export const AccordionItemTrigger = forwardRef<
   AccordionItemTriggerProps
 >(function AccordionItemTrigger(props, ref) {
   const {
-    leftIcon,
+    startElement,
     indicatorPlacement = "end",
     headingLevel = "h3",
     children,
     ...rest
   } = props;
-  warnAboutMismatchingIcon({ icon: leftIcon });
+  warnAboutMismatchingIcon({ icon: startElement });
   const recipe = useSlotRecipe({ key: "accordion" });
   const styles = recipe();
   return (
@@ -83,8 +92,8 @@ export const AccordionItemTrigger = forwardRef<
         </ChakraAccordion.ItemIndicator>
       )}
 
-      <HStack as={headingLevel} flex="1" textAlign="start" width="full">
-        {leftIcon && <Box marginRight={1}>{leftIcon}</Box>}
+      <HStack as={headingLevel} flex="1" gap={1} textAlign="start" width="full">
+        {startElement && startElement}
         {children}
       </HStack>
       {indicatorPlacement === "end" && (

@@ -46,7 +46,7 @@ export const SiteSettings = ({ showLabel }: SiteSettingsProps) => {
             id="site-settings-dark-mode"
             size="sm"
             onChange={() => toggleColorMode()}
-            defaultChecked={colorMode === "dark"}
+            defaultChecked={colorMode === "light"}
           />
         </Stack>
       </Flex>

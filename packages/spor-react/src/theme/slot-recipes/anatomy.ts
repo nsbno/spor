@@ -8,3 +8,11 @@ export const accordionAnatomy = createAnatomy("accordion").parts(
   "itemContent",
   "itemIndicator",
 );
+
+export const fieldAnatomy = createAnatomy("field").parts(
+  "root",
+  "label",
+  "requiredIndicator",
+  "helperText",
+  "errorText",
+);

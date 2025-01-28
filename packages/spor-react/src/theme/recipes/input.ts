@@ -4,6 +4,8 @@ import { surface } from "../utils/surface-utils";
 import { coreBackground, coreBorder } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 
+/* FYI: The styling in this file is also used in Textarea */
+
 export const inputRecipe = defineRecipe({
   base: {
     appearance: "none",
@@ -30,6 +32,12 @@ export const inputRecipe = defineRecipe({
     },
     _invalid: {
       ...coreBorder("invalid"),
+      _active: {
+        ...coreBorder("invalid"),
+      },
+      _focus: {
+        ...coreBorder("invalid"),
+      },
       _hover: {
         ...coreBorder("hover"),
       },

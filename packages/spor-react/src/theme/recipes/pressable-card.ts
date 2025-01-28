@@ -4,7 +4,7 @@ import { accentBackground, accentText } from "../utils/accent-utils";
 import { defineRecipe } from "../../util";
 
 export const pressableCardRecipe = defineRecipe({
-  core: {
+  base: {
     appearance: "none",
     border: "none",
     overflow: "hidden",

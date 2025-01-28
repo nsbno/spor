@@ -30,9 +30,9 @@ type StepperProps = PropsWithChildren<StepperVariantProps> & {
   /** The labels of each step */
   steps: string[];
   /** The variant.
-   * "base" has a transparent background,
+   * "core" has a transparent background,
    * while "accent" has a slight accent color  */
-  variant: "base" | "accent";
+  variant: "core" | "accent";
   /** Disables all clicks */
   disabled?: boolean;
 };

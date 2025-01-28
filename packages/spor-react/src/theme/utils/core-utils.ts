@@ -3,15 +3,15 @@ import { focusVisibleStyles } from "./focus-utils";
 import { surface } from "./surface-utils";
 import { State, Subset } from "./types";
 
-type BaseBackgroundState = Subset<
+type coreBackgroundState = Subset<
   State,
   "default" | "active" | "selected" | "hover" | "disabled"
 >;
-export function baseBackground(state: BaseBackgroundState) {
+export function coreBackground(state: coreBackgroundState) {
   switch (state) {
     case "active":
       return {
-        backgroundColor: "default.surface.active",
+        backgroundColor: "core.surface.active",
       };
     case "selected":
       return brandBackground("default");
@@ -29,12 +29,12 @@ type BorderState = Subset<
   "hover" | "focus" | "active" | "disabled" | "selected" | "invalid" | "default"
 >;
 
-export function baseBorder(state: BorderState) {
+export function coreBorder(state: BorderState) {
   switch (state) {
     case "hover":
       return {
         outline: "2px solid",
-        outlineColor: "default.outline.hover",
+        outlineColor: "core.outline.hover",
       };
     case "focus": {
       return focusVisibleStyles()._focusVisible;
@@ -48,7 +48,7 @@ export function baseBorder(state: BorderState) {
     case "active": {
       return {
         outline: "1px solid",
-        outlineColor: "default.outline",
+        outlineColor: "core.outline",
       };
     }
     case "invalid": {
@@ -61,13 +61,13 @@ export function baseBorder(state: BorderState) {
     default:
       return {
         outline: "1px solid",
-        outlineColor: "default.outline",
+        outlineColor: "core.outline",
       };
   }
 }
 
-type BaseTextState = Subset<State, "default" | "selected" | "disabled">;
-export function baseText(state: BaseTextState) {
+type coreTextState = Subset<State, "default" | "selected" | "disabled">;
+export function coreText(state: coreTextState) {
   switch (state) {
     case "selected":
       return {
@@ -79,7 +79,7 @@ export function baseText(state: BaseTextState) {
       };
     default:
       return {
-        color: "default.text",
+        color: "core.text",
       };
   }
 }

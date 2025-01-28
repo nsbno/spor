@@ -1,4 +1,4 @@
-import { baseBackground, baseBorder, baseText } from "../utils/base-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
@@ -12,6 +12,9 @@ export const accordionSlotRecipe = defineSlotRecipe({
     root: {
       borderRadius: "sm",
     },
+    item: {
+      borderRadius: "sm",
+    },
     itemTrigger: {
       transitionProperty:
         "background-color, color, border-radius, box-shadow, opacity",
@@ -19,7 +22,7 @@ export const accordionSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       display: "flex",
       justifyContent: "space-between",
-      ...baseText("default"),
+      ...coreText("default"),
       textAlign: "left",
       width: "100%",
       alignItems: "center",
@@ -86,17 +89,20 @@ export const accordionSlotRecipe = defineSlotRecipe({
         },
       },
       core: {
+        item: {
+          ...coreBorder("default"),
+        },
         itemTrigger: {
           _expanded: {
             borderBottomRadius: "none",
           },
           _hover: {
-            ...baseBorder("hover"),
+            ...coreBorder("hover"),
             outlineOffset: 0,
           },
           _active: {
-            ...baseBackground("active"),
-            ...baseBorder("default"),
+            ...coreBackground("active"),
+            ...coreBorder("default"),
           },
         },
         itemContent: {},

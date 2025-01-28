@@ -47,6 +47,7 @@
     "@types/react-dom": "^18.3.0",
     "config": "^3.3.11",
     "eslint": "7.32.0",
+    "shiki": "^1.24.3",
     "tsconfig": "^7.0.0",
     "typescript": "^5.0.4",
     "vite": "^5.2.13",

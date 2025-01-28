@@ -20,11 +20,12 @@ import {
   useTranslation,
 } from "..";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { CalendarVariants } from "./types";
 
 type CalendarTriggerButtonProps = AriaButtonProps<"button"> &
   PropsWithChildren<DatePickerVariantProps> &
-  BoxProps & {
-    variant: ConditionalValue<"base" | "floating" | "ghost">;
+  BoxProps &
+  CalendarVariants & {
     disabled?: boolean;
     ariaLabelledby?: string;
   };

@@ -2,7 +2,6 @@ import { SettingsX1Fill24Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
   CardSelect,
-  Field,
   Flex,
   Heading,
   Stack,
@@ -42,14 +41,13 @@ export const SiteSettings = ({ showLabel }: SiteSettingsProps) => {
         </Box>
         <Stack gap={3}>
           <BrandSwitcher />
-          <Field display="flex" alignItems="center" gap={3} label="Dark mode">
-            <Switch
-              id="site-settings-dark-mode"
-              size="sm"
-              onChange={() => toggleColorMode()}
-              defaultChecked={colorMode === "dark"}
-            />
-          </Field>
+
+          <Switch
+            id="site-settings-dark-mode"
+            size="sm"
+            onChange={() => toggleColorMode()}
+            defaultChecked={colorMode === "light"}
+          />
         </Stack>
       </Flex>
     </CardSelect>

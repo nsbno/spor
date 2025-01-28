@@ -18,6 +18,11 @@ import {
   Text,
   VyLogo,
   useDisclosure,
+  Input,
+  Switch,
+  useColorMode,
+  Button,
+  ColorModeButton,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
@@ -68,7 +73,7 @@ export const SiteHeader = () => {
           />
         </Link>
       </Box>
-
+      <ColorModeButton /> {/* temp solution */}
       <DesktopNavigation
         onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
       />
@@ -105,7 +110,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         marginX="auto"
         paddingX={[3, null, 7, 5, 9]}
       >
-        <SearchInput
+        {/* <SearchInput
           onClick={onSearchClick}
           width={[null, null, null, "37.5rem"]}
           readOnly
@@ -118,7 +123,8 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
               </Text>
             </Flex>
           }
-        />
+        /> */}
+        <Input label="Label" />
       </Flex>
       <Flex
         display={["none", null, null, "flex"]}

@@ -13,11 +13,12 @@ import { createTexts, useTranslation } from "../i18n";
 import { CalendarGrid } from "./CalendarGrid";
 import { CalendarHeader } from "./CalendarHeader";
 import { useCurrentLocale } from "./utils";
+import { CalendarVariants } from "./types";
 
-type CalendarProps = ReactAriaCalendarProps<DateValue> & {
-  showYearNavigation?: boolean;
-  variant: ConditionalValue<"base" | "floating" | "ghost">;
-};
+type CalendarProps = ReactAriaCalendarProps<DateValue> &
+  CalendarVariants & {
+    showYearNavigation?: boolean;
+  };
 export function Calendar({
   showYearNavigation,
   variant,

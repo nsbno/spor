@@ -1,48 +1,38 @@
 "use client";
-import React, { forwardRef, useEffect, useId, useRef, useState } from "react";
+import React, {
+  forwardRef,
+  ReactNode,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
 import { ColorSpinner, Input, InputProps, ListBox } from "..";
 import { Popover } from "./Popover";
 import { ConditionalValue } from "@chakra-ui/react";
 
-type OverridableInputProps = Pick<
+export type ComboboxProps<T> = Exclude<
   InputProps,
-  | "marginTop"
-  | "marginBottom"
-  | "marginRight"
-  | "marginLeft"
-  | "marginY"
-  | "marginX"
-  | "paddingTop"
-  | "paddingBottom"
-  | "paddingLeft"
-  | "paddingRight"
-  | "paddingY"
-  | "paddingX"
-  | "leftIcon"
-  | "rightIcon"
-  | "borderTopRightRadius"
-  | "borderTopLeftRadius"
-  | "borderBottomRightRadius"
-  | "borderBottomLeftRadius"
-  | "onFocus"
->;
-
-export type ComboboxProps<T> = AriaComboBoxProps<T> & {
-  /** The label of the combobox */
-  label: string;
-  /** Whether or not the combobox is waiting for new suggestions */
-  isLoading?: boolean;
-  /** Optional UI to show when there are no matching items */
-  emptyContent?: React.ReactNode;
-  /** A ref to the input field */
-  inputRef?: React.RefObject<HTMLInputElement>;
-  /** If you want to allow an empty collection */
-  allowsEmptyCollection?: boolean;
-  variant?: ConditionalValue<"base" | "floating">;
-  children?: React.ReactNode;
-} & Exclude<OverridableInputProps, "variant">;
+  "variant" | "colorPalette" | "size"
+> &
+  AriaComboBoxProps<T> & {
+    /** The label of the combobox */
+    label: string;
+    /** Whether or not the combobox is waiting for new suggestions */
+    loading?: boolean;
+    /** Optional UI to show when there are no matching items */
+    emptyContent?: React.ReactNode;
+    /** A ref to the input field */
+    inputRef?: React.RefObject<HTMLInputElement>;
+    /** If you want to allow an empty collection */
+    allowsEmptyCollection?: boolean;
+    lefticon?: ReactNode;
+    righticon?: ReactNode;
+    variant?: "core" | "floating";
+    children?: React.ReactNode;
+  };
 /**
  * A combobox is a combination of an input and a list of suggestions.
  *
@@ -71,9 +61,9 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
   (props) => {
     const {
       label,
-      isLoading,
-      leftIcon,
-      rightIcon,
+      loading,
+      lefticon,
+      righticon,
       borderBottomLeftRadius = "sm",
       borderBottomRightRadius = "sm",
       borderTopLeftRadius = "sm",
@@ -114,7 +104,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
       ...props,
     });
 
-    const comboBoxProps: OverridableInputProps = {
+    const comboBoxProps = {
       borderTopLeftRadius,
       borderTopRightRadius,
       marginBottom,
@@ -129,7 +119,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
       paddingLeft,
       paddingX,
       paddingY,
-      leftIcon,
+      lefticon,
     };
 
     const {
@@ -158,14 +148,14 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
           aria-autocomplete="list"
           aria-controls={listboxId}
           borderBottomLeftRadius={
-            state.isOpen && !isLoading ? 0 : borderBottomLeftRadius
+            state.isOpen && !loading ? 0 : borderBottomLeftRadius
           }
           borderBottomRightRadius={
-            state.isOpen && !isLoading ? 0 : borderBottomRightRadius
+            state.isOpen && !loading ? 0 : borderBottomRightRadius
           }
           {...inputProps}
-          rightIcon={
-            isLoading ? (
+          endElement={
+            loading ? (
               <ColorSpinner
                 width="1.5rem"
                 alignSelf="center"
@@ -178,12 +168,12 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
                 }}
               />
             ) : (
-              rightIcon
+              righticon
             )
           }
         />
         <span aria-hidden="true" data-trigger="multiselect"></span>
-        {state.isOpen && !isLoading && (
+        {state.isOpen && !loading && (
           <Popover
             state={state}
             triggerRef={inputRef as any}
@@ -203,7 +193,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
               listBoxRef={listBoxRef}
               emptyContent={emptyContent}
               maxWidth={inputWidth}
-              variant={variant}
+              /* variant={variant} */
             >
               {children}
             </ListBox>

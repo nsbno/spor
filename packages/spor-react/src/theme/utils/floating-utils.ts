@@ -3,12 +3,12 @@ import { State, Subset } from "./types";
 
 type FloatingBackgroundState = Subset<
   State,
-  "default" | "hover" | "active" | "selected"
+  "default" | "hover" | "active" | "focus"
 >;
 
 export function floatingBackground(state: FloatingBackgroundState) {
   switch (state) {
-    case "selected":
+    case "focus":
       return brandBackground("default");
     case "active":
       return {
@@ -16,40 +16,46 @@ export function floatingBackground(state: FloatingBackgroundState) {
       };
     case "hover":
       return {
-        backgroundColor: "floating.surface.hover",
+        backgroundColor: {
+          _light: "floating.surface.hover",
+          _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
+        },
       };
     case "default":
       return {
-        backgroundColor: "white",
+        backgroundColor: {
+          _light: "bg",
+          _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
+        },
       };
   }
 }
 
 type FloatingBorderState = Subset<
   State,
-  "default" | "hover" | "active" | "selected"
+  "default" | "hover" | "active" | "focus"
 >;
 export function floatingBorder(state: FloatingBorderState) {
   switch (state) {
     case "hover":
       return {
-        border: "1px solid",
-        borderColor: "floating.outline.hover",
+        outline: "1px solid",
+        outlineColor: "floating.outline.hover",
       };
-    case "selected":
+    case "focus":
       return {
-        border: "1px solid",
-        borderColor: "outline.focus",
+        outline: "1px solid",
+        outlineColor: "outline.focus",
       };
     case "active":
       return {
-        border: "1px solid",
-        borderColor: "floating.outline.active",
+        outline: "1px solid",
+        outlineColor: "floating.outline.active",
       };
     default:
       return {
-        border: "1px solid",
-        borderColor: "floating.outline",
+        outline: "1px solid",
+        outlineColor: "floating.outline",
       };
   }
 }

@@ -2,7 +2,6 @@
 import {
   Box,
   BoxProps,
-  ConditionalValue,
   PopoverAnchor,
   Portal,
   RecipeVariantProps,
@@ -36,7 +35,8 @@ import {
   PopoverRoot,
   PopoverTrigger,
 } from "../popover";
-import { Field } from "../input";
+import { Field } from "../input/Field";
+import { CalendarVariants } from "./types";
 
 export type DatePickerVariantProps = RecipeVariantProps<
   typeof datePickerSlotRecipe
@@ -44,8 +44,8 @@ export type DatePickerVariantProps = RecipeVariantProps<
 
 type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
   Pick<BoxProps, "minHeight" | "width"> &
-  PropsWithChildren<DatePickerVariantProps> & {
-    variant: ConditionalValue<"base" | "floating" | "ghost">;
+  PropsWithChildren<DatePickerVariantProps> &
+  CalendarVariants & {
     name?: string;
     showYearNavigation?: boolean;
     withPortal?: boolean;
@@ -56,10 +56,10 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
 /**
  * A date picker component.
  *
- * There are three different variants – `base`, `floating` and `ghost`.
+ * There are three different variants – `core`, `floating` and `ghost`.
  *
  * ```tsx
- * <DatePicker label="Dato" variant="base" />
+ * <DatePicker label="Dato" variant="core" />
  * ```
  */
 

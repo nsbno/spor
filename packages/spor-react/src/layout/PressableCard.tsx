@@ -42,7 +42,7 @@ type PressableCardProps = BoxProps &
  */
 
 export const PressableCard = forwardRef<HTMLDivElement, PressableCardProps>(
-  ({ variant = "floating", children, ...props }, ref) => {
+  ({ variant = "core", children, ...props }, ref) => {
     const recipe = useRecipe({ recipe: pressableCardRecipe });
     const styles = recipe({ variant });
     return (

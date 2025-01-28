@@ -17,8 +17,11 @@ type BreadcrumbVariants = RecipeVariantProps<typeof breadcrumbRecipe>;
 export type BreadcrumbProps = BoxProps &
   PropsWithChildren<BreadcrumbVariants> & {
     children: React.ReactNode;
-    variant?: "base" | "ghost";
+    /* "core" or "ghost". Defaults to "core". */
+    variant?: "core" | "ghost";
+    /* Seperator for the crumbs */
     separator?: React.ReactNode;
+    /* Spacing between the seperator */
     separatorGap?: string | number;
   };
 
@@ -41,7 +44,7 @@ export type BreadcrumbProps = BoxProps &
 export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
   (
     {
-      variant = "base",
+      variant = "core",
       separator,
       separatorGap = "0.5rem",
       children,

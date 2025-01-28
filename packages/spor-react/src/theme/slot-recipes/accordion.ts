@@ -78,9 +78,9 @@ export const accordionSlotRecipe = defineSlotRecipe({
         },
         itemTrigger: {
           _hover: {
-            backgroundColor: "ghost.surface.hover",
+            ...ghostBackground("hover"),
             _active: {
-              backgroundColor: "ghost.surface.active",
+              ...ghostBackground("active"),
             },
           },
         },

@@ -8,7 +8,7 @@ type PressableCardVariants = RecipeVariantProps<typeof pressableCardRecipe>;
 type PressableCardProps = BoxProps &
   PropsWithChildren<PressableCardVariants> & {
     children: React.ReactNode;
-    variant?: "core" | "accent" | "base";
+    variant?: "floating" | "accent" | "core";
   };
 
 /**
@@ -42,7 +42,7 @@ type PressableCardProps = BoxProps &
  */
 
 export const PressableCard = forwardRef<HTMLDivElement, PressableCardProps>(
-  ({ variant = "core", children, ...props }, ref) => {
+  ({ variant = "floating", children, ...props }, ref) => {
     const recipe = useRecipe({ recipe: pressableCardRecipe });
     const styles = recipe({ variant });
     return (

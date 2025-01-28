@@ -386,7 +386,7 @@
 
 ### Patch Changes
 
-- 7838d12: Removed coreBackground from base variant on most of the components.
+- 7838d12: Removed baseBackground from base variant on most of the components.
 - 162650e: CardSelect: Improve JSDoc
 - Updated dependencies [df1ae12]
   - @vygruppen/spor-design-tokens@3.5.3

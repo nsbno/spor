@@ -27,7 +27,14 @@ Spor is getting a major update with Chakra 3.
 - `Toast` prop `isClosable` is now `closable`. `useToast` is now `createToaster`.
 - `FormControl`, `FormLabel` and `FormErrorMessage` are removed and replaced by `Field`. `Field` supports the necessary props to support this.
 - `Separator` replaces `Divider`.
-- `UnorderedList` and ?  is deprecated. Use "as" prop instead.
+- `UnorderedList` and `OrderedList` is deprecated. Use `List` and `as` prop instead.
+
+### Darkmode
+
+`DarkMode` and `LightMode` has been removed. Use `className="dark"` instead.
+
+The `useColorMode` hook exports the state (`colorMode`) and toggle (`toggleColorMode`).
+
 
 ### Externals from Chakra:
 

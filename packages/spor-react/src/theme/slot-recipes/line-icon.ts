@@ -10,7 +10,7 @@ export const lineIconSlotRecipe = defineSlotRecipe({
       justifyContent: "center",
       alignItems: "center",
       "[aria-disabled=true] &": {
-        color: "osloGrey",
+        backgroundColor: "silver",
       },
     },
     icon: {

@@ -15,7 +15,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       transitionDuration: "fast",
       transitionProperty: "common",
       _disabled: {
-        backgroundColor: "silver",
+        backgroundColor: "platinum",
       },
       "button&, a&": {
         boxShadow: "sm",
@@ -31,7 +31,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
     },
     iconContainer: {
       padding: 0.5,
-      "[aria-disabled=true] &": {
+      _disabled: {
         backgroundColor: "osloGrey",
         color: "white",
       },
@@ -40,7 +40,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       color: "darkGrey",
       paddingRight: 0.5,
       whiteSpace: "nowrap",
-      "[aria-disabled=true] &": {
+      _disabled: {
         color: "dimGrey",
       },
     },
@@ -148,7 +148,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
         },
         iconContainer: {
           backgroundColor: "white",
-          "[aria-disabled=true] &": {
+          _disabled: {
             backgroundColor: "transparent",
             color: "osloGrey",
           },
@@ -157,7 +157,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
           position: "absolute",
           left: "1.3rem",
           bottom: 0,
-          "[aria-disabled=true] &": {
+          _disabled: {
             color: "osloGrey",
           },
         },

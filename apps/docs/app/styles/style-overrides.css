@@ -5,4 +5,5 @@
 
 img {
   border-radius: 12px;
+  visibility: collapse;
 }

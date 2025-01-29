@@ -30,6 +30,8 @@ export const tableSlotRecipe = defineSlotRecipe({
       borderBottom: "sm",
       borderColor: "blackAlpha.200",
       ...numericStyles,
+      paddingX: 1.5,
+      paddingY: 1,
     },
     row: {
       borderBottom: "sm",
@@ -38,6 +40,8 @@ export const tableSlotRecipe = defineSlotRecipe({
     },
     cell: {
       ...numericStyles,
+      paddingX: 1.5,
+      paddingY: 1,
     },
     footer: {
       fontWeight: "medium",
@@ -212,10 +216,5 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
       },
     },
-  },
-
-  defaultVariants: {
-    variant: "line",
-    size: "md",
   },
 });

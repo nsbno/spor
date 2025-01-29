@@ -1,16 +1,9 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { travelTagAnatomy } from "./anatomy";
 
 export const travelTagSlotRecipe = defineSlotRecipe({
-  slots: [
-    "container",
-    "iconContainer",
-    "icon",
-    "textContainer",
-    "title",
-    "description",
-    "deviationIcon",
-  ],
+  slots: travelTagAnatomy.keys(),
   className: "spor-travel-tag",
   base: {
     container: {
@@ -72,6 +65,9 @@ export const travelTagSlotRecipe = defineSlotRecipe({
           border: "1px solid",
           borderColor: "brightRed",
         },
+        deviationIcon: {
+          color: "brightRed",
+        },
       },
       major: {
         container: {
@@ -80,7 +76,11 @@ export const travelTagSlotRecipe = defineSlotRecipe({
         },
       },
       minor: {},
-      info: {},
+      info: {
+        deviationIcon: {
+          color: "ocean",
+        },
+      },
       none: {},
     },
     variant: {
@@ -147,9 +147,6 @@ export const travelTagSlotRecipe = defineSlotRecipe({
           },
         },
         iconContainer: {
-          border: "none",
-          position: "relative",
-          left: -1,
           backgroundColor: "white",
           "[aria-disabled=true] &": {
             backgroundColor: "transparent",
@@ -158,8 +155,8 @@ export const travelTagSlotRecipe = defineSlotRecipe({
         },
         textContainer: {
           position: "absolute",
-          left: 2,
-          bottom: -0.5,
+          left: "1.3rem",
+          bottom: 0,
           "[aria-disabled=true] &": {
             color: "osloGrey",
           },

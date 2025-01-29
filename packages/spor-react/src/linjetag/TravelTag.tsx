@@ -99,7 +99,7 @@ export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
     },
     ref,
   ) {
-    const recipie = useSlotRecipe({ key: "travel-tag" });
+    const recipie = useSlotRecipe({ recipe: travelTagSlotRecipe });
     const styles = recipie({
       variant,
       size,
@@ -109,12 +109,18 @@ export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
     });
 
     const DeviationLevelIcon = getDeviationLevelIcon({ deviationLevel, size });
+
     return (
-      <Box css={styles.container} aria-disabled={disabled} ref={ref} {...rest}>
+      <Box
+        css={styles.container}
+        aria-disabled={disabled}
+        ref={ref}
+        {...rest}
+        backgroundColor={backgroundColor}
+      >
         <LineIcon
           variant={variant}
           size={size}
-          sx={styles.iconContainer}
           foregroundColor={foregroundColor}
           backgroundColor={backgroundColor}
           customIconVariant={customIconVariant}

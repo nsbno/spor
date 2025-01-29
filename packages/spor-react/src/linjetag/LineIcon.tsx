@@ -24,6 +24,8 @@ export type LineIconProps = Exclude<BoxProps, "variant"> &
   VariantProps &
   PropsWithChildren<LineIconVariantProps> & {
     size: TagProps["size"];
+    foregroundColor?: string;
+    backgroundColor?: string;
   };
 
 /**
@@ -57,8 +59,11 @@ export type LineIconProps = Exclude<BoxProps, "variant"> &
  */
 
 export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
-  function LineIcon({ variant, size = "md", style, ...rest }, ref) {
-    const recipe = useSlotRecipe({ key: "line-icon" });
+  function LineIcon(
+    { variant, size = "md", foregroundColor, backgroundColor, style, ...rest },
+    ref,
+  ) {
+    const recipe = useSlotRecipe({ recipe: lineIconSlotRecipe });
     const styles = recipe({ variant, size, ...rest });
 
     const Icon: any = getCorrectIcon({
@@ -74,8 +79,13 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
       return null;
     }
     return (
-      <Box css={styles.iconContainer}>
-        <Icon sx={styles.icon} />
+      <Box
+        css={styles.iconContainer}
+        backgroundColor={foregroundColor}
+        ref={ref}
+        style={style}
+      >
+        <Icon css={styles.icon} />
       </Box>
     );
   },

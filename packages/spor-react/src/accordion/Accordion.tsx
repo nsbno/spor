@@ -35,7 +35,7 @@ import { warnAboutMismatchingIcon } from "./helpers";
  * If you need to have a default open item, you can use the `defaultValue` prop.
  *
  * ```tsx
- * <Accordion defaultValue="a">
+ * <Accordion defaultValue={["a"]}>
  *  <AccordionItem value="a">
  *    <AccordionItemTrigger headingLevel="h3" title="Is Spor easy?" />
  *    <AccordionItemContent>Yes</AccordionItemContent>
@@ -48,6 +48,8 @@ import { warnAboutMismatchingIcon } from "./helpers";
  * ```
  *
  * If you only have one expandable item, you can use the `<Expandable />` component instead.
+ * 
+ * @see https://spor.vy.no/components/accordion
  */
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(

@@ -57,6 +57,8 @@ export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
  *
  *
  * If you need even more control, you can put together your own expandable with the `Accordion`, `AccordionItem`, `AccordionItemTrigger`, and `AccordionItemContent` components.
+ * 
+ * @see https://spor.vy.no/components/accordion
  */
 
 export const ExpandableItem = (props: ExpandableItemProps) => {

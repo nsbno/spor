@@ -123,10 +123,6 @@ export const accordionSlotRecipe = defineSlotRecipe({
               ...floatingBorder("default"),
             },
           },
-          _active: {
-            ...ghostBackground("active"),
-            ...floatingBorder("default"),
-          },
         },
       },
     },

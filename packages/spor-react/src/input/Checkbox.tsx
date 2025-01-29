@@ -1,44 +1,33 @@
-"use client";
+import { checkboxSlotRecipe } from "@/theme/slot-recipes/checkbox";
 import {
+  Checkbox as ChakraCheckbox,
   RecipeVariantProps,
-  useRecipe,
-  CheckboxRootProps as ChakraCheckboxProp,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
-import { checkboxSlotRecipe } from "../theme/slot-recipes/checkbox";
+import * as React from "react";
+import { PropsWithChildren } from "react";
 
-type CheckboxVariants = RecipeVariantProps<typeof checkboxSlotRecipe>;
+type CheckboxVariantProps = RecipeVariantProps<typeof checkboxSlotRecipe>;
 
-export type CheckboxProps = Exclude<
-  ChakraCheckboxProp,
-  "variant" | "colorPalette"
-> &
-  PropsWithChildren<CheckboxVariants> & {
-    children: React.ReactNode;
+type CheckboxProps = ChakraCheckbox.RootProps &
+  PropsWithChildren<CheckboxVariantProps> & {
+    icon?: React.ReactNode;
+    inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+    rootRef?: React.Ref<HTMLLabelElement>;
   };
 
-/**
- * Creates a checkbox.
- *
- * The checkbox contains its own label, which is passed as a children prop:
- *
- * ```tsx
- * <Checkbox>Accept the terms</Checkbox>
- * ```
- *
- * Unlike regular inputs, it doesn't require its own `FormControl`.
- *
- * You can group several of these together with a `CheckboxGroup`.
- */
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ children, ...props }, ref) => {
-    const recipe = useRecipe({ recipe: checkboxSlotRecipe });
-    const styles = recipe({});
-
+export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
+  (props, ref) => {
+    const { icon, children, inputProps, rootRef, ...rest } = props;
     return (
-      <Checkbox css={styles} {...props} ref={ref}>
-        {children}
-      </Checkbox>
+      <ChakraCheckbox.Root ref={rootRef} {...rest}>
+        <ChakraCheckbox.HiddenInput ref={ref} {...inputProps} />
+        <ChakraCheckbox.Control>
+          {icon || <ChakraCheckbox.Indicator />}
+        </ChakraCheckbox.Control>
+        {children != null && (
+          <ChakraCheckbox.Label>{children}</ChakraCheckbox.Label>
+        )}
+      </ChakraCheckbox.Root>
     );
   },
 );

@@ -4,36 +4,69 @@ import { focusVisibleStyles } from "../utils/focus-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
 
 export const checkboxSlotRecipe = defineSlotRecipe({
-  slots: ["control", "label", "root", "icon"],
+  slots: [
+    "root",
+    "control",
+    "label",
+    "description",
+    "addon",
+    "indicator",
+    "content",
+  ],
   className: "spor-checkbox",
   base: {
     root: {
+      display: "flex",
+      gap: 1.5,
       _hover: {
-        ...coreBackground("hover"),
-        borderColor: brandBackground("hover").backgroundColor,
-      },
-      _invalid: {
-        backgroundColor: "white",
-        borderColor: "outline.error",
-      },
-      _checked: {
-        borderColor: "outline.error",
-        backgroundColor: "outline.error",
+        "& input:enabled:not([aria-invalid]) + .spor-checkbox__control": {
+          ...coreBackground("hover"),
+          borderColor: brandBackground("hover").backgroundColor,
+        },
+        "& input:enabled[aria-invalid] + .spor-checkbox__control": {
+          backgroundColor: "white",
+          borderColor: "outline.error",
+        },
+        "& input:enabled:checked:not([aria-invalid]) + .spor-checkbox__control":
+          {
+            ...brandBackground("hover"),
+            borderColor: brandBackground("hover").backgroundColor,
+          },
+        "& input:enabled:checked[aria-invalid] + .spor-checkbox__control": {
+          borderColor: "outline.error",
+          backgroundColor: "outline.error",
+        },
       },
     },
-    icon: {
-      fontSize: "1em",
-      transitionProperty: "transform",
-      transitionDuration: "normal",
-      strokeWidth: "1.5px !important",
+    indicator: {
+      width: "100%",
+      height: "100%",
+      borderColor: "white",
+      marginTop: -1,
+      transform: "scale(1)",
+      opacity: 0,
+      "& polyline": {
+        fill: "none",
+        transformOrigin: "50% 50%",
+        strokeWidth: "3px",
+        strokeDasharray: "22.771367900227325",
+        stroke: "currentcolor",
+      },
+      _checked: {
+        opacity: 1,
+        transition: "opacity 300ms cubic-bezier(0.65, 0.25, 0.56, 0.96)",
+        "& polyline": {
+          animation: "dash-check",
+        },
+      },
     },
     control: {
       width: 4,
       height: 4,
       transitionProperty: "background, border-color",
-      transitionDuration: "normal",
+      transitionDuration: "moderate",
       border: "2px solid",
-      borderColor: "base.outline.default",
+      borderColor: "core.outline",
       borderRadius: "xs",
       ...coreBackground("default"),
       ...focusVisibleStyles(),

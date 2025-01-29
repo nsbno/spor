@@ -1,4 +1,3 @@
-"use client";
 import {
   CheckboxGroup as ChakraCheckboxGroup,
   CheckboxGroupProps as ChakraCheckboxGroupProps,
@@ -8,7 +7,7 @@ import React, { forwardRef } from "react";
 
 export type CheckboxGroupProps = Exclude<
   ChakraCheckboxGroupProps,
-  "colorScheme" | "size" | "variant"
+  "colorPalette" | "size" | "variant"
 > & {
   direction?: "row" | "column";
   children: React.ReactNode;
@@ -18,7 +17,7 @@ export type CheckboxGroupProps = Exclude<
  * Used to group several checkboxes together. You can pass the default value, as well as whether or not they're all disabled
  *
  * ```tsx
- * <CheckboxGroup isDisabled defaultValue={['red', 'blue']}>
+ * <CheckboxGroup disabled defaultValue={['red', 'blue']}>
  *   <Checkbox value="red">Red</Checkbox>
  *   <Checkbox value="blue">Blue</Checkbox>
  *   <Checkbox value="green">Green</Checkbox>

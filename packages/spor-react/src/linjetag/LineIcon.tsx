@@ -72,8 +72,6 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
     const recipe = useSlotRecipe({ key: "lineIcon" });
     const styles = recipe({ variant, size, ...rest });
 
-    console.log("aria", disabled);
-
     const Icon: any = getCorrectIcon({
       variant:
         variant === "custom" && "customIconVariant" in rest

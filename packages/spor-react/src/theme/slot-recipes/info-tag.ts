@@ -19,8 +19,30 @@ export const infoTagSlotRecipe = defineSlotRecipe({
       position: "relative",
       alignItems: "center",
     },
+    title: {
+      fontWeight: "bold",
+    },
+    description: {
+      fontWeight: "normal",
+    },
   },
   variants: {
+    variant: {
+      walk: {
+        iconContainer: {
+          backgroundColor: "white",
+          borderWidth: 1,
+          borderStyle: "solid",
+          borderColor: "blackAlpha.200",
+        },
+        icon: {
+          color: "text",
+          "[aria-disabled=true] &": {
+            color: "osloGrey",
+          },
+        },
+      },
+    },
     size: {
       ...travelTagSlotRecipe.variants?.size,
       sm: {

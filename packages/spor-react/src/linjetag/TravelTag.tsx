@@ -99,13 +99,11 @@ export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
     },
     ref,
   ) {
-    const recipie = useSlotRecipe({ recipe: travelTagSlotRecipe });
+    const recipie = useSlotRecipe({ key: "travelTag" });
     const styles = recipie({
       variant,
       size,
       deviationLevel,
-      foregroundColor: variant === "custom" ? foregroundColor : undefined,
-      backgroundColor: variant === "custom" ? backgroundColor : undefined,
     });
 
     const DeviationLevelIcon = getDeviationLevelIcon({ deviationLevel, size });

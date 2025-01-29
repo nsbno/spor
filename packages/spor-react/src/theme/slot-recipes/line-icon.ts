@@ -9,9 +9,15 @@ export const lineIconSlotRecipe = defineSlotRecipe({
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      "[aria-disabled=true] &": {
+        color: "osloGrey",
+      },
     },
     icon: {
       color: "white",
+      "[aria-disabled=true] &": {
+        color: "osloGrey",
+      },
     },
   },
   variants: {

@@ -48,7 +48,7 @@ export const InfoTag = ({
   description,
   ...customProps
 }: InfoTagProps) => {
-  const recipe = useSlotRecipe({ recipe: infoTagSlotRecipe });
+  const recipe = useSlotRecipe({ key: "infoTag" });
 
   const styles = recipe({
     variant,
@@ -61,7 +61,7 @@ export const InfoTag = ({
       <LineIcon
         variant={variant}
         size={size}
-        //sx={styles.iconContainer}
+        aria-label={title}
         {...(customProps as any)} // TODO: Fix this
       />
       <Box css={styles.textContainer}>

@@ -7,3 +7,13 @@ export const fieldAnatomy = createAnatomy("field").parts(
   "helperText",
   "errorText",
 );
+
+export const checkboxAnatomy = createAnatomy("checkbox").parts(
+  "root",
+  "control",
+  "label",
+  "description",
+  "addon",
+  "indicator",
+  "content",
+);

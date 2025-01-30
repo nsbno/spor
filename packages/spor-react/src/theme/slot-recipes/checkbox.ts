@@ -2,18 +2,11 @@ import { coreBackground, coreText } from "../utils/core-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
+import { checkboxAnatomy } from "./anatomy";
 
 export const checkboxSlotRecipe = defineSlotRecipe({
-  slots: [
-    "root",
-    "control",
-    "label",
-    "description",
-    "addon",
-    "indicator",
-    "content",
-  ],
   className: "spor-checkbox",
+  slots: checkboxAnatomy.keys(),
   base: {
     root: {
       display: "flex",

@@ -16,19 +16,11 @@ export const checkboxSlotRecipe = defineSlotRecipe({
           ...coreBackground("hover"),
           borderColor: brandBackground("hover").backgroundColor,
         },
-        "& input:enabled[aria-invalid] + .spor-checkbox__control": {
-          backgroundColor: "white",
-          borderColor: "outline.error",
-        },
         "& input:enabled:checked:not([aria-invalid]) + .spor-checkbox__control":
           {
             ...brandBackground("hover"),
             borderColor: brandBackground("hover").backgroundColor,
           },
-        "& input:enabled:checked[aria-invalid] + .spor-checkbox__control": {
-          borderColor: "outline.error",
-          backgroundColor: "outline.error",
-        },
       },
     },
     indicator: {
@@ -80,14 +72,13 @@ export const checkboxSlotRecipe = defineSlotRecipe({
           borderColor: "brightRed",
         },
       },
-
       _disabled: {
         ...coreBackground("disabled"),
         borderColor: coreText("disabled").color,
       },
       _invalid: {
         ...coreBackground("default"),
-        borderColor: "brightRed",
+        borderColor: "outline.error",
       },
     },
     label: {

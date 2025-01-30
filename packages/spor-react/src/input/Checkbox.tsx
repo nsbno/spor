@@ -10,7 +10,6 @@ type CheckboxVariantProps = RecipeVariantProps<typeof checkboxSlotRecipe>;
 
 type CheckboxProps = ChakraCheckbox.RootProps &
   PropsWithChildren<CheckboxVariantProps> & {
-    icon?: React.ReactNode;
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
     rootRef?: React.Ref<HTMLLabelElement>;
   };
@@ -31,12 +30,12 @@ type CheckboxProps = ChakraCheckbox.RootProps &
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (props, ref) => {
-    const { icon, children, inputProps, rootRef, ...rest } = props;
+    const { children, inputProps, rootRef, ...rest } = props;
     return (
       <ChakraCheckbox.Root ref={rootRef} {...rest}>
         <ChakraCheckbox.HiddenInput ref={ref} {...inputProps} />
         <ChakraCheckbox.Control>
-          {icon || <ChakraCheckbox.Indicator />}
+          <ChakraCheckbox.Indicator />
         </ChakraCheckbox.Control>
         {children != null && (
           <ChakraCheckbox.Label>{children}</ChakraCheckbox.Label>

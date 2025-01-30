@@ -9,8 +9,10 @@ export type CheckboxGroupProps = Exclude<
   ChakraCheckboxGroupProps,
   "colorPalette" | "size" | "variant"
 > & {
+  /* Defaults to row */
   direction?: "row" | "column";
   children: React.ReactNode;
+  /* Defaults to 1 */
   gap?: number | string;
   [key: string]: any;
 };

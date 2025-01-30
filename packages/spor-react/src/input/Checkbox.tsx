@@ -15,6 +15,20 @@ type CheckboxProps = ChakraCheckbox.RootProps &
     rootRef?: React.Ref<HTMLLabelElement>;
   };
 
+/**
+ * Creates a checkbox.
+ *
+ * The checkbox contains its own label, which is passed as a children prop:
+ *
+ * ```tsx
+ * <Checkbox>Accept the terms</Checkbox>
+ * ```
+ *
+ * Unlike regular inputs, it doesn't require its own `Field`.
+ *
+ * You can group several of these together with a `CheckboxGroup`.
+ */
+
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (props, ref) => {
     const { icon, children, inputProps, rootRef, ...rest } = props;

@@ -11,6 +11,7 @@ export type CheckboxGroupProps = Exclude<
 > & {
   direction?: "row" | "column";
   children: React.ReactNode;
+  gap?: number | string;
   [key: string]: any;
 };
 /**
@@ -36,11 +37,13 @@ export type CheckboxGroupProps = Exclude<
 
 export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
   (props, ref) => {
-    const { direction = "row", children, ...rest } = props;
+    const { direction = "row", children, gap = 1, ...rest } = props;
 
     return (
       <ChakraCheckboxGroup ref={ref} {...rest}>
-        <Stack direction={direction}>{children}</Stack>
+        <Stack direction={direction} gap={gap}>
+          {children}
+        </Stack>
       </ChakraCheckboxGroup>
     );
   },

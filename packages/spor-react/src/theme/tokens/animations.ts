@@ -13,9 +13,6 @@ export const animations = defineTokens.animations({
   bounce: {
     value: "bounce 1s infinite",
   },
-  "checkbox-check": {
-    value: "checkbox-check 125ms 250ms cubic-bezier(.4,.0,.23,1) forwards",
-  },
   "dash-check": {
     value: "dash-check 250ms cubic-bezier(0.65, 0.25, 0.56, 0.96)",
   }

@@ -84,13 +84,16 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
     if (!Icon) {
       return null;
     }
+
+    if (foregroundColor) {
+      styles.iconContainer.backgroundColor = disabled
+        ? "silver"
+        : foregroundColor;
+    }
+
     return (
-      <Box
-        css={styles.iconContainer}
-        style={style}
-        backgroundColor={disabled ? "silver" : foregroundColor}
-      >
-        <Icon css={styles.icon} disabled />
+      <Box css={styles.iconContainer} style={style}>
+        <Icon css={styles.icon} />
       </Box>
     );
   },

@@ -122,6 +122,7 @@ export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
           foregroundColor={foregroundColor}
           backgroundColor={backgroundColor}
           customIconVariant={customIconVariant}
+          disabled={disabled}
           {...(rest as any)}
         />
         <Box css={styles.textContainer}>

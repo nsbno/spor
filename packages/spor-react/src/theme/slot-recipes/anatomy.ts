@@ -7,3 +7,11 @@ export const fieldAnatomy = createAnatomy("field").parts(
   "helperText",
   "errorText",
 );
+
+export const paginationAnatomy = createAnatomy("pagination").parts(
+    "listItem",
+    "link",
+    "activeButton",
+    "disabled",
+    "icon",
+);

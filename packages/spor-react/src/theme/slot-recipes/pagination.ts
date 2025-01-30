@@ -1,15 +1,10 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { coreBackground, coreText } from "../utils/core-utils";
 import { ghostBackground } from "../utils/ghost-utils";
+import { paginationAnatomy } from "./anatomy";
 
 export const paginationSlotRecipe = defineSlotRecipe({
-  slots: [
-    "listItem",
-    "link",
-    "activeButton",
-    "disabled",
-    "icon",
-  ],
+  slots: paginationAnatomy.keys(),
   className: "spor-pagination",
   base: {
     listItem: {

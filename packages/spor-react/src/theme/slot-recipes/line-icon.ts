@@ -19,6 +19,9 @@ export const lineIconSlotRecipe = defineSlotRecipe({
         color: "osloGrey",
       },
     },
+    title: {
+      color: "black",
+    },
   },
   variants: {
     variant: {
@@ -90,8 +93,11 @@ export const lineIconSlotRecipe = defineSlotRecipe({
           borderStyle: "solid",
           borderColor: "blackAlpha.200",
         },
+        title: {
+          color: "black",
+        },
         icon: {
-          color: "text",
+          color: "black",
           "[aria-disabled=true] &": {
             color: "osloGrey",
           },

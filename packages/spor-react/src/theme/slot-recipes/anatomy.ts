@@ -12,6 +12,8 @@ export const linjetagAnatomy = createAnatomy("linjetag").parts(
   "iconContainer",
   "icon",
   "root",
+  "title",
+  "desc",
 );
 
 export const infoTagAnatomy = createAnatomy("info-tag").parts(

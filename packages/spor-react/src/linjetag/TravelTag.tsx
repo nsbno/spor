@@ -45,6 +45,8 @@ export type TravelTagProps = TagProps &
  *
  * You can also render them with a deviation level to indicate an extra focus:
  *
+ * You can add a "disabled" prop to the tag to make it look disabled (grey)
+ *
  * ```tsx
  * <TravelTag
  *   variant="subway"

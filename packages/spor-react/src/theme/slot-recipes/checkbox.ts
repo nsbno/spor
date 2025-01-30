@@ -12,12 +12,11 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       display: "flex",
       gap: 1.5,
       _hover: {
-        "& input:enabled:not([aria-invalid]):not[data-readonly] + .spor-checkbox__control":
-          {
-            ...coreBackground("hover"),
-            borderColor: brandBackground("hover").backgroundColor,
-          },
-        "& input:enabled:checked:not([aria-invalid]):not[data-readonly] + .spor-checkbox__control":
+        "& > input:enabled:not([aria-invalid]) + .spor-checkbox__control": {
+          ...coreBackground("hover"),
+          borderColor: brandBackground("hover").backgroundColor,
+        },
+        "& > input:enabled:checked:not([aria-invalid]) + .spor-checkbox__control":
           {
             ...brandBackground("hover"),
             borderColor: brandBackground("hover").backgroundColor,

@@ -3,17 +3,6 @@ import { brandBackground, brandText } from "../utils/brand-utils";
 import { coreBorder, coreText } from "../utils/core-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
-const svgStyles = () => {
-  return {
-    "& svg": {
-      display: "inline-block",
-      width: "1.125em",
-      height: "1.125em",
-      position: "relative",
-    },
-  };
-};
-
 export const linkRecipe = defineRecipe({
   base: {
     transitionProperty: "common",
@@ -25,14 +14,14 @@ export const linkRecipe = defineRecipe({
     backgroundPosition: "0 100%",
     backgroundRepeat: "no-repeat",
     borderRadius: "none",
-    padding: "2px",
+    paddingX: "2px",
+    paddingY: "0",
     color: "inherit",
     display: "inline-flex",
-    alignItems: "center",
-    justifyItems: "center",
-    gap: "4px",
+    gap: "0",
     position: "relative",
     boxDecorationBreak: "clone",
+    textUnderlineOffset: "0",
 
     "&:focus, &:focus-visible, &:active, &:hover": {
       backgroundImage: "none",
@@ -43,7 +32,15 @@ export const linkRecipe = defineRecipe({
 
     ...focusVisibleStyles(),
 
-    ...svgStyles(),
+    "& svg": {
+      display: "inline-block",
+      width: "1.125em",
+      height: "1.125em",
+      position: "relative",
+      bottom: "1px",
+      scale: "0.8",
+      marginRight: "-2px",
+    },
   },
   variants: {
     variant: {
@@ -53,17 +50,19 @@ export const linkRecipe = defineRecipe({
           ...brandText("hover"),
           ...brandBackground("hover"),
           _active: {
-            ...brandBackground("active"),
+            backgroundColor: "opal",
+            color: "white",
           },
         },
       },
       secondary: {
         ...coreText("default"),
+        padding: "2px",
         _hover: {
           ...coreBorder("hover"),
           outlineWidth: "1px",
           _active: {
-            ...brandBackground("active"),
+            backgroundColor: "mint",
           },
         },
       },

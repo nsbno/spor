@@ -37,6 +37,7 @@ import {
   getInitialSanityData,
 } from "./utils/initialSanityData.server";
 import { urlBuilder } from "./utils/sanity/utils";
+import { defaultSystem } from "@chakra-ui/react";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data || !data.initialSanityData) {

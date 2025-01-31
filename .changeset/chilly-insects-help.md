@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": major
 ---
 
-Separator: Fixed styling on separators to match Figma styling
+Separator: Changed name from Divider to Separator. Fixed styling on separators to match Figma styling

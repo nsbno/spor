@@ -4,6 +4,7 @@ export const separatorRecipe = defineRecipe({
   className: "spor-separator",
   base: {
     borderColor: "blackAlpha.300",
+    display: "block",
   },
   variants: {
     variant: {
@@ -11,24 +12,22 @@ export const separatorRecipe = defineRecipe({
         borderStyle: "solid",
       },
       dashed: {
-        backgroundImage: `repeating-linear-gradient(90deg, blackAlpha.400, blackAlpha.300", 4px, transparent 4px, transparent 10px)`,
-        backgroundPosition: "left bottom",
-        backgroundRepeat: "repeat-x",
-        backgroundSize: "100% 3px",
+        width: "100%",
+        borderWidth: "0px",
       },
     },
     size: {
       sm: {
-        borderWidth: "1px",
-        borderRadius: "0.5px",
+        borderBottomWidth: "1px",
+        height: "1px",
       },
       md: {
-        borderWidth: "2px",
-        borderRadius: "1px",
+        borderBottomWidth: "2px",
+        height: "2px",
       },
       lg: {
-        borderWidth: "3px",
-        borderRadius: "1.5px",
+        borderBottomWidth: "3px",
+        height: "3px",
       },
     },
     orientation: {
@@ -37,42 +36,47 @@ export const separatorRecipe = defineRecipe({
       },
       vertical: {
         height: "100%",
+        borderLeftWidth: "1px",
       },
     },
   },
-  compoundVariants: [
+   compoundVariants: [
     {
       variant: "dashed",
       size: "sm",
       css: {
-        height: "1px",
+        background:' linear-gradient(to left, #b2b2b2, #b2b2b2 1px, transparent 1px, transparent 4px)',
+        backgroundSize: "4px 1px",
+        backgroundRepeat: "repeat-x",
       },
     },
     {
       variant: "dashed",
       size: "md",
       css: {
-        height: "2px",
+        background:' linear-gradient(to left, #b2b2b2, #b2b2b2 3px, transparent 3px, transparent 6px)',
+        backgroundSize: "9px 2px",
+        backgroundRepeat: "repeat-x",
       },
     },
     {
       variant: "dashed",
       size: "lg",
       css: {
-        height: "3px",
+        background:' linear-gradient(to left, #b2b2b2, #b2b2b2 3px, transparent 3px, transparent 9px)',
+        backgroundSize: "9px 3px",
+        backgroundRepeat: "repeat-x",
       },
     },
     {
       variant: "dashed",
+      orientation: "vertical",
       css: {
-        borderRadius: "unset",
-        borderWidth: "unset",
+        background: "0",
+        width: "0%",
+        height: "100%",  
+
       },
-    },
-  ],
-  defaultVariants: {
-    variant: "solid",
-    size: "sm",
-    orientation: "horizontal",
-  },
+    }
+  ], 
 });

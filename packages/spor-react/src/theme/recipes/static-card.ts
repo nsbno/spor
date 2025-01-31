@@ -1,6 +1,5 @@
 
 import { defineRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const staticCardRecipe = defineRecipe({
   base: {

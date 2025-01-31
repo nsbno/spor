@@ -1,6 +1,5 @@
 ---
-"@vygruppen/spor-design-tokens": patch
 "@vygruppen/spor-react": patch
 ---
 
-staticCard: Changed some colors and updated sanity docs
+StaticCard: Changed color values of grey, red, yellow and orange to reflect Figma design.

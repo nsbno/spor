@@ -1,8 +1,9 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+import { fieldAnatomy } from "./anatomy";
 
 export const fieldSlotRecipe = defineSlotRecipe({
-  slots: ["root", "label", "requiredIndicator", "helperText", "errorText"],
   className: "spor-field",
+  slots: fieldAnatomy.keys(),
   base: {
     root: {
       display: "flex",
@@ -14,7 +15,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
       /* For when input is filled */
       pos: "absolute",
       paddingX: 3,
-      top: "0.5",
+      top: "0.3rem",
       fontWeight: "normal",
       fontSize: ["mobile.xs", "desktop.xs"],
       color: "text",
@@ -34,7 +35,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
         /* For when input is in focus */
         fontSize: ["mobile.xs", "desktop.xs"],
         color: "text",
-        top: "0.5",
+        top: "0.3rem",
       },
       _disabled: {
         opacity: 0.4,
@@ -59,7 +60,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
       textStyle: "xs",
       width: "fit-content",
       position: "absolute",
-      top: 8,
+      bottom: -4,
       left: 3,
       zIndex: "dropdown",
       maxWidth: "50ch",

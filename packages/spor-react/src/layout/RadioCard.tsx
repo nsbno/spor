@@ -77,7 +77,7 @@ type RadioCardRootProps = RadioCardVariantProps &
     variant?: "core" | "floating";
   };
 
-export const RadioCardRoot = forwardRef<HTMLDivElement, RadioCardRootProps>(
+export const RadioCard = forwardRef<HTMLDivElement, RadioCardRootProps>(
   (props, ref) => {
     const { variant } = props;
     return <ChakraRadioCard.Root ref={ref} {...props} variant={variant} />;

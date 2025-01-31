@@ -7,3 +7,14 @@ export const fieldAnatomy = createAnatomy("field").parts(
   "helperText",
   "errorText",
 );
+
+export const dialogAnatomy = createAnatomy("dialog").parts(
+  "header",
+  "body",
+  "footer",
+  "backdrop",
+  "positioner",
+  "content",
+  "title",
+  "description",
+);

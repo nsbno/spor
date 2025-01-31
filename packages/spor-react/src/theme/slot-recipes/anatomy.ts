@@ -13,4 +13,5 @@ export const drawerAnatomy = createAnatomy("drawer").parts(
   "body",
   "footer",
   "backdrop",
+  "positioner",
 );

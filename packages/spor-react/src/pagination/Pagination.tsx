@@ -49,7 +49,7 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
   ({ totalPages, selectedPage, onPageChange, variant = "core" }, ref) => {
     const { t } = useTranslation();
 
-    const recipe = useSlotRecipe({ recipe: paginationSlotRecipe });
+    const recipe = useSlotRecipe({ key: "pagination" });
     const styles = recipe({ variant });
 
     const hasPreviousPage = selectedPage > 1;

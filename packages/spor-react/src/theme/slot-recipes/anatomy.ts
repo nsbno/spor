@@ -7,3 +7,10 @@ export const fieldAnatomy = createAnatomy("field").parts(
   "helperText",
   "errorText",
 );
+
+export const drawerAnatomy = createAnatomy("drawer").parts(
+  "header",
+  "body",
+  "footer",
+  "backdrop",
+);

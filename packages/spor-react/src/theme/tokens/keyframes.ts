@@ -252,4 +252,4 @@ export const keyframes = {
       scale: "0.95",
     },
   },
-}
+};

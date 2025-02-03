@@ -1,3 +1,5 @@
+"use client";
+
 import React, { forwardRef } from "react";
 import {
   Accordion,
@@ -5,44 +7,80 @@ import {
   AccordionItemContent,
   AccordionItemTrigger,
 } from "./Accordion";
-import { ExpandableProps } from "./types";
+import { ExpandableItemProps, ExpandableProps } from "./types";
+import { warnAboutMismatchingIcon } from "./helpers";
+
+/**
+ * A standalone expandable component.
+ *
+ * This one is great to use if you have a single expandable component by itself.
+ * If you want several expandables in a row, use the `Accordion` and `ExpandableItem` components instead.
+ *
+ * ```tsx
+ * <Expandable title="Click for more" variant="core">
+ *   <Text>MORE! 🎉</Text>
+ * </Expandable>
+ * ```
+ */
 
 export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
   (props, ref) => {
-    const {
-      variant = "ghost",
-      gap,
-      title,
-      children,
-      value,
-      headingLevel,
-      collapsible = true,
-      leftIcon,
-      ...rest
-    } = props;
+    const { title, children, headingLevel, startElement, ...rest } = props;
     return (
-      <Accordion {...props} ref={ref} variant={variant} gap={gap} {...rest}>
-        <AccordionItem value={value}>
-          <AccordionItemTrigger headingLevel={headingLevel} leftIcon={leftIcon}>
-            {title}
-          </AccordionItemTrigger>
-          <AccordionItemContent>{children}</AccordionItemContent>
-        </AccordionItem>
+      <Accordion {...props} ref={ref} {...rest}>
+        <ExpandableItem
+          title={title}
+          headingLevel={headingLevel}
+          startElement={startElement}
+          value="single-expandable"
+        >
+          {children}
+        </ExpandableItem>
       </Accordion>
     );
   },
 );
 
-export const ExpandableItem = forwardRef<HTMLDivElement, ExpandableProps>(
-  (props, ref) => {
-    const { title, children, value, headingLevel, leftIcon, ...rest } = props;
-    return (
-      <AccordionItem value={value} {...rest} ref={ref}>
-        <AccordionItemTrigger headingLevel={headingLevel} leftIcon={leftIcon}>
-          {title}
-        </AccordionItemTrigger>
-        <AccordionItemContent>{children}</AccordionItemContent>
-      </AccordionItem>
-    );
-  },
-);
+/**
+ * An item in a set of Expandables. Must be wrapped in an `<Accordion>` component.
+ *
+ * ```tsx
+ * <Accordion variant="ghost">
+ *  <ExpandableItem value="a" title="Is Spor easy?" headingLevel="h3">
+ *    Yes
+ *  </ExpandableItem>
+ *  <ExpandableItem value="b" title="Do you love it?" headingLevel="h3">
+ *    🥰
+ *  </ExpandableItem>
+ * </Accordion>
+ * ```
+ *
+ *
+ * If you need even more control, you can put together your own expandable with the `Accordion`, `AccordionItem`, `AccordionItemTrigger`, and `AccordionItemContent` components.
+ * 
+ * @see https://spor.vy.no/components/accordion
+ */
+
+export const ExpandableItem = (props: ExpandableItemProps) => {
+  const {
+    title,
+    children,
+    value,
+    headingLevel = "h3",
+    startElement,
+    ...rest
+  } = props;
+  warnAboutMismatchingIcon({ icon: startElement });
+  return (
+    <AccordionItem value={value} {...rest}>
+      <AccordionItemTrigger
+        startElement={startElement}
+        headingLevel={headingLevel}
+      >
+        {title}
+      </AccordionItemTrigger>
+
+      <AccordionItemContent>{children}</AccordionItemContent>
+    </AccordionItem>
+  );
+};

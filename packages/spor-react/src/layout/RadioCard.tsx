@@ -4,7 +4,7 @@ import {
   RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import React, { forwardRef, useId } from "react";
 import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
 
 /**
@@ -26,36 +26,29 @@ import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
  * @see Docs https://spor.vy.no/components/radiocard
  */
 
-/*
-
-TODO:
-- make sure you decide variant on group
-*/
-
 type RadioCardVariantProps = RecipeVariantProps<typeof radioCardSlotRecipe>;
 
 type RadioCardItemProps = Exclude<
   ChakraRadioCard.ItemProps,
-  | "colorPalette"
-  | "indicator"
-  | "variant"
-  | "size"
-  | "label"
-  | "description"
-  | "addon"
-  | "icon"
+  "colorPalette" | "indicator" | "variant" | "size" | "addon"
 > &
   RadioCardVariantProps & {
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+    ariaLabel?: string;
   };
 
 export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
   (props, ref) => {
-    const { inputProps, children } = props;
+    const { inputProps, children, value, ariaLabel } = props;
 
     return (
       <ChakraRadioCard.Item {...props}>
-        <ChakraRadioCard.ItemHiddenInput ref={ref} {...inputProps} />
+        <ChakraRadioCard.ItemHiddenInput
+          aria-label={ariaLabel ?? value}
+          ref={ref}
+          {...inputProps}
+        />
+
         <ChakraRadioCard.ItemControl>{children}</ChakraRadioCard.ItemControl>
       </ChakraRadioCard.Item>
     );

@@ -38,7 +38,7 @@ export const radioCardSlotRecipe = defineSlotRecipe({
       _disabled: { opacity: 0.4 },
       fontWeight: "bold",
       fontSize: "inherit",
-    }
+    },
   },
   variants: {
     variant: {
@@ -116,7 +116,6 @@ export const radioCardSlotRecipe = defineSlotRecipe({
             outlineColor: "outline.focus",
             _hover: {
               ...floatingBorder("hover"),
-              /* ...floatingBackground("active"), */
               boxShadow: "md",
             },
             _active: {

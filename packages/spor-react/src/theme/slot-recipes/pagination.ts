@@ -14,11 +14,10 @@ export const paginationSlotRecipe = defineSlotRecipe({
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
+      borderRadius: "50px",
+      fontSize: "xs",
       width: 5,
       height: 5,
-      backgroundImage: "none",
-      borderRadius: 50,
-      fontSize: "xs",
       ...coreBackground("default"),
       ...coreText("default"),
       _hover: {
@@ -30,7 +29,7 @@ export const paginationSlotRecipe = defineSlotRecipe({
         },
         _disabled: {
           ...coreText("disabled"),
-        },      },
+        },      }, 
      
     },
     activeButton: {

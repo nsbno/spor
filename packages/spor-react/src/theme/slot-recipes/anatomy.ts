@@ -9,6 +9,13 @@ export const accordionAnatomy = createAnatomy("accordion").parts(
   "itemIndicator",
 );
 
+export const listAnatomy = createAnatomy("list").parts(
+  "root",
+  "item",
+  "icon",
+  "indicator",
+);
+
 export const fieldAnatomy = createAnatomy("field").parts(
   "root",
   "label",

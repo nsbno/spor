@@ -37,6 +37,7 @@ import {
   getInitialSanityData,
 } from "./utils/initialSanityData.server";
 import { urlBuilder } from "./utils/sanity/utils";
+import { defaultSystem } from "@chakra-ui/react";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data || !data.initialSanityData) {
@@ -168,7 +169,7 @@ const Document = withEmotionCache(
           ))}
         </head>
         <body>
-          <SporProvider language={Language.English} brand={brand}>
+          <SporProvider language={Language.English} brand={brand} value={defaultSystem}>
             <SkipToContent />
             {children}
           </SporProvider>

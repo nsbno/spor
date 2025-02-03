@@ -2,6 +2,7 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { outlineBorder } from "../utils/outline-utils";
+import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const radioCardSlotRecipe = defineSlotRecipe({
   slots: [
@@ -14,7 +15,9 @@ export const radioCardSlotRecipe = defineSlotRecipe({
   ],
   className: "spor-radio-card",
   base: {
-    root: {
+    root: {},
+    item: {
+      flex: 1,
       overflow: "hidden",
       fontSize: "inherit",
       display: "block",
@@ -29,58 +32,72 @@ export const radioCardSlotRecipe = defineSlotRecipe({
         ...coreBorder("disabled"),
         ...coreText("disabled"),
       },
-      _checked: {
-        outline: "2px solid",
-        ...outlineBorder("focus"),
-        ...floatingBackground("active"),
-      },
     },
+    label: {
+      userSelect: "none",
+      _disabled: { opacity: 0.4 },
+      fontWeight: "bold",
+      fontSize: "inherit",
+    }
   },
   variants: {
     variant: {
       core: {
-        root: {
+        item: {
           ...coreText("default"),
           ...coreBackground("default"),
           ...coreBorder("default"),
           _hover: {
             ...coreBackground("hover"),
-            ...coreBorder("hover"),
+            outline: "2px solid",
+            outlineColor: "core.outline.hover",
+            _active: {
+              ...coreBackground("active"),
+              ...coreBorder("active"),
+            },
           },
-          _active: {
-            ...coreBackground("active"),
-            ...coreBorder("active"),
+
+          _checked: {
+            backgroundColor: "core.surface.active",
+            outline: "2px solid",
+            outlineColor: "outline.focus",
+            _hover: {
+              outline: "2px solid",
+              outlineColor: "core.outline.hover",
+              ...coreBackground("active"),
+            },
+            _active: {
+              ...coreBackground("active"),
+              ...coreBorder("active"),
+            },
+            _focusVisible: {
+              outline: "4px solid",
+              outlineStyle: "double",
+              ...outlineBorder("focus"),
+              outlineOffset: "-1px",
+            },
+            _disabled: {
+              pointerEvents: "none",
+              ...coreBackground("disabled"),
+              ...coreBorder("disabled"),
+              ...coreText("disabled"),
+            },
           },
-        },
-        _checked: {
-          _hover: {
-            ...coreBorder("hover"),
-          },
-          _active: {
-            ...coreBackground("active"),
-            ...coreBorder("active"),
-          },
-        },
-        _focusedChecked: {
-          outline: "4px solid",
-          outlineStyle: "double",
-          ...outlineBorder("focus"),
-          outlineOffset: "-1px",
-        },
-        _focused: {
-          outline: "2px solid",
-          ...outlineBorder("focus"),
-          outlineOffset: "1px",
-          boxShadow: `inset 0 0 0 1px rgba(0, 0, 0, 0.40)`,
-          _hover: {
-            ...coreBorder("hover"),
-            boxShadow: "none",
-            outlineOffset: "0px",
+          _focusVisible: {
+            outline: "2px solid",
+            ...outlineBorder("focus"),
+            outlineOffset: "1px",
+            boxShadow: `inset 0 0 0 1px rgba(0, 0, 0, 0.40)`,
+            _hover: {
+              ...coreBorder("hover"),
+              boxShadow: "none",
+              outlineOffset: "0px",
+            },
           },
         },
       },
       floating: {
-        root: {
+        item: {
           ...floatingBackground("default"),
           ...floatingBorder("default"),
           boxShadow: "sm",
@@ -88,37 +105,41 @@ export const radioCardSlotRecipe = defineSlotRecipe({
             ...floatingBackground("hover"),
             ...floatingBorder("hover"),
             boxShadow: "md",
+            _active: {
+              ...floatingBackground("active"),
+              ...floatingBorder("active"),
+            },
           },
-          _active: {
-            ...floatingBackground("active"),
-            ...floatingBorder("active"),
+          _checked: {
+            backgroundColor: "core.surface.active",
+            outline: "2px solid",
+            outlineColor: "outline.focus",
+            _hover: {
+              ...floatingBorder("hover"),
+              /* ...floatingBackground("active"), */
+              boxShadow: "md",
+            },
+            _active: {
+              ...floatingBackground("active"),
+              ...floatingBorder("active"),
+            },
+            _focusVisible: {
+              outline: "4px solid",
+              outlineStyle: "double",
+              ...outlineBorder("focus"),
+              outlineOffset: "-1px",
+            },
           },
-        },
-        _checked: {
-          _hover: {
-            ...floatingBorder("hover"),
-            boxShadow: "md",
-          },
-          _active: {
-            ...floatingBackground("active"),
-            ...floatingBorder("active"),
-          },
-        },
-        _focusedChecked: {
-          outline: "4px solid",
-          outlineStyle: "double",
-          ...outlineBorder("focus"),
-          outlineOffset: "-1px",
-        },
-        _focused: {
-          outline: "2px solid",
-          ...outlineBorder("focus"),
-          outlineOffset: "1px",
-          boxShadow: `inset 0 0 0 1px rgba(0, 0, 0, 0.10)`,
-          _hover: {
-            ...floatingBorder("hover"),
-            boxShadow: "md",
-            outlineOffset: "0px",
+          _focusVisible: {
+            outline: "2px solid",
+            ...outlineBorder("focus"),
+            outlineOffset: "1px",
+            boxShadow: `inset 0 0 0 1px rgba(0, 0, 0, 0.10)`,
+            _hover: {
+              ...floatingBorder("hover"),
+              boxShadow: "md",
+              outlineOffset: "0px",
+            },
           },
         },
       },

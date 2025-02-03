@@ -2,6 +2,7 @@
 import {
   RadioCard as ChakraRadioCard,
   RecipeVariantProps,
+  useSlotRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
 import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
@@ -13,7 +14,7 @@ import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
  * ```tsx
  * <RadioCardRoot defaultValue="economy">
  *   <RadioCardLabel>Choose your class</RadioCardLabel>
- *   <Stack align="stretch">
+ *   <Stack direction="row" align="stretch">
  *      <RadioCardItem value="economy" label="Economy" />
  *      <RadioCardItem value="business" label="Business" />
  *      <RadioCardItem value="first-class" label="First Class" />
@@ -25,58 +26,78 @@ import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
  * @see Docs https://spor.vy.no/components/radiocard
  */
 
+/*
+
+TODO:
+- make sure you decide variant on group
+*/
+
 type RadioCardVariantProps = RecipeVariantProps<typeof radioCardSlotRecipe>;
 
 type RadioCardItemProps = Exclude<
   ChakraRadioCard.ItemProps,
-  "colorPalette" | "indicator" | "variant" | "size"
+  | "colorPalette"
+  | "indicator"
+  | "variant"
+  | "size"
+  | "label"
+  | "description"
+  | "addon"
+  | "icon"
 > &
   RadioCardVariantProps & {
-    icon?: React.ReactElement;
-    label?: React.ReactNode;
-    description?: React.ReactNode;
-    addon?: React.ReactNode;
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
-    variant?: "core" | "floating";
   };
 
-export const RadioCard = React.forwardRef<
-  HTMLInputElement,
-  RadioCardItemProps
->(function RadioCardItem(props, ref) {
-  const { inputProps, label, description, addon, icon, children } = props;
+export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
+  (props, ref) => {
+    const { inputProps, children } = props;
 
-  const hasContent = label || description || icon;
+    return (
+      <ChakraRadioCard.Item {...props}>
+        <ChakraRadioCard.ItemHiddenInput ref={ref} {...inputProps} />
+        <ChakraRadioCard.ItemControl>{children}</ChakraRadioCard.ItemControl>
+      </ChakraRadioCard.Item>
+    );
+  },
+);
 
-  return (
-    <ChakraRadioCard.Item {...props}>
-      <ChakraRadioCard.ItemHiddenInput ref={ref} {...inputProps} />
-      <ChakraRadioCard.ItemControl>
-        {children}
-        {/* {hasContent && (
-          <>
-            {icon}
-            {label && (
-              <ChakraRadioCard.ItemText>{label}</ChakraRadioCard.ItemText>
-            )}
-            {description && (
-              <ChakraRadioCard.ItemDescription>
-                {description}
-              </ChakraRadioCard.ItemDescription>
-            )}
-          </>
-        )} */}
-      </ChakraRadioCard.ItemControl>
-      {addon && <ChakraRadioCard.ItemAddon>{addon}</ChakraRadioCard.ItemAddon>}
-    </ChakraRadioCard.Item>
-  );
-});
-
-/* type RadioCardRootProps = RadioCardVariantProps &
+type RadioCardRootProps = RadioCardVariantProps &
   Exclude<ChakraRadioCard.RootProps, "variant"> & {
     children: React.ReactNode;
     variant?: "core" | "floating";
-  }; */
+    gap?: string | number;
+    direction?: "row" | "column";
+    display?: string;
+  };
 
-export const RadioCardGroup = ChakraRadioCard.Root;
+export const RadioCardGroup = forwardRef<HTMLDivElement, RadioCardRootProps>(
+  (props, ref) => {
+    const {
+      children,
+      variant = "core",
+      gap = 2,
+      direction = "column",
+      display = "flex",
+      ...rest
+    } = props;
+    const recipe = useSlotRecipe({ key: "radio-card" });
+    const styles = recipe({ variant });
+
+    return (
+      <ChakraRadioCard.Root
+        ref={ref}
+        variant={variant}
+        css={styles}
+        display={display}
+        gap={gap}
+        flexDirection={direction}
+        {...rest}
+      >
+        {children}
+      </ChakraRadioCard.Root>
+    );
+  },
+);
+
 export const RadioCardLabel = ChakraRadioCard.Label;

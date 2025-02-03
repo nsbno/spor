@@ -4,79 +4,21 @@ import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const radioSlotRecipe = defineSlotRecipe({
-  slots: ["root", "item", "label", "itemText","itemDescription", "itemControl", "itemIndicator", "itemAddon", "itemContent"],
+  slots: ["container", "label", "control"],
   className: "spor-radio",
   base: {
-    root: {
-      overflow: "hidden",
-      fontSize: "inherit",
-      display: "block",
-      cursor: "pointer",
-      borderRadius: "sm",
-      transitionProperty: "common",
-      transitionDuration: "fast",
-
-      _disabled: {
-        pointerEvents: "none",
-        ...coreBackground("disabled"),
-        ...coreBorder("disabled"),
-        ...coreText("disabled"),
+    container: {
+      _hover: {
+        backgroundColor: "inherit",
+        borderColor: "text",
+        color: brandBackground("hover").backgroundColor,
       },
     },
     label: {
       userSelect: "none",
       _disabled: { opacity: 0.4 },
     },
-    
-  },
-  variants: {
-    variant: {
-      core: {
-        item: {
-          width: "1rem",
-          height: "1rem",
-          backgroundColor: "inherit",
-          border: "2px solid",
-          borderColor: coreBorder("default").outlineColor,
-          borderRadius: "50%",
-          ...focusVisibleStyles(),
-          _disabled: {
-            ...coreBackground("disabled"),
-            ...coreBorder("disabled"),
-            ...coreText("disabled"),
-          },
-          _checked: {
-            color: "brand.surface.default",
-          }
-        }
-      },
-      floating: {
-        item: {
-          width: "1rem",
-          height: "1rem",
-          backgroundColor: "inherit",
-          border: "2px solid",
-          borderColor: coreBorder("default").outlineColor,
-          borderRadius: "50%",
-          ...focusVisibleStyles(),
-          _disabled: {
-            ...coreBackground("disabled"),
-            ...coreBorder("disabled"),
-            ...coreText("disabled"),
-          },
-          _checked: {
-            color: "brand.surface.default",
-          }
-        }
-      }
-    }
-  }
-});
-
-
-/* 
-
-item: {
+    control: {
       width: "1rem",
       height: "1rem",
       backgroundColor: "inherit",
@@ -109,5 +51,5 @@ item: {
         },
       },
     },
-    
-    */
+  },
+});

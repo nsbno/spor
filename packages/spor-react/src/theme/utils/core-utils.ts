@@ -34,7 +34,7 @@ export function coreBorder(state: BorderState) {
     case "hover":
       return {
         outline: "2px solid",
-        outlineColor: "core.outline.hover",
+        outlineColor: "core.outline",
       };
     case "focus": {
       return focusVisibleStyles()._focusVisible;

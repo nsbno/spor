@@ -6,6 +6,16 @@ Describe the background for this task, why it emerged and why it must be solved.
 
 Describe what has been done.
 
+**Delete this checklist if you are not working on Chakra 3/Spor 12**
+
+## Chakra update checklist
+
+- [ ] Updated Sanity documentation in v2 dataset (English, links, component props and content)
+- [ ] Updated documentation in the component file
+- [ ] Update green-beans-check.md with any major changes
+- [ ] Add changeset
+- [ ] Double check design in Figma
+
 ## UU checks
 
 - [ ] It is possible to use the keyboard to reach your changes

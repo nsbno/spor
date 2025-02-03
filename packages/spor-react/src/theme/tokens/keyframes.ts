@@ -252,9 +252,4 @@ export const keyframes = {
       scale: "0.95",
     },
   },
-  "dash-check": {
-    to: {
-      strokeDashoffset: "0",
-    },
-  },
 };

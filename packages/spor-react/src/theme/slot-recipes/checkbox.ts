@@ -30,19 +30,9 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       marginTop: -1,
       transform: "scale(1)",
       opacity: 0,
-      "& polyline": {
-        fill: "none",
-        transformOrigin: "50% 50%",
-        strokeWidth: "3px",
-        strokeDasharray: "22.771367900227325",
-        stroke: "currentcolor",
-      },
       _checked: {
         opacity: 1,
         transition: "opacity 300ms cubic-bezier(0.65, 0.25, 0.56, 0.96)",
-        "& polyline": {
-          animation: "dash-check",
-        },
       },
     },
     control: {

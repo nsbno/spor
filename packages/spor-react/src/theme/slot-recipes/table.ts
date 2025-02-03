@@ -1,6 +1,7 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { tableAnatomy } from "./anatomy";
 import { coreText } from "../utils/core-utils";
+import { outlineBorder } from "../utils/outline-utils";
 
 const numericStyles = {
   "&[data-is-numeric=true]": {
@@ -28,14 +29,14 @@ export const tableSlotRecipe = defineSlotRecipe({
       fontWeight: "bold",
       textAlign: "start",
       borderBottom: "sm",
-      borderColor: "blackAlpha.200",
+      borderColor: "outline.disabled",
       ...numericStyles,
       paddingX: 1.5,
       paddingY: 1,
     },
     row: {
       borderBottom: "sm",
-      borderColor: "blackAlpha.200",
+      borderColor: "outline.disabled",
       ...numericStyles,
     },
     cell: {
@@ -103,18 +104,18 @@ export const tableSlotRecipe = defineSlotRecipe({
     },
     variant: {
       line: {
+        columnHeader: {
+          borderLeft: "none",
+          borderBottom: "sm",
+          borderColor: "outline.disabled",
+        },
         cell: {
           borderBottom: "sm",
-          borderColor: "blackAlpha.200",
+          borderColor: "outline.disabled",
           ...numericStyles,
           _first: {
             borderLeft: "none",
           },
-        },
-        row: {
-          borderBottom: "sm",
-          borderColor: "blackAlpha.200",
-          ...numericStyles,
         },
       },
 
@@ -122,23 +123,27 @@ export const tableSlotRecipe = defineSlotRecipe({
         table: {
           borderRadius: "md",
           overflow: "hidden",
+          border: "sm",
+          borderColor: "outline.disabled",
         },
         cell: {
           borderLeft: "sm",
-          borderColor: "blackAlpha.200",
+          borderColor: "outline.disabled",
           ...numericStyles,
           _first: {
             borderLeft: "none",
           },
         },
         header: {
-          backgroundColor: "mint",
+          backgroundColor: "bg.tertiary",
           border: "none",
         },
         columnHeader: {
+          borderBottom: "sm",
           borderLeft: "sm",
-          bordeLeftColor: "blackAlpha.10",
-          borderColor: "blackAlpha.200",
+          borderLeftColor: "outline.disabled",
+          borderColor: "outline.disabled",
+          ...outlineBorder("default"),
           ...numericStyles,
           _first: {
             borderLeft: "none",
@@ -146,11 +151,13 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
         row: {
           ...numericStyles,
+          borderBottom: "sm",
+          borderColor: "outline.disabled",
           _last: {
             borderBottom: "none",
           },
           _hover: {
-            backgroundColor: "grey.50",
+            backgroundColor: "bg.secondary",
           },
         },
       },

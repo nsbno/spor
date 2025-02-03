@@ -2,38 +2,46 @@ import { coreBackground, coreText } from "../utils/core-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
+import { checkboxAnatomy } from "./anatomy";
 
 export const checkboxSlotRecipe = defineSlotRecipe({
-  slots: ["control", "label", "root", "icon"],
   className: "spor-checkbox",
+  slots: checkboxAnatomy.keys(),
   base: {
     root: {
+      display: "flex",
+      gap: 1.5,
       _hover: {
-        ...coreBackground("hover"),
-        borderColor: brandBackground("hover").backgroundColor,
-      },
-      _invalid: {
-        backgroundColor: "white",
-        borderColor: "outline.error",
-      },
-      _checked: {
-        borderColor: "outline.error",
-        backgroundColor: "outline.error",
+        "& > input:enabled:not([aria-invalid]) + .spor-checkbox__control": {
+          ...coreBackground("hover"),
+          borderColor: brandBackground("hover").backgroundColor,
+        },
+        "& > input:enabled:checked:not([aria-invalid]) + .spor-checkbox__control":
+          {
+            ...brandBackground("hover"),
+            borderColor: brandBackground("hover").backgroundColor,
+          },
       },
     },
-    icon: {
-      fontSize: "1em",
-      transitionProperty: "transform",
-      transitionDuration: "normal",
-      strokeWidth: "1.5px !important",
+    indicator: {
+      width: "100%",
+      height: "100%",
+      borderColor: "white",
+      marginTop: -1,
+      transform: "scale(1)",
+      opacity: 0,
+      _checked: {
+        opacity: 1,
+        transition: "opacity 300ms cubic-bezier(0.65, 0.25, 0.56, 0.96)",
+      },
     },
     control: {
       width: 4,
       height: 4,
       transitionProperty: "background, border-color",
-      transitionDuration: "normal",
+      transitionDuration: "moderate",
       border: "2px solid",
-      borderColor: "base.outline.default",
+      borderColor: "core.outline",
       borderRadius: "xs",
       ...coreBackground("default"),
       ...focusVisibleStyles(),
@@ -54,14 +62,13 @@ export const checkboxSlotRecipe = defineSlotRecipe({
           borderColor: "brightRed",
         },
       },
-
       _disabled: {
         ...coreBackground("disabled"),
         borderColor: coreText("disabled").color,
       },
       _invalid: {
         ...coreBackground("default"),
-        borderColor: "brightRed",
+        borderColor: "outline.error",
       },
     },
     label: {

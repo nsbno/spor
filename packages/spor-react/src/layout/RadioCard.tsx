@@ -12,14 +12,14 @@ import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
  *
  * @example
  * ```tsx
- * <RadioCardRoot defaultValue="economy">
+ * <RadioCardGroup defaultValue="economy">
  *   <RadioCardLabel>Choose your class</RadioCardLabel>
- *   <Stack direction="row" align="stretch">
- *      <RadioCardItem value="economy" label="Economy" />
- *      <RadioCardItem value="business" label="Business" />
- *      <RadioCardItem value="first-class" label="First Class" />
+ *   <Stack direction="row">
+ *      <RadioCard value="economy" label="Economy" />
+ *      <RadioCard value="business" label="Business" />
+ *      <RadioCard value="first-class" label="First Class" />
  *   </Stack>
- * </RadioCardRoot>
+ * </RadioCardGroup>
  * ```
  *
  *
@@ -65,6 +65,7 @@ export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
 type RadioCardRootProps = RadioCardVariantProps &
   Exclude<ChakraRadioCard.RootProps, "variant"> & {
     children: React.ReactNode;
+    /** "core" | "floating" - defaults to core */
     variant?: "core" | "floating";
     gap?: string | number;
     direction?: "row" | "column";

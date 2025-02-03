@@ -38,7 +38,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
   const { variant, size, colorPalette, children, ...rest } = props;
 
   const recipe = useSlotRecipe({ recipe: tableSlotRecipe });
-  const styles = recipe({ variant, colorPalette, size });
+  const styles = recipe({ variant, size });
   return (
     <Box {...getStyleProps(props)}>
       <Box overflowX="auto" role="region">

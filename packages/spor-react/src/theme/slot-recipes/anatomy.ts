@@ -24,6 +24,13 @@ export const fieldAnatomy = createAnatomy("field").parts(
   "errorText",
 );
 
+export const paginationAnatomy = createAnatomy("pagination").parts(
+    "listItem",
+    "link",
+    "activeButton",
+    "disabled",
+    "icon",
+);
 export const checkboxAnatomy = createAnatomy("checkbox").parts(
   "root",
   "control",
@@ -34,10 +41,4 @@ export const checkboxAnatomy = createAnatomy("checkbox").parts(
   "content",
 );
 
-export const paginationAnatomy = createAnatomy("pagination").parts(
-    "listItem",
-    "link",
-    "activeButton",
-    "disabled",
-    "icon",
-);
+

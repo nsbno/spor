@@ -1,6 +1,5 @@
 import { defineRecipe } from "@chakra-ui/react";
-import { brandText, brandTextBackground } from "../utils/brand-utils";
-import { coreBorder, coreText } from "../utils/core-utils";
+import { coreText } from "../utils/core-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const linkRecipe = defineRecipe({
@@ -47,11 +46,9 @@ export const linkRecipe = defineRecipe({
       primary: {
         ...coreText("default"),
         _hover: {
-          ...brandText("hover"),
-          ...brandTextBackground("hover"),
+          color: "text.default",
           _active: {
-            ...brandText("active"),
-            ...brandTextBackground("active"),
+            color: "text.disabled",
           },
         },
       },
@@ -59,10 +56,9 @@ export const linkRecipe = defineRecipe({
         ...coreText("default"),
         padding: "2px",
         _hover: {
-          ...coreBorder("hover"),
-          outlineWidth: "1px",
+          color: "text.highlight",
           _active: {
-            backgroundColor: "mint",
+            color: "text.disabled",
           },
         },
       },

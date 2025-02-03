@@ -53,10 +53,10 @@ export const linkRecipe = defineRecipe({
         },
       },
       secondary: {
-        ...coreText("default"),
+        ...coreText("highlight"),
         padding: "2px",
         _hover: {
-          color: "text.highlight",
+          ...coreText("highlight"),
           _active: {
             color: "text.disabled",
           },

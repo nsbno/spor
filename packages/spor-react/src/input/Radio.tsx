@@ -32,7 +32,7 @@ export type RadioProps = BoxProps &
  *   <Radio value="first-class">First Class</Radio>
  * </RadioGroup>
  */
-export const RadioCard = forwardRef<HTMLInputElement, RadioProps>(
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (props, ref) => {
     const { children, inputProps, rootRef, ...rest } = props;
 

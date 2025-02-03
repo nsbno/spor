@@ -40,11 +40,11 @@ type RadioCardItemProps = Exclude<
     variant?: "core" | "floating";
   };
 
-export const RadioCardItem = React.forwardRef<
+export const RadioCard = React.forwardRef<
   HTMLInputElement,
   RadioCardItemProps
 >(function RadioCardItem(props, ref) {
-  const { inputProps, label, description, addon, icon } = props;
+  const { inputProps, label, description, addon, icon, children } = props;
 
   const hasContent = label || description || icon;
 
@@ -52,7 +52,8 @@ export const RadioCardItem = React.forwardRef<
     <ChakraRadioCard.Item {...props}>
       <ChakraRadioCard.ItemHiddenInput ref={ref} {...inputProps} />
       <ChakraRadioCard.ItemControl>
-        {hasContent && (
+        {children}
+        {/* {hasContent && (
           <>
             {icon}
             {label && (
@@ -64,24 +65,18 @@ export const RadioCardItem = React.forwardRef<
               </ChakraRadioCard.ItemDescription>
             )}
           </>
-        )}
+        )} */}
       </ChakraRadioCard.ItemControl>
       {addon && <ChakraRadioCard.ItemAddon>{addon}</ChakraRadioCard.ItemAddon>}
     </ChakraRadioCard.Item>
   );
 });
 
-type RadioCardRootProps = RadioCardVariantProps &
+/* type RadioCardRootProps = RadioCardVariantProps &
   Exclude<ChakraRadioCard.RootProps, "variant"> & {
     children: React.ReactNode;
     variant?: "core" | "floating";
-  };
+  }; */
 
-export const RadioCard = forwardRef<HTMLDivElement, RadioCardRootProps>(
-  (props, ref) => {
-    const { variant } = props;
-    return <ChakraRadioCard.Root ref={ref} {...props} variant={variant} />;
-  },
-);
-
+export const RadioCardGroup = ChakraRadioCard.Root;
 export const RadioCardLabel = ChakraRadioCard.Label;

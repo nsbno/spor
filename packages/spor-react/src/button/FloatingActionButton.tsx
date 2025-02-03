@@ -67,7 +67,6 @@ export const FloatingActionButton = forwardRef<
     const recipe = useRecipe({ recipe: floatingActionButtonSlotRecipe });
     const style = recipe({
       variant,
-      isTextVisible,
       placement,
     });
 

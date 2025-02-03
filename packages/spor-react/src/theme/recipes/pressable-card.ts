@@ -31,10 +31,10 @@ export const pressableCardRecipe = defineRecipe({
         ...coreBorder("default"),
         _hover: {
           ...coreBorder("hover"),
-        },
-        _active: {
-          ...coreBackground("active"),
-          ...coreBorder("active"),
+          _active: {
+            ...coreBackground("active"),
+            ...coreBorder("active"),
+          },
         },
       },
       accent: {
@@ -44,10 +44,10 @@ export const pressableCardRecipe = defineRecipe({
         _hover: {
           ...accentBackground("hover"),
           boxShadow: "md",
-        },
-        _active: {
-          ...accentBackground("active"),
-          boxShadow: "none",
+          _active: {
+            ...accentBackground("active"),
+            boxShadow: "none",
+          },
         },
       },
       floating: {
@@ -58,16 +58,13 @@ export const pressableCardRecipe = defineRecipe({
           ...floatingBackground("hover"),
           ...floatingBorder("hover"),
           boxShadow: "md",
-        },
-        _active: {
-          ...floatingBorder("default"),
-          ...floatingBackground("active"),
-          boxShadow: "none",
+          _active: {
+            ...floatingBorder("default"),
+            ...floatingBackground("active"),
+            boxShadow: "none",
+          },
         },
       },
     },
-  },
-  defaultVariants: {
-    variant: "core",
   },
 });

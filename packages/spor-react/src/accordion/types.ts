@@ -23,28 +23,37 @@ export type AccordionProps = Exclude<
      * - `floating` renders a version with a drop shadow
      */
     variant?: "ghost" | "core" | "floating";
+    /* Gap between accordions */
     gap?: string | number;
   };
 
-export type AccordionItemTriggerProps = ChakraAccordion.ItemTriggerProps & {
-  indicatorPlacement?: "start" | "end";
-  title?: string;
-  headingLevel?: HeadingLevel;
-  leftIcon?: React.ReactNode;
+export type HeadingLevel = {
+  /** Heading level of the trigger button */
+  headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
 };
 
-export type HeadingLevel = "h2" | "h3" | "h4" | "h5" | "h6";
+export type AccordionItemTriggerProps = Omit<
+  ChakraAccordion.ItemTriggerProps,
+  "indicatorElement"
+> &
+  HeadingLevel & {
+    /** Icon to be displayed on the left of the trigger button. Use 24px outline. */
+    startElement?: React.ReactNode;
+  };
 
 export type AccordionItemContentProps = ChakraAccordion.ItemContentProps & {
-  headingLevel?: HeadingLevel;
-  title?: string;
-  leftIcon?: React.ReactNode;
   children?: React.ReactNode;
 };
 
 export type ExpandableProps = AccordionProps &
-  AccordionItemTriggerProps & {
-    title?: string;
-    value: string;
-    headingLevel?: HeadingLevel;
+  AccordionItemTriggerProps &
+  HeadingLevel & {
+    title: string;
   };
+
+export type ExpandableItemProps = HeadingLevel & {
+  value: string;
+  title: string;
+  children?: React.ReactNode;
+  startElement?: React.ReactNode;
+};

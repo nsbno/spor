@@ -57,7 +57,7 @@ export const NativeSelect = React.forwardRef<
 >(function NativeSelect(props, ref) {
   const { icon, children, ...rest } = props;
   const recipe = useSlotRecipe({ recipe: nativeSelectSlotRecipe });
-  const styles = recipe({ icon });
+  const styles = recipe({});
   return (
     <Select.Root ref={ref} {...rest} css={styles}>
       {children}

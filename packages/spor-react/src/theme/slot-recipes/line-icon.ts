@@ -88,17 +88,29 @@ export const lineIconSlotRecipe = defineSlotRecipe({
       },
       walk: {
         iconContainer: {
-          backgroundColor: "white",
-          borderWidth: 1,
-          borderStyle: "solid",
-          borderColor: "blackAlpha.200",
+          outline: "1px solid",
+          outlineColor: {
+            _light: "core.outline",
+            _dark: "transparent",
+          },
         },
         title: {
-          color: "black",
+          color: "text",
         },
         icon: {
-          color: "black",
+          color: "linjetag.walkLight",
           "[aria-disabled=true] &": {
+            color: "osloGrey",
+          },
+        },
+        _disabled: {
+          icon: {
+            color: "text",
+          },
+          title: {
+            color: "osloGrey",
+          },
+          description: {
             color: "osloGrey",
           },
         },

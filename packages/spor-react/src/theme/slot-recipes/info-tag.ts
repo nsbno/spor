@@ -1,6 +1,7 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { travelTagSlotRecipe } from "./travel-tag";
 import { infoTagAnatomy } from "./anatomy";
+import { coreBorder } from "../utils/core-utils";
 
 export const infoTagSlotRecipe = defineSlotRecipe({
   slots: infoTagAnatomy.keys(),
@@ -29,12 +30,6 @@ export const infoTagSlotRecipe = defineSlotRecipe({
   variants: {
     variant: {
       walk: {
-        iconContainer: {
-          backgroundColor: "white",
-          borderWidth: 1,
-          borderStyle: "solid",
-          borderColor: "blackAlpha.200",
-        },
         icon: {
           color: "text",
           "[aria-disabled=true] &": {

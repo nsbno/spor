@@ -8,10 +8,24 @@ export const fieldAnatomy = createAnatomy("field").parts(
   "errorText",
 );
 
-export const drawerAnatomy = createAnatomy("drawer").parts(
+export const dialogAnatomy = createAnatomy("dialog").parts(
   "header",
   "body",
   "footer",
   "backdrop",
   "positioner",
+  "content",
+  "title",
+  "description",
+);
+
+export const drawerAnatomy = createAnatomy("drawer").parts(
+  "header",
+  "body",
+  "backdrop",
+  "positioner",
+  "content",
+  "footer",
+  "title",
+  "description",
 );

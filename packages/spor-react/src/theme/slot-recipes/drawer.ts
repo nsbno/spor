@@ -21,7 +21,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
       },
       _closed: {
         animationName: "fade-out",
-        animationDuration: "moderate",
+        animationDuration: "slow",
       },
     },
     positioner: {
@@ -36,6 +36,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
     },
     content: {
       display: "flex",
+      ...bg("default"),
       flexDirection: "column",
       position: "relative",
       width: "100%",
@@ -195,28 +196,6 @@ export const drawerSlotRecipe = defineSlotRecipe({
     },
   },
 });
-
-/**
- * Since the `maxWidth` prop references theme.sizes internally,
- * we can leverage that to size our modals.
- */
-function getSize(value: string) {
-  if (value === "full") {
-    return {
-      dialog: {
-        maxWidth: "100vw",
-        minHeight: "100vh",
-        "@supports(min-height: -webkit-fill-available)": {
-          minHeight: "-webkit-fill-available",
-        },
-        marginY: 0,
-      },
-    };
-  }
-  return {
-    dialog: { maxWidth: value },
-  };
-}
 
 /* overlay: {
   backgroundColor: "blackAlpha.600",

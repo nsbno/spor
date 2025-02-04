@@ -4,6 +4,7 @@ export * from "./Checkbox";
 export * from "./CheckboxGroup";
 export * from "./ChoiceChip";
 export * from "./Combobox";
+export * from "./Fieldset";
 export * from "./Input";
 export * from "./ListBox";
 export * from "./NativeSelect";

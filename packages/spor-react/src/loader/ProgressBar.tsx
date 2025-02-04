@@ -5,6 +5,7 @@ import {
   ProgressRoot,
   ProgressValueText,
   RecipeVariantProps,
+  ProgressRootProps,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { progressBarRecipe } from "../theme/slot-recipes/progress-bar";
@@ -15,12 +16,9 @@ import { createTexts } from "../i18n";
 type ProgressBarVariants = RecipeVariantProps<typeof progressBarRecipe>;
 
 export type ProgressBarProps = BoxProps &
+  ProgressRootProps &
   PropsWithChildren<ProgressBarVariants> & {
     children: React.ReactNode;
-    /** The percentage of progress made.
-     *
-     * The value must be between 0 and 100 */
-    value: number;
     /** The height of the progress bar.
      * Defaults to .5rem
      **/
@@ -108,7 +106,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
         }}
         {...rest}
       >
-        {label && <ProgressLabel>{t(texts.label(value).en)}</ProgressLabel>}
+        {/* {label && <ProgressLabel>{t(texts.label(value).en)}</ProgressLabel>} */}
         <ProgressBar
           children={undefined}
           aria-label={""}

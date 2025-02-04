@@ -1,5 +1,5 @@
-import { json } from "@remix-run/node";
-import { useLoaderData, useNavigate } from "@remix-run/react";
+import { data } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import { SanityAsset } from "@sanity/image-url/lib/types/types";
 import {
   DownloadOutline18Icon,
@@ -11,19 +11,18 @@ import {
   Box,
   Brand,
   Button,
-  StaticCard,
+  Divider,
   Flex,
   Heading,
   IconButton,
   Image,
+  NativeSelect,
   SearchInput,
   SimpleGrid,
+  StaticCard,
   Text,
   Tooltip,
-  NativeSelectField,
-  NativeSelectRoot,
-  Separator,
-  useColorMode,
+  useColorModePreference,
 } from "@vygruppen/spor-react";
 import { useMemo, useState } from "react";
 import { PortableText } from "~/features/portable-text/PortableText";
@@ -32,7 +31,7 @@ import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";
 import { slugify } from "~/utils/stringUtils";
 
-type LoaderData = {
+type SanityResponse = {
   illustrations: {
     _id: string;
     title: string;
@@ -87,17 +86,18 @@ export const loader = async () => {
     }
   }
 }`;
-  const { illustrations, article } = await client.fetch(query);
-  return json({ illustrations, article } as LoaderData);
+  const { illustrations, article } = (await client.fetch(
+    query,
+  )) as SanityResponse;
+  return data({ illustrations, article });
 };
 
 export default function IllustrationLibraryPage() {
-  const { illustrations, article } = useLoaderData<typeof loader>();
+  const { illustrations, article } = useLoaderData<typeof loader>().data;
   const [searchValue, setSearchValue] = useState("");
-  const { colorMode } = useColorMode()
+  const colorMode = useColorModePreference();
   const [size, setSize] = useState("all");
   const brand = useBrand();
-  const navigate = useNavigate();
 
   const matchingIllustrations = useMemo(() => {
     const normalizedSearchValue = searchValue.toLowerCase().trim();
@@ -133,13 +133,13 @@ export default function IllustrationLibraryPage() {
         size="lg"
         width="fit-content"
         as="a"
-        /* download="illustrations.zip" */
-        onClick={() => navigate("/resources/illustration-library/all")}
+        download="illustrations.zip"
+        href="/resources/illustration-library/all"
         leftIcon={<DownloadOutline24Icon />}
       >
         Download all illustrations
       </Button>
-      <Separator marginY={3} />
+      <Divider marginY={3} />
       <Flex marginBottom={5} gap={2}>
         <Box flex={1}>
           <SearchInput
@@ -150,25 +150,23 @@ export default function IllustrationLibraryPage() {
           />
         </Box>
         <Box>
-          <NativeSelectRoot>
-            <NativeSelectField
-              placeholder="Size"
-              value={size}
-              onChange={(e: any) => setSize(e.target.value)}
-              width="fit-content"
-            >
-              <option value="all">All</option>
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-            </NativeSelectField>
-          </NativeSelectRoot>
+          <NativeSelect
+            label="Size"
+            value={size}
+            onChange={(e: any) => setSize(e.target.value)}
+            width="fit-content"
+          >
+            <option value="all">All</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </NativeSelect>
         </Box>
       </Flex>
       <SimpleGrid columns={[1, 2, 3]} gap={2}>
         {matchingIllustrations.map((illustration) => (
           <StaticCard
-            colorPalette="white"
+            colorScheme="white"
             key={illustration._id}
             padding={2}
             border="1px solid"
@@ -177,7 +175,11 @@ export default function IllustrationLibraryPage() {
             <Flex flexDirection="column" height="100%">
               <Flex gap={1} alignItems="center">
                 <Text variant="sm">{illustration.title}</Text>
-                <Tooltip placement="top" content={illustration.description}>
+                <Tooltip
+                  placement="top"
+                  arrowPadding={2}
+                  content={illustration.description}
+                >
                   <InformationOutline18Icon aria-label="Informasjon" />
                 </Tooltip>
               </Flex>
@@ -204,17 +206,15 @@ export default function IllustrationLibraryPage() {
                   size="sm"
                   icon={<DownloadOutline18Icon />}
                   as="a"
-                  /* download={`${slugify(illustration.title)}.svg`} */
-                  onClick={() =>
-                    urlBuilder
-                      .image(
-                        colorMode === "light"
-                          ? illustration.imageLightBackground
-                          : illustration.imageDarkBackground,
-                      )
-                      .forceDownload(`${slugify(illustration.title)}.svg`)
-                      .url()
-                  }
+                  download={`${slugify(illustration.title)}.svg`}
+                  href={urlBuilder
+                    .image(
+                      colorMode === "light"
+                        ? illustration.imageLightBackground
+                        : illustration.imageDarkBackground,
+                    )
+                    .forceDownload(`${slugify(illustration.title)}.svg`)
+                    .url()}
                   aria-label="Download SVG"
                   title="Download SVG"
                 />

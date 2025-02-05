@@ -11,6 +11,7 @@ import {
   defaultSystem,
 } from "@chakra-ui/react";
 import { ColorModeProvider } from "../color-mode";
+import { ThemeProvider, useThemeSwitcher } from "./ThemeProvider";
 
 type SporProviderProps = Exclude<ChakraProviderProps, "value"> & {
   language?: Language;
@@ -45,6 +46,7 @@ type SporProviderProps = Exclude<ChakraProviderProps, "value"> & {
  * ```tsx
  * import { extendTheme, SporProvider } from "@vygruppen/spor-react";
 import { theme } from '../../../../apps/docs/app/features/portable-text/code-block/codeTheme';
+import { default } from '../../../spor-design-tokens/scripts/formatters/typescript/es-module';
  * const theme = extendTheme({
  *  colors: { myApp: { primary: "tomato" } }
  * });
@@ -63,18 +65,20 @@ export const SporProvider = ({
   children,
   ...props
 }: SporProviderProps) => {
-  const brandCustomizations = brandTheme[brand] ?? {};
+  const { switchTheme } = useThemeSwitcher();
 
-  const extendedTheme = deepmerge(theme, brandCustomizations);
+  React.useEffect(() => {
+    switchTheme(brand);
+  }, [brand, switchTheme]);
 
   return (
     <LanguageProvider language={language}>
-      <ChakraProvider {...props} value={extendedTheme}>
+      <ThemeProvider initialBrand={brand}>
         <ColorModeProvider>
           <Global styles={fontFaces} />
           {children}
         </ColorModeProvider>
-      </ChakraProvider>
+      </ThemeProvider>
     </LanguageProvider>
   );
 };

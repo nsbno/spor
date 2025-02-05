@@ -1,6 +1,5 @@
-import tokens from "@vygruppen/spor-design-tokens";
-import { vyDigital } from "./semantic-tokens/vyDigital";
-import { cargonet } from "./semantic-tokens/cargonet";
+import vyDigitalJson from "@vygruppen/spor-design-tokens/tokens/color/vy-digital.json";
+import cargonetJson from "@vygruppen/spor-design-tokens/tokens/color/cargonet.json";
 
 export enum Brand {
   VyDigital = "VyDigital",
@@ -9,9 +8,22 @@ export enum Brand {
 }
 
 export const brandTheme = {
-  [Brand.VyDigital]: {},
-  [Brand.VyUtvikling]: vyDigital,
-  [Brand.CargoNet]: cargonet,
+  [Brand.VyDigital]: vyDigitalJson.color.vyDigital,
+  [Brand.VyUtvikling]: {
+    colors: {
+      bg: {
+        default: {
+          dark: "darkGrey",
+        },
+      },
+      surface: {
+        default: {
+          dark: "darkGrey",
+        },
+      },
+    },
+  },
+  [Brand.CargoNet]: cargonetJson.color.cargonet,
 };
 
 export { fontFaces } from "./font-faces";

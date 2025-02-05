@@ -19,7 +19,6 @@ type DrawerContentProps = ChakraDrawer.ContentProps &
     children: React.ReactNode;
     portalled?: boolean;
     portalRef?: React.RefObject<HTMLElement>;
-    offset?: number;
     placement?: "bottom" | "top" | "end" | "start";
     rounded?: "sm" | "md" | "lg" | "xl" | "2xl";
     customVariant?: "default" | "full"; // default is the default variant, full is the full screen variant
@@ -36,21 +35,23 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
       children,
       portalled = true,
       portalRef,
-      offset,
       rounded = "md",
       customVariant = "default",
+      placement,
       ...rest
     } = props;
     return (
       <Portal disabled={!portalled} container={portalRef}>
-        <ChakraDrawer.Positioner padding={offset}>
+        <ChakraDrawer.Positioner>
           <ChakraDrawer.Content
             ref={ref}
             {...rest}
             asChild={false}
             rounded={customVariant === "default" ? rounded : "none"}
             marginX={customVariant === "default" ? "auto" : "0"}
-            maxWidth={customVariant === "default" ? "40rem" : "100%"}
+            maxWidth={
+              customVariant === "default" ? ["100%", null, "40rem"] : "100%"
+            }
             borderBottomRadius={0}
             height={customVariant === "default" ? "auto" : "100vh"}
           >
@@ -124,6 +125,7 @@ export const DrawerRoot = forwardRef<HTMLDivElement, DrawerRootProps>(
     const { children, placement = "bottom", ...rest } = props;
     return (
       <ChakraDrawer.Root {...rest} placement={placement}>
+        <DrawerBackdrop />
         {children}
       </ChakraDrawer.Root>
     );
@@ -141,9 +143,9 @@ export const DrawerActionTrigger = ChakraDrawer.ActionTrigger;
 
 const texts = createTexts({
   back: {
-    en: "Go back",
+    en: "Back",
     nb: "Tilbake",
     nn: "Tilbake",
-    sv: "Tilbaka",
+    sv: "Tillbaka",
   },
 });

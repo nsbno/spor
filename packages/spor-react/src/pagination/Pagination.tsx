@@ -4,6 +4,7 @@ import type { ButtonProps, TextProps } from "@chakra-ui/react"
 import {
   Button,
   Pagination as ChakraPagination,
+  HStack,
   IconButton,
   Text,
   createContext,
@@ -34,6 +35,19 @@ export interface PaginationProps
   getHref?: (page: number) => string
 }
 
+/**
+ * A pagination component is used to navigate between multiple pages.
+ *
+ * You specify the total amount of pages and the currently selected page.
+ *
+ * ```tsx
+ * <Pagination
+ *   totalPages={10}
+ *   selectedPage={3}
+ *   onPageChange={handlePageChange}
+ * />
+ * ```
+ **/
 
 export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
   function Pagination(props, ref) {
@@ -46,8 +60,14 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
           ref={ref}
           type={getHref ? "link" : "button"}
           {...rest}
-        />
-      </RootPropsProvider>
+        >
+           <HStack>
+              <PaginationPrevTrigger />
+              <PaginationItems />
+              <PaginationNextTrigger />
+             </HStack>
+         </ChakraPagination.Root>
+  </RootPropsProvider>
     )
   }
 )
@@ -62,9 +82,9 @@ export const PaginationEllipsis = React.forwardRef<
 
   return (
     <ChakraPagination.Ellipsis ref={ref} {...props} asChild>
-      <Button as="span" css={styles.disabled} size={size}>
+      <span  >
         <HiMiniEllipsisHorizontal />
-      </Button>
+      </span>
     </ChakraPagination.Ellipsis>
   )
 })
@@ -73,7 +93,7 @@ export const PaginationItem = React.forwardRef<
   HTMLButtonElement,
   ChakraPagination.ItemProps
 >(function PaginationItem(props, ref) {
-  const { page } = usePaginationContext()
+  const { page, totalPages } = usePaginationContext()
   const { size } = useRootProps()
   const recipe = useSlotRecipe({ key: "pagination" })
   const styles = recipe()
@@ -82,7 +102,7 @@ export const PaginationItem = React.forwardRef<
     <ChakraPagination.Item ref={ref} {...props} asChild>
       <Button
         css={props.value === page ? styles.activeButton : styles.link}
-        size={size}
+        size={size} aria-label={`Side ${props.value} av ${totalPages}`}
       >
         {props.value}
       </Button>
@@ -106,7 +126,7 @@ export const PaginationPrevTrigger = React.forwardRef<
         size={size}
         disabled={page <= 1}
       >
-        <HiChevronLeft />
+        <HiChevronLeft style={{ fontSize: "0.8em" }}/>
       </IconButton>
     </ChakraPagination.PrevTrigger>
   )
@@ -128,7 +148,7 @@ export const PaginationNextTrigger = React.forwardRef<
         size={size}
         disabled={page >= totalPages}
       >
-        <HiChevronRight />
+        <HiChevronRight style={{ fontSize: "0.8em" }}/>
       </IconButton>
     </ChakraPagination.NextTrigger>
   )

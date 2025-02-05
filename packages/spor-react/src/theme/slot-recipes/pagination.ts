@@ -15,9 +15,8 @@ export const paginationSlotRecipe = defineSlotRecipe({
       alignItems: "center",
       justifyContent: "center",
       borderRadius: 50,
-      fontSize: "xs",
-      padding: "3px",
-      ...coreBackground("default"),
+      padding: "2px",
+       ...coreBackground("default"),
       ...coreText("default"),
       _hover: {
         ...ghostBackground("hover"),
@@ -39,8 +38,8 @@ export const paginationSlotRecipe = defineSlotRecipe({
       justifyContent: "center",
       width: "19px",
       height: "14px",
-      borderRadius: 50,
       fontSize: "xs",
+      borderRadius: 50,
       ...coreBackground("active"),
       _hover: {
         ...ghostBackground("hover"),
@@ -61,6 +60,7 @@ export const paginationSlotRecipe = defineSlotRecipe({
     },
     icon: {
       bottom: "-0.03em !important",
+      fontSize: "0.8em",
     },
   },
 });

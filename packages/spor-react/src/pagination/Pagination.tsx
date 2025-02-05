@@ -18,6 +18,7 @@ import {
   HiMiniEllipsisHorizontal,
 } from "react-icons/hi2"
 import { forwardRef } from "react"
+import { createTexts, useTranslation } from ".."
 
 
 interface ButtonVariantContext {
@@ -97,12 +98,13 @@ export const PaginationItem = React.forwardRef<
   const { size } = useRootProps()
   const recipe = useSlotRecipe({ key: "pagination" })
   const styles = recipe()
+  const { t } = useTranslation();
 
   return (
     <ChakraPagination.Item ref={ref} {...props} asChild>
       <Button
         css={props.value === page ? styles.activeButton : styles.link}
-        size={size} aria-label={`Side ${props.value} av ${totalPages}`}
+        size={size} aria-label={`${t(texts.page)} ${props.value} ${t(texts.of)} ${totalPages}`}
       >
         {props.value}
       </Button>
@@ -118,6 +120,7 @@ export const PaginationPrevTrigger = React.forwardRef<
   const { previousPage, page } = usePaginationContext()
   const recipe = useSlotRecipe({ key: "pagination" })
   const styles = recipe()
+  const { t } = useTranslation();
 
   return (
     <ChakraPagination.PrevTrigger ref={ref} asChild {...props}>
@@ -125,6 +128,7 @@ export const PaginationPrevTrigger = React.forwardRef<
         css={page <= 1 ? { visibility: "hidden" } : styles.link}
         size={size}
         disabled={page <= 1}
+        aria-label={t(texts.previousPage)}
       >
         <HiChevronLeft style={{ fontSize: "0.8em" }}/>
       </IconButton>
@@ -140,6 +144,7 @@ export const PaginationNextTrigger = React.forwardRef<
   const { page, totalPages } = usePaginationContext()
   const recipe = useSlotRecipe({ key: "pagination" })
   const styles = recipe()
+  const { t } = useTranslation();
 
   return (
     <ChakraPagination.NextTrigger ref={ref} asChild {...props}>
@@ -147,6 +152,8 @@ export const PaginationNextTrigger = React.forwardRef<
         css={page >= totalPages ? { visibility: "hidden" } : styles.link}
         size={size}
         disabled={page >= totalPages}
+        aria-label={t(texts.nextPage)}
+
       >
         <HiChevronRight style={{ fontSize: "0.8em" }}/>
       </IconButton>
@@ -195,3 +202,30 @@ export const PaginationPageText = forwardRef<HTMLDivElement, PageTextProps >(
     )
   }
 )
+
+const texts = createTexts({
+  previousPage: {
+    nb: "Forrige side",
+    nn: "Førre side",
+    en: "Previous page",
+    sv: "Föregående sida",
+  },
+  nextPage: {
+    nb: "Neste side",
+    nn: "Neste side",
+    en: "Next page",
+    sv: "Nästa sida",
+  },
+  page: {
+    nb: "Side",
+    nn: "Side",
+    en: "Page",
+    sv: "Sida",
+  },
+  of: {
+    nb: "av",
+    nn: "av",
+    en: "of",
+    sv: "av",
+  },
+});

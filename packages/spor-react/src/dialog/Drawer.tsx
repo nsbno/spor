@@ -12,6 +12,29 @@ import { CloseButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
 import { ArrowLeftFill24Icon } from "@vygruppen/spor-icon-react";
 
+/**
+ * 
+ * <DrawerRoot>
+    <DrawerTrigger onClick={() => setOpen(true)}>
+      <Button variant="primary" size="sm">
+        Open a simple drawer
+      </Button>
+    </DrawerTrigger>
+    <DrawerContent> // this accept a customVariant prop default is default, full is full screen
+      <DrawerHeader>
+        <DrawerTitle>Drawer Title</DrawerTitle>
+      </DrawerHeader>
+      <DrawerBody>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </DrawerBody>
+      <DrawerCloseTrigger />
+    </DrawerContent>
+  </DrawerRoot>
+ */
+
 type DrawerVariantProps = RecipeVariantProps<typeof drawerSlotRecipe>;
 
 type DrawerContentProps = ChakraDrawer.ContentProps &

@@ -53,53 +53,38 @@ export const tableSlotRecipe = defineSlotRecipe({
     colorPallette: {
       green: {
         root: {
-          backgroundColor: "mint",
+          backgroundColor: "brand.surface",
           color: "brand.text",
         },
         columnHeader: {
-          backgroundColor: "brand.surface",
+          backgroundColor: "text.secondary",
           color: "brand.text",
         },
         row: {
-          backgroundColor: "brand.surface",
           color: "brand.text",
           _hover: {
             backgroundColor: "brand.hover",
           },
         },
         cell: {
-          backgroundColor: "brand.surface",
           color: "brand.text",
         },
         footer: {
-          backgroundColor: "brand.surface",
           color: "brand.text",
         },
       },
       gray: {
         root: {
-          backgroundColor: "grey.50",
-          color: "brand.text",
+          backgroundColor: "surface.disabled",
         },
-        columnHeader: {
-          backgroundColor: "grey.100",
-          color: "brand.text",
-        },
+        columnHeader: { color: "brand.text.inverted" },
         row: {
-          backgroundColor: "grey.100",
-          color: "brand.text",
           _hover: {
             backgroundColor: "grey.200",
           },
         },
-        cell: {
-          backgroundColor: "grey.100",
-          color: "brand.text",
-        },
-        footer: {
-          backgroundColor: "grey.100",
-          color: "brand.text",
-        },
+        cell: { color: "brand.text.inverted" },
+        footer: { color: "brand.text.inverted" },
       },
     },
     variant: {

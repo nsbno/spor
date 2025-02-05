@@ -38,15 +38,20 @@ export interface PaginationProps
 
 /**
  * A pagination component is used to navigate between multiple pages.
- *
- * You specify the total amount of pages and the currently selected page.
- *
+ * 
+ * Count is the total number of pages.
+ * pageSize is the number of items per page.
+ * defaultPage is the default page to show.
+ * siblingCount is the number of sibling pages to show.
+ * 
  * ```tsx
  * <Pagination
- *   totalPages={10}
- *   selectedPage={3}
- *   onPageChange={handlePageChange}
- * />
+ *    count={10}
+ *     pageSize={1}
+ *     defaultPage={1}
+ *     siblingCount={2}
+ *     >
+ * </Pagination>
  * ```
  **/
 

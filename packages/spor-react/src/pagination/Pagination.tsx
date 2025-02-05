@@ -99,16 +99,12 @@ export const PaginationPrevTrigger = React.forwardRef<
   const recipe = useSlotRecipe({ key: "pagination" })
   const styles = recipe()
 
-  if (page <= 1) {
-    return null
-  }
-
   return (
     <ChakraPagination.PrevTrigger ref={ref} asChild {...props}>
       <IconButton
-        css={previousPage != null ? styles.link : styles.disabled}
+        css={page <= 1 ? { visibility: "hidden" } : styles.link}
         size={size}
-        disabled={previousPage == null}
+        disabled={page <= 1}
       >
         <HiChevronLeft />
       </IconButton>
@@ -120,36 +116,23 @@ export const PaginationNextTrigger = React.forwardRef<
   HTMLButtonElement,
   ChakraPagination.NextTriggerProps
 >(function PaginationNextTrigger(props, ref) {
-  const { size, getHref } = useRootProps()
-  const {  page, totalPages } = usePaginationContext()
+  const { size } = useRootProps()
+  const { page, totalPages } = usePaginationContext()
   const recipe = useSlotRecipe({ key: "pagination" })
   const styles = recipe()
 
-  if (page >= totalPages) {
-    return null
-  }
-/* 
-  if (getHref) {
-    return (
-      <LinkButton
-        href={nextPage != null ? getHref(nextPage) : undefined}
-        css={styles.link}
-        size={size}
-      >
-        <HiChevronRight />
-      </LinkButton>
-    )
-  } */
-
   return (
     <ChakraPagination.NextTrigger ref={ref} asChild {...props}>
-      <IconButton css={styles.link} size={size}>
+      <IconButton
+        css={page >= totalPages ? { visibility: "hidden" } : styles.link}
+        size={size}
+        disabled={page >= totalPages}
+      >
         <HiChevronRight />
       </IconButton>
     </ChakraPagination.NextTrigger>
   )
 })
-
 export const PaginationItems = (props: React.HTMLAttributes<HTMLElement>) => {
   return (
     <ChakraPagination.Context>

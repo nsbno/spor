@@ -3,7 +3,9 @@ import { installGlobals } from "@remix-run/node";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-installGlobals();
+installGlobals({
+  nativeFetch: true,
+});
 
 export default defineConfig({
   server: {
@@ -12,7 +14,14 @@ export default defineConfig({
   },
   plugins: [
     remix({
-      future: {},
+      future: {
+        v3_singleFetch: true,
+        v3_fetcherPersist: true,
+        v3_lazyRouteDiscovery: true,
+        v3_relativeSplatPath: true,
+        v3_routeConfig: true,
+        v3_throwAbortReason: true,
+      },
     }),
     tsconfigPaths(),
   ],

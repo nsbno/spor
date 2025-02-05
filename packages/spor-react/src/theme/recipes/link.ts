@@ -1,19 +1,6 @@
 import { defineRecipe } from "@chakra-ui/react";
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
-import { brandBackground, brandText } from "../utils/brand-utils";
+import { coreText } from "../utils/core-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-
-const svgStyles = () => {
-  return {
-    "& svg": {
-      display: "inline-block",
-      width: "1.125em",
-      height: "1.125em",
-      position: "relative",
-      bottom: "-0.2em",
-    },
-  };
-};
 
 export const linkRecipe = defineRecipe({
   base: {
@@ -26,11 +13,14 @@ export const linkRecipe = defineRecipe({
     backgroundPosition: "0 100%",
     backgroundRepeat: "no-repeat",
     borderRadius: "none",
-    padding: "2px",
+    paddingX: "2px",
+    paddingY: "0",
     color: "inherit",
-    display: "inline",
+    display: "inline-flex",
+    gap: "0",
     position: "relative",
     boxDecorationBreak: "clone",
+    textUnderlineOffset: "0",
 
     "&:focus, &:focus-visible, &:active, &:hover": {
       backgroundImage: "none",
@@ -41,37 +31,37 @@ export const linkRecipe = defineRecipe({
 
     ...focusVisibleStyles(),
 
-    ...svgStyles(),
-  },
-  compoundVariants: [
-    {
-      variant: "primary",
-      css: {
-        ...coreText("default"),
-      },
-      _hover: {
-        ...brandText("hover"),
-        ...brandBackground("hover"),
-      },
+    "& svg": {
+      display: "inline-block",
+      width: "1.125em",
+      height: "1.125em",
+      position: "relative",
+      bottom: "1px",
+      scale: "0.8",
+      marginRight: "-2px",
     },
-    {
-      variant: "secondary",
-      css: {
-        backgroundImage: `linear-gradient("blackAlpha.400", "blackAlpha.400")`,
+  },
+  variants: {
+    variant: {
+      primary: {
         ...coreText("default"),
-        "&:focus, &:focus-visible, &:active, &:hover": {
-          outline: "1px solid",
+        _hover: {
+          color: "text.default",
+          _active: {
+            color: "text.disabled",
+          },
         },
       },
-      ...coreBackground("default"),
-      _hover: {
-        ...coreBorder("hover"), // TODO: This is also weird
-        ...coreBackground("hover"),
-        outlineWidth: 1,
-      },
-      _active: {
-        ...coreBackground("active"),
+      secondary: {
+        ...coreText("highlight"),
+        padding: "2px",
+        _hover: {
+          ...coreText("highlight"),
+          _active: {
+            color: "text.disabled",
+          },
+        },
       },
     },
-  ],
+  },
 });

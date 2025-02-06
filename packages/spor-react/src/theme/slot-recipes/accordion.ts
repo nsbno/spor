@@ -3,31 +3,26 @@ import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
+import { accordionAnatomy } from "./anatomy";
 
 export const accordionSlotRecipe = defineSlotRecipe({
-  slots: [
-    "root",
-    "itemTrigger",
-    "item",
-    "itemBody",
-    "itemContent",
-    "itemIndicator",
-  ],
   className: "spor-accordion",
+  slots: accordionAnatomy.keys(),
   base: {
     root: {
       borderRadius: "sm",
     },
+    item: {
+      borderRadius: "sm",
+      overflowAnchor: "none",
+    },
     itemTrigger: {
-      transitionProperty:
-        "background-color, color, border-radius, box-shadow, opacity",
-      transitionDuration: "fast",
       borderRadius: "sm",
       display: "flex",
       justifyContent: "space-between",
       ...coreText("default"),
       textAlign: "left",
-      width: "100%",
+      width: "full",
       alignItems: "center",
       fontSize: ["mobile.sm", null, "desktop.sm"],
       fontFamily: "body",
@@ -36,6 +31,7 @@ export const accordionSlotRecipe = defineSlotRecipe({
       paddingX: [2, null, 3],
       paddingY: [1, null, 1.5],
       minHeight: [6, null, 7],
+      cursor: "pointer",
       ...focusVisibleStyles(),
       _disabled: {
         pointerEvents: "none",
@@ -43,14 +39,11 @@ export const accordionSlotRecipe = defineSlotRecipe({
       },
     },
     itemContent: {
-      paddingY: 2,
-      paddingX: [2, null, 3],
       borderBottomRadius: "sm",
       fontSize: ["mobile.sm", null, "desktop.sm"],
       color: "text",
-      _icon: {
-        fontSize: "1.25em",
-      },
+      height: "auto",
+      overflow: "hidden",
       _open: {
         animationName: "expand-height, fade-in",
         animationDuration: "moderate",
@@ -59,6 +52,10 @@ export const accordionSlotRecipe = defineSlotRecipe({
         animationName: "collapse-height, fade-out",
         animationDuration: "moderate",
       },
+    },
+    itemBody: {
+      paddingY: 2,
+      paddingX: [2, null, 3],
     },
     itemIndicator: {
       transition: "rotate 0.2s",
@@ -82,46 +79,49 @@ export const accordionSlotRecipe = defineSlotRecipe({
         itemTrigger: {
           _hover: {
             ...ghostBackground("hover"),
-          },
-          _active: {
-            ...ghostBackground("active"),
-          },
-          _pressed: {
-            ...ghostBackground("active"),
+            _active: {
+              ...ghostBackground("active"),
+            },
           },
         },
       },
       core: {
-        itemTrigger: {
+        item: {
           ...coreBorder("default"),
+        },
+        itemTrigger: {
           _expanded: {
             borderBottomRadius: "none",
           },
           _hover: {
             ...coreBorder("hover"),
             outlineOffset: 0,
-          },
-          _active: {
-            ...coreBackground("active"),
-            ...coreBorder("default"),
+            _active: {
+              /* TODO: a bug in chakra makes this disappear when the accordion is open */
+              ...coreBackground("active"),
+              ...coreBorder("default"),
+            },
           },
         },
       },
       floating: {
-        itemTrigger: {
+        item: {
           ...floatingBackground("default"),
           ...floatingBorder("default"),
           boxShadow: "sm",
+        },
+        itemTrigger: {
           _expanded: {
             borderBottomRadius: "none",
           },
           _hover: {
+            outlineOffset: 1,
             ...floatingBackground("hover"),
             ...floatingBorder("hover"),
-          },
-          _active: {
-            ...ghostBackground("active"),
-            ...floatingBorder("default"),
+            _active: {
+              ...ghostBackground("active"),
+              ...floatingBorder("default"),
+            },
           },
         },
       },

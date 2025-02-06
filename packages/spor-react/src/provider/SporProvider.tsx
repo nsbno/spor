@@ -1,6 +1,5 @@
 "use client";
 import { Global } from "@emotion/react";
-import deepmerge from "deepmerge";
 import React from "react";
 import { Language, LanguageProvider } from "..";
 import { Brand, brandTheme, fontFaces } from "../theme/brand";
@@ -8,16 +7,16 @@ import { system as sporSystem } from "../theme";
 import {
   ChakraProvider,
   ChakraProviderProps,
-  defaultSystem,
+  createSystem,
+  defaultConfig,
 } from "@chakra-ui/react";
 import { ColorModeProvider } from "../color-mode";
-import { ThemeProvider } from "next-themes";
+import deepmerge from "deepmerge";
 
-type SporProviderProps = Exclude<ChakraProviderProps, "value"> & {
+type SporProviderProps = ChakraProviderProps & {
   language?: Language;
   brand?: Brand;
   theme?: typeof sporSystem;
-  value?: typeof sporSystem;
 };
 
 /**
@@ -65,14 +64,21 @@ export const SporProvider = ({
   children,
   ...props
 }: SporProviderProps) => {
+  const brandCustomizations = brandTheme[brand] ?? {};
+
+  const mergedTheme = createSystem(defaultConfig, brandTheme[brand]);
+
+  console.log("mergedTheme", mergedTheme);
+
+  /* const mergedTheme = deepmerge(sporSystem, brandTheme[brand]); */
   return (
     <LanguageProvider language={language}>
-      <ThemeProvider attribute={"class"} enableSystem={true}>
+      <ChakraProvider {...props} value={mergedTheme}>
         <ColorModeProvider>
           <Global styles={fontFaces} />
           {children}
         </ColorModeProvider>
-      </ThemeProvider>
+      </ChakraProvider>
     </LanguageProvider>
   );
 };

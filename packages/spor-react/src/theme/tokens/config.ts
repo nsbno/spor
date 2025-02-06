@@ -6,5 +6,7 @@ export const config = {
   conditions: {
     off: "&:is([data-state=off])",
     on: "&:is([data-state=on])",
+    vyDigitalTheme: "&:is([data-brand=vy-digital])",
+    cargonetTheme: "&:is([data-brand=cargonet])",
   },
 };

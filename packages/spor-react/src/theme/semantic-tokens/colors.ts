@@ -4,5 +4,16 @@ import cargonetJson from "@vygruppen/spor-design-tokens/tokens/color/cargonet.js
 
 export const colors = defineSemanticTokens.colors({
   ...vyDigitalJson.color.vyDigital,
-  ...cargonetJson.color.cargonet,
+});
+
+export const vyDigitalColors = defineSemanticTokens.colors({
+  colors: {
+    ...vyDigitalJson.color.vyDigital,
+  },
+});
+
+export const cargonetColors = defineSemanticTokens.colors({
+  colors: {
+    ...cargonetJson.color.cargonet,
+  },
 });

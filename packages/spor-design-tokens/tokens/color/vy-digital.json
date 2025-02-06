@@ -2,7 +2,7 @@
   "color": {
     "vyDigital": {
       "bg": {
-        "DEFAULT": {
+        "default": {
           "value": {
             "_light": "colors.white",
             "_dark": "colors.night"
@@ -22,7 +22,7 @@
         }
       },
       "text": {
-        "DEFAULT": {
+        "default": {
           "value": {
             "_light": "colors.darkGrey",
             "_dark": "colors.white"
@@ -60,7 +60,7 @@
         }
       },
       "icon": {
-        "DEFAULT": {
+        "default": {
           "value": {
             "_light": "colors.darkGrey",
             "_dark": "colors.white"
@@ -92,7 +92,7 @@
         }
       },
       "outline": {
-        "DEFAULT": {
+        "default": {
           "value": {
             "_light": "colors.blackAlpha.400",
             "_dark": "colors.whiteAlpha.400"
@@ -124,7 +124,7 @@
         }
       },
       "surface": {
-        "DEFAULT": {
+        "default": {
           "value": {
             "_light": "colors.white",
             "_dark": "colors.night"
@@ -159,7 +159,7 @@
           }
         },
         "outline": {
-          "DEFAULT": {
+          "default": {
             "value": {
               "_light": "colors.blackAlpha.400",
               "_dark": "colors.whiteAlpha.400"
@@ -187,7 +187,7 @@
       },
       "brand": {
         "surface": {
-          "DEFAULT": {
+          "default": {
             "value": {
               "_light": "colors.pine",
               "_dark": "colors.coralGreen"
@@ -221,7 +221,7 @@
       },
       "accent": {
         "surface": {
-          "DEFAULT": {
+          "default": {
             "value": {
               "_light": "colors.seaMist",
               "_dark": "colors.primaryGreen"
@@ -261,7 +261,7 @@
       },
       "floating": {
         "surface": {
-          "DEFAULT": {
+          "default": {
             "value": {
               "_light": "colors.white",
               "_dark": "colors.whiteAlpha.100"
@@ -281,7 +281,7 @@
           }
         },
         "outline": {
-          "DEFAULT": {
+          "default": {
             "value": {
               "_light": "colors.platinum",
               "_dark": "colors.whiteAlpha.300"

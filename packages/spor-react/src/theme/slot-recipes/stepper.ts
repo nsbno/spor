@@ -2,27 +2,17 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 import { coreText } from "../utils/core-utils";
 import { brandBackground } from "../utils/brand-utils";
 import { accentText, accentBackground } from "../utils/accent-utils";
+import { stepperAnatomy } from "./anatomy";
 
 export const stepperSlotRecipe = defineSlotRecipe({
-  slots: [
-    "root",
-    "container",
-    "innerContainer",
-    "title",
-    "stepCounter",
-    "stepContainer",
-    "stepButton",
-    "stepNumber",
-    "stepTitle",
-    "closeButton",
-  ],
+  slots: stepperAnatomy.keys(),
   className: "spor-stepper",
   base: {
     root: {
       display: "flex",
       alignItems: "center",
       justifyContent: ["space-between", null, "center"],
-      minHeight: ["48px", null, "60px"],
+      minHeight: ["3rem", null, "3.75rem"],
       overflowX: "auto",
       width: "100%",
     },
@@ -66,12 +56,17 @@ export const stepperSlotRecipe = defineSlotRecipe({
       accent: {
         root: {
           backgroundColor: "accent.bg",
-          ...accentText("default"),
         },
         stepButton: {
-          color: coreText("default").color,
+          color: {
+            _light: "blackAlpha.900",
+            _dark: "whiteAlpha.900",
+          },
           _disabled: {
             color: coreText("disabled").color,
+          },
+          _currentStep: {
+            color: accentText("default").color,
           },
           _hover: {
             backgroundColor: accentBackground("hover").backgroundColor,

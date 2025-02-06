@@ -21,10 +21,10 @@ export const StepperStep = ({
   const state = getState(stepNumber, activeStep);
   const recipe = useSlotRecipe({ key: "stepper" });
   const style = recipe({ variant });
-  const disabledTextColor = useColorModeValue(
-    "blackAlpha.400",
-    "whiteAlpha.400",
-  );
+  const disabledTextColor = {
+    _light: "blackAlpha.600",
+    _dark: "whiteAlpha.700",
+  };
   const iconColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
 
   const disabled =
@@ -58,7 +58,12 @@ export const StepperStep = ({
           }
           pointerEvents={state === "active" ? "none" : "auto"}
           tabIndex={state === "active" ? -1 : undefined}
-          css={style.stepButton}
+          disabled={disabled}
+          css={
+            state === "active"
+              ? style.stepButton._currentStep
+              : style.stepButton
+          }
         >
           {children}
         </Button>

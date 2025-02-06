@@ -33,3 +33,17 @@ export const checkboxAnatomy = createAnatomy("checkbox").parts(
   "indicator",
   "content",
 );
+
+export const stepperAnatomy = createAnatomy("stepper").parts(
+  "root",
+  "container",
+  "innerContainer",
+  "title",
+  "stepCounter",
+  "stepContainer",
+  "stepButton",
+  "stepNumber",
+  "stepTitle",
+  "closeButton",
+  "backButton",
+);

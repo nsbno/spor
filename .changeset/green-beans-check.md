@@ -28,13 +28,13 @@ Spor is getting a major update with Chakra 3.
 - `FormControl`, `FormLabel` and `FormErrorMessage` are removed and replaced by `Field`. `Field` supports the necessary props to support this.
 - `Separator` replaces `Divider`.
 - `UnorderedList` and `OrderedList` is deprecated. Use `List` and `as` prop instead.
+- `Stepper` has changed props: `isDisabled` is now `disabled`, variants are now `core` and `accent`
 
 ### Darkmode
 
 `DarkMode` and `LightMode` has been removed. Use `className="dark"` instead.
 
 The `useColorMode` hook exports the state (`colorMode`) and toggle (`toggleColorMode`).
-
 
 ### Externals from Chakra:
 

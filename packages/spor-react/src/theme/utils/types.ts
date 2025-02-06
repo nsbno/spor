@@ -6,6 +6,7 @@ export type State =
   | "selected"
   | "invalid"
   | "disabled"
+  | "highlight"
   | "error"
   | "focus";
 

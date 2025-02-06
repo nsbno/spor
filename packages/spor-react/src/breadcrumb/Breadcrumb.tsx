@@ -11,6 +11,7 @@ import {
   BreadcrumbCurrentLink as ChakraBreadcrumbCurrentLink,
   BreadcrumbEllipsis as ChakraBreadcrumbEllipsis,
 } from "@chakra-ui/react";
+import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 
 type BreadcrumbVariants = RecipeVariantProps<typeof breadcrumbRecipe>;
 
@@ -53,7 +54,7 @@ export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
     ref,
   ) => {
     const recipe = useRecipe({ recipe: breadcrumbRecipe });
-    const styles = recipe({});
+    const styles = recipe({ variant });
     const iconColor = useColorModeValue("blackAlpha.400", "whiteAlpha.400");
 
     const validChildren = React.Children.toArray(children).filter(
@@ -61,16 +62,31 @@ export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
     );
 
     return (
-      <ChakraBreadcrumb.Root ref={ref} css={styles} {...props}>
-        <ChakraBreadcrumb.List gap={separatorGap}>
+      <ChakraBreadcrumb.Root ref={ref} {...props}>
+        <ChakraBreadcrumb.List
+          display="inline-flex"
+          flexWrap="nowrap"
+          alignItems="center"
+          gap={separatorGap}
+        >
           {validChildren.map((child, index) => {
             const isLast = index === validChildren.length - 1;
             return (
               <React.Fragment key={index}>
-                <ChakraBreadcrumb.Item>{child}</ChakraBreadcrumb.Item>
+                <ChakraBreadcrumb.Item>
+                  {!isLast ? (
+                    <ChakraBreadcrumbLink css={styles.link}>
+                      {child}
+                    </ChakraBreadcrumbLink>
+                  ) : (
+                    <ChakraBreadcrumbCurrentLink css={styles.currentLink}>
+                      {child}
+                    </ChakraBreadcrumbCurrentLink>
+                  )}
+                </ChakraBreadcrumb.Item>
                 {!isLast && (
                   <ChakraBreadcrumb.Separator>
-                    {separator || <span>/</span>}
+                    {separator || <DropdownRightFill18Icon color={iconColor} />}
                   </ChakraBreadcrumb.Separator>
                 )}
               </React.Fragment>

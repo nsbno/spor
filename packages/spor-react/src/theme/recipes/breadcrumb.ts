@@ -4,10 +4,11 @@ import { ghostBackground } from "../utils/ghost-utils";
 import { defineRecipe } from "@chakra-ui/react";
 
 export const breadcrumbRecipe = defineRecipe({
+  className: "spor-breadcrumb",
   base: {
-    display: "flex",
-    flexWrap: "wrap",
-    alignItems: "flex-start",
+    display: "inline-flex",
+    flexWrap: "nowrap",
+    alignItems: "center",
     transitionProperty: "common",
     transitionDuration: "fast",
     transitionTimingFunction: "ease-out",
@@ -16,29 +17,56 @@ export const breadcrumbRecipe = defineRecipe({
     textStyle: "xs",
     paddingX: 0.5,
     borderRadius: "xs",
+    _hover: {
+    borderRadius: "6px",
+_active: {
+  borderRadius: "6px",
+
+},
+    },
+  },
+  link: {
     "&:not([aria-current=page])": {
       cursor: "pointer",
       ...focusVisibleStyles,
-    },
-  },
-  variants: {
-    core: {
-      "&:not([aria-current=page])": {
-        _hover: {
-          ...coreBorder("default"),
-        },
+      _hover: {
+        ...coreBorder("default"),
         _active: {
           ...coreBackground("active"),
         },
       },
     },
-    ghost: {
-      "&:not([aria-current=page])": {
-        _hover: {
-          ...ghostBackground("hover"),
+  },
+  currentLink: {
+    borderRadius: "6px",
+    "&:not([aria-current=page])": {
+      cursor: "default",
+    },
+  },
+  variants: {
+    variant: {
+      core: {
+        link: {
+          "&:not([aria-current=page])": {
+            _hover: {
+              ...coreBorder("default"),
+              _active: {
+                ...coreBackground("active"),
+              },
+            },
+          },
         },
-        _active: {
-          ...ghostBackground("active"),
+      },
+      ghost: {
+        link: {
+          "&:not([aria-current=page])": {
+            _hover: {
+              ...ghostBackground("hover"),
+              _active: {
+                ...ghostBackground("active"),
+              },
+            },
+          },
         },
       },
     },

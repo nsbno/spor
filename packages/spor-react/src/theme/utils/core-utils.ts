@@ -66,12 +66,19 @@ export function coreBorder(state: BorderState) {
   }
 }
 
-type coreTextState = Subset<State, "default" | "selected" | "disabled">;
+type coreTextState = Subset<
+  State,
+  "default" | "selected" | "disabled" | "highlight"
+>;
 export function coreText(state: coreTextState) {
   switch (state) {
     case "selected":
       return {
         color: "brand.text",
+      };
+    case "highlight":
+      return {
+        color: "text.highlight",
       };
     case "disabled":
       return {

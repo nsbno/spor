@@ -2,20 +2,12 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { outlineBorder } from "../utils/outline-utils";
-import { focusVisibleStyles } from "../utils/focus-utils";
+import { radioCardAnatomy } from "./anatomy";
 
 export const radioCardSlotRecipe = defineSlotRecipe({
-  slots: [
-    "root",
-    "item",
-    "label",
-    "itemText",
-    "itemDescription",
-    "itemContent",
-  ],
   className: "spor-radio-card",
+  slots: radioCardAnatomy.keys(),
   base: {
-    root: {},
     item: {
       flex: 1,
       overflow: "hidden",
@@ -91,7 +83,7 @@ export const radioCardSlotRecipe = defineSlotRecipe({
             _hover: {
               ...coreBorder("hover"),
               boxShadow: "none",
-              outlineOffset: "0px",
+              outlineOffset: "0",
             },
           },
         },
@@ -137,7 +129,7 @@ export const radioCardSlotRecipe = defineSlotRecipe({
             _hover: {
               ...floatingBorder("hover"),
               boxShadow: "md",
-              outlineOffset: "0px",
+              outlineOffset: "0",
             },
           },
         },

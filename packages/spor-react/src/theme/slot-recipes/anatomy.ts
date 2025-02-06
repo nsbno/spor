@@ -33,3 +33,12 @@ export const checkboxAnatomy = createAnatomy("checkbox").parts(
   "indicator",
   "content",
 );
+
+export const radioCardAnatomy = createAnatomy("radio-card").parts(
+  "root",
+  "item",
+  "label",
+  "itemText",
+  "itemDescription",
+  "itemContent",
+);

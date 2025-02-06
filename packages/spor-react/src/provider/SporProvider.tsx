@@ -11,7 +11,7 @@ import {
   defaultSystem,
 } from "@chakra-ui/react";
 import { ColorModeProvider } from "../color-mode";
-import { ThemeProvider, useThemeSwitcher } from "./ThemeProvider";
+import { ThemeProvider } from "next-themes";
 
 type SporProviderProps = Exclude<ChakraProviderProps, "value"> & {
   language?: Language;
@@ -65,15 +65,9 @@ export const SporProvider = ({
   children,
   ...props
 }: SporProviderProps) => {
-  const { switchTheme } = useThemeSwitcher();
-
-  React.useEffect(() => {
-    switchTheme(brand);
-  }, [brand, switchTheme]);
-
   return (
     <LanguageProvider language={language}>
-      <ThemeProvider initialBrand={brand}>
+      <ThemeProvider attribute={"class"} enableSystem={true}>
         <ColorModeProvider>
           <Global styles={fontFaces} />
           {children}

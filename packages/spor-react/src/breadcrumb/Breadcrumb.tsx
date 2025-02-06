@@ -72,7 +72,7 @@ export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
           {validChildren.map((child, index) => {
             const isLast = index === validChildren.length - 1;
             return (
-              <React.Fragment key={index}> 
+              <React.Fragment key={index}>
                 <ChakraBreadcrumb.Item>
                   {!isLast ? (
                     <ChakraBreadcrumbLink css={styles.link}>

@@ -16,6 +16,17 @@ export const listAnatomy = createAnatomy("list").parts(
   "indicator",
 );
 
+export const tableAnatomy = createAnatomy("table").parts(
+  "root",
+  "body",
+  "row",
+  "cell",
+  "columnHeader",
+  "caption",
+  "footer",
+  "header",
+);
+
 export const fieldAnatomy = createAnatomy("field").parts(
   "root",
   "label",
@@ -46,4 +57,13 @@ export const stepperAnatomy = createAnatomy("stepper").parts(
   "stepTitle",
   "closeButton",
   "backButton",
+);
+
+export const radioCardAnatomy = createAnatomy("radio-card").parts(
+  "root",
+  "item",
+  "label",
+  "itemText",
+  "itemDescription",
+  "itemContent",
 );

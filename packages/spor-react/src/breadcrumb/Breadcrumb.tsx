@@ -30,15 +30,14 @@ export type BreadcrumbProps = BoxProps &
  * A breadcrumb component.
  *
  * Used to create customizable breadcrumbs.
- *
+ * Separator and separatorGap can be used to customize the separator and the spacing between the crumbs.
+ * BreadcrumbCurrentLink is used to set the last breadcrumb.
+ * BreadcrumbLink is used to set the other breadcrumbs.
  * ```tsx
  * <Breadcrumb separator=">" separatorGap="4">
- *   <BreadcrumbItem>
  *     <BreadcrumbLink href="/">Home</BreadcrumbLink>
- *   </BreadcrumbItem>
- *   <BreadcrumbItem isCurrentPage>
+ *    <BreadcrumbLink href="/Breadcrumb">Breadcrumb</BreadcrumbLink>
  *    <BreadcrumbCurrentLink href="/about">About</BreadcrumbCurrentLink>
- *  </BreadcrumbItem>
  * </Breadcrumb>
  * ```
  */

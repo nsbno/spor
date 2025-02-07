@@ -1,9 +1,8 @@
 import { coreBackground, coreBorder } from "../utils/core-utils";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { breadcrumbAnatomy } from "./anatomy";
-import { outlineBorder } from "../utils/outline-utils";
+import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const breadcrumbSlotRecipe = defineSlotRecipe({
   className: "spor-breadcrumb",
@@ -13,15 +12,14 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
       display: "inline-flex",
       flexWrap: "nowrap",
       alignItems: "center",
-      _focusVisible: {
-        ...focusVisibleStyles()._focusVisible,
-        outlineOffset: 0,
-      },
     },
     link: {
       cursor: "pointer",
       padding: "3px",
       borderRadius: "6px",
+      _focusVisible: {
+        ...focusVisibleStyles()._focusVisible,
+      },
     },
     currentLink: {
       borderRadius: "6px",
@@ -36,6 +34,7 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
           ...coreBorder("default"),
           _active: {
             ...coreBackground("active"),
+            outline: "none",
           },
         },
       },

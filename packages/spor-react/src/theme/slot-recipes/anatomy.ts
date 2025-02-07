@@ -39,3 +39,12 @@ export const breadcrumbAnatomy = createAnatomy("breadcrumb").parts(
 "currentLink",
 "list",
 );
+
+export const radioCardAnatomy = createAnatomy("radio-card").parts(
+  "root",
+  "item",
+  "label",
+  "itemText",
+  "itemDescription",
+  "itemContent",
+);

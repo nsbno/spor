@@ -61,7 +61,7 @@ export const Input = forwardRef<InputProps, "input">(
           overflow="hidden"
           placeholder=" " // This is needed to make the label work as expected
         />
-        <FormLabel htmlFor={inputId} id={labelId}>
+        <FormLabel htmlFor={inputId} id={labelId} pointerEvents="none">
           {label}
         </FormLabel>
         {rightIcon && (

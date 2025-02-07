@@ -79,7 +79,7 @@ export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
                   )}
                 </ChakraBreadcrumb.Item>
                 {!isLast && (
-                  <ChakraBreadcrumb.Separator>
+                  <ChakraBreadcrumb.Separator aria-hidden="true">
                     {separator || <DropdownRightFill18Icon color={iconColor} />}
                   </ChakraBreadcrumb.Separator>
                 )}

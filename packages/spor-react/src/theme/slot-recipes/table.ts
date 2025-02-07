@@ -17,13 +17,6 @@ export const tableSlotRecipe = defineSlotRecipe({
       tableLayout: "fixed",
       borderCollapse: "collapse",
       width: "100%",
-      ...coreText("default"),
-    },
-    body: {
-      ...coreText("default"),
-    },
-    header: {
-      ...coreText("default"),
     },
     columnHeader: {
       fontWeight: "bold",
@@ -50,50 +43,44 @@ export const tableSlotRecipe = defineSlotRecipe({
   },
 
   variants: {
-    colorPallette: {
+    colorPalette: {
       green: {
         root: {
-          backgroundColor: "brand.surface",
-          color: "brand.text",
+          backgroundColor: "bg",
+        },
+        header: {
+          backgroundColor: "bg.tertiary",
         },
         columnHeader: {
-          backgroundColor: "text.secondary",
-          color: "brand.text",
-        },
-        row: {
-          color: "brand.text",
-          _hover: {
-            backgroundColor: "brand.hover",
-          },
-        },
-        cell: {
-          color: "brand.text",
-        },
-        footer: {
-          color: "brand.text",
+          color: "text.secondary",
         },
       },
-      gray: {
+      grey: {
         root: {
-          backgroundColor: "surface.disabled",
+          backgroundColor: "bg",
         },
-        columnHeader: { color: "brand.text.inverted" },
-        row: {
+        columnHeader: {
+          color: "brand.text.inverted",
+          backgroundColor: "surface.disabled",
           _hover: {
-            backgroundColor: "grey.200",
+            backgroundColor: "surface.disabled",
           },
         },
-        cell: { color: "brand.text.inverted" },
-        footer: { color: "brand.text.inverted" },
       },
     },
     variant: {
-      line: {
+      ghost: {
+        header: {
+          backgroundColor: "none",
+        },
         columnHeader: {
           borderLeft: "none",
           borderBottom: "sm",
           borderColor: "outline.disabled",
+          backgroundColor: "none",
+          color: "text",
         },
+
         cell: {
           borderBottom: "sm",
           borderColor: "outline.disabled",
@@ -104,7 +91,7 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
       },
 
-      outline: {
+      core: {
         table: {
           borderRadius: "md",
           overflow: "hidden",
@@ -120,15 +107,12 @@ export const tableSlotRecipe = defineSlotRecipe({
           },
         },
         header: {
-          backgroundColor: "bg.tertiary",
           border: "none",
         },
         columnHeader: {
           borderBottom: "sm",
           borderLeft: "sm",
           borderLeftColor: "outline.disabled",
-          borderColor: "outline.disabled",
-          ...outlineBorder("default"),
           ...numericStyles,
           _first: {
             borderLeft: "none",
@@ -140,9 +124,6 @@ export const tableSlotRecipe = defineSlotRecipe({
           borderColor: "outline.disabled",
           _last: {
             borderBottom: "none",
-          },
-          _hover: {
-            backgroundColor: "bg.secondary",
           },
         },
       },

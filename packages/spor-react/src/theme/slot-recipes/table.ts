@@ -1,7 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { tableAnatomy } from "./anatomy";
-import { coreText } from "../utils/core-utils";
-import { outlineBorder } from "../utils/outline-utils";
 
 const numericStyles = {
   "&[data-is-numeric=true]": {

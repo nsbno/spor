@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { coreText } from "../utils/core-utils";
 import { bg } from "../utils/bg-utils";
 import { drawerAnatomy } from "./anatomy";
 
@@ -12,8 +11,8 @@ export const drawerSlotRecipe = defineSlotRecipe({
       pos: "fixed",
       insetInlineStart: 0,
       top: 0,
-      w: "100vw",
-      h: "100dvh",
+      width: "100vw",
+      height: "100dvh",
       zIndex: "modal",
       _open: {
         animationName: "fade-in",
@@ -42,7 +41,6 @@ export const drawerSlotRecipe = defineSlotRecipe({
       width: "100%",
       outline: 0,
       zIndex: "modal",
-      textStyle: "sm",
       maxH: "100dvh",
       color: "inherit",
       bg: "bg.panel",
@@ -58,13 +56,13 @@ export const drawerSlotRecipe = defineSlotRecipe({
     },
     header: {
       flex: 0,
-      px: "6",
-      pt: "6",
-      pb: "4",
+      paddingX: "6",
+      paddingTop: "6",
+      paddingBottom: "4",
     },
     body: {
-      px: "6",
-      py: "2",
+      paddingX: "6",
+      paddingY: "2",
       flex: "1",
       overflow: "auto",
     },
@@ -73,16 +71,25 @@ export const drawerSlotRecipe = defineSlotRecipe({
       alignItems: "center",
       justifyContent: "flex-end",
       gap: "3",
-      px: "6",
-      pt: "2",
-      pb: "4",
+      paddingX: "6",
+      paddingTop: "2",
+      paddingBottom: "4",
     },
     title: {
-      textStyle: "lg",
+      textStyle: "md",
       fontWeight: "semibold",
     },
     description: {
       color: "fg.muted",
+    },
+    closeTrigger: {
+      color: "brand.text",
+      "& svg": {
+        color: {
+          _light: "blackAlpha.700",
+          _dark: "whiteAlpha.700",
+        },
+      },
     },
   },
   variants: {
@@ -196,62 +203,3 @@ export const drawerSlotRecipe = defineSlotRecipe({
     },
   },
 });
-
-/* overlay: {
-  backgroundColor: "blackAlpha.600",
-  zIndex: "modal",
-  color: "red",
-},
-dialogContainer: {
-  display: "flex",
-  zIndex: "modal",
-  justifyContent: "center",
-  alignItems: "flex-start",
-  overflow: "auto",
-},
-dialog: {
-  ...bg("default"),
-  ...coreText("default"),
-  zIndex: "modal",
-  maxHeight: "calc(100% - 7.5rem)",
-  boxShadow: "md",
-},
-header: {
-  paddingX: 3,
-  paddingTop: 6,
-  paddingBottom: 2,
-  fontWeight: "bold",
-  fontFamily: "body",
-},
-closeButton: {
-  position: "absolute",
-  top: 3,
-  insetEnd: 3,
-  zIndex: "modal",
-},
-body: {
-  paddingX: 3,
-  paddingBottom: 6,
-  flex: 1,
-  overflow: "auto",
-},
-footer: {
-  paddingX: 3,
-  paddingBottom: 3,
-},
-},
-variants: {
-size: {
-  xs: getSize("xs"),
-  sm: getSize("sm"),
-  md: getSize("md"),
-  lg: getSize("lg"),
-  xl: getSize("xl"),
-  "2xl": getSize("2xl"),
-  "3xl": getSize("3xl"),
-  "4xl": getSize("4xl"),
-  "5xl": getSize("5xl"),
-  "6xl": getSize("6xl"),
-  full: getSize("full"),
-},
-}, */

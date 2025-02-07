@@ -44,6 +44,7 @@ export const drawerAnatomy = createAnatomy("drawer").parts(
   "footer",
   "title",
   "description",
+  "closeTrigger",
 );
 
 export const checkboxAnatomy = createAnatomy("checkbox").parts(

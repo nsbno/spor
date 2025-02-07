@@ -14,7 +14,7 @@ import { ArrowLeftFill24Icon } from "@vygruppen/spor-icon-react";
 
 /**
  * 
- * <DrawerRoot>
+ * <Drawer>
     <DrawerTrigger onClick={() => setOpen(true)}>
       <Button variant="primary" size="sm">
         Open a simple drawer
@@ -32,7 +32,7 @@ import { ArrowLeftFill24Icon } from "@vygruppen/spor-icon-react";
       </DrawerBody>
       <DrawerCloseTrigger />
     </DrawerContent>
-  </DrawerRoot>
+  </Drawer>
  */
 
 type DrawerVariantProps = RecipeVariantProps<typeof drawerSlotRecipe>;
@@ -42,12 +42,22 @@ type DrawerContentProps = ChakraDrawer.ContentProps &
     children: React.ReactNode;
     portalled?: boolean;
     portalRef?: React.RefObject<HTMLElement>;
-    placement?: "bottom" | "top" | "end" | "start";
     rounded?: "sm" | "md" | "lg" | "xl" | "2xl";
     customVariant?: "default" | "full"; // default is the default variant, full is the full screen variant
   };
 
-type DrawerRootProps = ChakraDrawer.RootProps &
+type DraweProps = Exclude<
+  ChakraDrawer.RootProps,
+  | "colorPalette"
+  | "placement" // TODO: extend in the future the placement on top left and right
+  | "contained"
+  | "size"
+  | "variant"
+  | "as"
+  | "asChild"
+  | "unstyled"
+> &
+  ChakraDrawer.RootProps &
   PropsWithChildren<DrawerVariantProps> & {
     children: React.ReactNode;
   };
@@ -60,7 +70,6 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
       portalRef,
       rounded = "md",
       customVariant = "default",
-      placement,
       ...rest
     } = props;
     return (
@@ -101,10 +110,7 @@ export const DrawerCloseTrigger = forwardRef<
       {...props}
       asChild
     >
-      <CloseButton
-        size="sm"
-        backgroundColor={{ _light: "transparent", _dark: "mint" }}
-      />
+      <CloseButton size="md" />
     </ChakraDrawer.CloseTrigger>
   );
 });
@@ -114,7 +120,6 @@ export const CloseDrawerLine = forwardRef<HTMLDivElement, {}>(
     return (
       <ChakraDrawer.CloseTrigger>
         <Box
-          as="button"
           maxWidth={6}
           width={6}
           maxHeight={1}
@@ -143,8 +148,8 @@ export const BackHistoryDrawer = forwardRef<HTMLDivElement, {}>(
   },
 );
 
-export const DrawerRoot = forwardRef<HTMLDivElement, DrawerRootProps>(
-  function DrawerRoot(props) {
+export const Drawer = forwardRef<HTMLDivElement, DraweProps>(
+  function Drawer(props) {
     const { children, placement = "bottom", ...rest } = props;
     return (
       <ChakraDrawer.Root {...rest} placement={placement}>
@@ -160,7 +165,6 @@ export const DrawerFooter = ChakraDrawer.Footer;
 export const DrawerHeader = ChakraDrawer.Header;
 export const DrawerBody = ChakraDrawer.Body;
 export const DrawerBackdrop = ChakraDrawer.Backdrop;
-export const DrawerDescription = ChakraDrawer.Description;
 export const DrawerTitle = ChakraDrawer.Title;
 export const DrawerActionTrigger = ChakraDrawer.ActionTrigger;
 

@@ -16,6 +16,17 @@ export const listAnatomy = createAnatomy("list").parts(
   "indicator",
 );
 
+export const tableAnatomy = createAnatomy("table").parts(
+  "root",
+  "body",
+  "row",
+  "cell",
+  "columnHeader",
+  "caption",
+  "footer",
+  "header",
+);
+
 export const fieldAnatomy = createAnatomy("field").parts(
   "root",
   "label",

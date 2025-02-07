@@ -33,3 +33,9 @@ export const checkboxAnatomy = createAnatomy("checkbox").parts(
   "indicator",
   "content",
 );
+
+export const breadcrumbAnatomy = createAnatomy("breadcrumb").parts(
+"link", 
+"currentLink",
+"list",
+);

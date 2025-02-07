@@ -1,6 +1,5 @@
 import { attachedInputsRecipe } from "./attached-inputs";
 import { badgeRecipie } from "./badge";
-import { breadcrumbRecipe } from "./breadcrumb";
 import { buttonRecipe } from "./button";
 import { closeButtonRecipe } from "./close-button";
 import { codeRecipie } from "./code";
@@ -15,7 +14,6 @@ import { toastRecipe } from "./toast";
 export const recipes = {
   attachedInputs: attachedInputsRecipe,
   badge: badgeRecipie,
-  breadcrumb: breadcrumbRecipe,
   button: buttonRecipe,
   closeButton: closeButtonRecipe,
   code: codeRecipie,

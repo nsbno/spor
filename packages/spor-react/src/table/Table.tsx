@@ -17,7 +17,7 @@ export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
     colorPalette?: "grey" | "green";
   };
 /**
- * The `Table` component has support for two different variants - `ghost` and `core`. The `ghost` variant has basic lines between rows, while the `core` variant has borders for each cell, plus a hover effect per row.
+ * The `Table` component has support for two different variants - `ghost` and `core`. The `ghost` variant has basic lines between rows, while the `core` variant has borders for each cell.
  *
  * You can also specify a `grey` or `green` `colorPalette` prop. Use `green` if you want to place the table on a light green background.
  *
@@ -33,25 +33,18 @@ export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
  * ```
  */
 export const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
-  const {
-    variant = "ghost",
-    size,
-    colorPalette = "green",
-    children,
-    ...rest
-  } = props;
+  const { variant = "ghost", size, colorPalette = "green", children } = props;
 
   const recipe = useSlotRecipe({ recipe: tableSlotRecipe });
   const styles = recipe({ variant, size });
   return (
-    <Box overflowX="auto" role="region" {...getStyleProps(props)}>
+    <Box overflowX="auto" role="region" {...getStyleProps(props)} {...props}>
       <ChakraTable.Root
         variant={variant}
         size={size}
         colorPalette={colorPalette}
         css={styles}
         ref={ref}
-        {...rest}
       >
         {children}
       </ChakraTable.Root>

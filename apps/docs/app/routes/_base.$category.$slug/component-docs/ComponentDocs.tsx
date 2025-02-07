@@ -49,11 +49,7 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
           <Heading as="h4" variant="md" marginTop={3}>
             Props
           </Heading>
-          <Table
-            variant="outline"
-            marginTop={3}
-            maxWidth={`calc(100vw - var(--spor-space-6))`}
-          >
+          <Table variant="core" marginTop={3} maxWidth={`calc(100vw - var(--spor-space-6))`}>
             <TableHeader>
               <TableRow>
                 <TableColumnHeader>Name</TableColumnHeader>

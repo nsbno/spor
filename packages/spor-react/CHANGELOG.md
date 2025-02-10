@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.1.3
+
+### Patch Changes
+
+- edb4b4d: Disable pointer-events on input labels
+
 ## 11.1.2
 
 ### Patch Changes

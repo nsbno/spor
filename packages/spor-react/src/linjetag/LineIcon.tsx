@@ -27,6 +27,7 @@ export type LineIconProps = Exclude<BoxProps, "variant"> &
     foregroundColor?: string;
     backgroundColor?: string;
     disabled?: boolean;
+    target?: string;
   };
 
 /**
@@ -67,10 +68,19 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
     backgroundColor,
     disabled,
     style,
+    target = "lineIcon",
     ...rest
   }) {
     const recipe = useSlotRecipe({ key: "lineIcon" });
     const styles = recipe({ variant, size, ...rest });
+
+    const targetPadding = () => {
+      return target === "travelTag" ? 0.5 : 1;
+    };
+
+    const borderContainer = () => {
+      return variant === "walk" && target === "travelTag" ? 0 : 0.5;
+    };
 
     const Icon: any = getCorrectIcon({
       variant:
@@ -92,7 +102,12 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
     }
 
     return (
-      <Box css={{ ...styles.iconContainer, ...style }}>
+      <Box
+        css={{ ...styles.iconContainer, ...style }}
+        padding={targetPadding()}
+        borderWidth={borderContainer()}
+        borderColor={variant === "walk" ? "core.outline" : "transparent"}
+      >
         <Icon css={styles.icon} />
       </Box>
     );

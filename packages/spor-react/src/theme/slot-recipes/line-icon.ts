@@ -87,13 +87,6 @@ export const lineIconSlotRecipe = defineSlotRecipe({
         },
       },
       walk: {
-        iconContainer: {
-          outline: "1px solid",
-          outlineColor: {
-            _light: "core.outline",
-            _dark: "transparent",
-          },
-        },
         title: {
           color: "text",
         },
@@ -127,19 +120,16 @@ export const lineIconSlotRecipe = defineSlotRecipe({
       sm: {
         iconContainer: {
           borderRadius: "0.5625rem",
-          padding: 1,
         },
       },
       md: {
         iconContainer: {
           borderRadius: "0.5625rem",
-          padding: 1,
         },
       },
       lg: {
         iconContainer: {
           borderRadius: "sm",
-          padding: 1,
         },
       },
     },

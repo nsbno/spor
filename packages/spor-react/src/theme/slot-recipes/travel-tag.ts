@@ -29,12 +29,6 @@ export const travelTagSlotRecipe = defineSlotRecipe({
         },
       },
     },
-    iconContainer: {
-      _disabled: {
-        backgroundColor: "surface.disabled",
-        color: "white",
-      },
-    },
     textContainer: {
       color: "darkGrey",
       paddingRight: 0.5,
@@ -141,14 +135,11 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       walk: {
         container: {
           _disabled: {
-            backgroundColor: "white",
+            backgroundColor: "surface.disabled",
           },
         },
         iconContainer: {
-          _disabled: {
-            backgroundColor: "transparent",
-            color: "text",
-          },
+          backgroundColor: "red",
         },
         textContainer: {
           position: "absolute",

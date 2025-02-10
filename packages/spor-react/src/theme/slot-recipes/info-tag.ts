@@ -27,10 +27,9 @@ export const infoTagSlotRecipe = defineSlotRecipe({
   variants: {
     variant: {
       walk: {
-        icon: {
-          color: "text",
-          "[aria-disabled=true] &": {
-            color: "osloGrey",
+        iconContainer: {
+          icon: {
+            color: "text",
           },
         },
       },

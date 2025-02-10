@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.1.4
+
+### Patch Changes
+
+- cd49b43: Set correct position of label for input elements that caused the dance during hydration step
+
 ## 11.1.3
 
 ### Patch Changes

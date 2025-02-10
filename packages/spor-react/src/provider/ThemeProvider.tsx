@@ -11,6 +11,7 @@ import {
 } from "next-themes";
 import { Brand, brandTheme } from "../theme/semantic-tokens/brand";
 import deepmerge from "deepmerge";
+import { system as sporSystem, themeConfig } from "../theme";
 
 const ThemeContext = createContext({
   switchTheme: (brand: Brand) => {},

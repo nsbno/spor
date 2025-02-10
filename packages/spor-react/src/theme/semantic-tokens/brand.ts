@@ -9,7 +9,7 @@ export enum Brand {
 }
 
 export const brandTheme = {
-  [Brand.VyDigital]: vyDigitalColors,
+  [Brand.VyDigital]: {},
   [Brand.CargoNet]: cargonetColors,
 };
 

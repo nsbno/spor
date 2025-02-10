@@ -79,7 +79,7 @@ export const SporProvider = ({
 
   console.log("brandTheme", brandTheme[brand]);
 
-  const mergedTheme = deepmerge(sporSystem, brandCustomizations);
+  const mergedTheme = deepmerge(theme, brandCustomizations);
   return (
     <LanguageProvider language={language}>
       <ChakraProvider {...props} value={mergedTheme}>

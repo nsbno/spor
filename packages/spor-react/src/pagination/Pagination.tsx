@@ -110,6 +110,7 @@ export const PaginationItem = React.forwardRef<
       <Button
         css={props.value === page ? styles.activeButton : styles.link}
         size={size} aria-label={`${t(texts.page)} ${props.value} ${t(texts.of)} ${totalPages}`}
+        as={props.as || "a"}
       >
         {props.value}
       </Button>

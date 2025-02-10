@@ -8,16 +8,17 @@ export const paginationSlotRecipe = defineSlotRecipe({
   className: "spor-pagination",
   base: {
     listItem: {
-      display: "flex",
-    },
-    link: {
-      display: "flex",
+     justifyContent: "center",
       alignItems: "center",
-      justifyContent: "center",
-      borderRadius: 50,
-      padding: "2px",
-       ...coreBackground("default"),
-      ...coreText("default"),
+      display: "flex",
+      width: "5",
+      height: "5",
+      gap: 3,
+      marginInline: 0.5,
+      
+
+     /*    ...coreBackground("default"), */
+      ...coreText("default"), 
       _hover: {
         ...ghostBackground("hover"),
         borderRadius: 50,
@@ -29,19 +30,28 @@ export const paginationSlotRecipe = defineSlotRecipe({
           ...coreText("disabled"),
         },
       }, 
-     
     },
+    list: {
+      display: "inline-flex",
+     
+      listStyle: "none",
+      height: "5",
+      gap: 3,
+    },
+  
     activeButton: {
-      fontWeight: "bold",
-      display: "flex",
-      alignItems: "center",
       justifyContent: "center",
-      width: "19px",
-      height: "14px",
-      fontSize: "xs",
-      borderRadius: 50,
-      ...coreBackground("active"),
-      _hover: {
+      alignItems: "center",
+      display: "flex",
+      width: "5",
+      height: "5",
+      gap: 3,
+      padding: "6px",
+       borderRadius: 50,
+      
+
+        ...coreBackground("active"),
+        _hover: {
         ...ghostBackground("hover"),
         borderRadius: 50,
         _active: {

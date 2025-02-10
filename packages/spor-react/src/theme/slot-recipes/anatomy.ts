@@ -30,6 +30,7 @@ export const paginationAnatomy = createAnatomy("pagination").parts(
     "activeButton",
     "disabled",
     "icon",
+    "list",
 );
 export const checkboxAnatomy = createAnatomy("checkbox").parts(
   "root",

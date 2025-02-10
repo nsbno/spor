@@ -2,6 +2,7 @@
 
 import type { ButtonProps, TextProps } from "@chakra-ui/react"
 import {
+  Box,
   Button,
   Pagination as ChakraPagination,
   PaginationRoot as ChakraPaginationRoot,
@@ -19,7 +20,7 @@ import {
   HiMiniEllipsisHorizontal,
 } from "react-icons/hi2"
 import { forwardRef } from "react"
-import { createTexts, useTranslation } from ".."
+import { createTexts, List, ListItem, useTranslation } from ".."
 
 
 interface ButtonVariantContext {
@@ -69,11 +70,11 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
           ref={ref}
           {...rest}
         >
-           <HStack>
+           <List>
               <PaginationPrevTrigger />
               <PaginationItems as={as} />
               <PaginationNextTrigger />
-             </HStack>
+             </List>
          </ChakraPaginationRoot>
   </RootPropsProvider>
     )
@@ -89,11 +90,13 @@ export const PaginationEllipsis = React.forwardRef<
   const styles = recipe()
 
   return (
+    <ListItem css={styles.list}>
     <ChakraPagination.Ellipsis ref={ref} {...props} asChild>
-      <span  >
+      <Box as={props.as || "a"}>
         <HiMiniEllipsisHorizontal />
-      </span>
+        </Box>
     </ChakraPagination.Ellipsis>
+    </ListItem>
   )
 })
 
@@ -108,15 +111,17 @@ export const PaginationItem = React.forwardRef<
   const { t } = useTranslation();
 
   return (
-    <ChakraPagination.Item ref={ref} {...props} asChild>
-      <Button
-        css={props.value === page ? styles.activeButton : styles.link}
-        size={size} aria-label={`${t(texts.page)} ${props.value} ${t(texts.of)} ${totalPages}`}
+    <ListItem css={styles.list}>
+    <ChakraPagination.Item asChild ref={ref} {...props}>
+      <Box
+        css={props.value === page ? styles.activeButton : styles.listItem}
+        aria-label={`${t(texts.page)} ${props.value} ${t(texts.of)} ${totalPages}`}
         as={props.as || "a"}
       >
         {props.value}
-      </Button>
+      </Box>
     </ChakraPagination.Item>
+</ListItem>
   )
 })
 
@@ -131,16 +136,17 @@ export const PaginationPrevTrigger = React.forwardRef<
   const { t } = useTranslation();
 
   return (
-    <ChakraPagination.PrevTrigger ref={ref} asChild {...props}>
-      <IconButton
-        css={page <= 1 ? { visibility: "hidden" } : styles.link}
-        size={size}
-        disabled={page <= 1}
-        aria-label={t(texts.previousPage)}
+    <ListItem css={styles.list}>
+    <ChakraPagination.PrevTrigger ref={ref} asChild {...props} >
+      <Box
+        css={page <= 1 ? { visibility: "hidden" } : styles.listItem}
+        aria-label={t(texts.previousPage)} as={props.as || "a"}
       >
         <HiChevronLeft style={{ fontSize: "0.8em" }}/>
-      </IconButton>
+      </Box>
     </ChakraPagination.PrevTrigger>
+    </ListItem >
+
   )
 })
 
@@ -155,17 +161,17 @@ export const PaginationNextTrigger = React.forwardRef<
   const { t } = useTranslation();
 
   return (
+    <ListItem css={styles.list}>
     <ChakraPagination.NextTrigger ref={ref} asChild {...props}>
-      <IconButton
-        css={page >= totalPages ? { visibility: "hidden" } : styles.link}
-        size={size}
-        disabled={page >= totalPages}
-        aria-label={t(texts.nextPage)}
+      <Box
+        css={page >= totalPages ? { visibility: "hidden" } : styles.listItem}
+        aria-label={t(texts.nextPage)} as={props.as || "a"}
 
       >
         <HiChevronRight style={{ fontSize: "0.8em" }}/>
-      </IconButton>
+      </Box>
     </ChakraPagination.NextTrigger>
+    </ListItem >
   )
 })
 export const PaginationItems = (props: React.HTMLAttributes<HTMLElement> & {as: React.ElementType | undefined, getHref?: (page: number) => string}) => {

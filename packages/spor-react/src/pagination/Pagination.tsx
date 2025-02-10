@@ -4,6 +4,7 @@ import type { ButtonProps, TextProps } from "@chakra-ui/react"
 import {
   Button,
   Pagination as ChakraPagination,
+  PaginationRoot as ChakraPaginationRoot,
   HStack,
   IconButton,
   Text,
@@ -57,22 +58,23 @@ export interface PaginationProps
 
 export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
   function Pagination(props, ref) {
-    const { size = "sm", getHref, ...rest } = props
+    const { size = "sm", getHref, as, ...rest } = props
+
     return (
       <RootPropsProvider
         value={{ size, getHref }}
-      >
-        <ChakraPagination.Root
+        {...rest}
+        >
+        <ChakraPaginationRoot
           ref={ref}
-          type={getHref ? "link" : "button"}
           {...rest}
         >
            <HStack>
               <PaginationPrevTrigger />
-              <PaginationItems />
+              <PaginationItems as={as} />
               <PaginationNextTrigger />
              </HStack>
-         </ChakraPagination.Root>
+         </ChakraPaginationRoot>
   </RootPropsProvider>
     )
   }
@@ -166,7 +168,7 @@ export const PaginationNextTrigger = React.forwardRef<
     </ChakraPagination.NextTrigger>
   )
 })
-export const PaginationItems = (props: React.HTMLAttributes<HTMLElement>) => {
+export const PaginationItems = (props: React.HTMLAttributes<HTMLElement> & {as: React.ElementType | undefined, getHref?: (page: number) => string}) => {
   return (
     <ChakraPagination.Context>
       {({ pages }) =>

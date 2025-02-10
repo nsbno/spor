@@ -66,12 +66,11 @@ export const Input = forwardRef<InputProps, "input">(
             },
           }}
         />
-<<<<<<< Updated upstream
-        <FormLabel htmlFor={inputId} id={labelId} pointerEvents="none">
-=======
+
         <FormLabel
           htmlFor={inputId}
           id={labelId}
+          pointerEvents="none"
           sx={{
             position: "absolute",
             left: "2.6rem",
@@ -88,7 +87,6 @@ export const Input = forwardRef<InputProps, "input">(
             },
           }}
         >
->>>>>>> Stashed changes
           {label}
         </FormLabel>
         {rightIcon && (

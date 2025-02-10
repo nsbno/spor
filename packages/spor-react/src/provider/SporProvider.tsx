@@ -2,8 +2,8 @@
 import { Global } from "@emotion/react";
 import React from "react";
 import { Language, LanguageProvider } from "..";
-import { Brand, brandTheme, fontFaces } from "../theme/brand";
-import { system as sporSystem } from "../theme";
+import { Brand, brandTheme, fontFaces } from "../theme/semantic-tokens/brand";
+import { system as sporSystem, themeConfig } from "../theme";
 import {
   ChakraProvider,
   ChakraProviderProps,
@@ -12,6 +12,8 @@ import {
 } from "@chakra-ui/react";
 import { ColorModeProvider } from "../color-mode";
 import deepmerge from "deepmerge";
+import { semanticTokens } from "@/theme/semantic-tokens";
+import { vyDigitalColors } from "@/theme/semantic-tokens/colors";
 
 type SporProviderProps = ChakraProviderProps & {
   language?: Language;
@@ -64,13 +66,20 @@ export const SporProvider = ({
   children,
   ...props
 }: SporProviderProps) => {
+  /* const mergedTheme = createSystem(themeConfig, {
+    theme: {
+      semanticTokens: {
+        colors: brandTheme[brand] ?? vyDigitalColors,
+      },
+    },
+  }); */
+
+  /* console.log("mergedTheme", mergedTheme); */
   const brandCustomizations = brandTheme[brand] ?? {};
 
-  const mergedTheme = createSystem(defaultConfig, brandTheme[brand]);
+  console.log("brandTheme", brandTheme[brand]);
 
-  console.log("mergedTheme", mergedTheme);
-
-  /* const mergedTheme = deepmerge(sporSystem, brandTheme[brand]); */
+  const mergedTheme = deepmerge(sporSystem, brandCustomizations);
   return (
     <LanguageProvider language={language}>
       <ChakraProvider {...props} value={mergedTheme}>

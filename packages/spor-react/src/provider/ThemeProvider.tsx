@@ -9,7 +9,7 @@ import {
   ThemeProvider as NextThemesProvider,
   useTheme as useNextTheme,
 } from "next-themes";
-import { Brand, brandTheme } from "../theme/brand";
+import { Brand, brandTheme } from "../theme/semantic-tokens/brand";
 import deepmerge from "deepmerge";
 
 const ThemeContext = createContext({

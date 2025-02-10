@@ -13,10 +13,9 @@ import { semanticTokens } from "./semantic-tokens";
 import { slotRecipes } from "./slot-recipes";
 import { textStyles } from "./tokens/text-styles";
 import { tokens } from "./tokens";
-import { brandTheme } from "./brand";
 import { config } from "./tokens/config";
 
-const themeConfig = defineConfig({
+export const themeConfig = defineConfig({
   ...config,
   globalCss,
   theme: {

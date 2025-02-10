@@ -7,13 +7,9 @@ export const colors = defineSemanticTokens.colors({
 });
 
 export const vyDigitalColors = defineSemanticTokens.colors({
-  colors: {
-    ...vyDigitalJson.color.vyDigital,
-  },
+  ...vyDigitalJson.color.vyDigital,
 });
 
 export const cargonetColors = defineSemanticTokens.colors({
-  colors: {
-    ...cargonetJson.color.cargonet,
-  },
+  ...cargonetJson.color.cargonet,
 });

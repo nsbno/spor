@@ -8,10 +8,7 @@ export const infoTagSlotRecipe = defineSlotRecipe({
   className: "spor-info-tag",
   base: {
     ...travelTagSlotRecipe.base,
-    iconContainer: {
-      ...travelTagSlotRecipe.base?.iconContainer,
-      padding: 1,
-    },
+    iconContainer: {},
     textContainer: {
       color: "text",
     },

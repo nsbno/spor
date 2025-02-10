@@ -116,7 +116,7 @@ export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
         aria-disabled={disabled}
         ref={ref}
         {...rest}
-        backgroundColor={disabled ? "platinum" : backgroundColor}
+        backgroundColor={disabled ? "surface.disabled" : backgroundColor}
       >
         <LineIcon
           variant={variant}

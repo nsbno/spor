@@ -15,7 +15,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       transitionDuration: "fast",
       transitionProperty: "common",
       _disabled: {
-        backgroundColor: "platinum",
+        backgroundColor: "surface.disabled",
       },
       "button&, a&": {
         boxShadow: "sm",
@@ -30,9 +30,8 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       },
     },
     iconContainer: {
-      padding: 0.5,
       _disabled: {
-        backgroundColor: "osloGrey",
+        backgroundColor: "surface.disabled",
         color: "white",
       },
     },
@@ -63,7 +62,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       critical: {
         container: {
           border: "1px solid",
-          borderColor: "brightRed",
+          borderColor: "error.text",
         },
         deviationIcon: {
           color: "brightRed",

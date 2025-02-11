@@ -57,8 +57,8 @@ export const drawerSlotRecipe = defineSlotRecipe({
     header: {
       flex: 0,
       paddingX: "6",
-      paddingTop: "6",
-      paddingBottom: "4",
+      paddingTop: "3",
+      paddingBottom: "0",
     },
     body: {
       paddingX: "6",
@@ -79,11 +79,11 @@ export const drawerSlotRecipe = defineSlotRecipe({
       textStyle: "md",
       fontWeight: "semibold",
     },
-    description: {
-      color: "fg.muted",
-    },
     closeTrigger: {
-      color: "brand.text",
+      color: {
+        _light: "blackAlpha.900",
+        _dark: "whiteAlpha.900",
+      },
       "& svg": {
         color: {
           _light: "blackAlpha.700",

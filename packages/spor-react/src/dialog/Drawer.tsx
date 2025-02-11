@@ -5,16 +5,19 @@ import {
   Portal,
   Box,
   Button,
+  DrawerHeaderProps,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { drawerSlotRecipe } from "../theme/slot-recipes/drawer";
 import { CloseButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
 import { ArrowLeftFill24Icon } from "@vygruppen/spor-icon-react";
+{
+}
 
 /**
  * 
- * <Drawer>
+ * <Drawer placement="end"> // this accept a placement prop default is bottom
     <DrawerTrigger onClick={() => setOpen(true)}>
       <Button variant="primary" size="sm">
         Open a simple drawer
@@ -43,13 +46,13 @@ type DrawerContentProps = ChakraDrawer.ContentProps &
     portalled?: boolean;
     portalRef?: React.RefObject<HTMLElement>;
     rounded?: "sm" | "md" | "lg" | "xl" | "2xl";
-    customVariant?: "default" | "full"; // default is the default variant, full is the full screen variant
+    /** "default" | "full" - defaults to default */
+    customVariant?: "default" | "full";
   };
 
-type DraweProps = Exclude<
+type DrawerProps = Exclude<
   ChakraDrawer.RootProps,
   | "colorPalette"
-  | "placement" // TODO: extend in the future the placement on top left and right
   | "contained"
   | "size"
   | "variant"
@@ -62,6 +65,25 @@ type DraweProps = Exclude<
     children: React.ReactNode;
   };
 
+export const DrawerHeaderFull = forwardRef<HTMLDivElement, DrawerHeaderProps>(
+  function DrawerHeaderFull(props) {
+    const { children, title, ...rest } = props;
+    return (
+      <ChakraDrawer.Header
+        {...rest}
+        display="flex"
+        justifyContent={"space-between"}
+        alignContent={"center"}
+      >
+        <FullScreenButton variant="back" />
+        <DrawerTitle marginTop={2}>{title}</DrawerTitle>
+        {children}
+        <FullScreenButton variant="close" />
+      </ChakraDrawer.Header>
+    );
+  },
+);
+
 export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
   function DrawerContent(props, ref) {
     const {
@@ -70,6 +92,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
       portalRef,
       rounded = "md",
       customVariant = "default",
+      title,
       ...rest
     } = props;
     return (
@@ -88,7 +111,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
             height={customVariant === "default" ? "auto" : "100vh"}
           >
             {customVariant === "default" && <CloseDrawerLine />}
-            {customVariant === "full" && <BackHistoryDrawer />}
+            {customVariant === "full" && <DrawerHeaderFull title={title} />}
             {children}
           </ChakraDrawer.Content>
         </ChakraDrawer.Positioner>
@@ -134,21 +157,23 @@ export const CloseDrawerLine = forwardRef<HTMLDivElement, {}>(
   },
 );
 
-export const BackHistoryDrawer = forwardRef<HTMLDivElement, {}>(
-  function BackHistoryDrawer() {
-    const { t } = useTranslation();
-    return (
-      <ChakraDrawer.CloseTrigger>
-        <Button marginX={3} marginY={2}>
-          <ArrowLeftFill24Icon marginRight="1" />
-          {t(texts.back)}
-        </Button>
-      </ChakraDrawer.CloseTrigger>
-    );
-  },
-);
+export const FullScreenButton = forwardRef<
+  HTMLDivElement,
+  { variant: "back" | "close" }
+>(function FullScreenButton({ variant }) {
+  const { t } = useTranslation();
+  const currentText = variant === "back" ? t(texts.back) : t(texts.close);
+  return (
+    <ChakraDrawer.CloseTrigger>
+      <Button marginX={6} marginY={2} variant="tertiary">
+        <ArrowLeftFill24Icon marginRight="1" />
+        {currentText}
+      </Button>
+    </ChakraDrawer.CloseTrigger>
+  );
+});
 
-export const Drawer = forwardRef<HTMLDivElement, DraweProps>(
+export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
   function Drawer(props) {
     const { children, placement = "bottom", ...rest } = props;
     return (
@@ -161,8 +186,8 @@ export const Drawer = forwardRef<HTMLDivElement, DraweProps>(
 );
 
 export const DrawerTrigger = ChakraDrawer.Trigger;
-export const DrawerFooter = ChakraDrawer.Footer;
 export const DrawerHeader = ChakraDrawer.Header;
+export const DrawerFooter = ChakraDrawer.Footer;
 export const DrawerBody = ChakraDrawer.Body;
 export const DrawerBackdrop = ChakraDrawer.Backdrop;
 export const DrawerTitle = ChakraDrawer.Title;
@@ -174,5 +199,11 @@ const texts = createTexts({
     nb: "Tilbake",
     nn: "Tilbake",
     sv: "Tillbaka",
+  },
+  close: {
+    en: "Close",
+    nb: "Lukk",
+    nn: "Lukk",
+    sv: "Stäng",
   },
 });

@@ -5,7 +5,7 @@ import {
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
-  DrawerRoot,
+  Drawer,
   DrawerBody,
   DrawerCloseTrigger,
   DrawerContent,
@@ -169,7 +169,7 @@ const MobileNavigation = ({ onSearchClick }: SearchFieldProps) => {
           className="dark"
         />
       </Flex>
-      <DrawerRoot placement="end" open={open} onExitComplete={onClose}>
+      <Drawer placement="end" open={open} onExitComplete={onClose}>
         <DrawerBackdrop />
         <DrawerContent>
           <DrawerCloseTrigger />
@@ -180,7 +180,7 @@ const MobileNavigation = ({ onSearchClick }: SearchFieldProps) => {
             </Stack>
           </DrawerBody>
         </DrawerContent>
-      </DrawerRoot>
+      </Drawer>
     </Flex>
   );
 };

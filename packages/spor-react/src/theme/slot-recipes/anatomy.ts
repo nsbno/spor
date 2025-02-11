@@ -35,6 +35,29 @@ export const fieldAnatomy = createAnatomy("field").parts(
   "errorText",
 );
 
+export const dialogAnatomy = createAnatomy("dialog").parts(
+  "header",
+  "body",
+  "footer",
+  "backdrop",
+  "positioner",
+  "content",
+  "title",
+  "description",
+);
+
+export const drawerAnatomy = createAnatomy("drawer").parts(
+  "header",
+  "body",
+  "backdrop",
+  "positioner",
+  "content",
+  "footer",
+  "title",
+  "description",
+  "closeTrigger",
+);
+
 export const checkboxAnatomy = createAnatomy("checkbox").parts(
   "root",
   "control",

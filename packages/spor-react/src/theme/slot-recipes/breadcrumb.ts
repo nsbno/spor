@@ -10,45 +10,45 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
   base: {
     list: {
       display: "inline-flex",
-      flexWrap: "nowrap",
+      flexWrap: "wrap",
       alignItems: "center",
     },
     link: {
       cursor: "pointer",
-      padding: "3px",
-      borderRadius: "6px",
+      padding: 0.5,
+      borderRadius: "xs",
       _focusVisible: {
-        ...focusVisibleStyles()._focusVisible,
+        ...focusVisibleStyles(),
       },
     },
     currentLink: {
-      borderRadius: "6px",
+      borderRadius: "xs",
       cursor: "default",
     },
   },
   variants: {
-    variant:{
-    core: {
-      link: {
-        _hover: {
-          ...coreBorder("default"),
-          _active: {
-            ...coreBackground("active"),
-            outline: "none",
+    variant: {
+      core: {
+        link: {
+          _hover: {
+            ...coreBorder("default"),
+            _active: {
+              ...coreBackground("active"),
+              outline: "none",
+            },
           },
         },
       },
-    },
-    ghost: {
-      link: {
-        _hover: {
-          ...ghostBackground("hover"),
-          _active: {
-            ...ghostBackground("active"),
+      ghost: {
+        link: {
+          _hover: {
+            ...ghostBackground("hover"),
+            _active: {
+              ...ghostBackground("active"),
+            },
           },
         },
       },
     },
   },
- 
-}});
+});

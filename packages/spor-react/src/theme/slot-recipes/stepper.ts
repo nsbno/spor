@@ -15,6 +15,12 @@ export const stepperSlotRecipe = defineSlotRecipe({
       minHeight: ["3rem", null, "3.75rem"],
       overflowX: "auto",
       width: "100%",
+      "& svg": {
+        color: {
+          _light: "blackAlpha.700",
+          _dark: "whiteAlpha.700",
+        },
+      },
     },
     container: {
       paddingX: [2, null, null, 0],

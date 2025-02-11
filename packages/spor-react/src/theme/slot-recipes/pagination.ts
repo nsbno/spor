@@ -11,8 +11,8 @@ export const paginationSlotRecipe = defineSlotRecipe({
       justifyContent: "center",
       alignItems: "center",
       display: "flex",
-      width: "5",
-      height: "5",
+      width: 5,
+      height: 5,
       gap: 3,
       marginInline: 0.5,
       ...coreBackground("default"),
@@ -29,11 +29,15 @@ export const paginationSlotRecipe = defineSlotRecipe({
         },
       },
     },
+
     list: {
-      display: "inline-flex",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "0.5rem",
+      flexDirection: "row",
       listStyle: "none",
-      height: "5",
-      gap: 3,
+      height: 5,
     },
 
     activeButton: {
@@ -43,7 +47,6 @@ export const paginationSlotRecipe = defineSlotRecipe({
       width: "5",
       height: "5",
       gap: 3,
-      padding: "6px",
       borderRadius: 50,
       fontWeight: "bold",
       ...coreBackground("active"),
@@ -55,18 +58,6 @@ export const paginationSlotRecipe = defineSlotRecipe({
           ...ghostBackground("active"),
         },
       },
-    },
-    disabled: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      cursor: "not-allowed",
-      pointerEvents: "none",
-      ...coreText("default"),
-    },
-    icon: {
-      bottom: "-0.03em !important",
-      fontSize: "0.8em",
     },
   },
 });

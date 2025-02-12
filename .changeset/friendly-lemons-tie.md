@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": major
 ---
 
-Breadcrumb: Changed from recipe to slotRecipe. You now use breadcrumbCurrentLink instead of isCurrentPage.
+Breadcrumb: You now use breadcrumbCurrentLink instead of isCurrentPage and you do not use BreadcrumbItem.

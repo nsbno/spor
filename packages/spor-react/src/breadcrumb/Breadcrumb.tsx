@@ -14,7 +14,7 @@ import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 
 type BreadcrumbVariants = RecipeVariantProps<typeof breadcrumbSlotRecipe>;
 
-export type BreadcrumbProps = Exclude<
+export type BreadcrumbProps = Omit<
   BoxProps,
   "size" | "colorPalette" | "unstyled" | "separator" | "separatorGap"
 > &

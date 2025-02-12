@@ -21,6 +21,9 @@ export const lineIconSlotRecipe = defineSlotRecipe({
     },
     title: {
       color: "darkGrey",
+      "[aria-disabled=true] &": {
+        color: "text.disabled",
+      },
     },
   },
   variants: {
@@ -98,13 +101,10 @@ export const lineIconSlotRecipe = defineSlotRecipe({
         },
         _disabled: {
           icon: {
-            color: "text",
+            color: "text.disabled",
           },
           title: {
-            color: "brand.text",
-          },
-          description: {
-            color: "brand.text",
+            color: "text.disabled",
           },
         },
       },

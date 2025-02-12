@@ -11,11 +11,13 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
     list: {
       display: "inline-flex",
       flexWrap: "wrap",
+      gap: 1,
       alignItems: "center",
       fontSize: ["mobile.xs", null, null, "desktop.xs"],
     },
     link: {
       cursor: "pointer",
+      padding: 0.5,
       borderRadius: "xs",
       ...focusVisibleStyles(),
     },

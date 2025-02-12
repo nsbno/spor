@@ -17,9 +17,7 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
       cursor: "pointer",
       padding: 0.5,
       borderRadius: "xs",
-      _focusVisible: {
-        ...focusVisibleStyles(),
-      },
+      ...focusVisibleStyles(),
     },
     currentLink: {
       borderRadius: "xs",

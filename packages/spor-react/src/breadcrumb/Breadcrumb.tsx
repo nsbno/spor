@@ -61,7 +61,7 @@ export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
                 </ChakraBreadcrumb.Item>
                 {!isLast && (
                   <ChakraBreadcrumb.Separator aria-hidden="true">
-                    {<DropdownRightFill18Icon color="icon.disabled" />}
+                    <DropdownRightFill18Icon color="icon.disabled" />
                   </ChakraBreadcrumb.Separator>
                 )}
               </React.Fragment>

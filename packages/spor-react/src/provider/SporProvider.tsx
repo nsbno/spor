@@ -11,6 +11,7 @@ import {
   defaultSystem,
 } from "@chakra-ui/react";
 import { ColorModeProvider } from "../color-mode";
+import { vyDigitalColors } from "@/theme/semantic-tokens/colors";
 
 type SporProviderProps = Exclude<ChakraProviderProps, "value"> & {
   language?: Language;
@@ -66,6 +67,8 @@ export const SporProvider = ({
   const brandCustomizations = brandTheme[brand] ?? {};
 
   const extendedTheme = deepmerge(theme, brandCustomizations);
+
+  console.log(vyDigitalColors);
 
   return (
     <LanguageProvider language={language}>

@@ -15,7 +15,10 @@
     "prerelease": "npm run build",
     "release": "turbo run build && changeset publish",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\""
+    "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "typegen": "npx @chakra-ui/cli typegen packages/spor-react/src/theme/index.ts",
+    "typegen:watch": "npx @chakra-ui/cli typegen packages/spor-react/src/theme/index.ts --watch",
+    "typegen:strict": "npx @chakra-ui/cli typegen packages/spor-react/src/theme/index.ts --strict"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.5",

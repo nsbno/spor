@@ -51,5 +51,3 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     return <ChakraRadioGroup.Root ref={ref} {...props} aria-labelledby="" />;
   },
 );
-
-export const RadioGroupLabel = ChakraRadioGroup.Label;

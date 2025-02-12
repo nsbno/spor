@@ -73,6 +73,20 @@ export const checkboxAnatomy = createAnatomy("checkbox").parts(
   "content",
 );
 
+export const stepperAnatomy = createAnatomy("stepper").parts(
+  "root",
+  "container",
+  "innerContainer",
+  "title",
+  "stepCounter",
+  "stepContainer",
+  "stepButton",
+  "stepNumber",
+  "stepTitle",
+  "closeButton",
+  "backButton",
+);
+
 export const radioCardAnatomy = createAnatomy("radio-card").parts(
   "root",
   "item",

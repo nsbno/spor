@@ -7,7 +7,7 @@ import { RadioGroup as ChakraRadioGroup } from "@chakra-ui/react";
 type RadioVariants = RecipeVariantProps<typeof radioGroupSlotRecipe>;
 
 export type RadioProps = PropsWithChildren<RadioVariants> &
-  Omit<ChakraRadioGroup.ItemProps, "colorPalette" | "size" | "variant"> & {
+  ChakraRadioGroup.ItemProps & {
     rootRef?: React.Ref<HTMLDivElement>;
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
   };
@@ -17,11 +17,7 @@ export type RadioProps = PropsWithChildren<RadioVariants> &
  *
  * Specify the label as `children` and the value as `value`.
  *
- * ```tsx
- * <Radio value="#f00">Red</Radio>
- * ```
- *
- * You typically want to place Radio components in a group with several other Radio components. You can do that with the `RadioGroup` component.
+ * Place the Radio components in a group with several other Radio components. You can do that with the `RadioGroup` component.
  *
  * ```tsx
  * <RadioGroup name="ticket">
@@ -45,7 +41,10 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   );
 });
 
-type RadioGroupProps = Omit<ChakraRadioGroup.RootProps, "colorPalette"> & {};
+type RadioGroupProps = Omit<
+  ChakraRadioGroup.RootProps,
+  "colorPalette" | "variant" | "size"
+> & {};
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
   (props, ref) => {

@@ -68,8 +68,6 @@ export const SporProvider = ({
 
   const extendedTheme = deepmerge(theme, brandCustomizations);
 
-  console.log(vyDigitalColors);
-
   return (
     <LanguageProvider language={language}>
       <ChakraProvider {...props} value={extendedTheme}>

@@ -1,15 +1,13 @@
 "use client";
 import React, { forwardRef, PropsWithChildren } from "react";
-import { RecipeVariantProps, BoxProps } from "@chakra-ui/react";
-import { radioSlotRecipe } from "../theme/slot-recipes/radio";
+import { RecipeVariantProps } from "@chakra-ui/react";
+import { radioGroupSlotRecipe } from "../theme/slot-recipes/radio";
 import { RadioGroup as ChakraRadioGroup } from "@chakra-ui/react";
 
-type RadioVariants = RecipeVariantProps<typeof radioSlotRecipe>;
+type RadioVariants = RecipeVariantProps<typeof radioGroupSlotRecipe>;
 
-export type RadioProps = BoxProps &
-  PropsWithChildren<RadioVariants> &
-  ChakraRadioGroup.ItemProps & {
-    children?: React.ReactNode;
+export type RadioProps = PropsWithChildren<RadioVariants> &
+  Omit<ChakraRadioGroup.ItemProps, "colorPalette" | "size" | "variant"> & {
     rootRef?: React.Ref<HTMLDivElement>;
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
   };
@@ -32,20 +30,36 @@ export type RadioProps = BoxProps &
  *   <Radio value="first-class">First Class</Radio>
  * </RadioGroup>
  */
-export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  (props, ref) => {
-    const { children, inputProps, rootRef, ...rest } = props;
 
+export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
+  const { children, inputProps, rootRef, ...rest } = props;
+
+  return (
+    <ChakraRadioGroup.Item ref={rootRef} {...rest}>
+      <ChakraRadioGroup.ItemHiddenInput ref={ref} {...inputProps} />
+      <ChakraRadioGroup.ItemIndicator />
+      {children && (
+        <ChakraRadioGroup.ItemText>{children}</ChakraRadioGroup.ItemText>
+      )}
+    </ChakraRadioGroup.Item>
+  );
+});
+
+type RadioGroupProps = Omit<ChakraRadioGroup.RootProps, "colorPalette"> & {
+  rootAriaLabelledby?: string;
+};
+
+export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
+  (props, ref) => {
+    const { rootAriaLabelledby } = props;
     return (
-      <ChakraRadioGroup.Item ref={rootRef} {...rest}>
-        <ChakraRadioGroup.ItemHiddenInput ref={ref} {...inputProps} />
-        <ChakraRadioGroup.ItemIndicator />
-        {children && (
-          <ChakraRadioGroup.ItemText>{children}</ChakraRadioGroup.ItemText>
-        )}
-      </ChakraRadioGroup.Item>
+      <ChakraRadioGroup.Root
+        ref={ref}
+        {...props}
+        aria-labelledby={rootAriaLabelledby}
+      />
     );
   },
 );
 
-export const RadioGroup = ChakraRadioGroup.Root;
+export const RadioGroupLabel = ChakraRadioGroup.Label;

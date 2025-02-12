@@ -2,52 +2,86 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { radiomarkRecipe } from "../recipes/radiomarker";
 
-export const radioSlotRecipe = defineSlotRecipe({
-  slots: ["container", "label", "control"],
+export const radioGroupSlotRecipe = defineSlotRecipe({
+  slots: ["root", "item", "itemControl", "itemText", "label"],
   className: "spor-radio",
   base: {
-    container: {
-      _hover: {
-        backgroundColor: "inherit",
-        borderColor: "text",
-        color: brandBackground("hover").backgroundColor,
+    root: {
+      display: "flex",
+      gap: 2,
+    },
+    item: {
+      display: "flex",
+      alignItems: "center",
+      position: "relative",
+      gap: "1.5",
+      cursor: "pointer",
+      _disabled: {
+        cursor: "disabled",
       },
     },
+
     label: {
       userSelect: "none",
-      _disabled: { opacity: 0.4 },
-    },
-    control: {
-      width: "1rem",
-      height: "1rem",
-      backgroundColor: "inherit",
-      border: "2px solid",
-      borderColor: coreBorder("default").outlineColor,
-      borderRadius: "50%",
-      ...focusVisibleStyles(),
       _disabled: {
-        ...coreBackground("disabled"),
-        ...coreBorder("disabled"),
-        ...coreText("disabled"),
+        opacity: "0.5",
       },
+    },
+
+    itemControl: {
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+      verticalAlign: "top",
+      color: "white",
+      borderWidth: "2px",
+      borderColor: "brand.surface",
+      borderRadius: "xl",
+      width: 4,
+      height: 4,
+
       _checked: {
-        color: "brand.surface.default",
+        color: "brand.surface",
         borderColor: "currentColor",
-        _before: {
-          content: `""`,
-          display: "inline-block",
-          position: "relative",
-          width: "50%",
-          height: "50%",
-          borderRadius: "50%",
-          background: "currentColor",
+      },
+      _hover: {
+        color: "brand.surface.hover",
+        borderColor: "currentColor",
+        "& .dot": {
+          backgroundColor: "brand.surface.hover",
         },
-        _disabled: {
-          pointerEvents: "none",
-          ...coreBackground("disabled"),
-          ...coreBorder("disabled"),
-          ...coreText("disabled"),
+      },
+      _focusVisible: {
+        outline: "2px solid",
+        outlineColor: "brand.surface",
+        outlineOffset: "2px",
+      },
+      _invalid: {
+        colorPalette: "red",
+        borderColor: "red.500",
+      },
+      _disabled: {
+        pointerEvents: "none",
+        backgroundColor: "surface.disabled",
+        borderColor: "outline.disabled",
+        color: "text.disabled",
+      },
+      "& .dot": {
+        height: "100%",
+        width: "100%",
+        borderRadius: "xl",
+        background: "brand.surface",
+        scale: "0.5",
+      },
+    },
+  },
+  variants: {
+    orientation: {
+      vertical: {
+        root: {
+          flexDirection: "column",
         },
       },
     },

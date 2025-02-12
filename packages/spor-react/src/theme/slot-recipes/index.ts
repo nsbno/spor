@@ -20,7 +20,7 @@ import { numericStepperRecipe } from "./numeric-stepper";
 import { popoverSlotRecipe } from "./popover";
 import { progressBarRecipe } from "./progress-bar";
 import { progressIndicatorRecipe } from "./progress-indicator";
-import { radioSlotRecipe } from "./radio";
+import { radioGroupSlotRecipe } from "./radio";
 import { radioCardSlotRecipe } from "./radio-card";
 import { selectSlotRecipe } from "./select";
 import { stepperSlotRecipe } from "./stepper";
@@ -53,7 +53,7 @@ export const slotRecipes = {
   progressbar: progressBarRecipe,
   progressIndicator: progressIndicatorRecipe,
   radioCard: radioCardSlotRecipe,
-  radio: radioSlotRecipe,
+  radioGroup: radioGroupSlotRecipe,
   select: selectSlotRecipe,
   stepper: stepperSlotRecipe,
   switch: switchSlotRecipe,

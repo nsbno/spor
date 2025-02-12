@@ -35,6 +35,34 @@ export const fieldAnatomy = createAnatomy("field").parts(
   "errorText",
 );
 
+export const linjetagAnatomy = createAnatomy("linjetag").parts(
+  "iconContainer",
+  "icon",
+  "root",
+  "title",
+  "desc",
+);
+
+export const infoTagAnatomy = createAnatomy("info-tag").parts(
+  "container",
+  "iconContainer",
+  "icon",
+  "textContainer",
+  "title",
+  "description",
+  "walk",
+);
+
+export const travelTagAnatomy = createAnatomy("travel-tag").parts(
+  "container",
+  "iconContainer",
+  "icon",
+  "textContainer",
+  "title",
+  "description",
+  "deviationIcon",
+);
+
 export const checkboxAnatomy = createAnatomy("checkbox").parts(
   "root",
   "control",

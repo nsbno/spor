@@ -2,7 +2,6 @@ import {
   createSystem,
   defaultBaseConfig,
   defineConfig,
-  mergeConfigs,
 } from "@chakra-ui/react";
 import { animationStyles } from "./tokens/animation-styles";
 import { breakpoints } from "./tokens/breakpoints";
@@ -14,12 +13,10 @@ import { semanticTokens } from "./semantic-tokens";
 import { slotRecipes } from "./slot-recipes";
 import { textStyles } from "./tokens/text-styles";
 import { tokens } from "./tokens";
-import { brandTheme } from "./brand";
 import { config } from "./tokens/config";
 
-const themeConfig = defineConfig({
+export const themeConfig = defineConfig({
   ...config,
-  ...brandTheme,
   globalCss,
   theme: {
     breakpoints,

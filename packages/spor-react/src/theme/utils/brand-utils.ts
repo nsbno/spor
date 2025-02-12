@@ -20,9 +20,7 @@ export function brandBackground(state: BrandBackgroundState) {
   }
 }
 
-type BrandTextState = Subset<State, "hover" | "active" | "default">;
-
-export function brandText(state: BrandTextState) {
+export function brandText() {
   return {
     color: "brand.text",
   };

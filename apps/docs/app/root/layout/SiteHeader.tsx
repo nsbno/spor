@@ -28,6 +28,7 @@ import { useEffect, useState } from "react";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
 import { SiteSearchModal } from "./SiteSearchModal";
 import { SiteSettings } from "./SiteSettings";
+import { BrandSwitcher } from "~/features/brand-switcher/BrandSwitcher";
 
 /** The site header shown at the top of every part of our site */
 export const SiteHeader = () => {
@@ -74,6 +75,7 @@ export const SiteHeader = () => {
         </Link>
       </Box>
       <ColorModeButton /> {/* temp solution */}
+      <BrandSwitcher />
       <DesktopNavigation
         onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
       />

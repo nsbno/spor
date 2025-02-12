@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": major
 ---
 
-Breadcrumb: You now use breadcrumbCurrentLink instead of isCurrentPage and you do not use BreadcrumbItem.
+Breadcrumb: isCurrentPage prop is deprecated. Use BreadcrumbCurrentLink instead. BreadcrumbLink is deprecated. BreadcrumbItem will act as link and item.

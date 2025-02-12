@@ -1,8 +1,9 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+import { radioAnatomy } from "./anatomy";
 
 export const radioGroupSlotRecipe = defineSlotRecipe({
-  slots: ["root", "item", "itemControl", "itemText", "label"],
   className: "spor-radio",
+  slots: radioAnatomy.keys(),
   base: {
     root: {
       display: "flex",

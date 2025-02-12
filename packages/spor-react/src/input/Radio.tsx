@@ -45,20 +45,11 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   );
 });
 
-type RadioGroupProps = Omit<ChakraRadioGroup.RootProps, "colorPalette"> & {
-  rootAriaLabelledby?: string;
-};
+type RadioGroupProps = Omit<ChakraRadioGroup.RootProps, "colorPalette"> & {};
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
   (props, ref) => {
-    const { rootAriaLabelledby } = props;
-    return (
-      <ChakraRadioGroup.Root
-        ref={ref}
-        {...props}
-        aria-labelledby={rootAriaLabelledby}
-      />
-    );
+    return <ChakraRadioGroup.Root ref={ref} {...props} aria-labelledby="" />;
   },
 );
 

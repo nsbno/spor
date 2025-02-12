@@ -18,14 +18,17 @@ export const radioGroupSlotRecipe = defineSlotRecipe({
         cursor: "disabled",
       },
     },
-
     label: {
       userSelect: "none",
       _disabled: {
         opacity: "0.5",
       },
     },
-
+    itemText: {
+      _disabled: {
+        color: "text.disabled",
+      },
+    },
     itemControl: {
       display: "inline-flex",
       alignItems: "center",
@@ -54,15 +57,13 @@ export const radioGroupSlotRecipe = defineSlotRecipe({
         outlineColor: "brand.surface",
         outlineOffset: "2px",
       },
-      _invalid: {
-        colorPalette: "red",
-        borderColor: "red.500",
-      },
       _disabled: {
         pointerEvents: "none",
         backgroundColor: "surface.disabled",
         borderColor: "outline.disabled",
-        color: "text.disabled",
+        "& .dot": {
+          backgroundColor: "outline.disabled",
+        },
       },
       "& .dot": {
         height: "100%",

@@ -1,8 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
-import { brandBackground } from "../utils/brand-utils";
-import { focusVisibleStyles } from "../utils/focus-utils";
-import { radiomarkRecipe } from "../recipes/radiomarker";
 
 export const radioGroupSlotRecipe = defineSlotRecipe({
   slots: ["root", "item", "itemControl", "itemText", "label"],

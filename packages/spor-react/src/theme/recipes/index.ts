@@ -7,7 +7,6 @@ import { codeRecipie } from "./code";
 import { inputRecipe } from "./input";
 import { linkRecipe } from "./link";
 import { pressableCardRecipe } from "./pressable-card";
-import { radiomarkRecipe } from "./radiomarker";
 import { separatorRecipe } from "./separator";
 import { staticCardRecipe } from "./static-card";
 import { textareaRecipe } from "./textarea";
@@ -23,7 +22,6 @@ export const recipes = {
   input: inputRecipe,
   link: linkRecipe,
   pressableCard: pressableCardRecipe,
-  radiomark: radiomarkRecipe,
   seperator: separatorRecipe,
   staticCard: staticCardRecipe,
   textarea: textareaRecipe,

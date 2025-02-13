@@ -26,7 +26,7 @@ const [RootPropsProvider] = createContext<ButtonVariantContext>({
 });
 
 export interface PaginationProps
-  extends Omit<ChakraPagination.RootProps, "type"> {
+  extends Omit<ChakraPagination.RootProps, "type" | "translations"> {
   getHref?: (page: number) => string;
 }
 /**

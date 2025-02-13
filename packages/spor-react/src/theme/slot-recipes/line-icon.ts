@@ -1,16 +1,29 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+import { linjetagAnatomy } from "./anatomy";
 
 export const lineIconSlotRecipe = defineSlotRecipe({
-  slots: ["iconContainer", "icon"],
+  slots: linjetagAnatomy.keys(),
   className: "spor-line-icon",
   base: {
     iconContainer: {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      "[aria-disabled=true] &": {
+        backgroundColor: "surface.disabled",
+      },
     },
     icon: {
       color: "white",
+      "[aria-disabled=true] &": {
+        color: "icon.disabled",
+      },
+    },
+    title: {
+      color: "darkGrey",
+      "[aria-disabled=true] &": {
+        color: "text.disabled",
+      },
     },
   },
   variants: {
@@ -77,22 +90,29 @@ export const lineIconSlotRecipe = defineSlotRecipe({
         },
       },
       walk: {
-        iconContainer: {
-          backgroundColor: "white",
-          borderWidth: 1,
-          borderStyle: "solid",
-          borderColor: "blackAlpha.200",
+        title: {
+          color: "text",
         },
         icon: {
-          color: "text",
+          color: "linjetag.walkLight",
           "[aria-disabled=true] &": {
-            color: "osloGrey",
+            color: "icon.disabled",
+          },
+        },
+        _disabled: {
+          icon: {
+            color: "text.disabled",
+          },
+          title: {
+            color: "text.disabled",
           },
         },
       },
       custom: {
         iconContainer: {
-          backgroundColor: "unset",
+          _disabled: {
+            backgroundColor: "surface.disabled",
+          },
         },
       },
     },
@@ -100,19 +120,16 @@ export const lineIconSlotRecipe = defineSlotRecipe({
       sm: {
         iconContainer: {
           borderRadius: "0.5625rem",
-          padding: 1,
         },
       },
       md: {
         iconContainer: {
           borderRadius: "0.5625rem",
-          padding: 1,
         },
       },
       lg: {
         iconContainer: {
           borderRadius: "sm",
-          padding: 1,
         },
       },
     },

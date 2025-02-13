@@ -13,7 +13,7 @@ export type TextareaProps = Exclude<ChakraTextareaProps, "size"> & {
 };
 
 /**
- * Hook to calculate the height of the label element to adjust spacing for the input for floating label
+ * Hook to calculate the height of the label element to adjust spacing for the input for floating label.
  */
 const useLabelHeight = (label: string | undefined) => {
   const labelRef = useRef<HTMLLabelElement>(null);

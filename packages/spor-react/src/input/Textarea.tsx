@@ -67,7 +67,12 @@ export const Textarea = forwardRef<TextareaProps, "textarea">((props, ref) => {
     >
       <ChakraTextarea {...rest} id={inputId} ref={ref} placeholder=" " />
       {label && (
-        <FormLabel ref={labelRef} htmlFor={inputId} id={`${inputId}-label`}>
+        <FormLabel
+          ref={labelRef}
+          htmlFor={inputId}
+          id={`${inputId}-label`}
+          pointerEvents="none"
+        >
           {label}
         </FormLabel>
       )}

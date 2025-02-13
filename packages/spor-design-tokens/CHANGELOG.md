@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.8.2
+
+### Patch Changes
+
+- e6e8b1a: **Color tokens**: Updated disabled text color
+
 ## 3.8.1
 
 ### Patch Changes

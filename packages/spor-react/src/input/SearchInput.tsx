@@ -39,7 +39,7 @@ export const SearchInput = forwardRef<SearchInputProps, "input">(
 
     return (
       <InputGroup position="relative" {...outerProps}>
-        <InputLeftElement>
+        <InputLeftElement pointerEvents="none">
           <SearchOutline24Icon />
         </InputLeftElement>
         <ChakraInput

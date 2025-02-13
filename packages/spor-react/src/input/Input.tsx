@@ -60,8 +60,33 @@ export const Input = forwardRef<InputProps, "input">(
           ref={ref}
           overflow="hidden"
           placeholder=" " // This is needed to make the label work as expected
+          css={{
+            "&::-webkit-search-cancel-button": {
+              WebkitAppearance: "none",
+            },
+          }}
         />
-        <FormLabel htmlFor={inputId} id={labelId}>
+
+        <FormLabel
+          htmlFor={inputId}
+          id={labelId}
+          pointerEvents="none"
+          sx={{
+            position: "absolute",
+            left: "2.6rem",
+            top: "26.9%",
+            fontSize: "1.13rem",
+            pointerEvents: "none",
+            margin: 0,
+            zIndex: 2,
+            "input:focus + &, input[data-has-value] + &": {
+              color: "var(--chakra-colors-gray-600)",
+            },
+            "input[data-has-value] + &": {
+              transform: "translateY(-40%) scale(0.9)",
+            },
+          }}
+        >
           {label}
         </FormLabel>
         {rightIcon && (

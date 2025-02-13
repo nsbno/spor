@@ -10,7 +10,7 @@ const config = defineStyleConfig({
     borderTop: "0.8rem solid transparent",
     "&:not(:placeholder-shown)": {
       "&:has(+ label)": {
-        borderTop: "calc(var(--label-height)) solid transparent", // use border in stead of padding to avoid problems with scrolling
+        borderTop: "var(--label-height) solid transparent", // use border in stead of padding to avoid problems with scrolling
       },
       "& + label": {
         transform: "scale(0.825) translateY(-10px)",

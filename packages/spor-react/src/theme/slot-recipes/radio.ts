@@ -36,7 +36,7 @@ export const radioGroupSlotRecipe = defineSlotRecipe({
       justifyContent: "center",
       verticalAlign: "top",
       borderWidth: "2px",
-      borderColor: "brand.surface",
+      borderColor: "core.outline",
       borderRadius: "xl",
       width: 4,
       height: 4,

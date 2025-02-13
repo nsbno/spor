@@ -84,7 +84,12 @@ export const checkboxAnatomy = createAnatomy("checkbox").parts(
   "content",
 );
 
-export const stepperAnatomy = createAnatomy("stepper").parts(
+export const breadcrumbAnatomy = createAnatomy("breadcrumb").parts(
+"link", 
+"currentLink",
+"list",
+
+  export const stepperAnatomy = createAnatomy("stepper").parts(
   "root",
   "container",
   "innerContainer",

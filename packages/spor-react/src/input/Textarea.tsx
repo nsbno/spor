@@ -26,11 +26,18 @@ const useLabelHeight = (label: string | undefined) => {
       }
     };
 
-    updateLabelHeight(); // Initial calculation
+    const observer = new ResizeObserver(updateLabelHeight);
+    if (labelRef.current) {
+      observer.observe(labelRef.current);
+    }
 
-    window.addEventListener("resize", updateLabelHeight);
+    // Initial calculation with a slight delay to ensure CSS is applied
+    setTimeout(updateLabelHeight, 0);
+
     return () => {
-      window.removeEventListener("resize", updateLabelHeight);
+      if (labelRef.current) {
+        observer.unobserve(labelRef.current);
+      }
     };
   }, [label]);
 

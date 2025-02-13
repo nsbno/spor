@@ -9,6 +9,7 @@ import {
   ChakraProviderProps,
   createSystem,
   defaultConfig,
+  defaultSystem,
 } from "@chakra-ui/react";
 import { ColorModeProvider } from "../color-mode";
 import deepmerge from "deepmerge";
@@ -77,12 +78,19 @@ export const SporProvider = ({
   /* console.log("mergedTheme", mergedTheme); */
   const brandCustomizations = brandTheme[brand] ?? {};
 
-  console.log("brandTheme", brandTheme[brand]);
+  console.log("brandCustomizations", brandCustomizations);
+  console.log("default", defaultSystem);
 
   const mergedTheme = deepmerge(theme, brandCustomizations);
+  console.log("merged brandTheme w", mergedTheme);
+
+  const z =
+    brand === "VyDigital"
+      ? deepmerge(theme, brandTheme["VyDigital"])
+      : deepmerge(theme, brandTheme["CargoNet"]);
   return (
     <LanguageProvider language={language}>
-      <ChakraProvider {...props} value={mergedTheme}>
+      <ChakraProvider {...props} value={z}>
         <ColorModeProvider>
           <Global styles={fontFaces} />
           {children}

@@ -15,20 +15,20 @@ export const StepperStep = ({
   children,
   stepNumber,
   variant,
-  disabled: isDisabledOverride,
+  disabled: disabledOverride,
 }: StepperStepProps) => {
   const { activeStep, onClick } = useStepper();
   const state = getState(stepNumber, activeStep);
   const recipe = useSlotRecipe({ key: "stepper" });
   const style = recipe({ variant });
-  const disabledTextColor = useColorModeValue(
-    "blackAlpha.400",
-    "whiteAlpha.400",
-  );
-  const iconColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
+  const disabledTextColor = "text.disabled";
+  const iconColor = {
+    _light: "blackAlpha.200",
+    _dark: "whiteAlpha.200",
+  };
 
   const disabled =
-    (state !== "active" && isDisabledOverride) || state === "disabled";
+    (state !== "active" && disabledOverride) || state === "disabled";
 
   return (
     <Box css={style.stepContainer}>
@@ -42,7 +42,7 @@ export const StepperStep = ({
       {disabled ? (
         <Text
           variant="xs"
-          fontSize="16px"
+          fontSize="1rem"
           color={disabledTextColor}
           cursor="default"
           paddingX={2}
@@ -58,7 +58,12 @@ export const StepperStep = ({
           }
           pointerEvents={state === "active" ? "none" : "auto"}
           tabIndex={state === "active" ? -1 : undefined}
-          css={style.stepButton}
+          disabled={disabled}
+          css={
+            state === "active"
+              ? style.stepButton._currentStep
+              : style.stepButton
+          }
         >
           {children}
         </Button>

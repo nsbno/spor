@@ -1,11 +1,10 @@
 import { defineTokens } from "@chakra-ui/react";
-import tokens from "@vygruppen/spor-design-tokens";
+import linjetagJson from "@vygruppen/spor-design-tokens/tokens/color/linjetag.json";
+import paletteJson from "@vygruppen/spor-design-tokens/tokens/color/palette.json";
+import aliasJson from "@vygruppen/spor-design-tokens/tokens/color/alias.json";
 
-export type ColorsType = typeof tokens.color.alias &
-  typeof tokens.color.palette & { linjetag: typeof tokens.color.linjetag };
-
-export const colors: ColorsType = defineTokens.colors({
-  ...tokens.color.alias,
-  ...tokens.color.palette,
-  linjetag: tokens.color.linjetag,
+export const colors = defineTokens.colors({
+  ...aliasJson.color.alias,
+  ...paletteJson.color.palette,
+  linjetag: linjetagJson.color.linjetag,
 });

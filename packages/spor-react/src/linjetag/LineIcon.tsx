@@ -24,6 +24,10 @@ export type LineIconProps = Exclude<BoxProps, "variant"> &
   VariantProps &
   PropsWithChildren<LineIconVariantProps> & {
     size: TagProps["size"];
+    foregroundColor?: string;
+    backgroundColor?: string;
+    disabled?: boolean;
+    target?: string;
   };
 
 /**
@@ -57,9 +61,26 @@ export type LineIconProps = Exclude<BoxProps, "variant"> &
  */
 
 export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
-  function LineIcon({ variant, size = "md", style, ...rest }, ref) {
-    const recipe = useSlotRecipe({ key: "line-icon" });
+  function LineIcon({
+    variant,
+    size = "md",
+    foregroundColor,
+    backgroundColor,
+    disabled,
+    style,
+    target = "lineIcon",
+    ...rest
+  }) {
+    const recipe = useSlotRecipe({ key: "lineIcon" });
     const styles = recipe({ variant, size, ...rest });
+
+    const targetPadding = () => {
+      return target === "travelTag" ? 0.5 : 1;
+    };
+
+    const borderContainer = () => {
+      return variant === "walk" && target === "travelTag" ? 0 : 0.5;
+    };
 
     const Icon: any = getCorrectIcon({
       variant:
@@ -73,9 +94,21 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
     if (!Icon) {
       return null;
     }
+
+    if (foregroundColor) {
+      styles.iconContainer.backgroundColor = disabled
+        ? "surface.disabled"
+        : foregroundColor;
+    }
+
     return (
-      <Box css={styles.iconContainer}>
-        <Icon sx={styles.icon} />
+      <Box
+        css={{ ...styles.iconContainer, ...style }}
+        padding={targetPadding()}
+        borderWidth={borderContainer()}
+        borderColor={variant === "walk" ? "core.outline" : "transparent"}
+      >
+        <Icon css={styles.icon} />
       </Box>
     );
   },

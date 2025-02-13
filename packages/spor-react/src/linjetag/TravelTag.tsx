@@ -45,6 +45,8 @@ export type TravelTagProps = TagProps &
  *
  * You can also render them with a deviation level to indicate an extra focus:
  *
+ * You can add a "disabled" prop to the tag to make it look disabled (grey)
+ *
  * ```tsx
  * <TravelTag
  *   variant="subway"
@@ -99,25 +101,31 @@ export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
     },
     ref,
   ) {
-    const recipie = useSlotRecipe({ key: "travel-tag" });
+    const recipie = useSlotRecipe({ key: "travelTag" });
     const styles = recipie({
       variant,
       size,
       deviationLevel,
-      foregroundColor: variant === "custom" ? foregroundColor : undefined,
-      backgroundColor: variant === "custom" ? backgroundColor : undefined,
     });
 
     const DeviationLevelIcon = getDeviationLevelIcon({ deviationLevel, size });
+
     return (
-      <Box css={styles.container} aria-disabled={disabled} ref={ref} {...rest}>
+      <Box
+        css={styles.container}
+        aria-disabled={disabled}
+        ref={ref}
+        {...rest}
+        backgroundColor={disabled ? "surface.disabled" : backgroundColor}
+      >
         <LineIcon
           variant={variant}
           size={size}
-          sx={styles.iconContainer}
           foregroundColor={foregroundColor}
           backgroundColor={backgroundColor}
           customIconVariant={customIconVariant}
+          disabled={disabled}
+          target="travelTag"
           {...(rest as any)}
         />
         <Box css={styles.textContainer}>

@@ -60,21 +60,18 @@ export const Textarea = forwardRef<TextareaProps, "textarea">((props, ref) => {
   const { labelRef, labelHeight } = useLabelHeight(label);
 
   return (
-    <>
-      <InputGroup
-        position="relative"
-        {...spacingProps}
-        style={{ "--label-height": `${labelHeight}px` } as React.CSSProperties}
-      >
-        <ChakraTextarea {...rest} id={inputId} ref={ref} placeholder=" " />
-        {label && (
-          <FormLabel ref={labelRef} htmlFor={inputId} id={`${inputId}-label`}>
-            {label}
-          </FormLabel>
-        )}
-      </InputGroup>
-      {labelHeight}
-    </>
+    <InputGroup
+      position="relative"
+      {...spacingProps}
+      style={{ "--label-height": `${labelHeight}px` } as React.CSSProperties}
+    >
+      <ChakraTextarea {...rest} id={inputId} ref={ref} placeholder=" " />
+      {label && (
+        <FormLabel ref={labelRef} htmlFor={inputId} id={`${inputId}-label`}>
+          {label}
+        </FormLabel>
+      )}
+    </InputGroup>
   );
 });
 

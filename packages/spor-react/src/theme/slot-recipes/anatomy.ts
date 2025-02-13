@@ -35,6 +35,14 @@ export const fieldAnatomy = createAnatomy("field").parts(
   "errorText",
 );
 
+export const paginationAnatomy = createAnatomy("pagination").parts(
+  "listItem",
+  "link",
+  "activeButton",
+  "disabled",
+  "icon",
+  "list",
+);
 export const linjetagAnatomy = createAnatomy("linjetag").parts(
   "iconContainer",
   "icon",
@@ -74,11 +82,11 @@ export const checkboxAnatomy = createAnatomy("checkbox").parts(
 );
 
 export const breadcrumbAnatomy = createAnatomy("breadcrumb").parts(
-"link", 
-"currentLink",
-"list",
-
-  export const stepperAnatomy = createAnatomy("stepper").parts(
+  "link",
+  "currentLink",
+  "list",
+);
+export const stepperAnatomy = createAnatomy("stepper").parts(
   "root",
   "container",
   "innerContainer",

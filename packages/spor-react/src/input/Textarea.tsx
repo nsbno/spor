@@ -13,6 +13,31 @@ export type TextareaProps = Exclude<ChakraTextareaProps, "size"> & {
 };
 
 /**
+ * Hook to calculate the height of the label element to adjust spacing for the input for floating label
+ */
+const useLabelHeight = (label: string | undefined) => {
+  const labelRef = useRef<HTMLLabelElement>(null);
+  const [labelHeight, setLabelHeight] = useState(0);
+
+  useLayoutEffect(() => {
+    const updateLabelHeight = () => {
+      if (labelRef.current) {
+        setLabelHeight(labelRef.current.offsetHeight);
+      }
+    };
+
+    updateLabelHeight(); // Initial calculation
+
+    window.addEventListener("resize", updateLabelHeight);
+    return () => {
+      window.removeEventListener("resize", updateLabelHeight);
+    };
+  }, [label]);
+
+  return { labelRef, labelHeight };
+};
+
+/**
  * Text area that works with the `FormControl` component.
  *
  * Providing a label is optional.
@@ -32,23 +57,7 @@ export const Textarea = forwardRef<TextareaProps, "textarea">((props, ref) => {
   const fallbackId = `textarea-${useId()}`;
   const inputId = props.id ?? formControlProps?.id ?? fallbackId;
 
-  const labelRef = useRef<HTMLLabelElement>(null);
-  const [labelHeight, setLabelHeight] = useState(0);
-
-  useLayoutEffect(() => {
-    const updateLabelHeight = () => {
-      if (labelRef.current) {
-        setLabelHeight(labelRef.current.offsetHeight);
-      }
-    };
-
-    updateLabelHeight(); // Initial calculation
-
-    window.addEventListener("resize", updateLabelHeight);
-    return () => {
-      window.removeEventListener("resize", updateLabelHeight);
-    };
-  }, [label]);
+  const { labelRef, labelHeight } = useLabelHeight(label);
 
   return (
     <>

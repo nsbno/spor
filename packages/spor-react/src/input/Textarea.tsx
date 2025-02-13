@@ -6,11 +6,44 @@ import {
   useFormControlContext,
   InputGroup,
 } from "@chakra-ui/react";
-import React, { useId } from "react";
+import React, { useId, useLayoutEffect, useRef, useState } from "react";
 
 export type TextareaProps = Exclude<ChakraTextareaProps, "size"> & {
   label?: string;
 };
+
+/**
+ * Hook to calculate the height of the label element to adjust spacing for the input for floating label.
+ */
+const useLabelHeight = (label: string | undefined) => {
+  const labelRef = useRef<HTMLLabelElement>(null);
+  const [labelHeight, setLabelHeight] = useState(0);
+
+  useLayoutEffect(() => {
+    const updateLabelHeight = () => {
+      if (labelRef.current) {
+        setLabelHeight(labelRef.current.offsetHeight);
+      }
+    };
+
+    const observer = new ResizeObserver(updateLabelHeight);
+    if (labelRef.current) {
+      observer.observe(labelRef.current);
+    }
+
+    // Initial calculation with a slight delay to ensure CSS is applied
+    setTimeout(updateLabelHeight, 0);
+
+    return () => {
+      if (labelRef.current) {
+        observer.unobserve(labelRef.current);
+      }
+    };
+  }, [label]);
+
+  return { labelRef, labelHeight };
+};
+
 /**
  * Text area that works with the `FormControl` component.
  *
@@ -31,11 +64,18 @@ export const Textarea = forwardRef<TextareaProps, "textarea">((props, ref) => {
   const fallbackId = `textarea-${useId()}`;
   const inputId = props.id ?? formControlProps?.id ?? fallbackId;
 
+  const { labelRef, labelHeight } = useLabelHeight(label);
+
   return (
-    <InputGroup position="relative" {...spacingProps}>
+    <InputGroup
+      position="relative"
+      {...spacingProps}
+      style={{ "--label-height": `${labelHeight}px` } as React.CSSProperties}
+    >
       <ChakraTextarea {...rest} id={inputId} ref={ref} placeholder=" " />
       {label && (
         <FormLabel
+          ref={labelRef}
           htmlFor={inputId}
           id={`${inputId}-label`}
           pointerEvents="none"

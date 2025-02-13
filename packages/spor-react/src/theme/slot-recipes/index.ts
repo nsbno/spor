@@ -2,6 +2,7 @@ import { accordionSlotRecipe } from "./accordion";
 import { alertSlotRecipe } from "./alert";
 import { alertExpandableSlotRecipe } from "./alert-expandable";
 import { alertServiceSlotRecipe } from "./alert-service";
+import {breadcrumbSlotRecipe} from "./breadcrumb";
 import { cardSelectSlotRecipe } from "./card-select";
 import { checkboxSlotRecipe } from "./checkbox";
 import { choiceChipSlotRecipe } from "./choice-chip";
@@ -35,6 +36,7 @@ export const slotRecipes = {
   alertExpandable: alertExpandableSlotRecipe,
   alertService: alertServiceSlotRecipe,
   alert: alertSlotRecipe,
+  breadcrumb: breadcrumbSlotRecipe,
   cardSelect: cardSelectSlotRecipe,
   checkbox: checkboxSlotRecipe,
   choiceChip: choiceChipSlotRecipe,

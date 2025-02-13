@@ -2,13 +2,11 @@ import {
   createSystem,
   defaultBaseConfig,
   defineConfig,
-  mergeConfigs,
 } from "@chakra-ui/react";
 import { animationStyles } from "./tokens/animation-styles";
 import { breakpoints } from "./tokens/breakpoints";
 import { globalCss } from "./tokens/global-css";
 import { keyframes } from "./tokens/keyframes";
-import { layerStyles } from "./tokens/layer-styles";
 import { recipes } from "./recipes";
 import { semanticTokens } from "./semantic-tokens";
 import { slotRecipes } from "./slot-recipes";
@@ -29,7 +27,6 @@ const themeConfig = defineConfig({
     recipes,
     slotRecipes,
     textStyles,
-    layerStyles,
     animationStyles,
   },
 });

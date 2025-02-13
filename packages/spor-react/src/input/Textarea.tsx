@@ -69,8 +69,7 @@ export const Textarea = forwardRef<TextareaProps, "textarea">((props, ref) => {
         <ChakraTextarea {...rest} id={inputId} ref={ref} placeholder=" " />
         {label && (
           <FormLabel ref={labelRef} htmlFor={inputId} id={`${inputId}-label`}>
-            {label} dfg df gdf g df gdf g dfg df g dfg df g dfg df gdf g dfg df
-            g dfg df gdf g dfg df g dfg
+            {label}
           </FormLabel>
         )}
       </InputGroup>

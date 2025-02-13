@@ -10,7 +10,6 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { HiMiniEllipsisHorizontal } from "react-icons/hi2";
 import {
   DropdownRightOutline18Icon,
   DropdownLeftOutline18Icon,
@@ -79,9 +78,7 @@ export const PaginationEllipsis = React.forwardRef<
   return (
     <ListItem>
       <ChakraPagination.Ellipsis ref={ref} {...props} asChild>
-        <Box as={props.as || "a"}>
-          <HiMiniEllipsisHorizontal />
-        </Box>
+        <Box as={props.as || "a"}>...</Box>
       </ChakraPagination.Ellipsis>
     </ListItem>
   );

@@ -6,6 +6,7 @@ import {
   Box,
   Button,
   DrawerHeaderProps,
+  DrawerContext,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { drawerSlotRecipe } from "../theme/slot-recipes/drawer";
@@ -47,18 +48,13 @@ type DrawerContentProps = ChakraDrawer.ContentProps &
     portalRef?: React.RefObject<HTMLElement>;
     rounded?: "sm" | "md" | "lg" | "xl" | "2xl";
     /** "default" | "full" - defaults to default */
-    customVariant?: "default" | "full";
+    variant?: "default" | "full";
+    size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "full";
   };
 
 type DrawerProps = Exclude<
   ChakraDrawer.RootProps,
-  | "colorPalette"
-  | "contained"
-  | "size"
-  | "variant"
-  | "as"
-  | "asChild"
-  | "unstyled"
+  "colorPalette" | "contained" | "variant" | "as" | "asChild" | "unstyled"
 > &
   ChakraDrawer.RootProps &
   PropsWithChildren<DrawerVariantProps> & {
@@ -69,14 +65,9 @@ export const DrawerHeaderFull = forwardRef<HTMLDivElement, DrawerHeaderProps>(
   function DrawerHeaderFull(props) {
     const { children, title, ...rest } = props;
     return (
-      <ChakraDrawer.Header
-        {...rest}
-        display="flex"
-        justifyContent={"space-between"}
-        alignContent={"center"}
-      >
+      <ChakraDrawer.Header {...rest}>
         <FullScreenButton variant="back" />
-        <DrawerTitle marginTop={2}>{title}</DrawerTitle>
+        <DrawerTitle>{title}</DrawerTitle>
         {children}
         <FullScreenButton variant="close" />
       </ChakraDrawer.Header>
@@ -90,28 +81,17 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
       children,
       portalled = true,
       portalRef,
-      rounded = "md",
-      customVariant = "default",
+      variant = "default",
+      size,
       title,
       ...rest
     } = props;
     return (
       <Portal disabled={!portalled} container={portalRef}>
         <ChakraDrawer.Positioner>
-          <ChakraDrawer.Content
-            ref={ref}
-            {...rest}
-            asChild={false}
-            rounded={customVariant === "default" ? rounded : "none"}
-            marginX={customVariant === "default" ? "auto" : "0"}
-            maxWidth={
-              customVariant === "default" ? ["100%", null, "40rem"] : "100%"
-            }
-            borderBottomRadius={0}
-            height={customVariant === "default" ? "auto" : "100vh"}
-          >
-            {customVariant === "default" && <CloseDrawerLine />}
-            {customVariant === "full" && <DrawerHeaderFull title={title} />}
+          <ChakraDrawer.Content ref={ref} {...rest} asChild={false}>
+            {variant === "default" && <CloseDrawerLine />}
+            {variant === "full" && <DrawerHeaderFull title={title} />}
             {children}
           </ChakraDrawer.Content>
         </ChakraDrawer.Positioner>
@@ -175,9 +155,9 @@ export const FullScreenButton = forwardRef<
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
   function Drawer(props) {
-    const { children, placement = "bottom", ...rest } = props;
+    const { children, placement = "bottom", size = "md", ...rest } = props;
     return (
-      <ChakraDrawer.Root {...rest} placement={placement}>
+      <ChakraDrawer.Root {...rest} placement={placement} size={size}>
         <DrawerBackdrop />
         {children}
       </ChakraDrawer.Root>

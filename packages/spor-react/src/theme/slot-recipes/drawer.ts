@@ -55,6 +55,9 @@ export const drawerSlotRecipe = defineSlotRecipe({
       },
     },
     header: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
       flex: 0,
       paddingX: "6",
       paddingTop: "3",
@@ -78,6 +81,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
     title: {
       textStyle: "md",
       fontWeight: "semibold",
+      marginTop: 2,
     },
     closeTrigger: {
       color: {
@@ -96,33 +100,34 @@ export const drawerSlotRecipe = defineSlotRecipe({
     size: {
       xs: {
         content: {
-          maxW: "xs",
+          width: "15rem",
         },
       },
       sm: {
         content: {
-          maxW: "md",
+          width: "25rem",
         },
       },
       md: {
         content: {
-          maxW: "lg",
+          width: "40rem",
         },
       },
       lg: {
         content: {
-          maxW: "2xl",
+          width: "56rem",
         },
       },
       xl: {
         content: {
-          maxW: "4xl",
+          width: "68rem",
         },
       },
       full: {
         content: {
-          maxW: "100vw",
-          h: "100dvh",
+          width: "100vw",
+          height: "100vh",
+          borderRadius: "0 !important",
         },
       },
     },
@@ -133,6 +138,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
           justifyContent: "flex-start",
         },
         content: {
+          borderRightRadius: "md",
           _open: {
             animationName: {
               base: "slide-from-left-full, fade-in",
@@ -153,6 +159,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
           justifyContent: "flex-end",
         },
         content: {
+          borderLeftRadius: "md",
           _open: {
             animationName: {
               base: "slide-from-right-full, fade-in",
@@ -174,6 +181,8 @@ export const drawerSlotRecipe = defineSlotRecipe({
         },
         content: {
           maxW: "100%",
+          marginX: "auto",
+          borderBottomRadius: "md",
           _open: { animationName: "slide-from-top-full, fade-in" },
           _closed: { animationName: "slide-to-top-full, fade-out" },
         },
@@ -185,6 +194,8 @@ export const drawerSlotRecipe = defineSlotRecipe({
         },
         content: {
           maxW: "100%",
+          marginX: "auto",
+          borderTopRadius: "md",
           _open: { animationName: "slide-from-bottom-full, fade-in" },
           _closed: { animationName: "slide-to-bottom-full, fade-out" },
         },
@@ -195,9 +206,6 @@ export const drawerSlotRecipe = defineSlotRecipe({
       true: {
         positioner: {
           padding: "4",
-        },
-        content: {
-          borderRadius: "l3",
         },
       },
     },

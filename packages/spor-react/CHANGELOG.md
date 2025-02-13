@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.1.5
+
+### Patch Changes
+
+- 7c47e93: Fix(TextArea): Overlapping of label and text
+
 ## 11.1.4
 
 ### Patch Changes

@@ -4,7 +4,7 @@ import { inputBaseStyle, inputVariant } from "../utils/input-utils";
 const config = defineStyleConfig({
   baseStyle: (props) => ({
     ...inputBaseStyle(props).field,
-    minHeight: "calc(var(--label-height) + 5rem)",
+    minHeight: "calc(var(--label-height) + 4rem)",
     verticalAlign: "top",
     appearance: "none",
     borderTop: "0.8rem solid transparent",

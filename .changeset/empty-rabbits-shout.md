@@ -2,4 +2,4 @@
 "@vygruppen/spor-design-tokens": patch
 ---
 
-Updated disabled text color
+**Color tokens**: Updated disabled text color

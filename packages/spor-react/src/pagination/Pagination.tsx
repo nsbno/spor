@@ -121,7 +121,7 @@ export const Pagination = ({
             onClick={() => onPageChange(selectedPage - 1)}
             css={hasPreviousPage ? styles.link : styles.disabled}
           >
-            <DropdownLeftFill18Icon sx={styles.icon} />
+            <DropdownLeftFill18Icon css={styles.icon} />
           </TextLink>
         </Box>
         {renderPaginationButtons()}

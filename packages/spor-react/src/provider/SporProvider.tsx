@@ -11,6 +11,7 @@ import {
   defaultSystem,
 } from "@chakra-ui/react";
 import { ColorModeProvider } from "../color-mode";
+import { vyDigitalColors } from "@/theme/semantic-tokens/colors";
 
 type SporProviderProps = Exclude<ChakraProviderProps, "value"> & {
   language?: Language;

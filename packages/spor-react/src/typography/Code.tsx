@@ -1,9 +1,9 @@
 import {
-  As,
   Code as ChakraCode,
   CodeProps as ChakraCodeProps,
   forwardRef,
 } from "@chakra-ui/react";
+import { As } from "@chakra-ui/system";
 import React from "react";
 
 export type CodeProps = ChakraCodeProps & {

@@ -3,13 +3,13 @@ import {
   PopoverAnchor,
   useMultiStyleConfig,
   forwardRef,
-  As,
   ResponsiveValue,
 } from "@chakra-ui/react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { KeyboardEventHandler } from "react";
 import { AriaButtonProps } from "react-aria";
 import { IconButton, createTexts, useTranslation } from "..";
+import { As } from "@chakra-ui/system";
 
 type CalendarTriggerButtonProps = AriaButtonProps<"button"> & {
   variant: ResponsiveValue<"base" | "floating" | "ghost">;

@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  As,
-  Box,
-  BoxProps,
-  forwardRef,
-  useStyleConfig,
-} from "@chakra-ui/react";
+import { Box, BoxProps, forwardRef, useStyleConfig } from "@chakra-ui/react";
+import { As } from "@chakra-ui/system";
 
 type PressableCardProps = BoxProps & {
   /** Defaults to "base"  */

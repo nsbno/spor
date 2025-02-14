@@ -1,10 +1,10 @@
 import {
-  As,
   BoxProps,
   Divider as ChakraDivider,
   DividerProps as ChakraDividerProps,
   forwardRef,
 } from "@chakra-ui/react";
+import { As } from "@chakra-ui/system";
 import React from "react";
 
 export type DividerProps = ChakraDividerProps & {

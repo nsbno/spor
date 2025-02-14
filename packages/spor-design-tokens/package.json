@@ -22,6 +22,8 @@
   "sideEffects": false,
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^22.13.4",
+    "@vygruppen/tsconfig": "workspace:*",
     "json-to-ts": "^1.7.0",
     "patch-package": "^6.4.7",
     "prettier": "^2.4.1",

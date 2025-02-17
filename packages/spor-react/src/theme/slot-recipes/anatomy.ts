@@ -77,6 +77,7 @@ export const breadcrumbAnatomy = createAnatomy("breadcrumb").parts(
 "link", 
 "currentLink",
 "list",
+);
 
   export const stepperAnatomy = createAnatomy("stepper").parts(
   "root",
@@ -99,4 +100,12 @@ export const radioCardAnatomy = createAnatomy("radio-card").parts(
   "itemText",
   "itemDescription",
   "itemContent",
+);
+
+export const radioAnatomy = createAnatomy("radio").parts(
+  "root",
+  "item",
+  "itemControl",
+  "itemText",
+  "label",
 );

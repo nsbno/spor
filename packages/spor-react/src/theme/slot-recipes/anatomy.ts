@@ -36,12 +36,8 @@ export const fieldAnatomy = createAnatomy("field").parts(
 );
 
 export const paginationAnatomy = createAnatomy("pagination").parts(
-  "listItem",
-  "link",
-  "activeButton",
-  "disabled",
-  "icon",
   "list",
+  "item",
 );
 export const linjetagAnatomy = createAnatomy("linjetag").parts(
   "iconContainer",

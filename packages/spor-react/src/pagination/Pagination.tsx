@@ -3,9 +3,6 @@
 import {
   Box,
   Pagination as ChakraPagination,
-  PaginationItem as ChakraPaginationItem,
-  PaginationEllipsis as ChakraPaginationEllipsis,
-  Text,
   createContext,
   usePaginationContext,
   useSlotRecipe,
@@ -15,55 +12,8 @@ import {
   DropdownRightOutline18Icon,
   DropdownLeftOutline18Icon,
 } from "@vygruppen/spor-icon-react";
-import { forwardRef } from "react";
 import { createTexts, List, ListItem, useTranslation } from "..";
-import type { ButtonProps } from "@chakra-ui/react";
-
-interface ButtonVariantContext {
-  size: ButtonProps["size"];
-  getHref?: (page: number) => string;
-  itemAs?: React.ElementType;
-}
-
-const [RootPropsProvider, useRootProps] = createContext<ButtonVariantContext>({
-  name: "RootPropsProvider",
-});
-
-export interface PaginationProps
-  extends Omit<ChakraPagination.RootProps, "type" | "translations"> {
-  getHref?: (page: number) => string;
-  itemAs?: React.ElementType;
-}
-
-export interface PaginationRootProps
-  extends Omit<ChakraPagination.RootProps, "type"> {
-  size?: ButtonProps["size"];
-  getHref?: (page: number) => string;
-  itemAs?: React.ElementType;
-}
-
-export const PaginationRoot = React.forwardRef<
-  HTMLDivElement,
-  PaginationRootProps
->(function PaginationRoot(props, ref) {
-  const { size = "sm", getHref, itemAs, ...rest } = props;
-
-  return (
-    <RootPropsProvider
-      value={{
-        size,
-        getHref,
-        itemAs: itemAs ?? "a",
-      }}
-    >
-      <ChakraPagination.Root
-        ref={ref}
-        type={getHref ? "link" : "button"}
-        {...rest}
-      />
-    </RootPropsProvider>
-  );
-});
+import { ButtonVariantContext, PaginationRootProps } from "./types";
 
 /**
  * A pagination component is used to navigate between multiple pages.
@@ -84,22 +34,30 @@ export const PaginationRoot = React.forwardRef<
  * ```
  **/
 
-export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
-  function Pagination(props, ref) {
-    let { as, ...rest } = props;
+const [RootPropsProvider, useRootProps] = createContext<ButtonVariantContext>({
+  name: "RootPropsProvider",
+});
+
+export const Pagination = React.forwardRef<HTMLDivElement, PaginationRootProps>(
+  (props, ref) => {
+    const { getHref, children, ...rest } = props;
     const recipe = useSlotRecipe({ key: "pagination" });
     const styles = recipe();
 
-    console.log("Pagination", props);
-
     return (
-      <PaginationRoot ref={ref} {...rest}>
-        <List css={styles.list}>
-          <PaginationPrevTrigger as={as} />
-          <PaginationItems />
-          <PaginationNextTrigger as={as} />
-        </List>
-      </PaginationRoot>
+      <RootPropsProvider
+        value={{
+          getHref,
+        }}
+      >
+        <ChakraPagination.Root
+          ref={ref}
+          type={getHref ? "link" : "button"}
+          {...rest}
+        >
+          <List css={styles.list}>{children}</List>
+        </ChakraPagination.Root>
+      </RootPropsProvider>
     );
   },
 );
@@ -107,11 +65,11 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 export const PaginationEllipsis = React.forwardRef<
   HTMLDivElement,
   ChakraPagination.EllipsisProps
->(function PaginationEllipsis(props, ref) {
+>((props, ref) => {
   return (
     <ListItem>
       <ChakraPagination.Ellipsis ref={ref} {...props} asChild>
-        <Box as={props.as || "a"}>...</Box>
+        <Box cursor="default">...</Box>
       </ChakraPagination.Ellipsis>
     </ListItem>
   );
@@ -120,27 +78,25 @@ export const PaginationEllipsis = React.forwardRef<
 export const PaginationItem = React.forwardRef<
   HTMLButtonElement,
   ChakraPagination.ItemProps
->(function PaginationItem(props, ref) {
-  const { page } = usePaginationContext();
+>((props, ref) => {
   const rootProps = useRootProps();
-
-  const recipe = useSlotRecipe({ key: "pagination" });
-  const styles = recipe();
+  const { t } = useTranslation();
+  const { page, totalPages } = usePaginationContext();
 
   if (rootProps.getHref) {
     return (
       <ListItem>
-        <ChakraPagination.Item asChild ref={ref} {...props}>
-          <Box
-            css={props.value === page ? styles.activeButton : styles.listItem}
-            as={rootProps.itemAs || "a"}
-            {...{
-              href: rootProps.getHref(props.value), // instead of doing this, the consumer could create a proxy component like this (but should be documented): (props: {href: string} => <Link to={href} />
-              to: rootProps.getHref(props.value),
-            }}
-          >
-            {props.value}
-          </Box>
+        <ChakraPagination.Item
+          as={props.as ?? "a"}
+          {...{
+            href: rootProps.getHref(props.value as number),
+            to: rootProps.getHref(props.value as number),
+          }}
+          ref={ref}
+          aria-label={`${t(texts.page)} ${props.value} ${t(texts.of)} ${totalPages}`}
+          {...props}
+        >
+          {props.value}
         </ChakraPagination.Item>
       </ListItem>
     );
@@ -148,59 +104,62 @@ export const PaginationItem = React.forwardRef<
 
   return (
     <ListItem>
-      <ChakraPagination.Item asChild ref={ref} {...props}>
-        <Box
-          css={props.value === page ? styles.activeButton : styles.listItem}
-          as={props.as || "button"}
-        >
-          {props.value}
-        </Box>
+      <ChakraPagination.Item
+        as={props.as ?? "button"}
+        ref={ref}
+        aria-label={`${t(texts.page)} ${props.value} ${t(texts.of)} ${totalPages}`}
+        aria-selected={page === props.value}
+        {...props}
+      >
+        {props.value}
       </ChakraPagination.Item>
     </ListItem>
   );
 });
+
 export const PaginationPrevTrigger = React.forwardRef<
   HTMLButtonElement,
   ChakraPagination.PrevTriggerProps
->(function PaginationPrevTrigger(props, ref) {
+>((props, ref) => {
   const { page } = usePaginationContext();
   const recipe = useSlotRecipe({ key: "pagination" });
   const styles = recipe();
   const { t } = useTranslation();
   const rootProps = useRootProps();
 
-  if (page <= 1) {
-    return null;
-  }
+  if (page <= 1) return null;
+
   if (rootProps.getHref) {
     return (
       <ListItem>
-        <ChakraPagination.PrevTrigger ref={ref} asChild {...props}>
-          <Box
-            css={styles.listItem}
-            aria-label={t(texts.previousPage)}
-            as={rootProps.itemAs || "a"}
-            {...{
-              href: rootProps.getHref(props.value as number),
-              to: rootProps.getHref(props.value as number),
-            }}
-          >
-            <DropdownLeftOutline18Icon />
-          </Box>
+        <ChakraPagination.PrevTrigger
+          as={props.as ?? "a"}
+          asChild
+          {...{
+            href: rootProps.getHref(props.value as number),
+            to: rootProps.getHref(props.value as number),
+          }}
+          ref={ref}
+          css={styles.item}
+          aria-label={t(texts.previousPage)}
+          {...props}
+        >
+          <DropdownLeftOutline18Icon />
         </ChakraPagination.PrevTrigger>
       </ListItem>
     );
   }
   return (
     <ListItem>
-      <ChakraPagination.PrevTrigger ref={ref} asChild {...props}>
-        <Box
-          css={styles.listItem}
-          aria-label={t(texts.previousPage)}
-          as={props.as || "button"}
-        >
-          <DropdownLeftOutline18Icon />
-        </Box>
+      <ChakraPagination.PrevTrigger
+        ref={ref}
+        asChild
+        aria-label={t(texts.previousPage)}
+        as={props.as || "button"}
+        css={styles.item}
+        {...props}
+      >
+        <DropdownLeftOutline18Icon />
       </ChakraPagination.PrevTrigger>
     </ListItem>
   );
@@ -209,49 +168,48 @@ export const PaginationPrevTrigger = React.forwardRef<
 export const PaginationNextTrigger = React.forwardRef<
   HTMLButtonElement,
   ChakraPagination.NextTriggerProps
->(function PaginationNextTrigger(props, ref) {
+>((props, ref) => {
   const { page, totalPages } = usePaginationContext();
   const recipe = useSlotRecipe({ key: "pagination" });
   const styles = recipe();
   const { t } = useTranslation();
   const rootProps = useRootProps();
 
-  if (page >= totalPages) {
-    return null;
-  }
+  if (page >= totalPages) return null;
+
   if (rootProps.getHref) {
     return (
       <ListItem>
-        <ChakraPagination.NextTrigger ref={ref} asChild {...props}>
-          <Box
-            css={styles.listItem}
-            aria-label={t(texts.nextPage)}
-            as={rootProps.itemAs || "a"}
-            {...{
-              href: rootProps.getHref(props.value as number),
-              to: rootProps.getHref(props.value as number),
-            }}
-          >
-            <DropdownRightOutline18Icon css={styles.icon} />
-          </Box>
+        <ChakraPagination.NextTrigger
+          ref={ref}
+          {...{
+            href: rootProps.getHref(props.value as number),
+            to: rootProps.getHref(props.value as number),
+          }}
+          css={styles.item}
+          aria-label={t(texts.nextPage)}
+          {...props}
+        >
+          <DropdownRightOutline18Icon />
         </ChakraPagination.NextTrigger>
       </ListItem>
     );
   }
   return (
     <ListItem>
-      <ChakraPagination.NextTrigger ref={ref} asChild {...props}>
-        <Box
-          css={styles.listItem}
-          aria-label={t(texts.nextPage)}
-          as={props.as || "button"}
-        >
-          <DropdownRightOutline18Icon css={styles.icon} />
-        </Box>
+      <ChakraPagination.NextTrigger
+        ref={ref}
+        css={styles.item}
+        aria-label={t(texts.nextPage)}
+        as={props.as || "button"}
+        {...props}
+      >
+        <DropdownRightOutline18Icon />
       </ChakraPagination.NextTrigger>
     </ListItem>
   );
 });
+
 export const PaginationItems = (
   props: React.HTMLAttributes<HTMLElement> & {},
 ) => {
@@ -260,10 +218,10 @@ export const PaginationItems = (
       {({ pages }) =>
         pages.map((page, index) => {
           return page.type === "ellipsis" ? (
-            <PaginationEllipsis key={index} index={index} {...props} />
+            <PaginationEllipsis key={`ellipsis-${index}`} index={index} {...props} />
           ) : (
             <PaginationItem
-              key={index}
+              key={`pagination-item-${page.value}`}
               value={page.value}
               type="page"
               {...props}
@@ -274,21 +232,6 @@ export const PaginationItems = (
     </ChakraPagination.Context>
   );
 };
-
-export const PaginationPageText = forwardRef<HTMLDivElement>(
-  function PaginationPageText(props, ref) {
-    const { page, totalPages, pageRange, count } = usePaginationContext();
-    const content = React.useMemo(() => {
-      return `${pageRange.start + 1} - ${Math.min(pageRange.end, count)} of ${count}`;
-    }, [page, totalPages, pageRange, count]);
-
-    return (
-      <Text fontWeight="medium" ref={ref}>
-        {content}
-      </Text>
-    );
-  },
-);
 
 const texts = createTexts({
   previousPage: {
@@ -302,5 +245,23 @@ const texts = createTexts({
     nn: "Neste side",
     en: "Next page",
     sv: "Nästa sida",
+  },
+  of: {
+    nb: "av",
+    nn: "av",
+    en: "of",
+    sv: "av",
+  },
+  page: {
+    nb: "Side",
+    nn: "Side",
+    en: "Page",
+    sv: "Sida",
+  },
+  currentPage: {
+    nb: "Gjeldende side",
+    nn: "Gjeldande side",
+    en: "Current page",
+    sv: "Aktuell sida",
   },
 });

@@ -11,6 +11,13 @@ export enum Brand {
 export const brandTheme = {
   [Brand.VyDigital]: {},
   [Brand.CargoNet]: cargonetColors,
+  cnSystem: {
+    theme: {
+      semanticTokens: {
+        colors: cargonetColors,
+      },
+    },
+  },
 };
 
 export { fontFaces } from "../font-faces";

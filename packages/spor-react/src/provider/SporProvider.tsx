@@ -84,10 +84,17 @@ export const SporProvider = ({
   const mergedTheme = deepmerge(theme, brandCustomizations);
   console.log("merged brandTheme w", mergedTheme);
 
+  console.log("theme", brandTheme);
+
+  const cargonetSystem = createSystem(
+    defaultConfig,
+    brandTheme[Brand.cnSystem],
+  );
+
   const z =
     brand === "VyDigital"
       ? deepmerge(theme, brandTheme["VyDigital"])
-      : deepmerge(theme, brandTheme["CargoNet"]);
+      : cargonetSystem;
   return (
     <LanguageProvider language={language}>
       <ChakraProvider {...props} value={z}>

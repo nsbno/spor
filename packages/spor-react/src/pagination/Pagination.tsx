@@ -80,7 +80,6 @@ export const PaginationItem = React.forwardRef<
   const rootProps = useRootProps();
   const { t } = useTranslation();
   const { page, totalPages } = usePaginationContext();
-  const ariaLabel = `${t(texts.page)} ${props.value} ${t(texts.of)} ${totalPages}`;
 
   if (rootProps.getHref) {
     return (
@@ -92,7 +91,7 @@ export const PaginationItem = React.forwardRef<
             to: rootProps.getHref(props.value as number),
           }}
           ref={ref}
-          aria-label={ariaLabel}
+          aria-label={t(texts.pageOf(props.value, totalPages))}
           {...props}
         >
           {props.value}
@@ -106,7 +105,7 @@ export const PaginationItem = React.forwardRef<
       <ChakraPagination.Item
         as={props.as ?? "button"}
         ref={ref}
-        aria-label={ariaLabel}
+        aria-label={t(texts.pageOf(props.value, totalPages))}
         aria-selected={page === props.value}
         {...props}
       >
@@ -249,16 +248,12 @@ const texts = createTexts({
     en: "Next page",
     sv: "Nästa sida",
   },
-  of: {
-    nb: "av",
-    nn: "av",
-    en: "of",
-    sv: "av",
-  },
-  page: {
-    nb: "Side",
-    nn: "Side",
-    en: "Page",
-    sv: "Sida",
+  pageOf: (page, totalPages) => {
+    return {
+      nb: `Side ${page} av ${totalPages}`,
+      nn: `Side ${page} av ${totalPages}`,
+      en: `Page ${page} of ${totalPages}`,
+      sv: `Sida ${page} av ${totalPages}`,
+    };
   },
 });

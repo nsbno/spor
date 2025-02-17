@@ -1,4 +1,4 @@
-import { defineTokens } from "@chakra-ui/react"
+import { defineTokens } from "@chakra-ui/react";
 
 export const durations = defineTokens.durations({
   fastest: {
@@ -22,4 +22,4 @@ export const durations = defineTokens.durations({
   slowest: {
     value: "500ms",
   },
-})
+});

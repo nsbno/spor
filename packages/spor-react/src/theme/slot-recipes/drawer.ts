@@ -8,7 +8,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
   base: {
     backdrop: {
       bg: "blackAlpha.500",
-      pos: "fixed",
+      position: "fixed",
       insetInlineStart: 0,
       top: 0,
       width: "100vw",
@@ -35,15 +35,14 @@ export const drawerSlotRecipe = defineSlotRecipe({
     },
     content: {
       display: "flex",
-      ...bg("default"),
       flexDirection: "column",
+      background: "bg",
       position: "relative",
       width: "100%",
       outline: 0,
       zIndex: "modal",
-      maxH: "100dvh",
+      maxHeight: "100dvh",
       color: "inherit",
-      bg: "bg.panel",
       boxShadow: "lg",
       _open: {
         animationDuration: "slowest",
@@ -55,13 +54,9 @@ export const drawerSlotRecipe = defineSlotRecipe({
       },
     },
     header: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      flex: 0,
       paddingX: "6",
       paddingTop: "3",
-      paddingBottom: "0",
+      paddingBottom: "2",
     },
     body: {
       paddingX: "6",
@@ -81,19 +76,12 @@ export const drawerSlotRecipe = defineSlotRecipe({
     title: {
       textStyle: "md",
       fontWeight: "semibold",
-      marginTop: 2,
+      textAlign: "left",
     },
     closeTrigger: {
-      color: {
-        _light: "blackAlpha.900",
-        _dark: "whiteAlpha.900",
-      },
-      "& svg": {
-        color: {
-          _light: "blackAlpha.700",
-          _dark: "whiteAlpha.700",
-        },
-      },
+      position: "absolute",
+      top: "2",
+      insetEnd: "2",
     },
   },
   variants: {
@@ -128,6 +116,12 @@ export const drawerSlotRecipe = defineSlotRecipe({
           width: "100vw",
           height: "100vh",
           borderRadius: "0 !important",
+        },
+        closeTrigger: {
+          position: "relative",
+        },
+        title: {
+          textAlign: "center",
         },
       },
     },
@@ -198,14 +192,6 @@ export const drawerSlotRecipe = defineSlotRecipe({
           borderTopRadius: "md",
           _open: { animationName: "slide-from-bottom-full, fade-in" },
           _closed: { animationName: "slide-to-bottom-full, fade-out" },
-        },
-      },
-    },
-
-    contained: {
-      true: {
-        positioner: {
-          padding: "4",
         },
       },
     },

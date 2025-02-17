@@ -24,12 +24,10 @@ import { ButtonVariantContext, PaginationRootProps } from "./types";
  * siblingCount is the number of sibling pages to show.
  *
  * ```tsx
- * <Pagination
- *    count={10}
- *     pageSize={1}
- *     defaultPage={1}
- *     siblingCount={2}
- *     >
+ * <Pagination count={10} pageSize={1} defaultPage={1}>
+ *  <PaginationPrevTrigger />
+ *  <PaginationItems />
+ *  <PaginationNextTrigger />
  * </Pagination>
  * ```
  **/
@@ -82,6 +80,7 @@ export const PaginationItem = React.forwardRef<
   const rootProps = useRootProps();
   const { t } = useTranslation();
   const { page, totalPages } = usePaginationContext();
+  const ariaLabel = `${t(texts.page)} ${props.value} ${t(texts.of)} ${totalPages}`;
 
   if (rootProps.getHref) {
     return (
@@ -93,7 +92,7 @@ export const PaginationItem = React.forwardRef<
             to: rootProps.getHref(props.value as number),
           }}
           ref={ref}
-          aria-label={`${t(texts.page)} ${props.value} ${t(texts.of)} ${totalPages}`}
+          aria-label={ariaLabel}
           {...props}
         >
           {props.value}
@@ -107,7 +106,7 @@ export const PaginationItem = React.forwardRef<
       <ChakraPagination.Item
         as={props.as ?? "button"}
         ref={ref}
-        aria-label={`${t(texts.page)} ${props.value} ${t(texts.of)} ${totalPages}`}
+        aria-label={ariaLabel}
         aria-selected={page === props.value}
         {...props}
       >

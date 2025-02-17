@@ -218,7 +218,11 @@ export const PaginationItems = (
       {({ pages }) =>
         pages.map((page, index) => {
           return page.type === "ellipsis" ? (
-            <PaginationEllipsis key={`ellipsis-${index}`} index={index} {...props} />
+            <PaginationEllipsis
+              key={`ellipsis-${index}`}
+              index={index}
+              {...props}
+            />
           ) : (
             <PaginationItem
               key={`pagination-item-${page.value}`}
@@ -257,11 +261,5 @@ const texts = createTexts({
     nn: "Side",
     en: "Page",
     sv: "Sida",
-  },
-  currentPage: {
-    nb: "Gjeldende side",
-    nn: "Gjeldande side",
-    en: "Current page",
-    sv: "Aktuell sida",
   },
 });

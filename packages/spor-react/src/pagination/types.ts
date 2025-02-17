@@ -15,11 +15,9 @@ export type ButtonVariantContext = {
 export type PaginationProps = Omit<
   ChakraPagination.RootProps,
   "type" | "translations"
-> & {
-  getHref?: (page: number) => string;
-};
+> &
+  ButtonVariantContext & {};
 
 export type PaginationRootProps = Omit<ChakraPagination.RootProps, "type"> &
-  React.PropsWithChildren<PaginationVariantProps> & {
-    getHref?: (page: number) => string;
-  };
+  React.PropsWithChildren<PaginationVariantProps> &
+  ButtonVariantContext & {};

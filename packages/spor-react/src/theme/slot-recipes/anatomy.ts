@@ -77,6 +77,7 @@ export const breadcrumbAnatomy = createAnatomy("breadcrumb").parts(
 "link", 
 "currentLink",
 "list",
+);
 
   export const stepperAnatomy = createAnatomy("stepper").parts(
   "root",

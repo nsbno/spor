@@ -1,140 +1,237 @@
 "use client";
-import React from "react";
-import { Center, createTexts, useTranslation, Flex, TextLink } from "..";
-import { Link, useSlotRecipe, Box } from "@chakra-ui/react";
-import {
-  DropdownLeftFill18Icon,
-  DropdownRightFill18Icon,
-} from "@vygruppen/spor-icon-react";
 
-type PaginationProps = {
-  /** Specify the total amount of pages */
-  totalPages: number;
-  /** Specify the currently selected page */
-  selectedPage: number;
-  /** Callback for when a page is clicked */
-  onPageChange: (selected: number) => void;
-};
+import {
+  Box,
+  Pagination as ChakraPagination,
+  createContext,
+  usePaginationContext,
+  useSlotRecipe,
+} from "@chakra-ui/react";
+import * as React from "react";
+import {
+  DropdownRightOutline18Icon,
+  DropdownLeftOutline18Icon,
+} from "@vygruppen/spor-icon-react";
+import { createTexts, List, ListItem, useTranslation } from "..";
+import { ButtonVariantContext, PaginationRootProps } from "./types";
 
 /**
  * A pagination component is used to navigate between multiple pages.
  *
- * You specify the total amount of pages and the currently selected page.
+ * Count is the total number of pages.
+ * pageSize is the number of items per page.
+ * defaultPage is the default page to show.
+ * siblingCount is the number of sibling pages to show.
  *
  * ```tsx
- * <Pagination
- *   totalPages={10}
- *   selectedPage={3}
- *   onPageChange={handlePageChange}
- * />
+ * <Pagination count={10} pageSize={1} defaultPage={1}>
+ *  <PaginationPrevTrigger />
+ *  <PaginationItems />
+ *  <PaginationNextTrigger />
+ * </Pagination>
  * ```
  **/
 
-export const Pagination = ({
-  totalPages,
-  selectedPage,
-  onPageChange,
-}: PaginationProps) => {
-  const { t } = useTranslation();
+const [RootPropsProvider, useRootProps] = createContext<ButtonVariantContext>({
+  name: "RootPropsProvider",
+});
 
-  const recipe = useSlotRecipe({ key: "pagination" });
-  const styles = recipe({});
+export const Pagination = React.forwardRef<HTMLDivElement, PaginationRootProps>(
+  (props, ref) => {
+    const { getHref, children, ...rest } = props;
+    const recipe = useSlotRecipe({ key: "pagination" });
+    const styles = recipe();
 
-  const hasPreviousPage = selectedPage > 1;
-  const hasNextPage = selectedPage < totalPages;
-
-  const renderPaginationButtons = () => {
-    const displayPageNumbers = [];
-    const maxVisiblePages = 8;
-    if (totalPages <= maxVisiblePages) {
-      displayPageNumbers.push(
-        ...Array.from({ length: totalPages }, (_, i) => i + 1),
-      );
-    } else {
-      if (selectedPage <= Math.floor(maxVisiblePages / 2) + 1) {
-        // If selectedPage is near the beginning, display the first pages.
-        displayPageNumbers.push(
-          ...Array.from({ length: maxVisiblePages - 1 }, (_, i) => i + 1),
-        );
-        displayPageNumbers.push("...");
-        displayPageNumbers.push(totalPages);
-      } else if (selectedPage >= totalPages - Math.floor(maxVisiblePages / 2)) {
-        // If selectedPage is near the end, display the last pages.
-        displayPageNumbers.push(1);
-        displayPageNumbers.push("...");
-        displayPageNumbers.push(
-          ...Array.from(
-            { length: maxVisiblePages - 1 },
-            (_, i) => totalPages - maxVisiblePages + 2 + i,
-          ),
-        );
-      } else {
-        // Display pages with "..." in the middle.
-        displayPageNumbers.push(1);
-        displayPageNumbers.push("...");
-        for (
-          let i = selectedPage - Math.floor((maxVisiblePages - 3) / 2);
-          i <= selectedPage + Math.floor((maxVisiblePages - 3) / 2);
-          i++
-        ) {
-          displayPageNumbers.push(i);
-        }
-        displayPageNumbers.push("...");
-        displayPageNumbers.push(totalPages);
-      }
-    }
-    return displayPageNumbers.map((pageNumber, index) =>
-      pageNumber === "..." ? (
-        <Box as="li" key={index} css={styles.listItem}>
-          <Center>...</Center>
-        </Box>
-      ) : (
-        <Link
-          key={index}
-          as={Box}
-          onClick={() => {
-            if (pageNumber !== "...") {
-              onPageChange(+pageNumber);
-            }
-          }}
-          padding={pageNumber === "..." ? 0 : undefined}
-          css={pageNumber === selectedPage ? styles.activeButton : styles.link}
+    return (
+      <RootPropsProvider
+        value={{
+          getHref,
+        }}
+      >
+        <ChakraPagination.Root
+          ref={ref}
+          type={getHref ? "link" : "button"}
+          {...rest}
         >
-          {pageNumber}
-        </Link>
-      ),
+          <List css={styles.list}>{children}</List>
+        </ChakraPagination.Root>
+      </RootPropsProvider>
     );
-  };
+  },
+);
+
+export const PaginationEllipsis = React.forwardRef<
+  HTMLDivElement,
+  ChakraPagination.EllipsisProps
+>((props, ref) => {
+  return (
+    <ListItem>
+      <ChakraPagination.Ellipsis ref={ref} {...props} asChild>
+        <Box cursor="default">...</Box>
+      </ChakraPagination.Ellipsis>
+    </ListItem>
+  );
+});
+
+export const PaginationItem = React.forwardRef<
+  HTMLButtonElement,
+  ChakraPagination.ItemProps
+>((props, ref) => {
+  const rootProps = useRootProps();
+  const { t } = useTranslation();
+  const { page, totalPages } = usePaginationContext();
+
+  if (rootProps.getHref) {
+    return (
+      <ListItem>
+        <ChakraPagination.Item
+          as={props.as ?? "a"}
+          {...{
+            href: rootProps.getHref(props.value as number),
+            to: rootProps.getHref(props.value as number),
+          }}
+          ref={ref}
+          aria-label={t(texts.pageOf(props.value, totalPages))}
+          {...props}
+        >
+          {props.value}
+        </ChakraPagination.Item>
+      </ListItem>
+    );
+  }
 
   return (
-    <Flex as="nav" aria-label="pagination">
-      <Box
-        as="ul"
-        display="flex"
-        listStyleType="none"
-        gap={[0, 1]}
-        padding={0}
-        margin={0}
+    <ListItem>
+      <ChakraPagination.Item
+        as={props.as ?? "button"}
+        ref={ref}
+        aria-label={t(texts.pageOf(props.value, totalPages))}
+        aria-selected={page === props.value}
+        {...props}
       >
-        <Box as="li" aria-label={t(texts.previousPage)}>
-          <TextLink
-            onClick={() => onPageChange(selectedPage - 1)}
-            css={hasPreviousPage ? styles.link : styles.disabled}
-          >
-            <DropdownLeftFill18Icon css={styles.icon} />
-          </TextLink>
-        </Box>
-        {renderPaginationButtons()}
-        <Box as="li" aria-label={t(texts.nextPage)}>
-          <TextLink
-            onClick={() => onPageChange(selectedPage + 1)}
-            css={hasNextPage ? styles.link : styles.disabled}
-          >
-            <DropdownRightFill18Icon css={styles.icon} />
-          </TextLink>
-        </Box>
-      </Box>
-    </Flex>
+        {props.value}
+      </ChakraPagination.Item>
+    </ListItem>
+  );
+});
+
+export const PaginationPrevTrigger = React.forwardRef<
+  HTMLButtonElement,
+  ChakraPagination.PrevTriggerProps
+>((props, ref) => {
+  const { page } = usePaginationContext();
+  const recipe = useSlotRecipe({ key: "pagination" });
+  const styles = recipe();
+  const { t } = useTranslation();
+  const rootProps = useRootProps();
+
+  if (page <= 1) return null;
+
+  if (rootProps.getHref) {
+    return (
+      <ListItem>
+        <ChakraPagination.PrevTrigger
+          as={props.as ?? "a"}
+          asChild
+          {...{
+            href: rootProps.getHref(props.value as number),
+            to: rootProps.getHref(props.value as number),
+          }}
+          ref={ref}
+          css={styles.item}
+          aria-label={t(texts.previousPage)}
+          {...props}
+        >
+          <DropdownLeftOutline18Icon />
+        </ChakraPagination.PrevTrigger>
+      </ListItem>
+    );
+  }
+  return (
+    <ListItem>
+      <ChakraPagination.PrevTrigger
+        ref={ref}
+        asChild
+        aria-label={t(texts.previousPage)}
+        as={props.as || "button"}
+        css={styles.item}
+        {...props}
+      >
+        <DropdownLeftOutline18Icon />
+      </ChakraPagination.PrevTrigger>
+    </ListItem>
+  );
+});
+
+export const PaginationNextTrigger = React.forwardRef<
+  HTMLButtonElement,
+  ChakraPagination.NextTriggerProps
+>((props, ref) => {
+  const { page, totalPages } = usePaginationContext();
+  const recipe = useSlotRecipe({ key: "pagination" });
+  const styles = recipe();
+  const { t } = useTranslation();
+  const rootProps = useRootProps();
+
+  if (page >= totalPages) return null;
+
+  if (rootProps.getHref) {
+    return (
+      <ListItem>
+        <ChakraPagination.NextTrigger
+          ref={ref}
+          {...{
+            href: rootProps.getHref(props.value as number),
+            to: rootProps.getHref(props.value as number),
+          }}
+          css={styles.item}
+          aria-label={t(texts.nextPage)}
+          {...props}
+        >
+          <DropdownRightOutline18Icon />
+        </ChakraPagination.NextTrigger>
+      </ListItem>
+    );
+  }
+  return (
+    <ListItem>
+      <ChakraPagination.NextTrigger
+        ref={ref}
+        css={styles.item}
+        aria-label={t(texts.nextPage)}
+        as={props.as || "button"}
+        {...props}
+      >
+        <DropdownRightOutline18Icon />
+      </ChakraPagination.NextTrigger>
+    </ListItem>
+  );
+});
+
+export const PaginationItems = (
+  props: React.HTMLAttributes<HTMLElement> & {},
+) => {
+  return (
+    <ChakraPagination.Context>
+      {({ pages }) =>
+        pages.map((page, index) => {
+          return page.type === "ellipsis" ? (
+            <PaginationEllipsis
+              key={`ellipsis-${index}`}
+              index={index}
+              {...props}
+            />
+          ) : (
+            <PaginationItem
+              key={`pagination-item-${page.value}`}
+              value={page.value}
+              type="page"
+              {...props}
+            />
+          );
+        })
+      }
+    </ChakraPagination.Context>
   );
 };
 
@@ -150,5 +247,13 @@ const texts = createTexts({
     nn: "Neste side",
     en: "Next page",
     sv: "Nästa sida",
+  },
+  pageOf: (page, totalPages) => {
+    return {
+      nb: `Side ${page} av ${totalPages}`,
+      nn: `Side ${page} av ${totalPages}`,
+      en: `Page ${page} of ${totalPages}`,
+      sv: `Sida ${page} av ${totalPages}`,
+    };
   },
 });

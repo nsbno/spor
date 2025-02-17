@@ -2,7 +2,7 @@ import { accordionSlotRecipe } from "./accordion";
 import { alertSlotRecipe } from "./alert";
 import { alertExpandableSlotRecipe } from "./alert-expandable";
 import { alertServiceSlotRecipe } from "./alert-service";
-import {breadcrumbSlotRecipe} from "./breadcrumb";
+import { breadcrumbSlotRecipe } from "./breadcrumb";
 import { cardSelectSlotRecipe } from "./card-select";
 import { checkboxSlotRecipe } from "./checkbox";
 import { choiceChipSlotRecipe } from "./choice-chip";
@@ -21,6 +21,7 @@ import { numericStepperRecipe } from "./numeric-stepper";
 import { popoverSlotRecipe } from "./popover";
 import { progressBarRecipe } from "./progress-bar";
 import { progressIndicatorRecipe } from "./progress-indicator";
+import { paginationSlotRecipe } from "./pagination";
 import { radioGroupSlotRecipe } from "./radio";
 import { radioCardSlotRecipe } from "./radio-card";
 import { selectSlotRecipe } from "./select";
@@ -54,6 +55,7 @@ export const slotRecipes = {
   popover: popoverSlotRecipe,
   progressbar: progressBarRecipe,
   progressIndicator: progressIndicatorRecipe,
+  pagination: paginationSlotRecipe,
   radioCard: radioCardSlotRecipe,
   radioGroup: radioGroupSlotRecipe,
   select: selectSlotRecipe,

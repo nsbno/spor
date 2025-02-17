@@ -2,8 +2,9 @@
 import {
   RadioCard as ChakraRadioCard,
   RecipeVariantProps,
+  useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import React, { forwardRef, useId } from "react";
 import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
 
 /**
@@ -11,14 +12,14 @@ import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
  *
  * @example
  * ```tsx
- * <RadioCardRoot defaultValue="economy">
+ * <RadioCardGroup defaultValue="economy">
  *   <RadioCardLabel>Choose your class</RadioCardLabel>
- *   <Stack align="stretch">
- *      <RadioCardItem value="economy" label="Economy" />
- *      <RadioCardItem value="business" label="Business" />
- *      <RadioCardItem value="first-class" label="First Class" />
+ *   <Stack direction="row">
+ *      <RadioCard value="economy" label="Economy" />
+ *      <RadioCard value="business" label="Business" />
+ *      <RadioCard value="first-class" label="First Class" />
  *   </Stack>
- * </RadioCardRoot>
+ * </RadioCardGroup>
  * ```
  *
  *
@@ -29,58 +30,67 @@ type RadioCardVariantProps = RecipeVariantProps<typeof radioCardSlotRecipe>;
 
 type RadioCardItemProps = Exclude<
   ChakraRadioCard.ItemProps,
-  "colorPalette" | "indicator" | "variant" | "size"
+  "colorPalette" | "indicator" | "variant" | "size" | "addon"
 > &
   RadioCardVariantProps & {
-    icon?: React.ReactElement;
-    label?: React.ReactNode;
-    description?: React.ReactNode;
-    addon?: React.ReactNode;
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
-    variant?: "core" | "floating";
+    ariaLabel?: string;
   };
 
-export const RadioCardItem = React.forwardRef<
-  HTMLInputElement,
-  RadioCardItemProps
->(function RadioCardItem(props, ref) {
-  const { inputProps, label, description, addon, icon } = props;
+export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
+  (props, ref) => {
+    const { inputProps, children, value, ariaLabel } = props;
 
-  const hasContent = label || description || icon;
+    return (
+      <ChakraRadioCard.Item {...props}>
+        <ChakraRadioCard.ItemHiddenInput
+          aria-label={ariaLabel ?? value}
+          ref={ref}
+          {...inputProps}
+        />
 
-  return (
-    <ChakraRadioCard.Item {...props}>
-      <ChakraRadioCard.ItemHiddenInput ref={ref} {...inputProps} />
-      <ChakraRadioCard.ItemControl>
-        {hasContent && (
-          <>
-            {icon}
-            {label && (
-              <ChakraRadioCard.ItemText>{label}</ChakraRadioCard.ItemText>
-            )}
-            {description && (
-              <ChakraRadioCard.ItemDescription>
-                {description}
-              </ChakraRadioCard.ItemDescription>
-            )}
-          </>
-        )}
-      </ChakraRadioCard.ItemControl>
-      {addon && <ChakraRadioCard.ItemAddon>{addon}</ChakraRadioCard.ItemAddon>}
-    </ChakraRadioCard.Item>
-  );
-});
+        <ChakraRadioCard.ItemControl>{children}</ChakraRadioCard.ItemControl>
+      </ChakraRadioCard.Item>
+    );
+  },
+);
 
 type RadioCardRootProps = RadioCardVariantProps &
   Exclude<ChakraRadioCard.RootProps, "variant"> & {
     children: React.ReactNode;
+    /** "core" | "floating" - defaults to core */
     variant?: "core" | "floating";
+    gap?: string | number;
+    direction?: "row" | "column";
+    display?: string;
   };
 
-export const RadioCardRoot = forwardRef<HTMLDivElement, RadioCardRootProps>(
+export const RadioCardGroup = forwardRef<HTMLDivElement, RadioCardRootProps>(
   (props, ref) => {
-    const { variant } = props;
-    return <ChakraRadioCard.Root ref={ref} {...props} variant={variant} />;
+    const {
+      children,
+      variant = "core",
+      gap = 2,
+      direction = "column",
+      display = "flex",
+      ...rest
+    } = props;
+    const recipe = useSlotRecipe({ key: "radio-card" });
+    const styles = recipe({ variant });
+
+    return (
+      <ChakraRadioCard.Root
+        ref={ref}
+        variant={variant}
+        css={styles}
+        display={display}
+        gap={gap}
+        flexDirection={direction}
+        {...rest}
+      >
+        {children}
+      </ChakraRadioCard.Root>
+    );
   },
 );
 

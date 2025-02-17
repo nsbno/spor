@@ -34,7 +34,7 @@ export function coreBorder(state: BorderState) {
     case "hover":
       return {
         outline: "2px solid",
-        outlineColor: "core.outline.hover",
+        outlineColor: "core.outline",
       };
     case "focus": {
       return focusVisibleStyles()._focusVisible;
@@ -66,12 +66,19 @@ export function coreBorder(state: BorderState) {
   }
 }
 
-type coreTextState = Subset<State, "default" | "selected" | "disabled">;
+type coreTextState = Subset<
+  State,
+  "default" | "selected" | "disabled" | "highlight"
+>;
 export function coreText(state: coreTextState) {
   switch (state) {
     case "selected":
       return {
         color: "brand.text",
+      };
+    case "highlight":
+      return {
+        color: "text.highlight",
       };
     case "disabled":
       return {

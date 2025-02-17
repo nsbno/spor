@@ -2,6 +2,7 @@ import { accordionSlotRecipe } from "./accordion";
 import { alertSlotRecipe } from "./alert";
 import { alertExpandableSlotRecipe } from "./alert-expandable";
 import { alertServiceSlotRecipe } from "./alert-service";
+import { breadcrumbSlotRecipe } from "./breadcrumb";
 import { cardSelectSlotRecipe } from "./card-select";
 import { checkboxSlotRecipe } from "./checkbox";
 import { choiceChipSlotRecipe } from "./choice-chip";
@@ -20,7 +21,8 @@ import { numericStepperRecipe } from "./numeric-stepper";
 import { popoverSlotRecipe } from "./popover";
 import { progressBarRecipe } from "./progress-bar";
 import { progressIndicatorRecipe } from "./progress-indicator";
-import { radioSlotRecipe } from "./radio";
+import { paginationSlotRecipe } from "./pagination";
+import { radioGroupSlotRecipe } from "./radio";
 import { radioCardSlotRecipe } from "./radio-card";
 import { selectSlotRecipe } from "./select";
 import { stepperSlotRecipe } from "./stepper";
@@ -34,6 +36,7 @@ export const slotRecipes = {
   alertExpandable: alertExpandableSlotRecipe,
   alertService: alertServiceSlotRecipe,
   alert: alertSlotRecipe,
+  breadcrumb: breadcrumbSlotRecipe,
   cardSelect: cardSelectSlotRecipe,
   checkbox: checkboxSlotRecipe,
   choiceChip: choiceChipSlotRecipe,
@@ -52,8 +55,9 @@ export const slotRecipes = {
   popover: popoverSlotRecipe,
   progressbar: progressBarRecipe,
   progressIndicator: progressIndicatorRecipe,
+  pagination: paginationSlotRecipe,
   radioCard: radioCardSlotRecipe,
-  radio: radioSlotRecipe,
+  radioGroup: radioGroupSlotRecipe,
   select: selectSlotRecipe,
   stepper: stepperSlotRecipe,
   switch: switchSlotRecipe,

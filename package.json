@@ -8,7 +8,7 @@
     "test": "turbo run test --parallel",
     "dev": "turbo run dev --no-cache --parallel",
     "postinstall": "patch-package",
-    "prerelease": "pnpm run build",
+    "prerelease": "pnpm build",
     "release": "turbo run build && changeset publish",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\""

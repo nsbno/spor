@@ -87,14 +87,14 @@ If you do nat have pnpm installed, run `npm i -g pnpm` first.
 
 If you want to run the docs website locally, you'll need a few secrets. Follow the instructions in each app's readme to discover and set them locally.
 
-Then run `pnpm run build` to build all artifacts for the first time. Finally, run `pnpm run dev` to start the development servers.
+Then run `pnpm build` to build all artifacts for the first time. Finally, run `pnpm dev` to start the development servers.
 
 ### Build
 
 To build all apps and packages, run the following command:
 
 ```
-npm run build
+pnpm build
 ```
 
 ### Develop
@@ -102,7 +102,7 @@ npm run build
 To develop all apps and packages, run the following command:
 
 ```
-npm run dev
+pnpm dev
 ```
 
 This will start all apps and packages in development mode. You can then visit the following URLs:

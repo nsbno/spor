@@ -6,6 +6,9 @@ This package includes all of our icons as React Native components.
 
 ```bash
 $ npm install @vygruppen/spor-icon-react-native
+$ yarn add @vygruppen/spor-icon-react-native
+$ pnpm install @vygruppen/spor-icon-react-native
+
 ```
 
 ## Usage

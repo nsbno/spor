@@ -24,8 +24,8 @@
   },
   "scripts": {
     "clean": "rimraf tmp dist react",
-    "prebuild": "npm run clean",
-    "build": "npm run build:step-1 && npm run build:step-2",
+    "prebuild": "pnpm clean",
+    "build": "pnpm build:step-1 && pnpm build:step-2",
     "build:step-1": "tsx bin/generate.ts",
     "build:step-2": "tsup",
     "build:step-3": "rimraf tmp"

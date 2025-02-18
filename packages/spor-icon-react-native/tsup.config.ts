@@ -1,8 +1,8 @@
-import { defineConfig } from 'tsup';
+import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ['tmp/*'],
+  entry: ["tmp/*"],
   treeshake: true,
-  format: ['esm'],
-  external: ['app'],
+  format: ["esm"],
+  external: ["app"],
 });

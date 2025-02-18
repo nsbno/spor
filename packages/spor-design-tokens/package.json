@@ -13,7 +13,8 @@
   "types": "./dist/tokens.d.ts",
   "scripts": {
     "build": "ts-node scripts/build.ts",
-    "dev": "nodemon --watch 'tokens/**/*.{json,ts}' --exec 'ts-node scripts/build.ts'"  },
+    "dev": "nodemon --watch 'tokens/**/*.{json,ts}' --exec 'ts-node scripts/build.ts'"
+  },
   "files": [
     "dist",
     "assets",

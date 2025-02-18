@@ -6,9 +6,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": [
-    "@vygruppen/docs",
-    "@vygruppen/studio",
-    "@vygruppen/config"
-  ]
+  "ignore": ["@vygruppen/docs", "@vygruppen/studio", "@vygruppen/config"]
 }

@@ -13,7 +13,7 @@ export const brandTheme = {
   [Brand.CargoNet]: cargonetColors,
   cnSystem: {
     theme: {
-      semanticTokens: {
+      tokens: {
         colors: cargonetColors,
       },
     },

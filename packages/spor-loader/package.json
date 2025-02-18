@@ -16,8 +16,8 @@
     "directory": "packages/spor-loader"
   },
   "scripts": {
-    "build": "tsup src/* --dts --treeshake --format esm,cjs",
-    "dev": "tsup src/index.ts --watch"
+    "build": "tsup",
+    "dev": "tsup --watch"
   },
   "devDependencies": {
     "tsup": "^7.2.0",

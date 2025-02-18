@@ -29,7 +29,7 @@ If you want, you can also test it out in a [CodeSandbox](https://codesandbox.io/
 To get started, you'll need to install the required packages:
 
 ```bash
-$ npm install @vygruppen/spor-react
+$ pnpm install @vygruppen/spor-react
 ```
 
 Next, wrap your entire application in the `SporProvider` component. You'll need to pass the current language as well:
@@ -81,11 +81,13 @@ ALL ABOUT CHANGESETS: https://spor.vy.no/guides/releasing-new-versions
 
 ## Setup
 
-To develop locally, clone the repository and run `npm install` at the root level.
+To develop locally, clone the repository and run `pnpm install` at the root level.
+
+If you do nat have pnpm installed, run `npm i -g pnpm` first. 
 
 If you want to run the docs website locally, you'll need a few secrets. Follow the instructions in each app's readme to discover and set them locally.
 
-Then run `npm run build` to build all artifacts for the first time. Finally, run `npm run dev` to start the development servers.
+Then run `pnpm run build` to build all artifacts for the first time. Finally, run `pnpm run dev` to start the development servers.
 
 ### Build
 

@@ -7,8 +7,8 @@
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
-    "build": "tsup src/index.tsx --dts --treeshake --format cjs,esm",
-    "dev": "tsup src/index.tsx --watch --format esm"
+    "build": "tsup",
+    "dev": "tsup --watch"
   },
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-react",
   "repository": {
@@ -29,7 +29,7 @@
     "@emotion/styled": "^11.11.5",
     "@internationalized/date": "^3.5.4",
     "@vygruppen/spor-design-tokens": "workspace:*",
-    "@vygruppen/spor-icon-react": "^3.12.0",
+    "@vygruppen/spor-icon-react": "workspace:*",
     "@vygruppen/spor-loader": "workspace:*",
     "awesome-phonenumber": "^5.11.0",
     "deepmerge": "^4.3.1",
@@ -53,7 +53,8 @@
     "tsup": "^7.2.0",
     "vitest": "^0.26.3",
     "vitest-axe": "^0.1.0",
-    "vitest-canvas-mock": "^0.2.2"
+    "vitest-canvas-mock": "^0.2.2",
+    "typescript": "^5.7.3"
   },
   "peerDependencies": {
     "react": "^18.2.0",

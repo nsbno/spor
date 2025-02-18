@@ -18,4 +18,3 @@
 **spor-react: patch**
 
 - Updated darkGreen Badge with new alias
-- Updated ServiceAlert to use the new alert.service tokens (support for darkmode!)

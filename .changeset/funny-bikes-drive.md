@@ -8,3 +8,4 @@
 - teal has been removed from the palette
 - New aliases has been added to support the extended color palette
 - New tokens has been added to themes; detail.color and surface.color
+- New tokens for alerts

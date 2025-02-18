@@ -22,8 +22,6 @@ This repo also includes a bunch of packages. The ones you need to know about are
 
 Feel free to visit our documentation website on [spor.vy.no](https://spor.vy.no). You'll find live versions of all components, including extensive documentation. And the website is built by dogfooding the React component library!
 
-If you want, you can also test it out in a [CodeSandbox](https://codesandbox.io/s/demo-spor-b137ig).
-
 ## Usage (React)
 
 To get started, you'll need to install the required packages:

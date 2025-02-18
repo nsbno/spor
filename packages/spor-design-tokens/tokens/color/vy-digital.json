@@ -644,7 +644,7 @@
             },
             "active": {
               "light": {
-                "value": "{color.alias.sunshine.value}"
+                "value": "{color.alias.primrose.value}"
               },
               "dark": {
                 "value": "{color.alias.mustard.value}"

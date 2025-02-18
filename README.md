@@ -83,7 +83,7 @@ ALL ABOUT CHANGESETS: https://spor.vy.no/guides/releasing-new-versions
 
 To develop locally, clone the repository and run `pnpm install` at the root level.
 
-If you do nat have pnpm installed, run `npm i -g pnpm` first.
+If you do not have pnpm installed, run `npm i -g pnpm` first.
 
 If you want to run the docs website locally, you'll need a few secrets. Follow the instructions in each app's readme to discover and set them locally.
 

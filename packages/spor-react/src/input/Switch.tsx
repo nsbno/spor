@@ -8,7 +8,6 @@ import React from "react";
 
 export type SwitchProps = Omit<ChakraSwitchProps, "colorScheme" | "variant"> & {
   size?: "sm" | "md" | "lg";
-  as?: As;
 };
 
 /**
@@ -32,7 +31,7 @@ export type SwitchProps = Omit<ChakraSwitchProps, "colorScheme" | "variant"> & {
  * </FormControl>
  * ```
  */
-export const Switch = forwardRef<ChakraSwitchProps, "input">(
+export const Switch = forwardRef<SwitchProps, "input">(
   ({ size = "md", as = "div", ...props }, ref) => {
     return <ChakraSwitch as={as} size={size} {...props} ref={ref} />;
   },

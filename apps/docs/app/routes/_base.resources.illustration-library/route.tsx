@@ -1,4 +1,4 @@
-import { json } from "@remix-run/node";
+import { data } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { SanityAsset } from "@sanity/image-url/lib/types/types";
 import {
@@ -11,7 +11,6 @@ import {
   Box,
   Brand,
   Button,
-  StaticCard,
   Divider,
   Flex,
   Heading,
@@ -20,6 +19,7 @@ import {
   NativeSelect,
   SearchInput,
   SimpleGrid,
+  StaticCard,
   Text,
   Tooltip,
   useColorModePreference,
@@ -31,7 +31,7 @@ import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";
 import { slugify } from "~/utils/stringUtils";
 
-type LoaderData = {
+type SanityResponse = {
   illustrations: {
     _id: string;
     title: string;
@@ -86,8 +86,10 @@ export const loader = async () => {
     }
   }
 }`;
-  const { illustrations, article } = await client.fetch(query);
-  return json({ illustrations, article } as LoaderData);
+  const { illustrations, article } = (await client.fetch(
+    query,
+  )) as SanityResponse;
+  return { illustrations, article };
 };
 
 export default function IllustrationLibraryPage() {

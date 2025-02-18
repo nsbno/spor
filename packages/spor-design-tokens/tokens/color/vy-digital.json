@@ -70,7 +70,7 @@
         },
         "disabled": {
           "light": {
-            "value": "{color.palette.blackAlpha.400.value}"
+            "value": "{color.palette.blackAlpha.300.value}"
           },
           "dark": {
             "value": "{color.palette.whiteAlpha.400.value}"

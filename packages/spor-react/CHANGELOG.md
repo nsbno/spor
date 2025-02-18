@@ -1,5 +1,41 @@
 # @vygruppen/spor-react
 
+## 11.1.5
+
+### Patch Changes
+
+- 7c47e93: Fix(TextArea): Overlapping of label and text
+
+## 11.1.4
+
+### Patch Changes
+
+- cd49b43: Set correct position of label for input elements that caused the dance during hydration step
+
+## 11.1.3
+
+### Patch Changes
+
+- edb4b4d: Disable pointer-events on input labels
+
+## 11.1.2
+
+### Patch Changes
+
+- 902cd66: Removed lazy from phone number input
+
+## 11.1.1
+
+### Patch Changes
+
+- c0e50b7: Fixed searchinput so it is more SSR friendly
+
+## 11.1.0
+
+### Minor Changes
+
+- c0a8332: Button: Update props to support margins
+
 ## 11.0.5
 
 ### Patch Changes

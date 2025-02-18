@@ -15,7 +15,7 @@
             "value": "{color.alias.lightGrey.value}"
           },
           "dark": {
-            "value": "{color.alias.black.value}"
+            "value": "{color.alias.umbra.value}"
           }
         },
         "tertiary": {
@@ -38,7 +38,7 @@
         },
         "secondary": {
           "light": {
-            "value": "{color.alias.champagne.value}"
+            "value": "{color.alias.black.value}"
           },
           "dark": {
             "value": "{color.alias.champagne.value}"
@@ -88,10 +88,10 @@
         },
         "secondary": {
           "light": {
-            "value": "{color.alias.wood.value}"
+            "value": "{color.alias.dimGrey.value}"
           },
           "dark": {
-            "value": "{color.alias.champagne.value}"
+            "value": "{color.alias.darkGrey.value}"
           }
         },
         "inverted": {
@@ -157,7 +157,7 @@
             "value": "{color.palette.blackAlpha.200.value}"
           },
           "dark": {
-            "value": "{color.palette.whiteAlpha.200.value}"
+            "value": "{color.palette.whiteAlpha.100.value}"
           }
         }
       },
@@ -167,7 +167,7 @@
             "value": "{color.alias.white.value}"
           },
           "dark": {
-            "value": "{color.alias.darkGrey.value}"
+            "value": "{color.alias.black.value}"
           }
         },
         "secondary": {
@@ -175,7 +175,7 @@
             "value": "{color.alias.champagne.value}"
           },
           "dark": {
-            "value": "{color.alias.black.value}"
+            "value": "{color.alias.darkGrey.value}"
           }
         },
         "tertiary": {
@@ -192,6 +192,72 @@
           },
           "dark": {
             "value": "{color.palette.whiteAlpha.100.value}"
+          }
+        },
+        "color": {
+          "neutral": {
+            "light": {
+              "value": "{color.alias.white.value}"
+            },
+            "dark": {
+              "value": "{color.alias.black.value}"
+            }
+          },
+          "grey": {
+            "light": {
+              "value": "{color.alias.silver.value}"
+            },
+            "dark": {
+              "value": "{color.alias.darkGrey.value}"
+            }
+          },
+          "green": {
+            "light": {
+              "value": "{color.alias.seaMist.value}"
+            },
+            "dark": {
+              "value": "{color.alias.darkTeal.value}"
+            }
+          },
+          "blue": {
+            "light": {
+              "value": "{color.alias.lightBlue.value}"
+            },
+            "dark": {
+              "value": "{color.alias.darkBlue.value}"
+            }
+          },
+          "cream": {
+            "light": {
+              "value": "{color.alias.blonde.value}"
+            },
+            "dark": {
+              "value": "{color.alias.coffee.value}"
+            }
+          },
+          "yellow": {
+            "light": {
+              "value": "{color.alias.banana.value}"
+            },
+            "dark": {
+              "value": "{color.alias.bronze.value}"
+            }
+          },
+          "orange": {
+            "light": {
+              "value": "{color.alias.champagne.value}"
+            },
+            "dark": {
+              "value": "{color.alias.wood.value}"
+            }
+          },
+          "red": {
+            "light": {
+              "value": "{color.alias.lightRed.value}"
+            },
+            "dark": {
+              "value": "{color.alias.burgundy.value}"
+            }
           }
         }
       },
@@ -352,7 +418,7 @@
               "value": "{color.alias.white.value}"
             },
             "dark": {
-              "value": "{color.palette.whiteAlpha.200.value}"
+              "value": "{color.alias.umbra.value}"
             }
           },
           "active": {
@@ -360,7 +426,7 @@
               "value": "{color.alias.bisque.value}"
             },
             "dark": {
-              "value": "transparent"
+              "value": "{color.alias.darkGrey.value}"
             }
           }
         },
@@ -378,7 +444,7 @@
               "value": "{color.alias.steel.value}"
             },
             "dark": {
-              "value": "{color.alias.white}"
+              "value": "{color.alias.white.value}"
             }
           }
         },
@@ -432,6 +498,74 @@
           },
           "dark": {
             "value": "{color.cargonet.icon.default.dark.value}"
+          }
+        }
+      },
+      "detail": {
+        "color": {
+          "neutral": {
+            "light": {
+              "value": "{color.alias.darkGrey.value}"
+            },
+            "dark": {
+              "value": "{color.alias.white.value}"
+            }
+          },
+          "grey": {
+            "light": {
+              "value": "{color.alias.darkGrey.value}"
+            },
+            "dark": {
+              "value": "{color.alias.white.value}"
+            }
+          },
+          "green": {
+            "light": {
+              "value": "{color.alias.jungle.value}"
+            },
+            "dark": {
+              "value": "{color.alias.mint.value}"
+            }
+          },
+          "blue": {
+            "light": {
+              "value": "{color.alias.navy.value}"
+            },
+            "dark": {
+              "value": "{color.alias.icyBlue.value}"
+            }
+          },
+          "cream": {
+            "light": {
+              "value": "{color.alias.coffee.value}"
+            },
+            "dark": {
+              "value": "{color.alias.cornsilk.value}"
+            }
+          },
+          "yellow": {
+            "light": {
+              "value": "{color.alias.olive.value}"
+            },
+            "dark": {
+              "value": "{color.alias.white.value}"
+            }
+          },
+          "orange": {
+            "light": {
+              "value": "{color.alias.chocolate.value}"
+            },
+            "dark": {
+              "value": "{color.alias.bisque.value}"
+            }
+          },
+          "red": {
+            "light": {
+              "value": "{color.alias.maroon.value}"
+            },
+            "dark": {
+              "value": "{color.alias.pink.value}"
+            }
           }
         }
       }

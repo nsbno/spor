@@ -63,6 +63,9 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
             {sizeNotFull && placement === "bottom" && <CloseDrawerLine />}
             {children}
             {sizeNotFull && placement === "top" && <CloseDrawerLine />}
+            {sizeNotFull && (placement === "end" || placement === "start") && (
+              <DrawerCloseTrigger />
+            )}
           </ChakraDrawer.Content>
         </ChakraDrawer.Positioner>
       </Portal>
@@ -109,7 +112,7 @@ export const DrawerCloseTrigger = forwardRef<
           {t(texts.close)}
         </Button>
       ) : (
-        <CloseButton size="md" />
+        <CloseButton size="sm" />
       )}
     </ChakraDrawer.CloseTrigger>
   );

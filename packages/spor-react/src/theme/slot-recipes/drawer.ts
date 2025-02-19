@@ -54,7 +54,6 @@ export const drawerSlotRecipe = defineSlotRecipe({
     },
     header: {
       paddingX: "5",
-      paddingTop: "1",
       paddingBottom: "1",
     },
     body: {
@@ -115,6 +114,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
           width: "100vw",
           height: "100vh",
           borderRadius: "0 !important",
+          paddingBottom: "4",
         },
         closeTrigger: {
           position: "relative",

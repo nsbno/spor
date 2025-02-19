@@ -139,12 +139,7 @@ export const DrawerFullScreenHeader = forwardRef<
   const { backTrigger = true, title } = props;
   return (
     <ChakraDrawer.Header {...props} ref={ref} asChild>
-      <Grid
-        templateColumns="1fr auto 1fr"
-        height="auto"
-        paddingX="8"
-        paddingTop="2"
-      >
+      <Grid templateColumns="1fr auto 1fr" height="auto" paddingX="8">
         <GridItem width="full" alignSelf="center">
           {backTrigger && <DrawerBackTrigger />}
         </GridItem>

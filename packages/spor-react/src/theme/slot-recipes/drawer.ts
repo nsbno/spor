@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { bg } from "../utils/bg-utils";
 import { drawerAnatomy } from "./anatomy";
 
 export const drawerSlotRecipe = defineSlotRecipe({
@@ -54,27 +53,28 @@ export const drawerSlotRecipe = defineSlotRecipe({
       },
     },
     header: {
-      paddingX: "6",
-      paddingTop: "3",
-      paddingBottom: "2",
+      paddingX: "5",
+      paddingTop: "1",
+      paddingBottom: "1",
     },
     body: {
-      paddingX: "6",
+      paddingX: "5",
       paddingY: "2",
       flex: "1",
       overflow: "auto",
+      fontSize: ["xs", null, null, "sm"],
     },
     footer: {
       display: "flex",
       alignItems: "center",
       justifyContent: "flex-end",
       gap: "3",
-      paddingX: "6",
+      paddingX: "5",
       paddingTop: "2",
       paddingBottom: "4",
     },
     title: {
-      textStyle: "md",
+      fontSize: ["sm", null, null, "md"],
       fontWeight: "semibold",
       textAlign: "left",
     },
@@ -132,7 +132,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
           justifyContent: "flex-start",
         },
         content: {
-          borderRightRadius: "md",
+          borderRightRadius: "lg",
           _open: {
             animationName: {
               base: "slide-from-left-full, fade-in",
@@ -153,7 +153,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
           justifyContent: "flex-end",
         },
         content: {
-          borderLeftRadius: "md",
+          borderLeftRadius: "lg",
           _open: {
             animationName: {
               base: "slide-from-right-full, fade-in",
@@ -176,7 +176,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
         content: {
           maxW: "100%",
           marginX: "auto",
-          borderBottomRadius: "md",
+          borderBottomRadius: "lg",
           _open: { animationName: "slide-from-top-full, fade-in" },
           _closed: { animationName: "slide-to-top-full, fade-out" },
         },
@@ -189,7 +189,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
         content: {
           maxW: "100%",
           marginX: "auto",
-          borderTopRadius: "md",
+          borderTopRadius: "lg",
           _open: { animationName: "slide-from-bottom-full, fade-in" },
           _closed: { animationName: "slide-to-bottom-full, fade-out" },
         },

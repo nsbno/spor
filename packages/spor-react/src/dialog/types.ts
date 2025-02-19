@@ -4,7 +4,7 @@ import { PropsWithChildren } from "react";
 
 export type DrawerVariantProps = RecipeVariantProps<typeof drawerSlotRecipe>;
 
-export type DrawerContentProps = Omit<ChakraDrawer.ContentProps, "rounded"> &
+export type DrawerContentProps = ChakraDrawer.ContentProps &
   PropsWithChildren<DrawerVariantProps> & {
     children: React.ReactNode;
     portalled?: boolean;

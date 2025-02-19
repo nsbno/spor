@@ -55,12 +55,14 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
   (props, ref) => {
     const { children, portalled = true, portalRef, ...rest } = props;
     const { size, placement } = useRootDrawerProps();
+    const sizeNotFull = size !== "full";
     return (
       <Portal disabled={!portalled} container={portalRef}>
         <ChakraDrawer.Positioner>
           <ChakraDrawer.Content ref={ref} {...rest}>
-            {size !== "full" && placement === "bottom" && <CloseDrawerLine />}
+            {sizeNotFull && placement === "bottom" && <CloseDrawerLine />}
             {children}
+            {sizeNotFull && placement === "top" && <CloseDrawerLine />}
           </ChakraDrawer.Content>
         </ChakraDrawer.Positioner>
       </Portal>
@@ -79,6 +81,8 @@ export const CloseDrawerLine = forwardRef<HTMLButtonElement, {}>(
         insetEnd="unset"
         aria-label={t(texts.close)}
         cursor="pointer"
+        top={0}
+        paddingY={2}
       >
         <Box
           width={7}
@@ -86,7 +90,6 @@ export const CloseDrawerLine = forwardRef<HTMLButtonElement, {}>(
           backgroundColor="silver"
           borderRadius="xs"
           marginX="auto"
-          marginY={1}
         />
       </ChakraDrawer.CloseTrigger>
     );
@@ -118,7 +121,7 @@ export const DrawerBackTrigger = forwardRef<
 >((props, ref) => {
   const { t } = useTranslation();
   return (
-    <ChakraDrawer.CloseTrigger asChild {...props} ref={ref}>
+    <ChakraDrawer.CloseTrigger asChild {...props} ref={ref} top="0">
       <Button variant="ghost" leftIcon={<ArrowLeftFill24Icon />}>
         {t(texts.back)}
       </Button>
@@ -133,15 +136,15 @@ export const DrawerFullScreenHeader = forwardRef<
   const { backTrigger = true, title } = props;
   return (
     <ChakraDrawer.Header {...props} ref={ref} asChild>
-      <Grid templateColumns="1fr auto 1fr" height="auto">
-        <GridItem width="100%" alignSelf="center">
+      <Grid templateColumns="1fr auto 1fr" height="auto" paddingX="8">
+        <GridItem width="full" alignSelf="center">
           {backTrigger && <DrawerBackTrigger />}
         </GridItem>
-        <GridItem width="100%" alignSelf="end">
+        <GridItem width="full" alignSelf="end" asChild>
           {title && <DrawerTitle>{title}</DrawerTitle>}
         </GridItem>
-        <GridItem width="100%" alignSelf="end">
-          <DrawerCloseTrigger justifySelf="end" />
+        <GridItem width="full" alignSelf="end">
+          <DrawerCloseTrigger justifySelf="end" top="0" />
         </GridItem>
       </Grid>
     </ChakraDrawer.Header>

@@ -1,15 +1,10 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { serviceAlertAnatomy } from "./anatomy";
 
 export const alertServiceSlotRecipe = defineSlotRecipe({
-  slots: [
-    "root",
-    "itemTrigger",
-    "itemTriggerTitle",
-    "notificationText",
-    "itemContent",
-  ],
   className: "spor-service-alert",
+  slots: serviceAlertAnatomy.keys(),
   base: {
     root: {
       fontSize: "inherit",

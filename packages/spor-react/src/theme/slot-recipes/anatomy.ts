@@ -97,6 +97,14 @@ export const stepperAnatomy = createAnatomy("stepper").parts(
   "backButton",
 );
 
+export const serviceAlertAnatomy = createAnatomy("service-alert").parts(
+  "root",
+  "itemTrigger",
+  "itemTriggerTitle",
+  "notificationText",
+  "itemContent",
+);
+
 export const radioCardAnatomy = createAnatomy("radio-card").parts(
   "root",
   "item",

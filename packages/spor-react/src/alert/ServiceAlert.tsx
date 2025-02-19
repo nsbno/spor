@@ -121,21 +121,18 @@ export const ServiceAlert = ({
             <HStack justifyContent="center" width="100%">
               <Stack
                 justifyContent="center"
-                alignItems="center"
-                flexGrow={1}
                 maxWidth={contentWidth}
-                flexFlow="column"
                 gap={2}
                 css={{
-                  p: {
+                  "& p": {
                     padding: "0.8rem 0",
-                    borderBottom: "0.08rem solid",
+                    borderBottom: "0.08rem dashed",
                     borderColor:
                       variant === "global-deviation"
-                        ? "blackAlpha.400"
-                        : "whiteAlpha.400",
+                        ? "outline"
+                        : "outline.inverted",
                   },
-                  "p:last-child": {
+                  "& p:last-child": {
                     borderBottom: "none",
                   },
                 }}

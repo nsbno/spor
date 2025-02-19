@@ -112,7 +112,7 @@ export const DrawerCloseTrigger = forwardRef<
           {t(texts.close)}
         </Button>
       ) : (
-        <CloseButton size="sm" />
+        <CloseButton size="md" />
       )}
     </ChakraDrawer.CloseTrigger>
   );

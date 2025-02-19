@@ -63,6 +63,7 @@ export const dialogSlotRecipe = defineSlotRecipe({
       paddingX: "6",
       paddingTop: "2",
       paddingBottom: "4",
+      fontSize: ["xs", null, null, "sm"],
     },
     footer: {
       display: "flex",
@@ -74,8 +75,9 @@ export const dialogSlotRecipe = defineSlotRecipe({
       paddingBottom: "4",
     },
     title: {
-      textStyle: "lg",
-      fontWeight: "semibold",
+      fontSize: ["md", null, null, "lg"],
+      fontFamily: "heading",
+      fontWeight: "medium",
     },
     closeTrigger: {
       position: "absolute",

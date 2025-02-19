@@ -45,7 +45,7 @@ export const badgeRecipie = defineRecipe({
         borderColor: "darkTeal",
       },
       "dark-green": {
-        backgroundColor: "celadon",
+        backgroundColor: "primaryGreen",
         color: "white",
         borderColor: "blueGreen",
       },

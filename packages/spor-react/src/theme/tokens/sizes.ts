@@ -3,9 +3,6 @@ import tokens from "@vygruppen/spor-design-tokens";
 import { spacing } from "./spacing";
 
 export const largeSizes = defineTokens.sizes({
-  max: { value: "max-content" },
-  min: { value: "min-content" },
-  full: { value: "100%" },
   "3xs": { value: "14rem" },
   "2xs": { value: "16rem" },
   xs: { value: "20rem" },
@@ -39,16 +36,16 @@ const namedSizes = defineTokens.sizes({
 });
 
 const container = defineTokens.sizes({
-  base: { value: "0px" },
+  base: { value: 0 },
   sm: { value: tokens.size.breakpoint.sm },
   md: { value: tokens.size.breakpoint.md },
   lg: { value: tokens.size.breakpoint.lg },
   xl: { value: tokens.size.breakpoint.xl },
 });
 
-export const sizes = defineTokens.sizes({
+export const sizes = {
   ...largeSizes,
   ...namedSizes,
   ...spacing,
   container,
-});
+};

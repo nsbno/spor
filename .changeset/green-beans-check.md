@@ -35,7 +35,6 @@ Spor is getting a major update with Chakra 3.
 
 The `useColorMode` hook exports the state (`colorMode`) and toggle (`toggleColorMode`).
 
-
 ### Externals from Chakra:
 
 Removed (as they have been removed from Chakra): `DarkMode, LightMode, defineStyleConfig, useColorModePreference, useMergeRefs, usePreferReducedMotion, CSSWithMultiValues, ComponentStyleConfig, UseClipboardOptions, UseOutsideClickProps, useSize`

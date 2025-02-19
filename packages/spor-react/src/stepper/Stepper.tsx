@@ -101,12 +101,7 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(
                   }}
                 />
                 {heading && (
-                  <Text
-                    flex={1}
-                    variant="sm"
-                    as={headingLevel}
-                    css={style.title}
-                  >
+                  <Text variant="sm" as={headingLevel} css={style.title}>
                     {heading}
                   </Text>
                 )}

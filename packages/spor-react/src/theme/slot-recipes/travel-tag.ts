@@ -1,16 +1,9 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { travelTagAnatomy } from "./anatomy";
 
 export const travelTagSlotRecipe = defineSlotRecipe({
-  slots: [
-    "container",
-    "iconContainer",
-    "icon",
-    "textContainer",
-    "title",
-    "description",
-    "deviationIcon",
-  ],
+  slots: travelTagAnatomy.keys(),
   className: "spor-travel-tag",
   base: {
     container: {
@@ -21,9 +14,6 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       width: "fit-content",
       transitionDuration: "fast",
       transitionProperty: "common",
-      _disabled: {
-        backgroundColor: "silver",
-      },
       "button&, a&": {
         boxShadow: "sm",
         _hover: {
@@ -36,26 +26,23 @@ export const travelTagSlotRecipe = defineSlotRecipe({
         },
       },
     },
-    iconContainer: {
-      padding: 0.5,
-      "[aria-disabled=true] &": {
-        backgroundColor: "osloGrey",
-        color: "white",
-      },
-    },
     textContainer: {
       color: "darkGrey",
       paddingRight: 0.5,
       whiteSpace: "nowrap",
-      "[aria-disabled=true] &": {
-        color: "dimGrey",
-      },
     },
     title: {
       fontWeight: "bold",
+      color: "brand.text.inverted",
+      "[aria-disabled=true] &": {
+        color: "text.disabled",
+      },
     },
     description: {
       fontWeight: "normal",
+      "[aria-disabled=true] &": {
+        color: "text.disabled",
+      },
     },
     deviationIcon: {
       position: "absolute",
@@ -70,7 +57,10 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       critical: {
         container: {
           border: "1px solid",
-          borderColor: "brightRed",
+          borderColor: "error.text",
+        },
+        deviationIcon: {
+          color: "brightRed",
         },
       },
       major: {
@@ -80,7 +70,11 @@ export const travelTagSlotRecipe = defineSlotRecipe({
         },
       },
       minor: {},
-      info: {},
+      info: {
+        deviationIcon: {
+          color: "ocean",
+        },
+      },
       none: {},
     },
     variant: {
@@ -140,29 +134,10 @@ export const travelTagSlotRecipe = defineSlotRecipe({
         },
       },
       walk: {
-        container: {
-          backgroundColor: "white",
-          _disabled: {
-            backgroundColor: "white",
-          },
-        },
-        iconContainer: {
-          border: "none",
-          position: "relative",
-          left: -1,
-          backgroundColor: "white",
-          "[aria-disabled=true] &": {
-            backgroundColor: "transparent",
-            color: "osloGrey",
-          },
-        },
         textContainer: {
           position: "absolute",
-          left: 2,
-          bottom: -0.5,
-          "[aria-disabled=true] &": {
-            color: "osloGrey",
-          },
+          left: "1.3rem",
+          bottom: 0,
         },
         title: {
           fontSize: "mobile.xs",

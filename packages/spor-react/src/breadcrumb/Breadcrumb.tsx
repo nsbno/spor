@@ -2,75 +2,66 @@
 
 import React, { forwardRef, PropsWithChildren } from "react";
 import { BoxProps } from "../layout";
-import { breadcrumbRecipe } from "../theme/recipes/breadcrumb";
-import { RecipeVariantProps, useRecipe } from "@chakra-ui/react";
-import { useColorModeValue } from "../color-mode";
+import { breadcrumbSlotRecipe } from "../theme/slot-recipes/breadcrumb";
+import { RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
 import {
   Breadcrumb as ChakraBreadcrumb,
   BreadcrumbLink as ChakraBreadcrumbLink,
   BreadcrumbCurrentLink as ChakraBreadcrumbCurrentLink,
   BreadcrumbEllipsis as ChakraBreadcrumbEllipsis,
 } from "@chakra-ui/react";
+import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 
-type BreadcrumbVariants = RecipeVariantProps<typeof breadcrumbRecipe>;
+type BreadcrumbVariants = RecipeVariantProps<typeof breadcrumbSlotRecipe>;
 
-export type BreadcrumbProps = BoxProps &
+export type BreadcrumbProps = Omit<
+  BoxProps,
+  "size" | "colorPalette" | "unstyled" | "separator" | "separatorGap"
+> &
   PropsWithChildren<BreadcrumbVariants> & {
     children: React.ReactNode;
     /* "core" or "ghost". Defaults to "core". */
     variant?: "core" | "ghost";
-    /* Seperator for the crumbs */
-    separator?: React.ReactNode;
-    /* Spacing between the seperator */
-    separatorGap?: string | number;
   };
 
 /**
  * A breadcrumb component.
  *
  * Used to create customizable breadcrumbs.
- *
+ * BreadcrumbCurrentLink is used to set the last breadcrumb.
+ * BreadcrumbLink is used to set the other breadcrumbs.
  * ```tsx
- * <Breadcrumb separator=">" separatorGap="4">
- *   <BreadcrumbItem>
+ * <Breadcrumb>
  *     <BreadcrumbLink href="/">Home</BreadcrumbLink>
- *   </BreadcrumbItem>
- *   <BreadcrumbItem isCurrentPage>
+ *    <BreadcrumbLink href="/Breadcrumb">Breadcrumb</BreadcrumbLink>
  *    <BreadcrumbCurrentLink href="/about">About</BreadcrumbCurrentLink>
- *  </BreadcrumbItem>
  * </Breadcrumb>
  * ```
  */
 export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
-  (
-    {
-      variant = "core",
-      separator,
-      separatorGap = "0.5rem",
-      children,
-      ...props
-    },
-    ref,
-  ) => {
-    const recipe = useRecipe({ recipe: breadcrumbRecipe });
-    const styles = recipe({});
-    const iconColor = useColorModeValue("blackAlpha.400", "whiteAlpha.400");
+  ({ variant = "core", children, ...props }, ref) => {
+    const recipe = useSlotRecipe({ key: "breadcrumb" });
+    const styles = recipe({ variant });
 
     const validChildren = React.Children.toArray(children).filter(
       React.isValidElement,
     );
 
     return (
-      <ChakraBreadcrumb.Root ref={ref} css={styles} {...props}>
-        <ChakraBreadcrumb.List gap={separatorGap}>
+      <ChakraBreadcrumb.Root ref={ref} {...props}>
+        <ChakraBreadcrumb.List css={styles.list}>
           {validChildren.map((child, index) => {
             const isLast = index === validChildren.length - 1;
             return (
               <React.Fragment key={index}>
-                <ChakraBreadcrumb.Item>{child}</ChakraBreadcrumb.Item>
+                <ChakraBreadcrumb.Item>
+                  {React.cloneElement(child as React.ReactElement, {
+                    css: isLast ? styles.currentLink : styles.link,
+                  })}
+                </ChakraBreadcrumb.Item>
                 {!isLast && (
-                  <ChakraBreadcrumb.Separator>
-                    {separator || <span>/</span>}
+                  <ChakraBreadcrumb.Separator aria-hidden="true">
+                    <DropdownRightFill18Icon color="icon.disabled" />
                   </ChakraBreadcrumb.Separator>
                 )}
               </React.Fragment>

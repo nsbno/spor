@@ -2,10 +2,10 @@
 
 import {
   Accordion,
-  Box,
   Flex,
-  Icon,
+  HStack,
   RecipeVariantProps,
+  Span,
   Stack,
   Text,
   useSlotRecipe,
@@ -15,6 +15,7 @@ import { AlertIcon } from "./AlertIcon";
 import { BaseAlert, BaseAlertProps } from "./BaseAlert";
 import { createTexts, useTranslation } from "../i18n";
 import { alertServiceSlotRecipe } from "../theme/slot-recipes/alert-service";
+import { DropdownDownFill24Icon } from "@vygruppen/spor-icon-react";
 
 type ServiceAlertVariantProps = RecipeVariantProps<
   typeof alertServiceSlotRecipe
@@ -31,7 +32,7 @@ type ServiceAlertProps = BaseAlertProps &
      * Defaults to container.md */
     contentWidth: string;
     /** Callback for when the expandable panel is opened or closed */
-    onToggle?: (isOpen: boolean) => void;
+    onToggle?: (open: boolean) => void;
     /** Whether or not the default state of the alert is open */
     defaultOpen?: boolean;
     /**
@@ -62,105 +63,84 @@ export const ServiceAlert = ({
   contentWidth = "container.md",
   headingLevel = "h3",
   defaultOpen = false,
-  onToggle = () => {},
+  onToggle,
   value,
   ...boxProps
 }: ServiceAlertProps) => {
   const { t } = useTranslation();
-  const recipe = useSlotRecipe({ key: "alert-service" });
+  const recipe = useSlotRecipe({ key: "alertService" });
   const styles = recipe({ variant });
 
-  const handleChange = (event: React.FormEvent<HTMLDivElement>) => {
-    const expandedIndex = (event.target as HTMLDivElement).dataset.index;
-    onToggle(expandedIndex === "0");
-  };
+  const fallbackValue = value || "spor-service-alert";
   return (
-    <BaseAlert
-      variant={variant}
-      {...boxProps}
-      paddingX={0}
-      paddingY={0}
-      sx={styles.outerBox}
-    >
+    <BaseAlert variant={variant} {...boxProps} css={styles.root}>
       <Accordion.Root
-        onChange={handleChange}
-        defaultValue={value}
+        defaultValue={defaultOpen ? [fallbackValue] : undefined}
         collapsible
-        flexGrow={1}
-        css={{ outline: "none" }}
         variant={variant}
+        onChange={onToggle}
       >
-        <Accordion.Item value={value}>
-          <Accordion.ItemTrigger css={styles.container}>
-            <Stack
-              flexDirection="row"
-              justifyContent="center"
+        <Accordion.Item value={fallbackValue}>
+          <Accordion.ItemTrigger css={styles.itemTrigger}>
+            <HStack
+              justifyContent="space-between"
+              alignContent="center"
               width="100%"
-              paddingX={2}
+              maxWidth={contentWidth}
             >
-              <Flex
-                justifyContent="space-between"
-                alignItems="center"
-                flexGrow={1}
-                maxWidth={contentWidth}
-              >
-                <Flex as={headingLevel} alignItems="center">
-                  <AlertIcon variant={variant} />
+              <Flex as={headingLevel} alignItems="center">
+                <AlertIcon variant={variant} />
 
-                  <Box
-                    as="span"
-                    css={{
-                      // Truncate the title to one line
-                      display: "-webkit-box",
-                      overflow: "hidden",
-                      WebkitLineClamp: "1",
-                      WebkitBoxOrient: "vertical",
-                    }}
-                  >
-                    {title}
-                  </Box>
-                </Flex>
-
-                <Flex alignItems="center">
-                  {notification && (
-                    <Text css={styles.notificationText}>
-                      {t(texts.notification(notification))}
-                    </Text>
-                  )}
-
-                  <Icon />
-                </Flex>
+                <Span
+                  css={{
+                    // Truncate the title to one line
+                    display: "-webkit-box",
+                    overflow: "hidden",
+                    WebkitLineClamp: "1",
+                    WebkitBoxOrient: "vertical",
+                    ...styles.itemTriggerTitle,
+                  }}
+                >
+                  {title}
+                </Span>
               </Flex>
-            </Stack>
+              <Flex alignItems="center" gap={[0.5, null, null, 1]}>
+                {notification && (
+                  <Text css={styles.notificationText}>
+                    {t(texts.notification(notification))}
+                  </Text>
+                )}
+                <Accordion.ItemIndicator>
+                  <DropdownDownFill24Icon />
+                </Accordion.ItemIndicator>
+              </Flex>
+            </HStack>
           </Accordion.ItemTrigger>
 
-          <Accordion.ItemBody css={styles.serviceMessageContent}>
-            <Stack flexDirection="row" justifyContent="center" width="100%">
+          <Accordion.ItemContent css={styles.itemContent}>
+            <HStack justifyContent="center" width="100%">
               <Stack
                 justifyContent="center"
-                alignItems="center"
-                flexGrow={1}
                 maxWidth={contentWidth}
-                flexFlow="column"
                 gap={2}
                 css={{
-                  p: {
+                  "& p": {
                     padding: "0.8rem 0",
-                    borderBottom: "0.08rem solid",
+                    borderBottom: "0.08rem dashed",
                     borderColor:
                       variant === "global-deviation"
-                        ? "blackAlpha.400"
-                        : "whiteAlpha.400",
+                        ? "outline"
+                        : "outline.inverted",
                   },
-                  "p:last-child": {
+                  "& p:last-child": {
                     borderBottom: "none",
                   },
                 }}
               >
                 {children}
               </Stack>
-            </Stack>
-          </Accordion.ItemBody>
+            </HStack>
+          </Accordion.ItemContent>
         </Accordion.Item>
       </Accordion.Root>
     </BaseAlert>

@@ -10,6 +10,7 @@ export {
   SimpleGrid,
   Spacer,
   VStack,
+  Span,
 } from "@chakra-ui/react";
 export type {
   BoxProps,

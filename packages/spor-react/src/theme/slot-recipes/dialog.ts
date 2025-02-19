@@ -36,10 +36,10 @@ export const dialogSlotRecipe = defineSlotRecipe({
     },
     content: {
       display: "flex",
-      backgroundColor: "white",
+      backgroundColor: "bg",
       flexDirection: "column",
       position: "relative",
-      width: "100%",
+      width: "full",
       outline: 0,
       borderRadius: "lg",
       marginY: "3.75rem",
@@ -56,13 +56,13 @@ export const dialogSlotRecipe = defineSlotRecipe({
       flex: 0,
       paddingX: "6",
       paddingTop: "6",
-      paddingBottom: "4",
+      paddingBottom: "2",
     },
     body: {
       flex: "1",
       paddingX: "6",
       paddingTop: "2",
-      paddingBottom: "6",
+      paddingBottom: "4",
     },
     footer: {
       display: "flex",
@@ -76,6 +76,14 @@ export const dialogSlotRecipe = defineSlotRecipe({
     title: {
       textStyle: "lg",
       fontWeight: "semibold",
+    },
+    closeTrigger: {
+      position: "absolute",
+      top: "2",
+      insetEnd: "2",
+      "& svg": {
+        color: "icon",
+      },
     },
   },
 
@@ -199,7 +207,6 @@ export const dialogSlotRecipe = defineSlotRecipe({
       none: {},
     },
   },
-
   defaultVariants: {
     size: "md",
     scrollBehavior: "outside",

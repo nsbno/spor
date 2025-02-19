@@ -44,6 +44,7 @@ export const dialogAnatomy = createAnatomy("dialog").parts(
   "content",
   "title",
   "description",
+  "closeTrigger",
 );
 
 export const paginationAnatomy = createAnatomy("pagination").parts(

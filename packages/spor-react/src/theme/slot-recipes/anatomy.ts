@@ -35,6 +35,18 @@ export const fieldAnatomy = createAnatomy("field").parts(
   "errorText",
 );
 
+export const dialogAnatomy = createAnatomy("dialog").parts(
+  "header",
+  "body",
+  "footer",
+  "backdrop",
+  "positioner",
+  "content",
+  "title",
+  "description",
+  "closeTrigger",
+);
+
 export const paginationAnatomy = createAnatomy("pagination").parts(
   "list",
   "item",

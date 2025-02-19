@@ -6,12 +6,12 @@ export const dialogSlotRecipe = defineSlotRecipe({
   className: "spor-dialog",
   base: {
     backdrop: {
-      bg: "blackAlpha.500",
-      pos: "fixed",
+      background: "blackAlpha.500",
+      position: "fixed",
       left: 0,
       top: 0,
-      w: "100vw",
-      h: "100dvh",
+      width: "100vw",
+      height: "100dvh",
       zIndex: "modal",
       _open: {
         animationName: "fade-in",
@@ -123,7 +123,7 @@ export const dialogSlotRecipe = defineSlotRecipe({
           overflow: "hidden",
         },
         content: {
-          maxH: "calc(100% - 7.5rem)",
+          maxHeight: "calc(100% - 7.5rem)",
         },
         body: {
           overflow: "auto",
@@ -140,27 +140,27 @@ export const dialogSlotRecipe = defineSlotRecipe({
     size: {
       xs: {
         content: {
-          maxW: "sm",
+          maxWidth: "sm",
         },
       },
       sm: {
         content: {
-          maxW: "md",
+          maxWidth: "md",
         },
       },
       md: {
         content: {
-          maxW: "lg",
+          maxWidth: "lg",
         },
       },
       lg: {
         content: {
-          maxW: "2xl",
+          maxWidth: "2xl",
         },
       },
       xl: {
         content: {
-          maxW: "4xl",
+          maxWidth: "4xl",
         },
       },
       cover: {

@@ -1,6 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { bg } from "../utils/bg-utils";
-import { coreText } from "../utils/core-utils";
 import { dialogAnatomy } from "./anatomy";
 
 export const dialogSlotRecipe = defineSlotRecipe({
@@ -32,7 +30,7 @@ export const dialogSlotRecipe = defineSlotRecipe({
       left: 0,
       top: 0,
       "--dialog-z-index": "zIndex.modal",
-      zIndex: "calc(var(--dialog-z-index) + var(--layer-index, 0))",
+      zIndex: "modal",
       justifyContent: "center",
       overscrollBehaviorY: "none",
     },
@@ -46,9 +44,6 @@ export const dialogSlotRecipe = defineSlotRecipe({
       borderRadius: "lg",
       marginY: "3.75rem",
       textStyle: "sm",
-      "--dialog-z-index": "zIndex.modal",
-      zIndex: "calc(var(--dialog-z-index) + var(--layer-index, 0))",
-      bg: "bg.panel",
       boxShadow: "lg",
       _open: {
         animationDuration: "moderate",
@@ -59,31 +54,28 @@ export const dialogSlotRecipe = defineSlotRecipe({
     },
     header: {
       flex: 0,
-      px: "6",
-      pt: "6",
-      pb: "4",
+      paddingX: "6",
+      paddingTop: "6",
+      paddingBottom: "4",
     },
     body: {
       flex: "1",
-      px: "6",
-      pt: "2",
-      pb: "6",
+      paddingX: "6",
+      paddingTop: "2",
+      paddingBottom: "6",
     },
     footer: {
       display: "flex",
       alignItems: "center",
       justifyContent: "flex-end",
       gap: "3",
-      px: "6",
-      pt: "2",
-      pb: "4",
+      paddingX: "6",
+      paddingTop: "2",
+      paddingBottom: "4",
     },
     title: {
       textStyle: "lg",
       fontWeight: "semibold",
-    },
-    description: {
-      color: "fg.muted",
     },
   },
 
@@ -94,8 +86,7 @@ export const dialogSlotRecipe = defineSlotRecipe({
           alignItems: "center",
         },
         content: {
-          "--dialog-base-margin": "auto",
-          mx: "auto",
+          marginX: "auto",
         },
       },
       top: {
@@ -103,8 +94,7 @@ export const dialogSlotRecipe = defineSlotRecipe({
           alignItems: "flex-start",
         },
         content: {
-          "--dialog-base-margin": "spacing.16",
-          mx: "auto",
+          marginX: "auto",
         },
       },
       bottom: {
@@ -112,8 +102,7 @@ export const dialogSlotRecipe = defineSlotRecipe({
           alignItems: "flex-end",
         },
         content: {
-          "--dialog-base-margin": "spacing.16",
-          mx: "auto",
+          marginX: "auto",
         },
       },
     },
@@ -172,15 +161,6 @@ export const dialogSlotRecipe = defineSlotRecipe({
           width: "100%",
           height: "100%",
           "--dialog-margin": "0",
-        },
-      },
-      full: {
-        content: {
-          maxW: "100vw",
-          minH: "100vh",
-          "--dialog-margin": "0",
-          borderRadius: "0",
-          marginY: 0,
         },
       },
     },

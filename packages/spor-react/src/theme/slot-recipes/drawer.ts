@@ -39,6 +39,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
       position: "relative",
       width: "100%",
       outline: 0,
+      paddingBottom: "4",
       zIndex: "modal",
       maxHeight: "100dvh",
       color: "inherit",
@@ -59,7 +60,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
     },
     body: {
       paddingX: "5",
-      paddingY: "2",
+      paddingY: ["1", null, null, "2"],
       flex: "1",
       overflow: "auto",
       fontSize: ["xs", null, null, "sm"],
@@ -71,7 +72,6 @@ export const drawerSlotRecipe = defineSlotRecipe({
       gap: "3",
       paddingX: "5",
       paddingTop: "2",
-      paddingBottom: "4",
     },
     title: {
       fontSize: ["sm", null, null, "md"],

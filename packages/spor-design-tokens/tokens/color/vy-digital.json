@@ -497,7 +497,7 @@
             "active": {
               "value": {
                 "_light": "colors.primrose",
-                "_dark": "colors.mistard"
+                "_dark": "colors.mustard"
               }
             }
           },
@@ -563,13 +563,13 @@
             "hover": {
               "value": {
                 "_light": "colors.salmon",
-                "_dark": "colors.aubergine"
+                "_dark": "colors.maroon"
               }
             },
             "active": {
               "value": {
                 "_light": "colors.pink",
-                "_dark": "colors.burgundy"
+                "_dark": "colors.crimson"
               }
             }
           },
@@ -599,13 +599,13 @@
             "hover": {
               "value": {
                 "_light": "colors.cloudy",
-                "_dark": "colors.royal"
+                "_dark": "colors.navy"
               }
             },
             "active": {
               "value": {
                 "_light": "colors.icyBlue",
-                "_dark": "colors.darkBlue"
+                "_dark": "colors.ocean"
               }
             }
           },
@@ -654,7 +654,7 @@
             },
             "hover": {
               "value": {
-                "_light": "colors.primaryGreen",
+                "_light": "colors.darkTeal",
                 "_dark": "colors.blueGreen"
               }
             }

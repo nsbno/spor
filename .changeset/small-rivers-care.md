@@ -1,6 +1,6 @@
 ---
-"@vygruppen/spor-design-tokens": major
-"@vygruppen/spor-react": major
+"@vygruppen/spor-design-tokens": minor
+"@vygruppen/spor-react": minor
 ---
 
 Added 2.5 to spacing

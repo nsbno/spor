@@ -47,13 +47,13 @@ export const SkeletonText = forwardRef<HTMLDivElement, SkeletonTextProps>(
     const recipe = useRecipe({ recipe: skeletonRecipe });
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);
-    const { noOfLines = 3, gap, ...rest } = restProps;
+    const { noOfLines = 3, height = "0.5rem", gap, ...rest } = restProps;
 
     return (
       <Stack gap={gap} width="full" ref={ref}>
         {Array.from({ length: noOfLines }).map((_, index) => (
           <ChakraSkeleton
-            height="0.5rem"
+            height={height}
             css={styles}
             key={index}
             _last={{ maxW: "80%" }}
@@ -72,6 +72,9 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonTextProps>(
     const recipe = useRecipe({ recipe: skeletonRecipe });
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);
-    return <ChakraSkeleton height="6" {...restProps} ref={ref} css={styles} />;
+
+    const { height = "6", ...rest } = restProps;
+
+    return <ChakraSkeleton height={height} {...rest} ref={ref} css={styles} />;
   },
 );

@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.9.0
+
+### Minor Changes
+
+- 2453bf1: Added 2.5 to spacing
+
 ## 3.8.2
 
 ### Patch Changes

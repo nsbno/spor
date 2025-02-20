@@ -72,6 +72,6 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonTextProps>(
     const recipe = useRecipe({ recipe: skeletonRecipe });
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);
-    return <ChakraSkeleton {...restProps} height="6" ref={ref} css={styles} />;
+    return <ChakraSkeleton height="6" {...restProps} ref={ref} css={styles} />;
   },
 );

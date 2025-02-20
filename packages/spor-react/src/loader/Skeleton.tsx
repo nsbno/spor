@@ -26,11 +26,8 @@ export const SkeletonCircle = React.forwardRef<
   SkeletonCircleProps
 >(function SkeletonCircle(props, ref) {
   const recipe = useRecipe({ recipe: skeletonRecipe });
-
   const [recipeProps, restProps] = recipe.splitVariantProps(props);
-
   const styles = recipe(recipeProps);
-
   const { size, ...rest } = restProps;
 
   return (
@@ -48,11 +45,8 @@ export type SkeletonTextProps = ChakraSkeletonProps &
 export const SkeletonText = forwardRef<HTMLDivElement, SkeletonTextProps>(
   function SkeletonText(props, ref) {
     const recipe = useRecipe({ recipe: skeletonRecipe });
-
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
-
     const styles = recipe(recipeProps);
-
     const { noOfLines = 3, gap, ...rest } = restProps;
 
     return (
@@ -77,14 +71,8 @@ export type SkeletonProps = ChakraSkeletonProps & SkeletonVariantProps;
 export const Skeleton = forwardRef<HTMLDivElement, SkeletonTextProps>(
   function SkeletonText(props, ref) {
     const recipe = useRecipe({ recipe: skeletonRecipe });
-
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);
-
-    return (
-      <>
-        <ChakraSkeleton {...restProps} height="6" ref={ref} css={styles} />
-      </>
-    );
+    return <ChakraSkeleton {...restProps} height="6" ref={ref} css={styles} />;
   },
 );

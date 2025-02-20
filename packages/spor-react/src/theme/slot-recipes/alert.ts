@@ -49,7 +49,7 @@ export const alertSlotRecipe = defineSlotRecipe({
           color: "darkBlue",
         },
       },
-      warning: {
+      important: {
         root: {
           backgroundColor: "alert.important.surface",
         },

@@ -1,56 +1,73 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+import { alertSlotRecipe } from "./alert";
+import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const alertExpandableSlotRecipe = defineSlotRecipe({
-  slots: ["container", "accordion"],
+  slots: ["root", "itemTrigger", "itemContent", "indicator", "title"],
   className: "spor-alert-expandable",
   base: {
-    container: {
-      paddingX: 3,
-      paddingY: 2,
+    root: {
       fontSize: "inherit",
       transitionProperty: "outline, border-radius",
       transitionDuration: "fast",
+      outline: "1px solid",
+      borderRadius: "sm",
+    },
+    itemTrigger: {
+      _focusVisible: {
+        ...focusVisibleStyles()._focusVisible,
+        outlineOffset: "1px",
+      },
       _expanded: {
         borderBottomRadius: "none",
       },
-      _hover: {
-        outline: "2px solid",
-      },
+    },
+    itemContent: {
+      paddingX: "2",
+      paddingY: "3"
     },
   },
   variants: {
     variant: {
       info: {
-        accordion: {
+        itemTrigger: {
           outlineColor: "cloudy",
         },
-        container: {
-          _hover: {
-            outlineColor: "sky",
+        root: {
+          ...alertSlotRecipe.variants?.variant.info.root,
+          ...alertSlotRecipe.variants?.variant.info.indicator,
+          outlineColor: "alert.info.outline",
+          "&:hover": {
+            outlineColor: "alert.info.outline.hover",
           },
-          _active: {
+          "&:active": {
             backgroundColor: "icyBlue",
           },
         },
       },
       success: {
-        accordion: {
-          outlineColor: "coralGreen",
+        itemTrigger: {
+          "&:hover": {
+            backgroundColor: "alert.success.surface.hover",
+            outlineColor: "alert.success.outline.hover",
+          },
+          "&:active": {
+            backgroundColor: "alert.success.surface.active",
+            outlineColor: "alert.success.surface.active",
+            outlineOffset: "2px",
+          },
         },
-        container: {
-          _hover: {
-            outlineColor: "blueGreen",
-          },
-          _active: {
-            backgroundColor: "mint",
-          },
+        root: {
+          ...alertSlotRecipe.variants?.variant.success.root,
+          ...alertSlotRecipe.variants?.variant.success.indicator,
+          outlineColor: "alert.success.outline",
         },
       },
       warning: {
-        accordion: {
+        itemTrigger: {
           outlineColor: "primrose",
         },
-        container: {
+        root: {
           _hover: {
             outlineColor: "sunshine",
           },
@@ -60,10 +77,10 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
         },
       },
       "alt-transport": {
-        accordion: {
+        itemTrigger: {
           outlineColor: "burntYellow",
         },
-        container: {
+        root: {
           _hover: {
             outlineColor: "golden",
           },
@@ -73,10 +90,10 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
         },
       },
       error: {
-        accordion: {
+        itemTrigger: {
           outlineColor: "salmon",
         },
-        container: {
+        root: {
           _hover: {
             outlineColor: "apricot",
           },
@@ -86,7 +103,7 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
         },
       },
       service: {
-        container: {
+        root: {
           _hover: {
             outlineColor: "blueGreen",
           },
@@ -96,8 +113,5 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
         },
       },
     },
-  },
-  defaultVariants: {
-    variant: "info",
   },
 });

@@ -22,7 +22,7 @@ export type AlertProps = Exclude<
     variant:
       | "info"
       | "success"
-      | "warning"
+      | "important"
       | "alt-transport"
       | "error"
       | "service"
@@ -35,6 +35,7 @@ export type AlertProps = Exclude<
     closable?: boolean;
   };
 
+export const AlertRoot = ChakraAlert.Root;
 export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const {
     variant = "info",
@@ -48,17 +49,34 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   return (
     <ChakraAlert.Root ref={ref} {...props} variant={variant}>
       <ChakraAlert.Content flexDirection={title ? "column" : "row"}>
-        <HStack gap="1.5" alignItems="center">
+        <HStack gap="1" alignItems="center">
           {indicator && (
             <ChakraAlert.Indicator>
               <AlertIcon variant={variant} />
             </ChakraAlert.Indicator>
           )}
-          {title && <ChakraAlert.Title>{title}</ChakraAlert.Title>}
+          {title && (
+            <ChakraAlert.Title paddingRight={closable ? 6 : 0}>
+              {title}
+            </ChakraAlert.Title>
+          )}
         </HStack>
-        <ChakraAlert.Description>{children}</ChakraAlert.Description>
+        <ChakraAlert.Description
+          paddingLeft={title ? 0.5 : 0}
+          paddingRight={closable ? 6 : 0}
+        >
+          {children}
+        </ChakraAlert.Description>
       </ChakraAlert.Content>
-      {closable && <CloseButton size="xs" onClick={onClose} />}
+      {closable && (
+        <CloseButton
+          size="xs"
+          position="absolute"
+          top="1.5"
+          right="1.5"
+          onClick={onClose}
+        />
+      )}
     </ChakraAlert.Root>
   );
 });

@@ -31,7 +31,7 @@ const getIcon = (variant: AlertProps["variant"]) => {
       return InformationFill24Icon;
     case "success":
       return SuccessFill24Icon;
-    case "warning":
+    case "important":
       return WarningFill24Icon;
     case "alt-transport":
       return AltTransportFill24Icon;
@@ -57,7 +57,7 @@ const texts = createTexts({
     sv: "Succé",
     en: "Success",
   },
-  warning: {
+  important: {
     nb: "Advarsel",
     nn: "Advarsel",
     sv: "Varning",

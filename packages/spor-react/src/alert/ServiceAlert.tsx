@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import React, { PropsWithChildren } from "react";
 import { AlertIcon } from "./AlertIcon";
-import { Alert, AlertProps } from "./Alert";
+import { AlertProps } from "./Alert";
 import { createTexts, useTranslation } from "../i18n";
 import { alertServiceSlotRecipe } from "../theme/slot-recipes/alert-service";
 import { DropdownDownFill24Icon } from "@vygruppen/spor-icon-react";
@@ -65,7 +65,6 @@ export const ServiceAlert = ({
   defaultOpen = false,
   onToggle,
   value,
-  ...boxProps
 }: ServiceAlertProps) => {
   const { t } = useTranslation();
   const recipe = useSlotRecipe({ key: "alertService" });
@@ -73,76 +72,74 @@ export const ServiceAlert = ({
 
   const fallbackValue = value || "spor-service-alert";
   return (
-    <Alert variant={variant} {...boxProps} css={styles.root}>
-      <Accordion.Root
-        defaultValue={defaultOpen ? [fallbackValue] : undefined}
-        collapsible
-        /* onChange={onToggle} */
-      >
-        <Accordion.Item value={fallbackValue}>
-          <Accordion.ItemTrigger css={styles.itemTrigger}>
-            <HStack
-              justifyContent="space-between"
-              alignContent="center"
-              width="100%"
-              maxWidth={contentWidth}
-            >
-              <Flex as={headingLevel} alignItems="center">
-                <AlertIcon variant={variant} />
+    <Accordion.Root
+      defaultValue={defaultOpen ? [fallbackValue] : undefined}
+      collapsible
+      css={styles.root}
+    >
+      <Accordion.Item value={fallbackValue}>
+        <Accordion.ItemTrigger css={styles.itemTrigger}>
+          <HStack
+            justifyContent="space-between"
+            alignContent="center"
+            width="100%"
+            maxWidth={contentWidth}
+          >
+            <Flex as={headingLevel} alignItems="center">
+              <AlertIcon variant={variant} />
 
-                <Span
-                  css={{
-                    // Truncate the title to one line
-                    display: "-webkit-box",
-                    overflow: "hidden",
-                    WebkitLineClamp: "1",
-                    WebkitBoxOrient: "vertical",
-                    ...styles.itemTriggerTitle,
-                  }}
-                >
-                  {title}
-                </Span>
-              </Flex>
-              <Flex alignItems="center" gap={[0.5, null, null, 1]}>
-                {notification && (
-                  <Text css={styles.notificationText}>
-                    {t(texts.notification(notification))}
-                  </Text>
-                )}
-                <Accordion.ItemIndicator>
-                  <DropdownDownFill24Icon />
-                </Accordion.ItemIndicator>
-              </Flex>
-            </HStack>
-          </Accordion.ItemTrigger>
-
-          <Accordion.ItemContent css={styles.itemContent}>
-            <HStack justifyContent="center" width="100%">
-              <Stack
-                justifyContent="center"
-                maxWidth={contentWidth}
-                gap={2}
+              <Span
                 css={{
-                  "& p": {
-                    padding: "0.8rem 0",
-                    borderBottom: "0.08rem dashed",
-                    borderColor:
-                      variant === "global-deviation"
-                        ? "outline"
-                        : "outline.inverted",
-                  },
-                  "& p:last-child": {
-                    borderBottom: "none",
-                  },
+                  // Truncate the title to one line
+                  display: "-webkit-box",
+                  overflow: "hidden",
+                  WebkitLineClamp: "1",
+                  WebkitBoxOrient: "vertical",
+                  ...styles.itemTriggerTitle,
                 }}
               >
-                {children}
-              </Stack>
-            </HStack>
-          </Accordion.ItemContent>
-        </Accordion.Item>
-      </Accordion.Root>
-    </Alert>
+                {title}
+              </Span>
+            </Flex>
+            <Flex alignItems="center" gap={[0.5, null, null, 1]}>
+              {notification && (
+                <Text css={styles.notificationText}>
+                  {t(texts.notification(notification))}
+                </Text>
+              )}
+              <Accordion.ItemIndicator>
+                <DropdownDownFill24Icon />
+              </Accordion.ItemIndicator>
+            </Flex>
+          </HStack>
+        </Accordion.ItemTrigger>
+
+        <Accordion.ItemContent css={styles.itemContent}>
+          <HStack justifyContent="center" width="100%">
+            <Stack
+              justifyContent="center"
+              maxWidth={contentWidth}
+              gap={2}
+              css={{
+                "& p": {
+                  padding: "0.8rem 0",
+                  borderBottom: "0.08rem dashed",
+                  borderColor:
+                    variant === "global-deviation"
+                      ? "outline"
+                      : "outline.inverted",
+                },
+                "& p:last-child": {
+                  borderBottom: "none",
+                },
+              }}
+            >
+              {children}
+            </Stack>
+          </HStack>
+        </Accordion.ItemContent>
+      </Accordion.Item>
+    </Accordion.Root>
   );
 };
 

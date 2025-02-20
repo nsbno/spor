@@ -13,7 +13,6 @@ import { alertSlotRecipe } from "../theme/slot-recipes/alert";
 export type AlertVariantProps = RecipeVariantProps<typeof alertSlotRecipe>;
 
 export type BaseAlertProps = BoxProps &
-  Exclude<ConditionalValue<any>, "variant"> &
   PropsWithChildren<AlertVariantProps> & {
     /** The color scheme and icon of the alert */
     variant:
@@ -39,9 +38,9 @@ export const BaseAlert = ({
   ...boxProps
 }: BaseAlertProps) => {
   const recipe = useSlotRecipe({ key: "alert" });
-  const style = recipe({ variant });
+  const styles = recipe({ variant });
   return (
-    <Box css={style} {...boxProps}>
+    <Box css={styles.root} {...boxProps}>
       {children}
     </Box>
   );

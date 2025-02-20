@@ -77,7 +77,7 @@ const colorCombinations: Record<ColorScheme, ColorSpec> = {
     color: "darkTeal",
   },
   "dark-green": {
-    backgroundColor: "celadon",
+    backgroundColor: "primaryGreen",
     borderColor: "blueGreen",
     color: "white",
   },

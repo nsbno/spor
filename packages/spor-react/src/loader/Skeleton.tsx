@@ -56,7 +56,6 @@ export const SkeletonText = forwardRef<HTMLDivElement, SkeletonTextProps>(
             height="0.5rem"
             css={styles}
             key={index}
-            {...props}
             _last={{ maxW: "80%" }}
             {...rest}
           />

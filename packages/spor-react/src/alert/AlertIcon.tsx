@@ -1,49 +1,42 @@
 "use client";
 
 import {
-  AltTransportOutline24Icon,
-  ErrorOutline24Icon,
-  InformationOutline24Icon,
-  SuccessOutline24Icon,
-  WarningOutline24Icon,
-  WarningFill24Icon,
+  AltTransportFill24Icon,
+  ErrorFill24Icon,
+  InformationFill24Icon,
   ServiceFill24Icon,
+  SuccessFill24Icon,
+  WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { createTexts, useTranslation } from "../i18n";
-import { BaseAlertProps } from "./BaseAlert";
-import { Icon } from "@chakra-ui/react";
+import { AlertProps } from "./Alert";
+import { Box } from "@chakra-ui/react";
 
-type AlertIconProps = { variant: BaseAlertProps["variant"] };
+type AlertIconProps = {
+  variant: AlertProps["variant"];
+};
 /**
  * Internal component that shows the correct icon for the alert
  */
 export const AlertIcon = ({ variant }: AlertIconProps) => {
-  /* const Icon = getIcon(variant); */
   const { t } = useTranslation();
-  return (
-    <Icon
-      as={getIcon(variant)}
-      flexShrink={0}
-      aria-label={t(texts[variant])}
-      marginRight={1}
-      color="darkGrey"
-    />
-  );
+
+  return <Box as={getIcon(variant)} aria-label={t(texts[variant])} />;
 };
 
-const getIcon = (variant: BaseAlertProps["variant"]) => {
+const getIcon = (variant: AlertProps["variant"]) => {
   switch (variant) {
     case "info":
-      return InformationOutline24Icon;
+      return InformationFill24Icon;
     case "success":
-      return SuccessOutline24Icon;
+      return SuccessFill24Icon;
     case "warning":
-      return WarningOutline24Icon;
+      return WarningFill24Icon;
     case "alt-transport":
-      return AltTransportOutline24Icon;
+      return AltTransportFill24Icon;
     case "error":
-      return ErrorOutline24Icon;
+      return ErrorFill24Icon;
     case "global-deviation":
       return WarningFill24Icon;
     case "service":

@@ -6,9 +6,9 @@ import React, { PropsWithChildren } from "react";
 import { IconButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
 import { AlertIcon } from "./AlertIcon";
-import { AlertVariantProps, BaseAlert, BaseAlertProps } from "./BaseAlert";
+import { AlertVariantProps, Alert, AlertProps } from "./Alert";
 
-type ClosableAlertProps = BaseAlertProps &
+type ClosableAlertProps = AlertProps &
   PropsWithChildren<AlertVariantProps> & {
     /** Callback for when the close button is clicked */
     onClose?: () => void;
@@ -55,7 +55,7 @@ export const ClosableAlert = ({
   };
 
   return (
-    <BaseAlert variant={variant}>
+    <Alert variant={variant}>
       <IconButton
         variant="ghost"
         size="sm"
@@ -69,7 +69,7 @@ export const ClosableAlert = ({
         {title && <Box fontWeight="bold">{title}</Box>}
         <Box marginRight={1}>{children}</Box>
       </Flex>
-    </BaseAlert>
+    </Alert>
   );
 };
 

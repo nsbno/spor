@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import React, { PropsWithChildren } from "react";
 import { AlertIcon } from "./AlertIcon";
-import { BaseAlert, BaseAlertProps } from "./BaseAlert";
+import { Alert, AlertProps } from "./Alert";
 import { createTexts, useTranslation } from "../i18n";
 import { alertServiceSlotRecipe } from "../theme/slot-recipes/alert-service";
 import { DropdownDownFill24Icon } from "@vygruppen/spor-icon-react";
@@ -21,7 +21,7 @@ type ServiceAlertVariantProps = RecipeVariantProps<
   typeof alertServiceSlotRecipe
 >;
 
-type ServiceAlertProps = BaseAlertProps &
+type ServiceAlertProps = Exclude<AlertProps, "variant"> &
   PropsWithChildren<ServiceAlertVariantProps> & {
     /** The title string  */
     title: string;
@@ -73,12 +73,11 @@ export const ServiceAlert = ({
 
   const fallbackValue = value || "spor-service-alert";
   return (
-    <BaseAlert variant={variant} {...boxProps} css={styles.root}>
+    <Alert variant={variant} {...boxProps} css={styles.root}>
       <Accordion.Root
         defaultValue={defaultOpen ? [fallbackValue] : undefined}
         collapsible
-        variant={variant}
-        onChange={onToggle}
+        /* onChange={onToggle} */
       >
         <Accordion.Item value={fallbackValue}>
           <Accordion.ItemTrigger css={styles.itemTrigger}>
@@ -143,7 +142,7 @@ export const ServiceAlert = ({
           </Accordion.ItemContent>
         </Accordion.Item>
       </Accordion.Root>
-    </BaseAlert>
+    </Alert>
   );
 };
 

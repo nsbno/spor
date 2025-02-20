@@ -2,10 +2,10 @@
 
 import React from "react";
 import { AlertIcon } from "./AlertIcon";
-import { BaseAlert, BaseAlertProps } from "./BaseAlert";
+import { Alert, AlertProps } from "./Alert";
 import { Box, Flex } from "@chakra-ui/react";
 
-type StaticAlertProps = BaseAlertProps;
+type StaticAlertProps = AlertProps;
 
 /**
  * A static alert component.
@@ -24,12 +24,12 @@ export const StaticAlert = ({
   ...props
 }: StaticAlertProps) => {
   return (
-    <BaseAlert {...props}>
+    <Alert {...props}>
       <AlertIcon variant={props.variant} />
       <Flex direction="column" gap={title ? 2 : undefined} textAlign="left">
         {title && <Box fontWeight="bold">{title}</Box>}
         <Box>{children}</Box>
       </Flex>
-    </BaseAlert>
+    </Alert>
   );
 };

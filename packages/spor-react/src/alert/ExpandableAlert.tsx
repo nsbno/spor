@@ -3,9 +3,9 @@
 import { Accordion, Box, Flex, Icon, useSlotRecipe } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
 import { AlertIcon } from "./AlertIcon";
-import { BaseAlert, BaseAlertProps } from "./BaseAlert";
+import { Alert, AlertProps } from "./Alert";
 
-type ExpandableAlertProps = BaseAlertProps & {
+type ExpandableAlertProps = AlertProps & {
   /** The title string  */
   title: string;
   /** Callback for when the expandable panel is opened or closed */
@@ -51,14 +51,14 @@ export const ExpandableAlert = forwardRef<
     onToggle(expandedIndex === "0");
   };
   return (
-    <BaseAlert variant={variant} {...props} paddingX={0} paddingY={0} ref={ref}>
+    <Alert {...props} paddingX={0} paddingY={0}>
       <Accordion.Root
         onChange={handleChange}
-        defaultValue={value}
+        defaultValue={["alert-expandable"]}
         collapsible
         flexGrow="1"
       >
-        <Accordion.Item css={styles.accordion} value={value}>
+        <Accordion.Item css={styles.accordion} value={"alert-expandable"}>
           <Accordion.ItemTrigger css={styles.container}>
             <Flex
               justifyContent="space-between"
@@ -92,6 +92,6 @@ export const ExpandableAlert = forwardRef<
           </Accordion.ItemBody>
         </Accordion.Item>
       </Accordion.Root>
-    </BaseAlert>
+    </Alert>
   );
 });

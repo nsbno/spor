@@ -7,3 +7,5 @@ Alert & ExpandableAlert
 - `ExpandableAlert`: New colorscheme and styling
 - `Accordion`: Some styling updates
 - variant `warning` is now `important` for Alert and ExpandableAlert
+- `onToggle` is now `onValueChange`
+- `onFocusChange` is added as prop

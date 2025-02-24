@@ -63,21 +63,19 @@ export const ServiceAlert = ({
   contentWidth = "container.md",
   headingLevel = "h3",
   defaultOpen = false,
-  onToggle,
-  value,
 }: ServiceAlertProps) => {
   const { t } = useTranslation();
   const recipe = useSlotRecipe({ key: "alertService" });
   const styles = recipe({ variant });
 
-  const fallbackValue = value || "spor-service-alert";
+  const defaultValue = "spor-service-alert";
   return (
     <Accordion.Root
-      defaultValue={defaultOpen ? ["spor-service-alert"] : undefined}
+      defaultValue={defaultOpen ? [defaultValue] : undefined}
       collapsible
       css={styles.root}
     >
-      <Accordion.Item value={fallbackValue}>
+      <Accordion.Item value={defaultValue}>
         <Accordion.ItemTrigger css={styles.itemTrigger}>
           <HStack
             justifyContent="space-between"

@@ -3,7 +3,6 @@ import {
   Tabs as ChakraTabs,
   TabsRootProps as ChakraTabsRootProps,
   RecipeVariantProps,
-  useSlotRecipe,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { forwardRef, PropsWithChildren } from "react";

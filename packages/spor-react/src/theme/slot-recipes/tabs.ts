@@ -1,11 +1,11 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { accentBackground, accentText } from "../utils/accent-utils";
 import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
-import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { tabsAnatomy } from "./anatomy";
 
 export const tabsSlotRecipe = defineSlotRecipe({
-  slots: ["root", "list", "trigger", "content", "indicator"],
+  slots: tabsAnatomy.keys(),
   className: "spor-tabs",
   base: {
     root: {
@@ -31,6 +31,35 @@ export const tabsSlotRecipe = defineSlotRecipe({
     },
   },
   variants: {
+    fitted: {
+      true: {
+        list: {
+          display: "flex",
+        },
+        trigger: {
+          flex: 1,
+          textAlign: "center",
+          justifyContent: "center",
+        },
+      },
+    },
+    justify: {
+      start: {
+        list: {
+          justifyContent: "flex-start",
+        },
+      },
+      center: {
+        list: {
+          justifyContent: "center",
+        },
+      },
+      end: {
+        list: {
+          justifyContent: "flex-end",
+        },
+      },
+    },
     variant: {
       core: {
         list: {
@@ -46,6 +75,11 @@ export const tabsSlotRecipe = defineSlotRecipe({
           },
           _active: {
             ...coreBackground("active"),
+            ...coreText("active"),
+          },
+          _selected: {
+            ...coreBackground("selected"),
+            ...coreText("selected"),
           },
         },
       },
@@ -56,11 +90,20 @@ export const tabsSlotRecipe = defineSlotRecipe({
         },
         trigger: {
           ...accentText("default"),
+          _active: {
+            ...accentBackground("active"),
+            ...accentText("default"),
+          },
           _hover: {
             ...accentBackground("hover"),
           },
-          _active: {
-            ...accentBackground("active"),
+          _selected: {
+            ...coreBackground("selected"),
+            ...coreText("selected"),
+            _hover: {
+              ...coreBackground("selected"),
+              ...coreText("selected"),
+            },
           },
         },
       },

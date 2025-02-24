@@ -79,17 +79,6 @@ export const travelTagAnatomy = createAnatomy("travel-tag").parts(
   "deviationIcon",
 );
 
-export const dialogAnatomy = createAnatomy("dialog").parts(
-  "header",
-  "body",
-  "footer",
-  "backdrop",
-  "positioner",
-  "content",
-  "title",
-  "description",
-);
-
 export const drawerAnatomy = createAnatomy("drawer").parts(
   "header",
   "body",
@@ -155,4 +144,12 @@ export const radioAnatomy = createAnatomy("radio").parts(
   "itemControl",
   "itemText",
   "label",
+);
+
+export const tabsAnatomy = createAnatomy("tabs").parts(
+  "root",
+  "list",
+  "trigger",
+  "content",
+  "indicator",
 );

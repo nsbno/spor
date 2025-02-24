@@ -10,7 +10,7 @@ import {
   Text,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { PropsWithChildren } from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { AlertIcon } from "./AlertIcon";
 import { AlertProps } from "./Alert";
 import { createTexts, useTranslation } from "../i18n";
@@ -22,7 +22,8 @@ type ServiceAlertVariantProps = RecipeVariantProps<
 >;
 
 type ServiceAlertProps = Omit<AlertProps, "variant"> &
-  PropsWithChildren<ServiceAlertVariantProps> & {
+  PropsWithChildren<ServiceAlertVariantProps> &
+  Omit<Accordion.RootProps, "variant" | "orientation" | "size" | "value"> & {
     /** The title string  */
     title: string;
     /** The number of notifications when there is a list of multiple alerts */
@@ -31,8 +32,6 @@ type ServiceAlertProps = Omit<AlertProps, "variant"> &
      *
      * Defaults to container.md */
     contentWidth: string;
-    /** Callback for when the expandable panel is opened or closed */
-    onToggle?: (open: boolean) => void;
     /** Whether or not the default state of the alert is open */
     defaultOpen?: boolean;
     /**
@@ -42,7 +41,6 @@ type ServiceAlertProps = Omit<AlertProps, "variant"> &
     headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
     /** The variant of Service Alert. Default: service */
     variant?: "service" | "global-deviation";
-    value?: string;
   };
 /**
  * A service alert component.
@@ -55,93 +53,101 @@ type ServiceAlertProps = Omit<AlertProps, "variant"> &
  * </ServiceAlert>
  * ```
  */
-export const ServiceAlert = ({
-  variant = "service",
-  children,
-  title,
-  notification,
-  contentWidth = "container.md",
-  headingLevel = "h3",
-  defaultOpen = false,
-}: ServiceAlertProps) => {
-  const { t } = useTranslation();
-  const recipe = useSlotRecipe({ key: "alertService" });
-  const styles = recipe({ variant });
 
-  const defaultValue = "spor-service-alert";
-  return (
-    <Accordion.Root
-      defaultValue={defaultOpen ? [defaultValue] : undefined}
-      collapsible
-      css={styles.root}
-    >
-      <Accordion.Item value={defaultValue}>
-        <Accordion.ItemTrigger css={styles.itemTrigger}>
-          <HStack
-            justifyContent="space-between"
-            alignContent="center"
-            width="100%"
-            maxWidth={contentWidth}
-          >
-            <HStack as={headingLevel} alignItems="center" gap="1">
-              <AlertIcon variant={variant} />
-              <Span
+export const ServiceAlert = forwardRef<HTMLDivElement, ServiceAlertProps>(
+  (props, ref) => {
+    const {
+      variant = "service",
+      children,
+      title,
+      notification,
+      contentWidth = "container.md",
+      headingLevel = "h3",
+      defaultOpen = false,
+      collapsible = true,
+      ...rest
+    } = props;
+    const { t } = useTranslation();
+    const recipe = useSlotRecipe({ key: "alertService" });
+    const styles = recipe({ variant });
+
+    const defaultValue = "spor-service-alert";
+    return (
+      <Accordion.Root
+        defaultValue={defaultOpen ? [defaultValue] : undefined}
+        collapsible={collapsible}
+        css={styles.root}
+        ref={ref}
+        {...rest}
+      >
+        <Accordion.Item value={defaultValue}>
+          <Accordion.ItemTrigger css={styles.itemTrigger}>
+            <HStack
+              justifyContent="space-between"
+              alignContent="center"
+              width="100%"
+              maxWidth={contentWidth}
+            >
+              <HStack as={headingLevel} alignItems="center" gap="1">
+                <AlertIcon variant={variant} />
+                <Span
+                  css={{
+                    // Truncate the title to one line
+                    display: "-webkit-box",
+                    overflow: "hidden",
+                    WebkitLineClamp: "1",
+                    WebkitBoxOrient: "vertical",
+                    ...styles.itemTriggerTitle,
+                  }}
+                >
+                  {title}
+                </Span>
+              </HStack>
+              <Flex alignItems="center" gap={[0.5, null, null, 1]}>
+                {notification && (
+                  <Text css={styles.notificationText}>
+                    {t(texts.notification(notification))}
+                  </Text>
+                )}
+                <Accordion.ItemIndicator>
+                  <DropdownDownFill24Icon />
+                </Accordion.ItemIndicator>
+              </Flex>
+            </HStack>
+          </Accordion.ItemTrigger>
+
+          <Accordion.ItemContent asChild>
+            <Stack flexDirection="row" justifyContent="center" width="100%">
+              <Accordion.ItemBody
+                as={Stack}
+                justifyContent="center"
+                maxWidth={contentWidth}
+                width="full"
+                gap={2}
                 css={{
-                  // Truncate the title to one line
-                  display: "-webkit-box",
-                  overflow: "hidden",
-                  WebkitLineClamp: "1",
-                  WebkitBoxOrient: "vertical",
-                  ...styles.itemTriggerTitle,
+                  "& p": {
+                    padding: "0.8rem 0",
+                    borderBottom: "0.08rem dashed",
+                    borderColor:
+                      variant === "global-deviation"
+                        ? "outline"
+                        : "outline.inverted",
+                  },
+                  "& p:last-child": {
+                    borderBottom: "none",
+                  },
+                  ...styles.itemBody,
                 }}
               >
-                {title}
-              </Span>
-            </HStack>
-            <Flex alignItems="center" gap={[0.5, null, null, 1]}>
-              {notification && (
-                <Text css={styles.notificationText}>
-                  {t(texts.notification(notification))}
-                </Text>
-              )}
-              <Accordion.ItemIndicator>
-                <DropdownDownFill24Icon />
-              </Accordion.ItemIndicator>
-            </Flex>
-          </HStack>
-        </Accordion.ItemTrigger>
-
-        <Accordion.ItemContent asChild>
-          <Stack flexDirection="row" justifyContent="center" width="100%">
-            <Accordion.ItemBody
-              as={Stack}
-              justifyContent="center"
-              maxWidth={contentWidth}
-              width="full"
-              gap={2}
-              css={{
-                "& p": {
-                  padding: "0.8rem 0",
-                  borderBottom: "0.08rem dashed",
-                  borderColor:
-                    variant === "global-deviation"
-                      ? "outline"
-                      : "outline.inverted",
-                },
-                "& p:last-child": {
-                  borderBottom: "none",
-                },
-                ...styles.itemBody,
-              }}
-            >
-              {children}
-            </Accordion.ItemBody>
-          </Stack>
-        </Accordion.ItemContent>
-      </Accordion.Item>
-    </Accordion.Root>
-  );
-};
+                {children}
+              </Accordion.ItemBody>
+            </Stack>
+          </Accordion.ItemContent>
+        </Accordion.Item>
+      </Accordion.Root>
+    );
+  },
+);
 
 const texts = createTexts({
   notification: (notification) => {

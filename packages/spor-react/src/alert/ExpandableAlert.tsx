@@ -19,21 +19,20 @@ type ExpandableAlertVariantProps = RecipeVariantProps<
   typeof alertExpandableSlotRecipe
 >;
 
-type ExpandableAlertProps = PropsWithChildren<ExpandableAlertVariantProps> & {
-  /** The title string  */
-  title: string;
-  /** Callback for when the expandable panel is opened or closed */
-  onToggle?: (isOpen: boolean) => void;
-  /** Whether or not the default state of the expandable alert is open */
-  defaultOpen?: boolean;
-  /**
-   * The HTML element used for the `title` prop.
-   *
-   * Defaults to h3 */
-  headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
-  /** If the user should be able to close the Accordion. Defaults to true */
-  collapsible?: boolean;
-  /**
+type ExpandableAlertProps = PropsWithChildren<ExpandableAlertVariantProps> &
+  Omit<Accordion.RootProps, "variant" | "orientation" | "size" | "value"> & {
+    /** The title string  */
+    title: string;
+    /** Whether or not the default state of the expandable alert is open */
+    defaultOpen?: boolean;
+    /**
+     * The HTML element used for the `title` prop.
+     *
+     * Defaults to h3 */
+    headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
+    /** If the user should be able to close the Accordion. Defaults to true */
+    collapsible?: boolean;
+    /**
    * The variant of the alert. Default: info
    * "info"
       | "success"
@@ -43,8 +42,8 @@ type ExpandableAlertProps = PropsWithChildren<ExpandableAlertVariantProps> & {
       | "service"
       | "global-deviation";
    */
-  variant?: AlertProps["variant"];
-};
+    variant?: AlertProps["variant"];
+  };
 /**
  * An expandable alert component.
  *
@@ -65,6 +64,7 @@ export const ExpandableAlert = forwardRef<HTMLDivElement, ExpandableAlertProps>(
       collapsible = true,
       headingLevel = "h3",
       defaultOpen = false,
+      ...rest
     } = props;
     const recipe = useSlotRecipe({ key: "alertExpandable" });
     const styles = recipe({ variant });
@@ -77,8 +77,9 @@ export const ExpandableAlert = forwardRef<HTMLDivElement, ExpandableAlertProps>(
         ref={ref}
         css={styles.root}
         collapsible={collapsible}
+        {...rest}
       >
-        <Accordion.Item value={defaultValue} css={styles.item}>
+        <Accordion.Item value={defaultValue}>
           <Accordion.ItemTrigger css={styles.itemTrigger}>
             <HStack
               gap="1"

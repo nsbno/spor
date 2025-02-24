@@ -1,14 +1,7 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 
 export const alertSlotRecipe = defineSlotRecipe({
-  slots: [
-    "root",
-    "indicator",
-    "title",
-    "closeButton",
-    "description",
-    "content",
-  ],
+  slots: ["root", "indicator", "title", "closeButton", "content"],
   className: "spor-alert",
   base: {
     root: {
@@ -53,9 +46,9 @@ export const alertSlotRecipe = defineSlotRecipe({
         root: {
           backgroundColor: "alert.important.surface",
         },
-        /* indicator: {
-          color: "golden",
-        }, */
+        indicator: {
+          color: "darkGrey",
+        },
       },
       error: {
         root: {
@@ -77,17 +70,13 @@ export const alertSlotRecipe = defineSlotRecipe({
         root: {
           backgroundColor: "blonde",
         },
-        indicator: {
-          color: "golden",
-        },
       },
       service: {
         root: {
           backgroundColor: "alert.service.surface",
-          color: "white",
         },
         indicator: {
-          color: "golden",
+          color: "darkGrey",
         },
       },
     },

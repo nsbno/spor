@@ -28,7 +28,7 @@ export type AlertProps = Exclude<
       | "service"
       | "global-deviation";
     /** The body content of the alert */
-    children: React.ReactNode;
+    children?: React.ReactNode;
     /** The title of the alert */
     title?: string;
     indicator?: React.ReactNode;
@@ -49,9 +49,9 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   return (
     <ChakraAlert.Root ref={ref} {...props} variant={variant}>
       <ChakraAlert.Content flexDirection={title ? "column" : "row"}>
-        <HStack gap="1" alignItems="center">
+        <HStack gap="1" alignItems="flex-start">
           {indicator && (
-            <ChakraAlert.Indicator>
+            <ChakraAlert.Indicator paddingTop="0.02rem">
               <AlertIcon variant={variant} />
             </ChakraAlert.Indicator>
           )}
@@ -61,12 +61,14 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
             </ChakraAlert.Title>
           )}
         </HStack>
-        <ChakraAlert.Description
-          paddingLeft={title ? 0.5 : 0}
-          paddingRight={closable ? 6 : 0}
-        >
-          {children}
-        </ChakraAlert.Description>
+        {children && (
+          <ChakraAlert.Description
+            paddingLeft={title ? 0.5 : 0}
+            paddingRight={closable ? 6 : 0}
+          >
+            {children}
+          </ChakraAlert.Description>
+        )}
       </ChakraAlert.Content>
       {closable && (
         <CloseButton

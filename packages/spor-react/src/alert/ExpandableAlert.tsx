@@ -18,6 +18,8 @@ import {
   DropdownDownFill18Icon,
   DropdownDownFill24Icon,
 } from "@vygruppen/spor-icon-react";
+import { AccordionProps } from "@/accordion/types";
+import { AccordionItemContent } from "@/accordion";
 
 type ExpandableAlertVariantProps = RecipeVariantProps<
   typeof alertExpandableSlotRecipe
@@ -37,6 +39,7 @@ type ExpandableAlertProps = AlertProps &
      * Defaults to h3 */
     headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
     value?: string;
+    collapsible?: boolean;
   };
 /**
  * An expandable alert component.
@@ -55,6 +58,7 @@ export const ExpandableAlert = forwardRef<HTMLDivElement, ExpandableAlertProps>(
       variant,
       children,
       title,
+      collapsible = true,
       headingLevel = "h3",
       defaultOpen = false,
       onToggle = () => {},
@@ -63,31 +67,27 @@ export const ExpandableAlert = forwardRef<HTMLDivElement, ExpandableAlertProps>(
     const recipe = useSlotRecipe({ key: "alertExpandable" });
     const styles = recipe({ variant });
 
-    const handleChange = (event: React.FormEvent<HTMLDivElement>) => {
-      const expandedIndex = (event.target as HTMLDivElement).dataset.index;
-      onToggle(expandedIndex === "0");
-    };
     return (
       <Accordion.Root
-        onChange={handleChange}
         defaultValue={defaultOpen ? ["alert-expandable"] : undefined}
-        collapsible
-        flexGrow="1"
         ref={ref}
         css={styles.root}
+        collapsible={collapsible}
       >
-        <Accordion.Item value="alert-expandable">
+        <Accordion.Item value="alert-expandable" css={styles.item}>
           <Accordion.ItemTrigger css={styles.itemTrigger}>
             <HStack
-              justifyContent="space-between"
+              gap="1"
               alignItems="center"
-              flexGrow="1"
+              justifyContent="space-between"
+              flex="1"
             >
-              <Flex as={headingLevel} alignItems="center">
-                <Box asChild css={styles.indicator}>
+              <HStack gap="1" alignItems="center">
+                <Box css={styles.indicator}>
                   <AlertIcon variant={variant} />
                 </Box>
                 <Span
+                  as={headingLevel}
                   css={{
                     // Truncate the title to one line
                     display: "-webkit-box",
@@ -95,22 +95,18 @@ export const ExpandableAlert = forwardRef<HTMLDivElement, ExpandableAlertProps>(
                     WebkitLineClamp: "1",
                     WebkitBoxOrient: "vertical",
                   }}
-                  color={variant === "service" ? "white" : "darkGrey"}
                 >
                   {title}
                 </Span>
-              </Flex>
+              </HStack>
               <Accordion.ItemIndicator>
                 <DropdownDownFill18Icon />
               </Accordion.ItemIndicator>
             </HStack>
           </Accordion.ItemTrigger>
-          <Accordion.ItemContent
-            color={variant === "service" ? "white" : "darkGrey"}
-            css={styles.itemContent}
-          >
+          <AccordionItemContent css={styles.itemContent}>
             {children}
-          </Accordion.ItemContent>
+          </AccordionItemContent>
         </Accordion.Item>
       </Accordion.Root>
     );

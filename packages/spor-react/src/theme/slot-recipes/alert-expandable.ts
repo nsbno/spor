@@ -1,6 +1,7 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { alertSlotRecipe } from "./alert";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { alertExpandableAnatomy } from "./anatomy";
 
 const commonTriggerStyles = {
   border: "1px solid",
@@ -19,18 +20,9 @@ const commonTriggerHoverStyles = {
 };
 
 export const alertExpandableSlotRecipe = defineSlotRecipe({
-  slots: [
-    "root",
-    "itemTrigger",
-    "itemContent",
-    "indicator",
-    "title",
-    "item",
-    "itemIndicator",
-  ],
   className: "spor-alert-expandable",
+  slots: alertExpandableAnatomy.keys(),
   base: {
-    root: {},
     itemTrigger: {
       paddingX: "2 !important",
       _expanded: {

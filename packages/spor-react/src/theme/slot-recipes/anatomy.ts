@@ -9,6 +9,23 @@ export const accordionAnatomy = createAnatomy("accordion").parts(
   "itemIndicator",
 );
 
+export const alertAnatomy = createAnatomy("alert").parts(
+  "root",
+  "indicator",
+  "title",
+  "closeButton",
+  "content",
+);
+
+export const alertExpandableAnatomy = createAnatomy("alert-expandable").parts(
+  "root",
+  "itemTrigger",
+  "itemContent",
+  "indicator",
+  "title",
+  "itemIndicator",
+);
+
 export const listAnatomy = createAnatomy("list").parts(
   "root",
   "item",

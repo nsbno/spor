@@ -12,7 +12,7 @@ import React, { forwardRef, PropsWithChildren } from "react";
 import { AlertIcon } from "./AlertIcon";
 import { AlertProps } from "./Alert";
 import { alertExpandableSlotRecipe } from "@/theme/slot-recipes/alert-expandable";
-import { DropdownDownFill24Icon } from "@vygruppen/spor-icon-react";
+import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
 import { AccordionItemContent } from "@/accordion";
 
 type ExpandableAlertVariantProps = RecipeVariantProps<
@@ -106,7 +106,7 @@ export const ExpandableAlert = forwardRef<HTMLDivElement, ExpandableAlertProps>(
               </HStack>
 
               <Accordion.ItemIndicator>
-                <DropdownDownFill24Icon />
+                <DropdownDownFill18Icon />
               </Accordion.ItemIndicator>
             </HStack>
           </Accordion.ItemTrigger>

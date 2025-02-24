@@ -1,8 +1,9 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+import { alertAnatomy } from "./anatomy";
 
 export const alertSlotRecipe = defineSlotRecipe({
-  slots: ["root", "indicator", "title", "closeButton", "content"],
   className: "spor-alert",
+  slots: alertAnatomy.keys(),
   base: {
     root: {
       borderRadius: "sm",

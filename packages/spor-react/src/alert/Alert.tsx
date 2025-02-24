@@ -33,6 +33,7 @@ export type AlertProps = Exclude<
     title?: string;
     indicator?: React.ReactNode;
     closable?: boolean;
+    onAlertClose?: () => void;
   };
 
 export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
@@ -41,9 +42,15 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
     title,
     indicator = true,
     closable = false,
+    onAlertClose,
     children,
   } = props;
   const { open, onClose } = useDisclosure({ defaultOpen: true });
+
+  const handleAlertClose = () => {
+    onClose();
+    onAlertClose?.();
+  };
   if (!open) return null;
   return (
     <ChakraAlert.Root ref={ref} {...props} variant={variant}>
@@ -75,7 +82,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
           position="absolute"
           top="1.5"
           right="1.5"
-          onClick={onClose}
+          onClick={handleAlertClose}
         />
       )}
     </ChakraAlert.Root>

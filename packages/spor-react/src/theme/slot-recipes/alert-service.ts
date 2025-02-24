@@ -51,9 +51,8 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       textWrap: "nowrap",
     },
     itemBody: {
-      paddingX: "2",
-      paddingTop: "3",
-      paddingBottom: "4",
+      paddingX: "1",
+      paddingBottom: "1",
       color: "text.inverted",
     },
   },

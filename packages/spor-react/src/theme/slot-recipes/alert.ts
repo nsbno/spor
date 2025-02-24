@@ -64,7 +64,7 @@ export const alertSlotRecipe = defineSlotRecipe({
           backgroundColor: "alert.alt.surface",
         },
         indicator: {
-          color: "text",
+          color: "icon",
         },
       },
       "global-deviation": {

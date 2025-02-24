@@ -120,24 +120,8 @@ export const ServiceAlert = forwardRef<HTMLDivElement, ServiceAlertProps>(
             <Stack flexDirection="row" justifyContent="center" width="100%">
               <Accordion.ItemBody
                 as={Stack}
-                justifyContent="center"
                 maxWidth={contentWidth}
-                width="full"
-                gap={2}
-                css={{
-                  "& p": {
-                    padding: "0.8rem 0",
-                    borderBottom: "0.08rem dashed",
-                    borderColor:
-                      variant === "global-deviation"
-                        ? "outline"
-                        : "outline.inverted",
-                  },
-                  "& p:last-child": {
-                    borderBottom: "none",
-                  },
-                  ...styles.itemBody,
-                }}
+                css={styles.itemBody}
               >
                 {children}
               </Accordion.ItemBody>

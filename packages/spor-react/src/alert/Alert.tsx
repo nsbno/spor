@@ -31,10 +31,34 @@ export type AlertProps = Exclude<
     children?: React.ReactNode;
     /** The title of the alert */
     title?: string;
+    /** Whether or not to show the alert icon */
     indicator?: React.ReactNode;
+    /** Whether or not the alert is closable */
     closable?: boolean;
+    /** Callback for when the alert is closed */
     onAlertClose?: () => void;
   };
+
+/**
+ * 
+ * Alerts are used to communicate important information to the user. 
+ * They can be used to inform about success, errors, warnings, or other important information.
+ * 
+ * ```tsx
+ * <Alert variant="info" title="Information">
+ *  This is an information alert
+ * </Alert>
+ * ```
+ * 
+ * You may also use the closable prop to allow the user to dismiss the alert.
+ * 
+ * ```tsx
+ * <Alert variant="info" title="Information" closable>
+ *    This is an closable alert
+ * </Alert>
+ * 
+ * @see Docs https://spor.vy.no/alert
+ */
 
 export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const {

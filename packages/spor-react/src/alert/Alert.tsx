@@ -13,7 +13,7 @@ import { CloseButton } from "@/button";
 
 export type AlertVariantProps = RecipeVariantProps<typeof alertSlotRecipe>;
 
-export type AlertProps = Exclude<
+export type AlertProps = Omit<
   ChakraAlert.RootProps,
   "status" | "colorPalette" | "size"
 > &

@@ -30,7 +30,7 @@ export const AlertIcon = ({ variant }: AlertIconProps) => {
     <Box
       as={getIcon(variant)}
       css={styles.indicator}
-      aria-label={t(texts[variant])}
+      aria-label={t(texts[variant as keyof typeof texts])}
     />
   );
 };

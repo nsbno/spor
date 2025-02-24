@@ -21,7 +21,7 @@ type ServiceAlertVariantProps = RecipeVariantProps<
   typeof alertServiceSlotRecipe
 >;
 
-type ServiceAlertProps = Exclude<AlertProps, "variant"> &
+type ServiceAlertProps = Omit<AlertProps, "variant"> &
   PropsWithChildren<ServiceAlertVariantProps> & {
     /** The title string  */
     title: string;

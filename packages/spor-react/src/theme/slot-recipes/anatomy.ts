@@ -127,6 +127,7 @@ export const serviceAlertAnatomy = createAnatomy("service-alert").parts(
   "itemTriggerTitle",
   "notificationText",
   "itemContent",
+  "itemBody",
 );
 
 export const radioCardAnatomy = createAnatomy("radio-card").parts(

@@ -68,7 +68,10 @@ export const alertSlotRecipe = defineSlotRecipe({
       },
       "global-deviation": {
         root: {
-          backgroundColor: "blonde",
+          backgroundColor: "alert.important.surface",
+        },
+        indicator: {
+          color: "darkGrey",
         },
       },
       service: {

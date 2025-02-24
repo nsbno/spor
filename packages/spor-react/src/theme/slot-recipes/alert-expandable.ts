@@ -36,6 +36,10 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
       _expanded: {
         borderBottomRadius: "none",
       },
+      _focusVisible: {
+        ...focusVisibleStyles()._focusVisible,
+        outlineOffset: "-1px",
+      },
     },
     itemContent: {
       fontSize: "xs !important",
@@ -68,9 +72,6 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
           ...commonContentStyles,
           borderColor: "alert.info.outline",
         },
-        indicator: {
-          ...alertSlotRecipe.variants?.variant.info.indicator,
-        },
       },
       success: {
         root: {
@@ -96,9 +97,6 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
           ...commonContentStyles,
           borderColor: "alert.success.outline",
         },
-        indicator: {
-          ...alertSlotRecipe.variants?.variant.success.indicator,
-        },
       },
       important: {
         root: {
@@ -123,9 +121,6 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
         itemContent: {
           ...commonContentStyles,
           borderColor: "alert.important.outline",
-        },
-        indicator: {
-          ...alertSlotRecipe.variants?.variant.important.indicator,
         },
       },
       "alt-transport": {
@@ -180,9 +175,6 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
           ...commonContentStyles,
           borderColor: "alert.error.outline",
         },
-        indicator: {
-          ...alertSlotRecipe.variants?.variant.error.indicator,
-        },
       },
       service: {
         root: {
@@ -210,8 +202,30 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
           borderColor: "alert.service.outline",
           color: "text.inverted",
         },
-        indicator: {
-          ...alertSlotRecipe.variants?.variant.service.indicator,
+      },
+      "global-deviation": {
+        root: {
+          outlineColor: "alert.important.outline",
+          background: "alert.important.surface",
+        },
+        itemTrigger: {
+          ...commonTriggerStyles,
+          borderColor: "alert.important.outline",
+          background: "alert.important.surface",
+          "&:hover": {
+            ...commonTriggerHoverStyles,
+            backgroundColor: "alert.important.surface.hover",
+            outlineColor: "alert.important.outline.hover",
+          },
+          "&:active": {
+            outline: "1px solid",
+            backgroundColor: "alert.important.surface.active",
+            outlineColor: "alert.important.surface.active",
+          },
+        },
+        itemContent: {
+          ...commonContentStyles,
+          borderColor: "alert.important.outline",
         },
       },
     },

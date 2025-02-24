@@ -10,19 +10,29 @@ import {
 } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { createTexts, useTranslation } from "../i18n";
-import { AlertProps } from "./Alert";
-import { Box } from "@chakra-ui/react";
+import { AlertProps, AlertVariantProps } from "./Alert";
+import { Box, useSlotRecipe } from "@chakra-ui/react";
 
-type AlertIconProps = {
+type AlertIconProps = AlertVariantProps & {
   variant: AlertProps["variant"];
 };
+
 /**
  * Internal component that shows the correct icon for the alert
  */
 export const AlertIcon = ({ variant }: AlertIconProps) => {
   const { t } = useTranslation();
 
-  return <Box as={getIcon(variant)} aria-label={t(texts[variant])} />;
+  const recipe = useSlotRecipe({ key: "alert" });
+  const styles = recipe({ variant });
+
+  return (
+    <Box
+      as={getIcon(variant)}
+      css={styles.indicator}
+      aria-label={t(texts[variant])}
+    />
+  );
 };
 
 const getIcon = (variant: AlertProps["variant"]) => {

@@ -73,7 +73,7 @@ export const ServiceAlert = ({
   const fallbackValue = value || "spor-service-alert";
   return (
     <Accordion.Root
-      defaultValue={defaultOpen ? [fallbackValue] : undefined}
+      defaultValue={defaultOpen ? ["spor-service-alert"] : undefined}
       collapsible
       css={styles.root}
     >
@@ -85,9 +85,8 @@ export const ServiceAlert = ({
             width="100%"
             maxWidth={contentWidth}
           >
-            <Flex as={headingLevel} alignItems="center">
+            <HStack as={headingLevel} alignItems="center" gap="1">
               <AlertIcon variant={variant} />
-
               <Span
                 css={{
                   // Truncate the title to one line
@@ -100,7 +99,7 @@ export const ServiceAlert = ({
               >
                 {title}
               </Span>
-            </Flex>
+            </HStack>
             <Flex alignItems="center" gap={[0.5, null, null, 1]}>
               {notification && (
                 <Text css={styles.notificationText}>
@@ -114,11 +113,13 @@ export const ServiceAlert = ({
           </HStack>
         </Accordion.ItemTrigger>
 
-        <Accordion.ItemContent css={styles.itemContent}>
-          <HStack justifyContent="center" width="100%">
-            <Stack
+        <Accordion.ItemContent asChild>
+          <Stack flexDirection="row" justifyContent="center" width="100%">
+            <Accordion.ItemBody
+              as={Stack}
               justifyContent="center"
               maxWidth={contentWidth}
+              width="full"
               gap={2}
               css={{
                 "& p": {
@@ -132,11 +133,12 @@ export const ServiceAlert = ({
                 "& p:last-child": {
                   borderBottom: "none",
                 },
+                ...styles.itemBody,
               }}
             >
               {children}
-            </Stack>
-          </HStack>
+            </Accordion.ItemBody>
+          </Stack>
         </Accordion.ItemContent>
       </Accordion.Item>
     </Accordion.Root>

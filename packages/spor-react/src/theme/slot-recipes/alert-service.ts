@@ -50,11 +50,11 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       fontSize: ["2xs", null, null, "xs"],
       textWrap: "nowrap",
     },
-    itemContent: {
-      paddingX: "0.75rem",
-      paddingTop: "0.375rem",
-      paddingBottom: "0.9375rem",
-      color: "inherit",
+    itemBody: {
+      paddingX: "2",
+      paddingTop: "3",
+      paddingBottom: "4",
+      color: "text.inverted",
     },
   },
 });

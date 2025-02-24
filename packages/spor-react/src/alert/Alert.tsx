@@ -35,7 +35,6 @@ export type AlertProps = Exclude<
     closable?: boolean;
   };
 
-export const AlertRoot = ChakraAlert.Root;
 export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const {
     variant = "info",

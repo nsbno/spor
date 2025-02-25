@@ -12,13 +12,12 @@ import { semanticTokens } from "./semantic-tokens";
 import { slotRecipes } from "./slot-recipes";
 import { textStyles } from "./tokens/text-styles";
 import { tokens } from "./tokens";
-import { Brand, brandTheme } from "./brand";
+import { Brand } from "./brand";
 import { config } from "./tokens/config";
 
 const generateTheme = (brand: Brand) =>
   defineConfig({
     ...config,
-    ...brandTheme,
     globalCss,
     theme: {
       breakpoints,
@@ -46,3 +45,5 @@ export const themes = {
     generateTheme(Brand.VyUtvikling),
   ),
 };
+
+export const system = themes[Brand.VyDigital];

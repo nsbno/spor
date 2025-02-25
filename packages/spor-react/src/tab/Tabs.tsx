@@ -42,7 +42,7 @@ type TabsVariantProps = RecipeVariantProps<typeof tabsSlotRecipe>;
 
 export type TabsProps = Exclude<
   ChakraTabsRootProps,
-  "colorPalette" | "variant" | "orientation" | "size"
+  "colorPalette" | "orientation"
 > &
   PropsWithChildren<TabsVariantProps> & {
     /** Defaults to `core` */

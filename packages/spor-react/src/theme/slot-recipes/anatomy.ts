@@ -26,6 +26,15 @@ export const alertExpandableAnatomy = createAnatomy("alert-expandable").parts(
   "itemIndicator",
 );
 
+export const alertServiceAnatomy = createAnatomy("service-alert").parts(
+  "root",
+  "itemTrigger",
+  "itemTriggerTitle",
+  "notificationText",
+  "itemContent",
+  "itemBody",
+);
+
 export const listAnatomy = createAnatomy("list").parts(
   "root",
   "item",
@@ -136,15 +145,6 @@ export const stepperAnatomy = createAnatomy("stepper").parts(
   "stepTitle",
   "closeButton",
   "backButton",
-);
-
-export const serviceAlertAnatomy = createAnatomy("service-alert").parts(
-  "root",
-  "itemTrigger",
-  "itemTriggerTitle",
-  "notificationText",
-  "itemContent",
-  "itemBody",
 );
 
 export const radioCardAnatomy = createAnatomy("radio-card").parts(

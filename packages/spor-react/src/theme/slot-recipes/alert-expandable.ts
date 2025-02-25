@@ -168,58 +168,6 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
           borderColor: "alert.error.outline",
         },
       },
-      service: {
-        root: {
-          outlineColor: "alert.service.outline",
-          background: "alert.service.surface",
-        },
-        itemTrigger: {
-          ...commonTriggerStyles,
-          borderColor: "alert.service.outline",
-          background: "alert.service.surface",
-          color: "text.inverted",
-          "&:hover": {
-            ...commonTriggerHoverStyles,
-            backgroundColor: "alert.service.surface.hover",
-            outlineColor: "alert.service.outline.hover",
-          },
-          "&:active": {
-            outline: "1px solid",
-            backgroundColor: "alert.service.surface.active",
-            outlineColor: "alert.service.surface.active",
-          },
-        },
-        itemContent: {
-          ...commonContentStyles,
-          borderColor: "alert.service.outline",
-          color: "text.inverted",
-        },
-      },
-      "global-deviation": {
-        root: {
-          outlineColor: "alert.important.outline",
-          background: "alert.important.surface",
-        },
-        itemTrigger: {
-          ...commonTriggerStyles,
-          borderColor: "alert.important.outline",
-          background: "alert.important.surface",
-          "&:hover": {
-            ...commonTriggerHoverStyles,
-            backgroundColor: "alert.important.surface.hover",
-            outlineColor: "alert.important.outline.hover",
-          },
-          "&:active": {
-            outline: "1px solid",
-            backgroundColor: "alert.important.surface.active",
-            outlineColor: "alert.important.surface.active",
-          },
-        },
-        itemContent: {
-          ...commonContentStyles,
-          borderColor: "alert.important.outline",
-        },
-      },
     },
   },
 });

@@ -19,14 +19,8 @@ export type AlertProps = Omit<
 > &
   PropsWithChildren<AlertVariantProps> & {
     /** The color scheme and icon of the alert */
-    variant:
-      | "info"
-      | "success"
-      | "important"
-      | "alt-transport"
-      | "error"
-      | "service"
-      | "global-deviation";
+    variant: "info" | "success" | "important" | "alt-transport" | "error";
+
     /** The body content of the alert */
     children?: React.ReactNode;
     /** The title of the alert */
@@ -40,23 +34,23 @@ export type AlertProps = Omit<
   };
 
 /**
- * 
- * Alerts are used to communicate important information to the user. 
+ *
+ * Alerts are used to communicate important information to the user.
  * They can be used to inform about success, errors, warnings, or other important information.
- * 
+ *
  * ```tsx
  * <Alert variant="info" title="Information">
  *  This is an information alert
  * </Alert>
  * ```
- * 
+ *
  * You may also use the closable prop to allow the user to dismiss the alert.
- * 
+ *
  * ```tsx
  * <Alert variant="info" title="Information" closable>
  *    This is an closable alert
  * </Alert>
- * 
+ *
  * @see Docs https://spor.vy.no/alert
  */
 
@@ -81,12 +75,15 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
       <ChakraAlert.Content flexDirection={title ? "column" : "row"}>
         <HStack gap="1" alignItems="flex-start">
           {indicator && (
-            <ChakraAlert.Indicator paddingTop="0.02rem">
+            <ChakraAlert.Indicator paddingTop={[0, null, null, "0.02rem"]}>
               <AlertIcon variant={variant} />
             </ChakraAlert.Indicator>
           )}
           {title && (
-            <ChakraAlert.Title paddingRight={closable ? 6 : 0}>
+            <ChakraAlert.Title
+              paddingRight={closable ? 6 : 0}
+              paddingTop={["0.1rem", null]}
+            >
               {title}
             </ChakraAlert.Title>
           )}

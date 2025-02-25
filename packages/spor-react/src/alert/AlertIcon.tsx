@@ -4,16 +4,15 @@ import {
   AltTransportFill24Icon,
   ErrorFill24Icon,
   InformationFill24Icon,
-  ServiceFill24Icon,
   SuccessFill24Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { AlertProps, AlertVariantProps } from "./Alert";
 import { Box, useSlotRecipe } from "@chakra-ui/react";
 
-type AlertIconProps = AlertVariantProps & {
+type AlertIconProps = PropsWithChildren<AlertVariantProps> & {
   variant: AlertProps["variant"];
 };
 
@@ -47,10 +46,6 @@ const getIcon = (variant: AlertProps["variant"]) => {
       return AltTransportFill24Icon;
     case "error":
       return ErrorFill24Icon;
-    case "global-deviation":
-      return WarningFill24Icon;
-    case "service":
-      return ServiceFill24Icon;
   }
 };
 
@@ -68,10 +63,10 @@ const texts = createTexts({
     en: "Success",
   },
   important: {
-    nb: "Advarsel",
-    nn: "Advarsel",
-    sv: "Varning",
-    en: "Warning",
+    nb: "Viktig melding",
+    nn: "Viktig melding",
+    sv: "Viktig meddelande",
+    en: "Important message",
   },
   error: {
     nb: "Feil",
@@ -84,17 +79,5 @@ const texts = createTexts({
     nn: "Alternativ transport",
     sv: "Alternativ transport",
     en: "Alternative transport",
-  },
-  service: {
-    nb: "Driftsmelding",
-    nn: "Driftsmelding",
-    sv: "Servicemeddelande",
-    en: "Service message",
-  },
-  "global-deviation": {
-    nb: "Trafikkmelding",
-    nn: "Trafikkmelding",
-    sv: "Trafikmeddelande",
-    en: "Traffic announcement",
   },
 });

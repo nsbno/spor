@@ -11,11 +11,14 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
-import { AlertIcon } from "./AlertIcon";
 import { AlertProps } from "./Alert";
 import { createTexts, useTranslation } from "../i18n";
 import { alertServiceSlotRecipe } from "../theme/slot-recipes/alert-service";
-import { DropdownDownFill24Icon } from "@vygruppen/spor-icon-react";
+import {
+  DropdownDownFill24Icon,
+  ServiceFill24Icon,
+  WarningFill24Icon,
+} from "@vygruppen/spor-icon-react";
 
 type ServiceAlertVariantProps = RecipeVariantProps<
   typeof alertServiceSlotRecipe
@@ -65,6 +68,7 @@ export const ServiceAlert = forwardRef<HTMLDivElement, ServiceAlertProps>(
       headingLevel = "h3",
       defaultOpen = false,
       collapsible = true,
+      css,
       ...rest
     } = props;
     const { t } = useTranslation();
@@ -76,7 +80,7 @@ export const ServiceAlert = forwardRef<HTMLDivElement, ServiceAlertProps>(
       <Accordion.Root
         defaultValue={defaultOpen ? [defaultValue] : undefined}
         collapsible={collapsible}
-        css={styles.root}
+        css={{ ...styles.root, ...css }}
         ref={ref}
         {...rest}
       >
@@ -89,7 +93,13 @@ export const ServiceAlert = forwardRef<HTMLDivElement, ServiceAlertProps>(
               maxWidth={contentWidth}
             >
               <HStack as={headingLevel} alignItems="center" gap="1">
-                <AlertIcon variant={variant} />
+                {variant === "service" ? (
+                  <ServiceFill24Icon aria-label={t(texts.service)} />
+                ) : (
+                  <WarningFill24Icon
+                    aria-label={t(texts["global-deviation"])}
+                  />
+                )}
                 <Span
                   css={{
                     // Truncate the title to one line
@@ -110,7 +120,7 @@ export const ServiceAlert = forwardRef<HTMLDivElement, ServiceAlertProps>(
                   </Text>
                 )}
                 <Accordion.ItemIndicator>
-                  <DropdownDownFill24Icon />
+                  <DropdownDownFill24Icon color="icon.inverted" />
                 </Accordion.ItemIndicator>
               </Flex>
             </HStack>
@@ -142,5 +152,17 @@ const texts = createTexts({
       sv: `${numNotification} ${numNotification > 1 ? "underrättelser" : "underrättelse"}`,
       en: `${numNotification} ${numNotification > 1 ? "notifications" : "notification"}`,
     };
+  },
+  service: {
+    nb: "Driftsmelding",
+    nn: "Driftsmelding",
+    sv: "Service meddelande",
+    en: "Service message",
+  },
+  "global-deviation": {
+    nb: "Trafikkmelding",
+    nn: "Trafikkmelding",
+    sv: "Trafikmeddelande",
+    en: "Traffic announcement",
   },
 });

@@ -1,12 +1,14 @@
 "use client";
 
 import {
+  Field,
   RecipeVariantProps,
   NativeSelect as Select,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { nativeSelectSlotRecipe } from "../theme/slot-recipes/native-select";
+import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
 
 type NativeSelectVariantProps = RecipeVariantProps<
   typeof nativeSelectSlotRecipe
@@ -14,10 +16,11 @@ type NativeSelectVariantProps = RecipeVariantProps<
 
 type NativeSelectRootProps = Exclude<
   Select.RootProps,
-  "size" | "colorPalette"
+  "size" | "colorPalette" | "variant"
 > &
   React.PropsWithChildren<NativeSelectVariantProps> & {
     icon?: React.ReactNode;
+    label?: string;
   };
 
 /**
@@ -59,16 +62,21 @@ export const NativeSelect = React.forwardRef<
   const recipe = useSlotRecipe({ recipe: nativeSelectSlotRecipe });
   const styles = recipe({});
   return (
-    <Select.Root ref={ref} {...rest} css={styles}>
-      {children}
-      <Select.Indicator>{icon}</Select.Indicator>
-    </Select.Root>
+    <Field.Root>
+      <Select.Root ref={ref} {...rest} css={styles.root}>
+        <Select.Field css={styles.field}>{children}</Select.Field>
+        <Select.Indicator css={styles.icon}>
+          <DropdownDownFill18Icon />
+        </Select.Indicator>
+      </Select.Root>
+      <Field.Label css={styles.label}>{props.label}</Field.Label>
+    </Field.Root>
   );
 });
 
 interface NativeSelectItem {
   value: string;
-  label: string;
+  label?: string;
   disabled?: boolean;
 }
 
@@ -92,9 +100,8 @@ export const NativeSelectField = React.forwardRef<
 
   const recipe = useSlotRecipe({ recipe: nativeSelectSlotRecipe });
   const styles = recipe();
-
   return (
-    <Select.Field ref={ref} {...rest} css={styles}>
+    <Select.Field ref={ref} {...rest} css={styles.field}>
       {children}
       {items?.map((item) => (
         <option key={item.value} value={item.value} disabled={item.disabled}>

@@ -1,13 +1,9 @@
-import {
-  As,
-  BoxProps,
-  forwardRef,
-  useControllableState,
-} from "@chakra-ui/react";
+import { BoxProps, forwardRef, useControllableState } from "@chakra-ui/react";
 import React from "react";
 import { Input, createTexts, useTranslation } from "..";
 import { AttachedInputs } from "./AttachedInputs";
 import { CountryCodeSelect } from "./CountryCodeSelect";
+import { As } from "@chakra-ui/system";
 
 type CountryCodeAndPhoneNumber = {
   countryCode: string;

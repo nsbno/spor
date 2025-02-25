@@ -232,8 +232,8 @@ export function InfoSelect<T extends object>({
             transitionDuration={"var(--spor-transition-duration-normal)"}
           >
             {state.selectedItem
-              ? state.selectedItem.textValue ?? state.selectedItem.rendered
-              : placeholder ?? t(texts.selectAnOption)}
+              ? (state.selectedItem.textValue ?? state.selectedItem.rendered)
+              : (placeholder ?? t(texts.selectAnOption))}
           </Box>
         </chakra.div>
         <Box sx={styles.arrowIcon}>

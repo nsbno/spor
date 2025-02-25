@@ -7,6 +7,7 @@ This package includes everything you need to build your React component library.
 ```bash
 $ npm install @vygruppen/spor-react
 $ yarn add @vygruppen/spor-react
+$ pnpm install @vygruppen/spor-react
 ```
 
 ## Usage

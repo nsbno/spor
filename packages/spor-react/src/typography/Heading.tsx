@@ -46,7 +46,7 @@ export const Heading = ({
   ...props
 }: HeadingProps) => {
   const id =
-    externalId ?? (autoId && typeof props.children === "string")
+    (externalId ?? (autoId && typeof props.children === "string"))
       ? slugify(props.children as string)
       : undefined;
   const color = useColorModeValue("text.primary.light", "text.primary.dark");

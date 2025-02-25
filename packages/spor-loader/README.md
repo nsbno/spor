@@ -6,6 +6,8 @@ This package contains all the Lottie data files for the Spor loaders.
 
 ```bash
 $ npm install @vygruppen/spor-loader
+$ yarn add @vygruppen/spor-loader
+$ pnpm install @vygruppen/spor-loader
 ```
 
 ## Usage

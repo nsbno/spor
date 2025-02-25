@@ -22,14 +22,12 @@ This repo also includes a bunch of packages. The ones you need to know about are
 
 Feel free to visit our documentation website on [spor.vy.no](https://spor.vy.no). You'll find live versions of all components, including extensive documentation. And the website is built by dogfooding the React component library!
 
-If you want, you can also test it out in a [CodeSandbox](https://codesandbox.io/s/demo-spor-b137ig).
-
 ## Usage (React)
 
 To get started, you'll need to install the required packages:
 
 ```bash
-$ npm install @vygruppen/spor-react
+$ pnpm install @vygruppen/spor-react
 ```
 
 Next, wrap your entire application in the `SporProvider` component. You'll need to pass the current language as well:
@@ -81,18 +79,20 @@ ALL ABOUT CHANGESETS: https://spor.vy.no/guides/releasing-new-versions
 
 ## Setup
 
-To develop locally, clone the repository and run `npm install` at the root level.
+To develop locally, clone the repository and run `pnpm install` at the root level.
+
+If you do not have pnpm installed, run `npm i -g pnpm` first.
 
 If you want to run the docs website locally, you'll need a few secrets. Follow the instructions in each app's readme to discover and set them locally.
 
-Then run `npm run build` to build all artifacts for the first time. Finally, run `npm run dev` to start the development servers.
+Then run `pnpm build` to build all artifacts for the first time. Finally, run `pnpm dev` to start the development servers.
 
 ### Build
 
 To build all apps and packages, run the following command:
 
 ```
-npm run build
+pnpm build
 ```
 
 ### Develop
@@ -100,7 +100,7 @@ npm run build
 To develop all apps and packages, run the following command:
 
 ```
-npm run dev
+pnpm dev
 ```
 
 This will start all apps and packages in development mode. You can then visit the following URLs:

@@ -95,11 +95,12 @@ export const TimePicker = ({
     const minutesToSubtract =
       dateTime.minute % minuteInterval || minuteInterval;
     state.setValue(
-      state.value.subtract({
+      dateTime.subtract({
         minutes: minutesToSubtract,
       }),
     );
   };
+
   const handleForwardClick = () => {
     if (!dateTime) {
       return;
@@ -107,7 +108,7 @@ export const TimePicker = ({
     const minutesToAdd =
       minuteInterval - (dateTime.minute % minuteInterval) || minuteInterval;
     state.setValue(
-      state.value.add({
+      dateTime.add({
         minutes: minutesToAdd,
       }),
     );

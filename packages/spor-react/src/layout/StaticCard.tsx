@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  As,
-  Box,
-  BoxProps,
-  useStyleConfig,
-  forwardRef,
-} from "@chakra-ui/react";
+import { Box, BoxProps, useStyleConfig, forwardRef } from "@chakra-ui/react";
+import { As } from "@chakra-ui/system";
 
 export type StaticCardProps = BoxProps & {
   children: React.ReactNode;

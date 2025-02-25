@@ -51,49 +51,71 @@ export type ToastOptions = BaseToastOptions &
  */
 export const useToast = () => {
   const toast = useChakraToast();
-  const wrappedToast = useCallback((opts: ToastOptions) => {
-    const Toast = getToastComponent(opts);
-    toast({
-      ...opts,
-      render: Toast,
-    });
-  }, []);
+  const wrappedToast = useCallback(
+    (opts: ToastOptions) => {
+      const Toast = getToastComponent(opts);
+      toast({
+        ...opts,
+        render: Toast,
+      });
+    },
+    [toast],
+  );
   return wrappedToast;
 };
 
-type RenderArgs = { onClose: () => void; id: string };
+type RenderArgs = { onClose: () => void; id?: string | number };
+
 const getToastComponent = (opts: ToastOptions) => {
   if ("isClosable" in opts && opts.isClosable) {
-    return ({ onClose, id }: RenderArgs) => (
-      <ClosableToast
-        id={id}
-        variant={opts.variant}
-        onClose={() => {
-          if (opts.onClose) {
-            opts.onClose();
-          }
-          onClose();
-        }}
-      >
-        {opts.text}
-      </ClosableToast>
-    );
+    return ({ onClose, id }: RenderArgs) => {
+      if (id === undefined) {
+        return null; // Handle the case where id is undefined
+      }
+
+      return (
+        <ClosableToast
+          id={id.toString()}
+          variant={opts.variant}
+          onClose={() => {
+            if (opts.onClose) {
+              opts.onClose();
+            }
+            onClose();
+          }}
+        >
+          {opts.text}
+        </ClosableToast>
+      );
+    };
   }
   if ("buttonText" in opts) {
-    return ({ id }: RenderArgs) => (
-      <ActionToast
-        id={id}
-        variant={opts.variant}
-        buttonText={opts.buttonText}
-        onClick={opts.onClick}
-      >
-        {opts.text}
-      </ActionToast>
-    );
+    return ({ id }: RenderArgs) => {
+      if (id === undefined) {
+        return null; // Handle the case where id is undefined
+      }
+
+      return (
+        <ActionToast
+          id={id.toString()}
+          variant={opts.variant}
+          buttonText={opts.buttonText}
+          onClick={opts.onClick}
+        >
+          {opts.text}
+        </ActionToast>
+      );
+    };
   }
-  return ({ id }: RenderArgs) => (
-    <BaseToast id={id} variant={opts.variant}>
-      {opts.text}
-    </BaseToast>
-  );
+  return ({ id }: RenderArgs) => {
+    if (id === undefined) {
+      return null; // Handle the case where id is undefined
+    }
+
+    return (
+      <BaseToast id={id.toString()} variant={opts.variant}>
+        {opts.text}
+      </BaseToast>
+    );
+  };
 };

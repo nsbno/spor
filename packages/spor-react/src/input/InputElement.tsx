@@ -1,5 +1,4 @@
 import {
-  As,
   forwardRef,
   InputElementProps as ChakraInputElementProps,
   InputLeftElement as ChakraInputLeftElement,

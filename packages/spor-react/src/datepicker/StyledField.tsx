@@ -1,5 +1,4 @@
 import {
-  As,
   Box,
   BoxProps,
   ResponsiveValue,
@@ -7,6 +6,7 @@ import {
   useFormControlContext,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
+import { As } from "@chakra-ui/system";
 import React from "react";
 
 type StyledFieldProps = BoxProps & {

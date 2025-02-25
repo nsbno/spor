@@ -1,103 +1,173 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+import { alertSlotRecipe } from "./alert";
+import { focusVisibleStyles } from "../utils/focus-utils";
+import { alertExpandableAnatomy } from "./anatomy";
+
+const commonTriggerStyles = {
+  border: "1px solid",
+  borderBottom: "none",
+};
+
+const commonContentStyles = {
+  border: "1px solid",
+  borderTop: "none",
+  borderBottomRadius: "sm",
+};
+
+const commonTriggerHoverStyles = {
+  outline: "1px solid",
+  outlineOffset: "-1px",
+};
 
 export const alertExpandableSlotRecipe = defineSlotRecipe({
-  slots: ["container", "accordion"],
   className: "spor-alert-expandable",
+  slots: alertExpandableAnatomy.keys(),
   base: {
-    container: {
-      paddingX: 3,
-      paddingY: 2,
-      fontSize: "inherit",
-      transitionProperty: "outline, border-radius",
-      transitionDuration: "fast",
+    itemTrigger: {
+      paddingX: "2 !important",
       _expanded: {
         borderBottomRadius: "none",
       },
-      _hover: {
-        outline: "2px solid",
+      _focusVisible: {
+        ...focusVisibleStyles()._focusVisible,
+        outlineOffset: "-1px",
       },
+    },
+    itemContent: {
+      fontSize: "xs !important",
+      paddingTop: "1 !important",
     },
   },
   variants: {
     variant: {
       info: {
-        accordion: {
-          outlineColor: "cloudy",
+        root: {
+          outlineColor: "alert.info.outline",
+          background: "alert.info.surface",
         },
-        container: {
-          _hover: {
-            outlineColor: "sky",
+        itemTrigger: {
+          ...commonTriggerStyles,
+          borderColor: "alert.info.outline",
+          background: "alert.info.surface",
+          "&:hover": {
+            ...commonTriggerHoverStyles,
+            background: "alert.info.surface.hover",
+            outlineColor: "alert.info.outline.hover",
           },
-          _active: {
-            backgroundColor: "icyBlue",
+          "&:active": {
+            outline: "1px solid",
+            backgroundColor: "alert.info.surface.active",
+            outlineColor: "alert.info.surface.active",
           },
+        },
+        itemContent: {
+          ...commonContentStyles,
+          borderColor: "alert.info.outline",
         },
       },
       success: {
-        accordion: {
-          outlineColor: "coralGreen",
+        root: {
+          outlineColor: "alert.success.outline",
+          background: "alert.success.surface",
         },
-        container: {
-          _hover: {
-            outlineColor: "blueGreen",
+        itemTrigger: {
+          ...commonTriggerStyles,
+          borderColor: "alert.success.outline",
+          background: "alert.success.surface",
+          "&:hover": {
+            ...commonTriggerHoverStyles,
+            background: "alert.success.surface.hover",
+            outlineColor: "alert.success.outline.hover",
           },
-          _active: {
-            backgroundColor: "mint",
+          "&:active": {
+            outline: "1px solid",
+            background: "alert.success.surface.active",
+            outlineColor: "alert.success.surface.active",
           },
+        },
+        itemContent: {
+          ...commonContentStyles,
+          borderColor: "alert.success.outline",
         },
       },
-      warning: {
-        accordion: {
-          outlineColor: "primrose",
+      important: {
+        root: {
+          outlineColor: "alert.important.outline",
+          background: "alert.important.surface",
         },
-        container: {
-          _hover: {
-            outlineColor: "sunshine",
+        itemTrigger: {
+          ...commonTriggerStyles,
+          borderColor: "alert.important.outline",
+          background: "alert.important.surface",
+          "&:hover": {
+            ...commonTriggerHoverStyles,
+            backgroundColor: "alert.important.surface.hover",
+            outlineColor: "alert.important.outline.hover",
           },
-          _active: {
-            backgroundColor: "cornSilk",
+          "&:active": {
+            outline: "1px solid",
+            backgroundColor: "alert.important.surface.active",
+            outlineColor: "alert.important.surface.active",
           },
+        },
+        itemContent: {
+          ...commonContentStyles,
+          borderColor: "alert.important.outline",
         },
       },
       "alt-transport": {
-        accordion: {
-          outlineColor: "burntYellow",
+        root: {
+          outlineColor: "alert.alt.outline",
+          background: "alert.alt.surface",
         },
-        container: {
-          _hover: {
-            outlineColor: "golden",
+        itemTrigger: {
+          ...commonTriggerStyles,
+          borderColor: "alert.alt.outline",
+          background: "alert.alt.surface",
+          "&:hover": {
+            ...commonTriggerHoverStyles,
+            backgroundColor: "alert.alt.surface.hover",
+            outlineColor: "alert.alt.outline.hover",
           },
-          _active: {
-            backgroundColor: "sunshine",
+          "&:active": {
+            outline: "1px solid",
+            backgroundColor: "alert.alt.surface.active",
+            outlineColor: "alert.alt.surface.active",
           },
+        },
+        itemContent: {
+          ...commonContentStyles,
+          borderColor: "alert.alt.outline",
+        },
+        indicator: {
+          ...alertSlotRecipe.variants?.variant["alt-transport"].indicator,
         },
       },
       error: {
-        accordion: {
-          outlineColor: "salmon",
+        root: {
+          outlineColor: "alert.error.outline",
+          background: "alert.error.surface",
         },
-        container: {
-          _hover: {
-            outlineColor: "apricot",
+        itemTrigger: {
+          ...commonTriggerStyles,
+          borderColor: "alert.error.outline",
+          background: "alert.error.surface",
+          "&:hover": {
+            ...commonTriggerHoverStyles,
+            backgroundColor: "alert.error.surface.hover",
+            outlineColor: "alert.error.outline.hover",
           },
-          _active: {
-            backgroundColor: "pink",
+          "&:active": {
+            outline: "1px solid",
+            backgroundColor: "alert.error.surface.active",
+            outlineColor: "alert.error.surface.active",
           },
         },
-      },
-      service: {
-        container: {
-          _hover: {
-            outlineColor: "blueGreen",
-          },
-          _active: {
-            backgroundColor: "pine",
-          },
+        itemContent: {
+          ...commonContentStyles,
+          borderColor: "alert.error.outline",
         },
       },
     },
-  },
-  defaultVariants: {
-    variant: "info",
   },
 });

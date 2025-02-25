@@ -30,6 +30,7 @@ Spor is getting a major update with Chakra 3.
 - `Separator` replaces `Divider`.
 - `UnorderedList` and `OrderedList` is deprecated. Use `List` and `as` prop instead.
 - `Tab` is now `TabsTrigger`, `TabList` is now `TabsList`, `TabsPanel` and `TabPanel` are now `TabsContent`.
+- `ClosableAlert` and `StaticAlert` are deprecated. Use component `Alert` and prop `closable` instead
 
 ### Darkmode
 

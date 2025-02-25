@@ -1,10 +1,10 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { serviceAlertAnatomy } from "./anatomy";
+import { alertServiceAnatomy } from "./anatomy";
 
 export const alertServiceSlotRecipe = defineSlotRecipe({
   className: "spor-service-alert",
-  slots: serviceAlertAnatomy.keys(),
+  slots: alertServiceAnatomy.keys(),
   base: {
     root: {
       fontSize: "inherit",
@@ -41,6 +41,9 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
         ...focusVisibleStyles()._focusVisible,
         outlineOffset: "1px",
       },
+      _icon: {
+        color: "darkGrey",
+      },
     },
     itemTriggerTitle: {
       fontSize: ["xs", null, null, "sm"],
@@ -50,11 +53,22 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       fontSize: ["2xs", null, null, "xs"],
       textWrap: "nowrap",
     },
-    itemContent: {
-      paddingX: "0.75rem",
-      paddingTop: "0.375rem",
-      paddingBottom: "0.9375rem",
-      color: "inherit",
+    itemBody: {
+      paddingInline: 2,
+      paddingBottom: ["0.5", null, null, "1"],
+      color: "text.inverted",
+      "& > p": {
+        gap: 2,
+        width: "full",
+        justifyContent: "center",
+        borderBottom: "1px dashed",
+        borderColor: "outline.inverted",
+        paddingBottom: "3",
+        paddingTop: "2",
+        _last: {
+          borderBottom: "none",
+        },
+      },
     },
   },
 });

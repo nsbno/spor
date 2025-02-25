@@ -77,11 +77,11 @@ export const accordionSlotRecipe = defineSlotRecipe({
           outline: "none",
         },
         itemTrigger: {
-          _hover: {
+          "&:hover": {
             ...ghostBackground("hover"),
-            _active: {
-              ...ghostBackground("active"),
-            },
+          },
+          "&:active": {
+            ...ghostBackground("active"),
           },
         },
       },
@@ -93,14 +93,13 @@ export const accordionSlotRecipe = defineSlotRecipe({
           _expanded: {
             borderBottomRadius: "none",
           },
-          _hover: {
+          "&:hover": {
             ...coreBorder("hover"),
             outlineOffset: 0,
-            _active: {
-              /* TODO: a bug in chakra makes this disappear when the accordion is open */
-              ...coreBackground("active"),
-              ...coreBorder("default"),
-            },
+          },
+          "&:active": {
+            ...coreBackground("active"),
+            ...coreBorder("default"),
           },
         },
       },
@@ -114,14 +113,18 @@ export const accordionSlotRecipe = defineSlotRecipe({
           _expanded: {
             borderBottomRadius: "none",
           },
-          _hover: {
+          "&:hover": {
             outlineOffset: 1,
             ...floatingBackground("hover"),
             ...floatingBorder("hover"),
-            _active: {
-              ...ghostBackground("active"),
+            "&:active": {
+              backgroundColor: "floating.surface.active",
               ...floatingBorder("default"),
             },
+          },
+          "&:active": {
+            backgroundColor: "floating.surface.active",
+            ...floatingBorder("default"),
           },
         },
       },

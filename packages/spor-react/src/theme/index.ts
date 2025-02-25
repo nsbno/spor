@@ -12,23 +12,38 @@ import { semanticTokens } from "./semantic-tokens";
 import { slotRecipes } from "./slot-recipes";
 import { textStyles } from "./tokens/text-styles";
 import { tokens } from "./tokens";
-import { brandTheme } from "./brand";
+import { Brand } from "./brand";
 import { config } from "./tokens/config";
 
-const themeConfig = defineConfig({
-  ...config,
-  ...brandTheme,
-  globalCss,
-  theme: {
-    breakpoints,
-    keyframes,
-    tokens,
-    semanticTokens,
-    recipes,
-    slotRecipes,
-    textStyles,
-    animationStyles,
-  },
-});
+const generateTheme = (brand: Brand) =>
+  defineConfig({
+    ...config,
+    globalCss,
+    theme: {
+      breakpoints,
+      keyframes,
+      tokens,
+      semanticTokens: semanticTokens[brand],
+      recipes,
+      slotRecipes,
+      textStyles,
+      animationStyles,
+    },
+  });
 
-export const system = createSystem(defaultBaseConfig, themeConfig);
+export const themes = {
+  [Brand.VyDigital]: createSystem(
+    defaultBaseConfig,
+    generateTheme(Brand.VyDigital),
+  ),
+  [Brand.CargoNet]: createSystem(
+    defaultBaseConfig,
+    generateTheme(Brand.CargoNet),
+  ),
+  [Brand.VyUtvikling]: createSystem(
+    defaultBaseConfig,
+    generateTheme(Brand.VyUtvikling),
+  ),
+};
+
+export const system = themes[Brand.VyDigital];

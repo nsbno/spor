@@ -163,3 +163,11 @@ export const radioAnatomy = createAnatomy("radio").parts(
   "itemText",
   "label",
 );
+
+export const tabsAnatomy = createAnatomy("tabs").parts(
+  "root",
+  "list",
+  "trigger",
+  "content",
+  "indicator",
+);

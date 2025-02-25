@@ -1,6 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { accentBackground, accentText } from "../utils/accent-utils";
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { tabsAnatomy } from "./anatomy";
 
@@ -17,9 +15,11 @@ export const tabsSlotRecipe = defineSlotRecipe({
       alignItems: "center",
       gap: 0.5,
       borderRadius: "xl",
+      width: "fit-content",
     },
     trigger: {
       display: "flex",
+      cursor: "pointer",
       justifyContent: "center",
       alignItems: "center",
       transitionProperty: "common",
@@ -35,6 +35,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
       true: {
         list: {
           display: "flex",
+          width: "auto",
         },
         trigger: {
           flex: 1,
@@ -63,54 +64,58 @@ export const tabsSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         list: {
-          ...coreBackground("default"),
-          ...coreText("default"),
-          ...coreBorder("default"),
+          backgroundColor: "core.surface",
+          color: "core.text",
+          border: "sm",
         },
         trigger: {
-          ...coreText("default"),
+          color: "core.text",
+          border: "md",
+          borderColor: "transparent",
           _hover: {
-            ...coreBorder("hover"),
+            outline: "2px solid",
+            outlineColor: "core.surface.hover",
             outlineOffset: "-2px",
           },
           _active: {
-            ...coreBackground("active"),
-            ...coreText("active"),
+            backgroundColor: "brand.surface.active",
+            color: "brand.text",
+            outline: "none",
           },
           _selected: {
-            ...coreBackground("selected"),
-            ...coreText("selected"),
+            backgroundColor: "brand.surface",
+            color: "brand.text",
           },
           _disabled: {
-            ...coreBackground("disabled"),
-            ...coreText("disabled"),
+            backgroundColor: "surface.disabled",
+            color: "brand.text.disabled",
           },
         },
       },
       accent: {
         list: {
           backgroundColor: "accent.bg",
-          ...accentText("default"),
+          color: "accent.text",
         },
         trigger: {
-          ...accentText("default"),
+          color: "accent.text",
           _active: {
-            ...accentBackground("active"),
-            ...accentText("default"),
+            backgroundColor: "accent.surface.active",
+            color: "accent.text",
           },
           _disabled: {
-            ...coreBackground("disabled"),
-            ...coreText("disabled"),
+            backgroundColor: "surface.disabled",
+            color: "accent.text.disabled",
           },
           _hover: {
-            ...accentBackground("hover"),
+            backgroundColor: "accent.surface.hover",
           },
           _selected: {
-            ...coreBackground("selected"),
-            ...coreText("selected"),
+            backgroundColor: "brand.surface",
+            color: "brand.text",
             _hover: {
-              ...coreBackground("selected"),
-              ...coreText("selected"),
+              backgroundColor: "brand.surface.hover",
+              color: "brand.text",
             },
           },
         },
@@ -120,7 +125,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
       xs: {
         list: {
           height: 5,
-          padding: "2px",
+          padding: "0.1rem",
         },
         trigger: {
           paddingX: 2,
@@ -149,7 +154,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
       lg: {
         list: {
           height: 8,
-          padding: "4px",
+          padding: "0.2rem",
         },
         trigger: {
           fontWeight: "bold",

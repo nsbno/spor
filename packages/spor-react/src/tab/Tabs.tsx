@@ -11,6 +11,10 @@ import { tabsSlotRecipe } from "../theme/slot-recipes/tabs";
 type TabsVariantProps = RecipeVariantProps<typeof tabsSlotRecipe>;
 
 /**
+ * Tabs are used to organize content into different sections.
+ * They are used to display different types of content in the same space.
+ *
+ * @example
  * ```tsx
  * <Tabs defaultValue="coming" fitted>
  *  <TabsList>
@@ -49,7 +53,7 @@ export type TabsProps = Exclude<
     variant?: "core" | "accent";
     /** Defaults to `sm` */
     size?: "xs" | "sm" | "md" | "lg";
-    /** Defaults to `false` */
+    /** If Tabs should take up the full width or not. Defaults to `false` */
     fitted?: boolean;
     /** Defaults to `start` */
     justify?: "start" | "center" | "end";

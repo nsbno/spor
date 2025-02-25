@@ -9,6 +9,32 @@ export const accordionAnatomy = createAnatomy("accordion").parts(
   "itemIndicator",
 );
 
+export const alertAnatomy = createAnatomy("alert").parts(
+  "root",
+  "indicator",
+  "title",
+  "closeButton",
+  "content",
+);
+
+export const alertExpandableAnatomy = createAnatomy("alert-expandable").parts(
+  "root",
+  "itemTrigger",
+  "itemContent",
+  "indicator",
+  "title",
+  "itemIndicator",
+);
+
+export const alertServiceAnatomy = createAnatomy("service-alert").parts(
+  "root",
+  "itemTrigger",
+  "itemTriggerTitle",
+  "notificationText",
+  "itemContent",
+  "itemBody",
+);
+
 export const listAnatomy = createAnatomy("list").parts(
   "root",
   "item",
@@ -79,17 +105,6 @@ export const travelTagAnatomy = createAnatomy("travel-tag").parts(
   "deviationIcon",
 );
 
-export const dialogAnatomy = createAnatomy("dialog").parts(
-  "header",
-  "body",
-  "footer",
-  "backdrop",
-  "positioner",
-  "content",
-  "title",
-  "description",
-);
-
 export const drawerAnatomy = createAnatomy("drawer").parts(
   "header",
   "body",
@@ -130,14 +145,6 @@ export const stepperAnatomy = createAnatomy("stepper").parts(
   "stepTitle",
   "closeButton",
   "backButton",
-);
-
-export const serviceAlertAnatomy = createAnatomy("service-alert").parts(
-  "root",
-  "itemTrigger",
-  "itemTriggerTitle",
-  "notificationText",
-  "itemContent",
 );
 
 export const radioCardAnatomy = createAnatomy("radio-card").parts(

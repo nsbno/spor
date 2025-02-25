@@ -28,6 +28,7 @@ Spor is getting a major update with Chakra 3.
 - `FormControl`, `FormLabel` and `FormErrorMessage` are removed and replaced by `Field`. `Field` supports the necessary props to support this.
 - `Separator` replaces `Divider`.
 - `UnorderedList` and `OrderedList` is deprecated. Use `List` and `as` prop instead.
+- `ClosableAlert` and `StaticAlert` are deprecated. Use component `Alert` and prop `closable` instead
 
 ### Darkmode
 

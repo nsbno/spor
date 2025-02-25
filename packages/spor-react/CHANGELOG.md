@@ -1,5 +1,16 @@
 # @vygruppen/spor-react
 
+## 11.2.0
+
+### Minor Changes
+
+- 2453bf1: Added 2.5 to spacing
+
+### Patch Changes
+
+- Updated dependencies [2453bf1]
+  - @vygruppen/spor-design-tokens@3.9.0
+
 ## 11.1.5
 
 ### Patch Changes

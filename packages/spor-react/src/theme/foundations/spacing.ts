@@ -7,6 +7,7 @@ type Spacing = {
   1: Token;
   1.5: Token;
   2: Token;
+  2.5: Token;
   3: Token;
   4: Token;
   5: Token;

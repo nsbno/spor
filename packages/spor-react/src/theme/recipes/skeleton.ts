@@ -5,7 +5,7 @@ export const skeletonRecipe = defineRecipe({
   variants: {
     loading: {
       true: {
-        borderRadius: "xs", 
+        borderRadius: "xs",
         boxShadow: "none",
         backgroundClip: "padding-box",
         cursor: "default",
@@ -24,17 +24,27 @@ export const skeletonRecipe = defineRecipe({
     },
     variant: {
       pulse: {
-        background: "steel",
+        background: {
+          _light: "silver",
+          _dark: "darkGrey",
+        },
         animation: "pulse",
         animationDuration: "var(--duration, 1.2s)",
       },
       shine: {
         "--animate-from": "200%",
-        "--animate-to": "-200%", 
-        "--start-color": "colors.lightGrey",
-        "--end-color": "colors.steel",
+        "--animate-to": "-200%",
+        "--start-color": {
+          _light: "colors.lightGrey",
+          _dark: "colors.dimGrey",
+        },
+
+        "--end-color": {
+          _light: "colors.platinum",
+          _dark: "colors.darkGrey",
+        },
         backgroundImage:
-        "linear-gradient(270deg,var(--start-color),var(--end-color),var(--end-color),var(--start-color))",
+          "linear-gradient(270deg,var(--start-color),var(--end-color),var(--end-color),var(--start-color))",
         backgroundSize: "400% 100%",
         animation: "bg-position var(--duration, 5s) ease-in-out infinite",
       },
@@ -44,9 +54,4 @@ export const skeletonRecipe = defineRecipe({
       },
     },
   },
-
-  defaultVariants: {
-    variant: "pulse",
-    loading: true,
-  },
-})
+});

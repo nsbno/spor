@@ -81,6 +81,10 @@ export const tabsSlotRecipe = defineSlotRecipe({
             ...coreBackground("selected"),
             ...coreText("selected"),
           },
+          _disabled: {
+            ...coreBackground("disabled"),
+            ...coreText("disabled"),
+          },
         },
       },
       accent: {
@@ -93,6 +97,10 @@ export const tabsSlotRecipe = defineSlotRecipe({
           _active: {
             ...accentBackground("active"),
             ...accentText("default"),
+          },
+          _disabled: {
+            ...coreBackground("disabled"),
+            ...coreText("disabled"),
           },
           _hover: {
             ...accentBackground("hover"),

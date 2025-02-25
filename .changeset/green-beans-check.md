@@ -18,6 +18,7 @@ Spor is getting a major update with Chakra 3.
 - `colorScheme` is now `colorPalette`
 - `onClose` is now `close`
 - `isOpen` is now `open`
+- `isFitted` is now `fitted`
 
 ### Updated components
 
@@ -28,6 +29,7 @@ Spor is getting a major update with Chakra 3.
 - `FormControl`, `FormLabel` and `FormErrorMessage` are removed and replaced by `Field`. `Field` supports the necessary props to support this.
 - `Separator` replaces `Divider`.
 - `UnorderedList` and `OrderedList` is deprecated. Use `List` and `as` prop instead.
+- `Tab` is now `TabsTrigger`, `TabList` is now `TabsList`, `TabsPanel` and `TabPanel` are now `TabsContent`.
 
 ### Darkmode
 

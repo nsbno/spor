@@ -99,16 +99,16 @@ export const tabsSlotRecipe = defineSlotRecipe({
         },
         trigger: {
           color: "accent.text",
-          _active: {
-            backgroundColor: "accent.surface.active",
-            color: "accent.text",
-          },
           _disabled: {
             backgroundColor: "surface.disabled",
             color: "accent.text.disabled",
           },
           _hover: {
             backgroundColor: "accent.surface.hover",
+            _active: {
+              backgroundColor: "brand.surface.active",
+              color: "brand.text",
+            },
           },
           _selected: {
             backgroundColor: "brand.surface",

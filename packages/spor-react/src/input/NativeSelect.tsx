@@ -16,11 +16,12 @@ type NativeSelectVariantProps = RecipeVariantProps<
 
 type NativeSelectRootProps = Exclude<
   Select.RootProps,
-  "size" | "colorPalette" | "variant"
+  "size" | "colorPalette"
 > &
   React.PropsWithChildren<NativeSelectVariantProps> & {
     icon?: React.ReactNode;
     label?: string;
+    variant?: "floating" | "core";
   };
 
 /**
@@ -58,9 +59,9 @@ export const NativeSelect = React.forwardRef<
   HTMLDivElement,
   NativeSelectRootProps
 >(function NativeSelect(props, ref) {
-  const { icon, children, ...rest } = props;
+  const { icon, children, variant = "core", ...rest } = props;
   const recipe = useSlotRecipe({ recipe: nativeSelectSlotRecipe });
-  const styles = recipe({});
+  const styles = recipe({ variant });
   return (
     <Field.Root>
       <Select.Root ref={ref} {...rest} css={styles.root}>

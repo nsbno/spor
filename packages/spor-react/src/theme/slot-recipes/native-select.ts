@@ -1,23 +1,18 @@
-import { coreText } from "../utils/core-utils";
+import { coreBorder, coreText } from "../utils/core-utils";
+import { floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { inputBaseStyle, inputVariant } from "../utils/input-utils";
+import { inputVariant } from "../utils/input-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
+import { NativeSelectAnatomy } from "./anatomy";
 
 export const nativeSelectSlotRecipe = defineSlotRecipe({
-  slots: ["root", "field", "indicator", "icon", "label"],
-  className: "spor-native-select",
+  slots: NativeSelectAnatomy.keys(),
+  className: "spor-nativeSelect",
   base: {
     root: {
       width: "100%",
       height: "fit-content",
       position: "relative",
-      /*   position: "relative",
-      height: "fit-content",
-      transitionProperty: "common",
-      transitionDuration: "fast",
-      boxSizing: "border-box",
-      overflowWrap: "break-word",
-      backgroundColor: "red", */
     },
     field: {
       paddingInlineEnd: 3,
@@ -33,13 +28,15 @@ export const nativeSelectSlotRecipe = defineSlotRecipe({
       transitionDuration: "fast",
       fontSize: "sm",
       paddingTop: "1rem",
+      _focusVisible: {
+        ...focusVisibleStyles()._focusVisible,
+      },
     },
     icon: {
       width: 5,
       height: 5,
       right: " 0.5rem",
       strokeLinecap: "round",
-
       position: "absolute",
       display: "inline-flex",
       boxAlign: "center",
@@ -49,7 +46,6 @@ export const nativeSelectSlotRecipe = defineSlotRecipe({
       pointerEvents: "none",
       top: "50%",
       transform: "translateY(-50%)",
-
       insetEnd: "0.5rem",
       color: "currentColor",
       fontSize: "sm",
@@ -70,23 +66,31 @@ export const nativeSelectSlotRecipe = defineSlotRecipe({
       paddingInline: 0,
     },
   },
-  /*  variants: {
+  variants: {
     variant: {
       core: {
         field: {
           ...inputVariant("base"),
-          backgroundColor: "red",
+
+          _hover: {
+            ...coreBorder("hover"),
+            outlineStyle: "solid",
+            outlineWidth: "2px",
+            outlineColor: "#2b2b2c",
+          },
         },
       },
       floating: {
         field: {
           ...inputVariant("floating"),
-          backgroundColor: "blue",
+          _hover: {
+            ...floatingBorder("hover"),
+            _active: {
+              ...floatingBorder("active"),
+            },
+          },
         },
       },
     },
   },
-  defaultVariants: {
-    variant: "core",
-  }, */
 });

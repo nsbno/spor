@@ -27,7 +27,7 @@ export const SkeletonCircle = React.forwardRef<
 >(function SkeletonCircle(props, ref) {
   const recipe = useRecipe({ recipe: skeletonRecipe });
 
-  const [recipeProps, restProps] = recipe.splitVariantProps({
+  const [recipeProps, { css, ...restProps }] = recipe.splitVariantProps({
     loading: true,
     variant: "pulse",
     ...props,
@@ -37,10 +37,7 @@ export const SkeletonCircle = React.forwardRef<
 
   return (
     <Circle size={size} asChild ref={ref}>
-      <ChakraSkeleton
-        {...rest}
-        css={{ ...recipe(recipeProps), ...restProps?.css }}
-      />
+      <ChakraSkeleton {...rest} css={{ ...recipe(recipeProps), ...css }} />
     </Circle>
   );
 });
@@ -53,7 +50,7 @@ export type SkeletonTextProps = ChakraSkeletonProps &
 export const SkeletonText = forwardRef<HTMLDivElement, SkeletonTextProps>(
   function SkeletonText(props, ref) {
     const recipe = useRecipe({ recipe: skeletonRecipe });
-    const [recipeProps, restProps] = recipe.splitVariantProps({
+    const [recipeProps, { css, ...restProps }] = recipe.splitVariantProps({
       loading: true,
       variant: "pulse",
       ...props,
@@ -65,7 +62,7 @@ export const SkeletonText = forwardRef<HTMLDivElement, SkeletonTextProps>(
         {Array.from({ length: noOfLines }).map((_, index) => (
           <ChakraSkeleton
             height={height}
-            css={{ ...recipe(recipeProps), ...restProps?.css }}
+            css={{ ...recipe(recipeProps), ...css }}
             key={index}
             _last={{ maxW: "80%" }}
             {...rest}
@@ -81,7 +78,7 @@ export type SkeletonProps = ChakraSkeletonProps & SkeletonVariantProps;
 export const Skeleton = forwardRef<HTMLDivElement, SkeletonTextProps>(
   function SkeletonText(props, ref) {
     const recipe = useRecipe({ recipe: skeletonRecipe });
-    const [recipeProps, restProps] = recipe.splitVariantProps({
+    const [recipeProps, { css, ...restProps }] = recipe.splitVariantProps({
       loading: true,
       variant: "pulse",
       ...props,
@@ -91,7 +88,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonTextProps>(
       <ChakraSkeleton
         {...restProps}
         ref={ref}
-        css={{ ...recipe(recipeProps), ...restProps?.css }}
+        css={{ ...recipe(recipeProps), ...css }}
       />
     );
   },

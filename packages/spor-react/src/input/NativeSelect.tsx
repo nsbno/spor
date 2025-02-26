@@ -26,30 +26,16 @@ type NativeSelectRootProps = Exclude<
  *
  * You should consider only using the Select component when you have more than  4 options. Otherwise, you should use the `<Radio>` component.
  *
- * ```tsx
- * <Field label="Select an option">
- *  <NativeSelectRoot variant="floating">
- *    <NativeSelectField
- *      items={["Option 1", "Option 2", "Option 3"]}
- *      placeholder="Select an option"
- *    />
- *  </NativeSelect>
- * </Field>
- * ```
+ * <NativeSelect label="Choose language">
+ *  <option>Norwegian (Bokmål)</option>
+ *  <option>Norwegian (Nynorsk)</option>
+ *  <option>Sami</option>
+ *  <option>Swedish</option>
+ *  <option>Danish</option>
+ *  <option>Finnish</option>
+ *  <option>English</option>
+ * </NativeSelect>
  *
- * or
- *
- *  * ```tsx
- * <Field label="Select an option">
- *  <NativeSelectRoot variant="floating">
- *    <NativeSelectField placeholder="Select an option">
- *     <option value="Option 1">Option 1</option>
- *     <option value="Option 2">Option 2</option>
- *     <option value="Option 3">Option 3</option>
- *   </NativeSelectField>
- *  </NativeSelect>
- * </Field>
- * ```
  */
 
 export const NativeSelect = React.forwardRef<

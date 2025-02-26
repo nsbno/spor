@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.2.1
+
+### Patch Changes
+
+- f11e119: Set htmlFor correctly for label in ChoiceButton to link it to input
+
 ## 11.2.0
 
 ### Minor Changes

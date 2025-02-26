@@ -164,6 +164,12 @@ export const radioAnatomy = createAnatomy("radio").parts(
   "label",
 );
 
+export const NativeSelectAnatomy = createAnatomy("native-select").parts(
+  "root",
+  "field",
+  "icon",
+  );
+
 export const tabsAnatomy = createAnatomy("tabs").parts(
   "root",
   "list",

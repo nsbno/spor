@@ -37,7 +37,7 @@ export const SkeletonCircle = React.forwardRef<
 
   return (
     <Circle size={size} asChild ref={ref}>
-      <ChakraSkeleton {...rest} css={{ ...recipe(recipeProps), ...css }} />
+      <ChakraSkeleton css={{ ...recipe(recipeProps), ...css }} {...rest} />
     </Circle>
   );
 });
@@ -86,9 +86,9 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonTextProps>(
 
     return (
       <ChakraSkeleton
-        {...restProps}
         ref={ref}
         css={{ ...recipe(recipeProps), ...css }}
+        {...restProps}
       />
     );
   },

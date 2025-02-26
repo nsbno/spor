@@ -33,12 +33,14 @@ export const SkeletonCircle = React.forwardRef<
     ...props,
   });
 
-  const styles = recipe(recipeProps);
   const { size, ...rest } = restProps;
 
   return (
     <Circle size={size} asChild ref={ref}>
-      <ChakraSkeleton {...rest} css={styles} />
+      <ChakraSkeleton
+        {...rest}
+        css={{ ...recipe(recipeProps), ...restProps?.css }}
+      />
     </Circle>
   );
 });
@@ -56,7 +58,6 @@ export const SkeletonText = forwardRef<HTMLDivElement, SkeletonTextProps>(
       variant: "pulse",
       ...props,
     });
-    const styles = recipe(recipeProps);
     const { noOfLines = 3, height = "0.5rem", gap, ...rest } = restProps;
 
     return (
@@ -64,7 +65,7 @@ export const SkeletonText = forwardRef<HTMLDivElement, SkeletonTextProps>(
         {Array.from({ length: noOfLines }).map((_, index) => (
           <ChakraSkeleton
             height={height}
-            css={styles}
+            css={{ ...recipe(recipeProps), ...restProps?.css }}
             key={index}
             _last={{ maxW: "80%" }}
             {...rest}
@@ -85,8 +86,13 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonTextProps>(
       variant: "pulse",
       ...props,
     });
-    const styles = recipe(recipeProps);
 
-    return <ChakraSkeleton {...restProps} ref={ref} css={styles} />;
+    return (
+      <ChakraSkeleton
+        {...restProps}
+        ref={ref}
+        css={{ ...recipe(recipeProps), ...restProps?.css }}
+      />
+    );
   },
 );

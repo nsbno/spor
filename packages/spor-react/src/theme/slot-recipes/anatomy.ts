@@ -9,6 +9,32 @@ export const accordionAnatomy = createAnatomy("accordion").parts(
   "itemIndicator",
 );
 
+export const alertAnatomy = createAnatomy("alert").parts(
+  "root",
+  "indicator",
+  "title",
+  "closeButton",
+  "content",
+);
+
+export const alertExpandableAnatomy = createAnatomy("alert-expandable").parts(
+  "root",
+  "itemTrigger",
+  "itemContent",
+  "indicator",
+  "title",
+  "itemIndicator",
+);
+
+export const alertServiceAnatomy = createAnatomy("service-alert").parts(
+  "root",
+  "itemTrigger",
+  "itemTriggerTitle",
+  "notificationText",
+  "itemContent",
+  "itemBody",
+);
+
 export const listAnatomy = createAnatomy("list").parts(
   "root",
   "item",
@@ -33,6 +59,18 @@ export const fieldAnatomy = createAnatomy("field").parts(
   "requiredIndicator",
   "helperText",
   "errorText",
+);
+
+export const dialogAnatomy = createAnatomy("dialog").parts(
+  "header",
+  "body",
+  "footer",
+  "backdrop",
+  "positioner",
+  "content",
+  "title",
+  "description",
+  "closeTrigger",
 );
 
 export const paginationAnatomy = createAnatomy("pagination").parts(
@@ -65,6 +103,18 @@ export const travelTagAnatomy = createAnatomy("travel-tag").parts(
   "title",
   "description",
   "deviationIcon",
+);
+
+export const drawerAnatomy = createAnatomy("drawer").parts(
+  "header",
+  "body",
+  "backdrop",
+  "positioner",
+  "content",
+  "footer",
+  "title",
+  "description",
+  "closeTrigger",
 );
 
 export const checkboxAnatomy = createAnatomy("checkbox").parts(

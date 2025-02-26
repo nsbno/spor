@@ -1,97 +1,200 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { coreText } from "../utils/core-utils";
-import { bg } from "../utils/bg-utils";
+import { drawerAnatomy } from "./anatomy";
 
 export const drawerSlotRecipe = defineSlotRecipe({
-  slots: [
-    "overlay",
-    "dialogContainer",
-    "dialog",
-    "header",
-    "closeButton",
-    "body",
-    "footer",
-  ],
+  slots: drawerAnatomy.keys(),
   className: "spor-drawer",
   base: {
-    overlay: {
-      backgroundColor: "blackAlpha.600",
+    backdrop: {
+      bg: "blackAlpha.500",
+      position: "fixed",
+      insetInlineStart: 0,
+      top: 0,
+      width: "100vw",
+      height: "100dvh",
       zIndex: "modal",
-      color: "red",
+      _open: {
+        animationName: "fade-in",
+        animationDuration: "slow",
+      },
+      _closed: {
+        animationName: "fade-out",
+        animationDuration: "slow",
+      },
     },
-    dialogContainer: {
+    positioner: {
       display: "flex",
+      width: "100vw",
+      height: "100dvh",
+      position: "fixed",
+      insetInlineStart: 0,
+      top: 0,
       zIndex: "modal",
-      justifyContent: "center",
-      alignItems: "flex-start",
-      overflow: "auto",
+      overscrollBehaviorY: "none",
     },
-    dialog: {
-      ...bg("default"),
-      ...coreText("default"),
+    content: {
+      display: "flex",
+      flexDirection: "column",
+      background: "bg",
+      position: "relative",
+      width: "100%",
+      outline: 0,
       zIndex: "modal",
-      maxHeight: "calc(100% - 7.5rem)",
-      boxShadow: "md",
+      maxHeight: "100dvh",
+      color: "inherit",
+      boxShadow: "lg",
+      _open: {
+        animationDuration: "slowest",
+        animationTimingFunction: "ease-in-smooth",
+      },
+      _closed: {
+        animationDuration: "slower",
+        animationTimingFunction: "ease-in-smooth",
+      },
     },
     header: {
-      paddingX: 3,
-      paddingTop: 6,
-      paddingBottom: 2,
-      fontWeight: "bold",
-      fontFamily: "body",
-    },
-    closeButton: {
-      position: "absolute",
-      top: 3,
-      insetEnd: 3,
-      zIndex: "modal",
+      paddingX: "5",
+      paddingBottom: "1",
     },
     body: {
-      paddingX: 3,
-      paddingBottom: 6,
-      flex: 1,
+      paddingX: "5",
+      paddingY: ["1", null, null, "2"],
+      flex: "1",
       overflow: "auto",
+      fontSize: ["xs", null, null, "sm"],
     },
     footer: {
-      paddingX: 3,
-      paddingBottom: 3,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-end",
+      gap: "3",
+      paddingX: "5",
+      paddingTop: "2",
+    },
+    title: {
+      fontSize: ["sm", null, null, "md"],
+      fontWeight: "semibold",
+      textAlign: "left",
+    },
+    closeTrigger: {
+      position: "absolute",
+      top: "2",
+      insetEnd: "2",
     },
   },
   variants: {
     size: {
-      xs: getSize("xs"),
-      sm: getSize("sm"),
-      md: getSize("md"),
-      lg: getSize("lg"),
-      xl: getSize("xl"),
-      "2xl": getSize("2xl"),
-      "3xl": getSize("3xl"),
-      "4xl": getSize("4xl"),
-      "5xl": getSize("5xl"),
-      "6xl": getSize("6xl"),
-      full: getSize("full"),
+      xs: {
+        content: {
+          width: "15rem",
+        },
+      },
+      sm: {
+        content: {
+          width: "25rem",
+        },
+      },
+      md: {
+        content: {
+          width: "40rem",
+        },
+      },
+      lg: {
+        content: {
+          width: "56rem",
+        },
+      },
+      xl: {
+        content: {
+          width: "68rem",
+        },
+      },
+      full: {
+        content: {
+          width: "100vw",
+          height: "100vh",
+          borderRadius: "0 !important",
+          paddingBottom: "4",
+        },
+        closeTrigger: {
+          position: "relative",
+        },
+        title: {
+          textAlign: "center",
+        },
+      },
+    },
+
+    placement: {
+      start: {
+        positioner: {
+          justifyContent: "flex-start",
+        },
+        content: {
+          paddingTop: "4",
+          _open: {
+            animationName: {
+              base: "slide-from-left-full, fade-in",
+              _rtl: "slide-from-right-full, fade-in",
+            },
+          },
+          _closed: {
+            animationName: {
+              base: "slide-to-left-full, fade-out",
+              _rtl: "slide-to-right-full, fade-out",
+            },
+          },
+        },
+      },
+
+      end: {
+        positioner: {
+          justifyContent: "flex-end",
+        },
+        content: {
+          paddingTop: "4",
+          _open: {
+            animationName: {
+              base: "slide-from-right-full, fade-in",
+              _rtl: "slide-from-left-full, fade-in",
+            },
+          },
+          _closed: {
+            animationName: {
+              base: "slide-to-right-full, fade-out",
+              _rtl: "slide-to-right-full, fade-out",
+            },
+          },
+        },
+      },
+
+      top: {
+        positioner: {
+          alignItems: "flex-start",
+        },
+        content: {
+          maxW: "100%",
+          marginX: "auto",
+          paddingTop: "4",
+          borderBottomRadius: "lg",
+          _open: { animationName: "slide-from-top-full, fade-in" },
+          _closed: { animationName: "slide-to-top-full, fade-out" },
+        },
+      },
+
+      bottom: {
+        positioner: {
+          alignItems: "flex-end",
+        },
+        content: {
+          maxW: "100%",
+          marginX: "auto",
+          paddingBottom: "4",
+          borderTopRadius: "lg",
+          _open: { animationName: "slide-from-bottom-full, fade-in" },
+          _closed: { animationName: "slide-to-bottom-full, fade-out" },
+        },
+      },
     },
   },
 });
-
-/**
- * Since the `maxWidth` prop references theme.sizes internally,
- * we can leverage that to size our modals.
- */
-function getSize(value: string) {
-  if (value === "full") {
-    return {
-      dialog: {
-        maxWidth: "100vw",
-        minHeight: "100vh",
-        "@supports(min-height: -webkit-fill-available)": {
-          minHeight: "-webkit-fill-available",
-        },
-        marginY: 0,
-      },
-    };
-  }
-  return {
-    dialog: { maxWidth: value },
-  };
-}

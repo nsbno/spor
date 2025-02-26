@@ -2,26 +2,31 @@
 
 import {
   Accordion,
-  Box,
   Flex,
-  Icon,
+  HStack,
   RecipeVariantProps,
+  Span,
   Stack,
   Text,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { PropsWithChildren } from "react";
-import { AlertIcon } from "./AlertIcon";
-import { BaseAlert, BaseAlertProps } from "./BaseAlert";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { AlertProps } from "./Alert";
 import { createTexts, useTranslation } from "../i18n";
 import { alertServiceSlotRecipe } from "../theme/slot-recipes/alert-service";
+import {
+  DropdownDownFill24Icon,
+  ServiceFill24Icon,
+  WarningFill24Icon,
+} from "@vygruppen/spor-icon-react";
 
 type ServiceAlertVariantProps = RecipeVariantProps<
   typeof alertServiceSlotRecipe
 >;
 
-type ServiceAlertProps = BaseAlertProps &
-  PropsWithChildren<ServiceAlertVariantProps> & {
+type ServiceAlertProps = Omit<AlertProps, "variant"> &
+  PropsWithChildren<ServiceAlertVariantProps> &
+  Omit<Accordion.RootProps, "variant" | "orientation" | "size" | "value"> & {
     /** The title string  */
     title: string;
     /** The number of notifications when there is a list of multiple alerts */
@@ -30,8 +35,6 @@ type ServiceAlertProps = BaseAlertProps &
      *
      * Defaults to container.md */
     contentWidth: string;
-    /** Callback for when the expandable panel is opened or closed */
-    onToggle?: (isOpen: boolean) => void;
     /** Whether or not the default state of the alert is open */
     defaultOpen?: boolean;
     /**
@@ -41,7 +44,6 @@ type ServiceAlertProps = BaseAlertProps &
     headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
     /** The variant of Service Alert. Default: service */
     variant?: "service" | "global-deviation";
-    value?: string;
   };
 /**
  * A service alert component.
@@ -54,118 +56,92 @@ type ServiceAlertProps = BaseAlertProps &
  * </ServiceAlert>
  * ```
  */
-export const ServiceAlert = ({
-  variant = "service",
-  children,
-  title,
-  notification,
-  contentWidth = "container.md",
-  headingLevel = "h3",
-  defaultOpen = false,
-  onToggle = () => {},
-  value,
-  ...boxProps
-}: ServiceAlertProps) => {
-  const { t } = useTranslation();
-  const recipe = useSlotRecipe({ key: "alert-service" });
-  const styles = recipe({ variant });
 
-  const handleChange = (event: React.FormEvent<HTMLDivElement>) => {
-    const expandedIndex = (event.target as HTMLDivElement).dataset.index;
-    onToggle(expandedIndex === "0");
-  };
-  return (
-    <BaseAlert
-      variant={variant}
-      {...boxProps}
-      paddingX={0}
-      paddingY={0}
-      sx={styles.outerBox}
-    >
+export const ServiceAlert = forwardRef<HTMLDivElement, ServiceAlertProps>(
+  (props, ref) => {
+    const {
+      variant = "service",
+      children,
+      title,
+      notification,
+      contentWidth = "container.md",
+      headingLevel = "h3",
+      defaultOpen = false,
+      collapsible = true,
+      css,
+      ...rest
+    } = props;
+    const { t } = useTranslation();
+    const recipe = useSlotRecipe({ key: "alertService" });
+    const styles = recipe({ variant });
+
+    const defaultValue = "spor-service-alert";
+    return (
       <Accordion.Root
-        onChange={handleChange}
-        defaultValue={value}
-        collapsible
-        flexGrow={1}
-        css={{ outline: "none" }}
-        variant={variant}
+        defaultValue={defaultOpen ? [defaultValue] : undefined}
+        collapsible={collapsible}
+        css={{ ...styles.root, ...css }}
+        ref={ref}
+        {...rest}
       >
-        <Accordion.Item value={value}>
-          <Accordion.ItemTrigger css={styles.container}>
-            <Stack
-              flexDirection="row"
-              justifyContent="center"
+        <Accordion.Item value={defaultValue}>
+          <Accordion.ItemTrigger css={styles.itemTrigger}>
+            <HStack
+              justifyContent="space-between"
+              alignContent="center"
               width="100%"
-              paddingX={2}
+              maxWidth={contentWidth}
             >
-              <Flex
-                justifyContent="space-between"
-                alignItems="center"
-                flexGrow={1}
-                maxWidth={contentWidth}
-              >
-                <Flex as={headingLevel} alignItems="center">
-                  <AlertIcon variant={variant} />
-
-                  <Box
-                    as="span"
-                    css={{
-                      // Truncate the title to one line
-                      display: "-webkit-box",
-                      overflow: "hidden",
-                      WebkitLineClamp: "1",
-                      WebkitBoxOrient: "vertical",
-                    }}
-                  >
-                    {title}
-                  </Box>
-                </Flex>
-
-                <Flex alignItems="center">
-                  {notification && (
-                    <Text css={styles.notificationText}>
-                      {t(texts.notification(notification))}
-                    </Text>
-                  )}
-
-                  <Icon />
-                </Flex>
+              <HStack as={headingLevel} alignItems="center" gap="1">
+                {variant === "service" ? (
+                  <ServiceFill24Icon aria-label={t(texts.service)} />
+                ) : (
+                  <WarningFill24Icon
+                    aria-label={t(texts["global-deviation"])}
+                  />
+                )}
+                <Span
+                  css={{
+                    // Truncate the title to one line
+                    display: "-webkit-box",
+                    overflow: "hidden",
+                    WebkitLineClamp: "1",
+                    WebkitBoxOrient: "vertical",
+                    ...styles.itemTriggerTitle,
+                  }}
+                >
+                  {title}
+                </Span>
+              </HStack>
+              <Flex alignItems="center" gap={[0.5, null, null, 1]}>
+                {notification && (
+                  <Text css={styles.notificationText}>
+                    {t(texts.notification(notification))}
+                  </Text>
+                )}
+                <Accordion.ItemIndicator>
+                  <DropdownDownFill24Icon color="icon.inverted" />
+                </Accordion.ItemIndicator>
               </Flex>
-            </Stack>
+            </HStack>
           </Accordion.ItemTrigger>
 
-          <Accordion.ItemBody css={styles.serviceMessageContent}>
+          <Accordion.ItemContent asChild>
             <Stack flexDirection="row" justifyContent="center" width="100%">
-              <Stack
-                justifyContent="center"
-                alignItems="center"
-                flexGrow={1}
+              <Accordion.ItemBody
+                as={Stack}
                 maxWidth={contentWidth}
-                flexFlow="column"
-                gap={2}
-                css={{
-                  p: {
-                    padding: "0.8rem 0",
-                    borderBottom: "0.08rem solid",
-                    borderColor:
-                      variant === "global-deviation"
-                        ? "blackAlpha.400"
-                        : "whiteAlpha.400",
-                  },
-                  "p:last-child": {
-                    borderBottom: "none",
-                  },
-                }}
+                css={styles.itemBody}
               >
                 {children}
-              </Stack>
+              </Accordion.ItemBody>
             </Stack>
-          </Accordion.ItemBody>
+          </Accordion.ItemContent>
         </Accordion.Item>
       </Accordion.Root>
-    </BaseAlert>
-  );
-};
+    );
+  },
+);
 
 const texts = createTexts({
   notification: (notification) => {
@@ -176,5 +152,17 @@ const texts = createTexts({
       sv: `${numNotification} ${numNotification > 1 ? "underrättelser" : "underrättelse"}`,
       en: `${numNotification} ${numNotification > 1 ? "notifications" : "notification"}`,
     };
+  },
+  service: {
+    nb: "Driftsmelding",
+    nn: "Driftsmelding",
+    sv: "Service meddelande",
+    en: "Service message",
+  },
+  "global-deviation": {
+    nb: "Trafikkmelding",
+    nn: "Trafikkmelding",
+    sv: "Trafikmeddelande",
+    en: "Traffic announcement",
   },
 });

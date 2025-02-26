@@ -1,87 +1,74 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+import { focusVisibleStyles } from "../utils/focus-utils";
+import { alertServiceAnatomy } from "./anatomy";
 
 export const alertServiceSlotRecipe = defineSlotRecipe({
-  slots: ["container", "outerBox", "notificationText", "serviceMessageContent"],
   className: "spor-service-alert",
+  slots: alertServiceAnatomy.keys(),
   base: {
-    container: {
-      paddingX: 0,
-      paddingY: 2,
+    root: {
       fontSize: "inherit",
       transitionProperty: "outline, border-radius",
       transitionDuration: "fast",
       borderTopRadius: "none",
       borderBottomRadius: "md",
-      _hover: {
-        outline: "2px solid",
-      },
-    },
-    outerBox: {
+      backgroundColor: "alert.service.surface",
       outline: "1px solid",
+      outlineColor: "alert.service.outline",
+      color: "text.inverted",
+      boxShadow: "sm",
+    },
+    itemTrigger: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      padding: [2, null, null, 2],
       borderBottomRadius: "md",
       borderTopRadius: "none",
-      width: "100%",
+      width: "full",
+      color: "text.inverted",
+      "&:hover": {
+        backgroundColor: "alert.service.surface.hover",
+      },
+      "&:active": {
+        backgroundColor: "alert.service.surface.active",
+      },
+      _focusVisible: {
+        ...focusVisibleStyles()._focusVisible,
+        outlineOffset: "1px",
+      },
+      _focus: {
+        ...focusVisibleStyles()._focusVisible,
+        outlineOffset: "1px",
+      },
+      _icon: {
+        color: "darkGrey",
+      },
+    },
+    itemTriggerTitle: {
+      fontSize: ["xs", null, null, "sm"],
     },
     notificationText: {
       fontWeight: "400",
-      fontSize: "1rem",
-      pr: "0.375rem",
+      fontSize: ["2xs", null, null, "xs"],
+      textWrap: "nowrap",
     },
-    serviceMessageContent: {
-      paddingX: "0.75rem",
-      paddingTop: "0.375rem",
-      paddingBottom: "0.9375rem",
-    },
-  },
-  variants: {
-    variant: {
-      "global-deviation": {
-        container: {
-          _hover: {
-            outlineColor: "primrose",
-          },
-          _active: {
-            backgroundColor: "blonde",
-            outlineColor: "primrose",
-          },
-          color: "darkGrey",
-        },
-        outerBox: {
-          outlineColor: "primrose",
-          backgroundColor: "blonde",
-        },
-        notificationText: {
-          color: "darkGrey",
-        },
-        serviceMessageContent: {
-          color: "darkGrey",
-        },
-      },
-      service: {
-        container: {
-          _hover: {
-            outlineColor: "blueGreen",
-          },
-          _active: {
-            backgroundColor: "pine",
-            outlineColor: "pine",
-          },
-          color: "white",
-        },
-        outerBox: {
-          outlineColor: "blueGreen",
-          backgroundColor: "darkTeal",
-        },
-        notificationText: {
-          color: "white",
-        },
-        serviceMessageContent: {
-          color: "white",
+    itemBody: {
+      paddingInline: 2,
+      paddingBottom: ["0.5", null, null, "1"],
+      color: "text.inverted",
+      "& > p": {
+        gap: 2,
+        width: "full",
+        justifyContent: "center",
+        borderBottom: "1px dashed",
+        borderColor: "outline.inverted",
+        paddingBottom: "3",
+        paddingTop: "2",
+        _last: {
+          borderBottom: "none",
         },
       },
     },
-  },
-  defaultVariants: {
-    variant: "service",
   },
 });

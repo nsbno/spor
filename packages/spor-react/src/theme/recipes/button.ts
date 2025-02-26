@@ -78,9 +78,6 @@ export const buttonRecipe = defineRecipe({
             ...ghostBackground("active"),
           },
         },
-        _icon: {
-          color: "darkGrey",
-        },
       },
       floating: {
         ...floatingBackground("default"),

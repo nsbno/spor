@@ -159,6 +159,10 @@ export const tabsSlotRecipe = defineSlotRecipe({
         trigger: {
           fontWeight: "bold",
           paddingX: 3,
+          _focus: {
+            border: "md",
+            borderColor: "accent.surface",
+          },
         },
       },
     },

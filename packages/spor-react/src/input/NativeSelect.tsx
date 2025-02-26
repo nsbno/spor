@@ -22,6 +22,8 @@ type NativeSelectRootProps = Exclude<
     icon?: React.ReactNode;
     label?: string;
     variant?: "floating" | "core";
+    isInvalid?: boolean;
+    isDisabled?: boolean;
   };
 
 /**
@@ -59,13 +61,26 @@ export const NativeSelect = React.forwardRef<
   HTMLDivElement,
   NativeSelectRootProps
 >(function NativeSelect(props, ref) {
-  const { icon, children, variant = "core", ...rest } = props;
+  const {
+    icon,
+    children,
+    variant = "core",
+    isInvalid,
+    isDisabled,
+    ...rest
+  } = props;
   const recipe = useSlotRecipe({ recipe: nativeSelectSlotRecipe });
   const styles = recipe({ variant });
   return (
     <Field.Root>
       <Select.Root ref={ref} {...rest} css={styles.root}>
-        <Select.Field css={styles.field}>{children}</Select.Field>
+        <Select.Field
+          css={styles.field}
+          aria-disabled={isDisabled}
+          aria-invalid={isInvalid}
+        >
+          {children}
+        </Select.Field>
         <Select.Indicator css={styles.icon}>
           <DropdownDownFill18Icon />
         </Select.Indicator>
@@ -78,7 +93,8 @@ export const NativeSelect = React.forwardRef<
 interface NativeSelectItem {
   value: string;
   label?: string;
-  disabled?: boolean;
+  isInvalid?: boolean;
+  isDisabled?: boolean;
 }
 
 interface NativeSelectField extends Select.FieldProps {
@@ -105,7 +121,7 @@ export const NativeSelectField = React.forwardRef<
     <Select.Field ref={ref} {...rest} css={styles.field}>
       {children}
       {items?.map((item) => (
-        <option key={item.value} value={item.value} disabled={item.disabled}>
+        <option key={item.value} value={item.value}>
           {item.label}
         </option>
       ))}

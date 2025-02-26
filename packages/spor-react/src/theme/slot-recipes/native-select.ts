@@ -1,4 +1,4 @@
-import { coreBorder, coreText } from "../utils/core-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { inputVariant } from "../utils/input-utils";
@@ -71,7 +71,23 @@ export const nativeSelectSlotRecipe = defineSlotRecipe({
       core: {
         field: {
           ...inputVariant("base"),
-
+          _disabled: {
+            ...coreBackground("disabled"),
+            ...coreBorder("disabled"),
+            pointerEvents: "none",
+          },
+          _invalid: {
+            ...coreBorder("invalid"),
+            _active: {
+              ...coreBorder("invalid"),
+            },
+            _focus: {
+              ...coreBorder("invalid"),
+            },
+            _hover: {
+              ...coreBorder("hover"),
+            },
+          },
           _hover: {
             ...coreBorder("hover"),
             outlineStyle: "solid",
@@ -87,6 +103,23 @@ export const nativeSelectSlotRecipe = defineSlotRecipe({
             ...floatingBorder("hover"),
             _active: {
               ...floatingBorder("active"),
+            },
+          },
+          _disabled: {
+            ...coreBackground("disabled"),
+            ...coreBorder("disabled"),
+            pointerEvents: "none",
+          },
+          _invalid: {
+            ...coreBorder("invalid"),
+            _active: {
+              ...coreBorder("invalid"),
+            },
+            _focus: {
+              ...coreBorder("invalid"),
+            },
+            _hover: {
+              ...coreBorder("hover"),
             },
           },
         },

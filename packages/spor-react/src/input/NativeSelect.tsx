@@ -1,7 +1,5 @@
 "use client";
-
 import {
-  Field,
   RecipeVariantProps,
   NativeSelect as Select,
   useSlotRecipe,
@@ -9,6 +7,7 @@ import {
 import * as React from "react";
 import { nativeSelectSlotRecipe } from "../theme/slot-recipes/native-select";
 import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
+import { Field } from "./Field";
 
 type NativeSelectVariantProps = RecipeVariantProps<
   typeof nativeSelectSlotRecipe
@@ -20,10 +19,6 @@ type NativeSelectRootProps = Exclude<
 > &
   React.PropsWithChildren<NativeSelectVariantProps> & {
     icon?: React.ReactNode;
-    label?: string;
-    variant?: "floating" | "core";
-    isInvalid?: boolean;
-    isDisabled?: boolean;
   };
 
 /**
@@ -65,19 +60,19 @@ export const NativeSelect = React.forwardRef<
     icon,
     children,
     variant = "core",
-    isInvalid,
-    isDisabled,
+    invalid,
+    disabled,
     ...rest
   } = props;
   const recipe = useSlotRecipe({ recipe: nativeSelectSlotRecipe });
   const styles = recipe({ variant });
   return (
-    <Field.Root>
-      <Select.Root ref={ref} {...rest} css={styles.root}>
+    <Field {...rest}>
+      <Select.Root ref={ref} css={styles.root}>
         <Select.Field
           css={styles.field}
-          aria-disabled={isDisabled}
-          aria-invalid={isInvalid}
+          aria-disabled={disabled}
+          aria-invalid={invalid}
         >
           {children}
         </Select.Field>
@@ -85,46 +80,6 @@ export const NativeSelect = React.forwardRef<
           <DropdownDownFill18Icon />
         </Select.Indicator>
       </Select.Root>
-      <Field.Label css={styles.label}>{props.label}</Field.Label>
-    </Field.Root>
-  );
-});
-
-interface NativeSelectItem {
-  value: string;
-  label?: string;
-  isInvalid?: boolean;
-  isDisabled?: boolean;
-}
-
-interface NativeSelectField extends Select.FieldProps {
-  items?: Array<string | NativeSelectItem>;
-}
-
-export const NativeSelectField = React.forwardRef<
-  HTMLSelectElement,
-  NativeSelectField
->(function NativeSelectField(props, ref) {
-  const { items: itemsProp, children, ...rest } = props;
-
-  const items = React.useMemo(
-    () =>
-      itemsProp?.map((item) =>
-        typeof item === "string" ? { label: item, value: item } : item,
-      ),
-    [itemsProp],
-  );
-
-  const recipe = useSlotRecipe({ recipe: nativeSelectSlotRecipe });
-  const styles = recipe();
-  return (
-    <Select.Field ref={ref} {...rest} css={styles.field}>
-      {children}
-      {items?.map((item) => (
-        <option key={item.value} value={item.value}>
-          {item.label}
-        </option>
-      ))}
-    </Select.Field>
+    </Field>
   );
 });

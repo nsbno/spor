@@ -168,5 +168,4 @@ export const NativeSelectAnatomy = createAnatomy("native-select").parts(
   "root",
   "field",
   "icon",
-  "label",
 );

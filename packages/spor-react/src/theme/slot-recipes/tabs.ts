@@ -158,6 +158,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
         },
         trigger: {
           fontWeight: "bold",
+          fontSize: "sm",
           paddingX: 3,
           _focus: {
             border: "md",

@@ -1,5 +1,6 @@
 import tokens from "@vygruppen/spor-design-tokens";
 import {
+  Box,
   BoxProps,
   Flex,
   Stack,
@@ -10,158 +11,191 @@ import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 import { SharedTokenLayout } from "../SharedTokenLayout";
 import { generateColorArray, Palette } from "./utils";
 import { ColorGrid } from "./ColorGrid";
+import { vyDigitalColors } from "../../../../../../packages/spor-react/src/theme/semantic-tokens/colors";
 
 export function ColorTokens(props: BoxProps) {
   const elements = {
     bg: {
       title: "Background",
-      values: [
-        useColorModeValue("bg.default.light", "bg.default.dark"),
-        useColorModeValue("bg.secondary.light", "bg.secondary.dark"),
-        useColorModeValue("bg.tertiary.light", "bg.tertiary.dark"),
-      ],
+      values: ["bg.default", "bg.secondary", "bg.tertiary"],
     },
     text: {
       title: "Text",
       values: [
-        useColorModeValue("text.default.light", "text.default.dark"),
-        useColorModeValue("text.secondary.light", "text.secondary.dark"),
-        useColorModeValue("text.tertiary.light", "text.tertiary.dark"),
-        useColorModeValue("text.inverted.light", "text.inverted.dark"),
-        useColorModeValue("text.highlight.light", "text.highlight.dark"),
-        useColorModeValue("text.disabled.light", "text.disabled.dark"),
+        "text",
+        "text.secondary",
+        "text.tertiary",
+        "text.inverted",
+        "text.highlight",
+        "text.disabled",
       ],
     },
     icon: {
       title: "Icon",
       values: [
-        useColorModeValue("icon.default.light", "icon.default.dark"),
-        useColorModeValue("icon.secondary.light", "icon.secondary.dark"),
-        useColorModeValue("icon.inverted.light", "icon.inverted.dark"),
-        useColorModeValue("icon.highlight.light", "icon.highlight.dark"),
-        useColorModeValue("icon.disabled.light", "icon.disabled.dark"),
+        "icon",
+        "icon.secondary",
+        "icon.inverted",
+        "icon.highlight",
+        "icon.disabled",
       ],
     },
     outline: {
       title: "Outline",
       values: [
-        useColorModeValue("outline.default.light", "outline.default.dark"),
-        useColorModeValue("outline.focus.light", "outline.focus.dark"),
-        useColorModeValue("outline.error.light", "outline.error.dark"),
-        useColorModeValue("outline.inverted.light", "outline.inverted.dark"),
-        useColorModeValue("outline.disabled.light", "outline.disabled.dark"),
+        "outline",
+        "outline.focus",
+        "outline.error",
+        "outline.inverted",
+        "outline.disabled",
       ],
     },
     surface: {
       title: "Surface",
       values: [
-        useColorModeValue("surface.default.light", "surface.default.dark"),
-        useColorModeValue("surface.secondary.light", "surface.secondary.dark"),
-        useColorModeValue("surface.tertiary.light", "surface.tertiary.dark"),
-        useColorModeValue("surface.disabled.light", "surface.disabled.dark"),
+        "surface",
+        "surface.secondary",
+        "surface.tertiary",
+        "surface.disabled",
+        "surface.color.neutral",
+        "surface.color.grey",
+        "surface.color.green",
+        "surface.color.blue",
+        "surface.color.cream",
+        "surface.color.yellow",
+        "surface.color.orange",
+        "surface.color.red",
       ],
     },
   };
 
   const styles = {
-    base: {
-      title: "Base",
+    core: {
+      title: "Core",
       values: [
-        useColorModeValue(
-          "base.outline.default.light",
-          "base.outline.default.dark",
-        ),
-        useColorModeValue(
-          "base.outline.hover.light",
-          "base.outline.hover.dark",
-        ),
-        useColorModeValue(
-          "base.surface.active.light",
-          "base.surface.active.dark",
-        ),
-        useColorModeValue("base.text.light", "base.text.dark"),
-        useColorModeValue("base.icon.light", "base.icon.dark"),
+        "core.outline",
+        "core.outline.hover",
+        "core.surface.active",
+        "core.text",
+        "core.icon",
       ],
     },
     brand: {
       title: "Brand",
       values: [
-        useColorModeValue(
-          "brand.surface.default.light",
-          "brand.surface.default.dark",
-        ),
-        useColorModeValue(
-          "brand.surface.hover.light",
-          "brand.surface.hover.dark",
-        ),
-        useColorModeValue(
-          "brand.surface.active.light",
-          "brand.surface.active.dark",
-        ),
-        useColorModeValue("brand.text.light", "brand.text.dark"),
-        useColorModeValue("brand.icon.light", "brand.icon.dark"),
+        "brand.surface",
+        "brand.surface.hover",
+        "brand.surface.active",
+        "brand.text",
+        "brand.icon",
       ],
     },
     accent: {
       title: "Accent",
       values: [
-        useColorModeValue(
-          "accent.surface.default.light",
-          "accent.surface.default.dark",
-        ),
-        useColorModeValue(
-          "accent.surface.hover.light",
-          "accent.surface.hover.dark",
-        ),
-        useColorModeValue(
-          "accent.surface.active.light",
-          "accent.surface.active.dark",
-        ),
-        useColorModeValue("accent.text.light", "accent.text.dark"),
-        useColorModeValue("accent.icon.light", "accent.icon.dark"),
-        useColorModeValue("accent.bg.light", "accent.bg.dark"),
+        "accent.surface",
+        "accent.surface.hover",
+        "accent.surface.active",
+        "accent.text",
+        "accent.icon",
+        "accent.bg",
       ],
     },
     floating: {
       title: "Floating",
       values: [
-        useColorModeValue(
-          "floating.surface.default.light",
-          "floating.surface.default.dark",
-        ),
-        useColorModeValue(
-          "floating.surface.hover.light",
-          "floating.surface.hover.dark",
-        ),
-        useColorModeValue(
-          "floating.surface.active.light",
-          "floating.surface.active.dark",
-        ),
-        useColorModeValue(
-          "floating.outline.default.light",
-          "floating.outline.default.dark",
-        ),
-        useColorModeValue(
-          "floating.outline.hover.light",
-          "floating.outline.hover.dark",
-        ),
-        useColorModeValue("floating.text.light", "floating.text.dark"),
-        useColorModeValue("floating.icon.light", "floating.icon.dark"),
+        "floating.surface",
+        "floating.surface.hover",
+        "floating.surface.active",
+        "floating.outline",
+        "floating.outline.hover",
+        "floating.text",
+        "floating.icon",
       ],
     },
     ghost: {
       title: "Ghost",
       values: [
-        useColorModeValue(
-          "ghost.surface.hover.light",
-          "ghost.surface.hover.dark",
-        ),
-        useColorModeValue(
-          "ghost.surface.active.light",
-          "ghost.surface.active.dark",
-        ),
-        useColorModeValue("ghost.text.light", "ghost.text.dark"),
-        useColorModeValue("ghost.icon.light", "ghost.icon.dark"),
+        "ghost.surface.hover",
+        "ghost.surface.active",
+        "ghost.text",
+        "ghost.icon",
+      ],
+    },
+    detail: {
+      title: "Detail",
+      values: [
+        "detail.color.neutral",
+        "detail.color.grey",
+        "detail.color.green",
+        "detail.color.blue",
+        "detail.color.cream",
+        "detail.color.yellow",
+        "detail.color.orange",
+        "detail.color.red",
+      ],
+    },
+  };
+
+  const alertStyles = {
+    important: {
+      title: "Important",
+      values: [
+        "alert.important.surface",
+        "alert.important.surface.hover",
+        "alert.important.surface.active",
+        "alert.important.surface.outline",
+        "alert.important.outline.hover",
+      ],
+    },
+    alt: {
+      title: "Alt",
+      values: [
+        "alert.alt.surface",
+        "alert.alt.surface.hover",
+        "alert.alt.surface.active",
+        "alert.alt.surface.outline",
+        "alert.alt.outline.hover",
+      ],
+    },
+    success: {
+      title: "Success",
+      values: [
+        "alert.success.surface",
+        "alert.success.surface.hover",
+        "alert.success.surface.active",
+        "alert.success.surface.outline",
+        "alert.success.outline.hover",
+      ],
+    },
+    error: {
+      title: "Error",
+      values: [
+        "alert.error.surface",
+        "alert.error.surface.hover",
+        "alert.error.surface.active",
+        "alert.error.surface.outline",
+        "alert.error.outline.hover",
+      ],
+    },
+    info: {
+      title: "Info",
+      values: [
+        "alert.info.surface",
+        "alert.info.surface.hover",
+        "alert.info.surface.active",
+        "alert.info.surface.outline",
+        "alert.info.outline.hover",
+      ],
+    },
+    service: {
+      title: "Service",
+      values: [
+        "alert.service.surface",
+        "alert.service.surface.hover",
+        "alert.service.surface.active",
+        "alert.service.surface.outline",
+        "alert.service.outline.hover",
       ],
     },
   };
@@ -211,6 +245,18 @@ export function ColorTokens(props: BoxProps) {
           Styles
         </LinkableHeading>
         {Object.entries(styles).map(([key, element]) => (
+          <Flex flexDirection="column" gap={2} key={key}>
+            <LinkableHeading as="h3" variant="md" fontWeight="bold">
+              {element.title}
+            </LinkableHeading>
+            <ColorGrid colors={generateColorArray(element.values)} />
+          </Flex>
+        ))}
+
+        <LinkableHeading as="h2" variant="xl-display" mt={3}>
+          Alerts
+        </LinkableHeading>
+        {Object.entries(alertStyles).map(([key, element]) => (
           <Flex flexDirection="column" gap={2} key={key}>
             <LinkableHeading as="h3" variant="md" fontWeight="bold">
               {element.title}

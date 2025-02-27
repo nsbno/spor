@@ -45,13 +45,12 @@ export const ColorToken = ({
     alias?.includes("Alpha") || paletteName?.includes("Alpha");
   const isWhite = aliasName?.includes("White");
 
-  const tokenParts = token
-    .split(".")
-    .filter((part) => part !== "light" && part !== "dark");
-  let formattedToken = tokenParts.join("-");
+  const tokenParts = token.split(".");
+
+  let formattedToken = tokenParts.join(".");
 
   if (tokenParts.length === 3) {
-    formattedToken = `${tokenParts[0]}-${tokenParts[1]}:${tokenParts[2]}`;
+    formattedToken = `${tokenParts[0]}.${tokenParts[1]}.${tokenParts[2]}`;
   }
 
   return (

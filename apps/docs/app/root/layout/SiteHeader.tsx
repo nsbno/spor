@@ -96,7 +96,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
 
   return (
     <>
-      <Flex
+      {/* <Flex
         display={["none", null, null, "flex"]}
         maxWidth={[null, null, null, "breakpoints.lg", "breakpoints.xl"]}
         marginX="auto"
@@ -121,7 +121,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
             </Flex>
           }
         />
-      </Flex>
+      </Flex> */}
       <Flex
         display={["none", null, null, "flex"]}
         flex={[0, 0, 0, 0, 1]}

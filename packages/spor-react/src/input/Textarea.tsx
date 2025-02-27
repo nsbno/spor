@@ -25,14 +25,13 @@ export type TextareaProps = Exclude<
 > &
   FieldProps &
   PropsWithChildren<TextareaVariants> & {
-    /* A label for the textarea */
     label: ReactNode;
   };
 
 /**
  * Hook to calculate the height of the label element to adjust spacing for the input for floating label.
  */
-const useLabelHeight = (label: string | undefined) => {
+const useLabelHeight = (label: ReactNode | undefined) => {
   const labelRef = useRef<HTMLLabelElement>(null);
   const [labelHeight, setLabelHeight] = useState(0);
 
@@ -54,6 +53,8 @@ const useLabelHeight = (label: string | undefined) => {
     return () => {
       if (labelRef.current) {
         observer.unobserve(labelRef.current);
+
+        console.log("alright");
       }
     };
   }, [label]);
@@ -79,16 +80,21 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const recipe = useRecipe({ key: "textarea" });
     const styles = recipe({ variant });
 
+    const { labelRef, labelHeight } = useLabelHeight(label);
+
     return (
-      <Field {...fieldProps}>
+      <Field {...fieldProps} position="relative">
         <ChakraTextarea
           {...props}
           css={styles}
           className="peer"
           ref={ref}
+          style={
+            { "--label-height": `${labelHeight}px` } as React.CSSProperties
+          }
           placeholder=" "
         />
-        <FieldLabel>{label}</FieldLabel>
+        <FieldLabel ref={labelRef}>{label}</FieldLabel>
       </Field>
     );
   },

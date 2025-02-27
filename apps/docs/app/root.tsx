@@ -33,6 +33,7 @@ import {
 } from "./utils/brand-cookie.server";
 import { getInitialSanityData } from "./utils/initialSanityData.server";
 import { urlBuilder } from "./utils/sanity/utils";
+import { SystemContext } from "@chakra-ui/react";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data || !data.initialSanityData) {
@@ -184,7 +185,7 @@ const Document = withEmotionCache(
           <SporProvider
             language={Language.English}
             brand={brand}
-            value={defaultSystem}
+            value={{} as SystemContext}
           >
             <SkipToContent />
             {children}

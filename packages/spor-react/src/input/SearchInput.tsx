@@ -7,7 +7,6 @@ import {
 import React, { forwardRef } from "react";
 import { createTexts, Input, InputProps, useTranslation } from "..";
 import { IconButton } from "../button/IconButton";
-import { LayoutProps } from "@chakra-ui/react";
 
 export type SearchInputProps = InputProps & {
   /** Callback for when the clear button is clicked */
@@ -49,22 +48,6 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
     );
   },
 );
-
-const getOuterProps = (props: Record<string, any>) => {
-  const layoutKeys = new Set(["w, width, maxW, minW, maxWidth, minWidth"]); // add more keys here if neccessary
-  const outerProps: LayoutProps = {};
-  const innerProps: Record<string, any> = {};
-
-  for (const key in props) {
-    if (layoutKeys.has(key)) {
-      (outerProps as any)[key] = props[key];
-    } else {
-      (innerProps as any)[key] = props[key];
-    }
-  }
-
-  return { outerProps, innerProps };
-};
 
 const texts = createTexts({
   label: {

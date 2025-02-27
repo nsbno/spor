@@ -8,8 +8,6 @@ import {
   Switch,
   Text,
   useColorMode,
-  FormControl,
-  FormLabel,
 } from "@vygruppen/spor-react";
 import { BrandSwitcher } from "~/features/brand-switcher/BrandSwitcher";
 
@@ -49,17 +47,12 @@ export const SiteSettings = ({ showLabel }: SiteSettingsProps) => {
         </Box>
         <Stack gap={3}>
           <BrandSwitcher />
-          <FormControl display="flex" alignItems="center" gap={3}>
-            <FormLabel margin="0" htmlFor="site-settings-dark-mode">
-              Dark mode
-            </FormLabel>
-            <Switch
-              id="site-settings-dark-mode"
-              size="sm"
-              onChange={() => toggleColorMode()}
-              defaultChecked={colorMode === "dark"}
-            />
-          </FormControl>
+          <Switch
+            id="site-settings-dark-mode"
+            size="sm"
+            onChange={() => toggleColorMode()}
+            defaultChecked={colorMode === "light"}
+          />
         </Stack>
       </Flex>
     </CardSelect>

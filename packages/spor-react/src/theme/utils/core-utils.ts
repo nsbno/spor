@@ -10,9 +10,7 @@ type coreBackgroundState = Subset<
 export function coreBackground(state: coreBackgroundState) {
   switch (state) {
     case "active":
-      return {
-        backgroundColor: "core.surface.active",
-      };
+      return brandBackground("active");
     case "selected":
       return brandBackground("default");
 
@@ -68,11 +66,15 @@ export function coreBorder(state: BorderState) {
 
 type coreTextState = Subset<
   State,
-  "default" | "selected" | "disabled" | "highlight"
+  "default" | "selected" | "disabled" | "highlight" | "active"
 >;
 export function coreText(state: coreTextState) {
   switch (state) {
     case "selected":
+      return {
+        color: "brand.text",
+      };
+    case "active":
       return {
         color: "brand.text",
       };

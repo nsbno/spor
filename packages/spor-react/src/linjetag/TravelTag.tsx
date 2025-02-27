@@ -28,7 +28,13 @@ export type TravelTagProps = TagProps &
     deviationLevel?: DeviationLevels;
     disabled?: boolean;
     foregroundColor?: string;
+    /**
+     * Needs to be defined if variant is custom
+     */
     backgroundColor?: string;
+    /**
+     * Define a custom icon variant
+     */
     customIconVariant?: string;
   };
 

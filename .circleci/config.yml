@@ -6,6 +6,9 @@ orbs:
   aws-cli: circleci/aws-cli@5.0.0
 
 parameters:
+  GHA_Action:
+    type: string
+    default: ""
   ecr_repo_name:
     type: string
     default: "spor"

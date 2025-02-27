@@ -1,11 +1,9 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { accentBackground, accentText } from "../utils/accent-utils";
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
-import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { tabsAnatomy } from "./anatomy";
 
 export const tabsSlotRecipe = defineSlotRecipe({
-  slots: ["root", "list", "trigger", "content", "indicator"],
+  slots: tabsAnatomy.keys(),
   className: "spor-tabs",
   base: {
     root: {
@@ -17,9 +15,11 @@ export const tabsSlotRecipe = defineSlotRecipe({
       alignItems: "center",
       gap: 0.5,
       borderRadius: "xl",
+      width: "fit-content",
     },
     trigger: {
       display: "flex",
+      cursor: "pointer",
       justifyContent: "center",
       alignItems: "center",
       transitionProperty: "common",
@@ -31,36 +31,92 @@ export const tabsSlotRecipe = defineSlotRecipe({
     },
   },
   variants: {
+    fitted: {
+      true: {
+        list: {
+          display: "flex",
+          width: "auto",
+        },
+        trigger: {
+          flex: 1,
+          textAlign: "center",
+          justifyContent: "center",
+        },
+      },
+    },
+    justify: {
+      start: {
+        list: {
+          justifyContent: "flex-start",
+        },
+      },
+      center: {
+        list: {
+          justifyContent: "center",
+        },
+      },
+      end: {
+        list: {
+          justifyContent: "flex-end",
+        },
+      },
+    },
     variant: {
       core: {
         list: {
-          ...coreBackground("default"),
-          ...coreText("default"),
-          ...coreBorder("default"),
+          backgroundColor: "core.surface",
+          color: "core.text",
+          border: "sm",
         },
         trigger: {
-          ...coreText("default"),
+          color: "core.text",
+          border: "md",
+          borderColor: "transparent",
           _hover: {
-            ...coreBorder("hover"),
+            outline: "2px solid",
+            outlineColor: "core.surface.hover",
             outlineOffset: "-2px",
           },
           _active: {
-            ...coreBackground("active"),
+            backgroundColor: "brand.surface.active",
+            color: "brand.text",
+            outline: "none",
+          },
+          _selected: {
+            backgroundColor: "brand.surface",
+            color: "brand.text",
+          },
+          _disabled: {
+            backgroundColor: "surface.disabled",
+            color: "brand.text.disabled",
           },
         },
       },
       accent: {
         list: {
           backgroundColor: "accent.bg",
-          ...accentText("default"),
+          color: "accent.text",
         },
         trigger: {
-          ...accentText("default"),
-          _hover: {
-            ...accentBackground("hover"),
+          color: "accent.text",
+          _disabled: {
+            backgroundColor: "surface.disabled",
+            color: "accent.text.disabled",
           },
-          _active: {
-            ...accentBackground("active"),
+          _hover: {
+            backgroundColor: "accent.surface.hover",
+            _active: {
+              backgroundColor: "brand.surface.active",
+              color: "brand.text",
+            },
+          },
+          _selected: {
+            backgroundColor: "brand.surface",
+            color: "brand.text",
+            _hover: {
+              backgroundColor: "brand.surface.hover",
+              color: "brand.text",
+            },
           },
         },
       },
@@ -69,7 +125,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
       xs: {
         list: {
           height: 5,
-          padding: "2px",
+          padding: "0.1rem",
         },
         trigger: {
           paddingX: 2,
@@ -98,11 +154,16 @@ export const tabsSlotRecipe = defineSlotRecipe({
       lg: {
         list: {
           height: 8,
-          padding: "4px",
+          padding: "0.2rem",
         },
         trigger: {
           fontWeight: "bold",
+          fontSize: "sm",
           paddingX: 3,
+          _focus: {
+            border: "md",
+            borderColor: "accent.surface",
+          },
         },
       },
     },

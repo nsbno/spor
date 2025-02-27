@@ -1,3 +1,4 @@
+"use client";
 import { Box, BoxProps } from "@chakra-ui/react";
 import { contentLoaderData } from "@vygruppen/spor-loader";
 import React from "react";

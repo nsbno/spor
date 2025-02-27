@@ -89,11 +89,11 @@ export const loader = async () => {
   const { illustrations, article } = (await client.fetch(
     query,
   )) as SanityResponse;
-  return { illustrations, article };
+  return data({ illustrations, article });
 };
 
 export default function IllustrationLibraryPage() {
-  const { illustrations, article } = useLoaderData<typeof loader>();
+  const { illustrations, article } = useLoaderData<typeof loader>().data;
   const [searchValue, setSearchValue] = useState("");
   const colorMode = useColorModePreference();
   const [size, setSize] = useState("all");

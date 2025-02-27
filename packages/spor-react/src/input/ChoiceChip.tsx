@@ -1,17 +1,25 @@
+"use client";
 import {
   chakra,
-  forwardRef,
+  RecipeVariantProps,
   useCheckbox,
-  useMultiStyleConfig,
+  useSlotRecipe,
 } from "@chakra-ui/react";
-import { dataAttr } from "@chakra-ui/utils";
 import { CloseOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, { ChangeEvent, useId } from "react";
+import React, {
+  ChangeEvent,
+  forwardRef,
+  PropsWithChildren,
+  useId,
+} from "react";
+import { choiceChipSlotRecipe } from "../theme/slot-recipes/choice-chip";
 
-export type ChoiceChipProps = {
+type ChoiceChipVariantProps = RecipeVariantProps<typeof choiceChipSlotRecipe>;
+
+export type ChoiceChipProps = PropsWithChildren<ChoiceChipVariantProps> & {
   onChange?: (value: ChangeEvent<HTMLInputElement>) => void;
-  isChecked?: boolean;
-  isDisabled?: boolean;
+  checked?: boolean;
+  disabled?: boolean;
   defaultChecked?: boolean;
   /** The button text */
   children: React.ReactNode;
@@ -21,7 +29,7 @@ export type ChoiceChipProps = {
   };
   size?: "xs" | "sm" | "md" | "lg";
   chipType?: "icon" | "choice" | "filter";
-  variant?: "base" | "accent" | "floating";
+  variant?: "core" | "accent" | "floating";
 };
 /**
  * Choice chips are checkboxes that look like selectable buttons.
@@ -44,11 +52,11 @@ export type ChoiceChipProps = {
  *  <ChoiceChip chipType="filter" icon={<Bus24Icon />}>Bus</ChoiceChip>
  * </Stack>
  *
- * There are also three different variants - `base`, `accent` and `floating`.
+ * There are also three different variants - `core`, `accent` and `floating`.
  *
  * ```tsx
  * <Stack flexDirection="row">
- *   <ChoiceChip variant="base">Bus</ChoiceChip>
+ *   <ChoiceChip variant="core">Bus</ChoiceChip>
  *   <ChoiceChip variant="accent">Boat</ChoiceChip>
  *   <ChoiceChip variant="floating">Train</ChoiceChip>
  * </Stack>
@@ -59,22 +67,18 @@ export const ChoiceChip = forwardRef(
     {
       children,
       icon,
-      isDisabled,
+      disabled,
+      checked,
       size = "sm",
       chipType = "choice",
-      variant = "base",
+      variant = "core",
       ...props
     }: ChoiceChipProps,
     ref,
   ) => {
-    const {
-      state,
-      getInputProps,
-      getCheckboxProps,
-      getRootProps,
-      getLabelProps,
-    } = useCheckbox(props);
-    const styles = useMultiStyleConfig("ChoiceChip", {
+    const { getRootProps, getLabelProps } = useCheckbox(props);
+    const recipe = useSlotRecipe({ key: "choice-chip" });
+    const styles = recipe({
       size,
       chipType,
       variant,
@@ -91,31 +95,29 @@ export const ChoiceChip = forwardRef(
         aria-label={String(children)}
       >
         <chakra.input
-          {...getInputProps({}, ref)}
+          /* {...getInputProps({}, ref)} */
           id={id}
-          disabled={isDisabled || state.isDisabled}
+          disabled={disabled}
         />
         <chakra.div
           {...getLabelProps()}
-          __css={styles.container}
-          data-checked={dataAttr(state.isChecked)}
+          css={styles.root}
+          /* data-checked={dataAttr(state.isChecked)}
           data-hover={dataAttr(state.isHovered)}
           data-focus={dataAttr(state.isFocused)}
           data-active={dataAttr(state.isActive)}
-          data-disabled={dataAttr(isDisabled || state.isDisabled)}
+          data-disabled={dataAttr(state.isDisabled)} */
         >
           {icon && (
-            <chakra.span __css={styles.icon}>
-              {state.isChecked ? icon.checked : icon.default}
+            <chakra.span css={styles.icon}>
+              {checked ? icon.checked : icon.default}
             </chakra.span>
           )}
           {chipType !== "icon" && (
-            <chakra.span __css={styles.label} {...getCheckboxProps()}>
-              {children}
-            </chakra.span>
+            <chakra.span css={styles.label}>{children}</chakra.span>
           )}
 
-          {chipType === "filter" && state.isChecked && (
+          {chipType === "filter" && checked && (
             <CloseOutline24Icon marginLeft={1.5} />
           )}
         </chakra.div>

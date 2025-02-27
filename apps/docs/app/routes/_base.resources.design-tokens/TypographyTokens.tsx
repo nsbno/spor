@@ -5,12 +5,11 @@ import {
   Code,
   Stack,
   Table,
-  Tbody,
-  Td,
+  TableBody,
+  TableCell,
+  TableColumnHeader,
+  TableRow,
   Text,
-  Th,
-  Thead,
-  Tr,
 } from "@vygruppen/spor-react";
 import { Fragment } from "react";
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
@@ -91,7 +90,7 @@ export function TypographyTokens(props: BoxProps) {
       {...props}
       title="Typography"
       description={
-        <Stack spacing={6}>
+        <Stack gap={6}>
           <Text>
             We have two "sets" of text styles; one for mobile and one for
             desktop. The text styles for Mobile should be used in the Vy app,
@@ -109,7 +108,7 @@ export function TypographyTokens(props: BoxProps) {
         </Stack>
       }
     >
-      <Stack spacing={9}>
+      <Stack gap={9}>
         <TypographyTokenTable viewportSize="mobile" title="Mobile" />
         <TypographyTokenTable viewportSize="desktop" title="Desktop" />
       </Stack>
@@ -132,19 +131,19 @@ const TypographyTokenTable = ({
       <LinkableHeading as="h2" variant="sm" fontWeight="bold" marginBottom={2}>
         {title}
       </LinkableHeading>
-      <Table variant="simple" colorScheme="grey">
-        <Thead>
-          <Tr>
-            <Th>Example</Th>
-            <Th>Value</Th>
-            <Th>Code</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
+      <Table variant="line" colorScheme="grey">
+        <TableColumnHeader>
+          <TableRow>
+            <TableColumnHeader>Example</TableColumnHeader>
+            <TableColumnHeader>Value</TableColumnHeader>
+            <TableColumnHeader>Code</TableColumnHeader>
+          </TableRow>
+        </TableColumnHeader>
+        <TableBody>
           {typographyTokens.map((token) => (
             <Fragment key={token.name}>
-              <Tr>
-                <Td>
+              <TableRow>
+                <TableCell>
                   <Text
                     fontSize={
                       tokens.font.style[token.key]["font-size"][viewportSize]
@@ -155,13 +154,13 @@ const TypographyTokenTable = ({
                   >
                     {token.name}
                   </Text>
-                </Td>
-                <Td>
+                </TableCell>
+                <TableCell>
                   {tokens.font.style[token.key]["font-size"][viewportSize]} /{" "}
                   {tokens.font.style[token.key]["line-height"]}
-                </Td>
-                <Td>
-                  <Stack spacing={1}>
+                </TableCell>
+                <TableCell>
+                  <Stack gap={1}>
                     <Box>
                       <Code>
                         {tokenFormatter(
@@ -180,11 +179,11 @@ const TypographyTokenTable = ({
                       </Code>
                     </Box>
                   </Stack>
-                </Td>
-              </Tr>
+                </TableCell>
+              </TableRow>
             </Fragment>
           ))}
-        </Tbody>
+        </TableBody>
       </Table>
     </Box>
   );

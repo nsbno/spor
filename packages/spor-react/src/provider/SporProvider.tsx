@@ -1,11 +1,12 @@
-import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
+"use client";
 import { Global } from "@emotion/react";
-import deepmerge from "deepmerge";
 import React from "react";
-import { Language, LanguageProvider } from "..";
-import { Brand, brandTheme, theme as defaultSporTheme, fontFaces } from "../";
+import { Language, LanguageProvider, system, themes } from "..";
+import { Brand, fontFaces } from "../theme/brand";
+import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
+import { ColorModeProvider } from "../color-mode";
 
-type SporProviderProps = ChakraProviderProps & {
+type SporProviderProps = Exclude<ChakraProviderProps, "value"> & {
   language?: Language;
   brand?: Brand;
 };
@@ -35,6 +36,7 @@ type SporProviderProps = ChakraProviderProps & {
  *
  * ```tsx
  * import { extendTheme, SporProvider } from "@vygruppen/spor-react";
+import { theme } from '../../../../apps/docs/app/features/portable-text/code-block/codeTheme';
  * const theme = extendTheme({
  *  colors: { myApp: { primary: "tomato" } }
  * });
@@ -47,21 +49,17 @@ type SporProviderProps = ChakraProviderProps & {
  * ```
  */
 export const SporProvider = ({
-  theme = defaultSporTheme,
   language = Language.NorwegianBokmal,
   brand = Brand.VyDigital,
   children,
-  ...props
 }: SporProviderProps) => {
-  const brandCustomizations = brandTheme[brand] ?? {};
-
-  const extendedTheme = deepmerge(theme, brandCustomizations);
-
   return (
     <LanguageProvider language={language}>
-      <ChakraProvider theme={extendedTheme} {...props}>
-        <Global styles={fontFaces} />
-        {children}
+      <ChakraProvider value={themes[brand] ?? system}>
+        <ColorModeProvider>
+          <Global styles={fontFaces} />
+          {children}
+        </ColorModeProvider>
       </ChakraProvider>
     </LanguageProvider>
   );

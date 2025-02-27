@@ -1,4 +1,3 @@
-import { cookieStorageManagerSSR } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
 import {
   ActionFunctionArgs,
@@ -34,6 +33,7 @@ import {
 } from "./utils/brand-cookie.server";
 import { getInitialSanityData } from "./utils/initialSanityData.server";
 import { urlBuilder } from "./utils/sanity/utils";
+import { SystemContext } from "@chakra-ui/react";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data || !data.initialSanityData) {
@@ -141,14 +141,10 @@ type DocumentProps = {
   children: ReactNode;
   title?: string;
   brand?: Brand;
-  colorModeManager?: ReturnType<typeof cookieStorageManagerSSR>;
 };
 
 const Document = withEmotionCache(
-  (
-    { children, brand, title, colorModeManager }: DocumentProps,
-    emotionCache,
-  ) => {
+  ({ children, brand, title }: DocumentProps, emotionCache) => {
     const serverStyleData = useContext(ServerStyleContext);
     const clientStyleData = useContext(ClientStyleContext);
 
@@ -188,8 +184,8 @@ const Document = withEmotionCache(
         <body>
           <SporProvider
             language={Language.English}
-            colorModeManager={colorModeManager}
             brand={brand}
+            value={{} as SystemContext}
           >
             <SkipToContent />
             {children}
@@ -210,14 +206,8 @@ function useConst<T>(value: T): T {
 export default function App() {
   const loaderData = useLoaderData<typeof loader>();
 
-  const colorModeManager = useConst(
-    cookieStorageManagerSSR(loaderData?.cookies),
-  );
   return (
-    <Document
-      colorModeManager={colorModeManager}
-      brand={loaderData.brand as Brand}
-    >
+    <Document brand={loaderData.brand as Brand}>
       <RootLayout>
         <Outlet />
       </RootLayout>

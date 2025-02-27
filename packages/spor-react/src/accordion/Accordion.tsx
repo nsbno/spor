@@ -1,64 +1,115 @@
-import {
-  Accordion as ChakraAccordion,
-  AccordionProps as ChakraAccordionProps,
-  forwardRef,
-} from "@chakra-ui/react";
-import React from "react";
-import { Stack, StackProps } from "../layout";
-export {
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
-} from "@chakra-ui/react";
-export type {
-  AccordionButtonProps,
-  AccordionItemProps,
-  AccordionPanelProps,
-} from "@chakra-ui/react";
+"use client";
 
-export type AccordionProps = Omit<ChakraAccordionProps, "variant" | "size"> & {
-  /**
-   * The display variant of the accordion items.
-   *
-   * - `ghost` renders a pretty unstyled expandable list without any borders
-   * - `base` renders an outlined version
-   * - `floating` renders a version with a drop shadow
-   */
-  variant?: "ghost" | "base" | "floating";
-  /** The margin between accordion items */
-  spacing?: StackProps["spacing"];
-};
+import {
+  Box,
+  Accordion as ChakraAccordion,
+  HStack,
+  Stack,
+  useSlotRecipe,
+} from "@chakra-ui/react";
+import { DropdownDownFill24Icon } from "@vygruppen/spor-icon-react";
+import React, { forwardRef } from "react";
+import {
+  AccordionProps,
+  AccordionItemTriggerProps,
+  AccordionItemContentProps,
+} from "./types";
+import { warnAboutMismatchingIcon } from "./helpers";
+
 /*
- * Wraps a set of ExpandableItem or AccordionItem components.
+ * Wraps a set of AccordionItem or AccordionItem components.
  *
  * ```tsx
  * <Accordion variant="ghost">
- *   <ExpandableItem title="Is Spor easy?" headingLevel="h3">
- *     Yes
- *   </ExpandableItem>
- *   <ExpandableItem title="Is Spor lovable?" headingLevel="h3">
- *     🥰
- *   </ExpandableItem>
+ *   <AccordionItem>
+ *      <AccordionItemTrigger>Is Spor easy?</AccordionItemTrigger>
+ *      <AccordionItemContent>Yes</AccordionItemContent>
+ *   </AccordionItem>
+ *   <AccordionItem>
+ *      <AccordionItemTrigger>Is Spor lovable?</AccordionItemTrigger>
+ *      <AccordionItemContent>Yes</AccordionItemContent>
+ *   </AccordionItem>
+ * </Accordion>
+ * ```
+ *
+ * If you need to have a default open item, you can use the `defaultValue` prop.
+ *
+ * ```tsx
+ * <Accordion defaultValue={["a"]}>
+ *  <AccordionItem value="a">
+ *    <AccordionItemTrigger>Is Spor easy?</AccordionItemTrigger>
+ *    <AccordionItemContent>Yes</AccordionItemContent>
+ *  </AccordionItem>
+ *  <AccordionItem value="b">
+ *    <AccordionItemTrigger>Is Spor lovable?</AccordionItemTrigger>
+ *    <AccordionItemContent>Yes</AccordionItemContent>
+ *  </AccordionItem>
  * </Accordion>
  * ```
  *
  * If you only have one expandable item, you can use the `<Expandable />` component instead.
+ *
+ * @see https://spor.vy.no/components/accordion
  */
-export const Accordion = forwardRef<AccordionProps, "div">(
-  ({ children, spacing = 2, ...props }, ref) => {
-    const defaultIndex =
-      typeof props.defaultIndex === "number" && props.allowMultiple
-        ? [props.defaultIndex]
-        : props.defaultIndex;
+
+export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
+  (props, ref) => {
+    const { variant = "core", children, gap = 2, ...rest } = props;
+    const recipe = useSlotRecipe({ key: "accordion" });
+    const styles = recipe({ variant });
     return (
-      <ChakraAccordion
-        {...props}
+      <ChakraAccordion.Root
+        {...rest}
         ref={ref}
-        defaultIndex={defaultIndex as number[] | undefined}
+        css={styles.root}
+        variant={variant}
       >
-        <Stack spacing={spacing}>{children}</Stack>
-      </ChakraAccordion>
+        <Stack gap={gap}>{children}</Stack>
+      </ChakraAccordion.Root>
     );
   },
 );
+
+export const AccordionItemTrigger = forwardRef<
+  HTMLButtonElement,
+  AccordionItemTriggerProps
+>(function AccordionItemTrigger(props, ref) {
+  const { startElement, children, headingLevel, ...rest } = props;
+  warnAboutMismatchingIcon({ icon: startElement });
+  const recipe = useSlotRecipe({ key: "accordion" });
+  const styles = recipe();
+  return (
+    <Box as={headingLevel}>
+      <ChakraAccordion.ItemTrigger {...rest} ref={ref} css={styles.itemTrigger}>
+        <HStack flex="1" gap={1} textAlign="start" width="full">
+          {startElement && startElement}
+          {children}
+        </HStack>
+
+        <ChakraAccordion.ItemIndicator>
+          <DropdownDownFill24Icon />
+        </ChakraAccordion.ItemIndicator>
+      </ChakraAccordion.ItemTrigger>
+    </Box>
+  );
+});
+
+export const AccordionItemContent = forwardRef<
+  HTMLDivElement,
+  AccordionItemContentProps
+>(function AccordionItemContent(props, ref) {
+  const { children } = props;
+
+  const recipe = useSlotRecipe({ key: "accordion" });
+  const styles = recipe();
+
+  return (
+    <ChakraAccordion.ItemContent css={styles.itemContent}>
+      <ChakraAccordion.ItemBody {...props} ref={ref}>
+        {children}
+      </ChakraAccordion.ItemBody>
+    </ChakraAccordion.ItemContent>
+  );
+});
+
+export const AccordionItem = ChakraAccordion.Item;

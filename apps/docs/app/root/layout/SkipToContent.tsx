@@ -1,18 +1,9 @@
-import { Box, useColorModeValue } from "@vygruppen/spor-react";
+import { Box } from "@vygruppen/spor-react";
 
 export const SkipToContent = () => {
-  const backgroundColor = useColorModeValue(
-    "bg.default.dark",
-    "bg.default.light",
-  );
-  const textColor = useColorModeValue(
-    "text.default.dark",
-    "text.default.light",
-  );
   return (
     <Box
-      as="a"
-      href="#content"
+      asChild
       position="fixed"
       zIndex="banner"
       outline="none"
@@ -20,8 +11,8 @@ export const SkipToContent = () => {
       left="0"
       right="0"
       padding={2}
-      backgroundColor={backgroundColor}
-      color={textColor}
+      backgroundColor="bg"
+      color="text"
       borderBottomRadius="sm"
       minWidth="40ch"
       boxShadow="md"
@@ -36,7 +27,7 @@ export const SkipToContent = () => {
         outlineColor: "burntYellow",
       }}
     >
-      Skip to content
+      <a href="#content">Skip to content</a>
     </Box>
   );
 };

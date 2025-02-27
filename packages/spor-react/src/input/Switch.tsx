@@ -1,39 +1,63 @@
+"use client";
 import {
-  As,
+  RecipeVariantProps,
   Switch as ChakraSwitch,
-  SwitchProps as ChakraSwitchProps,
-  forwardRef,
+  ConditionalValue,
+  useSlotRecipe,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { switchSlotRecipe } from "../theme/slot-recipes/switch";
 
-export type SwitchProps = Omit<ChakraSwitchProps, "colorScheme" | "variant"> & {
-  size?: "sm" | "md" | "lg";
-  as?: As;
-};
+type SwitchVariants = RecipeVariantProps<typeof switchSlotRecipe>;
 
-/**
- * A switch lets you toggle between on and off, yes and no. It's an alternative to a checkbox.
- *
- * You can use a Switch component inside of a `FormControl` with an associated `FormLabel`:
- *
- * ```tsx
- * <FormControl>
- *   <FormLabel>Enable alerts?</FormLabel>
- *   <Switch />
- * </FormControl>
- * ```
- *
- * Switches are available in three different sizes - `sm`, `md` and `lg`.
- *
- * ```tsx
- * <FormControl>
- *   <FormLabel>Enable alerts?</FormLabel>
- *   <Switch size="sm" />
- * </FormControl>
- * ```
- */
-export const Switch = forwardRef<SwitchProps, "input">(
-  ({ size = "md", as = "div", ...props }: SwitchProps, ref) => {
-    return <ChakraSwitch as={as} size={size} {...props} ref={ref} />;
+export type SwitchProps = Exclude<
+  ChakraSwitch.RootProps,
+  "size" | "colorPalette"
+> &
+  PropsWithChildren<SwitchVariants> & {
+    inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+    rootRef?: React.Ref<HTMLLabelElement>;
+    trackLabel?: { on: React.ReactNode; off: React.ReactNode };
+    thumbLabel?: { on: React.ReactNode; off: React.ReactNode };
+    size?: ConditionalValue<"sm" | "md" | "lg">;
+  };
+
+export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
+  (props, ref) => {
+    const {
+      inputProps,
+      children,
+      rootRef,
+      trackLabel,
+      thumbLabel,
+      size,
+      ...rest
+    } = props;
+
+    const recipe = useSlotRecipe({ key: "switch" });
+    const styles = recipe({ size });
+
+    return (
+      <ChakraSwitch.Root ref={rootRef} {...rest} css={styles}>
+        <ChakraSwitch.HiddenInput ref={ref} {...inputProps} />
+        <ChakraSwitch.Control>
+          <ChakraSwitch.Thumb>
+            {thumbLabel && (
+              <ChakraSwitch.ThumbIndicator fallback={thumbLabel?.off}>
+                {thumbLabel?.on}
+              </ChakraSwitch.ThumbIndicator>
+            )}
+          </ChakraSwitch.Thumb>
+          {trackLabel && (
+            <ChakraSwitch.Indicator fallback={trackLabel.off}>
+              {trackLabel.on}
+            </ChakraSwitch.Indicator>
+          )}
+        </ChakraSwitch.Control>
+        {children != null && (
+          <ChakraSwitch.Label>{children}</ChakraSwitch.Label>
+        )}
+      </ChakraSwitch.Root>
+    );
   },
 );

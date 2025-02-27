@@ -1,4 +1,5 @@
-import { Box, ResponsiveValue } from "@chakra-ui/react";
+"use client";
+import { Box } from "@chakra-ui/react";
 import { DateValue, createCalendar } from "@internationalized/date";
 import React, { useRef } from "react";
 import {
@@ -9,10 +10,10 @@ import { useRangeCalendarState } from "react-stately";
 import { CalendarGrid } from "./CalendarGrid";
 import { CalendarHeader } from "./CalendarHeader";
 import { useCurrentLocale } from "./utils";
+import { CalendarVariants } from "./types";
 
-type RangeCalendarProps = ReactAriaRangeCalendarProps<DateValue> & {
-  variant: ResponsiveValue<"base" | "floating" | "ghost">;
-};
+type RangeCalendarProps = ReactAriaRangeCalendarProps<DateValue> &
+  CalendarVariants;
 
 export function RangeCalendar(props: RangeCalendarProps) {
   const locale = useCurrentLocale();

@@ -1,4 +1,5 @@
-import { BoxProps, useFormControlContext } from "@chakra-ui/react";
+"use client";
+import { BoxProps, useFieldContext } from "@chakra-ui/react";
 import { CalendarDateTime } from "@internationalized/date";
 import { TimeValue } from "@react-types/datepicker";
 import {
@@ -40,7 +41,7 @@ type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> & {
    */
   minuteInterval?: number;
   /** Whether or not the field is disabled */
-  isDisabled?: boolean;
+  disabled?: boolean;
 };
 /** A time picker component.
  *
@@ -66,13 +67,13 @@ export const TimePicker = ({
   defaultValue = getCurrentTime(),
   onChange = () => {},
   minuteInterval = 30,
-  isDisabled: isDisabledExternally = false,
+  disabled: isDisabledExternally = false,
   name,
   ...boxProps
 }: TimePickerProps) => {
-  const { isDisabled: isFormControlDisabled, isInvalid: isFormControlInvalid } =
-    useFormControlContext() ?? {};
-  const isDisabled = isDisabledExternally ?? isFormControlDisabled ?? false;
+  const { disabled: fieldDisabled, invalid: fieldInvalid } =
+    useFieldContext() ?? {};
+  const isDisabled = isDisabledExternally ?? fieldDisabled ?? false;
   const { t } = useTranslation();
   const locale = useCurrentLocale();
   const label = externalLabel ?? t(texts.time);
@@ -83,7 +84,7 @@ export const TimePicker = ({
     locale,
     isDisabled,
     label,
-    validationState: isFormControlInvalid ? "invalid" : "valid",
+    validationState: fieldInvalid ? "invalid" : "valid",
   });
 
   const dateTime = state.value as CalendarDateTime | null;
@@ -95,11 +96,12 @@ export const TimePicker = ({
     const minutesToSubtract =
       dateTime.minute % minuteInterval || minuteInterval;
     state.setValue(
-      state.value.subtract({
+      dateTime.subtract({
         minutes: minutesToSubtract,
       }),
     );
   };
+
   const handleForwardClick = () => {
     if (!dateTime) {
       return;
@@ -107,7 +109,7 @@ export const TimePicker = ({
     const minutesToAdd =
       minuteInterval - (dateTime.minute % minuteInterval) || minuteInterval;
     state.setValue(
-      state.value.add({
+      dateTime.add({
         minutes: minutesToAdd,
       }),
     );
@@ -124,7 +126,7 @@ export const TimePicker = ({
   )}`;
   return (
     <StyledField
-      variant="base"
+      variant="core"
       width="fit-content"
       paddingX={2}
       alignItems="center"
@@ -145,7 +147,7 @@ export const TimePicker = ({
         title={backwardsLabel}
         icon={<DropdownLeftFill18Icon />}
         onClick={handleBackwardsClick}
-        isDisabled={isDisabled}
+        disabled={isDisabled}
         style={isDisabled ? { backgroundColor: "transparent" } : {}}
       />
       <TimeField label={label} state={state} name={name} />
@@ -157,7 +159,7 @@ export const TimePicker = ({
         title={forwardsLabel}
         icon={<DropdownRightFill18Icon />}
         onClick={handleForwardClick}
-        isDisabled={isDisabled}
+        disabled={isDisabled}
         style={isDisabled ? { backgroundColor: "transparent" } : {}}
       />
     </StyledField>

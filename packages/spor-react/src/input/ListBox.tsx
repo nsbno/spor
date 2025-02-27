@@ -1,8 +1,8 @@
 "use client";
 import {
   Box,
-  ListRoot,
   ListItem,
+  ListRoot,
   ListRootProps,
   RecipeVariantProps,
   useSlotRecipe,
@@ -23,8 +23,9 @@ import {
   useOption,
 } from "react-aria";
 import { type ListState, type SelectState } from "react-stately";
-import { listBoxSlotRecipe } from "../theme/slot-recipes/listbox";
+import { List } from "..";
 import { useColorModeValue } from "../color-mode";
+import { listBoxSlotRecipe } from "../theme/slot-recipes/listbox";
 
 export { Item, Section } from "react-stately";
 
@@ -45,6 +46,7 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
     maxWidth?: BoxProps["maxWidth"];
     variant?: "core" | "floating";
     children: React.ReactNode;
+    autoFocus?: boolean;
   };
 
 /**
@@ -89,23 +91,41 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
     const recipe = useSlotRecipe({ key: "listbox" });
     const styles = recipe({ variant });
     return (
-      <ListRoot
+      <List
         {...listBoxProps}
         ref={listBoxRef}
         css={styles.root}
         aria-busy={loading}
         maxWidth={maxWidth}
+        border="sm"
+        borderBottomRadius="sm"
+        paddingTop={2}
+        zIndex={"dropdown"}
+        backgroundColor="white"
       >
         {state.collection.size === 0 && props.emptyContent}
         {Array.from(state.collection).map((item) =>
           item.type === "section" ? (
             <ListBoxSection key={item.key} section={item} state={state} />
           ) : (
-            <ListItem key={item.key} />
+            <ListItem
+              key={item.key}
+              listStyle={"none"}
+              marginBottom={1}
+              marginX={2}
+              padding={1}
+              borderRadius={"sm"}
+              _hover={{
+                backgroundColor: "accent.surface.hover",
+                color: "accent.text",
+              }}
+            >
+              {item.props.children}
+            </ListItem>
           ),
         )}
         {children}
-      </ListRoot>
+      </List>
     );
   },
 );
@@ -219,6 +239,7 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
 
   const isFirstSection = section.key === state.collection.getFirstKey();
   const titleColor = useColorModeValue("darkGrey", "white");
+
   return (
     <ListRoot>
       <ListItem {...itemProps}>

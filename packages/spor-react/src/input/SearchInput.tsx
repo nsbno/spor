@@ -7,6 +7,7 @@ import {
 import React, { forwardRef } from "react";
 import { createTexts, Input, InputProps, useTranslation } from "..";
 import { IconButton } from "../button/IconButton";
+import { LayoutProps } from "@chakra-ui/react";
 
 export type SearchInputProps = InputProps & {
   /** Callback for when the clear button is clicked */

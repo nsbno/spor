@@ -1,4 +1,3 @@
-import { defaultSystem } from '@chakra-ui/react';
 import { withEmotionCache } from "@emotion/react";
 import {
   ActionFunctionArgs,
@@ -144,10 +143,7 @@ type DocumentProps = {
 };
 
 const Document = withEmotionCache(
-  (
-    { children, brand, title }: DocumentProps,
-    emotionCache,
-  ) => {
+  ({ children, brand, title }: DocumentProps, emotionCache) => {
     const serverStyleData = useContext(ServerStyleContext);
     const clientStyleData = useContext(ClientStyleContext);
 
@@ -210,9 +206,7 @@ export default function App() {
   const loaderData = useLoaderData<typeof loader>();
 
   return (
-    <Document
-      brand={loaderData.brand as Brand}
-    >
+    <Document brand={loaderData.brand as Brand}>
       <RootLayout>
         <Outlet />
       </RootLayout>

@@ -1,5 +1,17 @@
 # Changelog
 
+## 3.9.0
+
+### Minor Changes
+
+- 2453bf1: Added 2.5 to spacing
+
+## 3.8.2
+
+### Patch Changes
+
+- e6e8b1a: **Color tokens**: Updated disabled text color
+
 ## 3.8.1
 
 ### Patch Changes

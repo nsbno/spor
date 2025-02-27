@@ -1,4 +1,5 @@
 import { State, Subset } from "./types";
+import { fontWeights } from "../foundations";
 
 type GhostBackgroundState = Subset<
   State,

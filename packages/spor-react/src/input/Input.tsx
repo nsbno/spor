@@ -46,13 +46,13 @@ export type InputProps = Exclude<
  * ```tsx
  * <Input label="E-mail" startElement={<EmailOutline24Icon />} variant="floating" />
  * ```
- * 
+ *
  * Field is added to Input, so you can add helperText, errorText, and optionalText.
- * 
+ *
  * ```tsx
  * <Input label="E-mail" startElement={<EmailOutline24Icon />} helperText="We will never share your email." />
  * ```
- * 
+ *
  * @see https://spor.vy.no/components/input
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {

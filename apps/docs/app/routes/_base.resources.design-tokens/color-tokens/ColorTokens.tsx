@@ -166,7 +166,7 @@ export function ColorTokens(props: BoxProps) {
     },
   };
 
-  const allColors = Object.values(tokens.color.palette as Palette)
+  const allColors = Object.values(tokens.color.palette as unknown as Palette)
     .map((scale) => Object.values(scale))
     .flat()
     .filter((color) => color.length > 1);

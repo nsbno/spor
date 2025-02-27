@@ -1,5 +1,4 @@
 import tokens from "@vygruppen/spor-design-tokens";
-import { useTheme, useToken } from "@vygruppen/spor-react";
 import { toTitleCase } from "~/utils/stringUtils";
 
 type PaletteScale = {
@@ -33,7 +32,7 @@ const getAliasName = (colorValue: string) => {
 };
 
 const getPaletteName = (colorValue: string) => {
-  const palette = tokens.color.palette as Palette;
+  const palette = tokens.color.palette as unknown as Palette;
   for (let [paletteName, scale] of Object.entries(palette)) {
     for (let [scaleNumber, value] of Object.entries(scale)) {
       if (value === colorValue) {
@@ -45,8 +44,7 @@ const getPaletteName = (colorValue: string) => {
 };
 
 export const useTokenAlias = (token: string) => {
-  const theme = useTheme();
-  const tokenParts = token.split(".");
+
   let alias = "";
 
   /* if (tokenParts.length === 3) {

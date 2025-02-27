@@ -30,7 +30,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       rootRef,
       trackLabel,
       thumbLabel,
-      size,
+      size = "sm",
       ...rest
     } = props;
 
@@ -38,10 +38,10 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     const styles = recipe({ size });
 
     return (
-      <ChakraSwitch.Root ref={rootRef} {...rest} css={styles}>
+      <ChakraSwitch.Root ref={rootRef} {...rest} css={styles.root}>
         <ChakraSwitch.HiddenInput ref={ref} {...inputProps} />
-        <ChakraSwitch.Control>
-          <ChakraSwitch.Thumb>
+        <ChakraSwitch.Control css={styles.control}>
+          <ChakraSwitch.Thumb css={styles.thumb}>
             {thumbLabel && (
               <ChakraSwitch.ThumbIndicator fallback={thumbLabel?.off}>
                 {thumbLabel?.on}

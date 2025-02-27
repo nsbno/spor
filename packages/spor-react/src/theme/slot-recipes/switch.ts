@@ -4,7 +4,7 @@ import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const switchSlotRecipe = defineSlotRecipe({
-  slots: ["root", "track", "thumb"],
+  slots: ["root", "track", "thumb", "control"],
   className: "spor-switch",
   base: {
     root: {
@@ -19,12 +19,81 @@ export const switchSlotRecipe = defineSlotRecipe({
         _rtl: "calc(var(--switch-diff) * -1)",
       },
     },
-    track: {
+    thumb: {
+      position: "absolute",
+      transitionProperty: "translate",
+      transitionDuration: "fast",
+      borderRadius: "50%",
+      display: "flex",
+      flexShrink: 0,
+      alignItems: "center",
+      justifyContent: "center",
+      width: "var(--switch-height)",
+      height: "var(--switch-height)",
+      backgroundColor: "core.icon",
+
+      _disabled: {
+        backgroundColor: "icon.disabled",
+      },
+      _checked: {
+        translate: "var(--switch-x) 0",
+      },
+    },
+    control: {
+      boxSizing: "content-box",
+      padding: "3px",
+      display: "inline-flex",
+      gap: "0.5rem",
+      flexShrink: 0,
+      justifyContent: "flex-start",
+      cursor: "switch",
+      borderRadius: "30px",
+      position: "relative",
+      width: "var(--switch-width)",
+      height: "var(--switch-height)",
+      transitionProperty: "common",
+      transitionDuration: "fast",
+      outlineStyle: "solid",
+      outlineWidth: "1px",
+      ...coreBorder("default"),
+      ...focusVisibleStyles(),
+      ...coreBackground("default"),
+      _hover: {
+        ...coreBorder("hover"),
+      },
+      _checked: {
+        ...brandBackground("default"),
+        outlineColor: "transparent",
+
+        _hover: {
+          ...coreBackground("default"),
+          ...brandBackground("hover"),
+        },
+      },
+      _disabled: {
+        pointerEvents: "none",
+        ...coreBackground("default"),
+        ...coreBorder("disabled"),
+        _checked: {
+          ...coreBackground("disabled"),
+          ...coreBorder("disabled"),
+        },
+        backgroundColor: "green",
+      },
+      _invalid: {
+        outline: "2px solid",
+        outlineColor: "outline.error",
+        outlineOffset: "2px",
+      },
+    },
+
+    /*     track: {
       transitionProperty: "common",
       transitionDuration: "fast",
       ...coreBorder("default"),
       ...focusVisibleStyles(),
       ...coreBackground("default"),
+      backgroundColor: "blue",
 
       _hover: {
         ...coreBorder("hover"),
@@ -46,8 +115,9 @@ export const switchSlotRecipe = defineSlotRecipe({
           ...coreBackground("disabled"),
           ...coreBorder("disabled"),
         },
+        backgroundColor: "green",
       },
-    },
+    }, */
   },
   variants: {
     size: {
@@ -56,7 +126,7 @@ export const switchSlotRecipe = defineSlotRecipe({
           "--switch-width": "54px",
           "--switch-height": "24px",
         },
-        track: {
+        control: {
           borderRadius: "24px",
           padding: "2px",
         },
@@ -66,7 +136,7 @@ export const switchSlotRecipe = defineSlotRecipe({
           "--switch-width": "66px",
           "--switch-height": "30px",
         },
-        track: {
+        control: {
           borderRadius: "30px",
           padding: "3px",
         },
@@ -76,7 +146,7 @@ export const switchSlotRecipe = defineSlotRecipe({
           "--switch-width": "78px",
           "--switch-height": "36px",
         },
-        track: {
+        control: {
           borderRadius: "36px",
           padding: "3px",
         },

@@ -25,6 +25,7 @@ export const CodeBlock = ({
       maxWidth={`calc(100vw - var(--spor-space-6))`}
       {...props}
       code={code}
+      marginTop={2}
     >
       <Highlight theme={theme} code={code} language={language as any}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (

@@ -1,5 +1,114 @@
 # @vygruppen/spor-react
 
+## 11.2.1
+
+### Patch Changes
+
+- f11e119: Set htmlFor correctly for label in ChoiceButton to link it to input
+
+## 11.2.0
+
+### Minor Changes
+
+- 2453bf1: Added 2.5 to spacing
+
+### Patch Changes
+
+- Updated dependencies [2453bf1]
+  - @vygruppen/spor-design-tokens@3.9.0
+
+## 11.1.5
+
+### Patch Changes
+
+- 7c47e93: Fix(TextArea): Overlapping of label and text
+
+## 11.1.4
+
+### Patch Changes
+
+- cd49b43: Set correct position of label for input elements that caused the dance during hydration step
+
+## 11.1.3
+
+### Patch Changes
+
+- edb4b4d: Disable pointer-events on input labels
+
+## 11.1.2
+
+### Patch Changes
+
+- 902cd66: Removed lazy from phone number input
+
+## 11.1.1
+
+### Patch Changes
+
+- c0e50b7: Fixed searchinput so it is more SSR friendly
+
+## 11.1.0
+
+### Minor Changes
+
+- c0a8332: Button: Update props to support margins
+
+## 11.0.5
+
+### Patch Changes
+
+- 793e13f: Changed color of the ServiceAlert varient global-deviation to be the same as a regular service alert
+
+## 11.0.4
+
+### Patch Changes
+
+- a10004c: Added deprecated warning on useMediaQuery
+
+## 11.0.3
+
+### Patch Changes
+
+- 5fe5e88: Add boxProps to ClosaleAlert"
+
+## 11.0.2
+
+### Patch Changes
+
+- 89d1702: Text for multiple notifications
+
+## 11.0.1
+
+### Patch Changes
+
+- e2d26fd: Fix isDisabled for RadioCard and ChoiceChip
+
+## 11.0.0
+
+### Major Changes
+
+- 137bc96: The Button component has been updated to remove SpaceProps from its ButtonProps interface. This change eliminates direct support for spacing-related properties (e.g., margin, padding).
+- 70b1a86: Theme container tokens: Update values to mirror breakpoint values
+
+  You will need to update your implementation if you have static values related to the container sizes.
+
+### Minor Changes
+
+- 47dc850: Update styling for dashed divider
+- 7c1ab44: CardSelect: adjust css values and component logic to adapt to new design
+- 717158c: SearchInput: Added support for width-related props
+
+### Patch Changes
+
+- e9b34da: ExpandableAlert: made some updates in the styling for different states
+- f87a8f7: Skeletons: add aria attributes and role
+
+## 10.9.2
+
+### Patch Changes
+
+- 96e8a8a: TravelTag: updated disabled variant colors
+
 ## 10.9.1
 
 ### Patch Changes

@@ -1,4 +1,4 @@
-import { Link, useLocation } from "@remix-run/react";
+import { Link, useLocation, useRouteLoaderData } from "@remix-run/react";
 import {
   HamburgerFill24Icon,
   SearchFill24Icon,
@@ -18,13 +18,10 @@ import {
   Text,
   VyLogo,
   useDisclosure,
-  Input,
-  Switch,
-  useColorMode,
-  Button,
   ColorModeButton,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
+import { loader } from "~/root";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
 import { SiteSearchModal } from "./SiteSearchModal";
 import { SiteSettings } from "./SiteSettings";
@@ -95,37 +92,36 @@ type SearchFieldProps = {
 };
 
 const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
-  const [isMac, setIsMac] = useState(false);
+  const isMac = useRouteLoaderData<typeof loader>("root")?.isMac;
 
-  useEffect(() => {
-    if (typeof navigator !== "undefined") {
-      setIsMac(/Mac|iPod|iPhone|iPad/.test(navigator.userAgent));
-    }
-  }, []);
   return (
     <>
-      <Flex
+      {/* <Flex
         display={["none", null, null, "flex"]}
         maxWidth={[null, null, null, "breakpoints.lg", "breakpoints.xl"]}
         marginX="auto"
         paddingX={[3, null, 7, 5, 9]}
       >
-        {/* <SearchInput
+        <SearchInput
+          role="button"
           onClick={onSearchClick}
+          onKeyDown={(e: KeyboardEvent) => {
+            if (e.key === "Enter" || e.key === " ") {
+              onSearchClick();
+            }
+          }}
           width={[null, null, null, "37.5rem"]}
           readOnly
-          className="dark"
           label={
             <Flex alignItems="center" gap={1}>
               Search docs{" "}
-              <Text variant="sm" fontSize="12" paddingTop={0.5}>
+              <Text size="sm" fontSize="12" paddingTop={0.5}>
                 ({isMac ? "cmd" : "ctrl"} + K)
               </Text>
             </Flex>
           }
-        /> */}
-        <Input label="Label" />
-      </Flex>
+        />
+      </Flex> */}
       <Flex
         display={["none", null, null, "flex"]}
         flex={[0, 0, 0, 0, 1]}
@@ -146,6 +142,7 @@ const MobileNavigation = ({ onSearchClick }: SearchFieldProps) => {
     // but that's on you!
     onClose();
   }, [location.pathname, onClose]);
+
   return (
     <Flex display={["flex", null, null, "none"]}>
       <Flex gap={2}>

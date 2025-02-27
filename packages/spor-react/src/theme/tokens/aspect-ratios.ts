@@ -1,4 +1,4 @@
-import { defineTokens } from "@chakra-ui/react"
+import { defineTokens } from "@chakra-ui/react";
 
 export const aspectRatios = defineTokens.aspectRatios({
   square: {
@@ -19,4 +19,4 @@ export const aspectRatios = defineTokens.aspectRatios({
   golden: {
     value: "1.618 / 1",
   },
-})
+});

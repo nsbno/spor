@@ -20,9 +20,6 @@ export const fieldSlotRecipe = defineSlotRecipe({
       fontSize: ["mobile.xs", "desktop.xs"],
       color: "text",
       pointerEvents: "none",
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-      whiteSpace: "nowrap",
       transition: "position",
       zIndex: "docked",
       _peerPlaceholderShown: {

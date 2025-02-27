@@ -90,8 +90,8 @@ export const ChoiceChip = forwardRef(
 
     return (
       <chakra.label
-        htmlFor={id}
         {...getRootProps()}
+        htmlFor={id}
         aria-label={String(children)}
       >
         <chakra.input

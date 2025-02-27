@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "0.0.52",
+  "version": "0.0.55",
   "name": "@vygruppen/docs",
   "description": "The Spor documentation",
   "license": "MIT",
@@ -11,7 +11,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@chakra-ui/react": "^3.5.1",
+    "@chakra-ui/react": "^3.8.1",
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/server": "^11.11.0",
@@ -21,7 +21,7 @@
     "@remix-run/serve": "^2.15.2",
     "@sanity/groq-store": "^1.1.5",
     "@sanity/image-url": "^1.0.2",
-    "@vygruppen/spor-design-tokens": "^3.8.1",
+    "@vygruppen/spor-design-tokens": "^3.9.0",
     "@vygruppen/spor-icon": "^3.2.0",
     "@vygruppen/spor-icon-react": "^3.12.0",
     "@vygruppen/spor-react": "*",

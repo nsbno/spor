@@ -53,8 +53,6 @@ const useLabelHeight = (label: ReactNode | undefined) => {
     return () => {
       if (labelRef.current) {
         observer.unobserve(labelRef.current);
-
-        console.log("alright");
       }
     };
   }, [label]);

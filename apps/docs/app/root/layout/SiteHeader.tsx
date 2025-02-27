@@ -73,7 +73,7 @@ export const SiteHeader = () => {
           />
         </Link>
       </Box>
-      <ColorModeButton /> {/* temp solution */}
+      <ColorModeButton className="dark" /> {/* temp solution */}
       <DesktopNavigation
         onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
       />
@@ -110,20 +110,13 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         marginX="auto"
         paddingX={[3, null, 7, 5, 9]}
       >
-        {/* <SearchInput
+        <SearchInput
           onClick={onSearchClick}
           width={[null, null, null, "37.5rem"]}
           readOnly
           className="dark"
-          label={
-            <Flex alignItems="center" gap={1}>
-              Search docs{" "}
-              <Text variant="sm" fontSize="12" paddingTop={0.5}>
-                ({isMac ? "cmd" : "ctrl"} + K)
-              </Text>
-            </Flex>
-          }
-        /> */}
+          label="Search"
+        />
         <Input label="Label" />
       </Flex>
       <Flex

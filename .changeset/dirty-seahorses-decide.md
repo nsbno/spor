@@ -15,4 +15,3 @@
 - Install correct npm packages in apps/packages in monorepo.
 - Replace npm-feed installs with direct "workspace:\*" installs for better local development.
 - Replace inline commands for tsup with tsup.config.ts files.
-- Use nodemon for hot reload in spor-design-tokens.

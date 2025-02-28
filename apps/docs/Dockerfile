@@ -16,7 +16,7 @@ WORKDIR /app
 ADD package.json ./
 # Install both devDependencies and dependencies 
 # (even when NODE_ENV=production)
-RUN pnpm install --no-production
+RUN pnpm install
 
 
 # Setup production node_modules

@@ -108,20 +108,7 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
           item.type === "section" ? (
             <ListBoxSection key={item.key} section={item} state={state} />
           ) : (
-            <ListItem
-              key={item.key}
-              listStyle={"none"}
-              marginBottom={1}
-              marginX={2}
-              padding={1}
-              borderRadius={"sm"}
-              _hover={{
-                backgroundColor: "accent.surface.hover",
-                color: "accent.text",
-              }}
-            >
-              {item.props.children}
-            </ListItem>
+            <Option key={item.key} item={item} state={state} />
           ),
         )}
         {children}
@@ -206,7 +193,21 @@ function Option({ item, state }: OptionProps) {
 
   return (
     <OptionContext.Provider value={{ labelProps, descriptionProps }}>
-      <ListItem {...optionProps} {...dataFields} ref={ref} css={styles.item}>
+      <ListItem
+        {...optionProps}
+        {...dataFields}
+        ref={ref}
+        css={styles.item}
+        listStyle={"none"}
+        marginBottom={1}
+        marginX={2}
+        padding={1}
+        borderRadius={"sm"}
+        _hover={{
+          backgroundColor: "accent.surface.hover",
+          color: "accent.text",
+        }}
+      >
         {item.rendered}
       </ListItem>
     </OptionContext.Provider>

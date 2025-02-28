@@ -134,7 +134,6 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
       },
       state,
     );
-    console.log("ch", children);
     return (
       <>
         <Input

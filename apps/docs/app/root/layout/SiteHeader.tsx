@@ -19,6 +19,7 @@ import {
   VyLogo,
   useDisclosure,
   ColorModeButton,
+  DarkMode,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
 import { loader } from "~/root";
@@ -46,44 +47,45 @@ export const SiteHeader = () => {
   }, []);
 
   return (
-    <Flex
-      color="white"
-      justifyContent="space-between"
-      alignItems="center"
-      paddingX={[3, 4, 7]}
-      paddingY={[3, 4, 5, 4]}
-      backgroundColor={"surface.tertiary"}
-      css={{
-        position: "sticky",
-        top: "0",
-        zIndex: "sticky",
-      }}
-      gap={1}
-    >
-      <Box marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
-        <Link to="/" aria-label="Go to the front page">
-          <VyLogo
-            width="auto"
-            height={["30px", "36px", null, "48px"]}
-            aria-label="Vy"
-            className="dark"
-          />
-        </Link>
-      </Box>
-      <ColorModeButton /> {/* temp solution */}
-      <DesktopNavigation
-        onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
-      />
-      <MobileNavigation
-        onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
-      />
-      {searchDialogOpen && (
-        <SiteSearchModal
-          searchDialogOpen={searchDialogOpen}
-          setSearchDialogOpen={setSearchDialogOpen}
+    <DarkMode>
+      <Flex
+        color="white"
+        justifyContent="space-between"
+        alignItems="center"
+        paddingX={[3, 4, 7]}
+        paddingY={[3, 4, 5, 4]}
+        backgroundColor={"surface.tertiary"}
+        css={{
+          position: "sticky",
+          top: "0",
+          zIndex: "sticky",
+        }}
+        gap={1}
+      >
+        <Box marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
+          <Link to="/" aria-label="Go to the front page">
+            <VyLogo
+              width="auto"
+              height={["30px", "36px", null, "48px"]}
+              aria-label="Vy"
+            />
+          </Link>
+        </Box>
+        <ColorModeButton /> {/* temp solution */}
+        <DesktopNavigation
+          onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
         />
-      )}
-    </Flex>
+        <MobileNavigation
+          onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
+        />
+        {searchDialogOpen && (
+          <SiteSearchModal
+            searchDialogOpen={searchDialogOpen}
+            setSearchDialogOpen={setSearchDialogOpen}
+          />
+        )}
+      </Flex>
+    </DarkMode>
   );
 };
 

@@ -189,7 +189,10 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
             <ListBox
               {...{
                 ...listBoxProps,
-                autoFocus: true,
+                autoFocus:
+                  typeof listBoxProps.autoFocus === "boolean"
+                    ? listBoxProps.autoFocus
+                    : undefined,
               }}
               state={state}
               id={listboxId}

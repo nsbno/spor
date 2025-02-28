@@ -123,7 +123,6 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
  */
 export function ItemLabel({ children }: { children: React.ReactNode }) {
   let { labelProps } = useOptionContext();
-
   return <Box {...labelProps}>{children}</Box>;
 }
 
@@ -137,7 +136,7 @@ export function ItemDescription({ children }: { children: React.ReactNode }) {
   const recipe = useSlotRecipe({ key: "listbox" });
   const styles = recipe({});
   return (
-    <Box {...descriptionProps} css={styles}>
+    <Box {...descriptionProps} css={styles} fontSize={"xs"}>
       {children}
     </Box>
   );
@@ -189,7 +188,7 @@ function Option({ item, state }: OptionProps) {
       { passive: false, once: true },
     );
   }, []);
-
+  console.log("Option", item);
   return (
     <OptionContext.Provider value={{ labelProps, descriptionProps }}>
       <ListItem

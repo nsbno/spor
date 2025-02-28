@@ -11,7 +11,6 @@ import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
 import { ColorSpinner, Input, InputProps, ListBox } from "..";
 import { Popover } from "./Popover";
-import { ConditionalValue } from "@chakra-ui/react";
 
 export type ComboboxProps<T> = Exclude<
   InputProps,
@@ -135,6 +134,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
       },
       state,
     );
+    console.log("ch", children);
     return (
       <>
         <Input
@@ -153,6 +153,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
           borderBottomRightRadius={
             state.isOpen && !loading ? 0 : borderBottomRightRadius
           }
+          _active={{ backgroundColor: "core.surface.active" }}
           {...inputProps}
           endElement={
             loading ? (
@@ -187,13 +188,16 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
             containerPadding={0}
           >
             <ListBox
-              /* {...listBoxProps} */
+              {...{
+                ...listBoxProps,
+                autoFocus: true,
+              }}
               state={state}
               id={listboxId}
               listBoxRef={listBoxRef}
               emptyContent={emptyContent}
               maxWidth={inputWidth}
-              /* variant={variant} */
+              variant={variant}
             >
               {children}
             </ListBox>

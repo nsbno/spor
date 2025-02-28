@@ -1,115 +1,171 @@
-# Spor
+# 🎨 Spor: Vy's Design System
 
-This is the monorepo containing Vy's design system, **Spor**, and its supporting applications. Scroll to find contribute!
+Welcome to **Spor**, Vy's open-source design system! Spor is a **shared language for designers and developers**, helping us build **consistent, accessible, and high-quality user experiences** across all platforms.
 
-## What's inside?
+## 📖 Table of Contents
+- [What is Spor?](#-what-is-spor)
+- [Repository Structure](#-repository-structure)
+- [Getting Started](#-getting-started)
+- [How to Contribute](#-how-to-contribute)
+- [Design System Fundamentals](#-design-system-fundamentals)
+- [Accessibility](#-accessibility)
+- [Releasing New Versions](#-releasing-new-versions)
+- [Adding New Icons](#-adding-new-icons)
+- [Additional Resources](#-additional-resources)
 
-This repo includes the following apps:
+---
 
-- `docs`: a [Remix](https://remix.run) app documenting and demoing the design system. Available @ [spor.vy.no](https://spor.vy.no).
-- `studio`: a [Sanity](https://sanity.io) Studio app for creating and editing documentation content. Available @ [spor.vy.no/studio](https://spor.vy.no/studio).
+## 📌 What is Spor?
+Spor provides:
+- **Reusable UI components** for web and mobile
+- **Design tokens** for colors, typography, spacing, and more
+- **Guidelines and documentation** for usage and best practices
+- **A collaborative space** for designers and developers to contribute
 
-This repo also includes a bunch of packages. The ones you need to know about are:
+Our goal is to ensure **visual and functional consistency** across Vy's digital products. Anyone—inside or outside Vy—can contribute! 🚀
 
-- `@vygruppen/spor-react` - The React component library
-- `@vygruppen/spor-design-tokens` - Design tokens for React, React Native and Elm
-- `@vygruppen/spor-icon` - All SVG icons
-- `@vygruppen/spor-icon-react` - All SVG icons as React components
-- `@vygruppen/spor-icon-react-native` - All SVG icons as React components
-- `@vygruppen/spor-loader` - All Lottie loading animation data
+---
 
-## Documentation and demos
+## 📂 Repository Structure
+Spor follows a **monorepo** structure, containing multiple **packages** and **applications**.
 
-Feel free to visit our documentation website on [spor.vy.no](https://spor.vy.no). You'll find live versions of all components, including extensive documentation. And the website is built by dogfooding the React component library!
+### 🚀 Applications
+- **`docs`** – A Remix app for documentation and demos (this site).
+- **`studio`** – A Sanity Studio app for managing documentation ([spor.vy.no/studio](https://spor.vy.no/studio)).
 
-If you want, you can also test it out in a [CodeSandbox](https://codesandbox.io/s/demo-spor-b137ig).
+### 📦 Key Packages
+- **`@vygruppen/spor-react`** – The React component library.
+- **`@vygruppen/spor-design-tokens`** – Design tokens (colors, typography, spacing, etc.).
+- **`@vygruppen/spor-icon`** – SVG icons.
+- **`@vygruppen/spor-icon-react`** – React components for icons.
+- **`@vygruppen/spor-icon-react-native`** – React Native components for icons.
+- **`@vygruppen/spor-loader`** – All Lottie loading animation data.
 
-## Usage (React)
+---
 
-To get started, you'll need to install the required packages:
+## 🔧 Getting Started
 
-```bash
-$ npm install @vygruppen/spor-react
+### ✅ Prerequisites
+Before you begin, ensure you have:
+- **Node.js** installed.
+- **Basic familiarity with Git** for version control.
+
+### 📥 Cloning the Repository
+```sh
+git clone https://github.com/nsbno/spor.git
 ```
 
-Next, wrap your entire application in the `SporProvider` component. You'll need to pass the current language as well:
-
-```tsx
-// In your src/index.tsx file, for instance
-import { SporProvider, Language } from "@vygruppen/spor-react";
-import { createRoot } from "react-dom";
-import { App } from "./App";
-
-const root = createRoot(document.getElementById("root"));
-root.render(
-  <SporProvider language={Language.English}>
-    <App />
-  </SporProvider>,
-);
+### 📦 Installing Dependencies
+```sh
+cd spor
+npm install
 ```
 
-Now, you can start importing components across your app. For instance, to use the Button component:
-
-```tsx
-import { Button } from "@vygruppen/spor-react";
-import { EditOutline24Icon } from "@vygruppen/spor-icon-react";
-
-export const App = () => {
-  return (
-    <Button variant="primary" leftIcon={<EditOutline24Icon />}>
-      Edit me
-    </Button>
-  );
-};
-```
-
-You'll find lots of components, and extensive documentation on the [documentation site](https://spor.vy.no/components).
-
-## Usage (React Native)
-
-The React Native version of Spor lives in the [app repo](https://github.com/nsbno/salgsapp-react-native/tree/master/app/spor). The APIs should be pretty much the same as in React, but there might be some differences. Look at the relevant documentation for more information.
-
-# CONTRIBUTE
-
-All documentation on how to contribute is available on https://spor.vy.no.
-
-How to make a React component(and change it): https://spor.vy.no/guides/how-to-make-new-react-components
-
-HOW TO MAKE A CHANGESET: https://spor.vy.no/guides/how-to-make-new-react-components#creating-a-pr-and-publish-package
-
-ALL ABOUT CHANGESETS: https://spor.vy.no/guides/releasing-new-versions
-
-## Setup
-
-To develop locally, clone the repository and run `npm install` at the root level.
-
-If you want to run the docs website locally, you'll need a few secrets. Follow the instructions in each app's readme to discover and set them locally.
-
-Then run `npm run build` to build all artifacts for the first time. Finally, run `npm run dev` to start the development servers.
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
+### ⚡ Building the Project
+```sh
 npm run build
 ```
 
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
+### 💻 Running the Development Server
+```sh
 npm run dev
 ```
 
-This will start all apps and packages in development mode. You can then visit the following URLs:
+---
 
-[localhost:3000](http://localhost:3000) - The local version of the docs website
-[localhost:3333](http://localhost:3333) - The local version of the Sanity Studio
+## 👋 How to Contribute
 
-### Testing components 🎨
+Spor is built **collaboratively**, and contributions are welcome! Here are some ways you can help:
 
-When creating or editing components in Spor, use `/playground` as a testing ground.
+- 🛠 **Develop new components, features, or bug fixes.**  
+- 🎨 **Design new components and propose design improvements.**  
+- 📝 **Enhance documentation** by adding examples or proofreading.  
+- 🔍 **Increase test coverage** by writing more tests.  
+- 🐛 **Report bugs** or suggest improvements via **GitHub issues**.  
+- 💬 **Provide feedback** on design and developer experience.  
+- ✅ **Review pull requests** and help maintain code quality.  
 
-[localhost:3000/playground](http://localhost:3000/playground) - Happy testing!
+For detailed guides, check out:
+- **[Creating a New React Component](https://spor.vy.no/guides/how-to-make-new-react-components)**
+- **[Creating a New React Native Component](https://spor.vy.no/guides/how-to-make-new-react-native-components)**
+- **[Releasing New Versions](https://spor.vy.no/guides/releasing-new-versions)**
+
+💡 **Not sure where to start?** Look for GitHub issues labeled `good first issue` for beginner-friendly tasks.
+
+---
+
+## 🎨 Design System Fundamentals
+### 🏗 Components
+Spor provides **pre-built UI components** that:
+- **Follow accessibility best practices**
+- **Include built-in states and interactivity**
+- **Have corresponding Figma components for designers**
+
+Browse the component library to see them in action! 🧩
+
+### 🎨 Design Tokens
+Design tokens define:
+- **Colors** (`brand.primary`, `text.default`)
+- **Spacing & Layout** (`spacing.md`, `radius.lg`)
+- **Typography** (`font.heading`, `lineHeight.base`)
+
+Use design tokens instead of hard-coded values for consistency across products.
+
+---
+
+## ♿ Accessibility
+### ✅ Web Accessibility Best Practices
+- **Use semantic HTML** (`<button>`, `<h1>`, `<input>`, etc.).
+- **Follow proper heading structure** (no skipping levels like `<h1>` → `<h3>`).
+- **Use ARIA only when necessary** (`aria-expanded`, `aria-live`).
+- **Ensure proper keyboard navigation** (Tab, Enter, Spacebar, Arrow keys).
+
+### 🔍 Checking Zoom Accessibility
+- Test **browser zoom up to 200%** to ensure readability.
+- Avoid horizontal scrolling unless required.
+- Use **DevTools → Rendering → Emulate Vision Deficiencies** for testing.
+
+### 📱 React Native Accessibility
+- **Set accessibilityRole** for meaningful interaction.
+- **Use accessibilityLabel** for better screen reader support.
+- **Ensure dynamic updates use accessibilityLiveRegion**.
+
+For more details, check **our accessibility guide**. 🎯
+
+---
+
+## 🔄 Releasing New Versions
+Spor follows **semantic versioning (SemVer)**, and new versions are released using **Changesets**.
+
+### 📦 Steps to Release a New Version:
+1. **Run `npx changeset`** to document changes.
+2. **Select affected packages** and **choose a version bump** (major, minor, patch).
+3. **Commit the changeset** (this creates a file in `.changeset/`).
+4. **Merge the pull request**, triggering an automatic release.
+
+For more details, see **[our release guide](https://spor.vy.no/guides/releasing-new-versions)**.
+
+---
+
+## 🖼️ Adding New Icons
+To add new icons to Spor:
+1. **Get SVG assets** from a designer.
+2. **Follow the naming convention** (`icon-name-variant-size.svg`).
+3. **Place them in `packages/spor-icon/svg/`** under the correct category.
+4. **Run `npm run build`** to generate React components.
+5. **Create a changeset** and submit a pull request.
+
+For a step-by-step guide, see **[our icon contribution guide](https://spor.vy.no/guides/how-to-add-new-icons)**. 🎨
+
+---
+
+## 📚 Additional Resources
+📖 **[Spor Documentation](https://spor.vy.no/)** – Official documentation and guides.  
+📝 **[Figma Library](https://www.figma.com/design/Tmr2URVX2vNkyRLqKhNRQA/Vy_komponentbibliotek?node-id=0-1&p=f&t=0FRcZh8C5N0edYFm-0)** – Explore design components in Figma.  
+🐛 **[GitHub Issues](https://github.com/nsbno/spor/issues)** – Report bugs or find tasks to work on.  
+💬 **Slack (#spor channel)** – Discuss and collaborate with the team.
+
+---
+
+Spor is **built by everyone** at Vy—so jump in, contribute, and help shape our design system! 🚀
+

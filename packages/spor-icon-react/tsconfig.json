@@ -12,7 +12,7 @@
     "skipLibCheck": true,
     "declaration": true,
     "declarationDir": "./dist",
-    "types": ["react", "react-dom", "./dist/types"], // Include the path to your types
+    "types": ["react", "react-dom", "./dist/types"],
     "paths": {
       "@vygruppen/spor-icon-react": ["./dist/types.d.ts"]
     }

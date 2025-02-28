@@ -12,8 +12,7 @@
   "module": "./dist/tokens.mjs",
   "types": "./dist/tokens.d.ts",
   "scripts": {
-    "build": "ts-node scripts/build.ts",
-    "dev": "nodemon --watch 'tokens/**/*.{json,ts}' --exec 'ts-node scripts/build.ts'"
+    "build": "ts-node scripts/build.ts"
   },
   "files": [
     "dist",
@@ -26,7 +25,6 @@
     "@types/node": "^22.13.4",
     "@vygruppen/tsconfig": "workspace:*",
     "json-to-ts": "^1.7.0",
-    "nodemon": "^3.1.9",
     "patch-package": "^6.4.7",
     "prettier": "^2.4.1",
     "style-dictionary": "^3.9.2",

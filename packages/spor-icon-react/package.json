@@ -12,8 +12,8 @@
   },
   "types": "./dist/types.d.ts",
   "files": [
-    "dist",
-    "dist/metadata.json"
+    "svg",
+    "dist"
   ],
   "sideEffects": false,
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-icon-react",
@@ -25,10 +25,7 @@
   "scripts": {
     "clean": "rimraf tmp dist react",
     "prebuild": "pnpm clean",
-    "build": "pnpm build:step-1 && pnpm build:step-2",
-    "build:step-1": "tsx bin/generate.ts",
-    "build:step-2": "tsup",
-    "build:step-3": "rimraf tmp"
+    "build": "tsx bin/generate.ts && tsup"
   },
   "peerDependencies": {
     "react": "^18.2.0",

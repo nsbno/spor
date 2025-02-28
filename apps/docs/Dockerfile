@@ -1,7 +1,7 @@
-# base node image
+# Base node image
 FROM node:20-alpine AS base
 
-# set for base and all that inherit from it
+# Set environment variables
 ENV NODE_ENV=production
 
 # Install pnpm globally
@@ -10,36 +10,41 @@ RUN npm install -g pnpm
 # Install all node_modules, including dev dependencies
 FROM base as deps
 
-RUN mkdir /app
 WORKDIR /app
 
-ADD package.json ../../pnpm-lock.yaml ./
-# Install both devDependencies and dependencies 
-# (even when NODE_ENV=production)
+# Copy workspace-related files from the monorepo root
+COPY pnpm-workspace.yaml ./
+COPY package.json ./
+COPY pnpm-lock.yaml ./
+
+# Install all dependencies (including devDependencies)
 RUN pnpm install --frozen-lockfile
-	
 
 # Setup production node_modules
 FROM base AS production-deps
 
-RUN mkdir /app
 WORKDIR /app
 
-# Copy all node_modules to the production image
+# Copy only production dependencies
 COPY --from=deps /app/node_modules /app/node_modules
-ADD package.json ../../pnpm-lock.yaml ./
-# Delete all dev dependencies from the node_modules
+COPY package.json ./
+COPY pnpm-lock.yaml ./
+
+# Remove devDependencies
 RUN pnpm prune --prod
 
 # Build the app
 FROM base AS build
 
-RUN mkdir /app
 WORKDIR /app
 
+# Copy dependencies
 COPY --from=deps /app/node_modules /app/node_modules
 
-ADD . .
+# Copy source code
+COPY . .
+
+# Build the application
 RUN pnpm build
 
 # Finally, build the production image with minimal footprint
@@ -47,18 +52,17 @@ FROM base AS final
 
 ENV NODE_ENV=production
 
-RUN mkdir -p /app
 WORKDIR /app
 
 # Get some secrets
 RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \
     chmod +x /usr/local/bin/aws-env
 
-# Copy only the production deps to the final image
+# Copy production dependencies
 COPY --from=production-deps /app/node_modules /app/node_modules
-# Copy the built files as well
-COPY --from=build /app/build/server /app/build/server
-COPY --from=build /app/build/client /app/build/client
-ADD . .
 
+# Copy built files
+COPY --from=build /app/build /app/build
+
+# Start the application
 CMD ["pnpm", "run", "start"]

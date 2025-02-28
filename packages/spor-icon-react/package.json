@@ -1,10 +1,16 @@
 {
   "name": "@vygruppen/spor-icon-react",
   "version": "3.12.0",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./metadata.json": "./dist/metadata.json"
+  },
   "types": "./dist/types.d.ts",
-  "license": "MIT",
   "files": [
     "svg",
     "dist"
@@ -18,28 +24,31 @@
   },
   "scripts": {
     "clean": "rimraf tmp dist react",
-    "prebuild": "npm run clean",
-    "build": "npm run build:step-1 && npm run build:step-2",
-    "build:step-1": "ts-node bin/generate.ts",
-    "build:step-2": "tsup tmp/* --treeshake --format esm,cjs --external @vygruppen/spor-react",
-    "build:step-3": "rimraf tmp"
+    "prebuild": "pnpm clean",
+    "build": "tsx bin/generate.ts && tsup"
   },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@chakra-ui/react": "^2.8.2",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "@svgr/plugin-svgo": "^8.1.0",
     "@types/fs-extra": "^11.0.4",
-    "@vygruppen/spor-icon": "^3.2.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.0",
+    "@vygruppen/spor-icon": "workspace:*",
+    "@vygruppen/tsconfig": "workspace:*",
     "case": "^1.6.3",
     "fs-extra": "^11.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.2",
-    "tsup": "^7.2.0"
+    "tsup": "^8.3.6",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
   }
 }

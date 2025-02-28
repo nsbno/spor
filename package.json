@@ -2,17 +2,13 @@
   "name": "@vygruppen/spor-monorepo",
   "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
     "prebuild": "rimraf packages/*/dist --glob",
-    "build": "turbo run build --filter=@vygruppen/spor*-react --filter=@vygruppen/spor*-react-native",
+    "build": "turbo run build",
     "test": "turbo run test --parallel",
     "dev": "turbo run dev --no-cache --parallel --filter=@vygruppen/spor*-react --filter=@vygruppen/docs --filter=@vygruppen/studio",
     "postinstall": "patch-package",
-    "prerelease": "npm run build",
+    "prerelease": "pnpm build",
     "release": "turbo run build && changeset publish",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\""
@@ -22,12 +18,11 @@
     "patch-package": "^8.0.0",
     "prettier": "^3.3.1",
     "rimraf": "^5.0.7",
-    "turbo": "^1.13.4"
+    "turbo": "^2.4.2"
   },
   "engines": {
-    "npm": ">=10.0.0",
     "node": ">=18.0.0"
   },
-  "packageManager": "npm@10.0.0",
-  "prettier": {}
+  "prettier": {},
+  "packageManager": "pnpm@10.4.1"
 }

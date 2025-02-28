@@ -1,5 +1,4 @@
 import {
-  As,
   Box,
   BoxProps,
   forwardRef,
@@ -16,6 +15,7 @@ import {
 import React from "react";
 import { LineIcon } from "./LineIcon";
 import type { TagProps } from "./types";
+import { As } from "@chakra-ui/system";
 
 export type TravelTagProps = TagProps &
   BoxProps & {

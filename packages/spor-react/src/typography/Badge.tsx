@@ -1,9 +1,9 @@
 import {
-  As,
   Badge as ChakraBadge,
   BadgeProps as ChakraBadgeProps,
   forwardRef,
 } from "@chakra-ui/react";
+import { As } from "@chakra-ui/system";
 import React from "react";
 
 export type BadgeProps = Omit<

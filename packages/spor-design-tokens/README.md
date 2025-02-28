@@ -125,9 +125,9 @@ You can view the documentation at [packages.elm-lang.org](https://package.elm-la
 
 First off - thank you :tada: Contributing to our design tokens is what keeps them alive.
 
-To get started, clone the repository, change into your new directory, and run `npm install` to download all the files required.
+To get started, clone the repository, change into your new directory, and run `pnpm install` to download all the files required.
 
-To generate the tokens, run `npm run build`. They will show up in the `build/` directory. Verify that all tokens look good before creating a pull request.
+To generate the tokens, run `pnpm build`. They will show up in the `build/` directory. Verify that all tokens look good before creating a pull request.
 
 We use [Style Dictionary](https://amzn.github.io/style-dictionary) to generate consumable design tokens. You can find all our tokens in the `tokens/` folder, in
 discrete `.json` files.

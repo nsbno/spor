@@ -13,7 +13,7 @@ FROM base as deps
 RUN mkdir /app
 WORKDIR /app
 
-ADD package.json pnpm-lock.yaml ./
+ADD package.json ../pnpm-lock.yaml ./
 # Install both devDependencies and dependencies 
 # (even when NODE_ENV=production)
 RUN pnpm install --frozen-lockfile
@@ -26,7 +26,7 @@ WORKDIR /app
 
 # Copy all node_modules to the production image
 COPY --from=deps /app/node_modules /app/node_modules
-ADD package.json pnpm-lock.yaml ./
+ADD package.json ../pnpm-lock.yaml ./
 # Delete all dev dependencies from the node_modules
 RUN pnpm prune --prod
 

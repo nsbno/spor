@@ -4,7 +4,7 @@ import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const switchSlotRecipe = defineSlotRecipe({
-  slots: ["root", "track", "thumb", "control"],
+  slots: ["root", "track", "thumb", "control", "label"],
   className: "spor-switch",
   base: {
     root: {
@@ -37,6 +37,17 @@ export const switchSlotRecipe = defineSlotRecipe({
       },
       _checked: {
         translate: "var(--switch-x) 0",
+        backgroundColor: "white", //Do this in a better way?
+      },
+    },
+    label: {
+      display: "block",
+      textAlign: "start",
+      marginEnd: 3,
+      opacity: 1,
+      bottom: 4,
+      _disabled: {
+        opacity: "0.5",
       },
     },
     control: {
@@ -78,7 +89,6 @@ export const switchSlotRecipe = defineSlotRecipe({
           ...coreBackground("disabled"),
           ...coreBorder("disabled"),
         },
-        backgroundColor: "green",
       },
       _invalid: {
         outline: "2px solid",
@@ -86,38 +96,6 @@ export const switchSlotRecipe = defineSlotRecipe({
         outlineOffset: "2px",
       },
     },
-
-    /*     track: {
-      transitionProperty: "common",
-      transitionDuration: "fast",
-      ...coreBorder("default"),
-      ...focusVisibleStyles(),
-      ...coreBackground("default"),
-      backgroundColor: "blue",
-
-      _hover: {
-        ...coreBorder("hover"),
-      },
-      _checked: {
-        ...brandBackground("default"),
-        outlineColor: "transparent",
-
-        _hover: {
-          ...coreBackground("default"),
-          ...brandBackground("hover"),
-        },
-      },
-      _disabled: {
-        pointerEvents: "none",
-        ...coreBackground("default"),
-        ...coreBorder("disabled"),
-        _checked: {
-          ...coreBackground("disabled"),
-          ...coreBorder("disabled"),
-        },
-        backgroundColor: "green",
-      },
-    }, */
   },
   variants: {
     size: {

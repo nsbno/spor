@@ -4,8 +4,8 @@ FROM node:20-alpine AS base
 # set for base and all that inherit from it
 ENV NODE_ENV=production
 
-# Enable corepack and prepare pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Install pnpm globally
+RUN npm install -g pnpm
 
 # Install all node_modules, including dev dependencies
 FROM base as deps

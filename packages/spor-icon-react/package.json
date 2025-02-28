@@ -8,7 +8,7 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./metadata.json": "./dist/metadata.json"
+    "./dist/metadata.json": "./dist/metadata.json"
   },
   "types": "./dist/types.d.ts",
   "files": [

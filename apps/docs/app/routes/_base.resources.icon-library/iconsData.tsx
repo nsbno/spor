@@ -1,5 +1,5 @@
 import * as icons from "@vygruppen/spor-icon-react";
-import iconsMetadata from "@vygruppen/spor-icon-react/metadata.json";
+import iconsMetadata from "@vygruppen/spor-icon-react/dist/metadata.json";
 
 type IconKey = keyof typeof icons;
 type OriginalIconMetadataImportType = Record<

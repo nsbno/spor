@@ -2,7 +2,6 @@
 import {
   Box,
   ListItem,
-  ListRoot,
   ListRootProps,
   RecipeVariantProps,
   useSlotRecipe,
@@ -242,8 +241,8 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
   const titleColor = useColorModeValue("darkGrey", "white");
 
   return (
-    <ListRoot>
-      <ListItem {...itemProps}>
+    <List>
+      <ListItem {...itemProps} listStyleType={"none"}>
         {section.rendered && (
           <Box
             fontSize="mobile.xs"
@@ -258,14 +257,14 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
             {section.rendered}
           </Box>
         )}
-        <ListRoot {...groupProps} padding={0} listStyleType="none">
+        <List {...groupProps} padding={0} listStyleType="none">
           {Array.from(state.collection.getChildren(section.key)).map(
             (item: any) => (
-              <ListItem key={item.key} />
+              <Option key={item.key} item={item} state={state} />
             ),
           )}
-        </ListRoot>
+        </List>
       </ListItem>
-    </ListRoot>
+    </List>
   );
 }

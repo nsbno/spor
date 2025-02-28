@@ -163,3 +163,10 @@ export const radioAnatomy = createAnatomy("radio").parts(
   "itemText",
   "label",
 );
+
+export const listBoxAnatomy = createAnatomy("listbox").parts(
+  "root",
+  "item",
+  "label",
+  "description",
+);

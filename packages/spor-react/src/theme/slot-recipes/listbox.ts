@@ -1,12 +1,13 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { coreBorder } from "../utils/core-utils";
-import { ghostBackground, ghostText } from "../utils/ghost-utils";
-import { surface } from "../utils/surface-utils";
-import { outlineBorder } from "../utils/outline-utils";
 import { floatingBorder } from "../utils/floating-utils";
+import { ghostBackground, ghostText } from "../utils/ghost-utils";
+import { outlineBorder } from "../utils/outline-utils";
+import { surface } from "../utils/surface-utils";
+import { listBoxAnatomy } from "./anatomy";
 
 export const listBoxSlotRecipe = defineSlotRecipe({
-  slots: ["root", "item", "label", "description"],
+  slots: listBoxAnatomy.keys(),
   className: "spor-listbox",
   base: {
     root: {

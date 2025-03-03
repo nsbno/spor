@@ -31,6 +31,8 @@ WORKDIR /app
 # Copy dependencies from deps stage
 COPY --from=deps /app/node_modules /app/node_modules
 COPY --from=deps /app/pnpm-lock.yaml /app/pnpm-lock.yaml
+COPY --from=deps /app/package.json /app/package.json
+COPY --from=deps /app/apps/docs/package.json /app/apps/docs/package.json
 
 # Copy source code
 COPY apps/docs ./apps/docs

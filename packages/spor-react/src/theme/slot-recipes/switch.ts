@@ -4,7 +4,7 @@ import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const switchSlotRecipe = defineSlotRecipe({
-  slots: ["root", "track", "thumb", "control", "label"],
+  slots: ["root", "thumb", "control", "label"],
   className: "spor-switch",
   base: {
     root: {
@@ -23,7 +23,7 @@ export const switchSlotRecipe = defineSlotRecipe({
       position: "absolute",
       transitionProperty: "translate",
       transitionDuration: "fast",
-      borderRadius: "50%",
+      borderRadius: "2xl",
       display: "flex",
       flexShrink: 0,
       alignItems: "center",
@@ -37,9 +37,10 @@ export const switchSlotRecipe = defineSlotRecipe({
       },
       _checked: {
         translate: "var(--switch-x) 0",
-        backgroundColor: "white", //Do this in a better way?
+        backgroundColor: "brand.icon",
       },
     },
+
     label: {
       display: "block",
       textAlign: "start",
@@ -52,13 +53,13 @@ export const switchSlotRecipe = defineSlotRecipe({
     },
     control: {
       boxSizing: "content-box",
-      padding: "3px",
+      padding: 0.5,
       display: "inline-flex",
-      gap: "0.5rem",
+      gap: 1.5,
       flexShrink: 0,
       justifyContent: "flex-start",
       cursor: "switch",
-      borderRadius: "30px",
+      borderRadius: "xl",
       position: "relative",
       width: "var(--switch-width)",
       height: "var(--switch-height)",

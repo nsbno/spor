@@ -65,24 +65,16 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     const styles = recipe({ size });
 
     return (
-      <Field>
+      <Field style={{ width: "auto" }}>
         <ChakraSwitch.Root ref={rootRef} {...rest} css={styles.root}>
           <ChakraSwitch.Label css={styles.label}>{label}</ChakraSwitch.Label>
-
-          <ChakraSwitch.HiddenInput ref={ref} {...inputProps} />
+          <ChakraSwitch.HiddenInput
+            ref={ref}
+            {...inputProps}
+            aria-label="test"
+          />
           <ChakraSwitch.Control css={styles.control}>
-            <ChakraSwitch.Thumb>
-              {thumbLabel && (
-                <ChakraSwitch.ThumbIndicator fallback={thumbLabel?.off}>
-                  {thumbLabel?.on}
-                </ChakraSwitch.ThumbIndicator>
-              )}
-            </ChakraSwitch.Thumb>
-            {trackLabel && (
-              <ChakraSwitch.Indicator fallback={trackLabel.off}>
-                {trackLabel.on}
-              </ChakraSwitch.Indicator>
-            )}
+            <ChakraSwitch.Thumb />
           </ChakraSwitch.Control>
         </ChakraSwitch.Root>
       </Field>

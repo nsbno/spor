@@ -42,6 +42,11 @@ COPY --from=deps /app/node_modules /app/node_modules
 # Copy source code
 COPY apps/docs ./apps/docs
 
+
+# Install dependencies again to ensure node_modules is present
+RUN pnpm install --frozen-lockfile
+
+
 # Build the application
 RUN pnpm --filter @vygruppen/docs... build
 

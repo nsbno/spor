@@ -12,13 +12,15 @@ FROM base as deps
 
 WORKDIR /app
 
+# Set NODE_ENV to development to install dev dependencies
+ENV NODE_ENV=development
+
 # Copy workspace-related files from the monorepo root
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/docs/package.json apps/docs/
 
 # Install all dependencies (including devDependencies)
 RUN pnpm i --frozen-lockfile --prod=false
-
 
 # Setup production node_modules
 FROM base AS production-deps

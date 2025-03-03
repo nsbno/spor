@@ -9,6 +9,7 @@ RUN npm install -g pnpm
 
 # Install all dependencies, including devDependencies
 FROM base as deps
+RUN mkdir /app
 WORKDIR /app
 
 # Set NODE_ENV to development to install dev dependencies
@@ -19,10 +20,12 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/docs/package.json apps/docs/
 
 # Install all dependencies with caching
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 
 # Build the application
 FROM base AS build
+
+RUN mkdir /app
 WORKDIR /app
 
 # Copy dependencies from deps stage
@@ -32,11 +35,14 @@ COPY --from=deps /app/pnpm-lock.yaml /app/pnpm-lock.yaml
 # Copy source code
 COPY apps/docs ./apps/docs
 
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+
 # Build the application
 RUN pnpm --filter @vygruppen/docs... build
 
 # Production image with minimal footprint
 FROM base AS final
+RUN mkdir /app
 WORKDIR /app
 
 # Set environment variables for production

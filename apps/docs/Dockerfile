@@ -43,7 +43,7 @@ COPY --from=deps /app/node_modules /app/node_modules
 COPY apps/docs ./apps/docs
 
 # Build the application
-RUN pnpm --filter apps/docs... build
+RUN pnpm --filter @vygruppen/docs... build
 
 # Finally, build the production image with minimal footprint
 FROM base AS final
@@ -60,4 +60,4 @@ COPY --from=build /app/apps/docs/build /app/build
 COPY apps/docs .
     
 # Start the application
-CMD ["pnpm", "run", "start", "--filter", "apps/docs"]
+CMD ["pnpm", "run", "start", "--filter", "@vygruppen/docs"]

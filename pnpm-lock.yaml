@@ -213,6 +213,10 @@ importers:
         version: 8.10.0(eslint@8.57.1)
 
   packages/spor-design-tokens:
+    dependencies:
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@22.13.4)(typescript@4.9.5)
     devDependencies:
       '@types/node':
         specifier: ^22.13.4
@@ -232,9 +236,6 @@ importers:
       style-dictionary:
         specifier: ^3.9.2
         version: 3.9.2
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@22.13.4)(typescript@4.9.5)
       tsup:
         specifier: ^8.3.6
         version: 8.3.6(@microsoft/api-extractor@7.48.1(@types/node@22.13.4))(postcss@8.5.2)(tsx@4.19.2)(typescript@4.9.5)(yaml@2.7.0)

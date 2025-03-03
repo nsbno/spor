@@ -59,7 +59,7 @@ jobs:
             fi
             aws ecr get-login-password --region eu-west-1 \
               | docker login --username AWS --password-stdin "$ECR_ENDPOINT"
-            docker build -t ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> -f Dockerfile .
+            docker build -t ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> -f apps/docs/Dockerfile .
             docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
             docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
             docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:<< pipeline.git.branch >>-branch"

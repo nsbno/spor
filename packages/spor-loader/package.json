@@ -19,8 +19,10 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
+  "dependencies": {
+    "tsup": "^7.2.0"
+  },
   "devDependencies": {
-    "tsup": "^7.2.0",
     "@vygruppen/tsconfig": "workspace:*"
   }
 }

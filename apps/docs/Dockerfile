@@ -28,6 +28,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules /app/node_modules
 COPY apps/docs/package.json ./
 
+
 # Build the app
 FROM base AS build
 WORKDIR /app
@@ -39,7 +40,6 @@ COPY --from=deps /app/node_modules /app/node_modules
 COPY apps/docs ./apps/docs
 
 ADD . .
-
 
 # Build the application
 RUN pnpm --filter @vygruppen/docs... build

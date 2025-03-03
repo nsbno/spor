@@ -188,7 +188,6 @@ function Option({ item, state }: OptionProps) {
       { passive: false, once: true },
     );
   }, []);
-  console.log("Option", item);
   return (
     <OptionContext.Provider value={{ labelProps, descriptionProps }}>
       <ListItem
@@ -204,6 +203,9 @@ function Option({ item, state }: OptionProps) {
         _hover={{
           backgroundColor: "accent.surface.hover",
           color: "accent.text",
+        }}
+        _focus={{
+          borderColor: "accent.surface.hover",
         }}
       >
         {item.rendered}

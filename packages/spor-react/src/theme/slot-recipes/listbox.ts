@@ -40,6 +40,10 @@ export const listBoxSlotRecipe = defineSlotRecipe({
       _selected: {
         ...ghostBackground("active"),
       },
+      _focus: {
+        ...outlineBorder("focus"),
+        borderColor: "red",
+      },
     },
     label: {},
     description: {

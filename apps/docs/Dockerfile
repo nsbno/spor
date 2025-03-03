@@ -66,6 +66,6 @@ ADD . .
 COPY apps/docs .
     
 # Start the application
-CMD ["pnpm", "123", "456", "--failter", "@vygruppen/docs"]
+CMD ["pnpm", "--filter", "@vygruppen/docs", "start"]
 
 

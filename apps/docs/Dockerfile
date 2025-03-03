@@ -30,7 +30,7 @@ COPY apps/docs/package.json ./
 
 
 # Build the app
-FROM base AS build
+FROM deps AS build  # Use `deps` stage here to ensure dev dependencies are available
 WORKDIR /app
 
 # Copy dependencies

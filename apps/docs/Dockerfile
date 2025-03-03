@@ -42,6 +42,9 @@ COPY --from=deps /app/node_modules /app/node_modules
 # Copy source code
 COPY apps/docs ./apps/docs
 
+ADD . .
+
+
 
 # Install dependencies again to ensure node_modules is present
 

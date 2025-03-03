@@ -22,29 +22,24 @@ export type SwitchProps = Exclude<
     thumbLabel?: { on: React.ReactNode; off: React.ReactNode };
     size?: ConditionalValue<"sm" | "md" | "lg">;
     label?: React.ReactNode;
+    onCheckedChange?: (checked: boolean) => void;
   };
-
-//Fix documentation when component is done!!
 
 /**
  * A switch lets you toggle between on and off, yes and no. It's an alternative to a checkbox.
  *
- * You can use a Switch component inside of a `FormControl` with an associated `FormLabel`:
+ * You can set a label inside of the Switch component by defining the `label` prop.
  *
  * ```tsx
- * <FormControl>
- *   <FormLabel>Enable alerts?</FormLabel>
- *   <Switch />
- * </FormControl>
+ * <Switch label="This is a label"/>
  * ```
  *
  * Switches are available in three different sizes - `sm`, `md` and `lg`.
  *
  * ```tsx
- * <FormControl>
- *   <FormLabel>Enable alerts?</FormLabel>
+ *
  *   <Switch size="sm" />
- * </FormControl>
+ *
  * ```
  */
 
@@ -58,6 +53,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       thumbLabel,
       size = "md",
       label,
+      onCheckedChange,
       ...rest
     } = props;
 
@@ -66,9 +62,18 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 
     return (
       <Field style={{ width: "auto" }}>
-        <ChakraSwitch.Root ref={rootRef} {...rest} css={styles.root}>
+        <ChakraSwitch.Root
+          ref={rootRef}
+          {...rest}
+          checked={props.checked}
+          onCheckedChange={(args) => {
+            onCheckedChange?.(args);
+            console.log(args);
+          }}
+          css={styles.root}
+        >
           <ChakraSwitch.Label css={styles.label}>{label}</ChakraSwitch.Label>
-          <ChakraSwitch.HiddenInput ref={ref} {...inputProps} />
+          <ChakraSwitch.HiddenInput />
           <ChakraSwitch.Control css={styles.control}>
             <ChakraSwitch.Thumb />
           </ChakraSwitch.Control>

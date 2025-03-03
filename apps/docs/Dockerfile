@@ -52,6 +52,11 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 # Build the application
 RUN pnpm --filter @vygruppen/docs... build
 
+RUN ls /app/build
+RUN ls /app
+RUN ls /app/docs
+
+
 # Finally, build the production image with minimal footprint
 FROM base AS final
 

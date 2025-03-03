@@ -39,7 +39,7 @@ jobs:
         description: "The ECR endpoint to use (note: the CircleCI project environment variable ECR_ENDPOINT takes higher precedence than this parameter)."
         default: ""
     docker:
-      - image: 'vydev/circleci-ecr:latest'
+      - image: "vydev/circleci-ecr:latest"
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -100,7 +100,7 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - test_docker
 
       - upload-terraform-artifacts:
           context:
@@ -109,7 +109,7 @@ workflows:
             - build-and-push-docker
           filters:
             branches:
-              only: main
+              only: test_docker
 
       - deployment/trigger-deployment:
           context:
@@ -119,4 +119,4 @@ workflows:
             - build-and-push-docker
           filters:
             branches:
-              only: main
+              only: test_docker

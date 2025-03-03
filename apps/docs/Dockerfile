@@ -28,10 +28,6 @@ WORKDIR /app
 COPY --from=deps /app/node_modules /app/node_modules
 COPY apps/docs/package.json ./
 
-
-# Remove devDependencies
-RUN pnpm prune --prod
-
 # Build the app
 FROM base AS build
 WORKDIR /app
@@ -46,7 +42,6 @@ ADD . .
 
 
 
-# Install dependencies again to ensure node_modules is present
 
 # Build the application
 RUN pnpm --filter @vygruppen/docs... build

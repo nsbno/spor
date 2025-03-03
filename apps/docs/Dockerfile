@@ -13,9 +13,9 @@ FROM base as deps
 WORKDIR /app
 
 # Copy workspace-related files from the monorepo root
-COPY pnpm-workspace.yaml ./
 COPY package.json ./
 COPY pnpm-lock.yaml ./
+COPY pnpm-workspace.yaml ./
 
 # Install all dependencies (including devDependencies)
 RUN pnpm install --frozen-lockfile
@@ -29,6 +29,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules /app/node_modules
 COPY package.json ./
 COPY pnpm-lock.yaml ./
+COPY pnpm-workspace.yaml ./
 
 # Remove devDependencies
 RUN pnpm prune --prod

@@ -17,7 +17,8 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/docs/package.json apps/docs/
 
 # Install all dependencies (including devDependencies)
-RUN pnpm install --frozen-lockfile
+RUN pnpm i --frozen-lockfile --prod=false
+
 
 # Setup production node_modules
 FROM base AS production-deps
@@ -30,7 +31,7 @@ COPY apps/docs/package.json ./
 
 
 # Build the app
-FROM deps AS build  # Use `deps` stage here to ensure dev dependencies are available
+FROM base AS build
 WORKDIR /app
 
 # Copy dependencies

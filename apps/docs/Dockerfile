@@ -41,8 +41,6 @@ COPY apps/docs ./apps/docs
 ADD . .
 
 
-
-
 # Build the application
 RUN pnpm --filter @vygruppen/docs... build
 

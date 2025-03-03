@@ -19,7 +19,7 @@
     "prebuild": "pnpm clean",
     "build": "mkdir dist && bestzip dist/spor-icons.zip svg/*"
   },
-  "devDependencies": {
+  "dependencies": {
     "bestzip": "^2.2.1"
   }
 }

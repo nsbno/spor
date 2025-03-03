@@ -69,4 +69,3 @@ COPY apps/docs .
 CMD ["pnpm", "run", "start", "--filter", "@vygruppen/docs"]
 
 
-pnpm --filter @vygruppen/docs start

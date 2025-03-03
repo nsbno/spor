@@ -64,12 +64,11 @@ WORKDIR /app
 RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \
     chmod +x /usr/local/bin/aws-env
 
-    COPY --from=production-deps /apps/docs/app/node_modules /apps/docs/app/node_modules
-    # Copy the built files as well
-    COPY --from=build /apps/docs/app/build/server /apps/docs/appbuild/server
-    COPY --from=build /apps/docs/app/build/client /apps/docs/app/build/client
-    ADD . .
-    
+# Corrected paths
+COPY --from=production-deps /app/node_modules /app/node_modules
+COPY --from=build /app/apps/docs/build/server /app/apps/docs/build/server
+COPY --from=build /app/apps/docs/build/client /app/apps/docs/build/client
+ADD . .
     
 # Start the application
 CMD ["pnpm", "--filter", "@vygruppen/docs", "start"]

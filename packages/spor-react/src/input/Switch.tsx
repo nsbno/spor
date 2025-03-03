@@ -68,11 +68,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       <Field style={{ width: "auto" }}>
         <ChakraSwitch.Root ref={rootRef} {...rest} css={styles.root}>
           <ChakraSwitch.Label css={styles.label}>{label}</ChakraSwitch.Label>
-          <ChakraSwitch.HiddenInput
-            ref={ref}
-            {...inputProps}
-            aria-label="test"
-          />
+          <ChakraSwitch.HiddenInput ref={ref} {...inputProps} />
           <ChakraSwitch.Control css={styles.control}>
             <ChakraSwitch.Thumb />
           </ChakraSwitch.Control>

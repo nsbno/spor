@@ -52,7 +52,6 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 # Build the application
 RUN pnpm --filter @vygruppen/docs... build
 
-RUN ls /app/build
 RUN ls /app
 RUN ls /app/docs
 
@@ -70,7 +69,7 @@ RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases
     chmod +x /usr/local/bin/aws-env
 
 # Corrected paths
-COPY --from=production-deps /app/node_modules /app/node_modules
+COPY --from=     /app/node_modules /app/node_modules
 COPY --from=build /app/build/server /app/build/server
 COPY --from=build /app/build/client /app/build/client
 ADD . .

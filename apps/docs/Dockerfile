@@ -65,9 +65,9 @@ RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases
     chmod +x /usr/local/bin/aws-env
 
 # Corrected paths
-COPY --from=production-deps /app/node_modules /app/node_modules
-COPY --from=build /app/apps/docs/build/server /app/apps/docs/build/server
-COPY --from=build /app/apps/docs/build/client /app/apps/docs/build/client
+COPY --from=production-deps /app/apps/docs/node_modules /app/node_modules
+COPY --from=build /app/apps/docs/build/server /app/build/server
+COPY --from=build /app/apps/docs/build/client /app/build/client
 ADD . .
     
 # Start the application

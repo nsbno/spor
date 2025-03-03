@@ -43,12 +43,12 @@ jobs:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-    working_directory: /tmp/workspace/apps/docs
+    working_directory: /tmp/workspace
     steps:
       - setup_remote_docker:
           version: docker24
       - checkout:
-          path: ../../
+          path: ./
       - run:
           name: "Build Docker image"
           command: |

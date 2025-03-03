@@ -44,8 +44,6 @@ COPY apps/docs ./apps/docs
 
 
 # Install dependencies again to ensure node_modules is present
-RUN pnpm install --frozen-lockfile
-
 
 # Build the application
 RUN pnpm --filter @vygruppen/docs... build
@@ -62,6 +60,8 @@ RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases
     chmod +x /usr/local/bin/aws-env
 
 COPY --from=build /app/apps/docs/build /app/build
+
+ADD . .
 COPY apps/docs .
     
 # Start the application

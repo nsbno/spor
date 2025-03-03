@@ -272,6 +272,10 @@ importers:
         version: 2.8.0
 
   packages/spor-icon-react:
+    dependencies:
+      tsup:
+        specifier: ^8.3.6
+        version: 8.3.6(@microsoft/api-extractor@7.48.1(@types/node@22.13.4))(postcss@8.5.2)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
     devDependencies:
       '@chakra-ui/react':
         specifier: ^2.8.2
@@ -318,9 +322,6 @@ importers:
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@22.13.4)(typescript@5.7.3)
-      tsup:
-        specifier: ^8.3.6
-        version: 8.3.6(@microsoft/api-extractor@7.48.1(@types/node@22.13.4))(postcss@8.5.2)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       tsx:
         specifier: ^4.19.2
         version: 4.19.2
@@ -372,9 +373,6 @@ importers:
       tsm:
         specifier: ^2.3.0
         version: 2.3.0
-      tsup:
-        specifier: ^7.2.0
-        version: 7.3.0(postcss@8.5.2)(ts-node@10.9.2(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)
 
   packages/spor-loader:
     dependencies:
@@ -451,6 +449,9 @@ importers:
       react-swipeable:
         specifier: ^7.0.1
         version: 7.0.2(react@18.3.1)
+      tsup:
+        specifier: ^7.2.0
+        version: 7.3.0(postcss@8.5.2)(ts-node@10.9.2(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)
     devDependencies:
       '@react-types/datepicker':
         specifier: ^3.10.0
@@ -482,9 +483,6 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
-      tsup:
-        specifier: ^7.2.0
-        version: 7.3.0(postcss@8.5.2)(ts-node@10.9.2(@types/node@22.13.4)(typescript@5.7.3))(typescript@5.7.3)
       typescript:
         specifier: ^5.7.3
         version: 5.7.3

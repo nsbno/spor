@@ -1,65 +1,53 @@
-# base node image
+# Base node image
 FROM node:20-alpine AS base
 
-# set for base and all that inherit from it
+# Set environment variables
 ENV NODE_ENV=production
 
-# Enable corepack and prepare pnpm
+# Install pnpm globally
 RUN npm install -g pnpm
 
-# Install all node_modules, including dev dependencies
+# Install all dependencies, including devDependencies
 FROM base as deps
-
 WORKDIR /app
 
+# Set NODE_ENV to development to install dev dependencies
+ENV NODE_ENV=development
+
+# Copy only necessary files for dependency installation
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/docs/package.json apps/docs/
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
-
-# Setup production node_modules
-FROM base AS production-deps
-
-RUN mkdir /app
-WORKDIR /app
-
-# Copy only production dependencies
-COPY --from=deps /app/node_modules /app/node_modules
-COPY apps/docs/package.json ./
-
-# Build the app
-FROM base AS build
-
-RUN mkdir /app
-WORKDIR /app
-
-COPY --from=deps /app/node_modules /app/node_modules
-
-ADD . .
-
+# Install all dependencies with caching
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
+# Build the application
+FROM base AS build
+WORKDIR /app
+
+# Copy dependencies from deps stage
+COPY --from=deps /app/node_modules /app/node_modules
+COPY --from=deps /app/pnpm-lock.yaml /app/pnpm-lock.yaml
+
+# Copy source code
+COPY apps/docs ./apps/docs
+
+# Build the application
 RUN pnpm --filter @vygruppen/docs... build
 
-# Finally, build the production image with minimal footprint
+# Production image with minimal footprint
 FROM base AS final
-
-ENV NODE_ENV=production
-
-RUN mkdir -p /app
 WORKDIR /app
+
+# Set environment variables for production
+ENV NODE_ENV=production
 
 # Get some secrets
 RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \
     chmod +x /usr/local/bin/aws-env
 
-# Copy only the production deps to the final image
-COPY --from=production-deps /app/node_modules /app/node_modules
-# Copy the built files as well
-COPY --from=build /app/build/server /app/build/server
-COPY --from=build /app/build/client /app/build/client
-ADD . .
-COPY apps/docs .
+# Copy built application
+COPY --from=build /app/apps/docs/build /app/build
 
-
+# Start the application
 CMD ["pnpm", "--filter", "@vygruppen/docs", "start"]

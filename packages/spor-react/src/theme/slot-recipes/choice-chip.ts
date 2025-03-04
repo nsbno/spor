@@ -4,31 +4,41 @@ import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { brandBackground } from "../utils/brand-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { choiceChipAnatomy } from "./anatomy";
 
 export const choiceChipSlotRecipe = defineSlotRecipe({
-  slots: ["root", "icon", "label"],
+  slots: choiceChipAnatomy.keys(),
   className: "spor-choice-chip",
   base: {
     root: {
       display: "inline-flex",
       alignItems: "center",
+      boxAlign: "center",
       fontSize: "xs",
       cursor: "pointer",
       transitionProperty: "all",
       borderRadius: "xl",
       transitionDuration: "fast",
+      height: 6,
+      paddingInlineStart: "2",
+      paddingInlineEnd: "2",
+      outline: "1px solid",
+      outlineColor: "base.outline",
       _checked: {
         outlineColor: "transparent",
-        ...accentText("selected"),
-        ...accentBackground("selected"),
+        backgroundColor: "red",
+        borderRadius: "sm",
+        /*       ...accentText("selected"),
+        ...accentBackground("selected"), */
         _hover: {
           ...brandBackground("hover"),
           ...coreText("selected"),
           outlineColor: "transparent",
         },
         _active: {
-          ...coreText("selected"),
-          ...brandBackground("active"),
+          backgroundColor: "red",
+          /* ...coreText("selected"),
+          ...brandBackground("active"), */
         },
       },
       _disabled: {
@@ -55,8 +65,23 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
       },
       "input:focus-visible + &": focusVisibleStyles()._focusVisible,
     },
-    icon: {},
+    icon: {
+      //Ikonet
+    },
+
+    input: {
+      border: "none",
+      clip: "rect(0 0 0 0)",
+      height: "1px",
+      width: "1px",
+      margin: "-1px",
+      padding: 0,
+      overflow: "hidden",
+      whiteSpace: "nowrap",
+      position: "absolute",
+    },
     label: {
+      //Teksten
       marginLeft: 1,
     },
   },
@@ -64,15 +89,24 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         root: {
-          ...coreBorder("default"),
+          /*           backgroundColor: "purple",
+           */ ...coreBorder("default"),
           ...coreText("default"),
+
           _hover: {
-            ...coreText("default"),
-            ...coreBorder("hover"),
-          },
-          _active: {
-            ...coreBackground("active"),
-            ...coreBorder("default"),
+            backgroundColor: "yellow",
+
+            /*  ...coreText("default"),
+            ...coreBorder("hover"), */
+            _checked: {
+              backgroundColor: "red",
+              borderRadius: "sm",
+            },
+            _active: {
+              backgroundColor: "blue",
+              /*  ...coreBackground("active"),
+            ...coreBorder("default"), */
+            },
           },
         },
       },
@@ -90,8 +124,10 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
           },
         },
         _active: {
-          ...accentText("default"),
-          ...accentBackground("active"),
+          backgroundColor: "yellow",
+
+          /*  ...accentText("default"),
+          ...accentBackground("active"), */
         },
       },
       floating: {
@@ -107,9 +143,11 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
             boxShadow: "md",
           },
           _active: {
-            ...floatingBackground("active"),
+            backgroundColor: "pink",
+
+            /*  ...floatingBackground("active"),
             ...floatingBorder("active"),
-            ...coreText("default"),
+            ...coreText("default"), */
           },
         },
       },
@@ -153,8 +191,8 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
       },
     },
   },
-  defaultVariants: {
+  /*  defaultVariants: {
     variant: "core",
     size: "sm",
-  },
+  }, */
 });

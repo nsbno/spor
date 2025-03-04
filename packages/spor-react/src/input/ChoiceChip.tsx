@@ -77,13 +77,10 @@ export const ChoiceChip = forwardRef(
     ref,
   ) => {
     const { getRootProps, getLabelProps } = useCheckbox(props);
-    const recipe = useSlotRecipe({ key: "choice-chip" });
+    const recipe = useSlotRecipe({ key: "choiceChip" });
     const styles = recipe({
       size,
-      chipType,
       variant,
-      icon,
-      hasLabel: chipType !== "icon",
     });
 
     const id = `choice-chip-${useId()}`;
@@ -98,15 +95,17 @@ export const ChoiceChip = forwardRef(
           /* {...getInputProps({}, ref)} */
           id={id}
           disabled={disabled}
+          css={styles.input}
         />
         <chakra.div
           {...getLabelProps()}
           css={styles.root}
-          /* data-checked={dataAttr(state.isChecked)}
+          /* data-checked={checked}
+            data-checked={dataAttr(state.checked)}
           data-hover={dataAttr(state.isHovered)}
           data-focus={dataAttr(state.isFocused)}
           data-active={dataAttr(state.isActive)}
-          data-disabled={dataAttr(state.isDisabled)} */
+          data-disabled={dataAttr(state.isDisabled)}  */
         >
           {icon && (
             <chakra.span css={styles.icon}>

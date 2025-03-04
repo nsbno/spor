@@ -19,13 +19,13 @@ COPY apps/docs/package.json apps/docs/package.json
 
 # Install all dependencies (including devDependencies)
 ENV NODE_ENV=development
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile --prod=false
 ENV NODE_ENV=production
 
 COPY . .
 
-RUN pnpm  build
 
+RUN pnpm  --filter @vygruppen/docs... build
 # Get some secrets
 RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \
     chmod +x /usr/local/bin/aws-env

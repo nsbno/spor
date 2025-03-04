@@ -21,6 +21,8 @@ COPY apps/docs/package.json apps/docs/package.json
 # Install all dependencies (including devDependencies)
 RUN pnpm i --frozen-lockfile --prod=false
 
+COPY . .
+
 RUN pnpm  build
 
 # Get some secrets

@@ -100,7 +100,7 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
         borderBottomRadius="sm"
         paddingTop={2}
         zIndex={"dropdown"}
-        backgroundColor="white"
+        backgroundColor="core.surface"
       >
         {state.collection.size === 0 && props.emptyContent}
         {Array.from(state.collection).map((item) =>

@@ -97,7 +97,6 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
     const inputWidth = useInputWidth(inputRef);
 
     const state = useComboBoxState({
-      allowsEmptyCollection: Boolean(emptyContent),
       defaultFilter: contains,
       shouldCloseOnBlur: true,
       ...props,
@@ -171,6 +170,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
               righticon
             )
           }
+          placeholder=""
         />
         <span aria-hidden="true" data-trigger="multiselect"></span>
         {state.isOpen && !loading && (

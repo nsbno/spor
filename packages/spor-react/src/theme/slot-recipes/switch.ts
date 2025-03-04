@@ -69,12 +69,12 @@ export const switchSlotRecipe = defineSlotRecipe({
       outlineWidth: "1px",
       ...coreBorder("default"),
       ...focusVisibleStyles(),
-      backgroundColor: "surface.background",
+      backgroundColor: "core.background",
       _hover: {
         ...coreBorder("hover"),
       },
       _checked: {
-        backgroundColor: "brand.background",
+        ...brandBackground("default"),
         outlineColor: "transparent",
 
         _hover: {

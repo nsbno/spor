@@ -1,6 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { coreBackground, coreBorder } from "../utils/core-utils";
-import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const switchSlotRecipe = defineSlotRecipe({

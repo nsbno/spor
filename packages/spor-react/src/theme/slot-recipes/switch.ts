@@ -34,6 +34,9 @@ export const switchSlotRecipe = defineSlotRecipe({
 
       _disabled: {
         backgroundColor: "icon.disabled",
+        _checked: {
+          backgroundColor: "icon.disabled",
+        },
       },
       _checked: {
         translate: "var(--switch-x) 0",
@@ -65,30 +68,26 @@ export const switchSlotRecipe = defineSlotRecipe({
       height: "var(--switch-height)",
       transitionProperty: "common",
       transitionDuration: "fast",
-      outlineStyle: "solid",
-      outlineWidth: "1px",
-      ...coreBorder("default"),
+      outline: "1px solid",
+      outlineColor: "core.outline.default",
       ...focusVisibleStyles(),
       backgroundColor: "core.background",
       _hover: {
-        ...coreBorder("hover"),
+        outline: "2px solid",
+        outlineColor: "core.outline.hover",
       },
       _checked: {
-        ...brandBackground("default"),
+        backgroundColor: "brand.surface",
         outlineColor: "transparent",
-
-        _hover: {
-          ...coreBackground("default"),
-          ...brandBackground("hover"),
-        },
       },
       _disabled: {
         pointerEvents: "none",
-        ...coreBackground("default"),
-        ...coreBorder("disabled"),
+        backgroundColor: "core.disabled",
+        outlineColor: "outline.disabled",
+
         _checked: {
-          ...coreBackground("disabled"),
-          ...coreBorder("disabled"),
+          backgroundColor: "icon.disabled",
+          outlineColor: "transparent",
         },
       },
       _invalid: {

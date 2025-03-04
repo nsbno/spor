@@ -25,12 +25,16 @@ RUN pnpm i --frozen-lockfile --prod=false
 
 # Setup production node_modules
 FROM base AS production-deps
+ENV NODE_ENV=production
+
 
 WORKDIR /app
 
 # Copy only production dependencies
-COPY --from=deps /app/node_modules /app/node_modules
-COPY apps/docs/package.json ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY apps/docs/package.json apps/docs/
+
+RUN pnpm i --frozen-lockfile --prod
 
 
 # Build the app
@@ -41,13 +45,9 @@ WORKDIR /app
 
 # Copy dependencies
 COPY --from=deps /app/node_modules /app/node_modules
-
-# Copy source code
-COPY apps/docs ./apps/docs
+COPY --from=deps /app/apps/docs/node_modules /app/apps/docs/node_modules
 
 ADD . .
-
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 # Build the application
 RUN pnpm --filter @vygruppen/docs... build

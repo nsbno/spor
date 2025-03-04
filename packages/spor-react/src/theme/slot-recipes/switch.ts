@@ -1,8 +1,9 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { switchAnatomy } from "./anatomy";
 
 export const switchSlotRecipe = defineSlotRecipe({
-  slots: ["root", "thumb", "control", "label"],
+  slots: switchAnatomy.keys(),
   className: "spor-switch",
   base: {
     root: {

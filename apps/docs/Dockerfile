@@ -11,30 +11,18 @@ RUN npm install -g pnpm
 FROM base as deps
 
 # Set NODE_ENV to development to install dev dependencies
-ENV NODE_ENV=development
 
 RUN mkdir /app
 WORKDIR /app
 
 # Copy workspace-related files from the monorepo root
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY apps/docs/package.json apps/docs/
+COPY apps/docs/package.json apps/docs/package.json
 
 # Install all dependencies (including devDependencies)
 RUN pnpm i --frozen-lockfile --prod=false
 
-
-FROM base AS build
-
-RUN mkdir /app
-WORKDIR /app
-
-# Copy dependencies
-COPY --from=deps /app/node_modules /app/node_modules
-
-ADD . .
-
-RUN pnpm --filter @vygruppen/docs... build
+RUN pnpm  build
 
 # Get some secrets
 RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \

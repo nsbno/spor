@@ -25,12 +25,16 @@ RUN pnpm i --frozen-lockfile --prod=false
 
 # Setup production node_modules
 FROM base AS production-deps
+ENV NODE_ENV=production
+
 
 WORKDIR /app
 
 # Copy only production dependencies
-COPY --from=deps /app/node_modules /app/node_modules
-COPY apps/docs/package.json ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY apps/docs/package.json apps/docs/
+
+RUN pnpm i --frozen-lockfile --prod
 
 
 # Build the app
@@ -40,18 +44,17 @@ RUN mkdir /app
 WORKDIR /app
 
 # Copy dependencies
-COPY --from=deps /app/node_modules /app/node_modules
+# COPY --from=deps /app/node_modules /app/node_modules
+# COPY --from=deps /app/apps/docs/node_modules /app/apps/docs/node_modules
 
-# Copy source code
-COPY apps/docs ./apps/docs
+ADD . . 
 
-ADD . .
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
+
 # Build the application
 RUN pnpm --filter @vygruppen/docs... build
-
 
 # Finally, build the production image with minimal footprint
 FROM base AS final
@@ -67,6 +70,7 @@ RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases
 
 # Corrected paths
 COPY --from=production-deps /app/node_modules /app/node_modules
+COPY --from=production-deps /app/apps/docs/node_modules /app/apps/docs/node_modules
 COPY --from=build /app/apps/docs/build/server /app/apps/docs/build/server
 COPY --from=build /app/apps/docs/build/client /app/apps/docs/build/client
 ADD . .

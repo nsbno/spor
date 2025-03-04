@@ -52,7 +52,6 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 # Build the application
 RUN pnpm --filter @vygruppen/docs... build
 
-
 # Finally, build the production image with minimal footprint
 FROM base AS final
 
@@ -67,6 +66,7 @@ RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases
 
 # Corrected paths
 COPY --from=production-deps /app/node_modules /app/node_modules
+COPY --from=production-deps /app/apps/docs/node_modules /app/apps/docs/node_modules
 COPY --from=build /app/apps/docs/build/server /app/apps/docs/build/server
 COPY --from=build /app/apps/docs/build/client /app/apps/docs/build/client
 ADD . .

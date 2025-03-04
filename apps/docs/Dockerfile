@@ -5,10 +5,10 @@ FROM node:20-alpine AS base
 ENV NODE_ENV=production
 
 # Install pnpm globally
+RUN npm install -g pnpm
 
 # Install all node_modules, including dev dependencies
 FROM base as deps
-RUN corepack enable
 
 # Set NODE_ENV to development to install dev dependencies
 ENV NODE_ENV=development
@@ -25,7 +25,6 @@ RUN pnpm i --frozen-lockfile --prod=false
 
 # Setup production node_modules
 FROM base AS production-deps
-RUN corepack enable
 
 
 
@@ -42,7 +41,6 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 # Build the app
 FROM base AS build
-RUN corepack enable
 
 RUN mkdir /app
 WORKDIR /app

@@ -69,12 +69,12 @@ export const switchSlotRecipe = defineSlotRecipe({
       outlineWidth: "1px",
       ...coreBorder("default"),
       ...focusVisibleStyles(),
-      ...coreBackground("default"),
+      backgroundColor: "surface.background",
       _hover: {
         ...coreBorder("hover"),
       },
       _checked: {
-        ...brandBackground("default"),
+        backgroundColor: "brand.background",
         outlineColor: "transparent",
 
         _hover: {
@@ -102,32 +102,32 @@ export const switchSlotRecipe = defineSlotRecipe({
     size: {
       sm: {
         root: {
-          "--switch-width": "54px",
-          "--switch-height": "24px",
+          "--switch-width": "3.3rem",
+          "--switch-height": "1.5rem",
         },
         control: {
-          borderRadius: "24px",
-          padding: "2px",
+          borderRadius: "lg",
+          padding: "0.12rem",
         },
       },
       md: {
         root: {
-          "--switch-width": "66px",
-          "--switch-height": "30px",
+          "--switch-width": "4.1rem",
+          "--switch-height": "1.8rem",
         },
         control: {
-          borderRadius: "30px",
-          padding: "3px",
+          borderRadius: "xl",
+          padding: 0.5,
         },
       },
       lg: {
         root: {
-          "--switch-width": "78px",
-          "--switch-height": "36px",
+          "--switch-width": "4.8rem",
+          "--switch-height": "2.25rem",
         },
         control: {
-          borderRadius: "36px",
-          padding: "3px",
+          borderRadius: "2xl",
+          padding: 0.5,
         },
       },
     },

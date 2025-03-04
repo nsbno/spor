@@ -66,13 +66,9 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           ref={rootRef}
           {...rest}
           checked={props.checked}
-          onCheckedChange={(args) => {
-            onCheckedChange?.(args);
-            console.log(args);
-          }}
           css={styles.root}
         >
-          <ChakraSwitch.Label css={styles.label}>{label}</ChakraSwitch.Label>
+          <ChakraSwitch.Label>{label}</ChakraSwitch.Label>
           <ChakraSwitch.HiddenInput />
           <ChakraSwitch.Control css={styles.control}>
             <ChakraSwitch.Thumb />

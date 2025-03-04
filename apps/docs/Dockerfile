@@ -45,7 +45,7 @@ COPY apps/docs/package.json apps/docs/package.json
 RUN pnpm install --frozen-lockfile --prod
 
 # Copy built application from build stage
-COPY --from=build /app/apps/dpcs/build ./apps/docs/build
+COPY --from=build /app/apps/docs/build ./apps/docs/build
 
 # Get some secrets (consider doing this in an entrypoint script instead)
 RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \

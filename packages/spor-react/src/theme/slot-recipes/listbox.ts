@@ -42,7 +42,6 @@ export const listBoxSlotRecipe = defineSlotRecipe({
       },
       _focus: {
         ...outlineBorder("focus"),
-        borderColor: "red",
       },
     },
     label: {},

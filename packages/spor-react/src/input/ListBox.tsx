@@ -197,12 +197,17 @@ function Option({ item, state }: OptionProps) {
         css={styles.item}
         listStyle={"none"}
         marginBottom={1}
-        marginX={2}
-        padding={1}
+        marginX={1}
+        paddingY={1}
+        paddingX={2}
         borderRadius={"sm"}
         _hover={{
-          backgroundColor: "accent.surface.hover",
+          backgroundColor: "accent.surface",
           color: "accent.text",
+        }}
+        _focus={{
+          outlineColor: "brand.surface",
+          outlineWidth: "2px",
         }}
       >
         {item.rendered}
@@ -246,8 +251,8 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
             fontSize="mobile.xs"
             color={titleColor}
             paddingX={3}
-            paddingY={1}
-            marginTop={isFirstSection ? 0 : 3}
+            paddingY={2}
+            marginTop={isFirstSection ? 0 : 2}
             textTransform="uppercase"
             fontWeight="bold"
             {...headingProps}

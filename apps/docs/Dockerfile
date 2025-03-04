@@ -8,7 +8,6 @@ ENV NODE_ENV=production
 RUN npm install -g pnpm
 
 # Install all node_modules, including dev dependencies
-FROM base as deps
 
 # Set NODE_ENV to development to install dev dependencies
 

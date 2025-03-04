@@ -87,8 +87,9 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
   (props) => {
     const { loading, listBoxRef, state, maxWidth, variant, children } = props;
     const { listBoxProps } = useListBox(props, state, listBoxRef);
-    const recipe = useSlotRecipe({ key: "listbox" });
+    const recipe = useSlotRecipe({ key: "listBox" });
     const styles = recipe({ variant });
+    console.log("styles", styles);
     return (
       <List
         {...listBoxProps}
@@ -96,10 +97,6 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
         css={styles.root}
         aria-busy={loading}
         maxWidth={maxWidth}
-        border="sm"
-        borderBottomRadius="sm"
-        paddingTop={2}
-        zIndex={"dropdown"}
         backgroundColor={{ _light: "white", _dark: "darkGrey" }}
       >
         {state.collection.size === 0 && props.emptyContent}

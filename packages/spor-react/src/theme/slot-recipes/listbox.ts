@@ -17,7 +17,10 @@ export const listBoxSlotRecipe = defineSlotRecipe({
       maxHeight: "50vh",
       width: "100%",
       listStyle: "none",
-      borderBottomRadius: "sm",
+      paddingTop: 2,
+      borderBottomRadius: "md",
+      borderWidth: 1,
+      zIndex: "dropdown",
     },
     item: {
       paddingX: 2,

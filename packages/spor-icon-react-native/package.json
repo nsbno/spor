@@ -20,8 +20,7 @@
     "prebuild": "pnpm clean",
     "build": "pnpm build:step-1 && pnpm build:step-2",
     "build:step-1": "tsm bin/generate.ts",
-    "build:step-2": "tsup",
-    "tsup": "^7.2.0"
+    "build:step-2": "tsup"
   },
   "devDependencies": {
     "@shopify/restyle": "^2.1.0",
@@ -37,7 +36,8 @@
     "react-native": "^0.74.2",
     "react-native-svg": "^12.3.0",
     "rimraf": "^5.0.7",
-    "tsm": "^2.3.0"
+    "tsm": "^2.3.0",
+    "tsup": "^7.2.0"
   },
   "peerDependencies": {
     "@shopify/restyle": "^2.1.0",

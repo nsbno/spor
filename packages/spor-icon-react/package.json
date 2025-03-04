@@ -27,9 +27,6 @@
     "prebuild": "pnpm clean",
     "build": "tsx bin/generate.ts && tsup"
   },
-  "dependencies": {
-    "tsup": "^8.3.6"
-  },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -50,6 +47,7 @@
     "react-dom": "^18.3.1",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.2",
+    "tsup": "^8.3.6",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"
   }

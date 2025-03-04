@@ -21,10 +21,6 @@
   ],
   "sideEffects": false,
   "license": "MIT",
-  "dependencies": {
-    "tsup": "^8.3.6",
-    "ts-node": "^10.9.2"
-  },
   "devDependencies": {
     "@types/node": "^22.13.4",
     "@vygruppen/tsconfig": "workspace:*",
@@ -32,6 +28,8 @@
     "patch-package": "^6.4.7",
     "prettier": "^2.4.1",
     "style-dictionary": "^3.9.2",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.3.6",
     "typescript": "^4.9.5"
   }
 }

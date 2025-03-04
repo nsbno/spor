@@ -17,9 +17,9 @@
   "scripts": {
     "clean": "rimraf dist",
     "prebuild": "pnpm clean",
-    "build": "mkdir dist && npx bestzip dist/spor-icons.zip svg/*"
+    "build": "mkdir dist && bestzip dist/spor-icons.zip svg/*"
   },
-  "dependencies": {
+  "devDependencies": {
     "bestzip": "^2.2.1"
   }
 }

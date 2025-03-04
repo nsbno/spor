@@ -1,55 +1,75 @@
-# ---- Stage 1: Install dependencies ----
-FROM node:20-alpine AS deps
+# Base node image
+FROM node:20-alpine AS base
 
-RUN NODE_ENV=development
-
-WORKDIR /app
+# Set environment variables
+ENV NODE_ENV=production
 
 # Install pnpm globally
 RUN npm install -g pnpm
 
-# Copy only dependency-related files first (for better caching)
+# Install all node_modules, including dev dependencies
+FROM base as deps
+
+RUN mkdir /app
+WORKDIR /app
+
+# Set NODE_ENV to development to install dev dependencies
+ENV NODE_ENV=development
+
+# Copy workspace-related files from the monorepo root
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY apps/docs/package.json apps/docs/package.json
+COPY apps/docs/package.json apps/docs/
 
-# Install all dependencies, including devDependencies
-RUN pnpm install --frozen-lockfile
+# Install all dependencies (including devDependencies)
+RUN pnpm i --frozen-lockfile --prod=false
 
-# ---- Stage 2: Build the application ----
-FROM node:20-alpine AS build
-
-RUN npm install -g pnpm
+# Setup production node_modules
+FROM base AS production-deps
 
 WORKDIR /app
 
-# Copy dependencies from deps stage
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/pnpm-lock.yaml ./pnpm-lock.yaml
-COPY . .
+# Copy only production dependencies
+COPY --from=deps /app/node_modules /app/node_modules
+COPY apps/docs/package.json ./
+
+
+# Build the app
+FROM base AS build
+
+RUN mkdir /app
+WORKDIR /app
+
+# Copy dependencies
+COPY --from=deps /app/node_modules /app/node_modules
+
+# Copy source code
+COPY apps/docs ./apps/docs
+
+ADD . .
+
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 # Build the application
-RUN pnpm build
+RUN pnpm --filter @vygruppen/docs... build
 
-# ---- Stage 3: Production runtime ----
-FROM node:20-alpine AS runtime
 
-WORKDIR /app
+# Finally, build the production image with minimal footprint
+FROM base AS final
 
-# Set environment variable for production
 ENV NODE_ENV=production
 
-# Install only production dependencies
-RUN npm install -g pnpm
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY apps/docs/package.json apps/docs/package.json
-RUN pnpm install --frozen-lockfile --prod
+RUN mkdir /app
+WORKDIR /app
 
-# Copy built application from build stage
-COPY --from=build /app/apps/docs/build ./apps/docs/build
-
-# Get some secrets (consider doing this in an entrypoint script instead)
+# Get some secrets
 RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \
     chmod +x /usr/local/bin/aws-env
 
+# Corrected paths
+COPY --from=production-deps /app/node_modules /app/node_modules
+COPY --from=build /app/apps/docs/build/server /app/apps/docs/build/server
+COPY --from=build /app/apps/docs/build/client /app/apps/docs/build/client
+ADD . .
+    
 # Start the application
 CMD ["pnpm", "--filter", "@vygruppen/docs", "start"]

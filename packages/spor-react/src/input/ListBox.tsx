@@ -100,7 +100,7 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
         borderBottomRadius="sm"
         paddingTop={2}
         zIndex={"dropdown"}
-        backgroundColor="core.surface"
+        backgroundColor={{ _light: "white", _dark: "darkGrey" }}
       >
         {state.collection.size === 0 && props.emptyContent}
         {Array.from(state.collection).map((item) =>
@@ -203,9 +203,6 @@ function Option({ item, state }: OptionProps) {
         _hover={{
           backgroundColor: "accent.surface.hover",
           color: "accent.text",
-        }}
-        _focus={{
-          borderColor: "accent.surface.hover",
         }}
       >
         {item.rendered}

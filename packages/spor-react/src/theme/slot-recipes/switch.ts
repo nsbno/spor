@@ -74,6 +74,9 @@ export const switchSlotRecipe = defineSlotRecipe({
       _hover: {
         outline: "2px solid",
         outlineColor: "core.outline.hover",
+        _checked: {
+          outlineColor: "transparent",
+        },
       },
       _checked: {
         backgroundColor: "brand.surface",

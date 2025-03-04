@@ -44,10 +44,14 @@ RUN mkdir /app
 WORKDIR /app
 
 # Copy dependencies
-COPY --from=deps /app/node_modules /app/node_modules
-COPY --from=deps /app/apps/docs/node_modules /app/apps/docs/node_modules
+# COPY --from=deps /app/node_modules /app/node_modules
+# COPY --from=deps /app/apps/docs/node_modules /app/apps/docs/node_modules
 
-ADD . .
+ADD . . 
+
+
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+
 
 # Build the application
 RUN pnpm --filter @vygruppen/docs... build

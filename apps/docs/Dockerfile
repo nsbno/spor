@@ -18,6 +18,8 @@ RUN pnpm install --frozen-lockfile
 # ---- Stage 2: Build the application ----
 FROM node:20-alpine AS build
 
+RUN npm install -g pnpm
+
 WORKDIR /app
 
 # Copy dependencies from deps stage

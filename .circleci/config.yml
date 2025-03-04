@@ -100,7 +100,7 @@ workflows:
           filters:
             branches:
               only:
-                - test_docker
+                - main
 
       - upload-terraform-artifacts:
           context:
@@ -109,7 +109,7 @@ workflows:
             - build-and-push-docker
           filters:
             branches:
-              only: test_docker
+              only: main
 
       - deployment/trigger-deployment:
           context:
@@ -119,4 +119,4 @@ workflows:
             - build-and-push-docker
           filters:
             branches:
-              only: test_docker
+              only: main

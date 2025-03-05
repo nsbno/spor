@@ -184,3 +184,8 @@ export const switchAnatomy = createAnatomy("switch").parts(
   "control",
   "label",
 );
+
+export const cardSelectAnatomy = createAnatomy("card-select").parts(
+  "trigger",
+  "card",
+);

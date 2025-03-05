@@ -46,9 +46,10 @@ export const Heading = ({
   ...props
 }: HeadingProps) => {
   const id =
-    (externalId ?? (autoId && typeof props.children === "string"))
-      ? slugify(props.children as string)
-      : undefined;
+    externalId ??
+    (autoId && typeof props.children === "string"
+      ? slugify(props.children)
+      : undefined);
   const color = useColorModeValue("text.primary.light", "text.primary.dark");
   return <Text as={as} textStyle={variant} id={id} color={color} {...props} />;
 };

@@ -5,7 +5,7 @@ on:
     types: [published]
   push:
     branches:
-      - test-branch
+      - slack_notify
 
 jobs:
   notify-slack:

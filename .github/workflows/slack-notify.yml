@@ -22,6 +22,6 @@ jobs:
           TEST: "test"
           API_URL: ${{ github.api_url }}
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{
-            "text": "A new release has been published: ${REPO} - ${RELEASE_VERSION}\n\nRelease Notes: ${BODY}\n${RELEASE_URL} \n\n${API_URL} ${TEST}"
-          }' $SLACK_WEBHOOK_URL
+          curl -X POST -H 'Content-type: application/json' --data "{
+            \"text\": \"A *new* release has been published: ${REPO} - ${RELEASE_VERSION}\n\nRelease Notes: ${BODY}\n${RELEASE_URL} \n\n${API_URL} ${TEST}\"
+          }" $SLACK_WEBHOOK_URL

@@ -38,5 +38,5 @@ jobs:
                 -   @vygruppen/spor-loader@0.5.0
         run: |
           curl -X POST -H 'Content-type: application/json' --data "{
-            \"text\": \"Ny minor-versjon av spor er ute! :package: :sparkles: :zap: Versjon: ${TAG_NAME} :wrench: Endringer: ${BODY} :book: Changelog: ${HTML_URL} :package: Installer: npm i @vygruppen/spor-react@latest\"
+            \"text\": \"Ny minor-versjon av spor er ute! :package: :sparkles: :zap: Versjon: ${TAG_NAME} :wrench: Endringer: :book: Changelog: ${HTML_URL} :package: Installer: npm i @vygruppen/spor-react@latest\"
           }" $SLACK_WEBHOOK_URL

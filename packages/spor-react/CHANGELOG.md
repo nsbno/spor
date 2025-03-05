@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.3.1
+
+### Patch Changes
+
+- 6ac14ad: Fixed bug where externalId on Heading was ignored
+
 ## 11.3.0
 
 ### Minor Changes

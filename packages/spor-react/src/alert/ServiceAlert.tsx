@@ -147,8 +147,8 @@ const texts = createTexts({
   notification: (notification) => {
     const numNotification = Number(notification);
     return {
-      nb: `${numNotification} varsel`,
-      nn: `${numNotification} varsel`,
+      nb: `${numNotification} ${numNotification > 1 ? "varsler" : "varsel"}`,
+      nn: `${numNotification} ${numNotification > 1 ? "varslar" : "varsel"}`,
       sv: `${numNotification} ${numNotification > 1 ? "underrättelser" : "underrättelse"}`,
       en: `${numNotification} ${numNotification > 1 ? "notifications" : "notification"}`,
     };

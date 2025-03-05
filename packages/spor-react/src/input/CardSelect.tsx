@@ -158,6 +158,7 @@ export const CardSelect = forwardRef<HTMLButtonElement, CardSelectProps>(
             offset={size === "sm" ? 6 : 12}
             crossOffset={crossOffset}
             placement={placement}
+            containerPadding={0}
           >
             <StaticCard
               colorPalette="white"
@@ -165,6 +166,7 @@ export const CardSelect = forwardRef<HTMLButtonElement, CardSelectProps>(
               borderColor="grey"
               css={styles.card}
               {...overlayProps}
+              maxWidth={(triggerRef.current?.clientWidth ?? 1) * 2}
             >
               <Dialog aria-label={label}>{children}</Dialog>
             </StaticCard>

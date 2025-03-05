@@ -1,4 +1,3 @@
-import { defaultSystem } from '@chakra-ui/react';
 import { withEmotionCache } from "@emotion/react";
 import {
   ActionFunctionArgs,
@@ -34,6 +33,7 @@ import {
 } from "./utils/brand-cookie.server";
 import { getInitialSanityData } from "./utils/initialSanityData.server";
 import { urlBuilder } from "./utils/sanity/utils";
+import { SystemContext } from "@chakra-ui/react";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data || !data.initialSanityData) {
@@ -144,10 +144,7 @@ type DocumentProps = {
 };
 
 const Document = withEmotionCache(
-  (
-    { children, brand, title }: DocumentProps,
-    emotionCache,
-  ) => {
+  ({ children, brand, title }: DocumentProps, emotionCache) => {
     const serverStyleData = useContext(ServerStyleContext);
     const clientStyleData = useContext(ClientStyleContext);
 
@@ -188,7 +185,7 @@ const Document = withEmotionCache(
           <SporProvider
             language={Language.English}
             brand={brand}
-            value={defaultSystem}
+            value={{} as SystemContext}
           >
             <SkipToContent />
             {children}
@@ -210,9 +207,7 @@ export default function App() {
   const loaderData = useLoaderData<typeof loader>();
 
   return (
-    <Document
-      brand={loaderData.brand as Brand}
-    >
+    <Document brand={loaderData.brand as Brand}>
       <RootLayout>
         <Outlet />
       </RootLayout>

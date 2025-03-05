@@ -170,3 +170,24 @@ export const listBoxAnatomy = createAnatomy("listbox").parts(
   "label",
   "description",
 );
+
+export const NativeSelectAnatomy = createAnatomy("native-select").parts(
+  "root",
+  "field",
+  "icon",
+);
+
+export const tabsAnatomy = createAnatomy("tabs").parts(
+  "root",
+  "list",
+  "trigger",
+  "content",
+  "indicator",
+);
+
+export const switchAnatomy = createAnatomy("switch").parts(
+  "root",
+  "thumb",
+  "control",
+  "label",
+);

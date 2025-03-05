@@ -3,10 +3,6 @@ name: Notify Slack on New Release
 on:
   release:
     types: [published]
-  push:
-    branches:
-      - slack_notify
-  workflow_dispatch:
 
 jobs:
   notify-slack:

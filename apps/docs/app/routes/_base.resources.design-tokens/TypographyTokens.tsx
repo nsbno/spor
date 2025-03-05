@@ -103,7 +103,7 @@ export function TypographyTokens(props: BoxProps) {
           <Text>
             The font Vy Display is less readable in small sizes, and should
             therefore preferably only be used for headings in content, while in
-            Elm and React applications, Vy Sans is preferred.
+            the React applications, Vy Sans is preferred.
           </Text>
         </Stack>
       }

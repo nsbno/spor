@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { switchSlotRecipe } from "../theme/slot-recipes/switch";
+import { Field } from "./Field";
 
 type SwitchVariants = RecipeVariantProps<typeof switchSlotRecipe>;
 
@@ -20,7 +21,27 @@ export type SwitchProps = Exclude<
     trackLabel?: { on: React.ReactNode; off: React.ReactNode };
     thumbLabel?: { on: React.ReactNode; off: React.ReactNode };
     size?: ConditionalValue<"sm" | "md" | "lg">;
+    label?: React.ReactNode;
+    onCheckedChange?: (checked: boolean) => void;
   };
+
+/**
+ * A switch lets you toggle between on and off, yes and no. It's an alternative to a checkbox.
+ *
+ * You can set a label inside of the Switch component by defining the `label` prop.
+ *
+ * ```tsx
+ * <Switch label="This is a label"/>
+ * ```
+ *
+ * Switches are available in three different sizes - `sm`, `md` and `lg`.
+ *
+ * ```tsx
+ *
+ *   <Switch size="sm" />
+ *
+ * ```
+ */
 
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   (props, ref) => {
@@ -30,7 +51,9 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       rootRef,
       trackLabel,
       thumbLabel,
-      size,
+      size = "md",
+      label,
+      onCheckedChange,
       ...rest
     } = props;
 
@@ -38,26 +61,20 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     const styles = recipe({ size });
 
     return (
-      <ChakraSwitch.Root ref={rootRef} {...rest} css={styles}>
-        <ChakraSwitch.HiddenInput ref={ref} {...inputProps} />
-        <ChakraSwitch.Control>
-          <ChakraSwitch.Thumb>
-            {thumbLabel && (
-              <ChakraSwitch.ThumbIndicator fallback={thumbLabel?.off}>
-                {thumbLabel?.on}
-              </ChakraSwitch.ThumbIndicator>
-            )}
-          </ChakraSwitch.Thumb>
-          {trackLabel && (
-            <ChakraSwitch.Indicator fallback={trackLabel.off}>
-              {trackLabel.on}
-            </ChakraSwitch.Indicator>
-          )}
-        </ChakraSwitch.Control>
-        {children != null && (
-          <ChakraSwitch.Label>{children}</ChakraSwitch.Label>
-        )}
-      </ChakraSwitch.Root>
+      <Field style={{ width: "auto" }}>
+        <ChakraSwitch.Root
+          ref={rootRef}
+          {...rest}
+          checked={props.checked}
+          css={styles.root}
+        >
+          <ChakraSwitch.Label>{label}</ChakraSwitch.Label>
+          <ChakraSwitch.HiddenInput />
+          <ChakraSwitch.Control css={styles.control}>
+            <ChakraSwitch.Thumb />
+          </ChakraSwitch.Control>
+        </ChakraSwitch.Root>
+      </Field>
     );
   },
 );

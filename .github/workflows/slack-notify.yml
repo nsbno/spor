@@ -38,9 +38,9 @@ jobs:
                 -   @vygruppen/spor-loader@0.5.0
         run: |
           curl -X POST -H 'Content-type: application/json' --data "{
-            \"text\": \"*Ny versjon av spor er ute!* :package::sparkles: \n
-          :zap:️ Versjon: ${TAG_NAME} \n
-          :wrench: Endringer: :book: \n
-          :book: Changelog: <${HTML_URL}|${TAG_NAME}> \n
-          :package: Installer: `npm i @vygruppen/spor-react@latest` \n \"
+            \"text\": \"*Ny versjon av spor er ute!* 📦✨ \n
+          ⚡️:️ Versjon: ${TAG_NAME} \n
+          🔧: Endringer:  \n
+          📖: Changelog: <${HTML_URL}|${TAG_NAME}> \n
+          📦: Installer: \`npm i @vygruppen/spor-react@latest\` \n \"
           }" $SLACK_WEBHOOK_URL

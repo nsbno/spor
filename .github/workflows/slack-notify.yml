@@ -23,5 +23,5 @@ jobs:
           API_URL: ${{github.api_url}}
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{
-            "text": ":rocket: test now New *release* *${RELEASE_VERSION}* in *${REPO}*!\n\n:link: <${RELEASE_URL}|Release URL>\n\n${BODY}\n\n${TEST}\n\n<${API_URL}|Go to API>"
+            "text": "A new release has been published: ${GITHUB_REPOSITORY} - ${GITHUB_REF_NAME}\n\nRelease Notes: ${GITHUB_RELEASE_NAME}\n${GITHUB_RELEASE_URL} \n\n${API_URL}"
           }' $SLACK_WEBHOOK_URL

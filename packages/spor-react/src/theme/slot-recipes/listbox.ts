@@ -3,7 +3,6 @@ import { coreBorder } from "../utils/core-utils";
 import { floatingBorder } from "../utils/floating-utils";
 import { ghostBackground, ghostText } from "../utils/ghost-utils";
 import { outlineBorder } from "../utils/outline-utils";
-import { surface } from "../utils/surface-utils";
 import { listBoxAnatomy } from "./anatomy";
 
 export const listBoxSlotRecipe = defineSlotRecipe({
@@ -11,7 +10,7 @@ export const listBoxSlotRecipe = defineSlotRecipe({
   className: "spor-listbox",
   base: {
     root: {
-      ...surface("default"),
+      backgroundColor: "surface",
       boxShadow: "sm",
       overflowY: "auto",
       maxHeight: "50vh",
@@ -30,7 +29,7 @@ export const listBoxSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       ...ghostText("default"),
       cursor: "pointer",
-      outline: "none",
+      listStyle: "none",
       _active: {
         ...ghostBackground("active"),
       },
@@ -38,13 +37,14 @@ export const listBoxSlotRecipe = defineSlotRecipe({
         ...outlineBorder("focus"),
       },
       _hover: {
-        ...ghostBackground("hover"),
+        backgroundColor: "accent.surface",
+        color: "accent.text",
       },
       _selected: {
         ...ghostBackground("active"),
       },
       _focus: {
-        ...outlineBorder("focus"),
+        outlineColor: "outline.focus",
       },
     },
     label: {},

@@ -89,7 +89,6 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
     const { listBoxProps } = useListBox(props, state, listBoxRef);
     const recipe = useSlotRecipe({ key: "listBox" });
     const styles = recipe({ variant });
-    console.log("styles", styles);
     return (
       <List
         {...listBoxProps}
@@ -97,7 +96,6 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
         css={styles.root}
         aria-busy={loading}
         maxWidth={maxWidth}
-        backgroundColor={{ _light: "white", _dark: "darkGrey" }}
       >
         {state.collection.size === 0 && props.emptyContent}
         {Array.from(state.collection).map((item) =>
@@ -155,8 +153,9 @@ function Option({ item, state }: OptionProps) {
     descriptionProps,
   } = useOption({ key: item.key }, state, ref);
 
-  const recipe = useSlotRecipe({ key: "listbox" });
+  const recipe = useSlotRecipe({ key: "listBox" });
   const styles = recipe({});
+
   let dataFields: Record<string, boolean> = {};
   if (isSelected) {
     dataFields["data-selected"] = true;
@@ -187,26 +186,7 @@ function Option({ item, state }: OptionProps) {
   }, []);
   return (
     <OptionContext.Provider value={{ labelProps, descriptionProps }}>
-      <ListItem
-        {...optionProps}
-        {...dataFields}
-        ref={ref}
-        css={styles.item}
-        listStyle={"none"}
-        marginBottom={1}
-        marginX={1}
-        paddingY={1}
-        paddingX={2}
-        borderRadius={"sm"}
-        _hover={{
-          backgroundColor: "accent.surface",
-          color: "accent.text",
-        }}
-        _focus={{
-          outlineColor: "brand.surface",
-          outlineWidth: "2px",
-        }}
-      >
+      <ListItem {...optionProps} {...dataFields} ref={ref} css={styles.item}>
         {item.rendered}
       </ListItem>
     </OptionContext.Provider>

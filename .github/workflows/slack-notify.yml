@@ -1,0 +1,28 @@
+name: Notify Slack on New Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  notify-slack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack Notification
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          REPO: ${{ github.repository }}
+          TAG_NAME: ${{ github.event.release.tag_name }}
+          HTML_URL: ${{ github.event.release.html_url }}
+          BODY: ${{ github.event.release.body }}
+
+        run: |
+          VERSION=$(echo "${TAG_NAME}" | sed 's/.*@//')
+          CHANGES=$(echo "${BODY}" | grep -oP '(?<=-   ).*' | sed 's/^[a-f0-9]*: //')
+          curl -X POST -H 'Content-type: application/json' --data "{
+            \"text\": \"*Ny versjon av spor er ute!* 📦✨ \n
+          ⚡️ *Versjon*: v${VERSION} \n
+          🔧 *Endringer*: ${CHANGES} \n
+          📖 *Changelog*: <${HTML_URL}|${TAG_NAME}> \n
+          📦 *Installer*: \`npm i @vygruppen/spor-react@latest\` \n \"
+          }" $SLACK_WEBHOOK_URL

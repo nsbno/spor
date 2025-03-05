@@ -44,7 +44,6 @@ jobs:
             \"text\": \"*Ny versjon av spor er ute!* 📦✨ \n
           ⚡️ *Versjon*: v${VERSION} \n
           🔧 *Endringer*: ${CHANGES} \n
-          🔧 *BODY*: ${BODY} \n
           📖 *Changelog*: <${HTML_URL}|${TAG_NAME}> \n
           📦 *Installer*: \`npm i @vygruppen/spor-react@latest\` \n \"
           }" $SLACK_WEBHOOK_URL

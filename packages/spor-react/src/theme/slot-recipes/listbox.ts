@@ -1,7 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { coreBorder } from "../utils/core-utils";
-import { floatingBorder } from "../utils/floating-utils";
-import { ghostBackground, ghostText } from "../utils/ghost-utils";
 import { outlineBorder } from "../utils/outline-utils";
 import { listBoxAnatomy } from "./anatomy";
 
@@ -27,11 +24,11 @@ export const listBoxSlotRecipe = defineSlotRecipe({
       marginY: 1,
       marginX: 1,
       borderRadius: "sm",
-      ...ghostText("default"),
+      color: "ghost.text",
       cursor: "pointer",
       listStyle: "none",
       _active: {
-        ...ghostBackground("active"),
+        backgroundColor: "ghost.surface.active",
       },
       _focusVisible: {
         ...outlineBorder("focus"),
@@ -41,7 +38,7 @@ export const listBoxSlotRecipe = defineSlotRecipe({
         color: "accent.text",
       },
       _selected: {
-        ...ghostBackground("active"),
+        backgroundColor: "ghost.surface.active",
       },
       _focus: {
         outlineColor: "outline.focus",
@@ -50,9 +47,9 @@ export const listBoxSlotRecipe = defineSlotRecipe({
     label: {},
     description: {
       fontSize: ["mobile.xs", "desktop.xs"],
-      ...ghostText("default"),
+      color: "ghost.text",
       "[aria-selected='true'] &": {
-        ...ghostText("selected"),
+        color: "ghost.text",
       },
     },
   },
@@ -60,12 +57,14 @@ export const listBoxSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         root: {
-          ...coreBorder("default"),
+          outline: "1px solid",
+          outlineColor: "core.outline",
         },
       },
       floating: {
         root: {
-          ...floatingBorder("default"),
+          outline: "1px solid",
+          outlineColor: "floating.outline",
         },
       },
     },

@@ -18,24 +18,8 @@ jobs:
           REPO: ${{ github.repository }}
           TAG_NAME: "@vygruppen/spor-react@11.3.0"
           HTML_URL: "https://github.com/nsbno/spor/releases/tag/%40vygruppen/spor-react%4011.3.0"
-          BODY: |
-            ### Minor Changes
+          BODY: "### Patch Changes-   6ac14ad: Fixed bug where externalId on Heading was ignored"
 
-            -   000e30a: - Replace npm with pnpm as package manager.
-                -   Update CI pipelines and Docker to use pnpm.
-                -   Update Docker to install from frozen lockfile to ensure exact dependency versions.
-                -   Fix dependency cycle between spor-react-icons and spor-package.
-                -   Update docs to use pnpm.
-                -   Install correct npm packages in apps/packages in monorepo.
-                -   Replace npm-feed installs with direct "workspace:\*" installs for better local development.
-                -   Replace inline commands for tsup with tsup.config.ts files.
-
-            ### Patch Changes
-
-            -   Updated dependencies [000e30a]
-                -   @vygruppen/spor-design-tokens@3.10.0
-                -   @vygruppen/spor-icon-react@3.13.0
-                -   @vygruppen/spor-loader@0.5.0
         run: |
           VERSION=$(echo "${TAG_NAME}" | sed 's/.*@//')
           CHANGES=$(echo "${BODY}" | grep -oP '(?<=-   ).*')

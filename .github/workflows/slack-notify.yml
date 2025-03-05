@@ -39,9 +39,9 @@ jobs:
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{
             "text": 
-            "*Ny versjon av spor er ute!* 📦✨ \n\n
-             ⚡️ Versjon: ${TAG_NAME} \n\n
-             🔧 Endringer: ${BODY} :book: \n\n
-             📖 Changelog: <${HTML_URL}|${TAG_NAME}> 
-             📦 Installer: `npm i @vygruppen/spor-react@latest` "
+            "*Ny versjon av spor er ute!* 📦✨ \n
+          ⚡️ Versjon: ${TAG_NAME} \n
+          🔧 Endringer: ${BODY} :book: \n
+          📖 Changelog: <${HTML_URL}|${TAG_NAME}> \n
+          📦 Installer: `npm i @vygruppen/spor-react@latest` \n"
           }' $SLACK_WEBHOOK_URL

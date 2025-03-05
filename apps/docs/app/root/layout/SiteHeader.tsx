@@ -70,7 +70,7 @@ export const SiteHeader = () => {
           />
         </Link>
       </Box>
-      <ColorModeButton /> {/* temp solution */}
+      <ColorModeButton className="dark" /> {/* temp solution */}
       <DesktopNavigation
         onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
       />

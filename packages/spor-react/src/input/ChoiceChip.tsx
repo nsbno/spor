@@ -6,12 +6,7 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import { CloseOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, {
-  ChangeEvent,
-  forwardRef,
-  PropsWithChildren,
-  useId,
-} from "react";
+import React, { ChangeEvent, forwardRef, PropsWithChildren } from "react";
 import { choiceChipSlotRecipe } from "../theme/slot-recipes/choice-chip";
 
 type ChoiceChipVariantProps = RecipeVariantProps<typeof choiceChipSlotRecipe>;
@@ -30,6 +25,7 @@ export type ChoiceChipProps = PropsWithChildren<ChoiceChipVariantProps> & {
   size?: "xs" | "sm" | "md" | "lg";
   chipType?: "icon" | "choice" | "filter";
   variant?: "core" | "accent" | "floating";
+  "aria-label"?: string;
 };
 /**
  * Choice chips are checkboxes that look like selectable buttons.
@@ -67,61 +63,69 @@ export const ChoiceChip = forwardRef(
     {
       children,
       icon,
-      disabled,
-      checked,
       size = "sm",
       chipType = "choice",
       variant = "core",
       ...props
     }: ChoiceChipProps,
-    ref,
+    ref
   ) => {
-    const { getRootProps, getLabelProps } = useCheckbox(props);
+    const {
+      getControlProps,
+      disabled,
+      getRootProps,
+      getLabelProps,
+      getHiddenInputProps,
+      setChecked,
+
+      checked,
+    } = useCheckbox(props);
+
+    const x = useCheckbox(props);
+    console.log("x", x);
+
     const recipe = useSlotRecipe({ key: "choiceChip" });
     const styles = recipe({
       size,
       variant,
     });
 
-    const id = `choice-chip-${useId()}`;
+    console.log("getControlProps", getControlProps());
 
     return (
-      <chakra.label
-        {...getRootProps()}
-        htmlFor={id}
-        aria-label={String(children)}
-      >
-        <chakra.input
-          /* {...getInputProps({}, ref)} */
-          id={id}
-          disabled={disabled}
-          css={styles.input}
-        />
-        <chakra.div
+        <chakra.label
           {...getLabelProps()}
-          css={styles.root}
-          data-checked={checked}
-          /* data-checked={checked}
-            data-checked={dataAttr(state.checked)}
-          data-hover={dataAttr(state.isHovered)}
-          data-focus={dataAttr(state.isFocused)}
-          data-active={dataAttr(state.isActive)}
-          data-disabled={dataAttr(state.isDisabled)}  */
+          aria-label={props["aria-label"] ?? String(children)}
         >
-          {icon && (
-            <chakra.span css={styles.icon}>
-              {checked ? icon.checked : icon.default}
-            </chakra.span>
-          )}
-          {chipType !== "icon" && (
-            <chakra.span css={styles.label}>{children}</chakra.span>
-          )}
-
-          {chipType === "filter" && checked && (
-            <CloseOutline24Icon marginLeft={1.5} />
-          )}
+          <chakra.input
+            {...getHiddenInputProps()}
+            disabled={disabled}
+            defaultChecked={checked}
+            value={checked ? "on" : "off"}
+            role="switch"
+            aria-checked={checked}
+            onClick={() => {
+              setChecked(!checked);
+            }}
+          />
+          <chakra.div 
+            css={styles.root} 
+            {...getControlProps()} 
+       >
+            {icon && (
+              <chakra.span css={styles.icon}>
+                {checked ? icon.checked : icon.default}
+              </chakra.span>
+            )}
+            {chipType !== "icon" && (
+              <chakra.span css={styles.label}>{children}</chakra.span>
+            )}
+  
+            {chipType === "filter" && checked && (
+              <CloseOutline24Icon marginLeft={1.5} />
+            )}
         </chakra.div>
       </chakra.label>
     );
-  },
+  }
 );

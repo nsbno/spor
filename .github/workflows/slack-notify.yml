@@ -39,7 +39,7 @@ jobs:
         run: |
           curl -X POST -H 'Content-type: application/json' --data "{
             \"text\": 
-            \"Ny minor-versjon av spor er ute! 📦✨ \n\n
+            \"*Ny versjon av spor er ute!* 📦✨ \n\n
              ⚡️ Versjon: ${TAG_NAME} \n\n
              🔧 Endringer: ${BODY} :book: \n\n
              📖 Changelog: <${HTML_URL}|${TAG_NAME}> 

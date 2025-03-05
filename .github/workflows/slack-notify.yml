@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - slack_notify
+  workflow_dispatch:
 
 jobs:
   notify-slack:
@@ -21,6 +22,6 @@ jobs:
           TEST: "test"
           OTHER: ${{github.api_url}}
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{
-            "text": "🚀 New release *${RELEASE_VERSION}* in *${REPO}*!\n🔗 2${RELEASE_URL} ${BODY} ${TEST} ${OTHER}"
-          }' $SLACK_WEBHOOK_URL
+          curl -X POST -H 'Content-type: application/json' --data "{
+            \"text\": \"🚀 New release *${RELEASE_VERSION}* in *${REPO}*!\n🔗 ${RELEASE_URL} ${BODY} ${TEST} ${OTHER}\"
+          }" $SLACK_WEBHOOK_URL

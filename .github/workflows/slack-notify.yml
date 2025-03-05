@@ -16,12 +16,32 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           REPO: ${{ github.repository }}
-          RELEASE_VERSION: ${{ github.event.release.tag_name }}
-          RELEASE_URL: ${{ github.event.release.html_url }}
-          BODY: ${{ github.event.release.body }}
-          TEST: "test"
-          API_URL: ${{ github.api_url }}
+          TAG_NAME: "@vygruppen/spor-react@11.3.0"
+          HTML_URL: "https://github.com/nsbno/spor/releases/tag/%40vygruppen/spor-react%4011.3.0"
+          BODY: |
+            ### Minor Changes
+
+            -   000e30a: - Replace npm with pnpm as package manager.
+                -   Update CI pipelines and Docker to use pnpm.
+                -   Update Docker to install from frozen lockfile to ensure exact dependency versions.
+                -   Fix dependency cycle between spor-react-icons and spor-package.
+                -   Update docs to use pnpm.
+                -   Install correct npm packages in apps/packages in monorepo.
+                -   Replace npm-feed installs with direct "workspace:\*" installs for better local development.
+                -   Replace inline commands for tsup with tsup.config.ts files.
+
+            ### Patch Changes
+
+            -   Updated dependencies [000e30a]
+                -   @vygruppen/spor-design-tokens@3.10.0
+                -   @vygruppen/spor-icon-react@3.13.0
+                -   @vygruppen/spor-loader@0.5.0
         run: |
           curl -X POST -H 'Content-type: application/json' --data "{
-            \"text\": \"A *new* release has been published: ${REPO} - ${RELEASE_VERSION}\n\nRelease Notes: ${BODY}\n${RELEASE_URL} \n\n${API_URL} ${TEST}\"
+            \"text\": 
+            \"Ny minor-versjon av spor er ute! 📦✨ \n\n
+             ⚡️ Versjon: ${TAG_NAME} \n\n
+             🔧 Endringer: ${BODY} :book: \n\n
+             📖 Changelog: <${HTML_URL}|${TAG_NAME}> 
+             📦 Installer: `npm i @vygruppen/spor-react@latest` \"
           }" $SLACK_WEBHOOK_URL

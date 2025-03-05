@@ -100,6 +100,7 @@ export const ChoiceChip = forwardRef(
         <chakra.div
           {...getLabelProps()}
           css={styles.root}
+          data-checked={checked}
           /* data-checked={checked}
             data-checked={dataAttr(state.checked)}
           data-hover={dataAttr(state.isHovered)}

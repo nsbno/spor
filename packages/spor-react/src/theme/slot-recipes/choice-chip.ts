@@ -25,14 +25,17 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
       outline: "1px solid",
       outlineColor: "base.outline",
       _checked: {
-        outlineColor: "transparent",
-        backgroundColor: "red",
+        backgroundColor: "brand.surface",
         borderRadius: "sm",
+        color: "white",
         /*       ...accentText("selected"),
         ...accentBackground("selected"), */
         _hover: {
-          ...brandBackground("hover"),
-          ...coreText("selected"),
+          backgroundColor: "brand.surface.hover",
+          borderRadius: "sm",
+
+          /*   ...brandBackground("hover"),
+          ...coreText("selected"), */
           outlineColor: "transparent",
         },
         _active: {
@@ -83,6 +86,9 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
     label: {
       //Teksten
       marginLeft: 1,
+      _checked: {
+        color: "white",
+      },
     },
   },
   variants: {
@@ -94,16 +100,17 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
           ...coreText("default"),
 
           _hover: {
-            backgroundColor: "yellow",
-
+            outline: "2px solid",
+            outlineColor: "core.outline.hover",
             /*  ...coreText("default"),
             ...coreBorder("hover"), */
             _checked: {
-              backgroundColor: "red",
-              borderRadius: "sm",
+              backgroundColor: "brand.surface.default",
             },
             _active: {
-              backgroundColor: "blue",
+              outline: "1px solid",
+              outlineColor: "core.outline.default",
+              backgroundColor: "core.surface.active",
               /*  ...coreBackground("active"),
             ...coreBorder("default"), */
             },

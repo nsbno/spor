@@ -22,7 +22,7 @@ jobs:
 
         run: |
           VERSION=$(echo "${TAG_NAME}" | sed 's/.*@//')
-          CHANGES=$(echo "${BODY}" | grep -oP '(?<=-   ).*')
+          CHANGES=$(echo "${BODY}" | grep -oP '(?<=-   ).*' | sed 's/^[a-f0-9]*: //')
           curl -X POST -H 'Content-type: application/json' --data "{
             \"text\": \"*Ny versjon av spor er ute!* 📦✨ \n
           ⚡️ *Versjon*: v${VERSION} \n

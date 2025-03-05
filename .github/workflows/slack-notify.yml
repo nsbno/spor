@@ -38,10 +38,11 @@ jobs:
                 -   @vygruppen/spor-loader@0.5.0
         run: |
           VERSION=$(echo "${TAG_NAME}" | sed 's/.*@//')
+          CHANGES=$(echo "${BODY}" | grep -oP '(?<=-   ).*')
           curl -X POST -H 'Content-type: application/json' --data "{
             \"text\": \"*Ny versjon av spor er ute!* 📦✨ \n
-          ⚡️ *Versjon*: ${VERSION} \n
-          🔧 *Endringer*:  \n
+          ⚡️ *Versjon*: v${VERSION} \n
+          🔧 *Endringer*: \n${CHANGES} \n
           📖 *Changelog*: <${HTML_URL}|${TAG_NAME}> \n
           📦 *Installer*: \`npm i @vygruppen/spor-react@latest\` \n \"
           }" $SLACK_WEBHOOK_URL

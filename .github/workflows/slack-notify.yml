@@ -37,4 +37,11 @@ jobs:
                 -   @vygruppen/spor-icon-react@3.13.0
                 -   @vygruppen/spor-loader@0.5.0
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, *World!*"}' $SLACK_WEBHOOK_URL
+          curl -X POST -H 'Content-type: application/json' --data '{
+            "text": 
+            "*Ny versjon av spor er ute!* 📦✨ \n\n
+             ⚡️ Versjon: ${TAG_NAME} \n\n
+             🔧 Endringer: ${BODY} :book: \n\n
+             📖 Changelog: <${HTML_URL}|${TAG_NAME}> 
+             📦 Installer: `npm i @vygruppen/spor-react@latest` "
+          }' $SLACK_WEBHOOK_URL

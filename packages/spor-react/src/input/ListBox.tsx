@@ -228,7 +228,7 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
             fontSize="mobile.xs"
             color={titleColor}
             paddingX={3}
-            paddingY={2}
+            paddingTop={1}
             marginTop={isFirstSection ? 0 : 2}
             textTransform="uppercase"
             fontWeight="bold"

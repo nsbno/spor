@@ -5,21 +5,19 @@ import {
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
+  ColorModeButton,
+  DarkMode,
   Drawer,
+  DrawerBackdrop,
   DrawerBody,
   DrawerCloseTrigger,
   DrawerContent,
   DrawerHeader,
-  DrawerBackdrop,
   Flex,
   IconButton,
-  SearchInput,
   Stack,
-  Text,
   VyLogo,
   useDisclosure,
-  ColorModeButton,
-  DarkMode,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
 import { loader } from "~/root";

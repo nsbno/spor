@@ -18,7 +18,9 @@ jobs:
           RELEASE_VERSION: ${{ github.event.release.tag_name }}
           RELEASE_URL: ${{ github.event.release.html_url }}
           BODY: ${{ github.event.release.body }}
+          TEST: "test"
+          OTHER: ${{github.api_url}}
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{
-            "text": "🚀 New release *${RELEASE_VERSION}* in *${REPO}*!\n🔗 2${RELEASE_URL} ${github.event.release.body} "
+            "text": "🚀 New release *${RELEASE_VERSION}* in *${REPO}*!\n🔗 2${RELEASE_URL} ${BODY} ${TEST} ${OTHER}"
           }' $SLACK_WEBHOOK_URL

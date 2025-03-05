@@ -168,7 +168,7 @@ export const NativeSelectAnatomy = createAnatomy("native-select").parts(
   "root",
   "field",
   "icon",
-  );
+);
 
 export const tabsAnatomy = createAnatomy("tabs").parts(
   "root",
@@ -176,4 +176,11 @@ export const tabsAnatomy = createAnatomy("tabs").parts(
   "trigger",
   "content",
   "indicator",
+);
+
+export const switchAnatomy = createAnatomy("switch").parts(
+  "root",
+  "thumb",
+  "control",
+  "label",
 );

@@ -1,10 +1,9 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { coreBackground, coreBorder } from "../utils/core-utils";
-import { brandBackground } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { switchAnatomy } from "./anatomy";
 
 export const switchSlotRecipe = defineSlotRecipe({
-  slots: ["root", "track", "thumb"],
+  slots: switchAnatomy.keys(),
   className: "spor-switch",
   base: {
     root: {
@@ -19,33 +18,85 @@ export const switchSlotRecipe = defineSlotRecipe({
         _rtl: "calc(var(--switch-diff) * -1)",
       },
     },
-    track: {
-      transitionProperty: "common",
+    thumb: {
+      position: "absolute",
+      transitionProperty: "translate",
       transitionDuration: "fast",
-      ...coreBorder("default"),
-      ...focusVisibleStyles(),
-      ...coreBackground("default"),
+      borderRadius: "2xl",
+      display: "flex",
+      flexShrink: 0,
+      alignItems: "center",
+      justifyContent: "center",
+      width: "var(--switch-height)",
+      height: "var(--switch-height)",
+      backgroundColor: "core.icon",
 
-      _hover: {
-        ...coreBorder("hover"),
+      _disabled: {
+        backgroundColor: "icon.disabled",
+        _checked: {
+          backgroundColor: "icon.disabled",
+        },
       },
       _checked: {
-        ...brandBackground("default"),
-        outlineColor: "transparent",
+        translate: "var(--switch-x) 0",
+        backgroundColor: "brand.icon",
+      },
+    },
 
-        _hover: {
-          ...coreBackground("default"),
-          ...brandBackground("hover"),
+    label: {
+      display: "block",
+      textAlign: "start",
+      marginEnd: 3,
+      opacity: 1,
+      bottom: 4,
+      _disabled: {
+        opacity: "0.5",
+      },
+    },
+    control: {
+      boxSizing: "content-box",
+      padding: 0.5,
+      display: "inline-flex",
+      gap: 1.5,
+      flexShrink: 0,
+      justifyContent: "flex-start",
+      cursor: "switch",
+      borderRadius: "xl",
+      position: "relative",
+      width: "var(--switch-width)",
+      height: "var(--switch-height)",
+      transitionProperty: "common",
+      transitionDuration: "fast",
+      outline: "1px solid",
+      outlineColor: "core.outline.default",
+      ...focusVisibleStyles(),
+      backgroundColor: "core.background",
+      _hover: {
+        outline: "2px solid",
+        outlineColor: "core.outline.hover",
+        _checked: {
+          outlineColor: "transparent",
+          backgroundColor: "brand.surface.hover",
         },
+      },
+      _checked: {
+        backgroundColor: "brand.surface",
+        outlineColor: "transparent",
       },
       _disabled: {
         pointerEvents: "none",
-        ...coreBackground("default"),
-        ...coreBorder("disabled"),
+        backgroundColor: "core.disabled",
+        outlineColor: "outline.disabled",
+
         _checked: {
-          ...coreBackground("disabled"),
-          ...coreBorder("disabled"),
+          backgroundColor: "icon.disabled",
+          outlineColor: "transparent",
         },
+      },
+      _invalid: {
+        outline: "2px solid",
+        outlineColor: "outline.error",
+        outlineOffset: "2px",
       },
     },
   },
@@ -53,32 +104,32 @@ export const switchSlotRecipe = defineSlotRecipe({
     size: {
       sm: {
         root: {
-          "--switch-width": "54px",
-          "--switch-height": "24px",
+          "--switch-width": "3.3rem",
+          "--switch-height": "1.5rem",
         },
-        track: {
-          borderRadius: "24px",
-          padding: "2px",
+        control: {
+          borderRadius: "lg",
+          padding: "0.12rem",
         },
       },
       md: {
         root: {
-          "--switch-width": "66px",
-          "--switch-height": "30px",
+          "--switch-width": "4.1rem",
+          "--switch-height": "1.8rem",
         },
-        track: {
-          borderRadius: "30px",
-          padding: "3px",
+        control: {
+          borderRadius: "xl",
+          padding: 0.5,
         },
       },
       lg: {
         root: {
-          "--switch-width": "78px",
-          "--switch-height": "36px",
+          "--switch-width": "4.8rem",
+          "--switch-height": "2.25rem",
         },
-        track: {
-          borderRadius: "36px",
-          padding: "3px",
+        control: {
+          borderRadius: "2xl",
+          padding: 0.5,
         },
       },
     },

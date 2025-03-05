@@ -38,7 +38,7 @@ import {
 import { toTitleCase } from "~/utils/stringUtils";
 
 type ResourceLink = {
-  linkType: "figma" | "react" | "react-native" | "elm";
+  linkType: "figma" | "react" | "react-native";
   url: string;
 };
 type ComponentSection = {
@@ -234,8 +234,6 @@ const mapLinkToLabel = (linkType: ResourceLink["linkType"]) => {
   switch (linkType) {
     case "figma":
       return "Figma";
-    case "elm":
-      return "Elm";
     case "react":
       return "React";
     case "react-native":

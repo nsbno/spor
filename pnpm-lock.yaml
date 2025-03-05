@@ -248,28 +248,6 @@ importers:
         specifier: ^2.2.1
         version: 2.2.1
 
-  packages/spor-icon-elm:
-    dependencies:
-      patch-package:
-        specifier: ^7.0.0
-        version: 7.0.2
-    devDependencies:
-      camelcase:
-        specifier: ^7.0.0
-        version: 7.0.1
-      elm:
-        specifier: ^0.19.1-5
-        version: 0.19.1-6
-      elm-format:
-        specifier: ^0.8.7
-        version: 0.8.7
-      svg2elm:
-        specifier: ^1.2.4
-        version: 1.2.4
-      svgo:
-        specifier: ^2.8.0
-        version: 2.8.0
-
   packages/spor-icon-react:
     devDependencies:
       '@chakra-ui/react':
@@ -527,31 +505,6 @@ packages:
 
   '@asamuzakjp/dom-selector@2.0.2':
     resolution: {integrity: sha512-x1KXOatwofR6ZAYzXRBL5wrdV0vwNxlTCK9NCuLqAzQYARqGcvFwiJA6A1ERuh+dgeA4Dxm3JBYictIes+SqUQ==}
-
-  '@avh4/elm-format-darwin-arm64@0.8.7-2':
-    resolution: {integrity: sha512-F5JD44mJ3KX960J5GkXMfh1/dtkXuPcQpX2EToHQKjLTZUfnhZ++ytQQt0gAvrJ0bzoOvhNzjNjUHDA1ruTVbg==}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@avh4/elm-format-darwin-x64@0.8.7-2':
-    resolution: {integrity: sha512-4pfF1cl0KyTion+7Mg4XKM3yi4Yc7vP76Kt/DotLVGJOSag4ISGic1og2mt8RZZ7XArybBmHNyYkiUbe/cEiCw==}
-    cpu: [x64]
-    os: [darwin]
-
-  '@avh4/elm-format-linux-arm64@0.8.7-2':
-    resolution: {integrity: sha512-WkVmuce2zU6s9dupHhqPc886Vaqpea8dZlxv2fpZ4wSzPUbiiKHoHZzoVndMIMTUL0TZukP3Ps0n/lWO5R5+FA==}
-    cpu: [arm64]
-    os: [linux]
-
-  '@avh4/elm-format-linux-x64@0.8.7-2':
-    resolution: {integrity: sha512-kmncfJrTBjVT94JtQvMf4M5Pn2Yl0sZt3wo7AzgFiDnB/CiZ+KjJyXuWM64NeGiv4MQqzPq65tsFXUH1CIJeiQ==}
-    cpu: [x64]
-    os: [linux]
-
-  '@avh4/elm-format-win32-x64@0.8.7-2':
-    resolution: {integrity: sha512-sBdMBGq/8mD8Y5C+fIr5vlb3N50yB7S1MfgeAq2QEbvkr/sKrCZI540i43lZDH9gWsfA1w2W8wCe0penFYzsGw==}
-    cpu: [x64]
-    os: [win32]
 
   '@babel/code-frame@7.12.11':
     resolution: {integrity: sha512-Zt1yodBx1UcyiePMSkWnU4hPqhwq7hGi2nFL1LeA3EUl+q2LQx16MISgJ0+z7dnmgvP9QtIleuETGOiOH1RcIw==}
@@ -1542,26 +1495,6 @@ packages:
     resolution: {integrity: sha512-+MKAJEOfaBe5SmV6t34p80MMKhjvUz0vRrvVJbPT0WElzaOJ/1xs+D+KDv+tD/NE5ujfrChEcshd4fLn0wpiqg==}
     peerDependencies:
       react: '>=16.8.0'
-
-  '@elm_binaries/darwin_arm64@0.19.1-0':
-    resolution: {integrity: sha512-mjbsH7BNHEAmoE2SCJFcfk5fIHwFIpxtSgnEAqMsVLpBUFoEtAeX+LQ+N0vSFJB3WAh73+QYx/xSluxxLcL6dA==}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@elm_binaries/darwin_x64@0.19.1-0':
-    resolution: {integrity: sha512-QGUtrZTPBzaxgi9al6nr+9313wrnUVHuijzUK39UsPS+pa+n6CmWyV/69sHZeX9qy6UfeugE0PzF3qcUiy2GDQ==}
-    cpu: [x64]
-    os: [darwin]
-
-  '@elm_binaries/linux_x64@0.19.1-0':
-    resolution: {integrity: sha512-T1ZrWVhg2kKAsi8caOd3vp/1A3e21VuCpSG63x8rDie50fHbCytTway9B8WHEdnBFv4mYWiA68dzGxYCiFmU2w==}
-    cpu: [x64]
-    os: [linux]
-
-  '@elm_binaries/win32_x64@0.19.1-0':
-    resolution: {integrity: sha512-yDleiXqSE9EcqKtd9SkC/4RIW8I71YsXzMPL79ub2bBPHjWTcoyyeBbYjoOB9SxSlArJ74HaoBApzT6hY7Zobg==}
-    cpu: [x64]
-    os: [win32]
 
   '@emotion/babel-plugin@11.13.5':
     resolution: {integrity: sha512-pxHCpT2ex+0q+HH91/zsdHkw/lXd468DIN2zvfvLtPKLLMo6gQj7oLObq8PhkrxOZb/gGCq03S3Z7PDhS8pduQ==}
@@ -5104,10 +5037,6 @@ packages:
     resolution: {integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==}
     engines: {node: '>=10'}
 
-  camelcase@7.0.1:
-    resolution: {integrity: sha512-xlx1yCK2Oc1APsPXDL2LdlNP6+uu8OCDdhOBSVT279M/S+y75O30C2VuD8T2ogdePBBl7PfPF4504tnLgX3zfw==}
-    engines: {node: '>=14.16'}
-
   camelize@1.0.1:
     resolution: {integrity: sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==}
 
@@ -5782,15 +5711,6 @@ packages:
 
   electron-to-chromium@1.5.100:
     resolution: {integrity: sha512-u1z9VuzDXV86X2r3vAns0/5ojfXBue9o0+JDUDBKYqGLjxLkSqsSUoPU/6kW0gx76V44frHaf6Zo+QF74TQCMg==}
-
-  elm-format@0.8.7:
-    resolution: {integrity: sha512-sVzFXfWnb+6rzXK+q3e3Ccgr6/uS5mFbFk1VSmigC+x2XZ28QycAa7lS8owl009ALPhRQk+pZ95Eq5ANjpEZsQ==}
-    hasBin: true
-
-  elm@0.19.1-6:
-    resolution: {integrity: sha512-mKYyierHICPdMx/vhiIacdPmTPnh889gjHOZ75ZAoCxo3lZmSWbGP8HMw78wyctJH0HwvTmeKhlYSWboQNYPeQ==}
-    engines: {node: '>=7.0.0'}
-    hasBin: true
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -8338,11 +8258,6 @@ packages:
     engines: {node: '>=10', npm: '>5'}
     hasBin: true
 
-  patch-package@7.0.2:
-    resolution: {integrity: sha512-PMYfL8LXxGIRmxXLqlEaBxzKPu7/SdP13ld6GSfAUJUZRmBDPp8chZs0dpzaAFn9TSPnFiMwkC6PJt6pBiAl8Q==}
-    engines: {node: '>=14', npm: '>5'}
-    hasBin: true
-
   patch-package@8.0.0:
     resolution: {integrity: sha512-da8BVIhzjtgScwDJ2TtKsfT5JFWz1hYoBl9rUQ1f38MC2HwnEIkK8VN3dKMKcP7P7bvvgzNDbfNHtx3MsQb5vA==}
     engines: {node: '>=14', npm: '>5'}
@@ -9647,10 +9562,6 @@ packages:
   svg-parser@2.0.4:
     resolution: {integrity: sha512-e4hG1hRwoOdRb37cIMSgzNsxyzKfayW6VOflrwvR+/bzrkyxY/31WkbgnQpgtrNp1SdpJvpUAGTa/ZoiPNDuRQ==}
 
-  svg2elm@1.2.4:
-    resolution: {integrity: sha512-UXO72077X2ASmOlCHOSJo0Ig/5xMZrUKpK/4r3EEn21iBNNbhwyvRGUyRrqVlC34ha+Z44YsgZVlUiS0DUhABw==}
-    hasBin: true
-
   svgo@2.8.0:
     resolution: {integrity: sha512-+N/Q9kV1+F+UeWYoSiULYo4xYSDQlTgb+ayMobAXPwMnLvop7oxKMo9OzIrX5x3eS4L4f2UHhc9axXwY8DpChg==}
     engines: {node: '>=10.13.0'}
@@ -10768,21 +10679,6 @@ snapshots:
       bidi-js: 1.0.3
       css-tree: 2.3.1
       is-potential-custom-element-name: 1.0.1
-
-  '@avh4/elm-format-darwin-arm64@0.8.7-2':
-    optional: true
-
-  '@avh4/elm-format-darwin-x64@0.8.7-2':
-    optional: true
-
-  '@avh4/elm-format-linux-arm64@0.8.7-2':
-    optional: true
-
-  '@avh4/elm-format-linux-x64@0.8.7-2':
-    optional: true
-
-  '@avh4/elm-format-win32-x64@0.8.7-2':
-    optional: true
 
   '@babel/code-frame@7.12.11':
     dependencies:
@@ -12189,18 +12085,6 @@ snapshots:
     dependencies:
       react: 18.3.1
       tslib: 2.8.1
-
-  '@elm_binaries/darwin_arm64@0.19.1-0':
-    optional: true
-
-  '@elm_binaries/darwin_x64@0.19.1-0':
-    optional: true
-
-  '@elm_binaries/linux_x64@0.19.1-0':
-    optional: true
-
-  '@elm_binaries/win32_x64@0.19.1-0':
-    optional: true
 
   '@emotion/babel-plugin@11.13.5':
     dependencies:
@@ -16641,8 +16525,6 @@ snapshots:
 
   camelcase@6.3.0: {}
 
-  camelcase@7.0.1: {}
-
   camelize@1.0.1: {}
 
   caniuse-lite@1.0.30001699: {}
@@ -17365,21 +17247,6 @@ snapshots:
   ee-first@1.1.1: {}
 
   electron-to-chromium@1.5.100: {}
-
-  elm-format@0.8.7:
-    optionalDependencies:
-      '@avh4/elm-format-darwin-arm64': 0.8.7-2
-      '@avh4/elm-format-darwin-x64': 0.8.7-2
-      '@avh4/elm-format-linux-arm64': 0.8.7-2
-      '@avh4/elm-format-linux-x64': 0.8.7-2
-      '@avh4/elm-format-win32-x64': 0.8.7-2
-
-  elm@0.19.1-6:
-    optionalDependencies:
-      '@elm_binaries/darwin_arm64': 0.19.1-0
-      '@elm_binaries/darwin_x64': 0.19.1-0
-      '@elm_binaries/linux_x64': 0.19.1-0
-      '@elm_binaries/win32_x64': 0.19.1-0
 
   emoji-regex@8.0.0: {}
 
@@ -20682,23 +20549,6 @@ snapshots:
       tmp: 0.0.33
       yaml: 1.10.2
 
-  patch-package@7.0.2:
-    dependencies:
-      '@yarnpkg/lockfile': 1.1.0
-      chalk: 4.1.2
-      ci-info: 3.9.0
-      cross-spawn: 7.0.6
-      find-yarn-workspace-root: 2.0.0
-      fs-extra: 9.1.0
-      klaw-sync: 6.0.0
-      minimist: 1.2.8
-      open: 7.4.2
-      rimraf: 2.7.1
-      semver: 7.7.1
-      slash: 2.0.0
-      tmp: 0.0.33
-      yaml: 2.7.0
-
   patch-package@8.0.0:
     dependencies:
       '@yarnpkg/lockfile': 1.1.0
@@ -22372,10 +22222,6 @@ snapshots:
       react: 18.3.1
 
   svg-parser@2.0.4: {}
-
-  svg2elm@1.2.4:
-    dependencies:
-      yargs: 15.4.1
 
   svgo@2.8.0:
     dependencies:

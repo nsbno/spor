@@ -184,3 +184,19 @@ export const switchAnatomy = createAnatomy("switch").parts(
   "control",
   "label",
 );
+
+export const selectAnatomy = createAnatomy("select").parts(
+  "root",
+  "trigger",
+  "indicatorGroup",
+  "indicator",
+  "selectContent",
+  "item",
+  "control",
+  "itemText",
+  "itemDescription",
+  "itemGroup",
+  "itemGroupLabel",
+  "label",
+  "valueText",
+);

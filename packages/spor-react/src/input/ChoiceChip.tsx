@@ -68,12 +68,11 @@ export const ChoiceChip = forwardRef(
       variant = "core",
       ...props
     }: ChoiceChipProps,
-    ref
+    ref,
   ) => {
     const {
       getControlProps,
       disabled,
-      getRootProps,
       getLabelProps,
       getHiddenInputProps,
       setChecked,
@@ -81,51 +80,39 @@ export const ChoiceChip = forwardRef(
       checked,
     } = useCheckbox(props);
 
-    const x = useCheckbox(props);
-    console.log("x", x);
-
     const recipe = useSlotRecipe({ key: "choiceChip" });
     const styles = recipe({
       size,
       variant,
     });
 
-    console.log("getControlProps", getControlProps());
-
     return (
-        <chakra.label
-          {...getLabelProps()}
-          aria-label={props["aria-label"] ?? String(children)}
-        >
-          <chakra.input
-            {...getHiddenInputProps()}
-            disabled={disabled}
-            defaultChecked={checked}
-            value={checked ? "on" : "off"}
-            role="switch"
-            aria-checked={checked}
-            onClick={() => {
-              setChecked(!checked);
-            }}
-          />
-          <chakra.div 
-            css={styles.root} 
-            {...getControlProps()} 
-       >
-            {icon && (
-              <chakra.span css={styles.icon}>
-                {checked ? icon.checked : icon.default}
-              </chakra.span>
-            )}
-            {chipType !== "icon" && (
-              <chakra.span css={styles.label}>{children}</chakra.span>
-            )}
-  
-            {chipType === "filter" && checked && (
-              <CloseOutline24Icon marginLeft={1.5} />
-            )}
+      <chakra.label
+        {...getLabelProps()}
+        aria-label={props["aria-label"] ?? String(children)}
+      >
+        <chakra.input
+          {...getHiddenInputProps()}
+          disabled={disabled}
+          defaultChecked={checked}
+          value={checked ? "on" : "off"}
+          role="switch"
+          aria-checked={checked}
+          onClick={() => {
+            setChecked(!checked);
+          }}
+        />
+        <chakra.div css={styles.root} {...getControlProps()}>
+          {icon && (
+            <chakra.span>{checked ? icon.checked : icon.default}</chakra.span>
+          )}
+          {chipType !== "icon" && <chakra.span>{children}</chakra.span>}
+
+          {chipType === "filter" && checked && (
+            <CloseOutline24Icon marginLeft={1.5} />
+          )}
         </chakra.div>
       </chakra.label>
     );
-  }
+  },
 );

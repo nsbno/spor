@@ -185,9 +185,4 @@ export const switchAnatomy = createAnatomy("switch").parts(
   "label",
 );
 
-export const choiceChipAnatomy = createAnatomy("choice-chip").parts(
-  "root",
-  "icon",
-  "label",
-  "input",
-);
+export const choiceChipAnatomy = createAnatomy("choice-chip").parts("root");

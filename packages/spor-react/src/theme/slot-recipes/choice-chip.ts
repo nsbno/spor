@@ -1,8 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { accentBackground, accentText } from "../utils/accent-utils";
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
-import { brandBackground } from "../utils/brand-utils";
-import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { choiceChipAnatomy } from "./anatomy";
 
@@ -28,133 +24,96 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         backgroundColor: "brand.surface",
         borderRadius: "sm",
         color: "white",
-        /*       ...accentText("selected"),
-        ...accentBackground("selected"), */
+        outline: "none",
+
         _hover: {
           backgroundColor: "brand.surface.hover",
-          borderRadius: "sm",
-
-          /*   ...brandBackground("hover"),
-          ...coreText("selected"), */
-          outlineColor: "transparent",
-        },
-        _active: {
-          backgroundColor: "red",
-          /* ...coreText("selected"),
-          ...brandBackground("active"), */
+          color: "white",
+          outline: "none",
+          _active: {
+            backgroundColor: "brand.surface.active",
+          },
         },
       },
       _disabled: {
         pointerEvents: "none",
         boxShadow: "none",
-        ...coreText("disabled"),
-        ...coreBackground("disabled"),
+        backgroundColor: "core.surface.disabled",
+        color: "core.text.disabled",
+
         _hover: {
-          ...coreBackground("disabled"),
+          backgroundColor: "core.surface.disabled",
           boxShadow: "none",
-          ...coreText("disabled"),
+          color: "core.text.disabled",
         },
         _checked: {
           cursor: "not-allowed",
           boxShadow: "none",
-          ...coreText("disabled"),
-          ...coreBackground("disabled"),
+          color: "core.text.disabled",
+          backgroundColor: "core.surface.disabled",
           _hover: {
-            ...coreBackground("disabled"),
+            backgroundColor: "core.surface.disabled",
             boxShadow: "none",
-            ...coreText("disabled"),
+            color: "core.text.disabled",
           },
         },
       },
       "input:focus-visible + &": focusVisibleStyles()._focusVisible,
-    },
-    icon: {
-      //Ikonet
-    },
-
-    input: {
-      border: "none",
-      clip: "rect(0 0 0 0)",
-      height: "1px",
-      width: "1px",
-      margin: "-1px",
-      padding: 0,
-      overflow: "hidden",
-      whiteSpace: "nowrap",
-      position: "absolute",
-    },
-    label: {
-      //Teksten
-      marginLeft: 1,
-      _checked: {
-        color: "white",
-      },
     },
   },
   variants: {
     variant: {
       core: {
         root: {
-          /*           backgroundColor: "purple",
-           */ ...coreBorder("default"),
-          ...coreText("default"),
+          color: "core.text",
+          outlineColor: "core.outline",
 
           _hover: {
             outline: "2px solid",
             outlineColor: "core.outline.hover",
-            /*  ...coreText("default"),
-            ...coreBorder("hover"), */
-            _checked: {
-              backgroundColor: "brand.surface.default",
-            },
+
             _active: {
               outline: "1px solid",
-              outlineColor: "core.outline.default",
+              outlineColor: "core.outline",
               backgroundColor: "core.surface.active",
-              /*  ...coreBackground("active"),
-            ...coreBorder("default"), */
             },
           },
         },
       },
       accent: {
         root: {
-          ...accentBackground("default"),
-          ...accentText("default"),
-          _hover: {
-            ...accentBackground("hover"),
-            ...accentText("default"),
-          },
-          _active: {
-            ...accentText("default"),
-            ...accentBackground("active"),
-          },
-        },
-        _active: {
-          backgroundColor: "yellow",
+          backgroundColor: "accent.surface",
+          color: "accent.text",
+          outline: "none",
 
-          /*  ...accentText("default"),
-          ...accentBackground("active"), */
+          _hover: {
+            backgroundColor: "accent.surface.hover",
+            color: "accent.text",
+
+            _active: {
+              backgroundColor: "accent.surface.active",
+              color: "accent.text.default",
+            },
+          },
         },
       },
       floating: {
         root: {
-          ...floatingBackground("default"),
-          ...coreText("default"),
-          ...floatingBorder("default"),
+          backgroundColor: "floating.surface.default",
+          outline: "1px solid",
+          outlineColor: "floating.outline",
           boxShadow: "sm",
           _hover: {
-            ...floatingBackground("hover"),
-            ...floatingBorder("hover"),
-            ...coreText("default"),
-            boxShadow: "md",
-          },
-          _active: {
-            backgroundColor: "pink",
+            backgroundColor: "floating.surface.hover",
+            outline: "1px solid",
+            outlineColor: "floating.outline.hover",
 
-            /*  ...floatingBackground("active"),
-            ...floatingBorder("active"),
-            ...coreText("default"), */
+            _active: {
+              backgroundColor: "accent.surface.active",
+              color: "accent.text.default",
+              outline: "1px solid",
+              outlineColor: "floating.outline",
+            },
           },
         },
       },
@@ -198,8 +157,4 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
       },
     },
   },
-  /*  defaultVariants: {
-    variant: "core",
-    size: "sm",
-  }, */
 });

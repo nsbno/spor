@@ -11,7 +11,6 @@ import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
 import { ColorSpinner, Input, InputProps, ListBox } from "..";
 import { Popover } from "./Popover";
-import { ConditionalValue } from "@chakra-ui/react";
 
 export type ComboboxProps<T> = Exclude<
   InputProps,
@@ -98,7 +97,6 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
     const inputWidth = useInputWidth(inputRef);
 
     const state = useComboBoxState({
-      allowsEmptyCollection: Boolean(emptyContent),
       defaultFilter: contains,
       shouldCloseOnBlur: true,
       ...props,
@@ -153,6 +151,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
           borderBottomRightRadius={
             state.isOpen && !loading ? 0 : borderBottomRightRadius
           }
+          _active={{ backgroundColor: "core.surface.active" }}
           {...inputProps}
           endElement={
             loading ? (
@@ -171,6 +170,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
               righticon
             )
           }
+          placeholder=""
         />
         <span aria-hidden="true" data-trigger="multiselect"></span>
         {state.isOpen && !loading && (
@@ -187,13 +187,18 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
             containerPadding={0}
           >
             <ListBox
-              /* {...listBoxProps} */
+              {...{
+                autoFocus:
+                  typeof listBoxProps.autoFocus === "boolean"
+                    ? listBoxProps.autoFocus
+                    : undefined,
+              }}
               state={state}
               id={listboxId}
               listBoxRef={listBoxRef}
               emptyContent={emptyContent}
               maxWidth={inputWidth}
-              /* variant={variant} */
+              variant={variant}
             >
               {children}
             </ListBox>

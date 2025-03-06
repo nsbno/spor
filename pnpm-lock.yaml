@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@chakra-ui/cli':
+        specifier: ^3.8.0
+        version: 3.9.0(@chakra-ui/react@3.9.0(@emotion/react@11.14.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@changesets/cli':
         specifier: ^2.27.5
         version: 2.27.12
@@ -443,9 +446,6 @@ importers:
         specifier: ^3.1.0
         version: 3.1.1(react@18.3.1)
     devDependencies:
-      '@chakra-ui/cli':
-        specifier: ^3.8.0
-        version: 3.9.0(@chakra-ui/react@3.8.0(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@react-types/datepicker':
         specifier: ^3.10.0
         version: 3.10.0(react@18.3.1)
@@ -12424,9 +12424,9 @@ snapshots:
 
   '@chakra-ui/anatomy@2.3.4': {}
 
-  '@chakra-ui/cli@3.9.0(@chakra-ui/react@3.8.0(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
+  '@chakra-ui/cli@3.9.0(@chakra-ui/react@3.9.0(@emotion/react@11.14.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
     dependencies:
-      '@chakra-ui/react': 3.8.0(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@chakra-ui/react': 3.9.0(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@clack/prompts': 0.10.0
       '@pandacss/is-valid-prop': 0.41.0
       '@types/cli-table': 0.3.4

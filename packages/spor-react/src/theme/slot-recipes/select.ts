@@ -15,20 +15,16 @@ export const selectSlotRecipe = defineSlotRecipe({
       flexDirection: "column",
       position: "relative",
       cursor: "pointer",
-      zIndex: 1,
+      zIndex: "dropdown",
       ...focusVisibleStyles(),
-      "& + label": {
-        fontSize: ["mobile.sm", "desktop.sm"],
-        top: 0,
-        left: 3,
-        zIndex: 0,
-        position: "absolute",
-        marginY: 2,
+      "& [data-focus]": {
+        "& + label": {
+          transform: ["scale(0.825) translateY(-10px)"],
+        },
       },
-      _hover: {
-        backgroundColor: "transparent",
-        _active: {
-          backgroundColor: "transparent",
+      "& [data-state='open']": {
+        "& + label": {
+          transform: ["scale(0.825) translateY(-10px)"],
         },
       },
     },
@@ -39,6 +35,10 @@ export const selectSlotRecipe = defineSlotRecipe({
       zIndex: 0,
       position: "absolute",
       marginY: 2,
+      transitionProperty: "transform",
+      transitionDuration: "fast",
+      transformOrigin: "top left",
+      transitionDelay: "fast",
     },
     trigger: {
       display: "flex",
@@ -52,17 +52,13 @@ export const selectSlotRecipe = defineSlotRecipe({
       fontSize: "mobile.md",
       borderRadius: "sm",
       cursor: "pointer",
-      _hover: {
-        backgroundColor: "transparent",
-        _active: {
-          backgroundColor: "transparent",
-        },
-      },
-      _active: {
-        backgroundColor: "transparent",
-      },
       _focusVisible: {
         ...focusVisibleStyles()._focusVisible,
+      },
+      _open: {
+        "& + div": {
+          transform: "rotate(180deg)",
+        },
       },
     },
     indicatorGroup: {
@@ -89,10 +85,6 @@ export const selectSlotRecipe = defineSlotRecipe({
         width: 3,
         height: 3,
       },
-      _open: {
-        transform: "rotate(180deg)",
-        color: "hotpink",
-      },
     },
     selectContent: {
       ...surface("default"),
@@ -117,7 +109,7 @@ export const selectSlotRecipe = defineSlotRecipe({
     },
     item: {
       paddingX: 2,
-      paddingY: 1,
+      paddingY: 2,
       marginY: 1,
       marginX: 1,
       display: "flex",
@@ -152,6 +144,9 @@ export const selectSlotRecipe = defineSlotRecipe({
       position: "relative",
       borderTopRadius: "sm",
       borderBottomRadius: "sm",
+      _active: {
+        backgroundColor: "transparent",
+      },
       _open: {
         borderBottomRadius: 0,
       },

@@ -2,59 +2,43 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { surface } from "../utils/surface-utils";
 import { ghostBackground, ghostText } from "../utils/ghost-utils";
-import { outlineBorder } from "../utils/outline-utils";
+import { surface } from "../utils/surface-utils";
+import { selectAnatomy } from "./anatomy";
 
 export const selectSlotRecipe = defineSlotRecipe({
-  slots: [
-    "root",
-    "trigger",
-    "indicatorGroup",
-    "indicator",
-    "selectContent",
-    "item",
-    "control",
-    "itemText",
-    "itemDescription",
-    "itemGroup",
-    "itemGroupLabel",
-    "label",
-    "valueText",
-  ],
+  slots: selectAnatomy.keys(),
   className: "spor-select",
   base: {
     root: {
       display: "flex",
       flexDirection: "column",
       position: "relative",
+      cursor: "pointer",
+      zIndex: 1,
       ...focusVisibleStyles(),
       "& + label": {
         fontSize: ["mobile.sm", "desktop.sm"],
         top: 0,
         left: 3,
-        zIndex: 2,
+        zIndex: 0,
         position: "absolute",
         marginY: 2,
-        transformOrigin: "top left",
-        transform: [
-          "scale(0.825) translateY(-12px)",
-          "scale(0.825) translateY(-14px)",
-        ],
+      },
+      _hover: {
+        backgroundColor: "transparent",
+        _active: {
+          backgroundColor: "transparent",
+        },
       },
     },
     label: {
       fontSize: ["mobile.sm", "desktop.sm"],
       top: 0,
       left: 3,
-      zIndex: 2,
+      zIndex: 0,
       position: "absolute",
       marginY: 2,
-      transformOrigin: "top left",
-      transform: [
-        "scale(0.825) translateY(-12px)",
-        "scale(0.825) translateY(-14px)",
-      ],
     },
     trigger: {
       display: "flex",
@@ -67,6 +51,16 @@ export const selectSlotRecipe = defineSlotRecipe({
       alignItems: "center",
       fontSize: "mobile.md",
       borderRadius: "sm",
+      cursor: "pointer",
+      _hover: {
+        backgroundColor: "transparent",
+        _active: {
+          backgroundColor: "transparent",
+        },
+      },
+      _active: {
+        backgroundColor: "transparent",
+      },
       _focusVisible: {
         ...focusVisibleStyles()._focusVisible,
       },

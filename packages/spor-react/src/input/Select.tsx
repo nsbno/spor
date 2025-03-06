@@ -1,26 +1,23 @@
 "use client";
 
+import { CloseButton } from "@/button";
+import { selectSlotRecipe } from "@/theme/slot-recipes/select";
 import type {
+  SelectRootProps as ChakraSelectRootProps,
   CollectionItem,
   RecipeVariantProps,
-  SelectRootProps as ChakraSelectRootProps,
 } from "@chakra-ui/react";
 import {
   Box,
   Select as ChakraSelect,
-  createListCollection,
-  Flex,
-  Icon,
   Portal,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import * as React from "react";
 import {
   CheckmarkFill18Icon,
   DropdownDownFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import { selectSlotRecipe } from "@/theme/slot-recipes/select";
-import { CloseButton } from "@/button";
+import * as React from "react";
 import { PropsWithChildren } from "react";
 
 type SelectVariantProps = RecipeVariantProps<typeof selectSlotRecipe>;
@@ -46,7 +43,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         position={"relative"}
       >
         <SelectTrigger data-attachable>
-          <SelectValueText placeholder=" " />
+          <SelectValueText placeholder="" />
         </SelectTrigger>
         {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
         <SelectContent css={styles.selectContent}>{children}</SelectContent>
@@ -183,7 +180,7 @@ export const SelectValueText = React.forwardRef<
 >(function SelectValueText(props, ref) {
   const { children, placeholder, ...rest } = props;
   return (
-    <ChakraSelect.ValueText {...rest} ref={ref}>
+    <ChakraSelect.ValueText {...rest} ref={ref} placeholder={placeholder}>
       <ChakraSelect.Context>
         {(select: {
           selectedItems: any;

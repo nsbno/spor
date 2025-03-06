@@ -189,6 +189,7 @@ const Document = withEmotionCache(
           >
             <SkipToContent />
             {children}
+            pnpm
           </SporProvider>
           <ScrollRestoration />
           <Scripts />

@@ -2,3 +2,4 @@ node_modules
 dist
 build
 packages/spor-design-tokens/react-native
+apps/studio/.sanity

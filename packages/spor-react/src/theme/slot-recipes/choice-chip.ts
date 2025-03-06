@@ -38,8 +38,9 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
       _disabled: {
         pointerEvents: "none",
         boxShadow: "none",
-        backgroundColor: "core.surface.disabled",
-        color: "core.text.disabled",
+        backgroundColor: "surface.disabled",
+        color: "text.disabled",
+        outline: "none",
 
         _hover: {
           backgroundColor: "core.surface.disabled",

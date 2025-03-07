@@ -35,6 +35,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       transitionDuration: "fast",
       transformOrigin: "top left",
       transitionDelay: "3ms",
+      pointerEvents: "none",
     },
     trigger: {
       display: "flex",

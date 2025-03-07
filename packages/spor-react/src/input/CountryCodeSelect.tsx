@@ -1,15 +1,15 @@
 "use client";
 
+import { createListCollection } from "@chakra-ui/react";
+import { getSupportedCallingCodes } from "awesome-phonenumber";
 import React, { forwardRef } from "react";
 import {
   Select,
+  SelectItem,
   SelectProps,
   createTexts,
   useTranslation,
-  SelectItem,
 } from "..";
-import { getSupportedCallingCodes } from "awesome-phonenumber";
-import { createListCollection } from "@chakra-ui/react";
 
 const prioritizedCountryCodes = [
   { label: "+47", value: "+47" },
@@ -50,7 +50,6 @@ export const CountryCodeSelect = forwardRef<
       collection={callingCodes}
       lazyMount
       aria-label={t(texts.countryCode)}
-      label={t(texts.countryCode)}
       variant={variant}
     >
       {callingCodes.items.map((code) => (

@@ -43,7 +43,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         position={"relative"}
       >
         <SelectTrigger data-attachable>
-          <SelectValueText />
+          <SelectValueText withPlaceholder={label ? true : false} />
         </SelectTrigger>
         {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
         <SelectContent css={styles.selectContent}>{children}</SelectContent>
@@ -172,19 +172,20 @@ type SelectValueTextProps = Omit<ChakraSelect.ValueTextProps, "children"> &
   React.PropsWithChildren<SelectVariantProps> & {
     children?(items: CollectionItem[]): React.ReactNode;
     placeholder?: string;
+    withPlaceholder?: boolean;
   };
 
 export const SelectValueText = React.forwardRef<
   HTMLSpanElement,
   SelectValueTextProps
 >(function SelectValueText(props, ref) {
-  const { children, placeholder, ...rest } = props;
+  const { children, withPlaceholder, placeholder, ...rest } = props;
   return (
     <ChakraSelect.ValueText
       {...rest}
       ref={ref}
       placeholder={placeholder}
-      paddingTop="4"
+      paddingTop={withPlaceholder ? "4" : "0"}
     >
       <ChakraSelect.Context>
         {(select: {

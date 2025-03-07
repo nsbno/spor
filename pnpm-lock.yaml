@@ -30,7 +30,7 @@ importers:
   apps/docs:
     dependencies:
       '@chakra-ui/react':
-        specifier: ^3.8.0
+        specifier: ^3.9.0
         version: 3.9.0(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@emotion/cache':
         specifier: ^11.14.0
@@ -251,7 +251,7 @@ importers:
   packages/spor-icon-react:
     devDependencies:
       '@chakra-ui/react':
-        specifier: ^3.8.0
+        specifier: ^3.9.0
         version: 3.9.0(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@svgr/core':
         specifier: ^8.1.0

@@ -1,9 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
-import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { ghostBackground, ghostText } from "../utils/ghost-utils";
-import { surface } from "../utils/surface-utils";
 import { selectAnatomy } from "./anatomy";
 
 export const selectSlotRecipe = defineSlotRecipe({
@@ -17,13 +13,13 @@ export const selectSlotRecipe = defineSlotRecipe({
       cursor: "pointer",
       zIndex: "dropdown",
       ...focusVisibleStyles(),
-      "& [data-focus]": {
+      "& [data-state='open']": {
         "& + label": {
           transform: ["scale(0.825) translateY(-10px)"],
         },
       },
-      "& [data-state='open']": {
-        "& + label": {
+      "&:has(button span:not(:empty))": {
+        "& label": {
           transform: ["scale(0.825) translateY(-10px)"],
         },
       },
@@ -38,7 +34,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       transitionProperty: "transform",
       transitionDuration: "fast",
       transformOrigin: "top left",
-      transitionDelay: "fast",
+      transitionDelay: "3ms",
     },
     trigger: {
       display: "flex",
@@ -87,7 +83,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       },
     },
     selectContent: {
-      ...surface("default"),
+      backgroundColor: "surface",
       boxShadow: "sm",
       overflowY: "auto",
       maxHeight: "50vh",
@@ -101,6 +97,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       _open: {
         animationStyle: "slide-fade-in",
         animationDuration: "fast",
+        zIndex: "tooltip",
       },
       _closed: {
         animationStyle: "slide-fade-out",
@@ -117,23 +114,23 @@ export const selectSlotRecipe = defineSlotRecipe({
       justifyContent: "space-between",
       gap: 1,
       borderRadius: "sm",
-      ...ghostText("default"),
+      color: "ghost.text",
       cursor: "pointer",
       outline: "none",
 
       _active: {
-        ...ghostBackground("active"),
+        backgroundColor: "ghost.surface.active",
         color: "green",
       },
       _highlighted: {
         ...focusVisibleStyles()._focusVisible,
       },
       _hover: {
-        ...ghostBackground("hover"),
+        backgroundColor: "ghost.surface.hover",
         outline: "none",
       },
       _selected: {
-        ...ghostBackground("active"),
+        backgroundColor: "ghost.surface.active",
       },
       _icon: {
         width: 3,
@@ -165,9 +162,9 @@ export const selectSlotRecipe = defineSlotRecipe({
     valueText: {},
     itemDescription: {
       fontSize: ["mobile.xs", "desktop.xs"],
-      ...ghostText("default"),
+      color: "ghost.text",
       "[aria-selected='true'] &": {
-        ...ghostText("selected"),
+        color: "ghost.text",
       },
     },
   },
@@ -175,38 +172,51 @@ export const selectSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         control: {
-          ...coreBorder("default"),
+          outline: "1px solid",
+          outlineColor: "core.outline",
           _hover: {
-            ...coreBorder("hover"),
+            outline: "2px solid",
+            outlineColor: "core.outline",
           },
           _active: {
-            ...coreBackground("active"),
+            backgroundColor: "brand.surface.active",
           },
           _invalid: {
-            ...coreBorder("invalid"),
+            outline: "2px solid",
+            outlineColor: "outline.error",
           },
           _disabled: {
             pointerEvents: "none",
-            ...coreText("disabled"),
-            ...coreBackground("disabled"),
+            color: "text.disabled",
+            backgroundColor: "surface.disabled",
           },
         },
       },
       floating: {
         control: {
-          ...floatingBackground("default"),
-          ...floatingBorder("default"),
+          backgroundColor: {
+            _light: "bg",
+            _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
+          },
+          outline: "1px solid",
+          outlineColor: "floating.outline",
           _hover: {
-            ...floatingBorder("hover"),
-            ...floatingBackground("hover"),
+            outline: "1px solid",
+            outlineColor: "floating.outline.hover",
+            backgroundColor: {
+              _light: "floating.surface.hover",
+              _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
+            },
           },
           _active: {
-            ...floatingBorder("active"),
-            ...floatingBackground("active"),
+            outline: "1px solid",
+            outlineColor: "floating.outline.active",
+            backgroundColor: "floating.surface.active",
           },
         },
         selectContent: {
-          ...floatingBorder("default"),
+          outline: "1px solid",
+          outlineColor: "floating.outline",
         },
       },
     },

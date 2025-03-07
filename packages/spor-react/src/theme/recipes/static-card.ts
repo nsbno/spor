@@ -1,4 +1,3 @@
-
 import { defineRecipe } from "@chakra-ui/react";
 
 export const staticCardRecipe = defineRecipe({
@@ -20,7 +19,7 @@ export const staticCardRecipe = defineRecipe({
       darkGreen: {
         backgroundColor: "pine",
         color: "white",
-      }, 
+      },
       orange: {
         backgroundColor: "champagne",
       },
@@ -39,7 +38,7 @@ export const staticCardRecipe = defineRecipe({
       darkBlue: {
         backgroundColor: "darkBlue",
         color: "white",
-      }, 
+      },
     },
   },
 });

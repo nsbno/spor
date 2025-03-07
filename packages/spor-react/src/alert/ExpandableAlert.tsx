@@ -76,7 +76,7 @@ export const ExpandableAlert = forwardRef<HTMLDivElement, ExpandableAlertProps>(
       <Accordion.Root
         defaultValue={defaultOpen ? [defaultValue] : undefined}
         ref={ref}
-        css={{...styles.root, ...css}}
+        css={{ ...styles.root, ...css }}
         collapsible={collapsible}
         {...rest}
       >

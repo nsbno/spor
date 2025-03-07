@@ -11,10 +11,7 @@ import { separatorRecipe } from "../theme/recipes/separator";
 
 type SeparatorVariantProps = RecipeVariantProps<typeof separatorRecipe>;
 
-type SeparatorProps = Exclude<
-  ChakraSeparatorProps,
-  "size" | "variant" 
-> &
+type SeparatorProps = Exclude<ChakraSeparatorProps, "size" | "variant"> &
   PropsWithChildren<SeparatorVariantProps> & {
     size?: "sm" | "md" | "lg";
     variant?: "solid" | "dashed";

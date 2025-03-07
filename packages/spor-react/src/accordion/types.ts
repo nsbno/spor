@@ -14,7 +14,8 @@ export type AccordionProps = Exclude<
   ChakraAccordionProps,
   "variant" | "size" | "orientation"
 > &
-  PropsWithChildren<AccordionVariantProps> & {
+  AccordionVariantProps &
+  PropsWithChildren & {
     /**
      * The display variant of the accordion items.
      *

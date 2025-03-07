@@ -4,6 +4,7 @@ import React, { forwardRef } from "react";
 import { Input, InputProps, createTexts, useTranslation } from "..";
 import { AttachedInputs } from "./AttachedInputs";
 import { CountryCodeSelect } from "./CountryCodeSelect";
+import { As } from "@chakra-ui/system";
 
 type CountryCodeAndPhoneNumber = {
   countryCode: string;

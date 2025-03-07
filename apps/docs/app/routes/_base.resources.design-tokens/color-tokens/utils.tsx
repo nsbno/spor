@@ -44,7 +44,6 @@ const getPaletteName = (colorValue: string) => {
 };
 
 export const useTokenAlias = (token: string) => {
-
   let alias = "";
 
   /* if (tokenParts.length === 3) {

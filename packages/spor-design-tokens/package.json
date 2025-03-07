@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-design-tokens",
-  "version": "3.9.0",
+  "version": "3.10.0",
   "description": "All Vy's design tokens",
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-card-react",
   "repository": {
@@ -22,11 +22,14 @@
   "sideEffects": false,
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^22.13.4",
+    "@vygruppen/tsconfig": "workspace:*",
     "json-to-ts": "^1.7.0",
     "patch-package": "^6.4.7",
     "prettier": "^2.4.1",
     "style-dictionary": "^3.9.2",
     "ts-node": "^10.9.2",
+    "tsup": "^8.3.6",
     "typescript": "^4.9.5"
   }
 }

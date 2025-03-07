@@ -1,4 +1,4 @@
-import { defineTokens } from "@chakra-ui/react"
+import { defineTokens } from "@chakra-ui/react";
 
 export const animations = defineTokens.animations({
   spin: {
@@ -13,4 +13,4 @@ export const animations = defineTokens.animations({
   bounce: {
     value: "bounce 1s infinite",
   },
-})
+});

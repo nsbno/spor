@@ -12,7 +12,7 @@ export const VyLogo = forwardRef<SVGSVGElement, BoxProps>((props, ref) => {
   const accentColor = colorMode === "light" ? "#138c6e" : "#ffffff";
   const id = useId();
   return (
-    <SvgBox ref={ref} viewBox="0 0 107 54" {...props as any}>
+    <SvgBox ref={ref} viewBox="0 0 107 54" {...(props as any)}>
       <title>Vy logo</title>
       <path
         fillRule="evenodd"

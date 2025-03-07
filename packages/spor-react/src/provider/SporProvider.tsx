@@ -1,12 +1,12 @@
 "use client";
 import { Global } from "@emotion/react";
 import React from "react";
-import { Language, LanguageProvider, system, themes } from "..";
+import { Alert, Button, Language, LanguageProvider, system, themes } from "..";
 import { Brand, fontFaces } from "../theme/brand";
 import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
 import { ColorModeProvider } from "../color-mode";
 
-type SporProviderProps = Exclude<ChakraProviderProps, "value"> & {
+type SporProviderProps = Omit<ChakraProviderProps, "value"> & {
   language?: Language;
   brand?: Brand;
 };

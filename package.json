@@ -12,12 +12,11 @@
     "release": "turbo run build && changeset publish",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "typegen": "npx @chakra-ui/cli typegen packages/spor-react/src/theme/index.ts",
-    "typegen:watch": "npx @chakra-ui/cli typegen packages/spor-react/src/theme/index.ts --watch",
-    "typegen:strict": "npx @chakra-ui/cli typegen packages/spor-react/src/theme/index.ts --strict"
+    "typegen": "pnpm --filter @vygruppen/spor-react typegen",
+    "typegen:watch": "pnpm --filter @vygruppen/spor-react typegen:watch",
+    "typegen:strict": "pnpm --filter @vygruppen/spor-react typegen:strict"
   },
   "dependencies": {
-    "@chakra-ui/cli": "^3.8.0",
     "@changesets/cli": "^2.27.5",
     "patch-package": "^8.0.0",
     "prettier": "^3.3.1",

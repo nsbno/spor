@@ -24,7 +24,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @vygruppen/spor-design-tokens build
+      - run: pnpm --filter @vygruppen/spor-design-tokens build # Need to build design tokens first to generate types
       - run: pnpm typegen
       - run: pnpm build
       - run: pnpm test

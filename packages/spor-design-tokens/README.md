@@ -9,7 +9,7 @@ npx style-dictionary build
 Otherwise, install Style Dictionary locally for this project first, `cd` into this directory and run:
 
 ```bash
-pnpm init -y && npm install style-dictionary
+pnpm init -y && pnpm install style-dictionary
 ```
 
 and then run the above command.

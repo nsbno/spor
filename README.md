@@ -178,7 +178,7 @@ To add new icons to Spor:
 1. **Get SVG assets** from a designer.
 2. **Follow the naming convention** (`icon-name-variant-size.svg`).
 3. **Place them in `packages/spor-icon/svg/`** under the correct category.
-4. **Run `npm run build`** to generate React components.
+4. **Run `pnpm build`** to generate React components.
 5. **Create a changeset** and submit a pull request.
 
 For a step-by-step guide, see **[our icon contribution guide](https://spor.vy.no/guides/how-to-add-new-icons)**. 🎨

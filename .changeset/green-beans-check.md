@@ -31,6 +31,9 @@ Spor is getting a major update with Chakra 3.
 - `UnorderedList` and `OrderedList` is deprecated. Use `List` and `as` prop instead.
 - `Tab` is now `TabsTrigger`, `TabList` is now `TabsList`, `TabsPanel` and `TabPanel` are now `TabsContent`.
 - `ClosableAlert` and `StaticAlert` are deprecated. Use component `Alert` and prop `closable` instead
+- `InfoSelect` is now `Select` and has two more variants `rightSideSquare` and `rightSideSquare`
+- `AttachedInputs` has deprecate FlexDirection prop which is now `orientation`
+- `PhoneNumberInputs`an `invalid` prop is send for validation purpose, and `errorText` prop is send to give feedback on error
 
 ### Darkmode
 

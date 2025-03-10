@@ -7,6 +7,7 @@
     "vite.config.mts"
   ],
   "compilerOptions": {
+    "types": ["vite/client", "@remix-run/node"],
     "lib": ["DOM", "DOM.Iterable", "ES2019"],
     "isolatedModules": true,
     "esModuleInterop": true,

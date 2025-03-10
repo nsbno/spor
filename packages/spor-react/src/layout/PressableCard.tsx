@@ -1,11 +1,15 @@
-import React from "react";
-import { Box, BoxProps, forwardRef, useStyleConfig } from "@chakra-ui/react";
-import { As } from "@chakra-ui/system";
+"use client";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import { pressableCardRecipe } from "../theme/recipes/pressable-card";
 
-type PressableCardProps = BoxProps & {
-  /** Defaults to "base"  */
-  variant?: "floating" | "accent" | "base";
-};
+type PressableCardVariants = RecipeVariantProps<typeof pressableCardRecipe>;
+
+type PressableCardProps = BoxProps &
+  PropsWithChildren<PressableCardVariants> & {
+    children: React.ReactNode;
+    variant?: "floating" | "accent" | "core";
+  };
 
 /**
  * `PressableCard` is a component that renders a pressable card.
@@ -14,7 +18,7 @@ type PressableCardProps = BoxProps & {
  * It can be rendered as a button, link, label, or any other HTML element by specifying the `as` prop.
  * If no `as` prop is provided, it defaults to a button.
  *
- * The `variant` prop can be used to control the style variant of the card. It defaults to "base".
+ * The `variant` prop can be used to control the style variant of the card. It defaults to "core".
  *
  * Example usage:
  *
@@ -32,19 +36,17 @@ type PressableCardProps = BoxProps & {
  * </PressableCard>
  * ```
  *
- * For a static card with other color schemes, use the `StaticCard` component.
+ * For a static card with other color palette, use the `StaticCard` component.
  *
  * @see StaticCard
  */
 
-export const PressableCard = forwardRef<PressableCardProps, As>(
-  ({ children, variant = "floating", ...props }, ref) => {
-    const styles = useStyleConfig("PressableCard", {
-      variant,
-    });
-
+export const PressableCard = forwardRef<HTMLDivElement, PressableCardProps>(
+  ({ variant = "core", children, ...props }, ref) => {
+    const recipe = useRecipe({ recipe: pressableCardRecipe });
+    const styles = recipe({ variant });
     return (
-      <Box __css={styles} {...props} ref={ref}>
+      <Box css={styles} {...props} ref={ref}>
         {children}
       </Box>
     );

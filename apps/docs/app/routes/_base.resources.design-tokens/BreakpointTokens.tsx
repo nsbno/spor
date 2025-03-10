@@ -5,11 +5,11 @@ import {
   Code,
   Stack,
   Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
+  TableBody,
+  TableCell,
+  TableColumnHeader,
+  TableHeader,
+  TableRow,
 } from "@vygruppen/spor-react";
 import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
@@ -35,29 +35,31 @@ const BreakpointTokensTable = (props: BreakpointTokenTableProps) => {
   const tokenFormatter = useTokenFormatter();
   return (
     <Box {...props}>
-      <Table variant="simple" colorScheme="grey">
-        <Thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Value</Th>
-            <Th>Code</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {Object.entries(tokens.size.breakpoint).map(([key, token]) => (
-            <Tr key={key}>
-              <Td>{breakpointDisplayNames[key as Breakpoint] || key}</Td>
-              <Td>{token}</Td>
-              <Td>
-                <Stack spacing={1}>
+      <Table variant="line" colorPalette="grey">
+        <TableHeader>
+          <TableRow>
+            <TableColumnHeader>Name</TableColumnHeader>
+            <TableColumnHeader>Value</TableColumnHeader>
+            <TableColumnHeader>Code</TableColumnHeader>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {Object.entries(tokens.size.breakpoint).map(([key, token]): any => (
+            <TableRow key={key}>
+              <TableCell>
+                {breakpointDisplayNames[key as Breakpoint] || key}
+              </TableCell>
+              <TableCell>{token as any}</TableCell>
+              <TableCell>
+                <Stack padding={1}>
                   <Box>
                     <Code>{tokenFormatter(`size.breakpoint.${key}`)}</Code>
                   </Box>
                 </Stack>
-              </Td>
-            </Tr>
+              </TableCell>
+            </TableRow>
           ))}
-        </Tbody>
+        </TableBody>
       </Table>
     </Box>
   );

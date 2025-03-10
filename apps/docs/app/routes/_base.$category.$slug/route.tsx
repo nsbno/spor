@@ -1,4 +1,5 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import { Link } from "@remix-run/react";
 import { groq } from "@sanity/groq-store";
 import {
   FigmaOutline24Icon,
@@ -9,17 +10,16 @@ import {
   Box,
   Brand,
   Button,
-  Divider,
   Flex,
   HStack,
   Heading,
+  TabsList,
   Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
   Tabs,
   Text,
+  TabsTrigger,
+  Separator,
+  TabsContent,
 } from "@vygruppen/spor-react";
 import invariant from "tiny-invariant";
 import { PortableText } from "~/features/portable-text/PortableText";
@@ -38,7 +38,7 @@ import {
 import { toTitleCase } from "~/utils/stringUtils";
 
 type ResourceLink = {
-  linkType: "figma" | "react" | "react-native" | "elm";
+  linkType: "figma" | "react" | "react-native";
   url: string;
 };
 type ComponentSection = {
@@ -173,24 +173,23 @@ export default function ArticlePage() {
         <HStack>
           {article?.category?.title && (
             <Badge
-              colorScheme={
+              colorPalette={
                 brand === Brand.CargoNet ? "light-yellow" : "light-green"
               }
             >
               {article?.category?.title}
             </Badge>
           )}
-          {isPreview && <Badge colorScheme="yellow">Preview</Badge>}
+          {isPreview && <Badge colorPalette="yellow">Preview</Badge>}
         </HStack>
         <Flex wrap="wrap" gap={2} marginLeft={"auto"} justifyContent={"end"}>
           {article.resourceLinks?.map((link) => (
             <Button
               key={link.url}
-              as="a"
-              href={link.url}
               variant="tertiary"
               size="sm"
               leftIcon={mapLinkToIcon(link.linkType)}
+              onClick={() => window.open(link.url, "_blank")}
             >
               {mapLinkToLabel(link.linkType)}
             </Button>
@@ -234,8 +233,6 @@ const mapLinkToLabel = (linkType: ResourceLink["linkType"]) => {
   switch (linkType) {
     case "figma":
       return "Figma";
-    case "elm":
-      return "Elm";
     case "react":
       return "React";
     case "react-native":
@@ -260,36 +257,46 @@ type ComponentSectionsProps = {
 };
 const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
   return (
-    <Tabs variant="accent" size="md" marginTop={4} isFitted isLazy key={id}>
-      <TabList>
+    <Tabs
+      variant="accent"
+      size="md"
+      marginTop={4}
+      fitted={"true"}
+      lazyMount
+      key={id}
+      defaultValue={sections[0].customTitle || sections[0].title}
+    >
+      <TabsList>
         {sections.map((section) => (
-          <Tab key={section.title}>
+          <TabsTrigger key={section.title} value={section.title}>
             {getCorrectTitle({
               title: section.title,
               customTitle: section.customTitle,
             })}
-          </Tab>
+          </TabsTrigger>
         ))}
-      </TabList>
-      <Divider marginY={4} />
-      <TabPanels>
-        {sections.map((section) => (
-          <TabPanel key={section.customTitle || section.title}>
-            <Heading as="h2" variant="lg" marginBottom={1}>
-              {getCorrectTitle({
-                title: section.title,
-                customTitle: section.customTitle,
-              })}
-            </Heading>
-            <Stack>
-              {section.content && <PortableText value={section.content} />}
-              {section.components?.map((component) => (
-                <ComponentDocs key={component._id} component={component} />
-              ))}
-            </Stack>
-          </TabPanel>
-        ))}
-      </TabPanels>
+      </TabsList>
+      <Separator marginY={4} />
+
+      {sections.map((section) => (
+        <TabsContent
+          key={section.customTitle || section.title}
+          value={section.customTitle || section.title}
+        >
+          <Heading as="h2" variant="lg" marginBottom={1}>
+            {getCorrectTitle({
+              title: section.title,
+              customTitle: section.customTitle,
+            })}
+          </Heading>
+          <Stack>
+            {section.content && <PortableText value={section.content} />}
+            {section.components?.map((component) => (
+              <ComponentDocs key={component._id} component={component} />
+            ))}
+          </Stack>
+        </TabsContent>
+      ))}
     </Tabs>
   );
 };

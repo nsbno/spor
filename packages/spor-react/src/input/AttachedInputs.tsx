@@ -1,7 +1,18 @@
-import React from "react";
-import { Flex, FlexProps } from "..";
+"use client";
 
-type AttachedInputsProps = FlexProps;
+import React, { forwardRef, PropsWithChildren } from "react";
+import { Group, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import { attachedInputsRecipe } from "@/theme/recipes/attached-inputs";
+import { InputGroupProps } from "./InputGroup";
+
+type AttachedInputsVariantProps = RecipeVariantProps<
+  typeof attachedInputsRecipe
+>;
+
+type AttachedInputsProps = Exclude<InputGroupProps, "orientation"> &
+  PropsWithChildren<AttachedInputsVariantProps> & {
+    orientation?: "horizontal" | "vertical";
+  };
 /**
  * Attaches several inputs together, so that they look like one input.
  *
@@ -14,42 +25,18 @@ type AttachedInputsProps = FlexProps;
  * </AttachedInputs>
  * ```
  */
-export const AttachedInputs = ({
-  flexDirection = "row",
-  ...rest
-}: AttachedInputsProps) => {
-  const attachedStyles = {
-    horizontal: {
-      "> *:first-of-type:not(:last-of-type) [data-attachable]": {
-        borderEndRadius: 0,
-      },
-      "> *:not(:first-of-type):not(:last-of-type) [data-attachable]": {
-        borderRadius: 0,
-      },
-      "> *:not(:first-of-type):last-of-type [data-attachable]": {
-        borderStartRadius: 0,
-      },
-    },
-    vertical: {
-      "> *:first-of-type:not(:last-of-type) [data-attachable]": {
-        borderBottomRadius: 0,
-      },
-      "> *:not(:first-of-type):not(:last-of-type) [data-attachable]": {
-        borderRadius: 0,
-      },
-      "> *:not(:first-of-type):last-of-type [data-attachable]": {
-        borderTopRadius: 0,
-      },
-    },
-  };
-  const direction = flexDirection === "row" ? "horizontal" : "vertical";
-  return (
-    <Flex
-      role="group"
-      __css={attachedStyles[direction]}
-      display="flex"
-      flexDirection={flexDirection}
-      {...rest}
-    />
-  );
-};
+
+export const AttachedInputs = forwardRef<HTMLDivElement, AttachedInputsProps>(
+  (props, ref) => {
+    const { orientation = "horizontal", children } = props;
+
+    const recipe = useRecipe({ key: "attachedInputs" });
+    const styles = recipe({ orientation });
+
+    return (
+      <Group ref={ref} attached css={styles}>
+        {children}
+      </Group>
+    );
+  },
+);

@@ -1,4 +1,3 @@
-import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { brandBackground } from "./brand-utils";
 import { State, Subset } from "./types";
 
@@ -7,48 +6,36 @@ type AccentBackgroundState = Subset<
   "default" | "hover" | "active" | "selected"
 >;
 
-export function accentBackground(
-  state: AccentBackgroundState,
-  props: StyleFunctionProps,
-) {
+export function accentBackground(state: AccentBackgroundState) {
   switch (state) {
     case "selected":
-      return brandBackground("default", props);
+      return brandBackground("default");
     case "active":
       return {
-        backgroundColor: mode(
-          "accent.surface.active.light",
-          "accent.surface.active.dark",
-        )(props),
+        backgroundColor: "accent.surface.active",
       };
     case "hover":
       return {
-        backgroundColor: mode(
-          "accent.surface.hover.light",
-          "accent.surface.hover.dark",
-        )(props),
+        backgroundColor: "accent.surface.hover",
       };
     default:
       return {
-        backgroundColor: mode(
-          "accent.surface.default.light",
-          "accent.surface.default.dark",
-        )(props),
+        backgroundColor: "accent.surface",
       };
   }
 }
 
 type AccentTextState = Subset<State, "default" | "selected">;
 
-export function accentText(state: AccentTextState, props: StyleFunctionProps) {
+export function accentText(state: AccentTextState) {
   switch (state) {
     case "selected":
       return {
-        color: mode("brand.text.light", "brand.text.dark")(props),
+        color: "brand.text",
       };
     default:
       return {
-        color: mode("accent.text.light", "accent.text.dark")(props),
+        color: "accent.text",
       };
   }
 }

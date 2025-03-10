@@ -1,13 +1,13 @@
 import {
   Box,
   Brand,
-  Divider,
   Heading,
   HStack,
+  Separator,
   Stack,
-  Tab,
-  TabList,
   Tabs,
+  TabsList,
+  TabsTrigger,
   Text,
   useColorMode,
 } from "@vygruppen/spor-react";
@@ -29,12 +29,24 @@ export default function DesignTokensPage() {
   const data = useMatchesData("root");
   const brand = data?.brand ?? Brand.VyDigital;
 
+  const handleChange = (event: React.FormEvent<HTMLDivElement>) => {
+    const selectedTab = [Brand.VyDigital, Brand.CargoNet, Brand.VyUtvikling][
+      event.currentTarget.getAttribute("data-index") as unknown as number
+    ];
+    const formData = new FormData();
+    formData.set("brand", selectedTab);
+    fetcher.submit(formData, {
+      method: "post",
+      action: "/",
+    });
+  };
+
   return (
     <Box>
       <Heading as="h1" variant="xl-display" marginBottom={2}>
         Design tokens
       </Heading>
-      <Stack spacing={3}>
+      <Stack padding={3}>
         <Text variant="sm">
           Design tokens are all the values needed to construct and maintain a
           design system. These values can represent everything defined by the
@@ -58,32 +70,20 @@ export default function DesignTokensPage() {
             <Tabs
               variant={"accent"}
               size="md"
-              defaultValue={brand}
-              onChange={(index: number) => {
-                const selectedTab = [
-                  Brand.VyDigital,
-                  Brand.CargoNet,
-                  Brand.VyUtvikling,
-                ][index];
-                const formData = new FormData();
-                formData.set("brand", selectedTab);
-                fetcher.submit(formData, {
-                  method: "post",
-                  action: "/",
-                });
-              }}
+              defaultValue={brand as string}
+              onChange={handleChange}
             >
-              <TabList>
-                <Tab width={[null, 100]} value={Brand.VyDigital}>
+              <TabsList>
+                <TabsTrigger width={[null, 100]} value={Brand.VyDigital}>
                   Vy
-                </Tab>
-                <Tab width={[null, 100]} value={Brand.CargoNet}>
+                </TabsTrigger>
+                <TabsTrigger width={[null, 100]} value={Brand.CargoNet}>
                   {Brand.CargoNet}
-                </Tab>
-                <Tab width={[null, 100]} value={Brand.VyUtvikling}>
+                </TabsTrigger>
+                <TabsTrigger width={[null, 100]} value={Brand.VyUtvikling}>
                   IT
-                </Tab>
-              </TabList>
+                </TabsTrigger>
+              </TabsList>
             </Tabs>
           </fetcher.Form>
         </Stack>
@@ -92,16 +92,20 @@ export default function DesignTokensPage() {
             Color mode
           </Heading>
           <Tabs variant={"accent"} size="md" onChange={() => toggleColorMode()}>
-            <TabList>
-              <Tab width={[null, 100]}>Light</Tab>
-              <Tab width={[null, 100]}>Dark</Tab>
-            </TabList>
+            <TabsList>
+              <TabsTrigger width={[null, 100]} value="light">
+                Light
+              </TabsTrigger>
+              <TabsTrigger width={[null, 100]} value="dark">
+                Dark
+              </TabsTrigger>
+            </TabsList>
           </Tabs>
         </Stack>
       </HStack>
 
-      <Divider marginBottom={8} marginTop={4} />
-      <Stack spacing={9}>
+      <Separator marginBottom={8} marginTop={4} />
+      <Stack gap={9}>
         <ColorTokens />
         <TypographyTokens />
         <SpacingTokens />

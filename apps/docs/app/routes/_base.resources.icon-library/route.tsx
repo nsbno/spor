@@ -3,8 +3,8 @@ import { DownloadOutline24Icon } from "@vygruppen/spor-icon-react";
 import {
   Button,
   ButtonGroup,
-  Divider,
   Heading,
+  Separator,
   Stack,
   Text,
 } from "@vygruppen/spor-react";
@@ -14,7 +14,7 @@ import { SearchResults } from "./SearchResults";
 
 export default function IconsPage() {
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       <Heading as="h1" variant="xl-display">
         Icon library
       </Heading>
@@ -26,17 +26,15 @@ export default function IconsPage() {
       </Text>
       <ButtonGroup>
         <Button
-          as={Link}
-          to="all-icons.zip"
-          download={true}
-          reloadDocument
+          asChild
           variant="primary"
+          size="md"
           leftIcon={<DownloadOutline24Icon />}
         >
-          Download all icons
+          <Link to="all-icons.zip">Download all icons</Link>
         </Button>
       </ButtonGroup>
-      <Divider />
+      <Separator />
       <SearchFilterProvider>
         <SearchBar />
         <SearchResults />

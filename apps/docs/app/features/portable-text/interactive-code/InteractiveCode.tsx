@@ -8,6 +8,7 @@ type InteractiveCodeProps = {
   code: string;
   layout: "simple" | "preview-only" | "code-only" | "advanced";
 } & BoxProps;
+
 export const InteractiveCode = ({
   code,
   layout = "simple",
@@ -16,7 +17,7 @@ export const InteractiveCode = ({
   return (
     <Box {...rest}>
       <LiveProvider code={code}>
-        <Stack spacing={2} aria-live="polite">
+        <Stack gap={2} aria-live="polite">
           {layout === "simple" && (
             <>
               <LivePreview />

@@ -71,6 +71,12 @@ cd spor
 pnpm install
 ```
 
+### Run typegen
+
+```sh
+pnpm typegen
+```
+
 ### ⚡ Building the Project
 
 ```sh

@@ -197,3 +197,11 @@ export const cardSelectAnatomy = createAnatomy("card-select").parts(
   "card",
 );
 export const choiceChipAnatomy = createAnatomy("choice-chip").parts("root");
+
+export const numericStepperAnatomy = createAnatomy("numeric-stepper").parts(
+  "root",
+  "container",
+  "input",
+  "text",
+  "button",
+);

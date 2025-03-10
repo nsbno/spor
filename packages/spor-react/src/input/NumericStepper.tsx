@@ -1,14 +1,14 @@
 "use client";
-import React, { forwardRef, PropsWithChildren, useRef } from "react";
-import { BoxProps, IconButton, createTexts, useTranslation } from "..";
-import { numericStepperRecipe } from "../theme/slot-recipes/numeric-stepper";
 import {
+  Box,
   chakra,
   RecipeVariantProps,
   useControllableState,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import { Field } from "./Field";
+import React, { PropsWithChildren, useRef } from "react";
+import { BoxProps, createTexts, IconButton, useTranslation } from "..";
+import { numericStepperRecipe } from "../theme/slot-recipes/numeric-stepper";
 
 type NumericStepperVariants = RecipeVariantProps<typeof numericStepperRecipe>;
 
@@ -62,7 +62,10 @@ export type NumericStepperProps = BoxProps &
  * ```
  */
 
-export const NumericStepper = forwardRef<HTMLDivElement, NumericStepperProps>(
+export const NumericStepper = React.forwardRef<
+  HTMLDivElement,
+  NumericStepperProps
+>(
   (
     {
       name: nameProp,
@@ -97,7 +100,7 @@ export const NumericStepper = forwardRef<HTMLDivElement, NumericStepperProps>(
     };
 
     return (
-      <Field css={styles}>
+      <Box css={styles.root}>
         <VerySmallButton
           icon={<SubtractIcon stepLabel={clampedStepSize} />}
           aria-label={t(
@@ -125,7 +128,7 @@ export const NumericStepper = forwardRef<HTMLDivElement, NumericStepperProps>(
             name={nameProp}
             value={value}
             id={!showZero && value === 0 ? undefined : idProp}
-            css={styles}
+            css={styles.input}
             width={`${Math.max(value.toString().length + 1, 3)}ch`}
             visibility={!showZero && value === 0 ? "hidden" : "visible"}
             aria-live="assertive"
@@ -178,7 +181,7 @@ export const NumericStepper = forwardRef<HTMLDivElement, NumericStepperProps>(
           disabled={disabled}
           id={value >= maxValue ? undefined : idProp}
         />
-      </Field>
+      </Box>
     );
   },
 );
@@ -206,7 +209,13 @@ const VerySmallButton = React.forwardRef<
   const recipe = useSlotRecipe({ recipe: numericStepperRecipe });
   const styles = recipe({ colorPalette: "default" });
   return (
-    <IconButton variant="primary" size="xs" css={styles} ref={ref} {...props} />
+    <IconButton
+      variant="primary"
+      size="xs"
+      css={styles.button}
+      ref={ref}
+      {...props}
+    />
   );
 });
 
@@ -214,13 +223,7 @@ type IconPropTypes = BoxProps & { stepLabel: number };
 
 const SubtractIcon = ({ stepLabel }: IconPropTypes) => (
   <>
-    <chakra.svg
-      as="svg"
-      viewBox="0 0 30 30"
-      width="24"
-      height="24"
-      stroke="currentColor"
-    >
+    <chakra.svg as="svg" viewBox="0 0 30 30" stroke="currentColor">
       <line
         x1="9"
         y1="15"
@@ -238,13 +241,7 @@ const SubtractIcon = ({ stepLabel }: IconPropTypes) => (
 
 const AddIcon = ({ stepLabel }: IconPropTypes) => (
   <>
-    <chakra.svg
-      as="svg"
-      viewBox="0 0 30 30"
-      width="24"
-      height="24"
-      stroke="currentColor"
-    >
+    <chakra.svg as="svg" viewBox="0 0 30 30" stroke="currentColor">
       <line
         x1="9"
         y1="15"

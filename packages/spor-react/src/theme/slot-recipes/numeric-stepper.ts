@@ -1,11 +1,13 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { numericStepperAnatomy } from "./anatomy";
 
 export const numericStepperRecipe = defineSlotRecipe({
-  slots: ["container", "input", "text", "button"],
+  slots: numericStepperAnatomy.keys(),
+  className: "spor-numeric-stepper",
   base: {
-    container: {
+    root: {
       display: "flex",
       flexDirection: "row",
       alignItems: "center",
@@ -47,8 +49,10 @@ export const numericStepperRecipe = defineSlotRecipe({
       ...coreText("default"),
     },
     button: {
-      minWidth: "24px",
-      minHeight: "24px",
+      width: "1rem",
+      height: "1rem",
+      maxHeight: "1rem",
+      maxWidth: "1rem",
     },
   },
 });

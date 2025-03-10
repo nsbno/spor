@@ -50,7 +50,6 @@ export const CountryCodeSelect = forwardRef<
       lazyMount
       aria-label={t(texts.countryCode)}
       variant={"rightSideSquare"}
-      invalid={invalid}
       outline={invalid ? "2px solid" : "none"}
       outlineColor={invalid ? "outline.error" : "none"}
       borderRadius={invalid ? "sm" : "none"}

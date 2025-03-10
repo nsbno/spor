@@ -182,11 +182,7 @@ const Document = withEmotionCache(
           ))}
         </head>
         <body>
-          <SporProvider
-            language={Language.English}
-            brand={brand}
-            value={{} as SystemContext}
-          >
+          <SporProvider language={Language.English} brand={brand}>
             <SkipToContent />
             {children}
           </SporProvider>

@@ -207,3 +207,8 @@ export const selectAnatomy = createAnatomy("select").parts(
   "label",
   "valueText",
 );
+export const cardSelectAnatomy = createAnatomy("card-select").parts(
+  "trigger",
+  "card",
+);
+export const choiceChipAnatomy = createAnatomy("choice-chip").parts("root");

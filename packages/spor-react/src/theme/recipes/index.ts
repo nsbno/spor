@@ -7,6 +7,7 @@ import { inputRecipe } from "./input";
 import { linkRecipe } from "./link";
 import { pressableCardRecipe } from "./pressable-card";
 import { separatorRecipe } from "./separator";
+import { skeletonRecipe } from "./skeleton";
 import { staticCardRecipe } from "./static-card";
 import { textareaRecipe } from "./textarea";
 import { toastRecipe } from "./toast";
@@ -21,6 +22,7 @@ export const recipes = {
   link: linkRecipe,
   pressableCard: pressableCardRecipe,
   seperator: separatorRecipe,
+  skeleton: skeletonRecipe,
   staticCard: staticCardRecipe,
   textarea: textareaRecipe,
   toast: toastRecipe,

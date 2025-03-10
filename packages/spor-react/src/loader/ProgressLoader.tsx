@@ -93,7 +93,7 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
           <path
             id={`${id}-track`}
             d="M204.911 39.1156C204.911 39.1156 175.012 46.8319 157.651 30.4354C140.29 14.0388 121 21.7547 110.391 47.6529C103.22 65.157 78.9634 67.0859 67.9533 47.6529C59.8376 33.3287 36.125 37.1866 36.125 37.1866"
-            stroke="coralGreen"
+            stroke="#B2DFD7"
             strokeWidth="13.6469"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -101,7 +101,7 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
           <path
             id={`${id}-progress`}
             d="M204.911 39.1156C204.911 39.1156 175.012 46.8319 157.651 30.4354C140.29 14.0388 121 21.7547 110.391 47.6529C103.22 65.157 78.9634 67.0859 67.9533 47.6529C59.8376 33.3287 36.125 37.1866 36.125 37.1866"
-            stroke="greenHaze"
+            stroke="#00957A"
             strokeWidth="13.6469"
             strokeLinecap="round"
             strokeLinejoin="round"

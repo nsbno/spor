@@ -35,20 +35,18 @@ export const progressBarRecipe = defineSlotRecipe({
       fontWeight: "bold",
     },
   },
-  variants: {
-    colorPalette: {
-      primary: {
-        container: {
-          background: "brand.surface",
-          color: "brand.text",
-          _hover: {
-            background: "brand.hover",
-          },
-          _active: {
-            background: "brand.active",
-          },
+  /*  variants: {
+    isActive: {
+      true: {
+        background: {
+          backgroundColor: "green.200",
+        },
+      },
+      false: {
+        background: {
+          backgroundColor: "red",
         },
       },
     },
-  },
+  }, */
 });

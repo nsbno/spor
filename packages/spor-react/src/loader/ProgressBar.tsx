@@ -86,7 +86,6 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
       isActive = true,
       showValueText = false,
       height = "0.5rem",
-      width = "100%",
       "aria-label": ariaLabel,
       ...rest
     },
@@ -105,7 +104,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
         css={styles.container}
         ref={ref}
         defaultValue={value}
-        aria-label={label}
+        role="progressbar"
         {...rest}
       >
         <Progress.Track
@@ -121,17 +120,13 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
           </Progress.Label>
         )}
 
-        {showValueText && (
-          <Progress.ValueText>{`${value}%`}</Progress.ValueText>
-        )}
+        {showValueText && <Progress.ValueText>{value}%</Progress.ValueText>}
       </Progress.Root>
     );
   },
 );
 
-const texts: {
-  label: (value: number) => { nb: string; nn: string; sv: string; en: string };
-} = createTexts({
+const texts = createTexts({
   label: (value) => ({
     nb: `${value}% ferdig`,
     nn: `${value}% ferdig`,

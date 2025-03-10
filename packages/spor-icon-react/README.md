@@ -6,6 +6,8 @@ This package includes all of our icons as React components.
 
 ```bash
 $ npm install @vygruppen/spor-icon-react
+$ yarn add @vygruppen/spor-icon-react
+$ pnpm install @vygruppen/spor-icon-react
 ```
 
 ## Usage

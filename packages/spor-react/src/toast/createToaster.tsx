@@ -81,20 +81,32 @@ const getToastComponent = (opts: ToastOptions) => {
     );
   }
   if ("buttonText" in opts) {
-    return ({ id }: RenderArgs) => (
-      <ActionToast
-        id={id}
-        variant={opts.variant}
-        buttonText={opts.buttonText}
-        onClick={opts.onClick}
-      >
-        {opts.text}
-      </ActionToast>
-    );
+    return ({ id }: RenderArgs) => {
+      if (id === undefined) {
+        return null; // Handle the case where id is undefined
+      }
+
+      return (
+        <ActionToast
+          id={id.toString()}
+          variant={opts.variant}
+          buttonText={opts.buttonText}
+          onClick={opts.onClick}
+        >
+          {opts.text}
+        </ActionToast>
+      );
+    };
   }
-  return ({ id }: RenderArgs) => (
-    <BaseToast id={id} variant={opts.variant}>
-      {opts.text}
-    </BaseToast>
-  );
+  return ({ id }: RenderArgs) => {
+    if (id === undefined) {
+      return null; // Handle the case where id is undefined
+    }
+
+    return (
+      <BaseToast id={id.toString()} variant={opts.variant}>
+        {opts.text}
+      </BaseToast>
+    );
+  };
 };

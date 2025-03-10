@@ -192,6 +192,10 @@ export const switchAnatomy = createAnatomy("switch").parts(
   "label",
 );
 
+export const cardSelectAnatomy = createAnatomy("card-select").parts(
+  "trigger",
+  "card",
+);
 export const choiceChipAnatomy = createAnatomy("choice-chip").parts("root");
 
 export const progressBarAnotomy = createAnatomy("progress-bar").parts(

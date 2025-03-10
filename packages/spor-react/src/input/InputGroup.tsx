@@ -15,11 +15,11 @@ export type InputGroupProps = GroupProps & {
 };
 
 /**
- * 
+ *
  * InputGroup is a wrapper for inputs that have a startElement and/or endElement.
- * 
+ *
  * It is not exported to users, but used internally in the Input component.
- * 
+ *
  */
 
 export const InputGroup = React.forwardRef<HTMLDivElement, InputGroupProps>(

@@ -8,7 +8,6 @@ import {
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { progressBarRecipe } from "../theme/slot-recipes/progress-bar";
-import { useTranslation } from "react-i18next";
 import { useRotatingLabel } from "./useRotatingLabel";
 import { createTexts } from "../i18n";
 
@@ -91,7 +90,6 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
     },
     ref,
   ) => {
-    const { t } = useTranslation();
     const recipe = useSlotRecipe({ key: "progressbar" });
     const styles = recipe({});
     const currentLoadingText = useRotatingLabel({

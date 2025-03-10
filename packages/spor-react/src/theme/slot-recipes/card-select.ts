@@ -1,10 +1,9 @@
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
-import { floatingBackground, floatingBorder } from "../utils/floating-utils";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
+import { focusVisibleStyles } from "../utils/focus-utils";
+import { cardSelectAnatomy } from "./anatomy";
 
 export const cardSelectSlotRecipe = defineSlotRecipe({
-  slots: ["trigger", "card"],
+  slots: cardSelectAnatomy.keys(),
   className: "spor-card-select",
   base: {
     trigger: {
@@ -13,50 +12,79 @@ export const cardSelectSlotRecipe = defineSlotRecipe({
       alignItems: "center",
       transitionProperty: "outline",
       transitionDuration: "fast",
-      ...coreText("default"),
+      color: "core.text",
       ...focusVisibleStyles(),
+      fontWeight: "normal",
+      outline: "1px solid",
+      outlineColor: "core.outline",
+      _expanded: {
+        backgroundColor: "accent.surface.active",
+      },
     },
     card: {
       borderRadius: "sm",
       boxShadow: "md",
       padding: 3,
-      ...coreText("default"),
-      backgroundColor: `color-mix(in srgb, white 10%, var(--spor-colors-bg-default-dark))`,
+      color: "core.text",
+      backgroundColor: "surface",
     },
   },
   variants: {
     variant: {
       core: {
         trigger: {
-          ...coreBorder("default"),
+          outline: "1px solid",
+          outlineColor: "outline",
           _hover: {
-            ...coreBorder("hover"),
+            outline: "2px solid",
+            outlineColor: "core.outline",
           },
           _active: {
-            ...coreBackground("active"),
-            ...coreBorder("default"),
+            backgroundColor: "accent.surface.active",
+          },
+        },
+      },
+      ghost: {
+        trigger: {
+          backgroundColor: "transparent",
+          outline: "none",
+          color: "ghost.text",
+          _hover: {
+            backgroundColor: "ghost.surface.hover",
+          },
+          _active: {
+            backgroundColor: "ghost.surface.active",
           },
           _expanded: {
-            ...coreBackground("active"),
+            backgroundColor: "ghost.surface.active",
           },
         },
       },
       floating: {
         trigger: {
           boxShadow: "sm",
-          ...floatingBackground("default"),
-          ...floatingBorder("default"),
+          backgroundColor: {
+            _light: "bg",
+            _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
+          },
+          outline: "1px solid",
+          outlineColor: "floating.outline",
           transition: "all .1s ease-out",
           _hover: {
-            ...floatingBackground("hover"),
-            ...floatingBorder("hover"),
-          },
-          _active: {
-            ...floatingBackground("active"),
-            ...floatingBorder("active"),
+            backgroundColor: {
+              _light: "floating.surface.hover",
+              _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
+            },
+            outline: "1px solid",
+            outlineColor: "floating.outline.hover",
+            _active: {
+              backgroundColor: "floating.surface.active",
+              outline: "1px solid",
+              outlineColor: "floating.outline.active",
+            },
           },
           _expanded: {
-            ...floatingBackground("active"),
+            backgroundColor: "floating.surface.active",
           },
         },
       },
@@ -68,7 +96,7 @@ export const cardSelectSlotRecipe = defineSlotRecipe({
           paddingY: 1,
           minHeight: "1.25rem",
           fontSize: "xs",
-          borderRadius: "sm",
+          borderRadius: "md",
         },
       },
       md: {
@@ -76,8 +104,8 @@ export const cardSelectSlotRecipe = defineSlotRecipe({
           paddingX: 2,
           paddingY: 1.5,
           minHeight: "2.625rem",
-          fontSize: "sm",
-          borderRadius: "sm",
+          fontSize: "xs",
+          borderRadius: "lg",
         },
       },
       lg: {
@@ -86,7 +114,7 @@ export const cardSelectSlotRecipe = defineSlotRecipe({
           paddingY: 2,
           minHeight: "3.375rem",
           fontSize: "sm",
-          borderRadius: "sm",
+          borderRadius: "lg",
         },
       },
     },

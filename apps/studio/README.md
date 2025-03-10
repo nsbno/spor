@@ -10,7 +10,7 @@ To get started, please make a copy of the .env.example file, and name it .env.de
 $ cp .env.example .env.development
 ```
 
-Next, you can install all dependencies by running npm install and start a local development server with npm run dev. The Sanity studio will open on localhost:3333.
+Next, you can install all dependencies by running pnpm install and start a local development server with pnpm dev. The Sanity studio will open on localhost:3333.
 
 To use the studio, you need to request access in our Slack channel - #spor.
 

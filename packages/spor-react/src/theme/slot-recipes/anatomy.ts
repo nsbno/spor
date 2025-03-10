@@ -193,3 +193,11 @@ export const switchAnatomy = createAnatomy("switch").parts(
 );
 
 export const choiceChipAnatomy = createAnatomy("choice-chip").parts("root");
+
+export const progressBarAnotomy = createAnatomy("progress-bar").parts(
+  "container",
+  "background",
+  "progress",
+  "description",
+  "disabledBackground",
+);

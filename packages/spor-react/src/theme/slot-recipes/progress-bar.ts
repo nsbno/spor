@@ -1,13 +1,8 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+import { progressBarAnotomy } from "./anatomy";
 
 export const progressBarRecipe = defineSlotRecipe({
-  slots: [
-    "container",
-    "background",
-    "progress",
-    "description",
-    "disabledBackground",
-  ],
+  slots: progressBarAnotomy.keys(),
   base: {
     container: {
       minWidth: "100px",

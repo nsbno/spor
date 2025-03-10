@@ -105,6 +105,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
         css={styles.container}
         ref={ref}
         defaultValue={value}
+        aria-label={label}
         {...rest}
       >
         <Progress.Track
@@ -115,10 +116,11 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
         </Progress.Track>
 
         {label && (
-          <Progress.Label css={styles.description}>
+          <Progress.Label aria-hidden="true" css={styles.description}>
             {currentLoadingText}
           </Progress.Label>
         )}
+
         {showValueText && (
           <Progress.ValueText>{`${value}%`}</Progress.ValueText>
         )}

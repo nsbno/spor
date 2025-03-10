@@ -12,7 +12,7 @@ type CodeBlockProps = Omit<BoxProps, "children"> & {
   /** The code to highlight */
   code: string;
   /** The code language to highlight */
-  language?: "tsx" | "elm" | "bash";
+  language?: "tsx" | "bash";
 };
 
 export const CodeBlock = ({
@@ -25,6 +25,7 @@ export const CodeBlock = ({
       maxWidth={`calc(100vw - var(--spor-space-6))`}
       {...props}
       code={code}
+      marginTop={2}
     >
       <Highlight theme={theme} code={code} language={language as any}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (

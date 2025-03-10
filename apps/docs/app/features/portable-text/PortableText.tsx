@@ -20,6 +20,8 @@ import {
   StaticCard,
   Text,
   TextLink,
+  List,
+  ListItem,
 } from "@vygruppen/spor-react";
 import deepmerge from "deepmerge";
 import React from "react";
@@ -111,20 +113,20 @@ const components: Partial<PortableTextReactComponents> = {
   },
   list: {
     bullet: ({ children }) => (
-      <Box as="ul" paddingLeft={3} marginTop={0} marginBottom={3}>
+      <List as="ul" paddingLeft={3} marginTop={0} marginBottom={3}>
         {children}
-      </Box>
+      </List>
     ),
     number: ({ children }) => (
-      <Box as="ol" paddingLeft={3} marginTop={0} marginBottom={3}>
+      <List as="ol" paddingLeft={3} marginTop={0} marginBottom={3}>
         {children}
-      </Box>
+      </List>
     ),
   },
   listItem: ({ children }) => (
-    <Box as="li" marginTop={0.5} textStyle="sm">
+    <ListItem marginTop={0.5} textStyle="sm">
       {children}
-    </Box>
+    </ListItem>
   ),
   types: {
     buttonLink: ({ value }) => {

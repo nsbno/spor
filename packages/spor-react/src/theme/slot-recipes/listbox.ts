@@ -1,22 +1,22 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { coreBorder } from "../utils/core-utils";
-import { ghostBackground, ghostText } from "../utils/ghost-utils";
-import { surface } from "../utils/surface-utils";
 import { outlineBorder } from "../utils/outline-utils";
-import { floatingBorder } from "../utils/floating-utils";
+import { listBoxAnatomy } from "./anatomy";
 
 export const listBoxSlotRecipe = defineSlotRecipe({
-  slots: ["root", "item", "label", "description"],
+  slots: listBoxAnatomy.keys(),
   className: "spor-listbox",
   base: {
     root: {
-      ...surface("default"),
+      backgroundColor: "surface",
       boxShadow: "sm",
       overflowY: "auto",
       maxHeight: "50vh",
       width: "100%",
       listStyle: "none",
-      borderBottomRadius: "sm",
+      paddingTop: 2,
+      borderBottomRadius: "md",
+      borderWidth: 1,
+      zIndex: "dropdown",
     },
     item: {
       paddingX: 2,
@@ -24,28 +24,32 @@ export const listBoxSlotRecipe = defineSlotRecipe({
       marginY: 1,
       marginX: 1,
       borderRadius: "sm",
-      ...ghostText("default"),
+      color: "ghost.text",
       cursor: "pointer",
-      outline: "none",
+      listStyle: "none",
       _active: {
-        ...ghostBackground("active"),
+        backgroundColor: "ghost.surface.active",
       },
       _focusVisible: {
         ...outlineBorder("focus"),
       },
       _hover: {
-        ...ghostBackground("hover"),
+        backgroundColor: "accent.surface",
+        color: "accent.text",
       },
       _selected: {
-        ...ghostBackground("active"),
+        backgroundColor: "ghost.surface.active",
+      },
+      _focus: {
+        outlineColor: "outline.focus",
       },
     },
     label: {},
     description: {
       fontSize: ["mobile.xs", "desktop.xs"],
-      ...ghostText("default"),
+      color: "ghost.text",
       "[aria-selected='true'] &": {
-        ...ghostText("selected"),
+        color: "ghost.text",
       },
     },
   },
@@ -53,12 +57,14 @@ export const listBoxSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         root: {
-          ...coreBorder("default"),
+          outline: "1px solid",
+          outlineColor: "core.outline",
         },
       },
       floating: {
         root: {
-          ...floatingBorder("default"),
+          outline: "1px solid",
+          outlineColor: "floating.outline",
         },
       },
     },

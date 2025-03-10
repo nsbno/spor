@@ -164,6 +164,13 @@ export const radioAnatomy = createAnatomy("radio").parts(
   "label",
 );
 
+export const listBoxAnatomy = createAnatomy("listbox").parts(
+  "root",
+  "item",
+  "label",
+  "description",
+);
+
 export const NativeSelectAnatomy = createAnatomy("native-select").parts(
   "root",
   "field",
@@ -189,3 +196,4 @@ export const cardSelectAnatomy = createAnatomy("card-select").parts(
   "trigger",
   "card",
 );
+export const choiceChipAnatomy = createAnatomy("choice-chip").parts("root");

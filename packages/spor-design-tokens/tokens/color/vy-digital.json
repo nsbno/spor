@@ -5,19 +5,19 @@
         "DEFAULT": {
           "value": {
             "_light": "colors.white",
-            "_dark": "colors.interstellar"
+            "_dark": "colors.night"
           }
         },
         "secondary": {
           "value": {
             "_light": "colors.lightGrey",
-            "_dark": "colors.night"
+            "_dark": "colors.jungle"
           }
         },
         "tertiary": {
           "value": {
             "_light": "colors.mint",
-            "_dark": "colors.jungle"
+            "_dark": "colors.darkTeal"
           }
         }
       },
@@ -127,19 +127,19 @@
         "DEFAULT": {
           "value": {
             "_light": "colors.white",
-            "_dark": "colors.interstellar"
+            "_dark": "colors.night"
           }
         },
         "secondary": {
           "value": {
             "_light": "colors.seaMist",
-            "_dark": "colors.night"
+            "_dark": "colors.jungle"
           }
         },
         "tertiary": {
           "value": {
             "_light": "colors.darkTeal",
-            "_dark": "colors.jungle"
+            "_dark": "colors.darkTeal"
           }
         },
         "disabled": {
@@ -314,13 +314,13 @@
           "DEFAULT": {
             "value": {
               "_light": "colors.white",
-              "_dark": "colors.interstellar"
+              "_dark": "colors.night"
             }
           },
           "hover": {
             "value": {
               "_light": "colors.white",
-              "_dark": "colors.night"
+              "_dark": "colors.interstellar"
             }
           },
           "active": {

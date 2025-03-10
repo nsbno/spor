@@ -27,6 +27,34 @@ export type SelectProps = ChakraSelectRootProps &
     label?: string;
   };
 
+/**
+ * A Select component.
+ *
+ * This component is useful to choose an item from a dropdown list of items. The list has four different variants, core, floating, rightSideSquare, leftSideSquare.
+ * The last two variants are useful in attachecdInput for example in the PhoneNumberInput and CountryCodeSelect components.
+ *
+ * @example
+ * ```tsx
+ * <Select label="Choose transportation" >
+       <SelectItem item={{
+            label: "Train",
+            value: "train",
+          }}>
+         item label
+       </SelectItem>
+       <SelectItem item={{
+            label: "Bus",
+            value: "Bus",
+          }}>
+         item label
+       </SelectItem>
+    </Select>
+ * ```
+ *
+ * @see https://spor.vy.no/components/select
+ *
+ */
+
 export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
   (props, ref) => {
     const { variant = "core", children, positioning, label, ...rest } = props;

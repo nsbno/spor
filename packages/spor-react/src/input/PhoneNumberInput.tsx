@@ -19,6 +19,8 @@ type PhoneNumberInputProps = InputProps & {
   value?: CountryCodeAndPhoneNumber;
   /** Returns an extra optional text when true */
   optional?: boolean;
+  invalid?: boolean;
+  errorText?: string;
 };
 /**
  * A component for entering phone numbers.
@@ -48,6 +50,8 @@ export const PhoneNumberInput = forwardRef<
     onValueChange: externalOnChange,
     variant,
     optional,
+    invalid,
+    errorText,
   } = props;
 
   const { t } = useTranslation();
@@ -82,6 +86,7 @@ export const PhoneNumberInput = forwardRef<
           width="6.25rem"
           variant={variant}
           data-state="on"
+          invalid={invalid}
         />
 
         <Input
@@ -89,6 +94,8 @@ export const PhoneNumberInput = forwardRef<
           type="tel"
           label={label}
           value={value.nationalNumber}
+          invalid={invalid}
+          errorText={errorText}
           onChange={(e) => {
             const target = e.target as HTMLInputElement;
             // Removes everything but numbers, spaces and dashes

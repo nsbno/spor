@@ -220,6 +220,28 @@ export const selectSlotRecipe = defineSlotRecipe({
           outlineColor: "floating.outline",
         },
       },
+      rightSideSquare: {
+        control: {
+          outline: "1px solid",
+          outlineColor: "core.outline",
+        },
+        trigger: {
+          _focus: {
+            borderRightRadius: "none",
+          },
+        },
+      },
+      leftSideSquare: {
+        control: {
+          outline: "1px solid",
+          outlineColor: "core.outline",
+        },
+        trigger: {
+          _focus: {
+            borderLeftRadius: "none",
+          },
+        },
+      },
     },
   },
 });

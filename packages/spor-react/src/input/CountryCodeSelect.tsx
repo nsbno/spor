@@ -39,8 +39,7 @@ export const CountryCodeSelect = forwardRef<
   CountryCodeSelectProps
 >((props, ref) => {
   const { t } = useTranslation();
-
-  const { variant } = props;
+  const invalid = props.invalid;
 
   return (
     <Select
@@ -50,7 +49,12 @@ export const CountryCodeSelect = forwardRef<
       collection={callingCodes}
       lazyMount
       aria-label={t(texts.countryCode)}
-      variant={variant}
+      variant={"rightSideSquare"}
+      invalid={invalid}
+      outline={invalid ? "2px solid" : "none"}
+      outlineColor={invalid ? "outline.error" : "none"}
+      borderRadius={invalid ? "sm" : "none"}
+      borderRightRadius={invalid ? "none" : "sm"}
     >
       {callingCodes.items.map((code) => (
         <SelectItem key={code.label} item={code}>

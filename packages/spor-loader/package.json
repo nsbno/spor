@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-loader",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -16,10 +16,11 @@
     "directory": "packages/spor-loader"
   },
   "scripts": {
-    "build": "tsup src/* --dts --treeshake --format esm,cjs",
-    "dev": "tsup src/index.ts --watch"
+    "build": "tsup",
+    "dev": "tsup --watch"
   },
   "devDependencies": {
+    "@vygruppen/tsconfig": "workspace:*",
     "tsup": "^7.2.0"
   }
 }

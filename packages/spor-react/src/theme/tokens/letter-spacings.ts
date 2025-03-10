@@ -1,4 +1,4 @@
-import { defineTokens } from "@chakra-ui/react"
+import { defineTokens } from "@chakra-ui/react";
 
 export const letterSpacings = defineTokens.letterSpacings({
   tighter: {
@@ -16,4 +16,4 @@ export const letterSpacings = defineTokens.letterSpacings({
   widest: {
     value: "0.1em",
   },
-})
+});

@@ -52,7 +52,7 @@ export const Toaster = () => {
           <Toast.Root width={{ md: "sm" }} role="alert">
             <ToastIcon variant={toast.type as Variant} />
             <Stack gap="1" flex="1" maxWidth="100%">
-              {toast.title && <Toast.Title>{toast.title}</Toast.Title>}
+              <Toast.Title>{toast.title}</Toast.Title>
             </Stack>
           </Toast.Root>
         )}

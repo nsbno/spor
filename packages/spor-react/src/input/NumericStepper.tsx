@@ -1,6 +1,5 @@
 "use client";
 import {
-  Box,
   chakra,
   RecipeVariantProps,
   useControllableState,
@@ -9,6 +8,7 @@ import {
 import React, { PropsWithChildren, useRef } from "react";
 import { BoxProps, createTexts, IconButton, useTranslation } from "..";
 import { numericStepperRecipe } from "../theme/slot-recipes/numeric-stepper";
+import { Field } from "./Field";
 
 type NumericStepperVariants = RecipeVariantProps<typeof numericStepperRecipe>;
 
@@ -38,11 +38,13 @@ export type NumericStepperProps = BoxProps &
     /** Name added to the aria-label of subtract and add buttons. */
     ariaLabelContext?: { singular: string; plural: string };
   } & Omit<BoxProps, "onChange">;
+
 /** A simple stepper component for integer values
  *
  * Allows you to choose a given integer value, like for example the number of
  * adults on your journey.
  *
+ * @example
  * ```tsx
  * <NumericStepper value={value} onChange={setValue} />
  * ```
@@ -56,10 +58,9 @@ export type NumericStepperProps = BoxProps &
  * You can use the NumericStepper inside of a Field component to get IDs etc linked up automatically:
  *
  * ```tsx
- * <Field label="Number of adults">
- *   <NumericStepper />
- * </Field>
+ * <NumericStepper />
  * ```
+ * @see https://spor.vy.no/components/numeric-stepper
  */
 
 export const NumericStepper = React.forwardRef<
@@ -80,7 +81,6 @@ export const NumericStepper = React.forwardRef<
       stepSize = 1,
       showZero = false,
       ariaLabelContext = { singular: "", plural: "" },
-      ...boxProps
     }: NumericStepperProps,
     ref,
   ) => {
@@ -100,7 +100,7 @@ export const NumericStepper = React.forwardRef<
     };
 
     return (
-      <Box css={styles.root}>
+      <Field css={styles.root} flexDirection="row" width="auto">
         <VerySmallButton
           icon={<SubtractIcon stepLabel={clampedStepSize} />}
           aria-label={t(
@@ -127,6 +127,7 @@ export const NumericStepper = React.forwardRef<
             max={maxValue}
             name={nameProp}
             value={value}
+            disabled={disabled}
             id={!showZero && value === 0 ? undefined : idProp}
             css={styles.input}
             width={`${Math.max(value.toString().length + 1, 3)}ch`}
@@ -181,7 +182,7 @@ export const NumericStepper = React.forwardRef<
           disabled={disabled}
           id={value >= maxValue ? undefined : idProp}
         />
-      </Box>
+      </Field>
     );
   },
 );
@@ -231,6 +232,7 @@ const SubtractIcon = ({ stepLabel }: IconPropTypes) => (
         y2="15"
         strokeWidth="1.5"
         strokeLinecap="round"
+        preserveAspectRatio="xMidYMid meet"
       />
     </chakra.svg>
     {stepLabel > 1 && (

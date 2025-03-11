@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { numericStepperAnatomy } from "./anatomy";
 
@@ -15,14 +14,24 @@ export const numericStepperRecipe = defineSlotRecipe({
     input: {
       fontSize: "sm",
       fontWeight: "bold",
-      marginX: 1,
-      paddingX: 1,
+      marginX: 0.5,
+      paddingX: 0.5,
       borderRadius: "xs",
       textAlign: "center",
       transitionProperty: "common",
       transitionDuration: "fast",
-      ...coreText("default"),
-      ...coreBackground("default"),
+      color: "core.text",
+      backgroundColor: "transparent",
+
+      _focus: {
+        backgroundColor: "surface",
+        outline: "2px solid",
+        outlineColor: "outline.focus",
+      },
+
+      _active: {
+        backgroundColor: "accent.surface.active",
+      },
 
       _disabled: {
         pointerEvents: "none",
@@ -30,13 +39,9 @@ export const numericStepperRecipe = defineSlotRecipe({
       },
 
       _hover: {
-        ...coreBorder("default"),
+        outline: "1px solid",
+        outlineColor: "core.outline",
       },
-
-      _active: {
-        ...coreBackground("active"),
-      },
-
       ...focusVisibleStyles,
     },
     text: {
@@ -46,13 +51,14 @@ export const numericStepperRecipe = defineSlotRecipe({
       paddingX: 1,
       textAlign: "center",
       width: "4ch",
-      ...coreText("default"),
+      color: "core.text",
     },
     button: {
-      width: "1rem",
-      height: "1rem",
-      maxHeight: "1rem",
-      maxWidth: "1rem",
+      maxHeight: "1.4rem",
+      maxWidth: "1.4rem",
+      border: "0.3rem solid",
+      borderColor: "surface",
+      outlineOffset: "-2px",
     },
   },
 });

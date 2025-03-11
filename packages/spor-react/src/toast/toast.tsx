@@ -49,11 +49,12 @@ export const Toaster = () => {
     <Portal>
       <ChakraToaster toaster={toaster} insetInline={{ mdDown: "4" }}>
         {(toast) => (
-          <Toast.Root width={{ md: "sm" }}>
+          <Toast.Root width={{ md: "sm" }} role="alert">
             <ToastIcon variant={toast.type as Variant} />
             <Stack gap="1" flex="1" maxWidth="100%">
               {toast.title && <Toast.Title>{toast.title}</Toast.Title>}
-            </Stack>
+            </Stack>{" "}
+            alert
           </Toast.Root>
         )}
       </ChakraToaster>

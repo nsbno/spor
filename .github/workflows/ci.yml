@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [update-chakra] # Change to main when update-chakra is merged
+  workflow_dispatch:
 
 jobs:
   build:

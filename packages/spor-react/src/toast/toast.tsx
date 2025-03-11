@@ -96,12 +96,6 @@ const texts = createTexts({
     sv: "Succé",
     en: "Success",
   },
-  warning: {
-    nb: "Advarsel",
-    nn: "Advarsel",
-    sv: "Varning",
-    en: "Warning",
-  },
   error: {
     nb: "Feil",
     nn: "Feil",

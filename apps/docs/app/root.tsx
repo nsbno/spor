@@ -33,7 +33,6 @@ import {
 } from "./utils/brand-cookie.server";
 import { getInitialSanityData } from "./utils/initialSanityData.server";
 import { urlBuilder } from "./utils/sanity/utils";
-import { SystemContext } from "@chakra-ui/react";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data || !data.initialSanityData) {
@@ -148,7 +147,7 @@ const Document = withEmotionCache(
     const serverStyleData = useContext(ServerStyleContext);
     const clientStyleData = useContext(ClientStyleContext);
 
-    // Only executed on client
+    // Only executed on client.
     useEffect(() => {
       // re-link sheet container
       emotionCache.sheet.container = document.head;

@@ -1,21 +1,12 @@
 "use client";
 import { Global } from "@emotion/react";
-import React, { useEffect } from "react";
-import {
-  Button,
-  DarkSpinner,
-  dismissToast,
-  Language,
-  LanguageProvider,
-  system,
-  themes,
-  triggerToast,
-} from "..";
+import React from "react";
+import { Language, LanguageProvider, system, themes } from "..";
 
 import { Toaster } from "../toast/toast";
 
 import { Brand, fontFaces } from "../theme/brand";
-import { ChakraProvider, ChakraProviderProps, For } from "@chakra-ui/react";
+import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
 import { ColorModeProvider } from "../color-mode";
 
 type SporProviderProps = Omit<ChakraProviderProps, "value"> & {
@@ -65,20 +56,6 @@ export const SporProvider = ({
   brand = Brand.VyDigital,
   children,
 }: SporProviderProps) => {
-  // create toasts for each type
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      triggerToast({
-        text: "This is a success toast",
-        variant: "success",
-        duration: 50_000,
-      });
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <LanguageProvider language={language}>
       <ChakraProvider value={themes[brand] ?? system}>
@@ -86,30 +63,6 @@ export const SporProvider = ({
           <Toaster />
           <Global styles={fontFaces} />
           {children}
-
-          <For each={["success", "error", "info"]}>
-            {(type: string) => (
-              <Button
-                key={type}
-                variant="primary"
-                onClick={() =>
-                  triggerToast({
-                    text: `Toast status is ${type}`,
-                    variant: type,
-                    duration: 50_000,
-                  })
-                }
-              >
-                {type}
-              </Button>
-            )}
-          </For>
-
-          <DarkSpinner width="48px" />
-
-          <Button variant="primary" onClick={() => dismissToast()}>
-            Close all toasts
-          </Button>
         </ColorModeProvider>
       </ChakraProvider>
     </LanguageProvider>

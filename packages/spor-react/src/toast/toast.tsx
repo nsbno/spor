@@ -31,7 +31,7 @@ type ToastProps = {
   id?: string;
 };
 
-export const triggerToast = ({
+export const createToast = ({
   text,
   variant,
   id,
@@ -43,8 +43,6 @@ export const triggerToast = ({
     id,
     duration,
   });
-
-export const dismissToast = (id?: string) => toaster.dismiss(id);
 
 export const Toaster = () => {
   return (

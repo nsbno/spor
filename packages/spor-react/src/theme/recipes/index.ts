@@ -25,5 +25,4 @@ export const recipes = {
   skeleton: skeletonRecipe,
   staticCard: staticCardRecipe,
   textarea: textareaRecipe,
-  toast: toastRecipe,
 };

@@ -16,7 +16,7 @@ import {
   useLoaderData,
   useRouteError,
 } from "@remix-run/react";
-import { Brand, Language, SporProvider } from "@vygruppen/spor-react";
+import { Brand, Button, Language, SporProvider, triggerToast } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect, useRef } from "react";
 import { PageNotFound } from "./root/PageNotFound";
 import { RootLayout } from "./root/layout/RootLayout";
@@ -184,6 +184,10 @@ const Document = withEmotionCache(
         <body>
           <SporProvider language={Language.English} brand={brand}>
             <SkipToContent />
+
+          <Button variant="primary" onClick={() => triggerToast({
+
+
             {children}
           </SporProvider>
           <ScrollRestoration />

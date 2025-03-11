@@ -13,7 +13,7 @@ export const toastRecipe = defineRecipe({
     borderRadius: "sm",
   },
   variants: {
-    variant: {
+    type: {
       success: {
         backgroundColor: "seaMist",
       },

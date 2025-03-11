@@ -53,8 +53,7 @@ export const Toaster = () => {
             <ToastIcon variant={toast.type as Variant} />
             <Stack gap="1" flex="1" maxWidth="100%">
               {toast.title && <Toast.Title>{toast.title}</Toast.Title>}
-            </Stack>{" "}
-            alert
+            </Stack>
           </Toast.Root>
         )}
       </ChakraToaster>

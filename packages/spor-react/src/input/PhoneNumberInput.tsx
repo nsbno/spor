@@ -4,7 +4,6 @@ import React, { forwardRef } from "react";
 import { Input, InputProps, createTexts, useTranslation } from "..";
 import { AttachedInputs } from "./AttachedInputs";
 import { CountryCodeSelect } from "./CountryCodeSelect";
-import { As } from "@chakra-ui/system";
 
 type CountryCodeAndPhoneNumber = {
   countryCode: string;
@@ -93,6 +92,7 @@ export const PhoneNumberInput = forwardRef<
         <Input
           ref={ref}
           type="tel"
+          name="phone-number"
           label={label}
           value={value.nationalNumber}
           invalid={invalid}

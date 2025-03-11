@@ -1,5 +1,6 @@
 "use client";
 
+import { inputRecipe } from "@/theme/recipes/input";
 import {
   Input as ChakraInput,
   InputProps as ChakraInputProps,
@@ -9,7 +10,6 @@ import {
 import React, { forwardRef, PropsWithChildren } from "react";
 import { Field, FieldProps } from "./Field";
 import { InputGroup } from "./InputGroup";
-import { inputRecipe } from "@/theme/recipes/input";
 
 export type InputVariantProps = RecipeVariantProps<typeof inputRecipe>;
 

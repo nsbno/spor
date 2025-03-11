@@ -125,10 +125,14 @@ export const selectSlotRecipe = defineSlotRecipe({
       },
       _highlighted: {
         ...focusVisibleStyles()._focusVisible,
+        _active: {
+          color: "text",
+        },
       },
       _hover: {
         backgroundColor: "ghost.surface.hover",
-        outline: "none",
+        outline: "2px solid core.outline",
+        outlineOffset: "2px",
       },
       _selected: {
         backgroundColor: "ghost.surface.active",

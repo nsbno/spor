@@ -40,12 +40,13 @@ export const separatorRecipe = defineRecipe({
       },
     },
   },
-   compoundVariants: [
+  compoundVariants: [
     {
       variant: "dashed",
       size: "sm",
       css: {
-        background:' linear-gradient(to left, #b2b2b2, #b2b2b2 1px, transparent 1px, transparent 4px)',
+        background:
+          " linear-gradient(to left, #b2b2b2, #b2b2b2 1px, transparent 1px, transparent 4px)",
         backgroundSize: "4px 1px",
         backgroundRepeat: "repeat-x",
       },
@@ -54,7 +55,8 @@ export const separatorRecipe = defineRecipe({
       variant: "dashed",
       size: "md",
       css: {
-        background:' linear-gradient(to left, #b2b2b2, #b2b2b2 3px, transparent 3px, transparent 6px)',
+        background:
+          " linear-gradient(to left, #b2b2b2, #b2b2b2 3px, transparent 3px, transparent 6px)",
         backgroundSize: "9px 2px",
         backgroundRepeat: "repeat-x",
       },
@@ -63,7 +65,8 @@ export const separatorRecipe = defineRecipe({
       variant: "dashed",
       size: "lg",
       css: {
-        background:' linear-gradient(to left, #b2b2b2, #b2b2b2 3px, transparent 3px, transparent 9px)',
+        background:
+          " linear-gradient(to left, #b2b2b2, #b2b2b2 3px, transparent 3px, transparent 9px)",
         backgroundSize: "9px 3px",
         backgroundRepeat: "repeat-x",
       },
@@ -74,9 +77,8 @@ export const separatorRecipe = defineRecipe({
       css: {
         background: "0",
         width: "0%",
-        height: "100%",  
-
+        height: "100%",
       },
-    }
-  ], 
+    },
+  ],
 });

@@ -22,9 +22,9 @@ import React, {
 import { AriaPositionProps, useButton, useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
 import { StaticCard } from "..";
+import { cardSelectSlotRecipe } from "../theme/slot-recipes/card-select";
 import { Dialog } from "./Dialog";
 import { Popover } from "./Popover";
-import { cardSelectSlotRecipe } from "../theme/slot-recipes/card-select";
 
 type CardSelectVariantProps = RecipeVariantProps<typeof cardSelectSlotRecipe>;
 
@@ -132,7 +132,6 @@ export const CardSelect = forwardRef<HTMLButtonElement, CardSelectProps>(
         <chakra.button
           type="button"
           ref={triggerRef}
-          fontWeight="bold"
           css={styles.trigger}
           aria-label={label}
           {...buttonProps}

@@ -9,12 +9,13 @@ export const progressBarRecipe = defineSlotRecipe({
     },
     background: {
       display: "flex",
-      backgroundColor: "green.200", //Finn riktig farge navn
+      backgroundColor: "accent.surface.hover",
       borderRadius: "sm",
       boxPack: "start",
       justifyContent: "flex-start",
       marginX: "auto",
     },
+
     disabledBackground: {
       backgroundColor: "icon.disabled",
       borderRadius: "sm",
@@ -35,18 +36,4 @@ export const progressBarRecipe = defineSlotRecipe({
       fontWeight: "bold",
     },
   },
-  /*  variants: {
-    isActive: {
-      true: {
-        background: {
-          backgroundColor: "green.200",
-        },
-      },
-      false: {
-        background: {
-          backgroundColor: "red",
-        },
-      },
-    },
-  }, */
 });

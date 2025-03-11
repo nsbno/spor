@@ -78,7 +78,7 @@ export type ProgressBarProps = BoxProps &
 export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
   (
     {
-      value,
+      defaultValue,
       colorPalette = "white",
       label,
       labelRotationDelay = 5000,
@@ -101,8 +101,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
       <Progress.Root
         css={styles.container}
         ref={ref}
-        defaultValue={value}
-        role="progressbar"
+        defaultValue={defaultValue}
         {...rest}
       >
         <Progress.Track
@@ -113,22 +112,15 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
         </Progress.Track>
 
         {label && (
-          <Progress.Label aria-hidden="true" css={styles.description}>
+          <Progress.Label css={styles.description}>
             {currentLoadingText}
           </Progress.Label>
         )}
 
-        {showValueText && <Progress.ValueText>{value}%</Progress.ValueText>}
+        {showValueText && (
+          <Progress.ValueText>{defaultValue}%</Progress.ValueText>
+        )}
       </Progress.Root>
     );
   },
 );
-
-const texts = createTexts({
-  label: (value) => ({
-    nb: `${value}% ferdig`,
-    nn: `${value}% ferdig`,
-    sv: `${value}% klart`,
-    en: `${value}% done`,
-  }),
-});

@@ -1,8 +1,12 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "tasks": {
+    "typegen": {
+      "cache": true
+    },
+
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["typegen", "^build"],
       "outputs": ["dist/**", "public/build/**"],
       "cache": true
     },
@@ -10,7 +14,7 @@
       "outputs": []
     },
     "dev": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["typegen", "build"],
       "cache": false,
       "persistent": true
     }

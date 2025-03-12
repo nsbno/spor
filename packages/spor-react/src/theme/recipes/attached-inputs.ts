@@ -5,6 +5,9 @@ export const attachedInputsRecipe = defineRecipe({
     display: "flex",
     gap: "0.1rem",
     width: "100%",
+    "& select": {
+      borderEndRadius: 0,
+    },
   },
   variants: {
     orientation: {
@@ -33,5 +36,8 @@ export const attachedInputsRecipe = defineRecipe({
         },
       },
     },
+  },
+  defaultVariants: {
+    orientation: "horizontal",
   },
 });

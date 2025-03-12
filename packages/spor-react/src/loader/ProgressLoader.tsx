@@ -1,9 +1,20 @@
 "use client";
-import { Box, BoxProps, chakra, Text } from "@chakra-ui/react";
+import {
+  Box,
+  BoxProps,
+  chakra,
+  RecipeVariantProps,
+  Text,
+  useRecipe,
+} from "@chakra-ui/react";
 import React, { forwardRef, useId, useRef } from "react";
 import { useProgressBar } from "react-aria";
 import { createTexts, useTranslation } from "..";
 import { useRotatingLabel } from "./useRotatingLabel";
+import { progressLoaderRecipe } from "../theme/recipes/progressLoader";
+export type ProgressLoaderVariantProps = RecipeVariantProps<
+  typeof progressLoaderRecipe
+>;
 
 export type ProgressLoaderProps = BoxProps & {
   children: React.ReactNode;
@@ -82,8 +93,13 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
     const progressPathLength = pathRef.current?.getTotalLength() ?? 0;
     const progress = ((value - 100) / 100) * progressPathLength;
     const id = useId();
+    const recipe = useRecipe({
+      key: "progressLoader",
+      recipe: progressLoaderRecipe,
+    });
+    const styles = recipe();
     return (
-      <Box {...progressBarProps} minWidth="100px" width={width} {...rest}>
+      <Box {...progressBarProps} width={width} {...rest} css={styles}>
         <chakra.svg as="svg" viewBox="0 0 246 78" fill="none">
           <path
             id={`${id}-start-dot`}
@@ -93,7 +109,6 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
           <path
             id={`${id}-track`}
             d="M204.911 39.1156C204.911 39.1156 175.012 46.8319 157.651 30.4354C140.29 14.0388 121 21.7547 110.391 47.6529C103.22 65.157 78.9634 67.0859 67.9533 47.6529C59.8376 33.3287 36.125 37.1866 36.125 37.1866"
-            stroke="#B2DFD7"
             strokeWidth="13.6469"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -101,7 +116,6 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
           <path
             id={`${id}-progress`}
             d="M204.911 39.1156C204.911 39.1156 175.012 46.8319 157.651 30.4354C140.29 14.0388 121 21.7547 110.391 47.6529C103.22 65.157 78.9634 67.0859 67.9533 47.6529C59.8376 33.3287 36.125 37.1866 36.125 37.1866"
-            stroke="#00957A"
             strokeWidth="13.6469"
             strokeLinecap="round"
             strokeLinejoin="round"

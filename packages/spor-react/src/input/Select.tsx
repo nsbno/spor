@@ -1,26 +1,23 @@
 "use client";
 
+import { CloseButton } from "@/button";
+import { selectSlotRecipe } from "@/theme/slot-recipes/select";
 import type {
+  SelectRootProps as ChakraSelectRootProps,
   CollectionItem,
   RecipeVariantProps,
-  SelectRootProps as ChakraSelectRootProps,
 } from "@chakra-ui/react";
 import {
   Box,
   Select as ChakraSelect,
-  createListCollection,
-  Flex,
-  Icon,
   Portal,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import * as React from "react";
 import {
   CheckmarkFill18Icon,
   DropdownDownFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import { selectSlotRecipe } from "@/theme/slot-recipes/select";
-import { CloseButton } from "@/button";
+import * as React from "react";
 import { PropsWithChildren } from "react";
 
 type SelectVariantProps = RecipeVariantProps<typeof selectSlotRecipe>;
@@ -29,6 +26,34 @@ export type SelectProps = ChakraSelectRootProps &
   PropsWithChildren<SelectVariantProps> & {
     label?: string;
   };
+
+/**
+ * A Select component.
+ *
+ * This component is useful to choose an item from a dropdown list of items. The list has four different variants, core, floating, rightSideSquare, leftSideSquare.
+ * The last two variants are useful in attachecdInput for example in the PhoneNumberInput and CountryCodeSelect components.
+ *
+ * @example
+ * ```tsx
+ * <Select label="Choose transportation" >
+       <SelectItem item={{
+            label: "Train",
+            value: "train",
+          }}>
+         item label
+       </SelectItem>
+       <SelectItem item={{
+            label: "Bus",
+            value: "Bus",
+          }}>
+         item label
+       </SelectItem>
+    </Select>
+ * ```
+ *
+ * @see https://spor.vy.no/components/select
+ *
+ */
 
 export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
   (props, ref) => {
@@ -46,7 +71,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         position={"relative"}
       >
         <SelectTrigger data-attachable>
-          <SelectValueText placeholder=" " />
+          <SelectValueText withPlaceholder={label ? true : false} />
         </SelectTrigger>
         {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
         <SelectContent css={styles.selectContent}>{children}</SelectContent>
@@ -175,15 +200,21 @@ type SelectValueTextProps = Omit<ChakraSelect.ValueTextProps, "children"> &
   React.PropsWithChildren<SelectVariantProps> & {
     children?(items: CollectionItem[]): React.ReactNode;
     placeholder?: string;
+    withPlaceholder?: boolean;
   };
 
 export const SelectValueText = React.forwardRef<
   HTMLSpanElement,
   SelectValueTextProps
 >(function SelectValueText(props, ref) {
-  const { children, placeholder, ...rest } = props;
+  const { children, withPlaceholder, placeholder, ...rest } = props;
   return (
-    <ChakraSelect.ValueText {...rest} ref={ref}>
+    <ChakraSelect.ValueText
+      {...rest}
+      ref={ref}
+      placeholder={placeholder}
+      paddingTop={withPlaceholder ? "4" : "0"}
+    >
       <ChakraSelect.Context>
         {(select: {
           selectedItems: any;

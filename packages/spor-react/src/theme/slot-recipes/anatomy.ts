@@ -192,6 +192,21 @@ export const switchAnatomy = createAnatomy("switch").parts(
   "label",
 );
 
+export const selectAnatomy = createAnatomy("select").parts(
+  "root",
+  "trigger",
+  "indicatorGroup",
+  "indicator",
+  "selectContent",
+  "item",
+  "control",
+  "itemText",
+  "itemDescription",
+  "itemGroup",
+  "itemGroupLabel",
+  "label",
+  "valueText",
+);
 export const cardSelectAnatomy = createAnatomy("card-select").parts(
   "trigger",
   "card",
@@ -204,4 +219,13 @@ export const progressBarAnotomy = createAnatomy("progress-bar").parts(
   "progress",
   "description",
   "disabledBackground",
+);
+
+export const toastAnatomy = createAnatomy("toast").parts(
+  "root",
+  "title",
+  "description",
+  "indicator",
+  "closeTrigger",
+  "actionTrigger",
 );

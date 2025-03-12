@@ -35,10 +35,10 @@ export const createToast = ({
   text,
   variant,
   id,
-  duration = 6000,
+  duration = 200000,
 }: ToastProps) =>
   toaster.create({
-    title: text,
+    description: text,
     type: variant,
     id,
     duration,
@@ -52,7 +52,7 @@ export const Toaster = () => {
           <Toast.Root width={{ md: "sm" }} role="alert">
             <ToastIcon variant={toast.type as Variant} />
             <Stack gap="1" flex="1" maxWidth="100%">
-              <Toast.Title>{toast.title}</Toast.Title>
+              <Toast.Description>{toast.description}</Toast.Description>
             </Stack>
           </Toast.Root>
         )}

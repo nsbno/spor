@@ -213,6 +213,14 @@ export const cardSelectAnatomy = createAnatomy("card-select").parts(
 );
 export const choiceChipAnatomy = createAnatomy("choice-chip").parts("root");
 
+export const progressBarAnotomy = createAnatomy("progress-bar").parts(
+  "container",
+  "background",
+  "progress",
+  "description",
+  "disabledBackground",
+);
+
 export const toastAnatomy = createAnatomy("toast").parts(
   "root",
   "title",

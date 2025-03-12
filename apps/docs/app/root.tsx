@@ -116,7 +116,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 };
 
 /**
- * The error boundary shown if no other error boundary catches the error.
+ * The error boundary shown if no other error boundary catches the error
  */
 export function ErrorBoundary() {
   const error = useRouteError();

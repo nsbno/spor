@@ -229,3 +229,7 @@ export const toastAnatomy = createAnatomy("toast").parts(
   "closeTrigger",
   "actionTrigger",
 );
+
+export const floatingActionButtonAnatomy = createAnatomy(
+  "floating-action-button",
+).parts("root", "icon", "text");

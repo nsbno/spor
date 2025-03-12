@@ -1,20 +1,21 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { accentBackground, accentText } from "../utils/accent-utils";
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { brandBackground, brandText } from "../utils/brand-utils";
+import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { surface } from "../utils/surface-utils";
+import { floatingActionButtonAnatomy } from "./anatomy";
 
 export const floatingActionButtonSlotRecipe = defineSlotRecipe({
-  slots: ["root", "icon", "text"],
+  slots: floatingActionButtonAnatomy.keys(),
   className: "spor-floating-action-button",
   base: {
     root: {
       display: "flex",
       alignItems: "center",
+      gap: 1,
       paddingY: 2,
-      paddingLeft: 2,
-      paddingRight: 2,
+      paddingX: 2,
       cursor: "pointer",
       overflowX: "hidden",
       whiteSpace: "nowrap",
@@ -38,7 +39,7 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
       alignItems: "center",
       fontWeight: "bold",
       textStyle: "sm",
-      paddingLeft: 3,
+      marginRight: 1,
     },
   },
   variants: {

@@ -78,6 +78,7 @@ export type ProgressBarProps = BoxProps &
 export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
   (
     {
+      value,
       defaultValue,
       colorPalette = "white",
       label,
@@ -117,9 +118,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
           </Progress.Label>
         )}
 
-        {showValueText && (
-          <Progress.ValueText>{defaultValue}%</Progress.ValueText>
-        )}
+        {showValueText && <Progress.ValueText>{value}%</Progress.ValueText>}
       </Progress.Root>
     );
   },

@@ -5,10 +5,10 @@ export const progressLoaderRecipe = defineRecipe({
     minWidth: "100px",
 
     "& path[id$='-track']": {
-      stroke: { _light: "#B2DFD7", _dark: "#00957A" },
+      stroke: { _light: "coralGreen", _dark: "greenHaze" },
     },
     "& path[id$='-progress']": {
-      stroke: { _light: "#00957A", _dark: "#B2DFD7" },
+      stroke: { _light: "greenHaze", _dark: "coralGreen" },
     },
   },
 });

@@ -52,7 +52,7 @@ export const FloatingActionButton = forwardRef<
     ref,
   ) => {
     const [isTextVisible, setIsTextVisible] = React.useState(
-      externalIsTextVisible !== undefined ? externalIsTextVisible : true,
+      externalIsTextVisible !== undefined ? externalIsTextVisible : false,
     );
     const scrollDirection = useScrollDirection();
     useEffect(() => {

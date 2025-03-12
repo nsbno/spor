@@ -1,9 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { accentBackground, accentText } from "../utils/accent-utils";
-import { brandBackground, brandText } from "../utils/brand-utils";
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { surface } from "../utils/surface-utils";
 import { floatingActionButtonAnatomy } from "./anatomy";
 
 export const floatingActionButtonSlotRecipe = defineSlotRecipe({
@@ -27,12 +23,11 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
       zIndex: "sticky",
       ...focusVisibleStyles(),
       _disabled: {
-        ...surface("disabled"),
-        ...coreText("disabled"),
+        backgroundColor: "surface.disabled",
+        color: "text.disabled",
         pointerEvents: "none",
       },
     },
-    icon: {},
     text: {
       display: "flex",
       flex: "none",
@@ -46,41 +41,44 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
     variant: {
       brand: {
         root: {
-          ...brandBackground("default"),
-          ...brandText("default"),
+          backgroundColor: "brand.surface",
+          color: "brand.text",
           _hover: {
-            ...brandBackground("hover"),
+            backgroundColor: "brand.surface.hover",
           },
           _active: {
-            ...brandBackground("active"),
+            backgroundColor: "brand.surface.active",
           },
         },
       },
       core: {
         root: {
-          ...coreBackground("default"),
-          ...coreBorder("default"),
-          ...coreText("default"),
+          backgroundColor: "transparent",
+          outline: "1px solid",
+          outlineColor: "core.outline",
+          color: "core.text",
           _hover: {
-            ...coreBackground("hover"),
-            ...coreBorder("hover"),
+            backgroundColor: "transparent",
+            outline: "2px solid",
+            outlineColor: "core.outline",
           },
           _active: {
-            ...coreBorder("default"),
-            ...coreBackground("active"),
+            outline: "1px solid",
+            outlineColor: "core.outline",
+            backgroundColor: "brand.surface.active",
           },
         },
       },
       accent: {
         root: {
-          ...accentBackground("default"),
-          ...accentText("default"),
+          backgroundColor: "accent.surface",
+          color: "accent.text",
           _hover: {
-            ...accentBackground("hover"),
-            ...accentText("default"),
+            backgroundColor: "accent.surface.hover",
+            color: "accent.text",
           },
           _active: {
-            ...accentBackground("active"),
+            backgroundColor: "accent.surface.active",
           },
         },
       },
@@ -88,26 +86,26 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
     placement: {
       "top left": {
         root: {
-          top: "1em",
-          left: "1em",
+          top: "1rem",
+          left: "1rem",
         },
       },
       "top right": {
         root: {
-          top: "1em",
-          right: "1em",
+          top: "1rem",
+          right: "1rem",
         },
       },
       "bottom left": {
         root: {
-          bottom: "1em",
-          left: "1em",
+          bottom: "1rem",
+          left: "1rem",
         },
       },
       "bottom right": {
         root: {
-          bottom: "1em",
-          right: "1em",
+          bottom: "1rem",
+          right: "1rem",
         },
       },
     },

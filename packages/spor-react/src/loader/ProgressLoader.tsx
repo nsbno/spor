@@ -11,7 +11,7 @@ import React, { forwardRef, useId, useRef } from "react";
 import { useProgressBar } from "react-aria";
 import { createTexts, useTranslation } from "..";
 import { useRotatingLabel } from "./useRotatingLabel";
-import { progressLoaderRecipe } from "../theme/recipes/progressLoader";
+import { progressLoaderRecipe } from "../theme/recipes/progress-loader";
 export type ProgressLoaderVariantProps = RecipeVariantProps<
   typeof progressLoaderRecipe
 >;

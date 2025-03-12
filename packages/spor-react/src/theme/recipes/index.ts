@@ -6,6 +6,7 @@ import { codeRecipie } from "./code";
 import { inputRecipe } from "./input";
 import { linkRecipe } from "./link";
 import { pressableCardRecipe } from "./pressable-card";
+import { progressLoaderRecipe } from "./progress-loader";
 import { separatorRecipe } from "./separator";
 import { skeletonRecipe } from "./skeleton";
 import { staticCardRecipe } from "./static-card";
@@ -20,6 +21,7 @@ export const recipes = {
   input: inputRecipe,
   link: linkRecipe,
   pressableCard: pressableCardRecipe,
+  progressLoader: progressLoaderRecipe,
   seperator: separatorRecipe,
   skeleton: skeletonRecipe,
   staticCard: staticCardRecipe,

@@ -10,7 +10,6 @@ import { separatorRecipe } from "./separator";
 import { skeletonRecipe } from "./skeleton";
 import { staticCardRecipe } from "./static-card";
 import { textareaRecipe } from "./textarea";
-import { toastRecipe } from "./toast";
 
 export const recipes = {
   attachedInputs: attachedInputsRecipe,
@@ -25,5 +24,4 @@ export const recipes = {
   skeleton: skeletonRecipe,
   staticCard: staticCardRecipe,
   textarea: textareaRecipe,
-  toast: toastRecipe,
 };

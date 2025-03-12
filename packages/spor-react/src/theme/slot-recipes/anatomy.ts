@@ -212,3 +212,12 @@ export const cardSelectAnatomy = createAnatomy("card-select").parts(
   "card",
 );
 export const choiceChipAnatomy = createAnatomy("choice-chip").parts("root");
+
+export const toastAnatomy = createAnatomy("toast").parts(
+  "root",
+  "title",
+  "description",
+  "indicator",
+  "closeTrigger",
+  "actionTrigger",
+);

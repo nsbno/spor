@@ -1,7 +1,10 @@
 "use client";
 import { Global } from "@emotion/react";
 import React from "react";
-import { Alert, Button, Language, LanguageProvider, system, themes } from "..";
+import { Language, LanguageProvider, system, themes } from "..";
+
+import { Toaster } from "../toast/toast";
+
 import { Brand, fontFaces } from "../theme/brand";
 import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
 import { ColorModeProvider } from "../color-mode";
@@ -57,6 +60,7 @@ export const SporProvider = ({
     <LanguageProvider language={language}>
       <ChakraProvider value={themes[brand] ?? system}>
         <ColorModeProvider>
+          <Toaster />
           <Global styles={fontFaces} />
           {children}
         </ColorModeProvider>

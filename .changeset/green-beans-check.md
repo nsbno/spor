@@ -36,6 +36,7 @@ Spor is getting a major update with Chakra 3.
 - `PhoneNumberInputs`an `invalid` prop is send for validation purpose, and `errorText` prop is send to give feedback on error
 - `CardSelect` has new variant: `core`, `ghost` and `floating`
 - `createToast` replaces `useToast`. Now does not support closable toasts or toasts with actions.
+- `Popover`replaces `ToolTip`. Props are different.
 
 ### Darkmode
 

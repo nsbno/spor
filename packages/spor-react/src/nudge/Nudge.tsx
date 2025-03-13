@@ -2,7 +2,6 @@
 import { Box } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
 import { Button, ButtonGroup, createTexts, useTranslation } from "..";
-import { TooltipProps } from "../tooltip";
 import {
   PopoverArrow,
   PopoverBody,
@@ -10,7 +9,7 @@ import {
   PopoverContent,
   PopoverRoot,
   PopoverTrigger,
-} from "../popover-old";
+} from "../popover-old"; // todo - replace with new popover
 
 export type NudgeProps = {
   /**
@@ -49,16 +48,7 @@ export type NudgeProps = {
    * Any actions you want to provide. Defaults to a close button and a "Show me" button.
    */
   actions?: React.ReactNode;
-} & Omit<
-  TooltipProps,
-  | "name"
-  | "triggerElement"
-  | "children"
-  | "withCloseButton"
-  | "defaultIsOpen"
-  | "size"
-  | "borderRadius"
->;
+} & any; // todo - remove any
 
 const EXPIRATION_DELAY = 1000 * 60 * 60 * 24 * 30; // 30 days
 

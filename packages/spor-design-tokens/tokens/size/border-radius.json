@@ -6,7 +6,7 @@
         "value": "0"
       },
       "xs": {
-        "comment": "Should only be used for the smallest components, like tooltips and info boxes",
+        "comment": "Should only be used for the smallest components, like popover and info boxes",
         "value": "6"
       },
       "sm": {

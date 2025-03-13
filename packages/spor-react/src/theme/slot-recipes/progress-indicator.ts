@@ -15,10 +15,10 @@ export const progressIndicatorRecipe = defineSlotRecipe({
     progressDot: {
       height: 1,
       width: 1,
-      fill: "brand.surface.default",
-    },
-    circle: {
       fill: "icon.disabled",
+      "&[aria-current='step']": {
+        fill: "brand.surface",
+      },
     },
   },
 });

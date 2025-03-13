@@ -27,6 +27,12 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
         color: "text.disabled",
         pointerEvents: "none",
       },
+      _open: {
+        animation: "expand-width 300ms ease-out",
+      },
+      _closed: {
+        animation: "collapse-width 300ms ease-out",
+      },
     },
     text: {
       display: "flex",
@@ -35,6 +41,12 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
       fontWeight: "bold",
       textStyle: "sm",
       marginRight: 1,
+      _open: {
+        animation: "fade-in 250ms ease-out",
+      },
+      _closed: {
+        animation: "fade-out 250ms ease-out",
+      },
     },
   },
   variants: {

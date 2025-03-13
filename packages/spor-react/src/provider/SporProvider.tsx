@@ -67,48 +67,10 @@ export const SporProvider = ({
       <ChakraProvider value={themes[brand] ?? system}>
         <ColorModeProvider>
           <Toaster />
-          <TestComponents />
           <Global styles={fontFaces} />
           {children}
         </ColorModeProvider>
       </ChakraProvider>
     </LanguageProvider>
-  );
-};
-
-() => {
-  return (
-    <Popover>
-      <PopoverTrigger>
-        <Button variant="primary">Click me</Button>
-      </PopoverTrigger>
-
-      <PopoverContent>This is the content of the popover</PopoverContent>
-    </Popover>
-  );
-};
-
-export const TestComponents = () => {
-  return (
-    <Flex gap="2">
-      {["sm", "md", "lg"].map((size) => (
-        <Popover
-          key={size}
-          size={size}
-          onOpenChange={(details) => details.open}
-          positioning={}
-        >
-          <PopoverTrigger>
-            <Button variant="primary">{size}</Button>
-          </PopoverTrigger>
-
-          <PopoverContent showCloseButton>
-            You can use different popover sizes for varying content, but keep in
-            mind that popovers are not ideal for displaying large amounts of
-            content.
-          </PopoverContent>
-        </Popover>
-      ))}
-    </Flex>
   );
 };

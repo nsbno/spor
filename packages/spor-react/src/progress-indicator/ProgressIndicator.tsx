@@ -36,20 +36,22 @@ export const ProgressIndicator = forwardRef<
   ProgressIndicatorProps
 >(({ numberOfSteps, activeStep, colorPalette = "brand" }) => {
   const { t } = useTranslation();
-  const recipe = useSlotRecipe({ recipe: progressIndicatorRecipe });
+  const recipe = useSlotRecipe({
+    key: "progressIndicator",
+  });
 
-  const styles = recipe({ colorPalette });
+  const styles = recipe({});
 
   return (
     <Box
-      css={styles}
+      css={styles.root}
       role="progressbar"
       aria-valuemin={1}
       aria-valuemax={numberOfSteps}
       aria-valuenow={activeStep}
       aria-valuetext={t(texts.stepsOf(activeStep, numberOfSteps))}
     >
-      <Box css={styles}>
+      <Box css={styles.container}>
         {Array.from({ length: numberOfSteps }, (_, i) => (
           <ProgressDot
             key={i}

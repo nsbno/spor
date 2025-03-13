@@ -82,9 +82,29 @@ export const FloatingActionButton = forwardRef<
         aria-label={typeof children === "string" ? children : undefined}
         ref={ref}
         {...props}
+        data-state={isTextVisible ? "open" : "closed"}
+        _open={{
+          animation: "expand-width 300ms ease-out",
+        }}
+        _closed={{
+          animation: "collapse-width 300ms ease-out",
+        }}
       >
         <Box css={style.icon}>{icon}</Box>
-        {isTextVisible && <Text css={style.text}>{children}</Text>}
+        {isTextVisible && (
+          <Text
+            data-state="open"
+            _open={{
+              animation: "fade-in 250ms ease-out",
+            }}
+            _closed={{
+              animation: "fade-out 250ms ease-out",
+            }}
+            css={style.text}
+          >
+            {children}
+          </Text>
+        )}
       </Box>
     );
   },

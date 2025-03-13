@@ -78,7 +78,7 @@ export const keyframes = {
   },
   "expand-width": {
     from: {
-      width: "0",
+      width: "auto",
     },
     to: {
       width: "var(--width)",
@@ -86,10 +86,10 @@ export const keyframes = {
   },
   "collapse-width": {
     from: {
-      height: "var(--width)",
+      width: "var(--width)",
     },
     to: {
-      height: "0",
+      width: "auto",
     },
   },
   "fade-in": {

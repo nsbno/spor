@@ -2,14 +2,6 @@
 import { Box } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
 import { Button, ButtonGroup, createTexts, useTranslation } from "..";
-import {
-  PopoverArrow,
-  PopoverBody,
-  PopoverCloseTrigger,
-  PopoverContent,
-  PopoverRoot,
-  PopoverTrigger,
-} from "../popover-old"; // todo - replace with new popover
 
 export type NudgeProps = {
   /**
@@ -77,36 +69,39 @@ export const Nudge = forwardRef<HTMLDivElement, NudgeProps>(
       if (process.env.NODE_ENV === "development") {
         console.warn(
           `The nudge ${name} has been used for longer than 30 days. Please remove it from the codebase.
-          
+
           This is a development only warning, and will not be shown in production.`,
         );
       }
       return null;
     }
-    return (
-      <PopoverRoot defaultOpen={true} {...props}>
-        <PopoverTrigger>{children}</PopoverTrigger>
-        <PopoverContent borderRadius="sm">
-          <PopoverArrow />
-          <PopoverCloseTrigger />
-          <PopoverBody margin={1}>
-            <Box marginRight={4}>{content}</Box>
-            <Box marginTop={1.5}>
-              {actions ?? (
-                <ButtonGroup>
-                  <Button variant="tertiary" size="xs">
-                    {t(texts.close)}
-                  </Button>
-                  <Button variant="secondary" size="xs" fontWeight="bold">
-                    {t(texts.showMe)}
-                  </Button>
-                </ButtonGroup>
-              )}
-            </Box>
-          </PopoverBody>
-        </PopoverContent>
-      </PopoverRoot>
-    );
+
+    return null; // Todo replace with new popover
+
+    // return (
+    // <PopoverRoot defaultOpen={true} {...props}>
+    //   <PopoverTrigger>{children}</PopoverTrigger>
+    //   <PopoverContent borderRadius="sm">
+    //     <PopoverArrow />
+    //     <PopoverCloseTrigger />
+    //     <PopoverBody margin={1}>
+    //       <Box marginRight={4}>{content}</Box>
+    //       <Box marginTop={1.5}>
+    //         {actions ?? (
+    //           <ButtonGroup>
+    //             <Button variant="tertiary" size="xs">
+    //               {t(texts.close)}
+    //             </Button>
+    //             <Button variant="secondary" size="xs" fontWeight="bold">
+    //               {t(texts.showMe)}
+    //             </Button>
+    //           </ButtonGroup>
+    //         )}
+    //       </Box>
+    //     </PopoverBody>
+    //   </PopoverContent>
+    // </PopoverRoot>
+    // );
   },
 );
 

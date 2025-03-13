@@ -25,8 +25,6 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
     icon: {
       flex: "0 0 auto",
       display: "block",
-      width: "1rem",
-      height: "1rem",
     },
   },
   variants: {
@@ -39,10 +37,10 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
           _hover: {
             color: "brand.text",
             backgroundColor: "brand.surface.hover",
-          },
-          _active: {
-            color: "brand.text",
-            backgroundColor: "brand.surface.active",
+            _active: {
+              color: "brand.text",
+              backgroundColor: "brand.surface.active",
+            },
           },
           _disabled: {
             pointerEvents: "none",
@@ -72,10 +70,16 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
         root: {
           fontSize: 42,
         },
+        icon: {
+          transform: "scale(0.9)",
+        },
       },
       lg: {
         root: {
           fontSize: 60,
+        },
+        icon: {
+          transform: "scale(1.55)",
         },
       },
     },

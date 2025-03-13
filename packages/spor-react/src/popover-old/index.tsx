@@ -1,0 +1,76 @@
+"use client";
+import {
+  BoxProps,
+  Popover as ChakraPopover,
+  Portal,
+  RecipeVariantProps,
+} from "@chakra-ui/react";
+import * as React from "react";
+import { popoverSlotRecipe } from "../theme/slot-recipes/popover";
+import { PropsWithChildren } from "react";
+import { CloseButton } from "@/button";
+
+/**
+ * This old popover component is deprecated.
+ */
+
+type PopoverVariantProps = RecipeVariantProps<typeof popoverSlotRecipe>;
+
+type PopoverContentProps = ChakraPopover.ContentProps &
+  BoxProps &
+  PropsWithChildren<PopoverVariantProps> & {
+    portalled?: boolean;
+    portalRef?: React.RefObject<HTMLElement>;
+    children?: React.ReactNode;
+  };
+
+export const PopoverContent = React.forwardRef<
+  HTMLDivElement,
+  PopoverContentProps
+>(function PopoverContent(props, ref) {
+  const { portalled = true, portalRef, children, ...rest } = props;
+  return (
+    <Portal disabled={!portalled} container={portalRef}>
+      <ChakraPopover.Positioner>
+        <ChakraPopover.Content ref={ref} {...rest} />
+      </ChakraPopover.Positioner>
+    </Portal>
+  );
+});
+
+export const PopoverArrow = React.forwardRef<
+  HTMLDivElement,
+  ChakraPopover.ArrowProps
+>(function PopoverArrow(props, ref) {
+  return (
+    <ChakraPopover.Arrow {...props} ref={ref}>
+      <ChakraPopover.ArrowTip />
+    </ChakraPopover.Arrow>
+  );
+});
+
+export const PopoverCloseTrigger = React.forwardRef<
+  HTMLButtonElement,
+  ChakraPopover.CloseTriggerProps
+>(function PopoverCloseTrigger(props, ref) {
+  return (
+    <ChakraPopover.CloseTrigger
+      position="absolute"
+      top="1"
+      insetEnd="1"
+      {...props}
+      asChild
+      ref={ref}
+    >
+      <CloseButton size="sm" />
+    </ChakraPopover.CloseTrigger>
+  );
+});
+
+export const PopoverTitle = ChakraPopover.Title;
+export const PopoverDescription = ChakraPopover.Description;
+export const PopoverFooter = ChakraPopover.Footer;
+export const PopoverHeader = ChakraPopover.Header;
+export const PopoverRoot = ChakraPopover.Root;
+export const PopoverBody = ChakraPopover.Body;
+export const PopoverTrigger = ChakraPopover.Trigger;

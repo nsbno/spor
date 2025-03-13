@@ -8,7 +8,7 @@ import {
   PopoverContent,
   PopoverRoot,
   PopoverTrigger,
-} from "../popover";
+} from "../popover-old";
 
 export type TooltipProps = ChakraPopoverRootProps & {
   /**

@@ -27,7 +27,7 @@ import {
   PopoverContent,
   PopoverRoot,
   PopoverTrigger,
-} from "../popover";
+} from "../popover-old";
 import { Field } from "../input/Field";
 import { DatePickerVariantProps } from "./DatePicker";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";

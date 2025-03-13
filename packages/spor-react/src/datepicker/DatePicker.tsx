@@ -34,7 +34,7 @@ import {
   PopoverContent,
   PopoverRoot,
   PopoverTrigger,
-} from "../popover";
+} from "../popover-old"; // TODO: Replace with new popover
 import { Field } from "../input/Field";
 import { CalendarVariants } from "./types";
 

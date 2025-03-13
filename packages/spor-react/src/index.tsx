@@ -30,3 +30,4 @@ export * from "./tooltip";
 export * from "./transition";
 export * from "./typography";
 export * from "./util";
+export * from "./popover";

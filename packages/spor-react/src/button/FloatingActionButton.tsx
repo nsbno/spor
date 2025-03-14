@@ -79,6 +79,7 @@ export const FloatingActionButton = forwardRef<
     return (
       <Box
         css={style.root}
+        as="button"
         aria-label={typeof children === "string" ? children : undefined}
         ref={ref}
         {...props}

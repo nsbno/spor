@@ -19,6 +19,7 @@ Spor is getting a major update with Chakra 3.
 - `onClose` is now `close`
 - `isOpen` is now `open`
 - `isFitted` is now `fitted`
+- `isPlaying` is now `playing`
 
 ### Updated components
 
@@ -37,6 +38,7 @@ Spor is getting a major update with Chakra 3.
 - `CardSelect` has new variant: `core`, `ghost` and `floating`
 - `createToast` replaces `useToast`. Now does not support closable toasts or toasts with actions.
 - `Popover`replaces `ToolTip`. Props are different.
+- `MediaController`isPlaying prop is now playing
 
 ### Darkmode
 

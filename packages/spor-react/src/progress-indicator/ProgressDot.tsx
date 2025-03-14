@@ -8,7 +8,7 @@ type ProgressDot = PropsWithChildren<ProgressIndicatorVariantProps> & {
 };
 
 export const ProgressDot = ({ isActive }: ProgressDot) => {
-  const recipe = useSlotRecipe({ key: "progressIndicatpr" });
+  const recipe = useSlotRecipe({ key: "progressIndicator" });
   const style = recipe({});
   return (
     <chakra.svg

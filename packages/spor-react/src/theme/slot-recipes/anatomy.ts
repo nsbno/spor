@@ -1,4 +1,5 @@
 import { createAnatomy } from "@ark-ui/react/anatomy";
+import { popoverAnatomy as arkPopoverAnatomy } from "@ark-ui/react/popover";
 
 export const accordionAnatomy = createAnatomy("accordion").parts(
   "root",
@@ -212,3 +213,29 @@ export const cardSelectAnatomy = createAnatomy("card-select").parts(
   "card",
 );
 export const choiceChipAnatomy = createAnatomy("choice-chip").parts("root");
+
+export const mediaControllerAnatomy = createAnatomy(
+  "media-controller-button",
+).parts("root", "icon");
+export const progressBarAnotomy = createAnatomy("progress-bar").parts(
+  "container",
+  "background",
+  "progress",
+  "description",
+  "disabledBackground",
+);
+
+export const toastAnatomy = createAnatomy("toast").parts(
+  "root",
+  "title",
+  "description",
+  "indicator",
+  "closeTrigger",
+  "actionTrigger",
+);
+
+export const popoverAnatomy = arkPopoverAnatomy.extendWith(
+  "header",
+  "body",
+  "footer",
+);

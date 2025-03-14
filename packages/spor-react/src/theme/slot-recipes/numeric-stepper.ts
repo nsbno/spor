@@ -54,11 +54,14 @@ export const numericStepperRecipe = defineSlotRecipe({
       color: "core.text",
     },
     button: {
-      maxHeight: "1.4rem",
-      maxWidth: "1.4rem",
       border: "0.3rem solid",
       borderColor: "surface",
       outlineOffset: "-2px",
+      width: "auto",
+      _icon: {
+        width: "1.2rem",
+        height: "1.2rem",
+      },
     },
   },
 });

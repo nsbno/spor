@@ -1,4 +1,5 @@
 import { createAnatomy } from "@ark-ui/react/anatomy";
+import { popoverAnatomy as arkPopoverAnatomy } from "@ark-ui/react/popover";
 
 export const accordionAnatomy = createAnatomy("accordion").parts(
   "root",
@@ -231,4 +232,10 @@ export const toastAnatomy = createAnatomy("toast").parts(
   "indicator",
   "closeTrigger",
   "actionTrigger",
+);
+
+export const popoverAnatomy = arkPopoverAnatomy.extendWith(
+  "header",
+  "body",
+  "footer",
 );

@@ -14,5 +14,4 @@ export const zIndex = defineTokens.zIndex({
   popover: { value: tokens.depth["z-index"].popover },
   skipLink: { value: tokens.depth["z-index"].skipLink },
   toast: { value: tokens.depth["z-index"].toast },
-  tooltip: { value: tokens.depth["z-index"].tooltip },
 });

@@ -53,9 +53,9 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
         root: {
           _hover: {
             backgroundColor: "ghost.surface.hover",
-          },
-          _active: {
-            backgroundColor: "ghost.surface.active",
+            _active: {
+              backgroundColor: "ghost.surface.active",
+            },
           },
           _disabled: {
             pointerEvents: "none",
@@ -124,7 +124,7 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
           fontSize: 38,
         },
         icon: {
-          marginX: 1,
+          margin: 1,
           transform: "scale(1.4)",
         },
       },

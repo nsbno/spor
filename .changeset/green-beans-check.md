@@ -36,6 +36,7 @@ Spor is getting a major update with Chakra 3.
 - `AttachedInputs` has deprecate FlexDirection prop which is now `orientation`
 - `PhoneNumberInputs`an `invalid` prop is send for validation purpose, and `errorText` prop is send to give feedback on error
 - `CardSelect` has new variant: `core`, `ghost` and `floating`
+- `NumericStepper`isDisabled prop is deprecated, use disabled
 - `createToast` replaces `useToast`. Now does not support closable toasts or toasts with actions.
 - `Popover`replaces `ToolTip`. Props are different.
 - `MediaController`isPlaying prop is now playing

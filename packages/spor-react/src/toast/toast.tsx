@@ -35,7 +35,7 @@ export const createToast = ({
   text,
   variant,
   id,
-  duration = 200000,
+  duration = 6000,
 }: ToastProps) =>
   toaster.create({
     description: text,

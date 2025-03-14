@@ -28,13 +28,7 @@ import { DateField } from "./DateField";
 import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
-import {
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverRoot,
-  PopoverTrigger,
-} from "../popover";
+
 import { Field } from "../input/Field";
 import { CalendarVariants } from "./types";
 
@@ -113,75 +107,77 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       state.setOpen(true);
     };
 
-    const popoverContent = (
-      <PopoverContent color="darkGrey" css={styles.calendarPopover}>
-        <PopoverArrow />
-        <PopoverBody>
-          <Calendar
-            {...calendarProps}
-            variant={variant}
-            showYearNavigation={showYearNavigation}
-          />
-        </PopoverBody>
-      </PopoverContent>
-    );
+    // const popoverContent = (
+    //   <PopoverContent color="darkGrey" css={styles.calendarPopover}>
+    //     <PopoverArrow />
+    //     <PopoverBody>
+    //       <Calendar
+    //         {...calendarProps}
+    //         variant={variant}
+    //         showYearNavigation={showYearNavigation}
+    //       />
+    //     </PopoverBody>
+    //   </PopoverContent>
+    // );
 
-    return (
-      <I18nProvider locale={locale}>
-        <Box
-          position="relative"
-          display="inline-flex"
-          flexDirection="column"
-          width={width}
-        >
-          <PopoverRoot
-            {...dialogProps}
-            open={state.isOpen}
-            onOpenChange={state.open}
-            onExitComplete={state.close}
-          >
-            <Field
-              display="inline-flex"
-              id={inputGroupId}
-              aria-labelledby={labelId}
-              errorText={errorMessage}
-            >
-              <PopoverAnchor>
-                <StyledField
-                  variant={variant}
-                  onClick={onFieldClick}
-                  paddingX={3}
-                  minHeight={minHeight}
-                  isDisabled={props.isDisabled}
-                  ariaLabelledby={labelId}
-                >
-                  <PopoverTrigger>
-                    <CalendarTriggerButton
-                      variant={variant}
-                      ref={ref}
-                      isDisabled={props.isDisabled}
-                      ariaLabelledby={labelId}
-                      {...buttonProps}
-                    />
-                  </PopoverTrigger>
-                  <DateField
-                    label={props.label}
-                    labelProps={labelProps}
-                    labelId={labelId}
-                    name={props.name}
-                    {...fieldProps}
-                  />
-                </StyledField>
-              </PopoverAnchor>
-            </Field>
+    return null; // Todo replace with new popover
 
-            {state.isOpen && !props.isDisabled && withPortal && (
-              <Portal>{popoverContent}</Portal>
-            )}
-            {state.isOpen && !props.isDisabled && !withPortal && popoverContent}
-          </PopoverRoot>
-        </Box>
-      </I18nProvider>
-    );
+    // return (
+    //   <I18nProvider locale={locale}>
+    //     <Box
+    //       position="relative"
+    //       display="inline-flex"
+    //       flexDirection="column"
+    //       width={width}
+    //     >
+    //       <PopoverRoot
+    //         {...dialogProps}
+    //         open={state.isOpen}
+    //         onOpenChange={state.open}
+    //         onExitComplete={state.close}
+    //       >
+    //         <Field
+    //           display="inline-flex"
+    //           id={inputGroupId}
+    //           aria-labelledby={labelId}
+    //           errorText={errorMessage}
+    //         >
+    //           <PopoverAnchor>
+    //             <StyledField
+    //               variant={variant}
+    //               onClick={onFieldClick}
+    //               paddingX={3}
+    //               minHeight={minHeight}
+    //               isDisabled={props.isDisabled}
+    //               ariaLabelledby={labelId}
+    //             >
+    //               <PopoverTrigger>
+    //                 <CalendarTriggerButton
+    //                   variant={variant}
+    //                   ref={ref}
+    //                   isDisabled={props.isDisabled}
+    //                   ariaLabelledby={labelId}
+    //                   {...buttonProps}
+    //                 />
+    //               </PopoverTrigger>
+    //               <DateField
+    //                 label={props.label}
+    //                 labelProps={labelProps}
+    //                 labelId={labelId}
+    //                 name={props.name}
+    //                 {...fieldProps}
+    //               />
+    //             </StyledField>
+    //           </PopoverAnchor>
+    //         </Field>
+
+    //         {state.isOpen && !props.isDisabled && withPortal && (
+    //           <Portal>{popoverContent}</Portal>
+    //         )}
+    //         {state.isOpen && !props.isDisabled && !withPortal && popoverContent}
+    //       </PopoverRoot>
+    //     </Box>
+    //   </I18nProvider>
+    // );
   },
 );

@@ -1,12 +1,9 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { coreText } from "../utils/core-utils";
-import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { ghostBackground } from "../utils/ghost-utils";
-import { surface } from "../utils/surface-utils";
+import { mediaControllerAnatomy } from "./anatomy";
 
 export const mediaControllerSlotRecipe = defineSlotRecipe({
-  slots: ["root", "icon"],
+  slots: mediaControllerAnatomy.keys(),
   className: "spor-media-controller-button",
   base: {
     root: {
@@ -21,15 +18,13 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
       display: "flex",
       padding: 1,
       alignSelf: "center",
-      // The SVG icon color is set to the brand background color, due to how SVGs work
-      color: brandBackground("default").backgroundColor,
+      color: "brand.surface",
       ...focusVisibleStyles(),
+      outlineOffset: "2px",
     },
     icon: {
       flex: "0 0 auto",
       display: "block",
-      width: "1em",
-      height: "1em",
     },
   },
   variants: {
@@ -37,41 +32,36 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
       play: {
         root: {
           padding: 0,
-          ...brandText("default"),
-          ...brandBackground("default"),
+          color: "brand.text",
+          backgroundColor: "brand.surface",
           _hover: {
-            ...brandText("default"),
-            ...brandBackground("hover"),
+            color: "brand.text",
+            backgroundColor: "brand.surface.hover",
+            _active: {
+              color: "brand.text",
+              backgroundColor: "brand.surface.active",
+            },
           },
-          _active: {
-            ...brandText("default"),
-            ...brandBackground("active"),
-          },
-
           _disabled: {
             pointerEvents: "none",
             color: "icon.disabled",
-            ...surface("disabled"),
+            backgroundColor: "surface.disabled",
           },
         },
       },
       jumpSkip: {
         root: {
           _hover: {
-            ...ghostBackground("hover"),
-          },
-          _active: {
-            ...ghostBackground("active"),
+            backgroundColor: "ghost.surface.hover",
+            _active: {
+              backgroundColor: "ghost.surface.active",
+            },
           },
           _disabled: {
             pointerEvents: "none",
-            ...surface("disabled"),
-            ...coreText("disabled"),
+            backgroundColor: "surface.disabled",
+            color: "text.disabled",
           },
-        },
-        icon: {
-          width: "0.71em",
-          height: "0.71em",
         },
       },
     },
@@ -84,6 +74,9 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
       lg: {
         root: {
           fontSize: 60,
+        },
+        icon: {
+          transform: "scale(1.55)",
         },
       },
     },
@@ -108,6 +101,31 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
           fontSize: 38,
           width: "3.75rem",
           height: "3.75rem",
+        },
+        icon: {
+          transform: "scale(1.55)",
+        },
+      },
+    },
+    {
+      variant: "jumpSkip",
+      size: "sm",
+      css: {
+        root: {
+          fontSize: 24,
+        },
+      },
+    },
+    {
+      variant: "jumpSkip",
+      size: "lg",
+      css: {
+        root: {
+          fontSize: 38,
+        },
+        icon: {
+          margin: 1,
+          transform: "scale(1.4)",
         },
       },
     },

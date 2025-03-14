@@ -18,7 +18,6 @@
     },
     "dev": {
       "dependsOn": ["typegen", "^build"],
-      "outputs": ["dist/**", "public/build/**"],
       "cache": false,
       "persistent": true
     }

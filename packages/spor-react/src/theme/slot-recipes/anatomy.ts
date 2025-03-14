@@ -241,6 +241,10 @@ export const toastAnatomy = createAnatomy("toast").parts(
   "actionTrigger",
 );
 
+export const floatingActionButtonAnatomy = createAnatomy(
+  "floating-action-button",
+).parts("root", "icon", "text");
+
 export const popoverAnatomy = arkPopoverAnatomy.extendWith(
   "header",
   "body",

@@ -1,7 +1,7 @@
-import { cargonetColors, colors, vyDigitalColors } from "./colors";
-import { shadows } from "./shadows";
-import { radii } from "./radii";
 import { Brand } from "../brand";
+import { cargonetColors, colors, vyDigitalColors } from "./colors";
+import { radii } from "./radii";
+import { shadows } from "./shadows";
 
 const baseSemanticTokens = {
   shadows,

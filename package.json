@@ -6,7 +6,7 @@
     "prebuild": "rimraf packages/*/dist --glob",
     "build": "turbo run build",
     "test": "turbo run test --parallel",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev typegen:watch",
     "postinstall": "patch-package",
     "prerelease": "pnpm build",
     "release": "turbo run build && changeset publish",

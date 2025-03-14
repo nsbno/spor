@@ -8,7 +8,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "tsup",
-    "dev": "concurrently \"pnpm typegen:watch\" \"tsup --watch\"",
+    "dev": "tsup --watch",
     "typegen": "npx @chakra-ui/cli typegen src/theme/index.ts",
     "typegen:watch": "npx @chakra-ui/cli typegen src/theme/index.ts --watch",
     "typegen:strict": "npx @chakra-ui/cli typegen /src/theme/index.ts --strict"
@@ -56,7 +56,6 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vygruppen/tsconfig": "workspace:*",
-    "concurrently": "^9.1.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tsup": "^7.2.0",

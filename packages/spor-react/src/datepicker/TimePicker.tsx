@@ -128,7 +128,6 @@ export const TimePicker = ({
   return (
     <Field as="time" {...boxProps}>
       <StyledField
-        variant="core"
         width="fit-content"
         paddingX={2}
         alignItems="center"

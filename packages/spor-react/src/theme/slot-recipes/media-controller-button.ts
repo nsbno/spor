@@ -70,9 +70,6 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
         root: {
           fontSize: 42,
         },
-        icon: {
-          transform: "scale(0.9)",
-        },
       },
       lg: {
         root: {
@@ -105,6 +102,9 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
           width: "3.75rem",
           height: "3.75rem",
         },
+        icon: {
+          transform: "scale(1.55)",
+        },
       },
     },
     {
@@ -122,7 +122,10 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
       css: {
         root: {
           fontSize: 38,
-          transform: "scale(1.2)",
+        },
+        icon: {
+          marginX: 1,
+          transform: "scale(1.4)",
         },
       },
     },

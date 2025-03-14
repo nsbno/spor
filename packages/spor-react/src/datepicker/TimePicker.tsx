@@ -126,7 +126,7 @@ export const TimePicker = ({
     texts.selectedTimeIs(`${dateTime?.hour ?? 0} ${dateTime?.minute ?? 0}`),
   )}`;
   return (
-    <Field {...boxProps}>
+    <Field as="time" {...boxProps}>
       <StyledField
         variant="core"
         width="fit-content"

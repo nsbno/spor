@@ -214,6 +214,13 @@ export const cardSelectAnatomy = createAnatomy("card-select").parts(
 );
 export const choiceChipAnatomy = createAnatomy("choice-chip").parts("root");
 
+export const numericStepperAnatomy = createAnatomy("numeric-stepper").parts(
+  "root",
+  "container",
+  "input",
+  "text",
+  "button",
+);
 export const mediaControllerAnatomy = createAnatomy(
   "media-controller-button",
 ).parts("root", "icon");

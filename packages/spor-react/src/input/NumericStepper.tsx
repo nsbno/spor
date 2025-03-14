@@ -1,13 +1,13 @@
 "use client";
-import React, { forwardRef, PropsWithChildren, useRef } from "react";
-import { BoxProps, IconButton, createTexts, useTranslation } from "..";
-import { numericStepperRecipe } from "../theme/slot-recipes/numeric-stepper";
 import {
   chakra,
   RecipeVariantProps,
   useControllableState,
   useSlotRecipe,
 } from "@chakra-ui/react";
+import React, { PropsWithChildren, useRef } from "react";
+import { BoxProps, createTexts, IconButton, useTranslation } from "..";
+import { numericStepperRecipe } from "../theme/slot-recipes/numeric-stepper";
 import { Field } from "./Field";
 
 type NumericStepperVariants = RecipeVariantProps<typeof numericStepperRecipe>;
@@ -38,11 +38,13 @@ export type NumericStepperProps = BoxProps &
     /** Name added to the aria-label of subtract and add buttons. */
     ariaLabelContext?: { singular: string; plural: string };
   } & Omit<BoxProps, "onChange">;
+
 /** A simple stepper component for integer values
  *
  * Allows you to choose a given integer value, like for example the number of
  * adults on your journey.
  *
+ * @example
  * ```tsx
  * <NumericStepper value={value} onChange={setValue} />
  * ```
@@ -56,13 +58,15 @@ export type NumericStepperProps = BoxProps &
  * You can use the NumericStepper inside of a Field component to get IDs etc linked up automatically:
  *
  * ```tsx
- * <Field label="Number of adults">
- *   <NumericStepper />
- * </Field>
+ * <NumericStepper />
  * ```
+ * @see https://spor.vy.no/components/numeric-stepper
  */
 
-export const NumericStepper = forwardRef<HTMLDivElement, NumericStepperProps>(
+export const NumericStepper = React.forwardRef<
+  HTMLDivElement,
+  NumericStepperProps
+>(
   (
     {
       name: nameProp,
@@ -77,7 +81,6 @@ export const NumericStepper = forwardRef<HTMLDivElement, NumericStepperProps>(
       stepSize = 1,
       showZero = false,
       ariaLabelContext = { singular: "", plural: "" },
-      ...boxProps
     }: NumericStepperProps,
     ref,
   ) => {
@@ -97,7 +100,7 @@ export const NumericStepper = forwardRef<HTMLDivElement, NumericStepperProps>(
     };
 
     return (
-      <Field css={styles}>
+      <Field css={styles.root} flexDirection="row" width="auto">
         <VerySmallButton
           icon={<SubtractIcon stepLabel={clampedStepSize} />}
           aria-label={t(
@@ -124,8 +127,9 @@ export const NumericStepper = forwardRef<HTMLDivElement, NumericStepperProps>(
             max={maxValue}
             name={nameProp}
             value={value}
+            disabled={disabled}
             id={!showZero && value === 0 ? undefined : idProp}
-            css={styles}
+            css={styles.input}
             width={`${Math.max(value.toString().length + 1, 3)}ch`}
             visibility={!showZero && value === 0 ? "hidden" : "visible"}
             aria-live="assertive"
@@ -206,7 +210,13 @@ const VerySmallButton = React.forwardRef<
   const recipe = useSlotRecipe({ recipe: numericStepperRecipe });
   const styles = recipe({ colorPalette: "default" });
   return (
-    <IconButton variant="primary" size="xs" css={styles} ref={ref} {...props} />
+    <IconButton
+      variant="primary"
+      size="xs"
+      css={styles.button}
+      ref={ref}
+      {...props}
+    />
   );
 });
 
@@ -214,13 +224,7 @@ type IconPropTypes = BoxProps & { stepLabel: number };
 
 const SubtractIcon = ({ stepLabel }: IconPropTypes) => (
   <>
-    <chakra.svg
-      as="svg"
-      viewBox="0 0 30 30"
-      width="24"
-      height="24"
-      stroke="currentColor"
-    >
+    <chakra.svg as="svg" viewBox="0 0 30 30" stroke="currentColor">
       <line
         x1="9"
         y1="15"
@@ -228,6 +232,7 @@ const SubtractIcon = ({ stepLabel }: IconPropTypes) => (
         y2="15"
         strokeWidth="1.5"
         strokeLinecap="round"
+        preserveAspectRatio="xMidYMid meet"
       />
     </chakra.svg>
     {stepLabel > 1 && (
@@ -238,13 +243,7 @@ const SubtractIcon = ({ stepLabel }: IconPropTypes) => (
 
 const AddIcon = ({ stepLabel }: IconPropTypes) => (
   <>
-    <chakra.svg
-      as="svg"
-      viewBox="0 0 30 30"
-      width="24"
-      height="24"
-      stroke="currentColor"
-    >
+    <chakra.svg as="svg" viewBox="0 0 30 30" stroke="currentColor">
       <line
         x1="9"
         y1="15"

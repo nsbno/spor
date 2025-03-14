@@ -30,6 +30,7 @@ import { switchSlotRecipe } from "./switch";
 import { tableSlotRecipe } from "./table";
 import { tabsSlotRecipe } from "./tabs";
 import { travelTagSlotRecipe } from "./travel-tag";
+import { toastSlotRecipe } from "./toast";
 
 export const slotRecipes = {
   accordion: accordionSlotRecipe,
@@ -64,4 +65,5 @@ export const slotRecipes = {
   table: tableSlotRecipe,
   tabs: tabsSlotRecipe,
   travelTag: travelTagSlotRecipe,
+  toast: toastSlotRecipe,
 };

@@ -38,6 +38,7 @@ Spor is getting a major update with Chakra 3.
 - `CardSelect` has new variant: `core`, `ghost` and `floating`
 - `NumericStepper`isDisabled prop is deprecated, use disabled
 - `createToast` replaces `useToast`. Now does not support closable toasts or toasts with actions.
+- `Popover`replaces `ToolTip`. Props are different.
 - `MediaController`isPlaying prop is now playing
 
 ### Darkmode

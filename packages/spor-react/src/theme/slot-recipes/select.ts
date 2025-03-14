@@ -98,7 +98,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       _open: {
         animationStyle: "slide-fade-in",
         animationDuration: "fast",
-        zIndex: "tooltip",
+        zIndex: "popover",
       },
       _closed: {
         animationStyle: "slide-fade-out",

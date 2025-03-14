@@ -1,48 +1,50 @@
+"use client";
 import {
   chakra,
+  RecipeVariantProps,
   useControllableState,
-  useFormControl,
-  useMultiStyleConfig,
+  useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { useRef } from "react";
-import {
-  Box,
-  BoxProps,
-  Flex,
-  IconButton,
-  createTexts,
-  useTranslation,
-} from "..";
+import React, { PropsWithChildren, useRef } from "react";
+import { BoxProps, createTexts, IconButton, useTranslation } from "..";
+import { numericStepperRecipe } from "../theme/slot-recipes/numeric-stepper";
+import { Field } from "./Field";
 
-type NumericStepperProps = {
-  /** The name of the input field */
-  name?: string;
-  /** The current value */
-  value?: number;
-  /** A default value, if uncontrolled */
-  defaultValue?: number;
-  /** Callback for when the value changes */
-  onChange?: (value: number) => void;
-  /** Optional minimum value. Defaults to 0 */
-  minValue?: number;
-  /** Optional maximum value. Defaults to 99 */
-  maxValue?: number;
-  /** Whether the stepper is disabled or not */
-  isDisabled?: boolean;
-  /** Whether to show input field or not */
-  withInput?: boolean;
-  /** The amount to increase/decrease when pressing +/- */
-  stepSize?: number;
-  /** Whether to show the number input when value is zero  */
-  showZero?: boolean;
-  /** Name added to the aria-label of subtract and add buttons. */
-  ariaLabelContext?: { singular: string; plural: string };
-} & Omit<BoxProps, "onChange">;
+type NumericStepperVariants = RecipeVariantProps<typeof numericStepperRecipe>;
+
+export type NumericStepperProps = BoxProps &
+  PropsWithChildren<NumericStepperVariants> & {
+    children: React.ReactNode;
+    /** The name of the input field */
+    name?: string;
+    /** The current value */
+    value?: number;
+    /** A default value, if uncontrolled */
+    defaultValue?: number;
+    /** Callback for when the value changes */
+    onChange?: (value: number) => void;
+    /** Optional minimum value. Defaults to 0 */
+    minValue?: number;
+    /** Optional maximum value. Defaults to 99 */
+    maxValue?: number;
+    /** Whether the stepper is disabled or not */
+    disabled?: boolean;
+    /** Whether to show input field or not */
+    withInput?: boolean;
+    /** The amount to increase/decrease when pressing +/- */
+    stepSize?: number;
+    /** Whether to show the number input when value is zero  */
+    showZero?: boolean;
+    /** Name added to the aria-label of subtract and add buttons. */
+    ariaLabelContext?: { singular: string; plural: string };
+  } & Omit<BoxProps, "onChange">;
+
 /** A simple stepper component for integer values
  *
  * Allows you to choose a given integer value, like for example the number of
  * adults on your journey.
  *
+ * @example
  * ```tsx
  * <NumericStepper value={value} onChange={setValue} />
  * ```
@@ -53,128 +55,137 @@ type NumericStepperProps = {
  * <NumericStepper value={value} onChange={setValue} minValue={1} maxValue={10} stepSize={3} />
  * ```
  *
- * You can use the NumericStepper inside of a FormControl component to get IDs etc linked up automatically:
+ * You can use the NumericStepper inside of a Field component to get IDs etc linked up automatically:
  *
  * ```tsx
- * <FormControl>
- *   <FormLabel>Number of adults</FormLabel>
- *   <NumericStepper />
- * </FormControl>
+ * <NumericStepper />
  * ```
+ * @see https://spor.vy.no/components/numeric-stepper
  */
-export function NumericStepper({
-  name: nameProp,
-  id: idProp,
-  value: valueProp,
-  defaultValue = 1,
-  onChange: onChangeProp,
-  minValue = 0,
-  maxValue = 99,
-  isDisabled,
-  withInput = true,
-  stepSize = 1,
-  showZero = false,
-  ariaLabelContext = { singular: "", plural: "" },
-  ...boxProps
-}: NumericStepperProps) {
-  const addButtonRef = useRef<HTMLButtonElement>(null);
-  const { t } = useTranslation();
-  const styles = useMultiStyleConfig("NumericStepper", {});
-  const [value, onChange] = useControllableState<number>({
-    value: valueProp,
-    onChange: onChangeProp,
-    defaultValue,
-  });
-  const formControlProps = useFormControl({ id: idProp, isDisabled });
-  const clampedStepSize = Math.max(Math.min(stepSize, 10), 1);
 
-  const focusOnAddButton = () => {
-    addButtonRef.current?.focus();
-  };
+export const NumericStepper = React.forwardRef<
+  HTMLDivElement,
+  NumericStepperProps
+>(
+  (
+    {
+      name: nameProp,
+      id: idProp,
+      value: valueProp,
+      defaultValue = 1,
+      onChange: onChangeProp,
+      minValue = 0,
+      maxValue = 99,
+      disabled,
+      withInput = true,
+      stepSize = 1,
+      showZero = false,
+      ariaLabelContext = { singular: "", plural: "" },
+    }: NumericStepperProps,
+    ref,
+  ) => {
+    const addButtonRef = useRef<HTMLButtonElement>(null);
+    const { t } = useTranslation();
+    const recipe = useSlotRecipe({ recipe: numericStepperRecipe });
+    const styles = recipe();
+    const [value, onChange] = useControllableState<number>({
+      value: valueProp,
+      onChange: onChangeProp,
+      defaultValue,
+    });
+    const clampedStepSize = Math.max(Math.min(stepSize, 10), 1);
 
-  return (
-    <Flex __css={styles.container} {...boxProps}>
-      <VerySmallButton
-        icon={<SubtractIcon stepLabel={clampedStepSize} />}
-        aria-label={t(
-          texts.decrementButtonAriaLabel(
-            clampedStepSize,
-            stepSize == 1 ? ariaLabelContext.singular : ariaLabelContext.plural,
-          ),
-        )}
-        onClick={() => {
-          onChange(Math.max(value - clampedStepSize, minValue));
-          if (Math.max(value - clampedStepSize, minValue) <= minValue) {
-            focusOnAddButton();
-          }
-        }}
-        visibility={value <= minValue ? "hidden" : "visible"}
-        isDisabled={formControlProps.disabled}
-        id={value <= minValue ? undefined : formControlProps.id}
-      />
-      {withInput ? (
-        <chakra.input
-          type="number"
-          min={minValue}
-          max={maxValue}
-          name={nameProp}
-          value={value}
-          {...formControlProps}
-          id={!showZero && value === 0 ? undefined : formControlProps.id}
-          sx={styles.input}
-          width={`${Math.max(value.toString().length + 1, 3)}ch`}
-          visibility={!showZero && value === 0 ? "hidden" : "visible"}
-          aria-live="assertive"
-          aria-label={
-            ariaLabelContext.plural !== ""
-              ? t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
-              : ""
-          }
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const numericInput = Number(e.target.value);
-            if (Number.isNaN(numericInput)) {
-              return;
-            }
-            onChange(Math.max(Math.min(numericInput, maxValue), minValue));
-            if (
-              !showZero &&
-              Math.max(Math.min(numericInput, maxValue), minValue) === 0
-            ) {
+    const focusOnAddButton = () => {
+      addButtonRef.current?.focus();
+    };
+
+    return (
+      <Field css={styles.root} flexDirection="row" width="auto">
+        <VerySmallButton
+          icon={<SubtractIcon stepLabel={clampedStepSize} />}
+          aria-label={t(
+            texts.decrementButtonAriaLabel(
+              clampedStepSize,
+              stepSize === 1
+                ? ariaLabelContext.singular
+                : ariaLabelContext.plural,
+            ),
+          )}
+          onClick={() => {
+            onChange(Math.max(value - clampedStepSize, minValue));
+            if (Math.max(value - clampedStepSize, minValue) <= minValue) {
               focusOnAddButton();
             }
           }}
+          visibility={value <= minValue ? "hidden" : "visible"}
+          disabled={disabled}
+          id={value <= minValue ? undefined : idProp}
         />
-      ) : (
-        <chakra.text
-          sx={styles.text}
-          visibility={!showZero && value === 0 ? "hidden" : "visible"}
-          aria-live="assertive"
-          aria-label={
-            ariaLabelContext.plural !== ""
-              ? t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
-              : ""
-          }
-        >
-          {value}
-        </chakra.text>
-      )}
-      <VerySmallButton
-        ref={addButtonRef}
-        icon={<AddIcon stepLabel={clampedStepSize} />}
-        aria-label={t(
-          texts.incrementButtonAriaLabel(
-            clampedStepSize,
-            stepSize == 1 ? ariaLabelContext.singular : ariaLabelContext.plural,
-          ),
+        {withInput ? (
+          <chakra.input
+            min={minValue}
+            max={maxValue}
+            name={nameProp}
+            value={value}
+            disabled={disabled}
+            id={!showZero && value === 0 ? undefined : idProp}
+            css={styles.input}
+            width={`${Math.max(value.toString().length + 1, 3)}ch`}
+            visibility={!showZero && value === 0 ? "hidden" : "visible"}
+            aria-live="assertive"
+            aria-label={
+              ariaLabelContext.plural !== ""
+                ? t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
+                : ""
+            }
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              const numericInput = Number(e.target.value);
+              if (Number.isNaN(numericInput)) {
+                return;
+              }
+              onChange(Math.max(Math.min(numericInput, maxValue), minValue));
+              if (
+                !showZero &&
+                Math.max(Math.min(numericInput, maxValue), minValue) === 0
+              ) {
+                focusOnAddButton();
+              }
+            }}
+          />
+        ) : (
+          <chakra.text
+            css={styles}
+            visibility={!showZero && value === 0 ? "hidden" : "visible"}
+            aria-live="assertive"
+            aria-label={
+              ariaLabelContext.plural !== ""
+                ? t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
+                : ""
+            }
+          >
+            {value}
+          </chakra.text>
         )}
-        onClick={() => onChange(Math.min(value + clampedStepSize, maxValue))}
-        visibility={value >= maxValue ? "hidden" : "visible"}
-        isDisabled={formControlProps.disabled}
-        id={value >= maxValue ? undefined : formControlProps.id}
-      />
-    </Flex>
-  );
-}
+        <VerySmallButton
+          ref={addButtonRef}
+          icon={<AddIcon stepLabel={clampedStepSize} />}
+          aria-label={t(
+            texts.incrementButtonAriaLabel(
+              clampedStepSize,
+              stepSize === 1
+                ? ariaLabelContext.singular
+                : ariaLabelContext.plural,
+            ),
+          )}
+          onClick={() => onChange(Math.min(value + clampedStepSize, maxValue))}
+          visibility={value >= maxValue ? "hidden" : "visible"}
+          disabled={disabled}
+          id={value >= maxValue ? undefined : idProp}
+        />
+      </Field>
+    );
+  },
+);
 
 type VerySmallButtonProps = {
   /** The icon to render */
@@ -186,18 +197,23 @@ type VerySmallButtonProps = {
   /** Whether or not the button is hidden */
   visibility?: "visible" | "hidden";
   /** Whether or not the button is disabled */
-  isDisabled?: boolean;
+  disabled?: boolean;
   /** The ID of the button */
   id?: string;
 };
+
 /** Internal override for extra small icon buttons */
-const VerySmallButton = React.forwardRef((props: VerySmallButtonProps, ref) => {
-  const styles = useMultiStyleConfig("NumericStepper", {});
+const VerySmallButton = React.forwardRef<
+  HTMLButtonElement,
+  VerySmallButtonProps
+>((props, ref) => {
+  const recipe = useSlotRecipe({ recipe: numericStepperRecipe });
+  const styles = recipe({ colorPalette: "default" });
   return (
     <IconButton
       variant="primary"
       size="xs"
-      sx={styles.button}
+      css={styles.button}
       ref={ref}
       {...props}
     />
@@ -206,16 +222,9 @@ const VerySmallButton = React.forwardRef((props: VerySmallButtonProps, ref) => {
 
 type IconPropTypes = BoxProps & { stepLabel: number };
 
-const SubtractIcon = ({ stepLabel, ...props }: IconPropTypes) => (
+const SubtractIcon = ({ stepLabel }: IconPropTypes) => (
   <>
-    <Box
-      as="svg"
-      viewBox="0 0 30 30"
-      width="24"
-      height="24"
-      stroke="currentColor"
-      {...props}
-    >
+    <chakra.svg as="svg" viewBox="0 0 30 30" stroke="currentColor">
       <line
         x1="9"
         y1="15"
@@ -223,24 +232,18 @@ const SubtractIcon = ({ stepLabel, ...props }: IconPropTypes) => (
         y2="15"
         strokeWidth="1.5"
         strokeLinecap="round"
+        preserveAspectRatio="xMidYMid meet"
       />
-    </Box>
+    </chakra.svg>
     {stepLabel > 1 && (
       <chakra.span paddingRight="1">{stepLabel.toString()}</chakra.span>
     )}
   </>
 );
 
-const AddIcon = ({ stepLabel, ...props }: IconPropTypes) => (
+const AddIcon = ({ stepLabel }: IconPropTypes) => (
   <>
-    <Box
-      as="svg"
-      viewBox="0 0 30 30"
-      width="24"
-      height="24"
-      stroke="currentColor"
-      {...props}
-    >
+    <chakra.svg as="svg" viewBox="0 0 30 30" stroke="currentColor">
       <line
         x1="9"
         y1="15"
@@ -257,8 +260,7 @@ const AddIcon = ({ stepLabel, ...props }: IconPropTypes) => (
         strokeWidth="1.5"
         strokeLinecap="round"
       />
-    </Box>
-
+    </chakra.svg>
     {stepLabel > 1 && (
       <chakra.span paddingRight="1">{stepLabel.toString()}</chakra.span>
     )}

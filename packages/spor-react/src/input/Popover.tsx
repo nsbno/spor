@@ -1,3 +1,4 @@
+"use client";
 import { Box } from "@chakra-ui/react";
 import React, { forwardRef, useRef } from "react";
 import {

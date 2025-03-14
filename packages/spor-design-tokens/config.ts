@@ -47,31 +47,6 @@ export default {
         },
       ],
     },
-    elm: {
-      buildPath: "elm/src/Spor/Token/",
-      transforms: ["attribute/cti", "name/elm", "size/px", "color/css"],
-      files: tokens
-        .filter((f) => !["font", "family", "style"].includes(f.type))
-        .map((tokenFile) => {
-          const category = pascalCase(tokenFile.category);
-          const type = pascalCase(tokenFile.type);
-
-          return {
-            format: "elm/module",
-            destination: `${category}/${type}.elm`,
-            filter: {
-              attributes: {
-                category: tokenFile.category,
-                type: tokenFile.type,
-              },
-            },
-            options: {
-              category: category,
-              type: type,
-            },
-          };
-        }),
-    },
     css: {
       transforms: [
         "attribute/cti",

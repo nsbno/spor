@@ -5,7 +5,7 @@ import {
   type EntryContext,
 } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
-import { renderToPipeableStream, renderToString } from "react-dom/server";
+import { renderToPipeableStream } from "react-dom/server";
 import { createEmotionCache } from "./root/setup/chakra-setup/createEmotionCache";
 import { ServerStyleContext } from "./root/setup/chakra-setup/styleContext";
 import { PassThrough } from "stream";

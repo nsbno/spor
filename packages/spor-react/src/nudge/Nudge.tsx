@@ -1,16 +1,7 @@
-import {
-  Box,
-  DarkMode,
-  Popover,
-  PopoverAnchor,
-  PopoverArrow,
-  PopoverBody,
-  PopoverCloseButton,
-  PopoverContent,
-} from "@chakra-ui/react";
-import React from "react";
+"use client";
+import { Box } from "@chakra-ui/react";
+import React, { forwardRef } from "react";
 import { Button, ButtonGroup, createTexts, useTranslation } from "..";
-import { TooltipProps } from "../tooltip";
 
 export type NudgeProps = {
   /**
@@ -49,16 +40,7 @@ export type NudgeProps = {
    * Any actions you want to provide. Defaults to a close button and a "Show me" button.
    */
   actions?: React.ReactNode;
-} & Omit<
-  TooltipProps,
-  | "name"
-  | "triggerElement"
-  | "children"
-  | "withCloseButton"
-  | "defaultIsOpen"
-  | "size"
-  | "borderRadius"
->;
+} & any; // todo - remove any
 
 const EXPIRATION_DELAY = 1000 * 60 * 60 * 24 * 30; // 30 days
 
@@ -74,61 +56,54 @@ const EXPIRATION_DELAY = 1000 * 60 * 60 * 24 * 30; // 30 days
  *  name="my-nudge"
  *  content="Check out this enormous new feature!"
  * >
- *   <StaticCard variant="base" padding={2} width="fit-content">My new feature</StaticCard>
+ *   <StaticCard colorPalette="blue" padding={2} width="fit-content">My new feature</StaticCard>
  * </Nudge>
  * ```
  */
-export const Nudge = ({
-  introducedDate,
-  name,
-  children,
-  content,
-  actions,
-  ...props
-}: NudgeProps) => {
-  const { t } = useTranslation();
-  if (new Date(introducedDate).getTime() + EXPIRATION_DELAY < Date.now()) {
-    if (process.env.NODE_ENV === "development") {
-      console.warn(
-        `The nudge ${name} has been used for longer than 30 days. Please remove it from the codebase.
-        
-        This is a development only warning, and will not be shown in production.`,
-      );
+
+export const Nudge = forwardRef<HTMLDivElement, NudgeProps>(
+  function Nudge(props, ref) {
+    const { introducedDate, name, children, content, actions } = props;
+    const { t } = useTranslation();
+    if (new Date(introducedDate).getTime() + EXPIRATION_DELAY < Date.now()) {
+      if (process.env.NODE_ENV === "development") {
+        console.warn(
+          `The nudge ${name} has been used for longer than 30 days. Please remove it from the codebase.
+
+          This is a development only warning, and will not be shown in production.`,
+        );
+      }
+      return null;
     }
-    return null;
-  }
-  return (
-    <Popover
-      arrowSize={12}
-      arrowShadowColor="none"
-      defaultIsOpen={true}
-      {...props}
-    >
-      <PopoverAnchor>{children}</PopoverAnchor>
-      <PopoverContent borderRadius="sm">
-        <DarkMode>
-          <PopoverArrow />
-          <PopoverCloseButton />
-          <PopoverBody margin={1}>
-            <Box marginRight={4}>{content}</Box>
-            <Box marginTop={1.5}>
-              {actions ?? (
-                <ButtonGroup>
-                  <Button variant="tertiary" size="xs">
-                    {t(texts.close)}
-                  </Button>
-                  <Button variant="secondary" size="xs" fontWeight="bold">
-                    {t(texts.showMe)}
-                  </Button>
-                </ButtonGroup>
-              )}
-            </Box>
-          </PopoverBody>
-        </DarkMode>
-      </PopoverContent>
-    </Popover>
-  );
-};
+
+    return null; // Todo replace with new popover
+
+    // return (
+    // <PopoverRoot defaultOpen={true} {...props}>
+    //   <PopoverTrigger>{children}</PopoverTrigger>
+    //   <PopoverContent borderRadius="sm">
+    //     <PopoverArrow />
+    //     <PopoverCloseTrigger />
+    //     <PopoverBody margin={1}>
+    //       <Box marginRight={4}>{content}</Box>
+    //       <Box marginTop={1.5}>
+    //         {actions ?? (
+    //           <ButtonGroup>
+    //             <Button variant="tertiary" size="xs">
+    //               {t(texts.close)}
+    //             </Button>
+    //             <Button variant="secondary" size="xs" fontWeight="bold">
+    //               {t(texts.showMe)}
+    //             </Button>
+    //           </ButtonGroup>
+    //         )}
+    //       </Box>
+    //     </PopoverBody>
+    //   </PopoverContent>
+    // </PopoverRoot>
+    // );
+  },
+);
 
 const texts = createTexts({
   close: {

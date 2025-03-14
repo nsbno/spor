@@ -1,35 +1,21 @@
-import { mode } from "@chakra-ui/theme-tools";
-
 type Surface = "default" | "secondary" | "tertiary" | "disabled";
-export const surface = (surface: Surface, props: any) => {
+export const surface = (surface: Surface) => {
   switch (surface) {
     case "default":
       return {
-        backgroundColor: mode(
-          "surface.default.light",
-          "surface.default.dark",
-        )(props),
+        backgroundColor: "surface",
       };
     case "secondary":
       return {
-        backgroundColor: mode(
-          "surface.secondary.light",
-          "surface.secondary.dark",
-        )(props),
+        backgroundColor: "surface.secondary",
       };
     case "tertiary":
       return {
-        backgroundColor: mode(
-          "surface.tertiary.light",
-          "surface.tertiary.dark",
-        )(props),
+        backgroundColor: "surface.tertiary",
       };
     case "disabled":
       return {
-        backgroundColor: mode(
-          "surface.disabled.light",
-          "surface.disabled.dark",
-        )(props),
+        backgroundColor: "surface.disabled",
       };
   }
 };

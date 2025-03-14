@@ -35,10 +35,10 @@ export const NavigationLink = ({ children, href }: NavigationItemProps) => {
       fontWeight="bold"
       fontStyle="sm"
       fontSize={"xs"}
-      _focusVisible={{ borderColor: "outline.focus.dark", outline: "none" }}
-      _hover={{ backgroundColor: "ghost.surface.hover.dark" }}
+      _focusVisible={{ borderColor: "outline.focus", outline: "none" }}
+      _hover={{ backgroundColor: "ghost.surface.hover" }}
       _active={{
-        backgroundColor: "ghost.surface.active.dark",
+        backgroundColor: "ghost.surface.active",
       }}
       backgroundColor={isActive ? "whiteAlpha.200" : "transparent"}
       transitionDuration="fast"

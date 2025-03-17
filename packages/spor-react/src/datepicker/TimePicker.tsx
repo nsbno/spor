@@ -12,6 +12,7 @@ import { IconButton, createTexts, useTranslation } from "..";
 import { StyledField } from "./StyledField";
 import { TimeField } from "./TimeField";
 import { getCurrentTime, useCurrentLocale } from "./utils";
+import { Field } from "@/input/Field";
 
 type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> & {
   /** The label. Defaults to a localized version of "Time" */
@@ -125,44 +126,45 @@ export const TimePicker = ({
     texts.selectedTimeIs(`${dateTime?.hour ?? 0} ${dateTime?.minute ?? 0}`),
   )}`;
   return (
-    <StyledField
-      variant="core"
-      width="fit-content"
-      paddingX={2}
-      alignItems="center"
-      justifyContent="space-between"
-      gap={2}
-      opacity={isDisabled ? 0.5 : 1}
-      pointerEvents={isDisabled ? "none" : "auto"}
-      aria-disabled={isDisabled}
-      aria-live="assertive"
-      aria-label={ariaLabel}
-      {...boxProps}
-    >
-      <IconButton
-        variant="ghost"
-        size="xs"
-        borderRadius="xs"
-        aria-label={backwardsLabel}
-        title={backwardsLabel}
-        icon={<DropdownLeftFill18Icon />}
-        onClick={handleBackwardsClick}
-        disabled={isDisabled}
-        style={isDisabled ? { backgroundColor: "transparent" } : {}}
-      />
-      <TimeField label={label} state={state} name={name} />
-      <IconButton
-        variant="ghost"
-        size="xs"
-        borderRadius="xs"
-        aria-label={forwardsLabel}
-        title={forwardsLabel}
-        icon={<DropdownRightFill18Icon />}
-        onClick={handleForwardClick}
-        disabled={isDisabled}
-        style={isDisabled ? { backgroundColor: "transparent" } : {}}
-      />
-    </StyledField>
+    <Field as="time" {...boxProps}>
+      <StyledField
+        width="fit-content"
+        paddingX={2}
+        alignItems="center"
+        justifyContent="space-between"
+        gap={2}
+        opacity={isDisabled ? 0.5 : 1}
+        pointerEvents={isDisabled ? "none" : "auto"}
+        aria-disabled={isDisabled}
+        aria-live="assertive"
+        aria-label={ariaLabel}
+        {...boxProps}
+      >
+        <IconButton
+          variant="ghost"
+          size="xs"
+          borderRadius="xs"
+          aria-label={backwardsLabel}
+          title={backwardsLabel}
+          icon={<DropdownLeftFill18Icon />}
+          onClick={handleBackwardsClick}
+          disabled={isDisabled}
+          style={isDisabled ? { backgroundColor: "transparent" } : {}}
+        />
+        <TimeField label={label} state={state} name={name} />
+        <IconButton
+          variant="ghost"
+          size="xs"
+          borderRadius="xs"
+          aria-label={forwardsLabel}
+          title={forwardsLabel}
+          icon={<DropdownRightFill18Icon />}
+          onClick={handleForwardClick}
+          disabled={isDisabled}
+          style={isDisabled ? { backgroundColor: "transparent" } : {}}
+        />
+      </StyledField>
+    </Field>
   );
 };
 

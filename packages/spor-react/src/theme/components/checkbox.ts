@@ -11,23 +11,25 @@ const config = helpers.defineMultiStyleConfig({
   baseStyle: (props) => ({
     container: {
       _hover: {
-        "input:enabled:not([aria-invalid]) + .chakra-checkbox__control": {
-          ...baseBackground("hover", props),
-          borderColor: brandBackground("hover", props).backgroundColor,
-        },
-        "input:enabled[aria-invalid] + .chakra-checkbox__control": {
+        "input:enabled:not([aria-invalid='true']) + .chakra-checkbox__control":
+          {
+            ...baseBackground("hover", props),
+            borderColor: brandBackground("hover", props).backgroundColor,
+          },
+        "input:enabled[aria-invalid='true'] + .chakra-checkbox__control": {
           backgroundColor: mode("white", "inherit")(props),
           borderColor: mode("outline.error.light", "outline.error.dark"),
         },
-        "input:enabled:checked:not([aria-invalid]) + .chakra-checkbox__control":
+        "input:enabled:checked[aria-invalid='false'] + .chakra-checkbox__control":
           {
             ...brandBackground("hover", props),
             borderColor: brandBackground("hover", props).backgroundColor,
           },
-        "input:enabled:checked[aria-invalid] + .chakra-checkbox__control": {
-          borderColor: mode("outline.error.light", "outline.error.dark"),
-          backgroundColor: mode("outline.error.light", "outline.error.dark"),
-        },
+        "input:enabled:checked[aria-invalid='true'] + .chakra-checkbox__control":
+          {
+            borderColor: mode("outline.error.light", "outline.error.dark"),
+            backgroundColor: mode("outline.error.light", "outline.error.dark"),
+          },
       },
     },
     icon: {

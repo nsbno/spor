@@ -1,4 +1,5 @@
-import { Box, usePopoverContext } from "@chakra-ui/react";
+"use client";
+import { Box } from "@chakra-ui/react";
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React, { useState } from "react";
 import {
@@ -39,7 +40,7 @@ export type WizardNudgeProps = Omit<NudgeProps, "actions" | "content"> & {
 export const WizardNudge = ({
   children,
   name,
-  onClose,
+  onExitComplete,
   content,
   ...props
 }: WizardNudgeProps) => {
@@ -50,7 +51,7 @@ export const WizardNudge = ({
 
   return (
     <Nudge
-      onClose={onClose}
+      onExitComplete={onExitComplete}
       name={name}
       content={content[currentStep - 1]}
       actions={
@@ -60,7 +61,11 @@ export const WizardNudge = ({
             numberOfSteps={totalSteps}
           />
           <Box>
-            <NextOrCloseButton isLastStep={isLastStep} onNext={onNext} />
+            <NextOrCloseButton
+              isLastStep={isLastStep}
+              onNext={onNext}
+              onExitComplete={onExitComplete}
+            />
           </Box>
         </Flex>
       }
@@ -74,16 +79,20 @@ export const WizardNudge = ({
 type NextOrCloseButtonProps = {
   isLastStep: boolean;
   onNext: () => void;
+  onExitComplete?: () => void;
 };
-const NextOrCloseButton = ({ isLastStep, onNext }: NextOrCloseButtonProps) => {
-  const { onClose } = usePopoverContext();
+const NextOrCloseButton = ({
+  isLastStep,
+  onNext,
+  onExitComplete,
+}: NextOrCloseButtonProps) => {
   const { t } = useTranslation();
   return (
     <Button
       variant="tertiary"
       size="xs"
       leftIcon={isLastStep ? undefined : <ArrowRightFill18Icon />}
-      onClick={isLastStep ? onClose : onNext}
+      onClick={isLastStep ? onExitComplete : onNext}
       width="fit-content"
     >
       {t(isLastStep ? texts.finish : texts.nextStep)}

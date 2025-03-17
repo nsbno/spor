@@ -1,9 +1,13 @@
-import { Box, useMultiStyleConfig } from "@chakra-ui/react";
-import React from "react";
+"use client";
+import { Box, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
+import React, { PropsWithChildren } from "react";
 import { LineIcon } from "./LineIcon";
 import type { TagProps } from "./types";
+import { infoTagSlotRecipe } from "../theme/slot-recipes/info-tag";
 
-export type InfoTagProps = TagProps;
+type InfoTagVariantProps = RecipeVariantProps<typeof infoTagSlotRecipe>;
+
+export type InfoTagProps = TagProps & PropsWithChildren<InfoTagVariantProps>;
 
 /**
  * An info tag component.
@@ -44,28 +48,31 @@ export const InfoTag = ({
   description,
   ...customProps
 }: InfoTagProps) => {
-  const styles = useMultiStyleConfig("InfoTag", {
+  const recipe = useSlotRecipe({ key: "infoTag" });
+
+  const styles = recipe({
     variant,
     size,
     ...customProps,
   });
+
   return (
-    <Box sx={styles.container}>
+    <Box css={styles.container}>
       <LineIcon
         variant={variant}
         size={size}
-        sx={styles.iconContainer}
+        aria-label={title}
         {...(customProps as any)} // TODO: Fix this
       />
-      <Box sx={styles.textContainer}>
+      <Box css={styles.textContainer}>
         {title && (
-          <Box as="span" sx={styles.title}>
+          <Box as="span" css={styles.title}>
             {title}
           </Box>
         )}
         {title && description && " "}
         {description && (
-          <Box as="span" sx={styles.description}>
+          <Box as="span" css={styles.description}>
             {description}
           </Box>
         )}

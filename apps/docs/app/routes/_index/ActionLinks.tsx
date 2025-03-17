@@ -77,12 +77,12 @@ const links: LinkItem[] = [
 
 export function ActionLinks() {
   return (
-    <Container maxWidth="container.lg">
+    <Container maxWidth="container.lg" marginX="auto">
       <SimpleGrid
         position="relative"
         top={["-62px", -8]}
         columns={[1, 2, 3]}
-        spacing={[3, 4]}
+        gap={[3, 4]}
       >
         {links.map((link) => (
           <ActionLinkCard to={link.to} key={link.to}>

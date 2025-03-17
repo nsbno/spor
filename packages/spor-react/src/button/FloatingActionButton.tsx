@@ -1,22 +1,27 @@
+"use client";
+
 import {
   Box,
   BoxProps,
-  ComponentWithAs,
-  forwardRef,
-  useMultiStyleConfig,
+  RecipeVariantProps,
+  Text,
+  useSlotRecipe,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import React, { useEffect } from "react";
+import React, { forwardRef, PropsWithChildren, useEffect } from "react";
+import { floatingActionButtonSlotRecipe } from "../theme/slot-recipes/floating-action-button";
 
-const MotionBox = motion(Box);
+type FloatingActionButtonVariantProps = RecipeVariantProps<
+  typeof floatingActionButtonSlotRecipe
+>;
 
-type FloatingActionButtonProps = BoxProps & {
-  variant?: "accent" | "base" | "brand";
-  placement?: "bottom right" | "bottom left" | "top right" | "top left";
-  icon: React.ReactNode;
-  children: React.ReactNode;
-  isTextVisible?: boolean;
-};
+type FloatingActionButtonProps = BoxProps &
+  PropsWithChildren<FloatingActionButtonVariantProps> & {
+    variant?: "accent" | "core" | "brand";
+    placement?: "bottom right" | "bottom left" | "top right" | "top left";
+    icon: React.ReactNode;
+    children: React.ReactNode;
+    isTextVisible?: boolean;
+  };
 
 /**
  * Creates a floating action button.
@@ -31,8 +36,8 @@ type FloatingActionButtonProps = BoxProps & {
  * />
  */
 export const FloatingActionButton = forwardRef<
-  FloatingActionButtonProps,
-  ComponentWithAs<"a" | "button">
+  HTMLButtonElement,
+  FloatingActionButtonProps
 >(
   (
     {
@@ -65,39 +70,28 @@ export const FloatingActionButton = forwardRef<
       setIsTextVisible(!!externalIsTextVisible);
     }, [externalIsTextVisible]);
 
-    const style = useMultiStyleConfig("FloatingActionButton", {
+    const recipe = useSlotRecipe({ key: "floatingActionButton" });
+    const style = recipe({
       variant,
-      isTextVisible,
       placement,
     });
+
     return (
-      <MotionBox
-        __css={style.container}
-        aria-label={children}
+      <Box
+        css={style.root}
+        as="button"
+        aria-label={typeof children === "string" ? children : undefined}
         ref={ref}
         {...props}
+        aria-expanded={isTextVisible}
       >
-        <Box __css={style.icon}>{icon}</Box>
-        <MotionBox
-          animate={isTextVisible ? "show" : "hide"}
-          initial={externalIsTextVisible ? "show" : "hide"}
-          variants={{
-            show: {
-              opacity: 1,
-              width: "auto",
-              visibility: "visible",
-            },
-            hide: {
-              opacity: 0,
-              width: 0,
-              visibility: "hidden",
-            },
-          }}
-          __css={style.text}
-        >
-          {children}
-        </MotionBox>
-      </MotionBox>
+        <Box css={style.icon}>{icon}</Box>
+        {isTextVisible && (
+          <Text data-state="open" css={style.text}>
+            {children}
+          </Text>
+        )}
+      </Box>
     );
   },
 );

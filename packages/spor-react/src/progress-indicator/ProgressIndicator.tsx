@@ -1,12 +1,21 @@
-import { useMultiStyleConfig } from "@chakra-ui/react";
-import React from "react";
+"use client";
+import { BoxProps, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { Box, createTexts, useTranslation } from "..";
 import { ProgressDot } from "./ProgressDot";
+import { progressIndicatorRecipe } from "../theme/slot-recipes/progress-indicator";
 
-type ProgressIndicatorProps = {
-  numberOfSteps: number;
-  activeStep: number;
-};
+export type ProgressIndicatorVariantProps = RecipeVariantProps<
+  typeof progressIndicatorRecipe
+>;
+
+export type ProgressIndicatorProps = BoxProps &
+  PropsWithChildren<ProgressIndicatorVariantProps> & {
+    children?: React.ReactNode;
+    numberOfSteps: number;
+    activeStep: number;
+    colorPalette?: string;
+  };
 
 /**
  * A progress indicator is used to show which step of a process a user is currently in
@@ -21,23 +30,28 @@ type ProgressIndicatorProps = {
  * />
  * ```
  */
-export const ProgressIndicator = ({
-  numberOfSteps,
-  activeStep,
-}: ProgressIndicatorProps) => {
+
+export const ProgressIndicator = forwardRef<
+  HTMLDivElement,
+  ProgressIndicatorProps
+>(({ numberOfSteps, activeStep, colorPalette = "brand" }) => {
   const { t } = useTranslation();
-  const style = useMultiStyleConfig("ProgressIndicator");
+  const recipe = useSlotRecipe({
+    key: "progressIndicator",
+  });
+
+  const styles = recipe({});
 
   return (
     <Box
-      __css={style.root}
+      css={styles.root}
       role="progressbar"
       aria-valuemin={1}
       aria-valuemax={numberOfSteps}
       aria-valuenow={activeStep}
       aria-valuetext={t(texts.stepsOf(activeStep, numberOfSteps))}
     >
-      <Box __css={style.container}>
+      <Box css={styles.container}>
         {Array.from({ length: numberOfSteps }, (_, i) => (
           <ProgressDot
             key={i}
@@ -48,8 +62,7 @@ export const ProgressIndicator = ({
       </Box>
     </Box>
   );
-};
-
+});
 const texts = createTexts({
   stepsOf: (activeStep, numberOfSteps) => ({
     nb: `Steg ${activeStep} av ${numberOfSteps}`,

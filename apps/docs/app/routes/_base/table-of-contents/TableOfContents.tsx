@@ -1,4 +1,3 @@
-import { ListItem, OrderedList } from "@chakra-ui/react";
 import { Box, BoxProps, Heading } from "@vygruppen/spor-react";
 import { MenuItem } from "~/routes/_base/content-menu/MenuItem";
 import { useScrollSpy } from "./useScrollSpy";
@@ -50,10 +49,17 @@ function TableOfContent(props: TableOfContentProps) {
       <Heading as="h2" id="toc-title" variant="sm" fontWeight="bold">
         On this page
       </Heading>
-      <OrderedList spacing={0} marginLeft="0" marginTop="4" styleType="none">
+      <Box
+        as="ol"
+        padding={0}
+        marginLeft="0"
+        marginTop="4"
+        listStyleType="none"
+      >
         {headings.map(({ id, text, level }) => (
-          <ListItem
+          <Box
             key={id}
+            as="li"
             title={text}
             marginLeft={
               Number(level.substring(1)) > 2
@@ -69,9 +75,9 @@ function TableOfContent(props: TableOfContentProps) {
             >
               {text}
             </MenuItem>
-          </ListItem>
+          </Box>
         ))}
-      </OrderedList>
+      </Box>
     </Box>
   );
 }

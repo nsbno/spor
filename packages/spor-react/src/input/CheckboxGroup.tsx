@@ -2,19 +2,25 @@ import {
   CheckboxGroup as ChakraCheckboxGroup,
   CheckboxGroupProps as ChakraCheckboxGroupProps,
   Stack,
-  StackDirection,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { forwardRef } from "react";
 
 export type CheckboxGroupProps = Exclude<
   ChakraCheckboxGroupProps,
-  "colorScheme" | "size" | "variant"
-> & { direction?: StackDirection };
+  "colorPalette" | "size" | "variant"
+> & {
+  /* Defaults to row */
+  direction?: "row" | "column";
+  children: React.ReactNode;
+  /* Defaults to 1 */
+  gap?: number | string;
+  [key: string]: any;
+};
 /**
  * Used to group several checkboxes together. You can pass the default value, as well as whether or not they're all disabled
  *
  * ```tsx
- * <CheckboxGroup isDisabled defaultValue={['red', 'blue']}>
+ * <CheckboxGroup disabled defaultValue={['red', 'blue']}>
  *   <Checkbox value="red">Red</Checkbox>
  *   <Checkbox value="blue">Blue</Checkbox>
  *   <Checkbox value="green">Green</Checkbox>
@@ -30,14 +36,17 @@ export type CheckboxGroupProps = Exclude<
  *   <Checkbox>First Class</Checkbox>
  * </CheckboxGroup>
  */
-export const CheckboxGroup = ({
-  direction = "row",
-  children,
-  ...props
-}: CheckboxGroupProps) => {
-  return (
-    <ChakraCheckboxGroup {...props}>
-      <Stack direction={direction}>{children}</Stack>
-    </ChakraCheckboxGroup>
-  );
-};
+
+export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
+  (props, ref) => {
+    const { direction = "row", children, gap = 1, ...rest } = props;
+
+    return (
+      <ChakraCheckboxGroup ref={ref} {...rest}>
+        <Stack direction={direction} gap={gap}>
+          {children}
+        </Stack>
+      </ChakraCheckboxGroup>
+    );
+  },
+);

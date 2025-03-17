@@ -10,5 +10,3 @@ export * from "./LightSpinner";
 export * from "./ProgressBar";
 export * from "./ProgressLoader";
 export * from "./Skeleton";
-export * from "./SkeletonCircle";
-export * from "./SkeletonText";

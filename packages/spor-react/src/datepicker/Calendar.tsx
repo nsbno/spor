@@ -1,20 +1,24 @@
-import { Box, ResponsiveValue } from "@chakra-ui/react";
-import { DateValue, createCalendar } from "@internationalized/date";
+"use client";
+
+import { Box, ConditionalValue } from "@chakra-ui/react";
+import { createCalendar } from "@internationalized/date";
 import React from "react";
 import {
   CalendarProps as ReactAriaCalendarProps,
   useCalendar,
+  DateValue,
 } from "react-aria";
 import { useCalendarState } from "react-stately";
 import { createTexts, useTranslation } from "../i18n";
 import { CalendarGrid } from "./CalendarGrid";
 import { CalendarHeader } from "./CalendarHeader";
 import { useCurrentLocale } from "./utils";
+import { CalendarVariants } from "./types";
 
-type CalendarProps = ReactAriaCalendarProps<DateValue> & {
-  showYearNavigation?: boolean;
-  variant: ResponsiveValue<"base" | "floating" | "ghost">;
-};
+type CalendarProps = ReactAriaCalendarProps<DateValue> &
+  CalendarVariants & {
+    showYearNavigation?: boolean;
+  };
 export function Calendar({
   showYearNavigation,
   variant,

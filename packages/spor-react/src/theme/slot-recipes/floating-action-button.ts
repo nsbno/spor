@@ -20,7 +20,7 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
       transitionDuration: "fast",
       transitionProperty: "common",
       position: "fixed",
-      zIndex: "sticky",
+      zIndex: "dropdown",
       ...focusVisibleStyles(),
       _disabled: {
         backgroundColor: "surface.disabled",

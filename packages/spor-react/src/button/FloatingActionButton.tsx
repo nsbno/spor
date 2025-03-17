@@ -84,6 +84,8 @@ export const FloatingActionButton = forwardRef<
         ref={ref}
         {...props}
         data-state={isTextVisible ? "open" : "closed"}
+        aria-expanded={isTextVisible}
+        aria-haspopup="true"
       >
         <Box css={style.icon}>{icon}</Box>
         {isTextVisible && (

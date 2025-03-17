@@ -1,20 +1,17 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { accentBackground, accentText } from "../utils/accent-utils";
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
-import { brandBackground, brandText } from "../utils/brand-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { surface } from "../utils/surface-utils";
+import { floatingActionButtonAnatomy } from "./anatomy";
 
 export const floatingActionButtonSlotRecipe = defineSlotRecipe({
-  slots: ["root", "icon", "text"],
+  slots: floatingActionButtonAnatomy.keys(),
   className: "spor-floating-action-button",
   base: {
     root: {
       display: "flex",
       alignItems: "center",
+      gap: 1,
       paddingY: 2,
-      paddingLeft: 2,
-      paddingRight: 2,
+      paddingX: 2,
       cursor: "pointer",
       overflowX: "hidden",
       whiteSpace: "nowrap",
@@ -23,63 +20,77 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
       transitionDuration: "fast",
       transitionProperty: "common",
       position: "fixed",
-      zIndex: "sticky",
+      zIndex: "dropdown",
       ...focusVisibleStyles(),
       _disabled: {
-        ...surface("disabled"),
-        ...coreText("disabled"),
+        backgroundColor: "surface.disabled",
+        color: "text.disabled",
         pointerEvents: "none",
       },
+      _open: {
+        animation: "expand-width 300ms ease-out",
+      },
+      _closed: {
+        animation: "collapse-width 300ms ease-out",
+      },
     },
-    icon: {},
     text: {
       display: "flex",
       flex: "none",
       alignItems: "center",
       fontWeight: "bold",
       textStyle: "sm",
-      paddingLeft: 3,
+      marginRight: 1,
+      _open: {
+        animation: "fade-in 250ms ease-out",
+      },
+      _closed: {
+        animation: "fade-out 250ms ease-out",
+      },
     },
   },
   variants: {
     variant: {
       brand: {
         root: {
-          ...brandBackground("default"),
-          ...brandText("default"),
+          backgroundColor: "brand.surface",
+          color: "brand.text",
           _hover: {
-            ...brandBackground("hover"),
-          },
-          _active: {
-            ...brandBackground("active"),
+            backgroundColor: "brand.surface.hover",
+            _active: {
+              backgroundColor: "brand.surface.active",
+            },
           },
         },
       },
       core: {
         root: {
-          ...coreBackground("default"),
-          ...coreBorder("default"),
-          ...coreText("default"),
+          backgroundColor: "transparent",
+          outline: "1px solid",
+          outlineColor: "core.outline",
+          color: "core.text",
           _hover: {
-            ...coreBackground("hover"),
-            ...coreBorder("hover"),
-          },
-          _active: {
-            ...coreBorder("default"),
-            ...coreBackground("active"),
+            backgroundColor: "transparent",
+            outline: "2px solid",
+            outlineColor: "core.outline.light",
+            _active: {
+              outline: "1px solid",
+              outlineColor: "core.outline",
+              backgroundColor: "core.surface.active",
+            },
           },
         },
       },
       accent: {
         root: {
-          ...accentBackground("default"),
-          ...accentText("default"),
+          backgroundColor: "accent.surface",
+          color: "accent.text",
           _hover: {
-            ...accentBackground("hover"),
-            ...accentText("default"),
-          },
-          _active: {
-            ...accentBackground("active"),
+            backgroundColor: "accent.surface.hover",
+            color: "accent.text",
+            _active: {
+              backgroundColor: "accent.surface.active",
+            },
           },
         },
       },
@@ -87,26 +98,26 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
     placement: {
       "top left": {
         root: {
-          top: "1em",
-          left: "1em",
+          top: "1rem",
+          left: "1rem",
         },
       },
       "top right": {
         root: {
-          top: "1em",
-          right: "1em",
+          top: "1rem",
+          right: "1rem",
         },
       },
       "bottom left": {
         root: {
-          bottom: "1em",
-          left: "1em",
+          bottom: "1rem",
+          left: "1rem",
         },
       },
       "bottom right": {
         root: {
-          bottom: "1em",
-          right: "1em",
+          bottom: "1rem",
+          right: "1rem",
         },
       },
     },

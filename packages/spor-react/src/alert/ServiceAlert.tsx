@@ -11,9 +11,9 @@ import {
   useMultiStyleConfig,
 } from "@chakra-ui/react";
 import React from "react";
+import { createTexts, useTranslation } from "../i18n";
 import { AlertIcon } from "./AlertIcon";
 import { BaseAlert, BaseAlertProps } from "./BaseAlert";
-import { createTexts, useTranslation } from "../i18n";
 
 type ServiceAlertProps = BaseAlertProps & {
   /** The title string  */
@@ -91,7 +91,7 @@ export const ServiceAlert = ({
                 maxWidth={contentWidth}
               >
                 <Flex as={headingLevel} alignItems="center">
-                  <AlertIcon variant={variant} />
+                  {notification === 1 && <AlertIcon variant={variant} />}
 
                   <Box
                     as="span"

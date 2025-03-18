@@ -23,8 +23,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
-      - name: Notify Slack on New Releass
-        uses: ./.github/workflows/slack-notify.yml
+      - name: Notify Slack on New Release
+        uses: ./.github/workflows/slack-notify.yml@main
         with:
           repo: ${{ github.repository }}
           tag_name: ${{ github.ref_name }}

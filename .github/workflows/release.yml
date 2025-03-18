@@ -42,7 +42,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Notify Slack on New Release
+      - name: Notify Slack on New Release of @vygruppen/spor-react
         if: steps.changesets.outputs.published == 'true'
         uses: ./.github/actions/slack-notify
         with:

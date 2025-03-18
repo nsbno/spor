@@ -23,13 +23,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
-      - name: Notify Slack
-        uses: ./.github/actions/slack-notify
-        with:
-          repo: ${{ github.repository }}
-          published_packages: '[{"name":"@vygruppen/spor-loader","version":"0.5.0"}, {"name":"@vygruppen/spor-react","version":"11.3.3"}]'
-          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
-
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm test

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.3.6
+
+### Patch Changes
+
+- 3a3ded3: Service Alert: component does not show any icon if there are more than one warning message
+
 ## 11.3.5
 
 ### Patch Changes

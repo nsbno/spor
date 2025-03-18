@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.3.4
+
+### Patch Changes
+
+- 702300a: Update checkbox export
+
 ## 11.3.3
 
 ### Patch Changes

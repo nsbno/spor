@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.3.2
+
+### Patch Changes
+
+- bb11775: Update styling for checkbox
+
 ## 11.3.1
 
 ### Patch Changes

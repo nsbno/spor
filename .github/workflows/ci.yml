@@ -28,7 +28,7 @@ jobs:
         with:
           repo: ${{ github.repository }}
           tag_name: ${{ github.ref_name }}
-          body: '[{"name":"@vygruppen/spor-react","version":"11.3.3"}]'
+          body: '[{"name":"@vygruppen/spor-react","version":"11.3.3"}, {"name":"@vygruppen/spor-loader","version":"0.5.0"}]'
           webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
 
       - run: pnpm install --frozen-lockfile

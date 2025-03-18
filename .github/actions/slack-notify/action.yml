@@ -29,6 +29,6 @@ runs:
         curl -X POST -H 'Content-type: application/json' --data "{
           \"text\": \"*Ny versjon av spor er ute!* 📦✨ \n
           ⚡️ *Versjon*: v${version} \n
-          📖 *Changelog*: <https://github.com/nsbno/spor/releases/tag/${encoded_version}|${encoded_version}> \n
+          📖 *Changelog*: <https://github.com/nsbno/spor/releases/tag/${encoded_version}|@vygruppen/spor-react@${version}> \n
           📦 *Installer*: \`npm i @vygruppen/spor-react@latest\` \n \"
         }" ${{ inputs.webhook_url }}

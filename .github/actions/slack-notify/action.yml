@@ -10,10 +10,7 @@ inputs:
   body:
     description: The release body
     required: true
-secrets:
-  SLACK_WEBHOOK_URL:
-    description: The Slack webhook URL
-    required: true
+
 runs:
   using: "composite"
   steps:

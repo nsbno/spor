@@ -19,6 +19,4 @@ export type CheckboxProps = ChakraCheckboxProps;
  *
  * You can group several of these together with a `CheckboxGroup`.
  */
-export const Checkbox = forwardRef<CheckboxProps, "input">((props, ref) => {
-  return <ChakraCheckbox {...props} ref={ref} />;
-});
+export const Checkbox = ChakraCheckbox;

@@ -1,8 +1,21 @@
 name: Notify Slack on New Release
 
+# Define the workflow as a reusable template
 on:
-  release:
-    types: [published]
+  workflow_call:
+    inputs:
+      repo:
+        description: "GitHub repository name"
+        required: true
+        type: string
+      tag_name:
+        description: "Release HTML URL"
+        required: true
+        type: string
+      body:
+        description: "Release body content"
+        required: true
+        type: string
 
 jobs:
   notify-slack:
@@ -11,18 +24,12 @@ jobs:
       - name: Send Slack Notification
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          REPO: ${{ github.repository }}
-          TAG_NAME: ${{ github.event.release.tag_name }}
-          HTML_URL: ${{ github.event.release.html_url }}
-          BODY: ${{ github.event.release.body }}
+          REPO: ${{ inputs.repo }}
+          BODY: ${{ inputs.body }}
 
         run: |
-          VERSION=$(echo "${TAG_NAME}" | sed 's/.*@//')
-          CHANGES=$(echo "${BODY}" | grep -oP '(?<=-   ).*' | sed 's/^[a-f0-9]*: //')
           curl -X POST -H 'Content-type: application/json' --data "{
             \"text\": \"*Ny versjon av spor er ute!* 📦✨ \n
-          ⚡️ *Versjon*: v${VERSION} \n
-          🔧 *Endringer*: ${CHANGES} \n
           📖 *Changelog*: <${HTML_URL}|${TAG_NAME}> \n
           📦 *Installer*: \`npm i @vygruppen/spor-react@latest\` \n \"
-          }" $SLACK_WEBHOOK_URL
+          }" $SLACK_WEBHOOK_URL ${BODY}

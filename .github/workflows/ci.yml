@@ -1,8 +1,6 @@
 name: Continuous Integration
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
@@ -29,3 +27,9 @@ jobs:
       - run: pnpm build
       - run: pnpm test
       - run: pnpm format:validate
+      - name: Notify Slack on New Releass
+        uses: ./.github/workflows/slack-notify.yml
+        with:
+          repo: ${{ github.repository }}
+          tag_name: ${{ github.ref_name }}
+          body: "Body 123 content"

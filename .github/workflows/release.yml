@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -41,3 +41,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Notify Slack on New Release
+        if: steps.changesets.outputs.published == 'true'
+        uses: ./.github/actions/slack-notify
+        with:
+          repo: ${{ github.repository }}
+          tag_name: ${{ github.ref_name }}
+          body: ${{ steps.changesets.outputs.publishedPackages }}
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}

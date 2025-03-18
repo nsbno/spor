@@ -1,8 +1,6 @@
 name: Continuous Integration
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
@@ -25,6 +23,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
+
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm test

@@ -47,6 +47,5 @@ jobs:
         uses: ./.github/actions/slack-notify
         with:
           repo: ${{ github.repository }}
-          tag_name: ${{ github.ref_name }}
-          body: ${{ steps.changesets.outputs.publishedPackages }}
+          published_packages: ${{ steps.changesets.outputs.publishedPackages }}
           webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}

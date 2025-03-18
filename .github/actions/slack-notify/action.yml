@@ -4,10 +4,7 @@ inputs:
   repo:
     description: The repository name
     required: true
-  tag_name:
-    description: The release tag name
-    required: true
-  body:
+  published_packages:
     description: The release body
     required: true
   webhook_url:
@@ -20,9 +17,9 @@ runs:
     - name: Send Slack Notification
       shell: bash
       run: |
-        version=$(echo '${{ inputs.body }}' | jq -r '.[] | select(.name=="@vygruppen/spor-react") | .version')
+        version=$(echo '${{ inputs.published_packages }}' | jq -r '.[] | select(.name=="@vygruppen/spor-react") | .version')
         if [ -z "$version" ]; then
-          echo "No @vygruppen/spor-react version found in the body. Skipping notification."
+          echo "No @vygruppen/spor-react version found in published_packages. Skipping notification."
           exit 0
         fi
         encoded_version=$(echo -n "@vygruppen/spor-react@$version" | jq -sRr @uri)

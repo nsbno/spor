@@ -43,6 +43,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Notify Slack on New Release
+        if: steps.changesets.outputs.published == 'true'
         uses: ./.github/actions/slack-notify
         with:
           repo: ${{ github.repository }}

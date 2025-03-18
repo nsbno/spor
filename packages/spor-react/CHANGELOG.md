@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 11.3.5
+
+### Patch Changes
+
+- 90a025f: Simplify export of FormControl
+
+## 11.3.4
+
+### Patch Changes
+
+- 702300a: Update checkbox export
+
 ## 11.3.3
 
 ### Patch Changes

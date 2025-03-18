@@ -1,0 +1,30 @@
+name: Slack Notify
+description: Sends a Slack notification
+inputs:
+  repo:
+    description: The repository name
+    required: true
+  tag_name:
+    description: The release tag name
+    required: true
+  body:
+    description: The release body
+    required: true
+secrets:
+  SLACK_WEBHOOK_URL:
+    description: The Slack webhook URL
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Send Slack Notification
+      shell: bash
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      run: |
+        curl -X POST -H 'Content-type: application/json' --data "{
+          \"text\": \"*Ny versjon av spor er ute!* 📦✨ \n
+          📖 *Changelog*: <https://github.com/${{ inputs.repo }}/releases/tag/${{ inputs.tag_name }}|${{ inputs.tag_name }}> \n
+          📦 *Installer*: \`npm i @vygruppen/spor-react@latest\` \n
+          📝 *Details*: ${{ inputs.body }} \"
+        }" $SLACK_WEBHOOK_URL

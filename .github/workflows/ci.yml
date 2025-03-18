@@ -29,6 +29,7 @@ jobs:
           repo: ${{ github.repository }}
           tag_name: ${{ github.ref_name }}
           body: "bodu 123 test"
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
 
       - run: pnpm install --frozen-lockfile
       - run: pnpm build

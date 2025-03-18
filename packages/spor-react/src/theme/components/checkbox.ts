@@ -20,7 +20,7 @@ const config = helpers.defineMultiStyleConfig({
           backgroundColor: mode("white", "inherit")(props),
           borderColor: mode("outline.error.light", "outline.error.dark"),
         },
-        "input:enabled:checked[aria-invalid='false'] + .chakra-checkbox__control":
+        "input:enabled:checked:not([aria-invalid='true']) + .chakra-checkbox__control":
           {
             ...brandBackground("hover", props),
             borderColor: brandBackground("hover", props).backgroundColor,

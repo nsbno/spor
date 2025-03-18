@@ -25,7 +25,7 @@ runs:
           echo "No @vygruppen/spor-react version found in the body. Skipping notification."
           exit 0
         fi
-        encoded_version=$(echo "@vygruppen/spor-react@$version" | jq -sRr @uri)
+        encoded_version=$(echo -n "@vygruppen/spor-react@$version" | jq -sRr @uri)
         curl -X POST -H 'Content-type: application/json' --data "{
           \"text\": \"*Ny versjon av spor er ute!* 📦✨ \n
           ⚡️ *Versjon*: v${version} \n

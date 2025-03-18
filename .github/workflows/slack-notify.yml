@@ -1,6 +1,5 @@
 name: Notify Slack on New Release
 
-# Define the workflow as a reusable template
 on:
   workflow_call:
     inputs:
@@ -9,7 +8,7 @@ on:
         required: true
         type: string
       tag_name:
-        description: "Release HTML URL"
+        description: "Release tag name"
         required: true
         type: string
       body:
@@ -21,15 +20,16 @@ jobs:
   notify-slack:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Send Slack Notification
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          REPO: ${{ inputs.repo }}
-          BODY: ${{ inputs.body }}
-
         run: |
           curl -X POST -H 'Content-type: application/json' --data "{
             \"text\": \"*Ny versjon av spor er ute!* 📦✨ \n
-          📖 *Changelog*: <${HTML_URL}|${TAG_NAME}> \n
-          📦 *Installer*: \`npm i @vygruppen/spor-react@latest\` \n \"
-          }" $SLACK_WEBHOOK_URL ${BODY}
+            📖 *Changelog*: <https://github.com/${{ inputs.repo }}/releases/tag/${{ inputs.tag_name }}|${{ inputs.tag_name }}> \n
+            📦 *Installer*: \`npm i @vygruppen/spor-react@latest\` \n
+            📝 *Details*: ${{ inputs.body }} \"
+          }" $SLACK_WEBHOOK_URL

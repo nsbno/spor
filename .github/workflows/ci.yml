@@ -23,13 +23,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm build
-      - run: pnpm test
-      - run: pnpm format:validate
       - name: Notify Slack on New Releass
         uses: ./.github/workflows/slack-notify.yml
         with:
           repo: ${{ github.repository }}
           tag_name: ${{ github.ref_name }}
           body: "Body 123 content"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm test
+      - run: pnpm format:validate

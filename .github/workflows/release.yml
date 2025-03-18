@@ -43,9 +43,9 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Notify Slack on New Release
-        if: steps.changesets.outputs.release_created == 'true'
-        uses: ./.github/workflows/slack-notify.yml
+        uses: ./.github/actions/slack-notify
         with:
           repo: ${{ github.repository }}
           tag_name: ${{ github.ref_name }}
           body: ${{ steps.changesets.outputs.publishedPackages }}
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}

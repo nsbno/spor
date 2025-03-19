@@ -71,11 +71,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       rightIcon,
       type = "button",
       children,
+      ...rest
     } = props;
     const ariaLabel = useCorrectAriaLabel(props);
     return (
       <ChakraButton
-        {...props}
+        {...rest}
         type={type}
         ref={ref}
         aria-label={ariaLabel}

@@ -5,11 +5,11 @@ import { AttachedInputs } from "./AttachedInputs";
 import { CountryCodeSelect } from "./CountryCodeSelect";
 import { As } from "@chakra-ui/system";
 
-type CountryCodeAndPhoneNumber = {
+export type CountryCodeAndPhoneNumber = {
   countryCode: string;
   nationalNumber: string;
 };
-type PhoneNumberInputProps = Omit<BoxProps, "onChange"> & {
+export type PhoneNumberInputProps = Omit<BoxProps, "onChange"> & {
   /** The label. Defaults to a localized version of "Phone number" */
   label?: string;
   /** The root name.

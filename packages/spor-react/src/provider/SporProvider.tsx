@@ -1,7 +1,21 @@
 "use client";
 import { Global } from "@emotion/react";
 import React from "react";
-import { Language, LanguageProvider, system, themes } from "..";
+import {
+  Button,
+  Language,
+  LanguageProvider,
+  Nudge,
+  NudgeActions,
+  NudgeContent,
+  NudgeTrigger,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  system,
+  themes,
+  WizardNudgeBody,
+} from "..";
 
 import { Toaster } from "../toast/toast";
 
@@ -62,9 +76,31 @@ export const SporProvider = ({
         <ColorModeProvider>
           <Toaster />
           <Global styles={fontFaces} />
+
+          <div style={{ paddingBottom: "10rem" }}>
+            <Nudge introducedDate="2029-02-19">
+              <NudgeTrigger>Check this feature out</NudgeTrigger>
+              <NudgeContent>
+                <WizardNudgeBody />
+              </NudgeContent>
+            </Nudge>
+          </div>
+
           {children}
         </ColorModeProvider>
       </ChakraProvider>
     </LanguageProvider>
+  );
+};
+
+() => {
+  return (
+    <Nudge introducedDate="2029-02-19">
+      <NudgeTrigger>Check this feature out</NudgeTrigger>
+      <NudgeContent flexDirection="column" gap="1rem" display="flex">
+        This is a cool new feature
+        <Button variant="secondary">Cool stuff</Button>
+      </NudgeContent>
+    </Nudge>
   );
 };

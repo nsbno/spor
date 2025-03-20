@@ -13,7 +13,7 @@ export const popoverSlotRecipe = defineSlotRecipe({
       padding: "0.563rem 0.75rem",
 
       textStyle: "sm",
-      bg: "brand.surface",
+      bg: { _light: "surface.tertiary", _dark: "brand.surface" },
       boxShadow: "lg",
 
       borderRadius: "sm",
@@ -32,7 +32,6 @@ export const popoverSlotRecipe = defineSlotRecipe({
     },
     body: {
       color: "text.inverted",
-      display: "flex",
       alignItems: "center",
 
       borderRadius: "sm",
@@ -40,7 +39,10 @@ export const popoverSlotRecipe = defineSlotRecipe({
       maxWidth: "20em",
     },
     arrow: {
-      "--arrow-background": "colors.brand.surface",
+      "--arrow-background": {
+        _light: "colors.surface.tertiary",
+        _dark: "colors.brand.surface",
+      },
       "--arrow-size": "6px",
     },
     arrowTip: {},
@@ -68,12 +70,18 @@ export const popoverSlotRecipe = defineSlotRecipe({
       },
       md: {
         body: {
-          maxWidth: "16rem",
+          maxWidth: "13rem",
+        },
+        content: {
+          padding: "0.875rem 0.75rem",
         },
       },
       lg: {
         body: {
-          maxWidth: "32rem",
+          maxWidth: "26rem",
+        },
+        content: {
+          padding: "0.875rem 0.75rem",
         },
       },
     },

@@ -61,11 +61,7 @@ export const WizardNudge = ({
             numberOfSteps={totalSteps}
           />
           <Box>
-            <NextOrCloseButton
-              isLastStep={isLastStep}
-              onNext={onNext}
-              onExitComplete={onExitComplete}
-            />
+            <NextOrCloseButton isLastStep={isLastStep} onNext={onNext} />
           </Box>
         </Flex>
       }

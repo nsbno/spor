@@ -7,25 +7,31 @@ export const Popover = ChakraPopover.Root;
 export const PopoverTrigger = forwardRef<
   HTMLButtonElement,
   ChakraPopover.TriggerProps
->(({ children, ...props }, ref) => (
-  <ChakraPopover.Trigger asChild {...props} ref={ref}>
-    {children}
-  </ChakraPopover.Trigger>
-));
+>(({ children, ...props }, ref) => {
+  const isStringChild = typeof children === "string";
 
-type PopoverProps = ChakraPopover.ContentProps &
+  return (
+    <ChakraPopover.Trigger {...props} ref={ref} asChild={!isStringChild}>
+      {children}
+    </ChakraPopover.Trigger>
+  );
+});
+
+export type PopoverProps = ChakraPopover.ContentProps &
   React.RefAttributes<HTMLDivElement> & {
     showCloseButton?: boolean;
   };
 
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverProps>(
   ({ children, showCloseButton = false, ...props }, ref) => {
+    console.log(children);
+
     return (
       <Portal>
         <ChakraPopover.Positioner>
-          <ChakraPopover.Content {...props} ref={ref}>
+          <ChakraPopover.Content ref={ref}>
             <ChakraPopover.Arrow />
-            <ChakraPopover.Body>{children}</ChakraPopover.Body>
+            <ChakraPopover.Body {...props}>{children}</ChakraPopover.Body>
             {showCloseButton && (
               <div>
                 <ChakraPopover.CloseTrigger asChild>

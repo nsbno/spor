@@ -1,5 +1,5 @@
 "use client";
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, PropsWithChildren, useState } from "react";
 import {
   Button,
   createTexts,
@@ -18,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { nudgeActionsRecipe } from "@/theme/recipes/nudge";
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
+import { PopoverCloseTrigger } from "@ark-ui/react";
 
 const EXPIRATION_DELAY_MS = 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
 
@@ -74,22 +75,80 @@ export const NudgeTrigger = forwardRef<
 });
 
 export const NudgeContent = forwardRef<HTMLDivElement, PopoverProps>(
-  ({ showCloseButton = true, ...props }, ref) => {
+  ({ showCloseButton = true, children, ...props }, ref) => {
+    const [currentStep, setCurrentStep] = useState(1);
+    const childrenArray = React.Children.toArray(children); // Convert children to an array
+
+    const wizardPages = childrenArray.filter(
+      (child) =>
+        React.isValidElement(child) &&
+        (child.type as React.ComponentType).displayName === "NudgeWizardStep",
+    );
+
+    const restChildren = childrenArray.filter(
+      (child) =>
+        !React.isValidElement(child) ||
+        (child.type as React.ComponentType).displayName !== "NudgeWizardStep",
+    );
+
+    const totalSteps = wizardPages.length;
+    const isLastStep = totalSteps === currentStep;
+
+    if (!wizardPages.length) {
+      return (
+        <PopoverContent showCloseButton={showCloseButton} {...props} ref={ref}>
+          {children}
+        </PopoverContent>
+      );
+    }
+
     return (
-      <PopoverContent showCloseButton={showCloseButton} {...props} ref={ref} />
+      <PopoverContent showCloseButton={showCloseButton} {...props} ref={ref}>
+        {restChildren}
+        {wizardPages[currentStep - 1] as React.ReactElement}
+        <NudgeActions>
+          <ProgressIndicator
+            activeStep={currentStep}
+            numberOfSteps={totalSteps}
+          />
+
+          <NextButton
+            isLastStep={isLastStep}
+            onNext={() => {
+              setCurrentStep((prev) => prev + 1);
+            }}
+          />
+        </NudgeActions>
+      </PopoverContent>
     );
   },
 );
 
 export const NudgeActions = chakra("div", nudgeActionsRecipe);
 
-export const WizardNudgeBody = () => {
+export const NudgeWizardBody = ({ children }: PropsWithChildren) => {
   const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = 4;
+  const childrenArray = React.Children.toArray(children); // Convert children to an array
+
+  const wizardPages = childrenArray.filter(
+    (child) =>
+      React.isValidElement(child) &&
+      (child.type as React.ComponentType).displayName === "NudgeWizardStep",
+  );
+
+  const restChildren = childrenArray.filter(
+    (child) =>
+      !React.isValidElement(child) ||
+      (child.type as React.ComponentType).displayName !== "NudgeWizardStep",
+  );
+
+  const totalSteps = wizardPages.length;
   const isLastStep = totalSteps === currentStep;
 
   return (
     <>
+      {restChildren}
+      {wizardPages[currentStep - 1] as React.ReactElement}
       <NudgeActions>
         <ProgressIndicator
           activeStep={currentStep}
@@ -97,7 +156,7 @@ export const WizardNudgeBody = () => {
         />
 
         <NextButton
-          disabled={isLastStep}
+          isLastStep={isLastStep}
           onNext={() => {
             setCurrentStep((prev) => prev + 1);
           }}
@@ -108,17 +167,26 @@ export const WizardNudgeBody = () => {
 };
 
 type NextOrCloseButtonProps = {
-  disabled: boolean;
+  isLastStep: boolean;
   onNext: () => void;
 };
-const NextButton = ({ disabled, onNext }: NextOrCloseButtonProps) => {
+const NextButton = ({ isLastStep, onNext }: NextOrCloseButtonProps) => {
   const { t } = useTranslation();
+
+  if (isLastStep)
+    return (
+      <PopoverCloseTrigger>
+        <Button variant="secondary" size="xs">
+          {t(texts.close)}
+        </Button>
+      </PopoverCloseTrigger>
+    );
+
   return (
     <Button
-      variant="primary"
+      variant="secondary"
       size="xs"
-      disabled={disabled}
-      leftIcon={<ArrowRightFill18Icon />}
+      rightIcon={<ArrowRightFill18Icon />}
       onClick={onNext}
     >
       {t(texts.nextStep)}
@@ -133,4 +201,26 @@ const texts = createTexts({
     sv: "Nästa",
     en: "Next",
   },
+  close: {
+    nb: "Lukk",
+    nn: "Lukk",
+    sv: "Stäng",
+    en: "Close",
+  },
 });
+
+export const NudgeWizardStep = ({ children }: PropsWithChildren) => {
+  return (
+    <chakra.div
+      display="flex"
+      flexDirection="column"
+      gap="1rem"
+      padding="1rem"
+      width="100%"
+    >
+      {children}
+    </chakra.div>
+  );
+};
+
+NudgeWizardStep.displayName = "NudgeWizardStep";

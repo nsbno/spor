@@ -51,7 +51,7 @@ export type NudgeProps = {
 export const Nudge = (props: NudgeProps) => {
   const {
     introducedDate,
-    defaultOpen = props.open === undefined ? true : undefined, // defaultOpen defaults to true if open if open is undefined
+    defaultOpen = props.open === undefined ? true : undefined, // defaultOpen defaults to true if open is undefined
     size = "md",
     ...rest
   } = props;

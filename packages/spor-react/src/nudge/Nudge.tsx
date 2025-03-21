@@ -1,5 +1,10 @@
 "use client";
-import React, { forwardRef, PropsWithChildren, useState } from "react";
+import React, {
+  forwardRef,
+  PropsWithChildren,
+  useEffect,
+  useState,
+} from "react";
 import {
   Button,
   createTexts,
@@ -18,7 +23,7 @@ import {
 } from "@chakra-ui/react";
 import { nudgeActionsRecipe } from "@/theme/recipes/nudge";
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
-import { PopoverCloseTrigger } from "@ark-ui/react";
+import { PopoverCloseTrigger, usePopoverContext } from "@ark-ui/react";
 
 const EXPIRATION_DELAY_MS = 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
 
@@ -48,7 +53,6 @@ export const Nudge = (props: NudgeProps) => {
     introducedDate,
     defaultOpen = props.open === undefined ? true : undefined, // defaultOpen defaults to true if open if open is undefined
     size = "md",
-    closeOnInteractOutside = false,
     ...rest
   } = props;
 
@@ -57,14 +61,7 @@ export const Nudge = (props: NudgeProps) => {
     return null;
   }
 
-  return (
-    <Popover
-      defaultOpen={defaultOpen}
-      closeOnInteractOutside={closeOnInteractOutside}
-      size={size}
-      {...rest}
-    />
-  );
+  return <Popover defaultOpen={true} size={size} {...rest} />;
 };
 
 export const NudgeTrigger = forwardRef<
@@ -78,6 +75,12 @@ export const NudgeContent = forwardRef<HTMLDivElement, PopoverProps>(
   ({ showCloseButton = true, children, ...props }, ref) => {
     const [currentStep, setCurrentStep] = useState(1);
     const childrenArray = React.Children.toArray(children); // Convert children to an array
+
+    const { open } = usePopoverContext();
+
+    useEffect(() => {
+      setCurrentStep(1);
+    }, [children, open]);
 
     const wizardPages = childrenArray.filter(
       (child) =>

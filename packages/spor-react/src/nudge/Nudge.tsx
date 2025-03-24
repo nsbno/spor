@@ -13,15 +13,17 @@ import {
   PopoverProps,
   PopoverTrigger,
   ProgressIndicator,
+  useColorMode,
   useTranslation,
 } from "..";
 
 import {
+  Box,
+  BoxProps,
   chakra,
   Popover as ChakraPopover,
   PopoverRootProps,
 } from "@chakra-ui/react";
-import { nudgeActionsRecipe } from "@/theme/recipes/nudge";
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
 import { PopoverCloseTrigger, usePopoverContext } from "@ark-ui/react";
 
@@ -127,7 +129,21 @@ export const NudgeContent = forwardRef<HTMLDivElement, PopoverProps>(
   },
 );
 
-export const NudgeActions = chakra("div", nudgeActionsRecipe);
+export const NudgeActions = ({ className, ...props }: BoxProps) => {
+  const { colorMode } = useColorMode();
+  return (
+    <Box
+      className={colorMode === "dark" ? "light" : "dark"}
+      display="flex"
+      paddingTop="1rem"
+      alignItems="center"
+      gap="0.5rem"
+      justifyContent="between"
+      width="100%"
+      {...props}
+    />
+  );
+};
 
 type NextOrCloseButtonProps = {
   isLastStep: boolean;
@@ -139,7 +155,7 @@ const NextButton = ({ isLastStep, onNext }: NextOrCloseButtonProps) => {
   if (isLastStep)
     return (
       <PopoverCloseTrigger>
-        <Button variant="secondary" size="xs">
+        <Button variant="tertiary" size="xs">
           {t(texts.close)}
         </Button>
       </PopoverCloseTrigger>
@@ -147,7 +163,7 @@ const NextButton = ({ isLastStep, onNext }: NextOrCloseButtonProps) => {
 
   return (
     <Button
-      variant="secondary"
+      variant="tertiary"
       size="xs"
       rightIcon={<ArrowRightFill18Icon />}
       onClick={onNext}

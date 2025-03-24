@@ -13,7 +13,7 @@ export const popoverSlotRecipe = defineSlotRecipe({
       padding: "0.563rem 0.75rem",
 
       textStyle: "sm",
-      bg: { _light: "surface.tertiary", _dark: "brand.surface" },
+      bg: "surface.tertiary",
       boxShadow: "lg",
 
       borderRadius: "sm",
@@ -32,6 +32,7 @@ export const popoverSlotRecipe = defineSlotRecipe({
     },
     body: {
       color: "text.inverted",
+
       alignItems: "center",
 
       borderRadius: "sm",
@@ -39,27 +40,10 @@ export const popoverSlotRecipe = defineSlotRecipe({
       maxWidth: "20em",
     },
     arrow: {
-      "--arrow-background": {
-        _light: "colors.surface.tertiary",
-        _dark: "colors.brand.surface",
-      },
+      "--arrow-background": "colors.surface.tertiary",
       "--arrow-size": "6px",
     },
     arrowTip: {},
-
-    closeTrigger: {
-      color: "text.inverted",
-
-      _hover: {
-        backgroundColor: "brand.surface.hover",
-        _disabled: {
-          backgroundColor: "brand.surface.active",
-        },
-        _active: {
-          backgroundColor: "brand.surface.active",
-        },
-      },
-    },
   },
   variants: {
     size: {
@@ -75,7 +59,7 @@ export const popoverSlotRecipe = defineSlotRecipe({
           minWidth: "13rem",
         },
         content: {
-          padding: "14px 12px 18px 18px",
+          padding: "0.875rem 0.75rem 1.125rem 1.125rem",
         },
       },
       lg: {
@@ -84,7 +68,7 @@ export const popoverSlotRecipe = defineSlotRecipe({
           minWidth: "26rem",
         },
         content: {
-          padding: "14px 12px 18px 18px",
+          padding: "0.875rem 0.75rem 1.125rem 1.125rem",
         },
       },
     },

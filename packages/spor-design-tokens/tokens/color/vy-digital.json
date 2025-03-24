@@ -139,7 +139,7 @@
         "tertiary": {
           "value": {
             "_light": "colors.darkTeal",
-            "_dark": "colors.jungle"
+            "_dark": "colors.green.200"
           }
         },
         "disabled": {

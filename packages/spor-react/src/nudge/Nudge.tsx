@@ -68,7 +68,7 @@ export const Nudge = (props: NudgeProps) => {
     return null;
   }
 
-  return <Popover modal defaultOpen={true} size={size} {...rest} />;
+  return <Popover defaultOpen={true} size={size} {...rest} />;
 };
 
 export const NudgeTrigger = forwardRef<

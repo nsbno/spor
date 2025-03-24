@@ -98,7 +98,7 @@ export const accordionSlotRecipe = defineSlotRecipe({
             outlineOffset: 0,
           },
           "&:active": {
-            ...coreBackground("active"),
+            backgroundColor: "core.surface.active",
             ...coreBorder("default"),
           },
         },

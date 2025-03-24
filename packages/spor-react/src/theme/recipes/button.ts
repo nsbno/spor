@@ -62,7 +62,7 @@ export const buttonRecipe = defineRecipe({
           ...coreBackground("hover"),
           _active: {
             ...coreBorder("default"),
-            ...coreBackground("active"),
+            backgroundColor: "core.surface.active",
           },
         },
       },

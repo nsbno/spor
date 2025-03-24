@@ -44,7 +44,7 @@ export const radioCardSlotRecipe = defineSlotRecipe({
             outline: "2px solid",
             outlineColor: "core.outline.hover",
             _active: {
-              ...coreBackground("active"),
+              backgroundColor: "core.surface.active",
               ...coreBorder("active"),
             },
           },
@@ -56,10 +56,10 @@ export const radioCardSlotRecipe = defineSlotRecipe({
             _hover: {
               outline: "2px solid",
               outlineColor: "core.outline.hover",
-              ...coreBackground("active"),
+              backgroundColor: "core.surface.active",
             },
             _active: {
-              ...coreBackground("active"),
+              backgroundColor: "core.surface.active",
               ...coreBorder("active"),
             },
             _focusVisible: {

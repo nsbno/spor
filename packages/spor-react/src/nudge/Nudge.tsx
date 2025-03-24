@@ -131,6 +131,7 @@ export const NudgeContent = forwardRef<HTMLDivElement, PopoverProps>(
 
 export const NudgeActions = ({ className, ...props }: BoxProps) => {
   const { colorMode } = useColorMode();
+
   return (
     <Box
       className={colorMode === "dark" ? "light" : "dark"}
@@ -197,3 +198,5 @@ export const NudgeWizardStep = ({ children }: PropsWithChildren) => {
 };
 
 NudgeWizardStep.displayName = "NudgeWizardStep";
+
+export const NudgeCloseTrigger = PopoverCloseTrigger;

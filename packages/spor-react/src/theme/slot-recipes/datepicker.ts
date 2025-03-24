@@ -56,7 +56,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       },
     },
     calendarTriggerButton: {
-      width: 8,
+      borderRadius: "xl",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -151,11 +151,14 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         wrapper: {
-          ...coreBorder("default"),
+          outline: "1px solid",
+          outlineColor: "core.outline",
           ...coreBackground("default"),
 
           _hover: {
-            ...coreBorder("hover"),
+            outline: "2px solid",
+
+            outlineColor: "core.outline.hover",
           },
           _invalid: {
             ...coreBorder("invalid"),
@@ -179,7 +182,8 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       ghost: {
         wrapper: {
           _hover: {
-            ...coreBorder("hover"),
+            outline: "2px solid",
+            outlineColor: "core.outline.hover",
           },
           _invalid: {
             ...coreBorder("invalid"),

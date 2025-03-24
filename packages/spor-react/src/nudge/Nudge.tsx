@@ -3,6 +3,7 @@ import React, {
   forwardRef,
   PropsWithChildren,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import {
@@ -25,7 +26,11 @@ import {
   PopoverRootProps,
 } from "@chakra-ui/react";
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
-import { PopoverCloseTrigger, usePopoverContext } from "@ark-ui/react";
+import {
+  PopoverCloseTrigger,
+  usePopover,
+  usePopoverContext,
+} from "@ark-ui/react";
 
 const EXPIRATION_DELAY_MS = 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
 
@@ -58,12 +63,14 @@ export const Nudge = (props: NudgeProps) => {
     ...rest
   } = props;
 
+  // Initialize the ref
+
   if (isNudgeExpired(introducedDate)) {
     logExpirationWarning();
     return null;
   }
 
-  return <Popover defaultOpen={true} size={size} {...rest} />;
+  return <Popover modal defaultOpen={true} size={size} {...rest} />;
 };
 
 export const NudgeTrigger = forwardRef<

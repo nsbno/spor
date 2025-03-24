@@ -75,7 +75,7 @@ export const popoverSlotRecipe = defineSlotRecipe({
           minWidth: "13rem",
         },
         content: {
-          padding: "0.875rem 0.75rem",
+          padding: "14px 12px 18px 18px",
         },
       },
       lg: {
@@ -84,7 +84,7 @@ export const popoverSlotRecipe = defineSlotRecipe({
           minWidth: "26rem",
         },
         content: {
-          padding: "0.875rem 0.75rem",
+          padding: "14px 12px 18px 18px",
         },
       },
     },

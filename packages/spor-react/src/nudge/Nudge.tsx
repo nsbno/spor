@@ -109,7 +109,7 @@ export const NudgeContent = forwardRef<HTMLDivElement, PopoverProps>(
       <PopoverContent showCloseButton={showCloseButton} {...props} ref={ref}>
         {restChildren}
         {wizardPages[currentStep - 1] as React.ReactElement}
-        <NudgeActions>
+        <NudgeActions gap="18px">
           <ProgressIndicator
             activeStep={currentStep}
             numberOfSteps={totalSteps}
@@ -128,46 +128,6 @@ export const NudgeContent = forwardRef<HTMLDivElement, PopoverProps>(
 );
 
 export const NudgeActions = chakra("div", nudgeActionsRecipe);
-
-export const NudgeWizardBody = ({ children }: PropsWithChildren) => {
-  const [currentStep, setCurrentStep] = useState(1);
-  const childrenArray = React.Children.toArray(children); // Convert children to an array
-
-  const wizardPages = childrenArray.filter(
-    (child) =>
-      React.isValidElement(child) &&
-      (child.type as React.ComponentType).displayName === "NudgeWizardStep",
-  );
-
-  const restChildren = childrenArray.filter(
-    (child) =>
-      !React.isValidElement(child) ||
-      (child.type as React.ComponentType).displayName !== "NudgeWizardStep",
-  );
-
-  const totalSteps = wizardPages.length;
-  const isLastStep = totalSteps === currentStep;
-
-  return (
-    <>
-      {restChildren}
-      {wizardPages[currentStep - 1] as React.ReactElement}
-      <NudgeActions>
-        <ProgressIndicator
-          activeStep={currentStep}
-          numberOfSteps={totalSteps}
-        />
-
-        <NextButton
-          isLastStep={isLastStep}
-          onNext={() => {
-            setCurrentStep((prev) => prev + 1);
-          }}
-        />
-      </NudgeActions>
-    </>
-  );
-};
 
 type NextOrCloseButtonProps = {
   isLastStep: boolean;
@@ -214,13 +174,7 @@ const texts = createTexts({
 
 export const NudgeWizardStep = ({ children }: PropsWithChildren) => {
   return (
-    <chakra.div
-      display="flex"
-      flexDirection="column"
-      gap="1rem"
-      padding="1rem"
-      width="100%"
-    >
+    <chakra.div display="flex" flexDirection="column" gap="1rem" width="100%">
       {children}
     </chakra.div>
   );

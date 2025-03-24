@@ -204,4 +204,15 @@ export const NudgeWizardStep = ({ children }: PropsWithChildren) => {
 
 NudgeWizardStep.displayName = "NudgeWizardStep";
 
-export const NudgeCloseTrigger = PopoverCloseTrigger;
+export const NudgeCloseTrigger = forwardRef<
+  HTMLButtonElement,
+  ChakraPopover.TriggerProps
+>(({ children, ...props }, ref) => {
+  const isStringChild = typeof children === "string";
+
+  return (
+    <ChakraPopover.CloseTrigger {...props} ref={ref} asChild={!isStringChild}>
+      {children}
+    </ChakraPopover.CloseTrigger>
+  );
+});

@@ -1,7 +1,11 @@
 import { CloseButton } from "@/button";
 import { useColorMode } from "@/color-mode";
-import { Portal, Popover as ChakraPopover } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import {
+  Portal,
+  Popover as ChakraPopover,
+  usePopoverContext,
+} from "@chakra-ui/react";
+import React, { forwardRef, useEffect } from "react";
 
 export const Popover = ChakraPopover.Root;
 
@@ -27,21 +31,32 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverProps>(
   ({ children, showCloseButton = false, ...props }, ref) => {
     const { colorMode } = useColorMode();
 
+    const closeButtonRef = React.useRef<HTMLButtonElement>(null);
+
+    const { open } = usePopoverContext();
+
+    useEffect(() => {
+      if (showCloseButton && open && closeButtonRef.current) {
+        closeButtonRef.current.focus();
+      }
+    }, [showCloseButton, open]);
+
     return (
       <Portal>
         <ChakraPopover.Positioner>
           <ChakraPopover.Content ref={ref} {...props}>
             <ChakraPopover.Arrow />
-            <ChakraPopover.Body {...props}>{children}</ChakraPopover.Body>
             {showCloseButton && (
               <div>
                 <ChakraPopover.CloseTrigger asChild>
                   <CloseButton
                     className={colorMode === "dark" ? "light" : "dark"}
+                    ref={closeButtonRef}
                   />
                 </ChakraPopover.CloseTrigger>
               </div>
             )}
+            <ChakraPopover.Body {...props}>{children}</ChakraPopover.Body>
           </ChakraPopover.Content>
         </ChakraPopover.Positioner>
       </Portal>

@@ -9,6 +9,7 @@ export const popoverSlotRecipe = defineSlotRecipe({
     content: {
       position: "relative",
       display: "flex",
+      flexDirection: "row-reverse",
       gap: "0.625rem",
       padding: "0.563rem 0.75rem",
 

@@ -63,8 +63,6 @@ export const Nudge = (props: NudgeProps) => {
     ...rest
   } = props;
 
-  // Initialize the ref
-
   if (isNudgeExpired(introducedDate)) {
     logExpirationWarning();
     return null;

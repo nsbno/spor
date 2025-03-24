@@ -14,7 +14,7 @@ export function inputVariant(state: InputState) {
           ...coreBorder("hover"),
         },
         _active: {
-          ...coreBackground("active"),
+          backgroundColor: "core.surface.active",
           ...coreBorder("default"),
         },
         _selected: {
@@ -34,11 +34,11 @@ export function inputVariant(state: InputState) {
         },
         _active: {
           ...floatingBorder("active"),
-          ...floatingBackground("active"),
+          backgroundColor: "core.surface.active",
         },
         _selected: {
-          ...floatingBorder("selected"),
-          ...floatingBackground("selected"),
+          backgroundColor: "floating.surface.selected",
+          borderColor: "floating.border.selected",
         },
       };
     case "default":
@@ -50,7 +50,7 @@ export function inputVariant(state: InputState) {
           ...coreBorder("hover"),
         },
         _active: {
-          ...coreBackground("active"),
+          backgroundColor: "core.surface.active",
           ...coreBorder("default"),
         },
         _selected: {

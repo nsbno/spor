@@ -5,18 +5,23 @@ import { AttachedInputs } from "./AttachedInputs";
 import { CountryCodeSelect } from "./CountryCodeSelect";
 import { As } from "@chakra-ui/system";
 
-type CountryCodeAndPhoneNumber = {
+export type CountryCodeAndPhoneNumber = {
   countryCode: string;
   nationalNumber: string;
 };
-type PhoneNumberInputProps = Omit<BoxProps, "onChange"> & {
+export type PhoneNumberInputProps = Omit<BoxProps, "onChange"> & {
   /** The label. Defaults to a localized version of "Phone number" */
   label?: string;
   /** The root name.
    *
-   * Please note that when specifying the name, the rendered names will be `${name}-country-code` and `${name}-phone-number`, respectively
+   * Please note that when specifying the name, the rendered names will be `${name}-country-code` and `${name}-phone-number` unless a name is provided for both countryCode and nationalNumber.
    */
-  name?: string;
+  name?:
+    | string
+    | {
+        countryCode: string;
+        nationalNumber: string;
+      };
   /** Callback for when the country code or phone number changes */
   onChange?: (change: CountryCodeAndPhoneNumber) => void;
   /** The optional value of the country code and phone number */
@@ -31,7 +36,7 @@ type PhoneNumberInputProps = Omit<BoxProps, "onChange"> & {
  * <PhoneNumberInput name="phone" />
  * ```
  *
- * > Please note that when specifying the name, the rendered names will be `${name}-country-code` and `${name}-phone-number`, respectively
+ * > Please note that when specifying the name, the rendered names will be `${name}-country-code` and `${name}-phone-number` unless a name is provided for both countryCode and nationalNumber.
  *
  * The field can be controlled as well:
  * ```tsx
@@ -76,7 +81,13 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
               nationalNumber: value.nationalNumber,
             })
           }
-          name={name ? `${name}-country-code` : "country-code"}
+          name={
+            name
+              ? typeof name !== "string" && name.countryCode
+                ? name.countryCode
+                : `${name}-country-code`
+              : "country-code"
+          }
           height="100%"
           width="6.25rem"
           variant={variant}
@@ -86,7 +97,13 @@ export const PhoneNumberInput = forwardRef<PhoneNumberInputProps, As>(
           type="tel"
           label={label}
           value={value.nationalNumber}
-          name={name ? `${name}-phone-number` : "phone-number"}
+          name={
+            name
+              ? typeof name !== "string" && name.nationalNumber
+                ? name.nationalNumber
+                : `${name}-phone-number`
+              : "phone-number"
+          }
           onChange={(e) => {
             // Removes everything but numbers, spaces and dashes
             const strippedValue = e.target.value.replace(/[^\d\s-]/g, "");

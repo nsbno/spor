@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.3.7
+
+### Patch Changes
+
+- d4cfe80: Update PhoneNumberInput name prop
+
 ## 11.3.6
 
 ### Patch Changes

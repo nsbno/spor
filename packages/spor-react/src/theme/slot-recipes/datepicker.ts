@@ -79,10 +79,10 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       ...surface("default"),
     },
     calendarPopover: {
-      ...floatingBackground("default"),
       ...coreText("default"),
       ...floatingBorder("default"),
       boxShadow: "md",
+      maxWidth: "20em",
     },
     weekdays: {
       ...coreText("default"),
@@ -107,9 +107,8 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       },
     },
     dateCell: {
-      ...ghostBackground("default"),
       ...coreText("default"),
-      borderRadius: "50%",
+      borderRadius: "xl",
       position: "relative",
       transition: ".1s ease-in-out",
       userSelect: "none",

@@ -15,7 +15,6 @@ export const popoverSlotRecipe = defineSlotRecipe({
       textStyle: "sm",
       bg: "brand.surface",
       boxShadow: "lg",
-
       borderRadius: "sm",
       zIndex: "popover",
       outline: "0",
@@ -31,7 +30,7 @@ export const popoverSlotRecipe = defineSlotRecipe({
       },
     },
     body: {
-      color: "text.inverted",
+      color: "core.text",
       display: "flex",
       alignItems: "center",
 

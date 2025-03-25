@@ -1,5 +1,5 @@
 import { Box, BoxProps, chakra, Icon } from "@chakra-ui/react";
-import React, { forwardRef, useId } from "react";
+import React, { forwardRef, SVGProps, useId } from "react";
 import { useColorMode } from "..";
 
 export const SvgBox = chakra("svg");
@@ -28,12 +28,13 @@ const Path = chakra("path", fillRecipe);
 
 const SVGGroup = chakra("g", fillRecipe);
 
-export type VyLogoProps = BoxProps;
-export const VyLogo = forwardRef<SVGSVGElement, BoxProps>((props, ref) => {
+type VyLogoProps = BoxProps & React.SVGProps<SVGSVGElement>;
+
+export const VyLogo = forwardRef<SVGSVGElement, VyLogoProps>((props, ref) => {
   const id = useId();
 
   return (
-    <SvgBox ref={ref} viewBox="0 0 107 54" {...(props as any)}>
+    <SvgBox ref={ref} viewBox="0 0 107 54" {...props}>
       <title>Vy logo</title>
       <Path
         fillRule="evenodd"

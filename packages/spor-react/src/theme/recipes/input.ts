@@ -83,7 +83,9 @@ export const inputRecipe = defineRecipe({
         _active: {
           outline: "1px solid",
           outlineColor: "floating.outline.active",
+          backgroundColor: "core.surface.active",
         },
+
         focus: {
           outline: "1px solid",
           outlineColor: "outline.focus",

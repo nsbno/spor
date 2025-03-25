@@ -33,7 +33,7 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
           _hover: {
             ...coreBorder("default"),
             _active: {
-              ...coreBackground("active"),
+              backgroundColor: "core.surface.active",
               outline: "none",
             },
           },

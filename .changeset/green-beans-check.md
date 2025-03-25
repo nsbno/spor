@@ -40,6 +40,7 @@ Spor is getting a major update with Chakra 3.
 - `createToast` replaces `useToast`. Now does not support closable toasts or toasts with actions.
 - `Popover`replaces `ToolTip`. Props are different.
 - `MediaController`isPlaying prop is now playing
+- `Nudge` has different props. `WizardNudge`is no longer its own component, but can be easily built with `Nudge`and `NudgeWizardStep`s
 
 ### Darkmode
 

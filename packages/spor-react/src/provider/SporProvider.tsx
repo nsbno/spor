@@ -62,6 +62,7 @@ export const SporProvider = ({
         <ColorModeProvider>
           <Toaster />
           <Global styles={fontFaces} />
+
           {children}
         </ColorModeProvider>
       </ChakraProvider>

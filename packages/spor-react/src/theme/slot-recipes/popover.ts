@@ -33,7 +33,7 @@ export const popoverSlotRecipe = defineSlotRecipe({
       color: "core.text",
       display: "flex",
       alignItems: "center",
-
+      minWidth: "20rem",
       borderRadius: "sm",
       zIndex: "inherit",
       maxWidth: "20em",

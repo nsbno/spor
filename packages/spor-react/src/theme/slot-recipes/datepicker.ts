@@ -20,6 +20,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     "inputLabel",
     "dateTimeSegment",
     "cell",
+    "box",
   ],
   className: "spor-datepicker",
   base: {
@@ -55,6 +56,10 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         color: "white",
       },
     },
+    box: {
+      width: "100%",
+    },
+
     calendarTriggerButton: {
       borderRadius: "xl",
       display: "flex",

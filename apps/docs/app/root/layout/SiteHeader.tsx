@@ -5,20 +5,18 @@ import {
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
+  ColorModeButton,
   Drawer,
+  DrawerBackdrop,
   DrawerBody,
   DrawerCloseTrigger,
   DrawerContent,
   DrawerHeader,
-  DrawerBackdrop,
   Flex,
   IconButton,
-  SearchInput,
   Stack,
-  Text,
   VyLogo,
   useDisclosure,
-  ColorModeButton,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
 import { loader } from "~/root";
@@ -47,12 +45,12 @@ export const SiteHeader = () => {
 
   return (
     <Flex
-      color="white"
       justifyContent="space-between"
       alignItems="center"
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
       backgroundColor={"surface.tertiary"}
+      className="light"
       css={{
         position: "sticky",
         top: "0",
@@ -63,10 +61,10 @@ export const SiteHeader = () => {
       <Box marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
         <Link to="/" aria-label="Go to the front page">
           <VyLogo
+            className="dark"
             width="auto"
             height={["30px", "36px", null, "48px"]}
             aria-label="Vy"
-            className="dark"
           />
         </Link>
       </Box>

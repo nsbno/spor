@@ -50,14 +50,14 @@ export const buttonRecipe = defineRecipe({
       tertiary: {
         color: "core.text",
         outline: "solid",
-        outlineWidth: "sm",
+        outlineWidth: tokens.size.stroke.sm,
         outlineColor: "core.outline",
         _hover: {
-          outlineWidth: "md",
+          outlineWidth: tokens.size.stroke.md,
           outlineColor: "core.outline.hover",
           _active: {
             background: "core.surface.active",
-            outlineWidth: "sm",
+            outlineWidth: tokens.size.stroke.sm,
             outlineColor: "core.outline",
           },
         },

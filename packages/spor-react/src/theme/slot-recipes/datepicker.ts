@@ -90,10 +90,12 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       maxWidth: "20em",
     },
     weekdays: {
-      ...coreText("default"),
+      color: "core.text",
+      fontWeight: "bold",
     },
     weekend: {
-      ...accentText("default"),
+      color: "accent.text",
+      fontWeight: "bold",
     },
     cell: {
       '&[aria-selected="true"] + [aria-selected="true"] > button': {
@@ -157,7 +159,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         wrapper: {
           outline: "1px solid",
           outlineColor: "core.outline",
-          ...coreBackground("default"),
+          backgroundColor: "core.surface",
 
           _hover: {
             outline: "2px solid",

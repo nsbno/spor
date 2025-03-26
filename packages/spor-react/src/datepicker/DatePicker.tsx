@@ -115,9 +115,8 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       <PopoverContent
         color="darkGrey"
         css={styles.calendarPopover}
-        backgroundColor={"white"}
+        backgroundColor="floating.surface"
       >
-        <PopoverArrow />
         <PopoverBody>
           <Calendar
             {...calendarProps}

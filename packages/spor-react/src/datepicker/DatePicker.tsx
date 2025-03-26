@@ -3,13 +3,11 @@ import {
   Box,
   BoxProps,
   PopoverAnchor,
-  PopoverArrow,
-  PopoverBody,
-  PopoverRoot,
   Portal,
   RecipeVariantProps,
   useFieldContext,
   useSlotRecipe,
+  Popover as ChakraPopover,
 } from "@chakra-ui/react";
 import React, {
   PropsWithChildren,
@@ -31,10 +29,8 @@ import { DateField } from "./DateField";
 import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
-
 import { CalendarVariants } from "./types";
 import { Field } from "@/input/Field";
-import { Popover, PopoverContent, PopoverTrigger } from "..";
 
 export type DatePickerVariantProps = RecipeVariantProps<
   typeof datePickerSlotRecipe
@@ -84,18 +80,12 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     });
     const internalRef = useRef<HTMLDivElement>(null);
     const ref = externalRef ?? internalRef;
-    const {
-      labelProps,
-      fieldProps,
-      buttonProps,
-      dialogProps,
-      calendarProps,
-      errorMessageProps,
-    } = useDatePicker(
-      props,
-      state,
-      ref as React.MutableRefObject<HTMLDivElement>,
-    );
+    const { labelProps, fieldProps, buttonProps, dialogProps, calendarProps } =
+      useDatePicker(
+        props,
+        state,
+        ref as React.MutableRefObject<HTMLDivElement>,
+      );
 
     const labelId = `label-${useId()}`;
     const inputGroupId = `input-group-${useId()}`;
@@ -112,19 +102,17 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     };
 
     const popoverContent = (
-      <PopoverContent
-        color="darkGrey"
-        css={styles.calendarPopover}
-        backgroundColor="floating.surface"
-      >
-        <PopoverBody>
-          <Calendar
-            {...calendarProps}
-            variant={variant}
-            showYearNavigation={showYearNavigation}
-          />
-        </PopoverBody>
-      </PopoverContent>
+      <ChakraPopover.Positioner>
+        <ChakraPopover.Content css={styles.calendarPopover}>
+          <ChakraPopover.Body>
+            <Calendar
+              {...calendarProps}
+              variant={variant}
+              showYearNavigation={showYearNavigation}
+            />
+          </ChakraPopover.Body>
+        </ChakraPopover.Content>
+      </ChakraPopover.Positioner>
     );
 
     return (
@@ -135,7 +123,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           flexDirection="column"
           width={width}
         >
-          <Popover
+          <ChakraPopover.Root
             {...dialogProps}
             open={state.isOpen}
             onOpenChange={state.open}
@@ -156,15 +144,15 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                   isDisabled={props.isDisabled}
                   ariaLabelledby={labelId}
                 >
-                  <PopoverTrigger>
+                  <ChakraPopover.Trigger>
                     <CalendarTriggerButton
+                      paddingLeft={1}
+                      paddingRight={1}
                       variant={variant}
                       ref={ref}
-                      isDisabled={props.isDisabled}
-                      ariaLabelledby={labelId}
                       {...buttonProps}
                     />
-                  </PopoverTrigger>
+                  </ChakraPopover.Trigger>
                   <DateField
                     label={props.label}
                     labelProps={labelProps}
@@ -180,7 +168,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
               <Portal>{popoverContent}</Portal>
             )}
             {state.isOpen && !props.isDisabled && !withPortal && popoverContent}
-          </Popover>
+          </ChakraPopover.Root>
         </Box>
       </I18nProvider>
     );

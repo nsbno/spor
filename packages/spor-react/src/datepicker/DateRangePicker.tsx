@@ -2,11 +2,8 @@
 import {
   Box,
   BoxProps,
-  ConditionalValue,
   PopoverAnchor,
-  PopoverArrow,
-  PopoverBody,
-  PopoverRoot,
+  Popover as ChakraPopover,
   Portal,
   useFieldContext,
   useSlotRecipe,
@@ -29,7 +26,6 @@ import { Field } from "../input/Field";
 import { DatePickerVariantProps } from "./DatePicker";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { CalendarVariants } from "./types";
-import { PopoverContent, PopoverTrigger } from "..";
 
 type DateRangePickerProps = Omit<
   AriaDateRangePickerProps<DateValue>,
@@ -104,18 +100,19 @@ type DateRangePickerProps = Omit<
   };
 
   const popoverContent = (
-    <PopoverContent css={styles.calendarPopover} maxWidth="none">
-      <PopoverArrow />
-      <PopoverBody>
-        <RangeCalendar variant={"core"} {...calendarProps} />
-      </PopoverBody>
-    </PopoverContent>
+    <ChakraPopover.Positioner>
+      <ChakraPopover.Content css={styles.calendarPopover}>
+        <ChakraPopover.Body maxWidth="60rem">
+          <RangeCalendar variant={"core"} {...calendarProps} />
+        </ChakraPopover.Body>
+      </ChakraPopover.Content>
+    </ChakraPopover.Positioner>
   );
 
   return (
     <I18nProvider locale={locale}>
       <Box position="relative" display="inline-flex" flexDirection="column">
-        <PopoverRoot
+        <ChakraPopover.Root
           {...dialogProps}
           open={state.isOpen}
           onOpenChange={state.open}
@@ -137,7 +134,7 @@ type DateRangePickerProps = Omit<
                 minHeight={minHeight}
               >
                 {variant && (
-                  <PopoverTrigger>
+                  <ChakraPopover.Trigger>
                     <CalendarTriggerButton
                       paddingLeft={1}
                       paddingRight={1}
@@ -145,7 +142,7 @@ type DateRangePickerProps = Omit<
                       ref={ref}
                       {...buttonProps}
                     />
-                  </PopoverTrigger>
+                  </ChakraPopover.Trigger>
                 )}
                 <DateField
                   {...startFieldProps}
@@ -167,7 +164,7 @@ type DateRangePickerProps = Omit<
           </Field>
           {state.isOpen && withPortal && <Portal>{popoverContent}</Portal>}
           {state.isOpen && !withPortal && popoverContent}
-        </PopoverRoot>
+        </ChakraPopover.Root>
       </Box>
     </I18nProvider>
   );

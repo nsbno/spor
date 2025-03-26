@@ -21,6 +21,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     "dateTimeSegment",
     "cell",
     "box",
+    "rangeCalendarPopover",
   ],
   className: "spor-datepicker",
   base: {
@@ -87,7 +88,10 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       ...coreText("default"),
       ...floatingBorder("default"),
       boxShadow: "md",
-      maxWidth: "20em",
+      backgroundColor: "floating.surface",
+    },
+    rangeCalendarPopover: {
+      width: "43rem",
     },
     weekdays: {
       color: "core.text",
@@ -102,7 +106,6 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         "&::before": {
           content: '""',
           display: "block",
-          width: "100%",
           height: "100%",
           position: "absolute",
           left: "-50%",
@@ -148,6 +151,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       },
       "&[data-unavailable]": {
         pointerEvents: "none",
+        borderRadius: "xl",
         ...coreBackground("disabled"),
         ...coreText("disabled"),
       },

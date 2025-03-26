@@ -87,7 +87,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       ...coreText("default"),
       ...floatingBorder("default"),
       boxShadow: "md",
-      maxWidth: "20em",
+      backgroundColor: "white",
     },
     weekdays: {
       color: "core.text",

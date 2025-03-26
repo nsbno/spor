@@ -28,7 +28,7 @@ export function RangeCalendar(props: RangeCalendarProps) {
   const { calendarProps, title } = useRangeCalendar(props, state, ref);
 
   return (
-    <Box {...calendarProps} ref={ref}>
+    <Box {...calendarProps} ref={ref} width="600px">
       <CalendarHeader state={state} title={title} />
       <Box display="flex" gap="8">
         <CalendarGrid variant={props.variant} state={state} />

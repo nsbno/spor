@@ -5,7 +5,6 @@ import {
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
-  ColorModeButton,
   DarkMode,
   Drawer,
   DrawerBackdrop,
@@ -15,6 +14,7 @@ import {
   DrawerHeader,
   Flex,
   IconButton,
+  SearchInput,
   Stack,
   VyLogo,
   useDisclosure,
@@ -69,7 +69,6 @@ export const SiteHeader = () => {
             />
           </Link>
         </Box>
-        <ColorModeButton /> {/* temp solution */}
         <DesktopNavigation
           onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
         />
@@ -96,7 +95,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
 
   return (
     <>
-      {/* <Flex
+      <Flex
         display={["none", null, null, "flex"]}
         maxWidth={[null, null, null, "breakpoints.lg", "breakpoints.xl"]}
         marginX="auto"
@@ -105,23 +104,16 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         <SearchInput
           role="button"
           onClick={onSearchClick}
-          onKeyDown={(e: KeyboardEvent) => {
+          onKeyDown={(e: React.KeyboardEvent) => {
             if (e.key === "Enter" || e.key === " ") {
               onSearchClick();
             }
           }}
           width={[null, null, null, "37.5rem"]}
           readOnly
-          label={
-            <Flex alignItems="center" gap={1}>
-              Search docs{" "}
-              <Text size="sm" fontSize="12" paddingTop={0.5}>
-                ({isMac ? "cmd" : "ctrl"} + K)
-              </Text>
-            </Flex>
-          }
+          label="Search component"
         />
-      </Flex> */}
+      </Flex>
       <Flex
         display={["none", null, null, "flex"]}
         flex={[0, 0, 0, 0, 1]}

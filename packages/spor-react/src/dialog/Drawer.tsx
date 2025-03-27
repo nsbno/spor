@@ -1,20 +1,20 @@
 "use client";
 
 import {
-  Drawer as ChakraDrawer,
-  Portal,
   Box,
+  Drawer as ChakraDrawer,
   createContext,
   Grid,
   GridItem,
+  Portal,
 } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
-import { Button, CloseButton } from "../button";
-import { createTexts, useTranslation } from "../i18n";
 import {
   ArrowLeftFill24Icon,
   CloseFill24Icon,
 } from "@vygruppen/spor-icon-react";
+import React, { forwardRef } from "react";
+import { Button, CloseButton } from "../button";
+import { createTexts, useTranslation } from "../i18n";
 import {
   DrawerContentProps,
   DrawerFullScreenHeaderProps,
@@ -63,9 +63,6 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
             {sizeNotFull && placement === "bottom" && <CloseDrawerLine />}
             {children}
             {sizeNotFull && placement === "top" && <CloseDrawerLine />}
-            {sizeNotFull && (placement === "end" || placement === "start") && (
-              <DrawerCloseTrigger />
-            )}
           </ChakraDrawer.Content>
         </ChakraDrawer.Positioner>
       </Portal>

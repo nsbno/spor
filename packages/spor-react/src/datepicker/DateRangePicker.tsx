@@ -112,18 +112,13 @@ type DateRangePickerProps = Omit<
   return (
     <I18nProvider locale={locale}>
       <Box position="relative" display="inline-flex" flexDirection="column">
-        <ChakraPopover.Root
-          {...dialogProps}
-          open={state.isOpen}
-          onOpenChange={state.open}
-          onExitComplete={state.close}
-        >
-          <Field
-            {...groupProps}
-            width="auto"
-            display="inline-flex"
-            label={props.label}
-          >
+        {props.label && (
+          <Box as="label" {...labelProps} css={styles.inputLabel}>
+            {props.label}
+          </Box>
+        )}
+        <ChakraPopover.Root {...dialogProps}>
+          <Field {...groupProps} width="auto" display="inline-flex">
             <PopoverAnchor>
               <StyledField
                 alignItems="center"

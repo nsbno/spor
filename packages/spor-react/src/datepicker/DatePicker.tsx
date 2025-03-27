@@ -123,12 +123,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           flexDirection="column"
           width={width}
         >
-          <ChakraPopover.Root
-            {...dialogProps}
-            open={state.isOpen}
-            onOpenChange={state.open}
-            onExitComplete={state.close}
-          >
+          <ChakraPopover.Root {...dialogProps}>
             <Field
               display="inline-flex"
               id={inputGroupId}

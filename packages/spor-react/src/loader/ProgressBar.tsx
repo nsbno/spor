@@ -1,22 +1,20 @@
 "use client";
 import {
   BoxProps,
-  ProgressLabel,
-  ProgressRoot,
-  ProgressValueText,
+  Progress,
+  UseProgressProps,
   RecipeVariantProps,
-  ProgressRootProps,
+  useSlotRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { progressBarRecipe } from "../theme/slot-recipes/progress-bar";
-import { useTranslation } from "react-i18next";
 import { useRotatingLabel } from "./useRotatingLabel";
 import { createTexts } from "../i18n";
 
 type ProgressBarVariants = RecipeVariantProps<typeof progressBarRecipe>;
 
 export type ProgressBarProps = BoxProps &
-  ProgressRootProps &
+  UseProgressProps &
   PropsWithChildren<ProgressBarVariants> & {
     children: React.ReactNode;
     /** The height of the progress bar.
@@ -45,7 +43,8 @@ export type ProgressBarProps = BoxProps &
     /** Pass to disable the color of the component */
     isActive?: boolean;
 
-    colorPalette?: string;
+    /** Pass to show the value text */
+    showValueText?: boolean;
   };
 
 /**
@@ -80,52 +79,47 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
   (
     {
       value,
+      defaultValue,
       colorPalette = "white",
       label,
       labelRotationDelay = 5000,
       isActive = true,
+      showValueText = false,
       height = "0.5rem",
-      width = "100%",
       "aria-label": ariaLabel,
       ...rest
     },
     ref,
   ) => {
-    const { t } = useTranslation();
+    const recipe = useSlotRecipe({ key: "progressbar" });
+    const styles = recipe({});
     const currentLoadingText = useRotatingLabel({
       label,
       delay: labelRotationDelay,
     });
 
     return (
-      <ProgressRoot
+      <Progress.Root
+        css={styles.container}
         ref={ref}
-        defaultValue={value}
-        css={{
-          "--progress-bar-color": colorPalette,
-        }}
+        defaultValue={defaultValue}
         {...rest}
       >
-        {/* {label && <ProgressLabel>{t(texts.label(value).en)}</ProgressLabel>} */}
-        <ProgressBar
-          children={undefined}
-          aria-label={""}
-          value={0}
-          label={""}
-        />
-        <ProgressValueText>{`${value}%`}</ProgressValueText>
-      </ProgressRoot>
+        <Progress.Track
+          height={height}
+          css={isActive ? styles.background : styles.disabledBackground}
+        >
+          <Progress.Range css={styles.progress} />
+        </Progress.Track>
+
+        {label && (
+          <Progress.Label css={styles.description}>
+            {currentLoadingText}
+          </Progress.Label>
+        )}
+
+        {showValueText && <Progress.ValueText>{value}%</Progress.ValueText>}
+      </Progress.Root>
     );
   },
 );
-
-const texts: {
-  label: (value: number) => { nb: string; nn: string; sv: string; en: string };
-} = createTexts({
-  label: (value) => ({
-    nb: `${value}% ferdig`,
-    nn: `${value}% ferdig`,
-    sv: `${value}% klart`,
-    en: `${value}% done`,
-  }),
-});

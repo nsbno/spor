@@ -6,10 +6,11 @@ import { codeRecipie } from "./code";
 import { inputRecipe } from "./input";
 import { linkRecipe } from "./link";
 import { pressableCardRecipe } from "./pressable-card";
+import { progressLoaderRecipe } from "./progress-loader";
 import { separatorRecipe } from "./separator";
+import { skeletonRecipe } from "./skeleton";
 import { staticCardRecipe } from "./static-card";
 import { textareaRecipe } from "./textarea";
-import { toastRecipe } from "./toast";
 
 export const recipes = {
   attachedInputs: attachedInputsRecipe,
@@ -20,8 +21,9 @@ export const recipes = {
   input: inputRecipe,
   link: linkRecipe,
   pressableCard: pressableCardRecipe,
+  progressLoader: progressLoaderRecipe,
   seperator: separatorRecipe,
+  skeleton: skeletonRecipe,
   staticCard: staticCardRecipe,
   textarea: textareaRecipe,
-  toast: toastRecipe,
 };

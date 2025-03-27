@@ -1,7 +1,6 @@
 "use client";
 import {
   Box,
-  ListRoot,
   ListItem,
   ListRootProps,
   RecipeVariantProps,
@@ -23,8 +22,9 @@ import {
   useOption,
 } from "react-aria";
 import { type ListState, type SelectState } from "react-stately";
-import { listBoxSlotRecipe } from "../theme/slot-recipes/listbox";
+import { List } from "..";
 import { useColorModeValue } from "../color-mode";
+import { listBoxSlotRecipe } from "../theme/slot-recipes/listbox";
 
 export { Item, Section } from "react-stately";
 
@@ -45,6 +45,7 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
     maxWidth?: BoxProps["maxWidth"];
     variant?: "core" | "floating";
     children: React.ReactNode;
+    autoFocus?: boolean;
   };
 
 /**
@@ -86,10 +87,10 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
   (props) => {
     const { loading, listBoxRef, state, maxWidth, variant, children } = props;
     const { listBoxProps } = useListBox(props, state, listBoxRef);
-    const recipe = useSlotRecipe({ key: "listbox" });
+    const recipe = useSlotRecipe({ key: "listBox" });
     const styles = recipe({ variant });
     return (
-      <ListRoot
+      <List
         {...listBoxProps}
         ref={listBoxRef}
         css={styles.root}
@@ -101,11 +102,11 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
           item.type === "section" ? (
             <ListBoxSection key={item.key} section={item} state={state} />
           ) : (
-            <ListItem key={item.key} />
+            <Option key={item.key} item={item} state={state} />
           ),
         )}
         {children}
-      </ListRoot>
+      </List>
     );
   },
 );
@@ -117,7 +118,6 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
  */
 export function ItemLabel({ children }: { children: React.ReactNode }) {
   let { labelProps } = useOptionContext();
-
   return <Box {...labelProps}>{children}</Box>;
 }
 
@@ -131,7 +131,7 @@ export function ItemDescription({ children }: { children: React.ReactNode }) {
   const recipe = useSlotRecipe({ key: "listbox" });
   const styles = recipe({});
   return (
-    <Box {...descriptionProps} css={styles}>
+    <Box {...descriptionProps} css={styles} fontSize={"xs"}>
       {children}
     </Box>
   );
@@ -153,8 +153,9 @@ function Option({ item, state }: OptionProps) {
     descriptionProps,
   } = useOption({ key: item.key }, state, ref);
 
-  const recipe = useSlotRecipe({ key: "listbox" });
+  const recipe = useSlotRecipe({ key: "listBox" });
   const styles = recipe({});
+
   let dataFields: Record<string, boolean> = {};
   if (isSelected) {
     dataFields["data-selected"] = true;
@@ -183,7 +184,6 @@ function Option({ item, state }: OptionProps) {
       { passive: false, once: true },
     );
   }, []);
-
   return (
     <OptionContext.Provider value={{ labelProps, descriptionProps }}>
       <ListItem {...optionProps} {...dataFields} ref={ref} css={styles.item}>
@@ -219,16 +219,17 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
 
   const isFirstSection = section.key === state.collection.getFirstKey();
   const titleColor = useColorModeValue("darkGrey", "white");
+
   return (
-    <ListRoot>
-      <ListItem {...itemProps}>
+    <List>
+      <ListItem {...itemProps} listStyleType={"none"}>
         {section.rendered && (
           <Box
             fontSize="mobile.xs"
             color={titleColor}
             paddingX={3}
-            paddingY={1}
-            marginTop={isFirstSection ? 0 : 3}
+            paddingTop={1}
+            marginTop={isFirstSection ? 0 : 2}
             textTransform="uppercase"
             fontWeight="bold"
             {...headingProps}
@@ -236,14 +237,14 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
             {section.rendered}
           </Box>
         )}
-        <ListRoot {...groupProps} padding={0} listStyleType="none">
+        <List {...groupProps} padding={0} listStyleType="none">
           {Array.from(state.collection.getChildren(section.key)).map(
             (item: any) => (
-              <ListItem key={item.key} />
+              <Option key={item.key} item={item} state={state} />
             ),
           )}
-        </ListRoot>
+        </List>
       </ListItem>
-    </ListRoot>
+    </List>
   );
 }

@@ -2,11 +2,14 @@
 import { Global } from "@emotion/react";
 import React from "react";
 import { Language, LanguageProvider, system, themes } from "..";
+
+import { Toaster } from "../toast/toast";
+
 import { Brand, fontFaces } from "../theme/brand";
 import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
 import { ColorModeProvider } from "../color-mode";
 
-type SporProviderProps = Exclude<ChakraProviderProps, "value"> & {
+type SporProviderProps = Omit<ChakraProviderProps, "value"> & {
   language?: Language;
   brand?: Brand;
 };
@@ -57,7 +60,9 @@ export const SporProvider = ({
     <LanguageProvider language={language}>
       <ChakraProvider value={themes[brand] ?? system}>
         <ColorModeProvider>
+          <Toaster />
           <Global styles={fontFaces} />
+
           {children}
         </ColorModeProvider>
       </ChakraProvider>

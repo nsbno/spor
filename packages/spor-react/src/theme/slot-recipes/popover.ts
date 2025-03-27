@@ -1,65 +1,75 @@
+import { surface } from "./../utils/surface-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
+import { popoverAnatomy } from "./anatomy";
 
 export const popoverSlotRecipe = defineSlotRecipe({
-  slots: [
-    "content",
-    "header",
-    "body",
-    "footer",
-    "arrow",
-    "arrowTip",
-    "closeTrigger",
-  ],
   className: "spor-popover",
+  slots: popoverAnatomy.keys(),
   base: {
     content: {
+      position: "relative",
+      display: "flex",
+      flexDirection: "row-reverse",
+      gap: "0.625rem",
+      padding: "0.563rem 0.75rem",
+
+      textStyle: "sm",
+      bg: "surface.tertiary",
+      boxShadow: "lg",
+
+      borderRadius: "sm",
       zIndex: "popover",
+      outline: "0",
+      transformOrigin: "var(--transform-origin)",
+      maxHeight: "var(--available-height)",
+      _open: {
+        animationStyle: "scale-fade-in",
+        animationDuration: "fast",
+      },
+      _closed: {
+        animationStyle: "scale-fade-out",
+        animationDuration: "faster",
+      },
     },
     body: {
-      "--popover-bg": "brand.surface.tertiary",
-      backgroundColor: "---popover-bg",
-      "--arrow-bg": "---popover-bg",
-      "--arrow-shadow-color": "blackAlpha.300",
-      color: "white", // TODO: Should this be a semantic token? Where does it fit in?
+      color: "text.inverted",
+
+      alignItems: "center",
+
       borderRadius: "sm",
-      padding: 1.5,
       zIndex: "inherit",
       maxWidth: "20em",
     },
     arrow: {
-      backgroundColor: "transparent",
-      boxShadow: "none",
-      clipPath:
-        "path('M 0 0 Q 2.4 6 0 12 Q 6 9.6 12 12 Q 9.6 6 12 0 Q 6 2.4 0 0 z')",
+      "--arrow-background": "colors.surface.tertiary",
+      "--arrow-size": "6px",
     },
-    closeTrigger: {
-      position: "absolute",
-      color: "white",
-      ...focusVisibleStyles(),
-      _hover: {
-        backgroundColor: "whiteAlpha.100",
-      },
-      _active: {
-        backgroundColor: "whiteAlpha.200",
-      },
-      borderRadius: "sm",
-      top: 2,
-      right: 1,
-    },
+    arrowTip: {},
   },
   variants: {
     size: {
       sm: {
+        body: {
+          maxWidth: "8rem",
+          minWidth: "8rem",
+        },
+      },
+      md: {
+        body: {
+          maxWidth: "13rem",
+          minWidth: "13rem",
+        },
         content: {
-          paddingX: 1.5,
-          paddingY: 1,
+          padding: "0.875rem 0.75rem 1.125rem 1.125rem",
         },
       },
       lg: {
+        body: {
+          maxWidth: "26rem",
+          minWidth: "26rem",
+        },
         content: {
-          paddingX: 3,
-          paddingY: 2,
+          padding: "0.875rem 0.75rem 1.125rem 1.125rem",
         },
       },
     },

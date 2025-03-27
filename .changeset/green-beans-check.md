@@ -19,6 +19,7 @@ Spor is getting a major update with Chakra 3.
 - `onClose` is now `close`
 - `isOpen` is now `open`
 - `isFitted` is now `fitted`
+- `isPlaying` is now `playing`
 
 ### Updated components
 
@@ -31,6 +32,15 @@ Spor is getting a major update with Chakra 3.
 - `UnorderedList` and `OrderedList` is deprecated. Use `List` and `as` prop instead.
 - `Tab` is now `TabsTrigger`, `TabList` is now `TabsList`, `TabsPanel` and `TabPanel` are now `TabsContent`.
 - `ClosableAlert` and `StaticAlert` are deprecated. Use component `Alert` and prop `closable` instead
+- `InfoSelect` is now `Select` and has two more variants `rightSideSquare` and `leftSideSquare`
+- `AttachedInputs` has deprecate FlexDirection prop which is now `orientation`
+- `PhoneNumberInputs`an `invalid` prop is send for validation purpose, and `errorText` prop is send to give feedback on error
+- `CardSelect` has new variant: `core`, `ghost` and `floating`
+- `NumericStepper`isDisabled prop is deprecated, use disabled
+- `createToast` replaces `useToast`. Now does not support closable toasts or toasts with actions.
+- `Popover`replaces `ToolTip`. Props are different.
+- `MediaController`isPlaying prop is now playing
+- `Nudge` has different props. `WizardNudge`is no longer its own component, but can be easily built with `Nudge`and `NudgeWizardStep`s
 
 ### Darkmode
 

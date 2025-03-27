@@ -4,10 +4,13 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
+    branches: [update-chakra] # Change to main when update-chakra is merged
+  workflow_dispatch:
 
 jobs:
   build:
+    name: "CI build validation"
+
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,12 +19,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: npm ci
-      - run: npm run build
-      - run: npm test
-      - run: npm run format:validate
+          cache: "pnpm"
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @vygruppen/spor-design-tokens build # Need to build design tokens first to generate types
+      - run: pnpm typegen
+      - run: pnpm build
+      - run: pnpm test
+      - run: pnpm format:validate

@@ -1,4 +1,4 @@
-import { defineTokens } from "@chakra-ui/react"
+import { defineTokens } from "@chakra-ui/react";
 
 export const cursor = defineTokens.cursor({
   button: {
@@ -25,4 +25,4 @@ export const cursor = defineTokens.cursor({
   switch: {
     value: "pointer",
   },
-})
+});

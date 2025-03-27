@@ -1,8 +1,5 @@
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { defineRecipe } from "@chakra-ui/react";
-import { surface } from "../utils/surface-utils";
-import { coreBackground, coreBorder } from "../utils/core-utils";
-import { floatingBackground, floatingBorder } from "../utils/floating-utils";
+import { focusVisibleStyles } from "../utils/focus-utils";
 
 /* FYI: The styling in this file is also used in Textarea */
 
@@ -26,51 +23,72 @@ export const inputRecipe = defineRecipe({
     },
 
     _disabled: {
-      ...surface("disabled"),
-      ...coreBorder("disabled"),
+      backgroundColor: "surface.disabled",
+      outline: "1px solid",
+      outlineColor: "outline.disabled",
       pointerEvents: "none",
     },
     _invalid: {
-      ...coreBorder("invalid"),
+      outline: "2px solid",
+      outlineColor: "outline.error",
       _active: {
-        ...coreBorder("invalid"),
+        outline: "2px solid",
+        outlineColor: "outline.error",
       },
       _focus: {
-        ...coreBorder("invalid"),
+        outline: "2px solid",
+        outlineColor: "outline.error",
       },
       _hover: {
-        ...coreBorder("hover"),
+        outline: "2px solid",
+        outlineColor: "core.outline",
       },
     },
   },
   variants: {
     variant: {
       core: {
-        ...coreBackground("default"),
-        ...coreBorder("default"),
+        backgroundColor: "transparent",
+        outline: "1px solid",
+        outlineColor: "core.outline",
         _hover: {
-          ...coreBorder("hover"),
-        },
-        _active: {
-          ...coreBorder("active"),
+          outline: "2px solid",
+          outlineColor: "core.outline.hover",
+          _active: {
+            outline: "1px solid",
+            outlineColor: "outline.disabled",
+            backgroundColor: "accent.surface.active",
+          },
         },
         _focus: {
-          ...coreBorder("focus"),
+          outline: "1px solid",
+          outlineColor: "core.outline",
         },
       },
       floating: {
         boxShadow: "sm",
-        ...floatingBackground("default"),
-        ...floatingBorder("default"),
+        backgroundColor: {
+          _light: "bg",
+          _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
+          outline: "1px solid",
+          outlineColor: "floating.outline",
+        },
+        outline: "1px solid",
+        outlineColor: "floating.outline",
 
         _hover: {
-          ...floatingBorder("hover"),
+          outline: "1px solid",
+          outlineColor: "floating.outline.hover",
         },
         _active: {
-          ...floatingBorder("active"),
+          outline: "1px solid",
+          outlineColor: "floating.outline.active",
+          backgroundColor: "core.surface.active",
         },
+
         focus: {
-          ...floatingBorder("focus"),
+          outline: "1px solid",
+          outlineColor: "outline.focus",
         },
       },
     },

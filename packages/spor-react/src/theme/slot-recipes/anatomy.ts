@@ -1,4 +1,5 @@
 import { createAnatomy } from "@ark-ui/react/anatomy";
+import { popoverAnatomy as arkPopoverAnatomy } from "@ark-ui/react/popover";
 
 export const accordionAnatomy = createAnatomy("accordion").parts(
   "root",
@@ -164,6 +165,13 @@ export const radioAnatomy = createAnatomy("radio").parts(
   "label",
 );
 
+export const listBoxAnatomy = createAnatomy("listbox").parts(
+  "root",
+  "item",
+  "label",
+  "description",
+);
+
 export const NativeSelectAnatomy = createAnatomy("native-select").parts(
   "root",
   "field",
@@ -183,4 +191,62 @@ export const switchAnatomy = createAnatomy("switch").parts(
   "thumb",
   "control",
   "label",
+);
+
+export const selectAnatomy = createAnatomy("select").parts(
+  "root",
+  "trigger",
+  "indicatorGroup",
+  "indicator",
+  "selectContent",
+  "item",
+  "control",
+  "itemText",
+  "itemDescription",
+  "itemGroup",
+  "itemGroupLabel",
+  "label",
+  "valueText",
+);
+export const cardSelectAnatomy = createAnatomy("card-select").parts(
+  "trigger",
+  "card",
+);
+export const choiceChipAnatomy = createAnatomy("choice-chip").parts("root");
+
+export const numericStepperAnatomy = createAnatomy("numeric-stepper").parts(
+  "root",
+  "container",
+  "input",
+  "text",
+  "button",
+);
+export const mediaControllerAnatomy = createAnatomy(
+  "media-controller-button",
+).parts("root", "icon");
+export const progressBarAnotomy = createAnatomy("progress-bar").parts(
+  "container",
+  "background",
+  "progress",
+  "description",
+  "disabledBackground",
+);
+
+export const toastAnatomy = createAnatomy("toast").parts(
+  "root",
+  "title",
+  "description",
+  "indicator",
+  "closeTrigger",
+  "actionTrigger",
+);
+
+export const floatingActionButtonAnatomy = createAnatomy(
+  "floating-action-button",
+).parts("root", "icon", "text");
+
+export const popoverAnatomy = arkPopoverAnatomy.extendWith(
+  "header",
+  "body",
+  "footer",
 );

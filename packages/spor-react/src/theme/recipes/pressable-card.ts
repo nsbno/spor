@@ -32,7 +32,7 @@ export const pressableCardRecipe = defineRecipe({
         _hover: {
           ...coreBorder("hover"),
           _active: {
-            ...coreBackground("active"),
+            backgroundColor: "core.surface.active",
             ...coreBorder("active"),
           },
         },

@@ -29,7 +29,7 @@ export const paginationSlotRecipe = defineSlotRecipe({
       _selected: {
         cursor: "default",
         fontWeight: "bold",
-        ...coreBackground("active"),
+        backgroundColor: "core.surface.active",
       },
     },
     list: {

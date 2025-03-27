@@ -55,19 +55,16 @@ export type IconButtonProps = Exclude<
  */
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   (props, ref) => {
-    const { icon, size = "sm", loading = false } = props;
+    const { icon, size = "sm", loading = false, ...rest } = props;
     return (
       <ChakraIconButton
         aria-label={props["aria-label"]}
-        {...props}
+        {...rest}
         size={size}
         ref={ref}
+        position={loading ? "relative" : "static"}
       >
-        {loading ? (
-          <ColorSpinner width="80%" height="80%" marginX={1} marginTop={1} />
-        ) : (
-          icon
-        )}
+        {loading ? <ColorSpinner width="2em" height="2em" margin={1} /> : icon}
       </ChakraIconButton>
     );
   },

@@ -1,11 +1,6 @@
 import { defineRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { surface } from "../utils/surface-utils";
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
-import { floatingBackground, floatingBorder } from "../utils/floating-utils";
-import { ghostBackground } from "../utils/ghost-utils";
-import { accentBackground, accentText } from "../utils/accent-utils";
-import { brandBackground, brandText } from "../utils/brand-utils";
+import tokens from "@vygruppen/spor-design-tokens";
 
 export const buttonRecipe = defineRecipe({
   className: "spor-button",
@@ -26,70 +21,69 @@ export const buttonRecipe = defineRecipe({
       cursor: "not-allowed",
       pointerEvents: "none",
       boxShadow: "none",
-      ...surface("disabled"),
-      ...coreText("disabled"),
+      color: "text.disabled",
+      background: "surface.disabled",
     },
   },
   variants: {
     variant: {
       primary: {
-        ...brandBackground("default"),
-        ...brandText("default"),
+        background: "brand.surface",
+        color: "brand.text",
         _hover: {
-          ...brandBackground("hover"),
+          background: "brand.surface.hover",
           _active: {
-            ...brandBackground("active"),
+            background: "brand.surface.active",
           },
         },
       },
       secondary: {
-        ...accentBackground("default"),
-        ...accentText("default"),
+        background: "accent.surface",
+        color: "accent.text",
         _hover: {
-          ...accentBackground("hover"),
+          background: "accent.surface.hover",
           _active: {
-            ...accentBackground("active"),
+            background: "accent.surface.active",
           },
         },
       },
       tertiary: {
-        ...coreBackground("default"),
-        ...coreText("default"),
-        ...coreBorder("default"),
-
+        color: "core.text",
+        outline: "solid",
+        outlineWidth: tokens.size.stroke.sm,
+        outlineColor: "core.outline",
         _hover: {
-          ...coreBorder("hover"),
-          ...coreBackground("hover"),
+          outlineWidth: tokens.size.stroke.md,
+          outlineColor: "core.outline.hover",
           _active: {
-            ...coreBorder("default"),
-            ...coreBackground("active"),
+            background: "core.surface.active",
+            outlineWidth: tokens.size.stroke.sm,
+            outlineColor: "core.outline",
           },
         },
       },
       ghost: {
-        ...ghostBackground("default"),
-        ...coreText("default"),
+        color: "ghost.text",
         _hover: {
-          ...ghostBackground("hover"),
-          _disabled: {
-            ...coreText("disabled"),
-          },
+          background: "ghost.surface.hover",
           _active: {
-            ...ghostBackground("active"),
+            background: "ghost.surface.active",
           },
         },
       },
       floating: {
-        ...floatingBackground("default"),
-        ...floatingBorder("default"),
-        boxShadow: "sm",
+        color: "floating.text",
+        border: "sm",
+        borderColor: "floating.outline",
+        boxShadow:
+          "0px 1px 3px 0px var(--spor-colors-surface-disabled, rgba(0, 0, 0, 0.10))",
         _hover: {
-          ...floatingBackground("hover"),
-          ...floatingBorder("hover"),
-          boxShadow: "md",
+          borderColor: "floating.outline.hover",
+
           _active: {
-            ...floatingBackground("active"),
-            boxShadow: "sm",
+            background: "core.surface.active",
+            boxShadow: "none",
+            borderColor: "floating.outline",
           },
         },
       },

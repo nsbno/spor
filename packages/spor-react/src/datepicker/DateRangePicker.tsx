@@ -131,8 +131,6 @@ type DateRangePickerProps = Omit<
                 {variant && (
                   <ChakraPopover.Trigger>
                     <CalendarTriggerButton
-                      paddingLeft={1}
-                      paddingRight={1}
                       variant={variant}
                       ref={ref}
                       {...buttonProps}
@@ -145,7 +143,12 @@ type DateRangePickerProps = Omit<
                   label={props.startLabel}
                   labelProps={labelProps}
                 />
-                <Box as="span" aria-hidden="true" paddingRight="2">
+                <Box
+                  as="span"
+                  aria-hidden="true"
+                  paddingRight="2"
+                  paddingLeft={"2"}
+                >
                   –
                 </Box>
                 <DateField

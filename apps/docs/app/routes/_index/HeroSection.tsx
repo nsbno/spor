@@ -62,7 +62,7 @@ export function HeroSection() {
               alt="An illustration of a person looking out over a landscape with trees, houses, buses, bicycles and roads"
               width="100%"
               aspectRatio="4 / 3"
-              maxWidth={["400px", null, "none"]}
+              maxWidth={["25rem", null, "none"]}
             />
           </Flex>
         </Flex>

@@ -41,7 +41,6 @@ Spor is getting a major update with Chakra 3.
 - `Popover`replaces `ToolTip`. Props are different.
 - `MediaController`isPlaying prop is now playing
 - `Nudge` has different props. `WizardNudge`is no longer its own component, but can be easily built with `Nudge`and `NudgeWizardStep`s
-- `IconButton` has different prop for showing loader. It is now waiting and no longer loading
 
 ### Darkmode
 

@@ -43,7 +43,17 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
   (props, ref) => {
     const { children } = props;
     return (
-      <Group {...props} ref={ref}>
+      <Group
+        {...props}
+        ref={ref}
+        _disabled={{
+          "& > *": {
+            pointerEvents: "none",
+            backgroundColor: "surface.disabled",
+            color: "text.disabled",
+          },
+        }}
+      >
         {children}
       </Group>
     );

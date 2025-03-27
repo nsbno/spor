@@ -3,8 +3,8 @@ import { Box, useSlotRecipe } from "@chakra-ui/react";
 import React, { PropsWithChildren, RefObject, forwardRef, useRef } from "react";
 import { useDateSegment } from "react-aria";
 import { DateFieldState, DateSegment } from "react-stately";
-import { DatePickerVariantProps } from "./DatePicker";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { DatePickerVariantProps } from "..";
 
 type DateTimeSegmentProps = PropsWithChildren<DatePickerVariantProps> & {
   segment: DateSegment;

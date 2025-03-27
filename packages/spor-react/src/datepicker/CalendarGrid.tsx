@@ -8,7 +8,7 @@ import { Language, useTranslation } from "../i18n";
 import { Text } from "../typography";
 import { CalendarCell } from "./CalendarCell";
 import { useCurrentLocale } from "./utils";
-import { ConditionalValue, useSlotRecipe } from "@chakra-ui/react";
+import { Box, useSlotRecipe } from "@chakra-ui/react";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { CalendarVariants } from "./types";
 
@@ -51,7 +51,7 @@ export function CalendarGrid({
   const styles = recipe({ variant });
 
   return (
-    <table {...gridProps}>
+    <Box as="table" {...gridProps} css={styles.box}>
       <thead {...headerProps}>
         <tr>
           {weekDays[language].map((day, index) => {
@@ -89,6 +89,6 @@ export function CalendarGrid({
           </tr>
         ))}
       </tbody>
-    </table>
+    </Box>
   );
 }

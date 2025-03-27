@@ -20,6 +20,8 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     "inputLabel",
     "dateTimeSegment",
     "cell",
+    "box",
+    "rangeCalendarPopover",
   ],
   className: "spor-datepicker",
   base: {
@@ -55,8 +57,12 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         color: "white",
       },
     },
+    box: {
+      width: "100%",
+    },
+
     calendarTriggerButton: {
-      width: 8,
+      borderRadius: "xl",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -79,23 +85,27 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       ...surface("default"),
     },
     calendarPopover: {
-      ...floatingBackground("default"),
       ...coreText("default"),
       ...floatingBorder("default"),
       boxShadow: "md",
+      backgroundColor: "floating.surface",
+    },
+    rangeCalendarPopover: {
+      width: "43rem",
     },
     weekdays: {
-      ...coreText("default"),
+      color: "core.text",
+      fontWeight: "bold",
     },
     weekend: {
-      ...accentText("default"),
+      color: "accent.text",
+      fontWeight: "bold",
     },
     cell: {
       '&[aria-selected="true"] + [aria-selected="true"] > button': {
         "&::before": {
           content: '""',
           display: "block",
-          width: "100%",
           height: "100%",
           position: "absolute",
           left: "-50%",
@@ -107,9 +117,8 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       },
     },
     dateCell: {
-      ...ghostBackground("default"),
       ...coreText("default"),
-      borderRadius: "50%",
+      borderRadius: "xl",
       position: "relative",
       transition: ".1s ease-in-out",
       userSelect: "none",
@@ -142,6 +151,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       },
       "&[data-unavailable]": {
         pointerEvents: "none",
+        borderRadius: "xl",
         ...coreBackground("disabled"),
         ...coreText("disabled"),
       },
@@ -151,11 +161,14 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         wrapper: {
-          ...coreBorder("default"),
-          ...coreBackground("default"),
+          outline: "1px solid",
+          outlineColor: "core.outline",
+          backgroundColor: "core.surface",
 
           _hover: {
-            ...coreBorder("hover"),
+            outline: "2px solid",
+
+            outlineColor: "core.outline.hover",
           },
           _invalid: {
             ...coreBorder("invalid"),
@@ -179,7 +192,8 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       ghost: {
         wrapper: {
           _hover: {
-            ...coreBorder("hover"),
+            outline: "2px solid",
+            outlineColor: "core.outline.hover",
           },
           _invalid: {
             ...coreBorder("invalid"),

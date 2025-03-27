@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, ConditionalValue } from "@chakra-ui/react";
+import { Box, useSlotRecipe } from "@chakra-ui/react";
 import { createCalendar } from "@internationalized/date";
 import React from "react";
 import {
@@ -14,6 +14,7 @@ import { CalendarGrid } from "./CalendarGrid";
 import { CalendarHeader } from "./CalendarHeader";
 import { useCurrentLocale } from "./utils";
 import { CalendarVariants } from "./types";
+import { datePickerSlotRecipe } from "@/theme/slot-recipes/datepicker";
 
 type CalendarProps = ReactAriaCalendarProps<DateValue> &
   CalendarVariants & {
@@ -31,7 +32,11 @@ export function Calendar({
     locale,
     createCalendar,
   });
-
+  const recipe = useSlotRecipe({
+    key: "datePicker",
+    recipe: datePickerSlotRecipe,
+  });
+  const styles = recipe({ variant });
   const { calendarProps } = useCalendar(props, state);
   const calendarAriaLabel = calendarProps["aria-label"];
 
@@ -39,7 +44,7 @@ export function Calendar({
     t(texts.calendar) + (calendarAriaLabel ? ` ${calendarAriaLabel}` : "");
 
   return (
-    <Box {...calendarProps} aria-label={ariaLabel}>
+    <Box {...calendarProps} aria-label={ariaLabel} css={styles.box}>
       <CalendarHeader state={state} showYearNavigation={showYearNavigation} />
       <CalendarGrid variant={variant} state={state} />
     </Box>

@@ -1,5 +1,6 @@
 import { selectAnatomy } from "@chakra-ui/anatomy";
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
 import { baseText } from "../utils/base-utils";
 import { default as Input } from "./input";
 import { inputBaseStyle, inputVariant } from "../utils/input-utils";
@@ -26,6 +27,13 @@ const config = helpers.defineMultiStyleConfig({
           "scale(0.825) translateY(-12px)",
           "scale(0.825) translateY(-14px)",
         ],
+      },
+      "& option, & optgroup": {
+        color: mode("text.default.light", "text.default.dark")(props),
+        backgroundColor: mode(
+          "surface.default.light",
+          "surface.default.dark",
+        )(props),
       },
     },
     field: {

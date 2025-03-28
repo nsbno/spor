@@ -57,6 +57,8 @@ export const SiteHeader = () => {
         zIndex: "sticky",
       }}
       gap={1}
+      width={"100vw"}
+      overflow={"hidden"}
     >
       <Box marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
         <Link to="/" aria-label="Go to the front page">

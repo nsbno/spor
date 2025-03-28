@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.3.9
+
+### Patch Changes
+
+- d05f2af: Fix white text on white background in NativeSelect's options on Windows
+
 ## 11.3.8
 
 ### Patch Changes

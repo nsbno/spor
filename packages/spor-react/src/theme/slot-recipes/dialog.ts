@@ -53,6 +53,9 @@ export const dialogSlotRecipe = defineSlotRecipe({
       },
     },
     header: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
       flex: 0,
       paddingX: "6",
       paddingTop: "6",

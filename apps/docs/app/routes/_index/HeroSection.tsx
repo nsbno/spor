@@ -17,6 +17,8 @@ export function HeroSection() {
       backgroundColor={"surface.tertiary"}
       minHeight="500px"
       className="light"
+      width={"100vw"}
+      overflow={"hidden"}
     >
       <Container maxWidth="container.lg" marginTop={[0, 0, 8]} marginX="auto">
         <Flex

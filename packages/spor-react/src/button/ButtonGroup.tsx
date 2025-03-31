@@ -1,11 +1,28 @@
 "use client";
 
-import { Group, GroupProps } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import {
+  type GroupProps as ChakraGroupProps,
+  Group,
+  type RecipeVariantProps,
+  useRecipe,
+} from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { groupRecipe } from "../theme/recipes/group";
 
-export type ButtonGroupProps = GroupProps & {
-  children: React.ReactNode;
-};
+export type GroupVariantProps = RecipeVariantProps<typeof groupRecipe>;
+
+export type ButtonGroupProps = Exclude<
+  ChakraGroupProps,
+  "grow" | "attached" | "disabled"
+> &
+  PropsWithChildren<GroupVariantProps> & {
+    /* Boolean value for disabled state */
+    disabled?: boolean;
+    /* Attach buttons together */
+    attached?: boolean;
+    /* Make buttons grow to fill the available space */
+    grow?: boolean;
+  };
 /**
  * Used to group or attach buttons together.
  *
@@ -38,21 +55,19 @@ export type ButtonGroupProps = GroupProps & {
  *  <Button variant="secondary">Save</Button>
  * </ButtonGroup>
  */
-
 export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
   (props, ref) => {
-    const { children } = props;
+    const recipe = useRecipe({ recipe: groupRecipe });
+    const styles = recipe({});
+    const { children, disabled, grow, attached, ...rest } = props;
     return (
       <Group
-        {...props}
+        {...rest}
         ref={ref}
-        _disabled={{
-          "& > *": {
-            pointerEvents: "none",
-            backgroundColor: "surface.disabled",
-            color: "text.disabled",
-          },
-        }}
+        css={styles}
+        attached={attached}
+        grow={grow}
+        disabled={disabled}
       >
         {children}
       </Group>

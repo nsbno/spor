@@ -144,7 +144,7 @@
         },
         "disabled": {
           "value": {
-            "_light": "colors.blackAlpha.100",
+            "_light": "colors.blackAlpha.50",
             "_dark": "colors.whiteAlpha.100"
           }
         },

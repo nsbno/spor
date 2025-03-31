@@ -2,6 +2,8 @@ import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { accentBackground, accentText } from "../utils/accent-utils";
 import { defineRecipe } from "../../util";
+import { focusVisibleStyles } from "../utils/focus-utils";
+import tokens from "@vygruppen/spor-design-tokens";
 
 export const pressableCardRecipe = defineRecipe({
   base: {
@@ -14,57 +16,65 @@ export const pressableCardRecipe = defineRecipe({
     cursor: "pointer",
     transitionProperty: "common",
     transitionDuration: "fast",
+    ...focusVisibleStyles(),
 
     _disabled: {
-      ...coreBackground("disabled"),
-      ...coreBorder("disabled"),
-      ...coreText("disabled"),
       outline: "none",
       pointerEvents: "none",
+      background: "surface.disabled",
+      color: "text.disabled",
     },
   },
 
   variants: {
     variant: {
-      core: {
-        cursor: "pointer",
-        ...coreBorder("default"),
+      floating: {
+        boxShadow: "sm",
+
+        backgroundColor: "floating.surface",
         _hover: {
-          ...coreBorder("hover"),
+          boxShadow: "md",
+          backgroundColor: "floating.surface.hover",
+          _active: {
+            boxShadow: "none",
+            backgroundColor: "floating.surface.active",
+          },
+        },
+      },
+      base: {
+        outlineColor: "core.outline",
+        outlineWidth: tokens.size.stroke.sm,
+        outlineStyle: "solid",
+        backgroundColor: "core.surface",
+
+        _hover: {
+          outlineColor: "core.outline.hover",
+          outlineWidth: tokens.size.stroke.md,
+          outlineStyle: "solid",
           _active: {
             backgroundColor: "core.surface.active",
-            ...coreBorder("active"),
+            outlineWidth: tokens.size.stroke.sm,
           },
         },
       },
       accent: {
-        ...accentText("default"),
-        ...accentBackground("default"),
         boxShadow: "sm",
+        boxShadowColor: "surface.disabled",
+        background: "alert.success.surface",
         _hover: {
-          ...accentBackground("hover"),
+          background: "alert.success.surface.hover",
+
           boxShadow: "md",
           _active: {
-            ...accentBackground("active"),
-            boxShadow: "none",
-          },
-        },
-      },
-      floating: {
-        ...floatingBackground("default"),
-        ...floatingBorder("default"),
-        boxShadow: "sm",
-        _hover: {
-          ...floatingBackground("hover"),
-          ...floatingBorder("hover"),
-          boxShadow: "md",
-          _active: {
-            ...floatingBorder("default"),
-            ...floatingBackground("active"),
+            background: "alert.success.surface.active",
+
             boxShadow: "none",
           },
         },
       },
     },
+  },
+  defaultVariants: {
+    variant: "base",
   },
 });

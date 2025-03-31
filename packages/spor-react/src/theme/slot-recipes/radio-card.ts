@@ -3,6 +3,8 @@ import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { outlineBorder } from "../utils/outline-utils";
 import { radioCardAnatomy } from "./anatomy";
+import tokens from "@vygruppen/spor-design-tokens";
+import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const radioCardSlotRecipe = defineSlotRecipe({
   className: "spor-radio-card",
@@ -17,12 +19,12 @@ export const radioCardSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       transitionProperty: "common",
       transitionDuration: "fast",
-
+      ...focusVisibleStyles(),
       _disabled: {
+        outline: "none",
         pointerEvents: "none",
-        ...coreBackground("disabled"),
-        ...coreBorder("disabled"),
-        ...coreText("disabled"),
+        background: "surface.disabled",
+        color: "text.disabled",
       },
     },
     label: {
@@ -34,106 +36,66 @@ export const radioCardSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      core: {
+      base: {
         item: {
-          ...coreText("default"),
-          ...coreBackground("default"),
-          ...coreBorder("default"),
-          _hover: {
-            ...coreBackground("hover"),
-            outline: "2px solid",
-            outlineColor: "core.outline.hover",
-            _active: {
-              backgroundColor: "core.surface.active",
-              ...coreBorder("active"),
-            },
-          },
+          outlineColor: "core.outline",
+          outlineWidth: tokens.size.stroke.sm,
+          outlineStyle: "solid",
+          backgroundColor: "core.surface",
 
-          _checked: {
-            backgroundColor: "core.surface.active",
-            outline: "2px solid",
-            outlineColor: "outline.focus",
-            _hover: {
-              outline: "2px solid",
-              outlineColor: "core.outline.hover",
-              backgroundColor: "core.surface.active",
-            },
+          _hover: {
+            outlineColor: "core.outline.hover",
+            outlineWidth: tokens.size.stroke.md,
+            outlineStyle: "solid",
             _active: {
               backgroundColor: "core.surface.active",
-              ...coreBorder("active"),
-            },
-            _focusVisible: {
-              outline: "4px solid",
-              outlineStyle: "double",
-              ...outlineBorder("focus"),
-              outlineOffset: "-1px",
-            },
-            _disabled: {
-              pointerEvents: "none",
-              ...coreBackground("disabled"),
-              ...coreBorder("disabled"),
-              ...coreText("disabled"),
+              outlineWidth: tokens.size.stroke.sm,
             },
           },
-          _focusVisible: {
-            outline: "2px solid",
-            ...outlineBorder("focus"),
-            outlineOffset: "1px",
-            boxShadow: `inset 0 0 0 1px rgba(0, 0, 0, 0.40)`,
-            _hover: {
-              ...coreBorder("hover"),
-              boxShadow: "none",
-              outlineOffset: "0",
+          _checked: {
+            outlineColor: "outline.focus",
+            outlineWidth: tokens.size.stroke.md,
+            outlineStyle: "solid",
+            backgroundColor: "core.surface.active",
+
+            _focusVisible: {
+              outlineStyle: "double",
+              outlineWidth: `calc(2 * ${tokens.size.stroke.md})`, // space for double outline
             },
           },
         },
       },
       floating: {
         item: {
-          ...floatingBackground("default"),
-          ...floatingBorder("default"),
           boxShadow: "sm",
+          boxShadowColor: "surface.disabled",
+          background: "floating.surface",
           _hover: {
-            ...floatingBackground("hover"),
-            ...floatingBorder("hover"),
+            background: "floating.surface.hover",
+
             boxShadow: "md",
             _active: {
-              ...floatingBackground("active"),
-              ...floatingBorder("active"),
+              background: "floating.surface.active",
+
+              boxShadow: "none",
             },
           },
           _checked: {
-            backgroundColor: "core.surface.active",
-            outline: "2px solid",
             outlineColor: "outline.focus",
-            _hover: {
-              ...floatingBorder("hover"),
-              boxShadow: "md",
-            },
-            _active: {
-              ...floatingBackground("active"),
-              ...floatingBorder("active"),
-            },
+            outlineWidth: tokens.size.stroke.md,
+            outlineStyle: "solid",
+            backgroundColor: "core.surface.active",
+
             _focusVisible: {
-              outline: "4px solid",
               outlineStyle: "double",
-              ...outlineBorder("focus"),
-              outlineOffset: "-1px",
-            },
-          },
-          _focusVisible: {
-            outline: "2px solid",
-            ...outlineBorder("focus"),
-            outlineOffset: "1px",
-            boxShadow: `inset 0 0 0 1px rgba(0, 0, 0, 0.10)`,
-            _hover: {
-              ...floatingBorder("hover"),
-              boxShadow: "md",
-              outlineOffset: "0",
+              outlineWidth: `calc(2 * ${tokens.size.stroke.md})`, // space for double outline
             },
           },
         },
       },
     },
+  },
+  defaultVariants: {
+    variant: "base",
   },
 });

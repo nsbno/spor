@@ -2,27 +2,18 @@
 
 import {
   type GroupProps as ChakraGroupProps,
-  Group,
+  Group as ChakraGroup,
   type RecipeVariantProps,
-  useRecipe,
+  chakra,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { groupRecipe } from "../theme/recipes/group";
 
 export type GroupVariantProps = RecipeVariantProps<typeof groupRecipe>;
 
-export type ButtonGroupProps = Exclude<
-  ChakraGroupProps,
-  "grow" | "attached" | "disabled"
-> &
-  PropsWithChildren<GroupVariantProps> & {
-    /* Boolean value for disabled state */
-    disabled?: boolean;
-    /* Attach buttons together */
-    attached?: boolean;
-    /* Make buttons grow to fill the available space */
-    grow?: boolean;
-  };
+export type ButtonGroupProps = ChakraGroupProps &
+  PropsWithChildren<GroupVariantProps>;
+
 /**
  * Used to group or attach buttons together.
  *
@@ -55,16 +46,17 @@ export type ButtonGroupProps = Exclude<
  *  <Button variant="secondary">Save</Button>
  * </ButtonGroup>
  */
+
+const Group = chakra(ChakraGroup, groupRecipe);
+
 export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
   (props, ref) => {
-    const recipe = useRecipe({ recipe: groupRecipe });
-    const styles = recipe({});
     const { children, disabled, grow, attached, ...rest } = props;
+
     return (
       <Group
         {...rest}
         ref={ref}
-        css={styles}
         attached={attached}
         grow={grow}
         disabled={disabled}

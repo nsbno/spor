@@ -100,6 +100,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         maxWidth={[null, null, null, "breakpoints.lg", "breakpoints.xl"]}
         marginX="auto"
         paddingX={[3, null, 7, 5, 9]}
+        className="dark"
       >
         <SearchInput
           role="button"
@@ -112,7 +113,6 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
           width={[null, null, null, "37.5rem"]}
           readOnly
           label="Search components"
-          className="dark"
           color="white"
         />
       </Flex>

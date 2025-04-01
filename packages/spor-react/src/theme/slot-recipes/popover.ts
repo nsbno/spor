@@ -34,7 +34,6 @@ export const popoverSlotRecipe = defineSlotRecipe({
       color: "text.inverted",
 
       alignItems: "center",
-      minWidth: "20rem",
       borderRadius: "sm",
       zIndex: "inherit",
       maxWidth: "20em",
@@ -43,22 +42,6 @@ export const popoverSlotRecipe = defineSlotRecipe({
       "--arrow-background": "colors.surface.tertiary",
       "--arrow-size": "6px",
     },
-
-
-    closeTrigger: {
-      color: "text.inverted",
-
-      _hover: {
-        backgroundColor: "brand.surface.hover",
-        _disabled: {
-          backgroundColor: "brand.surface.active",
-        },
-        _active: {
-          backgroundColor: "brand.surface.active",
-        },
-      },
-    },
-
   },
   variants: {
     size: {

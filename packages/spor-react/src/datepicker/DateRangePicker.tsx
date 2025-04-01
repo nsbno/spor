@@ -16,7 +16,6 @@ import {
   useDateRangePicker,
 } from "react-aria";
 import { useDateRangePickerState } from "react-stately";
-import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
 import { RangeCalendar } from "./RangeCalendar";
 import { StyledField } from "./StyledField";
@@ -26,6 +25,7 @@ import { Field } from "../input/Field";
 import { DatePickerVariantProps } from "./DatePicker";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { CalendarVariants } from "./types";
+import { CalendarTriggerButton } from "./CalendarTriggerButton";
 
 type DateRangePickerProps = Omit<
   AriaDateRangePickerProps<DateValue>,
@@ -87,14 +87,6 @@ type DateRangePickerProps = Omit<
   const styles = recipe({ variant });
   const locale = useCurrentLocale();
 
-  const handleEnterClick = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !state.isOpen && variant === "core") {
-      // Don't submit the form
-      e.stopPropagation();
-      state.setOpen(true);
-    }
-  };
-
   const onFieldClick = () => {
     state.setOpen(true);
   };
@@ -118,18 +110,17 @@ type DateRangePickerProps = Omit<
           </Box>
         )}
         <ChakraPopover.Root {...dialogProps}>
-          <Field {...groupProps} width="auto" display="inline-flex">
+          <Field width="auto" display="inline-flex">
             <PopoverAnchor>
               <StyledField
                 alignItems="center"
                 paddingX={3}
                 variant={variant}
                 onClick={onFieldClick}
-                onKeyPress={handleEnterClick}
                 minHeight={minHeight}
               >
                 {variant && (
-                  <ChakraPopover.Trigger>
+                  <ChakraPopover.Trigger asChild>
                     <CalendarTriggerButton
                       variant={variant}
                       ref={ref}

@@ -1,13 +1,5 @@
-import { Link } from "@remix-run/react";
 import { DownloadOutline24Icon } from "@vygruppen/spor-icon-react";
-import {
-  Button,
-  ButtonGroup,
-  Heading,
-  Separator,
-  Stack,
-  Text,
-} from "@vygruppen/spor-react";
+import { Button, Heading, Separator, Stack, Text } from "@vygruppen/spor-react";
 import { SearchBar } from "./SearchBar";
 import { SearchFilterProvider } from "./SearchFilterContext";
 import { SearchResults } from "./SearchResults";
@@ -24,17 +16,18 @@ export default function IconsPage() {
         identify and differentiate between different content so that they create
         value for the user.
       </Text>
-      <ButtonGroup>
+      <a href="/resources/icon-library/all-icons.zip" download>
         <Button
-          asChild
           variant="primary"
           size="md"
           leftIcon={<DownloadOutline24Icon />}
         >
-          <Link to="all-icons.zip">Download all icons</Link>
+          Download all icons
         </Button>
-      </ButtonGroup>
+      </a>
+
       <Separator />
+
       <SearchFilterProvider>
         <SearchBar />
         <SearchResults />

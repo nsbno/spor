@@ -20,7 +20,6 @@ import {
   SimpleGrid,
   StaticCard,
   Text,
-  Tooltip,
   useColorMode,
 } from "@vygruppen/spor-react";
 import { useMemo, useState } from "react";

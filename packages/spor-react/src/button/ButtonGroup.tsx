@@ -1,11 +1,19 @@
 "use client";
 
-import { Group, GroupProps } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import {
+  type GroupProps as ChakraGroupProps,
+  Group as ChakraGroup,
+  type RecipeVariantProps,
+  chakra,
+} from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { groupRecipe } from "../theme/recipes/group";
 
-export type ButtonGroupProps = GroupProps & {
-  children: React.ReactNode;
-};
+export type GroupVariantProps = RecipeVariantProps<typeof groupRecipe>;
+
+export type ButtonGroupProps = ChakraGroupProps &
+  PropsWithChildren<GroupVariantProps>;
+
 /**
  * Used to group or attach buttons together.
  *
@@ -39,11 +47,20 @@ export type ButtonGroupProps = GroupProps & {
  * </ButtonGroup>
  */
 
+const Group = chakra(ChakraGroup, groupRecipe);
+
 export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
   (props, ref) => {
-    const { children } = props;
+    const { children, disabled, grow, attached, ...rest } = props;
+
     return (
-      <Group {...props} ref={ref}>
+      <Group
+        {...rest}
+        ref={ref}
+        attached={attached}
+        grow={grow}
+        disabled={disabled}
+      >
         {children}
       </Group>
     );

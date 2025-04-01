@@ -36,7 +36,7 @@ export const radioCardSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      base: {
+      core: {
         item: {
           outlineColor: "core.outline",
           outlineWidth: tokens.size.stroke.sm,
@@ -102,6 +102,6 @@ export const radioCardSlotRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    variant: "base",
+    variant: "core",
   },
 });

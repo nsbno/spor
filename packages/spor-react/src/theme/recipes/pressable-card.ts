@@ -50,7 +50,7 @@ export const pressableCardRecipe = defineRecipe({
           },
         },
       },
-      base: {
+      core: {
         outlineColor: "core.outline",
         outlineWidth: tokens.size.stroke.sm,
         outlineStyle: "solid",
@@ -83,6 +83,6 @@ export const pressableCardRecipe = defineRecipe({
     },
   },
   defaultVariants: {
-    variant: "base",
+    variant: "core",
   },
 });

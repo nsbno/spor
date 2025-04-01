@@ -15,6 +15,7 @@ export const pressableCardRecipe = defineRecipe({
     borderRadius: "md",
     cursor: "pointer",
     transitionProperty: "common",
+
     transitionDuration: "fast",
     ...focusVisibleStyles(),
 
@@ -29,15 +30,23 @@ export const pressableCardRecipe = defineRecipe({
   variants: {
     variant: {
       floating: {
-        boxShadow: "sm",
+        boxShadow: "0px 1px 3px 0px var(--shadow-color)",
+        shadowColor: "surface.disabled",
+
+        border: "sm",
+        borderColor: "floating.outline",
 
         backgroundColor: "floating.surface",
         _hover: {
-          boxShadow: "md",
+          boxShadow: "0px 2px 6px 0px var(--shadow-color)",
           backgroundColor: "floating.surface.hover",
+
+          borderColor: "floating.outline.hover",
+
           _active: {
             boxShadow: "none",
             backgroundColor: "floating.surface.active",
+            borderColor: "floating.outline.active",
           },
         },
       },
@@ -58,16 +67,15 @@ export const pressableCardRecipe = defineRecipe({
         },
       },
       accent: {
-        boxShadow: "sm",
-        boxShadowColor: "surface.disabled",
+        boxShadow: "0px 1px 3px 0px var(--shadow-color)",
+        shadowColor: "surface.disabled",
         background: "alert.success.surface",
         _hover: {
           background: "alert.success.surface.hover",
 
-          boxShadow: "md",
+          boxShadow: "0px 2px 6px 0px var(--shadow-color)",
           _active: {
             background: "alert.success.surface.active",
-
             boxShadow: "none",
           },
         },

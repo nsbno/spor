@@ -62,12 +62,12 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     },
 
     calendarTriggerButton: {
+      position: "relative",
       borderRadius: "xl",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       transitionProperty: "box-shadow, background-color",
-      position: "relative",
       right: "9px",
 
       ...focusVisibleStyles(),

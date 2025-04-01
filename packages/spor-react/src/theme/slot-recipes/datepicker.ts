@@ -1,28 +1,9 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { accentText } from "../utils/accent-utils";
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
-import { brandBackground, brandText } from "../utils/brand-utils";
-import { floatingBorder, floatingBackground } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { ghostBackground } from "../utils/ghost-utils";
-import { surface } from "../utils/surface-utils";
+import { datepickerAnatomy } from "./anatomy";
 
 export const datePickerSlotRecipe = defineSlotRecipe({
-  slots: [
-    "wrapper",
-    "calendarTriggerButton",
-    "arrow",
-    "calendarPopover",
-    "calendar",
-    "weekdays",
-    "weekend",
-    "dateCell",
-    "inputLabel",
-    "dateTimeSegment",
-    "cell",
-    "box",
-    "rangeCalendarPopover",
-  ],
+  slots: datepickerAnatomy.keys(),
   className: "spor-datepicker",
   base: {
     wrapper: {
@@ -38,9 +19,10 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       },
       _disabled: {
         pointerEvents: "none",
-        ...coreBackground("disabled"),
-        ...coreBorder("disabled"),
-        ...coreText("disabled"),
+        backgroundColor: "surface.disabled",
+        outline: "1px solid",
+        outlineColor: "outline.disabled",
+        color: "text.disabled",
       },
       _focusWithin: {
         ...focusVisibleStyles()._focusVisible,
@@ -53,7 +35,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     },
     dateTimeSegment: {
       _focus: {
-        ...brandBackground("hover"),
+        backgroundColor: "brand.surface.hover",
         color: "white",
       },
     },
@@ -68,25 +50,26 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       alignItems: "center",
       justifyContent: "center",
       transitionProperty: "box-shadow, background-color",
-      right: "9px",
-
+      right: "0.5rem",
       ...focusVisibleStyles(),
       _hover: {
-        ...ghostBackground("hover"),
+        backgroundColor: "ghost.surface.hover",
       },
       _active: {
-        ...ghostBackground("active"),
+        backgroundColor: "ghost.surface.active",
       },
       _invalid: {
-        ...coreBorder("invalid"),
+        outline: "2px solid",
+        outlineColor: "outline.error",
       },
     },
     arrow: {
-      ...surface("default"),
+      backgroundColor: "surface",
     },
     calendarPopover: {
-      ...coreText("default"),
-      ...floatingBorder("default"),
+      color: "core.text",
+      outline: "1px solid",
+      outlineColor: "floating.outline",
       boxShadow: "md",
       backgroundColor: "floating.surface",
     },
@@ -112,12 +95,12 @@ export const datePickerSlotRecipe = defineSlotRecipe({
           top: 0,
           bottom: 0,
           zIndex: -1,
-          ...brandBackground("default"),
+          backgroundColor: "brand.surface",
         },
       },
     },
     dateCell: {
-      ...coreText("default"),
+      color: "core.text",
       borderRadius: "xl",
       position: "relative",
       transition: ".1s ease-in-out",
@@ -127,33 +110,34 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       transitionProperty: "common",
 
       _hover: {
-        ...ghostBackground("hover"),
+        backgroundColor: "ghost.surface.hover",
       },
       ...focusVisibleStyles(),
       _active: {
-        ...ghostBackground("active"),
+        backgroundColor: "ghost.surface.active",
       },
       _disabled: {
-        ...coreBackground("disabled"),
-        ...coreText("disabled"),
+        backgroundColor: "surface.disabled",
+        color: "text.disabled",
         pointerEvents: "none",
       },
       _selected: {
-        ...brandBackground("default"),
-        ...brandText("default"),
+        backgroundColor: "brand.surface",
+        color: "brand.text",
         _active: {
-          ...brandBackground("active"),
-          ...brandText("active"),
+          backgroundColor: "brand.surface.active",
+          color: "brand.text",
         },
       },
       "&[data-today]": {
-        ...coreBorder("default"),
+        outline: "1px solid",
+        outlineColor: "core.outline",
       },
       "&[data-unavailable]": {
         pointerEvents: "none",
         borderRadius: "xl",
-        ...coreBackground("disabled"),
-        ...coreText("disabled"),
+        backgroundColor: "surface.disabled",
+        color: "text.disabled",
       },
     },
   },
@@ -171,21 +155,28 @@ export const datePickerSlotRecipe = defineSlotRecipe({
             outlineColor: "core.outline.hover",
           },
           _invalid: {
-            ...coreBorder("invalid"),
+            outline: "2px solid",
+            outlineColor: "outline.error",
           },
         },
       },
       floating: {
         wrapper: {
-          ...floatingBackground("default"),
-          ...floatingBorder("default"),
+          backgroundColor: {
+            _light: "bg",
+            _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
+          },
+          outline: "1px solid",
+          outlineColor: "floating.outline",
           boxShadow: "sm",
 
           _hover: {
-            ...floatingBorder("hover"),
+            outline: "1px solid",
+            outlineColor: "floating.outline.hover",
           },
           _invalid: {
-            ...coreBorder("invalid"),
+            outline: "2px solid",
+            outlineColor: "outline.error",
           },
         },
       },
@@ -196,7 +187,8 @@ export const datePickerSlotRecipe = defineSlotRecipe({
             outlineColor: "core.outline.hover",
           },
           _invalid: {
-            ...coreBorder("invalid"),
+            outline: "2px solid",
+            outlineColor: "outline.error",
           },
         },
       },

@@ -1,13 +1,14 @@
 "use client";
+import { Field } from "@/input/Field";
 import {
   Box,
   BoxProps,
+  Popover as ChakraPopover,
   PopoverAnchor,
   Portal,
   RecipeVariantProps,
   useFieldContext,
   useSlotRecipe,
-  Popover as ChakraPopover,
 } from "@chakra-ui/react";
 import React, {
   PropsWithChildren,
@@ -18,19 +19,18 @@ import React, {
 } from "react";
 import {
   AriaDatePickerProps,
+  DateValue,
   I18nProvider,
   useDatePicker,
-  DateValue,
 } from "react-aria";
 import { useDatePickerState } from "react-stately";
+import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { Calendar } from "./Calendar";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
 import { StyledField } from "./StyledField";
-import { useCurrentLocale } from "./utils";
-import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { CalendarVariants } from "./types";
-import { Field } from "@/input/Field";
+import { useCurrentLocale } from "./utils";
 
 export type DatePickerVariantProps = RecipeVariantProps<
   typeof datePickerSlotRecipe
@@ -139,7 +139,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                   isDisabled={props.isDisabled}
                   ariaLabelledby={labelId}
                 >
-                  <ChakraPopover.Trigger>
+                  <ChakraPopover.Trigger asChild>
                     <CalendarTriggerButton
                       paddingLeft={1}
                       paddingRight={1}

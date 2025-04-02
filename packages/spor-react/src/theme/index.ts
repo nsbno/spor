@@ -15,8 +15,8 @@ import { tokens } from "./tokens";
 import { Brand } from "./brand";
 import { config } from "./tokens/config";
 
-const generateTheme = (brand: Brand) =>
-  defineConfig({
+const generateTheme = (brand: Brand) => {
+  return defineConfig({
     ...config,
     globalCss,
     theme: {
@@ -30,6 +30,55 @@ const generateTheme = (brand: Brand) =>
       animationStyles,
     },
   });
+};
+
+function transformColors<T extends Record<string, any>>(
+  input: T,
+  mode: "light" | "dark" = "light",
+): Record<string, Record<string, string>> {
+  const modeKey = mode === "dark" ? "_dark" : "_light";
+
+  function extractColors(
+    obj: Record<string, any>,
+    prefix = "",
+  ): Record<string, string> {
+    return Object.entries(obj).reduce(
+      (acc: Record<string, string>, [key, value]) => {
+        const newKey = prefix ? `${prefix}.${key}` : key;
+
+        if (value?.value?.[modeKey]) {
+          acc[newKey] = value.value[modeKey].replace("colors.", "");
+        } else if (typeof value === "object" && !Array.isArray(value)) {
+          Object.assign(acc, extractColors(value, newKey));
+        }
+
+        return acc;
+      },
+      {},
+    );
+  }
+
+  return Object.keys(input).reduce(
+    (acc: Record<string, Record<string, string>>, category) => {
+      acc[category] = extractColors(input[category], "");
+      return acc;
+    },
+    {},
+  );
+}
+
+export const getColorTokens = () => {
+  console.log("tokens", tokens);
+
+  console.log("tokens2", semanticTokens[Brand.VyUtvikling].colors);
+
+  console.log(
+    "hier",
+    transformColors(semanticTokens[Brand.VyUtvikling].colors),
+  );
+
+  return [];
+};
 
 export const themes = {
   [Brand.VyDigital]: createSystem(

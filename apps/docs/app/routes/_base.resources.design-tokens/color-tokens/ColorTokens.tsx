@@ -1,220 +1,59 @@
-import tokens from "@vygruppen/spor-design-tokens";
-import {
-  Box,
-  BoxProps,
-  Flex,
-  Stack,
-  Text,
-  useColorModeValue,
-} from "@vygruppen/spor-react";
-import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
+import { Box, BoxProps, Flex, Text, useColorMode } from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "../SharedTokenLayout";
-import { generateColorArray, Palette } from "./utils";
-import { ColorGrid } from "./ColorGrid";
-import { vyDigitalColors } from "../../../../../../packages/spor-react/src/theme/semantic-tokens/colors";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableColumnHeader,
+  TableRow,
+} from "@vygruppen/spor-react";
+
+import tokensJSON from "@vygruppen/spor-design-tokens/dist/tokens.json";
+import { useBrand } from "~/utils/brand";
+
+const useColors = () => {
+  const brand = useBrand();
+  switch (String(brand)) {
+    case "VyDigital":
+      return tokensJSON.color.vyDigital;
+    case "CargoNet":
+      return tokensJSON.color.cargonet;
+    default:
+      return tokensJSON.color.vyDigital;
+  }
+};
 
 export function ColorTokens(props: BoxProps) {
-  const elements = {
-    bg: {
-      title: "Background",
-      values: ["bg.default", "bg.secondary", "bg.tertiary"],
-    },
-    text: {
-      title: "Text",
-      values: [
-        "text",
-        "text.secondary",
-        "text.tertiary",
-        "text.inverted",
-        "text.highlight",
-        "text.disabled",
-      ],
-    },
-    icon: {
-      title: "Icon",
-      values: [
-        "icon",
-        "icon.secondary",
-        "icon.inverted",
-        "icon.highlight",
-        "icon.disabled",
-      ],
-    },
-    outline: {
-      title: "Outline",
-      values: [
-        "outline",
-        "outline.focus",
-        "outline.error",
-        "outline.inverted",
-        "outline.disabled",
-      ],
-    },
-    surface: {
-      title: "Surface",
-      values: [
-        "surface",
-        "surface.secondary",
-        "surface.tertiary",
-        "surface.disabled",
-        "surface.color.neutral",
-        "surface.color.grey",
-        "surface.color.green",
-        "surface.color.blue",
-        "surface.color.cream",
-        "surface.color.yellow",
-        "surface.color.orange",
-        "surface.color.red",
-      ],
-    },
-  };
+  console.log("ColorTokens", tokensJSON);
 
-  const styles = {
-    core: {
-      title: "Core",
-      values: [
-        "core.outline",
-        "core.outline.hover",
-        "core.surface.active",
-        "core.text",
-        "core.icon",
-      ],
-    },
-    brand: {
-      title: "Brand",
-      values: [
-        "brand.surface",
-        "brand.surface.hover",
-        "brand.surface.active",
-        "brand.text",
-        "brand.icon",
-      ],
-    },
-    accent: {
-      title: "Accent",
-      values: [
-        "accent.surface",
-        "accent.surface.hover",
-        "accent.surface.active",
-        "accent.text",
-        "accent.icon",
-        "accent.bg",
-      ],
-    },
-    floating: {
-      title: "Floating",
-      values: [
-        "floating.surface",
-        "floating.surface.hover",
-        "floating.surface.active",
-        "floating.outline",
-        "floating.outline.hover",
-        "floating.text",
-        "floating.icon",
-      ],
-    },
-    ghost: {
-      title: "Ghost",
-      values: [
-        "ghost.surface.hover",
-        "ghost.surface.active",
-        "ghost.text",
-        "ghost.icon",
-      ],
-    },
-    detail: {
-      title: "Detail",
-      values: [
-        "detail.color.neutral",
-        "detail.color.grey",
-        "detail.color.green",
-        "detail.color.blue",
-        "detail.color.cream",
-        "detail.color.yellow",
-        "detail.color.orange",
-        "detail.color.red",
-      ],
-    },
-  };
-
-  const alertStyles = {
-    important: {
-      title: "Important",
-      values: [
-        "alert.important.surface",
-        "alert.important.surface.hover",
-        "alert.important.surface.active",
-        "alert.important.surface.outline",
-        "alert.important.outline.hover",
-      ],
-    },
-    alt: {
-      title: "Alt",
-      values: [
-        "alert.alt.surface",
-        "alert.alt.surface.hover",
-        "alert.alt.surface.active",
-        "alert.alt.surface.outline",
-        "alert.alt.outline.hover",
-      ],
-    },
-    success: {
-      title: "Success",
-      values: [
-        "alert.success.surface",
-        "alert.success.surface.hover",
-        "alert.success.surface.active",
-        "alert.success.surface.outline",
-        "alert.success.outline.hover",
-      ],
-    },
-    error: {
-      title: "Error",
-      values: [
-        "alert.error.surface",
-        "alert.error.surface.hover",
-        "alert.error.surface.active",
-        "alert.error.surface.outline",
-        "alert.error.outline.hover",
-      ],
-    },
-    info: {
-      title: "Info",
-      values: [
-        "alert.info.surface",
-        "alert.info.surface.hover",
-        "alert.info.surface.active",
-        "alert.info.surface.outline",
-        "alert.info.outline.hover",
-      ],
-    },
-    service: {
-      title: "Service",
-      values: [
-        "alert.service.surface",
-        "alert.service.surface.hover",
-        "alert.service.surface.active",
-        "alert.service.surface.outline",
-        "alert.service.outline.hover",
-      ],
-    },
-  };
-
-  const allColors = Object.values(tokens.color.palette as unknown as Palette)
-    .map((scale) => Object.values(scale))
-    .flat()
-    .filter((color) => color.length > 1);
-
-  const alphaColors = allColors.filter(
-    (color) =>
-      color.toLowerCase().includes("rgba(255, 255, 255") ||
-      color.toLowerCase().includes("rgba(0, 0, 0"),
-  );
-
-  const mergedPalette = allColors.filter(
-    (color) =>
-      !color.toLowerCase().includes("rgba(255, 255, 255") &&
-      !color.toLowerCase().includes("rgba(0, 0, 0"),
+  return (
+    <Table size="md">
+      <TableHeader>
+        <TableRow>
+          <TableColumnHeader>Country</TableColumnHeader>
+          <TableColumnHeader>Capital</TableColumnHeader>
+          <TableColumnHeader>Currency</TableColumnHeader>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>Norway</TableCell>
+          <TableCell>Oslo</TableCell>
+          <TableCell>Norwegian krone</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Canada</TableCell>
+          <TableCell>Ottawa</TableCell>
+          <TableCell>Canadian Dollar</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Japan</TableCell>
+          <TableCell>Tokyo</TableCell>
+          <TableCell>Yen</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   );
 
   return (
@@ -231,59 +70,115 @@ export function ColorTokens(props: BoxProps) {
         </Text>
       }
     >
-      <Stack gap={5}>
-        {Object.entries(elements).map(([key, element]) => (
-          <Flex flexDirection="column" gap={2} key={key}>
-            <LinkableHeading as="h3" variant="md" fontWeight="bold">
-              {element.title}
-            </LinkableHeading>
-            <ColorGrid colors={generateColorArray(element.values)} />
-          </Flex>
-        ))}
+      <ColorTable colorKey="bg" name="Background" />
+      <ColorTable colorKey="text" name="Text" />
+      <ColorTable colorKey="icon" name="Icon" />
+      <ColorTable colorKey="outline" name="Outline" />
+      <ColorTable colorKey="surface" name="Surface" />
 
-        <LinkableHeading as="h2" variant="xl-display" mt={3}>
-          Styles
-        </LinkableHeading>
-        {Object.entries(styles).map(([key, element]) => (
-          <Flex flexDirection="column" gap={2} key={key}>
-            <LinkableHeading as="h3" variant="md" fontWeight="bold">
-              {element.title}
-            </LinkableHeading>
-            <ColorGrid colors={generateColorArray(element.values)} />
-          </Flex>
-        ))}
+      <h2>Sttyles</h2>
 
-        <LinkableHeading as="h2" variant="xl-display" mt={3}>
-          Alerts
-        </LinkableHeading>
-        {Object.entries(alertStyles).map(([key, element]) => (
-          <Flex flexDirection="column" gap={2} key={key}>
-            <LinkableHeading as="h3" variant="md" fontWeight="bold">
-              {element.title}
-            </LinkableHeading>
-            <ColorGrid colors={generateColorArray(element.values)} />
-          </Flex>
-        ))}
-
-        <Flex flexDirection="column" gap={3} mt={3}>
-          <LinkableHeading as="h2" variant="xl-display">
-            Complete palette
-          </LinkableHeading>
-          <ColorGrid
-            isVertical={false}
-            colors={generateColorArray(mergedPalette)}
-          />
-        </Flex>
-        <Flex flexDirection="column" gap={3} mt={3}>
-          <LinkableHeading as="h2" variant="xl-display">
-            Alpha colors
-          </LinkableHeading>
-          <ColorGrid
-            isVertical={false}
-            colors={generateColorArray(alphaColors)}
-          />
-        </Flex>
-      </Stack>
+      <ColorTable colorKey="core" name="Core" />
+      <ColorTable colorKey="brand" name="Brand" />
+      <ColorTable colorKey="accent" name="Accent" />
+      <ColorTable colorKey="floating" name="Floating" />
+      <ColorTable colorKey="ghost" name="Ghost" />
     </SharedTokenLayout>
   );
 }
+
+interface ColorTableProps {
+  colorKey: keyof typeof tokensJSON.color.vyDigital;
+  name: string;
+}
+
+interface FlattenedColor {
+  name: string;
+  value: string;
+}
+
+const flattenColors = (
+  obj: Record<string, any>,
+  colorMode: any,
+  path: string[] = [],
+): FlattenedColor[] => {
+  return Object.entries(obj).reduce<FlattenedColor[]>((acc, [key, value]) => {
+    if (typeof value === "object" && value !== null) {
+      return [...acc, ...flattenColors(value, colorMode, [...path, key])];
+    }
+    if (key === `_${colorMode}`) {
+      return [
+        ...acc,
+        {
+          name: `${""}${path.join(".")}`,
+          value: value.replace("colors.", ""),
+        },
+      ];
+    }
+    return acc;
+  }, []);
+};
+
+const ColorTable: React.FC<ColorTableProps> = ({ name, colorKey }) => {
+  const { colorMode } = useColorMode();
+
+  const colors = useColors();
+
+  const color = colors[colorKey];
+
+  const aliases = tokensJSON.color.alias;
+
+  console.log(aliases);
+
+  const colorList = flattenColors(color, colorMode);
+
+  return (
+    <Box p={4}>
+      <Text as="h2" fontSize="xl" fontWeight="bold" mb={2}>
+        {name}
+      </Text>
+      <Table size="md">
+        <TableHeader>
+          <TableRow>
+            <TableColumnHeader>{name}</TableColumnHeader>
+            <TableColumnHeader>Alias</TableColumnHeader>
+            <TableColumnHeader>Value</TableColumnHeader>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {colorList.map(({ name, value }) => {
+            const alias = aliases[value as keyof typeof aliases]
+              ?.replace("colors.", "")
+              .split(".")
+              .join(" ");
+
+            const unCamelCasedValue = value
+              .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+              .replace(/\b\w/g, (char) => char.toUpperCase())
+              .replace(/\B\w/g, (char) => char.toLowerCase());
+
+            return (
+              <TableRow key={name}>
+                <TableCell>
+                  <Flex gap="2">
+                    <Box
+                      bg={value}
+                      width={6}
+                      height={6}
+                      border="1px solid black"
+                    ></Box>
+                    {name}
+                  </Flex>
+                </TableCell>
+                <TableCell>{alias ? unCamelCasedValue : null}</TableCell>
+                <TableCell>{alias ?? unCamelCasedValue}</TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </Box>
+  );
+};
+
+export default ColorTable;

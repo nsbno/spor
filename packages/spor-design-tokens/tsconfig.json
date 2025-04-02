@@ -1,5 +1,5 @@
 {
-  "extends": "@vygruppen/tsconfig/base.json",
+  "extends": "@vygruppen/tsconfig/react-library.json",
   "include": ["."],
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {

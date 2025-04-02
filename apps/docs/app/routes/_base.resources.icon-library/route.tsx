@@ -4,6 +4,16 @@ import { SearchBar } from "./SearchBar";
 import { SearchFilterProvider } from "./SearchFilterContext";
 import { SearchResults } from "./SearchResults";
 
+const downloadAllIcons = async () => {
+  const response = await fetch("/resources/icon-library/all-icons.zip");
+  const blob = await response.blob();
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "/resources/icon-library/all-icons.zip";
+  a.click();
+};
+
 export default function IconsPage() {
   return (
     <Stack gap={4}>
@@ -16,15 +26,14 @@ export default function IconsPage() {
         identify and differentiate between different content so that they create
         value for the user.
       </Text>
-      <a href="/resources/icon-library/all-icons.zip" download>
-        <Button
-          variant="primary"
-          size="md"
-          leftIcon={<DownloadOutline24Icon />}
-        >
-          Download all icons
-        </Button>
-      </a>
+      <Button
+        variant="primary"
+        size="md"
+        leftIcon={<DownloadOutline24Icon />}
+        onClick={() => downloadAllIcons()}
+      >
+        Download all icons
+      </Button>
 
       <Separator />
 

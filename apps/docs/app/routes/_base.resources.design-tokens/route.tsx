@@ -14,6 +14,7 @@ import {
 import { AnimationTokens } from "~/routes/_base.resources.design-tokens/AnimationTokens";
 import { BreakpointTokens } from "./BreakpointTokens";
 import { ColorTokens } from "./color-tokens/ColorTokens";
+
 import { OutlineTokens } from "./OutlineTokens";
 import { RoundingTokens } from "./RoundingTokens";
 import { ShadowTokens } from "./ShadowTokens";
@@ -61,6 +62,7 @@ export default function DesignTokensPage() {
           and more.
         </Text>
       </Stack>
+
       <HStack gap={5} mt={5}>
         <Stack>
           <Heading as="h2" variant="md" fontWeight="bold">

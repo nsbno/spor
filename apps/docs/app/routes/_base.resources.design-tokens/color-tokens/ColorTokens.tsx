@@ -28,35 +28,6 @@ export function ColorTokens(props: BoxProps) {
   console.log("ColorTokens", tokensJSON);
 
   return (
-    <Table size="md">
-      <TableHeader>
-        <TableRow>
-          <TableColumnHeader>Country</TableColumnHeader>
-          <TableColumnHeader>Capital</TableColumnHeader>
-          <TableColumnHeader>Currency</TableColumnHeader>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <TableRow>
-          <TableCell>Norway</TableCell>
-          <TableCell>Oslo</TableCell>
-          <TableCell>Norwegian krone</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell>Canada</TableCell>
-          <TableCell>Ottawa</TableCell>
-          <TableCell>Canadian Dollar</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell>Japan</TableCell>
-          <TableCell>Tokyo</TableCell>
-          <TableCell>Yen</TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
-  );
-
-  return (
     <SharedTokenLayout
       {...props}
       title="Elements"
@@ -124,6 +95,8 @@ const ColorTable: React.FC<ColorTableProps> = ({ name, colorKey }) => {
 
   const colors = useColors();
 
+  console.log("asd", colors);
+
   const color = colors[colorKey];
 
   const aliases = tokensJSON.color.alias;
@@ -131,6 +104,10 @@ const ColorTable: React.FC<ColorTableProps> = ({ name, colorKey }) => {
   console.log(aliases);
 
   const colorList = flattenColors(color, colorMode);
+
+  return "hei";
+
+  return <Table size="md">asdasd</Table>;
 
   return (
     <Box p={4}>

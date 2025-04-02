@@ -8,6 +8,7 @@ import {
   TableBody,
   TableCell,
   TableColumnHeader,
+  TableHeader,
   TableRow,
   Text,
 } from "@vygruppen/spor-react";
@@ -126,19 +127,20 @@ const TypographyTokenTable = ({
   ...props
 }: TypographyTokenTableProps) => {
   const tokenFormatter = useTokenFormatter();
+
   return (
     <Box {...props}>
       <LinkableHeading as="h2" variant="sm" fontWeight="bold" marginBottom={2}>
         {title}
       </LinkableHeading>
-      <Table variant="line" colorScheme="grey">
-        <TableColumnHeader>
+      <Table variant="core" colorScheme="grey">
+        <TableHeader>
           <TableRow>
             <TableColumnHeader>Example</TableColumnHeader>
             <TableColumnHeader>Value</TableColumnHeader>
             <TableColumnHeader>Code</TableColumnHeader>
           </TableRow>
-        </TableColumnHeader>
+        </TableHeader>
         <TableBody>
           {typographyTokens.map((token) => (
             <Fragment key={token.name}>

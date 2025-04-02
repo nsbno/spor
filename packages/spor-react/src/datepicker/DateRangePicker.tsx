@@ -131,6 +131,7 @@ type DateRangePickerProps = Omit<
                     />
                   </ChakraPopover.Trigger>
                 )}
+
                 <DateField
                   {...startFieldProps}
                   name={startName}
@@ -145,6 +146,7 @@ type DateRangePickerProps = Omit<
                 >
                   –
                 </Box>
+
                 <DateField
                   {...endFieldProps}
                   name={endName}

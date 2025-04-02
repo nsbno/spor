@@ -1,7 +1,7 @@
 "use client";
 import { Global } from "@emotion/react";
 import React from "react";
-import { getColorTokens, Language, LanguageProvider, system, themes } from "..";
+import { Language, LanguageProvider, system, themes } from "..";
 
 import { Toaster } from "../toast/toast";
 
@@ -56,8 +56,6 @@ export const SporProvider = ({
   brand = Brand.VyDigital,
   children,
 }: SporProviderProps) => {
-  getColorTokens();
-
   return (
     <LanguageProvider language={language}>
       <ChakraProvider value={themes[brand] ?? system}>

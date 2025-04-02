@@ -67,19 +67,6 @@ function transformColors<T extends Record<string, any>>(
   );
 }
 
-export const getColorTokens = () => {
-  console.log("tokens", tokens);
-
-  console.log("tokens2", semanticTokens[Brand.VyUtvikling].colors);
-
-  console.log(
-    "hier",
-    transformColors(semanticTokens[Brand.VyUtvikling].colors),
-  );
-
-  return [];
-};
-
 export const themes = {
   [Brand.VyDigital]: createSystem(
     defaultBaseConfig,

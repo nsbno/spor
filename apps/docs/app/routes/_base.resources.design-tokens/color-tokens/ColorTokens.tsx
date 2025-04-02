@@ -1,19 +1,26 @@
-import { Box, BoxProps, Flex, Text, useColorMode } from "@vygruppen/spor-react";
+import { BoxProps, Stack, Text } from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "../SharedTokenLayout";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHeader,
-  TableColumnHeader,
-  TableRow,
-} from "@vygruppen/spor-react";
 
 import tokensJSON from "@vygruppen/spor-design-tokens/dist/tokens.json";
 import { useBrand } from "~/utils/brand";
+import { useEffect, useState } from "react";
+import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
+import ColorTable from "./ColorTable";
+import { PaletteTable } from "./PaletteTable";
 
-const useColors = () => {
+export const useColors = () => {
   const brand = useBrand();
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   switch (String(brand)) {
     case "VyDigital":
       return tokensJSON.color.vyDigital;
@@ -25,8 +32,6 @@ const useColors = () => {
 };
 
 export function ColorTokens(props: BoxProps) {
-  console.log("ColorTokens", tokensJSON);
-
   return (
     <SharedTokenLayout
       {...props}
@@ -41,121 +46,29 @@ export function ColorTokens(props: BoxProps) {
         </Text>
       }
     >
-      <ColorTable colorKey="bg" name="Background" />
-      <ColorTable colorKey="text" name="Text" />
-      <ColorTable colorKey="icon" name="Icon" />
-      <ColorTable colorKey="outline" name="Outline" />
-      <ColorTable colorKey="surface" name="Surface" />
+      <Stack gap="6">
+        <ColorTable colorKey="bg" name="Background" />
+        <ColorTable colorKey="text" name="Text" />
+        <ColorTable colorKey="icon" name="Icon" />
+        <ColorTable colorKey="outline" name="Outline" />
+        <ColorTable colorKey="surface" name="Surface" />
 
-      <h2>Sttyles</h2>
+        <LinkableHeading as="h2" variant="xl-display" marginBottom={2}>
+          Styles
+        </LinkableHeading>
 
-      <ColorTable colorKey="core" name="Core" />
-      <ColorTable colorKey="brand" name="Brand" />
-      <ColorTable colorKey="accent" name="Accent" />
-      <ColorTable colorKey="floating" name="Floating" />
-      <ColorTable colorKey="ghost" name="Ghost" />
+        <ColorTable colorKey="core" name="Core" />
+        <ColorTable colorKey="brand" name="Brand" />
+        <ColorTable colorKey="accent" name="Accent" />
+        <ColorTable colorKey="floating" name="Floating" />
+        <ColorTable colorKey="ghost" name="Ghost" />
+
+        <LinkableHeading as="h2" variant="xl-display" marginBottom={2}>
+          Pallette
+        </LinkableHeading>
+
+        <PaletteTable />
+      </Stack>
     </SharedTokenLayout>
   );
 }
-
-interface ColorTableProps {
-  colorKey: keyof typeof tokensJSON.color.vyDigital;
-  name: string;
-}
-
-interface FlattenedColor {
-  name: string;
-  value: string;
-}
-
-const flattenColors = (
-  obj: Record<string, any>,
-  colorMode: any,
-  path: string[] = [],
-): FlattenedColor[] => {
-  return Object.entries(obj).reduce<FlattenedColor[]>((acc, [key, value]) => {
-    if (typeof value === "object" && value !== null) {
-      return [...acc, ...flattenColors(value, colorMode, [...path, key])];
-    }
-    if (key === `_${colorMode}`) {
-      return [
-        ...acc,
-        {
-          name: `${""}${path.join(".")}`,
-          value: value.replace("colors.", ""),
-        },
-      ];
-    }
-    return acc;
-  }, []);
-};
-
-const ColorTable: React.FC<ColorTableProps> = ({ name, colorKey }) => {
-  const { colorMode } = useColorMode();
-
-  const colors = useColors();
-
-  console.log("asd", colors);
-
-  const color = colors[colorKey];
-
-  const aliases = tokensJSON.color.alias;
-
-  console.log(aliases);
-
-  const colorList = flattenColors(color, colorMode);
-
-  return "hei";
-
-  return <Table size="md">asdasd</Table>;
-
-  return (
-    <Box p={4}>
-      <Text as="h2" fontSize="xl" fontWeight="bold" mb={2}>
-        {name}
-      </Text>
-      <Table size="md">
-        <TableHeader>
-          <TableRow>
-            <TableColumnHeader>{name}</TableColumnHeader>
-            <TableColumnHeader>Alias</TableColumnHeader>
-            <TableColumnHeader>Value</TableColumnHeader>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {colorList.map(({ name, value }) => {
-            const alias = aliases[value as keyof typeof aliases]
-              ?.replace("colors.", "")
-              .split(".")
-              .join(" ");
-
-            const unCamelCasedValue = value
-              .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
-              .replace(/\b\w/g, (char) => char.toUpperCase())
-              .replace(/\B\w/g, (char) => char.toLowerCase());
-
-            return (
-              <TableRow key={name}>
-                <TableCell>
-                  <Flex gap="2">
-                    <Box
-                      bg={value}
-                      width={6}
-                      height={6}
-                      border="1px solid black"
-                    ></Box>
-                    {name}
-                  </Flex>
-                </TableCell>
-                <TableCell>{alias ? unCamelCasedValue : null}</TableCell>
-                <TableCell>{alias ?? unCamelCasedValue}</TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
-    </Box>
-  );
-};
-
-export default ColorTable;

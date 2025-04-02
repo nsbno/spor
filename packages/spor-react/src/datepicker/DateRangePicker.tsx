@@ -14,6 +14,7 @@ import {
   AriaDateRangePickerProps,
   I18nProvider,
   useDateRangePicker,
+  useId,
 } from "react-aria";
 import { useDateRangePickerState } from "react-stately";
 import { DateField } from "./DateField";
@@ -70,6 +71,9 @@ type DateRangePickerProps = Omit<
     validationState: fieldContextPRops?.invalid ? "invalid" : "valid",
   });
   const ref = useRef(null);
+  const uniqueId = useId();
+  const datePickerId = `date-range-picker-${uniqueId}`;
+
   const {
     groupProps,
     labelProps,
@@ -105,12 +109,12 @@ type DateRangePickerProps = Omit<
     <I18nProvider locale={locale}>
       <Box position="relative" display="inline-flex" flexDirection="column">
         {props.label && (
-          <Box as="label" {...labelProps} css={styles.inputLabel}>
+          <label {...labelProps} htmlFor={datePickerId}>
             {props.label}
-          </Box>
+          </label>
         )}
         <ChakraPopover.Root {...dialogProps}>
-          <Field width="auto" display="inline-flex">
+          <Field width="auto" display="inline-flex" id={datePickerId}>
             <PopoverAnchor>
               <StyledField
                 alignItems="center"

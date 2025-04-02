@@ -75,7 +75,6 @@ type DateRangePickerProps = Omit<
   const datePickerId = `date-range-picker-${uniqueId}`;
 
   const {
-    groupProps,
     labelProps,
     startFieldProps,
     endFieldProps,

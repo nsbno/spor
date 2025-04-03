@@ -214,8 +214,14 @@ export default function IllustrationLibraryPage() {
                 download={`${slugify(illustration.title)}.svg`}
                 href={
                   colorMode === "light"
-                    ? illustration.imageLightBackground
-                    : illustration.imageDarkBackground
+                    ? urlBuilder
+                        .image(illustration.imageLightBackground)
+                        .forceDownload(`${slugify(illustration.title)}.svg`)
+                        .url()
+                    : urlBuilder
+                        .image(illustration.imageDarkBackground)
+                        .forceDownload(`${slugify(illustration.title)}.svg`)
+                        .url()
                 }
                 aria-label="Download SVG"
                 title="Download SVG"

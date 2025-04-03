@@ -30,14 +30,14 @@ const ZIndexTokensTable = () => {
       <Table colorPalette="white">
         <TableHeader>
           <TableRow>
-            <TableColumnHeader>Variable</TableColumnHeader>
+            <TableColumnHeader>Token</TableColumnHeader>
             <TableColumnHeader>Value</TableColumnHeader>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {zIndexTokens.map(([variable, value]) => (
-            <TableRow key={variable}>
-              <TableCell>{variable}</TableCell>
+          {zIndexTokens.map(([token, value]) => (
+            <TableRow key={token}>
+              <TableCell>{token}</TableCell>
               <TableCell>{value}</TableCell>
             </TableRow>
           ))}

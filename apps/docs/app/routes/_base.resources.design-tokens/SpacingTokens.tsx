@@ -49,24 +49,24 @@ const SpacingTokensTable = () => {
           <TableRow>
             <TableColumnHeader>Example</TableColumnHeader>
 
-            <TableColumnHeader>Variable</TableColumnHeader>
+            <TableColumnHeader>Token</TableColumnHeader>
             <TableColumnHeader>Value</TableColumnHeader>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {spacingTokens.map(([name, token]) => (
-            <Fragment key={name}>
+          {spacingTokens.map(([token, variable]) => (
+            <Fragment key={token}>
               <TableRow>
                 <TableCell>
                   <Box
-                    width={token as string}
-                    height={token as string}
+                    width={variable as string}
+                    height={variable as string}
                     backgroundColor={"surface.tertiary"}
                   />
                 </TableCell>
-                <TableCell>{name}</TableCell>
+                <TableCell>{token}</TableCell>
                 <TableCell>
-                  {remToPx(token)} / {token}
+                  {remToPx(variable)} / {variable}
                 </TableCell>
               </TableRow>
             </Fragment>

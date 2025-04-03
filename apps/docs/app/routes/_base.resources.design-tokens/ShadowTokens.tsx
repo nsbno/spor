@@ -45,22 +45,17 @@ const ShadowTokensTable = () => {
         <TableHeader>
           <TableRow>
             <TableColumnHeader>Example</TableColumnHeader>
-            <TableColumnHeader>Variable</TableColumnHeader>
+            <TableColumnHeader>Token</TableColumnHeader>
             <TableColumnHeader>Value</TableColumnHeader>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {shadowTokens.map(([variable, value]: any) => (
-            <TableRow key={variable}>
+          {shadowTokens.map(([token, value]: any) => (
+            <TableRow key={token}>
               <TableCell>
-                <Box
-                  width={8}
-                  height={8}
-                  boxShadow={variable}
-                  borderRadius="xs"
-                />
+                <Box width={8} height={8} boxShadow={token} borderRadius="xs" />
               </TableCell>
-              <TableCell>{variable}</TableCell>
+              <TableCell>{token}</TableCell>
               <TableCell>
                 <Code>{value}</Code>
               </TableCell>

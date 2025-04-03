@@ -65,21 +65,21 @@ const TypographyTokenTable = ({
       <Table colorPalette="white">
         <TableHeader>
           <TableRow>
-            <TableColumnHeader>Variable</TableColumnHeader>
+            <TableColumnHeader>Token</TableColumnHeader>
             <TableColumnHeader>Value</TableColumnHeader>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {fontTokensList.map(([variable, token]) => (
-            <Fragment key={variable}>
+          {fontTokensList.map(([token, value]) => (
+            <Fragment key={token}>
               <TableRow>
                 <TableCell>
-                  <Text variant={variable}>{variable}</Text>
+                  <Text variant={token}>{token}</Text>
                 </TableCell>
 
                 <TableCell>
-                  {remToPx(token["font-size"][viewportSize])} /{" "}
-                  {token["font-size"][viewportSize]}
+                  {remToPx(value["font-size"][viewportSize])} /{" "}
+                  {value["font-size"][viewportSize]}
                 </TableCell>
               </TableRow>
             </Fragment>

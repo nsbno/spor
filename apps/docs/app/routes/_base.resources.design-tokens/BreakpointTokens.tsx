@@ -27,14 +27,14 @@ const BreakpointTokensTable = () => {
       <Table colorPalette="white">
         <TableHeader>
           <TableRow>
-            <TableColumnHeader>Variable</TableColumnHeader>
+            <TableColumnHeader>Token</TableColumnHeader>
             <TableColumnHeader>Value</TableColumnHeader>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {breakpointTokens.map(([variable, value]): any => (
-            <TableRow key={variable}>
-              <TableCell>{variable}</TableCell>
+          {breakpointTokens.map(([token, value]): any => (
+            <TableRow key={token}>
+              <TableCell>{token}</TableCell>
 
               <TableCell>
                 {remToPx(value)} / {value}

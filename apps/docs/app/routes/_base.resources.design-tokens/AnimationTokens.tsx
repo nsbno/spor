@@ -43,13 +43,13 @@ const AnimationTokensTable = () => {
         <TableHeader>
           <TableRow>
             <TableColumnHeader>Example</TableColumnHeader>
-            <TableColumnHeader>Variable</TableColumnHeader>
+            <TableColumnHeader>Token</TableColumnHeader>
             <TableColumnHeader>Value</TableColumnHeader>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {animationTokens.map(([variable, value]: any) => (
-            <TableRow key={variable}>
+          {animationTokens.map(([token, value]: any) => (
+            <TableRow key={token}>
               <TableCell>
                 <Box
                   width="8"
@@ -64,7 +64,7 @@ const AnimationTokensTable = () => {
                   }}
                 />
               </TableCell>
-              <TableCell>{variable}</TableCell>
+              <TableCell>{token}</TableCell>
               <TableCell>
                 <Box>
                   <Code>{value}</Code>

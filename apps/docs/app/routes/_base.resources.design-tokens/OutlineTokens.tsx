@@ -29,28 +29,26 @@ const OutlineTokensTable = () => {
         <TableHeader>
           <TableRow>
             <TableColumnHeader>Example</TableColumnHeader>
-            <TableColumnHeader>Variable</TableColumnHeader>
+            <TableColumnHeader>Token</TableColumnHeader>
             <TableColumnHeader>Value</TableColumnHeader>
           </TableRow>
         </TableHeader>
         <TableBody>
           {["", "dashed"].map((variant) =>
-            outlineTokens.map(([variable, value]) => {
-              const variableWithVariant = variant
-                ? variable + `-${variant}`
-                : variable;
+            outlineTokens.map(([token, value]) => {
+              const tokenWithVariant = variant ? token + `-${variant}` : token;
 
               return (
-                <TableRow key={variableWithVariant}>
+                <TableRow key={tokenWithVariant}>
                   <TableCell>
                     <Box
                       height={8}
                       width={8}
                       borderRadius="xs"
-                      border={variableWithVariant}
+                      border={tokenWithVariant}
                     />
                   </TableCell>
-                  <TableCell>{variableWithVariant}</TableCell>
+                  <TableCell>{tokenWithVariant}</TableCell>
                   <TableCell>{`${value} ${variant} (${remToPx(value)})`}</TableCell>
                 </TableRow>
               );

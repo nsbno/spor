@@ -48,25 +48,25 @@ const RoundingTokensTable = () => {
         <TableHeader>
           <TableRow>
             <TableColumnHeader>Example</TableColumnHeader>
-            <TableColumnHeader>Variable</TableColumnHeader>
+            <TableColumnHeader>Token</TableColumnHeader>
             <TableColumnHeader>Value</TableColumnHeader>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {roundingTokens.map(([variable, value]) => (
-            <TableRow key={variable}>
+          {roundingTokens.map(([token, value]) => (
+            <TableRow key={token}>
               <TableCell>
                 <Box
                   width="150px"
                   height="72px"
-                  borderRadius={variable}
+                  borderRadius={token}
                   border="md"
                   backgroundColor="mint"
                   borderColor="greenHaze"
                 />
               </TableCell>
 
-              <TableCell>{variable}</TableCell>
+              <TableCell>{token}</TableCell>
 
               <TableCell>
                 {remToPx(value)} / {value}

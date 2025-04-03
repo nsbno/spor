@@ -15,8 +15,11 @@ import {
   IconButton,
   Image,
   NativeSelect,
-  NudgeWizardStep,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
   SearchInput,
+  Separator,
   SimpleGrid,
   slugify,
   StaticCard,
@@ -27,6 +30,7 @@ import { useMemo, useState } from "react";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { useBrand } from "~/utils/brand";
 import { getClient } from "~/utils/sanity/client";
+import { urlBuilder } from "~/utils/sanity/utils";
 
 type SanityResponse = {
   illustrations: {
@@ -122,6 +126,11 @@ export default function IllustrationLibraryPage() {
           <PortableText value={article.introduction} />
         </Box>
       )}
+      {article.content && (
+        <Box marginBottom={4}>
+          <PortableText value={article.content} />
+        </Box>
+      )}
       <Button
         variant="primary"
         size="lg"
@@ -133,6 +142,7 @@ export default function IllustrationLibraryPage() {
       >
         Download all illustrations
       </Button>
+      <Separator marginY={4} />
       <Flex marginBottom={5} gap={2}>
         <Box flex={1}>
           <SearchInput
@@ -164,40 +174,38 @@ export default function IllustrationLibraryPage() {
             padding={2}
             border="1px solid"
             borderColor="silver"
+            position={"relative"}
           >
             <Flex flexDirection="column" height="100%">
-              <Flex gap={1} alignItems="center">
+              <Flex gap={1} alignItems="center" flexDirection={"column"}>
                 <Text variant="sm">{illustration.title}</Text>
-                <NudgeWizardStep content={illustration.description}>
-                  <InformationOutline18Icon aria-label="Informasjon" />
-                </NudgeWizardStep>
+                <Popover>
+                  <PopoverTrigger>
+                    <InformationOutline18Icon aria-label="Informasjon" />
+                  </PopoverTrigger>
+                  <PopoverContent>{illustration.description}</PopoverContent>
+                </Popover>
                 <Image
                   src={
                     colorMode === "light"
-                      ? illustration.imageLightBackground.url
-                      : illustration.imageDarkBackground.url
+                      ? urlBuilder
+                          .image(illustration.imageLightBackground)
+                          .url() || ""
+                      : urlBuilder
+                          .image(illustration.imageDarkBackground)
+                          .url() || ""
                   }
                   alt={illustration.description}
                   width="100%"
-                  objectFit="contain"
-                  objectPosition="center"
-                  flex={1}
-                />
-                <Image
-                  src={
-                    colorMode === "light"
-                      ? illustration.imageLightBackground
-                      : illustration.imageDarkBackground
-                  }
-                  alt={illustration.description}
-                  width="100%"
+                  minHeight={12}
+                  maxHeight={15}
                   objectFit="contain"
                   objectPosition="center"
                   flex={1}
                 />
               </Flex>
             </Flex>
-            <Flex justifyContent="flex-end">
+            <Box position={"absolute"} bottom="0" right="0">
               <IconButton
                 variant="ghost"
                 size="sm"
@@ -212,17 +220,10 @@ export default function IllustrationLibraryPage() {
                 aria-label="Download SVG"
                 title="Download SVG"
               />
-            </Flex>
+            </Box>
           </StaticCard>
         ))}
       </SimpleGrid>
-      {/* 
-      
-    
-              
-              
-              
-          */}
     </Box>
   );
 }

@@ -12,7 +12,7 @@ export const esModuleFormatter: Format = {
     return `export default ${JSON.stringify(
       simplifyTokens(dictionary.tokens),
       null,
-      2
+      2,
     )}`;
   },
 };

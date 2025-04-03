@@ -10,7 +10,7 @@ export const cjsModuleFormatter: Format = {
     return `module.exports = ${JSON.stringify(
       simplifyTokens(dictionary.tokens),
       null,
-      2
+      2,
     )}`;
   },
 };

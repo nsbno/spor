@@ -1,4 +1,8 @@
 export const remToPx = (remValue: string) => {
   const rem = parseFloat(remValue.replace("rem", ""));
-  return `${rem * 16}px`;
+  const rootFontSize = parseFloat(
+    getComputedStyle(document.documentElement).fontSize,
+  );
+
+  return `${rem * rootFontSize}px`;
 };

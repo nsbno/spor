@@ -1,35 +1,9 @@
 import { BoxProps, Stack, Text } from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "../SharedTokenLayout";
 
-import tokensJSON from "@vygruppen/spor-design-tokens/dist/tokens.json";
-import { useBrand } from "~/utils/brand";
-import { useEffect, useState } from "react";
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
-import ColorTable from "./ColorTable";
 import { PaletteTable } from "./PaletteTable";
-
-export const useColors = () => {
-  const brand = useBrand();
-
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
-  switch (String(brand)) {
-    case "VyDigital":
-      return tokensJSON.color.vyDigital;
-    case "CargoNet":
-      return tokensJSON.color.cargonet;
-    default:
-      return tokensJSON.color.vyDigital;
-  }
-};
+import { ColorTable } from "./ColorTable";
 
 export function ColorTokens(props: BoxProps) {
   return (
@@ -67,7 +41,14 @@ export function ColorTokens(props: BoxProps) {
           Pallette
         </LinkableHeading>
 
-        <PaletteTable />
+        <PaletteTable colorKey="grey" />
+        <PaletteTable colorKey="green" />
+        <PaletteTable colorKey="blue" />
+        <PaletteTable colorKey="yellow" />
+        <PaletteTable colorKey="orange" />
+        <PaletteTable colorKey="red" />
+        <PaletteTable colorKey="white" />
+        <PaletteTable colorKey="black" />
       </Stack>
     </SharedTokenLayout>
   );

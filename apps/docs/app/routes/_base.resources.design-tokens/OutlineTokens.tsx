@@ -1,101 +1,61 @@
 import {
   Box,
-  BoxProps,
-  Code,
-  Stack,
   Table,
   TableBody,
   TableCell,
   TableColumnHeader,
   TableHeader,
   TableRow,
-  useColorModeValue,
 } from "@vygruppen/spor-react";
-import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
+import { remToPx, useDesignTokens } from "./utils";
 
-type OutlineToken = {
-  key: "none" | "sm" | "md" | "lg" | "sm-dashed" | "md-dashed" | "lg-dashed";
-  value: string;
-};
+export const OutlineTokens = () => (
+  <SharedTokenLayout title="Outlines">
+    <OutlineTokensTable />
+  </SharedTokenLayout>
+);
 
-const outlineTokens: OutlineToken[] = [
-  {
-    key: "sm",
-    value: "1px solid",
-  },
-  {
-    key: "md",
-    value: "2px solid",
-  },
-  {
-    key: "lg",
-    value: "3px solid",
-  },
-  {
-    key: "sm-dashed",
-    value: "1px dashed",
-  },
-  {
-    key: "md-dashed",
-    value: "2px dashed",
-  },
-  {
-    key: "lg-dashed",
-    value: "3px dashed",
-  },
-];
+const OutlineTokensTable = () => {
+  const designTokens = useDesignTokens();
 
-export function OutlineTokens(props: BoxProps) {
+  if (!designTokens) return null;
+
+  const outlineTokens = Object.entries(designTokens.tokens.size.stroke);
+
   return (
-    <SharedTokenLayout {...props} title="Outlines">
-      <OutlineTokensTable />
-    </SharedTokenLayout>
-  );
-}
-
-type OutlineTokenTableProps = BoxProps;
-
-const OutlineTokensTable = (props: OutlineTokenTableProps) => {
-  const tokenFormatter = useTokenFormatter();
-  const borderColor = useColorModeValue(
-    "outline.default.light",
-    "outline.default.dark",
-  );
-  return (
-    <Box {...props}>
-      <Table variant="line" colorScheme="grey">
+    <Box>
+      <Table colorPalette="white">
         <TableHeader>
           <TableRow>
             <TableColumnHeader>Example</TableColumnHeader>
+            <TableColumnHeader>Variable</TableColumnHeader>
             <TableColumnHeader>Value</TableColumnHeader>
-            <TableColumnHeader>Code</TableColumnHeader>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {outlineTokens.map((token) => (
-            <TableRow key={token.key}>
-              <TableCell>
-                <Box
-                  height={8}
-                  width={8}
-                  border={token.key}
-                  borderRadius="xs"
-                  borderColor={borderColor}
-                />
-              </TableCell>
-              <TableCell>
-                {token.value} / {token.key}
-              </TableCell>
-              <TableCell>
-                <Stack padding={1}>
-                  <Box>
-                    <Code>{tokenFormatter(`size.stroke.${token.key}`)}</Code>
-                  </Box>
-                </Stack>
-              </TableCell>
-            </TableRow>
-          ))}
+          {["", "dashed"].map((variant) =>
+            outlineTokens.map(([variable, value]) => {
+              const variableWithVariant = variant
+                ? variable + `-${variant}`
+                : variable;
+
+              return (
+                <TableRow key={variableWithVariant}>
+                  <TableCell>
+                    <Box
+                      height={8}
+                      width={8}
+                      borderRadius="xs"
+                      border={variableWithVariant}
+                    />
+                  </TableCell>
+                  <TableCell>{variableWithVariant}</TableCell>
+                  <TableCell>{`${value} ${variant} (${remToPx(value)})`}</TableCell>
+                </TableRow>
+              );
+            }),
+          )}
         </TableBody>
       </Table>
     </Box>

@@ -1,5 +1,4 @@
 import {
-  Badge,
   Box,
   Flex,
   Table,
@@ -8,57 +7,25 @@ import {
   TableColumnHeader,
   TableHeader,
   TableRow,
-  useColorMode,
 } from "@vygruppen/spor-react";
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
-import { useColors } from "./ColorTokens";
+import { TokenColorKey, useDesignTokens } from "../utils/useDesignTokens";
 
-import tokensJSON from "@vygruppen/spor-design-tokens/dist/tokens.json";
-
-interface ColorTableProps {
-  colorKey: keyof typeof tokensJSON.color.vyDigital;
+type Props = {
+  colorKey: TokenColorKey;
   name: string;
-}
-
-interface FlattenedColor {
-  name: string;
-  value: string;
-}
-
-const flattenColors = (
-  obj: Record<string, any>,
-  colorMode: any,
-  path: string[] = [],
-): FlattenedColor[] => {
-  return Object.entries(obj).reduce<FlattenedColor[]>((acc, [key, value]) => {
-    if (typeof value === "object" && value !== null) {
-      return [...acc, ...flattenColors(value, colorMode, [...path, key])];
-    }
-    if (key === `_${colorMode}`) {
-      return [
-        ...acc,
-        {
-          name: `${""}${path.join(".")}`,
-          value: value.replace("colors.", ""),
-        },
-      ];
-    }
-    return acc;
-  }, []);
 };
 
-export const ColorTable: React.FC<ColorTableProps> = ({ name, colorKey }) => {
-  const { colorMode } = useColorMode();
+export const ColorTable = ({ name, colorKey }: Props) => {
+  const designTokens = useDesignTokens();
 
-  const colors = useColors();
+  if (!designTokens?.tokens.themeColorTokens?.[colorKey]) return null;
 
-  const color = colors?.[colorKey];
+  const { tokens, getFlattenedColors } = designTokens;
 
-  if (!color) return null;
+  const aliases = tokens.aliases;
 
-  const aliases = tokensJSON.color.alias;
-
-  const colorList = flattenColors(color, colorMode);
+  const colors = getFlattenedColors(colorKey);
 
   return (
     <Table size="md" colorPalette="white">
@@ -69,16 +36,13 @@ export const ColorTable: React.FC<ColorTableProps> = ({ name, colorKey }) => {
               {name}
             </LinkableHeading>
           </TableColumnHeader>
-          <TableColumnHeader>Name</TableColumnHeader>
+          <TableColumnHeader>Variable</TableColumnHeader>
           <TableColumnHeader>Value</TableColumnHeader>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {colorList?.map(({ name, value }) => {
-          const alias = aliases[value as keyof typeof aliases]?.replace(
-            "colors.",
-            "",
-          );
+        {colors.map(({ name, value }) => {
+          const alias = aliases.find(({ name }) => name === value);
 
           return (
             <TableRow key={name} color="text">
@@ -94,14 +58,12 @@ export const ColorTable: React.FC<ColorTableProps> = ({ name, colorKey }) => {
                         ? "1px solid rgba(0,0,0,0.40)"
                         : "none"
                     }
-                  ></Box>
+                  />
                   {`${colorKey}.${name}`.replace(".DEFAULT", "")}
                 </Flex>
               </TableCell>
-              <TableCell>{alias ? value : null}</TableCell>
-              <TableCell>
-                <Badge colorPalette="grey">{alias ?? value}</Badge>
-              </TableCell>
+              <TableCell>{alias?.name}</TableCell>
+              <TableCell>{alias?.value ?? value}</TableCell>
             </TableRow>
           );
         })}
@@ -109,5 +71,3 @@ export const ColorTable: React.FC<ColorTableProps> = ({ name, colorKey }) => {
     </Table>
   );
 };
-
-export default ColorTable;

@@ -23,6 +23,7 @@ import { TypographyTokens } from "./TypographyTokens";
 import { ZIndexTokens } from "./ZIndexTokens";
 import { useFetcher } from "@remix-run/react";
 import { useMatchesData } from "~/utils/useMatchesData";
+import { BrandSwitcher } from "./BrandSwitcher";
 
 export default function DesignTokensPage() {
   const { toggleColorMode } = useColorMode();
@@ -43,7 +44,7 @@ export default function DesignTokensPage() {
   };
 
   return (
-    <Box>
+    <Box paddingBottom="8">
       <Heading as="h1" variant="xl-display" marginBottom={2}>
         Design tokens
       </Heading>
@@ -63,48 +64,7 @@ export default function DesignTokensPage() {
         </Text>
       </Stack>
 
-      <HStack gap={5} mt={5}>
-        <Stack>
-          <Heading as="h2" variant="md" fontWeight="bold">
-            Theme
-          </Heading>
-          <fetcher.Form method="post" action="/api/brand">
-            <Tabs
-              variant={"accent"}
-              size="md"
-              defaultValue={brand as string}
-              onChange={handleChange}
-            >
-              <TabsList>
-                <TabsTrigger width={[null, 100]} value={Brand.VyDigital}>
-                  Vy
-                </TabsTrigger>
-                <TabsTrigger width={[null, 100]} value={Brand.CargoNet}>
-                  {Brand.CargoNet}
-                </TabsTrigger>
-                <TabsTrigger width={[null, 100]} value={Brand.VyUtvikling}>
-                  IT
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </fetcher.Form>
-        </Stack>
-        <Stack>
-          <Heading as="h2" variant="md" fontWeight="bold">
-            Color mode
-          </Heading>
-          <Tabs variant={"accent"} size="md" onChange={() => toggleColorMode()}>
-            <TabsList>
-              <TabsTrigger width={[null, 100]} value="light">
-                Light
-              </TabsTrigger>
-              <TabsTrigger width={[null, 100]} value="dark">
-                Dark
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
-        </Stack>
-      </HStack>
+      <BrandSwitcher />
 
       <Separator marginBottom={8} marginTop={4} />
       <Stack gap={9}>

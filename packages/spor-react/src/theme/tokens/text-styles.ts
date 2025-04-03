@@ -2,7 +2,7 @@ import { defineTextStyles } from "@chakra-ui/react";
 import tokens from "@vygruppen/spor-design-tokens";
 
 export const textStyles = defineTextStyles({
-  "2xl": {
+  xxl: {
     value: {
       fontSize: [
         tokens.font.style.xxl["font-size"].mobile,

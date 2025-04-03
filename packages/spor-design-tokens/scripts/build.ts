@@ -25,8 +25,6 @@ sd.registerTransform(pxToRemTransformer);
 sd.registerFormat({
   name: "jsondocs",
   format: function ({ dictionary }) {
-    console.log("ok");
-
     return JSON.stringify(minifyDictionary(dictionary.tokens), null, 2);
   },
 });

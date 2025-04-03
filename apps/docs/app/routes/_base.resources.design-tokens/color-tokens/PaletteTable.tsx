@@ -8,46 +8,33 @@ import {
   TableColumnHeader,
   TableHeader,
   TableRow,
-  useColorMode,
 } from "@vygruppen/spor-react";
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 
 import tokensJSON from "@vygruppen/spor-design-tokens/dist/tokens.json";
-import { useEffect, useState } from "react";
+import { useDesignTokens } from "../utils/useDesignTokens";
+import { capitalizeFirstLetter } from "~/utils/stringUtils";
 
-type Palette = {
-  [key: string]: string | { [shade: string]: string };
+type Props = {
+  colorKey: keyof typeof tokensJSON.color.palette;
+  colorName?: string;
 };
 
-export const PaletteTable = () => {
-  const { colorMode } = useColorMode();
+export const PaletteTable = ({
+  colorKey,
+  colorName = capitalizeFirstLetter(colorKey),
+}: Props) => {
+  const designTokens = useDesignTokens();
 
-  const [mounted, setMounted] = useState(false);
+  if (!designTokens) return null;
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const { tokens, getPaletteValue } = designTokens;
 
-  if (!mounted) {
-    return null;
-  }
+  const palette = tokens.color.palette;
 
-  const aliases = Object.entries(tokensJSON.color.alias).map(
-    ([name, value]) => ({ name, value }),
+  const aliases = tokens.aliases.filter(({ value }) =>
+    value.includes(colorKey),
   );
-
-  const palette: Palette = tokensJSON.color.palette;
-
-  const getPaletteValue = (key: string) => {
-    const [color, shade] = key.split(".");
-    const paletteColor = palette[color];
-
-    if (typeof paletteColor === "object" && paletteColor !== null) {
-      return paletteColor[shade] || null;
-    }
-
-    return paletteColor || null;
-  };
 
   return (
     <Table size="md" colorPalette="white">
@@ -55,16 +42,16 @@ export const PaletteTable = () => {
         <TableRow>
           <TableColumnHeader>
             <LinkableHeading as="h3" variant="sm">
-              Name
+              {colorName}
             </LinkableHeading>
           </TableColumnHeader>
-          <TableColumnHeader>Alias</TableColumnHeader>
+          <TableColumnHeader>Value</TableColumnHeader>
           <TableColumnHeader>Hex</TableColumnHeader>
         </TableRow>
       </TableHeader>
       <TableBody>
         {aliases?.map(({ name, value }) => {
-          const paletteValue = getPaletteValue(value.replace("colors.", ""));
+          const paletteValue = getPaletteValue(palette, value);
 
           return (
             <TableRow key={name} color="text">

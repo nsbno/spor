@@ -1,11 +1,13 @@
 import { useFetcher } from "@remix-run/react";
 import { Brand } from "@vygruppen/spor-react";
+import { useBrand } from "~/utils/brand";
 import { useMatchesData } from "~/utils/useMatchesData";
 
 export const BrandSwitcher = () => {
   const fetcher = useFetcher();
   const data = useMatchesData("root");
-  const brand = data?.brand ?? Brand.VyDigital;
+  const brand = useBrand();
+
   return (
     // Use native select until spor select is available
     <fetcher.Form method="post" action="/api/brand">

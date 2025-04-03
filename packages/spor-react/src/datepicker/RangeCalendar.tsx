@@ -35,7 +35,7 @@ export function RangeCalendar(props: RangeCalendarProps) {
   return (
     <Box {...calendarProps} ref={ref} css={styles.rangeCalendarPopover}>
       <CalendarHeader state={state} title={title} />
-      <Box display="flex" gap="8">
+      <Box display="flex" gap="8" maxWidth="100vw" overflow="scroll">
         <CalendarGrid variant={props.variant} state={state} />
         <CalendarGrid
           variant={props.variant}

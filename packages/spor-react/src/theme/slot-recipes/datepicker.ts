@@ -75,6 +75,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     },
     rangeCalendarPopover: {
       width: "43rem",
+      maxWidth: "100vw",
     },
     weekdays: {
       color: "core.text",

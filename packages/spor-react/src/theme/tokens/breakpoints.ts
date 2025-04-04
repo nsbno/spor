@@ -6,5 +6,4 @@ export const breakpoints = {
   md: tokens.size.breakpoint.md,
   lg: tokens.size.breakpoint.lg,
   xl: tokens.size.breakpoint.xl,
-  "2xl": tokens.size.breakpoint.xl,
 };

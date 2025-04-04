@@ -12,7 +12,8 @@
   "module": "./dist/tokens.mjs",
   "types": "./dist/tokens.d.ts",
   "scripts": {
-    "build": "ts-node scripts/build.ts"
+    "build": "tsx scripts/build.ts",
+    "dev": "chokidar 'scripts/**/*' 'tokens/**/*' -c 'pnpm build'"
   },
   "files": [
     "dist",
@@ -24,12 +25,14 @@
   "devDependencies": {
     "@types/node": "^22.13.4",
     "@vygruppen/tsconfig": "workspace:*",
+    "chokidar-cli": "^3.0.0",
     "json-to-ts": "^1.7.0",
     "patch-package": "^6.4.7",
     "prettier": "^2.4.1",
-    "style-dictionary": "^3.9.2",
+    "style-dictionary": "^4.3.3",
     "ts-node": "^10.9.2",
     "tsup": "^8.3.6",
-    "typescript": "^4.9.5"
+    "tsx": "^4.19.2",
+    "typescript": "^5.8.2"
   }
 }

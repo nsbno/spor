@@ -14,7 +14,7 @@ type TableVariantProps = RecipeVariantProps<typeof tableSlotRecipe>;
 export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   PropsWithChildren<TableVariantProps> & {
     variant?: "ghost" | "core";
-    colorPalette?: "grey" | "green";
+    colorPalette?: "grey" | "green" | "white";
   };
 /**
  * The `Table` component has support for two different variants - `ghost` and `core`. The `ghost` variant has basic lines between rows, while the `core` variant has borders for each cell.

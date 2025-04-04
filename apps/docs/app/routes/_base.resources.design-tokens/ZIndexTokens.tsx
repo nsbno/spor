@@ -1,9 +1,5 @@
-import tokens from "@vygruppen/spor-design-tokens";
 import {
   Box,
-  BoxProps,
-  Code,
-  Stack,
   Table,
   TableBody,
   TableCell,
@@ -11,43 +7,38 @@ import {
   TableHeader,
   TableRow,
 } from "@vygruppen/spor-react";
-import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
+import { useDesignTokens } from "./utils";
 
-export function ZIndexTokens(props: BoxProps) {
+export const ZIndexTokens = () => {
   return (
-    <SharedTokenLayout {...props} title="Z-index">
+    <SharedTokenLayout title="Z-index">
       <ZIndexTokensTable />
     </SharedTokenLayout>
   );
-}
+};
 
-type ZIndexTokenTableProps = BoxProps;
+const ZIndexTokensTable = () => {
+  const designTokens = useDesignTokens();
 
-const ZIndexTokensTable = (props: ZIndexTokenTableProps) => {
-  const tokenFormatter = useTokenFormatter();
+  if (!designTokens) return null;
+
+  const zIndexTokens = Object.entries(designTokens.tokens.depth["z-index"]);
+
   return (
-    <Box {...props}>
-      <Table variant="line" colorScheme="grey">
+    <Box>
+      <Table colorPalette="white">
         <TableHeader>
           <TableRow>
-            <TableColumnHeader>Name</TableColumnHeader>
+            <TableColumnHeader>Token</TableColumnHeader>
             <TableColumnHeader>Value</TableColumnHeader>
-            <TableColumnHeader>Code</TableColumnHeader>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {Object.entries(tokens.depth["z-index"]).map(([key, token]) => (
-            <TableRow key={key}>
-              <TableCell>{key}</TableCell>
-              <TableCell>{token as string}</TableCell>
-              <TableCell>
-                <Stack gap={1}>
-                  <Box>
-                    <Code>{tokenFormatter(`depth.z-index.${key}`)}</Code>
-                  </Box>
-                </Stack>
-              </TableCell>
+          {zIndexTokens.map(([token, value]) => (
+            <TableRow key={token}>
+              <TableCell>{token}</TableCell>
+              <TableCell>{value}</TableCell>
             </TableRow>
           ))}
         </TableBody>

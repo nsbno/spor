@@ -1,9 +1,5 @@
-import tokens from "@vygruppen/spor-design-tokens";
 import {
   Box,
-  BoxProps,
-  Code,
-  Stack,
   Table,
   TableBody,
   TableCell,
@@ -11,82 +7,69 @@ import {
   TableHeader,
   TableRow,
   Text,
-  useColorModeValue,
 } from "@vygruppen/spor-react";
-import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
+import { remToPx, useDesignTokens } from "./utils";
 
-export function RoundingTokens(props: BoxProps) {
+export const RoundingTokens = () => (
+  <SharedTokenLayout
+    title="Rounding"
+    description={
+      <Text>
+        The rounding follows the size of the component. Small components have
+        small rounding, and large components have larger rounding. All
+        components that consist of a 'box/card' have rounding. We rarely use
+        completely square components (0 px rounding). An easy way to determine
+        which rounding you should use is to follow the rule of thumb: components
+        with 1-2 lines of text or very compact elements will always have a
+        rounding of 12 px. When there are more lines horizontally, such as cards
+        or boxes, we use a rounding of 18 px. In addition, 24 px rounding is
+        used on drawers, 30 px rounding on buttons, and 36 px rounding on the
+        app header.
+      </Text>
+    }
+  >
+    <RoundingTokensTable />
+  </SharedTokenLayout>
+);
+
+const RoundingTokensTable = () => {
+  const designTokens = useDesignTokens();
+
+  if (!designTokens) return null;
+
+  const roundingTokens = Object.entries(
+    designTokens.tokens.size["border-radius"],
+  );
+
   return (
-    <SharedTokenLayout
-      {...props}
-      title="Rounding"
-      description={
-        <Text>
-          The rounding follows the size of the component. Small components have
-          small rounding, and large components have larger rounding. All
-          components that consist of a 'box/card' have rounding. We rarely use
-          completely square components (0 px rounding). An easy way to determine
-          which rounding you should use is to follow the rule of thumb:
-          components with 1-2 lines of text or very compact elements will always
-          have a rounding of 12 px. When there are more lines horizontally, such
-          as cards or boxes, we use a rounding of 18 px. In addition, 24 px
-          rounding is used on drawers, 30 px rounding on buttons, and 36 px
-          rounding on the app header.
-        </Text>
-      }
-    >
-      <RoundingTokensTable />
-    </SharedTokenLayout>
-  );
-}
-
-type RoundingTokenTableProps = BoxProps;
-
-const RoundingTokensTable = (props: RoundingTokenTableProps) => {
-  const tokenFormatter = useTokenFormatter();
-  const backgroundColor = useColorModeValue(
-    "bg.tertiary.light",
-    "bg.tertiary.dark",
-  );
-  const outlineColor = useColorModeValue(
-    "outline.default.light",
-    "outline.default.dark",
-  );
-  return (
-    <Box {...props}>
-      <Table variant="line" colorScheme="grey">
+    <Box>
+      <Table colorPalette="white">
         <TableHeader>
           <TableRow>
             <TableColumnHeader>Example</TableColumnHeader>
+            <TableColumnHeader>Token</TableColumnHeader>
             <TableColumnHeader>Value</TableColumnHeader>
-            <TableColumnHeader>Code</TableColumnHeader>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {Object.entries(tokens.size["border-radius"]).map(([key, token]) => (
-            <TableRow key={key}>
+          {roundingTokens.map(([token, value]) => (
+            <TableRow key={token}>
               <TableCell>
                 <Box
                   width="150px"
                   height="72px"
-                  borderRadius={key}
+                  borderRadius={token}
                   border="md"
-                  borderColor={outlineColor}
-                  backgroundColor={backgroundColor}
+                  backgroundColor="mint"
+                  borderColor="greenHaze"
                 />
               </TableCell>
+
+              <TableCell>{token}</TableCell>
+
               <TableCell>
-                {key} / {token as any}
-              </TableCell>
-              <TableCell>
-                <Stack padding={1}>
-                  <Box>
-                    <Code>
-                      {tokenFormatter(`tokens.size.border-radius.${key}`)}
-                    </Code>
-                  </Box>
-                </Stack>
+                {remToPx(value)} / {value}
               </TableCell>
             </TableRow>
           ))}

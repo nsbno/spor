@@ -15,8 +15,8 @@ import { tokens } from "./tokens";
 import { Brand } from "./brand";
 import { config } from "./tokens/config";
 
-const generateTheme = (brand: Brand) =>
-  defineConfig({
+const generateTheme = (brand: Brand) => {
+  return defineConfig({
     ...config,
     globalCss,
     theme: {
@@ -30,6 +30,7 @@ const generateTheme = (brand: Brand) =>
       animationStyles,
     },
   });
+};
 
 export const themes = {
   [Brand.VyDigital]: createSystem(

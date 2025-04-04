@@ -1,4 +1,3 @@
-import { data } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { SanityAsset } from "@sanity/image-url/lib/types/types";
 import {
@@ -16,8 +15,13 @@ import {
   IconButton,
   Image,
   NativeSelect,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
   SearchInput,
+  Separator,
   SimpleGrid,
+  slugify,
   StaticCard,
   Text,
   useColorMode,
@@ -27,7 +31,6 @@ import { PortableText } from "~/features/portable-text/PortableText";
 import { useBrand } from "~/utils/brand";
 import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";
-import { slugify } from "~/utils/stringUtils";
 
 type SanityResponse = {
   illustrations: {
@@ -87,11 +90,11 @@ export const loader = async () => {
   const { illustrations, article } = (await client.fetch(
     query,
   )) as SanityResponse;
-  return data({ illustrations, article });
+  return { illustrations, article };
 };
 
 export default function IllustrationLibraryPage() {
-  const { illustrations, article } = useLoaderData<typeof loader>().data;
+  const { illustrations, article } = useLoaderData<typeof loader>();
   const [searchValue, setSearchValue] = useState("");
   const { colorMode } = useColorMode();
   const [size, setSize] = useState("all");
@@ -108,121 +111,125 @@ export default function IllustrationLibraryPage() {
       );
   }, [illustrations, searchValue, size]);
 
-  return null; // Todo: fix this page
-
-  // return (
-  //   <Box>
-  //     <Badge
-  //       colorScheme={brand === Brand.CargoNet ? "light-yellow" : "light-green"}
-  //     >
-  //       {article.category?.title}
-  //     </Badge>
-  //     <Heading as="h1" size="2xl" marginBottom={1}>
-  //       {article.title}
-  //     </Heading>
-  //     {article.introduction && (
-  //       <Box marginBottom={2}>
-  //         <PortableText value={article.introduction} />
-  //       </Box>
-  //     )}
-  //     <Box marginBottom={4}>
-  //       <PortableText value={article.content} />
-  //     </Box>
-  //     <Button
-  //       variant="primary"
-  //       size="lg"
-  //       width="fit-content"
-  //       as="a"
-  //       download="illustrations.zip"
-  //       href="/resources/illustration-library/all"
-  //       leftIcon={<DownloadOutline24Icon />}
-  //     >
-  //       Download all illustrations
-  //     </Button>
-  //     <Divider marginY={3} />
-  //     <Flex marginBottom={5} gap={2}>
-  //       <Box flex={1}>
-  //         <SearchInput
-  //           label="Find illustration"
-  //           value={searchValue}
-  //           onChange={(e: any) => setSearchValue(e.target.value)}
-  //           width="100%"
-  //         />
-  //       </Box>
-  //       <Box>
-  //         <NativeSelect
-  //           label="Size"
-  //           value={size}
-  //           onChange={(e: any) => setSize(e.target.value)}
-  //           width="fit-content"
-  //         >
-  //           <option value="all">All</option>
-  //           <option value="small">Small</option>
-  //           <option value="medium">Medium</option>
-  //           <option value="large">Large</option>
-  //         </NativeSelect>
-  //       </Box>
-  //     </Flex>
-  //     <SimpleGrid columns={[1, 2, 3]} gap={2}>
-  //       {matchingIllustrations.map((illustration) => (
-  //         <StaticCard
-  //           colorScheme="white"
-  //           key={illustration._id}
-  //           padding={2}
-  //           border="1px solid"
-  //           borderColor="silver"
-  //         >
-  //           <Flex flexDirection="column" height="100%">
-  //             <Flex gap={1} alignItems="center">
-  //               <Text variant="sm">{illustration.title}</Text>
-  //               <Tooltip
-  //                 placement="top"
-  //                 arrowPadding={2}
-  //                 content={illustration.description}
-  //               >
-  //                 <InformationOutline18Icon aria-label="Informasjon" />
-  //               </Tooltip>
-  //             </Flex>
-  //             <Image
-  //               src={
-  //                 urlBuilder
-  //                   .image(
-  //                     colorMode === "light"
-  //                       ? illustration.imageLightBackground
-  //                       : illustration.imageDarkBackground,
-  //                   )
-  //                   .url() || ""
-  //               }
-  //               alt={illustration.description}
-  //               width="100%"
-  //               maxHeight="10rem"
-  //               objectFit="contain"
-  //               objectPosition="center"
-  //               flex={1}
-  //             />
-  //             <Flex justifyContent="flex-end">
-  //               <IconButton
-  //                 variant="ghost"
-  //                 size="sm"
-  //                 icon={<DownloadOutline18Icon />}
-  //                 as="a"
-  //                 download={`${slugify(illustration.title)}.svg`}
-  //                 href={urlBuilder
-  //                   .image(
-  //                     colorMode === "light"
-  //                       ? illustration.imageLightBackground
-  //                       : illustration.imageDarkBackground,
-  //                   )
-  //                   .forceDownload(`${slugify(illustration.title)}.svg`)
-  //                   .url()}
-  //                 aria-label="Download SVG"
-  //                 title="Download SVG"
-  //               />
-  //             </Flex>
-  //           </Flex>
-  //         </StaticCard>
-  //       ))}
-  //     </SimpleGrid>
-  //   </Box>
-  // );
+  return (
+    <Box>
+      <Badge
+        colorScheme={brand === Brand.CargoNet ? "light-yellow" : "light-green"}
+      >
+        {article.category?.title}
+      </Badge>
+      <Heading as="h1" variant="2xl" marginBottom={1}>
+        {article.title}
+      </Heading>
+      {article.introduction && (
+        <Box marginBottom={2}>
+          <PortableText value={article.introduction} />
+        </Box>
+      )}
+      {article.content && (
+        <Box marginBottom={4}>
+          <PortableText value={article.content} />
+        </Box>
+      )}
+      <Button
+        variant="primary"
+        size="lg"
+        width="fit-content"
+        as="a"
+        download="illustrations.zip"
+        href="/resources/illustration-library/all"
+        leftIcon={<DownloadOutline24Icon />}
+      >
+        Download all illustrations
+      </Button>
+      <Separator marginY={4} />
+      <Flex marginBottom={5} gap={2}>
+        <Box flex={1}>
+          <SearchInput
+            label="Find illustration"
+            value={searchValue}
+            onChange={(e: any) => setSearchValue(e.target.value)}
+            width="100%"
+          />
+        </Box>
+        <Box>
+          <NativeSelect
+            label="Size"
+            value={size}
+            onChange={(e: any) => setSize(e.target.value)}
+            width="fit-content"
+          >
+            <option value="all">All</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </NativeSelect>
+        </Box>
+      </Flex>
+      <SimpleGrid columns={[1, 2, 3]} gap={2}>
+        {matchingIllustrations.map((illustration) => (
+          <StaticCard
+            colorScheme="white"
+            key={illustration._id}
+            padding={2}
+            border="1px solid"
+            borderColor="silver"
+            position={"relative"}
+          >
+            <Flex flexDirection="column" height="100%">
+              <Flex gap={1} alignItems="center" flexDirection={"column"}>
+                <Text variant="sm">{illustration.title}</Text>
+                <Popover>
+                  <PopoverTrigger>
+                    <InformationOutline18Icon aria-label="Informasjon" />
+                  </PopoverTrigger>
+                  <PopoverContent>{illustration.description}</PopoverContent>
+                </Popover>
+                <Image
+                  src={
+                    colorMode === "light"
+                      ? urlBuilder
+                          .image(illustration.imageLightBackground)
+                          .url() || ""
+                      : urlBuilder
+                          .image(illustration.imageDarkBackground)
+                          .url() || ""
+                  }
+                  alt={illustration.description}
+                  width="100%"
+                  minHeight={12}
+                  maxHeight={15}
+                  objectFit="contain"
+                  objectPosition="center"
+                  flex={1}
+                />
+              </Flex>
+            </Flex>
+            <Box position={"absolute"} bottom="0" right="0">
+              <IconButton
+                variant="ghost"
+                size="sm"
+                icon={<DownloadOutline18Icon />}
+                as="a"
+                download={`${slugify(illustration.title)}.svg`}
+                href={
+                  colorMode === "light"
+                    ? urlBuilder
+                        .image(illustration.imageLightBackground)
+                        .forceDownload(`${slugify(illustration.title)}.svg`)
+                        .url()
+                    : urlBuilder
+                        .image(illustration.imageDarkBackground)
+                        .forceDownload(`${slugify(illustration.title)}.svg`)
+                        .url()
+                }
+                aria-label="Download SVG"
+                title="Download SVG"
+              />
+            </Box>
+          </StaticCard>
+        ))}
+      </SimpleGrid>
+    </Box>
+  );
 }

@@ -17,6 +17,8 @@ export type IconButtonProps = Exclude<
     spinner?: React.JSX.Element;
     icon?: React.JSX.Element;
     loading?: boolean;
+    download?: string;
+    href?: string;
   };
 
 /**

@@ -81,7 +81,6 @@ export function CalendarCell({
         ref={ref}
         css={styles.dateCell}
         hidden={isOutsideVisibleRange}
-        width="100%"
       >
         {date.day}
       </Box>

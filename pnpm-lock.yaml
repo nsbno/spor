@@ -62,6 +62,9 @@ importers:
       '@vygruppen/spor-design-tokens':
         specifier: workspace:*
         version: link:../../packages/spor-design-tokens
+      '@vygruppen/spor-icon':
+        specifier: workspace:*
+        version: link:../../packages/spor-icon
       '@vygruppen/spor-icon-react':
         specifier: workspace:*
         version: link:../../packages/spor-icon-react

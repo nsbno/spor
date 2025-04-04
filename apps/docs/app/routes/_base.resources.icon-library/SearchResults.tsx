@@ -6,27 +6,27 @@ import {
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
-  StaticCard,
   Flex,
   Heading,
   IconButton,
   SimpleGrid,
   Stack,
+  StaticCard,
   Text,
   useColorModeValue,
 } from "@vygruppen/spor-react";
-import { memo, ReactNode, useMemo } from "react";
+import { memo, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
 import { NotFoundIllustration } from "../../features/illustrations/NotFoundIllustration";
 import { SearchFilter, useSearchFilter } from "./SearchFilterContext";
 import {
+  getIconByImportName,
   IconMetadata,
   IconsByCategory,
-  getIconByImportName,
   iconsByCategory,
 } from "./iconsData";
-import { useNavigate } from "react-router-dom";
 
 /**
  * Shows the current search results
@@ -184,11 +184,8 @@ function IconBox({ icon }: IconBoxProps) {
       <Flex justifyContent="flex-end" width="100%">
         <IconButton
           as="a"
-          onClick={() =>
-            navigate(
-              `/resources/icon-library/${icon.category}/${icon.fileName}`,
-            )
-          }
+          download={icon.fileName}
+          href={`/resources/icon-library/${icon.category}/${icon.fileName}`}
           variant="ghost"
           icon={<DownloadOutline18Icon />}
           size="sm"

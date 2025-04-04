@@ -1,7 +1,9 @@
 "use client";
+import { Field } from "@/input/Field";
 import {
   Box,
   BoxProps,
+  Popover as ChakraPopover,
   PopoverAnchor,
   Portal,
   RecipeVariantProps,
@@ -17,20 +19,18 @@ import React, {
 } from "react";
 import {
   AriaDatePickerProps,
+  DateValue,
   I18nProvider,
   useDatePicker,
-  DateValue,
 } from "react-aria";
 import { useDatePickerState } from "react-stately";
+import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { Calendar } from "./Calendar";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
 import { StyledField } from "./StyledField";
-import { useCurrentLocale } from "./utils";
-import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
-
-import { Field } from "../input/Field";
 import { CalendarVariants } from "./types";
+import { useCurrentLocale } from "./utils";
 
 export type DatePickerVariantProps = RecipeVariantProps<
   typeof datePickerSlotRecipe
@@ -80,18 +80,12 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     });
     const internalRef = useRef<HTMLDivElement>(null);
     const ref = externalRef ?? internalRef;
-    const {
-      labelProps,
-      fieldProps,
-      buttonProps,
-      dialogProps,
-      calendarProps,
-      errorMessageProps,
-    } = useDatePicker(
-      props,
-      state,
-      ref as React.MutableRefObject<HTMLDivElement>,
-    );
+    const { labelProps, fieldProps, buttonProps, dialogProps, calendarProps } =
+      useDatePicker(
+        props,
+        state,
+        ref as React.MutableRefObject<HTMLDivElement>,
+      );
 
     const labelId = `label-${useId()}`;
     const inputGroupId = `input-group-${useId()}`;
@@ -107,77 +101,71 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       state.setOpen(true);
     };
 
-    // const popoverContent = (
-    //   <PopoverContent color="darkGrey" css={styles.calendarPopover}>
-    //     <PopoverArrow />
-    //     <PopoverBody>
-    //       <Calendar
-    //         {...calendarProps}
-    //         variant={variant}
-    //         showYearNavigation={showYearNavigation}
-    //       />
-    //     </PopoverBody>
-    //   </PopoverContent>
-    // );
+    const popoverContent = (
+      <ChakraPopover.Positioner>
+        <ChakraPopover.Content css={styles.calendarPopover}>
+          <ChakraPopover.Body minWidth={"20rem"}>
+            <Calendar
+              {...calendarProps}
+              variant={variant}
+              showYearNavigation={showYearNavigation}
+            />
+          </ChakraPopover.Body>
+        </ChakraPopover.Content>
+      </ChakraPopover.Positioner>
+    );
 
-    return null; // Todo replace with new popover
+    return (
+      <I18nProvider locale={locale}>
+        <Box
+          position="relative"
+          display="inline-flex"
+          flexDirection="column"
+          width={width}
+        >
+          <ChakraPopover.Root {...dialogProps}>
+            <Field
+              display="inline-flex"
+              id={inputGroupId}
+              aria-labelledby={labelId}
+              errorText={errorMessage}
+            >
+              <PopoverAnchor>
+                <StyledField
+                  variant={variant}
+                  onClick={onFieldClick}
+                  paddingX={3}
+                  minHeight={minHeight}
+                  isDisabled={props.isDisabled}
+                  ariaLabelledby={labelId}
+                >
+                  <ChakraPopover.Trigger asChild>
+                    <CalendarTriggerButton
+                      paddingLeft={1}
+                      paddingRight={1}
+                      variant={variant}
+                      ref={ref}
+                      {...buttonProps}
+                    />
+                  </ChakraPopover.Trigger>
+                  <DateField
+                    label={props.label}
+                    labelProps={labelProps}
+                    labelId={labelId}
+                    name={props.name}
+                    {...fieldProps}
+                  />
+                </StyledField>
+              </PopoverAnchor>
+            </Field>
 
-    // return (
-    //   <I18nProvider locale={locale}>
-    //     <Box
-    //       position="relative"
-    //       display="inline-flex"
-    //       flexDirection="column"
-    //       width={width}
-    //     >
-    //       <PopoverRoot
-    //         {...dialogProps}
-    //         open={state.isOpen}
-    //         onOpenChange={state.open}
-    //         onExitComplete={state.close}
-    //       >
-    //         <Field
-    //           display="inline-flex"
-    //           id={inputGroupId}
-    //           aria-labelledby={labelId}
-    //           errorText={errorMessage}
-    //         >
-    //           <PopoverAnchor>
-    //             <StyledField
-    //               variant={variant}
-    //               onClick={onFieldClick}
-    //               paddingX={3}
-    //               minHeight={minHeight}
-    //               isDisabled={props.isDisabled}
-    //               ariaLabelledby={labelId}
-    //             >
-    //               <PopoverTrigger>
-    //                 <CalendarTriggerButton
-    //                   variant={variant}
-    //                   ref={ref}
-    //                   isDisabled={props.isDisabled}
-    //                   ariaLabelledby={labelId}
-    //                   {...buttonProps}
-    //                 />
-    //               </PopoverTrigger>
-    //               <DateField
-    //                 label={props.label}
-    //                 labelProps={labelProps}
-    //                 labelId={labelId}
-    //                 name={props.name}
-    //                 {...fieldProps}
-    //               />
-    //             </StyledField>
-    //           </PopoverAnchor>
-    //         </Field>
-
-    //         {state.isOpen && !props.isDisabled && withPortal && (
-    //           <Portal>{popoverContent}</Portal>
-    //         )}
-    //         {state.isOpen && !props.isDisabled && !withPortal && popoverContent}
-    //       </PopoverRoot>
-    //     </Box>
-    //   </I18nProvider>
-    // );
+            {state.isOpen && !props.isDisabled && withPortal && (
+              <Portal>{popoverContent}</Portal>
+            )}
+            {state.isOpen && !props.isDisabled && !withPortal && popoverContent}
+          </ChakraPopover.Root>
+        </Box>
+      </I18nProvider>
+    );
   },
 );

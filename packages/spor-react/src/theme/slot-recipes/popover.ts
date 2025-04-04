@@ -16,7 +16,6 @@ export const popoverSlotRecipe = defineSlotRecipe({
       textStyle: "sm",
       bg: "surface.tertiary",
       boxShadow: "lg",
-
       borderRadius: "sm",
       zIndex: "popover",
       outline: "0",
@@ -35,7 +34,6 @@ export const popoverSlotRecipe = defineSlotRecipe({
       color: "text.inverted",
 
       alignItems: "center",
-
       borderRadius: "sm",
       zIndex: "inherit",
       maxWidth: "20em",
@@ -44,7 +42,6 @@ export const popoverSlotRecipe = defineSlotRecipe({
       "--arrow-background": "colors.surface.tertiary",
       "--arrow-size": "6px",
     },
-    arrowTip: {},
   },
   variants: {
     size: {

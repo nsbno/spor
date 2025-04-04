@@ -1,26 +1,9 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { accentText } from "../utils/accent-utils";
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
-import { brandBackground, brandText } from "../utils/brand-utils";
-import { floatingBorder, floatingBackground } from "../utils/floating-utils";
 import { focusVisibleStyles } from "../utils/focus-utils";
-import { ghostBackground } from "../utils/ghost-utils";
-import { surface } from "../utils/surface-utils";
+import { datepickerAnatomy } from "./anatomy";
 
 export const datePickerSlotRecipe = defineSlotRecipe({
-  slots: [
-    "wrapper",
-    "calendarTriggerButton",
-    "arrow",
-    "calendarPopover",
-    "calendar",
-    "weekdays",
-    "weekend",
-    "dateCell",
-    "inputLabel",
-    "dateTimeSegment",
-    "cell",
-  ],
+  slots: datepickerAnatomy.keys(),
   className: "spor-datepicker",
   base: {
     wrapper: {
@@ -36,9 +19,10 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       },
       _disabled: {
         pointerEvents: "none",
-        ...coreBackground("disabled"),
-        ...coreBorder("disabled"),
-        ...coreText("disabled"),
+        backgroundColor: "surface.disabled",
+        outline: "1px solid",
+        outlineColor: "outline.disabled",
+        color: "text.disabled",
       },
       _focusWithin: {
         ...focusVisibleStyles()._focusVisible,
@@ -51,65 +35,74 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     },
     dateTimeSegment: {
       _focus: {
-        ...brandBackground("hover"),
+        backgroundColor: "brand.surface.hover",
         color: "white",
       },
     },
+    box: {
+      width: "100%",
+    },
+
     calendarTriggerButton: {
-      width: 8,
+      position: "relative",
+      borderRadius: "xl",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       transitionProperty: "box-shadow, background-color",
-      position: "relative",
-      right: "9px",
-
+      right: "0.5rem",
       ...focusVisibleStyles(),
       _hover: {
-        ...ghostBackground("hover"),
+        backgroundColor: "ghost.surface.hover",
       },
       _active: {
-        ...ghostBackground("active"),
+        backgroundColor: "ghost.surface.active",
       },
       _invalid: {
-        ...coreBorder("invalid"),
+        outline: "2px solid",
+        outlineColor: "outline.error",
       },
     },
     arrow: {
-      ...surface("default"),
+      backgroundColor: "surface",
     },
     calendarPopover: {
-      ...floatingBackground("default"),
-      ...coreText("default"),
-      ...floatingBorder("default"),
+      color: "core.text",
+      outline: "1px solid",
+      outlineColor: "floating.outline",
       boxShadow: "md",
+      backgroundColor: "floating.surface",
+    },
+    rangeCalendarPopover: {
+      width: "43rem",
+      maxWidth: "100vw",
     },
     weekdays: {
-      ...coreText("default"),
+      color: "core.text",
+      fontWeight: "bold",
     },
     weekend: {
-      ...accentText("default"),
+      color: "accent.text",
+      fontWeight: "bold",
     },
     cell: {
       '&[aria-selected="true"] + [aria-selected="true"] > button': {
         "&::before": {
           content: '""',
           display: "block",
-          width: "100%",
           height: "100%",
           position: "absolute",
           left: "-50%",
           top: 0,
           bottom: 0,
           zIndex: -1,
-          ...brandBackground("default"),
+          backgroundColor: "brand.surface",
         },
       },
     },
     dateCell: {
-      ...ghostBackground("default"),
-      ...coreText("default"),
-      borderRadius: "50%",
+      color: "core.text",
+      borderRadius: "xl",
       position: "relative",
       transition: ".1s ease-in-out",
       userSelect: "none",
@@ -118,32 +111,34 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       transitionProperty: "common",
 
       _hover: {
-        ...ghostBackground("hover"),
+        backgroundColor: "ghost.surface.hover",
       },
       ...focusVisibleStyles(),
       _active: {
-        ...ghostBackground("active"),
+        backgroundColor: "ghost.surface.active",
       },
       _disabled: {
-        ...coreBackground("disabled"),
-        ...coreText("disabled"),
+        backgroundColor: "surface.disabled",
+        color: "text.disabled",
         pointerEvents: "none",
       },
       _selected: {
-        ...brandBackground("default"),
-        ...brandText("default"),
+        backgroundColor: "brand.surface",
+        color: "brand.text",
         _active: {
-          ...brandBackground("active"),
-          ...brandText("active"),
+          backgroundColor: "brand.surface.active",
+          color: "brand.text",
         },
       },
       "&[data-today]": {
-        ...coreBorder("default"),
+        outline: "1px solid",
+        outlineColor: "core.outline",
       },
       "&[data-unavailable]": {
         pointerEvents: "none",
-        ...coreBackground("disabled"),
-        ...coreText("disabled"),
+        borderRadius: "xl",
+        backgroundColor: "surface.disabled",
+        color: "text.disabled",
       },
     },
   },
@@ -151,38 +146,50 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         wrapper: {
-          ...coreBorder("default"),
-          ...coreBackground("default"),
+          outline: "1px solid",
+          outlineColor: "core.outline",
+          backgroundColor: "core.surface",
 
           _hover: {
-            ...coreBorder("hover"),
+            outline: "2px solid",
+
+            outlineColor: "core.outline.hover",
           },
           _invalid: {
-            ...coreBorder("invalid"),
+            outline: "2px solid",
+            outlineColor: "outline.error",
           },
         },
       },
       floating: {
         wrapper: {
-          ...floatingBackground("default"),
-          ...floatingBorder("default"),
+          backgroundColor: {
+            _light: "bg",
+            _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
+          },
+          outline: "1px solid",
+          outlineColor: "floating.outline",
           boxShadow: "sm",
 
           _hover: {
-            ...floatingBorder("hover"),
+            outline: "1px solid",
+            outlineColor: "floating.outline.hover",
           },
           _invalid: {
-            ...coreBorder("invalid"),
+            outline: "2px solid",
+            outlineColor: "outline.error",
           },
         },
       },
       ghost: {
         wrapper: {
           _hover: {
-            ...coreBorder("hover"),
+            outline: "2px solid",
+            outlineColor: "core.outline.hover",
           },
           _invalid: {
-            ...coreBorder("invalid"),
+            outline: "2px solid",
+            outlineColor: "outline.error",
           },
         },
       },

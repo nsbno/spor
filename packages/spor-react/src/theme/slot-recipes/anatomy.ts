@@ -250,3 +250,19 @@ export const popoverAnatomy = arkPopoverAnatomy.extendWith(
   "body",
   "footer",
 );
+
+export const datepickerAnatomy = createAnatomy("datepicker").parts(
+  "wrapper",
+  "calendarTriggerButton",
+  "arrow",
+  "calendarPopover",
+  "calendar",
+  "weekdays",
+  "weekend",
+  "dateCell",
+  "inputLabel",
+  "dateTimeSegment",
+  "cell",
+  "box",
+  "rangeCalendarPopover",
+);

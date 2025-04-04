@@ -65,6 +65,15 @@ export const tableSlotRecipe = defineSlotRecipe({
           },
         },
       },
+      white: {
+        root: {
+          backgroundColor: "bg",
+        },
+        columnHeader: {
+          color: "text",
+          backgroundColor: "bg",
+        },
+      },
     },
     variant: {
       ghost: {

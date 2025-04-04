@@ -1,9 +1,5 @@
-import tokens from "@vygruppen/spor-design-tokens";
 import {
   Box,
-  BoxProps,
-  Code,
-  Stack,
   Table,
   TableBody,
   TableCell,
@@ -11,51 +7,37 @@ import {
   TableHeader,
   TableRow,
 } from "@vygruppen/spor-react";
-import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
+import { remToPx, useDesignTokens } from "./utils";
 
-export function BreakpointTokens(props: BoxProps) {
+export const BreakpointTokens = () => (
+  <SharedTokenLayout title="Breakpoints">
+    <BreakpointTokensTable />
+  </SharedTokenLayout>
+);
+
+const BreakpointTokensTable = () => {
+  const designTokens = useDesignTokens();
+
+  if (!designTokens) return null;
+
+  const breakpointTokens = Object.entries(designTokens.tokens.size.breakpoint);
   return (
-    <SharedTokenLayout {...props} title="Breakpoints">
-      <BreakpointTokensTable />
-    </SharedTokenLayout>
-  );
-}
-
-type Breakpoint = keyof typeof tokens.size.breakpoint;
-const breakpointDisplayNames: Record<Breakpoint, string> = {
-  sm: "Phone, landscape",
-  md: "Tablet",
-  lg: "Desktop",
-  xl: "Widescreen",
-};
-
-type BreakpointTokenTableProps = BoxProps;
-const BreakpointTokensTable = (props: BreakpointTokenTableProps) => {
-  const tokenFormatter = useTokenFormatter();
-  return (
-    <Box {...props}>
-      <Table variant="line" colorPalette="grey">
+    <Box>
+      <Table colorPalette="white">
         <TableHeader>
           <TableRow>
-            <TableColumnHeader>Name</TableColumnHeader>
+            <TableColumnHeader>Token</TableColumnHeader>
             <TableColumnHeader>Value</TableColumnHeader>
-            <TableColumnHeader>Code</TableColumnHeader>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {Object.entries(tokens.size.breakpoint).map(([key, token]): any => (
-            <TableRow key={key}>
+          {breakpointTokens.map(([token, value]): any => (
+            <TableRow key={token}>
+              <TableCell>{token}</TableCell>
+
               <TableCell>
-                {breakpointDisplayNames[key as Breakpoint] || key}
-              </TableCell>
-              <TableCell>{token as any}</TableCell>
-              <TableCell>
-                <Stack padding={1}>
-                  <Box>
-                    <Code>{tokenFormatter(`size.breakpoint.${key}`)}</Code>
-                  </Box>
-                </Stack>
+                {remToPx(value)} / {value}
               </TableCell>
             </TableRow>
           ))}

@@ -9,7 +9,7 @@ export function ColorTokens(props: BoxProps) {
   return (
     <SharedTokenLayout
       {...props}
-      title="Elements"
+      title="Color tokens"
       description={
         <Text>
           Our main colors are the ones we use the most. These are used for,

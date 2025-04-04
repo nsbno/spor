@@ -53,6 +53,9 @@ export const drawerSlotRecipe = defineSlotRecipe({
       },
     },
     header: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
       paddingX: "5",
       paddingBottom: "1",
     },

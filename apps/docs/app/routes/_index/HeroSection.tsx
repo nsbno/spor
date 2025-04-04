@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "@remix-run/react";
+import { useNavigate } from "@remix-run/react";
 import { ArrowRightFill30Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
@@ -17,6 +17,8 @@ export function HeroSection() {
       backgroundColor={"surface.tertiary"}
       minHeight="500px"
       className="light"
+      width={"100vw"}
+      overflow={"hidden"}
     >
       <Container maxWidth="container.lg" marginTop={[0, 0, 8]} marginX="auto">
         <Flex
@@ -45,7 +47,6 @@ export function HeroSection() {
                 className="light"
                 variant="secondary"
                 display={["flex", "inline-flex"]}
-                as={Link}
                 size="lg"
                 onClick={() => navigate("/guides/introduction")}
                 rightIcon={<ArrowRightFill30Icon />}

@@ -4,9 +4,9 @@ import {
   NativeSelect as Select,
   useSlotRecipe,
 } from "@chakra-ui/react";
+import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
 import * as React from "react";
 import { nativeSelectSlotRecipe } from "../theme/slot-recipes/native-select";
-import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
 import { Field } from "./Field";
 
 type NativeSelectVariantProps = RecipeVariantProps<
@@ -19,6 +19,8 @@ type NativeSelectRootProps = Exclude<
 > &
   React.PropsWithChildren<NativeSelectVariantProps> & {
     icon?: React.ReactNode;
+    label: string;
+    value?: string;
   };
 
 /**

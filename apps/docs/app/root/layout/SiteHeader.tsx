@@ -5,6 +5,8 @@ import {
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
+  Button,
+  CardSelect,
   Drawer,
   DrawerBody,
   DrawerCloseTrigger,
@@ -121,7 +123,22 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         flex={[0, 0, 0, 0, 1]}
         justifyContent="flex-end"
         alignItems="center"
+        className="dark"
+        gap={2}
       >
+        <CardSelect
+          label="Choose version"
+          variant="core"
+          size="md"
+          display={["none", null, null, "flex"]}
+        >
+          <Button variant="tertiary" size="md" marginBottom={2}>
+            Spor V2 - ver.12.xx.xx
+          </Button>
+          <Button variant="tertiary" size="md">
+            Spor V1 - ver.11.xx.xx
+          </Button>
+        </CardSelect>
         <SiteSettings showLabel={true} />
       </Flex>
     </>

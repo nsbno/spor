@@ -1,9 +1,9 @@
 import {
   Box,
   Center,
-  type ButtonProps as ChakraButtonProps,
   Button as ChakraButton,
   Flex,
+  type ButtonProps as ChakraButtonProps,
   type RecipeVariantProps,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
@@ -30,6 +30,10 @@ export type ButtonProps = Exclude<
     variant: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
     /* "lg" | "md" | "sm" | "xs". Defaults to md. */
     size?: "lg" | "md" | "sm" | "xs";
+    /* Link to a downloadable resource. */
+    download?: string;
+    /* Use this to specify a path combined with as="a" */
+    href?: string;
   };
 /**
  * Buttons are used to trigger actions.
@@ -71,11 +75,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       rightIcon,
       type = "button",
       children,
+      ...rest
     } = props;
     const ariaLabel = useCorrectAriaLabel(props);
     return (
       <ChakraButton
-        {...props}
+        {...rest}
         type={type}
         ref={ref}
         aria-label={ariaLabel}

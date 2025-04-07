@@ -7,38 +7,33 @@ export const staticCardRecipe = defineRecipe({
   variants: {
     colorPalette: {
       white: {
-        backgroundColor: "white",
+        backgroundColor: "surface.color.neutral",
         color: "text",
       },
       grey: {
-        backgroundColor: "silver",
-      },
-      green: {
-        backgroundColor: "seaMist",
-      },
-      darkGreen: {
-        backgroundColor: "pine",
-        color: "white",
-      },
-      orange: {
-        backgroundColor: "champagne",
-      },
-      red: {
-        backgroundColor: "lightRed",
+        backgroundColor: "surface.color.grey",
       },
       yellow: {
-        backgroundColor: "blonde",
+        backgroundColor: "surface.color.cream",
       },
       darkYellow: {
-        backgroundColor: "banana",
+        backgroundColor: "surface.color.yellow",
+      },
+      red: {
+        backgroundColor: "surface.color.red",
+      },
+      green: {
+        backgroundColor: "surface.color.green",
       },
       blue: {
-        backgroundColor: "lightBlue",
+        backgroundColor: "surface.color.blue",
       },
-      darkBlue: {
-        backgroundColor: "darkBlue",
-        color: "white",
+      orange: {
+        backgroundColor: "surface.color.orange",
       },
     },
+  },
+  defaultVariants: {
+    colorPalette: "white",
   },
 });

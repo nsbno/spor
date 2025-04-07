@@ -1,35 +1,7 @@
 "use client";
-import React, { forwardRef, PropsWithChildren } from "react";
-import {
-  Box,
-  BoxProps,
-  ConditionalValue,
-  RecipeVariantProps,
-  useRecipe,
-} from "@chakra-ui/react";
+import React, { forwardRef } from "react";
+import { Box, BoxProps, chakra, RecipeVariantProps } from "@chakra-ui/react";
 import { staticCardRecipe } from "../theme/recipes/static-card";
-
-type StaticCardVariants = RecipeVariantProps<typeof staticCardRecipe>;
-
-type ColorPalette = ConditionalValue<
-  | "white"
-  | "grey"
-  | "green"
-  | "orange"
-  | "red"
-  | "yellow"
-  | "blue"
-  | "darkBlue"
-  | "darkGreen"
-  | "darkYellow"
->;
-
-export type StaticCardProps = Exclude<BoxProps, "colorPalette"> &
-  PropsWithChildren<StaticCardVariants> & {
-    children: React.ReactNode;
-    /** Defaults to "white" */
-    colorPalette: ColorPalette;
-  };
 
 /**
  * `StaticCard` is a component that renders a static card.
@@ -68,15 +40,10 @@ export type StaticCardProps = Exclude<BoxProps, "colorPalette"> &
  * @see PressableCard
  */
 
-export const StaticCard = forwardRef<HTMLDivElement, StaticCardProps>(
-  ({ colorPalette = "white", children, ...props }, ref) => {
-    const recipe = useRecipe({ recipe: staticCardRecipe });
-    const styles = recipe({ colorPalette });
+const StyledCardBox = chakra("div", staticCardRecipe);
 
-    return (
-      <Box css={styles} {...props} ref={ref}>
-        {children}
-      </Box>
-    );
-  },
+type StaticCardProps = RecipeVariantProps<typeof staticCardRecipe> & BoxProps;
+
+export const StaticCard = forwardRef<HTMLDivElement, StaticCardProps>(
+  (props, ref) => <StyledCardBox {...props} ref={ref}></StyledCardBox>,
 );

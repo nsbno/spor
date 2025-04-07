@@ -24,7 +24,7 @@ export const cardSelectSlotRecipe = defineSlotRecipe({
     card: {
       borderRadius: "sm",
       boxShadow: "md",
-      padding: 3,
+      padding: 2,
       color: "core.text",
       backgroundColor: "surface",
     },
@@ -48,6 +48,7 @@ export const cardSelectSlotRecipe = defineSlotRecipe({
         trigger: {
           backgroundColor: "transparent",
           outline: "none",
+          fontWeight: "bold",
           color: "ghost.text",
           _hover: {
             backgroundColor: "ghost.surface.hover",

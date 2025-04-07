@@ -241,8 +241,28 @@ export const toastAnatomy = createAnatomy("toast").parts(
   "actionTrigger",
 );
 
+export const floatingActionButtonAnatomy = createAnatomy(
+  "floating-action-button",
+).parts("root", "icon", "text");
+
 export const popoverAnatomy = arkPopoverAnatomy.extendWith(
   "header",
   "body",
   "footer",
+);
+
+export const datepickerAnatomy = createAnatomy("datepicker").parts(
+  "wrapper",
+  "calendarTriggerButton",
+  "arrow",
+  "calendarPopover",
+  "calendar",
+  "weekdays",
+  "weekend",
+  "dateCell",
+  "inputLabel",
+  "dateTimeSegment",
+  "cell",
+  "box",
+  "rangeCalendarPopover",
 );

@@ -3,9 +3,7 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 export const progressIndicatorRecipe = defineSlotRecipe({
   slots: ["root", "container", "progressDot", "circle"],
   base: {
-    root: {
-      width: "100%",
-    },
+    root: {},
     container: {
       display: "flex",
       alignItems: "center",

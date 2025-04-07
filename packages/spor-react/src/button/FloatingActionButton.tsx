@@ -1,6 +1,12 @@
 "use client";
 
-import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import {
+  Box,
+  BoxProps,
+  RecipeVariantProps,
+  Text,
+  useSlotRecipe,
+} from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren, useEffect } from "react";
 import { floatingActionButtonSlotRecipe } from "../theme/slot-recipes/floating-action-button";
 
@@ -64,7 +70,7 @@ export const FloatingActionButton = forwardRef<
       setIsTextVisible(!!externalIsTextVisible);
     }, [externalIsTextVisible]);
 
-    const recipe = useRecipe({ recipe: floatingActionButtonSlotRecipe });
+    const recipe = useSlotRecipe({ key: "floatingActionButton" });
     const style = recipe({
       variant,
       placement,
@@ -72,13 +78,19 @@ export const FloatingActionButton = forwardRef<
 
     return (
       <Box
-        css={style.container}
+        css={style.root}
+        as="button"
         aria-label={typeof children === "string" ? children : undefined}
         ref={ref}
         {...props}
+        aria-expanded={isTextVisible}
       >
-        <Box css={style._icon}>{icon}</Box>
-        <Box>{children}</Box>
+        <Box css={style.icon}>{icon}</Box>
+        {isTextVisible && (
+          <Text data-state="open" css={style.text}>
+            {children}
+          </Text>
+        )}
       </Box>
     );
   },

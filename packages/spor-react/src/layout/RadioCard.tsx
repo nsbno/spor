@@ -58,8 +58,6 @@ export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
 type RadioCardRootProps = RadioCardVariantProps &
   Exclude<ChakraRadioCard.RootProps, "variant"> & {
     children: React.ReactNode;
-    /** "core" | "floating" - defaults to core */
-    variant?: "core" | "floating";
     gap?: string | number;
     direction?: "row" | "column";
     display?: string;
@@ -69,7 +67,7 @@ export const RadioCardGroup = forwardRef<HTMLDivElement, RadioCardRootProps>(
   (props, ref) => {
     const {
       children,
-      variant = "core",
+      variant,
       gap = 2,
       direction = "column",
       display = "flex",

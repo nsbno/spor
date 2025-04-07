@@ -55,3 +55,7 @@ export function slugify(text: string) {
     .replace(/^-+/, "") // Trim - from start of text
     .replace(/-+$/, ""); // Trim - from end of text
 }
+
+export function capitalizeFirstLetter(word: string) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}

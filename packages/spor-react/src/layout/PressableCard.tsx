@@ -1,15 +1,7 @@
 "use client";
-import React, { forwardRef, PropsWithChildren } from "react";
-import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import React, { forwardRef } from "react";
+import { ButtonProps, chakra, RecipeVariantProps } from "@chakra-ui/react";
 import { pressableCardRecipe } from "../theme/recipes/pressable-card";
-
-type PressableCardVariants = RecipeVariantProps<typeof pressableCardRecipe>;
-
-type PressableCardProps = BoxProps &
-  PropsWithChildren<PressableCardVariants> & {
-    children: React.ReactNode;
-    variant?: "floating" | "accent" | "core";
-  };
 
 /**
  * `PressableCard` is a component that renders a pressable card.
@@ -41,14 +33,11 @@ type PressableCardProps = BoxProps &
  * @see StaticCard
  */
 
+const PressableCardButton = chakra("button", pressableCardRecipe);
+
+type PressableCardProps = RecipeVariantProps<typeof pressableCardRecipe> &
+  ButtonProps;
+
 export const PressableCard = forwardRef<HTMLDivElement, PressableCardProps>(
-  ({ variant = "core", children, ...props }, ref) => {
-    const recipe = useRecipe({ recipe: pressableCardRecipe });
-    const styles = recipe({ variant });
-    return (
-      <Box css={styles} {...props} ref={ref}>
-        {children}
-      </Box>
-    );
-  },
+  (props, ref) => <PressableCardButton {...props} ref={ref} />,
 );

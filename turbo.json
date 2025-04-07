@@ -10,14 +10,14 @@
     },
 
     "build": {
-      "dependsOn": ["typegen"],
+      "dependsOn": ["^build"],
       "outputs": ["dist/**", "public/build/**"]
     },
     "test": {
       "outputs": []
     },
     "dev": {
-      "dependsOn": ["typegen", "^build"],
+      "dependsOn": ["typegen"],
       "cache": false,
       "persistent": true
     }

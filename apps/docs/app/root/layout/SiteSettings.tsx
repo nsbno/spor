@@ -30,6 +30,7 @@ export const SiteSettings = ({ showLabel }: SiteSettingsProps) => {
       fontWeight="bold"
       position="relative"
       className="dark"
+      marginRight={[0, 0, 0, 4]}
     >
       <Stack gap="4">
         <Heading as="h2" variant="md">

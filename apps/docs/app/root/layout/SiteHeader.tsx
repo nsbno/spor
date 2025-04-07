@@ -5,15 +5,15 @@ import {
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
-  ColorModeButton,
   Drawer,
-  DrawerBackdrop,
   DrawerBody,
   DrawerCloseTrigger,
   DrawerContent,
   DrawerHeader,
+  DrawerTitle,
   Flex,
   IconButton,
+  SearchInput,
   Stack,
   VyLogo,
   useDisclosure,
@@ -57,13 +57,14 @@ export const SiteHeader = () => {
         zIndex: "sticky",
       }}
       gap="3"
+      width={"100vw"}
+      overflow={"hidden"}
     >
       <Box marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
         <Link to="/" aria-label="Go to the front page">
           <VyLogo className="dark" width="auto" height="56px" aria-label="Vy" />
         </Link>
       </Box>
-
       <DesktopNavigation
         onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
       />
@@ -89,32 +90,27 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
 
   return (
     <>
-      {/* <Flex
+      <Flex
         display={["none", null, null, "flex"]}
         maxWidth={[null, null, null, "breakpoints.lg", "breakpoints.xl"]}
         marginX="auto"
         paddingX={[3, null, 7, 5, 9]}
+        className="dark"
       >
         <SearchInput
           role="button"
           onClick={onSearchClick}
-          onKeyDown={(e: KeyboardEvent) => {
+          onKeyDown={(e: React.KeyboardEvent) => {
             if (e.key === "Enter" || e.key === " ") {
               onSearchClick();
             }
           }}
           width={[null, null, null, "37.5rem"]}
           readOnly
-          label={
-            <Flex alignItems="center" gap={1}>
-              Search docs{" "}
-              <Text size="sm" fontSize="12" paddingTop={0.5}>
-                ({isMac ? "cmd" : "ctrl"} + K)
-              </Text>
-            </Flex>
-          }
+          label="Search components"
+          color="white"
         />
-      </Flex> */}
+      </Flex>
       <Flex
         display={["none", null, null, "flex"]}
         flex={[0, 0, 0, 0, 1]}
@@ -160,10 +156,11 @@ const MobileNavigation = ({ onSearchClick }: SearchFieldProps) => {
         />
       </Flex>
       <Drawer placement="end" open={open} onExitComplete={onClose}>
-        <DrawerBackdrop />
         <DrawerContent>
-          <DrawerCloseTrigger />
-          <DrawerHeader>Explore Spor</DrawerHeader>
+          <DrawerHeader>
+            <DrawerTitle>Explore Spor</DrawerTitle>
+            <DrawerCloseTrigger onClick={onClose} />
+          </DrawerHeader>
           <DrawerBody paddingY={2} paddingX={[1, 2, 3]}>
             <Stack padding={2}>
               <SearchableContentMenu />

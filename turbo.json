@@ -5,9 +5,7 @@
       "persistent": true
     },
 
-    "typegen": {
-      "cache": true
-    },
+    "typegen": {},
 
     "build": {
       "dependsOn": ["typegen", "^build"],

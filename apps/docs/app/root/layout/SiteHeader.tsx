@@ -56,19 +56,14 @@ export const SiteHeader = () => {
         top: "0",
         zIndex: "sticky",
       }}
-      gap={1}
+      gap="3"
     >
       <Box marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
         <Link to="/" aria-label="Go to the front page">
-          <VyLogo
-            className="dark"
-            width="auto"
-            height={["30px", "36px", null, "48px"]}
-            aria-label="Vy"
-          />
+          <VyLogo className="dark" width="auto" height="56px" aria-label="Vy" />
         </Link>
       </Box>
-      <ColorModeButton className="dark" /> {/* temp solution */}
+
       <DesktopNavigation
         onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
       />

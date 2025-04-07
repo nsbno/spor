@@ -1,19 +1,17 @@
 import { useFetcher } from "@remix-run/react";
-import { Brand } from "@vygruppen/spor-react";
+import { NativeSelect } from "@vygruppen/spor-react";
 import { useBrand } from "~/utils/brand";
-import { useMatchesData } from "~/utils/useMatchesData";
 
 export const BrandSwitcher = () => {
   const fetcher = useFetcher();
-  const data = useMatchesData("root");
   const brand = useBrand();
 
   return (
     // Use native select until spor select is available
     <fetcher.Form method="post" action="/api/brand">
-      <select
-        name="brand"
-        defaultValue={brand as string}
+      <NativeSelect
+        label="Brand"
+        value={brand as string}
         onChange={(e: any) => {
           const formData = new FormData();
           formData.set("brand", e.target.value);
@@ -26,7 +24,7 @@ export const BrandSwitcher = () => {
         <option value="VyDigital">Vy Digital</option>
         <option value="VyUtvikling">Vy Utvikling</option>
         <option value="CargoNet">CargoNet</option>
-      </select>
+      </NativeSelect>
     </fetcher.Form>
   );
 };

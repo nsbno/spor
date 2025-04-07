@@ -2,8 +2,11 @@ import { SettingsX1Fill24Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
   CardSelect,
+  createListCollection,
   Flex,
   Heading,
+  Select,
+  SelectItem,
   Stack,
   Switch,
   Text,
@@ -16,45 +19,34 @@ type SiteSettingsProps = {
 };
 export const SiteSettings = ({ showLabel }: SiteSettingsProps) => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const labelProps = showLabel
-    ? { label: "Settings" }
-    : { "aria-label": "Settings" };
 
   return (
     <CardSelect
       variant="ghost"
       size="md"
+      label={showLabel ? "Settings" : ""}
       icon={<SettingsX1Fill24Icon />}
       withChevron={false}
       fontWeight="bold"
-      {...labelProps}
-      position={"relative"}
+      position="relative"
       className="dark"
     >
-      <Flex
-        gap={4}
-        flexDirection="column"
-        maxWidth="30ch"
-        width={["100%", "30ch"]}
-      >
-        <Box>
-          <Heading as="h2" variant="md">
-            Site settings
-          </Heading>
-          <Text variant="sm">
-            Change the appearance of the site to suit your preferences
-          </Text>
-        </Box>
-        <Stack gap={3}>
-          <BrandSwitcher />
-          <Switch
-            id="site-settings-dark-mode"
-            size="sm"
-            onChange={() => toggleColorMode()}
-            defaultChecked={colorMode === "light"}
-          />
-        </Stack>
-      </Flex>
+      <Stack gap="4">
+        <Heading as="h2" variant="md">
+          Site settings
+        </Heading>
+        <Text variant="sm">
+          Change the appearance of the site to suit your preferences
+        </Text>
+        <BrandSwitcher />
+        <Switch
+          id="site-settings-dark-mode"
+          size="sm"
+          onChange={() => toggleColorMode()}
+          defaultChecked={colorMode === "dark"}
+          label="Dark mode"
+        />
+      </Stack>
     </CardSelect>
   );
 };

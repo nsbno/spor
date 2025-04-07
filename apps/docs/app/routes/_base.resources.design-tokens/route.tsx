@@ -1,15 +1,10 @@
 import {
   Box,
-  Brand,
+  Flex,
   Heading,
-  HStack,
   Separator,
   Stack,
-  Tabs,
-  TabsList,
-  TabsTrigger,
   Text,
-  useColorMode,
 } from "@vygruppen/spor-react";
 import { AnimationTokens } from "~/routes/_base.resources.design-tokens/AnimationTokens";
 import { BreakpointTokens } from "./BreakpointTokens";
@@ -21,28 +16,10 @@ import { ShadowTokens } from "./ShadowTokens";
 import { SpacingTokens } from "./SpacingTokens";
 import { TypographyTokens } from "./TypographyTokens";
 import { ZIndexTokens } from "./ZIndexTokens";
-import { useFetcher } from "@remix-run/react";
-import { useMatchesData } from "~/utils/useMatchesData";
 import { BrandSwitcher } from "./BrandSwitcher";
+import { LightmodeSwitch } from "./LightModeSwitch";
 
 export default function DesignTokensPage() {
-  const { toggleColorMode } = useColorMode();
-  const fetcher = useFetcher();
-  const data = useMatchesData("root");
-  const brand = data?.brand ?? Brand.VyDigital;
-
-  const handleChange = (event: React.FormEvent<HTMLDivElement>) => {
-    const selectedTab = [Brand.VyDigital, Brand.CargoNet, Brand.VyUtvikling][
-      event.currentTarget.getAttribute("data-index") as unknown as number
-    ];
-    const formData = new FormData();
-    formData.set("brand", selectedTab);
-    fetcher.submit(formData, {
-      method: "post",
-      action: "/",
-    });
-  };
-
   return (
     <Box paddingBottom="8">
       <Heading as="h1" variant="xl-display" marginBottom={2}>
@@ -64,7 +41,10 @@ export default function DesignTokensPage() {
         </Text>
       </Stack>
 
-      <BrandSwitcher />
+      <Flex gap="6" alignItems="end">
+        <BrandSwitcher />
+        <LightmodeSwitch />
+      </Flex>
 
       <Separator marginBottom={8} marginTop={4} />
       <Stack gap={9}>

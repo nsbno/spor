@@ -1,8 +1,6 @@
 import {
-  Box,
   Brand,
   Heading,
-  HStack,
   Stack,
   Tabs,
   TabsList,
@@ -31,15 +29,16 @@ export const BrandSwitcher = () => {
         Theme
       </Heading>
       <fetcher.Form method="post" action="/api/brand">
-        <Tabs variant="accent" size="md" defaultValue={brand as string}>
+        <Tabs
+          variant="accent"
+          size="md"
+          value={brand as string}
+          onValueChange={(e) => handleTabChange(e.value)}
+        >
           <TabsList onChange={(v) => console.log(v)}>
-            {[Brand.VyDigital, Brand.CargoNet, Brand.VyUtvikling].map(
+            {[Brand.VyDigital, Brand.VyUtvikling, Brand.CargoNet].map(
               (brand) => (
-                <TabsTrigger
-                  width={[null, 100]}
-                  value={brand}
-                  onClick={() => handleTabChange(brand)}
-                >
+                <TabsTrigger width={[null, 100]} value={brand}>
                   {brand}
                 </TabsTrigger>
               ),

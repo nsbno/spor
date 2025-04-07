@@ -30,12 +30,23 @@ export const SiteSettings = ({ showLabel }: SiteSettingsProps) => {
       {...labelProps}
       position={"relative"}
       className="dark"
+      marginRight={[0, 0, 0, 4]}
     >
       <Flex
         gap={4}
         flexDirection="column"
-        maxWidth="30ch"
-        width={["100%", "30ch"]}
+        width={["96vw", null, null, "26ch"]}
+        maxWidth={["96vw", null, null, "26ch"]}
+        position={["fixed", null, null, "static"]}
+        top={9}
+        right={0}
+        backgroundColor={["white", null, null, "transparent"]}
+        borderColor={"border"}
+        borderWidth={[1, null, null, 0]}
+        borderRadius={"md"}
+        padding={[4, null, null, null]}
+        boxShadow={["md", null, null, "none"]}
+        marginRight={2}
       >
         <Box>
           <Heading as="h2" variant="md">

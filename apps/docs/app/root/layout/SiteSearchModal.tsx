@@ -1,17 +1,19 @@
+import { DialogActionTrigger, DialogTitle } from "@chakra-ui/react";
 import { useLocation, useNavigate } from "@remix-run/react";
+import { CloseOutline24Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
   DialogBackdrop,
   DialogBody,
-  DialogCloseTrigger,
   DialogContent,
   DialogHeader,
   DialogRoot,
+  IconButton,
 } from "@vygruppen/spor-react";
 import { matchSorter } from "match-sorter";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { GlobalSearchInput, SearchResults } from "./components";
 import { useMenu } from "~/utils/useMenu";
+import { GlobalSearchInput, SearchResults } from "./components";
 
 type SiteSearchModalProps = {
   searchDialogOpen: boolean;
@@ -78,8 +80,18 @@ export const SiteSearchModal = ({
     >
       <DialogBackdrop />
       <DialogContent>
-        <DialogCloseTrigger />
-        <DialogHeader>Search docs</DialogHeader>
+        <DialogHeader>
+          <DialogTitle>Search docs</DialogTitle>
+          <DialogActionTrigger>
+            <IconButton
+              icon={<CloseOutline24Icon />}
+              variant="ghost"
+              size="md"
+              aria-label="Search documentation"
+              onClick={() => setSearchDialogOpen(!searchDialogOpen)}
+            />
+          </DialogActionTrigger>
+        </DialogHeader>
         <DialogBody>
           <Box as="form" onSubmit={handleSubmit}>
             <GlobalSearchInput

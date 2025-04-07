@@ -10,7 +10,7 @@
     },
 
     "build": {
-      "dependsOn": ["typegen", "^build"],
+      "dependsOn": ["typegen"],
       "outputs": ["dist/**", "public/build/**"]
     },
     "test": {

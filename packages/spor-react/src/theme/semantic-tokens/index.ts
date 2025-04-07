@@ -1,5 +1,5 @@
 import { Brand } from "../brand";
-import { cargonetColors, colors, vyDigitalColors } from "./colors";
+import { cargonetColors, vyUtviklingColors, vyDigitalColors } from "./colors";
 import { radii } from "./radii";
 import { shadows } from "./shadows";
 
@@ -11,7 +11,7 @@ const baseSemanticTokens = {
 export const semanticTokens = {
   [Brand.VyUtvikling]: {
     ...baseSemanticTokens,
-    colors,
+    colors: vyUtviklingColors,
   },
   [Brand.CargoNet]: {
     ...baseSemanticTokens,

@@ -1,5 +1,5 @@
 import tokensJSON from "@vygruppen/spor-design-tokens/dist/tokens.json";
-import { useColorMode } from "@vygruppen/spor-react";
+import { Brand, useColorMode } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
 import { useBrand } from "~/utils/brand";
 
@@ -12,11 +12,13 @@ export type TokenColorKey = keyof typeof tokensJSON.color.vyDigital;
 const useGetThemeColorTokens = () => {
   const brand = useBrand();
 
-  switch (String(brand)) {
-    case "vyDigital":
+  switch (brand) {
+    case Brand.VyDigital:
       return tokensJSON.color.vyDigital;
-    case "CargoNet":
+    case Brand.CargoNet:
       return tokensJSON.color.cargonet;
+    case Brand.VyUtvikling:
+      return tokensJSON.color.vyUtvikling;
     default:
       return tokensJSON.color.vyDigital;
   }

@@ -62,7 +62,7 @@ export const SiteHeader = () => {
       width={"100vw"}
       overflow={"hidden"}
     >
-      <Box marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
+      <Box marginRight={[0, 0, 5]} flex={[0]}>
         <Link to="/" aria-label="Go to the front page">
           <VyLogo className="dark" width="auto" height="56px" aria-label="Vy" />
         </Link>
@@ -89,15 +89,18 @@ type SearchFieldProps = {
 
 const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
   const isMac = useRouteLoaderData<typeof loader>("root")?.isMac;
+  const domain = useRouteLoaderData<typeof loader>("root")?.domain;
+  const isOldVersion = domain?.includes("spor-v1");
 
   return (
-    <Flex alignItems={"center"}>
+    <Flex alignItems={"center"} flex="4">
       <Flex
         display={["none", null, null, "flex"]}
         maxWidth={[null, null, null, "breakpoints.lg", "breakpoints.xl"]}
-        marginX="auto"
         paddingX={[3, null, 7, 5, 4]}
         className="dark"
+        flex="8"
+        justifyContent={"center"}
       >
         <SearchInput
           role="button"
@@ -107,13 +110,18 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
               onSearchClick();
             }
           }}
-          width={[null, null, "15rem", "22rem"]}
+          width={[null, null, null, "28rem"]}
           readOnly
           label="Search components"
           color="white"
         />
       </Flex>
-      <Flex display={["flex"]} className="dark">
+      <Flex
+        display={["flex"]}
+        className="dark"
+        flex="1"
+        justifyContent={"flex-end"}
+      >
         <CardSelect
           label="Version"
           variant="core"
@@ -126,16 +134,18 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
             marginBottom={2}
             as="a"
             href="https://spor.vy.no"
+            disabled={!isOldVersion}
           >
-            Spor V2 - ver.12.xx.xx
+            Spor V2 - ver.12.xx
           </Button>
           <Button
             variant="tertiary"
             size="md"
             as="a"
             href="https://spor-v1.vy.no"
+            disabled={isOldVersion}
           >
-            Spor V1 - ver.11.xx.xx
+            Spor V1 - ver.11.xx
           </Button>
         </CardSelect>
       </Flex>

@@ -107,11 +107,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     request.headers.get("user-agent") ?? "",
   );
 
+  const domain = request.headers.get("host") ?? "";
+
   return {
     initialSanityData,
     cookies: request.headers.get("cookie") ?? "",
     brand,
     isMac,
+    domain,
   };
 };
 

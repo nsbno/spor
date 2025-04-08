@@ -50,46 +50,36 @@ export const SiteHeader = () => {
   useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
 
   return (
-    <>
-      <Flex
-        justifyContent="space-between"
-        alignItems="center"
-        paddingX={[3, 4, 7]}
-        paddingY={[3, 4, 5, 4]}
-        backgroundColor={"surface.tertiary"}
-        className="light"
-        css={{
-          position: "sticky",
-          top: "0",
-          zIndex: "sticky",
-        }}
-        gap="3"
-        width={"100vw"}
-        overflow={"hidden"}
-      >
-        <Box marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
-          <Link to="/" aria-label="Go to the front page">
-            <VyLogo
-              className="dark"
-              width="auto"
-              height="56px"
-              aria-label="Vy"
-            />
-          </Link>
-        </Box>
-        <DesktopNavigation
-          onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
-        />
-        <MobileNavigation
-          onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
-        />
+    <Flex
+      justifyContent="space-between"
+      alignItems="center"
+      paddingX={[3, 4, 7]}
+      paddingY={[3, 4, 5, 4]}
+      backgroundColor={"surface.tertiary"}
+      className="light"
+      css={{
+        position: "sticky",
+        top: "0",
+        zIndex: "sticky",
+      }}
+      gap="3"
+      width={"100vw"}
+      overflow={"hidden"}
+    >
+      <Box marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
+        <Link to="/" aria-label="Go to the front page">
+          <VyLogo className="dark" width="auto" height="56px" aria-label="Vy" />
+        </Link>
+      </Box>
+      <DesktopNavigation
+        onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
+      />
+      <MobileNavigation
+        onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
+      />
 
-        <SearchDocs
-          onOpenChange={setSearchDialogOpen}
-          open={searchDialogOpen}
-        />
-      </Flex>
-    </>
+      <SearchDocs onOpenChange={setSearchDialogOpen} open={searchDialogOpen} />
+    </Flex>
   );
 };
 

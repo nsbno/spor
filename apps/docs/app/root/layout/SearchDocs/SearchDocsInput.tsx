@@ -56,11 +56,11 @@ type Props = {
 };
 
 export const SearchDocsInput = ({ onSearchSelect }: Props) => {
-  const [searchInput, setSearchInput] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const items = useSearchableItems();
 
-  const hits = matchSorter(items, searchInput, {
+  const hits = matchSorter(items, searchQuery, {
     keys: ["title", "tags"],
   });
 
@@ -68,18 +68,16 @@ export const SearchDocsInput = ({ onSearchSelect }: Props) => {
 
   const navigate = useNavigate();
 
-  if (!collection) return null;
-
   return (
     <Combobox.Root
       collection={collection}
-      onInputValueChange={({ inputValue }) => setSearchInput(inputValue)}
-      inputValue={searchInput}
+      onInputValueChange={({ inputValue }) => setSearchQuery(inputValue)}
+      inputValue={searchQuery}
       navigate={({ value }) => navigate(value ?? "")}
       inputBehavior="autohighlight"
       selectionBehavior="clear"
       onValueChange={() => onSearchSelect()}
-      defaultOpen
+      defaultOpen={true}
     >
       <Combobox.Control>
         <Combobox.Input asChild>
@@ -88,8 +86,8 @@ export const SearchDocsInput = ({ onSearchSelect }: Props) => {
             type="text"
             label="Search the docs"
             placeholder=""
-            onReset={() => setSearchInput("")}
-            value={searchInput}
+            onReset={() => setSearchQuery("")}
+            value={searchQuery}
           />
         </Combobox.Input>
       </Combobox.Control>

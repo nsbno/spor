@@ -13,8 +13,8 @@ export const SearchDocs = ({ onOpenChange, open }: Props) => {
       onOpenChange={(d) => onOpenChange(d.open)}
       size={"lg"}
     >
-      <DialogContent>
-        <DialogBody padding="2" rounded="xs">
+      <DialogContent rounded="sm">
+        <DialogBody padding="2">
           <SearchDocsInput
             onSearchSelect={() => onOpenChange(false)}
             onClose={() => onOpenChange(false)}

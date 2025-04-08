@@ -1,11 +1,11 @@
 import { Combobox, createListCollection } from "@ark-ui/react/combobox";
 import { SearchOutline24Icon } from "@vygruppen/spor-icon-react";
 import { SearchInput, Text } from "@vygruppen/spor-react";
-import { useState, useMemo, useEffect } from "react";
+import { useState } from "react";
 import { useMenu } from "~/utils/useMenu";
 import { matchSorter } from "match-sorter";
 import { Link, useNavigate } from "react-router-dom";
-import { chakra } from "@chakra-ui/react";
+import { chakra, For } from "@chakra-ui/react";
 
 const useSearchableItems = () => {
   const menu = useMenu("side-menu");
@@ -97,17 +97,25 @@ export const SearchDocsInput = ({ onSearchSelect, onClose }: Props) => {
       </Combobox.Control>
       <ComboboxContent>
         <Combobox.ItemGroup>
-          {collection.items.map((item) => (
-            <ComboboxItem key={item.url} item={item} asChild>
-              <Link to={`${item.url}`}>
-                <Text fontWeight="bold">{item.title}</Text>
-
-                <Text variant="xs" color="text.tertiary">
-                  {item.categoryTitle}
-                </Text>
-              </Link>
-            </ComboboxItem>
-          ))}
+          <For
+            each={collection.items}
+            fallback={
+              <Text px="4" py="5" color="text.tertiary">
+                No results found for "{searchQuery}"
+              </Text>
+            }
+          >
+            {(item) => (
+              <ComboboxItem key={item.url} item={item} asChild>
+                <Link to={`${item.url}`}>
+                  <Text fontWeight="bold">{item.title}</Text>
+                  <Text variant="xs" color="text.tertiary">
+                    {item.categoryTitle}
+                  </Text>
+                </Link>
+              </ComboboxItem>
+            )}
+          </For>
         </Combobox.ItemGroup>
       </ComboboxContent>
     </Combobox.Root>

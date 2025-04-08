@@ -23,6 +23,7 @@ import { loader } from "~/root";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
 import { SiteSearchModal } from "./SiteSearchModal";
 import { SiteSettings } from "./SiteSettings";
+import { DocsSearch } from "./DocsSearch";
 
 /** The site header shown at the top of every part of our site */
 export const SiteHeader = () => {
@@ -70,18 +71,20 @@ export const SiteHeader = () => {
           />
         </Link>
       </Box>
+
+      <DocsSearch />
+
       <DesktopNavigation
         onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
       />
       <MobileNavigation
         onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
       />
-      {searchDialogOpen && (
-        <SiteSearchModal
-          searchDialogOpen={searchDialogOpen}
-          setSearchDialogOpen={setSearchDialogOpen}
-        />
-      )}
+
+      <SiteSearchModal
+        isOpen={searchDialogOpen}
+        onOpenChange={setSearchDialogOpen}
+      />
     </Flex>
   );
 };

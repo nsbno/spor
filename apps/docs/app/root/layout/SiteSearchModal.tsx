@@ -15,15 +15,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useMenu } from "~/utils/useMenu";
 import { GlobalSearchInput, SearchResults } from "./components";
 
-type SiteSearchModalProps = {
-  searchDialogOpen: boolean;
-  setSearchDialogOpen: (value: boolean) => void;
+type Props = {
+  isOpen: boolean;
+  onOpenChange: (value: boolean) => void;
 };
 
-export const SiteSearchModal = ({
-  searchDialogOpen,
-  setSearchDialogOpen,
-}: SiteSearchModalProps) => {
+export const SiteSearchModal = ({ isOpen, onOpenChange }: Props) => {
   const menu = useMenu("side-menu");
   const [query, setQuery] = useState("");
   const isSearchActive = query.length > 0;
@@ -72,11 +69,9 @@ export const SiteSearchModal = ({
   };
   return (
     <DialogRoot
-      open={searchDialogOpen}
-      onExitComplete={() => setSearchDialogOpen(!searchDialogOpen)}
-      closeOnInteractOutside={true}
-      closeOnEscape={true}
-      size={"xl"}
+      open={isOpen}
+      onOpenChange={({ open }) => onOpenChange(open)}
+      size="xl"
     >
       <DialogBackdrop />
       <DialogContent>
@@ -88,7 +83,7 @@ export const SiteSearchModal = ({
               variant="ghost"
               size="md"
               aria-label="Search documentation"
-              onClick={() => setSearchDialogOpen(!searchDialogOpen)}
+              onClick={() => onOpenChange(!isOpen)}
             />
           </DialogActionTrigger>
         </DialogHeader>
@@ -105,7 +100,7 @@ export const SiteSearchModal = ({
                 ref={focusableRef}
                 hits={hits}
                 query={query}
-                onResultClick={() => setSearchDialogOpen(false)}
+                onResultClick={() => onOpenChange(false)}
               />
             )}
           </Box>

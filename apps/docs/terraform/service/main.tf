@@ -19,6 +19,6 @@ locals {
 module "ecr" {
   source              = "github.com/nsbno/terraform-aws-ecr?ref=1.4.1"
   name_prefix         = local.ecr_repository_name
-  trusted_accounts    = [local.prod_account, local.service_account, test_account]
+  trusted_accounts    = [local.prod_account, local.service_account, local.test_account]
   max_images_retained = 10
 }

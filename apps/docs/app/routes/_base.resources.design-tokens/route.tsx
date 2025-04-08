@@ -17,7 +17,7 @@ import { SpacingTokens } from "./SpacingTokens";
 import { TypographyTokens } from "./TypographyTokens";
 import { ZIndexTokens } from "./ZIndexTokens";
 import { BrandSwitcher } from "./BrandSwitcher";
-import { LightmodeSwitch } from "./LightModeSwitch";
+import { LightmodeSwitch } from "./LightmodeSwitch";
 
 export default function DesignTokensPage() {
   return (

@@ -96,12 +96,12 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
   const isMac = useRouteLoaderData<typeof loader>("root")?.isMac;
 
   return (
-    <>
+    <Flex alignItems={"center"}>
       <Flex
         display={["none", null, null, "flex"]}
         maxWidth={[null, null, null, "breakpoints.lg", "breakpoints.xl"]}
         marginX="auto"
-        paddingX={[3, null, 7, 5, 9]}
+        paddingX={[3, null, 7, 5, 4]}
         className="dark"
       >
         <SearchInput
@@ -112,11 +112,37 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
               onSearchClick();
             }
           }}
-          width={[null, null, null, "37.5rem"]}
+          width={[null, null, "15rem", "22rem"]}
           readOnly
           label="Search components"
           color="white"
         />
+      </Flex>
+      <Flex display={["flex"]} className="dark">
+        <CardSelect
+          label="Version"
+          variant="core"
+          size="md"
+          width={["100%", "100%", "100%", "auto"]}
+        >
+          <Button
+            variant="tertiary"
+            size="md"
+            marginBottom={2}
+            as="a"
+            href="https://spor.vy.no"
+          >
+            Spor V2 - ver.12.xx.xx
+          </Button>
+          <Button
+            variant="tertiary"
+            size="md"
+            as="a"
+            href="https://spor-v1.vy.no"
+          >
+            Spor V1 - ver.11.xx.xx
+          </Button>
+        </CardSelect>
       </Flex>
       <Flex
         display={["none", null, null, "flex"]}
@@ -126,22 +152,9 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         className="dark"
         gap={2}
       >
-        <CardSelect
-          label="Choose version"
-          variant="core"
-          size="md"
-          display={["none", null, null, "flex"]}
-        >
-          <Button variant="tertiary" size="md" marginBottom={2}>
-            Spor V2 - ver.12.xx.xx
-          </Button>
-          <Button variant="tertiary" size="md">
-            Spor V1 - ver.11.xx.xx
-          </Button>
-        </CardSelect>
         <SiteSettings showLabel={true} />
       </Flex>
-    </>
+    </Flex>
   );
 };
 

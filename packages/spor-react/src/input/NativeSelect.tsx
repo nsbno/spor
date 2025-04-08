@@ -1,7 +1,7 @@
 "use client";
 import {
   RecipeVariantProps,
-  NativeSelect as Select,
+  NativeSelect as ChakraNativeSelect,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
@@ -13,14 +13,10 @@ type NativeSelectVariantProps = RecipeVariantProps<
   typeof nativeSelectSlotRecipe
 >;
 
-type NativeSelectRootProps = Exclude<
-  Select.RootProps,
-  "size" | "colorPalette"
-> &
+type NativeSelectRootProps =
   React.PropsWithChildren<NativeSelectVariantProps> & {
     icon?: React.ReactNode;
     label: string;
-    value?: string;
   };
 
 /**
@@ -44,30 +40,19 @@ export const NativeSelect = React.forwardRef<
   HTMLDivElement,
   NativeSelectRootProps
 >(function NativeSelect(props, ref) {
-  const {
-    icon,
-    children,
-    variant = "core",
-    invalid,
-    disabled,
-    ...rest
-  } = props;
+  const { icon, children, variant = "core", label, ...rest } = props;
   const recipe = useSlotRecipe({ recipe: nativeSelectSlotRecipe });
   const styles = recipe({ variant });
   return (
-    <Field {...rest}>
-      <Select.Root ref={ref} css={styles.root}>
-        <Select.Field
-          css={styles.field}
-          aria-disabled={disabled}
-          aria-invalid={invalid}
-        >
+    <Field label={label}>
+      <ChakraNativeSelect.Root ref={ref} css={styles.root}>
+        <ChakraNativeSelect.Field css={styles.field} {...rest}>
           {children}
-        </Select.Field>
-        <Select.Indicator css={styles.icon}>
+        </ChakraNativeSelect.Field>
+        <ChakraNativeSelect.Indicator css={styles.icon}>
           <DropdownDownFill18Icon />
-        </Select.Indicator>
-      </Select.Root>
+        </ChakraNativeSelect.Indicator>
+      </ChakraNativeSelect.Root>
     </Field>
   );
 });

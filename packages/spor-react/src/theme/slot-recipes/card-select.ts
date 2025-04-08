@@ -9,6 +9,7 @@ export const cardSelectSlotRecipe = defineSlotRecipe({
     trigger: {
       appearance: "none",
       display: "flex",
+      cursor: "pointer",
       alignItems: "center",
       transitionProperty: "outline",
       transitionDuration: "fast",
@@ -25,6 +26,7 @@ export const cardSelectSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       boxShadow: "md",
       padding: 2,
+      margin: 1,
       color: "core.text",
       backgroundColor: "surface",
     },

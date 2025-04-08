@@ -90,7 +90,6 @@ export const SearchDocsInput = ({ onSearchSelect, onClose }: Props) => {
             type="text"
             label="Search the docs"
             placeholder=""
-            onReset={() => setSearchQuery("")}
             value={searchQuery}
           />
         </Combobox.Input>

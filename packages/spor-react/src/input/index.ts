@@ -16,3 +16,4 @@ export * from "./SearchInput";
 export * from "./Switch";
 export * from "./Textarea";
 export * from "./Select";
+export * from "./InputGroup";

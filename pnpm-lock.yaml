@@ -29,6 +29,9 @@ importers:
 
   apps/docs:
     dependencies:
+      '@ark-ui/react':
+        specifier: ^4.9.2
+        version: 4.9.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@chakra-ui/react':
         specifier: ^3.9.0
         version: 3.9.0(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)

@@ -2,9 +2,11 @@ import { Link, useLocation, useRouteLoaderData } from "@remix-run/react";
 import {
   HamburgerFill24Icon,
   SearchFill24Icon,
+  SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
+  Button,
   Drawer,
   DrawerBody,
   DrawerCloseTrigger,
@@ -13,26 +15,23 @@ import {
   DrawerTitle,
   Flex,
   IconButton,
-  SearchInput,
   Stack,
+  Text,
   VyLogo,
   useDisclosure,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
 import { loader } from "~/root";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
-import { SiteSearchModal } from "./SiteSearchModal";
 import { SiteSettings } from "./SiteSettings";
+import { SearchDocs } from "./SearchDocs";
 
-/** The site header shown at the top of every part of our site */
-export const SiteHeader = () => {
-  const [searchDialogOpen, setSearchDialogOpen] = useState(false);
-
+const useSearchKeyboardShortcut = (onTriggered: () => void) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
-        setSearchDialogOpen(true);
+        onTriggered();
       }
     };
 
@@ -42,42 +41,55 @@ export const SiteHeader = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+};
+
+/** The site header shown at the top of every part of our site */
+export const SiteHeader = () => {
+  const [searchDialogOpen, setSearchDialogOpen] = useState(false);
+
+  useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
 
   return (
-    <Flex
-      justifyContent="space-between"
-      alignItems="center"
-      paddingX={[3, 4, 7]}
-      paddingY={[3, 4, 5, 4]}
-      backgroundColor={"surface.tertiary"}
-      className="light"
-      css={{
-        position: "sticky",
-        top: "0",
-        zIndex: "sticky",
-      }}
-      gap="3"
-      width={"100vw"}
-      overflow={"hidden"}
-    >
-      <Box marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
-        <Link to="/" aria-label="Go to the front page">
-          <VyLogo className="dark" width="auto" height="56px" aria-label="Vy" />
-        </Link>
-      </Box>
-      <DesktopNavigation
-        onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
-      />
-      <MobileNavigation
-        onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
-      />
-      {searchDialogOpen && (
-        <SiteSearchModal
-          searchDialogOpen={searchDialogOpen}
-          setSearchDialogOpen={setSearchDialogOpen}
+    <>
+      <Flex
+        justifyContent="space-between"
+        alignItems="center"
+        paddingX={[3, 4, 7]}
+        paddingY={[3, 4, 5, 4]}
+        backgroundColor={"surface.tertiary"}
+        className="light"
+        css={{
+          position: "sticky",
+          top: "0",
+          zIndex: "sticky",
+        }}
+        gap="3"
+        width={"100vw"}
+        overflow={"hidden"}
+      >
+        <Box marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
+          <Link to="/" aria-label="Go to the front page">
+            <VyLogo
+              className="dark"
+              width="auto"
+              height="56px"
+              aria-label="Vy"
+            />
+          </Link>
+        </Box>
+        <DesktopNavigation
+          onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
         />
-      )}
-    </Flex>
+        <MobileNavigation
+          onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
+        />
+
+        <SearchDocs
+          onOpenChange={setSearchDialogOpen}
+          open={searchDialogOpen}
+        />
+      </Flex>
+    </>
   );
 };
 
@@ -97,19 +109,25 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         paddingX={[3, null, 7, 5, 9]}
         className="dark"
       >
-        <SearchInput
-          role="button"
+        <Button
+          variant="tertiary"
+          borderRadius="xs"
+          leftIcon={<SearchOutline24Icon />}
+          className="dark"
           onClick={onSearchClick}
-          onKeyDown={(e: React.KeyboardEvent) => {
-            if (e.key === "Enter" || e.key === " ") {
-              onSearchClick();
-            }
-          }}
-          width={[null, null, null, "37.5rem"]}
-          readOnly
-          label="Search components"
-          color="white"
-        />
+          padding="2"
+        >
+          <Box
+            xl={{ minWidth: "35rem" }}
+            lg={{ minWidth: "25rem" }}
+            display="flex"
+            gap="2"
+            justifyContent="space-between"
+          >
+            <Text> Search docs...</Text>
+            <Text variant="xs">({isMac ? "cmd" : "ctrl"} + k)</Text>
+          </Box>
+        </Button>
       </Flex>
       <Flex
         display={["none", null, null, "flex"]}

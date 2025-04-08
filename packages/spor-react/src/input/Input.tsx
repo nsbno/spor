@@ -56,18 +56,12 @@ export type InputProps = Exclude<
  * @see https://spor.vy.no/components/input
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const {
-    variant = "core",
-    startElement,
-    endElement,
-    label,
-    ...fieldProps
-  } = props;
+  const { variant = "core", startElement, endElement, label } = props;
 
   const recipe = useRecipe({ key: "input" });
   const styles = recipe({ variant });
   return (
-    <Field {...fieldProps}>
+    <Field>
       <InputGroup
         endElement={endElement && endElement}
         startElement={startElement && startElement}

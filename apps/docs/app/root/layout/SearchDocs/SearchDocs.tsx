@@ -15,7 +15,10 @@ export const SearchDocs = ({ onOpenChange, open }: Props) => {
     >
       <DialogContent>
         <DialogBody padding="2" rounded="xs">
-          <SearchDocsInput onSearchSelect={() => onOpenChange(false)} />
+          <SearchDocsInput
+            onSearchSelect={() => onOpenChange(false)}
+            onClose={() => onOpenChange(false)}
+          />
         </DialogBody>
       </DialogContent>
     </DialogRoot>

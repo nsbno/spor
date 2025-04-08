@@ -53,9 +53,10 @@ const ComboboxContent = chakra(Combobox.Content, {
 
 type Props = {
   onSearchSelect: () => void;
+  onClose: () => void;
 };
 
-export const SearchDocsInput = ({ onSearchSelect }: Props) => {
+export const SearchDocsInput = ({ onSearchSelect, onClose }: Props) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const items = useSearchableItems();
@@ -78,6 +79,9 @@ export const SearchDocsInput = ({ onSearchSelect }: Props) => {
       selectionBehavior="clear"
       onValueChange={() => onSearchSelect()}
       defaultOpen={true}
+      onOpenChange={({ open }) => {
+        if (!open) onClose();
+      }}
     >
       <Combobox.Control>
         <Combobox.Input asChild>

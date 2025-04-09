@@ -6,6 +6,7 @@ import {
   TokensOutline30Icon,
   TrainOutline30Icon,
   StarsOutline30Icon,
+  RobotOutline30Icon,
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
@@ -72,6 +73,13 @@ const links: LinkItem[] = [
     description: "Try out Spor components live in our playground",
     icon: TrainOutline30Icon,
     iconColor: "silver",
+  },
+  {
+    to: "/testing",
+    title: "Testing",
+    description: "Use this side to test CLS",
+    icon: RobotOutline30Icon,
+    iconColor: "seaMist",
   },
 ];
 

@@ -11,6 +11,7 @@ import {
 } from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 import { useDesignTokens } from "./utils";
+import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 
 export const ShadowTokens = () => (
   <SharedTokenLayout
@@ -55,7 +56,9 @@ const ShadowTokensTable = () => {
               <TableCell>
                 <Box width={8} height={8} boxShadow={token} borderRadius="xs" />
               </TableCell>
-              <TableCell>{token}</TableCell>
+              <TableCell>
+                <CopyTokenToClipBoard>{token}</CopyTokenToClipBoard>
+              </TableCell>
               <TableCell>
                 <Code>{value}</Code>
               </TableCell>

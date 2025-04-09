@@ -3,6 +3,7 @@ import {
   Center,
   Button as ChakraButton,
   Flex,
+  Span,
   type ButtonProps as ChakraButtonProps,
   type RecipeVariantProps,
 } from "@chakra-ui/react";
@@ -78,6 +79,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ...rest
     } = props;
     const ariaLabel = useCorrectAriaLabel(props);
+
+    const buttonContent = (
+      <>
+        {leftIcon}
+        {children}
+        {rightIcon && <Span marginLeft="auto">{rightIcon}</Span>}
+      </>
+    );
+
     return (
       <ChakraButton
         {...rest}
@@ -90,37 +100,24 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         variant={variant}
         size={size}
       >
-        {loading && (
-          <Center position="absolute" right={0} left={0} top={1} bottom={0}>
-            <ColorInlineLoader
-              maxWidth={getLoaderWidth(size)}
-              width="80%"
-              marginX={2}
-              marginY={2}
-            />
-            {loadingText && <Box>{loadingText}</Box>}
-          </Center>
+        {loading ? (
+          <>
+            <Flex gap="1" visibility="hidden">
+              {buttonContent}
+            </Flex>
+            <Center position="absolute" right={0} left={0} top={1} bottom={0}>
+              <ColorInlineLoader
+                maxWidth={getLoaderWidth(size)}
+                width="80%"
+                marginX={2}
+                marginY={2}
+              />
+              {loadingText && <Box>{loadingText}</Box>}
+            </Center>
+          </>
+        ) : (
+          buttonContent
         )}
-        <Flex
-          gap={1}
-          flex={1}
-          alignItems="center"
-          justifyContent={rightIcon ? "space-between" : "center"}
-          visibility={loading ? "hidden" : "visible"}
-          aria-hidden={loading}
-        >
-          <Flex gap={1} alignItems="center">
-            {leftIcon}
-            <Box
-              visibility={loading ? "hidden" : "visible"}
-              whiteSpace="normal"
-              textAlign="center"
-            >
-              {children}
-            </Box>
-          </Flex>
-          {rightIcon}
-        </Flex>
       </ChakraButton>
     );
   },

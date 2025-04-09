@@ -9,6 +9,7 @@ import {
 } from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 import { remToPx, useDesignTokens } from "./utils";
+import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 
 export const OutlineTokens = () => (
   <SharedTokenLayout title="Outlines">
@@ -48,7 +49,11 @@ const OutlineTokensTable = () => {
                       border={tokenWithVariant}
                     />
                   </TableCell>
-                  <TableCell>{tokenWithVariant}</TableCell>
+                  <TableCell>
+                    <CopyTokenToClipBoard>
+                      {tokenWithVariant}
+                    </CopyTokenToClipBoard>
+                  </TableCell>
                   <TableCell>{`${value} ${variant} (${remToPx(value)})`}</TableCell>
                 </TableRow>
               );

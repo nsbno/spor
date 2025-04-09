@@ -14,6 +14,7 @@ import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 import tokensJSON from "@vygruppen/spor-design-tokens/dist/tokens.json";
 import { useDesignTokens } from "../utils/useDesignTokens";
 import { capitalizeFirstLetter } from "~/utils/stringUtils";
+import { CopyTokenToClipBoard } from "../CopyTokenToClipBoard";
 
 type Props = {
   colorKey: keyof typeof tokensJSON.color.palette;
@@ -56,24 +57,31 @@ export const PaletteTable = ({
           return (
             <TableRow key={name} color="text">
               <TableCell>
-                <Flex gap="2" alignItems="center">
+                <Flex gap="3" alignItems="center" overflow="hidden">
                   <Box
                     bg={name}
                     borderRadius="xs"
                     width="7"
+                    flexShrink={0}
                     height="7"
                     border={
                       value.includes("white")
                         ? "1px solid rgba(0,0,0,0.40)"
                         : "none"
                     }
-                  ></Box>
-                  {name}
+                  />
+                  <CopyTokenToClipBoard>{name}</CopyTokenToClipBoard>
                 </Flex>
               </TableCell>
-              <TableCell>{value.replace("colors.", "")}</TableCell>
               <TableCell>
-                <Badge colorPalette="grey">{paletteValue}</Badge>
+                <CopyTokenToClipBoard>
+                  {value.replace("colors.", "")}
+                </CopyTokenToClipBoard>
+              </TableCell>
+              <TableCell>
+                <CopyTokenToClipBoard copyValue={paletteValue ?? ""}>
+                  <Badge colorPalette="grey">{paletteValue}</Badge>
+                </CopyTokenToClipBoard>
               </TableCell>
             </TableRow>
           );

@@ -142,7 +142,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
             variant="tertiary"
             size="md"
             as="a"
-            href="https://spor-v1.vy.no"
+            href="https://spor-v1.test.vylabs.io/"
             disabled={isOldVersion}
           >
             Spor V1 - ver.11.xx

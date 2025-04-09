@@ -95,7 +95,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
   const isOldVersion = domain?.includes("spor-v1");
 
   return (
-    <Flex alignItems={"center"} flex="4">
+    <Flex alignItems={"center"} flex="1">
       <Flex
         display={["none", null, null, "flex"]}
         maxWidth={[null, null, null, "breakpoints.lg", "breakpoints.xl"]}
@@ -104,6 +104,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         className="dark"
         justifyContent={"center"}
         flex="8"
+        marginLeft={"calc(100vw / 10)"}
       >
         <Button
           variant="tertiary"

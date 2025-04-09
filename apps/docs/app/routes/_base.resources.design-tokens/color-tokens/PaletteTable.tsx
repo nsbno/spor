@@ -57,11 +57,12 @@ export const PaletteTable = ({
           return (
             <TableRow key={name} color="text">
               <TableCell>
-                <Flex gap="3" alignItems="center">
+                <Flex gap="3" alignItems="center" overflow="hidden">
                   <Box
                     bg={name}
                     borderRadius="xs"
                     width="7"
+                    flexShrink={0}
                     height="7"
                     border={
                       value.includes("white")

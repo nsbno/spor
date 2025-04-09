@@ -50,12 +50,13 @@ export const ColorTable = ({ name, colorKey }: Props) => {
           return (
             <TableRow key={name} color="text">
               <TableCell>
-                <Flex gap="3" alignItems="center">
+                <Flex gap="3" alignItems="center" overflow="hidden">
                   <Box
                     bg={tokenValue}
                     borderRadius="xs"
                     width="7"
                     height="7"
+                    flexShrink={0}
                     border={
                       value.includes("white")
                         ? "1px solid rgba(0,0,0,0.40)"

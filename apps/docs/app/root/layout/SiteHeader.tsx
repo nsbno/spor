@@ -2,6 +2,7 @@ import { Link, useLocation, useRouteLoaderData } from "@remix-run/react";
 import {
   HamburgerFill24Icon,
   SearchFill24Icon,
+  SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
@@ -15,26 +16,23 @@ import {
   DrawerTitle,
   Flex,
   IconButton,
-  SearchInput,
   Stack,
+  Text,
   VyLogo,
   useDisclosure,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
 import { loader } from "~/root";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
-import { SiteSearchModal } from "./SiteSearchModal";
+import { SearchDocs } from "./SearchDocs";
 import { SiteSettings } from "./SiteSettings";
 
-/** The site header shown at the top of every part of our site */
-export const SiteHeader = () => {
-  const [searchDialogOpen, setSearchDialogOpen] = useState(false);
-
+const useSearchKeyboardShortcut = (onTriggered: () => void) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
-        setSearchDialogOpen(true);
+        onTriggered();
       }
     };
 
@@ -44,9 +42,17 @@ export const SiteHeader = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+};
+
+/** The site header shown at the top of every part of our site */
+export const SiteHeader = () => {
+  const [searchDialogOpen, setSearchDialogOpen] = useState(false);
+
+  useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
 
   return (
     <Flex
+      as="header"
       justifyContent="space-between"
       alignItems="center"
       paddingX={[3, 4, 7]}
@@ -73,12 +79,8 @@ export const SiteHeader = () => {
       <MobileNavigation
         onSearchClick={() => setSearchDialogOpen(!searchDialogOpen)}
       />
-      {searchDialogOpen && (
-        <SiteSearchModal
-          searchDialogOpen={searchDialogOpen}
-          setSearchDialogOpen={setSearchDialogOpen}
-        />
-      )}
+
+      <SearchDocs onOpenChange={setSearchDialogOpen} open={searchDialogOpen} />
     </Flex>
   );
 };
@@ -97,24 +99,31 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
       <Flex
         display={["none", null, null, "flex"]}
         maxWidth={[null, null, null, "breakpoints.lg", "breakpoints.xl"]}
-        paddingX={[3, null, 7, 5, 4]}
+        marginX="auto"
+        paddingX={[3, null, 7, 5, 9]}
         className="dark"
-        flex="8"
         justifyContent={"center"}
+        flex="8"
       >
-        <SearchInput
-          role="button"
+        <Button
+          variant="tertiary"
+          borderRadius="xs"
+          leftIcon={<SearchOutline24Icon />}
+          className="dark"
           onClick={onSearchClick}
-          onKeyDown={(e: React.KeyboardEvent) => {
-            if (e.key === "Enter" || e.key === " ") {
-              onSearchClick();
-            }
-          }}
-          width={[null, null, null, "28rem"]}
-          readOnly
-          label="Search components"
-          color="white"
-        />
+          padding="2"
+        >
+          <Box
+            xl={{ minWidth: "35rem" }}
+            lg={{ minWidth: "25rem" }}
+            display="flex"
+            gap="2"
+            justifyContent="space-between"
+          >
+            <Text>Search docs...</Text>
+            <Text variant="xs">({isMac ? "cmd" : "ctrl"} + k)</Text>
+          </Box>
+        </Button>
       </Flex>
       <Flex
         display={["flex"]}

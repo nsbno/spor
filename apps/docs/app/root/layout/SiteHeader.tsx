@@ -51,6 +51,7 @@ export const SiteHeader = () => {
 
   return (
     <Flex
+      as="header"
       justifyContent="space-between"
       alignItems="center"
       paddingX={[3, 4, 7]}
@@ -114,7 +115,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
             gap="2"
             justifyContent="space-between"
           >
-            <Text> Search docs...</Text>
+            <Text>Search docs...</Text>
             <Text variant="xs">({isMac ? "cmd" : "ctrl"} + k)</Text>
           </Box>
         </Button>

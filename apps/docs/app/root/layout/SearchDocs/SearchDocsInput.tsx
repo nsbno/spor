@@ -32,8 +32,8 @@ const ComboboxItem = chakra(
       flexDirection: "column",
       borderRadius: "xs",
       gap: "1",
-      px: "4",
-      py: "3",
+      paddingX: "4",
+      paddingY: "3",
       _highlighted: { bg: "core.surface.active" },
     },
   },
@@ -98,7 +98,7 @@ export const SearchDocsInput = ({ onSearchSelect, onClose }: Props) => {
           <For
             each={collection.items}
             fallback={
-              <Text px="4" py="5" color="text.tertiary">
+              <Text paddingX="4" paddingY="5" color="text.tertiary">
                 No results found for "{searchQuery}"
               </Text>
             }

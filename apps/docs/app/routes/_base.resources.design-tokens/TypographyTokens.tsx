@@ -13,6 +13,7 @@ import { Fragment } from "react";
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 import { remToPx, useDesignTokens } from "./utils";
+import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 
 export const TypographyTokens = () => (
   <SharedTokenLayout
@@ -74,7 +75,9 @@ const TypographyTokenTable = ({
             <Fragment key={token}>
               <TableRow>
                 <TableCell>
-                  <Text variant={token}>{token}</Text>
+                  <CopyTokenToClipBoard copyValue={`"${token}"`}>
+                    <Text variant={token}>{token}</Text>
+                  </CopyTokenToClipBoard>
                 </TableCell>
 
                 <TableCell>

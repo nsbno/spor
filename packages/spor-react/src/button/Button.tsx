@@ -2,7 +2,7 @@ import {
   Box,
   Center,
   Button as ChakraButton,
-  Flex,
+  Span,
   type ButtonProps as ChakraButtonProps,
   type RecipeVariantProps,
 } from "@chakra-ui/react";
@@ -90,7 +90,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         variant={variant}
         size={size}
       >
-        {loading && (
+        {loading ? (
           <Center position="absolute" right={0} left={0} top={1} bottom={0}>
             <ColorInlineLoader
               maxWidth={getLoaderWidth(size)}
@@ -100,27 +100,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             />
             {loadingText && <Box>{loadingText}</Box>}
           </Center>
-        )}
-        <Flex
-          gap={1}
-          flex={1}
-          alignItems="center"
-          justifyContent={rightIcon ? "space-between" : "center"}
-          visibility={loading ? "hidden" : "visible"}
-          aria-hidden={loading}
-        >
-          <Flex gap={1} alignItems="center">
+        ) : (
+          <>
             {leftIcon}
-            <Box
-              visibility={loading ? "hidden" : "visible"}
-              whiteSpace="normal"
-              textAlign="center"
-            >
-              {children}
-            </Box>
-          </Flex>
-          {rightIcon}
-        </Flex>
+            {children}
+            {rightIcon && <Span marginLeft="auto">{rightIcon}</Span>}
+          </>
+        )}
       </ChakraButton>
     );
   },

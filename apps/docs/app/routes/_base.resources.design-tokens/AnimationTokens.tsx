@@ -11,6 +11,7 @@ import {
 } from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 import { useDesignTokens } from "./utils";
+import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 
 export const AnimationTokens = () => (
   <SharedTokenLayout
@@ -64,7 +65,9 @@ const AnimationTokensTable = () => {
                   }}
                 />
               </TableCell>
-              <TableCell>{token}</TableCell>
+              <TableCell>
+                <CopyTokenToClipBoard>{token}</CopyTokenToClipBoard>
+              </TableCell>
               <TableCell>
                 <Box>
                   <Code>{value}</Code>

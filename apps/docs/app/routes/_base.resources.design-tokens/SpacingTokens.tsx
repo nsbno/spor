@@ -14,6 +14,7 @@ import {
 import { Fragment } from "react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 import { remToPx, useDesignTokens } from "./utils";
+import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 
 export const SpacingTokens = () => (
   <SharedTokenLayout
@@ -64,7 +65,9 @@ const SpacingTokensTable = () => {
                     backgroundColor={"surface.tertiary"}
                   />
                 </TableCell>
-                <TableCell>{token}</TableCell>
+                <TableCell>
+                  <CopyTokenToClipBoard>{token}</CopyTokenToClipBoard>
+                </TableCell>
                 <TableCell>
                   {remToPx(variable)} / {variable}
                 </TableCell>

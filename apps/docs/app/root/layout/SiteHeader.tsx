@@ -110,20 +110,14 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
           variant="tertiary"
           borderRadius="xs"
           leftIcon={<SearchOutline24Icon />}
+          rightIcon={<Text variant="xs">({isMac ? "cmd" : "ctrl"} + k)</Text>}
           className="dark"
           onClick={onSearchClick}
           padding="2"
+          xl={{ minWidth: "38rem" }}
+          lg={{ minWidth: "28rem" }}
         >
-          <Box
-            xl={{ minWidth: "35rem" }}
-            lg={{ minWidth: "25rem" }}
-            display="flex"
-            gap="2"
-            justifyContent="space-between"
-          >
-            <Text>Search docs...</Text>
-            <Text variant="xs">({isMac ? "cmd" : "ctrl"} + k)</Text>
-          </Box>
+          Search docs...
         </Button>
       </Flex>
       <Flex

@@ -10,6 +10,7 @@ import {
 } from "@vygruppen/spor-react";
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 import { TokenColorKey, useDesignTokens } from "../utils/useDesignTokens";
+import { CopyTokenToClipBoard } from "../CopyTokenToClipBoard";
 
 type Props = {
   colorKey: TokenColorKey;
@@ -44,26 +45,36 @@ export const ColorTable = ({ name, colorKey }: Props) => {
         {colors.map(({ name, value }) => {
           const alias = aliases.find(({ name }) => name === value);
 
+          const tokenValue = `${colorKey}.${name}`.replace(".DEFAULT", "");
+
           return (
             <TableRow key={name} color="text">
               <TableCell>
-                <Flex gap="2" alignItems="center">
+                <Flex gap="3" alignItems="center" overflow="hidden">
                   <Box
-                    bg={value}
+                    bg={tokenValue}
                     borderRadius="xs"
                     width="7"
                     height="7"
+                    flexShrink={0}
                     border={
                       value.includes("white")
                         ? "1px solid rgba(0,0,0,0.40)"
                         : "none"
                     }
                   />
-                  {`${colorKey}.${name}`.replace(".DEFAULT", "")}
+
+                  <CopyTokenToClipBoard>{tokenValue}</CopyTokenToClipBoard>
                 </Flex>
               </TableCell>
-              <TableCell>{alias?.name}</TableCell>
-              <TableCell>{alias?.value ?? value}</TableCell>
+              <TableCell>
+                <CopyTokenToClipBoard>{alias?.name}</CopyTokenToClipBoard>
+              </TableCell>
+              <TableCell>
+                <CopyTokenToClipBoard>
+                  {alias?.value ?? value}
+                </CopyTokenToClipBoard>
+              </TableCell>
             </TableRow>
           );
         })}

@@ -9,6 +9,7 @@ import {
 } from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 import { useDesignTokens } from "./utils";
+import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 
 export const ZIndexTokens = () => {
   return (
@@ -37,7 +38,9 @@ const ZIndexTokensTable = () => {
         <TableBody>
           {zIndexTokens.map(([token, value]) => (
             <TableRow key={token}>
-              <TableCell>{token}</TableCell>
+              <TableCell>
+                <CopyTokenToClipBoard>{token}</CopyTokenToClipBoard>
+              </TableCell>
               <TableCell>{value}</TableCell>
             </TableRow>
           ))}

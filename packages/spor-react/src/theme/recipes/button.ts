@@ -8,6 +8,7 @@ export const buttonRecipe = defineRecipe({
     border: 0,
     borderRadius: "xl",
     display: "flex",
+    gap: "1",
     alignItems: "center",
     justifyContent: "center",
     transitionProperty: "common",

@@ -10,6 +10,7 @@ import {
 } from "@vygruppen/spor-react";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 import { remToPx, useDesignTokens } from "./utils";
+import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 
 export const RoundingTokens = () => (
   <SharedTokenLayout
@@ -66,7 +67,9 @@ const RoundingTokensTable = () => {
                 />
               </TableCell>
 
-              <TableCell>{token}</TableCell>
+              <TableCell>
+                <CopyTokenToClipBoard>{token}</CopyTokenToClipBoard>
+              </TableCell>
 
               <TableCell>
                 {remToPx(value)} / {value}

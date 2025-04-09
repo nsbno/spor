@@ -7,6 +7,7 @@ import {
 import {
   Box,
   Button,
+  CardSelect,
   Drawer,
   DrawerBody,
   DrawerCloseTrigger,
@@ -23,8 +24,8 @@ import {
 import { useEffect, useState } from "react";
 import { loader } from "~/root";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
-import { SiteSettings } from "./SiteSettings";
 import { SearchDocs } from "./SearchDocs";
+import { SiteSettings } from "./SiteSettings";
 
 const useSearchKeyboardShortcut = (onTriggered: () => void) => {
   useEffect(() => {
@@ -67,7 +68,7 @@ export const SiteHeader = () => {
       width={"100vw"}
       overflow={"hidden"}
     >
-      <Box marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]}>
+      <Box marginRight={[0, 0, 5]} flex={[0]}>
         <Link to="/" aria-label="Go to the front page">
           <VyLogo className="dark" width="auto" height="56px" aria-label="Vy" />
         </Link>
@@ -90,15 +91,20 @@ type SearchFieldProps = {
 
 const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
   const isMac = useRouteLoaderData<typeof loader>("root")?.isMac;
+  const domain = useRouteLoaderData<typeof loader>("root")?.domain;
+  const isOldVersion = domain?.includes("spor-v1");
 
   return (
-    <>
+    <Flex alignItems={"center"} flex="1">
       <Flex
         display={["none", null, null, "flex"]}
         maxWidth={[null, null, null, "breakpoints.lg", "breakpoints.xl"]}
         marginX="auto"
         paddingX={[3, null, 7, 5, 9]}
         className="dark"
+        justifyContent={"center"}
+        flex="8"
+        marginLeft={"calc(100vw / 10)"}
       >
         <Button
           variant="tertiary"
@@ -115,14 +121,49 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         </Button>
       </Flex>
       <Flex
+        display={["flex"]}
+        className="dark"
+        flex="1"
+        justifyContent={"flex-end"}
+      >
+        <CardSelect
+          label="Version"
+          variant="core"
+          size="md"
+          width={["100%", "100%", "100%", "auto"]}
+        >
+          <Button
+            variant="tertiary"
+            size="md"
+            marginBottom={2}
+            as="a"
+            href="https://spor.vy.no"
+            disabled={!isOldVersion}
+          >
+            Spor V2 - ver.12.xx
+          </Button>
+          <Button
+            variant="tertiary"
+            size="md"
+            as="a"
+            href="https://spor-v1.test.vylabs.io/"
+            disabled={isOldVersion}
+          >
+            Spor V1 - ver.11.xx
+          </Button>
+        </CardSelect>
+      </Flex>
+      <Flex
         display={["none", null, null, "flex"]}
         flex={[0, 0, 0, 0, 1]}
         justifyContent="flex-end"
         alignItems="center"
+        className="dark"
+        gap={2}
       >
         <SiteSettings showLabel={true} />
       </Flex>
-    </>
+    </Flex>
   );
 };
 

@@ -72,9 +72,15 @@ export const PaletteTable = ({
                   <CopyTokenToClipBoard>{name}</CopyTokenToClipBoard>
                 </Flex>
               </TableCell>
-              <TableCell>{value.replace("colors.", "")}</TableCell>
               <TableCell>
-                <Badge colorPalette="grey">{paletteValue}</Badge>
+                <CopyTokenToClipBoard>
+                  {value.replace("colors.", "")}
+                </CopyTokenToClipBoard>
+              </TableCell>
+              <TableCell>
+                <CopyTokenToClipBoard copyValue={paletteValue ?? ""}>
+                  <Badge colorPalette="grey">{paletteValue}</Badge>
+                </CopyTokenToClipBoard>
               </TableCell>
             </TableRow>
           );

@@ -11,6 +11,8 @@ export const CopyTokenToClipBoard = ({
   children,
   copyValue = `"${children?.toString()}"`,
 }: Props) => {
+  if (!children) return null;
+
   return (
     <Clipboard.Root value={copyValue} width="100%" timeout={1000}>
       <Clipboard.Trigger asChild>

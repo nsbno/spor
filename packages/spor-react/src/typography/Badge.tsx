@@ -1,26 +1,21 @@
 "use client";
+
 import {
   chakra,
   Badge as ChakraBadge,
-  RecipeVariantProps,
+  BadgeProps as ChakraBadgeProps,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
-import { badgeRecipie } from "../theme/recipes/badge";
+import React, { forwardRef } from "react";
 
-type BadgeVariantProps = RecipeVariantProps<typeof badgeRecipie>;
-
-export type BadgeProps = BadgeVariantProps &
-  PropsWithChildren<BadgeVariantProps> & {
-    icon?: React.ReactElement;
-  };
-
-const StyledChakraBadge = chakra(ChakraBadge, badgeRecipie);
+export type BadgeProps = ChakraBadgeProps & {
+  icon?: React.ReactElement;
+};
 
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
   ({ icon, children, ...props }, ref) => (
-    <StyledChakraBadge ref={ref} {...props}>
+    <ChakraBadge ref={ref} {...props}>
       {children}
       {icon}
-    </StyledChakraBadge>
+    </ChakraBadge>
   ),
 );

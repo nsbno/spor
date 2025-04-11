@@ -10,7 +10,7 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
       fontSize: 30,
       transitionProperty: "common",
       transitionDuration: "fast",
-      borderRadius: "round",
+      borderRadius: "50%",
       appearance: "none",
       background: "transparent",
       border: "none",

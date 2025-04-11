@@ -3,6 +3,7 @@ import tokens from "@vygruppen/spor-design-tokens";
 
 export const radii = defineSemanticTokens.radii({
   none: { value: tokens.size["border-radius"].none },
+  xxs: { value: tokens.size["border-radius"].xxs },
   xs: { value: tokens.size["border-radius"].xs },
   sm: { value: tokens.size["border-radius"].sm },
   md: { value: tokens.size["border-radius"].md },

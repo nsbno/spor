@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  chakra,
   Badge as ChakraBadge,
   BadgeProps as ChakraBadgeProps,
 } from "@chakra-ui/react";

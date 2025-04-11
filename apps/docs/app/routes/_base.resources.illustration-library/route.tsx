@@ -113,9 +113,7 @@ export default function IllustrationLibraryPage() {
 
   return (
     <Box>
-      <Badge
-        colorScheme={brand === Brand.CargoNet ? "light-yellow" : "light-green"}
-      >
+      <Badge colorPalette={brand === Brand.CargoNet ? "yellow" : "green"}>
         {article.category?.title}
       </Badge>
       <Heading as="h1" variant="2xl" marginBottom={1}>

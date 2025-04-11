@@ -1,82 +1,80 @@
 import { defineRecipe } from "@chakra-ui/react";
 
 export const badgeRecipie = defineRecipe({
-  className: "spor-badge",
   base: {
-    borderStyle: "solid",
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    fontSize: ["mobile.xs", "desktop.xs"],
-    borderRadius: "xl",
-    fontWeight: "bold",
-    paddingLeft: [2, 3],
-    paddingRight: [2, 3],
-    minHeight: [4, 5],
+    height: "fit-content",
+    gap: "0.5",
   },
   variants: {
-    variant: {
-      solid: {
-        borderWidth: 0,
-      },
-      outline: {
-        borderWidth: 1,
-      },
-    },
     colorPalette: {
-      yellow: {
-        backgroundColor: "banana",
-        color: "darkGrey",
-        borderColor: "darkGrey",
-      },
-      "light-yellow": {
-        backgroundColor: "blonde",
-        color: "darkGrey",
-        borderColor: "golden",
-      },
-      red: {
-        backgroundColor: "lightRed",
-        color: "darkGrey",
-        borderColor: "brightRed",
-      },
-      "light-green": {
-        backgroundColor: "seaMist",
-        color: "darkTeal",
-        borderColor: "darkTeal",
-      },
-      "dark-green": {
-        backgroundColor: "primaryGreen",
-        color: "white",
-        borderColor: "blueGreen",
-      },
-      orange: {
-        backgroundColor: "champagne",
-        color: "darkGrey",
-        borderColor: "pumpkin",
-      },
-      "light-blue": {
-        backgroundColor: "lightBlue",
-        color: "darkBlue",
-        borderColor: "ocean",
-      },
-      "dark-blue": {
-        backgroundColor: "darkBlue",
-        color: "white",
-        borderColor: "sky",
+      neutral: {
+        backgroundColor: "surface.color.neutral",
+        color: "detail.color.neutral",
       },
       grey: {
-        backgroundColor: "platinum",
-        color: "darkGrey",
-        borderColor: "darkGrey",
+        backgroundColor: "surface.color.grey",
+        color: "detail.color.grey",
       },
-      white: {
-        backgroundColor: "white",
-        color: "darkGrey",
-        borderColor: "silver",
+      green: {
+        backgroundColor: "surface.color.green",
+        color: "detail.color.green",
+      },
+      blue: {
+        backgroundColor: "surface.color.blue",
+        color: "detail.color.blue",
+      },
+      cream: {
+        backgroundColor: "surface.color.cream",
+        color: "detail.color.cream",
+      },
+      yellow: {
+        backgroundColor: "surface.color.yellow",
+        color: "detail.color.yellow",
+      },
+      orange: {
+        backgroundColor: "surface.color.orange",
+        color: "detail.color.orange",
+      },
+      red: {
+        backgroundColor: "surface.color.red",
+        color: "detail.color.red",
+      },
+    },
+    size: {
+      sm: {
+        fontSize: "desktop.xs",
+        paddingX: "0.5",
+        paddingY: "0",
+        fontWeight: "normal",
+        borderRadius: "xxs",
+      },
+      md: {
+        fontSize: "desktop.xs",
+        paddingX: "1",
+        paddingY: "0.5",
+        fontWeight: "bold",
+        borderRadius: "xs",
+      },
+      lg: {
+        fontSize: "desktop.sm",
+        paddingX: "1.5",
+        paddingY: "0.5",
+        fontWeight: "bold",
+        borderRadius: "xs",
+      },
+    },
+    attached: {
+      true: {
+        borderBottomRadius: "none",
       },
     },
   },
   defaultVariants: {
-    variant: "solid",
+    colorPalette: "grey",
+    size: "md",
+    attached: false,
   },
 });

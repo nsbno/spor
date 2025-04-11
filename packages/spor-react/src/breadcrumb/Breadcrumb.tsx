@@ -9,7 +9,20 @@ import {
   BreadcrumbEllipsis as ChakraBreadcrumbEllipsis,
 } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
-
+/**
+ * A breadcrumb component.
+ *
+ * Used to create customizable breadcrumbs.
+ * BreadcrumbCurrentLink is used to set the last breadcrumb.
+ * BreadcrumbLink is used to set the other breadcrumbs.
+ * ```tsx
+ * <Breadcrumb>
+ *     <BreadcrumbLink href="/">Home</BreadcrumbLink>
+ *    <BreadcrumbLink href="/Breadcrumb">Breadcrumb</BreadcrumbLink>
+ *    <BreadcrumbCurrentLink href="/about">About</BreadcrumbCurrentLink>
+ * </Breadcrumb>
+ * ```
+ */
 export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbRootProps>(
   ({ children, ...props }, ref) => {
     const validChildren = React.Children.toArray(children).filter(

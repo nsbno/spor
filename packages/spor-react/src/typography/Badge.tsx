@@ -2,11 +2,11 @@
 
 import {
   Badge as ChakraBadge,
-  BadgeProps as ChakraBadeProps,
+  BadgeProps as ChakraBadgeProps,
 } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
 
-export type BadgeProps = ChakraBadeProps & {
+export type BadgeProps = ChakraBadgeProps & {
   icon?: React.ReactElement;
 };
 

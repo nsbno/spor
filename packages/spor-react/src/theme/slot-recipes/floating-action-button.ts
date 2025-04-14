@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
+import tokens from "@vygruppen/spor-design-tokens";
 import { floatingActionButtonAnatomy } from "./anatomy";
 
 export const floatingActionButtonSlotRecipe = defineSlotRecipe({
@@ -21,7 +21,10 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
       transitionProperty: "common",
       position: "fixed",
       zIndex: "dropdown",
-      ...focusVisibleStyles(),
+      _focus: {
+        outlineOffset: tokens.size.stroke.lg,
+        outlineColor: "outline.focus",
+      },
       _disabled: {
         backgroundColor: "surface.disabled",
         color: "text.disabled",

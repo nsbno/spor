@@ -44,7 +44,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
     },
     helperText: {
       marginTop: 2,
-      color: "dimGrey",
+      color: "text.tertiary",
       lineHeight: "normal",
       fontSize: "sm",
     },

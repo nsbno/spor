@@ -1,29 +1,14 @@
 "use client";
 
-import React, { forwardRef, PropsWithChildren } from "react";
-import { BoxProps } from "../layout";
-import { breadcrumbSlotRecipe } from "../theme/slot-recipes/breadcrumb";
-import { RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
+import React, { forwardRef } from "react";
 import {
   Breadcrumb as ChakraBreadcrumb,
+  BreadcrumbRootProps,
   BreadcrumbLink as ChakraBreadcrumbLink,
   BreadcrumbCurrentLink as ChakraBreadcrumbCurrentLink,
   BreadcrumbEllipsis as ChakraBreadcrumbEllipsis,
 } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
-
-type BreadcrumbVariants = RecipeVariantProps<typeof breadcrumbSlotRecipe>;
-
-export type BreadcrumbProps = Omit<
-  BoxProps,
-  "size" | "colorPalette" | "unstyled" | "separator" | "separatorGap"
-> &
-  PropsWithChildren<BreadcrumbVariants> & {
-    children: React.ReactNode;
-    /* "core" or "ghost". Defaults to "core". */
-    variant?: "core" | "ghost";
-  };
-
 /**
  * A breadcrumb component.
  *
@@ -38,30 +23,23 @@ export type BreadcrumbProps = Omit<
  * </Breadcrumb>
  * ```
  */
-export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
-  ({ variant = "core", children, ...props }, ref) => {
-    const recipe = useSlotRecipe({ key: "breadcrumb" });
-    const styles = recipe({ variant });
-
+export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbRootProps>(
+  ({ children, ...props }, ref) => {
     const validChildren = React.Children.toArray(children).filter(
       React.isValidElement,
     );
 
     return (
       <ChakraBreadcrumb.Root ref={ref} {...props}>
-        <ChakraBreadcrumb.List css={styles.list}>
+        <ChakraBreadcrumb.List>
           {validChildren.map((child, index) => {
             const isLast = index === validChildren.length - 1;
             return (
               <React.Fragment key={index}>
-                <ChakraBreadcrumb.Item>
-                  {React.cloneElement(child as React.ReactElement, {
-                    css: isLast ? styles.currentLink : styles.link,
-                  })}
-                </ChakraBreadcrumb.Item>
+                <ChakraBreadcrumb.Item>{child}</ChakraBreadcrumb.Item>
                 {!isLast && (
                   <ChakraBreadcrumb.Separator aria-hidden="true">
-                    <DropdownRightFill18Icon color="icon.disabled" />
+                    <DropdownRightFill18Icon />
                   </ChakraBreadcrumb.Separator>
                 )}
               </React.Fragment>

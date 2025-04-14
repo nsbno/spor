@@ -1,11 +1,9 @@
-import { coreBackground, coreBorder } from "../utils/core-utils";
-import { ghostBackground } from "../utils/ghost-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { breadcrumbAnatomy } from "./anatomy";
 import { focusVisibleStyles } from "../utils/focus-utils";
+import { breadcrumbAnatomy } from "./anatomy";
+import tokens from "@vygruppen/spor-design-tokens";
 
 export const breadcrumbSlotRecipe = defineSlotRecipe({
-  className: "spor-breadcrumb",
   slots: breadcrumbAnatomy.keys(),
   base: {
     list: {
@@ -13,7 +11,6 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
       flexWrap: "wrap",
       gap: 1,
       alignItems: "center",
-      fontSize: ["mobile.xs", null, null, "desktop.xs"],
     },
     link: {
       cursor: "pointer",
@@ -25,13 +22,21 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
       borderRadius: "xs",
       cursor: "default",
     },
+    separator: {
+      "& svg": {
+        color: "icon.disabled",
+      },
+    },
   },
+
   variants: {
     variant: {
       core: {
         link: {
           _hover: {
-            ...coreBorder("default"),
+            outlineColor: "core.outline.hover",
+            outlineWidth: tokens.size.stroke.md,
+            outlineStyle: "solid",
             _active: {
               backgroundColor: "core.surface.active",
               outline: "none",
@@ -42,13 +47,17 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
       ghost: {
         link: {
           _hover: {
-            ...ghostBackground("hover"),
+            backgroundColor: "ghost.surface.hover",
             _active: {
-              ...ghostBackground("active"),
+              backgroundColor: "ghost.surface.active",
             },
           },
         },
       },
     },
+  },
+
+  defaultVariants: {
+    variant: "core",
   },
 });

@@ -1,6 +1,6 @@
 import { defineRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import tokens from "@vygruppen/spor-design-tokens";
+import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const buttonRecipe = defineRecipe({
   className: "spor-button",
@@ -24,6 +24,9 @@ export const buttonRecipe = defineRecipe({
       boxShadow: "none",
       color: "text.disabled",
       background: "surface.disabled",
+    },
+    _focus: {
+      outlineOffset: tokens.size.stroke.md,
     },
   },
   variants: {
@@ -61,6 +64,13 @@ export const buttonRecipe = defineRecipe({
             outlineWidth: tokens.size.stroke.sm,
             outlineColor: "core.outline",
           },
+        },
+        _focus: {
+          outlineWidth: tokens.size.stroke.sm,
+          borderWidth: tokens.size.stroke.sm,
+          borderStyle: "solid",
+          borderColor: "core.outline.default",
+          outlineColor: "core.outline.focus",
         },
       },
       ghost: {

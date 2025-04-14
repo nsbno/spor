@@ -1,18 +1,10 @@
 "use client";
 
 import React, { forwardRef, PropsWithChildren } from "react";
-import { Group, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import { chakra, Group, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
 import { attachedInputsRecipe } from "@/theme/recipes/attached-inputs";
 import { InputGroupProps } from "./InputGroup";
 
-type AttachedInputsVariantProps = RecipeVariantProps<
-  typeof attachedInputsRecipe
->;
-
-type AttachedInputsProps = Exclude<InputGroupProps, "orientation"> &
-  PropsWithChildren<AttachedInputsVariantProps> & {
-    orientation?: "horizontal" | "vertical";
-  };
 /**
  * Attaches several inputs together, so that they look like one input.
  *
@@ -26,17 +18,13 @@ type AttachedInputsProps = Exclude<InputGroupProps, "orientation"> &
  * ```
  */
 
+export type AttachedInputsProps = RecipeVariantProps<
+  typeof attachedInputsRecipe
+> &
+  InputGroupProps;
+
+const StyledGroup = chakra(Group, attachedInputsRecipe);
+
 export const AttachedInputs = forwardRef<HTMLDivElement, AttachedInputsProps>(
-  (props, ref) => {
-    const { orientation = "horizontal", children } = props;
-
-    const recipe = useRecipe({ key: "attachedInputs" });
-    const styles = recipe({ orientation });
-
-    return (
-      <Group ref={ref} attached css={styles}>
-        {children}
-      </Group>
-    );
-  },
+  (props, ref) => <StyledGroup ref={ref} attached {...props} />,
 );

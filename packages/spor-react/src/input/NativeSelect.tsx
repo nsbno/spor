@@ -17,6 +17,8 @@ type NativeSelectRootProps =
   React.PropsWithChildren<NativeSelectVariantProps> & {
     icon?: React.ReactNode;
     label: string;
+    invalid?: boolean;
+    disabled?: boolean;
   };
 
 /**
@@ -40,13 +42,31 @@ export const NativeSelect = React.forwardRef<
   HTMLDivElement,
   NativeSelectRootProps
 >(function NativeSelect(props, ref) {
-  const { icon, children, variant = "core", label, ...rest } = props;
+  const {
+    icon,
+    children,
+    variant = "core",
+    label,
+    invalid,
+    disabled,
+    ...rest
+  } = props;
+
   const recipe = useSlotRecipe({ recipe: nativeSelectSlotRecipe });
   const styles = recipe({ variant });
+
   return (
-    <Field label={label}>
-      <ChakraNativeSelect.Root ref={ref} css={styles.root}>
-        <ChakraNativeSelect.Field css={styles.field} {...rest}>
+    <Field label={label} invalid={invalid} disabled={disabled}>
+      <ChakraNativeSelect.Root
+        ref={ref}
+        css={styles.root}
+        aria-disabled={disabled}
+      >
+        <ChakraNativeSelect.Field
+          css={styles.field}
+          aria-invalid={invalid}
+          {...rest}
+        >
           {children}
         </ChakraNativeSelect.Field>
         <ChakraNativeSelect.Indicator css={styles.icon}>

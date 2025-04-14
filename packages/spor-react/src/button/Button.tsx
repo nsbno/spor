@@ -90,7 +90,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <ChakraButton
-        {...rest}
         type={type}
         ref={ref}
         aria-label={ariaLabel}
@@ -99,6 +98,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         position="relative"
         variant={variant}
         size={size}
+        {...rest}
       >
         {loading ? (
           <>

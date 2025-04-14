@@ -3,7 +3,6 @@ import { alertSlotRecipe } from "./alert";
 import { alertExpandableSlotRecipe } from "./alert-expandable";
 import { alertServiceSlotRecipe } from "./alert-service";
 import { breadcrumbSlotRecipe } from "./breadcrumb";
-import { cardSelectSlotRecipe } from "./card-select";
 import { checkboxSlotRecipe } from "./checkbox";
 import { choiceChipSlotRecipe } from "./choice-chip";
 import { datePickerSlotRecipe } from "./datepicker";
@@ -38,7 +37,6 @@ export const slotRecipes = {
   alertService: alertServiceSlotRecipe,
   alert: alertSlotRecipe,
   breadcrumb: breadcrumbSlotRecipe,
-  cardSelect: cardSelectSlotRecipe,
   checkbox: checkboxSlotRecipe,
   choiceChip: choiceChipSlotRecipe,
   datePicker: datePickerSlotRecipe,

@@ -9,7 +9,7 @@ export type AlertProps = Omit<ChakraAlert.RootProps, "colorPalette"> & {
   /** Whether or not to show the alert icon */
   showIndicator?: boolean;
   /** Whether or not the alert is closable */
-  isClosable?: boolean;
+  closable?: boolean;
   /** Callback for when the alert is closed */
   onAlertClose?: () => void;
 };
@@ -39,7 +39,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const {
     title,
     showIndicator = true,
-    isClosable = false,
+    closable = false,
     onAlertClose,
     children,
   } = props;
@@ -60,7 +60,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
             </ChakraAlert.Indicator>
           )}
           {title && (
-            <ChakraAlert.Title paddingRight={isClosable ? 6 : 0}>
+            <ChakraAlert.Title paddingRight={closable ? 6 : 0}>
               {title}
             </ChakraAlert.Title>
           )}
@@ -68,13 +68,13 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
         {children && (
           <ChakraAlert.Description
             paddingLeft={title ? 0.5 : 0}
-            paddingRight={isClosable ? 6 : 0}
+            paddingRight={closable ? 6 : 0}
           >
             {children}
           </ChakraAlert.Description>
         )}
       </ChakraAlert.Content>
-      {isClosable && (
+      {closable && (
         <CloseButton
           size="xs"
           position="absolute"

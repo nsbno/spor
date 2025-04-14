@@ -91,11 +91,9 @@ export const Stepper = ({
                 size="sm"
                 visibility={hideBackButtonOnFirstStep ? "hidden" : "visible"}
                 onClick={() => {
+                  if (!onBackButtonClick) return;
                   const stepToGoTo = activeStep - 1;
-                  if (onBackButtonClick) {
-                    onBackButtonClick(stepToGoTo);
-                  }
-                  onClick(stepToGoTo);
+                  onBackButtonClick(stepToGoTo);
                 }}
               />
               {shownHeading && (

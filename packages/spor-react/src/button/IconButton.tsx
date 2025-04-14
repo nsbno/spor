@@ -61,10 +61,10 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     return (
       <ChakraIconButton
         aria-label={props["aria-label"]}
-        {...rest}
         size={size}
         ref={ref}
         position={"relative"}
+        {...rest}
       >
         {loading ? <ColorSpinner width="2em" height="2em" margin={1} /> : icon}
       </ChakraIconButton>

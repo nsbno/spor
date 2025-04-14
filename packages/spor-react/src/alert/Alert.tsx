@@ -1,37 +1,18 @@
 "use client";
 
-import {
-  RecipeVariantProps,
-  Alert as ChakraAlert,
-  useDisclosure,
-  HStack,
-} from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
-import { alertSlotRecipe } from "../theme/slot-recipes/alert";
+import { Alert as ChakraAlert, useDisclosure, HStack } from "@chakra-ui/react";
+import React, { forwardRef } from "react";
 import { AlertIcon } from "./AlertIcon";
 import { CloseButton } from "@/button";
 
-export type AlertVariantProps = RecipeVariantProps<typeof alertSlotRecipe>;
-
-export type AlertProps = Omit<
-  ChakraAlert.RootProps,
-  "status" | "colorPalette" | "size"
-> &
-  PropsWithChildren<AlertVariantProps> & {
-    /** The color scheme and icon of the alert */
-    variant: "info" | "success" | "important" | "alt-transport" | "error";
-
-    /** The body content of the alert */
-    children?: React.ReactNode;
-    /** The title of the alert */
-    title?: string;
-    /** Whether or not to show the alert icon */
-    indicator?: React.ReactNode;
-    /** Whether or not the alert is closable */
-    closable?: boolean;
-    /** Callback for when the alert is closed */
-    onAlertClose?: () => void;
-  };
+export type AlertProps = Omit<ChakraAlert.RootProps, "colorPalette"> & {
+  /** Whether or not to show the alert icon */
+  showIndicator?: boolean;
+  /** Whether or not the alert is closable */
+  isClosable?: boolean;
+  /** Callback for when the alert is closed */
+  onAlertClose?: () => void;
+};
 
 /**
  *
@@ -56,10 +37,9 @@ export type AlertProps = Omit<
 
 export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const {
-    variant = "info",
     title,
-    indicator = true,
-    closable = false,
+    showIndicator = true,
+    isClosable = false,
     onAlertClose,
     children,
   } = props;
@@ -71,19 +51,16 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   };
   if (!open) return null;
   return (
-    <ChakraAlert.Root ref={ref} {...props} variant={variant}>
+    <ChakraAlert.Root ref={ref} {...props}>
       <ChakraAlert.Content flexDirection={title ? "column" : "row"}>
         <HStack gap="1" alignItems="flex-start">
-          {indicator && (
-            <ChakraAlert.Indicator paddingTop={[0, null, null, "0.02rem"]}>
-              <AlertIcon variant={variant} />
+          {showIndicator && (
+            <ChakraAlert.Indicator>
+              <AlertIcon variant={props.variant} />
             </ChakraAlert.Indicator>
           )}
           {title && (
-            <ChakraAlert.Title
-              paddingRight={closable ? 6 : 0}
-              paddingTop={["0.1rem", null]}
-            >
+            <ChakraAlert.Title paddingRight={isClosable ? 6 : 0}>
               {title}
             </ChakraAlert.Title>
           )}
@@ -91,13 +68,13 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
         {children && (
           <ChakraAlert.Description
             paddingLeft={title ? 0.5 : 0}
-            paddingRight={closable ? 6 : 0}
+            paddingRight={isClosable ? 6 : 0}
           >
             {children}
           </ChakraAlert.Description>
         )}
       </ChakraAlert.Content>
-      {closable && (
+      {isClosable && (
         <CloseButton
           size="xs"
           position="absolute"

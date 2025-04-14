@@ -16,6 +16,7 @@ export const alertAnatomy = createAnatomy("alert").parts(
   "title",
   "closeButton",
   "content",
+  "description",
 );
 
 export const alertExpandableAnatomy = createAnatomy("alert-expandable").parts(

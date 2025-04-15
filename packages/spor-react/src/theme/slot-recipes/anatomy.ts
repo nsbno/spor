@@ -214,7 +214,6 @@ export const cardSelectAnatomy = createAnatomy("card-select").parts(
   "trigger",
   "card",
 );
-export const choiceChipAnatomy = createAnatomy("choice-chip").parts("root");
 
 export const numericStepperAnatomy = createAnatomy("numeric-stepper").parts(
   "root",

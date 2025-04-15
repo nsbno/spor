@@ -3,8 +3,9 @@ import { defineRecipe } from "@chakra-ui/react";
 export const separatorRecipe = defineRecipe({
   className: "spor-separator",
   base: {
-    borderColor: "blackAlpha.300",
+    borderColor: "outline.disabled",
     display: "block",
+    borderRadius: "xl",
   },
   variants: {
     variant: {
@@ -46,7 +47,7 @@ export const separatorRecipe = defineRecipe({
       size: "sm",
       css: {
         background:
-          " linear-gradient(to left, #b2b2b2, #b2b2b2 1px, transparent 1px, transparent 4px)",
+          "linear-gradient(to left, var(--spor-colors-outline-disabled), var(--spor-colors-outline-disabled) 1px, transparent 1px, transparent 4px)",
         backgroundSize: "4px 1px",
         backgroundRepeat: "repeat-x",
       },
@@ -56,7 +57,7 @@ export const separatorRecipe = defineRecipe({
       size: "md",
       css: {
         background:
-          " linear-gradient(to left, #b2b2b2, #b2b2b2 3px, transparent 3px, transparent 6px)",
+          "linear-gradient(to left, var(--spor-colors-outline-disabled), var(--spor-colors-outline-disabled) 3px, transparent 3px, transparent 6px)",
         backgroundSize: "9px 2px",
         backgroundRepeat: "repeat-x",
       },
@@ -66,7 +67,7 @@ export const separatorRecipe = defineRecipe({
       size: "lg",
       css: {
         background:
-          " linear-gradient(to left, #b2b2b2, #b2b2b2 3px, transparent 3px, transparent 9px)",
+          "linear-gradient(to left, var(--spor-colors-outline-disabled), var(--spor-colors-outline-disabled) 3px, transparent 3px, transparent 9px)",
         backgroundSize: "9px 3px",
         backgroundRepeat: "repeat-x",
       },

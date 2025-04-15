@@ -9,7 +9,6 @@ import {
 import React, { forwardRef, PropsWithChildren } from "react";
 import { progressBarRecipe } from "../theme/slot-recipes/progress-bar";
 import { useRotatingLabel } from "./useRotatingLabel";
-import { createTexts } from "../i18n";
 
 type ProgressBarVariants = RecipeVariantProps<typeof progressBarRecipe>;
 
@@ -79,7 +78,6 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
   (
     {
       value,
-      defaultValue,
       colorPalette = "white",
       label,
       labelRotationDelay = 5000,
@@ -99,12 +97,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
     });
 
     return (
-      <Progress.Root
-        css={styles.container}
-        ref={ref}
-        defaultValue={defaultValue}
-        {...rest}
-      >
+      <Progress.Root css={styles.container} ref={ref} value={value} {...rest}>
         <Progress.Track
           height={height}
           css={isActive ? styles.background : styles.disabledBackground}

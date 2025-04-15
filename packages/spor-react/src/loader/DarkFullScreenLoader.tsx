@@ -1,5 +1,5 @@
 "use client";
-import { Box, BoxProps, Center } from "@chakra-ui/react";
+import { Box, BoxProps, Center, VisuallyHidden } from "@chakra-ui/react";
 import { fullScreenLoaderWhiteData } from "@vygruppen/spor-loader";
 import React from "react";
 import { ClientOnly } from "./ClientOnly";
@@ -13,12 +13,19 @@ export const DarkFullScreenLoader = ({
   ...props
 }: DarkFullScreenLoaderProps) => {
   return (
-    <Center height="100%" background="darkTeal" {...props}>
+    <Center
+      height="100%"
+      background="darkTeal"
+      role="status"
+      aria-live="polite"
+      {...props}
+    >
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={fullScreenLoaderWhiteData} />}
+          <Lottie animationData={fullScreenLoaderWhiteData} />
         </ClientOnly>
       </Box>
+      <VisuallyHidden>Loading...</VisuallyHidden>
     </Center>
   );
 };

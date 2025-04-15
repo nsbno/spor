@@ -7,7 +7,7 @@ import {
   Text,
   useRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, useId, useRef } from "react";
+import React, { forwardRef, useId, useRef, useState, useEffect } from "react";
 import { useProgressBar } from "react-aria";
 import { createTexts, useTranslation } from "..";
 import { useRotatingLabel } from "./useRotatingLabel";
@@ -89,8 +89,8 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
       value,
       "aria-label": ariaLabel ?? t(texts.fallbackLabel(value ?? "?")),
     });
-    const pathRef = useRef<SVGPathElement>(null);
-    const progressPathLength = pathRef.current?.getTotalLength() ?? 0;
+    const { pathRef, pathLength: progressPathLength } = usePathLength();
+
     const progress = ((value - 100) / 100) * progressPathLength;
     const id = useId();
     const recipe = useRecipe({
@@ -163,3 +163,20 @@ const texts = createTexts({
     en: `${value}% done`,
   }),
 });
+
+/**
+ * Custom hook to calculate the total length of an SVG path.
+ * @returns A ref for the path element and the calculated path length.
+ */
+const usePathLength = () => {
+  const pathRef = useRef<SVGPathElement>(null);
+  const [pathLength, setPathLength] = useState(0);
+
+  useEffect(() => {
+    if (pathRef.current) {
+      setPathLength(pathRef.current.getTotalLength());
+    }
+  }, []);
+
+  return { pathRef, pathLength };
+};

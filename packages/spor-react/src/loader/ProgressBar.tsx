@@ -78,7 +78,6 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
   (
     {
       value,
-      defaultValue,
       colorPalette = "white",
       label,
       labelRotationDelay = 5000,
@@ -98,12 +97,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
     });
 
     return (
-      <Progress.Root
-        css={styles.container}
-        ref={ref}
-        defaultValue={defaultValue}
-        {...rest}
-      >
+      <Progress.Root css={styles.container} ref={ref} value={value} {...rest}>
         <Progress.Track
           height={height}
           css={isActive ? styles.background : styles.disabledBackground}

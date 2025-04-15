@@ -1,13 +1,11 @@
 "use client";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { useHydrated } from "./useHydrated";
 
-type ClientOnlyProps = {
-  /** A function that renders the client-side only component */
-  children: () => React.ReactNode;
+type ClientOnlyProps = PropsWithChildren<{
   /** An optional fallback to render in place on the server */
   fallback?: React.ReactNode;
-};
+}>;
 
 /**
  * Render the children only after the JS has loaded client-side. Use an optional
@@ -26,5 +24,7 @@ type ClientOnlyProps = {
  */
 export const ClientOnly = ({ children, fallback = null }: ClientOnlyProps) => {
   const isHydrated = useHydrated();
-  return <>{isHydrated ? children() : fallback}</>;
+
+  if (!isHydrated) return fallback;
+  return children;
 };

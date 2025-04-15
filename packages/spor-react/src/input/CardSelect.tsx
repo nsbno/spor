@@ -54,6 +54,12 @@ export type CardSelectTriggerProps = {
   withChevron?: boolean;
 } & Omit<ButtonProps, "variant" | "rightIcon" | "leftIcon">;
 
+const bgActiveStyleMap = {
+  core: "core.surface.active",
+  ghost: "ghost.surface.active",
+  floating: "floating.surface.active",
+};
+
 export const CardSelectTrigger = forwardRef<
   HTMLButtonElement,
   CardSelectTriggerProps
@@ -77,6 +83,7 @@ export const CardSelectTrigger = forwardRef<
               : (variant as ButtonProps["variant"])
           }
           size={size}
+          bg={open ? bgActiveStyleMap[variant] : undefined}
           rightIcon={
             withChevron ? (
               <ChevronIcon

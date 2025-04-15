@@ -70,6 +70,23 @@ export type ProgressLoaderProps = BoxProps & {
  * ```
  */
 
+/**
+ * Custom hook to calculate the total length of an SVG path.
+ * @returns A ref for the path element and the calculated path length.
+ */
+const usePathLength = () => {
+  const pathRef = useRef<SVGPathElement>(null);
+  const [pathLength, setPathLength] = useState(0);
+
+  useEffect(() => {
+    if (pathRef.current) {
+      setPathLength(pathRef.current.getTotalLength());
+    }
+  }, []);
+
+  return { pathRef, pathLength };
+};
+
 export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
   ({
     value,
@@ -163,20 +180,3 @@ const texts = createTexts({
     en: `${value}% done`,
   }),
 });
-
-/**
- * Custom hook to calculate the total length of an SVG path.
- * @returns A ref for the path element and the calculated path length.
- */
-const usePathLength = () => {
-  const pathRef = useRef<SVGPathElement>(null);
-  const [pathLength, setPathLength] = useState(0);
-
-  useEffect(() => {
-    if (pathRef.current) {
-      setPathLength(pathRef.current.getTotalLength());
-    }
-  }, []);
-
-  return { pathRef, pathLength };
-};

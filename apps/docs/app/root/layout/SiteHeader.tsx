@@ -105,7 +105,7 @@ const ChangeVersion = () => {
 
   return (
     <CardSelect>
-      <CardSelectTrigger variant="floating" className="dark">
+      <CardSelectTrigger variant="core" className="dark">
         <Text display={{ base: "none", xl: "block" }}>Spor</Text>
         v2
       </CardSelectTrigger>

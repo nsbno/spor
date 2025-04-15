@@ -9,7 +9,6 @@ import {
 import React, { forwardRef, PropsWithChildren } from "react";
 import { progressBarRecipe } from "../theme/slot-recipes/progress-bar";
 import { useRotatingLabel } from "./useRotatingLabel";
-import { createTexts } from "../i18n";
 
 type ProgressBarVariants = RecipeVariantProps<typeof progressBarRecipe>;
 

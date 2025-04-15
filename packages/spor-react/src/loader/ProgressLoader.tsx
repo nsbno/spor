@@ -99,7 +99,17 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
     });
     const styles = recipe();
     return (
-      <Box {...progressBarProps} width={width} {...rest} css={styles}>
+      <Box
+        {...progressBarProps}
+        width={width}
+        {...rest}
+        css={styles}
+        role="progressbar"
+        aria-valuenow={value}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={ariaLabel ?? t(texts.fallbackLabel(value ?? "?"))}
+      >
         <chakra.svg as="svg" viewBox="0 0 246 78" fill="none">
           <path
             id={`${id}-start-dot`}

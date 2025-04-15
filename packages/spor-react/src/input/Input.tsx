@@ -2,23 +2,21 @@
 
 import { inputRecipe } from "@/theme/recipes/input";
 import {
-  Input as ChakraInput,
+  chakra,
   InputProps as ChakraInputProps,
   useRecipe,
   type RecipeVariantProps,
+  Input as ChakraInput,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { Field, FieldProps } from "./Field";
 import { InputGroup } from "./InputGroup";
 
-export type InputVariantProps = RecipeVariantProps<typeof inputRecipe>;
-
 export type InputProps = Exclude<
   ChakraInputProps,
   "size" | "label" | "colorPalette"
 > &
-  FieldProps &
-  PropsWithChildren<InputVariantProps> & {
+  FieldProps & {
     /** The input's label */
     label: string;
     /** Element that shows up to the left */
@@ -55,32 +53,43 @@ export type InputProps = Exclude<
  *
  * @see https://spor.vy.no/components/input
  */
-export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { variant = "core", startElement, endElement, label } = props;
 
-  const recipe = useRecipe({ key: "input" });
-  const styles = recipe({ variant });
-  return (
-    <Field>
-      <InputGroup
-        endElement={endElement && endElement}
-        startElement={startElement && startElement}
-        width="100%"
-        position="relative"
-        label={label}
-      >
-        <ChakraInput
-          data-attachable
-          css={styles}
-          ref={ref}
-          className="peer"
-          overflow="hidden"
-          paddingLeft={startElement ? "2.6rem" : undefined}
-          paddingRight={endElement ? "2.6rem" : undefined}
-          placeholder=""
-          {...props}
-        />
-      </InputGroup>
-    </Field>
-  );
-});
+const StyledInput = chakra(ChakraInput, inputRecipe);
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      startElement,
+      endElement,
+      label,
+      invalid,
+      helperText,
+      errorText,
+      ...props
+    },
+    ref,
+  ) => {
+    return (
+      <Field invalid={invalid} helperText={helperText} errorText={errorText}>
+        <InputGroup
+          endElement={endElement && endElement}
+          startElement={startElement && startElement}
+          width="100%"
+          position="relative"
+          label={label}
+        >
+          <StyledInput
+            data-attachable
+            ref={ref}
+            className="peer"
+            overflow="hidden"
+            paddingLeft={startElement ? "2.6rem" : undefined}
+            paddingRight={endElement ? "2.6rem" : undefined}
+            placeholder=""
+            {...props}
+          />
+        </InputGroup>
+      </Field>
+    );
+  },
+);

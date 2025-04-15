@@ -5,7 +5,6 @@ import {
   chakra,
   RecipeVariantProps,
   Text,
-  useRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, useId, useRef, useState, useEffect } from "react";
 import { useProgressBar } from "react-aria";
@@ -43,6 +42,25 @@ export type ProgressLoaderProps = BoxProps & {
 };
 
 /**
+ * Custom hook to calculate the total length of an SVG path.
+ * @returns A ref for the path element and the calculated path length.
+ */
+const usePathLength = () => {
+  const pathRef = useRef<SVGPathElement>(null);
+  const [pathLength, setPathLength] = useState(0);
+
+  useEffect(() => {
+    if (pathRef.current) {
+      setPathLength(pathRef.current.getTotalLength());
+    }
+  }, []);
+
+  return { pathRef, pathLength };
+};
+
+const ProgressLoaderWrapper = chakra("div", progressLoaderRecipe);
+
+/**
  * Shows the progress of a loading process.
  *
  * You can pass the amount of progress with the `value` prop:
@@ -70,23 +88,6 @@ export type ProgressLoaderProps = BoxProps & {
  * ```
  */
 
-/**
- * Custom hook to calculate the total length of an SVG path.
- * @returns A ref for the path element and the calculated path length.
- */
-const usePathLength = () => {
-  const pathRef = useRef<SVGPathElement>(null);
-  const [pathLength, setPathLength] = useState(0);
-
-  useEffect(() => {
-    if (pathRef.current) {
-      setPathLength(pathRef.current.getTotalLength());
-    }
-  }, []);
-
-  return { pathRef, pathLength };
-};
-
 export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
   ({
     value,
@@ -110,22 +111,17 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
 
     const progress = ((value - 100) / 100) * progressPathLength;
     const id = useId();
-    const recipe = useRecipe({
-      key: "progressLoader",
-      recipe: progressLoaderRecipe,
-    });
-    const styles = recipe();
+
     return (
-      <Box
+      <ProgressLoaderWrapper
         {...progressBarProps}
         width={width}
-        {...rest}
-        css={styles}
         role="progressbar"
         aria-valuenow={value}
         aria-valuemin={0}
         aria-valuemax={100}
         aria-label={ariaLabel ?? t(texts.fallbackLabel(value ?? "?"))}
+        {...rest}
       >
         <chakra.svg as="svg" viewBox="0 0 246 78" fill="none">
           <path
@@ -167,7 +163,7 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
             {currentLoadingText}
           </Text>
         )}
-      </Box>
+      </ProgressLoaderWrapper>
     );
   },
 );

@@ -53,22 +53,19 @@ export const buttonRecipe = defineRecipe({
       },
       tertiary: {
         color: "core.text",
-        outline: "solid",
-        outlineWidth: tokens.size.stroke.sm,
-        outlineColor: "core.outline",
+        border: "sm",
+        borderColor: "core.outline",
         _hover: {
           outlineWidth: tokens.size.stroke.md,
           outlineColor: "core.outline.hover",
           _active: {
             background: "core.surface.active",
-            outlineWidth: tokens.size.stroke.sm,
-            outlineColor: "core.outline",
+            border: "sm",
+            borderColor: "core.outline",
           },
         },
         _focus: {
-          outlineWidth: tokens.size.stroke.sm,
-          borderWidth: tokens.size.stroke.sm,
-          borderStyle: "solid",
+          outlineWidth: tokens.size.stroke.md,
           borderColor: "core.outline.default",
           outlineColor: "core.outline.focus",
         },

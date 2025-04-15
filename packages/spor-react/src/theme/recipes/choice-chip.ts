@@ -1,4 +1,4 @@
-import { defineRecipe, defineSlotRecipe } from "@chakra-ui/react";
+import { defineRecipe } from "@chakra-ui/react";
 import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const choiceChipRecipe = defineRecipe({
@@ -14,6 +14,7 @@ export const choiceChipRecipe = defineRecipe({
     height: 6,
     paddingInlineStart: "2",
     paddingInlineEnd: "2",
+    ...focusVisibleStyles(),
     outline: "1px solid",
     outlineColor: "base.outline",
     _checked: {

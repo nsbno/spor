@@ -7,7 +7,7 @@ import {
   useCheckbox,
 } from "@chakra-ui/react";
 import { CloseOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, { ChangeEvent, PropsWithChildren } from "react";
+import React, { ChangeEvent, PropsWithChildren, useId } from "react";
 
 type ChoiceChipVariantProps = RecipeVariantProps<typeof choiceChipRecipe>;
 
@@ -87,13 +87,13 @@ export const ChoiceChip = ({
         disabled={disabled}
         defaultChecked={checked}
         value={checked ? "on" : "off"}
-        role="switch"
+        type="checkbox"
         aria-checked={checked}
         onClick={() => {
           setChecked(!checked);
         }}
       />
-      <ChoiceChipStyledDiv {...getControlProps()}>
+      <ChoiceChipStyledDiv {...getControlProps()} size={size} variant={variant}>
         {icon && <Span>{checked ? icon.checked : icon.default}</Span>}
         {chipType !== "icon" && <Span>{children}</Span>}
 

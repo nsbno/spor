@@ -18,7 +18,7 @@ export const DarkInlineLoader = ({
     <Center role="status" aria-live="polite" {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={inlineLoaderDarkData} />}
+          <Lottie animationData={inlineLoaderDarkData} />
         </ClientOnly>
       </Box>
       <VisuallyHidden>Loading...</VisuallyHidden>

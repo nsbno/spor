@@ -24,7 +24,7 @@ export const LightInlineLoader = ({
     >
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={inlineLoaderLightData} />}
+          <Lottie animationData={inlineLoaderLightData} />
         </ClientOnly>
       </Box>
       <VisuallyHidden>Loading...</VisuallyHidden>

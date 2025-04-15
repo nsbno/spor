@@ -19,7 +19,7 @@ export const ColorInlineLoader = ({
     <Center role="status" aria-live="polite" {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={inlineLoaderColorData} />}
+          <Lottie animationData={inlineLoaderColorData} />
         </ClientOnly>
       </Box>
       <VisuallyHidden>Loading...</VisuallyHidden>

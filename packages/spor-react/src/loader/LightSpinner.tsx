@@ -31,7 +31,7 @@ export const LightSpinner = ({
     <Center flexDirection="column" role="status" aria-live="polite" {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={spinnerLightData} />}
+          <Lottie animationData={spinnerLightData} />
         </ClientOnly>
       </Box>
       <VisuallyHidden>Loading...</VisuallyHidden>

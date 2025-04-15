@@ -32,7 +32,9 @@ export const DarkSpinner = ({
   return (
     <Center flexDirection="column" role="status" aria-live="polite" {...props}>
       <Box width={width} maxWidth={maxWidth}>
-        <ClientOnly>{() => <Lottie animationData={spinnerData} />}</ClientOnly>
+        <ClientOnly>
+          <Lottie animationData={spinnerData} />
+        </ClientOnly>
       </Box>
       <VisuallyHidden>Loading...</VisuallyHidden>
       {children && (

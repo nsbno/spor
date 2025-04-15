@@ -22,7 +22,7 @@ export const DarkFullScreenLoader = ({
     >
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={fullScreenLoaderWhiteData} />}
+          <Lottie animationData={fullScreenLoaderWhiteData} />
         </ClientOnly>
       </Box>
       <VisuallyHidden>Loading...</VisuallyHidden>

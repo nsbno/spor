@@ -1,4 +1,4 @@
-import { Box, BoxProps, Center } from "@chakra-ui/react";
+import { Box, BoxProps, Center, VisuallyHidden } from "@chakra-ui/react";
 import { inlineLoaderColorData } from "@vygruppen/spor-loader";
 import React from "react";
 import { ClientOnly } from "./ClientOnly";
@@ -16,12 +16,13 @@ export const ColorInlineLoader = ({
   ...props
 }: ColorInlineLoaderProps) => {
   return (
-    <Center {...props}>
+    <Center role="status" aria-live="polite" {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
           {() => <Lottie animationData={inlineLoaderColorData} />}
         </ClientOnly>
       </Box>
+      <VisuallyHidden>Loading...</VisuallyHidden>
     </Center>
   );
 };

@@ -32,7 +32,12 @@ export const ColorSpinner = ({
     <Center flexDirection="column" role="status" aria-live="polite" {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={spinnerColorData} />}
+          <Lottie animationData={spinnerColorData} />
+        </ClientOnly>
+      </Box>
+      <Box width={width} maxWidth={maxWidth}>
+        <ClientOnly>
+          <Lottie animationData={spinnerColorData} />
         </ClientOnly>
       </Box>
       <VisuallyHidden>Loading...</VisuallyHidden>

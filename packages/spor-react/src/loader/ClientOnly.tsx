@@ -17,7 +17,7 @@ type ClientOnlyProps = PropsWithChildren<{
  * ```tsx
  * return (
  *   <ClientOnly fallback={<FakeChart />}>
- *     {() => <Chart />}
+ *     <Chart />
  *   </ClientOnly>
  * );
  * ```

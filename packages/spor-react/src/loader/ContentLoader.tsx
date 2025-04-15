@@ -15,7 +15,7 @@ export const ContentLoader = ({ children, ...props }: ContentLoaderProps) => {
     <Box role="status" aria-live="polite" {...props}>
       <Box maxWidth="140px" marginX="auto">
         <ClientOnly>
-          {() => <Lottie animationData={contentLoaderData} />}
+          <Lottie animationData={contentLoaderData} />
         </ClientOnly>
       </Box>
       <VisuallyHidden>Loading...</VisuallyHidden>

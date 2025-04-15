@@ -44,6 +44,7 @@ Spor is getting a major update with Chakra 3.
 - `Nudge` has different props. `WizardNudge`is no longer its own component, but can be easily built with `Nudge`and `NudgeWizardStep`s
 - `ButtonGroup` has deprecate variant and size since the reference component in Chakra is now Group, variant and size is sent as children
 - `Alert` Rename props in alert from `indicator` to `showIndicator`
+- `CardSelect` new implementation. Uses same setup as `Popover`. See docs
 
 ### Darkmode
 

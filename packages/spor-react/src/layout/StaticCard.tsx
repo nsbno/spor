@@ -42,7 +42,8 @@ import { staticCardRecipe } from "../theme/recipes/static-card";
 
 const StyledCardBox = chakra("div", staticCardRecipe);
 
-type StaticCardProps = RecipeVariantProps<typeof staticCardRecipe> & BoxProps;
+export type StaticCardProps = RecipeVariantProps<typeof staticCardRecipe> &
+  BoxProps;
 
 export const StaticCard = forwardRef<HTMLDivElement, StaticCardProps>(
   (props, ref) => <StyledCardBox {...props} ref={ref}></StyledCardBox>,

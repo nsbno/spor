@@ -1,3 +1,5 @@
+"use client";
+
 import { CloseButton } from "@/button";
 import { useColorMode } from "@/color-mode";
 import {

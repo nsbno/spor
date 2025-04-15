@@ -42,20 +42,24 @@ export type ProgressLoaderProps = BoxProps & {
 };
 
 /**
- * Custom hook to calculate the total length of an SVG path.
- * @returns A ref for the path element and the calculated path length.
+ * Custom hook to calculate the total length of an SVG path and progress offset.
+ * @param value The percentage of progress made (0-100).
+ * @returns A ref for the path element, the calculated path length, and the progress offset.
  */
-const usePathLength = () => {
+const usePathLength = (value: number) => {
   const pathRef = useRef<SVGPathElement>(null);
   const [pathLength, setPathLength] = useState(0);
 
   useEffect(() => {
     if (pathRef.current) {
-      setPathLength(pathRef.current.getTotalLength());
+      const totalLength = pathRef.current.getTotalLength();
+      setPathLength(totalLength);
     }
   }, []);
 
-  return { pathRef, pathLength };
+  const progressOffset = ((value - 100) / 100) * pathLength;
+
+  return { pathRef, pathLength, progressOffset };
 };
 
 const ProgressLoaderWrapper = chakra("div", progressLoaderRecipe);
@@ -107,9 +111,12 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
       value,
       "aria-label": ariaLabel ?? t(texts.fallbackLabel(value ?? "?")),
     });
-    const { pathRef, pathLength: progressPathLength } = usePathLength();
+    const {
+      pathRef,
+      pathLength: progressPathLength,
+      progressOffset,
+    } = usePathLength(value);
 
-    const progress = ((value - 100) / 100) * progressPathLength;
     const id = useId();
 
     return (
@@ -143,7 +150,7 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeDasharray={progressPathLength}
-            strokeDashoffset={progress}
+            strokeDashoffset={progressOffset}
             style={{ transition: "stroke-dashoffset .2s ease-out" }}
             ref={pathRef}
           />

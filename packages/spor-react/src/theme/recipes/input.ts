@@ -17,10 +17,7 @@ export const inputRecipe = defineRecipe({
     paddingTop: 3,
     height: 8,
     fontSize: "mobile.md",
-    _focusVisible: {
-      ...focusVisibleStyles(),
-      outlineOffset: 0,
-    },
+    ...focusVisibleStyles(),
 
     _disabled: {
       backgroundColor: "surface.disabled",
@@ -57,7 +54,7 @@ export const inputRecipe = defineRecipe({
           _active: {
             outline: "1px solid",
             outlineColor: "outline.disabled",
-            backgroundColor: "accent.surface.active",
+            backgroundColor: "core.surface.active",
           },
         },
         _focus: {
@@ -67,12 +64,7 @@ export const inputRecipe = defineRecipe({
       },
       floating: {
         boxShadow: "sm",
-        backgroundColor: {
-          _light: "bg",
-          _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
-          outline: "1px solid",
-          outlineColor: "floating.outline",
-        },
+        bg: "floating.surface",
         outline: "1px solid",
         outlineColor: "floating.outline",
 
@@ -83,7 +75,7 @@ export const inputRecipe = defineRecipe({
         _active: {
           outline: "1px solid",
           outlineColor: "floating.outline.active",
-          backgroundColor: "core.surface.active",
+          backgroundColor: "floating.surface.active",
         },
 
         focus: {
@@ -92,5 +84,8 @@ export const inputRecipe = defineRecipe({
         },
       },
     },
+  },
+  defaultVariants: {
+    variant: "core",
   },
 });

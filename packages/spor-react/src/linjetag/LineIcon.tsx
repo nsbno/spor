@@ -28,7 +28,7 @@ export type LineIconProps = Exclude<BoxProps, "variant"> &
     backgroundColor?: string;
     disabled?: boolean;
     target?: string;
-    label?: string;
+    label: string;
   };
 
 /**

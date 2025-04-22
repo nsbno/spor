@@ -228,10 +228,6 @@ export const selectSlotRecipe = defineSlotRecipe({
         control: {
           outline: "1px solid",
           outlineColor: "core.outline",
-          _invalid: {
-            outline: "2px solid",
-            outlineColor: "outline.error",
-          },
         },
         trigger: {
           _focus: {

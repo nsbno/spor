@@ -91,8 +91,7 @@ export const PhoneNumberInput = forwardRef<
           width="6.25rem"
           variant={variant}
           data-state="on"
-          outline={invalid ? "none" : "2px solid"}
-          /*  invalid={invalid}*/
+          outline={invalid ? "none" : "1px solid"}
         />
 
         <Input
@@ -102,7 +101,7 @@ export const PhoneNumberInput = forwardRef<
           label={label}
           value={value.nationalNumber}
           invalid={invalid}
-          outline={invalid ? "none" : "2px solid"}
+          outline={invalid ? "none" : "1px solid"}
           errorText={errorText}
           onChange={(e) => {
             const target = e.target as HTMLInputElement;

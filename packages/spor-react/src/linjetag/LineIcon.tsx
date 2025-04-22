@@ -6,9 +6,9 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
+import { lineIconSlotRecipe } from "../theme/slot-recipes/line-icon";
 import { getCorrectIcon } from "./icons";
 import { CustomVariantProps, TagProps } from "./types";
-import { lineIconSlotRecipe } from "../theme/slot-recipes/line-icon";
 
 type LineIconVariantProps = RecipeVariantProps<typeof lineIconSlotRecipe>;
 
@@ -28,6 +28,7 @@ export type LineIconProps = Exclude<BoxProps, "variant"> &
     backgroundColor?: string;
     disabled?: boolean;
     target?: string;
+    label: string;
   };
 
 /**
@@ -69,6 +70,7 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
     disabled,
     style,
     target = "lineIcon",
+    label,
     ...rest
   }) {
     const recipe = useSlotRecipe({ key: "lineIcon" });
@@ -107,6 +109,7 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
         padding={targetPadding()}
         borderWidth={borderContainer()}
         borderColor={variant === "walk" ? "core.outline" : "transparent"}
+        aria-label={label}
       >
         <Icon css={styles.icon} />
       </Box>

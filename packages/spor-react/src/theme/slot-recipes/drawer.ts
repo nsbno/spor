@@ -43,6 +43,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
       maxHeight: "100dvh",
       color: "inherit",
       boxShadow: "lg",
+      minHeight: ["50vh", null, null, "auto"],
       _open: {
         animationDuration: "slowest",
         animationTimingFunction: "ease-in-smooth",
@@ -65,6 +66,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
       flex: "1",
       overflow: "auto",
       fontSize: ["xs", null, null, "sm"],
+      minHeight: ["12", null, null, "auto"],
     },
     footer: {
       display: "flex",

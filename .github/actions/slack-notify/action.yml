@@ -1,0 +1,31 @@
+name: Slack Notify
+description: Sends a Slack notification
+inputs:
+  repo:
+    description: The repository name
+    required: true
+  published_packages:
+    description: The release body
+    required: true
+  webhook_url:
+    description: The Slack webhook URL
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Send Slack Notification
+      shell: bash
+      run: |
+        version=$(echo '${{ inputs.published_packages }}' | jq -r '.[] | select(.name=="@vygruppen/spor-react") | .version')
+        if [ -z "$version" ]; then
+          echo "No @vygruppen/spor-react version found in published_packages. Skipping notification."
+          exit 0
+        fi
+        encoded_version=$(echo -n "@vygruppen/spor-react@$version" | jq -sRr @uri)
+        curl -X POST -H 'Content-type: application/json' --data "{
+          \"text\": \"*Ny versjon av spor er ute!* 📦✨ \n
+          ⚡️ *Versjon*: v${version} \n
+          📖 *Changelog*: <https://github.com/nsbno/spor/releases/tag/${encoded_version}|@vygruppen/spor-react@${version}> \n
+          🔧 *Installer*: \`npm i @vygruppen/spor-react@latest\` \n \"
+        }" ${{ inputs.webhook_url }}

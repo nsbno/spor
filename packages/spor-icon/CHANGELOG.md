@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 3.4.0
+
+### Minor Changes
+
+- 0d3debd: Added and updates icons
+
 ## 3.3.0
 
 ### Minor Changes

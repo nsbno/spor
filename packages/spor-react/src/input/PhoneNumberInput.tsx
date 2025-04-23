@@ -5,7 +5,7 @@ import { Input, InputProps, createTexts, useTranslation } from "..";
 import { AttachedInputs } from "./AttachedInputs";
 import { CountryCodeSelect } from "./CountryCodeSelect";
 
-type CountryCodeAndPhoneNumber = {
+export type CountryCodeAndPhoneNumber = {
   countryCode: string;
   nationalNumber: string;
 };
@@ -29,7 +29,7 @@ type PhoneNumberInputProps = InputProps & {
  * <PhoneNumberInput name="phone" />
  * ```
  *
- * > Please note that when specifying the name, the rendered names will be `${name}-country-code` and `${name}-phone-number`, respectively
+ * > Please note that when specifying the name, the rendered names will be `${name}-country-code` and `${name}-phone-number` unless a name is provided for both countryCode and nationalNumber.
  *
  * The field can be controlled as well:
  * ```tsx
@@ -92,8 +92,6 @@ export const PhoneNumberInput = forwardRef<
         <Input
           ref={ref}
           type="tel"
-          name="phone-number"
-          label={label}
           value={value.nationalNumber}
           invalid={invalid}
           errorText={errorText}
@@ -108,6 +106,8 @@ export const PhoneNumberInput = forwardRef<
           }}
           variant={variant}
           data-state="on"
+          {...props}
+          label={label}
         />
       </>
     </AttachedInputs>

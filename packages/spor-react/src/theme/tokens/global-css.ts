@@ -7,4 +7,11 @@ export const globalCss = defineGlobalStyles({
   svg: {
     display: "initial",
   },
+
+  ":focus-visible": {
+    outlineWidth: "2px !important",
+    outlineColor: "outline.focus !important",
+    outlineStyle: "solid !important",
+    outlineOffset: "1px !important",
+  },
 });

@@ -1,6 +1,5 @@
 import { defineRecipe } from "@chakra-ui/react";
 import { coreText } from "../utils/core-utils";
-import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const linkRecipe = defineRecipe({
   base: {
@@ -28,8 +27,6 @@ export const linkRecipe = defineRecipe({
       outline: "none",
       borderRadius: "xs",
     },
-
-    ...focusVisibleStyles(),
 
     "& svg": {
       display: "inline-block",

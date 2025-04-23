@@ -50,11 +50,7 @@ export const radioGroupSlotRecipe = defineSlotRecipe({
           backgroundColor: "brand.surface.hover",
         },
       },
-      _focusVisible: {
-        outline: "2px solid",
-        outlineColor: "brand.surface",
-        outlineOffset: "2px",
-      },
+
       _disabled: {
         pointerEvents: "none",
         backgroundColor: "surface.disabled",

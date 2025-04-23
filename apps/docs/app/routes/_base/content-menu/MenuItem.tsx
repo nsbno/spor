@@ -50,11 +50,6 @@ export const MenuItem = forwardRef<HTMLAnchorElement, MenuItemProps>(
         color="text"
         _hover={{ backgroundColor: "ghost.surface.hover" }}
         _active={{ backgroundColor: "ghost.surface.active" }}
-        _focusVisible={{
-          outline: "2px solid",
-          outlineColor: "outline.focus",
-          outlineOffset: "1px",
-        }}
         ref={(el: any) => {
           if (externalRef) {
             (externalRef as any).current = el;

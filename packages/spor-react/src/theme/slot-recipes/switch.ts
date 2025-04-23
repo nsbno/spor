@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { switchAnatomy } from "./anatomy";
 
 export const switchSlotRecipe = defineSlotRecipe({
@@ -69,7 +68,6 @@ export const switchSlotRecipe = defineSlotRecipe({
       transitionDuration: "fast",
       outline: "1px solid",
       outlineColor: "core.outline.default",
-      ...focusVisibleStyles(),
       backgroundColor: "core.background",
       _hover: {
         outline: "2px solid",
@@ -79,13 +77,7 @@ export const switchSlotRecipe = defineSlotRecipe({
           backgroundColor: "brand.surface.hover",
         },
       },
-      _focusVisible: {
-        outline: "2px solid",
-        outlineColor: "outline.focus",
-        _checked: {
-          outlineColor: "outline.focus",
-        },
-      },
+
       _checked: {
         backgroundColor: "brand.surface",
         outlineColor: "transparent",

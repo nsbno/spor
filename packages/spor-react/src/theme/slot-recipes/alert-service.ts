@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { alertServiceAnatomy } from "./anatomy";
 
 export const alertServiceSlotRecipe = defineSlotRecipe({
@@ -33,14 +32,7 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       "&:active": {
         backgroundColor: "alert.service.surface.active",
       },
-      _focusVisible: {
-        ...focusVisibleStyles()._focusVisible,
-        outlineOffset: "1px",
-      },
-      _focus: {
-        ...focusVisibleStyles()._focusVisible,
-        outlineOffset: "1px",
-      },
+
       _icon: {
         color: "darkGrey",
       },

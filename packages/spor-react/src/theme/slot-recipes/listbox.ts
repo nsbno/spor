@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { outlineBorder } from "../utils/outline-utils";
 import { listBoxAnatomy } from "./anatomy";
 
 export const listBoxSlotRecipe = defineSlotRecipe({
@@ -30,9 +29,7 @@ export const listBoxSlotRecipe = defineSlotRecipe({
       _active: {
         backgroundColor: "ghost.surface.active",
       },
-      _focusVisible: {
-        ...outlineBorder("focus"),
-      },
+
       _hover: {
         backgroundColor: "accent.surface",
         color: "accent.text",

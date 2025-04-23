@@ -1,7 +1,7 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { coreText } from "../utils/core-utils";
+import { accentBackground, accentText } from "../utils/accent-utils";
 import { brandBackground } from "../utils/brand-utils";
-import { accentText, accentBackground } from "../utils/accent-utils";
+import { coreText } from "../utils/core-utils";
 import { stepperAnatomy } from "./anatomy";
 
 export const stepperSlotRecipe = defineSlotRecipe({

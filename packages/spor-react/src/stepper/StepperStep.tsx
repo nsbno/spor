@@ -1,9 +1,10 @@
 "use client";
+import { useSlotRecipe } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React, { PropsWithChildren } from "react";
-import { Box, Button, StepperVariantProps, Text, useColorModeValue } from "..";
+import { Box, Button, Text } from "..";
+import { StepperVariantProps } from "./Stepper";
 import { useStepper } from "./StepperContext";
-import { useSlotRecipe } from "@chakra-ui/react";
 
 type StepperStepProps = PropsWithChildren<StepperVariantProps> & {
   children: React.ReactNode;
@@ -59,11 +60,13 @@ export const StepperStep = ({
           pointerEvents={state === "active" ? "none" : "auto"}
           tabIndex={state === "active" ? -1 : undefined}
           disabled={disabled}
+          aria-current={state === "active" ? "step" : undefined}
           css={
             state === "active"
               ? style.stepButton._currentStep
               : style.stepButton
           }
+          fontWeight={state === "active" ? "bold" : undefined}
         >
           {children}
         </Button>

@@ -92,8 +92,6 @@ export const PhoneNumberInput = forwardRef<
         <Input
           ref={ref}
           type="tel"
-          name="phone-number"
-          label={label}
           value={value.nationalNumber}
           invalid={invalid}
           errorText={errorText}
@@ -108,6 +106,8 @@ export const PhoneNumberInput = forwardRef<
           }}
           variant={variant}
           data-state="on"
+          {...props}
+          label={label}
         />
       </>
     </AttachedInputs>

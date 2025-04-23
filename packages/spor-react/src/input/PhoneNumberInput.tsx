@@ -78,8 +78,9 @@ export const PhoneNumberInput = forwardRef<
 
   return (
     <AttachedInputs
-      border={"none"}
-      outline={invalid ? "2px solid" : "none"}
+      border={invalid ? "1px solid" : "none"}
+      borderColor={invalid ? "outline.error" : "none"}
+      outline={invalid ? "1px solid" : "none"}
       outlineColor={invalid ? "outline.error" : "none"}
       borderRadius={invalid ? "sm" : "none"}
     >
@@ -91,9 +92,7 @@ export const PhoneNumberInput = forwardRef<
           width="6.25rem"
           variant={variant}
           data-state="on"
-          outline={invalid ? "none" : "1px solid"}
         />
-
         <Input
           ref={ref}
           type="tel"
@@ -101,7 +100,6 @@ export const PhoneNumberInput = forwardRef<
           label={label}
           value={value.nationalNumber}
           invalid={invalid}
-          outline={invalid ? "none" : "1px solid"}
           errorText={errorText}
           onChange={(e) => {
             const target = e.target as HTMLInputElement;

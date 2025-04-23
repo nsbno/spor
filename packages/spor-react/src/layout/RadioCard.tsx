@@ -98,6 +98,7 @@ export const RadioCard = forwardRef(
           type="radio"
           id={inputId}
           name={name}
+          value={value}
           ref={ref}
           checked={isChecked}
           onChange={() => onChange(value)}

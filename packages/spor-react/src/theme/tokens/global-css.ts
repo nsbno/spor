@@ -8,7 +8,7 @@ export const globalCss = defineGlobalStyles({
     display: "initial",
   },
 
-  ":focus-visible": {
+  ":is(button, [role='button'], a, input, textarea, select):focus-visible": {
     outlineWidth: "2px !important",
     outlineColor: "outline.focus !important",
     outlineStyle: "solid !important",

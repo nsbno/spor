@@ -1,5 +1,54 @@
 # @vygruppen/spor-react
 
+## 11.3.9
+
+### Patch Changes
+
+- d05f2af: Fix white text on white background in NativeSelect's options on Windows
+
+## 11.3.8
+
+### Patch Changes
+
+- Updated dependencies [0d3debd]
+  - @vygruppen/spor-icon-react@3.14.0
+
+## 11.3.7
+
+### Patch Changes
+
+- d4cfe80: Update PhoneNumberInput name prop
+
+## 11.3.6
+
+### Patch Changes
+
+- 3a3ded3: Service Alert: component does not show any icon if there are more than one warning message
+
+## 11.3.5
+
+### Patch Changes
+
+- 90a025f: Simplify export of FormControl
+
+## 11.3.4
+
+### Patch Changes
+
+- 702300a: Update checkbox export
+
+## 11.3.3
+
+### Patch Changes
+
+- bea336d: Update checkbox export
+
+## 11.3.2
+
+### Patch Changes
+
+- bb11775: Update styling for checkbox
+
 ## 11.3.1
 
 ### Patch Changes

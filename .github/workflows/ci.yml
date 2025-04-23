@@ -1,14 +1,12 @@
 name: Continuous Integration
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [update-chakra] # Change to main when update-chakra is merged
 
 jobs:
   build:
-    name: "CI build validation"
+    name: "CI - build validation"
 
     runs-on: ubuntu-latest
 

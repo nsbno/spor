@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 3.14.0
+
+### Minor Changes
+
+- 0d3debd: Added and updates icons
+
 ## 3.13.0
 
 ### Minor Changes

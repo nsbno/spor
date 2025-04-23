@@ -1,5 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { switchAnatomy } from "./anatomy";
+import tokens from "@vygruppen/spor-design-tokens";
 
 export const switchSlotRecipe = defineSlotRecipe({
   slots: switchAnatomy.keys(),
@@ -55,6 +56,7 @@ export const switchSlotRecipe = defineSlotRecipe({
     control: {
       boxSizing: "content-box",
       padding: 0.5,
+
       display: "inline-flex",
       gap: 1.5,
       flexShrink: 0,
@@ -78,9 +80,18 @@ export const switchSlotRecipe = defineSlotRecipe({
         },
       },
 
+      _focusVisible: {
+        outlineWidth: "2px",
+        outlineColor: "outline.focus",
+        outlineStyle: "solid",
+      },
+
       _checked: {
         backgroundColor: "brand.surface",
-        outlineColor: "transparent",
+        _focusVisible: {
+          outlineStyle: "double",
+          outlineWidth: `calc(3 * ${tokens.size.stroke.md})`, // space for double outline
+        },
       },
       _disabled: {
         pointerEvents: "none",

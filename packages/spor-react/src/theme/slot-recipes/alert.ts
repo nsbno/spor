@@ -16,13 +16,13 @@ export const alertSlotRecipe = defineSlotRecipe({
       textStyle: "sm",
       border: "sm",
     },
-    content: {
+    description: {
       display: "flex",
       alignItems: "flex-start",
       gap: 1.5,
       color: "text",
     },
-    description: {
+    content: {
       display: "flex",
       flexDirection: "column",
       gap: "2",
@@ -39,14 +39,11 @@ export const alertSlotRecipe = defineSlotRecipe({
           borderColor: "alert.important.outline",
           background: "alert.important.surface",
         },
-        content: {
+        description: {
           color: "alert.important.text.secondary",
         },
         title: {
           color: "alert.important.text",
-        },
-        indicator: {
-          color: "alert.important.icon",
         },
         closeButton: {
           color: "alert.important.text",
@@ -57,14 +54,11 @@ export const alertSlotRecipe = defineSlotRecipe({
           borderColor: "alert.alt.outline",
           background: "alert.alt.surface",
         },
-        content: {
+        description: {
           color: "alert.alt.text.secondary",
         },
         title: {
           color: "alert.alt.text",
-        },
-        indicator: {
-          color: "alert.alt.icon",
         },
         closeButton: {
           color: "alert.alt.text",
@@ -75,14 +69,11 @@ export const alertSlotRecipe = defineSlotRecipe({
           borderColor: "alert.error.outline",
           background: "alert.error.surface",
         },
-        content: {
+        description: {
           color: "alert.error.text.secondary",
         },
         title: {
           color: "alert.error.text",
-        },
-        indicator: {
-          color: "alert.error.icon",
         },
         closeButton: {
           color: "alert.error.text",
@@ -93,14 +84,11 @@ export const alertSlotRecipe = defineSlotRecipe({
           borderColor: "alert.success.outline",
           background: "alert.success.surface",
         },
-        content: {
+        description: {
           color: "alert.important.text.secondary",
         },
         title: {
           color: "alert.success.text",
-        },
-        indicator: {
-          color: "alert.success.icon",
         },
         closeButton: {
           color: "alert.success.text",
@@ -111,14 +99,11 @@ export const alertSlotRecipe = defineSlotRecipe({
           borderColor: "alert.info.outline",
           background: "alert.info.surface",
         },
-        content: {
+        description: {
           color: "alert.info.text.secondary",
         },
         title: {
           color: "alert.info.text",
-        },
-        indicator: {
-          color: "alert.info.icon",
         },
         closeButton: {
           color: "alert.info.text",
@@ -129,16 +114,12 @@ export const alertSlotRecipe = defineSlotRecipe({
           borderColor: "alert.neutral.outline",
           background: "alert.neutral.surface",
         },
-        content: {
+        description: {
           color: "alert.neutral.text.secondary",
         },
         title: {
           color: "alert.neutral.text",
         },
-        indicator: {
-          color: "alert.neutral.icon",
-        },
-
         closeButton: {
           color: "alert.neutral.text",
         },
@@ -148,14 +129,11 @@ export const alertSlotRecipe = defineSlotRecipe({
           borderColor: "alert.error-secondary.outline",
           background: "alert.error-secondary.surface",
         },
-        content: {
+        description: {
           color: "alert.error-secondary.text.secondary",
         },
         title: {
           color: "alert.error-secondary.text",
-        },
-        indicator: {
-          color: "alert.error-secondary.icon",
         },
         closeButton: {
           color: "alert.error-secondary.text",
@@ -166,14 +144,11 @@ export const alertSlotRecipe = defineSlotRecipe({
           borderColor: "alert.service.outline",
           background: "alert.service.surface",
         },
-        content: {
+        description: {
           color: "alert.service.text.secondary",
         },
         title: {
           color: "alert.service.text",
-        },
-        indicator: {
-          color: "alert.service.icon",
         },
         closeButton: {
           color: "alert.service.text",

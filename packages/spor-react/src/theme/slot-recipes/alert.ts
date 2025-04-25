@@ -1,6 +1,28 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { alertAnatomy } from "./anatomy";
 
+const createVariant = (variant: string) => ({
+  root: {
+    borderColor: `alert.${variant}.outline`,
+    background: `alert.${variant}.surface`,
+  },
+  description: {
+    color: `alert.${variant}.text.secondary`,
+  },
+  title: {
+    color: `alert.${variant}.text`,
+  },
+  closeButton: {
+    color: `alert.${variant}.text`,
+    _hover: {
+      bg: `alert.${variant}.surface.hover`,
+      _active: {
+        bg: `alert.${variant}.surface.active`,
+      },
+    },
+  },
+});
+
 export const alertSlotRecipe = defineSlotRecipe({
   className: "spor-alert",
   slots: alertAnatomy.keys(),
@@ -34,174 +56,14 @@ export const alertSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      important: {
-        root: {
-          borderColor: "alert.important.outline",
-          background: "alert.important.surface",
-        },
-        description: {
-          color: "alert.important.text.secondary",
-        },
-        title: {
-          color: "alert.important.text",
-        },
-        closeButton: {
-          color: "alert.important.text",
-          _hover: {
-            bg: "alert.important.surface.hover",
-            _active: {
-              bg: "alert.important.surface.active",
-            },
-          },
-        },
-      },
-      alt: {
-        root: {
-          borderColor: "alert.alt.outline",
-          background: "alert.alt.surface",
-        },
-        description: {
-          color: "alert.alt.text.secondary",
-        },
-        title: {
-          color: "alert.alt.text",
-        },
-        closeButton: {
-          color: "alert.alt.text",
-          _hover: {
-            bg: "alert.alt.surface.hover",
-            _active: {
-              bg: "alert.alt.surface.active",
-            },
-          },
-        },
-      },
-      error: {
-        root: {
-          borderColor: "alert.error.outline",
-          background: "alert.error.surface",
-        },
-        description: {
-          color: "alert.error.text.secondary",
-        },
-        title: {
-          color: "alert.error.text",
-        },
-        closeButton: {
-          color: "alert.error.text",
-          _hover: {
-            bg: "alert.error.surface.hover",
-            _active: {
-              bg: "alert.error.surface.active",
-            },
-          },
-        },
-      },
-      success: {
-        root: {
-          borderColor: "alert.success.outline",
-          background: "alert.success.surface",
-        },
-        description: {
-          color: "alert.important.text.secondary",
-        },
-        title: {
-          color: "alert.success.text",
-        },
-        closeButton: {
-          color: "alert.success.text",
-          _hover: {
-            bg: "alert.success.surface.hover",
-            _active: {
-              bg: "alert.success.surface.active",
-            },
-          },
-        },
-      },
-      info: {
-        root: {
-          borderColor: "alert.info.outline",
-          background: "alert.info.surface",
-        },
-        description: {
-          color: "alert.info.text.secondary",
-        },
-        title: {
-          color: "alert.info.text",
-        },
-        closeButton: {
-          color: "alert.info.text",
-          _hover: {
-            bg: "alert.info.surface.hover",
-            _active: {
-              bg: "alert.info.surface.active",
-            },
-          },
-        },
-      },
-      neutral: {
-        root: {
-          borderColor: "alert.neutral.outline",
-          background: "alert.neutral.surface",
-        },
-        description: {
-          color: "alert.neutral.text.secondary",
-        },
-        title: {
-          color: "alert.neutral.text",
-        },
-        closeButton: {
-          color: "alert.neutral.text",
-          _hover: {
-            bg: "alert.neutral.surface.hover",
-            _active: {
-              bg: "alert.neutral.surface.active",
-            },
-          },
-        },
-      },
-      "error-secondary": {
-        root: {
-          borderColor: "alert.error-secondary.outline",
-          background: "alert.error-secondary.surface",
-        },
-        description: {
-          color: "alert.error-secondary.text.secondary",
-        },
-        title: {
-          color: "alert.error-secondary.text",
-        },
-        closeButton: {
-          color: "alert.error-secondary.text",
-          _hover: {
-            bg: "alert.error-secondary.surface.hover",
-            _active: {
-              bg: "alert.error-secondary.surface.active",
-            },
-          },
-        },
-      },
-      service: {
-        root: {
-          borderColor: "alert.service.outline",
-          background: "alert.service.surface",
-        },
-        description: {
-          color: "alert.service.text.secondary",
-        },
-        title: {
-          color: "alert.service.text",
-        },
-        closeButton: {
-          color: "alert.service.text",
-          _hover: {
-            bg: "alert.service.surface.hover",
-            _active: {
-              bg: "alert.service.surface.active",
-            },
-          },
-        },
-      },
+      important: createVariant("important"),
+      alt: createVariant("alt"),
+      error: createVariant("error"),
+      success: createVariant("success"),
+      info: createVariant("info"),
+      neutral: createVariant("neutral"),
+      "error-secondary": createVariant("error-secondary"),
+      service: createVariant("service"),
     },
   },
   defaultVariants: {

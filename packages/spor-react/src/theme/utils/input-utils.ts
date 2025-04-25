@@ -1,7 +1,6 @@
 import { coreBackground, coreBorder, coreText } from "./core-utils";
 import { floatingBackground, floatingBorder } from "./floating-utils";
 import { InputState } from "./types";
-import { focusVisibleStyles } from "./focus-utils";
 import { surface } from "./surface-utils";
 
 export function inputVariant(state: InputState) {
@@ -74,10 +73,7 @@ export const inputBaseStyle = () => ({
     paddingX: 3,
     height: 8,
     fontSize: "mobile.md",
-    _focusVisible: {
-      ...focusVisibleStyles()._focusVisible,
-      outlineOffset: 0,
-    },
+
     _disabled: {
       ...surface("disabled"),
       ...coreBorder("disabled"),

@@ -1,5 +1,4 @@
 import { brandBackground } from "./brand-utils";
-import { focusVisibleStyles } from "./focus-utils";
 import { surface } from "./surface-utils";
 import { State, Subset } from "./types";
 
@@ -34,9 +33,7 @@ export function coreBorder(state: BorderState) {
         outline: "2px solid",
         outlineColor: "core.outline",
       };
-    case "focus": {
-      return focusVisibleStyles()._focusVisible;
-    }
+
     case "disabled": {
       return {
         outline: "1px solid",

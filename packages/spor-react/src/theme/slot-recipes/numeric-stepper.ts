@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { numericStepperAnatomy } from "./anatomy";
 
 export const numericStepperRecipe = defineSlotRecipe({
@@ -42,7 +41,6 @@ export const numericStepperRecipe = defineSlotRecipe({
         outline: "1px solid",
         outlineColor: "core.outline",
       },
-      ...focusVisibleStyles,
     },
     text: {
       fontSize: "sm",

@@ -1,5 +1,4 @@
 import { defineRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const choiceChipRecipe = defineRecipe({
   base: {
@@ -14,23 +13,28 @@ export const choiceChipRecipe = defineRecipe({
     height: 6,
     paddingInlineStart: "2",
     paddingInlineEnd: "2",
-    ...focusVisibleStyles(),
+
     outline: "1px solid",
     outlineColor: "base.outline",
     _checked: {
       backgroundColor: "brand.surface",
       borderRadius: "sm",
-      color: "brand.text",
       outline: "none",
-
+      color: "brand.text",
       _hover: {
         backgroundColor: "brand.surface.hover",
-        outline: "none",
         _active: {
           backgroundColor: "brand.surface.active",
         },
       },
     },
+
+    _focusVisible: {
+      outline: "2px solid",
+      outlineColor: "outline.focus",
+      outlineOffset: "1px",
+    },
+
     _disabled: {
       pointerEvents: "none",
       boxShadow: "none",
@@ -54,7 +58,6 @@ export const choiceChipRecipe = defineRecipe({
           color: "core.text.disabled",
         },
       },
-      "input:focus-visible + &": focusVisibleStyles()._focusVisible,
     },
   },
   variants: {

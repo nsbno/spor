@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { travelTagAnatomy } from "./anatomy";
 
 export const travelTagSlotRecipe = defineSlotRecipe({
@@ -19,7 +18,6 @@ export const travelTagSlotRecipe = defineSlotRecipe({
         _hover: {
           boxShadow: "md",
         },
-        ...focusVisibleStyles(),
         _active: {
           opacity: 0.5,
           boxShadow: "none",

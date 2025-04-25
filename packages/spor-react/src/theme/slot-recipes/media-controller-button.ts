@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { mediaControllerAnatomy } from "./anatomy";
 
 export const mediaControllerSlotRecipe = defineSlotRecipe({
@@ -19,7 +18,6 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
       padding: 1,
       alignSelf: "center",
       color: "brand.surface",
-      ...focusVisibleStyles(),
       outlineOffset: "2px",
     },
     icon: {

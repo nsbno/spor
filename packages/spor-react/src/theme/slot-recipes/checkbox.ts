@@ -2,7 +2,6 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 import tokens from "@vygruppen/spor-design-tokens";
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { coreBackground, coreText } from "../utils/core-utils";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { checkboxAnatomy } from "./anatomy";
 
 export const checkboxSlotRecipe = defineSlotRecipe({
@@ -45,7 +44,6 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       borderColor: "core.outline",
       borderRadius: "xs",
       ...coreBackground("default"),
-      ...focusVisibleStyles(),
 
       _checked: {
         ...brandText("default"),

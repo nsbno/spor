@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { datepickerAnatomy } from "./anatomy";
 
 export const datePickerSlotRecipe = defineSlotRecipe({
@@ -25,7 +24,8 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         color: "text.disabled",
       },
       _focusWithin: {
-        ...focusVisibleStyles()._focusVisible,
+        outline: "2px solid",
+        outlineColor: "outline.focus",
       },
     },
     inputLabel: {
@@ -51,7 +51,6 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       justifyContent: "center",
       transitionProperty: "box-shadow, background-color",
       right: "0.5rem",
-      ...focusVisibleStyles(),
       _hover: {
         backgroundColor: "ghost.surface.hover",
       },
@@ -113,7 +112,6 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       _hover: {
         backgroundColor: "ghost.surface.hover",
       },
-      ...focusVisibleStyles(),
       _active: {
         backgroundColor: "ghost.surface.active",
       },

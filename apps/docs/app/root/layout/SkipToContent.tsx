@@ -23,8 +23,6 @@ export const SkipToContent = () => {
       _focusVisible={{
         transform: "none",
         opacity: 1,
-        outline: "4px solid",
-        outlineColor: "burntYellow",
       }}
     >
       <a href="#content">Skip to content</a>

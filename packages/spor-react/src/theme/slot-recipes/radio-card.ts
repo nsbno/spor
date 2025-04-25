@@ -4,7 +4,6 @@ import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { outlineBorder } from "../utils/outline-utils";
 import { radioCardAnatomy } from "./anatomy";
 import tokens from "@vygruppen/spor-design-tokens";
-import { focusVisibleStyles } from "../utils/focus-utils";
 
 export const radioCardSlotRecipe = defineSlotRecipe({
   className: "spor-radio-card",
@@ -19,7 +18,14 @@ export const radioCardSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       transitionProperty: "common",
       transitionDuration: "fast",
-      ...focusVisibleStyles(),
+
+      _focusVisible: {
+        outlineWidth: "2px",
+        outlineColor: "outline.focus",
+        outlineStyle: "solid",
+        outlineOffset: "1px",
+      },
+
       _disabled: {
         outline: "none",
         pointerEvents: "none",
@@ -57,10 +63,9 @@ export const radioCardSlotRecipe = defineSlotRecipe({
             outlineWidth: tokens.size.stroke.md,
             outlineStyle: "solid",
             backgroundColor: "core.surface.active",
-
             _focusVisible: {
               outlineStyle: "double",
-              outlineWidth: `calc(2 * ${tokens.size.stroke.md})`, // space for double outline
+              outlineWidth: `calc(3 * ${tokens.size.stroke.md})`, // space for double outline
             },
           },
         },
@@ -94,7 +99,7 @@ export const radioCardSlotRecipe = defineSlotRecipe({
 
             _focusVisible: {
               outlineStyle: "double",
-              outlineWidth: `calc(2 * ${tokens.size.stroke.md})`, // space for double outline
+              outlineWidth: `calc(3 * ${tokens.size.stroke.md})`, // space for double outline
             },
           },
         },

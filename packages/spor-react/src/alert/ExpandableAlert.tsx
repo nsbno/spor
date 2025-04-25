@@ -44,7 +44,7 @@ type ExpandableAlertProps = PropsWithChildren<ExpandableAlertVariantProps> &
       | "global-deviation";
    */
     variant?: ConditionalValue<
-      "important" | "success" | "info" | "error" | "alt-transport" | undefined
+      "important" | "success" | "alt" | "info" | "error" | undefined
     >;
   };
 /**

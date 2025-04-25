@@ -35,11 +35,6 @@ export const ColorSpinner = ({
           <Lottie animationData={spinnerColorData} />
         </ClientOnly>
       </Box>
-      <Box width={width} maxWidth={maxWidth}>
-        <ClientOnly>
-          <Lottie animationData={spinnerColorData} />
-        </ClientOnly>
-      </Box>
       <VisuallyHidden>Loading...</VisuallyHidden>
       {children && (
         <Box marginTop={3} fontWeight="bold">

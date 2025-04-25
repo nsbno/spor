@@ -3,17 +3,20 @@
 import {
   AltTransportFill24Icon,
   ErrorFill24Icon,
+  ErrorOutline24Icon,
   InformationFill24Icon,
+  QuestionFill24Icon,
+  ServiceFill24Icon,
   SuccessFill24Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import React, { PropsWithChildren } from "react";
 import { createTexts, useTranslation } from "../i18n";
-import { AlertProps, AlertVariantProps } from "./Alert";
-import { Box, useSlotRecipe } from "@chakra-ui/react";
+import { AlertProps } from "./Alert";
+import { Box, useSlotRecipe, Alert as ChakraAlert } from "@chakra-ui/react";
 
-type AlertIconProps = PropsWithChildren<AlertVariantProps> & {
-  variant: AlertProps["variant"];
+type AlertIconProps = {
+  variant: ChakraAlert.RootProps["variant"];
 };
 
 /**
@@ -26,11 +29,13 @@ export const AlertIcon = ({ variant }: AlertIconProps) => {
   const styles = recipe({ variant });
 
   return (
-    <Box
-      as={getIcon(variant)}
-      css={styles.indicator}
-      aria-label={t(texts[variant as keyof typeof texts])}
-    />
+    <>
+      <Box
+        as={getIcon(variant)}
+        css={styles.indicator}
+        aria-label={t(texts[variant as keyof typeof texts])}
+      />
+    </>
   );
 };
 
@@ -42,10 +47,16 @@ const getIcon = (variant: AlertProps["variant"]) => {
       return SuccessFill24Icon;
     case "important":
       return WarningFill24Icon;
-    case "alt-transport":
+    case "alt":
       return AltTransportFill24Icon;
     case "error":
       return ErrorFill24Icon;
+    case "error-secondary":
+      return ErrorOutline24Icon;
+    case "neutral":
+      return QuestionFill24Icon;
+    case "service":
+      return ServiceFill24Icon;
   }
 };
 
@@ -63,21 +74,39 @@ const texts = createTexts({
     en: "Success",
   },
   important: {
-    nb: "Viktig melding",
-    nn: "Viktig melding",
-    sv: "Viktig meddelande",
-    en: "Important message",
+    nb: "Viktig",
+    nn: "Viktig",
+    sv: "Viktig",
+    en: "Important",
+  },
+  alt: {
+    nb: "Alternativ",
+    nn: "Alternativ",
+    sv: "Alternativ",
+    en: "Alternative",
   },
   error: {
     nb: "Feil",
     nn: "Feil",
-    sv: "Error",
+    sv: "Fel",
     en: "Error",
   },
-  "alt-transport": {
-    nb: "Alternativ transport",
-    nn: "Alternativ transport",
-    sv: "Alternativ transport",
-    en: "Alternative transport",
+  "error-secondary": {
+    nb: "Feil",
+    nn: "Feil",
+    sv: "Fel",
+    en: "Error",
+  },
+  neutral: {
+    nb: "Nøytral",
+    nn: "Nøytral",
+    sv: "Neutral",
+    en: "Neutral",
+  },
+  service: {
+    nb: "Service",
+    nn: "Service",
+    sv: "Service",
+    en: "Service",
   },
 });

@@ -30,7 +30,7 @@ export function ColorTokens(props: BoxProps) {
         <LinkableHeading as="h2" variant="xl-display" marginBottom={2}>
           Styles
         </LinkableHeading>
-
+        <ColorTable colorKey="alert" name="Alert" />
         <ColorTable colorKey="core" name="Core" />
         <ColorTable colorKey="brand" name="Brand" />
         <ColorTable colorKey="accent" name="Accent" />

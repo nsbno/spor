@@ -1,6 +1,11 @@
 "use client";
 
-import { Alert as ChakraAlert, useDisclosure, HStack } from "@chakra-ui/react";
+import {
+  Alert as ChakraAlert,
+  useDisclosure,
+  HStack,
+  useSlotRecipe,
+} from "@chakra-ui/react";
 import React, { forwardRef } from "react";
 import { AlertIcon } from "./AlertIcon";
 import { CloseButton } from "@/button";
@@ -49,13 +54,17 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
     onClose();
     onAlertClose?.();
   };
+
+  const recipe = useSlotRecipe({ key: "alert" });
+  const styles = recipe({ variant: props.variant });
+
   if (!open) return null;
   return (
     <ChakraAlert.Root ref={ref} {...props}>
       <ChakraAlert.Content flexDirection={title ? "column" : "row"}>
         <HStack gap="1" alignItems="flex-start">
           {showIndicator && (
-            <ChakraAlert.Indicator>
+            <ChakraAlert.Indicator asChild>
               <AlertIcon variant={props.variant} />
             </ChakraAlert.Indicator>
           )}
@@ -81,6 +90,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
           top="1.5"
           right="1.5"
           onClick={handleAlertClose}
+          css={styles.closeButton}
         />
       )}
     </ChakraAlert.Root>

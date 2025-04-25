@@ -2,22 +2,7 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 import { alertSlotRecipe } from "./alert";
 import { focusVisibleStyles } from "../utils/focus-utils";
 import { alertExpandableAnatomy } from "./anatomy";
-
-const commonTriggerStyles = {
-  border: "1px solid",
-  borderBottom: "none",
-};
-
-const commonContentStyles = {
-  border: "1px solid",
-  borderTop: "none",
-  borderBottomRadius: "sm",
-};
-
-const commonTriggerHoverStyles = {
-  outline: "1px solid",
-  outlineOffset: "-1px",
-};
+import tokens from "@vygruppen/spor-design-tokens";
 
 export const alertExpandableSlotRecipe = defineSlotRecipe({
   className: "spor-alert-expandable",
@@ -32,140 +17,125 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
         ...focusVisibleStyles()._focusVisible,
         outlineOffset: "-1px",
       },
+      _hover: {
+        outlineWidth: tokens.size.stroke.sm,
+        outlineStyle: "solid",
+        outlineOffset: "0px",
+      },
     },
     itemContent: {
       fontSize: "xs !important",
       paddingTop: "1 !important",
     },
+    root: {
+      border: "sm",
+    },
   },
   variants: {
     variant: {
-      info: {
-        root: {
-          outlineColor: "alert.info.outline",
-          background: "alert.info.surface",
+      important: {
+        itemContent: {
+          color: "alert.important.text.secondary",
         },
         itemTrigger: {
-          ...commonTriggerStyles,
-          borderColor: "alert.info.outline",
-          background: "alert.info.surface",
-          "&:hover": {
-            ...commonTriggerHoverStyles,
-            background: "alert.info.surface.hover",
-            outlineColor: "alert.info.outline.hover",
-          },
-          "&:active": {
-            outline: "1px solid",
-            backgroundColor: "alert.info.surface.active",
-            outlineColor: "alert.info.surface.active",
+          _hover: {
+            bg: "alert.important.surface.hover",
+            outlineColor: "alert.important.outline.hover",
+            _active: {
+              bg: "alert.important.surface.active",
+            },
           },
         },
-        itemContent: {
-          ...commonContentStyles,
-          borderColor: "alert.info.outline",
+        root: {
+          borderColor: "alert.important.outline",
+          bg: "alert.important.surface",
+        },
+        title: {
+          color: "alert.important.text",
         },
       },
       success: {
-        root: {
-          outlineColor: "alert.success.outline",
-          background: "alert.success.surface",
+        itemContent: {
+          color: "alert.success.text.secondary",
         },
         itemTrigger: {
-          ...commonTriggerStyles,
-          borderColor: "alert.success.outline",
-          background: "alert.success.surface",
-          "&:hover": {
-            ...commonTriggerHoverStyles,
-            background: "alert.success.surface.hover",
+          _hover: {
+            bg: "alert.success.surface.hover",
             outlineColor: "alert.success.outline.hover",
-          },
-          "&:active": {
-            outline: "1px solid",
-            background: "alert.success.surface.active",
-            outlineColor: "alert.success.surface.active",
+            _active: {
+              bg: "alert.success.surface.active",
+            },
           },
         },
-        itemContent: {
-          ...commonContentStyles,
+        root: {
           borderColor: "alert.success.outline",
+          bg: "alert.success.surface",
+        },
+        title: {
+          color: "alert.success.text",
         },
       },
-      important: {
-        root: {
-          outlineColor: "alert.important.outline",
-          background: "alert.important.surface",
-        },
-        itemTrigger: {
-          ...commonTriggerStyles,
-          borderColor: "alert.important.outline",
-          background: "alert.important.surface",
-          "&:hover": {
-            ...commonTriggerHoverStyles,
-            backgroundColor: "alert.important.surface.hover",
-            outlineColor: "alert.important.outline.hover",
-          },
-          "&:active": {
-            outline: "1px solid",
-            backgroundColor: "alert.important.surface.active",
-            outlineColor: "alert.important.surface.active",
-          },
-        },
+      alt: {
         itemContent: {
-          ...commonContentStyles,
-          borderColor: "alert.important.outline",
-        },
-      },
-      "alt-transport": {
-        root: {
-          outlineColor: "alert.alt.outline",
-          background: "alert.alt.surface",
+          color: "alert.alt.text.secondary",
         },
         itemTrigger: {
-          ...commonTriggerStyles,
-          borderColor: "alert.alt.outline",
-          background: "alert.alt.surface",
-          "&:hover": {
-            ...commonTriggerHoverStyles,
-            backgroundColor: "alert.alt.surface.hover",
+          _hover: {
+            bg: "alert.alt.surface.hover",
             outlineColor: "alert.alt.outline.hover",
-          },
-          "&:active": {
-            outline: "1px solid",
-            backgroundColor: "alert.alt.surface.active",
-            outlineColor: "alert.alt.surface.active",
+            _active: {
+              bg: "alert.alt.surface.active",
+            },
           },
         },
-        itemContent: {
-          ...commonContentStyles,
+        root: {
           borderColor: "alert.alt.outline",
+          bg: "alert.alt.surface",
         },
-        indicator: {
-          ...alertSlotRecipe.variants?.variant["alt-transport"].indicator,
+        title: {
+          color: "alert.alt.text",
+        },
+      },
+      info: {
+        itemContent: {
+          color: "alert.info.text.secondary",
+        },
+        itemTrigger: {
+          _hover: {
+            bg: "alert.info.surface.hover",
+            outlineColor: "alert.info.outline.hover",
+            _active: {
+              bg: "alert.info.surface.active",
+            },
+          },
+        },
+        root: {
+          borderColor: "alert.info.outline",
+          bg: "alert.info.surface",
+        },
+        title: {
+          color: "alert.info.text",
         },
       },
       error: {
-        root: {
-          outlineColor: "alert.error.outline",
-          background: "alert.error.surface",
+        itemContent: {
+          color: "alert.error.text.secondary",
         },
         itemTrigger: {
-          ...commonTriggerStyles,
-          borderColor: "alert.error.outline",
-          background: "alert.error.surface",
-          "&:hover": {
-            ...commonTriggerHoverStyles,
-            backgroundColor: "alert.error.surface.hover",
+          _hover: {
+            bg: "alert.error.surface.hover",
             outlineColor: "alert.error.outline.hover",
-          },
-          "&:active": {
-            outline: "1px solid",
-            backgroundColor: "alert.error.surface.active",
-            outlineColor: "alert.error.surface.active",
+            _active: {
+              bg: "alert.error.surface.active",
+            },
           },
         },
-        itemContent: {
-          ...commonContentStyles,
+        root: {
           borderColor: "alert.error.outline",
+          bg: "alert.error.surface",
+        },
+        title: {
+          color: "alert.error.text",
         },
       },
     },

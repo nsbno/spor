@@ -56,8 +56,8 @@ export const inputRecipe = defineRecipe({
           },
         },
         _focus: {
-          outline: "1px solid",
-          outlineColor: "core.outline",
+          outline: "2px solid",
+          outlineColor: "outline.focus",
         },
       },
       floating: {

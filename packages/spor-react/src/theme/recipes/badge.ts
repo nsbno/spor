@@ -12,35 +12,35 @@ export const badgeRecipie = defineRecipe({
     colorPalette: {
       neutral: {
         backgroundColor: "surface.color.neutral",
-        color: "detail.color.neutral",
+        color: "alert.neutral.text",
       },
       grey: {
         backgroundColor: "surface.color.grey",
-        color: "detail.color.grey",
+        color: "alert.neutral.text",
       },
       green: {
         backgroundColor: "surface.color.green",
-        color: "detail.color.green",
+        color: "alert.success.text",
       },
       blue: {
         backgroundColor: "surface.color.blue",
-        color: "detail.color.blue",
+        color: "alert.info.text",
       },
       cream: {
         backgroundColor: "surface.color.cream",
-        color: "detail.color.cream",
+        color: "alert.important.text",
       },
       yellow: {
         backgroundColor: "surface.color.yellow",
-        color: "detail.color.yellow",
+        color: "alert.alt.text",
       },
       orange: {
         backgroundColor: "surface.color.orange",
-        color: "detail.color.orange",
+        color: "alert.error.text.secondary",
       },
       red: {
         backgroundColor: "surface.color.red",
-        color: "detail.color.red",
+        color: "alert.error.text",
       },
     },
     size: {

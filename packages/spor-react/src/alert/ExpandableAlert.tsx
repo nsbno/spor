@@ -3,6 +3,7 @@
 import {
   Accordion,
   Box,
+  ConditionalValue,
   HStack,
   RecipeVariantProps,
   Span,
@@ -42,7 +43,9 @@ type ExpandableAlertProps = PropsWithChildren<ExpandableAlertVariantProps> &
       | "service"
       | "global-deviation";
    */
-    variant?: AlertProps["variant"];
+    variant?: ConditionalValue<
+      "important" | "success" | "alt" | "info" | "error" | undefined
+    >;
   };
 /**
  * An expandable alert component.

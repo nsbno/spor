@@ -1,6 +1,28 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { alertAnatomy } from "./anatomy";
 
+const createVariant = (variant: string) => ({
+  root: {
+    borderColor: `alert.${variant}.outline`,
+    background: `alert.${variant}.surface`,
+  },
+  description: {
+    color: `alert.${variant}.text.secondary`,
+  },
+  title: {
+    color: `alert.${variant}.text`,
+  },
+  closeButton: {
+    color: `alert.${variant}.text`,
+    _hover: {
+      bg: `alert.${variant}.surface.hover`,
+      _active: {
+        bg: `alert.${variant}.surface.active`,
+      },
+    },
+  },
+});
+
 export const alertSlotRecipe = defineSlotRecipe({
   className: "spor-alert",
   slots: alertAnatomy.keys(),
@@ -9,16 +31,24 @@ export const alertSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       padding: 2,
       display: "flex",
+      maxWidth: "300px",
       justifyContent: "space-between",
       alignItems: "flex-start",
       position: "relative",
       textStyle: "sm",
+      border: "sm",
     },
-    content: {
+    description: {
       display: "flex",
       alignItems: "flex-start",
       gap: 1.5,
       color: "text",
+    },
+    content: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "2",
+      alignItems: "flex-start",
     },
     title: {
       fontWeight: "bold",
@@ -26,63 +56,14 @@ export const alertSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      success: {
-        root: {
-          backgroundColor: "alert.success.surface",
-          color: "text",
-        },
-        indicator: {
-          color: "primaryGreen",
-        },
-      },
-      info: {
-        root: {
-          backgroundColor: "alert.info.surface",
-        },
-        indicator: {
-          color: "darkBlue",
-        },
-      },
-      important: {
-        root: {
-          backgroundColor: "alert.important.surface",
-        },
-        indicator: {
-          color: "darkGrey",
-        },
-      },
-      error: {
-        root: {
-          backgroundColor: "alert.error.surface",
-        },
-        indicator: {
-          color: "brightRed",
-        },
-      },
-      "alt-transport": {
-        root: {
-          backgroundColor: "alert.alt.surface",
-        },
-        indicator: {
-          color: "icon",
-        },
-      },
-      "global-deviation": {
-        root: {
-          backgroundColor: "alert.important.surface",
-        },
-        indicator: {
-          color: "darkGrey",
-        },
-      },
-      service: {
-        root: {
-          backgroundColor: "alert.service.surface",
-        },
-        indicator: {
-          color: "darkGrey",
-        },
-      },
+      important: createVariant("important"),
+      alt: createVariant("alt"),
+      error: createVariant("error"),
+      success: createVariant("success"),
+      info: createVariant("info"),
+      neutral: createVariant("neutral"),
+      "error-secondary": createVariant("error-secondary"),
+      service: createVariant("service"),
     },
   },
   defaultVariants: {

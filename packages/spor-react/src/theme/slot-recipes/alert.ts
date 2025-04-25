@@ -47,6 +47,12 @@ export const alertSlotRecipe = defineSlotRecipe({
         },
         closeButton: {
           color: "alert.important.text",
+          _hover: {
+            bg: "alert.important.surface.hover",
+            _active: {
+              bg: "alert.important.surface.active",
+            },
+          },
         },
       },
       alt: {
@@ -62,6 +68,12 @@ export const alertSlotRecipe = defineSlotRecipe({
         },
         closeButton: {
           color: "alert.alt.text",
+          _hover: {
+            bg: "alert.alt.surface.hover",
+            _active: {
+              bg: "alert.alt.surface.active",
+            },
+          },
         },
       },
       error: {
@@ -77,6 +89,12 @@ export const alertSlotRecipe = defineSlotRecipe({
         },
         closeButton: {
           color: "alert.error.text",
+          _hover: {
+            bg: "alert.error.surface.hover",
+            _active: {
+              bg: "alert.error.surface.active",
+            },
+          },
         },
       },
       success: {
@@ -92,6 +110,12 @@ export const alertSlotRecipe = defineSlotRecipe({
         },
         closeButton: {
           color: "alert.success.text",
+          _hover: {
+            bg: "alert.success.surface.hover",
+            _active: {
+              bg: "alert.success.surface.active",
+            },
+          },
         },
       },
       info: {
@@ -107,6 +131,12 @@ export const alertSlotRecipe = defineSlotRecipe({
         },
         closeButton: {
           color: "alert.info.text",
+          _hover: {
+            bg: "alert.info.surface.hover",
+            _active: {
+              bg: "alert.info.surface.active",
+            },
+          },
         },
       },
       neutral: {
@@ -122,6 +152,12 @@ export const alertSlotRecipe = defineSlotRecipe({
         },
         closeButton: {
           color: "alert.neutral.text",
+          _hover: {
+            bg: "alert.neutral.surface.hover",
+            _active: {
+              bg: "alert.neutral.surface.active",
+            },
+          },
         },
       },
       "error-secondary": {
@@ -137,6 +173,12 @@ export const alertSlotRecipe = defineSlotRecipe({
         },
         closeButton: {
           color: "alert.error-secondary.text",
+          _hover: {
+            bg: "alert.error-secondary.surface.hover",
+            _active: {
+              bg: "alert.error-secondary.surface.active",
+            },
+          },
         },
       },
       service: {

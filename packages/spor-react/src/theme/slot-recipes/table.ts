@@ -15,6 +15,8 @@ export const tableSlotRecipe = defineSlotRecipe({
       tableLayout: "fixed",
       borderCollapse: "collapse",
       width: "100%",
+      minWidth: "36rem",
+      overflowX: "auto",
     },
     columnHeader: {
       fontWeight: "bold",

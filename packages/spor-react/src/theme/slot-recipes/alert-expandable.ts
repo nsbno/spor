@@ -1,6 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { alertSlotRecipe } from "./alert";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { alertExpandableAnatomy } from "./anatomy";
 
 const commonTriggerStyles = {
@@ -27,10 +26,6 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
       paddingX: "2 !important",
       _expanded: {
         borderBottomRadius: "none",
-      },
-      _focusVisible: {
-        ...focusVisibleStyles()._focusVisible,
-        outlineOffset: "-1px",
       },
     },
     itemContent: {

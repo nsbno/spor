@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { switchAnatomy } from "./anatomy";
+import tokens from "@vygruppen/spor-design-tokens";
 
 export const switchSlotRecipe = defineSlotRecipe({
   slots: switchAnatomy.keys(),
@@ -56,6 +56,7 @@ export const switchSlotRecipe = defineSlotRecipe({
     control: {
       boxSizing: "content-box",
       padding: 0.5,
+
       display: "inline-flex",
       gap: 1.5,
       flexShrink: 0,
@@ -69,7 +70,6 @@ export const switchSlotRecipe = defineSlotRecipe({
       transitionDuration: "fast",
       outline: "1px solid",
       outlineColor: "core.outline.default",
-      ...focusVisibleStyles(),
       backgroundColor: "core.background",
       _hover: {
         outline: "2px solid",
@@ -79,16 +79,19 @@ export const switchSlotRecipe = defineSlotRecipe({
           backgroundColor: "brand.surface.hover",
         },
       },
+
       _focusVisible: {
-        outline: "2px solid",
+        outlineWidth: "2px",
         outlineColor: "outline.focus",
-        _checked: {
-          outlineColor: "outline.focus",
-        },
+        outlineStyle: "solid",
       },
+
       _checked: {
         backgroundColor: "brand.surface",
-        outlineColor: "transparent",
+        _focusVisible: {
+          outlineStyle: "double",
+          outlineWidth: `calc(3 * ${tokens.size.stroke.md})`, // space for double outline
+        },
       },
       _disabled: {
         pointerEvents: "none",

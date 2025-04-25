@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { tabsAnatomy } from "./anatomy";
 
 export const tabsSlotRecipe = defineSlotRecipe({
@@ -27,7 +26,6 @@ export const tabsSlotRecipe = defineSlotRecipe({
       height: "100%",
       whiteSpace: "nowrap",
       borderRadius: "xl",
-      ...focusVisibleStyles(),
     },
   },
   variants: {

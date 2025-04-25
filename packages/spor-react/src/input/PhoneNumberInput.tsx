@@ -77,7 +77,13 @@ export const PhoneNumberInput = forwardRef<
   };
 
   return (
-    <AttachedInputs>
+    <AttachedInputs
+      border={invalid ? "1px solid" : "none"}
+      borderColor={invalid ? "outline.error" : "none"}
+      outline={invalid ? "1px solid" : "none"}
+      outlineColor={invalid ? "outline.error" : "none"}
+      borderRadius={invalid ? "sm" : "none"}
+    >
       <>
         <CountryCodeSelect
           value={[value.countryCode]}
@@ -86,9 +92,7 @@ export const PhoneNumberInput = forwardRef<
           width="6.25rem"
           variant={variant}
           data-state="on"
-          invalid={invalid}
         />
-
         <Input
           ref={ref}
           type="tel"

@@ -19,6 +19,7 @@ export const popoverSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       zIndex: "popover",
       outline: "0",
+
       transformOrigin: "var(--transform-origin)",
       maxHeight: "var(--available-height)",
       _open: {

@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { breadcrumbAnatomy } from "./anatomy";
 import tokens from "@vygruppen/spor-design-tokens";
 
@@ -16,7 +15,6 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
       cursor: "pointer",
       padding: 0.5,
       borderRadius: "xs",
-      ...focusVisibleStyles(),
     },
     currentLink: {
       borderRadius: "xs",

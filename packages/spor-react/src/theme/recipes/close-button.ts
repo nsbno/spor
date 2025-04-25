@@ -1,5 +1,4 @@
 import { defineRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 
 export const closeButtonRecipe = defineRecipe({
@@ -10,7 +9,6 @@ export const closeButtonRecipe = defineRecipe({
     backgroundColor: "transparent",
     color: "darkGrey",
     fontWeight: "normal",
-    ...focusVisibleStyles(),
     _hover: {
       ...ghostBackground("hover"),
       _disabled: {

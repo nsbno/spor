@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { selectAnatomy } from "./anatomy";
 
 export const selectSlotRecipe = defineSlotRecipe({
@@ -12,7 +11,6 @@ export const selectSlotRecipe = defineSlotRecipe({
       position: "relative",
       cursor: "pointer",
       zIndex: "dropdown",
-      ...focusVisibleStyles(),
       "& [data-state='open']": {
         "& + label": {
           transform: ["scale(0.825) translateY(-10px)"],
@@ -49,9 +47,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       fontSize: "mobile.md",
       borderRadius: "sm",
       cursor: "pointer",
-      _focusVisible: {
-        ...focusVisibleStyles()._focusVisible,
-      },
+
       _open: {
         "& + div": {
           transform: "rotate(180deg)",
@@ -92,9 +88,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       listStyle: "none",
       borderBottomRadius: "sm",
       marginTop: -1,
-      _focusVisible: {
-        ...focusVisibleStyles()._focusVisible,
-      },
+
       _open: {
         animationStyle: "slide-fade-in",
         animationDuration: "fast",
@@ -124,7 +118,6 @@ export const selectSlotRecipe = defineSlotRecipe({
         color: "green",
       },
       _highlighted: {
-        ...focusVisibleStyles()._focusVisible,
         _active: {
           color: "text",
         },
@@ -152,7 +145,6 @@ export const selectSlotRecipe = defineSlotRecipe({
       _open: {
         borderBottomRadius: 0,
       },
-      ...focusVisibleStyles(),
     },
     itemText: {
       flex: "1",

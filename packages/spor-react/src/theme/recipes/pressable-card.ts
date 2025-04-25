@@ -1,8 +1,4 @@
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
-import { floatingBackground, floatingBorder } from "../utils/floating-utils";
-import { accentBackground, accentText } from "../utils/accent-utils";
 import { defineRecipe } from "../../util";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import tokens from "@vygruppen/spor-design-tokens";
 
 export const pressableCardRecipe = defineRecipe({
@@ -17,7 +13,6 @@ export const pressableCardRecipe = defineRecipe({
     transitionProperty: "common",
 
     transitionDuration: "fast",
-    ...focusVisibleStyles(),
 
     _disabled: {
       outline: "none",

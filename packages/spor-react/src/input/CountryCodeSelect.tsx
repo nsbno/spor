@@ -50,10 +50,6 @@ export const CountryCodeSelect = forwardRef<
       lazyMount
       aria-label={t(texts.countryCode)}
       variant={"rightSideSquare"}
-      outline={invalid ? "2px solid" : "none"}
-      outlineColor={invalid ? "outline.error" : "none"}
-      borderRadius={invalid ? "sm" : "none"}
-      borderRightRadius={invalid ? "none" : "sm"}
     >
       {callingCodes.items.map((code) => (
         <SelectItem key={code.label} item={code}>

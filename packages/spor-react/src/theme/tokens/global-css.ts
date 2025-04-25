@@ -7,4 +7,12 @@ export const globalCss = defineGlobalStyles({
   svg: {
     display: "initial",
   },
+
+  ":is(button, [role='button'], a, input, textarea, select, video, audio):focus-visible":
+    {
+      outlineWidth: "2px !important",
+      outlineColor: "outline.focus !important",
+      outlineStyle: "solid !important",
+      outlineOffset: "1px !important",
+    },
 });

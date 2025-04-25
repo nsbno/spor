@@ -1,5 +1,4 @@
 import { defineRecipe } from "@chakra-ui/react";
-import { focusVisibleStyles } from "../utils/focus-utils";
 
 /* FYI: The styling in this file is also used in Textarea */
 
@@ -17,7 +16,6 @@ export const inputRecipe = defineRecipe({
     paddingTop: 3,
     height: 8,
     fontSize: "mobile.md",
-    ...focusVisibleStyles(),
 
     _disabled: {
       backgroundColor: "surface.disabled",
@@ -58,8 +56,8 @@ export const inputRecipe = defineRecipe({
           },
         },
         _focus: {
-          outline: "1px solid",
-          outlineColor: "core.outline",
+          outline: "2px solid",
+          outlineColor: "outline.focus",
         },
       },
       floating: {

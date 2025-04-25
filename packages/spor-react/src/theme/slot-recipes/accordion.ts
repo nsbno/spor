@@ -1,6 +1,5 @@
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
+import { coreBorder, coreText } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
-import { focusVisibleStyles } from "../utils/focus-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
 import { accordionAnatomy } from "./anatomy";
@@ -32,7 +31,6 @@ export const accordionSlotRecipe = defineSlotRecipe({
       paddingY: [1, null, 1.5],
       minHeight: [6, null, 7],
       cursor: "pointer",
-      ...focusVisibleStyles(),
       _disabled: {
         pointerEvents: "none",
         opacity: 0.4,

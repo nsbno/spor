@@ -1,9 +1,9 @@
 artifacts:
   - name: spor-tf
-    branch: update-chakra
+    branch: main-v1
     location: s3
   - name: spor
-    branch: update-chakra
+    branch: main-v1
     location: ecr
 
 steps:

@@ -1,9 +1,9 @@
 artifacts:
   - name: spor-tf
-    branch: main
+    branch: main-v1
     location: s3
   - name: spor
-    branch: main
+    branch: main-v1
     location: ecr
 
 steps:
@@ -13,4 +13,4 @@ steps:
 
 environments:
   - [service]
-  - [prod]
+  - [test]

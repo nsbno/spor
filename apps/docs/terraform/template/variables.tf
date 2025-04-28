@@ -7,3 +7,9 @@ variable "environment" {
   description = "The environment the application is running in."
   type        = string
 }
+
+variable "custom_sub_domain" {
+  description = "Use custom domain name instead of application_name in App Runner URL"
+  type        = string
+  default = ""
+}

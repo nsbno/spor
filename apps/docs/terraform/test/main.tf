@@ -14,8 +14,8 @@ terraform {
 
   backend "s3" {
     key            = "spor/main.tfstate"
-    bucket         = "471112960535-terraform-state"
-    dynamodb_table = "471112960535-terraform-state"
+    bucket         = "590183702222-terraform-state"
+    dynamodb_table = "590183702222-terraform-state"
     acl            = "bucket-owner-full-control"
     encrypt        = "true"
     region         = "eu-west-1"
@@ -23,7 +23,7 @@ terraform {
 }
 
 provider "aws" {
-  allowed_account_ids = ["471112960535"]
+  allowed_account_ids = ["590183702222"]
   default_tags {
     tags = {
       repo        = local.application_name
@@ -40,11 +40,12 @@ provider "vy" {
 
 locals {
   application_name = "spor"
-  environment      = "prod"
+  environment      = "test"
 }
 
 module "app" {
   source           = "../template"
   application_name = local.application_name
   environment      = local.environment
+  custom_sub_domain = "spor-v1"
 }

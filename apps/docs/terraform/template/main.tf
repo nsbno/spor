@@ -41,7 +41,7 @@ resource "aws_ssm_parameter" "sanity_preview_secret" {
 #                                #
 ##################################
 module "app_runner" {
-  source                = "github.com/nsbno/terraform-digitalekanaler-apprunner-internal?ref=1.1.0"
+  source                = "github.com/nsbno/terraform-digitalekanaler-apprunner-internal?ref=1.0.0"
   application_port      = 3000
   application_name      = var.application_name
   ecr_repository_name   = var.application_name
@@ -51,7 +51,6 @@ module "app_runner" {
     SANITY_PREVIEW_API_TOKEN = aws_ssm_parameter.sanity_preview_api_token.arn
     SANITY_PREVIEW_SECRET    = aws_ssm_parameter.sanity_preview_secret.arn
   }
-  custom_sub_domain = var.custom_sub_domain
 }
 
 resource "aws_security_group_rule" "allow_all_outgoing_traffic_from_apprunner" {

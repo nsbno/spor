@@ -47,5 +47,4 @@ module "app" {
   source           = "../template"
   application_name = local.application_name
   environment      = local.environment
-  custom_sub_domain = ""
 }

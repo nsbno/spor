@@ -1,5 +1,23 @@
 # @vygruppen/spor-icon-react
 
+## 4.0.0
+
+### Major Changes
+
+- fcd6f80: New Nudge component. Can also be made into a wizard type Nudge
+
+### Minor Changes
+
+- fcd6f80: ProgressBar: You can now use showValueText to show the percentage done
+- fcd6f80: Upgrade to pnpm
+
+### Patch Changes
+
+- fcd6f80: ProgressLoader: No big changes
+- fcd6f80: Watch mode for packages
+- fcd6f80: ProgressIndicator: No big changes
+- fcd6f80: Button: no big changes
+
 ## 3.14.0
 
 ### Minor Changes

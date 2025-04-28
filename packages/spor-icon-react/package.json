@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-icon-react",
-  "version": "3.14.0",
+  "version": "4.0.0",
   "type": "module",
   "exports": {
     ".": {

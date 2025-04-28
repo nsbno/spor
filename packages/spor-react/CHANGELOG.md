@@ -1,5 +1,244 @@
 # @vygruppen/spor-react
 
+## 12.0.0
+
+### Major Changes
+
+- fcd6f80: Checkbox:
+
+  - Updated props, `onChange` is now `onCheckedChange`
+  - "`is`" removed from props names. `invalid`, `disabled` and `checked`
+
+  CheckboxGroup:
+
+  - `defaultChecked` > `defaultValue`
+
+- fcd6f80: Separator: Changed name from Divider to Separator. Fixed styling on separators to match Figma styling
+- fcd6f80: Line Tag: isDisabled prop is now disabled
+- fcd6f80: Line Icon: added label prop to enable aria-label for voice-over
+- fcd6f80: useDisclosure hooks has changed prop from isOpen to open
+- fcd6f80: Name update: "base" is now "core" on all platforms. Colors and variants.
+- fcd6f80: Lists: UnorderedList is removed, use List with prop as="ul"; OrderedList is removed, use List with prop as="ol"
+- fcd6f80: Table:
+
+  - Thead is now TableHeader,
+  - Tbody is now TableBody,
+  - Tr is now TableRow,
+  - Th is now TableCell,
+  - isNumeric is now textAlign="end"
+  - "line" > "ghost"
+  - "outline" > "core"
+
+- fcd6f80: Breadcrumb: isCurrentPage prop is deprecated. Use BreadcrumbCurrentLink instead. BreadcrumbLink is deprecated. BreadcrumbItem will act as link and item.
+- fcd6f80: Stepper: isDisabled is now disabled, variants are now `core` and `accent`
+- fcd6f80: **Pagination:**
+  Pagination has changed and been converted to composition pattern. Please see docs for info.
+
+  Prop changes:
+
+  - `totalPages` > `count`
+  - `selectedPage` > `page`
+
+  New props: `pageSize`, `siblingsCount`, `defaultPage`, `onPageChange`, `onPageSizeChage`, `page`
+  See docs for more info
+
+- fcd6f80: Media controller: isDisabled is deprecated, use disabled, isPlaying is deprecated, use now playing
+- fcd6f80: ## Migrate to Chakra 3
+
+  Spor is getting a major update with Chakra 3.
+
+  ## Updated variants
+
+  - `base` is now `core`
+
+  ### Update props
+
+  - `isDisabled` is now `disabled`
+  - `isLoading` is now `loading`
+  - `sx` and `__css` is gone, use `css` or `style` instead
+  - `colorScheme` is now `colorPalette`
+  - `onClose` is now `close`
+  - `isOpen` is now `open`
+  - `isFitted` is now `fitted`
+  - `isPlaying` is now `playing`
+  - `isAttached` is now `attached`
+
+  ### Updated components
+
+  - `Dialog` replaces `Modal` - And all sizes and placements are now available from the same component
+  - `Accordion`, `Pagination`, `Tabs`, `RadioCard` and `RadioCardGroup` now have a different syntax. Please consult the documentation for name changes.
+  - `Table` components has many changes. Instead of the generic HTML names (Td, Tr etc.), it will now work with full names. Please see docs. Variant `simple` is now `line`.
+  - `Toast` prop `isClosable` is now `closable`. `useToast` is now `createToaster`.
+  - `FormControl`, `FormLabel` and `FormErrorMessage` are removed and replaced by `Field`. `Field` supports the necessary props to support this.
+  - `Separator` replaces `Divider`.
+  - `UnorderedList` and `OrderedList` is deprecated. Use `List` and `as` prop instead.
+  - `Tab` is now `TabsTrigger`, `TabList` is now `TabsList`, `TabsPanel` and `TabPanel` are now `TabsContent`.
+  - `ClosableAlert` and `StaticAlert` are deprecated. Use component `Alert` and prop `closable` instead
+  - `InfoSelect` is now `Select` and has two more variants `rightSideSquare` and `leftSideSquare`
+  - `AttachedInputs` has deprecate FlexDirection prop which is now `orientation`
+  - `PhoneNumberInputs`an `invalid` prop is send for validation purpose, and `errorText` prop is send to give feedback on error
+  - `CardSelect` has new variant: `core`, `ghost` and `floating`
+  - `NumericStepper`isDisabled prop is deprecated, use disabled
+  - `createToast` replaces `useToast`. Now does not support closable toasts or toasts with actions.
+  - `Popover`replaces `ToolTip`. Props are different.
+  - `MediaController`isPlaying prop is now playing
+  - `Nudge` has different props. `WizardNudge`is no longer its own component, but can be easily built with `Nudge`and `NudgeWizardStep`s
+  - `ButtonGroup` has deprecate variant and size since the reference component in Chakra is now Group, variant and size is sent as children
+  - `Alert`: The `indicator` prop has been renamed to `showIndicator`.
+    - New variants: `important`, `alt`, `neutral`, `error-secondary`, and `service`.
+    - Removed variants: `warning` and `alt-transport`.
+    - Unchanged variants: `success`, `info`, and `error`.
+  - `CardSelect` new implementation. Uses same setup as `Popover`. See docs
+
+  ### Darkmode
+
+  `DarkMode` and `LightMode` has been removed. Use `className="dark"` instead.
+
+  The `useColorMode` hook exports the state (`colorMode`) and toggle (`toggleColorMode`).
+
+  ### Externals from Chakra:
+
+  Removed (as they have been removed from Chakra): `DarkMode, LightMode, defineStyleConfig, useColorModePreference, useMergeRefs, usePreferReducedMotion, CSSWithMultiValues, ComponentStyleConfig, UseClipboardOptions, UseOutsideClickProps, useSize`
+
+  Added: `defineRecipe, defineStyle, For, FormatNumber, FormatByte, LocaleProvider, Show, VisuallyHidden, useMap, useOnClickOutside, useIsClient`
+
+- fcd6f80: Combobox: default variant is no longer base but core
+- fcd6f80: Dialog: previous Modal component, and props, is removed and Dialog replace it
+- fcd6f80: Accordion: Update syntax and props.
+
+  Changes for component:
+
+  - `AccordionButton` > `AccordionItemTrigger`
+  - `AccordionPanel` > `AccordionItemContent`
+  - `AccordionIcon` is deprecated and used in all Accordions
+  - `leftIcon` > `startElement`
+  - `defaultIndex` > `defaultValue`
+
+- fcd6f80: Radio: can no longer be used without RadioGroup, for accessibility reasons.
+- fcd6f80: Button Group: variant and size are no longer props of ButtonGroup, these props are passed from children. isAttached is now attached
+- fcd6f80: RadioCardGroup and RadioCard:
+
+  - Updated props: `onChange` is now `onValueChange`
+  - Deleted props: `name`, `groupLabel` is replaced by `<RadioCardLabel />`
+  - `core` replaces the `base` variant
+
+- fcd6f80: Numeric stepper: isDisabled is deprecated use now disabled
+- fcd6f80: Tabs: Tab is now TabsTrigger, TabList is now TabsList, TabsPanel and TabPanel are now TabsContent, isFitted is now fitted, colorScheme is now variant
+- fcd6f80: TimePicker: isInvalid and isDisabled is deprecated - use invalid and disabled instead
+- fcd6f80: Popover component
+- fcd6f80: Drawer: mainly component and some sub component has changed including their props
+
+  SimpleDrawer is deprecated
+  FullPageDrawer is deprecated and replaced by a prop customVariant="full" in DrawerContent
+
+- fcd6f80: NativeSelect: isDisabled and isInvalid is now disabled and invalid. It is no longer necessary to define true or false.
+- fcd6f80: Alert & ExpandableAlert
+
+  - `Alert`: `ClosableAlert` and `StaticAlert` are deprecated. Use component `Alert` and prop `closable` instead
+  - `ExpandableAlert`: New colorscheme and styling
+  - `Accordion`: Some styling updates
+  - variant `warning` is now `important` for Alert and ExpandableAlert
+  - `onToggle` is now `onValueChange`
+  - `onFocusChange` is added as prop
+
+- fcd6f80: Switch: FormLabel is depricated, use label prop. isDisabled, isChecked and isInvalid is now disabled, checked and invalid.
+- fcd6f80: **spor-design-tokens: major**
+
+  - teal has been removed from the palette. Use the green palette instead
+  - Some aliases are removed to make way for new ones
+
+  **spor-design-tokens: minor**
+
+  - The palette has been extended from 50-600 to 50-1100 with new values
+  - New aliases has been added to support the extended color palette
+  - New tokens has been added to themes; detail.color, surface.color and alert
+  - Some values for tokens has changed to support the new palette
+
+  **spor-react: patch**
+
+  - Updated darkGreen Badge with new alias
+
+- fcd6f80: CardSelect: the variant are now: core, ghost and floating
+- fcd6f80: ChoiceChip: isChecked and isDisabled is now checked and disabled
+- fcd6f80: Floating Action button: isDisabled is now disabled
+- fcd6f80: AttachedInputs: FlexDirection is deprecated and it is now orientation
+  Select: previously InfoSelect now just Select, disabledKeys is deprecated, onChange is now onValueChange,
+  placeholder is deprecated use label instead, ItemLabel and ItemDescription are deprecated, two more variants are added:
+  rightSideSquare and leftSideSquare to better use Select in AttachedInputs
+  PhoneNumberInputs: invalid prop is send for validation, default is false, and errorText is send to give feedback on error
+- fcd6f80: TextLink: isExternal prop is now external
+
+### Minor Changes
+
+- fcd6f80: Change lottie package
+- fcd6f80: Textarea: New props `label`, `invalid`, `errorText` and `helperText`
+- fcd6f80: New alert variants and tokens.
+- fcd6f80: remove support for elm
+- fcd6f80: ProgressBar: You can now use showValueText to show the percentage done
+- fcd6f80: ### Changed
+
+  - Changed the way the theme is switched to work with Chakra 3.
+  - Removed the `theme` prop and its value from `SporProvider`. Specifying brand should be sufficient.
+
+- fcd6f80: ### Skeleton Component Updates
+
+  - **Skeleton**: Introduced new props. The `isLoaded` prop has been replaced with `loading`, which is its opposite.
+  - **SkeletonCircle**: The `boxSize` prop has been replaced with `size`.
+
+- fcd6f80: New toast chakra 3
+- fcd6f80: DatePicker: FormControl is depricated, you may use form
+- fcd6f80: Update badge and add new borderradius, xxs
+- fcd6f80: Upgrade to pnpm
+
+### Patch Changes
+
+- fcd6f80: ProgressLoader: No big changes
+- fcd6f80: Button: fix outline width to align with design
+- fcd6f80: Watch mode for packages
+- fcd6f80: Update style and code quality in breadcrumbs
+- fcd6f80: PhoneNumberInput: Fix styling
+- fcd6f80: Field: fix helper text color
+- fcd6f80: Simplify styling button
+- fcd6f80: **Color tokens**: Update structure for alias and themes
+  **scripts**: Add typegen, typegen:watch and typegen:strict as run commands
+  **tokens**: Update structure for import to support colors
+- fcd6f80: New setup CardSelect.
+- fcd6f80: Button: fix tertiary styling
+- fcd6f80: Separator: changed separator to use color token to fix darkmode
+- fcd6f80: Rename props in alert from `indicator` to `showIndicator`
+- fcd6f80: NativeSelect: Fix innvalid and disabled
+- fcd6f80: Datepicker: added active state
+- fcd6f80: ProgressIndicator: No big changes
+- fcd6f80: PressableCard: moved \_active inside \_hover. Defaults to core now
+- fcd6f80: Button: no big changes
+- fcd6f80: Stepper: update design for active step
+- fcd6f80: Checkbox: fix outline stroke for focus state
+- fcd6f80: ServiceAlert: Updated styling with correct tokens
+- fcd6f80: StaticCard: Changed color values of grey, red, yellow and orange to reflect Figma design.
+- fcd6f80: Floating Action Button: fix problems with outline stroke
+- fcd6f80: Update button colors
+- fcd6f80: Merge main
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+- Updated dependencies [fcd6f80]
+  - @vygruppen/spor-design-tokens@4.0.0
+  - @vygruppen/spor-icon-react@4.0.0
+  - @vygruppen/spor-loader@0.6.0
+
 ## 11.3.10
 
 ### Patch Changes

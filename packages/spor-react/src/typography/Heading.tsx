@@ -12,7 +12,7 @@ export type HeadingProps = Omit<ChakraHeadingProps, "textStyle" | "as"> & {
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   /** The size and style of the heading. Defaults to xl-display */
   variant?: ConditionalValue<
-    "sm" | "md" | "lg" | "2xl" | "xl-display" | "xl-sans" | "xs"
+    "sm" | "md" | "lg" | "xxl" | "xl-display" | "xl-sans" | "xs"
   >;
   /** If true, generate an ID based on the children */
   autoId?: boolean;
@@ -27,10 +27,10 @@ export type HeadingProps = Omit<ChakraHeadingProps, "textStyle" | "as"> & {
  * <Heading as="h1">Page heading</Heading>
  * ```
  *
- * You can specify the variant, which is one of "xs", "sm", "md", "lg", "xl-sans", "xs-serif" and "2xl". The default is "xl-sans".
+ * You can specify the variant, which is one of "xs", "sm", "md", "lg", "xl-sans", "xs-serif" and "xxl". The default is "xl-sans".
  *
  * ```tsx
- * <Heading as="h1" variant="2xl">Look at me!</Heading>
+ * <Heading as="h1" variant="xxl">Look at me!</Heading>
  * ```
  *
  * If you want to generate an ID based on the children, you can use the `autoId` prop.

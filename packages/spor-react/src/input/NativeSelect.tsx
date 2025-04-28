@@ -3,6 +3,7 @@ import {
   RecipeVariantProps,
   NativeSelect as ChakraNativeSelect,
   useSlotRecipe,
+  NativeSelectFieldProps as ChakraNativeSelectFieldProps,
 } from "@chakra-ui/react";
 import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
 import * as React from "react";
@@ -13,13 +14,14 @@ type NativeSelectVariantProps = RecipeVariantProps<
   typeof nativeSelectSlotRecipe
 >;
 
-type NativeSelectRootProps =
-  React.PropsWithChildren<NativeSelectVariantProps> & {
-    icon?: React.ReactNode;
-    label: string;
-    invalid?: boolean;
-    disabled?: boolean;
-  };
+export type NativeSelectdProps =
+  React.PropsWithChildren<NativeSelectVariantProps> &
+    ChakraNativeSelectFieldProps & {
+      icon?: React.ReactNode;
+      label: string;
+      invalid?: boolean;
+      disabled?: boolean;
+    };
 
 /**
  * Selects let you choose between several options
@@ -40,7 +42,7 @@ type NativeSelectRootProps =
 
 export const NativeSelect = React.forwardRef<
   HTMLDivElement,
-  NativeSelectRootProps
+  NativeSelectdProps
 >(function NativeSelect(props, ref) {
   const {
     icon,

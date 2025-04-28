@@ -116,7 +116,7 @@ export default function IllustrationLibraryPage() {
       <Badge colorPalette={brand === Brand.CargoNet ? "yellow" : "green"}>
         {article.category?.title}
       </Badge>
-      <Heading as="h1" variant="2xl" marginBottom={1}>
+      <Heading as="h1" variant="xxl" marginBottom={1}>
         {article.title}
       </Heading>
       {article.introduction && (
@@ -154,7 +154,7 @@ export default function IllustrationLibraryPage() {
           <NativeSelect
             label="Size"
             value={size}
-            onChange={(e: any) => setSize(e.target.value)}
+            onChange={(e) => setSize(e.target.value)}
             width="fit-content"
           >
             <option value="all">All</option>

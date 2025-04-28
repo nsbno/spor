@@ -31,12 +31,7 @@ export function HeroSection() {
             color="text.inverted"
             flex={["auto", "55%"]}
           >
-            <Heading
-              as="h1"
-              variant="2xl"
-              color="text.tertiary"
-              className="dark"
-            >
+            <Heading as="h1" variant="xxl" color="text" className="dark">
               Welcome to Spor
             </Heading>
             <Text variant="sm" color="text.tertiary" className="dark">

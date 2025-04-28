@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 11.3.10
+
+### Patch Changes
+
+- a3f39e5: Update RadioCard to specify input value
+
 ## 11.3.9
 
 ### Patch Changes

@@ -9,11 +9,13 @@ import {
 import React, { forwardRef } from "react";
 import { AlertIcon } from "./AlertIcon";
 import { CloseButton } from "@/button";
+import { IconComponent } from "@vygruppen/spor-icon-react";
 
 export type AlertProps = Omit<ChakraAlert.RootProps, "colorPalette"> & {
   /** Whether or not to show the alert icon */
   showIndicator?: boolean;
   /** Whether or not the alert is closable */
+  icon?: IconComponent;
   closable?: boolean;
   /** Callback for when the alert is closed */
   onAlertClose?: () => void;
@@ -44,6 +46,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const {
     title,
     showIndicator = true,
+    icon,
     closable = false,
     onAlertClose,
     children,
@@ -65,7 +68,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
         <HStack gap="1" alignItems="flex-start">
           {showIndicator && (
             <ChakraAlert.Indicator asChild>
-              <AlertIcon variant={props.variant} />
+              <AlertIcon variant={props.variant} customIcon={icon} />
             </ChakraAlert.Indicator>
           )}
           {title && (

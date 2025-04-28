@@ -2,11 +2,11 @@ import { Link, useLocation, useRouteLoaderData } from "@remix-run/react";
 import {
   HamburgerFill24Icon,
   SearchFill24Icon,
-  SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
   Button,
+  CardSelect,
   DarkMode,
   Drawer,
   DrawerBody,
@@ -132,6 +132,7 @@ const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
         justifyContent="flex-end"
         alignItems="center"
       >
+        <ChangeVersion />
         <SiteSettings showLabel={true} />
       </Flex>
     </>
@@ -159,6 +160,7 @@ const MobileNavigation = ({ onSearchClick }: SearchFieldProps) => {
             onClick={onSearchClick}
           />
         </DarkMode>
+        <ChangeVersion />
         <SiteSettings showLabel={false} />
         <DarkMode>
           <IconButton
@@ -183,5 +185,36 @@ const MobileNavigation = ({ onSearchClick }: SearchFieldProps) => {
         </DrawerContent>
       </Drawer>
     </Flex>
+  );
+};
+
+const ChangeVersion = () => {
+  const domain = useRouteLoaderData<typeof loader>("root")?.domain;
+  const isOldVersion = domain?.includes("spor-v1");
+
+  return (
+    <DarkMode>
+      <CardSelect size="md" label="v1" variant="base">
+        <Button
+          variant="ghost"
+          size="md"
+          marginBottom={2}
+          as="a"
+          href="https://spor.vy.no"
+          disabled={!isOldVersion}
+        >
+          Spor V2 - ver.12.xx
+        </Button>
+        <Button
+          variant="ghost"
+          size="md"
+          as="a"
+          href="https://spor-v1.test.vylabs.io/"
+          disabled={isOldVersion}
+        >
+          Spor V1 - ver.11.xx
+        </Button>
+      </CardSelect>
+    </DarkMode>
   );
 };

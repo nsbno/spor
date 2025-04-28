@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 12.0.1
+
+### Patch Changes
+
+- 14720c4: Update peer dependencies to support all versions of react 18. Fix type errors with NativeSelect and Heading
+- Updated dependencies [14720c4]
+  - @vygruppen/spor-icon-react@4.0.1
+
 ## 12.0.0
 
 ### Major Changes

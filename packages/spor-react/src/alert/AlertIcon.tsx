@@ -1,47 +1,59 @@
-import {
-  AltTransportOutline24Icon,
-  ErrorOutline24Icon,
-  InformationOutline24Icon,
-  SuccessOutline24Icon,
-  WarningOutline24Icon,
-  WarningFill24Icon,
-  ServiceFill24Icon,
-} from "@vygruppen/spor-icon-react";
-import React from "react";
-import { createTexts, useTranslation } from "../i18n";
-import { BaseAlertProps } from "./BaseAlert";
+"use client";
 
-type AlertIconProps = { variant: BaseAlertProps["variant"] };
+import {
+  AltTransportFill24Icon,
+  ErrorFill24Icon,
+  ErrorOutline24Icon,
+  IconComponent,
+  InformationFill24Icon,
+  QuestionFill24Icon,
+  ServiceFill24Icon,
+  SuccessFill24Icon,
+  WarningFill24Icon,
+} from "@vygruppen/spor-icon-react";
+import React, { PropsWithChildren } from "react";
+import { createTexts, useTranslation } from "../i18n";
+import { AlertProps } from "./Alert";
+import { Box, useSlotRecipe, Alert as ChakraAlert } from "@chakra-ui/react";
+
+type AlertIconProps = {
+  variant: ChakraAlert.RootProps["variant"];
+  customIcon?: IconComponent;
+};
+
 /**
  * Internal component that shows the correct icon for the alert
  */
-export const AlertIcon = ({ variant }: AlertIconProps) => {
-  const Icon = getIcon(variant);
+export const AlertIcon = ({ variant, customIcon }: AlertIconProps) => {
   const { t } = useTranslation();
+
+  const icon = customIcon ?? getIcon(variant);
+
   return (
-    <Icon
-      flexShrink={0}
-      aria-label={t(texts[variant])}
-      marginRight={1}
-      color="darkGrey"
+    <Box
+      as={icon}
+      aria-label={t(texts[variant as keyof typeof texts])}
+      color={customIcon ? `alert.${variant}.icon` : undefined}
     />
   );
 };
 
-const getIcon = (variant: BaseAlertProps["variant"]) => {
+const getIcon = (variant: AlertProps["variant"]) => {
   switch (variant) {
     case "info":
-      return InformationOutline24Icon;
+      return InformationFill24Icon;
     case "success":
-      return SuccessOutline24Icon;
-    case "warning":
-      return WarningOutline24Icon;
-    case "alt-transport":
-      return AltTransportOutline24Icon;
-    case "error":
-      return ErrorOutline24Icon;
-    case "global-deviation":
+      return SuccessFill24Icon;
+    case "important":
       return WarningFill24Icon;
+    case "alt":
+      return AltTransportFill24Icon;
+    case "error":
+      return ErrorFill24Icon;
+    case "error-secondary":
+      return ErrorOutline24Icon;
+    case "neutral":
+      return QuestionFill24Icon;
     case "service":
       return ServiceFill24Icon;
   }
@@ -60,34 +72,40 @@ const texts = createTexts({
     sv: "Succé",
     en: "Success",
   },
-  warning: {
-    nb: "Advarsel",
-    nn: "Advarsel",
-    sv: "Varning",
-    en: "Warning",
+  important: {
+    nb: "Viktig",
+    nn: "Viktig",
+    sv: "Viktig",
+    en: "Important",
+  },
+  alt: {
+    nb: "Alternativ",
+    nn: "Alternativ",
+    sv: "Alternativ",
+    en: "Alternative",
   },
   error: {
     nb: "Feil",
     nn: "Feil",
-    sv: "Error",
+    sv: "Fel",
     en: "Error",
   },
-  "alt-transport": {
-    nb: "Alternativ transport",
-    nn: "Alternativ transport",
-    sv: "Alternativ transport",
-    en: "Alternative transport",
+  "error-secondary": {
+    nb: "Feil",
+    nn: "Feil",
+    sv: "Fel",
+    en: "Error",
+  },
+  neutral: {
+    nb: "Nøytral",
+    nn: "Nøytral",
+    sv: "Neutral",
+    en: "Neutral",
   },
   service: {
-    nb: "Driftsmelding",
-    nn: "Driftsmelding",
-    sv: "Servicemeddelande",
-    en: "Service message",
-  },
-  "global-deviation": {
-    nb: "Trafikkmelding",
-    nn: "Trafikkmelding",
-    sv: "Trafikmeddelande",
-    en: "Traffic announcement",
+    nb: "Service",
+    nn: "Service",
+    sv: "Service",
+    en: "Service",
   },
 });

@@ -4,11 +4,11 @@ import {
   Code,
   Heading,
   Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
+  TableBody,
+  TableCell,
+  TableColumnHeader,
+  TableHeader,
+  TableRow,
 } from "@vygruppen/spor-react";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { LinkableHeading } from "../../../features/portable-text/LinkableHeading";
@@ -50,38 +50,39 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
             Props
           </Heading>
           <Table
-            variant="outline"
+            variant="core"
             marginTop={3}
+            colorPalette="grey"
             maxWidth={`calc(100vw - var(--spor-space-6))`}
           >
-            <Thead>
-              <Tr>
-                <Th>Name</Th>
-                <Th>Type</Th>
-                <Th>Required?</Th>
-                <Th>Description</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
+            <TableHeader>
+              <TableRow>
+                <TableColumnHeader>Name</TableColumnHeader>
+                <TableColumnHeader>Type</TableColumnHeader>
+                <TableColumnHeader>Required?</TableColumnHeader>
+                <TableColumnHeader>Description</TableColumnHeader>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {visibleProps.map((prop) => (
-                <Tr key={prop.name}>
-                  <Td>
+                <TableRow key={prop.name}>
+                  <TableCell>
                     <Code>{prop.name}</Code>
-                  </Td>
-                  <Td>
+                  </TableCell>
+                  <TableCell>
                     <Code>
                       {prop.type === "other" ? prop.typeOther : prop.type}
                     </Code>
-                  </Td>
-                  <Td>
+                  </TableCell>
+                  <TableCell>
                     {prop.isRequired && (
                       <SuccessFill24Icon aria-label="Required" marginX="auto" />
                     )}
-                  </Td>
-                  <Td>{prop.description}</Td>
-                </Tr>
+                  </TableCell>
+                  <TableCell>{prop.description}</TableCell>
+                </TableRow>
               ))}
-            </Tbody>
+            </TableBody>
           </Table>
         </>
       )}

@@ -1,41 +1,41 @@
 import {
   Box,
   Center,
-  ButtonProps as ChakraButtonProps,
+  Button as ChakraButton,
   Flex,
-  forwardRef,
-  SpaceProps,
-  useButtonGroup,
-  useStyleConfig,
+  Span,
+  type ButtonProps as ChakraButtonProps,
+  type RecipeVariantProps,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
+import { buttonRecipe } from "../theme/recipes/button";
+
+export type ButtonVariantProps = RecipeVariantProps<typeof buttonRecipe>;
 
 export type ButtonProps = Exclude<
   ChakraButtonProps,
-  "colorScheme" | "size" | "variant"
-> & {
-  /**
-   * The size of the button.
-   *
-   * Defaults to "md"
-   * */
-  size?: "xs" | "sm" | "md" | "lg";
-  /** The different variants of a button
-   *
-   * Defaults to "primary".
-   *
-   * "control" is deprecated, and will be removed in a future version
-   */
-  variant?:
-    | "control"
-    | "primary"
-    | "secondary"
-    | "tertiary"
-    | "ghost"
-    | "floating";
-};
+  "size" | "variant" | "colorPalette"
+> &
+  PropsWithChildren<ButtonVariantProps> & {
+    /* Boolean value for loading state */
+    loading?: boolean;
+    /* You may display a different loading text */
+    loadingText?: React.ReactNode;
+    /* Display icon to the left */
+    leftIcon?: React.ReactNode;
+    /* Display icon to the right */
+    rightIcon?: React.ReactNode;
+    /* "primary" | "secondary" | "tertiary" | "ghost" | "floating". Defaults to primary. */
+    variant: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
+    /* "lg" | "md" | "sm" | "xs". Defaults to md. */
+    size?: "lg" | "md" | "sm" | "xs";
+    /* Link to a downloadable resource. */
+    download?: string;
+    /* Use this to specify a path combined with as="a" */
+    href?: string;
+  };
 /**
  * Buttons are used to trigger actions.
  *
@@ -63,86 +63,67 @@ export type ButtonProps = Exclude<
  *
  * @see https://spor.vy.no/components/button
  */
-export const Button = forwardRef<ButtonProps, "button">((props, ref) => {
-  const {
-    as = "button",
-    type = "button",
-    fontWeight,
-    size,
-    children,
-    isLoading,
-    isDisabled,
-    leftIcon,
-    rightIcon,
-    sx,
-    ...rest
-  } = props;
-  const ariaLabel = useCorrectAriaLabel(props);
-  const buttonGroup = useButtonGroup();
-  const finalSize = (size ?? buttonGroup?.size ?? "md") as Required<
-    ButtonProps["size"]
-  >;
-  const styles = useStyleConfig("Button", {
-    ...buttonGroup,
-    ...rest,
-    size: finalSize,
-    leftIcon,
-    rightIcon,
-  });
 
-  // We want to explicitly allow to override the fontWeight prop
-  if (fontWeight) {
-    styles.fontWeight = fontWeight;
-  }
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (props, ref) => {
+    const {
+      loading,
+      disabled,
+      loadingText,
+      variant = "primary",
+      size = "md",
+      leftIcon,
+      rightIcon,
+      type = "button",
+      children,
+      ...rest
+    } = props;
+    const ariaLabel = useCorrectAriaLabel(props);
 
-  return (
-    <Box
-      {...rest}
-      as={as}
-      type={type}
-      sx={{ ...styles, ...sx }}
-      ref={ref}
-      aria-label={ariaLabel}
-      aria-busy={isLoading}
-      disabled={isDisabled || isLoading}
-      position="relative"
-      fontFamily={"Vy Sans"}
-    >
-      {isLoading && (
-        <Center position="absolute" right={0} left={0} top={1} bottom={0}>
-          <ColorInlineLoader
-            maxWidth={getLoaderWidth(finalSize)}
-            width="80%"
-            marginX={2}
-            marginY={2}
-          />
-        </Center>
-      )}
-      <Flex
-        gap={1}
-        flex={1}
-        alignItems="center"
-        justifyContent={rightIcon ? "space-between" : "center"}
-        visibility={isLoading ? "hidden" : "visible"}
-        aria-hidden={isLoading}
+    const buttonContent = (
+      <>
+        {leftIcon}
+        {children}
+        {rightIcon && <Span marginLeft="auto">{rightIcon}</Span>}
+      </>
+    );
+
+    return (
+      <ChakraButton
+        type={type}
+        ref={ref}
+        aria-label={ariaLabel}
+        aria-busy={loading}
+        disabled={disabled || loading}
+        position="relative"
+        variant={variant}
+        size={size}
+        {...rest}
       >
-        <Flex gap={1} alignItems="center">
-          {leftIcon}
-          <Box
-            visibility={isLoading ? "hidden" : "visible"}
-            whiteSpace="normal"
-            textAlign="center"
-          >
-            {children}
-          </Box>
-        </Flex>
-        {rightIcon}
-      </Flex>
-    </Box>
-  );
-});
+        {loading ? (
+          <>
+            <Flex gap="1" visibility="hidden">
+              {buttonContent}
+            </Flex>
+            <Center position="absolute" right={0} left={0} top={1} bottom={0}>
+              <ColorInlineLoader
+                maxWidth={getLoaderWidth(size)}
+                width="80%"
+                marginX={2}
+                marginY={2}
+              />
+              {loadingText && <Box>{loadingText}</Box>}
+            </Center>
+          </>
+        ) : (
+          buttonContent
+        )}
+      </ChakraButton>
+    );
+  },
+);
 
-function getLoaderWidth(size: Required<ButtonProps["size"]>) {
+function getLoaderWidth(size: ButtonProps["size"]): string {
   switch (size) {
     case "xs":
       return "4rem";
@@ -158,7 +139,7 @@ function getLoaderWidth(size: Required<ButtonProps["size"]>) {
 
 function useCorrectAriaLabel(props: ButtonProps): string {
   const { t } = useTranslation();
-  if (props.isLoading) {
+  if (props.loading) {
     return String(props.loadingText) ?? t(texts.loadingText);
   }
   return props["aria-label"] as string;

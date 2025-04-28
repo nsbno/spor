@@ -1,4 +1,4 @@
-import { Stack } from "@vygruppen/spor-react";
+import { Input, Stack } from "@vygruppen/spor-react";
 import { StrictMode, useEffect, useState } from "react";
 import { LivePreview } from "react-live";
 import { LiveEditor } from "~/features/portable-text/interactive-code/LiveEditor";
@@ -29,7 +29,7 @@ export default function PlaygroundPage() {
   return (
     <StrictMode>
       <LiveProvider code={playgroundData}>
-        <Stack spacing={2} id="content">
+        <Stack gap={2} id="content">
           <LiveEditor
             borderRadius="none"
             minHeight="200px"

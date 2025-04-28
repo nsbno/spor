@@ -3,14 +3,12 @@ import {
   Flex,
   TextLink,
   VyLogo,
-  useColorMode,
   useColorModeValue,
 } from "@vygruppen/spor-react";
 import { useMenu } from "~/utils/useMenu";
 
 export const Footer = () => {
   const menu = useMenu("footer-menu");
-  const { colorMode } = useColorMode();
   const borderColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
 
   return (
@@ -24,7 +22,11 @@ export const Footer = () => {
       borderColor={borderColor}
     >
       <Link to="/" aria-label="Go to the front page">
-        <VyLogo colorScheme={colorMode} width="4rem" aria-hidden="true" />
+        <VyLogo
+          aria-hidden="true"
+          width="auto"
+          height={["30px", "36px", null, "48px"]}
+        />
       </Link>
       <Flex
         flexDirection="row"

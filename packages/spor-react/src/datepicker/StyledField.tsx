@@ -1,33 +1,41 @@
+"use client";
 import {
   Box,
   BoxProps,
-  ResponsiveValue,
-  forwardRef,
-  useFormControlContext,
-  useMultiStyleConfig,
+  useFieldContext,
+  useSlotRecipe,
 } from "@chakra-ui/react";
-import { As } from "@chakra-ui/system";
-import React from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { DatePickerVariantProps } from "./DatePicker";
+import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { CalendarVariants } from "./types";
 
-type StyledFieldProps = BoxProps & {
-  variant: ResponsiveValue<"base" | "floating" | "ghost">;
-  isDisabled?: boolean;
-  ariaLabelledby?: string;
-};
-export const StyledField = forwardRef<StyledFieldProps, As>(
-  ({ children, variant, isDisabled, ariaLabelledby, ...otherProps }, ref) => {
-    const { isInvalid } = useFormControlContext() ?? {
+type StyledFieldProps = BoxProps &
+  PropsWithChildren<DatePickerVariantProps> &
+  CalendarVariants & {
+    isDisabled?: boolean;
+    ariaLabelledby?: string;
+  };
+export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
+  function StyledField(props, ref) {
+    const { children, variant, isDisabled, ariaLabelledby, ...otherProps } =
+      props;
+    const { invalid } = useFieldContext() ?? {
       isInvalid: false,
     };
 
-    const styles = useMultiStyleConfig("Datepicker", { variant });
+    const recipe = useSlotRecipe({
+      key: "datePicker",
+      recipe: datePickerSlotRecipe,
+    });
+    const styles = recipe({ variant });
 
     return (
       <Box
         {...otherProps}
-        __css={styles.wrapper}
+        css={styles.wrapper}
         ref={ref}
-        aria-invalid={isInvalid}
+        aria-invalid={invalid}
         aria-disabled={isDisabled}
         aria-labelledby={ariaLabelledby}
       >

@@ -1,9 +1,12 @@
-import { Box, useMultiStyleConfig } from "@chakra-ui/react";
-import React, { RefObject, forwardRef, useRef } from "react";
+"use client";
+import { Box, useSlotRecipe } from "@chakra-ui/react";
+import React, { PropsWithChildren, RefObject, forwardRef, useRef } from "react";
 import { useDateSegment } from "react-aria";
 import { DateFieldState, DateSegment } from "react-stately";
+import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { DatePickerVariantProps } from "..";
 
-type DateTimeSegmentProps = {
+type DateTimeSegmentProps = PropsWithChildren<DatePickerVariantProps> & {
   segment: DateSegment;
   state: DateFieldState;
   ariaLabel?: string;
@@ -27,10 +30,15 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
       ref as RefObject<HTMLDivElement>,
     );
 
-    const styles = useMultiStyleConfig("Datepicker", {
+    const recipe = useSlotRecipe({
+      key: "datePicker",
+      recipe: datePickerSlotRecipe,
+    });
+    const styles = recipe({
       isPlaceholder: segment.isPlaceholder,
       isEditable: segment.isEditable,
     });
+
     return (
       <Box
         {...segmentProps}
@@ -43,7 +51,7 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
         outline="none"
         borderRadius="xs"
         fontSize={["mobile.sm", "desktop.sm"]}
-        sx={styles.dateTimeSegment}
+        css={styles.dateTimeSegment}
         aria-description={ariaDescription}
         aria-labelledby={ariaLabel}
       >

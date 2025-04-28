@@ -1,9 +1,9 @@
+"use client";
 import { Box, Flex } from "@chakra-ui/react";
 import { CalendarDateTime, Time } from "@internationalized/date";
 import React, { useRef } from "react";
 import { AriaTimeFieldProps, useTimeField } from "react-aria";
 import { TimeFieldState } from "@react-stately/datepicker";
-import { FormLabel } from "..";
 import { DateTimeSegment } from "./DateTimeSegment";
 import { getTimestampFromTime } from "./utils";
 
@@ -23,17 +23,19 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
 
   return (
     <Box>
-      <FormLabel
+      <label
         {...labelProps}
         htmlFor={fieldProps.id}
-        marginBottom={0}
-        fontSize="mobile.xs"
-        cursor="text"
-        position="absolute"
-        paddingTop="2px"
+        style={{
+          marginBottom: 0,
+          fontSize: "mobile.xs",
+          cursor: "text",
+          position: "absolute",
+          paddingTop: "2px",
+        }}
       >
         {props.label}
-      </FormLabel>
+      </label>
       <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
         {state.segments.map((segment) => (
           <DateTimeSegment key={segment.type} segment={segment} state={state} />

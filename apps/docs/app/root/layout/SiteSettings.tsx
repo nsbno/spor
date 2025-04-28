@@ -1,70 +1,49 @@
-import {} from "@chakra-ui/react";
 import { SettingsX1Fill24Icon } from "@vygruppen/spor-icon-react";
 import {
-  Box,
   CardSelect,
-  DarkMode,
-  Flex,
-  FormControl,
-  FormLabel,
+  CardSelectContent,
+  CardSelectTrigger,
   Heading,
   Stack,
   Switch,
-  Text,
   useColorMode,
+  Text,
 } from "@vygruppen/spor-react";
 import { BrandSwitcher } from "~/features/brand-switcher/BrandSwitcher";
 
-type SiteSettingsProps = {
-  showLabel: boolean;
-};
-export const SiteSettings = ({ showLabel }: SiteSettingsProps) => {
+export const SiteSettings = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const labelProps = showLabel
-    ? { label: "Settings" }
-    : { "aria-label": "Settings" };
 
   return (
-    <DarkMode>
-      <CardSelect
-        variant="ghost"
-        size="md"
+    <CardSelect>
+      <CardSelectTrigger
         icon={<SettingsX1Fill24Icon />}
+        variant="ghost"
         withChevron={false}
-        fontWeight="bold"
-        {...labelProps}
-        position={"relative"}
+        fontWeight={"bold"}
+        className="dark"
+        title="Site settings"
       >
-        <Flex
-          gap={4}
-          flexDirection="column"
-          maxWidth="30ch"
-          width={["100%", "30ch"]}
-        >
-          <Box>
-            <Heading as="h2" variant="md">
-              Site settings
-            </Heading>
-            <Text variant="sm">
-              Change the appearance of the site to suit your preferences
-            </Text>
-          </Box>
-          <Stack gap={3}>
-            <BrandSwitcher />
-            <FormControl display="flex" alignItems="center" gap={3}>
-              <FormLabel margin="0" htmlFor="site-settings-dark-mode">
-                Dark mode
-              </FormLabel>
-              <Switch
-                id="site-settings-dark-mode"
-                size="sm"
-                onChange={() => toggleColorMode()}
-                defaultChecked={colorMode === "dark"}
-              />
-            </FormControl>
-          </Stack>
-        </Flex>
-      </CardSelect>
-    </DarkMode>
+        <Text display={{ base: "none", lg: "block" }}>Settings</Text>
+      </CardSelectTrigger>
+      <CardSelectContent>
+        <Stack gap="4">
+          <Heading as="h2" variant="md">
+            Site settings
+          </Heading>
+          <Text variant="sm">
+            Change the appearance of the site to suit your preferences
+          </Text>
+          <BrandSwitcher />
+          <Switch
+            id="site-settings-dark-mode"
+            size="sm"
+            onChange={() => toggleColorMode()}
+            defaultChecked={colorMode === "dark"}
+            label="Dark mode"
+          />
+        </Stack>
+      </CardSelectContent>
+    </CardSelect>
   );
 };

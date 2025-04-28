@@ -1,56 +1,50 @@
-import tokens from "@vygruppen/spor-design-tokens";
 import {
   Box,
-  BoxProps,
-  Code,
-  Stack,
   Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
+  TableBody,
+  TableCell,
+  TableColumnHeader,
+  TableHeader,
+  TableRow,
 } from "@vygruppen/spor-react";
-import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
+import { useDesignTokens } from "./utils";
+import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 
-export function ZIndexTokens(props: BoxProps) {
+export const ZIndexTokens = () => {
   return (
-    <SharedTokenLayout {...props} title="Z-index">
+    <SharedTokenLayout title="Z-index">
       <ZIndexTokensTable />
     </SharedTokenLayout>
   );
-}
+};
 
-type ZIndexTokenTableProps = BoxProps;
+const ZIndexTokensTable = () => {
+  const designTokens = useDesignTokens();
 
-const ZIndexTokensTable = (props: ZIndexTokenTableProps) => {
-  const tokenFormatter = useTokenFormatter();
+  if (!designTokens) return null;
+
+  const zIndexTokens = Object.entries(designTokens.tokens.depth["z-index"]);
+
   return (
-    <Box {...props}>
-      <Table variant="simple" colorScheme="grey">
-        <Thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Value</Th>
-            <Th>Code</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {Object.entries(tokens.depth["z-index"]).map(([key, token]) => (
-            <Tr key={key}>
-              <Td>{key}</Td>
-              <Td>{token}</Td>
-              <Td>
-                <Stack spacing={1}>
-                  <Box>
-                    <Code>{tokenFormatter(`depth.z-index.${key}`)}</Code>
-                  </Box>
-                </Stack>
-              </Td>
-            </Tr>
+    <Box>
+      <Table colorPalette="white">
+        <TableHeader>
+          <TableRow>
+            <TableColumnHeader>Token</TableColumnHeader>
+            <TableColumnHeader>Value</TableColumnHeader>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {zIndexTokens.map(([token, value]) => (
+            <TableRow key={token}>
+              <TableCell>
+                <CopyTokenToClipBoard>{token}</CopyTokenToClipBoard>
+              </TableCell>
+              <TableCell>{value}</TableCell>
+            </TableRow>
           ))}
-        </Tbody>
+        </TableBody>
       </Table>
     </Box>
   );

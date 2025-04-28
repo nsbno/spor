@@ -1,4 +1,4 @@
-import { useClipboard, useColorModeValue } from "@chakra-ui/react";
+import { useClipboard } from "@chakra-ui/react";
 import {
   CopyOutline18Icon,
   DownloadOutline18Icon,
@@ -6,23 +6,25 @@ import {
 } from "@vygruppen/spor-icon-react";
 import {
   Box,
-  StaticCard,
   Flex,
   Heading,
   IconButton,
   SimpleGrid,
   Stack,
+  StaticCard,
   Text,
+  useColorModeValue,
 } from "@vygruppen/spor-react";
 import { memo, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
 import { NotFoundIllustration } from "../../features/illustrations/NotFoundIllustration";
 import { SearchFilter, useSearchFilter } from "./SearchFilterContext";
 import {
+  getIconByImportName,
   IconMetadata,
   IconsByCategory,
-  getIconByImportName,
   iconsByCategory,
 } from "./iconsData";
 
@@ -35,7 +37,7 @@ export const SearchResults = () => {
     return <NoHits />;
   }
   return (
-    <Stack spacing={9} marginTop={4}>
+    <Stack gap={9} marginTop={4}>
       {Object.entries(filteredCategories).map(([category, icons]) => (
         <Category
           key={category}
@@ -142,11 +144,11 @@ function Category({ title, icons }: CategoryProps) {
   }
 
   return (
-    <Stack spacing={2}>
+    <Stack gap={2}>
       <LinkableHeading as="h2" variant="sm">
         {title}
       </LinkableHeading>
-      <SimpleGrid columns={[2, 3, 5, 6]} spacing={3}>
+      <SimpleGrid columns={[2, 3, 5, 6]} gap={3}>
         {icons.map((icon) => (
           <MemoedIconBox key={icon.importName} icon={icon} />
         ))}
@@ -159,13 +161,14 @@ type IconBoxProps = {
   icon: IconMetadata;
 };
 function IconBox({ icon }: IconBoxProps) {
-  const { onCopy, hasCopied } = useClipboard(icon.importName);
+  const { copy, copied } = useClipboard(icon.importName as any);
   const IconComponent = getIconByImportName(icon.importName);
-  const colorScheme = useColorModeValue("grey", "white");
+  const colorPalette = useColorModeValue("grey", "white");
+  const navigate = useNavigate();
   return (
     <StaticCard
       display="flex"
-      colorScheme={colorScheme}
+      colorPalette={colorPalette}
       borderRadius="sm"
       flexDirection="column"
       alignItems="center"
@@ -181,8 +184,8 @@ function IconBox({ icon }: IconBoxProps) {
       <Flex justifyContent="flex-end" width="100%">
         <IconButton
           as="a"
+          download={icon.fileName}
           href={`/resources/icon-library/${icon.category}/${icon.fileName}`}
-          download
           variant="ghost"
           icon={<DownloadOutline18Icon />}
           size="sm"
@@ -192,11 +195,11 @@ function IconBox({ icon }: IconBoxProps) {
         />
         <IconButton
           variant="ghost"
-          icon={hasCopied ? <SuccessOutline18Icon /> : <CopyOutline18Icon />}
+          icon={copied ? <SuccessOutline18Icon /> : <CopyOutline18Icon />}
           size="sm"
           aria-label="Copy name"
           title="Copy name"
-          onClick={onCopy}
+          onClick={copy}
           borderRadius="sm"
         />
       </Flex>

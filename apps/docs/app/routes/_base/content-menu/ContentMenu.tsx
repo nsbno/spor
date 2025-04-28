@@ -1,19 +1,18 @@
-import { forwardRef } from "@chakra-ui/react";
 import { useLocation } from "@remix-run/react";
 import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
   AccordionItem,
-  AccordionPanel,
-  Divider,
+  AccordionItemContent,
+  AccordionItemTrigger,
+  Accordion,
   Stack,
   Text,
 } from "@vygruppen/spor-react";
 import { useMenu } from "~/utils/useMenu";
 import { MenuItem } from "./MenuItem";
+import { forwardRef } from "react";
+import { Separator } from "@vygruppen/spor-react";
 
-export const ContentMenu = forwardRef((_, ref) => {
+export const ContentMenu = forwardRef<HTMLButtonElement>((_, ref) => {
   const menu = useMenu("side-menu");
   const location = useLocation();
   let activeIndex =
@@ -29,21 +28,23 @@ export const ContentMenu = forwardRef((_, ref) => {
   }
 
   return (
-    <Accordion variant="ghost" size="sm" allowToggle defaultIndex={activeIndex}>
+    <Accordion variant="ghost" collapsible defaultValue={[location.pathname]}>
       {menu?.menuItems.map((item, index) => {
         if (item._type === "divider") {
-          return <Divider key={index} marginY={2} height="1px" />;
+          return <Separator key={index} marginY={2} size="sm" />;
         }
         const subItems = item.subItems?.filter((subItem) => subItem.url);
         const hasSubItems = Boolean(subItems?.length);
         return (
-          <AccordionItem key={item.title} marginY={0.5}>
-            <AccordionButton fontWeight="bold" ref={index === 0 ? ref : null}>
+          <AccordionItem key={item.title} value={item.title} marginY={0.5}>
+            <AccordionItemTrigger
+              fontWeight="bold"
+              ref={index === 0 ? ref : null}
+            >
               {item.title}
-              <AccordionIcon />
-            </AccordionButton>
-            <AccordionPanel paddingTop={1} paddingBottom={0}>
-              <Stack spacing={0.5} marginBottom={1}>
+            </AccordionItemTrigger>
+            <AccordionItemContent paddingTop={1} paddingBottom={0}>
+              <Stack padding={0.5} marginBottom={1}>
                 {subItems?.map((subItem) => (
                   <MenuItem
                     key={subItem.url}
@@ -57,7 +58,7 @@ export const ContentMenu = forwardRef((_, ref) => {
                   <Text color="dimGrey">Nothing here (yet)</Text>
                 )}
               </Stack>
-            </AccordionPanel>
+            </AccordionItemContent>
           </AccordionItem>
         );
       })}

@@ -1,71 +1,92 @@
-import tokens from "@vygruppen/spor-design-tokens";
 import {
   Box,
-  BoxProps,
   Code,
-  Stack,
   Table,
-  Tbody,
-  Td,
+  TableBody,
+  TableCell,
+  TableColumnHeader,
+  TableHeader,
+  TableRow,
   Text,
-  Th,
-  Thead,
-  Tr,
 } from "@vygruppen/spor-react";
-import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
+import { useDesignTokens } from "./utils";
+import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 
-export function AnimationTokens(props: BoxProps) {
+export const AnimationTokens = () => (
+  <SharedTokenLayout
+    title="Animation"
+    description={
+      <Text>
+        It is important that the length of the animation and which attributes
+        are animated do not appear disturbing or make it more difficult for the
+        user to navigate. We have set up three basic animations that one can use
+        when setting up transitions between states. These define three different
+        timings and how the curve of the animation should be executed: Slow,
+        Medium, Fast.
+      </Text>
+    }
+  >
+    <AnimationTokensTable />
+  </SharedTokenLayout>
+);
+
+const AnimationTokensTable = () => {
+  const designTokens = useDesignTokens();
+
+  if (!designTokens) return null;
+
+  const animationTokens = Object.entries(designTokens.tokens.time.transition);
+
   return (
-    <SharedTokenLayout
-      {...props}
-      title="Animation"
-      description={
-        <Text>
-          It is important that the length of the animation and which attributes
-          are animated do not appear disturbing or make it more difficult for
-          the user to navigate. We have set up three basic animations that one
-          can use when setting up transitions between states. These define three
-          different timings and how the curve of the animation should be
-          executed: Slow, Medium, Fast.
-        </Text>
-      }
-    >
-      <AnimationTokensTable />
-    </SharedTokenLayout>
-  );
-}
-
-type AnimationTokenTableProps = BoxProps;
-
-const AnimationTokensTable = (props: AnimationTokenTableProps) => {
-  const tokenFormatter = useTokenFormatter();
-  return (
-    <Box {...props}>
-      <Table variant="simple" colorScheme="grey">
-        <Thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Value</Th>
-            <Th>Code</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {Object.entries(tokens.time.transition).map(([key, token]) => (
-            <Tr key={key}>
-              <Td>{key}</Td>
-              <Td>{token.value}</Td>
-              <Td>
-                <Stack spacing={1}>
-                  <Box>
-                    <Code>{tokenFormatter(`time.transition.${key}`)}</Code>
-                  </Box>
-                </Stack>
-              </Td>
-            </Tr>
+    <Box>
+      <Table colorPalette="white">
+        <TableHeader>
+          <TableRow>
+            <TableColumnHeader>Example</TableColumnHeader>
+            <TableColumnHeader>Token</TableColumnHeader>
+            <TableColumnHeader>Value</TableColumnHeader>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {animationTokens.map(([token, value]: any) => (
+            <TableRow key={token}>
+              <TableCell>
+                <Box
+                  width="8"
+                  height="8"
+                  borderRadius="sm"
+                  border="md"
+                  backgroundColor="mint"
+                  borderColor="greenHaze"
+                  animation={`${value} infinite alternate`}
+                  style={{
+                    animationName: "exampleAnimation",
+                  }}
+                />
+              </TableCell>
+              <TableCell>
+                <CopyTokenToClipBoard>{token}</CopyTokenToClipBoard>
+              </TableCell>
+              <TableCell>
+                <Box>
+                  <Code>{value}</Code>
+                </Box>
+              </TableCell>
+            </TableRow>
           ))}
-        </Tbody>
+        </TableBody>
       </Table>
+      <style>{`
+        @keyframes exampleAnimation {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(10px);
+          }
+        }
+      `}</style>
     </Box>
   );
 };

@@ -1,35 +1,44 @@
+"use client";
 import {
   Link as ChakraLink,
   LinkProps as ChakraLinkProps,
-  forwardRef,
+  RecipeVariantProps,
 } from "@chakra-ui/react";
 import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
-import React from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { createTexts, useTranslation } from "..";
+import { linkRecipe } from "../theme/recipes/link";
 
-type LinkProps = Omit<ChakraLinkProps, "variant"> & {
-  variant?: "primary" | "secondary";
-};
+type linkVariantProps = RecipeVariantProps<typeof linkRecipe>;
+
+export type LinkProps = Exclude<ChakraLinkProps, "variant"> &
+  PropsWithChildren<linkVariantProps> & {
+    /** Defaults to primary */
+    variant?: "primary" | "secondary";
+    /** Define if the link shows an icon on the right that indicate it is an external link */
+    external?: boolean;
+  };
+
 /** Link to different sites or parts of site
  *
  * You can specify the `variant` prop to get different link designs.
+ *  * ```tsx
+ * <TextLink href="/url-to-page" variant="primary" size="md">
+ *   text that is linked
+ * </TextLink>
+ * ```
  */
-export const TextLink = forwardRef<LinkProps, "a">(
+export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ children, ...props }, ref) => {
     const { t } = useTranslation();
-    const isExternal =
-      props.isExternal !== undefined
-        ? props.isExternal
+    const external =
+      props.external !== undefined
+        ? props.external
         : Boolean(props.href?.match(/^https?:\/\//));
     return (
-      <ChakraLink {...props} ref={ref} isExternal={isExternal}>
+      <ChakraLink {...props} ref={ref}>
         {children}
-        {isExternal && (
-          <LinkOutOutline24Icon
-            marginLeft={0.5}
-            aria-label={t(texts.externalLink)}
-          />
-        )}
+        {external && <LinkOutOutline24Icon aria-hidden />}
       </ChakraLink>
     );
   },

@@ -1,23 +1,29 @@
-import {
-  Input as ChakraInput,
-  InputProps as ChakraInputProps,
-  FormLabel,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-  forwardRef,
-  useFormControlContext,
-} from "@chakra-ui/react";
-import React, { useId } from "react";
+"use client";
 
-export type InputProps = Omit<ChakraInputProps, "size"> & {
-  /** The input's label */
-  label: string;
-  /** Icon that shows up to the left */
-  leftIcon?: React.ReactNode;
-  /** Icon that shows up to the right */
-  rightIcon?: React.ReactNode;
-};
+import { inputRecipe } from "@/theme/recipes/input";
+import {
+  chakra,
+  InputProps as ChakraInputProps,
+  useRecipe,
+  type RecipeVariantProps,
+  Input as ChakraInput,
+} from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { Field, FieldProps } from "./Field";
+import { InputGroup } from "./InputGroup";
+
+export type InputProps = Exclude<
+  ChakraInputProps,
+  "size" | "label" | "colorPalette"
+> &
+  FieldProps & {
+    /** The input's label */
+    label: string;
+    /** Element that shows up to the left */
+    startElement?: React.ReactNode;
+    /** Element that shows up to the right */
+    endElement?: React.ReactNode;
+  };
 /**
  * Inputs let you enter text or other data.
  *
@@ -30,71 +36,60 @@ export type InputProps = Omit<ChakraInputProps, "size"> & {
  * You can also add icons to the left and right of the input. Please use the 24 px icons for this.
  *
  * ```tsx
- * <Input label="E-mail" leftIcon={<EmailOutline24Icon />} />
+ * <Input label="E-mail" startElement={<EmailOutline24Icon />} />
  * ```
  *
- * Input has two variants base, and floating.
+ * Input has two variants core, and floating.
  *
  * ```tsx
- * <Input label="E-mail" leftIcon={<EmailOutline24Icon />} variant="floating" />
+ * <Input label="E-mail" startElement={<EmailOutline24Icon />} variant="floating" />
  * ```
+ *
+ * Field is added to Input, so you can add helperText, errorText, and optionalText.
+ *
+ * ```tsx
+ * <Input label="E-mail" startElement={<EmailOutline24Icon />} helperText="We will never share your email." />
+ * ```
+ *
+ * @see https://spor.vy.no/components/input
  */
-export const Input = forwardRef<InputProps, "input">(
-  ({ label, leftIcon, rightIcon, id, size, ...props }, ref) => {
-    const formControlProps = useFormControlContext();
-    const fallbackId = `input-${useId()}`;
-    const inputId = id ?? formControlProps?.id ?? fallbackId;
-    const labelId = `${useId()}-label`;
-    return (
-      <InputGroup position="relative">
-        {leftIcon && (
-          <InputLeftElement pointerEvents="none">{leftIcon}</InputLeftElement>
-        )}
-        <ChakraInput
-          data-attachable
-          paddingLeft={leftIcon ? 7 : undefined}
-          paddingRight={rightIcon ? 7 : undefined}
-          {...props}
-          id={inputId}
-          aria-labelledby={labelId}
-          ref={ref}
-          overflow="hidden"
-          placeholder=" " // This is needed to make the label work as expected
-          css={{
-            "&::-webkit-search-cancel-button": {
-              WebkitAppearance: "none",
-            },
-          }}
-        />
 
-        <FormLabel
-          htmlFor={inputId}
-          id={labelId}
-          pointerEvents="none"
-          sx={{
-            position: "absolute",
-            left: "2.6rem",
-            top: "26.9%",
-            fontSize: "1.13rem",
-            pointerEvents: "none",
-            margin: 0,
-            zIndex: 2,
-            "input:focus + &, input[data-has-value] + &": {
-              color: "var(--chakra-colors-gray-600)",
-            },
-            "input[data-has-value] + &": {
-              transform: "translateY(-40%) scale(0.9)",
-            },
-          }}
+const StyledInput = chakra(ChakraInput, inputRecipe);
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      startElement,
+      endElement,
+      label,
+      invalid,
+      helperText,
+      errorText,
+      ...props
+    },
+    ref,
+  ) => {
+    return (
+      <Field invalid={invalid} helperText={helperText} errorText={errorText}>
+        <InputGroup
+          endElement={endElement && endElement}
+          startElement={startElement && startElement}
+          width="100%"
+          position="relative"
+          label={label}
         >
-          {label}
-        </FormLabel>
-        {rightIcon && (
-          <InputRightElement pointerEvents="none">
-            {rightIcon}
-          </InputRightElement>
-        )}
-      </InputGroup>
+          <StyledInput
+            data-attachable
+            ref={ref}
+            className="peer"
+            overflow="hidden"
+            paddingLeft={startElement ? "2.6rem" : undefined}
+            paddingRight={endElement ? "2.6rem" : undefined}
+            placeholder=""
+            {...props}
+          />
+        </InputGroup>
+      </Field>
     );
   },
 );

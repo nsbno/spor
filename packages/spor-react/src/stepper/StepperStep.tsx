@@ -1,38 +1,38 @@
-import { useColorModeValue, useMultiStyleConfig } from "@chakra-ui/react";
+"use client";
+import { useSlotRecipe } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { Box, Button, Text } from "..";
+import { StepperVariantProps } from "./Stepper";
 import { useStepper } from "./StepperContext";
 
-type StepperStepProps = {
+type StepperStepProps = PropsWithChildren<StepperVariantProps> & {
   children: React.ReactNode;
   stepNumber: number;
-  variant: "base" | "accent";
-  isDisabled?: boolean;
+  variant: "core" | "accent";
+  disabled?: boolean;
 };
 export const StepperStep = ({
   children,
   stepNumber,
   variant,
-  isDisabled: isDisabledOverride,
+  disabled: disabledOverride,
 }: StepperStepProps) => {
   const { activeStep, onClick } = useStepper();
   const state = getState(stepNumber, activeStep);
-  const style = useMultiStyleConfig("Stepper", {
-    state,
-    variant,
-  });
-  const disabledTextColor = useColorModeValue(
-    "blackAlpha.400",
-    "whiteAlpha.400",
-  );
-  const iconColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
+  const recipe = useSlotRecipe({ key: "stepper" });
+  const style = recipe({ variant });
+  const disabledTextColor = "text.disabled";
+  const iconColor = {
+    _light: "blackAlpha.200",
+    _dark: "whiteAlpha.200",
+  };
 
-  const isDisabled =
-    (state !== "active" && isDisabledOverride) || state === "disabled";
+  const disabled =
+    (state !== "active" && disabledOverride) || state === "disabled";
 
   return (
-    <Box sx={style.stepContainer}>
+    <Box css={style.stepContainer}>
       {stepNumber > 1 && (
         <DropdownRightFill18Icon
           marginX={5}
@@ -40,10 +40,10 @@ export const StepperStep = ({
           color={iconColor}
         />
       )}
-      {isDisabled ? (
+      {disabled ? (
         <Text
           variant="xs"
-          fontSize="16px"
+          fontSize="1rem"
           color={disabledTextColor}
           cursor="default"
           paddingX={2}
@@ -59,7 +59,14 @@ export const StepperStep = ({
           }
           pointerEvents={state === "active" ? "none" : "auto"}
           tabIndex={state === "active" ? -1 : undefined}
-          sx={style.stepButton}
+          disabled={disabled}
+          aria-current={state === "active" ? "step" : undefined}
+          css={
+            state === "active"
+              ? style.stepButton._currentStep
+              : style.stepButton
+          }
+          fontWeight={state === "active" ? "bold" : undefined}
         >
           {children}
         </Button>

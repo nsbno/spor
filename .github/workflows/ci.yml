@@ -2,7 +2,7 @@ name: Continuous Integration
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main] # Change to main when update-chakra is merged
 
 jobs:
   build:

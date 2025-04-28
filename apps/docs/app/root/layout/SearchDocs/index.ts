@@ -1,0 +1,1 @@
+export { SearchDocs } from "./SearchDocs";

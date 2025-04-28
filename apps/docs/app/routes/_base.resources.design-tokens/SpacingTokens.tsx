@@ -1,90 +1,80 @@
-import tokens from "@vygruppen/spor-design-tokens";
 import {
   Box,
   BoxProps,
-  Code,
+  Flex,
   Stack,
   Table,
-  Tbody,
-  Td,
+  TableBody,
+  TableCell,
+  TableColumnHeader,
+  TableHeader,
+  TableRow,
   Text,
-  Th,
-  Thead,
-  Tr,
-  useColorModeValue,
 } from "@vygruppen/spor-react";
 import { Fragment } from "react";
-import { useTokenFormatter } from "~/routes/_base.resources.design-tokens/useTokenFormatter";
 import { SharedTokenLayout } from "./SharedTokenLayout";
+import { remToPx, useDesignTokens } from "./utils";
+import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 
-const spacingSizes = tokens.size.spacing;
+export const SpacingTokens = () => (
+  <SharedTokenLayout
+    title="Spacing"
+    description={
+      <Text>
+        Vy uses a spacing scale based on 6 px, in combination with a 3 px
+        baseline grid for smaller components. This means that menus, boxes,
+        margins, and padding are based on 6 px. While components like buttons
+        and icons are based on 6 and 12 px.
+      </Text>
+    }
+  >
+    <Stack gap={9}>
+      <SpacingTokensTable />
+    </Stack>
+  </SharedTokenLayout>
+);
 
-export function SpacingTokens(props: BoxProps) {
-  return (
-    <SharedTokenLayout
-      {...props}
-      title="Spacing"
-      description={
-        <Text>
-          Vy uses a spacing scale based on 6 px, in combination with a 3 px
-          baseline grid for smaller components. This means that menus, boxes,
-          margins, and padding are based on 6 px. While components like buttons
-          and icons are based on 6 and 12 px.
-        </Text>
-      }
-    >
-      <Stack spacing={9}>
-        <SpacingTokensTable />
-      </Stack>
-    </SharedTokenLayout>
+const SpacingTokensTable = () => {
+  const designTokens = useDesignTokens();
+
+  if (!designTokens) return null;
+
+  const spacingTokens = Object.entries(designTokens.tokens.size.spacing).sort(
+    ([keyA], [keyB]) => parseFloat(keyA) - parseFloat(keyB),
   );
-}
 
-type SpacingTokenTableProps = BoxProps;
-
-const SpacingTokensTable = (props: SpacingTokenTableProps) => {
-  const tokenFormatter = useTokenFormatter();
-  const backgroundColor = useColorModeValue(
-    "surface.tertiary.light",
-    "surface.tertiary.dark",
-  );
   return (
-    <Box {...props}>
-      <Table variant="simple" colorScheme="grey">
-        <Thead>
-          <Tr>
-            <Th>Example</Th>
-            <Th>Value</Th>
-            <Th>Code</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {Object.entries(spacingSizes)
-            .sort(([a], [b]) => Number(a) - Number(b))
-            .map(([key, token]) => (
-              <Fragment key={key}>
-                <Tr>
-                  <Td>
-                    <Box
-                      width={token}
-                      height={token}
-                      backgroundColor={backgroundColor}
-                    />
-                  </Td>
-                  <Td>
-                    {key} / {token}
-                  </Td>
-                  <Td>
-                    <Stack spacing={1}>
-                      <Box>
-                        <Code>{tokenFormatter(`size.spacing.[${key}]`)}</Code>
-                      </Box>
-                    </Stack>
-                  </Td>
-                </Tr>
-              </Fragment>
-            ))}
-        </Tbody>
+    <Box>
+      <Table colorPalette="white">
+        <TableHeader>
+          <TableRow>
+            <TableColumnHeader>Example</TableColumnHeader>
+
+            <TableColumnHeader>Token</TableColumnHeader>
+            <TableColumnHeader>Value</TableColumnHeader>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {spacingTokens.map(([token, variable]) => (
+            <Fragment key={token}>
+              <TableRow>
+                <TableCell>
+                  <Box
+                    width={variable as string}
+                    height={variable as string}
+                    backgroundColor={"surface.tertiary"}
+                  />
+                </TableCell>
+                <TableCell>
+                  <CopyTokenToClipBoard>{token}</CopyTokenToClipBoard>
+                </TableCell>
+                <TableCell>
+                  {remToPx(variable)} / {variable}
+                </TableCell>
+              </TableRow>
+            </Fragment>
+          ))}
+        </TableBody>
       </Table>
     </Box>
   );

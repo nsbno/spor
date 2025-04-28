@@ -1,22 +1,97 @@
-import {
-  BoxProps,
-  forwardRef,
-  Skeleton as ChakraSkeleton,
+"use client";
+import { skeletonRecipe } from "@/theme/recipes/skeleton";
+import type {
+  SkeletonProps as ChakraSkeletonProps,
+  CircleProps,
+  RecipeVariantProps,
 } from "@chakra-ui/react";
-import React from "react";
+import {
+  Skeleton as ChakraSkeleton,
+  Circle,
+  Stack,
+  useRecipe,
+} from "@chakra-ui/react";
+import * as React from "react";
+import { forwardRef } from "react";
 
-export type SkeletonProps = BoxProps & {
-  isLoaded?: boolean;
-};
-/**
- * Skeleton renders a loading animation for a given box. It works great as a placeholder to avoid layout shifts.
- */
-export const Skeleton = forwardRef<SkeletonProps, "div">((props, ref) => (
-  <ChakraSkeleton
-    {...props}
-    ref={ref}
-    aria-busy="true"
-    aria-hidden="true"
-    role="alert"
-  />
-));
+type SkeletonVariantProps = RecipeVariantProps<typeof skeletonRecipe>;
+
+export type SkeletonCircleProps = ChakraSkeletonProps &
+  SkeletonVariantProps & {
+    size?: CircleProps["size"];
+  };
+
+export const SkeletonCircle = React.forwardRef<
+  HTMLDivElement,
+  SkeletonCircleProps
+>(function SkeletonCircle(props, ref) {
+  const recipe = useRecipe({ recipe: skeletonRecipe });
+
+  const [recipeProps, restProps] = recipe.splitVariantProps({
+    loading: true,
+    variant: "pulse",
+    ...props,
+  });
+
+  const { size, css, ...rest } = restProps;
+
+  return (
+    <Circle size={size} asChild ref={ref}>
+      <ChakraSkeleton css={{ ...recipe(recipeProps), ...css }} {...rest} />
+    </Circle>
+  );
+});
+
+export type SkeletonTextProps = ChakraSkeletonProps &
+  SkeletonVariantProps & {
+    noOfLines?: number;
+  };
+
+export const SkeletonText = forwardRef<HTMLDivElement, SkeletonTextProps>(
+  function SkeletonText(props, ref) {
+    const recipe = useRecipe({ recipe: skeletonRecipe });
+    const [recipeProps, restProps] = recipe.splitVariantProps({
+      loading: true,
+      variant: "pulse",
+      ...props,
+    });
+    const { noOfLines = 3, height = "0.5rem", gap, css, ...rest } = restProps;
+
+    return (
+      <Stack gap={gap} width="full" ref={ref}>
+        {Array.from({ length: noOfLines }).map((_, index) => (
+          <ChakraSkeleton
+            height={height}
+            css={{ ...recipe(recipeProps), ...css }}
+            key={index}
+            _last={{ maxW: "80%" }}
+            {...rest}
+          />
+        ))}
+      </Stack>
+    );
+  },
+);
+
+export type SkeletonProps = ChakraSkeletonProps & SkeletonVariantProps;
+
+export const Skeleton = forwardRef<HTMLDivElement, SkeletonTextProps>(
+  function SkeletonText(props, ref) {
+    const recipe = useRecipe({ recipe: skeletonRecipe });
+    const [recipeProps, restProps] = recipe.splitVariantProps({
+      loading: true,
+      variant: "pulse",
+      ...props,
+    });
+
+    const { css, ...rest } = restProps;
+
+    return (
+      <ChakraSkeleton
+        ref={ref}
+        css={{ ...recipe(recipeProps), ...css }}
+        {...rest}
+      />
+    );
+  },
+);

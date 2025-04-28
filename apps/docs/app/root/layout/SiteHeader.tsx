@@ -5,44 +5,35 @@ import {
   SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import {
-  Box,
   Button,
-  DarkMode,
+  CardSelect,
+  CardSelectContent,
+  CardSelectTrigger,
   Drawer,
   DrawerBody,
-  DrawerCloseButton,
+  DrawerCloseTrigger,
   DrawerContent,
   DrawerHeader,
-  DrawerOverlay,
+  DrawerTitle,
   Flex,
   IconButton,
-  SearchInput,
   Stack,
   Text,
   VyLogo,
-  useColorModeValue,
   useDisclosure,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
 import { loader } from "~/root";
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
-import { SiteSearchModal } from "./SiteSearchModal";
+import { SearchDocs } from "./SearchDocs";
 import { SiteSettings } from "./SiteSettings";
 
-/** The site header shown at the top of every part of our site */
-export const SiteHeader = () => {
-  const backgroundColor = useColorModeValue(
-    "surface.tertiary.light",
-    "surface.tertiary.dark",
-  );
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+const useSearchKeyboardShortcut = (onTriggered: () => void) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
-        setIsModalOpen(true);
+        onTriggered();
       }
     };
 
@@ -52,94 +43,99 @@ export const SiteHeader = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+};
+
+/** The site header shown at the top of every part of our site */
+export const SiteHeader = () => {
+  const [searchDialogOpen, setSearchDialogOpen] = useState(false);
+
+  useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
 
   return (
     <Flex
-      color="white"
+      as="header"
       justifyContent="space-between"
       alignItems="center"
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
-      backgroundColor={backgroundColor}
-      sx={{
+      backgroundColor={"surface.tertiary"}
+      className="light"
+      css={{
         position: "sticky",
         top: "0",
         zIndex: "sticky",
       }}
-      gap={1}
+      gap="3"
+      width={"100vw"}
+      overflow={"hidden"}
     >
-      <Box as={Link} marginRight={[0, 0, 5]} flex={[0, 0, 0, 0, 1]} to="/">
-        <VyLogo
-          colorScheme="dark"
-          width="auto"
-          height={["30px", "36px", null, "48px"]}
-          aria-label="Vy"
-        />
-      </Box>
+      <Flex
+        alignItems="center"
+        gap="1"
+        justifyContent="space-between"
+        width="100%"
+        position="relative"
+      >
+        <Link to="/" aria-label="Go to the front page">
+          <VyLogo className="dark" width="auto" height="56px" aria-label="Vy" />
+        </Link>
 
-      <DesktopNavigation onSearchClick={() => setIsModalOpen(!isModalOpen)} />
-      <MobileNavigation onSearchClick={() => setIsModalOpen(!isModalOpen)} />
-      {isModalOpen && (
-        <SiteSearchModal
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-        />
-      )}
+        <Flex gap="1">
+          <SearchDocsButton onSearchClick={() => setSearchDialogOpen(true)} />
+
+          <ChangeVersion />
+
+          <SiteSettings />
+
+          <MobileMenu />
+
+          <SearchDocs
+            onOpenChange={setSearchDialogOpen}
+            open={searchDialogOpen}
+          />
+        </Flex>
+      </Flex>
     </Flex>
   );
 };
 
-type SearchFieldProps = {
-  onSearchClick: () => void;
-};
-
-const DesktopNavigation = ({ onSearchClick }: SearchFieldProps) => {
-  const isMac = useRouteLoaderData<typeof loader>("root")?.isMac;
+const ChangeVersion = () => {
+  const domain = useRouteLoaderData<typeof loader>("root")?.domain;
+  const isOldVersion = domain?.includes("spor-v1");
 
   return (
-    <>
-      <Flex
-        display={["none", null, null, "flex"]}
-        maxWidth={[null, null, null, "container.lg", "container.xl"]}
-        marginX="auto"
-        paddingX={[3, null, 7, 5, 9]}
-      >
-        <DarkMode>
-          <SearchInput
-            role="button"
-            onClick={onSearchClick}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                onSearchClick();
-              }
-            }}
-            width={[null, null, null, "37.5rem"]}
-            readOnly
-            label={
-              <Flex alignItems="center" gap={1}>
-                Search docs{" "}
-                <Text size="sm" fontSize="12" paddingTop={0.5}>
-                  ({isMac ? "cmd" : "ctrl"} + K)
-                </Text>
-              </Flex>
-            }
-          />
-        </DarkMode>
-      </Flex>
-      <Flex
-        display={["none", null, null, "flex"]}
-        flex={[0, 0, 0, 0, 1]}
-        justifyContent="flex-end"
-        alignItems="center"
-      >
-        <SiteSettings showLabel={true} />
-      </Flex>
-    </>
+    <CardSelect>
+      <CardSelectTrigger variant="core" className="dark">
+        <Text display={{ base: "none", xl: "block" }}>Spor</Text>
+        v2
+      </CardSelectTrigger>
+      <CardSelectContent>
+        <Button
+          variant="ghost"
+          size="md"
+          marginBottom={2}
+          as="a"
+          href="https://spor.vy.no"
+          disabled={!isOldVersion}
+        >
+          Spor V2 - ver.12.xx
+        </Button>
+        <Button
+          variant="ghost"
+          size="md"
+          as="a"
+          href="https://spor-v1.test.vylabs.io/"
+          disabled={isOldVersion}
+        >
+          Spor V1 - ver.11.xx
+        </Button>
+      </CardSelectContent>
+    </CardSelect>
   );
 };
 
-const MobileNavigation = ({ onSearchClick }: SearchFieldProps) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+const MobileMenu = () => {
+  const { open, onOpen, onClose } = useDisclosure();
   const location = useLocation();
   useEffect(() => {
     // This doesn't close the menu when you're on the page you're clicking on,
@@ -148,40 +144,66 @@ const MobileNavigation = ({ onSearchClick }: SearchFieldProps) => {
   }, [location.pathname, onClose]);
 
   return (
-    <Flex display={["flex", null, null, "none"]}>
-      <Flex gap={2}>
-        <DarkMode>
-          <IconButton
-            icon={<SearchFill24Icon />}
-            variant="ghost"
-            size="md"
-            aria-label="Search documentation"
-            onClick={onSearchClick}
-          />
-        </DarkMode>
-        <SiteSettings showLabel={false} />
-        <DarkMode>
-          <IconButton
-            icon={<HamburgerFill24Icon />}
-            aria-label="Menu"
-            variant="ghost"
-            size="md"
-            onClick={onOpen}
-          />
-        </DarkMode>
-      </Flex>
-      <Drawer placement="right" isOpen={isOpen} onClose={onClose}>
-        <DrawerOverlay />
+    <>
+      <IconButton
+        icon={<HamburgerFill24Icon />}
+        aria-label="Menu"
+        variant="ghost"
+        size="md"
+        onClick={onOpen}
+        className="dark"
+        display={{ base: "flex", lg: "none" }}
+      />
+
+      <Drawer placement="end" open={open} onExitComplete={onClose}>
         <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Explore Spor</DrawerHeader>
+          <DrawerHeader>
+            <DrawerTitle>Explore Spor</DrawerTitle>
+            <DrawerCloseTrigger onClick={onClose} />
+          </DrawerHeader>
           <DrawerBody paddingY={2} paddingX={[1, 2, 3]}>
-            <Stack spacing={2}>
+            <Stack padding={2}>
               <SearchableContentMenu />
             </Stack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-    </Flex>
+    </>
+  );
+};
+
+const SearchDocsButton = ({ onSearchClick }: { onSearchClick: () => void }) => {
+  const isMac = useRouteLoaderData<typeof loader>("root")?.isMac;
+
+  return (
+    <>
+      <IconButton
+        icon={<SearchFill24Icon />}
+        variant="ghost"
+        size="md"
+        aria-label="Search documentation"
+        onClick={onSearchClick}
+        className="dark"
+        display={{ base: "flex", lg: "none" }}
+      />
+
+      <Button
+        variant="tertiary"
+        borderRadius="xs"
+        leftIcon={<SearchOutline24Icon />}
+        rightIcon={<Text variant="xs">({isMac ? "cmd" : "ctrl"} + k)</Text>}
+        className="dark"
+        onClick={onSearchClick}
+        padding="2"
+        xl={{ minWidth: "38rem" }}
+        lg={{ minWidth: "24rem" }}
+        position="absolute"
+        left="50%"
+        transform="translateX(-50%)"
+        display={{ base: "none", lg: "flex" }}
+      >
+        Search docs...
+      </Button>
+    </>
   );
 };

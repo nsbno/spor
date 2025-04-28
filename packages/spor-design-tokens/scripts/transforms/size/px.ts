@@ -1,15 +1,14 @@
-import { Transform } from "style-dictionary";
-import { Named } from "style-dictionary/types/_helpers";
+import { Transform } from "style-dictionary/types";
 
 /**
  * Adds px suffixes to all values in the size category
  */
-export const pxTransformer: Named<Transform> = {
+export const pxTransformer: Transform = {
   name: "size/px",
   type: "value",
-  matcher: (token) =>
+  filter: (token) =>
     token.attributes?.category === "size" && token.unit !== "none",
-  transformer: (token) => {
+  transform: (token) => {
     const valueInPixels = parseFloat(token.original.value);
     return `${valueInPixels}px`;
   },

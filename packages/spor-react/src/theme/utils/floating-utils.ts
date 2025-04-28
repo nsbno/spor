@@ -1,80 +1,61 @@
-import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { brandBackground } from "./brand-utils";
 import { State, Subset } from "./types";
 
 type FloatingBackgroundState = Subset<
   State,
-  "default" | "hover" | "active" | "selected"
+  "default" | "hover" | "active" | "focus"
 >;
 
-export function floatingBackground(
-  state: FloatingBackgroundState,
-  props: StyleFunctionProps,
-) {
+export function floatingBackground(state: FloatingBackgroundState) {
   switch (state) {
-    case "selected":
-      return brandBackground("default", props);
+    case "focus":
+      return brandBackground("default");
     case "active":
       return {
-        backgroundColor: mode(
-          "floating.surface.active.light",
-          "floating.surface.active.dark",
-        )(props),
+        backgroundColor: "floating.surface.active",
       };
     case "hover":
       return {
-        backgroundColor: mode(
-          "floating.surface.hover.light",
-          `color-mix(in srgb, white 10%, var(--spor-colors-bg-default-dark))`,
-        )(props),
+        backgroundColor: {
+          _light: "floating.surface.hover",
+          _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
+        },
       };
     case "default":
       return {
-        backgroundColor: mode(
-          "white",
-          `color-mix(in srgb, white 10%, var(--spor-colors-bg-default-dark))`,
-        )(props),
+        backgroundColor: {
+          _light: "bg",
+          _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
+        },
       };
   }
 }
 
 type FloatingBorderState = Subset<
   State,
-  "default" | "hover" | "active" | "selected"
+  "default" | "hover" | "active" | "focus"
 >;
-export function floatingBorder(
-  state: FloatingBorderState,
-  props: StyleFunctionProps,
-) {
+export function floatingBorder(state: FloatingBorderState) {
   switch (state) {
     case "hover":
       return {
         outline: "1px solid",
-        outlineColor: mode(
-          "floating.outline.hover.light",
-          "floating.outline.hover.dark",
-        )(props),
+        outlineColor: "floating.outline.hover",
       };
-    case "selected":
+    case "focus":
       return {
         outline: "1px solid",
-        outlineColor: mode("outline.focus.light", "outline.focus.dark")(props),
+        outlineColor: "outline.focus",
       };
     case "active":
       return {
         outline: "1px solid",
-        outlineColor: mode(
-          "floating.outline.active.light",
-          "floating.outline.active.dark",
-        )(props),
+        outlineColor: "floating.outline.active",
       };
     default:
       return {
         outline: "1px solid",
-        outlineColor: mode(
-          "floating.outline.default.light",
-          "floating.outline.default.dark",
-        )(props),
+        outlineColor: "floating.outline",
       };
   }
 }

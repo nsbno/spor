@@ -1,128 +1,95 @@
+"use client";
 import {
-  Box,
-  BoxProps,
-  chakra,
-  forwardRef,
-  useMultiStyleConfig,
+  RadioCard as ChakraRadioCard,
+  RecipeVariantProps,
+  useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { useContext, useEffect, useId, useState } from "react";
-import { RadioCardGroupContext } from "./RadioCardGroup";
-import { dataAttr } from "@chakra-ui/utils";
+import React, { forwardRef, useId } from "react";
+import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
 
 /**
  * Radio cards are used to present a set of options where only one option can be selected.
  *
- * RadioCard components must be wrapped in a RadioCardGroup component.
- *
  * @example
  * ```tsx
- * <RadioCardGroup name="ticket">
- *   <RadioCard value="economy">Economy</RadioCard>
- *   <RadioCard value="business">Business</RadioCard>
- *   <RadioCard value="first-class">First Class</RadioCard>
+ * <RadioCardGroup defaultValue="economy">
+ *   <RadioCardLabel>Choose your class</RadioCardLabel>
+ *   <Stack direction="row">
+ *      <RadioCard value="economy" label="Economy" />
+ *      <RadioCard value="business" label="Business" />
+ *      <RadioCard value="first-class" label="First Class" />
+ *   </Stack>
  * </RadioCardGroup>
  * ```
  *
- * RadioCard inherits props from Box.
- *
- * Be advised to not use the `name` prop on the RadioCard component.
- *
- * Changing the semantics may also cause the component to not work as expected.
  *
  * @see Docs https://spor.vy.no/components/radiocard
  */
 
-export type RadioCardProps = BoxProps & {
-  /** The value that will be passed to the `RadioCardGroup`'s `onChange` function if this `RadioCard` is selected.. */
-  value: string;
-  /** The content of the RadioCard. */
-  children: React.ReactNode;
-  /** Determines if the RadioCard is disabled. */
-  isDisabled?: boolean;
-};
+type RadioCardVariantProps = RecipeVariantProps<typeof radioCardSlotRecipe>;
 
-export const RadioCard = forwardRef(
-  ({ children, value, isDisabled, ...props }: RadioCardProps, ref) => {
-    const context = useContext(RadioCardGroupContext);
+type RadioCardItemProps = Exclude<
+  ChakraRadioCard.ItemProps,
+  "colorPalette" | "indicator" | "variant" | "size" | "addon"
+> &
+  RadioCardVariantProps & {
+    inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+    ariaLabel?: string;
+  };
 
-    if (!context) {
-      throw new Error(
-        "RadioCard components must be wrapped in a RadioCardGroup component",
-      );
-    }
-
-    const { name, selectedValue, onChange, variant } = context;
-
-    const styles = useMultiStyleConfig("RadioCard", { variant });
-
-    const [isKeyboardUser, setKeyboardUser] = useState(false);
-    const [isFocused, setFocus] = useState(false);
-
-    const isChecked = selectedValue === value;
-
-    useEffect(() => {
-      const handleMouseDown = () => setKeyboardUser(false);
-      const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.key === " ") {
-          setFocus(false);
-        } else {
-          setKeyboardUser(true);
-        }
-      };
-
-      window.addEventListener("mousedown", handleMouseDown);
-      window.addEventListener("keydown", handleKeyDown);
-
-      return () => {
-        window.removeEventListener("mousedown", handleMouseDown);
-        window.removeEventListener("keydown", handleKeyDown);
-      };
-    }, []);
-
-    useEffect(() => {
-      if (isKeyboardUser && isChecked) {
-        setFocus(true);
-      } else {
-        setFocus(false);
-      }
-    }, [isKeyboardUser, isChecked]);
-
-    const inputId = `radio-card-${useId()}`;
+export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
+  (props, ref) => {
+    const { inputProps, children, value, ariaLabel } = props;
 
     return (
-      <Box
-        onFocus={() => isKeyboardUser && setFocus(true)}
-        onBlur={() => setFocus(false)}
-      >
-        <chakra.input
-          type="radio"
-          id={inputId}
-          name={name}
-          value={value}
+      <ChakraRadioCard.Item {...props}>
+        <ChakraRadioCard.ItemHiddenInput
+          aria-label={ariaLabel ?? value}
           ref={ref}
-          checked={isChecked}
-          onChange={() => onChange(value)}
-          disabled={isDisabled}
-          __css={styles.radioInput}
+          {...inputProps}
         />
-        <Box
-          as="label"
-          name={name}
-          htmlFor={inputId}
-          aria-checked={dataAttr(isChecked)}
-          data-checked={dataAttr(isChecked)}
-          data-disabled={dataAttr(isDisabled)}
-          {...props}
-          __css={{
-            ...styles.container,
-            ...(isChecked && styles.checked),
-            ...(isFocused && !isChecked && styles.focused),
-            ...(isChecked && isFocused && styles.focusedChecked),
-          }}
-        >
-          {children}
-        </Box>
-      </Box>
+
+        <ChakraRadioCard.ItemControl>{children}</ChakraRadioCard.ItemControl>
+      </ChakraRadioCard.Item>
     );
   },
 );
+
+type RadioCardRootProps = RadioCardVariantProps &
+  Exclude<ChakraRadioCard.RootProps, "variant"> & {
+    children: React.ReactNode;
+    gap?: string | number;
+    direction?: "row" | "column";
+    display?: string;
+  };
+
+export const RadioCardGroup = forwardRef<HTMLDivElement, RadioCardRootProps>(
+  (props, ref) => {
+    const {
+      children,
+      variant,
+      gap = 2,
+      direction = "column",
+      display = "flex",
+      ...rest
+    } = props;
+    const recipe = useSlotRecipe({ key: "radio-card" });
+    const styles = recipe({ variant });
+
+    return (
+      <ChakraRadioCard.Root
+        ref={ref}
+        variant={variant}
+        css={styles}
+        display={display}
+        gap={gap}
+        flexDirection={direction}
+        {...rest}
+      >
+        {children}
+      </ChakraRadioCard.Root>
+    );
+  },
+);
+
+export const RadioCardLabel = ChakraRadioCard.Label;

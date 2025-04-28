@@ -1,3 +1,4 @@
+"use client";
 import { Box, Flex } from "@chakra-ui/react";
 import { getLocalTimeZone } from "@internationalized/date";
 import {
@@ -110,6 +111,7 @@ export const CalendarNavigator = ({
         fontWeight="bold"
         flex="1"
         textAlign="center"
+        color={"core.text"}
       >
         {capitalize(title)}
       </Box>

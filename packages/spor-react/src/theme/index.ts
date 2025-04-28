@@ -1,42 +1,50 @@
-import { theme as defaultTheme } from "@chakra-ui/theme";
-import tokens from "@vygruppen/spor-design-tokens";
-import * as components from "./components";
-import * as foundations from "./foundations";
+import {
+  createSystem,
+  defaultBaseConfig,
+  defineConfig,
+} from "@chakra-ui/react";
+import { animationStyles } from "./tokens/animation-styles";
+import { breakpoints } from "./tokens/breakpoints";
+import { globalCss } from "./tokens/global-css";
+import { keyframes } from "./tokens/keyframes";
+import { recipes } from "./recipes";
+import { semanticTokens } from "./semantic-tokens";
+import { slotRecipes } from "./slot-recipes";
+import { textStyles } from "./tokens/text-styles";
+import { tokens } from "./tokens";
+import { Brand } from "./brand";
+import { config } from "./tokens/config";
 
-export enum Brand {
-  VyDigital = "VyDigital",
-  VyUtvikling = "VyUtvikling",
-  CargoNet = "CargoNet",
-}
-
-export const theme = {
-  ...defaultTheme,
-  ...foundations,
-  components: {
-    ...defaultTheme.components,
-    ...components,
-  },
-};
-
-export const brandTheme = {
-  [Brand.VyDigital]: {},
-  [Brand.VyUtvikling]: {
-    colors: {
-      bg: {
-        default: {
-          dark: foundations.colors.darkGrey,
-        },
-      },
-      surface: {
-        default: {
-          dark: foundations.colors.darkGrey,
-        },
-      },
+const generateTheme = (brand: Brand) => {
+  return defineConfig({
+    ...config,
+    globalCss,
+    theme: {
+      breakpoints,
+      keyframes,
+      tokens,
+      semanticTokens: semanticTokens[brand],
+      recipes,
+      slotRecipes,
+      textStyles,
+      animationStyles,
     },
-  },
-  [Brand.CargoNet]: {
-    colors: tokens.color.cargonet as any,
-  },
+  });
 };
 
-export { fontFaces } from "./font-faces";
+export const themes = {
+  [Brand.VyDigital]: createSystem(
+    defaultBaseConfig,
+    generateTheme(Brand.VyDigital),
+  ),
+  [Brand.CargoNet]: createSystem(
+    defaultBaseConfig,
+    generateTheme(Brand.CargoNet),
+  ),
+  [Brand.VyUtvikling]: createSystem(
+    defaultBaseConfig,
+    generateTheme(Brand.VyUtvikling),
+  ),
+};
+
+export const system = themes[Brand.VyDigital];

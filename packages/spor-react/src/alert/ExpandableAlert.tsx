@@ -1,30 +1,52 @@
+"use client";
+
 import {
   Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
   Box,
-  Flex,
-  useMultiStyleConfig,
+  ConditionalValue,
+  HStack,
+  RecipeVariantProps,
+  Span,
+  useSlotRecipe,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { AlertIcon } from "./AlertIcon";
-import { BaseAlert, BaseAlertProps } from "./BaseAlert";
+import { AlertProps } from "./Alert";
+import { alertExpandableSlotRecipe } from "@/theme/slot-recipes/alert-expandable";
+import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
+import { AccordionItemContent } from "@/accordion";
 
-type ExpandableAlertProps = BaseAlertProps & {
-  /** The title string  */
-  title: string;
-  /** Callback for when the expandable panel is opened or closed */
-  onToggle?: (isOpen: boolean) => void;
-  /** Whether or not the default state of the expandable alert is open */
-  defaultOpen?: boolean;
-  /**
-   * The HTML element used for the `title` prop.
-   *
-   * Defaults to h3 */
-  headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
-};
+type ExpandableAlertVariantProps = RecipeVariantProps<
+  typeof alertExpandableSlotRecipe
+>;
+
+type ExpandableAlertProps = PropsWithChildren<ExpandableAlertVariantProps> &
+  Omit<Accordion.RootProps, "variant" | "orientation" | "size" | "value"> & {
+    /** The title string  */
+    title: string;
+    /** Whether or not the default state of the expandable alert is open */
+    defaultOpen?: boolean;
+    /**
+     * The HTML element used for the `title` prop.
+     *
+     * Defaults to h3 */
+    headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
+    /** If the user should be able to close the Accordion. Defaults to true */
+    collapsible?: boolean;
+    /**
+   * The variant of the alert. Default: info
+   * "info"
+      | "success"
+      | "important"
+      | "alt-transport"
+      | "error"
+      | "service"
+      | "global-deviation";
+   */
+    variant?: ConditionalValue<
+      "important" | "success" | "alt" | "info" | "error" | undefined
+    >;
+  };
 /**
  * An expandable alert component.
  *
@@ -36,58 +58,68 @@ type ExpandableAlertProps = BaseAlertProps & {
  * </ExpandableAlert>
  * ```
  */
-export const ExpandableAlert = ({
-  variant,
-  children,
-  title,
-  headingLevel = "h3",
-  defaultOpen = false,
-  onToggle = () => {},
-  ...boxProps
-}: ExpandableAlertProps) => {
-  const styles = useMultiStyleConfig("AlertExpandable", { variant });
-  return (
-    <BaseAlert variant={variant} {...boxProps} paddingX={0} paddingY={0}>
-      <Accordion
-        onChange={(expandedIndex) => onToggle(expandedIndex === 0)}
-        defaultIndex={defaultOpen ? 0 : -1}
-        allowToggle
-        flexGrow="1"
-      >
-        <AccordionItem sx={styles.accordion}>
-          <AccordionButton sx={styles.container}>
-            <Flex
-              justifyContent="space-between"
-              alignItems="center"
-              flexGrow="1"
-            >
-              <Flex as={headingLevel} alignItems="center">
-                <AlertIcon variant={variant} />
+export const ExpandableAlert = forwardRef<HTMLDivElement, ExpandableAlertProps>(
+  (props, ref) => {
+    const {
+      variant = "info",
+      children,
+      title,
+      collapsible = true,
+      headingLevel = "h3",
+      defaultOpen = false,
+      css,
+      ...rest
+    } = props;
+    const recipe = useSlotRecipe({ key: "alertExpandable" });
+    const styles = recipe({ variant });
 
-                <Box
-                  as="span"
-                  sx={{
+    const defaultValue = "alert-expandable";
+
+    return (
+      <Accordion.Root
+        defaultValue={defaultOpen ? [defaultValue] : undefined}
+        ref={ref}
+        css={{ ...styles.root, ...css }}
+        collapsible={collapsible}
+        {...rest}
+      >
+        <Accordion.Item value={defaultValue}>
+          <Accordion.ItemTrigger css={styles.itemTrigger}>
+            <HStack
+              gap="1"
+              alignItems="center"
+              justifyContent="space-between"
+              flex="1"
+              width="full"
+            >
+              <HStack gap="1" alignItems="center">
+                <Box css={styles.indicator}>
+                  <AlertIcon variant={variant} />
+                </Box>
+                <Span
+                  as={headingLevel}
+                  css={{
                     // Truncate the title to one line
                     display: "-webkit-box",
                     overflow: "hidden",
                     WebkitLineClamp: "1",
                     WebkitBoxOrient: "vertical",
                   }}
-                  color={variant === "service" ? "white" : "darkGrey"}
                 >
                   {title}
-                </Box>
-              </Flex>
-              <AccordionIcon
-                color={variant === "service" ? "white" : "darkGrey"}
-              />
-            </Flex>
-          </AccordionButton>
-          <AccordionPanel color={variant === "service" ? "white" : "darkGrey"}>
+                </Span>
+              </HStack>
+
+              <Accordion.ItemIndicator>
+                <DropdownDownFill18Icon />
+              </Accordion.ItemIndicator>
+            </HStack>
+          </Accordion.ItemTrigger>
+          <AccordionItemContent css={styles.itemContent}>
             {children}
-          </AccordionPanel>
-        </AccordionItem>
-      </Accordion>
-    </BaseAlert>
-  );
-};
+          </AccordionItemContent>
+        </Accordion.Item>
+      </Accordion.Root>
+    );
+  },
+);

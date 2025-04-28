@@ -17,9 +17,11 @@
   "scripts": {
     "clean": "rimraf dist",
     "prebuild": "pnpm clean",
-    "build": "mkdir dist && bestzip dist/spor-icons.zip svg/*"
+    "build": "mkdir dist && bestzip dist/spor-icons.zip svg/*",
+    "dev": "chokidar 'svg/**/*' -c 'pnpm build'"
   },
   "devDependencies": {
-    "bestzip": "^2.2.1"
+    "bestzip": "^2.2.1",
+    "chokidar-cli": "^3.0.0"
   }
 }

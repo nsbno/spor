@@ -1,44 +1,44 @@
+"use client";
 import {
   Box,
   BoxProps,
-  FocusLock,
-  FormLabel,
-  InputGroup,
-  Popover,
   PopoverAnchor,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
+  Popover as ChakraPopover,
   Portal,
-  ResponsiveValue,
-  useFormControlContext,
-  useMultiStyleConfig,
+  useFieldContext,
+  useSlotRecipe,
 } from "@chakra-ui/react";
 import { DateValue } from "@internationalized/date";
-import React, { useRef } from "react";
+import React, { PropsWithChildren, useRef } from "react";
 import {
   AriaDateRangePickerProps,
   I18nProvider,
   useDateRangePicker,
+  useId,
 } from "react-aria";
 import { useDateRangePickerState } from "react-stately";
-import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
 import { RangeCalendar } from "./RangeCalendar";
 import { StyledField } from "./StyledField";
 import { useCurrentLocale } from "./utils";
 
+import { Field } from "../input/Field";
+import { DatePickerVariantProps } from "./DatePicker";
+import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { CalendarVariants } from "./types";
+import { CalendarTriggerButton } from "./CalendarTriggerButton";
+
 type DateRangePickerProps = Omit<
   AriaDateRangePickerProps<DateValue>,
   "onChange"
 > &
-  Pick<BoxProps, "minHeight"> & {
+  Pick<BoxProps, "minHeight"> &
+  PropsWithChildren<DatePickerVariantProps> &
+  CalendarVariants & {
     startLabel?: string;
     startName?: string;
     endLabel?: string;
     endName?: string;
-    variant: ResponsiveValue<"base" | "floating" | "ghost">;
     withPortal?: boolean;
     onChange?: (
       dates: {
@@ -50,13 +50,12 @@ type DateRangePickerProps = Omit<
 /**
  * A date range picker component.
  *
- * There are three variants to choose from – `base`, `floating` and `ghost`.
+ * There are three variants to choose from – `core`, `floating` and `ghost`.
  *
  * ```tsx
- * <DateRangePicker startLabel="From" startName="from" endLabel="To" endName="to" variant="base" />
+ * <DateRangePicker startLabel="From" startName="from" endLabel="To" endName="to" variant="core" />
  * ```
- */
-export function DateRangePicker({
+ */ export function DateRangePicker({
   variant,
   minHeight,
   startName,
@@ -64,16 +63,18 @@ export function DateRangePicker({
   withPortal = true,
   ...props
 }: DateRangePickerProps) {
-  const formControlProps = useFormControlContext();
+  const fieldContextPRops = useFieldContext();
   const state = useDateRangePickerState({
     ...props,
     shouldCloseOnSelect: true,
-    isRequired: props.isRequired ?? formControlProps?.isRequired,
-    validationState: formControlProps.isInvalid ? "invalid" : "valid",
+    isRequired: props.isRequired ?? fieldContextPRops?.required,
+    validationState: fieldContextPRops?.invalid ? "invalid" : "valid",
   });
   const ref = useRef(null);
+  const uniqueId = useId();
+  const datePickerId = `date-range-picker-${uniqueId}`;
+
   const {
-    groupProps,
     labelProps,
     startFieldProps,
     endFieldProps,
@@ -82,77 +83,70 @@ export function DateRangePicker({
     calendarProps,
   } = useDateRangePicker(props, state, ref);
 
-  const styles = useMultiStyleConfig("Datepicker", { variant });
+  const recipe = useSlotRecipe({
+    key: "datePicker",
+    recipe: datePickerSlotRecipe,
+  });
+  const styles = recipe({ variant });
   const locale = useCurrentLocale();
-
-  const handleEnterClick = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !state.isOpen && variant === "base") {
-      // Don't submit the form
-      e.stopPropagation();
-      state.setOpen(true);
-    }
-  };
 
   const onFieldClick = () => {
     state.setOpen(true);
   };
 
   const popoverContent = (
-    <PopoverContent sx={styles.calendarPopover} maxWidth="none">
-      <PopoverArrow sx={styles.arrow} />
-      <PopoverBody>
-        <FocusLock>
-          <RangeCalendar variant={"base"} {...calendarProps} />
-        </FocusLock>
-      </PopoverBody>
-    </PopoverContent>
+    <ChakraPopover.Positioner>
+      <ChakraPopover.Content css={styles.calendarPopover}>
+        <ChakraPopover.Body maxWidth="60rem">
+          <RangeCalendar variant={"core"} {...calendarProps} />
+        </ChakraPopover.Body>
+      </ChakraPopover.Content>
+    </ChakraPopover.Positioner>
   );
 
   return (
     <I18nProvider locale={locale}>
       <Box position="relative" display="inline-flex" flexDirection="column">
         {props.label && (
-          <FormLabel {...labelProps} sx={styles.inputLabel}>
+          <label {...labelProps} htmlFor={datePickerId}>
             {props.label}
-          </FormLabel>
+          </label>
         )}
-        <Popover
-          {...dialogProps}
-          isOpen={state.isOpen}
-          onOpen={state.open}
-          onClose={state.close}
-          flip={false}
-        >
-          <InputGroup {...groupProps} width="auto" display="inline-flex">
+        <ChakraPopover.Root {...dialogProps}>
+          <Field width="auto" display="inline-flex" id={datePickerId}>
             <PopoverAnchor>
               <StyledField
                 alignItems="center"
                 paddingX={3}
                 variant={variant}
                 onClick={onFieldClick}
-                onKeyPress={handleEnterClick}
                 minHeight={minHeight}
               >
                 {variant && (
-                  <PopoverTrigger>
+                  <ChakraPopover.Trigger asChild>
                     <CalendarTriggerButton
-                      paddingLeft={1}
-                      paddingRight={1}
                       variant={variant}
                       ref={ref}
                       {...buttonProps}
                     />
-                  </PopoverTrigger>
+                  </ChakraPopover.Trigger>
                 )}
+
                 <DateField
                   {...startFieldProps}
                   name={startName}
                   label={props.startLabel}
                   labelProps={labelProps}
                 />
-                <Box as="span" aria-hidden="true" paddingRight="2">
+                <Box
+                  as="span"
+                  aria-hidden="true"
+                  paddingRight="2"
+                  paddingLeft={"2"}
+                >
                   –
                 </Box>
+
                 <DateField
                   {...endFieldProps}
                   name={endName}
@@ -161,10 +155,10 @@ export function DateRangePicker({
                 />
               </StyledField>
             </PopoverAnchor>
-          </InputGroup>
+          </Field>
           {state.isOpen && withPortal && <Portal>{popoverContent}</Portal>}
           {state.isOpen && !withPortal && popoverContent}
-        </Popover>
+        </ChakraPopover.Root>
       </Box>
     </I18nProvider>
   );

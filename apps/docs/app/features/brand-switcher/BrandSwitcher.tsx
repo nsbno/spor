@@ -1,17 +1,17 @@
 import { useFetcher } from "@remix-run/react";
-import { Brand, NativeSelect } from "@vygruppen/spor-react";
-import { useMatchesData } from "~/utils/useMatchesData";
+import { NativeSelect } from "@vygruppen/spor-react";
+import { useBrand } from "~/utils/brand";
 
 export const BrandSwitcher = () => {
   const fetcher = useFetcher();
-  const data = useMatchesData("root");
-  const brand = data?.brand ?? Brand.VyDigital;
+  const brand = useBrand();
+
   return (
+    // Use native select until spor select is available
     <fetcher.Form method="post" action="/api/brand">
       <NativeSelect
-        name="brand"
         label="Brand"
-        defaultValue={brand}
+        value={brand as string}
         onChange={(e: any) => {
           const formData = new FormData();
           formData.set("brand", e.target.value);

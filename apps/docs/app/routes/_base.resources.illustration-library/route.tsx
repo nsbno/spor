@@ -1,4 +1,3 @@
-import { data } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { SanityAsset } from "@sanity/image-url/lib/types/types";
 import {
@@ -11,25 +10,27 @@ import {
   Box,
   Brand,
   Button,
-  Divider,
   Flex,
   Heading,
   IconButton,
   Image,
   NativeSelect,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
   SearchInput,
+  Separator,
   SimpleGrid,
+  slugify,
   StaticCard,
   Text,
-  Tooltip,
-  useColorModePreference,
+  useColorMode,
 } from "@vygruppen/spor-react";
 import { useMemo, useState } from "react";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { useBrand } from "~/utils/brand";
 import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";
-import { slugify } from "~/utils/stringUtils";
 
 type SanityResponse = {
   illustrations: {
@@ -95,7 +96,7 @@ export const loader = async () => {
 export default function IllustrationLibraryPage() {
   const { illustrations, article } = useLoaderData<typeof loader>();
   const [searchValue, setSearchValue] = useState("");
-  const colorMode = useColorModePreference();
+  const { colorMode } = useColorMode();
   const [size, setSize] = useState("all");
   const brand = useBrand();
 
@@ -112,12 +113,10 @@ export default function IllustrationLibraryPage() {
 
   return (
     <Box>
-      <Badge
-        colorScheme={brand === Brand.CargoNet ? "light-yellow" : "light-green"}
-      >
+      <Badge colorPalette={brand === Brand.CargoNet ? "yellow" : "green"}>
         {article.category?.title}
       </Badge>
-      <Heading as="h1" size="2xl" marginBottom={1}>
+      <Heading as="h1" variant="2xl" marginBottom={1}>
         {article.title}
       </Heading>
       {article.introduction && (
@@ -125,9 +124,11 @@ export default function IllustrationLibraryPage() {
           <PortableText value={article.introduction} />
         </Box>
       )}
-      <Box marginBottom={4}>
-        <PortableText value={article.content} />
-      </Box>
+      {article.content && (
+        <Box marginBottom={4}>
+          <PortableText value={article.content} />
+        </Box>
+      )}
       <Button
         variant="primary"
         size="lg"
@@ -139,7 +140,7 @@ export default function IllustrationLibraryPage() {
       >
         Download all illustrations
       </Button>
-      <Divider marginY={3} />
+      <Separator marginY={4} />
       <Flex marginBottom={5} gap={2}>
         <Box flex={1}>
           <SearchInput
@@ -171,55 +172,59 @@ export default function IllustrationLibraryPage() {
             padding={2}
             border="1px solid"
             borderColor="silver"
+            position={"relative"}
           >
             <Flex flexDirection="column" height="100%">
-              <Flex gap={1} alignItems="center">
+              <Flex gap={1} alignItems="center" flexDirection={"column"}>
                 <Text variant="sm">{illustration.title}</Text>
-                <Tooltip
-                  placement="top"
-                  arrowPadding={2}
-                  content={illustration.description}
-                >
-                  <InformationOutline18Icon aria-label="Informasjon" />
-                </Tooltip>
-              </Flex>
-              <Image
-                src={
-                  urlBuilder
-                    .image(
-                      colorMode === "light"
-                        ? illustration.imageLightBackground
-                        : illustration.imageDarkBackground,
-                    )
-                    .url() || ""
-                }
-                alt={illustration.description}
-                width="100%"
-                maxHeight="10rem"
-                objectFit="contain"
-                objectPosition="center"
-                flex={1}
-              />
-              <Flex justifyContent="flex-end">
-                <IconButton
-                  variant="ghost"
-                  size="sm"
-                  icon={<DownloadOutline18Icon />}
-                  as="a"
-                  download={`${slugify(illustration.title)}.svg`}
-                  href={urlBuilder
-                    .image(
-                      colorMode === "light"
-                        ? illustration.imageLightBackground
-                        : illustration.imageDarkBackground,
-                    )
-                    .forceDownload(`${slugify(illustration.title)}.svg`)
-                    .url()}
-                  aria-label="Download SVG"
-                  title="Download SVG"
+                <Popover>
+                  <PopoverTrigger>
+                    <InformationOutline18Icon aria-label="Informasjon" />
+                  </PopoverTrigger>
+                  <PopoverContent>{illustration.description}</PopoverContent>
+                </Popover>
+                <Image
+                  src={
+                    colorMode === "light"
+                      ? urlBuilder
+                          .image(illustration.imageLightBackground)
+                          .url() || ""
+                      : urlBuilder
+                          .image(illustration.imageDarkBackground)
+                          .url() || ""
+                  }
+                  alt={illustration.description}
+                  width="100%"
+                  minHeight={12}
+                  maxHeight={15}
+                  objectFit="contain"
+                  objectPosition="center"
+                  flex={1}
                 />
               </Flex>
             </Flex>
+            <Box position={"absolute"} bottom="0" right="0">
+              <IconButton
+                variant="ghost"
+                size="sm"
+                icon={<DownloadOutline18Icon />}
+                as="a"
+                download={`${slugify(illustration.title)}.svg`}
+                href={
+                  colorMode === "light"
+                    ? urlBuilder
+                        .image(illustration.imageLightBackground)
+                        .forceDownload(`${slugify(illustration.title)}.svg`)
+                        .url()
+                    : urlBuilder
+                        .image(illustration.imageDarkBackground)
+                        .forceDownload(`${slugify(illustration.title)}.svg`)
+                        .url()
+                }
+                aria-label="Download SVG"
+                title="Download SVG"
+              />
+            </Box>
           </StaticCard>
         ))}
       </SimpleGrid>

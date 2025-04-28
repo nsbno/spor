@@ -1,4 +1,5 @@
-import { Box, BoxProps, Center } from "@chakra-ui/react";
+"use client";
+import { Box, BoxProps, Center, VisuallyHidden } from "@chakra-ui/react";
 import { spinnerColorData } from "@vygruppen/spor-loader";
 import React from "react";
 import { ClientOnly } from "./ClientOnly";
@@ -25,16 +26,16 @@ export const ColorSpinner = ({
   children,
   width,
   maxWidth,
-
   ...props
 }: SpinnerProps) => {
   return (
-    <Center flexDirection="column" {...props}>
+    <Center flexDirection="column" role="status" aria-live="polite" {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          {() => <Lottie animationData={spinnerColorData} />}
+          <Lottie animationData={spinnerColorData} />
         </ClientOnly>
       </Box>
+      <VisuallyHidden>Loading...</VisuallyHidden>
       {children && (
         <Box marginTop={3} fontWeight="bold">
           {children}

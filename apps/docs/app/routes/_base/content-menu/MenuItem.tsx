@@ -1,7 +1,7 @@
-import { Box, chakra, forwardRef, useColorModeValue } from "@chakra-ui/react";
+import { chakra } from "@chakra-ui/react";
 import { Link } from "@remix-run/react";
-import { FlexProps } from "@vygruppen/spor-react";
-import React, { useRef } from "react";
+import { FlexProps, Box } from "@vygruppen/spor-react";
+import React, { forwardRef, useRef } from "react";
 
 type MenuItemProps = FlexProps & {
   url: string;
@@ -11,21 +11,8 @@ type MenuItemProps = FlexProps & {
 /**
  * Menu item in the `ContentMenu`, and search result in the `SearchResults`.
  */
-export const MenuItem = forwardRef<MenuItemProps, "a">(
+export const MenuItem = forwardRef<HTMLAnchorElement, MenuItemProps>(
   ({ url, children, isActive, ...rest }, externalRef) => {
-    const hoverBackground = useColorModeValue(
-      "ghost.surface.hover.light",
-      "ghost.surface.hover.dark",
-    );
-    const activeBackground = useColorModeValue(
-      "ghost.surface.active.light",
-      "ghost.surface.active.dark",
-    );
-    const focusOutlineColor = useColorModeValue(
-      "outline.focus.light",
-      "outline.focus.dark",
-    );
-    const color = useColorModeValue("text.default.light", "text.default.dark");
     const internalRef = useRef<HTMLAnchorElement>(null);
     const handleKeyUp = (e: React.KeyboardEvent) => {
       if (!internalRef || typeof internalRef === "function") {
@@ -60,15 +47,10 @@ export const MenuItem = forwardRef<MenuItemProps, "a">(
         style={{ height: "auto" }}
         borderRadius="lg"
         fontSize={["mobile.xs", null, "desktop.xs"]}
-        color={color}
-        _hover={{ backgroundColor: hoverBackground }}
-        _active={{ backgroundColor: activeBackground }}
-        _focusVisible={{
-          outline: "2px solid",
-          outlineColor: focusOutlineColor,
-          outlineOffset: "1px",
-        }}
-        ref={(el) => {
+        color="text"
+        _hover={{ backgroundColor: "ghost.surface.hover" }}
+        _active={{ backgroundColor: "ghost.surface.active" }}
+        ref={(el: any) => {
           if (externalRef) {
             (externalRef as any).current = el;
           }

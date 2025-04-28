@@ -1,13 +1,21 @@
-import {
-  ButtonGroup as ChakraButtonGroup,
-  ButtonGroupProps as ChakraButtonGroupProps,
-  forwardRef,
-} from "@chakra-ui/react";
-import React from "react";
+"use client";
 
-export type ButtonGroupProps = ChakraButtonGroupProps;
+import {
+  type GroupProps as ChakraGroupProps,
+  Group as ChakraGroup,
+  type RecipeVariantProps,
+  chakra,
+} from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
+import { groupRecipe } from "../theme/recipes/group";
+
+export type GroupVariantProps = RecipeVariantProps<typeof groupRecipe>;
+
+export type ButtonGroupProps = ChakraGroupProps &
+  PropsWithChildren<GroupVariantProps>;
+
 /**
- * Group buttons together with a `ButtonGroup`!
+ * Used to group or attach buttons together.
  *
  * If you have more than one button next to eachother, you might want to add a `ButtonGroup` to group them.
  *
@@ -18,26 +26,43 @@ export type ButtonGroupProps = ChakraButtonGroupProps;
  * </ButtonGroup>
  * ```
  *
- * You can specify the size of all buttons in a group with the `size` prop. You can also set the same variant across all buttons with the `variant` prop.
+ *
+ * Attach buttons together with the `attached` prop.
  *
  * ```tsx
- * <ButtonGroup variant="secondary" size="md">
- *   <Button>Open</Button>
- *   <Button>Save</Button>
- * </ButtonGroup>
- * ```
- *
- * Finally, you can join several buttons together with the `isAttached` prop.
- *
- * ```tsx
- * <ButtonGroup variant="secondary" size="md" isAttached>
- *   <Button>Open</Button>
- *   <IconButton>
+ * <ButtonGroup attached>
+ *   <Button variant="primary">Open</Button>
+ *   <IconButton variant="ghost">
  *     <SaveIcon aria-label="Save"/>
  *   </IconButton>
  * </ButtonGroup>
  * ```
+ *
+ * Use the `grow` prop to make the buttons grow to fill the available space.
+ *
+ * ```tsx
+ * <ButtonGroup grow>
+ *  <Button variant="primary">Open</Button>
+ *  <Button variant="secondary">Save</Button>
+ * </ButtonGroup>
  */
-export const ButtonGroup = forwardRef<ButtonGroupProps, "div">((props, ref) => (
-  <ChakraButtonGroup {...props} ref={ref} />
-));
+
+const Group = chakra(ChakraGroup, groupRecipe);
+
+export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
+  (props, ref) => {
+    const { children, disabled, grow, attached, ...rest } = props;
+
+    return (
+      <Group
+        {...rest}
+        ref={ref}
+        attached={attached}
+        grow={grow}
+        disabled={disabled}
+      >
+        {children}
+      </Group>
+    );
+  },
+);

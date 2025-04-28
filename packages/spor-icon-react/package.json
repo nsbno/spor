@@ -25,14 +25,15 @@
   "scripts": {
     "clean": "rimraf tmp dist react",
     "prebuild": "pnpm clean",
-    "build": "tsx bin/generate.ts && tsup"
+    "build": "tsx bin/generate.ts && tsup",
+    "dev": "chokidar 'bin/**/*' -c 'pnpm build'"
   },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@chakra-ui/react": "^2.8.2",
+    "@chakra-ui/react": "^3.9.0",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "@svgr/plugin-svgo": "^8.1.0",
@@ -42,6 +43,7 @@
     "@vygruppen/spor-icon": "workspace:*",
     "@vygruppen/tsconfig": "workspace:*",
     "case": "^1.6.3",
+    "chokidar-cli": "^3.0.0",
     "fs-extra": "^11.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

@@ -1,4 +1,5 @@
-import { Box, ResponsiveValue } from "@chakra-ui/react";
+"use client";
+import { Box, useSlotRecipe } from "@chakra-ui/react";
 import { DateValue, createCalendar } from "@internationalized/date";
 import React, { useRef } from "react";
 import {
@@ -9,10 +10,11 @@ import { useRangeCalendarState } from "react-stately";
 import { CalendarGrid } from "./CalendarGrid";
 import { CalendarHeader } from "./CalendarHeader";
 import { useCurrentLocale } from "./utils";
+import { CalendarVariants } from "./types";
+import { datePickerSlotRecipe } from "@/theme/slot-recipes/datepicker";
 
-type RangeCalendarProps = ReactAriaRangeCalendarProps<DateValue> & {
-  variant: ResponsiveValue<"base" | "floating" | "ghost">;
-};
+type RangeCalendarProps = ReactAriaRangeCalendarProps<DateValue> &
+  CalendarVariants;
 
 export function RangeCalendar(props: RangeCalendarProps) {
   const locale = useCurrentLocale();
@@ -22,14 +24,18 @@ export function RangeCalendar(props: RangeCalendarProps) {
     locale,
     createCalendar,
   });
-
+  const recipe = useSlotRecipe({
+    key: "datePicker",
+    recipe: datePickerSlotRecipe,
+  });
+  const styles = recipe({});
   const ref = useRef(null);
   const { calendarProps, title } = useRangeCalendar(props, state, ref);
 
   return (
-    <Box {...calendarProps} ref={ref}>
+    <Box {...calendarProps} ref={ref} css={styles.rangeCalendarPopover}>
       <CalendarHeader state={state} title={title} />
-      <Box display="flex" gap="8">
+      <Box display="flex" gap="8" maxWidth="100vw" overflow="scroll">
         <CalendarGrid variant={props.variant} state={state} />
         <CalendarGrid
           variant={props.variant}

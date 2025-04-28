@@ -1,0 +1,107 @@
+{
+  "source": ["tokens/**/*.json"],
+
+  "platforms": {
+    "rn": {
+      "transforms": ["attribute/cti", "name/camel", "size/object", "color/css"],
+      "files": [
+        {
+          "format": "typescript/cjs-module",
+          "destination": "react-native/index.js"
+        },
+        {
+          "format": "typescript/es-module",
+          "destination": "react-native/index.mjs"
+        },
+        {
+          "format": "typescript/rn-typings",
+          "destination": "react-native/index.d.ts"
+        }
+      ]
+    },
+    "javascript": {
+      "transforms": [
+        "attribute/cti",
+        "name/pascal",
+        "size/pxToRem",
+        "color/css"
+      ],
+      "files": [
+        {
+          "format": "typescript/cjs-module",
+          "destination": "dist/tokens.js"
+        },
+        {
+          "format": "typescript/es-module",
+          "destination": "dist/tokens.mjs"
+        },
+        {
+          "format": "typescript/typings",
+          "destination": "dist/tokens.d.ts"
+        }
+      ]
+    },
+    "css": {
+      "transforms": [
+        "attribute/cti",
+        "name/kebab",
+        "time/seconds",
+        "html/icon",
+        "size/pxToRem",
+        "color/css"
+      ],
+      "files": [
+        {
+          "format": "css/variables",
+          "destination": "dist/tokens.css"
+        }
+      ]
+    },
+    "scss": {
+      "transforms": [
+        "attribute/cti",
+        "name/kebab",
+        "time/seconds",
+        "html/icon",
+        "size/pxToRem",
+        "color/css"
+      ],
+      "files": [
+        {
+          "format": "scss/variables",
+          "destination": "dist/_tokens.scss"
+        }
+      ]
+    },
+    "less": {
+      "transforms": [
+        "attribute/cti",
+        "name/kebab",
+        "time/seconds",
+        "html/icon",
+        "size/pxToRem",
+        "color/css"
+      ],
+      "files": [
+        {
+          "format": "less/variables",
+          "destination": "dist/tokens.less"
+        }
+      ]
+    },
+    "jsondocs": {
+      "transforms": [
+        "attribute/cti",
+        "name/kebab",
+        "size/pxToRem",
+        "color/css"
+      ],
+      "files": [
+        {
+          "format": "jsondocs",
+          "destination": "dist/tokens.json"
+        }
+      ]
+    }
+  }
+}

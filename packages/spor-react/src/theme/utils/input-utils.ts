@@ -1,68 +1,66 @@
-import { StyleFunctionProps } from "@chakra-ui/theme-tools";
-import { baseBackground, baseBorder, baseText } from "./base-utils";
+import { coreBackground, coreBorder, coreText } from "./core-utils";
 import { floatingBackground, floatingBorder } from "./floating-utils";
 import { InputState } from "./types";
-import { focusVisibleStyles } from "./focus-utils";
 import { surface } from "./surface-utils";
 
-export function inputVariant(state: InputState, props: StyleFunctionProps) {
+export function inputVariant(state: InputState) {
   switch (state) {
     case "base":
       return {
-        ...baseBackground("default", props),
-        ...baseBorder("default", props),
+        ...coreBackground("default"),
+        ...coreBorder("default"),
         _hover: {
-          ...baseBorder("hover", props),
+          ...coreBorder("hover"),
         },
         _active: {
-          ...baseBackground("active", props),
-          ...baseBorder("default", props),
+          backgroundColor: "core.surface.active",
+          ...coreBorder("default"),
         },
         _selected: {
-          ...baseBackground("selected", props),
-          ...baseBorder("selected", props),
+          ...coreBackground("selected"),
+          ...coreBorder("selected"),
         },
       };
     case "floating":
       return {
         boxShadow: "sm",
-        ...floatingBackground("default", props),
-        ...floatingBorder("default", props),
+        ...floatingBackground("default"),
+        ...floatingBorder("default"),
 
         _hover: {
-          ...floatingBorder("hover", props),
-          ...floatingBackground("hover", props),
+          ...floatingBorder("hover"),
+          ...floatingBackground("hover"),
         },
         _active: {
-          ...floatingBorder("active", props),
-          ...floatingBackground("active", props),
+          ...floatingBorder("active"),
+          backgroundColor: "core.surface.active",
         },
         _selected: {
-          ...floatingBorder("selected", props),
-          ...floatingBackground("selected", props),
+          backgroundColor: "floating.surface.selected",
+          borderColor: "floating.border.selected",
         },
       };
     case "default":
     default:
       return {
-        ...baseBackground("default", props),
-        ...baseBorder("default", props),
+        ...coreBackground("default"),
+        ...coreBorder("default"),
         _hover: {
-          ...baseBorder("hover", props),
+          ...coreBorder("hover"),
         },
         _active: {
-          ...baseBackground("active", props),
-          ...baseBorder("default", props),
+          backgroundColor: "core.surface.active",
+          ...coreBorder("default"),
         },
         _selected: {
-          ...baseBackground("selected", props),
-          ...baseBorder("selected", props),
+          ...coreBackground("selected"),
+          ...coreBorder("selected"),
         },
       };
   }
 }
 
-export const inputBaseStyle = (props: StyleFunctionProps) => ({
+export const inputBaseStyle = () => ({
   field: {
     appearance: "none",
     width: "100%",
@@ -75,25 +73,22 @@ export const inputBaseStyle = (props: StyleFunctionProps) => ({
     paddingX: 3,
     height: 8,
     fontSize: "mobile.md",
-    _focusVisible: {
-      ...focusVisibleStyles(props)._focusVisible,
-      outlineOffset: 0,
-    },
+
     _disabled: {
-      ...surface("disabled", props),
-      ...baseBorder("disabled", props),
+      ...surface("disabled"),
+      ...coreBorder("disabled"),
       pointerEvents: "none",
     },
     _invalid: {
-      ...baseBorder("invalid", props),
+      ...coreBorder("invalid"),
       _hover: {
-        ...baseBorder("hover", props),
+        ...coreBorder("hover"),
       },
     },
     " + label, + div[data-lastpass-icon-root] + label": {
       fontSize: ["mobile.sm", "desktop.sm"],
       top: "2px",
-      left: props.paddingLeft || props.pl || 3,
+      left: 3,
       zIndex: 2,
       position: "absolute",
       marginY: 2,
@@ -113,7 +108,7 @@ export const inputBaseStyle = (props: StyleFunctionProps) => ({
   },
   group: {
     ":has(:disabled)": {
-      ...baseText("disabled", props),
+      ...coreText("disabled"),
     },
   },
 });

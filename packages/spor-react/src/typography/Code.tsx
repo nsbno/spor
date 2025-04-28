@@ -1,32 +1,20 @@
-import {
-  Code as ChakraCode,
-  CodeProps as ChakraCodeProps,
-  forwardRef,
-} from "@chakra-ui/react";
-import { As } from "@chakra-ui/system";
-import React from "react";
+"use client";
 
-export type CodeProps = ChakraCodeProps & {
-  /**
-   * The color scheme of the inline code.
-   */
-  colorScheme?:
-    | "yellow"
-    | "light-yellow"
-    | "red"
-    | "green"
-    | "orange"
-    | "blue"
-    | "grey"
-    | "white";
-  /** The design variant – "solid" by default.
-   *
-   * Can be specified as `outline` to render a border around the badge. */
-  variant?: "solid" | "outline";
-};
-/**
- * Shows inline code.
- */
-export const Code = forwardRef<CodeProps, As>((props, ref) => (
-  <ChakraCode {...props} ref={ref} />
-));
+import React from "react"; // Added explicit React import
+import {
+  chakra,
+  Code as ChakraCode,
+  CodeProps,
+  RecipeVariantProps,
+} from "@chakra-ui/react";
+import { codeRecipie } from "../theme/recipes/code";
+
+type CodeVariantProps = RecipeVariantProps<typeof codeRecipie> & CodeProps;
+
+const StyledCode = chakra(ChakraCode, codeRecipie);
+
+export const Code = React.forwardRef<HTMLElement, CodeVariantProps>(
+  function Code(props, ref) {
+    return <StyledCode {...props} ref={ref} />;
+  },
+);

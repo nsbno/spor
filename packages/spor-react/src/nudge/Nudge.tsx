@@ -1,146 +1,218 @@
+"use client";
+import React, {
+  forwardRef,
+  PropsWithChildren,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import {
+  Button,
+  createTexts,
+  Popover,
+  PopoverContent,
+  PopoverProps,
+  PopoverTrigger,
+  ProgressIndicator,
+  useColorMode,
+  useTranslation,
+} from "..";
+
 import {
   Box,
-  DarkMode,
-  Popover,
-  PopoverAnchor,
-  PopoverArrow,
-  PopoverBody,
-  PopoverCloseButton,
-  PopoverContent,
+  BoxProps,
+  chakra,
+  Popover as ChakraPopover,
+  PopoverRootProps,
 } from "@chakra-ui/react";
-import React from "react";
-import { Button, ButtonGroup, createTexts, useTranslation } from "..";
-import { TooltipProps } from "../tooltip";
+import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
+import {
+  PopoverCloseTrigger,
+  usePopover,
+  usePopoverContext,
+} from "@ark-ui/react";
+
+const EXPIRATION_DELAY_MS = 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
+
+const isNudgeExpired = (
+  introducedDate: string,
+  delay = EXPIRATION_DELAY_MS,
+): boolean => {
+  const expirationTime = new Date(introducedDate).getTime() + delay;
+  return expirationTime < Date.now();
+};
+
+const logExpirationWarning = () => {
+  if (process.env.NODE_ENV === "development") {
+    console.warn(
+      `The nudge has been used for longer than 30 days. Please remove it from the codebase.
+      This is a development-only warning and will not appear in production.`,
+    );
+  }
+};
 
 export type NudgeProps = {
-  /**
-   * The ISO-formatted date of when the Nudge was introduced.
-   *
-   * After this date has been surpassed by 30 days, the nudge will no longer be shown,
-   * and an error will be logged in development mode.
-   *
-   * ```tsx
-   * <Nudge introducedDate="2024-02-19" {...otherProps} />
-   * ```
-   **/
   introducedDate: string;
-  /**
-   * The name of the nudge.
-   * This will be used to check whether or not the nudge has been viewed.
-   **/
-  name: string;
-  /**
-   * The anchor of the nudge.
-   *
-   * The element that should be nudged toward.
-   *
-   * ```tsx
-   * <Nudge content="This is a great new feature! Try it out.">
-   *  <MyFeature />
-   * </Nudge>
-   * ```
-   * */
-  children: React.ReactNode;
-  /**
-   * The content of the nudge.
-   */
-  content: React.ReactNode;
-  /**
-   * Any actions you want to provide. Defaults to a close button and a "Show me" button.
-   */
-  actions?: React.ReactNode;
-} & Omit<
-  TooltipProps,
-  | "name"
-  | "triggerElement"
-  | "children"
-  | "withCloseButton"
-  | "defaultIsOpen"
-  | "size"
-  | "borderRadius"
->;
+} & PopoverRootProps;
 
-const EXPIRATION_DELAY = 1000 * 60 * 60 * 24 * 30; // 30 days
+export const Nudge = (props: NudgeProps) => {
+  const {
+    introducedDate,
+    defaultOpen = props.open === undefined ? true : undefined, // defaultOpen defaults to true if open is undefined
+    size = "md",
+    ...rest
+  } = props;
 
-/** A nudge.
- *
- * A nudge is a way to hint of a new feature.
- *
- * You're required to set an `introducedDate` to the nudge, which is the timestamp of when the nudge was introduced. After 30 days, the nudge will no longer be shown, and an error will be logged in development mode.
- *
- * ```tsx
- * <Nudge
- *  introducedDate="2024-02-19"
- *  name="my-nudge"
- *  content="Check out this enormous new feature!"
- * >
- *   <StaticCard variant="base" padding={2} width="fit-content">My new feature</StaticCard>
- * </Nudge>
- * ```
- */
-export const Nudge = ({
-  introducedDate,
-  name,
-  children,
-  content,
-  actions,
-  ...props
-}: NudgeProps) => {
-  const { t } = useTranslation();
-  if (new Date(introducedDate).getTime() + EXPIRATION_DELAY < Date.now()) {
-    if (process.env.NODE_ENV === "development") {
-      console.warn(
-        `The nudge ${name} has been used for longer than 30 days. Please remove it from the codebase.
-        
-        This is a development only warning, and will not be shown in production.`,
-      );
-    }
+  if (isNudgeExpired(introducedDate)) {
+    logExpirationWarning();
     return null;
   }
-  return (
-    <Popover
-      arrowSize={12}
-      arrowShadowColor="none"
-      defaultIsOpen={true}
-      {...props}
-    >
-      <PopoverAnchor>{children}</PopoverAnchor>
-      <PopoverContent borderRadius="sm">
-        <DarkMode>
-          <PopoverArrow />
-          <PopoverCloseButton />
-          <PopoverBody margin={1}>
-            <Box marginRight={4}>{content}</Box>
-            <Box marginTop={1.5}>
-              {actions ?? (
-                <ButtonGroup>
-                  <Button variant="tertiary" size="xs">
-                    {t(texts.close)}
-                  </Button>
-                  <Button variant="secondary" size="xs" fontWeight="bold">
-                    {t(texts.showMe)}
-                  </Button>
-                </ButtonGroup>
-              )}
-            </Box>
-          </PopoverBody>
-        </DarkMode>
+
+  return <Popover defaultOpen={true} size={size} {...rest} />;
+};
+
+export const NudgeTrigger = forwardRef<
+  HTMLButtonElement,
+  ChakraPopover.TriggerProps
+>(({ ...props }, ref) => {
+  return <PopoverTrigger {...props} ref={ref} />;
+});
+
+export const NudgeContent = forwardRef<HTMLDivElement, PopoverProps>(
+  ({ showCloseButton = true, children, ...props }, ref) => {
+    const [currentStep, setCurrentStep] = useState(1);
+    const childrenArray = React.Children.toArray(children); // Convert children to an array
+
+    const { open } = usePopoverContext();
+
+    useEffect(() => {
+      setCurrentStep(1);
+    }, [children, open]);
+
+    const wizardPages = childrenArray.filter(
+      (child) =>
+        React.isValidElement(child) &&
+        (child.type as React.ComponentType).displayName === "NudgeWizardStep",
+    );
+
+    const restChildren = childrenArray.filter(
+      (child) =>
+        !React.isValidElement(child) ||
+        (child.type as React.ComponentType).displayName !== "NudgeWizardStep",
+    );
+
+    const totalSteps = wizardPages.length;
+    const isLastStep = totalSteps === currentStep;
+
+    if (!wizardPages.length) {
+      return (
+        <PopoverContent showCloseButton={showCloseButton} {...props} ref={ref}>
+          {children}
+        </PopoverContent>
+      );
+    }
+
+    return (
+      <PopoverContent showCloseButton={showCloseButton} {...props} ref={ref}>
+        {restChildren}
+        {wizardPages[currentStep - 1] as React.ReactElement}
+        <NudgeActions gap="18px">
+          <ProgressIndicator
+            activeStep={currentStep}
+            numberOfSteps={totalSteps}
+          />
+
+          <NextButton
+            isLastStep={isLastStep}
+            onNext={() => {
+              setCurrentStep((prev) => prev + 1);
+            }}
+          />
+        </NudgeActions>
       </PopoverContent>
-    </Popover>
+    );
+  },
+);
+
+export const NudgeActions = ({ className, ...props }: BoxProps) => {
+  const { colorMode } = useColorMode();
+
+  return (
+    <Box
+      className={colorMode === "dark" ? "light" : "dark"}
+      display="flex"
+      paddingTop="1rem"
+      alignItems="center"
+      gap="0.5rem"
+      justifyContent="between"
+      width="100%"
+      {...props}
+    />
+  );
+};
+
+type NextOrCloseButtonProps = {
+  isLastStep: boolean;
+  onNext: () => void;
+};
+const NextButton = ({ isLastStep, onNext }: NextOrCloseButtonProps) => {
+  const { t } = useTranslation();
+
+  if (isLastStep)
+    return (
+      <PopoverCloseTrigger>
+        <Button variant="tertiary" size="xs">
+          {t(texts.close)}
+        </Button>
+      </PopoverCloseTrigger>
+    );
+
+  return (
+    <Button
+      variant="tertiary"
+      size="xs"
+      rightIcon={<ArrowRightFill18Icon />}
+      onClick={onNext}
+    >
+      {t(texts.nextStep)}
+    </Button>
   );
 };
 
 const texts = createTexts({
+  nextStep: {
+    nb: "Neste",
+    nn: "Neste",
+    sv: "Nästa",
+    en: "Next",
+  },
   close: {
     nb: "Lukk",
     nn: "Lukk",
     sv: "Stäng",
     en: "Close",
   },
-  showMe: {
-    nb: "Vis meg",
-    nn: "Vis meg",
-    sv: "Visa mig",
-    en: "Show me",
-  },
+});
+
+export const NudgeWizardStep = ({ children }: PropsWithChildren) => {
+  return (
+    <chakra.div display="flex" flexDirection="column" gap="1rem" width="100%">
+      {children}
+    </chakra.div>
+  );
+};
+
+NudgeWizardStep.displayName = "NudgeWizardStep";
+
+export const NudgeCloseTrigger = forwardRef<
+  HTMLButtonElement,
+  ChakraPopover.TriggerProps
+>(({ children, ...props }, ref) => {
+  const isStringChild = typeof children === "string";
+
+  return (
+    <ChakraPopover.CloseTrigger {...props} ref={ref} asChild={!isStringChild}>
+      {children}
+    </ChakraPopover.CloseTrigger>
+  );
 });

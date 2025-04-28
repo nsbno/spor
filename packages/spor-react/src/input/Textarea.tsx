@@ -1,21 +1,37 @@
+"use client";
+
 import {
-  FormLabel,
-  forwardRef,
+  RecipeVariantProps,
+  useRecipe,
   Textarea as ChakraTextarea,
   TextareaProps as ChakraTextareaProps,
-  useFormControlContext,
-  InputGroup,
+  FieldLabel,
 } from "@chakra-ui/react";
-import React, { useId, useLayoutEffect, useRef, useState } from "react";
+import React, {
+  forwardRef,
+  PropsWithChildren,
+  ReactNode,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
+import { textareaRecipe } from "../theme/recipes/textarea";
+import { Field, FieldProps } from "./Field";
 
-export type TextareaProps = Exclude<ChakraTextareaProps, "size"> & {
-  label?: string;
-};
+type TextareaVariants = RecipeVariantProps<typeof textareaRecipe>;
+export type TextareaProps = Exclude<
+  ChakraTextareaProps,
+  "size" | "colorPalette"
+> &
+  FieldProps &
+  PropsWithChildren<TextareaVariants> & {
+    label: ReactNode;
+  };
 
 /**
  * Hook to calculate the height of the label element to adjust spacing for the input for floating label.
  */
-const useLabelHeight = (label: string | undefined) => {
+const useLabelHeight = (label: ReactNode | undefined) => {
   const labelRef = useRef<HTMLLabelElement>(null);
   const [labelHeight, setLabelHeight] = useState(0);
 
@@ -45,103 +61,39 @@ const useLabelHeight = (label: string | undefined) => {
 };
 
 /**
- * Text area that works with the `FormControl` component.
  *
- * Providing a label is optional.
+ * A simple Textarea component:
  *
  * ```tsx
- * <FormControl>
- *   <Textarea label="E-mail" />
- * </FormControl>
+ *   <Textarea label="Description" />
  * ```
+ *
+ * Textarea has two variants core, and floating.
+ *
  */
-export const Textarea = forwardRef<TextareaProps, "textarea">((props, ref) => {
-  const {
-    spacingProps,
-    remainingProps: { label, ...rest },
-  } = getSpacingProps(props);
-  const formControlProps = useFormControlContext();
-  const fallbackId = `textarea-${useId()}`;
-  const inputId = props.id ?? formControlProps?.id ?? fallbackId;
 
-  const { labelRef, labelHeight } = useLabelHeight(label);
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+  (props, ref) => {
+    const { label, variant = "core", ...fieldProps } = props;
+    const recipe = useRecipe({ key: "textarea" });
+    const styles = recipe({ variant });
 
-  return (
-    <InputGroup
-      position="relative"
-      {...spacingProps}
-      style={{ "--label-height": `${labelHeight}px` } as React.CSSProperties}
-    >
-      <ChakraTextarea {...rest} id={inputId} ref={ref} placeholder=" " />
-      {label && (
-        <FormLabel
-          ref={labelRef}
-          htmlFor={inputId}
-          id={`${inputId}-label`}
-          pointerEvents="none"
-        >
-          {label}
-        </FormLabel>
-      )}
-    </InputGroup>
-  );
-});
+    const { labelRef, labelHeight } = useLabelHeight(label);
 
-function getSpacingProps<T extends TextareaProps>(props: T) {
-  const {
-    mt,
-    mr,
-    mb,
-    ml,
-    mx,
-    my,
-    marginTop,
-    marginRight,
-    marginBottom,
-    marginLeft,
-    marginX,
-    marginY,
-    pt,
-    pr,
-    pb,
-    pl,
-    px,
-    py,
-    paddingTop,
-    paddingRight,
-    paddingBottom,
-    paddingLeft,
-    paddingX,
-    paddingY,
-    ...remainingProps
-  } = props;
-  return {
-    spacingProps: {
-      mt,
-      mr,
-      mb,
-      ml,
-      mx,
-      my,
-      marginTop,
-      marginRight,
-      marginBottom,
-      marginLeft,
-      marginX,
-      marginY,
-      pt,
-      pr,
-      pb,
-      pl,
-      px,
-      py,
-      paddingTop,
-      paddingRight,
-      paddingBottom,
-      paddingLeft,
-      paddingX,
-      paddingY,
-    },
-    remainingProps,
-  };
-}
+    return (
+      <Field {...fieldProps} position="relative">
+        <ChakraTextarea
+          {...props}
+          css={styles}
+          className="peer"
+          ref={ref}
+          style={
+            { "--label-height": `${labelHeight}px` } as React.CSSProperties
+          }
+          placeholder=" "
+        />
+        <FieldLabel ref={labelRef}>{label}</FieldLabel>
+      </Field>
+    );
+  },
+);

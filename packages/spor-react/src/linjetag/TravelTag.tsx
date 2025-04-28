@@ -1,8 +1,9 @@
+"use client";
 import {
   Box,
   BoxProps,
-  forwardRef,
-  useMultiStyleConfig,
+  RecipeVariantProps,
+  useSlotRecipe,
 } from "@chakra-ui/react";
 import {
   ErrorFill18Icon,
@@ -12,22 +13,20 @@ import {
   WarningFill18Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { LineIcon } from "./LineIcon";
 import type { TagProps } from "./types";
-import { As } from "@chakra-ui/system";
+import { travelTagSlotRecipe } from "../theme/slot-recipes/travel-tag";
+
+type TravelTagVariantProps = RecipeVariantProps<typeof travelTagSlotRecipe>;
+
+type DeviationLevels = "critical" | "major" | "minor" | "info" | "none";
 
 export type TravelTagProps = TagProps &
-  BoxProps & {
-    /**
-     * Defines the level of importance
-     * Default to none
-     */
-    deviationLevel?: "critical" | "major" | "minor" | "info" | "none";
-    isDisabled?: boolean;
-    /**
-     * Needs to be defined if variant is custom
-     */
+  BoxProps &
+  PropsWithChildren<TravelTagVariantProps> & {
+    deviationLevel?: DeviationLevels;
+    disabled?: boolean;
     foregroundColor?: string;
     /**
      * Needs to be defined if variant is custom
@@ -51,6 +50,8 @@ export type TravelTagProps = TagProps &
  * They support three different sizes – `sm`, `md` and `lg`.
  *
  * You can also render them with a deviation level to indicate an extra focus:
+ *
+ * You can add a "disabled" prop to the tag to make it look disabled (grey)
  *
  * ```tsx
  * <TravelTag
@@ -89,57 +90,66 @@ export type TravelTagProps = TagProps &
  *
  * @see https://spor.vy.no/components/line-tags
  */
-export const TravelTag = forwardRef<TravelTagProps, As>(
-  (
+
+export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
+  function TravelTag(
     {
       variant,
       size = "md",
       deviationLevel = "none",
       title,
       description,
-      isDisabled,
+      disabled,
       foregroundColor,
       backgroundColor,
       customIconVariant,
       ...rest
     },
     ref,
-  ) => {
-    const styles = useMultiStyleConfig("TravelTag", {
+  ) {
+    const recipie = useSlotRecipe({ key: "travelTag" });
+    const styles = recipie({
       variant,
       size,
       deviationLevel,
-      foregroundColor: variant === "custom" ? foregroundColor : undefined,
-      backgroundColor: variant === "custom" ? backgroundColor : undefined,
     });
 
     const DeviationLevelIcon = getDeviationLevelIcon({ deviationLevel, size });
 
     return (
-      <Box sx={styles.container} aria-disabled={isDisabled} ref={ref} {...rest}>
+      <Box
+        css={styles.container}
+        aria-disabled={disabled}
+        ref={ref}
+        {...rest}
+        backgroundColor={disabled ? "surface.disabled" : backgroundColor}
+      >
         <LineIcon
           variant={variant}
           size={size}
-          sx={styles.iconContainer}
           foregroundColor={foregroundColor}
           backgroundColor={backgroundColor}
           customIconVariant={customIconVariant}
+          disabled={disabled}
+          target="travelTag"
           {...(rest as any)}
         />
-        <Box sx={styles.textContainer}>
+        <Box css={styles.textContainer}>
           {title && (
-            <Box as="span" sx={styles.title}>
+            <Box as="span" css={styles.title}>
               {title}
             </Box>
           )}
           {title && description && " "}
           {description && (
-            <Box as="span" sx={styles.description}>
+            <Box as="span" css={styles.description}>
               {description}
             </Box>
           )}
         </Box>
-        {DeviationLevelIcon && <DeviationLevelIcon sx={styles.deviationIcon} />}
+        {DeviationLevelIcon && (
+          <DeviationLevelIcon css={styles.deviationIcon} />
+        )}
       </Box>
     );
   },
@@ -157,6 +167,7 @@ const getDeviationLevelIcon = ({
       return size === "lg" ? WarningFill24Icon : WarningFill18Icon;
     case "info":
       return size === "lg" ? InformationFill24Icon : InformationFill18Icon;
+    case "none":
     default:
       return null;
   }

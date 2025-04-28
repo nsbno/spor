@@ -1,4 +1,5 @@
-import { BoxProps, useFormControlContext } from "@chakra-ui/react";
+"use client";
+import { BoxProps, useFieldContext } from "@chakra-ui/react";
 import { CalendarDateTime } from "@internationalized/date";
 import { TimeValue } from "@react-types/datepicker";
 import {
@@ -11,6 +12,7 @@ import { IconButton, createTexts, useTranslation } from "..";
 import { StyledField } from "./StyledField";
 import { TimeField } from "./TimeField";
 import { getCurrentTime, useCurrentLocale } from "./utils";
+import { Field } from "@/input/Field";
 
 type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> & {
   /** The label. Defaults to a localized version of "Time" */
@@ -40,7 +42,7 @@ type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> & {
    */
   minuteInterval?: number;
   /** Whether or not the field is disabled */
-  isDisabled?: boolean;
+  disabled?: boolean;
 };
 /** A time picker component.
  *
@@ -66,13 +68,13 @@ export const TimePicker = ({
   defaultValue = getCurrentTime(),
   onChange = () => {},
   minuteInterval = 30,
-  isDisabled: isDisabledExternally = false,
+  disabled: isDisabledExternally = false,
   name,
   ...boxProps
 }: TimePickerProps) => {
-  const { isDisabled: isFormControlDisabled, isInvalid: isFormControlInvalid } =
-    useFormControlContext() ?? {};
-  const isDisabled = isDisabledExternally ?? isFormControlDisabled ?? false;
+  const { disabled: fieldDisabled, invalid: fieldInvalid } =
+    useFieldContext() ?? {};
+  const isDisabled = isDisabledExternally ?? fieldDisabled ?? false;
   const { t } = useTranslation();
   const locale = useCurrentLocale();
   const label = externalLabel ?? t(texts.time);
@@ -83,7 +85,7 @@ export const TimePicker = ({
     locale,
     isDisabled,
     label,
-    validationState: isFormControlInvalid ? "invalid" : "valid",
+    validationState: fieldInvalid ? "invalid" : "valid",
   });
 
   const dateTime = state.value as CalendarDateTime | null;
@@ -124,44 +126,45 @@ export const TimePicker = ({
     texts.selectedTimeIs(`${dateTime?.hour ?? 0} ${dateTime?.minute ?? 0}`),
   )}`;
   return (
-    <StyledField
-      variant="base"
-      width="fit-content"
-      paddingX={2}
-      alignItems="center"
-      justifyContent="space-between"
-      gap={2}
-      opacity={isDisabled ? 0.5 : 1}
-      pointerEvents={isDisabled ? "none" : "auto"}
-      aria-disabled={isDisabled}
-      aria-live="assertive"
-      aria-label={ariaLabel}
-      {...boxProps}
-    >
-      <IconButton
-        variant="ghost"
-        size="xs"
-        borderRadius="xs"
-        aria-label={backwardsLabel}
-        title={backwardsLabel}
-        icon={<DropdownLeftFill18Icon />}
-        onClick={handleBackwardsClick}
-        isDisabled={isDisabled}
-        style={isDisabled ? { backgroundColor: "transparent" } : {}}
-      />
-      <TimeField label={label} state={state} name={name} />
-      <IconButton
-        variant="ghost"
-        size="xs"
-        borderRadius="xs"
-        aria-label={forwardsLabel}
-        title={forwardsLabel}
-        icon={<DropdownRightFill18Icon />}
-        onClick={handleForwardClick}
-        isDisabled={isDisabled}
-        style={isDisabled ? { backgroundColor: "transparent" } : {}}
-      />
-    </StyledField>
+    <Field as="time" {...boxProps}>
+      <StyledField
+        width="fit-content"
+        paddingX={2}
+        alignItems="center"
+        justifyContent="space-between"
+        gap={2}
+        opacity={isDisabled ? 0.5 : 1}
+        pointerEvents={isDisabled ? "none" : "auto"}
+        aria-disabled={isDisabled}
+        aria-live="assertive"
+        aria-label={ariaLabel}
+        {...boxProps}
+      >
+        <IconButton
+          variant="ghost"
+          size="xs"
+          borderRadius="xs"
+          aria-label={backwardsLabel}
+          title={backwardsLabel}
+          icon={<DropdownLeftFill18Icon />}
+          onClick={handleBackwardsClick}
+          disabled={isDisabled}
+          style={isDisabled ? { backgroundColor: "transparent" } : {}}
+        />
+        <TimeField label={label} state={state} name={name} />
+        <IconButton
+          variant="ghost"
+          size="xs"
+          borderRadius="xs"
+          aria-label={forwardsLabel}
+          title={forwardsLabel}
+          icon={<DropdownRightFill18Icon />}
+          onClick={handleForwardClick}
+          disabled={isDisabled}
+          style={isDisabled ? { backgroundColor: "transparent" } : {}}
+        />
+      </StyledField>
+    </Field>
   );
 };
 

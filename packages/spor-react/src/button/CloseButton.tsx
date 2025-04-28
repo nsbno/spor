@@ -1,10 +1,11 @@
-import { forwardRef } from "@chakra-ui/react";
+"use client";
+
 import {
   CloseFill18Icon,
   CloseFill24Icon,
   CloseFill30Icon,
 } from "@vygruppen/spor-icon-react";
-import React from "react";
+import React, { forwardRef } from "react";
 import { createTexts, useTranslation } from "../i18n";
 import { IconButton, IconButtonProps } from "./IconButton";
 
@@ -25,7 +26,7 @@ export type CloseButtonProps = Omit<
  * <CloseButton onClick={closeModal} />
  * ```
  */
-export const CloseButton = forwardRef<CloseButtonProps, "button">(
+export const CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>(
   ({ size = "sm", ...props }, ref) => {
     const { t } = useTranslation();
     return (

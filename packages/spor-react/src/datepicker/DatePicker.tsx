@@ -1,46 +1,59 @@
+"use client";
+import { Field } from "@/input/Field";
 import {
   Box,
   BoxProps,
-  FocusLock,
-  Popover,
+  Popover as ChakraPopover,
   PopoverAnchor,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
   Portal,
-  InputGroup,
-  ResponsiveValue,
-  useFormControlContext,
-  useMultiStyleConfig,
+  RecipeVariantProps,
+  useFieldContext,
+  useSlotRecipe,
 } from "@chakra-ui/react";
-import { DateValue } from "@internationalized/date";
-import React, { ReactNode, forwardRef, useId, useRef } from "react";
-import { AriaDatePickerProps, I18nProvider, useDatePicker } from "react-aria";
+import React, {
+  PropsWithChildren,
+  ReactNode,
+  forwardRef,
+  useId,
+  useRef,
+} from "react";
+import {
+  AriaDatePickerProps,
+  DateValue,
+  I18nProvider,
+  useDatePicker,
+} from "react-aria";
 import { useDatePickerState } from "react-stately";
-import { FormErrorMessage } from "..";
+import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { Calendar } from "./Calendar";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
 import { StyledField } from "./StyledField";
+import { CalendarVariants } from "./types";
 import { useCurrentLocale } from "./utils";
 
+export type DatePickerVariantProps = RecipeVariantProps<
+  typeof datePickerSlotRecipe
+>;
+
 type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
-  Pick<BoxProps, "minHeight" | "width"> & {
-    variant: ResponsiveValue<"base" | "floating" | "ghost">;
+  Pick<BoxProps, "minHeight" | "width"> &
+  PropsWithChildren<DatePickerVariantProps> &
+  CalendarVariants & {
     name?: string;
     showYearNavigation?: boolean;
     withPortal?: boolean;
     onChange?: (value: DateValue | null) => void;
+    errorMessage?: ReactNode;
   };
 
 /**
  * A date picker component.
  *
- * There are three different variants – `base`, `floating` and `ghost`.
+ * There are three different variants – `core`, `floating` and `ghost`.
  *
  * ```tsx
- * <DatePicker label="Dato" variant="base" />
+ * <DatePicker label="Dato" variant="core" />
  * ```
  */
 
@@ -57,33 +70,31 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     },
     externalRef,
   ) => {
-    const formControlProps = useFormControlContext();
+    const chakraFieldProps = useFieldContext();
     const state = useDatePickerState({
       ...props,
       shouldCloseOnSelect: true,
       errorMessage,
-      isRequired: props.isRequired ?? formControlProps?.isRequired,
-      validationState: formControlProps?.isInvalid ? "invalid" : "valid",
+      isRequired: props.isRequired ?? chakraFieldProps?.required,
+      validationState: chakraFieldProps?.invalid ? "invalid" : "valid",
     });
     const internalRef = useRef<HTMLDivElement>(null);
     const ref = externalRef ?? internalRef;
-    const {
-      labelProps,
-      fieldProps,
-      buttonProps,
-      dialogProps,
-      calendarProps,
-      errorMessageProps,
-    } = useDatePicker(
-      props,
-      state,
-      ref as React.MutableRefObject<HTMLDivElement>,
-    );
+    const { labelProps, fieldProps, buttonProps, dialogProps, calendarProps } =
+      useDatePicker(
+        props,
+        state,
+        ref as React.MutableRefObject<HTMLDivElement>,
+      );
 
     const labelId = `label-${useId()}`;
     const inputGroupId = `input-group-${useId()}`;
 
-    const styles = useMultiStyleConfig("Datepicker", { variant });
+    const recipe = useSlotRecipe({
+      key: "datePicker",
+      recipe: datePickerSlotRecipe,
+    });
+    const styles = recipe({ variant });
     const locale = useCurrentLocale();
 
     const onFieldClick = () => {
@@ -91,18 +102,17 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     };
 
     const popoverContent = (
-      <PopoverContent color="darkGrey" sx={styles.calendarPopover}>
-        <PopoverArrow sx={styles.arrow} />
-        <PopoverBody>
-          <FocusLock>
+      <ChakraPopover.Positioner>
+        <ChakraPopover.Content css={styles.calendarPopover}>
+          <ChakraPopover.Body minWidth={"20rem"}>
             <Calendar
               {...calendarProps}
               variant={variant}
               showYearNavigation={showYearNavigation}
             />
-          </FocusLock>
-        </PopoverBody>
-      </PopoverContent>
+          </ChakraPopover.Body>
+        </ChakraPopover.Content>
+      </ChakraPopover.Positioner>
     );
 
     return (
@@ -113,17 +123,12 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           flexDirection="column"
           width={width}
         >
-          <Popover
-            {...dialogProps}
-            isOpen={state.isOpen}
-            onOpen={state.open}
-            onClose={state.close}
-            flip={false}
-          >
-            <InputGroup
+          <ChakraPopover.Root {...dialogProps}>
+            <Field
               display="inline-flex"
               id={inputGroupId}
               aria-labelledby={labelId}
+              errorText={errorMessage}
             >
               <PopoverAnchor>
                 <StyledField
@@ -134,15 +139,15 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                   isDisabled={props.isDisabled}
                   ariaLabelledby={labelId}
                 >
-                  <PopoverTrigger>
+                  <ChakraPopover.Trigger asChild>
                     <CalendarTriggerButton
+                      paddingLeft={1}
+                      paddingRight={1}
                       variant={variant}
                       ref={ref}
-                      isDisabled={props.isDisabled}
-                      ariaLabelledby={labelId}
                       {...buttonProps}
                     />
-                  </PopoverTrigger>
+                  </ChakraPopover.Trigger>
                   <DateField
                     label={props.label}
                     labelProps={labelProps}
@@ -152,15 +157,13 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                   />
                 </StyledField>
               </PopoverAnchor>
-            </InputGroup>
-            <FormErrorMessage {...errorMessageProps}>
-              {errorMessage as ReactNode}
-            </FormErrorMessage>
+            </Field>
+
             {state.isOpen && !props.isDisabled && withPortal && (
               <Portal>{popoverContent}</Portal>
             )}
             {state.isOpen && !props.isDisabled && !withPortal && popoverContent}
-          </Popover>
+          </ChakraPopover.Root>
         </Box>
       </I18nProvider>
     );

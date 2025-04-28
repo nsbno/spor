@@ -1,10 +1,9 @@
-import { Link } from "@remix-run/react";
 import { DownloadOutline24Icon } from "@vygruppen/spor-icon-react";
 import {
+  Box,
   Button,
-  ButtonGroup,
-  Divider,
   Heading,
+  Separator,
   Stack,
   Text,
 } from "@vygruppen/spor-react";
@@ -14,7 +13,7 @@ import { SearchResults } from "./SearchResults";
 
 export default function IconsPage() {
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       <Heading as="h1" variant="xl-display">
         Icon library
       </Heading>
@@ -24,19 +23,19 @@ export default function IconsPage() {
         identify and differentiate between different content so that they create
         value for the user.
       </Text>
-      <ButtonGroup>
+      <Box maxWidth={["100%", null, null, "50%"]} marginX="auto">
         <Button
-          as={Link}
-          to="all-icons.zip"
-          download={true}
-          reloadDocument
           variant="primary"
+          as="a"
+          size="md"
           leftIcon={<DownloadOutline24Icon />}
+          download="all-icons.zip"
+          href="/resources/icon-library/all-icons.zip"
         >
           Download all icons
         </Button>
-      </ButtonGroup>
-      <Divider />
+      </Box>
+      <Separator />
       <SearchFilterProvider>
         <SearchBar />
         <SearchResults />

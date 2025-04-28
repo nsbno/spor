@@ -1,4 +1,4 @@
-import { Format, Named } from "style-dictionary";
+import { Format } from "style-dictionary/types";
 import { simplifyTokens } from "../../utils/simplifyTokens";
 
 /**
@@ -6,9 +6,9 @@ import { simplifyTokens } from "../../utils/simplifyTokens";
  *
  * It also uses the ES Modules syntax, so we can tree-shake out any unused tokens.
  */
-export const esModuleFormatter: Named<Format> = {
+export const esModuleFormatter: Format = {
   name: "typescript/es-module",
-  formatter: ({ dictionary }) => {
+  format: ({ dictionary }) => {
     return `export default ${JSON.stringify(
       simplifyTokens(dictionary.tokens),
       null,

@@ -1,43 +1,78 @@
+"use client";
 import {
-  Select as ChakraSelect,
-  SelectProps as ChakraSelectProps,
-  forwardRef,
-  useMultiStyleConfig,
+  RecipeVariantProps,
+  NativeSelect as ChakraNativeSelect,
+  useSlotRecipe,
 } from "@chakra-ui/react";
-import React from "react";
-import { FormControl, FormLabel } from ".";
+import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
+import * as React from "react";
+import { nativeSelectSlotRecipe } from "../theme/slot-recipes/native-select";
+import { Field } from "./Field";
 
-export type NativeSelectProps = Exclude<
-  ChakraSelectProps,
-  "colorScheme" | "variant" | "size"
-> & { label?: string };
+type NativeSelectVariantProps = RecipeVariantProps<
+  typeof nativeSelectSlotRecipe
+>;
+
+type NativeSelectRootProps =
+  React.PropsWithChildren<NativeSelectVariantProps> & {
+    icon?: React.ReactNode;
+    label: string;
+    invalid?: boolean;
+    disabled?: boolean;
+  };
+
 /**
  * Selects let you choose between several options
  *
  * You should consider only using the Select component when you have more than  4 options. Otherwise, you should use the `<Radio>` component.
  *
- * ```tsx
- * <NativeSelect label="Select level of luxury">
- *  <option>No luxury</option>
- *  <option>Some luxury</option>
- *  <option>Lots of luxury</option>
- *  <option>I'm rich</option>
+ * <NativeSelect label="Choose language">
+ *  <option>Norwegian (Bokmål)</option>
+ *  <option>Norwegian (Nynorsk)</option>
+ *  <option>Sami</option>
+ *  <option>Swedish</option>
+ *  <option>Danish</option>
+ *  <option>Finnish</option>
+ *  <option>English</option>
  * </NativeSelect>
- * ```
+ *
  */
-export const NativeSelect = forwardRef<NativeSelectProps, "select">(
-  ({ label, ...props }, ref) => {
-    const styles = useMultiStyleConfig("Select", props);
-    return (
-      <FormControl>
-        <ChakraSelect
-          data-attachable
-          {...props}
-          rootProps={{ __css: styles.root }}
-          ref={ref}
-        />
-        {label && <FormLabel>{label}</FormLabel>}
-      </FormControl>
-    );
-  },
-);
+
+export const NativeSelect = React.forwardRef<
+  HTMLDivElement,
+  NativeSelectRootProps
+>(function NativeSelect(props, ref) {
+  const {
+    icon,
+    children,
+    variant = "core",
+    label,
+    invalid,
+    disabled,
+    ...rest
+  } = props;
+
+  const recipe = useSlotRecipe({ recipe: nativeSelectSlotRecipe });
+  const styles = recipe({ variant });
+
+  return (
+    <Field label={label} invalid={invalid} disabled={disabled}>
+      <ChakraNativeSelect.Root
+        ref={ref}
+        css={styles.root}
+        aria-disabled={disabled}
+      >
+        <ChakraNativeSelect.Field
+          css={styles.field}
+          aria-invalid={invalid}
+          {...rest}
+        >
+          {children}
+        </ChakraNativeSelect.Field>
+        <ChakraNativeSelect.Indicator css={styles.icon}>
+          <DropdownDownFill18Icon />
+        </ChakraNativeSelect.Indicator>
+      </ChakraNativeSelect.Root>
+    </Field>
+  );
+});

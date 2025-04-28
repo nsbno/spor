@@ -1,3 +1,5 @@
+"use client";
+
 import { endOfMonth, getWeeksInMonth } from "@internationalized/date";
 import React from "react";
 import { AriaCalendarGridProps, useCalendarGrid } from "react-aria";
@@ -6,7 +8,9 @@ import { Language, useTranslation } from "../i18n";
 import { Text } from "../typography";
 import { CalendarCell } from "./CalendarCell";
 import { useCurrentLocale } from "./utils";
-import { ResponsiveValue, useMultiStyleConfig } from "@chakra-ui/react";
+import { Box, useSlotRecipe } from "@chakra-ui/react";
+import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { CalendarVariants } from "./types";
 
 const weekDays: Record<Language, string[]> = {
   nb: ["Ma", "Ti", "On", "To", "Fr", "Lø", "Sø"],
@@ -15,11 +19,11 @@ const weekDays: Record<Language, string[]> = {
   en: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
 };
 
-type CalendarGridProps = AriaCalendarGridProps & {
-  variant: ResponsiveValue<"base" | "floating" | "ghost">;
-  state: CalendarState | RangeCalendarState;
-  offset?: { months?: number };
-};
+type CalendarGridProps = AriaCalendarGridProps &
+  CalendarVariants & {
+    state: CalendarState | RangeCalendarState;
+    offset?: { months?: number };
+  };
 export function CalendarGrid({
   state,
   variant,
@@ -40,10 +44,14 @@ export function CalendarGrid({
   // Get the number of weeks in the month so we can render the proper number of rows.
   const weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
   const weeksInMonthRange = new Array(weeksInMonth).fill(0).map((_, i) => i);
-  const styles = useMultiStyleConfig("Datepicker", { variant });
+  const recipe = useSlotRecipe({
+    key: "datePicker",
+    recipe: datePickerSlotRecipe,
+  });
+  const styles = recipe({ variant });
 
   return (
-    <table {...gridProps}>
+    <Box as="table" {...gridProps} css={styles.box}>
       <thead {...headerProps}>
         <tr>
           {weekDays[language].map((day, index) => {
@@ -51,7 +59,7 @@ export function CalendarGrid({
               <Text
                 as="th"
                 key={index}
-                sx={index < 5 ? styles.weekdays : styles.weekend}
+                css={index < 5 ? styles.weekdays : styles.weekend}
                 variant="sm"
               >
                 {day}
@@ -81,6 +89,6 @@ export function CalendarGrid({
           </tr>
         ))}
       </tbody>
-    </table>
+    </Box>
   );
 }

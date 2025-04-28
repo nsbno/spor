@@ -4,6 +4,7 @@ import {
   AltTransportFill24Icon,
   ErrorFill24Icon,
   ErrorOutline24Icon,
+  IconComponent,
   InformationFill24Icon,
   QuestionFill24Icon,
   ServiceFill24Icon,
@@ -17,21 +18,23 @@ import { Box, useSlotRecipe, Alert as ChakraAlert } from "@chakra-ui/react";
 
 type AlertIconProps = {
   variant: ChakraAlert.RootProps["variant"];
+  customIcon?: IconComponent;
 };
 
 /**
  * Internal component that shows the correct icon for the alert
  */
-export const AlertIcon = ({ variant }: AlertIconProps) => {
+export const AlertIcon = ({ variant, customIcon }: AlertIconProps) => {
   const { t } = useTranslation();
 
+  const icon = customIcon ?? getIcon(variant);
+
   return (
-    <>
-      <Box
-        as={getIcon(variant)}
-        aria-label={t(texts[variant as keyof typeof texts])}
-      />
-    </>
+    <Box
+      as={icon}
+      aria-label={t(texts[variant as keyof typeof texts])}
+      color={customIcon ? `alert.${variant}.icon` : undefined}
+    />
   );
 };
 

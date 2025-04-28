@@ -89,7 +89,7 @@ workflows:
             parameters:
               path:
                 - apps/docs/terraform/service
-                - apps/docs/terraform/prod
+                - apps/docs/terraform/test
 
       - build-and-push-docker:
           context: digital-common-services

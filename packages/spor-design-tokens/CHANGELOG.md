@@ -1,5 +1,48 @@
 # Changelog
 
+## 4.0.0
+
+### Major Changes
+
+- fcd6f80: Name update: "base" is now "core" on all platforms. Colors and variants.
+- fcd6f80: **spor-design-tokens: major**
+
+  - teal has been removed from the palette. Use the green palette instead
+  - Some aliases are removed to make way for new ones
+
+  **spor-design-tokens: minor**
+
+  - The palette has been extended from 50-600 to 50-1100 with new values
+  - New aliases has been added to support the extended color palette
+  - New tokens has been added to themes; detail.color, surface.color and alert
+  - Some values for tokens has changed to support the new palette
+
+  **spor-react: patch**
+
+  - Updated darkGreen Badge with new alias
+
+### Minor Changes
+
+- fcd6f80: New alert variants and tokens.
+- fcd6f80: New tokens for vy utvikling
+- fcd6f80: remove support for elm
+- fcd6f80: Color-tokens: Fix typos from last update
+- fcd6f80: ProgressBar: You can now use showValueText to show the percentage done
+- fcd6f80: Popover component
+- fcd6f80: Update badge and add new borderradius, xxs
+- fcd6f80: Upgrade to pnpm
+
+### Patch Changes
+
+- fcd6f80: ProgressLoader: No big changes
+- fcd6f80: Watch mode for packages
+- fcd6f80: **Color tokens**: Update structure for alias and themes
+  **scripts**: Add typegen, typegen:watch and typegen:strict as run commands
+  **tokens**: Update structure for import to support colors
+- fcd6f80: ProgressIndicator: No big changes
+- fcd6f80: Button: no big changes
+- fcd6f80: Update button colors
+
 ## 3.10.0
 
 ### Minor Changes

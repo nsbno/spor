@@ -1,5 +1,17 @@
 # @vygruppen/spor-icon
 
+## 3.5.0
+
+### Minor Changes
+
+- fcd6f80: ProgressBar: You can now use showValueText to show the percentage done
+
+### Patch Changes
+
+- fcd6f80: ProgressLoader: No big changes
+- fcd6f80: Watch mode for packages
+- fcd6f80: ProgressIndicator: No big changes
+
 ## 3.4.0
 
 ### Minor Changes

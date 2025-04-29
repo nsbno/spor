@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.0.2
+
+### Patch Changes
+
+- 6d33265: Tables: fix for horizontal scroll for tables on mobile version
+
 ## 12.0.1
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert as ChakraAlert,Box, useSlotRecipe } from "@chakra-ui/react";
+import { Alert as ChakraAlert, Box, useSlotRecipe } from "@chakra-ui/react";
 import {
   AltTransportFill24Icon,
   ErrorFill24Icon,

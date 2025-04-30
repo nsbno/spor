@@ -6,7 +6,7 @@ import {
   RecipeVariantProps,
   Text,
 } from "@chakra-ui/react";
-import React, { forwardRef, useEffect,useId, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useId, useRef, useState } from "react";
 import { useProgressBar } from "react-aria";
 
 import { createTexts, useTranslation } from "..";

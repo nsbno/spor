@@ -19,4 +19,4 @@ export {
   useToken,
   VisuallyHidden,
 } from "@chakra-ui/react";
-export { useIsClient,useMap, useOnClickOutside } from "usehooks-ts";
+export { useIsClient, useMap, useOnClickOutside } from "usehooks-ts";

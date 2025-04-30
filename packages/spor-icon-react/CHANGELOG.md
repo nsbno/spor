@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 4.0.2
+
+### Patch Changes
+
+- 3e7f39b: Added eslint rules. Run auto fix
+
 ## 4.0.1
 
 ### Patch Changes

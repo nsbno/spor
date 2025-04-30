@@ -16,6 +16,7 @@ packages/*/tmp
 *.pem
 .idea/
 .vscode/
+doc
 
 # debug
 npm-debug.log*

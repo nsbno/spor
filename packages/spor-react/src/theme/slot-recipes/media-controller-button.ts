@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+
 import { mediaControllerAnatomy } from "./anatomy";
 
 export const mediaControllerSlotRecipe = defineSlotRecipe({

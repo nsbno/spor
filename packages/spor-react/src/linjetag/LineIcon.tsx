@@ -6,6 +6,7 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
+
 import { lineIconSlotRecipe } from "../theme/slot-recipes/line-icon";
 import { getCorrectIcon } from "./icons";
 import { CustomVariantProps, TagProps } from "./types";

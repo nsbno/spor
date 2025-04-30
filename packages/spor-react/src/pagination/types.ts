@@ -1,8 +1,9 @@
-import { paginationSlotRecipe } from "@/theme/slot-recipes/pagination";
 import {
   Pagination as ChakraPagination,
   RecipeVariantProps,
 } from "@chakra-ui/react";
+
+import { paginationSlotRecipe } from "@/theme/slot-recipes/pagination";
 
 export type PaginationVariantProps = RecipeVariantProps<
   typeof paginationSlotRecipe

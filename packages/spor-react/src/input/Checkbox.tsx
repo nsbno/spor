@@ -1,10 +1,11 @@
-import { checkboxSlotRecipe } from "@/theme/slot-recipes/checkbox";
 import {
   Checkbox as ChakraCheckbox,
   RecipeVariantProps,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { PropsWithChildren } from "react";
+
+import { checkboxSlotRecipe } from "@/theme/slot-recipes/checkbox";
 
 type CheckboxVariantProps = RecipeVariantProps<typeof checkboxSlotRecipe>;
 

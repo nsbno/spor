@@ -12,9 +12,10 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import { Fragment } from "react";
+
+import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 import { remToPx, useDesignTokens } from "./utils";
-import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 
 export const SpacingTokens = () => (
   <SharedTokenLayout

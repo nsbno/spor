@@ -6,6 +6,7 @@ import {
 } from "@chakra-ui/react";
 import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, PropsWithChildren } from "react";
+
 import { createTexts, useTranslation } from "..";
 import { linkRecipe } from "../theme/recipes/link";
 

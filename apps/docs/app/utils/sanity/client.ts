@@ -1,4 +1,5 @@
 import PicoSanity from "picosanity";
+
 import { sanityConfig } from "./config";
 
 /** Standard Sanity client for fetching data */

@@ -13,6 +13,6 @@ export * from "./PasswordInput";
 export * from "./PhoneNumberInput";
 export * from "./Radio";
 export * from "./SearchInput";
+export * from "./Select";
 export * from "./Switch";
 export * from "./Textarea";
-export * from "./Select";

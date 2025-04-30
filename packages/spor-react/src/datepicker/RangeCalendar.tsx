@@ -1,17 +1,19 @@
 "use client";
 import { Box, useSlotRecipe } from "@chakra-ui/react";
-import { DateValue, createCalendar } from "@internationalized/date";
+import { createCalendar,DateValue } from "@internationalized/date";
 import React, { useRef } from "react";
 import {
   RangeCalendarProps as ReactAriaRangeCalendarProps,
   useRangeCalendar,
 } from "react-aria";
 import { useRangeCalendarState } from "react-stately";
+
+import { datePickerSlotRecipe } from "@/theme/slot-recipes/datepicker";
+
 import { CalendarGrid } from "./CalendarGrid";
 import { CalendarHeader } from "./CalendarHeader";
-import { useCurrentLocale } from "./utils";
 import { CalendarVariants } from "./types";
-import { datePickerSlotRecipe } from "@/theme/slot-recipes/datepicker";
+import { useCurrentLocale } from "./utils";
 
 type RangeCalendarProps = ReactAriaRangeCalendarProps<DateValue> &
   CalendarVariants;

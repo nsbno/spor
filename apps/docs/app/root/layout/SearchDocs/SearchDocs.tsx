@@ -1,4 +1,5 @@
 import { DialogBody, DialogContent, DialogRoot } from "@vygruppen/spor-react";
+
 import { SearchDocsInput } from "./SearchDocsInput";
 
 type Props = {

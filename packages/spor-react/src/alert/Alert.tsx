@@ -2,14 +2,16 @@
 
 import {
   Alert as ChakraAlert,
-  useDisclosure,
   HStack,
+  useDisclosure,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
-import { AlertIcon } from "./AlertIcon";
-import { CloseButton } from "@/button";
 import { IconComponent } from "@vygruppen/spor-icon-react";
+import React, { forwardRef } from "react";
+
+import { CloseButton } from "@/button";
+
+import { AlertIcon } from "./AlertIcon";
 
 export type AlertProps = Omit<ChakraAlert.RootProps, "colorPalette"> & {
   /** Whether or not to show the alert icon */

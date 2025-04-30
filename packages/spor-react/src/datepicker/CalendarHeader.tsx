@@ -7,6 +7,7 @@ import {
 } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { CalendarState, RangeCalendarState } from "react-stately";
+
 import { createTexts, useTranslation } from "../i18n";
 import { CalendarNavigationButton } from "./CalendarNavigationButton";
 import { useCurrentLocale } from "./utils";

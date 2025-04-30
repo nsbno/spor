@@ -8,6 +8,7 @@
     "test": "turbo run test --parallel",
     "dev": "turbo run dev typegen:watch",
     "postinstall": "patch-package",
+    "lint": "turbo run lint",
     "prerelease": "pnpm build",
     "release": "turbo run build && changeset publish",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
@@ -22,7 +23,9 @@
     "prettier": "^3.3.1",
     "react-icons": "^5.4.0",
     "rimraf": "^5.0.7",
-    "turbo": "^2.4.2"
+    "turbo": "^2.4.2",
+    "@vygruppen/eslint-config": "workspace:*",
+    "eslint": "^9.25.1"
   },
   "engines": {
     "node": ">=18.0.0"

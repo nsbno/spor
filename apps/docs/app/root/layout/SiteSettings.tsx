@@ -6,9 +6,10 @@ import {
   Heading,
   Stack,
   Switch,
-  useColorMode,
   Text,
+  useColorMode,
 } from "@vygruppen/spor-react";
+
 import { BrandSwitcher } from "~/features/brand-switcher/BrandSwitcher";
 
 export const SiteSettings = () => {

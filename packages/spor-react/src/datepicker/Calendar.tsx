@@ -5,16 +5,18 @@ import { createCalendar } from "@internationalized/date";
 import React from "react";
 import {
   CalendarProps as ReactAriaCalendarProps,
-  useCalendar,
   DateValue,
+  useCalendar,
 } from "react-aria";
 import { useCalendarState } from "react-stately";
+
+import { datePickerSlotRecipe } from "@/theme/slot-recipes/datepicker";
+
 import { createTexts, useTranslation } from "../i18n";
 import { CalendarGrid } from "./CalendarGrid";
 import { CalendarHeader } from "./CalendarHeader";
-import { useCurrentLocale } from "./utils";
 import { CalendarVariants } from "./types";
-import { datePickerSlotRecipe } from "@/theme/slot-recipes/datepicker";
+import { useCurrentLocale } from "./utils";
 
 type CalendarProps = ReactAriaCalendarProps<DateValue> &
   CalendarVariants & {

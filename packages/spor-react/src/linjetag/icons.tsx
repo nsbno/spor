@@ -26,6 +26,7 @@ import {
   WalkFill30Icon,
 } from "@vygruppen/spor-icon-react";
 import React from "react";
+
 import type { Size, Variant } from "./types";
 
 const icons: Record<Variant, Record<Size, React.ComponentType>> = {

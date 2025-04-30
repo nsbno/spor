@@ -1,6 +1,6 @@
 import { chakra } from "@chakra-ui/react";
 import { Link } from "@remix-run/react";
-import { FlexProps, Box } from "@vygruppen/spor-react";
+import { Box,FlexProps } from "@vygruppen/spor-react";
 import React, { forwardRef, useRef } from "react";
 
 type MenuItemProps = FlexProps & {

@@ -1,16 +1,14 @@
 "use client";
 
-import { CloseButton } from "@/button";
-import { selectSlotRecipe } from "@/theme/slot-recipes/select";
 import type {
-  SelectRootProps as ChakraSelectRootProps,
   CollectionItem,
   RecipeVariantProps,
+  SelectRootProps as ChakraSelectRootProps,
 } from "@chakra-ui/react";
 import {
   Box,
-  Select as ChakraSelect,
   Portal,
+  Select as ChakraSelect,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import {
@@ -19,6 +17,9 @@ import {
 } from "@vygruppen/spor-icon-react";
 import * as React from "react";
 import { PropsWithChildren } from "react";
+
+import { CloseButton } from "@/button";
+import { selectSlotRecipe } from "@/theme/slot-recipes/select";
 
 type SelectVariantProps = RecipeVariantProps<typeof selectSlotRecipe>;
 

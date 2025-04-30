@@ -10,8 +10,9 @@ import {
 import React, { PropsWithChildren, useEffect, useRef } from "react";
 import { useCalendarCell } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
-import { DatePickerVariantProps } from "./DatePicker";
+
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { DatePickerVariantProps } from "./DatePicker";
 import { CalendarVariants } from "./types";
 
 type CalendarCellProps = PropsWithChildren<DatePickerVariantProps> &

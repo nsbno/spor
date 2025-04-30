@@ -1,5 +1,6 @@
 import { Link } from "@remix-run/react";
 import { Box, Button, Center, Heading, Text } from "@vygruppen/spor-react";
+
 import { NotFoundIllustration } from "~/features/illustrations/NotFoundIllustration";
 
 export const PageNotFound = () => {

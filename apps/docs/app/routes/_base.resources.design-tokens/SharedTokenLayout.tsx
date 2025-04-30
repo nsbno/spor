@@ -1,4 +1,5 @@
 import { Box, BoxProps } from "@vygruppen/spor-react";
+
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 
 type SharedTokenLayoutProps = {

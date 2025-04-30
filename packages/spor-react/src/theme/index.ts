@@ -3,17 +3,18 @@ import {
   defaultBaseConfig,
   defineConfig,
 } from "@chakra-ui/react";
-import { animationStyles } from "./tokens/animation-styles";
-import { breakpoints } from "./tokens/breakpoints";
-import { globalCss } from "./tokens/global-css";
-import { keyframes } from "./tokens/keyframes";
+
+import { Brand } from "./brand";
 import { recipes } from "./recipes";
 import { semanticTokens } from "./semantic-tokens";
 import { slotRecipes } from "./slot-recipes";
-import { textStyles } from "./tokens/text-styles";
 import { tokens } from "./tokens";
-import { Brand } from "./brand";
+import { animationStyles } from "./tokens/animation-styles";
+import { breakpoints } from "./tokens/breakpoints";
 import { config } from "./tokens/config";
+import { globalCss } from "./tokens/global-css";
+import { keyframes } from "./tokens/keyframes";
+import { textStyles } from "./tokens/text-styles";
 
 const generateTheme = (brand: Brand) => {
   return defineConfig({

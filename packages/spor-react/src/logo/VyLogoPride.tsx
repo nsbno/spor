@@ -1,5 +1,6 @@
 import { BoxProps } from "@chakra-ui/react";
 import React, { forwardRef, useId } from "react";
+
 import { SvgBox } from "./VyLogo";
 
 export type VyLogoPrideProps = BoxProps;

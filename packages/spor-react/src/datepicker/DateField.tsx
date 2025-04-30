@@ -2,14 +2,15 @@
 import { Box, Flex, useSlotRecipe } from "@chakra-ui/react";
 import { DateValue, GregorianCalendar } from "@internationalized/date";
 import { DOMAttributes, FocusableElement } from "@react-types/shared";
-import React, { PropsWithChildren, RefObject, forwardRef, useRef } from "react";
+import React, { forwardRef, PropsWithChildren, RefObject, useRef } from "react";
 import { AriaDateFieldProps, useDateField } from "react-aria";
 import { DateSegment, useDateFieldState } from "react-stately";
+
+import { createTexts, useTranslation } from "../i18n";
+import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { DatePickerVariantProps } from "./DatePicker";
 import { DateTimeSegment } from "./DateTimeSegment";
 import { useCurrentLocale } from "./utils";
-import { createTexts, useTranslation } from "../i18n";
-import { DatePickerVariantProps } from "./DatePicker";
-import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 
 function createCalendar(identifier: string) {
   switch (identifier) {

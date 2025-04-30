@@ -6,18 +6,19 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
+
 import { AnimationTokens } from "~/routes/_base.resources.design-tokens/AnimationTokens";
+
+import { BrandSwitcher } from "./BrandSwitcher";
 import { BreakpointTokens } from "./BreakpointTokens";
 import { ColorTokens } from "./color-tokens/ColorTokens";
-
+import { LightmodeSwitch } from "./LightmodeSwitch";
 import { OutlineTokens } from "./OutlineTokens";
 import { RoundingTokens } from "./RoundingTokens";
 import { ShadowTokens } from "./ShadowTokens";
 import { SpacingTokens } from "./SpacingTokens";
 import { TypographyTokens } from "./TypographyTokens";
 import { ZIndexTokens } from "./ZIndexTokens";
-import { BrandSwitcher } from "./BrandSwitcher";
-import { LightmodeSwitch } from "./LightmodeSwitch";
 
 export default function DesignTokensPage() {
   return (

@@ -1,13 +1,14 @@
 import {
   Box,
-  Center,
   Button as ChakraButton,
-  Flex,
-  Span,
   type ButtonProps as ChakraButtonProps,
+  Center,
+  Flex,
   type RecipeVariantProps,
+  Span,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
+
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
 import { buttonRecipe } from "../theme/recipes/button";

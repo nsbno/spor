@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+
 import { tableAnatomy } from "./anatomy";
 
 const numericStyles = {

@@ -1,9 +1,10 @@
 "use client";
 import { Box, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
 import React, { PropsWithChildren } from "react";
+
+import { infoTagSlotRecipe } from "../theme/slot-recipes/info-tag";
 import { LineIcon } from "./LineIcon";
 import type { TagProps } from "./types";
-import { infoTagSlotRecipe } from "../theme/slot-recipes/info-tag";
 
 type InfoTagVariantProps = RecipeVariantProps<typeof infoTagSlotRecipe>;
 

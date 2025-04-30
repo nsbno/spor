@@ -1,18 +1,19 @@
 "use client";
-import { skeletonRecipe } from "@/theme/recipes/skeleton";
 import type {
-  SkeletonProps as ChakraSkeletonProps,
   CircleProps,
   RecipeVariantProps,
+  SkeletonProps as ChakraSkeletonProps,
 } from "@chakra-ui/react";
 import {
-  Skeleton as ChakraSkeleton,
   Circle,
+  Skeleton as ChakraSkeleton,
   Stack,
   useRecipe,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { forwardRef } from "react";
+
+import { skeletonRecipe } from "@/theme/recipes/skeleton";
 
 type SkeletonVariantProps = RecipeVariantProps<typeof skeletonRecipe>;
 

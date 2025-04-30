@@ -1,10 +1,11 @@
-import { accordionSlotRecipe } from "@/theme/slot-recipes/accordion";
 import { RecipeVariantProps } from "@chakra-ui/react";
 import {
-  AccordionRootProps as ChakraAccordionProps,
   Accordion as ChakraAccordion,
+  AccordionRootProps as ChakraAccordionProps,
 } from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
+
+import { accordionSlotRecipe } from "@/theme/slot-recipes/accordion";
 
 export type AccordionVariantProps = RecipeVariantProps<
   typeof accordionSlotRecipe

@@ -1,5 +1,5 @@
 import { Brand } from "../brand";
-import { cargonetColors, vyUtviklingColors, vyDigitalColors } from "./colors";
+import { cargonetColors, vyDigitalColors,vyUtviklingColors } from "./colors";
 import { radii } from "./radii";
 import { shadows } from "./shadows";
 

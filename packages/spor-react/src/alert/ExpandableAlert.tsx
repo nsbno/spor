@@ -9,12 +9,14 @@ import {
   Span,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
-import { AlertIcon } from "./AlertIcon";
-import { AlertProps } from "./Alert";
-import { alertExpandableSlotRecipe } from "@/theme/slot-recipes/alert-expandable";
 import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
+import React, { forwardRef, PropsWithChildren } from "react";
+
 import { AccordionItemContent } from "@/accordion";
+import { alertExpandableSlotRecipe } from "@/theme/slot-recipes/alert-expandable";
+
+import { AlertProps } from "./Alert";
+import { AlertIcon } from "./AlertIcon";
 
 type ExpandableAlertVariantProps = RecipeVariantProps<
   typeof alertExpandableSlotRecipe

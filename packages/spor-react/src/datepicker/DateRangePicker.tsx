@@ -2,8 +2,8 @@
 import {
   Box,
   BoxProps,
-  PopoverAnchor,
   Popover as ChakraPopover,
+  PopoverAnchor,
   Portal,
   useFieldContext,
   useSlotRecipe,
@@ -17,16 +17,16 @@ import {
   useId,
 } from "react-aria";
 import { useDateRangePickerState } from "react-stately";
-import { DateField } from "./DateField";
-import { RangeCalendar } from "./RangeCalendar";
-import { StyledField } from "./StyledField";
-import { useCurrentLocale } from "./utils";
 
 import { Field } from "../input/Field";
-import { DatePickerVariantProps } from "./DatePicker";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
-import { CalendarVariants } from "./types";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
+import { DateField } from "./DateField";
+import { DatePickerVariantProps } from "./DatePicker";
+import { RangeCalendar } from "./RangeCalendar";
+import { StyledField } from "./StyledField";
+import { CalendarVariants } from "./types";
+import { useCurrentLocale } from "./utils";
 
 type DateRangePickerProps = Omit<
   AriaDateRangePickerProps<DateValue>,

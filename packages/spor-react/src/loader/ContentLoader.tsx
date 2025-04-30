@@ -2,6 +2,7 @@
 import { Box, BoxProps, VisuallyHidden } from "@chakra-ui/react";
 import { contentLoaderData } from "@vygruppen/spor-loader";
 import React from "react";
+
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
 

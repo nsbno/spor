@@ -1,4 +1,5 @@
 import { Format } from "style-dictionary/types";
+
 import { simplifyTokens } from "../../utils/simplifyTokens";
 
 /**

@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+
 import { progressBarAnotomy } from "./anatomy";
 
 export const progressBarRecipe = defineSlotRecipe({

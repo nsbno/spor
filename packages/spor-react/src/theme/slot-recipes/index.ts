@@ -16,10 +16,10 @@ import { listBoxSlotRecipe } from "./listbox";
 import { mediaControllerSlotRecipe } from "./media-controller-button";
 import { nativeSelectSlotRecipe } from "./native-select";
 import { numericStepperRecipe } from "./numeric-stepper";
+import { paginationSlotRecipe } from "./pagination";
 import { popoverSlotRecipe } from "./popover";
 import { progressBarRecipe } from "./progress-bar";
 import { progressIndicatorRecipe } from "./progress-indicator";
-import { paginationSlotRecipe } from "./pagination";
 import { radioGroupSlotRecipe } from "./radio";
 import { radioCardSlotRecipe } from "./radio-card";
 import { selectSlotRecipe } from "./select";
@@ -27,8 +27,8 @@ import { stepperSlotRecipe } from "./stepper";
 import { switchSlotRecipe } from "./switch";
 import { tableSlotRecipe } from "./table";
 import { tabsSlotRecipe } from "./tabs";
-import { travelTagSlotRecipe } from "./travel-tag";
 import { toastSlotRecipe } from "./toast";
+import { travelTagSlotRecipe } from "./travel-tag";
 
 export const slotRecipes = {
   accordion: accordionSlotRecipe,

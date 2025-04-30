@@ -6,8 +6,9 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
-import { DatePickerVariantProps } from "./DatePicker";
+
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { DatePickerVariantProps } from "./DatePicker";
 import { CalendarVariants } from "./types";
 
 type StyledFieldProps = BoxProps &

@@ -1,4 +1,5 @@
 import { Brand } from "@vygruppen/spor-react";
+
 import { useMatchesData } from "./useMatchesData";
 
 export const useBrand = () => {

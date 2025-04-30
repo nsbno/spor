@@ -1,5 +1,4 @@
 "use client";
-import { choiceChipRecipe } from "@/theme/recipes/choice-chip";
 import {
   chakra,
   RecipeVariantProps,
@@ -8,6 +7,8 @@ import {
 } from "@chakra-ui/react";
 import { CloseOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { ChangeEvent, PropsWithChildren, useId } from "react";
+
+import { choiceChipRecipe } from "@/theme/recipes/choice-chip";
 
 type ChoiceChipVariantProps = RecipeVariantProps<typeof choiceChipRecipe>;
 

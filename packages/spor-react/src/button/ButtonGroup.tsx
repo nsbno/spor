@@ -1,12 +1,13 @@
 "use client";
 
 import {
-  type GroupProps as ChakraGroupProps,
-  Group as ChakraGroup,
-  type RecipeVariantProps,
   chakra,
+  Group as ChakraGroup,
+  type GroupProps as ChakraGroupProps,
+  type RecipeVariantProps,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
+
 import { groupRecipe } from "../theme/recipes/group";
 
 export type GroupVariantProps = RecipeVariantProps<typeof groupRecipe>;

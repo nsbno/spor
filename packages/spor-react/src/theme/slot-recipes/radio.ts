@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+
 import { radioAnatomy } from "./anatomy";
 
 export const radioGroupSlotRecipe = defineSlotRecipe({

@@ -1,11 +1,11 @@
 "use client";
 import {
   Box,
+  type BoxProps,
   ListItem,
   ListRootProps,
   RecipeVariantProps,
   useSlotRecipe,
-  type BoxProps,
 } from "@chakra-ui/react";
 import type { Node } from "@react-types/shared";
 import React, {
@@ -22,6 +22,7 @@ import {
   useOption,
 } from "react-aria";
 import { type ListState, type SelectState } from "react-stately";
+
 import { List } from "..";
 import { useColorModeValue } from "../color-mode";
 import { listBoxSlotRecipe } from "../theme/slot-recipes/listbox";
@@ -117,7 +118,7 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
  * Useful if you want to render a custom Item - especially if it has a description.
  */
 export function ItemLabel({ children }: { children: React.ReactNode }) {
-  let { labelProps } = useOptionContext();
+  const { labelProps } = useOptionContext();
   return <Box {...labelProps}>{children}</Box>;
 }
 
@@ -127,7 +128,7 @@ export function ItemLabel({ children }: { children: React.ReactNode }) {
  * Useful if you want to render a custom Item with more than just a label.
  */
 export function ItemDescription({ children }: { children: React.ReactNode }) {
-  let { descriptionProps } = useOptionContext();
+  const { descriptionProps } = useOptionContext();
   const recipe = useSlotRecipe({ key: "listbox" });
   const styles = recipe({});
   return (
@@ -156,7 +157,7 @@ function Option({ item, state }: OptionProps) {
   const recipe = useSlotRecipe({ key: "listBox" });
   const styles = recipe({});
 
-  let dataFields: Record<string, boolean> = {};
+  const dataFields: Record<string, boolean> = {};
   if (isSelected) {
     dataFields["data-selected"] = true;
   }

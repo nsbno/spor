@@ -1,5 +1,6 @@
 "use client";
 
+import { Alert as ChakraAlert,Box, useSlotRecipe } from "@chakra-ui/react";
 import {
   AltTransportFill24Icon,
   ErrorFill24Icon,
@@ -12,9 +13,9 @@ import {
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import React, { PropsWithChildren } from "react";
+
 import { createTexts, useTranslation } from "../i18n";
 import { AlertProps } from "./Alert";
-import { Box, useSlotRecipe, Alert as ChakraAlert } from "@chakra-ui/react";
 
 type AlertIconProps = {
   variant: ChakraAlert.RootProps["variant"];

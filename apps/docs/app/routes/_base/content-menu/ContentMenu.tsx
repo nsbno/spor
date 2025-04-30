@@ -1,16 +1,18 @@
 import { useLocation } from "@remix-run/react";
 import {
+  Accordion,
   AccordionItem,
   AccordionItemContent,
   AccordionItemTrigger,
-  Accordion,
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-import { useMenu } from "~/utils/useMenu";
-import { MenuItem } from "./MenuItem";
-import { forwardRef } from "react";
 import { Separator } from "@vygruppen/spor-react";
+import { forwardRef } from "react";
+
+import { useMenu } from "~/utils/useMenu";
+
+import { MenuItem } from "./MenuItem";
 
 export const ContentMenu = forwardRef<HTMLButtonElement>((_, ref) => {
   const menu = useMenu("side-menu");

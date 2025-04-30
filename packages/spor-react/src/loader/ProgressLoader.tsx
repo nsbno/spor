@@ -6,11 +6,12 @@ import {
   RecipeVariantProps,
   Text,
 } from "@chakra-ui/react";
-import React, { forwardRef, useId, useRef, useState, useEffect } from "react";
+import React, { forwardRef, useEffect,useId, useRef, useState } from "react";
 import { useProgressBar } from "react-aria";
+
 import { createTexts, useTranslation } from "..";
-import { useRotatingLabel } from "./useRotatingLabel";
 import { progressLoaderRecipe } from "../theme/recipes/progress-loader";
+import { useRotatingLabel } from "./useRotatingLabel";
 export type ProgressLoaderVariantProps = RecipeVariantProps<
   typeof progressLoaderRecipe
 >;

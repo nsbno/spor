@@ -8,6 +8,7 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren, useEffect } from "react";
+
 import { floatingActionButtonSlotRecipe } from "../theme/slot-recipes/floating-action-button";
 
 type FloatingActionButtonVariantProps = RecipeVariantProps<

@@ -1,4 +1,5 @@
 import { Flex, Input, NativeSelect } from "@vygruppen/spor-react";
+
 import { useSearchFilter } from "./SearchFilterContext";
 
 /**

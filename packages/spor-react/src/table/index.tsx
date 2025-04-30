@@ -1,23 +1,23 @@
-export {
-  TableCaption,
-  TableHeader,
-  TableRow,
-  TableColumn,
-  TableColumnHeader,
-  TableRoot,
-  TableBody,
-  TableCell,
-  TableFooter,
-} from "@chakra-ui/react";
+export * from "./Table";
 export type {
   TableBodyProps,
   TableCaptionProps,
   TableCellProps,
   TableColumnHeaderProps,
-  TableFooterProps,
-  TableRowProps,
-  TableHeaderProps,
   TableColumnProps,
+  TableFooterProps,
+  TableHeaderProps,
   TableRootProps,
+  TableRowProps,
 } from "@chakra-ui/react";
-export * from "./Table";
+export {
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableColumn,
+  TableColumnHeader,
+  TableFooter,
+  TableHeader,
+  TableRoot,
+  TableRow,
+} from "@chakra-ui/react";

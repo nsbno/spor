@@ -8,9 +8,11 @@ import {
   TableHeader,
   TableRow,
 } from "@vygruppen/spor-react";
+
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
-import { TokenColorKey, useDesignTokens } from "../utils/useDesignTokens";
+
 import { CopyTokenToClipBoard } from "../CopyTokenToClipBoard";
+import { TokenColorKey, useDesignTokens } from "../utils/useDesignTokens";
 
 type Props = {
   colorKey: TokenColorKey;

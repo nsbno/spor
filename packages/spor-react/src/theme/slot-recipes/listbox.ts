@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+
 import { listBoxAnatomy } from "./anatomy";
 
 export const listBoxSlotRecipe = defineSlotRecipe({

@@ -1,4 +1,5 @@
 import { defineRecipe } from "@chakra-ui/react";
+
 import { coreText } from "../utils/core-utils";
 
 export const linkRecipe = defineRecipe({

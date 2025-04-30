@@ -31,12 +31,12 @@ type IconMetadata = {
 };
 
 async function loadIcons() {
-  let icons: IconData[] = [];
+  const icons: IconData[] = [];
 
   const categories = await fs.readdir(SVG_PATH);
-  for (let category of categories) {
+  for (const category of categories) {
     const filesInCategory = await fs.readdir(`${SVG_PATH}/${category}`);
-    for (let fileName of filesInCategory) {
+    for (const fileName of filesInCategory) {
       const metadata = getMetadata({ fileName, category });
       const componentName = createComponentName(metadata);
 

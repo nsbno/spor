@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+
 import { datepickerAnatomy } from "./anatomy";
 
 export const datePickerSlotRecipe = defineSlotRecipe({

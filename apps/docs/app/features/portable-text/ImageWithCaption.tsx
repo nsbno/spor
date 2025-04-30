@@ -1,4 +1,5 @@
 import { Flex, Image, Stack } from "@vygruppen/spor-react";
+
 import { PortableText } from "./PortableText";
 
 type ImageWithCaptionProps = {

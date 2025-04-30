@@ -1,11 +1,12 @@
 "use client";
 import {
+  ConditionalValue,
   RecipeVariantProps,
   Switch as ChakraSwitch,
-  ConditionalValue,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
+
 import { switchSlotRecipe } from "../theme/slot-recipes/switch";
 import { Field } from "./Field";
 

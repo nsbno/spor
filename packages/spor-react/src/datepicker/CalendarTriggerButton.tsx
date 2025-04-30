@@ -4,6 +4,7 @@ import { BoxProps, PopoverAnchor, useSlotRecipe } from "@chakra-ui/react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { AriaButtonProps } from "react-aria";
+
 import {
   createTexts,
   DatePickerVariantProps,

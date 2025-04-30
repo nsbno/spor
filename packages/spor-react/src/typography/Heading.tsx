@@ -1,10 +1,11 @@
 "use client";
 import {
-  HeadingProps as ChakraHeadingProps,
   ConditionalValue,
+  HeadingProps as ChakraHeadingProps,
   Text,
 } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
+
 import { slugify } from "..";
 
 export type HeadingProps = Omit<ChakraHeadingProps, "textStyle" | "as"> & {

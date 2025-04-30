@@ -1,4 +1,5 @@
 import styleDictionary from "style-dictionary";
+
 import { cjsModuleFormatter } from "./formatters/typescript/cjs-module";
 import { esModuleFormatter } from "./formatters/typescript/es-module";
 import { reactNativeTypescriptTypingsFormatter } from "./formatters/typescript/rn-typings";

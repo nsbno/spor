@@ -1,7 +1,7 @@
 import { coreBackground, coreBorder, coreText } from "./core-utils";
 import { floatingBackground, floatingBorder } from "./floating-utils";
-import { InputState } from "./types";
 import { surface } from "./surface-utils";
+import { InputState } from "./types";
 
 export function inputVariant(state: InputState) {
   switch (state) {

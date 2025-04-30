@@ -1,6 +1,6 @@
-import { CopyOutline18Icon } from "@vygruppen/spor-icon-react";
-import { Text, Button } from "@vygruppen/spor-react";
 import { Clipboard, ClipboardRootProps } from "@chakra-ui/react";
+import { CopyOutline18Icon } from "@vygruppen/spor-icon-react";
+import { Button, Text } from "@vygruppen/spor-react";
 
 type Props = {
   children: React.ReactNode;

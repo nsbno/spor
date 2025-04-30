@@ -1,13 +1,12 @@
 "use client";
+import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
 import React from "react";
+
 import { Language, LanguageProvider, system, themes } from "..";
-
-import { Toaster } from "../toast/toast";
-
-import { Brand, fontFaces } from "../theme/brand";
-import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
 import { ColorModeProvider } from "../color-mode";
+import { Brand, fontFaces } from "../theme/brand";
+import { Toaster } from "../toast/toast";
 
 type SporProviderProps = Omit<ChakraProviderProps, "value"> & {
   language?: Language;

@@ -1,12 +1,13 @@
 "use client";
 import {
-  RecipeVariantProps,
   NativeSelect as ChakraNativeSelect,
+  RecipeVariantProps,
   useSlotRecipe,
   NativeSelectFieldProps as ChakraNativeSelectFieldProps,
 } from "@chakra-ui/react";
 import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
 import * as React from "react";
+
 import { nativeSelectSlotRecipe } from "../theme/slot-recipes/native-select";
 import { Field } from "./Field";
 

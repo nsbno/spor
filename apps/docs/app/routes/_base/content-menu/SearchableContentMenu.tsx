@@ -1,5 +1,6 @@
 import { Box } from "@vygruppen/spor-react";
 import React from "react";
+
 import { ContentMenu } from "./ContentMenu";
 
 export const SearchableContentMenu = () => {

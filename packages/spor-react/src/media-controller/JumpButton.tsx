@@ -5,12 +5,13 @@ import {
   RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
-import { createTexts, useTranslation } from "..";
 import {
   Backward15MediaControllerFill30Icon,
   Forward15MediaControllerFill30Icon,
 } from "@vygruppen/spor-icon-react";
+import React, { forwardRef, PropsWithChildren } from "react";
+
+import { createTexts, useTranslation } from "..";
 import { mediaControllerSlotRecipe } from "../theme/slot-recipes/media-controller-button";
 
 export type MediaControllerVariantProps = RecipeVariantProps<

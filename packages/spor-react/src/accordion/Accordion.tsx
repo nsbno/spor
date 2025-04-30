@@ -1,20 +1,21 @@
 "use client";
 
 import {
-  Box,
   Accordion as ChakraAccordion,
+  Box,
   HStack,
   Stack,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import { DropdownDownFill24Icon } from "@vygruppen/spor-icon-react";
 import React, { forwardRef } from "react";
-import {
-  AccordionProps,
-  AccordionItemTriggerProps,
-  AccordionItemContentProps,
-} from "./types";
+
 import { warnAboutMismatchingIcon } from "./helpers";
+import {
+  AccordionItemContentProps,
+  AccordionItemTriggerProps,
+  AccordionProps,
+} from "./types";
 
 /*
  * Wraps a set of AccordionItem or AccordionItem components.

@@ -1,4 +1,17 @@
 "use client";
+import {
+  PopoverCloseTrigger,
+  usePopover,
+  usePopoverContext,
+} from "@ark-ui/react";
+import {
+  Box,
+  BoxProps,
+  chakra,
+  Popover as ChakraPopover,
+  PopoverRootProps,
+} from "@chakra-ui/react";
+import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React, {
   forwardRef,
   PropsWithChildren,
@@ -6,6 +19,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+
 import {
   Button,
   createTexts,
@@ -17,20 +31,6 @@ import {
   useColorMode,
   useTranslation,
 } from "..";
-
-import {
-  Box,
-  BoxProps,
-  chakra,
-  Popover as ChakraPopover,
-  PopoverRootProps,
-} from "@chakra-ui/react";
-import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
-import {
-  PopoverCloseTrigger,
-  usePopover,
-  usePopoverContext,
-} from "@ark-ui/react";
 
 const EXPIRATION_DELAY_MS = 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
 

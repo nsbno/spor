@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+
 import { linjetagAnatomy } from "./anatomy";
 
 export const lineIconSlotRecipe = defineSlotRecipe({

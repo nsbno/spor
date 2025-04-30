@@ -7,6 +7,10 @@
 
     "typegen": {},
 
+    "lint": {
+      "outputs": [],
+      "cache": false
+    },
     "build": {
       "dependsOn": ["typegen", "^build"],
       "outputs": ["dist/**", "public/build/**"]

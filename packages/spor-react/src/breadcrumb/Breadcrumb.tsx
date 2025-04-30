@@ -1,14 +1,14 @@
 "use client";
 
-import React, { forwardRef } from "react";
 import {
   Breadcrumb as ChakraBreadcrumb,
-  BreadcrumbRootProps,
-  BreadcrumbLink as ChakraBreadcrumbLink,
   BreadcrumbCurrentLink as ChakraBreadcrumbCurrentLink,
   BreadcrumbEllipsis as ChakraBreadcrumbEllipsis,
+  BreadcrumbLink as ChakraBreadcrumbLink,
+  BreadcrumbRootProps,
 } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
+import React, { forwardRef } from "react";
 /**
  * A breadcrumb component.
  *

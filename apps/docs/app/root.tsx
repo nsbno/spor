@@ -1,32 +1,34 @@
+import "./styles/style-overrides.css";
+
 import { withEmotionCache } from "@emotion/react";
 import {
   ActionFunctionArgs,
+  data,
   LinksFunction,
   LoaderFunctionArgs,
-  data,
 } from "@remix-run/node";
 import {
+  isRouteErrorResponse,
   Links,
   Meta,
   MetaFunction,
   Outlet,
   Scripts,
   ScrollRestoration,
-  isRouteErrorResponse,
   useLoaderData,
   useRouteError,
 } from "@remix-run/react";
 import { Brand, Language, SporProvider } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect, useRef } from "react";
-import { PageNotFound } from "./root/PageNotFound";
+
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";
+import { PageNotFound } from "./root/PageNotFound";
 import {
   ClientStyleContext,
   ServerStyleContext,
 } from "./root/setup/chakra-setup/styleContext";
 import { RootErrorBoundary } from "./root/setup/error-boundary/RootErrorBoundary";
-import "./styles/style-overrides.css";
 import {
   getBrandFromCookie,
   setBrandInCookie,

@@ -7,7 +7,8 @@
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev",
-    "start": "remix-serve ./build/server/index.js"
+    "start": "remix-serve ./build/server/index.js",
+    "lint": "eslint . --ignore-pattern '.build/*' "
   },
   "type": "module",
   "dependencies": {
@@ -50,8 +51,9 @@
     "@types/archiver": "^5.3.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@vygruppen/eslint-config": "workspace:*",
     "config": "^3.3.11",
-    "eslint": "7.32.0",
+    "eslint": "9.25.1",
     "shiki": "^1.24.3",
     "tsconfig": "^7.0.0",
     "typescript": "^5.0.4",

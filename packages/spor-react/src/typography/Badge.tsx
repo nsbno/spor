@@ -1,9 +1,8 @@
 "use client";
-
 import {
-  Box,
   Badge as ChakraBadge,
   BadgeProps as ChakraBadgeProps,
+  Box,
 } from "@chakra-ui/react";
 import { IconComponent } from "@vygruppen/spor-icon-react";
 import React, { forwardRef } from "react";

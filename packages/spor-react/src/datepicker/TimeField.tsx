@@ -1,9 +1,10 @@
 "use client";
 import { Box, Flex } from "@chakra-ui/react";
 import { CalendarDateTime, Time } from "@internationalized/date";
+import { TimeFieldState } from "@react-stately/datepicker";
 import React, { useRef } from "react";
 import { AriaTimeFieldProps, useTimeField } from "react-aria";
-import { TimeFieldState } from "@react-stately/datepicker";
+
 import { DateTimeSegment } from "./DateTimeSegment";
 import { getTimestampFromTime } from "./utils";
 

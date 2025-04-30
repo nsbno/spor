@@ -9,6 +9,7 @@ import React, {
 } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
+
 import { ColorSpinner, Input, InputProps, ListBox } from "..";
 import { Popover } from "./Popover";
 

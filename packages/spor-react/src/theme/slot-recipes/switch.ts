@@ -1,6 +1,7 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { switchAnatomy } from "./anatomy";
 import tokens from "@vygruppen/spor-design-tokens";
+
+import { switchAnatomy } from "./anatomy";
 
 export const switchSlotRecipe = defineSlotRecipe({
   slots: switchAnatomy.keys(),

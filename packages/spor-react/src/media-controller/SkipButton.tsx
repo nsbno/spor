@@ -1,11 +1,12 @@
 "use client";
 import { BoxProps, Center, useSlotRecipe } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
-import { createTexts, MediaControllerVariantProps, useTranslation } from "..";
 import {
   NextMediaControllerFill30Icon,
   PreviousMediaControllerFill30Icon,
 } from "@vygruppen/spor-icon-react";
+import React, { forwardRef, PropsWithChildren } from "react";
+
+import { createTexts, MediaControllerVariantProps, useTranslation } from "..";
 
 type SkipButtonProps = BoxProps &
   PropsWithChildren<MediaControllerVariantProps> & {

@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+
 import { travelTagAnatomy } from "./anatomy";
 
 export const travelTagSlotRecipe = defineSlotRecipe({

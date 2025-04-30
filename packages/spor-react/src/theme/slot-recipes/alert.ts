@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+
 import { alertAnatomy } from "./anatomy";
 
 const createVariant = (variant: string) => ({

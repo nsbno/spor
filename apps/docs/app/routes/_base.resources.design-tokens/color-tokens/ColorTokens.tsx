@@ -1,9 +1,10 @@
 import { BoxProps, Stack, Text } from "@vygruppen/spor-react";
-import { SharedTokenLayout } from "../SharedTokenLayout";
 
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
-import { PaletteTable } from "./PaletteTable";
+
+import { SharedTokenLayout } from "../SharedTokenLayout";
 import { ColorTable } from "./ColorTable";
+import { PaletteTable } from "./PaletteTable";
 
 export function ColorTokens(props: BoxProps) {
   return (

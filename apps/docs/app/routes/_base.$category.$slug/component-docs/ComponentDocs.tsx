@@ -10,9 +10,11 @@ import {
   TableHeader,
   TableRow,
 } from "@vygruppen/spor-react";
+
 import { PortableText } from "~/features/portable-text/PortableText";
-import { LinkableHeading } from "../../../features/portable-text/LinkableHeading";
+
 import { CodeBlock } from "../../../features/portable-text/code-block/CodeBlock";
+import { LinkableHeading } from "../../../features/portable-text/LinkableHeading";
 
 type ComponentDocsProps = {
   component: {

@@ -1,6 +1,6 @@
 import {
-  PortableTextReactComponents,
   PortableText as SanityPortableText,
+  PortableTextReactComponents,
 } from "@portabletext/react";
 import { Link } from "@remix-run/react";
 import {
@@ -12,25 +12,27 @@ import {
   Box,
   Button,
   Code,
-  Separator,
   Flex,
   Heading,
   Image,
+  List,
+  ListItem,
+  Separator,
   SimpleGrid,
   StaticCard,
   Text,
   TextLink,
-  List,
-  ListItem,
 } from "@vygruppen/spor-react";
 import deepmerge from "deepmerge";
 import React from "react";
+
 import { urlBuilder } from "~/utils/sanity/utils";
+
 import { ComponentDocs } from "../../routes/_base.$category.$slug/component-docs/ComponentDocs";
-import { ImageWithCaption } from "./ImageWithCaption";
-import { LinkableHeading } from "./LinkableHeading";
 import { CodeBlock } from "./code-block/CodeBlock";
+import { ImageWithCaption } from "./ImageWithCaption";
 import { InteractiveCode } from "./interactive-code/InteractiveCode";
+import { LinkableHeading } from "./LinkableHeading";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {

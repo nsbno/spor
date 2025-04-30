@@ -2,6 +2,7 @@
 import { useSlotRecipe } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React, { PropsWithChildren } from "react";
+
 import { Box, Button, Text } from "..";
 import { StepperVariantProps } from "./Stepper";
 import { useStepper } from "./StepperContext";

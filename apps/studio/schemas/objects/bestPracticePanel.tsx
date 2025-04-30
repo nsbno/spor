@@ -1,6 +1,7 @@
 import { Box, Card, Flex, Grid, Heading, Text } from "@sanity/ui";
 import { MdCheck, MdNotInterested } from "react-icons/md";
 import { defineField, defineType } from "sanity";
+
 import { portableTextToText } from "../../utils/portableTextToText";
 
 export const bestPracticePanel = defineType({

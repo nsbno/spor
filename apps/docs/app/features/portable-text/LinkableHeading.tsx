@@ -6,6 +6,7 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { Heading, HeadingProps, IconButton } from "@vygruppen/spor-react";
 import React from "react";
+
 import { slugify } from "~/utils/stringUtils";
 
 type LinkableHeadingProps = HeadingProps;

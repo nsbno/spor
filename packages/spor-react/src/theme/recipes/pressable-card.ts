@@ -1,5 +1,6 @@
-import { defineRecipe } from "../../util";
 import tokens from "@vygruppen/spor-design-tokens";
+
+import { defineRecipe } from "../../util";
 
 export const pressableCardRecipe = defineRecipe({
   base: {

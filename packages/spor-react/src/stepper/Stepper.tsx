@@ -2,9 +2,10 @@
 import { Flex, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
 import { ArrowLeftFill24Icon } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, PropsWithChildren } from "react";
-import { StepperStep } from ".";
+
 import { Box, createTexts, IconButton, Text, useTranslation } from "..";
 import { stepperSlotRecipe } from "../theme/slot-recipes/stepper";
+import { StepperStep } from ".";
 import { StepperProvider } from "./StepperContext";
 
 export type StepperVariantProps = RecipeVariantProps<typeof stepperSlotRecipe>;

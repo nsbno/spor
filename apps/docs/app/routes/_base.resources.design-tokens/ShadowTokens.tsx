@@ -9,9 +9,10 @@ import {
   TableRow,
   Text,
 } from "@vygruppen/spor-react";
+
+import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 import { useDesignTokens } from "./utils";
-import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 
 export const ShadowTokens = () => (
   <SharedTokenLayout

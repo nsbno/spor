@@ -1,8 +1,9 @@
 "use client";
 
-import type { InputElementProps, GroupProps } from "@chakra-ui/react";
+import type { GroupProps, InputElementProps } from "@chakra-ui/react";
 import { Group, InputElement } from "@chakra-ui/react";
 import * as React from "react";
+
 import { FieldLabel } from "./Field";
 
 export type InputGroupProps = GroupProps & {

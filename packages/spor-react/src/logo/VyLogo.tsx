@@ -1,5 +1,6 @@
 import { Box, BoxProps, chakra, Icon } from "@chakra-ui/react";
 import React, { forwardRef, SVGProps, useId } from "react";
+
 import { useColorMode } from "..";
 
 export const SvgBox = chakra("svg");

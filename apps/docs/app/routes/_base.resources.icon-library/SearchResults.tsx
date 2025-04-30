@@ -17,16 +17,18 @@ import {
 } from "@vygruppen/spor-react";
 import { memo, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
+
 import { NotFoundIllustration } from "../../features/illustrations/NotFoundIllustration";
-import { SearchFilter, useSearchFilter } from "./SearchFilterContext";
 import {
   getIconByImportName,
   IconMetadata,
   IconsByCategory,
   iconsByCategory,
 } from "./iconsData";
+import { SearchFilter, useSearchFilter } from "./SearchFilterContext";
 
 /**
  * Shows the current search results

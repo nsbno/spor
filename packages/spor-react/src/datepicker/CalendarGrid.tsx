@@ -1,16 +1,17 @@
 "use client";
 
+import { Box, useSlotRecipe } from "@chakra-ui/react";
 import { endOfMonth, getWeeksInMonth } from "@internationalized/date";
 import React from "react";
 import { AriaCalendarGridProps, useCalendarGrid } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
+
 import { Language, useTranslation } from "../i18n";
+import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { Text } from "../typography";
 import { CalendarCell } from "./CalendarCell";
-import { useCurrentLocale } from "./utils";
-import { Box, useSlotRecipe } from "@chakra-ui/react";
-import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { CalendarVariants } from "./types";
+import { useCurrentLocale } from "./utils";
 
 const weekDays: Record<Language, string[]> = {
   nb: ["Ma", "Ti", "On", "To", "Fr", "Lø", "Sø"],

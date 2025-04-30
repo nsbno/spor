@@ -2,6 +2,7 @@ import { codeInput } from "@sanity/code-input";
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
+
 import VyLogo from "./components/VyLogo";
 import { structure } from "./desk/structure";
 import { schemaTypes } from "./schemas";

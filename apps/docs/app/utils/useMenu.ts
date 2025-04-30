@@ -1,5 +1,5 @@
-import { useMatchesData } from "./useMatchesData";
 import { MenuItem } from "./initialSanityData.server";
+import { useMatchesData } from "./useMatchesData";
 
 type Menu = {
   slug: string;

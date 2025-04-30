@@ -19,11 +19,13 @@ import {
   IconButton,
   Stack,
   Text,
-  VyLogo,
   useDisclosure,
+  VyLogo,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
+
 import { loader } from "~/root";
+
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
 import { SearchDocs } from "./SearchDocs";
 import { SiteSettings } from "./SiteSettings";

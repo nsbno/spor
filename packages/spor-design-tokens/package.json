@@ -13,7 +13,8 @@
   "types": "./dist/tokens.d.ts",
   "scripts": {
     "build": "tsx scripts/build.ts",
-    "dev": "chokidar 'scripts/**/*' 'tokens/**/*' -c 'pnpm build'"
+    "dev": "chokidar 'scripts/**/*' 'tokens/**/*' -c 'pnpm build'",
+    "lint": "eslint ."
   },
   "files": [
     "dist",
@@ -25,7 +26,9 @@
   "devDependencies": {
     "@types/node": "^22.13.4",
     "@vygruppen/tsconfig": "workspace:*",
+    "@vygruppen/eslint-config": "workspace:*",
     "chokidar-cli": "^3.0.0",
+    "eslint": "9.25.1",
     "json-to-ts": "^1.7.0",
     "patch-package": "^6.4.7",
     "prettier": "^2.4.1",

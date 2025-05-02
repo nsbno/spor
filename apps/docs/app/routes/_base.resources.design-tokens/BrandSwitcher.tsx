@@ -1,3 +1,4 @@
+import { useFetcher } from "@remix-run/react";
 import {
   Brand,
   Heading,
@@ -7,7 +8,6 @@ import {
   TabsTrigger,
 } from "@vygruppen/spor-react";
 
-import { useFetcher } from "@remix-run/react";
 import { useBrand } from "~/utils/brand";
 
 export const BrandSwitcher = () => {

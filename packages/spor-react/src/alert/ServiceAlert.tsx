@@ -10,15 +10,16 @@ import {
   Text,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
-import { AlertProps } from "./Alert";
-import { createTexts, useTranslation } from "../i18n";
-import { alertServiceSlotRecipe } from "../theme/slot-recipes/alert-service";
 import {
   DropdownDownFill24Icon,
   ServiceFill24Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
+import React, { forwardRef, PropsWithChildren } from "react";
+
+import { createTexts, useTranslation } from "../i18n";
+import { alertServiceSlotRecipe } from "../theme/slot-recipes/alert-service";
+import { AlertProps } from "./Alert";
 
 type ServiceAlertVariantProps = RecipeVariantProps<
   typeof alertServiceSlotRecipe

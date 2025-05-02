@@ -1,6 +1,7 @@
 import tokensJSON from "@vygruppen/spor-design-tokens/dist/tokens.json";
 import { Brand, useColorMode } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
+
 import { useBrand } from "~/utils/brand";
 
 export type Palette = {

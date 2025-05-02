@@ -27,6 +27,7 @@ import {
   useColorMode,
 } from "@vygruppen/spor-react";
 import { useMemo, useState } from "react";
+
 import { PortableText } from "~/features/portable-text/PortableText";
 import { useBrand } from "~/utils/brand";
 import { getClient } from "~/utils/sanity/client";

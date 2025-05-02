@@ -10,10 +10,12 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import { Fragment } from "react";
+
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
+
+import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 import { remToPx, useDesignTokens } from "./utils";
-import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 
 export const TypographyTokens = () => (
   <SharedTokenLayout

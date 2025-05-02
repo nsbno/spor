@@ -8,11 +8,13 @@ import {
 } from "@vygruppen/spor-icon-react";
 import React from "react";
 import { useTimeFieldState } from "react-stately";
-import { IconButton, createTexts, useTranslation } from "..";
+
+import { Field } from "@/input/Field";
+
+import { createTexts, IconButton, useTranslation } from "..";
 import { StyledField } from "./StyledField";
 import { TimeField } from "./TimeField";
 import { getCurrentTime, useCurrentLocale } from "./utils";
-import { Field } from "@/input/Field";
 
 type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> & {
   /** The label. Defaults to a localized version of "Time" */

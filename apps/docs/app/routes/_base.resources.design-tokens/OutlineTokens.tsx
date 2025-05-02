@@ -7,9 +7,10 @@ import {
   TableHeader,
   TableRow,
 } from "@vygruppen/spor-react";
+
+import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 import { SharedTokenLayout } from "./SharedTokenLayout";
 import { remToPx, useDesignTokens } from "./utils";
-import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
 
 export const OutlineTokens = () => (
   <SharedTokenLayout title="Outlines">

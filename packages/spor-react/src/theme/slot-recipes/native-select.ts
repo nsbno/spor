@@ -1,7 +1,8 @@
-import { coreText } from "../utils/core-utils";
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { NativeSelectAnatomy } from "./anatomy";
+
 import { inputRecipe } from "../recipes/input";
+import { coreText } from "../utils/core-utils";
+import { NativeSelectAnatomy } from "./anatomy";
 
 export const nativeSelectSlotRecipe = defineSlotRecipe({
   slots: NativeSelectAnatomy.keys(),

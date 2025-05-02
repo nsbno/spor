@@ -1,12 +1,14 @@
 import { Clipboard as ChakraClipboard } from "@chakra-ui/react";
-import * as React from "react";
-import { createTexts, useTranslation } from "@/i18n";
 import {
   CheckmarkFill18Icon,
   CopyOutline18Icon,
 } from "@vygruppen/spor-icon-react";
-import { Button, ButtonProps } from "./Button";
+import * as React from "react";
+
+import { createTexts, useTranslation } from "@/i18n";
 import { Text } from "@/typography";
+
+import { Button, ButtonProps } from "./Button";
 
 /**
  *

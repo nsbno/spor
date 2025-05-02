@@ -11,17 +11,18 @@ import {
   Brand,
   Button,
   Flex,
-  HStack,
   Heading,
-  TabsList,
+  HStack,
+  Separator,
   Stack,
   Tabs,
-  Text,
-  TabsTrigger,
-  Separator,
   TabsContent,
+  TabsList,
+  TabsTrigger,
+  Text,
 } from "@vygruppen/spor-react";
 import invariant from "tiny-invariant";
+
 import { PortableText } from "~/features/portable-text/PortableText";
 import { ComponentDocs } from "~/routes/_base.$category.$slug/component-docs/ComponentDocs";
 import { useBrand } from "~/utils/brand";

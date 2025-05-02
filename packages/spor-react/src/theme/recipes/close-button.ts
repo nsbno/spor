@@ -1,4 +1,5 @@
 import { defineRecipe } from "@chakra-ui/react";
+
 import { ghostBackground } from "../utils/ghost-utils";
 
 export const closeButtonRecipe = defineRecipe({

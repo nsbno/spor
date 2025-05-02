@@ -1,6 +1,7 @@
-import { drawerSlotRecipe } from "@/theme/slot-recipes/drawer";
-import { RecipeVariantProps, Drawer as ChakraDrawer } from "@chakra-ui/react";
+import { Drawer as ChakraDrawer, RecipeVariantProps } from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
+
+import { drawerSlotRecipe } from "@/theme/slot-recipes/drawer";
 
 export type DrawerVariantProps = RecipeVariantProps<typeof drawerSlotRecipe>;
 

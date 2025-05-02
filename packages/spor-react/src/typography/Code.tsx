@@ -1,12 +1,13 @@
 "use client";
 
-import React from "react"; // Added explicit React import
 import {
   chakra,
   Code as ChakraCode,
   CodeProps,
   RecipeVariantProps,
 } from "@chakra-ui/react";
+import React from "react"; // Added explicit React import
+
 import { codeRecipie } from "../theme/recipes/code";
 
 type CodeVariantProps = RecipeVariantProps<typeof codeRecipie> & CodeProps;

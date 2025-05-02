@@ -2,16 +2,17 @@
 
 import {
   Box,
-  Pagination as ChakraPagination,
   createContext,
+  Pagination as ChakraPagination,
   usePaginationContext,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import * as React from "react";
 import {
-  DropdownRightOutline18Icon,
   DropdownLeftOutline18Icon,
+  DropdownRightOutline18Icon,
 } from "@vygruppen/spor-icon-react";
+import * as React from "react";
+
 import { createTexts, List, ListItem, useTranslation } from "..";
 import { ButtonVariantContext, PaginationRootProps } from "./types";
 

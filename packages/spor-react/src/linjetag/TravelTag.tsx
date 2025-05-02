@@ -14,9 +14,10 @@ import {
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, PropsWithChildren } from "react";
+
+import { travelTagSlotRecipe } from "../theme/slot-recipes/travel-tag";
 import { LineIcon } from "./LineIcon";
 import type { TagProps } from "./types";
-import { travelTagSlotRecipe } from "../theme/slot-recipes/travel-tag";
 
 type TravelTagVariantProps = RecipeVariantProps<typeof travelTagSlotRecipe>;
 

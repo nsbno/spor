@@ -1,11 +1,11 @@
 "use client";
 
 import {
+  FieldLabel,
   RecipeVariantProps,
-  useRecipe,
   Textarea as ChakraTextarea,
   TextareaProps as ChakraTextareaProps,
-  FieldLabel,
+  useRecipe,
 } from "@chakra-ui/react";
 import React, {
   forwardRef,
@@ -15,6 +15,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+
 import { textareaRecipe } from "../theme/recipes/textarea";
 import { Field, FieldProps } from "./Field";
 

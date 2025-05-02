@@ -1,14 +1,15 @@
 "use client";
 
 import React, { forwardRef } from "react";
+
 import {
   Accordion,
   AccordionItem,
   AccordionItemContent,
   AccordionItemTrigger,
 } from "./Accordion";
-import { ExpandableItemProps, ExpandableProps } from "./types";
 import { warnAboutMismatchingIcon } from "./helpers";
+import { ExpandableItemProps, ExpandableProps } from "./types";
 
 /**
  * A standalone expandable component.

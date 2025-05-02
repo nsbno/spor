@@ -1,5 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import tokens from "@vygruppen/spor-design-tokens";
+
 import { brandBackground, brandText } from "../utils/brand-utils";
 import { coreBackground, coreText } from "../utils/core-utils";
 import { checkboxAnatomy } from "./anatomy";

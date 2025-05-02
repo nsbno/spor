@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+
 import { dialogAnatomy } from "./anatomy";
 
 export const dialogSlotRecipe = defineSlotRecipe({

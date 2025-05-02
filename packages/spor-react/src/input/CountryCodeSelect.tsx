@@ -3,11 +3,12 @@
 import { createListCollection } from "@chakra-ui/react";
 import { getSupportedCallingCodes } from "awesome-phonenumber";
 import React, { forwardRef } from "react";
+
 import {
+  createTexts,
   Select,
   SelectItem,
   SelectProps,
-  createTexts,
   useTranslation,
 } from "..";
 

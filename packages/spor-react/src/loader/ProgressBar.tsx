@@ -2,11 +2,12 @@
 import {
   BoxProps,
   Progress,
-  UseProgressProps,
   RecipeVariantProps,
+  UseProgressProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
+
 import { progressBarRecipe } from "../theme/slot-recipes/progress-bar";
 import { useRotatingLabel } from "./useRotatingLabel";
 

@@ -1,5 +1,6 @@
 import type { GroqStore, Subscription } from "@sanity/groq-store";
 import { useEffect } from "react";
+
 import { sanityConfig } from "./config";
 
 type UsePreviewSubscriptionArgs<T> = {

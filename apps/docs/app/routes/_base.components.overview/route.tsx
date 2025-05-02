@@ -1,12 +1,13 @@
 import { Link, useLoaderData } from "@remix-run/react";
 import {
   Box,
-  PressableCard,
   Heading,
   Image,
+  PressableCard,
   SimpleGrid,
   useColorModeValue,
 } from "@vygruppen/spor-react";
+
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";

@@ -1,6 +1,7 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { breadcrumbAnatomy } from "./anatomy";
 import tokens from "@vygruppen/spor-design-tokens";
+
+import { breadcrumbAnatomy } from "./anatomy";
 
 export const breadcrumbSlotRecipe = defineSlotRecipe({
   slots: breadcrumbAnatomy.keys(),

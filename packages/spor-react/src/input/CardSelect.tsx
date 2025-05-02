@@ -1,15 +1,16 @@
 "use client";
 import {
-  PopoverRootProps,
-  usePopoverContext,
-  Portal,
   Popover as ChakraPopover,
+  PopoverRootProps,
+  Portal,
+  usePopoverContext,
 } from "@chakra-ui/react";
 import {
   DropdownDownFill18Icon,
   DropdownDownFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, ReactNode } from "react";
+
 import { Button, ButtonProps, StaticCard, StaticCardProps } from "..";
 
 export const CardSelect = ({ size = "md", ...props }: PopoverRootProps) => {

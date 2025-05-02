@@ -5,11 +5,12 @@ import {
   type EntryContext,
 } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
+import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
+import { PassThrough } from "stream";
+
 import { createEmotionCache } from "./root/setup/chakra-setup/createEmotionCache";
 import { ServerStyleContext } from "./root/setup/chakra-setup/styleContext";
-import { PassThrough } from "stream";
-import { isbot } from "isbot";
 
 const streamTimeout = 15000;
 

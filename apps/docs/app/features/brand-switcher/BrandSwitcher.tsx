@@ -1,5 +1,6 @@
 import { useFetcher } from "@remix-run/react";
 import { NativeSelect } from "@vygruppen/spor-react";
+
 import { useBrand } from "~/utils/brand";
 
 export const BrandSwitcher = () => {

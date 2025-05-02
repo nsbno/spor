@@ -1,3 +1,4 @@
+import tokensJSON from "@vygruppen/spor-design-tokens/dist/tokens.json";
 import {
   Badge,
   Box,
@@ -9,12 +10,12 @@ import {
   TableHeader,
   TableRow,
 } from "@vygruppen/spor-react";
-import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 
-import tokensJSON from "@vygruppen/spor-design-tokens/dist/tokens.json";
-import { useDesignTokens } from "../utils/useDesignTokens";
+import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 import { capitalizeFirstLetter } from "~/utils/stringUtils";
+
 import { CopyTokenToClipBoard } from "../CopyTokenToClipBoard";
+import { useDesignTokens } from "../utils/useDesignTokens";
 
 type Props = {
   colorKey: keyof typeof tokensJSON.color.palette;

@@ -1,5 +1,6 @@
 import { defineTokens } from "@chakra-ui/react";
 import tokens from "@vygruppen/spor-design-tokens";
+
 import { spacing } from "./spacing";
 
 export const largeSizes = defineTokens.sizes({

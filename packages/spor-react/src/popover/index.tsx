@@ -1,13 +1,14 @@
 "use client";
 
-import { CloseButton } from "@/button";
-import { useColorMode } from "@/color-mode";
 import {
-  Portal,
   Popover as ChakraPopover,
+  Portal,
   usePopoverContext,
 } from "@chakra-ui/react";
 import React, { forwardRef, useEffect } from "react";
+
+import { CloseButton } from "@/button";
+import { useColorMode } from "@/color-mode";
 
 export const Popover = ChakraPopover.Root;
 

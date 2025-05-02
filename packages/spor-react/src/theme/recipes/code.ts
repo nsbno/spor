@@ -1,4 +1,5 @@
 import { defineRecipe } from "@chakra-ui/react";
+
 import { badgeRecipie } from "./badge";
 
 export const codeRecipie = defineRecipe({

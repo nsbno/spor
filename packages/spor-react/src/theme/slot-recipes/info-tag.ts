@@ -1,7 +1,8 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import { travelTagSlotRecipe } from "./travel-tag";
-import { infoTagAnatomy } from "./anatomy";
+
 import { coreBorder } from "../utils/core-utils";
+import { infoTagAnatomy } from "./anatomy";
+import { travelTagSlotRecipe } from "./travel-tag";
 
 export const infoTagSlotRecipe = defineSlotRecipe({
   slots: infoTagAnatomy.keys(),

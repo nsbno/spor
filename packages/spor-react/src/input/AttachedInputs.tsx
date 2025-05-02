@@ -1,8 +1,10 @@
 "use client";
 
-import React, { forwardRef, PropsWithChildren } from "react";
 import { chakra, Group, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
+import React, { forwardRef, PropsWithChildren } from "react";
+
 import { attachedInputsRecipe } from "@/theme/recipes/attached-inputs";
+
 import { InputGroupProps } from "./InputGroup";
 
 /**

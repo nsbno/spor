@@ -1,4 +1,9 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+
+import tokens from "@vygruppen/spor-design-tokens";
+
+import { alertSlotRecipe } from "./alert";
+
 import { alertExpandableAnatomy } from "./anatomy";
 
 export const alertExpandableSlotRecipe = defineSlotRecipe({

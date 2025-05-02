@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-react",
-  "version": "12.0.1",
+  "version": "12.0.3",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -11,7 +11,8 @@
     "dev": "tsup --watch",
     "typegen": "npx @chakra-ui/cli typegen src/theme/index.ts",
     "typegen:watch": "npx @chakra-ui/cli typegen src/theme/index.ts --watch",
-    "typegen:strict": "npx @chakra-ui/cli typegen /src/theme/index.ts --strict"
+    "typegen:strict": "npx @chakra-ui/cli typegen /src/theme/index.ts --strict",
+    "lint": "eslint ."
   },
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-react",
   "repository": {
@@ -20,9 +21,9 @@
     "directory": "packages/spor-react"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.9.0",
     "@ark-ui/react": "^4.9.2",
     "@chakra-ui/anatomy": "^2.3.4",
+    "@chakra-ui/react": "^3.9.0",
     "@chakra-ui/react-use-size": "^2.1.0",
     "@chakra-ui/styled-system": "^2.12.0",
     "@chakra-ui/system": "^2.6.2",
@@ -55,7 +56,9 @@
     "@types/node": "^22.13.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@vygruppen/eslint-config": "workspace:*",
     "@vygruppen/tsconfig": "workspace:*",
+    "eslint": "^9.25.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tsup": "^7.2.0",

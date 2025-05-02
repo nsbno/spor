@@ -2,9 +2,10 @@ import { Link } from "@remix-run/react";
 import {
   Flex,
   TextLink,
-  VyLogo,
   useColorModeValue,
+  VyLogo,
 } from "@vygruppen/spor-react";
+
 import { useMenu } from "~/utils/useMenu";
 
 export const Footer = () => {

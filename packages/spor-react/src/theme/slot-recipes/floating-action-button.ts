@@ -1,5 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import tokens from "@vygruppen/spor-design-tokens";
+
 import { floatingActionButtonAnatomy } from "./anatomy";
 
 export const floatingActionButtonSlotRecipe = defineSlotRecipe({

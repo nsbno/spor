@@ -1,14 +1,16 @@
 "use client";
 
-import { inputRecipe } from "@/theme/recipes/input";
 import {
   chakra,
-  InputProps as ChakraInputProps,
-  useRecipe,
-  type RecipeVariantProps,
   Input as ChakraInput,
+  InputProps as ChakraInputProps,
+  type RecipeVariantProps,
+  useRecipe,
 } from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
+
+import { inputRecipe } from "@/theme/recipes/input";
+
 import { Field, FieldProps } from "./Field";
 import { InputGroup } from "./InputGroup";
 

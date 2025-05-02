@@ -49,7 +49,7 @@ export const NavigationLink = ({ children, href }: NavigationItemProps) => {
 };
 
 const useIsActive = (to: string, end: boolean = false) => {
-  let resolved = useResolvedPath(to);
+  const resolved = useResolvedPath(to);
   const matches = useMatches();
   // TODO: This doesn't really work for nested routes
   // See if there's a way we can fix this

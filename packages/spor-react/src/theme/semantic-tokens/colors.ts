@@ -1,7 +1,7 @@
 import { defineSemanticTokens } from "@chakra-ui/react";
+import cargonetJson from "@vygruppen/spor-design-tokens/tokens/color/cargonet.json";
 import vyDigitalJson from "@vygruppen/spor-design-tokens/tokens/color/vy-digital.json";
 import VyUtviklingJson from "@vygruppen/spor-design-tokens/tokens/color/vy-utvikling.json";
-import cargonetJson from "@vygruppen/spor-design-tokens/tokens/color/cargonet.json";
 
 export enum Brand {
   VyDigital = "VyDigital",

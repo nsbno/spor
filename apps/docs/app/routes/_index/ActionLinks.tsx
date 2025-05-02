@@ -3,9 +3,9 @@ import {
   ComponentsOutline30Icon,
   GuidelinesOutline30Icon,
   HomeOutline30Icon,
+  StarsOutline30Icon,
   TokensOutline30Icon,
   TrainOutline30Icon,
-  StarsOutline30Icon,
 } from "@vygruppen/spor-icon-react";
 import {
   Box,

@@ -1,7 +1,8 @@
+import { defineSlotRecipe } from "@chakra-ui/react";
+
 import { coreBorder, coreText } from "../utils/core-utils";
 import { floatingBackground, floatingBorder } from "../utils/floating-utils";
 import { ghostBackground } from "../utils/ghost-utils";
-import { defineSlotRecipe } from "@chakra-ui/react";
 import { accordionAnatomy } from "./anatomy";
 
 export const accordionSlotRecipe = defineSlotRecipe({

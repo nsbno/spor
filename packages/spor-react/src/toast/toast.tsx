@@ -1,21 +1,21 @@
 "use client";
 
-import React from "react";
-
 import {
-  Toaster as ChakraToaster,
+  createToaster,
   Icon,
   Portal,
   Stack,
   Toast,
-  createToaster,
+  Toaster as ChakraToaster,
 } from "@chakra-ui/react";
-import { createTexts, useTranslation } from "@/i18n";
 import {
+  ErrorFill18Icon,
   InformationFill18Icon,
   SuccessFill18Icon,
-  ErrorFill18Icon,
 } from "@vygruppen/spor-icon-react";
+import React from "react";
+
+import { createTexts, useTranslation } from "@/i18n";
 
 const toaster = createToaster({
   placement: "bottom",

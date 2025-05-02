@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-icon-react-native",
-  "version": "2.15.0",
+  "version": "2.15.1",
   "main": "./dist/index.mjs",
   "types": "./dist/types.d.ts",
   "license": "MIT",
@@ -20,7 +20,8 @@
     "prebuild": "pnpm clean",
     "build": "pnpm build:step-1 && pnpm build:step-2",
     "build:step-1": "tsm bin/generate.ts",
-    "build:step-2": "tsup"
+    "build:step-2": "tsup",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@shopify/restyle": "^2.1.0",
@@ -30,7 +31,9 @@
     "@types/fs-extra": "^11.0.4",
     "@vygruppen/spor-icon": "workspace:*",
     "@vygruppen/tsconfig": "workspace:*",
+    "@vygruppen/eslint-config": "workspace:*",
     "case": "^1.6.3",
+    "eslint": "9.25.1",
     "fs-extra": "^11.2.0",
     "react": ">17.0.0",
     "react-native": "^0.74.2",

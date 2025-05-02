@@ -2,8 +2,8 @@
 
 import {
   Box,
-  Drawer as ChakraDrawer,
   createContext,
+  Drawer as ChakraDrawer,
   Grid,
   GridItem,
   Portal,
@@ -13,6 +13,7 @@ import {
   CloseFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import React, { forwardRef } from "react";
+
 import { Button, CloseButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
 import {

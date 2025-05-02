@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+
 import { coreBackground, coreText } from "../utils/core-utils";
 import { ghostBackground } from "../utils/ghost-utils";
 import { paginationAnatomy } from "./anatomy";

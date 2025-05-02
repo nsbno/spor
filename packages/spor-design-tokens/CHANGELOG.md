@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.0.3
+
+### Patch Changes
+
+- 4a2fac8: include tokens in files for package export
+
 ## 4.0.2
 
 ### Patch Changes

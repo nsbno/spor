@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.0.2
+
+### Patch Changes
+
+- a9b02f6: Fix error where tokens were not exported and imported correctly from spor-design-tokens
+
 ## 4.0.1
 
 ### Patch Changes

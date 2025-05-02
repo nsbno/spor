@@ -26,7 +26,8 @@
   "files": [
     "dist",
     "assets",
-    "react-native"
+    "react-native",
+    "tokens"
   ],
   "sideEffects": false,
   "license": "MIT",

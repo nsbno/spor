@@ -1,5 +1,17 @@
 # Changelog
 
+## 4.0.3
+
+### Patch Changes
+
+- 4a2fac8: include tokens in files for package export
+
+## 4.0.2
+
+### Patch Changes
+
+- a9b02f6: Fix error where tokens were not exported and imported correctly from spor-design-tokens
+
 ## 4.0.1
 
 ### Patch Changes

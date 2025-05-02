@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 12.0.4
+
+### Patch Changes
+
+- Updated dependencies [a9b02f6]
+  - @vygruppen/spor-design-tokens@4.0.2
+
 ## 12.0.3
 
 ### Patch Changes

@@ -1,7 +1,9 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+
 import tokens from "@vygruppen/spor-design-tokens";
 
 import { alertSlotRecipe } from "./alert";
+
 import { alertExpandableAnatomy } from "./anatomy";
 
 export const alertExpandableSlotRecipe = defineSlotRecipe({
@@ -29,12 +31,14 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
           color: "alert.important.text.secondary",
         },
         itemTrigger: {
-          _hover: {
+          "&:hover": {
             bg: "alert.important.surface.hover",
+            outline: "1px solid",
             outlineColor: "alert.important.outline.hover",
-            _active: {
-              bg: "alert.important.surface.active",
-            },
+            outlineOffset: "0px",
+          },
+          "&:active": {
+            bg: "alert.important.surface.active",
           },
         },
         root: {
@@ -50,10 +54,12 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
           color: "alert.success.text.secondary",
         },
         itemTrigger: {
-          _hover: {
+          "&:hover": {
             bg: "alert.success.surface.hover",
+            outline: "1px solid",
+            outlineOffset: "0px",
             outlineColor: "alert.success.outline.hover",
-            _active: {
+            "&:active": {
               bg: "alert.success.surface.active",
             },
           },
@@ -71,10 +77,12 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
           color: "alert.alt.text.secondary",
         },
         itemTrigger: {
-          _hover: {
+          "&:hover": {
             bg: "alert.alt.surface.hover",
+            outlineOffset: "0px",
+            outline: "1px solid",
             outlineColor: "alert.alt.outline.hover",
-            _active: {
+            "&:active": {
               bg: "alert.alt.surface.active",
             },
           },
@@ -92,10 +100,12 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
           color: "alert.info.text.secondary",
         },
         itemTrigger: {
-          _hover: {
+          "&:hover": {
             bg: "alert.info.surface.hover",
+            outlineOffset: "0px",
+            outline: "1px solid",
             outlineColor: "alert.info.outline.hover",
-            _active: {
+            "&:active": {
               bg: "alert.info.surface.active",
             },
           },
@@ -113,10 +123,12 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
           color: "alert.error.text.secondary",
         },
         itemTrigger: {
-          _hover: {
+          "&:hover": {
             bg: "alert.error.surface.hover",
+            outlineOffset: "0px",
+            outline: "1px solid",
             outlineColor: "alert.error.outline.hover",
-            _active: {
+            "&:active": {
               bg: "alert.error.surface.active",
             },
           },

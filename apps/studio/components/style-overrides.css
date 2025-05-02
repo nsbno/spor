@@ -1,4 +1,4 @@
-@import "@vygruppen/spor-design-tokens/dist/tokens.css";
+@import "@vygruppen/spor-design-tokens/tokens.css";
 
 @font-face {
   font-family: var(--asset-font-vy-sans-light-name);

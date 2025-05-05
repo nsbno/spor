@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 4.0.3
+
+### Patch Changes
+
+- 8c18ea0: Fix so all icons are client only
+
 ## 4.0.2
 
 ### Patch Changes

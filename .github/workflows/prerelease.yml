@@ -1,0 +1,41 @@
+name: Prerelease
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Prerelease tag (e.g. beta, alpha, rc)"
+        required: true
+        default: beta
+
+jobs:
+  prerelease:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Create prerelease version
+        run: npx changeset version --tag ${{ github.event.inputs.tag }}
+
+      - name: Commit and push version changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "chore: prerelease version"
+          git push
+
+      - name: Publish to npm with prerelease tag
+        run: npx changeset publish --tag ${{ github.event.inputs.tag }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

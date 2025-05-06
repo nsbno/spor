@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.0.5
+
+### Patch Changes
+
+- 5e6da7b: Update colors from figma
+
 ## 4.0.4
 
 ### Patch Changes

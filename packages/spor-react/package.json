@@ -7,7 +7,7 @@
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
-    "build": "pnpm typegen && tsup",
+    "build": "tsup",
     "dev": "tsup --watch",
     "typegen": "npx @chakra-ui/cli typegen src/theme/index.ts",
     "typegen:watch": "npx @chakra-ui/cli typegen src/theme/index.ts --watch",

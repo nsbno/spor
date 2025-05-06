@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-design-tokens",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "All Vy's design tokens",
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-card-react",
   "repository": {
@@ -38,7 +38,6 @@
     "chokidar-cli": "^3.0.0",
     "eslint": "9.25.1",
     "json-to-ts": "^1.7.0",
-    "patch-package": "^6.4.7",
     "prettier": "^2.4.1",
     "style-dictionary": "^4.3.3",
     "ts-node": "^10.9.2",

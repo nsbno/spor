@@ -1,16 +1,20 @@
 "use client";
-import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  ChakraProviderProps,
+  SystemContext,
+} from "@chakra-ui/react";
 import { Global } from "@emotion/react";
 import React from "react";
 
-import { Language, LanguageProvider, system, themes } from "..";
+import { Language, LanguageProvider, system } from "..";
 import { ColorModeProvider } from "../color-mode";
-import { Brand, fontFaces } from "../theme/brand";
+import { fontFaces } from "../theme/brand";
 import { Toaster } from "../toast/toast";
 
 type SporProviderProps = Omit<ChakraProviderProps, "value"> & {
   language?: Language;
-  brand?: Brand;
+  theme?: SystemContext;
 };
 
 /**
@@ -52,12 +56,12 @@ import { theme } from '../../../../apps/docs/app/features/portable-text/code-blo
  */
 export const SporProvider = ({
   language = Language.NorwegianBokmal,
-  brand = Brand.VyDigital,
+  theme = system,
   children,
 }: SporProviderProps) => {
   return (
     <LanguageProvider language={language}>
-      <ChakraProvider value={themes[brand] ?? system}>
+      <ChakraProvider value={theme}>
         <ColorModeProvider>
           <Toaster />
           <Global styles={fontFaces} />

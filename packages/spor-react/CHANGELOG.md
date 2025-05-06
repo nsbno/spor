@@ -1,5 +1,19 @@
 # @vygruppen/spor-react
 
+## 12.1.0
+
+### Minor Changes
+
+- b1c49c8: - Removed unused `patch-package` from `spor-design-tokens`.
+  - Refactored theme setup in `spor-react` for type support and extending theme support.
+  - Updated `eslint-config` to better support React 17+ adding jsx runtime rules.
+
+### Patch Changes
+
+- Updated dependencies [b1c49c8]
+  - @vygruppen/spor-design-tokens@4.0.4
+  - @vygruppen/spor-icon-react@4.0.3
+
 ## 12.0.7
 
 ### Patch Changes

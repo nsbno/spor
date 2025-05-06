@@ -7,7 +7,6 @@
     "build": "turbo run build",
     "test": "turbo run test --parallel",
     "dev": "turbo run dev typegen:watch",
-    "postinstall": "pnpm typegen",
     "lint": "turbo run lint",
     "prerelease": "pnpm build",
     "release": "turbo run build && changeset publish",

@@ -16,7 +16,6 @@ import {
   useColorModeValue,
 } from "@vygruppen/spor-react";
 import { memo, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";
@@ -163,10 +162,9 @@ type IconBoxProps = {
   icon: IconMetadata;
 };
 function IconBox({ icon }: IconBoxProps) {
-  const { copy, copied } = useClipboard(icon.importName as any);
+  const { copy, copied } = useClipboard({ value: icon.importName });
   const IconComponent = getIconByImportName(icon.importName);
   const colorPalette = useColorModeValue("grey", "white");
-  const navigate = useNavigate();
   return (
     <StaticCard
       display="flex"

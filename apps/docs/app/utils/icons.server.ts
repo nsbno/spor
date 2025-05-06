@@ -19,7 +19,7 @@ export const getIcon = async ({ category, fileName }: getIconArgs) => {
   const basePath = await getPathToIconsSvgFolder();
   try {
     return await fs.readFile(path.join(basePath, safeCategory, safeFileName));
-  } catch (e) {
+  } catch {
     return null;
   }
 };
@@ -61,7 +61,7 @@ const doesFileExist = async (filePath: string) => {
   try {
     await fs.stat(filePath);
     return true;
-  } catch (e) {
+  } catch {
     return false;
   }
 };

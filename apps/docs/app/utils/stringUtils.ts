@@ -10,7 +10,7 @@
  */
 export const toTitleCase = (input: string): string => {
   const text = input
-    .replace(/[\-_\.]+/g, " ") // some.word -> some word
+    .replace(/[-_.]+/g, " ") // some.word -> some word
     .replace(/([a-zæøå])([A-ZÆØÅ])/g, "$1 $2") // someWord -> some Word
     .replace(/\s{2,}/g, " "); // multiple spaces -> one space
   if (text.includes(" ")) {

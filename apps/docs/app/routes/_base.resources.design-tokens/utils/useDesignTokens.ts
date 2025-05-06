@@ -39,8 +39,8 @@ type FlattenedColor = {
  * @returns An array of flattened color objects, each containing a name and a value.
  */
 const extractFlattenedColors = (
-  obj: Record<string, any>,
-  colorMode: any,
+  obj: object,
+  colorMode: string,
   path: string[] = [],
 ): FlattenedColor[] => {
   return Object.entries(obj).reduce<FlattenedColor[]>((acc, [key, value]) => {

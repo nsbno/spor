@@ -1,7 +1,5 @@
 import {
   Box,
-  BoxProps,
-  Flex,
   Stack,
   Table,
   TableBody,

@@ -16,8 +16,8 @@ type ComponentData = {
   _id: string;
   title: string;
   slug: string;
-  mainImage: any;
-  content: any[];
+  mainImage: unknown;
+  content: unknown[];
 };
 
 const componentsQuery = async () => {
@@ -44,7 +44,7 @@ type ArticleData = {
   _id: string;
   title: string;
   slug: string;
-  content: any[];
+  content: unknown[];
 };
 
 const articleQuery = async () => {

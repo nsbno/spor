@@ -1,7 +1,7 @@
 import { chakra } from "@chakra-ui/react";
 import { Link } from "@remix-run/react";
 import { Box, FlexProps } from "@vygruppen/spor-react";
-import React, { forwardRef, useRef } from "react";
+import React, { forwardRef, useImperativeHandle, useRef } from "react";
 
 type MenuItemProps = FlexProps & {
   url: string;
@@ -11,13 +11,18 @@ type MenuItemProps = FlexProps & {
 /**
  * Menu item in the `ContentMenu`, and search result in the `SearchResults`.
  */
-export const MenuItem = forwardRef<HTMLAnchorElement, MenuItemProps>(
-  ({ url, children, isActive, ...rest }, externalRef) => {
-    const internalRef = useRef<HTMLAnchorElement>(null);
-    const handleKeyUp = (e: React.KeyboardEvent) => {
-      if (!internalRef || typeof internalRef === "function") {
-        return;
-      }
+
+export const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
+  function MenuItem({ url, children, ...rest }, externalRef) {
+    const internalRef = useRef<HTMLButtonElement>(null);
+
+    useImperativeHandle(
+      externalRef,
+      () => internalRef.current as HTMLButtonElement,
+    );
+
+    const handleKeyUp: React.KeyboardEventHandler<HTMLButtonElement> = (e) => {
+      if (!internalRef.current) return;
       switch (e.key) {
         case "ArrowUp": {
           getPreviousFocusableSibling(internalRef.current)?.focus();
@@ -29,12 +34,7 @@ export const MenuItem = forwardRef<HTMLAnchorElement, MenuItemProps>(
         }
       }
     };
-    // Stop up and down arrows from scrolling
-    const handleKeyDown = (e: React.KeyboardEvent) => {
-      if (["ArrowUp", "ArrowDown"].includes(e.key)) {
-        e.preventDefault();
-      }
-    };
+
     return (
       <chakra.button
         key={url}
@@ -50,12 +50,7 @@ export const MenuItem = forwardRef<HTMLAnchorElement, MenuItemProps>(
         color="text"
         _hover={{ backgroundColor: "ghost.surface.hover" }}
         _active={{ backgroundColor: "ghost.surface.active" }}
-        ref={(el: any) => {
-          if (externalRef) {
-            (externalRef as any).current = el;
-          }
-          (internalRef as any).current = el;
-        }}
+        ref={internalRef}
         onKeyUp={handleKeyUp}
         onKeyDown={handleKeyDown}
         {...rest}
@@ -68,8 +63,14 @@ export const MenuItem = forwardRef<HTMLAnchorElement, MenuItemProps>(
   },
 );
 
-const getLinkProps = ({ url }: { url: string }): any => {
-  if (url.match(/^https?:\/\//)) {
+const handleKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = (e) => {
+  if (["ArrowUp", "ArrowDown"].includes(e.key)) {
+    e.preventDefault();
+  }
+};
+
+const getLinkProps = ({ url }: { url: string }) => {
+  if (/^https?:\/\//.test(url)) {
     return { as: "a", href: url, target: "_blank", rel: "noopener noreferrer" };
   }
   return { as: Link, to: url };

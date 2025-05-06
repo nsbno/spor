@@ -34,7 +34,7 @@ const BreakpointTokensTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {breakpointTokens.map(([token, value]): any => (
+          {breakpointTokens.map(([token, value]) => (
             <TableRow key={token}>
               <TableCell>
                 <CopyTokenToClipBoard>{token}</CopyTokenToClipBoard>

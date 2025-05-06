@@ -1,5 +1,19 @@
 # @vygruppen/spor-react
 
+## 12.0.7
+
+### Patch Changes
+
+- Updated dependencies [8c18ea0]
+  - @vygruppen/spor-icon-react@4.0.3
+
+## 12.0.6
+
+### Patch Changes
+
+- c46ed68: ExpandableAlert: Fix hover styling
+- 4db8289: Field: Added Field to index.ts
+
 ## 12.0.5
 
 ### Patch Changes

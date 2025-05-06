@@ -15,7 +15,7 @@ ${variables.exports};
 export const componentTemplate: Config["template"] = (variables, { tpl }) => {
   return tpl`
 ${variables.imports};
-import { Box } from "@chakra-ui/react";
+import { Box, ClientOnly } from "@chakra-ui/react";
 
 ${variables.interfaces};
 

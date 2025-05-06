@@ -7,7 +7,6 @@
     "build": "turbo run build",
     "test": "turbo run test --parallel",
     "dev": "turbo run dev typegen:watch",
-    "postinstall": "patch-package",
     "lint": "turbo run lint",
     "prerelease": "pnpm build",
     "release": "turbo run build && changeset publish",
@@ -19,7 +18,6 @@
   },
   "dependencies": {
     "@changesets/cli": "^2.27.5",
-    "patch-package": "^8.0.0",
     "prettier": "^3.3.1",
     "react-icons": "^5.4.0",
     "rimraf": "^5.0.7",

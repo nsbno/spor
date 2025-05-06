@@ -18,7 +18,7 @@ import {
   useLoaderData,
   useRouteError,
 } from "@remix-run/react";
-import { Brand, Language, SporProvider } from "@vygruppen/spor-react";
+import { Brand, Language, SporProvider, themes } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect, useRef } from "react";
 
 import { RootLayout } from "./root/layout/RootLayout";
@@ -40,6 +40,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data || !data.initialSanityData) {
     return [];
   }
+
   const { title, description, keywords, socialImage } =
     data.initialSanityData.siteSettings;
 
@@ -186,7 +187,10 @@ const Document = withEmotionCache(
           ))}
         </head>
         <body>
-          <SporProvider language={Language.English} brand={brand}>
+          <SporProvider
+            language={Language.English}
+            theme={themes[brand ?? "VyDigital"]}
+          >
             <SkipToContent />
             {children}
           </SporProvider>

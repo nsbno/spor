@@ -13,7 +13,7 @@ export const BrandSwitcher = () => {
       <NativeSelect
         label="Brand"
         value={brand as string}
-        onChange={(e: any) => {
+        onChange={(e) => {
           const formData = new FormData();
           formData.set("brand", e.target.value);
           fetcher.submit(formData, {

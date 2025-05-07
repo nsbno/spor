@@ -47,7 +47,7 @@ export const usePreviewSubscription = <T>({
             );
             return;
           }
-          if (result.length) {
+          if (result.length > 0) {
             onChange(result);
           }
         },

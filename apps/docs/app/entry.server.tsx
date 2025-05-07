@@ -1,3 +1,5 @@
+import { PassThrough } from "node:stream";
+
 import { CacheProvider } from "@emotion/react";
 import createEmotionServer from "@emotion/server/create-instance";
 import {
@@ -7,12 +9,20 @@ import {
 import { RemixServer } from "@remix-run/react";
 import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
-import { PassThrough } from "stream";
 
 import { createEmotionCache } from "./root/setup/chakra-setup/createEmotionCache";
 import { ServerStyleContext } from "./root/setup/chakra-setup/styleContext";
 
-const streamTimeout = 15000;
+const streamTimeout = 15_000;
+
+function isMethodNotAllowedError(error: unknown): boolean {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    "status" in error &&
+    (error as { status?: unknown }).status == 405
+  );
+}
 
 const handleRequest = (
   request: Request,
@@ -83,7 +93,7 @@ const handleBrowserRequest = (
           console.error(error);
           const wrappedError = error instanceof Error ? error : { error };
 
-          if ((error as any)?.status == 405) {
+          if (isMethodNotAllowedError(error)) {
             console.warn("Method not allowed", wrappedError);
             return;
           }
@@ -115,7 +125,6 @@ const handleBotRequest = (
       {
         onAllReady: () => {
           const body = new PassThrough();
-          const stream = createReadableStreamFromReadable(body);
           const emotionServer = createEmotionServer(cache);
 
           const bodyWithStyles = emotionServer.renderStylesToNodeStream();
@@ -141,7 +150,7 @@ const handleBotRequest = (
           console.error(error);
           const wrappedError = error instanceof Error ? error : { error };
 
-          if ((error as any)?.status == 405) {
+          if (isMethodNotAllowedError(error)) {
             console.warn("Method not allowed", wrappedError);
             return;
           }

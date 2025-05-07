@@ -8,18 +8,27 @@
  * toTitleCase("hello.world") // "Hello World"
  * toTitleCase("hello.world.fooBar") // "Hello World Foo Bar"
  */
+
+const DELIMITER_REGEX = /[-_.]+/g; // Replace hyphens, dots, underscores with space
+const CAMELCASE_REGEX = /([a-zæøå])([A-ZÆØÅ])/g; // Split camelCase
+const MULTISPACE_REGEX = /\s+/g; // Collapse multiple spaces
+
 export const toTitleCase = (input: string): string => {
-  const text = input
-    .replace(/[\-_\.]+/g, " ") // some.word -> some word
-    .replace(/([a-zæøå])([A-ZÆØÅ])/g, "$1 $2") // someWord -> some Word
-    .replace(/\s{2,}/g, " "); // multiple spaces -> one space
-  if (text.includes(" ")) {
-    return text.split(" ").map(toTitleCase).join(" ");
-  }
-  if (text.length < 2) {
-    return text?.toUpperCase();
-  }
-  return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+  if (!input) return "";
+
+  const normalized = input
+    .replaceAll(DELIMITER_REGEX, " ")
+    .replaceAll(CAMELCASE_REGEX, "$1 $2")
+    .replaceAll(MULTISPACE_REGEX, " ")
+    .trim();
+
+  return normalized
+    .split(" ")
+    .map((word) => {
+      if (!word) return "";
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join(" ");
 };
 
 /**
@@ -46,12 +55,12 @@ export function slugify(text: string) {
   }
   return text
     .toLowerCase()
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/[æ]/g, "ae") // Replace special chars
-    .replace(/[øö]/g, "o") // Replace special chars
-    .replace(/[åä]/g, "a") // Replace special chars
-    .replace(/[^\w-]+/g, "") // Remove all non-word chars
-    .replace(/--+/g, "-") // Replace multiple - with single -
+    .replaceAll(/\s+/g, "-") // Replace spaces with -
+    .replaceAll(/[æ]/g, "ae") // Replace special chars
+    .replaceAll(/[øö]/g, "o") // Replace special chars
+    .replaceAll(/[åä]/g, "a") // Replace special chars
+    .replaceAll(/[^\w-]+/g, "") // Remove all non-word chars
+    .replaceAll(/--+/g, "-") // Replace multiple - with single -
     .replace(/^-+/, "") // Trim - from start of text
     .replace(/-+$/, ""); // Trim - from end of text
 }

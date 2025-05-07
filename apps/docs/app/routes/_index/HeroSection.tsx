@@ -35,7 +35,7 @@ export function HeroSection() {
               Welcome to Spor
             </Heading>
             <Text variant="sm" color="text.tertiary" className="dark">
-              Spor is Vy's design system for digital products.
+              Spor is Vy&apos;s design system for digital products.
             </Text>
             <Box marginBottom={[10, null, 0]}>
               <Button

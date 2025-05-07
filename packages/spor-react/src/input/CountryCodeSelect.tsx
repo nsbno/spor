@@ -33,15 +33,16 @@ export const callingCodes = createListCollection({
   items: [...prioritizedCountryCodes, ...sortedCallingCodes],
 });
 
-type CountryCodeSelectProps = Omit<SelectProps, "label" | "collection"> & {allowedCountryCodes?: string[]}
+type CountryCodeSelectProps = Omit<SelectProps, "label" | "collection"> & {
+  allowedCountryCodes?: string[];
+};
 
 export const CountryCodeSelect = forwardRef<
   HTMLDivElement,
   CountryCodeSelectProps
 >((props, ref) => {
   const { t } = useTranslation();
-  const allowedCallingCodes = callingCodes.items
-    .filter(
+  const allowedCallingCodes = callingCodes.items.filter(
     (callingCode) =>
       !props.allowedCountryCodes ||
       props.allowedCountryCodes.some((code) => code === callingCode.label),
@@ -52,7 +53,7 @@ export const CountryCodeSelect = forwardRef<
       {...props}
       ref={ref}
       positioning={{ placement: "bottom", flip: false }}
-      collection={createListCollection({items: allowedCallingCodes})}
+      collection={createListCollection({ items: allowedCallingCodes })}
       lazyMount
       aria-label={t(texts.countryCode)}
       variant={"rightSideSquare"}

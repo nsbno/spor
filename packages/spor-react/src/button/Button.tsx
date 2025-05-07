@@ -29,7 +29,7 @@ export type ButtonProps = Exclude<
     /* Display icon to the right */
     rightIcon?: React.ReactNode;
     /* "primary" | "secondary" | "tertiary" | "ghost" | "floating". Defaults to primary. */
-    variant: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
+    variant?: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
     /* "lg" | "md" | "sm" | "xs". Defaults to md. */
     size?: "lg" | "md" | "sm" | "xs";
     /* Link to a downloadable resource. */
@@ -105,7 +105,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       rightIcon,
       type = "button",
       children,
-      asChild = false,
       ...rest
     },
     ref,
@@ -117,7 +116,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       : (rest["aria-label"] as string);
 
     const renderContent = () => {
-      const content = asChild
+      const content = rest.asChild
         ? (children as React.ReactElement).props.children
         : children;
 
@@ -149,7 +148,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         size={size}
         {...rest}
       >
-        {asChild
+        {rest.asChild
           ? cloneElement(children as React.ReactElement, {
               children: renderContent(),
             })

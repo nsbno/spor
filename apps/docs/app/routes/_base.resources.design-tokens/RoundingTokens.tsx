@@ -20,14 +20,14 @@ export const RoundingTokens = () => (
       <Text>
         The rounding follows the size of the component. Small components have
         small rounding, and large components have larger rounding. All
-        components that consist of a 'box/card' have rounding. We rarely use
-        completely square components (0 px rounding). An easy way to determine
-        which rounding you should use is to follow the rule of thumb: components
-        with 1-2 lines of text or very compact elements will always have a
-        rounding of 12 px. When there are more lines horizontally, such as cards
-        or boxes, we use a rounding of 18 px. In addition, 24 px rounding is
-        used on drawers, 30 px rounding on buttons, and 36 px rounding on the
-        app header.
+        components that consist of a &apos;box/card&apos; have rounding. We
+        rarely use completely square components (0 px rounding). An easy way to
+        determine which rounding you should use is to follow the rule of thumb:
+        components with 1-2 lines of text or very compact elements will always
+        have a rounding of 12 px. When there are more lines horizontally, such
+        as cards or boxes, we use a rounding of 18 px. In addition, 24 px
+        rounding is used on drawers, 30 px rounding on buttons, and 36 px
+        rounding on the app header.
       </Text>
     }
   >

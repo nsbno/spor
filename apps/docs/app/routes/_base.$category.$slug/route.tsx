@@ -1,5 +1,4 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
 import { groq } from "@sanity/groq-store";
 import {
   FigmaOutline24Icon,
@@ -21,6 +20,7 @@ import {
   TabsTrigger,
   Text,
 } from "@vygruppen/spor-react";
+import { PropsWithChildren } from "react";
 import invariant from "tiny-invariant";
 
 import { PortableText } from "~/features/portable-text/PortableText";
@@ -46,26 +46,27 @@ type ComponentSection = {
   _id: string;
   title: "guidelines" | "examples" | "code" | "other";
   customTitle?: string;
-  content: any[];
+  content: unknown[];
   components?: {
     _id: string;
     name: string;
     slug: string;
-    props: any[];
-    content: any[];
+    props: unknown[];
+    content: unknown[];
   }[];
 };
 type Data = {
   _id: string;
   title: string;
-  introduction?: any[];
+  introduction?: unknown[];
   slug: string;
   category: {
     title: string;
     slug: string;
   };
   resourceLinks?: ResourceLink[];
-  mainImage?: any;
+  mainImage?: unknown;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   content?: any[];
   componentSections?: ComponentSection[];
 };
@@ -110,7 +111,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     LoaderData["initialData"]
   >(query, queryParams);
 
-  if (!initialData || !initialData.length) {
+  if (!initialData || initialData.length === 0) {
     throw new Response("Not Found", { status: 404 });
   }
 
@@ -142,15 +143,17 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   ];
 
   if (article.mainImage) {
-    meta.push({
-      name: "og:image",
-      content: urlBuilder.image(article.mainImage).width(1200).url(),
-    });
-    meta.push({ name: "twitter:card", content: "summary_large_image" });
-    meta.push({
-      name: "twitter:image",
-      content: urlBuilder.image(article.mainImage).width(1200).url(),
-    });
+    meta.push(
+      {
+        name: "og:image",
+        content: urlBuilder.image(article.mainImage).width(1200).url(),
+      },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:image",
+        content: urlBuilder.image(article.mainImage).width(1200).url(),
+      },
+    );
   }
   return meta;
 };
@@ -173,11 +176,7 @@ export default function ArticlePage() {
       >
         <HStack>
           {article?.category?.title && (
-            <Badge
-              colorPalette={
-                brand === Brand.CargoNet ? "light-yellow" : "light-green"
-              }
-            >
+            <Badge colorPalette={brand === Brand.CargoNet ? "orange" : "green"}>
               {article?.category?.title}
             </Badge>
           )}
@@ -207,7 +206,7 @@ export default function ArticlePage() {
               value={article.introduction}
               components={{
                 block: {
-                  normal: ({ children }: any) => (
+                  normal: ({ children }: PropsWithChildren) => (
                     <Text variant="md">{children}</Text>
                   ),
                 },
@@ -232,23 +231,29 @@ export default function ArticlePage() {
 
 const mapLinkToLabel = (linkType: ResourceLink["linkType"]) => {
   switch (linkType) {
-    case "figma":
+    case "figma": {
       return "Figma";
-    case "react":
+    }
+    case "react": {
       return "React";
-    case "react-native":
+    }
+    case "react-native": {
       return "React Native";
-    default:
+    }
+    default: {
       return "GitHub";
+    }
   }
 };
 
 const mapLinkToIcon = (linkType: ResourceLink["linkType"]) => {
   switch (linkType) {
-    case "figma":
+    case "figma": {
       return <FigmaOutline24Icon />;
-    default:
+    }
+    default: {
       return <GithubOutline24Icon />;
+    }
   }
 };
 
@@ -262,7 +267,7 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
       variant="accent"
       size="md"
       marginTop={4}
-      fitted={"true"}
+      fitted={true}
       lazyMount
       key={id}
       defaultValue={sections[0].customTitle || sections[0].title}
@@ -293,7 +298,8 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
           <Stack>
             {section.content && <PortableText value={section.content} />}
             {section.components?.map((component) => (
-              <ComponentDocs key={component._id} component={component} />
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              <ComponentDocs key={component._id} component={component as any} />
             ))}
           </Stack>
         </TabsContent>
@@ -305,13 +311,17 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
 type GetCorrectTitleArgs = Pick<ComponentSection, "title" | "customTitle">;
 const getCorrectTitle = ({ title, customTitle }: GetCorrectTitleArgs) => {
   switch (title) {
-    case "examples":
+    case "examples": {
       return "Examples";
-    case "guidelines":
+    }
+    case "guidelines": {
       return "Guidelines";
-    case "code":
+    }
+    case "code": {
       return "Code";
-    case "other":
+    }
+    case "other": {
       return toTitleCase(customTitle ?? "");
+    }
   }
 };

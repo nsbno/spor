@@ -1,6 +1,6 @@
 import { Box, Center, Heading, Text } from "@vygruppen/spor-react";
 export type RootErrorBoundaryProps = {
-  error: any;
+  error: unknown;
 };
 export const RootErrorBoundary = ({ error }: RootErrorBoundaryProps) => {
   if (process.env.NODE_ENV === "development") {
@@ -18,7 +18,7 @@ export const RootErrorBoundary = ({ error }: RootErrorBoundaryProps) => {
     <Box>
       <Heading as="h1">Oops, an error occurred!</Heading>
       <Text>
-        Sorry about that. We've told somebody, and will hopefully fix this
+        Sorry about that. We&apos;ve told somebody, and will hopefully fix this
         shortly.
       </Text>
     </Box>

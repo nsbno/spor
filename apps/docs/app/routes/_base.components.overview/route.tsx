@@ -16,8 +16,8 @@ type ComponentData = {
   _id: string;
   title: string;
   slug: string;
-  mainImage: any;
-  content: any[];
+  mainImage: unknown;
+  content: unknown[];
 };
 
 const componentsQuery = async () => {
@@ -34,7 +34,7 @@ const componentsQuery = async () => {
   }`;
   const componentArticles = await getClient().fetch<ComponentData[]>(query);
 
-  if (!componentArticles || !componentArticles.length) {
+  if (!componentArticles || componentArticles.length === 0) {
     throw new Response("Not Found", { status: 404 });
   }
   return componentArticles;
@@ -44,7 +44,7 @@ type ArticleData = {
   _id: string;
   title: string;
   slug: string;
-  content: any[];
+  content: unknown[];
 };
 
 const articleQuery = async () => {

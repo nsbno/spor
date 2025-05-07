@@ -23,12 +23,13 @@ export const TypographyTokens = () => (
     description={
       <Stack gap={6}>
         <Text>
-          We have two "sets" of text styles; one for mobile and one for desktop.
-          The text styles for Mobile should be used in the Vy app, and on the
-          web on mobile, while horizontal tablet, desktop, and widescreen should
-          use the text styles for Desktop. The breakpoint is at screen widths
-          greater than or equal to &gt;=756 pixels wide. Line height should
-          always be 1.333 times the font size, rounded to the nearest pixel.
+          We have two &quot;sets&quot; of text styles; one for mobile and one
+          for desktop. The text styles for Mobile should be used in the Vy app,
+          and on the web on mobile, while horizontal tablet, desktop, and
+          widescreen should use the text styles for Desktop. The breakpoint is
+          at screen widths greater than or equal to &gt;=756 pixels wide. Line
+          height should always be 1.333 times the font size, rounded to the
+          nearest pixel.
         </Text>
         <Text>
           The font Vy Display is less readable in small sizes, and should

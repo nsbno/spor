@@ -50,7 +50,7 @@ const AnimationTokensTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {animationTokens.map(([token, value]: any) => (
+          {animationTokens.map(([token, value]) => (
             <TableRow key={token}>
               <TableCell>
                 <Box

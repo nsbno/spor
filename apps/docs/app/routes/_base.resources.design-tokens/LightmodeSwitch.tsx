@@ -1,6 +1,5 @@
 import { ClientOnly } from "@chakra-ui/react";
 import {
-  Brand,
   ColorMode,
   Tabs,
   TabsList,

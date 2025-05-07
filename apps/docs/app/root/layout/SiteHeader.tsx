@@ -39,12 +39,12 @@ const useSearchKeyboardShortcut = (onTriggered: () => void) => {
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    globalThis.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      globalThis.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [onTriggered]);
 };
 
 /** The site header shown at the top of every part of our site */

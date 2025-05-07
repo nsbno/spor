@@ -46,7 +46,7 @@ type SanityResponse = {
   article: {
     title: string;
     slug: string;
-    introduction?: any[];
+    introduction?: unknown[];
     category?: {
       title: string;
       slug: string;
@@ -55,7 +55,7 @@ type SanityResponse = {
       linkType: "figma";
       url: string;
     };
-    content: any[];
+    content: unknown[];
   };
 };
 
@@ -147,7 +147,9 @@ export default function IllustrationLibraryPage() {
           <SearchInput
             label="Find illustration"
             value={searchValue}
-            onChange={(e: any) => setSearchValue(e.target.value)}
+            onChange={({ target }) =>
+              setSearchValue((target as HTMLSelectElement).value)
+            }
             width="100%"
           />
         </Box>

@@ -29,6 +29,7 @@ export const Footer = () => {
           height={["30px", "36px", null, "48px"]}
         />
       </Link>
+
       <Flex
         flexDirection="row"
         gap={2}
@@ -55,8 +56,8 @@ const MenuItem = ({ title, url }: MenuItemProps) => {
     </TextLink>
   );
 };
-const getLinkProps = (url: string): any => {
-  if (url.match(/^https?:\/\//)) {
+const getLinkProps = (url: string) => {
+  if (/^https?:\/\//.test(url)) {
     return { as: "a", href: url, target: "_blank", rel: "noopener noreferrer" };
   }
   return { as: Link, to: url };

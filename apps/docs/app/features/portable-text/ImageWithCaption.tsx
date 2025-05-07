@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Flex, Image, Stack } from "@vygruppen/spor-react";
 
 import { PortableText } from "./PortableText";
@@ -51,25 +52,29 @@ const mapAlignmentToAlignItems = (
   alignment: ImageWithCaptionProps["alignment"],
 ) => {
   switch (alignment) {
-    case "left":
+    case "left": {
       return "flex-start";
-    case "right":
+    }
+    case "right": {
       return "flex-end";
-    case "center":
-    default:
+    }
+    default: {
       return "center";
+    }
   }
 };
 const mapAlignmentToTextAlign = (
   alignment: ImageWithCaptionProps["alignment"],
 ) => {
   switch (alignment) {
-    case "left":
+    case "left": {
       return "left";
-    case "right":
+    }
+    case "right": {
       return "right";
-    case "center":
-    default:
-      ["left", "center"];
+    }
+    default: {
+      return "center";
+    }
   }
 };

@@ -64,9 +64,7 @@ function TableOfContent(props: TableOfContentProps) {
             as="li"
             title={text}
             marginLeft={
-              Number(level.slice(1)) > 2
-                ? Number(level.slice(1))
-                : undefined
+              Number(level.slice(1)) > 2 ? Number(level.slice(1)) : undefined
             }
           >
             <MenuItem

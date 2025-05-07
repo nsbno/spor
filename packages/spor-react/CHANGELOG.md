@@ -1,5 +1,40 @@
 # @vygruppen/spor-react
 
+## 12.1.1
+
+### Patch Changes
+
+- Updated dependencies [5e6da7b]
+  - @vygruppen/spor-design-tokens@4.0.5
+
+## 12.1.0
+
+### Minor Changes
+
+- b1c49c8: - Removed unused `patch-package` from `spor-design-tokens`.
+  - Refactored theme setup in `spor-react` for type support and extending theme support.
+  - Updated `eslint-config` to better support React 17+ adding jsx runtime rules.
+
+### Patch Changes
+
+- Updated dependencies [b1c49c8]
+  - @vygruppen/spor-design-tokens@4.0.4
+  - @vygruppen/spor-icon-react@4.0.3
+
+## 12.0.7
+
+### Patch Changes
+
+- Updated dependencies [8c18ea0]
+  - @vygruppen/spor-icon-react@4.0.3
+
+## 12.0.6
+
+### Patch Changes
+
+- c46ed68: ExpandableAlert: Fix hover styling
+- 4db8289: Field: Added Field to index.ts
+
 ## 12.0.5
 
 ### Patch Changes

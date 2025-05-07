@@ -1,5 +1,19 @@
 # Changelog
 
+## 4.0.5
+
+### Patch Changes
+
+- 5e6da7b: Update colors from figma
+
+## 4.0.4
+
+### Patch Changes
+
+- b1c49c8: - Removed unused `patch-package` from `spor-design-tokens`.
+  - Refactored theme setup in `spor-react` for type support and extending theme support.
+  - Updated `eslint-config` to better support React 17+ adding jsx runtime rules.
+
 ## 4.0.3
 
 ### Patch Changes

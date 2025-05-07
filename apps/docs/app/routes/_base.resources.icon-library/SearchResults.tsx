@@ -51,15 +51,16 @@ export const SearchResults = () => {
 };
 
 const findMatches = (searchFilter: SearchFilter) => {
-  return Object.entries(iconsByCategory).reduce((prev, [category, icons]) => {
-    prev[category] = icons.filter(
+  const result: IconsByCategory = {};
+  for (const [category, icons] of Object.entries(iconsByCategory)) {
+    result[category] = icons.filter(
       (icon) =>
         matchesSize(searchFilter.size, icon) &&
         matchesVariant(searchFilter.variant, icon) &&
         matchesSearchString(searchFilter.searchString, icon),
     );
-    return prev;
-  }, {} as IconsByCategory);
+  }
+  return result;
 };
 
 const matchesSize = (size: string, icon: IconMetadata) => size === icon.size;
@@ -83,7 +84,7 @@ const useSearchResults = () => {
 };
 
 const hasNoHits = (filteredCategories: IconsByCategory) =>
-  Object.values(filteredCategories).flatMap((icons) => icons).length === 0;
+  Object.values(filteredCategories).flat().length === 0;
 
 const NoHits = () => {
   return (
@@ -104,34 +105,48 @@ const NoHits = () => {
 
 const getCategoryDisplayName = (category: string) => {
   switch (category) {
-    case "communication":
+    case "communication": {
       return "Communication";
-    case "feedback":
+    }
+    case "feedback": {
       return "Feedback";
-    case "layout":
+    }
+    case "layout": {
       return "Layout";
-    case "media-controller":
+    }
+    case "media-controller": {
       return "Media Controller";
-    case "map":
+    }
+    case "map": {
       return "Map";
-    case "misc":
+    }
+    case "misc": {
       return "Miscellaneous";
-    case "navigation":
+    }
+    case "navigation": {
       return "Navigation";
-    case "onboard-service":
+    }
+    case "onboard-service": {
       return "Onboard service";
-    case "payment":
+    }
+    case "payment": {
       return "Payment";
-    case "social-media":
+    }
+    case "social-media": {
       return "Social media";
-    case "transportation":
+    }
+    case "transportation": {
       return "Transportation";
-    case "travel":
+    }
+    case "travel": {
       return "Travel";
-    case "cargonet":
+    }
+    case "cargonet": {
       return "CargoNet";
-    default:
+    }
+    default: {
       return "Other";
+    }
   }
 };
 

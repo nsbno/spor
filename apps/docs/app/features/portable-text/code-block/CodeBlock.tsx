@@ -5,7 +5,7 @@ import {
   ClipboardButton,
 } from "@vygruppen/spor-react";
 import { Highlight } from "prism-react-renderer";
-import { Key, LegacyRef, RefObject, useRef } from "react";
+import { Key, useRef } from "react";
 
 import { theme } from "./codeTheme";
 
@@ -28,7 +28,7 @@ export const CodeBlock = ({
       code={code}
       marginTop={2}
     >
-      <Highlight theme={theme} code={code} language={language as any}>
+      <Highlight theme={theme} code={code} language={language}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <Box
             as="pre"
@@ -102,14 +102,14 @@ export const CodeBlockContainer = ({
 };
 
 function getPreviousFocusableElement() {
-  const allTabbableElements = Array.from(
-    document.querySelectorAll(
+  const allTabbableElements = [
+    ...document.querySelectorAll(
       'a, button, input, select, textarea, [contenteditable], [tabindex]:not([tabindex^="-"])',
     ),
-  );
+  ];
 
-  const currentlyFocusedElementIndex = allTabbableElements.findIndex(
-    (el) => el === document.activeElement,
+  const currentlyFocusedElementIndex = allTabbableElements.indexOf(
+    document.activeElement as Element,
   );
 
   return allTabbableElements[currentlyFocusedElementIndex - 1] as HTMLElement;

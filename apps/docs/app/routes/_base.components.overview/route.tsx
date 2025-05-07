@@ -34,7 +34,7 @@ const componentsQuery = async () => {
   }`;
   const componentArticles = await getClient().fetch<ComponentData[]>(query);
 
-  if (!componentArticles || !componentArticles.length) {
+  if (!componentArticles || componentArticles.length === 0) {
     throw new Response("Not Found", { status: 404 });
   }
   return componentArticles;

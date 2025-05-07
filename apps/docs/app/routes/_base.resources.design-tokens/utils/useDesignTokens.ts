@@ -14,14 +14,18 @@ const useGetThemeColorTokens = () => {
   const brand = useBrand();
 
   switch (brand) {
-    case Brand.VyDigital:
+    case Brand.VyDigital: {
       return tokensJSON.color.vyDigital;
-    case Brand.CargoNet:
+    }
+    case Brand.CargoNet: {
       return tokensJSON.color.cargonet;
-    case Brand.VyUtvikling:
+    }
+    case Brand.VyUtvikling: {
       return tokensJSON.color.vyUtvikling;
-    default:
+    }
+    default: {
       return tokensJSON.color.vyDigital;
+    }
   }
 };
 
@@ -43,24 +47,18 @@ const extractFlattenedColors = (
   colorMode: string,
   path: string[] = [],
 ): FlattenedColor[] => {
-  return Object.entries(obj).reduce<FlattenedColor[]>((acc, [key, value]) => {
+  const result: FlattenedColor[] = [];
+  for (const [key, value] of Object.entries(obj)) {
     if (typeof value === "object" && value !== null) {
-      return [
-        ...acc,
-        ...extractFlattenedColors(value, colorMode, [...path, key]),
-      ];
+      result.push(...extractFlattenedColors(value, colorMode, [...path, key]));
+    } else if (key === `_${colorMode}`) {
+      result.push({
+        name: `${""}${path.join(".")}`,
+        value: value.replace("colors.", ""),
+      });
     }
-    if (key === `_${colorMode}`) {
-      return [
-        ...acc,
-        {
-          name: `${""}${path.join(".")}`,
-          value: value.replace("colors.", ""),
-        },
-      ];
-    }
-    return acc;
-  }, []);
+  }
+  return result;
 };
 
 /**

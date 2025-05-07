@@ -1,6 +1,7 @@
+import { PassThrough } from "node:stream";
+
 import { SanityAsset } from "@sanity/image-url/lib/types/types";
 import Archiver from "archiver";
-import { PassThrough } from "stream";
 
 import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";

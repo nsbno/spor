@@ -111,7 +111,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     LoaderData["initialData"]
   >(query, queryParams);
 
-  if (!initialData || !initialData.length) {
+  if (!initialData || initialData.length === 0) {
     throw new Response("Not Found", { status: 404 });
   }
 
@@ -143,15 +143,17 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   ];
 
   if (article.mainImage) {
-    meta.push({
-      name: "og:image",
-      content: urlBuilder.image(article.mainImage).width(1200).url(),
-    });
-    meta.push({ name: "twitter:card", content: "summary_large_image" });
-    meta.push({
-      name: "twitter:image",
-      content: urlBuilder.image(article.mainImage).width(1200).url(),
-    });
+    meta.push(
+      {
+        name: "og:image",
+        content: urlBuilder.image(article.mainImage).width(1200).url(),
+      },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:image",
+        content: urlBuilder.image(article.mainImage).width(1200).url(),
+      },
+    );
   }
   return meta;
 };
@@ -229,23 +231,29 @@ export default function ArticlePage() {
 
 const mapLinkToLabel = (linkType: ResourceLink["linkType"]) => {
   switch (linkType) {
-    case "figma":
+    case "figma": {
       return "Figma";
-    case "react":
+    }
+    case "react": {
       return "React";
-    case "react-native":
+    }
+    case "react-native": {
       return "React Native";
-    default:
+    }
+    default: {
       return "GitHub";
+    }
   }
 };
 
 const mapLinkToIcon = (linkType: ResourceLink["linkType"]) => {
   switch (linkType) {
-    case "figma":
+    case "figma": {
       return <FigmaOutline24Icon />;
-    default:
+    }
+    default: {
       return <GithubOutline24Icon />;
+    }
   }
 };
 
@@ -303,13 +311,17 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
 type GetCorrectTitleArgs = Pick<ComponentSection, "title" | "customTitle">;
 const getCorrectTitle = ({ title, customTitle }: GetCorrectTitleArgs) => {
   switch (title) {
-    case "examples":
+    case "examples": {
       return "Examples";
-    case "guidelines":
+    }
+    case "guidelines": {
       return "Guidelines";
-    case "code":
+    }
+    case "code": {
       return "Code";
-    case "other":
+    }
+    case "other": {
       return toTitleCase(customTitle ?? "");
+    }
   }
 };

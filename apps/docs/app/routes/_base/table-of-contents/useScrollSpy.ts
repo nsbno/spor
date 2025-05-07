@@ -30,17 +30,17 @@ export function useScrollSpy(
     );
     observer.current?.disconnect();
     observer.current = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+      for (const entry of entries) {
         if (entry?.isIntersecting) {
           setActiveId(entry.target.getAttribute("id") || undefined);
         }
-      });
+      }
     }, options);
-    elements.forEach((el) => {
+    for (const el of elements) {
       if (el) {
         observer.current?.observe(el);
       }
-    });
+    }
     return () => observer.current?.disconnect();
   }, [selectors, options]);
 

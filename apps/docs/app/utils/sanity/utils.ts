@@ -40,7 +40,7 @@ export const filterDataToSingleItem = <T extends { _id: string }>(
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function blockContentToPlainText(blocks: any[] = []) {
-  if (!blocks || !blocks.length) {
+  if (!blocks || blocks.length === 0) {
     return "";
   }
   return (

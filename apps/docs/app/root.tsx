@@ -19,7 +19,7 @@ import {
   useRouteError,
 } from "@remix-run/react";
 import { Brand, Language, SporProvider, themes } from "@vygruppen/spor-react";
-import { ReactNode, useContext, useEffect, useRef } from "react";
+import { ReactNode, useContext, useEffect } from "react";
 
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";
@@ -55,23 +55,25 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   ];
 
   if (socialImage) {
-    meta.push({
-      name: "og:image",
-      content: urlBuilder.image(socialImage).width(1200).url(),
-    });
-    meta.push({
-      name: "og:image:width",
-      content: "1200",
-    });
-    meta.push({
-      name: "og:image:height",
-      content: "600",
-    });
-    meta.push({ name: "twitter:card", content: "summary_large_image" });
-    meta.push({
-      name: "twitter:image",
-      content: urlBuilder.image(socialImage).width(1200).url(),
-    });
+    meta.push(
+      {
+        name: "og:image",
+        content: urlBuilder.image(socialImage).width(1200).url(),
+      },
+      {
+        name: "og:image:width",
+        content: "1200",
+      },
+      {
+        name: "og:image:height",
+        content: "600",
+      },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:image",
+        content: urlBuilder.image(socialImage).width(1200).url(),
+      },
+    );
   }
 
   return meta;
@@ -160,10 +162,10 @@ const Document = withEmotionCache(
       // re-inject tags
       const tags = emotionCache.sheet.tags;
       emotionCache.sheet.flush();
-      tags.forEach((tag) => {
+      for (const tag of tags) {
         // eslint-disable-next-line
         (emotionCache.sheet as any)._insertTag(tag);
-      });
+      }
       // reset cache to reapply global styles
       clientStyleData.reset();
       // We need to exclude the clientStyleData and emotionCache from the dependency array, due to infinite re-renders
@@ -201,11 +203,6 @@ const Document = withEmotionCache(
     );
   },
 );
-
-function useConst<T>(value: T): T {
-  const ref = useRef(value);
-  return ref.current;
-}
 
 export default function App() {
   const loaderData = useLoaderData<typeof loader>();

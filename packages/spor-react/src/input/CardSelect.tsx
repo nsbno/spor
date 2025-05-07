@@ -9,7 +9,7 @@ import {
   DropdownDownFill18Icon,
   DropdownDownFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, ReactNode } from "react";
+import { forwardRef, ReactNode } from "react";
 
 import { Button, ButtonProps, StaticCard, StaticCardProps } from "..";
 

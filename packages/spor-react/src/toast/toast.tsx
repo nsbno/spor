@@ -13,7 +13,6 @@ import {
   InformationFill18Icon,
   SuccessFill18Icon,
 } from "@vygruppen/spor-icon-react";
-import React from "react";
 
 import { createTexts, useTranslation } from "@/i18n";
 

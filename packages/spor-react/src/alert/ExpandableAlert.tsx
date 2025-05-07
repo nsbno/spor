@@ -10,7 +10,7 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { AccordionItemContent } from "@/accordion";
 import { alertExpandableSlotRecipe } from "@/theme/slot-recipes/alert-expandable";

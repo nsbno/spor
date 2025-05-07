@@ -136,7 +136,6 @@ function getLoaderWidth(size: ButtonProps["size"]): string {
     case "md": {
       return "5rem";
     }
-    case "lg":
     default: {
       return "6rem";
     }

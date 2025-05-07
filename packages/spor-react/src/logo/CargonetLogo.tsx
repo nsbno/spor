@@ -1,5 +1,5 @@
 import { chakra } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 export type CargonetLogoProps = {
   /** The color of the logo

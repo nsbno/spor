@@ -12,7 +12,6 @@ import {
   SuccessFill24Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React from "react";
 
 import { createTexts, useTranslation } from "../i18n";
 import { AlertProps } from "./Alert";

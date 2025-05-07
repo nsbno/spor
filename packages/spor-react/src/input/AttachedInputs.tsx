@@ -1,7 +1,7 @@
 "use client";
 
 import { chakra, Group, RecipeVariantProps } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 import { attachedInputsRecipe } from "@/theme/recipes/attached-inputs";
 

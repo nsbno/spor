@@ -23,8 +23,8 @@ import React, { forwardRef } from "react";
 export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbRootProps>(
   ({ children, ...props }, ref) => {
     Breadcrumb.displayName = "Breadcrumb";
-    const validChildren = React.Children.toArray(children).filter(
-      React.isValidElement,
+    const validChildren = React.Children.toArray(children).filter((element) =>
+      React.isValidElement(element),
     );
 
     return (
@@ -49,8 +49,8 @@ export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbRootProps>(
   },
 );
 
-
-
-
-
-export {BreadcrumbCurrentLink, BreadcrumbEllipsis, BreadcrumbLink} from "@chakra-ui/react";
+export {
+  BreadcrumbCurrentLink,
+  BreadcrumbEllipsis,
+  BreadcrumbLink,
+} from "@chakra-ui/react";

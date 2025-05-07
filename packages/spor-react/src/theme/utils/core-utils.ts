@@ -18,7 +18,7 @@ export function coreBackground(state: coreBackgroundState) {
     case "disabled": {
       return surface("disabled");
     }
-    case "hover":
+
     default: {
       return { backgroundColor: "transparent" };
     }
@@ -57,7 +57,6 @@ export function coreBorder(state: BorderState) {
         outlineColor: "outline.error",
       };
     }
-    case "default":
     default: {
       return {
         outline: "1px solid",

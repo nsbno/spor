@@ -14,7 +14,6 @@ export function brandBackground(state: BrandBackgroundState) {
         backgroundColor: "brand.surface.hover",
       };
     }
-    case "default":
     default: {
       return {
         backgroundColor: "brand.surface",

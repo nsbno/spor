@@ -1,5 +1,5 @@
 import { BoxProps } from "@chakra-ui/react";
-import React, { forwardRef, useId } from "react";
+import { forwardRef, useId } from "react";
 
 import { SvgBox } from "./VyLogo";
 

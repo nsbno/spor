@@ -1,7 +1,6 @@
 "use client";
 import { Box, BoxProps, Center, VisuallyHidden } from "@chakra-ui/react";
 import { inlineLoaderDarkData } from "@vygruppen/spor-loader";
-import React from "react";
 
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";

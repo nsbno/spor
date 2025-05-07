@@ -7,7 +7,7 @@ import {
   isSameMonth,
   isToday,
 } from "@internationalized/date";
-import React, { PropsWithChildren, useEffect, useRef } from "react";
+import { PropsWithChildren, useEffect, useRef } from "react";
 import { useCalendarCell } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
 

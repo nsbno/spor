@@ -6,7 +6,7 @@ import {
   SeparatorProps as ChakraSeparatorProps,
   useRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { separatorRecipe } from "../theme/recipes/separator";
 

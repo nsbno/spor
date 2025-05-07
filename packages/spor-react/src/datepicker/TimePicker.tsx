@@ -6,7 +6,6 @@ import {
   DropdownLeftFill18Icon,
   DropdownRightFill18Icon,
 } from "@vygruppen/spor-icon-react";
-import React from "react";
 import { useTimeFieldState } from "react-stately";
 
 import { Field } from "@/input/Field";

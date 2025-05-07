@@ -15,7 +15,7 @@ import {
   ServiceFill24Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { createTexts, useTranslation } from "../i18n";
 import { alertServiceSlotRecipe } from "../theme/slot-recipes/alert-service";

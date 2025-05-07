@@ -12,7 +12,7 @@ import {
   ArrowLeftFill24Icon,
   CloseFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 import { Button, CloseButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";

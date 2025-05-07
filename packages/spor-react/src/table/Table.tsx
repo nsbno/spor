@@ -6,7 +6,7 @@ import {
   TableRootProps as ChakraTableProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { tableSlotRecipe } from "../theme/slot-recipes/table";
 

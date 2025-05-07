@@ -1,6 +1,6 @@
 "use client";
 import { Box, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 import { infoTagSlotRecipe } from "../theme/slot-recipes/info-tag";
 import { LineIcon } from "./LineIcon";
@@ -18,7 +18,7 @@ export type InfoTagProps = TagProps & PropsWithChildren<InfoTagVariantProps>;
  * ```tsx
  * <InfoTag variant="subway" title="3" description="Ringen" />
  * ```
- * They support three different sizes – `sm`, `md` and `lg`.
+ * They support three different sizes –`sm`, `md` and `lg`.
  *
  * ```tsx
  * <InfoTag

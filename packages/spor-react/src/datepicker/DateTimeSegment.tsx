@@ -1,6 +1,6 @@
 "use client";
 import { Box, useSlotRecipe } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren, RefObject, useRef } from "react";
+import { forwardRef, PropsWithChildren, RefObject, useRef } from "react";
 import { useDateSegment } from "react-aria";
 import { DateFieldState, DateSegment } from "react-stately";
 

@@ -9,7 +9,7 @@ import {
   Backward15MediaControllerFill30Icon,
   Forward15MediaControllerFill30Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { createTexts, useTranslation } from "..";
 import { mediaControllerSlotRecipe } from "../theme/slot-recipes/media-controller-button";

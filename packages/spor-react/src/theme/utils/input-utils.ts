@@ -42,7 +42,7 @@ export function inputVariant(state: InputState) {
         },
       };
     }
-    case "default":
+
     default: {
       return {
         ...coreBackground("default"),

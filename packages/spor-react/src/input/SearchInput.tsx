@@ -4,7 +4,7 @@ import {
   CloseOutline24Icon,
   SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 import { createTexts, Input, InputProps, useTranslation } from "..";
 import { IconButton } from "../button/IconButton";

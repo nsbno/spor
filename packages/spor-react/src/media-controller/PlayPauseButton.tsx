@@ -4,7 +4,7 @@ import {
   PauseMediaControllerFill24Icon,
   PlayMediaControllerFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { createTexts, MediaControllerVariantProps, useTranslation } from "..";
 

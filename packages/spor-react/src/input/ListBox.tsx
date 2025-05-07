@@ -72,7 +72,7 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
  *
  * @example
  * ```jsx
- * const { data, isLoading } = useSWR('/api/options')
+ * const { data, isLoading } = useSWR('/api/options')
  * const state = useListState({ items: data });
  * const ref = useRef(null);
  *
@@ -240,7 +240,7 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
           </Box>
         )}
         <List {...groupProps} padding={0} listStyleType="none">
-          {[...state.collection.getChildren?.(section.key) ?? []].map(
+          {[...(state.collection.getChildren?.(section.key) ?? [])].map(
             (item: Node<unknown>) => (
               <Option key={item.key} item={item} state={state} />
             ),

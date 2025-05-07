@@ -5,7 +5,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { IconComponent } from "@vygruppen/spor-icon-react";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 export type BadgeProps = ChakraBadgeProps & {
   icon?: IconComponent;

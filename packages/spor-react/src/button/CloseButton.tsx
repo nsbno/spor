@@ -5,7 +5,7 @@ import {
   CloseFill24Icon,
   CloseFill30Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 import { createTexts, useTranslation } from "../i18n";
 import { IconButton, IconButtonProps } from "./IconButton";

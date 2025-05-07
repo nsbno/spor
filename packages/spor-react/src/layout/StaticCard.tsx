@@ -1,6 +1,6 @@
 "use client";
 import { BoxProps, chakra, RecipeVariantProps } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 import { staticCardRecipe } from "../theme/recipes/static-card";
 

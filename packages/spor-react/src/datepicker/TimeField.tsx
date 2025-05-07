@@ -1,7 +1,7 @@
 "use client";
 import { Box, Flex } from "@chakra-ui/react";
 import { CalendarDateTime, Time } from "@internationalized/date";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { AriaTimeFieldProps, useTimeField } from "react-aria";
 import { DateSegment, TimeFieldState } from "react-stately";
 

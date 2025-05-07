@@ -13,7 +13,7 @@ import {
   WarningFill18Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { travelTagSlotRecipe } from "../theme/slot-recipes/travel-tag";
 import { LineIcon } from "./LineIcon";
@@ -172,7 +172,6 @@ const getDeviationLevelIcon = ({
     case "info": {
       return size === "lg" ? InformationFill24Icon : InformationFill18Icon;
     }
-    case "none":
     default: {
       return null;
     }

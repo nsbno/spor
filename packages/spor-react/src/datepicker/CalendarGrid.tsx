@@ -2,7 +2,6 @@
 
 import { Box, useSlotRecipe } from "@chakra-ui/react";
 import { endOfMonth, getWeeksInMonth } from "@internationalized/date";
-import React from "react";
 import { AriaCalendarGridProps, useCalendarGrid } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
 
@@ -44,7 +43,9 @@ export function CalendarGrid({
 
   // Get the number of weeks in the month so we can render the proper number of rows.
   const weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
-  const weeksInMonthRange = new Array(weeksInMonth).fill(0).map((_, i) => i);
+  const weeksInMonthRange = Array.from({ length: weeksInMonth })
+    .fill(0)
+    .map((_, i) => i);
   const recipe = useSlotRecipe({
     key: "datePicker",
     recipe: datePickerSlotRecipe,

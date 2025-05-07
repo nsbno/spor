@@ -5,7 +5,7 @@ import {
   RecipeVariantProps,
 } from "@chakra-ui/react";
 import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { linkRecipe } from "../theme/recipes/link";
 

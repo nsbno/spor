@@ -1,7 +1,6 @@
 "use client";
 import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
-import React from "react";
 
 import { Language, LanguageProvider, system, themes } from "..";
 import { ColorModeProvider } from "../color-mode";

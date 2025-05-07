@@ -1,7 +1,7 @@
 "use client";
 import { Box, useSlotRecipe } from "@chakra-ui/react";
 import { createCalendar, DateValue } from "@internationalized/date";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import {
   RangeCalendarProps as ReactAriaRangeCalendarProps,
   useRangeCalendar,

@@ -1,6 +1,6 @@
 "use client";
 import { ButtonProps, chakra, RecipeVariantProps } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 import { pressableCardRecipe } from "../theme/recipes/pressable-card";
 

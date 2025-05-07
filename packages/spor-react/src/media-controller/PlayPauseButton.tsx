@@ -32,6 +32,7 @@ export const PlayPauseButton = forwardRef<
   HTMLButtonElement,
   PlayPauseButtonProps
 >((props, ref) => {
+  PlayPauseButton.displayName = "PlayPauseButton";
   const { playing, disabled, size = "sm" } = props;
 
   const { t } = useTranslation();

@@ -60,6 +60,7 @@ export type TabsProps = Exclude<
     justify?: "start" | "center" | "end";
   };
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
+  Tabs.displayName = "Tabs";
   const { variant = "core", size = "sm" } = props;
   return <ChakraTabs.Root {...props} ref={ref} variant={variant} size={size} />;
 });

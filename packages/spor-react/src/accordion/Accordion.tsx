@@ -55,6 +55,7 @@ import {
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
   (props, ref) => {
+    Accordion.displayName = "Accordion";
     const { variant = "core", children, gap = 2, ...rest } = props;
     const recipe = useSlotRecipe({ key: "accordion" });
     const styles = recipe({ variant });

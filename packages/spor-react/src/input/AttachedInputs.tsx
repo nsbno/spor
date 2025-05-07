@@ -1,7 +1,7 @@
 "use client";
 
-import { chakra, Group, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { chakra, Group, RecipeVariantProps } from "@chakra-ui/react";
+import React, { forwardRef } from "react";
 
 import { attachedInputsRecipe } from "@/theme/recipes/attached-inputs";
 
@@ -28,5 +28,8 @@ export type AttachedInputsProps = RecipeVariantProps<
 const StyledGroup = chakra(Group, attachedInputsRecipe);
 
 export const AttachedInputs = forwardRef<HTMLDivElement, AttachedInputsProps>(
-  (props, ref) => <StyledGroup ref={ref} attached {...props} />,
+  (props, ref) => {
+    AttachedInputs.displayName = "AttachedInputs";
+    return <StyledGroup ref={ref} attached {...props} />;
+  },
 );

@@ -63,6 +63,7 @@ export const InfoTag = ({
         variant={variant}
         size={size}
         aria-label={title}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         {...(customProps as any)} // TODO: Fix this
       />
       <Box css={styles.textContainer}>

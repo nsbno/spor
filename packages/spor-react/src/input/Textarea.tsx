@@ -44,16 +44,17 @@ const useLabelHeight = (label: ReactNode | undefined) => {
     };
 
     const observer = new ResizeObserver(updateLabelHeight);
-    if (labelRef.current) {
-      observer.observe(labelRef.current);
+    const currentLabelRef = labelRef.current;
+    if (currentLabelRef) {
+      observer.observe(currentLabelRef);
     }
 
     // Initial calculation with a slight delay to ensure CSS is applied
     setTimeout(updateLabelHeight, 0);
 
     return () => {
-      if (labelRef.current) {
-        observer.unobserve(labelRef.current);
+      if (currentLabelRef) {
+        observer.unobserve(currentLabelRef);
       }
     };
   }, [label]);
@@ -75,6 +76,7 @@ const useLabelHeight = (label: ReactNode | undefined) => {
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (props, ref) => {
+    Textarea.displayName = "Textarea";
     const { label, variant = "core", ...fieldProps } = props;
     const recipe = useRecipe({ key: "textarea" });
     const styles = recipe({ variant });

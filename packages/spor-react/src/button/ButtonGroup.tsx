@@ -52,6 +52,7 @@ const Group = chakra(ChakraGroup, groupRecipe);
 
 export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
   (props, ref) => {
+    ButtonGroup.displayName = "ButtonGroup";
     const { children, disabled, grow, attached, ...rest } = props;
 
     return (

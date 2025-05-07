@@ -1,11 +1,5 @@
 "use client";
-import {
-  Box,
-  BoxProps,
-  chakra,
-  RecipeVariantProps,
-  Text,
-} from "@chakra-ui/react";
+import { BoxProps, chakra, RecipeVariantProps, Text } from "@chakra-ui/react";
 import React, { forwardRef, useEffect, useId, useRef, useState } from "react";
 import { useProgressBar } from "react-aria";
 
@@ -102,6 +96,7 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
     width,
     ...rest
   }: ProgressLoaderProps) => {
+    ProgressLoader.displayName = "ProgressLoader";
     const { t } = useTranslation();
     const currentLoadingText = useRotatingLabel({
       label,

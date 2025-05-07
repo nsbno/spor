@@ -45,6 +45,7 @@ export const PhoneNumberInput = forwardRef<
   HTMLInputElement,
   PhoneNumberInputProps
 >((props, ref) => {
+  PhoneNumberInput.displayName = "PhoneNumberInput";
   const {
     label: externalLabel,
     value: externalValue,

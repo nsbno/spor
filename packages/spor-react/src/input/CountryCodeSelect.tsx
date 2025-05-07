@@ -39,8 +39,8 @@ export const CountryCodeSelect = forwardRef<
   HTMLDivElement,
   CountryCodeSelectProps
 >((props, ref) => {
+  CountryCodeSelect.displayName = "CountryCodeSelect";
   const { t } = useTranslation();
-  const invalid = props.invalid;
 
   return (
     <Select

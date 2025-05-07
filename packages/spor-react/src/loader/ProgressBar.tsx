@@ -79,17 +79,16 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
   (
     {
       value,
-      colorPalette = "white",
       label,
       labelRotationDelay = 5000,
       isActive = true,
       showValueText = false,
       height = "0.5rem",
-      "aria-label": ariaLabel,
       ...rest
     },
     ref,
   ) => {
+    ProgressBar.displayName = "ProgressBar";
     const recipe = useSlotRecipe({ key: "progressbar" });
     const styles = recipe({});
     const currentLoadingText = useRotatingLabel({

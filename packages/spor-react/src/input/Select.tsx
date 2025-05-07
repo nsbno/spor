@@ -58,6 +58,7 @@ export type SelectProps = ChakraSelectRootProps &
 
 export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
   (props, ref) => {
+    Select.displayName = "Select";
     const { variant = "core", children, positioning, label, ...rest } = props;
     const recipe = useSlotRecipe({ key: "select" });
     const styles = recipe({ variant });
@@ -89,6 +90,7 @@ type SelectItemProps = ChakraSelect.ItemProps &
 
 export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
   (props, ref) => {
+    SelectItem.displayName = "SelectItem";
     const { item, children, description, ...rest } = props;
     const recipe = useSlotRecipe({ key: "select" });
     const styles = recipe();
@@ -218,8 +220,12 @@ export const SelectValueText = React.forwardRef<
     >
       <ChakraSelect.Context>
         {(select: {
-          selectedItems: any;
-          collection: { stringifyItem: (arg0: any) => any };
+          selectedItems: CollectionItem[];
+
+          collection: {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            stringifyItem: (arg0: any) => any;
+          } /* Find a way to not use any */;
         }) => {
           const items = select.selectedItems;
           if (items.length === 0) return placeholder;

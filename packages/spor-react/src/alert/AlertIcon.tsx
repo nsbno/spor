@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert as ChakraAlert, Box, useSlotRecipe } from "@chakra-ui/react";
+import { Alert as ChakraAlert, Box } from "@chakra-ui/react";
 import {
   AltTransportFill24Icon,
   ErrorFill24Icon,
@@ -12,7 +12,7 @@ import {
   SuccessFill24Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { PropsWithChildren } from "react";
+import React from "react";
 
 import { createTexts, useTranslation } from "../i18n";
 import { AlertProps } from "./Alert";

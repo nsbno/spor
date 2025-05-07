@@ -29,6 +29,7 @@ export type RadioProps = PropsWithChildren<RadioVariants> &
  */
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
+  Radio.displayName = "Radio";
   const { children, inputProps, rootRef, ...rest } = props;
 
   return (
@@ -49,6 +50,7 @@ type RadioGroupProps = Omit<
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
   (props, ref) => {
+    RadioGroup.displayName = "RadioGroup";
     return <ChakraRadioGroup.Root ref={ref} {...props} aria-labelledby="" />;
   },
 );

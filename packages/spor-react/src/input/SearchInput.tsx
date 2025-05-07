@@ -21,6 +21,7 @@ export type SearchInputProps = InputProps & {
 
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
   (props, ref) => {
+    SearchInput.displayName = "SearchInput";
     const { t } = useTranslation();
     const { variant = "core", onReset, label, value } = props;
     const clearButton = onReset && value;

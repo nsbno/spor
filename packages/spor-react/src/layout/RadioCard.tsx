@@ -4,7 +4,7 @@ import {
   RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, useId } from "react";
+import React, { forwardRef } from "react";
 
 import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
 
@@ -40,6 +40,7 @@ type RadioCardItemProps = Exclude<
 
 export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
   (props, ref) => {
+    RadioCard.displayName = "RadioCard";
     const { inputProps, children, value, ariaLabel } = props;
 
     return (
@@ -66,6 +67,7 @@ type RadioCardRootProps = RadioCardVariantProps &
 
 export const RadioCardGroup = forwardRef<HTMLDivElement, RadioCardRootProps>(
   (props, ref) => {
+    RadioCardGroup.displayName = "RadioCardGroup";
     const {
       children,
       variant,

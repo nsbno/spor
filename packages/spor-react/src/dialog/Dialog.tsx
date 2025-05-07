@@ -15,6 +15,7 @@ export const DialogContent = React.forwardRef<
   HTMLDivElement,
   DialogContentProps
 >((props, ref) => {
+  DialogContent.displayName = "DialogContent";
   const {
     children,
     portalled = true,

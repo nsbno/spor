@@ -39,6 +39,7 @@ const [RootPropsProvider, useRootProps] = createContext<ButtonVariantContext>({
 
 export const Pagination = React.forwardRef<HTMLDivElement, PaginationRootProps>(
   (props, ref) => {
+    Pagination.displayName = "Pagination";
     const { getHref, children, ...rest } = props;
     const recipe = useSlotRecipe({ key: "pagination" });
     const styles = recipe();
@@ -65,6 +66,7 @@ export const PaginationEllipsis = React.forwardRef<
   HTMLDivElement,
   ChakraPagination.EllipsisProps
 >((props, ref) => {
+  PaginationEllipsis.displayName = "PaginationEllipsis";
   return (
     <ListItem>
       <ChakraPagination.Ellipsis ref={ref} {...props} asChild>
@@ -78,6 +80,8 @@ export const PaginationItem = React.forwardRef<
   HTMLButtonElement,
   ChakraPagination.ItemProps
 >((props, ref) => {
+  PaginationItem.displayName = "PaginationItem";
+
   const rootProps = useRootProps();
   const { t } = useTranslation();
   const { page, totalPages } = usePaginationContext();
@@ -120,6 +124,7 @@ export const PaginationPrevTrigger = React.forwardRef<
   HTMLButtonElement,
   ChakraPagination.PrevTriggerProps
 >((props, ref) => {
+  PaginationPrevTrigger.displayName = "PaginationPrevTrigger";
   const { page } = usePaginationContext();
   const recipe = useSlotRecipe({ key: "pagination" });
   const styles = recipe();
@@ -168,6 +173,8 @@ export const PaginationNextTrigger = React.forwardRef<
   HTMLButtonElement,
   ChakraPagination.NextTriggerProps
 >((props, ref) => {
+  PaginationNextTrigger.displayName = "PaginationNextTrigger";
+
   const { page, totalPages } = usePaginationContext();
   const recipe = useSlotRecipe({ key: "pagination" });
   const styles = recipe();

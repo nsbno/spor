@@ -24,6 +24,7 @@ const ClipboardIcon = React.forwardRef<
   HTMLDivElement,
   ChakraClipboard.IndicatorProps
 >((props, ref) => {
+  ClipboardIcon.displayName = "ClipboardIcon";
   return (
     <ChakraClipboard.Indicator
       copied={<CheckmarkFill18Icon />}
@@ -39,6 +40,7 @@ const ClipboardCopyText = React.forwardRef<
   HTMLDivElement,
   ChakraClipboard.IndicatorProps
 >((props, ref) => {
+  ClipboardCopyText.displayName = "ClipboardCopyText";
   const { t } = useTranslation();
   return (
     <ChakraClipboard.Indicator
@@ -57,6 +59,7 @@ export const ClipboardButton = React.forwardRef<
   HTMLButtonElement,
   ClipboardButtonProps
 >((props, ref) => {
+  ClipboardButton.displayName = "ClipboardButton";
   return (
     <ChakraClipboard.Trigger asChild>
       <Button ref={ref} size="xs" leftIcon={<ClipboardIcon />} {...props}>

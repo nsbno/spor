@@ -72,7 +72,9 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     },
     ref,
   ) => {
+    Popover.displayName = "Popover";
     const internalRef = useRef<HTMLDivElement>(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const popoverRef = ref ?? (internalRef as any);
 
     const { popoverProps, underlayProps } = usePopover(

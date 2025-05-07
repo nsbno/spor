@@ -40,5 +40,8 @@ type PressableCardProps = RecipeVariantProps<typeof pressableCardRecipe> &
   ButtonProps;
 
 export const PressableCard = forwardRef<HTMLDivElement, PressableCardProps>(
-  (props, ref) => <PressableCardButton {...props} ref={ref} />,
+  (props, ref) => {
+    PressableCard.displayName = "PressableCard";
+    return <PressableCardButton {...props} ref={ref} />;
+  },
 );

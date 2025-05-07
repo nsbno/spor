@@ -54,6 +54,7 @@ const [RootDrawerProvider, useRootDrawerProps] =
 
 export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
   (props, ref) => {
+    DrawerContent.displayName = "DrawerContent";
     const { children, portalled = true, portalRef, ...rest } = props;
     const { size, placement } = useRootDrawerProps();
     const sizeNotFull = size !== "full";
@@ -71,31 +72,30 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
   },
 );
 
-export const CloseDrawerLine = forwardRef<HTMLButtonElement, {}>(
-  (props, ref) => {
-    const { t } = useTranslation();
-    return (
-      <ChakraDrawer.CloseTrigger
-        {...props}
-        ref={ref}
-        position="relative"
-        insetEnd="unset"
-        aria-label={t(texts.close)}
-        cursor="pointer"
-        top={0}
-        paddingY={2}
-      >
-        <Box
-          width={7}
-          height={1}
-          backgroundColor="silver"
-          borderRadius="xs"
-          marginX="auto"
-        />
-      </ChakraDrawer.CloseTrigger>
-    );
-  },
-);
+export const CloseDrawerLine = forwardRef<HTMLButtonElement>((props, ref) => {
+  CloseDrawerLine.displayName = "CloseDrawerLine";
+  const { t } = useTranslation();
+  return (
+    <ChakraDrawer.CloseTrigger
+      {...props}
+      ref={ref}
+      position="relative"
+      insetEnd="unset"
+      aria-label={t(texts.close)}
+      cursor="pointer"
+      top={0}
+      paddingY={2}
+    >
+      <Box
+        width={7}
+        height={1}
+        backgroundColor="silver"
+        borderRadius="xs"
+        marginX="auto"
+      />
+    </ChakraDrawer.CloseTrigger>
+  );
+});
 
 export const DrawerCloseTrigger = forwardRef<
   HTMLButtonElement,
@@ -120,6 +120,7 @@ export const DrawerBackTrigger = forwardRef<
   HTMLButtonElement,
   ChakraDrawer.CloseTriggerProps
 >((props, ref) => {
+  DrawerBackTrigger.displayName = "DrawerBackTrigger";
   const { t } = useTranslation();
   return (
     <ChakraDrawer.CloseTrigger asChild {...props} ref={ref} top="0">
@@ -134,6 +135,7 @@ export const DrawerFullScreenHeader = forwardRef<
   HTMLDivElement,
   DrawerFullScreenHeaderProps
 >((props, ref) => {
+  DrawerFullScreenHeader.displayName = "DrawerFullScreenHeader";
   const { backTrigger = true, title } = props;
   return (
     <ChakraDrawer.Header {...props} ref={ref} asChild>

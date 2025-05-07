@@ -11,11 +11,14 @@ export type BadgeProps = ChakraBadgeProps & {
   icon?: IconComponent;
 };
 
-export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
-  ({ icon, children, ...props }, ref) => (
+export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
+  { icon, children, ...props },
+  ref,
+) {
+  return (
     <ChakraBadge ref={ref} {...props}>
       {children}
       {icon && <Box as={icon} />}
     </ChakraBadge>
-  ),
-);
+  );
+});

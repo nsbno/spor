@@ -1,9 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import tokens from "@vygruppen/spor-design-tokens";
 
-import { coreBackground, coreBorder, coreText } from "../utils/core-utils";
-import { floatingBackground, floatingBorder } from "../utils/floating-utils";
-import { outlineBorder } from "../utils/outline-utils";
 import { radioCardAnatomy } from "./anatomy";
 
 export const radioCardSlotRecipe = defineSlotRecipe({

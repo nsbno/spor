@@ -1,9 +1,5 @@
 "use client";
-import {
-  PopoverCloseTrigger,
-  usePopover,
-  usePopoverContext,
-} from "@ark-ui/react";
+import { PopoverCloseTrigger, usePopoverContext } from "@ark-ui/react";
 import {
   Box,
   BoxProps,
@@ -16,7 +12,6 @@ import React, {
   forwardRef,
   PropsWithChildren,
   useEffect,
-  useRef,
   useState,
 } from "react";
 
@@ -56,12 +51,7 @@ export type NudgeProps = {
 } & PopoverRootProps;
 
 export const Nudge = (props: NudgeProps) => {
-  const {
-    introducedDate,
-    defaultOpen = props.open === undefined ? true : undefined, // defaultOpen defaults to true if open is undefined
-    size = "md",
-    ...rest
-  } = props;
+  const { introducedDate, size = "md", ...rest } = props;
 
   if (isNudgeExpired(introducedDate)) {
     logExpirationWarning();
@@ -75,11 +65,13 @@ export const NudgeTrigger = forwardRef<
   HTMLButtonElement,
   ChakraPopover.TriggerProps
 >(({ ...props }, ref) => {
+  NudgeTrigger.displayName = "NudgeTrigger";
   return <PopoverTrigger {...props} ref={ref} />;
 });
 
 export const NudgeContent = forwardRef<HTMLDivElement, PopoverProps>(
   ({ showCloseButton = true, children, ...props }, ref) => {
+    NudgeContent.displayName = "NudgeContent";
     const [currentStep, setCurrentStep] = useState(1);
     const childrenArray = React.Children.toArray(children); // Convert children to an array
 
@@ -134,7 +126,7 @@ export const NudgeContent = forwardRef<HTMLDivElement, PopoverProps>(
   },
 );
 
-export const NudgeActions = ({ className, ...props }: BoxProps) => {
+export const NudgeActions = ({ ...props }: BoxProps) => {
   const { colorMode } = useColorMode();
 
   return (
@@ -208,6 +200,7 @@ export const NudgeCloseTrigger = forwardRef<
   HTMLButtonElement,
   ChakraPopover.TriggerProps
 >(({ children, ...props }, ref) => {
+  NudgeCloseTrigger.displayName = "NudgeCloseTrigger";
   const isStringChild = typeof children === "string";
 
   return (

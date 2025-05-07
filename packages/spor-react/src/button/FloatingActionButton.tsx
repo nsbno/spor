@@ -42,7 +42,6 @@ export const FloatingActionButton = forwardRef<
 >(
   (
     {
-      as,
       children,
       icon,
       variant,
@@ -52,6 +51,7 @@ export const FloatingActionButton = forwardRef<
     },
     ref,
   ) => {
+    FloatingActionButton.displayName = "FloatingActionButton";
     const [isTextVisible, setIsTextVisible] = React.useState(
       externalIsTextVisible !== undefined ? externalIsTextVisible : false,
     );

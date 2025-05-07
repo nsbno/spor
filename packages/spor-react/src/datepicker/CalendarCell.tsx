@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, ConditionalValue, useSlotRecipe } from "@chakra-ui/react";
+import { Box, useSlotRecipe } from "@chakra-ui/react";
 import {
   CalendarDate,
   DateValue,
@@ -27,7 +27,7 @@ export function CalendarCell({
   currentMonth,
   variant,
 }: CalendarCellProps) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLButtonElement>(null);
   const {
     cellProps,
     buttonProps,
@@ -44,7 +44,7 @@ export function CalendarCell({
   });
   const styles = recipe({ variant });
 
-  const stateProps: Record<string, any> = {};
+  const stateProps: Record<string, unknown> = {};
   if (isSelected) {
     stateProps["data-selected"] = true;
   }
@@ -64,7 +64,7 @@ export function CalendarCell({
   TODO: Follow up with react-spectrum to see if they can solve it on their end
   */
   useEffect(() => {
-    (ref as any)?.current?.addEventListener(
+    ref.current?.addEventListener(
       "touchend",
       (event: TouchEvent) => {
         event.preventDefault();

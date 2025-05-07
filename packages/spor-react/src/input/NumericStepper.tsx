@@ -68,23 +68,21 @@ export const NumericStepper = React.forwardRef<
   HTMLDivElement,
   NumericStepperProps
 >(
-  (
-    {
-      name: nameProp,
-      id: idProp,
-      value: valueProp,
-      defaultValue = 1,
-      onChange: onChangeProp,
-      minValue = 0,
-      maxValue = 99,
-      disabled,
-      withInput = true,
-      stepSize = 1,
-      showZero = false,
-      ariaLabelContext = { singular: "", plural: "" },
-    }: NumericStepperProps,
-    ref,
-  ) => {
+  ({
+    name: nameProp,
+    id: idProp,
+    value: valueProp,
+    defaultValue = 1,
+    onChange: onChangeProp,
+    minValue = 0,
+    maxValue = 99,
+    disabled,
+    withInput = true,
+    stepSize = 1,
+    showZero = false,
+    ariaLabelContext = { singular: "", plural: "" },
+  }: NumericStepperProps) => {
+    NumericStepper.displayName = "NumericStepper";
     const addButtonRef = useRef<HTMLButtonElement>(null);
     const { t } = useTranslation();
     const recipe = useSlotRecipe({ recipe: numericStepperRecipe });
@@ -208,6 +206,7 @@ const VerySmallButton = React.forwardRef<
   HTMLButtonElement,
   VerySmallButtonProps
 >((props, ref) => {
+  VerySmallButton.displayName = "VerySmallButton";
   const recipe = useSlotRecipe({ recipe: numericStepperRecipe });
   const styles = recipe({ colorPalette: "default" });
   return (

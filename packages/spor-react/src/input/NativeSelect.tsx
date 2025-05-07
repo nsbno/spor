@@ -1,9 +1,9 @@
 "use client";
 import {
   NativeSelect as ChakraNativeSelect,
+  NativeSelectFieldProps as ChakraNativeSelectFieldProps,
   RecipeVariantProps,
   useSlotRecipe,
-  NativeSelectFieldProps as ChakraNativeSelectFieldProps,
 } from "@chakra-ui/react";
 import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
 import * as React from "react";
@@ -46,7 +46,6 @@ export const NativeSelect = React.forwardRef<
   NativeSelectdProps
 >(function NativeSelect(props, ref) {
   const {
-    icon,
     children,
     variant = "core",
     label,

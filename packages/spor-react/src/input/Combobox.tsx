@@ -59,6 +59,7 @@ export type ComboboxProps<T> = Exclude<
 
 export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
   (props) => {
+    Combobox.displayName = "Combobox";
     const {
       label,
       loading,
@@ -82,7 +83,6 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
       paddingY,
       emptyContent,
       inputRef: externalInputRef,
-      allowsEmptyCollection /* Is this being used? */,
       children,
       variant,
     } = props;
@@ -122,7 +122,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
     };
 
     const {
-      inputProps: { size, ...inputProps },
+      inputProps: { ...inputProps },
       listBoxProps,
     } = useComboBox(
       {
@@ -177,7 +177,8 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
         {state.isOpen && !loading && (
           <Popover
             state={state}
-            triggerRef={inputRef as any}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            triggerRef={inputRef as any} /* Find a way to not use type any */
             ref={popoverRef}
             isNonModal
             placement="bottom start"
@@ -220,7 +221,7 @@ const useInputWidth = (inputRef: React.RefObject<HTMLInputElement>) => {
     }, 67);
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, []);
+  }, [inputRef]);
   return inputWidth;
 };
 
@@ -231,6 +232,7 @@ function styleProps(obj: Record<string, unknown>): Record<string, unknown> {
 }
 
 const debounce = (fn: () => void, ms = 100) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let timer: any;
   return () => {
     clearTimeout(timer);

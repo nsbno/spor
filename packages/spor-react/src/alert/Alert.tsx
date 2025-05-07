@@ -45,6 +45,8 @@ export type AlertProps = Omit<ChakraAlert.RootProps, "colorPalette"> & {
  */
 
 export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
+  Alert.displayName = "Alert";
+
   const {
     title,
     showIndicator = true,

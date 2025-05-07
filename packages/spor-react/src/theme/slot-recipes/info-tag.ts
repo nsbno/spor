@@ -1,6 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 
-import { coreBorder } from "../utils/core-utils";
 import { infoTagAnatomy } from "./anatomy";
 import { travelTagSlotRecipe } from "./travel-tag";
 

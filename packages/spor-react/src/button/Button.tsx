@@ -67,6 +67,7 @@ export type ButtonProps = Exclude<
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
+    Button.displayName = "Button";
     const {
       loading,
       disabled,
@@ -141,7 +142,7 @@ function getLoaderWidth(size: ButtonProps["size"]): string {
 function useCorrectAriaLabel(props: ButtonProps): string {
   const { t } = useTranslation();
   if (props.loading) {
-    return String(props.loadingText) ?? t(texts.loadingText);
+    return props.loadingText ? String(props.loadingText) : t(texts.loadingText);
   }
   return props["aria-label"] as string;
 }

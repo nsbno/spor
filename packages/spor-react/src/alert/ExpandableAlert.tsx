@@ -15,7 +15,6 @@ import React, { forwardRef, PropsWithChildren } from "react";
 import { AccordionItemContent } from "@/accordion";
 import { alertExpandableSlotRecipe } from "@/theme/slot-recipes/alert-expandable";
 
-import { AlertProps } from "./Alert";
 import { AlertIcon } from "./AlertIcon";
 
 type ExpandableAlertVariantProps = RecipeVariantProps<
@@ -62,6 +61,7 @@ type ExpandableAlertProps = PropsWithChildren<ExpandableAlertVariantProps> &
  */
 export const ExpandableAlert = forwardRef<HTMLDivElement, ExpandableAlertProps>(
   (props, ref) => {
+    ExpandableAlert.displayName = "ExpandableAlert";
     const {
       variant = "info",
       children,

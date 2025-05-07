@@ -15,14 +15,10 @@ export default defineConfig([
     plugins: {
       js,
       "simple-import-sort": simpleImportSort,
-      unicorn: eslintPluginUnicorn,
     },
     rules: {
       "simple-import-sort/imports": "warn",
       "simple-import-sort/exports": "warn",
-      "unicorn/prevent-abbreviations": "off",
-      "unicorn/no-null": "off",
-      "unicorn/filename-case": "off",
     },
     extends: ["js/recommended"],
   },
@@ -33,7 +29,16 @@ export default defineConfig([
   js.configs.recommended,
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+  pluginReact.configs.flat["jsx-runtime"],
   reactHooks.configs["recommended-latest"],
   jsxA11y.flatConfigs.recommended,
   eslintConfigPrettier,
+  eslintPluginUnicorn.configs.recommended,
+  {
+    rules: {
+      "unicorn/prevent-abbreviations": "off",
+      "unicorn/no-null": "off",
+      "unicorn/filename-case": "off",
+    },
+  },
 ]);

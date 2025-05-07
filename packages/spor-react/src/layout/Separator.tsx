@@ -20,6 +20,7 @@ type SeparatorProps = Exclude<ChakraSeparatorProps, "size" | "variant"> &
 
 export const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
   (props, ref) => {
+    Separator.displayName = "Separator";
     const {
       size = "md",
       variant = "solid",

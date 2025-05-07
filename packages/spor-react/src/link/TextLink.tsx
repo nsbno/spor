@@ -7,7 +7,6 @@ import {
 import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, PropsWithChildren } from "react";
 
-import { createTexts, useTranslation } from "..";
 import { linkRecipe } from "../theme/recipes/link";
 
 type linkVariantProps = RecipeVariantProps<typeof linkRecipe>;
@@ -31,7 +30,7 @@ export type LinkProps = Exclude<ChakraLinkProps, "variant"> &
  */
 export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ children, ...props }, ref) => {
-    const { t } = useTranslation();
+    TextLink.displayName = "TextLink";
     const external =
       props.external !== undefined
         ? props.external
@@ -44,12 +43,3 @@ export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
     );
   },
 );
-
-const texts = createTexts({
-  externalLink: {
-    nb: "Ekstern lenke",
-    nn: "Ekstern lenke",
-    sv: "Extern länk",
-    en: "External link",
-  },
-});

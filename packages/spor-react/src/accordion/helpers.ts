@@ -1,5 +1,6 @@
 type WarnAboutMismatchingIcon = {
-  icon: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  icon: any; //See if we can fint another type for this
 };
 
 export const warnAboutMismatchingIcon = ({

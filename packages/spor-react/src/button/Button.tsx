@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import {
   Box,
   Button as ChakraButton,
@@ -93,6 +92,7 @@ const LoadingContent = ({
   </>
 );
 
+// eslint-disable-next-line react/display-name
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -116,21 +116,26 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ? String(loadingText ?? t(texts.loadingText))
       : (rest["aria-label"] as string);
 
-    const content = asChild
-      ? (children as React.ReactElement).props.children
-      : children;
+    const renderContent = () => {
+      const content = asChild
+        ? (children as React.ReactElement).props.children
+        : children;
 
-    const finalContent = loading ? (
-      <LoadingContent size={size} loadingText={loadingText}>
+      if (loading)
+        return (
+          <LoadingContent size={size} loadingText={loadingText}>
+            <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
+              {content}
+            </ButtonContent>
+          </LoadingContent>
+        );
+
+      return (
         <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
           {content}
         </ButtonContent>
-      </LoadingContent>
-    ) : (
-      <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
-        {content}
-      </ButtonContent>
-    );
+      );
+    };
 
     return (
       <ChakraButton
@@ -146,9 +151,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {asChild
           ? cloneElement(children as React.ReactElement, {
-              children: finalContent,
+              children: renderContent(),
             })
-          : finalContent}
+          : renderContent()}
       </ChakraButton>
     );
   },

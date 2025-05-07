@@ -1,4 +1,4 @@
-import { Center, Flex } from "@chakra-ui/react";
+import { Center, CenterProps, Flex } from "@chakra-ui/react";
 import { Link, useMatches, useResolvedPath } from "@remix-run/react";
 
 type SiteNavigationProps = {
@@ -20,8 +20,8 @@ type NavigationItemProps = {
 };
 export const NavigationLink = ({ children, href }: NavigationItemProps) => {
   const isActive = useIsActive(href);
-  const linkProps: any = href.match(/^https?:\/\//)
-    ? { as: "a", href }
+  const linkProps = /^https?:\/\//.test(href)
+    ? ({ as: "a", href } as Partial<CenterProps>)
     : { as: Link, to: href };
   return (
     <Center
@@ -48,7 +48,7 @@ export const NavigationLink = ({ children, href }: NavigationItemProps) => {
   );
 };
 
-const useIsActive = (to: string, end: boolean = false) => {
+const useIsActive = (to: string) => {
   const resolved = useResolvedPath(to);
   const matches = useMatches();
   // TODO: This doesn't really work for nested routes

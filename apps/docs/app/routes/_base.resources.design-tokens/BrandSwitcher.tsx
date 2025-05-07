@@ -38,7 +38,7 @@ export const BrandSwitcher = () => {
           <TabsList onChange={(v) => console.log(v)}>
             {[Brand.VyDigital, Brand.VyUtvikling, Brand.CargoNet].map(
               (brand) => (
-                <TabsTrigger width={[null, 100]} value={brand}>
+                <TabsTrigger width={[null, 100]} value={brand} key={brand}>
                   {brand}
                 </TabsTrigger>
               ),

@@ -38,8 +38,9 @@ export const filterDataToSingleItem = <T extends { _id: string }>(
  *
  * Borrowed from https://www.sanity.io/docs/presenting-block-text#ac67a867dd69
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function blockContentToPlainText(blocks: any[] = []) {
-  if (!blocks || !blocks.length) {
+  if (!blocks || blocks.length === 0) {
     return "";
   }
   return (
@@ -53,7 +54,9 @@ export function blockContentToPlainText(blocks: any[] = []) {
         }
         // loop through the children spans, and join the
         // text strings
-        return block.children.map((child: any) => child.text).join("");
+        return block.children
+          .map((child: { text: string }) => child.text)
+          .join("");
       })
       // join the paragraphs leaving split by two linebreaks
       .join("\n\n")

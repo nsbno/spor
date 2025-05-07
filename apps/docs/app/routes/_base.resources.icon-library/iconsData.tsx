@@ -18,19 +18,23 @@ export type IconMetadata = {
   fileName: string;
 };
 
-export const iconsByCategory = Object.entries(
-  iconsMetadata as unknown as OriginalIconMetadataImportType,
-).reduce((prev, [importName, metadata]) => {
-  const category = metadata.category || "misc";
-  if (!prev[category]) {
-    prev[category] = [];
+export const iconsByCategory = (() => {
+  const result: IconsByCategory = {};
+  const entries = Object.entries(
+    iconsMetadata as unknown as OriginalIconMetadataImportType,
+  );
+  for (const [importName, metadata] of entries) {
+    const category = metadata.category || "misc";
+    if (!result[category]) {
+      result[category] = [];
+    }
+    result[category].push({
+      importName: importName as IconKey,
+      ...metadata,
+    });
   }
-  prev[category].push({
-    importName: importName as IconKey,
-    ...metadata,
-  });
-  return prev;
-}, {} as IconsByCategory);
+  return result;
+})();
 
 /**
  * Returns the icon component for a given import name, or a noop if not found.

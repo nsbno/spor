@@ -19,7 +19,7 @@ import { LinkableHeading } from "../../../features/portable-text/LinkableHeading
 type ComponentDocsProps = {
   component: {
     name: string;
-    content: any[];
+    content: unknown[];
     props: {
       platform: "react" | "react-native" | "react, react-native";
       type: "other" | string;

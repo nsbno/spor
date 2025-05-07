@@ -1,5 +1,4 @@
 import { LoaderFunction } from "@remix-run/node";
-
 import { getIconsZipFile } from "~/utils/icons.server";
 
 export const loader: LoaderFunction = async () => {
@@ -8,7 +7,7 @@ export const loader: LoaderFunction = async () => {
     headers: {
       "Content-Type": "application/zip",
       "Content-Length": zipFile.length.toString(),
-      "Content-Disposition": 'attachment; filename="spor-icons.zip"',
+      "Content-Disposition": 'attachment; filename="all-icons.zip"',
     },
   });
 };

@@ -7,7 +7,6 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-
 import { SearchBar } from "./SearchBar";
 import { SearchFilterProvider } from "./SearchFilterContext";
 import { SearchResults } from "./SearchResults";

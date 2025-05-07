@@ -89,9 +89,9 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
       variant:
         variant === "custom" && "customIconVariant" in rest
           ? rest.customIconVariant
-          : (variant === "custom"
+          : variant === "custom"
             ? "local-train"
-            : variant),
+            : variant,
       size,
     });
     if (!Icon) {

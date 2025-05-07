@@ -100,7 +100,7 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
         maxWidth={maxWidth}
       >
         {state.collection.size === 0 && props.emptyContent}
-        {Array.from(state.collection).map((item) =>
+        {[...state.collection].map((item) =>
           item.type === "section" ? (
             <ListBoxSection key={item.key} section={item} state={state} />
           ) : (
@@ -240,7 +240,7 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
           </Box>
         )}
         <List {...groupProps} padding={0} listStyleType="none">
-          {Array.from(state.collection.getChildren?.(section.key) ?? []).map(
+          {[...state.collection.getChildren?.(section.key) ?? []].map(
             (item: Node<unknown>) => (
               <Option key={item.key} item={item} state={state} />
             ),

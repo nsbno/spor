@@ -20,17 +20,17 @@ export function slugify(text: string | string[], maxLength = 50): string {
   return (
     text
       .normalize("NFD") // Normalize to NFD Unicode form
-      .replace(/[\u0300-\u036f]/g, "") // Remove diacritics
-      .replace(/[\u00C6\u00E6]/g, "ae") // Replace Æ, æ
-      .replace(/[\u00D8\u00F8]/g, "oe") // Replace Ø, ø
-      .replace(/[\u00C5\u00E5]/g, "aa") // Replace Å, å
+      .replaceAll(/[\u0300-\u036F]/g, "") // Remove diacritics
+      .replaceAll(/[\u00C6\u00E6]/g, "ae") // Replace Æ, æ
+      .replaceAll(/[\u00D8\u00F8]/g, "oe") // Replace Ø, ø
+      .replaceAll(/[\u00C5\u00E5]/g, "aa") // Replace Å, å
       // Extend the replacement rules as needed
       .toLowerCase()
-      .replace(/\s+/g, "-") // Replace spaces with -
-      .replace(/[^\w-]+/g, "") // Remove all non-word chars
-      .replace(/--+/g, "-") // Replace multiple - with single -
+      .replaceAll(/\s+/g, "-") // Replace spaces with -
+      .replaceAll(/[^\w-]+/g, "") // Remove all non-word chars
+      .replaceAll(/--+/g, "-") // Replace multiple - with single -
       .replace(/^-+/, "") // Trim - from start of text
       .replace(/-+$/, "")
-      .substring(0, maxLength)
+      .slice(0, Math.max(0, maxLength))
   );
 }

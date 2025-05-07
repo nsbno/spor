@@ -41,22 +41,30 @@ export const AlertIcon = ({ variant, customIcon }: AlertIconProps) => {
 
 const getIcon = (variant: AlertProps["variant"]) => {
   switch (variant) {
-    case "info":
+    case "info": {
       return InformationFill24Icon;
-    case "success":
+    }
+    case "success": {
       return SuccessFill24Icon;
-    case "important":
+    }
+    case "important": {
       return WarningFill24Icon;
-    case "alt":
+    }
+    case "alt": {
       return AltTransportFill24Icon;
-    case "error":
+    }
+    case "error": {
       return ErrorFill24Icon;
-    case "error-secondary":
+    }
+    case "error-secondary": {
       return ErrorOutline24Icon;
-    case "neutral":
+    }
+    case "neutral": {
       return QuestionFill24Icon;
-    case "service":
+    }
+    case "service": {
       return ServiceFill24Icon;
+    }
   }
 };
 

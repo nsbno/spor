@@ -5,7 +5,7 @@ import { InputState } from "./types";
 
 export function inputVariant(state: InputState) {
   switch (state) {
-    case "base":
+    case "base": {
       return {
         ...coreBackground("default"),
         ...coreBorder("default"),
@@ -21,7 +21,8 @@ export function inputVariant(state: InputState) {
           ...coreBorder("selected"),
         },
       };
-    case "floating":
+    }
+    case "floating": {
       return {
         boxShadow: "sm",
         ...floatingBackground("default"),
@@ -40,8 +41,9 @@ export function inputVariant(state: InputState) {
           borderColor: "floating.border.selected",
         },
       };
+    }
     case "default":
-    default:
+    default: {
       return {
         ...coreBackground("default"),
         ...coreBorder("default"),
@@ -57,6 +59,7 @@ export function inputVariant(state: InputState) {
           ...coreBorder("selected"),
         },
       };
+    }
   }
 }
 

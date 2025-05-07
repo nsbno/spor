@@ -32,9 +32,9 @@ export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ children, ...props }, ref) => {
     TextLink.displayName = "TextLink";
     const external =
-      props.external !== undefined
-        ? props.external
-        : Boolean(props.href?.match(/^https?:\/\//));
+      props.external === undefined
+        ? Boolean(props.href?.match(/^https?:\/\//))
+        : props.external;
     return (
       <ChakraLink {...props} ref={ref}>
         {children}

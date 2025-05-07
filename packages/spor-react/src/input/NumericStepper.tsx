@@ -133,9 +133,9 @@ export const NumericStepper = React.forwardRef<
             visibility={!showZero && value === 0 ? "hidden" : "visible"}
             aria-live="assertive"
             aria-label={
-              ariaLabelContext.plural !== ""
-                ? t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
-                : ""
+              ariaLabelContext.plural === ""
+                ? ""
+                : t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
             }
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               const numericInput = Number(e.target.value);
@@ -157,9 +157,9 @@ export const NumericStepper = React.forwardRef<
             visibility={!showZero && value === 0 ? "hidden" : "visible"}
             aria-live="assertive"
             aria-label={
-              ariaLabelContext.plural !== ""
-                ? t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
-                : ""
+              ariaLabelContext.plural === ""
+                ? ""
+                : t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
             }
           >
             {value}

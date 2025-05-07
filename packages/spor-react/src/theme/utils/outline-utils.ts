@@ -3,17 +3,20 @@ import { State, Subset } from "./types";
 type OutlineBorderState = Subset<State, "default" | "error" | "focus">;
 export function outlineBorder(state: OutlineBorderState) {
   switch (state) {
-    case "error":
+    case "error": {
       return {
         outlineColor: "outline.error",
       };
-    case "focus":
+    }
+    case "focus": {
       return {
         outlineColor: "outline.focus",
       };
-    default:
+    }
+    default: {
       return {
         outlineColor: "outline",
       };
+    }
   }
 }

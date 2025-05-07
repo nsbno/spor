@@ -96,7 +96,7 @@ export const NudgeContent = forwardRef<HTMLDivElement, PopoverProps>(
     const totalSteps = wizardPages.length;
     const isLastStep = totalSteps === currentStep;
 
-    if (!wizardPages.length) {
+    if (wizardPages.length === 0) {
       return (
         <PopoverContent showCloseButton={showCloseButton} {...props} ref={ref}>
           {children}

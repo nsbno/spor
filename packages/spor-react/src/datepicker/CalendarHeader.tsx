@@ -44,7 +44,7 @@ export function CalendarHeader({
     <Flex alignItems="center" paddingBottom="4" justifyContent="space-between">
       <CalendarNavigator
         title={
-          title ? title : isYearPickerVisible ? monthTitle : monthAndYearTitle
+          title ? title : (isYearPickerVisible ? monthTitle : monthAndYearTitle)
         }
         unit="month"
         onPrevious={() =>

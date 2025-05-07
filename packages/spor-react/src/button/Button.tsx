@@ -127,15 +127,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 function getLoaderWidth(size: ButtonProps["size"]): string {
   switch (size) {
-    case "xs":
+    case "xs": {
       return "4rem";
-    case "sm":
+    }
+    case "sm": {
       return "4rem";
-    case "md":
+    }
+    case "md": {
       return "5rem";
+    }
     case "lg":
-    default:
+    default: {
       return "6rem";
+    }
   }
 }
 

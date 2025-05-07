@@ -104,7 +104,7 @@ export const PhoneNumberInput = forwardRef<
           onChange={(e) => {
             const target = e.target as HTMLInputElement;
             // Removes everything but numbers, spaces and dashes
-            const strippedValue = target.value.replace(/[^\d\s-]/g, "");
+            const strippedValue = target.value.replaceAll(/[^\d\s-]/g, "");
             onChange({
               countryCode: value.countryCode,
               nationalNumber: strippedValue,

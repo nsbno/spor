@@ -2,9 +2,6 @@
 
 import {
   Breadcrumb as ChakraBreadcrumb,
-  BreadcrumbCurrentLink as ChakraBreadcrumbCurrentLink,
-  BreadcrumbEllipsis as ChakraBreadcrumbEllipsis,
-  BreadcrumbLink as ChakraBreadcrumbLink,
   BreadcrumbRootProps,
 } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
@@ -52,6 +49,8 @@ export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbRootProps>(
   },
 );
 
-export const BreadcrumbLink = ChakraBreadcrumbLink;
-export const BreadcrumbCurrentLink = ChakraBreadcrumbCurrentLink;
-export const BreadcrumbEllipsis = ChakraBreadcrumbEllipsis;
+
+
+
+
+export {BreadcrumbCurrentLink, BreadcrumbEllipsis, BreadcrumbLink} from "@chakra-ui/react";

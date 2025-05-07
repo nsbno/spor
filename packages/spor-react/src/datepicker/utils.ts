@@ -9,16 +9,21 @@ import { useTranslation } from "..";
 export const useCurrentLocale = () => {
   const { language } = useTranslation();
   switch (language) {
-    case "nb":
+    case "nb": {
       return "nb-NO";
-    case "nn":
+    }
+    case "nn": {
       return "nb-NO";
-    case "sv":
+    }
+    case "sv": {
       return "sv-SE";
-    case "en":
+    }
+    case "en": {
       return "en-GB";
-    default:
+    }
+    default: {
       return "nb-NO";
+    }
   }
 };
 

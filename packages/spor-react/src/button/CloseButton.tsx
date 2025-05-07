@@ -47,12 +47,15 @@ export const CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>(
 const getIcon = (size: CloseButtonProps["size"]) => {
   switch (size) {
     case "xs":
-    case "sm":
+    case "sm": {
       return <CloseFill18Icon />;
-    case "md":
+    }
+    case "md": {
       return <CloseFill24Icon />;
-    case "lg":
+    }
+    case "lg": {
       return <CloseFill30Icon />;
+    }
   }
 };
 

@@ -14,10 +14,12 @@ import { useCurrentLocale } from "./utils";
 
 function createCalendar(identifier: string) {
   switch (identifier) {
-    case "gregory":
+    case "gregory": {
       return new GregorianCalendar();
-    default:
+    }
+    default: {
       throw new Error(`Unsupported calendar ${identifier}`);
+    }
   }
 }
 
@@ -110,13 +112,17 @@ const texts = createTexts({
 
 const getAriaLabel = (segmentType: DateSegment["type"]) => {
   switch (segmentType) {
-    case "day":
+    case "day": {
       return texts.day;
-    case "month":
+    }
+    case "month": {
       return texts.month;
-    case "year":
+    }
+    case "year": {
       return texts.year;
-    default:
+    }
+    default: {
       return texts.day;
+    }
   }
 };

@@ -162,15 +162,19 @@ const getDeviationLevelIcon = ({
   size,
 }: Pick<TravelTagProps, "deviationLevel" | "size">) => {
   switch (deviationLevel) {
-    case "critical":
+    case "critical": {
       return size === "lg" ? ErrorFill24Icon : ErrorFill18Icon;
+    }
     case "major":
-    case "minor":
+    case "minor": {
       return size === "lg" ? WarningFill24Icon : WarningFill18Icon;
-    case "info":
+    }
+    case "info": {
       return size === "lg" ? InformationFill24Icon : InformationFill18Icon;
+    }
     case "none":
-    default:
+    default: {
       return null;
+    }
   }
 };

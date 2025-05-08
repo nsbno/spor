@@ -13,7 +13,7 @@ import {
   WarningFill18Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { travelTagSlotRecipe } from "../theme/slot-recipes/travel-tag";
 import { LineIcon } from "./LineIcon";
@@ -48,7 +48,7 @@ export type TravelTagProps = TagProps &
  * <TravelTag variant="subway" title="3" description="Ringen" />
  * ```
  *
- * They support three different sizes – `sm`, `md` and `lg`.
+ * They support three different sizes - `sm`, `md` and `lg`.
  *
  * You can also render them with a deviation level to indicate an extra focus:
  *
@@ -133,7 +133,8 @@ export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
           customIconVariant={customIconVariant}
           disabled={disabled}
           target="travelTag"
-          {...(rest as any)}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          {...(rest as any)} //Find a way to not use any here
         />
         <Box css={styles.textContainer}>
           {title && (
@@ -161,15 +162,18 @@ const getDeviationLevelIcon = ({
   size,
 }: Pick<TravelTagProps, "deviationLevel" | "size">) => {
   switch (deviationLevel) {
-    case "critical":
+    case "critical": {
       return size === "lg" ? ErrorFill24Icon : ErrorFill18Icon;
+    }
     case "major":
-    case "minor":
+    case "minor": {
       return size === "lg" ? WarningFill24Icon : WarningFill18Icon;
-    case "info":
+    }
+    case "info": {
       return size === "lg" ? InformationFill24Icon : InformationFill18Icon;
-    case "none":
-    default:
+    }
+    default: {
       return null;
+    }
   }
 };

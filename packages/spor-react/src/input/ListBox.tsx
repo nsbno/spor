@@ -40,7 +40,7 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
     /** Whether or not the listbox is waiting on new data, i.e. through a autosuggest search */
     loading?: boolean;
     /** The state of the listbox, provided externally somehow. */
-    state: ListState<T> | SelectState<T>;
+    state: ListState<T> | SelectState<unknown>;
     /** UI to render if the collection is empty */
     emptyContent?: React.ReactNode;
     maxWidth?: BoxProps["maxWidth"];
@@ -72,7 +72,7 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
  *
  * @example
  * ```jsx
- * const { data, isLoading } = useSWR('/api/options')
+ * const { data, isLoading } = useSWR('/api/options')
  * const state = useListState({ items: data });
  * const ref = useRef(null);
  *
@@ -99,7 +99,7 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
         maxWidth={maxWidth}
       >
         {state.collection.size === 0 && props.emptyContent}
-        {Array.from(state.collection).map((item) =>
+        {[...state.collection].map((item) =>
           item.type === "section" ? (
             <ListBoxSection key={item.key} section={item} state={state} />
           ) : (
@@ -111,6 +111,7 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
     );
   },
 );
+ListBox.displayName = "ListBox";
 
 /**
  * Renders a label for a listbox item.
@@ -140,7 +141,7 @@ export function ItemDescription({ children }: { children: React.ReactNode }) {
 
 type OptionProps = {
   item: Node<unknown>;
-  state: SelectState<any> | ListState<unknown>;
+  state: SelectState<unknown> | ListState<unknown>;
 };
 function Option({ item, state }: OptionProps) {
   const ref = useRef(null);
@@ -177,7 +178,7 @@ function Option({ item, state }: OptionProps) {
   TODO: Follow up with react-spectrum to see if they can solve it on their end
   */
   useEffect(() => {
-    (ref as any)?.current?.addEventListener(
+    (ref as React.RefObject<HTMLDivElement>)?.current?.addEventListener(
       "touchend",
       (event: TouchEvent) => {
         event.preventDefault();
@@ -210,7 +211,7 @@ const useOptionContext = () => {
 
 type ListBoxSectionProps = {
   section: Node<unknown>;
-  state: any;
+  state: ListState<unknown> | SelectState<unknown>;
 };
 function ListBoxSection({ section, state }: ListBoxSectionProps) {
   const { itemProps, headingProps, groupProps } = useListBoxSection({
@@ -239,8 +240,8 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
           </Box>
         )}
         <List {...groupProps} padding={0} listStyleType="none">
-          {Array.from(state.collection.getChildren(section.key)).map(
-            (item: any) => (
+          {[...(state.collection.getChildren?.(section.key) ?? [])].map(
+            (item: Node<unknown>) => (
               <Option key={item.key} item={item} state={state} />
             ),
           )}

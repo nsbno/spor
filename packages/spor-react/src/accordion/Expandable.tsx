@@ -1,6 +1,6 @@
 "use client";
 
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 import {
   Accordion,
@@ -85,3 +85,5 @@ export const ExpandableItem = (props: ExpandableItemProps) => {
     </AccordionItem>
   );
 };
+
+Expandable.displayName = "Expandable";

@@ -1,21 +1,25 @@
 type Surface = "default" | "secondary" | "tertiary" | "disabled";
 export const surface = (surface: Surface) => {
   switch (surface) {
-    case "default":
+    case "default": {
       return {
         backgroundColor: "surface",
       };
-    case "secondary":
+    }
+    case "secondary": {
       return {
         backgroundColor: "surface.secondary",
       };
-    case "tertiary":
+    }
+    case "tertiary": {
       return {
         backgroundColor: "surface.tertiary",
       };
-    case "disabled":
+    }
+    case "disabled": {
       return {
         backgroundColor: "surface.disabled",
       };
+    }
   }
 };

@@ -14,7 +14,8 @@ export type CheckboxGroupProps = Exclude<
   children: React.ReactNode;
   /* Defaults to 1 */
   gap?: number | string;
-  [key: string]: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any; //Find a way to not use type any
 };
 /**
  * Used to group several checkboxes together. You can pass the default value, as well as whether or not they're all disabled
@@ -50,3 +51,4 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
     );
   },
 );
+CheckboxGroup.displayName = "CheckboxGroup";

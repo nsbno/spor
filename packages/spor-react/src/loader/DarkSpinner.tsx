@@ -1,6 +1,5 @@
 "use client";
 import { spinnerDarkData, spinnerLightData } from "@vygruppen/spor-loader";
-import React from "react";
 
 import { Box, BoxProps, Center, useColorMode, VisuallyHidden } from "..";
 import { ClientOnly } from "./ClientOnly";

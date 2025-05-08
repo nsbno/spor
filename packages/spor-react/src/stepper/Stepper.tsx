@@ -1,7 +1,7 @@
 "use client";
 import { Flex, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
 import { ArrowLeftFill24Icon } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { Box, createTexts, IconButton, Text, useTranslation } from "..";
 import { stepperSlotRecipe } from "../theme/slot-recipes/stepper";

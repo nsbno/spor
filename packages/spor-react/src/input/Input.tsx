@@ -4,10 +4,8 @@ import {
   chakra,
   Input as ChakraInput,
   InputProps as ChakraInputProps,
-  type RecipeVariantProps,
-  useRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import React, { forwardRef } from "react";
 
 import { inputRecipe } from "@/theme/recipes/input";
 
@@ -95,3 +93,4 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     );
   },
 );
+Input.displayName = "Input";

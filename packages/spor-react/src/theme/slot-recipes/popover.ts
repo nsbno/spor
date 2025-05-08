@@ -1,6 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 
-import { surface } from "./../utils/surface-utils";
 import { popoverAnatomy } from "./anatomy";
 
 export const popoverSlotRecipe = defineSlotRecipe({

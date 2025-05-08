@@ -1,7 +1,5 @@
-import { Box, BoxProps, chakra, Icon } from "@chakra-ui/react";
-import React, { forwardRef, SVGProps, useId } from "react";
-
-import { useColorMode } from "..";
+import { BoxProps, chakra } from "@chakra-ui/react";
+import React, { forwardRef, useId } from "react";
 
 export const SvgBox = chakra("svg");
 
@@ -119,3 +117,4 @@ export const VyLogo = forwardRef<SVGSVGElement, VyLogoProps>((props, ref) => {
     </SvgBox>
   );
 });
+VyLogo.displayName = "VyLogo";

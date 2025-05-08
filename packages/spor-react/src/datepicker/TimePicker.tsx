@@ -1,12 +1,11 @@
 "use client";
-import { BoxProps, useFieldContext } from "@chakra-ui/react";
+import { BoxProps } from "@chakra-ui/react";
 import { CalendarDateTime } from "@internationalized/date";
 import { TimeValue } from "@react-types/datepicker";
 import {
   DropdownLeftFill18Icon,
   DropdownRightFill18Icon,
 } from "@vygruppen/spor-icon-react";
-import React from "react";
 import { useTimeFieldState } from "react-stately";
 
 import { Field } from "@/input/Field";
@@ -202,3 +201,6 @@ const texts = createTexts({
     sv: "minuter",
   },
 });
+function useFieldContext(): { disabled: unknown; invalid: unknown } {
+  throw new Error("Function not implemented.");
+}

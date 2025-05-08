@@ -4,7 +4,7 @@ import {
   RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, useId } from "react";
+import React, { forwardRef } from "react";
 
 import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
 
@@ -55,6 +55,7 @@ export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
     );
   },
 );
+RadioCard.displayName = "RadioCard";
 
 type RadioCardRootProps = RadioCardVariantProps &
   Exclude<ChakraRadioCard.RootProps, "variant"> & {
@@ -92,5 +93,6 @@ export const RadioCardGroup = forwardRef<HTMLDivElement, RadioCardRootProps>(
     );
   },
 );
+RadioCardGroup.displayName = "RadioCardGroup";
 
 export const RadioCardLabel = ChakraRadioCard.Label;

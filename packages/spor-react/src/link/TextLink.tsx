@@ -43,7 +43,6 @@ const ExternalIcon = ({ label }: { label: string }) => (
   </>
 );
 
-// eslint-disable-next-line react/display-name
 export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ children, external, href, ...props }, ref) => {
     const { t } = useTranslation();
@@ -79,6 +78,7 @@ export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
     );
   },
 );
+TextLink.displayName = "TextLink";
 
 const texts = createTexts({
   externalLink: {

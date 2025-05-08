@@ -79,13 +79,11 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
   (
     {
       value,
-      colorPalette = "white",
       label,
       labelRotationDelay = 5000,
       isActive = true,
       showValueText = false,
       height = "0.5rem",
-      "aria-label": ariaLabel,
       ...rest
     },
     ref,
@@ -117,3 +115,4 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
     );
   },
 );
+ProgressBar.displayName = "ProgressBar";

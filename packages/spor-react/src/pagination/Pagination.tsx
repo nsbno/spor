@@ -60,6 +60,7 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationRootProps>(
     );
   },
 );
+Pagination.displayName = "Pagination";
 
 export const PaginationEllipsis = React.forwardRef<
   HTMLDivElement,
@@ -73,6 +74,7 @@ export const PaginationEllipsis = React.forwardRef<
     </ListItem>
   );
 });
+PaginationEllipsis.displayName = "PaginationEllipsis";
 
 export const PaginationItem = React.forwardRef<
   HTMLButtonElement,
@@ -115,6 +117,7 @@ export const PaginationItem = React.forwardRef<
     </ListItem>
   );
 });
+PaginationItem.displayName = "PaginationItem";
 
 export const PaginationPrevTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -163,6 +166,7 @@ export const PaginationPrevTrigger = React.forwardRef<
     </ListItem>
   );
 });
+PaginationPrevTrigger.displayName = "PaginationPrevTrigger";
 
 export const PaginationNextTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -208,6 +212,7 @@ export const PaginationNextTrigger = React.forwardRef<
     </ListItem>
   );
 });
+PaginationNextTrigger.displayName = "PaginationNextTrigger";
 
 export const PaginationItems = (
   props: React.HTMLAttributes<HTMLElement> & {},

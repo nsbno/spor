@@ -92,7 +92,6 @@ const LoadingContent = ({
   </>
 );
 
-// eslint-disable-next-line react/display-name
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -157,6 +156,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
   },
 );
+
+Button.displayName = "Button";
 
 const texts = createTexts({
   loadingText: {

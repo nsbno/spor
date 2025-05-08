@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert as ChakraAlert, Box, useSlotRecipe } from "@chakra-ui/react";
+import { Alert as ChakraAlert, Box } from "@chakra-ui/react";
 import {
   AltTransportFill24Icon,
   ErrorFill24Icon,
@@ -12,7 +12,6 @@ import {
   SuccessFill24Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { PropsWithChildren } from "react";
 
 import { createTexts, useTranslation } from "../i18n";
 import { AlertProps } from "./Alert";
@@ -41,22 +40,30 @@ export const AlertIcon = ({ variant, customIcon }: AlertIconProps) => {
 
 const getIcon = (variant: AlertProps["variant"]) => {
   switch (variant) {
-    case "info":
+    case "info": {
       return InformationFill24Icon;
-    case "success":
+    }
+    case "success": {
       return SuccessFill24Icon;
-    case "important":
+    }
+    case "important": {
       return WarningFill24Icon;
-    case "alt":
+    }
+    case "alt": {
       return AltTransportFill24Icon;
-    case "error":
+    }
+    case "error": {
       return ErrorFill24Icon;
-    case "error-secondary":
+    }
+    case "error-secondary": {
       return ErrorOutline24Icon;
-    case "neutral":
+    }
+    case "neutral": {
       return QuestionFill24Icon;
-    case "service":
+    }
+    case "service": {
       return ServiceFill24Icon;
+    }
   }
 };
 

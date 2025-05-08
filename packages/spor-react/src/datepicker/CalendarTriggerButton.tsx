@@ -2,7 +2,7 @@
 
 import { BoxProps, PopoverAnchor, useSlotRecipe } from "@chakra-ui/react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 import { AriaButtonProps } from "react-aria";
 
 import {
@@ -24,15 +24,13 @@ type CalendarTriggerButtonProps = AriaButtonProps<"button"> &
 export const CalendarTriggerButton = forwardRef<
   HTMLDivElement,
   CalendarTriggerButtonProps
->(({ variant, disabled, ariaLabelledby, ...buttonProps }, ref) => {
+>(({ variant, disabled, ariaLabelledby, ...buttonProps }) => {
   const { t } = useTranslation();
   const recipe = useSlotRecipe({
     key: "datePicker",
     recipe: datePickerSlotRecipe,
   });
   const styles = recipe({ variant });
-
-  const { onPress, ...filteredButtonProps } = buttonProps;
 
   return (
     <PopoverAnchor {...buttonProps}>
@@ -47,6 +45,7 @@ export const CalendarTriggerButton = forwardRef<
     </PopoverAnchor>
   );
 });
+CalendarTriggerButton.displayName = "CalendarTriggerButton";
 
 const texts = createTexts({
   openCalendar: {

@@ -4,25 +4,25 @@ type BrandBackgroundState = Subset<State, "default" | "hover" | "active">;
 
 export function brandBackground(state: BrandBackgroundState) {
   switch (state) {
-    case "active":
+    case "active": {
       return {
         backgroundColor: "brand.surface.active",
       };
-    case "hover":
+    }
+    case "hover": {
       return {
         backgroundColor: "brand.surface.hover",
       };
-    case "default":
-    default:
+    }
+    default: {
       return {
         backgroundColor: "brand.surface",
       };
+    }
   }
 }
 
-type BrandTextState = Subset<State, "hover" | "active" | "default">;
-
-export function brandText(state: BrandTextState) {
+export function brandText() {
   return {
     color: "brand.text",
   };

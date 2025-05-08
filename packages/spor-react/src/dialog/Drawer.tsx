@@ -12,7 +12,7 @@ import {
   ArrowLeftFill24Icon,
   CloseFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 import { Button, CloseButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
@@ -70,32 +70,32 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
     );
   },
 );
+DrawerContent.displayName = "DrawerContent";
 
-export const CloseDrawerLine = forwardRef<HTMLButtonElement, {}>(
-  (props, ref) => {
-    const { t } = useTranslation();
-    return (
-      <ChakraDrawer.CloseTrigger
-        {...props}
-        ref={ref}
-        position="relative"
-        insetEnd="unset"
-        aria-label={t(texts.close)}
-        cursor="pointer"
-        top={0}
-        paddingY={2}
-      >
-        <Box
-          width={7}
-          height={1}
-          backgroundColor="silver"
-          borderRadius="xs"
-          marginX="auto"
-        />
-      </ChakraDrawer.CloseTrigger>
-    );
-  },
-);
+export const CloseDrawerLine = forwardRef<HTMLButtonElement>((props, ref) => {
+  const { t } = useTranslation();
+  return (
+    <ChakraDrawer.CloseTrigger
+      {...props}
+      ref={ref}
+      position="relative"
+      insetEnd="unset"
+      aria-label={t(texts.close)}
+      cursor="pointer"
+      top={0}
+      paddingY={2}
+    >
+      <Box
+        width={7}
+        height={1}
+        backgroundColor="silver"
+        borderRadius="xs"
+        marginX="auto"
+      />
+    </ChakraDrawer.CloseTrigger>
+  );
+});
+CloseDrawerLine.displayName = "CloseDrawerLine";
 
 export const DrawerCloseTrigger = forwardRef<
   HTMLButtonElement,
@@ -129,6 +129,7 @@ export const DrawerBackTrigger = forwardRef<
     </ChakraDrawer.CloseTrigger>
   );
 });
+DrawerBackTrigger.displayName = "DrawerBackTrigger";
 
 export const DrawerFullScreenHeader = forwardRef<
   HTMLDivElement,
@@ -151,6 +152,7 @@ export const DrawerFullScreenHeader = forwardRef<
     </ChakraDrawer.Header>
   );
 });
+DrawerFullScreenHeader.displayName = "DrawerFullScreenHeader";
 
 export const Drawer = (props: DrawerProps) => {
   const { children, placement, size = "md", ...rest } = props;

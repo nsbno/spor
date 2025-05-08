@@ -6,7 +6,7 @@ import {
   type GroupProps as ChakraGroupProps,
   type RecipeVariantProps,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { groupRecipe } from "../theme/recipes/group";
 
@@ -67,3 +67,4 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
     );
   },
 );
+ButtonGroup.displayName = "ButtonGroup";

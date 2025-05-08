@@ -8,20 +8,24 @@ type AccentBackgroundState = Subset<
 
 export function accentBackground(state: AccentBackgroundState) {
   switch (state) {
-    case "selected":
+    case "selected": {
       return brandBackground("default");
-    case "active":
+    }
+    case "active": {
       return {
         backgroundColor: "accent.surface.active",
       };
-    case "hover":
+    }
+    case "hover": {
       return {
         backgroundColor: "accent.surface.hover",
       };
-    default:
+    }
+    default: {
       return {
         backgroundColor: "accent.surface",
       };
+    }
   }
 }
 
@@ -29,13 +33,15 @@ type AccentTextState = Subset<State, "default" | "selected">;
 
 export function accentText(state: AccentTextState) {
   switch (state) {
-    case "selected":
+    case "selected": {
       return {
         color: "brand.text",
       };
-    default:
+    }
+    default: {
       return {
         color: "accent.text",
       };
+    }
   }
 }

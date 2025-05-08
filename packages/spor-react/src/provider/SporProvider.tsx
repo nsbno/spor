@@ -5,7 +5,6 @@ import {
   SystemContext,
 } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
-import React from "react";
 
 import { Language, LanguageProvider, system } from "..";
 import { ColorModeProvider } from "../color-mode";

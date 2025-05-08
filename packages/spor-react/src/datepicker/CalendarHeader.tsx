@@ -5,7 +5,6 @@ import {
   ArrowLeftOutline24Icon,
   ArrowRightOutline24Icon,
 } from "@vygruppen/spor-icon-react";
-import React from "react";
 import { CalendarState, RangeCalendarState } from "react-stately";
 
 import { createTexts, useTranslation } from "../i18n";
@@ -43,9 +42,7 @@ export function CalendarHeader({
   return (
     <Flex alignItems="center" paddingBottom="4" justifyContent="space-between">
       <CalendarNavigator
-        title={
-          title ? title : isYearPickerVisible ? monthTitle : monthAndYearTitle
-        }
+        title={title || (isYearPickerVisible ? monthTitle : monthAndYearTitle)}
         unit="month"
         onPrevious={() =>
           state.setFocusedDate(state.focusedDate.subtract({ months: 1 }))

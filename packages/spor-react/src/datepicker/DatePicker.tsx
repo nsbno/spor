@@ -52,7 +52,7 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
 /**
  * A date picker component.
  *
- * There are three different variants – `core`, `floating` and `ghost`.
+ * There are three different variants –`core`, `floating` and `ghost`.
  *
  * ```tsx
  * <DatePicker label="Dato" variant="core" />
@@ -171,3 +171,4 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     );
   },
 );
+DatePicker.displayName = "DatePicker";

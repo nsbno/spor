@@ -47,7 +47,6 @@ export interface PasswordInputProps
 export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
   (props, ref) => {
     const {
-      rootProps,
       defaultVisible,
       visible: visibleProp,
       onVisibleChange,
@@ -89,6 +88,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
     );
   },
 );
+PasswordInput.displayName = "PasswordInput";
 
 const VisibilityTrigger = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
@@ -107,6 +107,7 @@ const VisibilityTrigger = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   },
 );
+VisibilityTrigger.displayName = "VisibilityTrigger";
 
 const texts = createTexts({
   showPassword: {

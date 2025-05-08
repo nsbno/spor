@@ -80,6 +80,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     );
   },
 );
+Select.displayName = "Select";
 
 type SelectItemProps = ChakraSelect.ItemProps &
   React.PropsWithChildren<SelectVariantProps> & {
@@ -108,6 +109,7 @@ export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     );
   },
 );
+SelectItem.displayName = "SelectItem";
 
 type SelectItemGroupProps = ChakraSelect.ItemGroupProps &
   React.PropsWithChildren<SelectVariantProps> & {
@@ -218,8 +220,12 @@ export const SelectValueText = React.forwardRef<
     >
       <ChakraSelect.Context>
         {(select: {
-          selectedItems: any;
-          collection: { stringifyItem: (arg0: any) => any };
+          selectedItems: CollectionItem[];
+
+          collection: {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            stringifyItem: (arg0: any) => any;
+          } /* Find a way to not use any */;
         }) => {
           const items = select.selectedItems;
           if (items.length === 0) return placeholder;

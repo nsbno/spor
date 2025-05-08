@@ -10,12 +10,11 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { AccordionItemContent } from "@/accordion";
 import { alertExpandableSlotRecipe } from "@/theme/slot-recipes/alert-expandable";
 
-import { AlertProps } from "./Alert";
 import { AlertIcon } from "./AlertIcon";
 
 type ExpandableAlertVariantProps = RecipeVariantProps<
@@ -125,3 +124,5 @@ export const ExpandableAlert = forwardRef<HTMLDivElement, ExpandableAlertProps>(
     );
   },
 );
+
+ExpandableAlert.displayName = "ExpandableAlert";

@@ -41,6 +41,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
     </ChakraRadioGroup.Item>
   );
 });
+Radio.displayName = "Radio";
 
 type RadioGroupProps = Omit<
   ChakraRadioGroup.RootProps,
@@ -52,3 +53,4 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     return <ChakraRadioGroup.Root ref={ref} {...props} aria-labelledby="" />;
   },
 );
+RadioGroup.displayName = "RadioGroup";

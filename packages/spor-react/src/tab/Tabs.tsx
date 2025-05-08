@@ -4,7 +4,6 @@ import {
   Tabs as ChakraTabs,
   TabsRootProps as ChakraTabsRootProps,
 } from "@chakra-ui/react";
-import * as React from "react";
 import { forwardRef, PropsWithChildren } from "react";
 
 import { tabsSlotRecipe } from "../theme/slot-recipes/tabs";
@@ -63,6 +62,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   const { variant = "core", size = "sm" } = props;
   return <ChakraTabs.Root {...props} ref={ref} variant={variant} size={size} />;
 });
+Tabs.displayName = "Tabs";
 
 export const TabsList = ChakraTabs.List;
 export const TabsTrigger = ChakraTabs.Trigger;

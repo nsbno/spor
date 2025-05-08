@@ -13,19 +13,21 @@ export function ghostBackground(state: GhostBackgroundState) {
         backgroundColor: "ghost.surface.hover",
       };
     }
-    case "active":
+    case "active": {
       return {
         backgroundColor: "ghost.surface.active",
       };
+    }
     case "selected": {
       return {
         backgroundColor: "ghost.surface.selected",
       };
     }
-    case "default":
+    case "default": {
       return {
         backgroundColor: "transparent",
       };
+    }
   }
 }
 
@@ -33,13 +35,15 @@ type GhostTextState = Subset<State, "default" | "selected">;
 
 export function ghostText(state: GhostTextState) {
   switch (state) {
-    case "selected":
+    case "selected": {
       return {
         color: "ghost.text",
       };
-    default:
+    }
+    default: {
       return {
         color: "ghost.text",
       };
+    }
   }
 }

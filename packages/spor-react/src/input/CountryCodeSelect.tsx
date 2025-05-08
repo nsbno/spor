@@ -2,7 +2,7 @@
 
 import { createListCollection } from "@chakra-ui/react";
 import { getSupportedCallingCodes } from "awesome-phonenumber";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 import {
   createTexts,
@@ -44,7 +44,7 @@ export const CountryCodeSelect = forwardRef<
   const { t } = useTranslation();
   if (props.allowedCountryCodes) {
     callingCodes.items = callingCodes.items.filter((callingCode) =>
-      props.allowedCountryCodes.some((code) => code === callingCode.label),
+      props.allowedCountryCodes?.some((code) => code === callingCode.label),
     );
   }
   return (
@@ -65,6 +65,7 @@ export const CountryCodeSelect = forwardRef<
     </Select>
   );
 });
+CountryCodeSelect.displayName = "CountryCodeSelect";
 
 const texts = createTexts({
   countryCode: {

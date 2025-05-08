@@ -32,7 +32,6 @@ export const InputGroup = React.forwardRef<HTMLDivElement, InputGroupProps>(
       endElementProps,
       label,
       children,
-      attached,
       ...rest
     } = props;
 
@@ -65,3 +64,4 @@ export const InputGroup = React.forwardRef<HTMLDivElement, InputGroupProps>(
     );
   },
 );
+InputGroup.displayName = "InputGroup";

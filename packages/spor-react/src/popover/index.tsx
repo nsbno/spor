@@ -24,6 +24,7 @@ export const PopoverTrigger = forwardRef<
     </ChakraPopover.Trigger>
   );
 });
+PopoverTrigger.displayName = "PopoverTrigger";
 
 export type PopoverProps = ChakraPopover.ContentProps &
   React.RefAttributes<HTMLDivElement> & {
@@ -66,3 +67,4 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverProps>(
     );
   },
 );
+PopoverContent.displayName = "PopoverContent";

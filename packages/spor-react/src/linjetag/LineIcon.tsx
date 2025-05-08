@@ -41,7 +41,7 @@ export type LineIconProps = Exclude<BoxProps, "variant"> &
  * <LineIcon variant="subway" />
  * ```
  *
- * They support three different sizes – `sm`, `md` and `lg`.
+ * They support three different sizes - `sm`, `md` and `lg`.
  *
  * ```tsx
  * <LineIcon variant="subway" size="lg" />
@@ -67,7 +67,7 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
     variant,
     size = "md",
     foregroundColor,
-    backgroundColor,
+
     disabled,
     style,
     target = "lineIcon",
@@ -85,11 +85,12 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
       return variant === "walk" && target === "travelTag" ? 0 : 0.5;
     };
 
-    const Icon: any = getCorrectIcon({
+    const Icon: React.ElementType = getCorrectIcon({
       variant:
         variant === "custom" && "customIconVariant" in rest
           ? rest.customIconVariant
-          : variant === "custom"
+          : // eslint-disable-next-line unicorn/no-nested-ternary
+            variant === "custom" //eslint rules and prettier conflict
             ? "local-train"
             : variant,
       size,

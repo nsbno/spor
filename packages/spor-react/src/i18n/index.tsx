@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import React, { createContext, useContext } from "react";
 
 export enum Language {

@@ -1,5 +1,5 @@
 import { BoxProps } from "@chakra-ui/react";
-import React, { forwardRef, useId } from "react";
+import { forwardRef, useId } from "react";
 
 import { SvgBox } from "./VyLogo";
 
@@ -21,7 +21,9 @@ export const VyLogoPride = forwardRef<SVGSVGElement, VyLogoPrideProps>(
 
     const id = useId();
     return (
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       <SvgBox ref={ref} viewBox="0 0 107 54" {...(props as any)}>
+        {/* Find a way to not use any */}
         <title>Vy logo pride</title>
         <svg
           width="108"
@@ -161,3 +163,4 @@ export const VyLogoPride = forwardRef<SVGSVGElement, VyLogoPrideProps>(
     );
   },
 );
+VyLogoPride.displayName = "VyLogoPride";

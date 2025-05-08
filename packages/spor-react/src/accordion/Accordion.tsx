@@ -8,7 +8,7 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import { DropdownDownFill24Icon } from "@vygruppen/spor-icon-react";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 import { warnAboutMismatchingIcon } from "./helpers";
 import {
@@ -112,5 +112,6 @@ export const AccordionItemContent = forwardRef<
     </ChakraAccordion.ItemContent>
   );
 });
+Accordion.displayName = "Accordion";
 
 export const AccordionItem = ChakraAccordion.Item;

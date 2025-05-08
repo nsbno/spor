@@ -8,26 +8,30 @@ type FloatingBackgroundState = Subset<
 
 export function floatingBackground(state: FloatingBackgroundState) {
   switch (state) {
-    case "focus":
+    case "focus": {
       return brandBackground("default");
-    case "active":
+    }
+    case "active": {
       return {
         backgroundColor: "floating.surface.active",
       };
-    case "hover":
+    }
+    case "hover": {
       return {
         backgroundColor: {
           _light: "floating.surface.hover",
           _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
         },
       };
-    case "default":
+    }
+    case "default": {
       return {
         backgroundColor: {
           _light: "bg",
           _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
         },
       };
+    }
   }
 }
 
@@ -37,25 +41,29 @@ type FloatingBorderState = Subset<
 >;
 export function floatingBorder(state: FloatingBorderState) {
   switch (state) {
-    case "hover":
+    case "hover": {
       return {
         outline: "1px solid",
         outlineColor: "floating.outline.hover",
       };
-    case "focus":
+    }
+    case "focus": {
       return {
         outline: "1px solid",
         outlineColor: "outline.focus",
       };
-    case "active":
+    }
+    case "active": {
       return {
         outline: "1px solid",
         outlineColor: "floating.outline.active",
       };
-    default:
+    }
+    default: {
       return {
         outline: "1px solid",
         outlineColor: "floating.outline",
       };
+    }
   }
 }

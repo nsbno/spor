@@ -3,7 +3,7 @@ import {
   Text as ChakraText,
   TextProps as ChakraTextProps,
 } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 export type TextProps = Omit<ChakraTextProps, "textStyle"> & {
   /** The size and style of the text.

@@ -9,7 +9,7 @@ import {
   DropdownDownFill18Icon,
   DropdownDownFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, ReactNode } from "react";
+import { forwardRef, ReactNode } from "react";
 
 import { Button, ButtonProps, StaticCard, StaticCardProps } from "..";
 
@@ -40,6 +40,7 @@ export const CardSelectContent = forwardRef<HTMLDivElement, StaticCardProps>(
     );
   },
 );
+CardSelectContent.displayName = "CardSelectContent";
 
 export type CardSelectTriggerProps = {
   /** The design of the trigger button.
@@ -101,3 +102,4 @@ export const CardSelectTrigger = forwardRef<
     );
   },
 );
+CardSelectTrigger.displayName = "CardSelectTrigger";

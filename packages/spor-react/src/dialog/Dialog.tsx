@@ -34,6 +34,7 @@ export const DialogContent = React.forwardRef<
     </Portal>
   );
 });
+DialogContent.displayName = "DialogContent";
 
 export const DialogCloseTrigger = React.forwardRef<
   HTMLButtonElement,

@@ -4,7 +4,7 @@ import {
   NextMediaControllerFill30Icon,
   PreviousMediaControllerFill30Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { createTexts, MediaControllerVariantProps, useTranslation } from "..";
 
@@ -54,6 +54,7 @@ export const SkipButton = forwardRef<HTMLButtonElement, SkipButtonProps>(
     );
   },
 );
+SkipButton.displayName = "SkipButton";
 
 const texts = createTexts({
   next: {

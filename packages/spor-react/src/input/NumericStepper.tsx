@@ -68,23 +68,20 @@ export const NumericStepper = React.forwardRef<
   HTMLDivElement,
   NumericStepperProps
 >(
-  (
-    {
-      name: nameProp,
-      id: idProp,
-      value: valueProp,
-      defaultValue = 1,
-      onChange: onChangeProp,
-      minValue = 0,
-      maxValue = 99,
-      disabled,
-      withInput = true,
-      stepSize = 1,
-      showZero = false,
-      ariaLabelContext = { singular: "", plural: "" },
-    }: NumericStepperProps,
-    ref,
-  ) => {
+  ({
+    name: nameProp,
+    id: idProp,
+    value: valueProp,
+    defaultValue = 1,
+    onChange: onChangeProp,
+    minValue = 0,
+    maxValue = 99,
+    disabled,
+    withInput = true,
+    stepSize = 1,
+    showZero = false,
+    ariaLabelContext = { singular: "", plural: "" },
+  }: NumericStepperProps) => {
     const addButtonRef = useRef<HTMLButtonElement>(null);
     const { t } = useTranslation();
     const recipe = useSlotRecipe({ recipe: numericStepperRecipe });
@@ -135,9 +132,9 @@ export const NumericStepper = React.forwardRef<
             visibility={!showZero && value === 0 ? "hidden" : "visible"}
             aria-live="assertive"
             aria-label={
-              ariaLabelContext.plural !== ""
-                ? t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
-                : ""
+              ariaLabelContext.plural === ""
+                ? ""
+                : t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
             }
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               const numericInput = Number(e.target.value);
@@ -159,9 +156,9 @@ export const NumericStepper = React.forwardRef<
             visibility={!showZero && value === 0 ? "hidden" : "visible"}
             aria-live="assertive"
             aria-label={
-              ariaLabelContext.plural !== ""
-                ? t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
-                : ""
+              ariaLabelContext.plural === ""
+                ? ""
+                : t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
             }
           >
             {value}
@@ -187,6 +184,7 @@ export const NumericStepper = React.forwardRef<
     );
   },
 );
+NumericStepper.displayName = "NumericStepper";
 
 type VerySmallButtonProps = {
   /** The icon to render */
@@ -220,6 +218,7 @@ const VerySmallButton = React.forwardRef<
     />
   );
 });
+VerySmallButton.displayName = "VerySmallButton";
 
 type IconPropTypes = BoxProps & { stepLabel: number };
 

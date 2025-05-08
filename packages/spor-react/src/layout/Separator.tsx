@@ -6,7 +6,7 @@ import {
   SeparatorProps as ChakraSeparatorProps,
   useRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { separatorRecipe } from "../theme/recipes/separator";
 
@@ -31,3 +31,4 @@ export const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
     return <ChakraSeparator css={styles} {...props} ref={ref} />;
   },
 );
+Separator.displayName = "Separator";

@@ -5,7 +5,7 @@ import {
   useFieldContext,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { DatePickerVariantProps } from "./DatePicker";

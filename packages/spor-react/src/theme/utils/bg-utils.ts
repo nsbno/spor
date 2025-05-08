@@ -1,17 +1,20 @@
 type Bg = "default" | "secondary" | "tertiary";
 export const bg = (bg: Bg) => {
   switch (bg) {
-    case "default":
+    case "default": {
       return {
         backgroundColor: "bg",
       };
-    case "secondary":
+    }
+    case "secondary": {
       return {
         backgroundColor: "bg.secondary",
       };
-    case "tertiary":
+    }
+    case "tertiary": {
       return {
         backgroundColor: "bg.tertiary",
       };
+    }
   }
 };

@@ -8,16 +8,20 @@ type coreBackgroundState = Subset<
 >;
 export function coreBackground(state: coreBackgroundState) {
   switch (state) {
-    case "active":
+    case "active": {
       return brandBackground("active");
-    case "selected":
+    }
+    case "selected": {
       return brandBackground("default");
+    }
 
-    case "disabled":
+    case "disabled": {
       return surface("disabled");
-    case "hover":
-    default:
+    }
+
+    default: {
       return { backgroundColor: "transparent" };
+    }
   }
 }
 
@@ -28,11 +32,12 @@ type BorderState = Subset<
 
 export function coreBorder(state: BorderState) {
   switch (state) {
-    case "hover":
+    case "hover": {
       return {
         outline: "2px solid",
         outlineColor: "core.outline",
       };
+    }
 
     case "disabled": {
       return {
@@ -52,12 +57,12 @@ export function coreBorder(state: BorderState) {
         outlineColor: "outline.error",
       };
     }
-    case "default":
-    default:
+    default: {
       return {
         outline: "1px solid",
         outlineColor: "core.outline",
       };
+    }
   }
 }
 
@@ -67,25 +72,30 @@ type coreTextState = Subset<
 >;
 export function coreText(state: coreTextState) {
   switch (state) {
-    case "selected":
+    case "selected": {
       return {
         color: "brand.text",
       };
-    case "active":
+    }
+    case "active": {
       return {
         color: "brand.text",
       };
-    case "highlight":
+    }
+    case "highlight": {
       return {
         color: "text.highlight",
       };
-    case "disabled":
+    }
+    case "disabled": {
       return {
         color: "text.disabled",
       };
-    default:
+    }
+    default: {
       return {
         color: "core.text",
       };
+    }
   }
 }

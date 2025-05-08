@@ -34,6 +34,7 @@ const ClipboardIcon = React.forwardRef<
     </ChakraClipboard.Indicator>
   );
 });
+ClipboardIcon.displayName = "ClipboardIcon";
 
 const ClipboardCopyText = React.forwardRef<
   HTMLDivElement,
@@ -50,6 +51,7 @@ const ClipboardCopyText = React.forwardRef<
     </ChakraClipboard.Indicator>
   );
 });
+ClipboardCopyText.displayName = "ClipboardCopyText";
 
 type ClipboardButtonProps = ButtonProps;
 
@@ -65,6 +67,7 @@ export const ClipboardButton = React.forwardRef<
     </ChakraClipboard.Trigger>
   );
 });
+ClipboardButton.displayName = "ClipboardButton";
 
 export const Clipboard = ChakraClipboard.Root;
 

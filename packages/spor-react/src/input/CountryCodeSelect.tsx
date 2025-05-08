@@ -44,7 +44,7 @@ export const CountryCodeSelect = forwardRef<
   const { t } = useTranslation();
   if (props.allowedCountryCodes) {
     callingCodes.items = callingCodes.items.filter((callingCode) =>
-      props.allowedCountryCodes.some((code) => code === callingCode.label),
+      props.allowedCountryCodes?.some((code) => code === callingCode.label),
     );
   }
   return (

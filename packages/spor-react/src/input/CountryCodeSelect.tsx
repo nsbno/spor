@@ -2,7 +2,7 @@
 
 import { createListCollection } from "@chakra-ui/react";
 import { getSupportedCallingCodes } from "awesome-phonenumber";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 
 import {
   createTexts,

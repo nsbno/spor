@@ -79,3 +79,12 @@ export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
   },
 );
 TextLink.displayName = "TextLink";
+
+const texts = createTexts({
+  externalLink: {
+    nb: "Ekstern lenke",
+    nn: "Ekstern lenke",
+    sv: "Extern länk",
+    en: "External link",
+  },
+});

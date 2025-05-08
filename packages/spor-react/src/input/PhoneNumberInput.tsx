@@ -20,6 +20,7 @@ type PhoneNumberInputProps = InputProps & {
   value?: CountryCodeAndPhoneNumber;
   /** Returns an extra optional text when true */
   optional?: boolean;
+  allowedCountryCodes?: string[];
   invalid?: boolean;
   errorText?: string;
 };
@@ -51,6 +52,7 @@ export const PhoneNumberInput = forwardRef<
     onValueChange: externalOnChange,
     variant,
     optional,
+    allowedCountryCodes,
     invalid,
     errorText,
   } = props;
@@ -92,6 +94,7 @@ export const PhoneNumberInput = forwardRef<
           height="100%"
           width="6.25rem"
           variant={variant}
+          allowedCountryCodes={allowedCountryCodes}
           data-state="on"
         />
         <Input

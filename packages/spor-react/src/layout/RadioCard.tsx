@@ -40,7 +40,6 @@ type RadioCardItemProps = Exclude<
 
 export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
   (props, ref) => {
-    RadioCard.displayName = "RadioCard";
     const { inputProps, children, value, ariaLabel } = props;
 
     return (
@@ -56,6 +55,7 @@ export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
     );
   },
 );
+RadioCard.displayName = "RadioCard";
 
 type RadioCardRootProps = RadioCardVariantProps &
   Exclude<ChakraRadioCard.RootProps, "variant"> & {
@@ -67,7 +67,6 @@ type RadioCardRootProps = RadioCardVariantProps &
 
 export const RadioCardGroup = forwardRef<HTMLDivElement, RadioCardRootProps>(
   (props, ref) => {
-    RadioCardGroup.displayName = "RadioCardGroup";
     const {
       children,
       variant,
@@ -94,5 +93,6 @@ export const RadioCardGroup = forwardRef<HTMLDivElement, RadioCardRootProps>(
     );
   },
 );
+RadioCardGroup.displayName = "RadioCardGroup";
 
 export const RadioCardLabel = ChakraRadioCard.Label;

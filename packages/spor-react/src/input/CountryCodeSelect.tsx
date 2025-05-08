@@ -39,7 +39,6 @@ export const CountryCodeSelect = forwardRef<
   HTMLDivElement,
   CountryCodeSelectProps
 >((props, ref) => {
-  CountryCodeSelect.displayName = "CountryCodeSelect";
   const { t } = useTranslation();
 
   return (
@@ -60,6 +59,7 @@ export const CountryCodeSelect = forwardRef<
     </Select>
   );
 });
+CountryCodeSelect.displayName = "CountryCodeSelect";
 
 const texts = createTexts({
   countryCode: {

@@ -45,7 +45,6 @@ export type SwitchProps = Exclude<
  */
 
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>((props) => {
-  Switch.displayName = "Switch";
   const { rootRef, size = "md", label, ...rest } = props;
   const recipe = useSlotRecipe({ key: "switch" });
   const styles = recipe({ size });
@@ -67,3 +66,4 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>((props) => {
     </Field>
   );
 });
+Switch.displayName = "Switch";

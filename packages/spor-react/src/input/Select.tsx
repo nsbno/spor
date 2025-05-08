@@ -58,7 +58,6 @@ export type SelectProps = ChakraSelectRootProps &
 
 export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
   (props, ref) => {
-    Select.displayName = "Select";
     const { variant = "core", children, positioning, label, ...rest } = props;
     const recipe = useSlotRecipe({ key: "select" });
     const styles = recipe({ variant });
@@ -81,6 +80,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     );
   },
 );
+Select.displayName = "Select";
 
 type SelectItemProps = ChakraSelect.ItemProps &
   React.PropsWithChildren<SelectVariantProps> & {
@@ -90,7 +90,6 @@ type SelectItemProps = ChakraSelect.ItemProps &
 
 export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
   (props, ref) => {
-    SelectItem.displayName = "SelectItem";
     const { item, children, description, ...rest } = props;
     const recipe = useSlotRecipe({ key: "select" });
     const styles = recipe();
@@ -110,6 +109,7 @@ export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     );
   },
 );
+SelectItem.displayName = "SelectItem";
 
 type SelectItemGroupProps = ChakraSelect.ItemGroupProps &
   React.PropsWithChildren<SelectVariantProps> & {

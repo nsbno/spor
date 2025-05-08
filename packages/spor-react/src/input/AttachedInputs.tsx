@@ -29,7 +29,7 @@ const StyledGroup = chakra(Group, attachedInputsRecipe);
 
 export const AttachedInputs = forwardRef<HTMLDivElement, AttachedInputsProps>(
   (props, ref) => {
-    AttachedInputs.displayName = "AttachedInputs";
     return <StyledGroup ref={ref} attached {...props} />;
   },
 );
+AttachedInputs.displayName = "AttachedInputs";

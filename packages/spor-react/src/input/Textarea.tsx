@@ -76,7 +76,6 @@ const useLabelHeight = (label: ReactNode | undefined) => {
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (props, ref) => {
-    Textarea.displayName = "Textarea";
     const { label, variant = "core", ...fieldProps } = props;
     const recipe = useRecipe({ key: "textarea" });
     const styles = recipe({ variant });
@@ -100,3 +99,4 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     );
   },
 );
+Textarea.displayName = "Textarea";

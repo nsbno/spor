@@ -36,7 +36,6 @@ export const ProgressIndicator = forwardRef<
   HTMLDivElement,
   ProgressIndicatorProps
 >(({ numberOfSteps, activeStep }) => {
-  ProgressIndicator.displayName = "ProgressIndicator";
   const { t } = useTranslation();
   const recipe = useSlotRecipe({
     key: "progressIndicator",
@@ -65,6 +64,8 @@ export const ProgressIndicator = forwardRef<
     </Box>
   );
 });
+ProgressIndicator.displayName = "ProgressIndicator";
+
 const texts = createTexts({
   stepsOf: (activeStep, numberOfSteps) => ({
     nb: `Steg ${activeStep} av ${numberOfSteps}`,

@@ -54,7 +54,6 @@ const [RootDrawerProvider, useRootDrawerProps] =
 
 export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
   (props, ref) => {
-    DrawerContent.displayName = "DrawerContent";
     const { children, portalled = true, portalRef, ...rest } = props;
     const { size, placement } = useRootDrawerProps();
     const sizeNotFull = size !== "full";
@@ -71,9 +70,9 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
     );
   },
 );
+DrawerContent.displayName = "DrawerContent";
 
 export const CloseDrawerLine = forwardRef<HTMLButtonElement>((props, ref) => {
-  CloseDrawerLine.displayName = "CloseDrawerLine";
   const { t } = useTranslation();
   return (
     <ChakraDrawer.CloseTrigger
@@ -96,6 +95,7 @@ export const CloseDrawerLine = forwardRef<HTMLButtonElement>((props, ref) => {
     </ChakraDrawer.CloseTrigger>
   );
 });
+CloseDrawerLine.displayName = "CloseDrawerLine";
 
 export const DrawerCloseTrigger = forwardRef<
   HTMLButtonElement,
@@ -120,7 +120,6 @@ export const DrawerBackTrigger = forwardRef<
   HTMLButtonElement,
   ChakraDrawer.CloseTriggerProps
 >((props, ref) => {
-  DrawerBackTrigger.displayName = "DrawerBackTrigger";
   const { t } = useTranslation();
   return (
     <ChakraDrawer.CloseTrigger asChild {...props} ref={ref} top="0">
@@ -130,12 +129,12 @@ export const DrawerBackTrigger = forwardRef<
     </ChakraDrawer.CloseTrigger>
   );
 });
+DrawerBackTrigger.displayName = "DrawerBackTrigger";
 
 export const DrawerFullScreenHeader = forwardRef<
   HTMLDivElement,
   DrawerFullScreenHeaderProps
 >((props, ref) => {
-  DrawerFullScreenHeader.displayName = "DrawerFullScreenHeader";
   const { backTrigger = true, title } = props;
   return (
     <ChakraDrawer.Header {...props} ref={ref} asChild>
@@ -153,6 +152,7 @@ export const DrawerFullScreenHeader = forwardRef<
     </ChakraDrawer.Header>
   );
 });
+DrawerFullScreenHeader.displayName = "DrawerFullScreenHeader";
 
 export const Drawer = (props: DrawerProps) => {
   const { children, placement, size = "md", ...rest } = props;

@@ -65,13 +65,12 @@ export const NudgeTrigger = forwardRef<
   HTMLButtonElement,
   ChakraPopover.TriggerProps
 >(({ ...props }, ref) => {
-  NudgeTrigger.displayName = "NudgeTrigger";
   return <PopoverTrigger {...props} ref={ref} />;
 });
+NudgeTrigger.displayName = "NudgeTrigger";
 
 export const NudgeContent = forwardRef<HTMLDivElement, PopoverProps>(
   ({ showCloseButton = true, children, ...props }, ref) => {
-    NudgeContent.displayName = "NudgeContent";
     const [currentStep, setCurrentStep] = useState(1);
     const childrenArray = React.Children.toArray(children); // Convert children to an array
 
@@ -125,6 +124,7 @@ export const NudgeContent = forwardRef<HTMLDivElement, PopoverProps>(
     );
   },
 );
+NudgeContent.displayName = "NudgeContent";
 
 export const NudgeActions = ({ ...props }: BoxProps) => {
   const { colorMode } = useColorMode();
@@ -200,7 +200,6 @@ export const NudgeCloseTrigger = forwardRef<
   HTMLButtonElement,
   ChakraPopover.TriggerProps
 >(({ children, ...props }, ref) => {
-  NudgeCloseTrigger.displayName = "NudgeCloseTrigger";
   const isStringChild = typeof children === "string";
 
   return (
@@ -209,3 +208,4 @@ export const NudgeCloseTrigger = forwardRef<
     </ChakraPopover.CloseTrigger>
   );
 });
+NudgeCloseTrigger.displayName = "NudgeCloseTrigger";

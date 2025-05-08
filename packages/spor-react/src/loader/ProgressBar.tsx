@@ -88,7 +88,6 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
     },
     ref,
   ) => {
-    ProgressBar.displayName = "ProgressBar";
     const recipe = useSlotRecipe({ key: "progressbar" });
     const styles = recipe({});
     const currentLoadingText = useRotatingLabel({
@@ -116,3 +115,4 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
     );
   },
 );
+ProgressBar.displayName = "ProgressBar";

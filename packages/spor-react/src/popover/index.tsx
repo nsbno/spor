@@ -16,7 +16,6 @@ export const PopoverTrigger = forwardRef<
   HTMLButtonElement,
   ChakraPopover.TriggerProps
 >(({ children, ...props }, ref) => {
-  PopoverTrigger.displayName = "PopoverTrigger";
   const isStringChild = typeof children === "string";
 
   return (
@@ -25,6 +24,7 @@ export const PopoverTrigger = forwardRef<
     </ChakraPopover.Trigger>
   );
 });
+PopoverTrigger.displayName = "PopoverTrigger";
 
 export type PopoverProps = ChakraPopover.ContentProps &
   React.RefAttributes<HTMLDivElement> & {
@@ -33,7 +33,6 @@ export type PopoverProps = ChakraPopover.ContentProps &
 
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverProps>(
   ({ children, showCloseButton = false, ...props }, ref) => {
-    PopoverContent.displayName = "PopoverContent";
     const { colorMode } = useColorMode();
 
     const closeButtonRef = React.useRef<HTMLButtonElement>(null);
@@ -68,3 +67,4 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverProps>(
     );
   },
 );
+PopoverContent.displayName = "PopoverContent";

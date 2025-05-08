@@ -59,7 +59,6 @@ export type ComboboxProps<T> = Exclude<
 
 export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
   (props) => {
-    Combobox.displayName = "Combobox";
     const {
       label,
       loading,
@@ -210,6 +209,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps<object>>(
     );
   },
 );
+Combobox.displayName = "Combobox";
 
 const useInputWidth = (inputRef: React.RefObject<HTMLInputElement>) => {
   const [inputWidth, setInputWidth] = useState("auto");

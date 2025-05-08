@@ -7,7 +7,6 @@ export type VyLogoPrideProps = BoxProps;
 
 export const VyLogoPride = forwardRef<SVGSVGElement, VyLogoPrideProps>(
   (props, ref) => {
-    VyLogoPride.displayName = "VyLogoPride";
     // These colors should not be tokenized, as they are logo specific.
 
     const pinkColor = "#ED6F99";
@@ -164,3 +163,4 @@ export const VyLogoPride = forwardRef<SVGSVGElement, VyLogoPrideProps>(
     );
   },
 );
+VyLogoPride.displayName = "VyLogoPride";

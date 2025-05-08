@@ -31,7 +31,6 @@ type CheckboxProps = ChakraCheckbox.RootProps &
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (props, ref) => {
-    Checkbox.displayName = "Checkbox";
     const { children, inputProps, rootRef, ...rest } = props;
     return (
       <ChakraCheckbox.Root ref={rootRef} {...rest}>
@@ -46,3 +45,4 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     );
   },
 );
+Checkbox.displayName = "Checkbox";

@@ -30,7 +30,6 @@ export type LinkProps = Exclude<ChakraLinkProps, "variant"> &
  */
 export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ children, ...props }, ref) => {
-    TextLink.displayName = "TextLink";
     const external =
       props.external === undefined
         ? Boolean(props.href?.match(/^https?:\/\//))
@@ -43,3 +42,4 @@ export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
     );
   },
 );
+TextLink.displayName = "TextLink";

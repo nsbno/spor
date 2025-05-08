@@ -48,7 +48,7 @@ export type StaticCardProps = RecipeVariantProps<typeof staticCardRecipe> &
 
 export const StaticCard = forwardRef<HTMLDivElement, StaticCardProps>(
   (props, ref) => {
-    StaticCard.displayName = "StaticCard";
     return <StyledCardBox {...props} ref={ref}></StyledCardBox>;
   },
 );
+StaticCard.displayName = "StaticCard";

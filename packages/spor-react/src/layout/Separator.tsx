@@ -20,7 +20,6 @@ type SeparatorProps = Exclude<ChakraSeparatorProps, "size" | "variant"> &
 
 export const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
   (props, ref) => {
-    Separator.displayName = "Separator";
     const {
       size = "md",
       variant = "solid",
@@ -32,3 +31,4 @@ export const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
     return <ChakraSeparator css={styles} {...props} ref={ref} />;
   },
 );
+Separator.displayName = "Separator";

@@ -45,7 +45,6 @@ export const PhoneNumberInput = forwardRef<
   HTMLInputElement,
   PhoneNumberInputProps
 >((props, ref) => {
-  PhoneNumberInput.displayName = "PhoneNumberInput";
   const {
     label: externalLabel,
     value: externalValue,
@@ -119,6 +118,7 @@ export const PhoneNumberInput = forwardRef<
     </AttachedInputs>
   );
 });
+PhoneNumberInput.displayName = "PhoneNumberInput";
 
 const texts = createTexts({
   phoneNumber: {

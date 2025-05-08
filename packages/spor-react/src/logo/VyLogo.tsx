@@ -30,7 +30,6 @@ const SVGGroup = chakra("g", fillRecipe);
 type VyLogoProps = BoxProps & React.SVGProps<SVGSVGElement>;
 
 export const VyLogo = forwardRef<SVGSVGElement, VyLogoProps>((props, ref) => {
-  VyLogo.displayName = "VyLogo";
   const id = useId();
 
   return (
@@ -118,3 +117,4 @@ export const VyLogo = forwardRef<SVGSVGElement, VyLogoProps>((props, ref) => {
     </SvgBox>
   );
 });
+VyLogo.displayName = "VyLogo";

@@ -32,7 +32,6 @@ type DateFieldProps = AriaDateFieldProps<DateValue> &
   };
 export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
   ({ labelId, ...props }, externalRef) => {
-    DateField.displayName = "DateField";
     const locale = useCurrentLocale();
     const recipe = useSlotRecipe({
       key: "datePicker",
@@ -88,6 +87,7 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
     );
   },
 );
+DateField.displayName = "DateField";
 
 const texts = createTexts({
   day: {

@@ -40,7 +40,6 @@ export type CheckboxGroupProps = Exclude<
 
 export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
   (props, ref) => {
-    CheckboxGroup.displayName = "CheckboxGroup";
     const { direction = "row", children, gap = 1, ...rest } = props;
 
     return (
@@ -52,3 +51,4 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
     );
   },
 );
+CheckboxGroup.displayName = "CheckboxGroup";

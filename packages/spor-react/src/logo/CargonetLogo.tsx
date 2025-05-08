@@ -12,7 +12,6 @@ export type CargonetLogoProps = {
 
 export const CargonetLogo = forwardRef<SVGSVGElement, CargonetLogoProps>(
   (props, ref) => {
-    CargonetLogo.displayName = "CargonetLogo";
     const { colorPalette } = props;
     // These colors should not be tokenized, as they are logo specific.
     const mainColor = "#DF8200";
@@ -97,3 +96,4 @@ export const CargonetLogo = forwardRef<SVGSVGElement, CargonetLogoProps>(
     );
   },
 );
+CargonetLogo.displayName = "CargonetLogo";

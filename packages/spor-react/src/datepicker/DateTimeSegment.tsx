@@ -22,7 +22,6 @@ type DateTimeSegmentProps = PropsWithChildren<DatePickerVariantProps> & {
  * */
 export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
   ({ segment, state, ariaLabel, ariaDescription }, externalRef) => {
-    DateTimeSegment.displayName = "DateTimeSegment";
     const internalRef = useRef(null);
     const ref = externalRef ?? internalRef;
 
@@ -64,6 +63,7 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
     );
   },
 );
+DateTimeSegment.displayName = "DateTimeSegment";
 
 const isPaddable = (segmentType: DateSegment["type"]) =>
   segmentType === "month" ||

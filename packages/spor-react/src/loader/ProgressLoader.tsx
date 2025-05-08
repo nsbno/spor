@@ -96,7 +96,6 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
     width,
     ...rest
   }: ProgressLoaderProps) => {
-    ProgressLoader.displayName = "ProgressLoader";
     const { t } = useTranslation();
     const currentLoadingText = useRotatingLabel({
       label,
@@ -170,6 +169,7 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
     );
   },
 );
+ProgressLoader.displayName = "ProgressLoader";
 
 const texts = createTexts({
   fallbackLabel: (value) => ({

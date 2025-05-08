@@ -86,7 +86,6 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
 
 export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
   (props) => {
-    ListBox.displayName = "ListBox";
     const { loading, listBoxRef, state, maxWidth, variant, children } = props;
     const { listBoxProps } = useListBox(props, state, listBoxRef);
     const recipe = useSlotRecipe({ key: "listBox" });
@@ -112,6 +111,7 @@ export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
     );
   },
 );
+ListBox.displayName = "ListBox";
 
 /**
  * Renders a label for a listbox item.

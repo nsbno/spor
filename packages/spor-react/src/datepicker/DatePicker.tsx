@@ -72,7 +72,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     },
     externalRef,
   ) => {
-    DatePicker.displayName = "DatePicker";
     const chakraFieldProps = useFieldContext();
     const state = useDatePickerState({
       ...props,
@@ -172,3 +171,4 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     );
   },
 );
+DatePicker.displayName = "DatePicker";

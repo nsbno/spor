@@ -40,7 +40,6 @@ type JumpButtonProps = BoxProps &
  */
 export const JumpButton = forwardRef<HTMLButtonElement, JumpButtonProps>(
   (props, ref) => {
-    JumpButton.displayName = "JumpButton";
     const { direction, disabled, size = "sm" } = props;
     const { t } = useTranslation();
 
@@ -67,6 +66,7 @@ export const JumpButton = forwardRef<HTMLButtonElement, JumpButtonProps>(
     );
   },
 );
+JumpButton.displayName = "JumpButton";
 
 const texts = createTexts({
   forward: {

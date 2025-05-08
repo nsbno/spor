@@ -69,7 +69,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref,
   ) => {
-    Input.displayName = "Input";
     return (
       <Field invalid={invalid} helperText={helperText} errorText={errorText}>
         <InputGroup
@@ -94,3 +93,4 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     );
   },
 );
+Input.displayName = "Input";

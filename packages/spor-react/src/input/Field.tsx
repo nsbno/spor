@@ -40,7 +40,6 @@ export type FieldProps = Omit<ChakraField.RootProps, "label"> &
 
 export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
   (props, ref) => {
-    Field.displayName = "Field";
     const { label, children, helperText, errorText, ...rest } = props;
     const recipe = useSlotRecipe({ key: "field" });
     const styles = recipe({ label, helperText, errorText });
@@ -60,15 +59,16 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
     );
   },
 );
+Field.displayName = "Field";
 
 export const FieldErrorText = React.forwardRef<
   HTMLDivElement,
   ChakraField.ErrorTextProps
 >((props, ref) => {
-  FieldErrorText.displayName = "FieldErrorText";
   return (
     <ChakraField.ErrorText ref={ref}>{props.children}</ChakraField.ErrorText>
   );
 });
+FieldErrorText.displayName = "FieldErrorText";
 
 export const FieldLabel = ChakraField.Label;

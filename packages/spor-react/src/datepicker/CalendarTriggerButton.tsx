@@ -25,7 +25,6 @@ export const CalendarTriggerButton = forwardRef<
   HTMLDivElement,
   CalendarTriggerButtonProps
 >(({ variant, disabled, ariaLabelledby, ...buttonProps }) => {
-  CalendarTriggerButton.displayName = "CalendarTriggerButton";
   const { t } = useTranslation();
   const recipe = useSlotRecipe({
     key: "datePicker",
@@ -46,6 +45,7 @@ export const CalendarTriggerButton = forwardRef<
     </PopoverAnchor>
   );
 });
+CalendarTriggerButton.displayName = "CalendarTriggerButton";
 
 const texts = createTexts({
   openCalendar: {

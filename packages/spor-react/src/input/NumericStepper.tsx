@@ -82,7 +82,6 @@ export const NumericStepper = React.forwardRef<
     showZero = false,
     ariaLabelContext = { singular: "", plural: "" },
   }: NumericStepperProps) => {
-    NumericStepper.displayName = "NumericStepper";
     const addButtonRef = useRef<HTMLButtonElement>(null);
     const { t } = useTranslation();
     const recipe = useSlotRecipe({ recipe: numericStepperRecipe });
@@ -185,6 +184,7 @@ export const NumericStepper = React.forwardRef<
     );
   },
 );
+NumericStepper.displayName = "NumericStepper";
 
 type VerySmallButtonProps = {
   /** The icon to render */
@@ -206,7 +206,6 @@ const VerySmallButton = React.forwardRef<
   HTMLButtonElement,
   VerySmallButtonProps
 >((props, ref) => {
-  VerySmallButton.displayName = "VerySmallButton";
   const recipe = useSlotRecipe({ recipe: numericStepperRecipe });
   const styles = recipe({ colorPalette: "default" });
   return (
@@ -219,6 +218,7 @@ const VerySmallButton = React.forwardRef<
     />
   );
 });
+VerySmallButton.displayName = "VerySmallButton";
 
 type IconPropTypes = BoxProps & { stepLabel: number };
 

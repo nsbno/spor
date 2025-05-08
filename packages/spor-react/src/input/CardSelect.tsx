@@ -19,7 +19,6 @@ export const CardSelect = ({ size = "md", ...props }: PopoverRootProps) => {
 
 export const CardSelectContent = forwardRef<HTMLDivElement, StaticCardProps>(
   ({ children, ...props }, ref) => {
-    CardSelectContent.displayName = "CardSelectContent";
     return (
       <Portal>
         <ChakraPopover.Positioner>
@@ -41,6 +40,7 @@ export const CardSelectContent = forwardRef<HTMLDivElement, StaticCardProps>(
     );
   },
 );
+CardSelectContent.displayName = "CardSelectContent";
 
 export type CardSelectTriggerProps = {
   /** The design of the trigger button.
@@ -70,7 +70,6 @@ export const CardSelectTrigger = forwardRef<
     { icon, variant = "core", withChevron = true, size, children, ...props },
     ref,
   ) => {
-    CardSelectTrigger.displayName = "CardSelectTrigger";
     const ChevronIcon =
       size === "sm" ? DropdownDownFill18Icon : DropdownDownFill24Icon;
 
@@ -103,3 +102,4 @@ export const CardSelectTrigger = forwardRef<
     );
   },
 );
+CardSelectTrigger.displayName = "CardSelectTrigger";

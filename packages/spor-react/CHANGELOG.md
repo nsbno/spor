@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.2.0
+
+### Minor Changes
+
+- b1fe230: Add filter for available country codes for PhoneNumberInput
+
 ## 12.1.2
 
 ### Patch Changes

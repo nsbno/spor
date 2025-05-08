@@ -7,7 +7,7 @@ import {
   type RecipeVariantProps,
   Span,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import React, { cloneElement, forwardRef, PropsWithChildren } from "react";
 
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
@@ -29,7 +29,7 @@ export type ButtonProps = Exclude<
     /* Display icon to the right */
     rightIcon?: React.ReactNode;
     /* "primary" | "secondary" | "tertiary" | "ghost" | "floating". Defaults to primary. */
-    variant: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
+    variant?: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
     /* "lg" | "md" | "sm" | "xs". Defaults to md. */
     size?: "lg" | "md" | "sm" | "xs";
     /* Link to a downloadable resource. */
@@ -65,9 +65,37 @@ export type ButtonProps = Exclude<
  * @see https://spor.vy.no/components/button
  */
 
+const ButtonContent = ({
+  leftIcon,
+  children,
+  rightIcon,
+}: PropsWithChildren<Pick<ButtonProps, "leftIcon" | "rightIcon">>) => (
+  <>
+    {leftIcon}
+    {children}
+    {rightIcon && <Span marginLeft="auto">{rightIcon}</Span>}
+  </>
+);
+
+const LoadingContent = ({
+  children,
+  loadingText,
+}: PropsWithChildren<Pick<ButtonProps, "size" | "loadingText">>) => (
+  <>
+    <Flex gap="1" visibility="hidden">
+      {children}
+    </Flex>
+    <Center position="absolute" inset="1px 0">
+      <ColorInlineLoader width="80%" marginX={2} marginY={2} />
+      {loadingText && <Box>{loadingText}</Box>}
+    </Center>
+  </>
+);
+
+// eslint-disable-next-line react/display-name
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref) => {
-    const {
+  (
+    {
       loading,
       disabled,
       loadingText,
@@ -78,16 +106,35 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       type = "button",
       children,
       ...rest
-    } = props;
-    const ariaLabel = useCorrectAriaLabel(props);
+    },
+    ref,
+  ) => {
+    const { t } = useTranslation();
 
-    const buttonContent = (
-      <>
-        {leftIcon}
-        {children}
-        {rightIcon && <Span marginLeft="auto">{rightIcon}</Span>}
-      </>
-    );
+    const ariaLabel = loading
+      ? String(loadingText ?? t(texts.loadingText))
+      : (rest["aria-label"] as string);
+
+    const renderContent = () => {
+      const content = rest.asChild
+        ? (children as React.ReactElement).props.children
+        : children;
+
+      if (loading)
+        return (
+          <LoadingContent size={size} loadingText={loadingText}>
+            <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
+              {content}
+            </ButtonContent>
+          </LoadingContent>
+        );
+
+      return (
+        <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
+          {content}
+        </ButtonContent>
+      );
+    };
 
     return (
       <ChakraButton
@@ -101,50 +148,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         size={size}
         {...rest}
       >
-        {loading ? (
-          <>
-            <Flex gap="1" visibility="hidden">
-              {buttonContent}
-            </Flex>
-            <Center position="absolute" right={0} left={0} top={1} bottom={0}>
-              <ColorInlineLoader
-                maxWidth={getLoaderWidth(size)}
-                width="80%"
-                marginX={2}
-                marginY={2}
-              />
-              {loadingText && <Box>{loadingText}</Box>}
-            </Center>
-          </>
-        ) : (
-          buttonContent
-        )}
+        {rest.asChild
+          ? cloneElement(children as React.ReactElement, {
+              children: renderContent(),
+            })
+          : renderContent()}
       </ChakraButton>
     );
   },
 );
-
-function getLoaderWidth(size: ButtonProps["size"]): string {
-  switch (size) {
-    case "xs":
-      return "4rem";
-    case "sm":
-      return "4rem";
-    case "md":
-      return "5rem";
-    case "lg":
-    default:
-      return "6rem";
-  }
-}
-
-function useCorrectAriaLabel(props: ButtonProps): string {
-  const { t } = useTranslation();
-  if (props.loading) {
-    return String(props.loadingText) ?? t(texts.loadingText);
-  }
-  return props["aria-label"] as string;
-}
 
 const texts = createTexts({
   loadingText: {

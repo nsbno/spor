@@ -14,6 +14,7 @@ export const buttonRecipe = defineRecipe({
     transitionDuration: "normal",
     cursor: "pointer",
     textWrap: "wrap",
+    width: "fit-content",
     paddingX: 3,
     paddingY: 1,
     _disabled: {
@@ -120,5 +121,9 @@ export const buttonRecipe = defineRecipe({
         fontWeight: "bold",
       },
     },
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "md",
   },
 });

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.1.2
+
+### Patch Changes
+
+- 4b8e4f4: `asChild` support for Button and TextLink #1669
+
 ## 12.1.1
 
 ### Patch Changes

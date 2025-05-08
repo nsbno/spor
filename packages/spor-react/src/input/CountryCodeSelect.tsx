@@ -33,14 +33,20 @@ export const callingCodes = createListCollection({
   items: [...prioritizedCountryCodes, ...sortedCallingCodes],
 });
 
-type CountryCodeSelectProps = Omit<SelectProps, "label" | "collection">;
+type CountryCodeSelectProps = Omit<SelectProps, "label" | "collection"> & {
+  allowedCountryCodes?: string[];
+};
 
 export const CountryCodeSelect = forwardRef<
   HTMLDivElement,
   CountryCodeSelectProps
 >((props, ref) => {
   const { t } = useTranslation();
-
+  if (props.allowedCountryCodes) {
+    callingCodes.items = callingCodes.items.filter((callingCode) =>
+      props.allowedCountryCodes.some((code) => code === callingCode.label),
+    );
+  }
   return (
     <Select
       {...props}

@@ -3,9 +3,17 @@ import {
   Link as ChakraLink,
   LinkProps as ChakraLinkProps,
   RecipeVariantProps,
+  VisuallyHidden,
 } from "@chakra-ui/react";
 import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
-import { forwardRef, PropsWithChildren } from "react";
+import React, {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  PropsWithChildren,
+} from "react";
+
+import { createTexts, useTranslation } from "@/i18n";
 
 import { linkRecipe } from "../theme/recipes/link";
 
@@ -28,16 +36,44 @@ export type LinkProps = Exclude<ChakraLinkProps, "variant"> &
  * </TextLink>
  * ```
  */
+const ExternalIcon = ({ label }: { label: string }) => (
+  <>
+    <LinkOutOutline24Icon aria-hidden />
+    <VisuallyHidden>{label}</VisuallyHidden>
+  </>
+);
+
 export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ children, ...props }, ref) => {
-    const external =
-      props.external === undefined
-        ? Boolean(props.href?.match(/^https?:\/\//))
-        : props.external;
+  ({ children, external, href, ...props }, ref) => {
+    const { t } = useTranslation();
+
+    const isExternal =
+      external ??
+      Boolean(href?.startsWith("http://") || href?.startsWith("https://"));
+
+    const externalLabel = t ? t(texts.externalLink) : texts.externalLink.en;
+
+    // If asChild is true, we need to clone the children and add the external icon
+    if (props.asChild && isValidElement(children)) {
+      return (
+        <ChakraLink href={href} {...props} ref={ref}>
+          {cloneElement(children as React.ReactElement, {
+            ...children.props,
+            children: (
+              <>
+                {children.props.children}
+                {isExternal && <ExternalIcon label={externalLabel} />}
+              </>
+            ),
+          })}
+        </ChakraLink>
+      );
+    }
+
     return (
-      <ChakraLink {...props} ref={ref}>
+      <ChakraLink href={href} {...props} ref={ref}>
         {children}
-        {external && <LinkOutOutline24Icon aria-hidden />}
+        {isExternal && <ExternalIcon label={externalLabel} />}
       </ChakraLink>
     );
   },

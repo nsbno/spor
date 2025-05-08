@@ -42,7 +42,7 @@ export const CountryCodeSelect = forwardRef<
   CountryCodeSelectProps
 >((props, ref) => {
   const { t } = useTranslation();
-  const allowedCallingCodes = callingCodes.items.filter(
+  callingCodes.items = callingCodes.items.filter(
     (callingCode) =>
       !props.allowedCountryCodes ||
       props.allowedCountryCodes.some((code) => code === callingCode.label),
@@ -53,7 +53,7 @@ export const CountryCodeSelect = forwardRef<
       {...props}
       ref={ref}
       positioning={{ placement: "bottom", flip: false }}
-      collection={createListCollection({ items: allowedCallingCodes })}
+      collection={callingCodes}
       lazyMount
       aria-label={t(texts.countryCode)}
       variant={"rightSideSquare"}

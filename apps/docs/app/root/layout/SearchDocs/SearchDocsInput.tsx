@@ -100,7 +100,7 @@ export const SearchDocsInput = ({ onSearchSelect, onClose }: Props) => {
             each={collection.items}
             fallback={
               <Text paddingX="4" paddingY="5" color="text.tertiary">
-                No results found for "{searchQuery}"
+                No results found for &quot;{searchQuery}&quot;
               </Text>
             }
           >

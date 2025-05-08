@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ButtonProps } from "@chakra-ui/react";
 import {
   PortableText as SanityPortableText,
   PortableTextReactComponents,
@@ -93,7 +95,7 @@ const components: Partial<PortableTextReactComponents> = {
     ),
     normal: ({ children }) => {
       const arrayChildren = React.Children.toArray(children);
-      if (!arrayChildren.length || arrayChildren.join("") === "") {
+      if (arrayChildren.length === 0 || arrayChildren.join("") === "") {
         return null;
       }
       return (
@@ -133,9 +135,9 @@ const components: Partial<PortableTextReactComponents> = {
   types: {
     buttonLink: ({ value }) => {
       const isInternal = value.url.startsWith("/");
-      const linkProps: any = isInternal
-        ? { as: Link, to: value.url }
-        : { as: "a", href: value.url };
+      const linkProps = isInternal
+        ? ({ as: Link, to: value.url } as ButtonProps)
+        : ({ as: "a", href: value.url } as ButtonProps);
       return (
         <Box marginTop={3}>
           <Button variant={value.variant} size={value.size} {...linkProps}>
@@ -174,7 +176,7 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     imageWithCaption: ({ value }) => {
-      const [, , dimensions] = value.image.asset?._ref.split("-");
+      const dimensions = value.image.asset?._ref.split("-")[2];
       const aspectRatio = dimensions.split("x").join(" / ");
 
       return (
@@ -193,7 +195,7 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     image: ({ value }) => {
-      const [, , dimensions] = value.image.asset?._ref.split("-");
+      const dimensions = value.image.asset?._ref.split("-")[2];
       const aspectRatio = dimensions.split("x").join(" / ");
       return (
         <Image
@@ -304,68 +306,86 @@ const components: Partial<PortableTextReactComponents> = {
         gap={[2, null, 4]}
         marginTop={4}
       >
-        {value.examples.map((example: any) => (
-          <StaticCard
-            key={example._key}
-            colorPalette={
-              example.weight === "positive"
-                ? "green"
-                : example.weight === "negative"
-                  ? "red"
-                  : "grey"
-            }
-            padding={[2, null, 4]}
-          >
-            <Flex gap={2} alignItems="center" marginBottom={2}>
-              {example.weight === "positive" ? (
+        {value.examples.map((example: any) => {
+          const getIcon = (weight: string) => {
+            if (weight === "positive") {
+              return (
                 <CheckmarkFill30Icon
                   color="primaryGreen"
                   boxSize={[4, null, 5]}
                 />
-              ) : example.weight === "negative" ? (
+              );
+            }
+            if (weight === "negative") {
+              return (
                 <ErrorOutline30Icon color="brightRed" boxSize={[4, null, 5]} />
-              ) : null}
-              <Heading as="h3" variant="md" fontWeight="bold" flex={1}>
-                {example.weight === "positive"
-                  ? "Do"
-                  : example.weight === "negative"
-                    ? "Don't"
-                    : null}
-              </Heading>
-            </Flex>
+              );
+            }
+            return null;
+          };
 
-            <Box
-              css={{ "> :last-child": { marginBottom: 0 } }}
-              marginBottom={2}
+          return (
+            <StaticCard
+              key={example._key}
+              colorPalette={getColorPalette(example.weight)}
+              padding={[2, null, 4]}
             >
-              <PortableText value={example.content} />
-            </Box>
-            {example.image && (
-              <Box>
-                <Image
-                  src={urlBuilder
-                    .image(example.image)
-                    .width(600)
-                    .format("webp")
-                    .url()}
-                  alt={`Example of what ${
-                    example.weight === "negative" ? "not " : ""
-                  }to do`}
-                  width="100%"
-                  aspectRatio="16 / 9"
-                  objectFit="cover"
-                  objectPosition="center"
-                  borderRadius="md"
-                  overflow="hidden"
-                />
+              <Flex gap={2} alignItems="center" marginBottom={2}>
+                {getIcon(example.weight)}
+                <Heading as="h3" variant="md" fontWeight="bold" flex={1}>
+                  {getHeading(example.weight)}
+                </Heading>
+              </Flex>
+
+              <Box
+                css={{ "> :last-child": { marginBottom: 0 } }}
+                marginBottom={2}
+              >
+                <PortableText value={example.content} />
               </Box>
-            )}
-          </StaticCard>
-        ))}
+
+              {example.image && (
+                <Box>
+                  <Image
+                    src={urlBuilder
+                      .image(example.image)
+                      .width(600)
+                      .format("webp")
+                      .url()}
+                    alt={getAltText(example.weight)}
+                    width="100%"
+                    aspectRatio="16 / 9"
+                    objectFit="cover"
+                    objectPosition="center"
+                    borderRadius="md"
+                    overflow="hidden"
+                  />
+                </Box>
+              )}
+            </StaticCard>
+          );
+        })}
       </SimpleGrid>
     ),
   },
 };
+
+const getColorPalette = (weight: string) =>
+  ({
+    positive: "green",
+    negative: "red",
+    neutral: "grey",
+  })[weight] || "grey";
+
+const getHeading = (weight: string) =>
+  ({
+    positive: "Do",
+    negative: "Don’t",
+    neutral: null,
+  })[weight] || null;
+
+const getAltText = (weight: string) =>
+  `Example of what ${weight === "negative" ? "not " : ""}to do`;
 
 export const PortableText = ({
   value,

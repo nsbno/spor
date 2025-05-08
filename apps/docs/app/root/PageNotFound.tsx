@@ -13,7 +13,7 @@ export const PageNotFound = () => {
         </Heading>
         <Text marginBottom={5} maxWidth="50ch">
           It looks like you found a dead link, or entered a wrong URL. Whatever
-          happened, there's nothing here.
+          happened, there&apos;s nothing here.
         </Text>
         <Button variant="primary" as={Link} to="/">
           Go back to the Spor front page

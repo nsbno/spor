@@ -4,7 +4,7 @@ type SiteSettings = {
   title: string;
   description: string;
   keywords: string[];
-  socialImage: any;
+  socialImage: unknown;
 };
 export type MenuItem = {
   _type: "menuItem" | "divider";

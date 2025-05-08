@@ -116,7 +116,7 @@ function ActionLinkCard({ to, children }: ActionLinkCardProps) {
     rel?: string;
     as?: React.ElementType;
     to?: string;
-  } = to.match(/^https?:\/\//)
+  } = /^https?:\/\//.test(to)
     ? { href: to, target: "_blank", rel: "noopener noreferrer", as: "a" }
     : { as: Link, to };
 

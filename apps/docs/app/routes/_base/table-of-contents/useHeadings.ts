@@ -13,16 +13,19 @@ export const useHeadings = () => {
   useEffect(() => {
     const id = setTimeout(() => {
       const headingList: HeadingType[] = [];
-      contentRef.current?.querySelectorAll("h2, h3, h4").forEach((el) => {
-        if (!el.id) {
-          return;
+      const container = contentRef.current;
+      if (container) {
+        for (const el of container.querySelectorAll("h2, h3, h4")) {
+          if (!el.id) {
+            continue;
+          }
+          headingList.push({
+            id: el.id,
+            text: el.textContent || "",
+            level: el.tagName.toLowerCase() as HeadingLevelType,
+          });
         }
-        headingList.push({
-          id: el.id,
-          text: el.textContent || "",
-          level: el.tagName.toLowerCase() as HeadingLevelType,
-        });
-      });
+      }
       setHeadings(headingList);
     }, 16);
     return () => clearTimeout(id);

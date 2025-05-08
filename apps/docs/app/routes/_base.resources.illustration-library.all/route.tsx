@@ -1,6 +1,7 @@
+import { PassThrough } from "node:stream";
+
 import { SanityAsset } from "@sanity/image-url/lib/types/types";
 import Archiver from "archiver";
-import { PassThrough } from "stream";
 
 import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";
@@ -51,6 +52,7 @@ export const loader = async () => {
   headers.set("Content-Disposition", "attachment; filename=illustrations.zip");
   headers.set("Cache-Control", "max-age=60");
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return new Response(stream as any, {
     status: 200,
     headers,

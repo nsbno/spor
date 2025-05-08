@@ -33,7 +33,10 @@ export const usePreviewableData = <Data extends { _id: string }>() => {
   });
 
   return {
-    data: filterDataToSingleItem(currentData as any, isPreview) as Data,
+    data: filterDataToSingleItem(
+      currentData as { _id: string }[],
+      isPreview,
+    ) as Data,
     isPreview,
   };
 };

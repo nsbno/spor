@@ -29,7 +29,6 @@ export type CloseButtonProps = Omit<
  */
 export const CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>(
   ({ size = "sm", ...props }, ref) => {
-    CloseButton.displayName = "CloseButton";
     const { t } = useTranslation();
     return (
       <IconButton
@@ -43,6 +42,7 @@ export const CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>(
     );
   },
 );
+CloseButton.displayName = "CloseButton";
 
 const getIcon = (size: CloseButtonProps["size"]) => {
   switch (size) {

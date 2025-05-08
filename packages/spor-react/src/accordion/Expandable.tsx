@@ -26,7 +26,6 @@ import { ExpandableItemProps, ExpandableProps } from "./types";
 
 export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
   (props, ref) => {
-    Expandable.displayName = "Expandable";
     const { title, children, headingLevel, startElement, ...rest } = props;
     return (
       <Accordion {...props} ref={ref} {...rest}>
@@ -86,3 +85,5 @@ export const ExpandableItem = (props: ExpandableItemProps) => {
     </AccordionItem>
   );
 };
+
+Expandable.displayName = "Expandable";

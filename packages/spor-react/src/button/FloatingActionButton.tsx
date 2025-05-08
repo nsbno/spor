@@ -51,7 +51,6 @@ export const FloatingActionButton = forwardRef<
     },
     ref,
   ) => {
-    FloatingActionButton.displayName = "FloatingActionButton";
     const [isTextVisible, setIsTextVisible] = React.useState(
       externalIsTextVisible === undefined ? false : externalIsTextVisible,
     );
@@ -96,6 +95,7 @@ export const FloatingActionButton = forwardRef<
     );
   },
 );
+FloatingActionButton.displayName = "FloatingActionButton";
 
 type ScrollDirection = "up" | "down" | null;
 const useScrollDirection = () => {

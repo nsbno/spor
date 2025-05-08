@@ -60,7 +60,6 @@ type ServiceAlertProps = Omit<AlertProps, "variant"> &
 
 export const ServiceAlert = forwardRef<HTMLDivElement, ServiceAlertProps>(
   (props, ref) => {
-    ServiceAlert.displayName = "ServiceAlert";
     const {
       variant = "service",
       children,
@@ -144,6 +143,7 @@ export const ServiceAlert = forwardRef<HTMLDivElement, ServiceAlertProps>(
     );
   },
 );
+ServiceAlert.displayName = "ServiceAlert";
 
 const texts = createTexts({
   notification: (notification) => {

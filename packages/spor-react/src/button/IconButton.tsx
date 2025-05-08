@@ -58,7 +58,6 @@ export type IconButtonProps = Exclude<
  */
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   (props, ref) => {
-    IconButton.displayName = "IconButton";
     const { icon, size = "sm", loading = false, ...rest } = props;
     return (
       <ChakraIconButton
@@ -73,3 +72,4 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     );
   },
 );
+IconButton.displayName = "IconButton";

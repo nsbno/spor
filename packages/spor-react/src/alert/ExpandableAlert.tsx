@@ -61,7 +61,6 @@ type ExpandableAlertProps = PropsWithChildren<ExpandableAlertVariantProps> &
  */
 export const ExpandableAlert = forwardRef<HTMLDivElement, ExpandableAlertProps>(
   (props, ref) => {
-    ExpandableAlert.displayName = "ExpandableAlert";
     const {
       variant = "info",
       children,
@@ -125,3 +124,5 @@ export const ExpandableAlert = forwardRef<HTMLDivElement, ExpandableAlertProps>(
     );
   },
 );
+
+ExpandableAlert.displayName = "ExpandableAlert";

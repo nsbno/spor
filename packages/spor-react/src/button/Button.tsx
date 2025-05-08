@@ -67,7 +67,6 @@ export type ButtonProps = Exclude<
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
-    Button.displayName = "Button";
     const {
       loading,
       disabled,
@@ -124,6 +123,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
   },
 );
+
+Button.displayName = "Button";
 
 function getLoaderWidth(size: ButtonProps["size"]): string {
   switch (size) {

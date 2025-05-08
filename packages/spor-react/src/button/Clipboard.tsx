@@ -24,7 +24,6 @@ const ClipboardIcon = React.forwardRef<
   HTMLDivElement,
   ChakraClipboard.IndicatorProps
 >((props, ref) => {
-  ClipboardIcon.displayName = "ClipboardIcon";
   return (
     <ChakraClipboard.Indicator
       copied={<CheckmarkFill18Icon />}
@@ -35,12 +34,12 @@ const ClipboardIcon = React.forwardRef<
     </ChakraClipboard.Indicator>
   );
 });
+ClipboardIcon.displayName = "ClipboardIcon";
 
 const ClipboardCopyText = React.forwardRef<
   HTMLDivElement,
   ChakraClipboard.IndicatorProps
 >((props, ref) => {
-  ClipboardCopyText.displayName = "ClipboardCopyText";
   const { t } = useTranslation();
   return (
     <ChakraClipboard.Indicator
@@ -52,6 +51,7 @@ const ClipboardCopyText = React.forwardRef<
     </ChakraClipboard.Indicator>
   );
 });
+ClipboardCopyText.displayName = "ClipboardCopyText";
 
 type ClipboardButtonProps = ButtonProps;
 
@@ -59,7 +59,6 @@ export const ClipboardButton = React.forwardRef<
   HTMLButtonElement,
   ClipboardButtonProps
 >((props, ref) => {
-  ClipboardButton.displayName = "ClipboardButton";
   return (
     <ChakraClipboard.Trigger asChild>
       <Button ref={ref} size="xs" leftIcon={<ClipboardIcon />} {...props}>
@@ -68,6 +67,7 @@ export const ClipboardButton = React.forwardRef<
     </ChakraClipboard.Trigger>
   );
 });
+ClipboardButton.displayName = "ClipboardButton";
 
 export const Clipboard = ChakraClipboard.Root;
 

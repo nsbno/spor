@@ -72,19 +72,13 @@ function getMetadata({ fileName, category }: GetMetadataArgs): IconMetadata {
     size = additionalSize;
   }
   size = getPixelSizeOrFallback(size);
-  return {
-    name,
-    modifier,
-    size,
-    category,
-    fileName,
-  };
+  return { name, modifier, size, category, fileName };
 }
 
 /** Gets the number of pixels of a size, or returns the argument */
 function getPixelSizeOrFallback(size: string) {
   const sizeInPixelsRegex = /^\d+x\d+$/; // matches ie. "16x16", "30x30"
-  return sizeInPixelsRegex.test(size) ? size.substring(0, 2) : size;
+  return sizeInPixelsRegex.test(size) ? size.slice(0, 2) : size;
 }
 
 /** Creates the lookup key for a given icon */
@@ -109,37 +103,26 @@ async function generateComponent(iconData: IconData) {
       expandProps: "end",
       ref: true,
       titleProp: false,
-      svgProps: {
-        role: "img",
-        "aria-hidden": "true",
-      },
+      svgProps: { role: "img", "aria-hidden": "true" },
       svgo: true,
       svgoConfig: {
         plugins: [
           {
             name: "preset-default",
-            params: {
-              overrides: {
-                removeViewBox: false,
-              },
-            },
+            params: { overrides: { removeViewBox: false } },
           },
         ],
       },
       dimensions: true,
       template: componentTemplate,
       plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
-      replaceAttrValues: {
-        "#2B2B2C": "currentColor",
-      },
+      replaceAttrValues: { "#2B2B2C": "currentColor" },
     },
-    {
-      componentName: iconData.componentName,
-    },
+    { componentName: iconData.componentName },
   );
   jsCode = jsCode
-    .replace("<svg", '<ClientOnly><Box as="svg" display="block"')
-    .replace("</svg>", "</Box></ClientOnly>");
+    .replace("<svg", '<Box as="svg" display="block"')
+    .replace("</svg>", "</Box>");
 
   return createComponentFile(iconData, jsCode);
 }
@@ -170,10 +153,7 @@ function generateIndexFiles(icons: IconData[]) {
 
 function getUniqueCategories(icons: IconData[]) {
   return Object.keys(
-    icons.reduce(
-      (prev, icon) => ({ ...prev, [icon.metadata.category]: true }),
-      {},
-    ),
+    Object.fromEntries(icons.map((icon) => [icon.metadata.category, true])),
   );
 }
 

@@ -16,7 +16,7 @@ export function HeroSection() {
   return (
     <Flex
       backgroundColor={"surface.tertiary"}
-      minHeight="650px"
+      minHeight="600px"
       className="light"
       width={"100vw"}
       overflow={"hidden"}

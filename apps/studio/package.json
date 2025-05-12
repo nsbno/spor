@@ -12,19 +12,19 @@
   },
   "dependencies": {
     "@sanity/code-input": "^4.1.4",
-    "@sanity/ui": "^2.3.1",
-    "@sanity/vision": "^3.45.0",
+    "@sanity/ui": "^2.15.17",
+    "@sanity/vision": "^3.88.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
     "react-is": "^18.3.1",
-    "sanity": "^3.45.0",
+    "sanity": "^3.88.2",
     "sanity-plugin-iframe-pane": "^3.1.6",
-    "styled-components": "^6.1.11"
+    "styled-components": "^6.1.18"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@sanity/eslint-config-studio": "^3.0.1",
+    "@sanity/eslint-config-studio": "^5.0.2",
+    "@types/react": "^18.3.12",
     "@vygruppen/eslint-config": "workspace:*",
     "eslint": "9.25.1",
     "prettier": "^3.3.1",

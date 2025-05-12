@@ -1,8 +1,7 @@
-import { useNavigate } from "@remix-run/react";
+import { Link } from "@remix-run/react";
 import { ArrowRightFill30Icon } from "@vygruppen/spor-icon-react";
 import {
   Alert,
-  Box,
   Button,
   Container,
   Flex,
@@ -12,7 +11,6 @@ import {
 } from "@vygruppen/spor-react";
 
 export function HeroSection() {
-  const navigate = useNavigate();
   return (
     <Flex
       backgroundColor={"surface.tertiary"}
@@ -46,20 +44,24 @@ export function HeroSection() {
             <Text variant="sm" color="text.tertiary" className="dark">
               Spor is Vy&apos;s design system for digital products.
             </Text>
-            <Box marginBottom={[10, null, 0]}>
+            <Flex marginBottom={[10, null, 0]} marginTop="3" gap="2">
+              <Button
+                className="dark"
+                variant="tertiary"
+                display={["flex", "inline-flex"]}
+                asChild
+              >
+                <Link to="/guides/migration">Migration from spor 1</Link>
+              </Button>
               <Button
                 className="light"
                 variant="secondary"
                 display={["flex", "inline-flex"]}
-                size="lg"
-                onClick={() => navigate("/guides/introduction")}
                 rightIcon={<ArrowRightFill30Icon />}
-                marginTop={4}
-                width={["100%", null, "fit-content"]}
               >
-                Get started
+                <Link to="/guides/introduction">Get started</Link>
               </Button>
-            </Box>
+            </Flex>
           </Flex>
           <Flex flex={["auto", null, "45%"]}>
             <Image

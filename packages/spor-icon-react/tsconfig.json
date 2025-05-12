@@ -3,7 +3,7 @@
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {
     "module": "ESNext",
-    "target": "es6",
+    "target": "es2017",
     "outDir": "./dist",
     "rootDirs": ["bin", "tmp"],
     "strict": true,

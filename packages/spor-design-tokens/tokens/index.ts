@@ -1,5 +1,6 @@
-import { readdirSync, statSync } from "fs";
-import { basename, extname, join } from "path";
+import { readdirSync, statSync } from "node:fs";
+// eslint-disable-next-line unicorn/import-style
+import { basename, extname, join } from "node:path";
 
 export type TokenFile = {
   category: string;
@@ -10,7 +11,7 @@ export type TokenFile = {
 function dirs(root: string): Array<TokenFile> {
   return readdirSync(root)
     .filter((category) => statSync(join(root, category)).isDirectory())
-    .map((category) => {
+    .flatMap((category) => {
       const files = jsonFiles(join(root, category));
       return files.map((type) => {
         return {
@@ -19,8 +20,7 @@ function dirs(root: string): Array<TokenFile> {
           path: join(root, category, type),
         };
       });
-    })
-    .flat();
+    });
 }
 
 function jsonFiles(dir: string): Array<string> {

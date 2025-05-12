@@ -1,7 +1,8 @@
 /**
  * Recursive function that resolves the value of a given token
  */
-export function simplifyTokens(obj: Record<string, any>): any {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function simplifyTokens(obj: Record<string, any>): unknown {
   for (const key in obj) {
     if (!obj[key] || typeof obj[key] !== "object") {
       continue;

@@ -1,6 +1,7 @@
 import { useNavigate } from "@remix-run/react";
 import { ArrowRightFill30Icon } from "@vygruppen/spor-icon-react";
 import {
+  Alert,
   Box,
   Button,
   Container,
@@ -15,12 +16,20 @@ export function HeroSection() {
   return (
     <Flex
       backgroundColor={"surface.tertiary"}
-      minHeight="500px"
+      minHeight="650px"
       className="light"
       width={"100vw"}
       overflow={"hidden"}
     >
-      <Container maxWidth="container.lg" marginTop={[0, 0, 8]} marginX="auto">
+      <Container maxWidth="container.lg" marginTop={[0, 0, 4]} marginX="auto">
+        <Alert variant="info" marginBottom="4" maxWidth="full">
+          Spor 2 is now available but is still undergoing testing for
+          production-ready applications. We are actively addressing issues,
+          enhancing documentation, and incorporating user feedback. Please share
+          any feedback you have! For production-ready apps, continue using Spor
+          1 until Spor 2 is fully tested and validated.
+        </Alert>
+
         <Flex
           flexDirection={["column-reverse", null, "row"]}
           alignItems="center"

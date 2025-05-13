@@ -9,7 +9,7 @@ const SVG_PATH = "../spor-icon/svg";
 const TMP_PATH = "./tmp";
 const DIST_PATH = "./dist";
 
-run();
+await run();
 
 async function run() {
   const icons = await loadIcons();
@@ -57,6 +57,7 @@ async function loadIcons() {
 type GetMetadataArgs = { fileName: string; category: string };
 /** Extracts metadata from the file name, and returns it as a data structure */
 function getMetadata({ fileName, category }: GetMetadataArgs): IconMetadata {
+  // eslint-disable-next-line prefer-const
   let [name, modifier, size, additionalSize] = fileName
     .replace(".svg", "")
     .split("-");
@@ -84,7 +85,7 @@ function getMetadata({ fileName, category }: GetMetadataArgs): IconMetadata {
 /** Gets the number of pixels of a size, or returns the argument */
 function getPixelSizeOrFallback(size: string) {
   const sizeInPixelsRegex = /^\d+x\d+$/; // matches ie. "16x16", "30x30"
-  return sizeInPixelsRegex.test(size) ? size.substring(0, 2) : size;
+  return sizeInPixelsRegex.test(size) ? size.slice(0, 2) : size;
 }
 
 /** Creates the lookup key for a given icon */
@@ -97,7 +98,7 @@ function createComponentName({
 }
 
 async function generateComponents(icons: IconData[]) {
-  await Promise.all(icons.map(generateComponent));
+  await Promise.all(icons.map((element) => generateComponent(element)));
   await generateIndexFiles(icons);
 }
 
@@ -170,10 +171,7 @@ function generateIndexFiles(icons: IconData[]) {
 
 function getUniqueCategories(icons: IconData[]) {
   return Object.keys(
-    icons.reduce(
-      (prev, icon) => ({ ...prev, [icon.metadata.category]: true }),
-      {},
-    ),
+    Object.fromEntries(icons.map((icon) => [icon.metadata.category, true])),
   );
 }
 
@@ -202,9 +200,9 @@ function generateTypeDefinitions(icons: IconData[]) {
 }
 
 function generateMetadataJson(icons: IconData[]) {
-  const metadata = icons.reduce(
-    (all, entry) => ({ ...all, [entry.componentName]: entry.metadata }),
-    {} as { [key: string]: IconMetadata },
-  );
+  const metadata: { [key: string]: IconMetadata } = {};
+  for (const entry of icons) {
+    metadata[entry.componentName] = entry.metadata;
+  }
   return fs.outputJson(`${DIST_PATH}/metadata.json`, metadata);
 }

@@ -267,3 +267,13 @@ export const datepickerAnatomy = createAnatomy("datepicker").parts(
   "box",
   "rangeCalendarPopover",
 );
+
+export const checkboxCardAnatomy = createAnatomy("checkbox-card", [
+  "root",
+  "control",
+  "label",
+  "description",
+  "addon",
+  "indicator",
+  "content",
+]);

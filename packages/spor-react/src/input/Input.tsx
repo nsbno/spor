@@ -5,7 +5,7 @@ import {
   Input as ChakraInput,
   InputProps as ChakraInputProps,
 } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import React, { forwardRef, ReactNode } from "react";
 
 import { inputRecipe } from "@/theme/recipes/input";
 
@@ -14,11 +14,11 @@ import { InputGroup } from "./InputGroup";
 
 export type InputProps = Exclude<
   ChakraInputProps,
-  "size" | "label" | "colorPalette"
+  "size" | "label" | "colorPalette" | "placeholder"
 > &
   FieldProps & {
     /** The input's label */
-    label: string;
+    label: ReactNode;
     /** Element that shows up to the left */
     startElement?: React.ReactNode;
     /** Element that shows up to the right */
@@ -85,8 +85,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             overflow="hidden"
             paddingLeft={startElement ? "2.6rem" : undefined}
             paddingRight={endElement ? "2.6rem" : undefined}
-            placeholder=""
             {...props}
+            placeholder=""
           />
         </InputGroup>
       </Field>

@@ -18,7 +18,13 @@ import {
   useLoaderData,
   useRouteError,
 } from "@remix-run/react";
-import { Brand, Language, SporProvider, themes } from "@vygruppen/spor-react";
+import {
+  Brand,
+  Input,
+  Language,
+  SporProvider,
+  themes,
+} from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect } from "react";
 
 import { RootLayout } from "./root/layout/RootLayout";

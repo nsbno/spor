@@ -35,6 +35,11 @@ export const fieldSlotRecipe = defineSlotRecipe({
         color: "text",
         top: "0.3rem",
       },
+      _placeholder: {
+        /* For when placeholder exists */
+        top: "0.3rem",
+        color: "red",
+      },
       _disabled: {
         opacity: 0.4,
       },
@@ -58,7 +63,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
       textStyle: "xs",
       width: "fit-content",
       position: "absolute",
-      bottom: -4,
+      top: 7,
       left: 3,
       zIndex: "dropdown",
       maxWidth: "50ch",

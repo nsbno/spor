@@ -12,7 +12,7 @@ export type InputGroupProps = GroupProps & {
   startElement?: React.ReactNode;
   endElement?: React.ReactNode;
   children: React.ReactElement;
-  label?: string;
+  label?: React.ReactNode;
 };
 
 /**

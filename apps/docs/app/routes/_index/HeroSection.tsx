@@ -7,6 +7,7 @@ import {
   Flex,
   Heading,
   Image,
+  Input,
   Text,
 } from "@vygruppen/spor-react";
 

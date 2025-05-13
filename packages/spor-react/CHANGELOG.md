@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 12.2.1
+
+### Patch Changes
+
+- 9bc98dd: Rewrite choice-chip. Fixes error where it stalls applications. No breaking changes to props.
+- Updated dependencies [04498c3]
+  - @vygruppen/spor-icon-react@4.0.4
+
 ## 12.2.0
 
 ### Minor Changes

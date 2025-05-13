@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 4.0.4
+
+### Patch Changes
+
+- 04498c3: Fix lint problems
+
 ## 4.0.3
 
 ### Patch Changes

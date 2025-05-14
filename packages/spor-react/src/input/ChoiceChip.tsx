@@ -8,8 +8,13 @@ type CheckBoxIcon = {
   checked: React.ReactNode;
 };
 
-export type ChoiceChipProps = CheckboxCardRootProps & {
+export type ChoiceChipProps = Omit<
+  CheckboxCardRootProps,
+  "onCheckedChange" | "checked"
+> & {
   icon?: CheckBoxIcon;
+  onCheckedChange?: (checked: boolean) => void;
+  checked: boolean;
 };
 
 /**
@@ -45,9 +50,14 @@ export type ChoiceChipProps = CheckboxCardRootProps & {
  */
 
 export const ChoiceChip = forwardRef<HTMLInputElement, ChoiceChipProps>(
-  ({ children, icon, ...rootProps }, ref) => {
+  ({ children, icon, onCheckedChange, ...rootProps }, ref) => {
     return (
-      <CheckboxCard.Root {...rootProps}>
+      <CheckboxCard.Root
+        {...rootProps}
+        {...(onCheckedChange && {
+          onCheckedChange: (details) => onCheckedChange(!!details.checked),
+        })}
+      >
         <CheckboxCard.Context>
           {({ checked }) => (
             <>

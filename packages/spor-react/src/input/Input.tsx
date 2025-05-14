@@ -1,8 +1,11 @@
 "use client";
 
 import {
+  Box,
   chakra,
+  Flex,
   Input as ChakraInput,
+  InputElement,
   InputProps as ChakraInputProps,
 } from "@chakra-ui/react";
 import React, { forwardRef, ReactNode } from "react";
@@ -10,7 +13,6 @@ import React, { forwardRef, ReactNode } from "react";
 import { inputRecipe } from "@/theme/recipes/input";
 
 import { Field, FieldProps } from "./Field";
-import { InputGroup } from "./InputGroup";
 
 export type InputProps = Exclude<
   ChakraInputProps,
@@ -70,25 +72,40 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     ref,
   ) => {
     return (
-      <Field invalid={invalid} helperText={helperText} errorText={errorText}>
-        <InputGroup
-          endElement={endElement && endElement}
-          startElement={startElement && startElement}
-          width="100%"
-          position="relative"
-          label={label}
-        >
-          <StyledInput
-            data-attachable
-            ref={ref}
-            className="peer"
-            overflow="hidden"
-            paddingLeft={startElement ? "2.6rem" : undefined}
-            paddingRight={endElement ? "2.6rem" : undefined}
-            {...props}
-            placeholder=""
-          />
-        </InputGroup>
+      <Field
+        invalid={invalid}
+        helperText={helperText}
+        errorText={errorText}
+        label={
+          // Render startElement invisibly to align label text with input content when an icon is present
+          <Flex>
+            <Box visibility="hidden">{startElement}</Box>
+            {label}
+          </Flex>
+        }
+        floatingLabel={true}
+      >
+        {startElement && (
+          <InputElement pointerEvents="none" paddingX={2}>
+            {startElement}
+          </InputElement>
+        )}
+        <StyledInput
+          data-attachable
+          ref={ref}
+          focusVisibleRing="outside"
+          overflow="hidden"
+          paddingLeft={startElement ? "2.6rem" : undefined}
+          paddingRight={endElement ? "2.6rem" : undefined}
+          {...props}
+          className={`peer ${props.className}`}
+          placeholder=""
+        />
+        {endElement && (
+          <InputElement placement="end" paddingX={2}>
+            {endElement}
+          </InputElement>
+        )}
       </Field>
     );
   },

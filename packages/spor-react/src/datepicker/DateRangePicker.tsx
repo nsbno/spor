@@ -18,7 +18,7 @@ import {
 } from "react-aria";
 import { useDateRangePickerState } from "react-stately";
 
-import { Field } from "../input/Field";
+import { Field, FieldBaseProps } from "../input/Field";
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
@@ -30,7 +30,7 @@ import { useCurrentLocale } from "./utils";
 
 type DateRangePickerProps = Omit<
   AriaDateRangePickerProps<DateValue>,
-  "onChange"
+  "onChange" | "errorMessage" | "isInvalid" | "isRequired"
 > &
   Pick<BoxProps, "minHeight"> &
   PropsWithChildren<DatePickerVariantProps> &
@@ -46,7 +46,7 @@ type DateRangePickerProps = Omit<
         end: DateValue | null;
       } | null,
     ) => void;
-  };
+  } & FieldBaseProps;
 /**
  * A date range picker component.
  *
@@ -61,13 +61,19 @@ type DateRangePickerProps = Omit<
   startName,
   endName,
   withPortal = true,
+  errorText,
+  helperText,
+  invalid,
   ...props
 }: DateRangePickerProps) {
   const fieldContextPRops = useFieldContext();
   const state = useDateRangePickerState({
     ...props,
     shouldCloseOnSelect: true,
-    isRequired: props.isRequired ?? fieldContextPRops?.required,
+    isInvalid: invalid,
+    errorMessage: errorText,
+
+    isRequired: props.required ?? fieldContextPRops?.required,
     validationState: fieldContextPRops?.invalid ? "invalid" : "valid",
   });
   const ref = useRef(null);
@@ -113,7 +119,14 @@ type DateRangePickerProps = Omit<
           </label>
         )}
         <ChakraPopover.Root {...dialogProps}>
-          <Field width="auto" display="inline-flex" id={datePickerId}>
+          <Field
+            width="auto"
+            display="inline-flex"
+            id={datePickerId}
+            errorText={errorText}
+            helperText={helperText}
+            invalid={invalid}
+          >
             <PopoverAnchor>
               <StyledField
                 alignItems="center"

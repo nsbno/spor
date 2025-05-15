@@ -1,11 +1,14 @@
 "use client";
 
-import { chakra, Group, RecipeVariantProps } from "@chakra-ui/react";
+import {
+  chakra,
+  Group,
+  GroupProps,
+  RecipeVariantProps,
+} from "@chakra-ui/react";
 import { forwardRef } from "react";
 
 import { attachedInputsRecipe } from "@/theme/recipes/attached-inputs";
-
-import { InputGroupProps } from "./InputGroup";
 
 /**
  * Attaches several inputs together, so that they look like one input.
@@ -23,7 +26,7 @@ import { InputGroupProps } from "./InputGroup";
 export type AttachedInputsProps = RecipeVariantProps<
   typeof attachedInputsRecipe
 > &
-  InputGroupProps;
+  GroupProps;
 
 const StyledGroup = chakra(Group, attachedInputsRecipe);
 

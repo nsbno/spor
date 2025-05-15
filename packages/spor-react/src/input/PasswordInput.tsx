@@ -5,7 +5,6 @@ import React, { forwardRef } from "react";
 
 import { ButtonProps, Input, InputProps } from "..";
 import { createTexts, useTranslation } from "..";
-import { InputGroupProps } from "./InputGroup";
 
 export interface PasswordVisibilityProps {
   /** Default visibility state */
@@ -19,7 +18,7 @@ export interface PasswordVisibilityProps {
 export interface PasswordInputProps
   extends InputProps,
     PasswordVisibilityProps {
-  rootProps?: InputGroupProps;
+  rootProps?: InputProps;
 }
 
 /**

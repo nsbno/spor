@@ -146,6 +146,10 @@ export const selectSlotRecipe = defineSlotRecipe({
       _open: {
         borderBottomRadius: 0,
       },
+      _invalid: {
+        outline: "2px solid",
+        outlineColor: "outline.error",
+      },
     },
     itemText: {
       flex: "1",
@@ -178,10 +182,6 @@ export const selectSlotRecipe = defineSlotRecipe({
           },
           _active: {
             backgroundColor: "brand.surface.active",
-          },
-          _invalid: {
-            outline: "2px solid",
-            outlineColor: "outline.error",
           },
           _disabled: {
             pointerEvents: "none",

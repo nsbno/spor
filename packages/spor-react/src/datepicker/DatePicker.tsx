@@ -9,13 +9,7 @@ import {
   useFieldContext,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, {
-  forwardRef,
-  PropsWithChildren,
-  ReactNode,
-  useId,
-  useRef,
-} from "react";
+import React, { forwardRef, PropsWithChildren, useId, useRef } from "react";
 import {
   AriaDatePickerProps,
   DateValue,
@@ -24,7 +18,7 @@ import {
 } from "react-aria";
 import { useDatePickerState } from "react-stately";
 
-import { Field } from "@/input/Field";
+import { Field, FieldBaseProps } from "@/input/Field";
 
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { Calendar } from "./Calendar";
@@ -46,8 +40,7 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
     showYearNavigation?: boolean;
     withPortal?: boolean;
     onChange?: (value: DateValue | null) => void;
-    errorMessage?: ReactNode;
-  };
+  } & FieldBaseProps;
 
 /**
  * A date picker component.
@@ -63,11 +56,13 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
   (
     {
       variant,
-      errorMessage,
+      errorText,
       minHeight,
       showYearNavigation,
       withPortal = true,
       width = "auto",
+      invalid = false,
+      helperText,
       ...props
     },
     externalRef,
@@ -76,7 +71,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     const state = useDatePickerState({
       ...props,
       shouldCloseOnSelect: true,
-      errorMessage,
+      errorMessage: errorText,
       isRequired: props.isRequired ?? chakraFieldProps?.required,
       validationState: chakraFieldProps?.invalid ? "invalid" : "valid",
     });
@@ -130,7 +125,9 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
               display="inline-flex"
               id={inputGroupId}
               aria-labelledby={labelId}
-              errorText={errorMessage}
+              errorText={errorText}
+              invalid={invalid}
+              helperText={helperText}
             >
               <PopoverAnchor>
                 <StyledField

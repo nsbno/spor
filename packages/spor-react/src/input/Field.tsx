@@ -3,23 +3,34 @@
 import {
   Field as ChakraField,
   RecipeVariantProps,
+  Stack,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import * as React from "react";
 
+import { Text } from "@/typography";
+
 import { fieldSlotRecipe } from "../theme/slot-recipes/field";
+import { FloatingLabel } from "./FloatingLabel";
+import { Label } from "./Label";
 
 type FieldVariantProps = RecipeVariantProps<typeof fieldSlotRecipe>;
 
+export type FieldBaseProps = {
+  direction?: "row" | "column";
+  disabled?: boolean;
+  invalid?: boolean;
+  readOnly?: boolean;
+  required?: boolean;
+  label?: React.ReactNode;
+  helperText?: React.ReactNode;
+  errorText?: React.ReactNode;
+  floatingLabel?: boolean;
+};
+
 export type FieldProps = Omit<ChakraField.RootProps, "label"> &
-  React.PropsWithChildren<FieldVariantProps> & {
-    /** Label for the component */
-    label?: React.ReactNode;
-    /** Add helpertext underneath the input */
-    helperText?: React.ReactNode;
-    /** Add error text underneath the input */
-    errorText?: React.ReactNode;
-  };
+  React.PropsWithChildren<FieldVariantProps> &
+  FieldBaseProps;
 
 /**
  *
@@ -40,22 +51,47 @@ export type FieldProps = Omit<ChakraField.RootProps, "label"> &
 
 export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
   (props, ref) => {
-    const { label, children, helperText, errorText, ...rest } = props;
+    const {
+      label,
+      children,
+      helperText,
+      errorText,
+      floatingLabel = false,
+      disabled,
+      invalid,
+      readOnly,
+      required,
+      direction,
+      ...rest
+    } = props;
     const recipe = useSlotRecipe({ key: "field" });
-    const styles = recipe({ label, helperText, errorText });
+    const styles = recipe();
+
     return (
-      <ChakraField.Root ref={ref} {...rest} css={styles.root}>
-        {children}
+      <Stack gap="2" ref={ref} {...rest} width="100%">
+        <ChakraField.Root
+          disabled={disabled}
+          invalid={invalid}
+          readOnly={readOnly}
+          required={required}
+          css={styles.root}
+          direction={direction}
+        >
+          {label && !floatingLabel && <Label>{label}</Label>}
+
+          {children}
+
+          {label && floatingLabel && <FloatingLabel>{label}</FloatingLabel>}
+          {errorText && (
+            <ChakraField.ErrorText>{errorText}</ChakraField.ErrorText>
+          )}
+        </ChakraField.Root>
         {helperText && (
-          <ChakraField.HelperText>{helperText}</ChakraField.HelperText>
+          <Text fontSize="sm" color="text.tertiary">
+            {helperText}
+          </Text>
         )}
-        {label && (
-          <ChakraField.Label css={styles.label}>{label}</ChakraField.Label>
-        )}
-        {errorText && (
-          <ChakraField.ErrorText>{errorText}</ChakraField.ErrorText>
-        )}
-      </ChakraField.Root>
+      </Stack>
     );
   },
 );

@@ -21,9 +21,12 @@ import { PropsWithChildren } from "react";
 import { CloseButton } from "@/button";
 import { selectSlotRecipe } from "@/theme/slot-recipes/select";
 
+import { Field, FieldProps } from "./Field";
+
 type SelectVariantProps = RecipeVariantProps<typeof selectSlotRecipe>;
 
 export type SelectProps = ChakraSelectRootProps &
+  FieldProps &
   PropsWithChildren<SelectVariantProps> & {
     label?: string;
   };
@@ -58,25 +61,36 @@ export type SelectProps = ChakraSelectRootProps &
 
 export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
   (props, ref) => {
-    const { variant = "core", children, positioning, label, ...rest } = props;
+    const {
+      variant = "core",
+      children,
+      positioning,
+      label,
+      errorText,
+      invalid,
+      helperText,
+      ...rest
+    } = props;
     const recipe = useSlotRecipe({ key: "select" });
     const styles = recipe({ variant });
 
     return (
-      <ChakraSelect.Root
-        {...rest}
-        ref={ref}
-        positioning={{ sameWidth: true, ...positioning }}
-        variant={variant}
-        css={styles.root}
-        position={"relative"}
-      >
-        <SelectTrigger data-attachable>
-          <SelectValueText withPlaceholder={label ? true : false} />
-        </SelectTrigger>
-        {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
-        <SelectContent css={styles.selectContent}>{children}</SelectContent>
-      </ChakraSelect.Root>
+      <Field errorText={errorText} invalid={invalid} helperText={helperText}>
+        <ChakraSelect.Root
+          {...rest}
+          ref={ref}
+          positioning={{ sameWidth: true, ...positioning }}
+          variant={variant}
+          css={styles.root}
+          position={"relative"}
+        >
+          <SelectTrigger data-attachable>
+            <SelectValueText withPlaceholder={label ? true : false} />
+          </SelectTrigger>
+          {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
+          <SelectContent css={styles.selectContent}>{children}</SelectContent>
+        </ChakraSelect.Root>
+      </Field>
     );
   },
 );

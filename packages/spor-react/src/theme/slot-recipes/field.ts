@@ -12,33 +12,6 @@ export const fieldSlotRecipe = defineSlotRecipe({
       position: "relative",
       flexDirection: "column",
     },
-    label: {
-      /* For when input is filled */
-      pos: "absolute",
-      paddingX: 3,
-      top: "0.3rem",
-      fontWeight: "normal",
-      fontSize: ["mobile.xs", "desktop.xs"],
-      color: "text",
-      pointerEvents: "none",
-      transition: "position",
-      zIndex: "docked",
-      _peerPlaceholderShown: {
-        /* For when input is not in focus */
-        top: "0.9rem",
-        color: "text",
-        fontSize: ["mobile.sm", "desktop.sm"],
-      },
-      _peerFocusVisible: {
-        /* For when input is in focus */
-        fontSize: ["mobile.xs", "desktop.xs"],
-        color: "text",
-        top: "0.3rem",
-      },
-      _disabled: {
-        opacity: 0.4,
-      },
-    },
     requiredIndicator: {
       marginStart: 1,
       color: "brightRed",
@@ -58,7 +31,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
       textStyle: "xs",
       width: "fit-content",
       position: "absolute",
-      bottom: -4,
+      bottom: -5,
       left: 3,
       zIndex: "dropdown",
       maxWidth: "50ch",

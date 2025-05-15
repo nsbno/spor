@@ -1,5 +1,5 @@
 "use client";
-import { BoxProps } from "@chakra-ui/react";
+import { BoxProps, useFieldContext } from "@chakra-ui/react";
 import { CalendarDateTime } from "@internationalized/date";
 import { TimeValue } from "@react-types/datepicker";
 import {
@@ -8,43 +8,44 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { useTimeFieldState } from "react-stately";
 
-import { Field } from "@/input/Field";
+import { Field, FieldBaseProps } from "@/input/Field";
 
 import { createTexts, IconButton, useTranslation } from "..";
 import { StyledField } from "./StyledField";
 import { TimeField } from "./TimeField";
 import { getCurrentTime, useCurrentLocale } from "./utils";
 
-type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> & {
-  /** The label. Defaults to a localized version of "Time" */
-  label?: string;
-  /** The name of the form field, if used in a regular form */
-  name?: string;
-  /** The controlled value, if any.
-   *
-   * A `new Time(hours, minutes)` should be passed.
-   * Or `null` if the time should be unset.
-   **/
-  value?: TimeValue | null;
-  /** A default value, if any.
-   *
-   * A `new Time(hours, minutes)` should be passed.
-   * Defaults to the current time if not provided.
-   * Can be set to null if you don't want a time to be selected by default.
-   **/
-  defaultValue?: TimeValue | null;
-  /** Callback for when the time changes */
-  onChange?: (value: TimeValue | null) => void;
-  /** The maxiumum number of minutes to move when the step buttons are used.
-   *
-   * Defaults to 30 minutes.
-   *
-   * An example: If the time is at 13:37 and the minuteInterval is 15, clicking the step forwards button will move the time to 13:45. Next click will move it to 14:00.
-   */
-  minuteInterval?: number;
-  /** Whether or not the field is disabled */
-  disabled?: boolean;
-};
+type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> &
+  FieldBaseProps & {
+    /** The label. Defaults to a localized version of "Time" */
+    label?: string;
+    /** The name of the form field, if used in a regular form */
+    name?: string;
+    /** The controlled value, if any.
+     *
+     * A `new Time(hours, minutes)` should be passed.
+     * Or `null` if the time should be unset.
+     **/
+    value?: TimeValue | null;
+    /** A default value, if any.
+     *
+     * A `new Time(hours, minutes)` should be passed.
+     * Defaults to the current time if not provided.
+     * Can be set to null if you don't want a time to be selected by default.
+     **/
+    defaultValue?: TimeValue | null;
+    /** Callback for when the time changes */
+    onChange?: (value: TimeValue | null) => void;
+    /** The maxiumum number of minutes to move when the step buttons are used.
+     *
+     * Defaults to 30 minutes.
+     *
+     * An example: If the time is at 13:37 and the minuteInterval is 15, clicking the step forwards button will move the time to 13:45. Next click will move it to 14:00.
+     */
+    minuteInterval?: number;
+    /** Whether or not the field is disabled */
+    disabled?: boolean;
+  };
 /** A time picker component.
  *
  * This lets the user select a time of day, either through typing it in, using the up and down arrows to select the hour and minute, or by clicking the step buttons to move the time forwards or backwards in pre-defined increments.
@@ -126,6 +127,7 @@ export const TimePicker = ({
   const ariaLabel = `${inputLabel} – ${t(
     texts.selectedTimeIs(`${dateTime?.hour ?? 0} ${dateTime?.minute ?? 0}`),
   )}`;
+
   return (
     <Field as="time" {...boxProps}>
       <StyledField
@@ -201,6 +203,3 @@ const texts = createTexts({
     sv: "minuter",
   },
 });
-function useFieldContext(): { disabled: unknown; invalid: unknown } {
-  throw new Error("Function not implemented.");
-}

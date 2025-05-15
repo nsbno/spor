@@ -8,7 +8,7 @@ import {
 import React, { forwardRef, PropsWithChildren } from "react";
 
 import { switchSlotRecipe } from "../theme/slot-recipes/switch";
-import { Field } from "./Field";
+import { Field, FieldBaseProps } from "./Field";
 
 type SwitchVariants = RecipeVariantProps<typeof switchSlotRecipe>;
 
@@ -16,6 +16,7 @@ export type SwitchProps = Exclude<
   ChakraSwitch.RootProps,
   "size" | "colorPalette"
 > &
+  FieldBaseProps &
   PropsWithChildren<SwitchVariants> & {
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
     rootRef?: React.Ref<HTMLLabelElement>;
@@ -45,12 +46,25 @@ export type SwitchProps = Exclude<
  */
 
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>((props) => {
-  const { rootRef, size = "md", label, ...rest } = props;
+  const {
+    rootRef,
+    size = "md",
+    label,
+    invalid,
+    errorText,
+    helperText,
+    ...rest
+  } = props;
   const recipe = useSlotRecipe({ key: "switch" });
   const styles = recipe({ size });
 
   return (
-    <Field style={{ width: "auto" }}>
+    <Field
+      style={{ width: "auto" }}
+      invalid={invalid}
+      errorText={errorText}
+      helperText={helperText}
+    >
       <ChakraSwitch.Root
         ref={rootRef}
         {...rest}

@@ -9,7 +9,7 @@ import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
 import * as React from "react";
 
 import { nativeSelectSlotRecipe } from "../theme/slot-recipes/native-select";
-import { Field } from "./Field";
+import { Field, FieldBaseProps } from "./Field";
 
 type NativeSelectVariantProps = RecipeVariantProps<
   typeof nativeSelectSlotRecipe
@@ -17,11 +17,9 @@ type NativeSelectVariantProps = RecipeVariantProps<
 
 export type NativeSelectdProps =
   React.PropsWithChildren<NativeSelectVariantProps> &
+    FieldBaseProps &
     ChakraNativeSelectFieldProps & {
       icon?: React.ReactNode;
-      label: string;
-      invalid?: boolean;
-      disabled?: boolean;
     };
 
 /**
@@ -51,6 +49,9 @@ export const NativeSelect = React.forwardRef<
     label,
     invalid,
     disabled,
+    required,
+    helperText,
+    errorText,
     ...rest
   } = props;
 
@@ -58,7 +59,15 @@ export const NativeSelect = React.forwardRef<
   const styles = recipe({ variant });
 
   return (
-    <Field label={label} invalid={invalid} disabled={disabled}>
+    <Field
+      label={label}
+      invalid={invalid}
+      disabled={disabled}
+      required={required}
+      helperText={helperText}
+      errorText={errorText}
+      floatingLabel={true}
+    >
       <ChakraNativeSelect.Root
         ref={ref}
         css={styles.root}

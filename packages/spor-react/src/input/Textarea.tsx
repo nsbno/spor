@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  FieldLabel,
   RecipeVariantProps,
   Textarea as ChakraTextarea,
   TextareaProps as ChakraTextareaProps,
@@ -18,6 +17,7 @@ import React, {
 
 import { textareaRecipe } from "../theme/recipes/textarea";
 import { Field, FieldProps } from "./Field";
+import { FloatingLabel } from "./FloatingLabel";
 
 type TextareaVariants = RecipeVariantProps<typeof textareaRecipe>;
 export type TextareaProps = Exclude<
@@ -94,7 +94,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           }
           placeholder=" "
         />
-        <FieldLabel ref={labelRef}>{label}</FieldLabel>
+        <FloatingLabel ref={labelRef}>{label}</FloatingLabel>
       </Field>
     );
   },

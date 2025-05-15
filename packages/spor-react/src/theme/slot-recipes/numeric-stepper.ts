@@ -7,16 +7,21 @@ export const numericStepperRecipe = defineSlotRecipe({
   className: "spor-numeric-stepper",
   base: {
     root: {
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
+      "& > div": {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+      },
     },
     input: {
       fontSize: "sm",
       fontWeight: "bold",
       marginX: 0.5,
+      padding: 0,
       paddingX: 0.5,
       borderRadius: "xs",
+      outline: "none",
+      height: "auto",
       textAlign: "center",
       transitionProperty: "common",
       transitionDuration: "fast",

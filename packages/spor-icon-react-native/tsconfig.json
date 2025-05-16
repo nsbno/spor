@@ -5,6 +5,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "module": "ESNext",
+    "target": "es2017",
     "moduleResolution": "node"
   }
 }

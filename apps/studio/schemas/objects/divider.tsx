@@ -1,4 +1,3 @@
-import * as React from "react";
 import { MdHorizontalRule } from "react-icons/md";
 import { defineField, defineType } from "sanity";
 

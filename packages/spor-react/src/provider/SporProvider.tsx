@@ -6,7 +6,7 @@ import {
 } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
 
-import { Input, Language, LanguageProvider, system } from "..";
+import { Language, LanguageProvider, system } from "..";
 import { ColorModeProvider } from "../color-mode";
 import { fontFaces } from "../theme/brand";
 import { Toaster } from "../toast/toast";

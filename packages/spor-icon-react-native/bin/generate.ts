@@ -6,15 +6,37 @@ const SVG_PATH = "../spor-icon/svg";
 const TMP_PATH = "./tmp";
 const DIST_PATH = "./dist";
 
-await run();
+const typeDefinitionTemplate = (iconsData: IconData[]) => {
+  return `
+// This file was auto-generated.
+// Please do not change this file directly.
+import type { BoxProps } from "app/spor";
+import type { ForwardRefExoticComponent } from "react";
 
-async function run() {
+declare module "@vygruppen/spor-icon-react-native" {
+  type IconProps = BoxProps & { color?: BoxProps["backgroundColor"] };
+  export type IconComponent = ForwardRefExoticComponent<IconProps>;
+
+  ${iconsData
+    .map(({ componentName }) => `export const ${componentName}: IconComponent;`)
+    .join("\n  ")}
+}
+`;
+};
+
+function generateTypeDefinitions(icons: IconData[]) {
+  const typeDefinitionString = typeDefinitionTemplate(icons);
+  return fs.outputFile(`${DIST_PATH}/types.d.ts`, typeDefinitionString);
+}
+
+const run = async () => {
   const icons = await loadIcons();
   const componentsPromise = generateComponents(icons);
   const typesPromise = generateTypeDefinitions(icons);
-
   await Promise.all([componentsPromise, typesPromise]);
-}
+};
+
+await run();
 
 export type IconData = {
   icon: string;
@@ -161,26 +183,3 @@ function generateRootIndexFile(icons: IconData[]) {
 
   return fs.outputFile(`${TMP_PATH}/index.ts`, content);
 }
-
-function generateTypeDefinitions(icons: IconData[]) {
-  const typeDefinitionString = typeDefinitionTemplate(icons);
-  return fs.outputFile(`${DIST_PATH}/types.d.ts`, typeDefinitionString);
-}
-
-const typeDefinitionTemplate = (iconsData: IconData[]) => {
-  return `
-// This file was auto-generated.
-// Please do not change this file directly.
-import type { BoxProps } from "app/spor";
-import type { ForwardRefExoticComponent } from "react";
-
-declare module "@vygruppen/spor-icon-react-native" {
-  type IconProps = BoxProps & { color?: BoxProps["backgroundColor"] };
-  export type IconComponent = ForwardRefExoticComponent<IconProps>;
-
-  ${iconsData
-    .map(({ componentName }) => `export const ${componentName}: IconComponent;`)
-    .join("\n  ")}
-}
-`;
-};

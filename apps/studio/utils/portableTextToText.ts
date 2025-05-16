@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { PortableTextBlock } from "sanity";
 /** Utility function to turn an array of portable text blocks to plain text
  *

@@ -14,7 +14,7 @@ export const pxToRemTransformer: Transform = {
     token.attributes?.category === "size" && token.unit !== "none",
   transform: (token, options) => {
     const valueInRem =
-      parseFloat(token.original.value) / getBaseFontSize(options);
+      Number.parseFloat(token.original.value) / getBaseFontSize(options);
     return `${valueInRem}rem`;
   },
 };

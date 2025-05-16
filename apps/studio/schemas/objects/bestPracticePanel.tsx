@@ -1,3 +1,5 @@
+/* eslint-disable unicorn/no-nested-ternary */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Box, Card, Flex, Grid, Heading, Text } from "@sanity/ui";
 import { MdCheck, MdNotInterested } from "react-icons/md";
 import { defineField, defineType } from "sanity";

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { codeInput } from "@sanity/code-input";
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
@@ -16,7 +17,7 @@ const documentConfig = {
   ) => {
     try {
       const configuredClient = getClient({ apiVersion: "2022-10-06" });
-      const host = window.location.href?.includes("localhost")
+      const host = globalThis.location.href?.includes("localhost")
         ? "http://localhost:3000"
         : "https://spor.vy.no";
 
@@ -38,8 +39,8 @@ const documentConfig = {
 
         return `${host}/${category.slug}/${document?.slug.current}?${params}`;
       }
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     }
     return prev;
   },

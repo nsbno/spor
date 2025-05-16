@@ -9,7 +9,7 @@ export const pxTransformer: Transform = {
   filter: (token) =>
     token.attributes?.category === "size" && token.unit !== "none",
   transform: (token) => {
-    const valueInPixels = parseFloat(token.original.value);
+    const valueInPixels = Number.parseFloat(token.original.value);
     return `${valueInPixels}px`;
   },
 };

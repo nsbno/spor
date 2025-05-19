@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdAddLink, MdArticle } from "react-icons/md";
 import { defineField, defineType } from "sanity";
 

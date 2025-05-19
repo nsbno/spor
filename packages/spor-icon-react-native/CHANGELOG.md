@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.15.2
+
+### Patch Changes
+
+- 0087607: Fix lint issues
+
 ## 2.15.1
 
 ### Patch Changes

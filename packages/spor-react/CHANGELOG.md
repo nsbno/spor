@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 12.3.0
+
+### Minor Changes
+
+- d7eabb1: Enhance form components to accept `invalid` and `errorText` props, leveraging Chakra UI's `Field` component for improved validation and error handling.
+
+### Patch Changes
+
+- 0087607: Fix lint issues
+- Updated dependencies [0087607]
+  - @vygruppen/spor-design-tokens@4.0.6
+
 ## 12.2.1
 
 ### Patch Changes

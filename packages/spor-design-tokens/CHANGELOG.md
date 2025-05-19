@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.0.6
+
+### Patch Changes
+
+- 0087607: Fix lint issues
+
 ## 4.0.5
 
 ### Patch Changes

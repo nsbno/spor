@@ -24,7 +24,7 @@ type CalendarTriggerButtonProps = AriaButtonProps<"button"> &
 export const CalendarTriggerButton = forwardRef<
   HTMLDivElement,
   CalendarTriggerButtonProps
->(({ variant, disabled, ariaLabelledby, ...buttonProps }) => {
+>(({ variant, disabled, ariaLabelledby, ...buttonProps }, ref) => {
   const { t } = useTranslation();
   const recipe = useSlotRecipe({
     key: "datePicker",
@@ -33,7 +33,7 @@ export const CalendarTriggerButton = forwardRef<
   const styles = recipe({ variant });
 
   return (
-    <PopoverAnchor {...buttonProps}>
+    <PopoverAnchor {...buttonProps} ref={ref}>
       <IconButton
         icon={<CalendarOutline24Icon />}
         aria-label={t(texts.openCalendar)}

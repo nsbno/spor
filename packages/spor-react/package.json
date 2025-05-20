@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-react",
-  "version": "12.3.1",
+  "version": "12.3.2",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./src/index.d.ts",

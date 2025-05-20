@@ -88,14 +88,17 @@ const ProgressLoaderWrapper = chakra("div", progressLoaderRecipe);
  */
 
 export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
-  ({
-    value,
-    label,
-    labelRotationDelay = 5000,
-    "aria-label": ariaLabel,
-    width,
-    ...rest
-  }: ProgressLoaderProps) => {
+  (
+    {
+      value,
+      label,
+      labelRotationDelay = 5000,
+      "aria-label": ariaLabel,
+      width,
+      ...rest
+    },
+    ref,
+  ) => {
     const { t } = useTranslation();
     const currentLoadingText = useRotatingLabel({
       label,
@@ -124,6 +127,7 @@ export const ProgressLoader = forwardRef<HTMLDivElement, ProgressLoaderProps>(
         aria-valuemax={100}
         aria-label={ariaLabel ?? t(texts.fallbackLabel(value ?? "?"))}
         {...rest}
+        ref={ref}
       >
         <chakra.svg as="svg" viewBox="0 0 246 78" fill="none">
           <path

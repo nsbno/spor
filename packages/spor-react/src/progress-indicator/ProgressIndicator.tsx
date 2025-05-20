@@ -35,7 +35,7 @@ export type ProgressIndicatorProps = BoxProps &
 export const ProgressIndicator = forwardRef<
   HTMLDivElement,
   ProgressIndicatorProps
->(({ numberOfSteps, activeStep }) => {
+>(({ numberOfSteps, activeStep }, ref) => {
   const { t } = useTranslation();
   const recipe = useSlotRecipe({
     key: "progressIndicator",
@@ -51,6 +51,7 @@ export const ProgressIndicator = forwardRef<
       aria-valuemax={numberOfSteps}
       aria-valuenow={activeStep}
       aria-valuetext={t(texts.stepsOf(activeStep, numberOfSteps))}
+      ref={ref}
     >
       <Box css={styles.container}>
         {Array.from({ length: numberOfSteps }, (_, i) => (

@@ -4,6 +4,7 @@ import {
   BoxProps,
   Popover as ChakraPopover,
   PopoverAnchor,
+  PopoverRootProps,
   Portal,
   useFieldContext,
   useSlotRecipe,
@@ -46,6 +47,7 @@ type DateRangePickerProps = Omit<
         end: DateValue | null;
       } | null,
     ) => void;
+    positioning?: PopoverRootProps["positioning"];
   } & FieldBaseProps;
 /**
  * A date range picker component.
@@ -64,6 +66,7 @@ type DateRangePickerProps = Omit<
   errorText,
   helperText,
   invalid,
+  positioning,
   ...props
 }: DateRangePickerProps) {
   const fieldContextPRops = useFieldContext();
@@ -118,7 +121,7 @@ type DateRangePickerProps = Omit<
             {props.label}
           </label>
         )}
-        <ChakraPopover.Root {...dialogProps}>
+        <ChakraPopover.Root {...dialogProps} positioning={positioning}>
           <Field
             width="auto"
             display="inline-flex"

@@ -8,13 +8,7 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import type { Node } from "@react-types/shared";
-import React, {
-  forwardRef,
-  PropsWithChildren,
-  useContext,
-  useEffect,
-  useRef,
-} from "react";
+import React, { PropsWithChildren, useContext, useEffect, useRef } from "react";
 import {
   AriaListBoxProps,
   useListBox,
@@ -84,33 +78,32 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
  * ```
  */
 
-export const ListBox = forwardRef<HTMLDivElement, ListBoxProps<object>>(
-  (props) => {
-    const { loading, listBoxRef, state, maxWidth, variant, children } = props;
-    const { listBoxProps } = useListBox(props, state, listBoxRef);
-    const recipe = useSlotRecipe({ key: "listBox" });
-    const styles = recipe({ variant });
-    return (
-      <List
-        {...listBoxProps}
-        ref={listBoxRef}
-        css={styles.root}
-        aria-busy={loading}
-        maxWidth={maxWidth}
-      >
-        {state.collection.size === 0 && props.emptyContent}
-        {[...state.collection].map((item) =>
-          item.type === "section" ? (
-            <ListBoxSection key={item.key} section={item} state={state} />
-          ) : (
-            <Option key={item.key} item={item} state={state} />
-          ),
-        )}
-        {children}
-      </List>
-    );
-  },
-);
+export const ListBox = (props: ListBoxProps<object>) => {
+  const { loading, listBoxRef, state, maxWidth, variant, children } = props;
+  const { listBoxProps } = useListBox(props, state, listBoxRef);
+  const recipe = useSlotRecipe({ key: "listBox" });
+  const styles = recipe({ variant });
+  return (
+    <List
+      {...listBoxProps}
+      ref={listBoxRef}
+      css={styles.root}
+      aria-busy={loading}
+      maxWidth={maxWidth}
+    >
+      {state.collection.size === 0 && props.emptyContent}
+      {[...state.collection].map((item) =>
+        item.type === "section" ? (
+          <ListBoxSection key={item.key} section={item} state={state} />
+        ) : (
+          <Option key={item.key} item={item} state={state} />
+        ),
+      )}
+      {children}
+    </List>
+  );
+};
+
 ListBox.displayName = "ListBox";
 
 /**

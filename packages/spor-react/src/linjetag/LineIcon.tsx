@@ -63,17 +63,20 @@ export type LineIconProps = Exclude<BoxProps, "variant"> &
  */
 
 export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
-  function LineIcon({
-    variant,
-    size = "md",
-    foregroundColor,
+  function LineIcon(
+    {
+      variant,
+      size = "md",
+      foregroundColor,
 
-    disabled,
-    style,
-    target = "lineIcon",
-    label,
-    ...rest
-  }) {
+      disabled,
+      style,
+      target = "lineIcon",
+      label,
+      ...rest
+    },
+    ref,
+  ) {
     const recipe = useSlotRecipe({ key: "lineIcon" });
     const styles = recipe({ variant, size, ...rest });
 
@@ -112,6 +115,7 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
         borderWidth={borderContainer()}
         borderColor={variant === "walk" ? "core.outline" : "transparent"}
         aria-label={label}
+        ref={ref}
       >
         <Icon css={styles.icon} />
       </Box>

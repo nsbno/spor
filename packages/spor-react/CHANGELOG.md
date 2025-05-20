@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.3.3
+
+### Patch Changes
+
+- b9fca8b: build: simplify typegen
+
 ## 12.3.2
 
 ### Patch Changes

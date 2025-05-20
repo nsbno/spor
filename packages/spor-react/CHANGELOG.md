@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 12.3.2
+
+### Patch Changes
+
+- a1eb48e: Add positioning props for calendar
+- a72d19f: Fix Issues with unused ref in forwardref functions creating console errors for users.
+- a7b9a27: Fix scaling of loading indicator.
+
 ## 12.3.1
 
 ### Patch Changes

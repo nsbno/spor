@@ -100,7 +100,7 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - simplify_typegen
 
       - upload-terraform-artifacts:
           context:
@@ -109,7 +109,7 @@ workflows:
             - build-and-push-docker
           filters:
             branches:
-              only: main
+              only: simplify_typegen
 
       - deployment/trigger-deployment:
           context:

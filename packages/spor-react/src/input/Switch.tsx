@@ -45,39 +45,41 @@ export type SwitchProps = Exclude<
  * ```
  */
 
-export const Switch = forwardRef<HTMLInputElement, SwitchProps>((props) => {
-  const {
-    rootRef,
-    size = "md",
-    label,
-    invalid,
-    errorText,
-    helperText,
-    ...rest
-  } = props;
-  const recipe = useSlotRecipe({ key: "switch" });
-  const styles = recipe({ size });
+export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
+  (props, ref) => {
+    const {
+      rootRef,
+      size = "md",
+      label,
+      invalid,
+      errorText,
+      helperText,
+      ...rest
+    } = props;
+    const recipe = useSlotRecipe({ key: "switch" });
+    const styles = recipe({ size });
 
-  return (
-    <Field
-      style={{ width: "auto" }}
-      invalid={invalid}
-      errorText={errorText}
-      helperText={helperText}
-    >
-      <ChakraSwitch.Root
-        ref={rootRef}
-        {...rest}
-        checked={props.checked}
-        css={styles.root}
+    return (
+      <Field
+        style={{ width: "auto" }}
+        invalid={invalid}
+        errorText={errorText}
+        helperText={helperText}
       >
-        <ChakraSwitch.Label>{label}</ChakraSwitch.Label>
-        <ChakraSwitch.HiddenInput />
-        <ChakraSwitch.Control css={styles.control}>
-          <ChakraSwitch.Thumb />
-        </ChakraSwitch.Control>
-      </ChakraSwitch.Root>
-    </Field>
-  );
-});
+        <ChakraSwitch.Root
+          ref={rootRef}
+          {...rest}
+          checked={props.checked}
+          css={styles.root}
+        >
+          <ChakraSwitch.Label>{label}</ChakraSwitch.Label>
+          <ChakraSwitch.HiddenInput ref={ref} />
+          <ChakraSwitch.Control css={styles.control}>
+            <ChakraSwitch.Thumb />
+          </ChakraSwitch.Control>
+        </ChakraSwitch.Root>
+      </Field>
+    );
+  },
+);
 Switch.displayName = "Switch";

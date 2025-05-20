@@ -32,19 +32,19 @@ export const CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>(
     const { t } = useTranslation();
     return (
       <IconButton
-        ref={ref}
         variant="ghost"
-        icon={getIcon(size)}
+        icon={<CloseIcon size={size} />}
         size={size}
         aria-label={props["aria-label"] || t(texts.close)}
         {...props}
+        ref={ref}
       />
     );
   },
 );
 CloseButton.displayName = "CloseButton";
 
-const getIcon = (size: CloseButtonProps["size"]) => {
+const CloseIcon = ({ size }: { size: CloseButtonProps["size"] }) => {
   switch (size) {
     case "xs":
     case "sm": {
@@ -55,6 +55,9 @@ const getIcon = (size: CloseButtonProps["size"]) => {
     }
     case "lg": {
       return <CloseFill30Icon />;
+    }
+    default: {
+      return <CloseFill18Icon />;
     }
   }
 };

@@ -69,7 +69,7 @@ export type NumericStepperProps = BoxProps &
 export const NumericStepper = React.forwardRef<
   HTMLDivElement,
   NumericStepperProps
->((props: NumericStepperProps) => {
+>((props: NumericStepperProps, ref) => {
   const {
     name: nameProp,
     id: idProp,
@@ -102,7 +102,7 @@ export const NumericStepper = React.forwardRef<
   };
 
   return (
-    <Field css={styles.root} width="auto" {...rest}>
+    <Field css={styles.root} width="auto" {...rest} ref={ref}>
       <VerySmallButton
         icon={<SubtractIcon stepLabel={clampedStepSize} />}
         aria-label={t(

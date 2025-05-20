@@ -90,7 +90,6 @@ export const SearchDocsInput = ({ onSearchSelect, onClose }: Props) => {
             startElement={<SearchOutline24Icon />}
             type="text"
             label="Search the docs"
-            value={searchQuery}
           />
         </Combobox.Input>
       </Combobox.Control>

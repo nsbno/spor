@@ -100,7 +100,7 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - simplify_typegen
 
       - upload-terraform-artifacts:
           context:

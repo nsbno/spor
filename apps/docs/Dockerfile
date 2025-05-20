@@ -17,7 +17,7 @@ WORKDIR /app
 ENV NODE_ENV=development
 
 # Copy workspace-related files from the monorepo root
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json ./
 COPY apps/docs/package.json apps/docs/
 
 # Install all dependencies (including devDependencies)
@@ -31,7 +31,7 @@ ENV NODE_ENV=production
 WORKDIR /app
 
 # Copy only production dependencies
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json ./
 COPY apps/docs/package.json apps/docs/
 
 RUN pnpm i --frozen-lockfile --prod
@@ -74,6 +74,6 @@ COPY --from=production-deps /app/apps/docs/node_modules /app/apps/docs/node_modu
 COPY --from=build /app/apps/docs/build/server /app/apps/docs/build/server
 COPY --from=build /app/apps/docs/build/client /app/apps/docs/build/client
 ADD . .
-    
+
 # Start the application
 CMD ["pnpm", "--filter", "@vygruppen/docs", "start"]

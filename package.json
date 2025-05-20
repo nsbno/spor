@@ -6,15 +6,13 @@
     "prebuild": "rimraf packages/*/dist --glob",
     "build": "turbo run build",
     "test": "turbo run test --parallel",
-    "dev": "turbo run dev typegen:watch",
+    "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "postinstall": "turbo run postinstall",
     "prerelease": "pnpm build",
     "release": "turbo run build && changeset publish",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "typegen": "pnpm --filter @vygruppen/spor-react typegen",
-    "typegen:watch": "pnpm --filter @vygruppen/spor-react typegen:watch",
-    "typegen:strict": "pnpm --filter @vygruppen/spor-react typegen:strict"
+    "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "dependencies": {
     "@changesets/cli": "^2.27.5",

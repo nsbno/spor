@@ -21,7 +21,7 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/docs/package.json apps/docs/
 
 # Install all dependencies (including devDependencies)
-RUN pnpm i --frozen-lockfile --prod=false
+RUN pnpm install --frozen-lockfile --prod=false --ignore-scripts
 
 # Setup production node_modules
 FROM base AS production-deps
@@ -34,7 +34,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/docs/package.json apps/docs/
 
-RUN pnpm i --frozen-lockfile --prod
+RUN pnpm install --frozen-lockfile --ignore-scripts  --prod
 
 
 # Build the app
@@ -44,11 +44,7 @@ RUN mkdir /app
 WORKDIR /app
 
 # Copy dependencies
-# COPY --from=deps /app/node_modules /app/node_modules
-# COPY --from=deps /app/apps/docs/node_modules /app/apps/docs/node_modules
-
 ADD . . 
-
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
@@ -70,10 +66,9 @@ RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases
 
 # Corrected paths
 COPY --from=production-deps /app/node_modules /app/node_modules
-COPY --from=production-deps /app/apps/docs/node_modules /app/apps/docs/node_modules
 COPY --from=build /app/apps/docs/build/server /app/apps/docs/build/server
 COPY --from=build /app/apps/docs/build/client /app/apps/docs/build/client
 ADD . .
-    
+
 # Start the application
 CMD ["pnpm", "--filter", "@vygruppen/docs", "start"]

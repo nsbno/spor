@@ -1,18 +1,12 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "tasks": {
-    "typegen:watch": {
-      "persistent": true
-    },
-
-    "typegen": {},
-
     "lint": {
       "outputs": [],
       "cache": false
     },
     "build": {
-      "dependsOn": ["typegen", "^build"],
+      "dependsOn": ["^build"],
       "outputs": ["dist/**", "public/build/**"]
     },
     "test": {
@@ -21,6 +15,9 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "postinstall": {
+      "dependsOn": ["@vygruppen/spor-design-tokens#build"]
     }
   }
 }

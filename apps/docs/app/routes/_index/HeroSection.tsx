@@ -21,11 +21,10 @@ export function HeroSection() {
     >
       <Container maxWidth="container.lg" marginTop={[0, 0, 4]} marginX="auto">
         <Alert variant="info" marginBottom="4" maxWidth="full">
-          Spor 2 is now available but is still undergoing testing for
-          production-ready applications. We are actively addressing issues,
-          enhancing documentation, and incorporating user feedback. Please share
-          any feedback you have! For production-ready apps, continue using Spor
-          1 until Spor 2 is fully tested and validated.
+          Spor 2 is now available and in active testing. We’re fixing issues,
+          improving documentation, and listening to your feedback. For
+          production apps, please keep using Spor 1 until Spor 2 is fully
+          validated. Let us know what you think!
         </Alert>
 
         <Flex

@@ -4,6 +4,7 @@ import {
   BoxProps,
   Popover as ChakraPopover,
   PopoverAnchor,
+  PopoverRootProps,
   Portal,
   RecipeVariantProps,
   useFieldContext,
@@ -40,6 +41,7 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
     showYearNavigation?: boolean;
     withPortal?: boolean;
     onChange?: (value: DateValue | null) => void;
+    positioning?: PopoverRootProps["positioning"];
   } & FieldBaseProps;
 
 /**
@@ -63,6 +65,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       width = "auto",
       invalid = false,
       helperText,
+      positioning,
       ...props
     },
     externalRef,
@@ -75,6 +78,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       isRequired: props.isRequired ?? chakraFieldProps?.required,
       validationState: chakraFieldProps?.invalid ? "invalid" : "valid",
     });
+
     const internalRef = useRef<HTMLDivElement>(null);
     const ref = externalRef ?? internalRef;
     const { labelProps, fieldProps, buttonProps, dialogProps, calendarProps } =
@@ -120,7 +124,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           flexDirection="column"
           width={width}
         >
-          <ChakraPopover.Root {...dialogProps}>
+          <ChakraPopover.Root {...dialogProps} positioning={positioning}>
             <Field
               display="inline-flex"
               id={inputGroupId}

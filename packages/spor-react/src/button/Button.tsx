@@ -86,7 +86,7 @@ const LoadingContent = ({
       {children}
     </Flex>
     <Center position="absolute" inset="1px 0">
-      <ColorInlineLoader maxWidth="8" marginX={2} marginY={2} />
+      <ColorInlineLoader width="80%" marginX={2} marginY={2} />{" "}
       {loadingText && <Box>{loadingText}</Box>}
     </Center>
   </>

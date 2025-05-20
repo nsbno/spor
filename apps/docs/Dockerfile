@@ -32,7 +32,7 @@ WORKDIR /app
 
 # Copy only production dependencies
 COPY package.json pnpm-lock.yaml ./
-COPY apps/docs/package.json apps/docs/  
+COPY apps/docs/package.json apps/docs/
 
 RUN pnpm install --frozen-lockfile --ignore-scripts  --prod
 
@@ -46,7 +46,7 @@ WORKDIR /app
 # Copy dependencies
 ADD . . 
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --ignore-scripts
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 
 # Build the application
@@ -66,7 +66,6 @@ RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases
 
 # Corrected paths
 COPY --from=production-deps /app/node_modules /app/node_modules
-COPY --from=production-deps /app/apps/docs/node_modules /app/apps/docs/node_modules
 COPY --from=build /app/apps/docs/build/server /app/apps/docs/build/server
 COPY --from=build /app/apps/docs/build/client /app/apps/docs/build/client
 ADD . .

@@ -17,11 +17,11 @@ WORKDIR /app
 ENV NODE_ENV=development
 
 # Copy workspace-related files from the monorepo root
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json ./
+COPY package.json pnpm-lock.yaml ./
 COPY apps/docs/package.json apps/docs/
 
 # Install all dependencies (including devDependencies)
-RUN pnpm i --frozen-lockfile --prod=false
+RUN pnpm install --frozen-lockfile --prod=false --ignore-scripts
 
 # Setup production node_modules
 FROM base AS production-deps
@@ -31,10 +31,10 @@ ENV NODE_ENV=production
 WORKDIR /app
 
 # Copy only production dependencies
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json ./
+COPY package.json pnpm-lock.yaml ./
 COPY apps/docs/package.json apps/docs/
 
-RUN pnpm i --frozen-lockfile --prod
+RUN pnpm install --frozen-lockfile --ignore-scripts  --prod
 
 
 # Build the app
@@ -44,11 +44,7 @@ RUN mkdir /app
 WORKDIR /app
 
 # Copy dependencies
-# COPY --from=deps /app/node_modules /app/node_modules
-# COPY --from=deps /app/apps/docs/node_modules /app/apps/docs/node_modules
-
 ADD . . 
-
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 

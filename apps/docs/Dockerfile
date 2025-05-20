@@ -32,7 +32,7 @@ WORKDIR /app
 
 # Copy only production dependencies
 COPY package.json pnpm-lock.yaml ./
-COPY apps/docs/package.json apps/docs/
+COPY apps/docs/package.json apps/docs/  
 
 RUN pnpm install --frozen-lockfile --ignore-scripts  --prod
 
@@ -46,7 +46,7 @@ WORKDIR /app
 # Copy dependencies
 ADD . . 
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --ignore-scripts
 
 
 # Build the application

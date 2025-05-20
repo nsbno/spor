@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.3.1
+
+### Patch Changes
+
+- d137429: Table: Fix width styling on tableCell.
+
 ## 12.3.0
 
 ### Minor Changes

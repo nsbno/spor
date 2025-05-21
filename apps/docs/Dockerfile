@@ -50,7 +50,8 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 
 # Build the application
-RUN pnpm typegen
+# RUN pnpm --filter @vygruppen/spor-design-tokens build
+RUN pnpm --filter @vygruppen/spor-react typegen
 RUN pnpm --filter @vygruppen/docs... build
 
 # Finally, build the production image with minimal footprint

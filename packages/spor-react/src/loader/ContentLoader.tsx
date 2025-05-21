@@ -1,6 +1,5 @@
 "use client";
 import { Box, BoxProps, VisuallyHidden } from "@chakra-ui/react";
-import { contentLoaderData } from "@vygruppen/spor-loader";
 
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
@@ -15,7 +14,7 @@ export const ContentLoader = ({ children, ...props }: ContentLoaderProps) => {
     <Box role="status" aria-live="polite" {...props}>
       <Box maxWidth="140px" marginX="auto">
         <ClientOnly>
-          <Lottie animationData={contentLoaderData} />
+          <Lottie animationKey='contentLoader' />
         </ClientOnly>
       </Box>
       <VisuallyHidden>Loading...</VisuallyHidden>

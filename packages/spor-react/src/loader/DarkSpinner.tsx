@@ -1,5 +1,4 @@
 "use client";
-import { spinnerDarkData, spinnerLightData } from "@vygruppen/spor-loader";
 
 import { Box, BoxProps, Center, useColorMode, VisuallyHidden } from "..";
 import { ClientOnly } from "./ClientOnly";
@@ -28,12 +27,11 @@ export const DarkSpinner = ({
   ...props
 }: DarkSpinnerProps) => {
   const { colorMode } = useColorMode();
-  const spinnerData = colorMode === "dark" ? spinnerLightData : spinnerDarkData;
   return (
     <Center flexDirection="column" role="status" aria-live="polite" {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          <Lottie animationData={spinnerData} />
+          <Lottie animationKey={colorMode === 'light' ? 'spinnerLight' : 'spinnerDark'} />
         </ClientOnly>
       </Box>
       <VisuallyHidden>Loading...</VisuallyHidden>

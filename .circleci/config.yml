@@ -100,7 +100,7 @@ workflows:
           filters:
             branches:
               only:
-                - fix_release
+                - main
 
       - upload-terraform-artifacts:
           context:
@@ -109,7 +109,7 @@ workflows:
             - build-and-push-docker
           filters:
             branches:
-              only: fix_release
+              only: main
 
       - deployment/trigger-deployment:
           context:

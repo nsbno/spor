@@ -27,5 +27,10 @@
     "node": ">=18.0.0"
   },
   "prettier": {},
-  "packageManager": "pnpm@10.4.1"
+  "packageManager": "pnpm@10.4.1",
+  "pnpm": {
+    "patchedDependencies": {
+      "lottie-web": "patches/lottie-web.patch"
+    }
+  }
 }

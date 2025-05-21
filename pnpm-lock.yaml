@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  lottie-web:
+    hash: af9adf2fec79e00f3de0e463a2d1f97ea616a3178881e1796e2d3a3cc22e6eae
+    path: patches/lottie-web.patch
+
 importers:
 
   .:
@@ -21332,11 +21337,11 @@ snapshots:
 
   lottie-react@2.4.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      lottie-web: 5.12.2
+      lottie-web: 5.12.2(patch_hash=af9adf2fec79e00f3de0e463a2d1f97ea616a3178881e1796e2d3a3cc22e6eae)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  lottie-web@5.12.2: {}
+  lottie-web@5.12.2(patch_hash=af9adf2fec79e00f3de0e463a2d1f97ea616a3178881e1796e2d3a3cc22e6eae): {}
 
   loupe@2.3.7:
     dependencies:

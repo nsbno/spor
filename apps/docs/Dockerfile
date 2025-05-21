@@ -46,10 +46,14 @@ WORKDIR /app
 # Copy dependencies
 ADD . . 
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --ignore-scripts
 
 
 # Build the application
+# Need to run typegen to generate types for spor-react, 
+# typegen is dependent on spor-design-tokens
+RUN pnpm --filter @vygruppen/spor-design-tokens build
+RUN pnpm --filter @vygruppen/spor-react typegen
 RUN pnpm --filter @vygruppen/docs... build
 
 # Finally, build the production image with minimal footprint
@@ -66,6 +70,7 @@ RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases
 
 # Corrected paths
 COPY --from=production-deps /app/node_modules /app/node_modules
+COPY --from=production-deps /app/apps/docs/node_modules /app/apps/docs/node_modules
 COPY --from=build /app/apps/docs/build/server /app/apps/docs/build/server
 COPY --from=build /app/apps/docs/build/client /app/apps/docs/build/client
 ADD . .

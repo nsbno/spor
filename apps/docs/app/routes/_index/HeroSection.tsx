@@ -21,7 +21,7 @@ export function HeroSection() {
     >
       <Container maxWidth="container.lg" marginTop={[0, 0, 4]} marginX="auto">
         <Alert variant="info" marginBottom="4" maxWidth="full">
-          Spor 2 is now available and in active testing. We’re fixing issues,
+          Spor 2 is now available and in active testing. We are fixing issues,
           improving documentation, and listening to your feedback. For
           production apps, please keep using Spor 1 until Spor 2 is fully
           validated. Let us know what you think!

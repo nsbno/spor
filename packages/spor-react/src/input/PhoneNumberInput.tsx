@@ -1,5 +1,5 @@
 "use client";
-import { useControllableState } from "@chakra-ui/react";
+import { Box, useControllableState } from "@chakra-ui/react";
 import { forwardRef } from "react";
 
 import { createTexts, Input, InputProps, useTranslation } from "..";
@@ -86,37 +86,42 @@ export const PhoneNumberInput = forwardRef<
       outline={invalid ? "1px solid" : "none"}
       outlineColor={invalid ? "outline.error" : "none"}
       borderRadius={invalid ? "sm" : "none"}
+      display="flex"
     >
       <>
-        <CountryCodeSelect
-          value={[value.countryCode]}
-          onValueChange={handleCountryCodeChange}
-          height="100%"
-          width="6.25rem"
-          variant={variant}
-          allowedCountryCodes={allowedCountryCodes}
-          data-state="on"
-        />
-        <Input
-          ref={ref}
-          type="tel"
-          value={value.nationalNumber}
-          invalid={invalid}
-          errorText={errorText}
-          onChange={(e) => {
-            const target = e.target as HTMLInputElement;
-            // Removes everything but numbers, spaces and dashes
-            const strippedValue = target.value.replaceAll(/[^\d\s-]/g, "");
-            onChange({
-              countryCode: value.countryCode,
-              nationalNumber: strippedValue,
-            });
-          }}
-          variant={variant}
-          data-state="on"
-          {...props}
-          label={label}
-        />
+        <Box flex={"1"}>
+          <CountryCodeSelect
+            value={[value.countryCode]}
+            onValueChange={handleCountryCodeChange}
+            height="100%"
+            width="6.25rem"
+            variant={variant}
+            allowedCountryCodes={allowedCountryCodes}
+            data-state="on"
+          />
+        </Box>
+        <Box flex={"10"}>
+          <Input
+            ref={ref}
+            type="tel"
+            value={value.nationalNumber}
+            invalid={invalid}
+            errorText={errorText}
+            onChange={(e) => {
+              const target = e.target as HTMLInputElement;
+              // Removes everything but numbers, spaces and dashes
+              const strippedValue = target.value.replaceAll(/[^\d\s-]/g, "");
+              onChange({
+                countryCode: value.countryCode,
+                nationalNumber: strippedValue,
+              });
+            }}
+            variant={variant}
+            data-state="on"
+            {...props}
+            label={label}
+          />
+        </Box>
       </>
     </AttachedInputs>
   );

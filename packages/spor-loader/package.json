@@ -6,7 +6,8 @@
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "assets"
   ],
   "sideEffects": false,
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-loader",
@@ -16,7 +17,7 @@
     "directory": "packages/spor-loader"
   },
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && node ./copy-lottie-files.js",
     "dev": "tsup --watch"
   },
   "devDependencies": {

@@ -1,6 +1,5 @@
 "use client";
 import { Box, BoxProps, Center, VisuallyHidden } from "@chakra-ui/react";
-import { inlineLoaderLightData } from "@vygruppen/spor-loader";
 
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
@@ -24,7 +23,7 @@ export const LightInlineLoader = ({
     >
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          <Lottie animationData={inlineLoaderLightData} />
+          <Lottie animationKey='inlineLoaderLight' />
         </ClientOnly>
       </Box>
       <VisuallyHidden>Loading...</VisuallyHidden>

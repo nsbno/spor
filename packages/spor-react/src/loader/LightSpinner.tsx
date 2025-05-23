@@ -1,6 +1,5 @@
 "use client";
 import { Box, BoxProps, Center, VisuallyHidden } from "@chakra-ui/react";
-import { spinnerLightData } from "@vygruppen/spor-loader";
 
 import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
@@ -31,7 +30,7 @@ export const LightSpinner = ({
     <Center flexDirection="column" role="status" aria-live="polite" {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
-          <Lottie animationData={spinnerLightData} />
+          <Lottie animationKey="spinnerLight" />
         </ClientOnly>
       </Box>
       <VisuallyHidden>Loading...</VisuallyHidden>

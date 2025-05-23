@@ -1,5 +1,12 @@
 {
   "extends": "@vygruppen/tsconfig/base.json",
   "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
+  "exclude": ["dist", "build", "node_modules"],
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "target": "ES2020",
+    "module": "ESNext", 
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+  }
 }

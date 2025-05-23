@@ -1,5 +1,5 @@
 "use client";
-import { Box, useControllableState } from "@chakra-ui/react";
+import { useControllableState } from "@chakra-ui/react";
 import { forwardRef } from "react";
 
 import { createTexts, Input, InputProps, useTranslation } from "..";

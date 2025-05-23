@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.3.4
+
+### Patch Changes
+
+- 646f611: PhoneNumberInput: Wrapped CountryCodeSelect and Input in Box and added Flex values
+
 ## 12.3.3
 
 ### Patch Changes

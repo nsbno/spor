@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.3.5
+
+### Patch Changes
+
+- 8575c1b: make @chakra-ui/cli a dependency in package.json to run postinstall script
+
 ## 12.3.4
 
 ### Patch Changes

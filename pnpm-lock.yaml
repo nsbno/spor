@@ -439,6 +439,9 @@ importers:
       '@chakra-ui/anatomy':
         specifier: ^2.3.4
         version: 2.3.4
+      '@chakra-ui/cli':
+        specifier: ^3.8.0
+        version: 3.12.0(@chakra-ui/react@3.9.0(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@chakra-ui/react':
         specifier: ^3.9.0
         version: 3.9.0(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -509,9 +512,6 @@ importers:
         specifier: ^3.1.0
         version: 3.1.1(react@18.3.1)
     devDependencies:
-      '@chakra-ui/cli':
-        specifier: ^3.8.0
-        version: 3.12.0(@chakra-ui/react@3.9.0(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@react-types/datepicker':
         specifier: ^3.10.0
         version: 3.10.0(react@18.3.1)

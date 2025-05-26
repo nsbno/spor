@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 12.3.4
+
+### Patch Changes
+
+- 646f611: PhoneNumberInput: Wrapped CountryCodeSelect and Input in Box and added Flex values
+- 3d79d62: Patch lottie-web to work with newer versions of node (node > 20)
+
 ## 12.3.3
 
 ### Patch Changes

@@ -86,6 +86,8 @@ export const PhoneNumberInput = forwardRef<
       outline={invalid ? "1px solid" : "none"}
       outlineColor={invalid ? "outline.error" : "none"}
       borderRadius={invalid ? "sm" : "none"}
+      display="grid"
+      gridTemplateColumns="1fr 10fr"
     >
       <>
         <CountryCodeSelect

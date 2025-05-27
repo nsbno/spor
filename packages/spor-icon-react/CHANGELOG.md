@@ -1,5 +1,19 @@
 # @vygruppen/spor-icon-react
 
+## 4.1.0
+
+### Minor Changes
+
+- 404114d: **spor-icon-react**:
+
+  - Upgraded Chakra UI to the latest version
+  - Removed `ClientOnlyWrapper` from all icons
+
+  **spor-react**:
+
+  - Upgraded Chakra UI to the latest version
+  - Fixed minor styling issues in the `Select` component
+
 ## 4.0.4
 
 ### Patch Changes

@@ -3,12 +3,10 @@
   "version": "12.4.0",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
     "./icons": {
-      "types": "./dist/icons/index.d.ts",
       "import": "./dist/icons/index.mjs",
       "require": "./dist/icons/index.js"
     }

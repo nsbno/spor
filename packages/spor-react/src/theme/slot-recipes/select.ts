@@ -113,7 +113,20 @@ export const selectSlotRecipe = defineSlotRecipe({
       color: "ghost.text",
       cursor: "pointer",
       outline: "none",
+      "&[data-highlighted]": {
+        outline: "2px solid outline.focus",
+        outlineOffset: "2px",
+        backgroundColor: "ghost.surface.hover",
+      },
 
+      _focusVisible: {
+        outline: "2px solid red",
+        outlineOffset: "2px",
+      },
+      /* _focus: {
+        outline: "2px solid red",
+        outlineOffset: "2px",
+      }, */
       _active: {
         backgroundColor: "ghost.surface.active",
         color: "green",

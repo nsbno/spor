@@ -2,13 +2,14 @@
 
 import type {
   CollectionItem,
-  RecipeVariantProps,
+  SelectLabelProps,
   SelectRootProps as ChakraSelectRootProps,
 } from "@chakra-ui/react";
 import {
   Box,
   Portal,
   Select as ChakraSelect,
+  useSelectContext,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import {
@@ -16,18 +17,13 @@ import {
   DropdownDownFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import * as React from "react";
-import { PropsWithChildren } from "react";
 
 import { CloseButton } from "@/button";
-import { selectSlotRecipe } from "@/theme/slot-recipes/select";
 
 import { Field, FieldProps } from "./Field";
 
-type SelectVariantProps = RecipeVariantProps<typeof selectSlotRecipe>;
-
 export type SelectProps = ChakraSelectRootProps &
-  FieldProps &
-  PropsWithChildren<SelectVariantProps> & {
+  FieldProps & {
     label?: string;
   };
 
@@ -94,13 +90,24 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     );
   },
 );
+
+export const SelectLabel = (props: SelectLabelProps) => {
+  const { value } = useSelectContext();
+
+  return (
+    <ChakraSelect.Label
+      {...props}
+      data-selected={value.length > 0 ? true : undefined}
+    />
+  );
+};
+
 Select.displayName = "Select";
 
-type SelectItemProps = ChakraSelect.ItemProps &
-  React.PropsWithChildren<SelectVariantProps> & {
-    children: React.ReactNode;
-    description?: React.ReactNode;
-  };
+type SelectItemProps = ChakraSelect.ItemProps & {
+  children: React.ReactNode;
+  description?: React.ReactNode;
+};
 
 export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
   (props, ref) => {
@@ -109,7 +116,7 @@ export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     const styles = recipe();
     return (
       <ChakraSelect.Item item={item} {...rest} ref={ref} css={styles.item}>
-        <Box>
+        <Box width="100%">
           <ChakraSelect.ItemText display="flex">
             {children}
           </ChakraSelect.ItemText>
@@ -125,11 +132,10 @@ export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
 );
 SelectItem.displayName = "SelectItem";
 
-type SelectItemGroupProps = ChakraSelect.ItemGroupProps &
-  React.PropsWithChildren<SelectVariantProps> & {
-    label: React.ReactNode;
-    children: React.ReactNode;
-  };
+type SelectItemGroupProps = ChakraSelect.ItemGroupProps & {
+  label: React.ReactNode;
+  children: React.ReactNode;
+};
 
 export const SelectItemGroup = React.forwardRef<
   HTMLDivElement,
@@ -144,11 +150,10 @@ export const SelectItemGroup = React.forwardRef<
   );
 });
 
-type SelectTriggerProps = ChakraSelect.ControlProps &
-  React.PropsWithChildren<SelectVariantProps> & {
-    clearable?: boolean;
-    children?: React.ReactNode;
-  };
+type SelectTriggerProps = ChakraSelect.ControlProps & {
+  clearable?: boolean;
+  children?: React.ReactNode;
+};
 
 export const SelectTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -172,10 +177,9 @@ export const SelectTrigger = React.forwardRef<
   );
 });
 
-type SelectClearTriggerProps = ChakraSelect.ClearTriggerProps &
-  React.PropsWithChildren<SelectVariantProps> & {
-    children?: React.ReactNode;
-  };
+type SelectClearTriggerProps = ChakraSelect.ClearTriggerProps & {
+  children?: React.ReactNode;
+};
 
 const SelectClearTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -193,11 +197,10 @@ const SelectClearTrigger = React.forwardRef<
   );
 });
 
-type SelectContentProps = ChakraSelect.ContentProps &
-  React.PropsWithChildren<SelectVariantProps> & {
-    portalled?: boolean;
-    portalRef?: React.RefObject<HTMLElement>;
-  };
+type SelectContentProps = ChakraSelect.ContentProps & {
+  portalled?: boolean;
+  portalRef?: React.RefObject<HTMLElement>;
+};
 
 export const SelectContent = React.forwardRef<
   HTMLDivElement,
@@ -213,12 +216,11 @@ export const SelectContent = React.forwardRef<
   );
 });
 
-type SelectValueTextProps = Omit<ChakraSelect.ValueTextProps, "children"> &
-  React.PropsWithChildren<SelectVariantProps> & {
-    children?(items: CollectionItem[]): React.ReactNode;
-    placeholder?: string;
-    withPlaceholder?: boolean;
-  };
+type SelectValueTextProps = Omit<ChakraSelect.ValueTextProps, "children"> & {
+  children?(items: CollectionItem[]): React.ReactNode;
+  placeholder?: string;
+  withPlaceholder?: boolean;
+};
 
 export const SelectValueText = React.forwardRef<
   HTMLSpanElement,
@@ -253,6 +255,5 @@ export const SelectValueText = React.forwardRef<
   );
 });
 
-export const SelectLabel = ChakraSelect.Label;
 export const SelectItemText = ChakraSelect.ItemText;
 export const SelectRoot = ChakraSelect.Root;

@@ -2,9 +2,11 @@
 import {
   ChakraProvider,
   ChakraProviderProps,
+  defaultSystem,
   SystemContext,
 } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
+import { PropsWithChildren } from "react";
 
 import { Language, LanguageProvider, system } from "..";
 import { ColorModeProvider } from "../color-mode";
@@ -71,3 +73,7 @@ export const SporProvider = ({
     </LanguageProvider>
   );
 };
+
+export const SporProvider2 = ({ children }: PropsWithChildren) => (
+  <ChakraProvider value={defaultSystem}>{children}</ChakraProvider>
+);

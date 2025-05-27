@@ -3,7 +3,6 @@ import {
   Flex,
   TextLink,
   useColorModeValue,
-  VyLogo,
   VyLogoPride,
 } from "@vygruppen/spor-react";
 

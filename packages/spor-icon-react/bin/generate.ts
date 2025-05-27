@@ -139,8 +139,8 @@ async function generateComponent(iconData: IconData) {
     },
   );
   jsCode = jsCode
-    .replace("<svg", '<ClientOnly><Box as="svg" display="block"')
-    .replace("</svg>", "</Box></ClientOnly>");
+    .replace("<svg", '<Box as="svg" display="block"')
+    .replace("</svg>", "</Box>");
 
   return createComponentFile(iconData, jsCode);
 }

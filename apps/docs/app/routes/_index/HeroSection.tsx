@@ -1,4 +1,3 @@
-import { Link } from "@remix-run/react";
 import { ArrowRightFill30Icon } from "@vygruppen/spor-icon-react";
 import {
   Alert,
@@ -8,25 +7,40 @@ import {
   Heading,
   Image,
   Text,
+  TextLink,
 } from "@vygruppen/spor-react";
+import { Link } from "react-router-dom";
 
 export function HeroSection() {
   return (
     <Flex
       backgroundColor={"surface.tertiary"}
-      minHeight="600px"
+      minHeight="520px"
       className="light"
-      width={"100vw"}
+      width={"100%"}
       overflow={"hidden"}
     >
-      <Container maxWidth="container.lg" marginTop={[0, 0, 4]} marginX="auto">
-        <Alert variant="info" marginBottom="4" maxWidth="full">
-          Spor 2 is now available and in active testing. We are fixing issues,
-          improving documentation, and listening to your feedback. For
-          production apps, please keep using Spor 1 until Spor 2 is fully
-          validated. Let us know what you think!
+      <Container
+        maxWidth="container.lg"
+        marginTop={{
+          base: "0",
+          lg: "1",
+        }}
+        marginX="auto"
+        padding="1"
+      >
+        <Alert variant="info" marginBottom="4" maxWidth="full" display="block">
+          This is the latest version of Spor, which may not yet be fully tested
+          for production use. For known issues or to report new ones, visit our
+          <TextLink
+            href="https://github.com/nsbno/spor/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub issues page
+          </TextLink>
+          . We welcome your feedback and contributions to help improve Spor!
         </Alert>
-
         <Flex
           flexDirection={["column-reverse", null, "row"]}
           alignItems="center"

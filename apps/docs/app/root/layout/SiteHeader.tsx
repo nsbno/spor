@@ -6,9 +6,6 @@ import {
 } from "@vygruppen/spor-icon-react";
 import {
   Button,
-  CardSelect,
-  CardSelectContent,
-  CardSelectTrigger,
   Drawer,
   DrawerBody,
   DrawerCloseTrigger,
@@ -20,13 +17,14 @@ import {
   Stack,
   Text,
   useDisclosure,
-  VyLogo,
+  VyLogoPride,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
 
 import { loader } from "~/root";
 
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
+import { ChangeVersion } from "./ChangeVersion";
 import { SearchDocs } from "./SearchDocs";
 import { SiteSettings } from "./SiteSettings";
 
@@ -79,7 +77,12 @@ export const SiteHeader = () => {
         position="relative"
       >
         <Link to="/" aria-label="Go to the front page">
-          <VyLogo className="dark" width="auto" height="56px" aria-label="Vy" />
+          <VyLogoPride
+            className="dark"
+            width="auto"
+            height="56px"
+            aria-label="Vy"
+          />
         </Link>
 
         <Flex gap="1">
@@ -98,41 +101,6 @@ export const SiteHeader = () => {
         </Flex>
       </Flex>
     </Flex>
-  );
-};
-
-const ChangeVersion = () => {
-  const domain = useRouteLoaderData<typeof loader>("root")?.domain;
-  const isOldVersion = domain?.includes("spor-v1");
-
-  return (
-    <CardSelect>
-      <CardSelectTrigger variant="core" className="dark">
-        <Text display={{ base: "none", xl: "block" }}>Spor</Text>
-        v2
-      </CardSelectTrigger>
-      <CardSelectContent>
-        <Button
-          variant="ghost"
-          size="md"
-          marginBottom={2}
-          as="a"
-          href="https://spor.vy.no"
-          disabled={!isOldVersion}
-        >
-          Spor V2 - ver.12.xx
-        </Button>
-        <Button
-          variant="ghost"
-          size="md"
-          as="a"
-          href="https://spor-v1.test.vylabs.io/"
-          disabled={isOldVersion}
-        >
-          Spor V1 - ver.11.xx
-        </Button>
-      </CardSelectContent>
-    </CardSelect>
   );
 };
 

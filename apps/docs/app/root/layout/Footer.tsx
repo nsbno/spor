@@ -3,7 +3,7 @@ import {
   Flex,
   TextLink,
   useColorModeValue,
-  VyLogo,
+  VyLogoPride,
 } from "@vygruppen/spor-react";
 
 import { useMenu } from "~/utils/useMenu";
@@ -23,7 +23,7 @@ export const Footer = () => {
       borderColor={borderColor}
     >
       <Link to="/" aria-label="Go to the front page">
-        <VyLogo
+        <VyLogoPride
           aria-hidden="true"
           width="auto"
           height={["30px", "36px", null, "48px"]}

@@ -23,6 +23,7 @@ export const SiteSettings = () => {
         withChevron={false}
         fontWeight={"bold"}
         className="dark"
+        minWidth="auto"
         title="Site settings"
       >
         <Text display={{ base: "none", lg: "block" }}>Settings</Text>

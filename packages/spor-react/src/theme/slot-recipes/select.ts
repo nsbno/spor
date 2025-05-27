@@ -12,16 +12,6 @@ export const selectSlotRecipe = defineSlotRecipe({
       position: "relative",
       cursor: "pointer",
       zIndex: "dropdown",
-      "& [data-state='open']": {
-        "& + label": {
-          transform: ["scale(0.825) translateY(-10px)"],
-        },
-      },
-      "&:has(button span:not(:empty))": {
-        "& label": {
-          transform: ["scale(0.825) translateY(-10px)"],
-        },
-      },
     },
     label: {
       fontSize: ["mobile.sm", "desktop.sm"],
@@ -29,7 +19,13 @@ export const selectSlotRecipe = defineSlotRecipe({
       left: 3,
       zIndex: 0,
       position: "absolute",
+      color: "text",
       marginY: 2,
+
+      _selected: {
+        transform: ["scale(0.825) translateY(-10px)"],
+      },
+
       transitionProperty: "transform",
       transitionDuration: "fast",
       transformOrigin: "top left",
@@ -41,8 +37,10 @@ export const selectSlotRecipe = defineSlotRecipe({
       appearance: "none",
       width: "100%",
       height: 8,
+      color: "text",
       paddingY: 1.5,
       paddingX: 3,
+
       justifyContent: "space-between",
       alignItems: "center",
       fontSize: "mobile.md",
@@ -64,6 +62,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       top: "0",
       bottom: "0",
       paddingX: 2,
+
       pointerEvents: "none",
     },
     indicator: {

@@ -2,6 +2,14 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 
 import { selectAnatomy } from "./anatomy";
 
+/* const itemFocusStyles = {
+  "html[data-keyboard-input] &[data-highlighted]": {
+    outline: "2px solid red",
+    outlineOffset: "2px",
+    backgroundColor: "ghost.surface.hover",
+  },
+} as const; */
+
 export const selectSlotRecipe = defineSlotRecipe({
   slots: selectAnatomy.keys(),
   className: "spor-select",
@@ -94,6 +102,7 @@ export const selectSlotRecipe = defineSlotRecipe({
         animationStyle: "slide-fade-in",
         animationDuration: "fast",
         zIndex: "popover",
+        outline: "none",
       },
       _closed: {
         animationStyle: "slide-fade-out",
@@ -113,20 +122,17 @@ export const selectSlotRecipe = defineSlotRecipe({
       color: "ghost.text",
       cursor: "pointer",
       outline: "none",
-      "&[data-highlighted]": {
-        outline: "2px solid outline.focus",
+      "&[data-highlighted]:hover": {
         outlineOffset: "2px",
+        outline: "2px solid",
+        outlineColor: "outline.focus",
         backgroundColor: "ghost.surface.hover",
       },
-
-      _focusVisible: {
-        outline: "2px solid red",
+      "&[data-highlighted]": {
         outlineOffset: "2px",
+        outline: "2px solid",
+        outlineColor: "outline.focus",
       },
-      /* _focus: {
-        outline: "2px solid red",
-        outlineOffset: "2px",
-      }, */
       _active: {
         backgroundColor: "ghost.surface.active",
         color: "green",

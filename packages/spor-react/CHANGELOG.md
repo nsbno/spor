@@ -1,5 +1,37 @@
 # @vygruppen/spor-react
 
+## 12.4.0
+
+### Minor Changes
+
+- 404114d: **spor-icon-react**:
+
+  - Upgraded Chakra UI to the latest version
+  - Removed `ClientOnlyWrapper` from all icons
+
+  **spor-react**:
+
+  - Upgraded Chakra UI to the latest version
+  - Fixed minor styling issues in the `Select` component
+
+### Patch Changes
+
+- Updated dependencies [404114d]
+  - @vygruppen/spor-icon-react@4.1.0
+
+## 12.3.5
+
+### Patch Changes
+
+- 8575c1b: make @chakra-ui/cli a dependency in package.json to run postinstall script
+
+## 12.3.4
+
+### Patch Changes
+
+- 646f611: PhoneNumberInput: Wrapped CountryCodeSelect and Input in Box and added Flex values
+- 3d79d62: Patch lottie-web to work with newer versions of node (node > 20)
+
 ## 12.3.3
 
 ### Patch Changes

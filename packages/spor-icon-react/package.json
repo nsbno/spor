@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-icon-react",
-  "version": "4.0.4",
+  "version": "4.1.0",
   "type": "module",
   "exports": {
     ".": {
@@ -34,7 +34,7 @@
     "react-dom": ">=18.0.0 <19.0.0"
   },
   "devDependencies": {
-    "@chakra-ui/react": "^3.9.0",
+    "@chakra-ui/react": "^3.19.1",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "@svgr/plugin-svgo": "^8.1.0",

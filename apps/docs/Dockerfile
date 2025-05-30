@@ -31,6 +31,7 @@ ENV NODE_ENV=production
 WORKDIR /app
 
 # Copy only production dependencies
+COPY patches ./patches
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/docs/package.json apps/docs/
 

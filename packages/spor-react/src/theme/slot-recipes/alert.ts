@@ -40,9 +40,6 @@ export const alertSlotRecipe = defineSlotRecipe({
       border: "sm",
     },
     description: {
-      display: "flex",
-      alignItems: "flex-start",
-      gap: 1.5,
       color: "text",
     },
     content: {
@@ -54,6 +51,7 @@ export const alertSlotRecipe = defineSlotRecipe({
     title: {
       fontWeight: "bold",
     },
+    closeButton: {},
   },
   variants: {
     variant: {

@@ -2,14 +2,6 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 
 import { selectAnatomy } from "./anatomy";
 
-/* const itemFocusStyles = {
-  "html[data-keyboard-input] &[data-highlighted]": {
-    outline: "2px solid red",
-    outlineOffset: "2px",
-    backgroundColor: "ghost.surface.hover",
-  },
-} as const; */
-
 export const selectSlotRecipe = defineSlotRecipe({
   slots: selectAnatomy.keys(),
   className: "spor-select",

@@ -93,6 +93,7 @@ export const selectSlotRecipe = defineSlotRecipe({
         animationStyle: "slide-fade-in",
         animationDuration: "fast",
         zIndex: "popover",
+        outline: "none",
       },
       _closed: {
         animationStyle: "slide-fade-out",
@@ -112,7 +113,17 @@ export const selectSlotRecipe = defineSlotRecipe({
       color: "ghost.text",
       cursor: "pointer",
       outline: "none",
-
+      "&[data-highlighted]:hover": {
+        outlineOffset: "2px",
+        outline: "2px solid",
+        outlineColor: "outline.focus",
+        backgroundColor: "ghost.surface.hover",
+      },
+      "&[data-highlighted]": {
+        outlineOffset: "2px",
+        outline: "2px solid",
+        outlineColor: "outline.focus",
+      },
       _active: {
         backgroundColor: "ghost.surface.active",
         color: "green",

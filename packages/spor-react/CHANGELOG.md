@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.4.1
+
+### Patch Changes
+
+- 812afc9: CountryCodeSelect: Fixed onValueChange and UU styling in select.
+
 ## 12.4.0
 
 ### Minor Changes

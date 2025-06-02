@@ -1,3 +1,4 @@
+import jsonPlugin from "esbuild-plugin-json";
 import { defineConfig } from "tsup";
 
 export default defineConfig({
@@ -6,4 +7,5 @@ export default defineConfig({
   dts: true,
   treeshake: true,
   sourcemap: true,
+  esbuildPlugins: [jsonPlugin()],
 });

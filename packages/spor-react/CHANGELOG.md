@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.4.3
+
+### Patch Changes
+
+- 144aca1: Support exporting icons directly from spor, which seems to fix SSR issues for icons.
+
 ## 12.4.2
 
 ### Patch Changes

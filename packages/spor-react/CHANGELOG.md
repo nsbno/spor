@@ -1,5 +1,18 @@
 # @vygruppen/spor-react
 
+## 12.4.2
+
+### Patch Changes
+
+- d96b924: Revert exporting icons, which caused issues with tokens with remix.
+
+## 12.4.1
+
+### Patch Changes
+
+- 184803a: Support exporting icons directly from spor, which seems to fix SSR issues for icons.
+- 812afc9: CountryCodeSelect: Fixed onValueChange and UU styling in select.
+
 ## 12.4.0
 
 ### Minor Changes

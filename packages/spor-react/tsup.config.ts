@@ -1,4 +1,3 @@
-import jsonPlugin from "esbuild-plugin-json";
 import { defineConfig } from "tsup";
 
 export default defineConfig({
@@ -7,5 +6,13 @@ export default defineConfig({
   dts: true,
   treeshake: true,
   sourcemap: true,
-  esbuildPlugins: [jsonPlugin()],
+  esbuildOptions(options) {
+    // Ensure JSON files are treated as JSON modules
+    options.loader = {
+      ...options.loader,
+      ".json": "json",
+    };
+    options.target = "esnext";
+    options.platform = "node";
+  },
 });

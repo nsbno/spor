@@ -1,7 +1,5 @@
 import { defineSemanticTokens } from "@chakra-ui/react";
-import cargonetJson from "@vygruppen/spor-design-tokens/tokens/color/cargonet.json" assert { type: "json" };
-import vyDigitalJson from "@vygruppen/spor-design-tokens/tokens/color/vy-digital.json" assert { type: "json" };
-import VyUtviklingJson from "@vygruppen/spor-design-tokens/tokens/color/vy-utvikling.json" assert { type: "json" };
+import tokens from "@vygruppen/spor-design-tokens/raw-tokens";
 
 export enum Brand {
   VyDigital = "VyDigital",
@@ -10,13 +8,13 @@ export enum Brand {
 }
 
 export const vyDigitalColors = defineSemanticTokens.colors({
-  ...vyDigitalJson.color.vyDigital,
+  ...tokens.color["vy-digital"].color.vyDigital,
 });
 
 export const vyUtviklingColors = defineSemanticTokens.colors({
-  ...VyUtviklingJson.color.vyUtvikling,
+  ...tokens.color["vy-utvikling"].color.vyUtvikling,
 });
 
 export const cargonetColors = defineSemanticTokens.colors({
-  ...cargonetJson.color.cargonet,
+  ...tokens.color.cargonet.color.cargonet,
 });

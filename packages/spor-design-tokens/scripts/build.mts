@@ -11,6 +11,8 @@ const sd = new styleDictionary("config.json");
 
 import { minifyDictionary } from "style-dictionary/utils";
 
+import { generateTokenModuleFromJson } from "./generateTokenModuleFromJson";
+
 // Register formatters
 // Read about formatters @ https://amzn.github.io/style-dictionary/#/formats
 sd.registerFormat(cjsModuleFormatter);
@@ -31,3 +33,9 @@ sd.registerFormat({
 });
 
 sd.buildAllPlatforms();
+
+/**
+ * Generates TypeScript token modules from JSON files in the tokens directory.
+ * This allows direct access to raw token values for use in themes and other features.
+ */
+await generateTokenModuleFromJson();

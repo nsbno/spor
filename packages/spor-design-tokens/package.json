@@ -10,16 +10,21 @@
   },
   "exports": {
     ".": {
+      "types": "./dist/tokens.d.ts",
       "import": "./dist/tokens.mjs",
-      "require": "./dist/tokens.js",
-      "types": "./dist/tokens.d.ts"
+      "require": "./dist/tokens.js"
+    },
+    "./raw-tokens": {
+      "types": "./dist/raw-tokens/index.d.ts",
+      "import": "./dist/raw-tokens/index.js",
+      "require": "./dist/raw-tokens/index.js"
     },
     "./tokens/*.json": "./tokens/*.json",
     "./tokens.json": "./dist/tokens.json",
     "./tokens.css": "./dist/tokens.css"
   },
   "scripts": {
-    "build": "tsx scripts/build.ts",
+    "build": "tsx scripts/build.mts",
     "dev": "chokidar 'scripts/**/*' 'tokens/**/*' -c 'pnpm build'",
     "lint": "eslint ."
   },

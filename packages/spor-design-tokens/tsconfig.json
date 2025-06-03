@@ -3,6 +3,8 @@
   "include": ["."],
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {
-    "rootDir": "."
+    "rootDir": ".",
+    "module": "esnext", // or "node16", "nodenext", etc.
+    "target": "es2017" // or higher, e.g., "es2020"
   }
 }

@@ -1,7 +1,5 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 
-import { coreBackground, coreText } from "../utils/core-utils";
-import { ghostBackground } from "../utils/ghost-utils";
 import { paginationAnatomy } from "./anatomy";
 
 export const paginationSlotRecipe = defineSlotRecipe({
@@ -16,13 +14,12 @@ export const paginationSlotRecipe = defineSlotRecipe({
       width: "5",
       fontSize: "xs",
       borderRadius: "xl",
-      ...coreText("default"),
+      color: "core.text",
       cursor: "pointer",
-      ...coreBackground("default"),
       _hover: {
-        ...ghostBackground("hover"),
+        background: "ghost.surface.hover",
         _active: {
-          ...ghostBackground("active"),
+          background: "ghost.surface.active",
         },
       },
       _selected: {

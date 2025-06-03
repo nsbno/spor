@@ -1,8 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+import tokens from "@vygruppen/spor-design-tokens";
 
-import { coreBorder, coreText } from "../utils/core-utils";
-import { floatingBackground, floatingBorder } from "../utils/floating-utils";
-import { ghostBackground } from "../utils/ghost-utils";
 import { accordionAnatomy } from "./anatomy";
 
 export const accordionSlotRecipe = defineSlotRecipe({
@@ -20,7 +18,7 @@ export const accordionSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       display: "flex",
       justifyContent: "space-between",
-      ...coreText("default"),
+      color: "core.text",
       textAlign: "left",
       width: "full",
       alignItems: "center",
@@ -72,58 +70,65 @@ export const accordionSlotRecipe = defineSlotRecipe({
   variants: {
     variant: {
       ghost: {
-        root: {
+        item: {
           outline: "none",
         },
         itemTrigger: {
           "&:hover": {
-            ...ghostBackground("hover"),
+            background: "ghost.surface.hover",
           },
           "&:active": {
-            ...ghostBackground("active"),
+            backgroundColor: "ghost.surface.active",
           },
         },
       },
       core: {
         item: {
-          ...coreBorder("default"),
+          outline: "solid",
+          outlineWidth: tokens.size.stroke.sm,
+          outlineColor: "core.outline",
         },
         itemTrigger: {
           _expanded: {
             borderBottomRadius: "none",
           },
           "&:hover": {
-            ...coreBorder("hover"),
+            outlineWidth: tokens.size.stroke.md,
+            outlineColor: "core.outline.hover",
+            outline: "solid",
+
             outlineOffset: 0,
           },
           "&:active": {
             backgroundColor: "core.surface.active",
-            ...coreBorder("default"),
+            outlineWidth: tokens.size.stroke.sm,
+            outlineColor: "core.outline.active",
+            outline: "solid",
           },
         },
       },
       floating: {
         item: {
-          ...floatingBackground("default"),
-          ...floatingBorder("default"),
-          boxShadow: "sm",
+          outline: "solid",
+          outlineWidth: tokens.size.stroke.sm,
+          outlineColor: "core.outline",
         },
         itemTrigger: {
           _expanded: {
             borderBottomRadius: "none",
           },
           "&:hover": {
-            outlineOffset: 1,
-            ...floatingBackground("hover"),
-            ...floatingBorder("hover"),
-            "&:active": {
-              backgroundColor: "floating.surface.active",
-              ...floatingBorder("default"),
-            },
+            outlineWidth: tokens.size.stroke.md,
+            outlineColor: "floating.outline.hover",
+            outline: "solid",
+
+            outlineOffset: 0,
           },
           "&:active": {
             backgroundColor: "floating.surface.active",
-            ...floatingBorder("default"),
+            outlineWidth: tokens.size.stroke.sm,
+            outlineColor: "floating.outline.active",
+            outline: "solid",
           },
         },
       },

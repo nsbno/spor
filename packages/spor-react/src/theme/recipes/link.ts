@@ -1,7 +1,5 @@
 import { defineRecipe } from "@chakra-ui/react";
 
-import { coreText } from "../utils/core-utils";
-
 export const linkRecipe = defineRecipe({
   base: {
     transitionProperty: "common",
@@ -42,7 +40,7 @@ export const linkRecipe = defineRecipe({
   variants: {
     variant: {
       primary: {
-        ...coreText("default"),
+        color: "core.text",
         _hover: {
           color: "text.default",
           _active: {
@@ -51,10 +49,10 @@ export const linkRecipe = defineRecipe({
         },
       },
       secondary: {
-        ...coreText("highlight"),
+        color: "text.hightlight",
         padding: "2px",
         _hover: {
-          ...coreText("highlight"),
+          color: "text.hightlight",
           _active: {
             color: "text.disabled",
           },

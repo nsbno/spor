@@ -1,7 +1,5 @@
 import { defineRecipe } from "@chakra-ui/react";
 
-import { ghostBackground } from "../utils/ghost-utils";
-
 export const closeButtonRecipe = defineRecipe({
   base: {
     transitionProperty: "common",
@@ -11,12 +9,12 @@ export const closeButtonRecipe = defineRecipe({
     color: "darkGrey",
     fontWeight: "normal",
     _hover: {
-      ...ghostBackground("hover"),
+      background: "ghost.surface.hover",
       _disabled: {
         color: "dimGrey",
       },
       _active: {
-        ...ghostBackground("active"),
+        background: "ghost.surface.active",
       },
     },
   },

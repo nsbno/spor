@@ -39,7 +39,7 @@ export const createToast = ({
   toaster.create({
     description: text,
     type: variant,
-    id,
+    id: id ?? crypto.randomUUID(),
     duration,
   });
 

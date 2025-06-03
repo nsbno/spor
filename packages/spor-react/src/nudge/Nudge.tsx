@@ -1,11 +1,12 @@
 "use client";
-import { PopoverCloseTrigger, usePopoverContext } from "@ark-ui/react";
 import {
   Box,
   BoxProps,
   chakra,
   Popover as ChakraPopover,
+  PopoverCloseTrigger,
   PopoverRootProps,
+  usePopoverContext,
 } from "@chakra-ui/react";
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React, {

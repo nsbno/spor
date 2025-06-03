@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.0.7
+
+### Patch Changes
+
+- 7489e4a: Export raw tokens as js module from design tokens to be used in spor in stead of json files. Fixes issue with esm json import.
+
 ## 4.0.6
 
 ### Patch Changes

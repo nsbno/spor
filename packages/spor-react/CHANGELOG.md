@@ -1,5 +1,19 @@
 # @vygruppen/spor-react
 
+## 12.4.4
+
+### Patch Changes
+
+- 94e9282: Nudge, WizardNudge and Toast does not work after updating chakra in a previous version of spor.
+  Fixed:
+
+  - Toast needed an id for each toast. Auto generated if not supplied from user.
+  - Nudge imported usePopoverContext from ark. Now imports from chakra and works.
+
+- 7489e4a: Export raw tokens as js module from design tokens to be used in spor in stead of json files. Fixes issue with esm json import.
+- Updated dependencies [7489e4a]
+  - @vygruppen/spor-design-tokens@4.0.7
+
 ## 12.4.3
 
 ### Patch Changes

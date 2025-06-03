@@ -16,10 +16,8 @@
     },
     "./raw-tokens": {
       "types": "./dist/raw-tokens/index.d.ts",
-      "import": "./dist/raw-tokens/index.js",
-      "require": "./dist/raw-tokens/index.js"
+      "default": "./dist/raw-tokens/index.js"
     },
-    "./tokens/*.json": "./tokens/*.json",
     "./tokens.json": "./dist/tokens.json",
     "./tokens.css": "./dist/tokens.css"
   },

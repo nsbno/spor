@@ -27,81 +27,37 @@ export const infoTagSlotRecipe = defineSlotRecipe({
   variants: {
     variant: {
       walk: {
-        iconContainer: {
-          icon: {
-            color: "text",
-          },
-        },
+        iconContainer: {},
       },
       ferry: {
-        iconContainer: {
-          icon: {
-            color: "text",
-          },
-        },
+        iconContainer: {},
       },
       subway: {
-        iconContainer: {
-          icon: {
-            color: "text",
-          },
-        },
+        iconContainer: {},
       },
       tram: {
-        iconContainer: {
-          icon: {
-            color: "text",
-          },
-        },
+        iconContainer: {},
       },
       "local-train": {
-        iconContainer: {
-          icon: {
-            color: "text",
-          },
-        },
+        iconContainer: {},
       },
       "region-train": {
-        iconContainer: {
-          icon: {
-            color: "text",
-          },
-        },
+        iconContainer: {},
       },
       "region-express-train": {
-        iconContainer: {
-          icon: {
-            color: "text",
-          },
-        },
+        iconContainer: {},
       },
       "long-distance-train": {
-        iconContainer: {
-          icon: {
-            color: "text",
-          },
-        },
+        iconContainer: {},
       },
       "airport-express-train": {
-        iconContainer: {
-          icon: {
-            color: "text",
-          },
-        },
+        iconContainer: {},
       },
       "vy-bus": {
-        iconContainer: {
-          icon: {
-            color: "text",
-          },
-        },
+        iconContainer: {},
       },
       "local-bus": {
-        iconContainer: {
-          icon: {
-            color: "text",
-          },
-        },
+        iconContainer: {},
       },
     },
     size: {

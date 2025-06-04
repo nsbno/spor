@@ -1,7 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 
 import { inputRecipe } from "../recipes/input";
-import { coreText } from "../utils/core-utils";
 import { NativeSelectAnatomy } from "./anatomy";
 
 export const nativeSelectSlotRecipe = defineSlotRecipe({
@@ -34,7 +33,7 @@ export const nativeSelectSlotRecipe = defineSlotRecipe({
       color: "currentColor",
       fontSize: "sm",
       _disabled: {
-        ...coreText("disabled"),
+        color: "text.disabled",
       },
     },
   },

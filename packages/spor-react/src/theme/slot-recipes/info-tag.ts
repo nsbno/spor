@@ -33,6 +33,76 @@ export const infoTagSlotRecipe = defineSlotRecipe({
           },
         },
       },
+      ferry: {
+        iconContainer: {
+          icon: {
+            color: "text",
+          },
+        },
+      },
+      subway: {
+        iconContainer: {
+          icon: {
+            color: "text",
+          },
+        },
+      },
+      tram: {
+        iconContainer: {
+          icon: {
+            color: "text",
+          },
+        },
+      },
+      "local-train": {
+        iconContainer: {
+          icon: {
+            color: "text",
+          },
+        },
+      },
+      "region-train": {
+        iconContainer: {
+          icon: {
+            color: "text",
+          },
+        },
+      },
+      "region-express-train": {
+        iconContainer: {
+          icon: {
+            color: "text",
+          },
+        },
+      },
+      "long-distance-train": {
+        iconContainer: {
+          icon: {
+            color: "text",
+          },
+        },
+      },
+      "airport-express-train": {
+        iconContainer: {
+          icon: {
+            color: "text",
+          },
+        },
+      },
+      "vy-bus": {
+        iconContainer: {
+          icon: {
+            color: "text",
+          },
+        },
+      },
+      "local-bus": {
+        iconContainer: {
+          icon: {
+            color: "text",
+          },
+        },
+      },
     },
     size: {
       ...travelTagSlotRecipe.variants?.size,

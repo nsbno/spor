@@ -17,7 +17,7 @@ export type Size = "sm" | "md" | "lg";
 export type TagType = "info" | "travel";
 
 export type TagProps = VariantProps & {
-  size: Size;
+  size?: Size;
   title: string;
   description?: string;
 };

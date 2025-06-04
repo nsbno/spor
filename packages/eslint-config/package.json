@@ -2,7 +2,6 @@
   "name": "@vygruppen/eslint-config",
   "version": "1.0.1",
   "type": "module",
-  "private": true,
   "exports": {
     ".": "./index.mjs"
   },

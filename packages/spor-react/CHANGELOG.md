@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 12.4.5
+
+### Patch Changes
+
+- 9f9f9c0: Replace style utils with tokens for better maintainability
+  - @vygruppen/spor-design-tokens@4.0.7
+  - @vygruppen/spor-icon-react@4.1.0
+
 ## 12.4.4
 
 ### Patch Changes

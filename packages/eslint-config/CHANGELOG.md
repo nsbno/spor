@@ -1,5 +1,11 @@
 # @vygruppen/eslint-config
 
+## 1.1.0
+
+### Minor Changes
+
+- 30cf587: Remove private false to publish
+
 ## 1.0.1
 
 ### Patch Changes

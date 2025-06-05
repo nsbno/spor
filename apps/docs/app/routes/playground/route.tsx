@@ -1,10 +1,4 @@
-import {
-  Box,
-  InfoTag,
-  LineIcon,
-  Stack,
-  TravelTag,
-} from "@vygruppen/spor-react";
+import { Stack } from "@vygruppen/spor-react";
 import { StrictMode, useEffect, useState } from "react";
 import { LivePreview } from "react-live";
 
@@ -35,16 +29,6 @@ export default function PlaygroundPage() {
 
   return (
     <StrictMode>
-      <Box margin={"50px"} width={"150px"}>
-        <LineIcon variant="subway" label="Custom Ferry Icon" />
-        <InfoTag variant="tram" title="3" size="sm" />
-        <TravelTag
-          variant="vy-bus"
-          title="alt-transport"
-          description="34"
-          size="sm"
-        />
-      </Box>
       <LiveProvider code={playgroundData}>
         <Stack gap={2} id="content">
           <LiveEditor

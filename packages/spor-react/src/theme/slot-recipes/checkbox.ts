@@ -1,8 +1,6 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 import tokens from "@vygruppen/spor-design-tokens";
 
-import { brandBackground, brandText } from "../utils/brand-utils";
-import { coreBackground, coreText } from "../utils/core-utils";
 import { checkboxAnatomy } from "./anatomy";
 
 export const checkboxSlotRecipe = defineSlotRecipe({
@@ -14,13 +12,11 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       gap: 1.5,
       _hover: {
         "& > input:enabled:not([aria-invalid]) + .spor-checkbox__control": {
-          ...coreBackground("hover"),
-          borderColor: brandBackground("hover").backgroundColor,
+          borderColor: "core.outline.hover",
         },
         "& > input:enabled:checked:not([aria-invalid]) + .spor-checkbox__control":
           {
-            ...brandBackground("hover"),
-            borderColor: brandBackground("hover").backgroundColor,
+            background: "brand.surface.hover",
           },
       },
     },
@@ -44,19 +40,18 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       border: "2px solid",
       borderColor: "core.outline",
       borderRadius: "xs",
-      ...coreBackground("default"),
 
       _checked: {
-        ...brandText("default"),
-        ...brandBackground("default"),
-        borderColor: brandBackground("default").backgroundColor,
+        color: "brand.icon",
+        borderColor: "brand.surface",
+        background: "brand.surface",
         _focus: {
           borderColor: "brand.surface.active",
         },
 
         _disabled: {
-          ...coreBackground("disabled"),
-          ...coreText("disabled"),
+          background: "surface.disabled",
+          color: "text.disabled",
           borderColor: "currentColor",
         },
 
@@ -66,11 +61,10 @@ export const checkboxSlotRecipe = defineSlotRecipe({
         },
       },
       _disabled: {
-        ...coreBackground("disabled"),
-        borderColor: coreText("disabled").color,
+        // borderColor: coreText("disabled").color,
+        borderColor: "text.disabled",
       },
       _invalid: {
-        ...coreBackground("default"),
         borderColor: "outline.error",
       },
       _focus: {

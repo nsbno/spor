@@ -52,7 +52,6 @@ export const InfoTag = ({
   const recipe = useSlotRecipe({ key: "infoTag" });
 
   const styles = recipe({
-    variant,
     size,
     ...customProps,
   });

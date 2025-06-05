@@ -26,13 +26,17 @@ export const infoTagSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      walk: {
-        iconContainer: {
-          icon: {
-            color: "text",
-          },
-        },
-      },
+      walk: {},
+      ferry: {},
+      subway: {},
+      tram: {},
+      "local-train": {},
+      "region-train": {},
+      "region-express-train": {},
+      "long-distance-train": {},
+      "airport-express-train": {},
+      "vy-bus": {},
+      "local-bus": {},
     },
     size: {
       ...travelTagSlotRecipe.variants?.size,

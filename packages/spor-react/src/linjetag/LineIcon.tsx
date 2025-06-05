@@ -24,7 +24,7 @@ type VariantProps = DefaultVariantProps | CustomVariantProps;
 export type LineIconProps = Exclude<BoxProps, "variant"> &
   VariantProps &
   PropsWithChildren<LineIconVariantProps> & {
-    size: TagProps["size"];
+    size?: TagProps["size"];
     foregroundColor?: string;
     backgroundColor?: string;
     disabled?: boolean;

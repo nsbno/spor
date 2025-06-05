@@ -110,7 +110,7 @@ export const accordionSlotRecipe = defineSlotRecipe({
         item: {
           outline: "1px solid",
           outlineWidth: tokens.size.stroke.sm,
-          boxShadow: "0px 1px 3px 0px #EBEBEC",
+          boxShadow: "sm",
           outlineColor: "floating.outline",
         },
         itemTrigger: {

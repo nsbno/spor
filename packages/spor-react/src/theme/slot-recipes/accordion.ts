@@ -94,24 +94,24 @@ export const accordionSlotRecipe = defineSlotRecipe({
           },
           "&:hover": {
             outlineWidth: tokens.size.stroke.md,
-            outlineColor: "core.outline.hover",
-            outline: "solid",
+            outlineColor: "core.outline",
+            outline: "2px solid",
 
             outlineOffset: 0,
           },
           "&:active": {
             backgroundColor: "core.surface.active",
             outlineWidth: tokens.size.stroke.sm,
-            outlineColor: "core.outline.active",
-            outline: "solid",
+            outline: "none",
           },
         },
       },
       floating: {
         item: {
-          outline: "solid",
+          outline: "1px solid",
           outlineWidth: tokens.size.stroke.sm,
-          outlineColor: "core.outline",
+          boxShadow: "sm",
+          outlineColor: "floating.outline",
         },
         itemTrigger: {
           _expanded: {
@@ -119,16 +119,15 @@ export const accordionSlotRecipe = defineSlotRecipe({
           },
           "&:hover": {
             outlineWidth: tokens.size.stroke.md,
+            outline: "1px solid",
             outlineColor: "floating.outline.hover",
-            outline: "solid",
 
-            outlineOffset: 0,
+            outlineOffset: 1,
           },
           "&:active": {
             backgroundColor: "floating.surface.active",
             outlineWidth: tokens.size.stroke.sm,
-            outlineColor: "floating.outline.active",
-            outline: "solid",
+            outline: "none",
           },
         },
       },

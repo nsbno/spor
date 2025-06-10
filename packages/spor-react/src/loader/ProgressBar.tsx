@@ -16,7 +16,7 @@ type ProgressBarVariants = RecipeVariantProps<typeof progressBarRecipe>;
 export type ProgressBarProps = BoxProps &
   UseProgressProps &
   PropsWithChildren<ProgressBarVariants> & {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     /** The height of the progress bar.
      * Defaults to .5rem
      **/
@@ -28,12 +28,12 @@ export type ProgressBarProps = BoxProps &
     width?: BoxProps["width"];
 
     /** Pass if no label is passed to the label */
-    "aria-label": string;
+    "aria-label"?: string;
     /** Optional text shown below the loader.
      *
      * If you pass an array of strings, the text will rotate every 5 seconds. If you want to change the delay, pass the delay in milliseconds to the `labelRotationDelay` prop.
      */
-    label: string | string[];
+    label?: string | string[];
     /** The number of milliseconds a label is shown, if an array of strings is passed to the `label` prop.
      *
      * Defaults to 5000 (5 seconds).

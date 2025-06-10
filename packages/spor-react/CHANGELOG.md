@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 12.4.7
+
+### Patch Changes
+
+- 5b6e4fa: Export ClientOnly and fix types for ProgressBar
+- 727a771: Fix variant type in timepicker
+
 ## 12.4.6
 
 ### Patch Changes

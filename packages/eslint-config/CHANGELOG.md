@@ -1,5 +1,12 @@
 # @vygruppen/eslint-config
 
+## 1.1.1
+
+### Patch Changes
+
+- 651a86d: Fix dependencies
+- 3fa1e6f: update devDependencies to de dependencies in eslint package
+
 ## 1.1.0
 
 ### Minor Changes

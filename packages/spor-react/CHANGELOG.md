@@ -1,5 +1,20 @@
 # @vygruppen/spor-react
 
+## 12.4.6
+
+### Patch Changes
+
+- 15b6def: TravelTag, InfoTag, LineIcon: Size is no longer required and variants have been added to recipe
+- e249e04: Accordion: Fixed styling on different variants
+
+## 12.4.5
+
+### Patch Changes
+
+- 9f9f9c0: Replace style utils with tokens for better maintainability
+  - @vygruppen/spor-design-tokens@4.0.7
+  - @vygruppen/spor-icon-react@4.1.0
+
 ## 12.4.4
 
 ### Patch Changes

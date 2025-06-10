@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-react",
-  "version": "12.4.6",
+  "version": "12.4.7",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

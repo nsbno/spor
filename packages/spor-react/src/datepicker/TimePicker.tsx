@@ -45,6 +45,11 @@ type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> &
     minuteInterval?: number;
     /** Whether or not the field is disabled */
     disabled?: boolean;
+    /**
+     * The variant of the time picker.
+     * Defaults to "core".
+     */
+    variant?: "core" | "floating" | "ghost";
   };
 /** A time picker component.
  *

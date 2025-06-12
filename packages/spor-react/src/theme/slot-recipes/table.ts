@@ -22,15 +22,12 @@ export const tableSlotRecipe = defineSlotRecipe({
     columnHeader: {
       fontWeight: "bold",
       textAlign: "start",
-      borderBottom: "sm",
-      borderColor: "outline.disabled",
+
       ...numericStyles,
       paddingX: 1.5,
       paddingY: 1,
     },
     row: {
-      borderBottom: "sm",
-      borderColor: "outline.disabled",
       ...numericStyles,
     },
     cell: {
@@ -85,7 +82,6 @@ export const tableSlotRecipe = defineSlotRecipe({
           backgroundColor: "none",
         },
         columnHeader: {
-          borderLeft: "none",
           borderBottom: "sm",
           borderColor: "outline.disabled",
           backgroundColor: "none",
@@ -93,46 +89,59 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
 
         cell: {
+          ...numericStyles,
+        },
+        row: {
           borderBottom: "sm",
           borderColor: "outline.disabled",
           ...numericStyles,
-          _first: {
-            borderLeft: "none",
-          },
         },
       },
 
       core: {
+        root: {
+          boxShadow: "0 0 0 1px var(--shadow-color)",
+          shadowColor: "outline.disabled",
+          borderRadius: "sm",
+        },
+
         table: {
-          borderRadius: "md",
           overflow: "hidden",
-          border: "sm",
-          borderColor: "outline.disabled",
         },
         cell: {
-          borderLeft: "sm",
-          borderColor: "outline.disabled",
           ...numericStyles,
+
+          borderRight: "sm",
+          borderColor: "outline.disabled",
+
+          _last: {
+            borderRight: "none",
+          },
+        },
+
+        columnHeader: {
+          ...numericStyles,
+
+          borderRight: "sm",
+          borderColor: "outline.disabled",
+
           _first: {
-            borderLeft: "none",
+            borderTopLeftRadius: "sm",
+          },
+          _last: {
+            borderTopRightRadius: "sm",
+            borderRight: "none",
           },
         },
         header: {
-          border: "none",
-        },
-        columnHeader: {
           borderBottom: "sm",
-          borderLeft: "sm",
-          borderLeftColor: "outline.disabled",
-          ...numericStyles,
-          _first: {
-            borderLeft: "none",
-          },
+          borderColor: "outline.disabled",
         },
         row: {
           ...numericStyles,
           borderBottom: "sm",
           borderColor: "outline.disabled",
+
           _last: {
             borderBottom: "none",
           },

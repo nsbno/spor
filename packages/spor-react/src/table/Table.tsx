@@ -1,6 +1,5 @@
 "use client";
 import {
-  Box,
   RecipeVariantProps,
   Table as ChakraTable,
   TableRootProps as ChakraTableProps,
@@ -39,27 +38,16 @@ export const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
   const recipe = useSlotRecipe({ recipe: tableSlotRecipe });
   const styles = recipe({ variant, size });
   return (
-    <Box overflowX="auto" role="region" {...getStyleProps(props)} {...props}>
-      <ChakraTable.Root
-        variant={variant}
-        size={size}
-        colorPalette={colorPalette}
-        css={styles}
-        ref={ref}
-      >
-        {children}
-      </ChakraTable.Root>
-    </Box>
+    <ChakraTable.Root
+      variant={variant}
+      size={size}
+      colorPalette={colorPalette}
+      css={styles}
+      ref={ref}
+      {...props}
+    >
+      {children}
+    </ChakraTable.Root>
   );
 });
 Table.displayName = "Table";
-
-function getStyleProps(props: TableProps) {
-  return props.variant === "core"
-    ? {
-        borderRadius: "sm",
-        border: "sm",
-        borderColor: "outline.disabled",
-      }
-    : {};
-}

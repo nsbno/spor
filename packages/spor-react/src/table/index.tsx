@@ -15,6 +15,7 @@ export {
   TableCaption,
   TableCell,
   TableColumn,
+  TableColumnGroup,
   TableColumnHeader,
   TableFooter,
   TableHeader,

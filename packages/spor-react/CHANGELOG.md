@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.4.8
+
+### Patch Changes
+
+- 0781619: Remove unnecessary box wrapper from table to allow props to be inserted directly to table root.
+
 ## 12.4.7
 
 ### Patch Changes

@@ -31,7 +31,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
         type="search"
         variant={variant}
         {...props}
-        startElement={<SearchOutline24Icon />}
+        startElement={<SearchOutline24Icon color="icon" />}
         endElement={
           clearButton && (
             <IconButton

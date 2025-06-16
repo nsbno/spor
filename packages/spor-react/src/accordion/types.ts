@@ -41,6 +41,7 @@ export type AccordionItemTriggerProps = Omit<
   HeadingLevel & {
     /** Icon to be displayed on the left of the trigger button. Use 24px outline. */
     startElement?: React.ReactNode;
+    showChevron?: boolean;
   };
 
 export type AccordionItemContentProps = ChakraAccordion.ItemContentProps & {

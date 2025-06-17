@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.4.10
+
+### Patch Changes
+
+- 09f2bef: remove base breakpoint value for correct array syntax
+
 ## 12.4.9
 
 ### Patch Changes

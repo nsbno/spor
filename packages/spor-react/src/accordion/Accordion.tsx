@@ -75,7 +75,13 @@ export const AccordionItemTrigger = forwardRef<
   HTMLButtonElement,
   AccordionItemTriggerProps
 >(function AccordionItemTrigger(props, ref) {
-  const { startElement, children, headingLevel, ...rest } = props;
+  const {
+    startElement,
+    children,
+    headingLevel,
+    showChevron = true,
+    ...rest
+  } = props;
   warnAboutMismatchingIcon({ icon: startElement });
   const recipe = useSlotRecipe({ key: "accordion" });
   const styles = recipe();
@@ -86,10 +92,11 @@ export const AccordionItemTrigger = forwardRef<
           {startElement && startElement}
           {children}
         </HStack>
-
-        <ChakraAccordion.ItemIndicator>
-          <DropdownDownFill24Icon />
-        </ChakraAccordion.ItemIndicator>
+        {showChevron && (
+          <ChakraAccordion.ItemIndicator>
+            <DropdownDownFill24Icon />
+          </ChakraAccordion.ItemIndicator>
+        )}
       </ChakraAccordion.ItemTrigger>
     </Box>
   );

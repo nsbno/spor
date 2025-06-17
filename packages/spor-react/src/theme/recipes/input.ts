@@ -11,6 +11,7 @@ export const inputRecipe = defineRecipe({
     borderRadius: "sm",
     transitionProperty: "common",
     transitionDuration: "fast",
+    color: "text",
     position: "relative",
     paddingX: 3,
     paddingTop: 3,

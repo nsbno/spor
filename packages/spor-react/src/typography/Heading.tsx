@@ -57,15 +57,6 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
         ? slugify(rest.children as string)
         : undefined;
 
-    return (
-      <Text
-        as={as}
-        textStyle={variant}
-        id={id}
-        color={"text"}
-        ref={ref}
-        {...rest}
-      />
-    );
+    return <Text as={as} textStyle={variant} id={id} ref={ref} {...rest} />;
   },
 );

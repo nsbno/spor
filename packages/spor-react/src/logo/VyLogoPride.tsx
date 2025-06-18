@@ -1,9 +1,8 @@
-import { BoxProps } from "@chakra-ui/react";
-import { forwardRef, useId } from "react";
+import { ComponentProps, forwardRef, useId } from "react";
 
 import { SvgBox } from "./VyLogo";
 
-export type VyLogoPrideProps = BoxProps;
+type VyLogoPrideProps = ComponentProps<typeof SvgBox>;
 
 export const VyLogoPride = forwardRef<SVGSVGElement, VyLogoPrideProps>(
   (props, ref) => {

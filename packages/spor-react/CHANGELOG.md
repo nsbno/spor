@@ -1,5 +1,18 @@
 # @vygruppen/spor-react
 
+## 12.4.10
+
+### Patch Changes
+
+- 09f2bef: remove base breakpoint value for correct array syntax
+
+## 12.4.9
+
+### Patch Changes
+
+- 9d8b38c: Fix types for vy logo
+- d7609c2: Dark mode support with classname "dark" for searchinput. Also support for no chevron in accordion
+
 ## 12.4.8
 
 ### Patch Changes

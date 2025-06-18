@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.4.11
+
+### Patch Changes
+
+- 021a1ff: Remove default text color from text
+
 ## 12.4.10
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.4.12
+
+### Patch Changes
+
+- a37407a: Remove maxWidth of 300px for alerts
+
 ## 12.4.11
 
 ### Patch Changes

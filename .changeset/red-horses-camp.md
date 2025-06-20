@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": patch
 ---
 
-Remove default text color from text
+Remove maxWidth of 300px for alerts

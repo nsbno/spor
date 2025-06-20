@@ -32,7 +32,6 @@ export const alertSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       padding: 2,
       display: "flex",
-      maxWidth: "300px",
       justifyContent: "space-between",
       alignItems: "flex-start",
       position: "relative",

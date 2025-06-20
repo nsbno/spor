@@ -22,7 +22,7 @@ export type ComboboxProps<T> = Exclude<
     /** If you want to allow an empty collection */
     allowsEmptyCollection?: boolean;
     leftIcon?: ReactNode;
-    righticon?: ReactNode;
+    rightIcon?: ReactNode;
     variant?: "core" | "floating";
     children?: React.ReactNode;
   };
@@ -55,7 +55,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
     label,
     loading,
     leftIcon,
-    righticon,
+    rightIcon,
     borderBottomLeftRadius = "sm",
     borderBottomRightRadius = "sm",
     borderTopLeftRadius = "sm",
@@ -165,7 +165,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
               }}
             />
           ) : (
-            righticon
+            rightIcon
           )
         }
         placeholder=""

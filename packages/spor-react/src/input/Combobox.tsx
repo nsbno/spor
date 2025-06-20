@@ -21,7 +21,7 @@ export type ComboboxProps<T> = Exclude<
     inputRef?: React.RefObject<HTMLInputElement>;
     /** If you want to allow an empty collection */
     allowsEmptyCollection?: boolean;
-    lefticon?: ReactNode;
+    leftIcon?: ReactNode;
     righticon?: ReactNode;
     variant?: "core" | "floating";
     children?: React.ReactNode;
@@ -54,7 +54,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
   const {
     label,
     loading,
-    lefticon,
+    leftIcon,
     righticon,
     borderBottomLeftRadius = "sm",
     borderBottomRightRadius = "sm",
@@ -109,7 +109,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
     paddingLeft,
     paddingX,
     paddingY,
-    lefticon,
+    leftIcon,
   };
 
   const {
@@ -150,6 +150,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
         }
         _active={{ backgroundColor: "core.surface.active" }}
         {...inputProps}
+        startElement={leftIcon}
         endElement={
           loading ? (
             <ColorSpinner

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.4.13
+
+### Patch Changes
+
+- 321972c: Changed lefticon to leftIcon and added it to Input
+
 ## 12.4.12
 
 ### Patch Changes

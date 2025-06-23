@@ -15,6 +15,7 @@ export const linkRecipe = defineRecipe({
     paddingY: "0",
     color: "inherit",
     display: "inline-flex",
+    alignItems: "center",
     gap: "0",
     position: "relative",
     boxDecorationBreak: "clone",
@@ -59,5 +60,23 @@ export const linkRecipe = defineRecipe({
         },
       },
     },
+    size: {
+      xs: {
+        fontSize: { base: "mobile.xs", sm: "desktop.xs" },
+      },
+      sm: {
+        fontSize: { base: "mobile.sm", sm: "desktop.sm" },
+      },
+      md: {
+        fontSize: { base: "mobile.md", sm: "desktop.md" },
+      },
+      lg: {
+        fontSize: { base: "mobile.lg", sm: "desktop.lg" },
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "sm",
   },
 });

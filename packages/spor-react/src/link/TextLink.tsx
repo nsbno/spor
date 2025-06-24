@@ -2,30 +2,22 @@
 import {
   Link as ChakraLink,
   LinkProps as ChakraLinkProps,
-  RecipeVariantProps,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, {
-  cloneElement,
-  forwardRef,
-  isValidElement,
-  PropsWithChildren,
-} from "react";
+import {
+  LinkOutOutline18Icon,
+  LinkOutOutline24Icon,
+} from "@vygruppen/spor-icon-react";
+import React, { cloneElement, forwardRef, isValidElement } from "react";
 
 import { createTexts, useTranslation } from "@/i18n";
 
-import { linkRecipe } from "../theme/recipes/link";
-
-type linkVariantProps = RecipeVariantProps<typeof linkRecipe>;
-
-export type LinkProps = Exclude<ChakraLinkProps, "variant"> &
-  PropsWithChildren<linkVariantProps> & {
-    /** Defaults to primary */
-    variant?: "primary" | "secondary";
-    /** Define if the link shows an icon on the right that indicate it is an external link */
-    external?: boolean;
-  };
+export type LinkProps = ChakraLinkProps & {
+  /** Defaults to primary */
+  variant?: "primary" | "secondary";
+  /** Define if the link shows an icon on the right that indicate it is an external link */
+  external?: boolean;
+};
 
 /** Link to different sites or parts of site
  *
@@ -36,9 +28,20 @@ export type LinkProps = Exclude<ChakraLinkProps, "variant"> &
  * </TextLink>
  * ```
  */
-const ExternalIcon = ({ label }: { label: string }) => (
+const ExternalIcon = ({
+  label,
+  size,
+}: {
+  label: string;
+  size: LinkProps["size"];
+}) => (
   <>
-    <LinkOutOutline24Icon aria-hidden />
+    {size === "lg" || size === "md" ? (
+      <LinkOutOutline24Icon aria-hidden />
+    ) : (
+      <LinkOutOutline18Icon aria-hidden />
+    )}
+    {/* Visually hidden text for screen readers */}
     <VisuallyHidden>{label}</VisuallyHidden>
   </>
 );
@@ -62,7 +65,9 @@ export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
             children: (
               <>
                 {children.props.children}
-                {isExternal && <ExternalIcon label={externalLabel} />}
+                {isExternal && (
+                  <ExternalIcon label={externalLabel} size={props.size} />
+                )}
               </>
             ),
           })}
@@ -73,7 +78,7 @@ export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
     return (
       <ChakraLink href={href} {...props} ref={ref}>
         {children}
-        {isExternal && <ExternalIcon label={externalLabel} />}
+        {isExternal && <ExternalIcon label={externalLabel} size={props.size} />}
       </ChakraLink>
     );
   },

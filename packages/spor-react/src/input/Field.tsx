@@ -68,7 +68,7 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
     const styles = recipe();
 
     return (
-      <Stack gap="2" ref={ref} {...rest} width="100%">
+      <Stack gap="2" ref={ref} {...rest}>
         <ChakraField.Root
           disabled={disabled}
           invalid={invalid}

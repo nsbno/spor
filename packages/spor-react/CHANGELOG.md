@@ -1,5 +1,18 @@
 # @vygruppen/spor-react
 
+## 12.4.14
+
+### Patch Changes
+
+- 1d54a59: - Remove 100% width from field as this caused visual errors.
+  - Fix sizes for textlinks.
+
+## 12.4.13
+
+### Patch Changes
+
+- 321972c: Changed lefticon to leftIcon and added it to Input
+
 ## 12.4.12
 
 ### Patch Changes

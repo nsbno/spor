@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.4.15
+
+### Patch Changes
+
+- 27b895d: NumericStepper: Remove white outline
+
 ## 12.4.14
 
 ### Patch Changes

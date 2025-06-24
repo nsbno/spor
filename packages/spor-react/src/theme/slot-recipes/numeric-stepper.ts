@@ -58,8 +58,6 @@ export const numericStepperRecipe = defineSlotRecipe({
       color: "core.text",
     },
     button: {
-      border: "0.3rem solid",
-      borderColor: "surface",
       outlineOffset: "-2px",
       width: "auto",
       _icon: {

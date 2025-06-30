@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 4.2.0
+
+### Minor Changes
+
+- e92b9a2: Update chakra to newest version.
+
 ## 4.1.0
 
 ### Minor Changes

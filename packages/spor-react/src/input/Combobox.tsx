@@ -186,6 +186,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
           containerPadding={0}
         >
           <ListBox
+            {...listBoxProps}
             {...{
               autoFocus:
                 typeof listBoxProps.autoFocus === "boolean"

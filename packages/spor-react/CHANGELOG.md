@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.5.1
+
+### Patch Changes
+
+- 395a22b: Pass listbox props to autocomplete listbox
+
 ## 12.5.0
 
 ### Minor Changes

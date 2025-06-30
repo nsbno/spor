@@ -1,5 +1,18 @@
 # @vygruppen/spor-react
 
+## 12.5.0
+
+### Minor Changes
+
+- e92b9a2: Update chakra to newest version.
+
+### Patch Changes
+
+- e92b9a2: - Remove 100% width from field as this caused visual errors.
+  - Fix sizes for textlinks.
+- Updated dependencies [e92b9a2]
+  - @vygruppen/spor-icon-react@4.2.0
+
 ## 12.4.15
 
 ### Patch Changes

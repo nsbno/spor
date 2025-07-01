@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.5.2
+
+### Patch Changes
+
+- 0e56389: Fix typing of value field on PhoneNumberInput
+
 ## 12.5.1
 
 ### Patch Changes

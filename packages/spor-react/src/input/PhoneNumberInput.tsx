@@ -11,7 +11,7 @@ export type CountryCodeAndPhoneNumber = {
   nationalNumber: string;
 };
 
-type PhoneNumberInputProps = InputProps & {
+type PhoneNumberInputProps = Omit<InputProps, "value"> & {
   /** The label. Defaults to a localized version of "Phone number" */
   label?: string;
   /** Callback for when the country code or phone number changes */

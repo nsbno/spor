@@ -9,10 +9,11 @@
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "deploy-graphql": "sanity graphql deploy"
+    "deploy-graphql": "sanity graphql deploy",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@sanity/code-input": "^4.1.4",
+    "@sanity/code-input": "^5.1.2",
     "@sanity/ui": "^2.15.17",
     "@sanity/vision": "^3.96.0",
     "react": "^19.1",

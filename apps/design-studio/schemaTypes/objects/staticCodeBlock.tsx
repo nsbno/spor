@@ -9,7 +9,7 @@ export const staticCodeBlock = defineType({
     "Great for simple code snippets that doesn't vary based on the language selected",
   type: "object",
   fields: [
-    /* defineField({
+    defineField({
       name: "code",
       title: "Code",
       type: "code",
@@ -20,7 +20,7 @@ export const staticCodeBlock = defineType({
           { title: "Bash", value: "bash" },
         ],
       },
-    }), */
+    }),
     defineField({
       name: "caption",
       title: "Caption",

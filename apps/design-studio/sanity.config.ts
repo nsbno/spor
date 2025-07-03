@@ -1,3 +1,4 @@
+import { codeInput } from "@sanity/code-input";
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
@@ -15,7 +16,7 @@ export default defineConfig([
     dataset: "test",
     basePath: "/test",
 
-    plugins: [structureTool(), visionTool()],
+    plugins: [structureTool(), visionTool(), codeInput()],
 
     studio: {
       components: {
@@ -35,7 +36,7 @@ export default defineConfig([
     dataset: "production",
     basePath: "/production",
 
-    plugins: [structureTool(), visionTool()],
+    plugins: [structureTool(), visionTool(), codeInput()],
 
     studio: {
       components: {

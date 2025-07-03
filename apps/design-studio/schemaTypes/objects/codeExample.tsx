@@ -17,7 +17,7 @@ export const codeExample = defineType({
       },
       initialValue: "simple",
     }),
-    /* defineField({
+    defineField({
       name: "reactCode",
       title: "React Code Example",
       type: "code",
@@ -25,7 +25,7 @@ export const codeExample = defineType({
         language: "react",
         languageAlternatives: [{ title: "React", value: "react" }],
       },
-    }), */
+    }),
   ],
   preview: {
     select: {

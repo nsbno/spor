@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "prebuild": "rimraf packages/*/dist --glob",
-    "build": "turbo run build",
+    "build": "turbo run build --filter=./apps/design-studio",
     "test": "turbo run test --parallel",
     "dev": "turbo run dev",
     "lint": "turbo run lint",

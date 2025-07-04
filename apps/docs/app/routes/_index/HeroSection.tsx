@@ -1,13 +1,11 @@
 import { ArrowRightFill30Icon } from "@vygruppen/spor-icon-react";
 import {
-  Alert,
   Button,
   Container,
   Flex,
   Heading,
   Image,
   Text,
-  TextLink,
 } from "@vygruppen/spor-react";
 import { Link } from "react-router-dom";
 
@@ -15,7 +13,7 @@ export function HeroSection() {
   return (
     <Flex
       backgroundColor={"surface.tertiary"}
-      minHeight="520px"
+      minHeight="450px"
       className="light"
       width={"100%"}
       overflow={"hidden"}
@@ -29,18 +27,6 @@ export function HeroSection() {
         marginX="auto"
         padding="1"
       >
-        <Alert variant="info" marginBottom="4" maxWidth="full" display="block">
-          This is the latest version of Spor, which may not yet be fully tested
-          for production use. For known issues or to report new ones, visit our
-          <TextLink
-            href="https://github.com/nsbno/spor/issues"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub issues page
-          </TextLink>
-          . We welcome your feedback and contributions to help improve Spor!
-        </Alert>
         <Flex
           flexDirection={["column-reverse", null, "row"]}
           alignItems="center"

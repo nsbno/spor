@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import React, { PropsWithChildren, useRef } from "react";
 
-import { BoxProps, createTexts, IconButton, useTranslation } from "..";
+import { BoxProps, createTexts, IconButton, Text, useTranslation } from "..";
 import { numericStepperRecipe } from "../theme/slot-recipes/numeric-stepper";
 import { Field, FieldBaseProps } from "./Field";
 
@@ -155,10 +155,10 @@ export const NumericStepper = React.forwardRef<
           }}
         />
       ) : (
-        <chakra.text
-          css={styles}
+        <Text
           visibility={!showZero && value === 0 ? "hidden" : "visible"}
           aria-live="assertive"
+          paddingX="0.95rem"
           aria-label={
             ariaLabelContext.plural === ""
               ? ""
@@ -166,7 +166,7 @@ export const NumericStepper = React.forwardRef<
           }
         >
           {value}
-        </chakra.text>
+        </Text>
       )}
       <VerySmallButton
         ref={addButtonRef}

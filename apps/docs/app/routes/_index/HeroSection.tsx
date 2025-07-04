@@ -1,11 +1,13 @@
 import { ArrowRightFill30Icon } from "@vygruppen/spor-icon-react";
 import {
+  Alert,
   Button,
   Container,
   Flex,
   Heading,
   Image,
   Text,
+  TextLink,
 } from "@vygruppen/spor-react";
 import { Link } from "react-router-dom";
 
@@ -27,6 +29,24 @@ export function HeroSection() {
         marginX="auto"
         padding="1"
       >
+        <Alert
+          variant="service"
+          marginBottom="4"
+          maxWidth="full"
+          display="block"
+        >
+          This is the latest version of Spor. To report issues, visit our
+          <TextLink
+            href="https://github.com/nsbno/spor/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+            color="text.inverted"
+            paddingX="0.5"
+          >
+            GitHub issues page
+          </TextLink>
+          . We welcome your feedback and contributions to help improve Spor!
+        </Alert>
         <Flex
           flexDirection={["column-reverse", null, "row"]}
           alignItems="center"

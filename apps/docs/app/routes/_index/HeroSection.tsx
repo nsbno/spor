@@ -15,7 +15,7 @@ export function HeroSection() {
   return (
     <Flex
       backgroundColor={"surface.tertiary"}
-      minHeight="520px"
+      minHeight="450px"
       className="light"
       width={"100%"}
       overflow={"hidden"}
@@ -29,13 +29,19 @@ export function HeroSection() {
         marginX="auto"
         padding="1"
       >
-        <Alert variant="info" marginBottom="4" maxWidth="full" display="block">
-          This is the latest version of Spor, which may not yet be fully tested
-          for production use. For known issues or to report new ones, visit our
+        <Alert
+          variant="service"
+          marginBottom="4"
+          maxWidth="full"
+          display="block"
+        >
+          This is the latest version of Spor. To report issues, visit our
           <TextLink
             href="https://github.com/nsbno/spor/issues"
             target="_blank"
             rel="noopener noreferrer"
+            color="text.inverted"
+            paddingX="0.5"
           >
             GitHub issues page
           </TextLink>

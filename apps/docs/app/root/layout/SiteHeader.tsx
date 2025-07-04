@@ -17,7 +17,7 @@ import {
   Stack,
   Text,
   useDisclosure,
-  VyLogoPride,
+  VyLogo,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
 
@@ -77,12 +77,7 @@ export const SiteHeader = () => {
         position="relative"
       >
         <Link to="/" aria-label="Go to the front page">
-          <VyLogoPride
-            className="dark"
-            width="auto"
-            height="56px"
-            aria-label="Vy"
-          />
+          <VyLogo className="dark" width="auto" height="56px" aria-label="Vy" />
         </Link>
 
         <Flex gap="1">

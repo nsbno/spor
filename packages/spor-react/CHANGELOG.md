@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.5.3
+
+### Patch Changes
+
+- d6fbc6c: Fix visual bug in numerstepper when withInput is false
+
 ## 12.5.2
 
 ### Patch Changes

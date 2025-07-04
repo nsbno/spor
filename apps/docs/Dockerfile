@@ -55,7 +55,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 # typegen is dependent on spor-design-tokens
 RUN pnpm --filter @vygruppen/spor-design-tokens build
 RUN pnpm --filter @vygruppen/spor-react typegen
-RUN pnpm --filter @vygruppen/docs... build
+RUN pnpm --filter @vygruppen/docs... run build -- --filter=!@vygruppen/designmanual 
 
 # Finally, build the production image with minimal footprint
 FROM base AS final

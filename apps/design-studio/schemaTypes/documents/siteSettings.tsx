@@ -13,6 +13,19 @@ export const siteSettings = defineType({
       type: "string",
     }),
     defineField({
+      name: "footerItems",
+      title: "Footer Items",
+      type: "array",
+      of: [
+        {
+          name: "footerItem",
+          title: "Footer Item",
+          type: "footerItem",
+        },
+      ],
+      description: "Items to be displayed in the footer",
+    }),
+    defineField({
       name: "description",
       title: "Site Description",
       type: "text",

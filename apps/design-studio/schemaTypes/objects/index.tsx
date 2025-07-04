@@ -3,6 +3,7 @@ export * from "./buttonLink";
 export * from "./codeExample";
 export * from "./content";
 export * from "./divider";
+export * from "./footerItem";
 export * from "./grid";
 export * from "./imageWithCaption";
 export * from "./imports";

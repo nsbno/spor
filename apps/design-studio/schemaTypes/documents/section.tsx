@@ -41,15 +41,6 @@ export const section = defineType({
       type: "string",
       components: { input: IconInputComponent },
     }),
-    defineField({
-      name: "order",
-      title: "Order",
-      description: "Give an increasing numeric order to the sections.",
-      type: "number",
-      initialValue: 0,
-      validation: (Rule) =>
-        Rule.min(0).max(100).error("Order must be between 0 and 100"),
-    }),
   ],
   preview: {
     select: {

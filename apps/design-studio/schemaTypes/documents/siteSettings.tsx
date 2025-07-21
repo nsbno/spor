@@ -13,6 +13,18 @@ export const siteSettings = defineType({
       type: "string",
     }),
     defineField({
+      name: "topMenu",
+      title: "Top menu",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "section" }],
+        },
+      ],
+      description: "Items to be displayed in the top menu",
+    }),
+    defineField({
       name: "footerItems",
       title: "Footer Items",
       type: "array",

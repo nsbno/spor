@@ -15,10 +15,6 @@ export const page = defineType({
       name: "seo",
       title: "SEO",
     },
-    {
-      name: "settings",
-      title: "Settings",
-    },
   ],
   fields: [
     defineField({
@@ -60,6 +56,7 @@ export const page = defineType({
         { type: "accordion", title: "Accordion" },
         { type: "fileList", title: "File list" },
         { type: "linkButton", title: "Link button" },
+        { type: "divider", title: "Divider" },
       ],
       group: "pageContent",
     }),

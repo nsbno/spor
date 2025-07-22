@@ -9,6 +9,7 @@ export const siteMenuStructure = {
         S.documentTypeListItem("menu").title("Menus"),
         S.documentTypeListItem("category").title("Categories"),
         S.divider(),
+        S.documentTypeListItem("page").title("Pages"),
         S.documentTypeListItem("article").title("Articles"),
         S.documentTypeListItem("component").title("Components"),
         S.documentTypeListItem("illustration").title("Illustrations"),

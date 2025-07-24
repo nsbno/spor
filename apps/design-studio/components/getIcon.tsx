@@ -8,8 +8,6 @@ export function getIcon({ iconName }: IconProps) {
   const iconNameWithSuffix = formatIconName(iconName);
   const Icon = icons[iconNameWithSuffix as keyof typeof icons];
 
-  console.log(`Icon: `, Icon);
-
   if (!Icon) {
     return null;
   }

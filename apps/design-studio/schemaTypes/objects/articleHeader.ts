@@ -1,6 +1,5 @@
 import { PiParagraph } from "react-icons/pi";
 import { defineField, defineType } from "sanity";
-import { iconList } from "../utils/icons";
 
 export const articleHeader = defineType({
   name: "articleHeader",
@@ -23,48 +22,6 @@ export const articleHeader = defineType({
       description:
         "An optional illustration to accompany the text. Should be used sparingly.",
       type: "extendedImage",
-    }),
-    defineField({
-      name: "leadShortcuts",
-      title: "Shortcuts",
-      type: "object",
-      fields: [
-        defineField({
-          name: "items",
-          title: "Items",
-          type: "array",
-          validation: (Rule) => Rule.required().min(2).max(4),
-          of: [
-            defineField({
-              name: "shortcut",
-              title: "Shortcut",
-              type: "object",
-              fields: [
-                defineField({
-                  name: "title",
-                  title: "Title",
-                  type: "string",
-                  validation: (Rule) => Rule.required(),
-                }),
-                defineField({
-                  name: "link",
-                  title: "Link",
-                  type: "link",
-                }),
-                defineField({
-                  name: "icon",
-                  title: "Icon",
-                  type: "string",
-                  options: {
-                    list: iconList,
-                    layout: "dropdown",
-                  },
-                }),
-              ],
-            }),
-          ],
-        }),
-      ],
     }),
   ],
   preview: {

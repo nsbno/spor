@@ -1,7 +1,8 @@
 import { useId } from "react";
-const Logo = () => {
+
+export const VyLogo = () => {
   const mainColor = "#ffffff";
-  const accentColor = "#ffffff";
+  const accentColor = "#037D67";
   const id = useId();
 
   return (
@@ -88,5 +89,3 @@ const Logo = () => {
     </svg>
   );
 };
-
-export default Logo;

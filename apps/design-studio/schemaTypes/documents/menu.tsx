@@ -23,6 +23,14 @@ export const menu = defineType({
       },
     }),
     defineField({
+      name: "relatedTo",
+      title: "Section the menu is related to",
+      type: "reference",
+      description: "The section this menu belongs to",
+      to: [{ type: "section" }],
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "menuItems",
       title: "Menu items",
       type: "array",

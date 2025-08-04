@@ -1,6 +1,7 @@
 {
   "name": "@vygruppen/spor-react",
   "version": "12.5.3",
+  "type": "commonjs",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -27,7 +28,7 @@
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-react",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nsbno/spor.git",
+    "url": "git+https://github.com/nsbno/spor.git",
     "directory": "packages/spor-react"
   },
   "dependencies": {

@@ -6,19 +6,20 @@ import {
   Flex,
   Input as ChakraInput,
   InputElement,
-  InputProps as ChakraInputProps,
 } from "@chakra-ui/react";
-import React, { forwardRef, ReactNode } from "react";
+import React, { ComponentProps, forwardRef, ReactNode } from "react";
+
+type ChakraInputProps = ComponentProps<typeof ChakraInput>;
 
 import { inputRecipe } from "@/theme/recipes/input";
 
 import { Field, FieldProps } from "./Field";
 
-export type InputProps = Exclude<
-  ChakraInputProps,
-  "size" | "label" | "colorPalette" | "placeholder"
-> &
-  FieldProps & {
+export type InputProps = FieldProps &
+  Exclude<
+    ChakraInputProps,
+    "size" | "label" | "colorPalette" | "placeholder"
+  > & {
     /** The input's label */
     label: ReactNode;
     /** Element that shows up to the left */

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.5.6
+
+### Patch Changes
+
+- be1c7e9: Correctly fix type of expandable
+
 ## 12.5.5
 
 ### Patch Changes

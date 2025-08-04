@@ -48,8 +48,10 @@ export type AccordionItemContentProps = ChakraAccordion.ItemContentProps & {
   children?: React.ReactNode;
 };
 
-export type ExpandableProps = AccordionProps &
-  AccordionItemTriggerProps &
+export type ExpandableProps = Omit<
+  AccordionProps & AccordionItemTriggerProps,
+  "title"
+> &
   HeadingLevel & {
     title: ReactNode;
   };

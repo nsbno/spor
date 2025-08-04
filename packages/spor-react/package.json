@@ -33,7 +33,7 @@
   "dependencies": {
     "@ark-ui/react": "^4.9.2",
     "@chakra-ui/anatomy": "^2.3.4",
-    "@chakra-ui/react": "^3.21.1",
+    "@chakra-ui/react": "^3.24.0",
     "@chakra-ui/cli": "^3.8.0",
     "@chakra-ui/react-use-size": "^2.1.0",
     "@chakra-ui/styled-system": "^2.12.0",

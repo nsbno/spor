@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.5.4
+
+### Patch Changes
+
+- 24caa33: Fix conflicting types for inputprops and update chakra to newest minor version
+
 ## 12.5.3
 
 ### Patch Changes

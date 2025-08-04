@@ -28,7 +28,7 @@ export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
   (props, ref) => {
     const { title, children, headingLevel, startElement, ...rest } = props;
     return (
-      <Accordion {...props} ref={ref} {...rest}>
+      <Accordion ref={ref} {...rest}>
         <ExpandableItem
           title={title}
           headingLevel={headingLevel}

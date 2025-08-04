@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.5.5
+
+### Patch Changes
+
+- 6fc249b: Fix type for expandable, so title can be ReactNode.
+
 ## 12.5.4
 
 ### Patch Changes

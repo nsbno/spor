@@ -3,7 +3,7 @@ import {
   Accordion as ChakraAccordion,
   AccordionRootProps as ChakraAccordionProps,
 } from "@chakra-ui/react";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 
 import { accordionSlotRecipe } from "@/theme/slot-recipes/accordion";
 
@@ -51,12 +51,12 @@ export type AccordionItemContentProps = ChakraAccordion.ItemContentProps & {
 export type ExpandableProps = AccordionProps &
   AccordionItemTriggerProps &
   HeadingLevel & {
-    title: string;
+    title: ReactNode;
   };
 
 export type ExpandableItemProps = HeadingLevel & {
   value: string;
-  title: string;
+  title: ReactNode;
   children?: React.ReactNode;
   startElement?: React.ReactNode;
 };

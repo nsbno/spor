@@ -55,7 +55,7 @@ export const NativeSelect = React.forwardRef<
     ...rest
   } = props;
 
-  const recipe = useSlotRecipe({ recipe: nativeSelectSlotRecipe });
+  const recipe = useSlotRecipe({ key: "nativeSelect" });
   const styles = recipe({ variant });
 
   return (

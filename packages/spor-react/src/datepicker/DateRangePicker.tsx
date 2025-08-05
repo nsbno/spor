@@ -6,7 +6,6 @@ import {
   PopoverAnchor,
   PopoverRootProps,
   Portal,
-  useChakraContext,
   useFieldContext,
   useSlotRecipe,
 } from "@chakra-ui/react";

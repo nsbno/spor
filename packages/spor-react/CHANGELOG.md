@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 12.6.0
+
+### Minor Changes
+
+- 3e41769: Expose date range calendar as a standalone component
+
+### Patch Changes
+
+- ae0baf8: Fix bug where no specified variant crashed alert
+- 1af8166: Allow fontSize and lineHeight for <Text/>
+- 86770e3: Fix support for overriding slot recipes for components
+
 ## 12.5.6
 
 ### Patch Changes

@@ -11,7 +11,6 @@ import {
   IconButton,
   useTranslation,
 } from "..";
-import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { CalendarVariants } from "./types";
 
 type CalendarTriggerButtonProps = AriaButtonProps<"button"> &
@@ -26,9 +25,9 @@ export const CalendarTriggerButton = forwardRef<
   CalendarTriggerButtonProps
 >(({ variant, disabled, ariaLabelledby, ...buttonProps }, ref) => {
   const { t } = useTranslation();
+
   const recipe = useSlotRecipe({
     key: "datePicker",
-    recipe: datePickerSlotRecipe,
   });
   const styles = recipe({ variant });
 

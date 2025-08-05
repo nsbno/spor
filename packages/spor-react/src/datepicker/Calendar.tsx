@@ -9,8 +9,6 @@ import {
 } from "react-aria";
 import { useCalendarState } from "react-stately";
 
-import { datePickerSlotRecipe } from "@/theme/slot-recipes/datepicker";
-
 import { createTexts, useTranslation } from "../i18n";
 import { CalendarGrid } from "./CalendarGrid";
 import { CalendarHeader } from "./CalendarHeader";
@@ -33,9 +31,9 @@ export function Calendar({
     locale,
     createCalendar,
   });
+
   const recipe = useSlotRecipe({
     key: "datePicker",
-    recipe: datePickerSlotRecipe,
   });
   const styles = recipe({ variant });
   const { calendarProps } = useCalendar(props, state);

@@ -1,11 +1,10 @@
 "use client";
-import { Box, useSlotRecipe } from "@chakra-ui/react";
+import { Box, useChakraContext, useSlotRecipe } from "@chakra-ui/react";
 import { forwardRef, PropsWithChildren, RefObject, useRef } from "react";
 import { useDateSegment } from "react-aria";
 import { DateFieldState, DateSegment } from "react-stately";
 
 import { DatePickerVariantProps } from "..";
-import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 
 type DateTimeSegmentProps = PropsWithChildren<DatePickerVariantProps> & {
   segment: DateSegment;
@@ -33,8 +32,8 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
 
     const recipe = useSlotRecipe({
       key: "datePicker",
-      recipe: datePickerSlotRecipe,
     });
+
     const styles = recipe({
       isPlaceholder: segment.isPlaceholder,
       isEditable: segment.isEditable,

@@ -35,7 +35,7 @@ export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
 export const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
   const { variant = "ghost", size, colorPalette = "green", children } = props;
 
-  const recipe = useSlotRecipe({ recipe: tableSlotRecipe });
+  const recipe = useSlotRecipe({ key: "table" });
   const styles = recipe({ variant, size });
   return (
     <ChakraTable.Root

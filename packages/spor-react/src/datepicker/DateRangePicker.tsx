@@ -6,6 +6,7 @@ import {
   PopoverAnchor,
   PopoverRootProps,
   Portal,
+  useChakraContext,
   useFieldContext,
   useSlotRecipe,
 } from "@chakra-ui/react";
@@ -20,7 +21,6 @@ import {
 import { useDateRangePickerState } from "react-stately";
 
 import { Field, FieldBaseProps } from "../input/Field";
-import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
 import { DatePickerVariantProps } from "./DatePicker";
@@ -94,7 +94,6 @@ type DateRangePickerProps = Omit<
 
   const recipe = useSlotRecipe({
     key: "datePicker",
-    recipe: datePickerSlotRecipe,
   });
   const styles = recipe({ variant });
   const locale = useCurrentLocale();

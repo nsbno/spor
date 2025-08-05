@@ -7,7 +7,6 @@ import { AriaDateFieldProps, useDateField } from "react-aria";
 import { DateSegment, useDateFieldState } from "react-stately";
 
 import { createTexts, useTranslation } from "../i18n";
-import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { DatePickerVariantProps } from "./DatePicker";
 import { DateTimeSegment } from "./DateTimeSegment";
 import { useCurrentLocale } from "./utils";
@@ -33,9 +32,9 @@ type DateFieldProps = AriaDateFieldProps<DateValue> &
 export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
   ({ labelId, ...props }, externalRef) => {
     const locale = useCurrentLocale();
+
     const recipe = useSlotRecipe({
       key: "datePicker",
-      recipe: datePickerSlotRecipe,
     });
     const styles = recipe({});
     const state = useDateFieldState({

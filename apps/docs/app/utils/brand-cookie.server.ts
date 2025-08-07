@@ -1,4 +1,4 @@
-import { createCookie } from "@remix-run/node";
+import { createCookie } from "react-router";
 import { Brand } from "@vygruppen/spor-react";
 
 const COOKIE_NAME = "brand";

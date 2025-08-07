@@ -4,10 +4,12 @@
     "types.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "vite.config.mts"
+    "vite.config.mts",
+    ".react-router/types/**/*"
   ],
   "compilerOptions": {
-    "types": ["vite/client", "@remix-run/node"],
+    "types": ["vite/client", "@react-router/node"],
+    "rootDirs": [".", "./.react-router/types"],
     "lib": ["DOM", "DOM.Iterable", "es2021"],
     "isolatedModules": true,
     "esModuleInterop": true,

@@ -1,4 +1,4 @@
-import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import type { LoaderFunctionArgs, MetaFunction } from "react-router";
 import { groq } from "@sanity/groq-store";
 import {
   FigmaOutline24Icon,
@@ -263,7 +263,7 @@ type ComponentSectionsProps = {
 };
 const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
   return (
-    <Tabs
+    (<Tabs
       variant="accent"
       size="md"
       marginTop={4}
@@ -283,7 +283,6 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
         ))}
       </TabsList>
       <Separator marginY={4} />
-
       {sections.map((section) => (
         <TabsContent
           key={section.customTitle || section.title}
@@ -299,12 +298,12 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
             {section.content && <PortableText value={section.content} />}
             {section.components?.map((component) => (
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              <ComponentDocs key={component._id} component={component as any} />
+              (<ComponentDocs key={component._id} component={component as any} />)
             ))}
           </Stack>
         </TabsContent>
       ))}
-    </Tabs>
+    </Tabs>)
   );
 };
 

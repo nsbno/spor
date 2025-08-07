@@ -1,5 +1,5 @@
 import { chakra } from "@chakra-ui/react";
-import { Link } from "@remix-run/react";
+import { Link } from "react-router";
 import { Box, FlexProps } from "@vygruppen/spor-react";
 import React, { forwardRef, useImperativeHandle, useRef } from "react";
 

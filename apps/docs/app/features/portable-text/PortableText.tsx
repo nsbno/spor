@@ -4,7 +4,7 @@ import {
   PortableText as SanityPortableText,
   PortableTextReactComponents,
 } from "@portabletext/react";
-import { Link } from "@remix-run/react";
+import { Link } from "react-router";
 import {
   CheckmarkFill30Icon,
   ErrorOutline30Icon,

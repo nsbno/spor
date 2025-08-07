@@ -1,5 +1,5 @@
 import { Flex, useClipboard } from "@chakra-ui/react";
-import { useLocation } from "@remix-run/react";
+import { useLocation } from "react-router";
 import {
   CopyOutline24Icon,
   SuccessOutline24Icon,

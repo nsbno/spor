@@ -1,7 +1,12 @@
 import "./styles/style-overrides.css";
 
 import { withEmotionCache } from "@emotion/react";
-import { ActionFunctionArgs, data, LinksFunction, LoaderFunctionArgs } from "react-router";
+import {
+  ActionFunctionArgs,
+  data,
+  LinksFunction,
+  LoaderFunctionArgs,
+} from "react-router";
 import {
   isRouteErrorResponse,
   Links,

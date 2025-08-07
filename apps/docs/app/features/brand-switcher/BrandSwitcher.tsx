@@ -9,7 +9,7 @@ export const BrandSwitcher = () => {
 
   return (
     // Use native select until spor select is available
-    (<fetcher.Form method="post" action="/api/brand">
+    <fetcher.Form method="post" action="/api/brand">
       <NativeSelect
         label="Brand"
         value={brand as string}
@@ -26,6 +26,6 @@ export const BrandSwitcher = () => {
         <option value="VyUtvikling">Vy Utvikling</option>
         <option value="CargoNet">CargoNet</option>
       </NativeSelect>
-    </fetcher.Form>)
+    </fetcher.Form>
   );
 };

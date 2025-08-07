@@ -263,7 +263,7 @@ type ComponentSectionsProps = {
 };
 const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
   return (
-    (<Tabs
+    <Tabs
       variant="accent"
       size="md"
       marginTop={4}
@@ -298,12 +298,12 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
             {section.content && <PortableText value={section.content} />}
             {section.components?.map((component) => (
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              (<ComponentDocs key={component._id} component={component as any} />)
+              <ComponentDocs key={component._id} component={component as any} />
             ))}
           </Stack>
         </TabsContent>
       ))}
-    </Tabs>)
+    </Tabs>
   );
 };
 

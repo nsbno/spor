@@ -1,5 +1,5 @@
-import { useFetcher } from "react-router";
 import { NativeSelect } from "@vygruppen/spor-react";
+import { useFetcher } from "react-router";
 
 import { useBrand } from "~/utils/brand";
 

@@ -1,7 +1,7 @@
 import { CacheProvider } from "@emotion/react";
-import { HydratedRouter } from "react-router/dom";
 import { startTransition, StrictMode, useState } from "react";
 import { hydrateRoot } from "react-dom/client";
+import { HydratedRouter } from "react-router/dom";
 
 import { createEmotionCache } from "./root/setup/chakra-setup/createEmotionCache";
 import { ClientStyleContext } from "./root/setup/chakra-setup/styleContext";

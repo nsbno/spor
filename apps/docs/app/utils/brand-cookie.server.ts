@@ -1,5 +1,5 @@
-import { createCookie } from "react-router";
 import { Brand } from "@vygruppen/spor-react";
+import { createCookie } from "react-router";
 
 const COOKIE_NAME = "brand";
 

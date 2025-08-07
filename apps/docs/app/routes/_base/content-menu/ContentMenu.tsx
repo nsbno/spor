@@ -1,4 +1,3 @@
-import { useLocation } from "react-router";
 import {
   Accordion,
   AccordionItem,
@@ -9,6 +8,7 @@ import {
 } from "@vygruppen/spor-react";
 import { Separator } from "@vygruppen/spor-react";
 import { forwardRef } from "react";
+import { useLocation } from "react-router";
 
 import { useMenu } from "~/utils/useMenu";
 

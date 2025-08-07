@@ -4,7 +4,6 @@ import {
   PortableText as SanityPortableText,
   PortableTextReactComponents,
 } from "@portabletext/react";
-import { Link } from "react-router";
 import {
   CheckmarkFill30Icon,
   ErrorOutline30Icon,
@@ -27,6 +26,7 @@ import {
 } from "@vygruppen/spor-react";
 import deepmerge from "deepmerge";
 import React from "react";
+import { Link } from "react-router";
 
 import { urlBuilder } from "~/utils/sanity/utils";
 

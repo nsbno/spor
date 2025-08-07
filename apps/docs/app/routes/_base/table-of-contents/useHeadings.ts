@@ -1,5 +1,5 @@
-import { useLocation } from "react-router";
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router";
 
 import { HeadingLevelType, HeadingType } from "./TableOfContents";
 

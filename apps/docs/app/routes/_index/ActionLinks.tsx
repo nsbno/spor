@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import {
   Box,
   BoxProps,
@@ -17,6 +16,7 @@ import {
   TokensOutline30Icon,
   TrainOutline30Icon,
 } from "@vygruppen/spor-react/icons";
+import { Link } from "react-router";
 
 type LinkItem = {
   to: string;

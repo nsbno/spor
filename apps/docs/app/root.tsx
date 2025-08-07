@@ -1,6 +1,8 @@
 import "./styles/style-overrides.css";
 
 import { withEmotionCache } from "@emotion/react";
+import { Brand, Language, SporProvider, themes } from "@vygruppen/spor-react";
+import { ReactNode, useContext, useEffect } from "react";
 import {
   ActionFunctionArgs,
   data,
@@ -18,8 +20,6 @@ import {
   useLoaderData,
   useRouteError,
 } from "react-router";
-import { Brand, Language, SporProvider, themes } from "@vygruppen/spor-react";
-import { ReactNode, useContext, useEffect } from "react";
 
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";

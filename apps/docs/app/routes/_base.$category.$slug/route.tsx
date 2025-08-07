@@ -1,4 +1,3 @@
-import type { LoaderFunctionArgs, MetaFunction } from "react-router";
 import { groq } from "@sanity/groq-store";
 import {
   FigmaOutline24Icon,
@@ -21,6 +20,7 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import { PropsWithChildren } from "react";
+import type { LoaderFunctionArgs, MetaFunction } from "react-router";
 import invariant from "tiny-invariant";
 
 import { PortableText } from "~/features/portable-text/PortableText";

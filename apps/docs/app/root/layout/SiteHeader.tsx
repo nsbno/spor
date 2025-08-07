@@ -1,4 +1,3 @@
-import { Link, useLocation, useRouteLoaderData } from "react-router";
 import {
   HamburgerFill24Icon,
   SearchFill24Icon,
@@ -20,6 +19,7 @@ import {
   VyLogo,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
+import { Link, useLocation, useRouteLoaderData } from "react-router";
 
 import { loader } from "~/root";
 

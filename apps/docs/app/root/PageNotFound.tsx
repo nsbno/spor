@@ -1,5 +1,5 @@
-import { Link } from "react-router";
 import { Box, Button, Center, Heading, Text } from "@vygruppen/spor-react";
+import { Link } from "react-router";
 
 import { NotFoundIllustration } from "~/features/illustrations/NotFoundIllustration";
 

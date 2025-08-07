@@ -1,4 +1,3 @@
-import { Link, useLoaderData } from "@remix-run/react";
 import {
   Box,
   Heading,
@@ -7,6 +6,7 @@ import {
   SimpleGrid,
   useColorModeValue,
 } from "@vygruppen/spor-react";
+import { Link, useLoaderData } from "react-router";
 
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";

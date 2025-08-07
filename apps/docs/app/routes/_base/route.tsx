@@ -1,5 +1,5 @@
 import { Box, Flex, Stack } from "@chakra-ui/react";
-import { Outlet } from "@remix-run/react";
+import { Outlet } from "react-router";
 
 import { Footer } from "~/root/layout/Footer";
 import { LeftSidebar } from "~/routes/_base/left-sidebar/LeftSidebar";

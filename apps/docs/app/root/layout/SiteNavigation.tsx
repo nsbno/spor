@@ -1,5 +1,5 @@
 import { Center, CenterProps, Flex } from "@chakra-ui/react";
-import { Link, useMatches, useResolvedPath } from "@remix-run/react";
+import { Link, useMatches, useResolvedPath } from "react-router";
 
 type SiteNavigationProps = {
   children: React.ReactNode;

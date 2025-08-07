@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.6.1
+
+### Patch Changes
+
+- 476e905: export chakra function as spor to allow for custom components
+
 ## 12.6.0
 
 ### Minor Changes

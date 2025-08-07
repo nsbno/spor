@@ -1,4 +1,3 @@
-import { useLoaderData } from "@remix-run/react";
 import { SanityAsset } from "@sanity/image-url/lib/types/types";
 import {
   DownloadOutline18Icon,
@@ -27,6 +26,7 @@ import {
   useColorMode,
 } from "@vygruppen/spor-react";
 import { useMemo, useState } from "react";
+import { useLoaderData } from "react-router";
 
 import { PortableText } from "~/features/portable-text/PortableText";
 import { useBrand } from "~/utils/brand";

@@ -88,7 +88,7 @@ export const NumericStepper = React.forwardRef<
 
   const addButtonRef = useRef<HTMLButtonElement>(null);
   const { t } = useTranslation();
-  const recipe = useSlotRecipe({ recipe: numericStepperRecipe });
+  const recipe = useSlotRecipe({ key: "numericStepper" });
   const styles = recipe();
   const [value, onChange] = useControllableState<number>({
     value: valueProp,
@@ -209,7 +209,7 @@ const VerySmallButton = React.forwardRef<
   HTMLButtonElement,
   VerySmallButtonProps
 >((props, ref) => {
-  const recipe = useSlotRecipe({ recipe: numericStepperRecipe });
+  const recipe = useSlotRecipe({ key: "numericStepper" });
   const styles = recipe({ colorPalette: "default" });
   return (
     <IconButton

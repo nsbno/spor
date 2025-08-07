@@ -6,7 +6,6 @@ import { AriaCalendarGridProps, useCalendarGrid } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
 
 import { Language, useTranslation } from "../i18n";
-import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { Text } from "../typography";
 import { CalendarCell } from "./CalendarCell";
 import { CalendarVariants } from "./types";
@@ -46,9 +45,9 @@ export function CalendarGrid({
   const weeksInMonthRange = Array.from({ length: weeksInMonth })
     .fill(0)
     .map((_, i) => i);
+
   const recipe = useSlotRecipe({
     key: "datePicker",
-    recipe: datePickerSlotRecipe,
   });
   const styles = recipe({ variant });
 

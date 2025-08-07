@@ -1,11 +1,11 @@
 import { Flex, useClipboard } from "@chakra-ui/react";
-import { useLocation } from "@remix-run/react";
 import {
   CopyOutline24Icon,
   SuccessOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import { Heading, HeadingProps, IconButton } from "@vygruppen/spor-react";
 import React from "react";
+import { useLocation } from "react-router";
 
 import { slugify } from "~/utils/stringUtils";
 

@@ -70,7 +70,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
         <HStack gap="1" alignItems="flex-start">
           {showIndicator && (
             <ChakraAlert.Indicator asChild>
-              <AlertIcon variant={props.variant} customIcon={icon} />
+              <AlertIcon variant={props.variant ?? "info"} customIcon={icon} />
             </ChakraAlert.Indicator>
           )}
           {title && (

@@ -1,12 +1,14 @@
 import "./styles/style-overrides.css";
 
 import { withEmotionCache } from "@emotion/react";
+import { Brand, Language, SporProvider, themes } from "@vygruppen/spor-react";
+import { ReactNode, useContext, useEffect } from "react";
 import {
   ActionFunctionArgs,
   data,
   LinksFunction,
   LoaderFunctionArgs,
-} from "@remix-run/node";
+} from "react-router";
 import {
   isRouteErrorResponse,
   Links,
@@ -17,9 +19,7 @@ import {
   ScrollRestoration,
   useLoaderData,
   useRouteError,
-} from "@remix-run/react";
-import { Brand, Language, SporProvider, themes } from "@vygruppen/spor-react";
-import { ReactNode, useContext, useEffect } from "react";
+} from "react-router";
 
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";

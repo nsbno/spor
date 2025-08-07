@@ -7,7 +7,6 @@ import {
 } from "@chakra-ui/react";
 import { forwardRef, PropsWithChildren } from "react";
 
-import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { DatePickerVariantProps } from "./DatePicker";
 import { CalendarVariants } from "./types";
 
@@ -27,7 +26,6 @@ export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
 
     const recipe = useSlotRecipe({
       key: "datePicker",
-      recipe: datePickerSlotRecipe,
     });
     const styles = recipe({ variant });
 

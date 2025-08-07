@@ -9,7 +9,7 @@ import {
   Text,
   TextLink,
 } from "@vygruppen/spor-react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 export function HeroSection() {
   return (

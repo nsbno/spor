@@ -1,4 +1,4 @@
-//import { Button } from "@vygruppen/spor-react";
+import { Button } from "@vygruppen/spor-react";
 export function Welcome() {
   return (
     <main>
@@ -6,7 +6,9 @@ export function Welcome() {
         <header>
           <div>Vy Designmanual</div>
         </header>
-        <main>spor element here:</main>
+        <main>
+          spor element here: <Button variant="primary">he hei</Button>
+        </main>
       </div>
     </main>
   );

@@ -1,3 +1,4 @@
+import { Brand, Language, SporProvider, themes } from "@vygruppen/spor-react";
 import {
   isRouteErrorResponse,
   Links,
@@ -23,7 +24,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <SporProvider
+          language={Language.English}
+          theme={themes[Brand ?? "VyDigital"]}
+        >
+          {children}
+        </SporProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

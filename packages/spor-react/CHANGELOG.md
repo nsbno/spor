@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.6.2
+
+### Patch Changes
+
+- cad7ba5: Fix NumericStepper props: onChange correct type and children not mandatory.
+
 ## 12.6.1
 
 ### Patch Changes

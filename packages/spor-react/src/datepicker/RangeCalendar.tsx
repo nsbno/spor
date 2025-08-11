@@ -8,8 +8,6 @@ import {
 } from "react-aria";
 import { useRangeCalendarState } from "react-stately";
 
-import { datePickerSlotRecipe } from "@/theme/slot-recipes/datepicker";
-
 import { CalendarGrid } from "./CalendarGrid";
 import { CalendarHeader } from "./CalendarHeader";
 import { CalendarVariants } from "./types";
@@ -26,9 +24,9 @@ export function RangeCalendar(props: RangeCalendarProps) {
     locale,
     createCalendar,
   });
+
   const recipe = useSlotRecipe({
     key: "datePicker",
-    recipe: datePickerSlotRecipe,
   });
   const styles = recipe({});
   const ref = useRef(null);

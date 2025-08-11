@@ -11,7 +11,6 @@ import { PropsWithChildren, useEffect, useRef } from "react";
 import { useCalendarCell } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
 
-import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
 import { DatePickerVariantProps } from "./DatePicker";
 import { CalendarVariants } from "./types";
 
@@ -38,9 +37,9 @@ export function CalendarCell({
   } = useCalendarCell({ date }, state, ref);
 
   const isOutsideMonth = !isSameMonth(currentMonth, date);
+
   const recipe = useSlotRecipe({
     key: "datePicker",
-    recipe: datePickerSlotRecipe,
   });
   const styles = recipe({ variant });
 

@@ -6,7 +6,7 @@ import {
   useControllableState,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { PropsWithChildren, useRef } from "react";
+import React, { useRef } from "react";
 
 import { BoxProps, createTexts, IconButton, Text, useTranslation } from "..";
 import { numericStepperRecipe } from "../theme/slot-recipes/numeric-stepper";
@@ -14,10 +14,9 @@ import { Field, FieldBaseProps } from "./Field";
 
 type NumericStepperVariants = RecipeVariantProps<typeof numericStepperRecipe>;
 
-export type NumericStepperProps = BoxProps &
-  FieldBaseProps &
-  PropsWithChildren<NumericStepperVariants> & {
-    children: React.ReactNode;
+export type NumericStepperProps = FieldBaseProps &
+  NumericStepperVariants & {
+    children?: React.ReactNode;
     /** The name of the input field */
     name?: string;
     /** The current value */
@@ -88,7 +87,7 @@ export const NumericStepper = React.forwardRef<
 
   const addButtonRef = useRef<HTMLButtonElement>(null);
   const { t } = useTranslation();
-  const recipe = useSlotRecipe({ recipe: numericStepperRecipe });
+  const recipe = useSlotRecipe({ key: "numericStepper" });
   const styles = recipe();
   const [value, onChange] = useControllableState<number>({
     value: valueProp,
@@ -209,7 +208,7 @@ const VerySmallButton = React.forwardRef<
   HTMLButtonElement,
   VerySmallButtonProps
 >((props, ref) => {
-  const recipe = useSlotRecipe({ recipe: numericStepperRecipe });
+  const recipe = useSlotRecipe({ key: "numericStepper" });
   const styles = recipe({ colorPalette: "default" });
   return (
     <IconButton

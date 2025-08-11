@@ -11,6 +11,7 @@ export {
   LocaleProvider,
   Portal,
   Show,
+  chakra as spor,
   useBreakpointValue,
   useCheckbox,
   useClipboard,

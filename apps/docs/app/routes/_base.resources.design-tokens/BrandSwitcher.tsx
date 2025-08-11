@@ -1,4 +1,3 @@
-import { useFetcher } from "@remix-run/react";
 import {
   Brand,
   Heading,
@@ -7,6 +6,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@vygruppen/spor-react";
+import { useFetcher } from "react-router";
 
 import { useBrand } from "~/utils/brand";
 

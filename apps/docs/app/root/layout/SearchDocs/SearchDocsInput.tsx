@@ -4,7 +4,7 @@ import { SearchOutline24Icon } from "@vygruppen/spor-icon-react";
 import { SearchInput, Text } from "@vygruppen/spor-react";
 import { matchSorter } from "match-sorter";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 
 import { useMenu } from "~/utils/useMenu";
 

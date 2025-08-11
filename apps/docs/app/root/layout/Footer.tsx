@@ -1,10 +1,10 @@
-import { Link } from "@remix-run/react";
 import {
   Flex,
   TextLink,
   useColorModeValue,
   VyLogo,
 } from "@vygruppen/spor-react";
+import { Link } from "react-router";
 
 import { useMenu } from "~/utils/useMenu";
 

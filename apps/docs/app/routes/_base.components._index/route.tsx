@@ -1,4 +1,4 @@
-import { LoaderFunction, redirect } from "@remix-run/node";
+import { LoaderFunction, redirect } from "react-router";
 
 // Just redirect users to the overview page
 export const loader: LoaderFunction = async () => {

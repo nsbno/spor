@@ -1,4 +1,4 @@
-import { redirect } from "@remix-run/node";
+import { redirect } from "react-router";
 
 // Redirect users to the Studio app.
 export const loader = async () => {

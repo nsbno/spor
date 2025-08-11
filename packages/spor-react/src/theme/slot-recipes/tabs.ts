@@ -84,6 +84,9 @@ export const tabsSlotRecipe = defineSlotRecipe({
           _selected: {
             backgroundColor: "brand.surface",
             color: "brand.text",
+            _hover: {
+              outline: "none",
+            },
           },
           _disabled: {
             backgroundColor: "surface.disabled",
@@ -98,6 +101,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
         },
         trigger: {
           color: "accent.text",
+
           _disabled: {
             backgroundColor: "surface.disabled",
             color: "accent.text.disabled",
@@ -115,6 +119,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
             _hover: {
               backgroundColor: "brand.surface.hover",
               color: "brand.text",
+              outline: "none",
             },
           },
         },

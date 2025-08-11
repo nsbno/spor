@@ -9,8 +9,8 @@ import {
   useFieldContext,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import { DateValue } from "@internationalized/date";
 import { PropsWithChildren, useRef } from "react";
+import { DateValue } from "react-aria";
 import {
   AriaDateRangePickerProps,
   I18nProvider,

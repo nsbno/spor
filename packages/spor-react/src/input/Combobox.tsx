@@ -76,6 +76,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
     inputRef: externalInputRef,
     children,
     variant,
+    ...restProps
   } = props;
   const { contains } = useFilter({ sensitivity: "base" });
 
@@ -128,6 +129,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
   return (
     <>
       <Input
+        {...restProps}
         {...styleProps(comboBoxProps)}
         aria-haspopup="listbox"
         ref={inputRef}

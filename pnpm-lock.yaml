@@ -42,7 +42,7 @@ importers:
         version: 4.9.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@chakra-ui/react':
         specifier: ^3.21.1
-        version: 3.24.0(@emotion/react@11.14.0(@types/react@19.1.9)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 3.24.0(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@portabletext/react':
         specifier: ^3.1.0
         version: 3.2.1(react@18.3.1)
@@ -54,7 +54,7 @@ importers:
         version: 7.7.1(react-router@7.7.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(typescript@5.8.3)
       '@sanity/groq-store':
         specifier: ^1.1.5
-        version: 1.1.5(@types/react@19.1.9)
+        version: 1.1.5(@types/react@18.3.18)
       '@sanity/image-url':
         specifier: ^1.0.2
         version: 1.1.0
@@ -123,11 +123,11 @@ importers:
         specifier: ^20
         version: 20.19.10
       '@types/react':
-        specifier: ^19.1.2
-        version: 19.1.9
+        specifier: ^18.3.1
+        version: 18.3.18
       '@types/react-dom':
-        specifier: ^19.1.2
-        version: 19.1.7(@types/react@19.1.9)
+        specifier: ^18.3.1
+        version: 18.3.5(@types/react@18.3.18)
       '@vygruppen/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -4933,19 +4933,11 @@ packages:
     peerDependencies:
       '@types/react': ^18.0.0
 
-  '@types/react-dom@19.1.7':
-    resolution: {integrity: sha512-i5ZzwYpqjmrKenzkoLM2Ibzt6mAsM7pxB6BCIouEVVmgiqaMj1TjaK7hnA36hbW5aZv20kx7Lw6hWzPWg0Rurw==}
-    peerDependencies:
-      '@types/react': ^19.0.0
-
   '@types/react-is@19.0.0':
     resolution: {integrity: sha512-71dSZeeJ0t3aoPyY9x6i+JNSvg5m9EF2i2OlSZI5QoJuI8Ocgor610i+4A10TQmURR+0vLwcVCEYFpXdzM1Biw==}
 
   '@types/react@18.3.18':
     resolution: {integrity: sha512-t4yC+vtgnkYjNSKlFx1jkAhH8LgTo2N/7Qvi83kdEaUtMDiwpbLAktKDaAMlRcJ5eSxZkH74eEGt1ky31d7kfQ==}
-
-  '@types/react@19.1.9':
-    resolution: {integrity: sha512-WmdoynAX8Stew/36uTSVMcLJJ1KRh6L3IZRx1PZ7qJtBqT3dYTgyDTx8H1qoRghErydW7xw9mSJ3wS//tCRpFA==}
 
   '@types/readdir-glob@1.1.5':
     resolution: {integrity: sha512-raiuEPUYqXu+nvtY2Pe8s8FEmZ3x5yAH4VkLdihcPdalvsHltomrRC9BzuStrJ9yk06470hS0Crw0f1pXqD+Hg==}
@@ -12781,20 +12773,6 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@chakra-ui/react@3.24.0(@emotion/react@11.14.0(@types/react@19.1.9)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@ark-ui/react': 5.18.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@emotion/is-prop-valid': 1.3.1
-      '@emotion/react': 11.14.0(@types/react@19.1.9)(react@18.3.1)
-      '@emotion/serialize': 1.3.3
-      '@emotion/use-insertion-effect-with-fallbacks': 1.2.0(react@18.3.1)
-      '@emotion/utils': 1.4.2
-      '@pandacss/is-valid-prop': 0.54.0
-      csstype: 3.1.3
-      fast-safe-stringify: 2.1.1
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-
   '@chakra-ui/shared-utils@2.0.5': {}
 
   '@chakra-ui/styled-system@2.12.0(react@18.3.1)':
@@ -13266,22 +13244,6 @@ snapshots:
       react: 18.3.1
     optionalDependencies:
       '@types/react': 18.3.18
-    transitivePeerDependencies:
-      - supports-color
-
-  '@emotion/react@11.14.0(@types/react@19.1.9)(react@18.3.1)':
-    dependencies:
-      '@babel/runtime': 7.26.9
-      '@emotion/babel-plugin': 11.13.5
-      '@emotion/cache': 11.14.0
-      '@emotion/serialize': 1.3.3
-      '@emotion/use-insertion-effect-with-fallbacks': 1.2.0(react@18.3.1)
-      '@emotion/utils': 1.4.2
-      '@emotion/weak-memoize': 0.4.0
-      hoist-non-react-statics: 3.3.2
-      react: 18.3.1
-    optionalDependencies:
-      '@types/react': 19.1.9
     transitivePeerDependencies:
       - supports-color
 
@@ -16076,19 +16038,10 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@sanity/client@7.2.1':
-    dependencies:
-      '@sanity/eventsource': 5.0.2
-      get-it: 8.6.7
-      nanoid: 3.3.11
-      rxjs: 7.8.2
-    transitivePeerDependencies:
-      - debug
-
   '@sanity/client@7.2.1(debug@4.4.0)':
     dependencies:
       '@sanity/eventsource': 5.0.2
-      get-it: 8.6.7(debug@4.4.0)
+      get-it: 8.6.7
       nanoid: 3.3.11
       rxjs: 7.8.2
     transitivePeerDependencies:
@@ -16237,22 +16190,6 @@ snapshots:
       - debug
       - supports-color
 
-  '@sanity/groq-store@1.1.5(@types/react@19.1.9)':
-    dependencies:
-      '@sanity/types': 3.75.0(@types/react@19.1.9)
-      eventsource: 2.0.2
-      fast-deep-equal: 3.1.3
-      groq: 3.75.0
-      groq-js: 1.15.0
-      mendoza: 2.1.2
-      simple-get: 4.0.1
-      split2: 4.2.0
-      throttle-debounce: 5.0.2
-    transitivePeerDependencies:
-      - '@types/react'
-      - debug
-      - supports-color
-
   '@sanity/icons@2.11.8(react@18.3.1)':
     dependencies:
       react: 18.3.1
@@ -16382,7 +16319,7 @@ snapshots:
 
   '@sanity/presentation-comlink@1.0.19(@sanity/client@7.2.1(debug@4.4.0))(@sanity/types@3.88.2(@types/react@18.3.18)(debug@4.4.0))':
     dependencies:
-      '@sanity/client': 7.2.1
+      '@sanity/client': 7.2.1(debug@4.4.0)
       '@sanity/comlink': 3.0.3
       '@sanity/visual-editing-types': 1.0.18(@sanity/client@7.2.1(debug@4.4.0))(@sanity/types@3.88.2(@types/react@18.3.18)(debug@4.4.0))
     transitivePeerDependencies:
@@ -16390,12 +16327,12 @@ snapshots:
 
   '@sanity/preview-url-secret@2.1.11(@sanity/client@7.2.1(debug@4.4.0))':
     dependencies:
-      '@sanity/client': 7.2.1
+      '@sanity/client': 7.2.1(debug@4.4.0)
       '@sanity/uuid': 3.0.2
 
   '@sanity/preview-url-secret@2.1.4(@sanity/client@7.2.1)':
     dependencies:
-      '@sanity/client': 7.2.1
+      '@sanity/client': 7.2.1(debug@4.4.0)
       '@sanity/uuid': 3.0.2
 
   '@sanity/runtime-cli@6.2.2(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
@@ -16490,16 +16427,9 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@sanity/types@3.75.0(@types/react@19.1.9)':
-    dependencies:
-      '@sanity/client': 6.28.0
-      '@types/react': 19.1.9
-    transitivePeerDependencies:
-      - debug
-
   '@sanity/types@3.88.2(@types/react@18.3.18)':
     dependencies:
-      '@sanity/client': 7.2.1
+      '@sanity/client': 7.2.1(debug@4.4.0)
       '@types/react': 18.3.18
     transitivePeerDependencies:
       - debug
@@ -16625,7 +16555,7 @@ snapshots:
 
   '@sanity/visual-editing-types@1.0.18(@sanity/client@7.2.1(debug@4.4.0))(@sanity/types@3.88.2(@types/react@18.3.18)(debug@4.4.0))':
     dependencies:
-      '@sanity/client': 7.2.1
+      '@sanity/client': 7.2.1(debug@4.4.0)
     optionalDependencies:
       '@sanity/types': 3.88.2(@types/react@18.3.18)
 
@@ -17144,10 +17074,6 @@ snapshots:
     dependencies:
       '@types/react': 18.3.18
 
-  '@types/react-dom@19.1.7(@types/react@19.1.9)':
-    dependencies:
-      '@types/react': 19.1.9
-
   '@types/react-is@19.0.0':
     dependencies:
       '@types/react': 18.3.18
@@ -17155,10 +17081,6 @@ snapshots:
   '@types/react@18.3.18':
     dependencies:
       '@types/prop-types': 15.7.14
-      csstype: 3.1.3
-
-  '@types/react@19.1.9':
-    dependencies:
       csstype: 3.1.3
 
   '@types/readdir-glob@1.1.5':
@@ -23503,7 +23425,7 @@ snapshots:
       '@sanity/asset-utils': 2.2.1
       '@sanity/bifur-client': 0.4.1
       '@sanity/cli': 3.88.2(@types/node@22.13.4)(@types/react@18.3.18)(jiti@2.4.2)(lightningcss@1.30.1)(react@18.3.1)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
-      '@sanity/client': 7.2.1
+      '@sanity/client': 7.2.1(debug@4.4.0)
       '@sanity/color': 3.0.6
       '@sanity/comlink': 3.0.3
       '@sanity/diff': 3.88.2

@@ -1,15 +1,17 @@
-import { Button } from "@vygruppen/spor-react";
+import { Box, Button } from "@vygruppen/spor-react";
 export function Welcome() {
   return (
-    <main>
-      <div>
-        <header>
-          <div>Vy Designmanual</div>
-        </header>
-        <main>
-          spor element here: <Button variant="primary">he hei</Button>
-        </main>
-      </div>
-    </main>
+    <>
+      <Box as="header" padding="2">
+        <div>Vy Designmanual</div>
+      </Box>
+      <Box as="main" padding="2">
+        spor element here:{" "}
+        <Button variant="primary">Primary button from spor</Button>
+      </Box>
+      <Box as="footer" padding="2">
+        <div>Footer content</div>
+      </Box>
+    </>
   );
 }

@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 4.2.1
+
+### Patch Changes
+
+- 3414328: Some icons did not render correct consequent Removed the clipPath value from some icons that were not rendering properly
+
 ## 4.2.0
 
 ### Minor Changes

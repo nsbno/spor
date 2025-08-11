@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 12.6.3
+
+### Patch Changes
+
+- 552118e: Combobox: Fix forwarding of props so styles, like background, can be applied
+  Dialog: Fix resonspive sizes, and shrink margin of fullscreen, "cover", modal
+  Tabs: Fix hover style for active tab
+- Updated dependencies [3414328]
+  - @vygruppen/spor-icon-react@4.2.1
+
 ## 12.6.2
 
 ### Patch Changes

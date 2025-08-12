@@ -1,0 +1,35 @@
+{
+  "include": [
+    "**/*",
+    "**/.server/**/*",
+    "**/.client/**/*",
+    ".react-router/types/**/*",
+    "env.d.ts",
+    "types.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "vite.config.mts"
+  ],
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "es2021"],
+    "types": ["node", "vite/client", "@remix-run/node"],
+    "isolatedModules": true,
+    "target": "es2021",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "rootDirs": [".", "./.react-router/types"],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./app/*"]
+    },
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "allowJs": false,
+    "forceConsistentCasingInFileNames": true
+  }
+}

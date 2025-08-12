@@ -18,7 +18,7 @@ ENV NODE_ENV=development
 
 # Copy workspace-related files from the monorepo root
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY apps/docs/package.json apps/docs/
+COPY apps/designmanual-frontend/package.json apps/designmanual-frontend/
 
 # Install all dependencies (including devDependencies)
 RUN pnpm install --frozen-lockfile --prod=false --ignore-scripts
@@ -33,7 +33,7 @@ WORKDIR /app
 # Copy only production dependencies
 COPY patches ./patches
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY apps/docs/package.json apps/docs/
+COPY apps/designmanual-frontend/package.json apps/designmanual-frontend/
 
 RUN pnpm install --frozen-lockfile --ignore-scripts  --prod
 
@@ -55,7 +55,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 # typegen is dependent on spor-design-tokens
 RUN pnpm --filter @vygruppen/spor-design-tokens build
 RUN pnpm --filter @vygruppen/spor-react typegen
-RUN pnpm --filter @vygruppen/docs... build
+RUN pnpm --filter @vygruppen/designmanual-frontend... build
 
 # Finally, build the production image with minimal footprint
 FROM base AS final
@@ -71,10 +71,10 @@ RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases
 
 # Corrected paths
 COPY --from=production-deps /app/node_modules /app/node_modules
-COPY --from=production-deps /app/apps/docs/node_modules /app/apps/docs/node_modules
-COPY --from=build /app/apps/docs/build/server /app/apps/docs/build/server
-COPY --from=build /app/apps/docs/build/client /app/apps/docs/build/client
+COPY --from=production-deps /app/apps/designmanual-frontend/node_modules /app/apps/designmanual-frontend/node_modules
+COPY --from=build /app/apps/designmanual-frontend/build/server /app/apps/designmanual-frontend/build/server
+COPY --from=build /app/apps/designmanual-frontend/build/client /app/apps/designmanual-frontend/build/client
 ADD . .
 
 # Start the application
-CMD ["pnpm", "--filter", "@vygruppen/docs", "start"]
+CMD ["pnpm", "--filter", "@vygruppen/designmanual-frontend", "start"]

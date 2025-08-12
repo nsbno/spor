@@ -11,7 +11,7 @@ labels: bug
 
 ### How to reproduce?
 
-<!-- Please make a reproduction with this [CodeSandbox template](https://codesandbox.io/s/demo-spor-b137ig).
+<!-- Please make a reproduction with this [StackBlitz template](https://stackblitz.com/edit/vitejs-vite-i1urbcum?file=src%2FApp.tsx).
 
 Steps to reproduce the behavior:
 

@@ -6,4 +6,4 @@
 "@vygruppen/tsconfig": patch
 ---
 
-Add type module to all packages, update entries and outputs to match ESM/CJS.
+Add type module to all packages, update entries and outputs for ESM/CJS compatibility.

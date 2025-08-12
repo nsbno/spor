@@ -1,5 +1,11 @@
 # @vygruppen/tsconfig
 
+## 0.1.1
+
+### Patch Changes
+
+- ac8f61d: Add type module to all packages, update entries and outputs for ESM/CJS compatibility.
+
 ## 0.1.0
 
 ### Minor Changes

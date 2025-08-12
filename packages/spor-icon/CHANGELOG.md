@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 3.5.2
+
+### Patch Changes
+
+- ac8f61d: Add type module to all packages, update entries and outputs for ESM/CJS compatibility.
+
 ## 3.5.1
 
 ### Patch Changes

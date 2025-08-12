@@ -1,4 +1,4 @@
-import { LoaderFunction } from "@remix-run/node";
+import { LoaderFunction } from "react-router";
 
 import { getIconsZipFile } from "~/utils/icons.server";
 

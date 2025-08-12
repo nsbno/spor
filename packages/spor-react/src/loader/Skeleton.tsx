@@ -26,7 +26,7 @@ export const SkeletonCircle = React.forwardRef<
   HTMLDivElement,
   SkeletonCircleProps
 >(function SkeletonCircle(props, ref) {
-  const recipe = useRecipe({ recipe: skeletonRecipe });
+  const recipe = useRecipe({ key: "skeleton" });
 
   const [recipeProps, restProps] = recipe.splitVariantProps({
     loading: true,
@@ -50,7 +50,7 @@ export type SkeletonTextProps = ChakraSkeletonProps &
 
 export const SkeletonText = forwardRef<HTMLDivElement, SkeletonTextProps>(
   function SkeletonText(props, ref) {
-    const recipe = useRecipe({ recipe: skeletonRecipe });
+    const recipe = useRecipe({ key: "skeleton" });
     const [recipeProps, restProps] = recipe.splitVariantProps({
       loading: true,
       variant: "pulse",
@@ -78,7 +78,7 @@ export type SkeletonProps = ChakraSkeletonProps & SkeletonVariantProps;
 
 export const Skeleton = forwardRef<HTMLDivElement, SkeletonTextProps>(
   function SkeletonText(props, ref) {
-    const recipe = useRecipe({ recipe: skeletonRecipe });
+    const recipe = useRecipe({ key: "skeleton" });
     const [recipeProps, restProps] = recipe.splitVariantProps({
       loading: true,
       variant: "pulse",

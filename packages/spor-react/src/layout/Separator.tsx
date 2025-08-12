@@ -26,7 +26,7 @@ export const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
       orientation = "horizontal",
     } = props;
 
-    const recipe = useRecipe({ recipe: separatorRecipe });
+    const recipe = useRecipe({ key: "seperator" });
     const styles = recipe({ size, variant, orientation });
     return <ChakraSeparator css={styles} {...props} ref={ref} />;
   },

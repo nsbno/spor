@@ -93,8 +93,8 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 
     const recipe = useSlotRecipe({
       key: "datePicker",
-      recipe: datePickerSlotRecipe,
     });
+
     const styles = recipe({ variant });
     const locale = useCurrentLocale();
 

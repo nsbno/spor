@@ -1,5 +1,5 @@
-import { useLoaderData } from "@remix-run/react";
 import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router";
 
 import { usePreviewSubscription } from "./usePreviewSubscription";
 import { filterDataToSingleItem } from "./utils";

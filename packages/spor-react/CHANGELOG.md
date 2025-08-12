@@ -1,5 +1,65 @@
 # @vygruppen/spor-react
 
+## 12.6.4
+
+### Patch Changes
+
+- f88c33b: Field: Fix styling for multi line errorText, where arrow collided with the error box.
+  DateRangePicker: Use same value type as DatePicker.
+  Button: Update style from figma, different padding and font sizes.
+
+## 12.6.3
+
+### Patch Changes
+
+- 552118e: Combobox: Fix forwarding of props so styles, like background, can be applied
+  Dialog: Fix resonspive sizes, and shrink margin of fullscreen, "cover", modal
+  Tabs: Fix hover style for active tab
+- Updated dependencies [3414328]
+  - @vygruppen/spor-icon-react@4.2.1
+
+## 12.6.2
+
+### Patch Changes
+
+- cad7ba5: Fix NumericStepper props: onChange correct type and children not mandatory.
+
+## 12.6.1
+
+### Patch Changes
+
+- 476e905: export chakra function as spor to allow for custom components
+
+## 12.6.0
+
+### Minor Changes
+
+- 3e41769: Expose date range calendar as a standalone component
+
+### Patch Changes
+
+- ae0baf8: Fix bug where no specified variant crashed alert
+- 1af8166: Allow fontSize and lineHeight for <Text/>
+- 86770e3: Fix support for overriding slot recipes for components
+
+## 12.5.6
+
+### Patch Changes
+
+- be1c7e9: Correctly fix type of expandable
+
+## 12.5.5
+
+### Patch Changes
+
+- 6fc249b: Fix type for expandable, so title can be ReactNode.
+
+## 12.5.4
+
+### Patch Changes
+
+- 24caa33: Fix conflicting types for inputprops and update chakra to newest minor version
+
 ## 12.5.3
 
 ### Patch Changes

@@ -1,4 +1,3 @@
-import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { groq } from "@sanity/groq-store";
 import {
   FigmaOutline24Icon,
@@ -21,6 +20,7 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import { PropsWithChildren } from "react";
+import type { LoaderFunctionArgs, MetaFunction } from "react-router";
 import invariant from "tiny-invariant";
 
 import { PortableText } from "~/features/portable-text/PortableText";
@@ -283,7 +283,6 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
         ))}
       </TabsList>
       <Separator marginY={4} />
-
       {sections.map((section) => (
         <TabsContent
           key={section.customTitle || section.title}

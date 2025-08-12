@@ -1,7 +1,7 @@
 import { chakra } from "@chakra-ui/react";
-import { Link } from "@remix-run/react";
 import { Box, FlexProps } from "@vygruppen/spor-react";
 import React, { forwardRef, useImperativeHandle, useRef } from "react";
+import { Link } from "react-router";
 
 type MenuItemProps = FlexProps & {
   url: string;

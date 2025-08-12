@@ -3,6 +3,7 @@ import { badgeRecipie } from "./badge";
 import { buttonRecipe } from "./button";
 import { closeButtonRecipe } from "./close-button";
 import { codeRecipie } from "./code";
+import { groupRecipe } from "./group";
 import { inputRecipe } from "./input";
 import { linkRecipe } from "./link";
 import { pressableCardRecipe } from "./pressable-card";
@@ -16,6 +17,7 @@ export const recipes = {
   attachedInputs: attachedInputsRecipe,
   badge: badgeRecipie,
   button: buttonRecipe,
+  buttonGroup: groupRecipe,
   closeButton: closeButtonRecipe,
   code: codeRecipie,
   input: inputRecipe,

@@ -1,5 +1,10 @@
 "use client";
-import { ButtonProps, chakra, RecipeVariantProps } from "@chakra-ui/react";
+import {
+  Button,
+  ButtonProps,
+  RecipeVariantProps,
+  useRecipe,
+} from "@chakra-ui/react";
 import { forwardRef } from "react";
 
 import { pressableCardRecipe } from "../theme/recipes/pressable-card";
@@ -34,14 +39,16 @@ import { pressableCardRecipe } from "../theme/recipes/pressable-card";
  * @see StaticCard
  */
 
-const PressableCardButton = chakra("button", pressableCardRecipe);
-
 type PressableCardProps = RecipeVariantProps<typeof pressableCardRecipe> &
   ButtonProps;
 
-export const PressableCard = forwardRef<HTMLDivElement, PressableCardProps>(
+export const PressableCard = forwardRef<HTMLButtonElement, PressableCardProps>(
   (props, ref) => {
-    return <PressableCardButton {...props} ref={ref} />;
+    const recipe = useRecipe({ key: "pressableCard" });
+    const [recipeProps, restProps] = recipe.splitVariantProps(props);
+    const styles = recipe(recipeProps);
+
+    return <Button {...restProps} css={styles} ref={ref} />;
   },
 );
 PressableCard.displayName = "PressableCard";

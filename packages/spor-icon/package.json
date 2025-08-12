@@ -2,6 +2,7 @@
   "name": "@vygruppen/spor-icon",
   "version": "3.5.1",
   "main": "./dist/spor-icons.zip",
+  "type": "module",
   "license": "MIT",
   "files": [
     "svg",

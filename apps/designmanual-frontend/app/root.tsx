@@ -26,7 +26,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <SporProvider
           language={Language.English}
-          theme={themes[Brand ?? "VyDigital"]}
+          theme={themes[Brand.VyDigital]}
         >
           {children}
         </SporProvider>

@@ -4,6 +4,15 @@ export function Welcome() {
     <>
       <Box as="header" padding="2">
         <div>Vy Designmanual</div>
+        {/* <Button as="link" href="/identitet" variant="tertiary" marginRight={2}>
+          identitet
+        </Button>
+        <Button as="link" href="/spor" variant="tertiary" marginRight={2}>
+          Spor
+        </Button>
+        <Button as="link" href="/ressurser" variant="tertiary" marginRight={2}>
+          Resurser
+        </Button> */}
       </Box>
       <Box as="main" padding="2">
         spor element here:{" "}

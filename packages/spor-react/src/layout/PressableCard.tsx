@@ -1,7 +1,7 @@
 "use client";
 import {
-  Button,
   ButtonProps,
+  chakra,
   RecipeVariantProps,
   useRecipe,
 } from "@chakra-ui/react";
@@ -48,7 +48,7 @@ export const PressableCard = forwardRef<HTMLButtonElement, PressableCardProps>(
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);
 
-    return <Button {...restProps} css={styles} ref={ref} />;
+    return <chakra.button {...restProps} css={styles} ref={ref} />;
   },
 );
 PressableCard.displayName = "PressableCard";

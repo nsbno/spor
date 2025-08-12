@@ -2,8 +2,10 @@ import { codeInput } from "@sanity/code-input";
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
-import VyLogo from "./components/VyLogo";
+import { VyLogoProd } from "./components/VyLogoProd";
+import { VyLogoTest } from "./components/VyLogoTest";
 import { schemaTypes } from "./schemaTypes";
+import { siteMenuStructure } from "./structure.js";
 
 const projectId = "r4xpzxak";
 
@@ -16,11 +18,11 @@ export default defineConfig([
     dataset: "test",
     basePath: "/test",
 
-    plugins: [structureTool(), visionTool(), codeInput()],
+    plugins: [structureTool(siteMenuStructure), visionTool(), codeInput()],
 
     studio: {
       components: {
-        logo: VyLogo,
+        logo: VyLogoTest,
       },
     },
 
@@ -36,11 +38,11 @@ export default defineConfig([
     dataset: "production",
     basePath: "/production",
 
-    plugins: [structureTool(), visionTool(), codeInput()],
+    plugins: [structureTool(siteMenuStructure), visionTool(), codeInput()],
 
     studio: {
       components: {
-        logo: VyLogo,
+        logo: VyLogoProd,
       },
     },
 

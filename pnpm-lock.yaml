@@ -7184,10 +7184,6 @@ packages:
     resolution: {integrity: sha512-d4lC8xfavMeBjzGr2vECC3fsGXziXZQyJxD868h2M/mBI3PwAuODxAkLkq5HYuvrPYcUtiLzsTo8U3PgX3Ocww==}
     engines: {node: '>=10.13.0'}
 
-  enhanced-resolve@5.18.3:
-    resolution: {integrity: sha512-d4lC8xfavMeBjzGr2vECC3fsGXziXZQyJxD868h2M/mBI3PwAuODxAkLkq5HYuvrPYcUtiLzsTo8U3PgX3Ocww==}
-    engines: {node: '>=10.13.0'}
-
   enquirer@2.4.1:
     resolution: {integrity: sha512-rRqJg/6gd538VHvR3PSrdRBb/1Vy2YfzHqzvbhGIQpDRKIa4FgV/54b5Q1xYSxOOwKvjXweS26E0Q+nAMwp2pQ==}
     engines: {node: '>=8.6'}
@@ -18146,13 +18142,6 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@sanity/types@3.88.2(@types/react@18.3.18)(debug@4.4.1)':
-    dependencies:
-      '@sanity/client': 7.2.1(debug@4.4.1)
-      '@types/react': 18.3.18
-    transitivePeerDependencies:
-      - debug
-
   '@sanity/ui@1.9.3(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1)(styled-components@6.1.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
     dependencies:
       '@floating-ui/react-dom': 2.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -18221,17 +18210,6 @@ snapshots:
       '@sanity/types': 3.99.0(@types/react@18.3.18)(debug@4.4.1)
       date-fns: 4.1.0
       get-random-values-esm: 1.0.2
-      rxjs: 7.8.2
-    transitivePeerDependencies:
-      - '@types/react'
-      - debug
-
-  '@sanity/util@3.88.2(@types/react@18.3.18)(debug@4.4.1)':
-    dependencies:
-      '@sanity/client': 7.2.1(debug@4.4.1)
-      '@sanity/types': 3.88.2(@types/react@18.3.18)(debug@4.4.1)
-      get-random-values-esm: 1.0.2
-      moment: 2.30.1
       rxjs: 7.8.2
     transitivePeerDependencies:
       - '@types/react'
@@ -22541,10 +22519,6 @@ snapshots:
     optionalDependencies:
       debug: 4.4.1(supports-color@8.1.1)
 
-  follow-redirects@1.15.9(debug@4.4.1):
-    optionalDependencies:
-      debug: 4.4.1(supports-color@8.1.1)
-
   for-each@0.3.5:
     dependencies:
       is-callable: 1.2.7
@@ -22717,18 +22691,6 @@ snapshots:
       - debug
 
   get-it@8.6.7:
-    dependencies:
-      '@types/follow-redirects': 1.14.4
-      '@types/progress-stream': 2.0.5
-      decompress-response: 7.0.0
-      follow-redirects: 1.15.9(debug@4.4.1)
-      is-retry-allowed: 2.2.0
-      progress-stream: 2.0.0
-      tunnel-agent: 0.6.0
-    transitivePeerDependencies:
-      - debug
-
-  get-it@8.6.7(debug@4.4.1):
     dependencies:
       '@types/follow-redirects': 1.14.4
       '@types/progress-stream': 2.0.5
@@ -27563,7 +27525,7 @@ snapshots:
       rollup: 4.40.2
       tinyglobby: 0.2.14
     optionalDependencies:
-      '@types/node': 20.19.10
+      '@types/node': 22.13.4
       fsevents: 2.3.3
       jiti: 2.4.2
       lightningcss: 1.30.1

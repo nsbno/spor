@@ -2,4 +2,3 @@ packages:
   - "packages/**"
   - "apps/docs"
   - "apps/studio"
-  - "apps/design-studio"

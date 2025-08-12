@@ -1,7 +1,7 @@
 import "./styles/style-overrides.css";
 
 import { withEmotionCache } from "@emotion/react";
-import { Brand, Language, SporProvider } from "@vygruppen/spor-react";
+import { Brand, Language, SporProvider, themes } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect } from "react";
 import {
   ActionFunctionArgs,
@@ -29,7 +29,6 @@ import {
   ServerStyleContext,
 } from "./root/setup/chakra-setup/styleContext";
 import { RootErrorBoundary } from "./root/setup/error-boundary/RootErrorBoundary";
-import { system } from "./system";
 import {
   getBrandFromCookie,
   setBrandInCookie,
@@ -152,7 +151,7 @@ type DocumentProps = {
 };
 
 const Document = withEmotionCache(
-  ({ children, title }: DocumentProps, emotionCache) => {
+  ({ children, brand, title }: DocumentProps, emotionCache) => {
     const serverStyleData = useContext(ServerStyleContext);
     const clientStyleData = useContext(ClientStyleContext);
 
@@ -190,7 +189,10 @@ const Document = withEmotionCache(
           ))}
         </head>
         <body>
-          <SporProvider language={Language.English} theme={system}>
+          <SporProvider
+            language={Language.English}
+            theme={themes[brand ?? "VyDigital"]}
+          >
             <SkipToContent />
             {children}
           </SporProvider>

@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 12.6.4
+
+### Patch Changes
+
+- f88c33b: Field: Fix styling for multi line errorText, where arrow collided with the error box.
+  DateRangePicker: Use same value type as DatePicker.
+  Button: Update style from figma, different padding and font sizes.
+
 ## 12.6.3
 
 ### Patch Changes

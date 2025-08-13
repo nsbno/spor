@@ -21,7 +21,7 @@ export type InputProps = FieldProps &
     "size" | "label" | "colorPalette" | "placeholder"
   > & {
     /** The input's label */
-    label: ReactNode;
+    label?: ReactNode;
     /** Element that shows up to the left */
     startElement?: React.ReactNode;
     /** Element that shows up to the right */

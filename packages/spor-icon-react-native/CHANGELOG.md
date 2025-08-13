@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.15.3
+
+### Patch Changes
+
+- ac8f61d: Add type module to all packages, update entries and outputs for ESM/CJS compatibility.
+
 ## 2.15.2
 
 ### Patch Changes

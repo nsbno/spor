@@ -1,16 +1,17 @@
 {
   "name": "@vygruppen/spor-react",
-  "version": "12.6.4",
+  "type": "module",
+  "version": "12.7.1",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "require": "./dist/index.cjs"
     },
     "./icons": {
       "types": "./dist/icons/index.d.ts",
       "import": "./dist/icons/index.mjs",
-      "require": "./dist/icons/index.js"
+      "require": "./dist/icons/index.cjs"
     }
   },
   "license": "MIT",

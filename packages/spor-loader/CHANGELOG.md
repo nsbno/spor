@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader
 
+## 0.7.0
+
+### Minor Changes
+
+- ac8f61d: Add type module to all packages, update entries and outputs for ESM/CJS compatibility.
+
 ## 0.6.0
 
 ### Minor Changes

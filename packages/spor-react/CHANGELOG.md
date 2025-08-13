@@ -1,5 +1,25 @@
 # @vygruppen/spor-react
 
+## 12.7.1
+
+### Patch Changes
+
+- 3e21810: Make label optional in inputprops, so i.e. SearchInput and PhoneNumber, not required.
+- 6a454d2: Use key for recipes, to allow customizing recipes. Also fix recipe for collapsible
+
+## 12.7.0
+
+### Minor Changes
+
+- ac8f61d: Add type module to all packages, update entries and outputs for ESM/CJS compatibility.
+
+### Patch Changes
+
+- Updated dependencies [ac8f61d]
+  - @vygruppen/spor-loader@0.7.0
+  - @vygruppen/spor-icon-react@4.2.1
+  - @vygruppen/spor-design-tokens@4.0.7
+
 ## 12.6.4
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
-  "name": "@vygruppen/designmanual-frontend",
-  "version": "0.0.55",
+  "name": "@vygruppen/designmanual-docs",
+  "version": "0.0.57",
   "private": true,
   "type": "module",
   "license": "MIT",

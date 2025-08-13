@@ -1,35 +1,31 @@
 {
   "include": [
-    "**/*",
-    "**/.server/**/*",
-    "**/.client/**/*",
-    ".react-router/types/**/*",
     "env.d.ts",
     "types.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "vite.config.mts"
+    "vite.config.mts",
+    ".react-router/types/**/*"
   ],
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "es2021"],
-    "types": ["node", "vite/client", "@remix-run/node"],
-    "isolatedModules": true,
-    "target": "es2021",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "jsx": "react-jsx",
+    "types": ["vite/client", "@react-router/node"],
     "rootDirs": [".", "./.react-router/types"],
+    "lib": ["DOM", "DOM.Iterable", "es2021"],
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "Bundler",
+    "module": "ESNext",
+    "resolveJsonModule": true,
+    "target": "es2021",
+    "strict": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./app/*"]
     },
-    "esModuleInterop": true,
-    "verbatimModuleSyntax": true,
     "noEmit": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
     "allowJs": false,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   }
 }

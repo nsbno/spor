@@ -19,7 +19,6 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
 export default function BaseLayout() {
   const { headings, contentRef } = useHeadings();
   const { slug } = useLoaderData<typeof loader>();
-  console.log("slug 1", slug);
   return (
     <Flex
       flex={1}

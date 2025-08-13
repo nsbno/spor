@@ -102,10 +102,9 @@ export const links: LinksFunction = () => {
   ];
 };
 
-export const loader = async ({ request, params }: LoaderFunctionArgs) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   const initialSanityData = await getInitialSanityData();
   const brand = await getBrandFromCookie(request.headers.get("cookie") ?? "");
-  const slug = params.slug;
 
   const isMac = /Mac|iPod|iPhone|iPad/.test(
     request.headers.get("user-agent") ?? "",
@@ -119,7 +118,6 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     brand,
     isMac,
     domain,
-    slug,
   };
 };
 

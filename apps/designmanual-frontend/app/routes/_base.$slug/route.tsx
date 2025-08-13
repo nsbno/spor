@@ -1,7 +1,9 @@
 import { Box, Heading, Text } from "@vygruppen/spor-react";
-import { useLoaderData } from "react-router";
+import { LoaderFunctionArgs, useLoaderData } from "react-router";
 
-import { loader } from "~/root";
+export const loader = async ({ params }: LoaderFunctionArgs) => {
+  return { slug: params.slug };
+};
 
 export default function Index() {
   const loaderData = useLoaderData<typeof loader>();
@@ -11,7 +13,7 @@ export default function Index() {
       <Heading as="h1" marginBottom={4}>
         Design Manual {slug}
       </Heading>
-      <Text>This is the design system for Vygruppen.</Text>
+      <Text>This is the design manual for Vygruppen.</Text>
     </Box>
   );
 }

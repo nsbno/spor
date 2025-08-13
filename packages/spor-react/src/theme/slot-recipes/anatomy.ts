@@ -277,3 +277,5 @@ export const checkboxCardAnatomy = createAnatomy("checkbox-card", [
   "indicator",
   "content",
 ]);
+
+export { collapsibleAnatomy } from "@ark-ui/react/collapsible";

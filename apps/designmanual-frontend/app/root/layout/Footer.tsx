@@ -6,10 +6,10 @@ import {
 } from "@vygruppen/spor-react";
 import { Link } from "react-router";
 
-import { useMenu } from "~/utils/useMenu";
+//import { useMenu } from "~/utils/useMenu";
 
 export const Footer = () => {
-  const menu = useMenu("footer-menu");
+  //const menu = useMenu("footer-menu");
   const borderColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
 
   return (
@@ -21,6 +21,11 @@ export const Footer = () => {
       paddingTop={2}
       borderTop="1px solid"
       borderColor={borderColor}
+      maxWidth={[null, null, null, "container.lg", "container.xl"]}
+      paddingX={[3, null, 6, 4, 8]}
+      marginBottom={["3.75rem", null, "5rem", "5rem"]}
+      width={["100%", null, "container.lg", "container.xl"]}
+      marginX="auto"
     >
       <Link to="/" aria-label="Go to the front page">
         <VyLogo
@@ -37,9 +42,9 @@ export const Footer = () => {
         as="nav"
         aria-label="Resources"
       >
-        {menu?.menuItems.map((item) => (
+        {/* {menu?.menuItems.map((item) => (
           <MenuItem title={item.title} url={item.url} key={item.title} />
-        ))}
+        ))} */}
       </Flex>
     </Flex>
   );

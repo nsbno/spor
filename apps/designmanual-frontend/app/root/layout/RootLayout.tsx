@@ -1,5 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 
+import { Footer } from "./Footer";
 import { SiteHeader } from "./SiteHeader";
 
 type BaseLayoutProps = {
@@ -18,6 +19,7 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
       <Flex flex={1} flexDirection="column">
         {children}
       </Flex>
+      <Footer />
     </Flex>
   );
 };

@@ -4,6 +4,7 @@ import {
   SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import {
+  Box,
   Button,
   Drawer,
   DrawerBody,
@@ -14,7 +15,6 @@ import {
   Flex,
   IconButton,
   Stack,
-  Text,
   useDisclosure,
   VyLogo,
 } from "@vygruppen/spor-react";
@@ -22,6 +22,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useRouteLoaderData } from "react-router";
 
 import { loader } from "~/root";
+import { getIcon } from "~/utils/getIcon";
 
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
 import { ChangeVersion } from "./ChangeVersion";
@@ -51,6 +52,10 @@ export const SiteHeader = () => {
 
   useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
 
+  const routeData = useRouteLoaderData<typeof loader>("root");
+  const slug = routeData?.slug;
+  const sections = routeData?.initialSanityData?.siteSettings?.topMenu || [];
+
   return (
     <Flex
       as="header"
@@ -58,8 +63,8 @@ export const SiteHeader = () => {
       alignItems="center"
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
-      backgroundColor={"surface.tertiary"}
-      className="light"
+      backgroundColor={"surface.default.white"}
+      className="dalightrk"
       css={{
         position: "sticky",
         top: "0",
@@ -77,15 +82,48 @@ export const SiteHeader = () => {
         position="relative"
       >
         <Link to="/" aria-label="Go to the front page">
-          <VyLogo className="dark" width="auto" height="56px" aria-label="Vy" />
+          <VyLogo
+            className="light"
+            width="auto"
+            height="56px"
+            aria-label="Vy"
+          />
         </Link>
+
+        <Box as="nav" flexGrow={1} justifyContent="flex-end">
+          <Flex as="ul" gap="2" width={"auto"} justifySelf={"flex-end"}>
+            {sections.map((section) => {
+              return (
+                <Box as="li" key={section.title}>
+                  <Link
+                    to={`/${section.slug.current}`}
+                    className="light"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <Button
+                      variant={
+                        section.default && slug === "" ? "secondary" : "ghost"
+                      }
+                      borderRadius="lg"
+                      display={{ base: "none", lg: "flex" }}
+                      border="none"
+                      leftIcon={getIcon({ iconName: section.icon })}
+                    >
+                      {section.title}
+                    </Button>
+                  </Link>
+                </Box>
+              );
+            })}
+          </Flex>
+        </Box>
 
         <Flex gap="1">
           <SearchDocsButton onSearchClick={() => setSearchDialogOpen(true)} />
 
-          <ChangeVersion />
+          {slug && slug === "spor" && <ChangeVersion />}
 
-          <SiteSettings />
+          {slug && slug === "spor" && <SiteSettings />}
 
           <MobileMenu />
 
@@ -138,7 +176,7 @@ const MobileMenu = () => {
 };
 
 const SearchDocsButton = ({ onSearchClick }: { onSearchClick: () => void }) => {
-  const isMac = useRouteLoaderData<typeof loader>("root")?.isMac;
+  //const isMac = useRouteLoaderData<typeof loader>("root")?.isMac;
 
   return (
     <>
@@ -148,26 +186,20 @@ const SearchDocsButton = ({ onSearchClick }: { onSearchClick: () => void }) => {
         size="md"
         aria-label="Search documentation"
         onClick={onSearchClick}
-        className="dark"
+        className="light"
         display={{ base: "flex", lg: "none" }}
       />
 
       <Button
-        variant="tertiary"
-        borderRadius="xs"
+        variant="ghost"
+        borderRadius="lg"
         leftIcon={<SearchOutline24Icon />}
-        rightIcon={<Text variant="xs">({isMac ? "cmd" : "ctrl"} + k)</Text>}
-        className="dark"
+        className="light"
         onClick={onSearchClick}
-        padding="2"
-        xl={{ minWidth: "38rem" }}
-        lg={{ minWidth: "24rem" }}
-        position="absolute"
-        left="50%"
-        transform="translateX(-50%)"
         display={{ base: "none", lg: "flex" }}
+        border="none"
       >
-        Search docs...
+        Søk
       </Button>
     </>
   );

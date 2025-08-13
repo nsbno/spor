@@ -22,7 +22,7 @@ export const SiteSettings = () => {
         variant="ghost"
         withChevron={false}
         fontWeight={"bold"}
-        className="dark"
+        className="light"
         minWidth="auto"
         title="Site settings"
       >

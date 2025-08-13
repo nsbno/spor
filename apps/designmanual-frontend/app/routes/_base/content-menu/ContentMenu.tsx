@@ -16,8 +16,9 @@ import { MenuItem } from "./MenuItem";
 
 export const ContentMenu = forwardRef<HTMLButtonElement>(
   function ContentMenu(_, ref) {
-    const menu = useMenu("side-menu");
     const location = useLocation();
+    console.log("ContentMenu", location);
+    const menu = useMenu(location.pathname.slice(1));
     let activeIndex =
       menu?.menuItems.findIndex(
         (item) =>

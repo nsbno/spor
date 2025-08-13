@@ -2,16 +2,14 @@
 
 import {
   Box,
-  chakra,
   Flex,
   Input as ChakraInput,
   InputElement,
+  useRecipe,
 } from "@chakra-ui/react";
 import React, { ComponentProps, forwardRef, ReactNode } from "react";
 
 type ChakraInputProps = ComponentProps<typeof ChakraInput>;
-
-import { inputRecipe } from "@/theme/recipes/input";
 
 import { Field, FieldProps } from "./Field";
 
@@ -57,8 +55,6 @@ export type InputProps = FieldProps &
  * @see https://spor.vy.no/components/input
  */
 
-const StyledInput = chakra(ChakraInput, inputRecipe);
-
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
@@ -72,6 +68,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref,
   ) => {
+    const recipe = useRecipe({ key: "input" });
+    const [recipeProps, restProps] = recipe.splitVariantProps(props);
+    const styles = recipe(recipeProps);
+
     return (
       <Field
         invalid={invalid}
@@ -91,16 +91,17 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             {startElement}
           </InputElement>
         )}
-        <StyledInput
+        <ChakraInput
           data-attachable
           ref={ref}
           focusVisibleRing="outside"
           overflow="hidden"
           paddingLeft={startElement ? "2.6rem" : undefined}
           paddingRight={endElement ? "2.6rem" : undefined}
-          {...props}
+          {...restProps}
           className={`peer ${props.className}`}
           placeholder=""
+          css={styles}
         />
         {endElement && (
           <InputElement placement="end" paddingX={2}>

@@ -1,10 +1,10 @@
 "use client";
 
 import {
-  chakra,
   Group as ChakraGroup,
   type GroupProps as ChakraGroupProps,
   type RecipeVariantProps,
+  useRecipe,
 } from "@chakra-ui/react";
 import { forwardRef, PropsWithChildren } from "react";
 
@@ -48,23 +48,13 @@ export type ButtonGroupProps = ChakraGroupProps &
  * </ButtonGroup>
  */
 
-const Group = chakra(ChakraGroup, groupRecipe);
-
 export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
   (props, ref) => {
-    const { children, disabled, grow, attached, ...rest } = props;
+    const recipe = useRecipe({ key: "buttonGroup" });
+    const [recipeProps, restProps] = recipe.splitVariantProps(props);
+    const styles = recipe(recipeProps);
 
-    return (
-      <Group
-        {...rest}
-        ref={ref}
-        attached={attached}
-        grow={grow}
-        disabled={disabled}
-      >
-        {children}
-      </Group>
-    );
+    return <ChakraGroup {...restProps} ref={ref} css={styles} />;
   },
 );
 ButtonGroup.displayName = "ButtonGroup";

@@ -1,4 +1,4 @@
-import { Box, Flex, Stack } from "@chakra-ui/react";
+import { Flex, Stack } from "@chakra-ui/react";
 import { type LoaderFunctionArgs, Outlet, useLoaderData } from "react-router";
 
 import { Footer } from "~/root/layout/Footer";
@@ -21,27 +21,26 @@ export default function BaseLayout() {
   const { slug } = useLoaderData<typeof loader>();
   console.log("slug 1", slug);
   return (
-    <Flex flex={1}>
+    <Flex
+      flex={1}
+      as="main"
+      id="content"
+      maxWidth={[null, null, null, "container.lg", "container.xl"]}
+      width={["100%", null, "container.lg", "container.xl"]}
+      marginX="auto"
+      marginTop={3}
+      paddingX={[3, null, 6, 4, 8]}
+      marginBottom={["3.75rem", null, "5rem", "5rem"]}
+      ref={contentRef}
+    >
       {slug && slug === "spor" && <LeftSidebar />}
-      <Box
-        as="main"
-        id="content"
-        display="flex"
-        marginTop={3}
-        paddingX={[3, null, 6, 4, 8]}
-        marginX="auto"
-        marginBottom={["3.75rem", null, "5rem", "5rem"]}
-        maxWidth={[null, null, null, "container.lg", "container.xl"]}
-        flex={1}
-        ref={contentRef}
-      >
-        <Stack flexGrow={1} overflow={"hidden"} padding={1}>
-          <Outlet />
-          <Footer />
-        </Stack>
 
-        <TableOfContent headings={headings} />
-      </Box>
+      <Stack flexGrow={1} overflow={"hidden"} padding={1}>
+        <Outlet />
+        <Footer />
+      </Stack>
+
+      {slug && slug === "spor" && <TableOfContent headings={headings} />}
     </Flex>
   );
 }

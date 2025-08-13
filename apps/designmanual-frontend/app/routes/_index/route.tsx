@@ -1,29 +1,31 @@
-import { Box, Heading, Text } from "@vygruppen/spor-react";
+import { Box, Flex, Heading, Text } from "@vygruppen/spor-react";
 
 import { Footer } from "~/root/layout/Footer";
 
 export default function Index() {
   return (
-    <Box backgroundColor="bg" flex="1">
-      <Box
-        as="main"
-        id="content"
-        maxWidth="container.lg"
-        marginX="auto"
-        marginY={3}
-        paddingX={4}
-      >
-        <Heading as="h1" marginBottom={4}>
-          Design Manual frontside
-        </Heading>
-        <Text>
-          This is the design manual for Vygruppen. It contains guidelines and
-          components that are used across our applications.
-        </Text>
-      </Box>
-      <Box maxWidth="container.lg" marginX="auto" marginY={3} paddingX={4}>
+    <Flex
+      flex={1}
+      flexDirection={"column"}
+      as="main"
+      id="content"
+      maxWidth={[null, null, null, "container.lg", "container.xl"]}
+      width={["100%", null, "container.lg", "container.xl"]}
+      marginX="auto"
+      marginTop={3}
+      paddingX={[3, null, 6, 4, 8]}
+      marginBottom={["3.75rem", null, "5rem", "5rem"]}
+    >
+      <Heading as="h1" marginBottom={4}>
+        Design Manual frontside
+      </Heading>
+      <Text flexGrow={1}>
+        This is the design manual for Vygruppen. It contains guidelines and
+        components that are used across our applications.
+      </Text>
+      <Box>
         <Footer />
       </Box>
-    </Box>
+    </Flex>
   );
 }

@@ -86,9 +86,11 @@ export const Footer = () => {
                   color={"white"}
                   textAlign={["left", null, "center"]}
                   fontSize="xs"
-                  style={{
-                    whiteSpace: "pre-line",
-                    wordBreak: "break-word",
+                  css={{
+                    "& a": {
+                      color: "inherit",
+                      textDecoration: "underline",
+                    },
                   }}
                 >
                   <PortableText value={item.description} />

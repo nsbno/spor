@@ -94,7 +94,7 @@ const components: Partial<PortableTextReactComponents> = {
       </Heading>
     ),
     normal: ({ children }) => {
-      const arrayChildren = React.Children.toArray(children);
+      const arrayChildren = React.Children.toArray(children as React.ReactNode);
       if (arrayChildren.length === 0 || arrayChildren.join("") === "") {
         return null;
       }

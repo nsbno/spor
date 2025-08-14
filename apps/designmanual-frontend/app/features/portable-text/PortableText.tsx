@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ButtonProps } from "@chakra-ui/react";
 import {
-  PortableText as SanityPortableText,
   PortableTextReactComponents,
+  PortableText as SanityPortableText,
 } from "@portabletext/react";
 import {
   CheckmarkFill30Icon,

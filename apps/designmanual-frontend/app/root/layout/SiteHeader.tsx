@@ -64,7 +64,7 @@ export const SiteHeader = () => {
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
       backgroundColor={"surface.default.white"}
-      className="dalightrk"
+      className="light"
       css={{
         position: "sticky",
         top: "0",
@@ -85,7 +85,7 @@ export const SiteHeader = () => {
           <VyLogo
             className="light"
             width="auto"
-            height="56px"
+            height={["30px", "36px", null, "48px"]}
             aria-label="Vy"
           />
         </Link>

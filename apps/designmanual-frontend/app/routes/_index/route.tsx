@@ -1,13 +1,8 @@
 import { Flex, Heading, Text } from "@vygruppen/spor-react";
-import { useRouteLoaderData } from "react-router";
-
-import { loader } from "~/root";
 
 import { LeftSidebar } from "../_base/left-sidebar/LeftSidebar";
 
 export default function Index() {
-  const routeData = useRouteLoaderData<typeof loader>("root");
-  console.log("Index routeData", routeData);
   return (
     <Flex
       flex={1}

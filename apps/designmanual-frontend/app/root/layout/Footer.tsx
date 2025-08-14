@@ -1,35 +1,41 @@
 import {
+  Box,
   Flex,
-  TextLink,
+  Text,
   useColorModeValue,
   VyLogo,
 } from "@vygruppen/spor-react";
-import { Link } from "react-router";
+import { Link, useRouteLoaderData } from "react-router";
 
-//import { useMenu } from "~/utils/useMenu";
+import { PortableText } from "~/features/portable-text/PortableText";
+import { loader } from "~/root";
 
 export const Footer = () => {
-  //const menu = useMenu("footer-menu");
   const borderColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
+  const routeData = useRouteLoaderData<typeof loader>("root");
+  const footerItems =
+    routeData?.initialSanityData?.siteSettings?.footerItems || [];
 
   return (
     <Flex
       as="footer"
       justifyContent="space-between"
+      backgroundColor={"surface.tertiary"}
       alignItems="center"
+      gap="4"
       marginTop={3}
       paddingTop={2}
       borderTop="1px solid"
       borderColor={borderColor}
-      maxWidth={[null, null, null, "container.lg", "container.xl"]}
       paddingX={[3, null, 6, 4, 8]}
-      marginBottom={["3.75rem", null, "5rem", "5rem"]}
-      width={["100%", null, "container.lg", "container.xl"]}
+      width={"100%"}
       marginX="auto"
+      minHeight={"8.75rem"}
     >
       <Link to="/" aria-label="Go to the front page">
         <VyLogo
           aria-hidden="true"
+          className="dark"
           width="auto"
           height={["30px", "36px", null, "48px"]}
         />
@@ -37,33 +43,46 @@ export const Footer = () => {
 
       <Flex
         flexDirection="row"
+        justifyContent={"center"}
+        alignItems="start"
         gap={2}
         flexWrap="wrap"
-        as="nav"
-        aria-label="Resources"
+        flexGrow={1}
       >
-        {/* {menu?.menuItems.map((item) => (
-          <MenuItem title={item.title} url={item.url} key={item.title} />
-        ))} */}
+        <Flex
+          flexDirection={"column"}
+          gap="2"
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          <Text color="white" fontSize="xs">
+            Har du spørsmål eller kommentar angående designmanualen?
+          </Text>
+          <Flex gap="8">
+            {footerItems.map((item) => (
+              <Flex
+                flexDirection="column"
+                key={item._key}
+                alignItems={"center"}
+              >
+                <Text
+                  as="h6"
+                  className="dark"
+                  color={"white"}
+                  textAlign={"center"}
+                  fontWeight={"bold"}
+                  fontSize="xs"
+                >
+                  {item.title}
+                </Text>
+                <Box color={"white"} textAlign={"center"} fontSize="xs">
+                  <PortableText value={item.description} />
+                </Box>
+              </Flex>
+            ))}
+          </Flex>
+        </Flex>
       </Flex>
     </Flex>
   );
-};
-
-type MenuItemProps = {
-  title: string;
-  url: string;
-};
-const MenuItem = ({ title, url }: MenuItemProps) => {
-  return (
-    <TextLink {...getLinkProps(url)} variant="primary">
-      {title}
-    </TextLink>
-  );
-};
-const getLinkProps = (url: string) => {
-  if (/^https?:\/\//.test(url)) {
-    return { as: "a", href: url, target: "_blank", rel: "noopener noreferrer" };
-  }
-  return { as: Link, to: url };
 };

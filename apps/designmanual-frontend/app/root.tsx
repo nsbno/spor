@@ -191,7 +191,7 @@ const Document = withEmotionCache(
         </head>
         <body>
           <SporProvider
-            language={Language.English}
+            language={Language.NorwegianBokmal}
             theme={themes[brand ?? "VyDigital"]}
           >
             <SkipToContent />

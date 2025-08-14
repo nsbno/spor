@@ -11,10 +11,8 @@ type Menu = {
   };
 };
 
-export const useMenu = (slug: string = "identitet") => {
-  const filter = slug;
-
-  console.log("useMenu", filter);
+export const useMenu = (slug: string = "side-menu-identitet") => {
+  const filter = slug || "side-menu-identitet";
 
   const { initialSanityData } = useMatchesData<{
     initialSanityData: {
@@ -22,7 +20,11 @@ export const useMenu = (slug: string = "identitet") => {
     };
   }>("root");
 
-  console.log("initialSanityData", initialSanityData.menus);
-
-  return initialSanityData.menus.find((menu) => menu.relatedTo.slug === filter);
+  const menu = initialSanityData.menus.find(
+    (menu) => menu.slug === filter || menu.relatedTo.slug === filter,
+  );
+  if (!menu) {
+    return null;
+  }
+  return menu;
 };

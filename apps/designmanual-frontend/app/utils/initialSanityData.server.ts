@@ -1,3 +1,5 @@
+import { PortableTextBlock } from "@portabletext/react";
+
 import { getClient } from "./sanity/client";
 
 type SiteSettings = {
@@ -18,8 +20,9 @@ export type Section = {
 };
 export type FooterItem = {
   _type: string;
+  _key: string;
   title: string;
-  url: string;
+  description: PortableTextBlock[];
 };
 export type MenuItem = {
   _type: "menuItem" | "divider";
@@ -85,11 +88,11 @@ export const getInitialSanityData = async () => {
           title,
           icon
         },
-        footerItems[]->{
-          _id,
+        footerItems[]{
+          _key,
           _type,
-          title,
-          url,
+          description,
+          title
         }
       }
     }`,

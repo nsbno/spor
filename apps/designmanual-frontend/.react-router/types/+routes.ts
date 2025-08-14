@@ -22,6 +22,12 @@ type Pages = {
   "/studio": {
     params: {};
   };
+  "/:category/:slug": {
+    params: {
+      "category": string;
+      "slug": string;
+    };
+  };
   "/:slug": {
     params: {
       "slug": string;
@@ -32,7 +38,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/playground" | "/health" | "/studio" | "/:slug";
+    page: "/" | "/playground" | "/health" | "/studio" | "/:category/:slug" | "/:slug";
   };
   "routes/playground/route.tsx": {
     id: "routes/playground";
@@ -52,7 +58,11 @@ type RouteFiles = {
   };
   "routes/_base/route.tsx": {
     id: "routes/_base";
-    page: "/:slug";
+    page: "/:category/:slug" | "/:slug";
+  };
+  "routes/_base.$category.$slug/route.tsx": {
+    id: "routes/_base.$category.$slug";
+    page: "/:category/:slug";
   };
   "routes/_base.$slug/route.tsx": {
     id: "routes/_base.$slug";

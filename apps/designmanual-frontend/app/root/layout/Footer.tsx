@@ -30,16 +30,19 @@ export const Footer = () => {
       paddingX={[3, null, 6, 4, 8]}
       width={"100%"}
       marginX="auto"
-      minHeight={"8.75rem"}
+      minHeight={"12rem"}
+      flexDirection={["column", null, "row"]}
     >
-      <Link to="/" aria-label="Go to the front page">
-        <VyLogo
-          aria-hidden="true"
-          className="dark"
-          width="auto"
-          height={["30px", "36px", null, "48px"]}
-        />
-      </Link>
+      <Box alignSelf="start" marginTop="4">
+        <Link to="/" aria-label="Go to the front page">
+          <VyLogo
+            aria-hidden="true"
+            className="dark"
+            width="auto"
+            height={["30px", "36px", null, "42px"]}
+          />
+        </Link>
+      </Box>
 
       <Flex
         flexDirection="row"
@@ -51,31 +54,43 @@ export const Footer = () => {
       >
         <Flex
           flexDirection={"column"}
-          gap="2"
+          gap="6"
           justifyContent={"center"}
-          alignItems={"center"}
+          alignItems={["start", null, "center"]}
         >
           <Text color="white" fontSize="xs">
             Har du spørsmål eller kommentar angående designmanualen?
           </Text>
-          <Flex gap="8">
+          <Flex
+            gap={["4", null, "8"]}
+            flexDirection={["column", null, "row"]}
+            marginBottom={4}
+          >
             {footerItems.map((item) => (
               <Flex
                 flexDirection="column"
                 key={item._key}
-                alignItems={"center"}
+                textAlign={["left", null, "center"]}
               >
                 <Text
                   as="h6"
                   className="dark"
                   color={"white"}
-                  textAlign={"center"}
+                  textAlign={["left", null, "center"]}
                   fontWeight={"bold"}
                   fontSize="xs"
                 >
                   {item.title}
                 </Text>
-                <Box color={"white"} textAlign={"center"} fontSize="xs">
+                <Box
+                  color={"white"}
+                  textAlign={["left", null, "center"]}
+                  fontSize="xs"
+                  style={{
+                    whiteSpace: "pre-line",
+                    wordBreak: "break-word",
+                  }}
+                >
                   <PortableText value={item.description} />
                 </Box>
               </Flex>

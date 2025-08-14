@@ -13,7 +13,7 @@ type MenuItemProps = FlexProps & {
  */
 
 export const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
-  function MenuItem({ url, children, ...rest }, externalRef) {
+  function MenuItem({ url, children, isActive, ...rest }, externalRef) {
     const internalRef = useRef<HTMLButtonElement>(null);
 
     useImperativeHandle(
@@ -43,11 +43,11 @@ export const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
         paddingY={0.5}
         paddingX={2}
         fontWeight="normal"
-        backgroundColor="transparent"
         style={{ height: "auto" }}
         borderRadius="lg"
         fontSize={["mobile.xs", null, "desktop.xs"]}
         color="text"
+        backgroundColor={isActive ? "ghost.surface.active" : "transparent"}
         _hover={{ backgroundColor: "ghost.surface.hover" }}
         _active={{ backgroundColor: "ghost.surface.active" }}
         ref={internalRef}

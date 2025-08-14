@@ -49,6 +49,7 @@ const useSearchKeyboardShortcut = (onTriggered: () => void) => {
 /** The site header shown at the top of every part of our site */
 export const SiteHeader = () => {
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
+  const location = useLocation();
 
   useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
 
@@ -102,7 +103,10 @@ export const SiteHeader = () => {
                   >
                     <Button
                       variant={
-                        section.default && slug === "" ? "secondary" : "ghost"
+                        (section.default && slug === "") ||
+                        `/${section.slug.current}` === location.pathname
+                          ? "secondary"
+                          : "ghost"
                       }
                       borderRadius="lg"
                       display={{ base: "none", lg: "flex" }}
@@ -152,9 +156,9 @@ const MobileMenu = () => {
         icon={<HamburgerFill24Icon />}
         aria-label="Menu"
         variant="ghost"
+        className="light"
         size="md"
         onClick={onOpen}
-        className="dark"
         display={{ base: "flex", lg: "none" }}
       />
 

@@ -152,7 +152,6 @@ const MobileMenu = () => {
         icon={<HamburgerFill24Icon />}
         aria-label="Menu"
         variant="ghost"
-        className="light"
         size="md"
         onClick={onOpen}
         display={{ base: "flex", lg: "none" }}

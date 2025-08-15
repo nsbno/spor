@@ -24,7 +24,7 @@ import type { LoaderFunctionArgs, MetaFunction } from "react-router";
 import invariant from "tiny-invariant";
 
 import { PortableText } from "~/features/portable-text/PortableText";
-import { ComponentDocs } from "~/routes/_base.$category.$slug/component-docs/ComponentDocs";
+import { ComponentDocs } from "~/routes/_base.$section.$category.$slug/component-docs/ComponentDocs";
 import { useBrand } from "~/utils/brand";
 import { getClient } from "~/utils/sanity/client";
 import {

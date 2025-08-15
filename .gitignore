@@ -17,7 +17,9 @@ packages/*/tmp
 .idea/
 .vscode/
 doc
-apps/designmanual-frontend/.react-router/
+
+# react router
+apps/*/.react-router/
 
 # debug
 npm-debug.log*

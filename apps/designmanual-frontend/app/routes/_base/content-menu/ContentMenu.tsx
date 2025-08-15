@@ -39,6 +39,8 @@ export const ContentMenu = forwardRef<HTMLButtonElement>(
     const current =
       location.pathname === "/" ? "/identitet" : location.pathname;
 
+    const currentSection = menu?.relatedTo.slug;
+
     return (
       <>
         <Flex flexDirection={"column"} display={["flex", null, null, "none"]}>
@@ -78,7 +80,7 @@ export const ContentMenu = forwardRef<HTMLButtonElement>(
                     {subItems?.map((subItem) => (
                       <MenuItem
                         key={subItem.url}
-                        url={subItem.url}
+                        url={`${currentSection}${subItem.url}`}
                         isActive={subItem.url === location.pathname}
                       >
                         {subItem.title}

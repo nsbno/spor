@@ -12,8 +12,7 @@ type Menu = {
 };
 
 export const useMenu = (slug: string = "side-menu-identitet") => {
-  const filter = slug || "side-menu-identitet";
-
+  const getSectionLevel = slug.split("/")[0] || "side-menu-identitet";
   const { initialSanityData } = useMatchesData<{
     initialSanityData: {
       menus: Menu[];
@@ -21,7 +20,8 @@ export const useMenu = (slug: string = "side-menu-identitet") => {
   }>("root");
 
   const menu = initialSanityData.menus.find(
-    (menu) => menu.slug === filter || menu.relatedTo.slug === filter,
+    (menu) =>
+      menu.slug === getSectionLevel || menu.relatedTo.slug === getSectionLevel,
   );
   if (!menu) {
     return null;

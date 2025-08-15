@@ -54,7 +54,8 @@ export const SiteHeader = () => {
   useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
 
   const routeData = useRouteLoaderData<typeof loader>("root");
-  const slug = routeData?.slug;
+  const slug = useLocation().pathname.slice(1);
+  const currentSection = slug?.split("/")[0] || "";
   const sections = routeData?.initialSanityData?.siteSettings?.topMenu || [];
 
   return (
@@ -125,9 +126,9 @@ export const SiteHeader = () => {
         <Flex gap="1">
           <SearchDocsButton onSearchClick={() => setSearchDialogOpen(true)} />
 
-          {slug && slug === "spor" && <ChangeVersion />}
+          {currentSection && currentSection === "spor" && <ChangeVersion />}
 
-          {slug && slug === "spor" && <SiteSettings />}
+          {currentSection && currentSection === "spor" && <SiteSettings />}
 
           <MobileMenu />
 

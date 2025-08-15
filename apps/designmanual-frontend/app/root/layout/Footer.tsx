@@ -76,7 +76,6 @@ export const Footer = () => {
               >
                 <Text
                   as="h6"
-                  className="dark"
                   color={"text.inverted"}
                   textAlign={["left", null, "center"]}
                   fontWeight={"bold"}

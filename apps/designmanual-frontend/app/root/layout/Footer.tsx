@@ -16,6 +16,9 @@ export const Footer = () => {
   const footerItems =
     routeData?.initialSanityData?.siteSettings?.footerItems || [];
 
+  const theme = useColorModeValue("light", "dark");
+  console.log("Footer theme:", theme);
+
   return (
     <Flex
       as="footer"

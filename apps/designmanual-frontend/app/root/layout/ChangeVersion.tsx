@@ -20,7 +20,6 @@ export const ChangeVersion = () => {
   return (
     <Select
       label="v2"
-      className="light"
       minWidth={{ base: "9", lg: "11" }}
       value={[]}
       collection={versions}

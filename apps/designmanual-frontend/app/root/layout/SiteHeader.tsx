@@ -66,7 +66,6 @@ export const SiteHeader = () => {
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
       backgroundColor={"surface.default.white"}
-      className="light"
       css={{
         position: "sticky",
         top: "0",
@@ -97,11 +96,7 @@ export const SiteHeader = () => {
             {sections.map((section) => {
               return (
                 <Box as="li" key={section.title}>
-                  <Link
-                    to={`/${section.slug.current}`}
-                    className="light"
-                    style={{ textDecoration: "none" }}
-                  >
+                  <Link to={`/${section.slug.current}`}>
                     <Button
                       variant={
                         (section.default && slug === "") ||
@@ -191,7 +186,6 @@ const SearchDocsButton = ({ onSearchClick }: { onSearchClick: () => void }) => {
         size="md"
         aria-label="Search documentation"
         onClick={onSearchClick}
-        className="light"
         display={{ base: "flex", lg: "none" }}
       />
 
@@ -199,7 +193,6 @@ const SearchDocsButton = ({ onSearchClick }: { onSearchClick: () => void }) => {
         variant="ghost"
         borderRadius="lg"
         leftIcon={<SearchOutline24Icon />}
-        className="light"
         onClick={onSearchClick}
         display={{ base: "none", lg: "flex" }}
         border="none"

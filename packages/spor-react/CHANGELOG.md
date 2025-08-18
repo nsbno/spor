@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 12.7.1
+
+### Patch Changes
+
+- 3e21810: Make label optional in inputprops, so i.e. SearchInput and PhoneNumber, not required.
+- 6a454d2: Use key for recipes, to allow customizing recipes. Also fix recipe for collapsible
+
 ## 12.7.0
 
 ### Minor Changes

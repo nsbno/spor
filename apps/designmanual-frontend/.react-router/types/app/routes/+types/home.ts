@@ -23,43 +23,43 @@ type Matches = [
 type Annotations = GetAnnotations<Info & { module: Module; matches: Matches }>;
 
 // links
-export type RouteLinkDescriptors = Annotations["LinkDescriptors"];
-export type RouteLinksFunction = Annotations["LinksFunction"];
+export type LinkDescriptors = Annotations["LinkDescriptors"];
+export type LinksFunction = Annotations["LinksFunction"];
 
 // meta
-export type RouteMetaArgs = Annotations["MetaArgs"];
-export type RouteMetaDescriptors = Annotations["MetaDescriptors"];
-export type RouteMetaFunction = Annotations["MetaFunction"];
+export type MetaArgs = Annotations["MetaArgs"];
+export type MetaDescriptors = Annotations["MetaDescriptors"];
+export type MetaFunction = Annotations["MetaFunction"];
 
 // headers
-export type RouteHeadersArgs = Annotations["HeadersArgs"];
-export type RouteHeadersFunction = Annotations["HeadersFunction"];
+export type HeadersArgs = Annotations["HeadersArgs"];
+export type HeadersFunction = Annotations["HeadersFunction"];
 
 // unstable_middleware
-export type RouteUnstableMiddlewareFunction =
+export type unstable_MiddlewareFunction =
   Annotations["unstable_MiddlewareFunction"];
 
 // unstable_clientMiddleware
-export type RouteUnstableClientMiddlewareFunction =
+export type unstable_ClientMiddlewareFunction =
   Annotations["unstable_ClientMiddlewareFunction"];
 
 // loader
-export type RouteLoaderArgs = Annotations["LoaderArgs"];
+export type LoaderArgs = Annotations["LoaderArgs"];
 
 // clientLoader
-export type RouteClientLoaderArgs = Annotations["ClientLoaderArgs"];
+export type ClientLoaderArgs = Annotations["ClientLoaderArgs"];
 
 // action
-export type RouteActionArgs = Annotations["ActionArgs"];
+export type ActionArgs = Annotations["ActionArgs"];
 
 // clientAction
-export type RouteClientActionArgs = Annotations["ClientActionArgs"];
+export type ClientActionArgs = Annotations["ClientActionArgs"];
 
 // HydrateFallback
-export type RouteHydrateFallbackProps = Annotations["HydrateFallbackProps"];
+export type HydrateFallbackProps = Annotations["HydrateFallbackProps"];
 
 // Component
-export type RouteComponentProps = Annotations["ComponentProps"];
+export type ComponentProps = Annotations["ComponentProps"];
 
 // ErrorBoundary
-export type RouteErrorBoundaryProps = Annotations["ErrorBoundaryProps"];
+export type ErrorBoundaryProps = Annotations["ErrorBoundaryProps"];

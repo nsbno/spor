@@ -56,10 +56,10 @@ export const Combobox = (props: ComboboxProps<object>) => {
     loading,
     leftIcon,
     rightIcon,
-    borderBottomLeftRadius = "sm",
-    borderBottomRightRadius = "sm",
-    borderTopLeftRadius = "sm",
-    borderTopRightRadius = "sm",
+    borderBottomLeftRadius,
+    borderBottomRightRadius,
+    borderTopLeftRadius,
+    borderTopRightRadius,
     marginBottom,
     marginTop,
     marginX,
@@ -171,6 +171,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
           )
         }
         placeholder=""
+        data-attachable
       />
       <span aria-hidden="true" data-trigger="multiselect"></span>
       {state.isOpen && !loading && (

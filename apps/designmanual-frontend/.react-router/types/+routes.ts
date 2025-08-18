@@ -13,15 +13,49 @@ type Pages = {
   "/": {
     params: object;
   };
+  "/playground": {
+    params: object;
+  };
+  "/health": {
+    params: object;
+  };
+  "/studio": {
+    params: object;
+  };
+  "/:slug": {
+    params: {
+      slug: string;
+    };
+  };
 };
 
 type RouteFiles = {
   "root.tsx": {
     id: "root";
+    page: "/" | "/playground" | "/health" | "/studio" | "/:slug";
+  };
+  "routes/playground/route.tsx": {
+    id: "routes/playground";
+    page: "/playground";
+  };
+  "routes/_index/route.tsx": {
+    id: "routes/_index";
     page: "/";
   };
-  "routes/home.tsx": {
-    id: "routes/home";
-    page: "/";
+  "routes/health/route.tsx": {
+    id: "routes/health";
+    page: "/health";
+  };
+  "routes/studio/route.tsx": {
+    id: "routes/studio";
+    page: "/studio";
+  };
+  "routes/_base/route.tsx": {
+    id: "routes/_base";
+    page: "/:slug";
+  };
+  "routes/_base.$slug/route.tsx": {
+    id: "routes/_base.$slug";
+    page: "/:slug";
   };
 };

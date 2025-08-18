@@ -32,11 +32,11 @@ export type RouteHeadersArgs = Annotations["HeadersArgs"];
 export type RouteHeadersFunction = Annotations["HeadersFunction"];
 
 // unstable_middleware
-export type RouteUnstableMiddlewareFunction =
+export type RouteUnstable_MiddlewareFunction =
   Annotations["unstable_MiddlewareFunction"];
 
 // unstable_clientMiddleware
-export type RouteUnstableClientMiddlewareFunction =
+export type RouteUnstable_ClientMiddlewareFunction =
   Annotations["unstable_ClientMiddlewareFunction"];
 
 // loader

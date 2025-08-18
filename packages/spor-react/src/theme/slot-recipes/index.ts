@@ -5,6 +5,7 @@ import { alertServiceSlotRecipe } from "./alert-service";
 import { breadcrumbSlotRecipe } from "./breadcrumb";
 import { checkboxSlotRecipe } from "./checkbox";
 import { choiceChipSlotRecipe } from "./choice-chip";
+import { collapsibleSlotRecipe } from "./collapsible";
 import { datePickerSlotRecipe } from "./datepicker";
 import { dialogSlotRecipe } from "./dialog";
 import { drawerSlotRecipe } from "./drawer";
@@ -64,4 +65,5 @@ export const slotRecipes = {
   travelTag: travelTagSlotRecipe,
   toast: toastSlotRecipe,
   checkboxCard: choiceChipSlotRecipe,
+  collapsible: collapsibleSlotRecipe,
 };

@@ -35,6 +35,7 @@ import { CodeBlock } from "./code-block/CodeBlock";
 import { ImageWithCaption } from "./ImageWithCaption";
 import { InteractiveCode } from "./interactive-code/InteractiveCode";
 import { LinkableHeading } from "./LinkableHeading";
+import { ArticleHeaderSerializer } from "./serializers/ArticleHeaderSerializer";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
@@ -133,6 +134,7 @@ const components: Partial<PortableTextReactComponents> = {
     </ListItem>
   ),
   types: {
+    articleHeader: ArticleHeaderSerializer,
     buttonLink: ({ value }) => {
       const isInternal = value.url.startsWith("/");
       const linkProps = isInternal

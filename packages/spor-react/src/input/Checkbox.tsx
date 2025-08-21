@@ -31,6 +31,7 @@ type CheckboxProps = ChakraCheckbox.RootProps &
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (props, ref) => {
+    // Forwardref caues issue with prop types not working. Forwardref is unessessary here, as ChakraCheckbox already has a ref prop and is deprecated in react 19.
     const { children, inputProps, rootRef, ...rest } = props;
     return (
       <ChakraCheckbox.Root ref={rootRef} {...rest}>

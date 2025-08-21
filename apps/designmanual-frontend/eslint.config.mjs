@@ -4,9 +4,6 @@ import config from "@vygruppen/eslint-config";
 export default [
   ...config,
   {
-    ignores: ["./build/*", "+*"],
-    rules: {
-      "@typescript-eslint/no-namespace": "off", // Bør vøre på?
-    },
+    ignores: ["./build/*", "**/root.ts", "**/route.ts", "**/+routes.ts"],
   },
 ];

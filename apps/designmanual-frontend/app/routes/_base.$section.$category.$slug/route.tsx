@@ -1,3 +1,4 @@
+import { PortableTextBlock } from "@portabletext/react";
 import { groq } from "@sanity/groq-store";
 import {
   FigmaOutline24Icon,
@@ -20,17 +21,17 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import { PropsWithChildren } from "react";
-import type { LoaderFunctionArgs, MetaFunction } from "react-router";
+import {
+  type LoaderFunctionArgs,
+  type MetaFunction,
+  useLoaderData,
+} from "react-router";
 import invariant from "tiny-invariant";
 
 import { PortableText } from "~/features/portable-text/PortableText";
 import { ComponentDocs } from "~/routes/_base.$section.$category.$slug/component-docs/ComponentDocs";
 import { useBrand } from "~/utils/brand";
 import { getClient } from "~/utils/sanity/client";
-import {
-  PreviewableLoaderData,
-  usePreviewableData,
-} from "~/utils/sanity/usePreviewableData";
 import {
   blockContentToPlainText,
   isValidPreviewRequest,
@@ -55,22 +56,6 @@ type ComponentSection = {
     content: unknown[];
   }[];
 };
-type Data = {
-  _id: string;
-  title: string;
-  introduction?: unknown[];
-  slug: string;
-  category: {
-    title: string;
-    slug: string;
-  };
-  resourceLinks?: ResourceLink[];
-  mainImage?: unknown;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  content?: any[];
-  componentSections?: ComponentSection[];
-};
-type LoaderData = PreviewableLoaderData<Data>;
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   invariant(params.category, "Expected params.category");
@@ -107,9 +92,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     articleSlug: params.slug,
   };
   const isPreview = isValidPreviewRequest(request);
-  const initialData = await getClient(isPreview).fetch<
-    LoaderData["initialData"]
-  >(query, queryParams);
+  const initialData = await getClient(isPreview).fetch(query, queryParams);
 
   if (!initialData || initialData.length === 0) {
     throw new Response("Not Found", { status: 404 });
@@ -131,7 +114,9 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   const title = `${article.title} – ${article?.category?.title ?? "…"} – Spor`;
   const description = blockContentToPlainText(
     article.introduction ??
-      article.content?.find((block) => block._type === "introduction")?.content,
+      article.content?.find(
+        (block: PortableTextBlock) => block._type === "introduction",
+      )?.content,
   );
   const meta = [
     { title },
@@ -159,8 +144,10 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 };
 
 export default function ArticlePage() {
-  const { data: article, isPreview } = usePreviewableData<Data>();
+  const { initialData, isPreview } = useLoaderData<typeof loader>();
   const brand = useBrand();
+
+  const article = initialData[0];
 
   if (!article) {
     return null;
@@ -183,7 +170,7 @@ export default function ArticlePage() {
           {isPreview && <Badge colorPalette="yellow">Preview</Badge>}
         </HStack>
         <Flex wrap="wrap" gap={2} marginLeft={"auto"} justifyContent={"end"}>
-          {article.resourceLinks?.map((link) => (
+          {article.resourceLinks?.map((link: ResourceLink) => (
             <Button
               key={link.url}
               variant="tertiary"

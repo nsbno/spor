@@ -1,13 +1,7 @@
 import "./styles/style-overrides.css";
 
 import { withEmotionCache } from "@emotion/react";
-import {
-  Brand,
-  CheckboxGroup,
-  Language,
-  SporProvider,
-  themes,
-} from "@vygruppen/spor-react";
+import { Brand, Language, SporProvider, themes } from "@vygruppen/spor-react";
 import { ReactNode, useContext, useEffect } from "react";
 import {
   ActionFunctionArgs,

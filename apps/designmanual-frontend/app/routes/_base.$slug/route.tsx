@@ -1,5 +1,5 @@
 import { groq } from "@sanity/groq-store";
-import { Box, Heading } from "@vygruppen/spor-react";
+import { Box } from "@vygruppen/spor-react";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
 import invariant from "tiny-invariant";
 
@@ -12,7 +12,11 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     _id,
     title,
     "slug": slug.current,
-    "page": reference->{...}
+    "page": reference->{
+      _id,
+      title,
+      content
+    }
   }`;
 
   const data = await getClient().fetch(query, {
@@ -29,14 +33,11 @@ export default function Index() {
   const { data } = useLoaderData<typeof loader>();
 
   if (!data) {
-    return <Box>Section page not found</Box>;
+    return null;
   }
 
   return (
     <Box backgroundColor="bg" flex="1">
-      <Heading as="h1" marginBottom={4}>
-        {data.title}
-      </Heading>
       <PortableText value={data?.page.content} />
     </Box>
   );

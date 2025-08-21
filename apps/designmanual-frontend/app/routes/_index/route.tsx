@@ -1,8 +1,34 @@
-import { Flex, Heading, Text } from "@vygruppen/spor-react";
+import { groq } from "@sanity/groq-store";
+import { Flex } from "@vygruppen/spor-react";
+import { LoaderFunctionArgs, useLoaderData } from "react-router";
+
+import { PortableText } from "~/features/portable-text/PortableText";
+import { getClient } from "~/utils/sanity/client";
+import { isValidPreviewRequest } from "~/utils/sanity/utils";
 
 import { LeftSidebar } from "../_base/left-sidebar/LeftSidebar";
 
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  const isPreview = isValidPreviewRequest(request);
+  const query = groq`*[_type == "section" && default == true] {
+    _id,
+    title,
+    "slug": slug.current,
+    "icon": icon.asset->url,
+    "page": reference->{
+      _id,
+      title,
+      "slug": slug.current,
+      content
+      }
+    }[0]`;
+  const initialData = await getClient(isPreview).fetch(query);
+  return { initialData };
+};
+
 export default function Index() {
+  const { initialData } = useLoaderData<typeof loader>();
+
   return (
     <Flex
       flex={1}
@@ -22,13 +48,7 @@ export default function Index() {
         padding={1}
         backgroundColor="bg"
       >
-        <Heading as="h1" marginBottom={4}>
-          Design Manual frontside
-        </Heading>
-        <Text flexGrow={1}>
-          This is the design manual for Vygruppen. It contains guidelines and
-          components that are used across our applications.
-        </Text>
+        <PortableText value={initialData?.page.content} />
       </Flex>
     </Flex>
   );

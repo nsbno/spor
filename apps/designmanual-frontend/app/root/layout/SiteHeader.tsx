@@ -175,7 +175,7 @@ const MobileMenu = () => {
 };
 
 const SearchDocsButton = ({ onSearchClick }: { onSearchClick: () => void }) => {
-  //const isMac = useRouteLoaderData<typeof loader>("root")?.isMac;
+  const isMac = useRouteLoaderData<typeof loader>("root")?.isMac;
 
   return (
     <>
@@ -183,7 +183,7 @@ const SearchDocsButton = ({ onSearchClick }: { onSearchClick: () => void }) => {
         icon={<SearchFill24Icon />}
         variant="ghost"
         size="md"
-        aria-label="Search documentation"
+        aria-label={`Search documentation, ${isMac ? "cmd" : "ctrl"} + k to open modal`}
         onClick={onSearchClick}
         display={{ base: "flex", lg: "none" }}
       />

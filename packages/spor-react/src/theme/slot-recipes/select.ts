@@ -227,6 +227,8 @@ export const selectSlotRecipe = defineSlotRecipe({
           outlineColor: "floating.outline",
         },
       },
+    },
+    sideRadiusVariant: {
       rightSideSquare: {
         control: {
           outline: "1px solid",

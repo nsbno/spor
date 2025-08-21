@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.8.0
+
+### Minor Changes
+
+- 1424baf: Refactor: Replace the "rightSideSquare" and "leftSideSquare" variants with a new sideRadiusVariant prop. This improves consistency between floating and core styles for both square and standard radius variants.
+
 ## 12.7.1
 
 ### Patch Changes

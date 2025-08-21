@@ -30,8 +30,9 @@ export type SelectProps = ChakraSelectRootProps &
 /**
  * A Select component.
  *
- * This component is useful to choose an item from a dropdown list of items. The list has four different variants, core, floating, rightSideSquare, leftSideSquare.
- * The last two variants are useful in attachecdInput for example in the PhoneNumberInput and CountryCodeSelect components.
+ * This component is useful to choose an item from a dropdown list of items. The list has two different variants, core, floating and floating.
+ * It also has a sideRadiusVariant that can be used to make the sides square, rightSideSquare, leftSideSquare.
+ * The sideRadiusVariant is useful in attachecdInput for example in the PhoneNumberInput and CountryCodeSelect components.
  *
  * @example
  * ```tsx

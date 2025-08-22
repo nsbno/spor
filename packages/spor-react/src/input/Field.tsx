@@ -30,7 +30,7 @@ export type FieldBaseProps = {
 
 export type FieldProps = Omit<
   ChakraField.RootProps,
-  "label" | "onChange" | "onBlur" | "onFocus" | "onClick" | "children"
+  "label" | "onChange" | "onBlur"
 > &
   React.PropsWithChildren<FieldVariantProps> &
   FieldBaseProps;

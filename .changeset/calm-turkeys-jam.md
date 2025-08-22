@@ -2,6 +2,7 @@
 "@vygruppen/spor-react": patch
 ---
 
-Fix types for Field props and CheckboxGroup props.
-CheckboxGroup: Direction should not be required
-Field: onClick should not be omitted.
+Improve type definitions for Field and CheckboxGroup components:
+
+- CheckboxGroup: Make `direction` optional.
+- Field: Ensure `onClick` is included in props.

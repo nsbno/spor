@@ -208,6 +208,8 @@ const Document = withEmotionCache(
 export default function App() {
   const loaderData = useLoaderData<typeof loader>();
 
+  console.log("App loaderData:", loaderData);
+
   return (
     <Document brand={loaderData.brand as Brand}>
       <RootLayout>

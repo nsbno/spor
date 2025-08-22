@@ -57,6 +57,11 @@ export const getInitialSanityData = async () => {
         "menuItems": menuItems[]{
           _type,
           title,
+          "all": ^.relatedTo->slug.current,
+          "link": select(
+            defined(internalLink) => "/" + ^.relatedTo->slug.current + "/" + internalLink->slug.current, 
+            defined(externalLink) => externalLink
+          ),
           "url": select(
             defined(internalLink) => 
               "/" + internalLink->category->slug.current + 

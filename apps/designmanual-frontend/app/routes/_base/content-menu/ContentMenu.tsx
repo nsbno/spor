@@ -19,7 +19,19 @@ import { MenuItem } from "./MenuItem";
 export const ContentMenu = forwardRef<HTMLButtonElement>(
   function ContentMenu(_, ref) {
     const location = useLocation();
-    const menu = useMenu(location.pathname.slice(1));
+    const sections =
+      useRouteLoaderData("root")?.initialSanityData?.siteSettings?.topMenu ||
+      [];
+
+    const defaultSection = sections.find(
+      (section: Section) => section.default === true,
+    )?.slug.current;
+
+    const current =
+      location.pathname === "/" ? `/${defaultSection}` : location.pathname;
+
+    const menu = useMenu(location.pathname.slice(1), defaultSection);
+
     let activeIndex =
       menu?.menuItems.findIndex(
         (item) =>
@@ -31,13 +43,6 @@ export const ContentMenu = forwardRef<HTMLButtonElement>(
     if (activeIndex >= indexOfDivider) {
       activeIndex = activeIndex - 1;
     }
-
-    const sections =
-      useRouteLoaderData("root")?.initialSanityData?.siteSettings?.topMenu ||
-      [];
-
-    const current =
-      location.pathname === "/" ? "/identitet" : location.pathname;
 
     const currentSection = menu?.relatedTo.slug;
 
@@ -56,6 +61,7 @@ export const ContentMenu = forwardRef<HTMLButtonElement>(
             ))}
         </Flex>
         <Separator marginY="2" display={["block", null, null, "none"]} />
+
         <Accordion
           variant="ghost"
           collapsible

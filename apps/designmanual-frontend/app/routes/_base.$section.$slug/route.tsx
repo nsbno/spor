@@ -7,38 +7,38 @@ import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
+  invariant(params.section, "Expected params.section");
   invariant(params.slug, "Expected params.slug");
-  const query = groq`*[_type == "section" && slug.current == $slug][0] {
+  const query = groq`*[_type == "page" && slug.current == $slug][0] {
     _id,
     title,
     "slug": slug.current,
-    "page": reference->{
-      _id,
-      title,
-      content
-    }
+    content
   }`;
 
   const data = await getClient().fetch(query, {
+    section: params.section,
     slug: params.slug,
   });
 
   if (!data) {
-    return { slug: params.slug, data: null };
+    return { section: params.section, page: null };
   }
-  return { slug: params.slug, data };
+  return { section: params.section, page: data.page };
 };
 
 export default function Index() {
-  const { data } = useLoaderData<typeof loader>();
+  const { page } = useLoaderData<typeof loader>();
 
-  if (!data) {
+  console.log("page", page);
+
+  if (!page) {
     return null;
   }
 
   return (
     <Box backgroundColor="bg" flex="1">
-      <PortableText value={data?.page.content} />
+      <PortableText value={page?.content} />
     </Box>
   );
 }

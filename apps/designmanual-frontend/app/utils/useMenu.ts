@@ -11,8 +11,8 @@ type Menu = {
   };
 };
 
-export const useMenu = (slug: string = "side-menu-identitet") => {
-  const getSectionLevel = slug.split("/")[0] || "side-menu-identitet";
+export const useMenu = (slug: string, fallback: string | null) => {
+  const getSectionLevel = slug.split("/")[0] || fallback;
   const { initialSanityData } = useMatchesData<{
     initialSanityData: {
       menus: Menu[];

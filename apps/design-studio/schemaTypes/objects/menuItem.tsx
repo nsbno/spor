@@ -28,7 +28,7 @@ export const menuItem = defineType({
       title: "Internal link",
       description: "Link to other documents",
       type: "reference",
-      to: [{ type: "article" }],
+      to: [{ type: "article" }, { type: "page" }],
       hidden: (form) => form.parent.subItems?.length > 0,
       validation: (Rule) =>
         Rule.custom(

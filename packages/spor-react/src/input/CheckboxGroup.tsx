@@ -4,7 +4,7 @@ import React from "react";
 export type CheckboxGroupProps = React.ComponentProps<
   typeof ChakraCheckboxGroup
 > & {
-  direction: "row" | "column"; // Defaults to row
+  direction?: "row" | "column";
 };
 /**
  * Used to group several checkboxes together. You can pass the default value, as well as whether or not they're all disabled

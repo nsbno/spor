@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 12.8.1
+
+### Patch Changes
+
+- 59720eb: Fix positioning of errorText in field so it does not overlap input.
+- 1203222: Fix an issue where CheckboxGroup did not correctly expose its props.
+
 ## 12.8.0
 
 ### Minor Changes

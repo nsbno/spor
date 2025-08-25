@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.8.3
+
+### Patch Changes
+
+- d76d180: Add new component, Tooltip, that looks similar to Popover, but is triggered on hover.
+
 ## 12.8.2
 
 ### Patch Changes

@@ -67,11 +67,34 @@ export const ContentMenu = forwardRef<HTMLButtonElement>(
             }
             const subItems = item.subItems?.filter((subItem) => subItem.url);
             const hasSubItems = Boolean(subItems?.length);
+            const isCurrentPage = item.link === location.pathname;
+            if (item.link && !isCurrentPage) {
+              return (
+                <MenuItem
+                  key={item.link}
+                  url={item.link}
+                  isActive={isCurrentPage}
+                  backgroundColor={
+                    isCurrentPage ? "bg.tertiary" : "transparent"
+                  }
+                  isTopMenu={true}
+                  ref={index === 0 ? ref : null}
+                  fontWeight={"bold"}
+                  fontSize={["desktop.xs", null, "desktop.sm"]}
+                  paddingX="3"
+                  paddingY="2"
+                  borderRadius={"sm"}
+                >
+                  {item.title}
+                </MenuItem>
+              );
+            }
             return (
               <AccordionItem key={item.title} value={item.title} marginY={0.5}>
                 <AccordionItemTrigger
                   fontWeight="bold"
                   ref={index === 0 ? ref : null}
+                  _expanded={{ backgroundColor: "bg.tertiary" }}
                 >
                   {item.title}
                 </AccordionItemTrigger>

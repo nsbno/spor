@@ -1,5 +1,6 @@
 import { chakra } from "@chakra-ui/react";
-import { Box, FlexProps } from "@vygruppen/spor-react";
+import { DropdownDownOutline30Icon } from "@vygruppen/spor-icon-react";
+import { Box, Flex, FlexProps } from "@vygruppen/spor-react";
 import React, { forwardRef, useImperativeHandle, useRef } from "react";
 import { Link } from "react-router";
 
@@ -7,19 +8,20 @@ type MenuItemProps = FlexProps & {
   url: string;
   children: React.ReactNode;
   isActive?: boolean;
+  isTopMenu?: boolean;
 };
 /**
  * Menu item in the `ContentMenu`, and search result in the `SearchResults`.
  */
 
-export const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
-  function MenuItem({ url, children, isActive, ...rest }, externalRef) {
-    const internalRef = useRef<HTMLButtonElement>(null);
+export const MenuItem = forwardRef<HTMLElement, MenuItemProps>(
+  function MenuItem(
+    { url, children, isActive, isTopMenu, ...rest },
+    externalRef,
+  ) {
+    const internalRef = useRef<HTMLElement>(null);
 
-    useImperativeHandle(
-      externalRef,
-      () => internalRef.current as HTMLButtonElement,
-    );
+    useImperativeHandle(externalRef, () => internalRef.current as HTMLElement);
 
     const handleKeyUp: React.KeyboardEventHandler<HTMLButtonElement> = (e) => {
       if (!internalRef.current) return;
@@ -35,10 +37,13 @@ export const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
       }
     };
 
+    const linkProps = getLinkProps({ url });
+    const isExternal = !!linkProps.href;
+
     return (
       <chakra.button
         key={url}
-        {...getLinkProps({ url })}
+        {...linkProps}
         display="block"
         paddingY={0.5}
         paddingX={2}
@@ -51,13 +56,19 @@ export const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
         _hover={{ backgroundColor: "ghost.surface.hover" }}
         _active={{ backgroundColor: "ghost.surface.active" }}
         ref={internalRef}
+        {...rest}
         onKeyUp={handleKeyUp}
         onKeyDown={handleKeyDown}
-        {...rest}
+        tabIndex={0}
+        role="menuitem"
+        type={isExternal ? undefined : "button"}
       >
-        <Box width="100%" textAlign="left">
-          {children}
-        </Box>
+        <Flex justifyContent={"space-between"} alignItems="center">
+          <Box width="100%" textAlign="left">
+            {children}
+          </Box>
+          {isTopMenu && <DropdownDownOutline30Icon />}
+        </Flex>
       </chakra.button>
     );
   },

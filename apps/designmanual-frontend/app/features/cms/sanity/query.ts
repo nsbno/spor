@@ -63,3 +63,44 @@ export function resolveLinkGroq(fieldName: string) {
   }
   `;
 }
+
+export function resolveLinkButtonGroq() {
+  return groq`
+    (_type == "linkButton") => @ {
+      ...,
+      _type,
+      text,
+      icon,
+      ${resolveLinkGroq("link")},
+    }`;
+}
+
+export function resolveMarkdefsLinkGroq() {
+  return groq`
+    type == "fileLink" => @ {
+        "href": fileLink.asset -> url
+    },
+    type == "internal" => reference->{
+      (_type == "enrichedFile") => @ {
+        "href": file.asset -> url
+      },
+      (_type == "page") => @ {
+        "href": slug.current
+      },
+    `;
+}
+
+export function resolveTextBlockGroq() {
+  return groq`
+    (_type == "textBlock") => @ {
+      ...,
+      content[] {
+        ...,
+        ${resolveLinkButtonGroq()},
+        markDefs[] {
+          ...,
+          ${resolveMarkdefsLinkGroq()},
+        },
+      }
+    }`;
+}

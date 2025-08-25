@@ -29,6 +29,7 @@ export type MenuItem = {
   title: string;
   tags: string[];
   url: string;
+  link: string;
   subItems?: MenuItem[];
   relatedTo?: {
     _type: string;
@@ -57,6 +58,10 @@ export const getInitialSanityData = async () => {
         "menuItems": menuItems[]{
           _type,
           title,
+          "link": select(
+            defined(internalLink) => "/" + ^.relatedTo->slug.current + "/" + internalLink->slug.current, 
+            defined(externalLink) => externalLink
+          ),
           "url": select(
             defined(internalLink) => 
               "/" + internalLink->category->slug.current + 

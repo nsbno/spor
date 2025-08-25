@@ -1,5 +1,5 @@
 import { groq } from "@sanity/groq-store";
-import { Box } from "@vygruppen/spor-react";
+import { Box, Heading } from "@vygruppen/spor-react";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
 import invariant from "tiny-invariant";
 
@@ -7,8 +7,8 @@ import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
-  invariant(params.slug, "Expected params.slug");
-  const query = groq`*[_type == "section" && slug.current == $slug][0] {
+  invariant(params.section, "Expected params.section");
+  const query = groq`*[_type == "section" && slug.current == $section][0] {
     _id,
     title,
     "slug": slug.current,
@@ -20,13 +20,13 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   }`;
 
   const data = await getClient().fetch(query, {
-    slug: params.slug,
+    section: params.section,
   });
 
   if (!data) {
-    return { slug: params.slug, data: null };
+    return { section: params.section, data: null };
   }
-  return { slug: params.slug, data };
+  return { section: params.section, data };
 };
 
 export default function Index() {
@@ -38,6 +38,9 @@ export default function Index() {
 
   return (
     <Box backgroundColor="bg" flex="1">
+      <Heading as="h1" marginBottom={4}>
+        {data.page.title}
+      </Heading>
       <PortableText value={data?.page.content} />
     </Box>
   );

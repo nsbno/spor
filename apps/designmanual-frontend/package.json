@@ -25,6 +25,7 @@
     "@ark-ui/react": "^4.9.2",
     "@chakra-ui/react": "^3.21.1",
     "@portabletext/react": "^3.1.0",
+    "@portabletext/types": "^2.0.8",
     "@sanity/groq-store": "^1.1.5",
     "@sanity/image-url": "^1.0.2",
     "@vygruppen/spor-design-tokens": "workspace:*",

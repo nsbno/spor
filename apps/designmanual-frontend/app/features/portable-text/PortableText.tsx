@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { ButtonProps } from "@chakra-ui/react";
 import {
   PortableTextReactComponents,
@@ -36,6 +37,8 @@ import { ImageWithCaption } from "./ImageWithCaption";
 import { InteractiveCode } from "./interactive-code/InteractiveCode";
 import { LinkableHeading } from "./LinkableHeading";
 import { ArticleHeaderSerializer } from "./serializers/ArticleHeaderSerializer";
+import { TextBlockSerializer } from "./serializers/TextBlockSerializer";
+import { TextBlocksSerializer } from "./serializers/TextBlocksSerializer";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
@@ -135,6 +138,8 @@ const components: Partial<PortableTextReactComponents> = {
   ),
   types: {
     articleHeader: ArticleHeaderSerializer,
+    textBlock: TextBlockSerializer,
+    textBlocks: TextBlocksSerializer,
     buttonLink: ({ value }) => {
       const isInternal = value.url.startsWith("/");
       const linkProps = isInternal

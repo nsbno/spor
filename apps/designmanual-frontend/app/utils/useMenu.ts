@@ -12,6 +12,7 @@ type Menu = {
 };
 
 export const useMenu = (slug: string = "side-menu-identitet") => {
+  // TODO: remove this hardcoded slug and make it dynamic and controlled by CMS
   const getSectionLevel = slug.split("/")[0] || "side-menu-identitet";
   const { initialSanityData } = useMatchesData<{
     initialSanityData: {

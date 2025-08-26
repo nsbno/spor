@@ -28,7 +28,10 @@ export type FieldBaseProps = {
   floatingLabel?: boolean;
 };
 
-export type FieldProps = Omit<ChakraField.RootProps, "label" | "onChange"> &
+export type FieldProps = Omit<
+  ChakraField.RootProps,
+  "label" | "onChange" | "onBlur"
+> &
   React.PropsWithChildren<FieldVariantProps> &
   FieldBaseProps;
 

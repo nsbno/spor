@@ -66,4 +66,5 @@ export const slotRecipes = {
   toast: toastSlotRecipe,
   checkboxCard: choiceChipSlotRecipe,
   collapsible: collapsibleSlotRecipe,
+  tooltip: popoverSlotRecipe,
 };

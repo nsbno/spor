@@ -1,5 +1,27 @@
 # @vygruppen/spor-react
 
+## 12.8.3
+
+### Patch Changes
+
+- d76d180: Add new component, Tooltip, that looks similar to Popover, but is triggered on hover.
+
+## 12.8.2
+
+### Patch Changes
+
+- 286dbdc: Improve type definitions for Field and CheckboxGroup components:
+
+  - CheckboxGroup: Make `direction` optional.
+  - Field: Ensure `onClick` is included in props.
+
+## 12.8.1
+
+### Patch Changes
+
+- 59720eb: Fix positioning of errorText in field so it does not overlap input.
+- 1203222: Fix an issue where CheckboxGroup did not correctly expose its props.
+
 ## 12.8.0
 
 ### Minor Changes

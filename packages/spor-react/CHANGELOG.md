@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.8.4
+
+### Patch Changes
+
+- 736a159: Fix Broken ARIA reference in combobox.
+
 ## 12.8.3
 
 ### Patch Changes

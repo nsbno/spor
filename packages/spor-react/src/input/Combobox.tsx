@@ -87,6 +87,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
     defaultItems,
     defaultSelectedKey,
     onOpenChange,
+    items,
     ...restProps
   } = props;
   const { contains } = useFilter({ sensitivity: "base" });
@@ -110,6 +111,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
     menuTrigger,
     allowsCustomValue,
     onFocusChange,
+    items,
     defaultInputValue,
     defaultItems,
     defaultSelectedKey,
@@ -154,6 +156,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
       defaultItems,
       defaultSelectedKey,
       onOpenChange,
+      items,
     },
     state,
   );

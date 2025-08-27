@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.8.5
+
+### Patch Changes
+
+- e8d7d4d: Fix: Combobox, make sure combobox-props do not get spread to input.
+
 ## 12.8.4
 
 ### Patch Changes

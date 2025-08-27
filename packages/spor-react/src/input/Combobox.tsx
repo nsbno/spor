@@ -76,6 +76,17 @@ export const Combobox = (props: ComboboxProps<object>) => {
     inputRef: externalInputRef,
     children,
     variant,
+    allowsEmptyCollection,
+    onSelectionChange,
+    inputValue,
+    onInputChange,
+    menuTrigger,
+    allowsCustomValue,
+    onFocusChange,
+    defaultInputValue,
+    defaultItems,
+    defaultSelectedKey,
+    onOpenChange,
     ...restProps
   } = props;
   const { contains } = useFilter({ sensitivity: "base" });
@@ -92,6 +103,17 @@ export const Combobox = (props: ComboboxProps<object>) => {
   const state = useComboBoxState({
     defaultFilter: contains,
     shouldCloseOnBlur: true,
+    allowsEmptyCollection,
+    onSelectionChange,
+    inputValue,
+    onInputChange,
+    menuTrigger,
+    allowsCustomValue,
+    onFocusChange,
+    defaultInputValue,
+    defaultItems,
+    defaultSelectedKey,
+    onOpenChange,
     ...props,
   });
 
@@ -110,7 +132,6 @@ export const Combobox = (props: ComboboxProps<object>) => {
     paddingLeft,
     paddingX,
     paddingY,
-    leftIcon,
   };
 
   const {
@@ -123,6 +144,16 @@ export const Combobox = (props: ComboboxProps<object>) => {
       listBoxRef,
       popoverRef,
       label,
+      onSelectionChange,
+      inputValue,
+      onInputChange,
+      menuTrigger,
+      allowsCustomValue,
+      onFocusChange,
+      defaultInputValue,
+      defaultItems,
+      defaultSelectedKey,
+      onOpenChange,
     },
     state,
   );

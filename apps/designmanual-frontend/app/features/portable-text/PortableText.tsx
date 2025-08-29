@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ButtonProps } from "@chakra-ui/react";
 import {
-  PortableText as SanityPortableText,
   PortableTextReactComponents,
+  PortableText as SanityPortableText,
 } from "@portabletext/react";
 import {
   CheckmarkFill30Icon,
@@ -30,7 +30,7 @@ import { Link } from "react-router";
 
 import { urlBuilder } from "~/utils/sanity/utils";
 
-import { ComponentDocs } from "../../routes/_base.$category.$slug/component-docs/ComponentDocs";
+import { ComponentDocs } from "../../routes/_base.$section.$category.$slug/component-docs/ComponentDocs";
 import { CodeBlock } from "./code-block/CodeBlock";
 import { ImageWithCaption } from "./ImageWithCaption";
 import { InteractiveCode } from "./interactive-code/InteractiveCode";
@@ -94,7 +94,7 @@ const components: Partial<PortableTextReactComponents> = {
       </Heading>
     ),
     normal: ({ children }) => {
-      const arrayChildren = React.Children.toArray(children);
+      const arrayChildren = React.Children.toArray(children as React.ReactNode);
       if (arrayChildren.length === 0 || arrayChildren.join("") === "") {
         return null;
       }

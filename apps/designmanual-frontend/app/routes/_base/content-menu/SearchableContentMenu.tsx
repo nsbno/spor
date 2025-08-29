@@ -13,8 +13,6 @@ export const SearchableContentMenu = () => {
       width={"100%"}
       position="sticky"
       top="7.15rem"
-      overflowY="scroll"
-      height="90vh"
       paddingBottom={3}
       paddingRight={3}
     >

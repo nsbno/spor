@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.8.6
+
+### Patch Changes
+
+- fb78407: Fix accessibility issues in DatePicker and TimePicker.
+
 ## 12.8.5
 
 ### Patch Changes

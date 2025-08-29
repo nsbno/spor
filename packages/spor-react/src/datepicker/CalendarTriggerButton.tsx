@@ -25,8 +25,6 @@ export const CalendarTriggerButton = forwardRef<
   // onPress is extracted because it is not supported by chakra.
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
 >(({ variant, disabled, onPress: _, ...buttonProps }, ref) => {
-  console.log(buttonProps);
-
   const { t } = useTranslation();
 
   const recipe = useSlotRecipe({

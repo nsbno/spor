@@ -16,6 +16,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useLocation,
   useRouteError,
 } from "react-router";
 
@@ -173,8 +174,11 @@ const Document = withEmotionCache(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const location = useLocation();
+    const setLanguage = location.pathname.startsWith("/spor") ? "en-gb" : "nb";
+
     return (
-      <html lang="en-gb">
+      <html lang={setLanguage} style={{ scrollBehavior: "smooth" }}>
         <head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -189,7 +193,7 @@ const Document = withEmotionCache(
             />
           ))}
         </head>
-        <body>
+        <body style={{ overflowX: "hidden" }}>
           <SporProvider
             language={Language.NorwegianBokmal}
             theme={themes[brand ?? "VyDigital"]}

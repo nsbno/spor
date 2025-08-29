@@ -8,10 +8,12 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { useLocation, useRouteLoaderData } from "react-router";
 
 import type { Section } from "~/utils/initialSanityData.server";
+import type { HeadingsMenu } from "~/utils/useHeadingsMenu";
+import { fetchHeadingsmenu } from "~/utils/useHeadingsMenu";
 import { useMenu } from "~/utils/useMenu";
 
 import { MenuItem } from "./MenuItem";
@@ -36,21 +38,20 @@ export const ContentMenu = forwardRef<HTMLButtonElement>(
       useRouteLoaderData("root")?.initialSanityData?.siteSettings?.topMenu ||
       [];
 
-    const current =
-      location.pathname === "/" ? "/identitet" : location.pathname;
-
     const currentSection = menu?.relatedTo.slug;
+
+    const [headingsMenu, setHeadingsMenu] = useState<Array<HeadingsMenu>>([]);
+
+    useEffect(() => {
+      setHeadingsMenu(fetchHeadingsmenu());
+    }, []);
 
     return (
       <>
         <Flex flexDirection={"column"} display={["flex", null, null, "none"]}>
           {sections &&
             sections.map((section: Section) => (
-              <MenuItem
-                key={section._id}
-                url={`/${section.slug.current}`}
-                isActive={current === `/${section.slug.current}`}
-              >
+              <MenuItem key={section._id} url={`/${section.slug.current}`}>
                 {section.title}
               </MenuItem>
             ))}
@@ -73,10 +74,6 @@ export const ContentMenu = forwardRef<HTMLButtonElement>(
                 <MenuItem
                   key={item.link}
                   url={item.link}
-                  isActive={isCurrentPage}
-                  backgroundColor={
-                    isCurrentPage ? "bg.tertiary" : "transparent"
-                  }
                   isTopMenu={true}
                   ref={index === 0 ? ref : null}
                   fontWeight={"bold"}
@@ -90,29 +87,72 @@ export const ContentMenu = forwardRef<HTMLButtonElement>(
               );
             }
             return (
-              <AccordionItem key={item.title} value={item.title} marginY={0.5}>
+              <AccordionItem
+                key={item.title}
+                value={`${item.link ?? item.title}`}
+                marginY={0.5}
+              >
                 <AccordionItemTrigger
                   fontWeight="bold"
                   ref={index === 0 ? ref : null}
                   _expanded={{ backgroundColor: "bg.tertiary" }}
+                  backgroundColor={
+                    item.link === location.pathname
+                      ? "bg.tertiary"
+                      : "transparent"
+                  }
                 >
                   {item.title}
                 </AccordionItemTrigger>
                 <AccordionItemContent paddingTop={1} paddingBottom={0}>
-                  <Stack padding={0.5} marginBottom={1}>
-                    {subItems?.map((subItem) => (
-                      <MenuItem
-                        key={subItem.url}
-                        url={`${currentSection}${subItem.url}`}
-                        isActive={subItem.url === location.pathname}
-                      >
-                        {subItem.title}
-                      </MenuItem>
-                    ))}
-                    {!hasSubItems && (
-                      <Text color="dimGrey">Nothing here (yet)</Text>
-                    )}
-                  </Stack>
+                  {hasSubItems && (
+                    <Stack padding={0.5} marginBottom={1}>
+                      {subItems?.map((subItem) => (
+                        <MenuItem
+                          key={subItem.url}
+                          url={`${currentSection}${subItem.url}`}
+                          isActive={
+                            `/${currentSection}${subItem.url}` ===
+                            location.pathname
+                          }
+                          backgroundColor={
+                            `/${currentSection}${subItem.url}` ===
+                            location.pathname
+                              ? "bg.tertiary"
+                              : "transparent"
+                          }
+                        >
+                          {subItem.title}
+                        </MenuItem>
+                      ))}
+                      {!hasSubItems && (
+                        <Text color="dimGrey">Nothing here (yet)</Text>
+                      )}
+                    </Stack>
+                  )}
+                  {headingsMenu.length > 0 && (
+                    <Stack>
+                      {headingsMenu.map((subItem) => (
+                        <MenuItem
+                          key={subItem.id}
+                          url={`${location.pathname}#${subItem.id}`}
+                          isActive={
+                            `/${currentSection}${subItem.text}` ===
+                            location.pathname
+                          }
+                          backgroundColor={
+                            `${location.pathname}#${subItem.id}` ===
+                            location.pathname
+                              ? "bg.tertiary"
+                              : "transparent"
+                          }
+                          id={`${location.pathname}#${subItem.id}--${location.pathname}`}
+                        >
+                          {subItem.text}
+                        </MenuItem>
+                      ))}
+                    </Stack>
+                  )}
                 </AccordionItemContent>
               </AccordionItem>
             );

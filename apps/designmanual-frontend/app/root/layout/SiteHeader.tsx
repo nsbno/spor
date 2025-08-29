@@ -66,11 +66,6 @@ export const SiteHeader = () => {
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
       backgroundColor={"surface.default.white"}
-      css={{
-        position: "sticky",
-        top: "0",
-        zIndex: "sticky",
-      }}
       gap="3"
       width={"100vw"}
       overflow={"hidden"}

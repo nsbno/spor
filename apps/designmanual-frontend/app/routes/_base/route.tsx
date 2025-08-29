@@ -30,6 +30,7 @@ export default function BaseLayout() {
       paddingX={[3, null, 6, 4, 8]}
       marginBottom={["3.75rem", null, "5rem", "5rem"]}
       ref={contentRef}
+      alignItems={"flex-start"}
     >
       <LeftSidebar />
 

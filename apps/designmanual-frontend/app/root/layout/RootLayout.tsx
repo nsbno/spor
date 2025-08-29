@@ -13,7 +13,6 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
       minHeight="vh"
       backgroundColor="bg"
       fontFamily="Vy Sans"
-      overflowX={"hidden"}
     >
       <SiteHeader />
       <Flex flex={1} flexDirection="column">

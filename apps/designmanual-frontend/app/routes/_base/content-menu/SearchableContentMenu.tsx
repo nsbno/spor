@@ -9,12 +9,10 @@ export const SearchableContentMenu = () => {
   return (
     <Box
       as="nav"
-      aria-label={"Content"}
       width={"100%"}
-      position="sticky"
-      top="7.15rem"
       paddingBottom={3}
       paddingRight={3}
+      alignSelf={"flex-start"}
     >
       <ContentMenu ref={focusableRef} />
     </Box>

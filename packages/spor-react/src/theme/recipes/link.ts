@@ -53,16 +53,16 @@ export const linkRecipe = defineRecipe({
     },
     size: {
       xs: {
-        fontSize: "mobile.xs",
+        fontSize: { base: "mobile.xs", sm: "desktop.xs" },
       },
       sm: {
-        fontSize: "mobile.sm",
+        fontSize: { base: "mobile.sm", sm: "desktop.sm" },
       },
       md: {
-        fontSize: "mobile.md",
+        fontSize: { base: "mobile.md", sm: "desktop.md" },
       },
       lg: {
-        fontSize: "mobile.lg",
+        fontSize: { base: "mobile.lg", sm: "desktop.lg" },
       },
     },
   },

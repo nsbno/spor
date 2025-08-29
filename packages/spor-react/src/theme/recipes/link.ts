@@ -3,7 +3,6 @@ import { defineRecipe } from "@chakra-ui/react";
 export const linkRecipe = defineRecipe({
   base: {
     display: "inline",
-    verticalAlign: "middle",
     color: "inherit",
     cursor: "pointer",
     textDecorationLine: "underline",

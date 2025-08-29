@@ -13,6 +13,8 @@ export const linkRecipe = defineRecipe({
     gap: "0.5",
     borderRadius: "xs",
     paddingX: "0.5",
+    whiteSpace: "normal",
+    wordBreak: "break-word",
 
     _hover: {
       textDecoration: "none",

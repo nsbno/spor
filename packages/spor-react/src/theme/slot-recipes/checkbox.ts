@@ -35,6 +35,7 @@ export const checkboxSlotRecipe = defineSlotRecipe({
     control: {
       width: 4,
       height: 4,
+      flexShrink: 0,
       transitionProperty: "background, border-color",
       transitionDuration: "moderate",
       border: "2px solid",
@@ -77,7 +78,6 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       },
     },
     label: {
-      userSelect: "none",
       _disabled: { opacity: 0.4 },
     },
   },

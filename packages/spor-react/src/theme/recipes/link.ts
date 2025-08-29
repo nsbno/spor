@@ -2,30 +2,19 @@ import { defineRecipe } from "@chakra-ui/react";
 
 export const linkRecipe = defineRecipe({
   base: {
-    transitionProperty: "common",
-    transitionDuration: "fast",
-    transitionTimingFunction: "ease-out",
-    cursor: "pointer",
-    backgroundImage: "linear-gradient(currentColor, currentColor)",
-    backgroundSize: "100% 1px",
-    backgroundPosition: "0 100%",
-    backgroundRepeat: "no-repeat",
-    borderRadius: "none",
-    paddingX: "2px",
-    paddingY: "0",
-    color: "inherit",
     display: "inline-flex",
     alignItems: "center",
-    gap: "0",
-    position: "relative",
-    boxDecorationBreak: "clone",
-    textUnderlineOffset: "0",
+    color: "text",
+    cursor: "pointer",
+    textDecoration: "underline",
+    textUnderlineOffset: "3px",
+    gap: "0.5",
+    textDecorationColor: "text",
+    borderRadius: "xs",
+    paddingX: "0.5",
 
-    "&:focus, &:focus-visible, &:active, &:hover": {
-      backgroundImage: "none",
-      backgroundSize: "100%",
-      outline: "none",
-      borderRadius: "xs",
+    _hover: {
+      textDecoration: "none",
     },
 
     "& svg": {

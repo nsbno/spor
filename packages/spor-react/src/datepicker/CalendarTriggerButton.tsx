@@ -18,12 +18,13 @@ type CalendarTriggerButtonProps = AriaButtonProps<"button"> &
   BoxProps &
   CalendarVariants & {
     disabled?: boolean;
-    ariaLabelledby?: string;
   };
 export const CalendarTriggerButton = forwardRef<
   HTMLDivElement,
   CalendarTriggerButtonProps
->(({ variant, disabled, ariaLabelledby, ...buttonProps }, ref) => {
+  // onPress is extracted because it is not supported by chakra.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+>(({ variant, disabled, onPress: _, ...buttonProps }, ref) => {
   const { t } = useTranslation();
 
   const recipe = useSlotRecipe({
@@ -39,7 +40,6 @@ export const CalendarTriggerButton = forwardRef<
         css={styles.calendarTriggerButton}
         variant="ghost"
         disabled={disabled}
-        aria-labelledby={ariaLabelledby}
       />
     </PopoverAnchor>
   );

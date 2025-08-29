@@ -88,7 +88,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
         ref as React.MutableRefObject<HTMLDivElement>,
       );
 
-    const labelId = `label-${useId()}`;
     const inputGroupId = `input-group-${useId()}`;
 
     const recipe = useSlotRecipe({
@@ -128,7 +127,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
             <Field
               display="inline-flex"
               id={inputGroupId}
-              aria-labelledby={labelId}
               errorText={errorText}
               invalid={invalid}
               helperText={helperText}
@@ -140,7 +138,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                   paddingX={3}
                   minHeight={minHeight}
                   isDisabled={props.isDisabled}
-                  ariaLabelledby={labelId}
                 >
                   <ChakraPopover.Trigger asChild>
                     <CalendarTriggerButton
@@ -154,7 +151,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                   <DateField
                     label={props.label}
                     labelProps={labelProps}
-                    labelId={labelId}
                     name={props.name}
                     {...fieldProps}
                   />

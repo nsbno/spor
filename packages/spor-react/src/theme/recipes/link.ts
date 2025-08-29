@@ -4,12 +4,13 @@ export const linkRecipe = defineRecipe({
   base: {
     display: "inline-flex",
     alignItems: "center",
-    color: "text",
+    color: "inherit",
     cursor: "pointer",
-    textDecoration: "underline",
-    textUnderlineOffset: "3px",
+    textDecorationLine: "underline",
+    textDecorationSkipInk: "none",
+    textUnderlineOffset: "auto",
+    textUnderlinePosition: "from-font",
     gap: "0.5",
-    textDecorationColor: "text",
     borderRadius: "xs",
     paddingX: "0.5",
 

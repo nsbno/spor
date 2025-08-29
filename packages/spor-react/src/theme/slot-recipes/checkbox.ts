@@ -8,6 +8,8 @@ export const checkboxSlotRecipe = defineSlotRecipe({
   slots: checkboxAnatomy.keys(),
   base: {
     root: {
+      whiteSpace: "normal",
+      wordBreak: "break-word",
       display: "flex",
       gap: 1.5,
       _hover: {
@@ -35,6 +37,7 @@ export const checkboxSlotRecipe = defineSlotRecipe({
     control: {
       width: 4,
       height: 4,
+      flexShrink: 0,
       transitionProperty: "background, border-color",
       transitionDuration: "moderate",
       border: "2px solid",
@@ -77,7 +80,6 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       },
     },
     label: {
-      userSelect: "none",
       _disabled: { opacity: 0.4 },
     },
   },

@@ -2,14 +2,15 @@ import { defineRecipe } from "@chakra-ui/react";
 
 export const linkRecipe = defineRecipe({
   base: {
-    display: "inline-flex",
-    alignItems: "center",
+    display: "inline",
+    verticalAlign: "middle",
     color: "inherit",
     cursor: "pointer",
     textDecorationLine: "underline",
     textDecorationSkipInk: "none",
     textUnderlineOffset: "auto",
     textUnderlinePosition: "from-font",
+
     gap: "0.5",
     borderRadius: "xs",
     paddingX: "0.5",
@@ -21,7 +22,6 @@ export const linkRecipe = defineRecipe({
     },
 
     "& svg": {
-      display: "inline-block",
       width: "1.125em",
       height: "1.125em",
       position: "relative",
@@ -54,16 +54,16 @@ export const linkRecipe = defineRecipe({
     },
     size: {
       xs: {
-        fontSize: { base: "mobile.xs", sm: "desktop.xs" },
+        fontSize: "mobile.xs",
       },
       sm: {
-        fontSize: { base: "mobile.sm", sm: "desktop.sm" },
+        fontSize: "mobile.sm",
       },
       md: {
-        fontSize: { base: "mobile.md", sm: "desktop.md" },
+        fontSize: "mobile.md",
       },
       lg: {
-        fontSize: { base: "mobile.lg", sm: "desktop.lg" },
+        fontSize: "mobile.lg",
       },
     },
   },

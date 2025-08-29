@@ -37,9 +37,9 @@ const ExternalIcon = ({
 }) => (
   <>
     {size === "lg" || size === "md" ? (
-      <LinkOutOutline24Icon aria-hidden />
+      <LinkOutOutline24Icon aria-hidden display="inline" />
     ) : (
-      <LinkOutOutline18Icon aria-hidden />
+      <LinkOutOutline18Icon aria-hidden display="inline" />
     )}
     {/* Visually hidden text for screen readers */}
     <VisuallyHidden>{label}</VisuallyHidden>

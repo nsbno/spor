@@ -80,11 +80,21 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
           css={styles.root}
           direction={direction}
         >
-          {label && !floatingLabel && <Label>{label}</Label>}
+          {label && !floatingLabel && (
+            <Label>
+              {label}
+              <ChakraField.RequiredIndicator />
+            </Label>
+          )}
 
           {children}
 
-          {label && floatingLabel && <FloatingLabel>{label}</FloatingLabel>}
+          {label && floatingLabel && (
+            <FloatingLabel>
+              {label}
+              <ChakraField.RequiredIndicator />
+            </FloatingLabel>
+          )}
           {errorText && (
             <ChakraField.ErrorText>{errorText}</ChakraField.ErrorText>
           )}

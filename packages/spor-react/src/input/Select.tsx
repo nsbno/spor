@@ -72,7 +72,12 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     const styles = recipe({ variant });
 
     return (
-      <Field errorText={errorText} invalid={invalid} helperText={helperText}>
+      <Field
+        errorText={errorText}
+        invalid={invalid}
+        helperText={helperText}
+        required={props.required}
+      >
         <ChakraSelect.Root
           {...rest}
           ref={ref}

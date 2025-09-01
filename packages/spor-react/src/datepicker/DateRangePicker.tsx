@@ -127,6 +127,7 @@ type DateRangePickerProps = Omit<
             errorText={errorText}
             helperText={helperText}
             invalid={invalid}
+            required={props.required}
           >
             <PopoverAnchor>
               <StyledField

@@ -16,6 +16,9 @@ export const fieldSlotRecipe = defineSlotRecipe({
       marginStart: 1,
       color: "brightRed",
     },
+    label: {
+      display: "flex",
+    },
     helperText: {
       marginTop: 2,
       color: "text.tertiary",

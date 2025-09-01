@@ -8,12 +8,11 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef } from "react";
 import { useLocation, useRouteLoaderData } from "react-router";
 
 import type { Section } from "~/utils/initialSanityData.server";
-import type { HeadingsMenu } from "~/utils/useHeadingsMenu";
-import { fetchHeadingsmenu } from "~/utils/useHeadingsMenu";
+import { useHeadingsMenu } from "~/utils/useHeadingsMenu";
 import { useMenu } from "~/utils/useMenu";
 
 import { MenuItem } from "./MenuItem";
@@ -40,11 +39,7 @@ export const ContentMenu = forwardRef<HTMLButtonElement>(
 
     const currentSection = menu?.relatedTo.slug;
 
-    const [headingsMenu, setHeadingsMenu] = useState<Array<HeadingsMenu>>([]);
-
-    useEffect(() => {
-      setHeadingsMenu(fetchHeadingsmenu());
-    }, []);
+    const headingsMenu = useHeadingsMenu();
 
     return (
       <>
@@ -131,7 +126,7 @@ export const ContentMenu = forwardRef<HTMLButtonElement>(
                     </Stack>
                   )}
                   {headingsMenu.length > 0 && (
-                    <Stack>
+                    <Stack display={["none", null, null, "block"]}>
                       {headingsMenu.map((subItem) => (
                         <MenuItem
                           key={subItem.id}

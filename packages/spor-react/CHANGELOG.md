@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 12.8.8
+
+### Patch Changes
+
+- 7f7c933: field: Render RequiredIndicator when required is true
+  heading: Fix bug where autoId was used when externalId was specified
+
 ## 12.8.7
 
 ### Patch Changes

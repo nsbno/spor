@@ -15,6 +15,10 @@ export const fieldSlotRecipe = defineSlotRecipe({
     requiredIndicator: {
       marginStart: 1,
       color: "brightRed",
+      display: "inline",
+    },
+    label: {
+      display: "flex",
     },
     helperText: {
       marginTop: 2,

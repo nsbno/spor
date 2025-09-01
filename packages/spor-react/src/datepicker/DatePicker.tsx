@@ -130,6 +130,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
               errorText={errorText}
               invalid={invalid}
               helperText={helperText}
+              required={props.required}
             >
               <PopoverAnchor>
                 <StyledField

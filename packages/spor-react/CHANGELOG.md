@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 12.8.7
+
+### Patch Changes
+
+- f697959: - Checkbox: Prevent input control box from shrinking.
+  - TextLink: Simplify styling and ensure underline appears correctly on multiline links.
+
 ## 12.8.6
 
 ### Patch Changes

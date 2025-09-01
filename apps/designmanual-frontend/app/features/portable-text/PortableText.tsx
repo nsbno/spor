@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { ButtonProps } from "@chakra-ui/react";
 import {
-  PortableText as SanityPortableText,
   PortableTextReactComponents,
+  PortableText as SanityPortableText,
 } from "@portabletext/react";
 import {
   CheckmarkFill30Icon,
@@ -30,11 +31,14 @@ import { Link } from "react-router";
 
 import { urlBuilder } from "~/utils/sanity/utils";
 
-import { ComponentDocs } from "../../routes/_base.$category.$slug/component-docs/ComponentDocs";
+import { ComponentDocs } from "../../routes/_base.$section.$category.$slug/component-docs/ComponentDocs";
 import { CodeBlock } from "./code-block/CodeBlock";
 import { ImageWithCaption } from "./ImageWithCaption";
 import { InteractiveCode } from "./interactive-code/InteractiveCode";
 import { LinkableHeading } from "./LinkableHeading";
+import { ArticleHeaderSerializer } from "./serializers/ArticleHeaderSerializer";
+import { TextBlockSerializer } from "./serializers/TextBlockSerializer";
+import { TextBlocksSerializer } from "./serializers/TextBlocksSerializer";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
@@ -94,7 +98,7 @@ const components: Partial<PortableTextReactComponents> = {
       </Heading>
     ),
     normal: ({ children }) => {
-      const arrayChildren = React.Children.toArray(children);
+      const arrayChildren = React.Children.toArray(children as React.ReactNode);
       if (arrayChildren.length === 0 || arrayChildren.join("") === "") {
         return null;
       }
@@ -133,6 +137,9 @@ const components: Partial<PortableTextReactComponents> = {
     </ListItem>
   ),
   types: {
+    articleHeader: ArticleHeaderSerializer,
+    textBlock: TextBlockSerializer,
+    textBlocks: TextBlocksSerializer,
     buttonLink: ({ value }) => {
       const isInternal = value.url.startsWith("/");
       const linkProps = isInternal

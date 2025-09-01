@@ -1,5 +1,12 @@
 # @vygruppen/designmanual-docs
 
+## 0.0.66
+
+### Patch Changes
+
+- Updated dependencies [7f7c933]
+  - @vygruppen/spor-react@12.8.8
+
 ## 0.0.65
 
 ### Patch Changes

@@ -65,6 +65,7 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
       readOnly,
       required,
       direction,
+      id,
       ...rest
     } = props;
     const recipe = useSlotRecipe({ key: "field" });
@@ -79,6 +80,7 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
           required={required}
           css={styles.root}
           direction={direction}
+          id={id}
         >
           {label && !floatingLabel && (
             <Label>

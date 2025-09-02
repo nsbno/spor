@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.8.9
+
+### Patch Changes
+
+- 979903e: Fix bug where specifying id on inputs gives missing label error.
+
 ## 12.8.8
 
 ### Patch Changes

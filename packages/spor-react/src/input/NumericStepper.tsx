@@ -101,7 +101,7 @@ export const NumericStepper = React.forwardRef<
   };
 
   return (
-    <Field css={styles.root} width="auto" {...rest} ref={ref}>
+    <Field css={styles.root} width="auto" {...rest} id={idProp} ref={ref}>
       <VerySmallButton
         icon={<SubtractIcon stepLabel={clampedStepSize} />}
         aria-label={t(

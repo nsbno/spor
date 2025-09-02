@@ -79,6 +79,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         helperText={helperText}
         required={required}
         errorText={errorText}
+        id={props.id}
         label={
           // Render startElement invisibly to align label text with input content when an icon is present
           <Flex>

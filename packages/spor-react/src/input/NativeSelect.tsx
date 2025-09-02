@@ -66,6 +66,7 @@ export const NativeSelect = React.forwardRef<
       required={required}
       helperText={helperText}
       errorText={errorText}
+      id={rest.id}
       floatingLabel={true}
     >
       <ChakraNativeSelect.Root

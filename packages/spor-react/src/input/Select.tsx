@@ -77,6 +77,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         invalid={invalid}
         helperText={helperText}
         required={props.required}
+        id={rest.id}
       >
         <ChakraSelect.Root
           {...rest}

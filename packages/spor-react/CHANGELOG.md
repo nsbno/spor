@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.8.10
+
+### Patch Changes
+
+- 6fc5a24: Export some more externals from chakra-ui
+
 ## 12.8.9
 
 ### Patch Changes

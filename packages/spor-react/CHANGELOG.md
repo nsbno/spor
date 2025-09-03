@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.9.0
+
+### Minor Changes
+
+- 5e4f450: Drawer: Make it possible to close a drawer by swiping
+
 ## 12.8.10
 
 ### Patch Changes

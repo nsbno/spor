@@ -1,7 +1,6 @@
 import { Flex, Stack } from "@chakra-ui/react";
 import { type LoaderFunctionArgs, Outlet, useLoaderData } from "react-router";
 
-import { Footer } from "~/root/layout/Footer";
 import { LeftSidebar } from "~/routes/_base/left-sidebar/LeftSidebar";
 import TableOfContent from "~/routes/_base/table-of-contents/TableOfContents";
 import { useHeadings } from "~/routes/_base/table-of-contents/useHeadings";
@@ -32,11 +31,10 @@ export default function BaseLayout() {
       marginBottom={["3.75rem", null, "5rem", "5rem"]}
       ref={contentRef}
     >
-      {slug && slug === "spor" && <LeftSidebar />}
+      <LeftSidebar />
 
       <Stack flexGrow={1} overflow={"hidden"} padding={1}>
         <Outlet />
-        <Footer />
       </Stack>
 
       {slug && slug === "spor" && <TableOfContent headings={headings} />}

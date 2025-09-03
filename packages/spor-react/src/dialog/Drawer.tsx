@@ -7,6 +7,7 @@ import {
   Grid,
   GridItem,
   Portal,
+  useDialogContext,
 } from "@chakra-ui/react";
 import {
   ArrowLeftFill24Icon,
@@ -21,6 +22,7 @@ import {
   DrawerFullScreenHeaderProps,
   DrawerProps,
 } from "./types";
+import { useSwipeable } from "react-swipeable";
 
 /**
  * A drawer is a panel that slides in from the side of the screen. It is used to display additional content without taking up too much space.
@@ -56,15 +58,31 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
   (props, ref) => {
     const { children, portalled = true, portalRef, ...rest } = props;
     const { size, placement } = useRootDrawerProps();
+    const { setOpen } = useDialogContext();
+    const handlers = useSwipeable({
+      onSwiped: (e) => {
+        const shouldClose =
+          (placement === "bottom" && e.dir === "Down") ||
+          (placement === "top" && e.dir === "Up") ||
+          (placement === "end" && e.dir === "Right") ||
+          (placement === "start" && e.dir === "Left");
+        if (shouldClose) {
+          setOpen(false);
+        }
+      },
+      swipeDuration: 250,
+    });
     const sizeNotFull = size !== "full";
     return (
       <Portal disabled={!portalled} container={portalRef}>
         <ChakraDrawer.Positioner>
-          <ChakraDrawer.Content ref={ref} {...rest}>
-            {sizeNotFull && placement === "bottom" && <CloseDrawerLine />}
-            {children}
-            {sizeNotFull && placement === "top" && <CloseDrawerLine />}
-          </ChakraDrawer.Content>
+          <Box {...handlers} width="100%">
+            <ChakraDrawer.Content ref={ref} {...rest}>
+              {sizeNotFull && placement === "bottom" && <CloseDrawerLine />}
+              {children}
+              {sizeNotFull && placement === "top" && <CloseDrawerLine />}
+            </ChakraDrawer.Content>
+          </Box>
         </ChakraDrawer.Positioner>
       </Portal>
     );
@@ -73,26 +91,18 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
 DrawerContent.displayName = "DrawerContent";
 
 export const CloseDrawerLine = forwardRef<HTMLButtonElement>((props, ref) => {
-  const { t } = useTranslation();
   return (
-    <ChakraDrawer.CloseTrigger
+    <Box
+      width={7}
+      minHeight={1}
+      top={0}
+      marginY={2}
+      marginX="auto"
+      backgroundColor="silver"
+      borderRadius="xs"
       {...props}
       ref={ref}
-      position="relative"
-      insetEnd="unset"
-      aria-label={t(texts.close)}
-      cursor="pointer"
-      top={0}
-      paddingY={2}
-    >
-      <Box
-        width={7}
-        height={1}
-        backgroundColor="silver"
-        borderRadius="xs"
-        marginX="auto"
-      />
-    </ChakraDrawer.CloseTrigger>
+    />
   );
 });
 CloseDrawerLine.displayName = "CloseDrawerLine";

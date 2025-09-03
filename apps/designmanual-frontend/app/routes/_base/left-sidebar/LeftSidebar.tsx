@@ -12,6 +12,7 @@ export const LeftSidebar = () => {
       paddingY={2}
       width={["100%", null, "20rem"]}
       position="relative"
+      minWidth={["100%", null, "20rem"]}
     >
       <SearchableContentMenu />
     </Box>

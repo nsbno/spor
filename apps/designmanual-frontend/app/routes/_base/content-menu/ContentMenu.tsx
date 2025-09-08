@@ -8,7 +8,7 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { useLocation, useRouteLoaderData } from "react-router";
 
 import type { Section } from "~/utils/initialSanityData.server";
@@ -39,7 +39,16 @@ export const ContentMenu = forwardRef<HTMLButtonElement>(
 
     const currentSection = menu?.relatedTo.slug;
 
-    const headingsMenu = useHeadingsMenu();
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+      setIsClient(true);
+    }, []);
+
+    const rawHeadingsMenu = useHeadingsMenu();
+    const headingsMenu = isClient ? rawHeadingsMenu : []; // avoid hydration mismatch
+
+    const [expanded, setExpanded] = useState([location.pathname]);
 
     return (
       <>
@@ -55,7 +64,8 @@ export const ContentMenu = forwardRef<HTMLButtonElement>(
         <Accordion
           variant="ghost"
           collapsible
-          defaultValue={[location.pathname]}
+          defaultValue={expanded}
+          onValueChange={(e) => setExpanded(e.value)}
         >
           {menu?.menuItems.map((item, index) => {
             if (item._type === "divider") {
@@ -66,19 +76,22 @@ export const ContentMenu = forwardRef<HTMLButtonElement>(
             const isCurrentPage = item.link === location.pathname;
             if (item.link && !isCurrentPage) {
               return (
-                <MenuItem
-                  key={item.link}
-                  url={item.link}
-                  isTopMenu={true}
-                  ref={index === 0 ? ref : null}
-                  fontWeight={"bold"}
-                  fontSize={["desktop.xs", null, "desktop.sm"]}
-                  paddingX="3"
-                  paddingY="2"
-                  borderRadius={"sm"}
-                >
-                  {item.title}
-                </MenuItem>
+                <>
+                  <MenuItem
+                    key={item.link}
+                    url={item.link}
+                    isTopMenu={true}
+                    ref={index === 0 ? ref : null}
+                    fontWeight={"bold"}
+                    fontSize={["desktop.xs", null, "desktop.sm"]}
+                    paddingX="3"
+                    paddingY="2"
+                    borderRadius={"sm"}
+                    onClick={() => setExpanded([item.link])}
+                  >
+                    {item.title}
+                  </MenuItem>
+                </>
               );
             }
             return (

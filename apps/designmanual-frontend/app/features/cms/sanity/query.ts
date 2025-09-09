@@ -119,3 +119,29 @@ export function resolveImageBlockGroq() {
       caption
     }`;
 }
+
+export function resolveImageAndTextListGroq() {
+  return groq`
+  (_type == "imageAndTextList") => @ {
+    _type,
+    heading,
+    headingIcon,
+    description,
+    layout,
+    direction,
+    items[] {
+      _key,
+      _type,
+      image,
+      content[] {
+        ...,
+        ${resolveLinkButtonGroq()},
+        markDefs[]{
+          ...,
+          ${resolveMarkdefsLinkGroq()},
+        },
+      }
+    },
+    }
+  `;
+}

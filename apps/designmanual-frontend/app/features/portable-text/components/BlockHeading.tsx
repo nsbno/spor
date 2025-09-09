@@ -9,6 +9,8 @@ import {
 } from "@vygruppen/spor-react";
 import { ReactNode } from "react";
 
+import { getIcon } from "~/utils/getIcon";
+
 type BlockHeadingProps = {
   heading: string;
   subheading?: string | ReactNode;
@@ -42,7 +44,7 @@ export const BlockHeading = ({
       >
         {icon && (
           <Box marginRight={2} color="darkTeal">
-            {/*getIcon({ iconName: icon, size: 24, style: 'Outline' })*/}{" "}
+            {getIcon({ iconName: icon })}{" "}
           </Box>
         )}
         <Heading

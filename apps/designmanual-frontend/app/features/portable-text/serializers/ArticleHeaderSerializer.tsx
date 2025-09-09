@@ -5,7 +5,11 @@ import { ArticleHeader } from "../components/ArticleHeader";
 type ArticleHeaderSerializerProps = {
   value: {
     subheading: string;
-    illustration: any;
+    illustration: {
+      src: string;
+      alt?: string;
+      [key: string]: unknown;
+    };
     leadShortcuts?: { items: ShortcutType[] };
   };
 };

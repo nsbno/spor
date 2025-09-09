@@ -45,11 +45,17 @@ export const TextBlocks = ({
       <Stack data-testid="text-blocks">
         {heading && <BlockHeading heading={heading} subheading={subheading} />}
         <Flex gap={[7, 3, null, 4]} flexDirection={["column", "row"]}>
-          {items.map((item: any) => (
-            <Box flex="1" key={item._key}>
-              <PortableText value={item.content} />
-            </Box>
-          ))}
+          {items.map(
+            (item: {
+              _type: "textBlock";
+              content: PortableTextBlock[];
+              _key?: string;
+            }) => (
+              <Box flex="1" key={item._key}>
+                <PortableText value={item.content} />
+              </Box>
+            ),
+          )}
         </Flex>
       </Stack>
     );

@@ -37,6 +37,7 @@ import { ImageWithCaption } from "./ImageWithCaption";
 import { InteractiveCode } from "./interactive-code/InteractiveCode";
 import { LinkableHeading } from "./LinkableHeading";
 import { ArticleHeaderSerializer } from "./serializers/ArticleHeaderSerializer";
+import { ImageBlockSerializer } from "./serializers/ImageBlockSerializer";
 import { TextBlockSerializer } from "./serializers/TextBlockSerializer";
 import { TextBlocksSerializer } from "./serializers/TextBlocksSerializer";
 
@@ -140,6 +141,7 @@ const components: Partial<PortableTextReactComponents> = {
     articleHeader: ArticleHeaderSerializer,
     textBlock: TextBlockSerializer,
     textBlocks: TextBlocksSerializer,
+    imageBlock: ImageBlockSerializer,
     buttonLink: ({ value }) => {
       const isInternal = value.url.startsWith("/");
       const linkProps = isInternal

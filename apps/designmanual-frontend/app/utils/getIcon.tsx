@@ -4,7 +4,7 @@ type IconProps = {
   iconName: string;
 };
 
-export function getIcon({ iconName }: IconProps) {
+export const getIcon = ({ iconName }: IconProps) => {
   const iconNameWithSuffix = formatIconName(iconName);
   const Icon = icons[iconNameWithSuffix as keyof typeof icons];
 
@@ -13,7 +13,7 @@ export function getIcon({ iconName }: IconProps) {
   }
 
   return <Icon />;
-}
+};
 
 const filledIconsList = new Set([
   "dropdown-down",

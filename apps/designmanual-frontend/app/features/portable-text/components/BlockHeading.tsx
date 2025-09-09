@@ -8,7 +8,6 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import { ReactNode } from "react";
-//import { getIcon } from '~/features/utilities/icons/utils'
 
 type BlockHeadingProps = {
   heading: string;

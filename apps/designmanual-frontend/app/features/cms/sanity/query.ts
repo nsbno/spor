@@ -104,3 +104,18 @@ export function resolveTextBlockGroq() {
       }
     }`;
 }
+
+export function resolveImageBlockGroq() {
+  return groq`
+    (_type == "imageBlock") => @ {
+      _type,
+      images[] {
+        asset,
+        hotspot,
+        crop,
+        altText,
+        credits,
+      },
+      caption
+    }`;
+}

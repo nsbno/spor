@@ -4,7 +4,7 @@ import {
   HeadingProps as ChakraHeadingProps,
   Text,
 } from "@chakra-ui/react";
-import { forwardRef } from "react";
+import { forwardRef, useId } from "react";
 
 import { slugify } from "..";
 
@@ -52,11 +52,18 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       ...rest
     } = props;
 
-    const id =
-      (externalId ?? (autoId && typeof rest.children === "string"))
-        ? slugify(rest.children as string)
-        : undefined;
+    const reactId = useId();
 
-    return <Text as={as} textStyle={variant} id={id} ref={ref} {...rest} />;
+    function getId() {
+      if (externalId !== undefined) return externalId;
+      if (!autoId) return;
+      return typeof rest.children === "string"
+        ? slugify(rest.children)
+        : reactId;
+    }
+
+    return (
+      <Text as={as} textStyle={variant} id={getId()} ref={ref} {...rest} />
+    );
   },
 );

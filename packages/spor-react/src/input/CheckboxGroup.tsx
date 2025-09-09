@@ -1,21 +1,10 @@
-import {
-  CheckboxGroup as ChakraCheckboxGroup,
-  CheckboxGroupProps as ChakraCheckboxGroupProps,
-  Stack,
-} from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import { CheckboxGroup as ChakraCheckboxGroup, Stack } from "@chakra-ui/react";
+import React from "react";
 
-export type CheckboxGroupProps = Exclude<
-  ChakraCheckboxGroupProps,
-  "colorPalette" | "size" | "variant"
+export type CheckboxGroupProps = React.ComponentProps<
+  typeof ChakraCheckboxGroup
 > & {
-  /* Defaults to row */
   direction?: "row" | "column";
-  children: React.ReactNode;
-  /* Defaults to 1 */
-  gap?: number | string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any; //Find a way to not use type any
 };
 /**
  * Used to group several checkboxes together. You can pass the default value, as well as whether or not they're all disabled
@@ -36,19 +25,19 @@ export type CheckboxGroupProps = Exclude<
  *   <Checkbox>Business</Checkbox>
  *   <Checkbox>First Class</Checkbox>
  * </CheckboxGroup>
+ * ```
  */
 
-export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
-  (props, ref) => {
-    const { direction = "row", children, gap = 1, ...rest } = props;
+export const CheckboxGroup = (props: CheckboxGroupProps) => {
+  // Forwardref caues issue with prop types not working. Forwardref is unessessary here, as ChakraCheckbox already has a ref prop and is deprecated in react 19.
+  const { direction = "row", children, gap = 1, ...rest } = props;
 
-    return (
-      <ChakraCheckboxGroup ref={ref} {...rest}>
-        <Stack direction={direction} gap={gap}>
-          {children}
-        </Stack>
-      </ChakraCheckboxGroup>
-    );
-  },
-);
+  return (
+    <ChakraCheckboxGroup {...rest}>
+      <Stack direction={direction} gap={gap}>
+        {children}
+      </Stack>
+    </ChakraCheckboxGroup>
+  );
+};
 CheckboxGroup.displayName = "CheckboxGroup";

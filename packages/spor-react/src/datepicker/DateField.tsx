@@ -27,10 +27,9 @@ type DateFieldProps = AriaDateFieldProps<DateValue> &
     label?: React.ReactNode;
     labelProps?: DOMAttributes<FocusableElement>;
     name?: string;
-    labelId?: string;
   };
 export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
-  ({ labelId, ...props }, externalRef) => {
+  (props, externalRef) => {
     const locale = useCurrentLocale();
 
     const recipe = useSlotRecipe({
@@ -57,13 +56,12 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
       <Box minWidth="6rem" width="100%">
         {props.label && (
           <Box
-            as="label"
+            asChild
             css={styles.inputLabel}
             position="absolute"
             paddingTop="2px"
-            id={labelId}
           >
-            {props.label}
+            <label {...props.labelProps}>{props.label}</label>
           </Box>
         )}
         <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
@@ -72,7 +70,6 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
               key={i}
               segment={segment}
               ariaDescription={t(getAriaLabel(segment.type))}
-              ariaLabel={labelId}
               state={state}
             />
           ))}
@@ -81,6 +78,7 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
           type="hidden"
           value={state.value?.toString() ?? ""}
           name={props.name}
+          id={props.id}
         />
       </Box>
     );

@@ -24,7 +24,6 @@ export type ComboboxProps<T> = Exclude<
     leftIcon?: ReactNode;
     rightIcon?: ReactNode;
     variant?: "core" | "floating";
-    children?: React.ReactNode;
   };
 /**
  * A combobox is a combination of an input and a list of suggestions.
@@ -76,6 +75,17 @@ export const Combobox = (props: ComboboxProps<object>) => {
     inputRef: externalInputRef,
     children,
     variant,
+    allowsEmptyCollection,
+    onSelectionChange,
+    inputValue,
+    onInputChange,
+    menuTrigger,
+    allowsCustomValue,
+    onFocusChange,
+    defaultInputValue,
+    defaultItems,
+    defaultSelectedKey,
+    onOpenChange,
     ...restProps
   } = props;
   const { contains } = useFilter({ sensitivity: "base" });
@@ -85,13 +95,24 @@ export const Combobox = (props: ComboboxProps<object>) => {
   const listBoxRef = useRef<HTMLUListElement>(null);
   const popoverRef = useRef(null);
 
-  const listboxId = `${useId()}-listbox`;
+  const listboxId = useId();
 
   const inputWidth = useInputWidth(inputRef);
 
   const state = useComboBoxState({
     defaultFilter: contains,
     shouldCloseOnBlur: true,
+    allowsEmptyCollection,
+    onSelectionChange,
+    inputValue,
+    onInputChange,
+    menuTrigger,
+    allowsCustomValue,
+    onFocusChange,
+    defaultInputValue,
+    defaultItems,
+    defaultSelectedKey,
+    onOpenChange,
     ...props,
   });
 
@@ -110,22 +131,34 @@ export const Combobox = (props: ComboboxProps<object>) => {
     paddingLeft,
     paddingX,
     paddingY,
-    leftIcon,
   };
 
-  const {
-    inputProps: { ...inputProps },
-    listBoxProps,
-  } = useComboBox(
+  const { inputProps, listBoxProps } = useComboBox(
     {
       ...props,
       inputRef,
       listBoxRef,
       popoverRef,
       label,
+      onSelectionChange,
+      inputValue,
+      onInputChange,
+      menuTrigger,
+      allowsCustomValue,
+      onFocusChange,
+      defaultInputValue,
+      defaultItems,
+      defaultSelectedKey,
+      onOpenChange,
     },
     state,
   );
+
+  // Remove aria-labelledby and id from inputProps, as these are handled by the Input component
+  // This prevents potential conflicts or duplication of accessibility attributes
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { "aria-labelledby": _, id: __, ...filteredInputProps } = inputProps;
+
   return (
     <>
       <Input
@@ -151,7 +184,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
           state.isOpen && !loading ? 0 : borderBottomRightRadius
         }
         _active={{ backgroundColor: "core.surface.active" }}
-        {...inputProps}
+        {...filteredInputProps}
         startElement={leftIcon}
         endElement={
           loading ? (
@@ -215,6 +248,7 @@ Combobox.displayName = "Combobox";
 
 const useInputWidth = (inputRef: React.RefObject<HTMLInputElement>) => {
   const [inputWidth, setInputWidth] = useState("auto");
+
   useEffect(() => {
     const onResize = debounce(() => {
       if (inputRef.current) {

@@ -1,5 +1,71 @@
 # @vygruppen/spor-react
 
+## 12.8.10
+
+### Patch Changes
+
+- 6fc5a24: Export some more externals from chakra-ui
+
+## 12.8.9
+
+### Patch Changes
+
+- 979903e: Fix bug where specifying id on inputs gives missing label error.
+
+## 12.8.8
+
+### Patch Changes
+
+- 7f7c933: field: Render RequiredIndicator when required is true
+  heading: Fix bug where autoId was used when externalId was specified
+
+## 12.8.7
+
+### Patch Changes
+
+- f697959: - Checkbox: Prevent input control box from shrinking.
+  - TextLink: Simplify styling and ensure underline appears correctly on multiline links.
+
+## 12.8.6
+
+### Patch Changes
+
+- fb78407: Fix accessibility issues in DatePicker and TimePicker.
+
+## 12.8.5
+
+### Patch Changes
+
+- e8d7d4d: Fix: Combobox, make sure combobox-props do not get spread to input.
+
+## 12.8.4
+
+### Patch Changes
+
+- 736a159: Fix Broken ARIA reference in combobox.
+
+## 12.8.3
+
+### Patch Changes
+
+- d76d180: Add new component, Tooltip, that looks similar to Popover, but is triggered on hover.
+
+## 12.8.2
+
+### Patch Changes
+
+- 286dbdc: Improve type definitions for Field and CheckboxGroup components:
+
+  - CheckboxGroup: Make `direction` optional.
+  - Field: Ensure `onClick` is included in props.
+
+## 12.8.1
+
+### Patch Changes
+
+- 59720eb: Fix positioning of errorText in field so it does not overlap input.
+- 1203222: Fix an issue where CheckboxGroup did not correctly expose its props.
+
 ## 12.8.0
 
 ### Minor Changes

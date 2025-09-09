@@ -65,6 +65,8 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
         invalid={invalid}
         errorText={errorText}
         helperText={helperText}
+        required={props.required}
+        id={rest.id}
       >
         <ChakraSwitch.Root
           ref={rootRef}

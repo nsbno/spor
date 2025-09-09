@@ -39,7 +39,11 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
       </label>
       <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
         {state.segments.map((segment: DateSegment) => (
-          <DateTimeSegment key={segment.type} segment={segment} state={state} />
+          <DateTimeSegment
+            key={JSON.stringify(segment)}
+            segment={segment}
+            state={state}
+          />
         ))}
       </Flex>
       <input

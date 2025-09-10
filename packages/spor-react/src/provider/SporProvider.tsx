@@ -14,6 +14,7 @@ import { Toaster } from "../toast/toast";
 type SporProviderProps = Omit<ChakraProviderProps, "value"> & {
   language?: Language;
   theme?: SystemContext;
+  enableSystemColorMode?: boolean; // If enableSystem is false, the default theme is light
 };
 
 /**
@@ -56,12 +57,13 @@ import { theme } from '../../../../apps/docs/app/features/portable-text/code-blo
 export const SporProvider = ({
   language = Language.NorwegianBokmal,
   theme = system,
+  enableSystemColorMode = true,
   children,
 }: SporProviderProps) => {
   return (
     <LanguageProvider language={language}>
       <ChakraProvider value={theme}>
-        <ColorModeProvider>
+        <ColorModeProvider enableSystem={enableSystemColorMode}>
           <Toaster />
           <Global styles={fontFaces} />
 

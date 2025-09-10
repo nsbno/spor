@@ -5,6 +5,8 @@ Thanks for creating a Pull Request! 🎉
 📘 React component guide: https://spor.vy.no/guides/how-to-make-new-react-components
 📦 How to make a changeset: https://spor.vy.no/guides/how-to-make-new-react-components#creating-a-pr-and-publish-package
 💡 Preferably use Conventional Commits: https://www.conventionalcommits.org/en/v1.0.0/
+
+This template serves as a guideline; feel free to remove sections that do not apply to your pull request.
 -->
 
 ## Background

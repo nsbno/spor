@@ -68,7 +68,6 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
     label: {
       display: "flex",
       alignItems: "center",
-      gap: "1",
       fontSize: "xs",
     },
   },

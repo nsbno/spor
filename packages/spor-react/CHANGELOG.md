@@ -1,5 +1,18 @@
 # @vygruppen/spor-react
 
+## 12.9.0
+
+### Minor Changes
+
+- 5e4f450: Drawer: Make it possible to close a drawer by swiping
+
+### Patch Changes
+
+- e375b23: Make it possible to turn off automatic system detection for color mode
+- a4ed71b: Add gap between icon and text in ChoiceChip
+- Updated dependencies [33ffcc7]
+  - @vygruppen/spor-design-tokens@4.0.8
+
 ## 12.8.10
 
 ### Patch Changes

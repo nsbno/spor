@@ -23,15 +23,15 @@ Closes # <!-- Github issue number -->
 
 ---
 
-## Checklist
-
-### General
+## General Checklist
 
 - [ ] I have updated documentation if necessary
 - [ ] I have verified the design aligns with the latest Figma sketches.
 - [ ] I have created a changeset if publishing is required
 
-### Accessibility
+## Accessibility checklist
+
+For changes impacting the user interface or functionality, ensure the following:
 
 - [ ] It is possible to use the keyboard to reach your changes
 - [ ] It is possible to enlarge the text 400% without losing functionality

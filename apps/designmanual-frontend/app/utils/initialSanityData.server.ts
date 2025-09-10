@@ -1,3 +1,5 @@
+import { PortableTextBlock } from "@portabletext/react";
+
 import { getClient } from "./sanity/client";
 
 type SiteSettings = {
@@ -5,6 +7,22 @@ type SiteSettings = {
   description: string;
   keywords: string[];
   socialImage: unknown;
+  topMenu: Section[];
+  footerItems: FooterItem[];
+};
+export type Section = {
+  _id: string;
+  _type: string;
+  default: boolean;
+  slug: { current: string; _type: string };
+  title: string;
+  icon: string;
+};
+export type FooterItem = {
+  _type: string;
+  _key: string;
+  title: string;
+  description: PortableTextBlock[];
 };
 export type MenuItem = {
   _type: "menuItem" | "divider";
@@ -12,6 +30,11 @@ export type MenuItem = {
   tags: string[];
   url: string;
   subItems?: MenuItem[];
+  relatedTo?: {
+    _type: string;
+    title: string;
+    slug: { current: string };
+  };
 };
 export type Menu = {
   slug: string;
@@ -26,6 +49,11 @@ export const getInitialSanityData = async () => {
     `{
       "menus": *[_type == "menu"] { 
         "slug": slug.current,
+        relatedTo->{
+            _type,
+            title,
+            "slug": slug.current 
+          },
         "menuItems": menuItems[]{
           _type,
           title,
@@ -51,7 +79,21 @@ export const getInitialSanityData = async () => {
         title,
         description,
         keywords,
-        socialImage
+        socialImage,
+        topMenu[]->{
+          _id,
+          _type,
+          default,
+          slug,
+          title,
+          icon
+        },
+        footerItems[]{
+          _key,
+          _type,
+          description,
+          title
+        }
       }
     }`,
   );

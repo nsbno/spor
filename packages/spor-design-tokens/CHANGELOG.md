@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.0.8
+
+### Patch Changes
+
+- 33ffcc7: Update floating surface active dark color from jungle to darkTeal
+
 ## 4.0.7
 
 ### Patch Changes

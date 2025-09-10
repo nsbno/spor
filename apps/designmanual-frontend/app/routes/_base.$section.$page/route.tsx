@@ -3,6 +3,16 @@ import { Flex, Heading } from "@vygruppen/spor-react";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
 import invariant from "tiny-invariant";
 
+import {
+  resolveAccordionGroq,
+  resolveArticleHeaderGroq,
+  resolveCardsGroq,
+  resolveImageAndTextListGroq,
+  resolveImageBlockGroq,
+  resolveImageCardListGroq,
+  resolveNonClickableBoxListGroq,
+  resolveTextBlocksGroq,
+} from "~/features/cms/sanity/query";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
 
@@ -13,7 +23,17 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     _id,
     title,
     "slug": slug.current,
-    content
+    content[]{
+      ...,
+      ${resolveImageCardListGroq()},
+      ${resolveImageBlockGroq()},
+      ${resolveTextBlocksGroq()},
+      ${resolveImageAndTextListGroq()},
+      ${resolveArticleHeaderGroq()},
+      ${resolveCardsGroq()},
+      ${resolveNonClickableBoxListGroq()},
+      ${resolveAccordionGroq()},
+    }
   }`;
   const data = await getClient().fetch(query, {
     section: params.section,

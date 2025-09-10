@@ -36,9 +36,14 @@ import { CodeBlock } from "./code-block/CodeBlock";
 import { ImageWithCaption } from "./ImageWithCaption";
 import { InteractiveCode } from "./interactive-code/InteractiveCode";
 import { LinkableHeading } from "./LinkableHeading";
+import { AccordionSerializer } from "./serializers/AccordionSerializer";
 import { ArticleHeaderSerializer } from "./serializers/ArticleHeaderSerializer";
+import { CardSerializer } from "./serializers/CardSerializer";
 import { ImageAndTextListSerializer } from "./serializers/ImageAndTextListSerializer";
 import { ImageBlockSerializer } from "./serializers/ImageBlockSerializer";
+import { ImageCardListSerializer } from "./serializers/ImageCardListSerializer";
+import { LinkButtonSerializer } from "./serializers/LinkButtonSerializer";
+import { NonClickableBoxListSerializer } from "./serializers/NonClickableBoxesSerializer";
 import { TextBlockSerializer } from "./serializers/TextBlockSerializer";
 import { TextBlocksSerializer } from "./serializers/TextBlocksSerializer";
 
@@ -144,6 +149,11 @@ const components: Partial<PortableTextReactComponents> = {
     textBlocks: TextBlocksSerializer,
     imageBlock: ImageBlockSerializer,
     imageAndTextList: ImageAndTextListSerializer,
+    imageCardList: ImageCardListSerializer,
+    cards: CardSerializer,
+    LinkButton: LinkButtonSerializer,
+    nonClickableBoxList: NonClickableBoxListSerializer,
+    accordion: AccordionSerializer,
     buttonLink: ({ value }) => {
       const isInternal = value.url.startsWith("/");
       const linkProps = isInternal

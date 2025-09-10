@@ -20,23 +20,26 @@ export const useLinkProps = (
   href?: string,
   anchor?: string,
 ): LinkPropsResult => {
-  const fileUrlBuilder = "https://cdn.sanity.io";
+  const fileUrlBuilder = "http://localhost:3008/";
   if (!href) {
     return { isExternal: false, linkProps: { as: "a" } };
   }
 
-  if (href.startsWith("https://design.vy.no")) {
+  if (href.startsWith("https://design.vydev.io")) {
     return {
       isExternal: false,
       linkProps: {
         as: "a",
-        href: href.replace("https://design.vy.no", ""),
+        href: href.replace("https://design.vydev.io", ""),
       },
     };
   }
 
-  let url = href?.replace(new RegExp(`^https?://(?:design\\.)?vy\\.no/`), "/");
-  url = fileUrlBuilder;
+  let url = href?.replace(
+    new RegExp(`^https?://(?:design\\.)?vydev\\.io/`),
+    "/",
+  );
+  url = fileUrlBuilder + url; // define this when we have a deployed server
   if (anchor) {
     url = `${url}#${anchor}`;
   }

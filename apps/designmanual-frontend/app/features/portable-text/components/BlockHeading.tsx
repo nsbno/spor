@@ -51,7 +51,7 @@ export const BlockHeading = ({
           as={headingLevel}
           variant={variant}
           fontWeight="bold"
-          color="darkTeal"
+          color="text.secondary"
           autoId
         >
           {heading}

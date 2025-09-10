@@ -114,7 +114,6 @@ export const ContentMenu = forwardRef<
                 _expanded={{ backgroundColor: "bg.tertiary" }}
                 onClick={() => {
                   setExpanded([item.link]);
-                  handleRefresh();
                 }}
                 backgroundColor={
                   item.link === location.pathname

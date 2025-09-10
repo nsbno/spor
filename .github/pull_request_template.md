@@ -1,46 +1,34 @@
+<!---
+Thanks for creating a Pull Request! 🎉
+
+✅ Keep your PR as small as possible.
+📘 React component guide: https://spor.vy.no/guides/how-to-make-new-react-components
+📦 How to make a changeset: https://spor.vy.no/guides/how-to-make-new-react-components#creating-a-pr-and-publish-package
+💡 Preferably use Conventional Commits: https://www.conventionalcommits.org/en/v1.0.0/
+-->
+
 ## Background
 
-Describe the background for this task, why it emerged and why it must be solved.
+Closes # <!-- Github issue number -->
+
+<!-- Why this task is needed, context, and problem it solves -->
+
+---
 
 ## Solution
 
-Describe what has been done.
+<!-- What has been done and why this approach was chosen -->
 
-## Chakra update checklist
+---
 
-**Delete this checklist if you are not working on Chakra 3/Spor 12**
+## Checklist
 
-## Chakra update checklist
+- [ ] I have updated documentation if necessary
+- [ ] I have verified the design aligns with the latest Figma sketches.
+- [ ] I have created a changeset if publishing is required
+- [ ] I have reviewed the code for accessibility compliance (e.g., ARIA attributes, keyboard navigation).
 
-- [ ] Updated Sanity documentation in v2 dataset (English, links, component props and content)
-- [ ] Updated documentation in the component file
-- [ ] Update green-beans-check.md with any major changes
-- [ ] Add changeset
-- [ ] Double check design in Figma
-
-## UU checks
-
-- [ ] It is possible to use the keyboard to reach your changes
-- [ ] It is possible to enlarge the text 400% without losing functionality
-- [ ] It works on both mobile and desktop
-- [ ] It works in both Chrome, Safari and Firefox
-- [ ] It works with VoiceOver
-- [ ] There are no errors in aXe / SiteImprove-plugins / Wave
-- [ ] Sanity documentation has been / will be updated (if neccessary)
-
-If no packages, only docs has been changed:
-
-- [ ] Documentation version has been bumped (package.json in docs)
-
-Everything about making a React component:
-https://spor.vy.no/guides/how-to-make-new-react-components
-
-HOW TO MAKE A CHANGESET:
-Go here: https://spor.vy.no/guides/how-to-make-new-react-components#creating-a-pr-and-publish-package
-
-## How to test
-
-Desribe how code reviewer may test your solution (what page, expected result).
+---
 
 ## Screenshots
 

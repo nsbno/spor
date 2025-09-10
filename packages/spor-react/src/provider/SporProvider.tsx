@@ -12,8 +12,18 @@ import { fontFaces } from "../theme/brand";
 import { Toaster } from "../toast/toast";
 
 type SporProviderProps = Omit<ChakraProviderProps, "value"> & {
+  /**
+   * The current language of your application. Used for built-in microcopy and labels. Default is Norwegian (bokmål).
+   */
   language?: Language;
+  /**
+   * The theme to use for colors and design tokens. If not provided, the default Spor theme is used.
+   */
   theme?: SystemContext;
+  /**
+   * If true, enables system color mode. If false, the default theme is light.
+   */
+  enableSystemColorMode?: boolean;
 };
 
 /**
@@ -56,12 +66,13 @@ import { theme } from '../../../../apps/docs/app/features/portable-text/code-blo
 export const SporProvider = ({
   language = Language.NorwegianBokmal,
   theme = system,
+  enableSystemColorMode = true,
   children,
 }: SporProviderProps) => {
   return (
     <LanguageProvider language={language}>
       <ChakraProvider value={theme}>
-        <ColorModeProvider>
+        <ColorModeProvider enableSystem={enableSystemColorMode}>
           <Toaster />
           <Global styles={fontFaces} />
 

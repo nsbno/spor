@@ -25,10 +25,20 @@ Closes # <!-- Github issue number -->
 
 ## Checklist
 
+### General
+
 - [ ] I have updated documentation if necessary
 - [ ] I have verified the design aligns with the latest Figma sketches.
 - [ ] I have created a changeset if publishing is required
-- [ ] I have reviewed the code for accessibility compliance (e.g., ARIA attributes, keyboard navigation).
+
+### Accessibility
+
+- [ ] It is possible to use the keyboard to reach your changes
+- [ ] It is possible to enlarge the text 400% without losing functionality
+- [ ] It works on both mobile and desktop
+- [ ] It works in both Chrome, Safari and Firefox
+- [ ] It works with VoiceOver
+- [ ] There are no errors in aXe / SiteImprove-plugins / Wave
 
 ---
 

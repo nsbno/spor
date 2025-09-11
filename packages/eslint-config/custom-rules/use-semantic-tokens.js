@@ -53,7 +53,7 @@ export default {
     schema: [],
     messages: {
       invalidToken:
-        "Non semantic token token '{{ token }}' deteceted. Use semantic tokens like 'bg', 'text.secondary', 'core.surface.active', etc.",
+        "Non semantic token '{{ token }}' deteceted. Use semantic tokens like 'bg', 'text.secondary', 'core.surface.active', etc.",
     },
   },
   create(context) {

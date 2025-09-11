@@ -26,7 +26,7 @@ export default defineConfig([
     rules: {
       "simple-import-sort/imports": "warn",
       "simple-import-sort/exports": "warn",
-      "spor/use-semantic-tokens": "warn",
+      "spor/use-semantic-tokens": "error",
     },
     extends: ["js/recommended"],
   },

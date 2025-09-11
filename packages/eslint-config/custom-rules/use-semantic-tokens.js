@@ -1,3 +1,52 @@
+import fs from "node:fs";
+import path from "node:path";
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
+
+// Function to recursively extract token paths from the JSON
+function extractTokenPaths(obj, prefix = "") {
+  const tokens = [];
+
+  for (const [key, value] of Object.entries(obj)) {
+    // Handle 'DEFAULT' key by not appending it to the path
+    const currentKey = key === "DEFAULT" ? "" : key;
+    const currentPath = prefix
+      ? currentKey
+        ? `${prefix}.${currentKey}`
+        : prefix
+      : currentKey;
+
+    if (typeof value === "object" && value !== null) {
+      // Recursively extract tokens from nested objects
+      const nestedTokens = extractTokenPaths(value, currentPath);
+      tokens.push(...nestedTokens);
+    } else {
+      // Add the token path, stripping '_light' or '_dark' suffixes
+      const cleanPath = currentPath.replace(/(\._light|\._dark)$/, "");
+      // Only add non-empty paths
+      if (cleanPath) {
+        tokens.push(cleanPath);
+      }
+    }
+  }
+
+  return tokens;
+}
+
+// Function to get tokens from vyDigital and linjetag
+function getTokens(json) {
+  const allTokens = new Set();
+
+  // Process vyDigital section without theme prefix
+  const vyDigitalTokens = extractTokenPaths(json.color.vyDigital, "");
+  for (const token of vyDigitalTokens) allTokens.add(token);
+
+  // Process linjetag section with linjetag prefix
+  const linjetagTokens = extractTokenPaths(json.color.linjetag, "linjetag");
+  for (const token of linjetagTokens) allTokens.add(token);
+
+  return allTokens;
+}
+
 export default {
   meta: {
     type: "suggestion",
@@ -14,131 +63,13 @@ export default {
     },
   },
   create(context) {
-    const allowedTokens = new Set([
-      "accent.bg",
-      "accent.icon",
-      "accent.surface",
-      "accent.surface.active",
-      "accent.surface.hover",
-      "accent.text",
-      "alert.alt.icon",
-      "alert.alt.outline",
-      "alert.alt.outline.hover",
-      "alert.alt.surface",
-      "alert.alt.surface.active",
-      "alert.alt.surface.hover",
-      "alert.alt.text",
-      "alert.alt.text.secondary",
-      "alert.error-secondary.icon",
-      "alert.error-secondary.outline",
-      "alert.error-secondary.outline.hover",
-      "alert.error-secondary.surface",
-      "alert.error-secondary.surface.active",
-      "alert.error-secondary.surface.hover",
-      "alert.error-secondary.text",
-      "alert.error-secondary.text.secondary",
-      "alert.error.icon",
-      "alert.error.outline",
-      "alert.error.outline.hover",
-      "alert.error.surface",
-      "alert.error.surface.active",
-      "alert.error.surface.hover",
-      "alert.error.text",
-      "alert.error.text.secondary",
-      "alert.important.icon",
-      "alert.important.outline",
-      "alert.important.outline.hover",
-      "alert.important.surface",
-      "alert.important.surface.active",
-      "alert.important.surface.hover",
-      "alert.important.text",
-      "alert.important.text.secondary",
-      "alert.info.icon",
-      "alert.info.outline",
-      "alert.info.outline.hover",
-      "alert.info.surface",
-      "alert.info.surface.active",
-      "alert.info.surface.hover",
-      "alert.info.text",
-      "alert.info.text.secondary",
-      "alert.neutral.icon",
-      "alert.neutral.outline",
-      "alert.neutral.outline.hover",
-      "alert.neutral.surface",
-      "alert.neutral.surface.active",
-      "alert.neutral.surface.hover",
-      "alert.neutral.text",
-      "alert.neutral.text.secondary",
-      "alert.service.icon",
-      "alert.service.outline",
-      "alert.service.outline.hover",
-      "alert.service.surface",
-      "alert.service.surface.active",
-      "alert.service.surface.hover",
-      "alert.service.text",
-      "alert.service.text.secondary",
-      "alert.success.icon",
-      "alert.success.outline",
-      "alert.success.outline.hover",
-      "alert.success.surface",
-      "alert.success.surface.active",
-      "alert.success.surface.hover",
-      "alert.success.text",
-      "alert.success.text.secondary",
-      "bg",
-      "bg.secondary",
-      "bg.tertiary",
-      "brand.icon",
-      "brand.surface",
-      "brand.surface.active",
-      "brand.surface.hover",
-      "brand.text",
-      "core.icon",
-      "core.outline",
-      "core.outline.hover",
-      "core.surface.active",
-      "core.text",
-      "floating.icon",
-      "floating.outline",
-      "floating.outline.active",
-      "floating.outline.hover",
-      "floating.surface",
-      "floating.surface.active",
-      "floating.surface.hover",
-      "floating.text",
-      "ghost.icon",
-      "ghost.surface.active",
-      "ghost.surface.hover",
-      "ghost.text",
-      "icon",
-      "icon.disabled",
-      "icon.highlight",
-      "icon.inverted",
-      "icon.secondary",
-      "outline",
-      "outline.disabled",
-      "outline.error",
-      "outline.focus",
-      "outline.inverted",
-      "surface",
-      "surface.color.blue",
-      "surface.color.cream",
-      "surface.color.green",
-      "surface.color.grey",
-      "surface.color.neutral",
-      "surface.color.orange",
-      "surface.color.red",
-      "surface.color.yellow",
-      "surface.disabled",
-      "surface.secondary",
-      "surface.tertiary",
-      "text",
-      "text.disabled",
-      "text.highlight",
-      "text.inverted",
-      "text.secondary",
-      "text.tertiary",
-    ]);
+    const tokensJSON = JSON.parse(
+      fs.readFileSync(
+        path.resolve(__dirname, "../../spor-design-tokens/dist/tokens.json"),
+        "utf8",
+      ),
+    );
+    const allowedTokens = getTokens(tokensJSON);
 
     // props on JSX elements which often carry colors
     const colorProps = new Set([

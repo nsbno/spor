@@ -155,214 +155,21 @@ export default {
       "stroke",
     ]);
 
-    // List of style props that should NOT be checked for color values
-    const ignoreStyleProps = new Set([
-      "borderRadius",
-      "borderStyle",
-      "borderWidth",
-      "borderBottomWidth",
-      "borderLeftWidth",
-      "borderRightWidth",
-      "borderTopWidth",
-      "width",
-      "height",
-      "backgroundSize",
-      "backgroundRepeat",
-      "backgroundPosition",
-      "backgroundImage",
-      "backgroundClip",
-      "backgroundOrigin",
-      "backgroundAttachment",
-      "boxShadow",
-      "outlineWidth",
-      "outlineStyle",
-      "outlineOffset",
-      "margin",
-      "marginTop",
-      "marginBottom",
-      "marginLeft",
-      "marginRight",
-      "padding",
-      "paddingTop",
-      "paddingBottom",
-      "paddingLeft",
-      "paddingRight",
-      // add more as needed
-    ]);
-
     function isColorProp(propName) {
       if (!propName || typeof propName !== "string") return false;
-      if (ignoreStyleProps.has(propName)) return false;
-      if (colorProps.has(propName)) return true;
-      // anything that explicitly ends with 'color' is probably a color prop
-      if (/color$/i.test(propName)) return true;
-      // common hints that a property likely contains color values
-      if (/background$/i.test(propName)) return true;
-      if (/borderColor$/i.test(propName)) return true;
-      return false;
+      return colorProps.has(propName);
     }
-
-    // color name list (common) + regex for hex / rgb / hsl
-    const colorNameRegex = (() => {
-      const names = [
-        "aliceblue",
-        "antiquewhite",
-        "aqua",
-        "aquamarine",
-        "azure",
-        "beige",
-        "bisque",
-        "black",
-        "blanchedalmond",
-        "blue",
-        "blueviolet",
-        "brown",
-        "burlywood",
-        "cadetblue",
-        "chartreuse",
-        "chocolate",
-        "coral",
-        "cornflowerblue",
-        "cornsilk",
-        "crimson",
-        "cyan",
-        "darkblue",
-        "darkcyan",
-        "darkgoldenrod",
-        "darkgray",
-        "darkgreen",
-        "darkgrey",
-        "darkkhaki",
-        "darkmagenta",
-        "darkolivegreen",
-        "darkorange",
-        "darkorchid",
-        "darkred",
-        "darksalmon",
-        "darkseagreen",
-        "darkslateblue",
-        "darkslategray",
-        "darkslategrey",
-        "darkturquoise",
-        "darkviolet",
-        "deeppink",
-        "deepskyblue",
-        "dimgray",
-        "dimgrey",
-        "dodgerblue",
-        "firebrick",
-        "floralwhite",
-        "forestgreen",
-        "fuchsia",
-        "gainsboro",
-        "ghostwhite",
-        "gold",
-        "goldenrod",
-        "gray",
-        "green",
-        "greenyellow",
-        "grey",
-        "honeydew",
-        "hotpink",
-        "indianred",
-        "indigo",
-        "ivory",
-        "khaki",
-        "lavender",
-        "lavenderblush",
-        "lawngreen",
-        "lemonchiffon",
-        "lightblue",
-        "lightcoral",
-        "lightcyan",
-        "lightgoldenrodyellow",
-        "lightgray",
-        "lightgreen",
-        "lightgrey",
-        "lightpink",
-        "lightsalmon",
-        "lightseagreen",
-        "lightskyblue",
-        "lightslategray",
-        "lightslategrey",
-        "lightsteelblue",
-        "lightyellow",
-        "lime",
-        "limegreen",
-        "linen",
-        "magenta",
-        "maroon",
-        "mediumaquamarine",
-        "mediumblue",
-        "mediumorchid",
-        "mediumpurple",
-        "mediumseagreen",
-        "mediumslateblue",
-        "mediumspringgreen",
-        "mediumturquoise",
-        "mediumvioletred",
-        "midnightblue",
-        "mintcream",
-        "mistyrose",
-        "moccasin",
-        "navajowhite",
-        "navy",
-        "oldlace",
-        "olive",
-        "olivedrab",
-        "orange",
-        "orangered",
-        "orchid",
-        "palegoldenrod",
-        "palegreen",
-        "paleturquoise",
-        "palevioletred",
-        "papayawhip",
-        "peachpuff",
-        "peru",
-        "pink",
-        "plum",
-        "powderblue",
-        "purple",
-        "red",
-        "rosybrown",
-        "royalblue",
-        "saddlebrown",
-        "salmon",
-        "sandybrown",
-        "seagreen",
-        "seashell",
-        "sienna",
-        "silver",
-        "skyblue",
-        "slateblue",
-        "slategray",
-        "slategrey",
-        "snow",
-        "springgreen",
-        "steelblue",
-        "tan",
-        "teal",
-        "thistle",
-        "tomato",
-        "turquoise",
-        "violet",
-        "wheat",
-        "white",
-        "whitesmoke",
-        "yellow",
-        "yellowgreen",
-        "cream",
-      ];
-      return new RegExp(
-        String.raw`\b(` + names.join("|") + String.raw`)\b`,
-        "gi",
-      );
-    })();
 
     const hexRegex = /#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b/g;
     const rgbRegex = /rgba?\([^)]+\)/gi;
     const hslRegex = /hsla?\([^)]+\)/gi;
+
+    // List of allowed non-semantic color values
+    const allowedNonSemanticColors = new Set([
+      "transparent",
+      "inherit",
+      "currentColor",
+    ]);
 
     function extractColorsFromString(str) {
       if (typeof str !== "string") return [];
@@ -371,11 +178,12 @@ export default {
       while ((m = hexRegex.exec(str))) results.add(m[0]);
       while ((m = rgbRegex.exec(str))) results.add(m[0]);
       while ((m = hslRegex.exec(str))) results.add(m[0]);
-      while ((m = colorNameRegex.exec(str))) results.add(m[0]);
+      // Removed colorNameRegex usage
       return [...results];
     }
 
     function reportInvalidToken(nodeForReport, token) {
+      if (allowedNonSemanticColors.has(token)) return; // allow listed non-semantic colors
       context.report({
         node: nodeForReport,
         messageId: "invalidToken",
@@ -415,7 +223,7 @@ export default {
             c.toUpperCase(),
           );
 
-          // Always walk into nested object values (e.g. variants)
+          // Always walk into nested object values
           if (prop.value && prop.value.type === "ObjectExpression") {
             traverseObjectExpression(prop.value);
           }
@@ -556,6 +364,17 @@ export default {
             if (typeof val === "string") {
               const colors = extractColorsFromString(val);
               for (const c of colors) reportInvalidToken(attribute.value, c);
+            }
+          }
+        }
+
+        // Handle Chakra UI pseudo-style props like _hover, _active, etc.
+        if (typeof propName === "string" && propName.startsWith("_")) {
+          if (!attribute.value) continue;
+          if (attribute.value.type === "JSXExpressionContainer") {
+            const expr = attribute.value.expression;
+            if (expr && expr.type === "ObjectExpression") {
+              traverseObjectExpression(expr);
             }
           }
         }

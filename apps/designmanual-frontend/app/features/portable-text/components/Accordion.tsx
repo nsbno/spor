@@ -79,7 +79,12 @@ export const Accordion = ({
   };
 
   return (
-    <Box marginX="auto" width="100%" maxWidth={["100%", null, "66.7%"]}>
+    <Box
+      marginX="auto"
+      width="100%"
+      maxWidth={["100%", null, "66.7%"]}
+      marginTop={9}
+    >
       {title && titleHeadingLevel && (
         <BlockHeading
           heading={title}

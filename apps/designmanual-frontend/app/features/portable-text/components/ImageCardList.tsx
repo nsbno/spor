@@ -155,6 +155,7 @@ export const ImageCardList = ({
       }}
       data-testid="image-card-list"
       as="section"
+      marginTop={[8, null, null, 10]}
     >
       {heading && (
         <GridItem

@@ -1,3 +1,3 @@
 import { Separator } from "@vygruppen/spor-react";
 
-export const DividerSerializer = () => <Separator height="1px" marginY={8} />;
+export const DividerSerializer = () => <Separator height="1px" marginY={4} />;

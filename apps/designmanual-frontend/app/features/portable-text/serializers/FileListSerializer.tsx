@@ -42,6 +42,7 @@ export const FileListSerializer = ({ value }: FileListSerializerProps) => {
       gridColumnStart={{ base: 1, lg: 3 }}
       gridColumnEnd={{ base: 7, lg: 11 }}
       data-testid="file-list"
+      marginTop={8}
     >
       <GridItem colStart={{ base: 1, lg: 3 }} colSpan={{ base: 6, lg: 8 }}>
         <BlockHeading heading={value.title} subheading={value.description} />

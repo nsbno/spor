@@ -62,6 +62,7 @@ const ImageAndText = ({
   return (
     <Flex
       gap={4}
+      marginTop={8}
       flexDirection={
         listDirection === "horizontal"
           ? ["column", null, null, "row"]

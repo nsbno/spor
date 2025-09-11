@@ -136,7 +136,7 @@ export const Cards = ({
   }
 
   return (
-    <Grid data-testid="card-block">
+    <Grid data-testid="card-block" marginTop={8}>
       {titleOfBlock && (
         <GridItem colStart={1} colSpan={[6, null, null, 12]}>
           <BlockHeading

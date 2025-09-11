@@ -26,7 +26,7 @@ export const TextBlocks = ({
       <Grid
         templateColumns={["repeat(6, 1fr)", null, null, "repeat(12, 1fr)"]}
         data-testid="text-blocks"
-        marginY={4}
+        marginTop={8}
       >
         {heading && (
           <BlockHeading

@@ -191,7 +191,7 @@ export const NonClickableBoxList = ({
   }
 
   return (
-    <Box data-testid="non-clickable-box-list" as="section">
+    <Box data-testid="non-clickable-box-list" as="section" marginTop={8}>
       {title && (
         <BlockHeading
           heading={title}

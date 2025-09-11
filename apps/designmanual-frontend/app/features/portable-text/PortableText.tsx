@@ -19,7 +19,6 @@ import {
   Image,
   List,
   ListItem,
-  Separator,
   SimpleGrid,
   StaticCard,
   Text,
@@ -39,6 +38,8 @@ import { LinkableHeading } from "./LinkableHeading";
 import { AccordionSerializer } from "./serializers/AccordionSerializer";
 import { ArticleHeaderSerializer } from "./serializers/ArticleHeaderSerializer";
 import { CardSerializer } from "./serializers/CardSerializer";
+import { DividerSerializer } from "./serializers/DividerSerializer";
+import { FileListSerializer } from "./serializers/FileListSerializer";
 import { ImageAndTextListSerializer } from "./serializers/ImageAndTextListSerializer";
 import { ImageBlockSerializer } from "./serializers/ImageBlockSerializer";
 import { ImageCardListSerializer } from "./serializers/ImageCardListSerializer";
@@ -151,9 +152,11 @@ const components: Partial<PortableTextReactComponents> = {
     imageAndTextList: ImageAndTextListSerializer,
     imageCardList: ImageCardListSerializer,
     cards: CardSerializer,
-    LinkButton: LinkButtonSerializer,
+    linkButton: LinkButtonSerializer,
     nonClickableBoxList: NonClickableBoxListSerializer,
     accordion: AccordionSerializer,
+    fileList: FileListSerializer,
+    divider: DividerSerializer,
     buttonLink: ({ value }) => {
       const isInternal = value.url.startsWith("/");
       const linkProps = isInternal
@@ -167,7 +170,6 @@ const components: Partial<PortableTextReactComponents> = {
         </Box>
       );
     },
-    divider: () => <Separator height="1px" marginY={8} />,
     grid: ({ value }) => (
       <SimpleGrid
         columns={[1, 1, 2, value.maxNumberOfColumns]}

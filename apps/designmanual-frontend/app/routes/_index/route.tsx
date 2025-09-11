@@ -6,6 +6,8 @@ import {
   resolveAccordionGroq,
   resolveArticleHeaderGroq,
   resolveCardsGroq,
+  resolveDividerGroq,
+  resolveFileListGroq,
   resolveImageAndTextListGroq,
   resolveImageBlockGroq,
   resolveImageCardListGroq,
@@ -39,6 +41,8 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         ${resolveCardsGroq()},
         ${resolveNonClickableBoxListGroq()},
         ${resolveAccordionGroq()},
+        ${resolveDividerGroq()},
+        ${resolveFileListGroq()},
       }
     }
     }[0]`;

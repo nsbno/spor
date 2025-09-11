@@ -70,11 +70,11 @@ export const ContentMenu = forwardRef<
         collapsible
         defaultValue={expanded}
         onValueChange={(e) => setExpanded(e.value)}
-        key={refreshKey} // Key to force re-mount and re-render
+        key={refreshKey}
       >
         {menu?.menuItems.map((item, index) => {
           if (item._type === "divider") {
-            return <Separator key={index} marginY={2} size="sm" />;
+            return <Separator key={item.url} marginY={2} size="sm" />;
           }
           const subItems = item.subItems?.filter((subItem) => subItem.url);
           const hasSubItems = Boolean(subItems?.length);

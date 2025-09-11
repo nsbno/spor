@@ -7,9 +7,12 @@ import {
   resolveAccordionGroq,
   resolveArticleHeaderGroq,
   resolveCardsGroq,
+  resolveDividerGroq,
+  resolveFileListGroq,
   resolveImageAndTextListGroq,
   resolveImageBlockGroq,
   resolveImageCardListGroq,
+  resolveLinkButtonGroq,
   resolveNonClickableBoxListGroq,
   resolveTextBlocksGroq,
 } from "~/features/cms/sanity/query";
@@ -33,6 +36,9 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
       ${resolveCardsGroq()},
       ${resolveNonClickableBoxListGroq()},
       ${resolveAccordionGroq()},
+      ${resolveLinkButtonGroq()},
+      ${resolveDividerGroq()},
+      ${resolveFileListGroq()},
     }
   }`;
   const data = await getClient().fetch(query, {

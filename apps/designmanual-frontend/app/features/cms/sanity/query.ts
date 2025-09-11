@@ -78,6 +78,14 @@ export function resolveMarkdefsLinkGroq() {
     }`;
 }
 
+export function resolveDividerGroq() {
+  return groq`
+    (_type == "divider") => @ {
+      _type,
+      default,
+    }`;
+}
+
 export function resolveTextBlockGroq() {
   return groq`
     (_type == "textBlock") => @ {
@@ -268,6 +276,25 @@ export function resolveAccordionGroq() {
           }
         } 
       }
+    }`;
+}
+
+export function resolveFileListGroq() {
+  return groq`
+    (_type == "fileList") => @ {
+      _type,
+      title,
+      description,
+      "files": files[] -> {
+        title,
+        date,
+        ...(file.asset->) {
+          url,
+          size,
+          _id,
+          "format": extension,
+        }
+      },
     }`;
 }
 

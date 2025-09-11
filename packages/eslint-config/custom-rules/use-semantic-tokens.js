@@ -53,7 +53,7 @@ export default {
     schema: [],
     messages: {
       invalidToken:
-        "Non semantic token '{{ token }}' deteceted. Use semantic tokens like 'bg', 'text.secondary', 'core.surface.active', etc.",
+        "Non semantic token '{{ token }}' detected. Use semantic tokens like 'bg', 'text.secondary', 'core.surface.active', etc.",
     },
   },
   create(context) {
@@ -67,17 +67,38 @@ export default {
 
     // props on JSX elements which often carry colors
     const colorProps = new Set([
+      // Background
       "bg",
       "background",
       "backgroundColor",
-      "color",
+      "bgColor",
+      "backgroundImage",
+      "backgroundGradient",
+      "bgGradient",
+
+      // Borders
       "borderColor",
       "borderTopColor",
       "borderRightColor",
       "borderBottomColor",
       "borderLeftColor",
-      "fill",
-      "stroke",
+
+      // Text
+      "color",
+      "textColor",
+
+      // Shadows / Rings / Outlines
+      "boxShadow",
+      "shadowColor",
+      "ringColor",
+      "outlineColor",
+
+      // Caret & Selection
+      "caretColor",
+      "_selection",
+
+      // Accent
+      "accentColor",
     ]);
 
     function isColorProp(propName) {
@@ -92,19 +113,7 @@ export default {
       "currentColor",
     ]);
 
-    const validateToken = (sourceNode, raw) => {
-      const token = (raw || "").trim();
-      if (
-        typeof token === "string" &&
-        !allowedTokens.has(token) &&
-        !allowedNonSemanticColors.has(token)
-      ) {
-        reportInvalidToken(sourceNode, token);
-      }
-    };
-
     function reportInvalidToken(nodeForReport, token) {
-      if (allowedNonSemanticColors.has(token)) return; // allow listed non-semantic colors
       context.report({
         node: nodeForReport,
         messageId: "invalidToken",
@@ -112,89 +121,71 @@ export default {
       });
     }
 
+    function isValidToken(token) {
+      return allowedTokens.has(token) || allowedNonSemanticColors.has(token);
+    }
+
+    function validateToken(sourceNode, raw) {
+      const token = (raw || "").trim();
+      if (!token) return;
+      if (isValidToken(token)) return;
+      reportInvalidToken(sourceNode, token);
+    }
+
+    // Prevent revisiting the same object expression
+    const visitedObjects = new WeakSet();
+
     function traverseObjectExpression(objNode) {
-      if (!objNode) {
-        return;
-      }
-      if (objNode.type !== "ObjectExpression") {
-        return;
-      }
+      if (!objNode || objNode.type !== "ObjectExpression") return;
+      if (visitedObjects.has(objNode)) return;
+      visitedObjects.add(objNode);
+
       const properties = objNode.properties || [];
       for (const prop of properties) {
-        if (!prop) {
+        if (!prop || prop.type !== "Property") {
           continue;
         }
-        if (prop.type !== "Property") {
-          if (prop.type === "SpreadElement") {
-            continue;
-          }
-          continue;
-        }
+
         const key = prop.key;
-        if (!key) {
-          continue;
-        }
+        if (!key) continue;
         const keyName = getKeyName(key);
+
         if (!keyName) {
-          if (prop.value && prop.value.type === "ObjectExpression") {
+          if (prop.value?.type === "ObjectExpression") {
             traverseObjectExpression(prop.value);
           }
           continue;
         }
+
         const normalizedKey = keyName.replaceAll(/-([a-z])/g, (_, c) =>
           c.toUpperCase(),
         );
-        if (prop.value && prop.value.type === "ObjectExpression") {
+
+        if (prop.value?.type === "ObjectExpression") {
           traverseObjectExpression(prop.value);
         }
+
         const isColorRelated = isColorProp(normalizedKey);
         if (!isColorRelated) {
           const regexMatch = /^(background|border|color|fill|stroke)$/i.test(
             normalizedKey,
           );
-          if (!regexMatch) {
-            continue;
-          }
+          if (!regexMatch) continue;
         }
+
         const val = prop.value;
-        if (!val) {
+        if (!val) continue;
+
+        if (isLiteral(val)) {
+          validateToken(val, val.value);
           continue;
         }
-        if (val.type === "Literal") {
-          handleLiteralValue(val);
-          continue;
-        }
-        if (val.type === "StringLiteral") {
-          handleLiteralValue(val);
-          continue;
-        }
+
         const found = collectStringLiterals(val, []);
         for (const f of found) {
-          const token = (f.value || "").trim();
-          if (allowedTokens.has(token)) {
-            continue;
-          }
-          if (allowedNonSemanticColors.has(token)) {
-            continue;
-          }
-          reportInvalidToken(f.node, token);
+          validateToken(f.node, f.value);
         }
       }
-    }
-
-    function handleLiteralValue(val) {
-      const v = val.value;
-      if (typeof v !== "string") {
-        return;
-      }
-      const token = v.trim();
-      if (allowedTokens.has(token)) {
-        return;
-      }
-      if (allowedNonSemanticColors.has(token)) {
-        return;
-      }
-      reportInvalidToken(val, token);
     }
 
     // Check JSX attributes and specially handle css/sx/style attributes
@@ -277,7 +268,6 @@ export default {
           checkJSXAttributes(node);
         } catch {
           // fail-safe: don't crash eslint if an unexpected node shape occurs
-          // console.error && console.error("eslint rule: chakra-semantic-tokens error", e);
         }
       },
 
@@ -290,7 +280,7 @@ export default {
             recipeFns.has(callee.name)
           ) {
             const arg = node.arguments && node.arguments[0];
-            if (arg && arg.type === "ObjectExpression") {
+            if (arg?.type === "ObjectExpression") {
               traverseObjectExpression(arg);
             }
           }
@@ -299,13 +289,12 @@ export default {
         }
       },
 
-      // Also, top-level object literal exports like export default { ... } where someone may define styles
-      // This is best-effort — only inspects object expressions in export default / variable initializers
       ExportDefaultDeclaration(node) {
         try {
           const decl = node.declaration;
-          if (decl && decl.type === "ObjectExpression")
+          if (decl?.type === "ObjectExpression") {
             traverseObjectExpression(decl);
+          }
         } catch {
           // intentionally ignored
         }
@@ -313,8 +302,9 @@ export default {
 
       VariableDeclarator(node) {
         try {
-          if (node.init && node.init.type === "ObjectExpression")
+          if (node.init?.type === "ObjectExpression") {
             traverseObjectExpression(node.init);
+          }
         } catch {
           // intentionally ignored
         }
@@ -336,7 +326,6 @@ function collectStringLiterals(node, collected = [], depth = 0) {
   }
 
   if (t === "TemplateLiteral") {
-    // Only if it's a static template without expressions (`` `red` ``)
     if ((node.expressions || []).length === 0) {
       const s = node.quasis
         .map((q) => (q.value ? q.value.cooked : ""))
@@ -365,7 +354,6 @@ function collectStringLiterals(node, collected = [], depth = 0) {
   }
 
   if (t === "ObjectExpression") {
-    // collect from property values
     for (const p of node.properties || []) {
       if (p && p.type === "Property")
         collectStringLiterals(p.value, collected, depth + 1);
@@ -373,7 +361,6 @@ function collectStringLiterals(node, collected = [], depth = 0) {
     return collected;
   }
 
-  // other node types (Identifier, CallExpression, MemberExpression, etc.) cannot be resolved statically
   return collected;
 }
 

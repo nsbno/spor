@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.10.0
+
+### Minor Changes
+
+- c367662: Bump to 12.10.0 - error with previous changeset.
+
 ## 12.9.0
 
 ### Minor Changes

@@ -9,24 +9,18 @@ function extractTokenPaths(obj, prefix = "") {
   for (const [key, value] of Object.entries(obj)) {
     // Handle 'DEFAULT' key by not appending it to the path
     const currentKey = key === "DEFAULT" ? "" : key;
-    const currentPath = prefix
-      ? currentKey
-        ? `${prefix}.${currentKey}`
-        : prefix
-      : currentKey;
+    const currentPath =
+      prefix && currentKey ? `${prefix}.${currentKey}` : prefix || currentKey;
 
     if (typeof value === "object" && value !== null) {
-      // Recursively extract tokens from nested objects
-      const nestedTokens = extractTokenPaths(value, currentPath);
-      tokens.push(...nestedTokens);
-    } else {
-      // Add the token path, stripping '_light' or '_dark' suffixes
-      const cleanPath = currentPath.replace(/(\._light|\._dark)$/, "");
-      // Only add non-empty paths
-      if (cleanPath) {
-        tokens.push(cleanPath);
-      }
+      tokens.push(...extractTokenPaths(value, currentPath));
+      continue;
     }
+
+    // Add the token path, stripping '_light' or '_dark' suffixes
+    const cleanPath = currentPath.replace(/(\._light|\._dark)$/, "");
+    if (!cleanPath) continue;
+    tokens.push(cleanPath);
   }
 
   return tokens;
@@ -91,10 +85,6 @@ export default {
       return colorProps.has(propName);
     }
 
-    const hexRegex = /#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b/g;
-    const rgbRegex = /rgba?\([^)]+\)/gi;
-    const hslRegex = /hsla?\([^)]+\)/gi;
-
     // List of allowed non-semantic color values
     const allowedNonSemanticColors = new Set([
       "transparent",
@@ -102,16 +92,16 @@ export default {
       "currentColor",
     ]);
 
-    function extractColorsFromString(str) {
-      if (typeof str !== "string") return [];
-      const results = new Set();
-      let m;
-      while ((m = hexRegex.exec(str))) results.add(m[0]);
-      while ((m = rgbRegex.exec(str))) results.add(m[0]);
-      while ((m = hslRegex.exec(str))) results.add(m[0]);
-      // Removed colorNameRegex usage
-      return [...results];
-    }
+    const validateToken = (sourceNode, raw) => {
+      const token = (raw || "").trim();
+      if (
+        typeof token === "string" &&
+        !allowedTokens.has(token) &&
+        !allowedNonSemanticColors.has(token)
+      ) {
+        reportInvalidToken(sourceNode, token);
+      }
+    };
 
     function reportInvalidToken(nodeForReport, token) {
       if (allowedNonSemanticColors.has(token)) return; // allow listed non-semantic colors
@@ -122,192 +112,154 @@ export default {
       });
     }
 
-    // Walk object expressions (JSX style objects, recipe objects, etc.)
     function traverseObjectExpression(objNode) {
-      if (!objNode || objNode.type !== "ObjectExpression") return;
-      for (const prop of objNode.properties || []) {
-        if (!prop) continue;
-        if (prop.type === "Property") {
-          // obtain key name
-          let keyName = null;
-          const key = prop.key;
-          if (!key) continue;
-          if (key.type === "Identifier") keyName = key.name;
-          else if (key.type === "Literal" || key.type === "StringLiteral")
-            keyName = String(key.value);
-          else if (
-            key.type === "TemplateLiteral" &&
-            (key.expressions || []).length === 0
-          ) {
-            keyName = key.quasis
-              .map((q) => (q.value ? q.value.cooked : ""))
-              .join("");
-          }
-          if (!keyName) {
-            // computed/unreliable key — still traverse value if it's an object
-            if (prop.value && prop.value.type === "ObjectExpression")
-              traverseObjectExpression(prop.value);
+      if (!objNode) {
+        return;
+      }
+      if (objNode.type !== "ObjectExpression") {
+        return;
+      }
+      const properties = objNode.properties || [];
+      for (const prop of properties) {
+        if (!prop) {
+          continue;
+        }
+        if (prop.type !== "Property") {
+          if (prop.type === "SpreadElement") {
             continue;
           }
-
-          const normalizedKey = keyName.replaceAll(/-([a-z])/g, (_, c) =>
-            c.toUpperCase(),
-          );
-
-          // Always walk into nested object values
+          continue;
+        }
+        const key = prop.key;
+        if (!key) {
+          continue;
+        }
+        const keyName = getKeyName(key);
+        if (!keyName) {
           if (prop.value && prop.value.type === "ObjectExpression") {
             traverseObjectExpression(prop.value);
           }
-
-          // If the key looks like a color prop or something that may contain color values
-          if (
-            isColorProp(normalizedKey) ||
-            /^(background|border|color|fill|stroke)$/i.test(normalizedKey)
-          ) {
-            const val = prop.value;
-            if (!val) continue;
-
-            // direct literal string -> either exact token or a string containing color (e.g. "1px solid red")
-            if (val.type === "Literal" || val.type === "StringLiteral") {
-              const v = val.value;
-              if (typeof v === "string") {
-                const token = v.trim();
-                // If the entire value equals a semantic token, allow it
-                if (!allowedTokens.has(token)) {
-                  // Try extracting color substrings (hex, rgb, names)
-                  const colors = extractColorsFromString(token);
-                  if (colors.length > 0) {
-                    for (const c of colors) {
-                      reportInvalidToken(val, c);
-                    }
-                  } else {
-                    // report the whole string because it's still not an allowed token
-                    reportInvalidToken(val, token);
-                  }
-                }
-              }
-            } else {
-              // for expressions, collect any static string literals
-              const found = collectStringLiterals(val, []);
-              for (const f of found) {
-                const token = (f.value || "").trim();
-                if (!allowedTokens.has(token)) {
-                  // if the string includes composite values, try to extract embedded colors
-                  const colors = extractColorsFromString(token);
-                  if (colors.length > 0) {
-                    for (const c of colors) reportInvalidToken(f.node, c);
-                  } else {
-                    reportInvalidToken(f.node, token);
-                  }
-                }
-              }
-            }
-          }
-        } else if (prop.type === "SpreadElement") {
-          // We cannot statically inspect spreaded objects reliably; skip
           continue;
+        }
+        const normalizedKey = keyName.replaceAll(/-([a-z])/g, (_, c) =>
+          c.toUpperCase(),
+        );
+        if (prop.value && prop.value.type === "ObjectExpression") {
+          traverseObjectExpression(prop.value);
+        }
+        const isColorRelated = isColorProp(normalizedKey);
+        if (!isColorRelated) {
+          const regexMatch = /^(background|border|color|fill|stroke)$/i.test(
+            normalizedKey,
+          );
+          if (!regexMatch) {
+            continue;
+          }
+        }
+        const val = prop.value;
+        if (!val) {
+          continue;
+        }
+        if (val.type === "Literal") {
+          handleLiteralValue(val);
+          continue;
+        }
+        if (val.type === "StringLiteral") {
+          handleLiteralValue(val);
+          continue;
+        }
+        const found = collectStringLiterals(val, []);
+        for (const f of found) {
+          const token = (f.value || "").trim();
+          if (allowedTokens.has(token)) {
+            continue;
+          }
+          if (allowedNonSemanticColors.has(token)) {
+            continue;
+          }
+          reportInvalidToken(f.node, token);
         }
       }
     }
 
+    function handleLiteralValue(val) {
+      const v = val.value;
+      if (typeof v !== "string") {
+        return;
+      }
+      const token = v.trim();
+      if (allowedTokens.has(token)) {
+        return;
+      }
+      if (allowedNonSemanticColors.has(token)) {
+        return;
+      }
+      reportInvalidToken(val, token);
+    }
+
     // Check JSX attributes and specially handle css/sx/style attributes
     function checkJSXAttributes(node) {
-      for (const attribute of node.attributes || []) {
+      const attributes = node.attributes || [];
+      for (const attribute of attributes) {
         if (!attribute || attribute.type !== "JSXAttribute") continue;
         if (!attribute.name || !attribute.name.type) continue;
+
         const propName = attribute.name.name;
+        if (!attribute.value) continue;
 
-        // Direct color prop on element: color="red" OR color={"red"} OR color={cond ? "red" : "blue"}
+        // Direct color prop
         if (isColorProp(propName)) {
-          if (!attribute.value) continue; // boolean prop or <Box disabled />
-          // literal e.g. color="red"
-          if (
-            attribute.value.type === "Literal" ||
-            attribute.value.type === "StringLiteral"
-          ) {
-            const val = attribute.value.value;
-            if (typeof val === "string" && !allowedTokens.has(val.trim())) {
-              // If string contains composite color, extract colors
-              const colors = extractColorsFromString(val);
-              if (colors.length > 0) {
-                for (const c of colors) reportInvalidToken(attribute.value, c);
-              } else {
-                reportInvalidToken(attribute.value, val.trim());
-              }
-            }
-          } else if (attribute.value.type === "JSXExpressionContainer") {
+          if (isLiteral(attribute.value)) {
+            validateToken(attribute.value, attribute.value.value);
+            continue;
+          }
+
+          if (attribute.value.type === "JSXExpressionContainer") {
             const expr = attribute.value.expression;
-            // simple literal inside expression: color={"red"}
-            if (
-              expr &&
-              (expr.type === "Literal" || expr.type === "StringLiteral") &&
-              typeof expr.value === "string"
-            ) {
-              const token = expr.value.trim();
-              if (!allowedTokens.has(token)) {
-                const colors = extractColorsFromString(token);
-                if (colors.length > 0) {
-                  for (const c of colors) reportInvalidToken(expr, c);
-                } else {
-                  reportInvalidToken(expr, token);
-                }
-              }
-            } else {
-              // conditional / logical / array / template -> collect static strings
-              const found = collectStringLiterals(expr, []);
-              for (const f of found) {
-                const token = (f.value || "").trim();
-                if (!allowedTokens.has(token)) {
-                  const colors = extractColorsFromString(token);
-                  if (colors.length > 0) {
-                    for (const c of colors) reportInvalidToken(f.node, c);
-                  } else {
-                    reportInvalidToken(f.node, token);
-                  }
-                }
-              }
+
+            if (isLiteral(expr)) {
+              validateToken(expr, expr.value);
+              continue;
+            }
+
+            const found = collectStringLiterals(expr, []);
+            for (const f of found) {
+              validateToken(f.node, f.value);
             }
           }
+          continue;
         }
 
-        // Handle style-like object props: css, sx, style
+        // style-like object props: css, sx, style
         if (propName === "css" || propName === "sx" || propName === "style") {
-          if (!attribute.value) continue;
           if (attribute.value.type === "JSXExpressionContainer") {
             const expr = attribute.value.expression;
-            if (expr && expr.type === "ObjectExpression") {
+
+            if (expr?.type === "ObjectExpression") {
               traverseObjectExpression(expr);
-            } else if (
-              expr &&
-              (expr.type === "Literal" || expr.type === "StringLiteral") &&
-              typeof expr.value === "string"
-            ) {
-              // css="background: red;" (string) -> look for color names or hex/rgb
-              const colors = extractColorsFromString(expr.value);
-              for (const c of colors) reportInvalidToken(attribute.value, c);
+              continue;
             }
-          } else if (
-            attribute.value.type === "Literal" ||
-            attribute.value.type === "StringLiteral"
-          ) {
-            // css="background: red;"
-            const val = attribute.value.value;
-            if (typeof val === "string") {
-              const colors = extractColorsFromString(val);
-              for (const c of colors) reportInvalidToken(attribute.value, c);
+
+            if (isLiteral(expr)) {
+              validateToken(attribute.value, expr.value);
             }
+            continue;
           }
+
+          if (isLiteral(attribute.value)) {
+            validateToken(attribute.value, attribute.value.value);
+          }
+          continue;
         }
 
-        // Handle Chakra UI pseudo-style props like _hover, _active, etc.
-        if (typeof propName === "string" && propName.startsWith("_")) {
-          if (!attribute.value) continue;
-          if (attribute.value.type === "JSXExpressionContainer") {
-            const expr = attribute.value.expression;
-            if (expr && expr.type === "ObjectExpression") {
-              traverseObjectExpression(expr);
-            }
-          }
+        // Chakra pseudo-style props (_hover, _active, etc.)
+        if (
+          typeof propName === "string" &&
+          propName.startsWith("_") &&
+          attribute.value.type === "JSXExpressionContainer" &&
+          attribute.value.expression?.type === "ObjectExpression"
+        ) {
+          traverseObjectExpression(attribute.value.expression);
         }
       }
     }
@@ -424,3 +376,25 @@ function collectStringLiterals(node, collected = [], depth = 0) {
   // other node types (Identifier, CallExpression, MemberExpression, etc.) cannot be resolved statically
   return collected;
 }
+
+function getKeyName(key) {
+  if (key.type === "Identifier") {
+    return key.name;
+  }
+  if (key.type === "Literal") {
+    return String(key.value);
+  }
+  if (key.type === "StringLiteral") {
+    return String(key.value);
+  }
+  if (key.type === "TemplateLiteral") {
+    const expressions = key.expressions || [];
+    if (expressions.length === 0) {
+      return key.quasis.map((q) => (q.value ? q.value.cooked : "")).join("");
+    }
+  }
+  return null;
+}
+
+const isLiteral = (v) =>
+  v && (v.type === "Literal" || v.type === "StringLiteral");

@@ -258,6 +258,7 @@ export default {
     // Look for defineRecipe/defineStyle calls and traverse their object argument
     const recipeFns = new Set([
       "defineRecipe",
+      "defineSlotRecipe",
       "defineStyle",
       "defineStyleConfig",
     ]);

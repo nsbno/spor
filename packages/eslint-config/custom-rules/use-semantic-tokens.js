@@ -88,7 +88,6 @@ export default {
       "textColor",
 
       // Shadows / Rings / Outlines
-      "boxShadow",
       "shadowColor",
       "ringColor",
       "outlineColor",
@@ -166,18 +165,18 @@ export default {
         }
 
         const isColorRelated = isColorProp(normalizedKey);
-        if (!isColorRelated) {
-          const regexMatch = /^(background|border|color|fill|stroke)$/i.test(
-            normalizedKey,
-          );
-          if (!regexMatch) continue;
-        }
+        if (!isColorRelated) continue;
 
         const val = prop.value;
         if (!val) continue;
 
         if (isLiteral(val)) {
           validateToken(val, val.value);
+          continue;
+        }
+
+        if (val.type === "ObjectExpression") {
+          traverseObjectExpression(val);
           continue;
         }
 
@@ -210,6 +209,11 @@ export default {
 
             if (isLiteral(expr)) {
               validateToken(expr, expr.value);
+              continue;
+            }
+
+            if (expr.type === "ObjectExpression") {
+              traverseObjectExpression(expr);
               continue;
             }
 

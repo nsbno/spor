@@ -17,7 +17,7 @@
     "@sanity/ui": "^2.15.17",
     "@sanity/vision": "^3.99.0",
     "@vygruppen/spor-icon-react": "^4.2.0",
-    "@vygruppen/spor-react": "^12.5.2",
+    "@vygruppen/spor-react": "^12.10.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",

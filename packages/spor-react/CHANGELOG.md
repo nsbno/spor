@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 12.10.1
+
+### Patch Changes
+
+- e690a57: New use-semantic-tokens linting rule to enforce semantic color tokens in Spor components.
+  - @vygruppen/spor-design-tokens@4.0.8
+  - @vygruppen/spor-icon-react@4.2.1
+
 ## 12.10.0
 
 ### Minor Changes

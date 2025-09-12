@@ -41,9 +41,7 @@ export function resolveImageGroq() {
 export function resolveLinkGroq(fieldName: string) {
   return groq`
   ${fieldName}.type == "internal" => {
-    "href": select(
-      ${fieldName}.reference->slug.current
-    )
+    "href": ${fieldName}.reference->path.current
   },
   ${fieldName}.type == "external" => { 
     "href": ${fieldName}.href,

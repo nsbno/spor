@@ -35,7 +35,7 @@ export function ArticleHeader({
   const hasIllustration = !!(illustration?.url || illustration?.asset);
 
   return (
-    <Stack as="section">
+    <Stack as="section" marginY={4}>
       <Flex gap={[0, 4, null, 8]} data-testid="article-header">
         <Box flex={illustration ? [1, 4 / 5, null, 7 / 10] : 1}>
           <Heading

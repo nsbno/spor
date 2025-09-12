@@ -60,6 +60,7 @@ type ComponentSection = {
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   invariant(params.category, "Expected params.category");
   invariant(params.slug, "Expected params.slug");
+  invariant(params.section, "Expected params.slug");
 
   const query = groq`*[_type == "article" && category->slug.current == $categorySlug && slug.current == $articleSlug] {
     _id,
@@ -88,6 +89,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     }
   }`;
   const queryParams = {
+    section: params.section,
     categorySlug: params.category,
     articleSlug: params.slug,
   };

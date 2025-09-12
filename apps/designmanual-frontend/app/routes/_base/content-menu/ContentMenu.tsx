@@ -8,7 +8,7 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-import { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { useLocation, useRouteLoaderData } from "react-router";
 
 import type { Section } from "~/utils/initialSanityData.server";
@@ -50,16 +50,19 @@ export const ContentMenu = forwardRef<
   }, []);
 
   const rawHeadingsMenu = useHeadingsMenu();
-  const headingsMenu = isClient ? rawHeadingsMenu : []; // avoid hydration mismatch
+  const headingsMenu = isClient ? rawHeadingsMenu : [];
 
   const [expanded, setExpanded] = useState([location.pathname]);
 
   return (
-    <>
+    <React.Fragment key="content-menu">
       <Flex flexDirection={"column"} display={["flex", null, null, "none"]}>
         {sections &&
           sections.map((section: Section) => (
-            <MenuItem key={section._id} url={`/${section.slug.current}`}>
+            <MenuItem
+              key={`${section.slug.current}_m`}
+              url={`/${section.slug.current}`}
+            >
               {section.title}
             </MenuItem>
           ))}
@@ -81,25 +84,23 @@ export const ContentMenu = forwardRef<
           const isCurrentPage = item.link === location.pathname;
           if (item.link && !isCurrentPage) {
             return (
-              <>
-                <MenuItem
-                  key={item.link}
-                  url={item.link}
-                  isTopMenu={true}
-                  ref={index === 0 ? ref : null}
-                  fontWeight={"bold"}
-                  fontSize={["desktop.xs", null, "desktop.sm"]}
-                  paddingX="3"
-                  paddingY="2"
-                  borderRadius={"sm"}
-                  onClick={() => {
-                    setExpanded([item.link]);
-                    handleRefresh();
-                  }}
-                >
-                  {item.title}
-                </MenuItem>
-              </>
+              <MenuItem
+                key={item.link}
+                url={item.link}
+                isTopMenu={true}
+                ref={index === 0 ? ref : null}
+                fontWeight={"bold"}
+                fontSize={["desktop.xs", null, "desktop.sm"]}
+                paddingX="3"
+                paddingY="2"
+                borderRadius={"sm"}
+                onClick={() => {
+                  setExpanded([item.link]);
+                  handleRefresh();
+                }}
+              >
+                {item.title}
+              </MenuItem>
             );
           }
           return (
@@ -153,7 +154,7 @@ export const ContentMenu = forwardRef<
                   <Stack display={["none", null, null, "block"]}>
                     {headingsMenu.map((subItem) => (
                       <MenuItem
-                        key={subItem.id}
+                        key={subItem.text}
                         url={`${location.pathname}#${subItem.id}`}
                         isActive={
                           `/${currentSection}${subItem.text}` ===
@@ -177,6 +178,6 @@ export const ContentMenu = forwardRef<
           );
         })}
       </Accordion>
-    </>
+    </React.Fragment>
   );
 });

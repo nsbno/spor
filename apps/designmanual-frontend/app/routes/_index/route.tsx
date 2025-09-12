@@ -46,7 +46,10 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       }
     }
     }[0]`;
-  const initialData = await getClient(isPreview).fetch(query);
+  const initialData = await getClient(isPreview).fetch(query, {
+    section: "",
+    page: "",
+  });
   return { initialData };
 };
 

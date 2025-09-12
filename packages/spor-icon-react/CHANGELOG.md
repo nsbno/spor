@@ -17,12 +17,10 @@
 ### Minor Changes
 
 - 404114d: **spor-icon-react**:
-
   - Upgraded Chakra UI to the latest version
   - Removed `ClientOnlyWrapper` from all icons
 
   **spor-react**:
-
   - Upgraded Chakra UI to the latest version
   - Fixed minor styling issues in the `Select` component
 
@@ -192,13 +190,11 @@
 ### Minor Changes
 
 - 88d6fc75: Add new icons:
-
   - No wifi
   - Reclining seat
   - Sleep 6 beds
 
   Modify icons:
-
   - Wifi
   - Baby changing
 
@@ -215,7 +211,6 @@
 
 - cfa3ebb1: ExpandableAlert: Fix double padding bug
   Other:
-
   - Set the document-level line height to a valid value
   - Fix a bug with icon generation
 
@@ -248,7 +243,6 @@
   To migrate, please check if you're using any GreenJourney icons, Campaign icons or Smartprice icons. If you are, please change your import to the freshly renamed icons and set the color yourself.
 
   The deleted icons are:
-
   - SmartpriceColorFill18Icon
   - SmartpriceColorFill24Icon
   - SmartpriceColorFill30Icon
@@ -268,7 +262,6 @@
   - GreenJourneyColor30Icon
 
   The renamed icons are:
-
   - SmartpriceBlackFill18Icon -> SmartpriceFill18Icon
   - SmartpriceBlackFill24Icon -> SmartpriceFill24Icon
   - SmartpriceBlackFill30Icon -> SmartpriceFill30Icon
@@ -318,7 +311,6 @@
   This breaking change removes a few icons, and renames yet other ones.
 
   Removed icons:
-
   - FigmaColor18Icon
   - FigmaColor24Icon
   - FigmaColor30Icon
@@ -329,7 +321,6 @@
   If you were using one of these, migrate to using their outline or fill alternatives
 
   Renamed icons (same goes for all sizes):
-
   - Position -> PositionDot (i.e. PositionFill24Icon -> PositionDotFill24Icon)
   - MyPosition -> Position (i.e. MyPositionFill24Icon -> PositionFill24Icon)
     (I know, this is confusing, but we have to do it to avoid confusion with the PositionDot icon)

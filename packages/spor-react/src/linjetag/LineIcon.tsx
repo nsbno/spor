@@ -5,6 +5,7 @@ import {
   RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
+import clsx from "clsx";
 import React, { forwardRef, PropsWithChildren } from "react";
 
 import { lineIconSlotRecipe } from "../theme/slot-recipes/line-icon";
@@ -116,6 +117,7 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
         borderColor={variant === "walk" ? "core.outline" : "transparent"}
         aria-label={label}
         ref={ref}
+        className={clsx("light", rest.className)}
       >
         <Icon css={styles.icon} />
       </Box>

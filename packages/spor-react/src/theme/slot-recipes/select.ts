@@ -126,7 +126,6 @@ export const selectSlotRecipe = defineSlotRecipe({
       },
       _active: {
         backgroundColor: "ghost.surface.active",
-        color: "green",
       },
       _highlighted: {
         _active: {

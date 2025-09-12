@@ -58,8 +58,8 @@ const AnimationTokensTable = () => {
                   height="8"
                   borderRadius="sm"
                   border="md"
-                  backgroundColor="mint"
-                  borderColor="greenHaze"
+                  backgroundColor="accent.surface"
+                  borderColor="outline"
                   animation={`${value} infinite alternate`}
                   style={{
                     animationName: "exampleAnimation",

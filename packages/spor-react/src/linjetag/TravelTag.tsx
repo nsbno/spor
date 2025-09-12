@@ -13,6 +13,7 @@ import {
   WarningFill18Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
+import clsx from "clsx";
 import { forwardRef, PropsWithChildren } from "react";
 
 import { travelTagSlotRecipe } from "../theme/slot-recipes/travel-tag";
@@ -122,8 +123,8 @@ export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
         css={styles.container}
         aria-disabled={disabled}
         ref={ref}
+        className={clsx("light", rest.className)}
         {...rest}
-        backgroundColor={disabled ? "surface.disabled" : backgroundColor}
       >
         <LineIcon
           variant={variant}

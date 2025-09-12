@@ -19,7 +19,7 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
       paddingInlineEnd: "2",
 
       outline: "1px solid",
-      outlineColor: "base.outline",
+      outlineColor: "core.outline",
       _checked: {
         backgroundColor: "brand.surface",
         borderRadius: "sm",
@@ -47,19 +47,19 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         outline: "none",
 
         _hover: {
-          backgroundColor: "core.surface.disabled",
+          backgroundColor: "surface.disabled",
           boxShadow: "none",
-          color: "core.text.disabled",
+          color: "text.disabled",
         },
         _checked: {
           cursor: "not-allowed",
           boxShadow: "none",
-          color: "core.text.disabled",
-          backgroundColor: "core.surface.disabled",
+          color: "text.disabled",
+          backgroundColor: "surface.disabled",
           _hover: {
-            backgroundColor: "core.surface.disabled",
+            backgroundColor: "surface.disabled",
             boxShadow: "none",
-            color: "core.text.disabled",
+            color: "text.disabled",
           },
         },
       },

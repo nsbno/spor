@@ -84,7 +84,9 @@ export const CodeBlockContainer = ({
     <Box
       borderRadius="sm"
       border="sm"
+      // eslint-disable-next-line spor/use-semantic-tokens
       borderColor="osloGrey"
+      // eslint-disable-next-line spor/use-semantic-tokens
       backgroundColor="darkGrey"
       fontFamily="monospace"
       fontSize={["mobile.sm", null, "desktop.sm"]}

@@ -11,6 +11,11 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       display: "flex",
       alignItems: "center",
       padding: 0.5,
+
+      _disabled: {
+        background: "surface.disabled",
+      },
+
       width: "fit-content",
       transitionDuration: "fast",
       transitionProperty: "common",
@@ -26,13 +31,13 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       },
     },
     textContainer: {
-      color: "darkGrey",
+      color: "text",
       paddingRight: 0.5,
       whiteSpace: "nowrap",
     },
     title: {
       fontWeight: "bold",
-      color: "brand.text.inverted",
+      color: "text",
       "[aria-disabled=true] &": {
         color: "text.disabled",
       },
@@ -56,24 +61,21 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       critical: {
         container: {
           border: "1px solid",
-          borderColor: "error.text",
+          borderColor: "outline.error",
         },
         deviationIcon: {
-          color: "brightRed",
+          color: "outline.error",
         },
       },
       major: {
         container: {
           border: "1px solid",
+          // eslint-disable-next-line spor/use-semantic-tokens
           borderColor: "golden",
         },
       },
       minor: {},
-      info: {
-        deviationIcon: {
-          color: "ocean",
-        },
-      },
+      info: {},
       none: {},
     },
     variant: {

@@ -50,7 +50,6 @@ export const pressableCardRecipe = defineRecipe({
         outlineColor: "core.outline",
         outlineWidth: tokens.size.stroke.sm,
         outlineStyle: "solid",
-        backgroundColor: "core.surface",
 
         _hover: {
           outlineColor: "core.outline.hover",

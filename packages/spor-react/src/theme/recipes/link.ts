@@ -34,17 +34,17 @@ export const linkRecipe = defineRecipe({
       primary: {
         color: "core.text",
         _hover: {
-          color: "text.default",
+          color: "text",
           _active: {
             color: "text.disabled",
           },
         },
       },
       secondary: {
-        color: "text.hightlight",
+        color: "text.highlight",
         padding: "2px",
         _hover: {
-          color: "text.hightlight",
+          color: "text.highlight",
           _active: {
             color: "text.disabled",
           },

@@ -72,7 +72,6 @@ export default {
       "background",
       "backgroundColor",
       "bgColor",
-      "backgroundImage",
       "backgroundGradient",
       "bgGradient",
 
@@ -108,6 +107,8 @@ export default {
     // List of allowed non-semantic color values
     const allowedNonSemanticColors = new Set([
       "transparent",
+      "none",
+      "unset",
       "inherit",
       "currentColor",
     ]);

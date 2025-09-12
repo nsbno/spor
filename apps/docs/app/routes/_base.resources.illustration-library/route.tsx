@@ -174,7 +174,7 @@ export default function IllustrationLibraryPage() {
             key={illustration._id}
             padding={2}
             border="1px solid"
-            borderColor="silver"
+            borderColor="outline"
             position={"relative"}
           >
             <Flex flexDirection="column" height="100%">

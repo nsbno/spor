@@ -34,8 +34,10 @@ export const bestPracticePanel = defineType({
             >
               <Flex gap={3} marginTop={2}>
                 {example.weight === "positive" ? (
+                  // eslint-disable-next-line spor/use-semantic-tokens
                   <MdCheck color="green" />
                 ) : example.weight === "negative" ? (
+                  // eslint-disable-next-line spor/use-semantic-tokens
                   <MdNotInterested color="red" />
                 ) : null}{" "}
                 <Box flex={1}>

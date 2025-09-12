@@ -58,7 +58,7 @@ export const ContentMenu = forwardRef<HTMLButtonElement>(
                     </MenuItem>
                   ))}
                   {!hasSubItems && (
-                    <Text color="dimGrey">Nothing here (yet)</Text>
+                    <Text color="text.tertiary">Nothing here (yet)</Text>
                   )}
                 </Stack>
               </AccordionItemContent>

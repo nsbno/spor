@@ -14,6 +14,7 @@ import {
   CloseFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import { forwardRef } from "react";
+import { useSwipeable } from "react-swipeable";
 
 import { Button, CloseButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
@@ -22,7 +23,6 @@ import {
   DrawerFullScreenHeaderProps,
   DrawerProps,
 } from "./types";
-import { useSwipeable } from "react-swipeable";
 
 /**
  * A drawer is a panel that slides in from the side of the screen. It is used to display additional content without taking up too much space.
@@ -98,7 +98,7 @@ export const CloseDrawerLine = forwardRef<HTMLButtonElement>((props, ref) => {
       top={0}
       marginY={2}
       marginX="auto"
-      backgroundColor="silver"
+      backgroundColor="floating.outline.active"
       borderRadius="xs"
       {...props}
       ref={ref}

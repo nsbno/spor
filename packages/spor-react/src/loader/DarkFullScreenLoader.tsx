@@ -15,7 +15,8 @@ export const DarkFullScreenLoader = ({
   return (
     <Center
       height="100%"
-      background="darkTeal"
+      background="bg"
+      className="dark"
       role="status"
       aria-live="polite"
       {...props}

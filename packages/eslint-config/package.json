@@ -5,6 +5,13 @@
   "exports": {
     ".": "./index.mjs"
   },
+  "scripts": {
+    "build": "node ./build-tokens.js"
+  },
+  "files": [
+    "dist",
+    "index.mjs"
+  ],
   "dependencies": {
     "@eslint/js": "^9.25.1",
     "eslint": "^9.25.1",
@@ -16,5 +23,8 @@
     "eslint-plugin-unicorn": "^59.0.0",
     "globals": "^16.0.0",
     "typescript-eslint": "^8.31.1"
+  },
+  "devDependencies": {
+    "@vygruppen/spor-design-tokens": "workspace:*"
   }
 }

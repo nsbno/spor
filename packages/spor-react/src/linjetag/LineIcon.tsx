@@ -91,10 +91,10 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
 
     const Icon: React.ElementType = getCorrectIcon({
       variant:
+        // eslint-disable-next-line no-nested-ternary
         variant === "custom" && "customIconVariant" in rest
           ? rest.customIconVariant
-          : // eslint-disable-next-line unicorn/no-nested-ternary
-            variant === "custom" //eslint rules and prettier conflict
+          : variant === "custom"
             ? "local-train"
             : variant,
       size,

@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/no-nested-ternary */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Box, Card, Flex, Grid, Heading, Text } from "@sanity/ui";
 import { MdCheck, MdNotInterested } from "react-icons/md";
@@ -22,24 +21,26 @@ export const bestPracticePanel = defineType({
           {props.examples.map((example: any) => (
             <Card
               key={example._key}
-              tone={
-                example.weight === "positive"
-                  ? "positive"
-                  : example.weight === "negative"
-                    ? "critical"
-                    : "caution"
-              }
+              tone={(() => {
+                if (example.weight === "positive") return "positive";
+                if (example.weight === "negative") return "critical";
+                return "caution";
+              })()}
               padding={3}
               radius={6}
             >
               <Flex gap={3} marginTop={2}>
-                {example.weight === "positive" ? (
-                  // eslint-disable-next-line spor/use-semantic-tokens
-                  <MdCheck color="green" />
-                ) : example.weight === "negative" ? (
-                  // eslint-disable-next-line spor/use-semantic-tokens
-                  <MdNotInterested color="red" />
-                ) : null}{" "}
+                {(() => {
+                  if (example.weight === "positive") {
+                    // eslint-disable-next-line spor/use-semantic-tokens
+                    return <MdCheck color="green" />;
+                  }
+                  if (example.weight === "negative") {
+                    // eslint-disable-next-line spor/use-semantic-tokens
+                    return <MdNotInterested color="red" />;
+                  }
+                  return null;
+                })()}{" "}
                 <Box flex={1}>
                   <Heading as="h3" weight="regular" size={2}>
                     Do{example.weight === "negative" ? "n't" : null}
@@ -108,12 +109,11 @@ export const bestPracticePanel = defineType({
             },
             prepare: ({ weight, content, image }) => {
               return {
-                title:
-                  weight === "positive"
-                    ? "✅ Do"
-                    : weight === "negative"
-                      ? "🚫 Don't"
-                      : "🤷",
+                title: (() => {
+                  if (weight === "positive") return "✅ Do";
+                  if (weight === "negative") return "🚫 Don't";
+                  return "🤷";
+                })(),
                 subtitle: portableTextToText(content),
                 media: image,
               };

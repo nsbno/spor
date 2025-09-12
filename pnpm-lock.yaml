@@ -416,6 +416,9 @@ importers:
       '@eslint/js':
         specifier: ^9.25.1
         version: 9.25.1
+      '@vygruppen/spor-design-tokens':
+        specifier: workspace:*
+        version: link:../spor-design-tokens
       eslint:
         specifier: ^9.25.1
         version: 9.25.1(jiti@2.4.2)
@@ -449,18 +452,12 @@ importers:
       '@types/node':
         specifier: ^22.13.4
         version: 22.13.4
-      '@vygruppen/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
       '@vygruppen/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       chokidar-cli:
         specifier: ^3.0.0
         version: 3.0.0
-      eslint:
-        specifier: 9.25.1
-        version: 9.25.1(jiti@2.4.2)
       json-to-ts:
         specifier: ^1.7.0
         version: 1.7.0

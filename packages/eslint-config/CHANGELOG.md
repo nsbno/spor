@@ -1,5 +1,11 @@
 # @vygruppen/eslint-config
 
+## 1.2.0
+
+### Minor Changes
+
+- e690a57: New use-semantic-tokens linting rule to enforce semantic color tokens in Spor components.
+
 ## 1.1.1
 
 ### Patch Changes

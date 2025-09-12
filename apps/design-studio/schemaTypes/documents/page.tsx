@@ -47,6 +47,7 @@ export const page = defineType({
       type: "array",
       of: [
         { type: "articleHeader", title: "Lead paragraph" },
+        { type: "textBlock", title: "Text block" },
         { type: "textBlocks", title: "Text blocks" },
         { type: "imageBlock", title: "Image block" },
         { type: "imageAndTextList", title: "Image and text" },

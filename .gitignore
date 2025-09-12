@@ -18,6 +18,9 @@ packages/*/tmp
 .vscode/
 doc
 
+# react router
+apps/*/.react-router/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

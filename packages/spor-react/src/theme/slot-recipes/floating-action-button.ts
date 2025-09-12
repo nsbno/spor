@@ -76,7 +76,7 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
           _hover: {
             backgroundColor: "transparent",
             outline: "2px solid",
-            outlineColor: "core.outline.light",
+            outlineColor: "core.outline",
             _active: {
               outline: "1px solid",
               outlineColor: "core.outline",

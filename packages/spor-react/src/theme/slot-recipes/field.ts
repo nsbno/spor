@@ -14,6 +14,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
     },
     requiredIndicator: {
       marginStart: 1,
+      // eslint-disable-next-line spor/use-semantic-tokens
       color: "brightRed",
     },
     label: {
@@ -27,8 +28,8 @@ export const fieldSlotRecipe = defineSlotRecipe({
     },
     errorText: {
       borderRadius: "xs",
-      backgroundColor: "lightRed",
-      color: "darkGrey",
+      backgroundColor: "alert.error.surface",
+      color: "text",
       paddingX: 1.5,
       paddingY: 1,
       textStyle: "xs",
@@ -45,7 +46,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
         left: "1em",
         width: "0.5rem",
         height: "0.5rem",
-        backgroundColor: "lightRed",
+        backgroundColor: "alert.error.surface",
         transform: "translateY(-50%) rotate(45deg)",
         pointerEvents: "none",
       },

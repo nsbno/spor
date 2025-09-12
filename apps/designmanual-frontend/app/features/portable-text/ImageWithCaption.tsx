@@ -37,7 +37,6 @@ export const ImageWithCaption = ({
         <Stack
           as="figcaption"
           textStyle="xs"
-          color={"text.detail"}
           marginTop={1.5}
           textAlign={mapAlignmentToTextAlign(alignment)}
         >

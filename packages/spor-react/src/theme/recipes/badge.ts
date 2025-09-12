@@ -56,7 +56,7 @@ export const badgeRecipie = defineRecipe({
         backgroundColor: "surface.color.orange",
         color: "alert.error.text.secondary",
         "& svg": {
-          color: "alert.error.icon.secondary",
+          color: "alert.error-secondary.icon",
         },
       },
       red: {

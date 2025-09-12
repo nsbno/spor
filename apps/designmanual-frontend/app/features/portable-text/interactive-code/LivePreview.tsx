@@ -6,7 +6,7 @@ export const LivePreview = (props: BoxProps) => {
     <Box
       borderRadius="sm"
       border="sm"
-      borderColor="osloGrey"
+      borderColor="outline"
       backgroundColor="bg"
       color="text"
       transition="all .1s ease-out"

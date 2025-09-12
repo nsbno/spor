@@ -63,7 +63,6 @@ export const tabsSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         list: {
-          backgroundColor: "core.surface",
           color: "core.text",
           border: "sm",
         },
@@ -73,7 +72,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
           borderColor: "transparent",
           _hover: {
             outline: "2px solid",
-            outlineColor: "core.surface.hover",
+            outlineColor: "core.outline.hover",
             outlineOffset: "-2px",
           },
           _active: {
@@ -90,7 +89,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
           },
           _disabled: {
             backgroundColor: "surface.disabled",
-            color: "brand.text.disabled",
+            color: "surface.disabled",
           },
         },
       },
@@ -104,7 +103,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
 
           _disabled: {
             backgroundColor: "surface.disabled",
-            color: "accent.text.disabled",
+            color: "icon.disabled",
           },
           _hover: {
             backgroundColor: "accent.surface.hover",

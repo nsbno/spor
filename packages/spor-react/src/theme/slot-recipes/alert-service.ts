@@ -35,7 +35,7 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       },
 
       _icon: {
-        color: "darkGrey",
+        color: "text",
       },
     },
     itemTriggerTitle: {

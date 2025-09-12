@@ -10,6 +10,7 @@ export const tipsPanel = defineType({
     preview: (props: { value?: { title: string } }) => (
       <div
         style={{
+          // eslint-disable-next-line spor/use-semantic-tokens
           backgroundColor: "var(--brand-secondary)",
           padding: 24,
           borderRadius: 18,

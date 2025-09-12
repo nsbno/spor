@@ -7,6 +7,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
   className: "spor-drawer",
   base: {
     backdrop: {
+      // eslint-disable-next-line spor/use-semantic-tokens
       bg: "blackAlpha.500",
       position: "fixed",
       insetInlineStart: 0,

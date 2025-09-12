@@ -15,7 +15,7 @@ export const divider = defineType({
           margin: "1em 0",
           height: "1px",
           width: "100%",
-          backgroundColor: "currentcolor",
+          backgroundColor: "currentColor",
         }}
       />
     ),

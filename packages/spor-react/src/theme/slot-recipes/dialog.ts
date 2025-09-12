@@ -7,6 +7,7 @@ export const dialogSlotRecipe = defineSlotRecipe({
   className: "spor-dialog",
   base: {
     backdrop: {
+      // eslint-disable-next-line spor/use-semantic-tokens
       background: "blackAlpha.500",
       position: "fixed",
       left: 0,

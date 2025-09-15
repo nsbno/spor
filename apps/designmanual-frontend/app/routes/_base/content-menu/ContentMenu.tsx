@@ -45,14 +45,16 @@ export const ContentMenu = forwardRef<
 
   const [isClient, setIsClient] = useState(false);
 
+  const isSpor = location.pathname?.includes("spor") ?? false;
+
+  const [expanded, setExpanded] = useState([location.pathname]);
+
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   const rawHeadingsMenu = useHeadingsMenu();
-  const headingsMenu = isClient ? rawHeadingsMenu : [];
-
-  const [expanded, setExpanded] = useState([location.pathname]);
+  const headingsMenu = isClient && !isSpor ? rawHeadingsMenu : [];
 
   return (
     <React.Fragment key="content-menu">
@@ -124,20 +126,20 @@ export const ContentMenu = forwardRef<
               >
                 {item.title}
               </AccordionItemTrigger>
-              <AccordionItemContent paddingTop={1} paddingBottom={0}>
+              <AccordionItemContent
+                paddingTop={1}
+                paddingBottom={0}
+                key={refreshKey}
+              >
                 {hasSubItems && (
                   <Stack padding={0.5} marginBottom={1}>
                     {subItems?.map((subItem) => (
                       <MenuItem
                         key={subItem.url}
-                        url={`${currentSection}${subItem.url}`}
-                        isActive={
-                          `/${currentSection}${subItem.url}` ===
-                          location.pathname
-                        }
+                        url={`${subItem.url}`}
+                        isActive={`/${subItem.url}` === location.pathname}
                         backgroundColor={
-                          `/${currentSection}${subItem.url}` ===
-                          location.pathname
+                          `/${subItem.url}` === location.pathname
                             ? "bg.tertiary"
                             : "transparent"
                         }

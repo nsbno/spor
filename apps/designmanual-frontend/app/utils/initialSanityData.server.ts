@@ -73,6 +73,7 @@ export const getInitialSanityData = async () => {
             tags,
             "url": select(
               defined(internalLink) => 
+                "/" + internalLink->section->slug.current + 
                 "/" + internalLink->category->slug.current + 
                 "/" + internalLink->slug.current, 
               defined(externalLink) => externalLink

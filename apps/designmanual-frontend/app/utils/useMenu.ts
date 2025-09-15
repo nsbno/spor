@@ -26,8 +26,9 @@ export const useTopSearch = (
     };
   }>("root");
 
-  const terms = initialSanityData.menus.find((menu) => menu.slug === slug);
-  initialSanityData.menus.find((menu) => menu.slug.includes(slug));
+  const terms = initialSanityData.menus.find((menu) =>
+    menu.slug.includes(slug),
+  );
   return terms;
 };
 

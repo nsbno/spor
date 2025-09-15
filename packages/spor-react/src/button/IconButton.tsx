@@ -64,6 +64,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         aria-label={props["aria-label"]}
         size={size}
         position={"relative"}
+        bg="red" // just to test lint , remove before merge
         {...rest}
         ref={ref}
       >

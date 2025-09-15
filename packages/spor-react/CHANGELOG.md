@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 12.10.2
+
+### Patch Changes
+
+- a35e94b: - ServiceAlert text is now left-aligned
+  - DateField displays required indicator correctly
+  - Combobox padding issues resolved
+  - PhoneNumberInput border rendering fixed
+  - Floating PhoneNumberInput shows correct invalid border
+  - Switch no longer has unwanted left padding
+  - TimePicker functionality improved
+
 ## 12.10.1
 
 ### Patch Changes

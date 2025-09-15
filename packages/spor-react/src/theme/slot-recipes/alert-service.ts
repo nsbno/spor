@@ -53,7 +53,7 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       "& > p": {
         gap: 2,
         width: "full",
-        justifyContent: "center",
+        justifyContent: "",
         borderBottom: "1px dashed",
         borderColor: "outline.inverted",
         paddingBottom: "3",
@@ -62,6 +62,9 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
           borderBottom: "none",
         },
       },
+    },
+    itemContent: {
+      justifyContent: "start",
     },
   },
 });

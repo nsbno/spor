@@ -443,22 +443,24 @@ importers:
       typescript-eslint:
         specifier: ^8.31.1
         version: 8.43.0(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2)
-    devDependencies:
-      '@vygruppen/spor-design-tokens':
-        specifier: workspace:*
-        version: link:../spor-design-tokens
 
   packages/spor-design-tokens:
     devDependencies:
       '@types/node':
         specifier: ^22.13.4
         version: 22.18.1
+      '@vygruppen/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
       '@vygruppen/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       chokidar-cli:
         specifier: ^3.0.0
         version: 3.0.0
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.5.1)
       json-to-ts:
         specifier: ^1.7.0
         version: 1.7.0

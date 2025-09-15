@@ -1,53 +1,57 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
-import tokens from "@vygruppen/spor-design-tokens/tokens.json" with { type: "json" };
+import linjetag from "../spor-design-tokens/tokens/color/linjetag.json" with { type: "json" };
+import vyDigital from "../spor-design-tokens/tokens/color/vy-digital.json" with { type: "json" };
 
 // Function to recursively extract token paths from the JSON
 function extractTokenPaths(obj, prefix = "") {
   const tokens = [];
-
   for (const [key, value] of Object.entries(obj)) {
     // Handle 'DEFAULT' key by not appending it to the path
     const currentKey = key === "DEFAULT" ? "" : key;
     const currentPath =
       prefix && currentKey ? `${prefix}.${currentKey}` : prefix || currentKey;
-
-    if (typeof value === "object" && value !== null) {
+    if (typeof value === "object" && value !== null && !("value" in value)) {
       tokens.push(...extractTokenPaths(value, currentPath));
       continue;
     }
-
-    // Add the token path, stripping '_light' or '_dark' suffixes
-    const cleanPath = currentPath.replace(/(\._light|\._dark)$/, "");
-    if (!cleanPath) continue;
-    tokens.push(cleanPath);
+    // If 'value' is present, extract its keys if it's an object
+    if (typeof value === "object" && value !== null && "value" in value) {
+      const val = value.value;
+      if (typeof val === "object" && val !== null) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        for (const themeKey of Object.keys(val)) {
+          tokens.push(currentPath);
+        }
+      } else {
+        tokens.push(currentPath);
+      }
+      continue;
+    }
+    // For linjetag, value is a string
+    if (typeof value === "string") {
+      tokens.push(currentPath);
+    }
   }
-
   return tokens;
 }
 
-// Function to get tokens from vyDigital and linjetag
-function getTokens(json) {
-  const allTokens = new Set();
-
-  // Process vyDigital section without theme prefix
-  const vyDigitalTokens = extractTokenPaths(json.color.vyDigital, "");
-  for (const token of vyDigitalTokens) allTokens.add(token);
-
-  // Process linjetag section with linjetag prefix
-  const linjetagTokens = extractTokenPaths(json.color.linjetag, "linjetag");
-  for (const token of linjetagTokens) allTokens.add(token);
-
-  return allTokens;
+function getTokensFromVyDigital(json) {
+  return extractTokenPaths(json.color.vyDigital, "");
 }
 
-// Use imported tokens directly
-const allowedTokens = getTokens(tokens);
+function getTokensFromLinjetag(json) {
+  return extractTokenPaths(json.color.linjetag, "linjetag");
+}
 
-// Write allowedTokens to dist/tokens.js as an ES module
+const allTokens = new Set();
+for (const token of getTokensFromVyDigital(vyDigital)) allTokens.add(token);
+for (const token of getTokensFromLinjetag(linjetag)) allTokens.add(token);
+
+console.log(`Extracted ${allTokens.size} unique tokens.`);
+
 const distDir = path.join(process.cwd(), "dist");
 mkdirSync(distDir, { recursive: true });
-const jsExport = `export const allowedTokens = ${JSON.stringify([...allowedTokens], null, 2)};\n`;
+const jsExport = `export const allowedTokens = ${JSON.stringify([...allTokens], null, 2)};\n`;
 writeFileSync(path.join(distDir, "tokens.js"), jsExport);
-// Use tsup to bundle this file if needed

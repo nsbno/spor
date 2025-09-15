@@ -38,7 +38,9 @@
   "devDependencies": {
     "@types/node": "^22.13.4",
     "@vygruppen/tsconfig": "workspace:*",
+    "@vygruppen/eslint-config": "workspace:*",
     "chokidar-cli": "^3.0.0",
+    "eslint": "9.25.1",
     "json-to-ts": "^1.7.0",
     "prettier": "^2.4.1",
     "style-dictionary": "^4.3.3",

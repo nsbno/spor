@@ -40,7 +40,6 @@ export const article = defineType({
       options: {
         source: "title",
       },
-      hidden: true,
     }),
     defineField({
       name: "path",

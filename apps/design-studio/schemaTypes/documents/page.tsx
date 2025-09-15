@@ -45,7 +45,6 @@ export const page = defineType({
       name: "slug",
       title: "Slug",
       type: "slug",
-      hidden: true,
       options: {
         source: "title",
       },

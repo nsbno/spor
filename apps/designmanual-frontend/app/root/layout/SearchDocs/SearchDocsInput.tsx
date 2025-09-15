@@ -6,10 +6,10 @@ import { matchSorter } from "match-sorter";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 
-import { useMenu } from "~/utils/useMenu";
+import { useTopSearch } from "~/utils/useMenu";
 
 const useSearchableItems = () => {
-  const menu = useMenu("side-menu");
+  const menu = useTopSearch("side-menu-spor");
 
   if (!menu?.menuItems) return [];
 
@@ -70,6 +70,7 @@ export const SearchDocsInput = ({ onSearchSelect, onClose }: Props) => {
 
   const navigate = useNavigate();
 
+  console.log("items", items);
   return (
     <Combobox.Root
       collection={collection}

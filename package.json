@@ -7,7 +7,7 @@
     "build": "turbo run build",
     "test": "turbo run test --parallel",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
+    "lint": "turbo run lint -- --max-warnings=0",
     "postinstall": "turbo run postinstall",
     "prerelease": "pnpm build",
     "release": "turbo run build && changeset publish",

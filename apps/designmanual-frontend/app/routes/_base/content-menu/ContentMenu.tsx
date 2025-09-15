@@ -45,16 +45,16 @@ export const ContentMenu = forwardRef<
 
   const [isClient, setIsClient] = useState(false);
 
-  const isSpor = location.pathname?.includes("spor") ?? false;
-
-  const [expanded, setExpanded] = useState([location.pathname]);
-
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   const rawHeadingsMenu = useHeadingsMenu();
+
+  const isSpor = location.pathname?.includes("spor") ?? false;
   const headingsMenu = isClient && !isSpor ? rawHeadingsMenu : [];
+
+  const [expanded, setExpanded] = useState([location.pathname]);
 
   return (
     <React.Fragment key="content-menu">

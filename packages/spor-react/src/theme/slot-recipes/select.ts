@@ -201,29 +201,20 @@ export const selectSlotRecipe = defineSlotRecipe({
       },
       floating: {
         control: {
-          backgroundColor: {
-            _light: "bg",
-            _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
-          },
           outline: "1px solid",
           outlineColor: "floating.outline",
           _hover: {
-            outline: "1px solid",
-            outlineColor: "floating.outline.hover",
-            backgroundColor: {
-              _light: "floating.surface.hover",
-              _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
-            },
+            outline: "2px solid",
+            outlineColor: "floating.outline",
           },
           _active: {
-            outline: "1px solid",
-            outlineColor: "floating.outline.active",
-            backgroundColor: "floating.surface.active",
+            backgroundColor: "brand.surface.active",
           },
-        },
-        selectContent: {
-          outline: "1px solid",
-          outlineColor: "floating.outline",
+          _disabled: {
+            pointerEvents: "none",
+            color: "text.disabled",
+            backgroundColor: "surface.disabled",
+          },
         },
       },
     },

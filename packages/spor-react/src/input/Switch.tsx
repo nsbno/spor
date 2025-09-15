@@ -74,11 +74,11 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           checked={props.checked}
           css={styles.root}
         >
-          <ChakraSwitch.Label>{label}</ChakraSwitch.Label>
           <ChakraSwitch.HiddenInput ref={ref} />
           <ChakraSwitch.Control css={styles.control}>
             <ChakraSwitch.Thumb />
           </ChakraSwitch.Control>
+          <ChakraSwitch.Label>{label}</ChakraSwitch.Label>
         </ChakraSwitch.Root>
       </Field>
     );

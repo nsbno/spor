@@ -90,6 +90,7 @@ export const ListBox = (props: ListBoxProps<object>) => {
       css={styles.root}
       aria-busy={loading}
       maxWidth={maxWidth}
+      padding="1"
     >
       {state.collection.size === 0 && props.emptyContent}
       {[...state.collection].map((item) =>
@@ -181,7 +182,14 @@ function Option({ item, state }: OptionProps) {
   }, []);
   return (
     <OptionContext.Provider value={{ labelProps, descriptionProps }}>
-      <ListItem {...optionProps} {...dataFields} ref={ref} css={styles.item}>
+      <ListItem
+        {...optionProps}
+        {...dataFields}
+        ref={ref}
+        css={styles.item}
+        padding="1"
+        marginX="0"
+      >
         {item.rendered}
       </ListItem>
     </OptionContext.Provider>
@@ -217,14 +225,19 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
 
   return (
     <List>
-      <ListItem {...itemProps} listStyleType={"none"}>
+      <ListItem
+        {...itemProps}
+        listStyleType={"none"}
+        marginLeft="0"
+        paddingX="1"
+      >
         {section.rendered && (
           <Box
             fontSize="mobile.xs"
             color={titleColor}
-            paddingX={3}
             paddingTop={1}
             marginTop={isFirstSection ? 0 : 2}
+            marginLeft="1"
             textTransform="uppercase"
             fontWeight="bold"
             {...headingProps}

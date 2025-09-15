@@ -1,5 +1,11 @@
 # @vygruppen/eslint-config
 
+## 1.2.2
+
+### Patch Changes
+
+- 4734b61: Add build step to tokens.
+
 ## 1.2.1
 
 ### Patch Changes

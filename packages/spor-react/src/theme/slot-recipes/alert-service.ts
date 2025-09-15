@@ -47,13 +47,13 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       textWrap: "nowrap",
     },
     itemBody: {
-      paddingInline: 2,
+      marginX: "auto",
+      padding: "0 !important",
       paddingBottom: ["0.5", null, null, "1"],
       color: "text.inverted",
       "& > p": {
         gap: 2,
         width: "full",
-        justifyContent: "",
         borderBottom: "1px dashed",
         borderColor: "outline.inverted",
         paddingBottom: "3",
@@ -62,9 +62,6 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
           borderBottom: "none",
         },
       },
-    },
-    itemContent: {
-      justifyContent: "start",
     },
   },
 });

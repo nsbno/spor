@@ -131,7 +131,7 @@ export const ServiceAlert = forwardRef<HTMLDivElement, ServiceAlertProps>(
             <Stack flexDirection="row" width="100%">
               <Accordion.ItemBody
                 as={Stack}
-                maxWidth={contentWidth}
+                width={contentWidth}
                 css={styles.itemBody}
               >
                 {children}

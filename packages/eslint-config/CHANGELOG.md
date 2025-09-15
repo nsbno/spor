@@ -1,5 +1,11 @@
 # @vygruppen/eslint-config
 
+## 1.2.3
+
+### Patch Changes
+
+- b03b9ae: fix: Add custom-rules folder to files in package.json for eslint-package
+
 ## 1.2.2
 
 ### Patch Changes

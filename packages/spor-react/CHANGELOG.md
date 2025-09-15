@@ -82,7 +82,6 @@
 ### Patch Changes
 
 - 286dbdc: Improve type definitions for Field and CheckboxGroup components:
-
   - CheckboxGroup: Make `direction` optional.
   - Field: Ensure `onClick` is included in props.
 
@@ -288,7 +287,6 @@
 
 - 94e9282: Nudge, WizardNudge and Toast does not work after updating chakra in a previous version of spor.
   Fixed:
-
   - Toast needed an id for each toast. Auto generated if not supplied from user.
   - Nudge imported usePopoverContext from ark. Now imports from chakra and works.
 
@@ -320,12 +318,10 @@
 ### Minor Changes
 
 - 404114d: **spor-icon-react**:
-
   - Upgraded Chakra UI to the latest version
   - Removed `ClientOnlyWrapper` from all icons
 
   **spor-react**:
-
   - Upgraded Chakra UI to the latest version
   - Fixed minor styling issues in the `Select` component
 
@@ -476,12 +472,10 @@
 ### Major Changes
 
 - fcd6f80: Checkbox:
-
   - Updated props, `onChange` is now `onCheckedChange`
   - "`is`" removed from props names. `invalid`, `disabled` and `checked`
 
   CheckboxGroup:
-
   - `defaultChecked` > `defaultValue`
 
 - fcd6f80: Separator: Changed name from Divider to Separator. Fixed styling on separators to match Figma styling
@@ -491,7 +485,6 @@
 - fcd6f80: Name update: "base" is now "core" on all platforms. Colors and variants.
 - fcd6f80: Lists: UnorderedList is removed, use List with prop as="ul"; OrderedList is removed, use List with prop as="ol"
 - fcd6f80: Table:
-
   - Thead is now TableHeader,
   - Tbody is now TableBody,
   - Tr is now TableRow,
@@ -506,7 +499,6 @@
   Pagination has changed and been converted to composition pattern. Please see docs for info.
 
   Prop changes:
-
   - `totalPages` > `count`
   - `selectedPage` > `page`
 
@@ -519,11 +511,9 @@
   Spor is getting a major update with Chakra 3.
 
   ## Updated variants
-
   - `base` is now `core`
 
   ### Update props
-
   - `isDisabled` is now `disabled`
   - `isLoading` is now `loading`
   - `sx` and `__css` is gone, use `css` or `style` instead
@@ -535,7 +525,6 @@
   - `isAttached` is now `attached`
 
   ### Updated components
-
   - `Dialog` replaces `Modal` - And all sizes and placements are now available from the same component
   - `Accordion`, `Pagination`, `Tabs`, `RadioCard` and `RadioCardGroup` now have a different syntax. Please consult the documentation for name changes.
   - `Table` components has many changes. Instead of the generic HTML names (Td, Tr etc.), it will now work with full names. Please see docs. Variant `simple` is now `line`.
@@ -578,7 +567,6 @@
 - fcd6f80: Accordion: Update syntax and props.
 
   Changes for component:
-
   - `AccordionButton` > `AccordionItemTrigger`
   - `AccordionPanel` > `AccordionItemContent`
   - `AccordionIcon` is deprecated and used in all Accordions
@@ -588,7 +576,6 @@
 - fcd6f80: Radio: can no longer be used without RadioGroup, for accessibility reasons.
 - fcd6f80: Button Group: variant and size are no longer props of ButtonGroup, these props are passed from children. isAttached is now attached
 - fcd6f80: RadioCardGroup and RadioCard:
-
   - Updated props: `onChange` is now `onValueChange`
   - Deleted props: `name`, `groupLabel` is replaced by `<RadioCardLabel />`
   - `core` replaces the `base` variant
@@ -604,7 +591,6 @@
 
 - fcd6f80: NativeSelect: isDisabled and isInvalid is now disabled and invalid. It is no longer necessary to define true or false.
 - fcd6f80: Alert & ExpandableAlert
-
   - `Alert`: `ClosableAlert` and `StaticAlert` are deprecated. Use component `Alert` and prop `closable` instead
   - `ExpandableAlert`: New colorscheme and styling
   - `Accordion`: Some styling updates
@@ -614,19 +600,16 @@
 
 - fcd6f80: Switch: FormLabel is depricated, use label prop. isDisabled, isChecked and isInvalid is now disabled, checked and invalid.
 - fcd6f80: **spor-design-tokens: major**
-
   - teal has been removed from the palette. Use the green palette instead
   - Some aliases are removed to make way for new ones
 
   **spor-design-tokens: minor**
-
   - The palette has been extended from 50-600 to 50-1100 with new values
   - New aliases has been added to support the extended color palette
   - New tokens has been added to themes; detail.color, surface.color and alert
   - Some values for tokens has changed to support the new palette
 
   **spor-react: patch**
-
   - Updated darkGreen Badge with new alias
 
 - fcd6f80: CardSelect: the variant are now: core, ghost and floating
@@ -647,12 +630,10 @@
 - fcd6f80: remove support for elm
 - fcd6f80: ProgressBar: You can now use showValueText to show the percentage done
 - fcd6f80: ### Changed
-
   - Changed the way the theme is switched to work with Chakra 3.
   - Removed the `theme` prop and its value from `SporProvider`. Specifying brand should be sufficient.
 
 - fcd6f80: ### Skeleton Component Updates
-
   - **Skeleton**: Introduced new props. The `isLoaded` prop has been replaced with `loading`, which is its opposite.
   - **SkeletonCircle**: The `boxSize` prop has been replaced with `size`.
 
@@ -968,7 +949,6 @@
 ### Minor Changes
 
 - 8184ed1: ### New component
-
   - ServiceAlert added to the bunch
   - Alert: New variant "service"
 
@@ -1189,7 +1169,6 @@
 ### Minor Changes
 
 - 37c8580: Card is deprecated
-
   - Update styling for PressableCard
   - Update styling for StaticCard
   - Make Card deprecated, is replaced by the above components
@@ -1199,7 +1178,6 @@
 ### Minor Changes
 
 - a3d2ca4: New component: RadioCard & RadioCardGroup
-
   - Should be used togehter for optimal functionality
 
 ### Patch Changes
@@ -1353,14 +1331,12 @@
   Sizes that used to be "sm, md, lg, xl" are now "xs, sm, md, lg".
 
   To migrate, change size
-
   - "sm" to "xs",
   - "md" to "sm",
   - "lg" to "md",
   - and "xl" to "lg".
 
   Affected components are:
-
   - ChoiceChip
   - Tabs
 
@@ -1428,7 +1404,6 @@
   added text
 
   choiceChip:
-
   - We have renamed the variant prop to chipType. This prop now accepts three values: choice, icon, and filter.
     Please update your components to use chipType instead of variant.
   - We have introduced a new variant prop. This prop accepts three values: base, accent, and floating.
@@ -1612,7 +1587,6 @@
 ### Minor Changes
 
 - a16a9972: Expose new methods and components from Chakra:
-
   - defineStyleConfig
   - Collapse
   - useSize
@@ -1838,7 +1812,6 @@
 
 - cfa3ebb1: ExpandableAlert: Fix double padding bug
   Other:
-
   - Set the document-level line height to a valid value
   - Fix a bug with icon generation
 
@@ -2124,7 +2097,6 @@
 - 5bd65c9e: Export some new transition components from Chakra
 
   This change adds the following components:
-
   - Fade
   - ScaleFade
   - Slide
@@ -2181,7 +2153,6 @@
   The design tokens were previously also exported from `spor-react` - they should now be imported from `spor-design-tokens` directly instead.
 
   Some deprecated components and props have also been removed or replaced:
-
   - `Link` is replaced by `TextLink`
   - `Select` is replaced by `NativeSelect`
   - `Spinner` is replaced by `ColorSpinner`

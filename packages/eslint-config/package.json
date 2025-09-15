@@ -5,6 +5,13 @@
   "exports": {
     ".": "./index.mjs"
   },
+  "scripts": {
+    "build": "node ./build-tokens.js"
+  },
+  "files": [
+    "dist",
+    "index.mjs"
+  ],
   "dependencies": {
     "@eslint/js": "^9.25.1",
     "eslint": "^9.25.1",

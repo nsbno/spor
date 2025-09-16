@@ -30,9 +30,16 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
         style={{
           marginBottom: 0,
           fontSize: "mobile.xs",
+          top: 0,
           cursor: "text",
+          left: "50%",
+          transform: "translateX(-50%)",
           position: "absolute",
           paddingTop: "2px",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          maxWidth: "80%",
         }}
       >
         {props.label}

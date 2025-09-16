@@ -146,6 +146,7 @@ export const TimePicker = ({
         aria-disabled={isDisabled}
         aria-live="assertive"
         aria-label={ariaLabel}
+        position="relative"
         {...boxProps}
       >
         <IconButton
@@ -158,6 +159,7 @@ export const TimePicker = ({
           onClick={handleBackwardsClick}
           disabled={isDisabled}
           style={isDisabled ? { backgroundColor: "transparent" } : {}}
+          zIndex={1}
         />
         <TimeField label={label} state={state} name={name} />
         <IconButton
@@ -170,6 +172,7 @@ export const TimePicker = ({
           onClick={handleForwardClick}
           disabled={isDisabled}
           style={isDisabled ? { backgroundColor: "transparent" } : {}}
+          zIndex={1}
         />
       </StyledField>
     </Field>

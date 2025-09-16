@@ -45,7 +45,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
       maxHeight: "100dvh",
       color: "inherit",
       boxShadow: "lg",
-      minHeight: ["50vh", null, null, "auto"],
+      minHeight: ["10rem", null, null, "auto"],
       _open: {
         animationDuration: "slowest",
         animationTimingFunction: "ease-in-smooth",
@@ -59,16 +59,16 @@ export const drawerSlotRecipe = defineSlotRecipe({
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      paddingX: "5",
+      paddingX: ["3", null, null, "5"],
       paddingBottom: "1",
     },
     body: {
-      paddingX: "5",
+      paddingX: ["3", null, null, "5"],
       paddingY: ["1", null, null, "2"],
       flex: "1",
       overflow: "auto",
       fontSize: ["xs", null, null, "sm"],
-      minHeight: ["12", null, null, "auto"],
+      minHeight: ["2", null, null, "auto"],
     },
     footer: {
       display: "flex",
@@ -85,8 +85,8 @@ export const drawerSlotRecipe = defineSlotRecipe({
     },
     closeTrigger: {
       position: "absolute",
-      top: "2",
-      insetEnd: "2",
+      top: "0",
+      right: "0",
     },
   },
   variants: {

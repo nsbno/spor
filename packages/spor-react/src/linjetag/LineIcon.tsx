@@ -86,7 +86,7 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
     };
 
     const borderContainer = () => {
-      return variant === "walk" && target === "travelTag" ? 0 : 0.5;
+      return variant === "walk" && target === "travelTag" ? 0 : "1px";
     };
 
     const Icon: React.ElementType = getCorrectIcon({

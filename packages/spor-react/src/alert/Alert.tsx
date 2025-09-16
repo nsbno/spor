@@ -81,6 +81,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
         </HStack>
         {children && (
           <ChakraAlert.Description
+            width={"100%"}
             paddingLeft={title ? 0.5 : 0}
             paddingRight={closable ? 6 : 0}
           >

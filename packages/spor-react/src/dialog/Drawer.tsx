@@ -145,7 +145,7 @@ export const DrawerFullScreenHeader = forwardRef<
   HTMLDivElement,
   DrawerFullScreenHeaderProps
 >((props, ref) => {
-  const { backTrigger = true, title } = props;
+  const { backTrigger = true, closeTrigger = true, title } = props;
   return (
     <ChakraDrawer.Header {...props} ref={ref} asChild>
       <Grid templateColumns="1fr auto 1fr" height="auto" paddingX="8">
@@ -155,9 +155,11 @@ export const DrawerFullScreenHeader = forwardRef<
         <GridItem width="full" alignSelf="end" asChild>
           {title && <DrawerTitle>{title}</DrawerTitle>}
         </GridItem>
-        <GridItem width="full" alignSelf="end">
-          <DrawerCloseTrigger justifySelf="end" top="0" />
-        </GridItem>
+        {closeTrigger && (
+          <GridItem width="full" alignSelf="end">
+            <DrawerCloseTrigger justifySelf="end" top="0" />
+          </GridItem>
+        )}
       </Grid>
     </ChakraDrawer.Header>
   );

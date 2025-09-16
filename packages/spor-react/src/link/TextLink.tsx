@@ -59,7 +59,15 @@ export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
     // If asChild is true, we need to clone the children and add the external icon
     if (props.asChild && isValidElement(children)) {
       return (
-        <ChakraLink href={href} {...props} ref={ref}>
+        <ChakraLink
+          href={href}
+          {...props}
+          ref={ref}
+          {...(isExternal && {
+            target: "_blank",
+            rel: "noopener noreferrer",
+          })}
+        >
           {cloneElement(children as React.ReactElement, {
             ...children.props,
             children: (
@@ -76,7 +84,15 @@ export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
     }
 
     return (
-      <ChakraLink href={href} {...props} ref={ref}>
+      <ChakraLink
+        href={href}
+        {...props}
+        ref={ref}
+        {...(isExternal && {
+          target: "_blank",
+          rel: "noopener noreferrer",
+        })}
+      >
         {children}
         {isExternal && <ExternalIcon label={externalLabel} size={props.size} />}
       </ChakraLink>

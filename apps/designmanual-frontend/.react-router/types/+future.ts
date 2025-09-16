@@ -4,6 +4,6 @@ import "react-router";
 
 declare module "react-router" {
   interface Future {
-    middleware: false
+    unstable_middleware: false
   }
 }

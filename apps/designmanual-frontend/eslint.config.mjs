@@ -4,9 +4,6 @@ import config from "@vygruppen/eslint-config";
 export default [
   ...config,
   {
-    ignores: [
-      "./build/*",
-      "./.react-router/types/app/routes/**/+types/route.ts",
-    ],
+    ignores: ["./build/*", "./.react-router/types/**"],
   },
 ];

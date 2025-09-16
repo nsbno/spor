@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.10.4
+
+### Patch Changes
+
+- 220e413: Update border style for LineIcon and adjust travel tag position
+
 ## 12.10.3
 
 ### Patch Changes

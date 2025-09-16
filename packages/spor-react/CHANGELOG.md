@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 12.10.3
+
+### Patch Changes
+
+- 3329fa1: TextLink: Open in a new tab when `external` is true
+  Drawer: Correct close button placement and mobile padding. Add prop to conditionally show closeTrigger on fullscreeen drawer.
+- 2be55a9: TimePicker: Fix label overlapping buttons and center it
+  RadioCard: Fix value read by screen reader, not content of radio button.
+
 ## 12.10.2
 
 ### Patch Changes

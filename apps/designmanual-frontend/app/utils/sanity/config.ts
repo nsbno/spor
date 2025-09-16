@@ -1,6 +1,12 @@
+const projectId = import.meta.env.VITE_SANITY_TOKEN || "r4xpzxak";
+
+const environment = import.meta.env.VITE_ENVIRONMENT || "test";
+
+const dataset = environment === "production" ? "production" : "test";
+
 export const sanityConfig = {
   apiVersion: "2022-02-25",
-  projectId: "r4xpzxak",
-  dataset: "test",
+  projectId,
+  dataset,
   useCdn: true,
 };

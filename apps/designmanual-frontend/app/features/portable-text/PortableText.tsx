@@ -244,12 +244,7 @@ const components: Partial<PortableTextReactComponents> = {
             code={value.code.code}
           />
           {value.caption && (
-            <Text
-              variant="xs"
-              textAlign="center"
-              color={"text.detail"}
-              marginTop={1}
-            >
+            <Text variant="xs" textAlign="center" marginTop={1}>
               {value.caption}
             </Text>
           )}
@@ -334,14 +329,17 @@ const components: Partial<PortableTextReactComponents> = {
             if (weight === "positive") {
               return (
                 <CheckmarkFill30Icon
-                  color="primaryGreen"
+                  color="alert.success.icon"
                   boxSize={[4, null, 5]}
                 />
               );
             }
             if (weight === "negative") {
               return (
-                <ErrorOutline30Icon color="brightRed" boxSize={[4, null, 5]} />
+                <ErrorOutline30Icon
+                  color="alert.error.icon"
+                  boxSize={[4, null, 5]}
+                />
               );
             }
             return null;

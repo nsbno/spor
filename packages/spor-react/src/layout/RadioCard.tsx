@@ -40,15 +40,11 @@ type RadioCardItemProps = Exclude<
 
 export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
   (props, ref) => {
-    const { inputProps, children, value, ariaLabel } = props;
+    const { inputProps, children } = props;
 
     return (
       <ChakraRadioCard.Item {...props}>
-        <ChakraRadioCard.ItemHiddenInput
-          aria-label={ariaLabel ?? value}
-          ref={ref}
-          {...inputProps}
-        />
+        <ChakraRadioCard.ItemHiddenInput ref={ref} {...inputProps} />
 
         <ChakraRadioCard.ItemControl>{children}</ChakraRadioCard.ItemControl>
       </ChakraRadioCard.Item>

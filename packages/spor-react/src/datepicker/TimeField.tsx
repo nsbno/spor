@@ -30,20 +30,23 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
         style={{
           marginBottom: 0,
           fontSize: "mobile.xs",
+          top: 0,
           cursor: "text",
+          left: "50%",
+          transform: "translateX(-50%)",
           position: "absolute",
           paddingTop: "2px",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          maxWidth: "80%",
         }}
       >
         {props.label}
       </label>
       <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
-        {state.segments.map((segment: DateSegment) => (
-          <DateTimeSegment
-            key={JSON.stringify(segment)}
-            segment={segment}
-            state={state}
-          />
+        {state.segments.map((segment: DateSegment, index) => (
+          <DateTimeSegment key={index} segment={segment} state={state} />
         ))}
       </Flex>
       <input

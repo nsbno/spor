@@ -59,7 +59,6 @@ export const tableSlotRecipe = defineSlotRecipe({
           backgroundColor: "bg",
         },
         columnHeader: {
-          color: "brand.text.inverted",
           backgroundColor: "surface.disabled",
           _hover: {
             backgroundColor: "surface.disabled",

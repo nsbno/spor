@@ -63,8 +63,8 @@ const RoundingTokensTable = () => {
                   height="72px"
                   borderRadius={token}
                   border="md"
-                  backgroundColor="mint"
-                  borderColor="greenHaze"
+                  backgroundColor="accent.surface"
+                  borderColor="outline"
                 />
               </TableCell>
 

@@ -1,10 +1,12 @@
 "use client";
-import { Box, Flex, useSlotRecipe } from "@chakra-ui/react";
+import { Box, Field, Flex, useSlotRecipe } from "@chakra-ui/react";
 import { DateValue, GregorianCalendar } from "@internationalized/date";
 import { DOMAttributes, FocusableElement } from "@react-types/shared";
 import React, { forwardRef, PropsWithChildren, RefObject, useRef } from "react";
 import { AriaDateFieldProps, useDateField } from "react-aria";
 import { DateSegment, useDateFieldState } from "react-stately";
+
+import { Label } from "@/input/Label";
 
 import { createTexts, useTranslation } from "../i18n";
 import { DatePickerVariantProps } from "./DatePicker";
@@ -61,7 +63,9 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
             position="absolute"
             paddingTop="2px"
           >
-            <label {...props.labelProps}>{props.label}</label>
+            <Label padding="0" fontSize="2xs" {...props.labelProps}>
+              {props.label} <Field.RequiredIndicator />
+            </Label>
           </Box>
         )}
         <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">

@@ -23,5 +23,6 @@ export type DrawerProps = Omit<
 
 export type DrawerFullScreenHeaderProps = ChakraDrawer.HeaderProps & {
   backTrigger?: boolean;
+  closeTrigger?: boolean;
   title?: string;
 };

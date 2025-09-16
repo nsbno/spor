@@ -128,10 +128,10 @@ export const ServiceAlert = forwardRef<HTMLDivElement, ServiceAlertProps>(
           </Accordion.ItemTrigger>
 
           <Accordion.ItemContent asChild>
-            <Stack flexDirection="row" justifyContent="center" width="100%">
+            <Stack flexDirection="row" width="100%">
               <Accordion.ItemBody
                 as={Stack}
-                maxWidth={contentWidth}
+                width={contentWidth}
                 css={styles.itemBody}
               >
                 {children}

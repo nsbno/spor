@@ -9,22 +9,27 @@ import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
+import useSemanticTokens from "./custom-rules/use-semantic-tokens.js";
+
 export default defineConfig([
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+    languageOptions: {
+      globals: { ...globals.browser, ...globals.node },
+    },
     plugins: {
-      js,
       "simple-import-sort": simpleImportSort,
+      spor: {
+        rules: {
+          "use-semantic-tokens": useSemanticTokens,
+        },
+      },
     },
     rules: {
       "simple-import-sort/imports": "warn",
       "simple-import-sort/exports": "warn",
+      "spor/use-semantic-tokens": "warn",
     },
-    extends: ["js/recommended"],
-  },
-  {
-    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
-    languageOptions: { globals: { ...globals.browser, ...globals.node } },
   },
   js.configs.recommended,
   tseslint.configs.recommended,
@@ -32,13 +37,14 @@ export default defineConfig([
   pluginReact.configs.flat["jsx-runtime"],
   reactHooks.configs["recommended-latest"],
   jsxA11y.flatConfigs.recommended,
-  eslintConfigPrettier,
   eslintPluginUnicorn.configs.recommended,
   {
     rules: {
       "unicorn/prevent-abbreviations": "off",
       "unicorn/no-null": "off",
       "unicorn/filename-case": "off",
+      "no-nested-ternary": "warn",
     },
   },
+  eslintConfigPrettier,
 ]);

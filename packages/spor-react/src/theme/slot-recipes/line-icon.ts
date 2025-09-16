@@ -10,21 +10,12 @@ export const lineIconSlotRecipe = defineSlotRecipe({
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      "[aria-disabled=true] &": {
-        backgroundColor: "surface.disabled",
-      },
     },
     icon: {
-      color: "white",
-      "[aria-disabled=true] &": {
-        color: "icon.disabled",
-      },
+      color: "bg",
     },
     title: {
-      color: "darkGrey",
-      "[aria-disabled=true] &": {
-        color: "text.disabled",
-      },
+      color: "text",
     },
   },
   variants: {
@@ -83,38 +74,14 @@ export const lineIconSlotRecipe = defineSlotRecipe({
         iconContainer: {
           backgroundColor: "linjetag.altTransport",
         },
-        icon: {
-          color: "darkGrey",
-          "[aria-disabled=true] &": {
-            color: "white",
-          },
-        },
       },
       walk: {
         title: {
           color: "text",
         },
-        icon: {
-          color: "linjetag.walkLight",
-          "[aria-disabled=true] &": {
-            color: "icon.disabled",
-          },
-        },
-        _disabled: {
-          icon: {
-            color: "text.disabled",
-          },
-          title: {
-            color: "text.disabled",
-          },
-        },
       },
       custom: {
-        iconContainer: {
-          _disabled: {
-            backgroundColor: "surface.disabled",
-          },
-        },
+        iconContainer: {},
       },
     },
     size: {

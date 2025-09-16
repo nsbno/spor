@@ -25,7 +25,6 @@ export const checkboxSlotRecipe = defineSlotRecipe({
     indicator: {
       width: "100%",
       height: "100%",
-      borderColor: "white",
       marginTop: -1,
       transform: "scale(1)",
       opacity: 0,
@@ -59,8 +58,8 @@ export const checkboxSlotRecipe = defineSlotRecipe({
         },
 
         _invalid: {
-          backgroundColor: "brightRed",
-          borderColor: "brightRed",
+          backgroundColor: "outline.error",
+          borderColor: "outline.error",
         },
       },
       _disabled: {

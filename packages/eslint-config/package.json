@@ -1,10 +1,19 @@
 {
   "name": "@vygruppen/eslint-config",
-  "version": "1.1.1",
+  "version": "1.2.3",
   "type": "module",
   "exports": {
     ".": "./index.mjs"
   },
+  "scripts": {
+    "build": "node ./build-tokens.js"
+  },
+  "files": [
+    "dist",
+    "index.mjs",
+    "custom-rules",
+    "build-tokens.js"
+  ],
   "dependencies": {
     "@eslint/js": "^9.25.1",
     "eslint": "^9.25.1",

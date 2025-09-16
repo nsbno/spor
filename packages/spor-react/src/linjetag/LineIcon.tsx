@@ -5,6 +5,7 @@ import {
   RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
+import clsx from "clsx";
 import React, { forwardRef, PropsWithChildren } from "react";
 
 import { lineIconSlotRecipe } from "../theme/slot-recipes/line-icon";
@@ -90,10 +91,10 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
 
     const Icon: React.ElementType = getCorrectIcon({
       variant:
+        // eslint-disable-next-line no-nested-ternary
         variant === "custom" && "customIconVariant" in rest
           ? rest.customIconVariant
-          : // eslint-disable-next-line unicorn/no-nested-ternary
-            variant === "custom" //eslint rules and prettier conflict
+          : variant === "custom"
             ? "local-train"
             : variant,
       size,
@@ -116,6 +117,7 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
         borderColor={variant === "walk" ? "core.outline" : "transparent"}
         aria-label={label}
         ref={ref}
+        className={clsx("light", rest.className)}
       >
         <Icon css={styles.icon} />
       </Box>

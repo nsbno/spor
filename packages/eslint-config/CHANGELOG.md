@@ -1,5 +1,29 @@
 # @vygruppen/eslint-config
 
+## 1.2.3
+
+### Patch Changes
+
+- b03b9ae: fix: Add custom-rules folder to files in package.json for eslint-package
+
+## 1.2.2
+
+### Patch Changes
+
+- 4734b61: Add build step to tokens.
+
+## 1.2.1
+
+### Patch Changes
+
+- 5aef82d: Fix build error in repo
+
+## 1.2.0
+
+### Minor Changes
+
+- e690a57: New use-semantic-tokens linting rule to enforce semantic color tokens in Spor components.
+
 ## 1.1.1
 
 ### Patch Changes

@@ -56,19 +56,16 @@
 
 - fcd6f80: Name update: "base" is now "core" on all platforms. Colors and variants.
 - fcd6f80: **spor-design-tokens: major**
-
   - teal has been removed from the palette. Use the green palette instead
   - Some aliases are removed to make way for new ones
 
   **spor-design-tokens: minor**
-
   - The palette has been extended from 50-600 to 50-1100 with new values
   - New aliases has been added to support the extended color palette
   - New tokens has been added to themes; detail.color, surface.color and alert
   - Some values for tokens has changed to support the new palette
 
   **spor-react: patch**
-
   - Updated darkGreen Badge with new alias
 
 ### Minor Changes
@@ -259,7 +256,6 @@
   This change removes the "px" spacing tokens, as well as the t-shirt size tokens, in favor of a scale. This conforms better with how The React and React Native implementations are set up.
 
   To migrate, upgrade and fix all typing errors in your application. This is what you should change from and to:
-
   - 3xs or px[3] -> 0.5
   - 2xs or px[6] -> 1
   - xs or px[9] -> 1.5

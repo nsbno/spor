@@ -3,6 +3,7 @@ import { PrismTheme } from "prism-react-renderer";
 /** This is the shared theme used by all code highlighting */
 export const theme: PrismTheme = {
   plain: {
+    // eslint-disable-next-line spor/use-semantic-tokens
     color: "#C5C8C6",
     backgroundColor: "transparent",
   },

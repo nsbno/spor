@@ -149,7 +149,8 @@ function IconCircle({ backgroundColor, icon: Icon }: IconCircleProps) {
       justifyContent="center"
       borderRadius="round"
       backgroundColor={backgroundColor}
-      color="darkGrey"
+      color="bg"
+      className="dark"
     >
       <Icon width={["30px", "60px"]} height={["30px", "60px"]} />
     </Flex>

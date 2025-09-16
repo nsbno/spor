@@ -9,7 +9,7 @@ export const switchSlotRecipe = defineSlotRecipe({
   base: {
     root: {
       display: "inline-flex",
-      gap: "2.5",
+      gap: "2",
       alignItems: "center",
       position: "relative",
       verticalAlign: "middle",
@@ -69,9 +69,8 @@ export const switchSlotRecipe = defineSlotRecipe({
       height: "var(--switch-height)",
       transitionProperty: "common",
       transitionDuration: "fast",
-      outline: "1px solid",
-      outlineColor: "core.outline.default",
-      backgroundColor: "core.background",
+      outline: "2px solid",
+      outlineColor: "core.outline",
       _hover: {
         outline: "2px solid",
         outlineColor: "core.outline.hover",
@@ -96,7 +95,6 @@ export const switchSlotRecipe = defineSlotRecipe({
       },
       _disabled: {
         pointerEvents: "none",
-        backgroundColor: "core.disabled",
         outlineColor: "outline.disabled",
 
         _checked: {

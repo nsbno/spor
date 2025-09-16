@@ -80,46 +80,37 @@ export const PhoneNumberInput = forwardRef<
   };
 
   return (
-    <AttachedInputs
-      border={invalid ? "1px solid" : "none"}
-      borderColor={invalid ? "outline.error" : "none"}
-      outline={invalid ? "1px solid" : "none"}
-      outlineColor={invalid ? "outline.error" : "none"}
-      borderRadius={invalid ? "sm" : "none"}
-      display="grid"
-      gridTemplateColumns="1fr 10fr"
-    >
-      <>
-        <CountryCodeSelect
-          value={[value.countryCode]}
-          onValueChange={handleCountryCodeChange}
-          height="100%"
-          width="6.25rem"
-          variant={variant}
-          allowedCountryCodes={allowedCountryCodes}
-          data-state="on"
-        />
-        <Input
-          ref={ref}
-          type="tel"
-          {...props}
-          value={value.nationalNumber}
-          invalid={invalid}
-          errorText={errorText}
-          onChange={(e) => {
-            const target = e.target as HTMLInputElement;
-            // Removes everything but numbers, spaces and dashes
-            const strippedValue = target.value.replaceAll(/[^\d\s-]/g, "");
-            onChange({
-              countryCode: value.countryCode,
-              nationalNumber: strippedValue,
-            });
-          }}
-          variant={variant}
-          data-state="on"
-          label={label}
-        />
-      </>
+    <AttachedInputs display="grid" gridTemplateColumns="1fr 10fr">
+      <CountryCodeSelect
+        value={[value.countryCode]}
+        onValueChange={handleCountryCodeChange}
+        height="100%"
+        width="6.25rem"
+        variant={variant}
+        allowedCountryCodes={allowedCountryCodes}
+        data-state="on"
+        invalid={invalid}
+      />
+      <Input
+        ref={ref}
+        type="tel"
+        {...props}
+        value={value.nationalNumber}
+        invalid={invalid}
+        errorText={errorText}
+        onChange={(e) => {
+          const target = e.target as HTMLInputElement;
+          // Removes everything but numbers, spaces and dashes
+          const strippedValue = target.value.replaceAll(/[^\d\s-]/g, "");
+          onChange({
+            countryCode: value.countryCode,
+            nationalNumber: strippedValue,
+          });
+        }}
+        variant={variant}
+        data-state="on"
+        label={label}
+      />
     </AttachedInputs>
   );
 });

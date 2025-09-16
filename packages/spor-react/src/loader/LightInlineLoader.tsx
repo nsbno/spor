@@ -15,13 +15,7 @@ export const LightInlineLoader = ({
   ...props
 }: LightInlineLoaderProps) => {
   return (
-    <Center
-      height="100%"
-      background="white"
-      role="status"
-      aria-live="polite"
-      {...props}
-    >
+    <Center height="100%" role="status" aria-live="polite" {...props}>
       <Box width={width} maxWidth={maxWidth}>
         <ClientOnly>
           <Lottie animationData={inlineLoaderLightData} />

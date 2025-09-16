@@ -26,8 +26,6 @@ export const LiveEditor = ({ onChange, ...props }: LiveEditorProps) => {
         position: "absolute",
         top: 0,
         left: 0,
-        backgroundColor: "greenHaze",
-        color: "white",
         padding: 1,
         borderBottomRightRadius: "sm",
       }}

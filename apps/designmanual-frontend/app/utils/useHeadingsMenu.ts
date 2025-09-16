@@ -6,11 +6,6 @@ export type HeadingsMenu = {
   id?: string;
 };
 
-/**
- * Extracts all H2 headings from the current page
- * @returns Array of objects containing text and ID of each H2 element
- */
-
 export const useHeadingsMenu = (): Array<HeadingsMenu> | [] => {
   const location = useLocation();
 

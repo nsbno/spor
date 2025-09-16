@@ -1,3 +1,4 @@
+import type { InitialSanityData } from "./initialSanityData.server";
 import { MenuItem } from "./initialSanityData.server";
 import { useMatchesData } from "./useMatchesData";
 
@@ -32,13 +33,16 @@ export const useTopSearch = (
   return terms;
 };
 
-export const useMenu = (slug: string = "side-menu-identitet") => {
-  const getSectionLevel = slug.split("/")[0] || "side-menu-identitet"; // make this dynamic
+export const useMenu = (slug: string) => {
   const { initialSanityData } = useMatchesData<{
-    initialSanityData: {
-      menus: Menu[];
-    };
+    initialSanityData: InitialSanityData;
   }>("root");
+
+  const fallbackSection = initialSanityData.sections.find(
+    (section) => section.default === true,
+  );
+
+  const getSectionLevel = slug.split("/")[0] || fallbackSection?.slug.current;
 
   const menu = initialSanityData.menus.find(
     (menu) =>

@@ -40,14 +40,28 @@ export type MenuItem = {
 export type Menu = {
   slug: string;
   menuItems: MenuItem[];
+  relatedTo: {
+    _type: string;
+    title: string;
+    slug: string;
+  };
 };
 export type InitialSanityData = {
+  sections: Section[];
   menus: Menu[];
   siteSettings: SiteSettings;
 };
 export const getInitialSanityData = async () => {
   return getClient().fetch<InitialSanityData>(
     `{
+      "sections": *[_type == "section"] { 
+        _id,
+        _type,
+        default,
+        slug,
+        title,
+        icon
+      },
       "menus": *[_type == "menu"] { 
         "slug": slug.current,
         relatedTo->{

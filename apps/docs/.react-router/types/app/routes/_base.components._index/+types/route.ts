@@ -36,11 +36,11 @@ export namespace Route {
   export type HeadersArgs = Annotations["HeadersArgs"];
   export type HeadersFunction = Annotations["HeadersFunction"];
 
-  // unstable_middleware
-  export type unstable_MiddlewareFunction = Annotations["unstable_MiddlewareFunction"];
+  // middleware
+  export type MiddlewareFunction = Annotations["MiddlewareFunction"];
 
-  // unstable_clientMiddleware
-  export type unstable_ClientMiddlewareFunction = Annotations["unstable_ClientMiddlewareFunction"];
+  // clientMiddleware
+  export type ClientMiddlewareFunction = Annotations["ClientMiddlewareFunction"];
 
   // loader
   export type LoaderArgs = Annotations["LoaderArgs"];

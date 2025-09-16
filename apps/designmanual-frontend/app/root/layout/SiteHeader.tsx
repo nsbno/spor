@@ -65,7 +65,7 @@ export const SiteHeader = () => {
       alignItems="center"
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
-      backgroundColor={"surface.default.white"}
+      backgroundColor={"surface.color.neutral"}
       gap="3"
       width={"100vw"}
       overflow={"hidden"}

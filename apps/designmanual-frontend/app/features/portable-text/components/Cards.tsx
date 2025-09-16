@@ -100,7 +100,7 @@ export const Cards = ({
     return (
       <Box
         width="100vw"
-        background="mint"
+        background="bg.tertiary"
         position="relative"
         left="50%"
         transform="translateX(-50%)"
@@ -226,7 +226,7 @@ const WithIcon = ({ item, color }: { item: CardItem; color: SporColor }) => {
         <Flex gap={2} {...(!item.text && { alignItems: "center" })}>
           <Box {...IconStyle} backgroundColor={color}>
             <Box minWidth="20px" minHeight="20px">
-              {getIcon({ iconName: item.icon, style: "Outline" })}
+              {getIcon({ iconName: item.icon })}
             </Box>
           </Box>
           <Flex alignItems="center" width="100%">

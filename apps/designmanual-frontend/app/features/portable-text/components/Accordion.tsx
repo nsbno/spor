@@ -1,11 +1,11 @@
 import type { PortableTextBlock } from "@portabletext/types";
 import {
+  Accordion as SporAccordion,
   AccordionItem,
   AccordionItemContent,
   AccordionItemTrigger,
   Box,
   Heading,
-  Accordion as SporAccordion,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";

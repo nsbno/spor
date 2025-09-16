@@ -157,7 +157,7 @@ export const NonClickableBoxList = ({
     return (
       <Box
         width="100vw"
-        background="mint"
+        background="surface.secondary"
         position="relative"
         left="50%"
         transform="translateX(-50%)"

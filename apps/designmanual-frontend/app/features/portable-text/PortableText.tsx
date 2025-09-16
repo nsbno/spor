@@ -2,8 +2,8 @@
 
 import { ButtonProps } from "@chakra-ui/react";
 import {
-  PortableTextReactComponents,
   PortableText as SanityPortableText,
+  PortableTextReactComponents,
 } from "@portabletext/react";
 import {
   CheckmarkFill30Icon,

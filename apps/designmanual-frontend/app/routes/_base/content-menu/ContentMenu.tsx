@@ -148,7 +148,7 @@ export const ContentMenu = forwardRef<
                       </MenuItem>
                     ))}
                     {!hasSubItems && (
-                      <Text color="dimGrey">Nothing here (yet)</Text>
+                      <Text color="text.disabled">Nothing here (yet)</Text>
                     )}
                   </Stack>
                 )}

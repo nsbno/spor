@@ -41,7 +41,7 @@ export function ArticleHeader({
           <Heading
             as="h1"
             fontWeight="normal"
-            color="darkTeal"
+            color="text.secondary"
             marginBottom={isFallbackLanguage ? 2 : 3}
             variant="xxl"
             data-testid="page-title"

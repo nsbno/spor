@@ -16,6 +16,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
       gap: 0.5,
       borderRadius: "xl",
       width: "fit-content",
+      overflowX: "auto",
     },
     trigger: {
       display: "flex",

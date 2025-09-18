@@ -1,5 +1,5 @@
 import { Drawer as ChakraDrawer, RecipeVariantProps } from "@chakra-ui/react";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 
 import { drawerSlotRecipe } from "@/theme/slot-recipes/drawer";
 
@@ -24,5 +24,5 @@ export type DrawerProps = Omit<
 export type DrawerFullScreenHeaderProps = ChakraDrawer.HeaderProps & {
   backTrigger?: boolean;
   closeTrigger?: boolean;
-  title?: string;
+  title?: ReactNode;
 };

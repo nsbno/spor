@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.11.0
+
+### Minor Changes
+
+- c095719: Drawer: Change title in DrawerFullScreenHeader from being type string, to being child.
+
 ## 12.10.6
 
 ### Patch Changes

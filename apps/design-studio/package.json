@@ -15,7 +15,7 @@
   "dependencies": {
     "@sanity/code-input": "^5.1.2",
     "@sanity/ui": "^2.15.17",
-    "@sanity/vision": "^4.9.0",
+    "@sanity/vision": "^3.99.0",
     "@vygruppen/spor-icon-react": "workspace:*",
     "@vygruppen/spor-react": "workspace:*",
     "react": "^18.3.1",

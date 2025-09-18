@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 12.10.5
+
+### Patch Changes
+
+- 2710738: Fix correct duration of toast.
+- d6ab343: Add backgroundColor to travelTag
+
 ## 12.10.4
 
 ### Patch Changes

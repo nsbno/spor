@@ -75,7 +75,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
     const sizeNotFull = size !== "full";
     return (
       <Portal disabled={!portalled} container={portalRef}>
-        <ChakraDrawer.Positioner>
+        <ChakraDrawer.Positioner asChild>
           <Box {...handlers} width="100%">
             <ChakraDrawer.Content ref={ref} {...rest}>
               {sizeNotFull && placement === "bottom" && <CloseDrawerLine />}

@@ -34,7 +34,9 @@ export const AttachedInputs = forwardRef<HTMLDivElement, AttachedInputsProps>(
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);
 
-    return <Group ref={ref} css={styles} attached {...restProps} />;
+    return (
+      <Group ref={ref} css={styles} attached isolation="auto" {...restProps} />
+    );
   },
 );
 AttachedInputs.displayName = "AttachedInputs";

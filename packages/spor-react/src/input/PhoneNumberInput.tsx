@@ -129,10 +129,4 @@ const texts = createTexts({
     en: "Phone number (optional)",
     sv: "Telefonnummer (valfritt)",
   },
-  countryCodeLabel: {
-    nb: "Landskode",
-    nn: "Landskode",
-    en: "Country code",
-    sv: "Landskod",
-  },
 });

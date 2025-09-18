@@ -8,6 +8,7 @@ import { schemaTypes } from "./schemaTypes";
 import { siteMenuStructure } from "./structure.js";
 
 const projectId = "r4xpzxak";
+export const API_VERSION = "2024-07-25";
 
 export default defineConfig([
   {

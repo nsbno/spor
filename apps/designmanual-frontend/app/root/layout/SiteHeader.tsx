@@ -4,6 +4,7 @@ import {
   SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import {
+  Box,
   Button,
   Drawer,
   DrawerBody,
@@ -14,7 +15,6 @@ import {
   Flex,
   IconButton,
   Stack,
-  Text,
   useDisclosure,
   VyLogo,
 } from "@vygruppen/spor-react";
@@ -22,6 +22,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useRouteLoaderData } from "react-router";
 
 import { loader } from "~/root";
+import { getIcon } from "~/utils/getIcon";
 
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
 import { ChangeVersion } from "./ChangeVersion";
@@ -48,8 +49,14 @@ const useSearchKeyboardShortcut = (onTriggered: () => void) => {
 /** The site header shown at the top of every part of our site */
 export const SiteHeader = () => {
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
+  const location = useLocation();
 
   useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
+
+  const routeData = useRouteLoaderData<typeof loader>("root");
+  const slug = useLocation().pathname.slice(1);
+  const currentSection = slug?.split("/")[0] || "";
+  const sections = routeData?.initialSanityData?.siteSettings?.topMenu || [];
 
   return (
     <Flex
@@ -58,13 +65,7 @@ export const SiteHeader = () => {
       alignItems="center"
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
-      backgroundColor={"surface.tertiary"}
-      className="light"
-      css={{
-        position: "sticky",
-        top: "0",
-        zIndex: "sticky",
-      }}
+      backgroundColor={"surface.color.neutral"}
       gap="3"
       width={"100vw"}
       overflow={"hidden"}
@@ -77,15 +78,47 @@ export const SiteHeader = () => {
         position="relative"
       >
         <Link to="/" aria-label="Go to the front page">
-          <VyLogo className="dark" width="auto" height="56px" aria-label="Vy" />
+          <VyLogo
+            className="light"
+            width="auto"
+            height={["30px", "36px", null, "48px"]}
+            aria-label="Vy"
+          />
         </Link>
+
+        <Box as="nav" flexGrow={1} justifyContent="flex-end">
+          <Flex as="ul" gap="2" width={"auto"} justifySelf={"flex-end"}>
+            {sections.map((section) => {
+              return (
+                <Box as="li" key={section.title}>
+                  <Link to={`/${section.slug.current}`}>
+                    <Button
+                      variant={
+                        (section.default && slug === "") ||
+                        `/${section.slug.current}` === location.pathname
+                          ? "secondary"
+                          : "ghost"
+                      }
+                      borderRadius="lg"
+                      display={{ base: "none", lg: "flex" }}
+                      border="none"
+                      leftIcon={getIcon({ iconName: section.icon })}
+                    >
+                      {section.title}
+                    </Button>
+                  </Link>
+                </Box>
+              );
+            })}
+          </Flex>
+        </Box>
 
         <Flex gap="1">
           <SearchDocsButton onSearchClick={() => setSearchDialogOpen(true)} />
 
-          <ChangeVersion />
+          {currentSection && currentSection === "spor" && <ChangeVersion />}
 
-          <SiteSettings />
+          {currentSection && currentSection === "spor" && <SiteSettings />}
 
           <MobileMenu />
 
@@ -116,7 +149,6 @@ const MobileMenu = () => {
         variant="ghost"
         size="md"
         onClick={onOpen}
-        className="dark"
         display={{ base: "flex", lg: "none" }}
       />
 
@@ -146,28 +178,20 @@ const SearchDocsButton = ({ onSearchClick }: { onSearchClick: () => void }) => {
         icon={<SearchFill24Icon />}
         variant="ghost"
         size="md"
-        aria-label="Search documentation"
+        aria-label={`Search documentation, ${isMac ? "cmd" : "ctrl"} + k to open modal`}
         onClick={onSearchClick}
-        className="dark"
         display={{ base: "flex", lg: "none" }}
       />
 
       <Button
-        variant="tertiary"
-        borderRadius="xs"
+        variant="ghost"
+        borderRadius="lg"
         leftIcon={<SearchOutline24Icon />}
-        rightIcon={<Text variant="xs">({isMac ? "cmd" : "ctrl"} + k)</Text>}
-        className="dark"
         onClick={onSearchClick}
-        padding="2"
-        xl={{ minWidth: "38rem" }}
-        lg={{ minWidth: "24rem" }}
-        position="absolute"
-        left="50%"
-        transform="translateX(-50%)"
         display={{ base: "none", lg: "flex" }}
+        border="none"
       >
-        Search docs...
+        Søk
       </Button>
     </>
   );

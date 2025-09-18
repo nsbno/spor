@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 12.10.6
+
+### Patch Changes
+
+- a11fd6a: attached-input: Fix errorLabel so it properly overlaps other elements
+  textarea: Prevent missing props warning in console
+  drawer: Ensure start and end drawers have full height
+
 ## 12.10.5
 
 ### Patch Changes

@@ -45,7 +45,7 @@ export const MenuItem = forwardRef<HTMLElement, MenuItemProps>(
         key={url}
         {...linkProps}
         display="block"
-        paddingY={0.5}
+        paddingY={1}
         paddingX={2}
         fontWeight="normal"
         style={{ height: "auto" }}

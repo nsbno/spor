@@ -484,6 +484,8 @@ const GridLayout = ({
   const templateRowsMobile = `repeat(${rowsMobile}, 1fr)`;
   const templateRowsOthers = `repeat(${rowOthers}, 1fr)`;
 
+  const isSingleImage = imageCount === 1;
+
   return (
     <Grid
       templateColumns={["repeat(6, 1fr)", null, null, "repeat(12, 1fr)"]}
@@ -497,6 +499,7 @@ const GridLayout = ({
       ]}
       width="100%"
       data-testid="image-block"
+      marginTop={isSingleImage ? 0 : 8}
     >
       {children}
       {captionAndCredits && (

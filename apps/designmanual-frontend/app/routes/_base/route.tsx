@@ -17,12 +17,11 @@ export default function BaseLayout() {
   return (
     <Flex
       flex={1}
-      as="main"
       id="content"
       maxWidth={[null, null, null, "container.lg", "container.xl"]}
       width={["100%", null, "container.lg", "container.xl"]}
       marginX="auto"
-      marginTop={3}
+      marginTop={4}
       paddingX={[3, null, 6, 4, 8]}
       marginBottom={["3.75rem", null, "5rem", "5rem"]}
       alignItems={"flex-start"}

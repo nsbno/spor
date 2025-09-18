@@ -1,5 +1,5 @@
 import { groq } from "@sanity/groq-store";
-import { Box, Heading } from "@vygruppen/spor-react";
+import { Box } from "@vygruppen/spor-react";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
 import invariant from "tiny-invariant";
 
@@ -62,9 +62,6 @@ export default function Index() {
 
   return (
     <Box backgroundColor="bg" flex="1">
-      <Heading as="h1" marginBottom={4}>
-        {data.page.title}
-      </Heading>
       <PortableText value={data?.page.content} />
     </Box>
   );

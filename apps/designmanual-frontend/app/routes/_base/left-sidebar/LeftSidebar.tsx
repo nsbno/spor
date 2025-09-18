@@ -10,7 +10,9 @@ export const LeftSidebar = () => {
       minWidth={["100%", null, null, "20rem"]}
       position={["absolute", null, null, "sticky"]}
       top="0"
+      as="aside"
       display={["none", null, null, "flex"]}
+      marginTop={"4.6rem"}
     >
       <SearchableContentMenu />
     </Box>

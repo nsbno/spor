@@ -1,6 +1,6 @@
 import {
   HamburgerFill24Icon,
-  SearchFill24Icon,
+  SearchFill18Icon,
   SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import {
@@ -25,9 +25,7 @@ import { loader } from "~/root";
 import { getIcon } from "~/utils/getIcon";
 
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
-import { ChangeVersion } from "./ChangeVersion";
 import { SearchDocs } from "./SearchDocs";
-import { SiteSettings } from "./SiteSettings";
 
 const useSearchKeyboardShortcut = (onTriggered: () => void) => {
   useEffect(() => {
@@ -49,7 +47,6 @@ const useSearchKeyboardShortcut = (onTriggered: () => void) => {
 /** The site header shown at the top of every part of our site */
 export const SiteHeader = () => {
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
-  const location = useLocation();
 
   useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
 
@@ -90,19 +87,20 @@ export const SiteHeader = () => {
           <Flex as="ul" gap="2" width={"auto"} justifySelf={"flex-end"}>
             {sections.map((section) => {
               return (
-                <Box as="li" key={section.title}>
+                <Box as="li" key={section.title} paddingRight={3}>
                   <Link to={`/${section.slug.current}`}>
                     <Button
                       variant={
                         (section.default && slug === "") ||
-                        `/${section.slug.current}` === location.pathname
+                        section.slug.current === currentSection
                           ? "secondary"
                           : "ghost"
                       }
+                      size={"md"}
                       borderRadius="lg"
                       display={{ base: "none", lg: "flex" }}
                       border="none"
-                      leftIcon={getIcon({ iconName: section.icon })}
+                      leftIcon={getIcon({ iconName: section.icon, size: 24 })}
                     >
                       {section.title}
                     </Button>
@@ -115,13 +113,7 @@ export const SiteHeader = () => {
 
         <Flex gap="1">
           <SearchDocsButton onSearchClick={() => setSearchDialogOpen(true)} />
-
-          {currentSection && currentSection === "spor" && <ChangeVersion />}
-
-          {currentSection && currentSection === "spor" && <SiteSettings />}
-
           <MobileMenu />
-
           <SearchDocs
             onOpenChange={setSearchDialogOpen}
             open={searchDialogOpen}
@@ -175,7 +167,7 @@ const SearchDocsButton = ({ onSearchClick }: { onSearchClick: () => void }) => {
   return (
     <>
       <IconButton
-        icon={<SearchFill24Icon />}
+        icon={<SearchFill18Icon />}
         variant="ghost"
         size="md"
         aria-label={`Search documentation, ${isMac ? "cmd" : "ctrl"} + k to open modal`}

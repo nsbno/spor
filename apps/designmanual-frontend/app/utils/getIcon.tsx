@@ -2,6 +2,7 @@ import * as icons from "@vygruppen/spor-icon-react";
 
 type IconProps = {
   iconName: string;
+  size: 18 | 24 | 30;
 };
 
 export const getIcon = ({ iconName }: IconProps) => {
@@ -24,7 +25,7 @@ const filledIconsList = new Set([
   "position-dot",
 ]);
 
-function formatIconName(iconName: string) {
+function formatIconName(iconName: string, size: 18 | 24 | 30 = 24) {
   const transform = iconName.replaceAll(/-(.)/g, (_, char) =>
     char.toUpperCase(),
   );
@@ -70,7 +71,7 @@ function formatIconName(iconName: string) {
         transform.charAt(0).toUpperCase() +
         transform.slice(1) +
         (filledIconsList.has(iconName) ? "Fill" : "Outline") +
-        30 +
+        size +
         "Icon"
       );
     }

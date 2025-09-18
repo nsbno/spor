@@ -62,7 +62,7 @@ const ImageAndText = ({
   return (
     <Flex
       gap={4}
-      marginTop={8}
+      marginTop={2}
       flexDirection={
         listDirection === "horizontal"
           ? ["column", null, null, "row"]
@@ -190,6 +190,7 @@ const GridContainer = ({ children }: GridContainerProps) => (
       "repeat(12, 1fr)",
     ]}
     gap={[2, 3, null, 4]}
+    marginTop="8"
   >
     {children}
   </Grid>

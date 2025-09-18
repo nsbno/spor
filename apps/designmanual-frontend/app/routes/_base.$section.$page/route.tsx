@@ -1,5 +1,5 @@
 import { groq } from "@sanity/groq-store";
-import { Flex, Heading } from "@vygruppen/spor-react";
+import { Flex } from "@vygruppen/spor-react";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
 import invariant from "tiny-invariant";
 
@@ -61,9 +61,6 @@ export default function Index() {
 
   return (
     <Flex as="main" flex="1" flexDirection="column" gap={2}>
-      <Heading as="h1" variant="xxl" color={"text.secondary"}>
-        {data?.title}
-      </Heading>
       <PortableText value={data?.content} />
     </Flex>
   );

@@ -6,5 +6,10 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@vygruppen/docs", "@vygruppen/studio"]
+  "ignore": [
+    "@vygruppen/docs",
+    "@vygruppen/studio",
+    "@vygruppen/designmanual",
+    "@vygruppen/designmanual-docs"
+  ]
 }

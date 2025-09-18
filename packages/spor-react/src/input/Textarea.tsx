@@ -76,16 +76,35 @@ const useLabelHeight = (label: ReactNode | undefined) => {
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (props, ref) => {
-    const { label, variant = "core", ...fieldProps } = props;
+    const {
+      label,
+      variant = "core",
+      invalid,
+      required,
+      errorText,
+      readOnly,
+      helperText,
+      floatingLabel,
+      ...restProps
+    } = props;
     const recipe = useRecipe({ key: "textarea" });
     const styles = recipe({ variant });
 
     const { labelRef, labelHeight } = useLabelHeight(label);
 
     return (
-      <Field {...fieldProps} position="relative">
+      <Field
+        label={label}
+        errorText={errorText}
+        helperText={helperText}
+        invalid={invalid}
+        required={required}
+        readOnly={readOnly}
+        floatingLabel={floatingLabel}
+        position="relative"
+      >
         <ChakraTextarea
-          {...props}
+          {...restProps}
           css={styles}
           className="peer"
           ref={ref}

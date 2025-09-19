@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.0.9
+
+### Patch Changes
+
+- abfaff8: Update bg.tertiary.dark from darkTeal to jungle
+
 ## 4.0.8
 
 ### Patch Changes

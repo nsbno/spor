@@ -86,7 +86,6 @@ export const ContentMenu = forwardRef<
           const hasSubItems = Boolean(subItems?.length);
           const isCurrentPage = item.link === location.pathname;
           if (item.link && !isCurrentPage) {
-            console.log("Rendering top menu item:", item.link);
             return (
               <MenuItem
                 key={item.link}

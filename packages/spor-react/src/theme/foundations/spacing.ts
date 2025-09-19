@@ -18,6 +18,7 @@ type Spacing = {
   10: Token;
   11: Token;
   12: Token;
+  13: Token;
 };
 
 export const spacing = Object.entries(tokens.size.spacing).reduce(

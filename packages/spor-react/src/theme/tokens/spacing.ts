@@ -17,4 +17,5 @@ export const spacing = defineTokens.spacing({
   10: { value: tokens.size.spacing["10"] },
   11: { value: tokens.size.spacing["11"] },
   12: { value: tokens.size.spacing["12"] },
+  13: { value: tokens.size.spacing["13"] },
 });

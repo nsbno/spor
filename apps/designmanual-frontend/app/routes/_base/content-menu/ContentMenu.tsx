@@ -3,6 +3,7 @@ import {
   AccordionItem,
   AccordionItemContent,
   AccordionItemTrigger,
+  Expandable,
   Flex,
   Separator,
   Stack,
@@ -42,6 +43,8 @@ export const ContentMenu = forwardRef<
   const sections =
     useRouteLoaderData("root")?.initialSanityData?.siteSettings?.topMenu || [];
 
+  const mobileMenus = useRouteLoaderData("root")?.initialSanityData?.allMenus;
+
   const currentSection = menu?.relatedTo.slug;
 
   const [isClient, setIsClient] = useState(false);
@@ -61,6 +64,7 @@ export const ContentMenu = forwardRef<
     <React.Fragment key="content-menu">
       <Flex flexDirection={"column"} display={["flex", null, null, "none"]}>
         {sections &&
+          sections.length > 7 && // Only render if sections exist
           sections.map((section: Section) => (
             <MenuItem
               key={`${section.slug.current}_m`}
@@ -69,6 +73,7 @@ export const ContentMenu = forwardRef<
               {section.title}
             </MenuItem>
           ))}
+        <MobileMenu sections={sections} mobileMenus={mobileMenus} />
       </Flex>
       <Separator marginY="2" display={["block", null, null, "none"]} />
       <Accordion
@@ -77,6 +82,7 @@ export const ContentMenu = forwardRef<
         defaultValue={expanded}
         onValueChange={(e) => setExpanded(e.value)}
         key={refreshKey}
+        display={["none", null, null, "block"]}
       >
         {menu?.menuItems.map((item, index) => {
           if (item._type === "divider") {
@@ -184,3 +190,39 @@ export const ContentMenu = forwardRef<
     </React.Fragment>
   );
 });
+
+const MobileMenu = ({
+  sections,
+  mobileMenus,
+}: {
+  sections: Section[];
+  mobileMenus: MenuItem[];
+}) => {
+  console.log("mobile sections", sections);
+  console.log("mobile menu", mobileMenus);
+  return (
+    <Stack gap="2">
+      {sections &&
+        sections.map((section) => (
+          <Expandable
+            key={`${section.slug.current}_em`}
+            variant="ghost"
+            title={section.title}
+            collapsible
+          >
+            {mobileMenus
+              ?.find(
+                (menu) =>
+                  `side-menu-${section.slug.current}` === menu.slug.current,
+              )
+              ?.menuItems.map((item: any) => {
+                if (item._type === "divider") {
+                  return null;
+                }
+                return <Text key={item.url}>{item.title}</Text>;
+              })}
+          </Expandable>
+        ))}
+    </Stack>
+  );
+};

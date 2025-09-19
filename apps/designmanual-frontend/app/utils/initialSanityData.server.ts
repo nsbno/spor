@@ -62,6 +62,7 @@ export const getInitialSanityData = async () => {
         title,
         icon
       },
+      "allMenus": *[_type == "menu"],
       "menus": *[_type == "menu"] { 
         "slug": slug.current,
         relatedTo->{

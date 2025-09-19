@@ -11,10 +11,8 @@ import {
   DrawerCloseTrigger,
   DrawerContent,
   DrawerHeader,
-  DrawerTitle,
   Flex,
   IconButton,
-  Stack,
   useDisclosure,
   VyLogo,
 } from "@vygruppen/spor-react";
@@ -147,13 +145,10 @@ const MobileMenu = () => {
       <Drawer placement="end" open={open} onExitComplete={onClose}>
         <DrawerContent>
           <DrawerHeader>
-            <DrawerTitle>Explore Spor</DrawerTitle>
             <DrawerCloseTrigger onClick={onClose} />
           </DrawerHeader>
-          <DrawerBody paddingY={2} paddingX={[1, 2, 3]}>
-            <Stack padding={2}>
-              <SearchableContentMenu />
-            </Stack>
+          <DrawerBody paddingY={2}>
+            <SearchableContentMenu />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

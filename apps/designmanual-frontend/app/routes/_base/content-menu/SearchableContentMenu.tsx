@@ -14,9 +14,8 @@ export const SearchableContentMenu = () => {
   return (
     <Box
       as="nav"
-      width={"100%"}
-      paddingBottom={3}
-      paddingRight={3}
+      width={["100vw", null, null, "100%"]}
+      paddingRight={[6, null, 3]}
       alignSelf={"flex-start"}
     >
       <ContentMenu

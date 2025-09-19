@@ -16,6 +16,7 @@ import { useHeadingsMenu } from "~/utils/useHeadingsMenu";
 import { useMenu } from "~/utils/useMenu";
 
 import { MenuItem } from "./MenuItem";
+import { handleExternalMenu } from "./utils";
 
 export const ContentMenu = forwardRef<
   HTMLButtonElement,
@@ -85,10 +86,11 @@ export const ContentMenu = forwardRef<
           const hasSubItems = Boolean(subItems?.length);
           const isCurrentPage = item.link === location.pathname;
           if (item.link && !isCurrentPage) {
+            console.log("Rendering top menu item:", item.link);
             return (
               <MenuItem
                 key={item.link}
-                url={item.link}
+                url={handleExternalMenu(item.link)}
                 isTopMenu={true}
                 ref={index === 0 ? ref : null}
                 fontWeight={"bold"}

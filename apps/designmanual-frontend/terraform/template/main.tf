@@ -1,19 +1,12 @@
 locals {
-  application_name = "digitalekanaler-admin"
+  application_name = "digitalekanaler-designmanual"
   base_domain      = var.environment == "prod" ? "vylabs.io" : "${var.environment}.vylabs.io"
-  domain_name      = "admin.${local.base_domain}"
+  domain_name      = "designmanual.${local.base_domain}"
 
   alb_domain_name       = "lb.${local.base_domain}"
   alb_listener_arn      = nonsensitive(data.aws_ssm_parameter.alb_listener_arn.value)
   alb_test_listener_arn = nonsensitive(data.aws_ssm_parameter.alb_test_listener_arn.value)
   alb_security_group_id = nonsensitive(data.aws_ssm_parameter.alb_security_group_id.value)
-
-  auth_url             = "https://${local.domain_name}/api/auth"
-  cognito_user_pool_id = module.metadata.shared_cognito_user_pool_mapping["prod"]
-
-  dynamic_env_vars = var.environment == "test" ? {
-    AUTH_REDIRECT_PROXY_URL = local.auth_url
-  } : {}
 }
 
 module "metadata" {
@@ -131,7 +124,6 @@ module "cloudfront_ssr" {
 
   service_name            = local.application_name
   domain_name             = local.domain_name
-  additional_domain_names = ["digitalekanaler-admin.${local.base_domain}"]
   alb_domain_name         = local.alb_domain_name
 
   route53_hosted_zone_id = data.aws_route53_zone.parent.zone_id

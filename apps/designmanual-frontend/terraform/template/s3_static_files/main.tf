@@ -1,5 +1,3 @@
-data "aws_caller_identity" "this" {}
-
 resource "aws_s3_bucket" "website_bucket" {
   bucket = "${data.aws_caller_identity.this.account_id}-${var.application_name}-static-files"
 }

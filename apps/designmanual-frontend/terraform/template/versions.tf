@@ -20,7 +20,7 @@ terraform {
 provider "aws" {
   default_tags {
     tags = {
-      repo        = "digitalekanaler-admin-frontend"
+      repo        = "spor"
       application = local.application_name
       terraform   = true
     }
@@ -31,7 +31,7 @@ provider "aws" {
 provider "aws" {
   default_tags {
     tags = {
-      repo        = "digitalekanaler-admin-frontend"
+      repo        = "spor
       application = local.application_name
       terraform   = true
     }

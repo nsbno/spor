@@ -74,19 +74,6 @@ module "ssr_task" {
     repository_url = data.aws_ecr_repository.this.repository_url
     protocol       = "HTTP"
     port           = 3000
-
-    environment = merge({
-      COGNITO_DOMAIN     = "https://auth.cognito.vydev.io"
-      COGNITO_ISSUER_URL = "https://cognito-idp.eu-west-1.amazonaws.com/${local.cognito_user_pool_id}"
-      AUTH_URL           = local.auth_url
-      ENVIRONMENT        = var.environment
-      DDB_TABLE          = aws_dynamodb_table.auth_sessions.name
-    }, local.dynamic_env_vars)
-    secrets = {
-      COGNITO_CLIENT_SECRET = vy_app_client.client.client_secret
-      COGNITO_CLIENT_ID     = vy_app_client.client.client_id
-      AUTH_SECRET           = random_password.session_secret.result
-    }
   }
 
   lb_health_check = {
@@ -169,74 +156,6 @@ module "preview_url" {
   service_name = local.application_name
 }
 
-################################
-#                              #
-# Cognito client for SSO login #
-#                              #
-################################
-
-data "vy_cognito_info" "this" {}
-
-resource "vy_app_client" "client" {
-  name = "${data.aws_caller_identity.this.account_id}-${local.application_name}"
-  type = "frontend"
-
-  generate_secret = true
-  callback_urls = [
-    "http://localhost:7304/api/auth/callback/cognito",
-    "https://${local.domain_name}/api/auth/callback/cognito",
-  ]
-  logout_urls = [
-    "http://localhost:7304/logout",
-    "https://${local.domain_name}/logout",
-  ]
-
-  scopes = [
-    "email",
-    "openid",
-    "profile",
-  ]
-}
-
-resource "aws_dynamodb_table" "auth_sessions" {
-  name         = "${local.application_name}-auth-sessions"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "pk"
-  range_key    = "sk"
-
-  attribute {
-    name = "pk"
-    type = "S"
-  }
-
-  attribute {
-    name = "sk"
-    type = "S"
-  }
-
-  attribute {
-    name = "GSI1PK"
-    type = "S"
-  }
-
-  attribute {
-    name = "GSI1SK"
-    type = "S"
-  }
-
-  global_secondary_index {
-    hash_key        = "GSI1PK"
-    name            = "GSI1"
-    projection_type = "ALL"
-    range_key       = "GSI1SK"
-  }
-
-  ttl {
-    attribute_name = "expires"
-    enabled        = true
-  }
-}
-
 module "permissions_ssr_task" {
   source = "github.com/nsbno/terraform-aws-service-permissions?ref=1.2.0"
 
@@ -255,34 +174,3 @@ module "permissions_ssr_task" {
   ]
 }
 
-resource "random_password" "session_secret" {
-  length  = 32
-  special = true
-}
-
-#################################
-#                               #
-# Redirect old Admin URL to new #
-#                               #
-#################################
-
-resource "aws_lb_listener_rule" "redirect_admin" {
-  listener_arn = local.alb_listener_arn
-
-  action {
-    type = "redirect"
-
-    redirect {
-      port        = "443"
-      protocol    = "HTTPS"
-      status_code = "HTTP_301"
-      host        = "admin.${local.base_domain}"
-    }
-  }
-
-  condition {
-    host_header {
-      values = ["digitalekanaler-admin.${local.base_domain}"]
-    }
-  }
-}

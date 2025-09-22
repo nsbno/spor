@@ -1,7 +1,6 @@
 locals {
   service_account_id = "637423315721"
   test_account_id    = "590183702222"
-  stage_account_id   = "339713113237"
   prod_account_id    = "471112960535"
 }
 

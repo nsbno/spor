@@ -148,7 +148,7 @@ const MobileMenu = () => {
             <DrawerCloseTrigger onClick={onClose} />
           </DrawerHeader>
           <DrawerBody paddingY={2}>
-            <SearchableContentMenu />
+            <SearchableContentMenu closeMobileMenu={onClose} />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

@@ -3,6 +3,7 @@ import {
   AccordionItem,
   AccordionItemContent,
   AccordionItemTrigger,
+  Button,
   Expandable,
   Flex,
   Separator,
@@ -10,8 +11,9 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import React, { forwardRef, useEffect, useState } from "react";
-import { useLocation, useRouteLoaderData } from "react-router";
+import { Link, useLocation, useRouteLoaderData } from "react-router";
 
+import { getIcon } from "~/utils/getIcon";
 import type { Section } from "~/utils/initialSanityData.server";
 import { useHeadingsMenu } from "~/utils/useHeadingsMenu";
 import { useMenu } from "~/utils/useMenu";
@@ -24,8 +26,9 @@ export const ContentMenu = forwardRef<
   {
     refreshKey: number;
     handleRefresh: () => void;
+    closeMobileMenu: () => void;
   }
->(function ContentMenu({ refreshKey, handleRefresh }, ref) {
+>(function ContentMenu({ refreshKey, handleRefresh, closeMobileMenu }, ref) {
   const location = useLocation();
   const menu = useMenu(location.pathname.slice(1));
   let activeIndex =
@@ -60,6 +63,8 @@ export const ContentMenu = forwardRef<
 
   const [expanded, setExpanded] = useState([location.pathname]);
 
+  console.log("menu", closeMobileMenu);
+
   return (
     <React.Fragment key="content-menu">
       <Flex flexDirection={"column"} display={["flex", null, null, "none"]}>
@@ -73,7 +78,11 @@ export const ContentMenu = forwardRef<
               {section.title}
             </MenuItem>
           ))}
-        <MobileMenu sections={sections} mobileMenus={mobileMenus} />
+        <MobileMenu
+          sections={sections}
+          mobileMenus={mobileMenus}
+          closeMobileMenu={closeMobileMenu}
+        />
       </Flex>
       <Separator marginY="2" display={["block", null, null, "none"]} />
       <Accordion
@@ -191,15 +200,27 @@ export const ContentMenu = forwardRef<
   );
 });
 
+type MenuItemeType = {
+  _type: string;
+  title: string;
+  menuItems?: MenuItemeType[];
+  relatedTo?: {
+    _type: string;
+    title: string;
+    slug: string;
+  };
+  slug?: { current: string };
+};
+
 const MobileMenu = ({
   sections,
   mobileMenus,
+  closeMobileMenu,
 }: {
   sections: Section[];
-  mobileMenus: MenuItem[];
+  mobileMenus: MenuItemeType[] | undefined;
+  closeMobileMenu: () => void;
 }) => {
-  console.log("mobile sections", sections);
-  console.log("mobile menu", mobileMenus);
   return (
     <Stack gap="2">
       {sections &&
@@ -208,18 +229,28 @@ const MobileMenu = ({
             key={`${section.slug.current}_em`}
             variant="ghost"
             title={section.title}
+            startElement={getIcon({ iconName: section.icon, size: 24 })}
             collapsible
           >
             {mobileMenus
               ?.find(
                 (menu) =>
-                  `side-menu-${section.slug.current}` === menu.slug.current,
+                  `side-menu-${section.slug.current}` === menu.slug?.current,
               )
-              ?.menuItems.map((item: any) => {
+              ?.menuItems?.map((item) => {
                 if (item._type === "divider") {
                   return null;
                 }
-                return <Text key={item.url}>{item.title}</Text>;
+                return (
+                  <Button key={item.title} variant="ghost" width="100%">
+                    <Link
+                      to={item?.slug?.current ?? "/"}
+                      onClick={closeMobileMenu}
+                    >
+                      {item.title}
+                    </Link>
+                  </Button>
+                );
               })}
           </Expandable>
         ))}

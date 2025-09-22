@@ -3,7 +3,11 @@ import React from "react";
 
 import { ContentMenu } from "./ContentMenu";
 
-export const SearchableContentMenu = () => {
+export const SearchableContentMenu = ({
+  closeMobileMenu,
+}: {
+  closeMobileMenu: () => void;
+}) => {
   const focusableRef = React.useRef<HTMLButtonElement>(null);
   const [refreshKey, setRefreshKey] = React.useState(0);
 
@@ -22,6 +26,7 @@ export const SearchableContentMenu = () => {
         ref={focusableRef}
         refreshKey={refreshKey}
         handleRefresh={handleRefresh}
+        closeMobileMenu={closeMobileMenu}
       />
     </Box>
   );

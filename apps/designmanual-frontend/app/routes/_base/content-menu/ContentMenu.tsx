@@ -26,9 +26,8 @@ export const ContentMenu = forwardRef<
   {
     refreshKey: number;
     handleRefresh: () => void;
-    closeMobileMenu: () => void;
   }
->(function ContentMenu({ refreshKey, handleRefresh, closeMobileMenu }, ref) {
+>(function ContentMenu({ refreshKey, handleRefresh }, ref) {
   const location = useLocation();
   const menu = useMenu(location.pathname.slice(1));
   let activeIndex =
@@ -63,8 +62,6 @@ export const ContentMenu = forwardRef<
 
   const [expanded, setExpanded] = useState([location.pathname]);
 
-  console.log("menu", closeMobileMenu);
-
   return (
     <React.Fragment key="content-menu">
       <Flex flexDirection={"column"} display={["flex", null, null, "none"]}>
@@ -78,11 +75,7 @@ export const ContentMenu = forwardRef<
               {section.title}
             </MenuItem>
           ))}
-        <MobileMenu
-          sections={sections}
-          mobileMenus={mobileMenus}
-          closeMobileMenu={closeMobileMenu}
-        />
+        <MobileMenu sections={sections} mobileMenus={mobileMenus} />
       </Flex>
       <Separator marginY="2" display={["block", null, null, "none"]} />
       <Accordion
@@ -215,11 +208,9 @@ type MenuItemeType = {
 const MobileMenu = ({
   sections,
   mobileMenus,
-  closeMobileMenu,
 }: {
   sections: Section[];
   mobileMenus: MenuItemeType[] | undefined;
-  closeMobileMenu: () => void;
 }) => {
   return (
     <Stack gap="2">
@@ -243,12 +234,7 @@ const MobileMenu = ({
                 }
                 return (
                   <Button key={item.title} variant="ghost" width="100%">
-                    <Link
-                      to={item?.slug?.current ?? "/"}
-                      onClick={closeMobileMenu}
-                    >
-                      {item.title}
-                    </Link>
+                    <Link to={item?.slug?.current ?? "/"}>{item.title}</Link>
                   </Button>
                 );
               })}

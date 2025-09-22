@@ -137,9 +137,10 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       walk: {
         textContainer: {
           position: "absolute",
-          left: "1.3rem",
+          left: "0.875rem",
           bottom: 0,
         },
+
         title: {
           fontSize: "mobile.xs",
           fontWeight: "normal",

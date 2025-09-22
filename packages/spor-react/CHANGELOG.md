@@ -1,5 +1,39 @@
 # @vygruppen/spor-react
 
+## 12.11.1
+
+### Patch Changes
+
+- Updated dependencies [abfaff8]
+  - @vygruppen/spor-design-tokens@4.0.9
+
+## 12.11.0
+
+### Minor Changes
+
+- c095719: Drawer: Change title in DrawerFullScreenHeader from being type string, to being child.
+
+## 12.10.6
+
+### Patch Changes
+
+- a11fd6a: attached-input: Fix errorLabel so it properly overlaps other elements
+  textarea: Prevent missing props warning in console
+  drawer: Ensure start and end drawers have full height
+
+## 12.10.5
+
+### Patch Changes
+
+- 2710738: Fix correct duration of toast.
+- d6ab343: Add backgroundColor to travelTag
+
+## 12.10.4
+
+### Patch Changes
+
+- 220e413: Update border style for LineIcon and adjust travel tag position
+
 ## 12.10.3
 
 ### Patch Changes

@@ -79,6 +79,12 @@ export const lineIconSlotRecipe = defineSlotRecipe({
         title: {
           color: "text",
         },
+        iconContainer: {
+          backgroundColor: "none",
+        },
+        icon: {
+          color: "text",
+        },
       },
       custom: {
         iconContainer: {},

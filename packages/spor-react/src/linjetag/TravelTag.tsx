@@ -124,6 +124,7 @@ export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
         aria-disabled={disabled}
         ref={ref}
         className={clsx("light", rest.className)}
+        backgroundColor={backgroundColor}
         {...rest}
       >
         <LineIcon

@@ -21,8 +21,10 @@ export type DrawerProps = Omit<
     children: React.ReactNode;
   };
 
-export type DrawerFullScreenHeaderProps = ChakraDrawer.HeaderProps & {
+export type DrawerFullScreenHeaderProps = Omit<
+  ChakraDrawer.HeaderProps,
+  "title"
+> & {
   backTrigger?: boolean;
   closeTrigger?: boolean;
-  title?: string;
 };

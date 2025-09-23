@@ -65,6 +65,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       helperText,
       errorText,
       required,
+      hidden,
       ...props
     },
     ref,
@@ -78,6 +79,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         invalid={invalid}
         helperText={helperText}
         required={required}
+        hidden={hidden}
         errorText={errorText}
         id={props.id}
         label={

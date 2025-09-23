@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.12.1
+
+### Patch Changes
+
+- 8dee5a5: Fix hidden prop not hiding label on input
+
 ## 12.12.0
 
 ### Minor Changes

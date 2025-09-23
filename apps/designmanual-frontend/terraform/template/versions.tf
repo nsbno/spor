@@ -31,7 +31,7 @@ provider "aws" {
 provider "aws" {
   default_tags {
     tags = {
-      repo        = "spor
+      repo        = "spor"
       application = local.application_name
       terraform   = true
     }
@@ -41,6 +41,5 @@ provider "aws" {
 }
 
 provider "vy" {
-  // We want to use our «prod AD user» in all environments
   environment = "prod"
 }

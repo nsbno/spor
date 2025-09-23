@@ -193,62 +193,101 @@ export const ContentMenu = forwardRef<
   );
 });
 
-type MenuItemeType = {
+export type SubItemsType = {
+  title: string;
+  url: string;
+  tags?: string[];
+};
+
+export type MenuItem = {
   _type: string;
   title: string;
-  menuItems?: MenuItemeType[];
+  link?: string;
+  url?: string;
+  subItems?: SubItemsType[];
+};
+
+export type MenuType = {
+  _type: string;
   relatedTo?: {
     _type: string;
     title: string;
     slug: string;
   };
+  title: string;
+  menuItems?: MenuItem[];
   slug?: string;
   url?: string;
   link?: string;
 };
 
-const MobileMenu = ({
-  sections,
-  mobileMenus,
-}: {
-  sections: Section[];
-  mobileMenus: MenuItemeType[] | undefined;
-}) => {
-  return (
-    <Stack gap="2">
-      {sections &&
-        sections.map((section) => (
-          <Expandable
-            key={`${section.slug.current}_em`}
-            variant="ghost"
-            title={section.title}
-            startElement={getIcon({ iconName: section.icon, size: 24 })}
-            collapsible
-          >
-            {mobileMenus
-              ?.find(
-                (menu) => `side-menu-${section.slug.current}` === menu.slug,
-              )
-              ?.menuItems?.map((item) => {
-                if (item._type === "divider") {
-                  return null;
-                }
-                return (
-                  <Box
-                    as="button"
-                    key={item.title}
-                    width="100%"
-                    textAlign="left"
-                    paddingLeft="6"
-                  >
-                    <Link to={handleExternalMenu(item?.link ?? "/")}>
-                      {item.title}
-                    </Link>
-                  </Box>
-                );
-              })}
-          </Expandable>
-        ))}
-    </Stack>
-  );
-};
+const MobileMenu = forwardRef(
+  ({
+    sections,
+    mobileMenus,
+  }: {
+    sections: Section[];
+    mobileMenus: MenuType[] | undefined;
+  }) => {
+    return (
+      <Stack gap="2">
+        {sections &&
+          sections.map((section) => (
+            <Expandable
+              key={`${section.slug.current}_em`}
+              variant="ghost"
+              title={section.title}
+              startElement={getIcon({ iconName: section.icon, size: 24 })}
+              collapsible
+            >
+              {mobileMenus
+                ?.find((menu) => {
+                  return section.slug.current === menu.relatedTo?.slug;
+                })
+                ?.menuItems?.map((item) => {
+                  if (item._type === "divider") {
+                    return null;
+                  }
+                  if (item.subItems && item.subItems.length > 0) {
+                    return (
+                      <Expandable
+                        collapsible
+                        key={item.title}
+                        title={item.title}
+                        variant="ghost"
+                        marginBottom={2}
+                        paddingLeft={6}
+                      >
+                        {item.subItems.map((subItem) => (
+                          <Box key={subItem.title}>
+                            <Link to={handleExternalMenu(subItem?.url ?? "/")}>
+                              {subItem.title}
+                            </Link>
+                          </Box>
+                        ))}
+                      </Expandable>
+                    );
+                  }
+                  return (
+                    <Box
+                      as="button"
+                      key={item.title}
+                      width="100%"
+                      textAlign="left"
+                      paddingLeft={6}
+                      marginBottom={2}
+                      fontWeight={"bold"}
+                    >
+                      <Link to={handleExternalMenu(item?.link ?? "/")}>
+                        {item.title}
+                      </Link>
+                    </Box>
+                  );
+                })}
+            </Expandable>
+          ))}
+      </Stack>
+    );
+  },
+);
+MobileMenu.displayName = "MobileMenu";

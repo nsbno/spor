@@ -94,7 +94,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     return (
       <Field
-        label={label}
         errorText={errorText}
         helperText={helperText}
         invalid={invalid}

@@ -1,5 +1,23 @@
 # @vygruppen/spor-react
 
+## 12.12.1
+
+### Patch Changes
+
+- 8dee5a5: Fix hidden prop not hiding label on input
+
+## 12.12.0
+
+### Minor Changes
+
+- d3d78a3: Add spacing 13
+
+### Patch Changes
+
+- f714920: Fix error with double label on textArea
+- Updated dependencies [d3d78a3]
+  - @vygruppen/spor-design-tokens@4.1.0
+
 ## 12.11.1
 
 ### Patch Changes

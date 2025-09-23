@@ -58,7 +58,7 @@ export const CountryCodeSelect = forwardRef<
       sideRadiusVariant={"rightSideSquare"}
     >
       {callingCodes.items.map((code) => (
-        <SelectItem as={"option"} key={code.label} item={code}>
+        <SelectItem key={code.label} item={code}>
           {code.label}
         </SelectItem>
       ))}

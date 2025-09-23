@@ -3,7 +3,7 @@ import {
   AccordionItem,
   AccordionItemContent,
   AccordionItemTrigger,
-  Button,
+  Box,
   Expandable,
   Flex,
   Separator,
@@ -45,7 +45,7 @@ export const ContentMenu = forwardRef<
   const sections =
     useRouteLoaderData("root")?.initialSanityData?.siteSettings?.topMenu || [];
 
-  const mobileMenus = useRouteLoaderData("root")?.initialSanityData?.allMenus;
+  const mobileMenus = useRouteLoaderData("root")?.initialSanityData?.menus;
 
   const currentSection = menu?.relatedTo.slug;
 
@@ -202,7 +202,9 @@ type MenuItemeType = {
     title: string;
     slug: string;
   };
-  slug?: { current: string };
+  slug?: string;
+  url?: string;
+  link?: string;
 };
 
 const MobileMenu = ({
@@ -225,17 +227,24 @@ const MobileMenu = ({
           >
             {mobileMenus
               ?.find(
-                (menu) =>
-                  `side-menu-${section.slug.current}` === menu.slug?.current,
+                (menu) => `side-menu-${section.slug.current}` === menu.slug,
               )
               ?.menuItems?.map((item) => {
                 if (item._type === "divider") {
                   return null;
                 }
                 return (
-                  <Button key={item.title} variant="ghost" width="100%">
-                    <Link to={item?.slug?.current ?? "/"}>{item.title}</Link>
-                  </Button>
+                  <Box
+                    as="button"
+                    key={item.title}
+                    width="100%"
+                    textAlign="left"
+                    paddingLeft="6"
+                  >
+                    <Link to={handleExternalMenu(item?.link ?? "/")}>
+                      {item.title}
+                    </Link>
+                  </Box>
                 );
               })}
           </Expandable>

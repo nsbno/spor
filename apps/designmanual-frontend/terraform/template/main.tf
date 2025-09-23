@@ -95,10 +95,9 @@ module "ssr_task" {
 ############################## 
 
 module "s3_website_bucket" {
-  source = "./s3_static_files"
+    source = "github.com/nsbno/terraform-aws-ssr-site//modules/s3_static_files?ref=0.6.0"
 
-  application_name           = local.application_name
-  cloudfront_distribution_id = module.cloudfront_ssr.cloudfront_distribution_id
+  service_name               = local.application_name
 }
 
 ################################
@@ -146,23 +145,5 @@ module "preview_url" {
   }
 
   service_name = local.application_name
-}
-
-module "permissions_ssr_task" {
-  source = "github.com/nsbno/terraform-aws-service-permissions?ref=1.2.0"
-
-  for_each = toset(compact([
-    var.environment == "test" ? module.preview_url[0].preview_instance_iam_role_name : null,
-    module.ssr_task.task_role_name
-  ]))
-
-  role_name = each.value
-
-  dynamodb_tables = [
-    {
-      arns        = [aws_dynamodb_table.auth_sessions.arn, "${aws_dynamodb_table.auth_sessions.arn}/*"]
-      permissions = ["put", "get", "delete"]
-    }
-  ]
 }
 

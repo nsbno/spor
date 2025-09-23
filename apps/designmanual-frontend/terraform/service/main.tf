@@ -5,7 +5,7 @@ locals {
 }
 
 module "ecr" {
-  source    = "github.com/nsbno/terraform-aws-ecr?ref=2.0.0"
+  source    = "github.com/nsbno/terraform-aws-ecr?ref=2.1.0"
   repo_name = "spor"
 
   trusted_accounts = [

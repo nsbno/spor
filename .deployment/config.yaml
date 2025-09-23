@@ -14,3 +14,4 @@ steps:
 environments:
   - [service]
   - [prod]
+  - [test]

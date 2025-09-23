@@ -74,7 +74,7 @@ jobs:
       - checkout
       - deployment/zip-and-upload-artifact:
           application-name: << pipeline.parameters.terraform_artifact_name >>
-          source-directory: ./apps/docs/
+          source-directory: ./apps/designmanual-frontend/
           source: terraform
 
 workflows:

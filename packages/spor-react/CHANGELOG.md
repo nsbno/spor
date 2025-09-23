@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 12.13.0
+
+### Minor Changes
+
+- 7ee3d63: Update design for NumericStepper, disable not hide buttons.
+
+### Patch Changes
+
+- 39d7fd8: Fix floating button use floating background.
+
 ## 12.12.1
 
 ### Patch Changes

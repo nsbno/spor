@@ -35,8 +35,6 @@ export type NumericStepperProps = FieldBaseProps &
     withInput?: boolean;
     /** The amount to increase/decrease when pressing +/- */
     stepSize?: number;
-    /** Whether to show the number input when value is zero  */
-    showZero?: boolean;
     /** Name added to the aria-label of subtract and add buttons. */
     ariaLabelContext?: { singular: string; plural: string };
   } & Omit<BoxProps, "onChange">;
@@ -80,7 +78,6 @@ export const NumericStepper = React.forwardRef<
     disabled,
     withInput = true,
     stepSize = 1,
-    showZero = false,
     ariaLabelContext = { singular: "", plural: "" },
     ...rest
   } = props;
@@ -118,8 +115,7 @@ export const NumericStepper = React.forwardRef<
             focusOnAddButton();
           }
         }}
-        visibility={value <= minValue ? "hidden" : "visible"}
-        disabled={disabled}
+        disabled={disabled || value <= minValue}
         id={value <= minValue ? undefined : idProp}
       />
       {withInput ? (
@@ -129,10 +125,9 @@ export const NumericStepper = React.forwardRef<
           name={nameProp}
           value={value}
           disabled={disabled}
-          id={!showZero && value === 0 ? undefined : idProp}
+          id={value === 0 ? undefined : idProp}
           css={styles.input}
           width={`${Math.max(value.toString().length + 1, 3)}ch`}
-          visibility={!showZero && value === 0 ? "hidden" : "visible"}
           aria-live="assertive"
           aria-label={
             ariaLabelContext.plural === ""
@@ -145,17 +140,13 @@ export const NumericStepper = React.forwardRef<
               return;
             }
             onChange(Math.max(Math.min(numericInput, maxValue), minValue));
-            if (
-              !showZero &&
-              Math.max(Math.min(numericInput, maxValue), minValue) === 0
-            ) {
+            if (Math.max(Math.min(numericInput, maxValue), minValue) === 0) {
               focusOnAddButton();
             }
           }}
         />
       ) : (
         <Text
-          visibility={!showZero && value === 0 ? "hidden" : "visible"}
           aria-live="assertive"
           paddingX="0.95rem"
           aria-label={
@@ -179,8 +170,7 @@ export const NumericStepper = React.forwardRef<
           ),
         )}
         onClick={() => onChange(Math.min(value + clampedStepSize, maxValue))}
-        visibility={value >= maxValue ? "hidden" : "visible"}
-        disabled={disabled}
+        disabled={disabled || value >= maxValue}
         id={value >= maxValue ? undefined : idProp}
       />
     </Field>

@@ -77,6 +77,7 @@ export const buttonRecipe = defineRecipe({
       },
       floating: {
         color: "floating.text",
+        background: "floating.surface",
         border: "sm",
         borderColor: "floating.outline",
         boxShadow:

@@ -13,6 +13,7 @@ export const attachedInputsRecipe = defineRecipe({
     orientation: {
       horizontal: {
         flexDirection: "row",
+
         "& > *:first-of-type:not(:last-of-type) [data-attachable]": {
           borderEndRadius: 0,
         },
@@ -25,6 +26,8 @@ export const attachedInputsRecipe = defineRecipe({
       },
       vertical: {
         flexDirection: "column",
+        padding: "2",
+        background: "red",
         "& > *:first-of-type:not(:last-of-type) [data-attachable]": {
           borderBottomRadius: 0,
         },

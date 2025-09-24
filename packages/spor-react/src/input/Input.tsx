@@ -24,7 +24,6 @@ export type InputProps = FieldProps &
     startElement?: React.ReactNode;
     /** Element that shows up to the right */
     endElement?: React.ReactNode;
-    onValueChange?: ((value: string) => void) | undefined;
   };
 /**
  * Inputs let you enter text or other data.

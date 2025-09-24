@@ -28,6 +28,10 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         outline: "2px solid",
         outlineColor: "outline.focus",
       },
+      "&[data-active]": {
+        outline: "2px solid",
+        outlineColor: "outline.focus",
+      },
     },
     inputLabel: {
       fontSize: "mobile.xs",

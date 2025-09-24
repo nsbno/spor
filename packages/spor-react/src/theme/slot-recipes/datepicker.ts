@@ -28,6 +28,10 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         outline: "2px solid",
         outlineColor: "outline.focus",
       },
+      "&[data-active]": {
+        outline: "2px solid",
+        outlineColor: "outline.focus",
+      },
     },
     inputLabel: {
       fontSize: "mobile.xs",
@@ -72,6 +76,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       outlineColor: "floating.outline",
       boxShadow: "md",
       backgroundColor: "floating.surface",
+      minHeight: "min-content",
     },
     rangeCalendarPopover: {
       width: "43rem",

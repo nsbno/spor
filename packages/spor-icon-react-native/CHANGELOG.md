@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.15.4
+
+### Patch Changes
+
+- 9746c98: Switched the default icon color in React Native to use a semantic color token.
+
 ## 2.15.3
 
 ### Patch Changes

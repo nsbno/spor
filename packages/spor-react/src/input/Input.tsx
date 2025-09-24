@@ -7,7 +7,7 @@ import {
   InputElement,
   useRecipe,
 } from "@chakra-ui/react";
-import React, { ComponentProps, forwardRef, ReactNode } from "react";
+import React, { ComponentProps, forwardRef, ReactNode, useState } from "react";
 
 type ChakraInputProps = ComponentProps<typeof ChakraInput>;
 
@@ -74,6 +74,20 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);
 
+    const [focused, setFocused] = useState(false);
+
+    const isControlled = props.value !== undefined;
+
+    const [uncontrolledValue, setUncontrolledValue] = useState(
+      props.defaultValue ? String(props.defaultValue) : "",
+    );
+
+    const inputValue = isControlled
+      ? String(props.value ?? "")
+      : uncontrolledValue;
+
+    const shouldFloat = inputValue.length > 0 || focused;
+
     return (
       <Field
         invalid={invalid}
@@ -83,13 +97,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         errorText={errorText}
         id={props.id}
         label={
-          // Render startElement invisibly to align label text with input content when an icon is present
           <Flex>
             <Box visibility="hidden">{startElement}</Box>
             {label}
           </Flex>
         }
         floatingLabel={true}
+        shouldFloat={shouldFloat}
       >
         {startElement && (
           <InputElement pointerEvents="none" paddingX={2}>
@@ -105,9 +119,25 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           paddingRight={endElement ? "2.6rem" : undefined}
           {...restProps}
           className={`peer ${props.className}`}
+          value={isControlled ? props.value : undefined}
+          onFocus={(e) => {
+            props.onFocus?.(e);
+            setFocused(true);
+          }}
+          onBlur={(e) => {
+            props.onBlur?.(e);
+            setFocused(false);
+          }}
+          onChange={(e) => {
+            props.onChange?.(e);
+            if (!isControlled) {
+              setUncontrolledValue(e.target.value);
+            }
+          }}
           placeholder=""
           css={styles}
         />
+
         {endElement && (
           <InputElement placement="end" paddingX={2}>
             {endElement}
@@ -117,4 +147,5 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     );
   },
 );
+
 Input.displayName = "Input";

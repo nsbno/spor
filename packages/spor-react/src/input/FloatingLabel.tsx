@@ -12,8 +12,6 @@ FloatingLabel.displayName = "FloatingLabel";
 const floatingLabelStyles = defineStyle({
   paddingX: 3,
   fontWeight: "normal",
-  fontSize: ["mobile.xs", "desktop.xs"],
-  color: "text",
   pointerEvents: "none",
   zIndex: "docked",
   _disabled: {
@@ -21,16 +19,13 @@ const floatingLabelStyles = defineStyle({
   },
 
   pos: "absolute",
-  top: "0.3rem",
   transition: "position",
-  _peerPlaceholderShown: {
-    /* For when input is not in focus */
-    top: "0.9rem",
-    color: "text",
-    fontSize: ["mobile.sm", "desktop.sm"],
-  },
-  _peerFocusVisible: {
-    /* For when input is in focus */
+
+  top: "0.9rem",
+  color: "text",
+  fontSize: ["mobile.sm", "desktop.sm"],
+
+  "&[data-float]": {
     fontSize: ["mobile.xs", "desktop.xs"],
     color: "text",
     top: "0.3rem",

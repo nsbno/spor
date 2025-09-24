@@ -164,7 +164,7 @@ export default function ArticlePage() {
     <>
       <Flex
         marginBottom={1}
-        gap={1}
+        gap={6}
         justifyContent="space-between"
         alignContent={"stretch"}
       >

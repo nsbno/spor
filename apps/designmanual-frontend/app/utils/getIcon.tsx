@@ -3,10 +3,11 @@ import * as icons from "@vygruppen/spor-icon-react";
 type IconProps = {
   iconName: string;
   size: 18 | 24 | 30;
+  style?: string;
 };
 
-export const getIcon = ({ iconName }: IconProps) => {
-  const iconNameWithSuffix = formatIconName(iconName);
+export const getIcon = ({ iconName, size, style = "outline" }: IconProps) => {
+  const iconNameWithSuffix = formatIconName(iconName, size, style);
   const Icon = icons[iconNameWithSuffix as keyof typeof icons];
 
   if (!Icon) {
@@ -25,7 +26,11 @@ const filledIconsList = new Set([
   "position-dot",
 ]);
 
-function formatIconName(iconName: string, size: 18 | 24 | 30 = 24) {
+function formatIconName(
+  iconName: string,
+  size: 18 | 24 | 30 = 24,
+  style: string,
+) {
   const transform = iconName.replaceAll(/-(.)/g, (_, char) =>
     char.toUpperCase(),
   );
@@ -70,7 +75,9 @@ function formatIconName(iconName: string, size: 18 | 24 | 30 = 24) {
       return (
         transform.charAt(0).toUpperCase() +
         transform.slice(1) +
-        (filledIconsList.has(iconName) ? "Fill" : "Outline") +
+        (filledIconsList.has(iconName) || style === "fill"
+          ? "Fill"
+          : "Outline") +
         size +
         "Icon"
       );

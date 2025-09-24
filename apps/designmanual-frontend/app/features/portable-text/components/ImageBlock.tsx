@@ -499,7 +499,7 @@ const GridLayout = ({
       ]}
       width="100%"
       data-testid="image-block"
-      marginTop={isSingleImage ? 0 : 8}
+      marginTop={isSingleImage ? 0 : 10}
     >
       {children}
       {captionAndCredits && (

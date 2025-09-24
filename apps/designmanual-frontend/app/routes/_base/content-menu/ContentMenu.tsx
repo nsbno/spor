@@ -66,7 +66,7 @@ export const ContentMenu = forwardRef<
     <React.Fragment key="content-menu">
       <Flex flexDirection={"column"} display={["flex", null, null, "none"]}>
         {sections &&
-          sections.length > 7 && // Only render if sections exist
+          sections.length > 7 &&
           sections.map((section: Section) => (
             <MenuItem
               key={`${section.slug.current}_m`}

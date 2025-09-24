@@ -67,14 +67,10 @@ export default function Index() {
       marginTop={3}
       paddingX={[3, null, 6, 4, 8]}
       marginBottom={["3.75rem", null, "5rem", "5rem"]}
+      gap={3}
     >
       <LeftSidebar />
-      <Flex
-        flexDirection="column"
-        flexGrow={1}
-        padding={1}
-        backgroundColor="bg"
-      >
+      <Flex flexDirection="column" flexGrow={1} padding={1}>
         <PortableText value={initialData?.page.content} />
       </Flex>
     </Flex>

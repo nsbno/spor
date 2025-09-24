@@ -98,7 +98,14 @@ export const SiteHeader = () => {
                       borderRadius="lg"
                       display={{ base: "none", lg: "flex" }}
                       border="none"
-                      leftIcon={getIcon({ iconName: section.icon, size: 24 })}
+                      leftIcon={getIcon({
+                        iconName: section.icon,
+                        size: 24,
+                        style:
+                          section.slug.current === currentSection
+                            ? "fill"
+                            : "outline",
+                      })}
                     >
                       {section.title}
                     </Button>

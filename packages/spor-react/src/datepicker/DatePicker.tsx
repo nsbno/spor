@@ -10,6 +10,7 @@ import {
   useFieldContext,
   useSlotRecipe,
 } from "@chakra-ui/react";
+import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
 import React, { forwardRef, PropsWithChildren, useId, useRef } from "react";
 import {
   AriaDatePickerProps,
@@ -42,6 +43,9 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
     withPortal?: boolean;
     onChange?: (value: DateValue | null) => void;
     positioning?: PopoverRootProps["positioning"];
+    noCalendar?: boolean;
+    overrideBorderColor?: string;
+    isActive?: boolean;
   } & FieldBaseProps;
 
 /**
@@ -98,6 +102,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     const locale = useCurrentLocale();
 
     const onFieldClick = () => {
+      if (props.noCalendar) return;
       state.setOpen(true);
     };
 
@@ -135,20 +140,29 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
               <PopoverAnchor>
                 <StyledField
                   variant={variant}
-                  onClick={onFieldClick}
+                  onClick={props.noCalendar ? undefined : onFieldClick}
                   paddingX={3}
                   minHeight={minHeight}
                   isDisabled={props.isDisabled}
+                  isActive={props.isActive}
+                  overrideBorderColor={props.overrideBorderColor}
                 >
-                  <ChakraPopover.Trigger asChild>
-                    <CalendarTriggerButton
-                      paddingLeft={1}
-                      paddingRight={1}
-                      variant={variant}
-                      ref={ref}
-                      {...buttonProps}
-                    />
-                  </ChakraPopover.Trigger>
+                  {props.noCalendar ? (
+                    <Box pr={3} pl={0.5} mr={0.5}>
+                      <CalendarOutline24Icon />
+                    </Box>
+                  ) : (
+                    <ChakraPopover.Trigger asChild>
+                      <CalendarTriggerButton
+                        paddingLeft={1}
+                        paddingRight={1}
+                        variant={variant}
+                        ref={ref}
+                        {...buttonProps}
+                      />
+                    </ChakraPopover.Trigger>
+                  )}
+
                   <DateField
                     label={props.label}
                     labelProps={labelProps}
@@ -159,10 +173,15 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
               </PopoverAnchor>
             </Field>
 
-            {state.isOpen && !props.isDisabled && withPortal && (
-              <Portal>{popoverContent}</Portal>
-            )}
-            {state.isOpen && !props.isDisabled && !withPortal && popoverContent}
+            {state.isOpen &&
+              !props.isDisabled &&
+              withPortal &&
+              !props.noCalendar && <Portal>{popoverContent}</Portal>}
+            {state.isOpen &&
+              !props.isDisabled &&
+              !withPortal &&
+              !props.noCalendar &&
+              popoverContent}
           </ChakraPopover.Root>
         </Box>
       </I18nProvider>

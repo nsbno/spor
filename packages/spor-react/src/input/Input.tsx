@@ -5,9 +5,10 @@ import {
   Flex,
   Input as ChakraInput,
   InputElement,
+  useControllableState,
   useRecipe,
 } from "@chakra-ui/react";
-import React, { ComponentProps, forwardRef, ReactNode } from "react";
+import React, { ComponentProps, forwardRef, ReactNode, useState } from "react";
 
 type ChakraInputProps = ComponentProps<typeof ChakraInput>;
 
@@ -24,6 +25,7 @@ export type InputProps = FieldProps &
     startElement?: React.ReactNode;
     /** Element that shows up to the right */
     endElement?: React.ReactNode;
+    onValueChange?: ((value: string) => void) | undefined;
   };
 /**
  * Inputs let you enter text or other data.
@@ -55,6 +57,21 @@ export type InputProps = FieldProps &
  * @see https://spor.vy.no/components/input
  */
 
+function useShouldLabelFloat({
+  value,
+  defaultValue,
+  focused,
+}: {
+  value?: string | number;
+  defaultValue?: string | number;
+  focused: boolean;
+}) {
+  const isControlled = value !== undefined;
+  const inputValue = isControlled
+    ? String(value ?? "")
+    : String(defaultValue ?? "");
+  return inputValue.length > 0 || focused;
+}
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
@@ -74,6 +91,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);
 
+    const [focused, setFocused] = useState(false);
+
+    // Use the hook to determine if the label should float
+    const shouldFloat = useShouldLabelFloat({
+      value: String(props.value),
+      defaultValue: String(props.defaultValue),
+      focused,
+    });
+
     return (
       <Field
         invalid={invalid}
@@ -90,6 +116,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </Flex>
         }
         floatingLabel={true}
+        shouldFloat={shouldFloat}
       >
         {startElement && (
           <InputElement pointerEvents="none" paddingX={2}>
@@ -105,9 +132,22 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           paddingRight={endElement ? "2.6rem" : undefined}
           {...restProps}
           className={`peer ${props.className}`}
+          onFocus={(e) => {
+            props.onFocus?.(e);
+            setFocused(true);
+          }}
+          onBlur={(e) => {
+            props.onBlur?.(e);
+            setFocused(false);
+          }}
+          onChange={(e) => {
+            props.onChange?.(e);
+            setInputState(e.target.value);
+          }}
           placeholder=""
           css={styles}
         />
+
         {endElement && (
           <InputElement placement="end" paddingX={2}>
             {endElement}

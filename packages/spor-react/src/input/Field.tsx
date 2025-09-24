@@ -26,6 +26,7 @@ export type FieldBaseProps = {
   helperText?: React.ReactNode;
   errorText?: React.ReactNode;
   floatingLabel?: boolean;
+  shouldFloat?: boolean;
 };
 
 export type FieldProps = Omit<
@@ -66,6 +67,7 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
       required,
       direction,
       id,
+      shouldFloat,
       ...rest
     } = props;
     const recipe = useSlotRecipe({ key: "field" });
@@ -92,7 +94,7 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
           {children}
 
           {label && floatingLabel && (
-            <FloatingLabel>
+            <FloatingLabel data-float={shouldFloat ? true : undefined}>
               {label}
               <ChakraField.RequiredIndicator />
             </FloatingLabel>

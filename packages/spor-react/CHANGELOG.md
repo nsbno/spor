@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 12.13.3
+
+### Patch Changes
+
+- 1457051: Added isActive and noCalendar props for datepicker
+- a8b04df: Label: Fix bug where it was always floating in safari.
+
 ## 12.13.2
 
 ### Patch Changes

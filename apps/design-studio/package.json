@@ -13,22 +13,22 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@sanity/code-input": "^5.1.2",
-    "@sanity/ui": "^3.1.0",
-    "@sanity/vision": "^4.9.0",
+    "@sanity/code-input": "^6.0.1",
+    "@sanity/ui": "^3.1.6",
+    "@sanity/vision": "^4.10.0",
     "@vygruppen/spor-icon-react": "workspace:*",
     "@vygruppen/spor-react": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-icons": "^5.2.1",
-    "sanity": "^4.9.0",
-    "sanity-plugin-iframe-pane": "^3.1.6",
+    "react-icons": "^5.5.0",
+    "sanity": "^4.10.0",
+    "sanity-plugin-iframe-pane": "^3.2.2",
     "sanity-plugin-media": "^3.0.5",
-    "styled-components": "^6.1.18"
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^5.0.2",
-    "@types/react": "^18.3.1",
+    "@types/react": "^18.3.24",
     "@vygruppen/eslint-config": "workspace:*",
     "eslint": "^9.28",
     "prettier": "^3.5",

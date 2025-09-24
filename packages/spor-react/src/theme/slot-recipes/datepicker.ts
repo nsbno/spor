@@ -72,6 +72,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       outlineColor: "floating.outline",
       boxShadow: "md",
       backgroundColor: "floating.surface",
+      minHeight: "min-content",
     },
     rangeCalendarPopover: {
       width: "43rem",

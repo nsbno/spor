@@ -54,7 +54,7 @@ type PopoverProps = {
 /**
  * Internal popover component.
  *
- * Used to render accessible popover content, like a  dropdown menu or a card select. Should not be used directly, but as a part of Spor components.
+ * Used to render accessible popover content, only used in ComboBox.
  */
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   (

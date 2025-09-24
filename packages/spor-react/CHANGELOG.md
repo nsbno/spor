@@ -1,5 +1,38 @@
 # @vygruppen/spor-react
 
+## 12.13.3
+
+### Patch Changes
+
+- 1457051: Added isActive and noCalendar props for datepicker
+- a8b04df: Label: Fix bug where it was always floating in safari.
+
+## 12.13.2
+
+### Patch Changes
+
+- 0714df2: Fix min height on datepicker popover, making sure it fits content.
+- 5829615: Revert combobox fix
+- 59306ea: Fix Collapsible to allow a minor overflow for border and shadow
+
+## 12.13.1
+
+### Patch Changes
+
+- 63931d2: Remove casting SelectItem to option in phonenumber-input. Does not work in in Safari.
+- 16807cd: Remove casting SelectItem to option in phonenumber-input. Does not work in in Safari.
+- 699acdf: Fix changeset error
+
+## 12.13.0
+
+### Minor Changes
+
+- 7ee3d63: Update design for NumericStepper, disable not hide buttons.
+
+### Patch Changes
+
+- 39d7fd8: Fix floating button use floating background.
+
 ## 12.12.1
 
 ### Patch Changes

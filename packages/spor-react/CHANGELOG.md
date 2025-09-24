@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 12.13.1
+
+### Patch Changes
+
+- 63931d2: Remove casting SelectItem to option in phonenumber-input. Does not work in in Safari.
+- 16807cd: Remove casting SelectItem to option in phonenumber-input. Does not work in in Safari.
+- 699acdf: Fix changeset error
+
 ## 12.13.0
 
 ### Minor Changes

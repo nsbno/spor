@@ -7,6 +7,7 @@ import {
   Overlay,
   usePopover,
 } from "react-aria";
+import ReactDOM from "react-dom";
 import { OverlayTriggerState } from "react-stately";
 
 type PopoverProps = {
@@ -54,7 +55,7 @@ type PopoverProps = {
 /**
  * Internal popover component.
  *
- * Used to render accessible popover content, like a  dropdown menu or a card select. Should not be used directly, but as a part of Spor components.
+ * Used to render accessible popover content, only used in ComboBox.
  */
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   (
@@ -95,6 +96,8 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         {...popoverProps}
         ref={popoverRef}
         minWidth={triggerRef.current?.clientWidth ?? "auto"}
+        position="absolute"
+        zIndex={1400}
       >
         <DismissButton onDismiss={state.close} />
         {children}
@@ -103,6 +106,10 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     );
 
     if (isNonModal) {
+      // Render in a portal to ensure it does not take up semantic space
+      if (globalThis.window !== undefined && typeof document !== "undefined") {
+        return ReactDOM.createPortal(popoverBox, document.body);
+      }
       return popoverBox;
     }
     return (

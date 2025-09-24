@@ -85,12 +85,25 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       readOnly,
       helperText,
       floatingLabel,
+      value,
+      defaultValue,
+      onFocus,
+      onBlur,
+      onChange,
       ...restProps
     } = props;
     const recipe = useRecipe({ key: "textarea" });
     const styles = recipe({ variant });
 
     const { labelRef, labelHeight } = useLabelHeight(label);
+
+    const [focused, setFocused] = useState(false);
+    const isControlled = value !== undefined;
+    const [uncontrolledValue, setUncontrolledValue] = useState(
+      defaultValue ? String(defaultValue) : "",
+    );
+    const inputValue = isControlled ? String(value ?? "") : uncontrolledValue;
+    const shouldFloat = inputValue.length > 0 || focused;
 
     return (
       <Field
@@ -100,6 +113,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         required={required}
         readOnly={readOnly}
         floatingLabel={floatingLabel}
+        shouldFloat={shouldFloat}
         position="relative"
       >
         <ChakraTextarea
@@ -107,14 +121,34 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           css={styles}
           className="peer"
           ref={ref}
+          value={isControlled ? value : undefined}
+          defaultValue={defaultValue}
+          onFocus={(e) => {
+            onFocus?.(e);
+            setFocused(true);
+          }}
+          onBlur={(e) => {
+            onBlur?.(e);
+            setFocused(false);
+          }}
+          onChange={(e) => {
+            onChange?.(e);
+            if (!isControlled) setUncontrolledValue(e.target.value);
+          }}
           style={
             { "--label-height": `${labelHeight}px` } as React.CSSProperties
           }
           placeholder=" "
         />
-        <FloatingLabel ref={labelRef}>{label}</FloatingLabel>
+        <FloatingLabel
+          ref={labelRef}
+          data-float={shouldFloat ? true : undefined}
+        >
+          {label}
+        </FloatingLabel>
       </Field>
     );
   },
 );
+
 Textarea.displayName = "Textarea";

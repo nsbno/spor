@@ -7,6 +7,8 @@ export const collapsibleSlotRecipe = defineSlotRecipe({
   className: "chakra-collapsible",
   base: {
     content: {
+      margin: -1,
+      padding: 1,
       overflow: "hidden",
       _open: {
         animationName: "expand-height, fade-in",

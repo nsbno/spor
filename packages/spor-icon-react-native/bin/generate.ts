@@ -148,7 +148,7 @@ async function generateComponent(iconData: IconData) {
   jsCode = "import { Box, useTheme } from 'app/spor';\n" + jsCode;
   jsCode = jsCode
     .replace("{...props}", "")
-    .replace("props", '{ color = "darkGrey", width, height, ...props }')
+    .replace("props", '{ color = "icon.default", width, height, ...props }')
     // Weird regex alert!
     // Replaces `width={18}` with
     // `width={props.style?.width ?? width ?? 18}`

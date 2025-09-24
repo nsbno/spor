@@ -1,5 +1,20 @@
 # @vygruppen/spor-react
 
+## 12.13.3
+
+### Patch Changes
+
+- 1457051: Added isActive and noCalendar props for datepicker
+- a8b04df: Label: Fix bug where it was always floating in safari.
+
+## 12.13.2
+
+### Patch Changes
+
+- 0714df2: Fix min height on datepicker popover, making sure it fits content.
+- 5829615: Revert combobox fix
+- 59306ea: Fix Collapsible to allow a minor overflow for border and shadow
+
 ## 12.13.1
 
 ### Patch Changes

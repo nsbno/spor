@@ -14,10 +14,19 @@ type StyledFieldProps = BoxProps &
   PropsWithChildren<DatePickerVariantProps> &
   CalendarVariants & {
     isDisabled?: boolean;
+    isActive?: boolean;
+    overrideBorderColor?: string;
   };
 export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
   function StyledField(props, ref) {
-    const { children, variant, isDisabled, ...otherProps } = props;
+    const {
+      children,
+      variant,
+      isDisabled,
+      isActive,
+      overrideBorderColor,
+      ...otherProps
+    } = props;
     const { invalid } = useFieldContext() ?? {
       isInvalid: false,
     };
@@ -31,6 +40,12 @@ export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
       <Box
         {...otherProps}
         css={styles.wrapper}
+        data-active={isActive ? "" : undefined}
+        style={
+          overrideBorderColor
+            ? { outlineColor: overrideBorderColor }
+            : undefined
+        }
         ref={ref}
         aria-invalid={invalid}
         aria-disabled={isDisabled}

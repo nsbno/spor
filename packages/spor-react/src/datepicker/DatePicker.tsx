@@ -101,6 +101,9 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     const styles = recipe({ variant });
     const locale = useCurrentLocale();
 
+    const shouldShowCalendar =
+      state.isOpen && !props.isDisabled && !props.noCalendar;
+
     const onFieldClick = () => {
       if (props.noCalendar) return;
       state.setOpen(true);
@@ -173,15 +176,8 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
               </PopoverAnchor>
             </Field>
 
-            {state.isOpen &&
-              !props.isDisabled &&
-              withPortal &&
-              !props.noCalendar && <Portal>{popoverContent}</Portal>}
-            {state.isOpen &&
-              !props.isDisabled &&
-              !withPortal &&
-              !props.noCalendar &&
-              popoverContent}
+            {shouldShowCalendar &&
+              (withPortal ? <Portal>{popoverContent}</Portal> : popoverContent)}
           </ChakraPopover.Root>
         </Box>
       </I18nProvider>

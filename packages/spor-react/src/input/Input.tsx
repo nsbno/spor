@@ -5,7 +5,6 @@ import {
   Flex,
   Input as ChakraInput,
   InputElement,
-  useControllableState,
   useRecipe,
 } from "@chakra-ui/react";
 import React, { ComponentProps, forwardRef, ReactNode, useState } from "react";
@@ -57,21 +56,6 @@ export type InputProps = FieldProps &
  * @see https://spor.vy.no/components/input
  */
 
-function useShouldLabelFloat({
-  value,
-  defaultValue,
-  focused,
-}: {
-  value?: string | number;
-  defaultValue?: string | number;
-  focused: boolean;
-}) {
-  const isControlled = value !== undefined;
-  const inputValue = isControlled
-    ? String(value ?? "")
-    : String(defaultValue ?? "");
-  return inputValue.length > 0 || focused;
-}
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
@@ -93,12 +77,20 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     const [focused, setFocused] = useState(false);
 
-    // Use the hook to determine if the label should float
-    const shouldFloat = useShouldLabelFloat({
-      value: String(props.value),
-      defaultValue: String(props.defaultValue),
-      focused,
-    });
+    // Determine if input is controlled
+    const isControlled = props.value !== undefined;
+
+    // For uncontrolled input, manage value in state
+    const [uncontrolledValue, setUncontrolledValue] = useState(
+      props.defaultValue ? String(props.defaultValue) : "",
+    );
+
+    // Use the correct value for shouldFloat
+    const inputValue = isControlled
+      ? String(props.value ?? "")
+      : uncontrolledValue;
+
+    const shouldFloat = inputValue.length > 0 || focused;
 
     return (
       <Field
@@ -109,7 +101,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         errorText={errorText}
         id={props.id}
         label={
-          // Render startElement invisibly to align label text with input content when an icon is present
           <Flex>
             <Box visibility="hidden">{startElement}</Box>
             {label}
@@ -132,6 +123,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           paddingRight={endElement ? "2.6rem" : undefined}
           {...restProps}
           className={`peer ${props.className}`}
+          value={isControlled ? props.value : undefined}
+          defaultValue={props.defaultValue}
           onFocus={(e) => {
             props.onFocus?.(e);
             setFocused(true);
@@ -142,7 +135,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           }}
           onChange={(e) => {
             props.onChange?.(e);
-            setInputState(e.target.value);
+            if (!isControlled) {
+              setUncontrolledValue(e.target.value);
+            }
           }}
           placeholder=""
           css={styles}
@@ -157,4 +152,5 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     );
   },
 );
+
 Input.displayName = "Input";

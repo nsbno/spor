@@ -97,7 +97,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         ref={popoverRef}
         minWidth={triggerRef.current?.clientWidth ?? "auto"}
         position="absolute"
-        zIndex={1400}
+        zIndex={1501}
       >
         <DismissButton onDismiss={state.close} />
         {children}

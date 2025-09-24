@@ -123,7 +123,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {...restProps}
           className={`peer ${props.className}`}
           value={isControlled ? props.value : undefined}
-          defaultValue={props.defaultValue}
           onFocus={(e) => {
             props.onFocus?.(e);
             setFocused(true);

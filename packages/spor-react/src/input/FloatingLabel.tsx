@@ -21,10 +21,10 @@ const floatingLabelStyles = defineStyle({
   pos: "absolute",
   transition: "position",
 
-  /* For when input is not in focus */
   top: "0.9rem",
   color: "text",
   fontSize: ["mobile.sm", "desktop.sm"],
+
   "&[data-float]": {
     fontSize: ["mobile.xs", "desktop.xs"],
     color: "text",

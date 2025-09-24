@@ -76,15 +76,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     const [focused, setFocused] = useState(false);
 
-    // Determine if input is controlled
     const isControlled = props.value !== undefined;
 
-    // For uncontrolled input, manage value in state
     const [uncontrolledValue, setUncontrolledValue] = useState(
       props.defaultValue ? String(props.defaultValue) : "",
     );
 
-    // Use the correct value for shouldFloat
     const inputValue = isControlled
       ? String(props.value ?? "")
       : uncontrolledValue;

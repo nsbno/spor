@@ -7,7 +7,6 @@ import {
   Overlay,
   usePopover,
 } from "react-aria";
-import ReactDOM from "react-dom";
 import { OverlayTriggerState } from "react-stately";
 
 type PopoverProps = {
@@ -96,8 +95,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         {...popoverProps}
         ref={popoverRef}
         minWidth={triggerRef.current?.clientWidth ?? "auto"}
-        position="absolute"
-        zIndex={1501}
       >
         <DismissButton onDismiss={state.close} />
         {children}
@@ -106,10 +103,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     );
 
     if (isNonModal) {
-      // Render in a portal to ensure it does not take up semantic space
-      if (globalThis.window !== undefined && typeof document !== "undefined") {
-        return ReactDOM.createPortal(popoverBox, document.body);
-      }
       return popoverBox;
     }
     return (

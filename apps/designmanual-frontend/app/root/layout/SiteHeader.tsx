@@ -86,30 +86,29 @@ export const SiteHeader = () => {
             {sections.map((section) => {
               return (
                 <Box as="li" key={section.title} paddingRight={3}>
-                  <Link to={`/${section.slug.current}`}>
-                    <Button
-                      variant={
-                        (section.default && slug === "") ||
+                  <Button
+                    asChild
+                    variant={
+                      (section.default && slug === "") ||
+                      section.slug.current === currentSection
+                        ? "secondary"
+                        : "ghost"
+                    }
+                    size={"md"}
+                    borderRadius="lg"
+                    display={{ base: "none", lg: "flex" }}
+                    border="none"
+                    leftIcon={getIcon({
+                      iconName: section.icon,
+                      size: 24,
+                      style:
                         section.slug.current === currentSection
-                          ? "secondary"
-                          : "ghost"
-                      }
-                      size={"md"}
-                      borderRadius="lg"
-                      display={{ base: "none", lg: "flex" }}
-                      border="none"
-                      leftIcon={getIcon({
-                        iconName: section.icon,
-                        size: 24,
-                        style:
-                          section.slug.current === currentSection
-                            ? "fill"
-                            : "outline",
-                      })}
-                    >
-                      {section.title}
-                    </Button>
-                  </Link>
+                          ? "fill"
+                          : "outline",
+                    })}
+                  >
+                    <Link to={`/${section.slug.current}`}>{section.title}</Link>
+                  </Button>
                 </Box>
               );
             })}

@@ -1,3 +1,4 @@
+/* eslint-disable spor/use-semantic-tokens */
 import {
   Box,
   Flex,
@@ -357,15 +358,15 @@ const ImageGridItem = ({
               height="100%"
               background={
                 image.title
-                  ? "linear-gradient(transparent, 80%, var(--spor-colors-blackAlpha-600))"
+                  ? "linear-gradient(transparent, 80%, var(--spor-colors-black-alpha-600))"
                   : undefined
               }
               backgroundColor=""
               _groupHover={{
-                backgroundColor: "var(--spor-colors-blackAlpha-400)",
+                backgroundColor: "var(--spor-colors-black-alpha-400)",
               }}
               _groupFocus={{
-                backgroundColor: "var(--spor-colors-blackAlpha-400)",
+                backgroundColor: "var(--spor-colors-black-alpha-400)",
               }}
               transition="background-color 0.3s cubic-bezier(0, 0.1, 0.3, 1)"
             />
@@ -478,6 +479,7 @@ const GridLayout = ({
   imageCount,
   captionAndCredits,
 }: GridLayoutProps) => {
+  // eslint-disable-next-line no-nested-ternary
   const rowsMobile = imageCount <= 2 ? 2 : imageCount <= 3 ? 24 : 32;
   const rowOthers = imageCount <= 5 ? 2 : 3;
 

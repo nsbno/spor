@@ -42,7 +42,10 @@ export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
         css={{
           ...styles.wrapper,
           ...(overrideBorderColor
-            ? {
+css={{
+  ...styles.wrapper,
+  outlineColor: overrideBorderColor || undefined,
+}}
                 outlineColor: overrideBorderColor,
               }
             : {}),

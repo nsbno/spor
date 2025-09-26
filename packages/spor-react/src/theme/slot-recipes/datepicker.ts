@@ -169,7 +169,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
             "&[data-active]": {
               outline: "2px solid",
               outlineColor: "outline.focus",
-              "&:hover": {
+              _hover: {
                 outlineColor: "outline.focus",
               },
             },
@@ -202,7 +202,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
             "&[data-active]": {
               outline: "2px solid",
               outlineColor: "outline.focus",
-              "&:hover": {
+              _hover: {
                 outlineColor: "outline.focus",
               },
             },
@@ -227,7 +227,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
             "&[data-active]": {
               outline: "2px solid",
               outlineColor: "outline.focus",
-              "&:hover": {
+              _hover: {
                 outlineColor: "outline.focus",
               },
             },

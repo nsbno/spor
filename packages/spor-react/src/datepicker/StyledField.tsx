@@ -41,14 +41,7 @@ export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
         {...otherProps}
         css={{
           ...styles.wrapper,
-          ...(overrideBorderColor
-css={{
-  ...styles.wrapper,
-  outlineColor: overrideBorderColor || undefined,
-}}
-                outlineColor: overrideBorderColor,
-              }
-            : {}),
+          outlineColor: overrideBorderColor || undefined,
         }}
         data-active={isActive ? "" : undefined}
         ref={ref}

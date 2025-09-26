@@ -31,6 +31,9 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       "&[data-active]": {
         outline: "2px solid",
         outlineColor: "outline.focus",
+        "&:hover": {
+          outlineColor: "outline.focus",
+        },
       },
     },
     inputLabel: {

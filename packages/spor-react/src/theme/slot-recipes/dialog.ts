@@ -182,6 +182,7 @@ export const dialogSlotRecipe = defineSlotRecipe({
           height: "100%",
           "--dialog-margin": "0",
           margin: "0",
+          overflow: "auto",
         },
       },
     },

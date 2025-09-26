@@ -39,13 +39,11 @@ export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
     return (
       <Box
         {...otherProps}
-        css={styles.wrapper}
+        css={{
+          ...styles.wrapper,
+          outlineColor: overrideBorderColor || undefined,
+        }}
         data-active={isActive ? "" : undefined}
-        style={
-          overrideBorderColor
-            ? { outlineColor: overrideBorderColor }
-            : undefined
-        }
         ref={ref}
         aria-invalid={invalid}
         aria-disabled={isDisabled}

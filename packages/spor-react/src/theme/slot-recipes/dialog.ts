@@ -97,11 +97,8 @@ export const dialogSlotRecipe = defineSlotRecipe({
   variants: {
     placement: {
       center: {
-        positioner: {
-          alignItems: "center",
-        },
         content: {
-          marginX: "auto",
+          margin: "auto",
         },
       },
       top: {
@@ -179,10 +176,9 @@ export const dialogSlotRecipe = defineSlotRecipe({
         },
         content: {
           width: "100%",
-          height: "100%",
+          minHeight: "100%",
           "--dialog-margin": "0",
           margin: "0",
-          overflow: "auto",
         },
       },
     },

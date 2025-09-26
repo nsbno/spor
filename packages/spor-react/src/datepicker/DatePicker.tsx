@@ -46,6 +46,7 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
     noCalendar?: boolean;
     overrideBorderColor?: string;
     isActive?: boolean;
+    onClick?: () => void;
   } & FieldBaseProps;
 
 /**
@@ -105,8 +106,10 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       state.isOpen && !props.isDisabled && !props.noCalendar;
 
     const onFieldClick = () => {
-      if (props.noCalendar) return;
-      state.setOpen(true);
+      if (!props.noCalendar) {
+        state.setOpen(true);
+      }
+      props.onClick?.();
     };
 
     const popoverContent = (
@@ -143,7 +146,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
               <PopoverAnchor>
                 <StyledField
                   variant={variant}
-                  onClick={props.noCalendar ? undefined : onFieldClick}
+                  onClick={onFieldClick}
                   paddingX={3}
                   minHeight={minHeight}
                   isDisabled={props.isDisabled}

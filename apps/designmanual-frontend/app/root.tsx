@@ -16,6 +16,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useLocation,
   useRouteError,
 } from "react-router";
 
@@ -102,13 +103,15 @@ export const links: LinksFunction = () => {
   ];
 };
 
-export const loader = async ({ request }: LoaderFunctionArgs) => {
+export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const initialSanityData = await getInitialSanityData();
   const brand = await getBrandFromCookie(request.headers.get("cookie") ?? "");
 
   const isMac = /Mac|iPod|iPhone|iPad/.test(
     request.headers.get("user-agent") ?? "",
   );
+
+  const slug = params.slug || "";
 
   const domain = request.headers.get("host") ?? "";
 
@@ -118,6 +121,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     brand,
     isMac,
     domain,
+    slug,
   };
 };
 
@@ -170,8 +174,13 @@ const Document = withEmotionCache(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const location = useLocation();
+    const selectedLanguage = location.pathname.startsWith("/spor")
+      ? "en-gb"
+      : "nb";
+
     return (
-      <html lang="en-gb">
+      <html lang={selectedLanguage} style={{ scrollBehavior: "smooth" }}>
         <head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -186,9 +195,9 @@ const Document = withEmotionCache(
             />
           ))}
         </head>
-        <body>
+        <body style={{ overflowX: "hidden" }}>
           <SporProvider
-            language={Language.English}
+            language={Language.NorwegianBokmal}
             theme={themes[brand ?? "VyDigital"]}
           >
             <SkipToContent />

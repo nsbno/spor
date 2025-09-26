@@ -41,6 +41,13 @@ export const section = defineType({
       type: "string",
       components: { input: IconInputComponent },
     }),
+    defineField({
+      name: "reference",
+      type: "reference",
+      title: "Internal Link to a page",
+      validation: (Rule) => Rule.required().error("You must select a page"),
+      to: [{ type: "page" }],
+    }),
   ],
   preview: {
     select: {

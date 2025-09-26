@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 12.13.5
+
+### Patch Changes
+
+- ae25c85: Fix cover modal not handling overflow with scroll
+
+## 12.13.4
+
+### Patch Changes
+
+- 3200ed0: datepicker - exposed onClick & changed hover style to be focus color when isActive=true
+
 ## 12.13.3
 
 ### Patch Changes

@@ -47,6 +47,7 @@ export const StyledField = forwardRef<HTMLDivElement, StyledFieldProps>(
         ref={ref}
         aria-invalid={invalid}
         aria-disabled={isDisabled}
+        fontSize={["mobile.md", "desktop.md"]}
       >
         {children}
       </Box>

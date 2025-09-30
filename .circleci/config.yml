@@ -20,7 +20,7 @@ parameters:
     default: "spor-delivery-pipeline"
   terraform_version:
     type: string
-    default: "1.8.4"
+    default: "1.13.0"
   terraform_artifact_name:
     type: string
     default: "spor-tf"
@@ -59,7 +59,7 @@ jobs:
             fi
             aws ecr get-login-password --region eu-west-1 \
               | docker login --username AWS --password-stdin "$ECR_ENDPOINT"
-            docker build -t ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> -f apps/docs/Dockerfile .
+            docker build -t ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> -f apps/designmanual-frontend/Dockerfile .
             docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
             docker push "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:latest"
             docker tag ${ECR_ENDPOINT}/<< parameters.ecr_repo_name >> "${ECR_ENDPOINT}/<< parameters.ecr_repo_name >>:<< pipeline.git.branch >>-branch"
@@ -74,7 +74,7 @@ jobs:
       - checkout
       - deployment/zip-and-upload-artifact:
           application-name: << pipeline.parameters.terraform_artifact_name >>
-          source-directory: ./apps/docs/
+          source-directory: ./apps/designmanual-frontend/
           source: terraform
 
 workflows:
@@ -88,8 +88,9 @@ workflows:
           matrix:
             parameters:
               path:
-                - apps/docs/terraform/service
-                - apps/docs/terraform/prod
+                - apps/designmanual-frontend/terraform/service
+                - apps/designmanual-frontend/terraform/prod
+                - apps/designmanual-frontend/terraform/test
 
       - build-and-push-docker:
           context: digital-common-services

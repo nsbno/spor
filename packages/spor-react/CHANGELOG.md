@@ -1,5 +1,16 @@
 # @vygruppen/spor-react
 
+## 12.14.0
+
+### Minor Changes
+
+- cdb40ce: Add new fontsizes, md-lg and 2xs. Md on desktop adjusts from 24px to 21px.
+
+### Patch Changes
+
+- Updated dependencies [cdb40ce]
+  - @vygruppen/spor-design-tokens@4.2.0
+
 ## 12.13.5
 
 ### Patch Changes

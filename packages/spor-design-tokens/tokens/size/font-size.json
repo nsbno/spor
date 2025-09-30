@@ -1,6 +1,14 @@
 {
   "size": {
     "font": {
+      "2xs": {
+        "mobile": {
+          "value": "12"
+        },
+        "desktop": {
+          "value": "14"
+        }
+      },
       "xs": {
         "mobile": {
           "value": "14"
@@ -20,6 +28,14 @@
       "md": {
         "mobile": {
           "value": "18"
+        },
+        "desktop": {
+          "value": "21"
+        }
+      },
+      "md-lg": {
+        "mobile": {
+          "value": "21"
         },
         "desktop": {
           "value": "24"

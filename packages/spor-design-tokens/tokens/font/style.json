@@ -49,6 +49,18 @@
           }
         }
       },
+      "md-lg": {
+        "font-family": { "value": "{font.family.body.value}" },
+        "line-height": { "value": "{size.line-height.body.value}" },
+        "font-size": {
+          "mobile": {
+            "value": "{size.font.md-lg.mobile.value}"
+          },
+          "desktop": {
+            "value": "{size.font.md-lg.desktop.value}"
+          }
+        }
+      },
       "md": {
         "font-family": { "value": "{font.family.body.value}" },
         "line-height": { "value": "{size.line-height.body.value}" },
@@ -82,6 +94,18 @@
           },
           "desktop": {
             "value": "{size.font.xs.desktop.value}"
+          }
+        }
+      },
+      "2xs": {
+        "font-family": { "value": "{font.family.body.value}" },
+        "line-height": { "value": "{size.line-height.body.value}" },
+        "font-size": {
+          "mobile": {
+            "value": "{size.font.2xs.mobile.value}"
+          },
+          "desktop": {
+            "value": "{size.font.2xs.desktop.value}"
           }
         }
       }

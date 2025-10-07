@@ -127,7 +127,7 @@ export const ServiceAlert = forwardRef<HTMLDivElement, ServiceAlertProps>(
           </Accordion.ItemTrigger>
 
           <Accordion.ItemContent css={styles.itemContent}>
-            <Accordion.ItemBody width={contentWidth} css={styles.itemBody}>
+            <Accordion.ItemBody maxWidth={contentWidth} css={styles.itemBody}>
               {children}
             </Accordion.ItemBody>
           </Accordion.ItemContent>

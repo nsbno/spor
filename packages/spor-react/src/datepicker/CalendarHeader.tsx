@@ -1,5 +1,5 @@
 "use client";
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { getLocalTimeZone } from "@internationalized/date";
 import {
   ArrowLeftOutline24Icon,

@@ -13,7 +13,7 @@ type Props = IconButtonProps &
 export const ResponsiveButton = ({ label, ...props }: Props) => {
   return (
     <>
-      <Button display={["none", "flex"]} {...props} leftIcon={props.icon}>
+      <Button display={["none", "flex"]} leftIcon={props.icon} {...props}>
         {label}
       </Button>
       <IconButton display={["flex", "none"]} aria-label={label} {...props} />

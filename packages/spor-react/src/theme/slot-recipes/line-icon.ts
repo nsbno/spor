@@ -74,6 +74,10 @@ export const lineIconSlotRecipe = defineSlotRecipe({
         iconContainer: {
           backgroundColor: "linjetag.altTransport",
         },
+        icon: {
+          // eslint-disable-next-line spor/use-semantic-tokens
+          color: "darkGrey",
+        },
       },
       walk: {
         title: {

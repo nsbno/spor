@@ -10,7 +10,6 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
       display: "inline-flex",
       alignItems: "center",
       boxAlign: "center",
-      fontSize: "xs",
       cursor: "pointer",
       transitionProperty: "all",
       borderRadius: "xl",
@@ -69,7 +68,6 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
       display: "flex",
       alignItems: "center",
       gap: "1",
-      fontSize: "xs",
     },
   },
 
@@ -83,6 +81,10 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
           height: 5,
           paddingX: 1.5,
         },
+        label: {
+          fontSize: { base: "mobile.sm", sm: "desktop.sm" },
+          fontWeight: "medium",
+        },
       },
       sm: {
         root: {
@@ -91,6 +93,10 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
           },
           height: 6,
           paddingX: 2,
+        },
+        label: {
+          fontSize: { base: "mobile.sm", sm: "desktop.sm" },
+          fontWeight: "bold",
         },
       },
       md: {
@@ -101,6 +107,10 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
           height: 7,
           paddingX: 2,
         },
+        label: {
+          fontSize: { base: "mobile.md", sm: "desktop.md" },
+          fontWeight: "bold",
+        },
       },
       lg: {
         root: {
@@ -109,6 +119,10 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
           },
           height: 8,
           paddingX: 3,
+        },
+        label: {
+          fontSize: { base: "mobile.md", sm: "desktop.md" },
+          fontWeight: "bold",
         },
       },
     },
@@ -176,7 +190,7 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
   },
 
   defaultVariants: {
-    size: "md",
+    size: "sm",
     variant: "core",
     chipType: "choice",
   },

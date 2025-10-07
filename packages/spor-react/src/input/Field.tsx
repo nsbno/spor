@@ -104,7 +104,7 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
           )}
         </ChakraField.Root>
         {helperText && (
-          <Text fontSize="sm" color="text.tertiary">
+          <Text variant="sm" color="text.tertiary">
             {helperText}
           </Text>
         )}

@@ -154,7 +154,7 @@ export const DrawerFullScreenHeader = forwardRef<
     <ChakraDrawer.Header {...props} ref={ref}>
       {backTrigger && <DrawerBackTrigger />}
       {children && <DrawerTitle>{children}</DrawerTitle>}
-      {closeTrigger && <DrawerCloseTrigger justifySelf="end" top="0" />}
+      {closeTrigger && <DrawerCloseTrigger />}
     </ChakraDrawer.Header>
   );
 });

@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 12.14.1
+
+### Patch Changes
+
+- f582d9c: Resolved padding and overflow issues in the ServiceAlert component
+
+  Also adjust some stylings that were inconsistent with figma for other components.
+
+- 86345da: Correct icon color for alt-transport LineTags.
+
 ## 12.14.0
 
 ### Minor Changes

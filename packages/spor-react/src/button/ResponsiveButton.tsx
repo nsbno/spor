@@ -10,13 +10,18 @@ type Props = IconButtonProps &
     label: string;
   };
 
-export const ResponsiveButton = ({ label, ...props }: Props) => {
+export const ResponsiveButton = ({ label, icon, ...props }: Props) => {
   return (
     <>
-      <Button display={["none", "flex"]} leftIcon={props.icon} {...props}>
+      <Button display={["none", "flex"]} leftIcon={icon} {...props}>
         {label}
       </Button>
-      <IconButton display={["flex", "none"]} aria-label={label} {...props} />
+      <IconButton
+        display={["flex", "none"]}
+        aria-label={label}
+        icon={icon}
+        {...props}
+      />
     </>
   );
 };

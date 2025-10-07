@@ -16,7 +16,7 @@ import { useSwipeable } from "react-swipeable";
 
 import { ResponsiveButton } from "@/button/ResponsiveButton";
 
-import { Button, CloseButton } from "../button";
+import { CloseButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
 import {
   DrawerContentProps,

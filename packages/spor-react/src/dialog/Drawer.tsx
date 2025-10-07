@@ -152,9 +152,9 @@ export const DrawerFullScreenHeader = forwardRef<
   const { backTrigger = true, closeTrigger = true, children } = props;
   return (
     <ChakraDrawer.Header {...props} ref={ref}>
-      {backTrigger && <DrawerBackTrigger />}
-      {children && <DrawerTitle>{children}</DrawerTitle>}
-      {closeTrigger && <DrawerCloseTrigger />}
+      <Box>{backTrigger && <DrawerBackTrigger />}</Box>
+      {<DrawerTitle>{children}</DrawerTitle>}
+      <Box> {closeTrigger && <DrawerCloseTrigger />}</Box>
     </ChakraDrawer.Header>
   );
 });

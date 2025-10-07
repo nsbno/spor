@@ -22,7 +22,8 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      padding: [2, null, null, 2],
+      padding: ["2", "3"],
+      paddingBottom: "1",
       borderBottomRadius: "md",
       borderTopRadius: "none",
       width: "full",
@@ -39,27 +40,41 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       },
     },
     itemTriggerTitle: {
-      fontSize: ["xs", null, null, "sm"],
+      fontSize: ["mobile.sm", "desktop.sm"],
     },
     notificationText: {
       fontWeight: "400",
-      fontSize: ["2xs", null, null, "xs"],
+      fontSize: ["mobile.xs", "desktop.xs"],
       textWrap: "nowrap",
+      color: "alert.service.text.secondary",
     },
+
+    itemContent: {
+      paddingX: ["2", "3"],
+      paddingBottom: ["2", "3"],
+      paddingTop: ["1", "2"],
+    },
+
     itemBody: {
       marginX: "auto",
       padding: "0 !important",
-      paddingBottom: ["0.5", null, null, "1"],
-      color: "text.inverted",
+      color: "alert.service.text.secondary",
+      gap: 0,
+      flexDirection: "column",
+      display: "flex",
       "& > p": {
-        gap: 2,
         width: "full",
         borderBottom: "1px dashed",
         borderColor: "outline.inverted",
-        paddingBottom: "3",
-        paddingTop: "2",
+
+        paddingY: ["1", "1.5"],
+
+        _first: {
+          paddingTop: 0,
+        },
         _last: {
           borderBottom: "none",
+          paddingBottom: 0,
         },
       },
     },

@@ -44,7 +44,6 @@ export const StepperStep = ({
       {disabled ? (
         <Text
           variant="xs"
-          fontSize="1rem"
           color={disabledTextColor}
           cursor="default"
           paddingX={2}

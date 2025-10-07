@@ -63,11 +63,7 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
             position="absolute"
             paddingTop="2px"
           >
-            <Label
-              padding="0"
-              fontSize={["mobile.xs", "desktop.xs"]}
-              {...props.labelProps}
-            >
+            <Label padding="0" {...props.labelProps}>
               {props.label} <Field.RequiredIndicator />
             </Label>
           </Box>

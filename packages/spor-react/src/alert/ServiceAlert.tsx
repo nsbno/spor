@@ -6,7 +6,6 @@ import {
   HStack,
   RecipeVariantProps,
   Span,
-  Stack,
   Text,
   useSlotRecipe,
 } from "@chakra-ui/react";
@@ -127,16 +126,10 @@ export const ServiceAlert = forwardRef<HTMLDivElement, ServiceAlertProps>(
             </HStack>
           </Accordion.ItemTrigger>
 
-          <Accordion.ItemContent asChild>
-            <Stack flexDirection="row" width="100%">
-              <Accordion.ItemBody
-                as={Stack}
-                width={contentWidth}
-                css={styles.itemBody}
-              >
-                {children}
-              </Accordion.ItemBody>
-            </Stack>
+          <Accordion.ItemContent css={styles.itemContent}>
+            <Accordion.ItemBody width={contentWidth} css={styles.itemBody}>
+              {children}
+            </Accordion.ItemBody>
           </Accordion.ItemContent>
         </Accordion.Item>
       </Accordion.Root>

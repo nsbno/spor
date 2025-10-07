@@ -246,7 +246,7 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
             fontWeight="bold"
             {...headingProps}
           >
-            {section.rendered} 123
+            {section.rendered}
           </Box>
         )}
         <List {...groupProps} padding={0} listStyleType="none">

@@ -4,8 +4,6 @@ import {
   Box,
   createContext,
   Drawer as ChakraDrawer,
-  Grid,
-  GridItem,
   Portal,
   useDialogContext,
 } from "@chakra-ui/react";
@@ -15,6 +13,8 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { forwardRef } from "react";
 import { useSwipeable } from "react-swipeable";
+
+import { ResponsiveButton } from "@/button/ResponsiveButton";
 
 import { Button, CloseButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
@@ -116,9 +116,11 @@ export const DrawerCloseTrigger = forwardRef<
   return (
     <ChakraDrawer.CloseTrigger ref={ref} {...props} asChild>
       {size === "full" ? (
-        <Button variant="ghost" leftIcon={<CloseFill24Icon />}>
-          {t(texts.close)}
-        </Button>
+        <ResponsiveButton
+          variant="ghost"
+          icon={<CloseFill24Icon />}
+          label={t(texts.close)}
+        />
       ) : (
         <CloseButton size="md" />
       )}
@@ -132,10 +134,12 @@ export const DrawerBackTrigger = forwardRef<
 >((props, ref) => {
   const { t } = useTranslation();
   return (
-    <ChakraDrawer.CloseTrigger asChild {...props} ref={ref} top="0">
-      <Button variant="ghost" leftIcon={<ArrowLeftFill24Icon />}>
-        {t(texts.back)}
-      </Button>
+    <ChakraDrawer.CloseTrigger asChild {...props} ref={ref}>
+      <ResponsiveButton
+        variant="ghost"
+        icon={<ArrowLeftFill24Icon />}
+        label={t(texts.back)}
+      />
     </ChakraDrawer.CloseTrigger>
   );
 });
@@ -147,20 +151,10 @@ export const DrawerFullScreenHeader = forwardRef<
 >((props, ref) => {
   const { backTrigger = true, closeTrigger = true, children } = props;
   return (
-    <ChakraDrawer.Header {...props} ref={ref} asChild>
-      <Grid templateColumns="1fr auto 1fr" height="auto" paddingX="8">
-        <GridItem width="full" alignSelf="center">
-          {backTrigger && <DrawerBackTrigger />}
-        </GridItem>
-        <GridItem width="full" alignSelf="end" asChild>
-          {children && <DrawerTitle>{children}</DrawerTitle>}
-        </GridItem>
-        {closeTrigger && (
-          <GridItem width="full" alignSelf="end">
-            <DrawerCloseTrigger justifySelf="end" top="0" />
-          </GridItem>
-        )}
-      </Grid>
+    <ChakraDrawer.Header {...props} ref={ref}>
+      {backTrigger && <DrawerBackTrigger />}
+      {children && <DrawerTitle>{children}</DrawerTitle>}
+      {closeTrigger && <DrawerCloseTrigger justifySelf="end" top="0" />}
     </ChakraDrawer.Header>
   );
 });

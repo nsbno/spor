@@ -2,4 +2,6 @@
 "@vygruppen/spor-react": patch
 ---
 
-asdasd
+Resolved padding and overflow issues in the ServiceAlert component
+
+Also adjust some stylings that were inconsistent with figma for other components.

@@ -11,6 +11,7 @@ jobs:
     secrets: inherit
     with:
       applications: digitalekanaler-designmanual
+      working-directory: ./apps/designmanual-frontend
 
   preview-comment:
     if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '.preview') }}
@@ -18,3 +19,4 @@ jobs:
     uses: nsbno/platform-actions/.github/workflows/deployment.preview.on-comment.yml@main
     with:
       service-name: digitalekanaler-designmanual
+      working-directory: ./apps/designmanual-frontend

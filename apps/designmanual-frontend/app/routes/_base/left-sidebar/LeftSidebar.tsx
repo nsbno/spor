@@ -5,13 +5,14 @@ import { SearchableContentMenu } from "~/routes/_base/content-menu/SearchableCon
 export const LeftSidebar = () => {
   return (
     <Box
+      width={["100vw", null, null, "20rem"]}
+      height={["100vh", null, null, "auto"]}
+      minWidth={["100%", null, null, "20rem"]}
+      position={["absolute", null, null, "sticky"]}
+      top="0"
+      as="aside"
       display={["none", null, null, "flex"]}
-      as="nav"
-      aria-label="content"
-      paddingX={1.5}
-      paddingY={2}
-      width={["100%", null, "20rem"]}
-      position="relative"
+      marginTop={"4.6rem"}
     >
       <SearchableContentMenu />
     </Box>

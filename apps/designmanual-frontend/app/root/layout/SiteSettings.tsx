@@ -19,10 +19,9 @@ export const SiteSettings = () => {
     <CardSelect>
       <CardSelectTrigger
         icon={<SettingsX1Fill24Icon />}
-        variant="ghost"
+        variant="core"
         withChevron={false}
         fontWeight={"bold"}
-        className="dark"
         minWidth="auto"
         title="Site settings"
       >

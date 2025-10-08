@@ -1,20 +1,18 @@
 import {
   HamburgerFill24Icon,
-  SearchFill24Icon,
+  SearchFill18Icon,
   SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import {
+  Box,
   Button,
   Drawer,
   DrawerBody,
   DrawerCloseTrigger,
   DrawerContent,
   DrawerHeader,
-  DrawerTitle,
   Flex,
   IconButton,
-  Stack,
-  Text,
   useDisclosure,
   VyLogo,
 } from "@vygruppen/spor-react";
@@ -22,11 +20,10 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useRouteLoaderData } from "react-router";
 
 import { loader } from "~/root";
+import { getIcon } from "~/utils/getIcon";
 
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
-import { ChangeVersion } from "./ChangeVersion";
 import { SearchDocs } from "./SearchDocs";
-import { SiteSettings } from "./SiteSettings";
 
 const useSearchKeyboardShortcut = (onTriggered: () => void) => {
   useEffect(() => {
@@ -51,6 +48,11 @@ export const SiteHeader = () => {
 
   useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
 
+  const routeData = useRouteLoaderData<typeof loader>("root");
+  const slug = useLocation().pathname.slice(1);
+  const currentSection = slug?.split("/")[0] || "";
+  const sections = routeData?.initialSanityData?.siteSettings?.topMenu || [];
+
   return (
     <Flex
       as="header"
@@ -58,13 +60,7 @@ export const SiteHeader = () => {
       alignItems="center"
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
-      backgroundColor={"surface.tertiary"}
-      className="light"
-      css={{
-        position: "sticky",
-        top: "0",
-        zIndex: "sticky",
-      }}
+      backgroundColor={"surface.color.neutral"}
       gap="3"
       width={"100vw"}
       overflow={"hidden"}
@@ -77,18 +73,51 @@ export const SiteHeader = () => {
         position="relative"
       >
         <Link to="/" aria-label="Go to the front page">
-          <VyLogo className="dark" width="auto" height="56px" aria-label="Vy" />
+          <VyLogo
+            className="light"
+            width="auto"
+            height={["30px", "36px", null, "48px"]}
+            aria-label="Vy"
+          />
         </Link>
+
+        <Box as="nav" flexGrow={1} justifyContent="flex-end">
+          <Flex as="ul" gap="2" width={"auto"} justifySelf={"flex-end"}>
+            {sections.map((section) => {
+              return (
+                <Box as="li" key={section.title} paddingRight={3}>
+                  <Button
+                    asChild
+                    variant={
+                      (section.default && slug === "") ||
+                      section.slug.current === currentSection
+                        ? "secondary"
+                        : "ghost"
+                    }
+                    size={"md"}
+                    borderRadius="lg"
+                    display={{ base: "none", lg: "flex" }}
+                    border="none"
+                    leftIcon={getIcon({
+                      iconName: section.icon,
+                      size: 24,
+                      style:
+                        section.slug.current === currentSection
+                          ? "fill"
+                          : "outline",
+                    })}
+                  >
+                    <Link to={`/${section.slug.current}`}>{section.title}</Link>
+                  </Button>
+                </Box>
+              );
+            })}
+          </Flex>
+        </Box>
 
         <Flex gap="1">
           <SearchDocsButton onSearchClick={() => setSearchDialogOpen(true)} />
-
-          <ChangeVersion />
-
-          <SiteSettings />
-
           <MobileMenu />
-
           <SearchDocs
             onOpenChange={setSearchDialogOpen}
             open={searchDialogOpen}
@@ -116,20 +145,16 @@ const MobileMenu = () => {
         variant="ghost"
         size="md"
         onClick={onOpen}
-        className="dark"
         display={{ base: "flex", lg: "none" }}
       />
 
       <Drawer placement="end" open={open} onExitComplete={onClose}>
         <DrawerContent>
           <DrawerHeader>
-            <DrawerTitle>Explore Spor</DrawerTitle>
-            <DrawerCloseTrigger onClick={onClose} />
+            <DrawerCloseTrigger placeContent={"end"} onClick={onClose} />
           </DrawerHeader>
-          <DrawerBody paddingY={2} paddingX={[1, 2, 3]}>
-            <Stack padding={2}>
-              <SearchableContentMenu />
-            </Stack>
+          <DrawerBody paddingY={2}>
+            <SearchableContentMenu />
           </DrawerBody>
         </DrawerContent>
       </Drawer>
@@ -143,31 +168,23 @@ const SearchDocsButton = ({ onSearchClick }: { onSearchClick: () => void }) => {
   return (
     <>
       <IconButton
-        icon={<SearchFill24Icon />}
+        icon={<SearchFill18Icon />}
         variant="ghost"
         size="md"
-        aria-label="Search documentation"
+        aria-label={`Search documentation, ${isMac ? "cmd" : "ctrl"} + k to open modal`}
         onClick={onSearchClick}
-        className="dark"
         display={{ base: "flex", lg: "none" }}
       />
 
       <Button
-        variant="tertiary"
-        borderRadius="xs"
+        variant="ghost"
+        borderRadius="lg"
         leftIcon={<SearchOutline24Icon />}
-        rightIcon={<Text variant="xs">({isMac ? "cmd" : "ctrl"} + k)</Text>}
-        className="dark"
         onClick={onSearchClick}
-        padding="2"
-        xl={{ minWidth: "38rem" }}
-        lg={{ minWidth: "24rem" }}
-        position="absolute"
-        left="50%"
-        transform="translateX(-50%)"
         display={{ base: "none", lg: "flex" }}
+        border="none"
       >
-        Search docs...
+        Søk
       </Button>
     </>
   );

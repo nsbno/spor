@@ -1,11 +1,13 @@
 "use client";
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { getLocalTimeZone } from "@internationalized/date";
 import {
   ArrowLeftOutline24Icon,
   ArrowRightOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 import { CalendarState, RangeCalendarState } from "react-stately";
+
+import { Text } from "@/typography";
 
 import { createTexts, useTranslation } from "../i18n";
 import { CalendarNavigationButton } from "./CalendarNavigationButton";
@@ -103,16 +105,16 @@ export const CalendarNavigator = ({
         icon={<ArrowLeftOutline24Icon />}
         aria-label={`${t(texts.previous)} ${t(texts[unit])}`}
       />
-      <Box
+      <Text
         role="heading"
-        fontSize="sm"
+        variant="md"
         fontWeight="bold"
         flex="1"
         textAlign="center"
         color={"core.text"}
       >
         {capitalize(title)}
-      </Box>
+      </Text>
       <CalendarNavigationButton
         onPress={onNext}
         isDisabled={isNextDisabled}

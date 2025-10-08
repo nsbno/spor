@@ -6,10 +6,10 @@ import { matchSorter } from "match-sorter";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 
-import { useMenu } from "~/utils/useMenu";
+import { useTopSearch } from "~/utils/useMenu";
 
 const useSearchableItems = () => {
-  const menu = useMenu("side-menu");
+  const menu = useTopSearch("side-menu-spor");
 
   if (!menu?.menuItems) return [];
 
@@ -104,7 +104,7 @@ export const SearchDocsInput = ({ onSearchSelect, onClose }: Props) => {
             }
           >
             {(item) => (
-              <ComboboxItem key={item.url} item={item} asChild>
+              <ComboboxItem key={item.value} item={item} asChild>
                 <Link to={`${item.url}`}>
                   <Text fontWeight="bold">{item.title}</Text>
                   <Text variant="xs" color="text.tertiary">

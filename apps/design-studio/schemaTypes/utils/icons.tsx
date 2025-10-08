@@ -61,6 +61,7 @@ export const iconList = [
   { title: "Ferry", value: "ferry" },
   { title: "Figma", value: "figma" },
   { title: "Filter", value: "filter" },
+  { title: "Folder", value: "folder" },
   { title: "Forest", value: "forest" },
   { title: "FreightTrain", value: "freight-train" },
   { title: "Frown", value: "frown" },

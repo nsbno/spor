@@ -50,6 +50,18 @@ export const textStyles = defineTextStyles({
       lineHeight: tokens.font.style.lg["line-height"],
     },
   },
+  "md-lg": {
+    value: {
+      fontSize: [
+        tokens.font.style["md-lg"]["font-size"].mobile,
+        null,
+        null,
+        tokens.font.style["md-lg"]["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style["md-lg"]["font-family"],
+      lineHeight: tokens.font.style["md-lg"]["line-height"],
+    },
+  },
   md: {
     value: {
       fontSize: [
@@ -84,6 +96,18 @@ export const textStyles = defineTextStyles({
       ],
       fontFamily: tokens.font.style.xs["font-family"],
       lineHeight: tokens.font.style.xs["line-height"],
+    },
+  },
+  "2xs": {
+    value: {
+      fontSize: [
+        tokens.font.style["2xs"]["font-size"].mobile,
+        null,
+        null,
+        tokens.font.style["2xs"]["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style["2xs"]["font-family"],
+      lineHeight: tokens.font.style["2xs"]["line-height"],
     },
   },
 });

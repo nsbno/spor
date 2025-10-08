@@ -26,6 +26,7 @@ jobs:
       repo-name: spor
       # artifact-name: ${{ needs.build.outputs.artifact-name }}
       # artifact-path: ${{ needs.build.outputs.artifact-path }}
+      working-directory: ./apps/designmanual-frontend
 
   deploy:
     needs:

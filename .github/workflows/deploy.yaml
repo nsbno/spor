@@ -9,6 +9,8 @@ jobs:
   terraform-changes:
     uses: nsbno/platform-actions/.github/workflows/helpers.find-changes.terraform.yml@main
     secrets: inherit
+    with:
+      working-directory: ./apps/designmanual-frontend
 
 
   package:
@@ -28,3 +30,4 @@ jobs:
     with:
       applications: digitalekanaler-designmanual
       terraform-changes: ${{ needs.terraform-changes.outputs.has-changes }}
+      working-directory: ./apps/designmanual-frontend

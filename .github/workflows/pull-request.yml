@@ -4,19 +4,10 @@ on:
     types: [opened, synchronize, closed]
 
 jobs:
-  # build:
-  #   if: ${{ github.event.action != 'closed' }}
-  #   uses: nsbno/platform-actions/.github/workflows/build.node.yml@main
-  #   secrets: inherit
-  #   with:
-  #     node-version: '22'
-  #     package-manager: 'npm'
 
   package:
     if: ${{ github.event.action != 'closed' }}
     uses: nsbno/platform-actions/.github/workflows/package.docker.yml@main
-    # needs:
-    #   - build
     secrets: inherit
     with:
       repo-name: spor

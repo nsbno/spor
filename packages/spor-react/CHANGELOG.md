@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 12.14.2
+
+### Patch Changes
+
+- 02bdd99: Fix issue where switch without label has empty space on right
+- 2b611fa: Fix layout on full screen drawer header.
+
 ## 12.14.1
 
 ### Patch Changes

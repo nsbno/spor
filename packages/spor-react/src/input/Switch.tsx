@@ -78,7 +78,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           <ChakraSwitch.Control css={styles.control}>
             <ChakraSwitch.Thumb />
           </ChakraSwitch.Control>
-          <ChakraSwitch.Label>{label}</ChakraSwitch.Label>
+          {label && <ChakraSwitch.Label>{label}</ChakraSwitch.Label>}
         </ChakraSwitch.Root>
       </Field>
     );

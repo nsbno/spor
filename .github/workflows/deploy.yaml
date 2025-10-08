@@ -10,28 +10,17 @@ jobs:
     uses: nsbno/platform-actions/.github/workflows/helpers.find-changes.terraform.yml@main
     secrets: inherit
 
-  # build:
-  #   uses: nsbno/platform-actions/.github/workflows/build.node.yml@main
-  #   secrets: inherit
-  #   with:
-  #     node-version: '22'
-  #     package-manager: 'npm'
 
   package:
     uses: nsbno/platform-actions/.github/workflows/package.docker.yml@main
-    # needs:
-    #   - build
     secrets: inherit
     with:
       repo-name: spor
-      # artifact-name: ${{ needs.build.outputs.artifact-name }}
-      # artifact-path: ${{ needs.build.outputs.artifact-path }}
       working-directory: ./apps/designmanual-frontend
 
   deploy:
     needs:
       - terraform-changes
-      # - build
       - package
     uses: nsbno/platform-actions/.github/workflows/deployment.all-environments.yml@main
     secrets: inherit

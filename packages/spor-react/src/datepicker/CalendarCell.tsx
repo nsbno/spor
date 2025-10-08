@@ -74,9 +74,6 @@ export function CalendarCell({
     );
   }, []);
 
-  console.log(buttonProps);
-  console.log(stateProps);
-
   return (
     <Box as="td" {...cellProps} textAlign="center" css={styles.cell}>
       <spor.button

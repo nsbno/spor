@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.2.0
+
+### Minor Changes
+
+- cdb40ce: Add new fontsizes, md-lg and 2xs. Md on desktop adjusts from 24px to 21px.
+
 ## 4.1.0
 
 ### Minor Changes

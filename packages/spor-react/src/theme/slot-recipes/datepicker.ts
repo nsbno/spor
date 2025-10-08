@@ -37,7 +37,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       },
     },
     inputLabel: {
-      fontSize: "mobile.xs",
+      fontSize: ["mobile.xs", "desktop.xs"],
       margin: 0,
       cursor: "text",
     },

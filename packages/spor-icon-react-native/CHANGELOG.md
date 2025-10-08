@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.15.5
+
+### Patch Changes
+
+- e55df03: Fix path for main file
+
 ## 2.15.4
 
 ### Patch Changes

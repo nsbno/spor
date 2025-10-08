@@ -22,13 +22,13 @@ export const accordionSlotRecipe = defineSlotRecipe({
       textAlign: "left",
       width: "full",
       alignItems: "center",
-      fontSize: ["mobile.sm", null, "desktop.sm"],
+      fontSize: ["mobile.sm", "desktop.sm"],
       fontFamily: "body",
       fontWeight: "bold",
       outlineOffset: "-2px",
-      paddingX: [2, null, 3],
-      paddingY: [1, null, 1.5],
-      minHeight: [6, null, 7],
+      paddingX: [2, 3],
+      paddingY: [1, 1.5],
+      minHeight: [6, 7],
       cursor: "pointer",
       _disabled: {
         pointerEvents: "none",
@@ -37,7 +37,7 @@ export const accordionSlotRecipe = defineSlotRecipe({
     },
     itemContent: {
       borderBottomRadius: "sm",
-      fontSize: ["mobile.sm", null, "desktop.sm"],
+      fontSize: ["mobile.sm", "desktop.sm"],
       color: "text",
       height: "auto",
       overflow: "hidden",
@@ -52,7 +52,7 @@ export const accordionSlotRecipe = defineSlotRecipe({
     },
     itemBody: {
       paddingY: 2,
-      paddingX: [2, null, 3],
+      paddingX: [2, 3],
     },
     itemIndicator: {
       transition: "rotate 0.2s",

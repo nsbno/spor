@@ -1,5 +1,33 @@
 # @vygruppen/spor-react
 
+## 12.14.2
+
+### Patch Changes
+
+- 02bdd99: Fix issue where switch without label has empty space on right
+- 2b611fa: Fix layout on full screen drawer header.
+
+## 12.14.1
+
+### Patch Changes
+
+- f582d9c: Resolved padding and overflow issues in the ServiceAlert component
+
+  Also adjust some stylings that were inconsistent with figma for other components.
+
+- 86345da: Correct icon color for alt-transport LineTags.
+
+## 12.14.0
+
+### Minor Changes
+
+- cdb40ce: Add new fontsizes, md-lg and 2xs. Md on desktop adjusts from 24px to 21px.
+
+### Patch Changes
+
+- Updated dependencies [cdb40ce]
+  - @vygruppen/spor-design-tokens@4.2.0
+
 ## 12.13.5
 
 ### Patch Changes

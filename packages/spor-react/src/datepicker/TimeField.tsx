@@ -5,6 +5,8 @@ import { useRef } from "react";
 import { AriaTimeFieldProps, useTimeField } from "react-aria";
 import { DateSegment, TimeFieldState } from "react-stately";
 
+import { spor } from "@/util";
+
 import { DateTimeSegment } from "./DateTimeSegment";
 import { getTimestampFromTime } from "./utils";
 
@@ -24,26 +26,24 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
 
   return (
     <Box>
-      <label
+      <spor.label
         {...labelProps}
         htmlFor={fieldProps.id}
-        style={{
-          marginBottom: 0,
-          fontSize: "mobile.xs",
-          top: 0,
-          cursor: "text",
-          left: "50%",
-          transform: "translateX(-50%)",
-          position: "absolute",
-          paddingTop: "2px",
-          whiteSpace: "nowrap",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          maxWidth: "80%",
-        }}
+        marginBottom={0}
+        fontSize={["mobile.xs", "desktop.xs"]}
+        top={0}
+        cursor="text"
+        left="50%"
+        transform="translateX(-50%)"
+        position="absolute"
+        paddingTop="2px"
+        whiteSpace="nowrap"
+        overflow="hidden"
+        textOverflow="ellipsis"
+        maxWidth="80%"
       >
         {props.label}
-      </label>
+      </spor.label>
       <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
         {state.segments.map((segment: DateSegment, index) => (
           <DateTimeSegment key={index} segment={segment} state={state} />

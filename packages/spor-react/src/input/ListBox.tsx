@@ -127,7 +127,11 @@ export function ItemDescription({ children }: { children: React.ReactNode }) {
   const recipe = useSlotRecipe({ key: "listbox" });
   const styles = recipe({});
   return (
-    <Box {...descriptionProps} css={styles} fontSize={"xs"}>
+    <Box
+      {...descriptionProps}
+      css={styles}
+      fontSize={["mobile.xs", "desktop.xs"]}
+    >
       {children}
     </Box>
   );
@@ -233,7 +237,7 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
       >
         {section.rendered && (
           <Box
-            fontSize="mobile.xs"
+            fontSize={["mobile.sm", "desktop.sm"]}
             color={titleColor}
             paddingTop={1}
             marginTop={isFirstSection ? 0 : 2}

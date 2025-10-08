@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.14.3
+
+### Patch Changes
+
+- 14fb692: Update design of Alerts to support darkmode.
+
 ## 12.14.2
 
 ### Patch Changes

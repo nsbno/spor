@@ -19,6 +19,7 @@ import { ResponsiveButton } from "@/button/ResponsiveButton";
 import { CloseButton } from "../button";
 import { createTexts, useTranslation } from "../i18n";
 import {
+  DrawerCloseTriggerProps,
   DrawerContentProps,
   DrawerFullScreenHeaderProps,
   DrawerProps,
@@ -56,7 +57,13 @@ const [RootDrawerProvider, useRootDrawerProps] =
 
 export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
   (props, ref) => {
-    const { children, portalled = true, portalRef, ...rest } = props;
+    const {
+      children,
+      portalled = true,
+      portalRef,
+      hideHandle = false,
+      ...rest
+    } = props;
     const { size, placement } = useRootDrawerProps();
     const { setOpen } = useDialogContext();
     const handlers = useSwipeable({
@@ -73,14 +80,20 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
       swipeDuration: 250,
     });
     const sizeNotFull = size !== "full";
+    const showHandle = !hideHandle;
+    
     return (
       <Portal disabled={!portalled} container={portalRef}>
         <ChakraDrawer.Positioner asChild>
           <Box {...handlers} width="100%">
             <ChakraDrawer.Content ref={ref} {...rest}>
-              {sizeNotFull && placement === "bottom" && <CloseDrawerLine />}
+              {showHandle && sizeNotFull && placement === "bottom" && (
+                <CloseDrawerLine />
+              )}
               {children}
-              {sizeNotFull && placement === "top" && <CloseDrawerLine />}
+              {showHandle && sizeNotFull && placement === "top" && (
+                <CloseDrawerLine />
+              )}
             </ChakraDrawer.Content>
           </Box>
         </ChakraDrawer.Positioner>
@@ -109,13 +122,14 @@ CloseDrawerLine.displayName = "CloseDrawerLine";
 
 export const DrawerCloseTrigger = forwardRef<
   HTMLButtonElement,
-  ChakraDrawer.CloseTriggerProps
+  DrawerCloseTriggerProps
 >(function DrawerCloseTrigger(props, ref) {
+  const { showText, ...rest } = props;
   const { size } = useRootDrawerProps();
   const { t } = useTranslation();
   return (
-    <ChakraDrawer.CloseTrigger ref={ref} {...props} asChild>
-      {size === "full" ? (
+    <ChakraDrawer.CloseTrigger ref={ref} {...rest} asChild>
+      {showText || size === "full" ? (
         <ResponsiveButton
           variant="ghost"
           icon={<CloseFill24Icon />}

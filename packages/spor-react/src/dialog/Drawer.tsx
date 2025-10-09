@@ -81,7 +81,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
     });
     const sizeNotFull = size !== "full";
     const showHandle = !hideHandle;
-    
+
     return (
       <Portal disabled={!portalled} container={portalRef}>
         <ChakraDrawer.Positioner asChild>
@@ -124,7 +124,7 @@ export const DrawerCloseTrigger = forwardRef<
   HTMLButtonElement,
   DrawerCloseTriggerProps
 >(function DrawerCloseTrigger(props, ref) {
-  const { showText, ...rest } = props;
+  const { showText = false, ...rest } = props;
   const { size } = useRootDrawerProps();
   const { t } = useTranslation();
   return (

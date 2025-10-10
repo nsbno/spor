@@ -18,7 +18,7 @@ jobs:
     with:
       repo-name: spor
       dockerfile: ./apps/designmanual-frontend/Dockerfile
-      context: .
+      build-context: .
 
   deploy:
     needs:

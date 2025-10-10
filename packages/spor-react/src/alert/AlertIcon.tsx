@@ -69,7 +69,7 @@ const BaseAlertIcon = ({ variant }: { variant: AlertProps["variant"] }) => {
       return <WarningFill24Icon />;
     }
     case "alt": {
-      return <AltTransportFill24Icon />;
+      return <AltTransportFill24Icon css={css} />;
     }
     case "error": {
       return <ErrorFill24Icon css={css} />;
@@ -81,7 +81,7 @@ const BaseAlertIcon = ({ variant }: { variant: AlertProps["variant"] }) => {
       return <QuestionFill24Icon css={css} />;
     }
     case "service": {
-      return <ServiceFill24Icon css={css} />;
+      return <ServiceFill24Icon />;
     }
     default: {
       return <InformationFill24Icon css={css} />;

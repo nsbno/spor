@@ -26,7 +26,6 @@ export function HeroSection() {
           base: "0",
           lg: "1",
         }}
-        borderEndEndRadius={"sm"}
         marginX="auto"
         padding="1"
       >

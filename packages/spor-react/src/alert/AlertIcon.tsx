@@ -44,43 +44,47 @@ export const AlertIcon = forwardRef<SVGSVGElement, AlertIconProps>(
 
 AlertIcon.displayName = "AlertIcon";
 
-// eslint-disable-next-line react/display-name
-const getIcon = (variant: AlertProps["variant"]) => () => {
-  const css = {
-    "& path:first-of-type": {
-      fill: `alert.${variant}.icon`,
-    },
-    "& path:not(:first-of-type)": {
-      fill: `alert.${variant}.surface`,
-    },
+const getIcon = (variant: AlertProps["variant"]) => {
+  const IconComponent = () => {
+    const css = {
+      "& path:first-of-type": {
+        fill: `alert.${variant}.icon`,
+      },
+      "& path:not(:first-of-type)": {
+        fill: `alert.${variant}.surface`,
+      },
+    };
+
+    switch (variant) {
+      case "info": {
+        return <InformationFill24Icon css={css} />;
+      }
+      case "success": {
+        return <SuccessFill24Icon css={css} />;
+      }
+      case "important": {
+        return <WarningFill24Icon />;
+      }
+      case "alt": {
+        return <AltTransportFill24Icon />;
+      }
+      case "error": {
+        return <ErrorFill24Icon css={css} />;
+      }
+      case "error-secondary": {
+        return <ErrorOutline24Icon css={css} />;
+      }
+      case "neutral": {
+        return <QuestionFill24Icon css={css} />;
+      }
+      case "service": {
+        return <ServiceFill24Icon />;
+      }
+    }
   };
 
-  switch (variant) {
-    case "info": {
-      return <InformationFill24Icon css={css} />;
-    }
-    case "success": {
-      return <SuccessFill24Icon css={css} />;
-    }
-    case "important": {
-      return <WarningFill24Icon />;
-    }
-    case "alt": {
-      return <AltTransportFill24Icon />;
-    }
-    case "error": {
-      return <ErrorFill24Icon css={css} />;
-    }
-    case "error-secondary": {
-      return <ErrorOutline24Icon css={css} />;
-    }
-    case "neutral": {
-      return <QuestionFill24Icon css={css} />;
-    }
-    case "service": {
-      return <ServiceFill24Icon />;
-    }
-  }
+  IconComponent.displayName = `AlertIcon.${variant}`;
+  return IconComponent;
 };
 
 const texts = createTexts({

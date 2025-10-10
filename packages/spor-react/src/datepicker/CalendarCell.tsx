@@ -11,6 +11,8 @@ import { PropsWithChildren, useEffect, useRef } from "react";
 import { useCalendarCell } from "react-aria";
 import { CalendarState, RangeCalendarState } from "react-stately";
 
+import { spor } from "@/util";
+
 import { DatePickerVariantProps } from "./DatePicker";
 import { CalendarVariants } from "./types";
 
@@ -74,8 +76,8 @@ export function CalendarCell({
 
   return (
     <Box as="td" {...cellProps} textAlign="center" css={styles.cell}>
-      <Box
-        as="button"
+      <spor.button
+        type="button" // Prevents form submission
         {...buttonProps}
         {...stateProps}
         ref={ref}
@@ -83,7 +85,7 @@ export function CalendarCell({
         hidden={isOutsideVisibleRange}
       >
         {date.day}
-      </Box>
+      </spor.button>
     </Box>
   );
 }

@@ -1,0 +1,50 @@
+name: Pull Request
+on:
+  pull_request:
+    types: [opened, synchronize, closed]
+
+jobs:
+
+  package:
+    if: ${{ github.event.action != 'closed' }}
+    uses: nsbno/platform-actions/.github/workflows/package.docker.yml@main
+    secrets: inherit
+    with:
+      repo-name: spor
+      artifact-name: ${{ needs.build.outputs.artifact-name }}
+      artifact-path: ${{ needs.build.outputs.artifact-path }}
+      working-directory: ./apps/designmanual-frontend
+
+  package-s3:
+    if: ${{ github.event.action != 'closed' }}
+    uses: nsbno/platform-actions/.github/workflows/package.s3-static-files.yml@main
+    needs:
+      - build
+    secrets: inherit
+    with:
+      artifact-name: ${{ needs.build.outputs.artifact-name }}
+      service-name: digitalekanaler-designmanual
+      working-directory: ./apps/designmanual-frontend
+
+  terraform-plan:
+    if: ${{ github.event.action != 'closed' }}
+    uses: nsbno/platform-actions/.github/workflows/helpers.terraform-plan.yml@main
+    secrets: inherit
+    with:
+      working-directory: ./apps/designmanual-frontend
+
+  preview-update:
+    if: ${{ github.event.action == 'synchronize' }}
+    needs:
+      - build
+      - package
+    uses: nsbno/platform-actions/.github/workflows/deployment.preview.yml@main
+    with:
+      service-name: digitalekanaler-designmanual
+      working-directory: ./apps/designmanual-frontend
+
+  preview-cleanup:
+    if: ${{ github.event.action == 'closed' }}
+    uses: nsbno/platform-actions/.github/workflows/deployment.preview-cleanup.yml@main
+    with:
+      service-name: digitalekanaler-designmanual

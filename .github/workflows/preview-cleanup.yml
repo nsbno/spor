@@ -1,0 +1,13 @@
+name: Scheduled Preview Environment Cleanup
+
+on:
+  schedule:
+    - cron: '0 20 * * *'  # Run daily at 8 pm
+  workflow_dispatch:
+
+jobs:
+  preview-cleanup:
+    uses: nsbno/platform-actions/.github/workflows/deployment.preview-cleanup-schedule.yml@main
+    secrets: inherit
+    with:
+      days-to-keep: 1

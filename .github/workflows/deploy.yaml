@@ -11,7 +11,7 @@ jobs:
     uses: nsbno/platform-actions/.github/workflows/helpers.find-changes.terraform.yml@main
     secrets: inherit
     with:
-      working-directory: ./apps/designmanual-frontend
+      # working-directory: ./apps/designmanual-frontend
 
   package:
     uses: nsbno/platform-actions/.github/workflows/package.docker.yml@main

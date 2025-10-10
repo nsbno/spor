@@ -34,10 +34,9 @@ export const AlertIcon = forwardRef<SVGSVGElement, AlertIconProps>(
         asChild
         ref={ref}
         aria-label={t(texts[variant as keyof typeof texts])}
-        color={CustomIconComponent ? `alert.${variant}.icon` : undefined}
       >
         {CustomIconComponent ? (
-          <CustomIconComponent />
+          <CustomIconComponent color={`alert.${variant}.icon`} />
         ) : (
           <BaseAlertIcon variant={variant} />
         )}

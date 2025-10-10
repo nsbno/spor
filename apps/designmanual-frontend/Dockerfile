@@ -8,7 +8,7 @@ ENV NODE_ENV=production
 RUN npm install -g pnpm
 
 # Install all node_modules, including dev dependencies
-FROM base as deps
+FROM base AS deps
 
 RUN mkdir /app
 WORKDIR /app

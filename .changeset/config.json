@@ -10,6 +10,6 @@
     "@vygruppen/docs",
     "@vygruppen/studio",
     "@vygruppen/designmanual",
-    "@vygruppen/designmanual-docs"
+    "@vygruppen/designmanual-frontend"
   ]
 }

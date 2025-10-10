@@ -18,7 +18,7 @@ jobs:
     secrets: inherit
     with:
       repo-name: spor
-      working-directory: ./apps/designmanual-frontend
+      dockerfile: ./apps/designmanual-frontend/Dockerfile
 
   deploy:
     needs:

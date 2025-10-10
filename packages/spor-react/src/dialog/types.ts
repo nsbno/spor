@@ -10,6 +10,7 @@ export type DrawerContentProps = ChakraDrawer.ContentProps &
     children: React.ReactNode;
     portalled?: boolean;
     portalRef?: React.RefObject<HTMLElement>;
+    hideHandle?: boolean;
   };
 
 export type DrawerProps = Omit<
@@ -27,4 +28,8 @@ export type DrawerFullScreenHeaderProps = Omit<
 > & {
   backTrigger?: boolean;
   closeTrigger?: boolean;
+};
+
+export type DrawerCloseTriggerProps = ChakraDrawer.CloseTriggerProps & {
+  showText?: boolean;
 };

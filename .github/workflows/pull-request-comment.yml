@@ -1,0 +1,22 @@
+name: Deploy to Test Environment
+on:
+  issue_comment:
+    types:
+      - created
+
+jobs:
+  deploy-to-test:
+    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '.deploy')
+    uses: nsbno/platform-actions/.github/workflows/deployment.branch-deploy.on-comment.yml@main
+    secrets: inherit
+    with:
+      applications: digitalekanaler-designmanual
+      working-directory: ./apps/designmanual-frontend
+
+  preview-comment:
+    if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '.preview') }}
+    secrets: inherit
+    uses: nsbno/platform-actions/.github/workflows/deployment.preview.on-comment.yml@main
+    with:
+      service-name: digitalekanaler-designmanual
+      working-directory: ./apps/designmanual-frontend

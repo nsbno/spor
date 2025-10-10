@@ -26,65 +26,67 @@ type AlertIconProps = {
  * Internal component that shows the correct icon for the alert
  */
 export const AlertIcon = forwardRef<SVGSVGElement, AlertIconProps>(
-  ({ variant, customIcon }, ref) => {
+  ({ variant, customIcon: CustomIconComponent }, ref) => {
     const { t } = useTranslation();
-
-    const Icon = customIcon ?? getIcon(variant);
 
     return (
       <Box
-        as={Icon}
+        asChild
         ref={ref}
         aria-label={t(texts[variant as keyof typeof texts])}
-        color={customIcon ? `alert.${variant}.icon` : undefined}
-      />
+        color={CustomIconComponent ? `alert.${variant}.icon` : undefined}
+      >
+        {CustomIconComponent ? (
+          <CustomIconComponent />
+        ) : (
+          <BaseAlertIcon variant={variant} />
+        )}
+      </Box>
     );
   },
 );
 
 AlertIcon.displayName = "AlertIcon";
 
-const getIcon = (variant: AlertProps["variant"]) => {
-  const IconComponent = () => {
-    const css = {
-      "& path:first-of-type": {
-        fill: `alert.${variant}.icon`,
-      },
-      "& path:not(:first-of-type)": {
-        fill: `alert.${variant}.surface`,
-      },
-    };
-
-    switch (variant) {
-      case "info": {
-        return <InformationFill24Icon css={css} />;
-      }
-      case "success": {
-        return <SuccessFill24Icon css={css} />;
-      }
-      case "important": {
-        return <WarningFill24Icon />;
-      }
-      case "alt": {
-        return <AltTransportFill24Icon />;
-      }
-      case "error": {
-        return <ErrorFill24Icon css={css} />;
-      }
-      case "error-secondary": {
-        return <ErrorOutline24Icon css={css} />;
-      }
-      case "neutral": {
-        return <QuestionFill24Icon css={css} />;
-      }
-      case "service": {
-        return <ServiceFill24Icon />;
-      }
-    }
+const BaseAlertIcon = ({ variant }: { variant: AlertProps["variant"] }) => {
+  const css = {
+    "& path:first-of-type": {
+      fill: `alert.${variant}.icon`,
+    },
+    "& path:not(:first-of-type)": {
+      fill: `alert.${variant}.surface`,
+    },
   };
 
-  IconComponent.displayName = `AlertIcon.${variant}`;
-  return IconComponent;
+  switch (variant) {
+    case "info": {
+      return <InformationFill24Icon css={css} />;
+    }
+    case "success": {
+      return <SuccessFill24Icon css={css} />;
+    }
+    case "important": {
+      return <WarningFill24Icon />;
+    }
+    case "alt": {
+      return <AltTransportFill24Icon />;
+    }
+    case "error": {
+      return <ErrorFill24Icon css={css} />;
+    }
+    case "error-secondary": {
+      return <ErrorOutline24Icon css={css} />;
+    }
+    case "neutral": {
+      return <QuestionFill24Icon css={css} />;
+    }
+    case "service": {
+      return <ServiceFill24Icon css={css} />;
+    }
+    default: {
+      return <InformationFill24Icon css={css} />;
+    }
+  }
 };
 
 const texts = createTexts({

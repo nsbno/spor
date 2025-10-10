@@ -1,9 +1,10 @@
 name: "Deployment \U0001F680"
-'on':
+"on":
   push:
     branches:
       - master
       - main
+  workflow_dispatch:
 
 jobs:
   terraform-changes:
@@ -11,7 +12,6 @@ jobs:
     secrets: inherit
     with:
       working-directory: ./apps/designmanual-frontend
-
 
   package:
     uses: nsbno/platform-actions/.github/workflows/package.docker.yml@main
@@ -26,7 +26,7 @@ jobs:
       - package
     uses: nsbno/platform-actions/.github/workflows/deployment.all-environments.yml@main
     secrets: inherit
-    if: '!cancelled() && !contains(needs.*.results, ''failure'') && success()'
+    if: "!cancelled() && !contains(needs.*.results, 'failure') && success()"
     with:
       applications: digitalekanaler-designmanual
       terraform-changes: ${{ needs.terraform-changes.outputs.has-changes }}

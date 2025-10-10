@@ -46,7 +46,7 @@ data "aws_subnets" "private" {
 }
 
 data "aws_ecr_repository" "this" {
-  name        = local.application_name
+  name        = "designmanual"
   registry_id = "637423315721" # service account for digital-common-services
 }
 

@@ -1,5 +1,16 @@
 # @vygruppen/spor-react
 
+## 12.15.0
+
+### Minor Changes
+
+- a07b8f6: Prevent calendar cell button from performing form submittion by setting type to button.
+
+### Patch Changes
+
+- 181fdcd: Update design of Alerts to support darkmode.
+- b422895: Add props showText to DrawerCloseTrigger and hideHandle to DrawerContent
+
 ## 12.14.2
 
 ### Patch Changes

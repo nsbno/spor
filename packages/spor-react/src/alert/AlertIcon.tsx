@@ -26,7 +26,7 @@ type AlertIconProps = {
  * Internal component that shows the correct icon for the alert
  */
 export const AlertIcon = forwardRef<SVGSVGElement, AlertIconProps>(
-  ({ variant, customIcon: CustomIconComponent }, ref) => {
+  ({ variant, customIcon: CustomAlertIcon }, ref) => {
     const { t } = useTranslation();
 
     return (
@@ -35,8 +35,8 @@ export const AlertIcon = forwardRef<SVGSVGElement, AlertIconProps>(
         ref={ref}
         aria-label={t(texts[variant as keyof typeof texts])}
       >
-        {CustomIconComponent ? (
-          <CustomIconComponent color={`alert.${variant}.icon`} />
+        {CustomAlertIcon ? (
+          <CustomAlertIcon color={`alert.${variant}.icon`} />
         ) : (
           <BaseAlertIcon variant={variant} />
         )}

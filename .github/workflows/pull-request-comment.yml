@@ -13,7 +13,7 @@ on:
 
 jobs:
   deploy-to-test:
-    if: (github.event_name == 'workflow_dispatch' && startsWith(github.event.inputs.comment || '', '.deploy')) || (github.event.issue.pull_request && startsWith(github.event.comment.body, '.deploy'))
+    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.comment && startsWith(github.event.inputs.comment, '.deploy')) || (github.event.issue.pull_request && startsWith(github.event.comment.body, '.deploy'))
     uses: nsbno/platform-actions/.github/workflows/deployment.branch-deploy.on-comment.yml@main
     secrets: inherit
     with:
@@ -22,7 +22,7 @@ jobs:
       terraform-directory: ./apps/designmanual-frontend
 
   preview-comment:
-    if: ${{ (github.event_name == 'workflow_dispatch' && startsWith(github.event.inputs.comment || '', '.preview')) || (github.event.issue.pull_request && startsWith(github.event.comment.body, '.preview')) }}
+    if: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.comment && startsWith(github.event.inputs.comment, '.preview')) || (github.event.issue.pull_request && startsWith(github.event.comment.body, '.preview')) }}
     secrets: inherit
     uses: nsbno/platform-actions/.github/workflows/deployment.preview.on-comment.yml@main
     with:

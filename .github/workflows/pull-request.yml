@@ -32,6 +32,7 @@ jobs:
     secrets: inherit
     with:
       working-directory: ./apps/designmanual-frontend
+      terraform-directory: ./apps/designmanual-frontend
 
   preview-update:
     if: ${{ github.event.action == 'synchronize' }}

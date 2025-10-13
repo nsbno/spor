@@ -12,6 +12,7 @@ module "ecr" {
   trusted_accounts = [
     local.service_account_id,
     local.test_account_id,
-    local.prod_account_id
+    local.prod_account_id,
+    local.stage_account_id
   ]
 }

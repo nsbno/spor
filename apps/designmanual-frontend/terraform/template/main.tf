@@ -51,7 +51,7 @@ data "aws_ecr_repository" "this" {
 }
 
 module "ssr_task" {
-  source             = "github.com/nsbno/terraform-aws-ecs-service?ref=3.0.0-rc1"
+  source             = "github.com/nsbno/terraform-aws-ecs-service?ref=3.0.0-rc9"
   service_name       = local.application_name
   vpc_id             = data.aws_vpc.shared.id
   private_subnet_ids = data.aws_subnets.private.ids
@@ -124,7 +124,7 @@ module "cloudfront_ssr" {
 
 module "preview_url" {
   count  = var.environment == "test" ? 1 : 0
-  source = "github.com/nsbno/terraform-aws-preview-url?ref=0.3.0"
+  source = "github.com/nsbno/terraform-aws-preview-url?ref=?ref=31c02b8"
 
   providers = {
     aws.us_east_1 = aws.us_east_1

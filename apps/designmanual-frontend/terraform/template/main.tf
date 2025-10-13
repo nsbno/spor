@@ -88,21 +88,9 @@ module "ssr_task" {
   ]
 }
 
-##############################
-#                            #
-# Static files               #
-#                            #
-############################## 
-
-module "s3_website_bucket" {
-  source = "github.com/nsbno/terraform-aws-ssr-site//modules/s3_static_files?ref=0.7.0"
-
-  service_name               = local.application_name
-}
-
 ################################
 #                              #
-# Cloudfront                   #
+# Cloudfront + S3 static files #
 #                              # 
 ################################
 
@@ -111,7 +99,7 @@ data "aws_route53_zone" "parent" {
 }
 
 module "cloudfront_ssr" {
-  source = "github.com/nsbno/terraform-aws-ssr-site?ref=0.7.0"
+  source = "github.com/nsbno/terraform-aws-ssr-site?ref=1.0.0"
 
   providers = {
     aws           = aws
@@ -126,8 +114,6 @@ module "cloudfront_ssr" {
   alb_domain_name         = local.alb_domain_name
 
   route53_hosted_zone_id = data.aws_route53_zone.parent.zone_id
-
-  s3_bucket_id = module.s3_website_bucket.bucket_id
 }
 
 ################################

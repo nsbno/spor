@@ -10,7 +10,7 @@ jobs:
     uses: nsbno/platform-actions/.github/workflows/package.docker.yml@main
     secrets: inherit
     with:
-      repo-name: spor
+      repo-name: designmanual
       artifact-name: ${{ needs.build.outputs.artifact-name }}
       artifact-path: ${{ needs.build.outputs.artifact-path }}
       working-directory: ./apps/designmanual-frontend

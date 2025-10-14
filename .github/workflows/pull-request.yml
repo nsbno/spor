@@ -10,15 +10,14 @@ jobs:
     secrets: inherit
     with:
       repo-name: designmanual
-      working-directory: ./apps/designmanual-frontend
+      dockerfile: ./apps/designmanual-frontend/Dockerfile
 
   terraform-plan:
     if: ${{ github.event.action != 'closed' }}
     uses: nsbno/platform-actions/.github/workflows/helpers.terraform-plan.yml@main
     secrets: inherit
     with:
-      repo-name: designmanual
-      dockerfile: ./apps/designmanual-frontend/Dockerfile
+      working-directory: ./apps/designmanual-frontend
 
   preview-update:
     if: ${{ github.event.action == 'synchronize' }}

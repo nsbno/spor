@@ -26,7 +26,6 @@ jobs:
     uses: nsbno/platform-actions/.github/workflows/deployment.preview.yml@main
     with:
       service-name: digitalekanaler-designmanual
-      working-directory: ./apps/designmanual-frontend
 
   preview-cleanup:
     if: ${{ github.event.action == 'closed' }}

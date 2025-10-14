@@ -17,7 +17,7 @@ type Matches = [{
   module: typeof import("../route.js");
 }];
 
-type Annotations = GetAnnotations<Info & { module: Module, matches: Matches }>;
+type Annotations = GetAnnotations<Info & { module: Module, matches: Matches }, false>;
 
 export namespace Route {
   // links

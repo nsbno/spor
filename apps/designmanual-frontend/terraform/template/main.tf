@@ -46,12 +46,12 @@ data "aws_subnets" "private" {
 }
 
 data "aws_ecr_repository" "this" {
-  name        = local.application_name
+  name        = "designmanual"
   registry_id = "637423315721" # service account for digital-common-services
 }
 
 module "ssr_task" {
-  source             = "github.com/nsbno/terraform-aws-ecs-service?ref=3.0.0-rc1"
+  source             = "github.com/nsbno/terraform-aws-ecs-service?ref=3.0.0-rc9"
   service_name       = local.application_name
   vpc_id             = data.aws_vpc.shared.id
   private_subnet_ids = data.aws_subnets.private.ids
@@ -88,21 +88,9 @@ module "ssr_task" {
   ]
 }
 
-##############################
-#                            #
-# Static files               #
-#                            #
-############################## 
-
-module "s3_website_bucket" {
-  source = "github.com/nsbno/terraform-aws-ssr-site//modules/s3_static_files?ref=0.7.0"
-
-  service_name               = local.application_name
-}
-
 ################################
 #                              #
-# Cloudfront                   #
+# Cloudfront + S3 static files #
 #                              # 
 ################################
 
@@ -111,7 +99,7 @@ data "aws_route53_zone" "parent" {
 }
 
 module "cloudfront_ssr" {
-  source = "github.com/nsbno/terraform-aws-ssr-site?ref=0.7.0"
+  source = "github.com/nsbno/terraform-aws-ssr-site?ref=1.0.0"
 
   providers = {
     aws           = aws
@@ -126,8 +114,6 @@ module "cloudfront_ssr" {
   alb_domain_name         = local.alb_domain_name
 
   route53_hosted_zone_id = data.aws_route53_zone.parent.zone_id
-
-  s3_bucket_id = module.s3_website_bucket.bucket_id
 }
 
 ################################
@@ -138,7 +124,7 @@ module "cloudfront_ssr" {
 
 module "preview_url" {
   count  = var.environment == "test" ? 1 : 0
-  source = "github.com/nsbno/terraform-aws-preview-url?ref=0.3.0"
+  source = "github.com/nsbno/terraform-aws-preview-url?ref=31c02b8"
 
   providers = {
     aws.us_east_1 = aws.us_east_1

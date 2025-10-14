@@ -4,7 +4,6 @@ on:
     types: [opened, synchronize, closed]
 
 jobs:
-
   package:
     if: ${{ github.event.action != 'closed' }}
     uses: nsbno/platform-actions/.github/workflows/package.docker.yml@main
@@ -13,17 +12,6 @@ jobs:
       repo-name: designmanual
       artifact-name: ${{ needs.build.outputs.artifact-name }}
       artifact-path: ${{ needs.build.outputs.artifact-path }}
-      working-directory: ./apps/designmanual-frontend
-
-  package-s3:
-    if: ${{ github.event.action != 'closed' }}
-    uses: nsbno/platform-actions/.github/workflows/package.s3-static-files.yml@main
-    needs:
-      - build
-    secrets: inherit
-    with:
-      artifact-name: ${{ needs.build.outputs.artifact-name }}
-      service-name: digitalekanaler-designmanual
       working-directory: ./apps/designmanual-frontend
 
   terraform-plan:

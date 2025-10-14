@@ -123,14 +123,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         return (
           <LoadingContent size={size} loadingText={loadingText}>
             <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
-              {content}
+              {content} hei hei
             </ButtonContent>
           </LoadingContent>
         );
 
       return (
         <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
-          {content}
+          {content} hei hei
         </ButtonContent>
       );
     };

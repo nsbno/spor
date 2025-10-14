@@ -4,7 +4,6 @@ name: "Deployment \U0001F680"
     branches:
       - master
       - main
-      - test-deployment
 
 jobs:
   terraform-changes:

@@ -112,7 +112,6 @@ module "cloudfront_ssr" {
   service_name            = local.application_name
   domain_name             = local.domain_name
   alb_domain_name         = local.alb_domain_name
-  additional_domain_names = [ var.environment == "prod" ? "design.vy.no" : "design.${var.environment}.vy.no" ]
 
   route53_hosted_zone_id = data.aws_route53_zone.parent.zone_id
 }

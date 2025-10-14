@@ -11,8 +11,6 @@ jobs:
     secrets: inherit
     with:
       repo-name: designmanual
-      artifact-name: ${{ needs.build.outputs.artifact-name }}
-      artifact-path: ${{ needs.build.outputs.artifact-path }}
       working-directory: ./apps/designmanual-frontend
 
   terraform-plan:
@@ -25,7 +23,6 @@ jobs:
   preview-update:
     if: ${{ github.event.action == 'synchronize' }}
     needs:
-      - build
       - package
     uses: nsbno/platform-actions/.github/workflows/deployment.preview.yml@main
     with:

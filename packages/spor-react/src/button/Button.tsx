@@ -130,7 +130,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
       return (
         <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
-          {content} 456
+          {content} 456 789
         </ButtonContent>
       );
     };

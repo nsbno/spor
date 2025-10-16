@@ -12,4 +12,8 @@ terraform {
 module "app" {
   source      = "../template"
   environment = "test"
+
+  environment_variables = {
+    VITE_ENVIRONMENT = "prod"
+  }
 }

@@ -2,8 +2,8 @@
 
 import { ButtonProps } from "@chakra-ui/react";
 import {
-  PortableText as SanityPortableText,
   PortableTextReactComponents,
+  PortableText as SanityPortableText,
 } from "@portabletext/react";
 import {
   CheckmarkFill30Icon,
@@ -68,6 +68,17 @@ const components: Partial<PortableTextReactComponents> = {
     },
   },
   block: {
+    h1: ({ children }) => (
+      <LinkableHeading
+        as="h1"
+        variant="lg"
+        fontWeight="bold"
+        marginTop={6}
+        marginBottom={2}
+      >
+        {children}
+      </LinkableHeading>
+    ),
     h2: ({ children }) => (
       <LinkableHeading
         as="h2"
@@ -152,7 +163,9 @@ const components: Partial<PortableTextReactComponents> = {
     imageAndTextList: ImageAndTextListSerializer,
     imageCardList: ImageCardListSerializer,
     cards: CardSerializer,
-    linkButton: LinkButtonSerializer,
+    linkButton: ({ value }) => (
+      <Flex width={["100%"]}>{LinkButtonSerializer({ value })}</Flex>
+    ),
     nonClickableBoxList: NonClickableBoxListSerializer,
     accordion: AccordionSerializer,
     fileList: FileListSerializer,
@@ -164,7 +177,11 @@ const components: Partial<PortableTextReactComponents> = {
         : ({ as: "a", href: value.url } as ButtonProps);
       return (
         <Box marginTop={3}>
-          <Button variant={value.variant} size={value.size} {...linkProps}>
+          <Button
+            variant={value.variant ?? "primary"}
+            size={value.size}
+            {...linkProps}
+          >
             {value.text}
           </Button>
         </Box>

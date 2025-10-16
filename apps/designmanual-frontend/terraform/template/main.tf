@@ -2,6 +2,7 @@ locals {
   application_name = "digitalekanaler-designmanual"
   base_domain      = var.environment == "prod" ? "vylabs.io" : "${var.environment}.vylabs.io"
   domain_name      = "designmanual.${local.base_domain}"
+  design_domain    = var.environment == "prod" ? "design.vy.no" : "${var.environment}.design.vy.no"
 
   alb_domain_name       = "lb.${local.base_domain}"
   alb_listener_arn      = nonsensitive(data.aws_ssm_parameter.alb_listener_arn.value)
@@ -98,6 +99,10 @@ data "aws_route53_zone" "parent" {
   name = local.base_domain
 }
 
+resource "aws_route53_zone" "design_vy_no" {
+  name = "design.vy.no"
+}
+
 module "cloudfront_ssr" {
   source = "github.com/nsbno/terraform-aws-ssr-site?ref=1.0.0"
 
@@ -114,6 +119,14 @@ module "cloudfront_ssr" {
   alb_domain_name         = local.alb_domain_name
 
   route53_hosted_zone_id = data.aws_route53_zone.parent.zone_id
+}
+
+resource "aws_route53_record" "design_vy_no" {
+  zone_id = aws_route53_zone.design_vy_no.zone_id
+  name    = local.design_domain
+  type    = "CNAME"
+  ttl     = 300
+  records = [local.domain_name]
 }
 
 ################################

@@ -17,12 +17,4 @@ module "ecr" {
   ]
 }
 
-module "app" {
-  source      = "../template"
-  environment = "prod"
-
-  environment_variables = {
-    VITE_ENVIRONMENT = "prod"
-  }
-}
 

@@ -14,9 +14,15 @@ module "ecr" {
     local.test_account_id,
     local.prod_account_id,
     local.stage_account_id
-
-    environment_variables = {
-      VITE_ENVIRONMENT = "prod"
-    }
   ]
 }
+
+module "app" {
+  source      = "../template"
+  environment = "prod"
+
+  environment_variables = {
+    VITE_ENVIRONMENT = "prod"
+  }
+}
+

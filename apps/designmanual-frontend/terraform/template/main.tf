@@ -100,7 +100,7 @@ data "aws_route53_zone" "parent" {
 }
 
 resource "aws_route53_zone" "design_vy_no" {
-  name = "design.vy.no"
+  name = local.design_domain
 }
 
 module "cloudfront_ssr" {

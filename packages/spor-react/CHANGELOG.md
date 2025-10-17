@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.15.1
+
+### Patch Changes
+
+- 5eae150: Add default text color for Text component
+
 ## 12.15.0
 
 ### Minor Changes

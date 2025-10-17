@@ -16,3 +16,5 @@ module "ecr" {
     local.stage_account_id
   ]
 }
+
+

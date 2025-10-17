@@ -63,10 +63,11 @@ module "ssr_task" {
   deployment_configuration_strategy = var.environment != "prod" ? "ROLLING" : "BLUE_GREEN"
 
   application_container = {
-    name           = "${local.application_name}-main"
-    repository_url = data.aws_ecr_repository.this.repository_url
-    protocol       = "HTTP"
-    port           = 3000
+    name                 = "${local.application_name}-main"
+    repository_url       = data.aws_ecr_repository.this.repository_url
+    protocol             = "HTTP"
+    port                 = 3000
+    environment_variables = var.environment_variables
   }
 
   lb_health_check = {

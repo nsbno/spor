@@ -8,4 +8,8 @@ variable "environment" {
   }
 }
 
-
+variable "environment_variables" {
+  type        = map(string)
+  description = "Environment variables to pass to the application container"
+  default     = {}
+}

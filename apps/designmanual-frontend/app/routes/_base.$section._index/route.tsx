@@ -18,9 +18,10 @@ import {
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
 
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   invariant(params.section, "Expected params.section");
-  const query = groq`*[_type == "section" && slug.current == $section][0] {
+  const draftId = new URL(request.url).searchParams.get("preview") ?? null;
+  const query = groq`*[_id == $draftId || (_type == "section" && slug.current == $section)][0] {
     _id,
     title,
     "slug": slug.current,
@@ -43,9 +44,14 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     }
   }`;
 
-  const data = await getClient().fetch(query, {
-    section: params.section,
-  });
+  const data = await getClient().fetch(
+    query,
+    {
+      section: params.section,
+      draftId,
+    },
+    { perspective: draftId ? "previewDrafts" : "published" },
+  );
 
   if (!data) {
     return { section: params.section, data: null };

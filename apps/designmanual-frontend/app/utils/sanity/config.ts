@@ -1,4 +1,5 @@
 const projectId = import.meta.env.VITE_SANITY_TOKEN || "r4xpzxak";
+const sanitySecret = import.meta.env.VITE_SANITY_SECRET || "";
 
 const environment = import.meta.env.VITE_ENVIRONMENT || "test";
 
@@ -9,4 +10,6 @@ export const sanityConfig = {
   projectId,
   dataset,
   useCdn: true,
+  perspective: "published",
+  token: sanitySecret,
 };

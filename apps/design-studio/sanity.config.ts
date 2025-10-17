@@ -1,6 +1,7 @@
 import { codeInput } from "@sanity/code-input";
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
+import { presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
 import { VyLogoProd } from "./components/VyLogoProd";
 import { VyLogoTest } from "./components/VyLogoTest";
@@ -9,6 +10,23 @@ import { siteMenuStructure } from "./structure.js";
 
 const projectId = "r4xpzxak";
 export const API_VERSION = "2024-07-25";
+
+const locationsResolver = {
+  document: {
+    actions: (prev: any[], { schemaType }: any) => {
+      if (schemaType === "page") {
+        return prev.concat((documentId: string) => [
+          {
+            label: "View on site",
+            intent: "preview",
+            params: { slug: `identitet/${documentId}` }, // Dynamic route param
+          },
+        ]);
+      }
+      return prev;
+    },
+  },
+};
 
 export default defineConfig([
   {
@@ -19,7 +37,15 @@ export default defineConfig([
     dataset: "test",
     basePath: "/test",
 
-    plugins: [structureTool(siteMenuStructure), visionTool(), codeInput()],
+    plugins: [
+      structureTool(siteMenuStructure),
+      presentationTool({
+        ...locationsResolver,
+        previewUrl: "http://localhost:3008/identitet/", // Your local dev site URL
+      }),
+      visionTool(),
+      codeInput(),
+    ],
 
     studio: {
       components: {

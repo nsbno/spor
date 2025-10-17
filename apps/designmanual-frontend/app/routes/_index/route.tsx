@@ -69,7 +69,7 @@ export default function Index() {
       <LeftSidebar />
 
       <Box
-        maxWidth={[null, null, null, "container.lg", "container.xl"]}
+        width={[null, null, null, "container.lg", "container.xl"]}
         marginX="auto"
       >
         <PortableText value={initialData?.page.content} />

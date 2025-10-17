@@ -25,20 +25,17 @@ export const useLinkProps = (
     return { isExternal: false, linkProps: { as: "a" } };
   }
 
-  if (href.startsWith("https://design.vydev.io")) {
+  if (href.startsWith("https://design.vy.no")) {
     return {
       isExternal: false,
       linkProps: {
         as: "a",
-        href: href.replace("https://design.vydev.io", ""),
+        href: href.replace("https://design.vy.no", ""),
       },
     };
   }
 
-  let url = href?.replace(
-    new RegExp(`^https?://(?:design\\.)?vydev\\.io/`),
-    "/",
-  );
+  let url = href?.replace(new RegExp(`^https?://(?:design\\.)?vy\\.no/`), "/");
   url = fileUrlBuilder + url; // define this when we have a deployed server
   if (anchor) {
     url = `${url}#${anchor}`;

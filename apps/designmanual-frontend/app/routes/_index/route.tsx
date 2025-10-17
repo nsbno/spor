@@ -1,6 +1,6 @@
 import { groq } from "@sanity/groq-store";
-import { Flex } from "@vygruppen/spor-react";
-import { LoaderFunctionArgs, useLoaderData } from "react-router";
+import { Box, Flex } from "@vygruppen/spor-react";
+import { LoaderFunctionArgs, redirect, useLoaderData } from "react-router";
 
 import {
   resolveAccordionGroq,
@@ -16,11 +16,14 @@ import {
 } from "~/features/cms/sanity/query";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
+import { isProd } from "~/utils/sanity/config";
 import { isValidPreviewRequest } from "~/utils/sanity/utils";
 
 import { LeftSidebar } from "../_base/left-sidebar/LeftSidebar";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
+  if (isProd()) return redirect("/spor");
+
   const isPreview = isValidPreviewRequest(request);
   const query = groq`*[_type == "section" && default == true] {
     _id,
@@ -58,21 +61,19 @@ export default function Index() {
 
   return (
     <Flex
-      flex={1}
-      as="main"
       id="content"
-      maxWidth={[null, null, null, "container.lg", "container.xl"]}
-      width={["100%", null, "container.lg", "container.xl"]}
-      marginX="auto"
-      marginTop={3}
-      paddingX={[3, null, 6, 4, 8]}
-      marginBottom={["3.75rem", null, "5rem", "5rem"]}
-      gap={3}
+      justifyContent="space-between"
+      gap={8}
+      marginX={{ base: "4", md: "8" }}
     >
       <LeftSidebar />
-      <Flex flexDirection="column" flexGrow={1} padding={1}>
+
+      <Box
+        maxWidth={[null, null, null, "container.lg", "container.xl"]}
+        marginX="auto"
+      >
         <PortableText value={initialData?.page.content} />
-      </Flex>
+      </Box>
     </Flex>
   );
 }

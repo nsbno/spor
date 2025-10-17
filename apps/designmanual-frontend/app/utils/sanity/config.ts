@@ -1,6 +1,7 @@
 const projectId = import.meta.env.VITE_SANITY_TOKEN || "r4xpzxak";
 
-const environment = import.meta.env.VITE_ENVIRONMENT || "prod"; // Midlertidig, bør endres når vi har staging og dev miljøer
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const environment = import.meta.env.VITE_ENVIRONMENT; // Funker ikke atm
 
 export const checkIsProd = (url = ""): boolean => {
   // Check if URL does NOT contain "test" to determine if prod, should also check for localhost when prod dataset is copied to test
@@ -8,11 +9,10 @@ export const checkIsProd = (url = ""): boolean => {
   const urlToCheck =
     url || (globalThis.window === undefined ? "" : globalThis.location.href);
 
-  const urlDoesNotContainTest =
-    globalThis.window === undefined || !urlToCheck.includes("test");
-
-  return urlDoesNotContainTest && environment === "prod";
+  return !urlToCheck.includes("test");
 };
+
+console.log(checkIsProd());
 
 const dataset = checkIsProd() ? "production" : "test";
 

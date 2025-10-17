@@ -19,8 +19,10 @@ import {
 import { useEffect, useState } from "react";
 import { Link, useLocation, useRouteLoaderData } from "react-router";
 
+import { ColorModeSwitcher } from "~/features/color-mode-switcher";
 import { loader } from "~/root";
 import { getIcon } from "~/utils/getIcon";
+import { isProd } from "~/utils/sanity/config";
 
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
 import { SearchDocs } from "./SearchDocs";
@@ -51,7 +53,14 @@ export const SiteHeader = () => {
   const routeData = useRouteLoaderData<typeof loader>("root");
   const slug = useLocation().pathname.slice(1);
   const currentSection = slug?.split("/")[0] || "";
-  const sections = routeData?.initialSanityData?.siteSettings?.topMenu || [];
+  const allSections = routeData?.initialSanityData?.siteSettings?.topMenu || [];
+
+  const sections = allSections.filter((s) => {
+    if (isProd() && s.slug.current.includes("identitet")) {
+      return false;
+    }
+    return true;
+  });
 
   return (
     <Flex
@@ -60,7 +69,7 @@ export const SiteHeader = () => {
       alignItems="center"
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
-      backgroundColor={"surface.color.neutral"}
+      backgroundColor={"bg"}
       gap="3"
       width={"100vw"}
       overflow={"hidden"}
@@ -82,10 +91,11 @@ export const SiteHeader = () => {
         </Link>
 
         <Box as="nav" flexGrow={1} justifyContent="flex-end">
-          <Flex as="ul" gap="2" width={"auto"} justifySelf={"flex-end"}>
+          <Flex as="ul" gap="4" width={"auto"} justifySelf={"flex-end"}>
+            <ColorModeSwitcher />
             {sections.map((section) => {
               return (
-                <Box as="li" key={section.title} paddingRight={3}>
+                <Box as="li" key={section.title}>
                   <Button
                     asChild
                     variant={

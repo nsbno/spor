@@ -16,13 +16,12 @@ export const Footer = () => {
   const footerItems =
     routeData?.initialSanityData?.siteSettings?.footerItems || [];
 
-  const theme = useColorModeValue("light", "dark");
-
   return (
     <Flex
       as="footer"
       justifyContent="space-between"
-      backgroundColor={"surface.tertiary"}
+      backgroundColor={"surface.secondary"}
+      className="dark"
       alignItems="center"
       gap="4"
       marginTop={3}
@@ -39,7 +38,6 @@ export const Footer = () => {
         <Link to="/" aria-label="Go to the front page">
           <VyLogo
             aria-hidden="true"
-            className={theme === "dark" ? "light" : "dark"}
             width="auto"
             height={["30px", "36px", null, "42px"]}
           />
@@ -60,9 +58,6 @@ export const Footer = () => {
           justifyContent={"center"}
           alignItems={["start", null, "center"]}
         >
-          <Text color="text.inverted" fontSize="xs">
-            Har du spørsmål eller kommentar angående designmanualen?
-          </Text>
           <Flex
             gap={["4", null, "8"]}
             flexDirection={["column", null, "row"]}
@@ -76,15 +71,14 @@ export const Footer = () => {
               >
                 <Text
                   as="h6"
-                  color={"text.inverted"}
                   textAlign={["left", null, "center"]}
                   fontWeight={"bold"}
-                  fontSize="xs"
+                  variant="xs"
                 >
                   {item.title}
                 </Text>
+
                 <Box
-                  color={"text.inverted"}
                   textAlign={["left", null, "center"]}
                   fontSize="xs"
                   css={{

@@ -1,5 +1,11 @@
-import { Flex, Stack } from "@chakra-ui/react";
-import { type LoaderFunctionArgs, Outlet } from "react-router";
+import { Box, Flex } from "@vygruppen/spor-react";
+import { useEffect } from "react";
+import {
+  type LoaderFunctionArgs,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from "react-router";
 
 import { LeftSidebar } from "~/routes/_base/left-sidebar/LeftSidebar";
 import { getClient } from "~/utils/sanity/client";
@@ -14,24 +20,30 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
 };
 
 export default function BaseLayout() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      navigate("/spor", { replace: true });
+    }
+  }, [location.pathname, navigate]);
+
   return (
     <Flex
-      flex={1}
       id="content"
-      maxWidth={[null, null, null, "container.lg", "container.xl"]}
-      width={["100%", null, "container.lg", "container.xl"]}
-      marginX="auto"
-      marginTop={4}
-      paddingX={[3, null, 6, 4, 8]}
-      marginBottom={["3.75rem", null, "5rem", "5rem"]}
-      alignItems={"flex-start"}
-      gap={6}
+      justifyContent="space-between"
+      gap={8}
+      marginX={{ base: "4", md: "8" }}
     >
       <LeftSidebar />
 
-      <Stack flexGrow={1} overflow={"hidden"} padding={1}>
+      <Box
+        maxWidth={[null, null, null, "container.lg", "container.xl"]}
+        marginX="auto"
+      >
         <Outlet />
-      </Stack>
+      </Box>
     </Flex>
   );
 }

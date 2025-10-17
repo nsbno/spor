@@ -4,7 +4,6 @@ on:
     types: [opened, synchronize, closed]
 
 jobs:
-
   package:
     if: ${{ github.event.action != 'closed' }}
     uses: nsbno/platform-actions/.github/workflows/package.docker.yml@main

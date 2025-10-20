@@ -112,7 +112,7 @@ resource "aws_route53_zone" "this" {
 resource "aws_route53_record" "stage_ns" {
   count   = var.environment == "prod" ? 1 : 0
   zone_id = aws_route53_zone.this.zone_id
-  name    = "stage"
+  name    = "stage.design.vy.no"
   type    = "NS"
   ttl     = 3600
   records = ["ns-733.awsdns-27.net", "ns-160.awsdns-20.com", "ns-1704.awsdns-21.co.uk", "ns-1366.awsdns-42.org"]
@@ -121,7 +121,7 @@ resource "aws_route53_record" "stage_ns" {
 resource "aws_route53_record" "test_ns" {
   count   = var.environment == "prod" ? 1 : 0
   zone_id = aws_route53_zone.this.zone_id
-  name    = "test"
+  name    = "test.design.vy.no"
   type    = "NS"
   ttl     = 3600
   records = ["ns-895.awsdns-47.net", "ns-484.awsdns-60.com", "ns-1668.awsdns-16.co.uk", "ns-1352.awsdns-41.org"]

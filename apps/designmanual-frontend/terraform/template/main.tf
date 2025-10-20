@@ -81,7 +81,7 @@ module "ssr_task" {
       security_group_id = local.alb_security_group_id
       conditions = [
         {
-          host_header = [local.domain_name]
+          host_header = [local.domain_name, aws_route53_zone.this.name]
         }
       ]
     }
@@ -140,6 +140,7 @@ module "cloudfront_ssr" {
 
   service_name            = local.application_name
   domain_name             = local.domain_name
+  additional_domain_names = [aws_route53_zone.this.name]
   alb_domain_name         = local.alb_domain_name
 
   route53_hosted_zone_id = data.aws_route53_zone.parent.zone_id

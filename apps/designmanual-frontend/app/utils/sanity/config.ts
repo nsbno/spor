@@ -20,6 +20,9 @@ export const sanityConfig = {
   projectId,
   dataset,
   useCdn: true,
-  perspective: "published",
   token: sanitySecret,
+  stega: {
+    enabled: true,
+    studioUrl: "/design-studio",
+  },
 };

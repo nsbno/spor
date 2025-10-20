@@ -1,7 +1,7 @@
 import { codeInput } from "@sanity/code-input";
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
-import { presentationTool } from "sanity/presentation";
+import { defineLocations, presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
 import { VyLogoProd } from "./components/VyLogoProd";
 import { VyLogoTest } from "./components/VyLogoTest";
@@ -28,6 +28,15 @@ const locationsResolver = {
   },
 };
 
+const locations = {
+  page: defineLocations({
+    select: { title: "title", slug: "path.current" },
+    resolve: (doc) => ({
+      locations: [{ title: doc?.title, href: `/${doc?.slug}` }],
+    }),
+  }),
+};
+
 export default defineConfig([
   {
     name: "default",
@@ -40,8 +49,12 @@ export default defineConfig([
     plugins: [
       structureTool(siteMenuStructure),
       presentationTool({
-        ...locationsResolver,
-        previewUrl: "http://localhost:3008/identitet/", // Your local dev site URL
+        resolve: { locations },
+        previewUrl: {
+          initial: "http://localhost:3008", // Dev URL; use your prod domain
+          origin: "http://localhost:3008", // Dev URL; use your prod domain
+        },
+        allowOrigins: ["http://localhost:*"],
       }),
       visionTool(),
       codeInput(),

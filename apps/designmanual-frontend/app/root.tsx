@@ -20,6 +20,7 @@ import {
   useRouteError,
 } from "react-router";
 
+import { SanityVisualEditing } from "./features/SanityVisualEditing";
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";
 import { PageNotFound } from "./root/PageNotFound";
@@ -216,6 +217,7 @@ export default function App() {
 
   return (
     <Document brand={loaderData.brand as Brand}>
+      <SanityVisualEditing />
       <RootLayout>
         <Outlet />
       </RootLayout>

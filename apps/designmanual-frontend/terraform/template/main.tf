@@ -98,6 +98,16 @@ data "aws_route53_zone" "parent" {
   name = local.base_domain
 }
 
+# Hosted zone for design system domains
+resource "aws_route53_zone" "this" {
+  name = var.environment == "prod" ? "design.vy.no" : "${var.environment}.design.vy.no"
+
+  tags = {
+    Environment = var.environment
+    Application = local.application_name
+  }
+}
+
 module "cloudfront_ssr" {
   source = "github.com/nsbno/terraform-aws-ssr-site?ref=1.0.0"
 

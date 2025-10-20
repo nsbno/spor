@@ -2,7 +2,6 @@ locals {
   application_name = "digitalekanaler-designmanual"
   base_domain      = var.environment == "prod" ? "vylabs.io" : "${var.environment}.vylabs.io"
   domain_name      = "designmanual.${local.base_domain}"
-  design_vy_no_domain = var.environment == "prod" ? "design.vy.no" : "${var.environment}.design.vy.no"
 
   alb_domain_name       = "lb.${local.base_domain}"
   alb_listener_arn      = nonsensitive(data.aws_ssm_parameter.alb_listener_arn.value)

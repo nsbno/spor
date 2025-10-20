@@ -100,11 +100,10 @@ data "aws_route53_zone" "parent" {
 }
 
 # Hosted zone for design system domains
-resource "aws_route53_zone" "design" {
-  name = local.design_vy_no_domain
+resource "aws_route53_zone" "this" {
+  name = var.environment == "prod" ? "design.vy.no" : "${var.environment}.design.vy.no"
 
   tags = {
-    Name        = local.design_vy_no_domain
     Environment = var.environment
     Application = local.application_name
   }

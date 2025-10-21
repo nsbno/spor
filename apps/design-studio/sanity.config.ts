@@ -1,7 +1,7 @@
 import { codeInput } from "@sanity/code-input";
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
-import { defineLocations, presentationTool } from "sanity/presentation";
+import { presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
 import { VyLogoProd } from "./components/VyLogoProd";
 import { VyLogoTest } from "./components/VyLogoTest";
@@ -28,7 +28,7 @@ const locationsResolver = {
   },
 };
 
-const locations = {
+/* const locations = {
   page: defineLocations({
     select: { title: "title", slug: "path.current" },
     resolve: (doc) => ({
@@ -36,6 +36,20 @@ const locations = {
     }),
   }),
 };
+
+const pathresolver = (prev, context) => {
+  const { document } = context;
+
+  // Map document types to frontend routes
+  if (document?._type === "page") {
+    const slug = document.path?.current;
+    if (slug) {
+      return `/${slug}`;
+    }
+  }
+  // Fallback for unmapped types
+  return prev || "/";
+}; */
 
 export default defineConfig([
   {
@@ -49,10 +63,14 @@ export default defineConfig([
     plugins: [
       structureTool(siteMenuStructure),
       presentationTool({
-        resolve: { locations },
         previewUrl: {
-          initial: "http://localhost:3008", // Dev URL; use your prod domain
-          origin: "http://localhost:3008", // Dev URL; use your prod domain
+          initial: "http://localhost:3008",
+          origin: "http://localhost:3008",
+          preview: "/",
+          previewMode: {
+            enable: "/api/preview-mode/enable",
+            disable: "/api/preview-mode/disable",
+          },
         },
         allowOrigins: ["http://localhost:*"],
       }),

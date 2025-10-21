@@ -23,6 +23,6 @@ export const sanityConfig = {
   token: sanitySecret,
   stega: {
     enabled: true,
-    studioUrl: "/design-studio",
+    studioUrl: "./design-studio",
   },
 };

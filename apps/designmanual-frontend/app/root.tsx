@@ -116,6 +116,14 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
 
   const domain = request.headers.get("host") ?? "";
 
+  const isPreview = request.url.includes("sanity-preview-perspective=drafts");
+
+  const ENV = {
+    PUBLIC_SANITY_PROJECT_ID: process.env.VITE_SANITY_TOKEN,
+    PUBLIC_SANITY_DATASET: process.env.VITE_ENVIRONMENT,
+    PUBLIC_SANITY_STUDIO_URL: process.env.VITE_SANITY_STUDIO_URL,
+  };
+
   return {
     initialSanityData,
     cookies: request.headers.get("cookie") ?? "",
@@ -123,6 +131,8 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     isMac,
     domain,
     slug,
+    isPreview,
+    ENV,
   };
 };
 
@@ -217,7 +227,7 @@ export default function App() {
 
   return (
     <Document brand={loaderData.brand as Brand}>
-      <SanityVisualEditing />
+      {loaderData.isPreview && <SanityVisualEditing />}
       <RootLayout>
         <Outlet />
       </RootLayout>

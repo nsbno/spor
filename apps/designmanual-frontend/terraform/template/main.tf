@@ -1,9 +1,9 @@
 locals {
   application_name = "digitalekanaler-designmanual"
-  base_domain      = var.environment == "prod" ? "vylabs.io" : "${var.environment}.vylabs.io"
-  domain_name      = "designmanual.${local.base_domain}"
+  base_domain      = var.environment == "prod" ? "vy.no" : "${var.environment}.vy.no"
+  domain_name      = var.environment == "prod" ? "design.vy.no" : "${var.environment}.design.vy.no"
 
-  alb_domain_name       = "lb.${local.base_domain}"
+  alb_domain_name       = var.environment == "prod" ? "lb.vylabs.io" : "lb.${var.environment}.vylabs.io"
   alb_listener_arn      = nonsensitive(data.aws_ssm_parameter.alb_listener_arn.value)
   alb_test_listener_arn = nonsensitive(data.aws_ssm_parameter.alb_test_listener_arn.value)
   alb_security_group_id = nonsensitive(data.aws_ssm_parameter.alb_security_group_id.value)
@@ -94,10 +94,6 @@ module "ssr_task" {
 #                              # 
 ################################
 
-data "aws_route53_zone" "parent" {
-  name = local.base_domain
-}
-
 # Hosted zone for design system domains
 resource "aws_route53_zone" "this" {
   name = var.environment == "prod" ? "design.vy.no" : "${var.environment}.design.vy.no"
@@ -143,7 +139,7 @@ module "cloudfront_ssr" {
   additional_domain_names = [aws_route53_zone.this.name]
   alb_domain_name         = local.alb_domain_name
 
-  route53_hosted_zone_id = data.aws_route53_zone.parent.zone_id
+  route53_hosted_zone_id = aws_route53_zone.this.zone_id
 }
 
 ################################

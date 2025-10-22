@@ -39,7 +39,7 @@ export default function BaseLayout() {
       <LeftSidebar />
 
       <Box
-        maxWidth={[null, null, null, "container.lg", "container.xl"]}
+        width={[null, null, null, "container.lg", "container.xl"]}
         marginX="auto"
       >
         <Outlet />

@@ -7,12 +7,12 @@ import { getClient } from "~/utils/sanity/client";
 import { commitSession, getSession } from "~/utils/sanity/preview";
 
 export const loader = async ({ request }: { request: Request }) => {
-  if (!process.env.VITE_SANITY_SECRET) {
+  if (!import.meta.env.VITE_SANITY_SECRET) {
     throw new Response("Preview mode missing token", { status: 401 });
   }
 
   const clientWithToken = getClient().withConfig({
-    token: process.env.VITE_SANITY_SECRET,
+    token: import.meta.env.VITE_SANITY_SECRET,
   });
 
   const { isValid, redirectTo = "/" } = await validatePreviewUrl(

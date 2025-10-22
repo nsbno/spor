@@ -1,7 +1,11 @@
 import { codeInput } from "@sanity/code-input";
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
-import { presentationTool } from "sanity/presentation";
+import {
+  PresentationPluginOptions,
+  defineLocations,
+  presentationTool,
+} from "sanity/presentation";
 import { structureTool } from "sanity/structure";
 import { VyLogoProd } from "./components/VyLogoProd";
 import { VyLogoTest } from "./components/VyLogoTest";
@@ -11,45 +15,26 @@ import { siteMenuStructure } from "./structure.js";
 const projectId = "r4xpzxak";
 export const API_VERSION = "2024-07-25";
 
-const locationsResolver = {
-  document: {
-    actions: (prev: any[], { schemaType }: any) => {
-      if (schemaType === "page") {
-        return prev.concat((documentId: string) => [
+const resolve: PresentationPluginOptions["resolve"] = {
+  locations: {
+    // Add more locations for other post types
+    page: defineLocations({
+      select: {
+        title: "title",
+        slug: "path.current",
+      },
+      resolve: (doc) => ({
+        locations: [
           {
-            label: "View on site",
-            intent: "preview",
-            params: { slug: `identitet/${documentId}` }, // Dynamic route param
+            title: doc?.title || "Untitled",
+            href: `/${doc?.slug}`,
           },
-        ]);
-      }
-      return prev;
-    },
+          { title: "Home", href: `/` },
+        ],
+      }),
+    }),
   },
 };
-
-/* const locations = {
-  page: defineLocations({
-    select: { title: "title", slug: "path.current" },
-    resolve: (doc) => ({
-      locations: [{ title: doc?.title, href: `/${doc?.slug}` }],
-    }),
-  }),
-};
-
-const pathresolver = (prev, context) => {
-  const { document } = context;
-
-  // Map document types to frontend routes
-  if (document?._type === "page") {
-    const slug = document.path?.current;
-    if (slug) {
-      return `/${slug}`;
-    }
-  }
-  // Fallback for unmapped types
-  return prev || "/";
-}; */
 
 export default defineConfig([
   {
@@ -63,9 +48,10 @@ export default defineConfig([
     plugins: [
       structureTool(siteMenuStructure),
       presentationTool({
+        resolve,
         previewUrl: {
-          initial: "http://localhost:3008",
-          origin: "http://localhost:3008",
+          initial: "http://localhost:3008/identitet",
+          origin: "http://localhost:3008/identitet",
           preview: "/",
           previewMode: {
             enable: "/api/preview-mode/enable",

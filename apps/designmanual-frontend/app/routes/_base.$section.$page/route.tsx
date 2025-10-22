@@ -1,4 +1,5 @@
 import { groq } from "@sanity/groq-store";
+import { useLiveQuery } from "@sanity/preview-kit";
 import { Flex } from "@vygruppen/spor-react";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
 import invariant from "tiny-invariant";
@@ -19,9 +20,11 @@ import {
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
 
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   invariant(params.section, "Expected params.section");
   invariant(params.page, "Expected params.page");
+  const draftId = new URL(request.url).searchParams.get("preview") ?? null;
+
   const query = groq`*[_type == "page" && slug.current == $page][0] {
     _id,
     title,
@@ -41,23 +44,42 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
       ${resolveFileListGroq()},
     }
   }`;
-  const data = await getClient().fetch(query, {
-    section: params.section,
-    page: params.page,
-  });
+  const data = await getClient().fetch(
+    query,
+    {
+      section: params.section,
+      draftId,
+    },
+    { perspective: draftId ? "previewDrafts" : "published" },
+  );
 
   if (!data) {
     return { section: params.section, data: null };
   }
-  return { section: params.section, data };
+  return { section: params.section, data, draftId, query };
 };
 
 export default function Index() {
-  const { data } = useLoaderData<typeof loader>();
+  const {
+    data: livedata,
+    section,
+    draftId,
+    query = "",
+  } = useLoaderData<typeof loader>();
+
+  const [data] = useLiveQuery(livedata, query, {
+    params: {
+      section,
+      draftId,
+    },
+    enabled: Boolean(draftId),
+  });
 
   if (!data) {
     return null;
   }
+
+  console.log("draftId", draftId);
 
   return (
     <Flex as="main" flex="1" flexDirection="column" gap={2}>

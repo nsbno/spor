@@ -1,4 +1,5 @@
 import { groq } from "@sanity/groq-store";
+import { useLiveQuery } from "@sanity/preview-kit";
 import { Box } from "@vygruppen/spor-react";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
 import invariant from "tiny-invariant";
@@ -21,6 +22,9 @@ import { getClient } from "~/utils/sanity/client";
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   invariant(params.section, "Expected params.section");
   const draftId = new URL(request.url).searchParams.get("preview") ?? null;
+  const draftMode =
+    new URL(request.url).searchParams.get("sanity-preview-perspective") ===
+    "draft";
   const query = groq`*[_id == $draftId || (_type == "section" && slug.current == $section)][0] {
     _id,
     title,
@@ -50,17 +54,33 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
       section: params.section,
       draftId,
     },
-    { perspective: draftId ? "previewDrafts" : "published" },
+    { perspective: draftMode ? "previewDrafts" : "published" },
   );
 
   if (!data) {
     return { section: params.section, data: null };
   }
-  return { section: params.section, data };
+  return { section: params.section, data, draftId, query, draftMode };
 };
 
 export default function Index() {
-  const { data } = useLoaderData<typeof loader>();
+  const {
+    data: livedata,
+    section,
+    draftId,
+    query = "",
+    draftMode,
+  } = useLoaderData<typeof loader>();
+
+  const [data] = useLiveQuery(livedata, query, {
+    params: {
+      section,
+      draftId,
+    },
+    enabled: draftMode,
+  });
+
+  console.log("previewData", data, draftMode);
 
   if (!data) {
     return null;

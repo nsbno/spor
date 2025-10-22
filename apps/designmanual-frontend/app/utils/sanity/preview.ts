@@ -1,6 +1,5 @@
 // app/sanity/preview.ts
 
-import type { FilteredResponseQueryOptions } from "@sanity/client";
 import { createCookieSessionStorage } from "react-router";
 
 const { getSession, commitSession, destroySession } =
@@ -9,12 +8,11 @@ const { getSession, commitSession, destroySession } =
       httpOnly: true,
       name: "__sanity_preview",
       path: "/",
-      sameSite: "none", //!import.meta.env.DEV ? "none" : "lax",
-      //secrets:  "default_secret" //[process.env.SANITY_COOKIE_SECRET || "default_secret"],
-      //secure: !import.meta.env.DEV,
+      secrets: ["default_secret"],
+      sameSite: "lax",
     },
   });
-
+/* 
 async function previewContext(
   headers: Headers,
 ): Promise<{ preview: boolean; options: FilteredResponseQueryOptions }> {
@@ -37,6 +35,6 @@ async function previewContext(
           stega: false,
         },
   };
-}
+} */
 
-export { commitSession, destroySession, getSession, previewContext };
+export { commitSession, destroySession, getSession };

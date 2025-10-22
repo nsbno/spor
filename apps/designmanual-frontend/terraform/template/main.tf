@@ -143,7 +143,7 @@ module "cloudfront_ssr" {
   additional_domain_names = [aws_route53_zone.this.name]
   alb_domain_name         = local.alb_domain_name
 
-  route53_hosted_zone_id = data.aws_route53_zone.parent.zone_id
+  route53_hosted_zone_id = aws_route53_zone.this.zone_id
 }
 
 ################################

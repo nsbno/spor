@@ -34,6 +34,7 @@ import {
   setBrandInCookie,
 } from "./utils/brand-cookie.server";
 import { getInitialSanityData } from "./utils/initialSanityData.server";
+import { previewContext } from "./utils/sanity/preview";
 import { urlBuilder } from "./utils/sanity/utils";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
@@ -118,6 +119,10 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
 
   const isPreview = request.url.includes("sanity-preview-perspective=drafts");
 
+  const { preview } = await previewContext(request.headers);
+
+  const readToken = import.meta.env.VITE_SANITY_SECRET;
+
   const ENV = {
     PUBLIC_SANITY_PROJECT_ID: process.env.VITE_SANITY_TOKEN,
     PUBLIC_SANITY_DATASET: process.env.VITE_ENVIRONMENT,
@@ -132,7 +137,9 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     domain,
     slug,
     isPreview,
+    preview,
     ENV,
+    readToken,
   };
 };
 
@@ -167,6 +174,8 @@ const Document = withEmotionCache(
   ({ children, brand, title }: DocumentProps, emotionCache) => {
     const serverStyleData = useContext(ServerStyleContext);
     const clientStyleData = useContext(ClientStyleContext);
+    const isPreview = useLoaderData<typeof loader>().isPreview;
+    const ENV = useLoaderData<typeof loader>().ENV;
 
     // Only executed on client.
     useEffect(() => {
@@ -216,6 +225,12 @@ const Document = withEmotionCache(
           </SporProvider>
           <ScrollRestoration />
           <Scripts />
+          {isPreview && <SanityVisualEditing />}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.ENV = ${JSON.stringify(ENV)}`,
+            }}
+          />
         </body>
       </html>
     );
@@ -227,7 +242,6 @@ export default function App() {
 
   return (
     <Document brand={loaderData.brand as Brand}>
-      {loaderData.isPreview && <SanityVisualEditing />}
       <RootLayout>
         <Outlet />
       </RootLayout>

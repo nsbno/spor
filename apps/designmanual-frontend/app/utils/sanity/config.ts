@@ -23,6 +23,6 @@ export const sanityConfig = {
   token: sanitySecret,
   stega: {
     enabled: true,
-    studioUrl: "./design-studio",
+    studioUrl: "http://localhost:4444", // env.VITE_PUBLIC_SANITY_STUDIO_URL || "http://localhost:4444",
   },
 };

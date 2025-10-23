@@ -1,5 +1,8 @@
 // app/sanity/preview.ts
 
+import crypto from "node:crypto";
+
+import type { FilteredResponseQueryOptions } from "@sanity/client";
 import { createCookieSessionStorage } from "react-router";
 
 const { getSession, commitSession, destroySession } =
@@ -8,19 +11,19 @@ const { getSession, commitSession, destroySession } =
       httpOnly: true,
       name: "__sanity_preview",
       path: "/",
-      secrets: ["default_secret"],
-      sameSite: "lax",
+      sameSite: import.meta.env.DEV ? "lax" : "none",
+      secrets: [crypto.randomBytes(16).toString("hex")],
+      secure: !import.meta.env.DEV,
     },
   });
-/* 
+
 async function previewContext(
   headers: Headers,
 ): Promise<{ preview: boolean; options: FilteredResponseQueryOptions }> {
   const previewSession = await getSession(headers.get("Cookie"));
 
   const preview =
-    //previewSession.get("projectId") === process.env.VITE_SANITY_TOKEN; // <--- Uncomment this line to enable project ID check
-    true;
+    previewSession.get("projectId") === process.env.PUBLIC_SANITY_PROJECT_ID;
 
   return {
     preview,
@@ -28,13 +31,13 @@ async function previewContext(
       ? {
           perspective: "previewDrafts",
           stega: true,
-          token: process.env.VITE_SANITY_SECRET,
+          token: process.env.SANITY_VIEWER_TOKEN,
         }
       : {
           perspective: "published",
           stega: false,
         },
   };
-} */
+}
 
-export { commitSession, destroySession, getSession };
+export { commitSession, destroySession, getSession, previewContext };

@@ -1,18 +1,12 @@
-// components/DisablePreviewMode.tsx
-import { useEffect } from "react";
-import { useSearchParams } from "react-router";
-
-import { getClient } from "~/utils/sanity/client";
+import { useEffect, useState } from "react";
 
 export function DisablePreviewMode() {
-  const [searchParams] = useSearchParams();
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const preview = searchParams.get("preview") === "true";
-    getClient().config({
-      perspective: preview ? "previewDrafts" : "published",
-    });
-  }, [searchParams]);
+    // eslint-disable-next-line unicorn/prefer-global-this
+    setShow(window === window.parent && !window.opener);
+  }, []);
 
-  return null;
+  return show && <a href="/api/preview-mode/disable">Disable Preview Mode</a>;
 }

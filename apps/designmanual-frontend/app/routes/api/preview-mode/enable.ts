@@ -1,12 +1,12 @@
-// app/routes/api/preview-mode/enable.ts
-
 import { validatePreviewUrl } from "@sanity/preview-url-secret";
 import { redirect } from "react-router";
 
 import { getClient } from "~/utils/sanity/client";
 import { commitSession, getSession } from "~/utils/sanity/preview";
 
-export const loader = async ({ request }: { request: Request }) => {
+import { Route } from "./+types/enable";
+
+export const loader = async ({ request }: Route.LoaderArgs) => {
   if (!import.meta.env.VITE_SANITY_SECRET) {
     throw new Response("Preview mode missing token", { status: 401 });
   }

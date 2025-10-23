@@ -24,7 +24,8 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const draftId = new URL(request.url).searchParams.get("preview") ?? null;
   const draftMode =
     new URL(request.url).searchParams.get("sanity-preview-perspective") ===
-    "draft";
+    "drafts";
+
   const query = groq`*[_id == $draftId || (_type == "section" && slug.current == $section)][0] {
     _id,
     title,
@@ -71,6 +72,8 @@ export default function Index() {
     query = "",
     draftMode,
   } = useLoaderData<typeof loader>();
+
+  console.log("draftMode", draftMode);
 
   const [data] = useLiveQuery(livedata, query, {
     params: {

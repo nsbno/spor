@@ -71,6 +71,10 @@ module "ssr_task" {
     repository_url = data.aws_ecr_repository.this.repository_url
     protocol       = "HTTP"
     port           = 3000
+
+    environment = {
+      TEST_ENV = var.sanity_dataset
+    }
   }
 
   lb_health_check = {

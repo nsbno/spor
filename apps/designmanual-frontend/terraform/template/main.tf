@@ -73,7 +73,7 @@ module "ssr_task" {
     port           = 3000
 
     environment = {
-      TEST_ENV = var.sanity_dataset
+      TEST_ENV = "test_env
     }
   }
 

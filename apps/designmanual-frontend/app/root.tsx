@@ -107,8 +107,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const initialSanityData = await getInitialSanityData();
   const brand = await getBrandFromCookie(request.headers.get("cookie") ?? "");
 
-  const url = new URL(request.url); // Create a URL object from the request URL
-  const isProd = process.env.APP_ENV === "prod";
+  const isProd = process.env.ENVIRONMENT === "prod";
 
   const isMac = /Mac|iPod|iPhone|iPad/.test(
     request.headers.get("user-agent") ?? "",
@@ -116,7 +115,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
 
   const slug = params.slug || "";
 
-  const envFromServer = process.env.APP_ENV;
+  const envFromServer = process.env.ENVIRONMENT;
 
   const domain = request.headers.get("host") ?? "";
 

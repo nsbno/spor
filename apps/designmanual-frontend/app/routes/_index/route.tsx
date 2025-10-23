@@ -21,9 +21,7 @@ import { isValidPreviewRequest } from "~/utils/sanity/utils";
 import { LeftSidebar } from "../_base/left-sidebar/LeftSidebar";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const url = new URL(request.url);
-
-  if (process.env.APP_ENV === "prod") return redirect("/spor");
+  if (process.env.ENVIRONMENT === "prod") return redirect("/spor");
 
   const isPreview = isValidPreviewRequest(request);
   const query = groq`*[_type == "section" && default == true] {

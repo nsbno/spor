@@ -8,7 +8,7 @@ const getCurrentUrl = (): string => {
   return hasLocation ? globalThis.location.href : "";
 };
 export const checkIsProd = (url = getCurrentUrl()) =>
-  url.includes("://test.design.vy.no");
+  url.includes("://design.vy.no");
 export const checkIsStage = (url = getCurrentUrl()) => url.includes("stage");
 
 const dataset = checkIsProd() || checkIsStage() ? "production" : "test";

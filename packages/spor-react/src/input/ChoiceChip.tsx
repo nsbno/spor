@@ -14,7 +14,7 @@ export type ChoiceChipProps = Omit<
 > & {
   icon?: CheckBoxIcon;
   onCheckedChange?: (checked: boolean) => void;
-  checked: boolean;
+  checked?: boolean;
 };
 
 /**

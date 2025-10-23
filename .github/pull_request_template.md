@@ -1,3 +1,4 @@
+<!-- filepath: /Users/asgeirhunshamar/Desktop/vy/spor/.github/pull_request_template.md -->
 <!---
 Thanks for creating a Pull Request! 🎉
 
@@ -5,6 +6,10 @@ Thanks for creating a Pull Request! 🎉
 📘 React component guide: https://spor.vy.no/guides/how-to-make-new-react-components
 📦 How to make a changeset: https://spor.vy.no/guides/how-to-make-new-react-components#creating-a-pr-and-publish-package
 💡 Preferably use Conventional Commits: https://www.conventionalcommits.org/en/v1.0.0/
+
+🚀 Deploy to environments:
+- Comment `.preview` to deploy to preview environment
+- Comment `.deploy test` to deploy to test environment
 
 This template serves as a guideline; feel free to remove sections that do not apply to your pull request.
 -->

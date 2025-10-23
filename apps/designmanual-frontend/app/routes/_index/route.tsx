@@ -16,7 +16,6 @@ import {
 } from "~/features/cms/sanity/query";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
-import { checkIsProd } from "~/utils/sanity/config";
 import { isValidPreviewRequest } from "~/utils/sanity/utils";
 
 import { LeftSidebar } from "../_base/left-sidebar/LeftSidebar";
@@ -24,7 +23,7 @@ import { LeftSidebar } from "../_base/left-sidebar/LeftSidebar";
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
 
-  if (checkIsProd(url.href)) return redirect("/spor");
+  if (process.env.APP_ENV === "prod") return redirect("/spor");
 
   const isPreview = isValidPreviewRequest(request);
   const query = groq`*[_type == "section" && default == true] {

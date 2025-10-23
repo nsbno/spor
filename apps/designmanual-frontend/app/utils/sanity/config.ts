@@ -1,17 +1,9 @@
 const projectId = import.meta.env.VITE_SANITY_TOKEN || "r4xpzxak";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const environment = import.meta.env.VITE_ENVIRONMENT; // Funker ikke atm
+const environment = process.env.APP_ENV;
 
-const getCurrentUrl = (): string => {
-  const hasLocation = typeof globalThis !== "undefined" && globalThis.location;
-  return hasLocation ? globalThis.location.href : "";
-};
-export const checkIsProd = (url = getCurrentUrl()) =>
-  url.includes("://design.vy.no");
-export const checkIsStage = (url = getCurrentUrl()) => url.includes("stage");
-
-const dataset = process.env.TEST_ENV ? "production" : "test";
+const dataset =
+  environment === "prod" || environment === "stage" ? "production" : "test";
 
 console.log(dataset);
 

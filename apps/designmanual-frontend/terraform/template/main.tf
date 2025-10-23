@@ -69,7 +69,7 @@ module "ssr_task" {
     port           = 3000
 
     environment = {
-      TEST_ENV = "test_env"
+      APP_ENV = var.environment
     }
   }
 

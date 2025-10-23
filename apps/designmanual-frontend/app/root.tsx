@@ -33,7 +33,6 @@ import {
   setBrandInCookie,
 } from "./utils/brand-cookie.server";
 import { getInitialSanityData } from "./utils/initialSanityData.server";
-import { checkIsProd } from "./utils/sanity/config";
 import { urlBuilder } from "./utils/sanity/utils";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
@@ -109,7 +108,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const brand = await getBrandFromCookie(request.headers.get("cookie") ?? "");
 
   const url = new URL(request.url); // Create a URL object from the request URL
-  const isProd = checkIsProd(url.href);
+  const isProd = process.env.APP_ENV === "prod";
 
   const isMac = /Mac|iPod|iPhone|iPad/.test(
     request.headers.get("user-agent") ?? "",
@@ -117,7 +116,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
 
   const slug = params.slug || "";
 
-  const envFromServer = process.env.TEST_ENV;
+  const envFromServer = process.env.APP_ENV;
 
   const domain = request.headers.get("host") ?? "";
 

@@ -7,11 +7,8 @@ const getCurrentUrl = (): string => {
   const hasLocation = typeof globalThis !== "undefined" && globalThis.location;
   return hasLocation ? globalThis.location.href : "";
 };
-export const checkIsProd = (url: string = getCurrentUrl()) => {
-  const nonProdEnvironments = ["stage", "test", "localhost"];
-
-  return !nonProdEnvironments.some((env) => url.toLowerCase().includes(env));
-};
+export const checkIsProd = (url = getCurrentUrl()) =>
+  url.includes("://test.design.vy.no");
 export const checkIsStage = (url = getCurrentUrl()) => url.includes("stage");
 
 const dataset = checkIsProd() || checkIsStage() ? "production" : "test";

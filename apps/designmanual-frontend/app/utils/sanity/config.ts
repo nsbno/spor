@@ -3,18 +3,14 @@ const projectId = import.meta.env.VITE_SANITY_TOKEN || "r4xpzxak";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const environment = import.meta.env.VITE_ENVIRONMENT; // Funker ikke atm
 
-export const checkIsProd = (url = ""): boolean => {
-  // Check if URL does NOT contain "test" to determine if prod, should also check for localhost when prod dataset is copied to test
-  // In future, should be based on environment variables only
-  const urlToCheck =
-    url || (globalThis.window === undefined ? "" : globalThis.location.href);
-
-  return !urlToCheck.includes("test");
+const getCurrentUrl = (): string => {
+  return typeof window !== "undefined" ? window.location.href : "";
 };
 
-console.log(checkIsProd());
+export const checkIsProd = (url = getCurrentUrl()) => url.includes("prod");
+export const checkIsStage = (url = getCurrentUrl()) => url.includes("stage");
 
-const dataset = checkIsProd() ? "production" : "test";
+const dataset = checkIsProd() || checkIsStage() ? "production" : "test";
 
 export const sanityConfig = {
   apiVersion: "2022-02-25",

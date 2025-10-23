@@ -41,7 +41,7 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
     name?: string;
     showYearNavigation?: boolean;
     withPortal?: boolean;
-    onChange?: (value: DateValue | null) => void;
+    onValueChange?: (value: DateValue | null) => void;
     positioning?: PopoverRootProps["positioning"];
     noCalendar?: boolean;
     overrideBorderColor?: string;
@@ -79,6 +79,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     const state = useDatePickerState({
       ...props,
       shouldCloseOnSelect: true,
+      onChange: props.onValueChange,
       errorMessage: errorText,
       isRequired: props.isRequired ?? chakraFieldProps?.required,
       validationState: chakraFieldProps?.invalid ? "invalid" : "valid",

@@ -1,9 +1,9 @@
 locals {
   application_name = "digitalekanaler-designmanual"
-  base_domain      = var.environment == "prod" ? "vylabs.io" : "${var.environment}.vylabs.io"
-  domain_name      = "designmanual.${local.base_domain}"
+  base_domain      = var.environment == "prod" ? "vy.no" : "${var.environment}.vy.no"
+  domain_name      = var.environment == "prod" ? "design.vy.no" : "${var.environment}.design.vy.no"
 
-  alb_domain_name       = "lb.${local.base_domain}"
+  alb_domain_name       = var.environment == "prod" ? "lb.vylabs.io" : "lb.${var.environment}.vylabs.io"
   alb_listener_arn      = nonsensitive(data.aws_ssm_parameter.alb_listener_arn.value)
   alb_test_listener_arn = nonsensitive(data.aws_ssm_parameter.alb_test_listener_arn.value)
   alb_security_group_id = nonsensitive(data.aws_ssm_parameter.alb_security_group_id.value)
@@ -81,7 +81,7 @@ module "ssr_task" {
       security_group_id = local.alb_security_group_id
       conditions = [
         {
-          host_header = [local.domain_name]
+          host_header = [local.domain_name, aws_route53_zone.this.name]
         }
       ]
     }
@@ -94,8 +94,33 @@ module "ssr_task" {
 #                              # 
 ################################
 
-data "aws_route53_zone" "parent" {
-  name = local.base_domain
+# Hosted zone for design system domains
+resource "aws_route53_zone" "this" {
+  name = var.environment == "prod" ? "design.vy.no" : "${var.environment}.design.vy.no"
+
+  tags = {
+    Environment = var.environment
+    Application = local.application_name
+  }
+}
+
+# NS records for stage and test in prod (manually copied from stage/test hosted zone)
+resource "aws_route53_record" "stage_ns" {
+  count   = var.environment == "prod" ? 1 : 0
+  zone_id = aws_route53_zone.this.zone_id
+  name    = "stage.${aws_route53_zone.this.name}"
+  type    = "NS"
+  ttl     = 3600
+  records = ["ns-733.awsdns-27.net", "ns-160.awsdns-20.com", "ns-1704.awsdns-21.co.uk", "ns-1366.awsdns-42.org"]
+}
+
+resource "aws_route53_record" "test_ns" {
+  count   = var.environment == "prod" ? 1 : 0
+  zone_id = aws_route53_zone.this.zone_id
+  name    = "test.${aws_route53_zone.this.name}"
+  type    = "NS"
+  ttl     = 3600
+  records = ["ns-895.awsdns-47.net", "ns-484.awsdns-60.com", "ns-1668.awsdns-16.co.uk", "ns-1352.awsdns-41.org"]
 }
 
 module "cloudfront_ssr" {
@@ -111,9 +136,10 @@ module "cloudfront_ssr" {
 
   service_name            = local.application_name
   domain_name             = local.domain_name
+  additional_domain_names = [aws_route53_zone.this.name]
   alb_domain_name         = local.alb_domain_name
 
-  route53_hosted_zone_id = data.aws_route53_zone.parent.zone_id
+  route53_hosted_zone_id = aws_route53_zone.this.zone_id
 }
 
 ################################

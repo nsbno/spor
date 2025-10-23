@@ -59,6 +59,10 @@ module "ssr_task" {
 
   cluster_id = data.aws_ecs_cluster.cluster.id
 
+  environment_variables = {
+    TEST_ENV = "jeg er en test"
+  }
+
   rollback_window_in_minutes        = var.environment != "prod" ? 0 : 10
   deployment_configuration_strategy = var.environment != "prod" ? "ROLLING" : "BLUE_GREEN"
 

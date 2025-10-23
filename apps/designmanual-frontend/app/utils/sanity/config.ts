@@ -11,7 +11,9 @@ export const checkIsProd = (url = getCurrentUrl()) =>
   url.includes("://design.vy.no");
 export const checkIsStage = (url = getCurrentUrl()) => url.includes("stage");
 
-const dataset = checkIsProd() || checkIsStage() ? "production" : "test";
+const dataset = process.env.TEST_ENV ? "production" : "test";
+
+console.log(dataset);
 
 export const sanityConfig = {
   apiVersion: "2022-02-25",

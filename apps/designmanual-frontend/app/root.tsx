@@ -117,6 +117,8 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
 
   const slug = params.slug || "";
 
+  const envFromServer = process.env.TEST_ENV;
+
   const domain = request.headers.get("host") ?? "";
 
   return {
@@ -127,6 +129,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     domain,
     slug,
     isProd,
+    envFromServer,
   };
 };
 
@@ -222,6 +225,7 @@ export default function App() {
   return (
     <Document brand={loaderData.brand as Brand}>
       <RootLayout>
+        asdasd {loaderData.envFromServer ?? "no env found"}
         <Outlet />
       </RootLayout>
     </Document>

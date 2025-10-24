@@ -11,5 +11,5 @@ terraform {
 
 module "app" {
   source      = "../template"
-  environment = "prod"
+  environment = "test"
 }

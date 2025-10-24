@@ -1,6 +1,6 @@
 const projectId = import.meta.env.VITE_SANITY_TOKEN || "r4xpzxak";
 
-const environment = process.env.ENVIRONMENT;
+const environment = import.meta.env.ENVIRONMENT;
 
 const dataset =
   environment === "prod" || environment === "stage" ? "production" : "test";

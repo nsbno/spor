@@ -103,8 +103,6 @@ export const links: LinksFunction = () => {
   ];
 };
 
-const environmentFromFile = import.meta.env.ENVIRONMENT;
-
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const initialSanityData = await getInitialSanityData();
   const brand = await getBrandFromCookie(request.headers.get("cookie") ?? "");
@@ -127,8 +125,6 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     domain,
     slug,
     isProd,
-    envFromLoader: process.env.VITE_ENVIRONMENT,
-    envFromLoaderNotVite: process.env.ENVIRONMENT,
   };
 };
 
@@ -224,9 +220,6 @@ export default function App() {
   return (
     <Document brand={loaderData.brand as Brand}>
       <RootLayout>
-        {loaderData.envFromLoader ?? "no env from loader"}
-        {environmentFromFile ?? "no env from loader"}
-        {loaderData.envFromLoaderNotVite ?? "no env from loader not vite"}
         <Outlet />
       </RootLayout>
     </Document>

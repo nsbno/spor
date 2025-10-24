@@ -70,7 +70,6 @@ module "ssr_task" {
 
     environment = {
       VITE_ENVIRONMENT = var.environment
-      ENVIRONMENT = var.environment
     }
   }
 

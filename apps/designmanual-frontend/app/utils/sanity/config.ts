@@ -2,7 +2,7 @@ const projectId = import.meta.env.VITE_SANITY_TOKEN || "r4xpzxak";
 
 const environment =
   (typeof process === "undefined"
-    ? import.meta.env.VITE_ENVIRONMENT
+    ? import.meta.env.ENVIRONMENT
     : process?.env.VITE_ENVIRONMENT) || "dev";
 
 const dataset =

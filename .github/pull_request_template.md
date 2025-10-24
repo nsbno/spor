@@ -1,4 +1,3 @@
-<!-- filepath: /Users/asgeirhunshamar/Desktop/vy/spor/.github/pull_request_template.md -->
 <!---
 Thanks for creating a Pull Request! 🎉
 

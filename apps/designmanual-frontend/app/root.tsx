@@ -107,8 +107,6 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const initialSanityData = await getInitialSanityData();
   const brand = await getBrandFromCookie(request.headers.get("cookie") ?? "");
 
-  const isProd = process.env.VITE_ENVIRONMENT === "prod";
-
   const isMac = /Mac|iPod|iPhone|iPad/.test(
     request.headers.get("user-agent") ?? "",
   );
@@ -124,7 +122,6 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     isMac,
     domain,
     slug,
-    isProd,
   };
 };
 

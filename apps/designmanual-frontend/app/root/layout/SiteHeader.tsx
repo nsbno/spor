@@ -54,7 +54,7 @@ export const SiteHeader = () => {
   const currentSection = slug?.split("/")[0] || "";
   const allSections = routeData?.initialSanityData?.siteSettings?.topMenu || [];
 
-  const isProd = import.meta.env.VITE_ENVIRONMENT === "prod";
+  const isProd = routeData?.env;
 
   const sections = allSections.filter((s) => {
     if (isProd && s.slug.current.includes("identitet")) {

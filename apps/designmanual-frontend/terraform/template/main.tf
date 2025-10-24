@@ -69,6 +69,7 @@ module "ssr_task" {
     port           = 3000
 
     environment = {
+      VITE_ENVIRONMENT = var.environment
       ENVIRONMENT = var.environment
     }
   }

@@ -20,7 +20,6 @@ import {
   useRouteError,
 } from "react-router";
 
-import ReactHookFormDemo from "./ReactHookFormDemo";
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";
 import { PageNotFound } from "./root/PageNotFound";
@@ -210,7 +209,6 @@ const Document = withEmotionCache(
             theme={themes[brand ?? "VyDigital"]}
           >
             <SkipToContent />
-            <ReactHookFormDemo />
             {children}
           </SporProvider>
           <ScrollRestoration />

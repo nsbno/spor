@@ -10,6 +10,7 @@ import React, {
   forwardRef,
   PropsWithChildren,
   ReactNode,
+  useImperativeHandle,
   useLayoutEffect,
   useRef,
   useState,
@@ -18,6 +19,7 @@ import React, {
 import { textareaRecipe } from "../theme/recipes/textarea";
 import { Field, FieldProps } from "./Field";
 import { FloatingLabel } from "./FloatingLabel";
+import { useFloatingInputState } from "./useFLoatingInputState";
 
 type TextareaVariants = RecipeVariantProps<typeof textareaRecipe>;
 export type TextareaProps = Exclude<
@@ -62,18 +64,6 @@ const useLabelHeight = (label: ReactNode | undefined) => {
   return { labelRef, labelHeight };
 };
 
-/**
- *
- * A simple Textarea component:
- *
- * ```tsx
- *   <Textarea label="Description" />
- * ```
- *
- * Textarea has two variants core, and floating.
- *
- */
-
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (props, ref) => {
     const {
@@ -85,11 +75,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       readOnly,
       helperText,
       floatingLabel,
-      value,
-      defaultValue,
-      onFocus,
-      onBlur,
-      onChange,
       ...restProps
     } = props;
     const recipe = useRecipe({ key: "textarea" });
@@ -97,13 +82,18 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     const { labelRef, labelHeight } = useLabelHeight(label);
 
-    const [focused, setFocused] = useState(false);
-    const isControlled = value !== undefined;
-    const [uncontrolledValue, setUncontrolledValue] = useState(
-      defaultValue ? String(defaultValue) : "",
-    );
-    const inputValue = isControlled ? String(value ?? "") : uncontrolledValue;
-    const shouldFloat = inputValue.length > 0 || focused;
+    const inputRef = useRef<HTMLTextAreaElement>(null);
+    useImperativeHandle(ref, () => inputRef.current as HTMLTextAreaElement, []);
+
+    const { shouldFloat, handleFocus, handleBlur, handleChange, isControlled } =
+      useFloatingInputState<HTMLTextAreaElement>({
+        value: props.value,
+        defaultValue: props.defaultValue,
+        onFocus: props.onFocus,
+        onBlur: props.onBlur,
+        onChange: props.onChange,
+        inputRef,
+      });
 
     return (
       <Field
@@ -120,21 +110,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           {...restProps}
           css={styles}
           className="peer"
-          ref={ref}
-          value={isControlled ? value : undefined}
-          defaultValue={defaultValue}
-          onFocus={(e) => {
-            onFocus?.(e);
-            setFocused(true);
-          }}
-          onBlur={(e) => {
-            onBlur?.(e);
-            setFocused(false);
-          }}
-          onChange={(e) => {
-            onChange?.(e);
-            if (!isControlled) setUncontrolledValue(e.target.value);
-          }}
+          ref={inputRef}
+          value={isControlled ? props.value : undefined}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onChange={handleChange}
           style={
             { "--label-height": `${labelHeight}px` } as React.CSSProperties
           }

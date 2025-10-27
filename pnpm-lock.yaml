@@ -176,6 +176,9 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      react-hook-form:
+        specifier: ^7.65.0
+        version: 7.65.0(react@18.3.1)
       react-live:
         specifier: ^4.1.7
         version: 4.1.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -9924,8 +9927,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-hook-form@7.63.0:
-    resolution: {integrity: sha512-ZwueDMvUeucovM2VjkCf7zIHcs1aAlDimZu2Hvel5C5907gUzMpm4xCrQXtRzCvsBqFjonB4m3x4LzCFI1ZKWA==}
+  react-hook-form@7.65.0:
+    resolution: {integrity: sha512-xtOzDz063WcXvGWaHgLNrNzlsdFgtUWcb32E6WFaGTd7kPZG3EeDusjdZfUsPwKCKVXy1ZlntifaHZ4l8pAsmw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
@@ -14302,9 +14305,9 @@ snapshots:
     dependencies:
       '@hapi/hoek': 9.3.0
 
-  '@hookform/resolvers@3.10.0(react-hook-form@7.63.0(react@18.3.1))':
+  '@hookform/resolvers@3.10.0(react-hook-form@7.65.0(react@18.3.1))':
     dependencies:
-      react-hook-form: 7.63.0(react@18.3.1)
+      react-hook-form: 7.65.0(react@18.3.1)
 
   '@humanfs/core@0.19.1': {}
 
@@ -24345,7 +24348,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.24
 
-  react-hook-form@7.63.0(react@18.3.1):
+  react-hook-form@7.65.0(react@18.3.1):
     dependencies:
       react: 18.3.1
 
@@ -24964,7 +24967,7 @@ snapshots:
 
   sanity-plugin-media@3.0.5(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react-is@19.2.0)(react@18.3.1)(sanity@4.11.0(@emotion/is-prop-valid@1.4.0)(@portabletext/sanity-bridge@1.1.15(@sanity/schema@4.11.0(@types/react@18.3.24)(debug@4.4.3))(@sanity/types@4.11.0(@types/react@18.3.24)(debug@4.4.3)))(@types/node@24.9.1)(@types/react@18.3.24)(immer@10.1.3)(jiti@2.6.1)(lightningcss@1.30.1)(postcss@8.5.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@6.1.19(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(terser@5.44.0)(tsx@4.20.5)(typescript@5.9.2)(yaml@2.8.1))(styled-components@6.1.19(react-dom@18.3.1(react@18.3.1))(react@18.3.1)):
     dependencies:
-      '@hookform/resolvers': 3.10.0(react-hook-form@7.63.0(react@18.3.1))
+      '@hookform/resolvers': 3.10.0(react-hook-form@7.65.0(react@18.3.1))
       '@reduxjs/toolkit': 2.9.0(react-redux@9.2.0(@types/react@18.3.24)(react@18.3.1)(redux@5.0.1))(react@18.3.1)
       '@sanity/client': 6.29.1(debug@4.4.3)
       '@sanity/color': 3.0.6
@@ -24984,7 +24987,7 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       react-dropzone: 11.7.1(react@18.3.1)
       react-file-icon: 1.6.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react-hook-form: 7.63.0(react@18.3.1)
+      react-hook-form: 7.65.0(react@18.3.1)
       react-is: 19.2.0
       react-redux: 9.2.0(@types/react@18.3.24)(react@18.3.1)(redux@5.0.1)
       react-select: 5.10.2(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)

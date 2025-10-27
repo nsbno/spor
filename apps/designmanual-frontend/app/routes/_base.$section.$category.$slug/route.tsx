@@ -63,6 +63,9 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   invariant(params.category, "Expected params.category");
   invariant(params.slug, "Expected params.slug");
   invariant(params.section, "Expected params.slug");
+  const draftMode =
+    new URL(request.url).searchParams.get("sanity-preview-perspective") ===
+    "drafts";
 
   const query = groq`*[_type == "article" && category->slug.current == $categorySlug && slug.current == $articleSlug] {
     _id,
@@ -96,7 +99,9 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     articleSlug: params.slug,
   };
   const isPreview = isValidPreviewRequest(request);
-  const initialData = await getClient(isPreview).fetch(query, queryParams);
+  const initialData = await getClient(isPreview).fetch(query, queryParams, {
+    perspective: draftMode ? "previewDrafts" : "published",
+  });
 
   if (!initialData || initialData.length === 0) {
     throw new Response("Not Found", { status: 404 });

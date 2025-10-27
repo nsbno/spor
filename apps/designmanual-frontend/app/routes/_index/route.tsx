@@ -17,14 +17,16 @@ import {
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
 import { isProd } from "~/utils/sanity/config";
-import { isValidPreviewRequest } from "~/utils/sanity/utils";
 
 import { LeftSidebar } from "../_base/left-sidebar/LeftSidebar";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   if (isProd()) return redirect("/spor");
 
-  const isPreview = isValidPreviewRequest(request);
+  const draftMode =
+    new URL(request.url).searchParams.get("sanity-preview-perspective") ===
+    "drafts";
+
   const query = groq`*[_type == "section" && default == true] {
     _id,
     title,
@@ -49,10 +51,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       }
     }
     }[0]`;
-  const initialData = await getClient(isPreview).fetch(query, {
-    section: "",
-    page: "",
-  });
+  const initialData = await getClient().fetch(
+    query,
+    {
+      section: "",
+      page: "",
+    },
+    { perspective: draftMode ? "previewDrafts" : "published" },
+  );
   return { initialData };
 };
 

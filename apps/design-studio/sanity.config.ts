@@ -50,15 +50,15 @@ export default defineConfig([
       presentationTool({
         resolve,
         previewUrl: {
-          initial: "http://localhost:3008/identitet",
-          origin: "http://localhost:3008/identitet",
+          initial: "http://localhost:3008/",
+          origin: "http://localhost:3008/",
           preview: "/",
           previewMode: {
             enable: "/api/preview-mode/enable",
             disable: "/api/preview-mode/disable",
           },
         },
-        allowOrigins: ["http://localhost:*"],
+        allowOrigins: ["http://localhost:3008/*", "https://design.vy.no/*"],
       }),
       visionTool(),
       codeInput(),

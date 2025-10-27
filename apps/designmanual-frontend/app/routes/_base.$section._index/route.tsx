@@ -1,5 +1,4 @@
 import { groq } from "@sanity/groq-store";
-import { useLiveQuery } from "@sanity/preview-kit";
 import { Box } from "@vygruppen/spor-react";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
 import invariant from "tiny-invariant";
@@ -65,25 +64,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
 };
 
 export default function Index() {
-  const {
-    data: livedata,
-    section,
-    draftId,
-    query = "",
-    draftMode,
-  } = useLoaderData<typeof loader>();
-
-  console.log("draftMode", draftMode);
-
-  const [data] = useLiveQuery(livedata, query, {
-    params: {
-      section,
-      draftId,
-    },
-    enabled: draftMode,
-  });
-
-  console.log("previewData", data, draftMode);
+  const { data } = useLoaderData<typeof loader>();
 
   if (!data) {
     return null;

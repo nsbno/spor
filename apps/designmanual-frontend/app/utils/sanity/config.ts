@@ -20,9 +20,10 @@ export const sanityConfig = {
   projectId,
   dataset,
   useCdn: true,
-  token: sanitySecret,
+  token:
+    "sk2JbmxJTpDDsylbCG5lcJ4Hu3H8VWr7UlUuWaZreH0oCRPJ63pujQt8rZLL2wOv1aW1JL4k0u25y68Khj0O5UVXfJCLUEcPVmQ3RdcKx5JYz1ZCWm89dAQoA08sFNBwPXCbI3vi0LcGacIHqK4BRJz7Jbf3HjdM8Z4klIUVdn7CnK6VLVNZ", //sanitySecret,
   stega: {
     enabled: true,
-    studioUrl: "http://localhost:4444", // env.VITE_PUBLIC_SANITY_STUDIO_URL || "http://localhost:4444",
+    studioUrl: "https://vydesignmanual.sanity.studio/", // env.VITE_PUBLIC_SANITY_STUDIO_URL || "http://localhost:4444",
   },
 };

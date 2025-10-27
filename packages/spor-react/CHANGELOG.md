@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.16.1
+
+### Patch Changes
+
+- ce1417f: Fix labels not floating with values set by react-hook-form
+
 ## 12.16.0
 
 ### Minor Changes

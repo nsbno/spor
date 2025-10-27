@@ -7,7 +7,15 @@ import {
   InputElement,
   useRecipe,
 } from "@chakra-ui/react";
-import React, { ComponentProps, forwardRef, ReactNode, useState } from "react";
+import React, {
+  ComponentProps,
+  forwardRef,
+  ReactNode,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 
 type ChakraInputProps = ComponentProps<typeof ChakraInput>;
 
@@ -75,18 +83,29 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const styles = recipe(recipeProps);
 
     const [focused, setFocused] = useState(false);
-
     const isControlled = props.value !== undefined;
-
     const [uncontrolledValue, setUncontrolledValue] = useState(
       props.defaultValue ? String(props.defaultValue) : "",
     );
-
     const inputValue = isControlled
       ? String(props.value ?? "")
       : uncontrolledValue;
-
     const shouldFloat = inputValue.length > 0 || focused;
+
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useImperativeHandle(ref, () => inputRef.current as HTMLInputElement, []);
+
+    useEffect(() => {
+      if (
+        !isControlled &&
+        inputRef.current &&
+        uncontrolledValue === "" &&
+        inputRef.current.value !== ""
+      ) {
+        setUncontrolledValue(inputRef.current.value);
+      }
+    }, [isControlled, uncontrolledValue]);
 
     return (
       <Field
@@ -112,13 +131,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
         <ChakraInput
           data-attachable
-          ref={ref}
+          ref={inputRef}
           focusVisibleRing="outside"
           overflow="hidden"
           paddingLeft={startElement ? "2.6rem" : undefined}
           paddingRight={endElement ? "2.6rem" : undefined}
           {...restProps}
-          className={`peer ${props.className}`}
+          className={`peer ${props.className || ""}`}
           value={isControlled ? props.value : undefined}
           onFocus={(e) => {
             props.onFocus?.(e);
@@ -137,7 +156,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           placeholder=""
           css={styles}
         />
-
         {endElement && (
           <InputElement placement="end" paddingX={2}>
             {endElement}

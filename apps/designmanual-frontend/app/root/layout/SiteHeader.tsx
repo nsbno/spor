@@ -48,6 +48,8 @@ const useSearchKeyboardShortcut = (onTriggered: () => void) => {
 export const SiteHeader = () => {
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
 
+  const isPreview = useRouteLoaderData<typeof loader>("root")?.isPreview;
+
   useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
 
   const routeData = useRouteLoaderData<typeof loader>("root");
@@ -117,7 +119,11 @@ export const SiteHeader = () => {
                           : "outline",
                     })}
                   >
-                    <Link to={`/${section.slug.current}`}>{section.title}</Link>
+                    <Link
+                      to={`/${section.slug.current}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
+                    >
+                      {section.title}
+                    </Link>
                   </Button>
                 </Box>
               );

@@ -82,7 +82,27 @@ export default defineConfig([
     dataset: "production",
     basePath: "/production",
 
-    plugins: [structureTool(siteMenuStructure), visionTool(), codeInput()],
+    plugins: [
+      structureTool(siteMenuStructure),
+      presentationTool({
+        resolve,
+        previewUrl: {
+          initial: "https://stage-design.vy.no/",
+          origin: "https://stage-design.vy.no/",
+          preview: "/",
+          previewMode: {
+            enable: "/api/preview-mode/enable",
+            disable: "/api/preview-mode/disable",
+          },
+        },
+        allowOrigins: [
+          "https://stage-design.vy.no//*",
+          "https://stage-design.vy.no/*",
+        ],
+      }),
+      visionTool(),
+      codeInput(),
+    ],
 
     studio: {
       components: {

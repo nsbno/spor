@@ -13,6 +13,7 @@ import {
 import React, { forwardRef, useEffect, useState } from "react";
 import { Link, useLocation, useRouteLoaderData } from "react-router";
 
+import { loader } from "~/root";
 import { getIcon } from "~/utils/getIcon";
 import type { Section } from "~/utils/initialSanityData.server";
 import { useHeadingsMenu } from "~/utils/useHeadingsMenu";
@@ -42,6 +43,10 @@ export const ContentMenu = forwardRef<
     activeIndex = activeIndex - 1;
   }
 
+  const { isPreview } = useRouteLoaderData<typeof loader>("root") || {
+    isPreview: false,
+  };
+
   const sections =
     useRouteLoaderData("root")?.initialSanityData?.siteSettings?.topMenu || [];
 
@@ -70,7 +75,7 @@ export const ContentMenu = forwardRef<
           sections.map((section: Section) => (
             <MenuItem
               key={`${section.slug.current}_m`}
-              url={`/${section.slug.current}`}
+              url={`/${section.slug.current}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
             >
               {section.title}
             </MenuItem>
@@ -145,7 +150,7 @@ export const ContentMenu = forwardRef<
                     {subItems?.map((subItem) => (
                       <MenuItem
                         key={subItem.url}
-                        url={`${subItem.url}`}
+                        url={`${subItem.url}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
                         isActive={`/${subItem.url}` === location.pathname}
                         backgroundColor={
                           `/${subItem.url}` === location.pathname

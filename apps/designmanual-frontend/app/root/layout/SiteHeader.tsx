@@ -48,7 +48,9 @@ const useSearchKeyboardShortcut = (onTriggered: () => void) => {
 export const SiteHeader = () => {
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
 
-  const isPreview = useRouteLoaderData<typeof loader>("root")?.isPreview;
+  const { isPreview } = useRouteLoaderData<typeof loader>("root") || {
+    isPreview: false,
+  };
 
   useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
 

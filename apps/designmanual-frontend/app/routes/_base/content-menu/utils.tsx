@@ -1,4 +1,4 @@
-export const handleExternalMenu = (link: string) => {
+export const handleExternalMenu = (link: string, isPreview: boolean) => {
   const IS_INTERNAL_REGEX = /^(\/|https:\/\/design\.vy\.no)/;
   const isExternal = link.startsWith("https://");
   const isInternal = IS_INTERNAL_REGEX.test(link);
@@ -10,6 +10,7 @@ export const handleExternalMenu = (link: string) => {
     return "https://design.vy.no";
   };
   if (isExternal && !isInternal) return link;
-  if (isInternal) return link.replace(domainToReplace(), "");
-  return link;
+  if (isInternal)
+    return `${link.replace(domainToReplace(), "")}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`;
+  return `${link}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`;
 };

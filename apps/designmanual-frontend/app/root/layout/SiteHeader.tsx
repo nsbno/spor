@@ -86,7 +86,10 @@ export const SiteHeader = () => {
         width="100%"
         position="relative"
       >
-        <Link to="/" aria-label="Go to the front page">
+        <Link
+          to={isPreview ? "/?sanity-preview-perspective=drafts" : "/"}
+          aria-label="Go to the front page"
+        >
           <VyLogo
             className="light"
             width="auto"

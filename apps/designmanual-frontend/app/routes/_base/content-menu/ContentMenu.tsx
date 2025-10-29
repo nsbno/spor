@@ -80,7 +80,11 @@ export const ContentMenu = forwardRef<
               {section.title}
             </MenuItem>
           ))}
-        <MobileMenu sections={sections} mobileMenus={mobileMenus} />
+        <MobileMenu
+          sections={sections}
+          mobileMenus={mobileMenus}
+          isPreview={isPreview}
+        />
       </Flex>
       <Separator marginY="2" display={["block", null, null, "none"]} />
       <Accordion
@@ -102,7 +106,7 @@ export const ContentMenu = forwardRef<
             return (
               <MenuItem
                 key={item.link}
-                url={handleExternalMenu(item.link)}
+                url={handleExternalMenu(item.link, isPreview)}
                 isTopMenu={true}
                 ref={index === 0 ? ref : null}
                 fontWeight={"bold"}
@@ -230,9 +234,11 @@ const MobileMenu = forwardRef(
   ({
     sections,
     mobileMenus,
+    isPreview,
   }: {
     sections: Section[];
     mobileMenus: MenuType[] | undefined;
+    isPreview: boolean;
   }) => {
     return (
       <Stack gap="2">
@@ -265,7 +271,12 @@ const MobileMenu = forwardRef(
                       >
                         {item.subItems.map((subItem) => (
                           <Box key={subItem.title}>
-                            <Link to={handleExternalMenu(subItem?.url ?? "/")}>
+                            <Link
+                              to={handleExternalMenu(
+                                subItem?.url ?? "/",
+                                isPreview,
+                              )}
+                            >
                               {subItem.title}
                             </Link>
                           </Box>
@@ -283,7 +294,9 @@ const MobileMenu = forwardRef(
                       marginBottom={2}
                       fontWeight={"bold"}
                     >
-                      <Link to={handleExternalMenu(item?.link ?? "/")}>
+                      <Link
+                        to={handleExternalMenu(item?.link ?? "/", isPreview)}
+                      >
                         {item.title}
                       </Link>
                     </Box>

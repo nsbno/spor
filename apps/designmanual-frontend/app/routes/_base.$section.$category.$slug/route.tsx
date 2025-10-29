@@ -99,7 +99,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     articleSlug: params.slug,
   };
   const isPreview = isValidPreviewRequest(request);
-  const initialData = await getClient(isPreview).fetch(query, queryParams, {
+  const initialData = await getClient().fetch(query, queryParams, {
     perspective: draftMode ? "previewDrafts" : "published",
   });
 

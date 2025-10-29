@@ -1,5 +1,28 @@
 # @vygruppen/spor-react
 
+## 12.16.1
+
+### Patch Changes
+
+- ce1417f: Fix labels not floating with values set by react-hook-form
+
+## 12.16.0
+
+### Minor Changes
+
+- 8865c20: ## Breaking Changes
+  - **API Consistency**: Standardized event handler naming to `onValueChange` for DatePicker, TimePicker, DateRangePicker, ChoiceChip, and NumericStepper components (previously `onChange`)
+
+  ## Bug Fixes
+  - **TextInput**: Reverted color changes to restore original color styling
+
+  ## Improvements
+  - **PhoneNumberInput**: Updated styling for better visual consistency
+
+### Patch Changes
+
+- 5eae150: Add default text color for Text component
+
 ## 12.15.0
 
 ### Minor Changes

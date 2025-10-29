@@ -24,7 +24,7 @@ export type NumericStepperProps = FieldBaseProps &
     /** A default value, if uncontrolled */
     defaultValue?: number;
     /** Callback for when the value changes */
-    onChange?: (value: number) => void;
+    onValueChange?: (value: number) => void;
     /** Optional minimum value. Defaults to 0 */
     minValue?: number;
     /** Optional maximum value. Defaults to 99 */
@@ -72,7 +72,7 @@ export const NumericStepper = React.forwardRef<
     id: idProp,
     value: valueProp,
     defaultValue = 1,
-    onChange: onChangeProp,
+    onValueChange,
     minValue = 0,
     maxValue = 99,
     disabled,
@@ -88,7 +88,7 @@ export const NumericStepper = React.forwardRef<
   const styles = recipe();
   const [value, onChange] = useControllableState<number>({
     value: valueProp,
-    onChange: onChangeProp,
+    onChange: onValueChange,
     defaultValue,
   });
   const clampedStepSize = Math.max(Math.min(stepSize, 10), 1);

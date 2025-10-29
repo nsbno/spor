@@ -1,19 +1,26 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const projectId = import.meta.env.VITE_SANITY_TOKEN || "r4xpzxak";
 const sanitySecret = import.meta.env.VITE_SANITY_SECRET || "";
 
-const environment = import.meta.env.VITE_ENVIRONMENT || "prod"; // Midlertidig, bør endres når vi har staging og dev miljøer
+export function getRuntimeEnv(key: string): string | undefined {
+  // Client: window.__ENV__ injected by server
+  if (globalThis.window !== undefined && (globalThis as any).__ENV__) {
+    return (globalThis as any).__ENV__[key];
+  }
+  // Server: process.env
+  if (typeof process !== "undefined") {
+    return (process.env as any)[key];
+  }
+  // Build-time fallback (may be empty if built once for all envs)
+  return (import.meta as any).env?.[key];
+}
 
-export const isProd = (): boolean => {
-  // Check if URL does NOT contain "test" to determine if prod, should also check for localhost when prod dataset is copied to test
-  // In future, should be based on environment variables only
-  const urlDoesNotContainTest =
-    globalThis.window === undefined ||
-    !globalThis.location.href.includes("test");
+export const VITE_ENVIRONMENT = getRuntimeEnv("VITE_ENVIRONMENT") || "local";
 
-  return urlDoesNotContainTest && environment === "prod";
-};
+const environment = VITE_ENVIRONMENT;
 
-const dataset = isProd() ? "production" : "test";
+const dataset =
+  environment === "prod" || environment === "stage" ? "production" : "test";
 
 export const sanityConfig = {
   apiVersion: "2022-02-25",

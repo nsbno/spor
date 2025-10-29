@@ -1,8 +1,9 @@
+import * as dateUtils from "@internationalized/date";
 import * as allIcons from "@vygruppen/spor-icon-react";
 import * as allComponents from "@vygruppen/spor-react";
 import { LiveProvider as ReactLiveProvider } from "react-live";
 
-const exposedComponents = { ...allComponents, ...allIcons };
+const exposedComponents = { ...allComponents, ...allIcons, ...dateUtils };
 
 type LiveProviderProps = {
   code: string;

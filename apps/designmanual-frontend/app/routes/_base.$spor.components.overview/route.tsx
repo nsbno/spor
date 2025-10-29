@@ -90,7 +90,7 @@ export default function ComponentsPage() {
         {article.title}
       </Heading>
       <PortableText value={article.content} />
-      <SimpleGrid columns={[1, 2, 3]} gap={3} marginTop={6}>
+      <SimpleGrid columns={[1, 2, 3, 3, 4]} gap={3} marginTop={6}>
         {components.map((component) => (
           <PressableCard key={component._id} variant="floating" asChild>
             <Link to={`/spor/components/${component.slug}`}>

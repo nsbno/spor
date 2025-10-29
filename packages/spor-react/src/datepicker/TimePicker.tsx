@@ -35,7 +35,7 @@ type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> &
      **/
     defaultValue?: TimeValue | null;
     /** Callback for when the time changes */
-    onChange?: (value: TimeValue | null) => void;
+    onValueChange?: (value: TimeValue | null) => void;
     /** The maxiumum number of minutes to move when the step buttons are used.
      *
      * Defaults to 30 minutes.
@@ -62,7 +62,7 @@ type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> &
  * It can also be controlled:
  *
  * ```tsx
- * <TimePicker value={new Time(13, 37)} onChange={setTime} />
+ * <TimePicker value={new Time(13, 37)} onValueChange={setTime} />
  * ```
  *
  * Note that the TimePicker uses the `Time` class to represent the time. This is a class that is part of the `@internationalized/date` package.
@@ -73,7 +73,7 @@ export const TimePicker = ({
   label: externalLabel,
   value,
   defaultValue = getCurrentTime(),
-  onChange = () => {},
+  onValueChange = () => {},
   minuteInterval = 30,
   disabled: isDisabledExternally = false,
   name,
@@ -88,7 +88,7 @@ export const TimePicker = ({
   const state = useTimeFieldState({
     value,
     defaultValue,
-    onChange,
+    onChange: onValueChange,
     locale,
     isDisabled,
     label,

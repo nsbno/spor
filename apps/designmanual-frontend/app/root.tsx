@@ -140,6 +140,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     preview,
     ENV,
     readToken,
+    env: process.env.VITE_ENVIRONMENT || "dev",
   };
 };
 
@@ -176,6 +177,7 @@ const Document = withEmotionCache(
     const clientStyleData = useContext(ClientStyleContext);
     const isPreview = useLoaderData<typeof loader>().isPreview;
     const ENV = useLoaderData<typeof loader>().ENV;
+    const loaderData = useLoaderData<typeof loader>();
 
     // Only executed on client.
     useEffect(() => {
@@ -214,6 +216,12 @@ const Document = withEmotionCache(
               dangerouslySetInnerHTML={{ __html: css }}
             />
           ))}
+          <script
+            // Prevent CSP nonce issues if applicable
+            dangerouslySetInnerHTML={{
+              __html: `window.__ENV__ = { VITE_ENVIRONMENT: "${loaderData.env || ""}" };`,
+            }}
+          />
         </head>
         <body style={{ overflowX: "hidden" }}>
           <SporProvider

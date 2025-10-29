@@ -7,11 +7,18 @@ import {
   InputElement,
   useRecipe,
 } from "@chakra-ui/react";
-import React, { ComponentProps, forwardRef, ReactNode, useState } from "react";
+import React, {
+  ComponentProps,
+  forwardRef,
+  ReactNode,
+  useImperativeHandle,
+  useRef,
+} from "react";
 
 type ChakraInputProps = ComponentProps<typeof ChakraInput>;
 
 import { Field, FieldProps } from "./Field";
+import { useFloatingInputState } from "./useFLoatingInputState";
 
 export type InputProps = FieldProps &
   Exclude<
@@ -74,19 +81,18 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);
 
-    const [focused, setFocused] = useState(false);
+    const inputRef = useRef<HTMLInputElement>(null);
+    useImperativeHandle(ref, () => inputRef.current as HTMLInputElement, []);
 
-    const isControlled = props.value !== undefined;
-
-    const [uncontrolledValue, setUncontrolledValue] = useState(
-      props.defaultValue ? String(props.defaultValue) : "",
-    );
-
-    const inputValue = isControlled
-      ? String(props.value ?? "")
-      : uncontrolledValue;
-
-    const shouldFloat = inputValue.length > 0 || focused;
+    const { shouldFloat, handleFocus, handleBlur, handleChange, isControlled } =
+      useFloatingInputState<HTMLInputElement>({
+        value: props.value,
+        defaultValue: props.defaultValue,
+        onFocus: props.onFocus,
+        onBlur: props.onBlur,
+        onChange: props.onChange,
+        inputRef,
+      });
 
     return (
       <Field
@@ -112,32 +118,20 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
         <ChakraInput
           data-attachable
-          ref={ref}
+          ref={inputRef}
           focusVisibleRing="outside"
           overflow="hidden"
           paddingLeft={startElement ? "2.6rem" : undefined}
           paddingRight={endElement ? "2.6rem" : undefined}
           {...restProps}
-          className={`peer ${props.className}`}
+          className={`peer ${props.className || ""}`}
           value={isControlled ? props.value : undefined}
-          onFocus={(e) => {
-            props.onFocus?.(e);
-            setFocused(true);
-          }}
-          onBlur={(e) => {
-            props.onBlur?.(e);
-            setFocused(false);
-          }}
-          onChange={(e) => {
-            props.onChange?.(e);
-            if (!isControlled) {
-              setUncontrolledValue(e.target.value);
-            }
-          }}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onChange={handleChange}
           placeholder=""
           css={styles}
         />
-
         {endElement && (
           <InputElement placement="end" paddingX={2}>
             {endElement}

@@ -16,12 +16,11 @@ import {
 } from "~/features/cms/sanity/query";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
-import { isProd } from "~/utils/sanity/config";
 
 import { LeftSidebar } from "../_base/left-sidebar/LeftSidebar";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  if (isProd()) return redirect("/spor");
+  if (process.env.VITE_ENVIRONMENT === "prod") return redirect("/spor");
 
   const draftMode =
     new URL(request.url).searchParams.get("sanity-preview-perspective") ===

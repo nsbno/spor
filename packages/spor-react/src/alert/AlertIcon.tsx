@@ -47,7 +47,11 @@ export const AlertIcon = forwardRef<SVGSVGElement, AlertIconProps>(
 
 AlertIcon.displayName = "AlertIcon";
 
-const BaseAlertIcon = ({ variant }: { variant: AlertProps["variant"] }) => {
+export const BaseAlertIcon = ({
+  variant,
+}: {
+  variant: AlertProps["variant"];
+}) => {
   const css = {
     "& path:first-of-type": {
       fill: `alert.${variant}.icon`,

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.16.2
+
+### Patch Changes
+
+- 05b99e9: Fix icon color of Toast to support dark mode.
+
 ## 12.16.1
 
 ### Patch Changes

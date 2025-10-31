@@ -275,10 +275,7 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
       <TabsList>
         {sections.map((section) => (
           <TabsTrigger key={section.title} value={section.title}>
-            {getCorrectTitle({
-              title: section.title,
-              customTitle: section.customTitle,
-            })}
+            {`${section.title.charAt(0).toUpperCase()}${section.title.slice(1)}`}
           </TabsTrigger>
         ))}
       </TabsList>

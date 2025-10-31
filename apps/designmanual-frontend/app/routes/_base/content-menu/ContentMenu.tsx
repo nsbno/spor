@@ -13,6 +13,7 @@ import {
 import React, { forwardRef, useEffect, useState } from "react";
 import { Link, useLocation, useRouteLoaderData } from "react-router";
 
+import { loader } from "~/root";
 import { getIcon } from "~/utils/getIcon";
 import type { Section } from "~/utils/initialSanityData.server";
 import { useHeadingsMenu } from "~/utils/useHeadingsMenu";
@@ -42,6 +43,10 @@ export const ContentMenu = forwardRef<
     activeIndex = activeIndex - 1;
   }
 
+  const { isPreview } = useRouteLoaderData<typeof loader>("root") || {
+    isPreview: false,
+  };
+
   const sections =
     useRouteLoaderData("root")?.initialSanityData?.siteSettings?.topMenu || [];
 
@@ -70,12 +75,16 @@ export const ContentMenu = forwardRef<
           sections.map((section: Section) => (
             <MenuItem
               key={`${section.slug.current}_m`}
-              url={`/${section.slug.current}`}
+              url={`/${section.slug.current}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
             >
               {section.title}
             </MenuItem>
           ))}
-        <MobileMenu sections={sections} mobileMenus={mobileMenus} />
+        <MobileMenu
+          sections={sections}
+          mobileMenus={mobileMenus}
+          isPreview={isPreview}
+        />
       </Flex>
       <Separator marginY="2" display={["block", null, null, "none"]} />
       <Accordion
@@ -97,7 +106,7 @@ export const ContentMenu = forwardRef<
             return (
               <MenuItem
                 key={item.link}
-                url={handleExternalMenu(item.link)}
+                url={handleExternalMenu(item.link, isPreview)}
                 isTopMenu={true}
                 ref={index === 0 ? ref : null}
                 fontWeight={"bold"}
@@ -145,7 +154,7 @@ export const ContentMenu = forwardRef<
                     {subItems?.map((subItem) => (
                       <MenuItem
                         key={subItem.url}
-                        url={`${subItem.url}`}
+                        url={`${subItem.url}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
                         isActive={`/${subItem.url}` === location.pathname}
                         backgroundColor={
                           `/${subItem.url}` === location.pathname
@@ -225,9 +234,11 @@ const MobileMenu = forwardRef(
   ({
     sections,
     mobileMenus,
+    isPreview,
   }: {
     sections: Section[];
     mobileMenus: MenuType[] | undefined;
+    isPreview: boolean;
   }) => {
     return (
       <Stack gap="2">
@@ -260,7 +271,12 @@ const MobileMenu = forwardRef(
                       >
                         {item.subItems.map((subItem) => (
                           <Box key={subItem.title}>
-                            <Link to={handleExternalMenu(subItem?.url ?? "/")}>
+                            <Link
+                              to={handleExternalMenu(
+                                subItem?.url ?? "/",
+                                isPreview,
+                              )}
+                            >
                               {subItem.title}
                             </Link>
                           </Box>
@@ -278,7 +294,9 @@ const MobileMenu = forwardRef(
                       marginBottom={2}
                       fontWeight={"bold"}
                     >
-                      <Link to={handleExternalMenu(item?.link ?? "/")}>
+                      <Link
+                        to={handleExternalMenu(item?.link ?? "/", isPreview)}
+                      >
                         {item.title}
                       </Link>
                     </Box>

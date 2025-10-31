@@ -20,6 +20,7 @@ import {
   useRouteError,
 } from "react-router";
 
+import { SanityVisualEditing } from "./features/SanityVisualEditing";
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";
 import { PageNotFound } from "./root/PageNotFound";
@@ -33,6 +34,7 @@ import {
   setBrandInCookie,
 } from "./utils/brand-cookie.server";
 import { getInitialSanityData } from "./utils/initialSanityData.server";
+import { previewContext } from "./utils/sanity/preview";
 import { urlBuilder } from "./utils/sanity/utils";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
@@ -115,6 +117,18 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
 
   const domain = request.headers.get("host") ?? "";
 
+  const isPreview = request.url.includes("sanity-preview-perspective=drafts");
+
+  const { preview } = await previewContext(request.headers);
+
+  const readToken = import.meta.env.VITE_SANITY_SECRET;
+
+  const ENV = {
+    PUBLIC_SANITY_PROJECT_ID: process.env.VITE_SANITY_TOKEN,
+    PUBLIC_SANITY_DATASET: process.env.VITE_ENVIRONMENT,
+    PUBLIC_SANITY_STUDIO_URL: process.env.VITE_SANITY_STUDIO_URL,
+  };
+
   return {
     initialSanityData,
     cookies: request.headers.get("cookie") ?? "",
@@ -122,6 +136,10 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     isMac,
     domain,
     slug,
+    isPreview,
+    preview,
+    ENV,
+    readToken,
     env: process.env.VITE_ENVIRONMENT || "dev",
   };
 };
@@ -157,6 +175,8 @@ const Document = withEmotionCache(
   ({ children, brand, title }: DocumentProps, emotionCache) => {
     const serverStyleData = useContext(ServerStyleContext);
     const clientStyleData = useContext(ClientStyleContext);
+    const isPreview = useLoaderData<typeof loader>().isPreview;
+    const ENV = useLoaderData<typeof loader>().ENV;
     const loaderData = useLoaderData<typeof loader>();
 
     // Only executed on client.
@@ -213,6 +233,12 @@ const Document = withEmotionCache(
           </SporProvider>
           <ScrollRestoration />
           <Scripts />
+          {isPreview && <SanityVisualEditing />}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.ENV = ${JSON.stringify(ENV)}`,
+            }}
+          />
         </body>
       </html>
     );

@@ -6,7 +6,7 @@ import {
   SimpleGrid,
   useColorModeValue,
 } from "@vygruppen/spor-react";
-import { Link, useLoaderData } from "react-router";
+import { Link, LoaderFunctionArgs, useLoaderData } from "react-router";
 
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
@@ -20,7 +20,10 @@ type ComponentData = {
   content: unknown[];
 };
 
-const componentsQuery = async () => {
+const componentsQuery = async ({ request }: LoaderFunctionArgs) => {
+  const draftMode =
+    new URL(request.url).searchParams.get("sanity-preview-perspective") ===
+    "drafts";
   const query = `*[
       _type == "article" && 
       category->slug.current == "components" && 
@@ -32,7 +35,11 @@ const componentsQuery = async () => {
     mainImage,
     content,
   }`;
-  const componentArticles = await getClient().fetch<ComponentData[]>(query);
+  const componentArticles = await getClient().fetch<ComponentData[]>(
+    query,
+    {},
+    { perspective: draftMode ? "previewDrafts" : "published" },
+  );
 
   if (!componentArticles || componentArticles.length === 0) {
     throw new Response("Not Found", { status: 404 });

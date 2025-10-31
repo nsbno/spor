@@ -19,9 +19,14 @@ import {
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
 
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   invariant(params.section, "Expected params.section");
   invariant(params.page, "Expected params.page");
+  const draftId = new URL(request.url).searchParams.get("preview") ?? null;
+  const draftMode =
+    new URL(request.url).searchParams.get("sanity-preview-perspective") ===
+    "drafts";
+
   const query = groq`*[_type == "page" && slug.current == $page][0] {
     _id,
     title,
@@ -41,15 +46,20 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
       ${resolveFileListGroq()},
     }
   }`;
-  const data = await getClient().fetch(query, {
-    section: params.section,
-    page: params.page,
-  });
+  const data = await getClient().fetch(
+    query,
+    {
+      section: params.section,
+      page: params.page,
+      draftId,
+    },
+    { perspective: draftMode ? "previewDrafts" : "published" },
+  );
 
   if (!data) {
     return { section: params.section, data: null };
   }
-  return { section: params.section, data };
+  return { section: params.section, data, draftId, query };
 };
 
 export default function Index() {

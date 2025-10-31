@@ -11,10 +11,15 @@ import { LeftSidebar } from "~/routes/_base/left-sidebar/LeftSidebar";
 import { getClient } from "~/utils/sanity/client";
 
 /* This loader isn't use here directly, but from within the left sidebar component tree. Don't remove it, even if it isn't used here.  */
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const slug = params.slug;
+  const draftMode =
+    new URL(request.url).searchParams.get("sanity-preview-perspective") ===
+    "drafts";
   const menu = await getClient().fetch(
     `*[_type == "menu" && slug.current == "side-menu"][0] { menuItems }`,
+    {},
+    { perspective: draftMode ? "previewDrafts" : "published" },
   );
   return { menu, slug };
 };

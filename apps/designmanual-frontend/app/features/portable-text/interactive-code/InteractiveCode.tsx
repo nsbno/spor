@@ -1,5 +1,6 @@
 import { Box, BoxProps, Stack } from "@vygruppen/spor-react";
 
+import { sanitizeCode } from "../code-block/codeUtils";
 import { LiveEditor } from "./LiveEditor";
 import { LiveError } from "./LiveError";
 import { LivePreview } from "./LivePreview";
@@ -17,7 +18,7 @@ export const InteractiveCode = ({
 }: InteractiveCodeProps) => {
   return (
     <Box {...rest}>
-      <LiveProvider code={code}>
+      <LiveProvider code={sanitizeCode(code)}>
         <Stack gap={2} aria-live="polite">
           {layout === "simple" && (
             <>

@@ -8,6 +8,7 @@ import { Highlight } from "prism-react-renderer";
 import { Key, useRef } from "react";
 
 import { theme } from "./codeTheme";
+import { sanitizeCode } from "./codeUtils";
 
 type CodeBlockProps = Omit<BoxProps, "children"> & {
   /** The code to highlight */
@@ -25,7 +26,7 @@ export const CodeBlock = ({
     <CodeBlockContainer
       maxWidth={`calc(100vw - var(--spor-space-6))`}
       {...props}
-      code={code}
+      code={sanitizeCode(code)}
       marginTop={2}
     >
       <Highlight theme={theme} code={code} language={language}>

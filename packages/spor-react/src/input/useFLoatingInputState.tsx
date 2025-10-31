@@ -41,7 +41,7 @@ export function useFloatingInputState<
     }
   }, [isControlled, uncontrolledValue, inputRef]);
 
-  // New: allow imperative sync (e.g. after react-hook-form setValue)
+  // Allow imperative sync (e.g. after react-hook-form setValue)
   const syncFromRef = React.useCallback(() => {
     if (!isControlled && inputRef?.current) {
       const v = inputRef.current.value;

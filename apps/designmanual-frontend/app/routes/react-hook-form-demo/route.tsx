@@ -1,4 +1,5 @@
-import { Input, Stack, Textarea } from "@vygruppen/spor-react";
+import { Heading, Input, Stack, Textarea } from "@vygruppen/spor-react";
+import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 export default function Component() {
@@ -19,6 +20,21 @@ export default function Component() {
         control={control}
         render={({ field }) => <Input {...field} label={"Controlled"} />}
       />
+
+      <SporTest />
     </Stack>
   );
 }
+
+export const SporTest = () => {
+  const { register, setValue } = useForm<{ name: string }>();
+  useEffect(() => {
+    setValue("name", "Ola Nordman");
+  }, [setValue]);
+  return (
+    <Stack minW="50vw" minH="50vH">
+      <Heading as="h2">Spor test with setState</Heading>
+      <Input label="Navn" {...register("name")}></Input>
+    </Stack>
+  );
+};

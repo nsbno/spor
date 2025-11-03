@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.16.3
+
+### Patch Changes
+
+- d51339d: Fix label not floating with edgecase in React Hook Form
+
 ## 12.16.2
 
 ### Patch Changes

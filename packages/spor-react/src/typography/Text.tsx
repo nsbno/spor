@@ -47,7 +47,7 @@ function resolveTextProps({
  */
 export const Text = forwardRef<HTMLParagraphElement, TextProps>(
   function Text(props, ref) {
-    const { variant, lineHeight, fontSize, color = "text", ...rest } = props;
+    const { variant, lineHeight, fontSize, color = "inherit", ...rest } = props;
     const resolvedProps = resolveTextProps({ variant, fontSize, lineHeight });
 
     return <ChakraText {...resolvedProps} color={color} {...rest} ref={ref} />;

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.16.4
+
+### Patch Changes
+
+- 641c3a4: Fix text color on text to inherit from parent.
+
 ## 12.16.3
 
 ### Patch Changes

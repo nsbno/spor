@@ -41,6 +41,24 @@ export function useFloatingInputState<
     }
   }, [isControlled, uncontrolledValue, inputRef]);
 
+  // Allow imperative sync (e.g. after react-hook-form setValue)
+  const syncFromRef = React.useCallback(() => {
+    if (!isControlled && inputRef?.current) {
+      const v = inputRef.current.value;
+      if (v !== uncontrolledValue) {
+        setUncontrolledValue(v);
+      }
+    }
+  }, [isControlled, inputRef, uncontrolledValue]);
+
+  // Run a second pass on next frame to catch post-mount mutations
+  useEffect(() => {
+    if (!isControlled) {
+      const id = requestAnimationFrame(syncFromRef);
+      return () => cancelAnimationFrame(id);
+    }
+  }, [isControlled, syncFromRef]);
+
   const handleFocus = (e: FocusEvent<T>) => {
     onFocus?.(e);
     setFocused(true);

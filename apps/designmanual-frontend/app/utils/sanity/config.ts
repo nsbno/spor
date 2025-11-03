@@ -16,6 +16,12 @@ export function getRuntimeEnv(key: string): string | undefined {
 }
 
 export const VITE_ENVIRONMENT = getRuntimeEnv("VITE_ENVIRONMENT") || "local";
+export const VITE_SANITY_TOKEN = getRuntimeEnv("VITE_SANITY_TOKEN") || "";
+export const VITE_SANITY_SECRET = getRuntimeEnv("VITE_SANITY_SECRET") || "";
+export const VITE_PUBLIC_SANITY_STUDIO_URL =
+  getRuntimeEnv("VITE_PUBLIC_SANITY_STUDIO_URL") || "";
+export const VITE_SANITY_STUDIO_URL =
+  getRuntimeEnv("VITE_SANITY_STUDIO_URL") || "";
 
 const environment = VITE_ENVIRONMENT;
 
@@ -27,9 +33,9 @@ export const sanityConfig = {
   projectId,
   dataset,
   useCdn: true,
-  token: sanitySecret,
+  token: VITE_SANITY_SECRET || sanitySecret || undefined,
   stega: {
     enabled: true,
-    studioUrl: "https://vydesignmanual.sanity.studio/", // env.VITE_PUBLIC_SANITY_STUDIO_URL || "http://localhost:4444",
+    studioUrl: "https://vydesignmanual.sanity.studio/",
   },
 };

@@ -1,9 +1,9 @@
 artifacts:
   - name: spor-tf
-    branch: main
+    branch: old_spor_deploy
     location: s3
   - name: spor
-    branch: main
+    branch: old_spor_deploy
     location: ecr
 
 steps:

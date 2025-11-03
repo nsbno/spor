@@ -8,7 +8,6 @@ import { commitSession, getSession } from "~/utils/sanity/preview";
 import { Route } from "./+types/enable";
 
 export const loader = async ({ request }: Route.LoaderArgs) => {
-  console.log("Enabling preview mode", VITE_SANITY_SECRET);
   if (!VITE_SANITY_SECRET) {
     throw new Response("Preview mode missing token", { status: 401 });
   }

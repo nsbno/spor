@@ -35,17 +35,17 @@ export function HeroSection() {
           maxWidth="full"
           display="block"
         >
-          This is the latest version of Spor. To report issues, visit our
+          This is the old docs, locked to version 12.14.2 of Spor. For the
+          latest version, visit{" "}
           <TextLink
-            href="https://github.com/nsbno/spor/issues"
+            href="https://design.vy.no/spor"
             target="_blank"
             rel="noopener noreferrer"
             color="text.inverted"
             paddingX="0.5"
           >
-            GitHub issues page
+            designmanual for spor
           </TextLink>
-          . We welcome your feedback and contributions to help improve Spor!
         </Alert>
         <Flex
           flexDirection={["column-reverse", null, "row"]}

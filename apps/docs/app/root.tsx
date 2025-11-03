@@ -23,6 +23,7 @@ import {
 
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";
+import { WarningModalNewSporDocs } from "./root/layout/WarningModalNewSporDocs";
 import { PageNotFound } from "./root/PageNotFound";
 import {
   ClientStyleContext,
@@ -194,6 +195,7 @@ const Document = withEmotionCache(
             theme={themes[brand ?? "VyDigital"]}
           >
             <SkipToContent />
+            <WarningModalNewSporDocs />
             {children}
           </SporProvider>
           <ScrollRestoration />

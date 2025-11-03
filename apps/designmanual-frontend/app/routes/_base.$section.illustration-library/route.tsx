@@ -26,7 +26,7 @@ import {
   useColorMode,
 } from "@vygruppen/spor-react";
 import { useMemo, useState } from "react";
-import { useLoaderData } from "react-router";
+import { LoaderFunctionArgs, useLoaderData } from "react-router";
 
 import { PortableText } from "~/features/portable-text/PortableText";
 import { useBrand } from "~/utils/brand";
@@ -59,8 +59,11 @@ type SanityResponse = {
   };
 };
 
-export const loader = async () => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   const client = getClient();
+  const draftMode =
+    new URL(request.url).searchParams.get("sanity-preview-perspective") ===
+    "drafts";
   const query = `
   {
     "illustrations": *[_type == "illustration"] | order(title asc) {
@@ -90,6 +93,8 @@ export const loader = async () => {
 }`;
   const { illustrations, article } = (await client.fetch(
     query,
+    {},
+    { perspective: draftMode ? "previewDrafts" : "published" },
   )) as SanityResponse;
   return { illustrations, article };
 };

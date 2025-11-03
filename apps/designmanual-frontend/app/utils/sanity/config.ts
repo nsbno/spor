@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const projectId = import.meta.env.VITE_SANITY_TOKEN || "r4xpzxak";
+const sanitySecret = import.meta.env.VITE_SANITY_SECRET || "";
 
 export function getRuntimeEnv(key: string): string | undefined {
   // Client: window.__ENV__ injected by server
@@ -26,4 +27,9 @@ export const sanityConfig = {
   projectId,
   dataset,
   useCdn: true,
+  token: sanitySecret,
+  stega: {
+    enabled: true,
+    studioUrl: "https://vydesignmanual.sanity.studio/", // env.VITE_PUBLIC_SANITY_STUDIO_URL || "http://localhost:4444",
+  },
 };

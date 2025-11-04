@@ -104,7 +104,6 @@ export const buttonRecipe = defineRecipe({
         minWidth: 5,
         paddingX: 1.5,
         fontSize: "mobile.xs",
-
       },
       sm: {
         minHeight: 6,
@@ -126,12 +125,12 @@ export const buttonRecipe = defineRecipe({
       },
     },
   },
-    compoundVariants: [
+  compoundVariants: [
     {
       variant: ["ghost", "floating"],
       size: ["sm", "xs"],
       css: {
-        fontWeight: "normal", 
+        fontWeight: "normal",
       },
     },
   ],

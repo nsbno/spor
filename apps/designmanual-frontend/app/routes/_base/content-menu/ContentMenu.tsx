@@ -47,8 +47,17 @@ export const ContentMenu = forwardRef<
     isPreview: false,
   };
 
-  const sections =
+  const allSections =
     useRouteLoaderData("root")?.initialSanityData?.siteSettings?.topMenu || [];
+
+  const isProd = useRouteLoaderData("root")?.env === "prod";
+
+  const sections = allSections.filter((s: Section) => {
+    if (isProd && s.slug.current.includes("identitet")) {
+      return false;
+    }
+    return true;
+  });
 
   const mobileMenus = useRouteLoaderData("root")?.initialSanityData?.menus;
 

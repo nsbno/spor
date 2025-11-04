@@ -9,7 +9,7 @@ export default {
         "Enforce the use of semantic color tokens in Chakra UI components to facilitate dark mode implementation.",
       category: "Best Practices",
       recommended: true,
-      url: "http://github.com/nsbno/spor/blob/main/packages/spor-deseslint-config/README.md",
+      url: "https://github.com/nsbno/spor/tree/main/packages/eslint-config/README.md",
     },
     schema: [],
     messages: {

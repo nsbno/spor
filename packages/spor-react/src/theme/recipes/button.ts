@@ -31,6 +31,7 @@ export const buttonRecipe = defineRecipe({
       primary: {
         background: "brand.surface",
         color: "brand.text",
+        fontWeight: "bold",
         _hover: {
           background: "brand.surface.hover",
           _active: {
@@ -41,6 +42,7 @@ export const buttonRecipe = defineRecipe({
       secondary: {
         background: "accent.surface",
         color: "accent.text",
+        fontWeight: "bold",
         _hover: {
           background: "accent.surface.hover",
           _active: {
@@ -51,6 +53,7 @@ export const buttonRecipe = defineRecipe({
       tertiary: {
         color: "core.text",
         outline: "solid",
+        fontWeight: "normal",
         outlineWidth: tokens.size.stroke.sm,
         outlineColor: "core.outline",
         _hover: {
@@ -68,6 +71,7 @@ export const buttonRecipe = defineRecipe({
       },
       ghost: {
         color: "ghost.text",
+        fontWeight: "bold",
         _hover: {
           background: "ghost.surface.hover",
           _active: {
@@ -78,6 +82,7 @@ export const buttonRecipe = defineRecipe({
       floating: {
         color: "floating.text",
         background: "floating.surface",
+        fontWeight: "bold",
         border: "sm",
         borderColor: "floating.outline",
         boxShadow:
@@ -99,31 +104,37 @@ export const buttonRecipe = defineRecipe({
         minWidth: 5,
         paddingX: 1.5,
         fontSize: "mobile.xs",
-        fontWeight: "normal",
+
       },
       sm: {
         minHeight: 6,
         minWidth: 6,
         paddingX: 2,
         fontSize: "mobile.sm",
-        fontWeight: "normal",
       },
       md: {
         minHeight: 7,
         minWidth: 7,
         fontSize: "mobile.md",
-        fontWeight: "bold",
         paddingX: 3,
       },
       lg: {
         minHeight: 8,
         minWidth: 8,
         fontSize: "mobile.md",
-        fontWeight: "bold",
         paddingX: 3,
       },
     },
   },
+    compoundVariants: [
+    {
+      variant: ["ghost", "floating"],
+      size: ["sm", "xs"],
+      css: {
+        fontWeight: "normal", 
+      },
+    },
+  ],
   defaultVariants: {
     variant: "primary",
     size: "md",

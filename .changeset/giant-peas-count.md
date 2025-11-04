@@ -1,5 +1,5 @@
 ---
-"@vygruppen/spor-design-tokens": patch
+"@vygruppen/eslint-config": patch
 ---
 
 Add readme to design tokens.

@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": patch
 ---
 
-fix fontweight in buttons
+Update font weights for different button variants and sizes.

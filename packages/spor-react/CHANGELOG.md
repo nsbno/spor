@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.16.5
+
+### Patch Changes
+
+- af8d74a: Update font weights for different button variants and sizes.
+
 ## 12.16.4
 
 ### Patch Changes

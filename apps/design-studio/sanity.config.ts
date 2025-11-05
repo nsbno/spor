@@ -87,8 +87,8 @@ export default defineConfig([
       presentationTool({
         resolve,
         previewUrl: {
-          initial: "https://stage-design.vy.no/",
-          origin: "https://stage-design.vy.no/",
+          initial: "https://stage.design.vy.no/",
+          origin: "https://stage.design.vy.no/",
           preview: "/",
           previewMode: {
             enable: "/api/preview-mode/enable",
@@ -96,8 +96,8 @@ export default defineConfig([
           },
         },
         allowOrigins: [
-          "https://stage-design.vy.no//*",
-          "https://stage-design.vy.no/*",
+          "https://stage.design.vy.no/*",
+          "https://stage.design.vy.no/*",
         ],
       }),
       visionTool(),

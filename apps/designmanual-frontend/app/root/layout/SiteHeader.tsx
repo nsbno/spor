@@ -99,8 +99,16 @@ export const SiteHeader = () => {
         </Link>
 
         <Box as="nav" flexGrow={1} justifyContent="flex-end">
-          <Flex as="ul" gap="4" width={"auto"} justifySelf={"flex-end"}>
-            <ColorModeSwitcher />
+          <Flex
+            as="ul"
+            gap="4"
+            width={"auto"}
+            justifyContent="flex-end"
+            alignItems="center"
+          >
+            <Box as="li" marginLeft="auto">
+              <ColorModeSwitcher />
+            </Box>
             {sections.map((section) => {
               return (
                 <Box as="li" key={section.title}>

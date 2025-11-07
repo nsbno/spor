@@ -178,17 +178,6 @@ const MobileMenu = () => {
         onClick={onOpen}
         display={{ base: "flex", lg: "none" }}
       />
-
-      <Drawer placement="end" open={open} onExitComplete={onClose}>
-        <DrawerContent>
-          <DrawerHeader>
-            <DrawerCloseTrigger placeContent={"end"} onClick={onClose} />
-          </DrawerHeader>
-          <DrawerBody paddingY={2}>
-            <SearchableContentMenu />
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
     </>
   );
 };

@@ -21,10 +21,12 @@ COPY patches ./patches
 COPY apps/designmanual-frontend/package.json apps/designmanual-frontend/
 COPY packages/spor-design-tokens/package.json packages/spor-design-tokens/
 COPY packages/spor-react/package.json packages/spor-react/
+COPY packages/eslint-config/package.json packages/eslint-config/
+COPY packages/spor-icon/package.json packages/spor-icon/
 
 # Install all dependencies (including devDependencies) with cache
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-    pnpm install --frozen-lockfile --prod=false --ignore-scripts
+ pnpm install --frozen-lockfile --prod=false --ignore-scripts
 
 # Build the app
 FROM deps AS build
@@ -58,8 +60,8 @@ WORKDIR /deploy-dir
 
 # Install aws-env for secrets
 RUN wget -O /usr/local/bin/aws-env \
-    https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \
-    chmod +x /usr/local/bin/aws-env
+ https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \
+ chmod +x /usr/local/bin/aws-env
 
 # Copy the deployed production app
 COPY --from=deploy /deploy-dir /deploy-dir

@@ -10,45 +10,29 @@ RUN npm install -g pnpm
 # Install all node_modules, including dev dependencies
 FROM base AS deps
 
-RUN mkdir /app
 WORKDIR /app
 
 # Set NODE_ENV to development to install dev dependencies
 ENV NODE_ENV=development
 
-# Copy workspace-related files from the monorepo root
+# Copy workspace-related files and patches from the monorepo root
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY apps/designmanual-frontend/package.json apps/designmanual-frontend/
-
-# Install all dependencies (including devDependencies)
-RUN pnpm install --frozen-lockfile --prod=false --ignore-scripts
-
-# Setup production node_modules
-FROM base AS production-deps
-ENV NODE_ENV=production
-
-
-WORKDIR /app
-
-# Copy only production dependencies
 COPY patches ./patches
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/designmanual-frontend/package.json apps/designmanual-frontend/
+COPY packages/spor-design-tokens/package.json packages/spor-design-tokens/
+COPY packages/spor-react/package.json packages/spor-react/
 
-RUN pnpm install --frozen-lockfile --ignore-scripts  --prod
-
+# Install all dependencies (including devDependencies) with cache
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
+    pnpm install --frozen-lockfile --prod=false --ignore-scripts
 
 # Build the app
-FROM base AS build
+FROM deps AS build
 
-RUN mkdir /app
 WORKDIR /app
 
-# Copy dependencies
-ADD . . 
-
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --ignore-scripts
-
+# Copy the full source code
+COPY . .
 
 # Build the application
 # Need to run typegen to generate types for spor-react, 
@@ -57,24 +41,28 @@ RUN pnpm --filter @vygruppen/spor-design-tokens build
 RUN pnpm --filter @vygruppen/spor-react typegen
 RUN pnpm --filter @vygruppen/designmanual-frontend... build
 
-# Finally, build the production image with minimal footprint
+# Deploy stage to create a production-ready directory
+FROM build AS deploy
+
+WORKDIR /app
+
+# Deploy the app to a standalone directory with production dependencies only
+RUN pnpm --filter @vygruppen/designmanual-frontend deploy /deploy-dir --prod
+
+# Final production image with minimal footprint
 FROM base AS final
 
 ENV NODE_ENV=production
 
-RUN mkdir /app
-WORKDIR /app
+WORKDIR /deploy-dir
 
-# Get some secrets
-RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \
+# Install aws-env for secrets
+RUN wget -O /usr/local/bin/aws-env \
+    https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \
     chmod +x /usr/local/bin/aws-env
 
-# Corrected paths
-COPY --from=production-deps /app/node_modules /app/node_modules
-COPY --from=production-deps /app/apps/designmanual-frontend/node_modules /app/apps/designmanual-frontend/node_modules
-COPY --from=build /app/apps/designmanual-frontend/build/server /app/apps/designmanual-frontend/build/server
-COPY --from=build /app/apps/designmanual-frontend/build/client /app/apps/designmanual-frontend/build/client
-ADD . .
+# Copy the deployed production app
+COPY --from=deploy /deploy-dir /deploy-dir
 
 # Start the application
-CMD ["pnpm", "--filter", "@vygruppen/designmanual-frontend", "start"]
+CMD ["pnpm", "start"]

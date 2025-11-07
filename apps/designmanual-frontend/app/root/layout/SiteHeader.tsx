@@ -6,11 +6,6 @@ import {
 import {
   Box,
   Button,
-  Drawer,
-  DrawerBody,
-  DrawerCloseTrigger,
-  DrawerContent,
-  DrawerHeader,
   Flex,
   IconButton,
   useDisclosure,
@@ -23,7 +18,6 @@ import { ColorModeSwitcher } from "~/features/color-mode-switcher";
 import { loader } from "~/root";
 import { getIcon } from "~/utils/getIcon";
 
-import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
 import { SearchDocs } from "./SearchDocs";
 
 const useSearchKeyboardShortcut = (onTriggered: () => void) => {

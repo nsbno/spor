@@ -153,7 +153,7 @@ export const SiteHeader = () => {
 };
 
 const MobileMenu = () => {
-  const { open, onOpen, onClose } = useDisclosure();
+  const { onOpen, onClose } = useDisclosure();
   const location = useLocation();
 
   useEffect(() => {

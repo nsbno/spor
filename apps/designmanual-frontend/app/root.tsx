@@ -2,7 +2,7 @@ import "./styles/style-overrides.css";
 
 import { withEmotionCache } from "@emotion/react";
 import { Brand, Language, SporProvider, themes } from "@vygruppen/spor-react";
-import { type ReactNode, useContext, useEffect } from "react";
+import { type ReactNode } from "react";
 import {
   type ActionFunctionArgs,
   data,
@@ -20,14 +20,11 @@ import {
   useRouteError,
 } from "react-router";
 
+import { useInjectStyles } from "./emotion/emotion-client";
 import { SanityVisualEditing } from "./features/SanityVisualEditing";
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";
 import { PageNotFound } from "./root/PageNotFound";
-import {
-  ClientStyleContext,
-  ServerStyleContext,
-} from "./root/setup/chakra-setup/styleContext";
 import { RootErrorBoundary } from "./root/setup/error-boundary/RootErrorBoundary";
 import {
   getBrandFromCookie,
@@ -173,28 +170,11 @@ type DocumentProps = {
 
 const Document = withEmotionCache(
   ({ children, brand, title }: DocumentProps, emotionCache) => {
-    const serverStyleData = useContext(ServerStyleContext);
-    const clientStyleData = useContext(ClientStyleContext);
     const isPreview = useLoaderData<typeof loader>().isPreview;
     const ENV = useLoaderData<typeof loader>().ENV;
     const loaderData = useLoaderData<typeof loader>();
 
-    // Only executed on client.
-    useEffect(() => {
-      // re-link sheet container
-      emotionCache.sheet.container = document.head;
-      // re-inject tags
-      const tags = emotionCache.sheet.tags;
-      emotionCache.sheet.flush();
-      for (const tag of tags) {
-        // eslint-disable-next-line
-        (emotionCache.sheet as any)._insertTag(tag);
-      }
-      // reset cache to reapply global styles
-      clientStyleData.reset();
-      // We need to exclude the clientStyleData and emotionCache from the dependency array, due to infinite re-renders
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    useInjectStyles(emotionCache);
 
     const location = useLocation();
     const selectedLanguage = location.pathname.startsWith("/spor")
@@ -209,13 +189,11 @@ const Document = withEmotionCache(
           {title ? <title>{title}</title> : null}
           <Meta />
           <Links />
-          {serverStyleData?.map(({ key, ids, css }) => (
-            <style
-              key={key}
-              data-emotion={`${key} ${ids.join(" ")}`}
-              dangerouslySetInnerHTML={{ __html: css }}
-            />
-          ))}
+          <meta
+            name="emotion-insertion-point"
+            content="emotion-insertion-point"
+          />
+
           <script
             // Prevent CSP nonce issues if applicable
             dangerouslySetInnerHTML={{

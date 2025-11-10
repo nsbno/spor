@@ -49,6 +49,7 @@ export const illustration = defineType({
         layout: "dropdown",
       },
     }),
+
     defineField({
       name: "tags",
       title: "Tags",

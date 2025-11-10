@@ -66,7 +66,6 @@ export const illustration = defineType({
       description:
         "Describe the illustration in such a way that it's easy to understand what it could be used for.",
       type: "text",
-      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

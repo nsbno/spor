@@ -63,6 +63,7 @@ export const illustration = defineType({
         ],
         layout: "dropdown",
       },
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({

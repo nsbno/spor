@@ -159,4 +159,3 @@ In rare cases where you need to use non-semantic tokens, you can disable the rul
 2. **Visual error highlighting**: Install the [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) extension to see ESLint errors and warnings inline as you type, making it easier to catch issues immediately.
 
 <img width="1234" height="700" alt="image" src="https://github.com/user-attachments/assets/3f9945a9-c35d-4110-a80c-1ac91e46731f" />
-

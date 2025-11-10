@@ -1,5 +1,5 @@
-import { CacheProvider } from "@emotion/react"
 import type { EmotionCache } from "@emotion/react"
+import { CacheProvider } from "@emotion/react"
 import {
   createContext,
   useContext,
@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
 } from "react"
+
 import { createEmotionCache } from "./emotion-cache"
 
 export interface ClientStyleContextData {
@@ -46,7 +47,7 @@ export function ClientCacheProvider({ children }: ClientCacheProviderProps) {
 }
 
 const useSafeLayoutEffect =
-  typeof window === "undefined" ? () => {} : useLayoutEffect
+  globalThis.window === undefined ? () => {} : useLayoutEffect
 
 export function useInjectStyles(cache: EmotionCache) {
   const styles = useClientStyleContext()
@@ -59,12 +60,12 @@ export function useInjectStyles(cache: EmotionCache) {
 
     const tags = cache.sheet.tags
     cache.sheet.flush()
-    tags.forEach((tag) => {
+    for (const tag of tags) {
       const sheet = cache.sheet as unknown as {
         _insertTag: (tag: HTMLStyleElement) => void
       }
       sheet._insertTag(tag)
-    })
+    }
 
     styles.reset()
     injectRef.current = false

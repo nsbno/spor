@@ -1,8 +1,9 @@
 import { CacheProvider } from "@emotion/react";
 import createEmotionServer from "@emotion/server/create-instance";
-import { renderToString } from "react-dom/server";
-import { createEmotionCache } from "./emotion-cache";
 import { SporProvider } from "@vygruppen/spor-react";
+import { renderToString } from "react-dom/server";
+
+import { createEmotionCache } from "./emotion-cache";
 
 export function createEmotion() {
   const cache = createEmotionCache();
@@ -13,11 +14,11 @@ export function createEmotion() {
 
     let stylesHTML = "";
 
-    styles.forEach(({ key, ids, css }) => {
+    for (const { key, ids, css } of styles) {
       const emotionKey = `${key} ${ids.join(" ")}`;
       const newStyleTag = `<style data-emotion="${emotionKey}">${css}</style>`;
       stylesHTML = `${stylesHTML}${newStyleTag}`;
-    });
+    }
 
     // add the emotion style tags after the insertion point meta tag
     const markup = html.replace(

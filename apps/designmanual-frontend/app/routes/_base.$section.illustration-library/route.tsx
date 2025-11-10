@@ -10,7 +10,6 @@ import {
   Brand,
   Button,
   Flex,
-  Grid,
   GridItem,
   Heading,
   IconButton,

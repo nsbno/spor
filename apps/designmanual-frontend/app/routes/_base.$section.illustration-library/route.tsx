@@ -264,12 +264,14 @@ const IllustationGird = ({
       <Flex flexDirection="column" height="100%">
         <Flex gap={1} alignItems="center" flexDirection={"column"}>
           <Text variant="sm">{illustration.title}</Text>
-          <Popover>
-            <PopoverTrigger>
-              <InformationOutline18Icon aria-label="Informasjon" />
-            </PopoverTrigger>
-            <PopoverContent>{illustration.description}</PopoverContent>
-          </Popover>
+          {illustration.description && (
+            <Popover>
+              <PopoverTrigger>
+                <InformationOutline18Icon aria-label="Informasjon" />
+              </PopoverTrigger>
+              <PopoverContent>{illustration.description}</PopoverContent>
+            </Popover>
+          )}
           <Image
             src={
               colorMode === "light"
@@ -287,7 +289,7 @@ const IllustationGird = ({
           />
         </Flex>
       </Flex>
-      <Box position={"absolute"} bottom="0" right="0">
+      <Box position={"absolute"} bottom="1" right="1">
         <IconButton
           variant="ghost"
           size="sm"

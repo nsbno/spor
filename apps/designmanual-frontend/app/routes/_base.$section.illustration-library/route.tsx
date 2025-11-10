@@ -231,25 +231,17 @@ const IllustationGird = ({
     const normalizedSearchValue = searchValue.toLowerCase().trim();
     return illustrations
       .filter((illustration) => {
-        // Remove all non-printable characters and normalize
+        // Remove all non-printable characters and normalize (hvorfor er dette nødvendig???)
         const cleanSize =
           illustration.size?.replace(/[^\u0020-\u007E]/g, "").trim() || "";
-        const cleanFilterSize = size.replaceAll(/[^\u0020-\u007E]/g, "").trim();
 
-        return size === "all" || cleanSize === cleanFilterSize;
+        return size === "all" || cleanSize === size;
       })
 
-      .filter((illustration) => {
-        const cleanType =
-          illustration.illustrationType
-            ?.replace(/[^\u0020-\u007E]/g, "")
-            .trim() || "";
-        const cleanFilterType = category
-          .replaceAll(/[^\u0020-\u007E]/g, "")
-          .trim();
-
-        return category === "all" || cleanType === cleanFilterType;
-      })
+      .filter(
+        (illustration) =>
+          category === "all" || illustration.illustrationType === category,
+      )
 
       .filter(
         (illustration) =>

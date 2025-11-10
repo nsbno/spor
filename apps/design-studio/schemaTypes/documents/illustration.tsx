@@ -51,6 +51,13 @@ export const illustration = defineType({
     }),
 
     defineField({
+      name: "hasTransparentBackground",
+      title: "Has Transparent Background",
+      description: "Check if this illustration has a transparent/no background",
+      type: "boolean",
+    }),
+
+    defineField({
       name: "tags",
       title: "Tags",
       description:

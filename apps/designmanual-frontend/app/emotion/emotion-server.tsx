@@ -23,7 +23,7 @@ export function createEmotion() {
     // add the emotion style tags after the insertion point meta tag
     const markup = html.replace(
       /<meta(\s)*name="emotion-insertion-point"(\s)*content="emotion-insertion-point"(\s)*\/>/,
-      `<meta name="emotion-insertion-point" content="emotion-insertion-point"/>${stylesHTML}`
+      `<meta name="emotion-insertion-point" content="emotion-insertion-point"/>${stylesHTML}`,
     );
 
     return markup;
@@ -33,7 +33,7 @@ export function createEmotion() {
     return renderToString(
       <CacheProvider value={cache}>
         <SporProvider>{element}</SporProvider>
-      </CacheProvider>
+      </CacheProvider>,
     );
   }
 

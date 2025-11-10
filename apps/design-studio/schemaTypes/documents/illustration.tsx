@@ -59,7 +59,11 @@ export const illustration = defineType({
         list: [
           { title: "Has transparent background", value: "transparent-bg" },
           { title: "Has white background", value: "white-bg" },
-          { title: "Is sticker", value: "sticker" },
+          {
+            title: "Is sticker with white background",
+            value: "sticker-white-bg",
+          },
+          { title: "Is sticker with peel-off", value: "sticker-peel-off" },
         ],
         layout: "dropdown",
       },

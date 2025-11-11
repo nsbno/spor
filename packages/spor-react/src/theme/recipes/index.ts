@@ -24,7 +24,7 @@ export const recipes = {
   link: linkRecipe,
   pressableCard: pressableCardRecipe,
   progressLoader: progressLoaderRecipe,
-  seperator: separatorRecipe,
+  separator: separatorRecipe,
   skeleton: skeletonRecipe,
   staticCard: staticCardRecipe,
   textarea: textareaRecipe,

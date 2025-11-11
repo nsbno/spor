@@ -1,85 +1,63 @@
 import { defineRecipe } from "@chakra-ui/react";
 
 export const separatorRecipe = defineRecipe({
-  className: "spor-separator",
   base: {
-    borderColor: "outline.disabled",
     display: "block",
-    borderRadius: "xl",
+    borderColor: "outline.disabled",
   },
+
   variants: {
     variant: {
       solid: {
         borderStyle: "solid",
       },
       dashed: {
+        borderImageSlice: 1,
+        borderImageSource: `repeating-linear-gradient(
+            var(--gradient-direction),
+            var(--spor-colors-outline-disabled) 0,
+            var(--spor-colors-outline-disabled) var(--dash-size),
+            transparent var(--dash-size),
+            transparent calc(var(--dash-size) + var(--dash-gap))
+          )`,
+      },
+    },
+    orientation: {
+      vertical: {
+        height: "100%",
+        borderInlineStartWidth: "var(--separator-thickness)",
+        "--gradient-direction": "0deg",
+      },
+      horizontal: {
         width: "100%",
-        borderWidth: "0px",
+        borderTopWidth: "var(--separator-thickness)",
+        "--gradient-direction": "90deg",
       },
     },
     size: {
       sm: {
-        borderBottomWidth: "1px",
-        height: "1px",
+        "--separator-thickness": "1px",
+        borderRadius: "1px",
+        "--dash-size": "2px",
+        "--dash-gap": "3px",
       },
       md: {
-        borderBottomWidth: "2px",
-        height: "2px",
+        "--separator-thickness": "2px",
+        borderRadius: "2px",
+        "--dash-size": "4px",
+        "--dash-gap": "4px",
       },
       lg: {
-        borderBottomWidth: "3px",
-        height: "3px",
-      },
-    },
-    orientation: {
-      horizontal: {
-        width: "100%",
-      },
-      vertical: {
-        height: "100%",
-        borderLeftWidth: "1px",
+        "--separator-thickness": "3px",
+        borderRadius: "3px",
+        "--dash-size": "6px",
+        "--dash-gap": "6px",
       },
     },
   },
-  compoundVariants: [
-    {
-      variant: "dashed",
-      size: "sm",
-      css: {
-        background:
-          "linear-gradient(to left, var(--spor-colors-outline-disabled), var(--spor-colors-outline-disabled) 1px, transparent 1px, transparent 4px)",
-        backgroundSize: "4px 1px",
-        backgroundRepeat: "repeat-x",
-      },
-    },
-    {
-      variant: "dashed",
-      size: "md",
-      css: {
-        background:
-          "linear-gradient(to left, var(--spor-colors-outline-disabled), var(--spor-colors-outline-disabled) 3px, transparent 3px, transparent 6px)",
-        backgroundSize: "9px 2px",
-        backgroundRepeat: "repeat-x",
-      },
-    },
-    {
-      variant: "dashed",
-      size: "lg",
-      css: {
-        background:
-          "linear-gradient(to left, var(--spor-colors-outline-disabled), var(--spor-colors-outline-disabled) 3px, transparent 3px, transparent 9px)",
-        backgroundSize: "9px 3px",
-        backgroundRepeat: "repeat-x",
-      },
-    },
-    {
-      variant: "dashed",
-      orientation: "vertical",
-      css: {
-        background: "0",
-        width: "0%",
-        height: "100%",
-      },
-    },
-  ],
+  defaultVariants: {
+    size: "sm",
+    variant: "solid",
+    orientation: "horizontal",
+  },
 });

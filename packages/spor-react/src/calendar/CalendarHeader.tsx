@@ -1,18 +1,12 @@
-import {
-  createTexts,
-  Flex,
-  IconButton,
-  Text,
-  useTranslation,
-} from "@vygruppen/spor-react";
-import {
-  DropdownLeftFill24Icon,
-  DropdownRightFill24Icon,
-} from "@vygruppen/spor-react/icons";
 import { useDateFormatter, VisuallyHidden } from "react-aria";
 
+import { IconButton } from "@/button/IconButton";
 import { useSporCalendar } from "@/calendar/CalendarProvider";
 import { capitalizeFirstLetter } from "@/calendar/utils";
+import { createTexts, useTranslation } from "@/i18n";
+import { DropdownLeftFill24Icon, DropdownRightFill24Icon } from "@/icons";
+import { Flex } from "@/layout";
+import { Text } from "@/typography";
 
 type Props = {
   dualView?: boolean;

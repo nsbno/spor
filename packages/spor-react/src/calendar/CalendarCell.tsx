@@ -1,9 +1,10 @@
 import { CalendarDate, isSameDay, isSameMonth } from "@internationalized/date";
-import { Box, Text } from "@vygruppen/spor-react";
 import { useRef } from "react";
 import { mergeProps, useCalendarCell, useFocusRing } from "react-aria";
 
 import { useSporCalendar } from "@/calendar/CalendarProvider";
+import { Box } from "@/layout";
+import { Text } from "@/typography";
 
 type Props = {
   date: CalendarDate;

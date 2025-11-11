@@ -1,8 +1,7 @@
-import { Box, Flex } from "@vygruppen/spor-react";
-
 import { CalendarGrid } from "@/calendar/CalendarGrid";
 import { CalendarHeader } from "@/calendar/CalendarHeader";
 import { useSporCalendar } from "@/calendar/CalendarProvider";
+import { Box, Flex } from "@/layout";
 
 type Props = {
   dualView?: boolean;

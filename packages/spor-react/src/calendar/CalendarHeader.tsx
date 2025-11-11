@@ -12,6 +12,7 @@ import {
 import { useDateFormatter, VisuallyHidden } from "react-aria";
 
 import { useSporCalendar } from "@/calendar/CalendarProvider";
+import { capitalizeFirstLetter } from "@/calendar/utils";
 
 type Props = {
   dualView?: boolean;
@@ -64,8 +65,10 @@ export function CalendarHeader({ dualView }: Props) {
         fontSize="18px"
         textAlign="center"
       >
-        {monthDateFormatter.format(
-          state.visibleRange.start.toDate(state.timeZone),
+        {capitalizeFirstLetter(
+          monthDateFormatter.format(
+            state.visibleRange.start.toDate(state.timeZone),
+          ),
         )}
       </Text>
 
@@ -77,8 +80,12 @@ export function CalendarHeader({ dualView }: Props) {
           fontSize="18px"
           textAlign="center"
         >
-          {monthDateFormatter.format(
-            state.visibleRange.start.add({ months: 1 }).toDate(state.timeZone),
+          {capitalizeFirstLetter(
+            monthDateFormatter.format(
+              state.visibleRange.start
+                .add({ months: 1 })
+                .toDate(state.timeZone),
+            ),
           )}
         </Text>
       )}

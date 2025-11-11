@@ -1,4 +1,7 @@
-import { useTranslation } from "@/i18n";
+import { DateValue } from "@internationalized/date";
+import { useTranslation } from "@vygruppen/spor-react";
+
+import { CalendarValue } from "@/calendar/CalendarProvider";
 
 /**
  * Returns the currently selected language as a BCF47 language tag.
@@ -24,3 +27,16 @@ export const useCurrentLocale = () => {
     }
   }
 };
+
+export const capitalizeFirstLetter = (str: string) =>
+  str.replace(/^./, (c) => c.toUpperCase());
+
+export function getSafeRangeValue(val: CalendarValue | undefined) {
+  if (!val) return null;
+  const [start, end] = val;
+  const startDv = start as DateValue;
+  const endDv = end as DateValue;
+  if (startDv && endDv) return { start: startDv, end: endDv };
+  if (startDv && !endDv) return { start: startDv, end: startDv };
+  return null;
+}

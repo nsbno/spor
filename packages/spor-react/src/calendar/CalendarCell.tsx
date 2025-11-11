@@ -21,12 +21,14 @@ export function CalendarCell({ date, currentMonth }: Props) {
   const isSelectionStart =
     mode === "range" && state.highlightedRange?.start
       ? isSameDay(date, state.highlightedRange.start)
-      : isSelected;
+      : false;
 
   const isSelectionEnd =
     mode === "range" && state.highlightedRange?.end
       ? isSameDay(date, state.highlightedRange.end)
-      : isSelected;
+      : false;
+
+  const isSingleModeSelected = mode !== "range" && isSelected;
 
   const { focusProps, isFocusVisible } = useFocusRing();
 
@@ -42,10 +44,9 @@ export function CalendarCell({ date, currentMonth }: Props) {
         {...mergeProps(buttonProps, focusProps)}
         ref={ref}
         hidden={isOutsideMonth}
-        width={["50px", "70px"]}
-        height={["50px", "54px"]}
+        width={["54px", null, "70px"]}
+        height={["48px", null, "60px"]}
         padding={0.5}
-        opacity={isDisabled ? 0.5 : 1}
       >
         <Box
           width="100%"
@@ -56,30 +57,30 @@ export function CalendarCell({ date, currentMonth }: Props) {
           borderRadius="sm"
           css={{
             cursor: "pointer",
-            color: isDisabled ? "surface.disabled" : undefined,
-            // Selection start/end styling
-            ...((isSelectionStart || isSelectionEnd) && {
-              backgroundColor: "pine",
-              color: "white",
-              "&:hover": {
-                backgroundColor: "pine",
-              },
+            color: isDisabled ? "text.disabled" : undefined,
+            // Single mode: Selected styling
+            ...(isSingleModeSelected && {
+              backgroundColor: "brand.surface",
+              color: "text.inverted",
             }),
-            // Middle range styling
+            // Range mode: Selection start/end styling
+            ...((isSelectionStart || isSelectionEnd) && {
+              backgroundColor: "brand.surface",
+              color: "text.inverted",
+            }),
+            // Range mode: Middle range styling
             ...(isSelected &&
-              !(isSelectionStart || isSelectionEnd) && {
-                backgroundColor: "seaMist",
-                color: "black",
-                "&:hover": {
-                  backgroundColor: "seaMist",
-                },
+              !(isSelectionStart || isSelectionEnd) &&
+              mode === "range" && {
+                backgroundColor: "surface.secondary",
+                color: "text",
               }),
             // Non-selected hover state
             ...(!isSelected &&
               !isDisabled && {
                 "&:hover": {
-                  backgroundColor: "seaMist",
-                  color: "black",
+                  backgroundColor: "surface.secondary",
+                  color: "text",
                 },
               }),
           }}

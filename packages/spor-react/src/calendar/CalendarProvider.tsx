@@ -21,10 +21,11 @@ import {
   useRangeCalendarState as useStatelyRangeCalendarState,
 } from "react-stately";
 
-import { useCurrentLocale } from "@/calendar/utils";
+import { getSafeRangeValue, useCurrentLocale } from "@/calendar/utils";
 
 export type CalendarValue = [CalendarDate | null, CalendarDate | null];
 export type CalendarMode = "single" | "range";
+type CalendarState = SingleCalendarState | RangeCalendarState;
 
 type SingleCalendarState = {
   state: StatelyCalendarState;
@@ -34,6 +35,7 @@ type SingleCalendarState = {
   prevButtonProps: AriaButtonProps<"button">;
   startValue: CalendarDate | null;
   endValue: null;
+  isSelectingRange: boolean;
   ref: React.RefObject<HTMLDivElement>;
 };
 
@@ -45,18 +47,17 @@ type RangeCalendarState = {
   prevButtonProps: AriaButtonProps<"button">;
   startValue: CalendarDate | null;
   endValue: CalendarDate | null;
-  isSelectingEnd: boolean;
+  isSelectingRange: boolean;
   ref: React.RefObject<HTMLDivElement>;
 };
 
-type CalendarState = SingleCalendarState | RangeCalendarState;
-
 const CalendarContext = createContext<CalendarState | null>(null);
 
+// TODO: Rename to useCalendar?
 export function useSporCalendar(): CalendarState {
   const ctx = useContext(CalendarContext);
   if (!ctx)
-    throw new Error("useSporCalendar must be used within SporCalendarProvider");
+    throw new Error("useSporCalendar must be used within CalendarProvider");
   return ctx;
 }
 
@@ -77,19 +78,9 @@ export function CalendarProvider(props: Props) {
   const { mode, onChange, value, defaultValue, ...calendarProps } = props;
   const locale = useCurrentLocale();
 
-  function getSafeRangeValue(val: CalendarValue | undefined) {
-    if (!val) return;
-    const [start, end] = val;
-    if (start && end) {
-      return { start: start as DateValue, end: end as DateValue };
-    }
-    return;
-  }
-
   const singleState = useStatelyCalendarState({
     ...(calendarProps as AriaCalendarProps<DateValue>),
     value: value?.[0],
-    //focusedValue: value?.[0] || defaultValue?.[0],
     defaultValue: defaultValue?.[0],
     pageBehavior: "single",
     firstDayOfWeek: "mon",
@@ -114,7 +105,6 @@ export function CalendarProvider(props: Props) {
   const rangeState = useStatelyRangeCalendarState({
     ...(calendarProps as AriaRangeCalendarProps<DateValue>),
     value: getSafeRangeValue(value),
-    //focusedValue: value?.[0] || getSafeRangeValue(value)?.start,
     defaultValue: getSafeRangeValue(defaultValue),
     pageBehavior: "single",
     firstDayOfWeek: "mon",
@@ -138,29 +128,37 @@ export function CalendarProvider(props: Props) {
   );
 
   useEffect(() => {
+    console.log({
+      mode,
+      singleValue: singleState.value,
+      rangeValue: rangeState.value,
+    });
     if (mode === "range") {
-      if (rangeState?.value?.start && rangeState?.value?.end) {
-        const clampedStart = clampDate(rangeState, rangeState.value.start);
-        const clampedEnd = clampDate(rangeState, rangeState.value.end);
-
-        rangeState.setValue({ start: clampedStart, end: clampedEnd });
-
-        onChange?.([toCalendarDate(clampedStart), toCalendarDate(clampedEnd)]);
-
-        if (clampedStart.compare(clampedEnd) === 0) {
-          const initialDate = singleState.value;
-          if (initialDate) {
-            rangeState.setAnchorDate(initialDate);
-          }
-        }
+      if (
+        singleState.value &&
+        (!rangeState.value || compareRangeValues() === 0)
+      ) {
+        rangeState.setAnchorDate(singleState.value);
+        rangeState.setFocusedDate(singleState.value);
+        rangeState.setValue({
+          start: singleState.value,
+          end: singleState.value,
+        });
       }
     } else {
-      if (singleState.value) {
-        onChange?.([toCalendarDate(singleState.value), null]);
+      if (rangeState.value?.start && !singleState.value) {
+        singleState.setValue(toCalendarDate(rangeState.value.start));
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, onChange]);
+  }, [mode]);
+
+  const compareRangeValues = () => {
+    if (!rangeState.value) return true;
+
+    const { start, end } = rangeState.value;
+    return start.compare(end);
+  };
 
   const getRangeStartValue = () => {
     if (rangeState.highlightedRange?.start) {
@@ -192,7 +190,7 @@ export function CalendarProvider(props: Props) {
           prevButtonProps: rangePrevButtonProps,
           startValue: getRangeStartValue(),
           endValue: getRangeEndValue(),
-          isSelectingEnd:
+          isSelectingRange:
             rangeState.anchorDate !== null && !rangeState.isDragging,
           ref,
         }
@@ -204,6 +202,7 @@ export function CalendarProvider(props: Props) {
           prevButtonProps: singlePrevButtonProps,
           startValue: singleState.value,
           endValue: null,
+          isSelectingRange: false,
           ref,
         };
 
@@ -212,14 +211,4 @@ export function CalendarProvider(props: Props) {
       {props.children}
     </CalendarContext.Provider>
   );
-}
-
-export function clampDate(
-  state: StatelyCalendarState | StatelyRangeCalendarState,
-  date: DateValue,
-): DateValue {
-  const { minValue, maxValue } = state;
-  if (minValue && date.compare(minValue) < 0) return minValue;
-  if (maxValue && date.compare(maxValue) > 0) return maxValue;
-  return date;
 }

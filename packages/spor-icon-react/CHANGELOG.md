@@ -1,5 +1,13 @@
 # @vygruppen/spor-icon-react
 
+## 4.3.0
+
+### Minor Changes
+
+- 4ffbd64: Upgrade Chakra UI to v3.28.1
+
+  This update brings the latest Chakra UI improvements and bug fixes to our components.
+
 ## 4.2.1
 
 ### Patch Changes

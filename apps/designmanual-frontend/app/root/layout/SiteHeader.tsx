@@ -47,6 +47,10 @@ const useSearchKeyboardShortcut = (onTriggered: () => void) => {
 export const SiteHeader = () => {
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
 
+  const { isPreview } = useRouteLoaderData<typeof loader>("root") || {
+    isPreview: false,
+  };
+
   useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
 
   const routeData = useRouteLoaderData<typeof loader>("root");
@@ -82,7 +86,10 @@ export const SiteHeader = () => {
         width="100%"
         position="relative"
       >
-        <Link to="/" aria-label="Go to the front page">
+        <Link
+          to={isPreview ? "/?sanity-preview-perspective=drafts" : "/"}
+          aria-label="Go to the front page"
+        >
           <VyLogo
             className="light"
             width="auto"
@@ -92,8 +99,16 @@ export const SiteHeader = () => {
         </Link>
 
         <Box as="nav" flexGrow={1} justifyContent="flex-end">
-          <Flex as="ul" gap="4" width={"auto"} justifySelf={"flex-end"}>
-            <ColorModeSwitcher />
+          <Flex
+            as="ul"
+            gap="4"
+            width={"auto"}
+            justifyContent="flex-end"
+            alignItems="center"
+          >
+            <Box as="li" marginLeft="auto">
+              <ColorModeSwitcher />
+            </Box>
             {sections.map((section) => {
               return (
                 <Box as="li" key={section.title}>
@@ -118,7 +133,11 @@ export const SiteHeader = () => {
                           : "outline",
                     })}
                   >
-                    <Link to={`/${section.slug.current}`}>{section.title}</Link>
+                    <Link
+                      to={`/${section.slug.current}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
+                    >
+                      {section.title}
+                    </Link>
                   </Button>
                 </Box>
               );
@@ -142,6 +161,7 @@ export const SiteHeader = () => {
 const MobileMenu = () => {
   const { open, onOpen, onClose } = useDisclosure();
   const location = useLocation();
+
   useEffect(() => {
     // This doesn't close the menu when you're on the page you're clicking on,
     // but that's on you!

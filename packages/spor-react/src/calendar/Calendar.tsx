@@ -18,7 +18,7 @@ export function Calendar({ dualView }: Props) {
   const { calendarProps, ref } = useCalendar();
 
   return (
-    <Box {...calendarProps} ref={ref}>
+    <Box width="fit-content" ref={ref} {...calendarProps}>
       <CalendarHeader dualView={dualView} />
 
       <Flex alignItems="flex-start">

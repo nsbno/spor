@@ -1,5 +1,5 @@
 ---
-"@vygruppen/spor-react": minor
+"@vygruppen/spor-react": patch
 ---
 
 ** Calendar **

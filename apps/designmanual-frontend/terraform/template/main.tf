@@ -62,7 +62,8 @@ module "ssr_task" {
   rollback_window_in_minutes        = var.environment != "prod" ? 0 : 10
   deployment_configuration_strategy = var.environment != "prod" ? "ROLLING" : "BLUE_GREEN"
 
-  cpu = 2048
+  cpu    = 2048
+  memory = 4096
 
   application_container = {
     name           = "${local.application_name}-main"

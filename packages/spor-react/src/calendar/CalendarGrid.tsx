@@ -8,7 +8,7 @@ import {
 import { useCalendarGrid } from "react-aria";
 
 import { CalendarCell } from "@/calendar/CalendarCell";
-import { useCalendar } from "@/calendar/CalendarProvider";
+import { useCalendar } from "@/calendar/CalendarContext";
 import { useCurrentLocale } from "@/calendar/utils";
 import { Language, useTranslation } from "@/i18n";
 import { Text } from "@/typography";

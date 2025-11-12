@@ -1,7 +1,7 @@
 import { useDateFormatter, VisuallyHidden } from "react-aria";
 
 import { IconButton } from "@/button";
-import { useCalendar } from "@/calendar/CalendarProvider";
+import { useCalendar } from "@/calendar/CalendarContext";
 import { capitalizeFirstLetter } from "@/calendar/utils";
 import { createTexts, useTranslation } from "@/i18n";
 import { DropdownLeftFill24Icon, DropdownRightFill24Icon } from "@/icons";

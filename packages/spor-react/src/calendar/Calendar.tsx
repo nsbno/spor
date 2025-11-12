@@ -1,12 +1,19 @@
+import { useCalendar } from "@/calendar/CalendarContext";
 import { CalendarGrid } from "@/calendar/CalendarGrid";
 import { CalendarHeader } from "@/calendar/CalendarHeader";
-import { useCalendar } from "@/calendar/CalendarProvider";
 import { Box, Flex } from "@/layout";
 
 type Props = {
+  /**
+   * Show two months side by side
+   */
   dualView?: boolean;
 };
 
+/**
+ * Calendar component that displays a grid of days for a specific month.
+ * Standard view with pagination, with the option to show dual months side by side.
+ */
 export function Calendar({ dualView }: Props) {
   const { calendarProps, ref } = useCalendar();
 
@@ -20,7 +27,10 @@ export function Calendar({ dualView }: Props) {
         </Box>
 
         {dualView && (
-          <Box paddingLeft={4} borderLeft={["1px solid #d3d3d3"]}>
+          <Box
+            paddingLeft={4}
+            borderLeft={["1px solid var(--spor-colors-outline-disabled)"]}
+          >
             <CalendarGrid offset={{ months: 1 }} />
           </Box>
         )}

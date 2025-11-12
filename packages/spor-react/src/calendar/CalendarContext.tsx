@@ -61,16 +61,39 @@ export function useCalendar(): CalendarState {
 
 type Props = {
   children?: React.ReactNode;
+  /**
+   * The selection mode of the calendar. Can be "single" or "range".
+   */
   mode?: CalendarMode;
+  /**
+   * The controlled value of the calendar.
+   */
   value?: CalendarValue;
+  /**
+   * The default value of the calendar. Useful if you don't want to control the value.
+   */
   defaultValue?: CalendarValue;
+  /**
+   * Called when the selected date or range changes.
+   * @param value The new selected date or date range.
+   * @returns [CalendarDate | null, CalendarDate | null]
+   */
   onChange?: (value: CalendarValue) => void;
+  /**
+   * The visible duration of the calendar. This defines how many months are shown at once.
+   * Default: { months: 1 }
+   * If using dualView, this should be set to { months: 2 }.
+   * If using scroll calendar, this defines how many months are shown at once. Scroll calendar does not have pagination.
+   */
   visibleDuration?: DateDuration;
 } & Omit<
   AriaCalendarProps<DateValue> | AriaRangeCalendarProps<DateValue>,
   "onChange" | "defaultValue" | "value"
 >;
 
+/**
+ * Provides context for calendar components. Must be used as a wrapper around the Calendar.
+ */
 export function CalendarProvider(props: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const {

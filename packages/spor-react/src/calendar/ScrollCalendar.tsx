@@ -2,12 +2,15 @@ import { toCalendarDate } from "@internationalized/date";
 import { useEffect, useRef } from "react";
 import { useDateFormatter } from "react-aria";
 
+import { useCalendar } from "@/calendar/CalendarContext";
 import { CalendarGrid } from "@/calendar/CalendarGrid";
-import { useCalendar } from "@/calendar/CalendarProvider";
 import { capitalizeFirstLetter } from "@/calendar/utils";
 import { Box, BoxProps, Flex } from "@/layout";
 import { Text } from "@/typography";
 
+/**
+ * A calendar component that displays multiple months in a scrollable view.
+ */
 export function ScrollCalendar(boxProps: BoxProps) {
   const { state, calendarProps, ref, startValue } = useCalendar();
   const monthRefs = useRef<(HTMLDivElement | null)[]>([]);

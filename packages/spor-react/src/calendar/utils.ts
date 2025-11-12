@@ -1,6 +1,6 @@
 import { DateValue } from "@internationalized/date";
 
-import { CalendarValue } from "@/calendar/CalendarProvider";
+import { CalendarValue } from "@/calendar/CalendarContext";
 import { useTranslation } from "@/i18n";
 
 /**

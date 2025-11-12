@@ -2,7 +2,7 @@ import { CalendarDate, isSameDay, isSameMonth } from "@internationalized/date";
 import { useRef } from "react";
 import { mergeProps, useCalendarCell, useFocusRing } from "react-aria";
 
-import { useCalendar } from "@/calendar/CalendarProvider";
+import { useCalendar } from "@/calendar/CalendarContext";
 import { Box } from "@/layout";
 import { Text } from "@/typography";
 

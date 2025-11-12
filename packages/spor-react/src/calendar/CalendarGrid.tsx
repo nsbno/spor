@@ -5,13 +5,12 @@ import {
   getWeeksInMonth,
   toCalendarDate,
 } from "@internationalized/date";
+import { Language, Text, useTranslation } from "@vygruppen/spor-react";
 import { useCalendarGrid } from "react-aria";
 
 import { CalendarCell } from "@/calendar/CalendarCell";
 import { useSporCalendar } from "@/calendar/CalendarProvider";
 import { useCurrentLocale } from "@/calendar/utils";
-import { Language, useTranslation } from "@/i18n";
-import { Text } from "@/typography";
 
 const weekDays: Record<Language, string[]> = {
   nb: ["Ma", "Ti", "On", "To", "Fr", "Lø", "Sø"],

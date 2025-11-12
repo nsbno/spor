@@ -1,12 +1,11 @@
 import { toCalendarDate } from "@internationalized/date";
+import { Box, BoxProps, Flex, Text } from "@vygruppen/spor-react";
 import { useEffect, useRef } from "react";
 import { useDateFormatter } from "react-aria";
 
 import { CalendarGrid } from "@/calendar/CalendarGrid";
 import { useSporCalendar } from "@/calendar/CalendarProvider";
 import { capitalizeFirstLetter } from "@/calendar/utils";
-import { Box, BoxProps, Flex } from "@/layout";
-import { Text } from "@/typography";
 
 export function ScrollCalendar(boxProps: BoxProps) {
   const { state, calendarProps, ref, startValue } = useSporCalendar();

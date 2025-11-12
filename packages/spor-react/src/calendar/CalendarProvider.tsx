@@ -5,7 +5,7 @@ import {
   toCalendarDate,
 } from "@internationalized/date";
 import { DOMAttributes, FocusableElement } from "@react-types/shared";
-import { createContext, useContext, useEffect, useRef } from "react";
+import { createContext, useContext, useRef } from "react";
 import {
   AriaButtonProps,
   AriaCalendarProps,
@@ -85,7 +85,7 @@ export function CalendarProvider(props: Props) {
     pageBehavior: "single",
     firstDayOfWeek: "mon",
     onChange: (value) => {
-      if (onChange) {
+      if (onChange && mode === "single") {
         onChange([value, null]);
       }
     },
@@ -109,8 +109,11 @@ export function CalendarProvider(props: Props) {
     pageBehavior: "single",
     firstDayOfWeek: "mon",
     onChange: (value) => {
-      if (onChange) {
-        onChange([toCalendarDate(value.start), toCalendarDate(value.end)]);
+      if (onChange && mode === "range") {
+        onChange([
+          value?.start ? toCalendarDate(value.start) : null,
+          value?.end ? toCalendarDate(value.end) : null,
+        ]);
       }
     },
     locale,
@@ -126,39 +129,6 @@ export function CalendarProvider(props: Props) {
     rangeState,
     ref,
   );
-
-  useEffect(() => {
-    console.log({
-      mode,
-      singleValue: singleState.value,
-      rangeValue: rangeState.value,
-    });
-    if (mode === "range") {
-      if (
-        singleState.value &&
-        (!rangeState.value || compareRangeValues() === 0)
-      ) {
-        rangeState.setAnchorDate(singleState.value);
-        rangeState.setFocusedDate(singleState.value);
-        rangeState.setValue({
-          start: singleState.value,
-          end: singleState.value,
-        });
-      }
-    } else {
-      if (rangeState.value?.start && !singleState.value) {
-        singleState.setValue(toCalendarDate(rangeState.value.start));
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode]);
-
-  const compareRangeValues = () => {
-    if (!rangeState.value) return true;
-
-    const { start, end } = rangeState.value;
-    return start.compare(end);
-  };
 
   const getRangeStartValue = () => {
     if (rangeState.highlightedRange?.start) {

@@ -1,7 +1,7 @@
 import { DateValue } from "@internationalized/date";
+import { useTranslation } from "@vygruppen/spor-react";
 
 import { CalendarValue } from "@/calendar/CalendarProvider";
-import { useTranslation } from "@/i18n";
 
 /**
  * Returns the currently selected language as a BCF47 language tag.

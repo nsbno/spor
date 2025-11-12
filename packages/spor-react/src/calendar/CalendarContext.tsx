@@ -133,8 +133,9 @@ export function CalendarProvider(props: Props) {
 
   const rangeState = useStatelyRangeCalendarState({
     ...(calendarProps as AriaRangeCalendarProps<DateValue>),
-    value: getSafeRangeValue(value),
-    defaultValue: getSafeRangeValue(defaultValue),
+    value: value === undefined ? undefined : getSafeRangeValue(value),
+    defaultValue:
+      defaultValue === undefined ? undefined : getSafeRangeValue(defaultValue),
     pageBehavior: "single",
     firstDayOfWeek: "mon",
     visibleDuration,

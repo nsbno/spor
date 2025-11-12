@@ -9,7 +9,7 @@ import { checkboxSlotRecipe } from "@/theme/slot-recipes/checkbox";
 
 type CheckboxVariantProps = RecipeVariantProps<typeof checkboxSlotRecipe>;
 
-type CheckboxProps = ChakraCheckbox.RootProps &
+type CheckboxProps = Omit<ChakraCheckbox.RootProps, "onChange"> &
   PropsWithChildren<CheckboxVariantProps> & {
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
     rootRef?: React.Ref<HTMLLabelElement>;

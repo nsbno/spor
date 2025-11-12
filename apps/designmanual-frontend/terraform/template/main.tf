@@ -62,12 +62,13 @@ module "ssr_task" {
   rollback_window_in_minutes        = var.environment != "prod" ? 0 : 10
   deployment_configuration_strategy = var.environment != "prod" ? "ROLLING" : "BLUE_GREEN"
 
+  cpu = 2048
+
   application_container = {
     name           = "${local.application_name}-main"
     repository_url = data.aws_ecr_repository.this.repository_url
     protocol       = "HTTP"
     port           = 3000
-    cpu            = 2048
 
     environment = {
       VITE_ENVIRONMENT              = var.environment

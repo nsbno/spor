@@ -1,7 +1,7 @@
 import { useDateFormatter, VisuallyHidden } from "react-aria";
 
 import { IconButton } from "@/button";
-import { useSporCalendar } from "@/calendar/CalendarProvider";
+import { useCalendar } from "@/calendar/CalendarProvider";
 import { capitalizeFirstLetter } from "@/calendar/utils";
 import { createTexts, useTranslation } from "@/i18n";
 import { DropdownLeftFill24Icon, DropdownRightFill24Icon } from "@/icons";
@@ -15,7 +15,7 @@ type Props = {
 export function CalendarHeader({ dualView }: Props) {
   const { t } = useTranslation();
   const { state, calendarProps, nextButtonProps, prevButtonProps } =
-    useSporCalendar();
+    useCalendar();
 
   const monthDateFormatter = useDateFormatter({
     month: "long",

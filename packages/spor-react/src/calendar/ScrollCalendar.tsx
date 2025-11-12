@@ -3,13 +3,13 @@ import { useEffect, useRef } from "react";
 import { useDateFormatter } from "react-aria";
 
 import { CalendarGrid } from "@/calendar/CalendarGrid";
-import { useSporCalendar } from "@/calendar/CalendarProvider";
+import { useCalendar } from "@/calendar/CalendarProvider";
 import { capitalizeFirstLetter } from "@/calendar/utils";
 import { Box, BoxProps, Flex } from "@/layout";
 import { Text } from "@/typography";
 
 export function ScrollCalendar(boxProps: BoxProps) {
-  const { state, calendarProps, ref, startValue } = useSporCalendar();
+  const { state, calendarProps, ref, startValue } = useCalendar();
   const monthRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const startMonth =

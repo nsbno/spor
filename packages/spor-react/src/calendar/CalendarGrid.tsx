@@ -8,7 +8,7 @@ import {
 import { useCalendarGrid } from "react-aria";
 
 import { CalendarCell } from "@/calendar/CalendarCell";
-import { useSporCalendar } from "@/calendar/CalendarProvider";
+import { useCalendar } from "@/calendar/CalendarProvider";
 import { useCurrentLocale } from "@/calendar/utils";
 import { Language, useTranslation } from "@/i18n";
 import { Text } from "@/typography";
@@ -25,7 +25,7 @@ type Props = {
 };
 
 export function CalendarGrid({ offset = {} }: Props) {
-  const { state } = useSporCalendar();
+  const { state } = useCalendar();
   const { language } = useTranslation();
   const locale = useCurrentLocale();
   const startDate = state.visibleRange.start.add(offset);

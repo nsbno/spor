@@ -2,7 +2,7 @@ import { CalendarDate, isSameDay, isSameMonth } from "@internationalized/date";
 import { useRef } from "react";
 import { mergeProps, useCalendarCell, useFocusRing } from "react-aria";
 
-import { useSporCalendar } from "@/calendar/CalendarProvider";
+import { useCalendar } from "@/calendar/CalendarProvider";
 import { Box } from "@/layout";
 import { Text } from "@/typography";
 
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export function CalendarCell({ date, currentMonth }: Props) {
-  const { mode, state } = useSporCalendar();
+  const { mode, state } = useCalendar();
   const ref = useRef<HTMLDivElement>(null);
   const { cellProps, buttonProps, isSelected, isDisabled, formattedDate } =
     useCalendarCell({ date }, state, ref);

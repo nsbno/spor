@@ -1,6 +1,6 @@
 import { CalendarGrid } from "@/calendar/CalendarGrid";
 import { CalendarHeader } from "@/calendar/CalendarHeader";
-import { useSporCalendar } from "@/calendar/CalendarProvider";
+import { useCalendar } from "@/calendar/CalendarProvider";
 import { Box, Flex } from "@/layout";
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 };
 
 export function Calendar({ dualView }: Props) {
-  const { calendarProps, ref } = useSporCalendar();
+  const { calendarProps, ref } = useCalendar();
 
   return (
     <Box {...calendarProps} ref={ref}>

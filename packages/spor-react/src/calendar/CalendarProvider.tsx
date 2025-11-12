@@ -53,11 +53,9 @@ type RangeCalendarState = {
 
 const CalendarContext = createContext<CalendarState | null>(null);
 
-// TODO: Rename to useCalendar?
-export function useSporCalendar(): CalendarState {
+export function useCalendar(): CalendarState {
   const ctx = useContext(CalendarContext);
-  if (!ctx)
-    throw new Error("useSporCalendar must be used within CalendarProvider");
+  if (!ctx) throw new Error("useCalendar must be used within CalendarProvider");
   return ctx;
 }
 
@@ -75,7 +73,14 @@ type Props = {
 
 export function CalendarProvider(props: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const { mode, onChange, value, defaultValue, ...calendarProps } = props;
+  const {
+    mode = "single",
+    onChange,
+    value,
+    defaultValue,
+    visibleDuration = { months: 1 },
+    ...calendarProps
+  } = props;
   const locale = useCurrentLocale();
 
   const singleState = useStatelyCalendarState({
@@ -84,6 +89,7 @@ export function CalendarProvider(props: Props) {
     defaultValue: defaultValue?.[0],
     pageBehavior: "single",
     firstDayOfWeek: "mon",
+    visibleDuration,
     onChange: (value) => {
       if (onChange && mode === "single") {
         onChange([value, null]);
@@ -108,6 +114,7 @@ export function CalendarProvider(props: Props) {
     defaultValue: getSafeRangeValue(defaultValue),
     pageBehavior: "single",
     firstDayOfWeek: "mon",
+    visibleDuration,
     onChange: (value) => {
       if (onChange && mode === "range") {
         onChange([

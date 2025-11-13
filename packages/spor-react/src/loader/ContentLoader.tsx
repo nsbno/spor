@@ -1,8 +1,7 @@
 "use client";
-import { Box, BoxProps, VisuallyHidden } from "@chakra-ui/react";
+import { Box, BoxProps, ClientOnly, VisuallyHidden } from "@chakra-ui/react";
 import { contentLoaderData } from "@vygruppen/spor-loader";
 
-import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
 
 export type ContentLoaderProps = BoxProps;

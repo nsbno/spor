@@ -6,10 +6,10 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import clsx from "clsx";
-import React, { forwardRef, PropsWithChildren } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
 import { lineIconSlotRecipe } from "../theme/slot-recipes/line-icon";
-import { getCorrectIcon } from "./icons";
+import { LinjeTagIcon } from "./icons";
 import { CustomVariantProps, TagProps } from "./types";
 
 type LineIconVariantProps = RecipeVariantProps<typeof lineIconSlotRecipe>;
@@ -69,7 +69,6 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
       variant,
       size = "md",
       foregroundColor,
-
       disabled,
       style,
       target = "lineIcon",
@@ -89,24 +88,20 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
       return variant === "walk" && target === "travelTag" ? 0 : "1px";
     };
 
-    const Icon: React.ElementType = getCorrectIcon({
-      variant:
-        // eslint-disable-next-line no-nested-ternary
-        variant === "custom" && "customIconVariant" in rest
-          ? rest.customIconVariant
-          : variant === "custom"
-            ? "local-train"
-            : variant,
-      size,
-    });
-    if (!Icon) {
-      return null;
-    }
-
     if (foregroundColor) {
       styles.iconContainer.backgroundColor = disabled
         ? "surface.disabled"
         : foregroundColor;
+    }
+
+    function getIconVariant() {
+      if (variant === "custom") {
+        if ("customIconVariant" in rest) {
+          return rest.customIconVariant;
+        }
+        return "local-train";
+      }
+      return variant;
     }
 
     return (
@@ -119,7 +114,11 @@ export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
         ref={ref}
         className={clsx("light", rest.className)}
       >
-        <Icon css={styles.icon} />
+        <LinjeTagIcon
+          size={size}
+          css={styles.icon}
+          variant={getIconVariant()}
+        />
       </Box>
     );
   },

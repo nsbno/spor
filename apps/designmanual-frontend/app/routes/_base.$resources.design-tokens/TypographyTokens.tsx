@@ -61,7 +61,7 @@ const TypographyTokenTable = ({
 
   const fontTokensList = Object.entries(
     designTokens.tokens.font.style,
-  ).reverse();
+  ).toReversed();
 
   return (
     <Box>

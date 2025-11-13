@@ -3,6 +3,7 @@ import {
   Box,
   BoxProps,
   RecipeVariantProps,
+  SystemStyleObject,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import {
@@ -93,6 +94,40 @@ export type TravelTagProps = TagProps &
  * @see https://spor.vy.no/components/line-tags
  */
 
+function renderDeviationLevelIcon(
+  deviationLevel: DeviationLevels,
+  size: TravelTagProps["size"],
+  css: SystemStyleObject,
+) {
+  switch (deviationLevel) {
+    case "critical": {
+      return size === "lg" ? (
+        <ErrorFill24Icon css={css} />
+      ) : (
+        <ErrorFill18Icon css={css} />
+      );
+    }
+    case "major":
+    case "minor": {
+      return size === "lg" ? (
+        <WarningFill24Icon css={css} />
+      ) : (
+        <WarningFill18Icon css={css} />
+      );
+    }
+    case "info": {
+      return size === "lg" ? (
+        <InformationFill24Icon css={css} />
+      ) : (
+        <InformationFill18Icon css={css} />
+      );
+    }
+    default: {
+      return null;
+    }
+  }
+}
+
 export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
   function TravelTag(
     {
@@ -115,8 +150,6 @@ export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
       size,
       deviationLevel,
     });
-
-    const DeviationLevelIcon = getDeviationLevelIcon({ deviationLevel, size });
 
     return (
       <Box
@@ -151,31 +184,8 @@ export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
             </Box>
           )}
         </Box>
-        {DeviationLevelIcon && (
-          <DeviationLevelIcon css={styles.deviationIcon} />
-        )}
+        {renderDeviationLevelIcon(deviationLevel, size, styles.deviationIcon)}
       </Box>
     );
   },
 );
-
-const getDeviationLevelIcon = ({
-  deviationLevel,
-  size,
-}: Pick<TravelTagProps, "deviationLevel" | "size">) => {
-  switch (deviationLevel) {
-    case "critical": {
-      return size === "lg" ? ErrorFill24Icon : ErrorFill18Icon;
-    }
-    case "major":
-    case "minor": {
-      return size === "lg" ? WarningFill24Icon : WarningFill18Icon;
-    }
-    case "info": {
-      return size === "lg" ? InformationFill24Icon : InformationFill18Icon;
-    }
-    default: {
-      return null;
-    }
-  }
-};

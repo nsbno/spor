@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, SystemStyleObject } from "@chakra-ui/react";
 import {
   AltTransportFill18Icon,
   AltTransportFill24Icon,
@@ -75,7 +75,13 @@ const icons: Record<Variant, Record<Size, React.ComponentType>> = {
 type GetCorrectIconArgs = {
   variant: Variant;
   size: Size;
+  css: SystemStyleObject;
 };
-export const getCorrectIcon = ({ variant, size }: GetCorrectIconArgs) => {
-  return icons[variant]?.[size] ?? Box;
+export const LinjeTagIcon = ({ variant, size, css }: GetCorrectIconArgs) => {
+  const IconComponent = icons[variant]?.[size] ?? Box;
+  return (
+    <Box css={css} asChild>
+      <IconComponent />
+    </Box>
+  );
 };

@@ -4,14 +4,13 @@ import {
   AccordionItemContent,
   AccordionItemTrigger,
   Box,
-  ClientOnly,
   Expandable,
   Flex,
   Separator,
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { Link, useLocation, useRouteLoaderData } from "react-router";
 
 import { loader } from "~/root";
@@ -64,10 +63,17 @@ export const ContentMenu = forwardRef<
 
   const currentSection = menu?.relatedTo.slug;
 
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsClient(true);
+  }, []);
+
   const rawHeadingsMenu = useHeadingsMenu();
 
   const isSpor = location.pathname?.includes("spor") ?? false;
-  const headingsMenu = isSpor ? [] : rawHeadingsMenu;
+  const headingsMenu = isClient && !isSpor ? rawHeadingsMenu : [];
 
   const [expanded, setExpanded] = useState([location.pathname]);
 
@@ -174,31 +180,29 @@ export const ContentMenu = forwardRef<
                     )}
                   </Stack>
                 )}
-                <ClientOnly>
-                  {headingsMenu.length > 0 && (
-                    <Stack display={["none", null, null, "block"]}>
-                      {headingsMenu.map((subItem) => (
-                        <MenuItem
-                          key={subItem.text}
-                          url={`${location.pathname}#${subItem.id}`}
-                          isActive={
-                            `/${currentSection}${subItem.text}` ===
-                            location.pathname
-                          }
-                          backgroundColor={
-                            `${location.pathname}#${subItem.id}` ===
-                            location.pathname
-                              ? "bg.tertiary"
-                              : "transparent"
-                          }
-                          id={`${location.pathname}#${subItem.id}--${location.pathname}`}
-                        >
-                          {subItem.text}
-                        </MenuItem>
-                      ))}
-                    </Stack>
-                  )}
-                </ClientOnly>
+                {headingsMenu.length > 0 && (
+                  <Stack display={["none", null, null, "block"]}>
+                    {headingsMenu.map((subItem) => (
+                      <MenuItem
+                        key={subItem.text}
+                        url={`${location.pathname}#${subItem.id}`}
+                        isActive={
+                          `/${currentSection}${subItem.text}` ===
+                          location.pathname
+                        }
+                        backgroundColor={
+                          `${location.pathname}#${subItem.id}` ===
+                          location.pathname
+                            ? "bg.tertiary"
+                            : "transparent"
+                        }
+                        id={`${location.pathname}#${subItem.id}--${location.pathname}`}
+                      >
+                        {subItem.text}
+                      </MenuItem>
+                    ))}
+                  </Stack>
+                )}
               </AccordionItemContent>
             </AccordionItem>
           );

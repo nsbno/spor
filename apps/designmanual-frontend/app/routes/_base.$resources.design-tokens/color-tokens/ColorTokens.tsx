@@ -36,6 +36,7 @@ export function ColorTokens(props: BoxProps) {
         <ColorTable colorKey="accent" name="Accent" />
         <ColorTable colorKey="floating" name="Floating" />
         <ColorTable colorKey="ghost" name="Ghost" />
+        <ColorTable colorKey="alert" name="Alert" />
 
         <LinkableHeading as="h2" variant="xl-display" marginBottom={2}>
           Pallette

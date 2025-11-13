@@ -94,6 +94,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       <Box
         {...popoverProps}
         ref={popoverRef}
+        // eslint-disable-next-line react-hooks/refs
         minWidth={triggerRef.current?.clientWidth ?? "auto"}
       >
         <DismissButton onDismiss={state.close} />

@@ -55,7 +55,7 @@ export function ScrollCalendar(boxProps: BoxProps) {
   }, []);
 
   return (
-    <Box {...calendarProps} {...boxProps} ref={ref}>
+    <Box width="fit-content" {...calendarProps} {...boxProps} ref={ref}>
       <Flex flexDirection="column" gap={4}>
         {Array.from({ length: monthCount }).map((_, index) => (
           <Box

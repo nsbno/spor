@@ -99,8 +99,16 @@ export const SiteHeader = () => {
         </Link>
 
         <Box as="nav" flexGrow={1} justifyContent="flex-end">
-          <Flex as="ul" gap="4" width={"auto"} justifySelf={"flex-end"}>
-            <ColorModeSwitcher />
+          <Flex
+            as="ul"
+            gap="4"
+            width={"auto"}
+            justifyContent="flex-end"
+            alignItems="center"
+          >
+            <Box as="li" marginLeft="auto">
+              <ColorModeSwitcher />
+            </Box>
             {sections.map((section) => {
               return (
                 <Box as="li" key={section.title}>
@@ -153,6 +161,7 @@ export const SiteHeader = () => {
 const MobileMenu = () => {
   const { open, onOpen, onClose } = useDisclosure();
   const location = useLocation();
+
   useEffect(() => {
     // This doesn't close the menu when you're on the page you're clicking on,
     // but that's on you!

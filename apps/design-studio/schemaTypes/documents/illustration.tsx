@@ -49,6 +49,26 @@ export const illustration = defineType({
         layout: "dropdown",
       },
     }),
+
+    defineField({
+      name: "illustrationType",
+      title: "Illustration Type",
+      description: "Select the type for this illustration",
+      type: "string",
+      options: {
+        list: [
+          { title: "illustation", value: "transparent-bg" },
+          {
+            title: "sticker with white background",
+            value: "sticker-white-bg",
+          },
+          { title: "sticker with peel-off", value: "sticker-peel-off" },
+        ],
+        layout: "dropdown",
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+
     defineField({
       name: "tags",
       title: "Tags",
@@ -66,7 +86,6 @@ export const illustration = defineType({
       description:
         "Describe the illustration in such a way that it's easy to understand what it could be used for.",
       type: "text",
-      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

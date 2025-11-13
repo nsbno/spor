@@ -1,5 +1,11 @@
 # @vygruppen/eslint-config
 
+## 1.2.4
+
+### Patch Changes
+
+- 06d3728: Add readme to design tokens.
+
 ## 1.2.3
 
 ### Patch Changes

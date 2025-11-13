@@ -62,6 +62,9 @@ module "ssr_task" {
   rollback_window_in_minutes        = var.environment != "prod" ? 0 : 10
   deployment_configuration_strategy = var.environment != "prod" ? "ROLLING" : "BLUE_GREEN"
 
+  cpu    = 2048
+  memory = 4096
+
   application_container = {
     name           = "${local.application_name}-main"
     repository_url = data.aws_ecr_repository.this.repository_url
@@ -69,7 +72,11 @@ module "ssr_task" {
     port           = 3000
 
     environment = {
-      VITE_ENVIRONMENT = var.environment
+      VITE_ENVIRONMENT              = var.environment
+      VITE_SANITY_SECRET            = "sk2JbmxJTpDDsylbCG5lcJ4Hu3H8VWr7UlUuWaZreH0oCRPJ63pujQt8rZLL2wOv1aW1JL4k0u25y68Khj0O5UVXfJCLUEcPVmQ3RdcKx5JYz1ZCWm89dAQoA08sFNBwPXCbI3vi0LcGacIHqK4BRJz7Jbf3HjdM8Z4klIUVdn7CnK6VLVNZ"
+      VITE_SANITY_TOKEN             = "r4xpzxak"
+      VITE_SANITY_STUDIO_URL        = "http://localhost:4444"
+      VITE_PUBLIC_SANITY_STUDIO_URL = "https://vydesignmanual.sanity.studio"
     }
   }
 

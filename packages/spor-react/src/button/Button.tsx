@@ -29,9 +29,9 @@ export type ButtonProps = Exclude<
     /* Display icon to the right */
     rightIcon?: React.ReactNode;
     /* "primary" | "secondary" | "tertiary" | "ghost" | "floating". Defaults to primary. */
-    variant?: "primary" | "secondary" | "tertiary" | "ghost" | "floating";
+    variant?: ChakraButtonProps["variant"];
     /* "lg" | "md" | "sm" | "xs". Defaults to md. */
-    size?: "lg" | "md" | "sm" | "xs";
+    size?: ChakraButtonProps["size"];
     /* Link to a downloadable resource. */
     download?: string;
     /* Use this to specify a path combined with as="a" */

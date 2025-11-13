@@ -1,34 +1,14 @@
 "use client";
 
 import {
-  RecipeVariantProps,
   Separator as ChakraSeparator,
   SeparatorProps as ChakraSeparatorProps,
-  useRecipe,
 } from "@chakra-ui/react";
-import { forwardRef, PropsWithChildren } from "react";
+import { forwardRef } from "react";
 
-import { separatorRecipe } from "../theme/recipes/separator";
-
-type SeparatorVariantProps = RecipeVariantProps<typeof separatorRecipe>;
-
-type SeparatorProps = Exclude<ChakraSeparatorProps, "size" | "variant"> &
-  PropsWithChildren<SeparatorVariantProps> & {
-    size?: "sm" | "md" | "lg";
-    variant?: "solid" | "dashed";
-  };
-
-export const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
+export const Separator = forwardRef<HTMLDivElement, ChakraSeparatorProps>(
   (props, ref) => {
-    const {
-      size = "md",
-      variant = "solid",
-      orientation = "horizontal",
-    } = props;
-
-    const recipe = useRecipe({ key: "seperator" });
-    const styles = recipe({ size, variant, orientation });
-    return <ChakraSeparator css={styles} {...props} ref={ref} />;
+    return <ChakraSeparator {...props} ref={ref} data- />;
   },
 );
 Separator.displayName = "Separator";

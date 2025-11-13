@@ -1,5 +1,22 @@
 # @vygruppen/spor-react
 
+## 12.18.0
+
+### Minor Changes
+
+- cd46711: **Separator**
+  - Fix dashed style not rendering correctly on vertical orientation
+  - Enable responsive values by removing compound variants from recipe
+  - Simplify component types
+
+  **Button**
+  - Fix types to properly support responsive style props
+
+  **Checkbox**
+  - Remove `onChange` prop to prevent confusion with `onValueChange`
+
+- 9c3987d: Add a variant to accordion to display it with a border bottom line
+
 ## 12.17.0
 
 ### Minor Changes

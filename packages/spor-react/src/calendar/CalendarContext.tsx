@@ -82,8 +82,8 @@ type Props = {
   /**
    * The visible duration of the calendar. This defines how many months are shown at once.
    * Default: { months: 1 }
-   * If using dualView, this should be set to { months: 2 }.
-   * If using scroll calendar, this defines how many months are shown at once. Scroll calendar does not have pagination.
+   * If using Calendar with dualView=true, this should be set to { months: 2 }.
+   * If using ScrollCalendar, this should be set to how many months you want to show in total as it doesn't support pagination.
    */
   visibleDuration?: DateDuration;
 } & Omit<
@@ -95,7 +95,9 @@ type Props = {
  * Provides context for calendar components. Must be used as a wrapper around the Calendar.
  */
 export function CalendarProvider(props: Props) {
+  const locale = useCurrentLocale();
   const ref = useRef<HTMLDivElement>(null);
+
   const {
     mode = "single",
     onChange,
@@ -104,7 +106,6 @@ export function CalendarProvider(props: Props) {
     visibleDuration = { months: 1 },
     ...calendarProps
   } = props;
-  const locale = useCurrentLocale();
 
   const singleState = useStatelyCalendarState({
     ...(calendarProps as AriaCalendarProps<DateValue>),

@@ -1,5 +1,5 @@
 import { Stack } from "@vygruppen/spor-react";
-import { StrictMode, useEffect, useState } from "react";
+import { StrictMode, useState } from "react";
 import { LivePreview } from "react-live";
 
 import { LiveEditor } from "~/features/portable-text/interactive-code/LiveEditor";
@@ -16,11 +16,9 @@ const defaultCode = `<Stack textAlign="center">
 </Stack>`;
 
 export default function PlaygroundPage() {
-  const [playgroundData, setPlaygroundData] = useState(() => "");
-  useEffect(() => {
-    const storedData = localStorage.getItem("playgroundData");
-    setPlaygroundData(storedData ?? defaultCode);
-  }, []);
+  const [playgroundData, setPlaygroundData] = useState(() => {
+    return localStorage.getItem("playgroundData") ?? defaultCode;
+  });
 
   const handleChange = (newCode: string) => {
     setPlaygroundData(newCode);

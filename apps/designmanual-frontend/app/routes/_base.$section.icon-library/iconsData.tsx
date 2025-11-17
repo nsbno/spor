@@ -39,11 +39,13 @@ export const iconsByCategory = (() => {
 /**
  * Returns the icon component for a given import name, or a noop if not found.
  */
+const NoopIcon = () => null;
+
 export const getIconByImportName = (icon: IconKey) => {
   const match = icons[icon];
   if (match) {
     return match;
   }
   console.warn(`Could not find icon with name ${icon}`);
-  return () => null;
+  return NoopIcon;
 };

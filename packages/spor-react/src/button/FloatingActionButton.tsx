@@ -7,7 +7,7 @@ import {
   Text,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren, useEffect } from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 
 import { floatingActionButtonSlotRecipe } from "../theme/slot-recipes/floating-action-button";
 
@@ -51,24 +51,13 @@ export const FloatingActionButton = forwardRef<
     },
     ref,
   ) => {
-    const [isTextVisible, setIsTextVisible] = React.useState(
-      externalIsTextVisible === undefined ? false : externalIsTextVisible,
-    );
     const scrollDirection = useScrollDirection();
-    useEffect(() => {
-      if (externalIsTextVisible !== undefined) {
-        return;
-      }
-      const id = globalThis.setTimeout(
-        () => setIsTextVisible(scrollDirection !== "down"),
-        1000,
-      );
-      return () => globalThis.clearTimeout(id);
-    }, [scrollDirection, externalIsTextVisible]);
 
-    useEffect(() => {
-      setIsTextVisible(!!externalIsTextVisible);
-    }, [externalIsTextVisible]);
+    // Use derived value instead of setState in effect
+    const isTextVisible =
+      externalIsTextVisible === undefined
+        ? scrollDirection !== "down"
+        : !!externalIsTextVisible;
 
     const recipe = useSlotRecipe({ key: "floatingActionButton" });
     const style = recipe({

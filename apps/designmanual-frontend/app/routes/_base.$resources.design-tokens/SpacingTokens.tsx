@@ -38,7 +38,9 @@ const SpacingTokensTable = () => {
 
   if (!designTokens) return null;
 
-  const spacingTokens = Object.entries(designTokens.tokens.size.spacing).sort(
+  const spacingTokens = Object.entries(
+    designTokens.tokens.size.spacing,
+  ).toSorted(
     ([keyA], [keyB]) => Number.parseFloat(keyA) - Number.parseFloat(keyB),
   );
 

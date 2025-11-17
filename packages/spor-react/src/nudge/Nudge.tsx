@@ -78,6 +78,7 @@ export const NudgeContent = forwardRef<HTMLDivElement, PopoverProps>(
     const { open } = usePopoverContext();
 
     useEffect(() => {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCurrentStep(1);
     }, [children, open]);
 

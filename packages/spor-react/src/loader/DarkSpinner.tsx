@@ -1,8 +1,14 @@
 "use client";
 import { spinnerDarkData, spinnerLightData } from "@vygruppen/spor-loader";
 
-import { Box, BoxProps, Center, useColorMode, VisuallyHidden } from "..";
-import { ClientOnly } from "./ClientOnly";
+import {
+  Box,
+  BoxProps,
+  Center,
+  ClientOnly,
+  useColorMode,
+  VisuallyHidden,
+} from "..";
 import Lottie from "./Lottie";
 
 export type DarkSpinnerProps = BoxProps;

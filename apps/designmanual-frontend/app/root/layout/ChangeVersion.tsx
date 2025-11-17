@@ -26,7 +26,7 @@ export const ChangeVersion = () => {
       onValueChange={(e) => {
         const item = versions.items.find((i) => i.value === e.value[0]);
         if (!item) return;
-        globalThis.location.href = item?.href;
+        globalThis.location.assign(item.href);
       }}
     >
       {versions.items.map((item, index) => (

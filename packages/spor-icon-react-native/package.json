@@ -34,7 +34,7 @@
     "@vygruppen/tsconfig": "workspace:*",
     "@vygruppen/eslint-config": "workspace:*",
     "case": "^1.6.3",
-    "eslint": "9.25.1",
+    "eslint": "^9.39.1",
     "fs-extra": "^11.2.0",
     "react": ">17.0.0",
     "react-native": "^0.74.2",

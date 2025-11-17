@@ -22,6 +22,7 @@ export default function Component() {
       />
 
       <SporTest />
+      <SporTestTextArea />
     </Stack>
   );
 }
@@ -32,9 +33,22 @@ export const SporTest = () => {
     setValue("name", "Ola Nordman");
   }, [setValue]);
   return (
-    <Stack minW="50vw" minH="50vH">
+    <Stack minW="50vw">
       <Heading as="h2">Spor test with setState</Heading>
       <Input label="Navn" {...register("name")}></Input>
+    </Stack>
+  );
+};
+
+export const SporTestTextArea = () => {
+  const { register, setValue } = useForm<{ name: string }>();
+  useEffect(() => {
+    setValue("name", "Ola Nordman");
+  }, [setValue]);
+  return (
+    <Stack minW="50vw">
+      <Heading as="h2">Spor test with setState</Heading>
+      <Textarea label="Navn" {...register("name")}></Textarea>
     </Stack>
   );
 };

@@ -42,13 +42,24 @@ export const SporTest = () => {
 
 export const SporTestTextArea = () => {
   const { register, setValue } = useForm<{ name: string }>();
+
+  const { onChange, onBlur, name, ref } = register("name");
+
   useEffect(() => {
     setValue("name", "Ola Nordman");
   }, [setValue]);
   return (
     <Stack minW="50vw">
       <Heading as="h2">Spor test with setState</Heading>
-      <Textarea label="Navn" {...register("name")}></Textarea>
+      <Textarea
+        label="Melding"
+        name={name}
+        onChange={(e) => {
+          void onChange(e);
+        }}
+        onBlur={onBlur}
+        ref={ref}
+      />
     </Stack>
   );
 };

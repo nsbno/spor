@@ -41,10 +41,17 @@ export default function BaseLayout() {
       gap={8}
       marginX={{ base: "4", md: "8" }}
     >
-      <LeftSidebar />
+      <Box
+        alignSelf="flex-start"
+        position={["absolute", null, null, "sticky"]}
+        top={0}
+        as="aside"
+      >
+        <LeftSidebar />
+      </Box>
 
       <Box
-        width={[null, null, null, "container.lg", "container.xl"]}
+        width={[null, null, null, "container.md", "container.lg"]}
         marginX="auto"
       >
         <Outlet />

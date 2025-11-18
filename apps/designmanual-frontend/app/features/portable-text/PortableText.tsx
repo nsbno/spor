@@ -1,9 +1,9 @@
+/* eslint-disable simple-import-sort/imports */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { ButtonProps } from "@chakra-ui/react";
 import {
-  PortableText as SanityPortableText,
   PortableTextReactComponents,
+  PortableText as SanityPortableText,
 } from "@portabletext/react";
 import {
   CheckmarkFill30Icon,
@@ -68,6 +68,17 @@ const components: Partial<PortableTextReactComponents> = {
     },
   },
   block: {
+    h1: ({ children }) => (
+      <LinkableHeading
+        as="h1"
+        variant="xxl"
+        fontWeight="200"
+        marginTop={6}
+        color={"text.secondary"}
+      >
+        {children}
+      </LinkableHeading>
+    ),
     h2: ({ children }) => (
       <LinkableHeading
         as="h2"

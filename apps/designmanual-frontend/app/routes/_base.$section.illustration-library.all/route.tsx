@@ -1,26 +1,23 @@
 import { PassThrough } from "node:stream";
 
-import { SanityAsset } from "@sanity/image-url/lib/types/types";
 import Archiver from "archiver";
+import { LoaderFunctionArgs } from "react-router";
 
-import { getClient } from "~/utils/sanity/client";
 import { urlBuilder } from "~/utils/sanity/utils";
 import { slugify } from "~/utils/stringUtils";
 
-type Illustration = {
-  title: string;
-  imageLightBackground: SanityAsset;
-  imageDarkBackground: SanityAsset;
-};
+import { getIllustrationsQuery } from "../_base.$section.illustration-library/queries";
 
 /**
  * Fetches all illustrations from Sanity and returns them as a zip file.
  */
-export const loader = async () => {
+export const loader = async (args: LoaderFunctionArgs) => {
   console.info("Fetching list of illustrations from Sanity");
-  const allIllustrations = await getClient().fetch<Illustration[]>(
-    `*[_type == "illustration"] { title, imageLightBackground, imageDarkBackground }`,
+
+  const { items: allIllustrations } = await getIllustrationsQuery(
+    args.request.url,
   );
+
   console.info(
     `Found ${allIllustrations.length} illustrations. Downloading them in parallel…`,
   );
@@ -30,16 +27,35 @@ export const loader = async () => {
   zip.pipe(stream);
 
   const promises = allIllustrations
-    .flatMap((illustration) => [
-      {
-        title: slugify(`${illustration.title} light`),
-        url: urlBuilder.image(illustration.imageLightBackground).url(),
-      },
-      {
-        title: slugify(`${illustration.title} dark`),
-        url: urlBuilder.image(illustration.imageDarkBackground).url(),
-      },
-    ])
+    .flatMap((illustration) => {
+      const lightRef =
+        illustration.imageLightBackground?._ref ||
+        illustration.imageLightBackground?.asset?._ref;
+      const darkRef =
+        illustration.imageDarkBackground?._ref ||
+        illustration.imageDarkBackground?.asset?._ref;
+
+      if (lightRef && darkRef && lightRef === darkRef) {
+        // Same image for light and dark, download only once
+        return [
+          {
+            title: slugify(illustration.title),
+            url: urlBuilder.image(illustration.imageLightBackground).url(),
+          },
+        ];
+      }
+      // Different images, download both
+      return [
+        {
+          title: slugify(`${illustration.title} light`),
+          url: urlBuilder.image(illustration.imageLightBackground).url(),
+        },
+        {
+          title: slugify(`${illustration.title} dark`),
+          url: urlBuilder.image(illustration.imageDarkBackground).url(),
+        },
+      ];
+    })
     .map(async (illustration) => {
       const response = await fetch(illustration.url);
       zip.append(await response.text(), { name: `${illustration.title}.svg` });

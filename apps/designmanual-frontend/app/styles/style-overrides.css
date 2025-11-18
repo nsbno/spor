@@ -6,3 +6,9 @@
 img {
   border-radius: 12px;
 }
+
+html {
+  /* Reserves space for the scrollbar without forcing it to always show */
+  scrollbar-gutter: stable;
+  overflow-y: auto; /* Or scroll if you want it always visible as a fallback */
+}

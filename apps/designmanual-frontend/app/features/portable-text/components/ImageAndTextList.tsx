@@ -64,9 +64,7 @@ const ImageAndText = ({
       gap={4}
       marginTop={2}
       flexDirection={
-        listDirection === "horizontal"
-          ? ["column", null, null, "row"]
-          : "column"
+        listDirection === "column" ? "column" : ["column", null, null, "row"]
       }
       data-testid="image-and-text-block"
       as="section"

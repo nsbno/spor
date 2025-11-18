@@ -26,7 +26,10 @@ export const Pagination = ({ total, page, pageSize }: Props) => {
   const handlePageSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const pageSize = e.target.value;
     params.set("pageSize", pageSize);
-    navigate(`?${params.toString()}`, { replace: true });
+    navigate(`?${params.toString()}`, {
+      replace: true,
+      preventScrollReset: true,
+    });
   };
 
   const startItem = total === 0 ? 0 : (page - 1) * pageSize + 1;
@@ -36,7 +39,10 @@ export const Pagination = ({ total, page, pageSize }: Props) => {
     const currentPage = Number(params.get("page") ?? "1");
     if (currentPage > 1) {
       params.set("page", String(currentPage - 1));
-      navigate(`?${params.toString()}`, { replace: true });
+      navigate(`?${params.toString()}`, {
+        replace: true,
+        preventScrollReset: true,
+      });
     }
   };
 
@@ -45,7 +51,10 @@ export const Pagination = ({ total, page, pageSize }: Props) => {
     const maxPage = Math.ceil(total / pageSize);
     if (currentPage < maxPage) {
       params.set("page", String(currentPage + 1));
-      navigate(`?${params.toString()}`, { replace: true });
+      navigate(`?${params.toString()}`, {
+        replace: true,
+        preventScrollReset: true,
+      });
     }
   };
 

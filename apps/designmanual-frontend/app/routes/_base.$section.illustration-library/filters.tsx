@@ -45,7 +45,10 @@ export const Filters = () => {
     }
 
     params.set("page", "1");
-    navigate(`?${params.toString()}`, { replace: true });
+    navigate(`?${params.toString()}`, {
+      replace: true,
+      preventScrollReset: true,
+    });
   };
 
   const debouncedSearchNavigate = useDebouncedCallback(

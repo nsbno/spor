@@ -1,6 +1,5 @@
 import { DownloadOutline24Icon } from "@vygruppen/spor-icon-react";
 import {
-  Badge,
   Box,
   Button,
   Flex,

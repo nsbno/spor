@@ -128,7 +128,7 @@ export const Filters = () => {
             <TabsTrigger value="sticker-peel-off">
               Sticker with peel-off
             </TabsTrigger>
-            <TabsTrigger value="monochrome">monochrome</TabsTrigger>
+            <TabsTrigger value="monochrome">Monochrome</TabsTrigger>
             <TabsTrigger value="all">All</TabsTrigger>
           </TabsList>
         </Tabs>

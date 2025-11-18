@@ -29,7 +29,7 @@ const getFilter = (searchParams: URLSearchParams) => {
   const search = searchParams.get("search")?.trim();
   if (search) {
     const escaped = search.replaceAll('"', String.raw`\"`);
-    filter += ` && (title match "*${escaped}*" || tags[]->title match "*${escaped}*")`;
+    filter += ` && (title match "*${escaped}*" || tags[] match "*${escaped}*")`;
   }
 
   const illustrationType = searchParams.get("illustrationType")?.trim();

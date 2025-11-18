@@ -27,14 +27,6 @@ export function ScrollCalendar(boxProps: BoxProps) {
     timeZone: state.timeZone,
   });
 
-  // Force the visible range to start from minValue on mount
-  useEffect(() => {
-    if (state.minValue && state.focusedDate.compare(state.minValue) !== 0) {
-      state.setFocusedDate(toCalendarDate(state.minValue));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   useEffect(function scrollFocusedMonthIntoView() {
     const targetDate = startValue || state.focusedDate;
     if (!targetDate) return;

@@ -28,28 +28,25 @@ export type CalendarValue = [CalendarDate | null, CalendarDate | null];
 export type CalendarMode = "single" | "range";
 type CalendarState = SingleCalendarState | RangeCalendarState;
 
-type SingleCalendarState = {
-  state: StatelyCalendarState;
-  mode: "single";
+type BaseCalendarState = {
   calendarProps: DOMAttributes<FocusableElement>;
   nextButtonProps: AriaButtonProps<"button">;
   prevButtonProps: AriaButtonProps<"button">;
   startValue: CalendarDate | null;
-  endValue: null;
   isSelectingRange: boolean;
   ref: React.RefObject<HTMLDivElement>;
 };
 
-type RangeCalendarState = {
-  state: StatelyRangeCalendarState;
+type SingleCalendarState = BaseCalendarState & {
+  mode: "single";
+  state: StatelyCalendarState;
+  endValue: null;
+};
+
+type RangeCalendarState = BaseCalendarState & {
   mode: "range";
-  calendarProps: DOMAttributes<FocusableElement>;
-  nextButtonProps: AriaButtonProps<"button">;
-  prevButtonProps: AriaButtonProps<"button">;
-  startValue: CalendarDate | null;
+  state: StatelyRangeCalendarState;
   endValue: CalendarDate | null;
-  isSelectingRange: boolean;
-  ref: React.RefObject<HTMLDivElement>;
 };
 
 const CalendarContext = createContext<CalendarState | null>(null);

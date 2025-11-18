@@ -13,6 +13,7 @@ import { Text } from "@/typography";
 export function ScrollCalendar(boxProps: BoxProps) {
   const { state, calendarProps, ref, startValue } = useCalendar();
   const monthRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const hasScrolledRef = useRef(false);
 
   const startMonth =
     state.visibleRange.start.year * 12 + state.visibleRange.start.month;
@@ -26,24 +27,28 @@ export function ScrollCalendar(boxProps: BoxProps) {
     timeZone: state.timeZone,
   });
 
-  useEffect(function scrollFocusedMonthIntoView() {
-    const targetDate = startValue || state.focusedDate;
-    if (!targetDate) return;
+  useEffect(
+    function scrollFocusedMonthIntoView() {
+      const targetDate = startValue || state.focusedDate;
+      if (hasScrolledRef.current || !targetDate) return;
 
-    const targetMonth = targetDate.year * 12 + targetDate.month;
-    const monthIndex = targetMonth - startMonth;
+      const targetMonth = targetDate.year * 12 + targetDate.month;
+      const monthIndex = targetMonth - startMonth;
 
-    if (monthIndex > 0 && monthIndex < monthCount) {
-      const element = monthRefs.current[monthIndex];
-      if (element) {
-        element.scrollIntoView({
-          behavior: "instant",
-          block: "start",
-        });
+      if (monthIndex > 0 && monthIndex < monthCount) {
+        const element = monthRefs.current[monthIndex];
+        if (element) {
+          element.scrollIntoView({
+            behavior: "instant",
+            block: "start",
+          });
+        }
       }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+      hasScrolledRef.current = true;
+    },
+    [monthCount, startMonth, startValue, state.focusedDate],
+  );
 
   return (
     <Box width="fit-content" {...calendarProps} {...boxProps} ref={ref}>

@@ -35,7 +35,10 @@ export const useLinkProps = (
     };
   }
 
-  let url = href?.replace(new RegExp(`^https?://(?:design\\.)?vy\\.no/`), "/");
+  let url = href?.replace(
+    new RegExp(String.raw`^https?://(?:design\.)?vy\.no/`),
+    "/",
+  );
   url = fileUrlBuilder + url; // define this when we have a deployed server
   if (anchor) {
     url = `${url}#${anchor}`;

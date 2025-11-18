@@ -45,25 +45,28 @@ export const Accordion = ({
 }: AccordionProps) => {
   const { hash } = useLocation();
 
-  const [openIndex, setOpenIndex] = useState<number[]>([]);
+  const [openIndex, setOpenIndex] = useState<number[]>(() => {
+    if (hash) {
+      const id = hash.replace(/^#item-/i, "");
+      const index = items.findIndex((item) => item._key === id);
+
+      if (index !== -1) {
+        return [index];
+      }
+    }
+    return [];
+  });
 
   useEffect(() => {
     if (hash) {
       const el = document.querySelector(hash);
       if (el) {
-        const id = location.hash.replace(/^#item-/i, "");
-        const index = items.findIndex((item) => item._key === id);
+        // Calculate the scroll position to be 1/3 down the screen to avoid header and cookie banner
+        const viewpHeight = window.innerHeight;
+        const rect = el.getBoundingClientRect();
+        const targetScrollPos = rect.top + window.scrollY - viewpHeight / 3;
 
-        if (index !== -1) {
-          setOpenIndex([index]);
-
-          // Calculate the scroll position to be 1/3 down the screen to avoid header and cookie banner
-          const viewpHeight = window.innerHeight;
-          const rect = el.getBoundingClientRect();
-          const targetScrollPos = rect.top + window.scrollY - viewpHeight / 3;
-
-          window.scrollTo({ top: targetScrollPos });
-        }
+        window.scrollTo({ top: targetScrollPos });
       }
     }
   }, [hash, items]);
@@ -107,7 +110,7 @@ export const Accordion = ({
                 gap={1}
                 onClick={() => handleAccordionState(item._key, i)}
               >
-                {item.icon && getIcon({ iconName: item.icon })}
+                {item.icon && getIcon({ iconName: item.icon, size: 24 })}
                 <Box flex={1} id={`item-${item._key}`}>
                   {item.title}
                 </Box>

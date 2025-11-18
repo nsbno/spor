@@ -35,15 +35,21 @@ export default defineConfig([
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
   pluginReact.configs.flat["jsx-runtime"],
-  reactHooks.configs["recommended-latest"],
+  reactHooks.configs.flat["recommended-latest"],
   jsxA11y.flatConfigs.recommended,
   eslintPluginUnicorn.configs.recommended,
+
   {
     rules: {
       "unicorn/prevent-abbreviations": "off",
       "unicorn/no-null": "off",
       "unicorn/filename-case": "off",
       "no-nested-ternary": "warn",
+    },
+    settings: {
+      react: {
+        version: "detect",
+      },
     },
   },
   eslintConfigPrettier,

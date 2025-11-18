@@ -1,5 +1,12 @@
 # @vygruppen/eslint-config
 
+## 2.0.0
+
+### Major Changes
+
+- fbf18ea: Update all eslint config dependencies to their latest versions.
+  This may introduce breaking changes due to major version upgrades.
+
 ## 1.2.4
 
 ### Patch Changes

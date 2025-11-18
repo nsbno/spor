@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 12.19.0
+
+### Minor Changes
+
+- fbf18ea: Update all eslint config dependencies to their latest versions.
+  This may introduce breaking changes due to major version upgrades.
+
+### Patch Changes
+
+- @vygruppen/spor-design-tokens@4.2.0
+- @vygruppen/spor-icon-react@4.3.0
+
 ## 12.18.0
 
 ### Minor Changes

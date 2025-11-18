@@ -3,7 +3,7 @@
   "include": ["."],
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
-    "lib": ["dom", "es2021"],
+    "lib": ["dom", "es2023"],
     "rootDir": ".",
     "paths": {
       "@/*": ["./src/*"]

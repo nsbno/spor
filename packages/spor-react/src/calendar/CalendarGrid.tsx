@@ -9,9 +9,9 @@ import { useCalendarGrid } from "react-aria";
 
 import { CalendarCell } from "@/calendar/CalendarCell";
 import { useCalendar } from "@/calendar/CalendarContext";
+import { useCurrentLocale } from "@/datepicker/utils";
 import { Language, useTranslation } from "@/i18n";
 import { Text } from "@/typography";
-import { useCurrentLocale } from "@/datepicker/utils";
 
 const weekDays: Record<Language, string[]> = {
   nb: ["Ma", "Ti", "On", "To", "Fr", "Lø", "Sø"],

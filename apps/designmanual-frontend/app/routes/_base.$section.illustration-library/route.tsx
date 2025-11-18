@@ -232,7 +232,7 @@ const IllustationGird = ({
       .filter((illustration) => {
         // Remove all non-printable characters and normalize (hvorfor er dette nødvendig???)
         const cleanSize =
-          illustration.size?.replace(/[^\u0020-\u007E]/g, "").trim() || "";
+          illustration.size?.replaceAll(/[^\u0020-\u007E]/g, "").trim() || "";
 
         return size === "all" || cleanSize === size;
       })

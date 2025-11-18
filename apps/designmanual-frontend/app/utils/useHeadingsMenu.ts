@@ -32,6 +32,7 @@ export const useHeadingsMenu = (): Array<HeadingsMenu> | [] => {
         headings.push({ text, id });
       }
     }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHeadingsMenu(headings);
   }, [location]);
 

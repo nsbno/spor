@@ -93,8 +93,6 @@ export const getIllustrationsQuery = async (
   }
   `;
 
-  await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate network delay
-
   const result = await sanityClient.fetch<{
     total: number;
     items: SanityIllustration[];

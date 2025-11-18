@@ -55,16 +55,21 @@ export const ImageBlock = ({ images, caption }: ImageBlockProps) => {
   }
   if (imageCount === 1) {
     return (
-      <GridLayout imageCount={imageCount} captionAndCredits={captionAndCredits}>
-        <ImageGridItem
-          colStart={[1, 2, null, 1]}
-          colSpan={[6, 4, null, 12]}
-          rowStart={[1, 1, null, 1]}
-          rowSpan={[2, 2, null, 2]}
-          image={images[0]}
-          imageSize="lg"
-        />
-      </GridLayout>
+      <Box marginTop={8}>
+        <GridLayout
+          imageCount={imageCount}
+          captionAndCredits={captionAndCredits}
+        >
+          <ImageGridItem
+            colStart={[1, 2, null, 1]}
+            colSpan={[6, 4, null, 12]}
+            rowStart={[1, 1, null, 1]}
+            rowSpan={[2, 2, null, 2]}
+            image={images[0]}
+            imageSize="lg"
+          />
+        </GridLayout>
+      </Box>
     );
   }
 

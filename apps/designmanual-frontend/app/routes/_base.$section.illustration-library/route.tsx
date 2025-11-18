@@ -90,7 +90,7 @@ export default function IllustrationLibraryPage() {
   return (
     <Box>
       <Badge>{article.category?.title}</Badge>
-      <Heading as="h1" variant="xxl" marginBottom={1}>
+      <Heading as="h1" variant="xl-display">
         {article.title}
       </Heading>
       {article.introduction && (

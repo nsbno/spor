@@ -35,6 +35,7 @@ export const IllustationGrid = ({
     return (
       <StaticCard
         colorScheme="white"
+        bg="bg"
         key={illustration._id}
         padding={2}
         border="1px solid"

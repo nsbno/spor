@@ -6,12 +6,9 @@ import {
   Heading,
   Separator,
   SimpleGrid,
-  Skeleton,
   Stack,
 } from "@vygruppen/spor-react";
-import React from "react";
 import {
-  Await,
   LoaderFunctionArgs,
   redirect,
   useLoaderData,

@@ -68,7 +68,7 @@ export function ScrollCalendar(boxProps: BoxProps) {
               aria-hidden
               flex={1}
               fontWeight="bold"
-              fontSize="18px"
+              fontSize="sm"
               textAlign="center"
               marginBottom={3}
             >

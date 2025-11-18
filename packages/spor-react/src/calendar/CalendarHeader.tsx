@@ -56,7 +56,7 @@ export function CalendarHeader({ dualView }: Props) {
         aria-hidden
         flex={1}
         fontWeight="bold"
-        fontSize="18px"
+        fontSize="sm"
         textAlign="center"
       >
         {capitalizeFirstLetter(
@@ -71,7 +71,7 @@ export function CalendarHeader({ dualView }: Props) {
           aria-hidden
           flex={1}
           fontWeight="bold"
-          fontSize="18px"
+          fontSize="sm"
           textAlign="center"
         >
           {capitalizeFirstLetter(

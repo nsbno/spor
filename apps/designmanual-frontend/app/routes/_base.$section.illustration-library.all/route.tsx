@@ -13,9 +13,6 @@ import { getIllustrationsQuery } from "../_base.$section.illustration-library/qu
  */
 export const loader = async (args: LoaderFunctionArgs) => {
   console.info("Fetching list of illustrations from Sanity");
-  // const allIllustrations = await getClient().fetch<Illustration[]>(
-  //   `*[_type == "illustration"] { title, imageLightBackground, imageDarkBackground }`,
-  // );
 
   const { items: allIllustrations } = await getIllustrationsQuery(
     args.request.url,

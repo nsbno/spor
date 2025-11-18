@@ -19,7 +19,6 @@ export const Filters = () => {
 
   const [serachQuery, setSearchQuery] = useState(params.get("search") ?? "");
 
-  // Centralized function to update query params
   const updateParams = ({
     searchValue,
     illustrationTypeValue,
@@ -49,7 +48,6 @@ export const Filters = () => {
     navigate(`?${params.toString()}`, { replace: true });
   };
 
-  // Debounced callback for updating search param only
   const debouncedSearchNavigate = useDebouncedCallback(
     (searchValue: string) => {
       updateParams({ searchValue });

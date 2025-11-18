@@ -21,7 +21,8 @@ import {
   useRangeCalendarState as useStatelyRangeCalendarState,
 } from "react-stately";
 
-import { getSafeRangeValue, useCurrentLocale } from "@/calendar/utils";
+import { getSafeRangeValue } from "@/calendar/utils";
+import { useCurrentLocale } from "@/datepicker/utils";
 
 export type CalendarValue = [CalendarDate | null, CalendarDate | null];
 export type CalendarMode = "single" | "range";

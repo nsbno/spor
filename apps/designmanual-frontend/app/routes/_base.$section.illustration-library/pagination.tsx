@@ -93,7 +93,7 @@ export const Pagination = ({ total, page, pageSize }: Props) => {
           icon={<DropdownLeftOutline24Icon />}
           title="Previous page"
         />
-        <Text minWidth="fit-content" variant="2xs">
+        <Text minWidth="fit-content" variant="xs">
           {total === 0
             ? "No items found"
             : `${startItem}–${endItem} of ${total} items shown`}

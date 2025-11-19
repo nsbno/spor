@@ -8,6 +8,7 @@ import {
   data,
   LinksFunction,
   LoaderFunctionArgs,
+  redirect,
 } from "react-router";
 import {
   isRouteErrorResponse,
@@ -106,6 +107,8 @@ export const links: LinksFunction = () => {
 };
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
+  return redirect("https://design.vy.no/spor");
+
   const initialSanityData = await getInitialSanityData();
   const brand = await getBrandFromCookie(request.headers.get("cookie") ?? "");
 

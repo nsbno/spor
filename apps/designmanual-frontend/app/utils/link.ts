@@ -35,15 +35,22 @@ export const useLinkProps = (
     };
   }
 
-  let url = href?.replace(
-    new RegExp(String.raw`^https?://(?:design\.)?vy\.no/`),
-    "/",
-  );
-  url = fileUrlBuilder + url; // define this when we have a deployed server
+  const isExternal = !!/^https?:\/\/|^tel:.*|^mailto:.*/.test(href);
+
+  let url = href;
+
+  if (!isExternal && /^https?:\/\/(?:design\.)?vy\.no\//.test(href)) {
+    url = href.replace(
+      new RegExp(String.raw`^https?://(?:design\.)?vy\.no/`),
+      "/",
+    );
+    url = fileUrlBuilder + url;
+  }
+
   if (anchor) {
     url = `${url}#${anchor}`;
   }
-  const isExternal = !!url?.match(/^https:\/\/|^tel:.*|^mailto:.*/);
+
   const linkProps: {
     as: string | typeof Link;
     href?: string;

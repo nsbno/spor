@@ -16,7 +16,6 @@ type LinkPropsResult = {
   };
 };
 
-// ...existing code...
 export const useLinkProps = (
   href?: string,
   anchor?: string,
@@ -36,12 +35,10 @@ export const useLinkProps = (
     };
   }
 
-  // Check if it's an external URL first (before processing)
   const isExternal = !!/^https?:\/\/|^tel:.*|^mailto:.*/.test(href);
 
   let url = href;
 
-  // Only process internal URLs (that match vy.no patterns)
   if (!isExternal && /^https?:\/\/(?:design\.)?vy\.no\//.test(href)) {
     url = href.replace(
       new RegExp(String.raw`^https?://(?:design\.)?vy\.no/`),

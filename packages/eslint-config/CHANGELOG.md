@@ -1,5 +1,13 @@
 # @vygruppen/eslint-config
 
+## 2.0.1
+
+### Patch Changes
+
+- 70e0894: - Add support for linear gradient when highlighting non semantic tokens
+  - Update typescript-eslint
+  - Update error message for non semantic tokens to be more clear
+
 ## 2.0.0
 
 ### Major Changes

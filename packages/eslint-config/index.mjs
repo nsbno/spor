@@ -38,13 +38,12 @@ export default defineConfig([
   reactHooks.configs.flat["recommended-latest"],
   jsxA11y.flatConfigs.recommended,
   eslintPluginUnicorn.configs.recommended,
-
   {
     rules: {
       "unicorn/prevent-abbreviations": "off",
       "unicorn/no-null": "off",
       "unicorn/filename-case": "off",
-      "no-nested-ternary": "warn",
+      "no-nested-ternary": "error",
     },
     settings: {
       react: {

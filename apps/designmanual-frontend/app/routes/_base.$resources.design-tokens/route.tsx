@@ -1,7 +1,6 @@
 import {
   Box,
   ClientOnly,
-  ContentLoader,
   Flex,
   Heading,
   Separator,

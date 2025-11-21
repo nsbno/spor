@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/eslint-config",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "exports": {
     ".": "./index.mjs"
@@ -24,6 +24,6 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unicorn": "^62.0",
     "globals": "^16.5.0",
-    "typescript-eslint": "^8.46.4"
+    "typescript-eslint": "^8.47.0"
   }
 }

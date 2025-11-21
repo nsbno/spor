@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 3.5.3
+
+### Patch Changes
+
+- 3079071: Add paperclip icon
+
 ## 3.5.2
 
 ### Patch Changes

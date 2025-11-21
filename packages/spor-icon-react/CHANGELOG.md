@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 4.3.1
+
+### Patch Changes
+
+- 3079071: Add paperclip icon
+
 ## 4.3.0
 
 ### Minor Changes

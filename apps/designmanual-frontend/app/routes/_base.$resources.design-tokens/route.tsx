@@ -1,5 +1,7 @@
 import {
   Box,
+  ClientOnly,
+  ContentLoader,
   Flex,
   Heading,
   Separator,
@@ -47,17 +49,19 @@ export default function DesignTokensPage() {
       </Flex>
 
       <Separator marginBottom={8} marginTop={4} />
-      <Stack gap={9}>
-        <ColorTokens />
-        <TypographyTokens />
-        <SpacingTokens />
-        <RoundingTokens />
-        <ShadowTokens />
-        <OutlineTokens />
-        <BreakpointTokens />
-        <AnimationTokens />
-        <ZIndexTokens />
-      </Stack>
+      <ClientOnly>
+        <Stack gap={9}>
+          <ColorTokens />
+          <TypographyTokens />
+          <SpacingTokens />
+          <RoundingTokens />
+          <ShadowTokens />
+          <OutlineTokens />
+          <BreakpointTokens />
+          <AnimationTokens />
+          <ZIndexTokens />
+        </Stack>
+      </ClientOnly>
     </Box>
   );
 }

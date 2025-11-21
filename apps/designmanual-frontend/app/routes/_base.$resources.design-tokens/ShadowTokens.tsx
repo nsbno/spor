@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow,
   Text,
+  useColorMode,
 } from "@vygruppen/spor-react";
 
 import { CopyTokenToClipBoard } from "./CopyTokenToClipBoard";
@@ -37,10 +38,13 @@ export const ShadowTokens = () => (
 
 const ShadowTokensTable = () => {
   const designTokens = useDesignTokens();
+  const { colorMode } = useColorMode();
 
   if (!designTokens) return null;
 
   const shadowTokens = Object.entries(designTokens.tokens.depth.shadow);
+
+  const color = colorMode === "light" ? "_light" : "_dark";
 
   return (
     <Box>
@@ -62,7 +66,7 @@ const ShadowTokensTable = () => {
                 <CopyTokenToClipBoard>{token}</CopyTokenToClipBoard>
               </TableCell>
               <TableCell>
-                <Code>{value}</Code>
+                <Code>{value[color]}</Code>
               </TableCell>
             </TableRow>
           ))}

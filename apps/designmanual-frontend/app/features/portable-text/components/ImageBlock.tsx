@@ -541,13 +541,17 @@ function calculateAspectRatio(imageCount: number, deviceType: string) {
     case "desktop": {
       switch (imageCount) {
         case 1: {
-          aspectRatio = "16/8";
+          aspectRatio = "16/9";
 
           break;
         }
         case 2:
+        case 4: {
+          aspectRatio = "1/1";
+
+          break;
+        }
         case 3:
-        case 4:
         case 5: {
           aspectRatio = "2/1";
           break;

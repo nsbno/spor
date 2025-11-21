@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 12.19.2
+
+### Patch Changes
+
+- 1ed4bc2: Added colors that support darkmode to shadow-token
+- Updated dependencies [1ed4bc2]
+  - @vygruppen/spor-design-tokens@4.2.1
+
 ## 12.19.1
 
 ### Patch Changes

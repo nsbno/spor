@@ -1,5 +1,5 @@
 import { Box, Flex } from "@vygruppen/spor-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   type LoaderFunctionArgs,
   Outlet,
@@ -9,6 +9,7 @@ import {
 
 import { LeftSidebar } from "~/routes/_base/left-sidebar/LeftSidebar";
 import { getClient } from "~/utils/sanity/client";
+import { useScrollTriggers } from "~/utils/useOnscrollPage";
 
 /* This loader isn't use here directly, but from within the left sidebar component tree. Don't remove it, even if it isn't used here.  */
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
@@ -28,6 +29,25 @@ export default function BaseLayout() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [menuPosition, setMenuPosition] = useState<"fixed" | "static">(
+    "static",
+  );
+
+  // example usage: onReachMax -> fixed, onBackToTop -> static
+  useScrollTriggers(
+    undefined,
+    () => {
+      // fired once when scroll position reaches 120px
+      console.log("user reached 120px");
+      setMenuPosition("fixed");
+    },
+    () => {
+      // fired when user scrolls back to top (<=5px)
+      console.log("user returned to top");
+      setMenuPosition("static");
+    },
+  );
+
   useEffect(() => {
     if (location.pathname === "/") {
       navigate("/spor", { replace: true });
@@ -43,7 +63,7 @@ export default function BaseLayout() {
     >
       <Box
         alignSelf="flex-start"
-        position={["absolute", null, null, "sticky"]}
+        position={["absolute", null, null, menuPosition]}
         top={0}
         as="aside"
       >

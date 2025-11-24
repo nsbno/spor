@@ -39,7 +39,7 @@ function getUrlWithIllustrationSearchParams(url: URL): URL | null {
   }
 
   if (!url.searchParams.has("pageSize")) {
-    url.searchParams.set("pageSize", "12");
+    url.searchParams.set("pageSize", "24");
     changed = true;
   }
 

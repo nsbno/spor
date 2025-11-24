@@ -73,9 +73,9 @@ export const Pagination = ({ total, page, pageSize }: Props) => {
           variant="floating"
           disabled={total === 0}
         >
-          <option value="6">6</option>
           <option value="12">12</option>
           <option value="24">24</option>
+          <option value="48">48</option>
           <option value="all">All</option>
         </NativeSelect>
       </Box>

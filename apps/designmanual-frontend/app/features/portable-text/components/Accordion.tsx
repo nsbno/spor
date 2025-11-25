@@ -111,7 +111,7 @@ export const Accordion = ({
       )}
       <SporAccordion
         multiple
-        variant="core"
+        variant="underlined"
         data-testid="accordion"
         value={openIndex.map(String)}
       >

@@ -35,35 +35,32 @@ export const LinkButton = ({
 
   if (isDownloadLink) {
     return (
-      <a
+      <Button
+        {...restLinkProps}
+        {...iconProps}
+        variant="ghost"
+        as="a"
+        download="true"
         href={cleanedHref.slice(1)}
-        download
-        style={{ textDecoration: "none", width: "100%" }}
+        size="sm"
+        width="100%"
+        marginY={3}
+        marginRight={2}
+        border="1px solid transparent"
+        borderBottom="1px solid"
+        borderBottomColor="floating.outline.hover"
+        borderRadius={0}
+        display="flex"
+        justifyContent="flex-start"
+        marginBlock="0.2rem"
+        _hover={{
+          border: "1px solid",
+          borderColor: "floating.outline.hover",
+          backgroundColor: "transparent",
+        }}
       >
-        <Button
-          {...restLinkProps}
-          {...iconProps}
-          variant="ghost"
-          size="sm"
-          width="100%"
-          marginY={3}
-          marginRight={2}
-          border="1px solid transparent"
-          borderBottom="1px solid"
-          borderBottomColor="floating.outline.hover"
-          borderRadius={0}
-          display="flex"
-          justifyContent="flex-start"
-          marginBlock="0.2rem"
-          _hover={{
-            border: "1px solid",
-            borderColor: "floating.outline.hover",
-            backgroundColor: "transparent",
-          }}
-        >
-          {children}
-        </Button>
-      </a>
+        {children}
+      </Button>
     );
   }
 

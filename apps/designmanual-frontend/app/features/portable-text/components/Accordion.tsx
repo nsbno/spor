@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 import type { PortableTextBlock } from "@portabletext/types";
 import {
   AccordionItem,

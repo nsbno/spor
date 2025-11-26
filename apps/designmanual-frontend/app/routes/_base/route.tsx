@@ -1,5 +1,5 @@
 import { Box, Flex } from "@vygruppen/spor-react";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   type LoaderFunctionArgs,
   Outlet,
@@ -10,7 +10,6 @@ import {
 import { LeftSidebar } from "~/routes/_base/left-sidebar/LeftSidebar";
 import { getClient } from "~/utils/sanity/client";
 
-/* This loader isn't use here directly, but from within the left sidebar component tree. Don't remove it, even if it isn't used here.  */
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const slug = params.slug;
   const draftMode =
@@ -28,6 +27,100 @@ export default function BaseLayout() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // runtime fallback: if an ancestor prevents `position: sticky`, switch to fixed
+  const asideRef = useRef<HTMLDivElement | null>(null);
+  const [forceFixed, setForceFixed] = useState(false);
+  const [fixedRect, setFixedRect] = useState<{
+    left: number;
+    width: number;
+    height: number;
+  } | null>(null);
+
+  const TOP = "5rem";
+  const [placementTop, setPlacementTop] = useState<string | null>(TOP);
+
+  const scrollTriggers = useRef({
+    onScrollToTop: () => {
+      setPlacementTop(TOP);
+    },
+    onScrollAwayFromTop: () => {
+      setPlacementTop("0");
+    },
+  });
+
+  const scrolledRef = useRef(false);
+
+  useEffect(() => {
+    if (globalThis.window === undefined) return;
+
+    const handle = () => {
+      const y = window.scrollY || window.pageYOffset || 0;
+      if (!scrolledRef.current && y > 5) {
+        scrolledRef.current = true;
+        scrollTriggers.current.onScrollAwayFromTop?.();
+      } else if (scrolledRef.current && y <= 5) {
+        scrolledRef.current = false;
+        scrollTriggers.current.onScrollToTop?.();
+      }
+    };
+
+    handle();
+    window.addEventListener("scroll", handle, { passive: true });
+    return () => window.removeEventListener("scroll", handle);
+  }, []);
+
+  useEffect(() => {
+    const el = asideRef.current;
+    if (!el || globalThis.window === undefined) return;
+
+    const check = () => {
+      let ancestor: HTMLElement | null = el.parentElement;
+      let broken = false;
+      while (ancestor && ancestor !== document.documentElement) {
+        const cs = getComputedStyle(ancestor);
+        if (
+          /(hidden|auto|scroll)/.test(
+            `${cs.overflow} ${cs.overflowX} ${cs.overflowY}`,
+          )
+        ) {
+          broken = true;
+          break;
+        }
+        if (
+          cs.transform !== "none" ||
+          cs.perspective !== "none" ||
+          (cs.willChange &&
+            cs.willChange !== "auto" &&
+            cs.willChange.includes("transform"))
+        ) {
+          broken = true;
+          break;
+        }
+        ancestor = ancestor.parentElement;
+      }
+
+      if (broken) {
+        console.log("switching to fixed");
+        const r = el.getBoundingClientRect();
+        setFixedRect({
+          left: Math.round(r.left),
+          width: Math.round(r.width),
+          height: Math.round(r.height),
+        });
+        setForceFixed(true);
+        setPlacementTop(TOP);
+      } else {
+        setForceFixed(false);
+        setFixedRect(null);
+        setPlacementTop("0");
+      }
+    };
+
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   useEffect(() => {
     if (location.pathname === "/") {
       navigate("/spor", { replace: true });
@@ -40,12 +133,32 @@ export default function BaseLayout() {
       justifyContent="space-between"
       gap={8}
       marginX={{ base: "4", md: "8" }}
+      overflow="visible"
     >
+      {forceFixed && fixedRect && (
+        <Box
+          aria-hidden
+          width={`${fixedRect.width}px`}
+          height={`${fixedRect.height}px`}
+          alignSelf="flex-start"
+          as="div"
+        />
+      )}
+
       <Box
+        ref={asideRef}
         alignSelf="flex-start"
-        position={["absolute", null, null, "sticky"]}
-        top={0}
+        position={forceFixed ? "fixed" : "sticky"}
+        top={placementTop || "0"}
+        zIndex={10}
+        maxHeight={`calc(100vh - ${placementTop})`}
+        overflowY="auto"
         as="aside"
+        style={
+          forceFixed && fixedRect
+            ? { left: `${fixedRect.left}px`, width: `${fixedRect.width}px` }
+            : undefined
+        }
       >
         <LeftSidebar />
       </Box>

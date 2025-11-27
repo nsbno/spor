@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.2.1
+
+### Patch Changes
+
+- 1ed4bc2: Added colors that support darkmode to shadow-token
+
 ## 4.2.0
 
 ### Minor Changes

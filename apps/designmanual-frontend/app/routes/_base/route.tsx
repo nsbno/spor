@@ -100,7 +100,6 @@ export default function BaseLayout() {
       }
 
       if (broken) {
-        console.log("switching to fixed");
         const r = el.getBoundingClientRect();
         setFixedRect({
           left: Math.round(r.left),

@@ -63,7 +63,7 @@ export const MenuItem = forwardRef<HTMLElement, MenuItemProps>(
         role="menuitem"
         type={isExternal ? undefined : "button"}
       >
-        <Flex justifyContent={"space-between"} alignItems="center">
+        <Flex justifyContent="space-between" alignItems="center">
           <Box width="100%" textAlign="left">
             {children}
           </Box>

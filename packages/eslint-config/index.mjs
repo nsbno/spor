@@ -29,6 +29,12 @@ export default defineConfig([
       "simple-import-sort/imports": "warn",
       "simple-import-sort/exports": "warn",
       "spor/use-semantic-tokens": "warn",
+      "react/jsx-curly-brace-presence": [
+        "warn",
+        {
+          props: "never",
+        },
+      ],
     },
   },
   js.configs.recommended,

@@ -55,7 +55,7 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
             variant="core"
             marginTop={3}
             colorPalette="grey"
-            maxWidth={`calc(100vw - var(--spor-space-6))`}
+            maxWidth="calc(100vw - var(--spor-space-6))"
           >
             <TableHeader>
               <TableRow>

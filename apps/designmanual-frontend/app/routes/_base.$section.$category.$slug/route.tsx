@@ -171,7 +171,7 @@ export default function ArticlePage() {
         marginBottom={1}
         gap={6}
         justifyContent="space-between"
-        alignContent={"stretch"}
+        alignContent="stretch"
       >
         <HStack>
           {article?.category?.title && (
@@ -181,7 +181,7 @@ export default function ArticlePage() {
           )}
           {isPreview && <Badge colorPalette="yellow">Preview</Badge>}
         </HStack>
-        <Flex wrap="wrap" gap={2} marginLeft={"auto"} justifyContent={"end"}>
+        <Flex wrap="wrap" gap={2} marginLeft="auto" justifyContent="end">
           {article.resourceLinks?.map((link: ResourceLink) => (
             <Button
               key={link.url}
@@ -196,7 +196,7 @@ export default function ArticlePage() {
           {currentSection && currentSection === "spor" && <SiteSettings />}
         </Flex>
       </Flex>
-      <Flex direction={"column"}>
+      <Flex direction="column">
         <Heading as="h1" variant="xl-display" marginBottom={2}>
           {article.title}
         </Heading>

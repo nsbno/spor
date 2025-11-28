@@ -61,7 +61,7 @@ export const CountryCodeSelect = forwardRef<
       collection={filteredCallingCodes}
       lazyMount
       aria-label={t(texts.countryCode)}
-      sideRadiusVariant={"rightSideSquare"}
+      sideRadiusVariant="rightSideSquare"
     >
       {filteredCallingCodes.items.map((code) => (
         <SelectItem key={code.label} item={code}>

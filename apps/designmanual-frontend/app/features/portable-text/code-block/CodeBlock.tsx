@@ -24,7 +24,7 @@ export const CodeBlock = ({
 }: CodeBlockProps) => {
   return (
     <CodeBlockContainer
-      maxWidth={`calc(100vw - var(--spor-space-6))`}
+      maxWidth="calc(100vw - var(--spor-space-6))"
       {...props}
       code={sanitizeCode(code)}
       marginTop={2}

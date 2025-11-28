@@ -85,7 +85,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           positioning={{ sameWidth: true, ...positioning }}
           variant={variant}
           css={styles.root}
-          position={"relative"}
+          position="relative"
         >
           <SelectTrigger data-attachable>
             <SelectValueText withPlaceholder={label ? true : false} />

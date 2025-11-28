@@ -21,7 +21,7 @@ export const SiteSettings = () => {
         icon={<SettingsX1Fill24Icon />}
         variant="core"
         withChevron={false}
-        fontWeight={"bold"}
+        fontWeight="bold"
         minWidth="auto"
         title="Site settings"
       >

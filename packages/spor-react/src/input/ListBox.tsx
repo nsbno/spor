@@ -232,7 +232,7 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
     <List>
       <ListItem
         {...itemProps}
-        listStyleType={"none"}
+        listStyleType="none"
         marginLeft="0"
         paddingX="1"
       >

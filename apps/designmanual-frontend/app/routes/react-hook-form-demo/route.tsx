@@ -11,14 +11,14 @@ export default function Component() {
   });
 
   return (
-    <Stack gap={2} maxW={"400px"}>
-      <Textarea {...register("test")} label={"Uncontrolled"} />
-      <Input {...register("test")} label={"Uncontrolled"} />
+    <Stack gap={2} maxW="400px">
+      <Textarea {...register("test")} label="Uncontrolled" />
+      <Input {...register("test")} label="Uncontrolled" />
 
       <Controller
-        name={"test"}
+        name="test"
         control={control}
-        render={({ field }) => <Input {...field} label={"Controlled"} />}
+        render={({ field }) => <Input {...field} label="Controlled" />}
       />
 
       <SporTest />

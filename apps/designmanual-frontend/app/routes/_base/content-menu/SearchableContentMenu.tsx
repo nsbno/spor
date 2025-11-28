@@ -16,7 +16,7 @@ export const SearchableContentMenu = () => {
       as="nav"
       width={["90vw", null, null, "100%"]}
       padding={0}
-      alignSelf={"flex-start"}
+      alignSelf="flex-start"
     >
       <ContentMenu
         ref={focusableRef}

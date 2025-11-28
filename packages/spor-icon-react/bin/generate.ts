@@ -54,9 +54,12 @@ async function loadIcons() {
   return icons;
 }
 
-type GetMetadataArgs = { fileName: string; category: string };
+type GetMetadataArguments = { fileName: string; category: string };
 /** Extracts metadata from the file name, and returns it as a data structure */
-function getMetadata({ fileName, category }: GetMetadataArgs): IconMetadata {
+function getMetadata({
+  fileName,
+  category,
+}: GetMetadataArguments): IconMetadata {
   // eslint-disable-next-line prefer-const
   let [name, modifier, size, additionalSize] = fileName
     .replace(".svg", "")

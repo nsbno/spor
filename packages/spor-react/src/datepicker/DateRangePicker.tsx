@@ -106,7 +106,7 @@ type DateRangePickerProps = Omit<
     <ChakraPopover.Positioner>
       <ChakraPopover.Content css={styles.calendarPopover}>
         <ChakraPopover.Body maxWidth="60rem">
-          <RangeCalendar variant={"core"} {...calendarProps} />
+          <RangeCalendar variant="core" {...calendarProps} />
         </ChakraPopover.Body>
       </ChakraPopover.Content>
     </ChakraPopover.Positioner>
@@ -158,7 +158,7 @@ type DateRangePickerProps = Omit<
                   as="span"
                   aria-hidden="true"
                   paddingRight="2"
-                  paddingLeft={"2"}
+                  paddingLeft="2"
                 >
                   –
                 </Box>

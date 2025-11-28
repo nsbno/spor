@@ -12,7 +12,7 @@ export const SearchDocs = ({ onOpenChange, open }: Props) => {
     <DialogRoot
       open={open}
       onOpenChange={(d) => onOpenChange(d.open)}
-      size={"lg"}
+      size="lg"
     >
       <DialogContent rounded="sm">
         <DialogBody padding="2">

@@ -79,7 +79,7 @@ export const ContentMenu = forwardRef<
 
   return (
     <React.Fragment key="content-menu">
-      <Flex flexDirection={"column"} display={["flex", null, null, "none"]}>
+      <Flex flexDirection="column" display={["flex", null, null, "none"]}>
         {sections &&
           sections.length > 7 &&
           sections.map((section: Section) => (
@@ -119,11 +119,11 @@ export const ContentMenu = forwardRef<
                 url={handleExternalMenu(item.link, isPreview)}
                 isTopMenu={true}
                 ref={index === 0 ? ref : null}
-                fontWeight={"bold"}
+                fontWeight="bold"
                 fontSize={["desktop.xs", null, "desktop.sm"]}
                 paddingX="3"
                 paddingY="2"
-                borderRadius={"sm"}
+                borderRadius="sm"
                 onClick={() => {
                   setExpanded([item.link]);
                   handleRefresh();
@@ -302,7 +302,7 @@ const MobileMenu = forwardRef(
                       textAlign="left"
                       paddingLeft={6}
                       marginBottom={2}
-                      fontWeight={"bold"}
+                      fontWeight="bold"
                     >
                       <Link
                         to={handleExternalMenu(item?.link ?? "/", isPreview)}

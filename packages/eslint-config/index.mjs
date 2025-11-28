@@ -29,6 +29,13 @@ export default defineConfig([
       "simple-import-sort/imports": "warn",
       "simple-import-sort/exports": "warn",
       "spor/use-semantic-tokens": "warn",
+      "react/jsx-curly-brace-presence": [
+        "warn",
+        {
+          props: "never",
+          children: "never",
+        },
+      ],
     },
   },
   js.configs.recommended,
@@ -43,7 +50,6 @@ export default defineConfig([
       "unicorn/prevent-abbreviations": "off",
       "unicorn/no-null": "off",
       "unicorn/filename-case": "off",
-      "no-nested-ternary": "error",
     },
     settings: {
       react: {

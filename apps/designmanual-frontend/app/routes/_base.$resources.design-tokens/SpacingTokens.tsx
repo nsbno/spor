@@ -63,7 +63,7 @@ const SpacingTokensTable = () => {
                   <Box
                     width={variable as string}
                     height={variable as string}
-                    backgroundColor={"surface.tertiary"}
+                    backgroundColor="surface.tertiary"
                   />
                 </TableCell>
                 <TableCell>

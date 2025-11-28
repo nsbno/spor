@@ -63,7 +63,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       <ChakraIconButton
         aria-label={props["aria-label"]}
         size={size}
-        position={"relative"}
+        position="relative"
         {...rest}
         ref={ref}
       >

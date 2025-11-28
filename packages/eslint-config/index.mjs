@@ -47,7 +47,7 @@ export default defineConfig([
   eslintPluginUnicorn.configs.recommended,
   {
     rules: {
-      "unicorn/prevent-abbreviations": "warn",
+      "unicorn/prevent-abbreviations": "off",
       "unicorn/no-null": "off",
       "unicorn/filename-case": "off",
     },

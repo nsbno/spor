@@ -33,6 +33,7 @@ export default defineConfig([
         "warn",
         {
           props: "never",
+          children: "never",
         },
       ],
     },

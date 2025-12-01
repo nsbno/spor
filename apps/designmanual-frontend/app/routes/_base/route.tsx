@@ -36,8 +36,10 @@ export default function BaseLayout() {
     height: number;
   } | null>(null);
 
-  const TOP = "5rem";
+  const TOP = "11.25rem";
   const [placementTop, setPlacementTop] = useState<string | null>(TOP);
+
+  const MINIMUM_SCROLL_POS = 5;
 
   const scrollTriggers = useRef({
     onScrollToTop: () => {
@@ -55,10 +57,10 @@ export default function BaseLayout() {
 
     const handle = () => {
       const y = window.scrollY || window.pageYOffset || 0;
-      if (!scrolledRef.current && y > 5) {
+      if (!scrolledRef.current && y > MINIMUM_SCROLL_POS) {
         scrolledRef.current = true;
         scrollTriggers.current.onScrollAwayFromTop?.();
-      } else if (scrolledRef.current && y <= 5) {
+      } else if (scrolledRef.current && y <= MINIMUM_SCROLL_POS) {
         scrolledRef.current = false;
         scrollTriggers.current.onScrollToTop?.();
       }
@@ -111,7 +113,7 @@ export default function BaseLayout() {
       } else {
         setForceFixed(false);
         setFixedRect(null);
-        setPlacementTop("0");
+        setPlacementTop(TOP);
       }
     };
 
@@ -148,7 +150,7 @@ export default function BaseLayout() {
         ref={asideRef}
         alignSelf="flex-start"
         position={forceFixed ? "fixed" : "sticky"}
-        top={placementTop || "0"}
+        top={placementTop || TOP}
         zIndex={10}
         maxHeight={`calc(100vh - ${placementTop})`}
         overflowY="auto"

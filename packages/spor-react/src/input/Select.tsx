@@ -91,7 +91,12 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
             <SelectValueText withPlaceholder={label ? true : false} />
           </SelectTrigger>
           {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
-          <SelectContent css={styles.selectContent}>{children}</SelectContent>
+          <SelectContent
+            css={styles.selectContent}
+            portalled={globalThis.window !== undefined}
+          >
+            {children}
+          </SelectContent>
         </ChakraSelect.Root>
       </Field>
     );

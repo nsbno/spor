@@ -135,6 +135,7 @@ export default function BaseLayout() {
       gap={8}
       marginX={{ base: "4", md: "8" }}
       overflow="visible"
+      flexDirection={["column", null, null, "row"]}
     >
       {forceFixed && fixedRect && (
         <Box

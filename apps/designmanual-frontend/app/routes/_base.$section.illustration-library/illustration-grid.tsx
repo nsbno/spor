@@ -41,7 +41,11 @@ export const IllustationGrid = ({
       >
         <StaticCard
           colorScheme="white"
-          bg="bg"
+          bg={
+            illustration.illustrationType.includes("sticker")
+              ? "bg.secondary"
+              : "bg.secondary"
+          }
           padding={2}
           border="1px solid"
           borderColor="outline"

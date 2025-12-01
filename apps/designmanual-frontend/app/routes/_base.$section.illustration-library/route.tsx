@@ -22,7 +22,7 @@ import { IllustationGrid } from "./illustration-grid";
 import { Pagination } from "./pagination";
 import { getArticlesQuery, getIllustrationsQuery } from "./queries";
 
-function getUrlWithIllustrationSearchParams(url: URL): URL | null {
+function getUrlWithIllustrationSearchParameters(url: URL): URL | null {
   let changed = false;
   if (!url.searchParams.has("illustrationType")) {
     url.searchParams.set("illustrationType", "transparent-bg");
@@ -54,7 +54,7 @@ function getUrlWithIllustrationSearchParams(url: URL): URL | null {
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
 
-  const updatedUrl = getUrlWithIllustrationSearchParams(new URL(request.url));
+  const updatedUrl = getUrlWithIllustrationSearchParameters(new URL(request.url));
   if (updatedUrl) {
     return redirect(
       updatedUrl.pathname + "?" + updatedUrl.searchParams.toString(),
@@ -78,10 +78,10 @@ export default function IllustrationLibraryPage() {
 
   const location = useLocation();
 
-  const allParams = new URLSearchParams(location.search);
-  allParams.set("pageSize", "all");
-  allParams.set("page", "1");
-  const allHref = `/resources/illustration-library/all?${allParams.toString()}`;
+  const allParameters = new URLSearchParams(location.search);
+  allParameters.set("pageSize", "all");
+  allParameters.set("page", "1");
+  const allHref = `/resources/illustration-library/all?${allParameters.toString()}`;
 
   return (
     <Box>

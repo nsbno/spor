@@ -31,8 +31,8 @@ type ComponentDocsProps = {
   };
 };
 export const ComponentDocs = ({ component }: ComponentDocsProps) => {
-  const visibleProps = component.props?.filter((prop) => {
-    const platform = prop.platform ?? "react, react-native";
+  const visibleProps = component.props?.filter((property) => {
+    const platform = property.platform ?? "react, react-native";
     return platform.split(", ").includes("react");
   });
   return (
@@ -66,22 +66,24 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {visibleProps.map((prop) => (
-                <TableRow key={prop.name}>
+              {visibleProps.map((property) => (
+                <TableRow key={property.name}>
                   <TableCell>
-                    <Code>{prop.name}</Code>
+                    <Code>{property.name}</Code>
                   </TableCell>
                   <TableCell>
                     <Code>
-                      {prop.type === "other" ? prop.typeOther : prop.type}
+                      {property.type === "other"
+                        ? property.typeOther
+                        : property.type}
                     </Code>
                   </TableCell>
                   <TableCell>
-                    {prop.isRequired && (
+                    {property.isRequired && (
                       <SuccessFill24Icon aria-label="Required" marginX="auto" />
                     )}
                   </TableCell>
-                  <TableCell>{prop.description}</TableCell>
+                  <TableCell>{property.description}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

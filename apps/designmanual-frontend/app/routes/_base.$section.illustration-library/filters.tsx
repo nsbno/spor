@@ -15,11 +15,13 @@ export const Filters = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const params = new URLSearchParams(location.search);
+  const parameters = new URLSearchParams(location.search);
 
-  const [serachQuery, setSearchQuery] = useState(params.get("search") ?? "");
+  const [serachQuery, setSearchQuery] = useState(
+    parameters.get("search") ?? "",
+  );
 
-  const updateParams = ({
+  const updateParameters = ({
     searchValue,
     illustrationTypeValue,
     sizeValue,
@@ -31,21 +33,21 @@ export const Filters = () => {
     sortValue?: string;
   }) => {
     if (searchValue || searchValue === "") {
-      params.set("search", searchValue);
+      parameters.set("search", searchValue);
     }
     if (illustrationTypeValue) {
-      params.set("illustrationType", illustrationTypeValue);
+      parameters.set("illustrationType", illustrationTypeValue);
     }
     if (sizeValue) {
-      params.set("size", sizeValue);
+      parameters.set("size", sizeValue);
     }
 
     if (sortValue) {
-      params.set("sort", sortValue);
+      parameters.set("sort", sortValue);
     }
 
-    params.set("page", "1");
-    navigate(`?${params.toString()}`, {
+    parameters.set("page", "1");
+    navigate(`?${parameters.toString()}`, {
       replace: true,
       preventScrollReset: true,
     });
@@ -53,29 +55,29 @@ export const Filters = () => {
 
   const debouncedSearchNavigate = useDebouncedCallback(
     (searchValue: string) => {
-      updateParams({ searchValue });
+      updateParameters({ searchValue });
     },
     500,
   );
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const searchValue = e.target.value;
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const searchValue = event.target.value;
     setSearchQuery(searchValue);
     debouncedSearchNavigate(searchValue);
   };
 
   const handleIllustrationTypeChange = (illustrationTypeValue: string) => {
-    updateParams({ illustrationTypeValue });
+    updateParameters({ illustrationTypeValue });
   };
 
-  const handleSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const sizeValue = e.target.value;
-    updateParams({ sizeValue });
+  const handleSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const sizeValue = event.target.value;
+    updateParameters({ sizeValue });
   };
 
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const sortValue = e.target.value;
-    updateParams({ sortValue });
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const sortValue = event.target.value;
+    updateParameters({ sortValue });
   };
 
   return (
@@ -92,7 +94,7 @@ export const Filters = () => {
       <GridItem colSpan={[12, 6, 6, 3, 2]}>
         <NativeSelect
           label="Size"
-          value={params.get("size") ?? "all"}
+          value={parameters.get("size") ?? "all"}
           onChange={handleSizeChange}
         >
           <option value="all">All</option>
@@ -105,7 +107,7 @@ export const Filters = () => {
       <GridItem colSpan={[12, 6, 6, 3, 2]}>
         <NativeSelect
           label="Sort by"
-          value={params.get("sort") ?? "added"}
+          value={parameters.get("sort") ?? "added"}
           onChange={handleSortChange}
         >
           <option value="name">Name</option>
@@ -115,7 +117,7 @@ export const Filters = () => {
 
       <GridItem colSpan={[12, 12, 12, 12]} overflowX="auto">
         <Tabs
-          value={params.get("illustrationType") ?? "all"}
+          value={parameters.get("illustrationType") ?? "all"}
           size="sm"
           variant="accent"
           onValueChange={({ value }) => handleIllustrationTypeChange(value)}

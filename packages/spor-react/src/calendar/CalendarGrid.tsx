@@ -74,11 +74,11 @@ export function CalendarGrid({ offset = {} }: Props) {
           <tr key={weekIndex}>
             {state
               .getDatesInWeek(weekIndex, startDate)
-              .map((date: CalendarDate | null, i: number) =>
+              .map((date: CalendarDate | null, index: number) =>
                 date ? (
-                  <CalendarCell key={i} date={date} currentMonth={startDate} />
+                  <CalendarCell key={index} date={date} currentMonth={startDate} />
                 ) : (
-                  <td key={i} />
+                  <td key={index} />
                 ),
               )}
           </tr>

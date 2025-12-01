@@ -8,7 +8,7 @@ export const SearchableContentMenu = () => {
   const [refreshKey, setRefreshKey] = React.useState(0);
 
   const handleRefresh = () => {
-    setRefreshKey((prev) => prev + 1);
+    setRefreshKey((previous) => previous + 1);
   };
 
   return (

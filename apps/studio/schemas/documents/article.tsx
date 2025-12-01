@@ -88,11 +88,11 @@ export const article = defineType({
       name: "content",
       title: "Content",
       type: "content",
-      hidden: (args) => {
+      hidden: (arguments_) => {
         // This is a hack to hide this field when the article is a component
         // It's not supported to do it any other way yet
         return (
-          (args.document?.category as any)?._ref === COMPONENTS_CATEGORY_ID
+          (arguments_.document?.category as any)?._ref === COMPONENTS_CATEGORY_ID
         );
       },
     }),
@@ -100,11 +100,11 @@ export const article = defineType({
       name: "componentSections",
       title: "Sections",
       description: "This is the new way to document components.",
-      hidden: (args) => {
+      hidden: (arguments_) => {
         // This is a hack to hide this field when the article isn't a component
         // It's not supported to do it any other way yet
         return (
-          (args.document?.category as any)?._ref !== COMPONENTS_CATEGORY_ID
+          (arguments_.document?.category as any)?._ref !== COMPONENTS_CATEGORY_ID
         );
       },
       type: "array",

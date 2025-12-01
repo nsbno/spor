@@ -93,13 +93,13 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
       }
     }
   }`;
-  const queryParams = {
+  const queryParameters = {
     section: params.section,
     categorySlug: params.category,
     articleSlug: params.slug,
   };
   const isPreview = isValidPreviewRequest(request);
-  const initialData = await getClient().fetch(query, queryParams, {
+  const initialData = await getClient().fetch(query, queryParameters, {
     perspective: draftMode ? "previewDrafts" : "published",
   });
 
@@ -111,7 +111,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     initialData,
     isPreview,
     query: isPreview ? query : null,
-    queryParams: isPreview ? queryParams : null,
+    queryParams: isPreview ? queryParameters : null,
   };
 };
 
@@ -304,8 +304,8 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
   );
 };
 
-type GetCorrectTitleArgs = Pick<ComponentSection, "title" | "customTitle">;
-const getCorrectTitle = ({ title, customTitle }: GetCorrectTitleArgs) => {
+type GetCorrectTitleArguments = Pick<ComponentSection, "title" | "customTitle">;
+const getCorrectTitle = ({ title, customTitle }: GetCorrectTitleArguments) => {
   switch (title) {
     case "examples": {
       return "Examples";

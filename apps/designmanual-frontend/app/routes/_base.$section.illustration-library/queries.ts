@@ -15,30 +15,30 @@ export type SanityIllustration = {
   description: string;
 };
 
-const getSortOrder = (searchParams: URLSearchParams) => {
-  const sortParam = searchParams.get("sort")?.trim();
-  if (sortParam === "added") {
+const getSortOrder = (searchParameters: URLSearchParams) => {
+  const sortParameter = searchParameters.get("sort")?.trim();
+  if (sortParameter === "added") {
     return "order(_createdAt desc)";
   }
   return "order(title asc)";
 };
 
-const getFilter = (searchParams: URLSearchParams) => {
+const getFilter = (searchParameters: URLSearchParams) => {
   let filter = `_type == "illustration"`;
 
-  const search = searchParams.get("search")?.trim();
+  const search = searchParameters.get("search")?.trim();
   if (search) {
     const escaped = search.replaceAll('"', String.raw`\"`);
     filter += ` && (title match "*${escaped}*" || tags[] match "*${escaped}*")`;
   }
 
-  const illustrationType = searchParams.get("illustrationType")?.trim();
+  const illustrationType = searchParameters.get("illustrationType")?.trim();
   if (illustrationType && illustrationType !== "all") {
     const escaped = illustrationType.replaceAll('"', String.raw`\"`);
     filter += ` && illustrationType == "${escaped}"`;
   }
 
-  const size = searchParams.get("size")?.trim();
+  const size = searchParameters.get("size")?.trim();
   if (size && size !== "all") {
     const escaped = size.replaceAll('"', String.raw`\"`);
     filter += ` && size == "${escaped}"`;
@@ -47,15 +47,15 @@ const getFilter = (searchParams: URLSearchParams) => {
   return filter;
 };
 
-export const getPaginationParams = (searchParams: URLSearchParams) => {
-  const pageParam = searchParams.get("page") || "1";
-  const page = Math.max(1, Number.parseInt(pageParam, 10));
+const getPaginationParameters = (searchParameters: URLSearchParams) => {
+  const pageParameter = searchParameters.get("page") || "1";
+  const page = Math.max(1, Number.parseInt(pageParameter, 10));
 
-  const pageSizeParam = searchParams.get("pageSize") || "all";
+  const pageSizeParameter = searchParameters.get("pageSize") || "all";
   const pageSize =
-    pageSizeParam === "all" ? 1000 : Number.parseInt(pageSizeParam, 10);
+    pageSizeParameter === "all" ? 1000 : Number.parseInt(pageSizeParameter, 10);
 
-  return { page, pageSize, pageSizeParam };
+  return { page, pageSize, pageSizeParam: pageSizeParameter };
 };
 
 export const getIllustrationsQuery = async (
@@ -68,7 +68,7 @@ export const getIllustrationsQuery = async (
 
   const perspective = draftMode ? "previewDrafts" : "published";
 
-  const { page, pageSize, pageSizeParam } = getPaginationParams(
+  const { page, pageSize, pageSizeParam } = getPaginationParameters(
     url.searchParams,
   );
 

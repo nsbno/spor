@@ -11,11 +11,11 @@ import { getIllustrationsQuery } from "../_base.$section.illustration-library/qu
 /**
  * Fetches all illustrations from Sanity and returns them as a zip file.
  */
-export const loader = async (args: LoaderFunctionArgs) => {
+export const loader = async (arguments_: LoaderFunctionArgs) => {
   console.info("Fetching list of illustrations from Sanity");
 
   const { items: allIllustrations } = await getIllustrationsQuery(
-    args.request.url,
+    arguments_.request.url,
   );
 
   console.info(

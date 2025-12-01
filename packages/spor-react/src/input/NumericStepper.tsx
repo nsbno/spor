@@ -68,9 +68,9 @@ export const NumericStepper = React.forwardRef<
   NumericStepperProps
 >((props: NumericStepperProps, ref) => {
   const {
-    name: nameProp,
-    id: idProp,
-    value: valueProp,
+    name: nameProperty,
+    id: idProperty,
+    value: valueProperty,
     defaultValue = 1,
     onValueChange,
     minValue = 0,
@@ -87,7 +87,7 @@ export const NumericStepper = React.forwardRef<
   const recipe = useSlotRecipe({ key: "numericStepper" });
   const styles = recipe();
   const [value, onChange] = useControllableState<number>({
-    value: valueProp,
+    value: valueProperty,
     onChange: onValueChange,
     defaultValue,
   });
@@ -98,7 +98,7 @@ export const NumericStepper = React.forwardRef<
   };
 
   return (
-    <Field css={styles.root} width="auto" {...rest} id={idProp} ref={ref}>
+    <Field css={styles.root} width="auto" {...rest} id={idProperty} ref={ref}>
       <VerySmallButton
         icon={<SubtractIcon stepLabel={clampedStepSize} />}
         aria-label={t(
@@ -116,16 +116,16 @@ export const NumericStepper = React.forwardRef<
           }
         }}
         disabled={disabled || value <= minValue}
-        id={value <= minValue ? undefined : idProp}
+        id={value <= minValue ? undefined : idProperty}
       />
       {withInput ? (
         <Input
           min={minValue}
           max={maxValue}
-          name={nameProp}
+          name={nameProperty}
           value={value}
           disabled={disabled}
-          id={value === 0 ? undefined : idProp}
+          id={value === 0 ? undefined : idProperty}
           css={styles.input}
           width={`${Math.max(value.toString().length + 1, 3)}ch`}
           aria-live="assertive"
@@ -134,8 +134,8 @@ export const NumericStepper = React.forwardRef<
               ? ""
               : t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
           }
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const numericInput = Number(e.target.value);
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            const numericInput = Number(event.target.value);
             if (Number.isNaN(numericInput)) {
               return;
             }
@@ -171,7 +171,7 @@ export const NumericStepper = React.forwardRef<
         )}
         onClick={() => onChange(Math.min(value + clampedStepSize, maxValue))}
         disabled={disabled || value >= maxValue}
-        id={value >= maxValue ? undefined : idProp}
+        id={value >= maxValue ? undefined : idProperty}
       />
     </Field>
   );
@@ -212,9 +212,9 @@ const VerySmallButton = React.forwardRef<
 });
 VerySmallButton.displayName = "VerySmallButton";
 
-type IconPropTypes = BoxProps & { stepLabel: number };
+type IconPropertyTypes = BoxProps & { stepLabel: number };
 
-const SubtractIcon = ({ stepLabel }: IconPropTypes) => (
+const SubtractIcon = ({ stepLabel }: IconPropertyTypes) => (
   <>
     <chakra.svg as="svg" viewBox="0 0 30 30" stroke="currentColor">
       <line
@@ -233,7 +233,7 @@ const SubtractIcon = ({ stepLabel }: IconPropTypes) => (
   </>
 );
 
-const AddIcon = ({ stepLabel }: IconPropTypes) => (
+const AddIcon = ({ stepLabel }: IconPropertyTypes) => (
   <>
     <chakra.svg as="svg" viewBox="0 0 30 30" stroke="currentColor">
       <line

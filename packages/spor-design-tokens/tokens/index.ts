@@ -7,7 +7,7 @@ export type TokenFile = {
   path: string;
 };
 
-function dirs(root: string): Array<TokenFile> {
+function collectTokenFiles(root: string): Array<TokenFile> {
   return readdirSync(root)
     .filter((category) => statSync(path.join(root, category)).isDirectory())
     .flatMap((category) => {
@@ -22,10 +22,10 @@ function dirs(root: string): Array<TokenFile> {
     });
 }
 
-function jsonFiles(dir: string): Array<string> {
-  return readdirSync(dir).filter(
-    (file: string) => path.extname(file) === ".json",
+function jsonFiles(directories: string): Array<string> {
+  return readdirSync(directories).filter(
+    (file: string) => path.extname(file) === ".json"
   );
 }
 
-export const tokens: Array<TokenFile> = dirs(path.join("."));
+export const tokens: Array<TokenFile> = collectTokenFiles(path.join("."));

@@ -28,9 +28,9 @@ import { SearchDocs } from "./SearchDocs";
 
 const useSearchKeyboardShortcut = (onTriggered: () => void) => {
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === "k") {
+        event.preventDefault();
         onTriggered();
       }
     };
@@ -58,10 +58,10 @@ export const SiteHeader = () => {
   const currentSection = slug?.split("/")[0] || "";
   const allSections = routeData?.initialSanityData?.siteSettings?.topMenu || [];
 
-  const isProd = routeData?.env === "prod";
+  const isProduction = routeData?.env === "prod";
 
   const sections = allSections.filter((s) => {
-    if (isProd && s.slug.current.includes("identitet")) {
+    if (isProduction && s.slug.current.includes("identitet")) {
       return false;
     }
     return true;

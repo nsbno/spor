@@ -230,12 +230,7 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
 
   return (
     <List>
-      <ListItem
-        {...itemProps}
-        listStyleType={"none"}
-        marginLeft="0"
-        paddingX="1"
-      >
+      <ListItem {...itemProps} listStyleType="none" marginLeft="0" paddingX="1">
         {section.rendered && (
           <Box
             fontSize={["mobile.sm", "desktop.sm"]}

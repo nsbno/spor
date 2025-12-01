@@ -12,7 +12,7 @@ export type TranslationObject = {
   [key in Language]: string | React.ReactElement;
 };
 type TranslationFunction = (
-  ...args: Array<string | number>
+  ...arguments_: Array<string | number>
 ) => TranslationObject;
 
 type Translation = TranslationObject | TranslationFunction;

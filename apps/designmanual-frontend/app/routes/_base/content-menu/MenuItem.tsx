@@ -23,9 +23,11 @@ export const MenuItem = forwardRef<HTMLElement, MenuItemProps>(
 
     useImperativeHandle(externalRef, () => internalRef.current as HTMLElement);
 
-    const handleKeyUp: React.KeyboardEventHandler<HTMLButtonElement> = (e) => {
+    const handleKeyUp: React.KeyboardEventHandler<HTMLButtonElement> = (
+      error,
+    ) => {
       if (!internalRef.current) return;
-      switch (e.key) {
+      switch (error.key) {
         case "ArrowUp": {
           getPreviousFocusableSibling(internalRef.current)?.focus();
           break;
@@ -63,7 +65,7 @@ export const MenuItem = forwardRef<HTMLElement, MenuItemProps>(
         role="menuitem"
         type={isExternal ? undefined : "button"}
       >
-        <Flex justifyContent={"space-between"} alignItems="center">
+        <Flex justifyContent="space-between" alignItems="center">
           <Box width="100%" textAlign="left">
             {children}
           </Box>
@@ -74,9 +76,11 @@ export const MenuItem = forwardRef<HTMLElement, MenuItemProps>(
   },
 );
 
-const handleKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = (e) => {
-  if (["ArrowUp", "ArrowDown"].includes(e.key)) {
-    e.preventDefault();
+const handleKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = (
+  event,
+) => {
+  if (["ArrowUp", "ArrowDown"].includes(event.key)) {
+    event.preventDefault();
   }
 };
 

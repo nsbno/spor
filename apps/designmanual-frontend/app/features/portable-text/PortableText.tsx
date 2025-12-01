@@ -74,7 +74,7 @@ const components: Partial<PortableTextReactComponents> = {
         variant="xxl"
         fontWeight="200"
         marginTop={6}
-        color={"text.secondary"}
+        color="text.secondary"
       >
         {children}
       </LinkableHeading>
@@ -273,7 +273,7 @@ const components: Partial<PortableTextReactComponents> = {
         <Box paddingBottom={3}>
           <InteractiveCode
             layout={value.layout}
-            maxWidth={`calc(100vw - var(--spor-space-6))`}
+            maxWidth="calc(100vw - var(--spor-space-6))"
             code={code}
           />
         </Box>

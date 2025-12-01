@@ -70,11 +70,11 @@ export default function BaseLayout() {
   }, []);
 
   useEffect(() => {
-    const el = asideRef.current;
-    if (!el || globalThis.window === undefined) return;
+    const element = asideRef.current;
+    if (!element || globalThis.window === undefined) return;
 
     const check = () => {
-      let ancestor: HTMLElement | null = el.parentElement;
+      let ancestor: HTMLElement | null = element.parentElement;
       let broken = false;
       while (ancestor && ancestor !== document.documentElement) {
         const cs = getComputedStyle(ancestor);
@@ -100,7 +100,7 @@ export default function BaseLayout() {
       }
 
       if (broken) {
-        const r = el.getBoundingClientRect();
+        const r = element.getBoundingClientRect();
         setFixedRect({
           left: Math.round(r.left),
           width: Math.round(r.width),

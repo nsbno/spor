@@ -64,7 +64,7 @@ export const ResponsiveImage = ({
 }: ImageRendererProps) => {
   const imageBuilder = useImageUrlBuilder(format);
 
-  const imageSrc = (breakpoint: Breakpoint, multiplier: number) => {
+  const imageSource = (breakpoint: Breakpoint, multiplier: number) => {
     try {
       const baseImage = imageBuilder
         .image(image)
@@ -99,27 +99,27 @@ export const ResponsiveImage = ({
       <picture>
         <source
           media={`(min-width: ${tokens.size.breakpoint.xl})`}
-          srcSet={`${imageSrc("xl", multiplier)} 1x, ${imageSrc("xl", 2 * multiplier)} 2x`}
+          srcSet={`${imageSource("xl", multiplier)} 1x, ${imageSource("xl", 2 * multiplier)} 2x`}
         />
 
         <source
           media={`(min-width: ${tokens.size.breakpoint.lg})`}
-          srcSet={`${imageSrc("lg", multiplier)} 1x, ${imageSrc("lg", 2 * multiplier)} 2x`}
+          srcSet={`${imageSource("lg", multiplier)} 1x, ${imageSource("lg", 2 * multiplier)} 2x`}
         />
 
         <source
           media={`(min-width: ${tokens.size.breakpoint.md})`}
-          srcSet={`${imageSrc("md", multiplier)} 1x, ${imageSrc("md", 2 * multiplier)} 2x`}
+          srcSet={`${imageSource("md", multiplier)} 1x, ${imageSource("md", 2 * multiplier)} 2x`}
         />
 
         <source
           media={`(min-width: ${tokens.size.breakpoint.sm})`}
-          srcSet={`${imageSrc("sm", multiplier)} 1x, ${imageSrc("sm", 2 * multiplier)} 2x`}
+          srcSet={`${imageSource("sm", multiplier)} 1x, ${imageSource("sm", 2 * multiplier)} 2x`}
         />
 
         <Image
-          src={imageSrc("sm", multiplier)}
-          srcSet={`${imageSrc("sm", 2 * multiplier)} 2x`}
+          src={imageSource("sm", multiplier)}
+          srcSet={`${imageSource("sm", 2 * multiplier)} 2x`}
           alt={altText}
           style={{ ...props.style, ...objectPositionStyle }}
           {...props}

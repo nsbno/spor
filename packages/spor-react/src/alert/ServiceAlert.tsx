@@ -140,12 +140,12 @@ ServiceAlert.displayName = "ServiceAlert";
 
 const texts = createTexts({
   notification: (notification) => {
-    const numNotification = Number(notification);
+    const numberNotification = Number(notification);
     return {
-      nb: `${numNotification} ${numNotification > 1 ? "varsler" : "varsel"}`,
-      nn: `${numNotification} ${numNotification > 1 ? "varslar" : "varsel"}`,
-      sv: `${numNotification} ${numNotification > 1 ? "underrättelser" : "underrättelse"}`,
-      en: `${numNotification} ${numNotification > 1 ? "notifications" : "notification"}`,
+      nb: `${numberNotification} ${numberNotification > 1 ? "varsler" : "varsel"}`,
+      nn: `${numberNotification} ${numberNotification > 1 ? "varslar" : "varsel"}`,
+      sv: `${numberNotification} ${numberNotification > 1 ? "underrättelser" : "underrättelse"}`,
+      en: `${numberNotification} ${numberNotification > 1 ? "notifications" : "notification"}`,
     };
   },
   service: {

@@ -85,11 +85,11 @@ function formatBytes(bytes: number): string {
   const decimals = 1;
   const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
 
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  const index = Math.floor(Math.log(bytes) / Math.log(k));
 
   return (
-    Number.parseFloat((bytes / Math.pow(k, i)).toFixed(decimals)) +
+    Number.parseFloat((bytes / Math.pow(k, index)).toFixed(decimals)) +
     " " +
-    sizes[i]
+    sizes[index]
   );
 }

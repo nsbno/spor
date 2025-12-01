@@ -28,9 +28,9 @@ import { SearchDocs } from "./SearchDocs";
 
 const useSearchKeyboardShortcut = (onTriggered: () => void) => {
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === "k") {
+        event.preventDefault();
         onTriggered();
       }
     };
@@ -58,10 +58,10 @@ export const SiteHeader = () => {
   const currentSection = slug?.split("/")[0] || "";
   const allSections = routeData?.initialSanityData?.siteSettings?.topMenu || [];
 
-  const isProd = routeData?.env === "prod";
+  const isProduction = routeData?.env === "prod";
 
   const sections = allSections.filter((s) => {
-    if (isProd && s.slug.current.includes("identitet")) {
+    if (isProduction && s.slug.current.includes("identitet")) {
       return false;
     }
     return true;
@@ -74,10 +74,10 @@ export const SiteHeader = () => {
       alignItems="center"
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
-      backgroundColor={"bg"}
+      backgroundColor="bg"
       gap="3"
-      width={"100vw"}
-      overflow={"hidden"}
+      width="100vw"
+      overflow="hidden"
     >
       <Flex
         alignItems="center"
@@ -102,7 +102,7 @@ export const SiteHeader = () => {
           <Flex
             as="ul"
             gap="4"
-            width={"auto"}
+            width="auto"
             justifyContent="flex-end"
             alignItems="center"
           >
@@ -120,7 +120,7 @@ export const SiteHeader = () => {
                         ? "secondary"
                         : "ghost"
                     }
-                    size={"md"}
+                    size="md"
                     borderRadius="lg"
                     display={{ base: "none", lg: "flex" }}
                     border="none"
@@ -182,7 +182,7 @@ const MobileMenu = () => {
       <Drawer placement="end" open={open} onExitComplete={onClose}>
         <DrawerContent>
           <DrawerHeader>
-            <DrawerCloseTrigger placeContent={"end"} onClick={onClose} />
+            <DrawerCloseTrigger placeContent="end" onClick={onClose} />
           </DrawerHeader>
           <DrawerBody paddingY={2}>
             <SearchableContentMenu />

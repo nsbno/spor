@@ -72,12 +72,16 @@ const icons: Record<Variant, Record<Size, React.ComponentType>> = {
   walk: { sm: WalkFill18Icon, md: WalkFill24Icon, lg: WalkFill30Icon },
 };
 
-type GetCorrectIconArgs = {
+type GetCorrectIconArguments = {
   variant: Variant;
   size: Size;
   css: SystemStyleObject;
 };
-export const LinjeTagIcon = ({ variant, size, css }: GetCorrectIconArgs) => {
+export const LinjeTagIcon = ({
+  variant,
+  size,
+  css,
+}: GetCorrectIconArguments) => {
   const IconComponent = icons[variant]?.[size] ?? Box;
   return (
     <Box css={css} asChild>

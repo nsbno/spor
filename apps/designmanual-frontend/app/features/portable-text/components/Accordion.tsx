@@ -61,11 +61,11 @@ export const Accordion = ({
 
   useEffect(() => {
     if (hash) {
-      const el = document.querySelector(hash);
-      if (el) {
+      const element = document.querySelector(hash);
+      if (element) {
         // Calculate the scroll position to be 1/3 down the screen to avoid header and cookie banner
         const viewpHeight = window.innerHeight;
-        const rect = el.getBoundingClientRect();
+        const rect = element.getBoundingClientRect();
         const targetScrollPos = rect.top + window.scrollY - viewpHeight / 3;
 
         window.scrollTo({ top: targetScrollPos });
@@ -77,7 +77,7 @@ export const Accordion = ({
     const includesIndex = openIndex.includes(index);
     setOpenIndex(
       includesIndex
-        ? openIndex.filter((i) => i !== index)
+        ? openIndex.filter((index_) => index_ !== index)
         : [...openIndex, index],
     );
     history.replaceState({}, "", includesIndex ? " " : `#item-${id}`);
@@ -116,12 +116,12 @@ export const Accordion = ({
         data-testid="accordion"
         value={openIndex.map(String)}
       >
-        {items.map((item, i) => (
-          <AccordionItem key={item._key} value={String(i)}>
+        {items.map((item, index) => (
+          <AccordionItem key={item._key} value={String(index)}>
             <Heading as={safeItemLevel ?? "h3"} autoId>
               <AccordionItemTrigger
                 gap={1}
-                onClick={() => handleAccordionState(item._key, i)}
+                onClick={() => handleAccordionState(item._key, index)}
               >
                 {item.icon && getIcon({ iconName: item.icon, size: 24 })}
                 <Box flex={1} id={`item-${item._key}`}>

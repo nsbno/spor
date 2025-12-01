@@ -24,7 +24,7 @@ export const CodeBlock = ({
 }: CodeBlockProps) => {
   return (
     <CodeBlockContainer
-      maxWidth={`calc(100vw - var(--spor-space-6))`}
+      maxWidth="calc(100vw - var(--spor-space-6))"
       {...props}
       code={sanitizeCode(code)}
       marginTop={2}
@@ -36,8 +36,8 @@ export const CodeBlock = ({
             className={className}
             style={{ ...style, overflowX: "auto" }}
           >
-            {tokens.map((line, i) => {
-              const lineProps = getLineProps({ line, key: i });
+            {tokens.map((line, index) => {
+              const lineProps = getLineProps({ line, key: index });
               const { key, ...restLineProps } = lineProps;
               return (
                 <Box key={key as Key} {...restLineProps}>
@@ -71,9 +71,9 @@ export const CodeBlockContainer = ({
   ...props
 }: CodeBlockContainerProps) => {
   const copyButtonRef = useRef<HTMLButtonElement>(null);
-  const handleKeyUp = (e: React.KeyboardEvent) => {
-    if (e.key === "Escape") {
-      if (e.shiftKey) {
+  const handleKeyUp = (event: React.KeyboardEvent) => {
+    if (event.key === "Escape") {
+      if (event.shiftKey) {
         const previousElement = getPreviousFocusableElement();
         previousElement.focus();
       } else {

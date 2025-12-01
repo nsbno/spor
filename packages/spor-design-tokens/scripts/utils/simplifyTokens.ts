@@ -2,16 +2,16 @@
 /**
  * Recursive function that resolves the value of a given token
  */
-export function simplifyTokens(obj: Record<string, any>): any {
-  for (const key in obj) {
-    if (!obj[key] || typeof obj[key] !== "object") {
+export function simplifyTokens(object: Record<string, any>): any {
+  for (const key in object) {
+    if (!object[key] || typeof object[key] !== "object") {
       continue;
     }
-    if ("value" in obj[key] && !obj[key].keepDetails) {
-      obj[key] = obj[key].value;
+    if ("value" in object[key] && !object[key].keepDetails) {
+      object[key] = object[key].value;
       continue;
     }
-    obj[key] = simplifyTokens(obj[key]);
+    object[key] = simplifyTokens(object[key]);
   }
-  return obj;
+  return object;
 }

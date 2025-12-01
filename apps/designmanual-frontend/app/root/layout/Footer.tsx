@@ -20,7 +20,7 @@ export const Footer = () => {
     <Flex
       as="footer"
       justifyContent="space-between"
-      backgroundColor={"surface.secondary"}
+      backgroundColor="surface.secondary"
       className="dark"
       alignItems="center"
       gap="4"
@@ -29,9 +29,9 @@ export const Footer = () => {
       borderTop="1px solid"
       borderColor={borderColor}
       paddingX={[3, null, 6, 4, 8]}
-      width={"100%"}
+      width="100%"
       marginX="auto"
-      minHeight={"12rem"}
+      minHeight="12rem"
       flexDirection={["column", null, "row"]}
     >
       <Box alignSelf="start" marginTop="4">
@@ -46,16 +46,16 @@ export const Footer = () => {
 
       <Flex
         flexDirection="row"
-        justifyContent={"center"}
+        justifyContent="center"
         alignItems="start"
         gap={2}
         flexWrap="wrap"
         flexGrow={1}
       >
         <Flex
-          flexDirection={"column"}
+          flexDirection="column"
           gap="6"
-          justifyContent={"center"}
+          justifyContent="center"
           alignItems={["start", null, "center"]}
         >
           <Flex
@@ -72,7 +72,7 @@ export const Footer = () => {
                 <Text
                   as="h6"
                   textAlign={["left", null, "center"]}
-                  fontWeight={"bold"}
+                  fontWeight="bold"
                   variant="xs"
                 >
                   {item.title}

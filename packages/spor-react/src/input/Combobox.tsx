@@ -261,20 +261,20 @@ const useInputWidth = (inputRef: React.RefObject<HTMLInputElement>) => {
   return inputWidth;
 };
 
-function styleProps(obj: Record<string, unknown>): Record<string, unknown> {
+function styleProps(object: Record<string, unknown>): Record<string, unknown> {
   return Object.fromEntries(
-    Object.entries(obj).filter(([, value]) => value !== undefined),
+    Object.entries(object).filter(([, value]) => value !== undefined),
   );
 }
 
-const debounce = (fn: () => void, ms = 100) => {
+const debounce = (function_: () => void, ms = 100) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let timer: any;
   return () => {
     clearTimeout(timer);
     timer = setTimeout(() => {
       timer = null;
-      fn();
+      function_();
     }, ms);
   };
 };

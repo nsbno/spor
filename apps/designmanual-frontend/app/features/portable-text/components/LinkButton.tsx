@@ -93,12 +93,12 @@ export const LinkButton = ({
   );
 };
 
-type resolveIconArgs = {
+type resolveIconArguments = {
   icon?: string;
   isExternal: boolean;
 };
 
-function resolveIcon({ icon, isExternal }: resolveIconArgs) {
+function resolveIcon({ icon, isExternal }: resolveIconArguments) {
   if (icon) {
     const iconProps = {
       leftIcon: getIcon({ iconName: icon, size: 24 }),

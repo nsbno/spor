@@ -67,12 +67,12 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
     const { size, placement } = useRootDrawerProps();
     const { setOpen } = useDialogContext();
     const handlers = useSwipeable({
-      onSwiped: (e) => {
+      onSwiped: ({ dir }) => {
         const shouldClose =
-          (placement === "bottom" && e.dir === "Down") ||
-          (placement === "top" && e.dir === "Up") ||
-          (placement === "end" && e.dir === "Right") ||
-          (placement === "start" && e.dir === "Left");
+          (placement === "bottom" && dir === "Down") ||
+          (placement === "top" && dir === "Up") ||
+          (placement === "end" && dir === "Right") ||
+          (placement === "start" && dir === "Left");
         if (shouldClose) {
           setOpen(false);
         }
@@ -167,7 +167,7 @@ export const DrawerFullScreenHeader = forwardRef<
   return (
     <ChakraDrawer.Header {...props} ref={ref}>
       <Box>{backTrigger && <DrawerBackTrigger />}</Box>
-      {<DrawerTitle>{children}</DrawerTitle>}
+      <DrawerTitle>{children}</DrawerTitle>
       <Box> {closeTrigger && <DrawerCloseTrigger />}</Box>
     </ChakraDrawer.Header>
   );

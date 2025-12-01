@@ -52,9 +52,10 @@ type RangeCalendarState = BaseCalendarState & {
 const CalendarContext = createContext<CalendarState | null>(null);
 
 export function useCalendar(): CalendarState {
-  const ctx = useContext(CalendarContext);
-  if (!ctx) throw new Error("useCalendar must be used within CalendarProvider");
-  return ctx;
+  const context = useContext(CalendarContext);
+  if (!context)
+    throw new Error("useCalendar must be used within CalendarProvider");
+  return context;
 }
 
 type Props = {
@@ -123,7 +124,7 @@ export function CalendarProvider(props: Props) {
 
   const {
     calendarProps: singleCalendarProps,
-    prevButtonProps: singlePrevButtonProps,
+    prevButtonProps: singlePreviousButtonProps,
     nextButtonProps: singleNextButtonProps,
   } = useAriaCalendar(
     calendarProps as AriaCalendarProps<DateValue>,
@@ -152,7 +153,7 @@ export function CalendarProvider(props: Props) {
 
   const {
     calendarProps: rangeCalendarProps,
-    prevButtonProps: rangePrevButtonProps,
+    prevButtonProps: rangePreviousButtonProps,
     nextButtonProps: rangeNextButtonProps,
   } = useAriaRangeCalendar(
     calendarProps as AriaRangeCalendarProps<DateValue>,
@@ -187,7 +188,7 @@ export function CalendarProvider(props: Props) {
           mode: "range" as const,
           calendarProps: rangeCalendarProps,
           nextButtonProps: rangeNextButtonProps,
-          prevButtonProps: rangePrevButtonProps,
+          prevButtonProps: rangePreviousButtonProps,
           startValue: getRangeStartValue(),
           endValue: getRangeEndValue(),
           isSelectingRange:
@@ -199,7 +200,7 @@ export function CalendarProvider(props: Props) {
           mode: "single" as const,
           calendarProps: singleCalendarProps,
           nextButtonProps: singleNextButtonProps,
-          prevButtonProps: singlePrevButtonProps,
+          prevButtonProps: singlePreviousButtonProps,
           startValue: singleState.value,
           endValue: null,
           isSelectingRange: false,

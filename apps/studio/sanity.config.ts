@@ -12,7 +12,7 @@ const projectId = "tbpd14t4";
 
 const documentConfig = {
   productionUrl: async (
-    prev: string | undefined,
+    previous: string | undefined,
     { document, getClient }: { document: any; getClient: any },
   ) => {
     try {
@@ -34,15 +34,15 @@ const documentConfig = {
           return host;
         }
 
-        const params = new URLSearchParams();
-        params.set("preview", import.meta.env.SANITY_STUDIO_PREVIEW_SECRET);
+        const parameters = new URLSearchParams();
+        parameters.set("preview", import.meta.env.SANITY_STUDIO_PREVIEW_SECRET);
 
-        return `${host}/${category.slug}/${document?.slug.current}?${params}`;
+        return `${host}/${category.slug}/${document?.slug.current}?${parameters}`;
       }
     } catch (error) {
       console.error(error);
     }
-    return prev;
+    return previous;
   },
 };
 

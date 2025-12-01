@@ -68,8 +68,8 @@ const articleQuery = async () => {
   return article;
 };
 
-export const loader = async (args: LoaderFunctionArgs) => {
-  const componentsPromise = componentsQuery(args);
+export const loader = async (arguments_: LoaderFunctionArgs) => {
+  const componentsPromise = componentsQuery(arguments_);
   const articlePromise = articleQuery();
   const [components, article] = await Promise.all([
     componentsPromise,

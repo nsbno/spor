@@ -12,7 +12,7 @@ import { Text } from "@/typography";
  */
 export function ScrollCalendar(boxProps: BoxProps) {
   const { state, calendarProps, ref, startValue } = useCalendar();
-  const monthRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const monthReferences = useRef<(HTMLDivElement | null)[]>([]);
   const hasScrolledRef = useRef(false);
 
   const startMonth =
@@ -36,7 +36,7 @@ export function ScrollCalendar(boxProps: BoxProps) {
       const monthIndex = targetMonth - startMonth;
 
       if (monthIndex > 0 && monthIndex < monthCount) {
-        const element = monthRefs.current[monthIndex];
+        const element = monthReferences.current[monthIndex];
         if (element) {
           element.scrollIntoView({
             behavior: "instant",
@@ -56,8 +56,8 @@ export function ScrollCalendar(boxProps: BoxProps) {
         {Array.from({ length: monthCount }).map((_, index) => (
           <Box
             key={index}
-            ref={(el: HTMLDivElement | null) => {
-              monthRefs.current[index] = el;
+            ref={(element: HTMLDivElement | null) => {
+              monthReferences.current[index] = element;
             }}
           >
             <Text

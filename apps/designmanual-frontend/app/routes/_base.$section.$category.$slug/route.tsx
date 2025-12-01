@@ -93,13 +93,13 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
       }
     }
   }`;
-  const queryParams = {
+  const queryParameters = {
     section: params.section,
     categorySlug: params.category,
     articleSlug: params.slug,
   };
   const isPreview = isValidPreviewRequest(request);
-  const initialData = await getClient().fetch(query, queryParams, {
+  const initialData = await getClient().fetch(query, queryParameters, {
     perspective: draftMode ? "previewDrafts" : "published",
   });
 
@@ -111,7 +111,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     initialData,
     isPreview,
     query: isPreview ? query : null,
-    queryParams: isPreview ? queryParams : null,
+    queryParams: isPreview ? queryParameters : null,
   };
 };
 
@@ -171,7 +171,7 @@ export default function ArticlePage() {
         marginBottom={1}
         gap={6}
         justifyContent="space-between"
-        alignContent={"stretch"}
+        alignContent="stretch"
       >
         <HStack>
           {article?.category?.title && (
@@ -181,7 +181,7 @@ export default function ArticlePage() {
           )}
           {isPreview && <Badge colorPalette="yellow">Preview</Badge>}
         </HStack>
-        <Flex wrap="wrap" gap={2} marginLeft={"auto"} justifyContent={"end"}>
+        <Flex wrap="wrap" gap={2} marginLeft="auto" justifyContent="end">
           {article.resourceLinks?.map((link: ResourceLink) => (
             <Button
               key={link.url}
@@ -196,7 +196,7 @@ export default function ArticlePage() {
           {currentSection && currentSection === "spor" && <SiteSettings />}
         </Flex>
       </Flex>
-      <Flex direction={"column"}>
+      <Flex direction="column">
         <Heading as="h1" variant="xl-display" marginBottom={2}>
           {article.title}
         </Heading>
@@ -304,8 +304,8 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
   );
 };
 
-type GetCorrectTitleArgs = Pick<ComponentSection, "title" | "customTitle">;
-const getCorrectTitle = ({ title, customTitle }: GetCorrectTitleArgs) => {
+type GetCorrectTitleArguments = Pick<ComponentSection, "title" | "customTitle">;
+const getCorrectTitle = ({ title, customTitle }: GetCorrectTitleArguments) => {
   switch (title) {
     case "examples": {
       return "Examples";

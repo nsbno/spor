@@ -1,5 +1,12 @@
 # @vygruppen/eslint-config
 
+## 2.1.0
+
+### Minor Changes
+
+- d8fd719: Add ESLint rule to disallow unnecessary curly braces in JSX props.
+  Also add rule to prevent abbreviations
+
 ## 2.0.1
 
 ### Patch Changes

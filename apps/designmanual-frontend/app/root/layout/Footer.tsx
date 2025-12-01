@@ -33,6 +33,7 @@ export const Footer = () => {
       marginX="auto"
       minHeight="12rem"
       flexDirection={["column", null, "row"]}
+      zIndex="banner"
     >
       <Box alignSelf="start" marginTop="4">
         <Link to="/" aria-label="Go to the front page">
@@ -68,12 +69,14 @@ export const Footer = () => {
                 flexDirection="column"
                 key={item._key}
                 textAlign={["left", null, "center"]}
+                color="text.inverted"
               >
                 <Text
                   as="h6"
                   textAlign={["left", null, "center"]}
                   fontWeight="bold"
                   variant="xs"
+                  color="text"
                 >
                   {item.title}
                 </Text>
@@ -81,9 +84,9 @@ export const Footer = () => {
                 <Box
                   textAlign={["left", null, "center"]}
                   fontSize="xs"
+                  color="text.inverted"
                   css={{
                     "& a": {
-                      color: "inherit",
                       textDecoration: "underline",
                     },
                   }}

@@ -69,9 +69,9 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
           </Box>
         )}
         <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
-          {state.segments.map((segment, i) => (
+          {state.segments.map((segment, index) => (
             <DateTimeSegment
-              key={i}
+              key={index}
               segment={segment}
               ariaDescription={t(getAriaLabel(segment.type))}
               state={state}

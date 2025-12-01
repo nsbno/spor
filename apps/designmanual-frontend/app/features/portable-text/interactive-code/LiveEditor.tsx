@@ -40,8 +40,8 @@ export const LiveEditor = ({ onChange, ...props }: LiveEditorProps) => {
       }}
       tabIndex={0}
       borderRadius="sm"
-      onKeyUp={(e) => {
-        if (e.key === "Enter") {
+      onKeyUp={(event) => {
+        if (event.key === "Enter") {
           setDisabled(false);
           // This doesn't work without a setTimeout for some reason :shrug:
           setTimeout(
@@ -60,8 +60,8 @@ export const LiveEditor = ({ onChange, ...props }: LiveEditorProps) => {
           onBlur={() => {
             setDisabled(true);
           }}
-          onKeyUp={(e) => {
-            if (e.key === "Escape") {
+          onKeyUp={(event) => {
+            if (event.key === "Escape") {
               containerRef.current?.focus();
               setDisabled(true);
             }

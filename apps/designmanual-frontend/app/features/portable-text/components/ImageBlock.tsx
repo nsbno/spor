@@ -484,7 +484,6 @@ const GridLayout = ({
   imageCount,
   captionAndCredits,
 }: GridLayoutProps) => {
-  // eslint-disable-next-line no-nested-ternary
   const rowsMobile = imageCount <= 2 ? 2 : imageCount <= 3 ? 24 : 32;
   const rowOthers = imageCount <= 5 ? 2 : 3;
 

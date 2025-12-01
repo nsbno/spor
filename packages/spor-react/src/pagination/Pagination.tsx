@@ -119,6 +119,7 @@ export const PaginationItem = React.forwardRef<
 });
 PaginationItem.displayName = "PaginationItem";
 
+// eslint-disable-next-line unicorn/prevent-abbreviations
 export const PaginationPrevTrigger = React.forwardRef<
   HTMLButtonElement,
   ChakraPagination.PrevTriggerProps

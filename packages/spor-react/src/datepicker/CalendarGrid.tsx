@@ -44,7 +44,7 @@ export function CalendarGrid({
   const weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
   const weeksInMonthRange = Array.from({ length: weeksInMonth })
     .fill(0)
-    .map((_, i) => i);
+    .map((_, index) => index);
 
   const recipe = useSlotRecipe({
     key: "datePicker",

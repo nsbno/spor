@@ -1,5 +1,16 @@
 # Changelog
 
+## 4.3.0
+
+### Minor Changes
+
+- d8fd719: Add ESLint rule to disallow unnecessary curly braces in JSX props.
+  Also add rule to prevent abbreviations
+
+### Patch Changes
+
+- 1ed4bc2: Added colors that support darkmode to shadow-token
+
 ## 4.2.0
 
 ### Minor Changes

@@ -41,14 +41,18 @@ export const IllustationGrid = ({
       >
         <StaticCard
           colorScheme="white"
-          bg="bg"
+          bg={
+            illustration.illustrationType.includes("sticker")
+              ? "bg.secondary"
+              : "bg.secondary"
+          }
           padding={2}
           border="1px solid"
           borderColor="outline"
           position="relative"
         >
           <Flex flexDirection="column" height="100%">
-            <Flex gap={1} alignItems="center" flexDirection={"column"}>
+            <Flex gap={1} alignItems="center" flexDirection="column">
               <Text variant="sm">{illustration.title}</Text>
               <Image
                 src={urlBuilder.image(imageUrl).url()}

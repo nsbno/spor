@@ -2,7 +2,8 @@ export const handleExternalMenu = (link: string, isPreview: boolean) => {
   const IS_INTERNAL_REGEX = /^(\/|https:\/\/design\.vy\.no)/;
   const isExternal = link.startsWith("https://");
   const isInternal = IS_INTERNAL_REGEX.test(link);
-  const isDevelopmentEnvironment = link.includes("localhost") || link.includes("test");
+  const isDevelopmentEnvironment =
+    link.includes("localhost") || link.includes("test");
   const isStageEnvironment = link.includes("stage");
   const domainToReplace = () => {
     if (isDevelopmentEnvironment) return "http://localhost:3008";

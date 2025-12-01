@@ -76,7 +76,11 @@ export function CalendarGrid({ offset = {} }: Props) {
               .getDatesInWeek(weekIndex, startDate)
               .map((date: CalendarDate | null, index: number) =>
                 date ? (
-                  <CalendarCell key={index} date={date} currentMonth={startDate} />
+                  <CalendarCell
+                    key={index}
+                    date={date}
+                    currentMonth={startDate}
+                  />
                 ) : (
                   <td key={index} />
                 ),

@@ -56,7 +56,8 @@ export const useSearchFilter = () => {
     searchFilter,
     setSearchString: (searchString: string) =>
       setSearchFilter((previous) => ({ ...previous, searchString })),
-    setSize: (size: string) => setSearchFilter((previous) => ({ ...previous, size })),
+    setSize: (size: string) =>
+      setSearchFilter((previous) => ({ ...previous, size })),
     setVariant: (variant: string) =>
       setSearchFilter((previous) => ({ ...previous, variant })),
     reset: resetSearchFilter,

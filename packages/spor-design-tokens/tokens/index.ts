@@ -24,7 +24,7 @@ function collectTokenFiles(root: string): Array<TokenFile> {
 
 function jsonFiles(directories: string): Array<string> {
   return readdirSync(directories).filter(
-    (file: string) => path.extname(file) === ".json"
+    (file: string) => path.extname(file) === ".json",
   );
 }
 

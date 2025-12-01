@@ -77,7 +77,11 @@ type GetCorrectIconArguments = {
   size: Size;
   css: SystemStyleObject;
 };
-export const LinjeTagIcon = ({ variant, size, css }: GetCorrectIconArguments) => {
+export const LinjeTagIcon = ({
+  variant,
+  size,
+  css,
+}: GetCorrectIconArguments) => {
   const IconComponent = icons[variant]?.[size] ?? Box;
   return (
     <Box css={css} asChild>

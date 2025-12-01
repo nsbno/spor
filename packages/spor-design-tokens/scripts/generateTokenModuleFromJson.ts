@@ -17,7 +17,7 @@ async function getAllJsonFiles(directories: string): Promise<string[]> {
       } else {
         return [];
       }
-    })
+    }),
   );
   return files.flat();
 }
@@ -25,7 +25,7 @@ async function getAllJsonFiles(directories: string): Promise<string[]> {
 function setNested(
   object: Record<string, unknown>,
   keys: string[],
-  value: unknown
+  value: unknown,
 ) {
   let current: Record<string, unknown> = object;
   for (const [index, key] of keys.entries()) {
@@ -63,19 +63,19 @@ export async function generateTokenModuleFromJson() {
     const jsContent = `const tokens = ${JSON.stringify(
       tokens,
       null,
-      2
+      2,
     )};\nexport default tokens;\n`;
 
     const dtsContent = `declare const tokens: ${JSON.stringify(
       tokens,
       null,
-      2
+      2,
     )};\nexport default tokens;\n`;
 
     await fs.writeFile(outputJsPath, jsContent, "utf8");
     await fs.writeFile(outputDtsPath, dtsContent, "utf8");
     console.log(
-      `Successfully converted all JSON tokens to JS and type declarations at ${outputDirectory}`
+      `Successfully converted all JSON tokens to JS and type declarations at ${outputDirectory}`,
     );
   } catch (error) {
     console.error("Error converting JSON to JS/TypeScript:", error);

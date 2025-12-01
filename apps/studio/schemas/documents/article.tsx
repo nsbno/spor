@@ -92,7 +92,8 @@ export const article = defineType({
         // This is a hack to hide this field when the article is a component
         // It's not supported to do it any other way yet
         return (
-          (arguments_.document?.category as any)?._ref === COMPONENTS_CATEGORY_ID
+          (arguments_.document?.category as any)?._ref ===
+          COMPONENTS_CATEGORY_ID
         );
       },
     }),
@@ -104,7 +105,8 @@ export const article = defineType({
         // This is a hack to hide this field when the article isn't a component
         // It's not supported to do it any other way yet
         return (
-          (arguments_.document?.category as any)?._ref !== COMPONENTS_CATEGORY_ID
+          (arguments_.document?.category as any)?._ref !==
+          COMPONENTS_CATEGORY_ID
         );
       },
       type: "array",

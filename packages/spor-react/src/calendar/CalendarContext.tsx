@@ -53,7 +53,8 @@ const CalendarContext = createContext<CalendarState | null>(null);
 
 export function useCalendar(): CalendarState {
   const context = useContext(CalendarContext);
-  if (!context) throw new Error("useCalendar must be used within CalendarProvider");
+  if (!context)
+    throw new Error("useCalendar must be used within CalendarProvider");
   return context;
 }
 

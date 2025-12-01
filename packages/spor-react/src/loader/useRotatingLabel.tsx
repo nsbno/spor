@@ -7,7 +7,10 @@ type UseRotatingLabelArguments = {
   delay: number;
 };
 /** Returns a label from a set of labels */
-export const useRotatingLabel = ({ label, delay }: UseRotatingLabelArguments) => {
+export const useRotatingLabel = ({
+  label,
+  delay,
+}: UseRotatingLabelArguments) => {
   const loadingTextArray = useMemo(
     () => (Array.isArray(label) ? label : [label]),
     [label],

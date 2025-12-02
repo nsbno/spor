@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 12.20.2
+
+### Patch Changes
+
+- 322ba1b: Improve check for ssr for Select content
+
+## 12.20.1
+
+### Patch Changes
+
+- b3659ad: Don't render SelectContent portalled on server side"
+
 ## 12.20.0
 
 ### Minor Changes

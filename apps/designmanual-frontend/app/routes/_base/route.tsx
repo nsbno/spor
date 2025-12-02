@@ -10,6 +10,8 @@ import {
 import { LeftSidebar } from "~/routes/_base/left-sidebar/LeftSidebar";
 import { getClient } from "~/utils/sanity/client";
 
+import { useStickymenu } from "../_base/content-menu/utils";
+
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const slug = params.slug;
   const draftMode =
@@ -27,14 +29,7 @@ export default function BaseLayout() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // runtime fallback: if an ancestor prevents `position: sticky`, switch to fixed
-  const asideRef = useRef<HTMLDivElement | null>(null);
-  const [forceFixed, setForceFixed] = useState(false);
-  const [fixedRect, setFixedRect] = useState<{
-    left: number;
-    width: number;
-    height: number;
-  } | null>(null);
+  const { asideRef, forceFixed, fixedRect } = useStickymenu();
 
   const TOP = "11.25rem";
   const [placementTop, setPlacementTop] = useState<string | null>(TOP);
@@ -72,57 +67,6 @@ export default function BaseLayout() {
   }, []);
 
   useEffect(() => {
-    const element = asideRef.current;
-    if (!element || globalThis.window === undefined) return;
-
-    const check = () => {
-      let ancestor: HTMLElement | null = element.parentElement;
-      let broken = false;
-      while (ancestor && ancestor !== document.documentElement) {
-        const cs = getComputedStyle(ancestor);
-        if (
-          /(hidden|auto|scroll)/.test(
-            `${cs.overflow} ${cs.overflowX} ${cs.overflowY}`,
-          )
-        ) {
-          broken = true;
-          break;
-        }
-        if (
-          cs.transform !== "none" ||
-          cs.perspective !== "none" ||
-          (cs.willChange &&
-            cs.willChange !== "auto" &&
-            cs.willChange.includes("transform"))
-        ) {
-          broken = true;
-          break;
-        }
-        ancestor = ancestor.parentElement;
-      }
-
-      if (broken) {
-        const r = element.getBoundingClientRect();
-        setFixedRect({
-          left: Math.round(r.left),
-          width: Math.round(r.width),
-          height: Math.round(r.height),
-        });
-        setForceFixed(true);
-        setPlacementTop(TOP);
-      } else {
-        setForceFixed(false);
-        setFixedRect(null);
-        setPlacementTop(TOP);
-      }
-    };
-
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
-  useEffect(() => {
     if (location.pathname === "/") {
       navigate("/spor", { replace: true });
     }
@@ -139,7 +83,6 @@ export default function BaseLayout() {
     >
       {forceFixed && fixedRect && (
         <Box
-          aria-hidden
           width={`${fixedRect.width}px`}
           height={`${fixedRect.height}px`}
           alignSelf="flex-start"

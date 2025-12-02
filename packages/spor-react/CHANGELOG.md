@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.20.2
+
+### Patch Changes
+
+- 322ba1b: Improve check for ssr for Select content
+
 ## 12.20.1
 
 ### Patch Changes

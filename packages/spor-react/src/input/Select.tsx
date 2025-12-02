@@ -1,21 +1,8 @@
 "use client";
 
-import type {
-  CollectionItem,
-  SelectLabelProps,
-  SelectRootProps as ChakraSelectRootProps,
-} from "@chakra-ui/react";
-import {
-  Box,
-  Portal,
-  Select as ChakraSelect,
-  useSelectContext,
-  useSlotRecipe,
-} from "@chakra-ui/react";
-import {
-  CheckmarkFill18Icon,
-  DropdownDownFill24Icon,
-} from "@vygruppen/spor-icon-react";
+import type { CollectionItem, SelectLabelProps, SelectRootProps as ChakraSelectRootProps } from "@chakra-ui/react";
+import { Box, Portal, Select as ChakraSelect, useSelectContext, useSlotRecipe } from "@chakra-ui/react";
+import { CheckmarkFill18Icon, DropdownDownFill24Icon } from "@vygruppen/spor-icon-react";
 import * as React from "react";
 
 import { CloseButton } from "@/button";
@@ -93,7 +80,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
           <SelectContent
             css={styles.selectContent}
-            portalled={globalThis.window !== undefined}
+            portalled={typeof window !== "undefined"}
           >
             {children}
           </SelectContent>

@@ -113,10 +113,8 @@ export default function Index() {
       {/* preserve layout flow when we switch to fixed */}
       {forceFixed && fixedRect && (
         <Box
-          aria-hidden
           width={`${fixedRect.width}px`}
           height={`${fixedRect.height}px`}
-          marginTop={placementTop || TOP}
           as="div"
         />
       )}
@@ -127,7 +125,7 @@ export default function Index() {
         marginTop={placementTop || TOP}
         position={forceFixed ? "fixed" : "sticky"}
         top="0"
-        zIndex={10}
+        zIndex="docked"
         maxHeight={`calc(100vh - ${placementTop || TOP})`}
         overflowY="auto"
         style={

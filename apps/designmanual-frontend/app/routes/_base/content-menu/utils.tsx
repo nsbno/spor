@@ -29,11 +29,11 @@ export const useStickymenu = () => {
   } | null>(null);
 
   useEffect(() => {
-    const el = asideRef.current;
-    if (!el || globalThis.window === undefined) return;
+    const elementAsideMenu = asideRef.current;
+    if (!elementAsideMenu || globalThis.window === undefined) return;
 
     const check = () => {
-      let ancestor: HTMLElement | null = el.parentElement;
+      let ancestor: HTMLElement | null = elementAsideMenu.parentElement;
       let broken = false;
       while (ancestor && ancestor !== document.documentElement) {
         const cs = getComputedStyle(ancestor);
@@ -59,7 +59,7 @@ export const useStickymenu = () => {
       }
 
       if (broken) {
-        const r = el.getBoundingClientRect();
+        const r = elementAsideMenu.getBoundingClientRect();
         setFixedRect({
           left: Math.round(r.left),
           width: Math.round(r.width),

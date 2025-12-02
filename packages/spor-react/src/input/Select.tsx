@@ -93,7 +93,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
           <SelectContent
             css={styles.selectContent}
-            portalled={typeof window !== "undefined"}
+            portalled={typeof document !== "undefined"}
           >
             {children}
           </SelectContent>

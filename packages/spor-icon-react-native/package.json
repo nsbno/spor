@@ -41,7 +41,7 @@
     "react-native-svg": "^12.3.0",
     "rimraf": "^5.0.7",
     "tsm": "^2.3.0",
-    "tsup": "^7.2.0"
+    "tsup": "^8.3.5"
   },
   "peerDependencies": {
     "@shopify/restyle": "^2.1.0",

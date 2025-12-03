@@ -886,6 +886,20 @@
                 "_dark": "colors.darkGrey"
               }
             }
+          },
+          "icon": {
+            "DEFAULT": {
+              "value": {
+                "_light": "colors.darkGrey",
+                "_dark": "colors.white"
+              }
+            },
+            "inverted": {
+              "value": {
+                "_light": "colors.white",
+                "_dark": "colors.darkGrey"
+              }
+            }
           }
         },
         "green": {

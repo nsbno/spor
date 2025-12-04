@@ -138,6 +138,7 @@ export const badgeRecipie = defineRecipe({
       },
     },
     {
+      // @ts-expect-error Chakra gir feilmelding fordi "cream" ikke eksisterer i built-in ColorPalette-typen
       colorPalette: "cream",
       inverted: true,
       css: {
@@ -182,6 +183,7 @@ export const badgeRecipie = defineRecipe({
       },
     },
     {
+      // @ts-expect-error Chakra gir feilmelding fordi "neutral" ikke eksisterer i built-in typen
       colorPalette: "neutral",
       inverted: true,
       css: {

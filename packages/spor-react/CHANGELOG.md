@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 12.20.3
+
+### Patch Changes
+
+- ef1c670: Add inverted colors for badge component
+- 4cef922: Possibility to change fontsize in input and search input field
+- dc87d26: Revert non-working portalled logic for SelectContent
+- Updated dependencies [ef1c670]
+  - @vygruppen/spor-design-tokens@4.3.1
+
 ## 12.20.2
 
 ### Patch Changes

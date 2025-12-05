@@ -23,8 +23,8 @@ export const ChangeVersion = () => {
       minWidth={{ base: "9", lg: "11" }}
       value={[]}
       collection={versions}
-      onValueChange={(e) => {
-        const item = versions.items.find((i) => i.value === e.value[0]);
+      onValueChange={({ value }) => {
+        const item = versions.items.find((index) => index.value === value[0]);
         if (!item) return;
         globalThis.location.assign(item.href);
       }}

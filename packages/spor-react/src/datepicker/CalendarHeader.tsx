@@ -73,8 +73,8 @@ export function CalendarHeader({
   );
 }
 
-const capitalize = (str: string = "") =>
-  str.charAt(0).toUpperCase() + str.slice(1);
+const capitalize = (string_: string = "") =>
+  string_.charAt(0).toUpperCase() + string_.slice(1);
 
 type CalendarNavigatorProps = {
   /** The unit of time you want to navigate with  */
@@ -111,7 +111,7 @@ export const CalendarNavigator = ({
         fontWeight="bold"
         flex="1"
         textAlign="center"
-        color={"core.text"}
+        color="core.text"
       >
         {capitalize(title)}
       </Text>

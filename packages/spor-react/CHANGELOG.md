@@ -1,5 +1,32 @@
 # @vygruppen/spor-react
 
+## 12.20.2
+
+### Patch Changes
+
+- 322ba1b: Improve check for ssr for Select content
+
+## 12.20.1
+
+### Patch Changes
+
+- b3659ad: Don't render SelectContent portalled on server side"
+
+## 12.20.0
+
+### Minor Changes
+
+- d8fd719: Add ESLint rule to disallow unnecessary curly braces in JSX props.
+  Also add rule to prevent abbreviations
+
+### Patch Changes
+
+- 1ed4bc2: Added colors that support darkmode to shadow-token
+- Updated dependencies [1ed4bc2]
+- Updated dependencies [d8fd719]
+  - @vygruppen/spor-design-tokens@4.3.0
+  - @vygruppen/spor-icon-react@4.4.0
+
 ## 12.19.1
 
 ### Patch Changes

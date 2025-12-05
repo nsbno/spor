@@ -4,8 +4,8 @@ import type { PortableTextBlock } from "sanity";
  *
  * Great for previews etc
  */
-export function portableTextToText(blocks: PortableTextBlock[], opts = {}) {
-  const options = Object.assign({}, { nonTextBehavior: "remove" }, opts);
+export function portableTextToText(blocks: PortableTextBlock[], options_ = {}) {
+  const options = Object.assign({}, { nonTextBehavior: "remove" }, options_);
   return blocks
     ?.map((block) => {
       if (block._type !== "block" || !block.children) {

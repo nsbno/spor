@@ -33,7 +33,7 @@ export const BrandSwitcher = () => {
           variant="accent"
           size="md"
           value={brand as string}
-          onValueChange={(e) => handleTabChange(e.value)}
+          onValueChange={(details) => handleTabChange(details.value)}
         >
           <TabsList onChange={(v) => console.log(v)}>
             {[Brand.VyDigital, Brand.VyUtvikling, Brand.CargoNet].map(

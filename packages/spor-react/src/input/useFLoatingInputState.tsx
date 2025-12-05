@@ -5,9 +5,9 @@ export type UseFloatingInputStateProps<
 > = {
   value?: string | number | readonly string[];
   defaultValue?: string | number | readonly string[];
-  onFocus?: (e: FocusEvent<T>) => void;
-  onBlur?: (e: FocusEvent<T>) => void;
-  onChange?: (e: ChangeEvent<T>) => void;
+  onFocus?: (event: FocusEvent<T>) => void;
+  onBlur?: (event: FocusEvent<T>) => void;
+  onChange?: (event: ChangeEvent<T>) => void;
   inputRef?: React.RefObject<T>;
 };
 
@@ -59,20 +59,20 @@ export function useFloatingInputState<
     }
   }, [isControlled, syncFromRef]);
 
-  const handleFocus = (e: FocusEvent<T>) => {
-    onFocus?.(e);
+  const handleFocus = (event: FocusEvent<T>) => {
+    onFocus?.(event);
     setFocused(true);
   };
 
-  const handleBlur = (e: FocusEvent<T>) => {
-    onBlur?.(e);
+  const handleBlur = (event: FocusEvent<T>) => {
+    onBlur?.(event);
     setFocused(false);
   };
 
-  const handleChange = (e: ChangeEvent<T>) => {
-    onChange?.(e);
+  const handleChange = (event: ChangeEvent<T>) => {
+    onChange?.(event);
     if (!isControlled) {
-      setUncontrolledValue(e.target.value);
+      setUncontrolledValue(event.target.value);
     }
   };
 

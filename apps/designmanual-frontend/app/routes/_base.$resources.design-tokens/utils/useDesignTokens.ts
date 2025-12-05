@@ -42,12 +42,12 @@ type FlattenedColor = {
  * @returns An array of flattened color objects, each containing a name and a value.
  */
 const extractFlattenedColors = (
-  obj: object,
+  object: object,
   colorMode: string,
   path: string[] = [],
 ): FlattenedColor[] => {
   const result: FlattenedColor[] = [];
-  for (const [key, value] of Object.entries(obj)) {
+  for (const [key, value] of Object.entries(object)) {
     if (typeof value === "object" && value !== null) {
       result.push(...extractFlattenedColors(value, colorMode, [...path, key]));
     } else if (key === `_${colorMode}`) {

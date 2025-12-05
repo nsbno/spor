@@ -21,12 +21,14 @@ export const Pagination = ({ total, page, pageSize }: Props) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const params = new URLSearchParams(location.search);
+  const parameters = new URLSearchParams(location.search);
 
-  const handlePageSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const pageSize = e.target.value;
-    params.set("pageSize", pageSize);
-    navigate(`?${params.toString()}`, {
+  const handlePageSizeChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    const pageSize = event.target.value;
+    parameters.set("pageSize", pageSize);
+    navigate(`?${parameters.toString()}`, {
       replace: true,
       preventScrollReset: true,
     });
@@ -35,11 +37,11 @@ export const Pagination = ({ total, page, pageSize }: Props) => {
   const startItem = total === 0 ? 0 : (page - 1) * pageSize + 1;
   const endItem = Math.min(page * pageSize, total);
 
-  const handlePrevPage = () => {
-    const currentPage = Number(params.get("page") ?? "1");
+  const handlePreviousPage = () => {
+    const currentPage = Number(parameters.get("page") ?? "1");
     if (currentPage > 1) {
-      params.set("page", String(currentPage - 1));
-      navigate(`?${params.toString()}`, {
+      parameters.set("page", String(currentPage - 1));
+      navigate(`?${parameters.toString()}`, {
         replace: true,
         preventScrollReset: true,
       });
@@ -47,11 +49,11 @@ export const Pagination = ({ total, page, pageSize }: Props) => {
   };
 
   const handleNextPage = () => {
-    const currentPage = Number(params.get("page") ?? "1");
+    const currentPage = Number(parameters.get("page") ?? "1");
     const maxPage = Math.ceil(total / pageSize);
     if (currentPage < maxPage) {
-      params.set("page", String(currentPage + 1));
-      navigate(`?${params.toString()}`, {
+      parameters.set("page", String(currentPage + 1));
+      navigate(`?${parameters.toString()}`, {
         replace: true,
         preventScrollReset: true,
       });
@@ -68,14 +70,14 @@ export const Pagination = ({ total, page, pageSize }: Props) => {
       <Box width={{ base: "100%", md: "20rem" }} mb={{ base: "2", md: "0" }}>
         <NativeSelect
           label="Per page"
-          value={params.get("pageSize") ?? "all"}
+          value={parameters.get("pageSize") ?? "all"}
           onChange={handlePageSizeChange}
           variant="floating"
           disabled={total === 0}
         >
-          <option value="6">6</option>
           <option value="12">12</option>
           <option value="24">24</option>
+          <option value="48">48</option>
           <option value="all">All</option>
         </NativeSelect>
       </Box>
@@ -86,7 +88,7 @@ export const Pagination = ({ total, page, pageSize }: Props) => {
         width={{ base: "100%", md: "auto" }}
       >
         <IconButton
-          onClick={handlePrevPage}
+          onClick={handlePreviousPage}
           disabled={page <= 1}
           variant="tertiary"
           size="sm"

@@ -57,12 +57,7 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
     return (
       <Box minWidth="6rem" width="100%">
         {props.label && (
-          <Box
-            asChild
-            css={styles.inputLabel}
-            position="absolute"
-            paddingTop="2px"
-          >
+          <Box css={styles.inputLabel} position="absolute" paddingTop="2px">
             <Label padding="0" {...props.labelProps}>
               {props.label} <Field.RequiredIndicator />
             </Label>

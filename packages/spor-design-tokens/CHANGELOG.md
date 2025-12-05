@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.3.1
+
+### Patch Changes
+
+- ef1c670: Add inverted colors for badge component
+
 ## 4.3.0
 
 ### Minor Changes

@@ -31,6 +31,7 @@ export type InputProps = FieldProps &
     startElement?: React.ReactNode;
     /** Element that shows up to the right */
     endElement?: React.ReactNode;
+    fontSize?: string;
   };
 /**
  * Inputs let you enter text or other data.
@@ -73,6 +74,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       errorText,
       required,
       hidden,
+      fontSize,
       ...props
     },
     ref,
@@ -103,7 +105,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         errorText={errorText}
         id={props.id}
         label={
-          <Flex>
+          <Flex fontSize={fontSize ?? "mobile.md"}>
             <Box visibility="hidden">{startElement}</Box>
             {label}
           </Flex>
@@ -112,7 +114,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         shouldFloat={shouldFloat}
       >
         {startElement && (
-          <InputElement pointerEvents="none" paddingX={2}>
+          <InputElement
+            pointerEvents="none"
+            paddingX={2}
+            fontSize={fontSize ?? "mobile.md"}
+          >
             {startElement}
           </InputElement>
         )}
@@ -131,9 +137,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           onChange={handleChange}
           placeholder=""
           css={styles}
+          fontSize={fontSize ?? "mobile.md"}
         />
         {endElement && (
-          <InputElement placement="end" paddingX={2}>
+          <InputElement
+            placement="end"
+            paddingX={2}
+            fontSize={fontSize ?? "mobile.md"}
+          >
             {endElement}
           </InputElement>
         )}

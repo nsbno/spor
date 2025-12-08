@@ -124,12 +124,7 @@ export const Filters = () => {
         >
           <TabsList>
             <TabsTrigger value="transparent-bg">Illustration</TabsTrigger>
-            <TabsTrigger value="sticker-white-bg">
-              Sticker without peel-off
-            </TabsTrigger>
-            <TabsTrigger value="sticker-peel-off">
-              Sticker with peel-off
-            </TabsTrigger>
+            <TabsTrigger value="sticker-white-bg">Sticker</TabsTrigger>
             <TabsTrigger value="monochrome">Monochrome</TabsTrigger>
             <TabsTrigger value="all">All</TabsTrigger>
           </TabsList>

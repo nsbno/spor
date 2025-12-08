@@ -30,11 +30,7 @@ export const AlertIcon = forwardRef<SVGSVGElement, AlertIconProps>(
     const { t } = useTranslation();
 
     return (
-      <Box
-        asChild
-        ref={ref}
-        aria-label={t(texts[variant as keyof typeof texts])}
-      >
+      <Box ref={ref} aria-label={t(texts[variant as keyof typeof texts])}>
         {CustomAlertIcon ? (
           <CustomAlertIcon color={`alert.${variant}.icon`} />
         ) : (

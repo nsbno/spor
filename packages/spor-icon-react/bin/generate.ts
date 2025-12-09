@@ -106,6 +106,10 @@ async function generateComponents(icons: IconData[]) {
 }
 
 async function generateComponent(iconData: IconData) {
+  const isFeedback = iconData.metadata.category === "feedback";
+  const pathCount = (iconData.icon.match(/<path[\s>]/g) || []).length;
+  const shouldKeepOriginalFill = isFeedback && pathCount > 1;
+
   let jsCode = await transform(
     iconData.icon,
     {
@@ -133,9 +137,12 @@ async function generateComponent(iconData: IconData) {
       dimensions: true,
       template: componentTemplate,
       plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
-      replaceAttrValues: {
-        "#2B2B2C": "currentColor",
-      },
+
+      replaceAttrValues: shouldKeepOriginalFill
+        ? undefined
+        : {
+            "#2B2B2C": "currentColor",
+          },
     },
     {
       componentName: iconData.componentName,

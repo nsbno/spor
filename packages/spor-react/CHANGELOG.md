@@ -1,5 +1,22 @@
 # @vygruppen/spor-react
 
+## 12.21.0
+
+### Minor Changes
+
+- 680088f: Restore correct fill color for feedback icons to improve appearance in dark mode.
+
+### Patch Changes
+
+- 71ff08b: Fix console warnings caused by forwardRef usage
+- ef1c670: Add inverted colors for badge component
+- 4cef922: Possibility to change fontsize in input and search input field
+- dc87d26: Revert non-working portalled logic for SelectContent
+- Updated dependencies [ef1c670]
+- Updated dependencies [680088f]
+  - @vygruppen/spor-design-tokens@4.3.1
+  - @vygruppen/spor-icon-react@4.5.0
+
 ## 12.20.2
 
 ### Patch Changes

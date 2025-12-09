@@ -66,7 +66,7 @@
     "shiki": "^1.24.3",
     "tsconfig": "^7.0.0",
     "typescript": "^5.8.3",
-    "vite": "^6.3.3",
+    "vite": "^6.4.1",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "engines": {

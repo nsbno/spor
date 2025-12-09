@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 4.5.0
+
+### Minor Changes
+
+- 680088f: Restore correct fill color for feedback icons to improve appearance in dark mode.
+
 ## 4.4.0
 
 ### Minor Changes

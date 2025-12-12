@@ -93,7 +93,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         onFocus: props.onFocus,
         onBlur: props.onBlur,
         onChange: props.onChange,
-        inputRef,
+        inputRef: inputRef as React.RefObject<HTMLInputElement>,
       });
 
     return (

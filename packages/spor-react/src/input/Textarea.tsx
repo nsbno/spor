@@ -83,7 +83,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const { labelRef, labelHeight } = useLabelHeight(label);
 
     const inputRef = useRef<HTMLTextAreaElement>(null);
-    useImperativeHandle(ref, () => inputRef.current as HTMLTextAreaElement, []);
+    useImperativeHandle(ref, () => inputRef.current!, []);
 
     const { shouldFloat, handleFocus, handleBlur, handleChange, isControlled } =
       useFloatingInputState<HTMLTextAreaElement>({
@@ -92,7 +92,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         onFocus: props.onFocus,
         onBlur: props.onBlur,
         onChange: props.onChange,
-        inputRef,
+        inputRef: inputRef as React.RefObject<HTMLTextAreaElement>,
       });
 
     return (

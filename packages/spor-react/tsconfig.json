@@ -5,6 +5,7 @@
   "compilerOptions": {
     "lib": ["dom", "es2023"],
     "rootDir": ".",
+
     "paths": {
       "@/*": ["./src/*"]
     },

@@ -8,7 +8,13 @@ import {
   LinkOutOutline18Icon,
   LinkOutOutline24Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { cloneElement, forwardRef, isValidElement } from "react";
+import React, {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  PropsWithChildren,
+  ReactNode,
+} from "react";
 
 import { createTexts, useTranslation } from "@/i18n";
 
@@ -68,17 +74,20 @@ export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
             rel: "noopener noreferrer",
           })}
         >
-          {cloneElement(children as React.ReactElement, {
-            ...children.props,
-            children: (
-              <>
-                {children.props.children}
-                {isExternal && (
-                  <ExternalIcon label={externalLabel} size={props.size} />
-                )}
-              </>
-            ),
-          })}
+          {cloneElement(
+            children as React.ReactElement<{ children: ReactNode }>,
+            {
+              ...(children.props as object),
+              children: (
+                <>
+                  {(children.props as PropsWithChildren).children}
+                  {isExternal && (
+                    <ExternalIcon label={externalLabel} size={props.size} />
+                  )}
+                </>
+              ),
+            },
+          )}
         </ChakraLink>
       );
     }

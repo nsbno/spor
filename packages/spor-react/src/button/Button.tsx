@@ -7,7 +7,14 @@ import {
   type RecipeVariantProps,
   Span,
 } from "@chakra-ui/react";
-import React, { cloneElement, forwardRef, PropsWithChildren } from "react";
+import React, {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  PropsWithChildren,
+  ReactElement,
+  ReactNode,
+} from "react";
 
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
@@ -92,6 +99,13 @@ const LoadingContent = ({
   </>
 );
 
+const getChildContent = (child: ReactNode): ReactNode => {
+  if (isValidElement(child)) {
+    return (child.props as { children?: ReactNode }).children;
+  }
+  return child;
+};
+
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -115,9 +129,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       : (rest["aria-label"] as string);
 
     const renderContent = () => {
-      const content = rest.asChild
-        ? (children as React.ReactElement).props.children
-        : children;
+      const content = rest.asChild ? getChildContent(children) : children;
 
       if (loading)
         return (
@@ -147,8 +159,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         size={size}
         {...rest}
       >
-        {rest.asChild
-          ? cloneElement(children as React.ReactElement, {
+        {rest.asChild && isValidElement(children)
+          ? cloneElement(children as ReactElement<{ children: ReactNode }>, {
               children: renderContent(),
             })
           : renderContent()}

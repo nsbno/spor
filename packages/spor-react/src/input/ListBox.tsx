@@ -143,7 +143,7 @@ type OptionProps = {
   state: SelectState<unknown> | ListState<unknown>;
 };
 function Option({ item, state }: OptionProps) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLLIElement>(null);
   const {
     optionProps,
     isSelected,
@@ -177,7 +177,7 @@ function Option({ item, state }: OptionProps) {
   TODO: Follow up with react-spectrum to see if they can solve it on their end
   */
   useEffect(() => {
-    (ref as React.RefObject<HTMLDivElement>)?.current?.addEventListener(
+    ref.current?.addEventListener(
       "touchend",
       (event: TouchEvent) => {
         event.preventDefault();
@@ -185,6 +185,7 @@ function Option({ item, state }: OptionProps) {
       { passive: false, once: true },
     );
   }, []);
+
   return (
     <OptionContext.Provider value={{ labelProps, descriptionProps }}>
       <ListItem

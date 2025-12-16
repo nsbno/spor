@@ -80,7 +80,7 @@ const matchesSearchString = (searchString: string, icon: IconMetadata) =>
 
 const useSearchResults = () => {
   const { searchFilter } = useSearchFilter();
-  return useMemo(() => findMatches(searchFilter), [searchFilter]);
+  return findMatches(searchFilter);
 };
 
 const hasNoHits = (filteredCategories: IconsByCategory) =>

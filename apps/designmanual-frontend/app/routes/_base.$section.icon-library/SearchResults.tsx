@@ -15,7 +15,7 @@ import {
   Text,
   useColorModeValue,
 } from "@vygruppen/spor-react";
-import { memo, useMemo } from "react";
+import { memo } from "react";
 
 import { LinkableHeading } from "~/features/portable-text/LinkableHeading";
 import { toTitleCase } from "~/utils/stringUtils";

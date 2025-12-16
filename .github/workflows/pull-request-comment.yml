@@ -10,7 +10,6 @@ jobs:
     uses: nsbno/platform-actions/.github/workflows/deployment.branch-deploy.on-comment.yml@main
     secrets: inherit
     with:
-      applications: digitalekanaler-designmanual
       working-directory: ./apps/designmanual-frontend
 
   preview-comment:

@@ -9,7 +9,6 @@ import {
 } from "@chakra-ui/react";
 import React, {
   ComponentProps,
-  forwardRef,
   ReactNode,
   useImperativeHandle,
   useRef,
@@ -63,94 +62,92 @@ export type InputProps = FieldProps &
  * @see https://spor.vy.no/components/input
  */
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      startElement,
-      endElement,
-      label,
-      invalid,
-      helperText,
-      errorText,
-      required,
-      hidden,
-      fontSize,
-      ...props
-    },
-    ref,
-  ) => {
-    const recipe = useRecipe({ key: "input" });
-    const [recipeProps, restProps] = recipe.splitVariantProps(props);
-    const styles = recipe(recipeProps);
+export const Input = ({
+  ref,
+  startElement,
+  endElement,
+  label,
+  invalid,
+  helperText,
+  errorText,
+  required,
+  hidden,
+  fontSize,
+  ...props
+}: InputProps & {
+  ref?: React.RefObject<HTMLInputElement | null>;
+}) => {
+  const recipe = useRecipe({ key: "input" });
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
 
-    const inputRef = useRef<HTMLInputElement>(null);
-    useImperativeHandle(ref, () => inputRef.current as HTMLInputElement, []);
+  const inputRef = useRef<HTMLInputElement>(null);
+  useImperativeHandle(ref, () => inputRef.current as HTMLInputElement, []);
 
-    const { shouldFloat, handleFocus, handleBlur, handleChange, isControlled } =
-      useFloatingInputState<HTMLInputElement>({
-        value: props.value,
-        defaultValue: props.defaultValue,
-        onFocus: props.onFocus,
-        onBlur: props.onBlur,
-        onChange: props.onChange,
-        inputRef: inputRef as React.RefObject<HTMLInputElement>,
-      });
+  const { shouldFloat, handleFocus, handleBlur, handleChange, isControlled } =
+    useFloatingInputState<HTMLInputElement>({
+      value: props.value,
+      defaultValue: props.defaultValue,
+      onFocus: props.onFocus,
+      onBlur: props.onBlur,
+      onChange: props.onChange,
+      inputRef: inputRef as React.RefObject<HTMLInputElement>,
+    });
 
-    return (
-      <Field
-        invalid={invalid}
-        helperText={helperText}
-        required={required}
-        hidden={hidden}
-        errorText={errorText}
-        id={props.id}
-        label={
-          <Flex fontSize={fontSize ?? "mobile.md"}>
-            <Box visibility="hidden">{startElement}</Box>
-            {label}
-          </Flex>
-        }
-        floatingLabel={true}
-        shouldFloat={shouldFloat}
-      >
-        {startElement && (
-          <InputElement
-            pointerEvents="none"
-            paddingX={2}
-            fontSize={fontSize ?? "mobile.md"}
-          >
-            {startElement}
-          </InputElement>
-        )}
-        <ChakraInput
-          data-attachable
-          ref={inputRef}
-          focusVisibleRing="outside"
-          overflow="hidden"
-          paddingLeft={startElement ? "2.6rem" : undefined}
-          paddingRight={endElement ? "2.6rem" : undefined}
-          {...restProps}
-          className={`peer ${props.className || ""}`}
-          value={isControlled ? props.value : undefined}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChange={handleChange}
-          placeholder=""
-          css={styles}
+  return (
+    <Field
+      invalid={invalid}
+      helperText={helperText}
+      required={required}
+      hidden={hidden}
+      errorText={errorText}
+      id={props.id}
+      label={
+        <Flex fontSize={fontSize ?? "mobile.md"}>
+          <Box visibility="hidden">{startElement}</Box>
+          {label}
+        </Flex>
+      }
+      floatingLabel={true}
+      shouldFloat={shouldFloat}
+    >
+      {startElement && (
+        <InputElement
+          pointerEvents="none"
+          paddingX={2}
           fontSize={fontSize ?? "mobile.md"}
-        />
-        {endElement && (
-          <InputElement
-            placement="end"
-            paddingX={2}
-            fontSize={fontSize ?? "mobile.md"}
-          >
-            {endElement}
-          </InputElement>
-        )}
-      </Field>
-    );
-  },
-);
+        >
+          {startElement}
+        </InputElement>
+      )}
+      <ChakraInput
+        data-attachable
+        ref={inputRef}
+        focusVisibleRing="outside"
+        overflow="hidden"
+        paddingLeft={startElement ? "2.6rem" : undefined}
+        paddingRight={endElement ? "2.6rem" : undefined}
+        {...restProps}
+        className={`peer ${props.className || ""}`}
+        value={isControlled ? props.value : undefined}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onChange={handleChange}
+        placeholder=""
+        css={styles}
+        fontSize={fontSize ?? "mobile.md"}
+      />
+      {endElement && (
+        <InputElement
+          placement="end"
+          paddingX={2}
+          fontSize={fontSize ?? "mobile.md"}
+        >
+          {endElement}
+        </InputElement>
+      )}
+    </Field>
+  );
+};
 
 Input.displayName = "Input";

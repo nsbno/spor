@@ -12,7 +12,6 @@ import {
   SuccessFill24Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import { forwardRef } from "react";
 
 import { createTexts, useTranslation } from "../i18n";
 import { AlertProps } from "./Alert";
@@ -25,21 +24,25 @@ type AlertIconProps = {
 /**
  * Internal component that shows the correct icon for the alert
  */
-export const AlertIcon = forwardRef<SVGSVGElement, AlertIconProps>(
-  ({ variant, customIcon: CustomAlertIcon }, ref) => {
-    const { t } = useTranslation();
+export const AlertIcon = ({
+  ref,
+  variant,
+  customIcon: CustomAlertIcon,
+}: AlertIconProps & {
+  ref?: React.RefObject<SVGSVGElement>;
+}) => {
+  const { t } = useTranslation();
 
-    return (
-      <Box ref={ref} aria-label={t(texts[variant as keyof typeof texts])}>
-        {CustomAlertIcon ? (
-          <CustomAlertIcon color={`alert.${variant}.icon`} />
-        ) : (
-          <BaseAlertIcon variant={variant} />
-        )}
-      </Box>
-    );
-  },
-);
+  return (
+    <Box ref={ref} aria-label={t(texts[variant as keyof typeof texts])}>
+      {CustomAlertIcon ? (
+        <CustomAlertIcon color={`alert.${variant}.icon`} />
+      ) : (
+        <BaseAlertIcon variant={variant} />
+      )}
+    </Box>
+  );
+};
 
 AlertIcon.displayName = "AlertIcon";
 

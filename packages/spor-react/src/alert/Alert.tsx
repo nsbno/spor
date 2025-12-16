@@ -7,7 +7,6 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import { IconComponent } from "@vygruppen/spor-icon-react";
-import { forwardRef } from "react";
 
 import { CloseButton } from "@/button";
 
@@ -44,7 +43,12 @@ export type AlertProps = Omit<ChakraAlert.RootProps, "colorPalette"> & {
  * @see Docs https://spor.vy.no/alert
  */
 
-export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
+export const Alert = ({
+  ref,
+  ...props
+}: AlertProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
   const {
     title,
     showIndicator = true,
@@ -101,6 +105,6 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
       )}
     </ChakraAlert.Root>
   );
-});
+};
 
 Alert.displayName = "Alert";

@@ -6,7 +6,7 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import clsx from "clsx";
-import { forwardRef, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 import { lineIconSlotRecipe } from "../theme/slot-recipes/line-icon";
 import { LinjeTagIcon } from "./icons";
@@ -63,63 +63,57 @@ export type LineIconProps = Exclude<BoxProps, "variant"> &
  * @see https://spor.vy.no/components/line-tags
  */
 
-export const LineIcon = forwardRef<HTMLDivElement, LineIconProps>(
-  function LineIcon(
-    {
-      variant,
-      size = "md",
-      foregroundColor,
-      disabled,
-      style,
-      target = "lineIcon",
-      label,
-      ...rest
-    },
-    ref,
-  ) {
-    const recipe = useSlotRecipe({ key: "lineIcon" });
-    const styles = recipe({ variant, size, ...rest });
+export const LineIcon = function LineIcon({
+  ref,
+  variant,
+  size = "md",
+  foregroundColor,
+  disabled,
+  style,
+  target = "lineIcon",
+  label,
+  ...rest
+}: LineIconProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) {
+  const recipe = useSlotRecipe({ key: "lineIcon" });
+  const styles = recipe({ variant, size, ...rest });
 
-    const targetPadding = () => {
-      return target === "travelTag" ? 0.5 : 1;
-    };
+  const targetPadding = () => {
+    return target === "travelTag" ? 0.5 : 1;
+  };
 
-    const borderContainer = () => {
-      return variant === "walk" && target === "travelTag" ? 0 : "1px";
-    };
+  const borderContainer = () => {
+    return variant === "walk" && target === "travelTag" ? 0 : "1px";
+  };
 
-    if (foregroundColor) {
-      styles.iconContainer.backgroundColor = disabled
-        ? "surface.disabled"
-        : foregroundColor;
-    }
+  if (foregroundColor) {
+    styles.iconContainer.backgroundColor = disabled
+      ? "surface.disabled"
+      : foregroundColor;
+  }
 
-    function getIconVariant() {
-      if (variant === "custom") {
-        if ("customIconVariant" in rest) {
-          return rest.customIconVariant;
-        }
-        return "local-train";
+  function getIconVariant() {
+    if (variant === "custom") {
+      if ("customIconVariant" in rest) {
+        return rest.customIconVariant;
       }
-      return variant;
+      return "local-train";
     }
+    return variant;
+  }
 
-    return (
-      <Box
-        css={{ ...styles.iconContainer, ...style }}
-        padding={targetPadding()}
-        borderWidth={borderContainer()}
-        borderColor={variant === "walk" ? "core.outline" : "transparent"}
-        aria-label={label}
-        ref={ref}
-        className={clsx("light", rest.className)}
-      >
-        <LinjeTagIcon
-          size={size}
-          css={styles.icon}
-          variant={getIconVariant()}
-        />
-      </Box>
-    );
-  },
-);
+  return (
+    <Box
+      css={{ ...styles.iconContainer, ...style }}
+      padding={targetPadding()}
+      borderWidth={borderContainer()}
+      borderColor={variant === "walk" ? "core.outline" : "transparent"}
+      aria-label={label}
+      ref={ref}
+      className={clsx("light", rest.className)}
+    >
+      <LinjeTagIcon size={size} css={styles.icon} variant={getIconVariant()} />
+    </Box>
+  );
+};

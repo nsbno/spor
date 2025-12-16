@@ -63,10 +63,12 @@ export type NumericStepperProps = FieldBaseProps &
  * @see https://spor.vy.no/components/numeric-stepper
  */
 
-export const NumericStepper = React.forwardRef<
-  HTMLDivElement,
-  NumericStepperProps
->((props: NumericStepperProps, ref) => {
+export const NumericStepper = ({
+  ref,
+  ...props
+}: NumericStepperProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
   const {
     name: nameProperty,
     id: idProperty,
@@ -175,7 +177,7 @@ export const NumericStepper = React.forwardRef<
       />
     </Field>
   );
-});
+};
 NumericStepper.displayName = "NumericStepper";
 
 type VerySmallButtonProps = {
@@ -194,10 +196,12 @@ type VerySmallButtonProps = {
 };
 
 /** Internal override for extra small icon buttons */
-const VerySmallButton = React.forwardRef<
-  HTMLButtonElement,
-  VerySmallButtonProps
->((props, ref) => {
+const VerySmallButton = ({
+  ref,
+  ...props
+}: VerySmallButtonProps & {
+  ref?: React.RefObject<HTMLButtonElement | null>;
+}) => {
   const recipe = useSlotRecipe({ key: "numericStepper" });
   const styles = recipe({ colorPalette: "default" });
   return (
@@ -209,7 +213,7 @@ const VerySmallButton = React.forwardRef<
       {...props}
     />
   );
-});
+};
 VerySmallButton.displayName = "VerySmallButton";
 
 type IconPropertyTypes = BoxProps & { stepLabel: number };

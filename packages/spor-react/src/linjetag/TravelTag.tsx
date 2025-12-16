@@ -15,7 +15,7 @@ import {
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import clsx from "clsx";
-import { forwardRef, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 import { travelTagSlotRecipe } from "../theme/slot-recipes/travel-tag";
 import { LineIcon } from "./LineIcon";
@@ -128,64 +128,62 @@ function renderDeviationLevelIcon(
   }
 }
 
-export const TravelTag = forwardRef<HTMLDivElement, TravelTagProps>(
-  function TravelTag(
-    {
-      variant,
-      size = "md",
-      deviationLevel = "none",
-      title,
-      description,
-      disabled,
-      foregroundColor,
-      backgroundColor,
-      customIconVariant,
-      ...rest
-    },
-    ref,
-  ) {
-    const recipie = useSlotRecipe({ key: "travelTag" });
-    const styles = recipie({
-      variant,
-      size,
-      deviationLevel,
-    });
+export const TravelTag = function TravelTag({
+  ref,
+  variant,
+  size = "md",
+  deviationLevel = "none",
+  title,
+  description,
+  disabled,
+  foregroundColor,
+  backgroundColor,
+  customIconVariant,
+  ...rest
+}: TravelTagProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) {
+  const recipie = useSlotRecipe({ key: "travelTag" });
+  const styles = recipie({
+    variant,
+    size,
+    deviationLevel,
+  });
 
-    return (
-      <Box
-        css={styles.container}
-        aria-disabled={disabled}
-        ref={ref}
-        className={clsx("light", rest.className)}
+  return (
+    <Box
+      css={styles.container}
+      aria-disabled={disabled}
+      ref={ref}
+      className={clsx("light", rest.className)}
+      backgroundColor={backgroundColor}
+      {...rest}
+    >
+      <LineIcon
+        variant={variant}
+        size={size}
+        foregroundColor={foregroundColor}
         backgroundColor={backgroundColor}
-        {...rest}
-      >
-        <LineIcon
-          variant={variant}
-          size={size}
-          foregroundColor={foregroundColor}
-          backgroundColor={backgroundColor}
-          customIconVariant={customIconVariant}
-          disabled={disabled}
-          target="travelTag"
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          {...(rest as any)} //Find a way to not use any here
-        />
-        <Box css={styles.textContainer}>
-          {title && (
-            <Box as="span" css={styles.title}>
-              {title}
-            </Box>
-          )}
-          {title && description && " "}
-          {description && (
-            <Box as="span" css={styles.description}>
-              {description}
-            </Box>
-          )}
-        </Box>
-        {renderDeviationLevelIcon(deviationLevel, size, styles.deviationIcon)}
+        customIconVariant={customIconVariant}
+        disabled={disabled}
+        target="travelTag"
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        {...(rest as any)} //Find a way to not use any here
+      />
+      <Box css={styles.textContainer}>
+        {title && (
+          <Box as="span" css={styles.title}>
+            {title}
+          </Box>
+        )}
+        {title && description && " "}
+        {description && (
+          <Box as="span" css={styles.description}>
+            {description}
+          </Box>
+        )}
       </Box>
-    );
-  },
-);
+      {renderDeviationLevelIcon(deviationLevel, size, styles.deviationIcon)}
+    </Box>
+  );
+};

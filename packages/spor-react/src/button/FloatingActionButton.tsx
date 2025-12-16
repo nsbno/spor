@@ -7,7 +7,7 @@ import {
   Text,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 
 import { floatingActionButtonSlotRecipe } from "../theme/slot-recipes/floating-action-button";
 
@@ -36,54 +36,49 @@ type FloatingActionButtonProps = BoxProps &
  *  placement="bottom right"
  * />
  */
-export const FloatingActionButton = forwardRef<
-  HTMLButtonElement,
-  FloatingActionButtonProps
->(
-  (
-    {
-      children,
-      icon,
-      variant,
-      isTextVisible: externalIsTextVisible,
-      placement = "bottom right",
-      ...props
-    },
-    ref,
-  ) => {
-    const scrollDirection = useScrollDirection();
+export const FloatingActionButton = ({
+  ref,
+  children,
+  icon,
+  variant,
+  isTextVisible: externalIsTextVisible,
+  placement = "bottom right",
+  ...props
+}: FloatingActionButtonProps & {
+  ref?: React.RefObject<HTMLButtonElement>;
+}) => {
+  const scrollDirection = useScrollDirection();
 
-    // Use derived value instead of setState in effect
-    const isTextVisible =
-      externalIsTextVisible === undefined
-        ? scrollDirection !== "down"
-        : !!externalIsTextVisible;
+  // Use derived value instead of setState in effect
+  const isTextVisible =
+    externalIsTextVisible === undefined
+      ? scrollDirection !== "down"
+      : !!externalIsTextVisible;
 
-    const recipe = useSlotRecipe({ key: "floatingActionButton" });
-    const style = recipe({
-      variant,
-      placement,
-    });
+  const recipe = useSlotRecipe({ key: "floatingActionButton" });
+  const style = recipe({
+    variant,
+    placement,
+  });
 
-    return (
-      <Box
-        css={style.root}
-        as="button"
-        aria-label={typeof children === "string" ? children : undefined}
-        ref={ref}
-        {...props}
-        aria-expanded={isTextVisible}
-      >
-        <Box css={style.icon}>{icon}</Box>
-        {isTextVisible && (
-          <Text data-state="open" css={style.text}>
-            {children}
-          </Text>
-        )}
-      </Box>
-    );
-  },
-);
+  return (
+    <Box
+      css={style.root}
+      as="button"
+      aria-label={typeof children === "string" ? children : undefined}
+      ref={ref}
+      {...props}
+      aria-expanded={isTextVisible}
+    >
+      <Box css={style.icon}>{icon}</Box>
+      {isTextVisible && (
+        <Text data-state="open" css={style.text}>
+          {children}
+        </Text>
+      )}
+    </Box>
+  );
+};
 FloatingActionButton.displayName = "FloatingActionButton";
 
 type ScrollDirection = "up" | "down" | null;

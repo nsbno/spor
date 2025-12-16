@@ -10,7 +10,7 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
-import { forwardRef, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 import { AccordionItemContent } from "@/accordion";
 import { alertExpandableSlotRecipe } from "@/theme/slot-recipes/alert-expandable";
@@ -59,70 +59,73 @@ type ExpandableAlertProps = PropsWithChildren<ExpandableAlertVariantProps> &
  * </ExpandableAlert>
  * ```
  */
-export const ExpandableAlert = forwardRef<HTMLDivElement, ExpandableAlertProps>(
-  (props, ref) => {
-    const {
-      variant = "info",
-      children,
-      title,
-      collapsible = true,
-      headingLevel = "h3",
-      defaultOpen = false,
-      css,
-      ...rest
-    } = props;
-    const recipe = useSlotRecipe({ key: "alertExpandable" });
-    const styles = recipe({ variant });
+export const ExpandableAlert = ({
+  ref,
+  ...props
+}: ExpandableAlertProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  const {
+    variant = "info",
+    children,
+    title,
+    collapsible = true,
+    headingLevel = "h3",
+    defaultOpen = false,
+    css,
+    ...rest
+  } = props;
+  const recipe = useSlotRecipe({ key: "alertExpandable" });
+  const styles = recipe({ variant });
 
-    const defaultValue = "alert-expandable";
+  const defaultValue = "alert-expandable";
 
-    return (
-      <Accordion.Root
-        defaultValue={defaultOpen ? [defaultValue] : undefined}
-        ref={ref}
-        css={{ ...styles.root, ...css }}
-        collapsible={collapsible}
-        {...rest}
-      >
-        <Accordion.Item value={defaultValue}>
-          <Accordion.ItemTrigger css={styles.itemTrigger}>
-            <HStack
-              gap="1"
-              alignItems="center"
-              justifyContent="space-between"
-              flex="1"
-              width="full"
-            >
-              <HStack gap="1" alignItems="center">
-                <Box css={styles.indicator}>
-                  <AlertIcon variant={variant} />
-                </Box>
-                <Span
-                  as={headingLevel}
-                  css={{
-                    // Truncate the title to one line
-                    display: "-webkit-box",
-                    overflow: "hidden",
-                    WebkitLineClamp: "1",
-                    WebkitBoxOrient: "vertical",
-                  }}
-                >
-                  {title}
-                </Span>
-              </HStack>
-
-              <Accordion.ItemIndicator>
-                <DropdownDownFill18Icon />
-              </Accordion.ItemIndicator>
+  return (
+    <Accordion.Root
+      defaultValue={defaultOpen ? [defaultValue] : undefined}
+      ref={ref}
+      css={{ ...styles.root, ...css }}
+      collapsible={collapsible}
+      {...rest}
+    >
+      <Accordion.Item value={defaultValue}>
+        <Accordion.ItemTrigger css={styles.itemTrigger}>
+          <HStack
+            gap="1"
+            alignItems="center"
+            justifyContent="space-between"
+            flex="1"
+            width="full"
+          >
+            <HStack gap="1" alignItems="center">
+              <Box css={styles.indicator}>
+                <AlertIcon variant={variant} />
+              </Box>
+              <Span
+                as={headingLevel}
+                css={{
+                  // Truncate the title to one line
+                  display: "-webkit-box",
+                  overflow: "hidden",
+                  WebkitLineClamp: "1",
+                  WebkitBoxOrient: "vertical",
+                }}
+              >
+                {title}
+              </Span>
             </HStack>
-          </Accordion.ItemTrigger>
-          <AccordionItemContent css={styles.itemContent}>
-            {children}
-          </AccordionItemContent>
-        </Accordion.Item>
-      </Accordion.Root>
-    );
-  },
-);
+
+            <Accordion.ItemIndicator>
+              <DropdownDownFill18Icon />
+            </Accordion.ItemIndicator>
+          </HStack>
+        </Accordion.ItemTrigger>
+        <AccordionItemContent css={styles.itemContent}>
+          {children}
+        </AccordionItemContent>
+      </Accordion.Item>
+    </Accordion.Root>
+  );
+};
 
 ExpandableAlert.displayName = "ExpandableAlert";

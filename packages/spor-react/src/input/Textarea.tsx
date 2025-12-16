@@ -7,7 +7,6 @@ import {
   useRecipe,
 } from "@chakra-ui/react";
 import React, {
-  forwardRef,
   PropsWithChildren,
   ReactNode,
   useImperativeHandle,
@@ -64,71 +63,69 @@ const useLabelHeight = (label: ReactNode | undefined) => {
   return { labelRef, labelHeight };
 };
 
-export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  (props, ref) => {
-    const {
-      label,
-      variant = "core",
-      invalid,
-      required,
-      errorText,
-      readOnly,
-      helperText,
-      floatingLabel,
-      ...restProps
-    } = props;
-    const recipe = useRecipe({ key: "textarea" });
-    const styles = recipe({ variant });
+export const Textarea = ({
+  ref,
+  ...props
+}: TextareaProps & {
+  ref?: React.RefObject<HTMLTextAreaElement>;
+}) => {
+  const {
+    label,
+    variant = "core",
+    invalid,
+    required,
+    errorText,
+    readOnly,
+    helperText,
+    floatingLabel,
+    ...restProps
+  } = props;
+  const recipe = useRecipe({ key: "textarea" });
+  const styles = recipe({ variant });
 
-    const { labelRef, labelHeight } = useLabelHeight(label);
+  const { labelRef, labelHeight } = useLabelHeight(label);
 
-    const inputRef = useRef<HTMLTextAreaElement>(null);
-    useImperativeHandle(ref, () => inputRef.current!, []);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+  useImperativeHandle(ref, () => inputRef.current!, []);
 
-    const { shouldFloat, handleFocus, handleBlur, handleChange, isControlled } =
-      useFloatingInputState<HTMLTextAreaElement>({
-        value: props.value,
-        defaultValue: props.defaultValue,
-        onFocus: props.onFocus,
-        onBlur: props.onBlur,
-        onChange: props.onChange,
-        inputRef: inputRef as React.RefObject<HTMLTextAreaElement>,
-      });
+  const { shouldFloat, handleFocus, handleBlur, handleChange, isControlled } =
+    useFloatingInputState<HTMLTextAreaElement>({
+      value: props.value,
+      defaultValue: props.defaultValue,
+      onFocus: props.onFocus,
+      onBlur: props.onBlur,
+      onChange: props.onChange,
+      inputRef: inputRef as React.RefObject<HTMLTextAreaElement>,
+    });
 
-    return (
-      <Field
-        errorText={errorText}
-        helperText={helperText}
-        invalid={invalid}
-        required={required}
-        readOnly={readOnly}
-        floatingLabel={floatingLabel}
-        shouldFloat={shouldFloat}
-        position="relative"
-      >
-        <ChakraTextarea
-          {...restProps}
-          css={styles}
-          className="peer"
-          ref={inputRef}
-          value={isControlled ? props.value : undefined}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChange={handleChange}
-          style={
-            { "--label-height": `${labelHeight}px` } as React.CSSProperties
-          }
-          placeholder=" "
-        />
-        <FloatingLabel
-          ref={labelRef}
-          data-float={shouldFloat ? true : undefined}
-        >
-          {label}
-        </FloatingLabel>
-      </Field>
-    );
-  },
-);
+  return (
+    <Field
+      errorText={errorText}
+      helperText={helperText}
+      invalid={invalid}
+      required={required}
+      readOnly={readOnly}
+      floatingLabel={floatingLabel}
+      shouldFloat={shouldFloat}
+      position="relative"
+    >
+      <ChakraTextarea
+        {...restProps}
+        css={styles}
+        className="peer"
+        ref={inputRef}
+        value={isControlled ? props.value : undefined}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onChange={handleChange}
+        style={{ "--label-height": `${labelHeight}px` } as React.CSSProperties}
+        placeholder=" "
+      />
+      <FloatingLabel ref={labelRef} data-float={shouldFloat ? true : undefined}>
+        {label}
+      </FloatingLabel>
+    </Field>
+  );
+};
 
 Textarea.displayName = "Textarea";

@@ -4,7 +4,7 @@ import {
   PauseMediaControllerFill24Icon,
   PlayMediaControllerFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import { forwardRef, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 import { createTexts, MediaControllerVariantProps, useTranslation } from "..";
 
@@ -28,10 +28,12 @@ type PlayPauseButtonProps = BoxProps &
  * <PlayPauseButton playing={playing} onClick={onPlaybackClick} />
  * ```
  */
-export const PlayPauseButton = forwardRef<
-  HTMLButtonElement,
-  PlayPauseButtonProps
->((props, ref) => {
+export const PlayPauseButton = ({
+  ref,
+  ...props
+}: PlayPauseButtonProps & {
+  ref?: React.RefObject<HTMLButtonElement>;
+}) => {
   const { playing, disabled, size = "sm" } = props;
 
   const { t } = useTranslation();
@@ -55,7 +57,7 @@ export const PlayPauseButton = forwardRef<
       )}
     </Center>
   );
-});
+};
 PlayPauseButton.displayName = "PlayPauseButton";
 
 const texts = createTexts({

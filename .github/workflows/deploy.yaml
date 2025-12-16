@@ -27,7 +27,6 @@ jobs:
     secrets: inherit
     if: "!cancelled() && !contains(needs.*.results, 'failure') && success()"
     with:
-      applications: digitalekanaler-designmanual
       terraform-changes: ${{ needs.terraform-changes.outputs.has-changes }}
       working-directory: ./apps/designmanual-frontend
       skip-static-files-deployment: true

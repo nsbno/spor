@@ -7,13 +7,13 @@ name: "Deployment \U0001F680"
 
 jobs:
   terraform-changes:
-    uses: nsbno/platform-actions/.github/workflows/helpers.find-changes.terraform.yml@main
+    uses: nsbno/platform-actions/.github/workflows/helpers.find-changes.terraform.yml@v2
     secrets: inherit
     with:
       working-directory: ./apps/designmanual-frontend
 
   package:
-    uses: nsbno/platform-actions/.github/workflows/package.docker.yml@main
+    uses: nsbno/platform-actions/.github/workflows/package.docker.yml@v2
     secrets: inherit
     with:
       ecr-repo-name: designmanual
@@ -23,7 +23,7 @@ jobs:
     needs:
       - terraform-changes
       - package
-    uses: nsbno/platform-actions/.github/workflows/deployment.all-environments-ecs.yml@main
+    uses: nsbno/platform-actions/.github/workflows/deployment.all-environments-ecs.yml@v2
     secrets: inherit
     if: "!cancelled() && !contains(needs.*.results, 'failure') && success()"
     with:

@@ -6,7 +6,7 @@ on:
 jobs:
   package:
     if: ${{ github.event.action != 'closed' }}
-    uses: nsbno/platform-actions/.github/workflows/package.docker.yml@main
+    uses: nsbno/platform-actions/.github/workflows/package.docker.yml@v2
     secrets: inherit
     with:
       ecr-repo-name: designmanual
@@ -14,7 +14,7 @@ jobs:
 
   terraform-plan:
     if: ${{ github.event.action != 'closed' }}
-    uses: nsbno/platform-actions/.github/workflows/helpers.terraform-plan.yml@main
+    uses: nsbno/platform-actions/.github/workflows/helpers.terraform-plan.yml@v2
     secrets: inherit
     with:
       working-directory: ./apps/designmanual-frontend
@@ -23,12 +23,12 @@ jobs:
     if: ${{ github.event.action == 'synchronize' }}
     needs:
       - package
-    uses: nsbno/platform-actions/.github/workflows/deployment.preview.yml@main
+    uses: nsbno/platform-actions/.github/workflows/deployment.preview.yml@v2
     with:
       working-directory: digitalekanaler-designmanual
 
   preview-cleanup:
     if: ${{ github.event.action == 'closed' }}
-    uses: nsbno/platform-actions/.github/workflows/deployment.preview-cleanup.yml@main
+    uses: nsbno/platform-actions/.github/workflows/deployment.preview-cleanup.yml@v2
     with:
       working-directory: digitalekanaler-designmanual

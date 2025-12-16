@@ -16,14 +16,14 @@ jobs:
     uses: nsbno/platform-actions/.github/workflows/package.docker.yml@main
     secrets: inherit
     with:
-      repo-name: designmanual
+      ecr-repo-name: designmanual
       dockerfile: ./apps/designmanual-frontend/Dockerfile
 
   deploy:
     needs:
       - terraform-changes
       - package
-    uses: nsbno/platform-actions/.github/workflows/deployment.all-environments.yml@main
+    uses: nsbno/platform-actions/.github/workflows/deployment.all-environments-ecs.yml@main
     secrets: inherit
     if: "!cancelled() && !contains(needs.*.results, 'failure') && success()"
     with:

@@ -25,10 +25,10 @@ jobs:
       - package
     uses: nsbno/platform-actions/.github/workflows/deployment.preview.yml@main
     with:
-      working-directory: ""
+      working-directory: ./apps/designmanual-frontend
 
   preview-cleanup:
     if: ${{ github.event.action == 'closed' }}
     uses: nsbno/platform-actions/.github/workflows/deployment.preview-cleanup.yml@main
     with:
-      working-directory: ""
+      working-directory: ./apps/designmanual-frontend

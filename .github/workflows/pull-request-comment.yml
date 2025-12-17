@@ -7,15 +7,14 @@ on:
 jobs:
   deploy-to-test:
     if: github.event.issue.pull_request && startsWith(github.event.comment.body, '.deploy')
-    uses: nsbno/platform-actions/.github/workflows/deployment.branch-deploy.on-comment.yml@main
+    uses: nsbno/platform-actions/.github/workflows/deployment.branch-deploy.on-comment.yml@v2
     secrets: inherit
     with:
-      applications: digitalekanaler-designmanual
       working-directory: ./apps/designmanual-frontend
 
   preview-comment:
     if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '.preview') }}
     secrets: inherit
-    uses: nsbno/platform-actions/.github/workflows/deployment.preview.on-comment.yml@main
+    uses: nsbno/platform-actions/.github/workflows/deployment.preview.on-comment.yml@v2
     with:
-      service-name: digitalekanaler-designmanual
+      ecs-service-name: digitalekanaler-designmanual

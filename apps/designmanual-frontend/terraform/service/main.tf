@@ -6,7 +6,7 @@ locals {
 }
 
 module "ecr" {
-  source    = "github.com/nsbno/terraform-aws-ecr?ref=3.0.0"
+  source    = "github.com/nsbno/terraform-aws-ecr?ref=2.1.0"
   repo_name = "designmanual"
 
   trusted_accounts = [

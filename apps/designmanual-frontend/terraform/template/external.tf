@@ -13,8 +13,3 @@ data "aws_ssm_parameter" "alb_test_listener_arn" {
 data "aws_ssm_parameter" "alb_security_group_id" {
   name = "/config/shared/vylabs/alb_security_group_id"
 }
-
-data "vy_ecs_image" "this" {
-  github_repository_name = "spor"
-  ecr_repository_name      = "designmanual" 
-}

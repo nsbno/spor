@@ -49,9 +49,14 @@ data "aws_ecr_repository" "this" {
   name        = "designmanual"
   registry_id = "637423315721" # service account for digital-common-services
 }
+data "vy_ecs_image" "this" {
+  github_repository_name = "spor"
+  ecr_repository_name    = "designmanual" 
+  working_directory      = "apps/designmanual-frontend"
+}
 
 module "ssr_task" {
-  source             = "github.com/nsbno/terraform-aws-ecs-service?ref=3.0.0-rc9"
+  source             = "github.com/nsbno/terraform-aws-ecs-service?ref=3.0.0"
   service_name       = local.application_name
   vpc_id             = data.aws_vpc.shared.id
   private_subnet_ids = data.aws_subnets.private.ids
@@ -67,6 +72,7 @@ module "ssr_task" {
 
   application_container = {
     name           = "${local.application_name}-main"
+    image          = data.vy_ecs_image.this
     repository_url = data.aws_ecr_repository.this.repository_url
     protocol       = "HTTP"
     port           = 3000

@@ -17,4 +17,4 @@ jobs:
     secrets: inherit
     uses: nsbno/platform-actions/.github/workflows/deployment.preview.on-comment.yml@v2
     with:
-      ecs-service-name: digitalekanaler-designmanual
+      working-directory: ./apps/designmanual-frontend

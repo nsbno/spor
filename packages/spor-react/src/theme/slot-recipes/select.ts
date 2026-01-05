@@ -110,7 +110,8 @@ export const selectSlotRecipe = defineSlotRecipe({
       justifyContent: "space-between",
       gap: 1,
       borderRadius: "sm",
-      color: "ghost.text",
+      color: "text",
+      backgroundColor: "surface",
       cursor: "pointer",
       outline: "none",
       "&[data-highlighted]:hover": {

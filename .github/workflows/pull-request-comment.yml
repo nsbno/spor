@@ -16,5 +16,3 @@ jobs:
     if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '.preview') }}
     secrets: inherit
     uses: nsbno/platform-actions/.github/workflows/deployment.preview.on-comment.yml@v2
-    with:
-      working-directory: ./apps/designmanual-frontend

@@ -1,11 +1,11 @@
 import { defineStyle, Field, FieldLabelProps } from "@chakra-ui/react";
-import { forwardRef } from "react";
 
-export const FloatingLabel = forwardRef<HTMLLabelElement, FieldLabelProps>(
-  (props, ref) => (
-    <Field.Label ref={ref} {...props} css={floatingLabelStyles} />
-  ),
-);
+export const FloatingLabel = ({
+  ref,
+  ...props
+}: FieldLabelProps & {
+  ref?: React.RefObject<HTMLLabelElement | null>;
+}) => <Field.Label ref={ref} {...props} css={floatingLabelStyles} />;
 
 FloatingLabel.displayName = "FloatingLabel";
 

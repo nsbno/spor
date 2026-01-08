@@ -1,6 +1,6 @@
 "use client";
 import { BoxProps, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 
 import { Box, createTexts, useTranslation } from "..";
 import { progressIndicatorRecipe } from "../theme/slot-recipes/progress-indicator";
@@ -32,10 +32,13 @@ export type ProgressIndicatorProps = BoxProps &
  * ```
  */
 
-export const ProgressIndicator = forwardRef<
-  HTMLDivElement,
-  ProgressIndicatorProps
->(({ numberOfSteps, activeStep }, ref) => {
+export const ProgressIndicator = ({
+  ref,
+  numberOfSteps,
+  activeStep,
+}: ProgressIndicatorProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
   const { t } = useTranslation();
   const recipe = useSlotRecipe({
     key: "progressIndicator",
@@ -64,7 +67,7 @@ export const ProgressIndicator = forwardRef<
       </Box>
     </Box>
   );
-});
+};
 ProgressIndicator.displayName = "ProgressIndicator";
 
 const texts = createTexts({

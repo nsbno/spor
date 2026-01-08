@@ -22,10 +22,12 @@ export type SkeletonCircleProps = ChakraSkeletonProps &
     size?: CircleProps["size"];
   };
 
-export const SkeletonCircle = React.forwardRef<
-  HTMLDivElement,
-  SkeletonCircleProps
->(function SkeletonCircle(props, ref) {
+export const SkeletonCircle = function SkeletonCircle({
+  ref,
+  ...props
+}: SkeletonCircleProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) {
   const recipe = useRecipe({ key: "skeleton" });
 
   const [recipeProps, restProps] = recipe.splitVariantProps({
@@ -41,7 +43,7 @@ export const SkeletonCircle = React.forwardRef<
       <ChakraSkeleton css={{ ...recipe(recipeProps), ...css }} {...rest} />
     </Circle>
   );
-});
+};
 
 export type SkeletonTextProps = ChakraSkeletonProps &
   SkeletonVariantProps & {

@@ -1,6 +1,5 @@
 "use client";
 import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
-import { forwardRef } from "react";
 
 import { staticCardRecipe } from "../theme/recipes/static-card";
 
@@ -44,13 +43,16 @@ import { staticCardRecipe } from "../theme/recipes/static-card";
 export type StaticCardProps = RecipeVariantProps<typeof staticCardRecipe> &
   BoxProps;
 
-export const StaticCard = forwardRef<HTMLDivElement, StaticCardProps>(
-  (props, ref) => {
-    const recipe = useRecipe({ key: "staticCard" });
-    const [recipeProps, restProps] = recipe.splitVariantProps(props);
-    const styles = recipe(recipeProps);
+export const StaticCard = ({
+  ref,
+  ...props
+}: StaticCardProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  const recipe = useRecipe({ key: "staticCard" });
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
 
-    return <Box css={styles} {...restProps} ref={ref}></Box>;
-  },
-);
+  return <Box css={styles} {...restProps} ref={ref}></Box>;
+};
 StaticCard.displayName = "StaticCard";

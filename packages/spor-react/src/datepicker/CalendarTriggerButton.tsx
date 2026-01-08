@@ -2,7 +2,7 @@
 
 import { BoxProps, PopoverAnchor, useSlotRecipe } from "@chakra-ui/react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
-import { forwardRef, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { AriaButtonProps } from "react-aria";
 
 import {
@@ -19,12 +19,17 @@ type CalendarTriggerButtonProps = AriaButtonProps<"button"> &
   CalendarVariants & {
     disabled?: boolean;
   };
-export const CalendarTriggerButton = forwardRef<
-  HTMLDivElement,
-  CalendarTriggerButtonProps
+export const CalendarTriggerButton = ({
+  ref,
+  variant,
+  disabled,
   // onPress is extracted because it is not supported by chakra.
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
->(({ variant, disabled, onPress: _, ...buttonProps }, ref) => {
+  onPress: _,
+  ...buttonProps
+}: CalendarTriggerButtonProps & {
+  ref?: React.RefObject<HTMLDivElement | null>;
+}) => {
   const { t } = useTranslation();
 
   const recipe = useSlotRecipe({
@@ -43,7 +48,7 @@ export const CalendarTriggerButton = forwardRef<
       />
     </PopoverAnchor>
   );
-});
+};
 CalendarTriggerButton.displayName = "CalendarTriggerButton";
 
 const texts = createTexts({

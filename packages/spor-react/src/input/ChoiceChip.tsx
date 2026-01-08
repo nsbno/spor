@@ -1,7 +1,7 @@
 "use client";
 import { CheckboxCard, CheckboxCardRootProps, Span } from "@chakra-ui/react";
 import { CloseOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, { forwardRef } from "react";
+import React from "react";
 
 type CheckBoxIcon = {
   default: React.ReactNode;
@@ -49,42 +49,48 @@ export type ChoiceChipProps = Omit<
  * ```
  */
 
-export const ChoiceChip = forwardRef<HTMLInputElement, ChoiceChipProps>(
-  ({ children, icon, onCheckedChange, ...rootProps }, ref) => {
-    return (
-      <CheckboxCard.Root
-        {...rootProps}
-        {...(onCheckedChange && {
-          onCheckedChange: (details) => onCheckedChange(!!details.checked),
-        })}
-      >
-        <CheckboxCard.Context>
-          {({ checked }) => (
-            <>
-              <CheckboxCard.HiddenInput ref={ref} />
-              <CheckboxCard.Control>
-                <CheckboxCard.Content>
-                  <CheckboxCard.Label>
-                    {icon && (
-                      <Span width="24px">
-                        {checked ? icon.checked : icon.default}
-                      </Span>
-                    )}
+export const ChoiceChip = ({
+  ref,
+  children,
+  icon,
+  onCheckedChange,
+  ...rootProps
+}: ChoiceChipProps & {
+  ref?: React.RefObject<HTMLInputElement>;
+}) => {
+  return (
+    <CheckboxCard.Root
+      {...rootProps}
+      {...(onCheckedChange && {
+        onCheckedChange: (details) => onCheckedChange(!!details.checked),
+      })}
+    >
+      <CheckboxCard.Context>
+        {({ checked }) => (
+          <>
+            <CheckboxCard.HiddenInput ref={ref} />
+            <CheckboxCard.Control>
+              <CheckboxCard.Content>
+                <CheckboxCard.Label>
+                  {icon && (
+                    <Span width="24px">
+                      {checked ? icon.checked : icon.default}
+                    </Span>
+                  )}
 
-                    {rootProps.chipType !== "icon" && children}
+                  {rootProps.chipType !== "icon" && children}
 
-                    {rootProps.chipType === "filter" && checked && (
-                      <CloseOutline24Icon />
-                    )}
-                  </CheckboxCard.Label>
-                </CheckboxCard.Content>
-              </CheckboxCard.Control>
-            </>
-          )}
-        </CheckboxCard.Context>
-      </CheckboxCard.Root>
-    );
-  },
-);
+                  {rootProps.chipType === "filter" && checked && (
+                    <CloseOutline24Icon />
+                  )}
+                </CheckboxCard.Label>
+              </CheckboxCard.Content>
+            </CheckboxCard.Control>
+          </>
+        )}
+      </CheckboxCard.Context>
+    </CheckboxCard.Root>
+  );
+};
 
 ChoiceChip.displayName = "ChoiceChip";

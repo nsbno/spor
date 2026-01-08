@@ -2,7 +2,7 @@
 import { Box, Field, Flex, useSlotRecipe } from "@chakra-ui/react";
 import { DateValue, GregorianCalendar } from "@internationalized/date";
 import { DOMAttributes, FocusableElement } from "@react-types/shared";
-import React, { forwardRef, PropsWithChildren, RefObject, useRef } from "react";
+import React, { PropsWithChildren, RefObject, useRef } from "react";
 import { AriaDateFieldProps, useDateField } from "react-aria";
 import { DateSegment, useDateFieldState } from "react-stately";
 
@@ -30,59 +30,62 @@ type DateFieldProps = AriaDateFieldProps<DateValue> &
     labelProps?: DOMAttributes<FocusableElement>;
     name?: string;
   };
-export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
-  (props, externalRef) => {
-    const locale = useCurrentLocale();
+export const DateField = ({
+  ref: externalRef,
+  ...props
+}: DateFieldProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  const locale = useCurrentLocale();
 
-    const recipe = useSlotRecipe({
-      key: "datePicker",
-    });
-    const styles = recipe({});
-    const state = useDateFieldState({
-      ...props,
-      locale,
-      createCalendar,
-    });
+  const recipe = useSlotRecipe({
+    key: "datePicker",
+  });
+  const styles = recipe({});
+  const state = useDateFieldState({
+    ...props,
+    locale,
+    createCalendar,
+  });
 
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
-    const internalRef = useRef(null);
-    const ref = externalRef ?? internalRef;
-    const { fieldProps } = useDateField(
-      props,
-      state,
-      ref as RefObject<HTMLDivElement>,
-    );
+  const internalRef = useRef(null);
+  const ref = externalRef ?? internalRef;
+  const { fieldProps } = useDateField(
+    props,
+    state,
+    ref as RefObject<HTMLDivElement>,
+  );
 
-    return (
-      <Box minWidth="6rem" width="100%">
-        {props.label && (
-          <Box css={styles.inputLabel} position="absolute" paddingTop="2px">
-            <Label padding="0" {...props.labelProps}>
-              {props.label} <Field.RequiredIndicator />
-            </Label>
-          </Box>
-        )}
-        <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
-          {state.segments.map((segment, index) => (
-            <DateTimeSegment
-              key={index}
-              segment={segment}
-              ariaDescription={t(getAriaLabel(segment.type))}
-              state={state}
-            />
-          ))}
-        </Flex>
-        <input
-          type="hidden"
-          value={state.value?.toString() ?? ""}
-          name={props.name}
-          id={props.id}
-        />
-      </Box>
-    );
-  },
-);
+  return (
+    <Box minWidth="6rem" width="100%">
+      {props.label && (
+        <Box css={styles.inputLabel} position="absolute" paddingTop="2px">
+          <Label padding="0" {...props.labelProps}>
+            {props.label} <Field.RequiredIndicator />
+          </Label>
+        </Box>
+      )}
+      <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
+        {state.segments.map((segment, index) => (
+          <DateTimeSegment
+            key={index}
+            segment={segment}
+            ariaDescription={t(getAriaLabel(segment.type))}
+            state={state}
+          />
+        ))}
+      </Flex>
+      <input
+        type="hidden"
+        value={state.value?.toString() ?? ""}
+        name={props.name}
+        id={props.id}
+      />
+    </Box>
+  );
+};
 DateField.displayName = "DateField";
 
 const texts = createTexts({

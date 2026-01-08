@@ -4,11 +4,13 @@ import {
   Separator as ChakraSeparator,
   SeparatorProps as ChakraSeparatorProps,
 } from "@chakra-ui/react";
-import { forwardRef } from "react";
 
-export const Separator = forwardRef<HTMLDivElement, ChakraSeparatorProps>(
-  (props, ref) => {
-    return <ChakraSeparator {...props} ref={ref} data- />;
-  },
-);
+export const Separator = ({
+  ref,
+  ...props
+}: ChakraSeparatorProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  return <ChakraSeparator {...props} ref={ref} data- />;
+};
 Separator.displayName = "Separator";

@@ -5,7 +5,7 @@ import {
   BreadcrumbRootProps,
 } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
-import React, { forwardRef } from "react";
+import React from "react";
 /**
  * A breadcrumb component.
  *
@@ -20,33 +20,37 @@ import React, { forwardRef } from "react";
  * </Breadcrumb>
  * ```
  */
-export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbRootProps>(
-  ({ children, ...props }, ref) => {
-    const validChildren = React.Children.toArray(children).filter((element) =>
-      React.isValidElement(element),
-    );
+export const Breadcrumb = ({
+  ref,
+  children,
+  ...props
+}: BreadcrumbRootProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  const validChildren = React.Children.toArray(children).filter((element) =>
+    React.isValidElement(element),
+  );
 
-    return (
-      <ChakraBreadcrumb.Root ref={ref} {...props}>
-        <ChakraBreadcrumb.List>
-          {validChildren.map((child, index) => {
-            const isLast = index === validChildren.length - 1;
-            return (
-              <React.Fragment key={index}>
-                <ChakraBreadcrumb.Item>{child}</ChakraBreadcrumb.Item>
-                {!isLast && (
-                  <ChakraBreadcrumb.Separator aria-hidden="true">
-                    <DropdownRightFill18Icon />
-                  </ChakraBreadcrumb.Separator>
-                )}
-              </React.Fragment>
-            );
-          })}
-        </ChakraBreadcrumb.List>
-      </ChakraBreadcrumb.Root>
-    );
-  },
-);
+  return (
+    <ChakraBreadcrumb.Root ref={ref} {...props}>
+      <ChakraBreadcrumb.List>
+        {validChildren.map((child, index) => {
+          const isLast = index === validChildren.length - 1;
+          return (
+            <React.Fragment key={index}>
+              <ChakraBreadcrumb.Item>{child}</ChakraBreadcrumb.Item>
+              {!isLast && (
+                <ChakraBreadcrumb.Separator aria-hidden="true">
+                  <DropdownRightFill18Icon />
+                </ChakraBreadcrumb.Separator>
+              )}
+            </React.Fragment>
+          );
+        })}
+      </ChakraBreadcrumb.List>
+    </ChakraBreadcrumb.Root>
+  );
+};
 
 Breadcrumb.displayName = "Breadcrumb";
 

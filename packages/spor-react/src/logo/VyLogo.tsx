@@ -1,5 +1,5 @@
 import { chakra } from "@chakra-ui/react";
-import { ComponentProps, forwardRef, useId } from "react";
+import { ComponentProps, useId } from "react";
 
 export const SvgBox = chakra("svg");
 
@@ -29,7 +29,12 @@ const SVGGroup = chakra("g", fillRecipe);
 
 type VyLogoProps = ComponentProps<typeof SvgBox>;
 
-export const VyLogo = forwardRef<SVGSVGElement, VyLogoProps>((props, ref) => {
+export const VyLogo = ({
+  ref,
+  ...props
+}: VyLogoProps & {
+  ref?: React.RefObject<SVGSVGElement>;
+}) => {
   const id = useId();
 
   return (
@@ -116,5 +121,5 @@ export const VyLogo = forwardRef<SVGSVGElement, VyLogoProps>((props, ref) => {
       />
     </SvgBox>
   );
-});
+};
 VyLogo.displayName = "VyLogo";

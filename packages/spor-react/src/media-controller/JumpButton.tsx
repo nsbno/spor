@@ -9,7 +9,7 @@ import {
   Backward15MediaControllerFill30Icon,
   Forward15MediaControllerFill30Icon,
 } from "@vygruppen/spor-icon-react";
-import { forwardRef, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 import { createTexts, useTranslation } from "..";
 import { mediaControllerSlotRecipe } from "../theme/slot-recipes/media-controller-button";
@@ -38,34 +38,37 @@ type JumpButtonProps = BoxProps &
  * <JumpButton direction="forward" onClick={onGoForward} />
  * ```
  */
-export const JumpButton = forwardRef<HTMLButtonElement, JumpButtonProps>(
-  (props, ref) => {
-    const { direction, disabled, size = "sm" } = props;
-    const { t } = useTranslation();
+export const JumpButton = ({
+  ref,
+  ...props
+}: JumpButtonProps & {
+  ref?: React.RefObject<HTMLButtonElement>;
+}) => {
+  const { direction, disabled, size = "sm" } = props;
+  const { t } = useTranslation();
 
-    const recipe = useSlotRecipe({ key: "mediaControllerButton" });
-    const styles = recipe({ variant: "jumpSkip", size });
+  const recipe = useSlotRecipe({ key: "mediaControllerButton" });
+  const styles = recipe({ variant: "jumpSkip", size });
 
-    return (
-      <Center
-        as="button"
-        ref={ref}
-        css={styles.root}
-        aria-label={
-          direction === "forward" ? t(texts.forward) : t(texts.backward)
-        }
-        disabled={disabled}
-        {...props}
-      >
-        {direction === "forward" ? (
-          <Forward15MediaControllerFill30Icon css={styles.icon} />
-        ) : (
-          <Backward15MediaControllerFill30Icon css={styles.icon} />
-        )}
-      </Center>
-    );
-  },
-);
+  return (
+    <Center
+      as="button"
+      ref={ref}
+      css={styles.root}
+      aria-label={
+        direction === "forward" ? t(texts.forward) : t(texts.backward)
+      }
+      disabled={disabled}
+      {...props}
+    >
+      {direction === "forward" ? (
+        <Forward15MediaControllerFill30Icon css={styles.icon} />
+      ) : (
+        <Backward15MediaControllerFill30Icon css={styles.icon} />
+      )}
+    </Center>
+  );
+};
 JumpButton.displayName = "JumpButton";
 
 const texts = createTexts({

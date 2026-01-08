@@ -1,14 +1,16 @@
 "use client";
 
 import { Portal, Tooltip as ChakraTooltip } from "@chakra-ui/react";
-import { forwardRef } from "react";
 
 export const Tooltip = ChakraTooltip.Root;
 
-export const TooltipTrigger = forwardRef<
-  HTMLButtonElement,
-  ChakraTooltip.TriggerProps
->(({ children, ...props }, ref) => {
+export const TooltipTrigger = ({
+  ref,
+  children,
+  ...props
+}: ChakraTooltip.TriggerProps & {
+  ref?: React.RefObject<HTMLButtonElement>;
+}) => {
   const isStringChild = typeof children === "string";
 
   return (
@@ -16,23 +18,27 @@ export const TooltipTrigger = forwardRef<
       {children}
     </ChakraTooltip.Trigger>
   );
-});
+};
 TooltipTrigger.displayName = "TooltipTrigger";
 
 export type TooltipProps = ChakraTooltip.ContentProps;
 
-export const TooltipContent = forwardRef<HTMLDivElement, TooltipProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <Portal>
-        <ChakraTooltip.Positioner>
-          <ChakraTooltip.Content ref={ref} {...props}>
-            <ChakraTooltip.Arrow />
-            <ChakraTooltip.Content {...props}>{children}</ChakraTooltip.Content>
-          </ChakraTooltip.Content>
-        </ChakraTooltip.Positioner>
-      </Portal>
-    );
-  },
-);
+export const TooltipContent = ({
+  ref,
+  children,
+  ...props
+}: TooltipProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  return (
+    <Portal>
+      <ChakraTooltip.Positioner>
+        <ChakraTooltip.Content ref={ref} {...props}>
+          <ChakraTooltip.Arrow />
+          <ChakraTooltip.Content {...props}>{children}</ChakraTooltip.Content>
+        </ChakraTooltip.Content>
+      </ChakraTooltip.Positioner>
+    </Portal>
+  );
+};
 TooltipContent.displayName = "TooltipContent";

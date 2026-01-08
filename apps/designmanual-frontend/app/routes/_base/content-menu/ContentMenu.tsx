@@ -10,7 +10,7 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useRouteLoaderData } from "react-router";
 
 import { loader } from "~/root";
@@ -22,13 +22,13 @@ import { useMenu } from "~/utils/useMenu";
 import { MenuItem } from "./MenuItem";
 import { handleExternalMenu } from "./utils";
 
-export const ContentMenu = forwardRef<
-  HTMLButtonElement,
-  {
-    refreshKey: number;
-    handleRefresh: () => void;
-  }
->(function ContentMenu({ refreshKey, handleRefresh }, ref) {
+type Props = {
+  refreshKey: number;
+  handleRefresh: () => void;
+  ref?: React.Ref<HTMLButtonElement>;
+};
+
+export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
   const location = useLocation();
   const menu = useMenu(location.pathname.slice(1));
   let activeIndex =
@@ -210,7 +210,7 @@ export const ContentMenu = forwardRef<
       </Accordion>
     </React.Fragment>
   );
-});
+};
 
 export type SubItemsType = {
   title: string;
@@ -240,82 +240,78 @@ export type MenuType = {
   link?: string;
 };
 
-const MobileMenu = forwardRef(
-  ({
-    sections,
-    mobileMenus,
-    isPreview,
-  }: {
-    sections: Section[];
-    mobileMenus: MenuType[] | undefined;
-    isPreview: boolean;
-  }) => {
-    return (
-      <Stack gap="2">
-        {sections &&
-          sections.map((section) => (
-            <Expandable
-              key={`${section.slug.current}_em`}
-              variant="ghost"
-              title={section.title}
-              startElement={getIcon({ iconName: section.icon, size: 24 })}
-              collapsible
-            >
-              {mobileMenus
-                ?.find((menu) => {
-                  return section.slug.current === menu.relatedTo?.slug;
-                })
-                ?.menuItems?.map((item) => {
-                  if (item._type === "divider") {
-                    return null;
-                  }
-                  if (item.subItems && item.subItems.length > 0) {
-                    return (
-                      <Expandable
-                        collapsible
-                        key={item.title}
-                        title={item.title}
-                        variant="ghost"
-                        marginBottom={2}
-                        paddingLeft={6}
-                      >
-                        {item.subItems.map((subItem) => (
-                          <Box key={subItem.title}>
-                            <Link
-                              to={handleExternalMenu(
-                                subItem?.url ?? "/",
-                                isPreview,
-                              )}
-                            >
-                              {subItem.title}
-                            </Link>
-                          </Box>
-                        ))}
-                      </Expandable>
-                    );
-                  }
+type MobileMenuProps = {
+  sections: Section[];
+  mobileMenus: MenuType[] | undefined;
+  isPreview: boolean;
+  ref?: React.Ref<HTMLButtonElement>;
+};
+
+const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
+  return (
+    <Stack gap="2">
+      {sections &&
+        sections.map((section) => (
+          <Expandable
+            key={`${section.slug.current}_em`}
+            variant="ghost"
+            title={section.title}
+            startElement={getIcon({ iconName: section.icon, size: 24 })}
+            collapsible
+          >
+            {mobileMenus
+              ?.find((menu) => {
+                return section.slug.current === menu.relatedTo?.slug;
+              })
+              ?.menuItems?.map((item) => {
+                if (item._type === "divider") {
+                  return null;
+                }
+                if (item.subItems && item.subItems.length > 0) {
                   return (
-                    <Box
-                      as="button"
+                    <Expandable
+                      collapsible
                       key={item.title}
-                      width="100%"
-                      textAlign="left"
-                      paddingLeft={6}
+                      title={item.title}
+                      variant="ghost"
                       marginBottom={2}
-                      fontWeight="bold"
+                      paddingLeft={6}
                     >
-                      <Link
-                        to={handleExternalMenu(item?.link ?? "/", isPreview)}
-                      >
-                        {item.title}
-                      </Link>
-                    </Box>
+                      {item.subItems.map((subItem) => (
+                        <Box key={subItem.title}>
+                          <Link
+                            to={handleExternalMenu(
+                              subItem?.url ?? "/",
+                              isPreview,
+                            )}
+                          >
+                            {subItem.title}
+                          </Link>
+                        </Box>
+                      ))}
+                    </Expandable>
                   );
-                })}
-            </Expandable>
-          ))}
-      </Stack>
-    );
-  },
-);
+                }
+                return (
+                  <Box
+                    as="button"
+                    key={item.title}
+                    width="100%"
+                    textAlign="left"
+                    paddingLeft={6}
+                    marginBottom={2}
+                    fontWeight="bold"
+                  >
+                    <Link to={handleExternalMenu(item?.link ?? "/", isPreview)}>
+                      {item.title}
+                    </Link>
+                  </Box>
+                );
+              })}
+          </Expandable>
+        ))}
+    </Stack>
+  );
+};
+
 MobileMenu.displayName = "MobileMenu";

@@ -8,7 +8,6 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import { DropdownDownFill24Icon } from "@vygruppen/spor-icon-react";
-import { forwardRef } from "react";
 
 import { warnAboutMismatchingIcon } from "./helpers";
 import {
@@ -53,28 +52,33 @@ import {
  * @see https://spor.vy.no/components/accordion
  */
 
-export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
-  (props, ref) => {
-    const { variant = "core", children, gap = 2, ...rest } = props;
-    const recipe = useSlotRecipe({ key: "accordion" });
-    const styles = recipe({ variant });
-    return (
-      <ChakraAccordion.Root
-        {...rest}
-        ref={ref}
-        css={styles.root}
-        variant={variant}
-      >
-        <Stack gap={gap}>{children}</Stack>
-      </ChakraAccordion.Root>
-    );
-  },
-);
+export const Accordion = ({
+  ref,
+  ...props
+}: AccordionProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  const { variant = "core", children, gap = 2, ...rest } = props;
+  const recipe = useSlotRecipe({ key: "accordion" });
+  const styles = recipe({ variant });
+  return (
+    <ChakraAccordion.Root
+      {...rest}
+      ref={ref}
+      css={styles.root}
+      variant={variant}
+    >
+      <Stack gap={gap}>{children}</Stack>
+    </ChakraAccordion.Root>
+  );
+};
 
-export const AccordionItemTrigger = forwardRef<
-  HTMLButtonElement,
-  AccordionItemTriggerProps
->(function AccordionItemTrigger(props, ref) {
+export const AccordionItemTrigger = function AccordionItemTrigger({
+  ref,
+  ...props
+}: AccordionItemTriggerProps & {
+  ref?: React.RefObject<HTMLButtonElement>;
+}) {
   const {
     startElement,
     children,
@@ -100,12 +104,14 @@ export const AccordionItemTrigger = forwardRef<
       </ChakraAccordion.ItemTrigger>
     </Box>
   );
-});
+};
 
-export const AccordionItemContent = forwardRef<
-  HTMLDivElement,
-  AccordionItemContentProps
->(function AccordionItemContent(props, ref) {
+export const AccordionItemContent = function AccordionItemContent({
+  ref,
+  ...props
+}: AccordionItemContentProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) {
   const { children } = props;
 
   const recipe = useSlotRecipe({ key: "accordion" });
@@ -118,7 +124,7 @@ export const AccordionItemContent = forwardRef<
       </ChakraAccordion.ItemBody>
     </ChakraAccordion.ItemContent>
   );
-});
+};
 Accordion.displayName = "Accordion";
 
 export const AccordionItem = ChakraAccordion.Item;

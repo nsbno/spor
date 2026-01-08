@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, useControllableState } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import React from "react";
 
 import { ButtonProps, Input, InputProps } from "..";
 import { createTexts, useTranslation } from "..";
@@ -43,69 +43,75 @@ export interface PasswordInputProps
  * @see https://spor.vy.no/components/password-input
  */
 
-export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
-  (props, ref) => {
-    const {
-      defaultVisible,
-      visible: visibleProperty,
-      onVisibleChange,
-      label,
-      startElement,
-      ...rest
-    } = props;
+export const PasswordInput = ({
+  ref,
+  ...props
+}: PasswordInputProps & {
+  ref?: React.RefObject<HTMLInputElement>;
+}) => {
+  const {
+    defaultVisible,
+    visible: visibleProperty,
+    onVisibleChange,
+    label,
+    startElement,
+    ...rest
+  } = props;
 
-    const [visible, setVisible] = useControllableState({
-      value: visibleProperty,
-      defaultValue: defaultVisible || false,
-      onChange: onVisibleChange,
-    });
+  const [visible, setVisible] = useControllableState({
+    value: visibleProperty,
+    defaultValue: defaultVisible || false,
+    onChange: onVisibleChange,
+  });
 
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
-    return (
-      <Input
-        ref={ref}
-        startElement={startElement && startElement}
-        label={label}
-        type={visible ? "text" : "password"}
-        endElement={
-          <VisibilityTrigger
-            variant="ghost"
-            disabled={rest.disabled}
-            onPointerDown={(event) => {
-              if (rest.disabled) return;
-              if (event.button !== 0) return;
-              event.preventDefault();
-              setVisible(!visible);
-            }}
-          >
-            {visible ? t(texts.hidePassword) : t(texts.showPassword)}
-          </VisibilityTrigger>
-        }
-        {...rest}
-      />
-    );
-  },
-);
+  return (
+    <Input
+      ref={ref}
+      startElement={startElement && startElement}
+      label={label}
+      type={visible ? "text" : "password"}
+      endElement={
+        <VisibilityTrigger
+          variant="ghost"
+          disabled={rest.disabled}
+          onPointerDown={(event) => {
+            if (rest.disabled) return;
+            if (event.button !== 0) return;
+            event.preventDefault();
+            setVisible(!visible);
+          }}
+        >
+          {visible ? t(texts.hidePassword) : t(texts.showPassword)}
+        </VisibilityTrigger>
+      }
+      {...rest}
+    />
+  );
+};
 PasswordInput.displayName = "PasswordInput";
 
-const VisibilityTrigger = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref) => {
-    return (
-      <Button
-        ref={ref}
-        type="button"
-        fontWeight="normal"
-        size="sm"
-        borderRadius="sm"
-        marginRight={1}
-        {...props}
-      >
-        {props.children}
-      </Button>
-    );
-  },
-);
+const VisibilityTrigger = ({
+  ref,
+  ...props
+}: ButtonProps & {
+  ref?: React.RefObject<HTMLButtonElement>;
+}) => {
+  return (
+    <Button
+      ref={ref}
+      type="button"
+      fontWeight="normal"
+      size="sm"
+      borderRadius="sm"
+      marginRight={1}
+      {...props}
+    >
+      {props.children}
+    </Button>
+  );
+};
 VisibilityTrigger.displayName = "VisibilityTrigger";
 
 const texts = createTexts({

@@ -1,7 +1,5 @@
 "use client";
 
-import { forwardRef } from "react";
-
 import {
   Accordion,
   AccordionItem,
@@ -24,23 +22,26 @@ import { ExpandableItemProps, ExpandableProps } from "./types";
  * ```
  */
 
-export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(
-  (props, ref) => {
-    const { title, children, headingLevel, startElement, ...rest } = props;
-    return (
-      <Accordion ref={ref} {...rest}>
-        <ExpandableItem
-          title={title}
-          headingLevel={headingLevel}
-          startElement={startElement}
-          value="single-expandable"
-        >
-          {children}
-        </ExpandableItem>
-      </Accordion>
-    );
-  },
-);
+export const Expandable = ({
+  ref,
+  ...props
+}: ExpandableProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  const { title, children, headingLevel, startElement, ...rest } = props;
+  return (
+    <Accordion ref={ref} {...rest}>
+      <ExpandableItem
+        title={title}
+        headingLevel={headingLevel}
+        startElement={startElement}
+        value="single-expandable"
+      >
+        {children}
+      </ExpandableItem>
+    </Accordion>
+  );
+};
 
 /**
  * An item in a set of Expandables. Must be wrapped in an `<Accordion>` component.

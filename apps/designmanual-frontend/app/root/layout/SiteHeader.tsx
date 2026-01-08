@@ -77,6 +77,7 @@ export const SiteHeader = () => {
         width="100%"
         position="relative"
       >
+        test 123
         <Link
           to={isPreview ? "/?sanity-preview-perspective=drafts" : "/"}
           aria-label="Go to the front page"
@@ -88,7 +89,6 @@ export const SiteHeader = () => {
             aria-label="Vy"
           />
         </Link>
-
         <Box as="nav" flexGrow={1} justifyContent="flex-end">
           <Flex
             as="ul"
@@ -135,7 +135,6 @@ export const SiteHeader = () => {
             })}
           </Flex>
         </Box>
-
         <Flex gap="1">
           <SearchDocsButton onSearchClick={() => setSearchDialogOpen(true)} />
           <MobileMenu />

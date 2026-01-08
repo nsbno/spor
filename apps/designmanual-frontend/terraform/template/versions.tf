@@ -41,5 +41,5 @@ provider "aws" {
 }
 
 provider "vy" {
-  environment = "prod"
+  environment = var.environment
 }

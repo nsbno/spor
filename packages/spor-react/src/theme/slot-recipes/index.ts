@@ -2,6 +2,7 @@ import { accordionSlotRecipe } from "./accordion";
 import { alertSlotRecipe } from "./alert";
 import { alertExpandableSlotRecipe } from "./alert-expandable";
 import { alertServiceSlotRecipe } from "./alert-service";
+import { comboboxSlotRecipe } from "./autocomplete";
 import { breadcrumbSlotRecipe } from "./breadcrumb";
 import { checkboxSlotRecipe } from "./checkbox";
 import { choiceChipSlotRecipe } from "./choice-chip";
@@ -39,6 +40,7 @@ export const slotRecipes = {
   alert: alertSlotRecipe,
   breadcrumb: breadcrumbSlotRecipe,
   checkbox: checkboxSlotRecipe,
+  combobox: comboboxSlotRecipe,
   datePicker: datePickerSlotRecipe,
   dialog: dialogSlotRecipe,
   drawer: drawerSlotRecipe,

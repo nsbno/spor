@@ -34,16 +34,6 @@ export const comboboxSlotRecipe = defineSlotRecipe({
 
     control: {
       pos: "relative",
-      "--padding-factor": "1",
-      "--combobox-input-padding-end": "var(--combobox-input-padding-x)",
-      "&:has([data-part=trigger]), &:has([data-part=clear-trigger])": {
-        "--combobox-input-padding-end":
-          "calc(var(--combobox-input-height) * var(--padding-factor))",
-      },
-      "&:has([data-part=trigger]):has([data-part=clear-trigger]:not([hidden]))":
-        {
-          "--padding-factor": "1.5",
-        },
     },
 
     trigger: {

@@ -10,6 +10,7 @@ import React from "react";
 import { CloseButton } from "@/button";
 import { ColorSpinner } from "@/loader";
 
+import { createTexts, useTranslation } from "..";
 import { FieldProps } from "./Field";
 import { Input } from "./Input";
 
@@ -40,6 +41,7 @@ export const Autocomplete = ({
   ...rest
 }: Props) => {
   const { contains } = useFilter({ sensitivity: "base" });
+  const { t } = useTranslation();
 
   const extractedItems = React.useMemo(
     () => extractItemsFromChildren(children),
@@ -78,7 +80,7 @@ export const Autocomplete = ({
         },
         flip: false,
       }}
-      disabled={loading || disabled}
+      disabled={disabled}
     >
       <Combobox.Control>
         <Combobox.Input asChild>
@@ -97,21 +99,19 @@ export const Autocomplete = ({
           <Combobox.ClearTrigger asChild>
             <CloseButton size="xs" />
           </Combobox.ClearTrigger>
-          {loading && (
-            <ColorSpinner
-              position="absolute"
-              right={["1rem", "1.5rem"]}
-              width="1.5rem"
-            />
-          )}
+
           <Combobox.Trigger />
         </Combobox.IndicatorGroup>
       </Combobox.Control>
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content>
-            <Combobox.Empty>No items found</Combobox.Empty>
-            {filteredChildren}
+            <Combobox.Empty>{!loading && t(texts.noItemsFound)}</Combobox.Empty>
+            {loading ? (
+              <ColorSpinner width="1.5rem" p="2" />
+            ) : (
+              <>{filteredChildren}</>
+            )}
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>
@@ -185,3 +185,12 @@ const extractItemsFromChildren = (children: React.ReactNode): Item[] => {
   });
   return items;
 };
+
+const texts = createTexts({
+  noItemsFound: {
+    nb: "Ingen elementer funnet",
+    nn: "Ingen elementer funnet",
+    sv: "Inga objekt hittades",
+    en: "No items found",
+  },
+});

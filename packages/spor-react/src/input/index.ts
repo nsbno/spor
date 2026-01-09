@@ -1,4 +1,5 @@
 export * from "./AttachedInputs";
+export * from "./Autocomplete";
 export * from "./CardSelect";
 export * from "./Checkbox";
 export * from "./CheckboxGroup";

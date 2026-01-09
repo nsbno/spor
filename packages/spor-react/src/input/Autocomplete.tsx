@@ -1,11 +1,14 @@
 import {
   Combobox,
+  ComboboxItemProps,
   ComboboxRootProps,
   Portal,
+  useComboboxContext,
   useFilter,
   useListCollection,
 } from "@chakra-ui/react";
-import React from "react";
+import { CheckmarkFill18Icon } from "@vygruppen/spor-icon-react";
+import React, { forwardRef } from "react";
 
 import { CloseButton } from "@/button";
 import { ColorSpinner } from "@/loader";
@@ -121,7 +124,25 @@ export const Autocomplete = ({
 
 export const AutocompleteItemGroup = Combobox.ItemGroup;
 export const AutocompleteItemGroupLabel = Combobox.ItemGroupLabel;
-export const AutocompleteItem = Combobox.Item;
+
+export const AutocompleteItem = forwardRef<HTMLDivElement, ComboboxItemProps>(
+  function AutocompleteItem({
+    children,
+    ...props
+  }: React.PropsWithChildren<ComboboxItemProps>) {
+    const { multiple } = useComboboxContext();
+    return (
+      <Combobox.Item {...props}>
+        {children}
+        {multiple && (
+          <Combobox.ItemIndicator asChild>
+            <CheckmarkFill18Icon />
+          </Combobox.ItemIndicator>
+        )}
+      </Combobox.Item>
+    );
+  },
+);
 
 const filterChildren = (
   children: React.ReactNode,

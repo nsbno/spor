@@ -133,7 +133,6 @@ const filterChildren = (
     .map((child) => {
       if (!React.isValidElement(child)) return null;
 
-      // Handle AutocompleteItemGroup
       if (child.type === AutocompleteItemGroup) {
         const groupProps = child.props as { children: React.ReactNode };
         const filteredGroupChildren = filterChildren(
@@ -156,13 +155,11 @@ const filterChildren = (
         });
       }
 
-      // Handle direct AutocompleteItem
       const itemProps = (child.props as { item?: Item })?.item;
       if (itemProps) {
         return collectionValues.has(itemProps.value) ? child : null;
       }
 
-      // Keep non-item children (e.g., custom elements or labels)
       return child;
     })
     .filter(Boolean);
@@ -188,9 +185,9 @@ const extractItemsFromChildren = (children: React.ReactNode): Item[] => {
 
 const texts = createTexts({
   noItemsFound: {
-    nb: "Ingen elementer funnet",
-    nn: "Ingen elementer funnet",
-    sv: "Inga objekt hittades",
-    en: "No items found",
+    nb: "Ingen resultater",
+    nn: "Ingen resultat",
+    sv: "Inga resultat",
+    en: "No results found",
   },
 });

@@ -1,40 +1,48 @@
-import { Heading, Input, Stack, Textarea } from "@vygruppen/spor-react";
-import { useEffect } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { DestinationOutline24Icon } from "@vygruppen/spor-icon-react";
+import {
+  AttachedInputs,
+  Autocomplete,
+  AutocompleteItem,
+  AutocompleteItemGroup,
+  AutocompleteItemGroupLabel,
+  Box,
+  Stack,
+  Text,
+} from "@vygruppen/spor-react";
+import React from "react";
+import useSwr from "swr";
 
 export default function Component() {
-  const { register, control } = useForm({
-    mode: "onSubmit",
-    values: {
-      test: 1000,
-    },
-  });
+  const countries = [
+    { value: "no", label: "Norge" },
+    { value: "se", label: "Sverige" },
+    { value: "dk", label: "Danmark" },
+    { value: "fi", label: "Finland" },
+    { value: "de", label: "Tyskland" },
+    { value: "fr", label: "Frankrike" },
+    { value: "nl", label: "Nederland" },
+  ];
+
+  const [value, setValue] = React.useState<string[]>([]);
+  const [inputValue, setInputValue] = React.useState("");
 
   return (
-    <Stack gap={2} maxW="400px">
-      <Textarea {...register("test")} label="Uncontrolled" />
-      <Input {...register("test")} label="Uncontrolled" />
-
-      <Controller
-        name="test"
-        control={control}
-        render={({ field }) => <Input {...field} label="Controlled" />}
-      />
-
-      <SporTest />
-    </Stack>
+    <Box padding="2">
+      <Autocomplete
+        openOnClick
+        label="Velg land"
+        onValueChange={({ value }) => setValue(value)}
+        onInputValueChange={({ inputValue }) => setInputValue(inputValue)}
+        inputValue={inputValue}
+        variant="floating"
+        value={value}
+      >
+        {countries.map((item) => (
+          <AutocompleteItem item={item} key={item.value}>
+            {item.label}
+          </AutocompleteItem>
+        ))}
+      </Autocomplete>
+    </Box>
   );
 }
-
-export const SporTest = () => {
-  const { register, setValue } = useForm<{ name: string }>();
-  useEffect(() => {
-    setValue("name", "Ola Nordman");
-  }, [setValue]);
-  return (
-    <Stack minW="50vw" minH="50vH">
-      <Heading as="h2">Spor test with setState</Heading>
-      <Input label="Navn" {...register("name")}></Input>
-    </Stack>
-  );
-};

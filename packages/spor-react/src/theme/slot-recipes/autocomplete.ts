@@ -17,7 +17,6 @@ export const comboboxSlotRecipe = defineSlotRecipe({
       fontWeight: "medium",
       userSelect: "none",
       textStyle: "sm",
-      _disabled: {},
     },
 
     input: {
@@ -51,13 +50,6 @@ export const comboboxSlotRecipe = defineSlotRecipe({
       insetEnd: "0",
       top: "0",
       bottom: "0",
-      px: "var(--combobox-input-padding-x)",
-      _icon: {
-        boxSize: "var(--combobox-indicator-size)",
-      },
-      "[data-disabled] &": {
-        opacity: 0.5,
-      },
     },
 
     content: {
@@ -78,9 +70,6 @@ export const comboboxSlotRecipe = defineSlotRecipe({
         animationStyle: "slide-fade-out",
         animationDuration: "0s",
       },
-      "&[data-empty]:not(:has([data-scope=combobox][data-part=empty]))": {
-        opacity: 0,
-      },
     },
 
     item: {
@@ -88,9 +77,9 @@ export const comboboxSlotRecipe = defineSlotRecipe({
       userSelect: "none",
       display: "flex",
       alignItems: "center",
-      gap: "6px",
-      px: "12px",
-      py: "6px",
+      gap: "1",
+      px: "2",
+      py: "1",
       mx: "1",
       my: "1",
       cursor: "pointer",
@@ -102,7 +91,8 @@ export const comboboxSlotRecipe = defineSlotRecipe({
       },
       _disabled: {
         pointerEvents: "none",
-        opacity: "0.5",
+        bg: "surface.disabled",
+        color: "text.disabled",
       },
 
       _hover: {
@@ -119,8 +109,9 @@ export const comboboxSlotRecipe = defineSlotRecipe({
     },
 
     empty: {
-      px: "12px",
-      py: "6px",
+      px: "3",
+      py: "2",
+      fontSize: ["mobile.sm", "desktop.sm"],
     },
 
     itemText: {
@@ -128,7 +119,6 @@ export const comboboxSlotRecipe = defineSlotRecipe({
     },
 
     itemGroup: {
-      pb: "var(--combobox-item-padding-y)",
       _last: {
         pb: "0",
       },

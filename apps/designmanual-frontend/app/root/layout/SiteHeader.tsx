@@ -92,8 +92,7 @@ export const SiteHeader = () => {
         <Box as="nav" flexGrow={1} justifyContent="flex-end">
           <Flex
             as="ul"
-            gap="4"
-            width="auto"
+            width="full"
             justifyContent="flex-end"
             alignItems="center"
           >

@@ -137,7 +137,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     preview,
     ENV,
     readToken,
-    env: "prod", // Hardcoding to prod for now --- TEMPORARY ---
+    env: process.env.VITE_ENVIRONMENT || "dev",
   };
 };
 

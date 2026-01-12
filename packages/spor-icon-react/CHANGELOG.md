@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 4.5.1
+
+### Patch Changes
+
+- 7b2b1a4: New icon for usb-charging on board
+
 ## 4.5.0
 
 ### Minor Changes

@@ -11,6 +11,7 @@ jobs:
     secrets: inherit
     with:
       working-directory: ./apps/designmanual-frontend
+      skip-static-files-deployment: true
 
   preview-comment:
     if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '.preview') }}

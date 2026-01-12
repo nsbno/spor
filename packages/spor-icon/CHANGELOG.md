@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 3.5.4
+
+### Patch Changes
+
+- 7b2b1a4: New icon for usb-charging on board
+
 ## 3.5.3
 
 ### Patch Changes

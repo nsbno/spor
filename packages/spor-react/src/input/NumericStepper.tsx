@@ -79,6 +79,12 @@ export const NumericStepper = React.forwardRef<
     withInput = true,
     stepSize = 1,
     ariaLabelContext = { singular: "", plural: "" },
+    invalid,
+    readOnly,
+    required,
+    label,
+    helperText,
+    errorText,
     ...rest
   } = props;
 
@@ -98,7 +104,18 @@ export const NumericStepper = React.forwardRef<
   };
 
   return (
-    <Field css={styles.root} width="auto" {...rest} id={idProperty} ref={ref}>
+    <Field
+      css={styles.root}
+      width="auto"
+      id={idProperty}
+      ref={ref}
+      label={label}
+      helperText={helperText}
+      errorText={errorText}
+      invalid={invalid}
+      readOnly={readOnly}
+      required={required}
+    >
       <VerySmallButton
         icon={<SubtractIcon stepLabel={clampedStepSize} />}
         aria-label={t(
@@ -144,6 +161,7 @@ export const NumericStepper = React.forwardRef<
               focusOnAddButton();
             }
           }}
+          {...rest}
         />
       ) : (
         <Text

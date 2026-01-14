@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 12.21.1
+
+### Patch Changes
+
+- 7b2b1a4: New icon for usb-charging on board
+- Updated dependencies [7b2b1a4]
+  - @vygruppen/spor-icon-react@4.5.1
+
 ## 12.21.0
 
 ### Minor Changes

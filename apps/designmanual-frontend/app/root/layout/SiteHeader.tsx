@@ -58,15 +58,6 @@ export const SiteHeader = () => {
   const currentSection = slug?.split("/")[0] || "";
   const allSections = routeData?.initialSanityData?.siteSettings?.topMenu || [];
 
-  const isProduction = routeData?.env === "prod";
-
-  const sections = allSections.filter((s) => {
-    if (isProduction && s.slug.current.includes("identitet")) {
-      return false;
-    }
-    return true;
-  });
-
   return (
     <Flex
       as="header"
@@ -101,15 +92,14 @@ export const SiteHeader = () => {
         <Box as="nav" flexGrow={1} justifyContent="flex-end">
           <Flex
             as="ul"
-            gap="4"
-            width="auto"
+            width="full"
             justifyContent="flex-end"
             alignItems="center"
           >
             <Box as="li" marginLeft="auto">
               <ColorModeSwitcher />
             </Box>
-            {sections.map((section) => {
+            {allSections.map((section) => {
               return (
                 <Box as="li" key={section.title}>
                   <Button

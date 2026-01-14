@@ -50,6 +50,8 @@ export const Text = forwardRef<HTMLParagraphElement, TextProps>(
     const { variant, lineHeight, fontSize, ...rest } = props;
     const resolvedProps = resolveTextProps({ variant, fontSize, lineHeight });
 
-    return <ChakraText {...resolvedProps} {...rest} ref={ref} />;
+    return (
+      <ChakraText {...resolvedProps} {...rest} ref={ref} lineHeight="1.5" />
+    );
   },
 );

@@ -37,35 +37,40 @@ const [RootPropsProvider, useRootProps] = createContext<ButtonVariantContext>({
   name: "RootPropsProvider",
 });
 
-export const Pagination = React.forwardRef<HTMLDivElement, PaginationRootProps>(
-  (props, ref) => {
-    const { getHref, children, ...rest } = props;
-    const recipe = useSlotRecipe({ key: "pagination" });
-    const styles = recipe();
+export const Pagination = ({
+  ref,
+  ...props
+}: PaginationRootProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  const { getHref, children, ...rest } = props;
+  const recipe = useSlotRecipe({ key: "pagination" });
+  const styles = recipe();
 
-    return (
-      <RootPropsProvider
-        value={{
-          getHref,
-        }}
+  return (
+    <RootPropsProvider
+      value={{
+        getHref,
+      }}
+    >
+      <ChakraPagination.Root
+        ref={ref}
+        type={getHref ? "link" : "button"}
+        {...rest}
       >
-        <ChakraPagination.Root
-          ref={ref}
-          type={getHref ? "link" : "button"}
-          {...rest}
-        >
-          <List css={styles.list}>{children}</List>
-        </ChakraPagination.Root>
-      </RootPropsProvider>
-    );
-  },
-);
+        <List css={styles.list}>{children}</List>
+      </ChakraPagination.Root>
+    </RootPropsProvider>
+  );
+};
 Pagination.displayName = "Pagination";
 
-export const PaginationEllipsis = React.forwardRef<
-  HTMLDivElement,
-  ChakraPagination.EllipsisProps
->((props, ref) => {
+export const PaginationEllipsis = ({
+  ref,
+  ...props
+}: ChakraPagination.EllipsisProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
   return (
     <ListItem>
       <ChakraPagination.Ellipsis ref={ref} {...props} asChild>
@@ -73,13 +78,15 @@ export const PaginationEllipsis = React.forwardRef<
       </ChakraPagination.Ellipsis>
     </ListItem>
   );
-});
+};
 PaginationEllipsis.displayName = "PaginationEllipsis";
 
-export const PaginationItem = React.forwardRef<
-  HTMLButtonElement,
-  ChakraPagination.ItemProps
->((props, ref) => {
+export const PaginationItem = ({
+  ref,
+  ...props
+}: ChakraPagination.ItemProps & {
+  ref?: React.RefObject<HTMLButtonElement>;
+}) => {
   const rootProps = useRootProps();
   const { t } = useTranslation();
   const { page, totalPages } = usePaginationContext();
@@ -116,14 +123,16 @@ export const PaginationItem = React.forwardRef<
       </ChakraPagination.Item>
     </ListItem>
   );
-});
+};
 PaginationItem.displayName = "PaginationItem";
 
 // eslint-disable-next-line unicorn/prevent-abbreviations
-export const PaginationPrevTrigger = React.forwardRef<
-  HTMLButtonElement,
-  ChakraPagination.PrevTriggerProps
->((props, ref) => {
+export const PaginationPrevTrigger = ({
+  ref,
+  ...props
+}: ChakraPagination.PrevTriggerProps & {
+  ref?: React.RefObject<HTMLButtonElement>;
+}) => {
   const { page } = usePaginationContext();
   const recipe = useSlotRecipe({ key: "pagination" });
   const styles = recipe();
@@ -166,13 +175,15 @@ export const PaginationPrevTrigger = React.forwardRef<
       </ChakraPagination.PrevTrigger>
     </ListItem>
   );
-});
+};
 PaginationPrevTrigger.displayName = "PaginationPrevTrigger";
 
-export const PaginationNextTrigger = React.forwardRef<
-  HTMLButtonElement,
-  ChakraPagination.NextTriggerProps
->((props, ref) => {
+export const PaginationNextTrigger = ({
+  ref,
+  ...props
+}: ChakraPagination.NextTriggerProps & {
+  ref?: React.RefObject<HTMLButtonElement>;
+}) => {
   const { page, totalPages } = usePaginationContext();
   const recipe = useSlotRecipe({ key: "pagination" });
   const styles = recipe();
@@ -212,7 +223,7 @@ export const PaginationNextTrigger = React.forwardRef<
       </ChakraPagination.NextTrigger>
     </ListItem>
   );
-});
+};
 PaginationNextTrigger.displayName = "PaginationNextTrigger";
 
 export const PaginationItems = (

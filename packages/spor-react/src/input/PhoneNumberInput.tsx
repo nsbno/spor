@@ -1,6 +1,5 @@
 "use client";
 import { useControllableState } from "@chakra-ui/react";
-import { forwardRef } from "react";
 
 import { createTexts, Input, InputProps, useTranslation } from "..";
 import { AttachedInputs } from "./AttachedInputs";
@@ -42,10 +41,12 @@ type PhoneNumberInputProps = Omit<InputProps, "value"> & {
  * ```
  */
 
-export const PhoneNumberInput = forwardRef<
-  HTMLInputElement,
-  PhoneNumberInputProps
->((props, ref) => {
+export const PhoneNumberInput = ({
+  ref,
+  ...props
+}: PhoneNumberInputProps & {
+  ref?: React.RefObject<HTMLInputElement>;
+}) => {
   const {
     label: externalLabel,
     value: externalValue,
@@ -114,7 +115,7 @@ export const PhoneNumberInput = forwardRef<
       />
     </AttachedInputs>
   );
-});
+};
 PhoneNumberInput.displayName = "PhoneNumberInput";
 
 const texts = createTexts({

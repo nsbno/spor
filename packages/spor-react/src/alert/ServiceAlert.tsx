@@ -14,7 +14,7 @@ import {
   ServiceFill24Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import { forwardRef, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 import { createTexts, useTranslation } from "../i18n";
 import { alertServiceSlotRecipe } from "../theme/slot-recipes/alert-service";
@@ -57,85 +57,86 @@ type ServiceAlertProps = Omit<AlertProps, "variant"> &
  * ```
  */
 
-export const ServiceAlert = forwardRef<HTMLDivElement, ServiceAlertProps>(
-  (props, ref) => {
-    const {
-      variant = "service",
-      children,
-      title,
-      notification,
-      contentWidth = "container.md",
-      headingLevel = "h3",
-      defaultOpen = false,
-      collapsible = true,
-      css,
-      ...rest
-    } = props;
-    const { t } = useTranslation();
-    const recipe = useSlotRecipe({ key: "alertService" });
-    const styles = recipe({ variant });
+export const ServiceAlert = ({
+  ref,
+  ...props
+}: ServiceAlertProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  const {
+    variant = "service",
+    children,
+    title,
+    notification,
+    contentWidth = "container.md",
+    headingLevel = "h3",
+    defaultOpen = false,
+    collapsible = true,
+    css,
+    ...rest
+  } = props;
+  const { t } = useTranslation();
+  const recipe = useSlotRecipe({ key: "alertService" });
+  const styles = recipe({ variant });
 
-    const defaultValue = "spor-service-alert";
-    return (
-      <Accordion.Root
-        defaultValue={defaultOpen ? [defaultValue] : undefined}
-        collapsible={collapsible}
-        css={{ ...styles.root, ...css }}
-        ref={ref}
-        {...rest}
-      >
-        <Accordion.Item value={defaultValue}>
-          <Accordion.ItemTrigger css={styles.itemTrigger}>
-            <HStack
-              justifyContent="space-between"
-              alignContent="center"
-              width="100%"
-              maxWidth={contentWidth}
-            >
-              <HStack as={headingLevel} alignItems="center" gap="1">
-                {variant === "service" ? (
-                  <ServiceFill24Icon aria-label={t(texts.service)} />
-                ) : (
-                  <WarningFill24Icon
-                    aria-label={t(texts["global-deviation"])}
-                  />
-                )}
-                <Span
-                  css={{
-                    // Truncate the title to one line
-                    display: "-webkit-box",
-                    overflow: "hidden",
-                    WebkitLineClamp: "1",
-                    WebkitBoxOrient: "vertical",
-                    ...styles.itemTriggerTitle,
-                  }}
-                >
-                  {title}
-                </Span>
-              </HStack>
-              <Flex alignItems="center" gap={[0.5, null, null, 1]}>
-                {notification && (
-                  <Text css={styles.notificationText}>
-                    {t(texts.notification(notification))}
-                  </Text>
-                )}
-                <Accordion.ItemIndicator>
-                  <DropdownDownFill24Icon color="icon.inverted" />
-                </Accordion.ItemIndicator>
-              </Flex>
+  const defaultValue = "spor-service-alert";
+  return (
+    <Accordion.Root
+      defaultValue={defaultOpen ? [defaultValue] : undefined}
+      collapsible={collapsible}
+      css={{ ...styles.root, ...css }}
+      ref={ref}
+      {...rest}
+    >
+      <Accordion.Item value={defaultValue}>
+        <Accordion.ItemTrigger css={styles.itemTrigger}>
+          <HStack
+            justifyContent="space-between"
+            alignContent="center"
+            width="100%"
+            maxWidth={contentWidth}
+          >
+            <HStack as={headingLevel} alignItems="center" gap="1">
+              {variant === "service" ? (
+                <ServiceFill24Icon aria-label={t(texts.service)} />
+              ) : (
+                <WarningFill24Icon aria-label={t(texts["global-deviation"])} />
+              )}
+              <Span
+                css={{
+                  // Truncate the title to one line
+                  display: "-webkit-box",
+                  overflow: "hidden",
+                  WebkitLineClamp: "1",
+                  WebkitBoxOrient: "vertical",
+                  ...styles.itemTriggerTitle,
+                }}
+              >
+                {title}
+              </Span>
             </HStack>
-          </Accordion.ItemTrigger>
+            <Flex alignItems="center" gap={[0.5, null, null, 1]}>
+              {notification && (
+                <Text css={styles.notificationText}>
+                  {t(texts.notification(notification))}
+                </Text>
+              )}
+              <Accordion.ItemIndicator>
+                <DropdownDownFill24Icon color="icon.inverted" />
+              </Accordion.ItemIndicator>
+            </Flex>
+          </HStack>
+        </Accordion.ItemTrigger>
 
-          <Accordion.ItemContent css={styles.itemContent}>
-            <Accordion.ItemBody maxWidth={contentWidth} css={styles.itemBody}>
-              {children}
-            </Accordion.ItemBody>
-          </Accordion.ItemContent>
-        </Accordion.Item>
-      </Accordion.Root>
-    );
-  },
-);
+        <Accordion.ItemContent css={styles.itemContent}>
+          <Accordion.ItemBody maxWidth={contentWidth} css={styles.itemBody}>
+            {children}
+          </Accordion.ItemBody>
+        </Accordion.ItemContent>
+      </Accordion.Item>
+    </Accordion.Root>
+  );
+};
 ServiceAlert.displayName = "ServiceAlert";
 
 const texts = createTexts({

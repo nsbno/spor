@@ -2,7 +2,7 @@ import {
   IconButton as ChakraIconButton,
   type IconButtonProps as ChakraIconButtonProps,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 
 import { ButtonVariantProps, ColorSpinner } from "..";
 
@@ -56,20 +56,23 @@ export type IconButtonProps = Exclude<
  * />
  * ```
  */
-export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  (props, ref) => {
-    const { icon, size = "sm", loading = false, ...rest } = props;
-    return (
-      <ChakraIconButton
-        aria-label={props["aria-label"]}
-        size={size}
-        position="relative"
-        {...rest}
-        ref={ref}
-      >
-        {loading ? <ColorSpinner width="2em" height="2em" margin={1} /> : icon}
-      </ChakraIconButton>
-    );
-  },
-);
+export const IconButton = ({
+  ref,
+  ...props
+}: IconButtonProps & {
+  ref?: React.RefObject<HTMLButtonElement | null>;
+}) => {
+  const { icon, size = "sm", loading = false, ...rest } = props;
+  return (
+    <ChakraIconButton
+      aria-label={props["aria-label"]}
+      size={size}
+      position="relative"
+      {...rest}
+      ref={ref}
+    >
+      {loading ? <ColorSpinner width="2em" height="2em" margin={1} /> : icon}
+    </ChakraIconButton>
+  );
+};
 IconButton.displayName = "IconButton";

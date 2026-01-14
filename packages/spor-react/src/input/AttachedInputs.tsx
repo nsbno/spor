@@ -6,7 +6,6 @@ import {
   RecipeVariantProps,
   useRecipe,
 } from "@chakra-ui/react";
-import { forwardRef } from "react";
 
 import { attachedInputsRecipe } from "@/theme/recipes/attached-inputs";
 
@@ -28,15 +27,18 @@ export type AttachedInputsProps = RecipeVariantProps<
 > &
   GroupProps;
 
-export const AttachedInputs = forwardRef<HTMLDivElement, AttachedInputsProps>(
-  (props, ref) => {
-    const recipe = useRecipe({ key: "attachedInputs" });
-    const [recipeProps, restProps] = recipe.splitVariantProps(props);
-    const styles = recipe(recipeProps);
+export const AttachedInputs = ({
+  ref,
+  ...props
+}: AttachedInputsProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  const recipe = useRecipe({ key: "attachedInputs" });
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
 
-    return (
-      <Group ref={ref} css={styles} attached isolation="auto" {...restProps} />
-    );
-  },
-);
+  return (
+    <Group ref={ref} css={styles} attached isolation="auto" {...restProps} />
+  );
+};
 AttachedInputs.displayName = "AttachedInputs";

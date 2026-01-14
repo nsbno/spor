@@ -1,6 +1,6 @@
 "use client";
 import { Box } from "@chakra-ui/react";
-import React, { forwardRef, useRef } from "react";
+import React, { useRef } from "react";
 import {
   AriaPopoverProps,
   DismissButton,
@@ -56,62 +56,60 @@ type PopoverProps = {
  *
  * Used to render accessible popover content, only used in ComboBox.
  */
-export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
-  (
+export const Popover = ({
+  ref,
+  children,
+  state,
+  triggerRef,
+  offset = 0,
+  crossOffset = 0,
+  placement = "bottom",
+  shouldFlip = false,
+  isNonModal = false,
+  hasBackdrop = true,
+  containerPadding = 12,
+}: PopoverProps & {
+  ref?: React.RefObject<HTMLDivElement | null>;
+}) => {
+  const internalRef = useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const popoverRef = ref ?? (internalRef as any);
+
+  const { popoverProps, underlayProps } = usePopover(
     {
-      children,
-      state,
       triggerRef,
-      offset = 0,
-      crossOffset = 0,
-      placement = "bottom",
-      shouldFlip = false,
-      isNonModal = false,
-      hasBackdrop = true,
-      containerPadding = 12,
+      popoverRef,
+      offset,
+      crossOffset,
+      placement,
+      shouldFlip,
+      isNonModal,
+      containerPadding,
     },
-    ref,
-  ) => {
-    const internalRef = useRef<HTMLDivElement>(null);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const popoverRef = ref ?? (internalRef as any);
+    state,
+  );
 
-    const { popoverProps, underlayProps } = usePopover(
-      {
-        triggerRef,
-        popoverRef,
-        offset,
-        crossOffset,
-        placement,
-        shouldFlip,
-        isNonModal,
-        containerPadding,
-      },
-      state,
-    );
+  const popoverBox = (
+    <Box
+      {...popoverProps}
+      ref={popoverRef}
+      // eslint-disable-next-line react-hooks/refs
+      minWidth={triggerRef.current?.clientWidth ?? "auto"}
+    >
+      <DismissButton onDismiss={state.close} />
+      {children}
+      <DismissButton onDismiss={state.close} />
+    </Box>
+  );
 
-    const popoverBox = (
-      <Box
-        {...popoverProps}
-        ref={popoverRef}
-        // eslint-disable-next-line react-hooks/refs
-        minWidth={triggerRef.current?.clientWidth ?? "auto"}
-      >
-        <DismissButton onDismiss={state.close} />
-        {children}
-        <DismissButton onDismiss={state.close} />
-      </Box>
-    );
-
-    if (isNonModal) {
-      return popoverBox;
-    }
-    return (
-      <Overlay>
-        {hasBackdrop && <Box {...underlayProps} position="fixed" inset="0" />}
-        {popoverBox}
-      </Overlay>
-    );
-  },
-);
+  if (isNonModal) {
+    return popoverBox;
+  }
+  return (
+    <Overlay>
+      {hasBackdrop && <Box {...underlayProps} position="fixed" inset="0" />}
+      {popoverBox}
+    </Overlay>
+  );
+};
 Popover.displayName = "Popover";

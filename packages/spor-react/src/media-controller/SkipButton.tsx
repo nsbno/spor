@@ -4,7 +4,7 @@ import {
   NextMediaControllerFill30Icon,
   PreviousMediaControllerFill30Icon,
 } from "@vygruppen/spor-icon-react";
-import { forwardRef, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 import { createTexts, MediaControllerVariantProps, useTranslation } from "..";
 
@@ -27,33 +27,36 @@ type SkipButtonProps = BoxProps &
  * <SkipButton direction="forward" onClick={onNextChapter} />
  * ```
  */
-export const SkipButton = forwardRef<HTMLButtonElement, SkipButtonProps>(
-  (props, ref) => {
-    const { direction, disabled, size = "sm" } = props;
+export const SkipButton = ({
+  ref,
+  ...props
+}: SkipButtonProps & {
+  ref?: React.RefObject<HTMLButtonElement>;
+}) => {
+  const { direction, disabled, size = "sm" } = props;
 
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
-    const recipe = useSlotRecipe({ key: "mediaControllerButton" });
-    const styles = recipe({ variant: "jumpSkip", size });
+  const recipe = useSlotRecipe({ key: "mediaControllerButton" });
+  const styles = recipe({ variant: "jumpSkip", size });
 
-    return (
-      <Center
-        ref={ref}
-        as="button"
-        css={styles.root}
-        aria-label={direction === "forward" ? t(texts.next) : t(texts.previous)}
-        disabled={disabled}
-        {...props}
-      >
-        {direction === "forward" ? (
-          <NextMediaControllerFill30Icon css={styles.icon} />
-        ) : (
-          <PreviousMediaControllerFill30Icon css={styles.icon} />
-        )}
-      </Center>
-    );
-  },
-);
+  return (
+    <Center
+      ref={ref}
+      as="button"
+      css={styles.root}
+      aria-label={direction === "forward" ? t(texts.next) : t(texts.previous)}
+      disabled={disabled}
+      {...props}
+    >
+      {direction === "forward" ? (
+        <NextMediaControllerFill30Icon css={styles.icon} />
+      ) : (
+        <PreviousMediaControllerFill30Icon css={styles.icon} />
+      )}
+    </Center>
+  );
+};
 SkipButton.displayName = "SkipButton";
 
 const texts = createTexts({

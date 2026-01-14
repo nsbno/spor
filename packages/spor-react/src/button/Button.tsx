@@ -7,7 +7,13 @@ import {
   type RecipeVariantProps,
   Span,
 } from "@chakra-ui/react";
-import React, { cloneElement, forwardRef, PropsWithChildren } from "react";
+import React, {
+  cloneElement,
+  isValidElement,
+  PropsWithChildren,
+  ReactElement,
+  ReactNode,
+} from "react";
 
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
@@ -92,70 +98,73 @@ const LoadingContent = ({
   </>
 );
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      loading,
-      disabled,
-      loadingText,
-      variant = "primary",
-      size = "md",
-      leftIcon,
-      rightIcon,
-      type = "button",
-      children,
-      ...rest
-    },
-    ref,
-  ) => {
-    const { t } = useTranslation();
+const getChildContent = (child: ReactNode): ReactNode => {
+  if (isValidElement(child)) {
+    return (child.props as { children?: ReactNode }).children;
+  }
+  return child;
+};
 
-    const ariaLabel = loading
-      ? String(loadingText ?? t(texts.loadingText))
-      : (rest["aria-label"] as string);
+export const Button = ({
+  ref,
+  loading,
+  disabled,
+  loadingText,
+  variant = "primary",
+  size = "md",
+  leftIcon,
+  rightIcon,
+  type = "button",
+  children,
+  ...rest
+}: ButtonProps & {
+  ref?: React.RefObject<HTMLButtonElement>;
+}) => {
+  const { t } = useTranslation();
 
-    const renderContent = () => {
-      const content = rest.asChild
-        ? (children as React.ReactElement).props.children
-        : children;
+  const ariaLabel = loading
+    ? String(loadingText ?? t(texts.loadingText))
+    : (rest["aria-label"] as string);
 
-      if (loading)
-        return (
-          <LoadingContent size={size} loadingText={loadingText}>
-            <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
-              {content}
-            </ButtonContent>
-          </LoadingContent>
-        );
+  const renderContent = () => {
+    const content = rest.asChild ? getChildContent(children) : children;
 
+    if (loading)
       return (
-        <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
-          {content}
-        </ButtonContent>
+        <LoadingContent size={size} loadingText={loadingText}>
+          <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
+            {content}
+          </ButtonContent>
+        </LoadingContent>
       );
-    };
 
     return (
-      <ChakraButton
-        type={type}
-        ref={ref}
-        aria-label={ariaLabel}
-        aria-busy={loading}
-        disabled={disabled || loading}
-        position="relative"
-        variant={variant}
-        size={size}
-        {...rest}
-      >
-        {rest.asChild
-          ? cloneElement(children as React.ReactElement, {
-              children: renderContent(),
-            })
-          : renderContent()}
-      </ChakraButton>
+      <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
+        {content}
+      </ButtonContent>
     );
-  },
-);
+  };
+
+  return (
+    <ChakraButton
+      type={type}
+      ref={ref}
+      aria-label={ariaLabel}
+      aria-busy={loading}
+      disabled={disabled || loading}
+      position="relative"
+      variant={variant}
+      size={size}
+      {...rest}
+    >
+      {rest.asChild && isValidElement(children)
+        ? cloneElement(children as ReactElement<{ children: ReactNode }>, {
+            children: renderContent(),
+          })
+        : renderContent()}
+    </ChakraButton>
+  );
+};
 
 Button.displayName = "Button";
 

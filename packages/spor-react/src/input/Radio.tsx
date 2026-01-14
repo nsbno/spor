@@ -32,7 +32,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   const { children, inputProps, rootRef, ...rest } = props;
 
   return (
-    <ChakraRadioGroup.Item ref={rootRef} {...rest}>
+    <ChakraRadioGroup.Item ref={rootRef} {...rest} role="radio">
       <ChakraRadioGroup.ItemHiddenInput ref={ref} {...inputProps} />
       <ChakraRadioGroup.ItemIndicator />
       {children && (
@@ -50,7 +50,7 @@ type RadioGroupProps = Omit<
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
   (props, ref) => {
-    return <ChakraRadioGroup.Root ref={ref} {...props} aria-labelledby="" />;
+    return <ChakraRadioGroup.Root ref={ref} {...props} />;
   },
 );
 RadioGroup.displayName = "RadioGroup";

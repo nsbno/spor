@@ -8,6 +8,13 @@ export const attachedInputsRecipe = defineRecipe({
     "& select": {
       borderEndRadius: 0,
     },
+    "& > *": {
+      position: "relative",
+      zIndex: 0,
+    },
+    "& > *:focus-within": {
+      zIndex: 1,
+    },
   },
   variants: {
     orientation: {
@@ -21,6 +28,17 @@ export const attachedInputsRecipe = defineRecipe({
         },
         "& > *:not(:first-of-type):last-of-type [data-attachable]": {
           borderStartRadius: 0,
+        },
+
+        "&[data-with-flip-button]": {
+          "& > *:nth-of-type(2) [data-scope='field'][data-part='root']": {
+            "& input": {
+              paddingLeft: "8 !important",
+            },
+            "& svg": {
+              marginLeft: "2 !important",
+            },
+          },
         },
       },
       vertical: {

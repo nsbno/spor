@@ -75,6 +75,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       required,
       hidden,
       fontSize,
+      labelAsChild,
       ...props
     },
     ref,
@@ -104,6 +105,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         hidden={hidden}
         errorText={errorText}
         id={props.id}
+        labelAsChild={labelAsChild}
         label={
           <Flex fontSize={fontSize ?? "mobile.md"}>
             <Box visibility="hidden">{startElement}</Box>

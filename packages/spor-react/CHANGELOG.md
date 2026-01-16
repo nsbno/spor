@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.21.3
+
+### Patch Changes
+
+- 375c0a8: replaced aria-selected with aria-current to fix uu error
+
 ## 12.21.2
 
 ### Patch Changes

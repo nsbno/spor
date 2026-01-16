@@ -32,7 +32,8 @@ function TableOfContent(props: TableOfContentProps) {
 
   const pathSegments = location.pathname.split("/").filter(Boolean);
 
-  if (pathSegments.length < 2) return null; // Do not show TOC on top-level pages
+  if (pathSegments.length < 2 || pathSegments.includes("identitet"))
+    return null; // Do not show TOC on top-level pages or identity pages
 
   return (
     <Box

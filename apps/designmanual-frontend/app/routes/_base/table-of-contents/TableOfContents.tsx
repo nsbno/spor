@@ -1,5 +1,5 @@
 import { Box, BoxProps, Heading } from "@vygruppen/spor-react";
-import { useLocation, useNavigation } from "react-router";
+import { useLocation } from "react-router";
 
 import { MenuItem } from "~/routes/_base/content-menu/MenuItem";
 

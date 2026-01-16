@@ -11,6 +11,8 @@ import { LeftSidebar } from "~/routes/_base/left-sidebar/LeftSidebar";
 import { getClient } from "~/utils/sanity/client";
 
 import { useStickymenu } from "../_base/content-menu/utils";
+import TableOfContent from "./table-of-contents/TableOfContents";
+import { useHeadings } from "./table-of-contents/useHeadings";
 
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const slug = params.slug;
@@ -28,6 +30,8 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
 export default function BaseLayout() {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const { contentRef, headings } = useHeadings();
 
   const { asideRef, forceFixed, fixedRect } = useStickymenu();
 
@@ -76,6 +80,7 @@ export default function BaseLayout() {
     <Flex
       id="content"
       justifyContent="space-between"
+      ref={contentRef}
       gap={8}
       marginX={{ base: "4", md: "8" }}
       overflow="visible"
@@ -114,6 +119,7 @@ export default function BaseLayout() {
       >
         <Outlet />
       </Box>
+      <TableOfContent headings={headings} />
     </Flex>
   );
 }

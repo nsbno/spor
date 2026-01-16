@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.3.2
+
+### Patch Changes
+
+- 2899114: change lineheight to support WCAG requirements
+
 ## 4.3.1
 
 ### Patch Changes

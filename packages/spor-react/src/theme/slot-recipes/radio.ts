@@ -60,6 +60,13 @@ export const radioGroupSlotRecipe = defineSlotRecipe({
           backgroundColor: "outline.disabled",
         },
       },
+      _focusVisible: {
+        outlineWidth: "2px",
+        outlineColor: "outline.focus",
+        outlineStyle: "solid",
+        outlineOffset: "1px",
+      },
+
       "& .dot": {
         height: "full",
         width: "full",

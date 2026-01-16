@@ -29,6 +29,7 @@ export const CardSelectContent = forwardRef<HTMLDivElement, StaticCardProps>(
                 bg="bg"
                 border="sm"
                 borderColor="floating.outline"
+                borderRadius="sm"
                 {...props}
               >
                 {children}

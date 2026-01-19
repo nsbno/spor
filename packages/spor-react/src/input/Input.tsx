@@ -11,6 +11,7 @@ import React, {
   ComponentProps,
   forwardRef,
   ReactNode,
+  useId,
   useImperativeHandle,
   useRef,
 } from "react";
@@ -83,6 +84,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);
 
+    const labelId = useId();
+
     const inputRef = useRef<HTMLInputElement>(null);
     useImperativeHandle(ref, () => inputRef.current as HTMLInputElement, []);
 
@@ -107,7 +110,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         label={
           <Flex fontSize={fontSize ?? "mobile.md"}>
             <Box visibility="hidden">{startElement}</Box>
-            {label}
+            <Box id={labelId} aria-hidden>
+              {label}
+            </Box>
           </Flex>
         }
         floatingLabel={true}
@@ -138,6 +143,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           placeholder=""
           css={styles}
           fontSize={fontSize ?? "mobile.md"}
+          aria-labelledby={labelId}
         />
         {endElement && (
           <InputElement

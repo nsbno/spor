@@ -2,7 +2,6 @@ import {
   Combobox,
   ComboboxItemProps,
   ComboboxRootProps,
-  Portal,
   useComboboxContext,
   useFilter,
   useListCollection,
@@ -106,18 +105,16 @@ export const Autocomplete = ({
           <Combobox.Trigger />
         </Combobox.IndicatorGroup>
       </Combobox.Control>
-      <Portal>
-        <Combobox.Positioner>
-          <Combobox.Content>
-            <Combobox.Empty>{!loading && t(texts.noItemsFound)}</Combobox.Empty>
-            {loading ? (
-              <ColorSpinner width="1.5rem" p="2" />
-            ) : (
-              <>{filteredChildren}</>
-            )}
-          </Combobox.Content>
-        </Combobox.Positioner>
-      </Portal>
+      <Combobox.Positioner>
+        <Combobox.Content>
+          <Combobox.Empty>{!loading && t(texts.noItemsFound)}</Combobox.Empty>
+          {loading ? (
+            <ColorSpinner width="1.5rem" p="2" />
+          ) : (
+            <>{filteredChildren}</>
+          )}
+        </Combobox.Content>
+      </Combobox.Positioner>
     </Combobox.Root>
   );
 };

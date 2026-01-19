@@ -99,6 +99,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         inputRef,
       });
 
+    const labelId = useId();
+
     return (
       <Field
         errorText={errorText}
@@ -124,11 +126,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           }
           placeholder=" "
           id={id ?? reactId}
+          aria-labelledby={labelId}
         />
         <FloatingLabel
           ref={labelRef}
           data-float={shouldFloat ? true : undefined}
           htmlFor={id ?? reactId}
+          aria-hidden
+          id={labelId}
         >
           {label}
         </FloatingLabel>

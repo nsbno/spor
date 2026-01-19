@@ -86,11 +86,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     const reactId = useId();
 
-    function getId() {
-      if (id !== undefined) return id;
-      return reactId;
-    }
-
     const inputRef = useRef<HTMLTextAreaElement>(null);
     useImperativeHandle(ref, () => inputRef.current as HTMLTextAreaElement, []);
 
@@ -128,12 +123,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             { "--label-height": `${labelHeight}px` } as React.CSSProperties
           }
           placeholder=" "
-          id={getId()}
+          id={id ?? reactId}
         />
         <FloatingLabel
           ref={labelRef}
           data-float={shouldFloat ? true : undefined}
-          htmlFor={getId()}
+          htmlFor={id ?? reactId}
         >
           {label}
         </FloatingLabel>

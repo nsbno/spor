@@ -10,6 +10,7 @@ import React, {
   forwardRef,
   PropsWithChildren,
   ReactNode,
+  useId,
   useImperativeHandle,
   useLayoutEffect,
   useRef,
@@ -75,12 +76,20 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       readOnly,
       helperText,
       floatingLabel,
+      id,
       ...restProps
     } = props;
     const recipe = useRecipe({ key: "textarea" });
     const styles = recipe({ variant });
 
     const { labelRef, labelHeight } = useLabelHeight(label);
+
+    const reactId = useId();
+
+    function getId() {
+      if (id !== undefined) return id;
+      return reactId;
+    }
 
     const inputRef = useRef<HTMLTextAreaElement>(null);
     useImperativeHandle(ref, () => inputRef.current as HTMLTextAreaElement, []);
@@ -119,10 +128,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             { "--label-height": `${labelHeight}px` } as React.CSSProperties
           }
           placeholder=" "
+          id={getId()}
         />
         <FloatingLabel
           ref={labelRef}
           data-float={shouldFloat ? true : undefined}
+          htmlFor={getId()}
         >
           {label}
         </FloatingLabel>

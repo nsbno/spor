@@ -123,7 +123,6 @@ export const Autocomplete = ({
 };
 
 export const AutocompleteItemGroup = Combobox.ItemGroup;
-
 export const AutocompleteItemGroupLabel = Combobox.ItemGroupLabel;
 
 export const AutocompleteItem = forwardRef<HTMLDivElement, ComboboxItemProps>(

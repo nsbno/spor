@@ -35,12 +35,6 @@ export const comboboxSlotRecipe = defineSlotRecipe({
       pos: "relative",
     },
 
-    trigger: {
-      display: "inline-flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-
     indicatorGroup: {
       display: "flex",
       alignItems: "center",

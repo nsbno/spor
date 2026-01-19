@@ -101,8 +101,6 @@ export const Autocomplete = ({
           <Combobox.ClearTrigger asChild>
             <CloseButton size="xs" />
           </Combobox.ClearTrigger>
-
-          <Combobox.Trigger />
         </Combobox.IndicatorGroup>
       </Combobox.Control>
       <Combobox.Positioner>

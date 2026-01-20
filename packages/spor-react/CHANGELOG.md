@@ -1,5 +1,26 @@
 # @vygruppen/spor-react
 
+## 12.21.2
+
+### Patch Changes
+
+- 166d9d3: - Fix props not being forwarded correctly in NumericStepper component
+  - Rename "usb-charging" icon to "usb charging" (using space instead of "-")
+    → aligns with existing icon naming convention where type/variant is separated by space rather than hyphen
+- 0a43f61: fix wrong borderRadius CardSelect
+- 1c9db69: Added focus on radio buttons
+- Updated dependencies [2899114]
+  - @vygruppen/spor-design-tokens@4.3.2
+  - @vygruppen/spor-icon-react@4.5.1
+
+## 12.21.1
+
+### Patch Changes
+
+- 7b2b1a4: New icon for usb-charging on board
+- Updated dependencies [7b2b1a4]
+  - @vygruppen/spor-icon-react@4.5.1
+
 ## 12.21.0
 
 ### Minor Changes

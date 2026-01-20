@@ -41,7 +41,7 @@ export default function BaseLayout() {
       setPlacementTop(TOP);
     },
     onScrollAwayFromTop: () => {
-      setPlacementTop("0");
+      setPlacementTop("1px");
     },
   });
 

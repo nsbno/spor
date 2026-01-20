@@ -6,14 +6,8 @@ export const textareaRecipe = defineRecipe({
   className: "spor-textarea",
   base: {
     ...inputRecipe.base,
-    paddingTop: 0,
-    minHeight: "calc(var(--label-height) + 4rem)",
     verticalAlign: "top",
-    appearance: "none",
-    borderTop: "0.8rem solid transparent",
-    "&:focus-visible, &:not(:placeholder-shown)": {
-      borderTop: "var(--label-height) solid transparent",
-    },
+    paddingTop: 4,
   },
   variants: {
     variant: {

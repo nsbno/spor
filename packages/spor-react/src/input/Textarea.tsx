@@ -1,25 +1,23 @@
 "use client";
 
 import {
+  Flex,
   RecipeVariantProps,
   Textarea as ChakraTextarea,
   TextareaProps as ChakraTextareaProps,
   useRecipe,
 } from "@chakra-ui/react";
-import React, {
+import {
   forwardRef,
   PropsWithChildren,
   ReactNode,
   useId,
   useImperativeHandle,
-  useLayoutEffect,
   useRef,
-  useState,
 } from "react";
 
 import { textareaRecipe } from "../theme/recipes/textarea";
 import { Field, FieldProps } from "./Field";
-import { FloatingLabel } from "./FloatingLabel";
 import { useFloatingInputState } from "./useFLoatingInputState";
 
 type TextareaVariants = RecipeVariantProps<typeof textareaRecipe>;
@@ -35,35 +33,6 @@ export type TextareaProps = Exclude<
 /**
  * Hook to calculate the height of the label element to adjust spacing for the input for floating label.
  */
-const useLabelHeight = (label: ReactNode | undefined) => {
-  const labelRef = useRef<HTMLLabelElement>(null);
-  const [labelHeight, setLabelHeight] = useState(0);
-
-  useLayoutEffect(() => {
-    const updateLabelHeight = () => {
-      if (labelRef.current) {
-        setLabelHeight(labelRef.current.offsetHeight);
-      }
-    };
-
-    const observer = new ResizeObserver(updateLabelHeight);
-    const currentLabelRef = labelRef.current;
-    if (currentLabelRef) {
-      observer.observe(currentLabelRef);
-    }
-
-    // Initial calculation with a slight delay to ensure CSS is applied
-    setTimeout(updateLabelHeight, 0);
-
-    return () => {
-      if (currentLabelRef) {
-        observer.unobserve(currentLabelRef);
-      }
-    };
-  }, [label]);
-
-  return { labelRef, labelHeight };
-};
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (props, ref) => {
@@ -75,16 +44,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       errorText,
       readOnly,
       helperText,
-      floatingLabel,
-      id,
+      floatingLabel = true,
       ...restProps
     } = props;
     const recipe = useRecipe({ key: "textarea" });
     const styles = recipe({ variant });
-
-    const { labelRef, labelHeight } = useLabelHeight(label);
-
-    const reactId = useId();
 
     const inputRef = useRef<HTMLTextAreaElement>(null);
     useImperativeHandle(ref, () => inputRef.current as HTMLTextAreaElement, []);
@@ -111,6 +75,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         floatingLabel={floatingLabel}
         shouldFloat={shouldFloat}
         position="relative"
+        label={
+          <Flex fontSize="mobile.md" id={labelId} aria-hidden>
+            {label}
+          </Flex>
+        }
+        id={restProps.id}
       >
         <ChakraTextarea
           {...restProps}
@@ -121,22 +91,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           onFocus={handleFocus}
           onBlur={handleBlur}
           onChange={handleChange}
-          style={
-            { "--label-height": `${labelHeight}px` } as React.CSSProperties
-          }
-          placeholder=" "
-          id={id ?? reactId}
+          placeholder=""
+          fontSize="mobile.md"
           aria-labelledby={labelId}
         />
-        <FloatingLabel
-          ref={labelRef}
-          data-float={shouldFloat ? true : undefined}
-          htmlFor={id ?? reactId}
-          aria-hidden
-          id={labelId}
-        >
-          {label}
-        </FloatingLabel>
       </Field>
     );
   },

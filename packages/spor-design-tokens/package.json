@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-design-tokens",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "description": "All Vy's design tokens",
   "type": "module",
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-card-react",

@@ -52,7 +52,7 @@ data "aws_ecr_repository" "this" {
 data "vy_ecs_image" "this" {
   github_repository_name = "spor"
   ecr_repository_name    = "designmanual" 
-  working_directory      = "apps/designmanual-frontend"
+  working_directory      = "./apps/designmanual-frontend"
 }
 
 module "ssr_task" {

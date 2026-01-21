@@ -108,11 +108,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         errorText={errorText}
         id={props.id}
         label={
-          <Flex fontSize={fontSize ?? "mobile.md"}>
+          <Flex fontSize={fontSize ?? "mobile.md"} id={labelId} aria-hidden>
             <Box visibility="hidden">{startElement}</Box>
-            <Box id={labelId} aria-hidden>
-              {label}
-            </Box>
+            {label}
           </Flex>
         }
         floatingLabel={true}

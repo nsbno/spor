@@ -13,6 +13,7 @@ import {
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import { forwardRef } from "react";
+import { VisuallyHidden } from "react-aria";
 
 import { createTexts, useTranslation } from "../i18n";
 import { AlertProps } from "./Alert";
@@ -30,7 +31,10 @@ export const AlertIcon = forwardRef<SVGSVGElement, AlertIconProps>(
     const { t } = useTranslation();
 
     return (
-      <Box ref={ref} aria-label={t(texts[variant as keyof typeof texts])}>
+      <Box ref={ref}>
+        <VisuallyHidden>
+          {t(texts[variant as keyof typeof texts])}
+        </VisuallyHidden>
         {CustomAlertIcon ? (
           <CustomAlertIcon color={`alert.${variant}.icon`} />
         ) : (

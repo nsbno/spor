@@ -1,5 +1,46 @@
 # @vygruppen/spor-react
 
+## 12.22.0
+
+### Minor Changes
+
+- 287df68: Add new Autocomplete component based on Chakra UI's official Combobox
+
+  The new Autocomplete component replaces the overly complex custom combobox implementation with a simpler, more accessible solution built on Chakra UI's well-maintained Combobox component.
+
+  **Features:**
+  - Supports both core and floating label variants
+  - Integrates seamlessly with existing Input and Field components
+  - Handles internal/external filtering, loading states, multiple selection, and grouped items
+  - Improved accessibility and universal design standards compliance
+  - Modern UI with refined design and animations
+  - Adds flip-switch support in AttachedInputs to simplify travel search implementation
+
+### Patch Changes
+
+- 375c0a8: replaced aria-selected with aria-current to fix uu error
+
+## 12.21.2
+
+### Patch Changes
+
+- 166d9d3: - Fix props not being forwarded correctly in NumericStepper component
+  - Rename "usb-charging" icon to "usb charging" (using space instead of "-")
+    → aligns with existing icon naming convention where type/variant is separated by space rather than hyphen
+- 0a43f61: fix wrong borderRadius CardSelect
+- 1c9db69: Added focus on radio buttons
+- Updated dependencies [2899114]
+  - @vygruppen/spor-design-tokens@4.3.2
+  - @vygruppen/spor-icon-react@4.5.1
+
+## 12.21.1
+
+### Patch Changes
+
+- 7b2b1a4: New icon for usb-charging on board
+- Updated dependencies [7b2b1a4]
+  - @vygruppen/spor-icon-react@4.5.1
+
 ## 12.21.0
 
 ### Minor Changes

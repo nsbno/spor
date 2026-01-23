@@ -107,7 +107,6 @@ export const NumericStepper = React.forwardRef<
     <Field
       css={styles.root}
       width="auto"
-      id={idProperty}
       ref={ref}
       label={label}
       helperText={helperText}
@@ -133,7 +132,6 @@ export const NumericStepper = React.forwardRef<
           }
         }}
         disabled={disabled || value <= minValue}
-        id={value <= minValue ? undefined : idProperty}
       />
       {withInput ? (
         <Input
@@ -142,7 +140,7 @@ export const NumericStepper = React.forwardRef<
           name={nameProperty}
           value={value}
           disabled={disabled}
-          id={value === 0 ? undefined : idProperty}
+          id={idProperty}
           css={styles.input}
           width={`${Math.max(value.toString().length + 1, 3)}ch`}
           aria-live="assertive"
@@ -189,7 +187,6 @@ export const NumericStepper = React.forwardRef<
         )}
         onClick={() => onChange(Math.min(value + clampedStepSize, maxValue))}
         disabled={disabled || value >= maxValue}
-        id={value >= maxValue ? undefined : idProperty}
       />
     </Field>
   );

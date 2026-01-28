@@ -50,15 +50,6 @@ export const ContentMenu = forwardRef<
   const allSections =
     useRouteLoaderData("root")?.initialSanityData?.siteSettings?.topMenu || [];
 
-  const isProduction = useRouteLoaderData("root")?.env === "prod";
-
-  const sections = allSections.filter((s: Section) => {
-    if (isProduction && s.slug.current.includes("identitet")) {
-      return false;
-    }
-    return true;
-  });
-
   const mobileMenus = useRouteLoaderData("root")?.initialSanityData?.menus;
 
   const currentSection = menu?.relatedTo.slug;
@@ -80,9 +71,9 @@ export const ContentMenu = forwardRef<
   return (
     <React.Fragment key="content-menu">
       <Flex flexDirection="column" display={["flex", null, null, "none"]}>
-        {sections &&
-          sections.length > 7 &&
-          sections.map((section: Section) => (
+        {allSections &&
+          allSections.length > 7 &&
+          allSections.map((section: Section) => (
             <MenuItem
               key={`${section.slug.current}_m`}
               url={`/${section.slug.current}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
@@ -91,7 +82,7 @@ export const ContentMenu = forwardRef<
             </MenuItem>
           ))}
         <MobileMenu
-          sections={sections}
+          sections={allSections}
           mobileMenus={mobileMenus}
           isPreview={isPreview}
         />

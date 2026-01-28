@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.22.1
+
+### Patch Changes
+
+- 150818c: add mono-color variant of vylogo
+
 ## 12.22.0
 
 ### Minor Changes

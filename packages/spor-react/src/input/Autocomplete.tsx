@@ -104,8 +104,9 @@ export const Autocomplete = ({
             helperText={helperText}
             errorText={errorText}
             required={required}
-            onFocus={() => {
+            onFocus={(event) => {
               if (openOnFocus) combobox.setOpen(true);
+              rest.onFocus?.(event);
             }}
           />
         </Combobox.Input>

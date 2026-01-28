@@ -8,13 +8,13 @@ export const attachedInputsRecipe = defineRecipe({
     "& select": {
       borderEndRadius: 0,
     },
-    "& > * input": {
-      position: "relative",
-      zIndex: "0",
-    },
 
-    "& > * input:focus": {
-      zIndex: "1",
+    "& > *": {
+      position: "relative",
+      zIndex: 100,
+    },
+    "& > *:focus-within": {
+      zIndex: 101,
     },
   },
   variants: {

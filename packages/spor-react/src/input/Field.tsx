@@ -129,7 +129,9 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
             </FloatingLabel>
           )}
           {errorText && (
-            <ChakraField.ErrorText>{errorText}</ChakraField.ErrorText>
+            <ChakraField.ErrorText aria-live="polite">
+              {errorText}
+            </ChakraField.ErrorText>
           )}
         </ChakraField.Root>
         {helperText && (

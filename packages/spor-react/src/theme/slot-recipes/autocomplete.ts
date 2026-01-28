@@ -16,7 +16,6 @@ export const comboboxSlotRecipe = defineSlotRecipe({
     label: {
       fontWeight: "medium",
       userSelect: "none",
-      textStyle: "sm",
     },
 
     input: {

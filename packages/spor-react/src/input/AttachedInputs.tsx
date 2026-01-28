@@ -107,7 +107,7 @@ const SwitchButton = chakra(
         },
         vertical: {
           top: "calc(50% - 15px)",
-          right: "12px",
+          right: "3rem",
           transform: "rotate(90deg)",
         },
       },

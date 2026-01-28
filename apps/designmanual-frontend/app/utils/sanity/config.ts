@@ -26,9 +26,7 @@ export const VITE_SANITY_STUDIO_URL =
 const environment = VITE_ENVIRONMENT;
 
 const dataset =
-  environment === "prod" || environment === "stage"
-    ? "production"
-    : "production";
+  environment === "prod" || environment === "stage" ? "production" : "test";
 
 export const sanityConfig = {
   apiVersion: "2022-02-25",

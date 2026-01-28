@@ -1,5 +1,19 @@
 # @vygruppen/spor-react
 
+## 12.22.2
+
+### Patch Changes
+
+- 815694c: Improvements to Autocomplete accessibility and bugfixes.
+
+  Also fix floatingLabel fontSize not being set to 2xs.
+
+- 877bd20: Remove unessesary ids from numeric stepper buttons
+- 98504fe: Change from using aria-label in Box to adding a VisuallyHidden elements for better screen reader support of AlertIcon.
+- 3bfb2b1: Align Text font-size breakpoint with other components
+
+  Changed responsive font-size steps so Text switches size at sm (568px) instead of lg (1025px). This fixes visual size mismatches across the design system.
+
 ## 12.22.1
 
 ### Patch Changes

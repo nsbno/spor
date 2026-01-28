@@ -2,6 +2,7 @@ import {
   Combobox,
   ComboboxItemProps,
   ComboboxRootProps,
+  useCombobox,
   useComboboxContext,
   useFilter,
   useListCollection,
@@ -24,6 +25,8 @@ type Props = {
   leftIcon?: React.ReactNode;
   filteredExternally?: boolean;
   loading?: boolean;
+  emptyLabel?: React.ReactNode;
+  openOnFocus?: boolean;
 } & Omit<ComboboxRootProps, "collection"> &
   FieldProps;
 
@@ -40,6 +43,9 @@ export const Autocomplete = ({
   filteredExternally,
   loading,
   disabled,
+  emptyLabel,
+  openOnClick = true,
+  openOnFocus = true,
   ...rest
 }: Props) => {
   const { contains } = useFilter({ sensitivity: "base" });
@@ -64,26 +70,29 @@ export const Autocomplete = ({
     [children, collection.items],
   );
 
+  const combobox = useCombobox({
+    collection,
+    openOnClick,
+    onInputValueChange: (event) => {
+      if (!filteredExternally) {
+        filter(event.inputValue);
+      }
+      onInputValueChange?.(event);
+    },
+    positioning: {
+      placement: "bottom",
+      offset: {
+        mainAxis: 3,
+        crossAxis: -1,
+      },
+      flip: false,
+    },
+    disabled,
+    ...rest,
+  });
+
   return (
-    <Combobox.Root
-      {...rest}
-      collection={collection}
-      onInputValueChange={(event) => {
-        if (!filteredExternally) {
-          filter(event.inputValue);
-        }
-        onInputValueChange?.(event);
-      }}
-      positioning={{
-        placement: "bottom",
-        offset: {
-          mainAxis: 3,
-          crossAxis: -1,
-        },
-        flip: false,
-      }}
-      disabled={disabled}
-    >
+    <Combobox.RootProvider value={combobox}>
       <Combobox.Control>
         <Combobox.Input asChild>
           <Input
@@ -95,17 +104,22 @@ export const Autocomplete = ({
             helperText={helperText}
             errorText={errorText}
             required={required}
+            onFocus={() => {
+              if (openOnFocus) combobox.setOpen(true);
+            }}
           />
         </Combobox.Input>
         <Combobox.IndicatorGroup>
-          <Combobox.ClearTrigger asChild>
+          <Combobox.ClearTrigger asChild aria-label={t(texts.clearValue)}>
             <CloseButton size="xs" />
           </Combobox.ClearTrigger>
         </Combobox.IndicatorGroup>
       </Combobox.Control>
       <Combobox.Positioner>
         <Combobox.Content>
-          <Combobox.Empty>{!loading && t(texts.noItemsFound)}</Combobox.Empty>
+          <Combobox.Empty>
+            {!loading && (emptyLabel ?? t(texts.noItemsFound))}
+          </Combobox.Empty>
           {loading ? (
             <ColorSpinner width="1.5rem" p="2" />
           ) : (
@@ -113,7 +127,7 @@ export const Autocomplete = ({
           )}
         </Combobox.Content>
       </Combobox.Positioner>
-    </Combobox.Root>
+    </Combobox.RootProvider>
   );
 };
 
@@ -205,5 +219,11 @@ const texts = createTexts({
     nn: "Ingen resultat",
     sv: "Inga resultat",
     en: "No results found",
+  },
+  clearValue: {
+    nb: "Tøm verdi",
+    nn: "Tøm verdi",
+    sv: "Rensa värde",
+    en: "Clear value",
   },
 });

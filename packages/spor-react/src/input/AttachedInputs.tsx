@@ -90,7 +90,7 @@ const SwitchButton = chakra(
   defineRecipe({
     base: {
       position: "absolute !important",
-      zIndex: "docked !important",
+      zIndex: "101 !important",
       // eslint-disable-next-line spor/use-semantic-tokens
       bg: "bg !important",
       outlineWidth: "1px !important",
@@ -107,7 +107,7 @@ const SwitchButton = chakra(
         },
         vertical: {
           top: "calc(50% - 15px)",
-          right: "12px",
+          right: "3rem",
           transform: "rotate(90deg)",
         },
       },

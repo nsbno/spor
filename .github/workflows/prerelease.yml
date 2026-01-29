@@ -11,6 +11,9 @@ on:
         description: 'Set to "true" to publish to npm; otherwise creates PR only'
         required: true
         default: "false"
+  push: # ← add this temporarily
+    branches:
+      - prerelease # or - '**'  (careful!)
 
 jobs:
   prerelease:

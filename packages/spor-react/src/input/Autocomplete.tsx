@@ -174,10 +174,7 @@ const filterChildren = (
 
         if (!hasItems) return null;
 
-        return React.cloneElement(child, {
-          ...groupProps,
-          children: filteredGroupChildren,
-        });
+        return React.cloneElement(child, groupProps, ...filteredGroupChildren);
       }
 
       const itemProps = (child.props as { item?: Item })?.item;

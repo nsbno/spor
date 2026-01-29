@@ -32,14 +32,14 @@ function renderLabelWithIndicator(
     );
   }
 
-  return React.cloneElement(label, {
-    children: (
-      <>
-        {label.props.children}
-        <ChakraField.RequiredIndicator />
-      </>
-    ),
-  });
+  return React.cloneElement(
+    label,
+    {},
+    <>
+      {(label.props as React.PropsWithChildren).children}
+      <ChakraField.RequiredIndicator />
+    </>,
+  );
 }
 
 export type FieldBaseProps = {

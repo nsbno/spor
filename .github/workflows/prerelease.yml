@@ -3,7 +3,7 @@ name: Prerelease
 on:
   push: # ← add this temporarily
     branches:
-      - prerelease # or - '**'  (careful!)
+      - prerelase # or - '**'  (careful!)
   workflow_dispatch:
     inputs:
       channel:

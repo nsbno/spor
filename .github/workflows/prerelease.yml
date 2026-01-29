@@ -1,0 +1,55 @@
+name: Prerelease
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "npm dist tag to use for prerelease (alpha or beta)"
+        required: true
+        default: "alpha"
+      publish:
+        description: 'Set to "true" to publish to npm; otherwise creates PR only'
+        required: true
+        default: "false"
+
+jobs:
+  prerelease:
+    name: Prerelease
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Create Release Pull Request or Publish to npm (changesets)
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: pnpm release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish prerelease to npm (tag)
+        if: ${{ inputs.publish == 'true' }}
+        run: pnpm release -- --tag ${{ inputs.channel }}
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

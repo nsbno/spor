@@ -27,6 +27,7 @@ export const PopoverTrigger = ({
     </ChakraPopover.Trigger>
   );
 };
+
 PopoverTrigger.displayName = "PopoverTrigger";
 
 export type PopoverProps = ChakraPopover.ContentProps &

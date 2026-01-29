@@ -27,15 +27,22 @@ const Path = chakra("path", fillRecipe);
 
 const SVGGroup = chakra("g", fillRecipe);
 
-type VyLogoProps = ComponentProps<typeof SvgBox>;
+type VyLogoBaseProps = ComponentProps<typeof SvgBox>;
+type VyLogoProps = VyLogoBaseProps & {
+  /** mono = black in light mode, white in dark mode */
+  variant?: "default" | "mono";
+};
 
 export const VyLogo = ({
   ref,
+  variant = "default",
   ...props
 }: VyLogoProps & {
   ref?: React.RefObject<SVGSVGElement>;
 }) => {
   const id = useId();
+
+  const fillForAccent = variant === "mono" ? "main" : "accent";
 
   return (
     <SvgBox ref={ref} viewBox="0 0 107 54" {...props}>
@@ -75,7 +82,7 @@ export const VyLogo = ({
         fillRule="evenodd"
         clipRule="evenodd"
         d="M98.49.07h-1.82c-2.98 0-4.6 1.49-5.63 5.06l-6.52 21.79a18.22 18.22 0 0 1-1.67 3.96c.57.78 1.17 1.26 1.76 1.38 1.13-.96 2.06-2.75 2.89-5.46l6.49-21.67c.9-3.1 2.23-4.63 4.5-4.98a.04.04 0 0 0 0-.08Z"
-        fill="accent"
+        fill={fillForAccent}
       />
       <Path
         fillRule="evenodd"
@@ -110,7 +117,7 @@ export const VyLogo = ({
         />
         <Path
           d="M53.78 1.44a4.64 4.64 0 0 0-4.17.93A10.79 10.79 0 0 0 46.19 8L34.53 47.72c-.58 1.93-1.2 3.75-2.56 4.87-.62.5-1.4.86-2.39 1.01a.04.04 0 0 0 0 .08h1.8c1.57 0 2.69-.41 3.53-1.1 1.36-1.1 1.98-2.93 2.56-4.86L49.05 8.3c.73-2.74 1.95-4.63 3.43-5.9.43-.36.88-.68 1.35-.95l-.05-.01Z"
-          fill="accent"
+          fill={fillForAccent}
         />
       </SVGGroup>
       <Path
@@ -122,4 +129,5 @@ export const VyLogo = ({
     </SvgBox>
   );
 };
+
 VyLogo.displayName = "VyLogo";

@@ -11,7 +11,6 @@ import {
   useRecipe,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { forwardRef } from "react";
 
 import { skeletonRecipe } from "@/theme/recipes/skeleton";
 
@@ -50,51 +49,58 @@ export type SkeletonTextProps = ChakraSkeletonProps &
     noOfLines?: number;
   };
 
-export const SkeletonText = forwardRef<HTMLDivElement, SkeletonTextProps>(
-  function SkeletonText(props, ref) {
-    const recipe = useRecipe({ key: "skeleton" });
-    const [recipeProps, restProps] = recipe.splitVariantProps({
-      loading: true,
-      variant: "pulse",
-      ...props,
-    });
-    const { noOfLines = 3, height = "0.5rem", gap, css, ...rest } = restProps;
+export const SkeletonText = function SkeletonText(
+  props: SkeletonTextProps & { ref?: React.Ref<HTMLDivElement> },
+) {
+  const recipe = useRecipe({ key: "skeleton" });
+  const [recipeProps, restProps] = recipe.splitVariantProps({
+    loading: true,
+    variant: "pulse",
+    ...props,
+  });
 
-    return (
-      <Stack gap={gap} width="full" ref={ref}>
-        {Array.from({ length: noOfLines }).map((_, index) => (
-          <ChakraSkeleton
-            height={height}
-            css={{ ...recipe(recipeProps), ...css }}
-            key={index}
-            _last={{ maxW: "80%" }}
-            {...rest}
-          />
-        ))}
-      </Stack>
-    );
-  },
-);
+  const {
+    noOfLines = 3,
+    height = "0.5rem",
+    gap,
+    css,
+    ref,
+    ...rest
+  } = restProps;
 
+  return (
+    <Stack gap={gap} width="full" ref={ref}>
+      {Array.from({ length: noOfLines }).map((_, index) => (
+        <ChakraSkeleton
+          key={index}
+          height={height}
+          css={{ ...recipe(recipeProps), ...css }}
+          _last={{ maxW: "80%" }}
+          {...rest}
+        />
+      ))}
+    </Stack>
+  );
+};
 export type SkeletonProps = ChakraSkeletonProps & SkeletonVariantProps;
 
-export const Skeleton = forwardRef<HTMLDivElement, SkeletonTextProps>(
-  function SkeletonText(props, ref) {
-    const recipe = useRecipe({ key: "skeleton" });
-    const [recipeProps, restProps] = recipe.splitVariantProps({
-      loading: true,
-      variant: "pulse",
-      ...props,
-    });
+export const Skeleton = function Skeleton(
+  props: SkeletonProps & { ref?: React.Ref<HTMLDivElement> },
+) {
+  const recipe = useRecipe({ key: "skeleton" });
+  const [recipeProps, restProps] = recipe.splitVariantProps({
+    loading: true,
+    variant: "pulse",
+    ...props,
+  });
 
-    const { css, ...rest } = restProps;
+  const { css, ref, ...rest } = restProps;
 
-    return (
-      <ChakraSkeleton
-        ref={ref}
-        css={{ ...recipe(recipeProps), ...css }}
-        {...rest}
-      />
-    );
-  },
-);
+  return (
+    <ChakraSkeleton
+      ref={ref}
+      css={{ ...recipe(recipeProps), ...css }}
+      {...rest}
+    />
+  );
+};

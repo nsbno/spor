@@ -73,6 +73,7 @@ export const Input = ({
   required,
   hidden,
   fontSize,
+  labelAsChild,
   ...props
 }: InputProps & {
   ref?: React.RefObject<HTMLInputElement | null>;
@@ -102,8 +103,9 @@ export const Input = ({
       hidden={hidden}
       errorText={errorText}
       id={props.id}
+      labelAsChild={labelAsChild}
       label={
-        <Flex fontSize={fontSize ?? "mobile.md"}>
+        <Flex>
           <Box visibility="hidden">{startElement}</Box>
           {label}
         </Flex>
@@ -115,6 +117,7 @@ export const Input = ({
         <InputElement
           pointerEvents="none"
           paddingX={2}
+          aria-hidden="true"
           fontSize={fontSize ?? "mobile.md"}
         >
           {startElement}

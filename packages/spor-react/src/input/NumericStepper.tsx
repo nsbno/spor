@@ -81,6 +81,12 @@ export const NumericStepper = ({
     withInput = true,
     stepSize = 1,
     ariaLabelContext = { singular: "", plural: "" },
+    invalid,
+    readOnly,
+    required,
+    label,
+    helperText,
+    errorText,
     ...rest
   } = props;
 
@@ -100,7 +106,17 @@ export const NumericStepper = ({
   };
 
   return (
-    <Field css={styles.root} width="auto" {...rest} id={idProperty} ref={ref}>
+    <Field
+      css={styles.root}
+      width="auto"
+      ref={ref}
+      label={label}
+      helperText={helperText}
+      errorText={errorText}
+      invalid={invalid}
+      readOnly={readOnly}
+      required={required}
+    >
       <VerySmallButton
         icon={<SubtractIcon stepLabel={clampedStepSize} />}
         aria-label={t(
@@ -118,7 +134,6 @@ export const NumericStepper = ({
           }
         }}
         disabled={disabled || value <= minValue}
-        id={value <= minValue ? undefined : idProperty}
       />
       {withInput ? (
         <Input
@@ -127,7 +142,7 @@ export const NumericStepper = ({
           name={nameProperty}
           value={value}
           disabled={disabled}
-          id={value === 0 ? undefined : idProperty}
+          id={idProperty}
           css={styles.input}
           width={`${Math.max(value.toString().length + 1, 3)}ch`}
           aria-live="assertive"
@@ -146,6 +161,7 @@ export const NumericStepper = ({
               focusOnAddButton();
             }
           }}
+          {...rest}
         />
       ) : (
         <Text
@@ -173,7 +189,6 @@ export const NumericStepper = ({
         )}
         onClick={() => onChange(Math.min(value + clampedStepSize, maxValue))}
         disabled={disabled || value >= maxValue}
-        id={value >= maxValue ? undefined : idProperty}
       />
     </Field>
   );

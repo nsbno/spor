@@ -16,6 +16,32 @@ import { Label } from "./Label";
 
 type FieldVariantProps = RecipeVariantProps<typeof fieldSlotRecipe>;
 
+/**
+ * Renders a label with a required indicator, handling both direct labels and child labels
+ */
+function renderLabelWithIndicator(
+  label: React.ReactNode,
+  labelAsChild?: boolean,
+): React.ReactNode {
+  if (!labelAsChild || !React.isValidElement(label)) {
+    return (
+      <>
+        {label}
+        <ChakraField.RequiredIndicator />
+      </>
+    );
+  }
+
+  return React.cloneElement(label, {
+    children: (
+      <>
+        {label.props.children}
+        <ChakraField.RequiredIndicator />
+      </>
+    ),
+  });
+}
+
 export type FieldBaseProps = {
   direction?: "row" | "column";
   disabled?: boolean;
@@ -27,6 +53,7 @@ export type FieldBaseProps = {
   errorText?: React.ReactNode;
   floatingLabel?: boolean;
   shouldFloat?: boolean;
+  labelAsChild?: boolean;
 };
 
 export type FieldProps = Omit<
@@ -72,6 +99,7 @@ export const Field = ({
     direction,
     id,
     shouldFloat,
+    labelAsChild,
     ...rest
   } = props;
   const recipe = useSlotRecipe({ key: "field" });
@@ -89,22 +117,25 @@ export const Field = ({
         id={id}
       >
         {label && !floatingLabel && (
-          <Label>
-            {label}
-            <ChakraField.RequiredIndicator />
+          <Label asChild={labelAsChild}>
+            {renderLabelWithIndicator(label, labelAsChild)}
           </Label>
         )}
 
         {children}
 
         {label && floatingLabel && (
-          <FloatingLabel data-float={shouldFloat ? true : undefined}>
-            {label}
-            <ChakraField.RequiredIndicator />
+          <FloatingLabel
+            data-float={shouldFloat ? true : undefined}
+            asChild={labelAsChild}
+          >
+            {renderLabelWithIndicator(label, labelAsChild)}
           </FloatingLabel>
         )}
         {errorText && (
-          <ChakraField.ErrorText>{errorText}</ChakraField.ErrorText>
+          <ChakraField.ErrorText aria-live="polite">
+            {errorText}
+          </ChakraField.ErrorText>
         )}
       </ChakraField.Root>
       {helperText && (
@@ -115,7 +146,6 @@ export const Field = ({
     </Stack>
   );
 };
-Field.displayName = "Field";
 
 export const FieldErrorText = ({
   ref,
@@ -127,6 +157,5 @@ export const FieldErrorText = ({
     <ChakraField.ErrorText ref={ref}>{props.children}</ChakraField.ErrorText>
   );
 };
-FieldErrorText.displayName = "FieldErrorText";
 
 export const FieldLabel = ChakraField.Label;

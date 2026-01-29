@@ -29,7 +29,6 @@ export type CheckboxGroupProps = React.ComponentProps<
  */
 
 export const CheckboxGroup = (props: CheckboxGroupProps) => {
-  // Forwardref caues issue with prop types not working. Forwardref is unessessary here, as ChakraCheckbox already has a ref prop and is deprecated in react 19.
   const { direction = "row", children, gap = 1, ...rest } = props;
 
   return (

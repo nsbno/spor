@@ -34,6 +34,7 @@ export const CardSelectContent = ({
               bg="bg"
               border="sm"
               borderColor="floating.outline"
+              borderRadius="sm"
               {...props}
             >
               {children}
@@ -44,6 +45,7 @@ export const CardSelectContent = ({
     </Portal>
   );
 };
+
 CardSelectContent.displayName = "CardSelectContent";
 
 export type CardSelectTriggerProps = {

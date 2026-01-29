@@ -25,4 +25,5 @@ export {
   Span,
   Stack,
   VStack,
+  Wrap,
 } from "@chakra-ui/react";

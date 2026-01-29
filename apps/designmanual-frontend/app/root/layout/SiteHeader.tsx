@@ -93,6 +93,7 @@ export const SiteHeader = () => {
           <Flex
             as="ul"
             width="full"
+            gap="1"
             justifyContent="flex-end"
             alignItems="center"
           >

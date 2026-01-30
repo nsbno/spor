@@ -50,6 +50,9 @@ export const ContentMenu = forwardRef<
   const allSections =
     useRouteLoaderData("root")?.initialSanityData?.siteSettings?.topMenu || [];
 
+  // Filter out "identitet" section in production
+  // remove to line 62 when "identitet" section is ready for production
+  // and use allSections insted of sections below
   const isProduction = useRouteLoaderData("root")?.env === "prod";
 
   const sections = allSections.filter((s: Section) => {

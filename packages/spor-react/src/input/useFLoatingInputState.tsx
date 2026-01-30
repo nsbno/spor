@@ -30,17 +30,6 @@ export function useFloatingInputState<
   const inputValue = isControlled ? String(value ?? "") : uncontrolledValue;
   const shouldFloat = inputValue.length > 0 || focused;
 
-  useEffect(() => {
-    if (
-      !isControlled &&
-      inputRef?.current &&
-      uncontrolledValue === "" &&
-      inputRef.current.value !== ""
-    ) {
-      setUncontrolledValue(inputRef.current.value);
-    }
-  }, [isControlled, uncontrolledValue, inputRef]);
-
   // Allow imperative sync (e.g. after react-hook-form setValue)
   const syncFromRef = React.useCallback(() => {
     if (!isControlled && inputRef?.current) {
@@ -51,13 +40,34 @@ export function useFloatingInputState<
     }
   }, [isControlled, inputRef, uncontrolledValue]);
 
-  // Run a second pass on next frame to catch post-mount mutations
+  // Observe input value changes for uncontrolled inputs
   useEffect(() => {
-    if (!isControlled) {
-      const id = requestAnimationFrame(syncFromRef);
-      return () => cancelAnimationFrame(id);
+    if (!isControlled && inputRef?.current) {
+      const input = inputRef.current;
+
+      // Initial sync
+      syncFromRef();
+
+      // Watch for programmatic value changes (e.g., from react-hook-form)
+      const observer = new MutationObserver(() => {
+        syncFromRef();
+      });
+
+      // Observe attributes (some libraries set the value attribute)
+      observer.observe(input, {
+        attributes: true,
+        attributeFilter: ["value"],
+      });
+
+      // Poll periodically as a fallback (some value changes don't trigger mutations)
+      const intervalId = setInterval(syncFromRef, 100);
+
+      return () => {
+        observer.disconnect();
+        clearInterval(intervalId);
+      };
     }
-  }, [isControlled, syncFromRef]);
+  }, [isControlled, inputRef, syncFromRef]);
 
   const handleFocus = (event: FocusEvent<T>) => {
     onFocus?.(event);

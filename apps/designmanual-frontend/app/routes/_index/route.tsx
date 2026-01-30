@@ -1,7 +1,7 @@
 import { groq } from "@sanity/groq-store";
 import { Box, Flex } from "@vygruppen/spor-react";
 import { useEffect, useRef, useState } from "react";
-import { LoaderFunctionArgs, useLoaderData } from "react-router";
+import { LoaderFunctionArgs, redirect, useLoaderData } from "react-router";
 
 import {
   resolveAccordionGroq,
@@ -22,6 +22,9 @@ import { useStickymenu } from "../_base/content-menu/utils";
 import { LeftSidebar } from "../_base/left-sidebar/LeftSidebar";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
+  // remove next line to publish identity section
+  if (process.env.VITE_ENVIRONMENT === "prod") return redirect("/spor");
+
   const draftMode =
     new URL(request.url).searchParams.get("sanity-preview-perspective") ===
     "drafts";

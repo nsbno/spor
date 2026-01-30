@@ -1,5 +1,45 @@
 # @vygruppen/spor-react
 
+## 12.22.2
+
+### Patch Changes
+
+- 815694c: Improvements to Autocomplete accessibility and bugfixes.
+
+  Also fix floatingLabel fontSize not being set to 2xs.
+
+- 877bd20: Remove unessesary ids from numeric stepper buttons
+- 98504fe: Change from using aria-label in Box to adding a VisuallyHidden elements for better screen reader support of AlertIcon.
+- 3bfb2b1: Align Text font-size breakpoint with other components
+
+  Changed responsive font-size steps so Text switches size at sm (568px) instead of lg (1025px). This fixes visual size mismatches across the design system.
+
+## 12.22.1
+
+### Patch Changes
+
+- 150818c: add mono-color variant of vylogo
+
+## 12.22.0
+
+### Minor Changes
+
+- 287df68: Add new Autocomplete component based on Chakra UI's official Combobox
+
+  The new Autocomplete component replaces the overly complex custom combobox implementation with a simpler, more accessible solution built on Chakra UI's well-maintained Combobox component.
+
+  **Features:**
+  - Supports both core and floating label variants
+  - Integrates seamlessly with existing Input and Field components
+  - Handles internal/external filtering, loading states, multiple selection, and grouped items
+  - Improved accessibility and universal design standards compliance
+  - Modern UI with refined design and animations
+  - Adds flip-switch support in AttachedInputs to simplify travel search implementation
+
+### Patch Changes
+
+- 375c0a8: replaced aria-selected with aria-current to fix uu error
+
 ## 12.21.2
 
 ### Patch Changes

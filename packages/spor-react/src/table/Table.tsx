@@ -5,7 +5,7 @@ import {
   TableRootProps as ChakraTableProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import { forwardRef, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 import { tableSlotRecipe } from "../theme/slot-recipes/table";
 
@@ -32,7 +32,12 @@ export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
  * </Table>
  * ```
  */
-export const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
+export const Table = ({
+  ref,
+  ...props
+}: TableProps & {
+  ref?: React.RefObject<HTMLTableElement>;
+}) => {
   const { variant = "ghost", size, colorPalette = "green", children } = props;
 
   const recipe = useSlotRecipe({ key: "table" });
@@ -49,5 +54,5 @@ export const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
       {children}
     </ChakraTable.Root>
   );
-});
+};
 Table.displayName = "Table";

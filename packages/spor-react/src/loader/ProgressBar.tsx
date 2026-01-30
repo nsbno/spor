@@ -6,7 +6,7 @@ import {
   UseProgressProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 
 import { progressBarRecipe } from "../theme/slot-recipes/progress-bar";
 import { useRotatingLabel } from "./useRotatingLabel";
@@ -75,44 +75,42 @@ export type ProgressBarProps = BoxProps &
  * ```
  */
 
-export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
-  (
-    {
-      value,
-      label,
-      labelRotationDelay = 5000,
-      isActive = true,
-      showValueText = false,
-      height = "0.5rem",
-      ...rest
-    },
-    ref,
-  ) => {
-    const recipe = useSlotRecipe({ key: "progressbar" });
-    const styles = recipe({});
-    const currentLoadingText = useRotatingLabel({
-      label,
-      delay: labelRotationDelay,
-    });
+export const ProgressBar = ({
+  ref,
+  value,
+  label,
+  labelRotationDelay = 5000,
+  isActive = true,
+  showValueText = false,
+  height = "0.5rem",
+  ...rest
+}: ProgressBarProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  const recipe = useSlotRecipe({ key: "progressbar" });
+  const styles = recipe({});
+  const currentLoadingText = useRotatingLabel({
+    label,
+    delay: labelRotationDelay,
+  });
 
-    return (
-      <Progress.Root css={styles.container} ref={ref} value={value} {...rest}>
-        <Progress.Track
-          height={height}
-          css={isActive ? styles.background : styles.disabledBackground}
-        >
-          <Progress.Range css={styles.progress} />
-        </Progress.Track>
+  return (
+    <Progress.Root css={styles.container} ref={ref} value={value} {...rest}>
+      <Progress.Track
+        height={height}
+        css={isActive ? styles.background : styles.disabledBackground}
+      >
+        <Progress.Range css={styles.progress} />
+      </Progress.Track>
 
-        {label && (
-          <Progress.Label css={styles.description}>
-            {currentLoadingText}
-          </Progress.Label>
-        )}
+      {label && (
+        <Progress.Label css={styles.description}>
+          {currentLoadingText}
+        </Progress.Label>
+      )}
 
-        {showValueText && <Progress.ValueText>{value}%</Progress.ValueText>}
-      </Progress.Root>
-    );
-  },
-);
+      {showValueText && <Progress.ValueText>{value}%</Progress.ValueText>}
+    </Progress.Root>
+  );
+};
 ProgressBar.displayName = "ProgressBar";

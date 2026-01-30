@@ -10,7 +10,6 @@ import {
   useRecipe,
 } from "@chakra-ui/react";
 import { ChangeDirectionOutline24Icon } from "@vygruppen/spor-icon-react";
-import { forwardRef } from "react";
 
 import { IconButton } from "@/button";
 import { attachedInputsRecipe } from "@/theme/recipes/attached-inputs";
@@ -43,47 +42,44 @@ export type AttachedInputsProps = RecipeVariantProps<
       }
   );
 
-export const AttachedInputs = forwardRef<HTMLDivElement, AttachedInputsProps>(
-  (props, ref) => {
-    const recipe = useRecipe({ key: "attachedInputs" });
-    const [recipeProps, { onFlip, flipAriaLabel, ...restProps }] =
-      recipe.splitVariantProps(props);
-    const styles = recipe(recipeProps);
+export const AttachedInputs = ({
+  ref,
+  ...props
+}: AttachedInputsProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  const recipe = useRecipe({ key: "attachedInputs" });
+  const [recipeProps, { onFlip, flipAriaLabel, ...restProps }] =
+    recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
 
-    if (!onFlip) {
-      return (
-        <Group
-          ref={ref}
-          css={styles}
-          attached
-          isolation="auto"
-          {...restProps}
-        />
-      );
-    }
-
+  if (!onFlip) {
     return (
-      <Box position="relative">
-        <Group
-          ref={ref}
-          css={styles}
-          attached
-          isolation="auto"
-          data-with-flip-button
-          {...restProps}
-        />
-        <SwitchButton
-          icon={<ChangeDirectionOutline24Icon />}
-          orientation={props.orientation}
-          variant="tertiary"
-          size={["xs", null, "sm"]}
-          aria-label={flipAriaLabel}
-          onClick={onFlip}
-        />
-      </Box>
+      <Group ref={ref} css={styles} attached isolation="auto" {...restProps} />
     );
-  },
-);
+  }
+
+  return (
+    <Box position="relative">
+      <Group
+        ref={ref}
+        css={styles}
+        attached
+        isolation="auto"
+        data-with-flip-button
+        {...restProps}
+      />
+      <SwitchButton
+        icon={<ChangeDirectionOutline24Icon />}
+        orientation={props.orientation}
+        variant="tertiary"
+        size={["xs", null, "sm"]}
+        aria-label={flipAriaLabel}
+        onClick={onFlip}
+      />
+    </Box>
+  );
+};
 
 const SwitchButton = chakra(
   IconButton,

@@ -39,10 +39,12 @@ export type NativeSelectdProps =
  *
  */
 
-export const NativeSelect = React.forwardRef<
-  HTMLDivElement,
-  NativeSelectdProps
->(function NativeSelect(props, ref) {
+export const NativeSelect = function NativeSelect({
+  ref,
+  ...props
+}: NativeSelectdProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) {
   const {
     children,
     variant = "core",
@@ -88,4 +90,4 @@ export const NativeSelect = React.forwardRef<
       </ChakraNativeSelect.Root>
     </Field>
   );
-});
+};

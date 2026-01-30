@@ -8,7 +8,7 @@ import {
   useListCollection,
 } from "@chakra-ui/react";
 import { CheckmarkFill18Icon } from "@vygruppen/spor-icon-react";
-import React, { forwardRef } from "react";
+import React from "react";
 
 import { CloseButton } from "@/button";
 import { ColorSpinner } from "@/loader";
@@ -134,24 +134,19 @@ export const Autocomplete = ({
 export const AutocompleteItemGroup = Combobox.ItemGroup;
 export const AutocompleteItemGroupLabel = Combobox.ItemGroupLabel;
 
-export const AutocompleteItem = forwardRef<HTMLDivElement, ComboboxItemProps>(
-  function AutocompleteItem({
-    children,
-    ...props
-  }: React.PropsWithChildren<ComboboxItemProps>) {
-    const { multiple } = useComboboxContext();
-    return (
-      <Combobox.Item {...props}>
-        {children}
-        {multiple && (
-          <Combobox.ItemIndicator asChild>
-            <CheckmarkFill18Icon />
-          </Combobox.ItemIndicator>
-        )}
-      </Combobox.Item>
-    );
-  },
-);
+export const AutocompleteItem = ({ children, ...props }: ComboboxItemProps) => {
+  const { multiple } = useComboboxContext();
+  return (
+    <Combobox.Item {...props}>
+      {children}
+      {multiple && (
+        <Combobox.ItemIndicator asChild>
+          <CheckmarkFill18Icon />
+        </Combobox.ItemIndicator>
+      )}
+    </Combobox.Item>
+  );
+};
 
 const filterChildren = (
   children: React.ReactNode,
@@ -179,10 +174,7 @@ const filterChildren = (
 
         if (!hasItems) return null;
 
-        return React.cloneElement(child, {
-          ...groupProps,
-          children: filteredGroupChildren,
-        });
+        return React.cloneElement(child, groupProps, ...filteredGroupChildren);
       }
 
       const itemProps = (child.props as { item?: Item })?.item;

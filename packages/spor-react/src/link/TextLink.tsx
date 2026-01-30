@@ -8,7 +8,12 @@ import {
   LinkOutOutline18Icon,
   LinkOutOutline24Icon,
 } from "@vygruppen/spor-icon-react";
-import React, { cloneElement, forwardRef, isValidElement } from "react";
+import React, {
+  cloneElement,
+  isValidElement,
+  PropsWithChildren,
+  ReactNode,
+} from "react";
 
 import { createTexts, useTranslation } from "@/i18n";
 
@@ -46,43 +51,25 @@ const ExternalIcon = ({
   </>
 );
 
-export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ children, external, href, ...props }, ref) => {
-    const { t } = useTranslation();
+export const TextLink = ({
+  ref,
+  children,
+  external,
+  href,
+  ...props
+}: LinkProps & {
+  ref?: React.RefObject<HTMLAnchorElement>;
+}) => {
+  const { t } = useTranslation();
 
-    const isExternal =
-      external ??
-      Boolean(href?.startsWith("http://") || href?.startsWith("https://"));
+  const isExternal =
+    external ??
+    Boolean(href?.startsWith("http://") || href?.startsWith("https://"));
 
-    const externalLabel = t ? t(texts.externalLink) : texts.externalLink.en;
+  const externalLabel = t ? t(texts.externalLink) : texts.externalLink.en;
 
-    // If asChild is true, we need to clone the children and add the external icon
-    if (props.asChild && isValidElement(children)) {
-      return (
-        <ChakraLink
-          href={href}
-          {...props}
-          ref={ref}
-          {...(isExternal && {
-            target: "_blank",
-            rel: "noopener noreferrer",
-          })}
-        >
-          {cloneElement(children as React.ReactElement, {
-            ...children.props,
-            children: (
-              <>
-                {children.props.children}
-                {isExternal && (
-                  <ExternalIcon label={externalLabel} size={props.size} />
-                )}
-              </>
-            ),
-          })}
-        </ChakraLink>
-      );
-    }
-
+  // If asChild is true, we need to clone the children and add the external icon
+  if (props.asChild && isValidElement(children)) {
     return (
       <ChakraLink
         href={href}
@@ -93,12 +80,36 @@ export const TextLink = forwardRef<HTMLAnchorElement, LinkProps>(
           rel: "noopener noreferrer",
         })}
       >
-        {children}
-        {isExternal && <ExternalIcon label={externalLabel} size={props.size} />}
+        {cloneElement(children as React.ReactElement<{ children: ReactNode }>, {
+          ...(children.props as object),
+          children: (
+            <>
+              {(children.props as PropsWithChildren).children}
+              {isExternal && (
+                <ExternalIcon label={externalLabel} size={props.size} />
+              )}
+            </>
+          ),
+        })}
       </ChakraLink>
     );
-  },
-);
+  }
+
+  return (
+    <ChakraLink
+      href={href}
+      {...props}
+      ref={ref}
+      {...(isExternal && {
+        target: "_blank",
+        rel: "noopener noreferrer",
+      })}
+    >
+      {children}
+      {isExternal && <ExternalIcon label={externalLabel} size={props.size} />}
+    </ChakraLink>
+  );
+};
 TextLink.displayName = "TextLink";
 
 const texts = createTexts({

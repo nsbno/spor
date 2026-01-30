@@ -9,7 +9,7 @@ import {
   DropdownDownFill18Icon,
   DropdownDownFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import { forwardRef, ReactNode } from "react";
+import { ReactNode } from "react";
 
 import { Button, ButtonProps, StaticCard, StaticCardProps } from "..";
 
@@ -17,30 +17,35 @@ export const CardSelect = ({ size = "md", ...props }: PopoverRootProps) => {
   return <ChakraPopover.Root size={size} {...props} />;
 };
 
-export const CardSelectContent = forwardRef<HTMLDivElement, StaticCardProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <Portal>
-        <ChakraPopover.Positioner>
-          <ChakraPopover.Content ref={ref} padding={0} bg="none">
-            <ChakraPopover.Body {...props}>
-              <StaticCard
-                p="2"
-                bg="bg"
-                border="sm"
-                borderColor="floating.outline"
-                borderRadius="sm"
-                {...props}
-              >
-                {children}
-              </StaticCard>
-            </ChakraPopover.Body>
-          </ChakraPopover.Content>
-        </ChakraPopover.Positioner>
-      </Portal>
-    );
-  },
-);
+export const CardSelectContent = ({
+  ref,
+  children,
+  ...props
+}: StaticCardProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  return (
+    <Portal>
+      <ChakraPopover.Positioner>
+        <ChakraPopover.Content ref={ref} padding={0} bg="none">
+          <ChakraPopover.Body {...props}>
+            <StaticCard
+              p="2"
+              bg="bg"
+              border="sm"
+              borderColor="floating.outline"
+              borderRadius="sm"
+              {...props}
+            >
+              {children}
+            </StaticCard>
+          </ChakraPopover.Body>
+        </ChakraPopover.Content>
+      </ChakraPopover.Positioner>
+    </Portal>
+  );
+};
+
 CardSelectContent.displayName = "CardSelectContent";
 
 export type CardSelectTriggerProps = {
@@ -63,44 +68,44 @@ const bgActiveStyleMap = {
   floating: "floating.surface.active",
 };
 
-export const CardSelectTrigger = forwardRef<
-  HTMLButtonElement,
-  CardSelectTriggerProps
->(
-  (
-    { icon, variant = "core", withChevron = true, size, children, ...props },
-    ref,
-  ) => {
-    const ChevronIcon =
-      size === "sm" ? DropdownDownFill18Icon : DropdownDownFill24Icon;
+export const CardSelectTrigger = ({
+  ref,
+  icon,
+  variant = "core",
+  withChevron = true,
+  size,
+  children,
+  ...props
+}: CardSelectTriggerProps & {
+  ref?: React.RefObject<HTMLButtonElement>;
+}) => {
+  const ChevronIcon =
+    size === "sm" ? DropdownDownFill18Icon : DropdownDownFill24Icon;
 
-    const { open } = usePopoverContext();
+  const { open } = usePopoverContext();
 
-    return (
-      <ChakraPopover.Trigger asChild ref={ref}>
-        <Button
-          leftIcon={icon}
-          variant={
-            variant === "core"
-              ? "tertiary"
-              : (variant as ButtonProps["variant"])
-          }
-          size={size}
-          bg={open ? bgActiveStyleMap[variant] : undefined}
-          rightIcon={
-            withChevron ? (
-              <ChevronIcon
-                transform={open ? "rotate(180deg)" : undefined}
-                transition="transform 0.3s"
-              />
-            ) : null
-          }
-          {...props}
-        >
-          {children}
-        </Button>
-      </ChakraPopover.Trigger>
-    );
-  },
-);
+  return (
+    <ChakraPopover.Trigger asChild ref={ref}>
+      <Button
+        leftIcon={icon}
+        variant={
+          variant === "core" ? "tertiary" : (variant as ButtonProps["variant"])
+        }
+        size={size}
+        bg={open ? bgActiveStyleMap[variant] : undefined}
+        rightIcon={
+          withChevron ? (
+            <ChevronIcon
+              transform={open ? "rotate(180deg)" : undefined}
+              transition="transform 0.3s"
+            />
+          ) : null
+        }
+        {...props}
+      >
+        {children}
+      </Button>
+    </ChakraPopover.Trigger>
+  );
+};
 CardSelectTrigger.displayName = "CardSelectTrigger";

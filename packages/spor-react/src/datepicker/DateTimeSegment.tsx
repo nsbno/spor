@@ -1,6 +1,6 @@
 "use client";
 import { Box, useSlotRecipe } from "@chakra-ui/react";
-import { forwardRef, PropsWithChildren, RefObject, useRef } from "react";
+import { PropsWithChildren, RefObject, useRef } from "react";
 import { useDateSegment } from "react-aria";
 import { DateFieldState, DateSegment } from "react-stately";
 
@@ -19,48 +19,53 @@ type DateTimeSegmentProps = PropsWithChildren<DatePickerVariantProps> & {
  *
  * This component should be used with the react-aria library, and is not meant to be used directly.
  * */
-export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
-  ({ segment, state, ariaLabel, ariaDescription, variant }, externalRef) => {
-    const internalRef = useRef(null);
-    const ref = externalRef ?? internalRef;
+export const DateTimeSegment = ({
+  ref: externalRef,
+  segment,
+  state,
+  ariaLabel,
+  ariaDescription,
+  variant,
+}: DateTimeSegmentProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  const internalRef = useRef(null);
+  const ref = externalRef ?? internalRef;
 
-    const { segmentProps } = useDateSegment(
-      segment,
-      state,
-      ref as RefObject<HTMLDivElement>,
-    );
+  const { segmentProps } = useDateSegment(
+    segment,
+    state,
+    ref as RefObject<HTMLDivElement>,
+  );
 
-    const recipe = useSlotRecipe({
-      key: "datePicker",
-    });
+  const recipe = useSlotRecipe({
+    key: "datePicker",
+  });
 
-    const styles = recipe({
-      variant,
-    });
+  const styles = recipe({
+    variant,
+  });
 
-    return (
-      <Box
-        {...segmentProps}
-        ref={ref}
-        style={{
-          ...segmentProps.style,
-          boxSizing: "content-box",
-        }}
-        textAlign="center"
-        outline="none"
-        borderRadius="xs"
-        fontSize={["mobile.sm", "desktop.sm"]}
-        css={styles.dateTimeSegment}
-        aria-description={ariaDescription}
-        aria-labelledby={ariaLabel}
-      >
-        {isPaddable(segment.type)
-          ? segment.text.padStart(2, "0")
-          : segment.text}
-      </Box>
-    );
-  },
-);
+  return (
+    <Box
+      {...segmentProps}
+      ref={ref}
+      style={{
+        ...segmentProps.style,
+        boxSizing: "content-box",
+      }}
+      textAlign="center"
+      outline="none"
+      borderRadius="xs"
+      fontSize={["mobile.sm", "desktop.sm"]}
+      css={styles.dateTimeSegment}
+      aria-description={ariaDescription}
+      aria-labelledby={ariaLabel}
+    >
+      {isPaddable(segment.type) ? segment.text.padStart(2, "0") : segment.text}
+    </Box>
+  );
+};
 DateTimeSegment.displayName = "DateTimeSegment";
 
 const isPaddable = (segmentType: DateSegment["type"]) =>

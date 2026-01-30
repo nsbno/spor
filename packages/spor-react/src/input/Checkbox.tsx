@@ -29,20 +29,23 @@ type CheckboxProps = Omit<ChakraCheckbox.RootProps, "onChange"> &
  * You can group several of these together with a `CheckboxGroup`.
  */
 
-export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  (props, ref) => {
-    const { children, inputProps, rootRef, ...rest } = props;
-    return (
-      <ChakraCheckbox.Root ref={rootRef} {...rest}>
-        <ChakraCheckbox.HiddenInput ref={ref} {...inputProps} />
-        <ChakraCheckbox.Control>
-          <ChakraCheckbox.Indicator />
-        </ChakraCheckbox.Control>
-        {children != null && (
-          <ChakraCheckbox.Label>{children}</ChakraCheckbox.Label>
-        )}
-      </ChakraCheckbox.Root>
-    );
-  },
-);
+export const Checkbox = ({
+  ref,
+  ...props
+}: CheckboxProps & {
+  ref?: React.RefObject<HTMLInputElement>;
+}) => {
+  const { children, inputProps, rootRef, ...rest } = props;
+  return (
+    <ChakraCheckbox.Root ref={rootRef} {...rest}>
+      <ChakraCheckbox.HiddenInput ref={ref} {...inputProps} />
+      <ChakraCheckbox.Control>
+        <ChakraCheckbox.Indicator />
+      </ChakraCheckbox.Control>
+      {children != null && (
+        <ChakraCheckbox.Label>{children}</ChakraCheckbox.Label>
+      )}
+    </ChakraCheckbox.Root>
+  );
+};
 Checkbox.displayName = "Checkbox";

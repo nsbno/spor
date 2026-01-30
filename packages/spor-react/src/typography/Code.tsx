@@ -14,8 +14,11 @@ type CodeVariantProps = RecipeVariantProps<typeof codeRecipie> & CodeProps;
 
 const StyledCode = chakra(ChakraCode, codeRecipie);
 
-export const Code = React.forwardRef<HTMLElement, CodeVariantProps>(
-  function Code(props, ref) {
-    return <StyledCode {...props} ref={ref} />;
-  },
-);
+export const Code = function Code({
+  ref,
+  ...props
+}: CodeVariantProps & {
+  ref?: React.RefObject<HTMLElement>;
+}) {
+  return <StyledCode {...props} ref={ref} />;
+};

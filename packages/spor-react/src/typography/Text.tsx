@@ -3,7 +3,6 @@ import {
   Text as ChakraText,
   TextProps as ChakraTextProps,
 } from "@chakra-ui/react";
-import { forwardRef } from "react";
 
 export type TextProps = Omit<ChakraTextProps, "textStyle"> & {
   /** The size and style of the text.
@@ -45,11 +44,14 @@ function resolveTextProps({
  * <Text>Welcome to this paragraph of text.</Text>
  * ```
  */
-export const Text = forwardRef<HTMLParagraphElement, TextProps>(
-  function Text(props, ref) {
-    const { variant, lineHeight, fontSize, ...rest } = props;
-    const resolvedProps = resolveTextProps({ variant, fontSize, lineHeight });
+export const Text = function Text({
+  ref,
+  ...props
+}: TextProps & {
+  ref?: React.RefObject<HTMLParagraphElement>;
+}) {
+  const { variant, lineHeight, fontSize, ...rest } = props;
+  const resolvedProps = resolveTextProps({ variant, fontSize, lineHeight });
 
-    return <ChakraText {...resolvedProps} {...rest} ref={ref} />;
-  },
-);
+  return <ChakraText {...resolvedProps} {...rest} ref={ref} />;
+};

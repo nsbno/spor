@@ -46,7 +46,7 @@ export const page = defineType({
       title: "Slug",
       type: "slug",
       options: {
-        source: "title",
+        source: "shortTitle",
       },
       group: "pageContent",
     }),
@@ -110,7 +110,7 @@ export const page = defineType({
     },
     prepare({ title, shortTitle }) {
       return {
-        title: shortTitle ?? title,
+        title: title ?? shortTitle ?? "No title",
       };
     },
   },

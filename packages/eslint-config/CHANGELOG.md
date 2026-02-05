@@ -1,5 +1,33 @@
 # @vygruppen/eslint-config
 
+## 2.1.0
+
+### Minor Changes
+
+- d8fd719: Add ESLint rule to disallow unnecessary curly braces in JSX props.
+  Also add rule to prevent abbreviations
+
+## 2.0.1
+
+### Patch Changes
+
+- 70e0894: - Add support for linear gradient when highlighting non semantic tokens
+  - Update typescript-eslint
+  - Update error message for non semantic tokens to be more clear
+
+## 2.0.0
+
+### Major Changes
+
+- fbf18ea: Update all eslint config dependencies to their latest versions.
+  This may introduce breaking changes due to major version upgrades.
+
+## 1.2.4
+
+### Patch Changes
+
+- 06d3728: Add readme to design tokens.
+
 ## 1.2.3
 
 ### Patch Changes

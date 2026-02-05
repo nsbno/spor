@@ -35,8 +35,8 @@ Spor follows a **monorepo** structure, containing multiple **packages** and **ap
 
 ### 🚀 Applications
 
-- **`docs`** – A Remix app for documentation and demos (this site).
-- **`studio`** – A Sanity Studio app for managing documentation ([spor.vy.no/studio](https://spor.vy.no/studio)).
+- **`designmanual-frontend`** – A Remix app for documentation and demos (this site).
+- **`design-studio`** – A Sanity Studio app for managing documentation ([spor.vy.no/studio](https://spor.vy.no/studio)).
 
 ### 📦 Key Packages
 
@@ -69,12 +69,6 @@ git clone https://github.com/nsbno/spor.git
 ```sh
 cd spor
 pnpm install
-```
-
-### Run typegen
-
-```sh
-pnpm typegen
 ```
 
 ### ⚡ Building the Project

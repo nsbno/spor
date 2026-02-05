@@ -12,10 +12,10 @@ export const getIconsZipFile = async () => {
   return fs.readFile(iconsPath);
 };
 
-type getIconArgs = { category?: string; fileName?: string };
-export const getIcon = async ({ category, fileName }: getIconArgs) => {
-  const safeFileName = fileName?.replace(/\.\./g, "") ?? "";
-  const safeCategory = category?.replace(/\.\./g, "") ?? "";
+type getIconArguments = { category?: string; fileName?: string };
+export const getIcon = async ({ category, fileName }: getIconArguments) => {
+  const safeFileName = fileName?.replaceAll("..", "") ?? "";
+  const safeCategory = category?.replaceAll("..", "") ?? "";
   const basePath = await getPathToIconsSvgFolder();
   try {
     return await fs.readFile(path.join(basePath, safeCategory, safeFileName));

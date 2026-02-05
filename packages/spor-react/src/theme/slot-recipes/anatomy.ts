@@ -1,3 +1,4 @@
+import { comboboxAnatomy as arkComboboxAnatomy } from "@ark-ui/react";
 import { createAnatomy } from "@ark-ui/react/anatomy";
 import { popoverAnatomy as arkPopoverAnatomy } from "@ark-ui/react/popover";
 
@@ -279,3 +280,8 @@ export const checkboxCardAnatomy = createAnatomy("checkbox-card", [
 ]);
 
 export { collapsibleAnatomy } from "@ark-ui/react/collapsible";
+
+export const comboboxAnatomy = arkComboboxAnatomy.extendWith(
+  "indicatorGroup",
+  "empty",
+);

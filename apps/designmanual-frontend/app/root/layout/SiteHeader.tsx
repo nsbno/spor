@@ -28,9 +28,9 @@ import { SearchDocs } from "./SearchDocs";
 
 const useSearchKeyboardShortcut = (onTriggered: () => void) => {
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === "k") {
+        event.preventDefault();
         onTriggered();
       }
     };
@@ -47,6 +47,10 @@ const useSearchKeyboardShortcut = (onTriggered: () => void) => {
 export const SiteHeader = () => {
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
 
+  const { isPreview } = useRouteLoaderData<typeof loader>("root") || {
+    isPreview: false,
+  };
+
   useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
 
   const routeData = useRouteLoaderData<typeof loader>("root");
@@ -54,8 +58,14 @@ export const SiteHeader = () => {
   const currentSection = slug?.split("/")[0] || "";
   const allSections = routeData?.initialSanityData?.siteSettings?.topMenu || [];
 
+  // Filter out "identitet" section in production
+  // remove to line 72 when "identitet" section is ready for production
+  // and use allSections insted of sections below
+
+  const isProduction = routeData?.env === "prod";
+
   const sections = allSections.filter((s) => {
-    if (routeData?.isProd && s.slug.current.includes("identitet")) {
+    if (isProduction && s.slug.current.includes("identitet")) {
       return false;
     }
     return true;
@@ -68,10 +78,10 @@ export const SiteHeader = () => {
       alignItems="center"
       paddingX={[3, 4, 7]}
       paddingY={[3, 4, 5, 4]}
-      backgroundColor={"bg"}
+      backgroundColor="bg"
       gap="3"
-      width={"100vw"}
-      overflow={"hidden"}
+      width="100vw"
+      overflow="hidden"
     >
       <Flex
         alignItems="center"
@@ -80,7 +90,10 @@ export const SiteHeader = () => {
         width="100%"
         position="relative"
       >
-        <Link to="/" aria-label="Go to the front page">
+        <Link
+          to={isPreview ? "/?sanity-preview-perspective=drafts" : "/"}
+          aria-label="Go to the front page"
+        >
           <VyLogo
             className="light"
             width="auto"
@@ -90,8 +103,16 @@ export const SiteHeader = () => {
         </Link>
 
         <Box as="nav" flexGrow={1} justifyContent="flex-end">
-          <Flex as="ul" gap="4" width={"auto"} justifySelf={"flex-end"}>
-            <ColorModeSwitcher />
+          <Flex
+            as="ul"
+            gap="4"
+            width="auto"
+            justifyContent="flex-end"
+            alignItems="center"
+          >
+            <Box as="li" marginLeft="auto">
+              <ColorModeSwitcher />
+            </Box>
             {sections.map((section) => {
               return (
                 <Box as="li" key={section.title}>
@@ -103,7 +124,7 @@ export const SiteHeader = () => {
                         ? "secondary"
                         : "ghost"
                     }
-                    size={"md"}
+                    size="md"
                     borderRadius="lg"
                     display={{ base: "none", lg: "flex" }}
                     border="none"
@@ -116,7 +137,11 @@ export const SiteHeader = () => {
                           : "outline",
                     })}
                   >
-                    <Link to={`/${section.slug.current}`}>{section.title}</Link>
+                    <Link
+                      to={`/${section.slug.current}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
+                    >
+                      {section.title}
+                    </Link>
                   </Button>
                 </Box>
               );
@@ -140,6 +165,7 @@ export const SiteHeader = () => {
 const MobileMenu = () => {
   const { open, onOpen, onClose } = useDisclosure();
   const location = useLocation();
+
   useEffect(() => {
     // This doesn't close the menu when you're on the page you're clicking on,
     // but that's on you!
@@ -160,7 +186,7 @@ const MobileMenu = () => {
       <Drawer placement="end" open={open} onExitComplete={onClose}>
         <DrawerContent>
           <DrawerHeader>
-            <DrawerCloseTrigger placeContent={"end"} onClick={onClose} />
+            <DrawerCloseTrigger placeContent="end" onClick={onClose} />
           </DrawerHeader>
           <DrawerBody paddingY={2}>
             <SearchableContentMenu />

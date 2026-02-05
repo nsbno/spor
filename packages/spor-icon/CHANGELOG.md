@@ -1,5 +1,25 @@
 # @vygruppen/spor-icon
 
+## 3.5.5
+
+### Patch Changes
+
+- 166d9d3: - Fix props not being forwarded correctly in NumericStepper component
+  - Rename "usb-charging" icon to "usb charging" (using space instead of "-")
+    → aligns with existing icon naming convention where type/variant is separated by space rather than hyphen
+
+## 3.5.4
+
+### Patch Changes
+
+- 7b2b1a4: New icon for usb-charging on board
+
+## 3.5.3
+
+### Patch Changes
+
+- 3079071: Add paperclip icon
+
 ## 3.5.2
 
 ### Patch Changes

@@ -1,6 +1,11 @@
 packages:
   - "packages/**"
-  - "apps/docs"
   - "apps/studio"
   - "apps/design-studio"
   - "apps/designmanual-frontend"
+
+minimumReleaseAge: 10080 # ensures that only packages released at least 7 days ago can be installed
+
+preferFrozenLockfile: true
+savePrefix: ""
+trustPolicy: no-downgrade

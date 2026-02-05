@@ -109,7 +109,7 @@ export const PaginationItem = React.forwardRef<
         as={props.as ?? "button"}
         ref={ref}
         aria-label={t(texts.pageOf(props.value, totalPages))}
-        aria-selected={page === props.value}
+        aria-current={page === props.value}
         {...props}
       >
         {props.value}
@@ -119,6 +119,7 @@ export const PaginationItem = React.forwardRef<
 });
 PaginationItem.displayName = "PaginationItem";
 
+// eslint-disable-next-line unicorn/prevent-abbreviations
 export const PaginationPrevTrigger = React.forwardRef<
   HTMLButtonElement,
   ChakraPagination.PrevTriggerProps

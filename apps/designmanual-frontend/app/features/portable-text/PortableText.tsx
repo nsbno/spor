@@ -1,5 +1,5 @@
+/* eslint-disable simple-import-sort/imports */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { ButtonProps } from "@chakra-ui/react";
 import {
   PortableTextReactComponents,
@@ -71,10 +71,10 @@ const components: Partial<PortableTextReactComponents> = {
     h1: ({ children }) => (
       <LinkableHeading
         as="h1"
-        variant="lg"
-        fontWeight="bold"
+        variant="xxl"
+        fontWeight="200"
         marginTop={6}
-        marginBottom={2}
+        color="text.secondary"
       >
         {children}
       </LinkableHeading>
@@ -279,7 +279,7 @@ const components: Partial<PortableTextReactComponents> = {
         <Box paddingBottom={3}>
           <InteractiveCode
             layout={value.layout}
-            maxWidth={`calc(100vw - var(--spor-space-6))`}
+            maxWidth="calc(100vw - var(--spor-space-6))"
             code={code}
           />
         </Box>

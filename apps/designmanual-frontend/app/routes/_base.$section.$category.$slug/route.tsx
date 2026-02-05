@@ -63,6 +63,9 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   invariant(params.category, "Expected params.category");
   invariant(params.slug, "Expected params.slug");
   invariant(params.section, "Expected params.slug");
+  const draftMode =
+    new URL(request.url).searchParams.get("sanity-preview-perspective") ===
+    "drafts";
 
   const query = groq`*[_type == "article" && category->slug.current == $categorySlug && slug.current == $articleSlug] {
     _id,
@@ -90,13 +93,15 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
       }
     }
   }`;
-  const queryParams = {
+  const queryParameters = {
     section: params.section,
     categorySlug: params.category,
     articleSlug: params.slug,
   };
   const isPreview = isValidPreviewRequest(request);
-  const initialData = await getClient(isPreview).fetch(query, queryParams);
+  const initialData = await getClient().fetch(query, queryParameters, {
+    perspective: draftMode ? "previewDrafts" : "published",
+  });
 
   if (!initialData || initialData.length === 0) {
     throw new Response("Not Found", { status: 404 });
@@ -106,7 +111,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     initialData,
     isPreview,
     query: isPreview ? query : null,
-    queryParams: isPreview ? queryParams : null,
+    queryParams: isPreview ? queryParameters : null,
   };
 };
 
@@ -166,7 +171,7 @@ export default function ArticlePage() {
         marginBottom={1}
         gap={6}
         justifyContent="space-between"
-        alignContent={"stretch"}
+        alignContent="stretch"
       >
         <HStack>
           {article?.category?.title && (
@@ -176,7 +181,7 @@ export default function ArticlePage() {
           )}
           {isPreview && <Badge colorPalette="yellow">Preview</Badge>}
         </HStack>
-        <Flex wrap="wrap" gap={2} marginLeft={"auto"} justifyContent={"end"}>
+        <Flex wrap="wrap" gap={2} marginLeft="auto" justifyContent="end">
           {article.resourceLinks?.map((link: ResourceLink) => (
             <Button
               key={link.url}
@@ -191,7 +196,7 @@ export default function ArticlePage() {
           {currentSection && currentSection === "spor" && <SiteSettings />}
         </Flex>
       </Flex>
-      <Flex direction={"column"}>
+      <Flex direction="column">
         <Heading as="h1" variant="xl-display" marginBottom={2}>
           {article.title}
         </Heading>
@@ -270,10 +275,7 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
       <TabsList>
         {sections.map((section) => (
           <TabsTrigger key={section.title} value={section.title}>
-            {getCorrectTitle({
-              title: section.title,
-              customTitle: section.customTitle,
-            })}
+            {`${section.title.charAt(0).toUpperCase()}${section.title.slice(1)}`}
           </TabsTrigger>
         ))}
       </TabsList>
@@ -302,8 +304,8 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
   );
 };
 
-type GetCorrectTitleArgs = Pick<ComponentSection, "title" | "customTitle">;
-const getCorrectTitle = ({ title, customTitle }: GetCorrectTitleArgs) => {
+type GetCorrectTitleArguments = Pick<ComponentSection, "title" | "customTitle">;
+const getCorrectTitle = ({ title, customTitle }: GetCorrectTitleArguments) => {
   switch (title) {
     case "examples": {
       return "Examples";

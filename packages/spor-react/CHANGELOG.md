@@ -1,5 +1,213 @@
 # @vygruppen/spor-react
 
+## 12.22.2
+
+### Patch Changes
+
+- 815694c: Improvements to Autocomplete accessibility and bugfixes.
+
+  Also fix floatingLabel fontSize not being set to 2xs.
+
+- 877bd20: Remove unessesary ids from numeric stepper buttons
+- 98504fe: Change from using aria-label in Box to adding a VisuallyHidden elements for better screen reader support of AlertIcon.
+- 3bfb2b1: Align Text font-size breakpoint with other components
+
+  Changed responsive font-size steps so Text switches size at sm (568px) instead of lg (1025px). This fixes visual size mismatches across the design system.
+
+## 12.22.1
+
+### Patch Changes
+
+- 150818c: add mono-color variant of vylogo
+
+## 12.22.0
+
+### Minor Changes
+
+- 287df68: Add new Autocomplete component based on Chakra UI's official Combobox
+
+  The new Autocomplete component replaces the overly complex custom combobox implementation with a simpler, more accessible solution built on Chakra UI's well-maintained Combobox component.
+
+  **Features:**
+  - Supports both core and floating label variants
+  - Integrates seamlessly with existing Input and Field components
+  - Handles internal/external filtering, loading states, multiple selection, and grouped items
+  - Improved accessibility and universal design standards compliance
+  - Modern UI with refined design and animations
+  - Adds flip-switch support in AttachedInputs to simplify travel search implementation
+
+### Patch Changes
+
+- 375c0a8: replaced aria-selected with aria-current to fix uu error
+
+## 12.21.2
+
+### Patch Changes
+
+- 166d9d3: - Fix props not being forwarded correctly in NumericStepper component
+  - Rename "usb-charging" icon to "usb charging" (using space instead of "-")
+    → aligns with existing icon naming convention where type/variant is separated by space rather than hyphen
+- 0a43f61: fix wrong borderRadius CardSelect
+- 1c9db69: Added focus on radio buttons
+- Updated dependencies [2899114]
+  - @vygruppen/spor-design-tokens@4.3.2
+  - @vygruppen/spor-icon-react@4.5.1
+
+## 12.21.1
+
+### Patch Changes
+
+- 7b2b1a4: New icon for usb-charging on board
+- Updated dependencies [7b2b1a4]
+  - @vygruppen/spor-icon-react@4.5.1
+
+## 12.21.0
+
+### Minor Changes
+
+- 680088f: Restore correct fill color for feedback icons to improve appearance in dark mode.
+
+### Patch Changes
+
+- 71ff08b: Fix console warnings caused by forwardRef usage
+- ef1c670: Add inverted colors for badge component
+- 4cef922: Possibility to change fontsize in input and search input field
+- dc87d26: Revert non-working portalled logic for SelectContent
+- Updated dependencies [ef1c670]
+- Updated dependencies [680088f]
+  - @vygruppen/spor-design-tokens@4.3.1
+  - @vygruppen/spor-icon-react@4.5.0
+
+## 12.20.2
+
+### Patch Changes
+
+- 322ba1b: Improve check for ssr for Select content
+
+## 12.20.1
+
+### Patch Changes
+
+- b3659ad: Don't render SelectContent portalled on server side"
+
+## 12.20.0
+
+### Minor Changes
+
+- d8fd719: Add ESLint rule to disallow unnecessary curly braces in JSX props.
+  Also add rule to prevent abbreviations
+
+### Patch Changes
+
+- 1ed4bc2: Added colors that support darkmode to shadow-token
+- Updated dependencies [1ed4bc2]
+- Updated dependencies [d8fd719]
+  - @vygruppen/spor-design-tokens@4.3.0
+  - @vygruppen/spor-icon-react@4.4.0
+
+## 12.19.1
+
+### Patch Changes
+
+- 0174855: ** Calendar **
+
+  Added a generic Calendar component using react-aria and react-stately from Adobe
+  Added a CalendarContext/CalendarProvider to handle control of the calendar, and implemented logic for supporting both single trips and round trips
+  Added a ScrollCalendar to support mobile views
+
+- Updated dependencies [3079071]
+  - @vygruppen/spor-icon-react@4.3.1
+  - @vygruppen/spor-design-tokens@4.2.0
+
+## 12.19.0
+
+### Minor Changes
+
+- fbf18ea: Update all eslint config dependencies to their latest versions.
+  This may introduce breaking changes due to major version upgrades.
+
+### Patch Changes
+
+- @vygruppen/spor-design-tokens@4.2.0
+- @vygruppen/spor-icon-react@4.3.0
+
+## 12.18.0
+
+### Minor Changes
+
+- cd46711: **Separator**
+  - Fix dashed style not rendering correctly on vertical orientation
+  - Enable responsive values by removing compound variants from recipe
+  - Simplify component types
+
+  **Button**
+  - Fix types to properly support responsive style props
+
+  **Checkbox**
+  - Remove `onChange` prop to prevent confusion with `onValueChange`
+
+- 9c3987d: Add a variant to accordion to display it with a border bottom line
+
+## 12.17.0
+
+### Minor Changes
+
+- 4ffbd64: Upgrade Chakra UI to v3.28.1
+
+  This update brings the latest Chakra UI improvements and bug fixes to our components.
+
+### Patch Changes
+
+- Updated dependencies [4ffbd64]
+  - @vygruppen/spor-icon-react@4.3.0
+
+## 12.16.5
+
+### Patch Changes
+
+- af8d74a: Update font weights for different button variants and sizes.
+
+## 12.16.4
+
+### Patch Changes
+
+- 641c3a4: Fix text color on text to inherit from parent.
+
+## 12.16.3
+
+### Patch Changes
+
+- d51339d: Fix label not floating with edgecase in React Hook Form
+
+## 12.16.2
+
+### Patch Changes
+
+- 05b99e9: Fix icon color of Toast to support dark mode.
+
+## 12.16.1
+
+### Patch Changes
+
+- ce1417f: Fix labels not floating with values set by react-hook-form
+
+## 12.16.0
+
+### Minor Changes
+
+- 8865c20: ## Breaking Changes
+  - **API Consistency**: Standardized event handler naming to `onValueChange` for DatePicker, TimePicker, DateRangePicker, ChoiceChip, and NumericStepper components (previously `onChange`)
+
+  ## Bug Fixes
+  - **TextInput**: Reverted color changes to restore original color styling
+
+  ## Improvements
+  - **PhoneNumberInput**: Updated styling for better visual consistency
+
+### Patch Changes
+
+- 5eae150: Add default text color for Text component
+
 ## 12.15.0
 
 ### Minor Changes

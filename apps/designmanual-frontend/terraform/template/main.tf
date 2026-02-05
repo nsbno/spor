@@ -49,9 +49,14 @@ data "aws_ecr_repository" "this" {
   name        = "designmanual"
   registry_id = "637423315721" # service account for digital-common-services
 }
+data "vy_ecs_image" "this" {
+  github_repository_name = "spor"
+  ecr_repository_name    = "designmanual" 
+  working_directory      = "./apps/designmanual-frontend"
+}
 
 module "ssr_task" {
-  source             = "github.com/nsbno/terraform-aws-ecs-service?ref=3.0.0-rc9"
+  source             = "github.com/nsbno/terraform-aws-ecs-service?ref=3.0.0"
   service_name       = local.application_name
   vpc_id             = data.aws_vpc.shared.id
   private_subnet_ids = data.aws_subnets.private.ids
@@ -62,11 +67,23 @@ module "ssr_task" {
   rollback_window_in_minutes        = var.environment != "prod" ? 0 : 10
   deployment_configuration_strategy = var.environment != "prod" ? "ROLLING" : "BLUE_GREEN"
 
+  cpu    = 2048
+  memory = 4096
+
   application_container = {
     name           = "${local.application_name}-main"
+    image          = data.vy_ecs_image.this
     repository_url = data.aws_ecr_repository.this.repository_url
     protocol       = "HTTP"
     port           = 3000
+
+    environment = {
+      VITE_ENVIRONMENT              = var.environment
+      VITE_SANITY_SECRET            = "sk2JbmxJTpDDsylbCG5lcJ4Hu3H8VWr7UlUuWaZreH0oCRPJ63pujQt8rZLL2wOv1aW1JL4k0u25y68Khj0O5UVXfJCLUEcPVmQ3RdcKx5JYz1ZCWm89dAQoA08sFNBwPXCbI3vi0LcGacIHqK4BRJz7Jbf3HjdM8Z4klIUVdn7CnK6VLVNZ"
+      VITE_SANITY_TOKEN             = "r4xpzxak"
+      VITE_SANITY_STUDIO_URL        = "http://localhost:4444"
+      VITE_PUBLIC_SANITY_STUDIO_URL = "https://vydesignmanual.sanity.studio"
+    }
   }
 
   lb_health_check = {

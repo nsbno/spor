@@ -57,21 +57,16 @@ export const DateField = forwardRef<HTMLDivElement, DateFieldProps>(
     return (
       <Box minWidth="6rem" width="100%">
         {props.label && (
-          <Box
-            asChild
-            css={styles.inputLabel}
-            position="absolute"
-            paddingTop="2px"
-          >
+          <Box css={styles.inputLabel} position="absolute" paddingTop="2px">
             <Label padding="0" {...props.labelProps}>
               {props.label} <Field.RequiredIndicator />
             </Label>
           </Box>
         )}
         <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
-          {state.segments.map((segment, i) => (
+          {state.segments.map((segment, index) => (
             <DateTimeSegment
-              key={i}
+              key={index}
               segment={segment}
               ariaDescription={t(getAriaLabel(segment.type))}
               state={state}

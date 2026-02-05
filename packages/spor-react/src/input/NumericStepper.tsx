@@ -24,7 +24,7 @@ export type NumericStepperProps = FieldBaseProps &
     /** A default value, if uncontrolled */
     defaultValue?: number;
     /** Callback for when the value changes */
-    onChange?: (value: number) => void;
+    onValueChange?: (value: number) => void;
     /** Optional minimum value. Defaults to 0 */
     minValue?: number;
     /** Optional maximum value. Defaults to 99 */
@@ -68,17 +68,23 @@ export const NumericStepper = React.forwardRef<
   NumericStepperProps
 >((props: NumericStepperProps, ref) => {
   const {
-    name: nameProp,
-    id: idProp,
-    value: valueProp,
+    name: nameProperty,
+    id: idProperty,
+    value: valueProperty,
     defaultValue = 1,
-    onChange: onChangeProp,
+    onValueChange,
     minValue = 0,
     maxValue = 99,
     disabled,
     withInput = true,
     stepSize = 1,
     ariaLabelContext = { singular: "", plural: "" },
+    invalid,
+    readOnly,
+    required,
+    label,
+    helperText,
+    errorText,
     ...rest
   } = props;
 
@@ -87,8 +93,8 @@ export const NumericStepper = React.forwardRef<
   const recipe = useSlotRecipe({ key: "numericStepper" });
   const styles = recipe();
   const [value, onChange] = useControllableState<number>({
-    value: valueProp,
-    onChange: onChangeProp,
+    value: valueProperty,
+    onChange: onValueChange,
     defaultValue,
   });
   const clampedStepSize = Math.max(Math.min(stepSize, 10), 1);
@@ -98,7 +104,17 @@ export const NumericStepper = React.forwardRef<
   };
 
   return (
-    <Field css={styles.root} width="auto" {...rest} id={idProp} ref={ref}>
+    <Field
+      css={styles.root}
+      width="auto"
+      ref={ref}
+      label={label}
+      helperText={helperText}
+      errorText={errorText}
+      invalid={invalid}
+      readOnly={readOnly}
+      required={required}
+    >
       <VerySmallButton
         icon={<SubtractIcon stepLabel={clampedStepSize} />}
         aria-label={t(
@@ -116,16 +132,15 @@ export const NumericStepper = React.forwardRef<
           }
         }}
         disabled={disabled || value <= minValue}
-        id={value <= minValue ? undefined : idProp}
       />
       {withInput ? (
         <Input
           min={minValue}
           max={maxValue}
-          name={nameProp}
+          name={nameProperty}
           value={value}
           disabled={disabled}
-          id={value === 0 ? undefined : idProp}
+          id={idProperty}
           css={styles.input}
           width={`${Math.max(value.toString().length + 1, 3)}ch`}
           aria-live="assertive"
@@ -134,8 +149,8 @@ export const NumericStepper = React.forwardRef<
               ? ""
               : t(texts.currentNumberAriaLabel(ariaLabelContext.plural))
           }
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const numericInput = Number(e.target.value);
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            const numericInput = Number(event.target.value);
             if (Number.isNaN(numericInput)) {
               return;
             }
@@ -144,6 +159,7 @@ export const NumericStepper = React.forwardRef<
               focusOnAddButton();
             }
           }}
+          {...rest}
         />
       ) : (
         <Text
@@ -171,7 +187,6 @@ export const NumericStepper = React.forwardRef<
         )}
         onClick={() => onChange(Math.min(value + clampedStepSize, maxValue))}
         disabled={disabled || value >= maxValue}
-        id={value >= maxValue ? undefined : idProp}
       />
     </Field>
   );
@@ -212,9 +227,9 @@ const VerySmallButton = React.forwardRef<
 });
 VerySmallButton.displayName = "VerySmallButton";
 
-type IconPropTypes = BoxProps & { stepLabel: number };
+type IconPropertyTypes = BoxProps & { stepLabel: number };
 
-const SubtractIcon = ({ stepLabel }: IconPropTypes) => (
+const SubtractIcon = ({ stepLabel }: IconPropertyTypes) => (
   <>
     <chakra.svg as="svg" viewBox="0 0 30 30" stroke="currentColor">
       <line
@@ -233,7 +248,7 @@ const SubtractIcon = ({ stepLabel }: IconPropTypes) => (
   </>
 );
 
-const AddIcon = ({ stepLabel }: IconPropTypes) => (
+const AddIcon = ({ stepLabel }: IconPropertyTypes) => (
   <>
     <chakra.svg as="svg" viewBox="0 0 30 30" stroke="currentColor">
       <line

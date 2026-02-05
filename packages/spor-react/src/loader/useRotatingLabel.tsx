@@ -2,12 +2,15 @@
 import { useMemo, useState } from "react";
 import { useInterval } from "usehooks-ts";
 
-type UseRotatingLabelArgs = {
+type UseRotatingLabelArguments = {
   label?: string | string[];
   delay: number;
 };
 /** Returns a label from a set of labels */
-export const useRotatingLabel = ({ label, delay }: UseRotatingLabelArgs) => {
+export const useRotatingLabel = ({
+  label,
+  delay,
+}: UseRotatingLabelArguments) => {
   const loadingTextArray = useMemo(
     () => (Array.isArray(label) ? label : [label]),
     [label],
@@ -16,7 +19,7 @@ export const useRotatingLabel = ({ label, delay }: UseRotatingLabelArgs) => {
 
   useInterval(() => {
     setCurrentLoadingTextIndex(
-      (prevIndex) => (prevIndex + 1) % loadingTextArray.length,
+      (previousIndex) => (previousIndex + 1) % loadingTextArray.length,
     );
   }, delay);
   return loadingTextArray[currentLoadingTextIndex];

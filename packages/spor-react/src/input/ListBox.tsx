@@ -93,7 +93,8 @@ export const ListBox = (props: ListBoxProps<object>) => {
       padding="1"
     >
       {state.collection.size === 0 && props.emptyContent}
-      {[...state.collection].map((item) =>
+      {/* eslint-disable-next-line unicorn/prefer-spread*/}
+      {Array.from(state.collection).map((item) =>
         item.type === "section" ? (
           <ListBoxSection key={item.key} section={item} state={state} />
         ) : (
@@ -229,12 +230,7 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
 
   return (
     <List>
-      <ListItem
-        {...itemProps}
-        listStyleType={"none"}
-        marginLeft="0"
-        paddingX="1"
-      >
+      <ListItem {...itemProps} listStyleType="none" marginLeft="0" paddingX="1">
         {section.rendered && (
           <Box
             fontSize={["mobile.sm", "desktop.sm"]}
@@ -250,7 +246,8 @@ function ListBoxSection({ section, state }: ListBoxSectionProps) {
           </Box>
         )}
         <List {...groupProps} padding={0} listStyleType="none">
-          {[...(state.collection.getChildren?.(section.key) ?? [])].map(
+          {/* eslint-disable-next-line unicorn/prefer-spread*/}
+          {Array.from(state.collection.getChildren?.(section.key) ?? []).map(
             (item: Node<unknown>) => (
               <Option key={item.key} item={item} state={state} />
             ),

@@ -29,21 +29,48 @@ export default defineConfig([
       "simple-import-sort/imports": "warn",
       "simple-import-sort/exports": "warn",
       "spor/use-semantic-tokens": "warn",
+      "react/jsx-curly-brace-presence": [
+        "warn",
+        {
+          props: "never",
+          children: "never",
+        },
+      ],
     },
   },
   js.configs.recommended,
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
   pluginReact.configs.flat["jsx-runtime"],
-  reactHooks.configs["recommended-latest"],
+  reactHooks.configs.flat["recommended-latest"],
   jsxA11y.flatConfigs.recommended,
   eslintPluginUnicorn.configs.recommended,
   {
     rules: {
-      "unicorn/prevent-abbreviations": "off",
+      "unicorn/prevent-abbreviations": [
+        "warn",
+        {
+          allowList: {
+            props: true,
+            Props: true,
+            ref: true,
+            Ref: true,
+            utils: true,
+            Utils: true,
+            env: true,
+            Env: true,
+            Docs: true,
+            docs: true,
+          },
+        },
+      ],
       "unicorn/no-null": "off",
       "unicorn/filename-case": "off",
-      "no-nested-ternary": "warn",
+    },
+    settings: {
+      react: {
+        version: "detect",
+      },
     },
   },
   eslintConfigPrettier,

@@ -2,7 +2,7 @@ import "./styles/style-overrides.css";
 
 import { withEmotionCache } from "@emotion/react";
 import { Brand, Language, SporProvider, themes } from "@vygruppen/spor-react";
-import { type ReactNode, useContext, useEffect } from "react";
+import { type ReactNode } from "react";
 import {
   type ActionFunctionArgs,
   data,
@@ -20,20 +20,18 @@ import {
   useRouteError,
 } from "react-router";
 
+import { useInjectStyles } from "./emotion/emotion-client";
+import { SanityVisualEditing } from "./features/SanityVisualEditing";
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";
 import { PageNotFound } from "./root/PageNotFound";
-import {
-  ClientStyleContext,
-  ServerStyleContext,
-} from "./root/setup/chakra-setup/styleContext";
 import { RootErrorBoundary } from "./root/setup/error-boundary/RootErrorBoundary";
 import {
   getBrandFromCookie,
   setBrandInCookie,
 } from "./utils/brand-cookie.server";
 import { getInitialSanityData } from "./utils/initialSanityData.server";
-import { checkIsProd } from "./utils/sanity/config";
+import { previewContext } from "./utils/sanity/preview";
 import { urlBuilder } from "./utils/sanity/utils";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
@@ -108,9 +106,6 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const initialSanityData = await getInitialSanityData();
   const brand = await getBrandFromCookie(request.headers.get("cookie") ?? "");
 
-  const url = new URL(request.url); // Create a URL object from the request URL
-  const isProd = checkIsProd(url.href);
-
   const isMac = /Mac|iPod|iPhone|iPad/.test(
     request.headers.get("user-agent") ?? "",
   );
@@ -119,6 +114,18 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
 
   const domain = request.headers.get("host") ?? "";
 
+  const isPreview = request.url.includes("sanity-preview-perspective=drafts");
+
+  const { preview } = await previewContext(request.headers);
+
+  const readToken = import.meta.env.VITE_SANITY_SECRET;
+
+  const ENV = {
+    PUBLIC_SANITY_PROJECT_ID: process.env.VITE_SANITY_TOKEN,
+    PUBLIC_SANITY_DATASET: process.env.VITE_ENVIRONMENT,
+    PUBLIC_SANITY_STUDIO_URL: process.env.VITE_SANITY_STUDIO_URL,
+  };
+
   return {
     initialSanityData,
     cookies: request.headers.get("cookie") ?? "",
@@ -126,7 +133,11 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     isMac,
     domain,
     slug,
-    isProd,
+    isPreview,
+    preview,
+    ENV,
+    readToken,
+    env: process.env.VITE_ENVIRONMENT || "dev",
   };
 };
 
@@ -159,25 +170,11 @@ type DocumentProps = {
 
 const Document = withEmotionCache(
   ({ children, brand, title }: DocumentProps, emotionCache) => {
-    const serverStyleData = useContext(ServerStyleContext);
-    const clientStyleData = useContext(ClientStyleContext);
+    const isPreview = useLoaderData<typeof loader>().isPreview;
+    const ENV = useLoaderData<typeof loader>().ENV;
+    const loaderData = useLoaderData<typeof loader>();
 
-    // Only executed on client.
-    useEffect(() => {
-      // re-link sheet container
-      emotionCache.sheet.container = document.head;
-      // re-inject tags
-      const tags = emotionCache.sheet.tags;
-      emotionCache.sheet.flush();
-      for (const tag of tags) {
-        // eslint-disable-next-line
-        (emotionCache.sheet as any)._insertTag(tag);
-      }
-      // reset cache to reapply global styles
-      clientStyleData.reset();
-      // We need to exclude the clientStyleData and emotionCache from the dependency array, due to infinite re-renders
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    useInjectStyles(emotionCache);
 
     const location = useLocation();
     const selectedLanguage = location.pathname.startsWith("/spor")
@@ -192,13 +189,17 @@ const Document = withEmotionCache(
           {title ? <title>{title}</title> : null}
           <Meta />
           <Links />
-          {serverStyleData?.map(({ key, ids, css }) => (
-            <style
-              key={key}
-              data-emotion={`${key} ${ids.join(" ")}`}
-              dangerouslySetInnerHTML={{ __html: css }}
-            />
-          ))}
+          <meta
+            name="emotion-insertion-point"
+            content="emotion-insertion-point"
+          />
+
+          <script
+            // Prevent CSP nonce issues if applicable
+            dangerouslySetInnerHTML={{
+              __html: `window.__ENV__ = { VITE_ENVIRONMENT: "${loaderData.env || ""}" };`,
+            }}
+          />
         </head>
         <body style={{ overflowX: "hidden" }}>
           <SporProvider
@@ -210,6 +211,12 @@ const Document = withEmotionCache(
           </SporProvider>
           <ScrollRestoration />
           <Scripts />
+          {isPreview && <SanityVisualEditing />}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.ENV = ${JSON.stringify(ENV)}`,
+            }}
+          />
         </body>
       </html>
     );

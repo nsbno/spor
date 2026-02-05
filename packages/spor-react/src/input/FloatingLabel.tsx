@@ -19,14 +19,14 @@ const floatingLabelStyles = defineStyle({
   },
 
   pos: "absolute",
-  transition: "position",
+  transition: "top 160ms ease, font-size 160ms ease",
 
   top: "0.9rem",
   color: "text",
   fontSize: ["mobile.sm", "desktop.sm"],
 
   "&[data-float]": {
-    fontSize: ["mobile.xs", "desktop.xs"],
+    fontSize: ["mobile.2xs", "desktop.2xs"],
     color: "text",
     top: "0.3rem",
   },

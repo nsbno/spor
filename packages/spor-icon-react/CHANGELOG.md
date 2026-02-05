@@ -1,5 +1,38 @@
 # @vygruppen/spor-icon-react
 
+## 4.5.1
+
+### Patch Changes
+
+- 7b2b1a4: New icon for usb-charging on board
+
+## 4.5.0
+
+### Minor Changes
+
+- 680088f: Restore correct fill color for feedback icons to improve appearance in dark mode.
+
+## 4.4.0
+
+### Minor Changes
+
+- d8fd719: Add ESLint rule to disallow unnecessary curly braces in JSX props.
+  Also add rule to prevent abbreviations
+
+## 4.3.1
+
+### Patch Changes
+
+- 3079071: Add paperclip icon
+
+## 4.3.0
+
+### Minor Changes
+
+- 4ffbd64: Upgrade Chakra UI to v3.28.1
+
+  This update brings the latest Chakra UI improvements and bug fixes to our components.
+
 ## 4.2.1
 
 ### Patch Changes

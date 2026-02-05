@@ -8,7 +8,7 @@ export const SearchableContentMenu = () => {
   const [refreshKey, setRefreshKey] = React.useState(0);
 
   const handleRefresh = () => {
-    setRefreshKey((prev) => prev + 1);
+    setRefreshKey((previous) => previous + 1);
   };
 
   return (
@@ -16,7 +16,7 @@ export const SearchableContentMenu = () => {
       as="nav"
       width={["90vw", null, null, "100%"]}
       padding={0}
-      alignSelf={"flex-start"}
+      alignSelf="flex-start"
     >
       <ContentMenu
         ref={focusableRef}

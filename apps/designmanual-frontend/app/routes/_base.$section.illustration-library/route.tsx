@@ -1,123 +1,93 @@
-import { SanityAsset } from "@sanity/image-url/lib/types/types";
+import { DownloadOutline24Icon } from "@vygruppen/spor-icon-react";
 import {
-  DownloadOutline18Icon,
-  DownloadOutline24Icon,
-  InformationOutline18Icon,
-} from "@vygruppen/spor-icon-react";
-import {
-  Badge,
   Box,
-  Brand,
   Button,
   Flex,
   Heading,
-  IconButton,
-  Image,
-  NativeSelect,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  SearchInput,
   Separator,
   SimpleGrid,
-  slugify,
-  StaticCard,
-  Text,
-  useColorMode,
+  Stack,
 } from "@vygruppen/spor-react";
-import { useMemo, useState } from "react";
-import { useLoaderData } from "react-router";
+import {
+  LoaderFunctionArgs,
+  redirect,
+  useLoaderData,
+  useLocation,
+} from "react-router";
 
 import { PortableText } from "~/features/portable-text/PortableText";
-import { useBrand } from "~/utils/brand";
-import { getClient } from "~/utils/sanity/client";
-import { urlBuilder } from "~/utils/sanity/utils";
 
-type SanityResponse = {
-  illustrations: {
-    _id: string;
-    title: string;
-    imageLightBackground: SanityAsset;
-    imageDarkBackground: SanityAsset;
-    size: "small" | "medium" | "large";
-    tags: string[];
-    description: string;
-  }[];
-  article: {
-    title: string;
-    slug: string;
-    introduction?: unknown[];
-    category?: {
-      title: string;
-      slug: string;
-    };
-    resourceLinks?: {
-      linkType: "figma";
-      url: string;
-    };
-    content: unknown[];
+import { Filters } from "./filters";
+import { IllustationGrid } from "./illustration-grid";
+import { Pagination } from "./pagination";
+import { getArticlesQuery, getIllustrationsQuery } from "./queries";
+
+function getUrlWithIllustrationSearchParameters(url: URL): URL | null {
+  let changed = false;
+  if (!url.searchParams.has("illustrationType")) {
+    url.searchParams.set("illustrationType", "transparent-bg");
+    changed = true;
+  }
+  if (!url.searchParams.has("size")) {
+    url.searchParams.set("size", "all");
+    changed = true;
+  }
+
+  if (!url.searchParams.has("page")) {
+    url.searchParams.set("page", "1");
+    changed = true;
+  }
+
+  if (!url.searchParams.has("pageSize")) {
+    url.searchParams.set("pageSize", "24");
+    changed = true;
+  }
+
+  if (!url.searchParams.has("sort")) {
+    url.searchParams.set("sort", "name");
+    changed = true;
+  }
+
+  return changed ? url : null;
+}
+
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  const url = new URL(request.url);
+
+  const updatedUrl = getUrlWithIllustrationSearchParameters(
+    new URL(request.url),
+  );
+  if (updatedUrl) {
+    return redirect(
+      updatedUrl.pathname + "?" + updatedUrl.searchParams.toString(),
+    );
+  }
+
+  const draftMode =
+    url.searchParams.get("sanity-preview-perspective") === "drafts";
+
+  const illustrations = await getIllustrationsQuery(url.toString(), draftMode);
+  const article = await getArticlesQuery(draftMode);
+
+  return {
+    illustrations,
+    article,
   };
 };
 
-export const loader = async () => {
-  const client = getClient();
-  const query = `
-  {
-    "illustrations": *[_type == "illustration"] | order(title asc) {
-      _id,
-      title,
-      imageLightBackground,
-      imageDarkBackground,
-      tags,
-      size,
-      description
-    },
-  "article": *[_type == "article" && slug.current == "illustration-library"][0] {
-    _id,
-    title,
-    "slug": slug.current,
-    introduction,
-    category->{
-      title,
-      "slug": slug.current
-    },
-    resourceLinks[linkType == "figma"],
-    content[]{
-      _type == 'reference' => @->,
-      _type != 'reference' => @,
-    }
-  }
-}`;
-  const { illustrations, article } = (await client.fetch(
-    query,
-  )) as SanityResponse;
-  return { illustrations, article };
-};
-
 export default function IllustrationLibraryPage() {
-  const { illustrations, article } = useLoaderData<typeof loader>();
-  const [searchValue, setSearchValue] = useState("");
-  const { colorMode } = useColorMode();
-  const [size, setSize] = useState("all");
-  const brand = useBrand();
+  const { article, illustrations } = useLoaderData<typeof loader>();
 
-  const matchingIllustrations = useMemo(() => {
-    const normalizedSearchValue = searchValue.toLowerCase().trim();
-    return illustrations
-      .filter((illustration) => size === "all" || illustration.size === size)
-      .filter(
-        (illustration) =>
-          illustration.title.toLowerCase().includes(normalizedSearchValue) ||
-          illustration.tags?.includes(normalizedSearchValue),
-      );
-  }, [illustrations, searchValue, size]);
+  const location = useLocation();
+
+  const allParameters = new URLSearchParams(location.search);
+  allParameters.set("pageSize", "all");
+  allParameters.set("page", "1");
+  const allHref = `/resources/illustration-library/all?${allParameters.toString()}`;
 
   return (
     <Box>
-      <Badge colorPalette={brand === Brand.CargoNet ? "yellow" : "green"}>
-        {article.category?.title}
-      </Badge>
-      <Heading as="h1" variant="xxl" marginBottom={1}>
+      <Heading as="h1" variant="xl-display">
         {article.title}
       </Heading>
       {article.introduction && (
@@ -130,107 +100,44 @@ export default function IllustrationLibraryPage() {
           <PortableText value={article.content} />
         </Box>
       )}
-      <Button
-        variant="primary"
-        size="lg"
-        width="fit-content"
-        as="a"
-        download="illustrations.zip"
-        href="/resources/illustration-library/all"
-        leftIcon={<DownloadOutline24Icon />}
-      >
-        Download all illustrations
-      </Button>
-      <Separator marginY={4} />
-      <Flex marginBottom={5} gap={2}>
-        <Box flex={1}>
-          <SearchInput
-            label="Find illustration"
-            value={searchValue}
-            onChange={({ target }) =>
-              setSearchValue((target as HTMLSelectElement).value)
-            }
-            width="100%"
-          />
-        </Box>
-        <Box>
-          <NativeSelect
-            label="Size"
-            value={size}
-            onChange={(e) => setSize(e.target.value)}
+
+      <Stack gap="2">
+        <Flex gap="2">
+          <Button
+            variant="primary"
             width="fit-content"
+            as="a"
+            download="illustrations.zip"
+            href="/resources/illustration-library/all"
+            leftIcon={<DownloadOutline24Icon />}
           >
-            <option value="all">All</option>
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
-          </NativeSelect>
-        </Box>
-      </Flex>
-      <SimpleGrid columns={[1, 2, 3]} gap={2}>
-        {matchingIllustrations.map((illustration) => (
-          <StaticCard
-            colorScheme="white"
-            key={illustration._id}
-            padding={2}
-            border="1px solid"
-            borderColor="outline"
-            position={"relative"}
+            Download entire illustration library
+          </Button>
+
+          <Button
+            variant="primary"
+            width="fit-content"
+            as="a"
+            download="illustrations.zip"
+            href={allHref}
+            leftIcon={<DownloadOutline24Icon />}
           >
-            <Flex flexDirection="column" height="100%">
-              <Flex gap={1} alignItems="center" flexDirection={"column"}>
-                <Text variant="sm">{illustration.title}</Text>
-                <Popover>
-                  <PopoverTrigger>
-                    <InformationOutline18Icon aria-label="Informasjon" />
-                  </PopoverTrigger>
-                  <PopoverContent>{illustration.description}</PopoverContent>
-                </Popover>
-                <Image
-                  src={
-                    colorMode === "light"
-                      ? urlBuilder
-                          .image(illustration.imageLightBackground)
-                          .url() || ""
-                      : urlBuilder
-                          .image(illustration.imageDarkBackground)
-                          .url() || ""
-                  }
-                  alt={illustration.description}
-                  width="100%"
-                  minHeight={12}
-                  maxHeight={15}
-                  objectFit="contain"
-                  objectPosition="center"
-                  flex={1}
-                />
-              </Flex>
-            </Flex>
-            <Box position={"absolute"} bottom="0" right="0">
-              <IconButton
-                variant="ghost"
-                size="sm"
-                icon={<DownloadOutline18Icon />}
-                as="a"
-                download={`${slugify(illustration.title)}.svg`}
-                href={
-                  colorMode === "light"
-                    ? urlBuilder
-                        .image(illustration.imageLightBackground)
-                        .forceDownload(`${slugify(illustration.title)}.svg`)
-                        .url()
-                    : urlBuilder
-                        .image(illustration.imageDarkBackground)
-                        .forceDownload(`${slugify(illustration.title)}.svg`)
-                        .url()
-                }
-                aria-label="Download SVG"
-                title="Download SVG"
-              />
-            </Box>
-          </StaticCard>
-        ))}
-      </SimpleGrid>
+            Download illustrations shown ({illustrations.total})
+          </Button>
+        </Flex>
+
+        <Separator marginY={4} />
+
+        <Filters />
+        <SimpleGrid columns={[1, 2, 3]} gap={2}>
+          <IllustationGrid illustrations={illustrations.items} />
+        </SimpleGrid>
+        <Pagination
+          total={illustrations.total}
+          page={illustrations.page}
+          pageSize={illustrations.pageSize}
+        />
+      </Stack>
     </Box>
   );
 }

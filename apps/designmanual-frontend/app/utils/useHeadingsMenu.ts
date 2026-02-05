@@ -16,7 +16,11 @@ export const useHeadingsMenu = (): Array<HeadingsMenu> | [] => {
   useEffect(() => {
     const headings: Array<{ text: string; id?: string }> = [];
     const h2Elements =
-      typeof document === "undefined" ? [] : document.querySelectorAll("h2");
+      typeof document === "undefined"
+        ? []
+        : document.querySelectorAll(
+            'h2:not([data-testid="image-card-list"] h2)',
+          );
 
     if (h2Elements.length > 0) {
       for (const element of h2Elements) {
@@ -32,6 +36,7 @@ export const useHeadingsMenu = (): Array<HeadingsMenu> | [] => {
         headings.push({ text, id });
       }
     }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHeadingsMenu(headings);
   }, [location]);
 

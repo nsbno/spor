@@ -37,7 +37,7 @@ const ImageAndText = ({
           image={image}
           alt={image?.altText || ""}
           objectFit="cover"
-          aspectRatio={12 / 9}
+          aspectRatio={1 / 1}
           borderRadius="md"
           size="md"
           quality={60}
@@ -64,9 +64,7 @@ const ImageAndText = ({
       gap={4}
       marginTop={2}
       flexDirection={
-        listDirection === "horizontal"
-          ? ["column", null, null, "row"]
-          : "column"
+        listDirection === "column" ? "column" : ["column", null, null, "row"]
       }
       data-testid="image-and-text-block"
       as="section"
@@ -114,7 +112,7 @@ export const ImageAndTextList = ({
     return (
       <GridContainer>
         {heading && (
-          <GridItem colStart={[1, 2, null, 3]} colSpan={[6, 4, null, 8]}>
+          <GridItem colStart={[1, 2, null, 3]} colSpan={[6, 4, null, 10]}>
             <BlockHeading
               heading={heading}
               subheading={description}
@@ -124,10 +122,10 @@ export const ImageAndTextList = ({
         )}
         <GridItem
           colStart={
-            direction == "horizontal" ? [1, 2, null, 1] : [1, 2, null, 3]
+            direction == "horizontal" ? [1, 2, null, 1] : [1, 2, null, 1]
           }
           colSpan={
-            direction == "horizontal" ? [6, 4, null, 12] : [6, 4, null, 8]
+            direction == "horizontal" ? [6, 4, null, 12] : [6, 4, null, 12]
           }
         >
           {gridItems[0]}

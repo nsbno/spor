@@ -11,59 +11,59 @@ export const badgeRecipie = defineRecipe({
   variants: {
     colorPalette: {
       neutral: {
-        backgroundColor: "surface.color.neutral",
-        color: "alert.neutral.text",
+        backgroundColor: "badge.surface",
+        color: "badge.text",
         "& svg": {
-          color: "alert.neutral.icon",
+          color: "badge.icon",
         },
       },
       grey: {
-        backgroundColor: "surface.color.grey",
-        color: "alert.neutral.text",
+        backgroundColor: "badge.grey.surface",
+        color: "badge.grey.text",
         "& svg": {
-          color: "alert.neutral.icon",
+          color: "badge.grey.icon",
         },
       },
       green: {
-        backgroundColor: "surface.color.green",
-        color: "alert.success.text",
+        backgroundColor: "badge.green.surface",
+        color: "badge.green.text",
         "& svg": {
-          color: "alert.success.icon",
+          color: "badge.green.icon",
         },
       },
       blue: {
-        backgroundColor: "surface.color.blue",
-        color: "alert.info.text",
+        backgroundColor: "badge.blue.surface",
+        color: "badge.blue.text",
         "& svg": {
-          color: "alert.info.icon",
+          color: "badge.blue.icon",
         },
       },
       cream: {
-        backgroundColor: "surface.color.cream",
-        color: "alert.important.text",
+        backgroundColor: "badge.cream.surface",
+        color: "badge.cream.text",
         "& svg": {
-          color: "alert.important.icon",
+          color: "badge.cream.icon",
         },
       },
       yellow: {
-        backgroundColor: "surface.color.yellow",
-        color: "alert.alt.text",
+        backgroundColor: "badge.yellow.surface",
+        color: "badge.yellow.text",
         "& svg": {
-          color: "alert.alt.icon",
+          color: "badge.yellow.icon",
         },
       },
       orange: {
-        backgroundColor: "surface.color.orange",
-        color: "alert.error.text.secondary",
+        backgroundColor: "badge.orange.surface",
+        color: "badge.orange.text",
         "& svg": {
-          color: "alert.error-secondary.icon",
+          color: "badge.orange.icon",
         },
       },
       red: {
-        backgroundColor: "surface.color.red",
-        color: "alert.error.text",
+        backgroundColor: "badge.red.surface",
+        color: "badge.red.text",
         "& svg": {
-          color: "alert.error.icon",
+          color: "badge.red.icon",
         },
       },
     },
@@ -95,10 +95,104 @@ export const badgeRecipie = defineRecipe({
         borderBottomRadius: "none",
       },
     },
+    inverted: { true: {} },
   },
   defaultVariants: {
     colorPalette: "grey",
     size: "md",
     attached: false,
+    inverted: false,
   },
+  compoundVariants: [
+    {
+      colorPalette: "blue",
+      inverted: true,
+      css: {
+        backgroundColor: "badge.blue.surface.inverted",
+        color: "badge.blue.text.inverted",
+        "& svg": {
+          color: "badge.blue.icon.inverted",
+        },
+      },
+    },
+    {
+      colorPalette: "green",
+      inverted: true,
+      css: {
+        backgroundColor: "badge.green.surface.inverted",
+        color: "badge.green.text.inverted",
+        "& svg": {
+          color: "badge.green.icon.inverted",
+        },
+      },
+    },
+    {
+      colorPalette: "grey",
+      inverted: true,
+      css: {
+        backgroundColor: "badge.grey.surface.inverted",
+        color: "badge.grey.text.inverted",
+        "& svg": {
+          color: "badge.grey.icon.inverted",
+        },
+      },
+    },
+    {
+      // @ts-expect-error Chakra gir feilmelding fordi "cream" ikke eksisterer i built-in ColorPalette-typen
+      colorPalette: "cream",
+      inverted: true,
+      css: {
+        backgroundColor: "badge.cream.surface.inverted",
+        color: "badge.cream.text.inverted",
+        "& svg": {
+          color: "badge.cream.icon.inverted",
+        },
+      },
+    },
+    {
+      colorPalette: "yellow",
+      inverted: true,
+      css: {
+        backgroundColor: "badge.yellow.surface.inverted",
+        color: "badge.yellow.text.inverted",
+        "& svg": {
+          color: "badge.yellow.icon.inverted",
+        },
+      },
+    },
+    {
+      colorPalette: "orange",
+      inverted: true,
+      css: {
+        backgroundColor: "badge.orange.surface.inverted",
+        color: "badge.orange.text.inverted",
+        "& svg": {
+          color: "badge.orange.icon.inverted",
+        },
+      },
+    },
+    {
+      colorPalette: "red",
+      inverted: true,
+      css: {
+        backgroundColor: "badge.red.surface.inverted",
+        color: "badge.red.text.inverted",
+        "& svg": {
+          color: "badge.red.icon.inverted",
+        },
+      },
+    },
+    {
+      // @ts-expect-error Chakra gir feilmelding fordi "neutral" ikke eksisterer i built-in typen
+      colorPalette: "neutral",
+      inverted: true,
+      css: {
+        backgroundColor: "badge.surface.inverted",
+        color: "badge.text.inverted",
+        "& svg": {
+          color: "badge.icon.inverted",
+        },
+      },
+    },
+  ],
 });

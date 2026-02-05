@@ -13,15 +13,15 @@ export function SearchBar() {
     <Flex as="form" gap={2}>
       <Input
         label="Look up icon"
-        onChange={(e) => {
-          setSearchString((e.target as HTMLInputElement).value);
+        onChange={(event) => {
+          setSearchString((event.target as HTMLInputElement).value);
         }}
         value={searchFilter.searchString}
       />
 
       <NativeSelect
         label="Size"
-        onChange={(e) => setSize((e.target as HTMLSelectElement).value)}
+        onChange={(event) => setSize((event.target as HTMLSelectElement).value)}
         value={searchFilter.size}
       >
         <option value="18">18 x 18px</option>
@@ -32,7 +32,9 @@ export function SearchBar() {
       <NativeSelect
         label="Variant"
         value={searchFilter.variant}
-        onChange={(e) => setVariant((e.target as HTMLSelectElement).value)}
+        onChange={(event) =>
+          setVariant((event.target as HTMLSelectElement).value)
+        }
       >
         <option value="">All</option>
         <option value="outline">Outline</option>

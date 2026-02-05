@@ -8,6 +8,7 @@ import { Highlight } from "prism-react-renderer";
 import { Key, useRef } from "react";
 
 import { theme } from "./codeTheme";
+import { sanitizeCode } from "./codeUtils";
 
 type CodeBlockProps = Omit<BoxProps, "children"> & {
   /** The code to highlight */
@@ -23,9 +24,9 @@ export const CodeBlock = ({
 }: CodeBlockProps) => {
   return (
     <CodeBlockContainer
-      maxWidth={`calc(100vw - var(--spor-space-6))`}
+      maxWidth="calc(100vw - var(--spor-space-6))"
       {...props}
-      code={code}
+      code={sanitizeCode(code)}
       marginTop={2}
     >
       <Highlight theme={theme} code={code} language={language}>
@@ -35,8 +36,8 @@ export const CodeBlock = ({
             className={className}
             style={{ ...style, overflowX: "auto" }}
           >
-            {tokens.map((line, i) => {
-              const lineProps = getLineProps({ line, key: i });
+            {tokens.map((line, index) => {
+              const lineProps = getLineProps({ line, key: index });
               const { key, ...restLineProps } = lineProps;
               return (
                 <Box key={key as Key} {...restLineProps}>
@@ -70,9 +71,9 @@ export const CodeBlockContainer = ({
   ...props
 }: CodeBlockContainerProps) => {
   const copyButtonRef = useRef<HTMLButtonElement>(null);
-  const handleKeyUp = (e: React.KeyboardEvent) => {
-    if (e.key === "Escape") {
-      if (e.shiftKey) {
+  const handleKeyUp = (event: React.KeyboardEvent) => {
+    if (event.key === "Escape") {
+      if (event.shiftKey) {
         const previousElement = getPreviousFocusableElement();
         previousElement.focus();
       } else {

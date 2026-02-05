@@ -1,5 +1,28 @@
 # Changelog
 
+## 4.3.2
+
+### Patch Changes
+
+- 2899114: change lineheight to support WCAG requirements
+
+## 4.3.1
+
+### Patch Changes
+
+- ef1c670: Add inverted colors for badge component
+
+## 4.3.0
+
+### Minor Changes
+
+- d8fd719: Add ESLint rule to disallow unnecessary curly braces in JSX props.
+  Also add rule to prevent abbreviations
+
+### Patch Changes
+
+- 1ed4bc2: Added colors that support darkmode to shadow-token
+
 ## 4.2.0
 
 ### Minor Changes

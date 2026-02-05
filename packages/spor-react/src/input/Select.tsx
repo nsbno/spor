@@ -85,7 +85,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           positioning={{ sameWidth: true, ...positioning }}
           variant={variant}
           css={styles.root}
-          position={"relative"}
+          position="relative"
         >
           <SelectTrigger data-attachable>
             <SelectValueText withPlaceholder={label ? true : false} />
@@ -247,7 +247,7 @@ export const SelectValueText = React.forwardRef<
 
           collection: {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            stringifyItem: (arg0: any) => any;
+            stringifyItem: (argument0: any) => any;
           } /* Find a way to not use any */;
         }) => {
           const items = select.selectedItems;

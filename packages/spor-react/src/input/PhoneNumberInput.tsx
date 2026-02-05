@@ -85,7 +85,8 @@ export const PhoneNumberInput = forwardRef<
         value={[value.countryCode]}
         onValueChange={handleCountryCodeChange}
         height="100%"
-        width="6.25rem"
+        width="100%"
+        minWidth="6.25rem"
         variant={variant}
         allowedCountryCodes={allowedCountryCodes}
         data-state="on"
@@ -98,8 +99,8 @@ export const PhoneNumberInput = forwardRef<
         value={value.nationalNumber}
         invalid={invalid}
         errorText={errorText}
-        onChange={(e) => {
-          const target = e.target as HTMLInputElement;
+        onChange={(event) => {
+          const target = event.target as HTMLInputElement;
           // Removes everything but numbers, spaces and dashes
           const strippedValue = target.value.replaceAll(/[^\d\s-]/g, "");
           onChange({

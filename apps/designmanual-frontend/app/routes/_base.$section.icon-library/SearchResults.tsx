@@ -173,12 +173,19 @@ function Category({ title, icons }: CategoryProps) {
   );
 }
 
+const iconComponentMap = Object.fromEntries(
+  Object.entries(iconsByCategory)
+    .flatMap(([, icons]) => icons)
+    .map((icon) => [icon.importName, getIconByImportName(icon.importName)]),
+);
+
 type IconBoxProps = {
   icon: IconMetadata;
 };
+
 function IconBox({ icon }: IconBoxProps) {
   const { copy, copied } = useClipboard({ value: icon.importName });
-  const IconComponent = getIconByImportName(icon.importName);
+  const IconComponent = iconComponentMap[icon.importName];
   const colorPalette = useColorModeValue("grey", "white");
   return (
     <StaticCard

@@ -1,7 +1,12 @@
-import { Box, BoxProps, Center, VisuallyHidden } from "@chakra-ui/react";
+import {
+  Box,
+  BoxProps,
+  Center,
+  ClientOnly,
+  VisuallyHidden,
+} from "@chakra-ui/react";
 import { inlineLoaderColorData } from "@vygruppen/spor-loader";
 
-import { ClientOnly } from "./ClientOnly";
 import Lottie from "./Lottie";
 
 export type ColorInlineLoaderProps = Exclude<BoxProps, "children">;

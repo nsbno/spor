@@ -47,7 +47,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
   (props, ref) => {
     const {
       defaultVisible,
-      visible: visibleProp,
+      visible: visibleProperty,
       onVisibleChange,
       label,
       startElement,
@@ -55,7 +55,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
     } = props;
 
     const [visible, setVisible] = useControllableState({
-      value: visibleProp,
+      value: visibleProperty,
       defaultValue: defaultVisible || false,
       onChange: onVisibleChange,
     });
@@ -72,10 +72,10 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           <VisibilityTrigger
             variant="ghost"
             disabled={rest.disabled}
-            onPointerDown={(e) => {
+            onPointerDown={(event) => {
               if (rest.disabled) return;
-              if (e.button !== 0) return;
-              e.preventDefault();
+              if (event.button !== 0) return;
+              event.preventDefault();
               setVisible(!visible);
             }}
           >

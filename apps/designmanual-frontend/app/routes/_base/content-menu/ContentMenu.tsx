@@ -13,6 +13,7 @@ import {
 import React, { forwardRef, useEffect, useState } from "react";
 import { Link, useLocation, useRouteLoaderData } from "react-router";
 
+import { loader } from "~/root";
 import { getIcon } from "~/utils/getIcon";
 import type { Section } from "~/utils/initialSanityData.server";
 import { useHeadingsMenu } from "~/utils/useHeadingsMenu";
@@ -42,8 +43,24 @@ export const ContentMenu = forwardRef<
     activeIndex = activeIndex - 1;
   }
 
-  const sections =
+  const { isPreview } = useRouteLoaderData<typeof loader>("root") || {
+    isPreview: false,
+  };
+
+  const allSections =
     useRouteLoaderData("root")?.initialSanityData?.siteSettings?.topMenu || [];
+
+  // Filter out "identitet" section in production
+  // remove to line 62 when "identitet" section is ready for production
+  // and use allSections insted of sections below
+  const isProduction = useRouteLoaderData("root")?.env === "prod";
+
+  const sections = allSections.filter((s: Section) => {
+    if (isProduction && s.slug.current.includes("identitet")) {
+      return false;
+    }
+    return true;
+  });
 
   const mobileMenus = useRouteLoaderData("root")?.initialSanityData?.menus;
 
@@ -52,6 +69,7 @@ export const ContentMenu = forwardRef<
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsClient(true);
   }, []);
 
@@ -64,25 +82,29 @@ export const ContentMenu = forwardRef<
 
   return (
     <React.Fragment key="content-menu">
-      <Flex flexDirection={"column"} display={["flex", null, null, "none"]}>
+      <Flex flexDirection="column" display={["flex", null, null, "none"]}>
         {sections &&
           sections.length > 7 &&
           sections.map((section: Section) => (
             <MenuItem
               key={`${section.slug.current}_m`}
-              url={`/${section.slug.current}`}
+              url={`/${section.slug.current}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
             >
               {section.title}
             </MenuItem>
           ))}
-        <MobileMenu sections={sections} mobileMenus={mobileMenus} />
+        <MobileMenu
+          sections={sections}
+          mobileMenus={mobileMenus}
+          isPreview={isPreview}
+        />
       </Flex>
       <Separator marginY="2" display={["block", null, null, "none"]} />
       <Accordion
         variant="ghost"
         collapsible
         defaultValue={expanded}
-        onValueChange={(e) => setExpanded(e.value)}
+        onValueChange={(details) => setExpanded(details.value)}
         key={refreshKey}
         display={["none", null, null, "block"]}
       >
@@ -97,14 +119,14 @@ export const ContentMenu = forwardRef<
             return (
               <MenuItem
                 key={item.link}
-                url={handleExternalMenu(item.link)}
+                url={handleExternalMenu(item.link, isPreview)}
                 isTopMenu={true}
                 ref={index === 0 ? ref : null}
-                fontWeight={"bold"}
+                fontWeight="bold"
                 fontSize={["desktop.xs", null, "desktop.sm"]}
                 paddingX="3"
                 paddingY="2"
-                borderRadius={"sm"}
+                borderRadius="sm"
                 onClick={() => {
                   setExpanded([item.link]);
                   handleRefresh();
@@ -145,7 +167,7 @@ export const ContentMenu = forwardRef<
                     {subItems?.map((subItem) => (
                       <MenuItem
                         key={subItem.url}
-                        url={`${subItem.url}`}
+                        url={`${subItem.url}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
                         isActive={`/${subItem.url}` === location.pathname}
                         backgroundColor={
                           `/${subItem.url}` === location.pathname
@@ -225,9 +247,11 @@ const MobileMenu = forwardRef(
   ({
     sections,
     mobileMenus,
+    isPreview,
   }: {
     sections: Section[];
     mobileMenus: MenuType[] | undefined;
+    isPreview: boolean;
   }) => {
     return (
       <Stack gap="2">
@@ -260,7 +284,12 @@ const MobileMenu = forwardRef(
                       >
                         {item.subItems.map((subItem) => (
                           <Box key={subItem.title}>
-                            <Link to={handleExternalMenu(subItem?.url ?? "/")}>
+                            <Link
+                              to={handleExternalMenu(
+                                subItem?.url ?? "/",
+                                isPreview,
+                              )}
+                            >
                               {subItem.title}
                             </Link>
                           </Box>
@@ -276,9 +305,11 @@ const MobileMenu = forwardRef(
                       textAlign="left"
                       paddingLeft={6}
                       marginBottom={2}
-                      fontWeight={"bold"}
+                      fontWeight="bold"
                     >
-                      <Link to={handleExternalMenu(item?.link ?? "/")}>
+                      <Link
+                        to={handleExternalMenu(item?.link ?? "/", isPreview)}
+                      >
                         {item.title}
                       </Link>
                     </Box>

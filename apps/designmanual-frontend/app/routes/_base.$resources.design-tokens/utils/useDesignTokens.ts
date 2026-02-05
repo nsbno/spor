@@ -1,6 +1,5 @@
 import tokensJSON from "@vygruppen/spor-design-tokens/tokens.json";
 import { Brand, useColorMode } from "@vygruppen/spor-react";
-import { useEffect, useState } from "react";
 
 import { useBrand } from "~/utils/brand";
 
@@ -43,12 +42,12 @@ type FlattenedColor = {
  * @returns An array of flattened color objects, each containing a name and a value.
  */
 const extractFlattenedColors = (
-  obj: object,
+  object: object,
   colorMode: string,
   path: string[] = [],
 ): FlattenedColor[] => {
   const result: FlattenedColor[] = [];
-  for (const [key, value] of Object.entries(obj)) {
+  for (const [key, value] of Object.entries(object)) {
     if (typeof value === "object" && value !== null) {
       result.push(...extractFlattenedColors(value, colorMode, [...path, key]));
     } else if (key === `_${colorMode}`) {
@@ -68,20 +67,14 @@ const extractFlattenedColors = (
  * It also reformats the tokens for better use in docs and provides a function to get the palette value based on the color and shade.
  */
 export const useDesignTokens = () => {
-  const [hasMounted, setHasMounted] = useState(false);
-
   const themeColorTokens = useGetThemeColorTokens();
   const { colorMode } = useColorMode();
 
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  if (!hasMounted) return null;
+  if (globalThis.window === undefined) return null;
 
   const aliases = Object.entries(tokensJSON.color.alias)
     .map(([name, value]) => ({ name, value: value.replace("colors.", "") }))
-    .reverse();
+    .toReversed();
 
   const flattenedColorTokens = extractFlattenedColors(
     themeColorTokens,

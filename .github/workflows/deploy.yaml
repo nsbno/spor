@@ -7,27 +7,26 @@ name: "Deployment \U0001F680"
 
 jobs:
   terraform-changes:
-    uses: nsbno/platform-actions/.github/workflows/helpers.find-changes.terraform.yml@main
+    uses: nsbno/platform-actions/.github/workflows/helpers.find-changes.terraform.yml@v2
     secrets: inherit
     with:
       working-directory: ./apps/designmanual-frontend
 
   package:
-    uses: nsbno/platform-actions/.github/workflows/package.docker.yml@main
+    uses: nsbno/platform-actions/.github/workflows/package.docker.yml@v2
     secrets: inherit
     with:
-      repo-name: designmanual
+      ecr-repo-name: designmanual
       dockerfile: ./apps/designmanual-frontend/Dockerfile
 
   deploy:
     needs:
       - terraform-changes
       - package
-    uses: nsbno/platform-actions/.github/workflows/deployment.all-environments.yml@main
+    uses: nsbno/platform-actions/.github/workflows/deployment.all-environments-ecs.yml@v2
     secrets: inherit
     if: "!cancelled() && !contains(needs.*.results, 'failure') && success()"
     with:
-      applications: digitalekanaler-designmanual
       terraform-changes: ${{ needs.terraform-changes.outputs.has-changes }}
       working-directory: ./apps/designmanual-frontend
       skip-static-files-deployment: true

@@ -1,1 +1,0 @@
-export { SearchDocs } from "./SearchDocs";

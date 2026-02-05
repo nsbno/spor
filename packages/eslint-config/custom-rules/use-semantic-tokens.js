@@ -9,11 +9,12 @@ export default {
         "Enforce the use of semantic color tokens in Chakra UI components to facilitate dark mode implementation.",
       category: "Best Practices",
       recommended: true,
+      url: "https://github.com/nsbno/spor/tree/main/packages/eslint-config/README.md",
     },
     schema: [],
     messages: {
       invalidToken:
-        "Non semantic or invalid token '{{ token }}' detected. Use semantic tokens like 'bg', 'text.secondary', 'core.surface.active', etc.",
+        "Non semantic or invalid token '{{ token }}' detected. Use semantic tokens like 'bg', 'text.secondary', 'core.surface.active', etc. to support dark mode.",
     },
   },
   create(context) {
@@ -65,6 +66,14 @@ export default {
       "currentColor",
     ]);
 
+    const allowedCSSFunctions = [
+      "linear-gradient(",
+      "radial-gradient(",
+      "conic-gradient(",
+      "repeating-linear-gradient(",
+      "repeating-radial-gradient(",
+    ];
+
     function reportInvalidToken(nodeForReport, token) {
       context.report({
         node: nodeForReport,
@@ -74,6 +83,14 @@ export default {
     }
 
     function isValidToken(token) {
+      if (typeof token !== "string") return false;
+
+      const trimmed = token.trim();
+
+      if (allowedCSSFunctions.some((fn) => trimmed.startsWith(fn))) {
+        return true;
+      }
+
       return allowedTokens.has(token) || allowedNonSemanticColors.has(token);
     }
 

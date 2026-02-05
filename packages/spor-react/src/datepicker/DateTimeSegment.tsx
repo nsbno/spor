@@ -20,7 +20,7 @@ type DateTimeSegmentProps = PropsWithChildren<DatePickerVariantProps> & {
  * This component should be used with the react-aria library, and is not meant to be used directly.
  * */
 export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
-  ({ segment, state, ariaLabel, ariaDescription }, externalRef) => {
+  ({ segment, state, ariaLabel, ariaDescription, variant }, externalRef) => {
     const internalRef = useRef(null);
     const ref = externalRef ?? internalRef;
 
@@ -35,8 +35,7 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
     });
 
     const styles = recipe({
-      isPlaceholder: segment.isPlaceholder,
-      isEditable: segment.isEditable,
+      variant,
     });
 
     return (

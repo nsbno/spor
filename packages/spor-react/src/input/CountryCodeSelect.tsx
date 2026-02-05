@@ -2,7 +2,7 @@
 
 import { createListCollection } from "@chakra-ui/react";
 import { getSupportedCallingCodes } from "awesome-phonenumber";
-import { forwardRef } from "react";
+import { forwardRef, useMemo } from "react";
 
 import {
   createTexts,
@@ -19,7 +19,7 @@ const prioritizedCountryCodes = [
 ];
 
 const sortedCallingCodes = getSupportedCallingCodes()
-  .sort((a, b) => Number(a) - Number(b))
+  .toSorted((a, b) => Number(a) - Number(b))
   .map((code) => ({
     label: `+${code}`,
     value: `+${code}`,
@@ -29,7 +29,7 @@ const sortedCallingCodes = getSupportedCallingCodes()
       !prioritizedCountryCodes.some((pCode) => pCode.label === code.label),
   );
 
-export const callingCodes = createListCollection({
+const allCallingCodes = createListCollection({
   items: [...prioritizedCountryCodes, ...sortedCallingCodes],
 });
 
@@ -42,22 +42,29 @@ export const CountryCodeSelect = forwardRef<
   CountryCodeSelectProps
 >((props, ref) => {
   const { t } = useTranslation();
-  if (props.allowedCountryCodes) {
-    callingCodes.items = callingCodes.items.filter((callingCode) =>
-      props.allowedCountryCodes?.some((code) => code === callingCode.label),
+
+  const filteredCallingCodes = useMemo(() => {
+    if (!props.allowedCountryCodes) return allCallingCodes;
+
+    const filteredItems = allCallingCodes.items.filter((callingCode) =>
+      props.allowedCountryCodes?.includes(callingCode.label),
     );
-  }
+
+    return createListCollection({ items: filteredItems });
+  }, [props.allowedCountryCodes]);
+
   return (
     <Select
       {...props}
       ref={ref}
       positioning={{ placement: "bottom", flip: false }}
-      collection={callingCodes}
+      collection={filteredCallingCodes}
       lazyMount
       aria-label={t(texts.countryCode)}
-      sideRadiusVariant={"rightSideSquare"}
+      sideRadiusVariant="rightSideSquare"
+      role="combobox"
     >
-      {callingCodes.items.map((code) => (
+      {filteredCallingCodes.items.map((code) => (
         <SelectItem key={code.label} item={code}>
           {code.label}
         </SelectItem>
@@ -65,6 +72,7 @@ export const CountryCodeSelect = forwardRef<
     </Select>
   );
 });
+
 CountryCodeSelect.displayName = "CountryCodeSelect";
 
 const texts = createTexts({

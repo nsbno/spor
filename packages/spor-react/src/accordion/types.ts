@@ -1,7 +1,7 @@
-import { RecipeVariantProps } from "@chakra-ui/react";
 import {
   Accordion as ChakraAccordion,
   AccordionRootProps as ChakraAccordionProps,
+  RecipeVariantProps,
 } from "@chakra-ui/react";
 import { PropsWithChildren, ReactNode } from "react";
 
@@ -13,7 +13,7 @@ export type AccordionVariantProps = RecipeVariantProps<
 
 export type AccordionProps = Exclude<
   ChakraAccordionProps,
-  "variant" | "size" | "orientation"
+  "variant" | "size" | "orientation" | "href"
 > &
   AccordionVariantProps &
   PropsWithChildren & {
@@ -24,9 +24,10 @@ export type AccordionProps = Exclude<
      * - `base` renders an outlined version
      * - `floating` renders a version with a drop shadow
      */
-    variant?: "ghost" | "core" | "floating";
+    variant?: "ghost" | "core" | "floating" | "underlined";
     /* Gap between accordions */
     gap?: string | number;
+    href?: string;
   };
 
 export type HeadingLevel = {
@@ -42,6 +43,8 @@ export type AccordionItemTriggerProps = Omit<
     /** Icon to be displayed on the left of the trigger button. Use 24px outline. */
     startElement?: React.ReactNode;
     showChevron?: boolean;
+    /** URL to navigate to when the trigger is clicked (makes it a link instead of expandable) */
+    href?: string;
   };
 
 export type AccordionItemContentProps = ChakraAccordion.ItemContentProps & {

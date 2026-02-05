@@ -54,9 +54,12 @@ async function loadIcons() {
   return icons;
 }
 
-type GetMetadataArgs = { fileName: string; category: string };
+type GetMetadataArguments = { fileName: string; category: string };
 /** Extracts metadata from the file name, and returns it as a data structure */
-function getMetadata({ fileName, category }: GetMetadataArgs): IconMetadata {
+function getMetadata({
+  fileName,
+  category,
+}: GetMetadataArguments): IconMetadata {
   // eslint-disable-next-line prefer-const
   let [name, modifier, size, additionalSize] = fileName
     .replace(".svg", "")
@@ -103,6 +106,10 @@ async function generateComponents(icons: IconData[]) {
 }
 
 async function generateComponent(iconData: IconData) {
+  const isFeedback = iconData.metadata.category === "feedback";
+  const pathCount = (iconData.icon.match(/<path[\s>]/g) || []).length;
+  const shouldKeepOriginalFill = isFeedback && pathCount > 1;
+
   let jsCode = await transform(
     iconData.icon,
     {
@@ -130,9 +137,12 @@ async function generateComponent(iconData: IconData) {
       dimensions: true,
       template: componentTemplate,
       plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
-      replaceAttrValues: {
-        "#2B2B2C": "currentColor",
-      },
+
+      replaceAttrValues: shouldKeepOriginalFill
+        ? undefined
+        : {
+            "#2B2B2C": "currentColor",
+          },
     },
     {
       componentName: iconData.componentName,

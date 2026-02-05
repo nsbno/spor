@@ -40,7 +40,7 @@ type DateRangePickerProps = Omit<
     endLabel?: string;
     endName?: string;
     withPortal?: boolean;
-    onChange?: (
+    onValueChange?: (
       dates: {
         start: DateValue | null;
         end: DateValue | null;
@@ -57,7 +57,7 @@ type DateRangePickerProps = Omit<
  * <DateRangePicker startLabel="From" startName="from" endLabel="To" endName="to" variant="core" />
  * ```
  */ export function DateRangePicker({
-  variant,
+  variant = "core",
   minHeight,
   startName,
   endName,
@@ -71,6 +71,7 @@ type DateRangePickerProps = Omit<
   const fieldContextPRops = useFieldContext();
   const state = useDateRangePickerState({
     ...props,
+    onChange: props.onValueChange,
     shouldCloseOnSelect: true,
     isInvalid: invalid,
     errorMessage: errorText,
@@ -105,7 +106,7 @@ type DateRangePickerProps = Omit<
     <ChakraPopover.Positioner>
       <ChakraPopover.Content css={styles.calendarPopover}>
         <ChakraPopover.Body maxWidth="60rem">
-          <RangeCalendar variant={"core"} {...calendarProps} />
+          <RangeCalendar variant="core" {...calendarProps} />
         </ChakraPopover.Body>
       </ChakraPopover.Content>
     </ChakraPopover.Positioner>
@@ -157,7 +158,7 @@ type DateRangePickerProps = Omit<
                   as="span"
                   aria-hidden="true"
                   paddingRight="2"
-                  paddingLeft={"2"}
+                  paddingLeft="2"
                 >
                   –
                 </Box>

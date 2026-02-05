@@ -55,16 +55,21 @@ export const ImageBlock = ({ images, caption }: ImageBlockProps) => {
   }
   if (imageCount === 1) {
     return (
-      <GridLayout imageCount={imageCount} captionAndCredits={captionAndCredits}>
-        <ImageGridItem
-          colStart={[1, 2, null, 1]}
-          colSpan={[6, 4, null, 12]}
-          rowStart={[1, 1, null, 1]}
-          rowSpan={[2, 2, null, 2]}
-          image={images[0]}
-          imageSize="lg"
-        />
-      </GridLayout>
+      <Box marginTop={8}>
+        <GridLayout
+          imageCount={imageCount}
+          captionAndCredits={captionAndCredits}
+        >
+          <ImageGridItem
+            colStart={[1, 2, null, 1]}
+            colSpan={[6, 4, null, 12]}
+            rowStart={[1, 1, null, 1]}
+            rowSpan={[2, 2, null, 2]}
+            image={images[0]}
+            imageSize="lg"
+          />
+        </GridLayout>
+      </Box>
     );
   }
 
@@ -479,7 +484,6 @@ const GridLayout = ({
   imageCount,
   captionAndCredits,
 }: GridLayoutProps) => {
-  // eslint-disable-next-line no-nested-ternary
   const rowsMobile = imageCount <= 2 ? 2 : imageCount <= 3 ? 24 : 32;
   const rowOthers = imageCount <= 5 ? 2 : 3;
 
@@ -536,13 +540,17 @@ function calculateAspectRatio(imageCount: number, deviceType: string) {
     case "desktop": {
       switch (imageCount) {
         case 1: {
-          aspectRatio = "16/8";
+          aspectRatio = "16/9";
 
           break;
         }
         case 2:
+        case 4: {
+          aspectRatio = "1/1";
+
+          break;
+        }
         case 3:
-        case 4:
         case 5: {
           aspectRatio = "2/1";
           break;

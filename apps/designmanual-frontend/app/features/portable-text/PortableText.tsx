@@ -163,7 +163,9 @@ const components: Partial<PortableTextReactComponents> = {
     imageAndTextList: ImageAndTextListSerializer,
     imageCardList: ImageCardListSerializer,
     cards: CardSerializer,
-    linkButton: LinkButtonSerializer,
+    linkButton: ({ value }) => (
+      <Flex width={["100%"]}>{LinkButtonSerializer({ value })}</Flex>
+    ),
     nonClickableBoxList: NonClickableBoxListSerializer,
     accordion: AccordionSerializer,
     fileList: FileListSerializer,
@@ -175,7 +177,11 @@ const components: Partial<PortableTextReactComponents> = {
         : ({ as: "a", href: value.url } as ButtonProps);
       return (
         <Box marginTop={3}>
-          <Button variant={value.variant} size={value.size} {...linkProps}>
+          <Button
+            variant={value.variant ?? "primary"}
+            size={value.size}
+            {...linkProps}
+          >
             {value.text}
           </Button>
         </Box>

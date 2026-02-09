@@ -9,7 +9,7 @@ export type TextBlockProps = {
 
 export const TextBlock = ({ textBlock }: TextBlockProps) => {
   return (
-    <Stack data-testid="text-blocks" as="section">
+    <Stack data-testid="text-blocks" as="section" marginX={[0, null, null, 8]}>
       <Flex gap={[7, 3, null, 4]} flexDirection={["column", "row"]}>
         <Box flex="1" marginTop={4} marginBottom={4}>
           <PortableText value={textBlock.content} />

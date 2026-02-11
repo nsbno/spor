@@ -18,7 +18,10 @@
     "build": "tsup"
   },
   "devDependencies": {
-    "tsup": "^8.5.1",
-    "@vygruppen/spor-react": "workspace:*"
+    "@vygruppen/spor-react": "workspace:*",
+    "tsup": "^8.5.1"
+  },
+  "dependencies": {
+    "@vygruppen/spor-design-tokens": "^4.3.2"
   }
 }

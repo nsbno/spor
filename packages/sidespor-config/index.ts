@@ -3,35 +3,34 @@ import {
   defineConfig,
   defineRecipe,
   mergeConfigs,
-  SystemConfig,
 } from "@vygruppen/spor-react";
 
+import { SystemConfig } from "./types";
 
 export const sidesporConfig = defineConfig({
-    theme: {
-      recipes: {
-        button: defineRecipe({
-          base: {
-            textDecoration: "underline",
-            borderRadius: "none",
-          },
+  theme: {
+    recipes: {
+      button: defineRecipe({
+        base: {
+          textDecoration: "underline",
+          borderRadius: "none",
+        },
 
-          variants: {
-            variant: {
-              "weird-blue": {
-                bg: "blue",
-                color: "white"
-              },
-              pink: {
-                bg: "pink",
-              },
+        variants: {
+          variant: {
+            "weird-blue": {
+              bg: "blue",
+              color: "white",
+            },
+            pink: {
+              bg: "pink",
             },
           },
-        }),
-      },
+        },
+      }),
     },
-  });
-
+  },
+});
 
 export const extendSidespor = (systemConfig: SystemConfig): SystemConfig => {
   return mergeConfigs(systemConfig, sidesporConfig);

@@ -1,5 +1,7 @@
+
 import { PortableTextBlock } from "@portabletext/react";
 import { groq } from "@sanity/groq-store";
+import {sidesporConfig} from "@vygruppen/sidespor-config"
 import {
   FigmaOutline24Icon,
   GithubOutline24Icon,
@@ -9,16 +11,19 @@ import {
   Box,
   Brand,
   Button,
+  createSystem,
   Flex,
   Heading,
   HStack,
   Separator,
+  SporProvider,
   Stack,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
   Text,
+  themes,
 } from "@vygruppen/spor-react";
 import { PropsWithChildren } from "react";
 import {
@@ -58,6 +63,9 @@ type ComponentSection = {
     content: unknown[];
   }[];
 };
+
+
+export const extendedSystemConfigWithSidespor = createSystem(themes.VyDigital._config, sidesporConfig);
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   invariant(params.category, "Expected params.category");
@@ -136,6 +144,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
     { name: "twitter:description", content: description },
   ];
 
+
   if (article.mainImage) {
     meta.push(
       {
@@ -152,6 +161,8 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   return meta;
 };
 
+
+
 export default function ArticlePage() {
   const { initialData, isPreview } = useLoaderData<typeof loader>();
   const brand = useBrand();
@@ -164,6 +175,8 @@ export default function ArticlePage() {
   if (!article) {
     return null;
   }
+
+
 
   return (
     <>
@@ -202,16 +215,16 @@ export default function ArticlePage() {
         </Heading>
         {article.introduction && (
           <Box marginBottom={3}>
-            <PortableText
-              value={article.introduction}
-              components={{
-                block: {
-                  normal: ({ children }: PropsWithChildren) => (
-                    <Text variant="md">{children}</Text>
-                  ),
-                },
-              }}
-            />
+              <PortableText
+                value={article.introduction}
+                components={{
+                  block: {
+                    normal: ({ children }: PropsWithChildren) => (
+                      <Text variant="md">{children}</Text>
+                    ),
+                  },
+                }}
+              />
           </Box>
         )}
         {article.componentSections ? (
@@ -221,7 +234,18 @@ export default function ArticlePage() {
           />
         ) : (
           <Box>
+
+                          {article.title.includes("Sidespor") ? (
+              <SporProvider theme={extendedSystemConfigWithSidespor}>
+                            <PortableText value={article.content} />
+
+              </SporProvider>
+            ) : (
+
+
+
             <PortableText value={article.content} />
+            )}
           </Box>
         )}
       </Flex>

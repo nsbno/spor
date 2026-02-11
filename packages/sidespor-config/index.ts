@@ -1,33 +1,28 @@
 /* eslint-disable spor/use-semantic-tokens */
 import {
   defineConfig,
-  defineRecipe,
   mergeConfigs,
+  SystemConfig,
 } from "@vygruppen/spor-react";
 
-import { SystemConfig } from "./types";
+import { alertRecipe } from "./recipes/alert";
+import { badgeRecipe } from "./recipes/badge";
+import { buttonRecipe } from "./recipes/button";
+import { dialogRecipe } from "./recipes/dialog";
+import { tableRecipe } from "./recipes/table";
+import { semanticTokens } from "./theme/semanticTokens";
 
 export const sidesporConfig = defineConfig({
   theme: {
+    semanticTokens,
     recipes: {
-      button: defineRecipe({
-        base: {
-          textDecoration: "underline",
-          borderRadius: "none",
-        },
-
-        variants: {
-          variant: {
-            "weird-blue": {
-              bg: "blue",
-              color: "white",
-            },
-            pink: {
-              bg: "pink",
-            },
-          },
-        },
-      }),
+      badge: badgeRecipe,
+      button: buttonRecipe,
+    },
+    slotRecipes: {
+      alert: alertRecipe,
+      dialog: dialogRecipe,
+      table: tableRecipe,
     },
   },
 });

@@ -1,6 +1,6 @@
 import { defineSemantics } from "../define/semantics";
 import { defineSlotRecipe } from "../define/slotRecipe";
-import { SystemStyleObject } from "../mergeSystemConfig";
+import { SystemStyleObject } from "../types";
 
 export const dialogRecipe = defineSlotRecipe({
   variants: {

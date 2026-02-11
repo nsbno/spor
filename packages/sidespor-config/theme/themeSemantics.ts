@@ -1,3 +1,4 @@
+import { DefaultTheme } from "../types";
 import { capitalize, keys } from "../utility";
 import { darkTheme } from "./darkTheme";
 import { lightTheme } from "./lightTheme";
@@ -31,7 +32,7 @@ export type ThemeSemantic = ColorTheme & {
 // Replaces "Semantic" (the string) with `semantics` (the argument) when retrieving values from `theme`
 export const useThemeSemantic = (semantics: Semantics) =>
   new Proxy(theme, {
-    get(target: ColorTheme, property: string) {
+    get(target: DefaultTheme, property: string) {
       return target[property.replace("Semantic", capitalize(semantics))];
     },
   }) as ThemeSemantic;

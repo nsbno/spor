@@ -1,6 +1,6 @@
-import { darkTheme } from "./theme/darkTheme";
-import { lightTheme } from "./theme/lightTheme";
-import { keys } from "./utility";
+import { keys } from "../utility";
+import { darkTheme } from "./darkTheme";
+import { lightTheme } from "./lightTheme";
 
 /**
  * Example:

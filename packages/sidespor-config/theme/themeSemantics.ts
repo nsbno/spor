@@ -19,7 +19,7 @@ export type Semantics = (typeof SemanticsList)[number];
 type ColorTheme = typeof lightTheme & typeof darkTheme;
 
 // Behaves just the same as `theme = useTheme()`, but the values are mapped to `semantics.${key}` instead
-const theme = Object.fromEntries(
+export const theme = Object.fromEntries(
   keys(lightTheme).map((key) => [key, `semantics.${key}`]),
 ) as { [K in keyof ColorTheme]: `semantics.${K}` };
 

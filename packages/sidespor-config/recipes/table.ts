@@ -11,7 +11,7 @@ export const tableRecipe = defineSlotRecipe({
   } as SystemStyleObject,
   variants: {
     variant: {
-      drops: {
+      sidespor: {
         root: {
           "&&&": { borderRadius: "6px", backgroundColor: "transparent" },
           // We need to use outline instead of border since borders don't work properly for table roots

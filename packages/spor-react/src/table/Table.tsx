@@ -1,17 +1,19 @@
 "use client";
 import {
-  HStack,
-  RecipeVariantProps,
+  Button,
   Table as ChakraTable,
   TableBodyProps as ChakraTableBodyProps,
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
   TableRowProps as ChakraTableRowProps,
+  HStack,
+  RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import {
-  DropdownDownFill18Icon,
-  DropdownUpFill18Icon,
+  ArrowDownFill18Icon,
+  ArrowUpFill18Icon,
+  ChangeDirectionFill18Icon,
 } from "@vygruppen/spor-icon-react";
 import {
   createContext,
@@ -122,28 +124,38 @@ export const TableColumnHeader = forwardRef<
 >(({ children, onClick, ...rest }, ref) => {
   const { enabled, sortState, onSort } = useTableSort();
   const key = getSortKey(children);
-  const isActive = enabled && key != null && key === sortState.key;
+  const props = rest as Record<string, unknown>;
+  const columnSortable = enabled && key != null && !("data-nosort" in props);
+  const isActive = columnSortable && key === sortState.key;
 
   return (
-    <ChakraTable.ColumnHeader
-      ref={ref}
-      onClick={(event) => {
-        if (enabled && key) {
-          onSort(key, getColumnIndex(event.currentTarget));
-        }
-        onClick?.(event);
-      }}
-      cursor={enabled && key ? "pointer" : undefined}
-      {...rest}
-    >
+    <ChakraTable.ColumnHeader ref={ref} onClick={onClick} {...rest}>
       <HStack>
         {children}
-        {isActive &&
-          (sortState.direction === "asc" ? (
-            <DropdownUpFill18Icon />
-          ) : (
-            <DropdownDownFill18Icon />
-          ))}
+        {columnSortable && (
+          <Button
+            variant="ghost"
+            onClick={(event) => {
+              const th = event.currentTarget.closest("th");
+              if (th) onSort(key, getColumnIndex(th));
+            }}
+            p="0px !important"
+            size="xs"
+          >
+            {isActive ? (
+              sortState.direction === "asc" ? (
+                <ArrowUpFill18Icon color="outline.focus" />
+              ) : (
+                <ArrowDownFill18Icon color="outline.focus" />
+              )
+            ) : (
+              <ChangeDirectionFill18Icon
+                transform="rotate(90deg)"
+                color="icon.disabled"
+              />
+            )}
+          </Button>
+        )}
       </HStack>
     </ChakraTable.ColumnHeader>
   );

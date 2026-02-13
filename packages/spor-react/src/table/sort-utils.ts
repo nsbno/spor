@@ -11,12 +11,12 @@ export const getNextSortState = (
   current: SortState,
   key: string,
   columnIndex: number,
-): SortState => ({
-  key,
-  columnIndex,
-  direction:
-    current.key === key && current.direction === "asc" ? "desc" : "asc",
-});
+): SortState => {
+  if (current.key !== key) return { key, columnIndex, direction: "asc" };
+  if (current.direction === "asc")
+    return { key, columnIndex, direction: "desc" };
+  return { key: null, direction: "asc", columnIndex: null }; // Initial sort state
+};
 
 export const getSortKey = (children: ReactNode) =>
   typeof children === "string" ? children.trim() : null;

@@ -44,7 +44,7 @@ export const tableRecipe = defineSlotRecipe({
           padding: "9px 18px",
         },
       } as SystemStyleObject,
-      gap: {
+      card: {
         root: {
           "&&&": { backgroundColor: "transparent" },
           borderSpacing: "0px 6px",

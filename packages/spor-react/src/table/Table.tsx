@@ -1,13 +1,13 @@
 "use client";
 import {
   Button,
+  HStack,
+  RecipeVariantProps,
   Table as ChakraTable,
   TableBodyProps as ChakraTableBodyProps,
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
   TableRowProps as ChakraTableRowProps,
-  HStack,
-  RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import {

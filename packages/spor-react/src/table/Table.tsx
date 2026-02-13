@@ -121,7 +121,7 @@ export type TableColumnHeaderProps = ChakraTableColumnHeaderProps;
 export const TableColumnHeader = forwardRef<
   HTMLTableCellElement,
   TableColumnHeaderProps
->(({ children, onClick, ...rest }, ref) => {
+>(({ children, ...rest }, ref) => {
   const { enabled, sortState, onSort } = useTableSort();
   const key = getSortKey(children);
   const props = rest as Record<string, unknown>;
@@ -129,7 +129,7 @@ export const TableColumnHeader = forwardRef<
   const isActive = columnSortable && key === sortState.key;
 
   return (
-    <ChakraTable.ColumnHeader ref={ref} onClick={onClick} {...rest}>
+    <ChakraTable.ColumnHeader ref={ref} {...rest}>
       <HStack>
         {children}
         {columnSortable && (

@@ -80,7 +80,6 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
     },
     ref,
   ) => {
-    <Table></Table>;
     const [sortState, setSortState] = useState<SortState>({
       key: null,
       direction: "asc",

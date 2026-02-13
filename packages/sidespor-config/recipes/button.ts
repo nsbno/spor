@@ -29,7 +29,7 @@ export const buttonRecipe = defineRecipe({
       },
     })),
     ...defineCompounds((theme, semantic) => ({
-      variant: ["secondary", "tertiary", "ghost", "floating"],
+      variant: "tertiary",
       semantic,
       size: ["xs", "sm", "md", "lg"],
       css: {

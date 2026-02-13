@@ -1,5 +1,16 @@
 # @vygruppen/spor-react
 
+## 12.23.0
+
+### Minor Changes
+
+- b179f2f: Added a props `sortable` to Table that lets you sort columns by clicking on them.
+
+### Patch Changes
+
+- a8cfc72: UU fixes on input, phonenumber input, and textarea components. Fix double announcement of labels, order when navigating with voiceover, and connect textarea-id to textarea-label.
+  - @vygruppen/spor-icon-react@4.5.1
+
 ## 12.22.2
 
 ### Patch Changes

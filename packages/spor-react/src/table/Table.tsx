@@ -1,12 +1,12 @@
 "use client";
 import {
-  HStack,
-  RecipeVariantProps,
   Table as ChakraTable,
   TableBodyProps as ChakraTableBodyProps,
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
   TableRowProps as ChakraTableRowProps,
+  HStack,
+  RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import {
@@ -77,7 +77,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
       size,
       colorPalette = "green",
       children,
-      sort = true,
+      sort = false,
       ...rest
     },
     ref,

@@ -1,12 +1,12 @@
 "use client";
 import {
+  HStack,
+  RecipeVariantProps,
   Table as ChakraTable,
   TableBodyProps as ChakraTableBodyProps,
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
   TableRowProps as ChakraTableRowProps,
-  HStack,
-  RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import {
@@ -53,15 +53,11 @@ export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   };
 
 /**
- * The `Table` component has support for two different variants - `ghost` and `core`.
- The `ghost` variant has basic lines between rows, while the `core` variant has borde
-rs for each cell.
+ * The `Table` component has support for two different variants - `ghost` and `core`. The `ghost` variant has basic lines between rows, while the `core` variant has borders for each cell.
  *
- * You can also specify a `grey` or `green` `colorPalette` prop. Use `green` if you w
-ant to place the table on a light green background.
+ * You can also specify a `grey` or `green` `colorPalette` prop. Use `green` if you want to place the table on a light green background.
  *
- * Finally, there are three different `size` props you can specify - `sm`, `md` and `
-lg`.
+ * Finally, there are three different `size` props you can specify - `sm`, `md` and `lg`.
  *
  * ```tsx
  * <Table variant="core" size="lg">

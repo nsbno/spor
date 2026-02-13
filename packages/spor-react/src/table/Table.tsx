@@ -34,9 +34,11 @@ import {
 type TableVariantProps = RecipeVariantProps<typeof tableSlotRecipe>;
 
 const SortContext = createContext<{
+  enabled: boolean;
   sortState: SortState;
   onSort: (key: string, columnIndex: number) => void;
 }>({
+  enabled: false,
   sortState: { key: null, direction: "asc", columnIndex: null },
   onSort: () => {},
 });
@@ -105,7 +107,9 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
         ref={ref}
         {...rest}
       >
-        <SortContext.Provider value={{ sortState, onSort: handleSort }}>
+        <SortContext.Provider
+          value={{ enabled: sort, sortState, onSort: handleSort }}
+        >
           {children}
         </SortContext.Provider>
       </ChakraTable.Root>
@@ -120,20 +124,20 @@ export const TableColumnHeader = forwardRef<
   HTMLTableCellElement,
   TableColumnHeaderProps
 >(({ children, onClick, ...rest }, ref) => {
-  const { sortState, onSort } = useTableSort();
+  const { enabled, sortState, onSort } = useTableSort();
   const key = getSortKey(children);
-  const isActive = key != null && key === sortState.key;
+  const isActive = enabled && key != null && key === sortState.key;
 
   return (
     <ChakraTable.ColumnHeader
       ref={ref}
       onClick={(event) => {
-        if (key) {
+        if (enabled && key) {
           onSort(key, getColumnIndex(event.currentTarget));
         }
         onClick?.(event);
       }}
-      cursor={key ? "pointer" : undefined}
+      cursor={enabled && key ? "pointer" : undefined}
       {...rest}
     >
       <HStack>

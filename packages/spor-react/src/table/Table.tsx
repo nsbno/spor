@@ -1,12 +1,12 @@
 "use client";
 import {
-  HStack,
-  RecipeVariantProps,
   Table as ChakraTable,
   TableBodyProps as ChakraTableBodyProps,
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
   TableRowProps as ChakraTableRowProps,
+  HStack,
+  RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import {
@@ -49,7 +49,7 @@ export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   PropsWithChildren<TableVariantProps> & {
     variant?: "ghost" | "core";
     colorPalette?: "grey" | "green" | "white";
-    sort?: boolean;
+    sortable?: boolean;
   };
 
 /**
@@ -75,11 +75,12 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
       size,
       colorPalette = "green",
       children,
-      sort = false,
+      sortable = false,
       ...rest
     },
     ref,
   ) => {
+    <Table></Table>;
     const [sortState, setSortState] = useState<SortState>({
       key: null,
       direction: "asc",
@@ -87,7 +88,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
     });
 
     const handleSort = (key: string, columnIndex: number) => {
-      if (!sort) return;
+      if (!sortable) return;
       setSortState(getNextSortState(sortState, key, columnIndex));
     };
 
@@ -104,7 +105,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
         {...rest}
       >
         <SortContext.Provider
-          value={{ enabled: sort, sortState, onSort: handleSort }}
+          value={{ enabled: sortable, sortState, onSort: handleSort }}
         >
           {children}
         </SortContext.Provider>

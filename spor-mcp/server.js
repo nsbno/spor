@@ -27,10 +27,17 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "get_spor_tokens",
         description:
-          "Get all Spor design tokens for all themes (vyDigital, vyUtvikling, cargonet). Returns colors by category, spacing, typography. If unsure which theme to use, ask the user.",
+          "Get Spor design tokens for a specific theme. Returns colors by category, spacing, and typography.",
         inputSchema: {
           type: "object",
-          properties: {},
+          properties: {
+            theme: {
+              type: "string",
+              enum: ["vyDigital", "vyUtvikling", "cargonet"],
+              description: "Theme to fetch tokens for: vyDigital (Vy), vyUtvikling (Vy Development), or cargonet (CargoNet)",
+            },
+          },
+          required: ["theme"],
         },
       },
       {
@@ -51,32 +58,54 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   try {
     switch (name) {
       case "get_spor_tokens": {
-        const allColors = tokens.color || {};
-        const themes = Object.keys(allColors).filter(k => k !== 'alias' && k !== 'palette');
+        const { theme } = request.params.arguments || {};
         
-        const result = { themes: {} };
-        themes.forEach(theme => {
-          const colors = allColors[theme] || {};
-          const colorKeys = Object.keys(colors);
-          const prefixes = [...new Set(colorKeys.map(k => k.split(/[A-Z]/)[0]).filter(Boolean))];
-          
-          const colorsByCategory = {};
-          prefixes.forEach(prefix => {
-            const filtered = colorKeys
-              .filter(key => key.startsWith(prefix))
-              .reduce((obj, key) => {
-                const val = colors[key];
-                obj[key] = typeof val === 'object' ? val.value || val : val;
-                return obj;
-              }, {});
-            if (Object.keys(filtered).length > 0) colorsByCategory[prefix] = filtered;
-          });
-          
-          result.themes[theme] = { colors: colorsByCategory };
+        if (!theme) {
+          return {
+            content: [{
+              type: "text",
+              text: "Error: theme parameter is required. Choose from: vyDigital, vyUtvikling, or cargonet",
+            }],
+            isError: true,
+          };
+        }
+        
+        const allColors = tokens.color || {};
+        const colors = allColors[theme] || {};
+        
+        if (Object.keys(colors).length === 0) {
+          return {
+            content: [{
+              type: "text",
+              text: `Error: Theme '${theme}' not found. Available themes: vyDigital, vyUtvikling, cargonet`,
+            }],
+            isError: true,
+          };
+        }
+        
+        const colorKeys = Object.keys(colors);
+        const prefixes = [...new Set(colorKeys.map(k => k.split(/[A-Z]/)[0]).filter(Boolean))];
+        
+        const colorsByCategory = {};
+        prefixes.forEach(prefix => {
+          const filtered = colorKeys
+            .filter(key => key.startsWith(prefix))
+            .reduce((obj, key) => {
+              const val = colors[key];
+              obj[key] = typeof val === 'object' ? val.value || val : val;
+              return obj;
+            }, {});
+          if (Object.keys(filtered).length > 0) colorsByCategory[prefix] = filtered;
         });
         
-        result.size = tokens.size;
-        result.font = tokens.font;
+        const result = {
+          theme,
+          colors: colorsByCategory,
+        };
+        
+        // Only include size and font if available
+        if (tokens.size) result.size = tokens.size;
+        if (tokens.font) result.font = tokens.font;
         
         return {
           content: [{

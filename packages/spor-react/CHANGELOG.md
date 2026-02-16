@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 12.24.0
+
+### Minor Changes
+
+- 5afeedd: Updated the Table sortable styling
+
+### Patch Changes
+
+- @vygruppen/spor-icon-react@4.5.1
+
 ## 12.23.0
 
 ### Minor Changes

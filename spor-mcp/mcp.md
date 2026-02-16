@@ -63,6 +63,7 @@ Once configured globally, the tools will be available in Q Developer chat across
 ---
 
 **References:**
+
 - [Spor Design System](https://spor.vy.no)
 - [Model Context Protocol](https://modelcontextprotocol.io)
 - [VS Code Copilot MCP Setup](https://code.visualstudio.com/docs/copilot/customization/mcp-servers)

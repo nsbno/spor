@@ -11,7 +11,7 @@ async function main() {
     },
     {
       capabilities: {},
-    }
+    },
   );
 
   const transport = new StdioClientTransport({
@@ -25,7 +25,7 @@ async function main() {
   // List tools
   const tools = await client.listTools();
   console.log("Available tools:");
-  tools.tools.forEach(t => console.log(`  - ${t.name}: ${t.description}`));
+  tools.tools.forEach((t) => console.log(`  - ${t.name}: ${t.description}`));
   console.log();
 
   // Call list_spor_components

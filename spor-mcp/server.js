@@ -34,7 +34,8 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             theme: {
               type: "string",
               enum: ["vyDigital", "vyUtvikling", "cargonet"],
-              description: "Theme to fetch tokens for: vyDigital (Vy), vyUtvikling (Vy Development), or cargonet (CargoNet)",
+              description:
+                "Theme to fetch tokens for: vyDigital (Vy), vyUtvikling (Vy Development), or cargonet (CargoNet)",
             },
           },
           required: ["theme"],
@@ -59,72 +60,83 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     switch (name) {
       case "get_spor_tokens": {
         const { theme } = request.params.arguments || {};
-        
+
         if (!theme) {
           return {
-            content: [{
-              type: "text",
-              text: "Error: theme parameter is required. Choose from: vyDigital, vyUtvikling, or cargonet",
-            }],
+            content: [
+              {
+                type: "text",
+                text: "Error: theme parameter is required. Choose from: vyDigital, vyUtvikling, or cargonet",
+              },
+            ],
             isError: true,
           };
         }
-        
+
         const allColors = tokens.color || {};
         const colors = allColors[theme] || {};
-        
+
         if (Object.keys(colors).length === 0) {
           return {
-            content: [{
-              type: "text",
-              text: `Error: Theme '${theme}' not found. Available themes: vyDigital, vyUtvikling, cargonet`,
-            }],
+            content: [
+              {
+                type: "text",
+                text: `Error: Theme '${theme}' not found. Available themes: vyDigital, vyUtvikling, cargonet`,
+              },
+            ],
             isError: true,
           };
         }
-        
+
         const colorKeys = Object.keys(colors);
-        const prefixes = [...new Set(colorKeys.map(k => k.split(/[A-Z]/)[0]).filter(Boolean))];
-        
+        const prefixes = [
+          ...new Set(colorKeys.map((k) => k.split(/[A-Z]/)[0]).filter(Boolean)),
+        ];
+
         const colorsByCategory = {};
-        prefixes.forEach(prefix => {
+        prefixes.forEach((prefix) => {
           const filtered = colorKeys
-            .filter(key => key.startsWith(prefix))
+            .filter((key) => key.startsWith(prefix))
             .reduce((obj, key) => {
               const val = colors[key];
-              obj[key] = typeof val === 'object' ? val.value || val : val;
+              obj[key] = typeof val === "object" ? val.value || val : val;
               return obj;
             }, {});
-          if (Object.keys(filtered).length > 0) colorsByCategory[prefix] = filtered;
+          if (Object.keys(filtered).length > 0)
+            colorsByCategory[prefix] = filtered;
         });
-        
+
         const result = {
           theme,
           colors: colorsByCategory,
         };
-        
+
         // Only include size and font if available
         if (tokens.size) result.size = tokens.size;
         if (tokens.font) result.font = tokens.font;
-        
+
         return {
-          content: [{
-            type: "text",
-            text: JSON.stringify(result, null, 2),
-          }],
+          content: [
+            {
+              type: "text",
+              text: JSON.stringify(result, null, 2),
+            },
+          ],
         };
       }
 
       case "list_spor_components": {
         const components = Object.keys(spor).filter(
-          (name) => name[0] === name[0].toUpperCase()
+          (name) => name[0] === name[0].toUpperCase(),
         );
 
         return {
-          content: [{
-            type: "text",
-            text: components.join("\n"),
-          }],
+          content: [
+            {
+              type: "text",
+              text: components.join("\n"),
+            },
+          ],
         };
       }
 

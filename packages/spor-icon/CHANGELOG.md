@@ -1,5 +1,17 @@
 # @vygruppen/spor-icon
 
+## 3.5.7
+
+### Patch Changes
+
+- 1142d73: Add icons for tiktok. Rename twitter-icon to "x"
+
+## 3.5.6
+
+### Patch Changes
+
+- 9da2531: add draghandle icon
+
 ## 3.5.5
 
 ### Patch Changes

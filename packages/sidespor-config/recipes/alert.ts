@@ -40,6 +40,10 @@ export const alertRecipe = defineSlotRecipe({
     css: {
       root: {
         backgroundColor: theme.colorSemanticFill,
+        borderColor: theme.colorSemanticOutline,
+        "path:first-of-type": {
+          fill: `${theme.colorSemantic} !important`,
+        },
       },
     },
   })),

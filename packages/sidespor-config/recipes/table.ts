@@ -49,18 +49,22 @@ export const tableRecipe = defineSlotRecipe({
           "&&&": { backgroundColor: "transparent" },
           borderSpacing: "0px 6px",
           borderCollapse: "separate",
-          transform: "translate3d(0, 0, 0)",
+        },
+        header: {
+          "&&&": { backgroundColor: "transparent" },
+          "& tr": { backgroundColor: "transparent" },
         },
         columnHeader: {
-          backgroundColor: "var(--spor-colors-bg-tertiary)",
+          backgroundColor: "transparent",
           "&:first-of-type": { borderLeftRadius: "6px" },
           "&:last-of-type": { borderRightRadius: "6px" },
-          padding: "9px 18px",
+          padding: "6px 18px",
         },
         row: {
           backgroundColor: "var(--spor-colors-bg-tertiary)",
         },
         cell: {
+          "&&&": { fontSize: "mobile.sm" },
           backgroundColor: "inherit", // Having both the row and cell be the row color helps prevent subpixel gaps
           "&:first-of-type": { borderLeftRadius: "6px" },
           "&:last-of-type": { borderRightRadius: "6px" },

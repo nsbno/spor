@@ -1,4 +1,3 @@
-/* eslint-disable spor/use-semantic-tokens */
 import {
   defineConfig,
   mergeConfigs,

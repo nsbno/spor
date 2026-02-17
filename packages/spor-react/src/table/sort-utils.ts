@@ -8,7 +8,8 @@ export const getNextSortState = (
   current: SortState,
   columnIndex: number,
 ): SortState => {
-  if (current.columnIndex !== columnIndex) return { columnIndex, direction: "asc" };
+  if (current.columnIndex !== columnIndex)
+    return { columnIndex, direction: "asc" };
   if (current.direction === "asc") return { columnIndex, direction: "desc" };
   return { direction: "asc", columnIndex: null };
 };

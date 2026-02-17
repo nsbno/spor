@@ -1,12 +1,12 @@
 "use client";
 import {
   Button,
+  HStack,
+  RecipeVariantProps,
   Table as ChakraTable,
   TableBodyProps as ChakraTableBodyProps,
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
-  HStack,
-  RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import {
@@ -150,17 +150,14 @@ export const TableColumnHeader = forwardRef<
           >
             {isActive ? (
               sortState.direction === "asc" ? (
-                // eslint-disable-next-line spor/use-semantic-tokens
-                <ArrowUpFill18Icon color="var(--spor-colors-outline-focus)" />
+                <ArrowUpFill18Icon color="outline.focus" />
               ) : (
-                // eslint-disable-next-line spor/use-semantic-tokens
-                <ArrowDownFill18Icon color="var(--spor-colors-outline-focus)" />
+                <ArrowDownFill18Icon color="outline.focus" />
               )
             ) : (
               <ChangeDirectionFill18Icon
                 transform="rotate(90deg)"
-                // eslint-disable-next-line spor/use-semantic-tokens
-                color="var(--spor-colors-icon-disabled)"
+                color="icon.disabled"
               />
             )}
           </Button>

@@ -1,21 +1,59 @@
 "use client";
 import {
+  Button,
+  HStack,
   RecipeVariantProps,
   Table as ChakraTable,
+  TableBodyProps as ChakraTableBodyProps,
+  TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
+  TableRowProps as ChakraTableRowProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import { forwardRef, PropsWithChildren } from "react";
+import {
+  ArrowDownFill18Icon,
+  ArrowUpFill18Icon,
+  ChangeDirectionFill18Icon,
+} from "@vygruppen/spor-icon-react";
+import {
+  createContext,
+  forwardRef,
+  PropsWithChildren,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 
 import { tableSlotRecipe } from "../theme/slot-recipes/table";
+import {
+  getColumnIndex,
+  getNextSortState,
+  getSortKey,
+  sortRows,
+  type SortState,
+} from "./sort-utils";
 
 type TableVariantProps = RecipeVariantProps<typeof tableSlotRecipe>;
+
+const SortContext = createContext<{
+  enabled: boolean;
+  sortState: SortState;
+  onSort: (key: string, columnIndex: number) => void;
+}>({
+  enabled: false,
+  sortState: { key: null, direction: "asc", columnIndex: null },
+  onSort: () => {},
+});
+
+export const useTableSort = () => useContext(SortContext);
 
 export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   PropsWithChildren<TableVariantProps> & {
     variant?: "ghost" | "core";
     colorPalette?: "grey" | "green" | "white";
+    sortable?: boolean;
   };
+
 /**
  * The `Table` component has support for two different variants - `ghost` and `core`. The `ghost` variant has basic lines between rows, while the `core` variant has borders for each cell.
  *
@@ -32,22 +70,124 @@ export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
  * </Table>
  * ```
  */
-export const Table = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
-  const { variant = "ghost", size, colorPalette = "green", children } = props;
+export const Table = forwardRef<HTMLTableElement, TableProps>(
+  (
+    {
+      variant = "ghost",
+      size,
+      colorPalette = "green",
+      children,
+      sortable = false,
+      ...rest
+    },
+    ref,
+  ) => {
+    const [sortState, setSortState] = useState<SortState>({
+      key: null,
+      direction: "asc",
+      columnIndex: null,
+    });
 
-  const recipe = useSlotRecipe({ key: "table" });
-  const styles = recipe({ variant, size });
+    const handleSort = (key: string, columnIndex: number) => {
+      if (!sortable) return;
+      setSortState(getNextSortState(sortState, key, columnIndex));
+    };
+
+    const recipe = useSlotRecipe({ key: "table" });
+    const styles = recipe({ variant, size });
+
+    return (
+      <ChakraTable.Root
+        variant={variant}
+        size={size}
+        colorPalette={colorPalette}
+        css={styles}
+        ref={ref}
+        {...rest}
+      >
+        <SortContext.Provider
+          value={{ enabled: sortable, sortState, onSort: handleSort }}
+        >
+          {children}
+        </SortContext.Provider>
+      </ChakraTable.Root>
+    );
+  },
+);
+Table.displayName = "Table";
+
+export type TableColumnHeaderProps = ChakraTableColumnHeaderProps;
+
+export const TableColumnHeader = forwardRef<
+  HTMLTableCellElement,
+  TableColumnHeaderProps
+>(({ children, ...rest }, ref) => {
+  const { enabled, sortState, onSort } = useTableSort();
+  const key = getSortKey(children);
+  const props = rest as Record<string, unknown>;
+  const columnSortable = enabled && key != null && !("data-nosort" in props);
+  const isActive = columnSortable && key === sortState.key;
+
   return (
-    <ChakraTable.Root
-      variant={variant}
-      size={size}
-      colorPalette={colorPalette}
-      css={styles}
-      ref={ref}
-      {...props}
-    >
-      {children}
-    </ChakraTable.Root>
+    <ChakraTable.ColumnHeader ref={ref} {...rest}>
+      <HStack>
+        {children}
+        {columnSortable && (
+          <Button
+            variant="ghost"
+            onClick={(event) => {
+              const th = event.currentTarget.closest("th");
+              if (th) onSort(key, getColumnIndex(th));
+            }}
+            p="0px !important"
+            size="xs"
+          >
+            {isActive ? (
+              sortState.direction === "asc" ? (
+                <ArrowUpFill18Icon color="outline.focus" />
+              ) : (
+                <ArrowDownFill18Icon color="outline.focus" />
+              )
+            ) : (
+              <ChangeDirectionFill18Icon
+                transform="rotate(90deg)"
+                color="icon.disabled"
+              />
+            )}
+          </Button>
+        )}
+      </HStack>
+    </ChakraTable.ColumnHeader>
   );
 });
-Table.displayName = "Table";
+TableColumnHeader.displayName = "ColumnHeader";
+
+export type TableRowProps = ChakraTableRowProps;
+
+export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
+  (props, ref) => <ChakraTable.Row ref={ref} {...props} />,
+);
+TableRow.displayName = "TableRow";
+
+export type TableBodyProps = ChakraTableBodyProps;
+
+export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
+  ({ children, ...rest }, ref) => {
+    const { sortState } = useTableSort();
+
+    const sorted = useMemo(
+      () =>
+        sortState.columnIndex == null
+          ? children
+          : sortRows(children, sortState.columnIndex, sortState.direction),
+      [children, sortState],
+    );
+
+    return (
+      <ChakraTable.Body ref={ref} {...rest}>
+        {sorted}
+      </ChakraTable.Body>
+    );
+  },
+);
+TableBody.displayName = "TableBody";

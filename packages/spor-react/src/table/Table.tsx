@@ -177,14 +177,16 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
     const { sortState } = useTableSort();
     const tbodyRef = useRef<HTMLTableSectionElement | null>(null);
     const originalOrder = useRef<HTMLTableRowElement[]>([]);
+    const previousChildren = useRef(children);
 
     useLayoutEffect(() => {
       const tbody = tbodyRef.current;
       if (!tbody) return;
 
-      if (originalOrder.current.length === 0) {
+      if (previousChildren.current !== children || originalOrder.current.length === 0) {
         // eslint-disable-next-line unicorn/prefer-spread -- HTMLCollectionOf is not spreadable
         originalOrder.current = Array.from(tbody.rows);
+        previousChildren.current = children;
       }
 
       if (sortState.columnIndex == null) {
@@ -192,7 +194,7 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
       } else {
         sortDomRows(tbody, sortState.columnIndex, sortState.direction);
       }
-    }, [sortState]);
+    }, [sortState, children]);
 
     return (
       <ChakraTable.Body

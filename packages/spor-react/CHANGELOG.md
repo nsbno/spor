@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.24.1
+
+### Patch Changes
+
+- c9487f9: Fix issue with dynamic children not working for table sort, and fix column header no longer needing `children: string` to work
+
 ## 12.24.0
 
 ### Minor Changes

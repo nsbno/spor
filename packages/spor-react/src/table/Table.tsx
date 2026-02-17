@@ -1,13 +1,12 @@
 "use client";
 import {
   Button,
+  HStack,
+  RecipeVariantProps,
   Table as ChakraTable,
   TableBodyProps as ChakraTableBodyProps,
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
-  TableRowProps as ChakraTableRowProps,
-  HStack,
-  RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import {
@@ -170,12 +169,6 @@ export const TableColumnHeader = forwardRef<
 });
 TableColumnHeader.displayName = "ColumnHeader";
 
-export type TableRowProps = ChakraTableRowProps;
-
-export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
-  (props, ref) => <ChakraTable.Row ref={ref} {...props} />,
-);
-TableRow.displayName = "TableRow";
 
 export type TableBodyProps = ChakraTableBodyProps;
 

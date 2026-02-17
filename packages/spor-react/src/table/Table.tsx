@@ -19,7 +19,8 @@ import {
   forwardRef,
   PropsWithChildren,
   useContext,
-  useMemo,
+  useLayoutEffect,
+  useRef,
   useState,
 } from "react";
 
@@ -27,7 +28,7 @@ import { tableSlotRecipe } from "../theme/slot-recipes/table";
 import {
   getColumnIndex,
   getNextSortState,
-  sortRows,
+  sortDomRows,
   type SortState,
 } from "./sort-utils";
 
@@ -169,24 +170,33 @@ export const TableColumnHeader = forwardRef<
 });
 TableColumnHeader.displayName = "ColumnHeader";
 
-
 export type TableBodyProps = ChakraTableBodyProps;
 
 export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
   ({ children, ...rest }, ref) => {
     const { sortState } = useTableSort();
+    const tbodyRef = useRef<HTMLTableSectionElement | null>(null);
 
-    const sorted = useMemo(
-      () =>
-        sortState.columnIndex == null
-          ? children
-          : sortRows(children, sortState.columnIndex, sortState.direction),
-      [children, sortState],
-    );
+    useLayoutEffect(() => {
+      if (tbodyRef.current && sortState.columnIndex != null) {
+        sortDomRows(
+          tbodyRef.current,
+          sortState.columnIndex,
+          sortState.direction,
+        );
+      }
+    }, [sortState]);
 
     return (
-      <ChakraTable.Body ref={ref} {...rest}>
-        {sorted}
+      <ChakraTable.Body
+        ref={(element: HTMLTableSectionElement) => {
+          tbodyRef.current = element;
+          if (typeof ref === "function") ref(element);
+          else if (ref) ref.current = element;
+        }}
+        {...rest}
+      >
+        {children}
       </ChakraTable.Body>
     );
   },

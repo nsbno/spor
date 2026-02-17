@@ -1,5 +1,3 @@
-import { Children, isValidElement, type ReactNode } from "react";
-
 export type SortDirection = "asc" | "desc";
 export type SortState = {
   direction: SortDirection;
@@ -18,28 +16,24 @@ export const getNextSortState = (
 export const getColumnIndex = (element: HTMLElement) =>
   Array.prototype.indexOf.call(element.parentElement?.children, element);
 
-const getCellText = (row: React.ReactElement, columnIndex: number) => {
-  const cell = Children.toArray(
-    (row.props as { children?: ReactNode }).children,
-  )[columnIndex];
-  if (!isValidElement(cell)) return "";
-  const props = cell.props as Record<string, unknown>;
-  return (
-    (typeof props["data-sort"] === "string" && props["data-sort"]) ||
-    (typeof props.children === "string" && props.children.trim()) ||
-    ""
-  );
+const getCellSortText = (row: HTMLTableRowElement, columnIndex: number) => {
+  const cell = row.cells[columnIndex];
+  if (!cell) return "";
+  return cell.dataset.sort || cell.textContent?.trim() || "";
 };
 
-export const sortRows = (
-  children: ReactNode,
+export const sortDomRows = (
+  tbody: HTMLTableSectionElement,
   columnIndex: number,
   direction: SortDirection,
-) =>
-  Children.toArray(children).toSorted((a, b) => {
-    if (!isValidElement(a) || !isValidElement(b)) return 0;
-    const cmp = getCellText(a, columnIndex).localeCompare(
-      getCellText(b, columnIndex),
+) => {
+  // eslint-disable-next-line unicorn/prefer-spread -- HTMLCollectionOf is not spreadable
+  const rows = Array.from(tbody.rows);
+  rows.sort((a, b) => {
+    const cmp = getCellSortText(a, columnIndex).localeCompare(
+      getCellSortText(b, columnIndex),
     );
     return direction === "asc" ? cmp : -cmp;
   });
+  for (const row of rows) tbody.append(row);
+};

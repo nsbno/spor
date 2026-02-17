@@ -176,14 +176,21 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
   ({ children, ...rest }, ref) => {
     const { sortState } = useTableSort();
     const tbodyRef = useRef<HTMLTableSectionElement | null>(null);
+    const originalOrder = useRef<HTMLTableRowElement[]>([]);
 
     useLayoutEffect(() => {
-      if (tbodyRef.current && sortState.columnIndex != null) {
-        sortDomRows(
-          tbodyRef.current,
-          sortState.columnIndex,
-          sortState.direction,
-        );
+      const tbody = tbodyRef.current;
+      if (!tbody) return;
+
+      if (originalOrder.current.length === 0) {
+        // eslint-disable-next-line unicorn/prefer-spread -- HTMLCollectionOf is not spreadable
+        originalOrder.current = Array.from(tbody.rows);
+      }
+
+      if (sortState.columnIndex == null) {
+        for (const row of originalOrder.current) tbody.append(row);
+      } else {
+        sortDomRows(tbody, sortState.columnIndex, sortState.direction);
       }
     }, [sortState]);
 

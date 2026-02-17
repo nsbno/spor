@@ -22,18 +22,26 @@ const getCellSortText = (row: HTMLTableRowElement, columnIndex: number) => {
   return cell.dataset.sort || cell.textContent?.trim() || "";
 };
 
-export const sortDomRows = (
+export const applyDomSort = (
   tbody: HTMLTableSectionElement,
-  columnIndex: number,
-  direction: SortDirection,
+  sortState: SortState,
+  originalRows: HTMLTableRowElement[],
 ) => {
-  // eslint-disable-next-line unicorn/prefer-spread -- HTMLCollectionOf is not spreadable
-  const rows = Array.from(tbody.rows);
-  rows.sort((a, b) => {
-    const cmp = getCellSortText(a, columnIndex).localeCompare(
-      getCellSortText(b, columnIndex),
-    );
-    return direction === "asc" ? cmp : -cmp;
-  });
-  for (const row of rows) tbody.append(row);
+  if (sortState.columnIndex == null) {
+    for (const row of originalRows) tbody.append(row);
+  } else {
+    // eslint-disable-next-line unicorn/prefer-spread -- HTMLCollectionOf is not spreadable
+    const rows = Array.from(tbody.rows);
+    rows.sort((a, b) => {
+      const cmp = getCellSortText(a, sortState.columnIndex!).localeCompare(
+        getCellSortText(b, sortState.columnIndex!),
+      );
+      return sortState.direction === "asc" ? cmp : -cmp;
+    });
+    for (const row of rows) tbody.append(row);
+  }
 };
+
+export const captureRowOrder = (tbody: HTMLTableSectionElement) =>
+  // eslint-disable-next-line unicorn/prefer-spread -- HTMLCollectionOf is not spreadable
+  Array.from(tbody.rows);

@@ -1,12 +1,12 @@
 "use client";
 import {
   Button,
-  HStack,
-  RecipeVariantProps,
   Table as ChakraTable,
   TableBodyProps as ChakraTableBodyProps,
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
+  HStack,
+  RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import {
@@ -26,9 +26,10 @@ import {
 
 import { tableSlotRecipe } from "../theme/slot-recipes/table";
 import {
+  applyDomSort,
+  captureRowOrder,
   getColumnIndex,
   getNextSortState,
-  sortDomRows,
   type SortState,
 } from "./sort-utils";
 
@@ -183,17 +184,15 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
       const tbody = tbodyRef.current;
       if (!tbody) return;
 
-      if (previousChildren.current !== children || originalOrder.current.length === 0) {
-        // eslint-disable-next-line unicorn/prefer-spread -- HTMLCollectionOf is not spreadable
-        originalOrder.current = Array.from(tbody.rows);
+      if (
+        previousChildren.current !== children ||
+        originalOrder.current.length === 0
+      ) {
+        originalOrder.current = captureRowOrder(tbody);
         previousChildren.current = children;
       }
 
-      if (sortState.columnIndex == null) {
-        for (const row of originalOrder.current) tbody.append(row);
-      } else {
-        sortDomRows(tbody, sortState.columnIndex, sortState.direction);
-      }
+      applyDomSort(tbody, sortState, originalOrder.current);
     }, [sortState, children]);
 
     return (

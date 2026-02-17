@@ -2,24 +2,18 @@ import { Children, isValidElement, type ReactNode } from "react";
 
 export type SortDirection = "asc" | "desc";
 export type SortState = {
-  key: string | null;
   direction: SortDirection;
   columnIndex: number | null;
 };
 
 export const getNextSortState = (
   current: SortState,
-  key: string,
   columnIndex: number,
 ): SortState => {
-  if (current.key !== key) return { key, columnIndex, direction: "asc" };
-  if (current.direction === "asc")
-    return { key, columnIndex, direction: "desc" };
-  return { key: null, direction: "asc", columnIndex: null }; // Initial sort state
+  if (current.columnIndex !== columnIndex) return { columnIndex, direction: "asc" };
+  if (current.direction === "asc") return { columnIndex, direction: "desc" };
+  return { direction: "asc", columnIndex: null };
 };
-
-export const getSortKey = (children: ReactNode) =>
-  typeof children === "string" ? children.trim() : null;
 
 export const getColumnIndex = (element: HTMLElement) =>
   Array.prototype.indexOf.call(element.parentElement?.children, element);

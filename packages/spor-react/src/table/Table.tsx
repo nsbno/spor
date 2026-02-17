@@ -1,13 +1,13 @@
 "use client";
 import {
   Button,
-  HStack,
-  RecipeVariantProps,
   Table as ChakraTable,
   TableBodyProps as ChakraTableBodyProps,
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
   TableRowProps as ChakraTableRowProps,
+  HStack,
+  RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import {
@@ -28,7 +28,6 @@ import { tableSlotRecipe } from "../theme/slot-recipes/table";
 import {
   getColumnIndex,
   getNextSortState,
-  getSortKey,
   sortRows,
   type SortState,
 } from "./sort-utils";
@@ -38,10 +37,10 @@ type TableVariantProps = RecipeVariantProps<typeof tableSlotRecipe>;
 const SortContext = createContext<{
   enabled: boolean;
   sortState: SortState;
-  onSort: (key: string, columnIndex: number) => void;
+  onSort: (columnIndex: number) => void;
 }>({
   enabled: false,
-  sortState: { key: null, direction: "asc", columnIndex: null },
+  sortState: { direction: "asc", columnIndex: null },
   onSort: () => {},
 });
 
@@ -83,14 +82,13 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
     ref,
   ) => {
     const [sortState, setSortState] = useState<SortState>({
-      key: null,
       direction: "asc",
       columnIndex: null,
     });
 
-    const handleSort = (key: string, columnIndex: number) => {
+    const handleSort = (columnIndex: number) => {
       if (!sortable) return;
-      setSortState(getNextSortState(sortState, key, columnIndex));
+      setSortState(getNextSortState(sortState, columnIndex));
     };
 
     const recipe = useSlotRecipe({ key: "table" });
@@ -123,35 +121,45 @@ export const TableColumnHeader = forwardRef<
   TableColumnHeaderProps
 >(({ children, ...rest }, ref) => {
   const { enabled, sortState, onSort } = useTableSort();
-  const key = getSortKey(children);
+  const [columnIndex, setColumnIndex] = useState<number | null>(null);
   const props = rest as Record<string, unknown>;
-  const columnSortable = enabled && key != null && !("data-nosort" in props);
-  const isActive = columnSortable && key === sortState.key;
+  const columnSortable = enabled && !("data-nosort" in props);
+  const isActive =
+    columnSortable &&
+    columnIndex != null &&
+    columnIndex === sortState.columnIndex;
 
   return (
-    <ChakraTable.ColumnHeader ref={ref} {...rest}>
+    <ChakraTable.ColumnHeader
+      ref={(element: HTMLTableCellElement) => {
+        if (element) setColumnIndex(getColumnIndex(element));
+        if (typeof ref === "function") ref(element);
+        else if (ref) ref.current = element;
+      }}
+      {...rest}
+    >
       <HStack>
         {children}
-        {columnSortable && (
+        {columnSortable && columnIndex != null && (
           <Button
             variant="ghost"
-            onClick={(event) => {
-              const th = event.currentTarget.closest("th");
-              if (th) onSort(key, getColumnIndex(th));
-            }}
+            onClick={() => onSort(columnIndex)}
             p="0px !important"
             size="xs"
           >
             {isActive ? (
               sortState.direction === "asc" ? (
-                <ArrowUpFill18Icon color="outline.focus" />
+                // eslint-disable-next-line spor/use-semantic-tokens
+                <ArrowUpFill18Icon color="var(--spor-colors-outline-focus)" />
               ) : (
-                <ArrowDownFill18Icon color="outline.focus" />
+                // eslint-disable-next-line spor/use-semantic-tokens
+                <ArrowDownFill18Icon color="var(--spor-colors-outline-focus)" />
               )
             ) : (
               <ChangeDirectionFill18Icon
                 transform="rotate(90deg)"
-                color="icon.disabled"
+                // eslint-disable-next-line spor/use-semantic-tokens
+                color="var(--spor-colors-icon-disabled)"
               />
             )}
           </Button>

@@ -17,6 +17,7 @@ import {
   VyLogo,
 } from "@vygruppen/spor-react";
 import { useEffect, useState } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { Link, useLocation, useRouteLoaderData } from "react-router";
 
 import { ColorModeSwitcher } from "~/features/color-mode-switcher";
@@ -44,12 +45,53 @@ const useSearchKeyboardShortcut = (onTriggered: () => void) => {
 };
 
 /** The site header shown at the top of every part of our site */
-export const SiteHeader = () => {
+export const SiteHeader = ({
+  onHeightChange,
+}: {
+  onHeightChange?: (height: number) => void;
+}) => {
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
 
   const { isPreview } = useRouteLoaderData<typeof loader>("root") || {
     isPreview: false,
   };
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (!headerRef.current) return;
+
+    const measure = () => {
+      const h = headerRef.current?.offsetHeight ?? 0;
+      onHeightChange?.(show ? h : 0); // 🔥 send 0 when hidden
+    };
+
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [show]);
+
+  const controlNavbar = () => {
+    if (globalThis.window !== undefined) {
+      if (window.scrollY > lastScrollY) {
+        setShow(false);
+      } else {
+        setShow(true);
+      }
+      setLastScrollY(window.scrollY);
+    }
+  };
+
+  useEffect(() => {
+    if (globalThis.window !== undefined) {
+      window.addEventListener("scroll", controlNavbar);
+      return () => {
+        window.removeEventListener("scroll", controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
 
   useSearchKeyboardShortcut(() => setSearchDialogOpen(true));
 
@@ -70,95 +112,105 @@ export const SiteHeader = () => {
     }
     return true;
   });
+  const heightSpacer = ["72px", "90px", "120px", "138px"];
 
   return (
-    <Flex
-      as="header"
-      justifyContent="space-between"
-      alignItems="center"
-      paddingX={[3, 4, 7]}
-      paddingY={[3, 4, 5, 4]}
-      backgroundColor="bg"
-      gap="3"
-      width="100vw"
-      overflow="hidden"
-    >
-      <Flex
-        alignItems="center"
-        gap="1"
-        justifyContent="space-between"
-        width="100%"
-        position="relative"
+    <Box minHeight={heightSpacer}>
+      <Box
+        data-testid="header"
+        ref={headerRef}
+        //pinStart={250}
+        style={{
+          transition: "all .2s linear",
+          position: "fixed",
+          top: show ? "0" : "-160px",
+          left: "0",
+          right: "0",
+          zIndex: "1100",
+        }}
       >
-        <Link
-          to={isPreview ? "/?sanity-preview-perspective=drafts" : "/"}
-          aria-label="Go to the front page"
+        <Flex
+          as="header"
+          minHeight={["78px", "90px", "120px", "132px"]}
+          position="relative"
+          backgroundColor="bg"
+          alignItems="center"
+          gap="1"
+          justifyContent="space-between"
+          width="100%"
+          paddingX={[3, 4, 7]}
+          paddingY={[3, 4, 5, 4]}
         >
-          <VyLogo
-            className="light"
-            width="auto"
-            height={["30px", "36px", null, "48px"]}
-            aria-label="Vy"
-          />
-        </Link>
-
-        <Box as="nav" flexGrow={1} justifyContent="flex-end">
-          <Flex
-            as="ul"
-            gap="4"
-            width="auto"
-            justifyContent="flex-end"
-            alignItems="center"
+          <Link
+            to={isPreview ? "/?sanity-preview-perspective=drafts" : "/"}
+            aria-label="Go to the front page"
           >
-            <Box as="li" marginLeft="auto">
-              <ColorModeSwitcher />
-            </Box>
-            {sections.map((section) => {
-              return (
-                <Box as="li" key={section.title}>
-                  <Button
-                    asChild
-                    variant={
-                      (section.default && slug === "") ||
-                      section.slug.current === currentSection
-                        ? "secondary"
-                        : "ghost"
-                    }
-                    size="md"
-                    borderRadius="lg"
-                    display={{ base: "none", lg: "flex" }}
-                    border="none"
-                    leftIcon={getIcon({
-                      iconName: section.icon,
-                      size: 24,
-                      style:
-                        section.slug.current === currentSection
-                          ? "fill"
-                          : "outline",
-                    })}
-                  >
-                    <Link
-                      to={`/${section.slug.current}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
-                    >
-                      {section.title}
-                    </Link>
-                  </Button>
-                </Box>
-              );
-            })}
-          </Flex>
-        </Box>
+            <VyLogo
+              className="light"
+              width="auto"
+              height={["30px", "36px", null, "48px"]}
+              aria-label="Vy"
+            />
+          </Link>
 
-        <Flex gap="1">
-          <SearchDocsButton onSearchClick={() => setSearchDialogOpen(true)} />
-          <MobileMenu />
-          <SearchDocs
-            onOpenChange={setSearchDialogOpen}
-            open={searchDialogOpen}
-          />
+          <Box as="nav" flexGrow={1} justifyContent="flex-end">
+            <Flex
+              as="ul"
+              gap="4"
+              width="auto"
+              justifyContent="flex-end"
+              alignItems="center"
+            >
+              <Box as="li" marginLeft="auto">
+                <ColorModeSwitcher />
+              </Box>
+              {sections.map((section) => {
+                return (
+                  <Box as="li" key={section.title}>
+                    <Button
+                      asChild
+                      variant={
+                        (section.default && slug === "") ||
+                        section.slug.current === currentSection
+                          ? "secondary"
+                          : "ghost"
+                      }
+                      size="md"
+                      borderRadius="lg"
+                      display={{ base: "none", lg: "flex" }}
+                      border="none"
+                      leftIcon={getIcon({
+                        iconName: section.icon,
+                        size: 24,
+                        style:
+                          section.slug.current === currentSection
+                            ? "fill"
+                            : "outline",
+                      })}
+                    >
+                      <Link
+                        to={`/${section.slug.current}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
+                      >
+                        {section.title}
+                      </Link>
+                    </Button>
+                  </Box>
+                );
+              })}
+            </Flex>
+          </Box>
+
+          <Flex gap="1">
+            <SearchDocsButton onSearchClick={() => setSearchDialogOpen(true)} />
+            <MobileMenu />
+            <SearchDocs
+              onOpenChange={setSearchDialogOpen}
+              open={searchDialogOpen}
+            />
+          </Flex>
         </Flex>
-      </Flex>
-    </Flex>
+      </Box>
+    </Box>
   );
 };
 

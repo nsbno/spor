@@ -65,7 +65,7 @@ export const SiteHeader = ({
 
     const measure = () => {
       const h = headerRef.current?.offsetHeight ?? 0;
-      onHeightChange?.(show ? h : 0); // 🔥 send 0 when hidden
+      onHeightChange?.(show ? h : 0);
     };
 
     measure();
@@ -119,7 +119,6 @@ export const SiteHeader = ({
       <Box
         data-testid="header"
         ref={headerRef}
-        //pinStart={250}
         style={{
           transition: "all .2s linear",
           position: "fixed",

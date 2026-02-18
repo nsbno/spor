@@ -6,7 +6,7 @@ export const attachedInputsRecipe = defineRecipe({
     gap: "0.1rem",
     width: "100%",
     "& select": {
-      borderEndRadius: 0,
+      borderEndRadius: "0 !important",
     },
 
     "& > *": {
@@ -22,13 +22,13 @@ export const attachedInputsRecipe = defineRecipe({
       horizontal: {
         flexDirection: "row",
         "& > *:first-of-type:not(:last-of-type) [data-attachable]": {
-          borderEndRadius: 0,
+          borderEndRadius: "0 !important",
         },
         "& > *:not(:first-of-type):not(:last-of-type) [data-attachable]": {
-          borderRadius: 0,
+          borderRadius: "0 !important",
         },
         "& > *:not(:first-of-type):last-of-type [data-attachable]": {
-          borderStartRadius: 0,
+          borderStartRadius: "0 !important",
         },
 
         "&[data-with-flip-button]": {
@@ -45,13 +45,13 @@ export const attachedInputsRecipe = defineRecipe({
       vertical: {
         flexDirection: "column",
         "& > *:first-of-type:not(:last-of-type) [data-attachable]": {
-          borderBottomRadius: 0,
+          borderBottomRadius: "0 !important",
         },
         "& > *:not(:first-of-type):not(:last-of-type) [data-attachable]": {
-          borderRadius: 0,
+          borderRadius: "0 !important",
         },
         "& > *:not(:first-of-type):last-of-type [data-attachable]": {
-          borderTopRadius: 0,
+          borderTopRadius: "0 !important",
         },
       },
     },

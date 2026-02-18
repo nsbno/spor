@@ -113,7 +113,7 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
           id={id}
         >
           {label && !floatingLabel && (
-            <Label asChild={labelAsChild}>
+            <Label asChild={labelAsChild} aria-hidden>
               {renderLabelWithIndicator(label, labelAsChild)}
             </Label>
           )}
@@ -124,6 +124,7 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
             <FloatingLabel
               data-float={shouldFloat ? true : undefined}
               asChild={labelAsChild}
+              aria-hidden
             >
               {renderLabelWithIndicator(label, labelAsChild)}
             </FloatingLabel>

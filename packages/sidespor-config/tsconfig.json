@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "SideSpor Config",
+  "extends": "../tsconfig/base.json",
+  "include": ["index.ts"],
+  "exclude": ["node_modules", "dist"],
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "rootDir": ".",
+    "outDir": "dist"
+  }
+}

@@ -57,7 +57,6 @@ export const switchSlotRecipe = defineSlotRecipe({
     control: {
       boxSizing: "content-box",
       padding: 0.5,
-
       display: "inline-flex",
       gap: 1.5,
       flexShrink: 0,
@@ -113,32 +112,29 @@ export const switchSlotRecipe = defineSlotRecipe({
     size: {
       sm: {
         root: {
-          "--switch-width": "3.3rem",
-          "--switch-height": "1.5rem",
+          "--switch-width": "3rem",
+          "--switch-height": "1.125rem",
         },
         control: {
           borderRadius: "lg",
-          padding: "0.12rem",
         },
       },
       md: {
         root: {
-          "--switch-width": "4.1rem",
-          "--switch-height": "1.8rem",
+          "--switch-width": "3.75rem",
+          "--switch-height": "1.5rem",
         },
         control: {
           borderRadius: "xl",
-          padding: 0.5,
         },
       },
       lg: {
         root: {
-          "--switch-width": "4.8rem",
-          "--switch-height": "2.25rem",
+          "--switch-width": "4.5rem",
+          "--switch-height": "1.875rem",
         },
         control: {
           borderRadius: "2xl",
-          padding: 0.5,
         },
       },
     },

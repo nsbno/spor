@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 12.24.2
+
+### Patch Changes
+
+- 8047512: Add icons for tiktok. Rename twitter-icon to "x"
+- f8656b9: fix(UU): Input field label being announced twice
+- 2bf118b: fix: Not able to change borderRadius when using AttachedInputs
+- Updated dependencies [8047512]
+  - @vygruppen/spor-icon-react@4.5.2
+
 ## 12.24.1
 
 ### Patch Changes

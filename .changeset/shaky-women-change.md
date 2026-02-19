@@ -1,7 +1,5 @@
 ---
-"@vygruppen/sidespor-config": major
+"@vygruppen/sidespor-config": minor
 ---
 
-Add sidespor which has:
-* semantics to Alert, Badge, Button, Dialog and Table
-* variants to Table
+Add ghost semantic to button

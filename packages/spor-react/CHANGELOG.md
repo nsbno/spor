@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.24.3
+
+### Patch Changes
+
+- 5194171: Revert changes to attached inputs that created bugs for combobox borderradius.
+
 ## 12.24.2
 
 ### Patch Changes

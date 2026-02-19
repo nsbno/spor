@@ -87,6 +87,7 @@ export const switchSlotRecipe = defineSlotRecipe({
 
       _checked: {
         backgroundColor: "brand.surface",
+        outline: "none",
         _focusVisible: {
           outlineStyle: "double",
           outlineWidth: `calc(3 * ${tokens.size.stroke.md})`, // space for double outline

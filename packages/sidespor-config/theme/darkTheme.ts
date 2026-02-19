@@ -100,11 +100,14 @@ export const darkTheme = {
   colorNeutralTextSecondary: colors.coralGreen,
   colorNeutralTextTertiary: colors.night,
 
+<<<<<<< HEAD
   // Ghost
   colorGhostFill: "transparent",
   colorGhostOutline: colors.whiteAlpha["100"],
   colorGhostTextMain: colors.white,
 
+=======
+>>>>>>> main
   // Special
   colorSpecial: colors.violet400,
   colorSpecialPulse: colors.violet500,

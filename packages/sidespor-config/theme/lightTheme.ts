@@ -100,6 +100,11 @@ export const lightTheme = {
   colorNeutralTextSecondary: colors.carbon,
   colorNeutralTextTertiary: colors.lightGrey,
 
+  // Ghost
+  colorGhostFill: "transparent",
+  colorGhostOutline: colors.blackAlpha["100"],
+  colorGhostTextMain: colors.jungle,
+
   // Special
   colorSpecial: colors.violet600,
   colorSpecialPulse: colors.violet700,

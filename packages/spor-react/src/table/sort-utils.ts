@@ -1,51 +1,48 @@
-import { Children, isValidElement, type ReactNode } from "react";
-
 export type SortDirection = "asc" | "desc";
 export type SortState = {
-  key: string | null;
   direction: SortDirection;
   columnIndex: number | null;
 };
 
 export const getNextSortState = (
   current: SortState,
-  key: string,
   columnIndex: number,
 ): SortState => {
-  if (current.key !== key) return { key, columnIndex, direction: "asc" };
-  if (current.direction === "asc")
-    return { key, columnIndex, direction: "desc" };
-  return { key: null, direction: "asc", columnIndex: null }; // Initial sort state
+  if (current.columnIndex !== columnIndex)
+    return { columnIndex, direction: "asc" };
+  if (current.direction === "asc") return { columnIndex, direction: "desc" };
+  return { direction: "asc", columnIndex: null };
 };
-
-export const getSortKey = (children: ReactNode) =>
-  typeof children === "string" ? children.trim() : null;
 
 export const getColumnIndex = (element: HTMLElement) =>
   Array.prototype.indexOf.call(element.parentElement?.children, element);
 
-const getCellText = (row: React.ReactElement, columnIndex: number) => {
-  const cell = Children.toArray(
-    (row.props as { children?: ReactNode }).children,
-  )[columnIndex];
-  if (!isValidElement(cell)) return "";
-  const props = cell.props as Record<string, unknown>;
-  return (
-    (typeof props["data-sort"] === "string" && props["data-sort"]) ||
-    (typeof props.children === "string" && props.children.trim()) ||
-    ""
-  );
+const getCellSortText = (row: HTMLTableRowElement, columnIndex: number) => {
+  const cell = row.cells[columnIndex];
+  if (!cell) return "";
+  return cell.dataset.sort || cell.textContent?.trim() || "";
 };
 
-export const sortRows = (
-  children: ReactNode,
-  columnIndex: number,
-  direction: SortDirection,
-) =>
-  Children.toArray(children).toSorted((a, b) => {
-    if (!isValidElement(a) || !isValidElement(b)) return 0;
-    const cmp = getCellText(a, columnIndex).localeCompare(
-      getCellText(b, columnIndex),
-    );
-    return direction === "asc" ? cmp : -cmp;
-  });
+export const applyDomSort = (
+  tbody: HTMLTableSectionElement,
+  sortState: SortState,
+  originalRows: HTMLTableRowElement[],
+) => {
+  if (sortState.columnIndex == null) {
+    for (const row of originalRows) tbody.append(row);
+  } else {
+    // eslint-disable-next-line unicorn/prefer-spread -- HTMLCollectionOf is not spreadable
+    const rows = Array.from(tbody.rows);
+    rows.sort((a, b) => {
+      const cmp = getCellSortText(a, sortState.columnIndex!).localeCompare(
+        getCellSortText(b, sortState.columnIndex!),
+      );
+      return sortState.direction === "asc" ? cmp : -cmp;
+    });
+    for (const row of rows) tbody.append(row);
+  }
+};
+
+export const captureRowOrder = (tbody: HTMLTableSectionElement) =>
+  // eslint-disable-next-line unicorn/prefer-spread -- HTMLCollectionOf is not spreadable
+  Array.from(tbody.rows);

@@ -14,11 +14,8 @@
   "keywords": [
     "mcp",
     "spor",
-    "design-system",
-    "chakra-ui"
+    "design-system"
   ],
-  "author": "Vy Group",
-  "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.26.0",
     "@vygruppen/spor-design-tokens": "^4.3.2",

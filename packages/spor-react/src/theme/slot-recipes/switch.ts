@@ -68,7 +68,8 @@ export const switchSlotRecipe = defineSlotRecipe({
       height: "var(--switch-height)",
       transitionProperty: "common",
       transitionDuration: "fast",
-      outline: "2px solid",
+      outline: "1px solid",
+      outlineOffset: "-1px",
       outlineColor: "core.outline",
       _hover: {
         outline: "2px solid",

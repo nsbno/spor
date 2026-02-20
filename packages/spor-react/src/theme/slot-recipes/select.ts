@@ -40,6 +40,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       color: "text",
       paddingY: 1.5,
       paddingX: 3,
+      backgroundColor: "surface",
 
       justifyContent: "space-between",
       alignItems: "center",

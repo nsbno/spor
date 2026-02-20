@@ -1,5 +1,6 @@
 import { PortableTextBlock } from "@portabletext/react";
 import { groq } from "@sanity/groq-store";
+import { sidesporConfig } from "@vygruppen/sidespor-config";
 import {
   FigmaOutline24Icon,
   GithubOutline24Icon,
@@ -9,16 +10,19 @@ import {
   Box,
   Brand,
   Button,
+  createSystem,
   Flex,
   Heading,
   HStack,
   Separator,
+  SporProvider,
   Stack,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
   Text,
+  themes,
 } from "@vygruppen/spor-react";
 import { PropsWithChildren } from "react";
 import {
@@ -58,6 +62,11 @@ type ComponentSection = {
     content: unknown[];
   }[];
 };
+
+export const extendedSystemConfigWithSidespor = createSystem(
+  themes.VyDigital._config,
+  sidesporConfig,
+);
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   invariant(params.category, "Expected params.category");
@@ -221,7 +230,13 @@ export default function ArticlePage() {
           />
         ) : (
           <Box>
-            <PortableText value={article.content} />
+            {article.title.includes("Sidespor") ? (
+              <SporProvider theme={extendedSystemConfigWithSidespor}>
+                <PortableText value={article.content} />
+              </SporProvider>
+            ) : (
+              <PortableText value={article.content} />
+            )}
           </Box>
         )}
       </Flex>

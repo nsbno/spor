@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import tokens from "@vygruppen/spor-design-tokens";
 
 import { switchAnatomy } from "./anatomy";
 
@@ -83,15 +82,17 @@ export const switchSlotRecipe = defineSlotRecipe({
       _focusVisible: {
         outlineWidth: "2px",
         outlineColor: "outline.focus",
-        outlineStyle: "solid",
+        outlineStyle: "double",
       },
 
       _checked: {
         backgroundColor: "brand.surface",
         outline: "none",
         _focusVisible: {
-          outlineStyle: "double",
-          outlineWidth: `calc(3 * ${tokens.size.stroke.md})`, // space for double outline
+          outlineOffset: "1px",
+          outlineStyle: "solid",
+          outlineColor: "outline.focus",
+          outlineWidth: "2px",
         },
       },
       _disabled: {

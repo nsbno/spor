@@ -71,20 +71,19 @@ export const SiteHeader = ({
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
-  }, [show]);
-
-  const controlNavbar = () => {
-    if (globalThis.window !== undefined) {
-      if (window.scrollY > lastScrollY) {
-        setShow(false);
-      } else {
-        setShow(true);
-      }
-      setLastScrollY(window.scrollY);
-    }
-  };
+  }, [onHeightChange, show]);
 
   useEffect(() => {
+    const controlNavbar = () => {
+      if (globalThis.window !== undefined) {
+        if (window.scrollY > lastScrollY) {
+          setShow(false);
+        } else {
+          setShow(true);
+        }
+        setLastScrollY(window.scrollY);
+      }
+    };
     if (globalThis.window !== undefined) {
       window.addEventListener("scroll", controlNavbar);
       return () => {

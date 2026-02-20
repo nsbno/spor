@@ -45,7 +45,7 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
               ? { left: `${fixedRect.left}px`, width: `${fixedRect.width}px` }
               : undefined
           }
-          transition="all .2s linear"
+          transition="all .3s linear"
         >
           <LeftSidebar />
         </Box>

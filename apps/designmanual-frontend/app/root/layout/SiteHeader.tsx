@@ -76,7 +76,7 @@ export const SiteHeader = ({
   useEffect(() => {
     const controlNavbar = () => {
       if (globalThis.window !== undefined) {
-        if (window.scrollY > lastScrollY) {
+        if (window.scrollY > lastScrollY && window.scrollY > 140) {
           setShow(false);
         } else {
           setShow(true);
@@ -119,7 +119,7 @@ export const SiteHeader = ({
         data-testid="header"
         ref={headerRef}
         style={{
-          transition: "all .2s linear",
+          transition: "all .3s linear",
           position: "fixed",
           top: show ? "0" : "-160px",
           left: "0",

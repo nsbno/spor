@@ -29,6 +29,9 @@
   "prettier": {},
   "packageManager": "pnpm@10.4.1",
   "pnpm": {
+    "overrides": {
+      "fast-xml-parser": "^5.3.5"
+    },
     "patchedDependencies": {
       "lottie-web": "patches/lottie-web.patch"
     }

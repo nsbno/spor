@@ -1,5 +1,35 @@
 # @vygruppen/spor-react
 
+## 12.24.4
+
+### Patch Changes
+
+- be48428: Add deeper dark- and lightmode support for Vy-logo.
+- Updated dependencies [be48428]
+  - @vygruppen/spor-design-tokens@4.3.3
+
+## 12.24.3
+
+### Patch Changes
+
+- 5194171: Revert changes to attached inputs that created bugs for combobox borderradius.
+
+## 12.24.2
+
+### Patch Changes
+
+- 8047512: Add icons for tiktok. Rename twitter-icon to "x"
+- f8656b9: fix(UU): Input field label being announced twice
+- 2bf118b: fix: Not able to change borderRadius when using AttachedInputs
+- Updated dependencies [8047512]
+  - @vygruppen/spor-icon-react@4.5.2
+
+## 12.24.1
+
+### Patch Changes
+
+- c9487f9: Fix issue with dynamic children not working for table sort, and fix column header no longer needing `children: string` to work
+
 ## 12.24.0
 
 ### Minor Changes

@@ -66,6 +66,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       errorText,
       invalid,
       helperText,
+      backgroundColor,
       ...rest
     } = props;
     const recipe = useSlotRecipe({ key: "select" });
@@ -87,7 +88,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           css={styles.root}
           position="relative"
         >
-          <SelectTrigger data-attachable>
+          <SelectTrigger data-attachable backgroundColor={backgroundColor}>
             <SelectValueText withPlaceholder={label ? true : false} />
           </SelectTrigger>
           {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}

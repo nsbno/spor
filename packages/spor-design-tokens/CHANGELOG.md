@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.3.3
+
+### Patch Changes
+
+- be48428: Add deeper dark- and lightmode support for Vy-logo.
+
 ## 4.3.2
 
 ### Patch Changes

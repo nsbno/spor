@@ -15,7 +15,6 @@ packages/*/tmp
 .DS_Store
 *.pem
 .idea/
-.vscode/
 doc
 
 # react router

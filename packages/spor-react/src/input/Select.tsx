@@ -4,6 +4,7 @@ import type {
   CollectionItem,
   SelectLabelProps,
   SelectRootProps as ChakraSelectRootProps,
+  SystemStyleObject,
 } from "@chakra-ui/react";
 import {
   Box,
@@ -93,7 +94,9 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
             <SelectValueText withPlaceholder={label ? true : false} />
           </SelectTrigger>
           {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
-          <SelectContent css={styles.selectContent}>{children}</SelectContent>
+          <SelectContent css={styles.selectContent} baseStyle={css}>
+            {children}
+          </SelectContent>
         </ChakraSelect.Root>
       </Field>
     );
@@ -129,7 +132,11 @@ export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
           <ChakraSelect.ItemText display="flex">
             {children}
           </ChakraSelect.ItemText>
-          {description && <Box css={styles.itemDescription}>{description}</Box>}
+          {description && (
+            <Box data-part="item-description" css={styles.itemDescription}>
+              {description}
+            </Box>
+          )}
         </Box>
 
         <ChakraSelect.ItemIndicator>
@@ -176,9 +183,12 @@ export const SelectTrigger = React.forwardRef<
       <ChakraSelect.Trigger ref={ref} css={styles.trigger}>
         {children}
       </ChakraSelect.Trigger>
-      <ChakraSelect.IndicatorGroup css={styles.indicatorGroup}>
+      <ChakraSelect.IndicatorGroup
+        css={styles.indicatorGroup}
+        data-part="indicator-group"
+      >
         {clearable && <SelectClearTrigger />}
-        <Box css={styles.indicator}>
+        <Box css={styles.indicator} data-part="indicator">
           <DropdownDownFill24Icon />
         </Box>
       </ChakraSelect.IndicatorGroup>
@@ -209,16 +219,18 @@ const SelectClearTrigger = React.forwardRef<
 type SelectContentProps = ChakraSelect.ContentProps & {
   portalled?: boolean;
   portalRef?: React.RefObject<HTMLElement>;
+  baseStyle?: SystemStyleObject;
 };
 
 export const SelectContent = React.forwardRef<
   HTMLDivElement,
   SelectContentProps
 >(function SelectContent(props, ref) {
-  const { portalled = true, portalRef, ...rest } = props;
+  const { portalled = true, portalRef, baseStyle, ...rest } = props;
+
   return (
     <Portal disabled={!portalled} container={portalRef}>
-      <ChakraSelect.Positioner>
+      <ChakraSelect.Positioner css={baseStyle}>
         <ChakraSelect.Content {...rest} ref={ref} />
       </ChakraSelect.Positioner>
     </Portal>

@@ -1,0 +1,24 @@
+{
+  "name": "@vygruppen/spor-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Spor Design System",
+  "main": "server.js",
+  "type": "module",
+  "bin": {
+    "spor-mcp": "./server.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mcp",
+    "spor",
+    "design-system"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "@vygruppen/spor-design-tokens": "^4.3.2",
+    "@vygruppen/spor-react": "^12.22.2"
+  }
+}

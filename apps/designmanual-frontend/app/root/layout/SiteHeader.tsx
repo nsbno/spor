@@ -144,7 +144,6 @@ export const SiteHeader = ({
             aria-label="Go to the front page"
           >
             <VyLogo
-              className="light"
               width="auto"
               height={["30px", "36px", null, "48px"]}
               aria-label="Vy"

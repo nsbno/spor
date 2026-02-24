@@ -66,6 +66,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       errorText,
       invalid,
       helperText,
+      css,
       ...rest
     } = props;
     const recipe = useSlotRecipe({ key: "select" });
@@ -78,6 +79,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         helperText={helperText}
         required={props.required}
         id={rest.id}
+        css={css}
       >
         <ChakraSelect.Root
           {...rest}

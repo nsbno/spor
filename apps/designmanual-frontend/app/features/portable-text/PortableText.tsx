@@ -1,6 +1,7 @@
 /* eslint-disable simple-import-sort/imports */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ButtonProps } from "@chakra-ui/react";
+import { vercelStegaClean } from "@vercel/stega";
 import {
   PortableTextReactComponents,
   PortableText as SanityPortableText,
@@ -434,7 +435,7 @@ export const PortableText = ({
 }) => {
   return (
     <SanityPortableText
-      value={value}
+      value={vercelStegaClean(value)}
       components={deepmerge(components, componentsOverrides)}
     />
   );

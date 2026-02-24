@@ -200,6 +200,7 @@ export const article = defineType({
                   { value: "examples", title: "Examples" },
                   { value: "guidelines", title: "Guidelines" },
                   { value: "code", title: "Code" },
+                  { value: "styling", title: "Styling" },
                   { value: "other", title: "Other" },
                 ],
               },

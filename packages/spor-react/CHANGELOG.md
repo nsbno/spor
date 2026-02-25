@@ -1,5 +1,19 @@
 # @vygruppen/spor-react
 
+## 12.24.5
+
+### Patch Changes
+
+- 3b8f859: Add css prop to Select to make it easier to style
+
+## 12.24.4
+
+### Patch Changes
+
+- be48428: Add deeper dark- and lightmode support for Vy-logo.
+- Updated dependencies [be48428]
+  - @vygruppen/spor-design-tokens@4.3.3
+
 ## 12.24.3
 
 ### Patch Changes

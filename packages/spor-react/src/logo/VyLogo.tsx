@@ -1,27 +1,21 @@
-import { chakra } from "@chakra-ui/react";
+import { chakra, defineRecipe } from "@chakra-ui/react";
 import { ComponentProps, forwardRef, useId } from "react";
 
 export const SvgBox = chakra("svg");
 
-const fillRecipe = {
+const fillRecipe = defineRecipe({
   base: {},
   variants: {
     fill: {
       main: {
-        fill: {
-          _light: "#1d211c",
-          _dark: "#ffffff",
-        },
+        fill: "icon",
       },
       accent: {
-        fill: {
-          _light: "#138c6e",
-          _dark: "#ffffff",
-        },
+        fill: "icon.accent",
       },
     },
   },
-};
+});
 
 const Path = chakra("path", fillRecipe);
 

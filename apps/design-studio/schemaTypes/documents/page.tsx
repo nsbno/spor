@@ -93,6 +93,7 @@ export const page = defineType({
         { type: "fileList", title: "File list" },
         { type: "linkButton", title: "Link button" },
         { type: "divider", title: "Divider" },
+        { type: "colorCard", title: "Color card" },
       ],
       group: "pageContent",
     }),

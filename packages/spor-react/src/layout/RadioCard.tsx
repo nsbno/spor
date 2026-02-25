@@ -45,9 +45,15 @@ export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
 
     return (
       <ChakraRadioCard.Item {...props}>
-        <ChakraRadioCard.ItemHiddenInput ref={ref} {...inputProps} aria-label={value} />
+        <ChakraRadioCard.ItemHiddenInput
+          ref={ref}
+          {...inputProps}
+          aria-label={value}
+        />
 
-        <ChakraRadioCard.ItemControl aria-hidden={(value) ? true : false}>{children}</ChakraRadioCard.ItemControl>
+        <ChakraRadioCard.ItemControl aria-hidden={value ? true : false}>
+          {children}
+        </ChakraRadioCard.ItemControl>
       </ChakraRadioCard.Item>
     );
   },

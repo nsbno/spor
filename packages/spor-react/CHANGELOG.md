@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.24.5
+
+### Patch Changes
+
+- 3b8f859: Add css prop to Select to make it easier to style
+
 ## 12.24.4
 
 ### Patch Changes

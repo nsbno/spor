@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 12.24.6
+
+### Patch Changes
+
+- ddaed5e: Fix autocomplete dropdown not closing on iphone VO
+- 7f312de: fix sizing of Switch variants to match design
+- 5bc8e7a: Fix so all parts of select can be selected by the data-part css query
+
 ## 12.24.5
 
 ### Patch Changes

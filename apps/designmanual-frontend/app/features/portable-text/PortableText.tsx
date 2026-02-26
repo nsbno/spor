@@ -1,7 +1,6 @@
 /* eslint-disable simple-import-sort/imports */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ButtonProps } from "@chakra-ui/react";
-import { vercelStegaClean } from "@vercel/stega";
 import {
   PortableTextReactComponents,
   PortableText as SanityPortableText,
@@ -48,6 +47,7 @@ import { LinkButtonSerializer } from "./serializers/LinkButtonSerializer";
 import { NonClickableBoxListSerializer } from "./serializers/NonClickableBoxesSerializer";
 import { TextBlockSerializer } from "./serializers/TextBlockSerializer";
 import { TextBlocksSerializer } from "./serializers/TextBlocksSerializer";
+import { stegaClean } from "@sanity/client/stega";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
@@ -435,7 +435,7 @@ export const PortableText = ({
 }) => {
   return (
     <SanityPortableText
-      value={vercelStegaClean(value)}
+      value={stegaClean(value)}
       components={deepmerge(components, componentsOverrides)}
     />
   );

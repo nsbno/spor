@@ -1,3 +1,4 @@
+import { stegaClean } from "@sanity/client/stega";
 import {
   Box,
   BoxProps,
@@ -8,7 +9,6 @@ import { Highlight } from "prism-react-renderer";
 import { Key, useRef } from "react";
 
 import { theme } from "./codeTheme";
-import { sanitizeCode } from "./codeUtils";
 
 type CodeBlockProps = Omit<BoxProps, "children"> & {
   /** The code to highlight */
@@ -26,7 +26,7 @@ export const CodeBlock = ({
     <CodeBlockContainer
       maxWidth="calc(100vw - var(--spor-space-6))"
       {...props}
-      code={sanitizeCode(code)}
+      code={stegaClean(code)}
       marginTop={2}
     >
       <Highlight theme={theme} code={code} language={language}>

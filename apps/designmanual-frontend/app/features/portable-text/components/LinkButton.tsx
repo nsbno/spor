@@ -1,3 +1,4 @@
+import { stegaClean } from "@sanity/client/stega";
 import {
   ArrowRightOutline24Icon,
   LinkOutOutline24Icon,
@@ -6,7 +7,6 @@ import { Button } from "@vygruppen/spor-react";
 
 import { getIcon } from "~/utils/getIcon";
 import { useLinkProps } from "~/utils/link";
-import { sanitizeInternalHref } from "~/utils/sanitize";
 
 export type LinkButtonProps = {
   href: string;
@@ -24,7 +24,7 @@ export const LinkButton = ({
   linkType = "internal",
 }: LinkButtonProps) => {
   const isExternalLink = linkType === "external";
-  const cleanedHref = isExternalLink ? href : sanitizeInternalHref(href);
+  const cleanedHref = isExternalLink ? href : stegaClean(href);
   const { linkProps, isExternal } = useLinkProps(cleanedHref, anchor);
   const { as, ...restLinkProps } = linkProps;
   const iconProps = resolveIcon({ icon, isExternal });

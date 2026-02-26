@@ -24,8 +24,7 @@ const getSortOrder = (searchParameters: URLSearchParams) => {
 };
 
 const getFilter = (searchParameters: URLSearchParams) => {
-  // Ignore illustrations with type "sticker-peel-off"
-  let filter = `_type == "illustration" && illustrationType != "sticker-peel-off"`;
+  let filter = `_type == "illustration"`;
 
   const search = searchParameters.get("search")?.trim();
   if (search) {

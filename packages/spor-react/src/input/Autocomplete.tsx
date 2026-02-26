@@ -115,7 +115,14 @@ export const Autocomplete = ({
           </Combobox.ClearTrigger>
         </Combobox.IndicatorGroup>
       </Combobox.Control>
-      <Combobox.Positioner>
+      <Combobox.Positioner
+        onBlur={(event) => {
+          // Close if focus moves outside the positioner
+          if (!event.currentTarget.contains(event.relatedTarget as Node)) {
+            combobox.setOpen(false);
+          }
+        }}
+      >
         <Combobox.Content>
           <Combobox.Empty>
             {!loading && (emptyLabel ?? t(texts.noItemsFound))}

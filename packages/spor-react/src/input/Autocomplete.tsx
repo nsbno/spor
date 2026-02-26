@@ -115,15 +115,15 @@ export const Autocomplete = ({
           </Combobox.ClearTrigger>
         </Combobox.IndicatorGroup>
       </Combobox.Control>
-      <Combobox.Positioner
-        onBlur={(event) => {
-          // Close if focus moves outside the positioner
-          if (!event.currentTarget.contains(event.relatedTarget as Node)) {
-            combobox.setOpen(false);
-          }
-        }}
-      >
-        <Combobox.Content>
+      <Combobox.Positioner>
+        <Combobox.Content
+          onBlur={(event) => {
+            // Close if focus moves outside the positioner, necessary for iPhone VoiceOver
+            if (!event.currentTarget.contains(event.relatedTarget as Node)) {
+              combobox.setOpen(false);
+            }
+          }}
+        >
           <Combobox.Empty>
             {!loading && (emptyLabel ?? t(texts.noItemsFound))}
           </Combobox.Empty>

@@ -118,7 +118,7 @@ export const Autocomplete = ({
       <Combobox.Positioner>
         <Combobox.Content
           onBlur={(event) => {
-            // Close if focus moves outside the positioner, necessary for iPhone VoiceOver
+            // Close if focus moves outside the content, necessary for iPhone VoiceOver
             if (!event.currentTarget.contains(event.relatedTarget as Node)) {
               combobox.setOpen(false);
             }

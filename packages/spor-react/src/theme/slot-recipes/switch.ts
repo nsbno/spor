@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import tokens from "@vygruppen/spor-design-tokens";
 
 import { switchAnatomy } from "./anatomy";
 
@@ -57,7 +56,6 @@ export const switchSlotRecipe = defineSlotRecipe({
     control: {
       boxSizing: "content-box",
       padding: 0.5,
-
       display: "inline-flex",
       gap: 1.5,
       flexShrink: 0,
@@ -69,7 +67,8 @@ export const switchSlotRecipe = defineSlotRecipe({
       height: "var(--switch-height)",
       transitionProperty: "common",
       transitionDuration: "fast",
-      outline: "2px solid",
+      outline: "1px solid",
+      outlineOffset: "-1px",
       outlineColor: "core.outline",
       _hover: {
         outline: "2px solid",
@@ -83,14 +82,17 @@ export const switchSlotRecipe = defineSlotRecipe({
       _focusVisible: {
         outlineWidth: "2px",
         outlineColor: "outline.focus",
-        outlineStyle: "solid",
+        outlineStyle: "double",
       },
 
       _checked: {
         backgroundColor: "brand.surface",
+        outline: "none",
         _focusVisible: {
-          outlineStyle: "double",
-          outlineWidth: `calc(3 * ${tokens.size.stroke.md})`, // space for double outline
+          outlineOffset: "1px",
+          outlineStyle: "solid",
+          outlineColor: "outline.focus",
+          outlineWidth: "2px",
         },
       },
       _disabled: {
@@ -113,32 +115,29 @@ export const switchSlotRecipe = defineSlotRecipe({
     size: {
       sm: {
         root: {
-          "--switch-width": "3.3rem",
-          "--switch-height": "1.5rem",
+          "--switch-width": "3rem",
+          "--switch-height": "1.125rem",
         },
         control: {
           borderRadius: "lg",
-          padding: "0.12rem",
         },
       },
       md: {
         root: {
-          "--switch-width": "4.1rem",
-          "--switch-height": "1.8rem",
+          "--switch-width": "3.75rem",
+          "--switch-height": "1.5rem",
         },
         control: {
           borderRadius: "xl",
-          padding: 0.5,
         },
       },
       lg: {
         root: {
-          "--switch-width": "4.8rem",
-          "--switch-height": "2.25rem",
+          "--switch-width": "4.5rem",
+          "--switch-height": "1.875rem",
         },
         control: {
           borderRadius: "2xl",
-          padding: 0.5,
         },
       },
     },

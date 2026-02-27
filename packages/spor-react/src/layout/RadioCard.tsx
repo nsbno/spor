@@ -36,17 +36,24 @@ type RadioCardItemProps = Exclude<
   RadioCardVariantProps & {
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
     ariaLabel?: string;
+    value?: string;
   };
 
 export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
   (props, ref) => {
-    const { inputProps, children } = props;
+    const { inputProps, children, value } = props;
 
     return (
       <ChakraRadioCard.Item {...props}>
-        <ChakraRadioCard.ItemHiddenInput ref={ref} {...inputProps} />
+        <ChakraRadioCard.ItemHiddenInput
+          ref={ref}
+          {...inputProps}
+          aria-label={value}
+        />
 
-        <ChakraRadioCard.ItemControl>{children}</ChakraRadioCard.ItemControl>
+        <ChakraRadioCard.ItemControl aria-hidden={value ? true : false}>
+          {children}
+        </ChakraRadioCard.ItemControl>
       </ChakraRadioCard.Item>
     );
   },

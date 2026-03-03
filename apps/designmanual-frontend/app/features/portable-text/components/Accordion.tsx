@@ -1,5 +1,6 @@
 /* eslint-disable simple-import-sort/imports */
 import type { PortableTextBlock } from "@portabletext/types";
+import { stegaClean } from "@sanity/client/stega";
 import {
   AccordionItem,
   AccordionItemContent,
@@ -14,7 +15,6 @@ import { useLocation } from "react-router";
 import { BlockHeading } from "~/features/portable-text/components/BlockHeading";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getIcon } from "~/utils/getIcon";
-import { stripHiddenChars } from "~/utils/sanitize";
 
 const headingLevelToVariantMap = {
   h2: "lg",
@@ -84,12 +84,12 @@ export const Accordion = ({
   };
 
   // sanitize heading inputs and fall back to safe defaults
-  const rawTitleLevel = stripHiddenChars(titleHeadingLevel);
+  const rawTitleLevel = stegaClean(titleHeadingLevel);
   const safeTitleLevel = /^h[2-5]$/.test(rawTitleLevel)
     ? (rawTitleLevel as "h2" | "h3" | "h4" | "h5")
     : "h2";
 
-  const rawItemLevel = stripHiddenChars(accordionItemHeadingLevel);
+  const rawItemLevel = stegaClean(accordionItemHeadingLevel);
   const safeItemLevel = /^h[3-6]$/.test(rawItemLevel)
     ? (rawItemLevel as "h3" | "h4" | "h5" | "h6")
     : "h3";

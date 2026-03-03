@@ -1,3 +1,4 @@
+import { stegaClean } from "@sanity/client/stega";
 import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
@@ -21,7 +22,6 @@ import {
   getGridImageSize,
 } from "~/features/site/grid/BoxAndCardGrid";
 import { useLinkProps } from "~/utils/link";
-import { sanitizeInternalHref } from "~/utils/sanitize";
 
 export type ImageCardList = {
   heading?: string;
@@ -92,8 +92,7 @@ export const ImageCard = ({
   imageSize,
   aspectRatio,
 }: ImageCardProps) => {
-  const cleandedHref =
-    href && href.includes("http") ? href : sanitizeInternalHref(href);
+  const cleandedHref = href && href.includes("http") ? href : stegaClean(href);
   const { linkProps, isExternal } = useLinkProps(cleandedHref, anchor);
 
   return (

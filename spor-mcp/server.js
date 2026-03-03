@@ -9,10 +9,101 @@ import {
 import tokens from "@vygruppen/spor-design-tokens";
 import * as spor from "@vygruppen/spor-react";
 
+// Resolve a "colors.xxx" or "colors.xxx.yyy" reference to its hex value
+function resolveColorRef(ref, palette, alias, depth = 0) {
+  if (depth > 5) return ref; // guard against circular references
+  if (typeof ref !== "string" || !ref.startsWith("colors.")) return ref;
+  const path = ref.slice("colors.".length);
+  const parts = path.split(".");
+
+  if (parts.length === 1) {
+    const name = parts[0];
+    // Check direct palette value first (e.g. "white", "black") to avoid circular alias refs
+    if (typeof palette[name] === "string") return palette[name];
+    // Then resolve through named alias (e.g. "pine" → "colors.green.700")
+    if (alias[name] && alias[name] !== ref) {
+      return resolveColorRef(alias[name], palette, alias, depth + 1);
+    }
+  }
+  if (parts.length === 2) {
+    const [group, scale] = parts;
+    if (palette[group]?.[scale]) return palette[group][scale];
+  }
+  return ref; // unresolved — return as-is
+}
+
+// Recursively resolve all color references in a token tree
+function resolveTokenTree(obj, palette, alias) {
+  if (typeof obj === "string") return resolveColorRef(obj, palette, alias);
+  if (Array.isArray(obj))
+    return obj.map((v) => resolveTokenTree(v, palette, alias));
+  if (obj && typeof obj === "object") {
+    return Object.fromEntries(
+      Object.entries(obj).map(([k, v]) => [
+        k,
+        resolveTokenTree(v, palette, alias),
+      ]),
+    );
+  }
+  return obj;
+}
+
+// Collect all "colors.xxx" reference strings used in a token tree
+function collectRefs(obj, refs = new Set()) {
+  if (typeof obj === "string") {
+    if (obj.startsWith("colors.")) refs.add(obj);
+  } else if (Array.isArray(obj)) {
+    obj.forEach((v) => collectRefs(v, refs));
+  } else if (obj && typeof obj === "object") {
+    Object.values(obj).forEach((v) => collectRefs(v, refs));
+  }
+  return refs;
+}
+
+// Build theme-scoped palette and resolved aliases from a set of "colors.*" refs
+function buildThemeScopedPalette(refs, palette, alias) {
+  const usedPalette = {};
+  const usedAliases = {};
+
+  for (const ref of refs) {
+    const path = ref.slice("colors.".length);
+    const parts = path.split(".");
+
+    if (parts.length === 2) {
+      const [group, scale] = parts;
+      if (palette[group]?.[scale]) {
+        usedPalette[group] = usedPalette[group] || {};
+        usedPalette[group][scale] = palette[group][scale];
+      }
+    } else if (parts.length === 1) {
+      const name = parts[0];
+      if (alias[name]) {
+        usedAliases[name] = resolveColorRef(alias[name], palette, alias);
+        // Also include the backing palette entry
+        const aliasRef = alias[name];
+        if (typeof aliasRef === "string" && aliasRef.startsWith("colors.")) {
+          const aliasParts = aliasRef.slice("colors.".length).split(".");
+          if (aliasParts.length === 2) {
+            const [group, scale] = aliasParts;
+            if (palette[group]?.[scale]) {
+              usedPalette[group] = usedPalette[group] || {};
+              usedPalette[group][scale] = palette[group][scale];
+            }
+          }
+        }
+      } else if (typeof palette[name] === "string") {
+        usedPalette[name] = palette[name];
+      }
+    }
+  }
+
+  return { palette: usedPalette, aliases: usedAliases };
+}
+
 const server = new Server(
   {
     name: "spor-mcp",
-    version: "1.0.0",
+    version: "1.1.0",
   },
   {
     capabilities: {
@@ -27,7 +118,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "get_spor_tokens",
         description:
-          "Get Spor design tokens for a specific theme. Returns colors by category, spacing, and typography.",
+          "Get Spor design tokens for a specific theme. Returns resolved semantic colors, the scoped primitive palette, named color aliases, spacing, and typography — all in one call.",
         inputSchema: {
           type: "object",
           properties: {
@@ -74,9 +165,9 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
 
         const allColors = tokens.color || {};
-        const colors = allColors[theme] || {};
+        const semanticTokens = allColors[theme] || {};
 
-        if (Object.keys(colors).length === 0) {
+        if (Object.keys(semanticTokens).length === 0) {
           return {
             content: [
               {
@@ -88,27 +179,22 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           };
         }
 
-        const colorKeys = Object.keys(colors);
-        const prefixes = [
-          ...new Set(colorKeys.map((k) => k.split(/[A-Z]/)[0]).filter(Boolean)),
-        ];
+        const palette = allColors.palette || {};
+        const alias = allColors.alias || {};
 
-        const colorsByCategory = {};
-        prefixes.forEach((prefix) => {
-          const filtered = colorKeys
-            .filter((key) => key.startsWith(prefix))
-            .reduce((obj, key) => {
-              const val = colors[key];
-              obj[key] = typeof val === "object" ? val.value || val : val;
-              return obj;
-            }, {});
-          if (Object.keys(filtered).length > 0)
-            colorsByCategory[prefix] = filtered;
-        });
+        // Resolve all "colors.xxx" references to actual hex values
+        const resolvedTokens = resolveTokenTree(semanticTokens, palette, alias);
+
+        // Scope palette and aliases to only what this theme uses
+        const refs = collectRefs(semanticTokens);
+        const { palette: scopedPalette, aliases: scopedAliases } =
+          buildThemeScopedPalette(refs, palette, alias);
 
         const result = {
           theme,
-          colors: colorsByCategory,
+          colors: resolvedTokens,
+          palette: scopedPalette,
+          aliases: scopedAliases,
         };
 
         // Only include size and font if available

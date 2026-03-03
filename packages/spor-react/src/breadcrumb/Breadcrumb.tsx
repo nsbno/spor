@@ -21,21 +21,26 @@ import React, { forwardRef } from "react";
  * ```
  */
 export const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbRootProps>(
-  ({ children, ...props }, ref) => {
+  ({ children, css, ...props }, ref) => {
     const validChildren = React.Children.toArray(children).filter((element) =>
       React.isValidElement(element),
     );
 
     return (
-      <ChakraBreadcrumb.Root ref={ref} {...props}>
-        <ChakraBreadcrumb.List>
+      <ChakraBreadcrumb.Root ref={ref} {...props} css={css}>
+        <ChakraBreadcrumb.List data-part="list">
           {validChildren.map((child, index) => {
             const isLast = index === validChildren.length - 1;
             return (
               <React.Fragment key={index}>
-                <ChakraBreadcrumb.Item>{child}</ChakraBreadcrumb.Item>
+                <ChakraBreadcrumb.Item data-part="item">
+                  {child}
+                </ChakraBreadcrumb.Item>
                 {!isLast && (
-                  <ChakraBreadcrumb.Separator aria-hidden="true">
+                  <ChakraBreadcrumb.Separator
+                    aria-hidden="true"
+                    data-part="separator"
+                  >
                     <DropdownRightFill18Icon />
                   </ChakraBreadcrumb.Separator>
                 )}

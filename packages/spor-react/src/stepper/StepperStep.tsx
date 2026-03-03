@@ -33,7 +33,7 @@ export const StepperStep = ({
     (state !== "active" && disabledOverride) || state === "disabled";
 
   return (
-    <Box css={style.stepContainer}>
+    <Box css={style.stepContainer} data-part="step-container">
       {stepNumber > 1 && (
         <DropdownRightFill18Icon
           marginX={5}
@@ -67,6 +67,7 @@ export const StepperStep = ({
               : style.stepButton
           }
           fontWeight={state === "active" ? "bold" : undefined}
+          data-part="step-button"
         >
           {children}
         </Button>

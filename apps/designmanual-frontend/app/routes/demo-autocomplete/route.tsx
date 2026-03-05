@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Box, Flex, Stack } from "@chakra-ui/react";
 import {
   DestinationOutline24Icon,
@@ -44,8 +45,8 @@ export default function DemoAutocomplete() {
   const [searchQueryFrom, setSearchQueryFrom] = React.useState("");
   const [searchQueryTo, setSearchQueryTo] = React.useState("");
 
-  const [from, setFrom] = React.useState();
-  const [to, setTo] = React.useState();
+  const [from, setFrom] = React.useState<any>();
+  const [to, setTo] = React.useState<any>();
 
   const { data: destinationsFrom, isLoading: isLoadingFrom } =
     useMockDestinationQuery(searchQueryFrom);

@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import { createRequire } from "node:module";
+
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
@@ -8,6 +10,9 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 import tokens from "@vygruppen/spor-design-tokens";
 import * as spor from "@vygruppen/spor-react";
+
+const require = createRequire(import.meta.url);
+const { version } = require("./package.json");
 
 // Resolve a "colors.xxx" or "colors.xxx.yyy" reference to its hex value
 function resolveColorRef(ref, palette, alias, depth = 0) {
@@ -33,39 +38,40 @@ function resolveColorRef(ref, palette, alias, depth = 0) {
 }
 
 // Recursively resolve all color references in a token tree
-function resolveTokenTree(obj, palette, alias) {
-  if (typeof obj === "string") return resolveColorRef(obj, palette, alias);
-  if (Array.isArray(obj))
-    return obj.map((v) => resolveTokenTree(v, palette, alias));
-  if (obj && typeof obj === "object") {
+function resolveTokenTree(object, palette, alias) {
+  if (typeof object === "string")
+    return resolveColorRef(object, palette, alias);
+  if (Array.isArray(object))
+    return object.map((v) => resolveTokenTree(v, palette, alias));
+  if (object && typeof object === "object") {
     return Object.fromEntries(
-      Object.entries(obj).map(([k, v]) => [
+      Object.entries(object).map(([k, v]) => [
         k,
         resolveTokenTree(v, palette, alias),
       ]),
     );
   }
-  return obj;
+  return object;
 }
 
 // Collect all "colors.xxx" reference strings used in a token tree
-function collectRefs(obj, refs = new Set()) {
-  if (typeof obj === "string") {
-    if (obj.startsWith("colors.")) refs.add(obj);
-  } else if (Array.isArray(obj)) {
-    obj.forEach((v) => collectRefs(v, refs));
-  } else if (obj && typeof obj === "object") {
-    Object.values(obj).forEach((v) => collectRefs(v, refs));
+function collectReferences(object, references = new Set()) {
+  if (typeof object === "string") {
+    if (object.startsWith("colors.")) references.add(object);
+  } else if (Array.isArray(object)) {
+    for (const v of object) collectReferences(v, references);
+  } else if (object && typeof object === "object") {
+    for (const v of Object.values(object)) collectReferences(v, references);
   }
-  return refs;
+  return references;
 }
 
 // Build theme-scoped palette and resolved aliases from a set of "colors.*" refs
-function buildThemeScopedPalette(refs, palette, alias) {
+function buildThemeScopedPalette(references, palette, alias) {
   const usedPalette = {};
   const usedAliases = {};
 
-  for (const ref of refs) {
+  for (const ref of references) {
     const path = ref.slice("colors.".length);
     const parts = path.split(".");
 
@@ -103,7 +109,7 @@ function buildThemeScopedPalette(refs, palette, alias) {
 const server = new Server(
   {
     name: "spor-mcp",
-    version: "1.1.0",
+    version,
   },
   {
     capabilities: {
@@ -186,9 +192,9 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const resolvedTokens = resolveTokenTree(semanticTokens, palette, alias);
 
         // Scope palette and aliases to only what this theme uses
-        const refs = collectRefs(semanticTokens);
+        const references = collectReferences(semanticTokens);
         const { palette: scopedPalette, aliases: scopedAliases } =
-          buildThemeScopedPalette(refs, palette, alias);
+          buildThemeScopedPalette(references, palette, alias);
 
         const result = {
           theme,
@@ -198,7 +204,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         };
 
         // Only include size and font if available
-        if (tokens.size) result.size = tokens.size;
+        if (tokens.size > 0) result.size = tokens.size;
         if (tokens.font) result.font = tokens.font;
 
         return {

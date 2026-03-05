@@ -52,9 +52,9 @@ export function CalendarGrid({
   const styles = recipe({ variant });
 
   return (
-    <Box as="table" {...gridProps} css={styles.box}>
+    <Box as="table" {...gridProps} css={styles.box} data-part="calendar-grid">
       <thead {...headerProps}>
-        <tr>
+        <tr data-part="calendar-table-heading">
           {weekDays[language].map((day, index) => {
             return (
               <Text

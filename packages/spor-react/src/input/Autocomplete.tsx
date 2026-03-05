@@ -46,7 +46,6 @@ export const Autocomplete = ({
   emptyLabel,
   openOnClick = true,
   openOnFocus = true,
-  onFocusOutside,
   onInteractOutside,
   onFocus,
   ...rest
@@ -80,10 +79,6 @@ export const Autocomplete = ({
       if (combobox.open) combobox.setOpen(false);
       onInteractOutside?.(event);
     },
-    // onFocusOutside: (event) => {
-    //   if (combobox.open) combobox.setOpen(false);
-    //   onFocusOutside?.(event);
-    // },
     onInputValueChange: (event) => {
       if (!filteredExternally) {
         filter(event.inputValue);

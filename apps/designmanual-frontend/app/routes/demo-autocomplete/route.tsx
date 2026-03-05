@@ -16,6 +16,7 @@ import React from "react";
 import useSwr from "swr";
 
 export default function DemoAutocomplete() {
+  // eslint-disable-next-line unicorn/consistent-function-scoping
   const useMockDestinationQuery = (searchQuery: string) => {
     return useSwr(
       [searchQuery, "destinations"],

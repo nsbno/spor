@@ -47,6 +47,7 @@ export const Autocomplete = ({
   openOnClick = true,
   openOnFocus = true,
   onFocusOutside,
+  onInteractOutside,
   onFocus,
   ...rest
 }: Props) => {
@@ -75,10 +76,14 @@ export const Autocomplete = ({
   const combobox = useCombobox({
     collection,
     openOnClick,
-    onFocusOutside: (event) => {
+    onInteractOutside: (event) => {
       if (combobox.open) combobox.setOpen(false);
-      onFocusOutside?.(event);
+      onInteractOutside?.(event);
     },
+    // onFocusOutside: (event) => {
+    //   if (combobox.open) combobox.setOpen(false);
+    //   onFocusOutside?.(event);
+    // },
     onInputValueChange: (event) => {
       if (!filteredExternally) {
         filter(event.inputValue);

@@ -51,7 +51,7 @@ export const DateTimeSegment = forwardRef<HTMLDivElement, DateTimeSegmentProps>(
         borderRadius="xs"
         fontSize={["mobile.sm", "desktop.sm"]}
         css={styles.dateTimeSegment}
-        aria-description={ariaDescription}
+        aria-label={ariaDescription}
         aria-labelledby={ariaLabel}
       >
         {isPaddable(segment.type)

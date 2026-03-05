@@ -204,7 +204,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         };
 
         // Only include size and font if available
-        if (tokens.size > 0) result.size = tokens.size;
+        if (tokens.size != null) result.size = tokens.size;
         if (tokens.font) result.font = tokens.font;
 
         return {

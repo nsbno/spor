@@ -75,7 +75,7 @@ export const Autocomplete = ({
     collection,
     openOnClick,
     onFocusOutside: () => {
-      combobox.setOpen(false);
+      if (combobox.open) combobox.setOpen(false);
     },
     onInputValueChange: (event) => {
       if (!filteredExternally) {

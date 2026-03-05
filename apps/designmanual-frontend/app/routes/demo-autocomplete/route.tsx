@@ -54,7 +54,7 @@ export default function DemoAutocomplete() {
     useMockDestinationQuery(searchQueryTo);
 
   return (
-    <Box width="100vw">
+    <Box width={[null, "100vw"]} height="100vh">
       <Box maxW="800px">
         <AttachedInputs
           onFlip={() => {

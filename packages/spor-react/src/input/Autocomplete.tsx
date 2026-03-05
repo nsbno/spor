@@ -46,6 +46,8 @@ export const Autocomplete = ({
   emptyLabel,
   openOnClick = true,
   openOnFocus = true,
+  onInteractOutside,
+  onFocus,
   ...rest
 }: Props) => {
   const { contains } = useFilter({ sensitivity: "base" });
@@ -73,6 +75,10 @@ export const Autocomplete = ({
   const combobox = useCombobox({
     collection,
     openOnClick,
+    onInteractOutside: (event) => {
+      if (combobox.open) combobox.setOpen(false);
+      onInteractOutside?.(event);
+    },
     onInputValueChange: (event) => {
       if (!filteredExternally) {
         filter(event.inputValue);
@@ -104,8 +110,9 @@ export const Autocomplete = ({
             helperText={helperText}
             errorText={errorText}
             required={required}
-            onFocus={() => {
+            onFocus={(event) => {
               if (openOnFocus) combobox.setOpen(true);
+              onFocus?.(event);
             }}
           />
         </Combobox.Input>
@@ -116,14 +123,7 @@ export const Autocomplete = ({
         </Combobox.IndicatorGroup>
       </Combobox.Control>
       <Combobox.Positioner>
-        <Combobox.Content
-          onBlur={(event) => {
-            // Close if focus moves outside the content, necessary for iPhone VoiceOver
-            if (!event.currentTarget.contains(event.relatedTarget as Node)) {
-              combobox.setOpen(false);
-            }
-          }}
-        >
+        <Combobox.Content>
           <Combobox.Empty>
             {!loading && (emptyLabel ?? t(texts.noItemsFound))}
           </Combobox.Empty>

@@ -83,6 +83,7 @@ export const Autocomplete = ({
       onInputValueChange?.(event);
     },
     onHighlightChange: (event) => {
+      console.log("highlight change:", event);
       const hasHighlightedValue = !!event.highlightedValue;
       if (
         !hasHighlightedValue &&

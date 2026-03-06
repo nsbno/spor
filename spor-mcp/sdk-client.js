@@ -22,19 +22,63 @@ async function main() {
   await client.connect(transport);
   console.log("Connected to server\n");
 
-  // List tools
-  const tools = await client.listTools();
+  // List available tools
+  const { tools } = await client.listTools();
   console.log("Available tools:");
-  tools.tools.forEach((t) => console.log(`  - ${t.name}: ${t.description}`));
+  for (const t of tools) console.log(`  - ${t.name}: ${t.description}`);
   console.log();
 
-  // Call list_spor_components
+  const toolName = process.argv[2];
+
+  if (!toolName) {
+    console.log("Usage: node sdk-client.js <tool-name> [json-args]");
+    console.log("Examples:");
+    console.log("  node sdk-client.js list_spor_components");
+    console.log(
+      '  node sdk-client.js get_spor_tokens \'{"theme":"vyDigital"}\'',
+    );
+    console.log(
+      '  node sdk-client.js get_spor_tokens \'{"theme":"vyUtvikling"}\'',
+    );
+    console.log(
+      '  node sdk-client.js get_spor_tokens \'{"theme":"cargonet"}\'',
+    );
+    await client.close();
+    return;
+  }
+
+  const toolExists = tools.some((t) => t.name === toolName);
+  if (!toolExists) {
+    console.error(`Unknown tool: "${toolName}"`);
+    console.error(`Available: ${tools.map((t) => t.name).join(", ")}`);
+    await client.close();
+    process.exit(1);
+  }
+
+  let arguments_ = {};
+  if (process.argv[3]) {
+    try {
+      arguments_ = JSON.parse(process.argv[3]);
+    } catch {
+      console.error("Invalid JSON for arguments:", process.argv[3]);
+      await client.close();
+      process.exit(1);
+    }
+  }
+
+  console.log(
+    `Calling "${toolName}"${Object.keys(arguments_).length > 0 ? ` with ${JSON.stringify(arguments_)}` : ""}...\n`,
+  );
   const result = await client.callTool({
-    name: "list_spor_components",
-    arguments: {},
+    name: toolName,
+    arguments: arguments_,
   });
-  console.log("Spor Components:");
-  console.log(result.content[0].text);
+
+  if (result.isError) {
+    console.error("Tool error:", result.content[0].text);
+  } else {
+    console.log(result.content[0].text);
+  }
 
   await client.close();
 }

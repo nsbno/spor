@@ -219,7 +219,7 @@ const VerySmallButton = React.forwardRef<
 >((props, ref) => {
   const { withStepLabel = false, ...rest } = props;
   const recipe = useSlotRecipe({ key: "numericStepper" });
-  const styles = recipe({ colorPalette: "default", withStepLabel });
+  const styles = recipe({ withStepLabel });
   return (
     <IconButton
       variant="primary"

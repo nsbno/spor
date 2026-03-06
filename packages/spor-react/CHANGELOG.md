@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.24.8
+
+### Patch Changes
+
+- e83b70a: improve the support of voiceover for RadioCards
+
 ## 12.24.7
 
 ### Patch Changes

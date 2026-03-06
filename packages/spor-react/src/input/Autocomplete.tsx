@@ -47,7 +47,6 @@ export const Autocomplete = ({
   onFocus,
   openOnClick = true,
   openOnFocus = true,
-  onPointerDownOutside,
   ...rest
 }: Props) => {
   const { contains } = useFilter({ sensitivity: "base" });
@@ -72,6 +71,8 @@ export const Autocomplete = ({
     [children, collection.items],
   );
 
+  const inputId = React.useId();
+
   const combobox = useCombobox({
     collection,
     openOnClick,
@@ -81,9 +82,15 @@ export const Autocomplete = ({
       }
       onInputValueChange?.(event);
     },
-    onPointerDownOutside: (event) => {
-      if (combobox.open) combobox.setOpen(false);
-      onPointerDownOutside?.(event);
+    onHighlightChange: (event) => {
+      const hasHighlightedItem = !!event.highlightedItem;
+      if (
+        !hasHighlightedItem &&
+        document.activeElement?.id !== inputId &&
+        combobox.open
+      ) {
+        combobox.setOpen(false);
+      }
     },
     positioning: {
       placement: "bottom",
@@ -102,6 +109,7 @@ export const Autocomplete = ({
       <Combobox.Control>
         <Combobox.Input asChild>
           <Input
+            id={inputId}
             label={<Combobox.Label>{label}</Combobox.Label>}
             variant={variant}
             labelAsChild

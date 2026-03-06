@@ -47,6 +47,7 @@ export const Autocomplete = ({
   onFocus,
   openOnClick = true,
   openOnFocus = true,
+  onPointerDownOutside,
   ...rest
 }: Props) => {
   const { contains } = useFilter({ sensitivity: "base" });
@@ -79,6 +80,10 @@ export const Autocomplete = ({
         filter(event.inputValue);
       }
       onInputValueChange?.(event);
+    },
+    onPointerDownOutside: (event) => {
+      if (combobox.open) combobox.setOpen(false);
+      onPointerDownOutside?.(event);
     },
     positioning: {
       placement: "bottom",

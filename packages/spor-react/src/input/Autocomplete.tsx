@@ -83,9 +83,9 @@ export const Autocomplete = ({
       onInputValueChange?.(event);
     },
     onHighlightChange: (event) => {
-      const hasHighlightedItem = !!event.highlightedItem;
+      const hasHighlightedValue = !!event.highlightedValue;
       if (
-        !hasHighlightedItem &&
+        !hasHighlightedValue &&
         document.activeElement?.id !== inputId &&
         combobox.open
       ) {

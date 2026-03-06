@@ -71,6 +71,8 @@ export const Autocomplete = ({
     [children, collection.items],
   );
 
+  const inputId = React.useId();
+
   const combobox = useCombobox({
     collection,
     openOnClick,
@@ -79,6 +81,17 @@ export const Autocomplete = ({
         filter(event.inputValue);
       }
       onInputValueChange?.(event);
+    },
+    onHighlightChange: (event) => {
+      console.log("highlight change:", event);
+      const hasHighlightedValue = !!event.highlightedValue;
+      if (
+        !hasHighlightedValue &&
+        document.activeElement?.id !== inputId &&
+        combobox.open
+      ) {
+        combobox.setOpen(false);
+      }
     },
     positioning: {
       placement: "bottom",
@@ -97,6 +110,7 @@ export const Autocomplete = ({
       <Combobox.Control>
         <Combobox.Input asChild>
           <Input
+            id={inputId}
             label={<Combobox.Label>{label}</Combobox.Label>}
             variant={variant}
             labelAsChild

@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.24.7
+
+### Patch Changes
+
+- 17c0938: Ensure onFocus is passed to Autocomplete
+
 ## 12.24.6
 
 ### Patch Changes

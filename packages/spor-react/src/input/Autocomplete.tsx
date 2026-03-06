@@ -44,6 +44,7 @@ export const Autocomplete = ({
   loading,
   disabled,
   emptyLabel,
+  onFocus,
   openOnClick = true,
   openOnFocus = true,
   ...rest
@@ -104,7 +105,8 @@ export const Autocomplete = ({
             helperText={helperText}
             errorText={errorText}
             required={required}
-            onFocus={() => {
+            onFocus={(event) => {
+              onFocus?.(event);
               if (openOnFocus) combobox.setOpen(true);
             }}
           />
@@ -116,14 +118,7 @@ export const Autocomplete = ({
         </Combobox.IndicatorGroup>
       </Combobox.Control>
       <Combobox.Positioner>
-        <Combobox.Content
-          onBlur={(event) => {
-            // Close if focus moves outside the content, necessary for iPhone VoiceOver
-            if (!event.currentTarget.contains(event.relatedTarget as Node)) {
-              combobox.setOpen(false);
-            }
-          }}
-        >
+        <Combobox.Content>
           <Combobox.Empty>
             {!loading && (emptyLabel ?? t(texts.noItemsFound))}
           </Combobox.Empty>

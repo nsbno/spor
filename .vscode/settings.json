@@ -4,5 +4,12 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
-  }
+  },
+  "cSpell.words": [
+    "cargonet",
+    "modelcontextprotocol",
+    "spor",
+    "Utvikling",
+    "vygruppen"
+  ]
 }

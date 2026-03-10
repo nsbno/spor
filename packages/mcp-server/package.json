@@ -1,0 +1,33 @@
+{
+  "name": "@vygruppen/mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for Spor Design System",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "bin": {
+    "spor-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "test:smoke": "pnpm build && node dist/sdk-client.js",
+    "inspect": "pnpm build && npx @modelcontextprotocol/inspector node dist/index.js",
+    "prepublishOnly": "pnpm test:smoke"
+  },
+  "keywords": [
+    "mcp",
+    "spor",
+    "design-system"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "@vygruppen/spor-design-tokens": "^4.3.2",
+    "@vygruppen/spor-react": "^12.22.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "typescript": "^5.0.0"
+  }
+}

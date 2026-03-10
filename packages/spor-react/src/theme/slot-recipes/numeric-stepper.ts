@@ -66,4 +66,15 @@ export const numericStepperRecipe = defineSlotRecipe({
       },
     },
   },
+
+  variants: {
+    withStepLabel: {
+      true: {
+        button: {
+          paddingInline: "1 !important",
+        },
+      },
+      false: {},
+    },
+  },
 });

@@ -75,12 +75,19 @@ async function main() {
   });
 
   if (result.isError) {
-    console.error("Tool error:", result.content[0].text);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    console.error("Tool error:", (result as any).content[0].text);
   } else {
-    console.log(result.content[0].text);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    console.log((result as any).content[0].text);
   }
 
   await client.close();
 }
 
-main().catch(console.error);
+try {
+  await main();
+} catch (error) {
+  console.error(error);
+  process.exitCode = 1;
+}

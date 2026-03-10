@@ -106,7 +106,7 @@ importers:
         version: 4.9.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@chakra-ui/react':
         specifier: ^3.30.0
-        version: 3.33.0(@emotion/react@11.14.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 3.33.0(@emotion/react@11.14.0(@types/react@18.3.28)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@emotion/cache':
         specifier: ^11.14.0
         version: 11.14.0
@@ -368,8 +368,8 @@ importers:
         specifier: ^4.3.2
         version: 4.3.3
       '@vygruppen/spor-react':
-        specifier: ^12.22.2
-        version: 12.24.7(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: workspace:*
+        version: link:../spor-react
     devDependencies:
       '@types/node':
         specifier: ^24.5.2
@@ -439,7 +439,7 @@ importers:
     devDependencies:
       '@chakra-ui/react':
         specifier: ^3.30.0
-        version: 3.33.0(@emotion/react@11.14.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 3.33.0(@emotion/react@11.14.0(@types/react@18.3.28)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@svgr/core':
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.9.3)
@@ -577,7 +577,7 @@ importers:
         version: 3.33.0(@chakra-ui/react@3.33.0(@emotion/react@11.14.0(@types/react@18.3.28)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@chakra-ui/react':
         specifier: ^3.30.0
-        version: 3.33.0(@emotion/react@11.14.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 3.33.0(@emotion/react@11.14.0(@types/react@18.3.28)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@chakra-ui/react-use-size':
         specifier: ^2.1.0
         version: 2.1.0(react@18.3.1)
@@ -5665,21 +5665,6 @@ packages:
 
   '@vygruppen/spor-design-tokens@4.3.3':
     resolution: {integrity: sha512-CvtcfPZ5NRXuuZflxhSlgXLkB2xOP8hn0cFcDLNI+vmfA8U86yFQzmF4L/dhn/aYG93zCbS2bfH/rqrPVHOqhw==}
-
-  '@vygruppen/spor-icon-react@4.5.2':
-    resolution: {integrity: sha512-fd6LU6BobmLbqK13RNEAPM3YryZyUwrG54+0RuEO4sYrSqkTXrtZzR2LhyjTs3L7MHIz13n6FNhjr87RQQu5Vw==}
-    peerDependencies:
-      react: '>=18.0.0 <19.0.0'
-      react-dom: '>=18.0.0 <19.0.0'
-
-  '@vygruppen/spor-loader@0.7.0':
-    resolution: {integrity: sha512-aLp9Wr6yQAuGKXRvnIKac14zuyrBW+uYQR6RwO/A51rzyAygLAoTl8oPGDJZlGe642jafxKiWw2cRsKcjydiFw==}
-
-  '@vygruppen/spor-react@12.24.7':
-    resolution: {integrity: sha512-6DoU8K8AbmG7kxFGFsqs+zlmth2u2fyPJM/vJWVtekai2SAcFtPwQIGXxDYAPQmG9SZdKGOrDyWvEITu5sLNrg==}
-    peerDependencies:
-      react: '>=18.0.0 <19.0.0'
-      react-dom: '>=18.0.0 <19.0.0'
 
   '@xstate/react@6.0.0':
     resolution: {integrity: sha512-xXlLpFJxqLhhmecAXclBECgk+B4zYSrDTl8hTfPZBogkn82OHKbm9zJxox3Z/YXoOhAQhKFTRLMYGdlbhc6T9A==}
@@ -13779,7 +13764,7 @@ snapshots:
       '@babel/core': 7.29.0
       '@babel/parser': 7.29.0
       '@babel/plugin-transform-typescript': 7.28.6(@babel/core@7.29.0)
-      '@chakra-ui/react': 3.33.0(@emotion/react@11.14.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@chakra-ui/react': 3.33.0(@emotion/react@11.14.0(@types/react@18.3.28)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@clack/prompts': 0.11.0
       '@pandacss/is-valid-prop': 1.8.1
       '@types/babel__core': 7.20.5
@@ -13825,7 +13810,7 @@ snapshots:
       '@chakra-ui/utils': 2.0.15
       react: 18.3.1
 
-  '@chakra-ui/react@3.33.0(@emotion/react@11.14.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@chakra-ui/react@3.33.0(@emotion/react@11.14.0(@types/react@18.3.28)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@ark-ui/react': 5.32.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@emotion/is-prop-valid': 1.4.0
@@ -19476,48 +19461,6 @@ snapshots:
       - supports-color
 
   '@vygruppen/spor-design-tokens@4.3.3': {}
-
-  '@vygruppen/spor-icon-react@4.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-
-  '@vygruppen/spor-loader@0.7.0': {}
-
-  '@vygruppen/spor-react@12.24.7(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@ark-ui/react': 4.9.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@chakra-ui/anatomy': 2.3.4
-      '@chakra-ui/cli': 3.33.0(@chakra-ui/react@3.33.0(@emotion/react@11.14.0(@types/react@18.3.28)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
-      '@chakra-ui/react': 3.33.0(@emotion/react@11.14.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@chakra-ui/react-use-size': 2.1.0(react@18.3.1)
-      '@chakra-ui/styled-system': 2.12.0(react@18.3.1)
-      '@chakra-ui/system': 2.6.2(@emotion/react@11.14.0(@types/react@18.3.28)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.3.28)(react@18.3.1))(@types/react@18.3.28)(react@18.3.1))(react@18.3.1)
-      '@chakra-ui/theme': 3.4.6(@chakra-ui/styled-system@2.12.0(react@18.3.1))(react@18.3.1)
-      '@chakra-ui/theme-tools': 2.2.6(@chakra-ui/styled-system@2.12.0(react@18.3.1))(react@18.3.1)
-      '@chakra-ui/utils': 2.2.2(react@18.3.1)
-      '@emotion/react': 11.14.0(@types/react@18.3.28)(react@18.3.1)
-      '@emotion/styled': 11.14.1(@emotion/react@11.14.0(@types/react@18.3.28)(react@18.3.1))(@types/react@18.3.28)(react@18.3.1)
-      '@internationalized/date': 3.11.0
-      '@vygruppen/spor-design-tokens': 4.3.3
-      '@vygruppen/spor-icon-react': 4.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@vygruppen/spor-loader': 0.7.0
-      awesome-phonenumber: 5.11.0
-      deepmerge: 4.3.1
-      framer-motion: 11.18.2(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      lottie-react: 2.4.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      next-themes: 0.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react: 18.3.1
-      react-aria: 3.46.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react-dom: 18.3.1(react@18.3.1)
-      react-icons: 5.5.0(react@18.3.1)
-      react-stately: 3.44.0(react@18.3.1)
-      react-swipeable: 7.0.2(react@18.3.1)
-      usehooks-ts: 3.1.1(react@18.3.1)
-    transitivePeerDependencies:
-      - '@emotion/is-prop-valid'
-      - '@types/react'
-      - supports-color
 
   '@xstate/react@6.0.0(@types/react@18.3.28)(react@18.3.1)(xstate@5.28.0)':
     dependencies:

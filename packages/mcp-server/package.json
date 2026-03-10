@@ -24,7 +24,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.26.0",
     "@vygruppen/spor-design-tokens": "^4.3.2",
-    "@vygruppen/spor-react": "^12.24.8"
+    "@vygruppen/spor-react": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^24.5.2",

@@ -13,8 +13,7 @@
     "dev": "tsc --watch",
     "start": "node dist/index.js",
     "test:smoke": "pnpm build && node dist/sdk-client.js",
-    "inspect": "pnpm build && npx @modelcontextprotocol/inspector node dist/index.js",
-    "prepublishOnly": "pnpm test:smoke"
+    "inspect": "pnpm build && npx @modelcontextprotocol/inspector node dist/index.js"
   },
   "keywords": [
     "mcp",

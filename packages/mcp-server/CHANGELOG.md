@@ -1,5 +1,11 @@
 # @vygruppen/mcp-server
 
+## 2.0.1
+
+### Patch Changes
+
+- 64adb60: Resolve package path
+
 ## 2.0.0
 
 ### Major Changes

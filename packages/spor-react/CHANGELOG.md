@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 12.24.8
+
+### Patch Changes
+
+- 65d79ba: add padding to numeric stepper when stepSize is visible
+- e83b70a: improve the support of voiceover for RadioCards
+  - @vygruppen/spor-icon-react@4.5.2
+
 ## 12.24.7
 
 ### Patch Changes

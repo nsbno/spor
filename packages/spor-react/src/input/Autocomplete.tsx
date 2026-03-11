@@ -119,13 +119,16 @@ export const Autocomplete = ({
       </Combobox.Control>
       <Combobox.Positioner>
         <Combobox.Content>
-          <Combobox.Empty>
-            {!loading && (emptyLabel ?? t(texts.noItemsFound))}
-          </Combobox.Empty>
           {loading ? (
             <ColorSpinner width="1.5rem" p="2" />
           ) : (
-            <>{filteredChildren}</>
+            <>
+              {filteredChildren.length > 0 ? (
+                filteredChildren
+              ) : (
+                <AutocompleteEmpty loading={loading} emptyLabel={emptyLabel} />
+              )}
+            </>
           )}
         </Combobox.Content>
       </Combobox.Positioner>
@@ -213,6 +216,25 @@ const extractItemsFromChildren = (children: React.ReactNode): Item[] => {
     }
   });
   return items;
+};
+
+const AutocompleteEmpty = ({
+  loading,
+  emptyLabel,
+}: {
+  loading?: boolean;
+  emptyLabel?: React.ReactNode;
+}) => {
+  const { inputValue } = useComboboxContext();
+  const { t } = useTranslation();
+
+  if (!inputValue || loading) return null;
+
+  return (
+    <Combobox.Empty>
+      {emptyLabel ?? t(texts.noItemsFound)}
+    </Combobox.Empty>
+  );
 };
 
 const texts = createTexts({

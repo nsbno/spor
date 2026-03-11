@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.24.10
+
+### Patch Changes
+
+- 4d11f81: Fix closetrigger tabbable autocomplete
+
 ## 12.24.9
 
 ### Patch Changes

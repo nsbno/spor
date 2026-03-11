@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.24.11
+
+### Patch Changes
+
+- 4b468fb: Autocomplete - Empty result text now does not display when input is empty
+
 ## 12.24.10
 
 ### Patch Changes

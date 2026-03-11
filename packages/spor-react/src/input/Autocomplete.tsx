@@ -73,7 +73,7 @@ export const Autocomplete = ({
 
   const combobox = useCombobox({
     collection,
-    openOnClick,
+    openOnClick: filteredChildren.length > 0 ? openOnClick : false,
     onInputValueChange: (event) => {
       if (!filteredExternally) {
         filter(event.inputValue);
@@ -107,7 +107,8 @@ export const Autocomplete = ({
             required={required}
             onFocus={(event) => {
               onFocus?.(event);
-              if (openOnFocus) combobox.setOpen(true);
+              if (openOnFocus && filteredChildren.length > 0)
+                combobox.setOpen(true);
             }}
           />
         </Combobox.Input>
@@ -119,14 +120,12 @@ export const Autocomplete = ({
       </Combobox.Control>
       <Combobox.Positioner>
         <Combobox.Content>
-          <Combobox.Empty>
-            {!loading && (emptyLabel ?? t(texts.noItemsFound))}
-          </Combobox.Empty>
-          {loading ? (
-            <ColorSpinner width="1.5rem" p="2" />
-          ) : (
-            <>{filteredChildren}</>
+          {!loading && (
+            <Combobox.Empty>
+              {emptyLabel ?? t(texts.noItemsFound)}
+            </Combobox.Empty>
           )}
+          {loading ? <ColorSpinner width="1.5rem" p="2" /> : filteredChildren}
         </Combobox.Content>
       </Combobox.Positioner>
     </Combobox.RootProvider>

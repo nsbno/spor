@@ -16,7 +16,7 @@ async function main() {
 
   const transport = new StdioClientTransport({
     command: process.execPath,
-    args: ["./server.js"],
+    args: ["dist/index.js"],
   });
 
   await client.connect(transport);

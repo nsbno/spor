@@ -1,6 +1,6 @@
-# @vygruppen/mcp-server
+# @vygruppen/spor-mcp-server
 
-## 2.0.0
+## 2.1.0
 
 ### Major Changes
 

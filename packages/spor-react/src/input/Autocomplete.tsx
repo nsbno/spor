@@ -230,11 +230,7 @@ const AutocompleteEmpty = ({
 
   if (!inputValue || loading) return null;
 
-  return (
-    <Combobox.Empty>
-      {emptyLabel ?? t(texts.noItemsFound)}
-    </Combobox.Empty>
-  );
+  return <Combobox.Empty>{emptyLabel ?? t(texts.noItemsFound)}</Combobox.Empty>;
 };
 
 const texts = createTexts({

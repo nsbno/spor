@@ -2,4 +2,4 @@
 "@vygruppen/spor-mcp-server": minor
 ---
 
-asdasd
+Spor MCP server

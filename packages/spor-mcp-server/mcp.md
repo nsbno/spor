@@ -29,20 +29,6 @@ pnpm install
 
 This installs `@vygruppen/spor-design-tokens` and `@vygruppen/spor-react` that the server imports.
 
-### Sanity token setup
-
-The server reads the Sanity API token from the `SANITY_TOKEN` environment variable.
-
-Example:
-
-```bash
-cp .env.example .env
-export SANITY_TOKEN="your-sanity-read-token"
-pnpm --filter @vygruppen/spormcp-server start
-```
-
-Do not commit tokens to source files.
-
 ### Copilot in VS Code
 
 Add to `~/.vscode/mcp.json` (in your home directory, applies globally):

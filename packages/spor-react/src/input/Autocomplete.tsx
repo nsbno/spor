@@ -113,7 +113,7 @@ export const Autocomplete = ({
         </Combobox.Input>
         <Combobox.IndicatorGroup>
           <Combobox.ClearTrigger asChild aria-label={t(texts.clearValue)}>
-            <CloseButton size="xs" />
+            <CloseButton size="xs" tabIndex={0} />
           </Combobox.ClearTrigger>
         </Combobox.IndicatorGroup>
       </Combobox.Control>

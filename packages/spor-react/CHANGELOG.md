@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.24.9
+
+### Patch Changes
+
+- 795555b: Revert radiocard VO fix. Created other issues with voice-over
+
 ## 12.24.8
 
 ### Patch Changes

@@ -132,6 +132,7 @@ export const NumericStepper = React.forwardRef<
           }
         }}
         disabled={disabled || value <= minValue}
+        withStepLabel={stepSize != 1}
       />
       {withInput ? (
         <Input
@@ -187,6 +188,7 @@ export const NumericStepper = React.forwardRef<
         )}
         onClick={() => onChange(Math.min(value + clampedStepSize, maxValue))}
         disabled={disabled || value >= maxValue}
+        withStepLabel={stepSize != 1}
       />
     </Field>
   );
@@ -206,6 +208,8 @@ type VerySmallButtonProps = {
   disabled?: boolean;
   /** The ID of the button */
   id?: string;
+  /** Whether or not the stepsize is visible in the button */
+  withStepLabel?: boolean;
 };
 
 /** Internal override for extra small icon buttons */
@@ -213,15 +217,16 @@ const VerySmallButton = React.forwardRef<
   HTMLButtonElement,
   VerySmallButtonProps
 >((props, ref) => {
+  const { withStepLabel = false, ...rest } = props;
   const recipe = useSlotRecipe({ key: "numericStepper" });
-  const styles = recipe({ colorPalette: "default" });
+  const styles = recipe({ withStepLabel });
   return (
     <IconButton
       variant="primary"
       size="xs"
       css={styles.button}
       ref={ref}
-      {...props}
+      {...rest}
     />
   );
 });

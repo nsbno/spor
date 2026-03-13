@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable unicorn/explicit-length-check */
 
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
@@ -74,7 +75,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
 
         const allColors = tokens.color || {};
-        const colors = allColors[theme] || {};
+        const colors = allColors[theme as keyof typeof allColors] || {};
 
         if (Object.keys(colors).length === 0) {
           return {
@@ -93,28 +94,38 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           ...new Set(colorKeys.map((k) => k.split(/[A-Z]/)[0]).filter(Boolean)),
         ];
 
-        const colorsByCategory = {};
-        prefixes.forEach((prefix) => {
-          const filtered = colorKeys
-            .filter((key) => key.startsWith(prefix))
-            .reduce((obj, key) => {
-              const val = colors[key];
-              obj[key] = typeof val === "object" ? val.value || val : val;
-              return obj;
-            }, {});
-          if (Object.keys(filtered).length > 0)
-            colorsByCategory[prefix] = filtered;
-        });
+        const colorsByCategory: Record<string, Record<string, unknown>> = {};
+        for (const prefix of prefixes) {
+          const filtered: Record<string, unknown> = {};
 
-        const result = {
+          for (const key of colorKeys) {
+            if (key.startsWith(prefix)) {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const value = (colors as Record<string, any>)[key];
+              filtered[key] =
+                typeof value === "object" ? value.value || value : value;
+            }
+          }
+
+          if (Object.keys(filtered).length > 0) {
+            colorsByCategory[prefix] = filtered;
+          }
+        }
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const result: any = {
           theme,
           colors: colorsByCategory,
         };
 
         // Only include size and font if available
-        if (tokens.size) result.size = tokens.size;
-        if (tokens.font) result.font = tokens.font;
+        if (tokens.size) {
+          result.size = tokens.size;
+        }
 
+        if (tokens.font) {
+          result.font = tokens.font;
+        }
         return {
           content: [
             {
@@ -157,7 +168,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       content: [
         {
           type: "text",
-          text: `Error: ${error.message}`,
+          text: `Error: ${(error as Error).message}`,
         },
       ],
       isError: true,
@@ -165,13 +176,6 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   }
 });
 
-async function main() {
-  const transport = new StdioServerTransport();
-  await server.connect(transport);
-  console.error("Spor MCP server running on stdio");
-}
-
-main().catch((error) => {
-  console.error("Fatal error:", error);
-  process.exit(1);
-});
+// ── Start server ───────────────────────────────────────────────────────────
+const transport = new StdioServerTransport();
+await server.connect(transport);

@@ -42,7 +42,7 @@ export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
   (props, ref) => {
     const { inputProps, children } = props;
     const uniqueId = useId();
-    const itemControlId = `radio-card:item-control:${uniqueId}`;
+    const itemControlId = `radio-card-item-control-${uniqueId}`;
 
     const inputHasAriaLabel =
       inputProps?.["aria-labelledby"] || inputProps?.["aria-label"];

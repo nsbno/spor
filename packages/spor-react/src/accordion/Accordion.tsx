@@ -55,14 +55,14 @@ import {
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
   (props, ref) => {
-    const { variant = "core", children, gap = 2, ...rest } = props;
+    const { variant = "core", children, gap = 2, css, ...rest } = props;
     const recipe = useSlotRecipe({ key: "accordion" });
     const styles = recipe({ variant });
     return (
       <ChakraAccordion.Root
         {...rest}
         ref={ref}
-        css={styles.root}
+        css={{ ...styles.root, ...css }}
         variant={variant}
       >
         <Stack gap={gap}>{children}</Stack>
@@ -79,6 +79,7 @@ export const AccordionItemTrigger = forwardRef<
     startElement,
     children,
     headingLevel,
+    css,
     showChevron = true,
     ...rest
   } = props;
@@ -87,7 +88,11 @@ export const AccordionItemTrigger = forwardRef<
   const styles = recipe();
   return (
     <Box as={headingLevel}>
-      <ChakraAccordion.ItemTrigger {...rest} ref={ref} css={styles.itemTrigger}>
+      <ChakraAccordion.ItemTrigger
+        {...rest}
+        ref={ref}
+        css={{ ...styles.itemTrigger, ...css }}
+      >
         <HStack flex="1" gap={1} textAlign="start" width="full">
           {startElement && startElement}
           {children}
@@ -106,13 +111,13 @@ export const AccordionItemContent = forwardRef<
   HTMLDivElement,
   AccordionItemContentProps
 >(function AccordionItemContent(props, ref) {
-  const { children } = props;
+  const { children, css } = props;
 
   const recipe = useSlotRecipe({ key: "accordion" });
   const styles = recipe();
 
   return (
-    <ChakraAccordion.ItemContent css={styles.itemContent}>
+    <ChakraAccordion.ItemContent css={{ ...styles.itemContent, ...css }}>
       <ChakraAccordion.ItemBody {...props} ref={ref}>
         {children}
       </ChakraAccordion.ItemBody>

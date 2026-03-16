@@ -112,10 +112,7 @@ export const AccordionItemContent = forwardRef<
   const styles = recipe();
 
   return (
-    <ChakraAccordion.ItemContent
-      css={styles.itemContent}
-      aria-labelledby={undefined}
-    >
+    <ChakraAccordion.ItemContent css={styles.itemContent} aria-labelledby="">
       <ChakraAccordion.ItemBody {...otherProps} ref={ref}>
         {children}
       </ChakraAccordion.ItemBody>

@@ -106,14 +106,17 @@ export const AccordionItemContent = forwardRef<
   HTMLDivElement,
   AccordionItemContentProps
 >(function AccordionItemContent(props, ref) {
-  const { children } = props;
+  const { children, ...otherProps } = props;
 
   const recipe = useSlotRecipe({ key: "accordion" });
   const styles = recipe();
 
   return (
-    <ChakraAccordion.ItemContent css={styles.itemContent}>
-      <ChakraAccordion.ItemBody {...props} ref={ref}>
+    <ChakraAccordion.ItemContent
+      css={styles.itemContent}
+      aria-labelledby={undefined}
+    >
+      <ChakraAccordion.ItemBody {...otherProps} ref={ref}>
         {children}
       </ChakraAccordion.ItemBody>
     </ChakraAccordion.ItemContent>

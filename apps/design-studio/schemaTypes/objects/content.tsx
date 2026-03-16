@@ -25,5 +25,6 @@ export const content = defineType({
     { type: "grid" },
     { type: "tipsPanel" },
     { type: "bestPracticePanel" },
+    { type: "colorCards" },
   ],
 });

@@ -111,6 +111,8 @@ export const AccordionItemContent = forwardRef<
   const recipe = useSlotRecipe({ key: "accordion" });
   const styles = recipe();
 
+  // We need to set aria-labelledby to an empty string here to prevent an issue on voiceover on iPhone where
+  // the title of the Accordion is announced after announcing the content. This issue occurs because the default aria-labeleldby is set to the title.
   return (
     <ChakraAccordion.ItemContent css={styles.itemContent} aria-labelledby="">
       <ChakraAccordion.ItemBody {...otherProps} ref={ref}>

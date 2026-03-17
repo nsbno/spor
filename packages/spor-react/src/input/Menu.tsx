@@ -2,6 +2,7 @@
 import {
   Flex,
   Menu as ChakraMenu,
+  MenuCheckboxItemProps,
   MenuContentProps,
   MenuItemGroupProps as ChakraMenuItemGroupProps,
   MenuItemProps as ChakraMenuItemProps,
@@ -15,6 +16,26 @@ import {
 import { forwardRef, ReactNode } from "react";
 
 import { Button, ButtonProps } from "..";
+
+/**
+ * Menu component.
+ *
+ * Used to create an accessible dropdown menu. 
+ *
+ * @example
+ * ```tsx
+  <Menu> 
+    <MenuTrigger> Menu </MenuTrigger>
+    <MenuContent> 
+      <MenuItem value="1"> Item 1  </MenuItem>
+      <MenuItem value="2"> Item 2 </MenuItem>
+      <MenuItem value="3"> Item 3 </MenuItem>
+      <MenuItem value="4"> Item 4 </MenuItem>
+    </MenuContent>
+  </Menu>
+ * ```
+ *
+ */
 
 export const Menu = ({ ...props }: MenuRootProps) => {
   return <ChakraMenu.Root {...props} />;
@@ -44,8 +65,6 @@ export type MenuTriggerProps = {
   variant?: "core" | "ghost" | "floating";
   /** An optional trigger button icon, rendered to the left of the label */
   icon?: ReactNode;
-  /** Whether or not to show the chevron. Defaults to true */
-  withChevron?: boolean;
 } & Omit<ButtonProps, "variant" | "rightIcon" | "leftIcon">;
 
 export const MenuTrigger = forwardRef<HTMLButtonElement, MenuTriggerProps>(
@@ -143,6 +162,21 @@ export const MenuItemGroup = forwardRef<HTMLDivElement, MenuItemGroupProps>(
   },
 );
 MenuItemGroup.displayName = "MenuItemGroup";
+
+export const MenuCheckboxItem = forwardRef<
+  HTMLDivElement,
+  MenuCheckboxItemProps
+>(({ children, ...props }) => {
+  return (
+    <ChakraMenu.CheckboxItem {...props}>
+      <Flex justifyContent="space-between" gap={1}>
+        {children}
+        <ChakraMenu.ItemIndicator />
+      </Flex>
+    </ChakraMenu.CheckboxItem>
+  );
+});
+MenuCheckboxItem.displayName = "MenuCheckboxItem";
 
 export const MenuSeparator = forwardRef<HTMLDivElement, MenuSeparatorProps>(
   ({ children, ...props }) => {

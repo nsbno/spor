@@ -285,3 +285,14 @@ export const comboboxAnatomy = arkComboboxAnatomy.extendWith(
   "indicatorGroup",
   "empty",
 );
+
+export const menuAnatomy = createAnatomy("menu").parts(
+  "trigger",
+  "content",
+  "item",
+  "itemGroup",
+  "triggerItem",
+  "itemCommand",
+  "itemGroupLabel",
+  "separator",
+);

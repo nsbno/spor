@@ -35,11 +35,11 @@ export const menuSlotRecipe = defineSlotRecipe({
       paddingX: "2",
 
       _checked: {
-        backgroundColor: "ghost.surface.active !important", // <— selected bg
+        backgroundColor: "ghost.surface.active",
       },
 
       _highlighted: {
-        backgroundColor: "ghost.surface.hover !important",
+        backgroundColor: "ghost.surface.hover",
       },
     },
     itemGroupLabel: {

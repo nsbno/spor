@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { forwardRef, ReactNode } from "react";
 
-import { Button, ButtonProps } from "..";
+import { Button, ButtonProps, Checkbox } from "..";
 
 /**
  * Menu component.
@@ -136,7 +136,10 @@ export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>(
     return (
       <ChakraMenu.RadioItem {...props}>
         <Flex justifyContent="space-between" gap={1}>
-          {children} <ChakraMenu.ItemIndicator />
+          {children}
+          <Flex w="1.25rem" justify="center" align="center">
+            <ChakraMenu.ItemIndicator />
+          </Flex>
         </Flex>
       </ChakraMenu.RadioItem>
     );
@@ -165,17 +168,31 @@ MenuItemGroup.displayName = "MenuItemGroup";
 
 export const MenuCheckboxItem = forwardRef<
   HTMLDivElement,
-  MenuCheckboxItemProps
->(({ children, ...props }) => {
+  MenuCheckboxItemProps & {
+    checked: boolean;
+    onCheckedChange: (checked: boolean) => void;
+  }
+>(({ children, closeOnSelect = false, ...props }, ref) => {
   return (
-    <ChakraMenu.CheckboxItem {...props}>
-      <Flex justifyContent="space-between" gap={1}>
-        {children}
-        <ChakraMenu.ItemIndicator />
+    <ChakraMenu.CheckboxItem
+      {...props}
+      ref={ref}
+      closeOnSelect={closeOnSelect}
+      checked={props.checked}
+      onCheckedChange={props.onCheckedChange}
+    >
+      <Flex justifyContent="space-between" gap={2} align="center" w="full">
+        <Checkbox
+          checked={props.checked}
+          onCheckedChange={() => props.onCheckedChange}
+        >
+          {children}
+        </Checkbox>
       </Flex>
     </ChakraMenu.CheckboxItem>
   );
 });
+
 MenuCheckboxItem.displayName = "MenuCheckboxItem";
 
 export const MenuSeparator = forwardRef<HTMLDivElement, MenuSeparatorProps>(

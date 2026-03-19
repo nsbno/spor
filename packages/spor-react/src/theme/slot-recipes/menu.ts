@@ -8,17 +8,38 @@ export const menuSlotRecipe = defineSlotRecipe({
   base: {
     content: {
       bg: "bg",
-      padding: 1,
-      border: "sm",
-      borderColor: "floating.outline",
       borderRadius: "sm",
       boxShadow: "sm",
       width: "fit-content",
+      padding: "2",
+
+      display: "flex",
+      flexDirection: "column",
+      gap: "1",
+
+      _open: {
+        animationStyle: "slide-fade-in",
+        animationDuration: "fast",
+        zIndex: "popover",
+        outline: "none",
+      },
+    },
+    itemGroup: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "1",
     },
     item: {
-      padding: "2",
-      "&:hover": {
-        backgroundColor: "bg.secondary",
+      borderRadius: "sm",
+      paddingY: "1",
+      paddingX: "2",
+
+      _checked: {
+        backgroundColor: "ghost.surface.active !important", // <— selected bg
+      },
+
+      _highlighted: {
+        backgroundColor: "ghost.surface.hover !important",
       },
     },
     itemGroupLabel: {

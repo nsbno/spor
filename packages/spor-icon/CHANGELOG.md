@@ -1,5 +1,17 @@
 # @vygruppen/spor-icon
 
+## 3.5.9
+
+### Patch Changes
+
+- 3c08bf8: Add theme icon
+
+## 3.5.8
+
+### Patch Changes
+
+- 768f11a: Add theme icon for light/dark mode
+
 ## 3.5.7
 
 ### Patch Changes

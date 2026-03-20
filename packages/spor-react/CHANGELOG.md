@@ -1,5 +1,41 @@
 # @vygruppen/spor-react
 
+## 12.24.11
+
+### Patch Changes
+
+- 4b468fb: Autocomplete - Empty result text now does not display when input is empty
+- ecdcdba: Improve voiceover support on RadioCards
+- e73653c: Improve voiceover support on Accordion
+- Updated dependencies [3c08bf8]
+  - @vygruppen/spor-icon-react@4.5.3
+
+## 12.24.10
+
+### Patch Changes
+
+- 4d11f81: Fix closetrigger tabbable autocomplete
+
+## 12.24.9
+
+### Patch Changes
+
+- 795555b: Revert radiocard VO fix. Created other issues with voice-over
+
+## 12.24.8
+
+### Patch Changes
+
+- 65d79ba: add padding to numeric stepper when stepSize is visible
+- e83b70a: improve the support of voiceover for RadioCards
+  - @vygruppen/spor-icon-react@4.5.2
+
+## 12.24.7
+
+### Patch Changes
+
+- 17c0938: Ensure onFocus is passed to Autocomplete
+
 ## 12.24.6
 
 ### Patch Changes

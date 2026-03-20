@@ -111,14 +111,24 @@ export const AccordionItemContent = forwardRef<
   HTMLDivElement,
   AccordionItemContentProps
 >(function AccordionItemContent(props, ref) {
-  const { children, css } = props;
+  const {
+    children,
+    css,
+    "aria-labelledby": ariaLabelledBy,
+    ...otherProps
+  } = props;
 
   const recipe = useSlotRecipe({ key: "accordion" });
   const styles = recipe();
 
+  // We need to be able to override aria-labelledby here to prevent an issue on voiceover on iPhone where the related AccordionItemTrigger
+  // is announced after announcing the ItemContent. This issue occurs because the default aria-labelledby is set to the id of the AccordionItemTrigger.
   return (
-    <ChakraAccordion.ItemContent css={{ ...styles.itemContent, ...css }}>
-      <ChakraAccordion.ItemBody {...props} ref={ref}>
+    <ChakraAccordion.ItemContent
+      css={{ ...styles.itemContent, ...css }}
+      aria-labelledby={ariaLabelledBy}
+    >
+      <ChakraAccordion.ItemBody {...otherProps} ref={ref}>
         {children}
       </ChakraAccordion.ItemBody>
     </ChakraAccordion.ItemContent>

@@ -84,6 +84,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
       isActive = true,
       showValueText = false,
       height = "0.5rem",
+      css,
       ...rest
     },
     ref,
@@ -96,7 +97,12 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
     });
 
     return (
-      <Progress.Root css={styles.container} ref={ref} value={value} {...rest}>
+      <Progress.Root
+        css={{ ...styles.container, ...css }}
+        ref={ref}
+        value={value}
+        {...rest}
+      >
         <Progress.Track
           height={height}
           css={isActive ? styles.background : styles.disabledBackground}

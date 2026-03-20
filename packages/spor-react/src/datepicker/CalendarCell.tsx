@@ -83,6 +83,7 @@ export function CalendarCell({
         ref={ref}
         css={styles.dateCell}
         hidden={isOutsideVisibleRange}
+        data-part="calendar-cell"
       >
         {date.day}
       </spor.button>

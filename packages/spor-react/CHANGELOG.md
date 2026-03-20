@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.24.12
+
+### Patch Changes
+
+- 91f17bd: support custom styling with data-part and css prop for most components
+
 ## 12.24.11
 
 ### Patch Changes

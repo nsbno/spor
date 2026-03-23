@@ -47,7 +47,7 @@ Use this MCP config:
   "servers": {
     "spor": {
       "command": "npx",
-      "args": ["-y", "@vygruppen/mcp-server"]
+      "args": ["-y", "@vygruppen/spor-mcp-server"]
     }
   }
 }
@@ -87,7 +87,7 @@ Spor MCP server is running on stdio...
 
 Two setup options are supported:
 
-- **Recommended:** `npx -y @vygruppen/mcp-server`
+- **Recommended:** `npx -y @vygruppen/spor-mcp-server`
 - **Local development:** `node /absolute/path/to/spor/packages/spor-mcp-server/dist/index.js`
 
 If using local development mode, build first:
@@ -107,7 +107,7 @@ Add to `~/.vscode/mcp.json`:
   "servers": {
     "spor": {
       "command": "npx",
-      "args": ["-y", "@vygruppen/mcp-server"]
+      "args": ["-y", "@vygruppen/spor-mcp-server"]
     }
   }
 }
@@ -138,7 +138,7 @@ Add to `~/.copilot/mcp-config.json`:
   "mcpServers": {
     "spor": {
       "command": "npx",
-      "args": ["-y", "@vygruppen/mcp-server"]
+      "args": ["-y", "@vygruppen/spor-mcp-server"]
     }
   }
 }
@@ -169,7 +169,7 @@ Add to `~/.aws/amazonq/default.json`:
   "mcpServers": {
     "spor": {
       "command": "npx",
-      "args": ["-y", "@vygruppen/mcp-server"]
+      "args": ["-y", "@vygruppen/spor-mcp-server"]
     }
   }
 }
@@ -257,6 +257,6 @@ From `packages/spor-mcp-server`:
 
 - https://spor.vy.no
 - https://modelcontextprotocol.io
-- https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+- https://code.visualstudio.com/docs/copilot/customization/spor-mcp-servers
 - https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli#add-an-mcp-server
 - https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/mcp-ide.html

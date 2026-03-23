@@ -557,8 +557,8 @@ importers:
         specifier: ^4.3.2
         version: 4.3.3
       '@vygruppen/spor-react':
-        specifier: ^12.24.8
-        version: 12.24.8(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^12.24.11
+        version: 12.24.11(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       zod:
         specifier: ^3.23.0
         version: 3.25.76
@@ -5672,8 +5672,8 @@ packages:
   '@vygruppen/spor-design-tokens@4.3.3':
     resolution: {integrity: sha512-CvtcfPZ5NRXuuZflxhSlgXLkB2xOP8hn0cFcDLNI+vmfA8U86yFQzmF4L/dhn/aYG93zCbS2bfH/rqrPVHOqhw==}
 
-  '@vygruppen/spor-icon-react@4.5.2':
-    resolution: {integrity: sha512-fd6LU6BobmLbqK13RNEAPM3YryZyUwrG54+0RuEO4sYrSqkTXrtZzR2LhyjTs3L7MHIz13n6FNhjr87RQQu5Vw==}
+  '@vygruppen/spor-icon-react@4.5.3':
+    resolution: {integrity: sha512-a//d/kB/Kx1BU5eJL/6vqVqyk1VDuYnffEdcNYbh+FyEvs/5ulFZqNpNp3dz/CxajWEFvC5e2UyqumplRyeAWw==}
     peerDependencies:
       react: '>=18.0.0 <19.0.0'
       react-dom: '>=18.0.0 <19.0.0'
@@ -5681,8 +5681,8 @@ packages:
   '@vygruppen/spor-loader@0.7.0':
     resolution: {integrity: sha512-aLp9Wr6yQAuGKXRvnIKac14zuyrBW+uYQR6RwO/A51rzyAygLAoTl8oPGDJZlGe642jafxKiWw2cRsKcjydiFw==}
 
-  '@vygruppen/spor-react@12.24.8':
-    resolution: {integrity: sha512-QlYg2pH2bfuSPFXpXCWJm78c41WD5iaGZTEvDRi4+aYNthBvAZ3MHmRayCWBHo4YXAoTR6aSVVNQXDrrS72lbw==}
+  '@vygruppen/spor-react@12.24.11':
+    resolution: {integrity: sha512-oFuhUEkSh0hCKW4GHLEYC6HZe9ukEftQez05/+hCBn7yl95IgA4N51NCL+lzHYqpdWeRFpW9fUgErgn1knDSUw==}
     peerDependencies:
       react: '>=18.0.0 <19.0.0'
       react-dom: '>=18.0.0 <19.0.0'
@@ -19483,14 +19483,14 @@ snapshots:
 
   '@vygruppen/spor-design-tokens@4.3.3': {}
 
-  '@vygruppen/spor-icon-react@4.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@vygruppen/spor-icon-react@4.5.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
   '@vygruppen/spor-loader@0.7.0': {}
 
-  '@vygruppen/spor-react@12.24.8(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@vygruppen/spor-react@12.24.11(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@ark-ui/react': 4.9.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@chakra-ui/anatomy': 2.3.4
@@ -19506,7 +19506,7 @@ snapshots:
       '@emotion/styled': 11.14.1(@emotion/react@11.14.0(@types/react@18.3.28)(react@18.3.1))(@types/react@18.3.28)(react@18.3.1)
       '@internationalized/date': 3.11.0
       '@vygruppen/spor-design-tokens': 4.3.3
-      '@vygruppen/spor-icon-react': 4.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@vygruppen/spor-icon-react': 4.5.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@vygruppen/spor-loader': 0.7.0
       awesome-phonenumber: 5.11.0
       deepmerge: 4.3.1

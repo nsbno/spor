@@ -3,7 +3,6 @@
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { createClient } from "@sanity/client";
 import tokens from "@vygruppen/spor-design-tokens";
 import * as spor from "@vygruppen/spor-react";
 import { z } from "zod";
@@ -24,17 +23,34 @@ async function startServer() {
   }
 }
 
-// ── Sanity config ──────────────────────────────────────────────────────────
-const sanityConfig = {
-  apiVersion: "2022-02-25",
-  projectId: "r4xpzxak",
-  dataset: "production",
-  useCdn: true,
-  token:
-    "sk2JbmxJTpDDsylbCG5lcJ4Hu3H8VWr7UlUuWaZreH0oCRPJ63pujQt8rZLL2wOv1aW1JL4k0u25y68Khj0O5UVXfJCLUEcPVmQ3RdcKx5JYz1ZCWm89dAQoA08sFNBwPXCbI3vi0LcGacIHqK4BRJz7Jbf3HjdM8Z4klIUVdn7CnK6VLVNZ",
-};
+const sanityDataRouteUrl =
+  process.env.SANITY_DATA_ROUTE_URL || "http://localhost:3008/api/sanity-data";
 
-const sanityClient = createClient(sanityConfig);
+async function fetchSanityData<T>(
+  query: string,
+  parameters: Record<string, unknown> = {},
+): Promise<T> {
+  const requestUrl = new URL(sanityDataRouteUrl);
+  requestUrl.searchParams.set("query", query);
+  if (Object.keys(parameters).length > 0) {
+    requestUrl.searchParams.set("params", JSON.stringify(parameters));
+  }
+
+  const response = await fetch(requestUrl);
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(
+      `Sanity data route request failed (${response.status}): ${errorText}`,
+    );
+  }
+
+  const payload = (await response.json()) as {
+    data: T;
+  };
+
+  return payload.data;
+}
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface SanitySpan {
@@ -53,14 +69,24 @@ interface SanityBlock {
 
 interface SanityCodeExample {
   _type: "codeExample";
-  reactCode?: { code: string };
+  reactCode?: { code?: string; language?: string };
   layout?: string;
 }
 
-type SanityContent = SanityBlock | SanityCodeExample | Record<string, unknown>;
+interface SanityStaticCodeBlock {
+  _type: "staticCodeBlock";
+  code?: { code?: string; language?: string };
+}
+
+type SanityContent =
+  | SanityBlock
+  | SanityCodeExample
+  | SanityStaticCodeBlock
+  | Record<string, unknown>;
 
 interface ComponentSection {
   title: string;
+  customTitle?: string;
   content?: SanityContent[];
   components?: Array<{ _ref: string }>;
 }
@@ -174,25 +200,49 @@ function blocksToMarkdown(blocks: SanityContent[]): string {
  */
 function extractCodeExamples(
   content: SanityContent[],
-): Array<{ title: string; code: string }> {
-  const examples: Array<{ title: string; code: string }> = [];
+): Array<{ title: string; code: string; language: string }> {
+  const examples: Array<{ title: string; code: string; language: string }> = [];
   let lastHeading = "Example";
 
   for (const item of content) {
-    if (item._type === "block") {
-      const b = item as SanityBlock;
-      const text = b.children
-        .map((s) => s.text)
-        .join("")
-        .trim();
-      if (text && ["h3", "h4"].includes(b.style)) {
-        lastHeading = text;
+    switch (item._type) {
+      case "block": {
+        const b = item as SanityBlock;
+        const text = b.children
+          .map((s) => s.text)
+          .join("")
+          .trim();
+        if (text && ["h3", "h4"].includes(b.style)) {
+          lastHeading = text;
+        }
+        break;
       }
-    } else if (item._type === "codeExample") {
-      const ce = item as SanityCodeExample;
-      const code = ce.reactCode?.code?.trim();
-      if (code) {
-        examples.push({ title: lastHeading, code });
+      case "codeExample": {
+        const ce = item as SanityCodeExample;
+        const code = ce.reactCode?.code?.trim();
+        if (code) {
+          examples.push({
+            title: lastHeading,
+            code,
+            language: ce.reactCode?.language?.trim() || "tsx",
+          });
+        }
+        break;
+      }
+      case "staticCodeBlock": {
+        const block = item as SanityStaticCodeBlock;
+        const code = block.code?.code?.trim();
+        if (code) {
+          examples.push({
+            title: lastHeading,
+            code,
+            language: block.code?.language?.trim() || "tsx",
+          });
+        }
+        break;
+      }
+      default: {
+        break;
       }
     }
   }
@@ -232,6 +282,29 @@ function formatArticle(article: SanityArticle): string {
 
 function capitalize(s: string) {
   return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+function normalizeSectionTitle(title?: string): string {
+  return (title ?? "")
+    .normalize("NFKC")
+    .replaceAll(/[\u200B-\u200D\uFEFF]/g, "")
+    .trim()
+    .toLowerCase();
+}
+
+function findExamplesContent(article: SanityArticle): SanityContent[] {
+  const sections = article.componentSections ?? [];
+  const examplesSection = sections.find((section) => {
+    const title = normalizeSectionTitle(section.title);
+    const customTitle = normalizeSectionTitle(section.customTitle);
+    return title === "examples" || customTitle === "examples";
+  });
+
+  if (examplesSection?.content?.length) {
+    return examplesSection.content;
+  }
+
+  return sections.flatMap((section) => section.content ?? []);
 }
 
 /**
@@ -362,11 +435,9 @@ server.registerTool(
       };
     }
 
-    const examplesSection = article.componentSections?.find(
-      (section) => section.title?.toLowerCase() === "examples",
-    );
+    const content = findExamplesContent(article);
 
-    if (!examplesSection?.content?.length) {
+    if (content.length === 0) {
       return {
         content: [
           {
@@ -377,7 +448,7 @@ server.registerTool(
       };
     }
 
-    const examples = extractCodeExamples(examplesSection.content);
+    const examples = extractCodeExamples(content);
 
     if (examples.length === 0) {
       return {
@@ -393,7 +464,7 @@ server.registerTool(
     const formatted = examples
       .map(
         (example, index) =>
-          `### Example ${index + 1}: ${example.title}\n\n\`\`\`tsx\n${example.code}\n\`\`\``,
+          `### Example ${index + 1}: ${example.title}\n\n\`\`\`${example.language}\n${example.code}\n\`\`\``,
       )
       .join("\n\n---\n\n");
 
@@ -677,7 +748,7 @@ server.registerTool(
 // ── Fetch helpers ──────────────────────────────────────────────────────────
 
 async function fetchAllArticles(): Promise<SanityArticle[]> {
-  return sanityClient.fetch(`
+  return fetchSanityData<SanityArticle[]>(`
     *[
       _type == "article" &&
       category->slug.current == "components" &&
@@ -693,7 +764,7 @@ async function fetchAllArticles(): Promise<SanityArticle[]> {
 }
 
 async function fetchArticleBySlug(slug: string): Promise<SanityArticle | null> {
-  const results: SanityArticle[] = await sanityClient.fetch(
+  const results = await fetchSanityData<SanityArticle[]>(
     `*[
       _type == "article" &&
       category->slug.current == "components" &&
@@ -726,7 +797,7 @@ async function fetchComponentsByArticleSlug(
 
   if (references.length > 0) {
     // Fetch by explicit references
-    const components: SanityComponent[] = await sanityClient.fetch(
+    const components = await fetchSanityData<SanityComponent[]>(
       `*[_type == "component" && _id in $refs] | order(name asc) {
         _id,
         name,
@@ -743,7 +814,7 @@ async function fetchComponentsByArticleSlug(
   if (article) {
     // Derive a base name from the article title, e.g. "Autocomplete (New Combobox)" → "autocomplete"
     const baseName = article.title.split(/[\s(]/)[0].toLowerCase();
-    const components: SanityComponent[] = await sanityClient.fetch(
+    const components = await fetchSanityData<SanityComponent[]>(
       `*[_type == "component" && lower(name) match $pattern] | order(name asc) {
         _id,
         name,

@@ -226,6 +226,14 @@ export const article = defineType({
               of: [{ type: "reference", to: [{ type: "component" }] }],
               hidden: ({ parent }) => parent.title !== "code",
             },
+            {
+              name: "styling",
+              description:
+                "How to override the recipe style of the different component parts.",
+              title: "Styling",
+              type: "content",
+              hidden: ({ parent }) => parent.title !== "code",
+            },
           ],
         },
       ],

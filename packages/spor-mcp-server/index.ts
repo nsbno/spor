@@ -23,8 +23,7 @@ async function startServer() {
   }
 }
 
-const sanityDataRouteUrl =
-  process.env.SANITY_DATA_ROUTE_URL || "http://localhost:3008/api/sanity-data";
+const sanityDataRouteUrl = "https://design.vy.no/api/sanity-data";
 
 async function fetchSanityData<T>(
   query: string,

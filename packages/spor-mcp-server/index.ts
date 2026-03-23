@@ -651,60 +651,168 @@ server.registerTool(
   "get_spor_tokens",
   {
     description:
-      "Get Spor design tokens (colors, spacing, typography) for a specific theme.",
+      "Get Spor design tokens for a specific theme and category. Returns flattened color tokens with their alias names, palette keys, and hex values, plus size, font, depth, and transition tokens.",
     inputSchema: {
       theme: z
         .enum(["vyDigital", "vyUtvikling", "cargonet"])
+        .describe("Theme to fetch tokens for."),
+      category: z
+        .enum(["color", "size", "font", "depth", "time", "palette"])
+        .optional()
         .describe(
-          "Theme to fetch tokens for: vyDigital (Vy), vyUtvikling (Vy Development), or cargonet (CargoNet).",
+          "Token category to fetch. Omit to get all. Use 'color' for semantic color tokens, 'palette' for raw color values.",
         ),
+      colorKey: z
+        .string()
+        .optional()
+        .describe(
+          "Specific color group within the theme, e.g. 'brand', 'alert', 'badge'. Only used when category is 'color'.",
+        ),
+      colorMode: z
+        .enum(["light", "dark"])
+        .default("light")
+        .describe("Resolve _light or _dark values."),
     },
   },
-  async ({ theme }) => {
-    const allColors = tokens.color || {};
-    const colors = allColors[theme as keyof typeof allColors] || {};
+  async ({ theme, category, colorKey, colorMode }) => {
+    const themeColors = (tokens.color as unknown as Record<string, unknown>)[
+      theme
+    ] as Record<string, unknown> | undefined;
 
-    if (Object.keys(colors).length === 0) {
+    if (!themeColors) {
       return {
         content: [
           {
             type: "text",
-            text: `Error: Theme '${theme}' not found. Available themes: vyDigital, vyUtvikling, cargonet`,
+            text: `Theme '${theme}' not found. Available: vyDigital, vyUtvikling, cargonet`,
           },
         ],
         isError: true,
       };
     }
 
-    const colorKeys = Object.keys(colors);
-    const prefixes = [
-      ...new Set(colorKeys.map((key) => key.split(/[A-Z]/)[0]).filter(Boolean)),
-    ];
+    // ── Types ──────────────────────────────────────────────────────────────
 
-    const colorsByCategory: Record<string, Record<string, unknown>> = {};
-    for (const prefix of prefixes) {
-      const filtered: Record<string, unknown> = {};
-      for (const key of colorKeys) {
-        if (key.startsWith(prefix)) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const value = (colors as Record<string, any>)[key];
-          filtered[key] =
-            typeof value === "object" ? (value.value ?? value) : value;
+    type FlatToken = {
+      token: string;
+      alias: string | null;
+      paletteKey: string;
+      hex: string | null;
+    };
+
+    // ── Helpers ────────────────────────────────────────────────────────────
+
+    const palette = (tokens.color as unknown as Record<string, unknown>)
+      .palette as Record<string, unknown>;
+
+    const aliases = Object.entries(
+      (tokens.color as unknown as Record<string, Record<string, string>>)
+        .alias ?? {},
+    ).map(([name, ref]) => ({ name, value: ref.replace("colors.", "") }));
+
+    function resolvePaletteHex(paletteKey: string): string | null {
+      const [color, shade] = paletteKey.split(".");
+      const entry = palette[color];
+      if (typeof entry === "string") return entry;
+      if (typeof entry === "object" && entry !== null && shade) {
+        return (entry as Record<string, string>)[shade] ?? null;
+      }
+      return null;
+    }
+
+    function flattenColors(object: unknown, path: string[] = []): FlatToken[] {
+      const result: FlatToken[] = [];
+      if (typeof object !== "object" || object === null) return result;
+
+      for (const [key, value] of Object.entries(
+        object as Record<string, unknown>,
+      )) {
+        if (key === `_${colorMode}`) {
+          const resolved = (value as string).replace("colors.", "");
+          const alias = aliases.find((a) => a.name === resolved) ?? null;
+          const paletteKey = alias?.value ?? resolved;
+          const hex = resolvePaletteHex(paletteKey);
+
+          result.push({
+            token: path.join(".").replace(/\.DEFAULT$/, ""),
+            alias: alias?.name ?? null,
+            paletteKey,
+            hex,
+          });
+        } else if (typeof value === "object" && value !== null) {
+          result.push(...flattenColors(value, [...path, key]));
         }
       }
-      if (Object.keys(filtered).length > 0) {
-        colorsByCategory[prefix] = filtered;
+      return result;
+    }
+
+    function formatColorSection(key: string, data: unknown): string {
+      const flat = flattenColors(data);
+      if (flat.length === 0) return "";
+      const rows = flat
+        .map(
+          ({ token, alias, paletteKey, hex }) =>
+            `| \`${key}.${token}\` | ${alias ? `\`${alias}\`` : "—"} | \`${paletteKey}\` | ${hex ? `\`${hex}\`` : "—"} |`,
+        )
+        .join("\n");
+      return `### ${key}\n\n| Token | Alias | Palette | Hex |\n|-------|-------|---------|-----|\n${rows}`;
+    }
+
+    // ── Category routing ───────────────────────────────────────────────────
+
+    const parts: string[] = [`# Spor Tokens — ${theme}`];
+
+    if (!category || category === "color") {
+      const source = colorKey
+        ? { [colorKey]: themeColors[colorKey] }
+        : themeColors;
+
+      parts.push(`## Color tokens (${colorMode} mode)`);
+      for (const [key, value] of Object.entries(source)) {
+        const section = formatColorSection(key, value);
+        if (section) parts.push(section);
       }
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const result: any = { theme, colors: colorsByCategory };
-    // eslint-disable-next-line unicorn/explicit-length-check
-    if (tokens.size) result.size = tokens.size;
-    if (tokens.font) result.font = tokens.font;
+    if (!category || category === "palette") {
+      const rows = Object.entries(palette).flatMap(([color, shades]) => {
+        if (typeof shades === "string")
+          return [`| \`${color}\` | \`${shades}\` |`];
+        return Object.entries(shades as Record<string, string>).map(
+          ([shade, hex]) => `| \`${color}.${shade}\` | \`${hex}\` |`,
+        );
+      });
+      parts.push(
+        `## Palette\n\n| Token | Hex |\n|-------|-----|\n${rows.join("\n")}`,
+      );
+    }
+
+    if (!category || category === "size") {
+      parts.push(
+        `## Size\n\n\`\`\`json\n${JSON.stringify(tokens.size, null, 2)}\n\`\`\``,
+      );
+    }
+
+    if (!category || category === "font") {
+      parts.push(
+        `## Font\n\n\`\`\`json\n${JSON.stringify(tokens.font, null, 2)}\n\`\`\``,
+      );
+    }
+
+    if (!category || category === "depth") {
+      parts.push(
+        `## Depth\n\n\`\`\`json\n${JSON.stringify(tokens.depth, null, 2)}\n\`\`\``,
+      );
+    }
+
+    if (!category || category === "time") {
+      parts.push(
+        `## Transitions\n\n\`\`\`json\n${JSON.stringify(tokens.time, null, 2)}\n\`\`\``,
+      );
+    }
 
     return {
-      content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
+      content: [{ type: "text", text: parts.join("\n\n") }],
     };
   },
 );

@@ -120,10 +120,8 @@ export const Autocomplete = ({
       </Combobox.Control>
       <Combobox.Positioner>
         <Combobox.Content>
-          {!loading && (
-            <Combobox.Empty>
-              {emptyLabel ?? t(texts.noItemsFound)}
-            </Combobox.Empty>
+          {!loading && emptyLabel && (
+            <Combobox.Empty>{emptyLabel}</Combobox.Empty>
           )}
           {loading ? <ColorSpinner width="1.5rem" p="2" /> : filteredChildren}
         </Combobox.Content>
@@ -215,12 +213,6 @@ const extractItemsFromChildren = (children: React.ReactNode): Item[] => {
 };
 
 const texts = createTexts({
-  noItemsFound: {
-    nb: "Ingen resultater",
-    nn: "Ingen resultat",
-    sv: "Inga resultat",
-    en: "No results found",
-  },
   clearValue: {
     nb: "Tøm verdi",
     nn: "Tøm verdi",

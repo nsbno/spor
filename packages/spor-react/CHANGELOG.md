@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 12.24.13
+
+### Patch Changes
+
+- 36f8706: Avoid passing defaultOpen to controlled Nudge popovers
+- fd6a463: Fix bg color for floating datepicker
+
 ## 12.24.12
 
 ### Patch Changes

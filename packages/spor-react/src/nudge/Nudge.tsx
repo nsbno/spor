@@ -52,14 +52,23 @@ export type NudgeProps = {
 } & PopoverRootProps;
 
 export const Nudge = (props: NudgeProps) => {
-  const { introducedDate, size = "md", ...rest } = props;
+  const { introducedDate, size = "md", open, ...rest } = props;
 
   if (isNudgeExpired(introducedDate)) {
     logExpirationWarning();
     return null;
   }
 
-  return <Popover defaultOpen={true} size={size} {...rest} />;
+  const isControlled = open !== undefined;
+
+  return (
+    <Popover
+      defaultOpen={isControlled ? undefined : true}
+      open={open}
+      size={size}
+      {...rest}
+    />
+  );
 };
 
 export const NudgeTrigger = forwardRef<

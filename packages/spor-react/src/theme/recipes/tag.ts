@@ -9,6 +9,10 @@ export const tagRecipe = defineRecipe({
     alignItems: "center",
     justifyContent: "center",
     gap: "1",
+    "&:focus": {
+      outline: "2px solid",
+      outlineColor: "outline.focus",
+    },
   },
   variants: {
     variant: {

@@ -89,6 +89,12 @@
             "_light": "colors.blackAlpha.300",
             "_dark": "colors.whiteAlpha.400"
           }
+        },
+        "accent": {
+          "value": {
+            "_light": "colors.primaryGreen",
+            "_dark": "colors.white"
+          }
         }
       },
       "outline": {

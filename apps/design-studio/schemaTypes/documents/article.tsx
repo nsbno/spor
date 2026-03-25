@@ -200,6 +200,7 @@ export const article = defineType({
                   { value: "examples", title: "Examples" },
                   { value: "guidelines", title: "Guidelines" },
                   { value: "code", title: "Code" },
+                  { value: "styling", title: "Styling" },
                   { value: "other", title: "Other" },
                 ],
               },
@@ -223,6 +224,14 @@ export const article = defineType({
               title: "Components",
               type: "array",
               of: [{ type: "reference", to: [{ type: "component" }] }],
+              hidden: ({ parent }) => parent.title !== "code",
+            },
+            {
+              name: "styling",
+              description:
+                "How to override the recipe style of the different component parts.",
+              title: "Styling",
+              type: "content",
               hidden: ({ parent }) => parent.title !== "code",
             },
           ],

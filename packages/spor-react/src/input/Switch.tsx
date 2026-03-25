@@ -58,6 +58,7 @@ export const Switch = ({
     invalid,
     errorText,
     helperText,
+    css,
     ...rest
   } = props;
   const recipe = useSlotRecipe({ key: "switch" });
@@ -71,6 +72,7 @@ export const Switch = ({
       helperText={helperText}
       required={props.required}
       id={rest.id}
+      css={css}
     >
       <ChakraSwitch.Root
         ref={rootRef}

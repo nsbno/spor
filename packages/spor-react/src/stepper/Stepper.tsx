@@ -1,5 +1,10 @@
 "use client";
-import { Flex, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
+import {
+  Flex,
+  RecipeVariantProps,
+  SystemStyleObject,
+  useSlotRecipe,
+} from "@chakra-ui/react";
 import { ArrowLeftFill24Icon } from "@vygruppen/spor-icon-react";
 import { PropsWithChildren } from "react";
 
@@ -36,6 +41,7 @@ type StepperProps = PropsWithChildren<StepperVariantProps> & {
   variant: "core" | "accent";
   /** Disables all clicks */
   disabled?: boolean;
+  css?: SystemStyleObject;
 };
 /**
  * A stepper is used to show which step of a process a user is currently in.
@@ -67,6 +73,7 @@ export const Stepper = function Stepper({
     headingLevel,
     variant,
     disabled,
+    css,
   } = props;
   const recipe = useSlotRecipe({ key: "stepper" });
   const style = recipe({ variant });
@@ -76,14 +83,14 @@ export const Stepper = function Stepper({
   const hideBackButtonOnFirstStep = activeStep === 1 && !onBackButtonClick;
 
   return (
-    <Box css={style.root} ref={ref}>
+    <Box css={{ ...style.root, ...css }} ref={ref}>
       <StepperProvider
         onClick={onClick}
         activeStep={activeStep}
         variant={variant}
         numberOfSteps={numberOfSteps}
       >
-        <Box css={style.container}>
+        <Box css={style.container} data-part="root">
           <Box css={style.innerContainer}>
             <Flex
               justifyContent="space-between"
@@ -106,11 +113,16 @@ export const Stepper = function Stepper({
                 }}
               />
               {heading && (
-                <Text variant="sm" as={headingLevel} css={style.title}>
+                <Text
+                  variant="sm"
+                  as={headingLevel}
+                  css={style.title}
+                  data-part="title"
+                >
                   {heading}
                 </Text>
               )}
-              <Box css={style.stepCounter}>
+              <Box css={style.stepCounter} data-part="step-counter">
                 {t(texts.stepsOf(activeStep, numberOfSteps))}
               </Box>
             </Flex>

@@ -83,6 +83,7 @@ export const ProgressBar = ({
   isActive = true,
   showValueText = false,
   height = "0.5rem",
+  css,
   ...rest
 }: ProgressBarProps & {
   ref?: React.RefObject<HTMLDivElement>;
@@ -95,20 +96,23 @@ export const ProgressBar = ({
   });
 
   return (
-    <Progress.Root css={styles.container} ref={ref} value={value} {...rest}>
+    <Progress.Root
+      css={{ ...styles.container, ...css }}
+      ref={ref}
+      value={value}
+      {...rest}
+    >
       <Progress.Track
         height={height}
         css={isActive ? styles.background : styles.disabledBackground}
       >
         <Progress.Range css={styles.progress} />
       </Progress.Track>
-
       {label && (
         <Progress.Label css={styles.description}>
           {currentLoadingText}
         </Progress.Label>
       )}
-
       {showValueText && <Progress.ValueText>{value}%</Progress.ValueText>}
     </Progress.Root>
   );

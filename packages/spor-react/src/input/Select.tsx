@@ -4,6 +4,7 @@ import type {
   CollectionItem,
   SelectLabelProps,
   SelectRootProps as ChakraSelectRootProps,
+  SystemStyleObject,
 } from "@chakra-ui/react";
 import {
   Box,
@@ -70,6 +71,7 @@ export const Select = ({
     errorText,
     invalid,
     helperText,
+    css,
     ...rest
   } = props;
   const recipe = useSlotRecipe({ key: "select" });
@@ -82,6 +84,7 @@ export const Select = ({
       helperText={helperText}
       required={props.required}
       id={rest.id}
+      css={css}
     >
       <ChakraSelect.Root
         {...rest}
@@ -95,7 +98,9 @@ export const Select = ({
           <SelectValueText withPlaceholder={label ? true : false} />
         </SelectTrigger>
         {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
-        <SelectContent css={styles.selectContent}>{children}</SelectContent>
+        <SelectContent css={styles.selectContent} baseStyle={css}>
+          {children}
+        </SelectContent>
       </ChakraSelect.Root>
     </Field>
   );
@@ -132,7 +137,11 @@ export const SelectItem = ({
     <ChakraSelect.Item item={item} {...rest} ref={ref} css={styles.item}>
       <Box width="100%">
         <ChakraSelect.ItemText display="flex">{children}</ChakraSelect.ItemText>
-        {description && <Box css={styles.itemDescription}>{description}</Box>}
+        {description && (
+          <Box data-part="item-description" css={styles.itemDescription}>
+            {description}
+          </Box>
+        )}
       </Box>
 
       <ChakraSelect.ItemIndicator>
@@ -182,9 +191,12 @@ export const SelectTrigger = function SelectTrigger({
       <ChakraSelect.Trigger ref={ref} css={styles.trigger}>
         {children}
       </ChakraSelect.Trigger>
-      <ChakraSelect.IndicatorGroup css={styles.indicatorGroup}>
+      <ChakraSelect.IndicatorGroup
+        css={styles.indicatorGroup}
+        data-part="indicator-group"
+      >
         {clearable && <SelectClearTrigger />}
-        <Box css={styles.indicator}>
+        <Box css={styles.indicator} data-part="indicator">
           <DropdownDownFill24Icon />
         </Box>
       </ChakraSelect.IndicatorGroup>
@@ -217,6 +229,7 @@ const SelectClearTrigger = function SelectClearTrigger({
 type SelectContentProps = ChakraSelect.ContentProps & {
   portalled?: boolean;
   portalRef?: React.RefObject<HTMLElement>;
+  baseStyle?: SystemStyleObject;
 };
 
 export const SelectContent = function SelectContent({
@@ -225,10 +238,10 @@ export const SelectContent = function SelectContent({
 }: SelectContentProps & {
   ref?: React.RefObject<HTMLDivElement>;
 }) {
-  const { portalled = true, portalRef, ...rest } = props;
+  const { portalled = true, portalRef, baseStyle, ...rest } = props;
   return (
     <Portal disabled={!portalled} container={portalRef}>
-      <ChakraSelect.Positioner>
+      <ChakraSelect.Positioner css={baseStyle}>
         <ChakraSelect.Content {...rest} ref={ref} />
       </ChakraSelect.Positioner>
     </Portal>

@@ -10,6 +10,7 @@ import {
 import React, {
   ComponentProps,
   ReactNode,
+  useId,
   useImperativeHandle,
   useRef,
 } from "react";
@@ -82,6 +83,8 @@ export const Input = ({
   const [recipeProps, restProps] = recipe.splitVariantProps(props);
   const styles = recipe(recipeProps);
 
+  const labelId = useId();
+
   const inputRef = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => inputRef.current as HTMLInputElement, []);
 
@@ -105,7 +108,7 @@ export const Input = ({
       id={props.id}
       labelAsChild={labelAsChild}
       label={
-        <Flex>
+        <Flex id={labelId}>
           <Box visibility="hidden">{startElement}</Box>
           {label}
         </Flex>
@@ -119,6 +122,7 @@ export const Input = ({
           paddingX={2}
           aria-hidden="true"
           fontSize={fontSize ?? "mobile.md"}
+          aria-labelledby={labelId}
         >
           {startElement}
         </InputElement>

@@ -1,5 +1,6 @@
 import { PortableTextBlock } from "@portabletext/react";
 import { groq } from "@sanity/groq-store";
+import { sidesporConfig } from "@vygruppen/sidespor-config";
 import {
   FigmaOutline24Icon,
   GithubOutline24Icon,
@@ -9,16 +10,19 @@ import {
   Box,
   Brand,
   Button,
+  createSystem,
   Flex,
   Heading,
   HStack,
   Separator,
+  SporProvider,
   Stack,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
   Text,
+  themes,
 } from "@vygruppen/spor-react";
 import { PropsWithChildren } from "react";
 import {
@@ -57,7 +61,13 @@ type ComponentSection = {
     props: unknown[];
     content: unknown[];
   }[];
+  styling: unknown[];
 };
+
+export const extendedSystemConfigWithSidespor = createSystem(
+  themes.VyDigital._config,
+  sidesporConfig,
+);
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   invariant(params.category, "Expected params.category");
@@ -87,6 +97,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
       title,
       customTitle,
       content,
+      styling,
       components[] {
         _type == 'reference' => @->,
         _type != 'reference' => @,
@@ -221,7 +232,13 @@ export default function ArticlePage() {
           />
         ) : (
           <Box>
-            <PortableText value={article.content} />
+            {article.title.includes("Sidespor") ? (
+              <SporProvider theme={extendedSystemConfigWithSidespor}>
+                <PortableText value={article.content} />
+              </SporProvider>
+            ) : (
+              <PortableText value={article.content} />
+            )}
           </Box>
         )}
       </Flex>
@@ -297,6 +314,21 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               <ComponentDocs key={component._id} component={component as any} />
             ))}
+            {section.styling && (
+              <Box as="section">
+                <Heading
+                  as="h3"
+                  variant="md"
+                  fontWeight="bold"
+                  marginBottom={1}
+                >
+                  Styling
+                </Heading>
+                <Box marginTop={1}>
+                  <PortableText value={section.styling} />
+                </Box>
+              </Box>
+            )}
           </Stack>
         </TabsContent>
       ))}

@@ -7,6 +7,7 @@ import {
   PopoverRootProps,
   Portal,
   RecipeVariantProps,
+  SystemStyleObject,
   useFieldContext,
   useSlotRecipe,
 } from "@chakra-ui/react";
@@ -47,7 +48,9 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
     overrideBorderColor?: string;
     isActive?: boolean;
     onClick?: () => void;
-  } & FieldBaseProps;
+  } & FieldBaseProps & {
+    css?: SystemStyleObject;
+  };
 
 /**
  * A date picker component.
@@ -70,6 +73,7 @@ export const DatePicker = ({
   invalid = false,
   helperText,
   positioning,
+  css,
   ...props
 }: DatePickerProps & {
   ref?: React.RefObject<HTMLDivElement>;
@@ -116,6 +120,7 @@ export const DatePicker = ({
             {...calendarProps}
             variant={variant}
             showYearNavigation={showYearNavigation}
+            css={css}
           />
         </ChakraPopover.Body>
       </ChakraPopover.Content>
@@ -129,6 +134,7 @@ export const DatePicker = ({
         display="inline-flex"
         flexDirection="column"
         width={width}
+        css={css}
       >
         <ChakraPopover.Root {...dialogProps} positioning={positioning}>
           <Field

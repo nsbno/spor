@@ -4,6 +4,7 @@ import { flatRoutes } from "@react-router/fs-routes";
 //export default flatRoutes() satisfies RouteConfig;
 export default [
   ...(await flatRoutes()),
+  route("api/sanity-data", "routes/api/sanity-data.tsx"),
   route("api/preview-mode/enable", "routes/api/preview-mode/enable.ts"),
   route("api/preview-mode/disable", "routes/api/preview-mode/disable.ts"),
 ] satisfies RouteConfig;

@@ -50,6 +50,7 @@ export function CalendarCell({ date, currentMonth }: Props) {
         padding={0.5}
       >
         <Box
+          data-part="calendar-cell"
           width="100%"
           height="100%"
           display="flex"

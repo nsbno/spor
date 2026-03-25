@@ -117,7 +117,7 @@ export const Field = ({
         id={id}
       >
         {label && !floatingLabel && (
-          <Label asChild={labelAsChild}>
+          <Label asChild={labelAsChild} aria-hidden>
             {renderLabelWithIndicator(label, labelAsChild)}
           </Label>
         )}
@@ -128,6 +128,7 @@ export const Field = ({
           <FloatingLabel
             data-float={shouldFloat ? true : undefined}
             asChild={labelAsChild}
+            aria-hidden
           >
             {renderLabelWithIndicator(label, labelAsChild)}
           </FloatingLabel>

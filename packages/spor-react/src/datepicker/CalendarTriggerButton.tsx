@@ -38,7 +38,7 @@ export const CalendarTriggerButton = ({
   const styles = recipe({ variant });
 
   return (
-    <PopoverAnchor {...buttonProps} ref={ref}>
+    <PopoverAnchor {...buttonProps} ref={ref} asChild>
       <IconButton
         icon={<CalendarOutline24Icon />}
         aria-label={t(texts.openCalendar)}

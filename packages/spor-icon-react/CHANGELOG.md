@@ -1,5 +1,17 @@
 # @vygruppen/spor-icon-react
 
+## 4.5.3
+
+### Patch Changes
+
+- 3c08bf8: Add theme icon
+
+## 4.5.2
+
+### Patch Changes
+
+- 8047512: Add icons for tiktok. Rename twitter-icon to "x"
+
 ## 4.5.1
 
 ### Patch Changes

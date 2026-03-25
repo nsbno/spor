@@ -1,5 +1,125 @@
 # @vygruppen/spor-react
 
+## 12.24.14
+
+### Patch Changes
+
+- a79c7e3: Fix contrast on stepper in darkmode
+
+## 12.24.13
+
+### Patch Changes
+
+- 36f8706: Avoid passing defaultOpen to controlled Nudge popovers
+- fd6a463: Fix bg color for floating datepicker
+
+## 12.24.12
+
+### Patch Changes
+
+- 91f17bd: support custom styling with data-part and css prop for most components
+
+## 12.24.11
+
+### Patch Changes
+
+- 4b468fb: Autocomplete - Empty result text now does not display when input is empty
+- ecdcdba: Improve voiceover support on RadioCards
+- e73653c: Improve voiceover support on Accordion
+- Updated dependencies [3c08bf8]
+  - @vygruppen/spor-icon-react@4.5.3
+
+## 12.24.10
+
+### Patch Changes
+
+- 4d11f81: Fix closetrigger tabbable autocomplete
+
+## 12.24.9
+
+### Patch Changes
+
+- 795555b: Revert radiocard VO fix. Created other issues with voice-over
+
+## 12.24.8
+
+### Patch Changes
+
+- 65d79ba: add padding to numeric stepper when stepSize is visible
+- e83b70a: improve the support of voiceover for RadioCards
+  - @vygruppen/spor-icon-react@4.5.2
+
+## 12.24.7
+
+### Patch Changes
+
+- 17c0938: Ensure onFocus is passed to Autocomplete
+
+## 12.24.6
+
+### Patch Changes
+
+- ddaed5e: Fix autocomplete dropdown not closing on iphone VO
+- 7f312de: fix sizing of Switch variants to match design
+- 5bc8e7a: Fix so all parts of select can be selected by the data-part css query
+
+## 12.24.5
+
+### Patch Changes
+
+- 3b8f859: Add css prop to Select to make it easier to style
+
+## 12.24.4
+
+### Patch Changes
+
+- be48428: Add deeper dark- and lightmode support for Vy-logo.
+- Updated dependencies [be48428]
+  - @vygruppen/spor-design-tokens@4.3.3
+
+## 12.24.3
+
+### Patch Changes
+
+- 5194171: Revert changes to attached inputs that created bugs for combobox borderradius.
+
+## 12.24.2
+
+### Patch Changes
+
+- 8047512: Add icons for tiktok. Rename twitter-icon to "x"
+- f8656b9: fix(UU): Input field label being announced twice
+- 2bf118b: fix: Not able to change borderRadius when using AttachedInputs
+- Updated dependencies [8047512]
+  - @vygruppen/spor-icon-react@4.5.2
+
+## 12.24.1
+
+### Patch Changes
+
+- c9487f9: Fix issue with dynamic children not working for table sort, and fix column header no longer needing `children: string` to work
+
+## 12.24.0
+
+### Minor Changes
+
+- 5afeedd: Updated the Table sortable styling
+
+### Patch Changes
+
+- @vygruppen/spor-icon-react@4.5.1
+
+## 12.23.0
+
+### Minor Changes
+
+- b179f2f: Added a props `sortable` to Table that lets you sort columns by clicking on them.
+
+### Patch Changes
+
+- a8cfc72: UU fixes on input, phonenumber input, and textarea components. Fix double announcement of labels, order when navigating with voiceover, and connect textarea-id to textarea-label.
+  - @vygruppen/spor-icon-react@4.5.1
+
 ## 12.22.2
 
 ### Patch Changes

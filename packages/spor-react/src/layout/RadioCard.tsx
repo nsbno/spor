@@ -4,7 +4,7 @@ import {
   RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useId } from "react";
 
 import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
 
@@ -45,16 +45,27 @@ export const RadioCard = ({
   ref?: React.RefObject<HTMLInputElement>;
 }) => {
   const { inputProps, children } = props;
+  const uniqueId = useId();
+  const itemControlId = `radio-card-item-control-${uniqueId}`;
+
+  const inputHasAriaLabel =
+    inputProps?.["aria-labelledby"] || inputProps?.["aria-label"];
 
   return (
     <ChakraRadioCard.Item {...props}>
-      <ChakraRadioCard.ItemHiddenInput ref={ref} {...inputProps} />
-
-      <ChakraRadioCard.ItemControl>{children}</ChakraRadioCard.ItemControl>
+      <ChakraRadioCard.ItemHiddenInput
+        aria-labelledby={
+          inputHasAriaLabel ? inputProps?.["aria-labelledby"] : itemControlId
+        }
+        ref={ref}
+        {...inputProps}
+      />
+      <ChakraRadioCard.ItemControl id={itemControlId} aria-hidden>
+        {children}
+      </ChakraRadioCard.ItemControl>
     </ChakraRadioCard.Item>
   );
 };
-RadioCard.displayName = "RadioCard";
 
 type RadioCardRootProps = RadioCardVariantProps &
   Exclude<ChakraRadioCard.RootProps, "variant"> & {

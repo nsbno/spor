@@ -59,7 +59,7 @@ export const DateTimeSegment = ({
       borderRadius="xs"
       fontSize={["mobile.sm", "desktop.sm"]}
       css={styles.dateTimeSegment}
-      aria-description={ariaDescription}
+      aria-label={ariaDescription}
       aria-labelledby={ariaLabel}
     >
       {isPaddable(segment.type) ? segment.text.padStart(2, "0") : segment.text}

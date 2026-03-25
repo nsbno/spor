@@ -44,6 +44,7 @@ export const Autocomplete = ({
   loading,
   disabled,
   emptyLabel,
+  onFocus,
   openOnClick = true,
   openOnFocus = true,
   ...rest
@@ -72,7 +73,7 @@ export const Autocomplete = ({
 
   const combobox = useCombobox({
     collection,
-    openOnClick,
+    openOnClick: filteredChildren.length > 0 ? openOnClick : false,
     onInputValueChange: (event) => {
       if (!filteredExternally) {
         filter(event.inputValue);
@@ -104,27 +105,27 @@ export const Autocomplete = ({
             helperText={helperText}
             errorText={errorText}
             required={required}
-            onFocus={() => {
-              if (openOnFocus) combobox.setOpen(true);
+            onFocus={(event) => {
+              onFocus?.(event);
+              if (openOnFocus && filteredChildren.length > 0)
+                combobox.setOpen(true);
             }}
           />
         </Combobox.Input>
         <Combobox.IndicatorGroup>
           <Combobox.ClearTrigger asChild aria-label={t(texts.clearValue)}>
-            <CloseButton size="xs" />
+            <CloseButton size="xs" tabIndex={0} />
           </Combobox.ClearTrigger>
         </Combobox.IndicatorGroup>
       </Combobox.Control>
       <Combobox.Positioner>
         <Combobox.Content>
-          <Combobox.Empty>
-            {!loading && (emptyLabel ?? t(texts.noItemsFound))}
-          </Combobox.Empty>
-          {loading ? (
-            <ColorSpinner width="1.5rem" p="2" />
-          ) : (
-            <>{filteredChildren}</>
+          {!loading && (
+            <Combobox.Empty>
+              {emptyLabel ?? t(texts.noItemsFound)}
+            </Combobox.Empty>
           )}
+          {loading ? <ColorSpinner width="1.5rem" p="2" /> : filteredChildren}
         </Combobox.Content>
       </Combobox.Positioner>
     </Combobox.RootProvider>

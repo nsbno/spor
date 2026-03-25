@@ -58,14 +58,14 @@ export const Accordion = ({
 }: AccordionProps & {
   ref?: React.RefObject<HTMLDivElement>;
 }) => {
-  const { variant = "core", children, gap = 2, ...rest } = props;
+  const { variant = "core", children, gap = 2, css, ...rest } = props;
   const recipe = useSlotRecipe({ key: "accordion" });
   const styles = recipe({ variant });
   return (
     <ChakraAccordion.Root
       {...rest}
       ref={ref}
-      css={styles.root}
+      css={{ ...styles.root, ...css }}
       variant={variant}
     >
       <Stack gap={gap}>{children}</Stack>
@@ -83,6 +83,7 @@ export const AccordionItemTrigger = function AccordionItemTrigger({
     startElement,
     children,
     headingLevel,
+    css,
     showChevron = true,
     ...rest
   } = props;
@@ -91,7 +92,11 @@ export const AccordionItemTrigger = function AccordionItemTrigger({
   const styles = recipe();
   return (
     <Box as={headingLevel}>
-      <ChakraAccordion.ItemTrigger {...rest} ref={ref} css={styles.itemTrigger}>
+      <ChakraAccordion.ItemTrigger
+        {...rest}
+        ref={ref}
+        css={{ ...styles.itemTrigger, ...css }}
+      >
         <HStack flex="1" gap={1} textAlign="start" width="full">
           {startElement && startElement}
           {children}
@@ -112,14 +117,24 @@ export const AccordionItemContent = function AccordionItemContent({
 }: AccordionItemContentProps & {
   ref?: React.RefObject<HTMLDivElement>;
 }) {
-  const { children } = props;
+  const {
+    children,
+    css,
+    "aria-labelledby": ariaLabelledBy,
+    ...otherProps
+  } = props;
 
   const recipe = useSlotRecipe({ key: "accordion" });
   const styles = recipe();
 
+  // We need to be able to override aria-labelledby here to prevent an issue on voiceover on iPhone where the related AccordionItemTrigger
+  // is announced after announcing the ItemContent. This issue occurs because the default aria-labelledby is set to the id of the AccordionItemTrigger.
   return (
-    <ChakraAccordion.ItemContent css={styles.itemContent}>
-      <ChakraAccordion.ItemBody {...props} ref={ref}>
+    <ChakraAccordion.ItemContent
+      css={{ ...styles.itemContent, ...css }}
+      aria-labelledby={ariaLabelledBy}
+    >
+      <ChakraAccordion.ItemBody {...otherProps} ref={ref}>
         {children}
       </ChakraAccordion.ItemBody>
     </ChakraAccordion.ItemContent>

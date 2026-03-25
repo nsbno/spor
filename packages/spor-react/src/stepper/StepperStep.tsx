@@ -23,11 +23,8 @@ export const StepperStep = ({
   const state = getState(stepNumber, activeStep);
   const recipe = useSlotRecipe({ key: "stepper" });
   const style = recipe({ variant });
-  const disabledTextColor = "text.disabled";
-  const iconColor = {
-    _light: "blackAlpha.200",
-    _dark: "whiteAlpha.200",
-  };
+  const disabledTextColor = "text.tertiary";
+  const iconColor = "text.tertiary";
 
   const disabled =
     (state !== "active" && disabledOverride) || state === "disabled";

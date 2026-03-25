@@ -11,6 +11,7 @@ import { progressLoaderRecipe } from "./progress-loader";
 import { separatorRecipe } from "./separator";
 import { skeletonRecipe } from "./skeleton";
 import { staticCardRecipe } from "./static-card";
+import { tagRecipe } from "./tag";
 import { textareaRecipe } from "./textarea";
 
 export const recipes = {
@@ -28,4 +29,5 @@ export const recipes = {
   skeleton: skeletonRecipe,
   staticCard: staticCardRecipe,
   textarea: textareaRecipe,
+  tag: tagRecipe,
 };

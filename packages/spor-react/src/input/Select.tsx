@@ -8,6 +8,7 @@ import type {
 } from "@chakra-ui/react";
 import {
   Box,
+  Flex,
   Portal,
   Select as ChakraSelect,
   useSelectContext,
@@ -22,6 +23,7 @@ import * as React from "react";
 import { CloseButton } from "@/button";
 
 import { Field, FieldProps } from "./Field";
+import { Tag } from "./Tag";
 
 export type SelectProps = ChakraSelectRootProps &
   FieldProps & {
@@ -67,6 +69,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       errorText,
       invalid,
       helperText,
+      multiple = false,
       css,
       ...rest
     } = props;
@@ -89,9 +92,13 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           variant={variant}
           css={styles.root}
           position="relative"
+          multiple={multiple}
         >
           <SelectTrigger data-attachable>
-            <SelectValueText withPlaceholder={label ? true : false} />
+            <SelectValueText
+              withPlaceholder={label ? true : false}
+              multiple={multiple}
+            />
           </SelectTrigger>
           {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
           <SelectContent css={styles.selectContent} baseStyle={css}>
@@ -241,13 +248,20 @@ type SelectValueTextProps = Omit<ChakraSelect.ValueTextProps, "children"> & {
   children?(items: CollectionItem[]): React.ReactNode;
   placeholder?: string;
   withPlaceholder?: boolean;
+  multiple?: boolean;
 };
 
 export const SelectValueText = React.forwardRef<
   HTMLSpanElement,
   SelectValueTextProps
 >(function SelectValueText(props, ref) {
-  const { children, withPlaceholder, placeholder, ...rest } = props;
+  const {
+    children,
+    withPlaceholder,
+    placeholder,
+    multiple = false,
+    ...rest
+  } = props;
   return (
     <ChakraSelect.ValueText
       {...rest}
@@ -267,9 +281,20 @@ export const SelectValueText = React.forwardRef<
           const items = select.selectedItems;
           if (items.length === 0) return placeholder;
           if (children) return children(items);
-          if (items.length === 1)
+          if (multiple) {
+            return (
+              <Flex gap={0.5} marginBottom={1}>
+                {items.map((item, index) => (
+                  <Tag key={index} size="xs" variant="accent">
+                    {select.collection.stringifyItem(item)}
+                  </Tag>
+                ))}
+              </Flex>
+            );
+          }
+          if (items.length === 1) {
             return select.collection.stringifyItem(items[0]);
-          return `${items.length} selected`;
+          }
         }}
       </ChakraSelect.Context>
     </ChakraSelect.ValueText>

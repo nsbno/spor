@@ -17,4 +17,5 @@ export * from "./Radio";
 export * from "./SearchInput";
 export * from "./Select";
 export * from "./Switch";
+export * from "./Tag";
 export * from "./Textarea";

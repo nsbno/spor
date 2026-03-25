@@ -46,8 +46,6 @@ export const CardSelectContent = ({
   );
 };
 
-CardSelectContent.displayName = "CardSelectContent";
-
 export type CardSelectTriggerProps = {
   /** The design of the trigger button.
    *
@@ -108,4 +106,3 @@ export const CardSelectTrigger = ({
     </ChakraPopover.Trigger>
   );
 };
-CardSelectTrigger.displayName = "CardSelectTrigger";

@@ -156,5 +156,3 @@ export const Input = ({
     </Field>
   );
 };
-
-Input.displayName = "Input";

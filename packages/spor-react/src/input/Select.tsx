@@ -117,8 +117,6 @@ export const SelectLabel = (props: SelectLabelProps) => {
   );
 };
 
-Select.displayName = "Select";
-
 type SelectItemProps = ChakraSelect.ItemProps & {
   children: React.ReactNode;
   description?: React.ReactNode;
@@ -150,7 +148,6 @@ export const SelectItem = ({
     </ChakraSelect.Item>
   );
 };
-SelectItem.displayName = "SelectItem";
 
 type SelectItemGroupProps = ChakraSelect.ItemGroupProps & {
   label: React.ReactNode;

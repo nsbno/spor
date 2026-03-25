@@ -92,5 +92,3 @@ export const ChoiceChip = ({
     </CheckboxCard.Root>
   );
 };
-
-ChoiceChip.displayName = "ChoiceChip";

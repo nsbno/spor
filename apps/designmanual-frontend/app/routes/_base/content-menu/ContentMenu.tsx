@@ -316,5 +316,3 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
     </Stack>
   );
 };
-
-MobileMenu.displayName = "MobileMenu";

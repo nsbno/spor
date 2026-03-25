@@ -86,5 +86,3 @@ export const ExpandableItem = (props: ExpandableItemProps) => {
     </AccordionItem>
   );
 };
-
-Expandable.displayName = "Expandable";

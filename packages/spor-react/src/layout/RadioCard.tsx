@@ -106,6 +106,5 @@ export const RadioCardGroup = ({
     </ChakraRadioCard.Root>
   );
 };
-RadioCardGroup.displayName = "RadioCardGroup";
 
 export const RadioCardLabel = ChakraRadioCard.Label;

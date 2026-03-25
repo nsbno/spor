@@ -69,7 +69,6 @@ export const JumpButton = ({
     </Center>
   );
 };
-JumpButton.displayName = "JumpButton";
 
 const texts = createTexts({
   forward: {

@@ -75,8 +75,6 @@ export const CountryCodeSelect = ({
   );
 };
 
-CountryCodeSelect.displayName = "CountryCodeSelect";
-
 const texts = createTexts({
   countryCode: {
     nb: "Landkode",

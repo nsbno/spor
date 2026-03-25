@@ -74,7 +74,6 @@ export const NudgeTrigger = ({
 }) => {
   return <PopoverTrigger {...props} ref={ref} />;
 };
-NudgeTrigger.displayName = "NudgeTrigger";
 
 export const NudgeContent = ({
   ref,
@@ -95,15 +94,11 @@ export const NudgeContent = ({
   }, [children, open]);
 
   const wizardPages = childrenArray.filter(
-    (child) =>
-      React.isValidElement(child) &&
-      (child.type as React.ComponentType).displayName === "NudgeWizardStep",
+    (child) => React.isValidElement(child) && child.type === NudgeWizardStep,
   );
 
   const restChildren = childrenArray.filter(
-    (child) =>
-      !React.isValidElement(child) ||
-      (child.type as React.ComponentType).displayName !== "NudgeWizardStep",
+    (child) => !React.isValidElement(child) || child.type !== NudgeWizardStep,
   );
 
   const totalSteps = wizardPages.length;
@@ -137,7 +132,6 @@ export const NudgeContent = ({
     </PopoverContent>
   );
 };
-NudgeContent.displayName = "NudgeContent";
 
 export const NudgeActions = ({ ...props }: BoxProps) => {
   const { colorMode } = useColorMode();
@@ -207,8 +201,6 @@ export const NudgeWizardStep = ({ children }: PropsWithChildren) => {
   );
 };
 
-NudgeWizardStep.displayName = "NudgeWizardStep";
-
 export const NudgeCloseTrigger = ({
   ref,
   children,
@@ -224,4 +216,3 @@ export const NudgeCloseTrigger = ({
     </ChakraPopover.CloseTrigger>
   );
 };
-NudgeCloseTrigger.displayName = "NudgeCloseTrigger";

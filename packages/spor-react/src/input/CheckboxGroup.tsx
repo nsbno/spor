@@ -39,4 +39,3 @@ export const CheckboxGroup = (props: CheckboxGroupProps) => {
     </ChakraCheckboxGroup>
   );
 };
-CheckboxGroup.displayName = "CheckboxGroup";

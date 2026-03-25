@@ -58,8 +58,6 @@ export const Breadcrumb = ({
   );
 };
 
-Breadcrumb.displayName = "Breadcrumb";
-
 export {
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,

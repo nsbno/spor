@@ -140,6 +140,5 @@ export const AccordionItemContent = function AccordionItemContent({
     </ChakraAccordion.ItemContent>
   );
 };
-Accordion.displayName = "Accordion";
 
 export const AccordionItem = ChakraAccordion.Item;

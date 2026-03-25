@@ -79,7 +79,6 @@ export const FloatingActionButton = ({
     </Box>
   );
 };
-FloatingActionButton.displayName = "FloatingActionButton";
 
 type ScrollDirection = "up" | "down" | null;
 const useScrollDirection = () => {

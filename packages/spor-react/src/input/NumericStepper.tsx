@@ -195,7 +195,6 @@ export const NumericStepper = ({
     </Field>
   );
 };
-NumericStepper.displayName = "NumericStepper";
 
 type VerySmallButtonProps = {
   /** The icon to render */
@@ -235,7 +234,6 @@ const VerySmallButton = ({
     />
   );
 };
-VerySmallButton.displayName = "VerySmallButton";
 
 type IconPropertyTypes = BoxProps & { stepLabel: number };
 

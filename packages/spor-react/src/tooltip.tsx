@@ -19,7 +19,6 @@ export const TooltipTrigger = ({
     </ChakraTooltip.Trigger>
   );
 };
-TooltipTrigger.displayName = "TooltipTrigger";
 
 export type TooltipProps = ChakraTooltip.ContentProps;
 
@@ -41,4 +40,3 @@ export const TooltipContent = ({
     </Portal>
   );
 };
-TooltipContent.displayName = "TooltipContent";

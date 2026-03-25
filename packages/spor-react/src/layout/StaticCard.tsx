@@ -55,4 +55,3 @@ export const StaticCard = ({
 
   return <Box css={styles} {...restProps} ref={ref}></Box>;
 };
-StaticCard.displayName = "StaticCard";

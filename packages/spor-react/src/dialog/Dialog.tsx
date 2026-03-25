@@ -36,7 +36,6 @@ export const DialogContent = ({
     </Portal>
   );
 };
-DialogContent.displayName = "DialogContent";
 
 export const DialogCloseTrigger = function DialogCloseTrigger({
   ref,

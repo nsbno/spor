@@ -137,7 +137,6 @@ export const ServiceAlert = ({
     </Accordion.Root>
   );
 };
-ServiceAlert.displayName = "ServiceAlert";
 
 const texts = createTexts({
   notification: (notification) => {

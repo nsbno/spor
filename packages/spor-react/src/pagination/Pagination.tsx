@@ -63,7 +63,6 @@ export const Pagination = ({
     </RootPropsProvider>
   );
 };
-Pagination.displayName = "Pagination";
 
 export const PaginationEllipsis = ({
   ref,
@@ -79,7 +78,6 @@ export const PaginationEllipsis = ({
     </ListItem>
   );
 };
-PaginationEllipsis.displayName = "PaginationEllipsis";
 
 export const PaginationItem = ({
   ref,
@@ -124,7 +122,6 @@ export const PaginationItem = ({
     </ListItem>
   );
 };
-PaginationItem.displayName = "PaginationItem";
 
 // eslint-disable-next-line unicorn/prevent-abbreviations
 export const PaginationPrevTrigger = ({
@@ -176,7 +173,6 @@ export const PaginationPrevTrigger = ({
     </ListItem>
   );
 };
-PaginationPrevTrigger.displayName = "PaginationPrevTrigger";
 
 export const PaginationNextTrigger = ({
   ref,
@@ -224,7 +220,6 @@ export const PaginationNextTrigger = ({
     </ListItem>
   );
 };
-PaginationNextTrigger.displayName = "PaginationNextTrigger";
 
 export const PaginationItems = (
   props: React.HTMLAttributes<HTMLElement> & {},

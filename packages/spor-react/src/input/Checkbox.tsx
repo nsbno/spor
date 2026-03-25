@@ -48,4 +48,3 @@ export const Checkbox = ({
     </ChakraCheckbox.Root>
   );
 };
-Checkbox.displayName = "Checkbox";

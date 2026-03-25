@@ -126,5 +126,3 @@ export const Textarea = ({
     </Field>
   );
 };
-
-Textarea.displayName = "Textarea";

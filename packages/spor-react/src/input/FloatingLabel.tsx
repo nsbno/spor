@@ -7,8 +7,6 @@ export const FloatingLabel = ({
   ref?: React.RefObject<HTMLLabelElement | null>;
 }) => <Field.Label ref={ref} {...props} css={floatingLabelStyles} />;
 
-FloatingLabel.displayName = "FloatingLabel";
-
 const floatingLabelStyles = defineStyle({
   paddingX: 3,
   fontWeight: "normal",

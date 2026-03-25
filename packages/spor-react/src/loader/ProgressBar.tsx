@@ -117,4 +117,3 @@ export const ProgressBar = ({
     </Progress.Root>
   );
 };
-ProgressBar.displayName = "ProgressBar";

@@ -188,4 +188,3 @@ export const DatePicker = ({
     </I18nProvider>
   );
 };
-DatePicker.displayName = "DatePicker";

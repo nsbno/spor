@@ -171,7 +171,6 @@ export const ProgressLoader = ({
     </ProgressLoaderWrapper>
   );
 };
-ProgressLoader.displayName = "ProgressLoader";
 
 const texts = createTexts({
   fallbackLabel: (value) => ({

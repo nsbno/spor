@@ -36,7 +36,6 @@ const ClipboardIcon = ({
     </ChakraClipboard.Indicator>
   );
 };
-ClipboardIcon.displayName = "ClipboardIcon";
 
 const ClipboardCopyText = ({
   ref,
@@ -55,7 +54,6 @@ const ClipboardCopyText = ({
     </ChakraClipboard.Indicator>
   );
 };
-ClipboardCopyText.displayName = "ClipboardCopyText";
 
 type ClipboardButtonProps = ButtonProps;
 
@@ -73,7 +71,6 @@ export const ClipboardButton = ({
     </ChakraClipboard.Trigger>
   );
 };
-ClipboardButton.displayName = "ClipboardButton";
 
 export const Clipboard = ChakraClipboard.Root;
 

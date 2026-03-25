@@ -106,8 +106,6 @@ export const ListBox = (props: ListBoxProps<object>) => {
   );
 };
 
-ListBox.displayName = "ListBox";
-
 /**
  * Renders a label for a listbox item.
  *

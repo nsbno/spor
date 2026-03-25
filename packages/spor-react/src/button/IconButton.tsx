@@ -75,4 +75,3 @@ export const IconButton = ({
     </ChakraIconButton>
   );
 };
-IconButton.displayName = "IconButton";

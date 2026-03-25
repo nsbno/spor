@@ -166,8 +166,6 @@ export const Button = ({
   );
 };
 
-Button.displayName = "Button";
-
 const texts = createTexts({
   loadingText: {
     nb: "Laster…",

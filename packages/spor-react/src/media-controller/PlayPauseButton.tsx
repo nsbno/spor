@@ -58,7 +58,6 @@ export const PlayPauseButton = ({
     </Center>
   );
 };
-PlayPauseButton.displayName = "PlayPauseButton";
 
 const texts = createTexts({
   pause: {

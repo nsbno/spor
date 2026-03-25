@@ -57,7 +57,6 @@ export const SkipButton = ({
     </Center>
   );
 };
-SkipButton.displayName = "SkipButton";
 
 const texts = createTexts({
   next: {

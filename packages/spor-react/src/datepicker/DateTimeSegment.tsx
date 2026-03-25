@@ -66,7 +66,6 @@ export const DateTimeSegment = ({
     </Box>
   );
 };
-DateTimeSegment.displayName = "DateTimeSegment";
 
 const isPaddable = (segmentType: DateSegment["type"]) =>
   segmentType === "month" ||

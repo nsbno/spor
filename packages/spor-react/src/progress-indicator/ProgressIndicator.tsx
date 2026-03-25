@@ -79,7 +79,6 @@ export const ProgressIndicator = ({
     </Box>
   );
 };
-ProgressIndicator.displayName = "ProgressIndicator";
 
 const texts = createTexts({
   stepsOf: (activeStep, numberOfSteps) => ({

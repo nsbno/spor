@@ -49,7 +49,6 @@ export const CalendarTriggerButton = ({
     </PopoverAnchor>
   );
 };
-CalendarTriggerButton.displayName = "CalendarTriggerButton";
 
 const texts = createTexts({
   openCalendar: {

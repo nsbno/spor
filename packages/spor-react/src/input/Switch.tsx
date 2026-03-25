@@ -89,4 +89,3 @@ export const Switch = ({
     </Field>
   );
 };
-Switch.displayName = "Switch";

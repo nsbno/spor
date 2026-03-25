@@ -98,4 +98,3 @@ export const CargonetLogo = ({
     </chakra.svg>
   );
 };
-CargonetLogo.displayName = "CargonetLogo";

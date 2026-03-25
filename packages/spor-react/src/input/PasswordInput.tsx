@@ -16,7 +16,8 @@ export interface PasswordVisibilityProps {
 }
 
 export interface PasswordInputProps
-  extends InputProps, PasswordVisibilityProps {
+  extends InputProps,
+    PasswordVisibilityProps {
   rootProps?: InputProps;
 }
 
@@ -89,7 +90,6 @@ export const PasswordInput = ({
     />
   );
 };
-PasswordInput.displayName = "PasswordInput";
 
 const VisibilityTrigger = ({
   ref,
@@ -111,7 +111,6 @@ const VisibilityTrigger = ({
     </Button>
   );
 };
-VisibilityTrigger.displayName = "VisibilityTrigger";
 
 const texts = createTexts({
   showPassword: {

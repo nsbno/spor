@@ -103,7 +103,6 @@ export const DrawerContent = ({
     </Portal>
   );
 };
-DrawerContent.displayName = "DrawerContent";
 
 export const CloseDrawerLine = ({
   ref,
@@ -123,7 +122,6 @@ export const CloseDrawerLine = ({
     />
   );
 };
-CloseDrawerLine.displayName = "CloseDrawerLine";
 
 export const DrawerCloseTrigger = function DrawerCloseTrigger({
   ref,
@@ -166,7 +164,6 @@ export const DrawerBackTrigger = ({
     </ChakraDrawer.CloseTrigger>
   );
 };
-DrawerBackTrigger.displayName = "DrawerBackTrigger";
 
 export const DrawerFullScreenHeader = ({
   ref,
@@ -183,7 +180,6 @@ export const DrawerFullScreenHeader = ({
     </ChakraDrawer.Header>
   );
 };
-DrawerFullScreenHeader.displayName = "DrawerFullScreenHeader";
 
 export const Drawer = (props: DrawerProps) => {
   const { children, placement, size = "md", ...rest } = props;

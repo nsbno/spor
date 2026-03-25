@@ -127,5 +127,3 @@ export const ExpandableAlert = ({
     </Accordion.Root>
   );
 };
-
-ExpandableAlert.displayName = "ExpandableAlert";

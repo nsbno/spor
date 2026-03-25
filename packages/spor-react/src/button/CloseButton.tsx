@@ -45,7 +45,6 @@ export const CloseButton = ({
     />
   );
 };
-CloseButton.displayName = "CloseButton";
 
 const CloseIcon = ({ size }: { size: CloseButtonProps["size"] }) => {
   switch (size) {

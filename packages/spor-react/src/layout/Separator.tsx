@@ -13,4 +13,3 @@ export const Separator = ({
 }) => {
   return <ChakraSeparator {...props} ref={ref} data- />;
 };
-Separator.displayName = "Separator";

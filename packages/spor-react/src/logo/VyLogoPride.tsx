@@ -165,4 +165,3 @@ export const VyLogoPride = ({
     </SvgBox>
   );
 };
-VyLogoPride.displayName = "VyLogoPride";

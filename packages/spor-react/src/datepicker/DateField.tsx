@@ -86,7 +86,6 @@ export const DateField = ({
     </Box>
   );
 };
-DateField.displayName = "DateField";
 
 const texts = createTexts({
   day: {

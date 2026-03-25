@@ -28,8 +28,6 @@ export const PopoverTrigger = ({
   );
 };
 
-PopoverTrigger.displayName = "PopoverTrigger";
-
 export type PopoverProps = ChakraPopover.ContentProps &
   React.RefAttributes<HTMLDivElement> & {
     showCloseButton?: boolean;
@@ -76,4 +74,3 @@ export const PopoverContent = ({
     </Portal>
   );
 };
-PopoverContent.displayName = "PopoverContent";

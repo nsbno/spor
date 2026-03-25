@@ -51,7 +51,6 @@ export const SearchInput = ({
     />
   );
 };
-SearchInput.displayName = "SearchInput";
 
 const texts = createTexts({
   label: {

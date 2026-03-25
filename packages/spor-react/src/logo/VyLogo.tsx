@@ -123,5 +123,3 @@ export const VyLogo = ({
     </SvgBox>
   );
 };
-
-VyLogo.displayName = "VyLogo";

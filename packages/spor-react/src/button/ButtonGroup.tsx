@@ -60,4 +60,3 @@ export const ButtonGroup = ({
 
   return <ChakraGroup {...restProps} ref={ref} css={styles} />;
 };
-ButtonGroup.displayName = "ButtonGroup";

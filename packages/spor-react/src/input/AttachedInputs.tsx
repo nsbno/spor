@@ -113,5 +113,3 @@ const SwitchButton = chakra(
     },
   }),
 );
-
-AttachedInputs.displayName = "AttachedInputs";

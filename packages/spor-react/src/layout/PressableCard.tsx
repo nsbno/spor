@@ -53,4 +53,3 @@ export const PressableCard = ({
 
   return <chakra.button {...restProps} css={styles} ref={ref} />;
 };
-PressableCard.displayName = "PressableCard";

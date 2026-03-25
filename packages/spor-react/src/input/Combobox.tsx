@@ -246,8 +246,6 @@ export const Combobox = (props: ComboboxProps<object>) => {
   );
 };
 
-Combobox.displayName = "Combobox";
-
 const useInputWidth = (inputRef: React.RefObject<HTMLInputElement>) => {
   const [inputWidth, setInputWidth] = useState("auto");
 

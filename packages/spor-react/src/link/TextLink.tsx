@@ -110,7 +110,6 @@ export const TextLink = ({
     </ChakraLink>
   );
 };
-TextLink.displayName = "TextLink";
 
 const texts = createTexts({
   externalLink: {

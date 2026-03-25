@@ -116,7 +116,6 @@ export const PhoneNumberInput = ({
     </AttachedInputs>
   );
 };
-PhoneNumberInput.displayName = "PhoneNumberInput";
 
 const texts = createTexts({
   phoneNumber: {

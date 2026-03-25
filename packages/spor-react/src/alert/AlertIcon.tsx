@@ -46,8 +46,6 @@ export const AlertIcon = ({
   );
 };
 
-AlertIcon.displayName = "AlertIcon";
-
 export const BaseAlertIcon = ({
   variant,
 }: {

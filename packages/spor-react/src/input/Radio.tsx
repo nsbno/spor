@@ -46,8 +46,6 @@ export const Radio = ({
     </ChakraRadioGroup.Item>
   );
 };
-Radio.displayName = "Radio";
-
 type RadioGroupProps = Omit<
   ChakraRadioGroup.RootProps,
   "colorPalette" | "variant" | "size"
@@ -61,4 +59,3 @@ export const RadioGroup = ({
 }) => {
   return <ChakraRadioGroup.Root ref={ref} {...props} aria-labelledby="" />;
 };
-RadioGroup.displayName = "RadioGroup";

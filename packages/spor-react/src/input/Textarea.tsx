@@ -104,7 +104,7 @@ export const Textarea = ({
       shouldFloat={shouldFloat}
       position="relative"
       label={
-        <Box id={labelId} aria-hidden>
+        <Box id={labelId}>
           <label ref={labelRef}>{label}</label>
         </Box>
       }

@@ -9,6 +9,7 @@ export const tagRecipe = defineRecipe({
     alignItems: "center",
     justifyContent: "center",
     gap: "1",
+    outline: "none",
     "&:focus": {
       outline: "2px solid",
       outlineColor: "outline.focus",
@@ -40,6 +41,7 @@ export const tagRecipe = defineRecipe({
         },
         "&:active": {
           backgroundColor: "accent.surface.active",
+          outline: "none",
         },
       },
       brand: {
@@ -53,6 +55,7 @@ export const tagRecipe = defineRecipe({
         },
         "&:active": {
           backgroundColor: "brand.surface.active",
+          outline: "none",
         },
       },
     },

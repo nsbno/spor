@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "spor": {
+      "command": "npx",
+      "args": ["-y", "@vygruppen/spor-mcp-server"]
+    }
+  }
+}

@@ -61,6 +61,7 @@ type ComponentSection = {
     props: unknown[];
     content: unknown[];
   }[];
+  styling: unknown[];
 };
 
 export const extendedSystemConfigWithSidespor = createSystem(
@@ -96,6 +97,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
       title,
       customTitle,
       content,
+      styling,
       components[] {
         _type == 'reference' => @->,
         _type != 'reference' => @,
@@ -312,6 +314,21 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               <ComponentDocs key={component._id} component={component as any} />
             ))}
+            {section.styling && (
+              <Box as="section">
+                <Heading
+                  as="h3"
+                  variant="md"
+                  fontWeight="bold"
+                  marginBottom={1}
+                >
+                  Styling
+                </Heading>
+                <Box marginTop={1}>
+                  <PortableText value={section.styling} />
+                </Box>
+              </Box>
+            )}
           </Stack>
         </TabsContent>
       ))}

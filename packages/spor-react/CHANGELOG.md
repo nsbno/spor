@@ -1,5 +1,46 @@
 # @vygruppen/spor-react
 
+## 12.24.14
+
+### Patch Changes
+
+- a79c7e3: Fix contrast on stepper in darkmode
+
+## 12.24.13
+
+### Patch Changes
+
+- 36f8706: Avoid passing defaultOpen to controlled Nudge popovers
+- fd6a463: Fix bg color for floating datepicker
+
+## 12.24.12
+
+### Patch Changes
+
+- 91f17bd: support custom styling with data-part and css prop for most components
+
+## 12.24.11
+
+### Patch Changes
+
+- 4b468fb: Autocomplete - Empty result text now does not display when input is empty
+- ecdcdba: Improve voiceover support on RadioCards
+- e73653c: Improve voiceover support on Accordion
+- Updated dependencies [3c08bf8]
+  - @vygruppen/spor-icon-react@4.5.3
+
+## 12.24.10
+
+### Patch Changes
+
+- 4d11f81: Fix closetrigger tabbable autocomplete
+
+## 12.24.9
+
+### Patch Changes
+
+- 795555b: Revert radiocard VO fix. Created other issues with voice-over
+
 ## 12.24.8
 
 ### Patch Changes

@@ -182,10 +182,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       },
       floating: {
         wrapper: {
-          backgroundColor: {
-            _light: "bg",
-            _dark: `color-mix(in srgb, white 10%, var(--spor-colors-bg))`,
-          },
+          bg: "floating.surface",
           outline: "1px solid",
           outlineColor: "floating.outline",
           boxShadow: "sm",

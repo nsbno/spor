@@ -41,7 +41,7 @@ export function CalendarGrid({ offset = {} }: Props) {
   const weeksInMonth = getWeeksInMonth(startDate, locale);
 
   return (
-    <table {...gridProps} cellPadding="0">
+    <table {...gridProps} cellPadding="0" data-part="calendar-grid">
       <thead {...headerProps}>
         <tr>
           {weekDays[language].map((day, index) => (
@@ -61,6 +61,7 @@ export function CalendarGrid({ offset = {} }: Props) {
                 paddingTop={0.5}
                 textAlign="center"
                 fontWeight="bold"
+                data-part="calendar-table-heading"
               >
                 {day}
               </Text>

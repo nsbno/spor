@@ -1,5 +1,10 @@
 "use client";
-import { BoxProps, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
+import {
+  BoxProps,
+  RecipeVariantProps,
+  SystemStyleObject,
+  useSlotRecipe,
+} from "@chakra-ui/react";
 import React, { forwardRef, PropsWithChildren } from "react";
 
 import { Box, createTexts, useTranslation } from "..";
@@ -16,6 +21,7 @@ export type ProgressIndicatorProps = BoxProps &
     numberOfSteps: number;
     activeStep: number;
     colorPalette?: string;
+    css?: SystemStyleObject;
   };
 
 /**
@@ -35,7 +41,7 @@ export type ProgressIndicatorProps = BoxProps &
 export const ProgressIndicator = forwardRef<
   HTMLDivElement,
   ProgressIndicatorProps
->(({ numberOfSteps, activeStep }, ref) => {
+>(({ numberOfSteps, activeStep, css }, ref) => {
   const { t } = useTranslation();
   const recipe = useSlotRecipe({
     key: "progressIndicator",
@@ -45,7 +51,7 @@ export const ProgressIndicator = forwardRef<
 
   return (
     <Box
-      css={styles.root}
+      css={{ ...styles.root, ...css }}
       role="progressbar"
       aria-valuemin={1}
       aria-valuemax={numberOfSteps}
@@ -53,13 +59,17 @@ export const ProgressIndicator = forwardRef<
       aria-valuetext={t(texts.stepsOf(activeStep, numberOfSteps))}
       ref={ref}
     >
-      <Box css={styles.container}>
+      <Box css={{ ...styles.container, ...css }}>
         {Array.from({ length: numberOfSteps }, (_, index) => (
-          <ProgressDot
+          <Box
             key={index}
-            aria-valuenow={index + 1}
-            isActive={activeStep === index + 1}
-          />
+            data-part={activeStep === index + 1 ? "current-step" : "step"}
+          >
+            <ProgressDot
+              aria-valuenow={index + 1}
+              isActive={activeStep === index + 1}
+            />
+          </Box>
         ))}
       </Box>
     </Box>

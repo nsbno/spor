@@ -1,45 +1,19 @@
-import {
-  Box,
-  RecipeVariantProps,
-  Tag as ChakraTag,
-  TagRootProps,
-  useRecipe,
-} from "@chakra-ui/react";
+import { Box, Tag as ChakraTag, TagRootProps } from "@chakra-ui/react";
 import { IconComponent } from "@vygruppen/spor-icon-react";
 import React from "react";
 
-import { tagRecipe } from "@/theme/recipes/tag";
+export type TagProps = TagRootProps & {
+  startIcon?: IconComponent;
+  endIcon?: IconComponent;
+  onClick?: VoidFunction;
+};
 
-type TagVariants = RecipeVariantProps<typeof tagRecipe>;
-
-export type TagProps = TagRootProps &
-  TagVariants & {
-    startIcon?: IconComponent;
-    endIcon?: IconComponent;
-    onClick?: VoidFunction;
-  };
-
-export const Tag = React.forwardRef<HTMLDivElement, TagProps>((props, ref) => {
-  const {
-    startIcon,
-    endIcon,
-    variant = "core",
-    size = "sm",
-    onClick,
-    children,
-    ...rest
-  } = props;
-  const recipe = useRecipe({ key: "tag" });
-  const styles = recipe({ variant, size });
-
+export const Tag = React.forwardRef<HTMLDivElement, TagProps>(function Tag(
+  { startIcon, endIcon, onClick, children, ...rest },
+  ref,
+) {
   return (
-    <ChakraTag.Root
-      ref={ref}
-      {...rest}
-      css={styles}
-      onClick={onClick}
-      as="button"
-    >
+    <ChakraTag.Root ref={ref} {...rest} onClick={onClick} as="button">
       {startIcon && (
         <ChakraTag.StartElement>
           <Box as={startIcon} />

@@ -22,8 +22,8 @@ import * as React from "react";
 
 import { CloseButton } from "@/button";
 
+import { Badge } from "..";
 import { Field, FieldProps } from "./Field";
-import { Tag } from "./Tag";
 
 export type SelectProps = ChakraSelectRootProps &
   FieldProps & {
@@ -285,9 +285,9 @@ export const SelectValueText = React.forwardRef<
             return (
               <Flex gap={0.5} marginBottom={1}>
                 {items.map((item, index) => (
-                  <Tag key={index} size="xs" variant="accent">
+                  <Badge key={index} size="sm" colorPalette="green">
                     {select.collection.stringifyItem(item)}
-                  </Tag>
+                  </Badge>
                 ))}
               </Flex>
             );

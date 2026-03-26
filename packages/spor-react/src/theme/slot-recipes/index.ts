@@ -30,6 +30,7 @@ import { stepperSlotRecipe } from "./stepper";
 import { switchSlotRecipe } from "./switch";
 import { tableSlotRecipe } from "./table";
 import { tabsSlotRecipe } from "./tabs";
+import { tagSlotRecipe } from "./tag";
 import { toastSlotRecipe } from "./toast";
 import { travelTagSlotRecipe } from "./travel-tag";
 
@@ -69,4 +70,5 @@ export const slotRecipes = {
   checkboxCard: choiceChipSlotRecipe,
   collapsible: collapsibleSlotRecipe,
   tooltip: popoverSlotRecipe,
+  tag: tagSlotRecipe,
 };

@@ -47,6 +47,7 @@ export const Autocomplete = ({
   onFocus,
   openOnClick = true,
   openOnFocus = true,
+  css,
   ...rest
 }: Props) => {
   const { contains } = useFilter({ sensitivity: "base" });
@@ -93,7 +94,7 @@ export const Autocomplete = ({
   });
 
   return (
-    <Combobox.RootProvider value={combobox}>
+    <Combobox.RootProvider value={combobox} css={css}>
       <Combobox.Control>
         <Combobox.Input asChild>
           <Input

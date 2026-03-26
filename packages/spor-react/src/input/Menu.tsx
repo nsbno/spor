@@ -10,12 +10,26 @@ import {
   MenuRadioItemProps,
   MenuRootProps,
   MenuSeparatorProps,
-  MenuTriggerItemProps,
+  MenuTriggerItemProps as ChakraMenuTriggerItemProps,
   Portal,
+  useMenuContext as useChakraMenuContext,
+  useSlotRecipe,
 } from "@chakra-ui/react";
+import {
+  DropdownDownFill18Icon,
+  DropdownDownFill24Icon,
+} from "@vygruppen/spor-icon-react";
 import { forwardRef, ReactNode } from "react";
+import { createContext, useContext } from "react";
 
 import { Button, ButtonProps, Checkbox } from "..";
+
+type CustomMenuContextValue = {
+  variant: "core" | "accent" | "floating";
+};
+
+const CustomMenuContext = createContext<CustomMenuContextValue | null>(null);
+export const useMenuContext = () => useContext(CustomMenuContext)!;
 
 /**
  * Menu component.
@@ -37,12 +51,24 @@ import { Button, ButtonProps, Checkbox } from "..";
  *
  */
 
-export const Menu = ({ ...props }: MenuRootProps) => {
-  return <ChakraMenu.Root {...props} />;
+export const Menu = ({
+  children,
+  variant = "core",
+  ...props
+}: MenuRootProps & { variant?: "core" | "accent" | "floating" }) => {
+  return (
+    <CustomMenuContext.Provider value={{ variant }}>
+      <ChakraMenu.Root {...props}>{children}</ChakraMenu.Root>
+    </CustomMenuContext.Provider>
+  );
 };
 
 export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(
   ({ children, maxHeight, ...props }, ref) => {
+    const { variant } = useMenuContext();
+    const recipe = useSlotRecipe({ key: "menu" });
+    const styles = recipe({ variant });
+
     return (
       <Portal>
         <ChakraMenu.Positioner>
@@ -51,6 +77,7 @@ export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(
             {...props}
             zIndex="dropdown"
             maxHeight={maxHeight}
+            css={styles.content}
           >
             {children}
           </ChakraMenu.Content>
@@ -62,24 +89,35 @@ export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(
 MenuContent.displayName = "MenuContent";
 
 export type MenuTriggerProps = {
-  variant?: "core" | "ghost" | "floating";
   /** An optional trigger button icon, rendered to the left of the label */
   icon?: ReactNode;
 } & Omit<ButtonProps, "variant" | "rightIcon" | "leftIcon">;
 
 export const MenuTrigger = forwardRef<HTMLButtonElement, MenuTriggerProps>(
-  ({ icon, variant = "core", size, children, ...props }, ref) => {
+  ({ icon, size, children, ...props }, ref) => {
+    const { variant } = useMenuContext();
+    const { open } = useChakraMenuContext();
+    const ChevronIcon =
+      size === "sm" ? DropdownDownFill18Icon : DropdownDownFill24Icon;
+    const buttonVariant =
+      variant == "core"
+        ? "tertiary"
+        : variant == "accent"
+          ? "secondary"
+          : variant;
     return (
       <ChakraMenu.Trigger asChild ref={ref}>
         <Button
           leftIcon={icon}
-          variant={
-            variant === "core"
-              ? "tertiary"
-              : (variant as ButtonProps["variant"])
-          }
+          variant={buttonVariant}
           size={size}
           {...props}
+          rightIcon={
+            <ChevronIcon
+              transform={open ? "rotate(180deg)" : undefined}
+              transition="transform 0.3s"
+            />
+          }
         >
           {children}
         </Button>
@@ -92,19 +130,23 @@ MenuTrigger.displayName = "MenuTrigger";
 export type MenuItemProps = {
   /** Display a command in the menu */
   itemCommand?: string;
+  /* Display icon to the left */
+  leftIcon?: React.ReactNode;
+  /* Display icon to the right */
+  rightIcon?: React.ReactNode;
 } & ChakraMenuItemProps;
 
 export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
-  ({ itemCommand, children, value, ...props }) => {
+  ({ itemCommand, children, value, leftIcon, rightIcon, ...props }) => {
     return (
       <ChakraMenu.Item value={value} {...props}>
-        <Flex justifyContent="space-between">
+        <Flex justifyContent="space-between" alignItems="center" gap={1.5}>
+          {leftIcon && leftIcon}
           {children}
           {itemCommand && (
-            <ChakraMenu.ItemCommand fontSize="2xs">
-              {itemCommand}
-            </ChakraMenu.ItemCommand>
+            <ChakraMenu.ItemCommand>{itemCommand}</ChakraMenu.ItemCommand>
           )}
+          {rightIcon && rightIcon}
         </Flex>
       </ChakraMenu.Item>
     );
@@ -112,10 +154,23 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
 );
 MenuItem.displayName = "MenuItem";
 
+export type MenuTriggerItemProps = {
+  /* Display icon to the left */
+  leftIcon?: React.ReactNode;
+  /* Display icon to the right */
+  rightIcon?: React.ReactNode;
+} & ChakraMenuTriggerItemProps;
+
 export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>(
-  ({ children, ...props }) => {
+  ({ children, leftIcon, rightIcon, ...props }) => {
     return (
-      <ChakraMenu.TriggerItem {...props}>{children}</ChakraMenu.TriggerItem>
+      <ChakraMenu.TriggerItem {...props}>
+        <Flex justifyContent="space-between" alignItems="center" gap={1.5}>
+          {leftIcon && leftIcon}
+          {children}
+          {rightIcon && rightIcon}
+        </Flex>
+      </ChakraMenu.TriggerItem>
     );
   },
 );

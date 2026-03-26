@@ -34,8 +34,16 @@ export const menuSlotRecipe = defineSlotRecipe({
       paddingY: "1",
       paddingX: "2",
 
+      _hover: {
+        backgroundColor: "accent.surface.hover",
+      },
+
+      "&:active": {
+        backgroundColor: "accent.surface.active",
+      },
+
       _checked: {
-        backgroundColor: "ghost.surface.active",
+        backgroundColor: "accent.surface",
       },
 
       _highlighted: {
@@ -43,11 +51,40 @@ export const menuSlotRecipe = defineSlotRecipe({
       },
     },
     itemGroupLabel: {
-      padding: "2",
+      paddingY: "1",
       fontWeight: "bold",
+    },
+    itemCommand: {
+      fontSize: "2xs",
     },
     separator: {
       color: "outline",
     },
+  },
+  variants: {
+    variant: {
+      core: {
+        content: {
+          border: "1px solid",
+          borderColor: "core.outline",
+        },
+      },
+      accent: {
+        content: {
+          border: "1px solid",
+          borderColor: "core.outline",
+        },
+      },
+      floating: {
+        content: {
+          border: "sm",
+          borderColor: "floating.outline",
+          boxShadow: "lg",
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "core",
   },
 });

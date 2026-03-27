@@ -22,7 +22,7 @@ export const comboboxSlotRecipe = defineSlotRecipe({
       transition: "border-radius",
       transitionDuration: "faster",
       _open: {
-        borderBottomRadius: "0 !important",
+        borderBottomRadius: 0,
       },
     },
 

@@ -27,7 +27,6 @@ type Props = {
   loading?: boolean;
   emptyLabel?: React.ReactNode;
   openOnFocus?: boolean;
-  onClick?: React.MouseEventHandler<HTMLDivElement>;
 } & Omit<ComboboxRootProps, "collection"> &
   FieldProps;
 
@@ -36,6 +35,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, Props>(
     {
       variant = "core",
       children,
+      css,
       label,
       leftIcon,
       onInputValueChange,
@@ -47,11 +47,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, Props>(
       loading,
       disabled,
       emptyLabel,
-      borderTopLeftRadius,
-      borderTopRightRadius,
-      borderBottomLeftRadius,
-      borderBottomRightRadius,
-      onClick,
       onFocus,
       openOnClick = true,
       openOnFocus = true,
@@ -104,7 +99,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, Props>(
 
     return (
       <Combobox.RootProvider value={combobox}>
-        <Combobox.Control>
+        <Combobox.Control css={css}>
           <Combobox.Input asChild>
             <Input
               ref={ref}
@@ -116,11 +111,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, Props>(
               helperText={helperText}
               errorText={errorText}
               required={required}
-              borderTopLeftRadius={borderTopLeftRadius}
-              borderTopRightRadius={borderTopRightRadius}
-              borderBottomLeftRadius={borderBottomLeftRadius}
-              borderBottomRightRadius={borderBottomRightRadius}
-              onClick={onClick}
               onFocus={(event) => {
                 onFocus?.(event);
                 if (openOnFocus && filteredChildren.length > 0)

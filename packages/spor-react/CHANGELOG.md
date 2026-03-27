@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.24.15
+
+### Patch Changes
+
+- 2efa3ee: fix(calendar): iOS 26 pointer bug with range selection
+
 ## 12.24.14
 
 ### Patch Changes

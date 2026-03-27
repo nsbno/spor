@@ -1,7 +1,7 @@
 "use client";
 import { RecipeVariantProps } from "@chakra-ui/react";
 import { RadioGroup as ChakraRadioGroup } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 
 import { radioGroupSlotRecipe } from "../theme/slot-recipes/radio";
 
@@ -28,7 +28,12 @@ export type RadioProps = PropsWithChildren<RadioVariants> &
  * </RadioGroup>
  */
 
-export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
+export const Radio = ({
+  ref,
+  ...props
+}: RadioProps & {
+  ref?: React.RefObject<HTMLInputElement>;
+}) => {
   const { children, inputProps, rootRef, ...rest } = props;
 
   return (
@@ -40,17 +45,17 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
       )}
     </ChakraRadioGroup.Item>
   );
-});
-Radio.displayName = "Radio";
-
+};
 type RadioGroupProps = Omit<
   ChakraRadioGroup.RootProps,
   "colorPalette" | "variant" | "size"
 > & {};
 
-export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
-  (props, ref) => {
-    return <ChakraRadioGroup.Root ref={ref} {...props} aria-labelledby="" />;
-  },
-);
-RadioGroup.displayName = "RadioGroup";
+export const RadioGroup = ({
+  ref,
+  ...props
+}: RadioGroupProps & {
+  ref?: React.RefObject<HTMLDivElement>;
+}) => {
+  return <ChakraRadioGroup.Root ref={ref} {...props} aria-labelledby="" />;
+};

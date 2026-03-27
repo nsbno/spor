@@ -48,6 +48,7 @@ import { LinkButtonSerializer } from "./serializers/LinkButtonSerializer";
 import { NonClickableBoxListSerializer } from "./serializers/NonClickableBoxesSerializer";
 import { TextBlockSerializer } from "./serializers/TextBlockSerializer";
 import { TextBlocksSerializer } from "./serializers/TextBlocksSerializer";
+import { ColorCardsSerializer } from "./serializers/ColorCardsSerializer";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
@@ -171,6 +172,7 @@ const components: Partial<PortableTextReactComponents> = {
     accordion: AccordionSerializer,
     fileList: FileListSerializer,
     divider: DividerSerializer,
+    colorCards: ColorCardsSerializer,
     buttonLink: ({ value }) => {
       const isInternal = value.url.startsWith("/");
       const linkProps = isInternal

@@ -295,4 +295,7 @@ export const menuAnatomy = createAnatomy("menu").parts(
   "itemCommand",
   "itemGroupLabel",
   "separator",
+  "radioItem",
+  "triggerItem",
+  "checkboxItem",
 );

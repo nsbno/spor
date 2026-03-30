@@ -34,6 +34,9 @@ export const menuSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       paddingY: "1",
       paddingX: "2",
+      display: "flex",
+      justifyContent: "space-between",
+      gap: 1.5,
 
       _hover: {
         backgroundColor: "accent.surface.hover",
@@ -60,6 +63,23 @@ export const menuSlotRecipe = defineSlotRecipe({
     },
     separator: {
       color: "outline",
+    },
+    radioItem: {
+      display: "flex",
+      justifyContent: "space-between",
+      gap: 2,
+    },
+    triggerItem: {
+      display: "flex",
+      justifyContent: "space-between",
+      gap: 1.5,
+      alignItems: "center",
+    },
+    checkboxItem: {
+      display: "flex",
+      gap: 2,
+      alignItems: "center",
+      width: "full",
     },
   },
   variants: {

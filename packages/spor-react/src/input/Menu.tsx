@@ -126,17 +126,15 @@ export type MenuItemProps = {
 } & ChakraMenuItemProps;
 
 export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
-  ({ itemCommand, children, value, leftIcon, rightIcon, ...props }) => {
+  ({ itemCommand, children, value, leftIcon, rightIcon, ...props }, ref) => {
     return (
-      <ChakraMenu.Item value={value} {...props}>
-        <Flex justifyContent="space-between" alignItems="center" gap={1.5}>
-          {leftIcon}
-          {children}
-          {itemCommand && (
-            <ChakraMenu.ItemCommand>{itemCommand}</ChakraMenu.ItemCommand>
-          )}
-          {rightIcon}
-        </Flex>
+      <ChakraMenu.Item value={value} {...props} ref={ref}>
+        {leftIcon}
+        {children}
+        {itemCommand && (
+          <ChakraMenu.ItemCommand>{itemCommand}</ChakraMenu.ItemCommand>
+        )}
+        {rightIcon}
       </ChakraMenu.Item>
     );
   },
@@ -151,14 +149,12 @@ export type MenuTriggerItemProps = {
 } & ChakraMenuTriggerItemProps;
 
 export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>(
-  ({ children, leftIcon, rightIcon, ...props }) => {
+  ({ children, leftIcon, rightIcon, ...props }, ref) => {
     return (
-      <ChakraMenu.TriggerItem {...props}>
-        <Flex justifyContent="space-between" alignItems="center" gap={1.5}>
-          {leftIcon}
-          {children}
-          {rightIcon}
-        </Flex>
+      <ChakraMenu.TriggerItem {...props} ref={ref}>
+        {leftIcon}
+        {children}
+        {rightIcon}
       </ChakraMenu.TriggerItem>
     );
   },
@@ -176,14 +172,12 @@ export const MenuRadioItemGroup = forwardRef<
 MenuRadioItemGroup.displayName = "MenuRadioItemGroup";
 
 export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>(
-  ({ children, ...props }) => {
+  ({ children, ...props }, ref) => {
     return (
-      <ChakraMenu.RadioItem {...props}>
-        <Flex justifyContent="space-between" gap={1}>
-          {children}
-          <Flex w="1.25rem" justify="center" align="center">
-            <ChakraMenu.ItemIndicator />
-          </Flex>
+      <ChakraMenu.RadioItem {...props} ref={ref}>
+        {children}
+        <Flex w="1.25rem" justify="center" align="center">
+          <ChakraMenu.ItemIndicator />
         </Flex>
       </ChakraMenu.RadioItem>
     );
@@ -197,9 +191,9 @@ export type MenuItemGroupProps = {
 } & ChakraMenuItemGroupProps;
 
 export const MenuItemGroup = forwardRef<HTMLDivElement, MenuItemGroupProps>(
-  ({ children, label, ...props }) => {
+  ({ children, label, ...props }, ref) => {
     return (
-      <ChakraMenu.ItemGroup {...props}>
+      <ChakraMenu.ItemGroup {...props} ref={ref}>
         {label && (
           <ChakraMenu.ItemGroupLabel>{label}</ChakraMenu.ItemGroupLabel>
         )}
@@ -222,14 +216,12 @@ export const MenuCheckboxItem = forwardRef<
       checked={props.checked}
       onCheckedChange={props.onCheckedChange}
     >
-      <Flex justifyContent="space-between" gap={2} align="center" w="full">
-        <Checkbox
-          checked={props.checked}
-          onCheckedChange={() => props.onCheckedChange}
-        >
-          {children}
-        </Checkbox>
-      </Flex>
+      <Checkbox
+        checked={props.checked}
+        onCheckedChange={() => props.onCheckedChange}
+      >
+        {children}
+      </Checkbox>
     </ChakraMenu.CheckboxItem>
   );
 });

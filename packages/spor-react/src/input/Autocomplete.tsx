@@ -30,107 +30,114 @@ type Props = {
 } & Omit<ComboboxRootProps, "collection"> &
   FieldProps;
 
-export const Autocomplete = ({
-  variant = "core",
-  children,
-  label,
-  leftIcon,
-  onInputValueChange,
-  invalid,
-  helperText,
-  errorText,
-  required,
-  filteredExternally,
-  loading,
-  disabled,
-  emptyLabel,
-  onFocus,
-  openOnClick = true,
-  openOnFocus = true,
-  ...rest
-}: Props) => {
-  const { contains } = useFilter({ sensitivity: "base" });
-  const { t } = useTranslation();
-
-  const extractedItems = React.useMemo(
-    () => extractItemsFromChildren(children),
-    [children],
-  );
-
-  const { collection, filter, reset } = useListCollection({
-    initialItems: extractedItems,
-    filter: filteredExternally ? undefined : contains,
-  });
-
-  React.useEffect(() => {
-    if (filteredExternally) reset();
-  }, [extractedItems, reset, filteredExternally]);
-
-  const filteredChildren = React.useMemo(
-    () => filterChildren(children, collection.items),
-    [children, collection.items],
-  );
-
-  const combobox = useCombobox({
-    collection,
-    openOnClick: filteredChildren.length > 0 ? openOnClick : false,
-    onInputValueChange: (event) => {
-      if (!filteredExternally) {
-        filter(event.inputValue);
-      }
-      onInputValueChange?.(event);
+export const Autocomplete = forwardRef<HTMLInputElement, Props>(
+  function Autocomplete(
+    {
+      variant = "core",
+      children,
+      css,
+      label,
+      leftIcon,
+      onInputValueChange,
+      invalid,
+      helperText,
+      errorText,
+      required,
+      filteredExternally,
+      loading,
+      disabled,
+      emptyLabel,
+      onFocus,
+      openOnClick = true,
+      openOnFocus = true,
+      ...rest
     },
-    positioning: {
-      placement: "bottom",
-      offset: {
-        mainAxis: 3,
-        crossAxis: -1,
+    ref,
+  ) {
+    const { contains } = useFilter({ sensitivity: "base" });
+    const { t } = useTranslation();
+
+    const extractedItems = React.useMemo(
+      () => extractItemsFromChildren(children),
+      [children],
+    );
+
+    const { collection, filter, reset } = useListCollection({
+      initialItems: extractedItems,
+      filter: filteredExternally ? undefined : contains,
+    });
+
+    React.useEffect(() => {
+      if (filteredExternally) reset();
+    }, [extractedItems, reset, filteredExternally]);
+
+    const filteredChildren = React.useMemo(
+      () => filterChildren(children, collection.items),
+      [children, collection.items],
+    );
+
+    const combobox = useCombobox({
+      collection,
+      openOnClick: filteredChildren.length > 0 ? openOnClick : false,
+      onInputValueChange: (event) => {
+        if (!filteredExternally) {
+          filter(event.inputValue);
+        }
+        onInputValueChange?.(event);
       },
-      flip: false,
-    },
-    disabled,
-    ...rest,
-  });
+      positioning: {
+        placement: "bottom",
+        offset: {
+          mainAxis: 3,
+          crossAxis: -1,
+        },
+        flip: false,
+      },
+      disabled,
+      ...rest,
+    });
 
-  return (
-    <Combobox.RootProvider value={combobox}>
-      <Combobox.Control>
-        <Combobox.Input asChild>
-          <Input
-            label={<Combobox.Label>{label}</Combobox.Label>}
-            variant={variant}
-            labelAsChild
-            startElement={leftIcon}
-            invalid={invalid}
-            helperText={helperText}
-            errorText={errorText}
-            required={required}
-            onFocus={(event) => {
-              onFocus?.(event);
-              if (openOnFocus && filteredChildren.length > 0)
-                combobox.setOpen(true);
-            }}
-          />
-        </Combobox.Input>
-        <Combobox.IndicatorGroup>
-          <Combobox.ClearTrigger asChild aria-label={t(texts.clearValue)}>
-            <CloseButton size="xs" tabIndex={0} />
-          </Combobox.ClearTrigger>
-        </Combobox.IndicatorGroup>
-      </Combobox.Control>
-      <Combobox.Positioner>
-        <Combobox.Content>
-          {!loading && (
-            <Combobox.Empty>
-              {emptyLabel ?? t(texts.noItemsFound)}
-            </Combobox.Empty>
-          )}
-          {loading ? <ColorSpinner width="1.5rem" p="2" /> : filteredChildren}
-        </Combobox.Content>
-      </Combobox.Positioner>
-    </Combobox.RootProvider>
-  );
-};
+    return (
+      <Combobox.RootProvider value={combobox}>
+        <Combobox.Control css={css}>
+          <Combobox.Input asChild>
+            <Input
+              ref={ref}
+              label={<Combobox.Label>{label}</Combobox.Label>}
+              variant={variant}
+              labelAsChild
+              startElement={leftIcon}
+              invalid={invalid}
+              helperText={helperText}
+              errorText={errorText}
+              required={required}
+              onFocus={(event) => {
+                onFocus?.(event);
+                if (openOnFocus && filteredChildren.length > 0)
+                  combobox.setOpen(true);
+              }}
+            />
+          </Combobox.Input>
+          <Combobox.IndicatorGroup>
+            <Combobox.ClearTrigger asChild aria-label={t(texts.clearValue)}>
+              <CloseButton size="xs" tabIndex={0} />
+            </Combobox.ClearTrigger>
+          </Combobox.IndicatorGroup>
+        </Combobox.Control>
+        <Combobox.Positioner>
+          <Combobox.Content>
+            {!loading && (
+              <Combobox.Empty>
+                {emptyLabel ?? t(texts.noItemsFound)}
+              </Combobox.Empty>
+            )}
+            {loading ? <ColorSpinner width="1.5rem" p="2" /> : filteredChildren}
+          </Combobox.Content>
+        </Combobox.Positioner>
+      </Combobox.RootProvider>
+    );
+  },
+);
 
 export const AutocompleteItemGroup = Combobox.ItemGroup;
 export const AutocompleteItemGroupLabel = Combobox.ItemGroupLabel;

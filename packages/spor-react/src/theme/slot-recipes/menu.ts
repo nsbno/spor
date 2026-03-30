@@ -16,6 +16,7 @@ export const menuSlotRecipe = defineSlotRecipe({
       display: "flex",
       flexDirection: "column",
       gap: "1",
+      zIndex: "dropdown",
 
       _open: {
         animationStyle: "slide-fade-in",

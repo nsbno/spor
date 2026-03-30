@@ -13,7 +13,6 @@ import {
   MenuTriggerItemProps as ChakraMenuTriggerItemProps,
   Portal,
   useMenuContext as useChakraMenuContext,
-  useSlotRecipe,
 } from "@chakra-ui/react";
 import {
   DropdownDownFill18Icon,
@@ -24,11 +23,9 @@ import { createContext, useContext } from "react";
 
 import { Button, ButtonProps, Checkbox } from "..";
 
-type CustomMenuContextValue = {
-  variant: "core" | "accent" | "floating";
-};
+type Variant = Pick<MenuRootProps, "variant">;
 
-const CustomMenuContext = createContext<CustomMenuContextValue | null>(null);
+const CustomMenuContext = createContext<Variant | null>(null);
 export const useMenuContext = () => useContext(CustomMenuContext)!;
 
 /**
@@ -44,41 +41,30 @@ export const useMenuContext = () => useContext(CustomMenuContext)!;
       <MenuItem value="1"> Item 1  </MenuItem>
       <MenuItem value="2"> Item 2 </MenuItem>
       <MenuItem value="3"> Item 3 </MenuItem>
-      <MenuItem value="4"> Item 4 </MenuItem>
     </MenuContent>
   </Menu>
  * ```
  *
  */
 
-export const Menu = ({
-  children,
-  variant = "core",
-  ...props
-}: MenuRootProps & { variant?: "core" | "accent" | "floating" }) => {
+export const Menu = ({ children, ...props }: MenuRootProps) => {
   return (
-    <CustomMenuContext.Provider value={{ variant }}>
+    <CustomMenuContext.Provider
+      value={{
+        variant: props.variant,
+      }}
+    >
       <ChakraMenu.Root {...props}>{children}</ChakraMenu.Root>
     </CustomMenuContext.Provider>
   );
 };
 
 export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(
-  ({ children, maxHeight, ...props }, ref) => {
-    const { variant } = useMenuContext();
-    const recipe = useSlotRecipe({ key: "menu" });
-    const styles = recipe({ variant });
-
+  ({ children, ...props }, ref) => {
     return (
       <Portal>
         <ChakraMenu.Positioner>
-          <ChakraMenu.Content
-            ref={ref}
-            {...props}
-            zIndex="dropdown"
-            maxHeight={maxHeight}
-            css={styles.content}
-          >
+          <ChakraMenu.Content ref={ref} {...props}>
             {children}
           </ChakraMenu.Content>
         </ChakraMenu.Positioner>
@@ -99,17 +85,18 @@ export const MenuTrigger = forwardRef<HTMLButtonElement, MenuTriggerProps>(
     const { open } = useChakraMenuContext();
     const ChevronIcon =
       size === "sm" ? DropdownDownFill18Icon : DropdownDownFill24Icon;
-    const buttonVariant =
-      variant == "core"
-        ? "tertiary"
-        : variant == "accent"
-          ? "secondary"
-          : variant;
+
+    const getButtonVariant = (): ButtonProps["variant"] => {
+      if (variant === "floating") return "floating";
+      if (variant === "accent") return "secondary";
+      return "tertiary";
+    };
+
     return (
       <ChakraMenu.Trigger asChild ref={ref}>
         <Button
           leftIcon={icon}
-          variant={buttonVariant}
+          variant={getButtonVariant()}
           size={size}
           {...props}
           rightIcon={
@@ -141,12 +128,12 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
     return (
       <ChakraMenu.Item value={value} {...props}>
         <Flex justifyContent="space-between" alignItems="center" gap={1.5}>
-          {leftIcon && leftIcon}
+          {leftIcon}
           {children}
           {itemCommand && (
             <ChakraMenu.ItemCommand>{itemCommand}</ChakraMenu.ItemCommand>
           )}
-          {rightIcon && rightIcon}
+          {rightIcon}
         </Flex>
       </ChakraMenu.Item>
     );
@@ -166,9 +153,9 @@ export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>(
     return (
       <ChakraMenu.TriggerItem {...props}>
         <Flex justifyContent="space-between" alignItems="center" gap={1.5}>
-          {leftIcon && leftIcon}
+          {leftIcon}
           {children}
-          {rightIcon && rightIcon}
+          {rightIcon}
         </Flex>
       </ChakraMenu.TriggerItem>
     );
@@ -223,10 +210,7 @@ MenuItemGroup.displayName = "MenuItemGroup";
 
 export const MenuCheckboxItem = forwardRef<
   HTMLDivElement,
-  MenuCheckboxItemProps & {
-    checked: boolean;
-    onCheckedChange: (checked: boolean) => void;
-  }
+  MenuCheckboxItemProps
 >(({ children, closeOnSelect = false, ...props }, ref) => {
   return (
     <ChakraMenu.CheckboxItem
@@ -250,9 +234,7 @@ export const MenuCheckboxItem = forwardRef<
 
 MenuCheckboxItem.displayName = "MenuCheckboxItem";
 
-export const MenuSeparator = forwardRef<HTMLDivElement, MenuSeparatorProps>(
-  ({ children, ...props }) => {
-    return <ChakraMenu.Separator {...props}>{children}</ChakraMenu.Separator>;
-  },
-);
+export const MenuSeparator = forwardRef<MenuSeparatorProps>(({ ...props }) => {
+  return <ChakraMenu.Separator {...props} />;
+});
 MenuSeparator.displayName = "MenuSeparator";

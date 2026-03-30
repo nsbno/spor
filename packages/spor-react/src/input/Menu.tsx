@@ -25,8 +25,10 @@ import { Button, ButtonProps, Checkbox } from "..";
 
 type Variant = Pick<MenuRootProps, "variant">;
 
-const CustomMenuContext = createContext<Variant | null>(null);
-export const useMenuContext = () => useContext(CustomMenuContext)!;
+const CustomMenuContext = createContext<Variant>({
+  variant: "core",
+});
+export const useMenuContext = () => useContext(CustomMenuContext);
 
 /**
  * Menu component.

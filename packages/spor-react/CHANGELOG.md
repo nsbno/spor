@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 12.24.16
+
+### Patch Changes
+
+- 80a1fda: Add new menu-component
+
 ## 12.24.15
 
 ### Patch Changes

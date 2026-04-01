@@ -21,10 +21,17 @@ export const loader = async (arguments_: LoaderFunctionArgs) => {
   console.info(
     `Found ${allIllustrations.length} illustrations. Downloading them in parallel…`,
   );
-  const zip = Archiver("zip");
-  const stream = new PassThrough();
+  const mainzip = Archiver("zip");
+  const lightIllustrations = Archiver("zip");
+  const darkIllustrations = Archiver("zip");
 
-  zip.pipe(stream);
+  const mainzipStream = new PassThrough();
+  const lightIllustrationsStream = new PassThrough();
+  const darkIllustrationsStream = new PassThrough();
+
+  mainzip.pipe(mainzipStream);
+  lightIllustrations.pipe(lightIllustrationsStream);
+  darkIllustrations.pipe(darkIllustrationsStream);
 
   const promises = allIllustrations
     .flatMap((illustration) => {
@@ -41,6 +48,7 @@ export const loader = async (arguments_: LoaderFunctionArgs) => {
           {
             title: slugify(illustration.title),
             url: urlBuilder.image(illustration.imageLightBackground).url(),
+            colorMode: "both",
           },
         ];
       }
@@ -49,19 +57,43 @@ export const loader = async (arguments_: LoaderFunctionArgs) => {
         {
           title: slugify(`${illustration.title} light`),
           url: urlBuilder.image(illustration.imageLightBackground).url(),
+          colorMode: "light",
         },
         {
           title: slugify(`${illustration.title} dark`),
           url: urlBuilder.image(illustration.imageDarkBackground).url(),
+          colorMode: "dark",
         },
       ];
     })
     .map(async (illustration) => {
       const response = await fetch(illustration.url);
-      zip.append(await response.text(), { name: `${illustration.title}.svg` });
+      if (illustration.colorMode === "light") {
+        lightIllustrations.append(await response.text(), {
+          name: `${illustration.title}.svg`,
+        });
+      } else if (illustration.colorMode === "dark") {
+        darkIllustrations.append(await response.text(), {
+          name: `${illustration.title}.svg`,
+        });
+      } else {
+        const svgContent = await response.text();
+        lightIllustrations.append(svgContent, {
+          name: `${illustration.title}.svg`,
+        });
+        darkIllustrations.append(svgContent, {
+          name: `${illustration.title}.svg`,
+        });
+      }
     });
   await Promise.all(promises);
-  zip.finalize();
+
+  lightIllustrations.finalize();
+  darkIllustrations.finalize();
+
+  mainzip.append(lightIllustrationsStream, { name: "light-illustrations.zip" });
+  mainzip.append(darkIllustrationsStream, { name: "dark-illustrations.zip" });
+  mainzip.finalize();
 
   const headers = new Headers();
   headers.set("Content-Type", "application/zip");
@@ -69,7 +101,7 @@ export const loader = async (arguments_: LoaderFunctionArgs) => {
   headers.set("Cache-Control", "max-age=60");
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return new Response(stream as any, {
+  return new Response(mainzipStream as any, {
     status: 200,
     headers,
   });

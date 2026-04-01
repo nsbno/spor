@@ -10,6 +10,7 @@ export * from "./Fieldset";
 export * from "./Input";
 export * from "./InputChip";
 export * from "./ListBox";
+export * from "./Menu";
 export * from "./NativeSelect";
 export * from "./NumericStepper";
 export * from "./PasswordInput";

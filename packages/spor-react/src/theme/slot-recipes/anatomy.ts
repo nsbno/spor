@@ -287,3 +287,17 @@ export const comboboxAnatomy = arkComboboxAnatomy.extendWith(
 );
 
 export const tagAnatomy = createAnatomy("tag").parts("root");
+
+export const menuAnatomy = createAnatomy("menu").parts(
+  "trigger",
+  "content",
+  "item",
+  "itemGroup",
+  "triggerItem",
+  "itemCommand",
+  "itemGroupLabel",
+  "separator",
+  "radioItem",
+  "triggerItem",
+  "checkboxItem",
+);

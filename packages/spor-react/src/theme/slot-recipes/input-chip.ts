@@ -2,9 +2,9 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 
 import { tagAnatomy } from "./anatomy";
 
-export const tagSlotRecipe = defineSlotRecipe({
+export const inputChipSlotRecipe = defineSlotRecipe({
   slots: tagAnatomy.keys(),
-  className: "tag",
+  className: "chakra-tag",
   base: {
     root: {
       display: "flex",

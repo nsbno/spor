@@ -8,6 +8,7 @@ import type {
 } from "@chakra-ui/react";
 import {
   Box,
+  Checkbox as ChakraCheckbox,
   Flex,
   Portal,
   Select as ChakraSelect,
@@ -133,8 +134,19 @@ export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     const { item, children, description, ...rest } = props;
     const recipe = useSlotRecipe({ key: "select" });
     const styles = recipe();
+    const selectContext = useSelectContext();
+    const multiple = selectContext.multiple;
+    const isSelected = selectContext.value.includes(item.value);
+
     return (
       <ChakraSelect.Item item={item} {...rest} ref={ref} css={styles.item}>
+        {multiple && (
+          <ChakraCheckbox.Root checked={isSelected} pointerEvents="none">
+            <ChakraCheckbox.Control>
+              <ChakraCheckbox.Indicator />
+            </ChakraCheckbox.Control>
+          </ChakraCheckbox.Root>
+        )}
         <Box width="100%">
           <ChakraSelect.ItemText display="flex">
             {children}
@@ -146,9 +158,11 @@ export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
           )}
         </Box>
 
-        <ChakraSelect.ItemIndicator>
-          <CheckmarkFill18Icon />
-        </ChakraSelect.ItemIndicator>
+        {!multiple && (
+          <ChakraSelect.ItemIndicator>
+            <CheckmarkFill18Icon />
+          </ChakraSelect.ItemIndicator>
+        )}
       </ChakraSelect.Item>
     );
   },

@@ -13,6 +13,7 @@ import { drawerSlotRecipe } from "./drawer";
 import { fieldSlotRecipe } from "./field";
 import { floatingActionButtonSlotRecipe } from "./floating-action-button";
 import { infoTagSlotRecipe } from "./info-tag";
+import { inputChipSlotRecipe } from "./input-chip";
 import { lineIconSlotRecipe } from "./line-icon";
 import { listSlotRecipe } from "./list";
 import { listBoxSlotRecipe } from "./listbox";
@@ -30,7 +31,6 @@ import { stepperSlotRecipe } from "./stepper";
 import { switchSlotRecipe } from "./switch";
 import { tableSlotRecipe } from "./table";
 import { tabsSlotRecipe } from "./tabs";
-import { tagSlotRecipe } from "./tag";
 import { toastSlotRecipe } from "./toast";
 import { travelTagSlotRecipe } from "./travel-tag";
 
@@ -70,5 +70,5 @@ export const slotRecipes = {
   checkboxCard: choiceChipSlotRecipe,
   collapsible: collapsibleSlotRecipe,
   tooltip: popoverSlotRecipe,
-  tag: tagSlotRecipe,
+  tag: inputChipSlotRecipe,
 };

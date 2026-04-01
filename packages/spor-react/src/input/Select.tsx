@@ -96,10 +96,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           multiple={multiple}
         >
           <SelectTrigger data-attachable>
-            <SelectValueText
-              withPlaceholder={label ? true : false}
-              multiple={multiple}
-            />
+            <SelectValueText withPlaceholder={label ? true : false} />
           </SelectTrigger>
           {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
           <SelectContent css={styles.selectContent} baseStyle={css}>
@@ -269,13 +266,11 @@ export const SelectValueText = React.forwardRef<
   HTMLSpanElement,
   SelectValueTextProps
 >(function SelectValueText(props, ref) {
-  const {
-    children,
-    withPlaceholder,
-    placeholder,
-    multiple = false,
-    ...rest
-  } = props;
+  const { children, withPlaceholder, placeholder, ...rest } = props;
+
+  const selectContext = useSelectContext();
+  const multiple = selectContext.multiple;
+
   return (
     <ChakraSelect.ValueText
       {...rest}

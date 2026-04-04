@@ -1,7 +1,7 @@
 import { chakra } from "@chakra-ui/react";
 import { DropdownDownOutline30Icon } from "@vygruppen/spor-icon-react";
 import { Box, Flex, FlexProps } from "@vygruppen/spor-react";
-import React, { forwardRef, useImperativeHandle, useRef } from "react";
+import React, { useImperativeHandle, useRef } from "react";
 import { Link } from "react-router";
 
 type MenuItemProps = FlexProps & {
@@ -9,72 +9,75 @@ type MenuItemProps = FlexProps & {
   children: React.ReactNode;
   isActive?: boolean;
   isTopMenu?: boolean;
+  ref?: React.Ref<HTMLElement>;
 };
 /**
  * Menu item in the `ContentMenu`, and search result in the `SearchResults`.
  */
 
-export const MenuItem = forwardRef<HTMLElement, MenuItemProps>(
-  function MenuItem(
-    { url, children, isActive, isTopMenu, ...rest },
-    externalRef,
-  ) {
-    const internalRef = useRef<HTMLElement>(null);
+export const MenuItem = ({
+  url,
+  children,
+  isActive,
+  isTopMenu,
+  ref: externalRef,
+  ...rest
+}: MenuItemProps) => {
+  const internalRef = useRef<HTMLElement>(null);
 
-    useImperativeHandle(externalRef, () => internalRef.current as HTMLElement);
+  useImperativeHandle(externalRef, () => internalRef.current as HTMLElement);
 
-    const handleKeyUp: React.KeyboardEventHandler<HTMLButtonElement> = (
-      error,
-    ) => {
-      if (!internalRef.current) return;
-      switch (error.key) {
-        case "ArrowUp": {
-          getPreviousFocusableSibling(internalRef.current)?.focus();
-          break;
-        }
-        case "ArrowDown": {
-          getNextFocusableSibling(internalRef.current)?.focus();
-          break;
-        }
+  const handleKeyUp: React.KeyboardEventHandler<HTMLButtonElement> = (
+    error,
+  ) => {
+    if (!internalRef.current) return;
+    switch (error.key) {
+      case "ArrowUp": {
+        getPreviousFocusableSibling(internalRef.current)?.focus();
+        break;
       }
-    };
+      case "ArrowDown": {
+        getNextFocusableSibling(internalRef.current)?.focus();
+        break;
+      }
+    }
+  };
 
-    const linkProps = getLinkProps({ url });
-    const isExternal = !!linkProps.href;
+  const linkProps = getLinkProps({ url });
+  const isExternal = !!linkProps.href;
 
-    return (
-      <chakra.button
-        key={url}
-        {...linkProps}
-        display="block"
-        paddingY={1}
-        paddingX={2}
-        fontWeight="normal"
-        style={{ height: "auto" }}
-        borderRadius="lg"
-        fontSize={["mobile.xs", null, "desktop.xs"]}
-        color="text"
-        backgroundColor={isActive ? "ghost.surface.active" : "transparent"}
-        _hover={{ backgroundColor: "ghost.surface.hover" }}
-        _active={{ backgroundColor: "ghost.surface.active" }}
-        ref={internalRef}
-        {...rest}
-        onKeyUp={handleKeyUp}
-        onKeyDown={handleKeyDown}
-        tabIndex={0}
-        role="menuitem"
-        type={isExternal ? undefined : "button"}
-      >
-        <Flex justifyContent="space-between" alignItems="center">
-          <Box width="100%" textAlign="left">
-            {children}
-          </Box>
-          {isTopMenu && <DropdownDownOutline30Icon />}
-        </Flex>
-      </chakra.button>
-    );
-  },
-);
+  return (
+    <chakra.button
+      key={url}
+      {...linkProps}
+      display="block"
+      paddingY={1}
+      paddingX={2}
+      fontWeight="normal"
+      style={{ height: "auto" }}
+      borderRadius="lg"
+      fontSize={["mobile.xs", null, "desktop.xs"]}
+      color="text"
+      backgroundColor={isActive ? "ghost.surface.active" : "transparent"}
+      _hover={{ backgroundColor: "ghost.surface.hover" }}
+      _active={{ backgroundColor: "ghost.surface.active" }}
+      ref={internalRef}
+      {...rest}
+      onKeyUp={handleKeyUp}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="menuitem"
+      type={isExternal ? undefined : "button"}
+    >
+      <Flex justifyContent="space-between" alignItems="center">
+        <Box width="100%" textAlign="left">
+          {children}
+        </Box>
+        {isTopMenu && <DropdownDownOutline30Icon />}
+      </Flex>
+    </chakra.button>
+  );
+};
 
 const handleKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = (
   event,

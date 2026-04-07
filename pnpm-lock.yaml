@@ -566,8 +566,8 @@ importers:
         specifier: ^4.3.2
         version: 4.3.3
       '@vygruppen/spor-react':
-        specifier: ^12.24.11
-        version: 12.24.11(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^12.24.16
+        version: 12.24.16(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       zod:
         specifier: ^3.23.0
         version: 3.25.76
@@ -589,7 +589,7 @@ importers:
         version: 2.3.4
       '@chakra-ui/cli':
         specifier: ^3.30.0
-        version: 3.33.0(@chakra-ui/react@3.33.0(@emotion/react@11.14.0(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
+        version: 3.33.0(@chakra-ui/react@3.33.0(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
       '@chakra-ui/react':
         specifier: ^3.30.0
         version: 3.33.0(@emotion/react@11.14.0(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -601,7 +601,7 @@ importers:
         version: 2.12.0(react@19.2.3)
       '@chakra-ui/system':
         specifier: ^2.6.2
-        version: 2.6.2(@emotion/react@11.14.0(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(react@19.2.3))(react@19.2.3))(react@19.2.3)
+        version: 2.6.2(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3)
       '@chakra-ui/theme':
         specifier: ^3.4.6
         version: 3.4.6(@chakra-ui/styled-system@2.12.0(react@19.2.3))(react@19.2.3)
@@ -5711,8 +5711,8 @@ packages:
   '@vygruppen/spor-loader@0.7.0':
     resolution: {integrity: sha512-aLp9Wr6yQAuGKXRvnIKac14zuyrBW+uYQR6RwO/A51rzyAygLAoTl8oPGDJZlGe642jafxKiWw2cRsKcjydiFw==}
 
-  '@vygruppen/spor-react@12.24.11':
-    resolution: {integrity: sha512-oFuhUEkSh0hCKW4GHLEYC6HZe9ukEftQez05/+hCBn7yl95IgA4N51NCL+lzHYqpdWeRFpW9fUgErgn1knDSUw==}
+  '@vygruppen/spor-react@12.24.16':
+    resolution: {integrity: sha512-saKtbwQL5r3hNYdZaTBDTpVNy2c6z1U4a8wOk/9l1H6AFu6tie1JmtcLJ4sedQUF8pwwNCjCCxNjO9UDvYAZkg==}
     peerDependencies:
       react: '>=18.0.0 <19.0.0'
       react-dom: '>=18.0.0 <19.0.0'
@@ -13836,7 +13836,7 @@ snapshots:
 
   '@chakra-ui/anatomy@2.3.4': {}
 
-  '@chakra-ui/cli@3.33.0(@chakra-ui/react@3.33.0(@emotion/react@11.14.0(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))':
+  '@chakra-ui/cli@3.33.0(@chakra-ui/react@3.33.0(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/parser': 7.29.0
@@ -13915,7 +13915,7 @@ snapshots:
       csstype: 3.2.3
       lodash.mergewith: 4.6.2
 
-  '@chakra-ui/system@2.6.2(@emotion/react@11.14.0(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(react@19.2.3))(react@19.2.3))(react@19.2.3)':
+  '@chakra-ui/system@2.6.2(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@chakra-ui/color-mode': 2.2.0(react@19.2.3)
       '@chakra-ui/object-utils': 2.1.0
@@ -19851,15 +19851,15 @@ snapshots:
 
   '@vygruppen/spor-loader@0.7.0': {}
 
-  '@vygruppen/spor-react@12.24.11(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@vygruppen/spor-react@12.24.16(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@ark-ui/react': 4.9.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@chakra-ui/anatomy': 2.3.4
-      '@chakra-ui/cli': 3.33.0(@chakra-ui/react@3.33.0(@emotion/react@11.14.0(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
+      '@chakra-ui/cli': 3.33.0(@chakra-ui/react@3.33.0(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
       '@chakra-ui/react': 3.33.0(@emotion/react@11.14.0(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@chakra-ui/react-use-size': 2.1.0(react@19.2.3)
       '@chakra-ui/styled-system': 2.12.0(react@19.2.3)
-      '@chakra-ui/system': 2.6.2(@emotion/react@11.14.0(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(react@19.2.3))(react@19.2.3))(react@19.2.3)
+      '@chakra-ui/system': 2.6.2(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3)
       '@chakra-ui/theme': 3.4.6(@chakra-ui/styled-system@2.12.0(react@19.2.3))(react@19.2.3)
       '@chakra-ui/theme-tools': 2.2.6(@chakra-ui/styled-system@2.12.0(react@19.2.3))(react@19.2.3)
       '@chakra-ui/utils': 2.2.2(react@19.2.3)

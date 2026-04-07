@@ -27,7 +27,7 @@ type Props = {
   loading?: boolean;
   emptyLabel?: React.ReactNode;
   openOnFocus?: boolean;
-  ref?: React.RefObject<HTMLInputElement | null>;
+  ref?: React.Ref<HTMLInputElement | null>;
 } & Omit<ComboboxRootProps, "collection"> &
   FieldProps;
 

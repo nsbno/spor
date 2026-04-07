@@ -27,7 +27,7 @@ export const DateTimeSegment = ({
   ariaDescription,
   variant,
 }: DateTimeSegmentProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const internalRef = useRef(null);
   const ref = externalRef ?? internalRef;

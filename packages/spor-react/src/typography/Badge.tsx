@@ -16,7 +16,7 @@ export const Badge = function Badge({
   children,
   ...props
 }: BadgeProps & {
-  ref?: React.RefObject<HTMLSpanElement>;
+  ref?: React.Ref<HTMLSpanElement>;
 }) {
   return (
     <ChakraBadge ref={ref} {...props}>

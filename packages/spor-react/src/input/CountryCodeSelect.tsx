@@ -41,7 +41,7 @@ export const CountryCodeSelect = ({
   ref,
   ...props
 }: CountryCodeSelectProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const { t } = useTranslation();
 

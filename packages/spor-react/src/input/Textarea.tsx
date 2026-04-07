@@ -60,7 +60,7 @@ export const Textarea = ({
   ref,
   ...props
 }: TextareaProps & {
-  ref?: React.RefObject<HTMLTextAreaElement>;
+  ref?: React.Ref<HTMLTextAreaElement>;
 }) => {
   const {
     label,

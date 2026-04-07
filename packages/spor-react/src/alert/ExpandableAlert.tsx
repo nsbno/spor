@@ -63,7 +63,7 @@ export const ExpandableAlert = ({
   ref,
   ...props
 }: ExpandableAlertProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const {
     variant = "info",

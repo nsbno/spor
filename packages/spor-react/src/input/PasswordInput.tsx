@@ -46,7 +46,7 @@ export const PasswordInput = ({
   ref,
   ...props
 }: PasswordInputProps & {
-  ref?: React.RefObject<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
 }) => {
   const {
     defaultVisible,
@@ -94,7 +94,7 @@ const VisibilityTrigger = ({
   ref,
   ...props
 }: ButtonProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   return (
     <Button

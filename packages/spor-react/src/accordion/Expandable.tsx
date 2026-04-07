@@ -26,7 +26,7 @@ export const Expandable = ({
   ref,
   ...props
 }: ExpandableProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const { title, children, headingLevel, startElement, ...rest } = props;
   return (

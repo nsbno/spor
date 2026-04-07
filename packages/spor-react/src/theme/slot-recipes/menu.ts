@@ -11,11 +11,11 @@ export const menuSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       boxShadow: "sm",
       width: "fit-content",
-      padding: "2",
+      padding: "1",
 
       display: "flex",
       flexDirection: "column",
-      gap: "1",
+      gap: "0.5",
       zIndex: "dropdown",
 
       _open: {
@@ -28,12 +28,11 @@ export const menuSlotRecipe = defineSlotRecipe({
     itemGroup: {
       display: "flex",
       flexDirection: "column",
-      gap: "1",
+      gap: "0.5",
     },
     item: {
-      borderRadius: "sm",
-      paddingY: "1",
-      paddingX: "2",
+      borderRadius: "9px",
+      padding: "2",
       display: "flex",
       justifyContent: "space-between",
       gap: 1.5,
@@ -57,6 +56,7 @@ export const menuSlotRecipe = defineSlotRecipe({
     itemGroupLabel: {
       paddingY: "1",
       fontWeight: "bold",
+      fontSize: "xs",
     },
     itemCommand: {
       fontSize: "2xs",

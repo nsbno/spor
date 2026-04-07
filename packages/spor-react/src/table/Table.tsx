@@ -16,7 +16,6 @@ import {
 } from "@vygruppen/spor-icon-react";
 import {
   createContext,
-  forwardRef,
   PropsWithChildren,
   useContext,
   useLayoutEffect,
@@ -52,75 +51,58 @@ export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
     variant?: "ghost" | "core";
     colorPalette?: "grey" | "green" | "white";
     sortable?: boolean;
+    ref?: React.Ref<HTMLTableElement>;
   };
 
-/**
- * The `Table` component has support for two different variants - `ghost` and `core`. The `ghost` variant has basic lines between rows, while the `core` variant has borders for each cell.
- *
- * You can also specify a `grey` or `green` `colorPalette` prop. Use `green` if you want to place the table on a light green background.
- *
- * Finally, there are three different `size` props you can specify - `sm`, `md` and `lg`.
- *
- * ```tsx
- * <Table variant="core" size="lg">
- *   <Thead>
- *    ...
- *   </Thead>
- *   ...
- * </Table>
- * ```
- */
-export const Table = forwardRef<HTMLTableElement, TableProps>(
-  (
-    {
-      variant = "ghost",
-      size,
-      colorPalette = "green",
-      children,
-      sortable = false,
-      ...rest
-    },
-    ref,
-  ) => {
-    const [sortState, setSortState] = useState<SortState>({
-      direction: "asc",
-      columnIndex: null,
-    });
+export const Table = ({
+  variant = "ghost",
+  size,
+  colorPalette = "green",
+  children,
+  sortable = false,
+  ref,
+  ...rest
+}: TableProps) => {
+  const [sortState, setSortState] = useState<SortState>({
+    direction: "asc",
+    columnIndex: null,
+  });
 
-    const handleSort = (columnIndex: number) => {
-      if (!sortable) return;
-      setSortState(getNextSortState(sortState, columnIndex));
-    };
+  const handleSort = (columnIndex: number) => {
+    if (!sortable) return;
+    setSortState(getNextSortState(sortState, columnIndex));
+  };
 
-    const recipe = useSlotRecipe({ key: "table" });
-    const styles = recipe({ variant, size });
+  const recipe = useSlotRecipe({ key: "table" });
+  const styles = recipe({ variant, size });
 
-    return (
-      <ChakraTable.Root
-        variant={variant}
-        size={size}
-        colorPalette={colorPalette}
-        css={styles}
-        ref={ref}
-        {...rest}
+  return (
+    <ChakraTable.Root
+      variant={variant}
+      size={size}
+      colorPalette={colorPalette}
+      css={styles}
+      ref={ref}
+      {...rest}
+    >
+      <SortContext.Provider
+        value={{ enabled: sortable, sortState, onSort: handleSort }}
       >
-        <SortContext.Provider
-          value={{ enabled: sortable, sortState, onSort: handleSort }}
-        >
-          {children}
-        </SortContext.Provider>
-      </ChakraTable.Root>
-    );
-  },
-);
-Table.displayName = "Table";
+        {children}
+      </SortContext.Provider>
+    </ChakraTable.Root>
+  );
+};
 
-export type TableColumnHeaderProps = ChakraTableColumnHeaderProps;
+export type TableColumnHeaderProps = ChakraTableColumnHeaderProps & {
+  ref?: React.Ref<HTMLTableCellElement>;
+};
 
-export const TableColumnHeader = forwardRef<
-  HTMLTableCellElement,
-  TableColumnHeaderProps
->(({ children, ...rest }, ref) => {
+export const TableColumnHeader = ({
+  children,
+  ref,
+  ...rest
+}: TableColumnHeaderProps) => {
   const { enabled, sortState, onSort } = useTableSort();
   const [columnIndex, setColumnIndex] = useState<number | null>(null);
   const props = rest as Record<string, unknown>;
@@ -165,45 +147,43 @@ export const TableColumnHeader = forwardRef<
       </HStack>
     </ChakraTable.ColumnHeader>
   );
-});
-TableColumnHeader.displayName = "ColumnHeader";
+};
 
-export type TableBodyProps = ChakraTableBodyProps;
+export type TableBodyProps = ChakraTableBodyProps & {
+  ref?: React.Ref<HTMLTableSectionElement>;
+};
 
-export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
-  ({ children, ...rest }, ref) => {
-    const { sortState } = useTableSort();
-    const tbodyRef = useRef<HTMLTableSectionElement | null>(null);
-    const originalOrder = useRef<HTMLTableRowElement[]>([]);
-    const previousChildren = useRef(children);
+export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
+  const { sortState } = useTableSort();
+  const tbodyRef = useRef<HTMLTableSectionElement | null>(null);
+  const originalOrder = useRef<HTMLTableRowElement[]>([]);
+  const previousChildren = useRef(children);
 
-    useLayoutEffect(() => {
-      const tbody = tbodyRef.current;
-      if (!tbody) return;
+  useLayoutEffect(() => {
+    const tbody = tbodyRef.current;
+    if (!tbody) return;
 
-      if (
-        previousChildren.current !== children ||
-        originalOrder.current.length === 0
-      ) {
-        originalOrder.current = captureRowOrder(tbody);
-        previousChildren.current = children;
-      }
+    if (
+      previousChildren.current !== children ||
+      originalOrder.current.length === 0
+    ) {
+      originalOrder.current = captureRowOrder(tbody);
+      previousChildren.current = children;
+    }
 
-      applyDomSort(tbody, sortState, originalOrder.current);
-    }, [sortState, children]);
+    applyDomSort(tbody, sortState, originalOrder.current);
+  }, [sortState, children]);
 
-    return (
-      <ChakraTable.Body
-        ref={(element: HTMLTableSectionElement) => {
-          tbodyRef.current = element;
-          if (typeof ref === "function") ref(element);
-          else if (ref) ref.current = element;
-        }}
-        {...rest}
-      >
-        {children}
-      </ChakraTable.Body>
-    );
-  },
-);
-TableBody.displayName = "TableBody";
+  return (
+    <ChakraTable.Body
+      ref={(element: HTMLTableSectionElement) => {
+        tbodyRef.current = element;
+        if (typeof ref === "function") ref(element);
+        else if (ref) ref.current = element;
+      }}
+      {...rest}
+    >
+      {children}
+    </ChakraTable.Body>
+  );
+};

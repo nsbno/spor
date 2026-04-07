@@ -18,7 +18,7 @@ import {
   DropdownDownFill18Icon,
   DropdownDownFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import { forwardRef, ReactNode } from "react";
+import { ReactNode, Ref } from "react";
 import { createContext, useContext } from "react";
 
 import { Button, ButtonProps, Checkbox } from "..";
@@ -48,166 +48,173 @@ export const useMenuContext = () => useContext(CustomMenuContext);
  * ```
  *
  */
-
 export const Menu = ({ children, ...props }: MenuRootProps) => {
   return (
-    <CustomMenuContext.Provider
-      value={{
-        variant: props.variant,
-      }}
-    >
+    <CustomMenuContext.Provider value={{ variant: props.variant }}>
       <ChakraMenu.Root {...props}>{children}</ChakraMenu.Root>
     </CustomMenuContext.Provider>
   );
 };
 
-export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <Portal>
-        <ChakraMenu.Positioner>
-          <ChakraMenu.Content ref={ref} {...props}>
-            {children}
-          </ChakraMenu.Content>
-        </ChakraMenu.Positioner>
-      </Portal>
-    );
-  },
-);
-MenuContent.displayName = "MenuContent";
+export const MenuContent = ({
+  children,
+  ref,
+  ...props
+}: MenuContentProps & { ref?: Ref<HTMLDivElement> }) => {
+  return (
+    <Portal>
+      <ChakraMenu.Positioner>
+        <ChakraMenu.Content ref={ref} {...props}>
+          {children}
+        </ChakraMenu.Content>
+      </ChakraMenu.Positioner>
+    </Portal>
+  );
+};
 
 export type MenuTriggerProps = {
-  /** An optional trigger button icon, rendered to the left of the label */
   icon?: ReactNode;
-} & Omit<ButtonProps, "variant" | "rightIcon" | "leftIcon">;
+} & Omit<ButtonProps, "variant" | "rightIcon" | "leftIcon"> & {
+    ref?: Ref<HTMLButtonElement>;
+  };
 
-export const MenuTrigger = forwardRef<HTMLButtonElement, MenuTriggerProps>(
-  ({ icon, size, children, ...props }, ref) => {
-    const { variant } = useMenuContext();
-    const { open } = useChakraMenuContext();
-    const ChevronIcon =
-      size === "sm" ? DropdownDownFill18Icon : DropdownDownFill24Icon;
+export const MenuTrigger = ({
+  icon,
+  size,
+  children,
+  ref,
+  ...props
+}: MenuTriggerProps) => {
+  const { variant } = useMenuContext();
+  const { open } = useChakraMenuContext();
+  const ChevronIcon =
+    size === "sm" ? DropdownDownFill18Icon : DropdownDownFill24Icon;
 
-    const getButtonVariant = (): ButtonProps["variant"] => {
-      if (variant === "floating") return "floating";
-      if (variant === "accent") return "secondary";
-      return "tertiary";
-    };
+  const getButtonVariant = (): ButtonProps["variant"] => {
+    if (variant === "floating") return "floating";
+    if (variant === "accent") return "secondary";
+    return "tertiary";
+  };
 
-    return (
-      <ChakraMenu.Trigger asChild ref={ref}>
-        <Button
-          leftIcon={icon}
-          variant={getButtonVariant()}
-          size={size}
-          {...props}
-          rightIcon={
-            <ChevronIcon
-              transform={open ? "rotate(180deg)" : undefined}
-              transition="transform 0.3s"
-            />
-          }
-        >
-          {children}
-        </Button>
-      </ChakraMenu.Trigger>
-    );
-  },
-);
-MenuTrigger.displayName = "MenuTrigger";
+  return (
+    <ChakraMenu.Trigger asChild ref={ref}>
+      <Button
+        leftIcon={icon}
+        variant={getButtonVariant()}
+        size={size}
+        {...props}
+        rightIcon={
+          <ChevronIcon
+            transform={open ? "rotate(180deg)" : undefined}
+            transition="transform 0.3s"
+          />
+        }
+      >
+        {children}
+      </Button>
+    </ChakraMenu.Trigger>
+  );
+};
 
 export type MenuItemProps = {
-  /** Display a command in the menu */
   itemCommand?: string;
-  /* Display icon to the left */
   leftIcon?: React.ReactNode;
-  /* Display icon to the right */
   rightIcon?: React.ReactNode;
-} & ChakraMenuItemProps;
+} & ChakraMenuItemProps & { ref?: Ref<HTMLDivElement> };
 
-export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
-  ({ itemCommand, children, value, leftIcon, rightIcon, ...props }, ref) => {
-    return (
-      <ChakraMenu.Item value={value} {...props} ref={ref}>
-        {leftIcon}
-        {children}
-        {itemCommand && (
-          <ChakraMenu.ItemCommand>{itemCommand}</ChakraMenu.ItemCommand>
-        )}
-        {rightIcon}
-      </ChakraMenu.Item>
-    );
-  },
-);
-MenuItem.displayName = "MenuItem";
+export const MenuItem = ({
+  itemCommand,
+  children,
+  value,
+  leftIcon,
+  rightIcon,
+  ref,
+  ...props
+}: MenuItemProps) => {
+  return (
+    <ChakraMenu.Item value={value} {...props} ref={ref}>
+      {leftIcon}
+      {children}
+      {itemCommand && (
+        <ChakraMenu.ItemCommand>{itemCommand}</ChakraMenu.ItemCommand>
+      )}
+      {rightIcon}
+    </ChakraMenu.Item>
+  );
+};
 
 export type MenuTriggerItemProps = {
-  /* Display icon to the left */
   leftIcon?: React.ReactNode;
-  /* Display icon to the right */
   rightIcon?: React.ReactNode;
-} & ChakraMenuTriggerItemProps;
+} & ChakraMenuTriggerItemProps & { ref?: Ref<HTMLDivElement> };
 
-export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>(
-  ({ children, leftIcon, rightIcon, ...props }, ref) => {
-    return (
-      <ChakraMenu.TriggerItem {...props} ref={ref}>
-        {leftIcon}
-        {children}
-        {rightIcon}
-      </ChakraMenu.TriggerItem>
-    );
-  },
-);
-MenuTriggerItem.displayName = "MenuTriggerItem";
-
-export const MenuRadioItemGroup = forwardRef<
-  HTMLDivElement,
-  MenuRadioItemGroupProps
->(({ children, ...props }) => {
+export const MenuTriggerItem = ({
+  children,
+  leftIcon,
+  rightIcon,
+  ref,
+  ...props
+}: MenuTriggerItemProps) => {
   return (
-    <ChakraMenu.RadioItemGroup {...props}>{children}</ChakraMenu.RadioItemGroup>
+    <ChakraMenu.TriggerItem {...props} ref={ref}>
+      {leftIcon}
+      {children}
+      {rightIcon}
+    </ChakraMenu.TriggerItem>
   );
-});
-MenuRadioItemGroup.displayName = "MenuRadioItemGroup";
+};
 
-export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <ChakraMenu.RadioItem {...props} ref={ref}>
-        {children}
-        <Flex w="1.25rem" justify="center" align="center">
-          <ChakraMenu.ItemIndicator />
-        </Flex>
-      </ChakraMenu.RadioItem>
-    );
-  },
-);
-MenuRadioItem.displayName = "MenuRadioItem";
+export const MenuRadioItemGroup = ({
+  children,
+  ref,
+  ...props
+}: MenuRadioItemGroupProps & { ref?: Ref<HTMLDivElement> }) => {
+  return (
+    <ChakraMenu.RadioItemGroup {...props} ref={ref}>
+      {children}
+    </ChakraMenu.RadioItemGroup>
+  );
+};
+
+export const MenuRadioItem = ({
+  children,
+  ref,
+  ...props
+}: MenuRadioItemProps & { ref?: Ref<HTMLDivElement> }) => {
+  return (
+    <ChakraMenu.RadioItem {...props} ref={ref}>
+      {children}
+      <Flex w="1.25rem" justify="center" align="center">
+        <ChakraMenu.ItemIndicator />
+      </Flex>
+    </ChakraMenu.RadioItem>
+  );
+};
 
 export type MenuItemGroupProps = {
-  /** Display group label */
   label?: string;
-} & ChakraMenuItemGroupProps;
+} & ChakraMenuItemGroupProps & { ref?: Ref<HTMLDivElement> };
 
-export const MenuItemGroup = forwardRef<HTMLDivElement, MenuItemGroupProps>(
-  ({ children, label, ...props }, ref) => {
-    return (
-      <ChakraMenu.ItemGroup {...props} ref={ref}>
-        {label && (
-          <ChakraMenu.ItemGroupLabel>{label}</ChakraMenu.ItemGroupLabel>
-        )}
-        {children}
-      </ChakraMenu.ItemGroup>
-    );
-  },
-);
-MenuItemGroup.displayName = "MenuItemGroup";
+export const MenuItemGroup = ({
+  children,
+  label,
+  ref,
+  ...props
+}: MenuItemGroupProps) => {
+  return (
+    <ChakraMenu.ItemGroup {...props} ref={ref}>
+      {label && <ChakraMenu.ItemGroupLabel>{label}</ChakraMenu.ItemGroupLabel>}
+      {children}
+    </ChakraMenu.ItemGroup>
+  );
+};
 
-export const MenuCheckboxItem = forwardRef<
-  HTMLDivElement,
-  MenuCheckboxItemProps
->(({ children, closeOnSelect = false, ...props }, ref) => {
+export const MenuCheckboxItem = ({
+  children,
+  closeOnSelect = false,
+  ref,
+  ...props
+}: MenuCheckboxItemProps & { ref?: Ref<HTMLDivElement> }) => {
   return (
     <ChakraMenu.CheckboxItem
       {...props}
@@ -224,11 +231,11 @@ export const MenuCheckboxItem = forwardRef<
       </Checkbox>
     </ChakraMenu.CheckboxItem>
   );
-});
+};
 
-MenuCheckboxItem.displayName = "MenuCheckboxItem";
-
-export const MenuSeparator = forwardRef<MenuSeparatorProps>(({ ...props }) => {
-  return <ChakraMenu.Separator {...props} />;
-});
-MenuSeparator.displayName = "MenuSeparator";
+export const MenuSeparator = ({
+  ref,
+  ...props
+}: MenuSeparatorProps & { ref?: Ref<HTMLHRElement> }) => {
+  return <ChakraMenu.Separator ref={ref} {...props} />;
+};

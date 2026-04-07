@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  BoxProps,
   createToaster,
   Portal,
   Stack,
@@ -22,19 +23,21 @@ type ToastProps = {
   text: string;
   variant: Variant;
   id?: string;
-};
+} & Pick<BoxProps, "width">;
 
 export const createToast = ({
   text,
   variant,
   id,
   duration = 6000,
+  width = "sm",
 }: ToastProps) =>
   toaster.create({
     description: text,
     type: variant,
     id: id ?? crypto.randomUUID(),
     duration,
+    meta: { width },
   });
 
 export const Toaster = () => {
@@ -42,7 +45,7 @@ export const Toaster = () => {
     <Portal>
       <ChakraToaster toaster={toaster} insetInline={{ mdDown: "4" }}>
         {(toast) => (
-          <Toast.Root width={{ md: "sm" }} role="alert">
+          <Toast.Root width={{ md: toast.meta?.width}} role="alert">
             <AlertIcon variant={toast.type as Variant} />
             <Stack gap="1" flex="1" maxWidth="100%">
               <Toast.Description>{toast.description}</Toast.Description>

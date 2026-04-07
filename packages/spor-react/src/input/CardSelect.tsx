@@ -22,7 +22,7 @@ export const CardSelectContent = ({
   children,
   ...props
 }: StaticCardProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   return (
     <Portal>
@@ -75,7 +75,7 @@ export const CardSelectTrigger = ({
   children,
   ...props
 }: CardSelectTriggerProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   const ChevronIcon =
     size === "sm" ? DropdownDownFill18Icon : DropdownDownFill24Icon;

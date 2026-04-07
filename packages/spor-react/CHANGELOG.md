@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 13.0.1
+
+### Patch Changes
+
+- ce9b9f1: replace RefObject with Ref for ref prop type
+
 ## 13.0.0
 
 ### Major Changes

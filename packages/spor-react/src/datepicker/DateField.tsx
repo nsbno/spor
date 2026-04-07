@@ -34,7 +34,7 @@ export const DateField = ({
   ref: externalRef,
   ...props
 }: DateFieldProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const locale = useCurrentLocale();
 

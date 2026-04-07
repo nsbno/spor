@@ -4,7 +4,7 @@ export const FloatingLabel = ({
   ref,
   ...props
 }: FieldLabelProps & {
-  ref?: React.RefObject<HTMLLabelElement | null>;
+  ref?: React.Ref<HTMLLabelElement | null>;
 }) => <Field.Label ref={ref} {...props} css={floatingLabelStyles} />;
 
 const floatingLabelStyles = defineStyle({

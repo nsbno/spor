@@ -46,7 +46,7 @@ export const Heading = function Heading({
   ref,
   ...props
 }: HeadingProps & {
-  ref?: React.RefObject<HTMLHeadingElement>;
+  ref?: React.Ref<HTMLHeadingElement>;
 }) {
   const {
     as,

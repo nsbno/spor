@@ -25,7 +25,7 @@ export const SkeletonCircle = function SkeletonCircle({
   ref,
   ...props
 }: SkeletonCircleProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) {
   const recipe = useRecipe({ key: "skeleton" });
 

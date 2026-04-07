@@ -45,7 +45,7 @@ export const PressableCard = ({
   ref,
   ...props
 }: PressableCardProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   const recipe = useRecipe({ key: "pressableCard" });
   const [recipeProps, restProps] = recipe.splitVariantProps(props);

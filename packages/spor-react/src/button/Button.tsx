@@ -118,7 +118,7 @@ export const Button = ({
   children,
   ...rest
 }: ButtonProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   const { t } = useTranslation();
 

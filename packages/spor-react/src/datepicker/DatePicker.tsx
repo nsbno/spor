@@ -76,7 +76,7 @@ export const DatePicker = ({
   css,
   ...props
 }: DatePickerProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const chakraFieldProps = useFieldContext();
   const state = useDatePickerState({

@@ -47,7 +47,7 @@ export const StaticCard = ({
   ref,
   ...props
 }: StaticCardProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const recipe = useRecipe({ key: "staticCard" });
   const [recipeProps, restProps] = recipe.splitVariantProps(props);

@@ -48,7 +48,7 @@ export const Text = function Text({
   ref,
   ...props
 }: TextProps & {
-  ref?: React.RefObject<HTMLParagraphElement>;
+  ref?: React.Ref<HTMLParagraphElement>;
 }) {
   const { variant, lineHeight, fontSize, ...rest } = props;
   const resolvedProps = resolveTextProps({ variant, fontSize, lineHeight });

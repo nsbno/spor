@@ -62,7 +62,7 @@ export const Stepper = function Stepper({
   ref,
   ...props
 }: StepperProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) {
   const {
     onClick = () => {},

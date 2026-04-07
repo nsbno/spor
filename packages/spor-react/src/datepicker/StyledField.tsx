@@ -21,7 +21,7 @@ export const StyledField = function StyledField({
   ref,
   ...props
 }: StyledFieldProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) {
   const {
     children,

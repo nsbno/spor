@@ -32,7 +32,7 @@ export const Radio = ({
   ref,
   ...props
 }: RadioProps & {
-  ref?: React.RefObject<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
 }) => {
   const { children, inputProps, rootRef, ...rest } = props;
 
@@ -55,7 +55,7 @@ export const RadioGroup = ({
   ref,
   ...props
 }: RadioGroupProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   return <ChakraRadioGroup.Root ref={ref} {...props} aria-labelledby="" />;
 };

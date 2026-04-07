@@ -47,7 +47,7 @@ export const Alert = ({
   ref,
   ...props
 }: AlertProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const {
     title,

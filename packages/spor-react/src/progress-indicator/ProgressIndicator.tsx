@@ -44,7 +44,7 @@ export const ProgressIndicator = ({
   activeStep,
   css,
 }: ProgressIndicatorProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const { t } = useTranslation();
   const recipe = useSlotRecipe({

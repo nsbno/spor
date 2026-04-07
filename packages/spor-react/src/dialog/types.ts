@@ -9,7 +9,7 @@ export type DrawerContentProps = ChakraDrawer.ContentProps &
   PropsWithChildren<DrawerVariantProps> & {
     children: React.ReactNode;
     portalled?: boolean;
-    portalRef?: React.RefObject<HTMLElement>;
+    portalref?: React.Ref<HTMLElement>;
     hideHandle?: boolean;
   };
 

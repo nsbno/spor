@@ -31,7 +31,7 @@ export const CloseButton = ({
   size = "sm",
   ...props
 }: CloseButtonProps & {
-  ref?: React.RefObject<HTMLButtonElement | null>;
+  ref?: React.Ref<HTMLButtonElement | null>;
 }) => {
   const { t } = useTranslation();
   return (

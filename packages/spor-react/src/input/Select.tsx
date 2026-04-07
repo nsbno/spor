@@ -61,7 +61,7 @@ export const Select = ({
   ref,
   ...props
 }: SelectProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const {
     variant = "core",
@@ -126,7 +126,7 @@ export const SelectItem = ({
   ref,
   ...props
 }: SelectItemProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const { item, children, description, ...rest } = props;
   const recipe = useSlotRecipe({ key: "select" });
@@ -158,7 +158,7 @@ export const SelectItemGroup = function SelectItemGroup({
   ref,
   ...props
 }: SelectItemGroupProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) {
   const { children, label, ...rest } = props;
   return (
@@ -178,7 +178,7 @@ export const SelectTrigger = function SelectTrigger({
   ref,
   ...props
 }: SelectTriggerProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) {
   const { children, clearable, ...rest } = props;
   const recipe = useSlotRecipe({ key: "select" });
@@ -209,7 +209,7 @@ const SelectClearTrigger = function SelectClearTrigger({
   ref,
   ...props
 }: SelectClearTriggerProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) {
   return (
     <ChakraSelect.ClearTrigger asChild {...props} ref={ref}>
@@ -225,7 +225,7 @@ const SelectClearTrigger = function SelectClearTrigger({
 
 type SelectContentProps = ChakraSelect.ContentProps & {
   portalled?: boolean;
-  portalRef?: React.RefObject<HTMLElement>;
+  portalref?: React.Ref<HTMLElement>;
   baseStyle?: SystemStyleObject;
 };
 
@@ -233,7 +233,7 @@ export const SelectContent = function SelectContent({
   ref,
   ...props
 }: SelectContentProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) {
   const { portalled = true, portalRef, baseStyle, ...rest } = props;
   return (
@@ -255,7 +255,7 @@ export const SelectValueText = function SelectValueText({
   ref,
   ...props
 }: SelectValueTextProps & {
-  ref?: React.RefObject<HTMLSpanElement>;
+  ref?: React.Ref<HTMLSpanElement>;
 }) {
   const { children, withPlaceholder, placeholder, ...rest } = props;
   return (

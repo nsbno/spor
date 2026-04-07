@@ -61,7 +61,7 @@ export const ServiceAlert = ({
   ref,
   ...props
 }: ServiceAlertProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const {
     variant = "service",

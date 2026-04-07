@@ -45,7 +45,7 @@ export const FloatingActionButton = ({
   placement = "bottom right",
   ...props
 }: FloatingActionButtonProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   const scrollDirection = useScrollDirection();
 

@@ -60,7 +60,7 @@ export const IconButton = ({
   ref,
   ...props
 }: IconButtonProps & {
-  ref?: React.RefObject<HTMLButtonElement | null>;
+  ref?: React.Ref<HTMLButtonElement | null>;
 }) => {
   const { icon, size = "sm", loading = false, ...rest } = props;
   return (

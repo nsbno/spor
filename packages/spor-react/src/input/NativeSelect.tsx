@@ -43,7 +43,7 @@ export const NativeSelect = function NativeSelect({
   ref,
   ...props
 }: NativeSelectdProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) {
   const {
     children,

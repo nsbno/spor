@@ -42,7 +42,7 @@ export const RadioCard = ({
   ref,
   ...props
 }: RadioCardItemProps & {
-  ref?: React.RefObject<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
 }) => {
   const { inputProps, children } = props;
   const uniqueId = useId();
@@ -79,7 +79,7 @@ export const RadioCardGroup = ({
   ref,
   ...props
 }: RadioCardRootProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const {
     children,

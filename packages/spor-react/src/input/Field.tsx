@@ -84,7 +84,7 @@ export const Field = ({
   ref,
   ...props
 }: FieldProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const {
     label,
@@ -152,7 +152,7 @@ export const FieldErrorText = ({
   ref,
   ...props
 }: ChakraField.ErrorTextProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   return (
     <ChakraField.ErrorText ref={ref}>{props.children}</ChakraField.ErrorText>

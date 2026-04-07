@@ -31,7 +31,7 @@ export const SkipButton = ({
   ref,
   ...props
 }: SkipButtonProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   const { direction, disabled, size = "sm" } = props;
 

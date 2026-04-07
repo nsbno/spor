@@ -32,7 +32,7 @@ export const VyLogo = ({
   variant = "default",
   ...props
 }: VyLogoProps & {
-  ref?: React.RefObject<SVGSVGElement>;
+  ref?: React.Ref<SVGSVGElement>;
 }) => {
   const id = useId();
 

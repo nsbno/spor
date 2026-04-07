@@ -51,7 +51,7 @@ export const ColorModeButton = function ColorModeButton({
   ref,
   ...props
 }: ColorModeButtonProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) {
   const { toggleColorMode } = useColorMode();
   return (

@@ -56,7 +56,7 @@ export const ChoiceChip = ({
   onCheckedChange,
   ...rootProps
 }: ChoiceChipProps & {
-  ref?: React.RefObject<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
 }) => {
   return (
     <CheckboxCard.Root

@@ -45,7 +45,7 @@ export const Toaster = () => {
     <Portal>
       <ChakraToaster toaster={toaster} insetInline={{ mdDown: "4" }}>
         {(toast) => (
-          <Toast.Root width={{ md: toast.meta?.width}} role="alert">
+          <Toast.Root width={{ md: toast.meta?.width }} role="alert">
             <AlertIcon variant={toast.type as Variant} />
             <Stack gap="1" flex="1" maxWidth="100%">
               <Toast.Description>{toast.description}</Toast.Description>

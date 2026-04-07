@@ -6,7 +6,7 @@ import { CloseButton } from "../button";
 
 interface DialogContentProps extends ChakraDialog.ContentProps {
   portalled?: boolean;
-  portalRef?: React.Ref<HTMLElement>;
+  portalRef?: React.RefObject<HTMLElement>;
   backdrop?: boolean;
   children?: React.ReactNode;
 }

@@ -18,7 +18,7 @@ export type ComboboxProps<T> = Exclude<
     /** Optional UI to show when there are no matching items */
     emptyContent?: React.ReactNode;
     /** A ref to the input field */
-    inputRef?: React.Ref<HTMLInputElement>;
+    inputRef?: React.RefObject<HTMLInputElement>;
     /** If you want to allow an empty collection */
     allowsEmptyCollection?: boolean;
     leftIcon?: ReactNode;

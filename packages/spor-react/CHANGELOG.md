@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 12.24.16
+
+### Patch Changes
+
+- b90fd20: Design adjustments to the menu component
+- 80a1fda: Add new menu-component
+
 ## 12.24.15
 
 ### Patch Changes

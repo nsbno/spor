@@ -49,7 +49,7 @@ export const Switch = ({
   ref,
   ...props
 }: SwitchProps & {
-  ref?: React.RefObject<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
 }) => {
   const {
     rootRef,

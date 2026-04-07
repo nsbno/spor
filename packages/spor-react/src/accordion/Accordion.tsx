@@ -56,7 +56,7 @@ export const Accordion = ({
   ref,
   ...props
 }: AccordionProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const { variant = "core", children, gap = 2, css, ...rest } = props;
   const recipe = useSlotRecipe({ key: "accordion" });
@@ -77,7 +77,7 @@ export const AccordionItemTrigger = function AccordionItemTrigger({
   ref,
   ...props
 }: AccordionItemTriggerProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) {
   const {
     startElement,
@@ -115,7 +115,7 @@ export const AccordionItemContent = function AccordionItemContent({
   ref,
   ...props
 }: AccordionItemContentProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) {
   const {
     children,

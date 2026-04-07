@@ -69,7 +69,7 @@ export const Popover = ({
   hasBackdrop = true,
   containerPadding = 12,
 }: PopoverProps & {
-  ref?: React.RefObject<HTMLDivElement | null>;
+  ref?: React.Ref<HTMLDivElement | null>;
 }) => {
   const internalRef = useRef<HTMLDivElement>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

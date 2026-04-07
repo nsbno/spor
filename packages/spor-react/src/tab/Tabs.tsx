@@ -62,7 +62,7 @@ export const Tabs = ({
   ref,
   ...props
 }: TabsProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const { variant = "core", size = "sm" } = props;
   return <ChakraTabs.Root {...props} ref={ref} variant={variant} size={size} />;

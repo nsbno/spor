@@ -28,7 +28,7 @@ export const CalendarTriggerButton = ({
   onPress: _,
   ...buttonProps
 }: CalendarTriggerButtonProps & {
-  ref?: React.RefObject<HTMLDivElement | null>;
+  ref?: React.Ref<HTMLDivElement | null>;
 }) => {
   const { t } = useTranslation();
 

@@ -41,7 +41,7 @@ export const Pagination = ({
   ref,
   ...props
 }: PaginationRootProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const { getHref, children, ...rest } = props;
   const recipe = useSlotRecipe({ key: "pagination" });
@@ -68,7 +68,7 @@ export const PaginationEllipsis = ({
   ref,
   ...props
 }: ChakraPagination.EllipsisProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   return (
     <ListItem>
@@ -83,7 +83,7 @@ export const PaginationItem = ({
   ref,
   ...props
 }: ChakraPagination.ItemProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   const rootProps = useRootProps();
   const { t } = useTranslation();
@@ -128,7 +128,7 @@ export const PaginationPrevTrigger = ({
   ref,
   ...props
 }: ChakraPagination.PrevTriggerProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   const { page } = usePaginationContext();
   const recipe = useSlotRecipe({ key: "pagination" });
@@ -178,7 +178,7 @@ export const PaginationNextTrigger = ({
   ref,
   ...props
 }: ChakraPagination.NextTriggerProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   const { page, totalPages } = usePaginationContext();
   const recipe = useSlotRecipe({ key: "pagination" });

@@ -33,7 +33,7 @@ export const Checkbox = ({
   ref,
   ...props
 }: CheckboxProps & {
-  ref?: React.RefObject<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
 }) => {
   const { children, inputProps, rootRef, ...rest } = props;
   return (

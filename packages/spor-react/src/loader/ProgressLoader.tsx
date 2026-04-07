@@ -96,7 +96,7 @@ export const ProgressLoader = ({
   width,
   ...rest
 }: ProgressLoaderProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const { t } = useTranslation();
   const currentLoadingText = useRotatingLabel({

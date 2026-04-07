@@ -9,7 +9,7 @@ export const TooltipTrigger = ({
   children,
   ...props
 }: ChakraTooltip.TriggerProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   const isStringChild = typeof children === "string";
 
@@ -27,7 +27,7 @@ export const TooltipContent = ({
   children,
   ...props
 }: TooltipProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   return (
     <Portal>

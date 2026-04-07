@@ -74,7 +74,7 @@ export const LineIcon = function LineIcon({
   label,
   ...rest
 }: LineIconProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) {
   const recipe = useSlotRecipe({ key: "lineIcon" });
   const styles = recipe({ variant, size, ...rest });

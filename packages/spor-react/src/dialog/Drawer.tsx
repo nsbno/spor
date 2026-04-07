@@ -58,7 +58,7 @@ export const DrawerContent = ({
   ref,
   ...props
 }: DrawerContentProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const {
     children,
@@ -127,7 +127,7 @@ export const DrawerCloseTrigger = function DrawerCloseTrigger({
   ref,
   ...props
 }: DrawerCloseTriggerProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) {
   const { showText = false, ...rest } = props;
   const { size } = useRootDrawerProps();
@@ -151,7 +151,7 @@ export const DrawerBackTrigger = ({
   ref,
   ...props
 }: ChakraDrawer.CloseTriggerProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   const { t } = useTranslation();
   return (
@@ -169,7 +169,7 @@ export const DrawerFullScreenHeader = ({
   ref,
   ...props
 }: DrawerFullScreenHeaderProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const { backTrigger = true, closeTrigger = true, children } = props;
   return (

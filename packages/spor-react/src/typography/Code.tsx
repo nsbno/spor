@@ -18,7 +18,7 @@ export const Code = function Code({
   ref,
   ...props
 }: CodeVariantProps & {
-  ref?: React.RefObject<HTMLElement>;
+  ref?: React.Ref<HTMLElement>;
 }) {
   return <StyledCode {...props} ref={ref} />;
 };

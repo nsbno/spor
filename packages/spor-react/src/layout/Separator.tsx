@@ -9,7 +9,7 @@ export const Separator = ({
   ref,
   ...props
 }: ChakraSeparatorProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   return <ChakraSeparator {...props} ref={ref} data- />;
 };

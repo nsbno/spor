@@ -70,7 +70,7 @@ export const NudgeTrigger = ({
   ref,
   ...props
 }: ChakraPopover.TriggerProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   return <PopoverTrigger {...props} ref={ref} />;
 };
@@ -81,7 +81,7 @@ export const NudgeContent = ({
   children,
   ...props
 }: PopoverProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const childrenArray = React.Children.toArray(children); // Convert children to an array
@@ -206,7 +206,7 @@ export const NudgeCloseTrigger = ({
   children,
   ...props
 }: ChakraPopover.TriggerProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   const isStringChild = typeof children === "string";
 

@@ -30,7 +30,7 @@ export const AlertIcon = ({
   variant,
   customIcon: CustomAlertIcon,
 }: AlertIconProps & {
-  ref?: React.RefObject<SVGSVGElement>;
+  ref?: React.Ref<SVGSVGElement>;
 }) => {
   const { t } = useTranslation();
 

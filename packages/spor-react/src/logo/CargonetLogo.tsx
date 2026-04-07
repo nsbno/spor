@@ -13,7 +13,7 @@ export const CargonetLogo = ({
   ref,
   ...props
 }: CargonetLogoProps & {
-  ref?: React.RefObject<SVGSVGElement>;
+  ref?: React.Ref<SVGSVGElement>;
 }) => {
   const { colorPalette } = props;
   // These colors should not be tokenized, as they are logo specific.

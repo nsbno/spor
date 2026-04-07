@@ -46,7 +46,7 @@ export const AttachedInputs = ({
   ref,
   ...props
 }: AttachedInputsProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const recipe = useRecipe({ key: "attachedInputs" });
   const [recipeProps, { onFlip, flipAriaLabel, ...restProps }] =

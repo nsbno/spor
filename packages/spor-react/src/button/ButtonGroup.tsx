@@ -52,7 +52,7 @@ export const ButtonGroup = ({
   ref,
   ...props
 }: ButtonGroupProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const recipe = useRecipe({ key: "buttonGroup" });
   const [recipeProps, restProps] = recipe.splitVariantProps(props);

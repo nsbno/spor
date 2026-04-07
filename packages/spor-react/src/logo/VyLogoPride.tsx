@@ -8,7 +8,7 @@ export const VyLogoPride = ({
   ref,
   ...props
 }: VyLogoPrideProps & {
-  ref?: React.RefObject<SVGSVGElement>;
+  ref?: React.Ref<SVGSVGElement>;
 }) => {
   // These colors should not be tokenized, as they are logo specific.
 

@@ -77,7 +77,7 @@ export const Input = ({
   labelAsChild,
   ...props
 }: InputProps & {
-  ref?: React.RefObject<HTMLInputElement | null>;
+  ref?: React.Ref<HTMLInputElement | null>;
 }) => {
   const recipe = useRecipe({ key: "input" });
   const [recipeProps, restProps] = recipe.splitVariantProps(props);

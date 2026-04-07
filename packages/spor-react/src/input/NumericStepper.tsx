@@ -67,7 +67,7 @@ export const NumericStepper = ({
   ref,
   ...props
 }: NumericStepperProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const {
     name: nameProperty,
@@ -218,7 +218,7 @@ const VerySmallButton = ({
   ref,
   ...props
 }: VerySmallButtonProps & {
-  ref?: React.RefObject<HTMLButtonElement | null>;
+  ref?: React.Ref<HTMLButtonElement | null>;
 }) => {
   const { withStepLabel = false, ...rest } = props;
 

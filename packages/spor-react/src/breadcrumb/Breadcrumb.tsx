@@ -26,7 +26,7 @@ export const Breadcrumb = ({
   css,
   ...props
 }: BreadcrumbRootProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const validChildren = React.Children.toArray(children).filter((element) =>
     React.isValidElement(element),

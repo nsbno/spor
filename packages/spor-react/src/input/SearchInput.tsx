@@ -22,7 +22,7 @@ export const SearchInput = ({
   ref,
   ...props
 }: SearchInputProps & {
-  ref?: React.RefObject<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
 }) => {
   const { t } = useTranslation();
   const { variant = "core", onReset, label, value } = props;

@@ -86,7 +86,7 @@ export const ProgressBar = ({
   css,
   ...rest
 }: ProgressBarProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const recipe = useSlotRecipe({ key: "progressbar" });
   const styles = recipe({});

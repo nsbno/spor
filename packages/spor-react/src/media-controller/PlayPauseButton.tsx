@@ -32,7 +32,7 @@ export const PlayPauseButton = ({
   ref,
   ...props
 }: PlayPauseButtonProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   const { playing, disabled, size = "sm" } = props;
 

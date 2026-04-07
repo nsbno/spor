@@ -17,7 +17,7 @@ export const PopoverTrigger = ({
   children,
   ...props
 }: ChakraPopover.TriggerProps & {
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }) => {
   const isStringChild = typeof children === "string";
 
@@ -39,7 +39,7 @@ export const PopoverContent = ({
   showCloseButton = false,
   ...props
 }: PopoverProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) => {
   const { colorMode } = useColorMode();
 

@@ -45,7 +45,7 @@ export const PhoneNumberInput = ({
   ref,
   ...props
 }: PhoneNumberInputProps & {
-  ref?: React.RefObject<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
 }) => {
   const {
     label: externalLabel,

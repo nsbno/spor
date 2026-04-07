@@ -141,7 +141,7 @@ export const TravelTag = function TravelTag({
   customIconVariant,
   ...rest
 }: TravelTagProps & {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }) {
   const recipie = useSlotRecipe({ key: "travelTag" });
   const styles = recipie({

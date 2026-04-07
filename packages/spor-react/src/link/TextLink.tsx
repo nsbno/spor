@@ -58,7 +58,7 @@ export const TextLink = ({
   href,
   ...props
 }: LinkProps & {
-  ref?: React.RefObject<HTMLAnchorElement>;
+  ref?: React.Ref<HTMLAnchorElement>;
 }) => {
   const { t } = useTranslation();
 

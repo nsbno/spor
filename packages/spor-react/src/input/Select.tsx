@@ -225,7 +225,7 @@ const SelectClearTrigger = function SelectClearTrigger({
 
 type SelectContentProps = ChakraSelect.ContentProps & {
   portalled?: boolean;
-  portalRef?: React.Ref<HTMLElement>;
+  portalRef?: React.RefObject<HTMLElement>;
   baseStyle?: SystemStyleObject;
 };
 

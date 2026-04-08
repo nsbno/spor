@@ -1,17 +1,23 @@
 /** This file works as a proxy for all Chakra UI exports */
-export type { PortalProps, UseDisclosureProps } from "@chakra-ui/react";
+export type {
+  PortalProps,
+  SystemConfig,
+  UseDisclosureProps,
+} from "@chakra-ui/react";
 export {
   AspectRatio,
   ClientOnly,
   createIcon,
   createListCollection,
   defineRecipe,
+  defineSlotRecipe,
   defineStyle,
   For,
   FormatByte,
   FormatNumber,
   Icon,
   LocaleProvider,
+  mergeConfigs,
   Portal,
   Show,
   chakra as spor,

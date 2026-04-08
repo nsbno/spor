@@ -11,7 +11,6 @@ import {
   ArrowLeftFill24Icon,
   CloseFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import { forwardRef } from "react";
 import { useSwipeable } from "react-swipeable";
 
 import { ResponsiveButton } from "@/button/ResponsiveButton";
@@ -55,55 +54,60 @@ const [RootDrawerProvider, useRootDrawerProps] =
     name: "RootDrawerProvider",
   });
 
-export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
-  (props, ref) => {
-    const {
-      children,
-      portalled = true,
-      portalRef,
-      hideHandle = false,
-      ...rest
-    } = props;
-    const { size, placement } = useRootDrawerProps();
-    const { setOpen } = useDialogContext();
-    const handlers = useSwipeable({
-      onSwiped: ({ dir }) => {
-        const shouldClose =
-          (placement === "bottom" && dir === "Down") ||
-          (placement === "top" && dir === "Up") ||
-          (placement === "end" && dir === "Right") ||
-          (placement === "start" && dir === "Left");
-        if (shouldClose) {
-          setOpen(false);
-        }
-      },
-      swipeDuration: 250,
-    });
-    const sizeNotFull = size !== "full";
-    const showHandle = !hideHandle;
+export const DrawerContent = ({
+  ref,
+  ...props
+}: DrawerContentProps & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
+  const {
+    children,
+    portalled = true,
+    portalRef,
+    hideHandle = false,
+    ...rest
+  } = props;
+  const { size, placement } = useRootDrawerProps();
+  const { setOpen } = useDialogContext();
+  const handlers = useSwipeable({
+    onSwiped: ({ dir }) => {
+      const shouldClose =
+        (placement === "bottom" && dir === "Down") ||
+        (placement === "top" && dir === "Up") ||
+        (placement === "end" && dir === "Right") ||
+        (placement === "start" && dir === "Left");
+      if (shouldClose) {
+        setOpen(false);
+      }
+    },
+    swipeDuration: 250,
+  });
+  const sizeNotFull = size !== "full";
+  const showHandle = !hideHandle;
 
-    return (
-      <Portal disabled={!portalled} container={portalRef}>
-        <ChakraDrawer.Positioner asChild>
-          <Box {...handlers} width="100%">
-            <ChakraDrawer.Content ref={ref} {...rest}>
-              {showHandle && sizeNotFull && placement === "bottom" && (
-                <CloseDrawerLine />
-              )}
-              {children}
-              {showHandle && sizeNotFull && placement === "top" && (
-                <CloseDrawerLine />
-              )}
-            </ChakraDrawer.Content>
-          </Box>
-        </ChakraDrawer.Positioner>
-      </Portal>
-    );
-  },
-);
-DrawerContent.displayName = "DrawerContent";
+  return (
+    <Portal disabled={!portalled} container={portalRef}>
+      <ChakraDrawer.Positioner asChild>
+        <Box {...handlers} width="100%">
+          <ChakraDrawer.Content ref={ref} {...rest}>
+            {showHandle && sizeNotFull && placement === "bottom" && (
+              <CloseDrawerLine />
+            )}
+            {children}
+            {showHandle && sizeNotFull && placement === "top" && (
+              <CloseDrawerLine />
+            )}
+          </ChakraDrawer.Content>
+        </Box>
+      </ChakraDrawer.Positioner>
+    </Portal>
+  );
+};
 
-export const CloseDrawerLine = forwardRef<HTMLButtonElement>((props, ref) => {
+export const CloseDrawerLine = ({
+  ref,
+  ...props
+}: React.ComponentProps<typeof Box>) => {
   return (
     <Box
       width={7}
@@ -117,13 +121,14 @@ export const CloseDrawerLine = forwardRef<HTMLButtonElement>((props, ref) => {
       ref={ref}
     />
   );
-});
-CloseDrawerLine.displayName = "CloseDrawerLine";
+};
 
-export const DrawerCloseTrigger = forwardRef<
-  HTMLButtonElement,
-  DrawerCloseTriggerProps
->(function DrawerCloseTrigger(props, ref) {
+export const DrawerCloseTrigger = function DrawerCloseTrigger({
+  ref,
+  ...props
+}: DrawerCloseTriggerProps & {
+  ref?: React.Ref<HTMLButtonElement>;
+}) {
   const { showText = false, ...rest } = props;
   const { size } = useRootDrawerProps();
   const { t } = useTranslation();
@@ -140,12 +145,14 @@ export const DrawerCloseTrigger = forwardRef<
       )}
     </ChakraDrawer.CloseTrigger>
   );
-});
+};
 
-export const DrawerBackTrigger = forwardRef<
-  HTMLButtonElement,
-  ChakraDrawer.CloseTriggerProps
->((props, ref) => {
+export const DrawerBackTrigger = ({
+  ref,
+  ...props
+}: ChakraDrawer.CloseTriggerProps & {
+  ref?: React.Ref<HTMLButtonElement>;
+}) => {
   const { t } = useTranslation();
   return (
     <ChakraDrawer.CloseTrigger asChild {...props} ref={ref}>
@@ -156,13 +163,14 @@ export const DrawerBackTrigger = forwardRef<
       />
     </ChakraDrawer.CloseTrigger>
   );
-});
-DrawerBackTrigger.displayName = "DrawerBackTrigger";
+};
 
-export const DrawerFullScreenHeader = forwardRef<
-  HTMLDivElement,
-  DrawerFullScreenHeaderProps
->((props, ref) => {
+export const DrawerFullScreenHeader = ({
+  ref,
+  ...props
+}: DrawerFullScreenHeaderProps & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
   const { backTrigger = true, closeTrigger = true, children } = props;
   return (
     <ChakraDrawer.Header {...props} ref={ref}>
@@ -171,8 +179,7 @@ export const DrawerFullScreenHeader = forwardRef<
       <Box> {closeTrigger && <DrawerCloseTrigger />}</Box>
     </ChakraDrawer.Header>
   );
-});
-DrawerFullScreenHeader.displayName = "DrawerFullScreenHeader";
+};
 
 export const Drawer = (props: DrawerProps) => {
   const { children, placement, size = "md", ...rest } = props;

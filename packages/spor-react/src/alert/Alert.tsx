@@ -7,7 +7,6 @@ import {
   useSlotRecipe,
 } from "@chakra-ui/react";
 import { IconComponent } from "@vygruppen/spor-icon-react";
-import { forwardRef } from "react";
 
 import { CloseButton } from "@/button";
 
@@ -44,7 +43,12 @@ export type AlertProps = Omit<ChakraAlert.RootProps, "colorPalette"> & {
  * @see Docs https://spor.vy.no/alert
  */
 
-export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
+export const Alert = ({
+  ref,
+  ...props
+}: AlertProps & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
   const {
     title,
     showIndicator = true,
@@ -66,7 +70,10 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   if (!open) return null;
   return (
     <ChakraAlert.Root ref={ref} {...props}>
-      <ChakraAlert.Content flexDirection={title ? "column" : "row"}>
+      <ChakraAlert.Content
+        flexDirection={title ? "column" : "row"}
+        data-part="content"
+      >
         <HStack gap="1" alignItems="flex-start">
           {showIndicator && (
             <ChakraAlert.Indicator asChild>
@@ -74,7 +81,10 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
             </ChakraAlert.Indicator>
           )}
           {title && (
-            <ChakraAlert.Title paddingRight={closable ? 6 : 0}>
+            <ChakraAlert.Title
+              paddingRight={closable ? 6 : 0}
+              data-part="title"
+            >
               {title}
             </ChakraAlert.Title>
           )}
@@ -84,6 +94,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
             width="100%"
             paddingLeft={title ? 0.5 : 0}
             paddingRight={closable ? 6 : 0}
+            data-part="description"
           >
             {children}
           </ChakraAlert.Description>
@@ -91,6 +102,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
       </ChakraAlert.Content>
       {closable && (
         <CloseButton
+          data-part="close-button"
           size="xs"
           position="absolute"
           top="1.5"
@@ -101,6 +113,4 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
       )}
     </ChakraAlert.Root>
   );
-});
-
-Alert.displayName = "Alert";
+};

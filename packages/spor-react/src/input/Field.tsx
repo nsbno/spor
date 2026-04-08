@@ -16,6 +16,32 @@ import { Label } from "./Label";
 
 type FieldVariantProps = RecipeVariantProps<typeof fieldSlotRecipe>;
 
+/**
+ * Renders a label with a required indicator, handling both direct labels and child labels
+ */
+function renderLabelWithIndicator(
+  label: React.ReactNode,
+  labelAsChild?: boolean,
+): React.ReactNode {
+  if (!labelAsChild || !React.isValidElement(label)) {
+    return (
+      <>
+        {label}
+        <ChakraField.RequiredIndicator />
+      </>
+    );
+  }
+
+  return React.cloneElement(
+    label,
+    {},
+    <>
+      {(label.props as React.PropsWithChildren).children}
+      <ChakraField.RequiredIndicator />
+    </>,
+  );
+}
+
 export type FieldBaseProps = {
   direction?: "row" | "column";
   disabled?: boolean;
@@ -27,6 +53,7 @@ export type FieldBaseProps = {
   errorText?: React.ReactNode;
   floatingLabel?: boolean;
   shouldFloat?: boolean;
+  labelAsChild?: boolean;
 };
 
 export type FieldProps = Omit<
@@ -53,75 +80,83 @@ export type FieldProps = Omit<
  * This component is not exported and should be used as a wrapper for other input components.
  */
 
-export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
-  (props, ref) => {
-    const {
-      label,
-      children,
-      helperText,
-      errorText,
-      floatingLabel = false,
-      disabled,
-      invalid,
-      readOnly,
-      required,
-      direction,
-      id,
-      shouldFloat,
-      ...rest
-    } = props;
-    const recipe = useSlotRecipe({ key: "field" });
-    const styles = recipe();
+export const Field = ({
+  ref,
+  ...props
+}: FieldProps & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
+  const {
+    label,
+    children,
+    helperText,
+    errorText,
+    floatingLabel = false,
+    disabled,
+    invalid,
+    readOnly,
+    required,
+    direction,
+    id,
+    shouldFloat,
+    labelAsChild,
+    ...rest
+  } = props;
+  const recipe = useSlotRecipe({ key: "field" });
+  const styles = recipe();
 
-    return (
-      <Stack gap="2" ref={ref} width="100%" {...rest}>
-        <ChakraField.Root
-          disabled={disabled}
-          invalid={invalid}
-          readOnly={readOnly}
-          required={required}
-          css={styles.root}
-          direction={direction}
-          id={id}
-        >
-          {label && !floatingLabel && (
-            <Label>
-              {label}
-              <ChakraField.RequiredIndicator />
-            </Label>
-          )}
-
-          {children}
-
-          {label && floatingLabel && (
-            <FloatingLabel data-float={shouldFloat ? true : undefined}>
-              {label}
-              <ChakraField.RequiredIndicator />
-            </FloatingLabel>
-          )}
-          {errorText && (
-            <ChakraField.ErrorText>{errorText}</ChakraField.ErrorText>
-          )}
-        </ChakraField.Root>
-        {helperText && (
-          <Text variant="sm" color="text.tertiary">
-            {helperText}
-          </Text>
+  return (
+    <Stack gap="2" ref={ref} width="100%" {...rest}>
+      <ChakraField.Root
+        disabled={disabled}
+        invalid={invalid}
+        readOnly={readOnly}
+        required={required}
+        css={styles.root}
+        direction={direction}
+        id={id}
+      >
+        {label && !floatingLabel && (
+          <Label asChild={labelAsChild} aria-hidden>
+            {renderLabelWithIndicator(label, labelAsChild)}
+          </Label>
         )}
-      </Stack>
-    );
-  },
-);
-Field.displayName = "Field";
 
-export const FieldErrorText = React.forwardRef<
-  HTMLDivElement,
-  ChakraField.ErrorTextProps
->((props, ref) => {
+        {children}
+
+        {label && floatingLabel && (
+          <FloatingLabel
+            data-float={shouldFloat ? true : undefined}
+            asChild={labelAsChild}
+            aria-hidden
+          >
+            {renderLabelWithIndicator(label, labelAsChild)}
+          </FloatingLabel>
+        )}
+        {errorText && (
+          <ChakraField.ErrorText aria-live="polite">
+            {errorText}
+          </ChakraField.ErrorText>
+        )}
+      </ChakraField.Root>
+      {helperText && (
+        <Text variant="sm" color="text.tertiary">
+          {helperText}
+        </Text>
+      )}
+    </Stack>
+  );
+};
+
+export const FieldErrorText = ({
+  ref,
+  ...props
+}: ChakraField.ErrorTextProps & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
   return (
     <ChakraField.ErrorText ref={ref}>{props.children}</ChakraField.ErrorText>
   );
-});
-FieldErrorText.displayName = "FieldErrorText";
+};
 
 export const FieldLabel = ChakraField.Label;

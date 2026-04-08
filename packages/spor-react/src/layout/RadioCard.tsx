@@ -4,7 +4,7 @@ import {
   RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef } from "react";
+import React, { useId } from "react";
 
 import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
 
@@ -38,20 +38,34 @@ type RadioCardItemProps = Exclude<
     ariaLabel?: string;
   };
 
-export const RadioCard = forwardRef<HTMLInputElement, RadioCardItemProps>(
-  (props, ref) => {
-    const { inputProps, children } = props;
+export const RadioCard = ({
+  ref,
+  ...props
+}: RadioCardItemProps & {
+  ref?: React.Ref<HTMLInputElement>;
+}) => {
+  const { inputProps, children } = props;
+  const uniqueId = useId();
+  const itemControlId = `radio-card-item-control-${uniqueId}`;
 
-    return (
-      <ChakraRadioCard.Item {...props}>
-        <ChakraRadioCard.ItemHiddenInput ref={ref} {...inputProps} />
+  const inputHasAriaLabel =
+    inputProps?.["aria-labelledby"] || inputProps?.["aria-label"];
 
-        <ChakraRadioCard.ItemControl>{children}</ChakraRadioCard.ItemControl>
-      </ChakraRadioCard.Item>
-    );
-  },
-);
-RadioCard.displayName = "RadioCard";
+  return (
+    <ChakraRadioCard.Item {...props}>
+      <ChakraRadioCard.ItemHiddenInput
+        aria-labelledby={
+          inputHasAriaLabel ? inputProps?.["aria-labelledby"] : itemControlId
+        }
+        ref={ref}
+        {...inputProps}
+      />
+      <ChakraRadioCard.ItemControl id={itemControlId} aria-hidden>
+        {children}
+      </ChakraRadioCard.ItemControl>
+    </ChakraRadioCard.Item>
+  );
+};
 
 type RadioCardRootProps = RadioCardVariantProps &
   Exclude<ChakraRadioCard.RootProps, "variant"> & {
@@ -61,34 +75,36 @@ type RadioCardRootProps = RadioCardVariantProps &
     display?: string;
   };
 
-export const RadioCardGroup = forwardRef<HTMLDivElement, RadioCardRootProps>(
-  (props, ref) => {
-    const {
-      children,
-      variant,
-      gap = 2,
-      direction = "column",
-      display = "flex",
-      ...rest
-    } = props;
-    const recipe = useSlotRecipe({ key: "radio-card" });
-    const styles = recipe({ variant });
+export const RadioCardGroup = ({
+  ref,
+  ...props
+}: RadioCardRootProps & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
+  const {
+    children,
+    variant,
+    gap = 2,
+    direction = "column",
+    display = "flex",
+    ...rest
+  } = props;
+  const recipe = useSlotRecipe({ key: "radio-card" });
+  const styles = recipe({ variant });
 
-    return (
-      <ChakraRadioCard.Root
-        ref={ref}
-        variant={variant}
-        css={styles}
-        display={display}
-        gap={gap}
-        flexDirection={direction}
-        {...rest}
-      >
-        {children}
-      </ChakraRadioCard.Root>
-    );
-  },
-);
-RadioCardGroup.displayName = "RadioCardGroup";
+  return (
+    <ChakraRadioCard.Root
+      ref={ref}
+      variant={variant}
+      css={styles}
+      display={display}
+      gap={gap}
+      flexDirection={direction}
+      {...rest}
+    >
+      {children}
+    </ChakraRadioCard.Root>
+  );
+};
 
 export const RadioCardLabel = ChakraRadioCard.Label;

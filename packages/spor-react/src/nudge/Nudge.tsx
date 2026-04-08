@@ -9,12 +9,7 @@ import {
   usePopoverContext,
 } from "@chakra-ui/react";
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
-import React, {
-  forwardRef,
-  PropsWithChildren,
-  useEffect,
-  useState,
-} from "react";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 
 import {
   Button,
@@ -52,81 +47,91 @@ export type NudgeProps = {
 } & PopoverRootProps;
 
 export const Nudge = (props: NudgeProps) => {
-  const { introducedDate, size = "md", ...rest } = props;
+  const { introducedDate, size = "md", open, ...rest } = props;
 
   if (isNudgeExpired(introducedDate)) {
     logExpirationWarning();
     return null;
   }
 
-  return <Popover defaultOpen={true} size={size} {...rest} />;
+  const isControlled = open !== undefined;
+
+  return (
+    <Popover
+      defaultOpen={isControlled ? undefined : true}
+      open={open}
+      size={size}
+      {...rest}
+    />
+  );
 };
 
-export const NudgeTrigger = forwardRef<
-  HTMLButtonElement,
-  ChakraPopover.TriggerProps
->(({ ...props }, ref) => {
+export const NudgeTrigger = ({
+  ref,
+  ...props
+}: ChakraPopover.TriggerProps & {
+  ref?: React.Ref<HTMLButtonElement>;
+}) => {
   return <PopoverTrigger {...props} ref={ref} />;
-});
-NudgeTrigger.displayName = "NudgeTrigger";
+};
 
-export const NudgeContent = forwardRef<HTMLDivElement, PopoverProps>(
-  ({ showCloseButton = true, children, ...props }, ref) => {
-    const [currentStep, setCurrentStep] = useState(1);
-    const childrenArray = React.Children.toArray(children); // Convert children to an array
+export const NudgeContent = ({
+  ref,
+  showCloseButton = true,
+  children,
+  ...props
+}: PopoverProps & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
+  const [currentStep, setCurrentStep] = useState(1);
+  const childrenArray = React.Children.toArray(children); // Convert children to an array
 
-    const { open } = usePopoverContext();
+  const { open } = usePopoverContext();
 
-    useEffect(() => {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setCurrentStep(1);
-    }, [children, open]);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setCurrentStep(1);
+  }, [children, open]);
 
-    const wizardPages = childrenArray.filter(
-      (child) =>
-        React.isValidElement(child) &&
-        (child.type as React.ComponentType).displayName === "NudgeWizardStep",
-    );
+  const wizardPages = childrenArray.filter(
+    (child) => React.isValidElement(child) && child.type === NudgeWizardStep,
+  );
 
-    const restChildren = childrenArray.filter(
-      (child) =>
-        !React.isValidElement(child) ||
-        (child.type as React.ComponentType).displayName !== "NudgeWizardStep",
-    );
+  const restChildren = childrenArray.filter(
+    (child) => !React.isValidElement(child) || child.type !== NudgeWizardStep,
+  );
 
-    const totalSteps = wizardPages.length;
-    const isLastStep = totalSteps === currentStep;
+  const totalSteps = wizardPages.length;
+  const isLastStep = totalSteps === currentStep;
 
-    if (wizardPages.length === 0) {
-      return (
-        <PopoverContent showCloseButton={showCloseButton} {...props} ref={ref}>
-          {children}
-        </PopoverContent>
-      );
-    }
-
+  if (wizardPages.length === 0) {
     return (
       <PopoverContent showCloseButton={showCloseButton} {...props} ref={ref}>
-        {restChildren}
-        {wizardPages[currentStep - 1] as React.ReactElement}
-        <NudgeActions gap="18px">
-          <ProgressIndicator
-            activeStep={currentStep}
-            numberOfSteps={totalSteps}
-          />
-
-          <NextButton
-            isLastStep={isLastStep}
-            onNext={() => {
-              setCurrentStep((previous) => previous + 1);
-            }}
-          />
-        </NudgeActions>
+        {children}
       </PopoverContent>
     );
-  },
-);
-NudgeContent.displayName = "NudgeContent";
+  }
+
+  return (
+    <PopoverContent showCloseButton={showCloseButton} {...props} ref={ref}>
+      {restChildren}
+      {wizardPages[currentStep - 1] as React.ReactElement}
+      <NudgeActions gap="18px">
+        <ProgressIndicator
+          activeStep={currentStep}
+          numberOfSteps={totalSteps}
+        />
+
+        <NextButton
+          isLastStep={isLastStep}
+          onNext={() => {
+            setCurrentStep((previous) => previous + 1);
+          }}
+        />
+      </NudgeActions>
+    </PopoverContent>
+  );
+};
 
 export const NudgeActions = ({ ...props }: BoxProps) => {
   const { colorMode } = useColorMode();
@@ -196,12 +201,13 @@ export const NudgeWizardStep = ({ children }: PropsWithChildren) => {
   );
 };
 
-NudgeWizardStep.displayName = "NudgeWizardStep";
-
-export const NudgeCloseTrigger = forwardRef<
-  HTMLButtonElement,
-  ChakraPopover.TriggerProps
->(({ children, ...props }, ref) => {
+export const NudgeCloseTrigger = ({
+  ref,
+  children,
+  ...props
+}: ChakraPopover.TriggerProps & {
+  ref?: React.Ref<HTMLButtonElement>;
+}) => {
   const isStringChild = typeof children === "string";
 
   return (
@@ -209,5 +215,4 @@ export const NudgeCloseTrigger = forwardRef<
       {children}
     </ChakraPopover.CloseTrigger>
   );
-});
-NudgeCloseTrigger.displayName = "NudgeCloseTrigger";
+};

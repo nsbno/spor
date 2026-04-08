@@ -1,6 +1,7 @@
 /* eslint-disable simple-import-sort/imports */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ButtonProps } from "@chakra-ui/react";
+import { vercelStegaClean } from "@vercel/stega";
 import {
   PortableTextReactComponents,
   PortableText as SanityPortableText,
@@ -163,7 +164,9 @@ const components: Partial<PortableTextReactComponents> = {
     imageAndTextList: ImageAndTextListSerializer,
     imageCardList: ImageCardListSerializer,
     cards: CardSerializer,
-    linkButton: LinkButtonSerializer,
+    linkButton: ({ value }) => (
+      <Flex width={["100%"]}>{LinkButtonSerializer({ value })}</Flex>
+    ),
     nonClickableBoxList: NonClickableBoxListSerializer,
     accordion: AccordionSerializer,
     fileList: FileListSerializer,
@@ -175,7 +178,11 @@ const components: Partial<PortableTextReactComponents> = {
         : ({ as: "a", href: value.url } as ButtonProps);
       return (
         <Box marginTop={3}>
-          <Button variant={value.variant} size={value.size} {...linkProps}>
+          <Button
+            variant={value.variant ?? "primary"}
+            size={value.size}
+            {...linkProps}
+          >
             {value.text}
           </Button>
         </Box>
@@ -428,7 +435,7 @@ export const PortableText = ({
 }) => {
   return (
     <SanityPortableText
-      value={value}
+      value={vercelStegaClean(value)}
       components={deepmerge(components, componentsOverrides)}
     />
   );

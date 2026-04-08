@@ -2,6 +2,7 @@ import { accordionSlotRecipe } from "./accordion";
 import { alertSlotRecipe } from "./alert";
 import { alertExpandableSlotRecipe } from "./alert-expandable";
 import { alertServiceSlotRecipe } from "./alert-service";
+import { comboboxSlotRecipe } from "./autocomplete";
 import { breadcrumbSlotRecipe } from "./breadcrumb";
 import { checkboxSlotRecipe } from "./checkbox";
 import { choiceChipSlotRecipe } from "./choice-chip";
@@ -16,6 +17,7 @@ import { lineIconSlotRecipe } from "./line-icon";
 import { listSlotRecipe } from "./list";
 import { listBoxSlotRecipe } from "./listbox";
 import { mediaControllerSlotRecipe } from "./media-controller-button";
+import { menuSlotRecipe } from "./menu";
 import { nativeSelectSlotRecipe } from "./native-select";
 import { numericStepperRecipe } from "./numeric-stepper";
 import { paginationSlotRecipe } from "./pagination";
@@ -39,6 +41,7 @@ export const slotRecipes = {
   alert: alertSlotRecipe,
   breadcrumb: breadcrumbSlotRecipe,
   checkbox: checkboxSlotRecipe,
+  combobox: comboboxSlotRecipe,
   datePicker: datePickerSlotRecipe,
   dialog: dialogSlotRecipe,
   drawer: drawerSlotRecipe,
@@ -67,4 +70,5 @@ export const slotRecipes = {
   checkboxCard: choiceChipSlotRecipe,
   collapsible: collapsibleSlotRecipe,
   tooltip: popoverSlotRecipe,
+  menu: menuSlotRecipe,
 };

@@ -42,7 +42,12 @@ export function CalendarHeader({
   const isYearPickerVisible = showYearNavigation && !areAllOtherYearsDisabled;
 
   return (
-    <Flex alignItems="center" paddingBottom="4" justifyContent="space-between">
+    <Flex
+      alignItems="center"
+      paddingBottom="4"
+      justifyContent="space-between"
+      data-part="calendar-header"
+    >
       <CalendarNavigator
         title={title || (isYearPickerVisible ? monthTitle : monthAndYearTitle)}
         unit="month"

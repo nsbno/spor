@@ -2,7 +2,7 @@
 
 import { createListCollection } from "@chakra-ui/react";
 import { getSupportedCallingCodes } from "awesome-phonenumber";
-import { forwardRef, useMemo } from "react";
+import { useMemo } from "react";
 
 import {
   createTexts,
@@ -37,10 +37,12 @@ type CountryCodeSelectProps = Omit<SelectProps, "label" | "collection"> & {
   allowedCountryCodes?: string[];
 };
 
-export const CountryCodeSelect = forwardRef<
-  HTMLDivElement,
-  CountryCodeSelectProps
->((props, ref) => {
+export const CountryCodeSelect = ({
+  ref,
+  ...props
+}: CountryCodeSelectProps & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
   const { t } = useTranslation();
 
   const filteredCallingCodes = useMemo(() => {
@@ -62,6 +64,7 @@ export const CountryCodeSelect = forwardRef<
       lazyMount
       aria-label={t(texts.countryCode)}
       sideRadiusVariant="rightSideSquare"
+      role="combobox"
     >
       {filteredCallingCodes.items.map((code) => (
         <SelectItem key={code.label} item={code}>
@@ -70,9 +73,7 @@ export const CountryCodeSelect = forwardRef<
       ))}
     </Select>
   );
-});
-
-CountryCodeSelect.displayName = "CountryCodeSelect";
+};
 
 const texts = createTexts({
   countryCode: {

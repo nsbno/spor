@@ -1,5 +1,224 @@
 # @vygruppen/spor-react
 
+## 13.0.1
+
+### Patch Changes
+
+- ce9b9f1: replace RefObject with Ref for ref prop type
+
+## 13.0.0
+
+### Major Changes
+
+- 28d1e87: Upgrade design system to React 19.
+
+  ### Breaking Changes
+  - React 19 is now required as a peer dependency
+  - Internal usage of `useRef` has been removed and refactored
+
+  ### Migration
+  - Ensure your application is upgraded to React 19 before updating these packages
+
+### Patch Changes
+
+- Updated dependencies [28d1e87]
+  - @vygruppen/spor-icon-react@5.0.0
+
+## 12.24.16
+
+### Patch Changes
+
+- b90fd20: Design adjustments to the menu component
+- 80a1fda: Add new menu-component
+
+## 12.24.15
+
+### Patch Changes
+
+- 2efa3ee: fix(calendar): iOS 26 pointer bug with range selection
+- f7f40c2: feat(autocomplete): Added ref and css props
+
+## 12.24.14
+
+### Patch Changes
+
+- a79c7e3: Fix contrast on stepper in darkmode
+
+## 12.24.13
+
+### Patch Changes
+
+- 36f8706: Avoid passing defaultOpen to controlled Nudge popovers
+- fd6a463: Fix bg color for floating datepicker
+
+## 12.24.12
+
+### Patch Changes
+
+- 91f17bd: support custom styling with data-part and css prop for most components
+
+## 12.24.11
+
+### Patch Changes
+
+- 4b468fb: Autocomplete - Empty result text now does not display when input is empty
+- ecdcdba: Improve voiceover support on RadioCards
+- e73653c: Improve voiceover support on Accordion
+- Updated dependencies [3c08bf8]
+  - @vygruppen/spor-icon-react@4.5.3
+
+## 12.24.10
+
+### Patch Changes
+
+- 4d11f81: Fix closetrigger tabbable autocomplete
+
+## 12.24.9
+
+### Patch Changes
+
+- 795555b: Revert radiocard VO fix. Created other issues with voice-over
+
+## 12.24.8
+
+### Patch Changes
+
+- 65d79ba: add padding to numeric stepper when stepSize is visible
+- e83b70a: improve the support of voiceover for RadioCards
+  - @vygruppen/spor-icon-react@4.5.2
+
+## 12.24.7
+
+### Patch Changes
+
+- 17c0938: Ensure onFocus is passed to Autocomplete
+
+## 12.24.6
+
+### Patch Changes
+
+- ddaed5e: Fix autocomplete dropdown not closing on iphone VO
+- 7f312de: fix sizing of Switch variants to match design
+- 5bc8e7a: Fix so all parts of select can be selected by the data-part css query
+
+## 12.24.5
+
+### Patch Changes
+
+- 3b8f859: Add css prop to Select to make it easier to style
+
+## 12.24.4
+
+### Patch Changes
+
+- be48428: Add deeper dark- and lightmode support for Vy-logo.
+- Updated dependencies [be48428]
+  - @vygruppen/spor-design-tokens@4.3.3
+
+## 12.24.3
+
+### Patch Changes
+
+- 5194171: Revert changes to attached inputs that created bugs for combobox borderradius.
+
+## 12.24.2
+
+### Patch Changes
+
+- 8047512: Add icons for tiktok. Rename twitter-icon to "x"
+- f8656b9: fix(UU): Input field label being announced twice
+- 2bf118b: fix: Not able to change borderRadius when using AttachedInputs
+- Updated dependencies [8047512]
+  - @vygruppen/spor-icon-react@4.5.2
+
+## 12.24.1
+
+### Patch Changes
+
+- c9487f9: Fix issue with dynamic children not working for table sort, and fix column header no longer needing `children: string` to work
+
+## 12.24.0
+
+### Minor Changes
+
+- 5afeedd: Updated the Table sortable styling
+
+### Patch Changes
+
+- @vygruppen/spor-icon-react@4.5.1
+
+## 12.23.0
+
+### Minor Changes
+
+- b179f2f: Added a props `sortable` to Table that lets you sort columns by clicking on them.
+
+### Patch Changes
+
+- a8cfc72: UU fixes on input, phonenumber input, and textarea components. Fix double announcement of labels, order when navigating with voiceover, and connect textarea-id to textarea-label.
+  - @vygruppen/spor-icon-react@4.5.1
+
+## 12.22.2
+
+### Patch Changes
+
+- 815694c: Improvements to Autocomplete accessibility and bugfixes.
+
+  Also fix floatingLabel fontSize not being set to 2xs.
+
+- 877bd20: Remove unessesary ids from numeric stepper buttons
+- 98504fe: Change from using aria-label in Box to adding a VisuallyHidden elements for better screen reader support of AlertIcon.
+- 3bfb2b1: Align Text font-size breakpoint with other components
+
+  Changed responsive font-size steps so Text switches size at sm (568px) instead of lg (1025px). This fixes visual size mismatches across the design system.
+
+## 12.22.1
+
+### Patch Changes
+
+- 150818c: add mono-color variant of vylogo
+
+## 12.22.0
+
+### Minor Changes
+
+- 287df68: Add new Autocomplete component based on Chakra UI's official Combobox
+
+  The new Autocomplete component replaces the overly complex custom combobox implementation with a simpler, more accessible solution built on Chakra UI's well-maintained Combobox component.
+
+  **Features:**
+  - Supports both core and floating label variants
+  - Integrates seamlessly with existing Input and Field components
+  - Handles internal/external filtering, loading states, multiple selection, and grouped items
+  - Improved accessibility and universal design standards compliance
+  - Modern UI with refined design and animations
+  - Adds flip-switch support in AttachedInputs to simplify travel search implementation
+
+### Patch Changes
+
+- 375c0a8: replaced aria-selected with aria-current to fix uu error
+
+## 12.21.2
+
+### Patch Changes
+
+- 166d9d3: - Fix props not being forwarded correctly in NumericStepper component
+  - Rename "usb-charging" icon to "usb charging" (using space instead of "-")
+    → aligns with existing icon naming convention where type/variant is separated by space rather than hyphen
+- 0a43f61: fix wrong borderRadius CardSelect
+- 1c9db69: Added focus on radio buttons
+- Updated dependencies [2899114]
+  - @vygruppen/spor-design-tokens@4.3.2
+  - @vygruppen/spor-icon-react@4.5.1
+
+## 12.21.1
+
+### Patch Changes
+
+- 7b2b1a4: New icon for usb-charging on board
+- Updated dependencies [7b2b1a4]
+  - @vygruppen/spor-icon-react@4.5.1
+
 ## 12.21.0
 
 ### Minor Changes

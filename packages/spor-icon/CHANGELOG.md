@@ -1,5 +1,43 @@
 # @vygruppen/spor-icon
 
+## 3.5.9
+
+### Patch Changes
+
+- 3c08bf8: Add theme icon
+
+## 3.5.8
+
+### Patch Changes
+
+- 768f11a: Add theme icon for light/dark mode
+
+## 3.5.7
+
+### Patch Changes
+
+- 1142d73: Add icons for tiktok. Rename twitter-icon to "x"
+
+## 3.5.6
+
+### Patch Changes
+
+- 9da2531: add draghandle icon
+
+## 3.5.5
+
+### Patch Changes
+
+- 166d9d3: - Fix props not being forwarded correctly in NumericStepper component
+  - Rename "usb-charging" icon to "usb charging" (using space instead of "-")
+    → aligns with existing icon naming convention where type/variant is separated by space rather than hyphen
+
+## 3.5.4
+
+### Patch Changes
+
+- 7b2b1a4: New icon for usb-charging on board
+
 ## 3.5.3
 
 ### Patch Changes

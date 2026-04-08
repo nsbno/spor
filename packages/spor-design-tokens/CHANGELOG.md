@@ -1,5 +1,17 @@
 # Changelog
 
+## 4.3.3
+
+### Patch Changes
+
+- be48428: Add deeper dark- and lightmode support for Vy-logo.
+
+## 4.3.2
+
+### Patch Changes
+
+- 2899114: change lineheight to support WCAG requirements
+
 ## 4.3.1
 
 ### Patch Changes

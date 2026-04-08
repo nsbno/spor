@@ -1,13 +1,11 @@
 import { defineStyle, Field, FieldLabelProps } from "@chakra-ui/react";
-import { forwardRef } from "react";
 
-export const FloatingLabel = forwardRef<HTMLLabelElement, FieldLabelProps>(
-  (props, ref) => (
-    <Field.Label ref={ref} {...props} css={floatingLabelStyles} />
-  ),
-);
-
-FloatingLabel.displayName = "FloatingLabel";
+export const FloatingLabel = ({
+  ref,
+  ...props
+}: FieldLabelProps & {
+  ref?: React.Ref<HTMLLabelElement | null>;
+}) => <Field.Label ref={ref} {...props} css={floatingLabelStyles} />;
 
 const floatingLabelStyles = defineStyle({
   paddingX: 3,
@@ -19,14 +17,14 @@ const floatingLabelStyles = defineStyle({
   },
 
   pos: "absolute",
-  transition: "position",
+  transition: "top 160ms ease, font-size 160ms ease",
 
   top: "0.9rem",
   color: "text",
   fontSize: ["mobile.sm", "desktop.sm"],
 
   "&[data-float]": {
-    fontSize: ["mobile.xs", "desktop.xs"],
+    fontSize: ["mobile.2xs", "desktop.2xs"],
     color: "text",
     top: "0.3rem",
   },

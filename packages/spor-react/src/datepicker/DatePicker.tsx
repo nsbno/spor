@@ -7,11 +7,12 @@ import {
   PopoverRootProps,
   Portal,
   RecipeVariantProps,
+  SystemStyleObject,
   useFieldContext,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
-import React, { forwardRef, PropsWithChildren, useId, useRef } from "react";
+import React, { PropsWithChildren, useId, useRef } from "react";
 import {
   AriaDatePickerProps,
   DateValue,
@@ -47,7 +48,9 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
     overrideBorderColor?: string;
     isActive?: boolean;
     onClick?: () => void;
-  } & FieldBaseProps;
+  } & FieldBaseProps & {
+    css?: SystemStyleObject;
+  };
 
 /**
  * A date picker component.
@@ -59,133 +62,129 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
  * ```
  */
 
-export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
-  (
-    {
-      variant,
-      errorText,
-      minHeight,
-      showYearNavigation,
-      withPortal = true,
-      width = "auto",
-      invalid = false,
-      helperText,
-      positioning,
-      ...props
-    },
-    externalRef,
-  ) => {
-    const chakraFieldProps = useFieldContext();
-    const state = useDatePickerState({
-      ...props,
-      shouldCloseOnSelect: true,
-      onChange: props.onValueChange,
-      errorMessage: errorText,
-      isRequired: props.isRequired ?? chakraFieldProps?.required,
-      validationState: chakraFieldProps?.invalid ? "invalid" : "valid",
-    });
+export const DatePicker = ({
+  ref: externalRef,
+  variant,
+  errorText,
+  minHeight,
+  showYearNavigation,
+  withPortal = true,
+  width = "auto",
+  invalid = false,
+  helperText,
+  positioning,
+  css,
+  ...props
+}: DatePickerProps & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
+  const chakraFieldProps = useFieldContext();
+  const state = useDatePickerState({
+    ...props,
+    shouldCloseOnSelect: true,
+    onChange: props.onValueChange,
+    errorMessage: errorText,
+    isRequired: props.isRequired ?? chakraFieldProps?.required,
+    validationState: chakraFieldProps?.invalid ? "invalid" : "valid",
+  });
 
-    const internalRef = useRef<HTMLDivElement>(null);
-    const ref = externalRef ?? internalRef;
-    const { labelProps, fieldProps, buttonProps, dialogProps, calendarProps } =
-      useDatePicker(
-        props,
-        state,
-        ref as React.MutableRefObject<HTMLDivElement>,
-      );
+  const internalRef = useRef<HTMLDivElement>(null);
+  const ref = externalRef ?? internalRef;
+  const { labelProps, fieldProps, buttonProps, dialogProps, calendarProps } =
+    useDatePicker(props, state, ref as React.MutableRefObject<HTMLDivElement>);
 
-    const inputGroupId = `input-group-${useId()}`;
+  const inputGroupId = `input-group-${useId()}`;
 
-    const recipe = useSlotRecipe({
-      key: "datePicker",
-    });
+  const recipe = useSlotRecipe({
+    key: "datePicker",
+  });
 
-    const styles = recipe({ variant });
-    const locale = useCurrentLocale();
+  const styles = recipe({ variant });
+  const locale = useCurrentLocale();
 
-    const shouldShowCalendar =
-      state.isOpen && !props.isDisabled && !props.noCalendar;
+  const shouldShowCalendar =
+    state.isOpen && !props.isDisabled && !props.noCalendar;
 
-    const onFieldClick = () => {
-      if (!props.noCalendar) {
-        state.setOpen(true);
-      }
-      props.onClick?.();
-    };
+  const onFieldClick = () => {
+    if (!props.noCalendar) {
+      state.setOpen(true);
+    }
+    props.onClick?.();
+  };
 
-    const popoverContent = (
-      <ChakraPopover.Positioner>
-        <ChakraPopover.Content css={styles.calendarPopover}>
-          <ChakraPopover.Body minWidth="20rem">
-            <Calendar
-              {...calendarProps}
-              variant={variant}
-              showYearNavigation={showYearNavigation}
-            />
-          </ChakraPopover.Body>
-        </ChakraPopover.Content>
-      </ChakraPopover.Positioner>
-    );
+  const popoverContent = (
+    <ChakraPopover.Positioner>
+      <ChakraPopover.Content css={styles.calendarPopover}>
+        <ChakraPopover.Body minWidth="20rem">
+          <Calendar
+            {...calendarProps}
+            variant={variant}
+            showYearNavigation={showYearNavigation}
+            css={css}
+          />
+        </ChakraPopover.Body>
+      </ChakraPopover.Content>
+    </ChakraPopover.Positioner>
+  );
 
-    return (
-      <I18nProvider locale={locale}>
-        <Box
-          position="relative"
-          display="inline-flex"
-          flexDirection="column"
-          width={width}
-        >
-          <ChakraPopover.Root {...dialogProps} positioning={positioning}>
-            <Field
-              display="inline-flex"
-              id={inputGroupId}
-              errorText={errorText}
-              invalid={invalid}
-              helperText={helperText}
-              required={props.required}
-            >
-              <PopoverAnchor>
-                <StyledField
-                  variant={variant}
-                  onClick={onFieldClick}
-                  paddingX={3}
-                  minHeight={minHeight}
-                  isDisabled={props.isDisabled}
-                  isActive={props.isActive}
-                  overrideBorderColor={props.overrideBorderColor}
-                >
-                  {props.noCalendar ? (
-                    <Box pr={3} pl={0.5} mr={0.5}>
-                      <CalendarOutline24Icon />
-                    </Box>
-                  ) : (
-                    <ChakraPopover.Trigger asChild>
-                      <CalendarTriggerButton
-                        paddingLeft={1}
-                        paddingRight={1}
-                        variant={variant}
-                        ref={ref}
-                        {...buttonProps}
-                      />
-                    </ChakraPopover.Trigger>
-                  )}
+  return (
+    <I18nProvider locale={locale}>
+      <Box
+        position="relative"
+        display="inline-flex"
+        flexDirection="column"
+        width={width}
+        css={css}
+      >
+        <ChakraPopover.Root {...dialogProps} positioning={positioning}>
+          <Field
+            display="inline-flex"
+            id={inputGroupId}
+            errorText={errorText}
+            invalid={invalid}
+            helperText={helperText}
+            required={props.required}
+          >
+            <PopoverAnchor>
+              <StyledField
+                variant={variant}
+                onClick={onFieldClick}
+                paddingX={3}
+                minHeight={minHeight}
+                isDisabled={props.isDisabled}
+                isActive={props.isActive}
+                overrideBorderColor={props.overrideBorderColor}
+              >
+                {props.noCalendar ? (
+                  <Box pr={3} pl={0.5} mr={0.5}>
+                    <CalendarOutline24Icon />
+                  </Box>
+                ) : (
+                  <ChakraPopover.Trigger asChild>
+                    <CalendarTriggerButton
+                      paddingLeft={1}
+                      paddingRight={1}
+                      variant={variant}
+                      ref={ref}
+                      {...buttonProps}
+                    />
+                  </ChakraPopover.Trigger>
+                )}
 
-                  <DateField
-                    label={props.label}
-                    labelProps={labelProps}
-                    name={props.name}
-                    {...fieldProps}
-                  />
-                </StyledField>
-              </PopoverAnchor>
-            </Field>
+                <DateField
+                  label={props.label}
+                  labelProps={labelProps}
+                  name={props.name}
+                  {...fieldProps}
+                />
+              </StyledField>
+            </PopoverAnchor>
+          </Field>
 
-            {shouldShowCalendar &&
-              (withPortal ? <Portal>{popoverContent}</Portal> : popoverContent)}
-          </ChakraPopover.Root>
-        </Box>
-      </I18nProvider>
-    );
-  },
-);
-DatePicker.displayName = "DatePicker";
+          {shouldShowCalendar &&
+            (withPortal ? <Portal>{popoverContent}</Portal> : popoverContent)}
+        </ChakraPopover.Root>
+      </Box>
+    </I18nProvider>
+  );
+};

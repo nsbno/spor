@@ -32,7 +32,12 @@ export function CalendarHeader({ dualView }: Props) {
   }
 
   return (
-    <Flex flex={1} alignItems="center" paddingBottom={4}>
+    <Flex
+      flex={1}
+      alignItems="center"
+      paddingBottom={4}
+      data-part="calendar-header"
+    >
       {/* Add a screen reader only description of the entire visible range rather than
        * a separate heading above each month grid. This is placed first in the DOM order
        * so that it is the first thing a touch screen reader user encounters.

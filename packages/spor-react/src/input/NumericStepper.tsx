@@ -63,10 +63,12 @@ export type NumericStepperProps = FieldBaseProps &
  * @see https://spor.vy.no/components/numeric-stepper
  */
 
-export const NumericStepper = React.forwardRef<
-  HTMLDivElement,
-  NumericStepperProps
->((props: NumericStepperProps, ref) => {
+export const NumericStepper = ({
+  ref,
+  ...props
+}: NumericStepperProps & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
   const {
     name: nameProperty,
     id: idProperty,
@@ -79,6 +81,12 @@ export const NumericStepper = React.forwardRef<
     withInput = true,
     stepSize = 1,
     ariaLabelContext = { singular: "", plural: "" },
+    invalid,
+    readOnly,
+    required,
+    label,
+    helperText,
+    errorText,
     ...rest
   } = props;
 
@@ -98,7 +106,17 @@ export const NumericStepper = React.forwardRef<
   };
 
   return (
-    <Field css={styles.root} width="auto" {...rest} id={idProperty} ref={ref}>
+    <Field
+      css={styles.root}
+      width="auto"
+      ref={ref}
+      label={label}
+      helperText={helperText}
+      errorText={errorText}
+      invalid={invalid}
+      readOnly={readOnly}
+      required={required}
+    >
       <VerySmallButton
         icon={<SubtractIcon stepLabel={clampedStepSize} />}
         aria-label={t(
@@ -116,7 +134,7 @@ export const NumericStepper = React.forwardRef<
           }
         }}
         disabled={disabled || value <= minValue}
-        id={value <= minValue ? undefined : idProperty}
+        withStepLabel={stepSize != 1}
       />
       {withInput ? (
         <Input
@@ -125,7 +143,7 @@ export const NumericStepper = React.forwardRef<
           name={nameProperty}
           value={value}
           disabled={disabled}
-          id={value === 0 ? undefined : idProperty}
+          id={idProperty}
           css={styles.input}
           width={`${Math.max(value.toString().length + 1, 3)}ch`}
           aria-live="assertive"
@@ -144,6 +162,7 @@ export const NumericStepper = React.forwardRef<
               focusOnAddButton();
             }
           }}
+          {...rest}
         />
       ) : (
         <Text
@@ -171,12 +190,11 @@ export const NumericStepper = React.forwardRef<
         )}
         onClick={() => onChange(Math.min(value + clampedStepSize, maxValue))}
         disabled={disabled || value >= maxValue}
-        id={value >= maxValue ? undefined : idProperty}
+        withStepLabel={stepSize != 1}
       />
     </Field>
   );
-});
-NumericStepper.displayName = "NumericStepper";
+};
 
 type VerySmallButtonProps = {
   /** The icon to render */
@@ -191,26 +209,31 @@ type VerySmallButtonProps = {
   disabled?: boolean;
   /** The ID of the button */
   id?: string;
+  /** Whether or not the stepsize is visible in the button */
+  withStepLabel?: boolean;
 };
 
 /** Internal override for extra small icon buttons */
-const VerySmallButton = React.forwardRef<
-  HTMLButtonElement,
-  VerySmallButtonProps
->((props, ref) => {
+const VerySmallButton = ({
+  ref,
+  ...props
+}: VerySmallButtonProps & {
+  ref?: React.Ref<HTMLButtonElement | null>;
+}) => {
+  const { withStepLabel = false, ...rest } = props;
+
   const recipe = useSlotRecipe({ key: "numericStepper" });
-  const styles = recipe({ colorPalette: "default" });
+  const styles = recipe({ withStepLabel });
   return (
     <IconButton
       variant="primary"
       size="xs"
       css={styles.button}
       ref={ref}
-      {...props}
+      {...rest}
     />
   );
-});
-VerySmallButton.displayName = "VerySmallButton";
+};
 
 type IconPropertyTypes = BoxProps & { stepLabel: number };
 

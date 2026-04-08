@@ -8,24 +8,26 @@ export type InputChipProps = TagRootProps & {
   onClick?: VoidFunction;
 };
 
-export const InputChip = React.forwardRef<HTMLDivElement, InputChipProps>(
-  function InputChip({ startIcon, endIcon, onClick, children, ...rest }, ref) {
-    return (
-      <ChakraTag.Root ref={ref} {...rest} onClick={onClick} as="button">
-        {startIcon && (
-          <ChakraTag.StartElement>
-            <Box as={startIcon} />
-          </ChakraTag.StartElement>
-        )}
-        <ChakraTag.Label>{children}</ChakraTag.Label>
-        {endIcon && (
-          <ChakraTag.EndElement>
-            <Box as={endIcon} />
-          </ChakraTag.EndElement>
-        )}
-      </ChakraTag.Root>
-    );
-  },
-);
-
-InputChip.displayName = "InputChip";
+export const InputChip = ({
+  startIcon,
+  endIcon,
+  children,
+  ref,
+  ...rest
+}: InputChipProps & { ref?: React.Ref<HTMLDivElement> }) => {
+  return (
+    <ChakraTag.Root ref={ref} {...rest} as="button">
+      {startIcon && (
+        <ChakraTag.StartElement>
+          <Box as={startIcon} />
+        </ChakraTag.StartElement>
+      )}
+      <ChakraTag.Label>{children}</ChakraTag.Label>
+      {endIcon && (
+        <ChakraTag.EndElement>
+          <Box as={endIcon} />
+        </ChakraTag.EndElement>
+      )}
+    </ChakraTag.Root>
+  );
+};

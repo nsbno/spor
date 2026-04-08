@@ -75,7 +75,6 @@ export const Select = ({
     invalid,
     helperText,
     css,
-    multiple = false,
     ...rest
   } = props;
   const recipe = useSlotRecipe({ key: "select" });
@@ -97,10 +96,9 @@ export const Select = ({
         variant={variant}
         css={styles.root}
         position="relative"
-        multiple={multiple}
       >
         <SelectTrigger data-attachable>
-          <SelectValueText withPlaceholder={label ? true : false} />
+          <SelectValueText withPlaceholder={!!label} />
         </SelectTrigger>
         {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
         <SelectContent css={styles.selectContent} baseStyle={css}>
@@ -117,7 +115,7 @@ export const SelectLabel = (props: SelectLabelProps) => {
   return (
     <ChakraSelect.Label
       {...props}
-      data-selected={value.length > 0 ? true : undefined}
+      data-selected={value.length > 0 || undefined}
     />
   );
 };
@@ -304,8 +302,12 @@ export const SelectValueText = function SelectValueText({
           if (multiple) {
             return (
               <Flex gap={0.5} marginBottom={1}>
-                {items.map((item, index) => (
-                  <Badge key={index} size="sm" colorPalette="green">
+                {items.map((item) => (
+                  <Badge
+                    key={select.collection.stringifyItem(item)}
+                    size="sm"
+                    colorPalette="green"
+                  >
                     {select.collection.stringifyItem(item)}
                   </Badge>
                 ))}

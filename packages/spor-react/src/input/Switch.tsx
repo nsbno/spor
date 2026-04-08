@@ -59,6 +59,9 @@ export const Switch = ({
     errorText,
     helperText,
     css,
+    "aria-label": ariaLabel,
+    "aria-labelledby": ariaLabelledby,
+    "aria-describedby": ariaDescribedby,
     ...rest
   } = props;
   const recipe = useSlotRecipe({ key: "switch" });
@@ -80,7 +83,12 @@ export const Switch = ({
         checked={props.checked}
         css={styles.root}
       >
-        <ChakraSwitch.HiddenInput ref={ref} />
+        <ChakraSwitch.HiddenInput
+          ref={ref}
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledby}
+          aria-describedby={ariaDescribedby}
+        />
         <ChakraSwitch.Control css={styles.control}>
           <ChakraSwitch.Thumb />
         </ChakraSwitch.Control>

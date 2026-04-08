@@ -1,5 +1,18 @@
 # @vygruppen/spor-icon-react
 
+## 5.0.0
+
+### Major Changes
+
+- 28d1e87: Upgrade design system to React 19.
+
+  ### Breaking Changes
+  - React 19 is now required as a peer dependency
+  - Internal usage of `useRef` has been removed and refactored
+
+  ### Migration
+  - Ensure your application is upgraded to React 19 before updating these packages
+
 ## 4.5.3
 
 ### Patch Changes

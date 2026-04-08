@@ -34,7 +34,7 @@ type BaseCalendarState = {
   prevButtonProps: AriaButtonProps<"button">;
   startValue: CalendarDate | null;
   isSelectingRange: boolean;
-  ref: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement | null>;
 };
 
 type SingleCalendarState = BaseCalendarState & {
@@ -173,6 +173,15 @@ export function CalendarProvider(props: Props) {
 
   const getRangeEndValue = () => {
     if (rangeState.highlightedRange?.end) {
+      if (
+        rangeState.anchorDate &&
+        rangeState.highlightedRange.start &&
+        rangeState.highlightedRange.end.compare(
+          rangeState.highlightedRange.start,
+        ) === 0
+      ) {
+        return null;
+      }
       return toCalendarDate(rangeState.highlightedRange.end);
     }
     if (rangeState?.value?.end) {

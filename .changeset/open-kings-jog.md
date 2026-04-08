@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": patch
 ---
 
-Add new menu-component
+Added width parameter to toast

@@ -1,5 +1,36 @@
 # @vygruppen/spor-react
 
+## 13.0.1
+
+### Patch Changes
+
+- ce9b9f1: replace RefObject with Ref for ref prop type
+
+## 13.0.0
+
+### Major Changes
+
+- 28d1e87: Upgrade design system to React 19.
+
+  ### Breaking Changes
+  - React 19 is now required as a peer dependency
+  - Internal usage of `useRef` has been removed and refactored
+
+  ### Migration
+  - Ensure your application is upgraded to React 19 before updating these packages
+
+### Patch Changes
+
+- Updated dependencies [28d1e87]
+  - @vygruppen/spor-icon-react@5.0.0
+
+## 12.24.16
+
+### Patch Changes
+
+- b90fd20: Design adjustments to the menu component
+- 80a1fda: Add new menu-component
+
 ## 12.24.15
 
 ### Patch Changes

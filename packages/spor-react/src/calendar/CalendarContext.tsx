@@ -34,7 +34,7 @@ type BaseCalendarState = {
   prevButtonProps: AriaButtonProps<"button">;
   startValue: CalendarDate | null;
   isSelectingRange: boolean;
-  ref: React.RefObject<HTMLDivElement>;
+  ref?: React.Ref<HTMLDivElement | null>;
 };
 
 type SingleCalendarState = BaseCalendarState & {

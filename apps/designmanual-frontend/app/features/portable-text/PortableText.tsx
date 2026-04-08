@@ -6,6 +6,7 @@ import {
   PortableTextReactComponents,
   PortableText as SanityPortableText,
 } from "@portabletext/react";
+import { useRouteLoaderData } from "react-router";
 import {
   CheckmarkFill30Icon,
   ErrorOutline30Icon,
@@ -433,9 +434,14 @@ export const PortableText = ({
   value: any;
   components?: any;
 }) => {
+  const rootData = useRouteLoaderData("root") as
+    | { isPreview?: boolean }
+    | undefined;
+  const isPreview = rootData?.isPreview ?? false;
+
   return (
     <SanityPortableText
-      value={vercelStegaClean(value)}
+      value={isPreview ? value : vercelStegaClean(value)}
       components={deepmerge(components, componentsOverrides)}
     />
   );

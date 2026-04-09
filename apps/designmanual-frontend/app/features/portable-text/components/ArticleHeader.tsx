@@ -36,7 +36,12 @@ export function ArticleHeader({
 
   return (
     <Stack as="section" marginY={4}>
-      <Flex gap={[0, 4, null, 8]} data-testid="article-header">
+      <Flex
+        gap={[4, 4, null, 8]}
+        direction={["column", null, "row"]}
+        data-testid="article-header"
+        alignItems="center"
+      >
         <Box flex={illustration ? [1, 4 / 5, null, 7 / 10] : 1}>
           <Heading
             as="h1"
@@ -70,10 +75,10 @@ export function ArticleHeader({
         </Box>
         {hasIllustration && (
           <Flex
-            flex={[0, 2 / 6, null, 3 / 10]}
+            flex={[1, 2 / 6, null, 3 / 10]}
             align="center"
             justify="center"
-            paddingTop={[2, 3, null, 4]}
+            paddingTop={[0, 3, null, 4]}
           >
             <ResponsiveImage image={illustration} size="sm" format="svg" />
           </Flex>

@@ -97,7 +97,7 @@ export default defineConfig([
         },
         allowOrigins: [
           "https://stage.design.vy.no/*",
-          "https://stage.design.vy.no/*",
+          "https://design.vy.no/*",
         ],
       }),
       visionTool(),

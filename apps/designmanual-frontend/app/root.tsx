@@ -114,8 +114,6 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
 
   const domain = request.headers.get("host") ?? "";
 
-  const isPreview = request.url.includes("sanity-preview-perspective=drafts");
-
   const { preview } = await previewContext(request.headers);
 
   const readToken = import.meta.env.VITE_SANITY_SECRET;
@@ -133,7 +131,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     isMac,
     domain,
     slug,
-    isPreview,
+    isPreview: preview,
     preview,
     ENV,
     readToken,

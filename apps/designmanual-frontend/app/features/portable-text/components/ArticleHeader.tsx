@@ -75,10 +75,10 @@ export function ArticleHeader({
         </Box>
         {hasIllustration && (
           <Flex
-            flex={[1, 2 / 6, null, 3 / 10]}
+            flex={[0, 2 / 6, null, 3 / 10]}
             align="center"
             justify="center"
-            paddingTop={[0, 3, null, 4]}
+            paddingTop={[2, 3, null, 4]}
           >
             <ResponsiveImage image={illustration} size="sm" format="svg" />
           </Flex>

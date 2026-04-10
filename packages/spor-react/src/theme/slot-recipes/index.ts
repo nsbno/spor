@@ -13,6 +13,7 @@ import { drawerSlotRecipe } from "./drawer";
 import { fieldSlotRecipe } from "./field";
 import { floatingActionButtonSlotRecipe } from "./floating-action-button";
 import { infoTagSlotRecipe } from "./info-tag";
+import { inputChipSlotRecipe } from "./input-chip";
 import { lineIconSlotRecipe } from "./line-icon";
 import { listSlotRecipe } from "./list";
 import { listBoxSlotRecipe } from "./listbox";
@@ -70,5 +71,6 @@ export const slotRecipes = {
   checkboxCard: choiceChipSlotRecipe,
   collapsible: collapsibleSlotRecipe,
   tooltip: popoverSlotRecipe,
+  tag: inputChipSlotRecipe,
   menu: menuSlotRecipe,
 };

@@ -3,7 +3,7 @@ import crypto from "node:crypto";
 //import type { FilteredResponseQueryOptions } from "@sanity/client";
 import { createCookieSessionStorage } from "react-router";
 
-import { VITE_SANITY_SECRET, VITE_SANITY_TOKEN } from "~/utils/sanity/config";
+import { VITE_SANITY_TOKEN } from "~/utils/sanity/config";
 import type { loadQuery } from "~/utils/sanity/loader";
 
 const { getSession, commitSession, destroySession } =
@@ -31,7 +31,6 @@ async function previewContext(
       ? {
           perspective: "previewDrafts",
           stega: true,
-          token: VITE_SANITY_SECRET,
         }
       : {
           perspective: "published",

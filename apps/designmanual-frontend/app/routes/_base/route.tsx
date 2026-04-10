@@ -1,4 +1,4 @@
-import { Box } from "@vygruppen/spor-react";
+import { Box, Flex } from "@vygruppen/spor-react";
 import { useEffect } from "react";
 import {
   type LoaderFunctionArgs,
@@ -7,6 +7,7 @@ import {
   useNavigate,
 } from "react-router";
 
+import { TableOfContents } from "~/features/table-of-contents/TableOfContents";
 import { getClient } from "~/utils/sanity/client";
 
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
@@ -33,11 +34,17 @@ export default function BaseLayout() {
   }, [location.pathname, navigate]);
 
   return (
-    <Box
+    <Flex
       width={[null, null, null, "container.md", "container.lg"]}
       marginX="auto"
+      gap={4}
     >
-      <Outlet />
-    </Box>
+      <Box flex="1" minWidth={0}>
+        <Outlet />
+      </Box>
+      <Box display={["none", null, null, null, "block"]}>
+        <TableOfContents />
+      </Box>
+    </Flex>
   );
 }

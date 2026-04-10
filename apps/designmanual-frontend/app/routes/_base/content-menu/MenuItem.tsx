@@ -1,5 +1,5 @@
 import { chakra } from "@chakra-ui/react";
-import { DropdownDownOutline30Icon } from "@vygruppen/spor-icon-react";
+import { DropdownRightOutline30Icon } from "@vygruppen/spor-icon-react";
 import { Box, Flex, FlexProps } from "@vygruppen/spor-react";
 import React, { useImperativeHandle, useRef } from "react";
 import { Link } from "react-router";
@@ -73,7 +73,7 @@ export const MenuItem = ({
         <Box width="100%" textAlign="left">
           {children}
         </Box>
-        {isTopMenu && <DropdownDownOutline30Icon />}
+        {isTopMenu && <DropdownRightOutline30Icon />}
       </Flex>
     </chakra.button>
   );

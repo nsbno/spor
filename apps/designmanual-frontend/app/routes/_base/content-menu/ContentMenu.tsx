@@ -1,3 +1,4 @@
+import { DropdownRightOutline30Icon } from "@vygruppen/spor-icon-react";
 import {
   Accordion,
   AccordionItem,
@@ -6,17 +7,17 @@ import {
   Box,
   Expandable,
   Flex,
+  HStack,
   Separator,
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useLocation, useRouteLoaderData } from "react-router";
 
 import { loader } from "~/root";
 import { getIcon } from "~/utils/getIcon";
 import type { Section } from "~/utils/initialSanityData.server";
-import { useHeadingsMenu } from "~/utils/useHeadingsMenu";
 import { useMenu } from "~/utils/useMenu";
 
 import { MenuItem } from "./MenuItem";
@@ -63,20 +64,6 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
   });
 
   const mobileMenus = useRouteLoaderData("root")?.initialSanityData?.menus;
-
-  const currentSection = menu?.relatedTo.slug;
-
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsClient(true);
-  }, []);
-
-  const rawHeadingsMenu = useHeadingsMenu();
-
-  const isSpor = location.pathname?.includes("spor") ?? false;
-  const headingsMenu = isClient && !isSpor ? rawHeadingsMenu : [];
 
   const [expanded, setExpanded] = useState([location.pathname]);
 
@@ -154,8 +141,12 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
                     ? "bg.tertiary"
                     : "transparent"
                 }
+                showChevron={false}
               >
-                {item.title}
+                <HStack justifyContent="space-between" width="100%">
+                  {item.title}
+                  <DropdownRightOutline30Icon />
+                </HStack>
               </AccordionItemTrigger>
               <AccordionItemContent
                 paddingTop={1}
@@ -181,29 +172,6 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
                     {!hasSubItems && (
                       <Text color="text.disabled">Nothing here (yet)</Text>
                     )}
-                  </Stack>
-                )}
-                {headingsMenu.length > 0 && (
-                  <Stack display={["none", null, null, "block"]}>
-                    {headingsMenu.map((subItem) => (
-                      <MenuItem
-                        key={subItem.text}
-                        url={`${location.pathname}#${subItem.id}`}
-                        isActive={
-                          `/${currentSection}${subItem.text}` ===
-                          location.pathname
-                        }
-                        backgroundColor={
-                          `${location.pathname}#${subItem.id}` ===
-                          location.pathname
-                            ? "bg.tertiary"
-                            : "transparent"
-                        }
-                        id={`${location.pathname}#${subItem.id}--${location.pathname}`}
-                      >
-                        {subItem.text}
-                      </MenuItem>
-                    ))}
                   </Stack>
                 )}
               </AccordionItemContent>

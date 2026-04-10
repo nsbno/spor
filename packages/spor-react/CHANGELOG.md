@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 13.0.2
+
+### Patch Changes
+
+- 0eee096: remove inline padding in text links
+- bc4d10e: Added width parameter to toast
+- 0ac2838: Remove visuallyhidden voiceover helper and rely on title to explain the content
+- 29cf1ac: Improved aria-label for Swtich and added aria-hidden for decorative Separator
+
 ## 13.0.1
 
 ### Patch Changes

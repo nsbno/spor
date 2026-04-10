@@ -36,7 +36,12 @@ export function ArticleHeader({
 
   return (
     <Stack as="section" marginY={4}>
-      <Flex gap={[0, 4, null, 8]} data-testid="article-header">
+      <Flex
+        gap={[4, 4, null, 8]}
+        direction={["column", null, "row"]}
+        data-testid="article-header"
+        alignItems="center"
+      >
         <Box flex={illustration ? [1, 4 / 5, null, 7 / 10] : 1}>
           <Heading
             as="h1"

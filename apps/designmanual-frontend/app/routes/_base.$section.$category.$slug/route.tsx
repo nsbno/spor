@@ -112,6 +112,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   const isPreview = isValidPreviewRequest(request);
   const initialData = await getClient().fetch(query, queryParameters, {
     perspective: draftMode ? "previewDrafts" : "published",
+    stega: draftMode,
   });
 
   if (!initialData || initialData.length === 0) {

@@ -121,6 +121,7 @@ export const ResponsiveImage = ({
           src={imageSource("sm", multiplier)}
           srcSet={`${imageSource("sm", 2 * multiplier)} 2x`}
           alt={altText}
+          width="100%"
           style={{ ...props.style, ...objectPositionStyle }}
           {...props}
         />

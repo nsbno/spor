@@ -8,6 +8,8 @@ import type {
 } from "@chakra-ui/react";
 import {
   Box,
+  Checkbox as ChakraCheckbox,
+  Flex,
   Portal,
   Select as ChakraSelect,
   useSelectContext,
@@ -21,6 +23,7 @@ import * as React from "react";
 
 import { CloseButton } from "@/button";
 
+import { Badge } from "..";
 import { Field, FieldProps } from "./Field";
 
 export type SelectProps = ChakraSelectRootProps &
@@ -95,7 +98,7 @@ export const Select = ({
         position="relative"
       >
         <SelectTrigger data-attachable>
-          <SelectValueText withPlaceholder={label ? true : false} />
+          <SelectValueText withPlaceholder={!!label} />
         </SelectTrigger>
         {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
         <SelectContent css={styles.selectContent} baseStyle={css}>
@@ -112,7 +115,7 @@ export const SelectLabel = (props: SelectLabelProps) => {
   return (
     <ChakraSelect.Label
       {...props}
-      data-selected={value.length > 0 ? true : undefined}
+      data-selected={value.length > 0 || undefined}
     />
   );
 };
@@ -131,8 +134,19 @@ export const SelectItem = ({
   const { item, children, description, ...rest } = props;
   const recipe = useSlotRecipe({ key: "select" });
   const styles = recipe();
+  const selectContext = useSelectContext();
+  const multiple = selectContext.multiple;
+  const isSelected = selectContext.value.includes(item.value);
+
   return (
     <ChakraSelect.Item item={item} {...rest} ref={ref} css={styles.item}>
+      {multiple && (
+        <ChakraCheckbox.Root checked={isSelected} pointerEvents="none">
+          <ChakraCheckbox.Control>
+            <ChakraCheckbox.Indicator />
+          </ChakraCheckbox.Control>
+        </ChakraCheckbox.Root>
+      )}
       <Box width="100%">
         <ChakraSelect.ItemText display="flex">{children}</ChakraSelect.ItemText>
         {description && (
@@ -142,12 +156,15 @@ export const SelectItem = ({
         )}
       </Box>
 
-      <ChakraSelect.ItemIndicator>
-        <CheckmarkFill18Icon />
-      </ChakraSelect.ItemIndicator>
+      {!multiple && (
+        <ChakraSelect.ItemIndicator>
+          <CheckmarkFill18Icon />
+        </ChakraSelect.ItemIndicator>
+      )}
     </ChakraSelect.Item>
   );
 };
+SelectItem.displayName = "SelectItem";
 
 type SelectItemGroupProps = ChakraSelect.ItemGroupProps & {
   label: React.ReactNode;
@@ -249,6 +266,7 @@ type SelectValueTextProps = Omit<ChakraSelect.ValueTextProps, "children"> & {
   children?(items: CollectionItem[]): React.ReactNode;
   placeholder?: string;
   withPlaceholder?: boolean;
+  multiple?: boolean;
 };
 
 export const SelectValueText = function SelectValueText({
@@ -258,6 +276,10 @@ export const SelectValueText = function SelectValueText({
   ref?: React.Ref<HTMLSpanElement>;
 }) {
   const { children, withPlaceholder, placeholder, ...rest } = props;
+
+  const selectContext = useSelectContext();
+  const multiple = selectContext.multiple;
+
   return (
     <ChakraSelect.ValueText
       {...rest}
@@ -277,9 +299,24 @@ export const SelectValueText = function SelectValueText({
           const items = select.selectedItems;
           if (items.length === 0) return placeholder;
           if (children) return children(items);
-          if (items.length === 1)
+          if (multiple) {
+            return (
+              <Flex gap={0.5} marginBottom={1}>
+                {items.map((item) => (
+                  <Badge
+                    key={select.collection.stringifyItem(item)}
+                    size="sm"
+                    colorPalette="green"
+                  >
+                    {select.collection.stringifyItem(item)}
+                  </Badge>
+                ))}
+              </Flex>
+            );
+          }
+          if (items.length === 1) {
             return select.collection.stringifyItem(items[0]);
-          return `${items.length} selected`;
+          }
         }}
       </ChakraSelect.Context>
     </ChakraSelect.ValueText>

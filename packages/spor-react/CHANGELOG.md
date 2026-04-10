@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 13.0.3
+
+### Patch Changes
+
+- d10648c: Add InputChip component, and style adjustments to Select
+
 ## 13.0.2
 
 ### Patch Changes

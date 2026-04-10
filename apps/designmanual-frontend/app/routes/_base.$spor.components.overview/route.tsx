@@ -38,7 +38,10 @@ const componentsQuery = async ({ request }: LoaderFunctionArgs) => {
   const componentArticles = await getClient().fetch<ComponentData[]>(
     query,
     {},
-    { perspective: draftMode ? "previewDrafts" : "published" },
+    {
+      perspective: draftMode ? "previewDrafts" : "published",
+      stega: draftMode,
+    },
   );
 
   if (!componentArticles || componentArticles.length === 0) {

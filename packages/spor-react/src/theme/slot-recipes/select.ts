@@ -117,7 +117,7 @@ export const selectSlotRecipe = defineSlotRecipe({
         outlineOffset: "2px",
         outline: "2px solid",
         outlineColor: "outline.focus",
-        backgroundColor: "ghost.surface.hover",
+        backgroundColor: "accent.surface.hover",
       },
       "&[data-highlighted]": {
         outlineOffset: "2px",
@@ -125,7 +125,7 @@ export const selectSlotRecipe = defineSlotRecipe({
         outlineColor: "outline.focus",
       },
       _active: {
-        backgroundColor: "ghost.surface.active",
+        backgroundColor: "accent.surface.active",
       },
       _highlighted: {
         _active: {
@@ -133,12 +133,12 @@ export const selectSlotRecipe = defineSlotRecipe({
         },
       },
       _hover: {
-        backgroundColor: "ghost.surface.hover",
+        backgroundColor: "accent.surface.hover",
         outline: "2px solid core.outline",
         outlineOffset: "2px",
       },
       _selected: {
-        backgroundColor: "ghost.surface.active",
+        backgroundColor: "accent.surface",
       },
       _icon: {
         width: 3,

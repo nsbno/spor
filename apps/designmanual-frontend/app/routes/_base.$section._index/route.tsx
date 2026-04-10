@@ -54,7 +54,10 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
       section: params.section,
       draftId,
     },
-    { perspective: draftMode ? "previewDrafts" : "published" },
+    {
+      perspective: draftMode ? "previewDrafts" : "published",
+      stega: draftMode,
+    },
   );
 
   if (!data) {

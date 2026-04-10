@@ -286,6 +286,8 @@ export const comboboxAnatomy = arkComboboxAnatomy.extendWith(
   "empty",
 );
 
+export const tagAnatomy = createAnatomy("tag").parts("root");
+
 export const menuAnatomy = createAnatomy("menu").parts(
   "trigger",
   "content",

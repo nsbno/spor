@@ -51,7 +51,7 @@ export type InitialSanityData = {
   menus: Menu[];
   siteSettings: SiteSettings;
 };
-export const getInitialSanityData = async () => {
+export const getInitialSanityData = async (stega = false) => {
   return getClient().fetch<InitialSanityData>(
     `{
       "sections": *[_type == "section"] { 
@@ -116,5 +116,7 @@ export const getInitialSanityData = async () => {
         }
       }
     }`,
+    {},
+    { stega },
   );
 };

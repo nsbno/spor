@@ -3,7 +3,7 @@ import crypto from "node:crypto";
 //import type { FilteredResponseQueryOptions } from "@sanity/client";
 import { createCookieSessionStorage } from "react-router";
 
-import { VITE_SANITY_SECRET } from "~/utils/sanity/config";
+import { VITE_SANITY_SECRET, VITE_SANITY_TOKEN } from "~/utils/sanity/config";
 import type { loadQuery } from "~/utils/sanity/loader";
 
 const { getSession, commitSession, destroySession } =
@@ -23,8 +23,7 @@ async function previewContext(
 ): Promise<{ preview: boolean; options: Parameters<typeof loadQuery>[2] }> {
   const previewSession = await getSession(headers.get("Cookie"));
 
-  const preview =
-    previewSession.get("projectId") === import.meta.env.VITE_SANITY_TOKEN;
+  const preview = previewSession.get("projectId") === VITE_SANITY_TOKEN;
 
   return {
     preview,

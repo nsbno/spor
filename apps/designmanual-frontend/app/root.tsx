@@ -103,7 +103,10 @@ export const links: LinksFunction = () => {
 };
 
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
-  const initialSanityData = await getInitialSanityData();
+  const draftMode =
+    new URL(request.url).searchParams.get("sanity-preview-perspective") ===
+    "drafts";
+  const initialSanityData = await getInitialSanityData(draftMode);
   const brand = await getBrandFromCookie(request.headers.get("cookie") ?? "");
 
   const isMac = /Mac|iPod|iPhone|iPad/.test(

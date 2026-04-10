@@ -109,7 +109,7 @@ importers:
         version: 4.9.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@chakra-ui/react':
         specifier: ^3.30.0
-        version: 3.34.0(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 3.34.0(@emotion/react@11.14.0(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@emotion/cache':
         specifier: ^11.14.0
         version: 11.14.0
@@ -122,6 +122,9 @@ importers:
       '@internationalized/date':
         specifier: ^3.6.0
         version: 3.9.0
+      '@mux/mux-video-react':
+        specifier: 0.27.2
+        version: 0.27.2(@types/react-dom@19.2.3(@types/react@19.2.3))(@types/react@19.2.3)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@portabletext/react':
         specifier: ^3.1.0
         version: 3.2.4(react@19.2.3)
@@ -432,7 +435,7 @@ importers:
     devDependencies:
       '@chakra-ui/react':
         specifier: ^3.30.0
-        version: 3.34.0(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 3.34.0(@emotion/react@11.14.0(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@svgr/core':
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.9.2)
@@ -595,7 +598,7 @@ importers:
         version: 3.34.0(@chakra-ui/react@3.34.0(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.2)
       '@chakra-ui/react':
         specifier: ^3.30.0
-        version: 3.34.0(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 3.34.0(@emotion/react@11.14.0(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@chakra-ui/react-use-size':
         specifier: ^2.1.0
         version: 2.1.0(react@19.2.3)
@@ -3674,8 +3677,24 @@ packages:
   '@mux/mux-player@3.11.5':
     resolution: {integrity: sha512-VIgYxaTxmBQG4XkeLhV6DzUx+wPa3m3QkV2CFmf8CiilFIlFp4RC2sMA+XVchifBsR2HK72YKPP5ar20Hijgpw==}
 
+  '@mux/mux-video-react@0.27.2':
+    resolution: {integrity: sha512-ex50NC/JTs5LLJ2WkPqvVDFVrde1o9dIQlYk+16ESyweDhBh8fqH+AYEcs/kIqqRiV20iq9sTG7XfaHxkDeF2g==}
+    peerDependencies:
+      '@types/react': ^17.0.0 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0
+      '@types/react-dom': '*'
+      react: ^17.0.2 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0
+      react-dom: ^17.0.2 || ^17.0.2-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
   '@mux/mux-video@0.30.3':
     resolution: {integrity: sha512-EHlv/AjcfQadZeASM7wjjGBlVVXjMa/UP+/cRqbojF6F5JlADfQAHsAtwAisIQ7uCHy3GmdE4EwEIWNv/YZ5kA==}
+
+  '@mux/playback-core@0.31.2':
+    resolution: {integrity: sha512-bhOVTGAuKCQuDzNOc3XvDq7vsgqy2DAacLP0WdJciUKjfZhs3oA11NbKG7qAN6akPnZVfgn0Jn/sJN8TRjE30A==}
 
   '@mux/playback-core@0.33.2':
     resolution: {integrity: sha512-4g8b92vuiSWXJ+4qEufGZYk6tInmJ8dJStTV4VO6Rub93l7d9vNEDR/nryMuSQ54g2fMHN57F/2fuVaiVdRgSg==}
@@ -15366,7 +15385,7 @@ snapshots:
       '@babel/core': 7.29.0
       '@babel/parser': 7.29.0
       '@babel/plugin-transform-typescript': 7.28.5(@babel/core@7.29.0)
-      '@chakra-ui/react': 3.34.0(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@chakra-ui/react': 3.34.0(@emotion/react@11.14.0(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@clack/prompts': 1.0.1
       '@pandacss/is-valid-prop': 1.8.1
       '@types/babel__core': 7.20.5
@@ -15398,7 +15417,7 @@ snapshots:
       '@babel/core': 7.29.0
       '@babel/parser': 7.29.0
       '@babel/plugin-transform-typescript': 7.28.5(@babel/core@7.29.0)
-      '@chakra-ui/react': 3.34.0(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@chakra-ui/react': 3.34.0(@emotion/react@11.14.0(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@clack/prompts': 1.0.1
       '@pandacss/is-valid-prop': 1.8.1
       '@types/babel__core': 7.20.5
@@ -15446,7 +15465,7 @@ snapshots:
       '@chakra-ui/utils': 2.0.15
       react: 19.2.3
 
-  '@chakra-ui/react@3.34.0(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@chakra-ui/react@3.34.0(@emotion/react@11.14.0(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@ark-ui/react': 5.35.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@emotion/is-prop-valid': 1.4.0
@@ -17629,6 +17648,16 @@ snapshots:
       - react
     optional: true
 
+  '@mux/mux-video-react@0.27.2(@types/react-dom@19.2.3(@types/react@19.2.3))(@types/react@19.2.3)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+    dependencies:
+      '@mux/playback-core': 0.31.2
+      prop-types: 15.8.1
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+    optionalDependencies:
+      '@types/react': 19.2.3
+      '@types/react-dom': 19.2.3(@types/react@19.2.3)
+
   '@mux/mux-video@0.30.3':
     dependencies:
       '@mux/mux-data-google-ima': 0.3.15
@@ -17636,6 +17665,11 @@ snapshots:
       castable-video: 1.1.11
       custom-media-element: 1.4.5
       media-tracks: 0.3.4
+
+  '@mux/playback-core@0.31.2':
+    dependencies:
+      hls.js: 1.6.15
+      mux-embed: 5.17.10
 
   '@mux/playback-core@0.33.2':
     dependencies:
@@ -21819,7 +21853,7 @@ snapshots:
       '@ark-ui/react': 4.9.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@chakra-ui/anatomy': 2.3.4
       '@chakra-ui/cli': 3.34.0(@chakra-ui/react@3.34.0(@emotion/react@11.14.0(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.3)
-      '@chakra-ui/react': 3.34.0(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@chakra-ui/react': 3.34.0(@emotion/react@11.14.0(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@chakra-ui/react-use-size': 2.1.0(react@19.2.3)
       '@chakra-ui/styled-system': 2.12.0(react@19.2.3)
       '@chakra-ui/system': 2.6.2(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3)

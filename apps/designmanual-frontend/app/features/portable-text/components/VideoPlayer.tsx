@@ -41,7 +41,6 @@ export function VideoPlayer({ value }: { value: VideoPlayerValue }) {
       setIsPlay(!isPlay);
     }
   };
-  console.log("VideoPlayer value:", value);
   return (
     <Flex direction="column" gap={[1, 1.5]} marginTop="4">
       <Box position="relative" height="100%" width="100%">

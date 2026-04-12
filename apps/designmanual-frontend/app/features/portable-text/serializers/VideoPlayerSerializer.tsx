@@ -86,6 +86,5 @@ export interface Track {
 }
 
 export function VideoPlayerSerializer({ value }: { value: VideoPlayerValue }) {
-  console.log("VideoPlayerSerializer value:", value);
   return <VideoPlayer value={value} />;
 }

@@ -3,6 +3,7 @@ import { Box, BoxProps, ClientOnly, VisuallyHidden } from "@chakra-ui/react";
 import { contentLoaderData } from "@vygruppen/spor-loader";
 
 import Lottie from "./Lottie";
+import { useGetLoadingText } from "./text";
 
 export type ContentLoaderProps = BoxProps;
 /**
@@ -17,7 +18,7 @@ export const ContentLoader = ({ children, ...props }: ContentLoaderProps) => {
           <Lottie animationData={contentLoaderData} />
         </ClientOnly>
       </Box>
-      <VisuallyHidden>Loading...</VisuallyHidden>
+      <VisuallyHidden>{useGetLoadingText()}</VisuallyHidden>
       {children && (
         <Box textAlign="center" fontWeight="bold">
           {children}

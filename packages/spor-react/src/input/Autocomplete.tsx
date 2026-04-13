@@ -122,7 +122,7 @@ export function Autocomplete({
           </Combobox.ClearTrigger>
         </Combobox.IndicatorGroup>
       </Combobox.Control>
-      <Combobox.Positioner>
+      <Combobox.Positioner zIndex="dropdown">
         <Combobox.Content>
           {!loading && (
             <Combobox.Empty>

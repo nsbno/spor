@@ -28,3 +28,4 @@ export * from "./staticCodeBlock";
 export * from "./textBlock";
 export * from "./textBlocks";
 export * from "./tipsPanel";
+export * from "./videoBlock";

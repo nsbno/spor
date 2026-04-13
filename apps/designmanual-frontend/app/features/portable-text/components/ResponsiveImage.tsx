@@ -66,20 +66,20 @@ export const ResponsiveImage = ({
 
   const imageSource = (breakpoint: Breakpoint, multiplier: number) => {
     try {
+      const width = imageWidth(size, breakpoint, multiplier);
       const baseImage = imageBuilder
         .image(image)
         .auto("format")
-        .width(imageWidth(size, breakpoint, multiplier))
+        .width(width)
         .quality(quality);
 
-      return aspectRatio && breakpoint
-        ? baseImage
-            .height(
-              Math.ceil(imageWidth(size, breakpoint, multiplier) / aspectRatio),
-            )
-            .fit("crop")
-            .url()
-        : baseImage.url();
+      if (aspectRatio) {
+        return baseImage
+          .height(Math.ceil(width / aspectRatio))
+          .fit("crop")
+          .url();
+      }
+      return baseImage.url();
     } catch {
       return "/fallback.jpg"; // Fallback image in case of an error
     }

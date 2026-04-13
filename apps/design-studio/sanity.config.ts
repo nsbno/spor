@@ -7,6 +7,7 @@ import {
   presentationTool,
 } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
+import { muxInput } from "sanity-plugin-mux-input";
 import { VyLogoProd } from "./components/VyLogoProd";
 import { VyLogoTest } from "./components/VyLogoTest";
 import { schemaTypes } from "./schemaTypes";
@@ -62,6 +63,7 @@ export default defineConfig([
       }),
       visionTool(),
       codeInput(),
+      muxInput(),
     ],
 
     studio: {
@@ -102,6 +104,7 @@ export default defineConfig([
       }),
       visionTool(),
       codeInput(),
+      muxInput(),
     ],
 
     studio: {

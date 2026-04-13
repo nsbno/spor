@@ -124,7 +124,7 @@ export function Autocomplete({
         </Combobox.IndicatorGroup>
       </Combobox.Control>
       <Portal>
-        <Combobox.Positioner zIndex="dropdown">
+        <Combobox.Positioner>
           <Combobox.Content>
             {!loading && (
               <Combobox.Empty>

@@ -9,6 +9,7 @@ import {
 import { spinnerColorData } from "@vygruppen/spor-loader";
 
 import Lottie from "./Lottie";
+import { useGetLoadingText } from "./text";
 
 export type SpinnerProps = BoxProps;
 export type ColorSpinnerProps = SpinnerProps;
@@ -40,7 +41,7 @@ export const ColorSpinner = ({
           <Lottie animationData={spinnerColorData} />
         </ClientOnly>
       </Box>
-      <VisuallyHidden>Loading...</VisuallyHidden>
+      <VisuallyHidden>{useGetLoadingText()}</VisuallyHidden>
       {children && (
         <Box marginTop={3} fontWeight="bold">
           {children}

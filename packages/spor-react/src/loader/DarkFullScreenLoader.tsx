@@ -9,6 +9,7 @@ import {
 import { fullScreenLoaderWhiteData } from "@vygruppen/spor-loader";
 
 import Lottie from "./Lottie";
+import { useGetLoadingText } from "./text";
 
 type DarkFullScreenLoaderProps = BoxProps;
 
@@ -31,7 +32,7 @@ export const DarkFullScreenLoader = ({
           <Lottie animationData={fullScreenLoaderWhiteData} />
         </ClientOnly>
       </Box>
-      <VisuallyHidden>Loading...</VisuallyHidden>
+      <VisuallyHidden>{useGetLoadingText()}</VisuallyHidden>
     </Center>
   );
 };

@@ -9,6 +9,7 @@ import {
 import { spinnerLightData } from "@vygruppen/spor-loader";
 
 import Lottie from "./Lottie";
+import { useGetLoadingText } from "./text";
 
 export type LightSpinnerProps = BoxProps;
 /** A circular spinner
@@ -39,7 +40,7 @@ export const LightSpinner = ({
           <Lottie animationData={spinnerLightData} />
         </ClientOnly>
       </Box>
-      <VisuallyHidden>Loading...</VisuallyHidden>
+      <VisuallyHidden>{useGetLoadingText()}</VisuallyHidden>
       {children && (
         <Box marginTop={3} fontWeight="bold">
           {children}

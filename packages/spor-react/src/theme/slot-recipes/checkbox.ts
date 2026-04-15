@@ -50,21 +50,15 @@ export const checkboxSlotRecipe = defineSlotRecipe({
         _focus: {
           borderColor: "brand.surface.active",
         },
-
-        _disabled: {
-          background: "surface.disabled",
-          color: "text.disabled",
-          borderColor: "currentColor",
-        },
-
         _invalid: {
           backgroundColor: "outline.error",
           borderColor: "outline.error",
         },
       },
       _disabled: {
-        // borderColor: coreText("disabled").color,
-        borderColor: "text.disabled",
+        background: "surface.disabled",
+        borderColor: "outline.disabled",
+        color: "text.disabled",
       },
       _invalid: {
         borderColor: "outline.error",

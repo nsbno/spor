@@ -50,6 +50,8 @@ const useSafeLayoutEffect =
   globalThis.window === undefined ? () => {} : useLayoutEffect;
 
 export function useInjectStyles(cache: EmotionCache) {
+  "use no memo";
+
   const styles = useClientStyleContext();
   const injectRef = useRef(true);
 

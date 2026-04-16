@@ -7,14 +7,12 @@ type Props = {
   copyValue?: string;
 } & ClipboardRootProps;
 
-export const CopyTokenToClipBoard = ({
-  children,
-  copyValue = `"${children?.toString()}"`,
-}: Props) => {
+export const CopyTokenToClipBoard = ({ children, copyValue }: Props) => {
+  const effectiveCopyValue = copyValue ?? `"${children?.toString()}"`;
   if (!children) return null;
 
   return (
-    <Clipboard.Root value={copyValue} width="100%" timeout={1000}>
+    <Clipboard.Root value={effectiveCopyValue} width="100%" timeout={1000}>
       <Clipboard.Trigger asChild>
         <Button
           variant="ghost"

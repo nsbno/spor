@@ -9,6 +9,7 @@ import {
 import { inlineLoaderLightData } from "@vygruppen/spor-loader";
 
 import Lottie from "./Lottie";
+import { useGetLoadingText } from "./text";
 
 export type LightInlineLoaderProps = Exclude<BoxProps, "children">;
 /**
@@ -26,7 +27,7 @@ export const LightInlineLoader = ({
           <Lottie animationData={inlineLoaderLightData} />
         </ClientOnly>
       </Box>
-      <VisuallyHidden>Loading...</VisuallyHidden>
+      <VisuallyHidden>{useGetLoadingText()}</VisuallyHidden>
     </Center>
   );
 };

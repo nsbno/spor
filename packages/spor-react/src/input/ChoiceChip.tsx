@@ -14,36 +14,28 @@ import { choiceChipSlotRecipe } from "@/theme/slot-recipes/choice-chip";
  *
  * Choice chips are available in four different sizes - `xs`, `sm`, `md` and `lg`.
  *
- * @example
  * ```tsx
  * <ChoiceChipGroup defaultValue="economy">
- *   <ChoiceChipLabel>Choose your class</ChoiceChipLabel>
- *   <Stack direction="row">
  *      <ChoiceChip value="economy">Economy</ChoiceChip>
  *      <ChoiceChip value="business">Business</ChoiceChip>
  *      <ChoiceChip value="first-class">First Class</ChoiceChip>
- *   </Stack>
- * </ChoiceChipGroup>
- * ```
- *
- * There are also three different chipType - `icon`, `choice` and `filter`.
- *
- * ```tsx
- * <ChoiceChipGroup defaultValue="bus">
- *  <ChoiceChip chipType="icon" icon={{default: <Bus24Icon />, checked: <Bus24Icon />}} value="bus">Bus</ChoiceChip>
- *  <ChoiceChip chipType="choice" icon={{default: <Bus24Icon />, checked: <Bus24Icon />}} value="train">Train</ChoiceChip>
- *  <ChoiceChip chipType="filter" icon={{default: <Bus24Icon />, checked: <Bus24Icon />}} value="boat">Boat</ChoiceChip>
  * </ChoiceChipGroup>
  * ```
  *
  * There are also three different variants - `core`, `accent` and `floating`.
  *
  * ```tsx
- * <ChoiceChipGroup defaultValue="bus">
- *   <ChoiceChip variant="core" value="bus">Bus</ChoiceChip>
- *   <ChoiceChip variant="accent" value="boat">Boat</ChoiceChip>
- *   <ChoiceChip variant="floating" value="train">Train</ChoiceChip>
+ * <>
+ * <ChoiceChipGroup defaultValue="bus" variant="core">
+ *   <ChoiceChip value="bus">Bus</ChoiceChip>
  * </ChoiceChipGroup>
+ * <ChoiceChipGroup defaultValue="bus" variant="accent">
+ *   <ChoiceChip value="bus">Bus</ChoiceChip>
+ * </ChoiceChipGroup>
+ * <ChoiceChipGroup defaultValue="bus" variant="floating">
+ *   <ChoiceChip value="bus">Bus</ChoiceChip>
+ * </ChoiceChipGroup>
+ * </>
  * ```
  *
  * @see Docs https://spor.vy.no/components/choicechip
@@ -51,7 +43,6 @@ import { choiceChipSlotRecipe } from "@/theme/slot-recipes/choice-chip";
 
 type RadioCardVariantProps = RecipeVariantProps<typeof choiceChipSlotRecipe>;
 
-// Create a context to pass variant props from Group to individual chips
 const ChoiceChipContext = createContext<RadioCardVariantProps | undefined>(
   undefined,
 );

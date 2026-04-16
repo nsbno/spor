@@ -18,9 +18,9 @@ export type FilterChipProps = Omit<
 };
 
 /**
- * Choice chips are checkboxes that look like selectable buttons.
+ * Filter chips are checkboxes that look like selectable buttons.
  *
- * Choice chips are available in four different sizes - `xs`, `sm`, `md` and `lg`.
+ * Filter chips are available in four different sizes - `xs`, `sm`, `md` and `lg`.
  *
  * ```tsx
  * <Stack flexDirection="row">
@@ -28,15 +28,6 @@ export type FilterChipProps = Omit<
  *   <FilterChip size="lg">Train</FilterChip>
  * </Stack>
  * ```
- *
- * There are also three different chipType - `icon`, `choice` and `filter`.
- *
- * ```tsx
- * <Stack flexDirection="row">
- *  <FilterChip chipType="icon" icon={<Bus24Icon />}>Bus</FilterChip>
- *  <FilterChip chipType="choice" icon={<Bus24Icon />}>Bus</FilterChip>
- *  <FilterChip chipType="filter" icon={<Bus24Icon />}>Bus</FilterChip>
- * </Stack>
  *
  * There are also three different variants - `core`, `accent` and `floating`.
  *

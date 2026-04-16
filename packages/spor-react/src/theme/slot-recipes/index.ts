@@ -5,12 +5,12 @@ import { alertServiceSlotRecipe } from "./alert-service";
 import { comboboxSlotRecipe } from "./autocomplete";
 import { breadcrumbSlotRecipe } from "./breadcrumb";
 import { checkboxSlotRecipe } from "./checkbox";
-import { choiceChipSlotRecipe } from "./choice-chip";
 import { collapsibleSlotRecipe } from "./collapsible";
 import { datePickerSlotRecipe } from "./datepicker";
 import { dialogSlotRecipe } from "./dialog";
 import { drawerSlotRecipe } from "./drawer";
 import { fieldSlotRecipe } from "./field";
+import { filterChipSlotRecipe } from "./filter-chip";
 import { floatingActionButtonSlotRecipe } from "./floating-action-button";
 import { infoTagSlotRecipe } from "./info-tag";
 import { inputChipSlotRecipe } from "./input-chip";
@@ -68,7 +68,7 @@ export const slotRecipes = {
   tabs: tabsSlotRecipe,
   travelTag: travelTagSlotRecipe,
   toast: toastSlotRecipe,
-  checkboxCard: choiceChipSlotRecipe,
+  checkboxCard: filterChipSlotRecipe,
   collapsible: collapsibleSlotRecipe,
   tooltip: popoverSlotRecipe,
   tag: inputChipSlotRecipe,

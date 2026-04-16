@@ -7,6 +7,7 @@ export * from "./ChoiceChip";
 export * from "./Combobox";
 export * from "./Field";
 export * from "./Fieldset";
+export * from "./FilterChip";
 export * from "./Input";
 export * from "./InputChip";
 export * from "./ListBox";

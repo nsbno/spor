@@ -1,39 +1,43 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 
-import { radioCardAnatomy } from "./anatomy";
+import { checkboxCardAnatomy } from "./anatomy";
 
-export const choiceChipSlotRecipe = defineSlotRecipe({
-  className: "spor-choice-chip",
-  slots: radioCardAnatomy.keys(),
+export const filterChipSlotRecipe = defineSlotRecipe({
+  slots: checkboxCardAnatomy.keys(),
+  className: "chakra-checkbox-card",
   base: {
     root: {
-      display: "flex",
-      flexDirection: "row",
-      gap: "1",
-      width: "fit-content",
-    },
-    item: {
-      display: "flex-inline",
+      display: "inline-flex",
+      alignItems: "center",
+      boxAlign: "center",
+      cursor: "pointer",
       transitionProperty: "all",
+      borderRadius: "xl",
       transitionDuration: "fast",
+      paddingInlineStart: "2",
+      paddingInlineEnd: "2",
 
+      outline: "1px solid",
+      outlineColor: "core.outline",
       _checked: {
         backgroundColor: "brand.surface",
-        color: "brand.text",
+        borderRadius: "sm",
         outline: "none",
+        color: "brand.text",
         _hover: {
           backgroundColor: "brand.surface.hover",
           _active: {
             backgroundColor: "brand.surface.active",
           },
         },
-
-        _focusVisible: {
-          outline: "2px solid",
-          outlineColor: "outline.focus",
-          outlineOffset: "1px",
-        },
       },
+
+      _focusVisible: {
+        outline: "2px solid",
+        outlineColor: "outline.focus",
+        outlineOffset: "1px",
+      },
+
       _disabled: {
         pointerEvents: "none",
         boxShadow: "none",
@@ -59,44 +63,34 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         },
       },
     },
-    itemControl: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
+
     label: {
       display: "flex",
       alignItems: "center",
-      justifyContent: "center",
       gap: "1",
     },
   },
+
   variants: {
     size: {
       xs: {
-        item: {
-          borderRadius: "xl",
+        root: {
           _checked: {
-            borderRadius: "9px",
+            borderRadius: "0.563rem",
           },
-        },
-        itemControl: {
           height: 5,
           paddingX: 1.5,
         },
         label: {
           fontSize: { base: "mobile.sm", sm: "desktop.sm" },
-          fontWeight: "regular",
+          fontWeight: "medium",
         },
       },
       sm: {
-        item: {
-          borderRadius: "xl",
+        root: {
           _checked: {
             borderRadius: "sm",
           },
-        },
-        itemControl: {
           height: 6,
           paddingX: 2,
         },
@@ -106,13 +100,10 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         },
       },
       md: {
-        item: {
-          borderRadius: "xl",
+        root: {
           _checked: {
             borderRadius: "sm",
           },
-        },
-        itemControl: {
           height: 7,
           paddingX: 2,
         },
@@ -122,13 +113,10 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         },
       },
       lg: {
-        item: {
-          borderRadius: "xl",
+        root: {
           _checked: {
             borderRadius: "md",
           },
-        },
-        itemControl: {
           height: 8,
           paddingX: 3,
         },
@@ -138,9 +126,13 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         },
       },
     },
+
     variant: {
       core: {
-        itemControl: {
+        root: {
+          color: "core.text",
+          outlineColor: "core.outline",
+
           _hover: {
             outline: "2px solid",
             outlineColor: "core.outline.hover",
@@ -154,28 +146,11 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         },
       },
       accent: {
-        itemControl: {
+        root: {
           backgroundColor: "accent.surface",
           color: "accent.text",
           outline: "none",
-          border: "none",
-          _checked: {
-            backgroundColor: "brand.surface",
-            color: "brand.text",
-            outline: "none",
-            _hover: {
-              backgroundColor: "brand.surface.hover",
-              _active: {
-                backgroundColor: "brand.surface.active",
-              },
-            },
 
-            _focusVisible: {
-              outline: "2px solid",
-              outlineColor: "outline.focus",
-              outlineOffset: "1px",
-            },
-          },
           _hover: {
             backgroundColor: "accent.surface.hover",
 
@@ -186,30 +161,13 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         },
       },
       floating: {
-        itemControl: {
+        root: {
           backgroundColor: "floating.surface",
           outline: "1px solid",
           outlineColor: "floating.outline",
           color: "floating.text",
 
           boxShadow: "sm",
-          _checked: {
-            backgroundColor: "brand.surface",
-            color: "brand.text",
-            outline: "none",
-            _hover: {
-              backgroundColor: "brand.surface.hover",
-              _active: {
-                backgroundColor: "brand.surface.active",
-              },
-            },
-
-            _focusVisible: {
-              outline: "2px solid",
-              outlineColor: "outline.focus",
-              outlineOffset: "1px",
-            },
-          },
           _hover: {
             backgroundColor: "floating.surface.hover",
             outline: "1px solid",
@@ -230,6 +188,7 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
       filter: {},
     },
   },
+
   defaultVariants: {
     size: "sm",
     variant: "core",

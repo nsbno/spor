@@ -1,6 +1,6 @@
 "use client";
 import { Box } from "@chakra-ui/react";
-import React, { useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import {
   AriaPopoverProps,
   DismissButton,
@@ -75,6 +75,13 @@ export const Popover = ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const popoverRef = ref ?? (internalRef as any);
 
+  useLayoutEffect(() => {
+    const element = typeof popoverRef === "object" ? popoverRef?.current : null;
+    if (element) {
+      element.style.minWidth = `${triggerRef.current?.clientWidth ?? 0}px`;
+    }
+  });
+
   const { popoverProps, underlayProps } = usePopover(
     {
       triggerRef,
@@ -90,12 +97,7 @@ export const Popover = ({
   );
 
   const popoverBox = (
-    <Box
-      {...popoverProps}
-      ref={popoverRef}
-      // eslint-disable-next-line react-hooks/refs
-      minWidth={triggerRef.current?.clientWidth ?? "auto"}
-    >
+    <Box {...popoverProps} ref={popoverRef}>
       <DismissButton onDismiss={state.close} />
       {children}
       <DismissButton onDismiss={state.close} />

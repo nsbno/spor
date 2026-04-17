@@ -122,6 +122,9 @@ importers:
       '@internationalized/date':
         specifier: ^3.6.0
         version: 3.9.0
+      '@mux/mux-video-react':
+        specifier: 0.27.2
+        version: 0.27.2(@types/react-dom@19.2.3(@types/react@19.2.3))(@types/react@19.2.3)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@portabletext/react':
         specifier: ^3.1.0
         version: 3.2.4(react@19.2.3)
@@ -3527,8 +3530,24 @@ packages:
   '@mux/mux-player@3.11.5':
     resolution: {integrity: sha512-VIgYxaTxmBQG4XkeLhV6DzUx+wPa3m3QkV2CFmf8CiilFIlFp4RC2sMA+XVchifBsR2HK72YKPP5ar20Hijgpw==}
 
+  '@mux/mux-video-react@0.27.2':
+    resolution: {integrity: sha512-ex50NC/JTs5LLJ2WkPqvVDFVrde1o9dIQlYk+16ESyweDhBh8fqH+AYEcs/kIqqRiV20iq9sTG7XfaHxkDeF2g==}
+    peerDependencies:
+      '@types/react': ^17.0.0 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0
+      '@types/react-dom': '*'
+      react: ^17.0.2 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0
+      react-dom: ^17.0.2 || ^17.0.2-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
   '@mux/mux-video@0.30.3':
     resolution: {integrity: sha512-EHlv/AjcfQadZeASM7wjjGBlVVXjMa/UP+/cRqbojF6F5JlADfQAHsAtwAisIQ7uCHy3GmdE4EwEIWNv/YZ5kA==}
+
+  '@mux/playback-core@0.31.2':
+    resolution: {integrity: sha512-bhOVTGAuKCQuDzNOc3XvDq7vsgqy2DAacLP0WdJciUKjfZhs3oA11NbKG7qAN6akPnZVfgn0Jn/sJN8TRjE30A==}
 
   '@mux/playback-core@0.33.2':
     resolution: {integrity: sha512-4g8b92vuiSWXJ+4qEufGZYk6tInmJ8dJStTV4VO6Rub93l7d9vNEDR/nryMuSQ54g2fMHN57F/2fuVaiVdRgSg==}
@@ -17271,6 +17290,16 @@ snapshots:
     transitivePeerDependencies:
       - react
 
+  '@mux/mux-video-react@0.27.2(@types/react-dom@19.2.3(@types/react@19.2.3))(@types/react@19.2.3)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+    dependencies:
+      '@mux/playback-core': 0.31.2
+      prop-types: 15.8.1
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+    optionalDependencies:
+      '@types/react': 19.2.3
+      '@types/react-dom': 19.2.3(@types/react@19.2.3)
+
   '@mux/mux-video@0.30.3':
     dependencies:
       '@mux/mux-data-google-ima': 0.3.15
@@ -17278,6 +17307,11 @@ snapshots:
       castable-video: 1.1.11
       custom-media-element: 1.4.5
       media-tracks: 0.3.4
+
+  '@mux/playback-core@0.31.2':
+    dependencies:
+      hls.js: 1.6.15
+      mux-embed: 5.17.10
 
   '@mux/playback-core@0.33.2':
     dependencies:

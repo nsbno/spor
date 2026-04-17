@@ -38,14 +38,18 @@ import { choiceChipSlotRecipe } from "@/theme/slot-recipes/choice-chip";
  * </>
  * ```
  *
- * @see Docs https://spor.vy.no/components/choicechip
+ * @see https://spor.vy.no/components/choice-chip
  */
 
 type RadioCardVariantProps = RecipeVariantProps<typeof choiceChipSlotRecipe>;
 
-const ChoiceChipContext = createContext<RadioCardVariantProps | undefined>(
-  undefined,
-);
+type Variant = Pick<RadioCardRootProps, "variant" | "size">;
+
+const ChoiceChipContext = createContext<Variant>({
+  variant: "core",
+  size: "sm",
+});
+const useChoiceChipContext = () => useContext(ChoiceChipContext);
 
 type CheckBoxIcon = {
   default: React.ReactNode;
@@ -68,9 +72,8 @@ export const ChoiceChip = ({
 }: RadioCardItemProps & {
   ref?: React.Ref<HTMLInputElement>;
 }) => {
-  const { children, inputProps, icon, variant, size, chipType, ...rest } =
-    props;
-  const contextProps = useContext(ChoiceChipContext);
+  const { children, inputProps, icon, variant, size, css, ...rest } = props;
+  const { variant: contextVariant, size: contextSize } = useChoiceChipContext();
 
   const uniqueId = useId();
   const itemControlId = `radio-card-item-control-${uniqueId}`;
@@ -78,20 +81,17 @@ export const ChoiceChip = ({
   const inputHasAriaLabel =
     inputProps?.["aria-labelledby"] || inputProps?.["aria-label"];
 
-  // Merge props from context with component props (component props take precedence)
-  const finalVariant = variant ?? contextProps?.variant;
-  const finalSize = size ?? contextProps?.size;
-  const finalChipType = chipType ?? contextProps?.chipType;
+  const finalVariant = variant ?? contextVariant;
+  const finalSize = size ?? contextSize;
 
   const recipe = useSlotRecipe({ recipe: choiceChipSlotRecipe });
   const styles = recipe({
     variant: finalVariant,
     size: finalSize,
-    chipType: finalChipType,
   });
 
   return (
-    <ChakraRadioCard.Item {...rest} css={styles.item}>
+    <ChakraRadioCard.Item {...rest} css={{ ...css, ...styles.item }}>
       <ChakraRadioCard.ItemHiddenInput
         aria-labelledby={
           inputHasAriaLabel ? inputProps?.["aria-labelledby"] : itemControlId
@@ -107,7 +107,9 @@ export const ChoiceChip = ({
         <ChakraRadioCard.ItemContext>
           {({ checked }) => (
             <ChakraRadioCard.Label css={styles.label}>
-              {icon && <Span>{checked ? icon.checked : icon.default}</Span>}
+              {checked
+                ? icon?.checked && <Span>{icon.checked}</Span>
+                : icon?.default && <Span>{icon.default}</Span>}
               {children}
             </ChakraRadioCard.Label>
           )}
@@ -134,13 +136,13 @@ export const ChoiceChipGroup = ({
 }: RadioCardRootProps & {
   ref?: React.Ref<HTMLDivElement>;
 }) => {
-  const { children, variant, size, chipType, ...rest } = props;
+  const { children, variant, size, css, ...rest } = props;
   const recipe = useSlotRecipe({ recipe: choiceChipSlotRecipe });
-  const styles = recipe({ variant, size, chipType });
+  const styles = recipe({ variant, size });
   return (
-    <ChoiceChipContext.Provider value={{ variant, size, chipType }}>
+    <ChoiceChipContext.Provider value={{ variant, size }}>
       <ChakraRadioCard.Root
-        css={styles.root}
+        css={{ ...styles.root, ...css }}
         ref={ref}
         variant={variant}
         {...rest}

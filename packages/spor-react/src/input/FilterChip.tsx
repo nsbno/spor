@@ -38,6 +38,8 @@ export type FilterChipProps = Omit<
  *   <FilterChip variant="floating">Train</FilterChip>
  * </Stack>
  * ```
+ *
+ * @see https://spor.vy.no/components/filter-chip
  */
 
 export const FilterChip = ({
@@ -63,11 +65,9 @@ export const FilterChip = ({
             <CheckboxCard.Control>
               <CheckboxCard.Content>
                 <CheckboxCard.Label>
-                  {icon && (
-                    <Span width="24px">
-                      {checked ? icon.checked : icon.default}
-                    </Span>
-                  )}
+                  {checked
+                    ? icon?.checked && <Span>{icon.checked}</Span>
+                    : icon?.default && <Span>{icon.default}</Span>}
 
                   {rootProps.chipType !== "icon" && children}
 

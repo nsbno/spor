@@ -18,16 +18,7 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
       transitionDuration: "fast",
 
       _checked: {
-        backgroundColor: "brand.surface",
-        color: "brand.text",
         outline: "none",
-        _hover: {
-          backgroundColor: "brand.surface.hover",
-          _active: {
-            backgroundColor: "brand.surface.active",
-          },
-        },
-
         _focusVisible: {
           outline: "2px solid",
           outlineColor: "outline.focus",
@@ -141,6 +132,17 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         itemControl: {
+          _checked: {
+            backgroundColor: "brand.surface",
+            color: "brand.text",
+            outline: "none",
+            _hover: {
+              backgroundColor: "brand.surface.hover",
+              _active: {
+                backgroundColor: "brand.surface.active",
+              },
+            },
+          },
           _hover: {
             outline: "2px solid",
             outlineColor: "core.outline.hover",
@@ -168,12 +170,6 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
               _active: {
                 backgroundColor: "brand.surface.active",
               },
-            },
-
-            _focusVisible: {
-              outline: "2px solid",
-              outlineColor: "outline.focus",
-              outlineOffset: "1px",
             },
           },
           _hover: {
@@ -203,12 +199,6 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
                 backgroundColor: "brand.surface.active",
               },
             },
-
-            _focusVisible: {
-              outline: "2px solid",
-              outlineColor: "outline.focus",
-              outlineOffset: "1px",
-            },
           },
           _hover: {
             backgroundColor: "floating.surface.hover",
@@ -224,15 +214,9 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         },
       },
     },
-    chipType: {
-      icon: {},
-      choice: {},
-      filter: {},
-    },
   },
   defaultVariants: {
     size: "sm",
     variant: "core",
-    chipType: "choice",
   },
 });

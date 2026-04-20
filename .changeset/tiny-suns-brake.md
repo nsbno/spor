@@ -1,5 +1,5 @@
 ---
-"@vygruppen/spor-icon-react-native": minor
+"@vygruppen/spor-icon-react-native": patch
 ---
 
-Oppdaterer `@vygruppen/spor-icon-react-native` slik at pakken publiseres med de nyeste ikonene fra `@vygruppen/spor-icon`.
+Updates `@vygruppen/spor-icon-react-native` so the package is published with the latest icons from `@vygruppen/spor-icon`.

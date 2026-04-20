@@ -12,16 +12,18 @@
     "prerelease": "pnpm build",
     "release": "turbo run build && changeset publish",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css}\""
+    "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css}\"",
+    "codemod": "pnpm exec jscodeshift -t packages/spor-codemods/transforms/color-tokens.js apps/designmanual-frontend --ignore-pattern '**/node_modules/**'"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.5",
+    "@vygruppen/eslint-config": "workspace:*",
+    "eslint": "^9.39.1",
+    "jscodeshift": "^17.3.0",
     "prettier": "^3.3.1",
     "react-icons": "^5.4.0",
     "rimraf": "^5.0.7",
-    "turbo": "^2.4.2",
-    "@vygruppen/eslint-config": "workspace:*",
-    "eslint": "^9.39.1"
+    "turbo": "^2.4.2"
   },
   "engines": {
     "node": ">=18.0.0"

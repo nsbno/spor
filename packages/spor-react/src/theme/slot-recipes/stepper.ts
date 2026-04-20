@@ -67,13 +67,13 @@ export const stepperSlotRecipe = defineSlotRecipe({
             _dark: "whiteAlpha.900",
           },
           _disabled: {
-            color: "core.text",
+            color: "text.core",
           },
           _currentStep: {
-            color: "accent.text",
+            color: "text.accent",
           },
           _hover: {
-            backgroundColor: "accent.surface.hover",
+            backgroundColor: "surface.accent.hover",
             _disabled: {
               backgroundColor: "transparent",
             },
@@ -81,7 +81,7 @@ export const stepperSlotRecipe = defineSlotRecipe({
         },
         backButton: {
           _hover: {
-            backgroundColor: "brand.surface.hover",
+            backgroundColor: "surface.brand.hover",
           },
         },
       },

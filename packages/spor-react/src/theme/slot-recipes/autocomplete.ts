@@ -80,7 +80,7 @@ export const comboboxSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       flex: "1",
       _highlighted: {
-        bg: "ghost.surface.active",
+        bg: "surface.ghost.active",
       },
       _disabled: {
         pointerEvents: "none",
@@ -89,15 +89,15 @@ export const comboboxSlotRecipe = defineSlotRecipe({
       },
 
       _hover: {
-        bg: "ghost.surface.hover",
+        bg: "surface.ghost.hover",
       },
 
       _pressed: {
-        bg: "ghost.surface.active",
+        bg: "surface.ghost.active",
       },
 
       _focus: {
-        bg: "ghost.surface.active",
+        bg: "surface.ghost.active",
       },
     },
 
@@ -120,7 +120,7 @@ export const comboboxSlotRecipe = defineSlotRecipe({
     itemGroupLabel: {
       px: "3",
       py: "0.5",
-      color: "floating.text",
+      color: "text.floating",
       fontFeatureSettings: "liga off",
       fontSize: ["mobile.sm, desktop.sm"],
       fontWeight: "bold",

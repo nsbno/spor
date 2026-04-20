@@ -8,13 +8,13 @@ export enum Brand {
 }
 
 export const vyDigitalColors = defineSemanticTokens.colors({
-  ...tokens.color["vy-digital"].color.vyDigital,
+  ...tokens.color["vy-digital-v2"].color.vyDigitalV2,
 });
 
 export const vyUtviklingColors = defineSemanticTokens.colors({
-  ...tokens.color["vy-utvikling"].color.vyUtvikling,
+  ...tokens.color["vy-digital-v2"].color.vyDigitalV2,
 });
 
 export const cargonetColors = defineSemanticTokens.colors({
-  ...tokens.color.cargonet.color.cargonet,
+  ...tokens.color["vy-digital-v2"].color.vyDigitalV2,
 });

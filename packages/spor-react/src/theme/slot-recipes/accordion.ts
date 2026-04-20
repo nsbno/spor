@@ -18,7 +18,7 @@ export const accordionSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       display: "flex",
       justifyContent: "space-between",
-      color: "core.text",
+      color: "text.core",
       textAlign: "left",
       width: "full",
       alignItems: "center",
@@ -75,10 +75,10 @@ export const accordionSlotRecipe = defineSlotRecipe({
         },
         itemTrigger: {
           "&:hover": {
-            background: "ghost.surface.hover",
+            background: "surface.ghost.hover",
           },
           "&:active": {
-            backgroundColor: "ghost.surface.active",
+            backgroundColor: "surface.ghost.active",
           },
         },
       },
@@ -86,7 +86,7 @@ export const accordionSlotRecipe = defineSlotRecipe({
         item: {
           outline: "solid",
           outlineWidth: tokens.size.stroke.sm,
-          outlineColor: "core.outline",
+          outlineColor: "outline.core",
         },
         itemTrigger: {
           _expanded: {
@@ -94,13 +94,13 @@ export const accordionSlotRecipe = defineSlotRecipe({
           },
           "&:hover": {
             outlineWidth: tokens.size.stroke.md,
-            outlineColor: "core.outline",
+            outlineColor: "outline.core",
             outline: "2px solid",
 
             outlineOffset: 0,
           },
           "&:active": {
-            backgroundColor: "core.surface.active",
+            backgroundColor: "surface.core.active",
             outlineWidth: tokens.size.stroke.sm,
             outline: "none",
           },
@@ -121,7 +121,7 @@ export const accordionSlotRecipe = defineSlotRecipe({
           outline: "1px solid",
           outlineWidth: tokens.size.stroke.sm,
           boxShadow: "sm",
-          outlineColor: "floating.outline",
+          outlineColor: "outline.floating",
         },
         itemTrigger: {
           _expanded: {
@@ -130,12 +130,12 @@ export const accordionSlotRecipe = defineSlotRecipe({
           "&:hover": {
             outlineWidth: tokens.size.stroke.md,
             outline: "1px solid",
-            outlineColor: "floating.outline.hover",
+            outlineColor: "outline.floating.hover",
 
             outlineOffset: 1,
           },
           "&:active": {
-            backgroundColor: "floating.surface.active",
+            backgroundColor: "surface.floating.active",
             outlineWidth: tokens.size.stroke.sm,
             outline: "none",
           },

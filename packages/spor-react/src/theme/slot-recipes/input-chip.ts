@@ -30,42 +30,42 @@ export const inputChipSlotRecipe = defineSlotRecipe({
           borderColor: "outline",
           "&:hover": {
             outline: "2px solid",
-            outlineColor: "core.outline.hover",
+            outlineColor: "outline.core.hover",
           },
           "&:active": {
             outline: "none",
-            backgroundColor: "core.surface.active",
+            backgroundColor: "surface.core.active",
           },
         },
       },
       accent: {
         root: {
-          backgroundColor: "accent.surface",
+          backgroundColor: "surface.accent",
           color: "text.highlight",
           "& svg": {
             color: "icon.highlight",
           },
           "&:hover": {
-            backgroundColor: "accent.surface.hover",
+            backgroundColor: "surface.accent.hover",
           },
           "&:active": {
-            backgroundColor: "accent.surface.active",
+            backgroundColor: "surface.accent.active",
             outline: "none",
           },
         },
       },
       brand: {
         root: {
-          backgroundColor: "brand.surface",
+          backgroundColor: "surface.brand",
           color: "text.inverted",
           "& svg": {
             color: "icon.inverted",
           },
           "&:hover": {
-            backgroundColor: "brand.surface.hover",
+            backgroundColor: "surface.brand.hover",
           },
           "&:active": {
-            backgroundColor: "brand.surface.active",
+            backgroundColor: "surface.brand.active",
             outline: "none",
           },
         },

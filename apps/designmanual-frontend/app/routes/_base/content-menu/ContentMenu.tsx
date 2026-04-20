@@ -145,13 +145,13 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
               <AccordionItemTrigger
                 fontWeight="bold"
                 ref={index === 0 ? ref : null}
-                _expanded={{ backgroundColor: "bg.tertiary" }}
+                _expanded={{ backgroundColor: "bg.brand" }}
                 onClick={() => {
                   setExpanded([item.link]);
                 }}
                 backgroundColor={
                   item.link === location.pathname
-                    ? "bg.tertiary"
+                    ? "bg.brand"
                     : "transparent"
                 }
               >
@@ -171,7 +171,7 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
                         isActive={`/${subItem.url}` === location.pathname}
                         backgroundColor={
                           `/${subItem.url}` === location.pathname
-                            ? "bg.tertiary"
+                            ? "bg.brand"
                             : "transparent"
                         }
                       >
@@ -196,7 +196,7 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
                         backgroundColor={
                           `${location.pathname}#${subItem.id}` ===
                           location.pathname
-                            ? "bg.tertiary"
+                            ? "bg.brand"
                             : "transparent"
                         }
                         id={`${location.pathname}#${subItem.id}--${location.pathname}`}

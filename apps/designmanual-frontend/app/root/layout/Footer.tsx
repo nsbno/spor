@@ -20,7 +20,7 @@ export const Footer = () => {
     <Flex
       as="footer"
       justifyContent="space-between"
-      backgroundColor="surface.secondary"
+      backgroundColor="surface.subtle"
       className="dark"
       alignItems="center"
       gap="4"
@@ -44,7 +44,6 @@ export const Footer = () => {
           />
         </Link>
       </Box>
-
       <Flex
         flexDirection="row"
         justifyContent="center"

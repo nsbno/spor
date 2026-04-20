@@ -37,7 +37,7 @@ export const inputRecipe = defineRecipe({
       },
       _hover: {
         outline: "2px solid",
-        outlineColor: "core.outline",
+        outlineColor: "outline.core",
       },
     },
   },
@@ -46,14 +46,14 @@ export const inputRecipe = defineRecipe({
       core: {
         backgroundColor: "transparent",
         outline: "1px solid",
-        outlineColor: "core.outline",
+        outlineColor: "outline.core",
         _hover: {
           outline: "2px solid",
-          outlineColor: "core.outline.hover",
+          outlineColor: "outline.core.hover",
           _active: {
             outline: "1px solid",
             outlineColor: "outline.disabled",
-            backgroundColor: "core.surface.active",
+            backgroundColor: "surface.core.active",
           },
         },
         _focus: {
@@ -63,18 +63,18 @@ export const inputRecipe = defineRecipe({
       },
       floating: {
         boxShadow: "sm",
-        bg: "floating.surface",
+        bg: "surface.floating",
         outline: "1px solid",
-        outlineColor: "floating.outline",
+        outlineColor: "outline.floating",
 
         _hover: {
           outline: "1px solid",
-          outlineColor: "floating.outline.hover",
+          outlineColor: "outline.floating.hover",
         },
         _active: {
           outline: "1px solid",
           outlineColor: "floating.outline.active",
-          backgroundColor: "floating.surface.active",
+          backgroundColor: "surface.floating.active",
         },
 
         focus: {

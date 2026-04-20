@@ -97,7 +97,7 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
         },
         itemTrigger: {
           "&:hover": {
-            bg: "surface.Info.hover",
+            bg: "surface.info.hover",
             outlineOffset: "0px",
             outline: "1px solid",
             outlineColor: "alert.info.outline.hover",

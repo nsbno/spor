@@ -39,7 +39,7 @@ export const tokenMap = {
   "alert.info.surface.active": "surface.info.active",
   "alert.info.surface": "surface.info",
   "surface.color.blue": "surface.info",
-  "alert.info.surface.hover": "surface.Info.hover",
+  "alert.info.surface.hover": "surface.info.hover",
 
   "accent.surface.active": "surface.accent.active",
   "accent.surface": "surface.accent",

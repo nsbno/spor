@@ -49,6 +49,7 @@ import { LinkButtonSerializer } from "./serializers/LinkButtonSerializer";
 import { NonClickableBoxListSerializer } from "./serializers/NonClickableBoxesSerializer";
 import { TextBlockSerializer } from "./serializers/TextBlockSerializer";
 import { TextBlocksSerializer } from "./serializers/TextBlocksSerializer";
+import { VideoPlayerSerializer } from "./serializers/VideoPlayerSerializer";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
@@ -165,6 +166,7 @@ const components: Partial<PortableTextReactComponents> = {
     imageAndTextList: ImageAndTextListSerializer,
     imageCardList: ImageCardListSerializer,
     cards: CardSerializer,
+    videoBlock: VideoPlayerSerializer,
     linkButton: ({ value }) => (
       <Flex width={["100%"]}>{LinkButtonSerializer({ value })}</Flex>
     ),

@@ -25,6 +25,7 @@ export const filterChipSlotRecipe = defineSlotRecipe({
         outline: "none",
         color: "brand.text",
         _hover: {
+          outline: "none",
           backgroundColor: "brand.surface.hover",
           _active: {
             backgroundColor: "brand.surface.active",

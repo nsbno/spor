@@ -24,6 +24,9 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
           outlineColor: "outline.focus",
           outlineOffset: "1px",
         },
+        _hover: {
+          outline: "none",
+        },
       },
       _disabled: {
         pointerEvents: "none",

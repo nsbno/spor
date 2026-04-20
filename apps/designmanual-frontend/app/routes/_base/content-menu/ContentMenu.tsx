@@ -150,9 +150,7 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
                   setExpanded([item.link]);
                 }}
                 backgroundColor={
-                  item.link === location.pathname
-                    ? "bg.brand"
-                    : "transparent"
+                  item.link === location.pathname ? "bg.brand" : "transparent"
                 }
               >
                 {item.title}

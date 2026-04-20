@@ -113,14 +113,14 @@ export const NonClickableBox = ({
           <Flex gap={2} wrap="wrap">
             {links.map((link) => (
               // Override margin from button serializer
-              (<Box
+              <Box
                 marginTop={0}
                 marginBottom={-3}
                 marginRight={-2}
                 key={link.text}
               >
                 <LinkButtonSerializer value={link} />
-              </Box>)
+              </Box>
             ))}
           </Flex>
         )}

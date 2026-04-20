@@ -313,7 +313,7 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
             {section.content && <PortableText value={section.content} />}
             {section.components?.map((component) => (
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              (<ComponentDocs key={component._id} component={component as any} />)
+              <ComponentDocs key={component._id} component={component as any} />
             ))}
             {section.styling && (
               <Box as="section">

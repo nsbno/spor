@@ -84,6 +84,22 @@ export function resolveDividerGroq() {
     }`;
 }
 
+export function resolveVideoPlayerGroq() {
+  return groq`
+    (_type == "videoBlock") => @ {
+    ...,  
+    _type,
+    _key,
+    isFullWidth,
+    title,
+    "video": video.asset->{...},
+    credits,
+    caption,
+    transcript
+    }
+  `;
+}
+
 export function resolveTextBlockGroq() {
   return groq`
     (_type == "textBlock") => @ {

@@ -8,7 +8,7 @@ import {
   Heading,
   Accordion as SporAccordion,
 } from "@vygruppen/spor-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { useLocation } from "react-router";
 
 import { BlockHeading } from "~/features/portable-text/components/BlockHeading";
@@ -22,6 +22,21 @@ const headingLevelToVariantMap = {
   h4: "sm",
   h5: "xs",
 } as const;
+
+const subscribeToHashChanges = (callback: () => void) => {
+  if (globalThis.window === undefined) return () => {};
+  globalThis.addEventListener("hashchange", callback);
+  globalThis.addEventListener("popstate", callback);
+  return () => {
+    globalThis.removeEventListener("hashchange", callback);
+    globalThis.removeEventListener("popstate", callback);
+  };
+};
+
+const getClientHash = () =>
+  globalThis.window === undefined ? "" : globalThis.location.hash;
+
+const getServerHash = () => "";
 
 export type AccordionProps = {
   title?: string;
@@ -45,19 +60,32 @@ export const Accordion = ({
   headingIcon,
   items,
 }: AccordionProps) => {
-  const { hash } = useLocation();
+  const routerHash = useLocation().hash;
+  const liveHash = useSyncExternalStore(
+    subscribeToHashChanges,
+    getClientHash,
+    getServerHash,
+  );
+  const hash = liveHash || routerHash;
 
-  const [openIndex, setOpenIndex] = useState<number[]>(() => {
-    if (hash) {
-      const id = hash.replace(/^#item-/i, "");
-      const index = items.findIndex((item) => item._key === id);
+  const [toggles, setToggles] = useState<Record<number, boolean>>({});
 
-      if (index !== -1) {
-        return [index];
-      }
+  const hashIndex = useMemo(() => {
+    if (!hash) return -1;
+    const id = hash.replace(/^#item-/i, "");
+    return items.findIndex((item) => item._key === id);
+  }, [hash, items]);
+
+  const openIndex = useMemo(() => {
+    const open = new Set<number>();
+    if (hashIndex !== -1) open.add(hashIndex);
+    for (const [key, value] of Object.entries(toggles)) {
+      const index = Number(key);
+      if (value) open.add(index);
+      else open.delete(index);
     }
-    return [];
-  });
+    return [...open];
+  }, [hashIndex, toggles]);
 
   useEffect(() => {
     if (hash) {
@@ -74,13 +102,9 @@ export const Accordion = ({
   }, [hash, items]);
 
   const handleAccordionState = (id: string, index: number) => {
-    const includesIndex = openIndex.includes(index);
-    setOpenIndex(
-      includesIndex
-        ? openIndex.filter((index_) => index_ !== index)
-        : [...openIndex, index],
-    );
-    history.replaceState({}, "", includesIndex ? " " : `#item-${id}`);
+    const isOpen = openIndex.includes(index);
+    setToggles((previous) => ({ ...previous, [index]: !isOpen }));
+    history.replaceState({}, "", isOpen ? " " : `#item-${id}`);
   };
 
   // sanitize heading inputs and fall back to safe defaults
@@ -95,12 +119,7 @@ export const Accordion = ({
     : "h3";
 
   return (
-    <Box
-      marginX="auto"
-      width="100%"
-      maxWidth={["100%", null, "66.7%"]}
-      marginTop={9}
-    >
+    <Box marginX="auto" width="100%" marginTop={9}>
       {title && (
         <BlockHeading
           heading={title}
@@ -118,15 +137,18 @@ export const Accordion = ({
       >
         {items.map((item, index) => (
           <AccordionItem key={item._key} value={String(index)}>
-            <Heading as={safeItemLevel ?? "h3"} autoId>
+            <Heading
+              as={safeItemLevel ?? "h4"}
+              variant="md"
+              fontWeight="bold"
+              autoId
+            >
               <AccordionItemTrigger
                 gap={1}
                 onClick={() => handleAccordionState(item._key, index)}
               >
                 {item.icon && getIcon({ iconName: item.icon, size: 24 })}
-                <Box flex={1} id={`item-${item._key}`}>
-                  {item.title}
-                </Box>
+                {item.title}
               </AccordionItemTrigger>
             </Heading>
             <AccordionItemContent>

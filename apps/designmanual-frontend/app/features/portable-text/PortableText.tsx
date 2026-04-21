@@ -34,6 +34,7 @@ import { urlBuilder } from "~/utils/sanity/utils";
 
 import { ComponentDocs } from "../../routes/_base.$section.$category.$slug/component-docs/ComponentDocs";
 import { CodeBlock } from "./code-block/CodeBlock";
+import { ResponsiveImage } from "./components/ResponsiveImage";
 import { ImageWithCaption } from "./ImageWithCaption";
 import { InteractiveCode } from "./interactive-code/InteractiveCode";
 import { LinkableHeading } from "./LinkableHeading";
@@ -48,8 +49,10 @@ import { ImageCardListSerializer } from "./serializers/ImageCardListSerializer";
 import { LinkButtonSerializer } from "./serializers/LinkButtonSerializer";
 import { NonClickableBoxListSerializer } from "./serializers/NonClickableBoxesSerializer";
 import { TextBlockSerializer } from "./serializers/TextBlockSerializer";
+import { TableChartSerializer } from "./serializers/TableChartSerializer";
 import { TextBlocksSerializer } from "./serializers/TextBlocksSerializer";
 import { VideoPlayerSerializer } from "./serializers/VideoPlayerSerializer";
+import { table } from "node:console";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
@@ -173,7 +176,9 @@ const components: Partial<PortableTextReactComponents> = {
     nonClickableBoxList: NonClickableBoxListSerializer,
     accordion: AccordionSerializer,
     fileList: FileListSerializer,
+    table: TableChartSerializer,
     divider: DividerSerializer,
+
     buttonLink: ({ value }) => {
       const isInternal = value.url.startsWith("/");
       const linkProps = isInternal
@@ -238,24 +243,11 @@ const components: Partial<PortableTextReactComponents> = {
         />
       );
     },
-    image: ({ value }) => {
-      const dimensions = value.image.asset?._ref.split("-")[2];
-      const aspectRatio = dimensions.split("x").join(" / ");
-      return (
-        <Image
-          src={urlBuilder
-            .image(value.image)
-            .width(924)
-            .fit("max")
-            .auto("format")
-            .url()}
-          alt={value.alt}
-          marginX="auto"
-          marginTop={6}
-          aspectRatio={aspectRatio}
-        />
-      );
-    },
+    image: ({ value }) => (
+      <Box marginTop={6} marginX="auto">
+        <ResponsiveImage image={value} size="lg" />
+      </Box>
+    ),
     staticCodeBlock: ({ value }) => {
       return (
         <Box marginBottom={3}>

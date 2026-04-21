@@ -31,6 +31,8 @@ export const accordionItem = defineType({
       type: "array",
       of: [
         { type: "linkButton" },
+        { type: "image" },
+        { type: "table" },
         {
           type: "block",
           marks: {

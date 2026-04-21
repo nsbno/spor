@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@sanity/code-input": "^6.0.3",
+    "@sanity/table": "^2.0.1",
     "@sanity/types": "^4.22.0",
     "@sanity/ui": "^3.1.6",
     "@sanity/vision": "^4.22.0",

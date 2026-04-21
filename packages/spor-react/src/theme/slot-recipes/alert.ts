@@ -60,7 +60,7 @@ export const alertSlotRecipe = defineSlotRecipe({
       success: createVariant("success"),
       info: createVariant("info"),
       neutral: createVariant("neutral"),
-      "error-secondary": createVariant("error-caution"),
+      "error-secondary": createVariant("caution"),
       service: createVariant("service"),
     },
   },

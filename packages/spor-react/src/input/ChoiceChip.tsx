@@ -84,7 +84,7 @@ export const ChoiceChip = ({
   const finalVariant = variant ?? contextVariant;
   const finalSize = size ?? contextSize;
 
-  const recipe = useSlotRecipe({ recipe: choiceChipSlotRecipe });
+  const recipe = useSlotRecipe({ key: "choiceChip" });
   const styles = recipe({
     variant: finalVariant,
     size: finalSize,
@@ -137,7 +137,7 @@ export const ChoiceChipGroup = ({
   ref?: React.Ref<HTMLDivElement>;
 }) => {
   const { children, variant, size, css, ...rest } = props;
-  const recipe = useSlotRecipe({ recipe: choiceChipSlotRecipe });
+  const recipe = useSlotRecipe({ key: "choiceChip" });
   const styles = recipe({ variant, size });
   return (
     <ChoiceChipContext.Provider value={{ variant, size }}>

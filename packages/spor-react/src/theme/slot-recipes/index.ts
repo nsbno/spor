@@ -5,6 +5,7 @@ import { alertServiceSlotRecipe } from "./alert-service";
 import { comboboxSlotRecipe } from "./autocomplete";
 import { breadcrumbSlotRecipe } from "./breadcrumb";
 import { checkboxSlotRecipe } from "./checkbox";
+import { choiceChipSlotRecipe } from "./choice-chip";
 import { collapsibleSlotRecipe } from "./collapsible";
 import { datePickerSlotRecipe } from "./datepicker";
 import { dialogSlotRecipe } from "./dialog";
@@ -73,4 +74,5 @@ export const slotRecipes = {
   tooltip: popoverSlotRecipe,
   tag: inputChipSlotRecipe,
   menu: menuSlotRecipe,
+  choiceChip: choiceChipSlotRecipe,
 };

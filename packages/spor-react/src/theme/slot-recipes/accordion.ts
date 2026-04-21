@@ -113,7 +113,7 @@ export const accordionSlotRecipe = defineSlotRecipe({
         item: {
           borderRadius: "none",
           borderBottom: "1px solid",
-          borderBottomColor: "floating.outline.active",
+          borderBottomColor: "outline.neutral",
         },
       },
       floating: {

@@ -42,7 +42,7 @@ export const pressableCardRecipe = defineRecipe({
           _active: {
             boxShadow: "none",
             backgroundColor: "surface.floating.active",
-            borderColor: "floating.outline.active",
+            borderColor: "outline.neutral",
           },
         },
       },

@@ -4,21 +4,21 @@ import { alertAnatomy } from "./anatomy";
 
 const createVariant = (variant: string) => ({
   root: {
-    borderColor: `alert.${variant}.outline`,
-    background: `alert.${variant}.surface`,
+    borderColor: `outline.${variant}`,
+    background: `surface.${variant}`,
   },
   description: {
-    color: `alert.${variant}.text.secondary`,
+    color: `text.${variant}.subtle`,
   },
   title: {
-    color: `alert.${variant}.text`,
+    color: `text.${variant}`,
   },
   closeButton: {
-    color: `alert.${variant}.text`,
+    color: `text.${variant}`,
     _hover: {
-      bg: `alert.${variant}.surface.hover`,
+      bg: `surface.${variant}.hover`,
       _active: {
-        bg: `alert.${variant}.surface.active`,
+        bg: `surface.${variant}.active`,
       },
     },
   },
@@ -54,13 +54,13 @@ export const alertSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      important: createVariant("important"),
-      alt: createVariant("alt"),
-      error: createVariant("error"),
+      important: createVariant("warning"),
+      alt: createVariant("notice"),
+      error: createVariant("critical"),
       success: createVariant("success"),
       info: createVariant("info"),
       neutral: createVariant("neutral"),
-      "error-secondary": createVariant("error-secondary"),
+      "error-secondary": createVariant("error-caution"),
       service: createVariant("service"),
     },
   },

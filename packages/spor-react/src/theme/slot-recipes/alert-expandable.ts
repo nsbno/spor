@@ -93,25 +93,25 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
       },
       info: {
         itemContent: {
-          color: "alert.info.text.secondary",
+          color: "text.info.subtle",
         },
         itemTrigger: {
           "&:hover": {
             bg: "surface.info.hover",
             outlineOffset: "0px",
             outline: "1px solid",
-            outlineColor: "alert.info.outline.hover",
+            outlineColor: "outline.info.hover",
             "&:active": {
               bg: "surface.info.active",
             },
           },
         },
         root: {
-          borderColor: "alert.info.outline",
+          borderColor: "outline.info",
           bg: "surface.info",
         },
         title: {
-          color: "alert.info.text",
+          color: "text.info",
         },
       },
       error: {

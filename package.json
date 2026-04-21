@@ -13,7 +13,7 @@
     "release": "turbo run build && changeset publish",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css}\"",
-    "codemod": "pnpm exec jscodeshift -t packages/spor-codemods/transforms/color-tokens.js apps/designmanual-frontend --ignore-pattern '**/node_modules/**'"
+    "codemod": "pnpm exec jscodeshift -t packages/spor-codemods/transforms/color-tokens.js apps/designmanual-frontend --ignore-pattern '**/node_modules/**' '**/dist/**'"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.5",

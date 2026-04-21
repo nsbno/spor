@@ -57,7 +57,7 @@ export const inputChipSlotRecipe = defineSlotRecipe({
       brand: {
         root: {
           backgroundColor: "surface.brand",
-          color: "text.inverted",
+          color: "text.brand",
           "& svg": {
             color: "icon.inverted",
           },

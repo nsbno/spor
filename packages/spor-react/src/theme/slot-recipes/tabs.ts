@@ -95,7 +95,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
       },
       accent: {
         list: {
-          backgroundColor: "accent.bg",
+          backgroundColor: "bg.accent",
           color: "text.accent",
         },
         trigger: {

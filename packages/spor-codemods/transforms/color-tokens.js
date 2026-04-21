@@ -6,14 +6,13 @@ export const tokenMap = {
   "bg.secondary": "bg.subtle",
 
   "accent.icon": "icon.accent",
+  "accent.bg": "bg.accent",
   "brand.icon": "icon.brand",
   "alert.error-secondary.icon": "icon.caution",
   "core.icon": "icon.core",
   "alert.error.icon": "icon.critical",
-  "icon.disabled": "icon.disabled",
   "floating.icon": "icon.floating",
   "ghost.icon": "icon.ghost",
-  "icon.highlight": "icon.highlight",
   "alert.alt.icon": "icon.notice",
   "alert.success.icon": "icon.success",
   "alert.important.icon": "icon.warning",
@@ -24,11 +23,8 @@ export const tokenMap = {
   "core.outline.hover": "outline.core.hover",
   "alert.error.outline": "outline.critical",
   "alert.error.outline.hover": "outline.critical.hover",
-  "outline.disabled": "outline.disabled",
-  "outline.error": "outline.error",
   "floating.outline": "outline.floating",
   "floating.outline.hover": "outline.floating.hover",
-  "outline.focus": "outline.focus",
   "alert.alt.outline": "outline.notice",
   "alert.alt.outline.hover": "outline.notice.hover",
   "alert.success.outline": "outline.success",
@@ -40,6 +36,10 @@ export const tokenMap = {
   "alert.info.surface": "surface.info",
   "surface.color.blue": "surface.info",
   "alert.info.surface.hover": "surface.info.hover",
+  "alert.info.text.secondary": "text.info.subtle",
+  "alert.info.outline.hover": "outline.info.hover",
+  "alert.info.outline": "outline.info",
+  "alert.info.text": "text.info",
 
   "accent.surface.active": "surface.accent.active",
   "accent.surface": "surface.accent",
@@ -60,12 +60,12 @@ export const tokenMap = {
   "alert.error.surface": "surface.critical",
   "surface.color.red": "surface.critical",
   "alert.error.surface.hover": "surface.critical.hover",
-
-  "surface.disabled": "surface.disabled",
+  "surface.tertiary": "surface.service",
 
   "floating.surface.active": "surface.floating.active",
   "floating.surface": "surface.floating",
   "floating.surface.hover": "surface.floating.hover",
+  "floating.outline.active": "outline.neutral",
 
   "ghost.surface.active": "surface.ghost.active",
   "ghost.surface.hover": "surface.ghost.hover",
@@ -97,7 +97,6 @@ export const tokenMap = {
   "core.text": "text.core",
   "alert.error.text": "text.critical",
   "alert.error.text.secondary": "text.critical.subtle",
-  "text.disabled": "text.disabled",
   "floating.text": "text.floating",
   "ghost.text": "text.ghost",
   "alert.alt.text": "text.notice",
@@ -108,6 +107,32 @@ export const tokenMap = {
   "alert.success.text.secondary": "text.success.subtle",
   "alert.important.text": "text.warning",
   "alert.important.text.secondary": "text.warning.subtle",
+
+  "badge.surface": "surface",
+  "badge.text": "text",
+  "badge.icon": "icon",
+  "badge.green.surface": "surface.subtle",
+  "badge.green.text": "text.success",
+  "badge.green.icon": "icon.success",
+  "badge.grey.surface": "surface.neutral",
+  "badge.grey.text": "text.neutral",
+  "badge.grey.icon": "icon.neutral",
+  "badge.blue.surface": "surface.info",
+  "badge.blue.text": "text.info",
+  "badge.blue.icon": "icon.info",
+  "badge.cream.surface": "surface.warning",
+  "badge.cream.text": "text.warning",
+  "badge.cream.icon": "icon.warning",
+  "badge.yellow.surface": "surface.notice",
+  "badge.yellow.text": "text.notice",
+  "badge.yellow.icon": "icon.notice",
+  "badge.orange.surface": "surface.caution",
+  "badge.orange.text": "text.caution",
+  "badge.orange.icon": "icon.caution",
+  "badge.red.surface": "surface.critical",
+  "badge.red.text": "text.critical",
+  "badge.red.icon": "icon.critical",
+  "text.inverted": "text.brand",
 };
 
 export default function transform(file, api) {
@@ -120,8 +145,8 @@ export default function transform(file, api) {
   // eslint-disable-next-line unicorn/no-array-for-each
   root.find(index.Literal).forEach((path) => {
     const oldValue = path.node.value;
-    const newValue = tokenMap[oldValue];
-    if (newValue) {
+    if (Object.hasOwn(tokenMap, oldValue)) {
+      const newValue = tokenMap[oldValue];
       console.log("Replacing literal", path.node.value, "with", newValue);
       path.node.value = newValue;
     }

@@ -104,7 +104,7 @@ const cellStyles = {
   // Selection edge (single-mode selected OR range start/end)
   "&[data-edge]": {
     backgroundColor: "surface.brand",
-    color: "text.inverted",
+    color: "text.brand",
   },
   // Range middle
   "&[data-middle]": {

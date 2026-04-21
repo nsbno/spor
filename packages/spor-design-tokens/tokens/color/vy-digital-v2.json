@@ -190,8 +190,8 @@
         },
         "disabled": {
           "value": {
-            "_light": "colors.black",
-            "_dark": "colors.white"
+            "_light": "colors.blackAlpha.200",
+            "_dark": "colors.whiteAlpha.300"
           }
         },
         "core": {
@@ -294,7 +294,7 @@
         },
         "accent": {
           "value": {
-            "_light": "colors.greenHaze",
+            "_light": "colors.mint",
             "_dark": "colors.jungle"
           }
         }

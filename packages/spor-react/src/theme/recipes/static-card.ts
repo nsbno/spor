@@ -7,7 +7,7 @@ export const staticCardRecipe = defineRecipe({
   variants: {
     colorPalette: {
       white: {
-        backgroundColor: "surface.neutral",
+        backgroundColor: "surface",
         color: "text",
       },
       grey: {

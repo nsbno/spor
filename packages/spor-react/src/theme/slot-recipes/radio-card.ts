@@ -84,7 +84,7 @@ export const radioCardSlotRecipe = defineSlotRecipe({
             boxShadow: "0px 2px 6px 0px var(--shadow-color)",
             _active: {
               background: "surface.floating.active",
-              borderColor: "floating.outline.active",
+              borderColor: "outline.neutral",
               boxShadow: "none",
             },
           },

@@ -15,7 +15,7 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       backgroundColor: "alert.service.surface",
       outline: "1px solid",
       outlineColor: "alert.service.outline",
-      color: "text.inverted",
+      color: "text.brand",
       boxShadow: "sm",
     },
     itemTrigger: {
@@ -27,7 +27,7 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       borderBottomRadius: "md",
       borderTopRadius: "none",
       width: "full",
-      color: "text.inverted",
+      color: "text.brand",
       "&:hover": {
         backgroundColor: "alert.service.surface.hover",
       },

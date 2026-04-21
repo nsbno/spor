@@ -87,6 +87,7 @@ export const ServiceAlert = ({
       css={{ ...styles.root, ...css }}
       ref={ref}
       {...rest}
+      className="light"
     >
       <Accordion.Item value={defaultValue}>
         <Accordion.ItemTrigger css={styles.itemTrigger}>

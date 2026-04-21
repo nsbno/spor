@@ -49,7 +49,7 @@ const [transform, ...restArguments] = arguments_;
 
 // Map friendly transform names to actual file paths
 const transformMap = {
-  "color-tokens": path.join(__dirname, "../transforms/color-tokens.js"),
+  "color-tokens": path.join(__dirname, "../transforms/tokens/color-tokens.js"),
 };
 
 const transformPath = transformMap[transform];

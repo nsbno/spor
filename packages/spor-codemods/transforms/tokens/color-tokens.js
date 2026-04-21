@@ -40,6 +40,11 @@ export const tokenMap = {
   "alert.info.outline.hover": "outline.info.hover",
   "alert.info.outline": "outline.info",
   "alert.info.text": "text.info",
+  "alert.service.outline": "outline.service",
+  "alert.service.surface.hover": "surface.service.hover",
+  "alert.service.surface": "surface.service",
+  "alert.service.surface.active": "surface.service.active",
+  "alert.service.text.secondary": "text.service.subtle",
 
   "accent.surface.active": "surface.accent.active",
   "accent.surface": "surface.accent",

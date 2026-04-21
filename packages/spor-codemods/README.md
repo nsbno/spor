@@ -5,11 +5,7 @@ Codemods for automatically migrating Spor code to newer versions. This package u
 ## Installation
 
 ```bash
-npm install --save-dev @vygruppen/spor-codemods
-# or
 pnpm add -D @vygruppen/spor-codemods
-# or
-yarn add -D @vygruppen/spor-codemods
 ```
 
 ## Usage
@@ -138,7 +134,7 @@ npx spor-codemod color-tokens src/ --run-in-band
 
 To add a new transform:
 
-1. Create a new file in `transforms/` (e.g., `transforms/my-transform.js`)
+1. Create a new file in `transforms/` (e.g., `transforms/<category>/my-transform.js`)
 2. Export a default function that follows the jscodeshift API
 3. Add it to the transform map in `bin/cli.js`
 4. Update this README with documentation

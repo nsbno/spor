@@ -15,6 +15,7 @@ import {
   resolveLinkButtonGroq,
   resolveNonClickableBoxListGroq,
   resolveTextBlocksGroq,
+  resolveVideoPlayerGroq,
 } from "~/features/cms/sanity/query";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
@@ -44,6 +45,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
       ${resolveLinkButtonGroq()},
       ${resolveDividerGroq()},
       ${resolveFileListGroq()},
+      ${resolveVideoPlayerGroq()},
     }
   }`;
   const data = await getClient().fetch(

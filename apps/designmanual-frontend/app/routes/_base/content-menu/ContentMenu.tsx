@@ -31,17 +31,6 @@ type Props = {
 export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
   const location = useLocation();
   const menu = useMenu(location.pathname.slice(1));
-  let activeIndex =
-    menu?.menuItems.findIndex(
-      (item) =>
-        item._type !== "divider" &&
-        item.subItems?.some((subItem) => subItem.url === location.pathname),
-    ) ?? 0;
-  const indexOfDivider =
-    menu?.menuItems.findIndex((item) => item._type === "divider") ?? 0;
-  if (activeIndex >= indexOfDivider) {
-    activeIndex = activeIndex - 1;
-  }
 
   const { isPreview } = useRouteLoaderData<typeof loader>("root") || {
     isPreview: false,

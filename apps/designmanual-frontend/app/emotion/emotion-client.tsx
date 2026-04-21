@@ -55,6 +55,7 @@ export function useInjectStyles(cache: EmotionCache) {
   const styles = useClientStyleContext();
   const injectRef = useRef(true);
 
+  // eslint-disable-next-line react-hooks/immutability
   useSafeLayoutEffect(() => {
     if (!injectRef.current) return;
 

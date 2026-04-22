@@ -103,18 +103,18 @@ const cellStyles = {
   },
   // Selection edge (single-mode selected OR range start/end)
   "&[data-edge]": {
-    backgroundColor: "brand.surface",
-    color: "text.inverted",
+    backgroundColor: "surface.brand",
+    color: "text.brand",
   },
   // Range middle
   "&[data-middle]": {
-    backgroundColor: "surface.secondary",
+    backgroundColor: "surface.subtle",
     color: "text",
   },
   // Hover for non-selected, non-disabled cells on devices that support hover
   "@media (hover: hover)": {
     "&:not([data-edge]):not([data-middle]):not([data-disabled]):hover": {
-      backgroundColor: "surface.secondary",
+      backgroundColor: "surface.subtle",
       color: "text",
     },
   },

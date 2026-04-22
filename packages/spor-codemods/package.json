@@ -15,7 +15,6 @@
   },
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
     "lint": "eslint ."
   },
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-codemods",

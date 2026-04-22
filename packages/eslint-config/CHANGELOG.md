@@ -1,5 +1,11 @@
 # @vygruppen/eslint-config
 
+## 2.2.0
+
+### Minor Changes
+
+- 6c7d7d3: Update to new colortoken structure
+
 ## 2.1.0
 
 ### Minor Changes

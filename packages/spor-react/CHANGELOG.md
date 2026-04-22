@@ -1,5 +1,20 @@
 # @vygruppen/spor-react
 
+## 13.1.0
+
+### Minor Changes
+
+- 6c7d7d3: Update to new colortoken structure
+
+### Patch Changes
+
+- 6e1b6f1: Add translation of 'Loading'-text in spinners and loaders
+- 35a30e9: Refactor Lottie implementation to work with Vite 8.
+- 221a86e: Added disabled colors to checkboxes that are not in checked state
+- Updated dependencies [6c7d7d3]
+  - @vygruppen/spor-design-tokens@5.0.0
+  - @vygruppen/spor-icon-react@5.0.0
+
 ## 13.0.3
 
 ### Patch Changes

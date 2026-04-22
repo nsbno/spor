@@ -609,10 +609,10 @@ importers:
         specifier: ^7.12.0
         version: 7.16.0
       '@vygruppen/spor-design-tokens':
-        specifier: ^4.3.2
-        version: 4.3.3
+        specifier: 4.3.2
+        version: 4.3.2
       '@vygruppen/spor-react':
-        specifier: ^12.24.16
+        specifier: 12.24.16
         version: 12.24.16(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       zod:
         specifier: ^3.23.0
@@ -3366,9 +3366,6 @@ packages:
       '@types/node':
         optional: true
 
-  '@internationalized/date@3.10.0':
-    resolution: {integrity: sha512-oxDR/NTEJ1k+UFVQElaNIk65E/Z83HK1z1WI3lQyhTtnNg4R5oVXaPzK3jcpKG8UHKDVuDQHzn+wsxSz8RP3aw==}
-
   '@internationalized/date@3.12.0':
     resolution: {integrity: sha512-/PyIMzK29jtXaGU23qTvNZxvBXRtKbNnGDFD+PY6CZw/Y8Ex8pFUzkuCJCG9aOqmShjqhS9mPqP6Dk5onQY8rQ==}
 
@@ -6049,6 +6046,9 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
+
+  '@vygruppen/spor-design-tokens@4.3.2':
+    resolution: {integrity: sha512-gVvJhQlvBEVLFEhaNgTb31XrqEUlW+AeGZPxxji86dzPI/1hvrhh7w8Ij+bfgViOEaOmIUSSKkbnt7fpkKwDgg==}
 
   '@vygruppen/spor-design-tokens@4.3.3':
     resolution: {integrity: sha512-CvtcfPZ5NRXuuZflxhSlgXLkB2xOP8hn0cFcDLNI+vmfA8U86yFQzmF4L/dhn/aYG93zCbS2bfH/rqrPVHOqhw==}
@@ -17037,10 +17037,6 @@ snapshots:
     optionalDependencies:
       '@types/node': 25.5.2
 
-  '@internationalized/date@3.10.0':
-    dependencies:
-      '@swc/helpers': 0.5.17
-
   '@internationalized/date@3.12.0':
     dependencies:
       '@swc/helpers': 0.5.17
@@ -21343,6 +21339,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@vygruppen/spor-design-tokens@4.3.2': {}
+
   '@vygruppen/spor-design-tokens@4.3.3': {}
 
   '@vygruppen/spor-icon-react@4.5.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
@@ -21366,7 +21364,7 @@ snapshots:
       '@chakra-ui/utils': 2.2.2(react@19.2.3)
       '@emotion/react': 11.14.0(@types/react@19.2.3)(react@19.2.3)
       '@emotion/styled': 11.14.1(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(@types/react@19.2.3)(react@19.2.3)
-      '@internationalized/date': 3.10.0
+      '@internationalized/date': 3.12.0
       '@vygruppen/spor-design-tokens': 4.3.3
       '@vygruppen/spor-icon-react': 4.5.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@vygruppen/spor-loader': 0.7.0

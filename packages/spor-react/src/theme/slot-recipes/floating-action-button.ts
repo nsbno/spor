@@ -57,12 +57,12 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
     variant: {
       brand: {
         root: {
-          backgroundColor: "brand.surface",
-          color: "brand.text",
+          backgroundColor: "surface.brand",
+          color: "text.brand",
           _hover: {
-            backgroundColor: "brand.surface.hover",
+            backgroundColor: "surface.brand.hover",
             _active: {
-              backgroundColor: "brand.surface.active",
+              backgroundColor: "surface.brand.active",
             },
           },
         },
@@ -71,29 +71,29 @@ export const floatingActionButtonSlotRecipe = defineSlotRecipe({
         root: {
           backgroundColor: "transparent",
           outline: "1px solid",
-          outlineColor: "core.outline",
-          color: "core.text",
+          outlineColor: "outline.core",
+          color: "text.core",
           _hover: {
             backgroundColor: "transparent",
             outline: "2px solid",
-            outlineColor: "core.outline",
+            outlineColor: "outline.core",
             _active: {
               outline: "1px solid",
-              outlineColor: "core.outline",
-              backgroundColor: "core.surface.active",
+              outlineColor: "outline.core",
+              backgroundColor: "surface.core.active",
             },
           },
         },
       },
       accent: {
         root: {
-          backgroundColor: "accent.surface",
-          color: "accent.text",
+          backgroundColor: "surface.accent",
+          color: "text.accent",
           _hover: {
-            backgroundColor: "accent.surface.hover",
-            color: "accent.text",
+            backgroundColor: "surface.accent.hover",
+            color: "text.accent",
             _active: {
-              backgroundColor: "accent.surface.active",
+              backgroundColor: "surface.accent.active",
             },
           },
         },

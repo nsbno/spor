@@ -58,9 +58,9 @@ export const MenuItem = ({
       borderRadius="lg"
       fontSize={["mobile.xs", null, "desktop.xs"]}
       color="text"
-      backgroundColor={isActive ? "ghost.surface.active" : "transparent"}
-      _hover={{ backgroundColor: "ghost.surface.hover" }}
-      _active={{ backgroundColor: "ghost.surface.active" }}
+      backgroundColor={isActive ? "surface.ghost.active" : "transparent"}
+      _hover={{ backgroundColor: "surface.ghost.hover" }}
+      _active={{ backgroundColor: "surface.ghost.active" }}
       ref={internalRef}
       {...rest}
       onKeyUp={handleKeyUp}

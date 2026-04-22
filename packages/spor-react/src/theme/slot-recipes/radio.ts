@@ -37,18 +37,18 @@ export const radioGroupSlotRecipe = defineSlotRecipe({
       justifyContent: "center",
       verticalAlign: "top",
       borderWidth: "2px",
-      borderColor: "core.outline",
+      borderColor: "outline.core",
       borderRadius: "xl",
       width: 4,
       height: 4,
 
       _checked: {
-        borderColor: "brand.surface",
+        borderColor: "surface.brand",
       },
       _hover: {
-        borderColor: "brand.surface.hover",
+        borderColor: "surface.brand.hover",
         "& .dot": {
-          backgroundColor: "brand.surface.hover",
+          backgroundColor: "surface.brand.hover",
         },
       },
 
@@ -71,7 +71,7 @@ export const radioGroupSlotRecipe = defineSlotRecipe({
         height: "full",
         width: "full",
         borderRadius: "xl",
-        backgroundColor: "brand.surface",
+        backgroundColor: "surface.brand",
         scale: "0.5",
       },
     },

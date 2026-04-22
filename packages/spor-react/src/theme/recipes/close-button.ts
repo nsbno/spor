@@ -9,12 +9,12 @@ export const closeButtonRecipe = defineRecipe({
     color: "text",
     fontWeight: "normal",
     _hover: {
-      background: "ghost.surface.hover",
+      background: "surface.ghost.hover",
       _disabled: {
         color: "icon.disabled",
       },
       _active: {
-        background: "ghost.surface.active",
+        background: "surface.ghost.active",
       },
     },
   },

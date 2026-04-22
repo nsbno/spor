@@ -48,14 +48,14 @@ export const LinkButton = ({
         marginRight={2}
         border="1px solid transparent"
         borderBottom="1px solid"
-        borderBottomColor="floating.outline.hover"
+        borderBottomColor="outline.floating.hover"
         borderRadius={0}
         display="flex"
         justifyContent="flex-start"
         marginBlock="0.2rem"
         _hover={{
           border: "1px solid",
-          borderColor: "floating.outline.hover",
+          borderColor: "outline.floating.hover",
           backgroundColor: "transparent",
         }}
       >
@@ -76,14 +76,14 @@ export const LinkButton = ({
       marginRight={2}
       border="1px solid transparent"
       borderBottom="1px solid"
-      borderBottomColor="floating.outline.hover"
+      borderBottomColor="outline.floating.hover"
       borderRadius={0}
       display="flex"
       justifyContent="flex-start"
       marginBlock="0.2rem"
       _hover={{
         border: "1px solid",
-        borderColor: "floating.outline.hover",
+        borderColor: "outline.floating.hover",
         backgroundColor: "transparent",
       }}
       href={cleanedHref}

@@ -29,40 +29,40 @@ export const buttonRecipe = defineRecipe({
   variants: {
     variant: {
       primary: {
-        background: "brand.surface",
-        color: "brand.text",
+        background: "surface.brand",
+        color: "text.brand",
         fontWeight: "bold",
         _hover: {
-          background: "brand.surface.hover",
+          background: "surface.brand.hover",
           _active: {
-            background: "brand.surface.active",
+            background: "surface.brand.active",
           },
         },
       },
       secondary: {
-        background: "accent.surface",
-        color: "accent.text",
+        background: "surface.accent",
+        color: "text.accent",
         fontWeight: "bold",
         _hover: {
-          background: "accent.surface.hover",
+          background: "surface.accent.hover",
           _active: {
-            background: "accent.surface.active",
+            background: "surface.accent.active",
           },
         },
       },
       tertiary: {
-        color: "core.text",
+        color: "text.core",
         outline: "solid",
         fontWeight: "normal",
         outlineWidth: tokens.size.stroke.sm,
-        outlineColor: "core.outline",
+        outlineColor: "outline.core",
         _hover: {
           outlineWidth: tokens.size.stroke.md,
-          outlineColor: "core.outline.hover",
+          outlineColor: "outline.core.hover",
           _active: {
-            background: "core.surface.active",
+            background: "surface.core.active",
             outlineWidth: tokens.size.stroke.sm,
-            outlineColor: "core.outline",
+            outlineColor: "outline.core",
           },
         },
         _focus: {
@@ -70,30 +70,30 @@ export const buttonRecipe = defineRecipe({
         },
       },
       ghost: {
-        color: "ghost.text",
+        color: "text.ghost",
         fontWeight: "bold",
         _hover: {
-          background: "ghost.surface.hover",
+          background: "surface.ghost.hover",
           _active: {
-            background: "ghost.surface.active",
+            background: "surface.ghost.active",
           },
         },
       },
       floating: {
-        color: "floating.text",
-        background: "floating.surface",
+        color: "text.floating",
+        background: "surface.floating",
         fontWeight: "bold",
         border: "sm",
-        borderColor: "floating.outline",
+        borderColor: "outline.floating",
         boxShadow:
           "0px 1px 3px 0px var(--spor-colors-surface-disabled, rgba(0, 0, 0, 0.10))",
         _hover: {
-          borderColor: "floating.outline.hover",
+          borderColor: "outline.floating.hover",
 
           _active: {
-            background: "core.surface.active",
+            background: "surface.core.active",
             boxShadow: "none",
-            borderColor: "floating.outline",
+            borderColor: "outline.floating",
           },
         },
       },

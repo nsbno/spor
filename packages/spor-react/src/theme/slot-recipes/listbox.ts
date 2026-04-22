@@ -24,19 +24,19 @@ export const listBoxSlotRecipe = defineSlotRecipe({
       marginY: 1,
       marginX: 1,
       borderRadius: "sm",
-      color: "ghost.text",
+      color: "text.ghost",
       cursor: "pointer",
       listStyle: "none",
       _active: {
-        backgroundColor: "ghost.surface.active",
+        backgroundColor: "surface.ghost.active",
       },
 
       _hover: {
-        backgroundColor: "accent.surface",
-        color: "accent.text",
+        backgroundColor: "surface.accent",
+        color: "text.accent",
       },
       _selected: {
-        backgroundColor: "ghost.surface.active",
+        backgroundColor: "surface.ghost.active",
       },
       _focus: {
         outline: "2px solid",
@@ -46,9 +46,9 @@ export const listBoxSlotRecipe = defineSlotRecipe({
     label: {},
     description: {
       fontSize: ["mobile.xs", "desktop.xs"],
-      color: "ghost.text",
+      color: "text.ghost",
       "[aria-selected='true'] &": {
-        color: "ghost.text",
+        color: "text.ghost",
       },
     },
   },
@@ -57,13 +57,13 @@ export const listBoxSlotRecipe = defineSlotRecipe({
       core: {
         root: {
           outline: "1px solid",
-          outlineColor: "core.outline",
+          outlineColor: "outline.core",
         },
       },
       floating: {
         root: {
           outline: "1px solid",
-          outlineColor: "floating.outline",
+          outlineColor: "outline.floating",
         },
       },
     },

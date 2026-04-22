@@ -11,59 +11,59 @@ export const badgeRecipie = defineRecipe({
   variants: {
     colorPalette: {
       neutral: {
-        backgroundColor: "badge.surface",
-        color: "badge.text",
+        backgroundColor: "surface",
+        color: "text",
         "& svg": {
-          color: "badge.icon",
+          color: "icon",
         },
       },
       grey: {
-        backgroundColor: "badge.grey.surface",
-        color: "badge.grey.text",
+        backgroundColor: "surface.neutral",
+        color: "text.neutral",
         "& svg": {
-          color: "badge.grey.icon",
+          color: "icon.neutral",
         },
       },
       green: {
-        backgroundColor: "badge.green.surface",
-        color: "badge.green.text",
+        backgroundColor: "surface.subtle",
+        color: "text.success",
         "& svg": {
-          color: "badge.green.icon",
+          color: "icon.success",
         },
       },
       blue: {
-        backgroundColor: "badge.blue.surface",
-        color: "badge.blue.text",
+        backgroundColor: "surface.info",
+        color: "text.info",
         "& svg": {
-          color: "badge.blue.icon",
+          color: "icon.info",
         },
       },
       cream: {
-        backgroundColor: "badge.cream.surface",
-        color: "badge.cream.text",
+        backgroundColor: "surface.warning",
+        color: "text.warning",
         "& svg": {
-          color: "badge.cream.icon",
+          color: "icon.warning",
         },
       },
       yellow: {
-        backgroundColor: "badge.yellow.surface",
-        color: "badge.yellow.text",
+        backgroundColor: "surface.notice",
+        color: "text.notice",
         "& svg": {
-          color: "badge.yellow.icon",
+          color: "icon.notice",
         },
       },
       orange: {
-        backgroundColor: "badge.orange.surface",
-        color: "badge.orange.text",
+        backgroundColor: "surface.caution",
+        color: "text.caution",
         "& svg": {
-          color: "badge.orange.icon",
+          color: "icon.caution",
         },
       },
       red: {
-        backgroundColor: "badge.red.surface",
-        color: "badge.red.text",
+        backgroundColor: "surface.critical",
+        color: "text.critical",
         "& svg": {
-          color: "badge.red.icon",
+          color: "icon.critical",
         },
       },
     },

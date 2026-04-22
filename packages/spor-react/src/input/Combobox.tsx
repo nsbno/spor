@@ -185,7 +185,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
         borderBottomRightRadius={
           state.isOpen && !loading ? 0 : borderBottomRightRadius
         }
-        _active={{ backgroundColor: "core.surface.active" }}
+        _active={{ backgroundColor: "surface.core.active" }}
         {...filteredInputProps}
         startElement={leftIcon}
         endElement={

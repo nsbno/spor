@@ -16,7 +16,7 @@ export const popoverSlotRecipe = defineSlotRecipe({
       padding: "0.563rem 0.75rem",
 
       textStyle: "sm",
-      bg: "surface.service",
+      bg: "surface.brand",
       boxShadow: "lg",
       borderRadius: "sm",
       zIndex: "popover",
@@ -42,7 +42,7 @@ export const popoverSlotRecipe = defineSlotRecipe({
       maxWidth: "20em",
     },
     arrow: {
-      "--arrow-background": "colors.surface.tertiary",
+      "--arrow-background": "colors.surface.brand",
       "--arrow-size": "6px",
     },
   },

@@ -472,6 +472,12 @@
             "_dark": "colors.jungle"
           }
         },
+        "highlight": {
+          "value": {
+            "_light": "colors.darkTeal",
+            "_dark": "colors.coralGreen"
+          }
+        },
         "overlay": {
           "value": {
             "_light": "colors.blackAlpha.600",

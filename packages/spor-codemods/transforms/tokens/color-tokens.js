@@ -65,7 +65,7 @@ export const tokenMap = {
   "alert.error.surface": "surface.critical",
   "surface.color.red": "surface.critical",
   "alert.error.surface.hover": "surface.critical.hover",
-  "surface.tertiary": "surface.service",
+  "surface.tertiary": "surface.highlight",
 
   "floating.surface.active": "surface.floating.active",
   "floating.surface": "surface.floating",

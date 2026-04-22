@@ -478,6 +478,12 @@
             "_dark": "colors.darkGrey"
           }
         },
+        "highlight": {
+          "value": {
+            "_light": "colors.darkGrey",
+            "_dark": "colors.dimGrey"
+          }
+        },
         "overlay": {
           "value": {
             "_light": "colors.blackAlpha.600",

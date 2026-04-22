@@ -59,7 +59,7 @@ export const inputChipSlotRecipe = defineSlotRecipe({
           backgroundColor: "surface.brand",
           color: "text.brand",
           "& svg": {
-            color: "icon.inverted",
+            color: "icon.brand",
           },
           "&:hover": {
             backgroundColor: "surface.brand.hover",

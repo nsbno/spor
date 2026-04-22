@@ -3,7 +3,6 @@ import path from "node:path";
 
 import linjetag from "../spor-design-tokens/tokens/color/linjetag.json" with { type: "json" };
 import vyDigital from "../spor-design-tokens/tokens/color/vy-digital.json" with { type: "json" };
-import vyDigitalV2 from "../spor-design-tokens/tokens/color/vy-digital-v2.json" with { type: "json" };
 
 // Function to recursively extract token paths from the JSON
 function extractTokenPaths(object, prefix = "") {
@@ -42,17 +41,12 @@ function getTokensFromVyDigital(json) {
   return extractTokenPaths(json.color.vyDigital, "");
 }
 
-function getTokensFromVyDigitalV2(json) {
-  return extractTokenPaths(json.color.vyDigitalV2, "");
-}
-
 function getTokensFromLinjetag(json) {
   return extractTokenPaths(json.color.linjetag, "linjetag");
 }
 
 const allTokens = new Set();
 for (const token of getTokensFromVyDigital(vyDigital)) allTokens.add(token);
-for (const token of getTokensFromVyDigitalV2(vyDigitalV2)) allTokens.add(token);
 for (const token of getTokensFromLinjetag(linjetag)) allTokens.add(token);
 
 console.log(`Extracted ${allTokens.size} unique tokens.`);

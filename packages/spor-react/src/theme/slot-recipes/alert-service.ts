@@ -65,7 +65,7 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       "& > p": {
         width: "full",
         borderBottom: "1px dashed",
-        borderColor: "outline.inverted",
+        borderColor: "outline.neutral",
 
         paddingY: ["1", "1.5"],
 

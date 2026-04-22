@@ -16,5 +16,5 @@ export const vyUtviklingColors = defineSemanticTokens.colors({
 });
 
 export const cargonetColors = defineSemanticTokens.colors({
-  ...tokens.color["vy-digital"].color.vyDigital,
+  ...tokens.color["cargonet"].color.cargonet,
 });

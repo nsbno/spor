@@ -138,6 +138,8 @@ export const tokenMap = {
   "badge.red.text": "text.critical",
   "badge.red.icon": "icon.critical",
   "text.inverted": "text.brand",
+  "icon.inverted": "icon.brand",
+  "outline.inverted": "outline.neutral",
 };
 
 export default function transform(file, api) {

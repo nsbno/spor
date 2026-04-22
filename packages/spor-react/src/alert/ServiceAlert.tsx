@@ -123,7 +123,7 @@ export const ServiceAlert = ({
                 </Text>
               )}
               <Accordion.ItemIndicator>
-                <DropdownDownFill24Icon color="icon.inverted" />
+                <DropdownDownFill24Icon color="icon.brand" />
               </Accordion.ItemIndicator>
             </Flex>
           </HStack>

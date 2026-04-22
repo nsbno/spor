@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.0.0
+
+### Major Changes
+
+- 6c7d7d3: Update to new colortoken structure
+
 ## 4.3.3
 
 ### Patch Changes

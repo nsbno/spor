@@ -38,14 +38,7 @@ export function TableChart({ children, title, description }: TableProps) {
   return (
     <Stack gap={4} as="section" width="100%" {...ariaProps} marginTop={4}>
       {title && (
-        <Heading
-          as="h2"
-          variant="lg"
-          fontWeight="600"
-          color="text.secondary"
-          marginBottom={-2}
-          autoId
-        >
+        <Heading as="h2" variant="lg" fontWeight="600" marginBottom={-2} autoId>
           {title}
         </Heading>
       )}

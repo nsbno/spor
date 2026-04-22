@@ -1,3 +1,4 @@
+import { PortableTextBlock } from "@portabletext/types";
 import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
@@ -23,6 +24,8 @@ import {
 import { useLinkProps } from "~/utils/link";
 import { sanitizeInternalHref } from "~/utils/sanitize";
 
+import { PortableText } from "../PortableText";
+
 export type ImageCardList = {
   heading?: string;
   headingIcon?: string;
@@ -35,7 +38,8 @@ export type ImageCardProps = {
   _key: string;
   title: string;
   headingLevel: "h2" | "h3";
-  description: string;
+  description?: string;
+  textContent?: PortableTextBlock[];
   image: SanityImage;
   href: string;
   anchor?: string;
@@ -46,6 +50,7 @@ export type ImageCardProps = {
 type ImageCardTextProps = {
   title: string;
   description?: string;
+  textContent?: PortableTextBlock[];
   isExternal: boolean;
   headingLevel: "h2" | "h3";
 };
@@ -53,6 +58,7 @@ type ImageCardTextProps = {
 const ImageCardLinkText = ({
   title,
   description,
+  textContent,
   isExternal,
   headingLevel,
 }: ImageCardTextProps) => {
@@ -77,7 +83,8 @@ const ImageCardLinkText = ({
         </Heading>
         {isExternal && <LinkOutOutline24Icon />}
       </Flex>
-      <Text variant="sm">{description}</Text>
+      {description && !textContent && <Text variant="sm">{description}</Text>}
+      {textContent && <PortableText value={textContent} />}
     </Stack>
   );
 };
@@ -86,6 +93,7 @@ export const ImageCard = ({
   title,
   headingLevel,
   description,
+  textContent,
   image,
   href,
   anchor,
@@ -118,6 +126,7 @@ export const ImageCard = ({
         <ImageCardLinkText
           title={title}
           description={description}
+          textContent={textContent}
           isExternal={isExternal}
           headingLevel={headingLevel}
         />

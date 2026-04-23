@@ -8,6 +8,7 @@ import {
   Heading,
   PressableCard,
   Stack,
+  StaticCard,
   Text,
 } from "@vygruppen/spor-react";
 
@@ -104,6 +105,37 @@ export const ImageCard = ({
     href && href.includes("http") ? href : sanitizeInternalHref(href);
   const { linkProps, isExternal } = useLinkProps(cleandedHref, anchor);
 
+  const content = (
+    <Box>
+      <Box width="100%">
+        {image && (
+          <ResponsiveImage
+            aspectRatio={aspectRatio || undefined}
+            image={image}
+            width="100%"
+            objectFit="cover"
+            size={imageSize ?? "md"}
+          />
+        )}
+      </Box>
+      <ImageCardLinkText
+        title={title}
+        description={description}
+        textContent={textContent}
+        isExternal={isExternal}
+        headingLevel={headingLevel}
+      />
+    </Box>
+  );
+
+  if (!href) {
+    return (
+      <StaticCard height="100%" overflow="hidden">
+        {content}
+      </StaticCard>
+    );
+  }
+
   return (
     <PressableCard
       variant="floating"
@@ -111,26 +143,7 @@ export const ImageCard = ({
       height="100%"
       as={linkProps.as as React.ElementType}
     >
-      <Box>
-        <Box width="100%">
-          {image && (
-            <ResponsiveImage
-              aspectRatio={aspectRatio || undefined}
-              image={image}
-              width="100%"
-              objectFit="cover"
-              size={imageSize ?? "md"}
-            />
-          )}
-        </Box>
-        <ImageCardLinkText
-          title={title}
-          description={description}
-          textContent={textContent}
-          isExternal={isExternal}
-          headingLevel={headingLevel}
-        />
-      </Box>
+      {content}
     </PressableCard>
   );
 };

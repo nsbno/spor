@@ -1,0 +1,46 @@
+{
+  "name": "@vygruppen/spor-codemods",
+  "version": "1.1.0",
+  "description": "Code modification scripts for migrating Spor code to newer versions",
+  "type": "module",
+  "bin": {
+    "spor-codemod": "./bin/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./transforms/*": "./transforms/*"
+  },
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint ."
+  },
+  "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-codemods",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nsbno/spor.git",
+    "directory": "packages/spor-codemods"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "jscodeshift": "^17.3.0",
+    "@vygruppen/spor-react": "workspace:*"
+  },
+  "devDependencies": {
+    "@vygruppen/eslint-config": "workspace:*",
+    "@vygruppen/tsconfig": "workspace:*",
+    "@types/jscodeshift": "^0.11.11",
+    "@types/node": "^22.13.4",
+    "@types/react": "19.2.3",
+    "@types/react-dom": "19.2.3",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "peerDependencies": {
+    "jscodeshift": ">=0.14.0"
+  }
+}

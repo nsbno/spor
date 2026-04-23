@@ -69,7 +69,7 @@ const ImageCardLinkText = ({
           as={headingLevel}
           variant="md"
           fontWeight="bold"
-          color="text.secondary"
+          color="text.highlight"
           flex={1}
           autoId
         >

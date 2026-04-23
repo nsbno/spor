@@ -18,16 +18,16 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
       paddingInlineEnd: "2",
 
       outline: "1px solid",
-      outlineColor: "core.outline",
+      outlineColor: "outline.core",
       _checked: {
-        backgroundColor: "brand.surface",
+        backgroundColor: "surface.brand",
         borderRadius: "sm",
         outline: "none",
-        color: "brand.text",
+        color: "text.brand",
         _hover: {
-          backgroundColor: "brand.surface.hover",
+          backgroundColor: "surface.brand.hover",
           _active: {
-            backgroundColor: "brand.surface.active",
+            backgroundColor: "surface.brand.active",
           },
         },
       },
@@ -130,53 +130,53 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         root: {
-          color: "core.text",
-          outlineColor: "core.outline",
+          color: "text.core",
+          outlineColor: "outline.core",
 
           _hover: {
             outline: "2px solid",
-            outlineColor: "core.outline.hover",
+            outlineColor: "outline.core.hover",
 
             _active: {
               outline: "1px solid",
-              outlineColor: "core.outline",
-              backgroundColor: "core.surface.active",
+              outlineColor: "outline.core",
+              backgroundColor: "surface.core.active",
             },
           },
         },
       },
       accent: {
         root: {
-          backgroundColor: "accent.surface",
-          color: "accent.text",
+          backgroundColor: "surface.accent",
+          color: "text.accent",
           outline: "none",
 
           _hover: {
-            backgroundColor: "accent.surface.hover",
+            backgroundColor: "surface.accent.hover",
 
             _active: {
-              backgroundColor: "accent.surface.active",
+              backgroundColor: "surface.accent.active",
             },
           },
         },
       },
       floating: {
         root: {
-          backgroundColor: "floating.surface",
+          backgroundColor: "surface.floating",
           outline: "1px solid",
-          outlineColor: "floating.outline",
-          color: "floating.text",
+          outlineColor: "outline.floating",
+          color: "text.floating",
 
           boxShadow: "sm",
           _hover: {
-            backgroundColor: "floating.surface.hover",
+            backgroundColor: "surface.floating.hover",
             outline: "1px solid",
-            outlineColor: "floating.outline.hover",
+            outlineColor: "outline.floating.hover",
 
             _active: {
-              backgroundColor: "floating.surface.active",
+              backgroundColor: "surface.floating.active",
               outline: "1px solid",
-              outlineColor: "floating.outline",
+              outlineColor: "outline.floating",
             },
           },
         },

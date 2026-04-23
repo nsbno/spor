@@ -25,7 +25,7 @@ export const numericStepperRecipe = defineSlotRecipe({
       textAlign: "center",
       transitionProperty: "common",
       transitionDuration: "fast",
-      color: "core.text",
+      color: "text.core",
       backgroundColor: "transparent",
 
       _focus: {
@@ -35,7 +35,7 @@ export const numericStepperRecipe = defineSlotRecipe({
       },
 
       _active: {
-        backgroundColor: "accent.surface.active",
+        backgroundColor: "surface.accent.active",
       },
 
       _disabled: {
@@ -45,7 +45,7 @@ export const numericStepperRecipe = defineSlotRecipe({
 
       _hover: {
         outline: "1px solid",
-        outlineColor: "core.outline",
+        outlineColor: "outline.core",
       },
     },
     text: {
@@ -55,7 +55,7 @@ export const numericStepperRecipe = defineSlotRecipe({
       paddingX: 1,
       textAlign: "center",
       width: "4ch",
-      color: "core.text",
+      color: "text.core",
     },
     button: {
       outlineOffset: "-2px",

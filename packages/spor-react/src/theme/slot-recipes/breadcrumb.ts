@@ -33,11 +33,11 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
       core: {
         link: {
           _hover: {
-            outlineColor: "core.outline.hover",
+            outlineColor: "outline.core.hover",
             outlineWidth: tokens.size.stroke.md,
             outlineStyle: "solid",
             _active: {
-              backgroundColor: "core.surface.active",
+              backgroundColor: "surface.core.active",
               outline: "none",
             },
           },
@@ -46,9 +46,9 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
       ghost: {
         link: {
           _hover: {
-            backgroundColor: "ghost.surface.hover",
+            backgroundColor: "surface.ghost.hover",
             _active: {
-              backgroundColor: "ghost.surface.active",
+              backgroundColor: "surface.ghost.active",
             },
           },
         },

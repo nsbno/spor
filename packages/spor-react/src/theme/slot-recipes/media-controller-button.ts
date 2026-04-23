@@ -18,7 +18,7 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
       display: "flex",
       padding: 1,
       alignSelf: "center",
-      color: "brand.surface",
+      color: "surface.brand",
       outlineOffset: "2px",
     },
     icon: {
@@ -31,14 +31,14 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
       play: {
         root: {
           padding: 0,
-          color: "brand.text",
-          backgroundColor: "brand.surface",
+          color: "text.brand",
+          backgroundColor: "surface.brand",
           _hover: {
-            color: "brand.text",
-            backgroundColor: "brand.surface.hover",
+            color: "text.brand",
+            backgroundColor: "surface.brand.hover",
             _active: {
-              color: "brand.text",
-              backgroundColor: "brand.surface.active",
+              color: "text.brand",
+              backgroundColor: "surface.brand.active",
             },
           },
           _disabled: {
@@ -51,9 +51,9 @@ export const mediaControllerSlotRecipe = defineSlotRecipe({
       jumpSkip: {
         root: {
           _hover: {
-            backgroundColor: "ghost.surface.hover",
+            backgroundColor: "surface.ghost.hover",
             _active: {
-              backgroundColor: "ghost.surface.active",
+              backgroundColor: "surface.ghost.active",
             },
           },
           _disabled: {

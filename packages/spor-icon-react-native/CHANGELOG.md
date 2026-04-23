@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.16.1
+
+### Patch Changes
+
+- 8e99af8: Updates `@vygruppen/spor-icon-react-native` so the package is published with the latest icons from `@vygruppen/spor-icon`.
+
 ## 2.16.0
 
 ### Minor Changes

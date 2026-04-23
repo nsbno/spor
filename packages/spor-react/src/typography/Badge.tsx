@@ -6,6 +6,8 @@ import {
 } from "@chakra-ui/react";
 import { IconComponent } from "@vygruppen/spor-icon-react";
 
+import { useColorMode } from "@/color-mode";
+
 export type BadgeProps = ChakraBadgeProps & {
   icon?: IconComponent;
 };
@@ -14,12 +16,16 @@ export const Badge = function Badge({
   ref,
   icon,
   children,
+  inverted,
   ...props
 }: BadgeProps & {
   ref?: React.Ref<HTMLSpanElement>;
 }) {
+  const { colorMode } = useColorMode();
+  const shouldInvert = inverted ? colorMode !== "dark" : colorMode === "dark";
+  const className = shouldInvert ? "dark" : "light";
   return (
-    <ChakraBadge ref={ref} {...props}>
+    <ChakraBadge ref={ref} {...props} className={className}>
       {children}
       {icon && <Box as={icon} />}
     </ChakraBadge>

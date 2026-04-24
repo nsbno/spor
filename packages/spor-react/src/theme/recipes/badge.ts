@@ -25,7 +25,7 @@ export const badgeRecipie = defineRecipe({
         },
       },
       green: {
-        backgroundColor: "surface.subtle",
+        backgroundColor: "surface.success",
         color: "text.success",
         "& svg": {
           color: "icon.success",

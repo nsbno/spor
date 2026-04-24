@@ -609,11 +609,11 @@ importers:
         specifier: ^7.12.0
         version: 7.16.0
       '@vygruppen/spor-design-tokens':
-        specifier: 4.3.2
-        version: 4.3.2
+        specifier: 5.0.0
+        version: 5.0.0
       '@vygruppen/spor-react':
-        specifier: 12.24.16
-        version: 12.24.16(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        specifier: 13.1.0
+        version: 13.1.0(@babel/preset-env@7.29.0(@babel/core@7.29.0))(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       zod:
         specifier: ^3.23.0
         version: 3.25.76
@@ -6047,26 +6047,23 @@ packages:
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
 
-  '@vygruppen/spor-design-tokens@4.3.2':
-    resolution: {integrity: sha512-gVvJhQlvBEVLFEhaNgTb31XrqEUlW+AeGZPxxji86dzPI/1hvrhh7w8Ij+bfgViOEaOmIUSSKkbnt7fpkKwDgg==}
+  '@vygruppen/spor-design-tokens@5.0.0':
+    resolution: {integrity: sha512-tt5nryswrtFvoLm6CICrbagRi/FmbdLD1scDbjQ+G63SO3Xfqa3MnyCWKlhPtsHat2mzFoNv87mDWx4lWrgJpw==}
 
-  '@vygruppen/spor-design-tokens@4.3.3':
-    resolution: {integrity: sha512-CvtcfPZ5NRXuuZflxhSlgXLkB2xOP8hn0cFcDLNI+vmfA8U86yFQzmF4L/dhn/aYG93zCbS2bfH/rqrPVHOqhw==}
-
-  '@vygruppen/spor-icon-react@4.5.3':
-    resolution: {integrity: sha512-a//d/kB/Kx1BU5eJL/6vqVqyk1VDuYnffEdcNYbh+FyEvs/5ulFZqNpNp3dz/CxajWEFvC5e2UyqumplRyeAWw==}
+  '@vygruppen/spor-icon-react@5.0.0':
+    resolution: {integrity: sha512-ruWPczYXR8GvvMaPVJUT8l+UlH1X8HQK2eh+I4qT3725uEJD4txdYcj6qKuy/4icR6T0R9G7l+6c9LS8t/wGPQ==}
     peerDependencies:
-      react: '>=18.0.0 <19.0.0'
-      react-dom: '>=18.0.0 <19.0.0'
+      react: '>=19.0.0'
+      react-dom: '>=19.0.0'
 
   '@vygruppen/spor-loader@0.7.0':
     resolution: {integrity: sha512-aLp9Wr6yQAuGKXRvnIKac14zuyrBW+uYQR6RwO/A51rzyAygLAoTl8oPGDJZlGe642jafxKiWw2cRsKcjydiFw==}
 
-  '@vygruppen/spor-react@12.24.16':
-    resolution: {integrity: sha512-saKtbwQL5r3hNYdZaTBDTpVNy2c6z1U4a8wOk/9l1H6AFu6tie1JmtcLJ4sedQUF8pwwNCjCCxNjO9UDvYAZkg==}
+  '@vygruppen/spor-react@13.1.0':
+    resolution: {integrity: sha512-2UYDKIy32s5GVd5YZXD40/YjgJl9KUVO+q3GI79nt3LwCffSJSHn0kBFQtGp/XdfUq/yZrLio2d91taiiAo7Kw==}
     peerDependencies:
-      react: '>=18.0.0 <19.0.0'
-      react-dom: '>=18.0.0 <19.0.0'
+      react: '>=19.0.0'
+      react-dom: '>=19.0.0'
 
   '@xstate/react@6.1.0':
     resolution: {integrity: sha512-ep9F0jGTI63B/jE8GHdMpUqtuz7yRebNaKv8EMUaiSi29NOglywc2X2YSOV/ygbIK+LtmgZ0q9anoEA2iBSEOw==}
@@ -21339,18 +21336,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vygruppen/spor-design-tokens@4.3.2': {}
+  '@vygruppen/spor-design-tokens@5.0.0': {}
 
-  '@vygruppen/spor-design-tokens@4.3.3': {}
-
-  '@vygruppen/spor-icon-react@4.5.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@vygruppen/spor-icon-react@5.0.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
 
   '@vygruppen/spor-loader@0.7.0': {}
 
-  '@vygruppen/spor-react@12.24.16(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
+  '@vygruppen/spor-react@13.1.0(@babel/preset-env@7.29.0(@babel/core@7.29.0))(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
     dependencies:
       '@ark-ui/react': 4.9.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@chakra-ui/anatomy': 2.3.4
@@ -21365,12 +21360,13 @@ snapshots:
       '@emotion/react': 11.14.0(@types/react@19.2.3)(react@19.2.3)
       '@emotion/styled': 11.14.1(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(@types/react@19.2.3)(react@19.2.3)
       '@internationalized/date': 3.12.0
-      '@vygruppen/spor-design-tokens': 4.3.3
-      '@vygruppen/spor-icon-react': 4.5.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@vygruppen/spor-design-tokens': 5.0.0
+      '@vygruppen/spor-icon-react': 5.0.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@vygruppen/spor-loader': 0.7.0
       awesome-phonenumber: 5.11.0
       deepmerge: 4.3.1
       framer-motion: 11.18.2(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      jscodeshift: 17.3.0(@babel/preset-env@7.29.0(@babel/core@7.29.0))
       lottie-react: 2.4.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       next-themes: 0.4.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react: 19.2.3
@@ -21381,6 +21377,7 @@ snapshots:
       react-swipeable: 7.0.2(react@19.2.3)
       usehooks-ts: 3.1.1(react@19.2.3)
     transitivePeerDependencies:
+      - '@babel/preset-env'
       - '@emotion/is-prop-valid'
       - '@types/react'
       - supports-color

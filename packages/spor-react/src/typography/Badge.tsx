@@ -16,7 +16,7 @@ export const Badge = function Badge({
   ref,
   icon,
   children,
-  inverted,
+  inverted = false,
   ...props
 }: BadgeProps & {
   ref?: React.Ref<HTMLSpanElement>;

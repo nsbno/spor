@@ -10,6 +10,7 @@ import { useColorMode } from "@/color-mode";
 
 export type BadgeProps = ChakraBadgeProps & {
   icon?: IconComponent;
+  inverted?: boolean;
 };
 
 export const Badge = function Badge({

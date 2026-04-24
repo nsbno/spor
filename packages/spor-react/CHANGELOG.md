@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 13.1.1
+
+### Patch Changes
+
+- 106ee0f: Patches to new color tokens and add support to badge-inverted back
+- 448f4e5: add props for button-variant and withChevron to menutrigger
+- Updated dependencies [106ee0f]
+  - @vygruppen/spor-design-tokens@5.0.1
+
 ## 13.1.0
 
 ### Minor Changes

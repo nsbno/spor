@@ -1,3 +1,4 @@
+import { PortableTextBlock } from "@portabletext/types";
 import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
@@ -7,6 +8,7 @@ import {
   Heading,
   PressableCard,
   Stack,
+  StaticCard,
   Text,
 } from "@vygruppen/spor-react";
 
@@ -23,6 +25,8 @@ import {
 import { useLinkProps } from "~/utils/link";
 import { sanitizeInternalHref } from "~/utils/sanitize";
 
+import { PortableText } from "../PortableText";
+
 export type ImageCardList = {
   heading?: string;
   headingIcon?: string;
@@ -35,7 +39,8 @@ export type ImageCardProps = {
   _key: string;
   title: string;
   headingLevel: "h2" | "h3";
-  description: string;
+  description?: string;
+  textContent?: PortableTextBlock[];
   image: SanityImage;
   href: string;
   anchor?: string;
@@ -46,6 +51,7 @@ export type ImageCardProps = {
 type ImageCardTextProps = {
   title: string;
   description?: string;
+  textContent?: PortableTextBlock[];
   isExternal: boolean;
   headingLevel: "h2" | "h3";
 };
@@ -53,6 +59,7 @@ type ImageCardTextProps = {
 const ImageCardLinkText = ({
   title,
   description,
+  textContent,
   isExternal,
   headingLevel,
 }: ImageCardTextProps) => {
@@ -77,7 +84,8 @@ const ImageCardLinkText = ({
         </Heading>
         {isExternal && <LinkOutOutline24Icon />}
       </Flex>
-      <Text variant="sm">{description}</Text>
+      {description && !textContent && <Text variant="sm">{description}</Text>}
+      {textContent && <PortableText value={textContent} />}
     </Stack>
   );
 };
@@ -86,6 +94,7 @@ export const ImageCard = ({
   title,
   headingLevel,
   description,
+  textContent,
   image,
   href,
   anchor,
@@ -96,6 +105,37 @@ export const ImageCard = ({
     href && href.includes("http") ? href : sanitizeInternalHref(href);
   const { linkProps, isExternal } = useLinkProps(cleandedHref, anchor);
 
+  const content = (
+    <Box>
+      <Box width="100%">
+        {image && (
+          <ResponsiveImage
+            aspectRatio={aspectRatio || undefined}
+            image={image}
+            width="100%"
+            objectFit="cover"
+            size={imageSize ?? "md"}
+          />
+        )}
+      </Box>
+      <ImageCardLinkText
+        title={title}
+        description={description}
+        textContent={textContent}
+        isExternal={isExternal}
+        headingLevel={headingLevel}
+      />
+    </Box>
+  );
+
+  if (!href) {
+    return (
+      <StaticCard height="100%" overflow="hidden">
+        {content}
+      </StaticCard>
+    );
+  }
+
   return (
     <PressableCard
       variant="floating"
@@ -103,25 +143,7 @@ export const ImageCard = ({
       height="100%"
       as={linkProps.as as React.ElementType}
     >
-      <Box>
-        <Box width="100%">
-          {image && (
-            <ResponsiveImage
-              aspectRatio={aspectRatio || undefined}
-              image={image}
-              width="100%"
-              objectFit="cover"
-              size={imageSize ?? "md"}
-            />
-          )}
-        </Box>
-        <ImageCardLinkText
-          title={title}
-          description={description}
-          isExternal={isExternal}
-          headingLevel={headingLevel}
-        />
-      </Box>
+      {content}
     </PressableCard>
   );
 };

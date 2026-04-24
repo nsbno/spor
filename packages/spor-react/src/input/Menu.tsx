@@ -74,7 +74,8 @@ export const MenuContent = ({
 
 export type MenuTriggerProps = {
   icon?: ReactNode;
-} & Omit<ButtonProps, "variant" | "rightIcon" | "leftIcon"> & {
+  withChevron?: boolean;
+} & Omit<ButtonProps, "rightIcon" | "leftIcon"> & {
     ref?: Ref<HTMLButtonElement>;
   };
 
@@ -83,6 +84,7 @@ export const MenuTrigger = ({
   size,
   children,
   ref,
+  withChevron = true,
   ...props
 }: MenuTriggerProps) => {
   const { variant } = useMenuContext();
@@ -104,10 +106,12 @@ export const MenuTrigger = ({
         size={size}
         {...props}
         rightIcon={
-          <ChevronIcon
-            transform={open ? "rotate(180deg)" : undefined}
-            transition="transform 0.3s"
-          />
+          withChevron && (
+            <ChevronIcon
+              transform={open ? "rotate(180deg)" : undefined}
+              transition="transform 0.3s"
+            />
+          )
         }
       >
         {children}

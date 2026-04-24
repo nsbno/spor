@@ -114,7 +114,11 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
           }
           const subItems = item.subItems?.filter((subItem) => subItem.url);
           const hasSubItems = Boolean(subItems?.length);
-          const isCurrentPage = item.link === location.pathname;
+          const linkStripped = item.link?.startsWith("/")
+            ? item.link
+            : item.link?.split(".no")[1];
+          const isCurrentPage = linkStripped === location.pathname;
+
           if (item.link && !isCurrentPage) {
             return (
               <MenuItem

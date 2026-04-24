@@ -95,10 +95,176 @@ export const badgeRecipie = defineRecipe({
         borderBottomRadius: "none",
       },
     },
+    inverted: { true: {} },
   },
   defaultVariants: {
     colorPalette: "grey",
     size: "md",
     attached: false,
+    inverted: false,
   },
+  compoundVariants: [
+    {
+      colorPalette: "blue",
+      inverted: true,
+      css: {
+        backgroundColor: {
+          _light: "darkBlue",
+          _dark: "lightBlue",
+        },
+        color: {
+          _light: "icyBlue",
+          _dark: "royal",
+        },
+        "& svg": {
+          color: {
+            _light: "royal",
+            _dark: "icyBlue",
+          },
+        },
+      },
+    },
+    {
+      colorPalette: "green",
+      inverted: true,
+      css: {
+        backgroundColor: {
+          _light: "darkTeal",
+          _dark: "seaMist",
+        },
+        color: {
+          _light: "mint",
+          _dark: "jungle",
+        },
+        "& svg": {
+          color: {
+            _light: "mint",
+            _dark: "jungle",
+          },
+        },
+      },
+    },
+    {
+      colorPalette: "grey",
+      inverted: true,
+      css: {
+        backgroundColor: {
+          _light: "carbon",
+          _dark: "platinum",
+        },
+        color: {
+          _light: "white",
+          _dark: "darkGrey",
+        },
+        "& svg": {
+          color: {
+            _light: "white",
+            _dark: "darkGrey",
+          },
+        },
+      },
+    },
+    {
+      // @ts-expect-error Chakra gir feilmelding fordi "cream" ikke eksisterer i built-in ColorPalette-typen
+      colorPalette: "cream",
+      inverted: true,
+      css: {
+        backgroundColor: {
+          _light: "coffee",
+          _dark: "blonde",
+        },
+        color: {
+          _light: "cornsilk",
+          _dark: "coffee",
+        },
+        "& svg": {
+          color: {
+            _light: "cornsilk",
+            _dark: "coffee",
+          },
+        },
+      },
+    },
+    {
+      colorPalette: "yellow",
+      inverted: true,
+      css: {
+        backgroundColor: {
+          _light: "bronze",
+          _dark: "banana",
+        },
+        color: {
+          _light: "cornsilk",
+          _dark: "coffee",
+        },
+        "& svg": {
+          color: {
+            _light: "cornsilk",
+            _dark: "coffee",
+          },
+        },
+      },
+    },
+    {
+      colorPalette: "orange",
+      inverted: true,
+      css: {
+        backgroundColor: {
+          _light: "wood",
+          _dark: "champagne",
+        },
+        color: {
+          _light: "bisque",
+          _dark: "wood",
+        },
+        "& svg": {
+          color: {
+            _light: "bisque",
+            _dark: "wood",
+          },
+        },
+      },
+    },
+    {
+      colorPalette: "red",
+      inverted: true,
+      css: {
+        backgroundColor: {
+          _light: "burgundy",
+          _dark: "lightRed",
+        },
+        color: {
+          _light: "pink",
+          _dark: "maroon",
+        },
+        "& svg": {
+          color: {
+            _light: "pink",
+            _dark: "maroon",
+          },
+        },
+      },
+    },
+    {
+      // @ts-expect-error Chakra gir feilmelding fordi "neutral" ikke eksisterer i built-in typen
+      colorPalette: "neutral",
+      inverted: true,
+      css: {
+        backgroundColor: {
+          _light: "ink",
+          _dark: "white",
+        },
+        color: {
+          _light: "white",
+          _dark: "darkGrey",
+        },
+        "& svg": {
+          color: {
+            _light: "white",
+            _dark: "darkGrey",
+          },
+        },
+      },
+    },
+  ],
 });

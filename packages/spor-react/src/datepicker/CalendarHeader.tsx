@@ -116,7 +116,7 @@ export const CalendarNavigator = ({
         fontWeight="bold"
         flex="1"
         textAlign="center"
-        color="core.text"
+        color="text.core"
       >
         {capitalize(title)}
       </Text>

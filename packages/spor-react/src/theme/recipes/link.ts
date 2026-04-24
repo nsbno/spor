@@ -33,7 +33,7 @@ export const linkRecipe = defineRecipe({
   variants: {
     variant: {
       primary: {
-        color: "core.text",
+        color: "text.core",
         _hover: {
           color: "text",
           _active: {

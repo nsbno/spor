@@ -25,6 +25,9 @@ importers:
       eslint:
         specifier: ^9.39.1
         version: 9.39.1(jiti@2.6.1)
+      jscodeshift:
+        specifier: ^17.3.0
+        version: 17.3.0(@babel/preset-env@7.29.0(@babel/core@7.29.0))
       prettier:
         specifier: ^3.3.1
         version: 3.6.2
@@ -164,6 +167,9 @@ importers:
       '@vygruppen/sidespor-config':
         specifier: workspace:*
         version: link:../../packages/sidespor-config
+      '@vygruppen/spor-codemods':
+        specifier: workspace:*
+        version: link:../../packages/spor-codemods
       '@vygruppen/spor-design-tokens':
         specifier: workspace:*
         version: link:../../packages/spor-design-tokens
@@ -377,6 +383,46 @@ importers:
         specifier: ^8.5.1
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.9)(tsx@4.20.5)(typescript@5.9.3)(yaml@2.8.2)
 
+  packages/spor-codemods:
+    dependencies:
+      '@vygruppen/spor-react':
+        specifier: workspace:*
+        version: link:../spor-react
+      jscodeshift:
+        specifier: ^17.3.0
+        version: 17.3.0(@babel/preset-env@7.29.0(@babel/core@7.29.0))
+    devDependencies:
+      '@types/jscodeshift':
+        specifier: ^0.11.11
+        version: 0.11.11
+      '@types/node':
+        specifier: ^22.13.4
+        version: 22.18.6
+      '@types/react':
+        specifier: 19.2.3
+        version: 19.2.3
+      '@types/react-dom':
+        specifier: 19.2.3
+        version: 19.2.3(@types/react@19.2.3)
+      '@vygruppen/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@vygruppen/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      react:
+        specifier: 19.2.3
+        version: 19.2.3
+      react-dom:
+        specifier: 19.2.3
+        version: 19.2.3(react@19.2.3)
+      tsup:
+        specifier: ^8.3.5
+        version: 8.5.1(jiti@2.6.1)(postcss@8.5.9)(tsx@4.20.5)(typescript@5.9.3)(yaml@2.8.2)
+      typescript:
+        specifier: ^5.7.3
+        version: 5.9.3
+
   packages/spor-design-tokens:
     devDependencies:
       '@types/node':
@@ -563,11 +609,11 @@ importers:
         specifier: ^7.12.0
         version: 7.16.0
       '@vygruppen/spor-design-tokens':
-        specifier: ^4.3.2
-        version: 4.3.3
+        specifier: 5.0.0
+        version: 5.0.0
       '@vygruppen/spor-react':
-        specifier: ^12.24.16
-        version: 12.24.16(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        specifier: 13.1.0
+        version: 13.1.0(@babel/preset-env@7.29.0(@babel/core@7.29.0))(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       zod:
         specifier: ^3.23.0
         version: 3.25.76
@@ -638,6 +684,9 @@ importers:
       framer-motion:
         specifier: ^11.11.17
         version: 11.18.2(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      jscodeshift:
+        specifier: ^17.3.0
+        version: 17.3.0(@babel/preset-env@7.29.0(@babel/core@7.29.0))
       lottie-react:
         specifier: ^2.4.1
         version: 2.4.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -1365,12 +1414,6 @@ packages:
 
   '@babel/plugin-transform-optional-catch-binding@7.28.6':
     resolution: {integrity: sha512-R8ja/Pyrv0OGAvAXQhSTmWyPJPml+0TMqXlO5w+AsMEiwb2fg3WkOvob7UxFSL3OIttFSGSRFKQsOhJ/X6HQdQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-
-  '@babel/plugin-transform-optional-chaining@7.27.1':
-    resolution: {integrity: sha512-BQmKPPIuc8EkZgNKsv0X4bPmOoayeu4F1YCwx2/CfmDSXDbp7GnzlUH+/ul5VGfRg1AoFPsrIThlEBj2xb4CAg==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -3322,9 +3365,6 @@ packages:
     peerDependenciesMeta:
       '@types/node':
         optional: true
-
-  '@internationalized/date@3.10.0':
-    resolution: {integrity: sha512-oxDR/NTEJ1k+UFVQElaNIk65E/Z83HK1z1WI3lQyhTtnNg4R5oVXaPzK3jcpKG8UHKDVuDQHzn+wsxSz8RP3aw==}
 
   '@internationalized/date@3.12.0':
     resolution: {integrity: sha512-/PyIMzK29jtXaGU23qTvNZxvBXRtKbNnGDFD+PY6CZw/Y8Ex8pFUzkuCJCG9aOqmShjqhS9mPqP6Dk5onQY8rQ==}
@@ -5672,6 +5712,9 @@ packages:
   '@types/istanbul-reports@3.0.4':
     resolution: {integrity: sha512-pk2B1NWalF9toCRu6gjBzR69syFjP4Od8WRAX+0mmf9lAjCRicLOWc+ZrxZHx/0XRjotgkF9t6iaMJ+aXcOdZQ==}
 
+  '@types/jscodeshift@0.11.11':
+    resolution: {integrity: sha512-d7CAfFGOupj5qCDqMODXxNz2/NwCv/Lha78ZFbnr6qpk3K98iSB8I+ig9ERE2+EeYML352VMRsjPyOpeA+04eQ==}
+
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
@@ -6004,23 +6047,23 @@ packages:
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
 
-  '@vygruppen/spor-design-tokens@4.3.3':
-    resolution: {integrity: sha512-CvtcfPZ5NRXuuZflxhSlgXLkB2xOP8hn0cFcDLNI+vmfA8U86yFQzmF4L/dhn/aYG93zCbS2bfH/rqrPVHOqhw==}
+  '@vygruppen/spor-design-tokens@5.0.0':
+    resolution: {integrity: sha512-tt5nryswrtFvoLm6CICrbagRi/FmbdLD1scDbjQ+G63SO3Xfqa3MnyCWKlhPtsHat2mzFoNv87mDWx4lWrgJpw==}
 
-  '@vygruppen/spor-icon-react@4.5.3':
-    resolution: {integrity: sha512-a//d/kB/Kx1BU5eJL/6vqVqyk1VDuYnffEdcNYbh+FyEvs/5ulFZqNpNp3dz/CxajWEFvC5e2UyqumplRyeAWw==}
+  '@vygruppen/spor-icon-react@5.0.0':
+    resolution: {integrity: sha512-ruWPczYXR8GvvMaPVJUT8l+UlH1X8HQK2eh+I4qT3725uEJD4txdYcj6qKuy/4icR6T0R9G7l+6c9LS8t/wGPQ==}
     peerDependencies:
-      react: '>=18.0.0 <19.0.0'
-      react-dom: '>=18.0.0 <19.0.0'
+      react: '>=19.0.0'
+      react-dom: '>=19.0.0'
 
   '@vygruppen/spor-loader@0.7.0':
     resolution: {integrity: sha512-aLp9Wr6yQAuGKXRvnIKac14zuyrBW+uYQR6RwO/A51rzyAygLAoTl8oPGDJZlGe642jafxKiWw2cRsKcjydiFw==}
 
-  '@vygruppen/spor-react@12.24.16':
-    resolution: {integrity: sha512-saKtbwQL5r3hNYdZaTBDTpVNy2c6z1U4a8wOk/9l1H6AFu6tie1JmtcLJ4sedQUF8pwwNCjCCxNjO9UDvYAZkg==}
+  '@vygruppen/spor-react@13.1.0':
+    resolution: {integrity: sha512-2UYDKIy32s5GVd5YZXD40/YjgJl9KUVO+q3GI79nt3LwCffSJSHn0kBFQtGp/XdfUq/yZrLio2d91taiiAo7Kw==}
     peerDependencies:
-      react: '>=18.0.0 <19.0.0'
-      react-dom: '>=18.0.0 <19.0.0'
+      react: '>=19.0.0'
+      react-dom: '>=19.0.0'
 
   '@xstate/react@6.1.0':
     resolution: {integrity: sha512-ep9F0jGTI63B/jE8GHdMpUqtuz7yRebNaKv8EMUaiSi29NOglywc2X2YSOV/ygbIK+LtmgZ0q9anoEA2iBSEOw==}
@@ -6685,6 +6728,10 @@ packages:
 
   ast-types-flow@0.0.8:
     resolution: {integrity: sha512-OH/2E5Fg20h2aPrbe+QL8JZQFko0YZaF+j4mnQ7BGhfavO7OpSLa8a0y9sBwomHdSbkhTS8TQNayBfnW5DwbvQ==}
+
+  ast-types@0.14.2:
+    resolution: {integrity: sha512-O0yuUDnZeQDL+ncNGlJ78BiO4jnYI3bvMsD5prT0/nsgijG/LpNBIr63gTjVTNsiGkgQhiyCShTgxt8oXOrklA==}
+    engines: {node: '>=4'}
 
   ast-types@0.15.2:
     resolution: {integrity: sha512-c27loCv9QkZinsa5ProX751khO9DJl/AcB5c2KNtA6NRvHKS0PgLfcftz72KVq504vB0Gku5s2kUZzDBvQWvHg==}
@@ -9326,6 +9373,16 @@ packages:
     peerDependencies:
       '@babel/preset-env': ^7.1.6
 
+  jscodeshift@17.3.0:
+    resolution: {integrity: sha512-LjFrGOIORqXBU+jwfC9nbkjmQfFldtMIoS6d9z2LG/lkmyNXsJAySPT+2SWXJEoE68/bCWcxKpXH37npftgmow==}
+    engines: {node: '>=16'}
+    hasBin: true
+    peerDependencies:
+      '@babel/preset-env': ^7.1.6
+    peerDependenciesMeta:
+      '@babel/preset-env':
+        optional: true
+
   jsdom-global@3.0.2:
     resolution: {integrity: sha512-t1KMcBkz/pT5JrvcJbpUR2u/w1kO9jXctaaGJ0vZDzwFnIvGWw9IDSRciT83kIs8Bnw4qpOl8bQK08V01YgMPg==}
     peerDependencies:
@@ -11118,6 +11175,10 @@ packages:
   readline@1.3.0:
     resolution: {integrity: sha512-k2d6ACCkiNYz222Fs/iNze30rRJ1iIicW7JuX/7/cozvih6YCkFZH+J6mAFDVgv0dRBaAyr4jDqC95R2y4IADg==}
 
+  recast@0.20.5:
+    resolution: {integrity: sha512-E5qICoPoNL4yU0H0NoBDntNB0Q5oMSNh9usFctYniLBluTthi3RsQVBXIJNbApOlvSwW/RGxIuokPcAc59J5fQ==}
+    engines: {node: '>= 4'}
+
   recast@0.21.5:
     resolution: {integrity: sha512-hjMmLaUXAm1hIuTqOdeYObMslq/q+Xff6QE3Y2P+uoHAg2nmVlLBps2hzh1UJDdMtDTMXOFewK6ky51JQIeECg==}
     engines: {node: '>= 4'}
@@ -12052,6 +12113,10 @@ packages:
     resolution: {integrity: sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==}
     engines: {node: '>=0.6.0'}
 
+  tmp@0.2.5:
+    resolution: {integrity: sha512-voyz6MApa1rQGUxT3E+BK7/ROe8itEx7vD8/HEvt4xwXucvQ5G5oeEiHkmHZJuBO21RpOf+YYm9MOivj709jow==}
+    engines: {node: '>=14.14'}
+
   tmpl@1.0.5:
     resolution: {integrity: sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==}
 
@@ -12899,6 +12964,10 @@ packages:
 
   write-file-atomic@3.0.3:
     resolution: {integrity: sha512-AvHcyZ5JnSfq3ioSyjrBkH9yW4m7Ayk8/9My/DD9onKeu/94fwrMocemO2QAJFAlnnDN+ZDS+ZjAR5ua1/PV/Q==}
+
+  write-file-atomic@5.0.1:
+    resolution: {integrity: sha512-+QU2zd6OTD8XWIJCbffaiQeH9U73qIqafo1x6V1snCWYGJf6cVE0cDR4D8xRzcEnfI21IFrUPzPGtcPf8AC+Rw==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
   ws@6.2.3:
     resolution: {integrity: sha512-jmTjYU0j60B+vHey6TfR3Z7RD61z/hmxBS3VMSGIrroOWXQEneK1zNuotOUrGyBHQj0yrpsLHPWtigEFd13ndA==}
@@ -13780,7 +13849,7 @@ snapshots:
       '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
       '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
-      '@babel/plugin-transform-optional-chaining': 7.27.1(@babel/core@7.28.4)
+      '@babel/plugin-transform-optional-chaining': 7.28.6(@babel/core@7.28.4)
     transitivePeerDependencies:
       - supports-color
 
@@ -13789,7 +13858,7 @@ snapshots:
       '@babel/core': 7.29.0
       '@babel/helper-plugin-utils': 7.28.6
       '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
-      '@babel/plugin-transform-optional-chaining': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-optional-chaining': 7.28.6(@babel/core@7.29.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -14495,22 +14564,6 @@ snapshots:
     dependencies:
       '@babel/core': 7.29.0
       '@babel/helper-plugin-utils': 7.28.6
-
-  '@babel/plugin-transform-optional-chaining@7.27.1(@babel/core@7.28.4)':
-    dependencies:
-      '@babel/core': 7.28.4
-      '@babel/helper-plugin-utils': 7.28.6
-      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
-    transitivePeerDependencies:
-      - supports-color
-
-  '@babel/plugin-transform-optional-chaining@7.27.1(@babel/core@7.29.0)':
-    dependencies:
-      '@babel/core': 7.29.0
-      '@babel/helper-plugin-utils': 7.28.6
-      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
-    transitivePeerDependencies:
-      - supports-color
 
   '@babel/plugin-transform-optional-chaining@7.28.6(@babel/core@7.28.4)':
     dependencies:
@@ -16981,10 +17034,6 @@ snapshots:
     optionalDependencies:
       '@types/node': 25.5.2
 
-  '@internationalized/date@3.10.0':
-    dependencies:
-      '@swc/helpers': 0.5.17
-
   '@internationalized/date@3.12.0':
     dependencies:
       '@swc/helpers': 0.5.17
@@ -17037,14 +17086,14 @@ snapshots:
     dependencies:
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 22.18.6
+      '@types/node': 25.5.2
       jest-mock: 29.7.0
 
   '@jest/fake-timers@29.7.0':
     dependencies:
       '@jest/types': 29.6.3
       '@sinonjs/fake-timers': 10.3.0
-      '@types/node': 22.18.6
+      '@types/node': 25.5.2
       jest-message-util: 29.7.0
       jest-mock: 29.7.0
       jest-util: 29.7.0
@@ -17057,7 +17106,7 @@ snapshots:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 22.18.6
+      '@types/node': 25.5.2
       '@types/yargs': 15.0.19
       chalk: 4.1.2
 
@@ -17066,7 +17115,7 @@ snapshots:
       '@jest/schemas': 29.6.3
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 22.18.6
+      '@types/node': 25.5.2
       '@types/yargs': 17.0.33
       chalk: 4.1.2
 
@@ -20815,12 +20864,12 @@ snapshots:
 
   '@types/follow-redirects@1.14.4':
     dependencies:
-      '@types/node': 22.18.6
+      '@types/node': 25.5.2
 
   '@types/fs-extra@11.0.4':
     dependencies:
       '@types/jsonfile': 6.1.4
-      '@types/node': 22.18.6
+      '@types/node': 25.5.2
 
   '@types/hast@2.3.10':
     dependencies:
@@ -20840,11 +20889,16 @@ snapshots:
     dependencies:
       '@types/istanbul-lib-report': 3.0.3
 
+  '@types/jscodeshift@0.11.11':
+    dependencies:
+      ast-types: 0.14.2
+      recast: 0.20.5
+
   '@types/json-schema@7.0.15': {}
 
   '@types/jsonfile@6.1.4':
     dependencies:
-      '@types/node': 22.18.6
+      '@types/node': 25.5.2
 
   '@types/lodash-es@4.17.12':
     dependencies:
@@ -20870,7 +20924,7 @@ snapshots:
 
   '@types/node-forge@1.3.14':
     dependencies:
-      '@types/node': 22.18.6
+      '@types/node': 25.5.2
 
   '@types/node@12.20.55': {}
 
@@ -20935,7 +20989,7 @@ snapshots:
 
   '@types/tar-stream@3.1.4':
     dependencies:
-      '@types/node': 22.18.6
+      '@types/node': 25.5.2
 
   '@types/trusted-types@2.0.7':
     optional: true
@@ -21282,16 +21336,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vygruppen/spor-design-tokens@4.3.3': {}
+  '@vygruppen/spor-design-tokens@5.0.0': {}
 
-  '@vygruppen/spor-icon-react@4.5.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@vygruppen/spor-icon-react@5.0.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
 
   '@vygruppen/spor-loader@0.7.0': {}
 
-  '@vygruppen/spor-react@12.24.16(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
+  '@vygruppen/spor-react@13.1.0(@babel/preset-env@7.29.0(@babel/core@7.29.0))(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
     dependencies:
       '@ark-ui/react': 4.9.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@chakra-ui/anatomy': 2.3.4
@@ -21305,13 +21359,14 @@ snapshots:
       '@chakra-ui/utils': 2.2.2(react@19.2.3)
       '@emotion/react': 11.14.0(@types/react@19.2.3)(react@19.2.3)
       '@emotion/styled': 11.14.1(@emotion/react@11.14.0(@types/react@19.2.3)(react@19.2.3))(@types/react@19.2.3)(react@19.2.3)
-      '@internationalized/date': 3.10.0
-      '@vygruppen/spor-design-tokens': 4.3.3
-      '@vygruppen/spor-icon-react': 4.5.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@internationalized/date': 3.12.0
+      '@vygruppen/spor-design-tokens': 5.0.0
+      '@vygruppen/spor-icon-react': 5.0.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@vygruppen/spor-loader': 0.7.0
       awesome-phonenumber: 5.11.0
       deepmerge: 4.3.1
       framer-motion: 11.18.2(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      jscodeshift: 17.3.0(@babel/preset-env@7.29.0(@babel/core@7.29.0))
       lottie-react: 2.4.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       next-themes: 0.4.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react: 19.2.3
@@ -21322,6 +21377,7 @@ snapshots:
       react-swipeable: 7.0.2(react@19.2.3)
       usehooks-ts: 3.1.1(react@19.2.3)
     transitivePeerDependencies:
+      - '@babel/preset-env'
       - '@emotion/is-prop-valid'
       - '@types/react'
       - supports-color
@@ -22628,6 +22684,10 @@ snapshots:
 
   ast-types-flow@0.0.8: {}
 
+  ast-types@0.14.2:
+    dependencies:
+      tslib: 2.8.1
+
   ast-types@0.15.2:
     dependencies:
       tslib: 2.8.1
@@ -23101,7 +23161,7 @@ snapshots:
 
   chrome-launcher@0.15.2:
     dependencies:
-      '@types/node': 22.18.6
+      '@types/node': 25.5.2
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -25638,7 +25698,7 @@ snapshots:
       '@jest/environment': 29.7.0
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 22.18.6
+      '@types/node': 25.5.2
       jest-mock: 29.7.0
       jest-util: 29.7.0
 
@@ -25659,13 +25719,13 @@ snapshots:
   jest-mock@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 22.18.6
+      '@types/node': 25.5.2
       jest-util: 29.7.0
 
   jest-util@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 22.18.6
+      '@types/node': 25.5.2
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -25682,7 +25742,7 @@ snapshots:
 
   jest-worker@29.7.0:
     dependencies:
-      '@types/node': 22.18.6
+      '@types/node': 25.5.2
       jest-util: 29.7.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
@@ -25743,6 +25803,31 @@ snapshots:
       recast: 0.21.5
       temp: 0.8.4
       write-file-atomic: 2.4.3
+    transitivePeerDependencies:
+      - supports-color
+
+  jscodeshift@17.3.0(@babel/preset-env@7.29.0(@babel/core@7.29.0)):
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/parser': 7.29.0
+      '@babel/plugin-transform-class-properties': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-modules-commonjs': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-nullish-coalescing-operator': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-optional-chaining': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-transform-private-methods': 7.28.6(@babel/core@7.29.0)
+      '@babel/preset-flow': 7.27.1(@babel/core@7.29.0)
+      '@babel/preset-typescript': 7.28.5(@babel/core@7.29.0)
+      '@babel/register': 7.28.6(@babel/core@7.29.0)
+      flow-parser: 0.286.0
+      graceful-fs: 4.2.11
+      micromatch: 4.0.8
+      neo-async: 2.6.2
+      picocolors: 1.1.1
+      recast: 0.23.11
+      tmp: 0.2.5
+      write-file-atomic: 5.0.1
+    optionalDependencies:
+      '@babel/preset-env': 7.29.0(@babel/core@7.29.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -27865,6 +27950,13 @@ snapshots:
 
   readline@1.3.0: {}
 
+  recast@0.20.5:
+    dependencies:
+      ast-types: 0.14.2
+      esprima: 4.0.1
+      source-map: 0.6.1
+      tslib: 2.8.1
+
   recast@0.21.5:
     dependencies:
       ast-types: 0.15.2
@@ -29616,6 +29708,8 @@ snapshots:
     dependencies:
       os-tmpdir: 1.0.2
 
+  tmp@0.2.5: {}
+
   tmpl@1.0.5: {}
 
   to-buffer@1.2.2:
@@ -30594,6 +30688,11 @@ snapshots:
       is-typedarray: 1.0.0
       signal-exit: 3.0.7
       typedarray-to-buffer: 3.1.5
+
+  write-file-atomic@5.0.1:
+    dependencies:
+      imurmurhash: 0.1.4
+      signal-exit: 4.1.0
 
   ws@6.2.3:
     dependencies:

@@ -87,6 +87,7 @@ export const ServiceAlert = ({
       css={{ ...styles.root, ...css }}
       ref={ref}
       {...rest}
+      className="light"
     >
       <Accordion.Item value={defaultValue}>
         <Accordion.ItemTrigger css={styles.itemTrigger}>
@@ -122,7 +123,7 @@ export const ServiceAlert = ({
                 </Text>
               )}
               <Accordion.ItemIndicator>
-                <DropdownDownFill24Icon color="icon.inverted" />
+                <DropdownDownFill24Icon color="icon.brand" />
               </Accordion.ItemIndicator>
             </Flex>
           </HStack>

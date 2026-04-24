@@ -29,7 +29,7 @@ export const switchSlotRecipe = defineSlotRecipe({
       justifyContent: "center",
       width: "var(--switch-height)",
       height: "var(--switch-height)",
-      backgroundColor: "core.icon",
+      backgroundColor: "icon.core",
 
       _disabled: {
         backgroundColor: "icon.disabled",
@@ -39,7 +39,7 @@ export const switchSlotRecipe = defineSlotRecipe({
       },
       _checked: {
         translate: "var(--switch-x) 0",
-        backgroundColor: "brand.icon",
+        backgroundColor: "icon.brand",
       },
     },
 
@@ -69,13 +69,13 @@ export const switchSlotRecipe = defineSlotRecipe({
       transitionDuration: "fast",
       outline: "1px solid",
       outlineOffset: "-1px",
-      outlineColor: "core.outline",
+      outlineColor: "outline.core",
       _hover: {
         outline: "2px solid",
-        outlineColor: "core.outline.hover",
+        outlineColor: "outline.core.hover",
         _checked: {
           outlineColor: "transparent",
-          backgroundColor: "brand.surface.hover",
+          backgroundColor: "surface.brand.hover",
         },
       },
 
@@ -86,7 +86,7 @@ export const switchSlotRecipe = defineSlotRecipe({
       },
 
       _checked: {
-        backgroundColor: "brand.surface",
+        backgroundColor: "surface.brand",
         outline: "none",
         _focusVisible: {
           outlineOffset: "1px",

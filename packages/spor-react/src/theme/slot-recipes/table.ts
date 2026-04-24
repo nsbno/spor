@@ -48,10 +48,10 @@ export const tableSlotRecipe = defineSlotRecipe({
           backgroundColor: "bg",
         },
         header: {
-          backgroundColor: "bg.tertiary",
+          backgroundColor: "bg.brand",
         },
         columnHeader: {
-          color: "text.secondary",
+          color: "text.highlight",
         },
       },
       grey: {

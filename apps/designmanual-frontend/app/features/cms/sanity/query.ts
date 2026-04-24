@@ -213,6 +213,7 @@ export function resolveImageCardListGroq() {
         _key,
         title,
         description,
+        textContent,
         (_type == "imageCard") => @ {
           "linkType": link.type,
           image,

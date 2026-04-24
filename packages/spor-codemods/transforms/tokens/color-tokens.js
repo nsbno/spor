@@ -112,6 +112,9 @@ export const tokenMap = {
   "alert.success.text.secondary": "text.success.subtle",
   "alert.important.text": "text.warning",
   "alert.important.text.secondary": "text.warning.subtle",
+  "alert.neutral.text.secondary": "text.neutral.subtle",
+  "alert.neutral.surface.active": "surface.neutral.active",
+  "alert.neutral.surface.hover": "surface.neutral.hover",
 
   "badge.surface": "surface",
   "badge.text": "text",
@@ -139,6 +142,7 @@ export const tokenMap = {
   "badge.red.icon": "icon.critical",
   "text.inverted": "text.brand",
   "icon.inverted": "icon.brand",
+  "icon.secondary": "icon.highlight",
   "outline.inverted": "outline.neutral",
 };
 

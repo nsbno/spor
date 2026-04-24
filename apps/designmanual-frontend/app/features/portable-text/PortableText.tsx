@@ -52,7 +52,6 @@ import { TextBlockSerializer } from "./serializers/TextBlockSerializer";
 import { TableChartSerializer } from "./serializers/TableChartSerializer";
 import { TextBlocksSerializer } from "./serializers/TextBlocksSerializer";
 import { VideoPlayerSerializer } from "./serializers/VideoPlayerSerializer";
-import { table } from "node:console";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {

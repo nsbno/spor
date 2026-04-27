@@ -25,6 +25,9 @@ export function VideoPlayer({ value }: { value: VideoPlayerValue }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { t } = useTranslation();
 
+  const aspectRatio =
+    value.video?.data?.aspect_ratio?.replace(":", "/") ?? "16/9";
+
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.pause();
@@ -43,11 +46,11 @@ export function VideoPlayer({ value }: { value: VideoPlayerValue }) {
   };
   return (
     <Flex direction="column" gap={[1, 1.5]} marginTop="4">
-      <Box position="relative" height="100%" width="100%">
+      <Box position="relative" width="100%">
         <Box
           marginLeft={value.isFullWidth ? "calc(50% - 50vw)" : "0"}
           width={value.isFullWidth ? "100vw" : "100%"}
-          height="100%"
+          aspectRatio={aspectRatio}
           position="relative"
           className={value.isDarkMedia ? "dark" : "light"}
         >

@@ -1,15 +1,13 @@
-/* eslint-disable simple-import-sort/imports */
 import type { PortableTextBlock } from "@portabletext/types";
 import {
+  Accordion as SporAccordion,
   AccordionItem,
   AccordionItemContent,
   AccordionItemTrigger,
   Box,
   Heading,
-  Accordion as SporAccordion,
 } from "@vygruppen/spor-react";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 
 import { BlockHeading } from "~/features/portable-text/components/BlockHeading";
 import { PortableText } from "~/features/portable-text/PortableText";
@@ -22,6 +20,21 @@ const headingLevelToVariantMap = {
   h4: "sm",
   h5: "xs",
 } as const;
+
+const subscribeToHashChanges = (callback: () => void) => {
+  if (globalThis.window === undefined) return () => {};
+  globalThis.addEventListener("hashchange", callback);
+  globalThis.addEventListener("popstate", callback);
+  return () => {
+    globalThis.removeEventListener("hashchange", callback);
+    globalThis.removeEventListener("popstate", callback);
+  };
+};
+
+const getClientHash = () =>
+  globalThis.window === undefined ? "" : globalThis.location.hash;
+
+const getServerHash = () => "";
 
 export type AccordionProps = {
   title?: string;
@@ -45,45 +58,68 @@ export const Accordion = ({
   headingIcon,
   items,
 }: AccordionProps) => {
-  const { hash } = useLocation();
+  const hash = useSyncExternalStore(
+    subscribeToHashChanges,
+    getClientHash,
+    getServerHash,
+  );
 
-  const [openIndex, setOpenIndex] = useState<number[]>(() => {
-    if (hash) {
-      const id = hash.replace(/^#item-/i, "");
-      const index = items.findIndex((item) => item._key === id);
-
-      if (index !== -1) {
-        return [index];
-      }
-    }
-    return [];
-  });
-
-  useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        // Calculate the scroll position to be 1/3 down the screen to avoid header and cookie banner
-        const viewpHeight = window.innerHeight;
-        const rect = element.getBoundingClientRect();
-        const targetScrollPos = rect.top + window.scrollY - viewpHeight / 3;
-
-        window.scrollTo({ top: targetScrollPos });
-      }
-    }
+  const hashOpenValue = useMemo(() => {
+    if (!hash) return null;
+    const id = hash.replace(/^#item-/i, "");
+    const index = items.findIndex((item) => item._key === id);
+    return index === -1 ? null : String(index);
   }, [hash, items]);
 
-  const handleAccordionState = (id: string, index: number) => {
-    const includesIndex = openIndex.includes(index);
-    setOpenIndex(
-      includesIndex
-        ? openIndex.filter((index_) => index_ !== index)
-        : [...openIndex, index],
-    );
-    history.replaceState({}, "", includesIndex ? " " : `#item-${id}`);
+  // overrides[value] = true: user explicitly opened it; false: explicitly closed it.
+  // An explicit close overrides hash-derived openness.
+  const [overrides, setOverrides] = useState<Record<string, boolean>>({});
+
+  const openValues = useMemo(() => {
+    const open = new Set<string>();
+    if (hashOpenValue !== null) open.add(hashOpenValue);
+    for (const [value, isOpen] of Object.entries(overrides)) {
+      if (isOpen) open.add(value);
+      else open.delete(value);
+    }
+    return [...open];
+  }, [hashOpenValue, overrides]);
+
+  useEffect(() => {
+    if (!hash) return;
+    const element = document.querySelector(hash);
+    if (!element) return;
+    // Position the target 1/3 down the screen to avoid header and cookie banner overlap
+    const rect = element.getBoundingClientRect();
+    const targetScrollPos =
+      rect.top + globalThis.scrollY - globalThis.innerHeight / 3;
+    globalThis.scrollTo({ top: targetScrollPos });
+  }, [hash]);
+
+  const handleValueChange = (details: { value: string[] }) => {
+    const next = new Set(details.value);
+    const current = new Set(openValues);
+
+    setOverrides((previous) => {
+      const updated = { ...previous };
+      for (const value of next) if (!current.has(value)) updated[value] = true;
+      for (const value of current) if (!next.has(value)) updated[value] = false;
+      return updated;
+    });
+
+    const newlyOpened = details.value.find((value) => !current.has(value));
+    if (newlyOpened !== undefined) {
+      const item = items[Number(newlyOpened)];
+      if (item) history.replaceState({}, "", `#item-${item._key}`);
+    } else if (details.value.length === 0) {
+      history.replaceState(
+        {},
+        "",
+        globalThis.location.pathname + globalThis.location.search,
+      );
+    }
   };
 
-  // sanitize heading inputs and fall back to safe defaults
   const rawTitleLevel = stripHiddenChars(titleHeadingLevel);
   const safeTitleLevel = /^h[2-5]$/.test(rawTitleLevel)
     ? (rawTitleLevel as "h2" | "h3" | "h4" | "h5")
@@ -95,12 +131,7 @@ export const Accordion = ({
     : "h3";
 
   return (
-    <Box
-      marginX="auto"
-      width="100%"
-      maxWidth={["100%", null, "66.7%"]}
-      marginTop={9}
-    >
+    <Box marginX="auto" width="100%" marginTop={9}>
       {title && (
         <BlockHeading
           heading={title}
@@ -114,19 +145,15 @@ export const Accordion = ({
         multiple
         variant="underlined"
         data-testid="accordion"
-        value={openIndex.map(String)}
+        value={openValues}
+        onValueChange={handleValueChange}
       >
         {items.map((item, index) => (
           <AccordionItem key={item._key} value={String(index)}>
-            <Heading as={safeItemLevel ?? "h3"} autoId>
-              <AccordionItemTrigger
-                gap={1}
-                onClick={() => handleAccordionState(item._key, index)}
-              >
+            <Heading as={safeItemLevel} variant="md" fontWeight="bold" autoId>
+              <AccordionItemTrigger gap={1}>
                 {item.icon && getIcon({ iconName: item.icon, size: 24 })}
-                <Box flex={1} id={`item-${item._key}`}>
-                  {item.title}
-                </Box>
+                {item.title}
               </AccordionItemTrigger>
             </Heading>
             <AccordionItemContent>

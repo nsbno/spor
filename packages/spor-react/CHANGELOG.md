@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 13.1.2
+
+### Patch Changes
+
+- 976b64a: Add border to toast
+
 ## 13.1.1
 
 ### Patch Changes

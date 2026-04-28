@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-mcp-server",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "MCP server for Spor Design System",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -23,8 +23,8 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",
     "@sanity/client": "^7.12.0",
-    "@vygruppen/spor-design-tokens": "4.3.2",
-    "@vygruppen/spor-react": "12.24.16",
+    "@vygruppen/spor-design-tokens": "5.0.0",
+    "@vygruppen/spor-react": "13.1.0",
     "zod": "^3.23.0"
   },
   "devDependencies": {

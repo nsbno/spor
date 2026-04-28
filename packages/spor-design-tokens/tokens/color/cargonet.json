@@ -528,7 +528,7 @@
           "DEFAULT": {
             "value": {
               "_light": "colors.whiteAlpha.200",
-              "_dark": "colors.pine"
+              "_dark": "colors.whiteAlpha.200"
             }
           },
           "hover": {

@@ -277,7 +277,7 @@
         "subtle": {
           "value": {
             "_light": "colors.lightGrey",
-            "_dark": "colors.jungle"
+            "_dark": "colors.night"
           }
         },
         "brand": {
@@ -556,7 +556,7 @@
           "DEFAULT": {
             "value": {
               "_light": "colors.white",
-              "_dark": "colors.night"
+              "_dark": "colors.interstellar"
             }
           },
           "hover": {

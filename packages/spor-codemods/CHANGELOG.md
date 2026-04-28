@@ -1,5 +1,14 @@
 # @vygruppen/spor-codemods
 
+## 1.1.1
+
+### Patch Changes
+
+- 106ee0f: Patches to new color tokens and add support to badge-inverted back
+- Updated dependencies [106ee0f]
+- Updated dependencies [448f4e5]
+  - @vygruppen/spor-react@13.1.1
+
 ## 1.1.0
 
 ### Minor Changes

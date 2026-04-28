@@ -25,7 +25,7 @@ export const badgeRecipie = defineRecipe({
         },
       },
       green: {
-        backgroundColor: "surface.subtle",
+        backgroundColor: "surface.success",
         color: "text.success",
         "& svg": {
           color: "icon.success",
@@ -108,10 +108,19 @@ export const badgeRecipie = defineRecipe({
       colorPalette: "blue",
       inverted: true,
       css: {
-        backgroundColor: "badge.blue.surface.inverted",
-        color: "badge.blue.text.inverted",
+        backgroundColor: {
+          _light: "darkBlue",
+          _dark: "lightBlue",
+        },
+        color: {
+          _light: "icyBlue",
+          _dark: "royal",
+        },
         "& svg": {
-          color: "badge.blue.icon.inverted",
+          color: {
+            _light: "royal",
+            _dark: "icyBlue",
+          },
         },
       },
     },
@@ -119,10 +128,19 @@ export const badgeRecipie = defineRecipe({
       colorPalette: "green",
       inverted: true,
       css: {
-        backgroundColor: "badge.green.surface.inverted",
-        color: "badge.green.text.inverted",
+        backgroundColor: {
+          _light: "darkTeal",
+          _dark: "seaMist",
+        },
+        color: {
+          _light: "mint",
+          _dark: "jungle",
+        },
         "& svg": {
-          color: "badge.green.icon.inverted",
+          color: {
+            _light: "mint",
+            _dark: "jungle",
+          },
         },
       },
     },
@@ -130,10 +148,19 @@ export const badgeRecipie = defineRecipe({
       colorPalette: "grey",
       inverted: true,
       css: {
-        backgroundColor: "badge.grey.surface.inverted",
-        color: "badge.grey.text.inverted",
+        backgroundColor: {
+          _light: "carbon",
+          _dark: "platinum",
+        },
+        color: {
+          _light: "white",
+          _dark: "darkGrey",
+        },
         "& svg": {
-          color: "badge.grey.icon.inverted",
+          color: {
+            _light: "white",
+            _dark: "darkGrey",
+          },
         },
       },
     },
@@ -142,10 +169,19 @@ export const badgeRecipie = defineRecipe({
       colorPalette: "cream",
       inverted: true,
       css: {
-        backgroundColor: "badge.cream.surface.inverted",
-        color: "badge.cream.text.inverted",
+        backgroundColor: {
+          _light: "coffee",
+          _dark: "blonde",
+        },
+        color: {
+          _light: "cornsilk",
+          _dark: "coffee",
+        },
         "& svg": {
-          color: "badge.cream.icon.inverted",
+          color: {
+            _light: "cornsilk",
+            _dark: "coffee",
+          },
         },
       },
     },
@@ -153,10 +189,19 @@ export const badgeRecipie = defineRecipe({
       colorPalette: "yellow",
       inverted: true,
       css: {
-        backgroundColor: "badge.yellow.surface.inverted",
-        color: "badge.yellow.text.inverted",
+        backgroundColor: {
+          _light: "bronze",
+          _dark: "banana",
+        },
+        color: {
+          _light: "cornsilk",
+          _dark: "coffee",
+        },
         "& svg": {
-          color: "badge.yellow.icon.inverted",
+          color: {
+            _light: "cornsilk",
+            _dark: "coffee",
+          },
         },
       },
     },
@@ -164,10 +209,19 @@ export const badgeRecipie = defineRecipe({
       colorPalette: "orange",
       inverted: true,
       css: {
-        backgroundColor: "badge.orange.surface.inverted",
-        color: "badge.orange.text.inverted",
+        backgroundColor: {
+          _light: "wood",
+          _dark: "champagne",
+        },
+        color: {
+          _light: "bisque",
+          _dark: "wood",
+        },
         "& svg": {
-          color: "badge.orange.icon.inverted",
+          color: {
+            _light: "bisque",
+            _dark: "wood",
+          },
         },
       },
     },
@@ -175,10 +229,19 @@ export const badgeRecipie = defineRecipe({
       colorPalette: "red",
       inverted: true,
       css: {
-        backgroundColor: "badge.red.surface.inverted",
-        color: "badge.red.text.inverted",
+        backgroundColor: {
+          _light: "burgundy",
+          _dark: "lightRed",
+        },
+        color: {
+          _light: "pink",
+          _dark: "maroon",
+        },
         "& svg": {
-          color: "badge.red.icon.inverted",
+          color: {
+            _light: "pink",
+            _dark: "maroon",
+          },
         },
       },
     },
@@ -187,10 +250,19 @@ export const badgeRecipie = defineRecipe({
       colorPalette: "neutral",
       inverted: true,
       css: {
-        backgroundColor: "badge.surface.inverted",
-        color: "badge.text.inverted",
+        backgroundColor: {
+          _light: "ink",
+          _dark: "white",
+        },
+        color: {
+          _light: "white",
+          _dark: "darkGrey",
+        },
         "& svg": {
-          color: "badge.icon.inverted",
+          color: {
+            _light: "white",
+            _dark: "darkGrey",
+          },
         },
       },
     },

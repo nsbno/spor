@@ -220,8 +220,7 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     imageWithCaption: ({ value }) => {
-      if (!value.image?.asset) return null;
-      const dimensions = value.image.asset._ref.split("-")[2];
+      const dimensions = value.image.asset?._ref.split("-")[2];
       const aspectRatio = dimensions.split("x").join(" / ");
 
       return (
@@ -240,8 +239,7 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     image: ({ value }) => {
-      if (!value.image?.asset) return null;
-      const dimensions = value.image.asset._ref.split("-")[2];
+      const dimensions = value.image.asset?._ref.split("-")[2];
       const aspectRatio = dimensions.split("x").join(" / ");
       return (
         <Image

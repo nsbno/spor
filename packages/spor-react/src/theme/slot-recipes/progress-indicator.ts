@@ -15,7 +15,7 @@ export const progressIndicatorRecipe = defineSlotRecipe({
       width: 1,
       fill: "icon.disabled",
       "&[aria-current='step']": {
-        fill: "brand.surface",
+        fill: "surface.brand",
       },
     },
   },

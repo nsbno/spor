@@ -38,19 +38,19 @@ export const menuSlotRecipe = defineSlotRecipe({
       gap: 1.5,
 
       _hover: {
-        backgroundColor: "accent.surface.hover",
+        backgroundColor: "surface.accent.hover",
       },
 
       "&:active": {
-        backgroundColor: "accent.surface.active",
+        backgroundColor: "surface.accent.active",
       },
 
       _checked: {
-        backgroundColor: "accent.surface",
+        backgroundColor: "surface.accent",
       },
 
       _highlighted: {
-        backgroundColor: "ghost.surface.hover",
+        backgroundColor: "surface.ghost.hover",
       },
     },
     itemGroupLabel: {
@@ -87,19 +87,19 @@ export const menuSlotRecipe = defineSlotRecipe({
       core: {
         content: {
           border: "1px solid",
-          borderColor: "core.outline",
+          borderColor: "outline.core",
         },
       },
       accent: {
         content: {
           border: "1px solid",
-          borderColor: "core.outline",
+          borderColor: "outline.core",
         },
       },
       floating: {
         content: {
           border: "sm",
-          borderColor: "floating.outline",
+          borderColor: "outline.floating",
           boxShadow: "lg",
         },
       },

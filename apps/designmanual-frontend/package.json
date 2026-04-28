@@ -36,6 +36,7 @@
     "@vygruppen/spor-icon": "workspace:*",
     "@vygruppen/spor-icon-react": "workspace:*",
     "@vygruppen/spor-react": "workspace:*",
+    "@vygruppen/spor-codemods": "workspace:*",
     "archiver": "^5.3.2",
     "deepmerge": "^4.3.1",
     "fs-extra": "^11.2.0",

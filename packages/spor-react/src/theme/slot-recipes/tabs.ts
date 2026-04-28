@@ -63,26 +63,26 @@ export const tabsSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         list: {
-          color: "core.text",
+          color: "text.core",
           border: "sm",
         },
         trigger: {
-          color: "core.text",
+          color: "text.core",
           border: "md",
           borderColor: "transparent",
           _hover: {
             outline: "2px solid",
-            outlineColor: "core.outline.hover",
+            outlineColor: "outline.core.hover",
             outlineOffset: "-2px",
           },
           _active: {
-            backgroundColor: "brand.surface.active",
-            color: "brand.text",
+            backgroundColor: "surface.brand.active",
+            color: "text.brand",
             outline: "none",
           },
           _selected: {
-            backgroundColor: "brand.surface",
-            color: "brand.text",
+            backgroundColor: "surface.brand",
+            color: "text.brand",
             _hover: {
               outline: "none",
             },
@@ -95,29 +95,29 @@ export const tabsSlotRecipe = defineSlotRecipe({
       },
       accent: {
         list: {
-          backgroundColor: "accent.bg",
-          color: "accent.text",
+          backgroundColor: "bg.accent",
+          color: "text.accent",
         },
         trigger: {
-          color: "accent.text",
+          color: "text.accent",
 
           _disabled: {
             backgroundColor: "surface.disabled",
             color: "icon.disabled",
           },
           _hover: {
-            backgroundColor: "accent.surface.hover",
+            backgroundColor: "surface.accent.hover",
             _active: {
-              backgroundColor: "brand.surface.active",
-              color: "brand.text",
+              backgroundColor: "surface.brand.active",
+              color: "text.brand",
             },
           },
           _selected: {
-            backgroundColor: "brand.surface",
-            color: "brand.text",
+            backgroundColor: "surface.brand",
+            color: "text.brand",
             _hover: {
-              backgroundColor: "brand.surface.hover",
-              color: "brand.text",
+              backgroundColor: "surface.brand.hover",
+              color: "text.brand",
               outline: "none",
             },
           },
@@ -165,7 +165,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
           paddingX: 3,
           _focus: {
             border: "md",
-            borderColor: "accent.surface",
+            borderColor: "surface.accent",
           },
         },
       },

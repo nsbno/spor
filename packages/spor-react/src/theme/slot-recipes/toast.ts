@@ -29,14 +29,14 @@ export const toastSlotRecipe = defineSlotRecipe({
 
       color: "text",
       "&[data-type=success]": {
-        backgroundColor: "alert.success.surface",
+        backgroundColor: "surface.success",
       },
       "&[data-type=error]": {
-        backgroundColor: "alert.error.surface",
+        backgroundColor: "surface.critical",
       },
 
       "&[data-type=info]": {
-        backgroundColor: "alert.info.surface",
+        backgroundColor: "surface.info",
       },
     },
 

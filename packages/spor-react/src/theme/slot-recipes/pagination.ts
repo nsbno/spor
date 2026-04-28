@@ -14,18 +14,18 @@ export const paginationSlotRecipe = defineSlotRecipe({
       width: "5",
       fontSize: "xs",
       borderRadius: "xl",
-      color: "core.text",
+      color: "text.core",
       cursor: "pointer",
       _hover: {
-        background: "ghost.surface.hover",
+        background: "surface.ghost.hover",
         _active: {
-          background: "ghost.surface.active",
+          background: "surface.ghost.active",
         },
       },
       _selected: {
         cursor: "default",
         fontWeight: "bold",
-        backgroundColor: "core.surface.active",
+        backgroundColor: "surface.core.active",
       },
     },
     list: {

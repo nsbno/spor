@@ -12,10 +12,10 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       transitionDuration: "fast",
       borderTopRadius: "none",
       borderBottomRadius: "md",
-      backgroundColor: "alert.service.surface",
+      backgroundColor: "surface.service",
       outline: "1px solid",
-      outlineColor: "alert.service.outline",
-      color: "text.inverted",
+      outlineColor: "outline.service",
+      color: "text.brand",
       boxShadow: "sm",
     },
     itemTrigger: {
@@ -27,16 +27,16 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       borderBottomRadius: "md",
       borderTopRadius: "none",
       width: "full",
-      color: "text.inverted",
+      color: "text.brand",
       "&:hover": {
-        backgroundColor: "alert.service.surface.hover",
+        backgroundColor: "surface.service.hover",
       },
       "&:active": {
-        backgroundColor: "alert.service.surface.active",
+        backgroundColor: "surface.service.active",
       },
 
       _icon: {
-        color: "text",
+        color: "icon.brand",
       },
     },
     itemTriggerTitle: {
@@ -46,7 +46,7 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
       fontWeight: "400",
       fontSize: ["mobile.xs", "desktop.xs"],
       textWrap: "nowrap",
-      color: "alert.service.text.secondary",
+      color: "text.service.subtle",
     },
 
     itemContent: {
@@ -58,14 +58,14 @@ export const alertServiceSlotRecipe = defineSlotRecipe({
     itemBody: {
       marginX: "auto",
       padding: "0 !important",
-      color: "alert.service.text.secondary",
+      color: "text.service.subtle",
       gap: 0,
       flexDirection: "column",
       display: "flex",
       "& > p": {
         width: "full",
         borderBottom: "1px dashed",
-        borderColor: "outline.inverted",
+        borderColor: "outline.neutral",
 
         paddingY: ["1", "1.5"],
 

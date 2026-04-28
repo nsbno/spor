@@ -108,7 +108,7 @@ export const LineIcon = function LineIcon({
       css={{ ...styles.iconContainer, ...style }}
       padding={targetPadding()}
       borderWidth={borderContainer()}
-      borderColor={variant === "walk" ? "core.outline" : "transparent"}
+      borderColor={variant === "walk" ? "outline.core" : "transparent"}
       aria-label={label}
       ref={ref}
       className={clsx("light", rest.className)}

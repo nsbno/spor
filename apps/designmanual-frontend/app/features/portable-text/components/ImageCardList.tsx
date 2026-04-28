@@ -130,7 +130,19 @@ export const ImageCard = ({
 
   if (!href) {
     return (
-      <StaticCard height="100%" overflow="hidden">
+      <StaticCard
+        height="100%"
+        overflow="hidden"
+        border="sm"
+        borderColor="outline.floating"
+        boxShadow="0px 1px 3px 0px var(--shadow-color)"
+        shadowColor="surface.disabled"
+        _hover={{
+          boxShadow: "0px 2px 6px 0px var(--shadow-color)",
+          backgroundColor: "surface.floating.hover",
+          borderColor: "outline.floating.hover",
+        }}
+      >
         {content}
       </StaticCard>
     );

@@ -31,7 +31,12 @@ runs:
         release_body=$(curl -fsSL -H 'Accept: application/vnd.github+json' "$api_url" | jq -r '.body // empty' || true)
 
         if [ -n "$release_body" ]; then
-          summary=$(printf "%s" "$release_body" | sed 's/\r//g' | grep -vE '^\s*$' | head -n 6)
+          summary=$(printf "%s" "$release_body" | \
+            sed 's/\r//g' | \
+            grep -vE '^\s*$' | \
+            sed 's/^### //' | \
+            sed 's/^-   [a-f0-9]\+: /• /' | \
+            head -n 6)
           if [ -z "$summary" ]; then
             summary="Ingen oppsummering tilgjengelig i release-notatet."
           fi
@@ -42,10 +47,11 @@ runs:
         message=$(printf '%s\n' \
           '*Ny versjon av spor er ute!* 📦✨' \
           "⚡️ *Versjon*: v${version}" \
+          '🔧 *Installer*: `npm i @vygruppen/spor-react@latest`' \
+          '' \
           "📖 *Changelog*: <${release_url}|@vygruppen/spor-react@${version}>" \
-          '📝 *Hva er nytt (utdrag):*' \
-          "$summary" \
-          '🔧 *Installer*: `npm i @vygruppen/spor-react@latest`')
+          '📝 *Hva er nytt:*' \
+          "$summary")
 
         payload=$(jq -n --arg text "$message" '{text: $text}')
         curl -X POST -H 'Content-type: application/json' --data "$payload" ${{ inputs.webhook_url }}

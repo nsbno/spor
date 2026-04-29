@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-codemods",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Code modification scripts for migrating Spor code to newer versions",
   "type": "module",
   "bin": {

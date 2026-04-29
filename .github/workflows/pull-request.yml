@@ -26,6 +26,7 @@ jobs:
     uses: nsbno/platform-actions/.github/workflows/deployment.preview.yml@v2
     with:
       working-directory: ./apps/designmanual-frontend
+      use-ecs-express-mode: true
 
   preview-cleanup:
     if: ${{ github.event.action == 'closed' }}

@@ -224,7 +224,8 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     imageWithCaption: ({ value }) => {
-      const dimensions = value.image.asset?._ref.split("-")[2];
+      if (!value.image?.asset?._ref) return null;
+      const dimensions = value.image.asset._ref.split("-")[2];
       const aspectRatio = dimensions.split("x").join(" / ");
 
       return (

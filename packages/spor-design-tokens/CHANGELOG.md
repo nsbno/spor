@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.0.2
+
+### Patch Changes
+
+- 65651f0: Correct wrong values on new colortokens in cargonet-theme
+
 ## 5.0.1
 
 ### Patch Changes

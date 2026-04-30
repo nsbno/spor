@@ -69,7 +69,7 @@ export const PasswordInput = ({
   return (
     <Input
       ref={ref}
-      startElement={startElement && startElement}
+      startElement={startElement}
       label={label}
       type={visible ? "text" : "password"}
       endElement={

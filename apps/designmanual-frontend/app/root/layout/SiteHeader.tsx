@@ -147,14 +147,6 @@ export const SiteHeader = ({
               width="auto"
               height={["30px", "36px", null, "48px"]}
               aria-label="Vy"
-              display={{ _light: "block", _dark: "none" }}
-            />
-            <VyLogo
-              width="auto"
-              height={["30px", "36px", null, "48px"]}
-              aria-label="Vy"
-              display={{ _light: "none", _dark: "block" }}
-              variant="mono"
             />
           </Link>
 

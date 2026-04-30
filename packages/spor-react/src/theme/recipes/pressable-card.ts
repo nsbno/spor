@@ -30,33 +30,33 @@ export const pressableCardRecipe = defineRecipe({
         shadowColor: "surface.disabled",
 
         border: "sm",
-        borderColor: "floating.outline",
+        borderColor: "outline.floating",
 
-        backgroundColor: "floating.surface",
+        backgroundColor: "surface.floating",
         _hover: {
           boxShadow: "0px 2px 6px 0px var(--shadow-color)",
-          backgroundColor: "floating.surface.hover",
+          backgroundColor: "surface.floating.hover",
 
-          borderColor: "floating.outline.hover",
+          borderColor: "outline.floating.hover",
 
           _active: {
             boxShadow: "none",
-            backgroundColor: "floating.surface.active",
-            borderColor: "floating.outline.active",
+            backgroundColor: "surface.floating.active",
+            borderColor: "outline.neutral",
           },
         },
       },
       core: {
-        outlineColor: "core.outline",
+        outlineColor: "outline.core",
         outlineWidth: tokens.size.stroke.sm,
         outlineStyle: "solid",
 
         _hover: {
-          outlineColor: "core.outline.hover",
+          outlineColor: "outline.core.hover",
           outlineWidth: tokens.size.stroke.md,
           outlineStyle: "solid",
           _active: {
-            backgroundColor: "core.surface.active",
+            backgroundColor: "surface.core.active",
             outlineWidth: tokens.size.stroke.sm,
           },
         },
@@ -64,13 +64,13 @@ export const pressableCardRecipe = defineRecipe({
       accent: {
         boxShadow: "0px 1px 3px 0px var(--shadow-color)",
         shadowColor: "surface.disabled",
-        background: "alert.success.surface",
+        background: "surface.success",
         _hover: {
-          background: "alert.success.surface.hover",
+          background: "surface.success.hover",
 
           boxShadow: "0px 2px 6px 0px var(--shadow-color)",
           _active: {
-            background: "alert.success.surface.active",
+            background: "surface.success.active",
             boxShadow: "none",
           },
         },

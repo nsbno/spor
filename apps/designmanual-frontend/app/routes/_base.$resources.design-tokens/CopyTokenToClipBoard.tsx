@@ -34,7 +34,7 @@ export const CopyTokenToClipBoard = ({ children, copyValue }: Props) => {
               }}
               display="none"
               copied={
-                <Text variant="xs" color="text.tertiary">
+                <Text variant="xs" color="text.subtle">
                   copied
                 </Text>
               }

@@ -77,7 +77,7 @@ const components: Partial<PortableTextReactComponents> = {
         variant="xxl"
         fontWeight="200"
         marginTop={6}
-        color="text.secondary"
+        color="text.highlight"
       >
         {children}
       </LinkableHeading>
@@ -220,7 +220,8 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     imageWithCaption: ({ value }) => {
-      const dimensions = value.image.asset?._ref.split("-")[2];
+      if (!value.image?.asset?._ref) return null;
+      const dimensions = value.image.asset._ref.split("-")[2];
       const aspectRatio = dimensions.split("x").join(" / ");
 
       return (
@@ -239,7 +240,8 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     image: ({ value }) => {
-      const dimensions = value.image.asset?._ref.split("-")[2];
+      if (!value.image?.asset?._ref) return null;
+      const dimensions = value.image.asset._ref.split("-")[2];
       const aspectRatio = dimensions.split("x").join(" / ");
       return (
         <Image
@@ -320,7 +322,7 @@ const components: Partial<PortableTextReactComponents> = {
       return (
         <Box
           as="article"
-          backgroundColor="bg.tertiary"
+          backgroundColor="bg.brand"
           color="text"
           marginTop={3}
           padding={4}
@@ -350,7 +352,7 @@ const components: Partial<PortableTextReactComponents> = {
             if (weight === "positive") {
               return (
                 <CheckmarkFill30Icon
-                  color="alert.success.icon"
+                  color="icon.success"
                   boxSize={[4, null, 5]}
                 />
               );
@@ -358,7 +360,7 @@ const components: Partial<PortableTextReactComponents> = {
             if (weight === "negative") {
               return (
                 <ErrorOutline30Icon
-                  color="alert.error.icon"
+                  color="icon.critical"
                   boxSize={[4, null, 5]}
                 />
               );

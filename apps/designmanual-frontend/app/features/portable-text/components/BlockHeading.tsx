@@ -43,7 +43,7 @@ export const BlockHeading = ({
         }}
       >
         {icon && (
-          <Box marginRight={2} color="text.secondary">
+          <Box marginRight={2} color="text.highlight">
             {getIcon({ iconName: icon })}{" "}
           </Box>
         )}
@@ -51,7 +51,7 @@ export const BlockHeading = ({
           as={headingLevel}
           variant={variant}
           fontWeight="bold"
-          color="text.secondary"
+          color="text.highlight"
           autoId
         >
           {heading}

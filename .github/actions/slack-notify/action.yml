@@ -22,10 +22,36 @@ runs:
           echo "No @vygruppen/spor-react version found in published_packages. Skipping notification."
           exit 0
         fi
+
         encoded_version=$(echo -n "@vygruppen/spor-react@$version" | jq -sRr @uri)
-        curl -X POST -H 'Content-type: application/json' --data "{
-          \"text\": \"*Ny versjon av spor er ute!* 📦✨ \n
-          ⚡️ *Versjon*: v${version} \n
-          📖 *Changelog*: <https://github.com/nsbno/spor/releases/tag/${encoded_version}|@vygruppen/spor-react@${version}> \n
-          🔧 *Installer*: \`npm i @vygruppen/spor-react@latest\` \n \"
-        }" ${{ inputs.webhook_url }}
+        release_url="https://github.com/${{ inputs.repo }}/releases/tag/${encoded_version}"
+        api_url="https://api.github.com/repos/${{ inputs.repo }}/releases/tags/${encoded_version}"
+
+        # Try to fetch release notes for the newly published package version.
+        release_body=$(curl -fsSL -H 'Accept: application/vnd.github+json' "$api_url" | jq -r '.body // empty' || true)
+
+        if [ -n "$release_body" ]; then
+          summary=$(printf "%s" "$release_body" | \
+            sed 's/\r//g' | \
+            grep -vE '^\s*$' | \
+            sed 's/^### //' | \
+            sed 's/^-   [a-f0-9]\+: /• /' | \
+            head -n 6)
+          if [ -z "$summary" ]; then
+            summary="Ingen oppsummering tilgjengelig i release-notatet."
+          fi
+        else
+          summary="Ingen oppsummering tilgjengelig i release-notatet."
+        fi
+
+        message=$(printf '%s\n' \
+          '*Ny versjon av spor er ute!* 📦✨' \
+          "⚡️ *Versjon*: v${version}" \
+          '🔧 *Installer*: `npm i @vygruppen/spor-react@latest`' \
+          '' \
+          "📖 *Changelog*: <${release_url}|@vygruppen/spor-react@${version}>" \
+          '📝 *Hva er nytt:*' \
+          "$summary")
+
+        payload=$(jq -n --arg text "$message" '{text: $text}')
+        curl -X POST -H 'Content-type: application/json' --data "$payload" ${{ inputs.webhook_url }}

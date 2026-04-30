@@ -5,9 +5,9 @@ import linjetag from "../spor-design-tokens/tokens/color/linjetag.json" with { t
 import vyDigital from "../spor-design-tokens/tokens/color/vy-digital.json" with { type: "json" };
 
 // Function to recursively extract token paths from the JSON
-function extractTokenPaths(obj, prefix = "") {
+function extractTokenPaths(object, prefix = "") {
   const tokens = [];
-  for (const [key, value] of Object.entries(obj)) {
+  for (const [key, value] of Object.entries(object)) {
     // Handle 'DEFAULT' key by not appending it to the path
     const currentKey = key === "DEFAULT" ? "" : key;
     const currentPath =
@@ -18,10 +18,10 @@ function extractTokenPaths(obj, prefix = "") {
     }
     // If 'value' is present, extract its keys if it's an object
     if (typeof value === "object" && value !== null && "value" in value) {
-      const val = value.value;
-      if (typeof val === "object" && val !== null) {
+      const value_ = value.value;
+      if (typeof value_ === "object" && value_ !== null) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        for (const themeKey of Object.keys(val)) {
+        for (const themeKey of Object.keys(value_)) {
           tokens.push(currentPath);
         }
       } else {

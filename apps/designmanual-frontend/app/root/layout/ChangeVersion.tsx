@@ -34,7 +34,7 @@ export const ChangeVersion = () => {
           <Flex justifyContent="space-between" width="100%" alignItems="end">
             <Span>{item.label}</Span>
             <Span
-              color="text.tertiary"
+              color="text.subtle"
               fontSize="2xs"
               display={{
                 base: "none",

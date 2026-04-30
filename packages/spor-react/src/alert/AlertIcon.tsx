@@ -48,10 +48,10 @@ export const BaseAlertIcon = ({
 }) => {
   const css = {
     "& path:first-of-type": {
-      fill: `alert.${variant}.icon`,
+      fill: `icon.${variant}`,
     },
     "& path:not(:first-of-type)": {
-      fill: `alert.${variant}.surface`,
+      fill: `surface.${variant}`,
     },
   };
 

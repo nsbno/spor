@@ -72,7 +72,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       color: {
         base: "text",
         _disabled: "text.disabled",
-        _invalid: "text.secondary",
+        _invalid: "text.highlight",
       },
       _icon: {
         width: 3,
@@ -110,14 +110,14 @@ export const selectSlotRecipe = defineSlotRecipe({
       justifyContent: "space-between",
       gap: 1,
       borderRadius: "sm",
-      color: "ghost.text",
+      color: "text.ghost",
       cursor: "pointer",
       outline: "none",
       "&[data-highlighted]:hover": {
         outlineOffset: "2px",
         outline: "2px solid",
         outlineColor: "outline.focus",
-        backgroundColor: "accent.surface.hover",
+        backgroundColor: "surface.accent.hover",
       },
       "&[data-highlighted]": {
         outlineOffset: "2px",
@@ -125,7 +125,7 @@ export const selectSlotRecipe = defineSlotRecipe({
         outlineColor: "outline.focus",
       },
       _active: {
-        backgroundColor: "accent.surface.active",
+        backgroundColor: "surface.accent.active",
       },
       _highlighted: {
         _active: {
@@ -133,12 +133,12 @@ export const selectSlotRecipe = defineSlotRecipe({
         },
       },
       _hover: {
-        backgroundColor: "accent.surface.hover",
+        backgroundColor: "surface.accent.hover",
         outline: "2px solid core.outline",
         outlineOffset: "2px",
       },
       _selected: {
-        backgroundColor: "accent.surface",
+        backgroundColor: "surface.accent",
       },
       _icon: {
         width: 3,
@@ -173,9 +173,9 @@ export const selectSlotRecipe = defineSlotRecipe({
     valueText: {},
     itemDescription: {
       fontSize: ["mobile.xs", "desktop.xs"],
-      color: "ghost.text",
+      color: "text.ghost",
       "[aria-selected='true'] &": {
-        color: "ghost.text",
+        color: "text.ghost",
       },
     },
   },
@@ -184,13 +184,13 @@ export const selectSlotRecipe = defineSlotRecipe({
       core: {
         control: {
           outline: "1px solid",
-          outlineColor: "core.outline",
+          outlineColor: "outline.core",
           _hover: {
             outline: "2px solid",
-            outlineColor: "core.outline",
+            outlineColor: "outline.core",
           },
           _active: {
-            backgroundColor: "brand.surface.active",
+            backgroundColor: "surface.brand.active",
           },
           _disabled: {
             pointerEvents: "none",
@@ -202,13 +202,13 @@ export const selectSlotRecipe = defineSlotRecipe({
       floating: {
         control: {
           outline: "1px solid",
-          outlineColor: "floating.outline",
+          outlineColor: "outline.floating",
           _hover: {
             outline: "2px solid",
-            outlineColor: "floating.outline",
+            outlineColor: "outline.floating",
           },
           _active: {
-            backgroundColor: "brand.surface.active",
+            backgroundColor: "surface.brand.active",
           },
           _disabled: {
             pointerEvents: "none",
@@ -222,7 +222,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       rightSideSquare: {
         control: {
           outline: "1px solid",
-          outlineColor: "core.outline",
+          outlineColor: "outline.core",
         },
         trigger: {
           _focus: {
@@ -233,7 +233,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       leftSideSquare: {
         control: {
           outline: "1px solid",
-          outlineColor: "core.outline",
+          outlineColor: "outline.core",
         },
         trigger: {
           _focus: {

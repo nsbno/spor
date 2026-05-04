@@ -16,7 +16,8 @@ export interface PasswordVisibilityProps {
 }
 
 export interface PasswordInputProps
-  extends InputProps, PasswordVisibilityProps {
+  extends InputProps,
+    PasswordVisibilityProps {
   rootProps?: InputProps;
 }
 
@@ -68,7 +69,7 @@ export const PasswordInput = ({
   return (
     <Input
       ref={ref}
-      startElement={startElement && startElement}
+      startElement={startElement}
       label={label}
       type={visible ? "text" : "password"}
       endElement={

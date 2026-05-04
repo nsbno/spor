@@ -84,6 +84,16 @@ export function resolveDividerGroq() {
     }`;
 }
 
+export function resolveTableChartGroq() {
+  return groq`
+    (_type == "table") => @ {
+      _type,
+      title,
+      description,
+      "children": rows[].cells
+    }`;
+}
+
 export function resolveVideoPlayerGroq() {
   return groq`
     (_type == "videoBlock") => @ {
@@ -284,12 +294,14 @@ export function resolveAccordionGroq() {
           content[] {
             ...,
             ${resolveLinkButtonGroq()},
+            ${resolveImageGroq()},
+            ${resolveTableChartGroq()},
             markDefs[] {
               ...,
               ${resolveMarkdefsLinkGroq()},
             }
           }
-        } 
+        }
       }
     }`;
 }

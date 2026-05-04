@@ -34,7 +34,12 @@ runs:
           summary=$(printf "%s" "$release_body" | \
             sed 's/\r//g' | \
             grep -vE '^\s*$' | \
+            grep -viE 'updated dependencies' | \
+            grep -vE '^\s*@vygruppen/' | \
             sed 's/^### //' | \
+            sed 's/^Patch Changes$/🐛 Patch Changes/' | \
+            sed 's/^Minor Changes$/✨ Minor Changes/' | \
+            sed 's/^Major Changes$/💥 Major Changes/' | \
             sed 's/^-   [a-f0-9]\+: /• /' | \
             head -n 6)
           if [ -z "$summary" ]; then

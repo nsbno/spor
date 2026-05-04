@@ -73,7 +73,6 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       },
     },
     label: {
-      cursor: "pointer",
       _disabled: { opacity: 0.4 },
     },
   },

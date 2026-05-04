@@ -41,6 +41,7 @@ export const Footer = () => {
             aria-hidden="true"
             width="auto"
             height={["30px", "36px", null, "42px"]}
+            variant="mono"
           />
         </Link>
       </Box>

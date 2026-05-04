@@ -44,7 +44,7 @@ export function TableChart({ children, title, description }: TableProps) {
       )}
       {description && <Text marginBottom={1}>{description}</Text>}
       <Box width="100%" minWidth={0} overflowX="auto">
-        <Table size="md" tableLayout="fixed" width="100%" colorPalette="white">
+        <Table size="md" width="100%" colorPalette="white">
           {tHeadValues.length > 0 && (
             <TableHeader>
               <TableRow>

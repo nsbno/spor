@@ -18,4 +18,5 @@ jobs:
     secrets: inherit
     uses: nsbno/platform-actions/.github/workflows/deployment.preview.on-comment.yml@v2
     with:
+      use-ecs-express-mode: true
       working-directory: ./apps/designmanual-frontend

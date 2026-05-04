@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Box,
   Popover as ChakraPopover,
   Portal,
   usePopoverContext,
@@ -22,8 +23,13 @@ export const PopoverTrigger = ({
   const isStringChild = typeof children === "string";
 
   return (
-    <ChakraPopover.Trigger {...props} ref={ref} asChild={!isStringChild}>
-      {children}
+    <ChakraPopover.Trigger
+      ref={ref}
+      asChild={!isStringChild}
+      width={isStringChild ? undefined : "fit-content"}
+      {...props}
+    >
+      {isStringChild ? children : <Box>{children}</Box>}
     </ChakraPopover.Trigger>
   );
 };
@@ -58,6 +64,7 @@ export const PopoverContent = ({
       <ChakraPopover.Positioner>
         <ChakraPopover.Content ref={ref} {...props}>
           <ChakraPopover.Arrow />
+          <ChakraPopover.Body {...props}>{children}</ChakraPopover.Body>
           {showCloseButton && (
             <div>
               <ChakraPopover.CloseTrigger asChild>
@@ -68,7 +75,6 @@ export const PopoverContent = ({
               </ChakraPopover.CloseTrigger>
             </div>
           )}
-          <ChakraPopover.Body {...props}>{children}</ChakraPopover.Body>
         </ChakraPopover.Content>
       </ChakraPopover.Positioner>
     </Portal>

@@ -1,5 +1,15 @@
 # @vygruppen/spor-mcp-server
 
+## 2.1.3
+
+### Patch Changes
+
+- 7abecea: Install deps from workspace
+- Updated dependencies [65651f0]
+- Updated dependencies [15b5e35]
+  - @vygruppen/spor-design-tokens@5.0.2
+  - @vygruppen/spor-react@13.1.3
+
 ## 2.1.2
 
 ### Patch Changes

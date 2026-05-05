@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 13.1.4
+
+### Patch Changes
+
+- ab364d0: Fix positioning of popover/tooltip-content when used together with more advanced components as triggers.
+- 126094e: Table: fix table cells width to avoid render conflict with tableLayout fixed
+- cd92694: Make cursor showing pointer in the menu component
+
 ## 13.1.3
 
 ### Patch Changes

@@ -167,7 +167,7 @@ module "cloudfront_ssr" {
 
 module "preview_url" {
   count  = var.environment == "test" ? 1 : 0
-  source = "github.com/nsbno/terraform-aws-preview-url?ref=31c02b8"
+  source = "github.com/nsbno/terraform-aws-preview-url?ref=1.1.0"
 
   providers = {
     aws.us_east_1 = aws.us_east_1

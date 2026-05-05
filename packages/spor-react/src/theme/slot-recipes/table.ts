@@ -34,7 +34,6 @@ export const tableSlotRecipe = defineSlotRecipe({
       ...numericStyles,
       paddingX: 1.5,
       paddingY: 1,
-      width: "100%",
     },
     footer: {
       fontWeight: "medium",

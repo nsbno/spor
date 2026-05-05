@@ -1,6 +1,6 @@
 "use client";
 
-import { Portal, Tooltip as ChakraTooltip } from "@chakra-ui/react";
+import { Box, Portal, Tooltip as ChakraTooltip } from "@chakra-ui/react";
 
 export const Tooltip = ChakraTooltip.Root;
 
@@ -14,17 +14,20 @@ export const TooltipTrigger = ({
   const isStringChild = typeof children === "string";
 
   return (
-    <ChakraTooltip.Trigger {...props} ref={ref} asChild={!isStringChild}>
-      {children}
+    <ChakraTooltip.Trigger ref={ref} asChild={!isStringChild} {...props}>
+      {isStringChild ? children : <Box width="fit-content">{children}</Box>}
     </ChakraTooltip.Trigger>
   );
 };
 
-export type TooltipProps = ChakraTooltip.ContentProps;
+export type TooltipProps = ChakraTooltip.ContentProps & {
+  showArrow?: boolean;
+};
 
 export const TooltipContent = ({
   ref,
   children,
+  showArrow = false,
   ...props
 }: TooltipProps & {
   ref?: React.Ref<HTMLDivElement>;
@@ -33,8 +36,12 @@ export const TooltipContent = ({
     <Portal>
       <ChakraTooltip.Positioner>
         <ChakraTooltip.Content ref={ref} {...props}>
-          <ChakraTooltip.Arrow />
-          <ChakraTooltip.Content {...props}>{children}</ChakraTooltip.Content>
+          {showArrow && (
+            <ChakraTooltip.Arrow>
+              <ChakraTooltip.ArrowTip />
+            </ChakraTooltip.Arrow>
+          )}
+          {children}
         </ChakraTooltip.Content>
       </ChakraTooltip.Positioner>
     </Portal>

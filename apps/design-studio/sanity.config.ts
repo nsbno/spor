@@ -12,6 +12,7 @@ import { VyLogoProd } from "./components/VyLogoProd";
 import { VyLogoTest } from "./components/VyLogoTest";
 import { schemaTypes } from "./schemaTypes";
 import { siteMenuStructure } from "./structure.js";
+import { table } from "@sanity/table";
 
 const projectId = "r4xpzxak";
 export const API_VERSION = "2024-07-25";
@@ -64,6 +65,7 @@ export default defineConfig([
       visionTool(),
       codeInput(),
       muxInput(),
+      table(),
     ],
 
     studio: {
@@ -105,6 +107,7 @@ export default defineConfig([
       visionTool(),
       codeInput(),
       muxInput(),
+      table(),
     ],
 
     studio: {

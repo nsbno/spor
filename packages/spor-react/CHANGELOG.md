@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 13.1.3
+
+### Patch Changes
+
+- 15b5e35: Update Vy-logo to use correct colors in darkmode
+- Updated dependencies [65651f0]
+  - @vygruppen/spor-design-tokens@5.0.2
+
 ## 13.1.2
 
 ### Patch Changes

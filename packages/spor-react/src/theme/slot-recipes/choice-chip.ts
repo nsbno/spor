@@ -137,7 +137,7 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         itemControl: {
           _checked: {
             backgroundColor: "surface.brand",
-            color: "brand.text",
+            color: "text.brand",
             outline: "none",
             _hover: {
               backgroundColor: "surface.brand.hover",
@@ -166,7 +166,7 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
           border: "none",
           _checked: {
             backgroundColor: "surface.brand",
-            color: "brand.text",
+            color: "text.brand",
             outline: "none",
             _hover: {
               backgroundColor: "surface.brand.hover",

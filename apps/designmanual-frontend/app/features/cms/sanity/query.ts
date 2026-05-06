@@ -94,6 +94,32 @@ export function resolveTableChartGroq() {
     }`;
 }
 
+export function resolveRichTableChartGroq() {
+  return groq`
+    (_type == "richTable") => @ {
+      _type,
+      _key,
+      title,
+      description,
+      hasHeaderRow,
+      hasHeaderColumn,
+      rows[] {
+        _key,
+        cells[] {
+          _key,
+          content[] {
+            ...,
+            ${resolveImageGroq()},
+            markDefs[] {
+              ...,
+              ${resolveMarkdefsLinkGroq()},
+            }
+          }
+        }
+      }
+    }`;
+}
+
 export function resolveVideoPlayerGroq() {
   return groq`
     (_type == "videoBlock") => @ {
@@ -296,6 +322,7 @@ export function resolveAccordionGroq() {
             ${resolveLinkButtonGroq()},
             ${resolveImageGroq()},
             ${resolveTableChartGroq()},
+            ${resolveRichTableChartGroq()},
             markDefs[] {
               ...,
               ${resolveMarkdefsLinkGroq()},

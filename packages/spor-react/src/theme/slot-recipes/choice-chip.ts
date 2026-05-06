@@ -136,82 +136,82 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
       core: {
         itemControl: {
           _checked: {
-            backgroundColor: "brand.surface",
+            backgroundColor: "surface.brand",
             color: "brand.text",
             outline: "none",
             _hover: {
-              backgroundColor: "brand.surface.hover",
+              backgroundColor: "surface.brand.hover",
               _active: {
-                backgroundColor: "brand.surface.active",
+                backgroundColor: "surface.brand.active",
               },
             },
           },
           _hover: {
             outline: "2px solid",
-            outlineColor: "core.outline.hover",
+            outlineColor: "outline.core.hover",
 
             _active: {
               outline: "1px solid",
-              outlineColor: "core.outline",
-              backgroundColor: "core.surface.active",
+              outlineColor: "outline.core",
+              backgroundColor: "surface.core.active",
             },
           },
         },
       },
       accent: {
         itemControl: {
-          backgroundColor: "accent.surface",
-          color: "accent.text",
+          backgroundColor: "surface.accent",
+          color: "text.accent",
           outline: "none",
           border: "none",
           _checked: {
-            backgroundColor: "brand.surface",
+            backgroundColor: "surface.brand",
             color: "brand.text",
             outline: "none",
             _hover: {
-              backgroundColor: "brand.surface.hover",
+              backgroundColor: "surface.brand.hover",
               _active: {
-                backgroundColor: "brand.surface.active",
+                backgroundColor: "surface.brand.active",
               },
             },
           },
           _hover: {
-            backgroundColor: "accent.surface.hover",
+            backgroundColor: "surface.accent.hover",
 
             _active: {
-              backgroundColor: "accent.surface.active",
+              backgroundColor: "surface.accent.active",
             },
           },
         },
       },
       floating: {
         itemControl: {
-          backgroundColor: "floating.surface",
+          backgroundColor: "surface.floating",
           outline: "1px solid",
-          outlineColor: "floating.outline",
-          color: "floating.text",
+          outlineColor: "outline.floating",
+          color: "text.floating",
 
           boxShadow: "sm",
           _checked: {
-            backgroundColor: "brand.surface",
-            color: "brand.text",
+            backgroundColor: "surface.brand",
+            color: "text.brand",
             outline: "none",
             _hover: {
-              backgroundColor: "brand.surface.hover",
+              backgroundColor: "surface.brand.hover",
               _active: {
-                backgroundColor: "brand.surface.active",
+                backgroundColor: "surface.brand.active",
               },
             },
           },
           _hover: {
-            backgroundColor: "floating.surface.hover",
+            backgroundColor: "surface.floating.hover",
             outline: "1px solid",
-            outlineColor: "floating.outline.hover",
+            outlineColor: "outline.floating.hover",
 
             _active: {
-              backgroundColor: "floating.surface.active",
+              backgroundColor: "surface.floating.active",
               outline: "1px solid",
-              outlineColor: "floating.outline",
+              outlineColor: "outline.floating",
             },
           },
         },

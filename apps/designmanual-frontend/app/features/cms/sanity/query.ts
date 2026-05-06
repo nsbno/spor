@@ -84,6 +84,16 @@ export function resolveDividerGroq() {
     }`;
 }
 
+export function resolveTableChartGroq() {
+  return groq`
+    (_type == "table") => @ {
+      _type,
+      title,
+      description,
+      "children": rows[].cells
+    }`;
+}
+
 export function resolveVideoPlayerGroq() {
   return groq`
     (_type == "videoBlock") => @ {
@@ -203,6 +213,7 @@ export function resolveImageCardListGroq() {
         _key,
         title,
         description,
+        textContent,
         (_type == "imageCard") => @ {
           "linkType": link.type,
           image,
@@ -283,12 +294,14 @@ export function resolveAccordionGroq() {
           content[] {
             ...,
             ${resolveLinkButtonGroq()},
+            ${resolveImageGroq()},
+            ${resolveTableChartGroq()},
             markDefs[] {
               ...,
               ${resolveMarkdefsLinkGroq()},
             }
           }
-        } 
+        }
       }
     }`;
 }

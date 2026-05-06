@@ -114,7 +114,11 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
           }
           const subItems = item.subItems?.filter((subItem) => subItem.url);
           const hasSubItems = Boolean(subItems?.length);
-          const isCurrentPage = item.link === location.pathname;
+          const linkStripped = item.link?.startsWith("/")
+            ? item.link
+            : item.link?.split(".no")[1];
+          const isCurrentPage = linkStripped === location.pathname;
+
           if (item.link && !isCurrentPage) {
             return (
               <MenuItem
@@ -145,14 +149,12 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
               <AccordionItemTrigger
                 fontWeight="bold"
                 ref={index === 0 ? ref : null}
-                _expanded={{ backgroundColor: "bg.tertiary" }}
+                _expanded={{ backgroundColor: "bg.brand" }}
                 onClick={() => {
                   setExpanded([item.link]);
                 }}
                 backgroundColor={
-                  item.link === location.pathname
-                    ? "bg.tertiary"
-                    : "transparent"
+                  item.link === location.pathname ? "bg.brand" : "transparent"
                 }
               >
                 {item.title}
@@ -171,7 +173,7 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
                         isActive={`/${subItem.url}` === location.pathname}
                         backgroundColor={
                           `/${subItem.url}` === location.pathname
-                            ? "bg.tertiary"
+                            ? "bg.brand"
                             : "transparent"
                         }
                       >
@@ -196,7 +198,7 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
                         backgroundColor={
                           `${location.pathname}#${subItem.id}` ===
                           location.pathname
-                            ? "bg.tertiary"
+                            ? "bg.brand"
                             : "transparent"
                         }
                         id={`${location.pathname}#${subItem.id}--${location.pathname}`}

@@ -140,7 +140,7 @@ export const Field = ({
         )}
       </ChakraField.Root>
       {helperText && (
-        <Text variant="sm" color="text.tertiary">
+        <Text variant="sm" color="text.subtle">
           {helperText}
         </Text>
       )}

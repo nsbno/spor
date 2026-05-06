@@ -50,7 +50,7 @@ export const skeletonRecipe = defineRecipe({
       },
       none: {
         animation: "none",
-        background: "surface.color.grey",
+        background: "surface.neutral",
       },
     },
   },

@@ -100,7 +100,7 @@ export const Cards = ({
     return (
       <Box
         width="100vw"
-        background="bg.tertiary"
+        background="bg.brand"
         position="relative"
         left="50%"
         transform="translateX(-50%)"
@@ -184,7 +184,7 @@ const WithIllustration = ({ item }: { item: CardItem }) => {
               as="h3"
               variant="md"
               fontWeight="bold"
-              color="text.secondary"
+              color="text.highlight"
               autoId
               aria-label={
                 isExternalLink
@@ -235,7 +235,7 @@ const WithIcon = ({ item, color }: { item: CardItem; color: SporColor }) => {
                 as="h3"
                 fontWeight="bold"
                 variant="sm"
-                color="text.secondary"
+                color="text.highlight"
                 autoId
                 aria-label={
                   isExternalLink
@@ -280,7 +280,7 @@ const NoIconOrIllustration = ({ item }: { item: CardItem }) => {
                 as="h3"
                 variant="md"
                 fontWeight="bold"
-                color="text.secondary"
+                color="text.highlight"
                 autoId
                 aria-label={
                   isExternalLink
@@ -334,7 +334,7 @@ const WithIconNoTitle = ({
             <Heading
               as="h3"
               variant="sm"
-              color="text.secondary"
+              color="text.highlight"
               autoId
               aria-label={
                 isExternalLink

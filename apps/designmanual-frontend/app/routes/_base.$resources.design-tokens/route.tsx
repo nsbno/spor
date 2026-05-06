@@ -21,6 +21,22 @@ import { TypographyTokens } from "./TypographyTokens";
 import { ZIndexTokens } from "./ZIndexTokens";
 
 export default function DesignTokensPage() {
+  const fallback = (
+    <Flex gap="6" flexDirection="column" display="none">
+      <Heading as="h2">Color tokens</Heading>
+      <Heading as="h2">Styles</Heading>
+      <Heading as="h2">Pallette</Heading>
+      <Heading as="h2">Rounding</Heading>
+      <Heading as="h2">Typography</Heading>
+      <Heading as="h2">Spacing</Heading>
+      <Heading as="h2">Rounding</Heading>
+      <Heading as="h2">Shadows</Heading>
+      <Heading as="h2">Outlines</Heading>
+      <Heading as="h2">Breakpoints</Heading>
+      <Heading as="h2">Animation</Heading>
+      <Heading as="h2">Z-index</Heading>
+    </Flex>
+  );
   return (
     <Box paddingBottom="8">
       <Heading as="h1" variant="xl-display" marginBottom={2}>
@@ -48,7 +64,7 @@ export default function DesignTokensPage() {
       </Flex>
 
       <Separator marginBottom={8} marginTop={4} />
-      <ClientOnly>
+      <ClientOnly fallback={fallback}>
         <Stack gap={9}>
           <ColorTokens />
           <TypographyTokens />

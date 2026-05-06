@@ -33,7 +33,7 @@ export const CardSelectContent = ({
               p="2"
               bg="bg"
               border="sm"
-              borderColor="floating.outline"
+              borderColor="outline.floating"
               borderRadius="sm"
               {...props}
             >
@@ -61,9 +61,9 @@ export type CardSelectTriggerProps = {
 } & Omit<ButtonProps, "variant" | "rightIcon" | "leftIcon">;
 
 const bgActiveStyleMap = {
-  core: "core.surface.active",
-  ghost: "ghost.surface.active",
-  floating: "floating.surface.active",
+  core: "surface.core.active",
+  ghost: "surface.ghost.active",
+  floating: "surface.floating.active",
 };
 
 export const CardSelectTrigger = ({

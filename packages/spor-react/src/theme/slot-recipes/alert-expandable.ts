@@ -24,117 +24,117 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
     variant: {
       important: {
         itemContent: {
-          color: "alert.important.text.secondary",
+          color: "text.warning.subtle",
         },
         itemTrigger: {
           "&:hover": {
-            bg: "alert.important.surface.hover",
+            bg: "surface.warning.hover",
             outline: "1px solid",
-            outlineColor: "alert.important.outline.hover",
+            outlineColor: "outline.warning.hover",
             outlineOffset: "0px",
           },
           "&:active": {
-            bg: "alert.important.surface.active",
+            bg: "surface.warning.active",
           },
         },
         root: {
-          borderColor: "alert.important.outline",
-          bg: "alert.important.surface",
+          borderColor: "outline.warning",
+          bg: "surface.warning",
         },
         title: {
-          color: "alert.important.text",
+          color: "text.warning",
         },
       },
       success: {
         itemContent: {
-          color: "alert.success.text.secondary",
+          color: "text.success.subtle",
         },
         itemTrigger: {
           "&:hover": {
-            bg: "alert.success.surface.hover",
+            bg: "surface.success.hover",
             outline: "1px solid",
             outlineOffset: "0px",
-            outlineColor: "alert.success.outline.hover",
+            outlineColor: "outline.success.hover",
             "&:active": {
-              bg: "alert.success.surface.active",
+              bg: "surface.success.active",
             },
           },
         },
         root: {
-          borderColor: "alert.success.outline",
-          bg: "alert.success.surface",
+          borderColor: "outline.success",
+          bg: "surface.success",
         },
         title: {
-          color: "alert.success.text",
+          color: "text.success",
         },
       },
       alt: {
         itemContent: {
-          color: "alert.alt.text.secondary",
+          color: "text.notice.subtle",
         },
         itemTrigger: {
           "&:hover": {
-            bg: "alert.alt.surface.hover",
+            bg: "surface.notice.hover",
             outlineOffset: "0px",
             outline: "1px solid",
-            outlineColor: "alert.alt.outline.hover",
+            outlineColor: "outline.notice.hover",
             "&:active": {
-              bg: "alert.alt.surface.active",
+              bg: "surface.notice.active",
             },
           },
         },
         root: {
-          borderColor: "alert.alt.outline",
-          bg: "alert.alt.surface",
+          borderColor: "outline.notice",
+          bg: "surface.notice",
         },
         title: {
-          color: "alert.alt.text",
+          color: "text.notice",
         },
       },
       info: {
         itemContent: {
-          color: "alert.info.text.secondary",
+          color: "text.info.subtle",
         },
         itemTrigger: {
           "&:hover": {
-            bg: "alert.info.surface.hover",
+            bg: "surface.info.hover",
             outlineOffset: "0px",
             outline: "1px solid",
-            outlineColor: "alert.info.outline.hover",
+            outlineColor: "outline.info.hover",
             "&:active": {
-              bg: "alert.info.surface.active",
+              bg: "surface.info.active",
             },
           },
         },
         root: {
-          borderColor: "alert.info.outline",
-          bg: "alert.info.surface",
+          borderColor: "outline.info",
+          bg: "surface.info",
         },
         title: {
-          color: "alert.info.text",
+          color: "text.info",
         },
       },
       error: {
         itemContent: {
-          color: "alert.error.text.secondary",
+          color: "text.critical.subtle",
         },
         itemTrigger: {
           "&:hover": {
-            bg: "alert.error.surface.hover",
+            bg: "surface.critical.hover",
             outlineOffset: "0px",
             outline: "1px solid",
-            outlineColor: "alert.error.outline.hover",
+            outlineColor: "outline.critical.hover",
             "&:active": {
-              bg: "alert.error.surface.active",
+              bg: "surface.critical.active",
             },
           },
         },
         root: {
-          borderColor: "alert.error.outline",
-          bg: "alert.error.surface",
+          borderColor: "outline.critical",
+          bg: "surface.critical",
         },
         title: {
-          color: "alert.error.text",
+          color: "text.critical",
         },
       },
     },

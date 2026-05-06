@@ -36,21 +36,22 @@ export const menuSlotRecipe = defineSlotRecipe({
       display: "flex",
       justifyContent: "space-between",
       gap: 1.5,
+      cursor: "pointer",
 
       _hover: {
-        backgroundColor: "accent.surface.hover",
+        backgroundColor: "surface.accent.hover",
       },
 
       "&:active": {
-        backgroundColor: "accent.surface.active",
+        backgroundColor: "surface.accent.active",
       },
 
       _checked: {
-        backgroundColor: "accent.surface",
+        backgroundColor: "surface.accent",
       },
 
       _highlighted: {
-        backgroundColor: "ghost.surface.hover",
+        backgroundColor: "surface.ghost.hover",
       },
     },
     itemGroupLabel: {
@@ -68,18 +69,21 @@ export const menuSlotRecipe = defineSlotRecipe({
       display: "flex",
       justifyContent: "space-between",
       gap: 2,
+      cursor: "pointer",
     },
     triggerItem: {
       display: "flex",
       justifyContent: "space-between",
       gap: 1.5,
       alignItems: "center",
+      cursor: "pointer",
     },
     checkboxItem: {
       display: "flex",
       gap: 2,
       alignItems: "center",
       width: "full",
+      cursor: "pointer",
     },
   },
   variants: {
@@ -87,19 +91,19 @@ export const menuSlotRecipe = defineSlotRecipe({
       core: {
         content: {
           border: "1px solid",
-          borderColor: "core.outline",
+          borderColor: "outline.core",
         },
       },
       accent: {
         content: {
           border: "1px solid",
-          borderColor: "core.outline",
+          borderColor: "outline.core",
         },
       },
       floating: {
         content: {
           border: "sm",
-          borderColor: "floating.outline",
+          borderColor: "outline.floating",
           boxShadow: "lg",
         },
       },

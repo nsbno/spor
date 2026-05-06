@@ -115,7 +115,7 @@ export const CloseDrawerLine = ({
       top={0}
       marginY={2}
       marginX="auto"
-      backgroundColor="floating.outline.active"
+      backgroundColor="outline.neutral"
       borderRadius="xs"
       {...props}
       ref={ref}

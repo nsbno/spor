@@ -55,7 +55,13 @@ export const AttachedInputs = ({
 
   if (!onFlip) {
     return (
-      <Group ref={ref} css={styles} attached isolation="auto" {...restProps} />
+      <Group
+        ref={ref}
+        css={styles}
+        attached
+        isolation="isolate"
+        {...restProps}
+      />
     );
   }
 
@@ -65,7 +71,7 @@ export const AttachedInputs = ({
         ref={ref}
         css={styles}
         attached
-        isolation="auto"
+        isolation="isolate"
         data-with-flip-button
         {...restProps}
       />

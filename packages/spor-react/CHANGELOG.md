@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 13.2.0
+
+### Minor Changes
+
+- 305f387: Introduces two new Chip-components: ChoiceChip and FilterChip. ChoiceChip becomes a singleselect chip, where the user can only select a singluar item among the chips that are grouped together. FilterChip is introduced as the new multipleselect chip, where the user can select multiple items among the chips that are grouped together.
+
 ## 13.1.4
 
 ### Patch Changes

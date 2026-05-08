@@ -87,6 +87,7 @@ export const NumericStepper = ({
     label,
     helperText,
     errorText,
+    gap,
     ...rest
   } = props;
 
@@ -116,6 +117,7 @@ export const NumericStepper = ({
       invalid={invalid}
       readOnly={readOnly}
       required={required}
+      gap={gap}
     >
       <VerySmallButton
         icon={<SubtractIcon stepLabel={clampedStepSize} />}
@@ -167,7 +169,10 @@ export const NumericStepper = ({
       ) : (
         <Text
           aria-live="assertive"
-          paddingX="0.95rem"
+          width={`${Math.max(value.toString().length + 1, 3)}ch`}
+          paddingX={0.5}
+          padding={0}
+          textAlign="center"
           aria-label={
             ariaLabelContext.plural === ""
               ? ""

@@ -10,7 +10,7 @@ export const progressBarRecipe = defineSlotRecipe({
     },
     background: {
       display: "flex",
-      backgroundColor: "accent.surface.hover",
+      backgroundColor: "surface.accent.hover",
       borderRadius: "sm",
       boxPack: "start",
       justifyContent: "flex-start",
@@ -22,7 +22,7 @@ export const progressBarRecipe = defineSlotRecipe({
       borderRadius: "sm",
     },
     progress: {
-      backgroundColor: "brand.surface.active",
+      backgroundColor: "surface.brand.active",
       borderRadius: "sm",
       maxWidth: "100%",
       transition: "width .2s ease-out",

@@ -43,7 +43,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     },
     dateTimeSegment: {
       _focus: {
-        backgroundColor: "ghost.surface.active",
+        backgroundColor: "surface.ghost.active",
         color: "text",
       },
     },
@@ -60,10 +60,10 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       transitionProperty: "box-shadow, background-color",
       right: "0.5rem",
       _hover: {
-        backgroundColor: "ghost.surface.hover",
+        backgroundColor: "surface.ghost.hover",
       },
       _active: {
-        backgroundColor: "ghost.surface.active",
+        backgroundColor: "surface.ghost.active",
       },
       _invalid: {
         outline: "2px solid",
@@ -74,11 +74,11 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       backgroundColor: "surface",
     },
     calendarPopover: {
-      color: "core.text",
+      color: "text.core",
       outline: "1px solid",
-      outlineColor: "floating.outline",
+      outlineColor: "outline.floating",
       boxShadow: "md",
-      backgroundColor: "floating.surface",
+      backgroundColor: "surface.floating",
       minHeight: "min-content",
     },
     rangeCalendarPopover: {
@@ -86,11 +86,11 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       maxWidth: "100vw",
     },
     weekdays: {
-      color: "core.text",
+      color: "text.core",
       fontWeight: "bold",
     },
     weekend: {
-      color: "accent.text",
+      color: "text.accent",
       fontWeight: "bold",
     },
     cell: {
@@ -104,12 +104,12 @@ export const datePickerSlotRecipe = defineSlotRecipe({
           top: 0,
           bottom: 0,
           zIndex: -1,
-          backgroundColor: "brand.surface",
+          backgroundColor: "surface.brand",
         },
       },
     },
     dateCell: {
-      color: "core.text",
+      color: "text.core",
       borderRadius: "xl",
       position: "relative",
       transition: ".1s ease-in-out",
@@ -119,10 +119,10 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       transitionProperty: "common",
 
       _hover: {
-        backgroundColor: "ghost.surface.hover",
+        backgroundColor: "surface.ghost.hover",
       },
       _active: {
-        backgroundColor: "ghost.surface.active",
+        backgroundColor: "surface.ghost.active",
       },
       _disabled: {
         backgroundColor: "surface.disabled",
@@ -130,16 +130,16 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         pointerEvents: "none",
       },
       _selected: {
-        backgroundColor: "brand.surface",
-        color: "brand.text",
+        backgroundColor: "surface.brand",
+        color: "text.brand",
         _active: {
-          backgroundColor: "brand.surface.active",
-          color: "brand.text",
+          backgroundColor: "surface.brand.active",
+          color: "text.brand",
         },
       },
       "&[data-today]": {
         outline: "1px solid",
-        outlineColor: "core.outline",
+        outlineColor: "outline.core",
       },
       "&[data-unavailable]": {
         pointerEvents: "none",
@@ -154,16 +154,16 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       core: {
         wrapper: {
           outline: "1px solid",
-          outlineColor: "core.outline",
+          outlineColor: "outline.core",
 
           _hover: {
             outline: "2px solid",
 
-            outlineColor: "core.outline.hover",
+            outlineColor: "outline.core.hover",
             _active: {
-              backgroundColor: "ghost.surface.active",
+              backgroundColor: "surface.ghost.active",
               outline: "1px solid",
-              outlineColor: "core.outline",
+              outlineColor: "outline.core",
             },
 
             "&[data-active]": {
@@ -182,18 +182,18 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       },
       floating: {
         wrapper: {
-          bg: "floating.surface",
+          bg: "surface.floating",
           outline: "1px solid",
-          outlineColor: "floating.outline",
+          outlineColor: "outline.floating",
           boxShadow: "sm",
 
           _hover: {
             outline: "1px solid",
-            outlineColor: "floating.outline.hover",
+            outlineColor: "outline.floating.hover",
             _active: {
-              backgroundColor: "ghost.surface.active",
+              backgroundColor: "surface.ghost.active",
               outline: "1px solid",
-              outlineColor: "core.outline",
+              outlineColor: "outline.core",
             },
 
             "&[data-active]": {
@@ -214,11 +214,11 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         wrapper: {
           _hover: {
             outline: "2px solid",
-            outlineColor: "core.outline.hover",
+            outlineColor: "outline.core.hover",
             _active: {
-              backgroundColor: "ghost.surface.active",
+              backgroundColor: "surface.ghost.active",
               outline: "1px solid",
-              outlineColor: "core.outline",
+              outlineColor: "outline.core",
             },
 
             "&[data-active]": {

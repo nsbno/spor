@@ -25,7 +25,7 @@ export const BrandSwitcher = () => {
 
   return (
     <Stack gap="2">
-      <Heading as="h2" variant="md" fontWeight="bold">
+      <Heading as="h3" variant="md" fontWeight="bold">
         Theme
       </Heading>
       <fetcher.Form method="post" action="/api/brand">

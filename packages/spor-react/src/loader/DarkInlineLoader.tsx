@@ -9,6 +9,7 @@ import {
 import { inlineLoaderDarkData } from "@vygruppen/spor-loader";
 
 import Lottie from "./Lottie";
+import { useGetLoadingText } from "./text";
 
 export type DarkInlineLoaderProps = Exclude<BoxProps, "children">;
 /**
@@ -26,7 +27,7 @@ export const DarkInlineLoader = ({
           <Lottie animationData={inlineLoaderDarkData} />
         </ClientOnly>
       </Box>
-      <VisuallyHidden>Loading...</VisuallyHidden>
+      <VisuallyHidden>{useGetLoadingText()}</VisuallyHidden>
     </Center>
   );
 };

@@ -158,6 +158,7 @@ export const radioCardAnatomy = createAnatomy("radio-card").parts(
   "itemText",
   "itemDescription",
   "itemContent",
+  "itemControl",
 );
 
 export const radioAnatomy = createAnatomy("radio").parts(
@@ -284,4 +285,20 @@ export { collapsibleAnatomy } from "@ark-ui/react/collapsible";
 export const comboboxAnatomy = arkComboboxAnatomy.extendWith(
   "indicatorGroup",
   "empty",
+);
+
+export const tagAnatomy = createAnatomy("tag").parts("root");
+
+export const menuAnatomy = createAnatomy("menu").parts(
+  "trigger",
+  "content",
+  "item",
+  "itemGroup",
+  "triggerItem",
+  "itemCommand",
+  "itemGroupLabel",
+  "separator",
+  "radioItem",
+  "triggerItem",
+  "checkboxItem",
 );

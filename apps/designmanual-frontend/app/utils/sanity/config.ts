@@ -35,7 +35,8 @@ export const sanityConfig = {
   useCdn: true,
   token: VITE_SANITY_SECRET || sanitySecret || undefined,
   stega: {
-    enabled: true,
-    studioUrl: "https://vydesignmanual.sanity.studio/",
+    enabled: false,
+    studioUrl:
+      VITE_SANITY_STUDIO_URL || "https://vydesignmanual.sanity.studio/",
   },
 };

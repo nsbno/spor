@@ -103,7 +103,10 @@ export const links: LinksFunction = () => {
 };
 
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
-  const initialSanityData = await getInitialSanityData();
+  const draftMode =
+    new URL(request.url).searchParams.get("sanity-preview-perspective") ===
+    "drafts";
+  const initialSanityData = await getInitialSanityData(draftMode);
   const brand = await getBrandFromCookie(request.headers.get("cookie") ?? "");
 
   const isMac = /Mac|iPod|iPhone|iPad/.test(
@@ -113,8 +116,6 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const slug = params.slug || "";
 
   const domain = request.headers.get("host") ?? "";
-
-  const isPreview = request.url.includes("sanity-preview-perspective=drafts");
 
   const { preview } = await previewContext(request.headers);
 
@@ -133,7 +134,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     isMac,
     domain,
     slug,
-    isPreview,
+    isPreview: preview,
     preview,
     ENV,
     readToken,

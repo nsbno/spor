@@ -10,6 +10,7 @@ import {
   VisuallyHidden,
 } from "..";
 import Lottie from "./Lottie";
+import { useGetLoadingText } from "./text";
 
 export type DarkSpinnerProps = BoxProps;
 /** A circular spinner
@@ -42,7 +43,7 @@ export const DarkSpinner = ({
           <Lottie animationData={spinnerData} />
         </ClientOnly>
       </Box>
-      <VisuallyHidden>Loading...</VisuallyHidden>
+      <VisuallyHidden>{useGetLoadingText()}</VisuallyHidden>
       {children && (
         <Box marginTop={3} fontWeight="bold">
           {children}

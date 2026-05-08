@@ -20,7 +20,7 @@ export const Footer = () => {
     <Flex
       as="footer"
       justifyContent="space-between"
-      backgroundColor="surface.secondary"
+      backgroundColor="surface.subtle"
       className="dark"
       alignItems="center"
       gap="4"
@@ -41,10 +41,10 @@ export const Footer = () => {
             aria-hidden="true"
             width="auto"
             height={["30px", "36px", null, "42px"]}
+            variant="mono"
           />
         </Link>
       </Box>
-
       <Flex
         flexDirection="row"
         justifyContent="center"
@@ -69,7 +69,6 @@ export const Footer = () => {
                 flexDirection="column"
                 key={item._key}
                 textAlign={["left", null, "center"]}
-                color="text.inverted"
               >
                 <Text
                   as="h6"
@@ -84,12 +83,7 @@ export const Footer = () => {
                 <Box
                   textAlign={["left", null, "center"]}
                   fontSize="xs"
-                  color="text.inverted"
-                  css={{
-                    "& a": {
-                      textDecoration: "underline",
-                    },
-                  }}
+                  color="text"
                 >
                   <PortableText value={item.description} />
                 </Box>

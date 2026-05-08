@@ -14,6 +14,7 @@ import {
   resolveImageCardListGroq,
   resolveNonClickableBoxListGroq,
   resolveTextBlocksGroq,
+  resolveVideoPlayerGroq,
 } from "~/features/cms/sanity/query";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
@@ -44,6 +45,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
         ${resolveAccordionGroq()},
         ${resolveDividerGroq()},
         ${resolveFileListGroq()},
+        ${resolveVideoPlayerGroq()},
       }
     }
   }`;
@@ -54,7 +56,10 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
       section: params.section,
       draftId,
     },
-    { perspective: draftMode ? "previewDrafts" : "published" },
+    {
+      perspective: draftMode ? "previewDrafts" : "published",
+      stega: draftMode,
+    },
   );
 
   if (!data) {

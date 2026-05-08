@@ -38,8 +38,8 @@ export const IllustationGrid = ({
           colorScheme="white"
           bg={
             illustration.illustrationType.includes("sticker")
-              ? "bg.secondary"
-              : "bg.secondary"
+              ? "bg.subtle"
+              : "bg.subtle"
           }
           padding={2}
           border="1px solid"

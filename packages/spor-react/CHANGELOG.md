@@ -1,5 +1,110 @@
 # @vygruppen/spor-react
 
+## 13.2.0
+
+### Minor Changes
+
+- 305f387: Introduces two new Chip-components: ChoiceChip and FilterChip. ChoiceChip becomes a singleselect chip, where the user can only select a singluar item among the chips that are grouped together. FilterChip is introduced as the new multipleselect chip, where the user can select multiple items among the chips that are grouped together.
+
+## 13.1.4
+
+### Patch Changes
+
+- ab364d0: Fix positioning of popover/tooltip-content when used together with more advanced components as triggers.
+- 126094e: Table: fix table cells width to avoid render conflict with tableLayout fixed
+- cd92694: Make cursor showing pointer in the menu component
+
+## 13.1.3
+
+### Patch Changes
+
+- 15b5e35: Update Vy-logo to use correct colors in darkmode
+- Updated dependencies [65651f0]
+  - @vygruppen/spor-design-tokens@5.0.2
+
+## 13.1.2
+
+### Patch Changes
+
+- 976b64a: Add border to toast
+
+## 13.1.1
+
+### Patch Changes
+
+- 106ee0f: Patches to new color tokens and add support to badge-inverted back
+- 448f4e5: add props for button-variant and withChevron to menutrigger
+- Updated dependencies [106ee0f]
+  - @vygruppen/spor-design-tokens@5.0.1
+
+## 13.1.0
+
+### Minor Changes
+
+- 6c7d7d3: Update to new colortoken structure
+
+### Patch Changes
+
+- 6e1b6f1: Add translation of 'Loading'-text in spinners and loaders
+- 35a30e9: Refactor Lottie implementation to work with Vite 8.
+- 221a86e: Added disabled colors to checkboxes that are not in checked state
+- Updated dependencies [6c7d7d3]
+  - @vygruppen/spor-design-tokens@5.0.0
+  - @vygruppen/spor-icon-react@5.0.0
+
+## 13.0.3
+
+### Patch Changes
+
+- d10648c: Add InputChip component, and style adjustments to Select
+
+## 13.0.2
+
+### Patch Changes
+
+- 0eee096: remove inline padding in text links
+- bc4d10e: Added width parameter to toast
+- 0ac2838: Remove visuallyhidden voiceover helper and rely on title to explain the content
+- 29cf1ac: Improved aria-label for Swtich and added aria-hidden for decorative Separator
+
+## 13.0.1
+
+### Patch Changes
+
+- ce9b9f1: replace RefObject with Ref for ref prop type
+
+## 13.0.0
+
+### Major Changes
+
+- 28d1e87: Upgrade design system to React 19.
+
+  ### Breaking Changes
+  - React 19 is now required as a peer dependency
+  - Internal usage of `useRef` has been removed and refactored
+
+  ### Migration
+  - Ensure your application is upgraded to React 19 before updating these packages
+
+### Patch Changes
+
+- Updated dependencies [28d1e87]
+  - @vygruppen/spor-icon-react@5.0.0
+
+## 12.24.16
+
+### Patch Changes
+
+- b90fd20: Design adjustments to the menu component
+- 80a1fda: Add new menu-component
+
+## 12.24.15
+
+### Patch Changes
+
+- 2efa3ee: fix(calendar): iOS 26 pointer bug with range selection
+- f7f40c2: feat(autocomplete): Added ref and css props
+
 ## 12.24.14
 
 ### Patch Changes

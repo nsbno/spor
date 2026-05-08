@@ -5,7 +5,7 @@ import {
   Switch as ChakraSwitch,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import React, { forwardRef, PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 
 import { switchSlotRecipe } from "../theme/slot-recipes/switch";
 import { Field, FieldBaseProps } from "./Field";
@@ -45,45 +45,55 @@ export type SwitchProps = Exclude<
  * ```
  */
 
-export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
-  (props, ref) => {
-    const {
-      rootRef,
-      size = "md",
-      label,
-      invalid,
-      errorText,
-      helperText,
-      css,
-      ...rest
-    } = props;
-    const recipe = useSlotRecipe({ key: "switch" });
-    const styles = recipe({ size });
+export const Switch = ({
+  ref,
+  ...props
+}: SwitchProps & {
+  ref?: React.Ref<HTMLInputElement>;
+}) => {
+  const {
+    rootRef,
+    size = "md",
+    label,
+    invalid,
+    errorText,
+    helperText,
+    css,
+    "aria-label": ariaLabel,
+    "aria-labelledby": ariaLabelledby,
+    "aria-describedby": ariaDescribedby,
+    ...rest
+  } = props;
+  const recipe = useSlotRecipe({ key: "switch" });
+  const styles = recipe({ size });
 
-    return (
-      <Field
-        style={{ width: "auto" }}
-        invalid={invalid}
-        errorText={errorText}
-        helperText={helperText}
-        required={props.required}
-        id={rest.id}
-        css={css}
+  return (
+    <Field
+      style={{ width: "auto" }}
+      invalid={invalid}
+      errorText={errorText}
+      helperText={helperText}
+      required={props.required}
+      id={rest.id}
+      css={css}
+    >
+      <ChakraSwitch.Root
+        ref={rootRef}
+        {...rest}
+        checked={props.checked}
+        css={styles.root}
       >
-        <ChakraSwitch.Root
-          ref={rootRef}
-          {...rest}
-          checked={props.checked}
-          css={styles.root}
-        >
-          <ChakraSwitch.HiddenInput ref={ref} />
-          <ChakraSwitch.Control css={styles.control}>
-            <ChakraSwitch.Thumb />
-          </ChakraSwitch.Control>
-          {label && <ChakraSwitch.Label>{label}</ChakraSwitch.Label>}
-        </ChakraSwitch.Root>
-      </Field>
-    );
-  },
-);
-Switch.displayName = "Switch";
+        <ChakraSwitch.HiddenInput
+          ref={ref}
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledby}
+          aria-describedby={ariaDescribedby}
+        />
+        <ChakraSwitch.Control css={styles.control}>
+          <ChakraSwitch.Thumb />
+        </ChakraSwitch.Control>
+        {label && <ChakraSwitch.Label>{label}</ChakraSwitch.Label>}
+      </ChakraSwitch.Root>
+    </Field>
+  );
+};

@@ -17,7 +17,10 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const menu = await getClient().fetch(
     `*[_type == "menu" && slug.current == "side-menu"][0] { menuItems }`,
     {},
-    { perspective: draftMode ? "previewDrafts" : "published" },
+    {
+      perspective: draftMode ? "previewDrafts" : "published",
+      stega: draftMode,
+    },
   );
   return { menu, slug };
 };

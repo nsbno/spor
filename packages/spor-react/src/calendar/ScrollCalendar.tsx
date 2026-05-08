@@ -38,10 +38,20 @@ export function ScrollCalendar(boxProps: BoxProps) {
       if (monthIndex > 0 && monthIndex < monthCount) {
         const element = monthReferences.current[monthIndex];
         if (element) {
-          element.scrollIntoView({
-            behavior: "instant",
-            block: "start",
-          });
+          const selectedCell = element.querySelector<HTMLElement>(
+            '[aria-selected="true"]',
+          );
+          if (selectedCell) {
+            selectedCell.scrollIntoView({
+              behavior: "instant",
+              block: "center",
+            });
+          } else {
+            element.scrollIntoView({
+              behavior: "instant",
+              block: "start",
+            });
+          }
         }
       }
 

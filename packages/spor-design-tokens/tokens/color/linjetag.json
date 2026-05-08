@@ -66,6 +66,12 @@
       },
       "altTransportLight": {
         "value": "#FDF3BA"
+      },
+      "ruterOslo": {
+        "value": "#E60000"
+      },
+      "ruterAkershus": {
+        "value": "#76A300"
       }
     }
   }

@@ -42,16 +42,16 @@ export const radioCardSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         item: {
-          outlineColor: "core.outline",
+          outlineColor: "outline.core",
           outlineWidth: tokens.size.stroke.sm,
           outlineStyle: "solid",
 
           _hover: {
-            outlineColor: "core.outline.hover",
+            outlineColor: "outline.core.hover",
             outlineWidth: tokens.size.stroke.md,
             outlineStyle: "solid",
             _active: {
-              backgroundColor: "core.surface.active",
+              backgroundColor: "surface.core.active",
               outlineWidth: tokens.size.stroke.sm,
             },
           },
@@ -59,7 +59,7 @@ export const radioCardSlotRecipe = defineSlotRecipe({
             outlineColor: "outline.focus",
             outlineWidth: tokens.size.stroke.md,
             outlineStyle: "solid",
-            backgroundColor: "core.surface.active",
+            backgroundColor: "surface.core.active",
             _focusVisible: {
               outlineStyle: "double",
               outlineWidth: `calc(3 * ${tokens.size.stroke.md})`, // space for double outline
@@ -73,18 +73,18 @@ export const radioCardSlotRecipe = defineSlotRecipe({
           shadowColor: "surface.disabled",
 
           border: "sm",
-          borderColor: "floating.outline",
+          borderColor: "outline.floating",
 
-          background: "floating.surface",
+          background: "surface.floating",
           _hover: {
-            background: "floating.surface.hover",
+            background: "surface.floating.hover",
 
-            borderColor: "floating.outline.hover",
+            borderColor: "outline.floating.hover",
 
             boxShadow: "0px 2px 6px 0px var(--shadow-color)",
             _active: {
-              background: "floating.surface.active",
-              borderColor: "floating.outline.active",
+              background: "surface.floating.active",
+              borderColor: "outline.neutral",
               boxShadow: "none",
             },
           },
@@ -92,7 +92,7 @@ export const radioCardSlotRecipe = defineSlotRecipe({
             outlineColor: "outline.focus",
             outlineWidth: tokens.size.stroke.md,
             outlineStyle: "solid",
-            backgroundColor: "core.surface.active",
+            backgroundColor: "surface.core.active",
 
             _focusVisible: {
               outlineStyle: "double",

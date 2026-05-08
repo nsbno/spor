@@ -8,7 +8,7 @@ export type UseFloatingInputStateProps<
   onFocus?: (event: FocusEvent<T>) => void;
   onBlur?: (event: FocusEvent<T>) => void;
   onChange?: (event: ChangeEvent<T>) => void;
-  inputRef?: React.RefObject<T>;
+  inputRef?: React.Ref<T>;
 };
 
 export function useFloatingInputState<

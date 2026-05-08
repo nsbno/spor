@@ -6,6 +6,7 @@ import { matchSorter } from "match-sorter";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 
+import { sendCustomEvent } from "~/utils/analytics/metabase";
 import { useTopSearch } from "~/utils/useMenu";
 
 const useSearchableItems = () => {
@@ -35,7 +36,7 @@ const ComboboxItem = chakra(
       gap: "1",
       paddingX: "4",
       paddingY: "3",
-      _highlighted: { bg: "core.surface.active" },
+      _highlighted: { bg: "surface.core.active" },
     },
   },
   { forwardAsChild: true },
@@ -98,16 +99,28 @@ export const SearchDocsInput = ({ onSearchSelect, onClose }: Props) => {
           <For
             each={collection.items}
             fallback={
-              <Text paddingX="4" paddingY="5" color="text.tertiary">
+              <Text paddingX="4" paddingY="5" color="text.subtle">
                 No results found for &quot;{searchQuery}&quot;
               </Text>
             }
           >
             {(item) => (
-              <ComboboxItem key={item.value} item={item} asChild>
+              <ComboboxItem
+                key={item.value}
+                item={item}
+                asChild
+                onClick={() =>
+                  sendCustomEvent({
+                    event: "use_search",
+                    properties: {
+                      destination: item.url,
+                    },
+                  })
+                }
+              >
                 <Link to={`${item.url}`}>
                   <Text fontWeight="bold">{item.title}</Text>
-                  <Text variant="xs" color="text.tertiary">
+                  <Text variant="xs" color="text.subtle">
                     {item.categoryTitle}
                   </Text>
                 </Link>

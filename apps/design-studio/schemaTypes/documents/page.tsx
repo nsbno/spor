@@ -92,6 +92,7 @@ export const page = defineType({
         { type: "accordion", title: "Accordion" },
         { type: "fileList", title: "File list" },
         { type: "linkButton", title: "Link button" },
+        { type: "videoBlock", title: "Video block" },
         { type: "divider", title: "Divider" },
       ],
       group: "pageContent",

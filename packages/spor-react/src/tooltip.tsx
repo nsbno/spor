@@ -1,38 +1,49 @@
 "use client";
 
-import { Portal, Tooltip as ChakraTooltip } from "@chakra-ui/react";
-import { forwardRef } from "react";
+import { Box, Portal, Tooltip as ChakraTooltip } from "@chakra-ui/react";
 
 export const Tooltip = ChakraTooltip.Root;
 
-export const TooltipTrigger = forwardRef<
-  HTMLButtonElement,
-  ChakraTooltip.TriggerProps
->(({ children, ...props }, ref) => {
+export const TooltipTrigger = ({
+  ref,
+  children,
+  ...props
+}: ChakraTooltip.TriggerProps & {
+  ref?: React.Ref<HTMLButtonElement>;
+}) => {
   const isStringChild = typeof children === "string";
 
   return (
-    <ChakraTooltip.Trigger {...props} ref={ref} asChild={!isStringChild}>
-      {children}
+    <ChakraTooltip.Trigger ref={ref} asChild={!isStringChild} {...props}>
+      {isStringChild ? children : <Box width="fit-content">{children}</Box>}
     </ChakraTooltip.Trigger>
   );
-});
-TooltipTrigger.displayName = "TooltipTrigger";
+};
 
-export type TooltipProps = ChakraTooltip.ContentProps;
+export type TooltipProps = ChakraTooltip.ContentProps & {
+  showArrow?: boolean;
+};
 
-export const TooltipContent = forwardRef<HTMLDivElement, TooltipProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <Portal>
-        <ChakraTooltip.Positioner>
-          <ChakraTooltip.Content ref={ref} {...props}>
-            <ChakraTooltip.Arrow />
-            <ChakraTooltip.Content {...props}>{children}</ChakraTooltip.Content>
-          </ChakraTooltip.Content>
-        </ChakraTooltip.Positioner>
-      </Portal>
-    );
-  },
-);
-TooltipContent.displayName = "TooltipContent";
+export const TooltipContent = ({
+  ref,
+  children,
+  showArrow = false,
+  ...props
+}: TooltipProps & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
+  return (
+    <Portal>
+      <ChakraTooltip.Positioner>
+        <ChakraTooltip.Content ref={ref} {...props}>
+          {showArrow && (
+            <ChakraTooltip.Arrow>
+              <ChakraTooltip.ArrowTip />
+            </ChakraTooltip.Arrow>
+          )}
+          {children}
+        </ChakraTooltip.Content>
+      </ChakraTooltip.Positioner>
+    </Portal>
+  );
+};

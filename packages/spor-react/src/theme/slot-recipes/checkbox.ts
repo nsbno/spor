@@ -14,11 +14,11 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       gap: 1.5,
       _hover: {
         "& > input:enabled:not([aria-invalid]) + .spor-checkbox__control": {
-          borderColor: "core.outline.hover",
+          borderColor: "outline.core.hover",
         },
         "& > input:enabled:checked:not([aria-invalid]) + .spor-checkbox__control":
           {
-            background: "brand.surface.hover",
+            background: "surface.brand.hover",
           },
       },
     },
@@ -40,31 +40,25 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       transitionProperty: "background, border-color",
       transitionDuration: "moderate",
       border: "2px solid",
-      borderColor: "core.outline",
+      borderColor: "outline.core",
       borderRadius: "xs",
 
       _checked: {
-        color: "brand.icon",
-        borderColor: "brand.surface",
-        background: "brand.surface",
+        color: "icon.brand",
+        borderColor: "surface.brand",
+        background: "surface.brand",
         _focus: {
-          borderColor: "brand.surface.active",
+          borderColor: "surface.brand.active",
         },
-
-        _disabled: {
-          background: "surface.disabled",
-          color: "text.disabled",
-          borderColor: "currentColor",
-        },
-
         _invalid: {
           backgroundColor: "outline.error",
           borderColor: "outline.error",
         },
       },
       _disabled: {
-        // borderColor: coreText("disabled").color,
-        borderColor: "text.disabled",
+        background: "surface.disabled",
+        borderColor: "outline.disabled",
+        color: "text.disabled",
       },
       _invalid: {
         borderColor: "outline.error",
@@ -74,7 +68,7 @@ export const checkboxSlotRecipe = defineSlotRecipe({
         outlineColor: "outline.focus",
         outlineOffset: tokens.size.stroke.md,
         outlineWidth: tokens.size.stroke.md,
-        borderColor: "core.outline",
+        borderColor: "outline.core",
         borderWidth: tokens.size.stroke.md,
       },
     },

@@ -97,7 +97,9 @@ export const Combobox = (props: ComboboxProps<object>) => {
 
   const listboxId = useId();
 
-  const inputWidth = useInputWidth(inputRef);
+  const inputWidth = useInputWidth(
+    inputRef as React.RefObject<HTMLInputElement>,
+  );
 
   const state = useComboBoxState({
     defaultFilter: contains,
@@ -183,7 +185,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
         borderBottomRightRadius={
           state.isOpen && !loading ? 0 : borderBottomRightRadius
         }
-        _active={{ backgroundColor: "core.surface.active" }}
+        _active={{ backgroundColor: "surface.core.active" }}
         {...filteredInputProps}
         startElement={leftIcon}
         endElement={
@@ -231,7 +233,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
             }}
             state={state}
             id={listboxId}
-            listBoxRef={listBoxRef}
+            listBoxRef={listBoxRef as React.RefObject<HTMLUListElement>}
             emptyContent={emptyContent}
             maxWidth={inputWidth}
             variant={variant}
@@ -243,8 +245,6 @@ export const Combobox = (props: ComboboxProps<object>) => {
     </>
   );
 };
-
-Combobox.displayName = "Combobox";
 
 const useInputWidth = (inputRef: React.RefObject<HTMLInputElement>) => {
   const [inputWidth, setInputWidth] = useState("auto");

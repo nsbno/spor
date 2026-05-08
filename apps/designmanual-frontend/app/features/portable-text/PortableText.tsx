@@ -6,6 +6,7 @@ import {
   PortableTextReactComponents,
   PortableText as SanityPortableText,
 } from "@portabletext/react";
+import { useRouteLoaderData } from "react-router";
 import {
   CheckmarkFill30Icon,
   ErrorOutline30Icon,
@@ -33,6 +34,7 @@ import { urlBuilder } from "~/utils/sanity/utils";
 
 import { ComponentDocs } from "../../routes/_base.$section.$category.$slug/component-docs/ComponentDocs";
 import { CodeBlock } from "./code-block/CodeBlock";
+import { ResponsiveImage } from "./components/ResponsiveImage";
 import { ImageWithCaption } from "./ImageWithCaption";
 import { InteractiveCode } from "./interactive-code/InteractiveCode";
 import { LinkableHeading } from "./LinkableHeading";
@@ -47,7 +49,9 @@ import { ImageCardListSerializer } from "./serializers/ImageCardListSerializer";
 import { LinkButtonSerializer } from "./serializers/LinkButtonSerializer";
 import { NonClickableBoxListSerializer } from "./serializers/NonClickableBoxesSerializer";
 import { TextBlockSerializer } from "./serializers/TextBlockSerializer";
+import { TableChartSerializer } from "./serializers/TableChartSerializer";
 import { TextBlocksSerializer } from "./serializers/TextBlocksSerializer";
+import { VideoPlayerSerializer } from "./serializers/VideoPlayerSerializer";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
@@ -75,7 +79,7 @@ const components: Partial<PortableTextReactComponents> = {
         variant="xxl"
         fontWeight="200"
         marginTop={6}
-        color="text.secondary"
+        color="text.highlight"
       >
         {children}
       </LinkableHeading>
@@ -164,13 +168,16 @@ const components: Partial<PortableTextReactComponents> = {
     imageAndTextList: ImageAndTextListSerializer,
     imageCardList: ImageCardListSerializer,
     cards: CardSerializer,
+    videoBlock: VideoPlayerSerializer,
     linkButton: ({ value }) => (
       <Flex width={["100%"]}>{LinkButtonSerializer({ value })}</Flex>
     ),
     nonClickableBoxList: NonClickableBoxListSerializer,
     accordion: AccordionSerializer,
     fileList: FileListSerializer,
+    table: TableChartSerializer,
     divider: DividerSerializer,
+
     buttonLink: ({ value }) => {
       const isInternal = value.url.startsWith("/");
       const linkProps = isInternal
@@ -217,7 +224,8 @@ const components: Partial<PortableTextReactComponents> = {
       );
     },
     imageWithCaption: ({ value }) => {
-      const dimensions = value.image.asset?._ref.split("-")[2];
+      if (!value.image?.asset?._ref) return null;
+      const dimensions = value.image.asset._ref.split("-")[2];
       const aspectRatio = dimensions.split("x").join(" / ");
 
       return (
@@ -235,24 +243,11 @@ const components: Partial<PortableTextReactComponents> = {
         />
       );
     },
-    image: ({ value }) => {
-      const dimensions = value.image.asset?._ref.split("-")[2];
-      const aspectRatio = dimensions.split("x").join(" / ");
-      return (
-        <Image
-          src={urlBuilder
-            .image(value.image)
-            .width(924)
-            .fit("max")
-            .auto("format")
-            .url()}
-          alt={value.alt}
-          marginX="auto"
-          marginTop={6}
-          aspectRatio={aspectRatio}
-        />
-      );
-    },
+    image: ({ value }) => (
+      <Box marginTop={6} marginX="auto">
+        <ResponsiveImage image={value} size="lg" />
+      </Box>
+    ),
     staticCodeBlock: ({ value }) => {
       return (
         <Box marginBottom={3}>
@@ -317,7 +312,7 @@ const components: Partial<PortableTextReactComponents> = {
       return (
         <Box
           as="article"
-          backgroundColor="bg.tertiary"
+          backgroundColor="bg.brand"
           color="text"
           marginTop={3}
           padding={4}
@@ -347,7 +342,7 @@ const components: Partial<PortableTextReactComponents> = {
             if (weight === "positive") {
               return (
                 <CheckmarkFill30Icon
-                  color="alert.success.icon"
+                  color="icon.success"
                   boxSize={[4, null, 5]}
                 />
               );
@@ -355,7 +350,7 @@ const components: Partial<PortableTextReactComponents> = {
             if (weight === "negative") {
               return (
                 <ErrorOutline30Icon
-                  color="alert.error.icon"
+                  color="icon.critical"
                   boxSize={[4, null, 5]}
                 />
               );
@@ -433,9 +428,14 @@ export const PortableText = ({
   value: any;
   components?: any;
 }) => {
+  const rootData = useRouteLoaderData("root") as
+    | { isPreview?: boolean }
+    | undefined;
+  const isPreview = rootData?.isPreview ?? false;
+
   return (
     <SanityPortableText
-      value={vercelStegaClean(value)}
+      value={isPreview ? value : vercelStegaClean(value)}
       components={deepmerge(components, componentsOverrides)}
     />
   );

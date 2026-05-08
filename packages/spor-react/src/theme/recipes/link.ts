@@ -15,6 +15,7 @@ export const linkRecipe = defineRecipe({
     paddingX: "0.5",
     whiteSpace: "normal",
     wordBreak: "break-word",
+    paddingInline: 0,
 
     _hover: {
       textDecoration: "none",
@@ -32,7 +33,7 @@ export const linkRecipe = defineRecipe({
   variants: {
     variant: {
       primary: {
-        color: "core.text",
+        color: "text.core",
         _hover: {
           color: "text",
           _active: {

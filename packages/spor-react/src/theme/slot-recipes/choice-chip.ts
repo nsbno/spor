@@ -1,43 +1,33 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
 
-import { checkboxCardAnatomy } from "./anatomy";
+import { radioCardAnatomy } from "./anatomy";
 
 export const choiceChipSlotRecipe = defineSlotRecipe({
-  slots: checkboxCardAnatomy.keys(),
-  className: "chakra-checkbox-card",
+  className: "spor-choice-chip",
+  slots: radioCardAnatomy.keys(),
   base: {
     root: {
-      display: "inline-flex",
-      alignItems: "center",
-      boxAlign: "center",
-      cursor: "pointer",
+      display: "flex",
+      flexDirection: "row",
+      gap: "1",
+      width: "fit-content",
+    },
+    item: {
+      display: "flex-inline",
       transitionProperty: "all",
-      borderRadius: "xl",
       transitionDuration: "fast",
-      paddingInlineStart: "2",
-      paddingInlineEnd: "2",
 
-      outline: "1px solid",
-      outlineColor: "core.outline",
       _checked: {
-        backgroundColor: "brand.surface",
-        borderRadius: "sm",
         outline: "none",
-        color: "brand.text",
+        _focusVisible: {
+          outline: "2px solid",
+          outlineColor: "outline.focus",
+          outlineOffset: "1px",
+        },
         _hover: {
-          backgroundColor: "brand.surface.hover",
-          _active: {
-            backgroundColor: "brand.surface.active",
-          },
+          outline: "none",
         },
       },
-
-      _focusVisible: {
-        outline: "2px solid",
-        outlineColor: "outline.focus",
-        outlineOffset: "1px",
-      },
-
       _disabled: {
         pointerEvents: "none",
         boxShadow: "none",
@@ -63,34 +53,44 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         },
       },
     },
-
+    itemControl: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
     label: {
       display: "flex",
       alignItems: "center",
+      justifyContent: "center",
       gap: "1",
     },
   },
-
   variants: {
     size: {
       xs: {
-        root: {
+        item: {
+          borderRadius: "xl",
           _checked: {
-            borderRadius: "0.563rem",
+            borderRadius: "9px",
           },
+        },
+        itemControl: {
           height: 5,
           paddingX: 1.5,
         },
         label: {
           fontSize: { base: "mobile.sm", sm: "desktop.sm" },
-          fontWeight: "medium",
+          fontWeight: "regular",
         },
       },
       sm: {
-        root: {
+        item: {
+          borderRadius: "xl",
           _checked: {
             borderRadius: "sm",
           },
+        },
+        itemControl: {
           height: 6,
           paddingX: 2,
         },
@@ -100,10 +100,13 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         },
       },
       md: {
-        root: {
+        item: {
+          borderRadius: "xl",
           _checked: {
             borderRadius: "sm",
           },
+        },
+        itemControl: {
           height: 7,
           paddingX: 2,
         },
@@ -113,10 +116,13 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         },
       },
       lg: {
-        root: {
+        item: {
+          borderRadius: "xl",
           _checked: {
             borderRadius: "md",
           },
+        },
+        itemControl: {
           height: 8,
           paddingX: 3,
         },
@@ -126,72 +132,94 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
         },
       },
     },
-
     variant: {
       core: {
-        root: {
-          color: "core.text",
-          outlineColor: "core.outline",
-
+        itemControl: {
+          _checked: {
+            backgroundColor: "surface.brand",
+            color: "text.brand",
+            outline: "none",
+            _hover: {
+              backgroundColor: "surface.brand.hover",
+              _active: {
+                backgroundColor: "surface.brand.active",
+              },
+            },
+          },
           _hover: {
             outline: "2px solid",
-            outlineColor: "core.outline.hover",
+            outlineColor: "outline.core.hover",
 
             _active: {
               outline: "1px solid",
-              outlineColor: "core.outline",
-              backgroundColor: "core.surface.active",
+              outlineColor: "outline.core",
+              backgroundColor: "surface.core.active",
             },
           },
         },
       },
       accent: {
-        root: {
-          backgroundColor: "accent.surface",
-          color: "accent.text",
+        itemControl: {
+          backgroundColor: "surface.accent",
+          color: "text.accent",
           outline: "none",
-
+          border: "none",
+          _checked: {
+            backgroundColor: "surface.brand",
+            color: "text.brand",
+            outline: "none",
+            _hover: {
+              backgroundColor: "surface.brand.hover",
+              _active: {
+                backgroundColor: "surface.brand.active",
+              },
+            },
+          },
           _hover: {
-            backgroundColor: "accent.surface.hover",
+            backgroundColor: "surface.accent.hover",
 
             _active: {
-              backgroundColor: "accent.surface.active",
+              backgroundColor: "surface.accent.active",
             },
           },
         },
       },
       floating: {
-        root: {
-          backgroundColor: "floating.surface",
+        itemControl: {
+          backgroundColor: "surface.floating",
           outline: "1px solid",
-          outlineColor: "floating.outline",
-          color: "floating.text",
+          outlineColor: "outline.floating",
+          color: "text.floating",
 
           boxShadow: "sm",
+          _checked: {
+            backgroundColor: "surface.brand",
+            color: "text.brand",
+            outline: "none",
+            _hover: {
+              backgroundColor: "surface.brand.hover",
+              _active: {
+                backgroundColor: "surface.brand.active",
+              },
+            },
+          },
           _hover: {
-            backgroundColor: "floating.surface.hover",
+            backgroundColor: "surface.floating.hover",
             outline: "1px solid",
-            outlineColor: "floating.outline.hover",
+            outlineColor: "outline.floating.hover",
 
             _active: {
-              backgroundColor: "floating.surface.active",
+              backgroundColor: "surface.floating.active",
               outline: "1px solid",
-              outlineColor: "floating.outline",
+              outlineColor: "outline.floating",
             },
           },
         },
       },
     },
-    chipType: {
-      icon: {},
-      choice: {},
-      filter: {},
-    },
   },
-
   defaultVariants: {
     size: "sm",
     variant: "core",
-    chipType: "choice",
   },
 });

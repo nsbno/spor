@@ -6,6 +6,7 @@ import { matchSorter } from "match-sorter";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 
+import { sendCustomEvent } from "~/utils/analytics/metabase";
 import { useTopSearch } from "~/utils/useMenu";
 
 const useSearchableItems = () => {
@@ -104,7 +105,19 @@ export const SearchDocsInput = ({ onSearchSelect, onClose }: Props) => {
             }
           >
             {(item) => (
-              <ComboboxItem key={item.value} item={item} asChild>
+              <ComboboxItem
+                key={item.value}
+                item={item}
+                asChild
+                onClick={() =>
+                  sendCustomEvent({
+                    event: "use_search",
+                    properties: {
+                      destination: item.url,
+                    },
+                  })
+                }
+              >
                 <Link to={`${item.url}`}>
                   <Text fontWeight="bold">{item.title}</Text>
                   <Text variant="xs" color="text.subtle">

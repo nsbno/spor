@@ -1,5 +1,6 @@
 import { codeInput } from "@sanity/code-input";
 import { visionTool } from "@sanity/vision";
+import { lazy } from "react";
 import { defineConfig } from "sanity";
 import {
   PresentationPluginOptions,
@@ -8,11 +9,16 @@ import {
 } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
 import { muxInput } from "sanity-plugin-mux-input";
-import { VyLogoProd } from "./components/VyLogoProd";
-import { VyLogoTest } from "./components/VyLogoTest";
 import { schemaTypes } from "./schemaTypes";
 import { siteMenuStructure } from "./structure.js";
 import { table } from "@sanity/table";
+
+const VyLogoProd = lazy(() =>
+  import("./components/VyLogoProd").then((m) => ({ default: m.VyLogoProd })),
+);
+const VyLogoTest = lazy(() =>
+  import("./components/VyLogoTest").then((m) => ({ default: m.VyLogoTest })),
+);
 
 const projectId = "r4xpzxak";
 export const API_VERSION = "2024-07-25";

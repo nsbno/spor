@@ -19,6 +19,11 @@
       "types": "./dist/raw-tokens/index.d.ts",
       "default": "./dist/raw-tokens/index.js"
     },
+    "./react-native": {
+      "types": "./react-native/index.d.ts",
+      "import": "./react-native/index.mjs",
+      "require": "./react-native/index.js"
+    },
     "./tokens.json": "./dist/tokens.json",
     "./tokens.css": "./dist/tokens.css"
   },

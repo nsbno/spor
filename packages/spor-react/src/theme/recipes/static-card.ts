@@ -6,7 +6,7 @@ export const staticCardRecipe = defineRecipe({
   },
   variants: {
     colorPalette: {
-      white: {
+      neutral: {
         backgroundColor: "surface",
         color: "text",
       },
@@ -34,6 +34,7 @@ export const staticCardRecipe = defineRecipe({
     },
   },
   defaultVariants: {
-    colorPalette: "white",
+    // @ts-expect-error Chakra gir feilmelding fordi "neutral" ikke eksisterer i built-in ColorPalette-typen
+    colorPalette: "neutral",
   },
 });

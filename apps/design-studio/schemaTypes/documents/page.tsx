@@ -94,6 +94,8 @@ export const page = defineType({
         { type: "linkButton", title: "Link button" },
         { type: "videoBlock", title: "Video block" },
         { type: "divider", title: "Divider" },
+        { type: "table", title: "Table" },
+        { type: "richTable", title: "Rich table" },
       ],
       group: "pageContent",
     }),

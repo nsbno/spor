@@ -66,6 +66,22 @@ export const badgeRecipie = defineRecipe({
           color: "icon.critical",
         },
       },
+      brightRed: {
+        backgroundColor: {
+          _light: "brightRed",
+          _dark: "brightRed",
+        },
+        color: {
+          _light: "pink",
+          _dark: "pink",
+        },
+        "& svg": {
+          color: {
+            _light: "pink",
+            _dark: "pink",
+          },
+        },
+      },
     },
     size: {
       sm: {

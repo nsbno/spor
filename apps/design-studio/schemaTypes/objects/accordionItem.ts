@@ -33,6 +33,7 @@ export const accordionItem = defineType({
         { type: "linkButton" },
         { type: "image" },
         { type: "table" },
+        { type: "richTable" },
         {
           type: "block",
           marks: {

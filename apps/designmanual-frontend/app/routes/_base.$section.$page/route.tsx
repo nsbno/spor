@@ -14,6 +14,7 @@ import {
   resolveImageCardListGroq,
   resolveLinkButtonGroq,
   resolveNonClickableBoxListGroq,
+  resolveRichTableChartGroq,
   resolveTextBlocksGroq,
   resolveVideoPlayerGroq,
 } from "~/features/cms/sanity/query";
@@ -46,6 +47,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
       ${resolveDividerGroq()},
       ${resolveFileListGroq()},
       ${resolveVideoPlayerGroq()},
+      ${resolveRichTableChartGroq()},
     }
   }`;
   const data = await getClient().fetch(

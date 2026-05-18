@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.0.3
+
+### Patch Changes
+
+- 37467a9: Add a direct `./react-native` export to `@vygruppen/spor-design-tokens`.
+- b91bffd: Update token values for CargoNet dark theme
+
 ## 5.0.2
 
 ### Patch Changes

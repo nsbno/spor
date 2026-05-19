@@ -205,7 +205,7 @@ export default function ArticlePage() {
               {mapLinkToLabel(link.linkType)}
             </Button>
           ))}
-          {currentSection && currentSection === "spor" && <SiteSettings />}
+          {/*currentSection && currentSection === "spor" && <SiteSettings />*/}
         </Flex>
       </Flex>
       <Flex direction="column">

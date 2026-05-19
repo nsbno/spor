@@ -1,5 +1,18 @@
 # @vygruppen/spor-react
 
+## 13.2.1
+
+### Patch Changes
+
+- b6f6c99: NumericStepper: Highlight the inputfield with an outline, and adjust width of textfield when withInput-prop is false
+- 6ee3004: Add brightRed to badge's colorPalette
+- 4c85213: Badge: adjust the fontsize down to match design
+- b91bffd: Update token values for CargoNet dark theme
+- ac0c26f: Alert: Add role="alert" and aria-label that reflects the level of severity based on the variant
+- Updated dependencies [37467a9]
+- Updated dependencies [b91bffd]
+  - @vygruppen/spor-design-tokens@5.0.3
+
 ## 13.2.0
 
 ### Minor Changes

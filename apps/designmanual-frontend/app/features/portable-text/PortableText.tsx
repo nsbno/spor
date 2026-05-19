@@ -49,6 +49,7 @@ import { ImageCardListSerializer } from "./serializers/ImageCardListSerializer";
 import { LinkButtonSerializer } from "./serializers/LinkButtonSerializer";
 import { NonClickableBoxListSerializer } from "./serializers/NonClickableBoxesSerializer";
 import { TextBlockSerializer } from "./serializers/TextBlockSerializer";
+import { RichTableSerializer } from "./serializers/RichTableSerializer";
 import { TableChartSerializer } from "./serializers/TableChartSerializer";
 import { TextBlocksSerializer } from "./serializers/TextBlocksSerializer";
 import { VideoPlayerSerializer } from "./serializers/VideoPlayerSerializer";
@@ -176,6 +177,7 @@ const components: Partial<PortableTextReactComponents> = {
     accordion: AccordionSerializer,
     fileList: FileListSerializer,
     table: TableChartSerializer,
+    richTable: RichTableSerializer,
     divider: DividerSerializer,
 
     buttonLink: ({ value }) => {

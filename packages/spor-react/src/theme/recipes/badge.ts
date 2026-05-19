@@ -66,24 +66,40 @@ export const badgeRecipie = defineRecipe({
           color: "icon.critical",
         },
       },
+      brightRed: {
+        backgroundColor: {
+          _light: "brightRed",
+          _dark: "brightRed",
+        },
+        color: {
+          _light: "pink",
+          _dark: "pink",
+        },
+        "& svg": {
+          color: {
+            _light: "pink",
+            _dark: "pink",
+          },
+        },
+      },
     },
     size: {
       sm: {
-        fontSize: "desktop.xs",
+        fontSize: "desktop.2xs",
         paddingX: "0.5",
         paddingY: "0",
         fontWeight: "normal",
         borderRadius: "xxs",
       },
       md: {
-        fontSize: "desktop.xs",
+        fontSize: "desktop.2xs",
         paddingX: "1",
         paddingY: "0.5",
         fontWeight: "bold",
         borderRadius: "xs",
       },
       lg: {
-        fontSize: "desktop.sm",
+        fontSize: "desktop.xs",
         paddingX: "1.5",
         paddingY: "0.5",
         fontWeight: "bold",

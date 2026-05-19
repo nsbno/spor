@@ -39,7 +39,9 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
+
       - name: Copy dataset
+        working-directory: apps/design-studio
         run: |
           pnpm exec sanity dataset export ${{ matrix.from }} daily/${{ matrix.from }}.tar.gz --no-drafts
           pnpm exec sanity dataset import daily/${{ matrix.from }}.tar.gz --dataset ${{ matrix.to }} --replace --allow-failing-assets

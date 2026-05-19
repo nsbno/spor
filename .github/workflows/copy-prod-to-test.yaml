@@ -43,5 +43,3 @@ jobs:
         run: |
           pnpm exec sanity dataset export ${{ matrix.from }} daily/${{ matrix.from }}.tar.gz --no-drafts
           pnpm exec sanity dataset import daily/${{ matrix.from }}.tar.gz --dataset ${{ matrix.to }} --replace --allow-failing-assets
-        env:
-          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_MANAGE_DATASETS_TOKEN }}

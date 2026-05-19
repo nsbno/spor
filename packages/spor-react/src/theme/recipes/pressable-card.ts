@@ -64,13 +64,13 @@ export const pressableCardRecipe = defineRecipe({
       accent: {
         boxShadow: "0px 1px 3px 0px var(--shadow-color)",
         shadowColor: "surface.disabled",
-        background: "surface.success",
+        background: "surface.accent",
         _hover: {
-          background: "surface.success.hover",
+          background: "surface.accent.hover",
 
           boxShadow: "0px 2px 6px 0px var(--shadow-color)",
           _active: {
-            background: "surface.success.active",
+            background: "surface.accent.active",
             boxShadow: "none",
           },
         },

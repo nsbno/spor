@@ -9,6 +9,7 @@ import {
 import { IconComponent } from "@vygruppen/spor-icon-react";
 
 import { CloseButton } from "@/button";
+import { createTexts, useTranslation } from "@/i18n";
 
 import { AlertIcon } from "./AlertIcon";
 
@@ -58,6 +59,7 @@ export const Alert = ({
     children,
   } = props;
   const { open, onClose } = useDisclosure({ defaultOpen: true });
+  const { t } = useTranslation();
 
   const handleAlertClose = () => {
     onClose();
@@ -67,9 +69,21 @@ export const Alert = ({
   const recipe = useSlotRecipe({ key: "alert" });
   const styles = recipe({ variant: props.variant });
 
+  const getAriaLabelText = () => {
+    const variant = props.variant;
+    if (variant === "important" || variant === "alt")
+      return texts.ariaLabelAlertWarning;
+    if (variant === "error" || variant === "error-secondary")
+      return texts.ariaLabelAlertError;
+    if (variant === "success") return texts.ariaLabelAlertSuccess;
+    return texts.ariaLabelAlertInformative;
+  };
+
+  const ariaLabel = t(getAriaLabelText());
+
   if (!open) return null;
   return (
-    <ChakraAlert.Root ref={ref} {...props}>
+    <ChakraAlert.Root ref={ref} role="alert" aria-label={ariaLabel} {...props}>
       <ChakraAlert.Content
         flexDirection={title ? "column" : "row"}
         data-part="content"
@@ -114,3 +128,30 @@ export const Alert = ({
     </ChakraAlert.Root>
   );
 };
+
+const texts = createTexts({
+  ariaLabelAlertInformative: {
+    en: "Announcement",
+    nb: "Kunngjøring",
+    nn: "Kunngjering",
+    sv: "Meddelande",
+  },
+  ariaLabelAlertWarning: {
+    en: "Warning",
+    nb: "Advarsel",
+    nn: "Varsel",
+    sv: "Varning",
+  },
+  ariaLabelAlertError: {
+    en: "Error",
+    nb: "Feil",
+    nn: "Feil",
+    sv: "Fel",
+  },
+  ariaLabelAlertSuccess: {
+    en: "Success",
+    nb: "Suksess",
+    nn: "Suksess",
+    sv: "Framgång",
+  },
+});

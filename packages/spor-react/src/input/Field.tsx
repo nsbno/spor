@@ -54,6 +54,7 @@ export type FieldBaseProps = {
   floatingLabel?: boolean;
   shouldFloat?: boolean;
   labelAsChild?: boolean;
+  gap?: string | number;
 };
 
 export type FieldProps = Omit<
@@ -100,13 +101,14 @@ export const Field = ({
     id,
     shouldFloat,
     labelAsChild,
+    gap,
     ...rest
   } = props;
   const recipe = useSlotRecipe({ key: "field" });
   const styles = recipe();
 
   return (
-    <Stack gap="2" ref={ref} width="100%" {...rest}>
+    <Stack ref={ref} width="100%" {...rest}>
       <ChakraField.Root
         disabled={disabled}
         invalid={invalid}
@@ -115,6 +117,7 @@ export const Field = ({
         css={styles.root}
         direction={direction}
         id={id}
+        gap={gap}
       >
         {label && !floatingLabel && (
           <Label asChild={labelAsChild} aria-hidden>

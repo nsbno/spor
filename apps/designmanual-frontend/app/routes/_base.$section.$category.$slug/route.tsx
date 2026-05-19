@@ -29,12 +29,10 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
   useLoaderData,
-  useLocation,
 } from "react-router";
 import invariant from "tiny-invariant";
 
 import { PortableText } from "~/features/portable-text/PortableText";
-import { SiteSettings } from "~/root/layout/SiteSettings";
 import { ComponentDocs } from "~/routes/_base.$section.$category.$slug/component-docs/ComponentDocs";
 import { useBrand } from "~/utils/brand";
 import { getClient } from "~/utils/sanity/client";
@@ -170,9 +168,6 @@ export default function ArticlePage() {
 
   const article = initialData[0];
 
-  const slug = useLocation().pathname.slice(1);
-  const currentSection = slug?.split("/")[0] || "";
-
   if (!article) {
     return null;
   }
@@ -205,7 +200,6 @@ export default function ArticlePage() {
               {mapLinkToLabel(link.linkType)}
             </Button>
           ))}
-          {currentSection && currentSection === "spor" && <SiteSettings />}
         </Flex>
       </Flex>
       <Flex direction="column">

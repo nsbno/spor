@@ -20,12 +20,12 @@ import { useEffect, useState } from "react";
 import { useLayoutEffect, useRef } from "react";
 import { Link, useLocation, useRouteLoaderData } from "react-router";
 
-import { ColorModeSwitcher } from "~/features/color-mode-switcher";
 import { loader } from "~/root";
 import { getIcon } from "~/utils/getIcon";
 
 import { SearchableContentMenu } from "../../routes/_base/content-menu/SearchableContentMenu";
 import { SearchDocs } from "./SearchDocs";
+import { SiteSettings } from "./SiteSettings";
 
 const useSearchKeyboardShortcut = (onTriggered: () => void) => {
   useEffect(() => {
@@ -150,60 +150,55 @@ export const SiteHeader = ({
             />
           </Link>
 
-          <Box as="nav" flexGrow={1} justifyContent="flex-end">
-            <Flex
-              as="ul"
-              gap="4"
-              width="auto"
-              justifyContent="flex-end"
-              alignItems="center"
-            >
-              <Box as="li" marginLeft="auto">
-                <ColorModeSwitcher />
-              </Box>
-              {sections.map((section) => {
-                return (
-                  <Box as="li" key={section.title}>
-                    <Button
-                      asChild
-                      variant={
-                        (section.default && slug === "") ||
+          <Flex
+            as="ul"
+            gap={["1", "3"]}
+            width="auto"
+            justifyContent="flex-end"
+            alignItems="center"
+            flexGrow={1}
+          >
+            {sections.map((section) => {
+              return (
+                <Box as="li" key={section.title}>
+                  <Button
+                    asChild
+                    variant={
+                      (section.default && slug === "") ||
+                      section.slug.current === currentSection
+                        ? "secondary"
+                        : "ghost"
+                    }
+                    size="md"
+                    borderRadius="lg"
+                    display={{ base: "none", lg: "flex" }}
+                    border="none"
+                    leftIcon={getIcon({
+                      iconName: section.icon,
+                      size: 24,
+                      style:
                         section.slug.current === currentSection
-                          ? "secondary"
-                          : "ghost"
-                      }
-                      size="md"
-                      borderRadius="lg"
-                      display={{ base: "none", lg: "flex" }}
-                      border="none"
-                      leftIcon={getIcon({
-                        iconName: section.icon,
-                        size: 24,
-                        style:
-                          section.slug.current === currentSection
-                            ? "fill"
-                            : "outline",
-                      })}
+                          ? "fill"
+                          : "outline",
+                    })}
+                  >
+                    <Link
+                      to={`/${section.slug.current}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
                     >
-                      <Link
-                        to={`/${section.slug.current}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
-                      >
-                        {section.title}
-                      </Link>
-                    </Button>
-                  </Box>
-                );
-              })}
-            </Flex>
-          </Box>
+                      {section.title}
+                    </Link>
+                  </Button>
+                </Box>
+              );
+            })}
 
-          <Flex gap="1">
             <SearchDocsButton onSearchClick={() => setSearchDialogOpen(true)} />
             <MobileMenu />
             <SearchDocs
               onOpenChange={setSearchDialogOpen}
               open={searchDialogOpen}
             />
+            <SiteSettings />
           </Flex>
         </Flex>
       </Box>

@@ -27,7 +27,7 @@ export const comboboxSlotRecipe = defineSlotRecipe({
     },
 
     clearTrigger: {
-      right: ["0.5rem", "1rem"],
+      right: ["3.5rem", "1.5rem", "2rem", "2rem"],
     },
 
     control: {
@@ -47,7 +47,7 @@ export const comboboxSlotRecipe = defineSlotRecipe({
 
     content: {
       backgroundColor: "surface",
-      boxShadow: "sm",
+      boxShadow: "md",
       overflowY: "auto",
       maxHeight: "50vh",
       width: "calc(100% + 2px)",

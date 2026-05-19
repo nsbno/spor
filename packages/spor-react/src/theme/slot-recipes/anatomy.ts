@@ -302,3 +302,10 @@ export const menuAnatomy = createAnatomy("menu").parts(
   "triggerItem",
   "checkboxItem",
 );
+
+export const errorSummaryAnatomy = createAnatomy("error-summary").parts(
+  "container",
+  "heading",
+  "list",
+  "item",
+);

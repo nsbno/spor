@@ -10,6 +10,7 @@ import { collapsibleSlotRecipe } from "./collapsible";
 import { datePickerSlotRecipe } from "./datepicker";
 import { dialogSlotRecipe } from "./dialog";
 import { drawerSlotRecipe } from "./drawer";
+import { errorSummarySlotRecipe } from "./error-summary";
 import { fieldSlotRecipe } from "./field";
 import { filterChipSlotRecipe } from "./filter-chip";
 import { floatingActionButtonSlotRecipe } from "./floating-action-button";
@@ -75,4 +76,5 @@ export const slotRecipes = {
   tag: inputChipSlotRecipe,
   menu: menuSlotRecipe,
   choiceChip: choiceChipSlotRecipe,
+  errorSummary: errorSummarySlotRecipe,
 };

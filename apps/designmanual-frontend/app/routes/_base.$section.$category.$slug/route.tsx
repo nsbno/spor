@@ -36,6 +36,7 @@ import invariant from "tiny-invariant";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { SiteSettings } from "~/root/layout/SiteSettings";
 import { ComponentDocs } from "~/routes/_base.$section.$category.$slug/component-docs/ComponentDocs";
+import { sendCustomEvent } from "~/utils/analytics/metabase";
 import { useBrand } from "~/utils/brand";
 import { getClient } from "~/utils/sanity/client";
 import {
@@ -230,6 +231,7 @@ export default function ArticlePage() {
           <ComponentSections
             id={article._id}
             sections={article.componentSections}
+            component={article.title}
           />
         ) : (
           <Box>
@@ -276,10 +278,15 @@ const mapLinkToIcon = (linkType: ResourceLink["linkType"]) => {
 };
 
 type ComponentSectionsProps = {
+  component: string;
   sections: ComponentSection[];
   id: string;
 };
-const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
+const ComponentSections = ({
+  component,
+  sections,
+  id,
+}: ComponentSectionsProps) => {
   return (
     <Tabs
       variant="accent"
@@ -292,7 +299,19 @@ const ComponentSections = ({ sections, id }: ComponentSectionsProps) => {
     >
       <TabsList>
         {sections.map((section) => (
-          <TabsTrigger key={section.title} value={section.title}>
+          <TabsTrigger
+            key={section.title}
+            value={section.title}
+            onClick={() =>
+              sendCustomEvent({
+                event: "component_tab_visited",
+                properties: {
+                  tab: section.title,
+                  component: component,
+                },
+              })
+            }
+          >
             {`${section.title.charAt(0).toUpperCase()}${section.title.slice(1)}`}
           </TabsTrigger>
         ))}

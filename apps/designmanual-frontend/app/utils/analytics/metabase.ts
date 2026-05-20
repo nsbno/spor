@@ -37,8 +37,17 @@ const useSearch = z.object({
   }),
 });
 
+const component_tab_visited = z.object({
+  event: z.literal("component_tab_visited"),
+  properties: z.object({
+    tab: z.string(),
+    component: z.string(),
+  }),
+});
+
 export const MetabaseCustomEventSchema = z.discriminatedUnion("event", [
   useSearch,
+  component_tab_visited,
 ]);
 
 export type MetabaseCustomEvent = z.infer<typeof MetabaseCustomEventSchema>;

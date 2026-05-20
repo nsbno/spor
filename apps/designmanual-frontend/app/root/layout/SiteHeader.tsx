@@ -173,14 +173,17 @@ export const SiteHeader = ({
                     borderRadius="lg"
                     display={{ base: "none", lg: "flex" }}
                     border="none"
-                    leftIcon={getIcon({
-                      iconName: section.icon,
-                      size: 24,
-                      style:
-                        section.slug.current === currentSection
-                          ? "fill"
-                          : "outline",
-                    })}
+                    leftIcon={
+                      section.icon &&
+                      getIcon({
+                        iconName: section.icon,
+                        size: 24,
+                        style:
+                          section.slug.current === currentSection
+                            ? "fill"
+                            : "outline",
+                      })
+                    }
                   >
                     <Link
                       to={`/${section.slug.current}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
@@ -193,12 +196,12 @@ export const SiteHeader = ({
             })}
 
             <SearchDocsButton onSearchClick={() => setSearchDialogOpen(true)} />
-            <MobileMenu />
             <SearchDocs
               onOpenChange={setSearchDialogOpen}
               open={searchDialogOpen}
             />
             <SiteSettings />
+            <MobileMenu />
           </Flex>
         </Flex>
       </Box>
@@ -263,7 +266,7 @@ const SearchDocsButton = ({ onSearchClick }: { onSearchClick: () => void }) => {
         display={{ base: "none", lg: "flex" }}
         border="none"
       >
-        Søk
+        Search
       </Button>
     </>
   );

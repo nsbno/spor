@@ -21,7 +21,7 @@ export const BrandSwitcher = () => {
   return (
     <fetcher.Form method="post">
       <Select
-        label="Brand theme"
+        label="Brand"
         collection={brandOptions}
         defaultValue={[brand as string]}
         onValueChange={(brand) => {

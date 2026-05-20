@@ -16,7 +16,7 @@ export type Section = {
   default: boolean;
   slug: { current: string; _type: string };
   title: string;
-  icon: string;
+  icon?: string;
 };
 export type FooterItem = {
   _type: string;

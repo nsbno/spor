@@ -44,6 +44,7 @@ export const ErrorSummary = ({
         <Flex css={styles.heading}>
           <ErrorFill24Icon
             css={{
+              flexShrink: 0,
               "& path:first-of-type": {
                 fill: `icon.critical`,
               },

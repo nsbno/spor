@@ -11,6 +11,7 @@ export const errorSummarySlotRecipe = defineSlotRecipe({
       flexDirection: "column",
       padding: [3, 5],
       backgroundColor: "surface.critical",
+      borderRadius: "md",
     },
     heading: {
       direction: "row",
@@ -28,27 +29,5 @@ export const errorSummarySlotRecipe = defineSlotRecipe({
       color: "text.critical.subtle",
       marginTop: [2, 1.5],
     },
-  },
-  variants: {
-    size: {
-      sm: {
-        container: {
-          borderRadius: "sm",
-        },
-      },
-      md: {
-        container: {
-          borderRadius: "md",
-        },
-      },
-      lg: {
-        container: {
-          borderRadius: "lg",
-        },
-      },
-    },
-  },
-  defaultVariants: {
-    size: "md",
   },
 });

@@ -1,0 +1,49 @@
+name: Copy production to test 👨‍🔧
+
+on:
+  schedule:
+    - cron: "0 4 * * 1"
+
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  copy-sanity-from-production-to-test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - from: "production"
+            to: "test"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          swap-storage: true
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Copy dataset
+        working-directory: apps/design-studio
+        run: |
+          pnpm exec sanity dataset export ${{ matrix.from }} daily/${{ matrix.from }}.tar.gz --no-drafts
+          pnpm exec sanity dataset import daily/${{ matrix.from }}.tar.gz --dataset ${{ matrix.to }} --replace --allow-failing-assets
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_MANAGE_DATASETS_TOKEN }}

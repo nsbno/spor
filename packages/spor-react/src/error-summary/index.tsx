@@ -33,11 +33,6 @@ export const ErrorSummary = ({
       ref={ref}
       {...rest}
       aria-labelledby={slugify(heading)}
-      onFocus={(event) => {
-        if ("current" in ref && event.target === ref.current) {
-          headingRef?.current?.focus();
-        }
-      }}
       tabIndex={-1}
     >
       {heading && (

@@ -14,7 +14,6 @@ export const errorSummarySlotRecipe = defineSlotRecipe({
       borderRadius: "md",
     },
     heading: {
-      direction: "row",
       fontSize: "md",
       fontWeight: "bold",
       color: "text.critical",

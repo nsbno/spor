@@ -13,5 +13,5 @@ export const getBrandFromCookie = async (cookieHeader: string) => {
 };
 
 export const setBrandInCookie = async (brand: Brand) => {
-  return cookie.serialize(Brand[brand]);
+  return cookie.serialize(brand);
 };

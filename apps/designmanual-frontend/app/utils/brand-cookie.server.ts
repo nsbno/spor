@@ -4,7 +4,7 @@ import { createCookie } from "react-router";
 const COOKIE_NAME = "brand";
 
 const cookie = createCookie(COOKIE_NAME, {
-  maxAge: 60 * 60 * 24, // A day
+  maxAge: 60 * 60 * 24 * 365, // 1 year
 });
 
 export const getBrandFromCookie = async (cookieHeader: string) => {

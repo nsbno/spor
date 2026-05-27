@@ -43,7 +43,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
     },
     dateTimeSegment: {
       _focus: {
-        backgroundColor: "surface.ghost.active",
+        backgroundColor: "surface.floating.active",
         color: "text",
       },
     },

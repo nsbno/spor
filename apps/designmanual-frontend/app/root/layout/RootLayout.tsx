@@ -32,17 +32,25 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
   useEffect(() => {
     const footer = footerRef.current;
     if (!footer || globalThis.window === undefined) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        document.documentElement.style.setProperty(
-          "--footer-height",
-          `${Math.round(entry.intersectionRect.height)}px`,
-        );
-      },
-      { threshold: Array.from({ length: 101 }, (_, index) => index / 100) },
-    );
-    observer.observe(footer);
-    return () => observer.disconnect();
+
+    const update = () => {
+      const visible = Math.max(
+        0,
+        globalThis.window.innerHeight - footer.getBoundingClientRect().top,
+      );
+      document.documentElement.style.setProperty(
+        "--footer-height",
+        `${Math.round(visible)}px`,
+      );
+    };
+
+    update();
+    globalThis.window.addEventListener("scroll", update, { passive: true });
+    globalThis.window.addEventListener("resize", update, { passive: true });
+    return () => {
+      globalThis.window.removeEventListener("scroll", update);
+      globalThis.window.removeEventListener("resize", update);
+    };
   }, []);
 
   usePageTracking();

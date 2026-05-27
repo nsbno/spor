@@ -1,5 +1,5 @@
 import { Box, Flex } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router";
 
 import { useStickymenu } from "~/routes/_base/content-menu/utils";
@@ -26,7 +26,19 @@ function usePageTracking() {
 }
 export const RootLayout = ({ children }: BaseLayoutProps) => {
   const [headerOffset, setHeaderOffset] = useState(0);
+  const [footerHeight, setFooterHeight] = useState(0);
+  const footerRef = useRef<HTMLDivElement>(null);
   const { asideRef, forceFixed, fixedRect } = useStickymenu();
+
+  useEffect(() => {
+    const footer = footerRef.current;
+    if (!footer) return;
+    const observer = new ResizeObserver(([entry]) => {
+      setFooterHeight(entry.contentRect.height);
+    });
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
 
   usePageTracking();
 
@@ -56,6 +68,8 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
           position={forceFixed ? "fixed" : "sticky"}
           top={headerOffset}
           as="aside"
+          maxHeight={`calc(100vh - ${headerOffset}px - ${footerHeight}px)`}
+          overflowY="auto"
           style={
             forceFixed && fixedRect
               ? { left: `${fixedRect.left}px`, width: `${fixedRect.width}px` }
@@ -68,7 +82,7 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
 
         {children}
       </Flex>
-      <Footer />
+      <Footer ref={footerRef} />
     </Flex>
   );
 };

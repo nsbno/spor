@@ -5,12 +5,13 @@ import {
   useColorModeValue,
   VyLogo,
 } from "@vygruppen/spor-react";
+import { type Ref } from "react";
 import { Link, useRouteLoaderData } from "react-router";
 
 import { PortableText } from "~/features/portable-text/PortableText";
 import { loader } from "~/root";
 
-export const Footer = () => {
+export const Footer = ({ ref }: { ref?: Ref<HTMLDivElement> }) => {
   const borderColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
   const routeData = useRouteLoaderData<typeof loader>("root");
   const footerItems =
@@ -18,6 +19,7 @@ export const Footer = () => {
 
   return (
     <Flex
+      ref={ref}
       as="footer"
       justifyContent="space-between"
       backgroundColor="surface.subtle"

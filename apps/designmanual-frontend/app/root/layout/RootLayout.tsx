@@ -1,5 +1,5 @@
 import { Box, Flex } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router";
 
 import { useStickymenu } from "~/routes/_base/content-menu/utils";
@@ -26,7 +26,24 @@ function usePageTracking() {
 }
 export const RootLayout = ({ children }: BaseLayoutProps) => {
   const [headerOffset, setHeaderOffset] = useState(0);
+  const footerRef = useRef<HTMLDivElement>(null);
   const { asideRef, forceFixed, fixedRect } = useStickymenu();
+
+  useEffect(() => {
+    const footer = footerRef.current;
+    if (!footer || globalThis.window === undefined) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        document.documentElement.style.setProperty(
+          "--footer-height",
+          `${Math.round(entry.intersectionRect.height)}px`,
+        );
+      },
+      { threshold: Array.from({ length: 101 }, (_, index) => index / 100) },
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
 
   usePageTracking();
 
@@ -74,7 +91,7 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
 
         {children}
       </Flex>
-      <Footer />
+      <Footer ref={footerRef} />
     </Flex>
   );
 };

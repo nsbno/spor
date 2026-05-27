@@ -35,7 +35,7 @@ export const Footer = ({ ref }: { ref?: Ref<HTMLDivElement> }) => {
       marginX="auto"
       minHeight="12rem"
       flexDirection={["column", null, "row"]}
-      zIndex="banner"
+      zIndex="sticky"
     >
       <Box alignSelf="start" marginTop="4">
         <Link to="/" aria-label="Go to the front page">

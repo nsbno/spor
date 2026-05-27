@@ -695,9 +695,6 @@ importers:
       framer-motion:
         specifier: ^11.11.17
         version: 11.18.2(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      jscodeshift:
-        specifier: ^17.3.0
-        version: 17.3.0(@babel/preset-env@7.29.5(@babel/core@7.29.0))
       lottie-react:
         specifier: ^2.4.1
         version: 2.4.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)

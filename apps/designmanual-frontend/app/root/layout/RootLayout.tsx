@@ -70,6 +70,7 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
           as="aside"
           maxHeight={`calc(100vh - ${headerOffset}px - ${footerHeight}px)`}
           overflowY="auto"
+          overflowX="hidden"
           style={
             forceFixed && fixedRect
               ? { left: `${fixedRect.left}px`, width: `${fixedRect.width}px` }

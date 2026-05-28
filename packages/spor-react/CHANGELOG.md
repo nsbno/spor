@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 13.3.0
+
+### Minor Changes
+
+- 6bdd89f: New component: ErrorSummary can be used to show an overview of user-triggered errors.
+
+### Patch Changes
+
+- 0004541: Remove jscodeshift as it is not used in this package
+
 ## 13.2.1
 
 ### Patch Changes

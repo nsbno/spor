@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-mcp-server",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "MCP server for Spor Design System",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

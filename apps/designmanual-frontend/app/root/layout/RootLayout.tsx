@@ -34,12 +34,12 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
 
       <Flex marginX={[8, 8, 8, 0]} marginRight={8} flex={1} position="relative">
         <LeftSidebar headerOffset={headerOffset} />
-        {/* Add left margin on large screens to account for the fixed sidebar width (19rem) */}
+        {/* Add left margin on large screens to account for the fixed sidebar width (20rem) */}
         <Flex
           as="main"
           flex="1"
           alignItems="stretch"
-          marginLeft={[2, null, null, "19rem"]}
+          marginLeft={[2, null, null, "20rem"]}
           paddingTop={5}
         >
           {children}

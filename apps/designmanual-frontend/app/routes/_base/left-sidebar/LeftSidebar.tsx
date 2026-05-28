@@ -12,7 +12,7 @@ export const LeftSidebar = ({ headerOffset }: { headerOffset: number }) => {
   };
   return (
     <Box
-      width={[null, null, null, "19rem"]}
+      width={[null, null, null, "20rem"]}
       height={["100vh", null, null, `calc(100vh - ${headerOffset}px)`]}
       display={["none", null, null, "block"]}
       top={`${headerOffset}px`}
@@ -21,6 +21,9 @@ export const LeftSidebar = ({ headerOffset }: { headerOffset: number }) => {
       overflow="auto"
       transition="all .3s linear"
       paddingBottom="14rem"
+      borderRight="1px solid"
+      borderColor="outline.neutral"
+      paddingRight={2}
     >
       <ContentMenu
         ref={focusableRef}

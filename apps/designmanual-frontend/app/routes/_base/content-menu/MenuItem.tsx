@@ -1,4 +1,4 @@
-import { Badge, Box, Button, FlexProps } from "@vygruppen/spor-react";
+import { Box, Button, FlexProps } from "@vygruppen/spor-react";
 import { Link } from "react-router";
 
 import { sendCustomEvent } from "~/utils/analytics/metabase";
@@ -32,9 +32,7 @@ export const MenuItem = ({ url, title }: MenuItemProps) => {
         size="sm"
         fontWeight="normal"
       >
-        <Link to={url}>
-          {title} <Badge>hei</Badge>
-        </Link>
+        <Link to={url}>{title}</Link>
       </Button>
     </Box>
   );

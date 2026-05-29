@@ -157,7 +157,6 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
                     {subItems?.map((subItem) => (
                       <MenuItem
                         key={subItem.url}
-                        //url={`${subItem.url}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
                         url={handleExternalMenu(
                           item.link ?? item.url ?? "",
                           isPreview,
@@ -274,7 +273,7 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
                       {item.subItems.map((subItem) => (
                         <MenuItem
                           key={subItem.url}
-                          url={`${subItem.url}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
+                          url={handleExternalMenu(subItem.url ?? "", isPreview)}
                           title={subItem.title}
                         />
                       ))}
@@ -283,8 +282,7 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
                 }
                 return (
                   <MenuItem
-                    key={item.url}
-                    //url={`${item.url}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
+                    key={item.title}
                     url={handleExternalMenu(
                       item.link ?? item.url ?? "",
                       isPreview,

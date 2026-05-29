@@ -12,6 +12,7 @@ type MenuItemProps = FlexProps & {
  */
 
 export const MenuItem = ({ url, title }: MenuItemProps) => {
+  const isExternal = url.includes("http");
   return (
     <Box as="li" listStyle="none">
       <Button
@@ -32,7 +33,13 @@ export const MenuItem = ({ url, title }: MenuItemProps) => {
         size="sm"
         fontWeight="normal"
       >
-        <Link to={url}>{title}</Link>
+        <Link
+          to={url}
+          target={isExternal ? "_blank" : undefined}
+          rel={isExternal ? "noopener noreferrer" : undefined}
+        >
+          {title}
+        </Link>
       </Button>
     </Box>
   );

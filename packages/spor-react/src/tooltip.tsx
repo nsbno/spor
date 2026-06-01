@@ -37,7 +37,6 @@ export const TooltipContent = ({
       <ChakraTooltip.Positioner>
         <ChakraTooltip.Content
           ref={ref}
-          maxWidth="var(--available-width)"
           {...props}
         >
           {showArrow && (

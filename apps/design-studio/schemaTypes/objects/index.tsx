@@ -19,6 +19,7 @@ export * from "./imageCard";
 export * from "./imageCardList";
 export * from "./imageWithCaption";
 export * from "./imports";
+export * from "./heading";
 export * from "./menuItem";
 export * from "./nonClickableBox";
 export * from "./nonClickableBoxList";

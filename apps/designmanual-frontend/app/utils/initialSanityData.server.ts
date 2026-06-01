@@ -25,7 +25,7 @@ export type FooterItem = {
   description: PortableTextBlock[];
 };
 export type MenuItem = {
-  _type: "menuItem" | "divider";
+  _type: "menuItem" | "divider" | "heading";
   title: string;
   tags: string[];
   url: string;

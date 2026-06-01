@@ -1,16 +1,35 @@
 import { Box } from "@vygruppen/spor-react";
+import React from "react";
 
-import { SearchableContentMenu } from "~/routes/_base/content-menu/SearchableContentMenu";
+import { ContentMenu } from "../content-menu/ContentMenu";
 
-export const LeftSidebar = () => {
+export const LeftSidebar = ({ headerOffset }: { headerOffset: number }) => {
+  const focusableRef = React.useRef<HTMLButtonElement>(null);
+  const [refreshKey, setRefreshKey] = React.useState(0);
+
+  const handleRefresh = () => {
+    setRefreshKey((previous) => previous + 1);
+  };
   return (
     <Box
-      width={["100vw", null, null, "20rem"]}
-      height={["100vh", null, null, "auto"]}
-      minWidth={["100%", null, null, "20rem"]}
+      width={[null, null, null, "20rem"]}
+      height={["100vh", null, null, `calc(100vh - ${headerOffset}px)`]}
       display={["none", null, null, "block"]}
+      top={`${headerOffset}px`}
+      alignSelf="flex-start"
+      position="fixed"
+      overflow="auto"
+      transition="all .3s linear"
+      paddingBottom="14rem"
+      borderRight="1px solid"
+      borderColor="outline.neutral"
+      paddingRight={2}
     >
-      <SearchableContentMenu />
+      <ContentMenu
+        ref={focusableRef}
+        refreshKey={refreshKey}
+        handleRefresh={handleRefresh}
+      />
     </Box>
   );
 };

@@ -11,7 +11,7 @@ import {
   Text,
 } from "@vygruppen/spor-react";
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useRouteLoaderData } from "react-router";
+import { useLocation, useNavigate, useRouteLoaderData } from "react-router";
 
 import { loader } from "~/root";
 import { getIcon } from "~/utils/getIcon";
@@ -28,21 +28,10 @@ type Props = {
   ref?: React.Ref<HTMLButtonElement>;
 };
 
-export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
+export const ContentMenu = ({ refreshKey, ref }: Props) => {
+  const navigate = useNavigate();
   const location = useLocation();
   const menu = useMenu(location.pathname.slice(1));
-  let activeIndex =
-    menu?.menuItems.findIndex(
-      (item) =>
-        item._type !== "divider" &&
-        item.subItems?.some((subItem) => subItem.url === location.pathname),
-    ) ?? 0;
-  const indexOfDivider =
-    menu?.menuItems.findIndex((item) => item._type === "divider") ?? 0;
-  if (activeIndex >= indexOfDivider) {
-    activeIndex = activeIndex - 1;
-  }
-
   const { isPreview } = useRouteLoaderData<typeof loader>("root") || {
     isPreview: false,
   };
@@ -64,8 +53,6 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
 
   const mobileMenus = useRouteLoaderData("root")?.initialSanityData?.menus;
 
-  const currentSection = menu?.relatedTo.slug;
-
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -81,8 +68,12 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
   const [expanded, setExpanded] = useState([location.pathname]);
 
   return (
-    <React.Fragment key="content-menu">
-      <Flex flexDirection="column" display={["flex", null, null, "none"]}>
+    <Box role="navigation" paddingTop={3}>
+      <Flex
+        flexDirection="column"
+        display={["flex", null, null, "none"]}
+        as="ul"
+      >
         {sections &&
           sections.length > 7 &&
           sections.map((section: Section) => (
@@ -107,55 +98,52 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
         onValueChange={(details) => setExpanded(details.value)}
         key={refreshKey}
         display={["none", null, null, "block"]}
+        paddingLeft={7}
+        paddingRight={1}
+        paddingTop={3}
+        gap={1}
       >
         {menu?.menuItems.map((item, index) => {
           if (item._type === "divider") {
-            return <Separator key={item.url} marginY={2} size="sm" />;
+            return (
+              <Separator
+                key={item.url}
+                marginY={2}
+                size="sm"
+                variant="dashed"
+              />
+            );
+          } else if (item._type === "heading") {
+            return (
+              <Text
+                key={item.title}
+                fontSize="desktop.2xs"
+                fontWeight="bold"
+                color="text.subtle"
+                paddingX={3}
+                marginBottom={0.5}
+              >
+                {item.title}
+              </Text>
+            );
           }
           const subItems = item.subItems?.filter((subItem) => subItem.url);
           const hasSubItems = Boolean(subItems?.length);
-          const linkStripped = item.link?.startsWith("/")
-            ? item.link
-            : item.link?.split(".no")[1];
-          const isCurrentPage = linkStripped === location.pathname;
 
-          if (item.link && !isCurrentPage) {
-            return (
-              <MenuItem
-                key={item.link}
-                url={handleExternalMenu(item.link, isPreview)}
-                isTopMenu={true}
-                ref={index === 0 ? ref : null}
-                fontWeight="bold"
-                fontSize={["desktop.xs", null, "desktop.sm"]}
-                paddingX="3"
-                paddingY="2"
-                borderRadius="sm"
-                onClick={() => {
-                  setExpanded([item.link]);
-                  handleRefresh();
-                }}
-              >
-                {item.title}
-              </MenuItem>
-            );
-          }
           return (
             <AccordionItem
               key={item.title}
               value={`${item.link ?? item.title}`}
-              marginY={0.5}
             >
               <AccordionItemTrigger
-                fontWeight="bold"
                 ref={index === 0 ? ref : null}
-                _expanded={{ backgroundColor: "bg.brand" }}
                 onClick={() => {
-                  setExpanded([item.link]);
+                  if (item.link) {
+                    navigate(handleExternalMenu(item.link, isPreview));
+                    return;
+                  }
                 }}
-                backgroundColor={
-                  item.link === location.pathname ? "bg.brand" : "transparent"
-                }
+                fontSize="xs"
               >
                 {item.title}
               </AccordionItemTrigger>
@@ -165,20 +153,16 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
                 key={refreshKey}
               >
                 {hasSubItems && (
-                  <Stack padding={0.5} marginBottom={1}>
+                  <Stack padding={0.5} marginBottom={1} as="ul" gap={1}>
                     {subItems?.map((subItem) => (
                       <MenuItem
                         key={subItem.url}
-                        url={`${subItem.url}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
-                        isActive={`/${subItem.url}` === location.pathname}
-                        backgroundColor={
-                          `/${subItem.url}` === location.pathname
-                            ? "bg.brand"
-                            : "transparent"
-                        }
-                      >
-                        {subItem.title}
-                      </MenuItem>
+                        url={handleExternalMenu(
+                          item.link ?? item.url ?? "",
+                          isPreview,
+                        )}
+                        title={subItem.title}
+                      />
                     ))}
                     {!hasSubItems && (
                       <Text color="text.disabled">Nothing here (yet)</Text>
@@ -186,25 +170,13 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
                   </Stack>
                 )}
                 {headingsMenu.length > 0 && (
-                  <Stack display={["none", null, null, "block"]}>
+                  <Stack as="ul">
                     {headingsMenu.map((subItem) => (
                       <MenuItem
                         key={subItem.text}
                         url={`${location.pathname}#${subItem.id}`}
-                        isActive={
-                          `/${currentSection}${subItem.text}` ===
-                          location.pathname
-                        }
-                        backgroundColor={
-                          `${location.pathname}#${subItem.id}` ===
-                          location.pathname
-                            ? "bg.brand"
-                            : "transparent"
-                        }
-                        id={`${location.pathname}#${subItem.id}--${location.pathname}`}
-                      >
-                        {subItem.text}
-                      </MenuItem>
+                        title={subItem.text}
+                      />
                     ))}
                   </Stack>
                 )}
@@ -213,7 +185,7 @@ export const ContentMenu = ({ refreshKey, handleRefresh, ref }: Props) => {
           );
         })}
       </Accordion>
-    </React.Fragment>
+    </Box>
   );
 };
 
@@ -254,7 +226,7 @@ type MobileMenuProps = {
 
 const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
   return (
-    <Stack gap="2">
+    <Stack gap="2" direction="column">
       {sections &&
         sections.map((section) => (
           <Expandable
@@ -265,6 +237,7 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
               section.icon && getIcon({ iconName: section.icon, size: 24 })
             }
             collapsible
+            as="ul"
           >
             {mobileMenus
               ?.find((menu) => {
@@ -273,8 +246,20 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
               ?.menuItems?.map((item) => {
                 if (item._type === "divider") {
                   return null;
-                }
-                if (item.subItems && item.subItems.length > 0) {
+                } else if (item._type === "heading") {
+                  return (
+                    <Text
+                      key={item.title}
+                      fontSize="xs"
+                      fontWeight="bold"
+                      color="text.subtle"
+                      paddingX={3}
+                      marginTop={2}
+                    >
+                      {item.title}
+                    </Text>
+                  );
+                } else if (item.subItems && item.subItems.length > 0) {
                   return (
                     <Expandable
                       collapsible
@@ -283,36 +268,27 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
                       variant="ghost"
                       marginBottom={2}
                       paddingLeft={6}
+                      as="ul"
                     >
                       {item.subItems.map((subItem) => (
-                        <Box key={subItem.title}>
-                          <Link
-                            to={handleExternalMenu(
-                              subItem?.url ?? "/",
-                              isPreview,
-                            )}
-                          >
-                            {subItem.title}
-                          </Link>
-                        </Box>
+                        <MenuItem
+                          key={subItem.url}
+                          url={handleExternalMenu(subItem.url ?? "", isPreview)}
+                          title={subItem.title}
+                        />
                       ))}
                     </Expandable>
                   );
                 }
                 return (
-                  <Box
-                    as="button"
+                  <MenuItem
                     key={item.title}
-                    width="100%"
-                    textAlign="left"
-                    paddingLeft={6}
-                    marginBottom={2}
-                    fontWeight="bold"
-                  >
-                    <Link to={handleExternalMenu(item?.link ?? "/", isPreview)}>
-                      {item.title}
-                    </Link>
-                  </Box>
+                    url={handleExternalMenu(
+                      item.link ?? item.url ?? "",
+                      isPreview,
+                    )}
+                    title={item.title}
+                  />
                 );
               })}
           </Expandable>

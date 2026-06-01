@@ -6,6 +6,7 @@ export * from "./calendar";
 export * from "./color-mode";
 export * from "./datepicker";
 export * from "./dialog";
+export * from "./error-summary";
 export * from "./i18n";
 export * from "./image";
 export * from "./input";

@@ -1,4 +1,8 @@
-import { NativeSelect } from "@vygruppen/spor-react";
+import {
+  createListCollection,
+  Select,
+  SelectItem,
+} from "@vygruppen/spor-react";
 import { useFetcher } from "react-router";
 
 import { useBrand } from "~/utils/brand";
@@ -6,26 +10,36 @@ import { useBrand } from "~/utils/brand";
 export const BrandSwitcher = () => {
   const fetcher = useFetcher();
   const brand = useBrand();
+  const brandOptions = createListCollection({
+    items: [
+      { label: "Vy Digital", value: "VyDigital" },
+      { label: "Vy Utvikling", value: "VyUtvikling" },
+      { label: "CargoNet", value: "CargoNet" },
+    ],
+  });
 
   return (
-    // Use native select until spor select is available
-    <fetcher.Form method="post" action="/api/brand">
-      <NativeSelect
+    <fetcher.Form method="post">
+      <Select
         label="Brand"
-        value={brand as string}
-        onChange={(event) => {
+        collection={brandOptions}
+        defaultValue={[brand as string]}
+        onValueChange={(brand) => {
           const formData = new FormData();
-          formData.set("brand", event.target.value);
+          formData.set("brand", brand.value[0]);
           fetcher.submit(formData, {
             method: "post",
             action: "/",
           });
         }}
+        css={{ zIndex: "toast !important" }}
       >
-        <option value="VyDigital">Vy Digital</option>
-        <option value="VyUtvikling">Vy Utvikling</option>
-        <option value="CargoNet">CargoNet</option>
-      </NativeSelect>
+        {brandOptions.items.map((option, index) => (
+          <SelectItem key={index} item={option}>
+            {option.label}
+          </SelectItem>
+        ))}
+      </Select>
     </fetcher.Form>
   );
 };

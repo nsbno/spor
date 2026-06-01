@@ -261,7 +261,9 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
             key={`${section.slug.current}_em`}
             variant="ghost"
             title={section.title}
-            startElement={getIcon({ iconName: section.icon, size: 24 })}
+            startElement={
+              section.icon && getIcon({ iconName: section.icon, size: 24 })
+            }
             collapsible
           >
             {mobileMenus

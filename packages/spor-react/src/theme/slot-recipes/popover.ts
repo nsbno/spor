@@ -24,6 +24,8 @@ export const popoverSlotRecipe = defineSlotRecipe({
 
       transformOrigin: "var(--transform-origin)",
       maxHeight: "var(--available-height)",
+      maxWidth: "var(--available-width)",
+
       _open: {
         animationStyle: "scale-fade-in",
         animationDuration: "fast",

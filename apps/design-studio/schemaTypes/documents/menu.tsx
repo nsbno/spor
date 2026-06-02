@@ -34,7 +34,7 @@ export const menu = defineType({
       name: "menuItems",
       title: "Menu items",
       type: "array",
-      of: [{ type: "menuItem" }, { type: "divider" }],
+      of: [{ type: "menuItem" }, { type: "divider" }, { type: "heading" }],
     }),
   ],
   preview: {

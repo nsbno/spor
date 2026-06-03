@@ -3,7 +3,6 @@ import { groq } from "@sanity/groq-store";
 import { sidesporConfig } from "@vygruppen/sidespor-config";
 import { LinkOutOutline18Icon } from "@vygruppen/spor-icon-react";
 import {
-  Alert,
   Badge,
   Box,
   Button,
@@ -24,6 +23,7 @@ import {
 } from "react-router";
 import invariant from "tiny-invariant";
 
+import { ArticleAlert } from "~/features/portable-text/components/ArticleAlert";
 import { ArticleBadge } from "~/features/portable-text/components/ArticleBadge";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { useHeaderOffset } from "~/root/layout/HeaderOffsetContext";
@@ -190,7 +190,7 @@ export default function ArticlePage() {
   }
 
   return (
-    <Flex gap={8} justifyContent="space-between">
+    <Flex gap={5} justifyContent="space-between">
       <Box flex={1} minWidth={0}>
         <Flex marginBottom={1.5} gap={1}>
           {article?.category?.title && (
@@ -201,7 +201,7 @@ export default function ArticlePage() {
           ))}
           {isPreview && <Badge colorPalette="yellow">Preview</Badge>}
         </Flex>
-        <Flex direction="column" gap={8}>
+        <Flex direction="column" gap={5}>
           <Flex gap={3} direction="column">
             <Heading as="h1" variant="xl-display" autoId>
               {article.title}
@@ -233,14 +233,16 @@ export default function ArticlePage() {
                 </Button>
               ))}
             </Flex>
-            <Stack direction="column" gap={2}>
-              {article.badges?.map((badge: ArticleBadgeType, index: number) => (
-                <Alert key={index} variant="info">
-                  {badge.description}
-                </Alert>
-              ))}
-            </Stack>
           </Flex>
+          <Stack direction="column" gap={2}>
+            {article.badges?.map((badge: ArticleBadgeType, index: number) => (
+              <ArticleAlert
+                key={index}
+                badgeType={badge.badgeType}
+                description={badge.description}
+              />
+            ))}
+          </Stack>
 
           <Box
             width="20%"

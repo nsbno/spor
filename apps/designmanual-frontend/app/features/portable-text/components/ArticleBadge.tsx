@@ -1,15 +1,15 @@
 import {
-  DeleteCircleOutline18Icon,
   IconComponent,
-  NightOutline18Icon,
+  InformationOutline18Icon,
   StarsOutline18Icon,
-  UpdateOutline18Icon,
+  TokensOutline18Icon,
+  WarningOutline18Icon,
 } from "@vygruppen/spor-icon-react";
 import { Badge, BadgeProps } from "@vygruppen/spor-react";
 
 import { ArticleBadgeType } from "~/utils/initialSanityData.server";
 
-type ArticleBadgeProps = Omit<ArticleBadgeType, "description">;
+export type ArticleBadgeProps = Omit<ArticleBadgeType, "description">;
 
 export const ArticleBadge = ({
   badgeType,
@@ -41,9 +41,9 @@ export const ArticleBadge = ({
   };
   const badgeIconMap: Record<ArticleBadgeProps["badgeType"], IconComponent> = {
     new: StarsOutline18Icon,
-    updated: UpdateOutline18Icon,
-    beta: NightOutline18Icon,
-    deprecated: DeleteCircleOutline18Icon,
+    updated: InformationOutline18Icon,
+    beta: TokensOutline18Icon,
+    deprecated: WarningOutline18Icon,
   };
 
   return (

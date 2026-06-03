@@ -47,7 +47,7 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
             as="main"
             alignItems="stretch"
             marginLeft={[0, null, null, "21rem"]}
-            paddingTop={5}
+            paddingTop={8}
             flex={1}
             minWidth={0}
           >

@@ -38,7 +38,7 @@ export const ExamplesSection = ({
           </Flex>
         </CheckboxGroup>
       )}
-      <Text>
+      <Text fontSize="sm">
         {
           codeExamples.find((example) => example.title === currentExampleIndex)
             ?.description

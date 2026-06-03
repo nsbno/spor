@@ -41,12 +41,7 @@ export const MenuItem = ({ url, title, badges }: MenuItemProps) => {
           target={isExternal ? "_blank" : undefined}
           rel={isExternal ? "noopener noreferrer" : undefined}
         >
-          <Stack
-            direction="row"
-            alignItems="center"
-            justifyContent="space-between"
-            width="100%"
-          >
+          <Stack direction="row" alignItems="center" width="100%">
             {title}
             {badges && (
               <Stack direction="row">

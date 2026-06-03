@@ -157,10 +157,7 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
                     {subItems?.map((subItem) => (
                       <MenuItem
                         key={subItem.url}
-                        url={handleExternalMenu(
-                          item.link ?? item.url ?? "",
-                          isPreview,
-                        )}
+                        url={handleExternalMenu(subItem.url ?? "", isPreview)}
                         title={subItem.title}
                       />
                     ))}

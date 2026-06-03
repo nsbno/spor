@@ -303,7 +303,7 @@ const components: Partial<PortableTextReactComponents> = {
           components={{
             block: {
               normal: ({ children }: any) => (
-                <Text variant="md">{children}</Text>
+                <Text variant="sm">{children}</Text>
               ),
             },
           }}

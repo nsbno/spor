@@ -10,12 +10,17 @@ export const LivePreview = (props: BoxProps) => {
       backgroundColor="bg"
       color="text"
       transition="all .1s ease-out"
-      padding={4}
-      paddingRight={8}
+      padding={9}
       position="relative"
       {...props}
     >
-      <ReactLivePreview Component={Box} />
+      <ReactLivePreview
+        Component={Box}
+        width="100%"
+        height="100%"
+        display="flex"
+        justifyContent="center"
+      />
     </Box>
   );
 };

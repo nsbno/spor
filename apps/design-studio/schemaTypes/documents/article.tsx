@@ -84,6 +84,15 @@ export const article = defineType({
       type: "image",
     }),
     defineField({
+      name: "badges",
+      title: "Badges",
+      description:
+        "Used to display descriptive badges for the article, like 'New', 'Updated', 'Beta', or 'Deprecated'.",
+      type: "array",
+      of: [{ type: "badge" }],
+    }),
+
+    defineField({
       name: "resourceLinks",
       title: "Resource links",
       description:
@@ -202,6 +211,7 @@ export const article = defineType({
                   { value: "code", title: "Code" },
                   { value: "styling", title: "Styling" },
                   { value: "other", title: "Other" },
+                  { value: "codeExamples", title: "Code examples" },
                 ],
               },
             },
@@ -233,6 +243,15 @@ export const article = defineType({
               title: "Styling",
               type: "content",
               hidden: ({ parent }) => parent.title !== "code",
+            },
+            {
+              name: "codeExamples",
+              title: "Code examples",
+              type: "array",
+              of: [{ type: "codeExample" }],
+              hidden: ({ parent }) => {
+                return parent?.title !== "codeExamples";
+              },
             },
           ],
         },

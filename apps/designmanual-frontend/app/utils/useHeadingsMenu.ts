@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 
 export type HeadingsMenu = {
-  text: string;
+  title: string;
   id?: string;
 };
 
@@ -14,7 +14,7 @@ export const useHeadingsMenu = (): Array<HeadingsMenu> | [] => {
   );
 
   useEffect(() => {
-    const headings: Array<{ text: string; id?: string }> = [];
+    const headings: Array<{ title: string; id?: string }> = [];
     const h2Elements =
       typeof document === "undefined"
         ? []
@@ -24,16 +24,16 @@ export const useHeadingsMenu = (): Array<HeadingsMenu> | [] => {
 
     if (h2Elements.length > 0) {
       for (const element of h2Elements) {
-        const text = element.textContent?.trim() || "";
+        const title = element.textContent?.trim() || "";
 
         const id =
           element.id ||
-          text
+          title
             .toLowerCase()
             .replaceAll(/\s+/g, "-")
             .replaceAll(/[^a-z0-9-]/g, "");
 
-        headings.push({ text, id });
+        headings.push({ title, id });
       }
     }
     // eslint-disable-next-line react-hooks/set-state-in-effect

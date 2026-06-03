@@ -1,41 +1,35 @@
 import { PortableTextBlock } from "@portabletext/react";
 import { groq } from "@sanity/groq-store";
 import { sidesporConfig } from "@vygruppen/sidespor-config";
+import { LinkOutOutline18Icon } from "@vygruppen/spor-icon-react";
 import {
-  FigmaOutline24Icon,
-  GithubOutline24Icon,
-} from "@vygruppen/spor-icon-react";
-import {
+  Alert,
   Badge,
   Box,
-  Brand,
   Button,
   createSystem,
   Flex,
   Heading,
-  HStack,
-  Separator,
+  slugify,
   SporProvider,
   Stack,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
   Text,
   themes,
 } from "@vygruppen/spor-react";
 import { PropsWithChildren } from "react";
 import {
+  Link,
   type LoaderFunctionArgs,
   type MetaFunction,
   useLoaderData,
 } from "react-router";
 import invariant from "tiny-invariant";
 
+import { ArticleBadge } from "~/features/portable-text/components/ArticleBadge";
 import { PortableText } from "~/features/portable-text/PortableText";
+import { useHeaderOffset } from "~/root/layout/HeaderOffsetContext";
 import { ComponentDocs } from "~/routes/_base.$section.$category.$slug/component-docs/ComponentDocs";
-import { sendCustomEvent } from "~/utils/analytics/metabase";
-import { useBrand } from "~/utils/brand";
+import { ArticleBadgeType } from "~/utils/initialSanityData.server";
 import { getClient } from "~/utils/sanity/client";
 import {
   blockContentToPlainText,
@@ -43,16 +37,32 @@ import {
   urlBuilder,
 } from "~/utils/sanity/utils";
 import { toTitleCase } from "~/utils/stringUtils";
+import { useHeadingsMenu } from "~/utils/useHeadingsMenu";
+
+import { ExamplesSection } from "./component-docs/ExampleSection";
 
 type ResourceLink = {
   linkType: "figma" | "react" | "react-native";
   url: string;
 };
+
+export type CodeExample = {
+  title: string;
+  description?: string;
+  layout: "simple" | "preview-only" | "code-only" | "advanced";
+  reactCode: {
+    code: string;
+  };
+};
 type ComponentSection = {
   _id: string;
-  title: "guidelines" | "examples" | "code" | "other";
+  title: "guidelines" | "examples" | "code" | "other" | "codeExamples";
   customTitle?: string;
   content: unknown[];
+  badges?: {
+    badgeType: "new" | "updated" | "beta" | "deprecated";
+    description?: string;
+  }[];
   components?: {
     _id: string;
     name: string;
@@ -61,6 +71,7 @@ type ComponentSection = {
     content: unknown[];
   }[];
   styling: unknown[];
+  codeExamples: CodeExample[];
 };
 
 export const extendedSystemConfigWithSidespor = createSystem(
@@ -86,6 +97,10 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
       title,
       "slug": slug.current
     },
+    badges[] {
+      badgeType, 
+      description
+    },
     resourceLinks[linkType == "react" || linkType == "react-native" || linkType == "figma"],
     content[]{
       _type == 'reference' => @->,
@@ -100,6 +115,12 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
       components[] {
         _type == 'reference' => @->,
         _type != 'reference' => @,
+      },
+      codeExamples[]{
+        title,
+        description,
+        layout,
+        reactCode,
       }
     }
   }`;
@@ -165,81 +186,127 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 
 export default function ArticlePage() {
   const { initialData, isPreview } = useLoaderData<typeof loader>();
-  const brand = useBrand();
-
   const article = initialData[0];
+  const headerOffset = useHeaderOffset();
+  const rawHeadingsMenu = useHeadingsMenu();
 
   if (!article) {
     return null;
   }
+  const onThisPageLinks = article.componentSections ?? rawHeadingsMenu;
 
   return (
-    <>
-      <Flex
-        marginBottom={1}
-        gap={6}
-        justifyContent="space-between"
-        alignContent="stretch"
-      >
-        <HStack>
+    <Flex gap={8} justifyContent="space-between">
+      <Box flex={1} minWidth={0}>
+        <Flex marginBottom={1.5} gap={1}>
           {article?.category?.title && (
-            <Badge colorPalette={brand === Brand.CargoNet ? "orange" : "green"}>
-              {article?.category?.title}
-            </Badge>
+            <Badge>{article?.category?.title}</Badge>
           )}
+          {article.badges?.map((badge: ArticleBadgeType) => (
+            <ArticleBadge key={badge.badgeType} badgeType={badge.badgeType} />
+          ))}
           {isPreview && <Badge colorPalette="yellow">Preview</Badge>}
-        </HStack>
-        <Flex wrap="wrap" gap={2} marginLeft="auto" justifyContent="end">
-          {article.resourceLinks?.map((link: ResourceLink) => (
-            <Button
-              key={link.url}
-              variant="tertiary"
-              size="sm"
-              leftIcon={mapLinkToIcon(link.linkType)}
-              onClick={() => window.open(link.url, "_blank")}
-            >
-              {mapLinkToLabel(link.linkType)}
+        </Flex>
+        <Flex direction="column" gap={8}>
+          <Flex gap={3} direction="column">
+            <Heading as="h1" variant="xl-display" autoId>
+              {article.title}
+            </Heading>
+            {article.introduction && (
+              <PortableText
+                value={article.introduction}
+                components={{
+                  block: {
+                    normal: ({ children }: PropsWithChildren) => (
+                      <Text variant="md">{children}</Text>
+                    ),
+                  },
+                }}
+              />
+            )}
+            <Flex gap={1}>
+              {article.resourceLinks?.map((link: ResourceLink) => (
+                <Button
+                  asChild
+                  key={link.url}
+                  variant="tertiary"
+                  size="sm"
+                  rightIcon={<LinkOutOutline18Icon />}
+                >
+                  <Link to={link.url} target="_blank">
+                    {mapLinkToLabel(link.linkType)}
+                  </Link>
+                </Button>
+              ))}
+            </Flex>
+            <Stack direction="column" gap={2}>
+              {article.badges?.map((badge: ArticleBadgeType, index: number) => (
+                <Alert key={index} variant="info">
+                  {badge.description}
+                </Alert>
+              ))}
+            </Stack>
+          </Flex>
+
+          {article.componentSections ? (
+            <ComponentSections
+              id={article._id}
+              sections={article.componentSections}
+              component={article.title}
+            />
+          ) : article.title.includes("Sidespor") ? (
+            <SporProvider theme={extendedSystemConfigWithSidespor}>
+              <PortableText value={article.content} />
+            </SporProvider>
+          ) : (
+            <Box>
+              <PortableText value={article.content} />
+            </Box>
+          )}
+        </Flex>
+      </Box>
+      <Box
+        width="20%"
+        display="none"
+        css={{
+          [`@media screen and (min-width: 1110px)`]: {
+            display: "block",
+          },
+        }}
+      />
+      <Box
+        width="20%"
+        display="none"
+        position="fixed"
+        overflow="auto"
+        right={0}
+        paddingTop={3}
+        top={`${headerOffset}px`}
+        transition="all .3s linear"
+        height={`calc(100vh - ${headerOffset}px)`}
+        css={{
+          [`@media screen and (min-width: 1110px)`]: {
+            display: "block",
+          },
+        }}
+      >
+        <Stack gap={1}>
+          <Text fontWeight="bold" marginLeft={2}>
+            On this page
+          </Text>
+          {onThisPageLinks?.map((section) => (
+            <Button key={section.title} variant="ghost" size="sm" asChild>
+              <Link to={`#${slugify(section.title)}`}>
+                {getCorrectTitle({
+                  title: section.title,
+                  customTitle: section.customTitle,
+                })}
+              </Link>
             </Button>
           ))}
-        </Flex>
-      </Flex>
-      <Flex direction="column">
-        <Heading as="h1" variant="xl-display" marginBottom={2}>
-          {article.title}
-        </Heading>
-        {article.introduction && (
-          <Box marginBottom={3}>
-            <PortableText
-              value={article.introduction}
-              components={{
-                block: {
-                  normal: ({ children }: PropsWithChildren) => (
-                    <Text variant="md">{children}</Text>
-                  ),
-                },
-              }}
-            />
-          </Box>
-        )}
-        {article.componentSections ? (
-          <ComponentSections
-            id={article._id}
-            sections={article.componentSections}
-            component={article.title}
-          />
-        ) : (
-          <Box>
-            {article.title.includes("Sidespor") ? (
-              <SporProvider theme={extendedSystemConfigWithSidespor}>
-                <PortableText value={article.content} />
-              </SporProvider>
-            ) : (
-              <PortableText value={article.content} />
-            )}
-          </Box>
-        )}
-      </Flex>
-    </>
+        </Stack>
+      </Box>
+    </Flex>
   );
 }
 
@@ -249,7 +316,7 @@ const mapLinkToLabel = (linkType: ResourceLink["linkType"]) => {
       return "Figma";
     }
     case "react": {
-      return "React";
+      return "GitHub";
     }
     case "react-native": {
       return "React Native";
@@ -260,93 +327,43 @@ const mapLinkToLabel = (linkType: ResourceLink["linkType"]) => {
   }
 };
 
-const mapLinkToIcon = (linkType: ResourceLink["linkType"]) => {
-  switch (linkType) {
-    case "figma": {
-      return <FigmaOutline24Icon />;
-    }
-    default: {
-      return <GithubOutline24Icon />;
-    }
-  }
-};
-
 type ComponentSectionsProps = {
   component: string;
   sections: ComponentSection[];
   id: string;
 };
-const ComponentSections = ({
-  component,
-  sections,
-  id,
-}: ComponentSectionsProps) => {
+const ComponentSections = ({ sections }: ComponentSectionsProps) => {
   return (
-    <Tabs
-      variant="accent"
-      size="md"
-      marginTop={4}
-      fitted={true}
-      lazyMount
-      key={id}
-      defaultValue={sections[0].customTitle || sections[0].title}
-    >
-      <TabsList>
-        {sections.map((section) => (
-          <TabsTrigger
-            key={section.title}
-            value={section.title}
-            onClick={() =>
-              sendCustomEvent({
-                event: "component_tab_visited",
-                properties: {
-                  tab: section.title,
-                  component: component,
-                },
-              })
-            }
-          >
-            {`${section.title.charAt(0).toUpperCase()}${section.title.slice(1)}`}
-          </TabsTrigger>
-        ))}
-      </TabsList>
-      <Separator marginY={4} />
+    <>
       {sections.map((section) => (
-        <TabsContent
-          key={section.customTitle || section.title}
-          value={section.customTitle || section.title}
-        >
-          <Heading as="h2" variant="lg" marginBottom={1}>
+        <Box key={section._id}>
+          <Heading
+            as="h2"
+            variant="lg"
+            fontWeight="bold"
+            marginBottom={1}
+            autoId
+          >
             {getCorrectTitle({
               title: section.title,
               customTitle: section.customTitle,
             })}
           </Heading>
           <Stack>
-            {section.content && <PortableText value={section.content} />}
+            {section.title === "codeExamples" && (
+              <ExamplesSection
+                key={section._id}
+                codeExamples={section.codeExamples ?? []}
+              />
+            )}
             {section.components?.map((component) => (
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               <ComponentDocs key={component._id} component={component as any} />
             ))}
-            {section.styling && (
-              <Box as="section">
-                <Heading
-                  as="h3"
-                  variant="md"
-                  fontWeight="bold"
-                  marginBottom={1}
-                >
-                  Styling
-                </Heading>
-                <Box marginTop={1}>
-                  <PortableText value={section.styling} />
-                </Box>
-              </Box>
-            )}
+            {section.content && <PortableText value={section.content} />}
           </Stack>
-        </TabsContent>
+        </Box>
       ))}
-    </Tabs>
+    </>
   );
 };
 
@@ -356,6 +373,9 @@ const getCorrectTitle = ({ title, customTitle }: GetCorrectTitleArguments) => {
     case "examples": {
       return "Examples";
     }
+    case "codeExamples": {
+      return "Code examples";
+    }
     case "guidelines": {
       return "Guidelines";
     }
@@ -364,6 +384,9 @@ const getCorrectTitle = ({ title, customTitle }: GetCorrectTitleArguments) => {
     }
     case "other": {
       return toTitleCase(customTitle ?? "");
+    }
+    default: {
+      return title;
     }
   }
 };

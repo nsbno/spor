@@ -37,7 +37,7 @@ export default function BaseLayout() {
 
   return (
     <Box
-      width={[null, null, null, "container.md", "container.lg"]}
+      width={[null, "container.sm", "container.md", "container.lg"]}
       marginX="auto"
     >
       <Outlet />

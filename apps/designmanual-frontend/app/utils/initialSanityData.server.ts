@@ -37,9 +37,19 @@ export type MenuItem = {
     slug: { current: string };
   };
 };
+export type Component = {
+  title: string;
+  url: string;
+  badges: ArticleBadgeType[];
+};
+export type ArticleBadgeType = {
+  badgeType: "new" | "updated" | "beta" | "deprecated";
+  description?: string;
+};
 export type Menu = {
   slug: string;
   menuItems: MenuItem[];
+  components: Component[];
   relatedTo: {
     _type: string;
     title: string;
@@ -93,7 +103,13 @@ export const getInitialSanityData = async (stega = false) => {
               defined(externalLink) => externalLink
             ),
           }
-        } 
+        },
+        "components": *[_type == "article" && !(_id in path("drafts.**")) && category->slug.current == "components"] | order(title asc) {
+          title,
+          slug,
+          badges,
+          "url": "/" + section->slug.current + "/" + category->slug.current + "/" + slug.current
+         },
       },
       "siteSettings": *[_type == "siteSettings"][0] {
         title,

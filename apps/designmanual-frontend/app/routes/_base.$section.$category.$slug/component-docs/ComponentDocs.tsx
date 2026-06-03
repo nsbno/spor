@@ -16,19 +16,21 @@ import { PortableText } from "~/features/portable-text/PortableText";
 import { CodeBlock } from "../../../features/portable-text/code-block/CodeBlock";
 import { LinkableHeading } from "../../../features/portable-text/LinkableHeading";
 
-type ComponentDocsProps = {
-  component: {
+export type Component = {
+  name: string;
+  content: unknown[];
+  props: {
+    platform: "react" | "react-native" | "react, react-native";
+    type: "other" | string;
+    typeOther?: string;
     name: string;
-    content: unknown[];
-    props: {
-      platform: "react" | "react-native" | "react, react-native";
-      type: "other" | string;
-      typeOther?: string;
-      name: string;
-      description?: string;
-      isRequired: boolean;
-    }[];
-  };
+    description?: string;
+    isRequired: boolean;
+  }[];
+};
+
+type ComponentDocsProps = {
+  component: Component;
 };
 export const ComponentDocs = ({ component }: ComponentDocsProps) => {
   const visibleProps = component.props?.filter((property) => {

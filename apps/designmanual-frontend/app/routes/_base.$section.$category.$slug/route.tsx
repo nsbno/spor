@@ -10,13 +10,12 @@ import {
   createSystem,
   Flex,
   Heading,
-  slugify,
   SporProvider,
   Stack,
   Text,
   themes,
 } from "@vygruppen/spor-react";
-import { PropsWithChildren } from "react";
+import { type ComponentProps, PropsWithChildren } from "react";
 import {
   Link,
   type LoaderFunctionArgs,
@@ -37,8 +36,8 @@ import {
   urlBuilder,
 } from "~/utils/sanity/utils";
 import { toTitleCase } from "~/utils/stringUtils";
-import { useHeadingsMenu } from "~/utils/useHeadingsMenu";
 
+import { RightSidebar } from "../_base/right-sidebar/RightSidebar";
 import { ExamplesSection } from "./component-docs/ExampleSection";
 
 type ResourceLink = {
@@ -54,6 +53,9 @@ export type CodeExample = {
     code: string;
   };
 };
+
+type ComponentDocsComponent = ComponentProps<typeof ComponentDocs>["component"];
+
 type ComponentSection = {
   _id: string;
   title: "guidelines" | "examples" | "code" | "other" | "codeExamples";
@@ -63,13 +65,7 @@ type ComponentSection = {
     badgeType: "new" | "updated" | "beta" | "deprecated";
     description?: string;
   }[];
-  components?: {
-    _id: string;
-    name: string;
-    slug: string;
-    props: unknown[];
-    content: unknown[];
-  }[];
+  components?: ComponentDocsComponent[];
   styling: unknown[];
   codeExamples: CodeExample[];
 };
@@ -188,12 +184,10 @@ export default function ArticlePage() {
   const { initialData, isPreview } = useLoaderData<typeof loader>();
   const article = initialData[0];
   const headerOffset = useHeaderOffset();
-  const rawHeadingsMenu = useHeadingsMenu();
 
   if (!article) {
     return null;
   }
-  const onThisPageLinks = article.componentSections ?? rawHeadingsMenu;
 
   return (
     <Flex gap={8} justifyContent="space-between">
@@ -290,21 +284,7 @@ export default function ArticlePage() {
           },
         }}
       >
-        <Stack gap={1}>
-          <Text fontWeight="bold" marginLeft={2}>
-            On this page
-          </Text>
-          {onThisPageLinks?.map((section) => (
-            <Button key={section.title} variant="ghost" size="sm" asChild>
-              <Link to={`#${slugify(section.title)}`}>
-                {getCorrectTitle({
-                  title: section.title,
-                  customTitle: section.customTitle,
-                })}
-              </Link>
-            </Button>
-          ))}
-        </Stack>
+        <RightSidebar />
       </Box>
     </Flex>
   );
@@ -357,7 +337,7 @@ const ComponentSections = ({ sections }: ComponentSectionsProps) => {
               />
             )}
             {section.components?.map((component) => (
-              <ComponentDocs key={component._id} component={component as any} />
+              <ComponentDocs key={component.name} component={component} />
             ))}
             {section.content && <PortableText value={section.content} />}
           </Stack>

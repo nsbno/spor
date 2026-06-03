@@ -242,6 +242,26 @@ export default function ArticlePage() {
             </Stack>
           </Flex>
 
+          <Box
+            width="20%"
+            display="none"
+            position="fixed"
+            overflow="auto"
+            right={0}
+            paddingLeft={1}
+            paddingTop={3}
+            top={`${headerOffset}px`}
+            transition="all .3s linear"
+            height={`calc(100vh - ${headerOffset}px)`}
+            css={{
+              [`@media screen and (min-width: 1110px)`]: {
+                display: "block",
+              },
+            }}
+          >
+            <RightSidebar />
+          </Box>
+
           {article.componentSections ? (
             <ComponentSections
               id={article._id}
@@ -268,24 +288,6 @@ export default function ArticlePage() {
           },
         }}
       />
-      <Box
-        width="20%"
-        display="none"
-        position="fixed"
-        overflow="auto"
-        right={0}
-        paddingTop={3}
-        top={`${headerOffset}px`}
-        transition="all .3s linear"
-        height={`calc(100vh - ${headerOffset}px)`}
-        css={{
-          [`@media screen and (min-width: 1110px)`]: {
-            display: "block",
-          },
-        }}
-      >
-        <RightSidebar />
-      </Box>
     </Flex>
   );
 }

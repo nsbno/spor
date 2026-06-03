@@ -1,4 +1,4 @@
-import { Button, slugify, Stack, Text } from "@vygruppen/spor-react";
+import { Box, Button, slugify, Stack, Text } from "@vygruppen/spor-react";
 import { Link } from "react-router";
 
 import { useHeadingsMenu } from "~/utils/useHeadingsMenu";
@@ -8,15 +8,19 @@ export const RightSidebar = () => {
   const onThisPageLinks = rawHeadingsMenu;
 
   return (
-    <Stack gap={1}>
+    <Stack gap={1} as="nav">
       <Text fontWeight="bold" marginLeft={2}>
         On this page
       </Text>
-      {onThisPageLinks?.map((section) => (
-        <Button key={section.title} variant="ghost" size="sm" asChild>
-          <Link to={`#${slugify(section.title)}`}>{section.title}</Link>
-        </Button>
-      ))}
+      <Stack gap={1} as="ol">
+        {onThisPageLinks?.map((section) => (
+          <Box as="li" key={section.title}>
+            <Button variant="ghost" size="sm" asChild>
+              <Link to={`#${slugify(section.title)}`}>{section.title}</Link>
+            </Button>
+          </Box>
+        ))}
+      </Stack>
     </Stack>
   );
 };

@@ -13,74 +13,52 @@ export const badgeRecipie = defineRecipe({
       neutral: {
         backgroundColor: "surface",
         color: "text",
-        "& svg": {
-          color: "icon",
-        },
+        "& svg": { color: "icon" },
       },
       grey: {
         backgroundColor: "surface.neutral",
         color: "text.neutral",
-        "& svg": {
-          color: "icon.neutral",
-        },
+        "& svg": { color: "icon.neutral" },
       },
       green: {
         backgroundColor: "surface.success",
         color: "text.success",
-        "& svg": {
-          color: "icon.success",
-        },
+        "& svg": { color: "icon.success" },
       },
       blue: {
         backgroundColor: "surface.info",
         color: "text.info",
-        "& svg": {
-          color: "icon.info",
-        },
+        "& svg": { color: "icon.info" },
       },
       cream: {
         backgroundColor: "surface.warning",
         color: "text.warning",
-        "& svg": {
-          color: "icon.warning",
-        },
+        "& svg": { color: "icon.warning" },
       },
       yellow: {
         backgroundColor: "surface.notice",
         color: "text.notice",
-        "& svg": {
-          color: "icon.notice",
-        },
+        "& svg": { color: "icon.notice" },
       },
       orange: {
         backgroundColor: "surface.caution",
         color: "text.caution",
-        "& svg": {
-          color: "icon.caution",
-        },
+        "& svg": { color: "icon.caution" },
       },
       red: {
         backgroundColor: "surface.critical",
         color: "text.critical",
-        "& svg": {
-          color: "icon.critical",
-        },
+        "& svg": { color: "icon.critical" },
       },
       brightRed: {
-        backgroundColor: {
-          _light: "brightRed",
-          _dark: "brightRed",
-        },
-        color: {
-          _light: "pink",
-          _dark: "pink",
-        },
-        "& svg": {
-          color: {
-            _light: "pink",
-            _dark: "pink",
-          },
-        },
+        backgroundColor: { _light: "brightRed", _dark: "brightRed" },
+        color: { _light: "pink", _dark: "pink" },
+        "& svg": { color: { _light: "pink", _dark: "pink" } },
+      },
+      disabled: {
+        backgroundColor: "surface.disabled",
+        color: "text.disabled",
+        "& svg": { color: "icon.disabled" },
       },
     },
     size: {
@@ -106,11 +84,7 @@ export const badgeRecipie = defineRecipe({
         borderRadius: "xs",
       },
     },
-    attached: {
-      true: {
-        borderBottomRadius: "none",
-      },
-    },
+    attached: { true: { borderBottomRadius: "none" } },
     inverted: { true: {} },
   },
   defaultVariants: {
@@ -124,60 +98,27 @@ export const badgeRecipie = defineRecipe({
       colorPalette: "blue",
       inverted: true,
       css: {
-        backgroundColor: {
-          _light: "darkBlue",
-          _dark: "lightBlue",
-        },
-        color: {
-          _light: "icyBlue",
-          _dark: "royal",
-        },
-        "& svg": {
-          color: {
-            _light: "royal",
-            _dark: "icyBlue",
-          },
-        },
+        backgroundColor: { _light: "darkBlue", _dark: "lightBlue" },
+        color: { _light: "icyBlue", _dark: "royal" },
+        "& svg": { color: { _light: "royal", _dark: "icyBlue" } },
       },
     },
     {
       colorPalette: "green",
       inverted: true,
       css: {
-        backgroundColor: {
-          _light: "darkTeal",
-          _dark: "seaMist",
-        },
-        color: {
-          _light: "mint",
-          _dark: "jungle",
-        },
-        "& svg": {
-          color: {
-            _light: "mint",
-            _dark: "jungle",
-          },
-        },
+        backgroundColor: { _light: "darkTeal", _dark: "seaMist" },
+        color: { _light: "mint", _dark: "jungle" },
+        "& svg": { color: { _light: "mint", _dark: "jungle" } },
       },
     },
     {
       colorPalette: "grey",
       inverted: true,
       css: {
-        backgroundColor: {
-          _light: "carbon",
-          _dark: "platinum",
-        },
-        color: {
-          _light: "white",
-          _dark: "darkGrey",
-        },
-        "& svg": {
-          color: {
-            _light: "white",
-            _dark: "darkGrey",
-          },
-        },
+        backgroundColor: { _light: "carbon", _dark: "platinum" },
+        color: { _light: "white", _dark: "darkGrey" },
+        "& svg": { color: { _light: "white", _dark: "darkGrey" } },
       },
     },
     {
@@ -185,80 +126,36 @@ export const badgeRecipie = defineRecipe({
       colorPalette: "cream",
       inverted: true,
       css: {
-        backgroundColor: {
-          _light: "coffee",
-          _dark: "blonde",
-        },
-        color: {
-          _light: "cornsilk",
-          _dark: "coffee",
-        },
-        "& svg": {
-          color: {
-            _light: "cornsilk",
-            _dark: "coffee",
-          },
-        },
+        backgroundColor: { _light: "coffee", _dark: "blonde" },
+        color: { _light: "cornsilk", _dark: "coffee" },
+        "& svg": { color: { _light: "cornsilk", _dark: "coffee" } },
       },
     },
     {
       colorPalette: "yellow",
       inverted: true,
       css: {
-        backgroundColor: {
-          _light: "bronze",
-          _dark: "banana",
-        },
-        color: {
-          _light: "cornsilk",
-          _dark: "coffee",
-        },
-        "& svg": {
-          color: {
-            _light: "cornsilk",
-            _dark: "coffee",
-          },
-        },
+        backgroundColor: { _light: "bronze", _dark: "banana" },
+        color: { _light: "cornsilk", _dark: "coffee" },
+        "& svg": { color: { _light: "cornsilk", _dark: "coffee" } },
       },
     },
     {
       colorPalette: "orange",
       inverted: true,
       css: {
-        backgroundColor: {
-          _light: "wood",
-          _dark: "champagne",
-        },
-        color: {
-          _light: "bisque",
-          _dark: "wood",
-        },
-        "& svg": {
-          color: {
-            _light: "bisque",
-            _dark: "wood",
-          },
-        },
+        backgroundColor: { _light: "wood", _dark: "champagne" },
+        color: { _light: "bisque", _dark: "wood" },
+        "& svg": { color: { _light: "bisque", _dark: "wood" } },
       },
     },
     {
       colorPalette: "red",
       inverted: true,
       css: {
-        backgroundColor: {
-          _light: "burgundy",
-          _dark: "lightRed",
-        },
-        color: {
-          _light: "pink",
-          _dark: "maroon",
-        },
-        "& svg": {
-          color: {
-            _light: "pink",
-            _dark: "maroon",
-          },
-        },
+        backgroundColor: { _light: "burgundy", _dark: "lightRed" },
+        color: { _light: "pink", _dark: "maroon" },
+        "& svg": { color: { _light: "pink", _dark: "maroon" } },
       },
     },
     {
@@ -266,20 +163,9 @@ export const badgeRecipie = defineRecipe({
       colorPalette: "neutral",
       inverted: true,
       css: {
-        backgroundColor: {
-          _light: "ink",
-          _dark: "white",
-        },
-        color: {
-          _light: "white",
-          _dark: "darkGrey",
-        },
-        "& svg": {
-          color: {
-            _light: "white",
-            _dark: "darkGrey",
-          },
-        },
+        backgroundColor: { _light: "ink", _dark: "white" },
+        color: { _light: "white", _dark: "darkGrey" },
+        "& svg": { color: { _light: "white", _dark: "darkGrey" } },
       },
     },
   ],

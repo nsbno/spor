@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": patch
 ---
 
-add maxWidth to Tooltip
+Add disabled colorPalette to badge

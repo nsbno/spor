@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 13.3.1
+
+### Patch Changes
+
+- 55e243a: add maxWidth to Tooltip
+- b365786: Update focus colour for date time segments
+  - @vygruppen/spor-icon-react@5.0.0
+
 ## 13.3.0
 
 ### Minor Changes

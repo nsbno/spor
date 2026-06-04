@@ -6,6 +6,7 @@ import { LeftSidebar } from "~/routes/_base/left-sidebar/LeftSidebar";
 import { sendPageViewEvent } from "~/utils/analytics/metabaseCore";
 
 import { Footer } from "./Footer";
+import { HeaderOffsetContext } from "./HeaderOffsetContext";
 import { SiteHeader } from "./SiteHeader";
 
 type BaseLayoutProps = {
@@ -24,28 +25,37 @@ function usePageTracking() {
   }, [location.pathname]);
 }
 export const RootLayout = ({ children }: BaseLayoutProps) => {
-  const [headerOffset, setHeaderOffset] = useState(0);
+  const [headerOffset, setHeaderOffset] = useState(110);
 
   usePageTracking();
 
   return (
-    <Flex direction="column" minHeight="100vh" bg="bg" fontFamily="Vy Sans">
-      <SiteHeader onHeightChange={setHeaderOffset} />
+    <HeaderOffsetContext value={headerOffset}>
+      <Flex direction="column" minHeight="100vh" bg="bg" fontFamily="Vy Sans">
+        <SiteHeader onHeightChange={setHeaderOffset} />
 
-      <Flex marginX={[8, 8, 8, 0]} marginRight={8} flex={1} position="relative">
-        <LeftSidebar headerOffset={headerOffset} />
-        {/* Add left margin on large screens to account for the fixed sidebar width (20rem) */}
         <Flex
-          as="main"
-          flex="1"
-          alignItems="stretch"
-          marginLeft={[2, null, null, "20rem"]}
-          paddingTop={5}
+          marginX={[2, 6, 8, 0]}
+          marginRight={[2, 6, 6, 6]}
+          flex={1}
+          position="relative"
+          minWidth={0}
         >
-          {children}
+          <LeftSidebar headerOffset={headerOffset} />
+          {/* Add left margin on large screens to account for the fixed sidebar width (20rem) */}
+          <Flex
+            as="main"
+            alignItems="stretch"
+            marginLeft={[0, null, null, "21rem"]}
+            paddingTop={8}
+            flex={1}
+            minWidth={0}
+          >
+            {children}
+          </Flex>
         </Flex>
+        <Footer />
       </Flex>
-      <Footer />
-    </Flex>
+    </HeaderOffsetContext>
   );
 };

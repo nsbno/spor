@@ -1,6 +1,7 @@
 export * from "./accordion";
 export * from "./accordionItem";
 export * from "./articleHeader";
+export * from "./badge";
 export * from "./bestPracticePanel";
 export * from "./buttonLink";
 export * from "./card";

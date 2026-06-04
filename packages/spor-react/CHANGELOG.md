@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 13.3.2
+
+### Patch Changes
+
+- b1e5186: Add disabled colorPalette to badge
+- d6eddea: Add Chakra's AccordionItem-props to the ExpandableItem
+- Updated dependencies [0a35c66]
+  - @vygruppen/spor-design-tokens@5.0.4
+
 ## 13.3.1
 
 ### Patch Changes

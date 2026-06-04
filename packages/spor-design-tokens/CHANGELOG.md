@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.0.4
+
+### Patch Changes
+
+- 0a35c66: Correct the color of text.disabled in vy-digital theme
+
 ## 5.0.3
 
 ### Patch Changes

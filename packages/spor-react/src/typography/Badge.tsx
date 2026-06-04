@@ -6,18 +6,14 @@ import {
 } from "@chakra-ui/react";
 import { IconComponent } from "@vygruppen/spor-icon-react";
 
-export type BadgeProps = ChakraBadgeProps & {
-  icon?: IconComponent;
-};
+export type BadgeProps = ChakraBadgeProps & { icon?: IconComponent };
 
 export const Badge = function Badge({
   ref,
   icon,
   children,
   ...props
-}: BadgeProps & {
-  ref?: React.Ref<HTMLSpanElement>;
-}) {
+}: BadgeProps & { ref?: React.Ref<HTMLSpanElement> }) {
   return (
     <ChakraBadge ref={ref} {...props}>
       {children}

@@ -6,9 +6,7 @@
     "lib": ["dom", "es2023"],
     "rootDir": ".",
 
-    "paths": {
-      "@/*": ["./src/*"]
-    },
+    "paths": { "@/*": ["./src/*"] },
     "resolveJsonModule": true
   }
 }

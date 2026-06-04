@@ -190,7 +190,7 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
         >
           {menu?.components?.map((component: Component, index: number) => (
             <MenuItem
-              key={index}
+              key={index + component.url}
               url={component.url}
               title={component.title}
               badges={component.badges}

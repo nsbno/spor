@@ -23,7 +23,7 @@ export const ExamplesSection = ({
           <Flex flexWrap="wrap" gap={1}>
             {codeExamples.map((example, index) => (
               <FilterChip
-                key={index}
+                key={index + example.title}
                 variant="accent"
                 value={example.title}
                 checked={currentExampleIndex === example.title}

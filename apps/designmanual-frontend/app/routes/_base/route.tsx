@@ -39,6 +39,7 @@ export default function BaseLayout() {
     <Box
       width={[null, "container.sm", "container.md", "container.lg"]}
       marginX="auto"
+      maxWidth="100%"
     >
       <Outlet />
     </Box>

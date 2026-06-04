@@ -1,5 +1,6 @@
 import {
   Accordion as ChakraAccordion,
+  AccordionItemProps,
   AccordionRootProps as ChakraAccordionProps,
   RecipeVariantProps,
 } from "@chakra-ui/react";
@@ -59,9 +60,10 @@ export type ExpandableProps = Omit<
     title: ReactNode;
   };
 
-export type ExpandableItemProps = HeadingLevel & {
-  value: string;
-  title: ReactNode;
-  children?: React.ReactNode;
-  startElement?: React.ReactNode;
-};
+export type ExpandableItemProps = HeadingLevel &
+  Omit<AccordionItemProps, "title"> & {
+    value: string;
+    title: ReactNode;
+    children?: React.ReactNode;
+    startElement?: React.ReactNode;
+  };

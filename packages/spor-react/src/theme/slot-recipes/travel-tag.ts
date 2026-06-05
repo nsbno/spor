@@ -162,7 +162,10 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       },
       "alt-transport": {
         container: {
-          backgroundColor: "linjetag.altTransportLight",
+          backgroundColor: {
+            _light: "linjetag.altTransportLight",
+            _dark: "surface.disabled",
+          },
         },
       },
       walk: {

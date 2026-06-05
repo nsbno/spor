@@ -2,7 +2,6 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 
 import { travelTagAnatomy } from "./anatomy";
 
-//Todo: here
 export const travelTagSlotRecipe = defineSlotRecipe({
   slots: travelTagAnatomy.keys(),
   className: "spor-travel-tag",

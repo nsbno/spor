@@ -82,52 +82,82 @@ export const travelTagSlotRecipe = defineSlotRecipe({
     variant: {
       "local-train": {
         container: {
-          backgroundColor: "linjetag.lokaltogLight",
+          backgroundColor: {
+            _light: "linjetag.lokaltogLight",
+            _dark: "surface.disabled",
+          },
         },
       },
       "region-train": {
         container: {
-          backgroundColor: "linjetag.regiontogLight",
+          backgroundColor: {
+            _light: "linjetag.regiontogLight",
+            _dark: "surface.disabled",
+          },
         },
       },
       "region-express-train": {
         container: {
-          backgroundColor: "linjetag.regionEkspressLight",
+          backgroundColor: {
+            _light: "linjetag.regionEkspressLight",
+            _dark: "surface.disabled",
+          },
         },
       },
       "long-distance-train": {
         container: {
-          backgroundColor: "linjetag.fjerntogLight",
+          backgroundColor: {
+            _light: "linjetag.fjerntogLight",
+            _dark: "surface.disabled",
+          },
         },
       },
       "airport-express-train": {
         container: {
-          backgroundColor: "linjetag.flytogLight",
+          backgroundColor: {
+            _light: "linjetag.flytogLight",
+            _dark: "surface.disabled",
+          },
         },
       },
       "vy-bus": {
         container: {
-          backgroundColor: "linjetag.vyBussLight",
+          backgroundColor: {
+            _light: "linjetag.vyBussLight",
+            _dark: "surface.disabled",
+          },
         },
       },
       "local-bus": {
         container: {
-          backgroundColor: "linjetag.lokalbussLight",
+          backgroundColor: {
+            _light: "linjetag.lokalbussLight",
+            _dark: "surface.disabled",
+          },
         },
       },
       ferry: {
         container: {
-          backgroundColor: "linjetag.fergeLight",
+          backgroundColor: {
+            _light: "linjetag.fergeLight",
+            _dark: "surface.disabled",
+          },
         },
       },
       subway: {
         container: {
-          backgroundColor: "linjetag.tbaneLight",
+          backgroundColor: {
+            _light: "linjetag.tbaneLight",
+            _dark: "surface.disabled",
+          },
         },
       },
       tram: {
         container: {
-          backgroundColor: "linjetag.trikkLight",
+          backgroundColor: {
+            _light: "linjetag.trikkLight",
+            _dark: "surface.disabled",
+          },
         },
       },
       "alt-transport": {

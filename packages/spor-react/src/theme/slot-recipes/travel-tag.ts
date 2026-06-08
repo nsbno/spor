@@ -81,57 +81,57 @@ export const travelTagSlotRecipe = defineSlotRecipe({
     variant: {
       "local-train": {
         container: {
-          backgroundColor: "linjetag.lokaltogLight",
+          backgroundColor: "surface.disabled",
         },
       },
       "region-train": {
         container: {
-          backgroundColor: "linjetag.regiontogLight",
+          backgroundColor: "surface.disabled",
         },
       },
       "region-express-train": {
         container: {
-          backgroundColor: "linjetag.regionEkspressLight",
+          backgroundColor: "surface.disabled",
         },
       },
       "long-distance-train": {
         container: {
-          backgroundColor: "linjetag.fjerntogLight",
+          backgroundColor: "surface.disabled",
         },
       },
       "airport-express-train": {
         container: {
-          backgroundColor: "linjetag.flytogLight",
+          backgroundColor: "surface.disabled",
         },
       },
       "vy-bus": {
         container: {
-          backgroundColor: "linjetag.vyBussLight",
+          backgroundColor: "surface.disabled",
         },
       },
       "local-bus": {
         container: {
-          backgroundColor: "linjetag.lokalbussLight",
+          backgroundColor: "surface.disabled",
         },
       },
       ferry: {
         container: {
-          backgroundColor: "linjetag.fergeLight",
+          backgroundColor: "surface.disabled",
         },
       },
       subway: {
         container: {
-          backgroundColor: "linjetag.tbaneLight",
+          backgroundColor: "surface.disabled",
         },
       },
       tram: {
         container: {
-          backgroundColor: "linjetag.trikkLight",
+          backgroundColor: "surface.disabled",
         },
       },
       "alt-transport": {
         container: {
-          backgroundColor: "linjetag.altTransportLight",
+          backgroundColor: "surface.disabled",
         },
       },
       walk: {

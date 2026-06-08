@@ -14,7 +14,6 @@ import {
   WarningFill18Icon,
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import clsx from "clsx";
 import { PropsWithChildren } from "react";
 
 import { travelTagSlotRecipe } from "../theme/slot-recipes/travel-tag";
@@ -155,7 +154,6 @@ export const TravelTag = function TravelTag({
       css={styles.container}
       aria-disabled={disabled}
       ref={ref}
-      className={clsx("light", rest.className)}
       backgroundColor={backgroundColor}
       {...rest}
     >

@@ -16,19 +16,21 @@ import { PortableText } from "~/features/portable-text/PortableText";
 import { CodeBlock } from "../../../features/portable-text/code-block/CodeBlock";
 import { LinkableHeading } from "../../../features/portable-text/LinkableHeading";
 
-type ComponentDocsProps = {
-  component: {
+export type Component = {
+  name: string;
+  content: unknown[];
+  props: {
+    platform: "react" | "react-native" | "react, react-native";
+    type: "other" | string;
+    typeOther?: string;
     name: string;
-    content: unknown[];
-    props: {
-      platform: "react" | "react-native" | "react, react-native";
-      type: "other" | string;
-      typeOther?: string;
-      name: string;
-      description?: string;
-      isRequired: boolean;
-    }[];
-  };
+    description?: string;
+    isRequired: boolean;
+  }[];
+};
+
+type ComponentDocsProps = {
+  component: Component;
 };
 export const ComponentDocs = ({ component }: ComponentDocsProps) => {
   const visibleProps = component.props?.filter((property) => {
@@ -37,57 +39,58 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
   });
   return (
     <Box key={component.name} as="section" marginBottom={9}>
-      <LinkableHeading as="h3" variant="md" fontWeight="bold" marginBottom={1}>
-        <Code fontSize="md">{`<${component.name} />`}</Code>
+      <LinkableHeading as="h3" variant="sm" marginBottom={1}>
+        <Code fontSize="sm" height="auto">{`<${component.name} />`}</Code>
       </LinkableHeading>
       <CodeBlock
         code={`import { ${component.name} } from "@vygruppen/spor-react";`}
+        minHeight="auto"
       />
       <Box marginTop={1}>
         <PortableText value={component.content} />
       </Box>
       {visibleProps && (
         <>
-          <Heading as="h4" variant="md" marginTop={3}>
+          <Heading as="h4" variant="sm" marginTop={3}>
             Props
           </Heading>
-          <Table
-            variant="core"
-            marginTop={3}
-            colorPalette="grey"
-            maxWidth="calc(100vw - var(--spor-space-6))"
-          >
-            <TableHeader>
-              <TableRow>
-                <TableColumnHeader>Name</TableColumnHeader>
-                <TableColumnHeader>Type</TableColumnHeader>
-                <TableColumnHeader>Required?</TableColumnHeader>
-                <TableColumnHeader>Description</TableColumnHeader>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {visibleProps.map((property) => (
-                <TableRow key={property.name}>
-                  <TableCell>
-                    <Code>{property.name}</Code>
-                  </TableCell>
-                  <TableCell>
-                    <Code>
-                      {property.type === "other"
-                        ? property.typeOther
-                        : property.type}
-                    </Code>
-                  </TableCell>
-                  <TableCell>
-                    {property.isRequired && (
-                      <SuccessFill24Icon aria-label="Required" marginX="auto" />
-                    )}
-                  </TableCell>
-                  <TableCell>{property.description}</TableCell>
+          <Box overflowX="auto" marginTop={3}>
+            <Table variant="core" colorPalette="grey" maxWidth="100%">
+              <TableHeader>
+                <TableRow>
+                  <TableColumnHeader>Name</TableColumnHeader>
+                  <TableColumnHeader>Type</TableColumnHeader>
+                  <TableColumnHeader>Required?</TableColumnHeader>
+                  <TableColumnHeader>Description</TableColumnHeader>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {visibleProps.map((property) => (
+                  <TableRow key={property.name}>
+                    <TableCell>
+                      <Code>{property.name}</Code>
+                    </TableCell>
+                    <TableCell>
+                      <Code>
+                        {property.type === "other"
+                          ? property.typeOther
+                          : property.type}
+                      </Code>
+                    </TableCell>
+                    <TableCell>
+                      {property.isRequired && (
+                        <SuccessFill24Icon
+                          aria-label="Required"
+                          marginX="auto"
+                        />
+                      )}
+                    </TableCell>
+                    <TableCell>{property.description}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Box>
         </>
       )}
     </Box>

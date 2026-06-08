@@ -1,17 +1,20 @@
-import { Box, Button, FlexProps } from "@vygruppen/spor-react";
+import { Box, Button, FlexProps, Stack } from "@vygruppen/spor-react";
 import { Link } from "react-router";
 
+import { ArticleBadge } from "~/features/portable-text/components/ArticleBadge";
 import { sendCustomEvent } from "~/utils/analytics/metabase";
+import { ArticleBadgeType } from "~/utils/initialSanityData.server";
 
 type MenuItemProps = FlexProps & {
   url: string;
   title?: string;
+  badges?: ArticleBadgeType[];
 };
 /**
  * Menu item in the `ContentMenu`, and search result in the `SearchResults`.
  */
 
-export const MenuItem = ({ url, title }: MenuItemProps) => {
+export const MenuItem = ({ url, title, badges }: MenuItemProps) => {
   const isExternal = url.includes("http");
   return (
     <Box as="li" listStyle="none">
@@ -38,7 +41,16 @@ export const MenuItem = ({ url, title }: MenuItemProps) => {
           target={isExternal ? "_blank" : undefined}
           rel={isExternal ? "noopener noreferrer" : undefined}
         >
-          {title}
+          <Stack direction="row" alignItems="center" width="100%">
+            {title}
+            {badges && (
+              <Stack direction="row">
+                {badges.map((badge) => (
+                  <ArticleBadge key={badge.badgeType} {...badge} size="sm" />
+                ))}
+              </Stack>
+            )}
+          </Stack>
         </Link>
       </Button>
     </Box>

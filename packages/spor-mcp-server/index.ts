@@ -70,6 +70,8 @@ interface SanityCodeExample {
   _type: "codeExample";
   reactCode?: { code?: string; language?: string };
   layout?: string;
+  title: string;
+  description?: string;
 }
 
 interface SanityStaticCodeBlock {

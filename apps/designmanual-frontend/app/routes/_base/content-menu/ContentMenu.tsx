@@ -15,7 +15,7 @@ import { useLocation, useNavigate, useRouteLoaderData } from "react-router";
 
 import { loader } from "~/root";
 import { getIcon } from "~/utils/getIcon";
-import type { Section } from "~/utils/initialSanityData.server";
+import type { Component, Section } from "~/utils/initialSanityData.server";
 import { useHeadingsMenu } from "~/utils/useHeadingsMenu";
 import { useMenu } from "~/utils/useMenu";
 
@@ -80,9 +80,8 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
             <MenuItem
               key={`${section.slug.current}_m`}
               url={`/${section.slug.current}${isPreview ? "?sanity-preview-perspective=drafts" : ""}`}
-            >
-              {section.title}
-            </MenuItem>
+              title={section.title}
+            />
           ))}
         <MobileMenu
           sections={sections}
@@ -98,7 +97,7 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
         onValueChange={(details) => setExpanded(details.value)}
         key={refreshKey}
         display={["none", null, null, "block"]}
-        paddingLeft={7}
+        paddingLeft={2}
         paddingRight={1}
         paddingTop={3}
         gap={1}
@@ -144,6 +143,7 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
                   }
                 }}
                 fontSize="xs"
+                fontWeight="normal"
               >
                 {item.title}
               </AccordionItemTrigger>
@@ -170,9 +170,9 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
                   <Stack as="ul">
                     {headingsMenu.map((subItem) => (
                       <MenuItem
-                        key={subItem.text}
+                        key={subItem.title}
                         url={`${location.pathname}#${subItem.id}`}
-                        title={subItem.text}
+                        title={subItem.title}
                       />
                     ))}
                   </Stack>
@@ -182,6 +182,22 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
           );
         })}
       </Accordion>
+      {isSpor && (
+        <Stack
+          paddingLeft={3}
+          gap={0.5}
+          display={["none", null, null, "block"]}
+        >
+          {menu?.components?.map((component: Component, index: number) => (
+            <MenuItem
+              key={index + component.url}
+              url={component.url}
+              title={component.title}
+              badges={component.badges}
+            />
+          ))}
+        </Stack>
+      )}
     </Box>
   );
 };
@@ -212,6 +228,7 @@ export type MenuType = {
   slug?: string;
   url?: string;
   link?: string;
+  components?: Component[];
 };
 
 type MobileMenuProps = {
@@ -222,6 +239,9 @@ type MobileMenuProps = {
 };
 
 const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
+  const hasComponents = mobileMenus?.some(
+    (menu) => menu.components && menu.components.length > 0,
+  );
   return (
     <Stack gap="2" direction="column">
       {sections &&
@@ -244,18 +264,7 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
                 if (item._type === "divider") {
                   return null;
                 } else if (item._type === "heading") {
-                  return (
-                    <Text
-                      key={item.title}
-                      fontSize="xs"
-                      fontWeight="bold"
-                      color="text.subtle"
-                      paddingX={3}
-                      marginTop={2}
-                    >
-                      {item.title}
-                    </Text>
-                  );
+                  return null;
                 } else if (item.subItems && item.subItems.length > 0) {
                   return (
                     <Expandable
@@ -264,8 +273,9 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
                       title={item.title}
                       variant="ghost"
                       marginBottom={2}
-                      paddingLeft={6}
+                      marginLeft={2}
                       as="ul"
+                      fontWeight="normal"
                     >
                       {item.subItems.map((subItem) => (
                         <MenuItem
@@ -288,6 +298,28 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
                   />
                 );
               })}
+            {hasComponents && section.slug?.current === "spor" && (
+              <Expandable
+                marginLeft={2}
+                title="Components"
+                variant="ghost"
+                collapsible
+                as="ul"
+              >
+                {mobileMenus
+                  ?.find(
+                    (menu) => section.slug.current === menu.relatedTo?.slug,
+                  )
+                  ?.components?.map((component: Component, index: number) => (
+                    <MenuItem
+                      key={index + component.url}
+                      url={component.url}
+                      title={component.title}
+                      badges={component.badges}
+                    />
+                  ))}
+              </Expandable>
+            )}
           </Expandable>
         ))}
     </Stack>

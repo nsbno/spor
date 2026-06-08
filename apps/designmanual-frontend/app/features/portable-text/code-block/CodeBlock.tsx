@@ -7,7 +7,7 @@ import {
 import { Highlight } from "prism-react-renderer";
 import { Key, useRef } from "react";
 
-import { theme } from "./codeTheme";
+import { codeThemeCssVariables, theme } from "./codeTheme";
 import { sanitizeCode } from "./codeUtils";
 
 type CodeBlockProps = Omit<BoxProps, "children"> & {
@@ -23,12 +23,7 @@ export const CodeBlock = ({
   ...props
 }: CodeBlockProps) => {
   return (
-    <CodeBlockContainer
-      maxWidth="calc(100vw - var(--spor-space-6))"
-      {...props}
-      code={sanitizeCode(code)}
-      marginTop={2}
-    >
+    <CodeBlockContainer {...props} code={sanitizeCode(code)} marginTop={2}>
       <Highlight theme={theme} code={code} language={language}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <Box
@@ -83,23 +78,22 @@ export const CodeBlockContainer = ({
   };
   return (
     <Box
-      borderRadius="sm"
-      border="sm"
-      // eslint-disable-next-line spor/use-semantic-tokens
-      borderColor="osloGrey"
-      // eslint-disable-next-line spor/use-semantic-tokens
-      backgroundColor="darkGrey"
+      borderRadius="lg"
+      backgroundColor="surface.neutral"
       fontFamily="monospace"
-      fontSize={["mobile.sm", null, "desktop.sm"]}
+      fontSize={["mobile.sm", null, "desktop.xs"]}
       padding={2}
       position="relative"
       onKeyUp={handleKeyUp}
+      css={codeThemeCssVariables}
+      minHeight="12rem"
+      maxWidth="100%"
       {...props}
     >
       <Box position="absolute" top={2} right={2} ref={copyButtonRef}>
         <CopyCodeButton code={code} />
       </Box>
-      <Box>{children}</Box>
+      <Box overflowX="auto">{children}</Box>
     </Box>
   );
 };
@@ -122,7 +116,7 @@ type CopyCodeButtonProps = { code: string };
 export const CopyCodeButton = ({ code }: CopyCodeButtonProps) => {
   return (
     <Clipboard value={code}>
-      <ClipboardButton className="dark" variant="primary" />
+      <ClipboardButton variant="floating" />
     </Clipboard>
   );
 };

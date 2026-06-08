@@ -12,18 +12,30 @@ import { useTopSearch } from "~/utils/useMenu";
 const useSearchableItems = () => {
   const menu = useTopSearch("side-menu-spor");
 
-  if (!menu?.menuItems) return [];
+  if (!menu) return [];
 
-  return menu.menuItems
-    .filter(({ _type, subItems }) => _type !== "divider" && subItems)
-    .flatMap(
-      ({ title, subItems }) =>
-        subItems?.map((subItem) => ({
-          ...subItem,
-          categoryTitle: title ?? "",
-          value: subItem.url,
-        })) ?? [],
-    );
+  const subItems = menu.menuItems
+    ? menu.menuItems
+        .filter(({ _type, subItems }) => _type !== "divider" && subItems)
+        .flatMap(
+          ({ title, subItems }) =>
+            subItems?.map((subItem) => ({
+              ...subItem,
+              categoryTitle: title ?? "",
+              value: subItem.url,
+            })) ?? [],
+        )
+    : [];
+
+  const components = (menu.components ?? []).map((component) => ({
+    title: component.title,
+    url: component.url,
+    categoryTitle: "Components",
+    value: component.url,
+    tags: [],
+  }));
+
+  return [...subItems, ...components];
 };
 
 const ComboboxItem = chakra(

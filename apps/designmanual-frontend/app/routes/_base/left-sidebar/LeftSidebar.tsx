@@ -12,7 +12,7 @@ export const LeftSidebar = ({ headerOffset }: { headerOffset: number }) => {
   };
   return (
     <Box
-      width={[null, null, null, "20rem"]}
+      width={[null, null, null, "18rem"]}
       height={["100vh", null, null, `calc(100vh - ${headerOffset}px)`]}
       display={["none", null, null, "block"]}
       top={`${headerOffset}px`}

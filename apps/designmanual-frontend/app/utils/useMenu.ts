@@ -1,10 +1,11 @@
-import type { InitialSanityData } from "./initialSanityData.server";
+import type { Component, InitialSanityData } from "./initialSanityData.server";
 import { MenuItem } from "./initialSanityData.server";
 import { useMatchesData } from "./useMatchesData";
 
 type Menu = {
   slug: string;
   menuItems: MenuItem[];
+  components?: Component[];
   relatedTo: {
     _type: string;
     title: string;

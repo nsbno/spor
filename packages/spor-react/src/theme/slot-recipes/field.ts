@@ -14,8 +14,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
     },
     requiredIndicator: {
       marginStart: 1,
-      // eslint-disable-next-line spor/use-semantic-tokens
-      color: "brightRed",
+      color: "outline.error",
     },
     label: {
       display: "flex",
@@ -56,6 +55,8 @@ export const fieldSlotRecipe = defineSlotRecipe({
       sm: {
         label: {
           fontSize: ["mobile.xs", "desktop.xs"],
+          paddingX: 2,
+
           "&[data-float]": {
             fontSize: ["mobile.2xs", "desktop.2xs"],
             top: 0,
@@ -70,6 +71,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
       },
       md: {
         label: {
+          paddingX: 3,
           fontSize: ["mobile.sm", "desktop.sm"],
           "&[data-float]": {
             fontSize: ["mobile.2xs", "desktop.2xs"],

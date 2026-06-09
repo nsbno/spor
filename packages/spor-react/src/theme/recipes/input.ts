@@ -13,7 +13,6 @@ export const inputRecipe = defineRecipe({
     transitionDuration: "fast",
     color: "text",
     position: "relative",
-    paddingX: 3,
 
     _disabled: {
       backgroundColor: "surface.disabled",
@@ -85,8 +84,10 @@ export const inputRecipe = defineRecipe({
         paddingTop: 2,
         height: 7,
         fontSize: "xs",
+        paddingX: 2,
       },
       md: {
+        paddingX: 3,
         paddingTop: 3,
         height: 8,
         fontSize: "mobile.md",

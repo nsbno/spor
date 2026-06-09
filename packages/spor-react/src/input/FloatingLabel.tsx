@@ -9,7 +9,6 @@ export const FloatingLabel = ({
 }) => <Field.Label ref={ref} {...props} css={[floatingLabelStyles, css]} />;
 
 const floatingLabelStyles = defineStyle({
-  paddingX: 3,
   fontWeight: "normal",
   pointerEvents: "none",
   zIndex: "docked",

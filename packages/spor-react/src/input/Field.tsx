@@ -54,6 +54,7 @@ export type FieldBaseProps = {
   shouldFloat?: boolean;
   labelAsChild?: boolean;
   gap?: string | number;
+  size?: "sm" | "md";
 };
 
 export type FieldProps = Omit<
@@ -101,7 +102,7 @@ export const Field = ({
     shouldFloat,
     labelAsChild,
     gap,
-    size,
+    size = "md",
     ...rest
   } = props;
   const recipe = useSlotRecipe({ key: "field" });

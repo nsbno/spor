@@ -6,7 +6,10 @@ import {
 } from "@chakra-ui/react";
 import { IconComponent } from "@vygruppen/spor-icon-react";
 
-export type BadgeProps = ChakraBadgeProps & { icon?: IconComponent };
+export type BadgeProps = Omit<ChakraBadgeProps, "colorPalette"> & {
+  icon?: IconComponent;
+  colorPalette?: ChakraBadgeProps["colorPalette"] | "brightRed" | "disabled";
+};
 
 export const Badge = function Badge({
   ref,

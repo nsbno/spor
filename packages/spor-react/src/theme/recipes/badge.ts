@@ -168,5 +168,14 @@ export const badgeRecipie = defineRecipe({
         "& svg": { color: { _light: "white", _dark: "darkGrey" } },
       },
     },
+    {
+      colorPalette: "brightRed",
+      inverted: true,
+      css: {
+        backgroundColor: { _light: "brightRed", _dark: "brightRed" },
+        color: { _light: "pink", _dark: "pink" },
+        "& svg": { color: { _light: "pink", _dark: "pink" } },
+      },
+    },
   ],
 });

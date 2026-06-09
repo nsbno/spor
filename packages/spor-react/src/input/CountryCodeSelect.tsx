@@ -64,7 +64,7 @@ export const CountryCodeSelect = ({
       lazyMount
       aria-label={t(texts.countryCode)}
       sideRadiusVariant="rightSideSquare"
-      size={props.size ?? "md"}
+      size={props.size}
       role="combobox"
     >
       {filteredCallingCodes.items.map((code) => (

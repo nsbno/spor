@@ -33,6 +33,7 @@ export type InputProps = FieldProps &
     endElement?: React.ReactNode;
     /** Override the font size of the start and end elements */
     fontSize?: string;
+    size?: "sm" | "md";
   };
 /**
  * Inputs let you enter text or other data.

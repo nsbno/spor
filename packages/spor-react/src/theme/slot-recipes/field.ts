@@ -58,7 +58,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
           fontSize: ["mobile.xs", "desktop.xs"],
           "&[data-float]": {
             fontSize: ["mobile.2xs", "desktop.2xs"],
-            top: "0.1rem",
+            top: 0,
           },
           top: "0.5rem",
         },

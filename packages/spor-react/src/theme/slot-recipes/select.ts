@@ -238,8 +238,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       sm: {
         trigger: {
           height: 7,
-          paddingTop: 2,
-          paddingBottom: 1,
+          paddingY: 1.5,
           fontSize: "xs",
           paddingX: 2,
         },
@@ -248,8 +247,8 @@ export const selectSlotRecipe = defineSlotRecipe({
           left: 2,
           marginY: 1.5,
           _selected: {
-            transform: ["scale(0.85) translateY(-7px)"],
-            fontSize: ["mobile.2xs", "desktop.2xs"],
+            transform: ["scale(0.85) translateY(-9px)"],
+            fontSize: "desktop.2xs",
             color: "text.subtle",
           },
         },
@@ -266,6 +265,7 @@ export const selectSlotRecipe = defineSlotRecipe({
           fontSize: "xs",
         },
         valueText: {
+          paddingTop: 0,
           "&[data-with-placeholder]": {
             paddingTop: "1.5",
           },

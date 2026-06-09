@@ -11,10 +11,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       display: "flex",
       alignItems: "center",
       padding: 0.5,
-
-      _disabled: {
-        background: "surface.disabled",
-      },
+      backgroundColor: "surface.disabled",
 
       width: "fit-content",
       transitionDuration: "fast",
@@ -79,62 +76,10 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       none: {},
     },
     variant: {
-      "local-train": {
-        container: {
-          backgroundColor: "surface.disabled",
-        },
-      },
-      "region-train": {
-        container: {
-          backgroundColor: "surface.disabled",
-        },
-      },
-      "region-express-train": {
-        container: {
-          backgroundColor: "surface.disabled",
-        },
-      },
-      "long-distance-train": {
-        container: {
-          backgroundColor: "surface.disabled",
-        },
-      },
-      "airport-express-train": {
-        container: {
-          backgroundColor: "surface.disabled",
-        },
-      },
-      "vy-bus": {
-        container: {
-          backgroundColor: "surface.disabled",
-        },
-      },
-      "local-bus": {
-        container: {
-          backgroundColor: "surface.disabled",
-        },
-      },
-      ferry: {
-        container: {
-          backgroundColor: "surface.disabled",
-        },
-      },
-      subway: {
-        container: {
-          backgroundColor: "surface.disabled",
-        },
-      },
-      tram: {
-        container: {
-          backgroundColor: "surface.disabled",
-        },
-      },
-      "alt-transport": {
-        container: {
-          backgroundColor: "surface.disabled",
-        },
-      },
       walk: {
+        container: {
+          backgroundColor: "none",
+        },
         textContainer: {
           position: "absolute",
           left: "0.875rem",

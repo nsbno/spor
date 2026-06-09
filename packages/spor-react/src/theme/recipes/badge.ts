@@ -177,5 +177,23 @@ export const badgeRecipie = defineRecipe({
         "& svg": { color: { _light: "pink", _dark: "pink" } },
       },
     },
+    {
+      // @ts-expect-error Chakra gir feilmelding fordi "disabled" ikke eksisterer i built-in typen
+      colorPalette: "disabled",
+      inverted: true,
+      css: {
+        backgroundColor: {
+          _light: "blackAlpha.50",
+          _dark: "whiteAlpha.100",
+        },
+        color: { _light: "whiteAlpha.300", _dark: "blackAlpha.300" },
+        "& svg": {
+          color: {
+            _light: "whiteAlpha.300",
+            _dark: "blackAlpha.300",
+          },
+        },
+      },
+    },
   ],
 });

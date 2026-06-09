@@ -16,15 +16,9 @@ export const selectSlotRecipe = defineSlotRecipe({
     label: {
       fontSize: ["mobile.sm", "desktop.sm"],
       top: 0,
-      left: 3,
       zIndex: 0,
       position: "absolute",
       color: "text",
-      marginY: 2,
-
-      _selected: {
-        transform: ["scale(0.825) translateY(-10px)"],
-      },
 
       transitionProperty: "transform",
       transitionDuration: "fast",
@@ -36,14 +30,10 @@ export const selectSlotRecipe = defineSlotRecipe({
       display: "flex",
       appearance: "none",
       width: "100%",
-      height: 8,
       color: "text",
-      paddingY: 1.5,
-      paddingX: 3,
 
       justifyContent: "space-between",
       alignItems: "center",
-      fontSize: "mobile.md",
       borderRadius: "sm",
       cursor: "pointer",
 
@@ -52,11 +42,14 @@ export const selectSlotRecipe = defineSlotRecipe({
           transform: "rotate(180deg)",
         },
       },
+      _active: {
+        backgroundColor: "surface",
+      },
     },
     indicatorGroup: {
       display: "flex",
       alignItems: "center",
-      gap: "1",
+      gap: "0.5",
       position: "absolute",
       right: "0",
       top: "0",
@@ -64,22 +57,22 @@ export const selectSlotRecipe = defineSlotRecipe({
       paddingX: 2,
 
       pointerEvents: "none",
-    },
-    indicator: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      color: {
-        base: "text",
-        _disabled: "text.disabled",
-        _invalid: "text.highlight",
+      "& [data-part='indicator']": {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: {
+          base: "text",
+          _disabled: "text.disabled",
+          _invalid: "text.highlight",
+        },
+        _icon: {
+          width: 3,
+          height: 3,
+        },
       },
-      _icon: {
-        width: 3,
-        height: 3,
-      },
     },
-    selectContent: {
+    content: {
       backgroundColor: "surface",
       boxShadow: "sm",
       overflowY: "auto",
@@ -134,8 +127,6 @@ export const selectSlotRecipe = defineSlotRecipe({
       },
       _hover: {
         backgroundColor: "surface.accent.hover",
-        outline: "2px solid core.outline",
-        outlineOffset: "2px",
       },
       _selected: {
         backgroundColor: "surface.accent",
@@ -143,6 +134,10 @@ export const selectSlotRecipe = defineSlotRecipe({
       _icon: {
         width: 3,
         height: 3,
+      },
+      "& [data-part='item-description']": {
+        fontSize: ["mobile.xs", "desktop.xs"],
+        color: "text.ghost",
       },
     },
     control: {
@@ -162,6 +157,7 @@ export const selectSlotRecipe = defineSlotRecipe({
     },
     itemText: {
       flex: "1",
+      alignItems: "center",
     },
     itemGroup: {
       _first: { mt: "0" },
@@ -169,14 +165,6 @@ export const selectSlotRecipe = defineSlotRecipe({
     itemGroupLabel: {
       py: "1",
       fontWeight: "medium",
-    },
-    valueText: {},
-    itemDescription: {
-      fontSize: ["mobile.xs", "desktop.xs"],
-      color: "text.ghost",
-      "[aria-selected='true'] &": {
-        color: "text.ghost",
-      },
     },
   },
   variants: {
@@ -197,6 +185,10 @@ export const selectSlotRecipe = defineSlotRecipe({
             color: "text.disabled",
             backgroundColor: "surface.disabled",
           },
+        },
+        content: {
+          outline: "2px solid",
+          outlineColor: "outline.core",
         },
       },
       floating: {
@@ -242,5 +234,66 @@ export const selectSlotRecipe = defineSlotRecipe({
         },
       },
     },
+    size: {
+      sm: {
+        trigger: {
+          height: 7,
+          paddingTop: 2,
+          paddingBottom: 1,
+          fontSize: "xs",
+          paddingX: 2,
+        },
+        label: {
+          fontSize: ["mobile.xs", "desktop.xs"],
+          left: 2,
+          marginY: 1.5,
+          _selected: {
+            transform: ["scale(0.85) translateY(-7px)"],
+            fontSize: ["mobile.2xs", "desktop.2xs"],
+            color: "text.subtle",
+          },
+        },
+        item: {
+          paddingX: 2,
+          paddingY: 1,
+          fontSize: "xs",
+          "& [data-part='item-description']": {
+            fontSize: ["mobile.2xs", "desktop.2xs"],
+          },
+        },
+        itemGroupLabel: {
+          py: 0.5,
+          fontSize: "xs",
+        },
+        valueText: {
+          "&[data-with-placeholder]": {
+            paddingTop: "1.5",
+          },
+        },
+      },
+      md: {
+        trigger: {
+          height: 8,
+          paddingY: 1.5,
+          paddingX: 3,
+          fontSize: "sm",
+        },
+        label: {
+          left: 3,
+          marginY: 2,
+          _selected: {
+            transform: ["scale(0.825) translateY(-10px)"],
+          },
+        },
+        valueText: {
+          "&[data-with-placeholder]": {
+            paddingTop: "4",
+          },
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    size: "md",
   },
 });

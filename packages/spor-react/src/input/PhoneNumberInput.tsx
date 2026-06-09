@@ -56,6 +56,7 @@ export const PhoneNumberInput = ({
     allowedCountryCodes,
     invalid,
     errorText,
+    size = "md",
   } = props;
 
   const { t } = useTranslation();
@@ -96,6 +97,7 @@ export const PhoneNumberInput = ({
       <Input
         ref={ref}
         type="tel"
+        size={size}
         {...props}
         value={value.nationalNumber}
         invalid={invalid}

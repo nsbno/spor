@@ -31,6 +31,7 @@ export type InputProps = FieldProps &
     startElement?: React.ReactNode;
     /** Element that shows up to the right */
     endElement?: React.ReactNode;
+    /** Override the font size of the start and end elements */
     fontSize?: string;
   };
 /**
@@ -75,12 +76,13 @@ export const Input = ({
   hidden,
   fontSize,
   labelAsChild,
+  size = "md",
   ...props
 }: InputProps & {
   ref?: React.Ref<HTMLInputElement | null>;
 }) => {
   const recipe = useRecipe({ key: "input" });
-  const [recipeProps, restProps] = recipe.splitVariantProps(props);
+  const [recipeProps, restProps] = recipe.splitVariantProps({ size, ...props });
   const styles = recipe(recipeProps);
 
   const labelId = useId();
@@ -97,6 +99,19 @@ export const Input = ({
       onChange: props.onChange,
       inputRef: inputRef as React.RefObject<HTMLInputElement>,
     });
+
+  const fontSizeBySize: Record<string, string> = {
+    sm: "xs",
+    md: "mobile.md",
+  };
+
+  const elementPaddingBySize: Record<string, string> = {
+    sm: "2.3rem",
+    md: "2.6rem",
+  };
+  const elementPadding = elementPaddingBySize[size as string] ?? "2.6rem";
+  const paddingLeft = elementPadding;
+  const paddingRight = elementPadding;
 
   return (
     <Field
@@ -115,14 +130,14 @@ export const Input = ({
       }
       floatingLabel={true}
       shouldFloat={shouldFloat}
+      size={size}
     >
       {startElement && (
         <InputElement
-          pointerEvents="none"
-          paddingX={2}
           aria-hidden="true"
-          fontSize={fontSize ?? "mobile.md"}
           aria-labelledby={labelId}
+          paddingX={2}
+          fontSize={fontSize ?? fontSizeBySize[size as string]}
         >
           {startElement}
         </InputElement>
@@ -132,23 +147,23 @@ export const Input = ({
         ref={inputRef}
         focusVisibleRing="outside"
         overflow="hidden"
-        paddingLeft={startElement ? "2.6rem" : undefined}
-        paddingRight={endElement ? "2.6rem" : undefined}
         {...restProps}
+        css={styles}
+        paddingLeft={startElement ? paddingLeft : undefined}
+        paddingRight={endElement ? paddingRight : undefined}
         className={`peer ${props.className || ""}`}
         value={isControlled ? props.value : undefined}
         onFocus={handleFocus}
         onBlur={handleBlur}
         onChange={handleChange}
         placeholder=""
-        css={styles}
-        fontSize={fontSize ?? "mobile.md"}
+        fontSize={fontSize}
       />
       {endElement && (
         <InputElement
-          placement="end"
           paddingX={2}
-          fontSize={fontSize ?? "mobile.md"}
+          placement="end"
+          fontSize={fontSize ?? fontSizeBySize[size as string]}
         >
           {endElement}
         </InputElement>

@@ -21,10 +21,9 @@ export const fieldSlotRecipe = defineSlotRecipe({
       display: "flex",
     },
     helperText: {
-      marginTop: 2,
       color: "text.subtle",
       lineHeight: "normal",
-      fontSize: "sm",
+      fontSize: ["mobile.sm", "desktop.sm"],
     },
     errorText: {
       borderRadius: "xs",
@@ -51,5 +50,38 @@ export const fieldSlotRecipe = defineSlotRecipe({
         pointerEvents: "none",
       },
     },
+  },
+  variants: {
+    size: {
+      sm: {
+        label: {
+          fontSize: ["mobile.xs", "desktop.xs"],
+          "&[data-float]": {
+            fontSize: ["mobile.2xs", "desktop.2xs"],
+            top: "0.1rem",
+          },
+          top: "0.5rem",
+        },
+        helperText: {
+          color: "text.subtle",
+          lineHeight: "normal",
+          fontSize: ["mobile.xs", "desktop.xs"],
+        },
+      },
+      md: {
+        label: {
+          fontSize: ["mobile.sm", "desktop.sm"],
+          "&[data-float]": {
+            fontSize: ["mobile.2xs", "desktop.2xs"],
+            color: "text.subtle",
+            top: "0.3rem",
+          },
+          top: "0.9rem",
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    size: "md",
   },
 });

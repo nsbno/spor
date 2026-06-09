@@ -14,9 +14,6 @@ export const inputRecipe = defineRecipe({
     color: "text",
     position: "relative",
     paddingX: 3,
-    paddingTop: 3,
-    height: 8,
-    fontSize: "mobile.md",
 
     _disabled: {
       backgroundColor: "surface.disabled",
@@ -83,8 +80,21 @@ export const inputRecipe = defineRecipe({
         },
       },
     },
+    size: {
+      sm: {
+        paddingTop: 1.5,
+        height: 7,
+        fontSize: "xs",
+      },
+      md: {
+        paddingTop: 3,
+        height: 8,
+        fontSize: "mobile.md",
+      },
+    },
   },
   defaultVariants: {
     variant: "core",
+    size: "md",
   },
 });

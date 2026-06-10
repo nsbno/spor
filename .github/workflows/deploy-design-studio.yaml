@@ -1,0 +1,38 @@
+name: "Deploy Design Studio 🎨"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-studio:
+    name: Deploy Sanity Design Studio
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build workspace dependencies
+        run: pnpm --filter "@vygruppen/designmanual^..." build
+
+      - name: Deploy Studio
+        run: pnpm --filter @vygruppen/designmanual deploy
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}

@@ -26,10 +26,9 @@ import { CloseButton } from "@/button";
 import { Badge } from "..";
 import { Field, FieldProps } from "./Field";
 
-export type SelectProps = Omit<SelectRootProps, "size"> &
+export type SelectProps = SelectRootProps &
   FieldProps & {
     label?: string;
-    size?: "sm" | "md";
   };
 
 /**

@@ -21,10 +21,7 @@ import { Field, FieldProps } from "./Field";
 import { useFloatingInputState } from "./useFLoatingInputState";
 
 export type InputProps = FieldProps &
-  Exclude<
-    ChakraInputProps,
-    "size" | "label" | "colorPalette" | "placeholder"
-  > & {
+  Exclude<ChakraInputProps, "label" | "colorPalette" | "placeholder"> & {
     /** The input's label */
     label?: ReactNode;
     /** Element that shows up to the left */
@@ -33,7 +30,8 @@ export type InputProps = FieldProps &
     endElement?: React.ReactNode;
     /** Override the font size of the start and end elements */
     fontSize?: string;
-    size?: "sm" | "md";
+
+    //size?: "sm" | "md";
   };
 /**
  * Inputs let you enter text or other data.

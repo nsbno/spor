@@ -36,6 +36,9 @@ export const siteSettings = defineType({
         },
       ],
       description: "Items to be displayed in the footer",
+      deprecated: {
+        reason: "Footer items must now be updated in the codebase.",
+      },
     }),
     defineField({
       name: "description",

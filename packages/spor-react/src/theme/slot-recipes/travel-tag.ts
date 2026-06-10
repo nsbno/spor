@@ -76,10 +76,22 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       none: {},
     },
     variant: {
+      "local-train": {},
+      "region-train": {},
+      "region-express-train": {},
+      "long-distance-train": {},
+      "airport-express-train": {},
+      "vy-bus": {},
+      "local-bus": {},
+      ferry: {},
+      subway: {},
+      tram: {},
+      "alt-transport": {},
       walk: {
         container: {
           backgroundColor: "none",
         },
+
         textContainer: {
           position: "absolute",
           left: "0.875rem",

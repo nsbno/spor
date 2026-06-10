@@ -17,18 +17,14 @@ import {
 import { PropsWithChildren } from "react";
 
 import { travelTagSlotRecipe } from "../theme/slot-recipes/travel-tag";
-import { LineIcon, LineIconProps } from "./LineIcon";
+import { LineIcon } from "./LineIcon";
 import type { TagProps } from "./types";
 
 type TravelTagVariantProps = RecipeVariantProps<typeof travelTagSlotRecipe>;
 
-type DeviationLevels = "critical" | "major" | "minor" | "info" | "none";
-
 export type TravelTagProps = TagProps &
   BoxProps &
   PropsWithChildren<TravelTagVariantProps> & {
-    variant?: LineIconProps["variant"];
-    deviationLevel?: DeviationLevels;
     disabled?: boolean;
     foregroundColor?: string;
     /**
@@ -95,7 +91,7 @@ export type TravelTagProps = TagProps &
  */
 
 function renderDeviationLevelIcon(
-  deviationLevel: DeviationLevels,
+  deviationLevel: TravelTagVariantProps["deviationLevel"],
   size: TravelTagProps["size"],
   css: SystemStyleObject,
 ) {

@@ -24,7 +24,7 @@ export const Footer = () => {
           <VyLogo
             aria-hidden="true"
             width="auto"
-            height={["30px", "36px", null, "36px"]}
+            height={["1.875rem", "2.25rem", null, "2.25rem"]}
             variant="mono"
           />
         </Link>

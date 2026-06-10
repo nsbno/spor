@@ -1,97 +1,87 @@
 import {
-  Box,
-  Flex,
-  Text,
-  useColorModeValue,
-  VyLogo,
-} from "@vygruppen/spor-react";
-import { Link, useRouteLoaderData } from "react-router";
-
-import { PortableText } from "~/features/portable-text/PortableText";
-import { loader } from "~/root";
+  EMailOutline18Icon,
+  FigmaOutline18Icon,
+  GithubOutline18Icon,
+} from "@vygruppen/spor-icon-react";
+import { Box, Button, Flex, Stack, Text, VyLogo } from "@vygruppen/spor-react";
+import { Link } from "react-router";
 
 export const Footer = () => {
-  const borderColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
-  const routeData = useRouteLoaderData<typeof loader>("root");
-  const footerItems =
-    routeData?.initialSanityData?.siteSettings?.footerItems || [];
-
   return (
     <Flex
       as="footer"
-      justifyContent="space-between"
       backgroundColor="surface.subtle"
       className="dark"
       alignItems="center"
-      gap="4"
-      marginTop={3}
-      paddingTop={2}
-      borderTop="1px solid"
-      borderColor={borderColor}
-      paddingX={[3, null, 6, 4, 8]}
+      marginTop={4}
+      padding={{ base: 4, md: 7 }}
       width="100%"
-      marginX="auto"
-      minHeight="12rem"
-      flexDirection={["column", null, "row"]}
       zIndex="banner"
+      justifyContent="space-between"
     >
-      <Box alignSelf="start" marginTop="4">
+      <Box alignSelf="center">
         <Link to="/" aria-label="Go to the front page">
           <VyLogo
             aria-hidden="true"
             width="auto"
-            height={["30px", "36px", null, "42px"]}
+            height={["30px", "36px", null, "36px"]}
             variant="mono"
           />
         </Link>
       </Box>
       <Flex
-        flexDirection="row"
+        direction={{ base: "column", md: "row" }}
         justifyContent="center"
-        alignItems="start"
-        gap={2}
-        flexWrap="wrap"
-        flexGrow={1}
+        alignItems={{ base: "end", md: "start" }}
+        gap={{ base: 4, md: 9 }}
+        color="text"
       >
-        <Flex
-          flexDirection="column"
-          gap="6"
-          justifyContent="center"
-          alignItems={["start", null, "center"]}
-        >
-          <Flex
-            gap={["4", null, "8"]}
-            flexDirection={["column", null, "row"]}
-            marginBottom={4}
-          >
-            {footerItems.map((item) => (
-              <Flex
-                flexDirection="column"
-                key={item._key}
-                textAlign={["left", null, "center"]}
-              >
-                <Text
-                  as="h6"
-                  textAlign={["left", null, "center"]}
-                  fontWeight="bold"
-                  variant="xs"
-                  color="text"
-                >
-                  {item.title}
-                </Text>
-
-                <Box
-                  textAlign={["left", null, "center"]}
-                  fontSize="xs"
-                  color="text"
-                >
-                  <PortableText value={item.description} />
-                </Box>
-              </Flex>
-            ))}
-          </Flex>
-        </Flex>
+        <Stack direction="row" gap={2} alignItems="center">
+          <Text fontWeight="bold" fontSize="xs">
+            Identitet og merkevare
+          </Text>
+          <FooterLink
+            url="mailto:"
+            label="mail"
+            icon={<EMailOutline18Icon />}
+          />
+        </Stack>
+        <Stack gap={2} direction="row" alignItems="center">
+          <Text fontWeight="bold" fontSize="xs">
+            Spor
+          </Text>
+          <FooterLink
+            url="https://github.com/nsbno/spor"
+            label="GitHub"
+            icon={<GithubOutline18Icon />}
+          />
+          <FooterLink
+            url="https://www.figma.com/design/Tmr2URVX2vNkyRLqKhNRQA/Spor-komponentbibliotek?node-id=0-1&p=f&m=dev"
+            label="Figma"
+            icon={<FigmaOutline18Icon />}
+          />
+          <FooterLink
+            url="https://nsb-utvikling.slack.com/archives/CM9H2N39U"
+            label="Slack"
+          />
+        </Stack>
       </Flex>
     </Flex>
   );
 };
+
+const FooterLink = ({
+  url,
+  label,
+  icon,
+}: {
+  url: string;
+  label: string;
+  icon?: React.ReactNode;
+}) => (
+  <Button variant="tertiary" size={{ base: "xs", md: "sm" }} leftIcon={icon}>
+    <Link to={url} target="_blank" rel="noopener noreferrer">
+      {label}
+    </Link>
+  </Button>
+);

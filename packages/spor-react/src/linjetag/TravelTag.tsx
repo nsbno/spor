@@ -17,7 +17,7 @@ import {
 import { PropsWithChildren } from "react";
 
 import { travelTagSlotRecipe } from "../theme/slot-recipes/travel-tag";
-import { LineIcon } from "./LineIcon";
+import { LineIcon, LineIconProps } from "./LineIcon";
 import type { TagProps } from "./types";
 
 type TravelTagVariantProps = RecipeVariantProps<typeof travelTagSlotRecipe>;
@@ -27,6 +27,7 @@ type DeviationLevels = "critical" | "major" | "minor" | "info" | "none";
 export type TravelTagProps = TagProps &
   BoxProps &
   PropsWithChildren<TravelTagVariantProps> & {
+    variant?: LineIconProps["variant"];
     deviationLevel?: DeviationLevels;
     disabled?: boolean;
     foregroundColor?: string;

@@ -44,7 +44,7 @@ export const BlockHeading = ({
       >
         {icon && (
           <Box marginRight={2} color="text.highlight">
-            {getIcon({ iconName: icon })}{" "}
+            {getIcon({ iconName: icon })}
           </Box>
         )}
         <Heading

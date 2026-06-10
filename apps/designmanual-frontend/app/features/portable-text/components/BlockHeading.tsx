@@ -28,7 +28,7 @@ export const BlockHeading = ({
   variant = "lg",
   icon,
 }: BlockHeadingProps) => (
-  <GridItem colStart={[1, 2, null, 3]} colSpan={[6, 4, null, 8]}>
+  <GridItem colStart={[1, 2, null, 2]} colSpan={[6, 4, null, 10]}>
     <Stack gap={1} marginBottom={subheading ? [2, 3] : 2}>
       <Flex
         alignItems="center"

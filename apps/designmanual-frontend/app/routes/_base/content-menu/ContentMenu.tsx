@@ -55,7 +55,6 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
   const isSpor = location.pathname?.includes("spor") ?? false;
 
   const [expanded, setExpanded] = useState([location.pathname]);
-  console.log(menu?.menuItems);
   return (
     <Box role="navigation" paddingTop={3}>
       <Flex

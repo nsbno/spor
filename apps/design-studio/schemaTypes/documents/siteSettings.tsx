@@ -25,22 +25,6 @@ export const siteSettings = defineType({
       description: "Items to be displayed in the top menu",
     }),
     defineField({
-      name: "footerItems",
-      title: "Footer Items",
-      type: "array",
-      of: [
-        {
-          name: "footerItem",
-          title: "Footer Item",
-          type: "footerItem",
-        },
-      ],
-      description: "Items to be displayed in the footer",
-      deprecated: {
-        reason: "Footer items must now be updated in the codebase.",
-      },
-    }),
-    defineField({
       name: "description",
       title: "Site Description",
       type: "text",

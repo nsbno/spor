@@ -35,7 +35,7 @@ export const TextBlocks = ({
             icon={headingIcon}
           />
         )}
-        <GridItem colStart={[1, 2, null, 3]} colSpan={[6, 4, null, 8]}>
+        <GridItem colStart={[1, 2, null, 2]} colSpan={[6, 4, null, 10]}>
           <PortableText value={items[0].content} />
         </GridItem>
       </Grid>

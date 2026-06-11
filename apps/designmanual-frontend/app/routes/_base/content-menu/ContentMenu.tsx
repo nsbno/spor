@@ -10,13 +10,12 @@ import {
   Stack,
   Text,
 } from "@vygruppen/spor-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate, useRouteLoaderData } from "react-router";
 
 import { loader } from "~/root";
 import { getIcon } from "~/utils/getIcon";
 import type { Component, Section } from "~/utils/initialSanityData.server";
-import { useHeadingsMenu } from "~/utils/useHeadingsMenu";
 import { useMenu } from "~/utils/useMenu";
 
 import { MenuItem } from "./MenuItem";
@@ -53,20 +52,9 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
 
   const mobileMenus = useRouteLoaderData("root")?.initialSanityData?.menus;
 
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsClient(true);
-  }, []);
-
-  const rawHeadingsMenu = useHeadingsMenu();
-
   const isSpor = location.pathname?.includes("spor") ?? false;
-  const headingsMenu = isClient && !isSpor ? rawHeadingsMenu : [];
 
   const [expanded, setExpanded] = useState([location.pathname]);
-
   return (
     <Box role="navigation" paddingTop={3}>
       <Flex
@@ -128,6 +116,15 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
           }
           const subItems = item.subItems?.filter((subItem) => subItem.url);
           const hasSubItems = Boolean(subItems?.length);
+          if (!hasSubItems) {
+            return (
+              <MenuItem
+                key={item.title}
+                title={item.title}
+                url={handleExternalMenu(item.link ?? "", isPreview)}
+              />
+            );
+          }
 
           return (
             <AccordionItem
@@ -164,17 +161,6 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
                     {!hasSubItems && (
                       <Text color="text.disabled">Nothing here (yet)</Text>
                     )}
-                  </Stack>
-                )}
-                {headingsMenu.length > 0 && (
-                  <Stack as="ul">
-                    {headingsMenu.map((subItem) => (
-                      <MenuItem
-                        key={subItem.title}
-                        url={`${location.pathname}#${subItem.id}`}
-                        title={subItem.title}
-                      />
-                    ))}
                   </Stack>
                 )}
               </AccordionItemContent>

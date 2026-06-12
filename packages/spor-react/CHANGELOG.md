@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 13.4.0
+
+### Minor Changes
+
+- 6412d40: Add size variant with options between small and medium for form elements, including Input, PasswordInput, PhonenumberInput, SearchInput, and Select
+
 ## 13.3.2
 
 ### Patch Changes

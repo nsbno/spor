@@ -22,6 +22,8 @@ import type { TagProps } from "./types";
 
 type TravelTagVariantProps = RecipeVariantProps<typeof travelTagSlotRecipe>;
 
+type DeviationLevels = "critical" | "major" | "minor" | "info" | "none";
+
 export type TravelTagProps = TagProps &
   BoxProps &
   PropsWithChildren<TravelTagVariantProps> & {
@@ -91,7 +93,7 @@ export type TravelTagProps = TagProps &
  */
 
 function renderDeviationLevelIcon(
-  deviationLevel: TravelTagVariantProps["deviationLevel"],
+  deviationLevel: DeviationLevels,
   size: TravelTagProps["size"],
   css: SystemStyleObject,
 ) {

@@ -27,6 +27,7 @@ type DeviationLevels = "critical" | "major" | "minor" | "info" | "none";
 export type TravelTagProps = TagProps &
   BoxProps &
   PropsWithChildren<TravelTagVariantProps> & {
+    deviationLevel?: DeviationLevels;
     disabled?: boolean;
     foregroundColor?: string;
     /**

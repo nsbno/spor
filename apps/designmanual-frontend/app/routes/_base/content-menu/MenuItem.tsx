@@ -1,4 +1,5 @@
 import { Box, Button, FlexProps, Stack } from "@vygruppen/spor-react";
+import { LinkOutOutline18Icon } from "@vygruppen/spor-react/icons";
 import { Link } from "react-router";
 
 import { ArticleBadge } from "~/features/portable-text/components/ArticleBadge";
@@ -51,6 +52,7 @@ export const MenuItem = ({ url, title, badges }: MenuItemProps) => {
               </Stack>
             )}
           </Stack>
+          {isExternal && <LinkOutOutline18Icon />}
         </Link>
       </Button>
     </Box>

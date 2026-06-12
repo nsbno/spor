@@ -2,11 +2,15 @@ import * as icons from "@vygruppen/spor-icon-react";
 
 type IconProps = {
   iconName: string;
-  size: 18 | 24 | 30;
+  size?: 18 | 24 | 30;
   style?: string;
 };
 
-export const getIcon = ({ iconName, size, style = "outline" }: IconProps) => {
+export const getIcon = ({
+  iconName,
+  size = 24,
+  style = "outline",
+}: IconProps) => {
   const iconNameWithSuffix = formatIconName(iconName, size, style);
   const Icon = icons[iconNameWithSuffix as keyof typeof icons];
 

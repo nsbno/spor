@@ -10,7 +10,6 @@ export * from "./codeExample";
 export * from "./content";
 export * from "./divider";
 export * from "./extendedImage";
-export * from "./footerItem";
 export * from "./grid";
 export * from "./icon";
 export * from "./imageAndText";

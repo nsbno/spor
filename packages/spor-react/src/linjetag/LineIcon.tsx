@@ -111,7 +111,7 @@ export const LineIcon = function LineIcon({
       borderColor={variant === "walk" ? "outline.core" : "transparent"}
       aria-label={label}
       ref={ref}
-      className={clsx("light", rest.className)}
+      className={variant === "walk" ? undefined : clsx("light", rest.className)}
     >
       <LinjeTagIcon size={size} css={styles.icon} variant={getIconVariant()} />
     </Box>

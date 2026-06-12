@@ -39,15 +39,15 @@ export const FileListSerializer = ({ value }: FileListSerializerProps) => {
         lg: "repeat(12,1fr)",
       }}
       width="100%"
-      gridColumnStart={{ base: 1, lg: 3 }}
+      gridColumnStart={{ base: 1, lg: 2 }}
       gridColumnEnd={{ base: 7, lg: 11 }}
       data-testid="file-list"
       marginTop={8}
     >
-      <GridItem colStart={{ base: 1, lg: 3 }} colSpan={{ base: 6, lg: 8 }}>
+      <GridItem colStart={{ base: 1, lg: 2 }} colSpan={{ base: 6, lg: 10 }}>
         <BlockHeading heading={value.title} subheading={value.description} />
       </GridItem>
-      <GridItem colStart={{ base: 1, lg: 3 }} colSpan={{ base: 6, lg: 8 }}>
+      <GridItem colStart={{ base: 1, lg: 2 }} colSpan={{ base: 6, lg: 8 }}>
         <Flex direction="column" gap={2}>
           {filesToShow.map((file: FileItemType) => (
             <FileItem

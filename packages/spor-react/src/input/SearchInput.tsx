@@ -1,7 +1,9 @@
 "use client";
 
 import {
+  CloseOutline18Icon,
   CloseOutline24Icon,
+  SearchOutline18Icon,
   SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 
@@ -25,7 +27,7 @@ export const SearchInput = ({
   ref?: React.Ref<HTMLInputElement>;
 }) => {
   const { t } = useTranslation();
-  const { variant = "core", onReset, label, value } = props;
+  const { variant = "core", onReset, label, value, size = "md" } = props;
   const clearButton = onReset && value;
 
   return (
@@ -33,8 +35,15 @@ export const SearchInput = ({
       ref={ref}
       type="search"
       variant={variant}
+      size={size}
       {...props}
-      startElement={<SearchOutline24Icon color="icon" />}
+      startElement={
+        size == "md" ? (
+          <SearchOutline24Icon color="icon" />
+        ) : (
+          <SearchOutline18Icon color="icon" />
+        )
+      }
       endElement={
         clearButton && (
           <IconButton
@@ -42,7 +51,9 @@ export const SearchInput = ({
             type="button"
             size="sm"
             aria-label={t(texts.reset)}
-            icon={<CloseOutline24Icon />}
+            icon={
+              size == "md" ? <CloseOutline24Icon /> : <CloseOutline18Icon />
+            }
             onClick={onReset}
           />
         )

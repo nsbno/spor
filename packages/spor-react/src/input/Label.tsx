@@ -1,14 +1,13 @@
 import { defineStyle, Field, FieldLabelProps } from "@chakra-ui/react";
 
-export const Label = (props: FieldLabelProps) => (
-  <Field.Label {...props} css={labelStyles} />
+export const Label = ({ css, ...props }: FieldLabelProps) => (
+  <Field.Label {...props} css={[labelStyles, css]} />
 );
 
 const labelStyles = defineStyle({
   fontWeight: "normal",
   paddingBottom: 1,
   paddingX: 1,
-  fontSize: ["mobile.xs", "desktop.xs"],
   color: "text",
   pointerEvents: "none",
   zIndex: "docked",

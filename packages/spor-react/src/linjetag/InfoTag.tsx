@@ -73,15 +73,15 @@ export const InfoTag = ({
           </Box>
         )}
         {title && description && " "}
-        {description && descriptionEllipsis ? (
+        {description && (
           <Box
             as="span"
-            css={{ ...styles.description, ...styles.descriptionEllipsis }}
+            css={
+              descriptionEllipsis
+                ? { ...styles.descriptionEllipsis, ...styles.description }
+                : styles.description
+            }
           >
-            {description}
-          </Box>
-        ) : (
-          <Box as="span" css={styles.description}>
             {description}
           </Box>
         )}

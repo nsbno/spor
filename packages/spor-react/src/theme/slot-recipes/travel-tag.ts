@@ -49,7 +49,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
         color: "text.disabled",
       },
     },
-    dottedDescription: {
+    descriptionEllipsis: {
       display: "inline-block",
       maxW: "12ch",
       whiteSpace: "nowrap",

@@ -47,7 +47,7 @@ export const InfoTag = ({
   size = "md",
   title,
   description,
-  descriptionEllipsis = true,
+  descriptionEllipsis = false,
   ...customProps
 }: InfoTagProps) => {
   const recipe = useSlotRecipe({ key: "infoTag" });

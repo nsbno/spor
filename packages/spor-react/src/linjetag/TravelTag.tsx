@@ -182,7 +182,7 @@ export const TravelTag = function TravelTag({
           (descriptionEllipsis ? (
             <Box
               as="span"
-              css={{ ...styles.description, ...styles.dottedDescription }}
+              css={{ ...styles.description, ...styles.descriptionEllipsis }}
               title={description}
             >
               {description}

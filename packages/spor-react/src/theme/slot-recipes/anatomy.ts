@@ -95,6 +95,7 @@ export const infoTagAnatomy = createAnatomy("info-tag").parts(
   "textContainer",
   "title",
   "description",
+  "descriptionEllipsis",
   "walk",
 );
 

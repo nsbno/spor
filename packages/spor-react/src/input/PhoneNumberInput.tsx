@@ -92,7 +92,6 @@ export const PhoneNumberInput = ({
         variant={variant}
         allowedCountryCodes={allowedCountryCodes}
         data-state="on"
-        invalid={invalid}
         size={size}
       />
       <Input

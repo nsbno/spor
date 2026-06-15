@@ -39,7 +39,6 @@ export type TravelTagProps = TagProps &
      * Define a custom icon variant
      */
     customIconVariant?: string;
-    dottedDescription?: boolean;
   };
 
 /**
@@ -140,7 +139,7 @@ export const TravelTag = function TravelTag({
   foregroundColor,
   backgroundColor,
   customIconVariant,
-  dottedDescription = false,
+  descriptionEllipsis = false,
   ...rest
 }: TravelTagProps & {
   ref?: React.Ref<HTMLDivElement>;
@@ -180,7 +179,7 @@ export const TravelTag = function TravelTag({
         )}
         {title && description && " "}
         {description &&
-          (dottedDescription ? (
+          (descriptionEllipsis ? (
             <Box
               as="span"
               css={{ ...styles.description, ...styles.dottedDescription }}

@@ -105,6 +105,7 @@ export const travelTagAnatomy = createAnatomy("travel-tag").parts(
   "textContainer",
   "title",
   "description",
+  "dottedDescription",
   "deviationIcon",
 );
 

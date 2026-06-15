@@ -34,6 +34,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       color: "text",
       paddingRight: 0.5,
       whiteSpace: "nowrap",
+      minWidth: 0,
     },
     title: {
       fontWeight: "bold",
@@ -47,6 +48,14 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       "[aria-disabled=true] &": {
         color: "text.disabled",
       },
+    },
+    dottedDescription: {
+      display: "inline-block",
+      maxW: "12ch",
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      verticalAlign: "bottom",
     },
     deviationIcon: {
       position: "absolute",

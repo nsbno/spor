@@ -91,7 +91,11 @@ export const PhoneNumberInput = ({
         variant={variant}
         allowedCountryCodes={allowedCountryCodes}
         data-state="on"
+<<<<<<< HEAD
         invalid={invalid}
+=======
+        size={size}
+>>>>>>> main
       />
       <Input
         ref={ref}

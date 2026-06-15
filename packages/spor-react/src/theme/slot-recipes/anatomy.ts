@@ -96,6 +96,7 @@ export const infoTagAnatomy = createAnatomy("info-tag").parts(
   "title",
   "description",
   "walk",
+  "descriptionEllipsis",
 );
 
 export const travelTagAnatomy = createAnatomy("travel-tag").parts(
@@ -106,6 +107,7 @@ export const travelTagAnatomy = createAnatomy("travel-tag").parts(
   "title",
   "description",
   "deviationIcon",
+  "descriptionEllipsis",
 );
 
 export const drawerAnatomy = createAnatomy("drawer").parts(

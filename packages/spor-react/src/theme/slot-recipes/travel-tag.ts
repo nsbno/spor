@@ -48,6 +48,14 @@ export const travelTagSlotRecipe = defineSlotRecipe({
         color: "text.disabled",
       },
     },
+    descriptionEllipsis: {
+      display: "inline-block",
+      maxW: "12ch",
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      verticalAlign: "bottom",
+    },
     deviationIcon: {
       position: "absolute",
       top: "0",

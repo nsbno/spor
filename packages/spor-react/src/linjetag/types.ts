@@ -20,6 +20,7 @@ export type TagProps = VariantProps & {
   size?: Size;
   title: string;
   description?: string;
+  descriptionEllipsis?: boolean;
 };
 
 type DefaultVariantProps = {

@@ -139,6 +139,7 @@ export const TravelTag = function TravelTag({
   foregroundColor,
   backgroundColor,
   customIconVariant,
+  descriptionEllipsis = false,
   ...rest
 }: TravelTagProps & {
   ref?: React.Ref<HTMLDivElement>;
@@ -177,7 +178,14 @@ export const TravelTag = function TravelTag({
           </Box>
         )}
         {title && description && " "}
-        {description && (
+        {description && descriptionEllipsis ? (
+          <Box
+            as="span"
+            css={{ ...styles.description, ...styles.descriptionEllipsis }}
+          >
+            {description}
+          </Box>
+        ) : (
           <Box as="span" css={styles.description}>
             {description}
           </Box>

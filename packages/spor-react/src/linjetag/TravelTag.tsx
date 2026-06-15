@@ -140,7 +140,7 @@ export const TravelTag = function TravelTag({
   foregroundColor,
   backgroundColor,
   customIconVariant,
-  dottetDescription = true,
+  dottetDescription = false,
   ...rest
 }: TravelTagProps & {
   ref?: React.Ref<HTMLDivElement>;

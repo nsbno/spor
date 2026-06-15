@@ -96,6 +96,7 @@ export const page = defineType({
         { type: "divider", title: "Divider" },
         { type: "table", title: "Table" },
         { type: "richTable", title: "Rich table" },
+        { type: "imageBlockSquare", title: "Image block square" },
       ],
       group: "pageContent",
     }),

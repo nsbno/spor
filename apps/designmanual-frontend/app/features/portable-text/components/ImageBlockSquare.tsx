@@ -38,7 +38,6 @@ export const ImageBlockSquare = ({
   const { t } = useTranslation();
   const imageCount = images.length;
 
-  console.log(layout);
   const credits = [
     ...new Set(images.map((image) => image.image?.credits).filter(Boolean)),
   ];
@@ -56,12 +55,12 @@ export const ImageBlockSquare = ({
         image1: {
           colStart: [1],
           rowStart: [1],
-          colSpan: [3, 4, null, 7],
+          colSpan: [6, 6, null, 7],
           rowSpan: [2],
         },
         image2: {
-          colStart: [4, 5, null, 8],
-          colSpan: [3, 2, null, 5],
+          colStart: [7, 7, null, 8],
+          colSpan: [4, 4, null, 5],
           rowStart: [1],
           rowSpan: [2],
         },
@@ -70,12 +69,12 @@ export const ImageBlockSquare = ({
         image1: {
           colStart: [1],
           rowStart: [1],
-          colSpan: [3, 2, null, 5],
+          colSpan: [4, 4, null, 5],
           rowSpan: [2],
         },
         image2: {
-          colStart: [4, 3, null, 6],
-          colSpan: [3, 4, null, 7],
+          colStart: [5, 5, null, 6],
+          colSpan: [6, 6, null, 7],
           rowStart: [1],
           rowSpan: [2],
         },
@@ -84,12 +83,12 @@ export const ImageBlockSquare = ({
         image1: {
           colStart: [1],
           rowStart: [1],
-          colSpan: [3, 3, null, 6],
+          colSpan: [5, 5, null, 6],
           rowSpan: [2],
         },
         image2: {
-          colStart: [4, 4, null, 7],
-          colSpan: [3, 3, null, 6],
+          colStart: [6, 6, null, 7],
+          colSpan: [5, 5, null, 6],
           rowStart: [1],
           rowSpan: [2],
         },
@@ -116,19 +115,19 @@ export const ImageBlockSquare = ({
       "left-heavy": {
         image1: {
           colStart: [1],
-          colSpan: [3, 3, null, 6],
+          colSpan: [5, 5, null, 6],
           rowStart: [1],
           rowSpan: [24, 2, null, 2],
         },
         image2: {
-          colStart: [4, 4, null, 7],
-          colSpan: [3, 3, null, 6],
+          colStart: [6, 6, null, 7],
+          colSpan: [5, 5, null, 6],
           rowStart: [1],
           rowSpan: [12, 1, null, 1],
         },
         image3: {
-          colStart: [4, 4, null, 7],
-          colSpan: [3, 3, null, 6],
+          colStart: [6, 6, null, 7],
+          colSpan: [5, 5, null, 6],
           rowStart: [13, 2, null, 2],
           rowSpan: [12, 1, null, 1],
         },
@@ -136,19 +135,19 @@ export const ImageBlockSquare = ({
       "right-heavy": {
         image1: {
           colStart: [1],
-          colSpan: [3, 3, null, 6],
+          colSpan: [5, 5, null, 6],
           rowStart: [1],
           rowSpan: [12, 1, null, 1],
         },
         image2: {
-          colStart: [4, 4, null, 7],
-          colSpan: [3, 3, null, 6],
+          colStart: [6, 6, null, 7],
+          colSpan: [5, 5, null, 6],
           rowStart: [1],
           rowSpan: [24, 2, null, 2],
         },
         image3: {
           colStart: [1],
-          colSpan: [3, 3, null, 6],
+          colSpan: [5, 5, null, 6],
           rowStart: [13, 2, null, 2],
           rowSpan: [12, 1, null, 1],
         },
@@ -172,28 +171,28 @@ export const ImageBlockSquare = ({
       <GridLayout imageCount={imageCount} captionAndCredits={captionAndCredits}>
         <ImageGridItem
           colStart={[1]}
-          colSpan={[3, 3, null, 6]}
+          colSpan={[5, 5, null, 6]}
           rowStart={[1]}
           rowSpan={[1]}
           image={images[0]}
         />
         <ImageGridItem
-          colStart={[4, 4, null, 7]}
-          colSpan={[3, 3, null, 6]}
+          colStart={[6, 6, null, 7]}
+          colSpan={[5, 5, null, 6]}
           rowStart={[1]}
           rowSpan={[1]}
           image={images[1]}
         />
         <ImageGridItem
           colStart={[1]}
-          colSpan={[3, 3, null, 6]}
+          colSpan={[5, 5, null, 6]}
           rowStart={[2]}
           rowSpan={[1]}
           image={images[2]}
         />
         <ImageGridItem
-          colStart={[4, 4, null, 7]}
-          colSpan={[3, 3, null, 6]}
+          colStart={[6, 6, null, 7]}
+          colSpan={[5, 5, null, 6]}
           rowStart={[2]}
           rowSpan={[1]}
           image={images[3]}
@@ -260,43 +259,21 @@ type GridLayoutProps = {
   captionAndCredits?: string;
 };
 
-const GridLayout = ({
-  children,
-  imageCount,
-  captionAndCredits,
-}: GridLayoutProps) => {
-  const rowsMobile = imageCount === 3 ? 24 : 2;
-
-  const templateRowsMobile = `repeat(${rowsMobile}, 1fr)`;
-  const templateRowsOthers = `repeat(2, 1fr)`;
-
-  const isSingleImage = imageCount === 1;
-
+const GridLayout = ({ children, captionAndCredits }: GridLayoutProps) => {
   return (
     <Grid
-      templateColumns={["repeat(6, 1fr)", null, null, "repeat(12, 1fr)"]}
-      templateRows={[templateRowsMobile, templateRowsOthers]}
+      templateColumns={["repeat(10, 1fr)", null, null, "repeat(12, 1fr)"]}
+      templateRows="repeat(2, 1fr)"
       gap={[2, 3, null, 4]}
       aspectRatio="3 / 2"
       width="100%"
       data-testid="image-block"
-      marginTop={isSingleImage ? 0 : 10}
     >
       {children}
       {captionAndCredits && (
         <GridItem
-          colStart={[
-            1,
-            imageCount === 1 ? 2 : null,
-            null,
-            imageCount === 1 ? 3 : 1,
-          ]}
-          colSpan={[
-            6,
-            imageCount === 1 ? 4 : null,
-            null,
-            imageCount === 1 ? 8 : 12,
-          ]}
+          colStart={[1, null, null, 1]}
+          colSpan={[6, null, null, 12]}
           marginTop={[null, -1, null, -2]} //Offset gap in grid
         >
           <Text variant="xs" fontStyle="italic">

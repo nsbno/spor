@@ -183,7 +183,7 @@ export const TravelTag = function TravelTag({
             as="span"
             css={
               descriptionEllipsis
-                ? { ...styles.descriptionEllipsis, ...styles.description }
+                ? { ...styles.description, ...styles.descriptionEllipsis }
                 : styles.description
             }
           >

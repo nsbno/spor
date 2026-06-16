@@ -78,7 +78,7 @@ export const InfoTag = ({
             as="span"
             css={
               descriptionEllipsis
-                ? { ...styles.descriptionEllipsis, ...styles.description }
+                ? { ...styles.description, ...styles.descriptionEllipsis }
                 : styles.description
             }
           >

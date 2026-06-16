@@ -55,6 +55,7 @@ export const PasswordInput = ({
     onVisibleChange,
     label,
     startElement,
+    size = "md",
     ...rest
   } = props;
 
@@ -82,10 +83,12 @@ export const PasswordInput = ({
             event.preventDefault();
             setVisible(!visible);
           }}
+          size={size}
         >
           {visible ? t(texts.hidePassword) : t(texts.showPassword)}
         </VisibilityTrigger>
       }
+      size={size}
       {...rest}
     />
   );
@@ -102,7 +105,6 @@ const VisibilityTrigger = ({
       ref={ref}
       type="button"
       fontWeight="normal"
-      size="sm"
       borderRadius="sm"
       marginRight={1}
       {...props}

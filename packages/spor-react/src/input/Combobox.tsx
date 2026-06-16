@@ -207,6 +207,7 @@ export const Combobox = (props: ComboboxProps<object>) => {
         }
         placeholder=""
         data-attachable
+        size="md"
       />
       <span aria-hidden="true" data-trigger="multiselect"></span>
       {state.isOpen && !loading && (

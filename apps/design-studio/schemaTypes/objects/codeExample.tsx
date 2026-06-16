@@ -9,6 +9,19 @@ export const codeExample = defineType({
   type: "object",
   fields: [
     defineField({
+      name: "title",
+      title: "Title",
+      type: "string",
+      description: "Short title that is used to describe the code example.",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "description",
+      title: "Description",
+      type: "string",
+      description: "Description that is used to describe the code example.",
+    }),
+    defineField({
       name: "layout",
       title: "Layout",
       type: "string",
@@ -16,6 +29,7 @@ export const codeExample = defineType({
         list: ["simple", "preview-only", "code-only", "advanced"],
       },
       initialValue: "simple",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "reactCode",
@@ -25,6 +39,7 @@ export const codeExample = defineType({
         language: "react",
         languageAlternatives: [{ title: "React", value: "react" }],
       },
+      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

@@ -14,17 +14,15 @@ export const fieldSlotRecipe = defineSlotRecipe({
     },
     requiredIndicator: {
       marginStart: 1,
-      // eslint-disable-next-line spor/use-semantic-tokens
-      color: "brightRed",
+      color: "outline.error",
     },
     label: {
       display: "flex",
     },
     helperText: {
-      marginTop: 2,
       color: "text.subtle",
       lineHeight: "normal",
-      fontSize: "sm",
+      fontSize: ["mobile.sm", "desktop.sm"],
     },
     errorText: {
       borderRadius: "xs",
@@ -51,5 +49,41 @@ export const fieldSlotRecipe = defineSlotRecipe({
         pointerEvents: "none",
       },
     },
+  },
+  variants: {
+    size: {
+      sm: {
+        label: {
+          fontSize: ["mobile.xs", "desktop.xs"],
+          paddingX: 2,
+
+          "&[data-float]": {
+            fontSize: ["mobile.2xs", "desktop.2xs"],
+            top: 0,
+          },
+          top: "0.5rem",
+        },
+        helperText: {
+          color: "text.subtle",
+          lineHeight: "normal",
+          fontSize: ["mobile.xs", "desktop.xs"],
+        },
+      },
+      md: {
+        label: {
+          paddingX: 3,
+          fontSize: ["mobile.sm", "desktop.sm"],
+          "&[data-float]": {
+            fontSize: ["mobile.2xs", "desktop.2xs"],
+            color: "text.subtle",
+            top: "0.3rem",
+          },
+          top: "0.9rem",
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    size: "md",
   },
 });

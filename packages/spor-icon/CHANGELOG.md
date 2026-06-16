@@ -1,5 +1,17 @@
 # @vygruppen/spor-icon
 
+## 3.6.1
+
+### Patch Changes
+
+- 2c15591: Update svg for Departure-icon to not use masks
+
+## 3.6.0
+
+### Minor Changes
+
+- cbf59e6: Add layout icons for expand, contract, open/close left/right, and open in new window
+
 ## 3.5.9
 
 ### Patch Changes

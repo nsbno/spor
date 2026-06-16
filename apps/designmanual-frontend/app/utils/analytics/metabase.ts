@@ -45,9 +45,18 @@ const component_tab_visited = z.object({
   }),
 });
 
+const content_menu_click = z.object({
+  event: z.literal("content_menu_click"),
+  properties: z.object({
+    url: z.string(),
+    title: z.string().optional(),
+  }),
+});
+
 export const MetabaseCustomEventSchema = z.discriminatedUnion("event", [
   useSearch,
   component_tab_visited,
+  content_menu_click,
 ]);
 
 export type MetabaseCustomEvent = z.infer<typeof MetabaseCustomEventSchema>;

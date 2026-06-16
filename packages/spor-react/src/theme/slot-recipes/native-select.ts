@@ -55,5 +55,20 @@ export const nativeSelectSlotRecipe = defineSlotRecipe({
         },
       },
     },
+    size: {
+      sm: {
+        field: {
+          ...inputRecipe.variants?.size?.sm,
+        },
+      },
+      md: {
+        field: {
+          ...inputRecipe.variants?.size?.md,
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    size: "md",
   },
 });

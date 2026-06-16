@@ -1,5 +1,3 @@
-import { PortableTextBlock } from "@portabletext/react";
-
 import { getClient } from "./sanity/client";
 
 type SiteSettings = {
@@ -8,7 +6,6 @@ type SiteSettings = {
   keywords: string[];
   socialImage: unknown;
   topMenu: Section[];
-  footerItems: FooterItem[];
 };
 export type Section = {
   _id: string;
@@ -18,14 +15,9 @@ export type Section = {
   title: string;
   icon?: string;
 };
-export type FooterItem = {
-  _type: string;
-  _key: string;
-  title: string;
-  description: PortableTextBlock[];
-};
+
 export type MenuItem = {
-  _type: "menuItem" | "divider";
+  _type: "menuItem" | "divider" | "heading";
   title: string;
   tags: string[];
   url: string;
@@ -37,9 +29,19 @@ export type MenuItem = {
     slug: { current: string };
   };
 };
+export type Component = {
+  title: string;
+  url: string;
+  badges: ArticleBadgeType[];
+};
+export type ArticleBadgeType = {
+  badgeType: "new" | "updated" | "beta" | "deprecated";
+  description?: string;
+};
 export type Menu = {
   slug: string;
   menuItems: MenuItem[];
+  components: Component[];
   relatedTo: {
     _type: string;
     title: string;
@@ -93,7 +95,13 @@ export const getInitialSanityData = async (stega = false) => {
               defined(externalLink) => externalLink
             ),
           }
-        } 
+        },
+        "components": *[_type == "article" && !(_id in path("drafts.**")) && category->slug.current == "components"] | order(title asc) {
+          title,
+          slug,
+          badges,
+          "url": "/" + section->slug.current + "/" + category->slug.current + "/" + slug.current
+         },
       },
       "siteSettings": *[_type == "siteSettings"][0] {
         title,
@@ -108,12 +116,6 @@ export const getInitialSanityData = async (stega = false) => {
           title,
           icon
         },
-        footerItems[]{
-          _key,
-          _type,
-          description,
-          title
-        }
       }
     }`,
     {},

@@ -111,7 +111,7 @@ export const SiteHeader = ({
     }
     return true;
   });
-  const heightSpacer = ["72px", "90px", "120px", "138px"];
+  const heightSpacer = ["72px", "90px", "105px", "105px"];
 
   return (
     <Box minHeight={heightSpacer}>
@@ -126,10 +126,12 @@ export const SiteHeader = ({
           right: "0",
           zIndex: "1100",
         }}
+        border="1px solid"
+        borderColor="outline.neutral"
       >
         <Flex
           as="header"
-          minHeight={["78px", "90px", "120px", "132px"]}
+          minHeight={["78px", "90px", "105px", "105px"]}
           position="relative"
           backgroundColor="bg"
           alignItems="center"

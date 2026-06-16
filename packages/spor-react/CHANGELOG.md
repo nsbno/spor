@@ -1,5 +1,34 @@
 # @vygruppen/spor-react
 
+## 13.4.0
+
+### Minor Changes
+
+- 6412d40: Add size variant with options between small and medium for form elements, including Input, PasswordInput, PhonenumberInput, SearchInput, and Select
+
+### Patch Changes
+
+- e864f09: Phonenumber input: remove red border from countrycode select when invalid
+- 17a00b7: Remove padding around link in breadcrumb to prevent text from moving 3px when navigating between elements
+  - @vygruppen/spor-icon-react@5.0.0
+
+## 13.3.2
+
+### Patch Changes
+
+- b1e5186: Add disabled colorPalette to badge
+- d6eddea: Add Chakra's AccordionItem-props to the ExpandableItem
+- Updated dependencies [0a35c66]
+  - @vygruppen/spor-design-tokens@5.0.4
+
+## 13.3.1
+
+### Patch Changes
+
+- 55e243a: add maxWidth to Tooltip
+- b365786: Update focus colour for date time segments
+  - @vygruppen/spor-icon-react@5.0.0
+
 ## 13.3.0
 
 ### Minor Changes

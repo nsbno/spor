@@ -4,11 +4,10 @@ import {
   Field as ChakraField,
   RecipeVariantProps,
   Stack,
+  Text as ChakraText,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import * as React from "react";
-
-import { Text } from "@/typography";
 
 import { fieldSlotRecipe } from "../theme/slot-recipes/field";
 import { FloatingLabel } from "./FloatingLabel";
@@ -55,6 +54,7 @@ export type FieldBaseProps = {
   shouldFloat?: boolean;
   labelAsChild?: boolean;
   gap?: string | number;
+  size?: "sm" | "md";
 };
 
 export type FieldProps = Omit<
@@ -102,10 +102,11 @@ export const Field = ({
     shouldFloat,
     labelAsChild,
     gap,
+    size = "md",
     ...rest
   } = props;
   const recipe = useSlotRecipe({ key: "field" });
-  const styles = recipe();
+  const styles = recipe({ size });
 
   return (
     <Stack ref={ref} width="100%" {...rest}>
@@ -120,7 +121,7 @@ export const Field = ({
         gap={gap}
       >
         {label && !floatingLabel && (
-          <Label asChild={labelAsChild} aria-hidden>
+          <Label asChild={labelAsChild} aria-hidden css={styles.label}>
             {renderLabelWithIndicator(label, labelAsChild)}
           </Label>
         )}
@@ -132,6 +133,7 @@ export const Field = ({
             data-float={shouldFloat ? true : undefined}
             asChild={labelAsChild}
             aria-hidden
+            css={styles.label}
           >
             {renderLabelWithIndicator(label, labelAsChild)}
           </FloatingLabel>
@@ -143,9 +145,9 @@ export const Field = ({
         )}
       </ChakraField.Root>
       {helperText && (
-        <Text variant="sm" color="text.subtle">
+        <ChakraText data-part="helperText" css={styles.helperText}>
           {helperText}
-        </Text>
+        </ChakraText>
       )}
     </Stack>
   );

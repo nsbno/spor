@@ -3,7 +3,7 @@
 import type {
   CollectionItem,
   SelectLabelProps,
-  SelectRootProps as ChakraSelectRootProps,
+  SelectRootProps,
   SystemStyleObject,
 } from "@chakra-ui/react";
 import {
@@ -13,10 +13,10 @@ import {
   Portal,
   Select as ChakraSelect,
   useSelectContext,
-  useSlotRecipe,
 } from "@chakra-ui/react";
 import {
   CheckmarkFill18Icon,
+  DropdownDownFill18Icon,
   DropdownDownFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import * as React from "react";
@@ -26,7 +26,7 @@ import { CloseButton } from "@/button";
 import { Badge } from "..";
 import { Field, FieldProps } from "./Field";
 
-export type SelectProps = ChakraSelectRootProps &
+export type SelectProps = SelectRootProps &
   FieldProps & {
     label?: string;
   };
@@ -68,6 +68,7 @@ export const Select = ({
 }) => {
   const {
     variant = "core",
+    size = "md",
     children,
     positioning,
     label,
@@ -77,8 +78,6 @@ export const Select = ({
     css,
     ...rest
   } = props;
-  const recipe = useSlotRecipe({ key: "select" });
-  const styles = recipe({ variant });
 
   return (
     <Field
@@ -94,16 +93,14 @@ export const Select = ({
         ref={ref}
         positioning={{ sameWidth: true, ...positioning }}
         variant={variant}
-        css={styles.root}
+        size={size}
         position="relative"
       >
-        <SelectTrigger data-attachable>
+        <SelectTrigger data-attachable size={size}>
           <SelectValueText withPlaceholder={!!label} />
         </SelectTrigger>
-        {label && <SelectLabel css={styles.label}>{label}</SelectLabel>}
-        <SelectContent css={styles.selectContent} baseStyle={css}>
-          {children}
-        </SelectContent>
+        {label && <SelectLabel>{label}</SelectLabel>}
+        <SelectContent baseStyle={css}>{children}</SelectContent>
       </ChakraSelect.Root>
     </Field>
   );
@@ -132,14 +129,12 @@ export const SelectItem = ({
   ref?: React.Ref<HTMLDivElement>;
 }) => {
   const { item, children, description, ...rest } = props;
-  const recipe = useSlotRecipe({ key: "select" });
-  const styles = recipe();
   const selectContext = useSelectContext();
   const multiple = selectContext.multiple;
   const isSelected = selectContext.value.includes(item.value);
 
   return (
-    <ChakraSelect.Item item={item} {...rest} ref={ref} css={styles.item}>
+    <ChakraSelect.Item item={item} {...rest} ref={ref}>
       {multiple && (
         <ChakraCheckbox.Root checked={isSelected} pointerEvents="none">
           <ChakraCheckbox.Control>
@@ -149,11 +144,7 @@ export const SelectItem = ({
       )}
       <Box width="100%">
         <ChakraSelect.ItemText display="flex">{children}</ChakraSelect.ItemText>
-        {description && (
-          <Box data-part="item-description" css={styles.itemDescription}>
-            {description}
-          </Box>
-        )}
+        {description && <Box data-part="item-description">{description}</Box>}
       </Box>
 
       {!multiple && (
@@ -189,29 +180,28 @@ export const SelectItemGroup = function SelectItemGroup({
 type SelectTriggerProps = ChakraSelect.ControlProps & {
   clearable?: boolean;
   children?: React.ReactNode;
+  size: "sm" | "md";
 };
 
 export const SelectTrigger = function SelectTrigger({
   ref,
+  size = "md",
   ...props
 }: SelectTriggerProps & {
   ref?: React.Ref<HTMLButtonElement>;
 }) {
   const { children, clearable, ...rest } = props;
-  const recipe = useSlotRecipe({ key: "select" });
-  const styles = recipe();
   return (
-    <ChakraSelect.Control {...rest} css={styles.control}>
-      <ChakraSelect.Trigger ref={ref} css={styles.trigger}>
-        {children}
-      </ChakraSelect.Trigger>
-      <ChakraSelect.IndicatorGroup
-        css={styles.indicatorGroup}
-        data-part="indicator-group"
-      >
+    <ChakraSelect.Control {...rest}>
+      <ChakraSelect.Trigger ref={ref}>{children}</ChakraSelect.Trigger>
+      <ChakraSelect.IndicatorGroup data-part="indicator-group">
         {clearable && <SelectClearTrigger />}
-        <Box css={styles.indicator} data-part="indicator">
-          <DropdownDownFill24Icon />
+        <Box data-part="indicator">
+          {size == "md" ? (
+            <DropdownDownFill24Icon />
+          ) : (
+            <DropdownDownFill18Icon />
+          )}
         </Box>
       </ChakraSelect.IndicatorGroup>
     </ChakraSelect.Control>
@@ -285,7 +275,7 @@ export const SelectValueText = function SelectValueText({
       {...rest}
       ref={ref}
       placeholder={placeholder}
-      paddingTop={withPlaceholder ? "4" : "0"}
+      data-with-placeholder={withPlaceholder || undefined}
     >
       <ChakraSelect.Context>
         {(select: {
@@ -301,7 +291,7 @@ export const SelectValueText = function SelectValueText({
           if (children) return children(items);
           if (multiple) {
             return (
-              <Flex gap={0.5} marginBottom={1}>
+              <Flex gap={0.5}>
                 {items.map((item) => (
                   <Badge
                     key={select.collection.stringifyItem(item)}

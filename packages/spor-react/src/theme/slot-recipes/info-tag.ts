@@ -23,14 +23,6 @@ export const infoTagSlotRecipe = defineSlotRecipe({
     description: {
       fontWeight: "normal",
     },
-    descriptionEllipsis: {
-      display: "inline-block",
-      maxW: "12ch",
-      whiteSpace: "nowrap",
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-      verticalAlign: "bottom",
-    },
   },
   variants: {
     variant: {

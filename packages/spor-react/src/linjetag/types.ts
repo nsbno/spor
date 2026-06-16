@@ -1,3 +1,5 @@
+import type { BoxProps } from "@chakra-ui/react";
+
 export type Variant =
   | "local-train"
   | "region-train"
@@ -20,7 +22,7 @@ export type TagProps = VariantProps & {
   size?: Size;
   title: string;
   description?: string;
-  descriptionEllipsis?: boolean;
+  descriptionProps?: BoxProps;
 };
 
 type DefaultVariantProps = {

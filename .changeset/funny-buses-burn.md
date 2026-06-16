@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": patch
 ---
 
-Added ellipsis option for travel and info tags `descriptionEllipsis`
+Added custumization option for travel and info tags `descriptionProps` & `titleProps`

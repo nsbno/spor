@@ -48,6 +48,7 @@ export const InfoTag = ({
   title,
   description,
   descriptionProps,
+  titleProps,
   ...customProps
 }: InfoTagProps) => {
   const recipe = useSlotRecipe({ key: "infoTag" });
@@ -68,7 +69,7 @@ export const InfoTag = ({
       />
       <Box css={styles.textContainer}>
         {title && (
-          <Box as="span" css={styles.title}>
+          <Box as="span" css={styles.title} {...titleProps}>
             {title}
           </Box>
         )}

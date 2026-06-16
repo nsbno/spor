@@ -23,6 +23,7 @@ export type TagProps = VariantProps & {
   title: string;
   description?: string;
   descriptionProps?: BoxProps;
+  titleProps?: BoxProps;
 };
 
 type DefaultVariantProps = {

@@ -1,5 +1,4 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import tokens from "@vygruppen/spor-design-tokens";
 
 import { breadcrumbAnatomy } from "./anatomy";
 
@@ -15,10 +14,12 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
     link: {
       cursor: "pointer",
       borderRadius: "xs",
+      paddingX: 0.5,
     },
     currentLink: {
       borderRadius: "xs",
       cursor: "default",
+      paddingX: 0.5,
     },
     separator: {
       "& svg": {
@@ -32,9 +33,7 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
       core: {
         link: {
           _hover: {
-            outlineColor: "outline.core.hover",
-            outlineWidth: tokens.size.stroke.md,
-            outlineStyle: "solid",
+            textDecoration: "underline",
             _active: {
               backgroundColor: "surface.core.active",
               outline: "none",

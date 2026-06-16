@@ -14,7 +14,6 @@ export const breadcrumbSlotRecipe = defineSlotRecipe({
     },
     link: {
       cursor: "pointer",
-      padding: 0.5,
       borderRadius: "xs",
     },
     currentLink: {

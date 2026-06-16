@@ -40,22 +40,23 @@ runs:
             sed 's/^Patch Changes$/🐛 Patch Changes/' | \
             sed 's/^Minor Changes$/✨ Minor Changes/' | \
             sed 's/^Major Changes$/💥 Major Changes/' | \
-            sed 's/^-   [a-f0-9]\+: /• /' | \
+            sed -E 's/^- [a-f0-9]+ *: /- /' | \
             head -n 6)
           if [ -z "$summary" ]; then
-            summary="Ingen oppsummering tilgjengelig i release-notatet."
+            summary="No summary available in the release notes."
           fi
         else
-          summary="Ingen oppsummering tilgjengelig i release-notatet."
+          summary="No summary available in the release notes."
         fi
 
         message=$(printf '%s\n' \
-          '*Ny versjon av spor er ute!* 📦✨' \
-          "⚡️ *Versjon*: v${version}" \
-          '🔧 *Installer*: `npm i @vygruppen/spor-react@latest`' \
-          '' \
+          '*New version of Spor is out!* 📦✨' \
+          "⚡️ *Version*: v${version}" \
+          '🔧 *Install*: `npm i @vygruppen/spor-react@latest`' \
           "📖 *Changelog*: <${release_url}|@vygruppen/spor-react@${version}>" \
-          '📝 *Hva er nytt:*' \
+          '' \
+          '' \
+          '*What is new:*' \
           "$summary")
 
         payload=$(jq -n --arg text "$message" '{text: $text}')

@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 3.6.1
+
+### Patch Changes
+
+- 2c15591: Update svg for Departure-icon to not use masks
+
 ## 3.6.0
 
 ### Minor Changes

@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",
-    "@sanity/client": "^7.12.0",
+    "@sanity/client": "^7.22.1",
     "@vygruppen/spor-design-tokens": "workspace:*",
     "@vygruppen/spor-react": "workspace:*",
     "zod": "^3.23.0"

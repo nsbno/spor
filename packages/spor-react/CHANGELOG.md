@@ -1,5 +1,12 @@
 # @vygruppen/spor-react
 
+## 13.4.1
+
+### Patch Changes
+
+- e5b9c5e: Added customization option for travel and info tags `descriptionProps` & `titleProps`
+- b6495d6: Update TravelTag background colours and walk LineIcon dark mode colour
+
 ## 13.4.0
 
 ### Minor Changes

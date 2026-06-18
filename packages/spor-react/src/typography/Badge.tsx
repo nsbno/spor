@@ -11,10 +11,10 @@ import { badgeRecipie } from "../theme/recipes/badge";
 
 type BadgeVariantProps = RecipeVariantProps<typeof badgeRecipie>;
 
-export type BadgeProps = Omit<ChakraBadgeProps, "colorPalette"> &
-  BadgeVariantProps & {
-    icon?: IconComponent;
-  };
+export type BadgeProps = ChakraBadgeProps & {
+  colorPalette?: BadgeVariantProps["colorPalette"];
+  icon?: IconComponent;
+};
 
 export const Badge = function Badge({
   ref,

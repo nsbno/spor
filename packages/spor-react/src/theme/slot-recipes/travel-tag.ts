@@ -11,10 +11,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       display: "flex",
       alignItems: "center",
       padding: 0.5,
-
-      _disabled: {
-        background: "surface.disabled",
-      },
+      backgroundColor: "surface.disabled",
 
       width: "fit-content",
       transitionDuration: "fast",
@@ -79,62 +76,22 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       none: {},
     },
     variant: {
-      "local-train": {
-        container: {
-          backgroundColor: "linjetag.lokaltogLight",
-        },
-      },
-      "region-train": {
-        container: {
-          backgroundColor: "linjetag.regiontogLight",
-        },
-      },
-      "region-express-train": {
-        container: {
-          backgroundColor: "linjetag.regionEkspressLight",
-        },
-      },
-      "long-distance-train": {
-        container: {
-          backgroundColor: "linjetag.fjerntogLight",
-        },
-      },
-      "airport-express-train": {
-        container: {
-          backgroundColor: "linjetag.flytogLight",
-        },
-      },
-      "vy-bus": {
-        container: {
-          backgroundColor: "linjetag.vyBussLight",
-        },
-      },
-      "local-bus": {
-        container: {
-          backgroundColor: "linjetag.lokalbussLight",
-        },
-      },
-      ferry: {
-        container: {
-          backgroundColor: "linjetag.fergeLight",
-        },
-      },
-      subway: {
-        container: {
-          backgroundColor: "linjetag.tbaneLight",
-        },
-      },
-      tram: {
-        container: {
-          backgroundColor: "linjetag.trikkLight",
-        },
-      },
-      "alt-transport": {
-        container: {
-          backgroundColor: "linjetag.altTransportLight",
-        },
-      },
+      "local-train": {},
+      "region-train": {},
+      "region-express-train": {},
+      "long-distance-train": {},
+      "airport-express-train": {},
+      "vy-bus": {},
+      "local-bus": {},
+      ferry: {},
+      subway: {},
+      tram: {},
+      "alt-transport": {},
       walk: {
+        container: {
+          backgroundColor: "none",
+        },
+
         textContainer: {
           position: "absolute",
           left: "0.875rem",

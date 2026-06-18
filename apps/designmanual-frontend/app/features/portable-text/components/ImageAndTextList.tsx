@@ -31,7 +31,7 @@ const ImageAndText = ({
   const { t } = useTranslation();
 
   const imageConst = (
-    <Box as="figure" flex={12} overflow="hidden">
+    <Box as="figure" flex={6 / 12} overflow="hidden">
       {image && (
         <ResponsiveImage
           image={image}
@@ -41,7 +41,6 @@ const ImageAndText = ({
           borderRadius="md"
           size="md"
           quality={60}
-          width="100%"
         />
       )}
       {(image.caption || image.credits) && (

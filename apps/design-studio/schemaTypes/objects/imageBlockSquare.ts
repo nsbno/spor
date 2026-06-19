@@ -6,7 +6,7 @@ export const imageBlockSquare = defineType({
   name: "imageBlockSquare",
   title: "Image block square",
   icon: FaRegImages,
-  description: "A block of 2 to 4 images",
+  description: "This module require minimum 2 and maximum 4 images",
   type: "object",
   fields: [
     defineField({
@@ -40,7 +40,7 @@ export const imageBlockSquare = defineType({
       hidden: ({ parent }) => {
         const images = parent?.images;
         const imageCount = images?.length ?? 0;
-        return imageCount < 2 || imageCount === 4;
+        return imageCount < 2;
       },
     }),
   ],

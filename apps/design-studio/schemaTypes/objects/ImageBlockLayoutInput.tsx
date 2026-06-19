@@ -34,6 +34,12 @@ const LAYOUT_VARIANTS = [
     value: "right-heavy",
     previewSrc: "/static/layout-variant-3-right-heavy.png",
   },
+  {
+    imageCount: 4,
+    title: "Equal size",
+    value: "equal-size",
+    previewSrc: "/static/layout-variant-4-equal.png",
+  },
 ] as const;
 
 export function ImageBlockLayoutInput(props: StringInputProps) {

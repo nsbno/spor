@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 13.4.2
+
+### Patch Changes
+
+- 5e1ff50: Dialog: add possibility to send positioner-props to Chakra's positioner
+- b395020: Add brightRed colorPalette to Badge
+- c976a77: Breadcrumb: change styling of links to have an underline
+- 5a65a8e: AttachedInputs: removed "!important"-tag on styling, and added "flipButtonProps" as a prop to the AttahcedInput component to make it possible to override the styling of the button.
+
 ## 13.4.1
 
 ### Patch Changes

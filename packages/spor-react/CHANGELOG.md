@@ -1,5 +1,24 @@
 # @vygruppen/spor-react
 
+## 13.4.1
+
+### Patch Changes
+
+- e5b9c5e: Added customization option for travel and info tags `descriptionProps` & `titleProps`
+- b6495d6: Update TravelTag background colours and walk LineIcon dark mode colour
+
+## 13.4.0
+
+### Minor Changes
+
+- 6412d40: Add size variant with options between small and medium for form elements, including Input, PasswordInput, PhonenumberInput, SearchInput, and Select
+
+### Patch Changes
+
+- e864f09: Phonenumber input: remove red border from countrycode select when invalid
+- 17a00b7: Remove padding around link in breadcrumb to prevent text from moving 3px when navigating between elements
+  - @vygruppen/spor-icon-react@5.0.0
+
 ## 13.3.2
 
 ### Patch Changes

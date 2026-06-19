@@ -1,5 +1,22 @@
 # @vygruppen/spor-mcp-server
 
+## 2.1.11
+
+### Patch Changes
+
+- Updated dependencies [e5b9c5e]
+- Updated dependencies [b6495d6]
+  - @vygruppen/spor-react@13.4.1
+
+## 2.1.10
+
+### Patch Changes
+
+- Updated dependencies [6412d40]
+- Updated dependencies [e864f09]
+- Updated dependencies [17a00b7]
+  - @vygruppen/spor-react@13.4.0
+
 ## 2.1.9
 
 ### Patch Changes

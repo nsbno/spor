@@ -35,9 +35,9 @@
     "@vygruppen/eslint-config": "workspace:*",
     "case": "^1.6.3",
     "eslint": "^9.39.1",
-    "fs-extra": "^11.2.0",
+    "fs-extra": "^11.3.5",
     "react": ">17.0.0",
-    "react-native": "^0.74.2",
+    "react-native": "^0.86.0",
     "react-native-svg": "^12.3.0",
     "rimraf": "^5.0.7",
     "tsm": "^2.3.0",
@@ -46,7 +46,7 @@
   "peerDependencies": {
     "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
-    "react-native": "^0.74.2",
+    "react-native": "^0.86.0",
     "react-native-svg": "^12.3.0"
   }
 }

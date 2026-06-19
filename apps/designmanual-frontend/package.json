@@ -68,7 +68,7 @@
     "@vygruppen/eslint-config": "workspace:*",
     "babel-plugin-react-compiler": "^1.0.0",
     "config": "^3.3.11",
-    "eslint": "^9.39.1",
+    "eslint": "^10.5.0",
     "shiki": "^1.24.3",
     "tsconfig": "^7.0.0",
     "typescript": "^5.9.3",

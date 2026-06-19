@@ -6,6 +6,7 @@ import {
   defineRecipe,
   Group,
   GroupProps,
+  IconButtonProps,
   RecipeVariantProps,
   useRecipe,
 } from "@chakra-ui/react";
@@ -40,10 +41,22 @@ export type AttachedInputsProps = RecipeVariantProps<
         onFlip: () => void;
         flipAriaLabel: string;
       }
-  );
+  ) & {
+    flipButtonProps?: Omit<
+      IconButtonProps,
+      | "icon"
+      | "aria-label"
+      | "onClick"
+      | "variant"
+      | "size"
+      | "orientation"
+      | "spinner"
+    >;
+  };
 
 export const AttachedInputs = ({
   ref,
+  flipButtonProps,
   ...props
 }: AttachedInputsProps & {
   ref?: React.Ref<HTMLDivElement>;
@@ -76,6 +89,10 @@ export const AttachedInputs = ({
         size={["xs", null, "sm"]}
         aria-label={flipAriaLabel}
         onClick={onFlip}
+        position="absolute"
+        bg="bg"
+        outlineWidth="1px"
+        {...flipButtonProps}
       />
     </Box>
   );
@@ -85,24 +102,20 @@ const SwitchButton = chakra(
   IconButton,
   defineRecipe({
     base: {
-      position: "absolute !important",
-      zIndex: "101 !important",
-      // eslint-disable-next-line spor/use-semantic-tokens
-      bg: "bg !important",
-      outlineWidth: "1px !important",
-
+      zIndex: "101",
       _focus: {
-        outlineOffset: "0px !important",
+        outlineOffset: "0px",
+        alignItems: "center",
       },
     },
     variants: {
       orientation: {
         horizontal: {
-          top: "calc(50% - 18px)",
-          right: "calc(50% - 18px)",
+          top: "calc(50% - 1.1rem)",
+          right: "calc(50% - 1.1rem)",
         },
         vertical: {
-          top: "calc(50% - 15px)",
+          top: "calc(50% - 1.1rem)",
           right: "3rem",
           transform: "rotate(90deg)",
         },

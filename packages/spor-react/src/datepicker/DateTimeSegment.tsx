@@ -10,7 +10,7 @@ type DateTimeSegmentProps = PropsWithChildren<DatePickerVariantProps> & {
   segment: DateSegment;
   state: DateFieldState;
   ariaLabel?: string;
-  ariaDescription?: string;
+  ariaLabelledby?: string;
 };
 /**
  * A date time segment is a part of a date or a time stamp.
@@ -24,7 +24,7 @@ export const DateTimeSegment = ({
   segment,
   state,
   ariaLabel,
-  ariaDescription,
+  ariaLabelledby,
   variant,
 }: DateTimeSegmentProps & {
   ref?: React.Ref<HTMLDivElement>;
@@ -59,8 +59,8 @@ export const DateTimeSegment = ({
       borderRadius="xs"
       fontSize={["mobile.sm", "desktop.sm"]}
       css={styles.dateTimeSegment}
-      aria-label={ariaDescription}
-      aria-labelledby={ariaLabel}
+      aria-label={ariaLabel}
+      aria-labelledby={ariaLabelledby}
     >
       {isPaddable(segment.type) ? segment.text.padStart(2, "0") : segment.text}
     </Box>

@@ -72,7 +72,7 @@ export const DateField = ({
           <DateTimeSegment
             key={index}
             segment={segment}
-            ariaDescription={t(getAriaLabel(segment.type))}
+            ariaLabel={t(getAriaLabel(segment.type))}
             state={state}
           />
         ))}

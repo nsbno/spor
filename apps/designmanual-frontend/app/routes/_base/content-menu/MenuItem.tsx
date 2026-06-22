@@ -10,12 +10,13 @@ type MenuItemProps = FlexProps & {
   url: string;
   title?: string;
   badges?: ArticleBadgeType[];
+  icon?: React.ReactNode;
 };
 /**
  * Menu item in the `ContentMenu`, and search result in the `SearchResults`.
  */
 
-export const MenuItem = ({ url, title, badges }: MenuItemProps) => {
+export const MenuItem = ({ url, title, badges, icon }: MenuItemProps) => {
   const isExternal = url.includes("http");
   return (
     <Box as="li" listStyle="none">
@@ -43,6 +44,7 @@ export const MenuItem = ({ url, title, badges }: MenuItemProps) => {
           rel={isExternal ? "noopener noreferrer" : undefined}
         >
           <Stack direction="row" alignItems="center" width="100%">
+            {icon && icon}
             {title}
             {badges && (
               <Stack direction="row">

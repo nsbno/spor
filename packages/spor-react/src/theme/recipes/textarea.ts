@@ -14,6 +14,8 @@ export const textareaRecipe = defineRecipe({
     "&:focus-visible, &:not(:placeholder-shown)": {
       borderTop: "var(--label-height) solid transparent",
     },
+    fontSize: "mobile.md",
+    paddingLeft: 3,
   },
   variants: {
     variant: {

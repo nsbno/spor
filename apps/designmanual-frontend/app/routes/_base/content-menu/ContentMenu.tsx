@@ -1,3 +1,4 @@
+import { GridOutline18Icon } from "@vygruppen/spor-icon-react";
 import {
   Accordion,
   AccordionItem,
@@ -174,6 +175,11 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
           gap={0.5}
           display={["none", null, null, "block"]}
         >
+          <MenuItem
+            url="/spor/components/overview"
+            title="Overview"
+            icon={<GridOutline18Icon />}
+          />
           {menu?.components?.map((component: Component, index: number) => (
             <MenuItem
               key={index + component.url}

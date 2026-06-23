@@ -1,5 +1,5 @@
 "use client";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Field as ChakraField, Flex } from "@chakra-ui/react";
 import { CalendarDateTime, Time } from "@internationalized/date";
 import { useRef } from "react";
 import { AriaTimeFieldProps, useTimeField } from "react-aria";
@@ -45,6 +45,7 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
         maxWidth="80%"
       >
         {props.label}
+        <ChakraField.RequiredIndicator />
       </spor.label>
       <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
         {state.segments.map((segment: DateSegment, index) => (

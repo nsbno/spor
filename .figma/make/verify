@@ -1,0 +1,18 @@
+#!/bin/bash
+set -e
+
+URL="http://localhost:3008"
+MAX_RETRIES=60
+RETRY_INTERVAL=2
+
+for i in $(seq 1 $MAX_RETRIES); do
+  if curl -sf -o /dev/null "$URL" 2>/dev/null; then
+    echo "Dev server is ready at $URL"
+    exit 0
+  fi
+  echo "Waiting for dev server... (attempt $i/$MAX_RETRIES)"
+  sleep $RETRY_INTERVAL
+done
+
+echo "Error: Dev server did not start within $(($MAX_RETRIES * $RETRY_INTERVAL)) seconds"
+exit 1

@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+export PATH="$HOME/.figma/make/pnpm-shim:$PATH"
+
+pnpm install
+pnpm build

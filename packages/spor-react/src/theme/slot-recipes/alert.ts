@@ -36,7 +36,7 @@ export const alertSlotRecipe = defineSlotRecipe({
       alignItems: "flex-start",
       position: "relative",
       textStyle: "sm",
-      border: "sm",
+      border: "md",
     },
     description: {
       color: "text",

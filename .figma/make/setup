@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e
+
+if ! command -v node &> /dev/null; then
+  echo "Error: Node.js is required but not installed."
+  exit 1
+fi
+
+NODE_VERSION=$(node -v | sed 's/v//' | cut -d. -f1)
+if [ "$NODE_VERSION" -lt 18 ]; then
+  echo "Error: Node.js >= 18 is required. Found: $(node -v)"
+  exit 1
+fi
+
+echo "Node.js $(node -v) OK"
+
+if ! command -v corepack &> /dev/null; then
+  echo "Error: corepack is required but not found."
+  exit 1
+fi
+
+PNPM_SHIM_DIR="$HOME/.figma/make/pnpm-shim"
+mkdir -p "$PNPM_SHIM_DIR"
+corepack enable --install-directory "$PNPM_SHIM_DIR" pnpm
+
+echo "pnpm $(PATH="$PNPM_SHIM_DIR:$PATH" pnpm -v) OK"

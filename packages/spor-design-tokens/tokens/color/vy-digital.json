@@ -547,7 +547,7 @@
         "ghost": {
           "hover": {
             "value": {
-              "_light": "colors.seaMist",
+              "_light": "colors.coralGreen",
               "_dark": "colors.whiteAlpha.100"
             }
           },

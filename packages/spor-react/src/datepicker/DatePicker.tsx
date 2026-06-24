@@ -115,7 +115,7 @@ export const DatePicker = ({
   const popoverContent = (
     <ChakraPopover.Positioner>
       <ChakraPopover.Content css={styles.calendarPopover}>
-        <ChakraPopover.Body minWidth="20rem">
+        <ChakraPopover.Body minWidth="18rem">
           <Calendar
             {...calendarProps}
             variant={variant}

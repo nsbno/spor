@@ -144,7 +144,6 @@ export const TimePicker = ({
         opacity={isDisabled ? 0.5 : 1}
         pointerEvents={isDisabled ? "none" : "auto"}
         aria-disabled={isDisabled}
-        aria-live="assertive"
         aria-label={ariaLabel}
         position="relative"
         {...boxProps}

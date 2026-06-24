@@ -80,6 +80,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       boxShadow: "md",
       backgroundColor: "surface.floating",
       minHeight: "min-content",
+      maxWidth: "100vw",
     },
     rangeCalendarPopover: {
       width: "43rem",

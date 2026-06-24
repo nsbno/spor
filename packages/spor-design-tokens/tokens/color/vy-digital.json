@@ -188,6 +188,12 @@
             "_dark": "colors.whiteAlpha.300"
           }
         },
+        "subtle": {
+          "value": {
+            "_light": "colors.dimGrey",
+            "_dark": "colors.white"
+          }
+        },
         "core": {
           "value": {
             "_light": "colors.darkGrey",

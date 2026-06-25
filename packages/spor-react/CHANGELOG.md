@@ -1,5 +1,17 @@
 # @vygruppen/spor-react
 
+## 13.4.3
+
+### Patch Changes
+
+- dea15ec: Solve accessibility problems: 1) adjust width of calendar-view in DatePicker to not overflow the screens view. 2) add asterisk to TimePicker when set to required. 3) Remove aria-assertive on errormessage in TimePicker.
+- 3426845: Add aria-labels to dateTime segments in TimePicker
+- dc7f5af: Add paddingleft to textarea and change the color of surface.ghost.hover in Vy-Digital theme
+- Updated dependencies [3b905c8]
+- Updated dependencies [5aabe19]
+- Updated dependencies [dc7f5af]
+  - @vygruppen/spor-design-tokens@5.0.5
+
 ## 13.4.2
 
 ### Patch Changes

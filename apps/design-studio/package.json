@@ -21,7 +21,7 @@
     "@vygruppen/spor-icon-react": "workspace:*",
     "@vygruppen/spor-react": "workspace:*",
     "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "react-dom": "^19.2.7",
     "react-icons": "^5.5.0",
     "sanity": "^5.30.0",
     "sanity-plugin-iframe-pane": "^5.0.11",

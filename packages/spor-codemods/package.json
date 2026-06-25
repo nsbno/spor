@@ -38,7 +38,7 @@
     "tsup": "^8.3.5",
     "typescript": "^5.7.3",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.7"
   },
   "peerDependencies": {
     "jscodeshift": ">=0.14.0"

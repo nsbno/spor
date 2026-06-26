@@ -188,6 +188,12 @@
             "_dark": "colors.whiteAlpha.300"
           }
         },
+        "subtle": {
+          "value": {
+            "_light": "colors.dimGrey",
+            "_dark": "colors.white"
+          }
+        },
         "core": {
           "value": {
             "_light": "colors.darkGrey",
@@ -541,7 +547,7 @@
         "ghost": {
           "hover": {
             "value": {
-              "_light": "colors.seaMist",
+              "_light": "colors.coralGreen",
               "_dark": "colors.whiteAlpha.100"
             }
           },

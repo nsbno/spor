@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.0.5
+
+### Patch Changes
+
+- 3b905c8: Adjust dark mode colors for shadow-token
+- 5aabe19: add icon.subtle as a colortoken
+- dc7f5af: Add paddingleft to textarea and change the color of surface.ghost.hover in Vy-Digital theme
+
 ## 5.0.4
 
 ### Patch Changes

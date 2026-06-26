@@ -182,16 +182,16 @@
             "_dark": "colors.rajah"
           }
         },
-        "subtle": {
-          "value": {
-            "_light": "colors.dimGrey",
-            "_dark": "colors.white"
-          }
-        },
         "disabled": {
           "value": {
             "_light": "colors.blackAlpha.200",
             "_dark": "colors.whiteAlpha.300"
+          }
+        },
+        "subtle": {
+          "value": {
+            "_light": "colors.dimGrey",
+            "_dark": "colors.white"
           }
         },
         "core": {

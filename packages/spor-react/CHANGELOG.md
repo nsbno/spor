@@ -1,5 +1,26 @@
 # @vygruppen/spor-react
 
+## 13.4.3
+
+### Patch Changes
+
+- dea15ec: Solve accessibility problems: 1) adjust width of calendar-view in DatePicker to not overflow the screens view. 2) add asterisk to TimePicker when set to required. 3) Remove aria-assertive on errormessage in TimePicker.
+- 3426845: Add aria-labels to dateTime segments in TimePicker
+- dc7f5af: Add paddingleft to textarea and change the color of surface.ghost.hover in Vy-Digital theme
+- Updated dependencies [3b905c8]
+- Updated dependencies [5aabe19]
+- Updated dependencies [dc7f5af]
+  - @vygruppen/spor-design-tokens@5.0.5
+
+## 13.4.2
+
+### Patch Changes
+
+- 5e1ff50: Dialog: add possibility to send positioner-props to Chakra's positioner
+- b395020: Add brightRed colorPalette to Badge
+- c976a77: Breadcrumb: change styling of links to have an underline
+- 5a65a8e: AttachedInputs: removed "!important"-tag on styling, and added "flipButtonProps" as a prop to the AttahcedInput component to make it possible to override the styling of the button.
+
 ## 13.4.1
 
 ### Patch Changes

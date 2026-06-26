@@ -85,6 +85,7 @@ export const page = defineType({
         { type: "textBlock", title: "Text block" },
         { type: "textBlocks", title: "Text blocks" },
         { type: "imageBlock", title: "Image block" },
+        { type: "imageBlockSquare", title: "Image block square" },
         { type: "imageAndTextList", title: "Image and text" },
         { type: "imageCardList", title: "Image card list" },
         { type: "cards", title: "Cards" },

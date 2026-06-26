@@ -199,6 +199,22 @@ export function resolveImageBlockGroq() {
     }`;
 }
 
+export function resolveImageBlockSquareGroq() {
+  return groq`
+    (_type == "imageBlock") => @ {
+      _type,
+      images[] {
+        asset,
+        hotspot,
+        crop,
+        altText,
+        credits,
+      },
+      caption,
+      layout
+    }`;
+}
+
 export function resolveImageAndTextListGroq() {
   return groq`
   (_type == "imageAndTextList") => @ {

@@ -1,20 +1,28 @@
 "use client";
-import {
-  ConditionalValue,
-  HeadingProps as ChakraHeadingProps,
-  Text,
-} from "@chakra-ui/react";
+import { HeadingProps as ChakraHeadingProps, Text } from "@chakra-ui/react";
 import { useId } from "react";
 
 import { slugify } from "..";
 
+const headingVariantMap = {
+  xxl: "xxl",
+  "xl-display": "xl-display",
+  xl: "xl-sans-bold",
+  lg: "lg-bold",
+  "md-lg": "md-lg-bold",
+  md: "md-bold",
+  sm: "sm-bold",
+  xs: "xs-bold",
+  "2xs": "2xs-bold",
+} as const;
+
+export type HeadingVariant = keyof typeof headingVariantMap;
+
 export type HeadingProps = Omit<ChakraHeadingProps, "textStyle" | "as"> & {
   /** The heading level, e.g. h1, h2, h3... **/
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  /** The size and style of the heading. Defaults to xl-display */
-  variant?: ConditionalValue<
-    "sm" | "md" | "lg" | "xxl" | "xl-display" | "xl-sans" | "xs"
-  >;
+  /** The size and style of the heading. Defaults to "xl-display" */
+  variant?: HeadingVariant;
   /** If true, generate an ID based on the children */
   autoId?: boolean;
 };
@@ -64,5 +72,13 @@ export const Heading = function Heading({
     return typeof rest.children === "string" ? slugify(rest.children) : reactId;
   }
 
-  return <Text as={as} textStyle={variant} id={getId()} ref={ref} {...rest} />;
+  return (
+    <Text
+      as={as}
+      textStyle={headingVariantMap[variant]}
+      id={getId()}
+      ref={ref}
+      {...rest}
+    />
+  );
 };

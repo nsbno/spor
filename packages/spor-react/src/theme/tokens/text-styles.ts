@@ -22,7 +22,7 @@ export const textStyles = defineTextStyles({
       lineHeight: tokens.font.style["xl-display"]["line-height"],
     },
   },
-  "xl-sans": {
+  "xl-sans-bold": {
     value: {
       fontSize: [
         tokens.font.style["xl-sans"]["font-size"].mobile,
@@ -30,6 +30,7 @@ export const textStyles = defineTextStyles({
       ],
       fontFamily: tokens.font.style["xl-sans"]["font-family"],
       lineHeight: tokens.font.style["xl-sans"]["line-height"],
+      fontWeight: "bold",
     },
   },
   lg: {
@@ -90,6 +91,72 @@ export const textStyles = defineTextStyles({
       ],
       fontFamily: tokens.font.style["2xs"]["font-family"],
       lineHeight: tokens.font.style["2xs"]["line-height"],
+    },
+  },
+  "lg-bold": {
+    value: {
+      fontSize: [
+        tokens.font.style.lg["font-size"].mobile,
+        tokens.font.style.lg["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style.lg["font-family"],
+      lineHeight: tokens.font.style.lg["line-height"],
+      fontWeight: "bold",
+    },
+  },
+  "md-lg-bold": {
+    value: {
+      fontSize: [
+        tokens.font.style["md-lg"]["font-size"].mobile,
+        tokens.font.style["md-lg"]["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style["md-lg"]["font-family"],
+      lineHeight: tokens.font.style["md-lg"]["line-height"],
+      fontWeight: "bold",
+    },
+  },
+  "md-bold": {
+    value: {
+      fontSize: [
+        tokens.font.style.md["font-size"].mobile,
+        tokens.font.style.md["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style.md["font-family"],
+      lineHeight: tokens.font.style.md["line-height"],
+      fontWeight: "bold",
+    },
+  },
+  "sm-bold": {
+    value: {
+      fontSize: [
+        tokens.font.style.sm["font-size"].mobile,
+        tokens.font.style.sm["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style.sm["font-family"],
+      lineHeight: tokens.font.style.sm["line-height"],
+      fontWeight: "bold",
+    },
+  },
+  "xs-bold": {
+    value: {
+      fontSize: [
+        tokens.font.style.xs["font-size"].mobile,
+        tokens.font.style.xs["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style.xs["font-family"],
+      lineHeight: tokens.font.style.xs["line-height"],
+      fontWeight: "bold",
+    },
+  },
+  "2xs-bold": {
+    value: {
+      fontSize: [
+        tokens.font.style["2xs"]["font-size"].mobile,
+        tokens.font.style["2xs"]["font-size"].desktop,
+      ],
+      fontFamily: tokens.font.style["2xs"]["font-family"],
+      lineHeight: tokens.font.style["2xs"]["line-height"],
+      fontWeight: "bold",
     },
   },
 });

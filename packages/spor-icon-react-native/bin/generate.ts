@@ -64,6 +64,7 @@ async function loadIcons() {
       withFileTypes: true,
     });
     for (const entry of filesInCategory.filter(
+      // eslint-disable-next-line unicorn/prevent-abbreviations
       (e) => e.isFile() && e.name.endsWith(".svg"),
     )) {
       const fileName = entry.name;

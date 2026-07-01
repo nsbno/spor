@@ -1,5 +1,14 @@
 # @vygruppen/spor-react
 
+## 13.4.4
+
+### Patch Changes
+
+- 5535288: New colors for the info, success, and error icons.
+- Updated dependencies [5535288]
+- Updated dependencies [4d64409]
+  - @vygruppen/spor-icon-react@5.0.1
+
 ## 13.4.3
 
 ### Patch Changes

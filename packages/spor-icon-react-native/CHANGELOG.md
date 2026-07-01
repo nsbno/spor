@@ -1,5 +1,12 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.16.2
+
+### Patch Changes
+
+- 5535288: New colors for the info, success, and error icons.
+- 4d64409: Add icons for thumbs up and down
+
 ## 2.16.1
 
 ### Patch Changes

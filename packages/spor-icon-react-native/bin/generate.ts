@@ -55,10 +55,19 @@ type IconMetadata = {
 async function loadIcons() {
   const icons: IconData[] = [];
 
-  const categories = await fs.readdir(SVG_PATH);
+  const allEntries = await fs.readdir(SVG_PATH, { withFileTypes: true });
+  const categories = allEntries
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name);
   for (const category of categories) {
-    const filesInCategory = await fs.readdir(`${SVG_PATH}/${category}`);
-    for (const fileName of filesInCategory) {
+    const filesInCategory = await fs.readdir(`${SVG_PATH}/${category}`, {
+      withFileTypes: true,
+    });
+    for (const entry of filesInCategory.filter(
+      // eslint-disable-next-line unicorn/prevent-abbreviations
+      (e) => e.isFile() && e.name.endsWith(".svg"),
+    )) {
+      const fileName = entry.name;
       const metadata = getMetadata({ fileName, category });
       const componentName = createComponentName(metadata);
 

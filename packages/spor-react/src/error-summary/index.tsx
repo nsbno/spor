@@ -37,17 +37,7 @@ export const ErrorSummary = ({
     >
       {heading && (
         <Flex css={styles.heading}>
-          <ErrorFill24Icon
-            css={{
-              flexShrink: 0,
-              "& path:first-of-type": {
-                fill: `icon.critical`,
-              },
-              "& path:not(:first-of-type)": {
-                fill: `surface.critical`,
-              },
-            }}
-          />
+          <ErrorFill24Icon />
           <Heading as={headingLevel} variant="md" autoId ref={headingRef}>
             {heading}
           </Heading>

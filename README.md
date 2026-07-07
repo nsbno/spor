@@ -55,7 +55,7 @@ Spor follows a **monorepo** structure, containing multiple **packages** and **ap
 
 Before you begin, ensure you have:
 
-- **Node.js** installed.
+- **Node.js 22.12 or newer** installed (required since the Sanity Studio moved to v6). Run `nvm use` to pick up the version pinned in `.nvmrc`.
 - **Basic familiarity with Git** for version control.
 
 ### 📥 Cloning the Repository

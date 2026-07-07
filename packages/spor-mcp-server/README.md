@@ -23,7 +23,7 @@ The server runs over stdio and can be used from tools like GitHub Copilot CLI, V
 
 ## Prerequisites
 
-- Node.js 20+
+- Node.js 22.12+ (matches the monorepo requirement; see the root `.nvmrc`)
 
 For runtime usage in MCP clients, you can run this server directly with `npx`.
 

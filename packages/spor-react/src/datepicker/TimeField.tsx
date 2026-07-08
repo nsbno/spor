@@ -32,7 +32,8 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
         {...labelProps}
         htmlFor={fieldProps.id}
         marginBottom={0}
-        fontSize={["mobile.xs", "desktop.xs"]}
+        fontSize={["mobile.2xs", "desktop.2xs"]}
+        color="text.subtle"
         top={0}
         cursor="text"
         left="50%"

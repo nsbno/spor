@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 13.4.5
+
+### Patch Changes
+
+- 5b62e2e: Time/Date-picker: Make the fontsize of the label smaller
+
 ## 13.4.4
 
 ### Patch Changes

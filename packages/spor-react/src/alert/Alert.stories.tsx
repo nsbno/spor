@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Alert } from "@vygruppen/spor-react";
+import { Alert, Box, Flex } from "@vygruppen/spor-react";
 
 const meta = {
   title: "Components/Alert",
@@ -25,13 +25,13 @@ const variants = [
 
 export const Overview: Story = {
   render: () => (
-    <div style={{ display: "grid", gap: "1rem", minWidth: "28rem" }}>
+    <Flex gap={2} direction="column">
       {variants.map((variant) => (
         <Alert key={variant} variant={variant} title={variant}>
           Example of the {variant} alert variant.
         </Alert>
       ))}
-    </div>
+    </Flex>
   ),
 };
 

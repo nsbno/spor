@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "@vygruppen/spor-react";
+import { Box, Button, Flex } from "@vygruppen/spor-react";
 
 const meta = {
   title: "Components/Button",
@@ -26,43 +26,35 @@ const icon = (symbol: string) => <span aria-hidden="true">{symbol}</span>;
 
 export const Overview: Story = {
   render: () => (
-    <div style={{ display: "grid", gap: "1rem" }}>
+    <Box display="grid" gap={4}>
       {sizes.map((size) => (
-        <div
-          key={size}
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "0.75rem",
-            alignItems: "center",
-          }}
-        >
+        <Flex key={size} alignItems="center" gap={2}>
           {variants.map((variant) => (
             <Button key={`${size}-${variant}`} size={size} variant={variant}>
               {variant}
             </Button>
           ))}
-        </div>
+        </Flex>
       ))}
-    </div>
+    </Box>
   ),
 };
 
 export const WithIcons: Story = {
   render: () => (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
+    <Flex gap={4}>
       <Button leftIcon={icon("←")}>Left icon</Button>
       <Button rightIcon={icon("→")}>Right icon</Button>
       <Button leftIcon={icon("★")} rightIcon={icon("→")} variant="secondary">
         Both icons
       </Button>
-    </div>
+    </Flex>
   ),
 };
 
 export const States: Story = {
   render: () => (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
+    <Flex gap={4}>
       <Button loading loadingText="Loading">
         Loading
       </Button>
@@ -72,6 +64,6 @@ export const States: Story = {
       <Button loading variant="ghost" leftIcon={icon("⟳")}>
         Refreshing
       </Button>
-    </div>
+    </Flex>
   ),
 };

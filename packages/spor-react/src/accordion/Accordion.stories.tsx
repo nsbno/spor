@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Accordion, Expandable, ExpandableItem } from "@vygruppen/spor-react";
+import {
+  Accordion,
+  Box,
+  Expandable,
+  ExpandableItem,
+} from "@vygruppen/spor-react";
 
 const meta = {
   title: "Components/Accordion",
@@ -12,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Grouped: Story = {
   render: () => (
-    <div style={{ minWidth: "28rem" }}>
+    <Box>
       <Accordion collapsible defaultValue={["refunds"]}>
         <ExpandableItem value="refunds" title="Can I change my ticket?">
           Yes, ticket changes depend on fare rules and route availability.
@@ -26,13 +31,13 @@ export const Grouped: Story = {
           when required.
         </ExpandableItem>
       </Accordion>
-    </div>
+    </Box>
   ),
 };
 
 export const SingleExpandable: Story = {
   render: () => (
-    <div style={{ minWidth: "28rem" }}>
+    <Box>
       <Expandable
         title="Read more about onboard services"
         variant="floating"
@@ -41,6 +46,6 @@ export const SingleExpandable: Story = {
         Wi‑Fi, power outlets, and accessible seating may vary by train set and
         route.
       </Expandable>
-    </div>
+    </Box>
   ),
 };

@@ -781,6 +781,9 @@ importers:
       '@react-types/shared':
         specifier: ^3.27.0
         version: 3.32.0(react@19.2.3)
+      '@storybook/react':
+        specifier: ^8
+        version: 8.6.18(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@8.6.18(prettier@3.8.4))(typescript@5.9.3)
       '@testing-library/jest-dom':
         specifier: ^6.9.1
         version: 6.9.1

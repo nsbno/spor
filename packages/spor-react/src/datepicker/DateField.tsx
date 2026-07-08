@@ -62,7 +62,12 @@ export const DateField = ({
     <Box minWidth="6rem" width="100%">
       {props.label && (
         <Box css={styles.inputLabel} position="absolute" paddingTop="2px">
-          <Label padding="0" {...props.labelProps}>
+          <Label
+            padding="0"
+            fontSize={["mobile.2xs", "desktop.2xs"]}
+            color="text.subtle"
+            {...props.labelProps}
+          >
             {props.label} <Field.RequiredIndicator />
           </Label>
         </Box>

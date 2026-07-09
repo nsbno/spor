@@ -138,6 +138,9 @@ async function generateComponent(iconData: IconData) {
               overrides: {
                 removeViewBox: false,
                 convertColors: false,
+                cleanupIds: {
+                  minify: false,
+                },
               },
             },
           },

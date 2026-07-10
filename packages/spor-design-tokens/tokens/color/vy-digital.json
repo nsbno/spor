@@ -295,7 +295,7 @@
         "accent": {
           "value": {
             "_light": "colors.mint",
-            "_dark": "colors.jungle"
+            "_dark": "colors.darkTeal"
           }
         }
       },

@@ -46,7 +46,7 @@
     "@vygruppen/eslint-config": "workspace:*",
     "case": "^1.6.3",
     "chokidar-cli": "^3.0.0",
-    "eslint": "^9.39.1",
+    "eslint": "^10.6.0",
     "fs-extra": "^11.2.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",

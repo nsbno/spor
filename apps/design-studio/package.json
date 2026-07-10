@@ -37,7 +37,7 @@
     "@types/react": "19.2.5",
     "@vygruppen/eslint-config": "workspace:*",
     "canvas": "^3.2.3",
-    "eslint": "^9.39.1",
+    "eslint": "^10.6.0",
     "prettier": "^3.5",
     "typescript": "^5.9.2"
   }

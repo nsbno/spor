@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 13.4.6
+
+### Patch Changes
+
+- 4500a7b: Select: Fix border radius and spacing when dropdown opens above the trigger
+- Updated dependencies [cc9028e]
+- Updated dependencies [5ee8079]
+  - @vygruppen/spor-design-tokens@5.0.6
+  - @vygruppen/spor-icon-react@5.0.2
+
 ## 13.4.5
 
 ### Patch Changes

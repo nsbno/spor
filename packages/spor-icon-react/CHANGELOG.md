@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 5.0.2
+
+### Patch Changes
+
+- 5ee8079: Prevent id minification to avoid clip path collisions when multiple icons are on the same page
+
 ## 5.0.1
 
 ### Patch Changes

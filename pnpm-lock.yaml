@@ -29,10 +29,10 @@ importers:
         version: 9.39.1(jiti@2.7.0)
       jscodeshift:
         specifier: ^17.3.0
-        version: 17.3.0(@babel/preset-env@7.29.7(@babel/core@7.29.0))
+        version: 17.3.0(@babel/preset-env@7.29.7(@babel/core@7.29.7))
       prettier:
-        specifier: ^3.3.1
-        version: 3.6.2
+        specifier: ^3.9.5
+        version: 3.9.5
       react-icons:
         specifier: ^5.4.0
         version: 5.5.0(react@19.2.7)
@@ -107,8 +107,8 @@ importers:
         specifier: ^9.39.1
         version: 9.39.1(jiti@2.7.0)
       prettier:
-        specifier: ^3.5
-        version: 3.6.2
+        specifier: ^3.9
+        version: 3.9.5
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -346,8 +346,8 @@ importers:
         specifier: ^9.39.1
         version: 9.39.1(jiti@2.7.0)
       prettier:
-        specifier: ^3.3.1
-        version: 3.6.2
+        specifier: ^3.9.5
+        version: 3.9.5
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -401,7 +401,7 @@ importers:
         version: link:../spor-react
       jscodeshift:
         specifier: ^17.3.0
-        version: 17.3.0(@babel/preset-env@7.29.7(@babel/core@7.29.7))
+        version: 17.3.0(@babel/preset-env@7.29.7(@babel/core@7.29.0))
     devDependencies:
       '@types/jscodeshift':
         specifier: ^0.11.11
@@ -455,8 +455,8 @@ importers:
         specifier: ^1.7.0
         version: 1.7.0
       prettier:
-        specifier: ^2.4.1
-        version: 2.8.8
+        specifier: ^3.9.5
+        version: 3.9.5
       style-dictionary:
         specifier: ^4.3.3
         version: 4.4.0
@@ -2139,6 +2139,9 @@ packages:
 
   '@codemirror/commands@6.10.3':
     resolution: {integrity: sha512-JFRiqhKu+bvSkDLI+rUhJwSxQxYb759W5GBezE8Uc8mHLqC9aV/9aTC7yJSqCtB3F00pylrLCwnyS91Ap5ej4Q==}
+
+  '@codemirror/commands@6.10.4':
+    resolution: {integrity: sha512-Ryk9y9T0FFVF0cUGhAknveAyUOl/A1qReTFi+qPKtOh2Z9F4AUBz3XOrYD4ZEgZirdugVzHvd/2/Wcwy5OliTg==}
 
   '@codemirror/lang-css@6.3.1':
     resolution: {integrity: sha512-kr5fwBGiGtmz6l0LSJIbno9QrifNMUusivHbnA1H6Dmqy4HZFte3UAICix1VuKo0lMPKQr2rqB+0BkKi/S3Ejg==}
@@ -12399,18 +12402,13 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.6.2:
-    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
-    engines: {node: '>=14'}
-    hasBin: true
-
   prettier@3.8.1:
     resolution: {integrity: sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==}
     engines: {node: '>=14'}
     hasBin: true
 
-  prettier@3.8.4:
-    resolution: {integrity: sha512-N2MylSdi48+5N/6S5j+maeHbUSIzzZ5uOcX5Hm4QpV8Dkb1HFjfAKTKX6yNPJQD9AhcT3ifHNB66tWTTJDi11Q==}
+  prettier@3.9.5:
+    resolution: {integrity: sha512-/FVl766LpUfB5vXgCYOYa0MeV/441Ia99AeICQIQFTY/Nw0roZwULcXpku5i1/m5kt/baz+s4Zogspd839HSMg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -18498,6 +18496,13 @@ snapshots:
       '@codemirror/view': 6.43.1
       '@lezer/common': 1.5.2
 
+  '@codemirror/commands@6.10.4':
+    dependencies:
+      '@codemirror/language': 6.12.4
+      '@codemirror/state': 6.7.0
+      '@codemirror/view': 6.43.4
+      '@lezer/common': 1.5.2
+
   '@codemirror/lang-css@6.3.1':
     dependencies:
       '@codemirror/autocomplete': 6.20.3
@@ -21507,7 +21512,7 @@ snapshots:
       pathe: 1.1.2
       picocolors: 1.1.1
       pkg-types: 2.3.0
-      prettier: 3.8.4
+      prettier: 3.9.5
       react-refresh: 0.14.2
       react-router: 7.14.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       semver: 7.8.4
@@ -22529,7 +22534,7 @@ snapshots:
       get-it: 8.8.0
       groq-js: 1.30.2
       pkg-dir: 5.0.0
-      prettier: 3.8.4
+      prettier: 3.9.5
       semver: 7.8.4
       validate-npm-package-name: 3.0.0
     transitivePeerDependencies:
@@ -22799,7 +22804,7 @@ snapshots:
       groq-js: 1.30.3
       json5: 2.2.3
       lodash-es: 4.18.1
-      prettier: 3.8.4
+      prettier: 3.9.5
       reselect: 5.2.0
       tsconfig-paths: 4.2.0
       zod: 4.4.3
@@ -26865,7 +26870,7 @@ snapshots:
   codemirror@6.0.2:
     dependencies:
       '@codemirror/autocomplete': 6.20.3
-      '@codemirror/commands': 6.10.3
+      '@codemirror/commands': 6.10.4
       '@codemirror/language': 6.12.4
       '@codemirror/lint': 6.9.7
       '@codemirror/search': 6.7.1
@@ -31247,11 +31252,9 @@ snapshots:
 
   prettier@2.8.8: {}
 
-  prettier@3.6.2: {}
-
   prettier@3.8.1: {}
 
-  prettier@3.8.4: {}
+  prettier@3.9.5: {}
 
   pretty-format@26.6.2:
     dependencies:
@@ -33335,7 +33338,7 @@ snapshots:
       json5: 2.2.3
       patch-package: 8.0.0
       path-unified: 0.2.0
-      prettier: 3.6.2
+      prettier: 3.9.5
       tinycolor2: 1.6.0
 
   style-mod@4.1.3: {}

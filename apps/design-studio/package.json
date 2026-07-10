@@ -38,7 +38,7 @@
     "@vygruppen/eslint-config": "workspace:*",
     "canvas": "^3.2.3",
     "eslint": "^9.39.1",
-    "prettier": "^3.5",
+    "prettier": "^3.9",
     "typescript": "^5.9.2"
   }
 }

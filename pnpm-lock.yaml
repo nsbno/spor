@@ -29,7 +29,7 @@ importers:
         version: 9.39.1(jiti@2.7.0)
       jscodeshift:
         specifier: ^17.3.0
-        version: 17.3.0(@babel/preset-env@7.29.7(@babel/core@7.29.0))
+        version: 17.3.0(@babel/preset-env@7.29.7(@babel/core@7.29.7))
       prettier:
         specifier: ^3.3.1
         version: 3.6.2
@@ -209,8 +209,8 @@ importers:
         specifier: ^6.3.4
         version: 6.4.0
       picosanity:
-        specifier: ^4.1.1
-        version: 4.1.1
+        specifier: ^5.0.0
+        version: 5.0.0
       prism-react-renderer:
         specifier: ^2.3.1
         version: 2.4.1(react@19.2.3)
@@ -401,7 +401,7 @@ importers:
         version: link:../spor-react
       jscodeshift:
         specifier: ^17.3.0
-        version: 17.3.0(@babel/preset-env@7.29.7(@babel/core@7.29.7))
+        version: 17.3.0(@babel/preset-env@7.29.7(@babel/core@7.29.0))
     devDependencies:
       '@types/jscodeshift':
         specifier: ^0.11.11
@@ -2139,6 +2139,9 @@ packages:
 
   '@codemirror/commands@6.10.3':
     resolution: {integrity: sha512-JFRiqhKu+bvSkDLI+rUhJwSxQxYb759W5GBezE8Uc8mHLqC9aV/9aTC7yJSqCtB3F00pylrLCwnyS91Ap5ej4Q==}
+
+  '@codemirror/commands@6.10.4':
+    resolution: {integrity: sha512-Ryk9y9T0FFVF0cUGhAknveAyUOl/A1qReTFi+qPKtOh2Z9F4AUBz3XOrYD4ZEgZirdugVzHvd/2/Wcwy5OliTg==}
 
   '@codemirror/lang-css@6.3.1':
     resolution: {integrity: sha512-kr5fwBGiGtmz6l0LSJIbno9QrifNMUusivHbnA1H6Dmqy4HZFte3UAICix1VuKo0lMPKQr2rqB+0BkKi/S3Ejg==}
@@ -12256,9 +12259,9 @@ packages:
     resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
     engines: {node: '>=12'}
 
-  picosanity@4.1.1:
-    resolution: {integrity: sha512-UumbCXx8pYuy6E1Ipki1HJYF4eP37l2eXc8rX+p74kR071oYmuk9n9zQxZ6BizI2ZaFUPIWkcEzHgtfUtmdsxA==}
-    engines: {node: '>=12'}
+  picosanity@5.0.0:
+    resolution: {integrity: sha512-JSK7IEEuE0CDn7TWQorjIP4nQH/ZvxoLLfmcUSma3Npe4uhgzfTc97eKwYtxwwOS2BL+3Fv8AHOuqy+UmDbd8A==}
+    engines: {node: '>=20'}
 
   pify@2.3.0:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
@@ -18496,6 +18499,13 @@ snapshots:
       '@codemirror/language': 6.12.3
       '@codemirror/state': 6.6.0
       '@codemirror/view': 6.43.1
+      '@lezer/common': 1.5.2
+
+  '@codemirror/commands@6.10.4':
+    dependencies:
+      '@codemirror/language': 6.12.4
+      '@codemirror/state': 6.7.0
+      '@codemirror/view': 6.43.4
       '@lezer/common': 1.5.2
 
   '@codemirror/lang-css@6.3.1':
@@ -26865,7 +26875,7 @@ snapshots:
   codemirror@6.0.2:
     dependencies:
       '@codemirror/autocomplete': 6.20.3
-      '@codemirror/commands': 6.10.3
+      '@codemirror/commands': 6.10.4
       '@codemirror/language': 6.12.4
       '@codemirror/lint': 6.9.7
       '@codemirror/search': 6.7.1
@@ -31090,11 +31100,7 @@ snapshots:
 
   picomatch@4.0.4: {}
 
-  picosanity@4.1.1:
-    dependencies:
-      node-fetch: 2.7.0
-    transitivePeerDependencies:
-      - encoding
+  picosanity@5.0.0: {}
 
   pify@2.3.0: {}
 

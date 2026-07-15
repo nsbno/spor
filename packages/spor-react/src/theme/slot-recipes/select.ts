@@ -82,6 +82,13 @@ export const selectSlotRecipe = defineSlotRecipe({
       borderBottomRadius: "sm",
       marginTop: -1,
 
+      "&[data-placement^='top']": {
+        borderTopRadius: "sm",
+        borderBottomRadius: 0,
+        marginTop: 0,
+        marginBottom: -1,
+      },
+
       _open: {
         animationStyle: "slide-fade-in",
         animationDuration: "fast",
@@ -149,6 +156,10 @@ export const selectSlotRecipe = defineSlotRecipe({
       },
       _open: {
         borderBottomRadius: 0,
+      },
+      "&:has([data-placement^='top'][data-state='open'])": {
+        borderTopRadius: 0,
+        borderBottomRadius: "sm",
       },
       _invalid: {
         outline: "2px solid",

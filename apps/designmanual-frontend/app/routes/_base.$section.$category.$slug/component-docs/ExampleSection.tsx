@@ -15,7 +15,9 @@ export const ExamplesSection = ({
     codeExamples.length > 0 ? codeExamples[0].title : "",
   );
 
-  const activeTitle = codeExamples.some((e) => e.title === currentExampleTitle)
+  const activeTitle = codeExamples.some(
+    (example) => example.title === currentExampleTitle,
+  )
     ? currentExampleTitle
     : (codeExamples[0]?.title ?? "");
   return (

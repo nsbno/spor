@@ -89,47 +89,6 @@ export const radioCardSlotRecipe = defineSlotRecipe({
         scale: "0.5",
       },
     },
-    /*itemIndicator: {
-      display: "inline-flex",
-      position: "relative",
-      borderWidth: "2px",
-      borderColor: "outline.core",
-      borderRadius: "xl",
-      width: 3,
-      height: 3,
-      _before: {
-        content: '""',
-        position: "absolute",
-        inset: 0,
-        margin: "auto",
-        width: "50%",
-        height: "50%",
-        borderRadius: "full",
-        backgroundColor: "surface.brand",
-        transform: "scale(0)",
-        transition: "transform 0.1s ease",
-      },
-      _checked: {
-        borderColor: "surface.brand",
-        _before: {
-          transform: "scale(1)",
-        },
-      },
-      _hover: {
-        borderColor: "surface.brand.hover",
-        _before: {
-          backgroundColor: "surface.brand.hover",
-        },
-      },
-      _disabled: {
-        pointerEvents: "none",
-        backgroundColor: "surface.disabled",
-        borderColor: "outline.disabled",
-        _before: {
-          backgroundColor: "outline.disabled",
-        },
-      },
-    },*/
   },
   variants: {
     variant: {

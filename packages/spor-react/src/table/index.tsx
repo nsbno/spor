@@ -6,7 +6,6 @@ export type {
   TableFooterProps,
   TableHeaderProps,
   TableRootProps,
-  TableRowProps,
 } from "@chakra-ui/react";
 export {
   TableCaption,
@@ -16,5 +15,4 @@ export {
   TableFooter,
   TableHeader,
   TableRoot,
-  TableRow,
 } from "@chakra-ui/react";

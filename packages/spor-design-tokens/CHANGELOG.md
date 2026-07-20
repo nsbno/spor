@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.0.6
+
+### Patch Changes
+
+- cc9028e: Update bg.accent token to be darkTeal in darkmode for vy-digital theme
+
 ## 5.0.5
 
 ### Patch Changes

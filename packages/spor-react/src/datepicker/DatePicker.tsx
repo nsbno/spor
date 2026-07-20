@@ -56,6 +56,7 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
  * A date picker component.
  *
  * There are three different variants –`core`, `floating` and `ghost`.
+ * There are two different sizes - `sm` and `md`
  *
  * ```tsx
  * <DatePicker label="Dato" variant="core" />
@@ -65,6 +66,7 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
 export const DatePicker = ({
   ref: externalRef,
   variant,
+  size,
   errorText,
   minHeight,
   showYearNavigation,
@@ -144,12 +146,13 @@ export const DatePicker = ({
             invalid={invalid}
             helperText={helperText}
             required={props.required}
+            size={size}
           >
             <PopoverAnchor>
               <StyledField
                 variant={variant}
+                size={size}
                 onClick={onFieldClick}
-                paddingX={3}
                 minHeight={minHeight}
                 isDisabled={props.isDisabled}
                 isActive={props.isActive}
@@ -162,8 +165,7 @@ export const DatePicker = ({
                 ) : (
                   <ChakraPopover.Trigger asChild>
                     <CalendarTriggerButton
-                      paddingLeft={1}
-                      paddingRight={1}
+                      marginLeft={1}
                       variant={variant}
                       ref={ref}
                       {...buttonProps}

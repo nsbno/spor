@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import { fileURLToPath } from "url";
 import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
@@ -45,8 +46,12 @@ const config: StorybookConfig = {
         // its workspace dependencies. This prevents Vite from discovering them
         // mid-page-load (which would trigger a re-optimization, causing a
         // browserHash mismatch and module loading failures).
+        // Note: @vygruppen/spor-react is excluded here because it is aliased
+        // directly to its source files (see resolve.alias below), so Vite
+        // treats it as a local module with full HMR support rather than a
+        // pre-bundled dependency.
+        exclude: ["@vygruppen/spor-react"],
         include: [
-          "@vygruppen/spor-react",
           "@vygruppen/spor-icon-react",
           "@vygruppen/spor-loader",
           "@vygruppen/spor-design-tokens",
@@ -69,6 +74,20 @@ const config: StorybookConfig = {
         ],
       },
       resolve: {
+        alias: {
+          // Resolve spor-react to its source so that Vite watches the files
+          // directly and HMR works without needing a separate build step.
+          "@vygruppen/spor-react": fileURLToPath(
+            new URL(
+              "../../../packages/spor-react/src/index.tsx",
+              import.meta.url,
+            ),
+          ),
+          // spor-react source uses @/ as a path alias for its own src directory.
+          "@/": fileURLToPath(
+            new URL("../../../packages/spor-react/src/", import.meta.url),
+          ),
+        },
         dedupe: ["react", "react-dom", "@chakra-ui/react", "@emotion/react"],
       },
     });

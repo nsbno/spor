@@ -7,6 +7,7 @@
     "build": "turbo run build",
     "test": "turbo run test --parallel",
     "dev": "turbo run dev",
+    "storybook": "turbo run dev storybook --filter=@vygruppen/spor-react --filter=@vygruppen/spor-storybook",
     "lint": "turbo run lint -- --max-warnings=0",
     "postinstall": "turbo run postinstall",
     "changeset": "npx changeset",

@@ -8,11 +8,14 @@ import {
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
   useSlotRecipe,
+  TableRowProps as ChakraTableRowProps,
 } from "@chakra-ui/react";
 import {
   ArrowDownFill18Icon,
   ArrowUpFill18Icon,
   ChangeDirectionFill18Icon,
+  InformationFill18Icon,
+  InformationOutline18Icon,
 } from "@vygruppen/spor-icon-react";
 import {
   createContext,
@@ -31,6 +34,7 @@ import {
   getNextSortState,
   type SortState,
 } from "./sort-utils";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/tooltip";
 
 type TableVariantProps = RecipeVariantProps<typeof tableSlotRecipe>;
 
@@ -48,7 +52,7 @@ export const useTableSort = () => useContext(SortContext);
 
 export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   PropsWithChildren<TableVariantProps> & {
-    variant?: "ghost" | "core";
+    variant?: "ghost" | "core" | "floating";
     colorPalette?: "grey" | "green" | "white";
     sortable?: boolean;
     ref?: React.Ref<HTMLTableElement>;
@@ -57,7 +61,7 @@ export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
 export const Table = ({
   variant = "ghost",
   size,
-  colorPalette = "green",
+  colorPalette,
   children,
   sortable = false,
   ref,
@@ -96,11 +100,13 @@ export const Table = ({
 
 export type TableColumnHeaderProps = ChakraTableColumnHeaderProps & {
   ref?: React.Ref<HTMLTableCellElement>;
+  tooltip?: string;
 };
 
 export const TableColumnHeader = ({
   children,
   ref,
+  tooltip,
   ...rest
 }: TableColumnHeaderProps) => {
   const { enabled, sortState, onSort } = useTableSort();
@@ -123,6 +129,14 @@ export const TableColumnHeader = ({
     >
       <HStack>
         {children}
+        {tooltip && (
+          <Tooltip>
+            <TooltipTrigger>
+              <InformationOutline18Icon />
+            </TooltipTrigger>
+            <TooltipContent>{tooltip}</TooltipContent>
+          </Tooltip>
+        )}
         {columnSortable && columnIndex != null && (
           <Button
             variant="ghost"
@@ -185,5 +199,19 @@ export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
     >
       {children}
     </ChakraTable.Body>
+  );
+};
+
+export type TableRowProps = ChakraTableRowProps & {
+  semantic?: "info" | "success" | "warning" | "notice" | "caution" | "critical";
+};
+
+export const TableRow = ({ children, semantic, ...rest }: TableRowProps) => {
+  const recipe = useSlotRecipe({ key: "tableRow" });
+  const styles = recipe({ semantic });
+  return (
+    <ChakraTable.Row css={styles.row} {...rest}>
+      {children}
+    </ChakraTable.Row>
   );
 };

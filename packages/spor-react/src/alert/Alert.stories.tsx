@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Alert, Box, Flex } from "@vygruppen/spor-react";
+import { Alert, Flex } from "@vygruppen/spor-react";
 
 const meta = {
   title: "Components/Alert",

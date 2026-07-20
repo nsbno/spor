@@ -17,7 +17,7 @@ export const tableSlotRecipe = defineSlotRecipe({
       borderCollapse: "collapse",
       width: "100%",
       minWidth: "36rem",
-      overflowX: "auto",
+      overflow: "hidden",
     },
     columnHeader: {
       fontWeight: "bold",
@@ -43,9 +43,6 @@ export const tableSlotRecipe = defineSlotRecipe({
   variants: {
     colorPalette: {
       green: {
-        root: {
-          backgroundColor: "bg",
-        },
         header: {
           backgroundColor: "bg.brand",
         },
@@ -54,9 +51,6 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
       },
       grey: {
-        root: {
-          backgroundColor: "bg",
-        },
         columnHeader: {
           backgroundColor: "surface.disabled",
           _hover: {
@@ -65,42 +59,17 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
       },
       white: {
-        root: {
-          backgroundColor: "bg",
-        },
         columnHeader: {
           color: "text",
-          backgroundColor: "bg",
         },
       },
     },
     variant: {
-      ghost: {
-        header: {
-          backgroundColor: "none",
-        },
-        columnHeader: {
-          borderBottom: "sm",
-          borderColor: "outline.disabled",
-          backgroundColor: "none",
-          color: "text",
-        },
-
-        cell: {
-          ...numericStyles,
-        },
-        row: {
-          borderBottom: "sm",
-          borderColor: "outline.disabled",
-          ...numericStyles,
-        },
-      },
-
       core: {
         root: {
           boxShadow: "0 0 0 1px var(--shadow-color)",
           shadowColor: "outline.disabled",
-          borderRadius: "sm",
+          borderRadius: "xs",
         },
 
         table: {
@@ -108,32 +77,15 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
         cell: {
           ...numericStyles,
-
-          borderRight: "sm",
-          borderColor: "outline.disabled",
-
-          _last: {
-            borderRight: "none",
-          },
         },
 
         columnHeader: {
           ...numericStyles,
-
-          borderRight: "sm",
-          borderColor: "outline.disabled",
-
-          _first: {
-            borderTopLeftRadius: "sm",
-          },
-          _last: {
-            borderTopRightRadius: "sm",
-            borderRight: "none",
-          },
         },
         header: {
           borderBottom: "sm",
           borderColor: "outline.disabled",
+          backgroundColor: "surface.disabled",
         },
         row: {
           ...numericStyles,
@@ -143,6 +95,60 @@ export const tableSlotRecipe = defineSlotRecipe({
           _last: {
             borderBottom: "none",
           },
+        },
+      },
+      floating: {
+        root: {
+          borderCollapse: "separate",
+          borderSpacing: "0 6px",
+        },
+        columnHeader: {
+          backgroundColor: "none",
+        },
+        header: {
+          backgroundColor: "none",
+        },
+        cell: {
+          backgroundColor: "surface.floating",
+          _first: {
+            borderLeftRadius: "xs",
+          },
+          _last: {
+            borderRightRadius: "xs",
+          },
+        },
+        row: {
+          borderRadius: "sm",
+          _hover: {
+            "& td": {
+              backgroundColor: "surface.floating.hover",
+            },
+          },
+        },
+      },
+      ghost: {
+        header: {
+          backgroundColor: "transparent",
+        },
+        columnHeader: {
+          borderBottom: "sm",
+          borderColor: "outline.disabled",
+          backgroundColor: "none",
+          color: "text",
+        },
+
+        cell: {
+          ...numericStyles,
+        },
+        row: {
+          borderBottom: "sm",
+          borderColor: "outline.disabled",
+          _hover: {
+            "& td": {
+              backgroundColor: "surface.ghost.hover",
+            },
+          },
+          ...numericStyles,
         },
       },
     },
@@ -204,6 +210,93 @@ export const tableSlotRecipe = defineSlotRecipe({
         caption: {
           paddingX: 3,
           paddingY: 2,
+        },
+      },
+    },
+  },
+});
+
+export const tableRowSlotRecipe = defineSlotRecipe({
+  className: "spor-table-row",
+  slots: ["row"],
+  variants: {
+    semantic: {
+      info: {
+        row: {
+          "& td": {
+            backgroundColor: "surface.info",
+            color: "text.info",
+          },
+          _hover: {
+            "& td": {
+              backgroundColor: "surface.info.hover",
+            },
+          },
+        },
+      },
+      success: {
+        row: {
+          "& td": {
+            backgroundColor: "surface.success",
+            color: "text.success",
+          },
+          _hover: {
+            "& td": {
+              backgroundColor: "surface.success.hover",
+            },
+          },
+        },
+      },
+      warning: {
+        row: {
+          "& td": {
+            backgroundColor: "surface.warning",
+            color: "text.warning",
+          },
+          _hover: {
+            "& td": {
+              backgroundColor: "surface.warning.hover",
+            },
+          },
+        },
+      },
+      notice: {
+        row: {
+          "& td": {
+            backgroundColor: "surface.notice",
+            color: "text.notice",
+          },
+          _hover: {
+            "& td": {
+              backgroundColor: "surface.notice.hover",
+            },
+          },
+        },
+      },
+      caution: {
+        row: {
+          "& td": {
+            backgroundColor: "surface.caution",
+            color: "text.caution",
+          },
+          _hover: {
+            "& td": {
+              backgroundColor: "surface.caution.hover",
+            },
+          },
+        },
+      },
+      critical: {
+        row: {
+          "& td": {
+            backgroundColor: "surface.critical",
+            color: "text.critical",
+          },
+          _hover: {
+            "& td": {
+              backgroundColor: "surface.critical.hover",
+            },
+          },
         },
       },
     },

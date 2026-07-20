@@ -17,17 +17,17 @@ const SimpleTable = (props: React.ComponentProps<typeof Table>) => (
     <Table data-testid="table" {...props}>
       <TableHeader>
         <TableRow>
-          <TableColumnHeader>Name</TableColumnHeader>
-          <TableColumnHeader>Age</TableColumnHeader>
+          <TableColumnHeader>Destination</TableColumnHeader>
+          <TableColumnHeader>Price</TableColumnHeader>
         </TableRow>
       </TableHeader>
       <TableBody>
         <TableRow>
-          <TableCell>Alice</TableCell>
-          <TableCell>30</TableCell>
+          <TableCell>Bergen</TableCell>
+          <TableCell>499</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Bob</TableCell>
+          <TableCell>Geilo</TableCell>
           <TableCell>25</TableCell>
         </TableRow>
       </TableBody>
@@ -40,22 +40,22 @@ const SortableTable = (props: React.ComponentProps<typeof Table>) => (
     <Table data-testid="table" sortable {...props}>
       <TableHeader>
         <TableRow>
-          <TableColumnHeader>Name</TableColumnHeader>
-          <TableColumnHeader>Age</TableColumnHeader>
+          <TableColumnHeader>Destination</TableColumnHeader>
+          <TableColumnHeader>Price</TableColumnHeader>
         </TableRow>
       </TableHeader>
       <TableBody data-testid="tbody">
-        <TableRow data-testid="row-alice">
-          <TableCell>Alice</TableCell>
-          <TableCell>30</TableCell>
+        <TableRow data-testid="row-bergen">
+          <TableCell>Bergen</TableCell>
+          <TableCell>499</TableCell>
         </TableRow>
-        <TableRow data-testid="row-charlie">
-          <TableCell>Charlie</TableCell>
-          <TableCell>20</TableCell>
+        <TableRow data-testid="row-trondheim">
+          <TableCell>Trondheim</TableCell>
+          <TableCell>699</TableCell>
         </TableRow>
-        <TableRow data-testid="row-bob">
-          <TableCell>Bob</TableCell>
-          <TableCell>25</TableCell>
+        <TableRow data-testid="row-geilo">
+          <TableCell>Geilo</TableCell>
+          <TableCell>249</TableCell>
         </TableRow>
       </TableBody>
     </Table>
@@ -70,10 +70,10 @@ describe("Table rendering", () => {
 
   test("renders children correctly", () => {
     render(<SimpleTable />);
-    expect(screen.getByText("Name")).toBeInTheDocument();
-    expect(screen.getByText("Age")).toBeInTheDocument();
-    expect(screen.getByText("Alice")).toBeInTheDocument();
-    expect(screen.getByText("Bob")).toBeInTheDocument();
+    expect(screen.getByText("Destination")).toBeInTheDocument();
+    expect(screen.getByText("Price")).toBeInTheDocument();
+    expect(screen.getByText("Bergen")).toBeInTheDocument();
+    expect(screen.getByText("Geilo")).toBeInTheDocument();
   });
 
   test("forwards extra props to the table element", () => {
@@ -105,7 +105,7 @@ describe("Table rendering", () => {
 });
 
 describe("Table props", () => {
-  test.each(["ghost", "core"] as const)(
+  test.each(["ghost", "core", "floating"] as const)(
     "renders without error with variant=%s",
     (variant) => {
       render(<SimpleTable variant={variant} />);
@@ -138,45 +138,45 @@ describe("Table sorting", () => {
     const user = userEvent.setup();
     render(<SortableTable />);
 
-    const [nameButton] = screen.getAllByRole("button");
-    await user.click(nameButton);
+    const [destinationButton] = screen.getAllByRole("button");
+    await user.click(destinationButton);
 
     const tbody = screen.getByTestId("tbody");
     const rows = within(tbody).getAllByRole("row");
-    expect(within(rows[0]).getByText("Alice")).toBeInTheDocument();
-    expect(within(rows[1]).getByText("Bob")).toBeInTheDocument();
-    expect(within(rows[2]).getByText("Charlie")).toBeInTheDocument();
+    expect(within(rows[0]).getByText("Bergen")).toBeInTheDocument();
+    expect(within(rows[1]).getByText("Geilo")).toBeInTheDocument();
+    expect(within(rows[2]).getByText("Trondheim")).toBeInTheDocument();
   });
 
   test("clicking a sort button twice sorts the column descending", async () => {
     const user = userEvent.setup();
     render(<SortableTable />);
 
-    const [nameButton] = screen.getAllByRole("button");
-    await user.click(nameButton);
-    await user.click(nameButton);
+    const [destinationButton] = screen.getAllByRole("button");
+    await user.click(destinationButton);
+    await user.click(destinationButton);
 
     const tbody = screen.getByTestId("tbody");
     const rows = within(tbody).getAllByRole("row");
-    expect(within(rows[0]).getByText("Charlie")).toBeInTheDocument();
-    expect(within(rows[1]).getByText("Bob")).toBeInTheDocument();
-    expect(within(rows[2]).getByText("Alice")).toBeInTheDocument();
+    expect(within(rows[0]).getByText("Trondheim")).toBeInTheDocument();
+    expect(within(rows[1]).getByText("Geilo")).toBeInTheDocument();
+    expect(within(rows[2]).getByText("Bergen")).toBeInTheDocument();
   });
 
   test("clicking a sort button three times resets the sort order", async () => {
     const user = userEvent.setup();
     render(<SortableTable />);
 
-    const [nameButton] = screen.getAllByRole("button");
-    await user.click(nameButton);
-    await user.click(nameButton);
-    await user.click(nameButton);
+    const [destinationButton] = screen.getAllByRole("button");
+    await user.click(destinationButton);
+    await user.click(destinationButton);
+    await user.click(destinationButton);
 
     const tbody = screen.getByTestId("tbody");
     const rows = within(tbody).getAllByRole("row");
-    expect(within(rows[0]).getByText("Alice")).toBeInTheDocument();
-    expect(within(rows[1]).getByText("Charlie")).toBeInTheDocument();
-    expect(within(rows[2]).getByText("Bob")).toBeInTheDocument();
+    expect(within(rows[0]).getByText("Bergen")).toBeInTheDocument();
+    expect(within(rows[1]).getByText("Trondheim")).toBeInTheDocument();
+    expect(within(rows[2]).getByText("Geilo")).toBeInTheDocument();
   });
 
   test("data-nosort disables sorting on a specific column", () => {
@@ -198,7 +198,6 @@ describe("Table sorting", () => {
         </Table>
       </SporProvider>,
     );
-    // Only one button should be rendered (the sortable column)
     expect(screen.getAllByRole("button")).toHaveLength(1);
   });
 
@@ -206,15 +205,14 @@ describe("Table sorting", () => {
     const user = userEvent.setup();
     render(<SortableTable />);
 
-    const [nameButton, ageButton] = screen.getAllByRole("button");
-    await user.click(nameButton);
-    await user.click(ageButton);
+    const [destinationButton, priceButton] = screen.getAllByRole("button");
+    await user.click(destinationButton);
+    await user.click(priceButton);
 
     const tbody = screen.getByTestId("tbody");
     const rows = within(tbody).getAllByRole("row");
-    // Age column: Charlie=20, Bob=25, Alice=30
-    expect(within(rows[0]).getByText("Charlie")).toBeInTheDocument();
-    expect(within(rows[1]).getByText("Bob")).toBeInTheDocument();
-    expect(within(rows[2]).getByText("Alice")).toBeInTheDocument();
+    expect(within(rows[0]).getByText("Geilo")).toBeInTheDocument();
+    expect(within(rows[1]).getByText("Bergen")).toBeInTheDocument();
+    expect(within(rows[2]).getByText("Trondheim")).toBeInTheDocument();
   });
 });

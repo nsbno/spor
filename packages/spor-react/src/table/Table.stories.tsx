@@ -14,7 +14,7 @@ const meta = {
   title: "Components/Table",
   component: Table,
   args: {
-    variant: "ghost",
+    variant: "core",
     colorPalette: undefined,
     size: "md",
     sortable: false,
@@ -313,7 +313,7 @@ export const WithTooltip: Story = {
     <Table {...args}>
       <TableHeader>
         <TableRow>
-          <TableColumnHeader tooltip="The destination of the travel">Destination</TableColumnHeader>
+          <TableColumnHeader>Destination</TableColumnHeader>
           <TableColumnHeader>Departure</TableColumnHeader>
           <TableColumnHeader>Arrival</TableColumnHeader>
           <TableColumnHeader>Price</TableColumnHeader>

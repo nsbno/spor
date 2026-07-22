@@ -11,6 +11,9 @@ import { dialogRecipe } from "./recipes/dialog";
 import { tableRecipe } from "./recipes/table";
 import { semanticTokens } from "./theme/semanticTokens";
 
+export type { Semantics } from "./theme/themeSemantics";
+export { SemanticsList } from "./theme/themeSemantics";
+
 export const sidesporConfig = defineConfig({
   theme: {
     semanticTokens,

@@ -77,8 +77,8 @@ export const loader = async () => {
     "X-GitHub-Api-Version": "2022-11-28",
   };
 
-  if (process.env.GITHUB_TOKEN) {
-    headers["Authorization"] = `Bearer ${process.env.GITHUB_TOKEN}`;
+  if (process.env.CHANGELOG_TOKEN) {
+    headers["Authorization"] = `Bearer ${process.env.CHANGELOG_TOKEN}`;
   }
 
   // Fetch page 1 to get the total number of pages from the Link header

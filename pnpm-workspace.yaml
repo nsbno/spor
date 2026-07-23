@@ -1,5 +1,6 @@
 packages:
   - "packages/**"
+  - "apps/storybook"
   - "apps/studio"
   - "apps/design-studio"
   - "apps/designmanual-frontend"

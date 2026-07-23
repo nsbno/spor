@@ -1,0 +1,32 @@
+{
+  "name": "@vygruppen/spor-storybook",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^3.30.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@vygruppen/spor-react": "workspace:*",
+    "@vygruppen/spor-icon-react": "workspace:*",
+    "@vygruppen/spor-design-tokens": "workspace:*",
+    "framer-motion": "^11.11.17",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8",
+    "@storybook/react": "^8",
+    "@storybook/react-vite": "^8",
+    "@types/react": "19.2.3",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "^4",
+    "storybook": "^8",
+    "typescript": "^5.7.3",
+    "vite": "^6"
+  }
+}

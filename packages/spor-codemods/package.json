@@ -25,13 +25,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "jscodeshift": "^17.3.0",
+    "jscodeshift": "^17.4.0",
     "@vygruppen/spor-react": "workspace:*"
   },
   "devDependencies": {
     "@vygruppen/eslint-config": "workspace:*",
     "@vygruppen/tsconfig": "workspace:*",
-    "@types/jscodeshift": "^0.11.11",
+    "@types/jscodeshift": "^17.3.0",
     "@types/node": "^22.13.4",
     "@types/react": "19.2.3",
     "@types/react-dom": "19.2.3",

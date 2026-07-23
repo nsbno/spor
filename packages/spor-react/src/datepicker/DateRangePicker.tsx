@@ -52,12 +52,14 @@ type DateRangePickerProps = Omit<
  * A date range picker component.
  *
  * There are three variants to choose from – `core`, `floating` and `ghost`.
+ * There are two different sizes - `sm` and `md`
  *
  * ```tsx
  * <DateRangePicker startLabel="From" startName="from" endLabel="To" endName="to" variant="core" />
  * ```
  */ export function DateRangePicker({
   variant = "core",
+  size,
   minHeight,
   startName,
   endName,
@@ -135,6 +137,7 @@ type DateRangePickerProps = Omit<
                 alignItems="center"
                 paddingX={3}
                 variant={variant}
+                size={size}
                 onClick={onFieldClick}
                 minHeight={minHeight}
               >

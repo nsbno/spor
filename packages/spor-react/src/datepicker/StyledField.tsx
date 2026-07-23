@@ -29,6 +29,7 @@ export const StyledField = function StyledField({
     isDisabled,
     isActive,
     overrideBorderColor,
+    size,
     ...otherProps
   } = props;
   const { invalid } = useFieldContext() ?? {
@@ -38,7 +39,7 @@ export const StyledField = function StyledField({
   const recipe = useSlotRecipe({
     key: "datePicker",
   });
-  const styles = recipe({ variant });
+  const styles = recipe({ variant, size });
 
   return (
     <Box
@@ -51,7 +52,6 @@ export const StyledField = function StyledField({
       ref={ref}
       aria-invalid={invalid}
       aria-disabled={isDisabled}
-      fontSize={["mobile.md", "desktop.md"]}
     >
       {children}
     </Box>

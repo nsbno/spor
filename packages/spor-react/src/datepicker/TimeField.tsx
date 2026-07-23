@@ -36,8 +36,6 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
         color="text.subtle"
         top={0}
         cursor="text"
-        left="50%"
-        transform="translateX(-50%)"
         position="absolute"
         paddingTop="2px"
         whiteSpace="nowrap"

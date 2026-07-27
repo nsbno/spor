@@ -14,6 +14,7 @@ export const BrandSwitcher = () => {
     items: [
       { label: "Vy Digital", value: "VyDigital" },
       { label: "Vy Utvikling", value: "VyUtvikling" },
+      { label: "Vy Teknologi", value: "VyTeknologi" },
       { label: "CargoNet", value: "CargoNet" },
     ],
   });

@@ -222,6 +222,114 @@
       },
       "black": {
         "value": "colors.black"
+      },
+      "deepFjord": {
+        "value": "colors.teal.1100"
+      },
+      "forest": {
+        "value": "colors.teal.1000"
+      },
+      "lake": {
+        "value": "colors.teal.900"
+      },
+      "cypress": {
+        "value": "colors.teal.800"
+      },
+      "moss": {
+        "value": "colors.teal.700"
+      },
+      "crocodile": {
+        "value": "colors.teal.600"
+      },
+      "bulbasaur": {
+        "value": "colors.teal.500"
+      },
+      "eucalyptus": {
+        "value": "colors.teal.400"
+      },
+      "jade": {
+        "value": "colors.teal.300"
+      },
+      "sage": {
+        "value": "colors.teal.200"
+      },
+      "mist": {
+        "value": "colors.teal.100"
+      },
+      "fog": {
+        "value": "colors.teal.50"
+      },
+      "wine": {
+        "value": "colors.pink.1100"
+      },
+      "plum": {
+        "value": "colors.pink.1000"
+      },
+      "velvet": {
+        "value": "colors.pink.900"
+      },
+      "jam": {
+        "value": "colors.pink.800"
+      },
+      "raspberry": {
+        "value": "colors.pink.700"
+      },
+      "dragonfruit": {
+        "value": "colors.pink.600"
+      },
+      "rose": {
+        "value": "colors.pink.500"
+      },
+      "flamingo": {
+        "value": "colors.pink.400"
+      },
+      "jigglypuff": {
+        "value": "colors.pink.300"
+      },
+      "bubblegum": {
+        "value": "colors.pink.200"
+      },
+      "blush": {
+        "value": "colors.pink.100"
+      },
+      "cottonCandy": {
+        "value": "colors.pink.50"
+      },
+      "space": {
+        "value": "colors.violet.1100"
+      },
+      "blackberry": {
+        "value": "colors.violet.1000"
+      },
+      "grape": {
+        "value": "colors.violet.900"
+      },
+      "indigo": {
+        "value": "colors.violet.800"
+      },
+      "amethyst": {
+        "value": "colors.violet.700"
+      },
+      "ultraviolet": {
+        "value": "colors.violet.600"
+      },
+      "gengar": {
+        "value": "colors.violet.500"
+      },
+      "lavender": {
+        "value": "colors.violet.400"
+      },
+      "wisteria": {
+        "value": "colors.violet.300"
+      },
+      "lilac": {
+        "value": "colors.violet.200"
+      },
+      "moonstone": {
+        "value": "colors.violet.100"
+      },
+      "frost": {
+        "value": "colors.violet.50"
       }
     }
   }

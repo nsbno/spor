@@ -13,7 +13,7 @@ export const BrandSwitcher = () => {
   const brandOptions = createListCollection({
     items: [
       { label: "Vy Digital", value: "VyDigital" },
-      { label: "Vy Utvikling", value: "VyUtvikling" },
+      { label: "Vy Utvikling (deprecated)", value: "VyUtvikling" },
       { label: "Vy Teknologi", value: "VyTeknologi" },
       { label: "CargoNet", value: "CargoNet" },
     ],

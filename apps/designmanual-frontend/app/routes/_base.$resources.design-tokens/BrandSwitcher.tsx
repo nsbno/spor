@@ -41,13 +41,11 @@ export const BrandSwitcher = () => {
               Brand.VyUtvikling,
               Brand.VyTeknologi,
               Brand.CargoNet,
-            ].map(
-              (brand) => (
-                <TabsTrigger width={[null, 100]} value={brand} key={brand}>
-                  {brand}
-                </TabsTrigger>
-              ),
-            )}
+            ].map((brand) => (
+              <TabsTrigger width={[null, 100]} value={brand} key={brand}>
+                {brand}
+              </TabsTrigger>
+            ))}
           </TabsList>
         </Tabs>
       </fetcher.Form>

@@ -216,7 +216,8 @@ node dist/sdk-client.js get_spor_tokens '{"theme":"vyDigital","category":"color"
 `theme`:
 
 - `vyDigital`
-- `vyUtvikling`
+- `vyUtvikling` (deprecated — use `vyTeknologi`)
+- `vyTeknologi`
 - `cargonet`
 
 Optional fields:

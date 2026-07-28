@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 13.5.0
+
+### Minor Changes
+
+- 44c4594: Date and time picker: Add `size` prop with `"sm"` and `"md"` variants (defaults to `"md"`)
+- bc0f4b4: RadioCards: Add "showIndicator" as an optional prop. If true, show a radiobutton-indicator on the left side of the content.
+- 3ca4098: Toast: Add action and closable props to Toast component for enhanced functionality
+
 ## 13.4.6
 
 ### Patch Changes

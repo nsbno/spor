@@ -7,14 +7,13 @@ import {
   TableBodyProps as ChakraTableBodyProps,
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
-  useSlotRecipe,
   TableRowProps as ChakraTableRowProps,
+  useSlotRecipe,
 } from "@chakra-ui/react";
 import {
   ArrowDownFill18Icon,
   ArrowUpFill18Icon,
   ChangeDirectionFill18Icon,
-  InformationFill18Icon,
   InformationOutline18Icon,
 } from "@vygruppen/spor-icon-react";
 import {
@@ -26,6 +25,8 @@ import {
   useState,
 } from "react";
 
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/tooltip";
+
 import { tableSlotRecipe } from "../theme/slot-recipes/table";
 import {
   applyDomSort,
@@ -34,7 +35,6 @@ import {
   getNextSortState,
   type SortState,
 } from "./sort-utils";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/tooltip";
 
 type TableVariantProps = RecipeVariantProps<typeof tableSlotRecipe>;
 

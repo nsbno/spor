@@ -76,8 +76,8 @@ const sampleRows = [
 ];
 
 export const Default: Story = {
-  render: (args) => (
-    <Table {...args}>
+  render: (arguments_) => (
+    <Table {...arguments_}>
       <TableHeader>
         <TableRow>
           <TableColumnHeader>Destination</TableColumnHeader>
@@ -143,8 +143,8 @@ const semantics = [
 ] as const;
 
 export const Semantics: Story = {
-  render: (args) => (
-    <Table {...args}>
+  render: (arguments_) => (
+    <Table {...arguments_}>
       <TableHeader>
         <TableRow>
           <TableColumnHeader>Semantic</TableColumnHeader>
@@ -155,8 +155,8 @@ export const Semantics: Story = {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {semantics.map((semantic, i) => {
-          const row = sampleRows[i % sampleRows.length];
+        {semantics.map((semantic, index) => {
+          const row = sampleRows[index % sampleRows.length];
           return (
             <TableRow key={semantic ?? "none"} semantic={semantic}>
               <TableCell>{semantic ?? "none"}</TableCell>
@@ -252,8 +252,8 @@ export const Sortable: Story = {
   args: {
     sortable: true,
   },
-  render: (args) => (
-    <Table {...args}>
+  render: (arguments_) => (
+    <Table {...arguments_}>
       <TableHeader>
         <TableRow>
           <TableColumnHeader>Destination</TableColumnHeader>
@@ -284,8 +284,8 @@ export const SortableWithNonSortableColumn: Story = {
   args: {
     sortable: true,
   },
-  render: (args) => (
-    <Table {...args}>
+  render: (arguments_) => (
+    <Table {...arguments_}>
       <TableHeader>
         <TableRow>
           <TableColumnHeader>Destination</TableColumnHeader>
@@ -309,8 +309,8 @@ export const SortableWithNonSortableColumn: Story = {
 };
 
 export const WithTooltip: Story = {
-  render: (args) => (
-    <Table {...args}>
+  render: (arguments_) => (
+    <Table {...arguments_}>
       <TableHeader>
         <TableRow>
           <TableColumnHeader>Destination</TableColumnHeader>

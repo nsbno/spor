@@ -49,6 +49,9 @@ export function ColorTokens(props: BoxProps) {
         <PaletteTable colorKey="yellow" />
         <PaletteTable colorKey="orange" />
         <PaletteTable colorKey="red" />
+        <PaletteTable colorKey="teal" />
+        <PaletteTable colorKey="pink" />
+        <PaletteTable colorKey="violet" />
         <PaletteTable colorKey="white" />
         <PaletteTable colorKey="black" />
       </Stack>

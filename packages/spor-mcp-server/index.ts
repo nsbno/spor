@@ -655,7 +655,7 @@ server.registerTool(
       "Get Spor design tokens for a specific theme and category. Returns flattened color tokens with their alias names, palette keys, and hex values, plus size, font, depth, and transition tokens.",
     inputSchema: {
       theme: z
-        .enum(["vyDigital", "vyUtvikling", "cargonet"])
+        .enum(["vyDigital", "vyUtvikling", "vyTeknologi", "cargonet"])
         .describe("Theme to fetch tokens for."),
       category: z
         .enum(["color", "size", "font", "depth", "time", "palette"])
@@ -685,7 +685,7 @@ server.registerTool(
         content: [
           {
             type: "text",
-            text: `Theme '${theme}' not found. Available: vyDigital, vyUtvikling, cargonet`,
+            text: `Theme '${theme}' not found. Available: vyDigital, vyUtvikling, vyTeknologi, cargonet`,
           },
         ],
         isError: true,

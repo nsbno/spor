@@ -25,8 +25,6 @@ import {
   useState,
 } from "react";
 
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/tooltip";
-
 import { tableSlotRecipe } from "../theme/slot-recipes/table";
 import {
   applyDomSort,
@@ -100,13 +98,11 @@ export const Table = ({
 
 export type TableColumnHeaderProps = ChakraTableColumnHeaderProps & {
   ref?: React.Ref<HTMLTableCellElement>;
-  tooltip?: string;
 };
 
 export const TableColumnHeader = ({
   children,
   ref,
-  tooltip,
   ...rest
 }: TableColumnHeaderProps) => {
   const { enabled, sortState, onSort } = useTableSort();
@@ -129,14 +125,6 @@ export const TableColumnHeader = ({
     >
       <HStack>
         {children}
-        {tooltip && (
-          <Tooltip>
-            <TooltipTrigger>
-              <InformationOutline18Icon />
-            </TooltipTrigger>
-            <TooltipContent>{tooltip}</TooltipContent>
-          </Tooltip>
-        )}
         {columnSortable && columnIndex != null && (
           <Button
             variant="ghost"

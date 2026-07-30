@@ -1,13 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { InformationOutline18Icon } from "@vygruppen/spor-icon-react";
 import {
   Badge,
   Box,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
   Table,
   TableBody,
   TableCell,
   TableColumnHeader,
   TableHeader,
   TableRow,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@vygruppen/spor-react";
 
 const meta = {
@@ -309,11 +316,22 @@ export const SortableWithNonSortableColumn: Story = {
 };
 
 export const WithTooltip: Story = {
+  args: {
+    sortable: true,
+  },
   render: (arguments_) => (
     <Table {...arguments_}>
       <TableHeader>
         <TableRow>
-          <TableColumnHeader>Destination</TableColumnHeader>
+          <TableColumnHeader>
+            Destination
+            <Tooltip>
+              <TooltipTrigger>
+                <InformationOutline18Icon />
+              </TooltipTrigger>
+              <TooltipContent>This is a tooltip</TooltipContent>
+            </Tooltip>
+          </TableColumnHeader>
           <TableColumnHeader>Departure</TableColumnHeader>
           <TableColumnHeader>Arrival</TableColumnHeader>
           <TableColumnHeader>Price</TableColumnHeader>

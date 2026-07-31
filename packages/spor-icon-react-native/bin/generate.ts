@@ -159,6 +159,13 @@ async function generateComponent(iconData: IconData) {
   // It looks hacky, it is hacky, but it works.
   jsCode = "import { Box, useTheme } from 'app/spor';\n" + jsCode;
   jsCode = jsCode
+    // Duotone status icons ship with web CSS variables (`var(--spor-colors-*)`)
+    // as fills, which react-native-svg can't parse. Map them to theme colors.
+    .replace(
+      /fill="var\(--spor-colors-([a-z-]+)\)"/g,
+      (_match, token: string) =>
+        `fill={theme.colors["${token.replace(/-/g, ".")}"]}`,
+    )
     .replace("{...props}", "")
     .replace("props", '{ color = "icon.default", width, height, ...props }')
     // Weird regex alert!

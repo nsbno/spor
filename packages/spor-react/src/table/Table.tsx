@@ -5,6 +5,7 @@ import {
   RecipeVariantProps,
   Table as ChakraTable,
   TableBodyProps as ChakraTableBodyProps,
+  TableCellProps as ChakraTableCellProps,
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
   TableRowProps as ChakraTableRowProps,
@@ -14,7 +15,6 @@ import {
   ArrowDownFill18Icon,
   ArrowUpFill18Icon,
   ChangeDirectionFill18Icon,
-  InformationOutline18Icon,
 } from "@vygruppen/spor-icon-react";
 import {
   createContext,
@@ -36,10 +36,19 @@ import {
 
 type TableVariantProps = RecipeVariantProps<typeof tableSlotRecipe>;
 
+type SemanticValue =
+  | "info"
+  | "success"
+  | "warning"
+  | "notice"
+  | "caution"
+  | "critical";
+
 const SortContext = createContext<{
   enabled: boolean;
   sortState: SortState;
   onSort: (columnIndex: number) => void;
+  tableSemantic?: SemanticValue;
 }>({
   enabled: false,
   sortState: { direction: "asc", columnIndex: null },
@@ -53,6 +62,8 @@ export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
     variant?: "ghost" | "core" | "floating";
     colorPalette?: "grey" | "green" | "white";
     sortable?: boolean;
+    semantic?: SemanticValue;
+    disableHover?: boolean;
     ref?: React.Ref<HTMLTableElement>;
   };
 
@@ -62,6 +73,8 @@ export const Table = ({
   colorPalette,
   children,
   sortable = false,
+  semantic,
+  disableHover,
   ref,
   ...rest
 }: TableProps) => {
@@ -85,10 +98,16 @@ export const Table = ({
       colorPalette={colorPalette}
       css={styles}
       ref={ref}
+      {...(disableHover ? { "data-disable-hover": "" } : {})}
       {...rest}
     >
       <SortContext.Provider
-        value={{ enabled: sortable, sortState, onSort: handleSort }}
+        value={{
+          enabled: sortable,
+          sortState,
+          onSort: handleSort,
+          tableSemantic: semantic,
+        }}
       >
         {children}
       </SortContext.Provider>
@@ -190,13 +209,29 @@ export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
   );
 };
 
+export type TableCellProps = ChakraTableCellProps & {
+  semantic?: SemanticValue;
+};
+
+export const TableCell = ({ children, semantic, ...rest }: TableCellProps) => {
+  const recipe = useSlotRecipe({ key: "tableCell" });
+  const styles = recipe({ semantic });
+  return (
+    <ChakraTable.Cell css={styles.cell} data-semantic={semantic} {...rest}>
+      {children}
+    </ChakraTable.Cell>
+  );
+};
+
 export type TableRowProps = ChakraTableRowProps & {
-  semantic?: "info" | "success" | "warning" | "notice" | "caution" | "critical";
+  semantic?: SemanticValue;
 };
 
 export const TableRow = ({ children, semantic, ...rest }: TableRowProps) => {
+  const { tableSemantic } = useTableSort();
+  const effectiveSemantic = semantic ?? tableSemantic;
   const recipe = useSlotRecipe({ key: "tableRow" });
-  const styles = recipe({ semantic });
+  const styles = recipe({ semantic: effectiveSemantic });
   return (
     <ChakraTable.Row css={styles.row} {...rest}>
       {children}

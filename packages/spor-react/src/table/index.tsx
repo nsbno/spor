@@ -1,7 +1,6 @@
 export * from "./Table";
 export type {
   TableCaptionProps,
-  TableCellProps,
   TableColumnProps,
   TableFooterProps,
   TableHeaderProps,
@@ -9,7 +8,6 @@ export type {
 } from "@chakra-ui/react";
 export {
   TableCaption,
-  TableCell,
   TableColumn,
   TableColumnGroup,
   TableFooter,

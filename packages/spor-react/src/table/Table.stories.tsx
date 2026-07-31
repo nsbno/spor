@@ -3,9 +3,6 @@ import { InformationOutline18Icon } from "@vygruppen/spor-icon-react";
 import {
   Badge,
   Box,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
   Table,
   TableBody,
   TableCell,
@@ -37,6 +34,7 @@ const meta = {
     },
     size: { control: "select", options: ["sm", "md", "lg"] },
     sortable: { control: "boolean" },
+    disableHover: { control: "boolean" },
   },
 } satisfies Meta<typeof Table>;
 
@@ -149,7 +147,39 @@ const semantics = [
   "critical",
 ] as const;
 
-export const Semantics: Story = {
+export const SemanticTables: Story = {
+  render: (arguments_) => (
+    <Box display="flex" flexDirection="column" gap={8}>
+      {semantics.map((semantic) => (
+        <Box key={semantic}>
+          <Box fontWeight="bold" marginBottom={2}>
+            {semantic}
+          </Box>
+          <Table {...arguments_} semantic={semantic}>
+            <TableHeader>
+              <TableRow>
+                <TableColumnHeader>Destination</TableColumnHeader>
+                <TableColumnHeader>Departure</TableColumnHeader>
+                <TableColumnHeader>Price</TableColumnHeader>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {sampleRows.slice(0, 3).map((row) => (
+                <TableRow key={row.destination}>
+                  <TableCell>{row.destination}</TableCell>
+                  <TableCell>{row.departure}</TableCell>
+                  <TableCell>{row.price}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Box>
+      ))}
+    </Box>
+  ),
+};
+
+export const SemanticRows: Story = {
   render: (arguments_) => (
     <Table {...arguments_}>
       <TableHeader>
@@ -171,6 +201,45 @@ export const Semantics: Story = {
               <TableCell>{row.departure}</TableCell>
               <TableCell>{row.arrival}</TableCell>
               <TableCell>{row.price}</TableCell>
+            </TableRow>
+          );
+        })}
+      </TableBody>
+    </Table>
+  ),
+};
+
+export const SemanticsEverywhere: Story = {
+  args: {},
+  render: (arguments_) => (
+    <Table {...arguments_}>
+      <TableHeader>
+        <TableRow>
+          <TableColumnHeader>Semantic</TableColumnHeader>
+          <TableColumnHeader>Destination</TableColumnHeader>
+          <TableColumnHeader>Departure</TableColumnHeader>
+          <TableColumnHeader>Arrival</TableColumnHeader>
+          <TableColumnHeader>Price</TableColumnHeader>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {semantics.map((semantic, index) => {
+          const row = sampleRows[index % sampleRows.length];
+          return (
+            <TableRow key={semantic ?? "none"} semantic={semantic}>
+              <TableCell semantic={semantic}>{semantic ?? "none"}</TableCell>
+              <TableCell semantic={semantics[(index + 1) % semantics.length]}>
+                {row.destination}
+              </TableCell>
+              <TableCell semantic={semantics[(index + 2) % semantics.length]}>
+                {row.departure}
+              </TableCell>
+              <TableCell semantic={semantics[(index + 3) % semantics.length]}>
+                {row.arrival}
+              </TableCell>
+              <TableCell semantic={semantics[(index + 4) % semantics.length]}>
+                {row.price}
+              </TableCell>
             </TableRow>
           );
         })}

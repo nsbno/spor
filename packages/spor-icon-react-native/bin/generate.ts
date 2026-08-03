@@ -164,7 +164,7 @@ async function generateComponent(iconData: IconData) {
     .replaceAll(
       /fill="var\(--spor-colors-([a-z-]+)\)"/g,
       (_match, token: string) =>
-        `fill={theme.colors["${token.replaceAll(/-/g, ".")}"]}`,
+        `fill={theme.colors["${token.replaceAll("-", ".")}"]}`,
     )
     .replace("{...props}", "")
     .replace("props", '{ color = "icon.default", width, height, ...props }')

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { InformationOutline18Icon } from "@vygruppen/spor-icon-react";
 import {
   Badge,
   Box,
@@ -8,13 +9,16 @@ import {
   TableColumnHeader,
   TableHeader,
   TableRow,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@vygruppen/spor-react";
 
 const meta = {
   title: "Components/Table",
   component: Table,
   args: {
-    variant: "ghost",
+    variant: "core",
     colorPalette: undefined,
     size: "md",
     sortable: false,
@@ -30,6 +34,7 @@ const meta = {
     },
     size: { control: "select", options: ["sm", "md", "lg"] },
     sortable: { control: "boolean" },
+    disableHover: { control: "boolean" },
   },
 } satisfies Meta<typeof Table>;
 
@@ -76,8 +81,8 @@ const sampleRows = [
 ];
 
 export const Default: Story = {
-  render: (args) => (
-    <Table {...args}>
+  render: (arguments_) => (
+    <Table {...arguments_}>
       <TableHeader>
         <TableRow>
           <TableColumnHeader>Destination</TableColumnHeader>
@@ -142,9 +147,41 @@ const semantics = [
   "critical",
 ] as const;
 
-export const Semantics: Story = {
-  render: (args) => (
-    <Table {...args}>
+export const SemanticTables: Story = {
+  render: (arguments_) => (
+    <Box display="flex" flexDirection="column" gap={8}>
+      {semantics.map((semantic) => (
+        <Box key={semantic}>
+          <Box fontWeight="bold" marginBottom={2}>
+            {semantic}
+          </Box>
+          <Table {...arguments_} semantic={semantic}>
+            <TableHeader>
+              <TableRow>
+                <TableColumnHeader>Destination</TableColumnHeader>
+                <TableColumnHeader>Departure</TableColumnHeader>
+                <TableColumnHeader>Price</TableColumnHeader>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {sampleRows.slice(0, 3).map((row) => (
+                <TableRow key={row.destination}>
+                  <TableCell>{row.destination}</TableCell>
+                  <TableCell>{row.departure}</TableCell>
+                  <TableCell>{row.price}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Box>
+      ))}
+    </Box>
+  ),
+};
+
+export const SemanticRows: Story = {
+  render: (arguments_) => (
+    <Table {...arguments_}>
       <TableHeader>
         <TableRow>
           <TableColumnHeader>Semantic</TableColumnHeader>
@@ -155,8 +192,8 @@ export const Semantics: Story = {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {semantics.map((semantic, i) => {
-          const row = sampleRows[i % sampleRows.length];
+        {semantics.map((semantic, index) => {
+          const row = sampleRows[index % sampleRows.length];
           return (
             <TableRow key={semantic ?? "none"} semantic={semantic}>
               <TableCell>{semantic ?? "none"}</TableCell>
@@ -164,6 +201,45 @@ export const Semantics: Story = {
               <TableCell>{row.departure}</TableCell>
               <TableCell>{row.arrival}</TableCell>
               <TableCell>{row.price}</TableCell>
+            </TableRow>
+          );
+        })}
+      </TableBody>
+    </Table>
+  ),
+};
+
+export const SemanticsEverywhere: Story = {
+  args: {},
+  render: (arguments_) => (
+    <Table {...arguments_}>
+      <TableHeader>
+        <TableRow>
+          <TableColumnHeader>Semantic</TableColumnHeader>
+          <TableColumnHeader>Destination</TableColumnHeader>
+          <TableColumnHeader>Departure</TableColumnHeader>
+          <TableColumnHeader>Arrival</TableColumnHeader>
+          <TableColumnHeader>Price</TableColumnHeader>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {semantics.map((semantic, index) => {
+          const row = sampleRows[index % sampleRows.length];
+          return (
+            <TableRow key={semantic ?? "none"} semantic={semantic}>
+              <TableCell semantic={semantic}>{semantic ?? "none"}</TableCell>
+              <TableCell semantic={semantics[(index + 1) % semantics.length]}>
+                {row.destination}
+              </TableCell>
+              <TableCell semantic={semantics[(index + 2) % semantics.length]}>
+                {row.departure}
+              </TableCell>
+              <TableCell semantic={semantics[(index + 3) % semantics.length]}>
+                {row.arrival}
+              </TableCell>
+              <TableCell semantic={semantics[(index + 4) % semantics.length]}>
+                {row.price}
+              </TableCell>
             </TableRow>
           );
         })}
@@ -252,8 +328,8 @@ export const Sortable: Story = {
   args: {
     sortable: true,
   },
-  render: (args) => (
-    <Table {...args}>
+  render: (arguments_) => (
+    <Table {...arguments_}>
       <TableHeader>
         <TableRow>
           <TableColumnHeader>Destination</TableColumnHeader>
@@ -284,8 +360,8 @@ export const SortableWithNonSortableColumn: Story = {
   args: {
     sortable: true,
   },
-  render: (args) => (
-    <Table {...args}>
+  render: (arguments_) => (
+    <Table {...arguments_}>
       <TableHeader>
         <TableRow>
           <TableColumnHeader>Destination</TableColumnHeader>
@@ -309,11 +385,22 @@ export const SortableWithNonSortableColumn: Story = {
 };
 
 export const WithTooltip: Story = {
-  render: (args) => (
-    <Table {...args}>
+  args: {
+    sortable: true,
+  },
+  render: (arguments_) => (
+    <Table {...arguments_}>
       <TableHeader>
         <TableRow>
-          <TableColumnHeader tooltip="The destination of the travel">Destination</TableColumnHeader>
+          <TableColumnHeader>
+            Destination
+            <Tooltip>
+              <TooltipTrigger>
+                <InformationOutline18Icon />
+              </TooltipTrigger>
+              <TooltipContent>This is a tooltip</TooltipContent>
+            </Tooltip>
+          </TableColumnHeader>
           <TableColumnHeader>Departure</TableColumnHeader>
           <TableColumnHeader>Arrival</TableColumnHeader>
           <TableColumnHeader>Price</TableColumnHeader>

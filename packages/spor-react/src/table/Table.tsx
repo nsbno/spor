@@ -48,7 +48,6 @@ const SortContext = createContext<{
   enabled: boolean;
   sortState: SortState;
   onSort: (columnIndex: number) => void;
-  tableSemantic?: SemanticValue;
 }>({
   enabled: false,
   sortState: { direction: "asc", columnIndex: null },
@@ -56,6 +55,10 @@ const SortContext = createContext<{
 });
 
 export const useTableSort = () => useContext(SortContext);
+
+const SemanticContext = createContext<{ semantic?: SemanticValue }>({
+  semantic: undefined,
+});
 
 export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   PropsWithChildren<TableVariantProps> & {
@@ -101,16 +104,17 @@ export const Table = ({
       {...(disableHover ? { "data-disable-hover": "" } : {})}
       {...rest}
     >
-      <SortContext.Provider
-        value={{
-          enabled: sortable,
-          sortState,
-          onSort: handleSort,
-          tableSemantic: semantic,
-        }}
-      >
-        {children}
-      </SortContext.Provider>
+      <SemanticContext.Provider value={{ semantic }}>
+        <SortContext.Provider
+          value={{
+            enabled: sortable,
+            sortState,
+            onSort: handleSort,
+          }}
+        >
+          {children}
+        </SortContext.Provider>
+      </SemanticContext.Provider>
     </ChakraTable.Root>
   );
 };
@@ -209,6 +213,22 @@ export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
   );
 };
 
+export type TableRowProps = ChakraTableRowProps & {
+  semantic?: SemanticValue;
+};
+
+export const TableRow = ({ children, semantic, ...rest }: TableRowProps) => {
+  const { semantic: tableSemantic } = useContext(SemanticContext);
+  const effectiveSemantic = semantic ?? tableSemantic;
+  const recipe = useSlotRecipe({ key: "tableRow" });
+  const styles = recipe({ semantic: effectiveSemantic });
+  return (
+    <ChakraTable.Row css={styles.row} {...rest}>
+      {children}
+    </ChakraTable.Row>
+  );
+};
+
 export type TableCellProps = ChakraTableCellProps & {
   semantic?: SemanticValue;
 };
@@ -223,18 +243,4 @@ export const TableCell = ({ children, semantic, ...rest }: TableCellProps) => {
   );
 };
 
-export type TableRowProps = ChakraTableRowProps & {
-  semantic?: SemanticValue;
-};
 
-export const TableRow = ({ children, semantic, ...rest }: TableRowProps) => {
-  const { tableSemantic } = useTableSort();
-  const effectiveSemantic = semantic ?? tableSemantic;
-  const recipe = useSlotRecipe({ key: "tableRow" });
-  const styles = recipe({ semantic: effectiveSemantic });
-  return (
-    <ChakraTable.Row css={styles.row} {...rest}>
-      {children}
-    </ChakraTable.Row>
-  );
-};

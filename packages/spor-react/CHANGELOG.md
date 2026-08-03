@@ -1,5 +1,21 @@
 # @vygruppen/spor-react
 
+## 13.6.0
+
+### Minor Changes
+
+- ce5b9e0: Add new VyTeknologi brand theme and deprecate VyUtvikling
+  - New `Brand.VyTeknologi` theme, usable with `<SporProvider theme={themes[Brand.VyTeknologi]}>`
+  - Three new color palettes with 12 steps each: `teal`, `pink` and `violet`, with named aliases (e.g. `grape` → `violet.900`, `moss` → `teal.700`, `jam` → `pink.800`)
+  - The existing `pink` alias (→ `red.50`) still resolves as before; the new range is available as `pink.50`–`pink.1100`
+  - `Brand.VyUtvikling` and `vyUtviklingColors` are marked as `@deprecated` — migrate to `Brand.VyTeknologi`
+  - The MCP server's `get_spor_tokens` tool now accepts `vyTeknologi` as a theme
+
+### Patch Changes
+
+- Updated dependencies [ce5b9e0]
+  - @vygruppen/spor-design-tokens@5.1.0
+
 ## 13.5.0
 
 ### Minor Changes

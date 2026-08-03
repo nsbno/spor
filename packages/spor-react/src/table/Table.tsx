@@ -242,5 +242,3 @@ export const TableCell = ({ children, semantic, ...rest }: TableCellProps) => {
     </ChakraTable.Cell>
   );
 };
-
-

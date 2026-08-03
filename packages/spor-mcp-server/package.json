@@ -21,8 +21,8 @@
     "design-system"
   ],
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.27.1",
-    "@sanity/client": "^7.12.0",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@sanity/client": "^7.26.0",
     "@vygruppen/spor-design-tokens": "workspace:*",
     "@vygruppen/spor-react": "workspace:*",
     "zod": "^3.23.0"

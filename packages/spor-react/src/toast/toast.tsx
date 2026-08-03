@@ -69,8 +69,12 @@ export const Toaster = () => {
               <Toast.Description>{toast.description}</Toast.Description>
             </Stack>
             {toast.action && (
-              <Toast.ActionTrigger onClick={toast.action.onClick}>
-                <Button variant="ghost" size="xs">
+              <Toast.ActionTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="xs"
+                  onClick={toast.action.onClick}
+                >
                   {toast.action.label}
                 </Button>
               </Toast.ActionTrigger>

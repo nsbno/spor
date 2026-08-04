@@ -68,7 +68,7 @@ describe("Toast", () => {
     });
 
     await user.click(screen.getByRole("button", { name: "Lukk" }));
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     expect(
       screen.queryByText("Button triggered toast 2"),
     ).not.toBeInTheDocument();

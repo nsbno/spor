@@ -31,6 +31,7 @@ type ToastProps = {
   id?: string;
   action?: ToastAction;
   closable?: boolean;
+  inverted?: boolean;
 } & Pick<BoxProps, "width">;
 
 export const createToast = ({
@@ -41,6 +42,7 @@ export const createToast = ({
   width = "sm",
   action,
   closable = false,
+  inverted = false,
 }: ToastProps) =>
   toaster.create({
     description: text,
@@ -48,7 +50,7 @@ export const createToast = ({
     id: id ?? crypto.randomUUID(),
     duration,
     action,
-    meta: { width },
+    meta: { width, inverted },
     closable: closable,
   });
 
@@ -59,9 +61,7 @@ export const Toaster = () => {
         {(toast) => (
           <Toast.Root
             width={{ md: toast.meta?.width }}
-            border="sm"
-            borderColor={`outline.${toast.type}`}
-            boxShadow="sm"
+            data-inverted={toast.meta?.inverted ? "" : undefined}
             role="alert"
           >
             <AlertIcon variant={toast.type as Variant} />
@@ -69,8 +69,12 @@ export const Toaster = () => {
               <Toast.Description>{toast.description}</Toast.Description>
             </Stack>
             {toast.action && (
-              <Toast.ActionTrigger onClick={toast.action.onClick}>
-                <Button variant="ghost" size="xs">
+              <Toast.ActionTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="xs"
+                  onClick={toast.action.onClick}
+                >
                   {toast.action.label}
                 </Button>
               </Toast.ActionTrigger>

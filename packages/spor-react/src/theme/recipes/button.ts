@@ -38,16 +38,6 @@ export const buttonRecipe = defineRecipe({
             background: "surface.brand.active",
           },
         },
-        "&[data-color]": {
-          background: "surface.neutral",
-          color: "text.neutral",
-          _hover: {
-            background: "surface.neutral.hover",
-            _active: {
-              background: "surface.neutral.active",
-            },
-          },
-        },
       },
       secondary: {
         background: "surface.accent",
@@ -57,16 +47,6 @@ export const buttonRecipe = defineRecipe({
           background: "surface.accent.hover",
           _active: {
             background: "surface.accent.active",
-          },
-        },
-        "&[data-color]": {
-          background: "surface.neutral",
-          color: "text.neutral",
-          _hover: {
-            background: "surface.neutral.hover",
-            _active: {
-              background: "surface.neutral.active",
-            },
           },
         },
       },
@@ -88,17 +68,6 @@ export const buttonRecipe = defineRecipe({
         _focus: {
           outlineWidth: tokens.size.stroke.sm,
         },
-        "&[data-color]": {
-          color: "text.neutral",
-          outlineColor: "outline.neutral",
-          _hover: {
-            outlineColor: "outline.neutral.hover",
-            _active: {
-              background: "surface.neutral.active",
-              outlineColor: "outline.neutral",
-            },
-          },
-        },
       },
       ghost: {
         color: "text.ghost",
@@ -107,15 +76,6 @@ export const buttonRecipe = defineRecipe({
           background: "surface.ghost.hover",
           _active: {
             background: "surface.ghost.active",
-          },
-        },
-        "&[data-color]": {
-          color: "text.neutral",
-          _hover: {
-            background: "surface.neutral.hover",
-            _active: {
-              background: "surface.neutral.active",
-            },
           },
         },
       },
@@ -134,15 +94,6 @@ export const buttonRecipe = defineRecipe({
             background: "surface.core.active",
             boxShadow: "none",
             borderColor: "outline.floating",
-          },
-        },
-        "&[data-color]": {
-          color: "text.neutral",
-          _hover: {
-            background: "surface.neutral.hover",
-            _active: {
-              background: "surface.neutral.active",
-            },
           },
         },
       },

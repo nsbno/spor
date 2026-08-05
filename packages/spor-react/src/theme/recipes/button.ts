@@ -39,16 +39,12 @@ export const buttonRecipe = defineRecipe({
           },
         },
         "&[data-color]": {
-          // eslint-disable-next-line spor/use-semantic-tokens
-          background: "var(--spor-color-surface)",
-          // eslint-disable-next-line spor/use-semantic-tokens
-          color: "var(--spor-color-text)",
+          background: "surface.neutral",
+          color: "text.neutral",
           _hover: {
-            // eslint-disable-next-line spor/use-semantic-tokens
-            background: "var(--spor-color-surface-hover)",
+            background: "surface.neutral.hover",
             _active: {
-              // eslint-disable-next-line spor/use-semantic-tokens
-              background: "var(--spor-color-surface-active)",
+              background: "surface.neutral.active",
             },
           },
         },
@@ -64,16 +60,12 @@ export const buttonRecipe = defineRecipe({
           },
         },
         "&[data-color]": {
-          // eslint-disable-next-line spor/use-semantic-tokens
-          background: "var(--spor-color-surface)",
-          // eslint-disable-next-line spor/use-semantic-tokens
-          color: "var(--spor-color-text)",
+          background: "surface.neutral",
+          color: "text.neutral",
           _hover: {
-            // eslint-disable-next-line spor/use-semantic-tokens
-            background: "var(--spor-color-surface-hover)",
+            background: "surface.neutral.hover",
             _active: {
-              // eslint-disable-next-line spor/use-semantic-tokens
-              background: "var(--spor-color-surface-active)",
+              background: "surface.neutral.active",
             },
           },
         },
@@ -97,18 +89,13 @@ export const buttonRecipe = defineRecipe({
           outlineWidth: tokens.size.stroke.sm,
         },
         "&[data-color]": {
-          // eslint-disable-next-line spor/use-semantic-tokens
-          color: "var(--spor-color-text)",
-          // eslint-disable-next-line spor/use-semantic-tokens
-          outlineColor: "var(--spor-color-outline)",
+          color: "text.neutral",
+          outlineColor: "outline.neutral",
           _hover: {
-            // eslint-disable-next-line spor/use-semantic-tokens
-            outlineColor: "var(--spor-color-outline-hover)",
+            outlineColor: "outline.neutral.hover",
             _active: {
-              // eslint-disable-next-line spor/use-semantic-tokens
-              background: "var(--spor-color-surface-active)",
-              // eslint-disable-next-line spor/use-semantic-tokens
-              outlineColor: "var(--spor-color-outline)",
+              background: "surface.neutral.active",
+              outlineColor: "outline.neutral",
             },
           },
         },
@@ -123,14 +110,11 @@ export const buttonRecipe = defineRecipe({
           },
         },
         "&[data-color]": {
-          // eslint-disable-next-line spor/use-semantic-tokens
-          color: "var(--spor-color-text)",
+          color: "text.neutral",
           _hover: {
-            // eslint-disable-next-line spor/use-semantic-tokens
-            background: "var(--spor-color-surface-hover)",
+            background: "surface.neutral.hover",
             _active: {
-              // eslint-disable-next-line spor/use-semantic-tokens
-              background: "var(--spor-color-surface-active)",
+              background: "surface.neutral.active",
             },
           },
         },
@@ -153,14 +137,11 @@ export const buttonRecipe = defineRecipe({
           },
         },
         "&[data-color]": {
-          // eslint-disable-next-line spor/use-semantic-tokens
-          color: "var(--spor-color-text)",
+          color: "text.neutral",
           _hover: {
-            // eslint-disable-next-line spor/use-semantic-tokens
-            background: "var(--spor-color-surface-hover)",
+            background: "surface.neutral.hover",
             _active: {
-              // eslint-disable-next-line spor/use-semantic-tokens
-              background: "var(--spor-color-surface-active)",
+              background: "surface.neutral.active",
             },
           },
         },

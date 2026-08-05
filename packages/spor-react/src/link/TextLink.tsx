@@ -7,6 +7,7 @@ import {
 import {
   LinkOutOutline18Icon,
   LinkOutOutline24Icon,
+  LinkOutOutline30Icon,
 } from "@vygruppen/spor-icon-react";
 import React, {
   cloneElement,
@@ -39,17 +40,31 @@ const ExternalIcon = ({
 }: {
   label: string;
   size: LinkProps["size"];
-}) => (
-  <>
-    {size === "lg" || size === "md" ? (
-      <LinkOutOutline24Icon aria-hidden display="inline" />
-    ) : (
-      <LinkOutOutline18Icon aria-hidden display="inline" />
-    )}
-    {/* Visually hidden text for screen readers */}
-    <VisuallyHidden>{label}</VisuallyHidden>
-  </>
-);
+}) => {
+  const getIcon = () => {
+    switch (size) {
+      case "lg": {
+        return <LinkOutOutline30Icon aria-hidden display="inline" />;
+      }
+      case "md": {
+        return <LinkOutOutline24Icon aria-hidden display="inline" />;
+      }
+      case "sm": {
+        return <LinkOutOutline18Icon aria-hidden display="inline" />;
+      }
+      default: {
+        return <LinkOutOutline24Icon aria-hidden display="inline" />;
+      }
+    }
+  };
+  return (
+    <>
+      {getIcon()}
+      {/* Visually hidden text for screen readers */}
+      <VisuallyHidden>{label}</VisuallyHidden>
+    </>
+  );
+};
 
 export const TextLink = ({
   ref,

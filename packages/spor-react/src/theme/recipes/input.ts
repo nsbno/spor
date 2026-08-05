@@ -56,6 +56,10 @@ export const inputRecipe = defineRecipe({
           outline: "2px solid",
           outlineColor: "outline.focus",
         },
+        "&:-webkit-autofill, &:-webkit-autofill:focus": {
+          boxShadow: "0 0 0 1000px var(--spor-colors-surface-info-hover) inset",
+          WebkitTextFillColor: "var(--spor-colors-text)",
+        },
       },
       floating: {
         boxShadow: "sm",
@@ -72,10 +76,13 @@ export const inputRecipe = defineRecipe({
           outlineColor: "outline.neutral",
           backgroundColor: "surface.floating.active",
         },
-
         focus: {
           outline: "1px solid",
           outlineColor: "outline.focus",
+        },
+        "&:-webkit-autofill, &:-webkit-autofill:focus": {
+          boxShadow: "0 0 0 1000px var(--spor-colors-surface-info-hover) inset",
+          WebkitTextFillColor: "var(--spor-colors-text)",
         },
       },
     },

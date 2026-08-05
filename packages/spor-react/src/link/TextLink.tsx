@@ -40,7 +40,8 @@ const ExternalIcon = ({
   label: string;
   size: LinkProps["size"];
 }) => (
-  <>
+  <span style={{ whiteSpace: "nowrap" }}>
+    {"\u2060"}
     {size === "lg" || size === "md" ? (
       <LinkOutOutline24Icon aria-hidden display="inline" />
     ) : (
@@ -48,7 +49,7 @@ const ExternalIcon = ({
     )}
     {/* Visually hidden text for screen readers */}
     <VisuallyHidden>{label}</VisuallyHidden>
-  </>
+  </span>
 );
 
 export const TextLink = ({

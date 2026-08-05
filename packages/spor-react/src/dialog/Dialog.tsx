@@ -3,6 +3,24 @@ import { Dialog as ChakraDialog, Portal } from "@chakra-ui/react";
 import * as React from "react";
 
 import { CloseButton } from "../button";
+import { DataColorProvider, useDataColor } from "../data-color-context";
+import { SporColor } from "../theme/tokens/global-css";
+
+interface DialogRootProps extends ChakraDialog.RootProps {
+  color?: SporColor;
+  "data-color"?: SporColor;
+}
+
+export const DialogRoot = ({
+  color,
+  "data-color": dataColor,
+  children,
+  ...props
+}: DialogRootProps) => (
+  <DataColorProvider color={color} data-color={dataColor}>
+    <ChakraDialog.Root {...props}>{children}</ChakraDialog.Root>
+  </DataColorProvider>
+);
 
 interface DialogContentProps extends ChakraDialog.ContentProps {
   portalled?: boolean;
@@ -10,6 +28,7 @@ interface DialogContentProps extends ChakraDialog.ContentProps {
   backdrop?: boolean;
   children?: React.ReactNode;
   positionerProps?: ChakraDialog.PositionerProps;
+  "data-color"?: SporColor;
 }
 
 export const DialogContent = ({
@@ -27,11 +46,19 @@ export const DialogContent = ({
     ...rest
   } = props;
 
+  const colorFromContext = useDataColor();
+  const dataColor = rest["data-color"] ?? colorFromContext;
+
   return (
     <Portal disabled={!portalled} container={portalRef}>
       {backdrop && <ChakraDialog.Backdrop />}
       <ChakraDialog.Positioner {...positionerProps}>
-        <ChakraDialog.Content ref={ref} {...rest} asChild={false}>
+        <ChakraDialog.Content
+          ref={ref}
+          data-color={dataColor}
+          {...rest}
+          asChild={false}
+        >
           {children}
         </ChakraDialog.Content>
       </ChakraDialog.Positioner>
@@ -52,7 +79,6 @@ export const DialogCloseTrigger = function DialogCloseTrigger({
   );
 };
 
-export const DialogRoot = ChakraDialog.Root;
 export const DialogFooter = ChakraDialog.Footer;
 export const DialogHeader = ChakraDialog.Header;
 export const DialogBody = ChakraDialog.Body;

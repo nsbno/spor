@@ -38,6 +38,20 @@ export const buttonRecipe = defineRecipe({
             background: "surface.brand.active",
           },
         },
+        "&[data-color]": {
+          // eslint-disable-next-line spor/use-semantic-tokens
+          background: "var(--spor-color-surface)",
+          // eslint-disable-next-line spor/use-semantic-tokens
+          color: "var(--spor-color-text)",
+          _hover: {
+            // eslint-disable-next-line spor/use-semantic-tokens
+            background: "var(--spor-color-surface-hover)",
+            _active: {
+              // eslint-disable-next-line spor/use-semantic-tokens
+              background: "var(--spor-color-surface-active)",
+            },
+          },
+        },
       },
       secondary: {
         background: "surface.accent",
@@ -47,6 +61,20 @@ export const buttonRecipe = defineRecipe({
           background: "surface.accent.hover",
           _active: {
             background: "surface.accent.active",
+          },
+        },
+        "&[data-color]": {
+          // eslint-disable-next-line spor/use-semantic-tokens
+          background: "var(--spor-color-surface)",
+          // eslint-disable-next-line spor/use-semantic-tokens
+          color: "var(--spor-color-text)",
+          _hover: {
+            // eslint-disable-next-line spor/use-semantic-tokens
+            background: "var(--spor-color-surface-hover)",
+            _active: {
+              // eslint-disable-next-line spor/use-semantic-tokens
+              background: "var(--spor-color-surface-active)",
+            },
           },
         },
       },
@@ -68,6 +96,22 @@ export const buttonRecipe = defineRecipe({
         _focus: {
           outlineWidth: tokens.size.stroke.sm,
         },
+        "&[data-color]": {
+          // eslint-disable-next-line spor/use-semantic-tokens
+          color: "var(--spor-color-text)",
+          // eslint-disable-next-line spor/use-semantic-tokens
+          outlineColor: "var(--spor-color-outline)",
+          _hover: {
+            // eslint-disable-next-line spor/use-semantic-tokens
+            outlineColor: "var(--spor-color-outline-hover)",
+            _active: {
+              // eslint-disable-next-line spor/use-semantic-tokens
+              background: "var(--spor-color-surface-active)",
+              // eslint-disable-next-line spor/use-semantic-tokens
+              outlineColor: "var(--spor-color-outline)",
+            },
+          },
+        },
       },
       ghost: {
         color: "text.ghost",
@@ -76,6 +120,18 @@ export const buttonRecipe = defineRecipe({
           background: "surface.ghost.hover",
           _active: {
             background: "surface.ghost.active",
+          },
+        },
+        "&[data-color]": {
+          // eslint-disable-next-line spor/use-semantic-tokens
+          color: "var(--spor-color-text)",
+          _hover: {
+            // eslint-disable-next-line spor/use-semantic-tokens
+            background: "var(--spor-color-surface-hover)",
+            _active: {
+              // eslint-disable-next-line spor/use-semantic-tokens
+              background: "var(--spor-color-surface-active)",
+            },
           },
         },
       },
@@ -94,6 +150,18 @@ export const buttonRecipe = defineRecipe({
             background: "surface.core.active",
             boxShadow: "none",
             borderColor: "outline.floating",
+          },
+        },
+        "&[data-color]": {
+          // eslint-disable-next-line spor/use-semantic-tokens
+          color: "var(--spor-color-text)",
+          _hover: {
+            // eslint-disable-next-line spor/use-semantic-tokens
+            background: "var(--spor-color-surface-hover)",
+            _active: {
+              // eslint-disable-next-line spor/use-semantic-tokens
+              background: "var(--spor-color-surface-active)",
+            },
           },
         },
       },

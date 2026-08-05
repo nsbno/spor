@@ -38,7 +38,10 @@ export const dialogSlotRecipe = defineSlotRecipe({
     },
     content: {
       display: "flex",
-      backgroundColor: "bg",
+      // eslint-disable-next-line spor/use-semantic-tokens
+      backgroundColor: "var(--spor-color-surface)",
+      // eslint-disable-next-line spor/use-semantic-tokens
+      color: "var(--spor-color-text)",
       flexDirection: "column",
       position: "relative",
       width: "full",

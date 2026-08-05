@@ -58,11 +58,12 @@ const ExternalIcon = ({
     }
   };
   return (
-    <>
+    <span style={{ whiteSpace: "nowrap" }}>
+      {"\u2060"}
       {getIcon()}
       {/* Visually hidden text for screen readers */}
       <VisuallyHidden>{label}</VisuallyHidden>
-    </>
+    </span>
   );
 };
 

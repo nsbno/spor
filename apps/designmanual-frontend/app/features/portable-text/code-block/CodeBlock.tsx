@@ -79,7 +79,7 @@ export const CodeBlockContainer = ({
   return (
     <Box
       borderRadius="lg"
-      backgroundColor="surface.neutral"
+      backgroundColor="surface.disabled"
       fontFamily="monospace"
       fontSize={["mobile.sm", null, "desktop.xs"]}
       padding={2}

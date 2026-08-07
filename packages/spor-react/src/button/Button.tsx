@@ -15,7 +15,6 @@ import React, {
   ReactNode,
 } from "react";
 
-import { useDataColor } from "../data-color-context";
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
 import { buttonRecipe } from "../theme/recipes/button";
@@ -120,14 +119,11 @@ export const Button = ({
   rightIcon,
   type = "button",
   children,
-  "data-color": dataColorProperty,
   ...rest
 }: ButtonProps & {
   ref?: React.Ref<HTMLButtonElement>;
 }) => {
   const { t } = useTranslation();
-  const contextColor = useDataColor();
-  const dataColor = dataColorProperty ?? contextColor;
 
   const ariaLabel = loading
     ? String(loadingText ?? t(texts.loadingText))
@@ -162,7 +158,6 @@ export const Button = ({
       position="relative"
       variant={variant}
       size={size}
-      data-color={dataColor}
       {...rest}
     >
       {rest.asChild && isValidElement(children)

@@ -1,10 +1,18 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
+import tokens from "@vygruppen/spor-design-tokens";
 
 import { tableAnatomy } from "./anatomy";
 
 const numericStyles = {
   "&[data-is-numeric=true]": {
     textAlign: "right",
+  },
+};
+
+const dataColorStyles = {
+  "&[data-color], :where([data-color]) &": {
+    backgroundColor: "surface.neutral",
+    color: "text.neutral",
   },
 };
 
@@ -88,6 +96,12 @@ export const tableSlotRecipe = defineSlotRecipe({
 
         cell: {
           ...numericStyles,
+          ...dataColorStyles,
+          color: "text.ghost",
+
+          _hover: {
+            backgroundColor: "surface.ghost.hover",
+          },
         },
         row: {
           borderBottom: "sm",
@@ -108,6 +122,11 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
         cell: {
           ...numericStyles,
+          ...dataColorStyles,
+          _hover: {
+            outlineWidth: tokens.size.stroke.md,
+            outlineColor: "outline.core.hover",
+          },
 
           borderRight: "sm",
           borderColor: "outline.disabled",

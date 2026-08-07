@@ -20,7 +20,6 @@ export type ProgressIndicatorProps = BoxProps &
     children?: React.ReactNode;
     numberOfSteps: number;
     activeStep: number;
-    colorPalette?: string;
     css?: SystemStyleObject;
   };
 

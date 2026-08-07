@@ -5,8 +5,10 @@ import {
   RecipeVariantProps,
   Table as ChakraTable,
   TableBodyProps as ChakraTableBodyProps,
+  TableCellProps as ChakraTableCellProps,
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
+  TableRowProps as ChakraTableRowProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import {
@@ -38,13 +40,19 @@ const SortContext = createContext<{
   enabled: boolean;
   sortState: SortState;
   onSort: (columnIndex: number) => void;
+  dataColor?: string;
 }>({
   enabled: false,
   sortState: { direction: "asc", columnIndex: null },
   onSort: () => {},
+  dataColor: undefined,
 });
 
 export const useTableSort = () => useContext(SortContext);
+
+const RowContext = createContext<{ rowDataColor?: string }>({
+  rowDataColor: undefined,
+});
 
 export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   PropsWithChildren<TableVariantProps> & {
@@ -73,6 +81,10 @@ export const Table = ({
     setSortState(getNextSortState(sortState, columnIndex));
   };
 
+  const dataColor = (rest as Record<string, unknown>)["data-color"] as
+    | string
+    | undefined;
+
   const recipe = useSlotRecipe({ key: "table" });
   const styles = recipe({ variant, size });
 
@@ -86,7 +98,7 @@ export const Table = ({
       {...rest}
     >
       <SortContext.Provider
-        value={{ enabled: sortable, sortState, onSort: handleSort }}
+        value={{ enabled: sortable, sortState, onSort: handleSort, dataColor }}
       >
         {children}
       </SortContext.Provider>
@@ -185,5 +197,51 @@ export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
     >
       {children}
     </ChakraTable.Body>
+  );
+};
+
+export type TableCellProps = ChakraTableCellProps & {
+  ref?: React.Ref<HTMLTableCellElement>;
+};
+
+export const TableCell = ({ children, ref, ...rest }: TableCellProps) => {
+  const { dataColor } = useTableSort();
+  const { rowDataColor } = useContext(RowContext);
+  const { "data-color": cellDataColor, ...restWithoutDataColor } =
+    rest as Record<string, unknown> & typeof rest;
+
+  return (
+    <ChakraTable.Cell
+      ref={ref}
+      data-color={
+        (cellDataColor ?? rowDataColor ?? dataColor) as string | undefined
+      }
+      {...restWithoutDataColor}
+    >
+      {children}
+    </ChakraTable.Cell>
+  );
+};
+
+export type TableRowProps = ChakraTableRowProps & {
+  ref?: React.Ref<HTMLTableRowElement>;
+};
+
+export const TableRow = ({ children, ref, ...rest }: TableRowProps) => {
+  const { "data-color": rowDataColor, ...restWithoutDataColor } =
+    rest as Record<string, unknown> & typeof rest;
+
+  return (
+    <RowContext.Provider
+      value={{ rowDataColor: rowDataColor as string | undefined }}
+    >
+      <ChakraTable.Row
+        ref={ref}
+        data-color={rowDataColor as string | undefined}
+        {...restWithoutDataColor}
+      >
+        {children}
+      </ChakraTable.Row>
+    </RowContext.Provider>
   );
 };

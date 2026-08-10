@@ -8,6 +8,8 @@ import {
 } from "@chakra-ui/react";
 import React, { useRef } from "react";
 
+import { SporColor } from "@/theme/tokens/global-css";
+
 import { BoxProps, createTexts, IconButton, Text, useTranslation } from "..";
 import { numericStepperRecipe } from "../theme/slot-recipes/numeric-stepper";
 import { Field, FieldBaseProps } from "./Field";
@@ -68,6 +70,7 @@ export const NumericStepper = ({
   ...props
 }: NumericStepperProps & {
   ref?: React.Ref<HTMLDivElement>;
+  "data-color"?: SporColor;
 }) => {
   const {
     name: nameProperty,
@@ -88,6 +91,7 @@ export const NumericStepper = ({
     helperText,
     errorText,
     gap,
+    "data-color": dataColor,
     ...rest
   } = props;
 
@@ -118,6 +122,7 @@ export const NumericStepper = ({
       readOnly={readOnly}
       required={required}
       gap={gap}
+      data-color={dataColor}
     >
       <VerySmallButton
         icon={<SubtractIcon stepLabel={clampedStepSize} />}

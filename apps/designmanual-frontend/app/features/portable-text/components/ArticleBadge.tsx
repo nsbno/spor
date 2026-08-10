@@ -17,21 +17,12 @@ export const ArticleBadge = ({
 }: ArticleBadgeProps & BadgeProps) => {
   const badgeColorMap: Record<
     ArticleBadgeProps["badgeType"],
-    | "green"
-    | "blue"
-    | "yellow"
-    | "red"
-    | "neutral"
-    | "grey"
-    | "cream"
-    | "orange"
-    | "brightRed"
-    | undefined
+    "success" | "info" | "warning" | "critical" | undefined
   > = {
-    new: "green",
-    updated: "blue",
-    beta: "yellow",
-    deprecated: "red",
+    new: "success",
+    updated: "info",
+    beta: "warning",
+    deprecated: "critical",
   };
   const badgeTextMap = {
     new: "New",
@@ -48,7 +39,7 @@ export const ArticleBadge = ({
 
   return (
     <Badge
-      colorPalette={badgeColorMap[badgeType]}
+      data-color={badgeColorMap[badgeType]}
       {...rest}
       icon={badgeIconMap[badgeType]}
     >

@@ -1,7 +1,7 @@
 //This codemode is used to update from using colorPalette to data-color
 
 const dataColorMap = {
-  neutral: "neutral",
+  grey: "neutral",
   blue: "info",
   green: "success",
   orange: "caution",

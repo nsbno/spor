@@ -108,16 +108,15 @@ export const tabsSlotRecipe = defineSlotRecipe({
           _hover: {
             backgroundColor: "surface.accent.hover",
             _active: {
-              backgroundColor: "surface.brand.active",
-              color: "text.brand",
+              backgroundColor: "surface.accent.active",
+              color: "text.accent",
             },
           },
           _selected: {
             backgroundColor: "surface.accent.active",
-            color: "text.brand",
+            color: "text.accent",
             _hover: {
-              backgroundColor: "surface.brand.hover",
-              color: "text.brand",
+              backgroundColor: "surface.accent.hover",
               outline: "none",
             },
           },

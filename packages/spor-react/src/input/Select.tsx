@@ -302,7 +302,7 @@ export const SelectValueText = function SelectValueText({
                   <Badge
                     key={select.collection.stringifyItem(item)}
                     size="sm"
-                    colorPalette="green"
+                    data-color="success"
                   >
                     {select.collection.stringifyItem(item)}
                   </Badge>

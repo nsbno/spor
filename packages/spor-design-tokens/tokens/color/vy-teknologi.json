@@ -182,6 +182,12 @@
             "_dark": "colors.seaMist"
           }
         },
+        "subtle": {
+          "value": {
+            "_light": "colors.dimGrey",
+            "_dark": "colors.whiteAlpha.700"
+          }
+        },
         "disabled": {
           "value": {
             "_light": "colors.blackAlpha.400",

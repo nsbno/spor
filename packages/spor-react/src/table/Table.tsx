@@ -56,8 +56,7 @@ const RowContext = createContext<{ rowDataColor?: string }>({
 
 export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   PropsWithChildren<TableVariantProps> & {
-    variant?: "ghost" | "core";
-    colorPalette?: "grey" | "green" | "white";
+    variant?: "ghost" | "core" | "floating";
     sortable?: boolean;
     ref?: React.Ref<HTMLTableElement>;
   };
@@ -65,7 +64,6 @@ export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
 export const Table = ({
   variant = "ghost",
   size,
-  colorPalette = "green",
   children,
   sortable = false,
   ref,
@@ -92,7 +90,6 @@ export const Table = ({
     <ChakraTable.Root
       variant={variant}
       size={size}
-      colorPalette={colorPalette}
       css={styles}
       ref={ref}
       {...rest}

@@ -1,18 +1,10 @@
 import { defineSlotRecipe } from "@chakra-ui/react";
-import tokens from "@vygruppen/spor-design-tokens";
 
 import { tableAnatomy } from "./anatomy";
 
 const numericStyles = {
   "&[data-is-numeric=true]": {
     textAlign: "right",
-  },
-};
-
-const dataColorStyles = {
-  "&[data-color], :where([data-color]) &": {
-    backgroundColor: "surface.neutral",
-    color: "text.neutral",
   },
 };
 
@@ -25,7 +17,7 @@ export const tableSlotRecipe = defineSlotRecipe({
       borderCollapse: "collapse",
       width: "100%",
       minWidth: "36rem",
-      overflowX: "auto",
+      overflow: "hidden",
     },
     columnHeader: {
       fontWeight: "bold",
@@ -49,72 +41,12 @@ export const tableSlotRecipe = defineSlotRecipe({
   },
 
   variants: {
-    colorPalette: {
-      green: {
-        root: {
-          backgroundColor: "bg",
-        },
-        header: {
-          backgroundColor: "bg.brand",
-        },
-        columnHeader: {
-          color: "text.highlight",
-        },
-      },
-      grey: {
-        root: {
-          backgroundColor: "bg",
-        },
-        columnHeader: {
-          backgroundColor: "surface.disabled",
-          _hover: {
-            backgroundColor: "surface.disabled",
-          },
-        },
-      },
-      white: {
-        root: {
-          backgroundColor: "bg",
-        },
-        columnHeader: {
-          color: "text",
-          backgroundColor: "bg",
-        },
-      },
-    },
     variant: {
-      ghost: {
-        header: {
-          backgroundColor: "none",
-        },
-        columnHeader: {
-          borderBottom: "sm",
-          borderColor: "outline.disabled",
-          backgroundColor: "none",
-          color: "text",
-        },
-
-        cell: {
-          ...numericStyles,
-          ...dataColorStyles,
-          color: "text.ghost",
-
-          _hover: {
-            backgroundColor: "surface.ghost.hover",
-          },
-        },
-        row: {
-          borderBottom: "sm",
-          borderColor: "outline.disabled",
-          ...numericStyles,
-        },
-      },
-
       core: {
         root: {
           boxShadow: "0 0 0 1px var(--shadow-color)",
           shadowColor: "outline.disabled",
-          borderRadius: "sm",
+          borderRadius: "xs",
         },
 
         table: {
@@ -122,46 +54,85 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
         cell: {
           ...numericStyles,
-          ...dataColorStyles,
-          _hover: {
-            outlineWidth: tokens.size.stroke.md,
-            outlineColor: "outline.core.hover",
-          },
-
-          borderRight: "sm",
-          borderColor: "outline.disabled",
-
-          _last: {
-            borderRight: "none",
-          },
         },
 
         columnHeader: {
           ...numericStyles,
-
-          borderRight: "sm",
-          borderColor: "outline.disabled",
-
-          _first: {
-            borderTopLeftRadius: "sm",
-          },
-          _last: {
-            borderTopRightRadius: "sm",
-            borderRight: "none",
-          },
         },
         header: {
           borderBottom: "sm",
           borderColor: "outline.disabled",
+          backgroundColor: "surface.disabled",
         },
         row: {
           ...numericStyles,
           borderBottom: "sm",
           borderColor: "outline.disabled",
-
+          "&:not(thead *):hover": {
+            outline: "1px solid",
+            outlineColor: "outline.core.hover",
+            outlineOffset: "-1px",
+            _last: {
+              borderRadius: "0 0 6px 6px",
+            },
+          },
           _last: {
             borderBottom: "none",
           },
+        },
+      },
+      floating: {
+        root: {
+          borderCollapse: "separate",
+          borderSpacing: "0 6px",
+        },
+        columnHeader: {
+          backgroundColor: "none",
+        },
+        header: {
+          backgroundColor: "none",
+        },
+        cell: {
+          backgroundColor: "surface.floating",
+          _first: {
+            borderLeftRadius: "xs",
+          },
+          _last: {
+            borderRightRadius: "xs",
+          },
+        },
+        row: {
+          borderRadius: "sm",
+          "&:not(:where([data-disable-hover] *)):hover": {
+            "& td:not([data-semantic])": {
+              backgroundColor: "surface.floating.hover",
+            },
+          },
+        },
+      },
+      ghost: {
+        header: {
+          backgroundColor: "transparent",
+        },
+        columnHeader: {
+          borderBottom: "sm",
+          borderColor: "outline.disabled",
+          backgroundColor: "none",
+          color: "text",
+        },
+
+        cell: {
+          ...numericStyles,
+        },
+        row: {
+          borderBottom: "sm",
+          borderColor: "outline.disabled",
+          "&:not(:where([data-disable-hover] *)):hover": {
+            "& td:not([data-semantic])": {
+              backgroundColor: "surface.ghost.hover",
+            },
+          },
+          ...numericStyles,
         },
       },
     },

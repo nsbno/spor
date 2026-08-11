@@ -1,5 +1,16 @@
 # @vygruppen/spor-codemods
 
+## 1.1.19
+
+### Patch Changes
+
+- Updated dependencies [e6bfa69]
+- Updated dependencies [6d0bf57]
+- Updated dependencies [b80fda2]
+- Updated dependencies [022e894]
+- Updated dependencies [a1d5a12]
+  - @vygruppen/spor-react@13.7.0
+
 ## 1.1.18
 
 ### Patch Changes

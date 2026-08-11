@@ -1,5 +1,22 @@
 # @vygruppen/spor-react
 
+## 13.7.0
+
+### Minor Changes
+
+- b80fda2: Toast: Introduce "inverted" as a prop, that uses darkmode colors in lightmode, and lightmode colors in darkmode.
+- a1d5a12: Autocomplete: add a size-prop that can be set to either 'md' or 'sm'.
+
+### Patch Changes
+
+- e6bfa69: override safari autofill for input fields with spor colors
+- 6d0bf57: TextLink: Add non-breaking space for external icon so that it never breaks over to a newline alone.
+- 022e894: Separator: Change borderColor of the dashed separator to use the outline.default token
+  InputChip: Adjust the height of the different sizes to match with design.
+  TextLink: Change the ExternalLink-Icon to be of size 30x30 when TextLink is of size "lg"
+- Updated dependencies [783c84f]
+  - @vygruppen/spor-design-tokens@5.1.1
+
 ## 13.6.0
 
 ### Minor Changes

@@ -76,7 +76,7 @@ export const inputChipSlotRecipe = defineSlotRecipe({
         root: {
           fontSize: "desktop.xs",
           paddingX: "1.5",
-          paddingY: "0",
+          height: 5,
           fontWeight: "normal",
           borderRadius: "xs",
         },
@@ -85,17 +85,16 @@ export const inputChipSlotRecipe = defineSlotRecipe({
         root: {
           fontSize: "desktop.sm",
           paddingX: "2",
-          paddingY: "0.5",
+          height: 6,
           fontWeight: "bold",
           borderRadius: "9px",
         },
       },
       md: {
         root: {
-          padding: 5,
           fontSize: "desktop.md",
           paddingX: "2",
-          paddingY: "1",
+          height: 7,
           fontWeight: "bold",
           borderRadius: "sm",
         },
@@ -104,7 +103,7 @@ export const inputChipSlotRecipe = defineSlotRecipe({
         root: {
           fontSize: "desktop.md",
           paddingX: "2",
-          paddingY: "3",
+          height: "8",
           fontWeight: "bold",
           borderRadius: "md",
         },

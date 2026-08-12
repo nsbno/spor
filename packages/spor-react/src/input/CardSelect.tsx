@@ -11,7 +11,7 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { ReactNode } from "react";
 
-import { SporColor } from "@/theme/tokens/global-css";
+import { SporSemantic } from "@/theme/tokens/global-css";
 
 import {
   Button,
@@ -26,7 +26,7 @@ export const CardSelect = ({
   size = "md",
   "data-color": dataColor,
   ...props
-}: PopoverRootProps & { "data-color"?: SporColor }) => {
+}: PopoverRootProps & { "data-color"?: SporSemantic }) => {
   return (
     <DataColorProvider data-color={dataColor}>
       <ChakraPopover.Root size={size} data-color={dataColor} {...props} />

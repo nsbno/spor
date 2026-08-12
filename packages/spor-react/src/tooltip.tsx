@@ -3,7 +3,7 @@
 import { Box, Portal, Tooltip as ChakraTooltip } from "@chakra-ui/react";
 
 import { DataColorProvider, useDataColor } from "./data-color-context";
-import { SporColor } from "./theme/tokens/global-css";
+import { SporSemantic } from "./theme/tokens/global-css";
 
 export const Tooltip = ({
   children,
@@ -11,7 +11,7 @@ export const Tooltip = ({
   ...rest
 }: {
   children: React.ReactNode;
-  "data-color"?: SporColor;
+  "data-color"?: SporSemantic;
 }) => (
   <DataColorProvider data-color={dataColor}>
     <ChakraTooltip.Root data-color={dataColor} {...rest}>

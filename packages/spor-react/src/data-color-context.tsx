@@ -1,13 +1,15 @@
 "use client";
 import * as React from "react";
 
-import { SporColor } from "./theme/tokens/global-css";
+import { SporSemantic } from "./theme/tokens/global-css";
 
-const DataColorContext = React.createContext<SporColor | undefined>(undefined);
+const DataColorContext = React.createContext<SporSemantic | undefined>(
+  undefined,
+);
 
 interface DataColorProviderProps {
-  color?: SporColor;
-  "data-color"?: SporColor;
+  color?: SporSemantic;
+  "data-color"?: SporSemantic;
   children: React.ReactNode;
 }
 

@@ -21,7 +21,7 @@ import {
 import { ReactNode, Ref } from "react";
 import { createContext, useContext } from "react";
 
-import { SporColor } from "@/theme/tokens/global-css";
+import { SporSemantic } from "@/theme/tokens/global-css";
 
 import {
   Button,
@@ -60,7 +60,7 @@ export const Menu = ({
   children,
   "data-color": dataColor,
   ...props
-}: MenuRootProps & { "data-color"?: SporColor }) => {
+}: MenuRootProps & { "data-color"?: SporSemantic }) => {
   return (
     <DataColorProvider data-color={dataColor}>
       <CustomMenuContext.Provider value={{ variant: props.variant }}>

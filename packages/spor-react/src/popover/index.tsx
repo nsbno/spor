@@ -10,7 +10,7 @@ import React, { useEffect } from "react";
 
 import { CloseButton } from "@/button";
 import { useColorMode } from "@/color-mode";
-import { SporColor } from "@/theme/tokens/global-css";
+import { SporSemantic } from "@/theme/tokens/global-css";
 
 import { DataColorProvider, useDataColor } from "..";
 
@@ -18,7 +18,7 @@ export const Popover = ({
   children,
   "data-color": dataColor,
   ...rest
-}: ChakraPopover.RootProps & { "data-color"?: SporColor }) => {
+}: ChakraPopover.RootProps & { "data-color"?: SporSemantic }) => {
   return (
     <DataColorProvider data-color={dataColor}>
       <ChakraPopover.Root {...rest}>{children}</ChakraPopover.Root>

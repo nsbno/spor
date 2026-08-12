@@ -24,7 +24,7 @@ import { useDatePickerState } from "react-stately";
 import { Field, FieldBaseProps } from "@/input/Field";
 
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
-import { SporColor } from "../theme/tokens/global-css";
+import { SporSemantic } from "../theme/tokens/global-css";
 import { Calendar } from "./Calendar";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
@@ -49,7 +49,7 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
     overrideBorderColor?: string;
     isActive?: boolean;
     onClick?: () => void;
-    "data-color"?: SporColor;
+    "data-color"?: SporSemantic;
   } & FieldBaseProps & {
     css?: SystemStyleObject;
   };

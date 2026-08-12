@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useRef } from "react";
 
-import { SporColor } from "@/theme/tokens/global-css";
+import { SporSemantic } from "@/theme/tokens/global-css";
 
 import { BoxProps, createTexts, IconButton, Text, useTranslation } from "..";
 import { numericStepperRecipe } from "../theme/slot-recipes/numeric-stepper";
@@ -70,7 +70,7 @@ export const NumericStepper = ({
   ...props
 }: NumericStepperProps & {
   ref?: React.Ref<HTMLDivElement>;
-  "data-color"?: SporColor;
+  "data-color"?: SporSemantic;
 }) => {
   const {
     name: nameProperty,

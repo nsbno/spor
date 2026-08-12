@@ -11,7 +11,9 @@ export const semanticColors = [
   "service",
 ] as const;
 
-export type SporColor = (typeof semanticColors)[number];
+export type SporSemantic = (typeof semanticColors)[number];
+
+const excludeFromDataColor = ["checkbox", "radio-group"] as const;
 
 // Override Chakra's own CSS variables for each data-color value.
 // Because these variables are set on `:where(:root, :host)` (specificity 0,0,0)
@@ -21,7 +23,7 @@ export type SporColor = (typeof semanticColors)[number];
 // resolve to the correct semantic color.
 const dataColorStyles = Object.fromEntries(
   semanticColors.map((color) => [
-    `[data-color='${color}']`,
+    `[data-color='${color}'] ${excludeFromDataColor.map((role) => `:not([data-scope='${role}'])`).join("")}&`,
     {
       // Surface colors
       "--spor-colors-surface-brand": `var(--spor-colors-surface-${color})`,
@@ -61,6 +63,7 @@ const dataColorStyles = Object.fromEntries(
       "--spor-colors-outline-floating-hover": `var(--spor-colors-outline-${color}-hover)`,
 
       // Text colors
+      "--spor-colors-text": `var(--spor-colors-text-${color})`,
       "--spor-colors-text-neutral": `var(--spor-colors-text-${color})`,
       "--spor-colors-text-neutral-subtle": `var(--spor-colors-text-${color}-subtle)`,
 

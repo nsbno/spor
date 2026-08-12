@@ -4,20 +4,18 @@ import * as React from "react";
 
 import { CloseButton } from "../button";
 import { DataColorProvider, useDataColor } from "../data-color-context";
-import { SporColor } from "../theme/tokens/global-css";
+import { SporSemantic } from "../theme/tokens/global-css";
 
 interface DialogRootProps extends ChakraDialog.RootProps {
-  color?: SporColor;
-  "data-color"?: SporColor;
+  "data-color"?: SporSemantic;
 }
 
 export const DialogRoot = ({
-  color,
   "data-color": dataColor,
   children,
   ...props
 }: DialogRootProps) => (
-  <DataColorProvider color={color} data-color={dataColor}>
+  <DataColorProvider data-color={dataColor}>
     <ChakraDialog.Root {...props}>{children}</ChakraDialog.Root>
   </DataColorProvider>
 );
@@ -28,7 +26,7 @@ interface DialogContentProps extends ChakraDialog.ContentProps {
   backdrop?: boolean;
   children?: React.ReactNode;
   positionerProps?: ChakraDialog.PositionerProps;
-  "data-color"?: SporColor;
+  "data-color"?: SporSemantic;
 }
 
 export const DialogContent = ({

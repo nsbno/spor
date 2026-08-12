@@ -1,5 +1,6 @@
 "use client";
 import {
+  Box,
   RadioCard as ChakraRadioCard,
   RecipeVariantProps,
   useSlotRecipe,
@@ -64,7 +65,7 @@ export const RadioCard = ({
       />
       <ChakraRadioCard.ItemControl id={itemControlId} aria-hidden>
         {showIndicator && <ChakraRadioCard.ItemIndicator />}
-        {children}
+        <Box>{children}</Box>
       </ChakraRadioCard.ItemControl>
     </ChakraRadioCard.Item>
   );

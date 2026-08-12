@@ -57,7 +57,6 @@ export const DateTimeSegment = ({
       textAlign="center"
       outline="none"
       borderRadius="xs"
-      fontSize={["mobile.sm", "desktop.sm"]}
       css={styles.dateTimeSegment}
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledby}

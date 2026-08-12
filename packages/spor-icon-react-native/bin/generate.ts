@@ -55,10 +55,19 @@ type IconMetadata = {
 async function loadIcons() {
   const icons: IconData[] = [];
 
-  const categories = await fs.readdir(SVG_PATH);
+  const allEntries = await fs.readdir(SVG_PATH, { withFileTypes: true });
+  const categories = allEntries
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name);
   for (const category of categories) {
-    const filesInCategory = await fs.readdir(`${SVG_PATH}/${category}`);
-    for (const fileName of filesInCategory) {
+    const filesInCategory = await fs.readdir(`${SVG_PATH}/${category}`, {
+      withFileTypes: true,
+    });
+    for (const entry of filesInCategory.filter(
+      // eslint-disable-next-line unicorn/prevent-abbreviations
+      (e) => e.isFile() && e.name.endsWith(".svg"),
+    )) {
+      const fileName = entry.name;
       const metadata = getMetadata({ fileName, category });
       const componentName = createComponentName(metadata);
 
@@ -150,6 +159,13 @@ async function generateComponent(iconData: IconData) {
   // It looks hacky, it is hacky, but it works.
   jsCode = "import { Box, useTheme } from 'app/spor';\n" + jsCode;
   jsCode = jsCode
+    // Duotone status icons ship with web CSS variables (`var(--spor-colors-*)`)
+    // as fills, which react-native-svg can't parse. Map them to theme colors.
+    .replaceAll(
+      /fill="var\(--spor-colors-([a-z-]+)\)"/g,
+      (_match, token: string) =>
+        `fill={theme.colors["${token.replaceAll("-", ".")}"]}`,
+    )
     .replace("{...props}", "")
     .replace("props", '{ color = "icon.default", width, height, ...props }')
     // Weird regex alert!

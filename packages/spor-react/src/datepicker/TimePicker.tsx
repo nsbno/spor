@@ -50,6 +50,11 @@ type TimePickerProps = Omit<BoxProps, "defaultValue" | "onChange"> &
      * Defaults to "core".
      */
     variant?: "core" | "floating" | "ghost";
+    /**
+     * The size of the time picker.
+     * Defaults to "md".
+     */
+    size?: "sm" | "md";
   };
 /** A time picker component.
  *
@@ -137,10 +142,8 @@ export const TimePicker = ({
     <Field as="time" {...boxProps}>
       <StyledField
         width="fit-content"
-        paddingX={2}
         alignItems="center"
         justifyContent="space-between"
-        gap={2}
         opacity={isDisabled ? 0.5 : 1}
         pointerEvents={isDisabled ? "none" : "auto"}
         aria-disabled={isDisabled}

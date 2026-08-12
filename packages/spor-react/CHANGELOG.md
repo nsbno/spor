@@ -1,5 +1,71 @@
 # @vygruppen/spor-react
 
+## 13.7.0
+
+### Minor Changes
+
+- b80fda2: Toast: Introduce "inverted" as a prop, that uses darkmode colors in lightmode, and lightmode colors in darkmode.
+- a1d5a12: Autocomplete: add a size-prop that can be set to either 'md' or 'sm'.
+
+### Patch Changes
+
+- e6bfa69: override safari autofill for input fields with spor colors
+- 6d0bf57: TextLink: Add non-breaking space for external icon so that it never breaks over to a newline alone.
+- 022e894: Separator: Change borderColor of the dashed separator to use the outline.default token
+  InputChip: Adjust the height of the different sizes to match with design.
+  TextLink: Change the ExternalLink-Icon to be of size 30x30 when TextLink is of size "lg"
+- Updated dependencies [783c84f]
+  - @vygruppen/spor-design-tokens@5.1.1
+
+## 13.6.0
+
+### Minor Changes
+
+- ce5b9e0: Add new VyTeknologi brand theme and deprecate VyUtvikling
+  - New `Brand.VyTeknologi` theme, usable with `<SporProvider theme={themes[Brand.VyTeknologi]}>`
+  - Three new color palettes with 12 steps each: `teal`, `pink` and `violet`, with named aliases (e.g. `grape` → `violet.900`, `moss` → `teal.700`, `jam` → `pink.800`)
+  - The existing `pink` alias (→ `red.50`) still resolves as before; the new range is available as `pink.50`–`pink.1100`
+  - `Brand.VyUtvikling` and `vyUtviklingColors` are marked as `@deprecated` — migrate to `Brand.VyTeknologi`
+  - The MCP server's `get_spor_tokens` tool now accepts `vyTeknologi` as a theme
+
+### Patch Changes
+
+- Updated dependencies [ce5b9e0]
+  - @vygruppen/spor-design-tokens@5.1.0
+
+## 13.5.0
+
+### Minor Changes
+
+- 44c4594: Date and time picker: Add `size` prop with `"sm"` and `"md"` variants (defaults to `"md"`)
+- bc0f4b4: RadioCards: Add "showIndicator" as an optional prop. If true, show a radiobutton-indicator on the left side of the content.
+- 3ca4098: Toast: Add action and closable props to Toast component for enhanced functionality
+
+## 13.4.6
+
+### Patch Changes
+
+- 4500a7b: Select: Fix border radius and spacing when dropdown opens above the trigger
+- Updated dependencies [cc9028e]
+- Updated dependencies [5ee8079]
+  - @vygruppen/spor-design-tokens@5.0.6
+  - @vygruppen/spor-icon-react@5.0.2
+
+## 13.4.5
+
+### Patch Changes
+
+- 5b62e2e: Time/Date-picker: Make the fontsize of the label smaller
+
+## 13.4.4
+
+### Patch Changes
+
+- 5535288: New colors for the info, success, and error icons.
+- Updated dependencies [5535288]
+- Updated dependencies [4d64409]
+  - @vygruppen/spor-icon-react@5.0.1
+
 ## 13.4.3
 
 ### Patch Changes

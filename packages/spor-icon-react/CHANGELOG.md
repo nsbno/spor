@@ -1,5 +1,18 @@
 # @vygruppen/spor-icon-react
 
+## 5.0.2
+
+### Patch Changes
+
+- 5ee8079: Prevent id minification to avoid clip path collisions when multiple icons are on the same page
+
+## 5.0.1
+
+### Patch Changes
+
+- 5535288: New colors for the info, success, and error icons.
+- 4d64409: Add icons for thumbs up and down
+
 ## 5.0.0
 
 ### Major Changes

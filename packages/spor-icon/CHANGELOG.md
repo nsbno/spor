@@ -1,5 +1,12 @@
 # @vygruppen/spor-icon
 
+## 3.6.2
+
+### Patch Changes
+
+- 5535288: New colors for the info, success, and error icons.
+- 4d64409: Add icons for thumbs up and down
+
 ## 3.6.1
 
 ### Patch Changes

@@ -37,9 +37,17 @@ type IconMetadata = {
 async function loadIcons() {
   const icons: IconData[] = [];
 
-  const categories = await fs.readdir(SVG_PATH);
+  const allEntries = await fs.readdir(SVG_PATH, { withFileTypes: true });
+  const categories = allEntries
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name);
   for (const category of categories) {
-    const filesInCategory = await fs.readdir(`${SVG_PATH}/${category}`);
+    const allFilesInCategory = await fs.readdir(`${SVG_PATH}/${category}`, {
+      withFileTypes: true,
+    });
+    const filesInCategory = allFilesInCategory
+      .filter((entry) => entry.isFile() && entry.name.endsWith(".svg"))
+      .map((entry) => entry.name);
     for (const fileName of filesInCategory) {
       const metadata = getMetadata({ fileName, category });
       const componentName = createComponentName(metadata);
@@ -108,7 +116,15 @@ async function generateComponents(icons: IconData[]) {
 async function generateComponent(iconData: IconData) {
   const isFeedback = iconData.metadata.category === "feedback";
   const pathCount = (iconData.icon.match(/<path[\s>]/g) || []).length;
-  const shouldKeepOriginalFill = isFeedback && pathCount > 1;
+  const feedbackIconsToKeepOriginalFill = [
+    "thumbs down",
+    "thumbs up",
+    "checkmark",
+  ];
+  const shouldKeepOriginalFill =
+    isFeedback &&
+    pathCount > 1 &&
+    !feedbackIconsToKeepOriginalFill.includes(iconData.metadata.name);
 
   let jsCode = await transform(
     iconData.icon,
@@ -129,6 +145,10 @@ async function generateComponent(iconData: IconData) {
             params: {
               overrides: {
                 removeViewBox: false,
+                convertColors: false,
+                cleanupIds: {
+                  minify: false,
+                },
               },
             },
           },

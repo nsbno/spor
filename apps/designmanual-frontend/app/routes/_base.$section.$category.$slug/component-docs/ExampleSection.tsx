@@ -11,24 +11,30 @@ export const ExamplesSection = ({
 }: {
   codeExamples: CodeExample[];
 }) => {
-  const [currentExampleIndex, setCurrentExampleIndex] = useState(
+  const [currentExampleTitle, setCurrentExampleTitle] = useState(
     codeExamples.length > 0 ? codeExamples[0].title : "",
   );
+
+  const activeTitle = codeExamples.some(
+    (example) => example.title === currentExampleTitle,
+  )
+    ? currentExampleTitle
+    : (codeExamples[0]?.title ?? "");
   return (
     <Flex direction="column" gap={3} as="section">
       {codeExamples.length === 0 ? (
         <Text>No examples exist (yet!)</Text>
       ) : (
-        <CheckboxGroup defaultValue={[currentExampleIndex]}>
+        <CheckboxGroup defaultValue={[activeTitle]}>
           <Flex flexWrap="wrap" gap={1}>
             {codeExamples.map((example, index) => (
               <FilterChip
                 key={index + example.title}
                 variant="accent"
                 value={example.title}
-                checked={currentExampleIndex === example.title}
+                checked={activeTitle === example.title}
                 onCheckedChange={() => {
-                  setCurrentExampleIndex(example.title);
+                  setCurrentExampleTitle(example.title);
                 }}
                 size="xs"
               >
@@ -40,7 +46,7 @@ export const ExamplesSection = ({
       )}
       <Text fontSize="sm">
         {
-          codeExamples.find((example) => example.title === currentExampleIndex)
+          codeExamples.find((example) => example.title === activeTitle)
             ?.description
         }
       </Text>
@@ -49,7 +55,7 @@ export const ExamplesSection = ({
         layout="simple"
         maxWidth="100%"
         code={
-          codeExamples.find((example) => example.title === currentExampleIndex)
+          codeExamples.find((example) => example.title === activeTitle)
             ?.reactCode?.code ?? ""
         }
       />

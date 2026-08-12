@@ -36,13 +36,16 @@ export const BrandSwitcher = () => {
           onValueChange={(details) => handleTabChange(details.value)}
         >
           <TabsList onChange={(v) => console.log(v)}>
-            {[Brand.VyDigital, Brand.VyUtvikling, Brand.CargoNet].map(
-              (brand) => (
-                <TabsTrigger width={[null, 100]} value={brand} key={brand}>
-                  {brand}
-                </TabsTrigger>
-              ),
-            )}
+            {[
+              Brand.VyDigital,
+              Brand.VyUtvikling,
+              Brand.VyTeknologi,
+              Brand.CargoNet,
+            ].map((brand) => (
+              <TabsTrigger width={[null, 100]} value={brand} key={brand}>
+                {brand}
+              </TabsTrigger>
+            ))}
           </TabsList>
         </Tabs>
       </fetcher.Form>

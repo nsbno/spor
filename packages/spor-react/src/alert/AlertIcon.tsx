@@ -46,42 +46,33 @@ export const BaseAlertIcon = ({
 }: {
   variant: AlertProps["variant"];
 }) => {
-  const css = {
-    "& path:first-of-type": {
-      fill: `icon.${variant}`,
-    },
-    "& path:not(:first-of-type)": {
-      fill: `surface.${variant}`,
-    },
-  };
-
   switch (variant) {
     case "info": {
-      return <InformationFill24Icon css={css} />;
+      return <InformationFill24Icon />;
     }
     case "success": {
-      return <SuccessFill24Icon css={css} />;
+      return <SuccessFill24Icon />;
     }
     case "important": {
       return <WarningFill24Icon />;
     }
     case "alt": {
-      return <AltTransportFill24Icon css={css} />;
+      return <AltTransportFill24Icon />;
     }
     case "error": {
-      return <ErrorFill24Icon css={css} />;
+      return <ErrorFill24Icon />;
     }
     case "error-secondary": {
-      return <ErrorOutline24Icon css={css} />;
+      return <ErrorOutline24Icon />;
     }
     case "neutral": {
-      return <QuestionFill24Icon css={css} />;
+      return <QuestionFill24Icon />;
     }
     case "service": {
       return <ServiceFill24Icon />;
     }
     default: {
-      return <InformationFill24Icon css={css} />;
+      return <InformationFill24Icon />;
     }
   }
 };

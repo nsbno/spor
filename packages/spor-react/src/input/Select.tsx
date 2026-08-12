@@ -276,7 +276,6 @@ export const SelectValueText = function SelectValueText({
       ref={ref}
       placeholder={placeholder}
       data-with-placeholder={withPlaceholder || undefined}
-      truncate
     >
       <ChakraSelect.Context>
         {(select: {

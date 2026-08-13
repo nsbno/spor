@@ -18,7 +18,6 @@ import React, {
 import { createTexts, useTranslation } from "../i18n";
 import { ColorInlineLoader } from "../loader";
 import { buttonRecipe } from "../theme/recipes/button";
-import { SporSemantic } from "../theme/tokens/global-css";
 
 export type ButtonVariantProps = RecipeVariantProps<typeof buttonRecipe>;
 
@@ -43,8 +42,6 @@ export type ButtonProps = Exclude<
     download?: string;
     /* Use this to specify a path combined with as="a" */
     href?: string;
-    /* Semantic color theme. Sets the data-color attribute, which activates CSS variable overrides in the button recipe. */
-    "data-color"?: SporSemantic;
   };
 /**
  * Buttons are used to trigger actions.

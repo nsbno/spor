@@ -45,7 +45,7 @@ export const tableSlotRecipe = defineSlotRecipe({
       core: {
         root: {
           boxShadow: "0 0 0 1px var(--shadow-color)",
-          shadowColor: "outline.disabled",
+          shadowColor: "outline.core",
           borderRadius: "xs",
         },
 
@@ -61,13 +61,13 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
         header: {
           borderBottom: "sm",
-          borderColor: "outline.disabled",
+          borderColor: "outline.core",
           backgroundColor: "surface.disabled",
         },
         row: {
           ...numericStyles,
           borderBottom: "sm",
-          borderColor: "outline.disabled",
+          borderColor: "outline.core",
           "&:not(thead *):hover": {
             outline: "1px solid",
             outlineColor: "outline.core.hover",
@@ -95,17 +95,27 @@ export const tableSlotRecipe = defineSlotRecipe({
         cell: {
           backgroundColor: "surface.floating",
           _first: {
-            borderLeftRadius: "xs",
+            borderLeftRadius: "sm",
           },
           _last: {
-            borderRightRadius: "xs",
+            borderRightRadius: "sm",
           },
         },
         row: {
+          ...numericStyles,
           borderRadius: "sm",
           "&:not(:where([data-disable-hover] *)):hover": {
             "& td:not([data-semantic])": {
               backgroundColor: "surface.floating.hover",
+            },
+          },
+          "&:not(thead *)": {
+            boxShadow: "sm",
+            outline: "1px solid",
+            outlineOffset: "-1px",
+            outlineColor: "outline.floating",
+            _hover: {
+              outlineColor: "outline.floating.hover",
             },
           },
         },

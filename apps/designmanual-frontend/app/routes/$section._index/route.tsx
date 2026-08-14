@@ -3,6 +3,7 @@ import { groq } from "@sanity/groq-store";
 import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
+  Button,
   Flex,
   Grid,
   GridItem,
@@ -16,6 +17,7 @@ import invariant from "tiny-invariant";
 import { resolveLinkGroq, SanityImage } from "~/features/cms/sanity/query";
 import { ResponsiveImage } from "~/features/portable-text/components/ResponsiveImage";
 import { PortableText } from "~/features/portable-text/PortableText";
+import { getIcon } from "~/utils/getIcon";
 import { useLinkProps } from "~/utils/link";
 import { sanitizeInternalHref } from "~/utils/sanitize";
 import { getClient } from "~/utils/sanity/client";
@@ -38,8 +40,8 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
       image,
       promotedLinks[]{
         text,
-        link, 
         icon,
+        ${resolveLinkGroq("link")}, 
       },
       cardLinks[]{
         _key,
@@ -76,7 +78,14 @@ type ImageCard = {
   textContent?: PortableTextBlock[];
   linkType?: string;
   image: SanityImage;
-  href?: string;
+  href: string;
+  anchor?: string;
+};
+
+type PromotedLink = {
+  text: string;
+  icon?: string;
+  href: string;
   anchor?: string;
 };
 
@@ -96,6 +105,7 @@ export default function Index() {
   const gradientToTop =
     "linear-gradient(to top, var(--spor-colors-bg-accent), transparent)";
 
+  console.log(page?.promotedLinks);
   return (
     <Box backgroundColor="bg" width="100%">
       <Flex
@@ -137,19 +147,38 @@ export default function Index() {
           </Box>
         )}
         <Stack
-          gap="2"
+          gap="3"
           maxWidth={introductionWidth}
           paddingLeft={[4, 5, 8, 10]}
           paddingRight={[4, 5, 8, 2]}
         >
           <Heading as="h1">{page?.title}</Heading>
           <PortableText value={page?.introduction} />
+          <Flex gap="1.5" flexWrap="wrap">
+            {page?.promotedLinks?.map((link: PromotedLink, index: number) => {
+              return (
+                <Button
+                  variant="tertiary"
+                  size="sm"
+                  key={index}
+                  leftIcon={
+                    link.icon
+                      ? getIcon({ iconName: link.icon, size: 24 })
+                      : undefined
+                  }
+                  asChild
+                >
+                  <a href={link.href}>{link.text}</a>
+                </Button>
+              );
+            })}
+          </Flex>
         </Stack>
       </Flex>
       <Box
-        padding={10}
+        paddingX={10}
         position="relative"
-        top="-10rem"
+        top="-5rem"
         justifyContent="center"
         display="flex"
       >
@@ -166,11 +195,12 @@ export default function Index() {
           >
             {page?.cardLinks?.map((card: ImageCard) => (
               <GridItem key={card._key}>
-                <IconCard
+                <ImageCard
+                  _key={card._key}
                   title={card.title}
                   textContent={card.textContent}
                   image={card.image}
-                  href={card.href ?? ""}
+                  href={card.href}
                   anchor={card.anchor}
                 />
               </GridItem>
@@ -182,27 +212,11 @@ export default function Index() {
   );
 }
 
-export type IconCardProps = {
-  title: string;
-  textContent?: PortableTextBlock[];
-  image: SanityImage;
-  href: string;
-  anchor?: string;
-};
-
-const IconCard = ({
-  title,
-  textContent,
-  image,
-  href,
-  anchor,
-}: IconCardProps) => {
-  //console.log(href);
-
+const ImageCard = ({ title, textContent, image, href, anchor }: ImageCard) => {
   const cleandedHref =
     href && href.includes("http") ? href : sanitizeInternalHref(href);
   const { linkProps, isExternal } = useLinkProps(cleandedHref, anchor);
-  console.log(linkProps, "linkProps");
+
   return (
     <PressableCard
       maxWidth={["100%", "270px"]}

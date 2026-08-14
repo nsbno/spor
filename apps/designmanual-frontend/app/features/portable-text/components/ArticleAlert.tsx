@@ -14,12 +14,12 @@ import { ArticleBadgeProps } from "./ArticleBadge";
 export const ArticleAlert = ({ badgeType, description }: ArticleBadgeType) => {
   const articleBadgeAlertVariant: Record<
     ArticleBadgeProps["badgeType"],
-    AlertProps["variant"]
+    "success" | "info" | "warning" | "critical"
   > = {
     new: "success",
     updated: "info",
-    beta: "important",
-    deprecated: "error",
+    beta: "warning",
+    deprecated: "critical",
   };
   const articleBadgeAlertIcon: Record<
     ArticleBadgeProps["badgeType"],
@@ -32,7 +32,7 @@ export const ArticleAlert = ({ badgeType, description }: ArticleBadgeType) => {
   };
   return (
     <Alert
-      variant={articleBadgeAlertVariant[badgeType]}
+      data-color={articleBadgeAlertVariant[badgeType]}
       icon={articleBadgeAlertIcon[badgeType]}
       role="status"
       aria-live="polite"

@@ -125,12 +125,11 @@ export default function Index() {
             marginBottom={[4, 4, 4, 0]}
             maxWidth={["100%", "100%", "100%", "40%"]}
           >
-            <Box position="relative">
+            <Box position="relative" height="100%">
               <ResponsiveImage
                 image={page.image}
                 size="lg"
                 height={["12rem", "12rem", "12rem", "100%"]}
-                aspectRatio={16 / 8}
               />
               <Box
                 position="absolute"

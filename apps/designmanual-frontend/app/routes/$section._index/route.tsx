@@ -105,7 +105,6 @@ export default function Index() {
   const gradientToTop =
     "linear-gradient(to top, var(--spor-colors-bg-accent), transparent)";
 
-  console.log(page?.promotedLinks);
   return (
     <Box backgroundColor="bg" width="100%">
       <Flex

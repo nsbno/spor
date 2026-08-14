@@ -166,6 +166,11 @@ export const selectSlotRecipe = defineSlotRecipe({
         outlineColor: "outline.error",
       },
     },
+    valueText: {
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+    },
     itemText: {
       flex: "1",
       alignItems: "center",

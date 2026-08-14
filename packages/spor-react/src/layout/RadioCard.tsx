@@ -1,5 +1,6 @@
 "use client";
 import {
+  Flex,
   RadioCard as ChakraRadioCard,
   RecipeVariantProps,
   useSlotRecipe,
@@ -64,7 +65,7 @@ export const RadioCard = ({
       />
       <ChakraRadioCard.ItemControl id={itemControlId} aria-hidden>
         {showIndicator && <ChakraRadioCard.ItemIndicator />}
-        {children}
+        <Flex direction="column">{children}</Flex>
       </ChakraRadioCard.ItemControl>
     </ChakraRadioCard.Item>
   );

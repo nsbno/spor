@@ -5,7 +5,7 @@ import {
   TokensFill24Icon,
   WarningOutline24Icon,
 } from "@vygruppen/spor-icon-react";
-import { Alert, AlertProps } from "@vygruppen/spor-react";
+import { Alert } from "@vygruppen/spor-react";
 
 import { ArticleBadgeType } from "~/utils/initialSanityData.server";
 

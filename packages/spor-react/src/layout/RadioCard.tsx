@@ -46,7 +46,7 @@ export const RadioCard = ({
 }: RadioCardItemProps & {
   ref?: React.Ref<HTMLInputElement>;
 }) => {
-  const { inputProps, children } = props;
+  const { inputProps, children, invalid } = props;
   const uniqueId = useId();
   const itemControlId = `radio-card-item-control-${uniqueId}`;
 
@@ -54,7 +54,7 @@ export const RadioCard = ({
     inputProps?.["aria-labelledby"] || inputProps?.["aria-label"];
 
   return (
-    <ChakraRadioCard.Item {...props}>
+    <ChakraRadioCard.Item {...props} aria-invalid={invalid}>
       <ChakraRadioCard.ItemHiddenInput
         aria-labelledby={
           inputHasAriaLabel ? inputProps?.["aria-labelledby"] : itemControlId

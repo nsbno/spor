@@ -26,7 +26,20 @@ function usePageTracking() {
 }
 export const RootLayout = ({ children }: BaseLayoutProps) => {
   const [headerOffset, setHeaderOffset] = useState(110);
+  const location = useLocation();
 
+  const isLandingPage =
+    location?.pathname === "/" ||
+    location?.pathname === "/ressurser" ||
+    location?.pathname === "/identitet" ||
+    location?.pathname === "/spor";
+  const marginLeft = isLandingPage
+    ? [0, null, null, "18rem"]
+    : [0, null, null, "21rem"];
+
+  const paddingTop = isLandingPage ? 0 : 8;
+  const paddingRight = isLandingPage ? 0 : [2, 6, 6, 6];
+  const marginX = isLandingPage ? 0 : [2, 6, 8, 0];
   usePageTracking();
 
   return (
@@ -35,8 +48,8 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
         <SiteHeader onHeightChange={setHeaderOffset} />
 
         <Flex
-          marginX={[2, 6, 8, 0]}
-          marginRight={[2, 6, 6, 6]}
+          marginX={marginX}
+          marginRight={paddingRight}
           flex={1}
           position="relative"
           minWidth={0}
@@ -46,8 +59,8 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
           <Flex
             as="main"
             alignItems="stretch"
-            marginLeft={[0, null, null, "21rem"]}
-            paddingTop={8}
+            marginLeft={marginLeft}
+            paddingTop={paddingTop}
             flex={1}
             minWidth={0}
           >

@@ -91,6 +91,9 @@ export const tableSlotRecipe = defineSlotRecipe({
           ...numericStyles,
           borderBottom: "sm",
           borderColor: "outline.disabled",
+          "&:not(:where([data-disable-hover] *)):not(:has(th)):hover": {
+            backgroundColor: "surface.neutral.hover",
+          },
 
           _last: {
             borderBottom: "none",
@@ -119,10 +122,8 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
         row: {
           borderRadius: "sm",
-          "&:not(:where([data-disable-hover] *)):hover": {
-            "& td:not([data-semantic])": {
-              backgroundColor: "surface.floating.hover",
-            },
+          "&:not(:where([data-disable-hover] *)):not(:has(th)):hover": {
+            backgroundColor: "surface.core",
           },
         },
       },
@@ -143,10 +144,8 @@ export const tableSlotRecipe = defineSlotRecipe({
         row: {
           borderBottom: "sm",
           borderColor: "outline.disabled",
-          "&:not(:where([data-disable-hover] *)):hover": {
-            "& td:not([data-semantic])": {
-              backgroundColor: "surface.ghost.hover",
-            },
+          "&:not(:where([data-disable-hover] *)):not(:has(th)):hover": {
+            backgroundColor: "surface.ghost.hover",
           },
           ...numericStyles,
         },
@@ -212,60 +211,6 @@ export const tableSlotRecipe = defineSlotRecipe({
           paddingY: 2,
         },
       },
-    },
-  },
-});
-
-const createRowSemanticVariant = (semantic: string) => ({
-  row: {
-    "& td:not([data-semantic])": {
-      backgroundColor: `surface.${semantic}`,
-      color: `text.${semantic}`,
-    },
-    "&:not(:where([data-disable-hover] *)):hover": {
-      "& td:not([data-semantic])": {
-        backgroundColor: `surface.${semantic}.hover`,
-      },
-    },
-  },
-});
-
-export const tableRowSlotRecipe = defineSlotRecipe({
-  className: "spor-table-row",
-  slots: ["row"],
-  variants: {
-    semantic: {
-      info: createRowSemanticVariant("info"),
-      success: createRowSemanticVariant("success"),
-      warning: createRowSemanticVariant("warning"),
-      notice: createRowSemanticVariant("notice"),
-      caution: createRowSemanticVariant("caution"),
-      critical: createRowSemanticVariant("critical"),
-    },
-  },
-});
-
-const createCellSemanticVariant = (semantic: string) => ({
-  cell: {
-    backgroundColor: `surface.${semantic}`,
-    color: `text.${semantic}`,
-    "tr:not(:where([data-disable-hover] *)):hover &": {
-      backgroundColor: `surface.${semantic}.hover`,
-    },
-  },
-});
-
-export const tableCellSlotRecipe = defineSlotRecipe({
-  className: "spor-table-cell",
-  slots: ["cell"],
-  variants: {
-    semantic: {
-      info: createCellSemanticVariant("info"),
-      success: createCellSemanticVariant("success"),
-      warning: createCellSemanticVariant("warning"),
-      notice: createCellSemanticVariant("notice"),
-      caution: createCellSemanticVariant("caution"),
-      critical: createCellSemanticVariant("critical"),
     },
   },
 });

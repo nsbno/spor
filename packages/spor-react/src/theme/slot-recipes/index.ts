@@ -33,8 +33,6 @@ import { selectSlotRecipe } from "./select";
 import { stepperSlotRecipe } from "./stepper";
 import { switchSlotRecipe } from "./switch";
 import {
-  tableCellSlotRecipe,
-  tableRowSlotRecipe,
   tableSlotRecipe,
 } from "./table";
 import { tabsSlotRecipe } from "./tabs";
@@ -71,8 +69,6 @@ export const slotRecipes = {
   stepper: stepperSlotRecipe,
   switch: switchSlotRecipe,
   table: tableSlotRecipe,
-  tableCell: tableCellSlotRecipe,
-  tableRow: tableRowSlotRecipe,
   tabs: tabsSlotRecipe,
   travelTag: travelTagSlotRecipe,
   toast: toastSlotRecipe,

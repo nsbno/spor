@@ -88,15 +88,15 @@ export const Table = ({
       {...(disableHover ? { "data-disable-hover": "" } : {})}
       {...rest}
     >
-        <SortContext.Provider
-          value={{
-            enabled: sortable,
-            sortState,
-            onSort: handleSort,
-          }}
-        >
-          {children}
-        </SortContext.Provider>
+      <SortContext.Provider
+        value={{
+          enabled: sortable,
+          sortState,
+          onSort: handleSort,
+        }}
+      >
+        {children}
+      </SortContext.Provider>
     </ChakraTable.Root>
   );
 };
@@ -194,4 +194,3 @@ export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
     </ChakraTable.Body>
   );
 };
-

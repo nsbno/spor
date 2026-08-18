@@ -91,9 +91,6 @@ export const tableSlotRecipe = defineSlotRecipe({
           ...numericStyles,
           borderBottom: "sm",
           borderColor: "outline.disabled",
-          "&:not(:where([data-disable-hover] *)):not(:has(th)):hover": {
-            backgroundColor: "surface.neutral.hover",
-          },
 
           _last: {
             borderBottom: "none",
@@ -123,7 +120,7 @@ export const tableSlotRecipe = defineSlotRecipe({
         row: {
           borderRadius: "sm",
           "&:not(:where([data-disable-hover] *)):not(:has(th)):hover": {
-            backgroundColor: "surface.core",
+            backgroundColor: "surface.floating.hover",
           },
         },
       },

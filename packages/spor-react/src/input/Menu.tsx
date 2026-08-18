@@ -21,7 +21,15 @@ import {
 import { ReactNode, Ref } from "react";
 import { createContext, useContext } from "react";
 
-import { Button, ButtonProps, Checkbox } from "..";
+import { SporSemantic } from "@/theme/tokens/global-css";
+
+import {
+  Button,
+  ButtonProps,
+  Checkbox,
+  DataColorProvider,
+  useDataColor,
+} from "..";
 
 type Variant = Pick<MenuRootProps, "variant">;
 
@@ -48,11 +56,17 @@ export const useMenuContext = () => useContext(CustomMenuContext);
  * ```
  *
  */
-export const Menu = ({ children, ...props }: MenuRootProps) => {
+export const Menu = ({
+  children,
+  "data-color": dataColor,
+  ...props
+}: MenuRootProps & { "data-color"?: SporSemantic }) => {
   return (
-    <CustomMenuContext.Provider value={{ variant: props.variant }}>
-      <ChakraMenu.Root {...props}>{children}</ChakraMenu.Root>
-    </CustomMenuContext.Provider>
+    <DataColorProvider data-color={dataColor}>
+      <CustomMenuContext.Provider value={{ variant: props.variant }}>
+        <ChakraMenu.Root {...props}>{children}</ChakraMenu.Root>
+      </CustomMenuContext.Provider>
+    </DataColorProvider>
   );
 };
 
@@ -61,10 +75,12 @@ export const MenuContent = ({
   ref,
   ...props
 }: MenuContentProps & { ref?: Ref<HTMLDivElement> }) => {
+  const dataColor = useDataColor();
+
   return (
     <Portal>
       <ChakraMenu.Positioner>
-        <ChakraMenu.Content ref={ref} {...props}>
+        <ChakraMenu.Content ref={ref} data-color={dataColor} {...props}>
           {children}
         </ChakraMenu.Content>
       </ChakraMenu.Positioner>
@@ -88,6 +104,8 @@ export const MenuTrigger = ({
   ...props
 }: MenuTriggerProps) => {
   const { variant } = useMenuContext();
+  const dataColor = useDataColor();
+
   const { open } = useChakraMenuContext();
   const ChevronIcon =
     size === "sm" ? DropdownDownFill18Icon : DropdownDownFill24Icon;
@@ -101,6 +119,7 @@ export const MenuTrigger = ({
   return (
     <ChakraMenu.Trigger asChild ref={ref}>
       <Button
+        data-color={dataColor}
         leftIcon={icon}
         variant={getButtonVariant()}
         size={size}

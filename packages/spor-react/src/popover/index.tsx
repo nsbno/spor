@@ -10,8 +10,21 @@ import React, { useEffect } from "react";
 
 import { CloseButton } from "@/button";
 import { useColorMode } from "@/color-mode";
+import { SporSemantic } from "@/theme/tokens/global-css";
 
-export const Popover = ChakraPopover.Root;
+import { DataColorProvider, useDataColor } from "..";
+
+export const Popover = ({
+  children,
+  "data-color": dataColor,
+  ...rest
+}: ChakraPopover.RootProps & { "data-color"?: SporSemantic }) => {
+  return (
+    <DataColorProvider data-color={dataColor}>
+      <ChakraPopover.Root {...rest}>{children}</ChakraPopover.Root>
+    </DataColorProvider>
+  );
+};
 
 export const PopoverTrigger = ({
   ref,
@@ -20,6 +33,8 @@ export const PopoverTrigger = ({
 }: ChakraPopover.TriggerProps & {
   ref?: React.Ref<HTMLButtonElement>;
 }) => {
+  const dataColor = useDataColor();
+
   const isStringChild = typeof children === "string";
 
   return (
@@ -27,6 +42,7 @@ export const PopoverTrigger = ({
       ref={ref}
       asChild={!isStringChild}
       width={isStringChild ? undefined : "fit-content"}
+      data-color={dataColor}
       {...props}
     >
       {isStringChild ? children : <Box>{children}</Box>}
@@ -47,6 +63,8 @@ export const PopoverContent = ({
 }: PopoverProps & {
   ref?: React.Ref<HTMLDivElement>;
 }) => {
+  const dataColor = useDataColor();
+
   const { colorMode } = useColorMode();
 
   const closeButtonRef = React.useRef<HTMLButtonElement>(null);
@@ -62,7 +80,7 @@ export const PopoverContent = ({
   return (
     <Portal>
       <ChakraPopover.Positioner>
-        <ChakraPopover.Content ref={ref} {...props}>
+        <ChakraPopover.Content ref={ref} data-color={dataColor} {...props}>
           <ChakraPopover.Arrow />
           <ChakraPopover.Body {...props}>{children}</ChakraPopover.Body>
           {showCloseButton && (

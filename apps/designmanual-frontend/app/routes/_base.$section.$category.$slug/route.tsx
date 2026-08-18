@@ -41,7 +41,8 @@ import { RightSidebar } from "../_base/right-sidebar/RightSidebar";
 import { ExamplesSection } from "./component-docs/ExampleSection";
 
 type ResourceLink = {
-  linkType: "figma" | "react" | "react-native";
+  linkType: "figma" | "react" | "react-native" | "custom";
+  buttonText?: string;
   url: string;
 };
 
@@ -97,7 +98,11 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
       badgeType, 
       description
     },
-    resourceLinks[linkType == "react" || linkType == "react-native" || linkType == "figma"],
+    resourceLinks[linkType == "react" || linkType == "react-native" || linkType == "figma" || linkType == "custom"] {
+      linkType,
+      buttonText,
+      url
+    },
     content[]{
       _type == 'reference' => @->,
       _type != 'reference' => @,
@@ -228,7 +233,9 @@ export default function ArticlePage() {
                   rightIcon={<LinkOutOutline18Icon />}
                 >
                   <Link to={link.url} target="_blank">
-                    {mapLinkToLabel(link.linkType)}
+                    {link.linkType === "custom"
+                      ? link.buttonText
+                      : mapLinkToLabel(link.linkType)}
                   </Link>
                 </Button>
               ))}

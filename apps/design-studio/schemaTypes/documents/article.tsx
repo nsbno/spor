@@ -114,9 +114,18 @@ export const article = defineType({
                   { title: "Figma", value: "figma" },
                   { title: "React", value: "react" },
                   { title: "React Native", value: "react-native" },
+                  { title: "Custom", value: "custom" },
                 ],
               },
               validation: (Rule) => Rule.required(),
+            },
+            {
+              name: "buttonText",
+              type: "string",
+              title: "Button text",
+              hidden: ({ parent }) => {
+                return parent?.linkType !== "custom";
+              },
             },
             {
               name: "url",

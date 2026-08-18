@@ -32,9 +32,7 @@ import { radioCardSlotRecipe } from "./radio-card";
 import { selectSlotRecipe } from "./select";
 import { stepperSlotRecipe } from "./stepper";
 import { switchSlotRecipe } from "./switch";
-import {
-  tableSlotRecipe,
-} from "./table";
+import { tableSlotRecipe } from "./table";
 import { tabsSlotRecipe } from "./tabs";
 import { toastSlotRecipe } from "./toast";
 import { travelTagSlotRecipe } from "./travel-tag";

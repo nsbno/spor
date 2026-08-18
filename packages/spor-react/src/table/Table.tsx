@@ -5,10 +5,8 @@ import {
   RecipeVariantProps,
   Table as ChakraTable,
   TableBodyProps as ChakraTableBodyProps,
-  TableCellProps as ChakraTableCellProps,
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
-  TableRowProps as ChakraTableRowProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
 import {
@@ -36,14 +34,6 @@ import {
 
 type TableVariantProps = RecipeVariantProps<typeof tableSlotRecipe>;
 
-type SemanticValue =
-  | "info"
-  | "success"
-  | "warning"
-  | "notice"
-  | "caution"
-  | "critical";
-
 const SortContext = createContext<{
   enabled: boolean;
   sortState: SortState;
@@ -56,16 +46,11 @@ const SortContext = createContext<{
 
 export const useTableSort = () => useContext(SortContext);
 
-const SemanticContext = createContext<{ semantic?: SemanticValue }>({
-  semantic: undefined,
-});
-
 export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   PropsWithChildren<TableVariantProps> & {
     variant?: "ghost" | "core" | "floating";
     colorPalette?: "grey" | "green" | "white";
     sortable?: boolean;
-    semantic?: SemanticValue;
     disableHover?: boolean;
     ref?: React.Ref<HTMLTableElement>;
   };
@@ -76,7 +61,6 @@ export const Table = ({
   colorPalette,
   children,
   sortable = false,
-  semantic,
   disableHover,
   ref,
   ...rest
@@ -104,7 +88,6 @@ export const Table = ({
       {...(disableHover ? { "data-disable-hover": "" } : {})}
       {...rest}
     >
-      <SemanticContext.Provider value={{ semantic }}>
         <SortContext.Provider
           value={{
             enabled: sortable,
@@ -114,7 +97,6 @@ export const Table = ({
         >
           {children}
         </SortContext.Provider>
-      </SemanticContext.Provider>
     </ChakraTable.Root>
   );
 };
@@ -213,32 +195,3 @@ export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
   );
 };
 
-export type TableRowProps = ChakraTableRowProps & {
-  semantic?: SemanticValue;
-};
-
-export const TableRow = ({ children, semantic, ...rest }: TableRowProps) => {
-  const { semantic: tableSemantic } = useContext(SemanticContext);
-  const effectiveSemantic = semantic ?? tableSemantic;
-  const recipe = useSlotRecipe({ key: "tableRow" });
-  const styles = recipe({ semantic: effectiveSemantic });
-  return (
-    <ChakraTable.Row css={styles.row} {...rest}>
-      {children}
-    </ChakraTable.Row>
-  );
-};
-
-export type TableCellProps = ChakraTableCellProps & {
-  semantic?: SemanticValue;
-};
-
-export const TableCell = ({ children, semantic, ...rest }: TableCellProps) => {
-  const recipe = useSlotRecipe({ key: "tableCell" });
-  const styles = recipe({ semantic });
-  return (
-    <ChakraTable.Cell css={styles.cell} data-semantic={semantic} {...rest}>
-      {children}
-    </ChakraTable.Cell>
-  );
-};

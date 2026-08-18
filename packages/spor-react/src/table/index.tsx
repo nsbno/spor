@@ -2,14 +2,18 @@ export * from "./Table";
 export type {
   TableCaptionProps,
   TableColumnProps,
-  TableFooterProps,
+  TableRowProps,
+  TableCellProps,
   TableHeaderProps,
+  TableFooterProps,
   TableRootProps,
 } from "@chakra-ui/react";
 export {
   TableCaption,
   TableColumn,
   TableColumnGroup,
+  TableRow,
+  TableCell,
   TableFooter,
   TableHeader,
   TableRoot,

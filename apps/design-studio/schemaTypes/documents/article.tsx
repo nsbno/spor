@@ -128,6 +128,14 @@ export const article = defineType({
               },
             },
             {
+              name: "icon",
+              type: "icon",
+              title: "Icon",
+              hidden: ({ parent }) => {
+                return parent?.linkType !== "custom";
+              },
+            },
+            {
               name: "url",
               type: "url",
               title: "URL",

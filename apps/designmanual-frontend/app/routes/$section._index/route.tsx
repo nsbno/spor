@@ -174,7 +174,7 @@ export default function Index() {
         </Stack>
       </Flex>
       <Box
-        paddingX={10}
+        paddingX={[2, 4, 4, 8]}
         position="relative"
         top="-5rem"
         justifyContent="center"
@@ -217,7 +217,7 @@ const ImageCard = ({ title, textContent, image, href, anchor }: ImageCard) => {
 
   return (
     <PressableCard
-      maxWidth={["100%", "270px"]}
+      maxWidth={["100%", "100%", "100%", "270px"]}
       backgroundColor="surface"
       padding="3"
       variant="floating"

@@ -126,6 +126,16 @@ export const article = defineType({
               hidden: ({ parent }) => {
                 return parent?.linkType !== "custom";
               },
+              validation: (Rule) =>
+                Rule.custom((value, context) => {
+                  if (
+                    (context.parent as any)?.linkType === "custom" &&
+                    !value
+                  ) {
+                    return "Required";
+                  }
+                  return true;
+                }),
             },
             {
               name: "icon",

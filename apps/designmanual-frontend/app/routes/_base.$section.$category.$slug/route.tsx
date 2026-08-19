@@ -298,7 +298,7 @@ export default function ArticlePage() {
         overflow="auto"
         right={0}
         paddingLeft={1}
-        paddingTop={3}
+        paddingTop={8}
         top={`${headerOffset}px`}
         transition="all .3s linear"
         height={`calc(100vh - ${headerOffset}px)`}

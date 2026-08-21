@@ -4,7 +4,7 @@ import {
   Tabs as ChakraTabs,
   TabsRootProps as ChakraTabsRootProps,
 } from "@chakra-ui/react";
-import { PropsWithChildren } from "react";
+import { ComponentProps, PropsWithChildren } from "react";
 
 import { tabsSlotRecipe } from "../theme/slot-recipes/tabs";
 
@@ -68,7 +68,16 @@ export const Tabs = ({
   return <ChakraTabs.Root {...props} ref={ref} variant={variant} size={size} />;
 };
 
-export const TabsList = ChakraTabs.List;
+export const TabsList = ({
+  children,
+  ...props
+}: ComponentProps<typeof ChakraTabs.List>) => (
+  <ChakraTabs.List {...props}>
+    <ChakraTabs.Indicator />
+
+    {children}
+  </ChakraTabs.List>
+);
 export const TabsTrigger = ChakraTabs.Trigger;
 export const TabsIndicator = ChakraTabs.Indicator;
 export const TabsContent = ChakraTabs.Content;

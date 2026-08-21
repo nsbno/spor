@@ -16,6 +16,8 @@ export const tabsSlotRecipe = defineSlotRecipe({
       gap: 0.5,
       borderRadius: "xl",
       width: "fit-content",
+      position: "relative",
+      overflow: "hidden",
     },
     trigger: {
       display: "flex",
@@ -27,6 +29,29 @@ export const tabsSlotRecipe = defineSlotRecipe({
       height: "100%",
       whiteSpace: "nowrap",
       borderRadius: "xl",
+      position: "relative",
+      _selected: {
+        backgroundColor: "surface.brand",
+        color: "text.brand",
+        _hover: {
+          backgroundColor: "surface.brand",
+        },
+      },
+    },
+    indicator: {
+      position: "absolute",
+      top: "3px",
+      left: 0,
+      width: "var(--width)",
+      height: "var(--height)",
+      transform: "translate(var(--x), var(--y))",
+      transition: "transform 0.2s ease, width 0.2s ease",
+      borderRadius: "xl",
+      backgroundColor: "surface.brand",
+      _hover: {
+        backgroundColor: "surface.brand.hover",
+        outline: "none",
+      },
     },
   },
   variants: {
@@ -74,19 +99,13 @@ export const tabsSlotRecipe = defineSlotRecipe({
             outline: "2px solid",
             outlineColor: "outline.core.hover",
             outlineOffset: "-2px",
-          },
-          _active: {
-            backgroundColor: "surface.brand.active",
-            color: "text.brand",
-            outline: "none",
-          },
-          _selected: {
-            backgroundColor: "surface.brand",
-            color: "text.brand",
-            _hover: {
+            _active: {
+              backgroundColor: "surface.core.active",
               outline: "none",
+              outlineColor: "transparent",
             },
           },
+
           _disabled: {
             backgroundColor: "surface.disabled",
             color: "surface.disabled",
@@ -95,7 +114,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
       },
       accent: {
         list: {
-          backgroundColor: "bg.accent",
+          backgroundColor: "surface.accent",
           color: "text.accent",
         },
         trigger: {
@@ -108,18 +127,15 @@ export const tabsSlotRecipe = defineSlotRecipe({
           _hover: {
             backgroundColor: "surface.accent.hover",
             _active: {
-              backgroundColor: "surface.brand.active",
-              color: "text.brand",
+              backgroundColor: "surface.accent.active",
             },
           },
-          _selected: {
-            backgroundColor: "surface.brand",
-            color: "text.brand",
-            _hover: {
-              backgroundColor: "surface.brand.hover",
-              color: "text.brand",
-              outline: "none",
-            },
+        },
+        indicator: {
+          backgroundColor: "surface.brand",
+          _hover: {
+            backgroundColor: "surface.brand.hover",
+            outline: "none",
           },
         },
       },
@@ -133,6 +149,9 @@ export const tabsSlotRecipe = defineSlotRecipe({
         trigger: {
           paddingX: 2,
           paddingY: 0,
+        },
+        indicator: {
+          top: "2px",
         },
       },
       sm: {
@@ -163,10 +182,6 @@ export const tabsSlotRecipe = defineSlotRecipe({
           fontWeight: "bold",
           fontSize: "sm",
           paddingX: 3,
-          _focus: {
-            border: "md",
-            borderColor: "surface.accent",
-          },
         },
       },
     },

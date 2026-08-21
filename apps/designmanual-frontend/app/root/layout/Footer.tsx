@@ -16,7 +16,6 @@ export const Footer = () => {
       marginTop={10}
       padding={{ base: 4, md: 7 }}
       width="100%"
-      zIndex="banner"
       justifyContent="space-between"
     >
       <Box alignSelf="center">

@@ -121,10 +121,11 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
                 variant="floating"
                 withChevron={false}
                 icon={<SpeechBubbleOutline24Icon />}
+                size={["sm", "md"]}
               >
                 Feedback?
               </CardSelectTrigger>
-              <CardSelectContent minWidth="25rem">
+              <CardSelectContent minWidth={["17rem", "25rem"]}>
                 <FeedbackForm />
               </CardSelectContent>
             </CardSelect>
@@ -197,7 +198,7 @@ const FeedbackForm = () => {
               paddingTop="3"
             />
           </Field>
-          <Button type="submit" onClick={onSubmit}>
+          <Button type="submit" onClick={onSubmit} size={["sm", "md"]}>
             Submit
           </Button>
         </FieldsetContent>
@@ -211,7 +212,11 @@ const FeedbackForm = () => {
         </Heading>
         <Text>Feedback is reviewed once a week.</Text>
         <IdeIllustration width={200} height={140} />
-        <Button variant="tertiary" onClick={handleWriteAnotherFeedback}>
+        <Button
+          variant="tertiary"
+          size={["sm", "md"]}
+          onClick={handleWriteAnotherFeedback}
+        >
           Write another feedback
         </Button>
       </Stack>

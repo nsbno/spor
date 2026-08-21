@@ -95,7 +95,7 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
           if (item._type === "divider") {
             return (
               <Separator
-                key={item.url}
+                key={`divider-${index}`}
                 marginY={2}
                 size="sm"
                 variant="dashed"
@@ -104,7 +104,7 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
           } else if (item._type === "heading") {
             return (
               <Text
-                key={item.title}
+                key={item.title ?? `heading-${index}`}
                 fontSize="desktop.2xs"
                 fontWeight="bold"
                 color="text.subtle"
@@ -237,9 +237,9 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
   return (
     <Stack gap="2" direction="column">
       {sections &&
-        sections.map((section) => (
+        sections.map((section, index) => (
           <Expandable
-            key={`${section.slug.current}_em`}
+            key={`${section.slug.current}_em_${index}`}
             variant="ghost"
             title={section.title}
             startElement={
@@ -252,7 +252,7 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
               ?.find((menu) => {
                 return section.slug.current === menu.relatedTo?.slug;
               })
-              ?.menuItems?.map((item) => {
+              ?.menuItems?.map((item, index) => {
                 if (item._type === "divider") {
                   return null;
                 } else if (item._type === "heading") {
@@ -261,7 +261,7 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
                   return (
                     <Expandable
                       collapsible
-                      key={item.title}
+                      key={index + item.title}
                       title={item.title}
                       variant="ghost"
                       marginBottom={2}
@@ -269,9 +269,9 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
                       as="ul"
                       fontWeight="normal"
                     >
-                      {item.subItems.map((subItem) => (
+                      {item.subItems.map((subItem, index) => (
                         <MenuItem
-                          key={subItem.url}
+                          key={index + subItem.url}
                           url={handleExternalMenu(subItem.url ?? "", isPreview)}
                           title={subItem.title}
                         />
@@ -281,7 +281,7 @@ const MobileMenu = ({ sections, mobileMenus, isPreview }: MobileMenuProps) => {
                 }
                 return (
                   <MenuItem
-                    key={item.title}
+                    key={index + item.title}
                     url={handleExternalMenu(
                       item.link ?? item.url ?? "",
                       isPreview,

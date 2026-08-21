@@ -176,7 +176,7 @@ const FeedbackForm = () => {
         <FieldsetContent display="flex" gap="3" flexDirection="column">
           <Field gap="1" fontSize="xs">
             <RadioGroup
-              required
+              aria-label="Feedback type"
               orientation="vertical"
               name="feedback-type"
               value={feedbackType}

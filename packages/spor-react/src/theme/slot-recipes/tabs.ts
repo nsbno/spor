@@ -31,8 +31,8 @@ export const tabsSlotRecipe = defineSlotRecipe({
       borderRadius: "xl",
       position: "relative",
       _selected: {
+        backgroundColor: "surface.brand",
         color: "text.brand",
-        transition: "transform  0.2s ease",
         _hover: {
           backgroundColor: "surface.brand",
         },

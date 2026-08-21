@@ -194,7 +194,7 @@ const FeedbackForm = () => {
               label="Your feedback"
               value={feedback}
               minHeight="6rem"
-              onChange={(e) => setFeedback(e.target.value)}
+              onChange={(event) => setFeedback(event.target.value)}
               paddingTop="3"
             />
           </Field>

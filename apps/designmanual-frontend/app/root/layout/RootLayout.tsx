@@ -148,7 +148,6 @@ const FeedbackForm = () => {
   const location = useLocation();
 
   const onSubmit = () => {
-    console.log("Feedback submitted:", { feedbackType, feedback });
     sendCustomEvent({
       event: "feedback_submitted",
       properties: {

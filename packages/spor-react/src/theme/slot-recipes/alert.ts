@@ -2,28 +2,6 @@ import { defineSlotRecipe } from "@chakra-ui/react";
 
 import { alertAnatomy } from "./anatomy";
 
-const createVariant = (variant: string) => ({
-  root: {
-    borderColor: `outline.${variant}`,
-    background: `surface.${variant}`,
-  },
-  description: {
-    color: `text.${variant}.subtle`,
-  },
-  title: {
-    color: `text.${variant}`,
-  },
-  closeButton: {
-    color: `text.${variant}`,
-    _hover: {
-      bg: `surface.${variant}.hover`,
-      _active: {
-        bg: `surface.${variant}.active`,
-      },
-    },
-  },
-});
-
 export const alertSlotRecipe = defineSlotRecipe({
   className: "spor-alert",
   slots: alertAnatomy.keys(),
@@ -37,9 +15,11 @@ export const alertSlotRecipe = defineSlotRecipe({
       position: "relative",
       textStyle: "sm",
       border: "sm",
+      backgroundColor: "surface.neutral",
+      borderColor: "outline.neutral",
     },
     description: {
-      color: "text",
+      color: "text.neutral.subtle",
     },
     content: {
       display: "flex",
@@ -49,22 +29,16 @@ export const alertSlotRecipe = defineSlotRecipe({
     },
     title: {
       fontWeight: "bold",
+      color: "text.neutral",
     },
-    closeButton: {},
-  },
-  variants: {
-    variant: {
-      important: createVariant("warning"),
-      alt: createVariant("notice"),
-      error: createVariant("critical"),
-      success: createVariant("success"),
-      info: createVariant("info"),
-      neutral: createVariant("neutral"),
-      "error-secondary": createVariant("caution"),
-      service: createVariant("service"),
+    closeButton: {
+      color: `text.neutral`,
+      _hover: {
+        bg: `surface.neutral.hover`,
+        _active: {
+          bg: `surface.neutral.active`,
+        },
+      },
     },
-  },
-  defaultVariants: {
-    variant: "info",
   },
 });

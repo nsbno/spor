@@ -23,16 +23,17 @@ Usage:
 
 Available transforms:
   color-tokens    Migrate old color tokens to new naming convention
+  data-color      Migrate colorPalette prop to data-color prop
 
 Examples:
-  # Run color-tokens transform on a single file
-  spor-codemod color-tokens src/App.tsx
+  # Dry run (shows changes without applying them)
+  spor-codemod <transform-script> src/ --dry
+
+  # Run codemod script on a single file
+  spor-codemod <transform-script> src/App.tsx
 
   # Run on entire directory
-  spor-codemod color-tokens src/
-
-  # Dry run (shows changes without applying them)
-  spor-codemod color-tokens src/ --dry
+  spor-codemod <transform-script> src/
 
 Options:
   --dry           Dry run (no changes are written to files)
@@ -50,6 +51,7 @@ const [transform, ...restArguments] = arguments_;
 // Map friendly transform names to actual file paths
 const transformMap = {
   "color-tokens": path.join(__dirname, "../transforms/tokens/color-tokens.js"),
+  "data-color": path.join(__dirname, "../transforms/data-color/data-color.js"),
 };
 
 const transformPath = transformMap[transform];

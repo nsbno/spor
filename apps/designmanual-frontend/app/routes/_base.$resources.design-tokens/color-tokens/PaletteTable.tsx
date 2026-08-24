@@ -81,7 +81,7 @@ export const PaletteTable = ({
               </TableCell>
               <TableCell>
                 <CopyTokenToClipBoard copyValue={paletteValue ?? ""}>
-                  <Badge colorPalette="grey">{paletteValue}</Badge>
+                  <Badge data-color="neutral">{paletteValue}</Badge>
                 </CopyTokenToClipBoard>
               </TableCell>
             </TableRow>

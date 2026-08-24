@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert as ChakraAlert, Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import {
   AltTransportFill24Icon,
   ErrorFill24Icon,
@@ -13,10 +13,10 @@ import {
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
 
-import { AlertProps } from "./Alert";
+import { SporSemantic } from "@/theme/tokens/global-css";
 
 type AlertIconProps = {
-  variant: ChakraAlert.RootProps["variant"];
+  variant: SporSemantic;
   customIcon?: IconComponent;
 };
 
@@ -41,11 +41,7 @@ export const AlertIcon = ({
   );
 };
 
-export const BaseAlertIcon = ({
-  variant,
-}: {
-  variant: AlertProps["variant"];
-}) => {
+export const BaseAlertIcon = ({ variant }: { variant: SporSemantic }) => {
   switch (variant) {
     case "info": {
       return <InformationFill24Icon />;
@@ -53,16 +49,16 @@ export const BaseAlertIcon = ({
     case "success": {
       return <SuccessFill24Icon />;
     }
-    case "important": {
+    case "warning": {
       return <WarningFill24Icon />;
     }
-    case "alt": {
+    case "notice": {
       return <AltTransportFill24Icon />;
     }
-    case "error": {
+    case "critical": {
       return <ErrorFill24Icon />;
     }
-    case "error-secondary": {
+    case "caution": {
       return <ErrorOutline24Icon />;
     }
     case "neutral": {

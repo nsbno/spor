@@ -65,7 +65,9 @@ export const RadioCard = ({
       />
       <ChakraRadioCard.ItemControl id={itemControlId} aria-hidden>
         {showIndicator && <ChakraRadioCard.ItemIndicator />}
-        <Flex direction="column">{children}</Flex>
+        <Flex direction="column" width="100%">
+          {children}
+        </Flex>
       </ChakraRadioCard.ItemControl>
     </ChakraRadioCard.Item>
   );

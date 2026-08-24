@@ -195,6 +195,7 @@ const FeedbackForm = () => {
               minHeight="6rem"
               onChange={(event) => setFeedback(event.target.value)}
               paddingTop="3"
+              borderTop="0"
             />
           </Field>
           <Button type="submit" onClick={onSubmit} size={["sm", "md"]}>

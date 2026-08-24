@@ -60,14 +60,8 @@ export const DrawerContent = ({
 }: DrawerContentProps & {
   ref?: React.Ref<HTMLDivElement>;
 }) => {
-  const {
-    children,
-    portalled = true,
-    portalRef,
-    hideHandle = false,
-    ...rest
-  } = props;
-  const { size, placement } = useRootDrawerProps();
+  const { children, portalled = true, portalRef, ...rest } = props;
+  const { placement } = useRootDrawerProps();
   const { setOpen } = useDialogContext();
   const handlers = useSwipeable({
     onSwiped: ({ dir }) => {
@@ -82,44 +76,17 @@ export const DrawerContent = ({
     },
     swipeDuration: 250,
   });
-  const sizeNotFull = size !== "full";
-  const showHandle = !hideHandle;
 
   return (
     <Portal disabled={!portalled} container={portalRef}>
       <ChakraDrawer.Positioner asChild>
         <Box {...handlers} width="100%">
           <ChakraDrawer.Content ref={ref} {...rest}>
-            {showHandle && sizeNotFull && placement === "bottom" && (
-              <CloseDrawerLine />
-            )}
             {children}
-            {showHandle && sizeNotFull && placement === "top" && (
-              <CloseDrawerLine />
-            )}
           </ChakraDrawer.Content>
         </Box>
       </ChakraDrawer.Positioner>
     </Portal>
-  );
-};
-
-export const CloseDrawerLine = ({
-  ref,
-  ...props
-}: React.ComponentProps<typeof Box>) => {
-  return (
-    <Box
-      width={7}
-      minHeight={1}
-      top={0}
-      marginY={2}
-      marginX="auto"
-      backgroundColor="outline.neutral"
-      borderRadius="xs"
-      {...props}
-      ref={ref}
-    />
   );
 };
 

@@ -61,6 +61,7 @@ export const drawerSlotRecipe = defineSlotRecipe({
       justifyContent: "space-between",
       paddingX: ["2", null, null, "5"],
       gap: "1",
+      paddingTop: ["2", null, null, "5"],
       paddingBottom: "1",
     },
     body: {

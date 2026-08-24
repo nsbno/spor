@@ -30,17 +30,23 @@ export const tabsSlotRecipe = defineSlotRecipe({
       whiteSpace: "nowrap",
       borderRadius: "xl",
       position: "relative",
+      ".spor-tabs__list:has(.spor-tabs__indicator) &": {
+        transition: "color 0.2s ease",
+      },
       _selected: {
-        backgroundColor: "surface.brand",
         color: "text.brand",
-        _hover: {
+        // @ts-expect-error — valid CSS selector, not recognized by Chakra's types
+        ".spor-tabs__list:not(:has(.spor-tabs__indicator)) &[data-selected]": {
           backgroundColor: "surface.brand",
+          _hover: {
+            backgroundColor: "surface.brand",
+          },
         },
       },
     },
     indicator: {
       position: "absolute",
-      top: "3px",
+      top: "2.5px",
       left: 0,
       width: "var(--width)",
       height: "var(--height)",
@@ -48,10 +54,6 @@ export const tabsSlotRecipe = defineSlotRecipe({
       transition: "transform 0.2s ease, width 0.2s ease",
       borderRadius: "xl",
       backgroundColor: "surface.brand",
-      _hover: {
-        backgroundColor: "surface.brand.hover",
-        outline: "none",
-      },
     },
   },
   variants: {
@@ -90,26 +92,26 @@ export const tabsSlotRecipe = defineSlotRecipe({
         list: {
           color: "text.core",
           border: "sm",
+          borderColor: "outline",
         },
         trigger: {
           color: "text.core",
           border: "md",
           borderColor: "transparent",
-          _hover: {
-            outline: "2px solid",
-            outlineColor: "outline.core.hover",
-            outlineOffset: "-2px",
-            _active: {
-              backgroundColor: "surface.core.active",
-              outline: "none",
-              outlineColor: "transparent",
+          "&:not([data-selected])": {
+            _hover: {
+              backgroundColor: "surface.ghost.hover",
+              _active: {
+                backgroundColor: "surface.ghost.active",
+                outline: "none",
+                outlineColor: "transparent",
+              },
             },
           },
-
-          _disabled: {
-            backgroundColor: "surface.disabled",
-            color: "surface.disabled",
-          },
+        },
+        _disabled: {
+          backgroundColor: "surface.disabled",
+          color: "surface.disabled",
         },
       },
       accent: {
@@ -124,19 +126,17 @@ export const tabsSlotRecipe = defineSlotRecipe({
             backgroundColor: "surface.disabled",
             color: "icon.disabled",
           },
-          _hover: {
-            backgroundColor: "surface.accent.hover",
-            _active: {
-              backgroundColor: "surface.accent.active",
+          "&:not([data-selected])": {
+            _hover: {
+              backgroundColor: "surface.accent.hover",
+              _active: {
+                backgroundColor: "surface.accent.active",
+              },
             },
           },
         },
         indicator: {
           backgroundColor: "surface.brand",
-          _hover: {
-            backgroundColor: "surface.brand.hover",
-            outline: "none",
-          },
         },
       },
     },
@@ -151,7 +151,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
           paddingY: 0,
         },
         indicator: {
-          top: "2px",
+          top: "1px",
         },
       },
       sm: {

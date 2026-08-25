@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 13.7.2
+
+### Patch Changes
+
+- ff28880: RadioCard: Make children take 100% width
+
 ## 13.7.1
 
 ### Patch Changes

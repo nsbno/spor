@@ -28,6 +28,7 @@ import { ArticleBadge } from "~/features/portable-text/components/ArticleBadge";
 import { PortableText } from "~/features/portable-text/PortableText";
 import { useHeaderOffset } from "~/root/layout/HeaderOffsetContext";
 import { ComponentDocs } from "~/routes/_base.$section.$category.$slug/component-docs/ComponentDocs";
+import { getIcon } from "~/utils/getIcon";
 import { ArticleBadgeType } from "~/utils/initialSanityData.server";
 import { getClient } from "~/utils/sanity/client";
 import {
@@ -41,7 +42,9 @@ import { RightSidebar } from "../_base/right-sidebar/RightSidebar";
 import { ExamplesSection } from "./component-docs/ExampleSection";
 
 type ResourceLink = {
-  linkType: "figma" | "react" | "react-native";
+  linkType: "figma" | "react" | "react-native" | "custom";
+  buttonText?: string;
+  icon?: string;
   url: string;
 };
 
@@ -97,7 +100,12 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
       badgeType, 
       description
     },
-    resourceLinks[linkType == "react" || linkType == "react-native" || linkType == "figma"],
+    resourceLinks[linkType == "react" || linkType == "react-native" || linkType == "figma" || linkType == "custom"] {
+      linkType,
+      buttonText,
+      icon,
+      url
+    },
     content[]{
       _type == 'reference' => @->,
       _type != 'reference' => @,
@@ -218,58 +226,51 @@ export default function ArticlePage() {
                 }}
               />
             )}
-            <Flex gap={1}>
-              {article.resourceLinks?.map((link: ResourceLink) => (
-                <Button
-                  asChild
-                  key={link.url}
-                  variant="tertiary"
-                  size="sm"
-                  rightIcon={<LinkOutOutline18Icon />}
-                >
-                  <Link to={link.url} target="_blank">
-                    {mapLinkToLabel(link.linkType)}
-                  </Link>
-                </Button>
-              ))}
-            </Flex>
+            {article.resourceLinks && article.resourceLinks.length > 0 && (
+              <Flex gap={1}>
+                {article.resourceLinks?.map((link: ResourceLink) => (
+                  <Button
+                    asChild
+                    key={link.url}
+                    variant="tertiary"
+                    size="sm"
+                    rightIcon={<LinkOutOutline18Icon />}
+                    leftIcon={
+                      link.linkType === "custom" && link.icon
+                        ? getIcon({ iconName: link.icon, size: 24 })
+                        : undefined
+                    }
+                  >
+                    <Link to={link.url} target="_blank">
+                      {link.linkType === "custom"
+                        ? link.buttonText
+                        : mapLinkToLabel(link.linkType)}
+                    </Link>
+                  </Button>
+                ))}
+              </Flex>
+            )}
           </Flex>
-          <Stack direction="column" gap={2}>
-            {article.badges?.map((badge: ArticleBadgeType, index: number) => (
-              <ArticleAlert
-                key={index}
-                badgeType={badge.badgeType}
-                description={badge.description}
-              />
-            ))}
-          </Stack>
-
-          <Box
-            width="20%"
-            display="none"
-            position="fixed"
-            overflow="auto"
-            right={0}
-            paddingLeft={1}
-            paddingTop={3}
-            top={`${headerOffset}px`}
-            transition="all .3s linear"
-            height={`calc(100vh - ${headerOffset}px)`}
-            css={{
-              [`@media screen and (min-width: 1110px)`]: {
-                display: "block",
-              },
-            }}
-          >
-            <RightSidebar />
-          </Box>
+          {article.badges && article.badges.length > 0 && (
+            <Stack direction="column" gap={2}>
+              {article.badges?.map((badge: ArticleBadgeType, index: number) => (
+                <ArticleAlert
+                  key={index}
+                  badgeType={badge.badgeType}
+                  description={badge.description}
+                />
+              ))}
+            </Stack>
+          )}
 
           {article.componentSections ? (
-            <ComponentSections
-              id={article._id}
-              sections={article.componentSections}
-              component={article.title}
-            />
+            <Flex gap="5" marginTop={6} direction="column">
+              <ComponentSections
+                id={article._id}
+                sections={article.componentSections}
+                component={article.title}
+              />
+            </Flex>
           ) : article.title.includes("Sidespor") ? (
             <SporProvider theme={extendedSystemConfigWithSidespor}>
               <PortableText value={article.content} />
@@ -290,6 +291,25 @@ export default function ArticlePage() {
           },
         }}
       />
+      <Box
+        width="20%"
+        display="none"
+        position="fixed"
+        overflow="auto"
+        right={0}
+        paddingLeft={1}
+        paddingTop={8}
+        top={`${headerOffset}px`}
+        transition="all .3s linear"
+        height={`calc(100vh - ${headerOffset}px)`}
+        css={{
+          [`@media screen and (min-width: 1110px)`]: {
+            display: "block",
+          },
+        }}
+      >
+        <RightSidebar />
+      </Box>
     </Flex>
   );
 }

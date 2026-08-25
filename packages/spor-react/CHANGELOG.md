@@ -1,5 +1,22 @@
 # @vygruppen/spor-react
 
+## 13.7.2
+
+### Patch Changes
+
+- ff28880: RadioCard: Make children take 100% width
+
+## 13.7.1
+
+### Patch Changes
+
+- 15a6c48: Badge: Added outline on badges
+- e4c369c: truncate long select labels when selected
+- ac7ec72: Remove aria-hidden property from Field component to support better screen reading of form elements.
+- 1272e1d: RadioCard bug: make the children of a RadioCard to by default be placed in a column instead of a row.
+- Updated dependencies [1272e1d]
+  - @vygruppen/spor-icon-react@5.0.3
+
 ## 13.7.0
 
 ### Minor Changes

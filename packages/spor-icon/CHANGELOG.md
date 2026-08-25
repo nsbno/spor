@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 3.6.3
+
+### Patch Changes
+
+- 1272e1d: RadioCard bug: make the children of a RadioCard to by default be placed in a column instead of a row.
+
 ## 3.6.2
 
 ### Patch Changes

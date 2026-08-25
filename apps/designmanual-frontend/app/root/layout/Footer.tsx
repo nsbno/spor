@@ -13,7 +13,7 @@ export const Footer = () => {
       backgroundColor="surface.subtle"
       className="dark"
       alignItems="center"
-      marginTop={4}
+      marginTop={10}
       padding={{ base: 4, md: 7 }}
       width="100%"
       zIndex="banner"

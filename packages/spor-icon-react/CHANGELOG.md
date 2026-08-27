@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 5.0.4
+
+### Patch Changes
+
+- ee08c36: Add "log out" icon
+
 ## 5.0.3
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 3.6.4
+
+### Patch Changes
+
+- ee08c36: Add "log out" icon
+
 ## 3.6.3
 
 ### Patch Changes

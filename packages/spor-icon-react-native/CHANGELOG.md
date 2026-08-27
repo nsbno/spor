@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.16.5
+
+### Patch Changes
+
+- ee08c36: Add "log out" icon
+
 ## 2.16.4
 
 ### Patch Changes

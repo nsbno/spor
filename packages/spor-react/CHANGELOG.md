@@ -1,5 +1,18 @@
 # @vygruppen/spor-react
 
+## 13.8.0
+
+### Minor Changes
+
+- d5a0149: RadioGroup: Introduce invalid state for RadioGroup, Radio, and RadioCard.
+
+### Patch Changes
+
+- 988b0ad: Select: adjust the styling of select-items to make them similar to the ones in Autocomplete
+- 64589d0: Tabs: Added indicator with animation when navigating between tabtriggers.
+- Updated dependencies [ee08c36]
+  - @vygruppen/spor-icon-react@5.0.4
+
 ## 13.7.2
 
 ### Patch Changes

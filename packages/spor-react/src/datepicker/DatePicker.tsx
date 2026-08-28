@@ -95,6 +95,17 @@ export const DatePicker = ({
   const { labelProps, fieldProps, buttonProps, dialogProps, calendarProps } =
     useDatePicker(props, state, ref as React.MutableRefObject<HTMLDivElement>);
 
+  const dateFieldRef = useRef<HTMLDivElement>(null);
+  const calendarPropsWithFocus = {
+    ...calendarProps,
+    onChange: (value: DateValue) => {
+      calendarProps.onChange?.(value);
+      dateFieldRef.current
+        ?.querySelector<HTMLElement>('[data-part="trigger"]')
+        ?.focus();
+    },
+  };
+
   const inputGroupId = `input-group-${useId()}`;
 
   const recipe = useSlotRecipe({
@@ -119,7 +130,7 @@ export const DatePicker = ({
       <ChakraPopover.Content css={styles.calendarPopover}>
         <ChakraPopover.Body minWidth="18rem">
           <Calendar
-            {...calendarProps}
+            {...calendarPropsWithFocus}
             variant={variant}
             showYearNavigation={showYearNavigation}
             css={css}
@@ -147,6 +158,7 @@ export const DatePicker = ({
             helperText={helperText}
             required={props.required}
             size={size}
+            ref={dateFieldRef}
           >
             <PopoverAnchor>
               <StyledField

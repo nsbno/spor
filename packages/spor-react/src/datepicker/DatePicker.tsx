@@ -151,11 +151,11 @@ export const DatePicker = ({
         css={css}
       >
         <ChakraPopover.Root
-          {...dialogProps}
           positioning={positioning}
           onOpenChange={({ open }) => {
             if (!open) focusCalendarTrigger();
           }}
+          {...dialogProps}
         >
           <Field
             display="inline-flex"

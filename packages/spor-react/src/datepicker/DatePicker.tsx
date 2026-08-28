@@ -95,14 +95,15 @@ export const DatePicker = ({
   const { labelProps, fieldProps, buttonProps, dialogProps, calendarProps } =
     useDatePicker(props, state, ref as React.MutableRefObject<HTMLDivElement>);
 
-  const dateFieldRef = useRef<HTMLDivElement>(null);
+  const focusCalendarTrigger = () => {
+    (ref as React.RefObject<HTMLElement>).current?.focus();
+  };
+
   const calendarPropsWithFocus = {
     ...calendarProps,
     onChange: (value: DateValue) => {
       calendarProps.onChange?.(value);
-      dateFieldRef.current
-        ?.querySelector<HTMLElement>('[data-part="trigger"]')
-        ?.focus();
+      focusCalendarTrigger();
     },
   };
 
@@ -149,7 +150,13 @@ export const DatePicker = ({
         width={width}
         css={css}
       >
-        <ChakraPopover.Root {...dialogProps} positioning={positioning}>
+        <ChakraPopover.Root
+          {...dialogProps}
+          positioning={positioning}
+          onOpenChange={({ open }) => {
+            if (!open) focusCalendarTrigger();
+          }}
+        >
           <Field
             display="inline-flex"
             id={inputGroupId}
@@ -158,7 +165,6 @@ export const DatePicker = ({
             helperText={helperText}
             required={props.required}
             size={size}
-            ref={dateFieldRef}
           >
             <PopoverAnchor>
               <StyledField

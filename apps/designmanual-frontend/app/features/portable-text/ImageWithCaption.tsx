@@ -30,7 +30,7 @@ export const ImageWithCaption = ({
           src={src}
           alt={alt || ""}
           style={{ aspectRatio }}
-          css={{ borderRadius: "12px" }}
+          borderRadius={2}
         />
       )}
       {caption && (

@@ -44,7 +44,7 @@ function getUrlWithIllustrationSearchParameters(url: URL): URL | null {
   }
 
   if (!url.searchParams.has("sort")) {
-    url.searchParams.set("sort", "name");
+    url.searchParams.set("sort", "added");
     changed = true;
   }
 

@@ -8,8 +8,7 @@ import {
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 import { PropsWithChildren } from "react";
 
-import { ButtonProps } from "../../dist";
-import { Button } from "..";
+import { Button, ButtonProps } from "..";
 import { stepperSlotRecipe } from "../theme/slot-recipes/stepper";
 
 export type StepperVariantProps = RecipeVariantProps<typeof stepperSlotRecipe>;

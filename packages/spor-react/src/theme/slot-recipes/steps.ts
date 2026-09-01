@@ -70,6 +70,12 @@ export const stepsSlotRecipe = defineSlotRecipe({
         backgroundColor: "surface.disabled",
         color: "text.disabled",
       },
+      "&[data-complete]": {
+        "& svg": {
+          width: "1.125rem",
+          height: "1.125rem",
+        },
+      },
     },
   },
   variants: {

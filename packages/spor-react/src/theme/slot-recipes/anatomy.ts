@@ -137,22 +137,6 @@ export const breadcrumbAnatomy = createAnatomy("breadcrumb").parts(
   "separator",
 );
 
-export const stepperAnatomy = createAnatomy("stepper").parts(
-  "root",
-  "container",
-  "innerContainer",
-  "title",
-  "stepCounter",
-  "stepContainer",
-  "stepButton",
-  "stepNumber",
-  "stepTitle",
-  "closeButton",
-  "backButton",
-  "list",
-  "stepIndicator",
-);
-
 export const stepsAnatomy = createAnatomy("steps").parts(
   "root",
   "item",

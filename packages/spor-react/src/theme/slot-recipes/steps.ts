@@ -21,6 +21,11 @@ export const stepsSlotRecipe = defineSlotRecipe({
       alignItems: "center",
       justifyContent: "center",
       gap: 2,
+      "&:last-of-type": {
+        "& [data-part=separator]": {
+          display: "none",
+        },
+      },
     },
     trigger: {
       display: "flex",
@@ -83,13 +88,13 @@ export const stepsSlotRecipe = defineSlotRecipe({
     },
     size: {
       md: {
-        root: {
+        list: {
           minHeight: ["3rem", null, "2.625rem"],
         },
         item: { marginRight: 2 },
       },
       lg: {
-        root: {
+        list: {
           minHeight: ["3rem", null, "3.375rem"],
         },
         item: {

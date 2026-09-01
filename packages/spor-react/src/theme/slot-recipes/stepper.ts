@@ -10,7 +10,6 @@ export const stepperSlotRecipe = defineSlotRecipe({
       display: "flex",
       alignItems: "center",
       justifyContent: ["space-between", null, "center"],
-      minHeight: ["3rem", null, "3.75rem"],
       overflowX: "auto",
       width: "100%",
       "& svg": {
@@ -19,6 +18,10 @@ export const stepperSlotRecipe = defineSlotRecipe({
           _dark: "whiteAlpha.700",
         },
       },
+      backgroundColor: "bg.accent",
+    },
+    list: {
+      backgroundColor: "bg.accent",
     },
     container: {
       paddingX: [2, null, null, 0],
@@ -83,6 +86,22 @@ export const stepperSlotRecipe = defineSlotRecipe({
           _hover: {
             backgroundColor: "surface.brand.hover",
           },
+        },
+      },
+    },
+    size: {
+      md: {
+        root: {
+          minHeight: ["3rem", null, "2.625rem"],
+        },
+        stepIndicator: { marginX: 2 },
+      },
+      lg: {
+        root: {
+          minHeight: ["3rem", null, "3.375rem"],
+        },
+        stepIndicator: {
+          marginX: 5,
         },
       },
     },

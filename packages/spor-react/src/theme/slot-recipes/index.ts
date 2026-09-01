@@ -31,6 +31,7 @@ import { radioGroupSlotRecipe } from "./radio";
 import { radioCardSlotRecipe } from "./radio-card";
 import { selectSlotRecipe } from "./select";
 import { stepperSlotRecipe } from "./stepper";
+import { stepsSlotRecipe } from "./steps";
 import { switchSlotRecipe } from "./switch";
 import { tableSlotRecipe } from "./table";
 import { tabsSlotRecipe } from "./tabs";
@@ -77,4 +78,5 @@ export const slotRecipes = {
   menu: menuSlotRecipe,
   choiceChip: choiceChipSlotRecipe,
   errorSummary: errorSummarySlotRecipe,
+  steps: stepsSlotRecipe,
 };

@@ -149,6 +149,16 @@ export const stepperAnatomy = createAnatomy("stepper").parts(
   "stepTitle",
   "closeButton",
   "backButton",
+  "list",
+  "stepIndicator",
+);
+
+export const stepsAnatomy = createAnatomy("steps").parts(
+  "root",
+  "item",
+  "list",
+  "trigger",
+  "indicator",
 );
 
 export const radioCardAnatomy = createAnatomy("radio-card").parts(

@@ -53,7 +53,7 @@ export const StepperItem = ({
 export const StepperSeparator = () => {
   return (
     <ChakraSteps.Separator>
-      <DropdownRightFill18Icon display={["none", null, "block"]} />
+      <DropdownRightFill18Icon />
     </ChakraSteps.Separator>
   );
 };

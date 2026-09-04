@@ -9,11 +9,10 @@ export const stepsSlotRecipe = defineSlotRecipe({
     root: {
       display: "flex",
       flexDirection: "column",
-      width: "100%",
     },
     list: {
       display: "flex",
-      justifyContent: "space-between",
+      flexWrap: "wrap",
     },
     item: {
       display: "flex",
@@ -22,6 +21,7 @@ export const stepsSlotRecipe = defineSlotRecipe({
       justifyContent: "center",
       gap: 2,
       "&:last-of-type": {
+        marginRight: 0,
         "& [data-part=separator]": {
           display: "none",
         },
@@ -33,7 +33,7 @@ export const stepsSlotRecipe = defineSlotRecipe({
       alignItems: "center",
       justifyContent: "center",
       gap: "1",
-      fontSize: "sm",
+      fontSize: ["mobile.xs", "desktop.xs"],
       paddingX: 2,
       paddingY: 1,
       borderRadius: "2xl",
@@ -63,6 +63,7 @@ export const stepsSlotRecipe = defineSlotRecipe({
       outlineColor: "outline",
       fontSize: "xs",
       fontWeight: "normal",
+      flexShrink: 0,
       "&[data-current]": {
         color: "text",
       },
@@ -95,13 +96,13 @@ export const stepsSlotRecipe = defineSlotRecipe({
     size: {
       md: {
         list: {
-          minHeight: ["3rem", null, "2.625rem"],
+          paddingY: 0.5,
         },
         item: { marginRight: 2 },
       },
       lg: {
         list: {
-          minHeight: ["3rem", null, "3.375rem"],
+          paddingY: 1.5,
         },
         item: {
           marginRight: 5,

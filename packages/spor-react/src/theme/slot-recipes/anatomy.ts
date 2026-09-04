@@ -137,18 +137,12 @@ export const breadcrumbAnatomy = createAnatomy("breadcrumb").parts(
   "separator",
 );
 
-export const stepperAnatomy = createAnatomy("stepper").parts(
+export const stepsAnatomy = createAnatomy("steps").parts(
   "root",
-  "container",
-  "innerContainer",
-  "title",
-  "stepCounter",
-  "stepContainer",
-  "stepButton",
-  "stepNumber",
-  "stepTitle",
-  "closeButton",
-  "backButton",
+  "item",
+  "list",
+  "trigger",
+  "indicator",
 );
 
 export const radioCardAnatomy = createAnatomy("radio-card").parts(

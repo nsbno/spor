@@ -133,3 +133,5 @@ const texts = createTexts({
     en: "Back",
   },
 });
+
+export const StepperCompletedContent = ChakraSteps.CompletedContent;

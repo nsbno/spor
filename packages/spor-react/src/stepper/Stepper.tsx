@@ -3,14 +3,25 @@ import {
   RecipeVariantProps,
   Steps as ChakraSteps,
   StepsItemProps as ChakraStepsItemProps,
+  StepsListProps as ChakraStepsListProps,
   StepsRootProps as ChakraStepsRootProps,
+  Text,
 } from "@chakra-ui/react";
-import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
+import {
+  ArrowLeftOutline24Icon,
+  DropdownRightFill18Icon,
+} from "@vygruppen/spor-icon-react";
 import { PropsWithChildren } from "react";
 
 import { stepsSlotRecipe } from "@/theme/slot-recipes/steps";
 
-import { Button, ButtonProps } from "..";
+import {
+  Button,
+  ButtonProps,
+  createTexts,
+  IconButton,
+  useTranslation,
+} from "..";
 
 export type StepperVariantProps = RecipeVariantProps<typeof stepsSlotRecipe>;
 
@@ -40,19 +51,23 @@ export const StepperItem = ({
   ref?: React.Ref<HTMLDivElement>;
 }) => {
   return (
-    <ChakraSteps.Item {...props} ref={ref}>
+    <ChakraSteps.Item {...props} ref={ref} marginRight={{ base: 0 }}>
       <ChakraSteps.Trigger>
-        {showIndicator && <ChakraSteps.Indicator />}
+        {showIndicator && (
+          <ChakraSteps.Indicator display={{ base: "none", md: "flex" }} />
+        )}
         {children}
       </ChakraSteps.Trigger>
-      <StepperSeparator />
+      <ChakraSteps.ItemContext>
+        {(step) => !step.last && <StepperSeparator />}
+      </ChakraSteps.ItemContext>
     </ChakraSteps.Item>
   );
 };
 
 export const StepperSeparator = () => {
   return (
-    <ChakraSteps.Separator>
+    <ChakraSteps.Separator display={{ base: "none", md: "flex" }}>
       <DropdownRightFill18Icon />
     </ChakraSteps.Separator>
   );
@@ -74,5 +89,47 @@ export const StepperPreviousTrigger = ({ children, ...props }: ButtonProps) => {
   );
 };
 
-export const StepperList = ChakraSteps.List;
+export const StepperList = ({ children, ...props }: ChakraStepsListProps) => {
+  const { t } = useTranslation();
+
+  return (
+    <ChakraSteps.List {...props}>
+      <ChakraSteps.PrevTrigger asChild display={{ base: "flex", md: "none" }}>
+        <IconButton
+          icon={<ArrowLeftOutline24Icon />}
+          variant="ghost"
+          aria-label={t(texts.back)}
+        />
+      </ChakraSteps.PrevTrigger>
+      {children}
+      <ChakraSteps.Context>
+        {(api) => (
+          <Text
+            display={{ base: "block", md: "none" }}
+            fontSize="mobile.sm"
+            alignSelf="center"
+            data-part="step-counter"
+          >
+            {t(texts.stepsOf(api.value + 1, api.count))}
+          </Text>
+        )}
+      </ChakraSteps.Context>
+    </ChakraSteps.List>
+  );
+};
 export const StepperContent = ChakraSteps.Content;
+
+const texts = createTexts({
+  stepsOf: (activeStep, numberOfSteps) => ({
+    nb: `Steg ${activeStep}/${numberOfSteps}`,
+    nn: `Steg ${activeStep}/${numberOfSteps}`,
+    sv: `Steg ${activeStep}/${numberOfSteps}`,
+    en: `Step ${activeStep}/${numberOfSteps}`,
+  }),
+  back: {
+    nb: "Tilbake",
+    nn: "Tilbake",
+    sv: "Tillbaka",
+    en: "Back",
+  },
+});

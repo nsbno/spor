@@ -143,6 +143,7 @@ export const stepsAnatomy = createAnatomy("steps").parts(
   "list",
   "trigger",
   "indicator",
+  "stepCounter",
 );
 
 export const radioCardAnatomy = createAnatomy("radio-card").parts(

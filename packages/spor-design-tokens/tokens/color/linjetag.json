@@ -1,12 +1,6 @@
 {
   "color": {
     "linjetag": {
-      "tog": {
-        "value": "#123DA0"
-      },
-      "buss": {
-        "value": "#037D67"
-      },
       "lokaltog": {
         "value": "#65B152"
       },
@@ -78,9 +72,6 @@
       },
       "ruterAkershus": {
         "value": "#76A300"
-      },
-      "ukjent": {
-        "value": "#4F5054"
       }
     }
   }

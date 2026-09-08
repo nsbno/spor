@@ -740,6 +740,12 @@
         },
         "transport": {
           "train": {
+            "DEFAULT": {
+              "value": {
+                "_light": "colors.linjetag.tog",
+                "_dark": "colors.linjetag.tog"
+              }
+            },
             "lokal": {
               "value": {
                 "_light": "colors.linjetag.lokaltog",
@@ -778,6 +784,12 @@
             }
           },
           "bus": {
+            "DEFAULT": {
+              "value": {
+                "_light": "colors.linjetag.buss",
+                "_dark": "colors.linjetag.buss"
+              }
+            },
             "bussfortog": {
               "value": {
                 "_light": "colors.linjetag.altTransport",
@@ -836,8 +848,8 @@
           "other": {
             "DEFAULT": {
               "value": {
-                "_light": "colors.darkGrey",
-                "_dark": "colors.darkGrey"
+                "_light": "colors.linjetag.ukjent",
+                "_dark": "colors.linjetag.ukjent"
               }
             }
           }

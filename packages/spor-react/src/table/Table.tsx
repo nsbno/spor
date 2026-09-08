@@ -48,18 +48,20 @@ export const useTableSort = () => useContext(SortContext);
 
 export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   PropsWithChildren<TableVariantProps> & {
-    variant?: "ghost" | "core";
+    variant?: "ghost" | "core" | "floating";
     colorPalette?: "grey" | "green" | "white";
     sortable?: boolean;
+    disableHover?: boolean;
     ref?: React.Ref<HTMLTableElement>;
   };
 
 export const Table = ({
   variant = "ghost",
   size,
-  colorPalette = "green",
+  colorPalette,
   children,
   sortable = false,
+  disableHover,
   ref,
   ...rest
 }: TableProps) => {
@@ -83,10 +85,15 @@ export const Table = ({
       colorPalette={colorPalette}
       css={styles}
       ref={ref}
+      {...(disableHover ? { "data-disable-hover": "" } : {})}
       {...rest}
     >
       <SortContext.Provider
-        value={{ enabled: sortable, sortState, onSort: handleSort }}
+        value={{
+          enabled: sortable,
+          sortState,
+          onSort: handleSort,
+        }}
       >
         {children}
       </SortContext.Provider>

@@ -165,8 +165,8 @@ export const DatePicker = ({
                 ) : (
                   <ChakraPopover.Trigger asChild>
                     <CalendarTriggerButton
-                      marginLeft={1}
                       variant={variant}
+                      size={size}
                       ref={ref}
                       {...buttonProps}
                     />

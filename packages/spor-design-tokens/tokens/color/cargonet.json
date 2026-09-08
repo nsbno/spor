@@ -191,7 +191,7 @@
         "subtle": {
           "value": {
             "_light": "colors.dimGrey",
-            "_dark": "colors.white"
+            "_dark": "colors.whiteAlpha.700"
           }
         },
         "core": {

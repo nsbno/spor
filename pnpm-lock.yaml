@@ -444,10 +444,11 @@ importers:
         version: 8.47.0(eslint@9.39.1(jiti@2.7.0))(typescript@5.9.3)
 
   packages/sidespor-config:
-    devDependencies:
+    dependencies:
       '@vygruppen/spor-react':
         specifier: workspace:*
         version: link:../spor-react
+    devDependencies:
       tsup:
         specifier: ^8.5.1
         version: 8.5.1(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.9)(typescript@5.9.3)(yaml@2.9.0)
@@ -28461,7 +28462,7 @@ snapshots:
   codemirror@6.0.2:
     dependencies:
       '@codemirror/autocomplete': 6.20.3
-      '@codemirror/commands': 6.10.3
+      '@codemirror/commands': 6.10.4
       '@codemirror/language': 6.12.4
       '@codemirror/lint': 6.9.7
       '@codemirror/search': 6.7.1

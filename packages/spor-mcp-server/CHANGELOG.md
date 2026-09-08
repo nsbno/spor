@@ -1,5 +1,44 @@
 # @vygruppen/spor-mcp-server
 
+## 2.2.4
+
+### Patch Changes
+
+- Updated dependencies [d5a0149]
+- Updated dependencies [988b0ad]
+- Updated dependencies [64589d0]
+  - @vygruppen/spor-react@13.8.0
+
+## 2.2.3
+
+### Patch Changes
+
+- Updated dependencies [ff28880]
+  - @vygruppen/spor-react@13.7.2
+
+## 2.2.2
+
+### Patch Changes
+
+- Updated dependencies [15a6c48]
+- Updated dependencies [e4c369c]
+- Updated dependencies [ac7ec72]
+- Updated dependencies [1272e1d]
+  - @vygruppen/spor-react@13.7.1
+
+## 2.2.1
+
+### Patch Changes
+
+- Updated dependencies [e6bfa69]
+- Updated dependencies [6d0bf57]
+- Updated dependencies [b80fda2]
+- Updated dependencies [783c84f]
+- Updated dependencies [022e894]
+- Updated dependencies [a1d5a12]
+  - @vygruppen/spor-react@13.7.0
+  - @vygruppen/spor-design-tokens@5.1.1
+
 ## 2.2.0
 
 ### Minor Changes

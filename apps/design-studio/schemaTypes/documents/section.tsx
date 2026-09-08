@@ -46,7 +46,7 @@ export const section = defineType({
       type: "reference",
       title: "Internal Link to a page",
       validation: (Rule) => Rule.required().error("You must select a page"),
-      to: [{ type: "page" }],
+      to: [{ type: "landingPage" }],
     }),
   ],
   preview: {

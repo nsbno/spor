@@ -116,7 +116,15 @@ async function generateComponents(icons: IconData[]) {
 async function generateComponent(iconData: IconData) {
   const isFeedback = iconData.metadata.category === "feedback";
   const pathCount = (iconData.icon.match(/<path[\s>]/g) || []).length;
-  const shouldKeepOriginalFill = isFeedback && pathCount > 1;
+  const feedbackIconsToKeepOriginalFill = [
+    "thumbs down",
+    "thumbs up",
+    "checkmark",
+  ];
+  const shouldKeepOriginalFill =
+    isFeedback &&
+    pathCount > 1 &&
+    !feedbackIconsToKeepOriginalFill.includes(iconData.metadata.name);
 
   let jsCode = await transform(
     iconData.icon,

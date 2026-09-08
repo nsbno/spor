@@ -12,13 +12,14 @@ export const separatorRecipe = defineRecipe({
         borderStyle: "solid",
       },
       dashed: {
+        "--dash-color": "var(--spor-colors-outline)",
         borderImageSlice: 1,
         borderImageSource: `repeating-linear-gradient(
             var(--gradient-direction),
-            var(--spor-colors-outline-disabled) 0,
-            var(--spor-colors-outline-disabled) var(--dash-size),
+            var(--dash-color) 0,
+            var(--dash-color) var(--dash-size),
             transparent var(--dash-size),
-            transparent calc(var(--dash-size) + var(--dash-gap))
+            transparent calc(var(--dash-size) + var(--dash-gap))         
           )`,
       },
     },

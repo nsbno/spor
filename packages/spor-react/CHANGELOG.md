@@ -1,5 +1,52 @@
 # @vygruppen/spor-react
 
+## 13.8.0
+
+### Minor Changes
+
+- d5a0149: RadioGroup: Introduce invalid state for RadioGroup, Radio, and RadioCard.
+
+### Patch Changes
+
+- 988b0ad: Select: adjust the styling of select-items to make them similar to the ones in Autocomplete
+- 64589d0: Tabs: Added indicator with animation when navigating between tabtriggers.
+- Updated dependencies [ee08c36]
+  - @vygruppen/spor-icon-react@5.0.4
+
+## 13.7.2
+
+### Patch Changes
+
+- ff28880: RadioCard: Make children take 100% width
+
+## 13.7.1
+
+### Patch Changes
+
+- 15a6c48: Badge: Added outline on badges
+- e4c369c: truncate long select labels when selected
+- ac7ec72: Remove aria-hidden property from Field component to support better screen reading of form elements.
+- 1272e1d: RadioCard bug: make the children of a RadioCard to by default be placed in a column instead of a row.
+- Updated dependencies [1272e1d]
+  - @vygruppen/spor-icon-react@5.0.3
+
+## 13.7.0
+
+### Minor Changes
+
+- b80fda2: Toast: Introduce "inverted" as a prop, that uses darkmode colors in lightmode, and lightmode colors in darkmode.
+- a1d5a12: Autocomplete: add a size-prop that can be set to either 'md' or 'sm'.
+
+### Patch Changes
+
+- e6bfa69: override safari autofill for input fields with spor colors
+- 6d0bf57: TextLink: Add non-breaking space for external icon so that it never breaks over to a newline alone.
+- 022e894: Separator: Change borderColor of the dashed separator to use the outline.default token
+  InputChip: Adjust the height of the different sizes to match with design.
+  TextLink: Change the ExternalLink-Icon to be of size 30x30 when TextLink is of size "lg"
+- Updated dependencies [783c84f]
+  - @vygruppen/spor-design-tokens@5.1.1
+
 ## 13.6.0
 
 ### Minor Changes

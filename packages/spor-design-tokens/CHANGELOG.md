@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.1.1
+
+### Patch Changes
+
+- 783c84f: Add icon.subtle to the vy-teknologi theme, and adjust the darkmode-value of the token in the vy-digital and cargonet theme
+
 ## 5.1.0
 
 ### Minor Changes

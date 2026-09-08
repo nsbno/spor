@@ -1,5 +1,17 @@
 # @vygruppen/spor-icon-react
 
+## 5.0.4
+
+### Patch Changes
+
+- ee08c36: Add "log out" icon
+
+## 5.0.3
+
+### Patch Changes
+
+- 1272e1d: RadioCard bug: make the children of a RadioCard to by default be placed in a column instead of a row.
+
 ## 5.0.2
 
 ### Patch Changes

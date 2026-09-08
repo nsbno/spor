@@ -57,7 +57,11 @@ import { ImageBlockSquareSerializer } from "./serializers/ImageBlockSquareSerial
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
-    code: ({ children }) => <Code>{children}</Code>,
+    code: ({ children }) => (
+      <Code backgroundColor="surface.disabled" color="text.accent">
+        {children}
+      </Code>
+    ),
     link: ({ value, children }) => {
       const isInternal = value.href.startsWith("/");
       if (isInternal) {

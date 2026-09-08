@@ -17,7 +17,7 @@ const toaster = createToaster({
   pauseOnPageIdle: true,
 });
 
-type Variant = "info" | "success" | "error";
+type Variant = "info" | "success" | "critical";
 
 type ToastAction = {
   label: string;

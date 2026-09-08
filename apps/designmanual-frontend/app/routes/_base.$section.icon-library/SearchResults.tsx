@@ -190,7 +190,7 @@ function IconBox({ icon }: IconBoxProps) {
   return (
     <StaticCard
       display="flex"
-      colorPalette={colorPalette}
+      data-color={colorPalette}
       borderRadius="sm"
       flexDirection="column"
       alignItems="center"

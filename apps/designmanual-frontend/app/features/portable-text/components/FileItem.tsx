@@ -26,7 +26,7 @@ export const FileItem = ({
 }: FileItemProps) => {
   const { t } = useTranslation();
   return (
-    <StaticCard colorPalette="grey" padding={3}>
+    <StaticCard data-color="neutral" padding={3}>
       <Flex
         gap={3}
         flexDirection={["column", "row"]}

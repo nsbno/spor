@@ -41,7 +41,7 @@ export const inputChipSlotRecipe = defineSlotRecipe({
       accent: {
         root: {
           backgroundColor: "surface.accent",
-          color: "text.highlight",
+          color: "text.accent",
           "& svg": {
             color: "icon.highlight",
           },

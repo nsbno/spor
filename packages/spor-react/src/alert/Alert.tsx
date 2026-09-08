@@ -1,15 +1,11 @@
 "use client";
 
-import {
-  Alert as ChakraAlert,
-  HStack,
-  useDisclosure,
-  useSlotRecipe,
-} from "@chakra-ui/react";
+import { Alert as ChakraAlert, HStack, useDisclosure } from "@chakra-ui/react";
 import { IconComponent } from "@vygruppen/spor-icon-react";
 
 import { CloseButton } from "@/button";
 import { createTexts, useTranslation } from "@/i18n";
+import { SporSemantic } from "@/theme/tokens/global-css";
 
 import { AlertIcon } from "./AlertIcon";
 
@@ -46,9 +42,11 @@ export type AlertProps = Omit<ChakraAlert.RootProps, "colorPalette"> & {
 
 export const Alert = ({
   ref,
+  "data-color": dataColor = "neutral",
   ...props
 }: AlertProps & {
   ref?: React.Ref<HTMLDivElement>;
+  "data-color": SporSemantic;
 }) => {
   const {
     title,
@@ -66,16 +64,12 @@ export const Alert = ({
     onAlertClose?.();
   };
 
-  const recipe = useSlotRecipe({ key: "alert" });
-  const styles = recipe({ variant: props.variant });
-
   const getAriaLabelText = () => {
-    const variant = props.variant;
-    if (variant === "important" || variant === "alt")
+    if (dataColor === "warning" || dataColor === "notice")
       return texts.ariaLabelAlertWarning;
-    if (variant === "error" || variant === "error-secondary")
+    if (dataColor === "critical" || dataColor === "caution")
       return texts.ariaLabelAlertError;
-    if (variant === "success") return texts.ariaLabelAlertSuccess;
+    if (dataColor === "success") return texts.ariaLabelAlertSuccess;
     return texts.ariaLabelAlertInformative;
   };
 
@@ -83,7 +77,13 @@ export const Alert = ({
 
   if (!open) return null;
   return (
-    <ChakraAlert.Root ref={ref} role="alert" aria-label={ariaLabel} {...props}>
+    <ChakraAlert.Root
+      ref={ref}
+      role="alert"
+      aria-label={ariaLabel}
+      data-color={dataColor}
+      {...props}
+    >
       <ChakraAlert.Content
         flexDirection={title ? "column" : "row"}
         data-part="content"
@@ -91,7 +91,7 @@ export const Alert = ({
         <HStack gap="1" alignItems="flex-start">
           {showIndicator && (
             <ChakraAlert.Indicator asChild>
-              <AlertIcon variant={props.variant ?? "info"} customIcon={icon} />
+              <AlertIcon variant={dataColor ?? "info"} customIcon={icon} />
             </ChakraAlert.Indicator>
           )}
           {title && (
@@ -122,7 +122,7 @@ export const Alert = ({
           top="1.5"
           right="1.5"
           onClick={handleAlertClose}
-          css={styles.closeButton}
+          //css={styles.closeButton}
         />
       )}
     </ChakraAlert.Root>

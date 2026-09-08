@@ -2,7 +2,23 @@
 
 import { Box, Portal, Tooltip as ChakraTooltip } from "@chakra-ui/react";
 
-export const Tooltip = ChakraTooltip.Root;
+import { DataColorProvider, useDataColor } from "./data-color-context";
+import { SporSemantic } from "./theme/tokens/global-css";
+
+export const Tooltip = ({
+  children,
+  "data-color": dataColor,
+  ...rest
+}: {
+  children: React.ReactNode;
+  "data-color"?: SporSemantic;
+}) => (
+  <DataColorProvider data-color={dataColor}>
+    <ChakraTooltip.Root data-color={dataColor} {...rest}>
+      {children}
+    </ChakraTooltip.Root>
+  </DataColorProvider>
+);
 
 export const TooltipTrigger = ({
   ref,
@@ -32,10 +48,12 @@ export const TooltipContent = ({
 }: TooltipProps & {
   ref?: React.Ref<HTMLDivElement>;
 }) => {
+  const dataColor = useDataColor();
+
   return (
     <Portal>
       <ChakraTooltip.Positioner>
-        <ChakraTooltip.Content ref={ref} {...props}>
+        <ChakraTooltip.Content ref={ref} data-color={dataColor} {...props}>
           {showArrow && (
             <ChakraTooltip.Arrow>
               <ChakraTooltip.ArrowTip />

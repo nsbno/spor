@@ -369,7 +369,7 @@ const components: Partial<PortableTextReactComponents> = {
           return (
             <StaticCard
               key={example._key}
-              colorPalette={getColorPalette(example.weight)}
+              data-color={getColorPalette(example.weight)}
               padding={[2, null, 4]}
             >
               <Flex gap={2} alignItems="center" marginBottom={2}>
@@ -378,14 +378,12 @@ const components: Partial<PortableTextReactComponents> = {
                   {getHeading(example.weight)}
                 </Heading>
               </Flex>
-
               <Box
                 css={{ "> :last-child": { marginBottom: 0 } }}
                 marginBottom={2}
               >
                 <PortableText value={example.content} />
               </Box>
-
               {example.image && (
                 <Box>
                   <Image

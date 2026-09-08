@@ -22,6 +22,7 @@ import {
 import * as React from "react";
 
 import { CloseButton } from "@/button";
+import { SporSemantic } from "@/theme/tokens/global-css";
 
 import { Badge } from "..";
 import { Field, FieldProps } from "./Field";
@@ -62,9 +63,11 @@ export type SelectProps = SelectRootProps &
 
 export const Select = ({
   ref,
+  "data-color": dataColor,
   ...props
 }: SelectProps & {
   ref?: React.Ref<HTMLDivElement>;
+  "data-color"?: SporSemantic;
 }) => {
   const {
     variant = "core",
@@ -95,12 +98,15 @@ export const Select = ({
         variant={variant}
         size={size}
         position="relative"
+        data-color={dataColor}
       >
         <SelectTrigger data-attachable size={size}>
           <SelectValueText withPlaceholder={!!label} />
         </SelectTrigger>
         {label && <SelectLabel>{label}</SelectLabel>}
-        <SelectContent baseStyle={css}>{children}</SelectContent>
+        <SelectContent baseStyle={css} data-color={dataColor}>
+          {children}
+        </SelectContent>
       </ChakraSelect.Root>
     </Field>
   );
@@ -296,7 +302,7 @@ export const SelectValueText = function SelectValueText({
                   <Badge
                     key={select.collection.stringifyItem(item)}
                     size="sm"
-                    colorPalette="green"
+                    data-color="success"
                   >
                     {select.collection.stringifyItem(item)}
                   </Badge>

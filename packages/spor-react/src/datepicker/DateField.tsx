@@ -61,7 +61,7 @@ export const DateField = ({
   return (
     <Box width="100%">
       {props.label && (
-        <Box css={styles.inputLabel} position="absolute" paddingTop="2px">
+        <Box css={styles.inputLabel} position="absolute">
           <Label
             padding="0"
             fontSize={["mobile.2xs", "desktop.2xs"]}

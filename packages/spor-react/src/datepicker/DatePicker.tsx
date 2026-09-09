@@ -11,7 +11,10 @@ import {
   useFieldContext,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
+import {
+  CalendarOutline18Icon,
+  CalendarOutline30Icon,
+} from "@vygruppen/spor-icon-react";
 import React, { PropsWithChildren, useId, useRef } from "react";
 import {
   AriaDatePickerProps,
@@ -159,9 +162,11 @@ export const DatePicker = ({
                 overrideBorderColor={props.overrideBorderColor}
               >
                 {props.noCalendar ? (
-                  <Box pr={3} pl={0.5} mr={0.5}>
-                    <CalendarOutline24Icon />
-                  </Box>
+                  size === "sm" ? (
+                    <CalendarOutline18Icon flexShrink={0} marginX="1.5" />
+                  ) : (
+                    <CalendarOutline30Icon flexShrink={0} marginX="0.5" />
+                  )
                 ) : (
                   <ChakraPopover.Trigger asChild>
                     <CalendarTriggerButton

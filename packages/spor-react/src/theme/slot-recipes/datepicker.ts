@@ -248,7 +248,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
           paddingTop: 0.5,
           paddingBottom: 1,
           fontSize: ["mobile.sm", "desktop.sm"],
-          gap: 1,
+          gap: 1.5,
         },
       },
     },

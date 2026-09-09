@@ -11,6 +11,7 @@ export const stepsSlotRecipe = defineSlotRecipe({
       flexDirection: "column",
     },
     list: {
+      paddingX: 3,
       display: "flex",
       flexWrap: "wrap",
       justifyContent: "space-between",
@@ -36,20 +37,37 @@ export const stepsSlotRecipe = defineSlotRecipe({
       borderRadius: "2xl",
       "&[aria-selected='true']": {
         fontWeight: "bold",
-        backgroundColor: { base: "none", md: "surface.brand" },
         color: { base: "text", md: "text.brand" },
       },
       "&[data-incomplete]": {
-        color: "text.subtle",
+        _hover: {
+          backgroundColor: "surface.ghost.hover",
+        },
         "& svg": {
           color: "icon.disabled",
         },
       },
       "&[data-complete]": {
         fontWeight: "bold",
+        _hover: {
+          backgroundColor: "surface.ghost.hover",
+        },
+      },
+      "[data-linear] &": {
+        color: "text.subtle",
+        _hover: {
+          backgroundColor: "transparent",
+        },
+        "&[aria-selected='true']": {
+          color: { base: "text", md: "text.brand" },
+          _hover: {
+            backgroundColor: "surface.brand",
+          },
+        },
       },
     },
     indicator: {
+      display: { base: "none", md: "flex" },
       justifyContent: "center",
       alignItems: "center",
       borderRadius: "50%",
@@ -61,12 +79,15 @@ export const stepsSlotRecipe = defineSlotRecipe({
       fontSize: "xs",
       fontWeight: "normal",
       flexShrink: 0,
+      marginLeft: -1,
       "&[data-current]": {
         color: "text",
       },
       "&[data-incomplete]": {
-        backgroundColor: "surface.disabled",
-        color: "text.disabled",
+        "[data-linear] &": {
+          backgroundColor: "surface.disabled",
+          color: "text.disabled",
+        },
       },
       "&[data-complete]": {
         "& svg": {

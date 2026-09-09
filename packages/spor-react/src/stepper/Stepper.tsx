@@ -32,11 +32,19 @@ export type StepperProps = Exclude<
   PropsWithChildren<StepperVariantProps>;
 export const Stepper = ({
   ref,
+  linear,
   ...props
 }: StepperProps & {
   ref?: React.Ref<HTMLDivElement>;
 }) => {
-  return <ChakraSteps.Root {...props} ref={ref} />;
+  return (
+    <ChakraSteps.Root
+      {...props}
+      linear={linear}
+      data-linear={linear ? "" : undefined}
+      ref={ref}
+    />
+  );
 };
 
 export type StepperItemProps = PropsWithChildren<ChakraStepsItemProps> & {
@@ -53,9 +61,7 @@ export const StepperItem = ({
   return (
     <ChakraSteps.Item {...props} ref={ref} marginRight={{ base: 0 }}>
       <ChakraSteps.Trigger>
-        {showIndicator && (
-          <ChakraSteps.Indicator display={{ base: "none", md: "flex" }} />
-        )}
+        {showIndicator && <ChakraSteps.Indicator />}
         {children}
       </ChakraSteps.Trigger>
       <ChakraSteps.ItemContext>

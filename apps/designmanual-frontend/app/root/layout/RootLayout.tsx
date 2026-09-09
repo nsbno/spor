@@ -1,29 +1,11 @@
 import { Flex } from "@chakra-ui/react";
-import { SpeechBubbleOutline24Icon } from "@vygruppen/spor-icon-react";
-import {
-  Box,
-  Button,
-  CardSelect,
-  CardSelectContent,
-  CardSelectTrigger,
-  Field,
-  Fieldset,
-  FieldsetContent,
-  FieldsetLegend,
-  Heading,
-  Radio,
-  RadioGroup,
-  Stack,
-  Text,
-  Textarea,
-} from "@vygruppen/spor-react";
+import { Box } from "@vygruppen/spor-react";
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router";
 
+import { FeedbackForm } from "~/routes/_base/feedback-form/FeedbackForm";
 import { LeftSidebar } from "~/routes/_base/left-sidebar/LeftSidebar";
-import { sendCustomEvent } from "~/utils/analytics/metabase";
 import { sendPageViewEvent } from "~/utils/analytics/metabaseCore";
-import { IdeIllustration } from "~/utils/illustrations/ide";
 
 import { Footer } from "./Footer";
 import { HeaderOffsetContext } from "./HeaderOffsetContext";
@@ -116,19 +98,7 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
             right={4}
             zIndex="banner"
           >
-            <CardSelect>
-              <CardSelectTrigger
-                variant="floating"
-                withChevron={false}
-                icon={<SpeechBubbleOutline24Icon />}
-                size={["sm", "md"]}
-              >
-                Feedback?
-              </CardSelectTrigger>
-              <CardSelectContent minWidth={["17rem", "25rem"]}>
-                <FeedbackForm />
-              </CardSelectContent>
-            </CardSelect>
+            <FeedbackForm />
           </Flex>
         )}
 
@@ -137,89 +107,5 @@ export const RootLayout = ({ children }: BaseLayoutProps) => {
         </Box>
       </Flex>
     </HeaderOffsetContext>
-  );
-};
-
-const FeedbackForm = () => {
-  const [feedbackType, setFeedbackType] = useState<string | null>(null);
-  const [feedback, setFeedback] = useState<string>("");
-  const [haveSubmitted, setHaveSubmitted] = useState<boolean>(false);
-
-  const location = useLocation();
-
-  const onSubmit = () => {
-    sendCustomEvent({
-      event: "feedback_submitted",
-      properties: {
-        feedbackType: feedbackType ?? "",
-        feedback,
-        path: location.pathname,
-      },
-    });
-    setHaveSubmitted(true);
-  };
-
-  const handleWriteAnotherFeedback = () => {
-    setFeedbackType(null);
-    setFeedback("");
-    setHaveSubmitted(false);
-  };
-
-  return haveSubmitted === false ? (
-    <Fieldset>
-      <Stack gap="3" direction="column" padding="2">
-        <FieldsetLegend>
-          <Heading as="h3" variant="md" fontWeight="bold">
-            What would you like to share?
-          </Heading>
-        </FieldsetLegend>
-        <FieldsetContent display="flex" gap="3" flexDirection="column">
-          <Field gap="1" fontSize="xs">
-            <RadioGroup
-              aria-label="Feedback type"
-              orientation="vertical"
-              name="feedback-type"
-              value={feedbackType}
-              onValueChange={(value) => setFeedbackType(value.value)}
-            >
-              <Radio value="bug">Bug</Radio>
-              <Radio value="feature-request">Feature request</Radio>
-              <Radio value="documentation">Feedback on documentation</Radio>
-              <Radio value="other">Other</Radio>
-            </RadioGroup>
-          </Field>
-          <Field gap="1">
-            <Textarea
-              label="Your feedback"
-              value={feedback}
-              minHeight="6rem"
-              onChange={(event) => setFeedback(event.target.value)}
-              paddingTop="3"
-              borderTop="0"
-            />
-          </Field>
-          <Button type="submit" onClick={onSubmit} size={["sm", "md"]}>
-            Submit
-          </Button>
-        </FieldsetContent>
-      </Stack>
-    </Fieldset>
-  ) : (
-    <Box>
-      <Stack gap="2">
-        <Heading as="h3" variant="md" fontWeight="bold">
-          Thank you for your feedback!
-        </Heading>
-        <Text>Feedback is reviewed once a week.</Text>
-        <IdeIllustration width={200} height={140} />
-        <Button
-          variant="tertiary"
-          size={["sm", "md"]}
-          onClick={handleWriteAnotherFeedback}
-        >
-          Write another feedback
-        </Button>
-      </Stack>
-    </Box>
   );
 };

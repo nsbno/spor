@@ -98,6 +98,18 @@ export const DatePicker = ({
   const { labelProps, fieldProps, buttonProps, dialogProps, calendarProps } =
     useDatePicker(props, state, ref as React.MutableRefObject<HTMLDivElement>);
 
+  const focusCalendarTrigger = () => {
+    (ref as React.RefObject<HTMLElement>).current?.focus();
+  };
+
+  const calendarPropsWithFocus = {
+    ...calendarProps,
+    onChange: (value: DateValue) => {
+      calendarProps.onChange?.(value);
+      focusCalendarTrigger();
+    },
+  };
+
   const inputGroupId = `input-group-${useId()}`;
 
   const recipe = useSlotRecipe({
@@ -122,7 +134,7 @@ export const DatePicker = ({
       <ChakraPopover.Content css={styles.calendarPopover}>
         <ChakraPopover.Body minWidth="18rem">
           <Calendar
-            {...calendarProps}
+            {...calendarPropsWithFocus}
             variant={variant}
             showYearNavigation={showYearNavigation}
             css={css}
@@ -141,7 +153,13 @@ export const DatePicker = ({
         width={width}
         css={css}
       >
-        <ChakraPopover.Root {...dialogProps} positioning={positioning}>
+        <ChakraPopover.Root
+          positioning={positioning}
+          onOpenChange={({ open }) => {
+            if (!open) focusCalendarTrigger();
+          }}
+          {...dialogProps}
+        >
           <Field
             display="inline-flex"
             id={inputGroupId}

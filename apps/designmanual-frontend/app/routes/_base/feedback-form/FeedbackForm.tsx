@@ -108,30 +108,22 @@ const FeedbackFormContent = () => {
               <Radio value="other">Other</Radio>
             </RadioGroup>
           </Field>
-          <Field gap="1">
-            {(feedbackType === "bug" || feedbackType === "feature-request") && (
-              <Text fontSize="xs">
-                <Text color="text.highlight" fontSize="xs" asChild>
-                  <TextLink
-                    href="/spor/guides/how-to-contribute"
-                    display="inline-flex"
-                    flexDirection="row"
-                    alignItems="center"
-                    wordBreak="no-word"
-                    whiteSpace="nowrap"
-                  >
-                    {" "}
-                    {feedbackType == "bug"
-                      ? "Help us fix it"
-                      : " Learn how to contribute to Spor"}{" "}
-                    <StarsOutline18Icon />
-                  </TextLink>
-                </Text>{" "}
-                — or write your feedback below.{" "}
-              </Text>
-            )}
-          </Field>
-
+          <Text fontSize="xs">
+            <Text color="text.highlight" fontSize="xs" asChild>
+              <TextLink
+                href="/spor/guides/how-to-contribute"
+                display="inline-flex"
+                flexDirection="row"
+                alignItems="center"
+                wordBreak="no-word"
+                whiteSpace="nowrap"
+              >
+                Learn how to contribute to Spor
+                <StarsOutline18Icon />
+              </TextLink>
+            </Text>{" "}
+            — or write your feedback below.
+          </Text>
           <>
             <Textarea
               label="Your feedback"

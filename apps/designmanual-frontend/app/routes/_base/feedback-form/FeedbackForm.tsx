@@ -31,7 +31,7 @@ import { IdeIllustration } from "~/utils/illustrations/ide";
 
 export const FeedbackForm = () => {
   return (
-    <CardSelect>
+    <CardSelect modal>
       <CardSelectTrigger
         variant="floating"
         withChevron={false}
@@ -40,7 +40,7 @@ export const FeedbackForm = () => {
       >
         Feedback?
       </CardSelectTrigger>
-      <CardSelectContent minWidth={["17rem", "25rem"]} position="relative">
+      <CardSelectContent minWidth={["20rem", "25rem"]} position="relative">
         <ChakraPopover.CloseTrigger asChild>
           <IconButton
             aria-label="Close feedback"
@@ -128,7 +128,7 @@ const FeedbackFormContent = () => {
             <Textarea
               label="Your feedback"
               value={feedback}
-              minHeight="6rem"
+              height="6rem"
               onChange={(event) => setFeedback(event.target.value)}
               paddingTop="3"
               borderTop="0"

@@ -53,10 +53,20 @@ const content_menu_click = z.object({
   }),
 });
 
+const feedback_submitted = z.object({
+  event: z.literal("feedback_submitted"),
+  properties: z.object({
+    feedbackType: z.string(),
+    feedback: z.string(),
+    path: z.string(),
+  }),
+});
+
 export const MetabaseCustomEventSchema = z.discriminatedUnion("event", [
   useSearch,
   component_tab_visited,
   content_menu_click,
+  feedback_submitted,
 ]);
 
 export type MetabaseCustomEvent = z.infer<typeof MetabaseCustomEventSchema>;

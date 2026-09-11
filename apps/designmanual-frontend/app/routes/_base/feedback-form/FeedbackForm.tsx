@@ -62,19 +62,26 @@ const FeedbackFormContent = () => {
   const [feedbackType, setFeedbackType] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<string>("");
   const [haveSubmitted, setHaveSubmitted] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   const location = useLocation();
 
   const onSubmit = () => {
-    sendCustomEvent({
-      event: "feedback_submitted",
-      properties: {
-        feedbackType: feedbackType ?? "",
-        feedback,
-        path: location.pathname,
-      },
-    });
-    setHaveSubmitted(true);
+    try {
+      sendCustomEvent({
+        event: "feedback_submitted",
+        properties: {
+          feedbackType: feedbackType ?? "",
+          feedback,
+          path: location.pathname,
+        },
+      });
+      setHaveSubmitted(true);
+    } catch (error) {
+      console.error("Failed to submit feedback:", error);
+      setError("Failed to submit feedback. Please contact the Spor team.");
+      setHaveSubmitted(true);
+    }
   };
 
   const handleWriteAnotherFeedback = () => {
@@ -82,6 +89,10 @@ const FeedbackFormContent = () => {
     setFeedback("");
     setHaveSubmitted(false);
   };
+
+  if (error) {
+    return <Text padding="2">{error}</Text>;
+  }
 
   return haveSubmitted === false ? (
     <Fieldset>

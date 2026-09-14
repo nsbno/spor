@@ -9,20 +9,25 @@ import {
   CardSelect,
   CardSelectContent,
   CardSelectTrigger,
+  DialogBody,
+  DialogCloseTrigger,
+  DialogContent,
+  DialogRoot,
   Field,
   Fieldset,
   FieldsetContent,
   FieldsetLegend,
   Flex,
   Heading,
+  IconButton,
   Radio,
   RadioGroup,
   Stack,
   Text,
   Textarea,
   TextLink,
+  useBreakpointValue,
 } from "@vygruppen/spor-react";
-import { IconButton } from "@vygruppen/spor-react";
 import { useState } from "react";
 import { useLocation } from "react-router";
 
@@ -30,17 +35,45 @@ import { sendCustomEvent } from "~/utils/analytics/metabase";
 import { IdeIllustration } from "~/utils/illustrations/ide";
 
 export const FeedbackForm = () => {
+  const [open, setOpen] = useState(false);
+  const isMobile = useBreakpointValue({ base: true, sm: false });
+
+  if (isMobile) {
+    return (
+      <DialogRoot open={open} onOpenChange={(details) => setOpen(details.open)}>
+        <Button
+          variant="floating"
+          leftIcon={<SpeechBubbleOutline24Icon />}
+          size="sm"
+          onClick={() => setOpen(true)}
+        >
+          Feedback?
+        </Button>
+        <DialogContent>
+          <DialogCloseTrigger aria-label="Close feedback" />
+          <DialogBody>
+            <FeedbackFormContent />
+          </DialogBody>
+        </DialogContent>
+      </DialogRoot>
+    );
+  }
+
   return (
-    <CardSelect modal>
+    <CardSelect
+      modal
+      open={open}
+      onOpenChange={(details) => setOpen(details.open)}
+    >
       <CardSelectTrigger
         variant="floating"
         withChevron={false}
         icon={<SpeechBubbleOutline24Icon />}
-        size={["sm", "md"]}
+        size="md"
       >
         Feedback?
       </CardSelectTrigger>
-      <CardSelectContent minWidth={["20rem", "25rem"]} position="relative">
+      <CardSelectContent minWidth="25rem" position="relative">
         <ChakraPopover.CloseTrigger asChild>
           <IconButton
             aria-label="Close feedback"

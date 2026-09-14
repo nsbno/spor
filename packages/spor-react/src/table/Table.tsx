@@ -1,6 +1,7 @@
 "use client";
 import {
   Button,
+  Collapsible,
   HStack,
   RecipeVariantProps,
   Table as ChakraTable,
@@ -8,16 +9,22 @@ import {
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
   useSlotRecipe,
+  useCollapsibleContext,
+  Box,
 } from "@chakra-ui/react";
 import {
   ArrowDownFill18Icon,
   ArrowUpFill18Icon,
   ChangeDirectionFill18Icon,
+  DropdownDownFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import {
+  Children,
   createContext,
   PropsWithChildren,
+  ReactNode,
   useContext,
+  useEffect,
   useLayoutEffect,
   useRef,
   useState,
@@ -48,7 +55,7 @@ export const useTableSort = () => useContext(SortContext);
 
 export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   PropsWithChildren<TableVariantProps> & {
-    variant?: "ghost" | "core" | "floating";
+    variant?: "accent" | "ghost" | "floating";
     colorPalette?: "grey" | "green" | "white";
     sortable?: boolean;
     disableHover?: boolean;
@@ -127,6 +134,13 @@ export const TableColumnHeader = ({
         else if (ref) ref.current = element;
       }}
       {...rest}
+      aria-sort={
+        enabled
+          ? sortState.direction === "asc"
+            ? "ascending"
+            : "descending"
+          : "none"
+      }
     >
       <HStack>
         {children}
@@ -192,5 +206,98 @@ export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
     >
       {children}
     </ChakraTable.Body>
+  );
+};
+
+const ExpandableRowContext = createContext<{
+  open: boolean;
+  onToggle: () => void;
+}>({ open: false, onToggle: () => {} });
+
+export const useExpandableTableRow = () => useContext(ExpandableRowContext);
+
+export type ExpandableTableRowProps = PropsWithChildren<{
+  /** Content rendered in the expanded row, spanning all columns of the table */
+  content: ReactNode;
+  defaultOpen?: boolean;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  ref?: React.Ref<HTMLTableRowElement>;
+}>;
+
+/**
+ * A table row that can be expanded to reveal additional content underneath it.
+ *
+ * Renders as two `<tr>` elements: the visible row and a second row whose single
+ * cell spans every column and holds the collapsible content. This avoids nesting
+ * a `<tr>` inside another `<tr>`, which is invalid HTML and causes the content to
+ * be pulled out into its own column by the browser.
+ *
+ * Use `ExpandableTableRowTrigger` inside one of the row's cells to toggle it.
+ */
+export const ExpandableTableRow = ({
+  children,
+  content,
+  defaultOpen = false,
+  open: openProp,
+  onOpenChange,
+  ref,
+}: ExpandableTableRowProps) => {
+  const [isOpen, setIsOpen] = useState(openProp ?? defaultOpen);
+  const columnCount = Children.count(children);
+
+  const onToggle = () => {
+    const next = !isOpen;
+    onOpenChange?.(next);
+    if (openProp === undefined) setIsOpen(next);
+  };
+
+  return (
+    <>
+      <ExpandableRowContext.Provider value={{ open: isOpen, onToggle }}>
+        <ChakraTable.Row
+          ref={ref}
+          data-expandable-trigger
+          data-state={isOpen ? "open" : "closed"}
+        >
+          <ChakraTable.Cell>
+            <Button
+              variant="ghost"
+              size="xs"
+              onClick={onToggle}
+              aria-expanded={isOpen}
+              marginInline="auto"
+            >
+              <DropdownDownFill24Icon
+                transform={isOpen ? "rotate(180deg)" : undefined}
+                transition="transform 0.2s"
+              />
+            </Button>
+          </ChakraTable.Cell>
+          {children}
+        </ChakraTable.Row>
+      </ExpandableRowContext.Provider>
+      <ChakraTable.Row
+        data-expandable-content
+        data-state={isOpen ? "open" : "closed"}
+      >
+        {/* a background line (not a bordered child with height="100%") since percentage heights inside a <td> aren't reliably resolved across browsers (works in Chromium, not Firefox); backgroundOrigin: content-box keeps it inset by the cell's own padding automatically */}
+        <ChakraTable.Cell
+          css={{
+            backgroundImage:
+              "linear-gradient(var(--spor-colors-outline-disabled), var(--spor-colors-outline-disabled))",
+            backgroundRepeat: "no-repeat",
+            backgroundOrigin: "content-box",
+            backgroundPosition: "center",
+            backgroundSize: "2px 100%",
+          }}
+        />
+        <ChakraTable.Cell colSpan={columnCount}>
+          <Collapsible.Root open={isOpen}>
+            <Collapsible.Content>{content}</Collapsible.Content>
+          </Collapsible.Root>
+        </ChakraTable.Cell>
+      </ChakraTable.Row>
+    </>
   );
 };

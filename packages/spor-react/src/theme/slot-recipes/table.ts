@@ -8,6 +8,12 @@ const numericStyles = {
   },
 };
 
+const rowHover =
+  "&:not(:where([data-disable-hover] *)):not(:has(th)):not([data-expandable-content]):hover";
+// hovering the expandable content row highlights its trigger row instead of itself
+const triggerHoverFromContent =
+  "&[data-expandable-trigger]:not(:where([data-disable-hover] *)):has(+ tr[data-expandable-content]:hover)";
+
 export const tableSlotRecipe = defineSlotRecipe({
   className: "spor-table",
   slots: tableAnatomy.keys(),
@@ -17,7 +23,14 @@ export const tableSlotRecipe = defineSlotRecipe({
       borderCollapse: "collapse",
       width: "100%",
       minWidth: "36rem",
-      overflow: "hidden",
+
+      "&:has(tbody tr[data-expandable-trigger]) :is(thead th, tbody td):first-child":
+        {
+          width: "61px",
+          minWidth: "61px",
+          maxWidth: "61px",
+          boxSizing: "border-box",
+        },
     },
     columnHeader: {
       fontWeight: "bold",
@@ -35,8 +48,9 @@ export const tableSlotRecipe = defineSlotRecipe({
       paddingX: 1.5,
       paddingY: 1,
     },
+
     footer: {
-      fontWeight: "medium",
+      fontWeight: "bold",
     },
   },
 
@@ -65,10 +79,10 @@ export const tableSlotRecipe = defineSlotRecipe({
       },
     },
     variant: {
-      core: {
+      accent: {
         root: {
           boxShadow: "0 0 0 1px var(--shadow-color)",
-          shadowColor: "outline.disabled",
+          shadowColor: "outline",
           borderRadius: "xs",
         },
 
@@ -81,20 +95,76 @@ export const tableSlotRecipe = defineSlotRecipe({
 
         columnHeader: {
           ...numericStyles,
+
+          backgroundColor: "surface.accent",
+          _first: {
+            borderTopLeftRadius: "xs",
+          },
+          _last: {
+            borderTopRightRadius: "xs",
+          },
         },
         header: {
           borderBottom: "sm",
-          borderColor: "outline.disabled",
-          backgroundColor: "surface.disabled",
+          borderColor: "outline",
         },
         row: {
           ...numericStyles,
           borderBottom: "sm",
-          borderColor: "outline.disabled",
+          borderColor: "outline",
 
-          _last: {
-            borderBottom: "none",
+          [`${rowHover} td`]: {
+            backgroundColor: "surface.accent.hover",
           },
+
+          [`${triggerHoverFromContent} td`]: {
+            backgroundColor: "surface.accent.hover",
+          },
+
+          "&:last-child:not(:where(tbody:has(+ tfoot) *))": {
+            borderBottom: "none",
+
+            "& td:first-child": {
+              borderBottomLeftRadius: "xs",
+            },
+            "& td:last-child": {
+              borderBottomRightRadius: "xs",
+            },
+          },
+
+          '&[data-expandable-trigger][data-state="closed"]:nth-last-child(2):not(:where(tbody:has(+ tfoot) *))':
+            {
+              borderBottom: "none",
+
+              "& td:first-child": {
+                borderBottomLeftRadius: "xs",
+              },
+              "& td:last-child": {
+                borderBottomRightRadius: "xs",
+              },
+            },
+
+          '&[data-expandable-trigger][data-state="open"]': {
+            borderColor: "outline.disabled",
+          },
+
+          '&[data-expandable-content][data-state="open"]': {
+            borderTop: "none",
+          },
+
+          '&[data-expandable-content][data-state="closed"]': {
+            border: "none",
+            py: 0,
+
+            "& td": {
+              py: 0,
+              borderWidth: "0",
+            },
+          },
+        },
+        footer: {
+          borderTopWidth: "2px",
+          borderColor: "outline",
         },
       },
       floating: {
@@ -110,17 +180,49 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
         cell: {
           backgroundColor: "surface.floating",
+          borderStyle: "solid",
+          borderTopWidth: 1,
+          borderBottomWidth: 1,
+          borderColor: "outline.floating",
           _first: {
             borderLeftRadius: "xs",
+            borderLeftWidth: 1,
           },
           _last: {
             borderRightRadius: "xs",
+            borderRightWidth: 1,
           },
         },
         row: {
-          borderRadius: "sm",
-          "&:not(:where([data-disable-hover] *)):not(:has(th)):hover": {
+          [`${rowHover} td`]: {
             backgroundColor: "surface.floating.hover",
+            borderColor: "outline.floating.hover",
+          },
+
+          [`${triggerHoverFromContent} td`]: {
+            backgroundColor: "surface.floating.hover",
+            borderColor: "outline.floating.hover",
+          },
+
+          "&:not(:has(th))": {
+            borderRadius: "xs",
+          },
+
+          '&[data-expandable-trigger][data-state="open"] td': {
+            borderBottomLeftRadius: 0,
+            borderBottomRightRadius: 0,
+          },
+
+          '&[data-expandable-content][data-state="open"] td': {
+            borderTop: "none",
+            borderTopRadius: 0,
+            position: "relative",
+            top: "-6px",
+          },
+
+          '&[data-expandable-content][data-state="closed"] td': {
+            border: "none",
+            py: 0,
           },
         },
       },
@@ -130,7 +232,7 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
         columnHeader: {
           borderBottom: "sm",
-          borderColor: "outline.disabled",
+          borderColor: "outline",
           backgroundColor: "none",
           color: "text",
         },
@@ -140,11 +242,38 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
         row: {
           borderBottom: "sm",
-          borderColor: "outline.disabled",
-          "&:not(:where([data-disable-hover] *)):not(:has(th)):hover": {
+          borderColor: "outline",
+          [rowHover]: {
+            backgroundColor: "surface.ghost.hover",
+          },
+          [triggerHoverFromContent]: {
             backgroundColor: "surface.ghost.hover",
           },
           ...numericStyles,
+
+          '&[data-expandable-trigger][data-state="open"]': {
+            borderColor: "outline.disabled",
+          },
+
+          '&[data-expandable-content][data-state="open"]': {
+            borderTop: "none",
+          },
+
+          '&[data-expandable-content][data-state="closed"]': {
+            border: "none",
+            py: 0,
+
+            "& td": {
+              py: 0,
+              borderWidth: "0",
+            },
+          },
+        },
+
+        footer: {
+          "& tr": {
+            borderBottom: "none",
+          },
         },
       },
     },

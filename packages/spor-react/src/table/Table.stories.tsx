@@ -1,24 +1,31 @@
+import { Button } from "@chakra-ui/react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { InformationOutline18Icon } from "@vygruppen/spor-icon-react";
 import {
   Badge,
   Box,
+  Checkbox,
+  ExpandableTableRow,
+  Text,
   Table,
   TableBody,
   TableCell,
   TableColumnHeader,
+  TableFooter,
   TableHeader,
   TableRow,
   Tooltip,
   TooltipContent,
   TooltipTrigger,
+  HStack,
 } from "@vygruppen/spor-react";
+import { useState } from "react";
 
 const meta = {
   title: "Components/Table",
   component: Table,
   args: {
-    variant: "core",
+    variant: "accent",
     colorPalette: undefined,
     size: "md",
     sortable: false,
@@ -26,7 +33,7 @@ const meta = {
   argTypes: {
     variant: {
       control: "select",
-      options: [undefined, "core", "ghost", "floating"],
+      options: [undefined, "accent", "ghost", "floating"],
     },
     colorPalette: {
       control: "select",
@@ -101,6 +108,14 @@ export const Default: Story = {
           </TableRow>
         ))}
       </TableBody>
+      <TableFooter>
+        <TableRow>
+          <TableCell>Footer</TableCell>
+          <TableCell>Footer</TableCell>
+          <TableCell>Footer</TableCell>
+          <TableCell>Footer</TableCell>
+        </TableRow>
+      </TableFooter>
     </Table>
   ),
 };
@@ -108,7 +123,7 @@ export const Default: Story = {
 export const Variants: Story = {
   render: () => (
     <Box display="flex" flexDirection="column" gap={8}>
-      {(["core", "ghost", "floating"] as const).map((variant) => (
+      {(["accent", "ghost", "floating"] as const).map((variant) => (
         <Box key={variant}>
           <Box fontWeight="bold" marginBottom={2}>
             {variant}
@@ -303,6 +318,87 @@ export const WithTooltip: Story = {
             <TableCell>{row.arrival}</TableCell>
             <TableCell>{row.price}</TableCell>
           </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  ),
+};
+
+export const Selectable: Story = {
+  render: (arguments_) => {
+    const [selectedRows, setSelectedRows] = useState<number[]>([]);
+    const toggleRow = (rowNumber: number) => {
+      selectedRows.includes(rowNumber)
+        ? setSelectedRows((prev) => prev.filter((r) => r !== rowNumber))
+        : setSelectedRows((prev) => [...prev, rowNumber]);
+    };
+    return (
+      <Table {...arguments_}>
+        <TableHeader>
+          <TableRow>
+            <TableColumnHeader width={4}>
+              <Checkbox
+                onCheckedChange={() =>
+                  selectedRows.length > 0
+                    ? setSelectedRows([])
+                    : setSelectedRows([])
+                }
+              />
+            </TableColumnHeader>
+            <TableColumnHeader>Destination</TableColumnHeader>
+            <TableColumnHeader>Departure</TableColumnHeader>
+            <TableColumnHeader>Arrival</TableColumnHeader>
+            <TableColumnHeader>Price</TableColumnHeader>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {sampleRows.map((row, index) => (
+            <TableRow>
+              <TableCell>
+                <Checkbox
+                  checked={selectedRows.includes(index)}
+                  onCheckedChange={() => toggleRow(index)}
+                />
+              </TableCell>
+              <TableCell>{row.destination}</TableCell>
+              <TableCell>{row.departure}</TableCell>
+              <TableCell>{row.arrival}</TableCell>
+              <TableCell>{row.price}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  },
+};
+
+export const Expandable: Story = {
+  render: (arguments_) => (
+    <Table {...arguments_}>
+      <TableHeader>
+        <TableRow>
+          <TableColumnHeader />
+          <TableColumnHeader>Destination</TableColumnHeader>
+          <TableColumnHeader>Departure</TableColumnHeader>
+          <TableColumnHeader>Arrival</TableColumnHeader>
+          <TableColumnHeader>Price</TableColumnHeader>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {sampleRows.map((row) => (
+          <ExpandableTableRow
+            content={
+              <HStack justifyContent="space-between">
+                <Text>Valgfritt innhold</Text>
+                <Button>Click me!</Button>
+              </HStack>
+            }
+          >
+            <TableCell>{row.destination}</TableCell>
+            <TableCell>{row.departure}</TableCell>
+            <TableCell>{row.arrival}</TableCell>
+            <TableCell>{row.price}</TableCell>
+          </ExpandableTableRow>
         ))}
       </TableBody>
     </Table>

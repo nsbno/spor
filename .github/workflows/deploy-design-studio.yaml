@@ -1,9 +1,15 @@
 name: "Deploy Design Studio 🎨"
 
 on:
+  workflow_dispatch:
+
   push:
     branches:
       - main
+
+concurrency:
+  group: deploy-design-studio
+  cancel-in-progress: false
 
 jobs:
   deploy-studio:

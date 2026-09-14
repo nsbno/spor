@@ -40,7 +40,11 @@ export const FeedbackForm = () => {
 
   if (isMobile) {
     return (
-      <DialogRoot open={open} onOpenChange={(details) => setOpen(details.open)}>
+      <DialogRoot
+        open={open}
+        onOpenChange={(details) => setOpen(details.open)}
+        placement="center"
+      >
         <Button
           variant="floating"
           leftIcon={<SpeechBubbleOutline24Icon />}
@@ -49,9 +53,9 @@ export const FeedbackForm = () => {
         >
           Feedback?
         </Button>
-        <DialogContent>
+        <DialogContent width="90%">
           <DialogCloseTrigger aria-label="Close feedback" />
-          <DialogBody>
+          <DialogBody padding="3">
             <FeedbackFormContent />
           </DialogBody>
         </DialogContent>
@@ -129,7 +133,7 @@ const FeedbackFormContent = () => {
 
   return haveSubmitted === false ? (
     <Fieldset>
-      <Stack gap="3" direction="column" padding="2">
+      <Stack gap="3" direction="column" padding={[1, 2]}>
         <FieldsetLegend>
           <Stack>
             <Heading as="h3" variant="md" fontWeight="bold">

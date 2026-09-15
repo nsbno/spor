@@ -34,8 +34,10 @@ import {
   captureRowOrder,
   getColumnIndex,
   getNextSortState,
+  reconcileRows,
   type SortState,
 } from "./sort-utils";
+import { applyRowParity  } from "./utils";
 
 type TableVariantProps = RecipeVariantProps<typeof tableSlotRecipe>;
 
@@ -101,7 +103,6 @@ export const Table = ({
       {...(disableHover ? { "data-disable-hover": "" } : {})}
       {...rest}
     >
-      {/* responsive size values fall back to md, since the icon can't vary per breakpoint */}
       <TableSizeContext.Provider
         value={{ size: typeof size === "string" ? size : "md" }}
       >
@@ -185,35 +186,31 @@ export type TableBodyProps = ChakraTableBodyProps & {
   ref?: React.Ref<HTMLTableSectionElement>;
 };
 
-// an expandable row occupies two <tr>s, so both share the parity of the logical row
-const applyRowParity = (tbody: HTMLTableSectionElement) => {
-  let rowNumber = 0;
-  for (const row of tbody.rows) {
-    if (!Object.hasOwn(row.dataset, "expandableContent")) rowNumber += 1;
-    row.dataset.rowParity = rowNumber % 2 === 0 ? "even" : "odd";
-  }
-};
-
 export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
   const { sortState } = useTableSort();
   const tbodyRef = useRef<HTMLTableSectionElement | null>(null);
   const originalOrder = useRef<HTMLTableRowElement[]>([]);
-  const previousChildren = useRef(children);
 
   useLayoutEffect(() => {
     const tbody = tbodyRef.current;
     if (!tbody) return;
 
-    if (
-      previousChildren.current !== children ||
-      originalOrder.current.length === 0
-    ) {
-      originalOrder.current = captureRowOrder(tbody);
-      previousChildren.current = children;
-    }
+    const sync = () => {
+      observer.disconnect();
+      originalOrder.current =
+        sortState.columnIndex === null
+          ? captureRowOrder(tbody)
+          : reconcileRows(tbody, originalOrder.current);
+      applyDomSort(tbody, sortState, originalOrder.current);
+      applyRowParity(tbody);
+      observer.observe(tbody, { childList: true });
+    };
 
-    applyDomSort(tbody, sortState, originalOrder.current);
-    applyRowParity(tbody);
+    const observer = new MutationObserver(sync);
+
+    sync();
+
+    return () => observer.disconnect();
   }, [sortState, children]);
 
   return (

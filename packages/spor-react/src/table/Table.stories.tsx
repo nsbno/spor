@@ -391,7 +391,7 @@ export const Expandable: Story = {
     <Table {...arguments_}>
       <TableHeader>
         <TableRow>
-          <TableColumnHeader />
+          <TableColumnHeader data-nosort />
           <TableColumnHeader>Destination</TableColumnHeader>
           <TableColumnHeader>Departure</TableColumnHeader>
           <TableColumnHeader>Arrival</TableColumnHeader>
@@ -414,6 +414,15 @@ export const Expandable: Story = {
             <TableCell>{row.price}</TableCell>
           </ExpandableTableRow>
         ))}
+        {/* {sampleRows.map((row, index) => (
+          <TableRow key={index}>
+            <TableCell />
+            <TableCell>{row.destination}</TableCell>
+            <TableCell>{row.departure}</TableCell>
+            <TableCell>{row.arrival}</TableCell>
+            <TableCell>{row.price}</TableCell>
+          </TableRow>
+        ))} */}
       </TableBody>
     </Table>
   ),

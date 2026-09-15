@@ -24,7 +24,7 @@ export const tableSlotRecipe = defineSlotRecipe({
       width: "100%",
       minWidth: "36rem",
 
-      "&:has(tbody tr[data-expandable-trigger]) :is(thead th, tbody td):first-child":
+      "&:has(tbody tr[data-expandable-trigger]) :is(thead th, tbody td):first-of-type":
         {
           "--table-toggle-width": "54px",
           width: "var(--table-toggle-width)",
@@ -132,25 +132,25 @@ export const tableSlotRecipe = defineSlotRecipe({
             backgroundColor: "surface.accent.hover",
           },
 
-          "&:last-child:not(:where(tbody:has(+ tfoot) *))": {
+          "&:last-of-type:not(:where(tbody:has(+ tfoot) *))": {
             borderBottom: "none",
 
-            "& td:first-child": {
+            "& td:first-of-type": {
               borderBottomLeftRadius: "xs",
             },
-            "& td:last-child": {
+            "& td:last-of-type": {
               borderBottomRightRadius: "xs",
             },
           },
 
-          '&[data-expandable-trigger][data-state="closed"]:nth-last-child(2):not(:where(tbody:has(+ tfoot) *))':
+          '&[data-expandable-trigger][data-state="closed"]:nth-last-of-type(2):not(:where(tbody:has(+ tfoot) *))':
             {
               borderBottom: "none",
 
-              "& td:first-child": {
+              "& td:first-of-type": {
                 borderBottomLeftRadius: "xs",
               },
-              "& td:last-child": {
+              "& td:last-of-type": {
                 borderBottomRightRadius: "xs",
               },
             },
@@ -321,7 +321,7 @@ export const tableSlotRecipe = defineSlotRecipe({
       },
       lg: {
         root: {
-          "&:has(tbody tr[data-expandable-trigger]) :is(thead th, tbody td):first-child":
+          "&:has(tbody tr[data-expandable-trigger]) :is(thead th, tbody td):first-of-type":
             {
               "--table-toggle-width": "66px",
               width: "var(--table-toggle-width)",

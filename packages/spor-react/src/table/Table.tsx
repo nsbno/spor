@@ -188,8 +188,8 @@ export type TableBodyProps = ChakraTableBodyProps & {
 // an expandable row occupies two <tr>s, so both share the parity of the logical row
 const applyRowParity = (tbody: HTMLTableSectionElement) => {
   let rowNumber = 0;
-  for (const row of Array.from(tbody.rows)) {
-    if (!row.hasAttribute("data-expandable-content")) rowNumber += 1;
+  for (const row of tbody.rows) {
+    if (!Object.hasOwn(row.dataset, "expandableContent")) rowNumber += 1;
     row.dataset.rowParity = rowNumber % 2 === 0 ? "even" : "odd";
   }
 };
@@ -250,11 +250,11 @@ export const ExpandableTableRow = ({
   children,
   content,
   defaultOpen = false,
-  open: openProp,
+  open: openProperty,
   onOpenChange,
   ref,
 }: ExpandableTableRowProps) => {
-  const [isOpen, setIsOpen] = useState(openProp ?? defaultOpen);
+  const [isOpen, setIsOpen] = useState(openProperty ?? defaultOpen);
   const columnCount = Children.count(children);
   const { size } = useTableSize();
   const DropdownIcon =
@@ -263,7 +263,7 @@ export const ExpandableTableRow = ({
   const onToggle = () => {
     const next = !isOpen;
     onOpenChange?.(next);
-    if (openProp === undefined) setIsOpen(next);
+    if (openProperty === undefined) setIsOpen(next);
   };
 
   return (
@@ -295,9 +295,7 @@ export const ExpandableTableRow = ({
         data-expandable-content
         data-state={isOpen ? "open" : "closed"}
       >
-        <ChakraTable.Cell
-          data-expandable-content-marker
-        />
+        <ChakraTable.Cell data-expandable-content-marker />
         <ChakraTable.Cell colSpan={columnCount}>
           <Collapsible.Root open={isOpen}>
             <Collapsible.Content>{content}</Collapsible.Content>

@@ -159,7 +159,7 @@ const FeedbackFormContent = () => {
           <Text fontSize="xs">
             <Text color="text.highlight" fontSize="xs" asChild>
               <TextLink
-                href="/spor/guides/how-to-contribute"
+                href="/spor/contribute-to-spor/how-to-contribute"
                 display="inline-flex"
                 flexDirection="row"
                 alignItems="center"

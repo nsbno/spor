@@ -10,6 +10,7 @@ import { PropsWithChildren } from "react";
 
 import { Box, createTexts, IconButton, Text, useTranslation } from "..";
 import { stepperSlotRecipe } from "../theme/slot-recipes/stepper";
+import { SporSemantic } from "../theme/tokens/global-css";
 import { StepperStep } from ".";
 import { StepperProvider } from "./StepperContext";
 
@@ -42,6 +43,7 @@ type StepperProps = PropsWithChildren<StepperVariantProps> & {
   /** Disables all clicks */
   disabled?: boolean;
   css?: SystemStyleObject;
+  "data-color"?: SporSemantic;
 };
 /**
  * A stepper is used to show which step of a process a user is currently in.
@@ -74,6 +76,7 @@ export const Stepper = function Stepper({
     variant,
     disabled,
     css,
+    ...rest
   } = props;
   const recipe = useSlotRecipe({ key: "stepper" });
   const style = recipe({ variant });
@@ -83,7 +86,7 @@ export const Stepper = function Stepper({
   const hideBackButtonOnFirstStep = activeStep === 1 && !onBackButtonClick;
 
   return (
-    <Box css={{ ...style.root, ...css }} ref={ref}>
+    <Box css={{ ...style.root, ...css }} ref={ref} {...rest}>
       <StepperProvider
         onClick={onClick}
         activeStep={activeStep}

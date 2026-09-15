@@ -5,7 +5,7 @@ import {
   TokensFill24Icon,
   WarningOutline24Icon,
 } from "@vygruppen/spor-icon-react";
-import { Alert, AlertProps } from "@vygruppen/spor-react";
+import { Alert } from "@vygruppen/spor-react";
 
 import { ArticleBadgeType } from "~/utils/initialSanityData.server";
 
@@ -14,12 +14,12 @@ import { ArticleBadgeProps } from "./ArticleBadge";
 export const ArticleAlert = ({ badgeType, description }: ArticleBadgeType) => {
   const articleBadgeAlertVariant: Record<
     ArticleBadgeProps["badgeType"],
-    AlertProps["variant"]
+    "success" | "info" | "warning" | "critical"
   > = {
     new: "success",
     updated: "info",
-    beta: "important",
-    deprecated: "error",
+    beta: "warning",
+    deprecated: "critical",
   };
   const articleBadgeAlertIcon: Record<
     ArticleBadgeProps["badgeType"],
@@ -32,7 +32,7 @@ export const ArticleAlert = ({ badgeType, description }: ArticleBadgeType) => {
   };
   return (
     <Alert
-      variant={articleBadgeAlertVariant[badgeType]}
+      data-color={articleBadgeAlertVariant[badgeType]}
       icon={articleBadgeAlertIcon[badgeType]}
       role="status"
       aria-live="polite"

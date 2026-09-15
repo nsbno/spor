@@ -9,13 +9,12 @@ import {
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
   useSlotRecipe,
-  useCollapsibleContext,
-  Box,
 } from "@chakra-ui/react";
 import {
   ArrowDownFill18Icon,
   ArrowUpFill18Icon,
   ChangeDirectionFill18Icon,
+  DropdownDownFill18Icon,
   DropdownDownFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import {
@@ -24,7 +23,6 @@ import {
   PropsWithChildren,
   ReactNode,
   useContext,
-  useEffect,
   useLayoutEffect,
   useRef,
   useState,
@@ -51,23 +49,30 @@ const SortContext = createContext<{
   onSort: () => {},
 });
 
+const TableSizeContext = createContext<{ size: "lg" | "md" | "sm" }>({
+  size: "md",
+});
+
 export const useTableSort = () => useContext(SortContext);
+const useTableSize = () => useContext(TableSizeContext);
 
 export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   PropsWithChildren<TableVariantProps> & {
     variant?: "accent" | "ghost" | "floating";
     colorPalette?: "grey" | "green" | "white";
     sortable?: boolean;
+    striped?: boolean;
     disableHover?: boolean;
     ref?: React.Ref<HTMLTableElement>;
   };
 
 export const Table = ({
   variant = "ghost",
-  size,
+  size = "md",
   colorPalette,
   children,
   sortable = false,
+  striped = false,
   disableHover,
   ref,
   ...rest
@@ -83,27 +88,33 @@ export const Table = ({
   };
 
   const recipe = useSlotRecipe({ key: "table" });
-  const styles = recipe({ variant, size });
+  const styles = recipe({ variant, size, striped });
 
   return (
     <ChakraTable.Root
       variant={variant}
       size={size}
+      striped={striped}
       colorPalette={colorPalette}
       css={styles}
       ref={ref}
       {...(disableHover ? { "data-disable-hover": "" } : {})}
       {...rest}
     >
-      <SortContext.Provider
-        value={{
-          enabled: sortable,
-          sortState,
-          onSort: handleSort,
-        }}
+      {/* responsive size values fall back to md, since the icon can't vary per breakpoint */}
+      <TableSizeContext.Provider
+        value={{ size: typeof size === "string" ? size : "md" }}
       >
-        {children}
-      </SortContext.Provider>
+        <SortContext.Provider
+          value={{
+            enabled: sortable,
+            sortState,
+            onSort: handleSort,
+          }}
+        >
+          {children}
+        </SortContext.Provider>
+      </TableSizeContext.Provider>
     </ChakraTable.Root>
   );
 };
@@ -174,6 +185,15 @@ export type TableBodyProps = ChakraTableBodyProps & {
   ref?: React.Ref<HTMLTableSectionElement>;
 };
 
+// an expandable row occupies two <tr>s, so both share the parity of the logical row
+const applyRowParity = (tbody: HTMLTableSectionElement) => {
+  let rowNumber = 0;
+  for (const row of Array.from(tbody.rows)) {
+    if (!row.hasAttribute("data-expandable-content")) rowNumber += 1;
+    row.dataset.rowParity = rowNumber % 2 === 0 ? "even" : "odd";
+  }
+};
+
 export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
   const { sortState } = useTableSort();
   const tbodyRef = useRef<HTMLTableSectionElement | null>(null);
@@ -193,6 +213,7 @@ export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
     }
 
     applyDomSort(tbody, sortState, originalOrder.current);
+    applyRowParity(tbody);
   }, [sortState, children]);
 
   return (
@@ -225,16 +246,6 @@ export type ExpandableTableRowProps = PropsWithChildren<{
   ref?: React.Ref<HTMLTableRowElement>;
 }>;
 
-/**
- * A table row that can be expanded to reveal additional content underneath it.
- *
- * Renders as two `<tr>` elements: the visible row and a second row whose single
- * cell spans every column and holds the collapsible content. This avoids nesting
- * a `<tr>` inside another `<tr>`, which is invalid HTML and causes the content to
- * be pulled out into its own column by the browser.
- *
- * Use `ExpandableTableRowTrigger` inside one of the row's cells to toggle it.
- */
 export const ExpandableTableRow = ({
   children,
   content,
@@ -245,6 +256,9 @@ export const ExpandableTableRow = ({
 }: ExpandableTableRowProps) => {
   const [isOpen, setIsOpen] = useState(openProp ?? defaultOpen);
   const columnCount = Children.count(children);
+  const { size } = useTableSize();
+  const DropdownIcon =
+    size === "lg" ? DropdownDownFill24Icon : DropdownDownFill18Icon;
 
   const onToggle = () => {
     const next = !isOpen;
@@ -268,7 +282,7 @@ export const ExpandableTableRow = ({
               aria-expanded={isOpen}
               marginInline="auto"
             >
-              <DropdownDownFill24Icon
+              <DropdownIcon
                 transform={isOpen ? "rotate(180deg)" : undefined}
                 transition="transform 0.2s"
               />
@@ -281,16 +295,8 @@ export const ExpandableTableRow = ({
         data-expandable-content
         data-state={isOpen ? "open" : "closed"}
       >
-        {/* a background line (not a bordered child with height="100%") since percentage heights inside a <td> aren't reliably resolved across browsers (works in Chromium, not Firefox); backgroundOrigin: content-box keeps it inset by the cell's own padding automatically */}
         <ChakraTable.Cell
-          css={{
-            backgroundImage:
-              "linear-gradient(var(--spor-colors-outline-disabled), var(--spor-colors-outline-disabled))",
-            backgroundRepeat: "no-repeat",
-            backgroundOrigin: "content-box",
-            backgroundPosition: "center",
-            backgroundSize: "2px 100%",
-          }}
+          data-expandable-content-marker
         />
         <ChakraTable.Cell colSpan={columnCount}>
           <Collapsible.Root open={isOpen}>

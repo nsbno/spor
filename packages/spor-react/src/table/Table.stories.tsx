@@ -29,6 +29,7 @@ const meta = {
     colorPalette: undefined,
     size: "md",
     sortable: false,
+    striped: false,
   },
   argTypes: {
     variant: {
@@ -41,6 +42,7 @@ const meta = {
     },
     size: { control: "select", options: ["sm", "md", "lg"] },
     sortable: { control: "boolean" },
+    striped: { control: "boolean" },
     disableHover: { control: "boolean" },
   },
 } satisfies Meta<typeof Table>;
@@ -53,35 +55,35 @@ const sampleRows = [
   {
     destination: "Bergen",
     departure: "08:00",
-    arrival: "14:30",
+    arrival: "14",
     price: "499 kr",
     status: "Complete",
   },
   {
     destination: "Trondheim",
     departure: "09:15",
-    arrival: "16:45",
+    arrival: "16",
     price: "649 kr",
     status: "Cancelled",
   },
   {
     destination: "Stavanger",
     departure: "11:00",
-    arrival: "13:20",
+    arrival: "13",
     price: "349 kr",
     status: "Complete",
   },
   {
     destination: "Bodø",
     departure: "13:30",
-    arrival: "22:00",
+    arrival: "22",
     price: "799 kr",
     status: "Cancelled",
   },
   {
     destination: "Bodø",
     departure: "13:30",
-    arrival: "22:00",
+    arrival: "22",
     price: "799 kr",
     status: "Pending",
   },
@@ -99,7 +101,7 @@ export const Default: Story = {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {sampleRows.map((row) => (
+        {sampleRows.map((row, i) => (
           <TableRow key={row.destination}>
             <TableCell>{row.destination}</TableCell>
             <TableCell>{row.departure}</TableCell>
@@ -197,6 +199,7 @@ export const Sizes: Story = {
               <TableRow>
                 <TableColumnHeader>Destination</TableColumnHeader>
                 <TableColumnHeader>Departure</TableColumnHeader>
+                <TableColumnHeader>Arrival</TableColumnHeader>
                 <TableColumnHeader>Price</TableColumnHeader>
               </TableRow>
             </TableHeader>
@@ -205,6 +208,7 @@ export const Sizes: Story = {
                 <TableRow key={row.destination}>
                   <TableCell>{row.destination}</TableCell>
                   <TableCell>{row.departure}</TableCell>
+                  <TableCell>{row.arrival}</TableCell>
                   <TableCell>{row.price}</TableCell>
                 </TableRow>
               ))}
@@ -336,7 +340,7 @@ export const Selectable: Story = {
       <Table {...arguments_}>
         <TableHeader>
           <TableRow>
-            <TableColumnHeader width={4}>
+            <TableColumnHeader width={6}>
               <Checkbox
                 onCheckedChange={() =>
                   selectedRows.length > 0
@@ -390,7 +394,6 @@ export const Expandable: Story = {
             content={
               <HStack justifyContent="space-between">
                 <Text>Valgfritt innhold</Text>
-                <Button>Click me!</Button>
               </HStack>
             }
           >
@@ -399,6 +402,32 @@ export const Expandable: Story = {
             <TableCell>{row.arrival}</TableCell>
             <TableCell>{row.price}</TableCell>
           </ExpandableTableRow>
+        ))}
+      </TableBody>
+    </Table>
+  ),
+};
+
+export const Striped: Story = {
+  render: (arguments_) => (
+    <Table {...arguments_} striped>
+      <TableHeader>
+        <TableRow>
+          <TableColumnHeader />
+          <TableColumnHeader>Destination</TableColumnHeader>
+          <TableColumnHeader>Departure</TableColumnHeader>
+          <TableColumnHeader>Arrival</TableColumnHeader>
+          <TableColumnHeader>Price</TableColumnHeader>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {sampleRows.map((row) => (
+          <TableRow>
+            <TableCell>{row.destination}</TableCell>
+            <TableCell>{row.departure}</TableCell>
+            <TableCell>{row.arrival}</TableCell>
+            <TableCell>{row.price}</TableCell>
+          </TableRow>
         ))}
       </TableBody>
     </Table>

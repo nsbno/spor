@@ -10,7 +10,7 @@ const numericStyles = {
 
 const rowHover =
   "&:not(:where([data-disable-hover] *)):not(:has(th)):not([data-expandable-content]):hover";
-// hovering the expandable content row highlights its trigger row instead of itself
+
 const triggerHoverFromContent =
   "&[data-expandable-trigger]:not(:where([data-disable-hover] *)):has(+ tr[data-expandable-content]:hover)";
 
@@ -26,10 +26,12 @@ export const tableSlotRecipe = defineSlotRecipe({
 
       "&:has(tbody tr[data-expandable-trigger]) :is(thead th, tbody td):first-child":
         {
-          width: "61px",
-          minWidth: "61px",
-          maxWidth: "61px",
+          "--table-toggle-width": "54px",
+          width: "var(--table-toggle-width)",
+          minWidth: "var(--table-toggle-width)",
+          maxWidth: "var(--table-toggle-width)",
           boxSizing: "border-box",
+          paddingInline: 0,
         },
     },
     columnHeader: {
@@ -37,16 +39,24 @@ export const tableSlotRecipe = defineSlotRecipe({
       textAlign: "start",
 
       ...numericStyles,
-      paddingX: 1.5,
-      paddingY: 1,
     },
     row: {
       ...numericStyles,
+      "&[data-expandable-content][data-state=open] td": {
+        paddingBlock: 2,
+      },
     },
     cell: {
       ...numericStyles,
-      paddingX: 1.5,
-      paddingY: 1,
+
+      "&[data-expandable-content-marker]": {
+        backgroundImage:
+          "linear-gradient(var(--spor-colors-outline-disabled), var(--spor-colors-outline-disabled))",
+        backgroundRepeat: "no-repeat",
+        backgroundOrigin: "content-box",
+        backgroundPosition: "center",
+        backgroundSize: "2px 100%",
+      },
     },
 
     footer: {
@@ -55,6 +65,16 @@ export const tableSlotRecipe = defineSlotRecipe({
   },
 
   variants: {
+    striped: {
+      true: {
+        row: {
+          '&[data-row-parity="even"]:not([data-expandable-content]) td': {
+            backgroundColor: "surface.disabled",
+          },
+        },
+      },
+      false: {},
+    },
     colorPalette: {
       green: {
         header: {
@@ -86,16 +106,7 @@ export const tableSlotRecipe = defineSlotRecipe({
           borderRadius: "xs",
         },
 
-        table: {
-          overflow: "hidden",
-        },
-        cell: {
-          ...numericStyles,
-        },
-
         columnHeader: {
-          ...numericStyles,
-
           backgroundColor: "surface.accent",
           _first: {
             borderTopLeftRadius: "xs",
@@ -109,7 +120,6 @@ export const tableSlotRecipe = defineSlotRecipe({
           borderColor: "outline",
         },
         row: {
-          ...numericStyles,
           borderBottom: "sm",
           borderColor: "outline",
 
@@ -237,19 +247,15 @@ export const tableSlotRecipe = defineSlotRecipe({
           color: "text",
         },
 
-        cell: {
-          ...numericStyles,
-        },
         row: {
           borderBottom: "sm",
           borderColor: "outline",
-          [rowHover]: {
+          [`${rowHover} td`]: {
             backgroundColor: "surface.ghost.hover",
           },
-          [triggerHoverFromContent]: {
+          [`${triggerHoverFromContent} td`]: {
             backgroundColor: "surface.ghost.hover",
           },
-          ...numericStyles,
 
           '&[data-expandable-trigger][data-state="open"]': {
             borderColor: "outline.disabled",
@@ -280,9 +286,6 @@ export const tableSlotRecipe = defineSlotRecipe({
 
     size: {
       sm: {
-        table: {
-          fontSize: "mobile.sm",
-        },
         cell: {
           paddingX: 1,
           paddingY: 0.5,
@@ -298,9 +301,6 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
       },
       md: {
-        table: {
-          fontSize: "mobile.md",
-        },
         cell: {
           paddingX: 1.5,
           paddingY: 1,
@@ -319,8 +319,15 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
       },
       lg: {
-        table: {
-          fontSize: "mobile.md",
+        root: {
+          "&:has(tbody tr[data-expandable-trigger]) :is(thead th, tbody td):first-child":
+            {
+              "--table-toggle-width": "66px",
+              width: "var(--table-toggle-width)",
+              minWidth: "var(--table-toggle-width)",
+              maxWidth: "var(--table-toggle-width)",
+              boxSizing: "border-box",
+            },
         },
         cell: {
           paddingX: 3,

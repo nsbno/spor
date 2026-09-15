@@ -2,4 +2,4 @@
 "@vygruppen/spor-react": minor
 ---
 
-Add floating variant to table and update design
+Update table with new design. Adds expandable table rows, stripes and new variant - accent.

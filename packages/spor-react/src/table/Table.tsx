@@ -1,6 +1,7 @@
 "use client";
 import {
   Button,
+  Collapsible,
   HStack,
   RecipeVariantProps,
   Table as ChakraTable,
@@ -13,10 +14,14 @@ import {
   ArrowDownFill18Icon,
   ArrowUpFill18Icon,
   ChangeDirectionFill18Icon,
+  DropdownDownFill18Icon,
+  DropdownDownFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import {
+  Children,
   createContext,
   PropsWithChildren,
+  ReactNode,
   useContext,
   useLayoutEffect,
   useRef,
@@ -29,8 +34,10 @@ import {
   captureRowOrder,
   getColumnIndex,
   getNextSortState,
+  reconcileRows,
   type SortState,
 } from "./sort-utils";
+import { applyRowParity  } from "./utils";
 
 type TableVariantProps = RecipeVariantProps<typeof tableSlotRecipe>;
 
@@ -44,22 +51,31 @@ const SortContext = createContext<{
   onSort: () => {},
 });
 
+const TableSizeContext = createContext<{ size: "lg" | "md" | "sm" }>({
+  size: "md",
+});
+
 export const useTableSort = () => useContext(SortContext);
+const useTableSize = () => useContext(TableSizeContext);
 
 export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   PropsWithChildren<TableVariantProps> & {
-    variant?: "ghost" | "core";
+    variant?: "accent" | "ghost" | "floating";
     colorPalette?: "grey" | "green" | "white";
     sortable?: boolean;
+    striped?: boolean;
+    disableHover?: boolean;
     ref?: React.Ref<HTMLTableElement>;
   };
 
 export const Table = ({
   variant = "ghost",
-  size,
-  colorPalette = "green",
+  size = "md",
+  colorPalette,
   children,
   sortable = false,
+  striped = false,
+  disableHover,
   ref,
   ...rest
 }: TableProps) => {
@@ -74,22 +90,32 @@ export const Table = ({
   };
 
   const recipe = useSlotRecipe({ key: "table" });
-  const styles = recipe({ variant, size });
+  const styles = recipe({ variant, size, striped });
 
   return (
     <ChakraTable.Root
       variant={variant}
       size={size}
+      striped={striped}
       colorPalette={colorPalette}
       css={styles}
       ref={ref}
+      {...(disableHover ? { "data-disable-hover": "" } : {})}
       {...rest}
     >
-      <SortContext.Provider
-        value={{ enabled: sortable, sortState, onSort: handleSort }}
+      <TableSizeContext.Provider
+        value={{ size: typeof size === "string" ? size : "md" }}
       >
-        {children}
-      </SortContext.Provider>
+        <SortContext.Provider
+          value={{
+            enabled: sortable,
+            sortState,
+            onSort: handleSort,
+          }}
+        >
+          {children}
+        </SortContext.Provider>
+      </TableSizeContext.Provider>
     </ChakraTable.Root>
   );
 };
@@ -120,6 +146,13 @@ export const TableColumnHeader = ({
         else if (ref) ref.current = element;
       }}
       {...rest}
+      aria-sort={
+        enabled
+          ? sortState.direction === "asc"
+            ? "ascending"
+            : "descending"
+          : "none"
+      }
     >
       <HStack>
         {children}
@@ -157,21 +190,27 @@ export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
   const { sortState } = useTableSort();
   const tbodyRef = useRef<HTMLTableSectionElement | null>(null);
   const originalOrder = useRef<HTMLTableRowElement[]>([]);
-  const previousChildren = useRef(children);
 
   useLayoutEffect(() => {
     const tbody = tbodyRef.current;
     if (!tbody) return;
 
-    if (
-      previousChildren.current !== children ||
-      originalOrder.current.length === 0
-    ) {
-      originalOrder.current = captureRowOrder(tbody);
-      previousChildren.current = children;
-    }
+    const sync = () => {
+      observer.disconnect();
+      originalOrder.current =
+        sortState.columnIndex === null
+          ? captureRowOrder(tbody)
+          : reconcileRows(tbody, originalOrder.current);
+      applyDomSort(tbody, sortState, originalOrder.current);
+      applyRowParity(tbody);
+      observer.observe(tbody, { childList: true });
+    };
 
-    applyDomSort(tbody, sortState, originalOrder.current);
+    const observer = new MutationObserver(sync);
+
+    sync();
+
+    return () => observer.disconnect();
   }, [sortState, children]);
 
   return (
@@ -185,5 +224,81 @@ export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
     >
       {children}
     </ChakraTable.Body>
+  );
+};
+
+const ExpandableRowContext = createContext<{
+  open: boolean;
+  onToggle: () => void;
+}>({ open: false, onToggle: () => {} });
+
+export const useExpandableTableRow = () => useContext(ExpandableRowContext);
+
+export type ExpandableTableRowProps = PropsWithChildren<{
+  /** Content rendered in the expanded row, spanning all columns of the table */
+  content: ReactNode;
+  defaultOpen?: boolean;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  ref?: React.Ref<HTMLTableRowElement>;
+}>;
+
+export const ExpandableTableRow = ({
+  children,
+  content,
+  defaultOpen = false,
+  open: openProperty,
+  onOpenChange,
+  ref,
+}: ExpandableTableRowProps) => {
+  const [isOpen, setIsOpen] = useState(openProperty ?? defaultOpen);
+  const columnCount = Children.count(children);
+  const { size } = useTableSize();
+  const DropdownIcon =
+    size === "lg" ? DropdownDownFill24Icon : DropdownDownFill18Icon;
+
+  const onToggle = () => {
+    const next = !isOpen;
+    onOpenChange?.(next);
+    if (openProperty === undefined) setIsOpen(next);
+  };
+
+  return (
+    <>
+      <ExpandableRowContext.Provider value={{ open: isOpen, onToggle }}>
+        <ChakraTable.Row
+          ref={ref}
+          data-expandable-trigger
+          data-state={isOpen ? "open" : "closed"}
+        >
+          <ChakraTable.Cell>
+            <Button
+              variant="ghost"
+              size="xs"
+              onClick={onToggle}
+              aria-expanded={isOpen}
+              marginInline="auto"
+            >
+              <DropdownIcon
+                transform={isOpen ? "rotate(180deg)" : undefined}
+                transition="transform 0.2s"
+              />
+            </Button>
+          </ChakraTable.Cell>
+          {children}
+        </ChakraTable.Row>
+      </ExpandableRowContext.Provider>
+      <ChakraTable.Row
+        data-expandable-content
+        data-state={isOpen ? "open" : "closed"}
+      >
+        <ChakraTable.Cell data-expandable-content-marker />
+        <ChakraTable.Cell colSpan={columnCount}>
+          <Collapsible.Root open={isOpen}>
+            <Collapsible.Content>{content}</Collapsible.Content>
+          </Collapsible.Root>
+        </ChakraTable.Cell>
+      </ChakraTable.Row>
+    </>
   );
 };

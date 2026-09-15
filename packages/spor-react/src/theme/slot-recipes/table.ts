@@ -8,6 +8,12 @@ const numericStyles = {
   },
 };
 
+const rowHover =
+  "&:not(:where([data-disable-hover] *)):not(:has(th)):not([data-expandable-content]):hover";
+
+const triggerHoverFromContent =
+  "&[data-expandable-trigger]:not(:where([data-disable-hover] *)):has(+ tr[data-expandable-content]:hover)";
+
 export const tableSlotRecipe = defineSlotRecipe({
   className: "spor-table",
   slots: tableAnatomy.keys(),
@@ -17,35 +23,60 @@ export const tableSlotRecipe = defineSlotRecipe({
       borderCollapse: "collapse",
       width: "100%",
       minWidth: "36rem",
-      overflowX: "auto",
+
+      "&:has(tbody tr[data-expandable-trigger]) :is(thead th, tbody td):first-of-type":
+        {
+          "--table-toggle-width": "54px",
+          width: "var(--table-toggle-width)",
+          minWidth: "var(--table-toggle-width)",
+          maxWidth: "var(--table-toggle-width)",
+          boxSizing: "border-box",
+          paddingInline: 0,
+        },
     },
     columnHeader: {
       fontWeight: "bold",
       textAlign: "start",
 
       ...numericStyles,
-      paddingX: 1.5,
-      paddingY: 1,
     },
     row: {
       ...numericStyles,
+      "&[data-expandable-content][data-state=open] td": {
+        paddingBlock: 2,
+      },
     },
     cell: {
       ...numericStyles,
-      paddingX: 1.5,
-      paddingY: 1,
+
+      "&[data-expandable-content-marker]": {
+        backgroundImage:
+          "linear-gradient(var(--spor-colors-outline-disabled), var(--spor-colors-outline-disabled))",
+        backgroundRepeat: "no-repeat",
+        backgroundOrigin: "content-box",
+        backgroundPosition: "center",
+        backgroundSize: "2px 100%",
+      },
     },
+
     footer: {
-      fontWeight: "medium",
+      fontWeight: "bold",
     },
   },
 
   variants: {
+    striped: {
+      true: {
+        row: {
+          '&[data-row-parity="even"]:not([data-expandable-content]) td': {
+            backgroundColor: "surface.disabled",
+          },
+        },
+      },
+      false: {},
+    },
     colorPalette: {
       green: {
-        root: {
-          backgroundColor: "bg",
-        },
         header: {
           backgroundColor: "bg.brand",
         },
@@ -54,9 +85,6 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
       },
       grey: {
-        root: {
-          backgroundColor: "bg",
-        },
         columnHeader: {
           backgroundColor: "surface.disabled",
           _hover: {
@@ -65,82 +93,192 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
       },
       white: {
-        root: {
-          backgroundColor: "bg",
-        },
         columnHeader: {
           color: "text",
-          backgroundColor: "bg",
         },
       },
     },
     variant: {
-      ghost: {
+      accent: {
+        root: {
+          boxShadow: "0 0 0 1px var(--shadow-color)",
+          shadowColor: "outline",
+          borderRadius: "xs",
+        },
+
+        columnHeader: {
+          backgroundColor: "surface.accent",
+          color: "text.accent",
+          _first: {
+            borderTopLeftRadius: "xs",
+          },
+          _last: {
+            borderTopRightRadius: "xs",
+          },
+        },
+        header: {
+          borderBottom: "sm",
+          borderColor: "outline",
+        },
+        row: {
+          borderBottom: "sm",
+          borderColor: "outline",
+
+          [`${rowHover} td`]: {
+            backgroundColor: "surface.accent.hover",
+          },
+
+          [`${triggerHoverFromContent} td`]: {
+            backgroundColor: "surface.accent.hover",
+          },
+
+          "&:last-of-type:not(:where(tbody:has(+ tfoot) *))": {
+            borderBottom: "none",
+
+            "& td:first-of-type": {
+              borderBottomLeftRadius: "xs",
+            },
+            "& td:last-of-type": {
+              borderBottomRightRadius: "xs",
+            },
+          },
+
+          '&[data-expandable-trigger][data-state="closed"]:nth-last-of-type(2):not(:where(tbody:has(+ tfoot) *))':
+            {
+              borderBottom: "none",
+
+              "& td:first-of-type": {
+                borderBottomLeftRadius: "xs",
+              },
+              "& td:last-of-type": {
+                borderBottomRightRadius: "xs",
+              },
+            },
+
+          '&[data-expandable-trigger][data-state="open"]': {
+            borderColor: "outline.disabled",
+          },
+
+          '&[data-expandable-content][data-state="open"]': {
+            borderTop: "none",
+          },
+
+          '&[data-expandable-content][data-state="closed"]': {
+            border: "none",
+            py: 0,
+
+            "& td": {
+              py: 0,
+              borderWidth: "0",
+            },
+          },
+        },
+        footer: {
+          borderTopWidth: "2px",
+          borderColor: "outline",
+        },
+      },
+      floating: {
+        root: {
+          borderCollapse: "separate",
+          borderSpacing: "0 6px",
+        },
+        columnHeader: {
+          backgroundColor: "none",
+        },
         header: {
           backgroundColor: "none",
         },
+        cell: {
+          backgroundColor: "surface.floating",
+          borderStyle: "solid",
+          borderTopWidth: 1,
+          borderBottomWidth: 1,
+          borderColor: "outline.floating",
+          _first: {
+            borderLeftRadius: "xs",
+            borderLeftWidth: 1,
+          },
+          _last: {
+            borderRightRadius: "xs",
+            borderRightWidth: 1,
+          },
+        },
+        row: {
+          [`${rowHover} td`]: {
+            backgroundColor: "surface.floating.hover",
+            borderColor: "outline.floating.hover",
+          },
+
+          [`${triggerHoverFromContent} td`]: {
+            backgroundColor: "surface.floating.hover",
+            borderColor: "outline.floating.hover",
+          },
+
+          "&:not(:has(th))": {
+            borderRadius: "xs",
+          },
+
+          '&[data-expandable-trigger][data-state="open"] td': {
+            borderBottomLeftRadius: 0,
+            borderBottomRightRadius: 0,
+          },
+
+          '&[data-expandable-content][data-state="open"] td': {
+            borderTop: "none",
+            borderTopRadius: 0,
+            position: "relative",
+            top: "-6px",
+          },
+
+          '&[data-expandable-content][data-state="closed"] td': {
+            border: "none",
+            py: 0,
+          },
+        },
+      },
+      ghost: {
+        header: {
+          backgroundColor: "transparent",
+        },
         columnHeader: {
           borderBottom: "sm",
-          borderColor: "outline.disabled",
+          borderColor: "outline",
           backgroundColor: "none",
           color: "text",
         },
 
-        cell: {
-          ...numericStyles,
-        },
         row: {
           borderBottom: "sm",
-          borderColor: "outline.disabled",
-          ...numericStyles,
-        },
-      },
+          borderColor: "outline",
+          [`${rowHover} td`]: {
+            backgroundColor: "surface.ghost.hover",
+          },
+          [`${triggerHoverFromContent} td`]: {
+            backgroundColor: "surface.ghost.hover",
+          },
 
-      core: {
-        root: {
-          boxShadow: "0 0 0 1px var(--shadow-color)",
-          shadowColor: "outline.disabled",
-          borderRadius: "sm",
-        },
+          '&[data-expandable-trigger][data-state="open"]': {
+            borderColor: "outline.disabled",
+          },
 
-        table: {
-          overflow: "hidden",
-        },
-        cell: {
-          ...numericStyles,
+          '&[data-expandable-content][data-state="open"]': {
+            borderTop: "none",
+          },
 
-          borderRight: "sm",
-          borderColor: "outline.disabled",
+          '&[data-expandable-content][data-state="closed"]': {
+            border: "none",
+            py: 0,
 
-          _last: {
-            borderRight: "none",
+            "& td": {
+              py: 0,
+              borderWidth: "0",
+            },
           },
         },
 
-        columnHeader: {
-          ...numericStyles,
-
-          borderRight: "sm",
-          borderColor: "outline.disabled",
-
-          _first: {
-            borderTopLeftRadius: "sm",
-          },
-          _last: {
-            borderTopRightRadius: "sm",
-            borderRight: "none",
-          },
-        },
-        header: {
-          borderBottom: "sm",
-          borderColor: "outline.disabled",
-        },
-        row: {
-          ...numericStyles,
-          borderBottom: "sm",
-          borderColor: "outline.disabled",
-
-          _last: {
+        footer: {
+          "& tr": {
             borderBottom: "none",
           },
         },
@@ -149,9 +287,6 @@ export const tableSlotRecipe = defineSlotRecipe({
 
     size: {
       sm: {
-        table: {
-          fontSize: "mobile.sm",
-        },
         cell: {
           paddingX: 1,
           paddingY: 0.5,
@@ -167,9 +302,6 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
       },
       md: {
-        table: {
-          fontSize: "mobile.md",
-        },
         cell: {
           paddingX: 1.5,
           paddingY: 1,
@@ -188,8 +320,15 @@ export const tableSlotRecipe = defineSlotRecipe({
         },
       },
       lg: {
-        table: {
-          fontSize: "mobile.md",
+        root: {
+          "&:has(tbody tr[data-expandable-trigger]) :is(thead th, tbody td):first-of-type":
+            {
+              "--table-toggle-width": "66px",
+              width: "var(--table-toggle-width)",
+              minWidth: "var(--table-toggle-width)",
+              maxWidth: "var(--table-toggle-width)",
+              boxSizing: "border-box",
+            },
         },
         cell: {
           paddingX: 3,

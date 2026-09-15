@@ -1,4 +1,3 @@
-import { Button } from "@chakra-ui/react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { InformationOutline18Icon } from "@vygruppen/spor-icon-react";
 import {
@@ -6,18 +5,19 @@ import {
   Box,
   Checkbox,
   ExpandableTableRow,
-  Text,
+  HStack,
   Table,
   TableBody,
   TableCell,
   TableColumnHeader,
   TableFooter,
   TableHeader,
+  TableProps,
   TableRow,
+  Text,
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-  HStack,
 } from "@vygruppen/spor-react";
 import { useState } from "react";
 
@@ -101,8 +101,8 @@ export const Default: Story = {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {sampleRows.map((row, i) => (
-          <TableRow key={row.destination}>
+        {sampleRows.map((row, index) => (
+          <TableRow key={index}>
             <TableCell>{row.destination}</TableCell>
             <TableCell>{row.departure}</TableCell>
             <TableCell>{row.arrival}</TableCell>
@@ -232,6 +232,7 @@ const getSortValue = (status: string) => {
   }
   return "3";
 };
+
 export const Sortable: Story = {
   args: {
     sortable: true,
@@ -328,52 +329,61 @@ export const WithTooltip: Story = {
   ),
 };
 
-export const Selectable: Story = {
-  render: (arguments_) => {
-    const [selectedRows, setSelectedRows] = useState<number[]>([]);
-    const toggleRow = (rowNumber: number) => {
-      selectedRows.includes(rowNumber)
-        ? setSelectedRows((prev) => prev.filter((r) => r !== rowNumber))
-        : setSelectedRows((prev) => [...prev, rowNumber]);
-    };
-    return (
-      <Table {...arguments_}>
-        <TableHeader>
-          <TableRow>
-            <TableColumnHeader width={6}>
-              <Checkbox
-                onCheckedChange={() =>
-                  selectedRows.length > 0
-                    ? setSelectedRows([])
-                    : setSelectedRows([])
-                }
-              />
-            </TableColumnHeader>
-            <TableColumnHeader>Destination</TableColumnHeader>
-            <TableColumnHeader>Departure</TableColumnHeader>
-            <TableColumnHeader>Arrival</TableColumnHeader>
-            <TableColumnHeader>Price</TableColumnHeader>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {sampleRows.map((row, index) => (
-            <TableRow>
-              <TableCell>
-                <Checkbox
-                  checked={selectedRows.includes(index)}
-                  onCheckedChange={() => toggleRow(index)}
-                />
-              </TableCell>
-              <TableCell>{row.destination}</TableCell>
-              <TableCell>{row.departure}</TableCell>
-              <TableCell>{row.arrival}</TableCell>
-              <TableCell>{row.price}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+const SelectableTable = (props: TableProps) => {
+  const [selectedRows, setSelectedRows] = useState<number[]>([]);
+  const toggleRow = (rowNumber: number) => {
+    setSelectedRows((previous) =>
+      previous.includes(rowNumber)
+        ? previous.filter((selected) => selected !== rowNumber)
+        : [...previous, rowNumber],
     );
-  },
+  };
+  return (
+    <Table {...props}>
+      <TableHeader>
+        <TableRow>
+          <TableColumnHeader width={7}>
+            <Checkbox
+              onCheckedChange={() =>
+                selectedRows.length > 0
+                  ? setSelectedRows([])
+                  : setSelectedRows(
+                      Array.from(
+                        { length: sampleRows.length },
+                        (_, index) => index,
+                      ),
+                    )
+              }
+            />
+          </TableColumnHeader>
+          <TableColumnHeader>Destination</TableColumnHeader>
+          <TableColumnHeader>Departure</TableColumnHeader>
+          <TableColumnHeader>Arrival</TableColumnHeader>
+          <TableColumnHeader>Price</TableColumnHeader>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {sampleRows.map((row, index) => (
+          <TableRow key={index}>
+            <TableCell>
+              <Checkbox
+                checked={selectedRows.includes(index)}
+                onCheckedChange={() => toggleRow(index)}
+              />
+            </TableCell>
+            <TableCell>{row.destination}</TableCell>
+            <TableCell>{row.departure}</TableCell>
+            <TableCell>{row.arrival}</TableCell>
+            <TableCell>{row.price}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+};
+
+export const Selectable: Story = {
+  render: (arguments_) => <SelectableTable {...arguments_} />,
 };
 
 export const Expandable: Story = {
@@ -389,13 +399,14 @@ export const Expandable: Story = {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {sampleRows.map((row) => (
+        {sampleRows.map((row, index) => (
           <ExpandableTableRow
             content={
               <HStack justifyContent="space-between">
                 <Text>Valgfritt innhold</Text>
               </HStack>
             }
+            key={index}
           >
             <TableCell>{row.destination}</TableCell>
             <TableCell>{row.departure}</TableCell>
@@ -409,11 +420,13 @@ export const Expandable: Story = {
 };
 
 export const Striped: Story = {
+  args: {
+    striped: true,
+  },
   render: (arguments_) => (
-    <Table {...arguments_} striped>
+    <Table {...arguments_}>
       <TableHeader>
         <TableRow>
-          <TableColumnHeader />
           <TableColumnHeader>Destination</TableColumnHeader>
           <TableColumnHeader>Departure</TableColumnHeader>
           <TableColumnHeader>Arrival</TableColumnHeader>
@@ -421,8 +434,8 @@ export const Striped: Story = {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {sampleRows.map((row) => (
-          <TableRow>
+        {sampleRows.map((row, index) => (
+          <TableRow key={index}>
             <TableCell>{row.destination}</TableCell>
             <TableCell>{row.departure}</TableCell>
             <TableCell>{row.arrival}</TableCell>

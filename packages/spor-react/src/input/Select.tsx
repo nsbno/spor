@@ -138,7 +138,7 @@ export const SelectItem = ({
       {multiple && (
         <ChakraCheckbox.Root checked={isSelected} pointerEvents="none">
           <ChakraCheckbox.Control>
-            <ChakraCheckbox.Indicator />
+            <ChakraCheckbox.Indicator marginLeft="1px" />
           </ChakraCheckbox.Control>
         </ChakraCheckbox.Root>
       )}

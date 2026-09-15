@@ -101,10 +101,9 @@ export const selectSlotRecipe = defineSlotRecipe({
       },
     },
     item: {
-      paddingX: 2,
-      paddingY: 2,
-      marginY: 1,
-      marginX: 1,
+      px: 2,
+      py: 1,
+      margin: 1,
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
@@ -113,30 +112,20 @@ export const selectSlotRecipe = defineSlotRecipe({
       color: "text.ghost",
       cursor: "pointer",
       outline: "none",
-      "&[data-highlighted]:hover": {
-        outlineOffset: "2px",
-        outline: "2px solid",
-        outlineColor: "outline.focus",
-        backgroundColor: "surface.accent.hover",
-      },
-      "&[data-highlighted]": {
-        outlineOffset: "2px",
-        outline: "2px solid",
-        outlineColor: "outline.focus",
-      },
-      _active: {
-        backgroundColor: "surface.accent.active",
-      },
-      _highlighted: {
-        _active: {
-          color: "text",
-        },
-      },
       _hover: {
         backgroundColor: "surface.accent.hover",
+        _active: {
+          backgroundColor: "surface.accent.active",
+        },
       },
       _selected: {
         backgroundColor: "surface.accent",
+      },
+      _highlighted: {
+        backgroundColor: "surface.ghost.active",
+        _selected: {
+          backgroundColor: "surface.accent",
+        },
       },
       _icon: {
         width: 3,
@@ -144,7 +133,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       },
       "& [data-part='item-description']": {
         fontSize: ["mobile.xs", "desktop.xs"],
-        color: "text.ghost",
+        color: "text.subtle",
       },
     },
     control: {
@@ -269,9 +258,7 @@ export const selectSlotRecipe = defineSlotRecipe({
           },
         },
         item: {
-          paddingX: 2,
-          paddingY: 1,
-          fontSize: "xs",
+          fontSize: ["mobile.xs", "desktop.xs"],
           "& [data-part='item-description']": {
             fontSize: ["mobile.2xs", "desktop.2xs"],
           },

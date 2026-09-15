@@ -1,5 +1,35 @@
 # @vygruppen/spor-react
 
+## 13.8.0
+
+### Minor Changes
+
+- d5a0149: RadioGroup: Introduce invalid state for RadioGroup, Radio, and RadioCard.
+
+### Patch Changes
+
+- 988b0ad: Select: adjust the styling of select-items to make them similar to the ones in Autocomplete
+- 64589d0: Tabs: Added indicator with animation when navigating between tabtriggers.
+- Updated dependencies [ee08c36]
+  - @vygruppen/spor-icon-react@5.0.4
+
+## 13.7.2
+
+### Patch Changes
+
+- ff28880: RadioCard: Make children take 100% width
+
+## 13.7.1
+
+### Patch Changes
+
+- 15a6c48: Badge: Added outline on badges
+- e4c369c: truncate long select labels when selected
+- ac7ec72: Remove aria-hidden property from Field component to support better screen reading of form elements.
+- 1272e1d: RadioCard bug: make the children of a RadioCard to by default be placed in a column instead of a row.
+- Updated dependencies [1272e1d]
+  - @vygruppen/spor-icon-react@5.0.3
+
 ## 13.7.0
 
 ### Minor Changes

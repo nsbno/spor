@@ -30,6 +30,25 @@ export const radioCardSlotRecipe = defineSlotRecipe({
         background: "surface.disabled",
         color: "text.disabled",
       },
+      _invalid: {
+        outlineColor: "outline.error",
+        "& .dot": {
+          backgroundColor: "outline.error",
+        },
+        _hover: {
+          outlineColor: "outline.error",
+          "& .dot": {
+            backgroundColor: "outline.error",
+          },
+          _active: {
+            backgroundColor: "surface.critical",
+          },
+        },
+        _checked: {
+          outlineColor: "outline.error",
+          backgroundColor: "surface.critical",
+        },
+      },
     },
     label: {
       userSelect: "none",

@@ -111,7 +111,6 @@ export default function DesignTokensPage() {
           position="fixed"
           overflow="auto"
           right={0}
-          paddingLeft={1}
           paddingTop={3}
           top={`${headerOffset}px`}
           transition="all .3s linear"

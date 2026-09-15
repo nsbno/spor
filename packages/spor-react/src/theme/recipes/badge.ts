@@ -7,7 +7,7 @@ export const badgeRecipie = defineRecipe({
     justifyContent: "center",
     height: "fit-content",
     gap: "0.5",
-    backgroundColor: "surface.neutral",
+    backgroundColor: "surface",
     color: "text.core",
     outline: "1px solid",
     outlineColor: "outline.core",

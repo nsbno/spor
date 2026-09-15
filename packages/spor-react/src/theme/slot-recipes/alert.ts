@@ -15,11 +15,11 @@ export const alertSlotRecipe = defineSlotRecipe({
       position: "relative",
       textStyle: "sm",
       border: "sm",
-      backgroundColor: "surface.neutral",
-      borderColor: "outline.neutral",
+      backgroundColor: "surface",
+      borderColor: "outline",
     },
     description: {
-      color: "text.neutral.subtle",
+      color: "text.subtle",
     },
     content: {
       display: "flex",
@@ -29,14 +29,14 @@ export const alertSlotRecipe = defineSlotRecipe({
     },
     title: {
       fontWeight: "bold",
-      color: "text.neutral",
+      color: "text",
     },
     closeButton: {
-      color: `text.neutral`,
+      color: `text`,
       _hover: {
-        bg: `surface.neutral.hover`,
+        bg: `surface.ghost.hover`,
         _active: {
-          bg: `surface.neutral.active`,
+          bg: `surface.ghost.active`,
         },
       },
     },

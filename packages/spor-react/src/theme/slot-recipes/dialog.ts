@@ -38,7 +38,7 @@ export const dialogSlotRecipe = defineSlotRecipe({
     },
     content: {
       display: "flex",
-      backgroundColor: "surface",
+      backgroundColor: "surface.floating",
       color: "text",
       flexDirection: "column",
       position: "relative",
@@ -53,10 +53,6 @@ export const dialogSlotRecipe = defineSlotRecipe({
       },
       _closed: {
         animationDuration: "faster",
-      },
-      "&[data-color]": {
-        background: "surface.neutral",
-        color: "text.neutral",
       },
     },
     header: {

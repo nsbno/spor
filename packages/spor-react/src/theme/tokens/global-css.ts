@@ -24,31 +24,25 @@ const dataColorStyles = Object.fromEntries(
     `[data-color='${color}']`,
     {
       // Surface colors
-      "--spor-colors-surface-brand": `var(--spor-colors-surface-${color})`,
-      "--spor-colors-surface-brand-hover": `var(--spor-colors-surface-${color}-hover)`,
-      "--spor-colors-surface-brand-active": `var(--spor-colors-surface-${color}-active)`,
+      "--spor-colors-surface": `var(--spor-colors-surface-${color})`,
+
+      "--spor-colors-surface-brand": `var(--spor-colors-surface-${color}-highlight)`,
+      "--spor-colors-surface-brand-hover": `var(--spor-colors-surface-${color}-highlight-hover)`,
+      "--spor-colors-surface-brand-active": `var(--spor-colors-surface-${color}-highlight-active)`,
 
       "--spor-colors-surface-accent": `var(--spor-colors-surface-${color})`,
       "--spor-colors-surface-accent-hover": `var(--spor-colors-surface-${color}-hover)`,
       "--spor-colors-surface-accent-active": `var(--spor-colors-surface-${color}-active)`,
 
-      "--spor-colors-surface-core": `var(--spor-colors-surface-${color})`,
-      "--spor-colors-surface-core-hover": `var(--spor-colors-surface-${color}-hover)`,
-      "--spor-colors-surface-core-active": `var(--spor-colors-surface-${color}-active)`,
+      "--spor-colors-surface-core-active": `var(--spor-colors-surface-${color}-subtle-active)`,
 
-      "--spor-colors-surface-ghost-hover": `var(--spor-colors-surface-${color}-hover)`,
-      "--spor-colors-surface-ghost-active": `var(--spor-colors-surface-${color}-active)`,
+      "--spor-colors-surface-ghost-hover": `var(--spor-colors-surface-${color}-subtle-hover)`,
+      "--spor-colors-surface-ghost-active": `var(--spor-colors-surface-${color}-subtle-active)`,
 
-      "--spor-colors-surface-floating-hover": `var(--spor-colors-surface-${color}-hover)`,
-      "--spor-colors-surface-floating-active": `var(--spor-colors-surface-${color}-active)`,
-
-      "--spor-colors-surface-neutral": `var(--spor-colors-surface-${color})`,
-      "--spor-colors-surface-neutral-hover": `var(--spor-colors-surface-${color}-hover)`,
-      "--spor-colors-surface-neutral-active": `var(--spor-colors-surface-${color}-active)`,
+      "--spor-colors-surface-floating-hover": `var(--spor-colors-surface-${color}-subtle-hover)`,
+      "--spor-colors-surface-floating-active": `var(--spor-colors-surface-${color}-subtle-active)`,
 
       // Outline colors
-      "--spor-colors-outline-neutral": `var(--spor-colors-outline-${color})`,
-      "--spor-colors-outline-neutral-hover": `var(--spor-colors-outline-${color}-hover)`,
       "--spor-colors-outline-core": `var(--spor-colors-outline-${color})`,
       "--spor-colors-outline-core-hover": `var(--spor-colors-outline-${color}-hover)`,
       "--spor-colors-outline-brand": `var(--spor-colors-outline-${color})`,
@@ -62,12 +56,10 @@ const dataColorStyles = Object.fromEntries(
 
       // Text colors
       "--spor-colors-text": `var(--spor-colors-text-${color})`,
-      "--spor-colors-text-neutral": `var(--spor-colors-text-${color})`,
-      "--spor-colors-text-neutral-subtle": `var(--spor-colors-text-${color}-subtle)`,
-
-      "--spor-colors-text-core": `var(--spor-colors-text-${color})`,
-      "--spor-colors-text-brand": `var(--spor-colors-text-${color})`,
+      "--spor-colors-text-subtle": `var(--spor-colors-text-${color}-subtle)`,
+      "--spor-colors-text-brand": `var(--spor-colors-text-${color}-inverted)`,
       "--spor-colors-text-accent": `var(--spor-colors-text-${color})`,
+      "--spor-colors-text-core": `var(--spor-colors-text-${color})`,
       "--spor-colors-text-ghost": `var(--spor-colors-text-${color})`,
       "--spor-colors-text-floating": `var(--spor-colors-text-${color})`,
     },

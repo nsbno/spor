@@ -108,6 +108,7 @@ export const tableSlotRecipe = defineSlotRecipe({
 
         columnHeader: {
           backgroundColor: "surface.accent",
+          color: "text.accent",
           _first: {
             borderTopLeftRadius: "xs",
           },

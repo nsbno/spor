@@ -39,7 +39,6 @@ const dataColorStyles = Object.fromEntries(
       "--spor-colors-surface-ghost-hover": `var(--spor-colors-surface-${color}-subtle-hover)`,
       "--spor-colors-surface-ghost-active": `var(--spor-colors-surface-${color}-subtle-active)`,
 
-      "--spor-colors-surface-floating-hover": `var(--spor-colors-surface-${color}-subtle-hover)`,
       "--spor-colors-surface-floating-active": `var(--spor-colors-surface-${color}-subtle-active)`,
 
       // Outline colors
@@ -51,8 +50,6 @@ const dataColorStyles = Object.fromEntries(
       "--spor-colors-outline-accent-hover": `var(--spor-colors-outline-${color}-hover)`,
       "--spor-colors-outline-ghost": `var(--spor-colors-outline-${color})`,
       "--spor-colors-outline-ghost-hover": `var(--spor-colors-outline-${color}-hover)`,
-      "--spor-colors-outline-floating": `var(--spor-colors-outline-${color})`,
-      "--spor-colors-outline-floating-hover": `var(--spor-colors-outline-${color}-hover)`,
 
       // Text colors
       "--spor-colors-text": `var(--spor-colors-text-${color})`,

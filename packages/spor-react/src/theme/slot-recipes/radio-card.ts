@@ -127,7 +127,7 @@ export const radioCardSlotRecipe = defineSlotRecipe({
             },
           },
           _checked: {
-            outlineColor: "outline.focus",
+            outlineColor: "outline",
             outlineWidth: tokens.size.stroke.md,
             outlineStyle: "solid",
             backgroundColor: "surface.core.active",

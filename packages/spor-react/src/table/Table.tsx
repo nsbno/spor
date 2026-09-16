@@ -190,6 +190,7 @@ export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
   const { sortState } = useTableSort();
   const tbodyRef = useRef<HTMLTableSectionElement | null>(null);
   const originalOrder = useRef<HTMLTableRowElement[]>([]);
+  const lastAppliedSortState = useRef<SortState>(sortState);
 
   useLayoutEffect(() => {
     const tbody = tbodyRef.current;
@@ -198,11 +199,13 @@ export const TableBody = ({ children, ref, ...rest }: TableBodyProps) => {
     const sync = () => {
       observer.disconnect();
       originalOrder.current =
-        sortState.columnIndex === null
+        sortState.columnIndex === null &&
+        lastAppliedSortState.current?.columnIndex === null
           ? captureRowOrder(tbody)
           : reconcileRows(tbody, originalOrder.current);
       applyDomSort(tbody, sortState, originalOrder.current);
       applyRowParity(tbody);
+      lastAppliedSortState.current = sortState;
       observer.observe(tbody, { childList: true });
     };
 

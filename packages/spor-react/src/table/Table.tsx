@@ -37,7 +37,7 @@ import {
   reconcileRows,
   type SortState,
 } from "./sort-utils";
-import { applyRowParity  } from "./utils";
+import { applyRowParity } from "./utils";
 
 type TableVariantProps = RecipeVariantProps<typeof tableSlotRecipe>;
 

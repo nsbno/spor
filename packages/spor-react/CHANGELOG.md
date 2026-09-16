@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 13.8.1
+
+### Patch Changes
+
+- f54a9cd: Dialog: Remove backdrop background when dialog is set to be a modal
+- bafddc3: Datepicker: Improve accessibility by solving focus-order issue in calendar navigation
+- c205685: AttachedInputs: remove override on zIndex on child components to solve bugs where elements such as errorText and selectItems got placed behind the inputfield
+- Updated dependencies [32d1fc4]
+  - @vygruppen/spor-design-tokens@5.1.2
+
 ## 13.8.0
 
 ### Minor Changes

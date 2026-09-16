@@ -105,7 +105,7 @@ describe("Table rendering", () => {
 });
 
 describe("Table props", () => {
-  test.each(["ghost", "core", "floating"] as const)(
+  test.each(["ghost", "accent", "floating"] as const)(
     "renders without error with variant=%s",
     (variant) => {
       render(<SimpleTable variant={variant} />);

@@ -8,7 +8,7 @@ export const RightSidebar = () => {
   const onThisPageLinks = rawHeadingsMenu;
 
   return (
-    <Stack gap={1} as="nav">
+    <Stack gap={1} as="nav" paddingLeft="3">
       <Text fontWeight="bold" marginLeft={2}>
         On this page
       </Text>

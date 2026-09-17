@@ -9,10 +9,10 @@ const numericStyles = {
 };
 
 const rowHover =
-  "&:not(:where([data-disable-hover] *)):not(:has(th)):not([data-expandable-content]):hover";
+  '&:not(:where([data-disable-hover] *)):not(:has(th)):not([data-part="expandable-content"]):hover';
 
 const triggerHoverFromContent =
-  "&[data-expandable-trigger]:not(:where([data-disable-hover] *)):has(+ tr[data-expandable-content]:hover)";
+  '&:not(:where([data-disable-hover] *)):has(+ tr[data-part="expandable-content"]:hover)';
 
 export const tableSlotRecipe = defineSlotRecipe({
   className: "spor-table",
@@ -24,7 +24,7 @@ export const tableSlotRecipe = defineSlotRecipe({
       width: "100%",
       minWidth: "36rem",
 
-      "&:has(tbody tr[data-expandable-trigger]) :is(thead th, tbody td):first-of-type":
+      '&:has(tbody tr[data-part="expandable-trigger"]) :is(thead th, tbody td):first-of-type':
         {
           "--table-toggle-width": "54px",
           width: "var(--table-toggle-width)",
@@ -42,21 +42,24 @@ export const tableSlotRecipe = defineSlotRecipe({
     },
     row: {
       ...numericStyles,
-      "&[data-expandable-content][data-state=open] td": {
-        paddingBlock: 2,
-      },
     },
     cell: {
       ...numericStyles,
+    },
 
-      "&[data-expandable-content-marker]": {
-        backgroundImage:
-          "linear-gradient(var(--spor-colors-outline-disabled), var(--spor-colors-outline-disabled))",
-        backgroundRepeat: "no-repeat",
-        backgroundOrigin: "content-box",
-        backgroundPosition: "center",
-        backgroundSize: "2px 100%",
+    expandableContent: {
+      '&[data-state="open"] td': {
+        paddingBlock: 2,
       },
+    },
+
+    expandableContentMarker: {
+      backgroundImage:
+        "linear-gradient(var(--spor-colors-outline-disabled), var(--spor-colors-outline-disabled))",
+      backgroundRepeat: "no-repeat",
+      backgroundOrigin: "content-box",
+      backgroundPosition: "center",
+      backgroundSize: "2px 100%",
     },
 
     footer: {
@@ -68,9 +71,10 @@ export const tableSlotRecipe = defineSlotRecipe({
     striped: {
       true: {
         row: {
-          '&[data-row-parity="even"]:not([data-expandable-content]) td': {
-            backgroundColor: "surface.disabled",
-          },
+          '&[data-row-parity="even"]:not([data-part="expandable-content"]) td':
+            {
+              backgroundColor: "surface.disabled",
+            },
         },
       },
       false: {},
@@ -128,10 +132,6 @@ export const tableSlotRecipe = defineSlotRecipe({
             backgroundColor: "surface.accent.hover",
           },
 
-          [`${triggerHoverFromContent} td`]: {
-            backgroundColor: "surface.accent.hover",
-          },
-
           "&:last-of-type:not(:where(tbody:has(+ tfoot) *))": {
             borderBottom: "none",
 
@@ -142,8 +142,13 @@ export const tableSlotRecipe = defineSlotRecipe({
               borderBottomRightRadius: "xs",
             },
           },
+        },
+        expandableTrigger: {
+          [`${triggerHoverFromContent} td`]: {
+            backgroundColor: "surface.accent.hover",
+          },
 
-          '&[data-expandable-trigger][data-state="closed"]:nth-last-of-type(2):not(:where(tbody:has(+ tfoot) *))':
+          '&[data-state="closed"]:nth-last-of-type(2):not(:where(tbody:has(+ tfoot) *))':
             {
               borderBottom: "none",
 
@@ -155,15 +160,16 @@ export const tableSlotRecipe = defineSlotRecipe({
               },
             },
 
-          '&[data-expandable-trigger][data-state="open"]': {
+          '&[data-state="open"]': {
             borderColor: "outline.disabled",
           },
-
-          '&[data-expandable-content][data-state="open"]': {
+        },
+        expandableContent: {
+          '&[data-state="open"]': {
             borderTop: "none",
           },
 
-          '&[data-expandable-content][data-state="closed"]': {
+          '&[data-state="closed"]': {
             border: "none",
             py: 0,
 
@@ -210,28 +216,30 @@ export const tableSlotRecipe = defineSlotRecipe({
             borderColor: "outline.floating.hover",
           },
 
+          "&:not(:has(th))": {
+            borderRadius: "xs",
+          },
+        },
+        expandableTrigger: {
           [`${triggerHoverFromContent} td`]: {
             backgroundColor: "surface.floating.hover",
             borderColor: "outline.floating.hover",
           },
 
-          "&:not(:has(th))": {
-            borderRadius: "xs",
-          },
-
-          '&[data-expandable-trigger][data-state="open"] td': {
+          '&[data-state="open"] td': {
             borderBottomLeftRadius: 0,
             borderBottomRightRadius: 0,
           },
-
-          '&[data-expandable-content][data-state="open"] td': {
+        },
+        expandableContent: {
+          '&[data-state="open"] td': {
             borderTop: "none",
             borderTopRadius: 0,
             position: "relative",
             top: "-6px",
           },
 
-          '&[data-expandable-content][data-state="closed"] td': {
+          '&[data-state="closed"] td': {
             border: "none",
             py: 0,
           },
@@ -254,19 +262,22 @@ export const tableSlotRecipe = defineSlotRecipe({
           [`${rowHover} td`]: {
             backgroundColor: "surface.ghost.hover",
           },
+        },
+        expandableTrigger: {
           [`${triggerHoverFromContent} td`]: {
             backgroundColor: "surface.ghost.hover",
           },
 
-          '&[data-expandable-trigger][data-state="open"]': {
+          '&[data-state="open"]': {
             borderColor: "outline.disabled",
           },
-
-          '&[data-expandable-content][data-state="open"]': {
+        },
+        expandableContent: {
+          '&[data-state="open"]': {
             borderTop: "none",
           },
 
-          '&[data-expandable-content][data-state="closed"]': {
+          '&[data-state="closed"]': {
             border: "none",
             py: 0,
 
@@ -321,7 +332,7 @@ export const tableSlotRecipe = defineSlotRecipe({
       },
       lg: {
         root: {
-          "&:has(tbody tr[data-expandable-trigger]) :is(thead th, tbody td):first-of-type":
+          '&:has(tbody tr[data-part="expandable-trigger"]) :is(thead th, tbody td):first-of-type':
             {
               "--table-toggle-width": "66px",
               width: "var(--table-toggle-width)",

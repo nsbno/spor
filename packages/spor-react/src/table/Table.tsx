@@ -9,6 +9,7 @@ import {
   TableColumnHeaderProps as ChakraTableColumnHeaderProps,
   TableRootProps as ChakraTableProps,
   useSlotRecipe,
+  useTableStyles,
 } from "@chakra-ui/react";
 import {
   ArrowDownFill18Icon,
@@ -60,10 +61,7 @@ const useTableSize = () => useContext(TableSizeContext);
 
 export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
   PropsWithChildren<TableVariantProps> & {
-    variant?: "accent" | "ghost" | "floating";
-    colorPalette?: "grey" | "green" | "white";
     sortable?: boolean;
-    striped?: boolean;
     disableHover?: boolean;
     ref?: React.Ref<HTMLTableElement>;
   };
@@ -254,6 +252,7 @@ export const ExpandableTableRow = ({
   onOpenChange,
   ref,
 }: ExpandableTableRowProps) => {
+  const styles = useTableStyles();
   const [isOpen, setIsOpen] = useState(openProperty ?? defaultOpen);
   const columnCount = Children.count(children);
   const { size } = useTableSize();
@@ -271,8 +270,9 @@ export const ExpandableTableRow = ({
       <ExpandableRowContext.Provider value={{ open: isOpen, onToggle }}>
         <ChakraTable.Row
           ref={ref}
-          data-expandable-trigger
+          data-part="expandable-trigger"
           data-state={isOpen ? "open" : "closed"}
+          css={styles.expandableTrigger}
         >
           <ChakraTable.Cell>
             <Button
@@ -292,10 +292,14 @@ export const ExpandableTableRow = ({
         </ChakraTable.Row>
       </ExpandableRowContext.Provider>
       <ChakraTable.Row
-        data-expandable-content
+        data-part="expandable-content"
         data-state={isOpen ? "open" : "closed"}
+        css={styles.expandableContent}
       >
-        <ChakraTable.Cell data-expandable-content-marker />
+        <ChakraTable.Cell
+          data-part="expandable-content-marker"
+          css={styles.expandableContentMarker}
+        />
         <ChakraTable.Cell colSpan={columnCount}>
           <Collapsible.Root open={isOpen}>
             <Collapsible.Content>{content}</Collapsible.Content>

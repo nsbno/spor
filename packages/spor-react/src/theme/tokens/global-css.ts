@@ -34,12 +34,12 @@ const dataColorStyles = Object.fromEntries(
       "--spor-colors-surface-accent-hover": `var(--spor-colors-surface-${color}-hover)`,
       "--spor-colors-surface-accent-active": `var(--spor-colors-surface-${color}-active)`,
 
-      "--spor-colors-surface-core-active": `var(--spor-colors-surface-${color}-subtle-active)`,
+      "--spor-colors-surface-core-active": `var(--spor-colors-surface-${color}-active)`,
 
-      "--spor-colors-surface-ghost-hover": `var(--spor-colors-surface-${color}-subtle-hover)`,
-      "--spor-colors-surface-ghost-active": `var(--spor-colors-surface-${color}-subtle-active)`,
+      "--spor-colors-surface-ghost-hover": `var(--spor-colors-surface-${color}-hover)`,
+      "--spor-colors-surface-ghost-active": `var(--spor-colors-surface-${color}-active)`,
 
-      "--spor-colors-surface-floating-active": `var(--spor-colors-surface-${color}-subtle-active)`,
+      "--spor-colors-surface-floating-active": `var(--spor-colors-surface-${color}-active)`,
 
       // Outline colors
       "--spor-colors-outline-core": `var(--spor-colors-outline-${color})`,

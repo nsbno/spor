@@ -34,7 +34,6 @@ export const stepsSlotRecipe = defineSlotRecipe({
       borderRadius: { base: "9px", md: "2xl" },
       "&[aria-selected='true']": {
         fontWeight: "bold",
-        color: { base: "text", md: "text.brand" },
       },
       "&[data-incomplete]": {
         _hover: {
@@ -54,12 +53,6 @@ export const stepsSlotRecipe = defineSlotRecipe({
         color: "text.subtle",
         _hover: {
           backgroundColor: "transparent",
-        },
-        "&[aria-selected='true']": {
-          color: { base: "text", md: "text.brand" },
-          _hover: {
-            backgroundColor: "surface.brand",
-          },
         },
       },
     },
@@ -103,6 +96,18 @@ export const stepsSlotRecipe = defineSlotRecipe({
         stepCounter: {
           color: "text",
         },
+        trigger: {
+          "&[aria-selected='true']": {
+            _hover: {
+              backgroundColor: "transparent",
+            },
+          },
+          "[data-linear] &": {
+            "&[aria-selected='true']": {
+              color: "text",
+            },
+          },
+        },
       },
       accent: {
         list: {
@@ -111,9 +116,19 @@ export const stepsSlotRecipe = defineSlotRecipe({
         },
         trigger: {
           "&[aria-selected='true']": {
-            fontWeight: "bold",
             backgroundColor: { base: "none", md: "surface.brand" },
             color: { base: "text", md: "text.brand" },
+            _hover: {
+              backgroundColor: "surface.brand",
+            },
+          },
+          "[data-linear] &": {
+            "&[aria-selected='true']": {
+              color: { base: "text", md: "text.brand" },
+              _hover: {
+                backgroundColor: "surface.brand",
+              },
+            },
           },
         },
         stepCounter: {

@@ -5,13 +5,13 @@ import {
   StepsItemProps as ChakraStepsItemProps,
   StepsListProps as ChakraStepsListProps,
   StepsRootProps as ChakraStepsRootProps,
-  Text,
 } from "@chakra-ui/react";
 import {
   ArrowLeftOutline24Icon,
   DropdownRightFill18Icon,
+  SuccessOutline18Icon,
 } from "@vygruppen/spor-icon-react";
-import { PropsWithChildren } from "react";
+import { createContext, PropsWithChildren, useContext } from "react";
 
 import { stepsSlotRecipe } from "@/theme/slot-recipes/steps";
 
@@ -19,7 +19,12 @@ import {
   Button,
   ButtonProps,
   createTexts,
+  Flex,
   IconButton,
+  Menu,
+  MenuContent,
+  MenuItem,
+  MenuTrigger,
   useTranslation,
 } from "..";
 
@@ -30,6 +35,9 @@ export type StepperProps = Exclude<
   "colorPalette" | "orientation" | "variant"
 > &
   PropsWithChildren<StepperVariantProps>;
+
+const StepperLinearContext = createContext(false);
+
 export const Stepper = ({
   ref,
   linear,
@@ -38,18 +46,28 @@ export const Stepper = ({
   ref?: React.Ref<HTMLDivElement>;
 }) => {
   return (
-    <ChakraSteps.Root
-      {...props}
-      linear={linear}
-      data-linear={linear ? "" : undefined}
-      ref={ref}
-    />
+    <StepperLinearContext.Provider value={Boolean(linear)}>
+      <ChakraSteps.Root
+        {...props}
+        linear={linear}
+        data-linear={linear ? "" : undefined}
+        ref={ref}
+      />
+    </StepperLinearContext.Provider>
   );
 };
 
 export type StepperItemProps = PropsWithChildren<ChakraStepsItemProps> & {
   showIndicator?: boolean;
 };
+
+type StepperMenuContextValue = {
+  currentStep: number;
+  mode: "current-label" | "menu";
+};
+
+const StepperItemContext = createContext<StepperMenuContextValue | null>(null);
+
 export const StepperItem = ({
   ref,
   showIndicator = false,
@@ -58,8 +76,40 @@ export const StepperItem = ({
 }: StepperItemProps & {
   ref?: React.Ref<HTMLDivElement>;
 }) => {
+  const menuContext = useContext(StepperItemContext);
+
+  if (menuContext) {
+    const isCurrent = menuContext.currentStep === props.index;
+    const isComplete = props.index < menuContext.currentStep;
+
+    if (menuContext.mode === "current-label") {
+      return isCurrent ? <>{children}</> : null;
+    }
+
+    return (
+      <ChakraSteps.Item width="100%" {...props} ref={ref}>
+        <ChakraSteps.Trigger width="100%">
+          <MenuItem
+            value={props.index.toString()}
+            aria-current={isCurrent ? "step" : undefined}
+            leftIcon={isComplete ? <SuccessOutline18Icon /> : undefined}
+            width="100%"
+            justifyContent="flex-start"
+          >
+            <span data-part="trigger">{children}</span>
+          </MenuItem>
+        </ChakraSteps.Trigger>
+      </ChakraSteps.Item>
+    );
+  }
+
   return (
-    <ChakraSteps.Item {...props} ref={ref} marginRight={{ base: 0 }}>
+    <ChakraSteps.Item
+      {...props}
+      ref={ref}
+      marginRight={{ base: 0 }}
+      display={{ base: "none", md: "flex" }}
+    >
       <ChakraSteps.Trigger>
         {showIndicator && <ChakraSteps.Indicator />}
         {children}
@@ -97,6 +147,7 @@ export const StepperPreviousTrigger = ({ children, ...props }: ButtonProps) => {
 
 export const StepperList = ({ children, ...props }: ChakraStepsListProps) => {
   const { t } = useTranslation();
+  const linear = useContext(StepperLinearContext);
 
   return (
     <ChakraSteps.List {...props}>
@@ -110,14 +161,42 @@ export const StepperList = ({ children, ...props }: ChakraStepsListProps) => {
       {children}
       <ChakraSteps.Context>
         {(api) => (
-          <Text
-            display={{ base: "block", md: "none" }}
-            fontSize="mobile.sm"
-            alignSelf="center"
-            data-part="step-counter"
-          >
-            {t(texts.stepsOf(api.value + 1, api.count))}
-          </Text>
+          <>
+            <Flex
+              display={{ base: "flex", md: "none" }}
+              fontWeight="bold"
+              alignItems="center"
+            >
+              <StepperItemContext.Provider
+                value={{
+                  currentStep: api.value,
+                  mode: "current-label",
+                }}
+              >
+                {children}
+              </StepperItemContext.Provider>
+            </Flex>
+            <Menu>
+              <MenuTrigger
+                display={{ base: "flex", md: "none" }}
+                data-part="step-counter"
+                variant="ghost"
+                size="sm"
+              >
+                {t(texts.stepsOf(api.value + 1, api.count))}
+              </MenuTrigger>
+              <MenuContent data-linear={linear ? "" : undefined}>
+                <StepperItemContext.Provider
+                  value={{
+                    currentStep: api.value,
+                    mode: "menu",
+                  }}
+                >
+                  {children}
+                </StepperItemContext.Provider>
+              </MenuContent>
+            </Menu>
+          </>
         )}
       </ChakraSteps.Context>
     </ChakraSteps.List>

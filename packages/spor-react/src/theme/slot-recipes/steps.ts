@@ -21,9 +21,6 @@ export const stepsSlotRecipe = defineSlotRecipe({
       flexDirection: "row",
       alignItems: "center",
       gap: 2,
-      "&:not([aria-current='step'])": {
-        display: { base: "none", md: "flex" },
-      },
     },
     trigger: {
       display: "flex",
@@ -32,9 +29,9 @@ export const stepsSlotRecipe = defineSlotRecipe({
       justifyContent: "center",
       gap: 1,
       fontSize: ["mobile.sm", "desktop.xs"],
-      paddingX: 2,
-      paddingY: 1,
-      borderRadius: "2xl",
+      paddingX: { base: 0, md: 2 },
+      paddingY: { base: 0, md: 1 },
+      borderRadius: { base: "9px", md: "2xl" },
       "&[aria-selected='true']": {
         fontWeight: "bold",
         color: { base: "text", md: "text.brand" },
@@ -48,7 +45,7 @@ export const stepsSlotRecipe = defineSlotRecipe({
         },
       },
       "&[data-complete]": {
-        fontWeight: "bold",
+        fontWeight: { base: "normal", md: "bold" },
         _hover: {
           backgroundColor: "surface.ghost.hover",
         },
@@ -110,13 +107,13 @@ export const stepsSlotRecipe = defineSlotRecipe({
       accent: {
         list: {
           backgroundColor: "bg.accent",
-          color: "text.accent",
+          color: { base: "text", md: "text.accent" },
         },
         trigger: {
           "&[aria-selected='true']": {
             fontWeight: "bold",
             backgroundColor: { base: "none", md: "surface.brand" },
-            color: { base: "text.accent", md: "text.brand" },
+            color: { base: "text", md: "text.brand" },
           },
         },
         stepCounter: {

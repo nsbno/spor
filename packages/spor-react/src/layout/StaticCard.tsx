@@ -1,7 +1,5 @@
 "use client";
-import { Box, BoxProps, RecipeVariantProps, useRecipe } from "@chakra-ui/react";
-
-import { staticCardRecipe } from "../theme/recipes/static-card";
+import { Box, BoxProps, useRecipe } from "@chakra-ui/react";
 
 /**
  * `StaticCard` is a component that renders a static card.
@@ -9,7 +7,6 @@ import { staticCardRecipe } from "../theme/recipes/static-card";
  * The `StaticCard` component can be used to create a card that does not respond to user interactions.
  * It can be rendered as any HTML element by specifying the `as` prop.
  *
- * The `colorPalette` prop can be used to control the color palette of the card. It defaults to "white".
  *
  * Example usage:
  *
@@ -27,10 +24,10 @@ import { staticCardRecipe } from "../theme/recipes/static-card";
  * </StaticCard>
  * ```
  *
- * To change the color palette of the card, specify the `colorPalette` prop:
+ * To change the color palette of the card, specify the `data-color` prop:
  *
  * ```tsx
- * <StaticCard colorPalette="orange">
+ * <StaticCard >
  *   An orange card
  * </StaticCard>
  * ```
@@ -40,8 +37,7 @@ import { staticCardRecipe } from "../theme/recipes/static-card";
  * @see PressableCard
  */
 
-export type StaticCardProps = RecipeVariantProps<typeof staticCardRecipe> &
-  BoxProps;
+export type StaticCardProps = BoxProps;
 
 export const StaticCard = ({
   ref,
@@ -50,8 +46,7 @@ export const StaticCard = ({
   ref?: React.Ref<HTMLDivElement>;
 }) => {
   const recipe = useRecipe({ key: "staticCard" });
-  const [recipeProps, restProps] = recipe.splitVariantProps(props);
-  const styles = recipe(recipeProps);
+  const styles = recipe();
 
-  return <Box css={styles} {...restProps} ref={ref}></Box>;
+  return <Box css={styles} {...props} ref={ref}></Box>;
 };

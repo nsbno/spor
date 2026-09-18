@@ -88,8 +88,8 @@ export const buttonRecipe = defineRecipe({
         boxShadow:
           "0px 1px 3px 0px var(--spor-colors-surface-disabled, rgba(0, 0, 0, 0.10))",
         _hover: {
+          background: "surface.floating.hover",
           borderColor: "outline.floating.hover",
-
           _active: {
             background: "surface.core.active",
             boxShadow: "none",

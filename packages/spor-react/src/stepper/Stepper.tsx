@@ -1,150 +1,208 @@
 "use client";
 import {
-  Flex,
   RecipeVariantProps,
-  SystemStyleObject,
-  useSlotRecipe,
+  Steps as ChakraSteps,
+  StepsItemProps as ChakraStepsItemProps,
+  StepsListProps as ChakraStepsListProps,
+  StepsRootProps as ChakraStepsRootProps,
 } from "@chakra-ui/react";
-import { ArrowLeftFill24Icon } from "@vygruppen/spor-icon-react";
-import { PropsWithChildren } from "react";
+import {
+  ArrowLeftOutline24Icon,
+  DropdownRightFill18Icon,
+  SuccessOutline18Icon,
+} from "@vygruppen/spor-icon-react";
+import { createContext, PropsWithChildren, useContext } from "react";
 
-import { Box, createTexts, IconButton, Text, useTranslation } from "..";
-import { stepperSlotRecipe } from "../theme/slot-recipes/stepper";
-import { StepperStep } from ".";
-import { StepperProvider } from "./StepperContext";
+import { stepsSlotRecipe } from "@/theme/slot-recipes/steps";
 
-export type StepperVariantProps = RecipeVariantProps<typeof stepperSlotRecipe>;
+import {
+  Button,
+  ButtonProps,
+  createTexts,
+  Flex,
+  IconButton,
+  Menu,
+  MenuContent,
+  MenuItem,
+  MenuTrigger,
+  useTranslation,
+} from "..";
 
-type StepperProps = PropsWithChildren<StepperVariantProps> & {
-  /** Callback for when a step is clicked */
-  onClick: (clickedStep: number) => void;
-  /** Callback for when the back button is clicked (on smaller screens).
-   *
-   * If this is not provided, the back button will not be shown on smaller screens on the first step.
-   */
-  onBackButtonClick?: (stepNumberToGoTo: number) => void;
-  /** Heading shown on smaller devices */
-  heading?: string;
-  /**
-   * The heading level rendered for the heading shown on smaller devices.
-   *
-   * Defaults to h2
-   * */
-  headingLevel?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
-  /** The currently active step */
-  activeStep: number;
-  /** The labels of each step */
-  steps: string[];
-  /** The variant.
-   * "core" has a transparent background,
-   * while "accent" has a slight accent color  */
-  variant: "core" | "accent";
-  /** Disables all clicks */
-  disabled?: boolean;
-  css?: SystemStyleObject;
-};
-/**
- * A stepper is used to show which step of a process a user is currently in.
- *
- * You specify the active step, which starts at 1 (not 0)
- *
- * ```tsx
- * <Stepper
- *   title="Example"
- *   onClick={handleStepClick}
- *   activeStep={2}
- *   steps={['Where', 'When', 'How']}
- * />
- * ```
- **/
+export type StepperVariantProps = RecipeVariantProps<typeof stepsSlotRecipe>;
 
-export const Stepper = function Stepper({
+export type StepperProps = Exclude<
+  ChakraStepsRootProps,
+  "colorPalette" | "orientation" | "variant"
+> &
+  PropsWithChildren<StepperVariantProps>;
+
+const StepperLinearContext = createContext(false);
+
+export const Stepper = ({
   ref,
+  linear,
   ...props
 }: StepperProps & {
   ref?: React.Ref<HTMLDivElement>;
-}) {
-  const {
-    onClick = () => {},
-    onBackButtonClick,
-    steps,
-    activeStep: activeStepAsStringOrNumber,
-    heading,
-    headingLevel,
-    variant,
-    disabled,
-    css,
-  } = props;
-  const recipe = useSlotRecipe({ key: "stepper" });
-  const style = recipe({ variant });
-  const numberOfSteps = steps.length;
-  const activeStep = Number(activeStepAsStringOrNumber);
-  const { t } = useTranslation();
-  const hideBackButtonOnFirstStep = activeStep === 1 && !onBackButtonClick;
-
+}) => {
   return (
-    <Box css={{ ...style.root, ...css }} ref={ref}>
-      <StepperProvider
-        onClick={onClick}
-        activeStep={activeStep}
-        variant={variant}
-        numberOfSteps={numberOfSteps}
-      >
-        <Box css={style.container} data-part="root">
-          <Box css={style.innerContainer}>
-            <Flex
-              justifyContent="space-between"
-              alignItems="center"
-              gap={2}
-              flex={1}
-            >
-              <IconButton
-                aria-label={t(texts.back)}
-                icon={<ArrowLeftFill24Icon />}
-                variant="ghost"
-                size="sm"
-                visibility={hideBackButtonOnFirstStep ? "hidden" : "visible"}
-                onClick={() => {
-                  const stepToGoTo = activeStep - 1;
-                  if (onBackButtonClick) {
-                    onBackButtonClick(stepToGoTo);
-                  }
-                  onClick(stepToGoTo);
-                }}
-              />
-              {heading && (
-                <Text
-                  variant="sm"
-                  as={headingLevel}
-                  css={style.title}
-                  data-part="title"
-                >
-                  {heading}
-                </Text>
-              )}
-              <Box css={style.stepCounter} data-part="step-counter">
-                {t(texts.stepsOf(activeStep, numberOfSteps))}
-              </Box>
-            </Flex>
-          </Box>
-          <Flex justifyContent="center" display={["none", null, "flex"]}>
-            {steps.map((step, index) => (
-              <StepperStep
-                key={index}
-                stepNumber={index + 1}
-                variant={variant}
-                aria-current={index + 1 === activeStep ? "step" : undefined}
-                disabled={disabled}
-              >
-                {step}
-              </StepperStep>
-            ))}
-          </Flex>
-        </Box>
-      </StepperProvider>
-    </Box>
+    <StepperLinearContext.Provider value={Boolean(linear)}>
+      <ChakraSteps.Root
+        {...props}
+        linear={linear}
+        data-linear={linear ? "" : undefined}
+        ref={ref}
+      />
+    </StepperLinearContext.Provider>
   );
 };
+
+export type StepperItemProps = PropsWithChildren<ChakraStepsItemProps> & {
+  showIndicator?: boolean;
+};
+
+type StepperMenuContextValue = {
+  currentStep: number;
+  mode: "current-label" | "menu";
+};
+
+const StepperItemContext = createContext<StepperMenuContextValue | null>(null);
+
+export const StepperItem = ({
+  ref,
+  showIndicator = false,
+  children,
+  ...props
+}: StepperItemProps & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
+  const menuContext = useContext(StepperItemContext);
+
+  if (menuContext) {
+    const isCurrent = menuContext.currentStep === props.index;
+    const isComplete = props.index < menuContext.currentStep;
+
+    if (menuContext.mode === "current-label") {
+      return isCurrent ? <>{children}</> : null;
+    }
+
+    return (
+      <ChakraSteps.Item width="100%" {...props} ref={ref}>
+        <ChakraSteps.Trigger width="100%">
+          <MenuItem
+            value={props.index.toString()}
+            aria-current={isCurrent ? "step" : undefined}
+            leftIcon={isComplete ? <SuccessOutline18Icon /> : undefined}
+            width="100%"
+            justifyContent="flex-start"
+          >
+            <span data-part="trigger">{children}</span>
+          </MenuItem>
+        </ChakraSteps.Trigger>
+      </ChakraSteps.Item>
+    );
+  }
+
+  return (
+    <ChakraSteps.Item
+      {...props}
+      ref={ref}
+      marginRight={{ base: 0 }}
+      display={{ base: "none", md: "flex" }}
+    >
+      <ChakraSteps.Trigger>
+        {showIndicator && <ChakraSteps.Indicator />}
+        {children}
+      </ChakraSteps.Trigger>
+      <ChakraSteps.ItemContext>
+        {(step) => !step.last && <StepperSeparator />}
+      </ChakraSteps.ItemContext>
+    </ChakraSteps.Item>
+  );
+};
+
+export const StepperSeparator = () => {
+  return (
+    <ChakraSteps.Separator display={{ base: "none", md: "flex" }}>
+      <DropdownRightFill18Icon />
+    </ChakraSteps.Separator>
+  );
+};
+
+export const StepperNextTrigger = ({ children, ...props }: ButtonProps) => {
+  return (
+    <ChakraSteps.NextTrigger asChild>
+      <Button {...props}>{children}</Button>
+    </ChakraSteps.NextTrigger>
+  );
+};
+
+export const StepperPreviousTrigger = ({ children, ...props }: ButtonProps) => {
+  return (
+    <ChakraSteps.PrevTrigger asChild>
+      <Button {...props}>{children}</Button>
+    </ChakraSteps.PrevTrigger>
+  );
+};
+
+export const StepperList = ({ children, ...props }: ChakraStepsListProps) => {
+  const { t } = useTranslation();
+  const linear = useContext(StepperLinearContext);
+
+  return (
+    <ChakraSteps.List {...props}>
+      <ChakraSteps.PrevTrigger asChild display={{ base: "flex", md: "none" }}>
+        <IconButton
+          icon={<ArrowLeftOutline24Icon />}
+          variant="ghost"
+          aria-label={t(texts.back)}
+        />
+      </ChakraSteps.PrevTrigger>
+      {children}
+      <ChakraSteps.Context>
+        {(api) => (
+          <>
+            <Flex
+              display={{ base: "flex", md: "none" }}
+              fontWeight="bold"
+              alignItems="center"
+            >
+              <StepperItemContext.Provider
+                value={{
+                  currentStep: api.value,
+                  mode: "current-label",
+                }}
+              >
+                {children}
+              </StepperItemContext.Provider>
+            </Flex>
+            <Menu>
+              <MenuTrigger
+                display={{ base: "flex", md: "none" }}
+                data-part="step-counter"
+                variant="ghost"
+                size="sm"
+              >
+                {t(texts.stepsOf(api.value + 1, api.count))}
+              </MenuTrigger>
+              <MenuContent data-linear={linear ? "" : undefined}>
+                <StepperItemContext.Provider
+                  value={{
+                    currentStep: api.value,
+                    mode: "menu",
+                  }}
+                >
+                  {children}
+                </StepperItemContext.Provider>
+              </MenuContent>
+            </Menu>
+          </>
+        )}
+      </ChakraSteps.Context>
+    </ChakraSteps.List>
+  );
+};
+export const StepperContent = ChakraSteps.Content;
 
 const texts = createTexts({
   stepsOf: (activeStep, numberOfSteps) => ({
@@ -160,3 +218,5 @@ const texts = createTexts({
     en: "Back",
   },
 });
+
+export const StepperCompletedContent = ChakraSteps.CompletedContent;

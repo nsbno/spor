@@ -3,6 +3,7 @@ import {
   Badge,
   Box,
   Button,
+  Flex,
   StaticCard,
   Text,
 } from "@vygruppen/spor-react";
@@ -52,6 +53,17 @@ export const TestComponent = () => {
         {/** Test that this does not get affected */}
         <Button variant="primary">Service Alert</Button>
         <Text color="text.info">Something has happened</Text>
+        <Flex backgroundColor="bg.brand">Text content</Flex>
+
+        <Flex outline="1px solid" outlineColor="outline.caution.hover">
+          Text content
+        </Flex>
+        <Flex outline="1px solid" outlineColor="outline.core.hover">
+          Text content
+        </Flex>
+        <Flex outline="1px solid" outlineColor="outline.floating.hover">
+          Text content
+        </Flex>
       </Box>
     </StaticCard>
   );

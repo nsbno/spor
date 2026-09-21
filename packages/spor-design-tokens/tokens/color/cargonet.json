@@ -379,7 +379,7 @@
               "_dark": "colors.whiteAlpha.400"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.darkGrey",
               "_dark": "colors.white"
@@ -393,7 +393,7 @@
               "_dark": "colors.whiteAlpha.300"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.steel",
               "_dark": "colors.white"
@@ -407,7 +407,7 @@
               "_dark": "colors.iron"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.osloGrey",
               "_dark": "colors.osloGrey"
@@ -421,7 +421,7 @@
               "_dark": "colors.ocean"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.glacier",
               "_dark": "colors.glacier"
@@ -435,7 +435,7 @@
               "_dark": "colors.primaryGreen"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.greenHaze",
               "_dark": "colors.azure"
@@ -449,7 +449,7 @@
               "_dark": "colors.bronze"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.golden",
               "_dark": "colors.golden"
@@ -463,7 +463,7 @@
               "_dark": "colors.russet"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.pumpkin",
               "_dark": "colors.pumpkin"
@@ -477,7 +477,7 @@
               "_dark": "colors.crimson"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.region",
               "_dark": "colors.region"
@@ -491,7 +491,7 @@
               "_dark": "colors.golden"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.golden",
               "_dark": "colors.banana"
@@ -505,7 +505,7 @@
               "_dark": "colors.coralGreen"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.azure",
               "_dark": "colors.greenHaze"

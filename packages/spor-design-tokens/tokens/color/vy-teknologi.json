@@ -325,25 +325,19 @@
         "DEFAULT": {
           "value": {
             "_light": "colors.lightGrey",
-            "_dark": "colors.deepFjord"
+            "_dark": "colors.interstellar"
           }
         },
         "subtle": {
           "value": {
             "_light": "colors.white",
-            "_dark": "colors.forest"
+            "_dark": "colors.night"
           }
         },
-        "brand": {
-          "value": {
-            "_light": "colors.lightGrey",
-            "_dark": "colors.lake"
-          }
-        },
-        "accent": {
+        "highlight": {
           "value": {
             "_light": "colors.mint",
-            "_dark": "colors.interstellar"
+            "_dark": "colors.jungle"
           }
         }
       },
@@ -379,7 +373,7 @@
               "_dark": "colors.whiteAlpha.200"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.darkGrey",
               "_dark": "colors.white"
@@ -393,7 +387,7 @@
               "_dark": "colors.whiteAlpha.200"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.osloGrey",
               "_dark": "colors.white"
@@ -407,7 +401,7 @@
               "_dark": "colors.darkTeal"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.osloGrey",
               "_dark": "colors.primaryGreen"
@@ -421,7 +415,7 @@
               "_dark": "colors.ocean"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.glacier",
               "_dark": "colors.glacier"
@@ -435,7 +429,7 @@
               "_dark": "colors.darkTeal"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.greenHaze",
               "_dark": "colors.primaryGreen"
@@ -449,7 +443,7 @@
               "_dark": "colors.bronze"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.golden",
               "_dark": "colors.golden"
@@ -463,7 +457,7 @@
               "_dark": "colors.russet"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.pumpkin",
               "_dark": "colors.pumpkin"
@@ -477,7 +471,7 @@
               "_dark": "colors.crimson"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.carmine",
               "_dark": "colors.region"
@@ -491,7 +485,7 @@
               "_dark": "colors.primrose"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.golden",
               "_dark": "colors.blonde"
@@ -505,7 +499,7 @@
               "_dark": "colors.amethyst"
             }
           },
-          "hover": {
+          "highlight": {
             "value": {
               "_light": "colors.gengar",
               "_dark": "colors.gengar"
@@ -517,19 +511,19 @@
         "DEFAULT": {
           "value": {
             "_light": "colors.white",
-            "_dark": "colors.cypress"
+            "_dark": "colors.night"
           }
         },
         "subtle": {
           "value": {
-            "_light": "colors.blackAlpha.50",
-            "_dark": "colors.whiteAlpha.200"
+            "_light": "colors.lightGrey",
+            "_dark": "colors.jungle"
           }
         },
         "highlight": {
           "value": {
-            "_light": "colors.pine",
-            "_dark": "colors.jungle"
+            "_light": "colors.coralGreen",
+            "_dark": "colors.darkTeal"
           }
         },
         "overlay": {
@@ -540,7 +534,7 @@
         },
         "disabled": {
           "value": {
-            "_light": "colors.blackAlpha.100",
+            "_light": "colors.blackAlpha.50",
             "_dark": "colors.whiteAlpha.100"
           }
         },
@@ -562,13 +556,13 @@
           "hover": {
             "value": {
               "_light": "colors.darkTeal",
-              "_dark": "colors.seaMist"
+              "_dark": "colors.blueGreen"
             }
           },
           "active": {
             "value": {
-              "_light": "colors.jungle",
-              "_dark": "colors.mint"
+              "_light": "colors.primaryGreen",
+              "_dark": "colors.seaMist"
             }
           }
         },
@@ -576,18 +570,18 @@
           "DEFAULT": {
             "value": {
               "_light": "colors.seaMist",
-              "_dark": "colors.darkTeal"
+              "_dark": "colors.pine"
             }
           },
           "hover": {
             "value": {
               "_light": "colors.coralGreen",
-              "_dark": "colors.pine"
+              "_dark": "colors.darkTeal"
             }
           },
           "active": {
             "value": {
-              "_light": "colors.blueGreen",
+              "_light": "colors.mint",
               "_dark": "colors.primaryGreen"
             }
           }
@@ -595,7 +589,7 @@
         "ghost": {
           "hover": {
             "value": {
-              "_light": "colors.coralGreen",
+              "_light": "colors.seaMist",
               "_dark": "colors.whiteAlpha.200"
             }
           },
@@ -610,19 +604,19 @@
           "DEFAULT": {
             "value": {
               "_light": "colors.white",
-              "_dark": "colors.night"
+              "_dark": "colors.forest"
             }
           },
           "hover": {
             "value": {
-              "_light": "colors.white",
-              "_dark": "colors.jungle"
+              "_light": "colors.seaMist",
+              "_dark": "colors.forest"
             }
           },
           "active": {
             "value": {
-              "_light": "colors.seaMist",
-              "_dark": "colors.moss"
+              "_light": "colors.mint",
+              "_dark": "colors.whiteAlpha.100"
             }
           }
         },

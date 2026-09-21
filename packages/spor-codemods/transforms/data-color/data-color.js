@@ -28,6 +28,12 @@ const alertDataColorMap = {
   alt: "notice",
 };
 
+const tokenMap = {
+  "bg.brand": "bg.highlight",
+};
+
+const outlineHoverTokenPattern = /^(outline\.[^.]+)\.hover$/;
+
 export default function transform(file, api) {
   if (file.path.includes("transform") || file.path.includes("codemod")) {
     return file.source;
@@ -188,6 +194,24 @@ export default function transform(file, api) {
           }
         }
       });
+    });
+  root
+    // eslint-disable-next-line unicorn/no-array-callback-reference
+    .find(index.Literal)
+    // eslint-disable-next-line unicorn/no-array-for-each
+    .forEach((path) => {
+      const oldValue = path.node.value;
+      const outlineHoverTokenMatch =
+        typeof oldValue === "string" &&
+        oldValue.match(outlineHoverTokenPattern);
+      const newValue = Object.hasOwn(tokenMap, oldValue)
+        ? tokenMap[oldValue]
+        : outlineHoverTokenMatch && `${outlineHoverTokenMatch[1]}.highlight`;
+
+      if (newValue) {
+        console.log("Replacing literal", path.node.value, "with", newValue);
+        path.node.value = newValue;
+      }
     });
 
   return root.toSource();

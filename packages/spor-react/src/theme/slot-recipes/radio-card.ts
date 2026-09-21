@@ -118,7 +118,7 @@ export const radioCardSlotRecipe = defineSlotRecipe({
           outlineStyle: "solid",
 
           _hover: {
-            outlineColor: "outline.core.hover",
+            outlineColor: "outline.core.highlight",
             outlineWidth: tokens.size.stroke.md,
             outlineStyle: "solid",
             _active: {
@@ -150,7 +150,7 @@ export const radioCardSlotRecipe = defineSlotRecipe({
           _hover: {
             background: "surface.floating.hover",
 
-            borderColor: "outline.floating.hover",
+            borderColor: "outline.floating.highlight",
 
             boxShadow: "0px 2px 6px 0px var(--shadow-color)",
             _active: {

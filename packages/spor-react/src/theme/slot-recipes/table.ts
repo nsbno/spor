@@ -70,7 +70,7 @@ export const tableSlotRecipe = defineSlotRecipe({
           borderColor: "outline.core",
           "&:not(thead *):hover": {
             outline: "1px solid",
-            outlineColor: "outline.core.hover",
+            outlineColor: "outline.core.highlight",
             outlineOffset: "-1px",
             _last: {
               borderRadius: "0 0 6px 6px",
@@ -115,7 +115,7 @@ export const tableSlotRecipe = defineSlotRecipe({
             outlineOffset: "-1px",
             outlineColor: "outline.floating",
             _hover: {
-              outlineColor: "outline.floating.hover",
+              outlineColor: "outline.floating.highlight",
             },
           },
         },

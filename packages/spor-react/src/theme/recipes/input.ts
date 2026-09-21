@@ -45,7 +45,7 @@ export const inputRecipe = defineRecipe({
         outlineColor: "outline.core",
         _hover: {
           outline: "2px solid",
-          outlineColor: "outline.core.hover",
+          outlineColor: "outline.core.highlight",
           _active: {
             outline: "1px solid",
             outlineColor: "outline.disabled",
@@ -69,7 +69,7 @@ export const inputRecipe = defineRecipe({
 
         _hover: {
           outline: "1px solid",
-          outlineColor: "outline.floating.hover",
+          outlineColor: "outline.floating.highlight",
         },
         _active: {
           outline: "1px solid",

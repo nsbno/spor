@@ -148,7 +148,7 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
           },
           _hover: {
             outline: "2px solid",
-            outlineColor: "outline.core.hover",
+            outlineColor: "outline.core.highlight",
 
             _active: {
               outline: "1px solid",
@@ -206,7 +206,7 @@ export const choiceChipSlotRecipe = defineSlotRecipe({
           _hover: {
             backgroundColor: "surface.floating.hover",
             outline: "1px solid",
-            outlineColor: "outline.floating.hover",
+            outlineColor: "outline.floating.highlight",
 
             _active: {
               backgroundColor: "surface.floating.active",

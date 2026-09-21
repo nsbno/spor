@@ -320,7 +320,7 @@ const components: Partial<PortableTextReactComponents> = {
       return (
         <Box
           as="article"
-          backgroundColor="bg.brand"
+          backgroundColor="bg.highlight"
           color="text"
           marginTop={3}
           padding={4}

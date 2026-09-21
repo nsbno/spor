@@ -58,7 +58,7 @@ export const buttonRecipe = defineRecipe({
         outlineColor: "outline.core",
         _hover: {
           outlineWidth: tokens.size.stroke.md,
-          outlineColor: "outline.core.hover",
+          outlineColor: "outline.core.highlight",
           _active: {
             background: "surface.core.active",
             outlineWidth: tokens.size.stroke.sm,
@@ -89,7 +89,7 @@ export const buttonRecipe = defineRecipe({
           "0px 1px 3px 0px var(--spor-colors-surface-disabled, rgba(0, 0, 0, 0.10))",
         _hover: {
           background: "surface.floating.hover",
-          borderColor: "outline.floating.hover",
+          borderColor: "outline.floating.highlight",
           _active: {
             background: "surface.core.active",
             boxShadow: "none",

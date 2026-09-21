@@ -130,7 +130,7 @@ export const accordionSlotRecipe = defineSlotRecipe({
           "&:hover": {
             outlineWidth: tokens.size.stroke.md,
             outline: "1px solid",
-            outlineColor: "outline.floating.hover",
+            outlineColor: "outline.floating.highlight",
 
             outlineOffset: 1,
           },

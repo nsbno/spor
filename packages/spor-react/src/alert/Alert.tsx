@@ -25,7 +25,7 @@ export type AlertProps = Omit<ChakraAlert.RootProps, "colorPalette"> & {
  * They can be used to inform about success, errors, warnings, or other important information.
  *
  * ```tsx
- * <Alert variant="info" title="Information">
+ * <Alert data-color="info" title="Information">
  *  This is an information alert
  * </Alert>
  * ```
@@ -33,7 +33,7 @@ export type AlertProps = Omit<ChakraAlert.RootProps, "colorPalette"> & {
  * You may also use the closable prop to allow the user to dismiss the alert.
  *
  * ```tsx
- * <Alert variant="info" title="Information" closable>
+ * <Alert title="Information" closable>
  *    This is an closable alert
  * </Alert>
  *

@@ -30,7 +30,7 @@ export const inputChipSlotRecipe = defineSlotRecipe({
           borderColor: "outline",
           "&:hover": {
             outline: "2px solid",
-            outlineColor: "outline.core.hover",
+            outlineColor: "outline.core.highlight",
           },
           "&:active": {
             outline: "none",

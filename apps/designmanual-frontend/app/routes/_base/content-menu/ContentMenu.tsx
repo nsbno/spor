@@ -168,6 +168,11 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
             </AccordionItem>
           );
         })}
+        {isSpor && (
+          <Box paddingLeft="1">
+            <MenuItem url="/spor/changelog" title="Changelog" />
+          </Box>
+        )}
       </Accordion>
       {isSpor && (
         <Stack
@@ -175,11 +180,23 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
           gap={0.5}
           display={["none", null, null, "block"]}
         >
+          <Separator marginY={2} size="sm" variant="dashed" />
+          <Text
+            key="components"
+            fontSize="desktop.2xs"
+            fontWeight="bold"
+            color="text.subtle"
+            paddingX={2}
+            marginBottom={0.5}
+          >
+            Components
+          </Text>
           <MenuItem
             url="/spor/components/overview"
             title="Overview"
             icon={<GridOutline18Icon />}
           />
+
           {menu?.components?.map((component: Component, index: number) => (
             <MenuItem
               key={index + component.url}

@@ -43,13 +43,10 @@ const dataColorStyles = Object.fromEntries(
 
       // Outline colors
       "--spor-colors-outline-core": `var(--spor-colors-outline-${color})`,
-      "--spor-colors-outline-core-hover": `var(--spor-colors-outline-${color}-hover)`,
-      "--spor-colors-outline-brand": `var(--spor-colors-outline-${color})`,
-      "--spor-colors-outline-brand-hover": `var(--spor-colors-outline-${color}-hover)`,
+      "--spor-colors-outline-core-highlight": `var(--spor-colors-outline-${color}-highlight)`,
       "--spor-colors-outline-accent": `var(--spor-colors-outline-${color})`,
-      "--spor-colors-outline-accent-hover": `var(--spor-colors-outline-${color}-hover)`,
       "--spor-colors-outline-ghost": `var(--spor-colors-outline-${color})`,
-      "--spor-colors-outline-ghost-hover": `var(--spor-colors-outline-${color}-hover)`,
+      "--spor-colors-outline-ghost-highlight": `var(--spor-colors-outline-${color}-highlight)`,
 
       // Text colors
       "--spor-colors-text": `var(--spor-colors-text-${color})`,

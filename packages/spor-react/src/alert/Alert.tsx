@@ -4,6 +4,7 @@ import { Alert as ChakraAlert, HStack, useDisclosure } from "@chakra-ui/react";
 import { IconComponent } from "@vygruppen/spor-icon-react";
 
 import { CloseButton } from "@/button";
+import { useDataColor } from "@/data-color-context";
 import { createTexts, useTranslation } from "@/i18n";
 import { SporSemantic } from "@/theme/tokens/global-css";
 
@@ -42,7 +43,6 @@ export type AlertProps = Omit<ChakraAlert.RootProps, "colorPalette"> & {
 
 export const Alert = ({
   ref,
-  "data-color": dataColor = "neutral",
   ...props
 }: AlertProps & {
   ref?: React.Ref<HTMLDivElement>;
@@ -55,8 +55,11 @@ export const Alert = ({
     closable = false,
     onAlertClose,
     children,
+    "data-color": dataColorProps,
   } = props;
   const { open, onClose } = useDisclosure({ defaultOpen: true });
+  const colorFromContext = useDataColor();
+  const dataColor = dataColorProps ?? colorFromContext ?? "neutral";
   const { t } = useTranslation();
 
   const handleAlertClose = () => {
@@ -77,13 +80,7 @@ export const Alert = ({
 
   if (!open) return null;
   return (
-    <ChakraAlert.Root
-      ref={ref}
-      role="alert"
-      aria-label={ariaLabel}
-      data-color={dataColor}
-      {...props}
-    >
+    <ChakraAlert.Root ref={ref} role="alert" aria-label={ariaLabel} {...props}>
       <ChakraAlert.Content
         flexDirection={title ? "column" : "row"}
         data-part="content"

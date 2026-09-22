@@ -506,6 +506,14 @@
             }
           }
         },
+        "accent": {
+          "DEFAULT": {
+            "value": {
+              "_light": "colors.coralGreen",
+              "_dark": "colors.pine"
+            }
+          }
+        },
         "neutral": {
           "DEFAULT": {
             "value": {

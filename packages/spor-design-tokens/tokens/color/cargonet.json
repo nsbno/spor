@@ -400,6 +400,14 @@
             }
           }
         },
+        "accent": {
+          "DEFAULT": {
+            "value": {
+              "_light": "colors.blackAlpha.200",
+              "_dark": "colors.iron"
+            }
+          }
+        },
         "neutral": {
           "DEFAULT": {
             "value": {

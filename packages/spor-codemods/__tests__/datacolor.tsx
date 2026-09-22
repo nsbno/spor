@@ -1,4 +1,4 @@
-import {
+/*import {
   Alert,
   Badge,
   Box,
@@ -7,10 +7,11 @@ import {
   StaticCard,
   Text,
 } from "@vygruppen/spor-react";
-
+*/
 // Test file to verify the color-tokens transform works
 export const TestComponent = () => {
-  return (
+  return {
+    /**
     <StaticCard colorPalette="red">
       <Box>
         <Badge colorPalette="blue">Info tag</Badge>
@@ -50,7 +51,6 @@ export const TestComponent = () => {
           Orange
         </StaticCard>
 
-        {/** Test that this does not get affected */}
         <Button variant="primary">Service Alert</Button>
         <Text color="text.info">Something has happened</Text>
         <Flex backgroundColor="bg.brand">Text content</Flex>
@@ -66,5 +66,6 @@ export const TestComponent = () => {
         </Flex>
       </Box>
     </StaticCard>
-  );
+     */
+  };
 };

@@ -4,7 +4,7 @@ import { Box, Text } from "@vygruppen/spor-react";
 export const TestComponent = () => {
   return (
     <Box backgroundColor="bg.subtle" padding="md">
-      <Box backgroundColor="bg.brand">
+      <Box backgroundColor="bg.accent">
         <Text color="text.critical">Error text</Text>
         <Text color="text.subtle">Secondary text</Text>
       </Box>

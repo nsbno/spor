@@ -46,7 +46,7 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
         {props.label}
         <ChakraField.RequiredIndicator />
       </spor.label>
-      <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
+      <Flex {...fieldProps} ref={ref} paddingTop="3">
         {state.segments.map((segment: DateSegment, index) => (
           <DateTimeSegment
             key={index}

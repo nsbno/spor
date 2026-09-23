@@ -207,7 +207,7 @@ export default function ArticlePage() {
           {article.badges?.map((badge: ArticleBadgeType) => (
             <ArticleBadge key={badge.badgeType} badgeType={badge.badgeType} />
           ))}
-          {isPreview && <Badge colorPalette="yellow">Preview</Badge>}
+          {isPreview && <Badge data-color="caution">Preview</Badge>}
         </Flex>
         <Flex direction="column" gap={5}>
           <Flex gap={3} direction="column">

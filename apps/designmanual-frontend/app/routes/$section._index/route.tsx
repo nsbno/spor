@@ -109,7 +109,7 @@ export default function Index() {
     <Box backgroundColor="bg" width="100%">
       <Flex
         direction="column"
-        backgroundColor={hasImage ? "bg.accent" : "bg"}
+        backgroundColor={hasImage ? "bg.highlight" : "bg"}
         paddingBottom={11}
         paddingTop={paddingTop}
         width="100%"

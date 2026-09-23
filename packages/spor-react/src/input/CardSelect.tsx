@@ -11,10 +11,27 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { ReactNode } from "react";
 
-import { Button, ButtonProps, StaticCard, StaticCardProps } from "..";
+import { SporSemantic } from "@/theme/tokens/global-css";
 
-export const CardSelect = ({ size = "md", ...props }: PopoverRootProps) => {
-  return <ChakraPopover.Root size={size} {...props} />;
+import {
+  Button,
+  ButtonProps,
+  DataColorProvider,
+  StaticCard,
+  StaticCardProps,
+  useDataColor,
+} from "..";
+
+export const CardSelect = ({
+  size = "md",
+  "data-color": dataColor,
+  ...props
+}: PopoverRootProps & { "data-color"?: SporSemantic }) => {
+  return (
+    <DataColorProvider data-color={dataColor}>
+      <ChakraPopover.Root size={size} data-color={dataColor} {...props} />
+    </DataColorProvider>
+  );
 };
 
 export const CardSelectContent = ({
@@ -24,11 +41,13 @@ export const CardSelectContent = ({
 }: StaticCardProps & {
   ref?: React.Ref<HTMLDivElement>;
 }) => {
+  const dataColor = useDataColor();
+
   return (
     <Portal>
       <ChakraPopover.Positioner>
         <ChakraPopover.Content ref={ref} padding={0} bg="none">
-          <ChakraPopover.Body {...props}>
+          <ChakraPopover.Body data-color={dataColor} {...props}>
             <StaticCard
               p="2"
               bg="bg"
@@ -80,10 +99,11 @@ export const CardSelectTrigger = ({
   const ChevronIcon =
     size === "sm" ? DropdownDownFill18Icon : DropdownDownFill24Icon;
 
+  const dataColor = useDataColor();
   const { open } = usePopoverContext();
 
   return (
-    <ChakraPopover.Trigger asChild ref={ref}>
+    <ChakraPopover.Trigger asChild ref={ref} data-color={dataColor}>
       <Button
         leftIcon={icon}
         variant={

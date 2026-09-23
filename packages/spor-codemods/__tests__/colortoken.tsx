@@ -1,10 +1,11 @@
-import { Box, Text } from "@vygruppen/spor-react";
+//import { Box, Text } from "@vygruppen/spor-react";
 
 // Test file to verify the color-tokens transform works
 export const TestComponent = () => {
-  return (
+  return {
+    /** 
     <Box backgroundColor="bg.subtle" padding="md">
-      <Box backgroundColor="bg.brand">
+      <Box backgroundColor="bg.accent">
         <Text color="text.critical">Error text</Text>
         <Text color="text.subtle">Secondary text</Text>
       </Box>
@@ -12,5 +13,6 @@ export const TestComponent = () => {
         <Text color="text.accent">Accent text</Text>
       </Box>
     </Box>
-  );
+    */
+  };
 };

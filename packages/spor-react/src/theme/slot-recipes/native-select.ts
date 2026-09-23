@@ -11,7 +11,6 @@ export const nativeSelectSlotRecipe = defineSlotRecipe({
       width: "100%",
       height: "fit-content",
       position: "relative",
-      backgroundColor: "surface",
       "& option, & optgroup": {
         color: "text",
         backgroundColor: "surface",

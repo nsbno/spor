@@ -3,7 +3,6 @@
 import {
   Accordion,
   Box,
-  ConditionalValue,
   HStack,
   RecipeVariantProps,
   Span,
@@ -13,7 +12,9 @@ import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
 import { PropsWithChildren } from "react";
 
 import { AccordionItemContent } from "@/accordion";
+import { useDataColor } from "@/data-color-context";
 import { alertExpandableSlotRecipe } from "@/theme/slot-recipes/alert-expandable";
+import { SporSemantic } from "@/theme/tokens/global-css";
 
 import { AlertIcon } from "./AlertIcon";
 
@@ -34,19 +35,6 @@ type ExpandableAlertProps = PropsWithChildren<ExpandableAlertVariantProps> &
     headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
     /** If the user should be able to close the Accordion. Defaults to true */
     collapsible?: boolean;
-    /**
-   * The variant of the alert. Default: info
-   * "info"
-      | "success"
-      | "important"
-      | "alt-transport"
-      | "error"
-      | "service"
-      | "global-deviation";
-   */
-    variant?: ConditionalValue<
-      "important" | "success" | "alt" | "info" | "error" | undefined
-    >;
   };
 /**
  * An expandable alert component.
@@ -61,12 +49,13 @@ type ExpandableAlertProps = PropsWithChildren<ExpandableAlertVariantProps> &
  */
 export const ExpandableAlert = ({
   ref,
+  "data-color": dataColorProps = "neutral",
   ...props
 }: ExpandableAlertProps & {
   ref?: React.Ref<HTMLDivElement>;
+  "data-color": SporSemantic;
 }) => {
   const {
-    variant = "info",
     children,
     title,
     collapsible = true,
@@ -76,7 +65,9 @@ export const ExpandableAlert = ({
     ...rest
   } = props;
   const recipe = useSlotRecipe({ key: "alertExpandable" });
-  const styles = recipe({ variant });
+  const styles = recipe();
+  const colorFromContext = useDataColor();
+  const dataColor = dataColorProps ?? colorFromContext;
 
   const defaultValue = "alert-expandable";
 
@@ -86,6 +77,7 @@ export const ExpandableAlert = ({
       ref={ref}
       css={{ ...styles.root, ...css }}
       collapsible={collapsible}
+      data-color={dataColor}
       {...rest}
     >
       <Accordion.Item value={defaultValue}>
@@ -99,7 +91,7 @@ export const ExpandableAlert = ({
           >
             <HStack gap="1" alignItems="center">
               <Box css={styles.indicator}>
-                <AlertIcon variant={variant} />
+                <AlertIcon variant={dataColor ?? "info"} />
               </Box>
               <Span
                 as={headingLevel}

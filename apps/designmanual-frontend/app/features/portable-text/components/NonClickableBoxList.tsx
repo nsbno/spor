@@ -62,7 +62,7 @@ export const NonClickableBox = ({
   return (
     <StaticCard
       key={_key}
-      colorPalette={color}
+      data-color={color}
       padding={4}
       height={fillHeight ? "100%" : "auto"}
     >

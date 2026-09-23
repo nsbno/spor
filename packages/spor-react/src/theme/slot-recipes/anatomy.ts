@@ -131,6 +131,7 @@ export const checkboxAnatomy = createAnatomy("checkbox").parts(
 );
 
 export const breadcrumbAnatomy = createAnatomy("breadcrumb").parts(
+  "root",
   "link",
   "currentLink",
   "list",

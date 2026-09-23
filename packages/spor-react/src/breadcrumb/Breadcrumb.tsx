@@ -34,14 +34,12 @@ export const Breadcrumb = ({
 
   return (
     <ChakraBreadcrumb.Root ref={ref} css={css} {...props}>
-      <ChakraBreadcrumb.List data-part="list">
+      <ChakraBreadcrumb.List>
         {validChildren.map((child, index) => {
           const isLast = index === validChildren.length - 1;
           return (
             <React.Fragment key={index}>
-              <ChakraBreadcrumb.Item data-part="item">
-                {child}
-              </ChakraBreadcrumb.Item>
+              <ChakraBreadcrumb.Item>{child}</ChakraBreadcrumb.Item>
               {!isLast && (
                 <ChakraBreadcrumb.Separator
                   aria-hidden="true"

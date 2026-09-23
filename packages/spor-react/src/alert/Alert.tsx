@@ -1,15 +1,12 @@
 "use client";
 
-import {
-  Alert as ChakraAlert,
-  HStack,
-  useDisclosure,
-  useSlotRecipe,
-} from "@chakra-ui/react";
+import { Alert as ChakraAlert, HStack, useDisclosure } from "@chakra-ui/react";
 import { IconComponent } from "@vygruppen/spor-icon-react";
 
 import { CloseButton } from "@/button";
+import { useDataColor } from "@/data-color-context";
 import { createTexts, useTranslation } from "@/i18n";
+import { SporSemantic } from "@/theme/tokens/global-css";
 
 import { AlertIcon } from "./AlertIcon";
 
@@ -29,7 +26,7 @@ export type AlertProps = Omit<ChakraAlert.RootProps, "colorPalette"> & {
  * They can be used to inform about success, errors, warnings, or other important information.
  *
  * ```tsx
- * <Alert variant="info" title="Information">
+ * <Alert data-color="info" title="Information">
  *  This is an information alert
  * </Alert>
  * ```
@@ -37,7 +34,7 @@ export type AlertProps = Omit<ChakraAlert.RootProps, "colorPalette"> & {
  * You may also use the closable prop to allow the user to dismiss the alert.
  *
  * ```tsx
- * <Alert variant="info" title="Information" closable>
+ * <Alert title="Information" closable>
  *    This is an closable alert
  * </Alert>
  *
@@ -49,6 +46,7 @@ export const Alert = ({
   ...props
 }: AlertProps & {
   ref?: React.Ref<HTMLDivElement>;
+  "data-color": SporSemantic;
 }) => {
   const {
     title,
@@ -57,8 +55,11 @@ export const Alert = ({
     closable = false,
     onAlertClose,
     children,
+    "data-color": dataColorProps,
   } = props;
   const { open, onClose } = useDisclosure({ defaultOpen: true });
+  const colorFromContext = useDataColor();
+  const dataColor = dataColorProps ?? colorFromContext ?? "neutral";
   const { t } = useTranslation();
 
   const handleAlertClose = () => {
@@ -66,16 +67,12 @@ export const Alert = ({
     onAlertClose?.();
   };
 
-  const recipe = useSlotRecipe({ key: "alert" });
-  const styles = recipe({ variant: props.variant });
-
   const getAriaLabelText = () => {
-    const variant = props.variant;
-    if (variant === "important" || variant === "alt")
+    if (dataColor === "warning" || dataColor === "notice")
       return texts.ariaLabelAlertWarning;
-    if (variant === "error" || variant === "error-secondary")
+    if (dataColor === "critical" || dataColor === "caution")
       return texts.ariaLabelAlertError;
-    if (variant === "success") return texts.ariaLabelAlertSuccess;
+    if (dataColor === "success") return texts.ariaLabelAlertSuccess;
     return texts.ariaLabelAlertInformative;
   };
 
@@ -91,7 +88,7 @@ export const Alert = ({
         <HStack gap="1" alignItems="flex-start">
           {showIndicator && (
             <ChakraAlert.Indicator asChild>
-              <AlertIcon variant={props.variant ?? "info"} customIcon={icon} />
+              <AlertIcon variant={dataColor ?? "info"} customIcon={icon} />
             </ChakraAlert.Indicator>
           )}
           {title && (
@@ -122,7 +119,6 @@ export const Alert = ({
           top="1.5"
           right="1.5"
           onClick={handleAlertClose}
-          css={styles.closeButton}
         />
       )}
     </ChakraAlert.Root>

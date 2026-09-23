@@ -119,7 +119,6 @@ export const Alert = ({
           top="1.5"
           right="1.5"
           onClick={handleAlertClose}
-          //css={styles.closeButton}
         />
       )}
     </ChakraAlert.Root>

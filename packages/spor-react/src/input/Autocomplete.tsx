@@ -12,6 +12,7 @@ import React from "react";
 
 import { CloseButton } from "@/button";
 import { ColorSpinner } from "@/loader";
+import { SporSemantic } from "@/theme/tokens/global-css";
 
 import { createTexts, useTranslation } from "..";
 import { FieldProps } from "./Field";
@@ -28,6 +29,7 @@ type Props = {
   emptyLabel?: React.ReactNode;
   openOnFocus?: boolean;
   ref?: React.Ref<HTMLInputElement | null>;
+  "data-color"?: SporSemantic;
 } & Omit<ComboboxRootProps, "collection"> &
   FieldProps;
 
@@ -51,6 +53,7 @@ export function Autocomplete({
   openOnFocus = true,
   ref,
   size = "md",
+  "data-color": dataColor,
   ...rest
 }: Props) {
   const { contains } = useFilter({ sensitivity: "base" });
@@ -97,7 +100,7 @@ export function Autocomplete({
   });
 
   return (
-    <Combobox.RootProvider value={combobox}>
+    <Combobox.RootProvider value={combobox} data-color={dataColor}>
       <Combobox.Control css={css}>
         <Combobox.Input asChild>
           <Input

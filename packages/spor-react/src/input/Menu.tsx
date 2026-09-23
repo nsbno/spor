@@ -61,8 +61,9 @@ export const Menu = ({
   "data-color": dataColor,
   ...props
 }: MenuRootProps & { "data-color"?: SporSemantic }) => {
+  const dataColorFromContext = useDataColor();
   return (
-    <DataColorProvider data-color={dataColor}>
+    <DataColorProvider data-color={dataColor ?? dataColorFromContext}>
       <CustomMenuContext.Provider value={{ variant: props.variant }}>
         <ChakraMenu.Root {...props}>{children}</ChakraMenu.Root>
       </CustomMenuContext.Provider>

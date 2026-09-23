@@ -6,6 +6,10 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
   className: "spor-alert-expandable",
   slots: alertExpandableAnatomy.keys(),
   base: {
+    root: {
+      border: "sm",
+      backgroundColor: "surface",
+    },
     itemTrigger: {
       paddingX: "2 !important",
       _expanded: {
@@ -13,11 +17,9 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
       },
     },
     itemContent: {
+      backgroundColor: "surface",
       fontSize: "xs !important",
       paddingTop: "1 !important",
-    },
-    root: {
-      border: "sm",
     },
   },
 });

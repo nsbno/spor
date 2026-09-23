@@ -25,7 +25,6 @@ export const inputChipSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         root: {
-          backgroundColor: "surface",
           border: "1px solid",
           borderColor: "outline",
           "&:hover": {

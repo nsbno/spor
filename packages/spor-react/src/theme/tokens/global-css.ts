@@ -50,12 +50,23 @@ const dataColorStyles = Object.fromEntries(
 
       // Text colors
       "--spor-colors-text": `var(--spor-colors-text-${color})`,
+      "--spor-colors-text-highlight": `var(--spor-colors-text-${color})`,
       "--spor-colors-text-subtle": `var(--spor-colors-text-${color}-subtle)`,
       "--spor-colors-text-brand": `var(--spor-colors-text-${color}-inverted)`,
       "--spor-colors-text-accent": `var(--spor-colors-text-${color})`,
       "--spor-colors-text-core": `var(--spor-colors-text-${color})`,
       "--spor-colors-text-ghost": `var(--spor-colors-text-${color})`,
       "--spor-colors-text-floating": `var(--spor-colors-text-${color})`,
+
+      // Icon colors
+      "--spor-colors-icon": `var(--spor-colors-icon-${color})`,
+      "--spor-colors-icon-highlight": `var(--spor-colors-icon-${color})`,
+      "--spor-colors-icon-subtle": `var(--spor-colors-icon-${color}-subtle)`,
+      "--spor-colors-icon-brand": `var(--spor-colors-icon-${color}-inverted)`,
+      "--spor-colors-icon-accent": `var(--spor-colors-icon-${color})`,
+      "--spor-colors-icon-core": `var(--spor-colors-icon-${color})`,
+      "--spor-colors-icon-ghost": `var(--spor-colors-icon-${color})`,
+      "--spor-colors-icon-floating": `var(--spor-colors-icon-${color})`,
     },
   ]),
 );

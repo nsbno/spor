@@ -12,6 +12,7 @@ import { DropdownDownFill18Icon } from "@vygruppen/spor-icon-react";
 import { PropsWithChildren } from "react";
 
 import { AccordionItemContent } from "@/accordion";
+import { useDataColor } from "@/data-color-context";
 import { alertExpandableSlotRecipe } from "@/theme/slot-recipes/alert-expandable";
 import { SporSemantic } from "@/theme/tokens/global-css";
 
@@ -48,7 +49,7 @@ type ExpandableAlertProps = PropsWithChildren<ExpandableAlertVariantProps> &
  */
 export const ExpandableAlert = ({
   ref,
-  "data-color": dataColor = "neutral",
+  "data-color": dataColorProps = "neutral",
   ...props
 }: ExpandableAlertProps & {
   ref?: React.Ref<HTMLDivElement>;
@@ -65,6 +66,8 @@ export const ExpandableAlert = ({
   } = props;
   const recipe = useSlotRecipe({ key: "alertExpandable" });
   const styles = recipe();
+  const colorFromContext = useDataColor();
+  const dataColor = dataColorProps ?? colorFromContext;
 
   const defaultValue = "alert-expandable";
 
@@ -74,6 +77,7 @@ export const ExpandableAlert = ({
       ref={ref}
       css={{ ...styles.root, ...css }}
       collapsible={collapsible}
+      data-color={dataColor}
       {...rest}
     >
       <Accordion.Item value={defaultValue}>

@@ -131,7 +131,7 @@
           },
           "inverted": {
             "value": {
-              "_light": "colors.cornsil",
+              "_light": "colors.cornsilk",
               "_dark": "colors.secret"
             }
           }

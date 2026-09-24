@@ -35,6 +35,7 @@ export const menuSlotRecipe = defineSlotRecipe({
       padding: "2",
       display: "flex",
       justifyContent: "space-between",
+      alignItems: "center",
       gap: 1.5,
       cursor: "pointer",
 

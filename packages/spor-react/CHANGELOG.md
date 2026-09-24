@@ -1,5 +1,11 @@
 # @vygruppen/spor-react
 
+## 13.8.2
+
+### Patch Changes
+
+- 86d5ce7: ServiceAlert: use text.service and icon.service tokens instead of text.brand and icon.brand
+
 ## 13.8.1
 
 ### Patch Changes

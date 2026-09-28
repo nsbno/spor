@@ -179,7 +179,7 @@
         "notice": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.coffee",
+              "_light": "colors.olive",
               "_dark": "colors.cornsilk"
             }
           },
@@ -191,7 +191,7 @@
           },
           "inverted": {
             "value": {
-              "_light": "colors.white",
+              "_light": "colors.cornsilk",
               "_dark": "colors.olive"
             }
           }
@@ -199,19 +199,19 @@
         "service": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.umbra",
+              "_light": "colors.jungle",
               "_dark": "colors.mint"
             }
           },
           "subtle": {
             "value": {
-              "_light": "colors.darkGrey",
+              "_light": "colors.darkTeal",
               "_dark": "colors.coralGreen"
             }
           },
           "inverted": {
             "value": {
-              "_light": "colors.white",
+              "_light": "colors.mint",
               "_dark": "colors.night"
             }
           }
@@ -395,7 +395,7 @@
         "notice": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.umbra",
+              "_light": "colors.olive",
               "_dark": "colors.cornsilk"
             }
           },
@@ -415,7 +415,7 @@
         "service": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.umbra",
+              "_light": "colors.jungle",
               "_dark": "colors.mint"
             }
           },
@@ -601,27 +601,27 @@
         "notice": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.banana",
-              "_dark": "colors.golden"
+              "_light": "colors.burntYellow",
+              "_dark": "colors.mustard"
             }
           },
           "highlight": {
             "value": {
               "_light": "colors.golden",
-              "_dark": "colors.banana"
+              "_dark": "colors.golden"
             }
           }
         },
         "service": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.primaryGreen",
-              "_dark": "colors.coralGreen"
+              "_light": "colors.azure",
+              "_dark": "colors.primaryGreen"
             }
           },
           "highlight": {
             "value": {
-              "_light": "colors.azure",
+              "_light": "colors.primaryGreen",
               "_dark": "colors.greenHaze"
             }
           }

@@ -59,7 +59,7 @@ export const Alert = ({
   } = props;
   const { open, onClose } = useDisclosure({ defaultOpen: true });
   const colorFromContext = useDataColor();
-  const dataColor = dataColorProps ?? colorFromContext ?? "neutral";
+  const dataColor = dataColorProps ?? colorFromContext;
   const { t } = useTranslation();
 
   const handleAlertClose = () => {
@@ -88,7 +88,7 @@ export const Alert = ({
         <HStack gap="1" alignItems="flex-start">
           {showIndicator && (
             <ChakraAlert.Indicator asChild>
-              <AlertIcon variant={dataColor ?? "info"} customIcon={icon} />
+              <AlertIcon variant={dataColor ?? "neutral"} customIcon={icon} />
             </ChakraAlert.Indicator>
           )}
           {title && (

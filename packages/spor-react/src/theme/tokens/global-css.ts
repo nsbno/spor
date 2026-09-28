@@ -42,6 +42,7 @@ const dataColorStyles = Object.fromEntries(
       "--spor-colors-surface-floating-active": `var(--spor-colors-surface-${color}-active)`,
 
       // Outline colors
+      "--spor-colors-outline": `var(--spor-colors-outline-${color})`,
       "--spor-colors-outline-core": `var(--spor-colors-outline-${color})`,
       "--spor-colors-outline-core-highlight": `var(--spor-colors-outline-${color}-highlight)`,
       "--spor-colors-outline-accent": `var(--spor-colors-outline-${color})`,

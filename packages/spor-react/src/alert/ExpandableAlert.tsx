@@ -49,7 +49,7 @@ type ExpandableAlertProps = PropsWithChildren<ExpandableAlertVariantProps> &
  */
 export const ExpandableAlert = ({
   ref,
-  "data-color": dataColorProps = "neutral",
+  "data-color": dataColorProps,
   ...props
 }: ExpandableAlertProps & {
   ref?: React.Ref<HTMLDivElement>;
@@ -91,7 +91,7 @@ export const ExpandableAlert = ({
           >
             <HStack gap="1" alignItems="center">
               <Box css={styles.indicator}>
-                <AlertIcon variant={dataColor ?? "info"} />
+                <AlertIcon variant={dataColor ?? "neutral"} />
               </Box>
               <Span
                 as={headingLevel}

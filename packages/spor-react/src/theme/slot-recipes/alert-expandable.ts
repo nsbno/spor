@@ -9,15 +9,26 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
     root: {
       border: "sm",
       backgroundColor: "surface",
+      borderColor: "outline",
     },
     itemTrigger: {
       paddingX: "2 !important",
+      _hover: {
+        bg: "surface.ghost.hover",
+        outlineOffset: "0px",
+        outline: "1px solid",
+        outlineColor: "outline.ghost.highlight",
+        _active: {
+          bg: "surface.ghost.active",
+        },
+      },
+
       _expanded: {
         borderBottomRadius: "none",
       },
     },
     itemContent: {
-      backgroundColor: "surface",
+      color: "text.subtle",
       fontSize: "xs !important",
       paddingTop: "1 !important",
     },

@@ -179,7 +179,7 @@
         "notice": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.coffee",
+              "_light": "colors.olive",
               "_dark": "colors.cornsilk"
             }
           },
@@ -191,7 +191,7 @@
           },
           "inverted": {
             "value": {
-              "_light": "colors.white",
+              "_light": "colors.cornsilk",
               "_dark": "colors.olive"
             }
           }
@@ -395,7 +395,7 @@
         "notice": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.umbra",
+              "_light": "colors.olive",
               "_dark": "colors.cornsilk"
             }
           },
@@ -601,28 +601,28 @@
         "notice": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.banana",
-              "_dark": "colors.primrose"
+              "_light": "colors.burntYellow",
+              "_dark": "colors.mustard"
             }
           },
           "highlight": {
             "value": {
               "_light": "colors.golden",
-              "_dark": "colors.blonde"
+              "_dark": "colors.golden"
             }
           }
         },
         "service": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.lilac",
+              "_light": "colors.wisteria",
               "_dark": "colors.amethyst"
             }
           },
           "highlight": {
             "value": {
               "_light": "colors.gengar",
-              "_dark": "colors.gengar"
+              "_dark": "colors.ultraviolet"
             }
           }
         }

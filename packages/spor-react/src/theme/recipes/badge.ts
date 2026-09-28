@@ -10,7 +10,7 @@ export const badgeRecipie = defineRecipe({
     backgroundColor: "surface",
     color: "text.core",
     outline: "1px solid",
-    outlineColor: "outline.core",
+    outlineColor: "outline",
   },
   variants: {
     size: {
@@ -67,9 +67,9 @@ export const badgeRecipie = defineRecipe({
           "& svg": { color: { _light: "cornsilk", _dark: "coffee" } },
         },
         "&[data-color='notice'], [data-color='notice'] &": {
-          backgroundColor: { _light: "wood", _dark: "champagne" },
+          backgroundColor: { _light: "coffee", _dark: "primrose" },
           color: { _light: "bisque", _dark: "wood" },
-          outlineColor: { _light: "golden", _dark: "banana" },
+          outlineColor: { _light: "mustard", _dark: "burntYellow" },
           "& svg": { color: { _light: "bisque", _dark: "wood" } },
         },
         "&[data-color='caution'], [data-color='caution'] &": {

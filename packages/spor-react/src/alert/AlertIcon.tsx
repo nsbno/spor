@@ -3,8 +3,8 @@
 import { Box } from "@chakra-ui/react";
 import {
   AltTransportFill24Icon,
+  CautionFill24Icon,
   ErrorFill24Icon,
-  ErrorOutline24Icon,
   IconComponent,
   InformationFill24Icon,
   QuestionFill24Icon,
@@ -59,7 +59,7 @@ export const BaseAlertIcon = ({ variant }: { variant: SporSemantic }) => {
       return <ErrorFill24Icon />;
     }
     case "caution": {
-      return <ErrorOutline24Icon />;
+      return <CautionFill24Icon />;
     }
     case "neutral": {
       return <QuestionFill24Icon />;

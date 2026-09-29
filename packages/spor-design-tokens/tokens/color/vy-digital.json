@@ -335,7 +335,7 @@
         "warning": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.olive",
+              "_light": "colors.coffee",
               "_dark": "colors.cornsilk"
             }
           },

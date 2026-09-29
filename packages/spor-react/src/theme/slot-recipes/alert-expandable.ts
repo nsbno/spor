@@ -17,7 +17,7 @@ export const alertExpandableSlotRecipe = defineSlotRecipe({
         bg: "surface.ghost.hover",
         outlineOffset: "0px",
         outline: "1px solid",
-        outlineColor: "outline.ghost.highlight",
+        outlineColor: "outline",
         _active: {
           bg: "surface.ghost.active",
         },

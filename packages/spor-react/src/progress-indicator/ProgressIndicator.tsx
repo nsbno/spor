@@ -20,7 +20,6 @@ export type ProgressIndicatorProps = BoxProps &
     children?: React.ReactNode;
     numberOfSteps: number;
     activeStep: number;
-    colorPalette?: string;
     css?: SystemStyleObject;
   };
 
@@ -43,6 +42,7 @@ export const ProgressIndicator = ({
   numberOfSteps,
   activeStep,
   css,
+  ...rest
 }: ProgressIndicatorProps & {
   ref?: React.Ref<HTMLDivElement>;
 }) => {
@@ -62,6 +62,7 @@ export const ProgressIndicator = ({
       aria-valuenow={activeStep}
       aria-valuetext={t(texts.stepsOf(activeStep, numberOfSteps))}
       ref={ref}
+      {...rest}
     >
       <Box css={{ ...styles.container, ...css }}>
         {Array.from({ length: numberOfSteps }, (_, index) => (

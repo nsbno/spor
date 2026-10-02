@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 3.7.0
+
+### Minor Changes
+
+- 9812e49: Add gift card icons (fill and outline, 18, 24, 30 sizes)
+
 ## 3.6.4
 
 ### Patch Changes

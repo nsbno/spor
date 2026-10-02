@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.17.0
+
+### Minor Changes
+
+- 9812e49: Add gift card icons (fill and outline, 18, 24, 30 sizes)
+
 ## 2.16.5
 
 ### Patch Changes

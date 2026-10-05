@@ -31,7 +31,7 @@ export const ColorTable = ({ name, colorKey }: Props) => {
   const colors = getFlattenedColors(colorKey);
 
   return (
-    <Table size="md" colorPalette="white">
+    <Table size="md" colorPalette="white" tableLayout="auto">
       <TableHeader>
         <TableRow>
           <TableColumnHeader>
@@ -51,7 +51,7 @@ export const ColorTable = ({ name, colorKey }: Props) => {
 
           return (
             <TableRow key={name} color="text">
-              <TableCell>
+              <TableCell maxWidth="20rem">
                 <Flex gap="3" alignItems="center" overflow="hidden">
                   <Box
                     bg={tokenValue}

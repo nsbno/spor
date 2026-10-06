@@ -472,6 +472,12 @@
             "_dark": "colors.azure"
           }
         },
+        "highlight": {
+          "value": {
+            "_light": "colors.greenHaze",
+            "_dark": "colors.azure"
+          }
+        },
         "disabled": {
           "value": {
             "_light": "colors.blackAlpha.50",
@@ -496,7 +502,7 @@
           "DEFAULT": {
             "value": {
               "_light": "colors.blackAlpha.200",
-              "_dark": "colors.whiteAlpha.200"
+              "_dark": "colors.whiteAlpha.100"
             }
           },
           "highlight": {

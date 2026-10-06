@@ -16,6 +16,8 @@ export const radioCardSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       transitionProperty: "common",
       transitionDuration: "fast",
+      outlineWidth: tokens.size.stroke.sm,
+      outlineStyle: "solid",
 
       _focusVisible: {
         outlineWidth: "2px",
@@ -24,6 +26,17 @@ export const radioCardSlotRecipe = defineSlotRecipe({
         outlineOffset: "1px",
       },
 
+      _checked: {
+        outlineColor: "outline.highlight",
+        outlineWidth: tokens.size.stroke.md,
+        outlineStyle: "solid",
+        backgroundColor: "surface.core.active",
+        _focusVisible: {
+          outlineColor: "outline.focus",
+          outlineStyle: "double",
+          outlineWidth: `calc(3 * ${tokens.size.stroke.md})`, // space for double outline
+        },
+      },
       _disabled: {
         outline: "none",
         pointerEvents: "none",
@@ -114,26 +127,11 @@ export const radioCardSlotRecipe = defineSlotRecipe({
       core: {
         item: {
           outlineColor: "outline.core",
-          outlineWidth: tokens.size.stroke.sm,
-          outlineStyle: "solid",
-
           _hover: {
-            outlineColor: "outline.core.hover",
             outlineWidth: tokens.size.stroke.md,
-            outlineStyle: "solid",
+            outlineColor: "outline.core.highlight",
             _active: {
-              backgroundColor: "surface.core.active",
               outlineWidth: tokens.size.stroke.sm,
-            },
-          },
-          _checked: {
-            outlineColor: "outline.focus",
-            outlineWidth: tokens.size.stroke.md,
-            outlineStyle: "solid",
-            backgroundColor: "surface.core.active",
-            _focusVisible: {
-              outlineStyle: "double",
-              outlineWidth: `calc(3 * ${tokens.size.stroke.md})`, // space for double outline
             },
           },
         },
@@ -142,32 +140,20 @@ export const radioCardSlotRecipe = defineSlotRecipe({
         item: {
           boxShadow: "0px 1px 3px 0px var(--shadow-color)",
           shadowColor: "surface.disabled",
-
-          border: "sm",
-          borderColor: "outline.floating",
-
+          outlineColor: "outline.floating",
           background: "surface.floating",
           _hover: {
-            background: "surface.floating.hover",
-
-            borderColor: "outline.floating.hover",
-
+            outlineColor: "outline.floating.highlight",
+            backgroundColor: "surface.floating.hover",
             boxShadow: "0px 2px 6px 0px var(--shadow-color)",
             _active: {
-              background: "surface.floating.active",
-              borderColor: "outline.neutral",
+              backgroundColor: "surface.floating.active",
               boxShadow: "none",
             },
           },
           _checked: {
-            outlineColor: "outline.focus",
-            outlineWidth: tokens.size.stroke.md,
-            outlineStyle: "solid",
-            backgroundColor: "surface.core.active",
-
-            _focusVisible: {
-              outlineStyle: "double",
-              outlineWidth: `calc(3 * ${tokens.size.stroke.md})`, // space for double outline
+            _hover: {
+              backgroundColor: "surface.floating.hover",
             },
           },
         },

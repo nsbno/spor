@@ -100,7 +100,7 @@ export const Cards = ({
     return (
       <Box
         width="100vw"
-        background="bg.brand"
+        background="bg.highlight"
         position="relative"
         left="50%"
         transform="translateX(-50%)"

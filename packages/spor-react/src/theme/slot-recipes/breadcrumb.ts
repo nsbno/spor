@@ -5,6 +5,9 @@ import { breadcrumbAnatomy } from "./anatomy";
 export const breadcrumbSlotRecipe = defineSlotRecipe({
   slots: breadcrumbAnatomy.keys(),
   base: {
+    root: {
+      color: "text",
+    },
     list: {
       display: "inline-flex",
       flexWrap: "wrap",

@@ -59,7 +59,7 @@ export const stepperSlotRecipe = defineSlotRecipe({
       },
       accent: {
         root: {
-          backgroundColor: "bg.accent",
+          backgroundColor: "surface.accent",
         },
         stepButton: {
           color: {

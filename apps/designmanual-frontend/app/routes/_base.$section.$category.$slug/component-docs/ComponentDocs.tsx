@@ -57,7 +57,7 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
             Props
           </Heading>
           <Box overflowX="auto" marginTop={3}>
-            <Table variant="core" colorPalette="grey" maxWidth="100%">
+            <Table variant="core" data-color="neutral" maxWidth="100%">
               <TableHeader>
                 <TableRow>
                   <TableColumnHeader>Name</TableColumnHeader>

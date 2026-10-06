@@ -1,6 +1,8 @@
 "use client";
 import { useControllableState } from "@chakra-ui/react";
 
+import { SporSemantic } from "@/theme/tokens/global-css";
+
 import { createTexts, Input, InputProps, useTranslation } from "..";
 import { AttachedInputs } from "./AttachedInputs";
 import { CountryCodeSelect } from "./CountryCodeSelect";
@@ -43,9 +45,11 @@ type PhoneNumberInputProps = Omit<InputProps, "value"> & {
 
 export const PhoneNumberInput = ({
   ref,
+  "data-color": dataColor,
   ...props
 }: PhoneNumberInputProps & {
   ref?: React.Ref<HTMLInputElement>;
+  "data-color"?: SporSemantic;
 }) => {
   const {
     label: externalLabel,
@@ -82,7 +86,11 @@ export const PhoneNumberInput = ({
   };
 
   return (
-    <AttachedInputs display="grid" gridTemplateColumns="1fr 10fr">
+    <AttachedInputs
+      display="grid"
+      gridTemplateColumns="1fr 10fr"
+      data-color={dataColor}
+    >
       <CountryCodeSelect
         value={[value.countryCode]}
         onValueChange={handleCountryCodeChange}
@@ -93,6 +101,7 @@ export const PhoneNumberInput = ({
         allowedCountryCodes={allowedCountryCodes}
         data-state="on"
         size={size}
+        data-color={dataColor}
       />
       <Input
         ref={ref}

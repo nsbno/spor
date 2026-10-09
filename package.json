@@ -7,6 +7,7 @@
     "build": "turbo run build",
     "test": "turbo run test --parallel",
     "dev": "turbo run dev",
+    "storybook": "turbo run storybook",
     "lint": "turbo run lint -- --max-warnings=0",
     "postinstall": "turbo run postinstall",
     "changeset": "npx changeset",
@@ -26,7 +27,7 @@
     "turbo": "^2.4.2"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.12"
   },
   "prettier": {},
   "packageManager": "pnpm@10.4.1",

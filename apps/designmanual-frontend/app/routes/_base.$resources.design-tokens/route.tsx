@@ -1,5 +1,8 @@
+import { WarningOutline24Icon } from "@vygruppen/spor-icon-react";
 import {
+  Alert,
   Box,
+  Brand,
   ClientOnly,
   Flex,
   Heading,
@@ -9,6 +12,7 @@ import {
 } from "@vygruppen/spor-react";
 
 import { useHeaderOffset } from "~/root/layout/HeaderOffsetContext";
+import { useBrand } from "~/utils/brand";
 
 import { RightSidebar } from "../_base/right-sidebar/RightSidebar";
 import { AnimationTokens } from "./AnimationTokens";
@@ -25,6 +29,7 @@ import { ZIndexTokens } from "./ZIndexTokens";
 
 export default function DesignTokensPage() {
   const headerOffset = useHeaderOffset();
+  const brand = useBrand();
 
   const fallback = (
     <Flex gap="6" flexDirection="column" display="none">
@@ -70,6 +75,20 @@ export default function DesignTokensPage() {
             <LightmodeSwitch />
           </Flex>
 
+          {brand === Brand.VyUtvikling && (
+            <Alert
+              variant="important"
+              icon={WarningOutline24Icon}
+              title="Vy Utvikling is deprecated"
+              role="status"
+              aria-live="polite"
+              marginTop={4}
+            >
+              The Vy Utvikling theme is deprecated and will be removed in a
+              future major version. Use Vy Teknologi instead.
+            </Alert>
+          )}
+
           <Separator marginBottom={8} marginTop={4} />
           <ClientOnly fallback={fallback}>
             <Stack gap={9}>
@@ -92,7 +111,6 @@ export default function DesignTokensPage() {
           position="fixed"
           overflow="auto"
           right={0}
-          paddingLeft={1}
           paddingTop={3}
           top={`${headerOffset}px`}
           transition="all .3s linear"

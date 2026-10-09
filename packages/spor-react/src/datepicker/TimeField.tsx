@@ -1,5 +1,5 @@
 "use client";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Field as ChakraField, Flex } from "@chakra-ui/react";
 import { CalendarDateTime, Time } from "@internationalized/date";
 import { useRef } from "react";
 import { AriaTimeFieldProps, useTimeField } from "react-aria";
@@ -7,6 +7,7 @@ import { DateSegment, TimeFieldState } from "react-stately";
 
 import { spor } from "@/util";
 
+import { createTexts, useTranslation } from "../i18n";
 import { DateTimeSegment } from "./DateTimeSegment";
 import { getTimestampFromTime } from "./utils";
 
@@ -23,6 +24,7 @@ type TimeFieldProps = AriaTimeFieldProps<Time> & {
 export const TimeField = ({ state, ...props }: TimeFieldProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { labelProps, fieldProps } = useTimeField(props, state, ref);
+  const { t } = useTranslation();
 
   return (
     <Box>
@@ -30,11 +32,10 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
         {...labelProps}
         htmlFor={fieldProps.id}
         marginBottom={0}
-        fontSize={["mobile.xs", "desktop.xs"]}
+        fontSize={["mobile.2xs", "desktop.2xs"]}
+        color="text.subtle"
         top={0}
         cursor="text"
-        left="50%"
-        transform="translateX(-50%)"
         position="absolute"
         paddingTop="2px"
         whiteSpace="nowrap"
@@ -43,10 +44,16 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
         maxWidth="80%"
       >
         {props.label}
+        <ChakraField.RequiredIndicator />
       </spor.label>
       <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
         {state.segments.map((segment: DateSegment, index) => (
-          <DateTimeSegment key={index} segment={segment} state={state} />
+          <DateTimeSegment
+            key={index}
+            segment={segment}
+            state={state}
+            ariaLabel={t(getAriaLabel(segment.type))}
+          />
         ))}
       </Flex>
       <input
@@ -57,3 +64,47 @@ export const TimeField = ({ state, ...props }: TimeFieldProps) => {
     </Box>
   );
 };
+
+const getAriaLabel = (segmentType: DateSegment["type"]) => {
+  switch (segmentType) {
+    case "hour": {
+      return texts.hour;
+    }
+    case "minute": {
+      return texts.minute;
+    }
+    case "second": {
+      return texts.second;
+    }
+    default: {
+      return texts.default;
+    }
+  }
+};
+
+const texts = createTexts({
+  hour: {
+    nb: "Velg time",
+    nn: "Vel time",
+    sv: "Välj timme",
+    en: "Choose hour",
+  },
+  minute: {
+    nb: "Velg minutt",
+    nn: "Vel minutt",
+    sv: "Välj minut",
+    en: "Choose minute",
+  },
+  second: {
+    nb: "Velg sekund",
+    nn: "Vel sekund",
+    sv: "Välj sekund",
+    en: "Choose second",
+  },
+  default: {
+    nb: "Velg tid",
+    nn: "Vel tid",
+    sv: "Välj tid",
+    en: "Choose time",
+  },
+});

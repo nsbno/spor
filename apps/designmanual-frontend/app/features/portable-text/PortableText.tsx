@@ -53,10 +53,15 @@ import { RichTableSerializer } from "./serializers/RichTableSerializer";
 import { TableChartSerializer } from "./serializers/TableChartSerializer";
 import { TextBlocksSerializer } from "./serializers/TextBlocksSerializer";
 import { VideoPlayerSerializer } from "./serializers/VideoPlayerSerializer";
+import { ImageBlockSquareSerializer } from "./serializers/ImageBlockSquareSerializer";
 
 const components: Partial<PortableTextReactComponents> = {
   marks: {
-    code: ({ children }) => <Code>{children}</Code>,
+    code: ({ children }) => (
+      <Code backgroundColor="surface.disabled" color="text.accent">
+        {children}
+      </Code>
+    ),
     link: ({ value, children }) => {
       const isInternal = value.href.startsWith("/");
       if (isInternal) {
@@ -166,6 +171,7 @@ const components: Partial<PortableTextReactComponents> = {
     textBlock: TextBlockSerializer,
     textBlocks: TextBlocksSerializer,
     imageBlock: ImageBlockSerializer,
+    imageBlockSquare: ImageBlockSquareSerializer,
     imageAndTextList: ImageAndTextListSerializer,
     imageCardList: ImageCardListSerializer,
     cards: CardSerializer,

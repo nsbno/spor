@@ -48,6 +48,10 @@ export const themes = {
     defaultBaseConfig,
     generateTheme(Brand.VyUtvikling),
   ),
+  [Brand.VyTeknologi]: createSystem(
+    defaultBaseConfig,
+    generateTheme(Brand.VyTeknologi),
+  ),
 };
 
 export const system = themes[Brand.VyDigital];

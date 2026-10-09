@@ -1,5 +1,116 @@
 # @vygruppen/spor-mcp-server
 
+## 2.2.5
+
+### Patch Changes
+
+- Updated dependencies [f54a9cd]
+- Updated dependencies [bafddc3]
+- Updated dependencies [c205685]
+- Updated dependencies [32d1fc4]
+  - @vygruppen/spor-react@13.8.1
+  - @vygruppen/spor-design-tokens@5.1.2
+
+## 2.2.4
+
+### Patch Changes
+
+- Updated dependencies [d5a0149]
+- Updated dependencies [988b0ad]
+- Updated dependencies [64589d0]
+  - @vygruppen/spor-react@13.8.0
+
+## 2.2.3
+
+### Patch Changes
+
+- Updated dependencies [ff28880]
+  - @vygruppen/spor-react@13.7.2
+
+## 2.2.2
+
+### Patch Changes
+
+- Updated dependencies [15a6c48]
+- Updated dependencies [e4c369c]
+- Updated dependencies [ac7ec72]
+- Updated dependencies [1272e1d]
+  - @vygruppen/spor-react@13.7.1
+
+## 2.2.1
+
+### Patch Changes
+
+- Updated dependencies [e6bfa69]
+- Updated dependencies [6d0bf57]
+- Updated dependencies [b80fda2]
+- Updated dependencies [783c84f]
+- Updated dependencies [022e894]
+- Updated dependencies [a1d5a12]
+  - @vygruppen/spor-react@13.7.0
+  - @vygruppen/spor-design-tokens@5.1.1
+
+## 2.2.0
+
+### Minor Changes
+
+- ce5b9e0: Add new VyTeknologi brand theme and deprecate VyUtvikling
+  - New `Brand.VyTeknologi` theme, usable with `<SporProvider theme={themes[Brand.VyTeknologi]}>`
+  - Three new color palettes with 12 steps each: `teal`, `pink` and `violet`, with named aliases (e.g. `grape` → `violet.900`, `moss` → `teal.700`, `jam` → `pink.800`)
+  - The existing `pink` alias (→ `red.50`) still resolves as before; the new range is available as `pink.50`–`pink.1100`
+  - `Brand.VyUtvikling` and `vyUtviklingColors` are marked as `@deprecated` — migrate to `Brand.VyTeknologi`
+  - The MCP server's `get_spor_tokens` tool now accepts `vyTeknologi` as a theme
+
+### Patch Changes
+
+- Updated dependencies [ce5b9e0]
+  - @vygruppen/spor-design-tokens@5.1.0
+  - @vygruppen/spor-react@13.6.0
+
+## 2.1.17
+
+### Patch Changes
+
+- Updated dependencies [44c4594]
+- Updated dependencies [bc0f4b4]
+- Updated dependencies [3ca4098]
+  - @vygruppen/spor-react@13.5.0
+
+## 2.1.16
+
+### Patch Changes
+
+- Updated dependencies [cc9028e]
+- Updated dependencies [4500a7b]
+  - @vygruppen/spor-design-tokens@5.0.6
+  - @vygruppen/spor-react@13.4.6
+
+## 2.1.15
+
+### Patch Changes
+
+- Updated dependencies [5b62e2e]
+  - @vygruppen/spor-react@13.4.5
+
+## 2.1.14
+
+### Patch Changes
+
+- Updated dependencies [5535288]
+  - @vygruppen/spor-react@13.4.4
+
+## 2.1.13
+
+### Patch Changes
+
+- Updated dependencies [dea15ec]
+- Updated dependencies [3426845]
+- Updated dependencies [3b905c8]
+- Updated dependencies [5aabe19]
+- Updated dependencies [dc7f5af]
+  - @vygruppen/spor-react@13.4.3
+  - @vygruppen/spor-design-tokens@5.0.5
+
 ## 2.1.12
 
 ### Patch Changes

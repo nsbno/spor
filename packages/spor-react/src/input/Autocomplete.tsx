@@ -50,6 +50,7 @@ export function Autocomplete({
   openOnClick = true,
   openOnFocus = true,
   ref,
+  size = "md",
   ...rest
 }: Props) {
   const { contains } = useFilter({ sensitivity: "base" });
@@ -114,6 +115,7 @@ export function Autocomplete({
               if (openOnFocus && filteredChildren.length > 0)
                 combobox.setOpen(true);
             }}
+            size={size}
           />
         </Combobox.Input>
         <Combobox.IndicatorGroup>

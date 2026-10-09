@@ -16,6 +16,8 @@ export const tabsSlotRecipe = defineSlotRecipe({
       gap: 0.5,
       borderRadius: "xl",
       width: "fit-content",
+      position: "relative",
+      overflow: "hidden",
     },
     trigger: {
       display: "flex",
@@ -27,6 +29,31 @@ export const tabsSlotRecipe = defineSlotRecipe({
       height: "100%",
       whiteSpace: "nowrap",
       borderRadius: "xl",
+      position: "relative",
+      ".spor-tabs__list:has(.spor-tabs__indicator) &": {
+        transition: "color 0.2s ease",
+      },
+      _selected: {
+        color: "text.brand",
+        // @ts-expect-error — valid CSS selector, not recognized by Chakra's types
+        ".spor-tabs__list:not(:has(.spor-tabs__indicator)) &[data-selected]": {
+          backgroundColor: "surface.brand",
+          _hover: {
+            backgroundColor: "surface.brand",
+          },
+        },
+      },
+    },
+    indicator: {
+      position: "absolute",
+      top: "2.5px",
+      left: 0,
+      width: "var(--width)",
+      height: "var(--height)",
+      transform: "translate(var(--x), var(--y))",
+      transition: "transform 0.2s ease, width 0.2s ease",
+      borderRadius: "xl",
+      backgroundColor: "surface.brand",
     },
   },
   variants: {
@@ -65,37 +92,31 @@ export const tabsSlotRecipe = defineSlotRecipe({
         list: {
           color: "text.core",
           border: "sm",
+          borderColor: "outline",
         },
         trigger: {
           color: "text.core",
           border: "md",
           borderColor: "transparent",
-          _hover: {
-            outline: "2px solid",
-            outlineColor: "outline.core.hover",
-            outlineOffset: "-2px",
-          },
-          _active: {
-            backgroundColor: "surface.brand.active",
-            color: "text.brand",
-            outline: "none",
-          },
-          _selected: {
-            backgroundColor: "surface.brand",
-            color: "text.brand",
+          "&:not([data-selected])": {
             _hover: {
-              outline: "none",
+              backgroundColor: "surface.ghost.hover",
+              _active: {
+                backgroundColor: "surface.ghost.active",
+                outline: "none",
+                outlineColor: "transparent",
+              },
             },
           },
-          _disabled: {
-            backgroundColor: "surface.disabled",
-            color: "surface.disabled",
-          },
+        },
+        _disabled: {
+          backgroundColor: "surface.disabled",
+          color: "surface.disabled",
         },
       },
       accent: {
         list: {
-          backgroundColor: "bg.accent",
+          backgroundColor: "surface.accent",
           color: "text.accent",
         },
         trigger: {
@@ -105,22 +126,17 @@ export const tabsSlotRecipe = defineSlotRecipe({
             backgroundColor: "surface.disabled",
             color: "icon.disabled",
           },
-          _hover: {
-            backgroundColor: "surface.accent.hover",
-            _active: {
-              backgroundColor: "surface.brand.active",
-              color: "text.brand",
-            },
-          },
-          _selected: {
-            backgroundColor: "surface.brand",
-            color: "text.brand",
+          "&:not([data-selected])": {
             _hover: {
-              backgroundColor: "surface.brand.hover",
-              color: "text.brand",
-              outline: "none",
+              backgroundColor: "surface.accent.hover",
+              _active: {
+                backgroundColor: "surface.accent.active",
+              },
             },
           },
+        },
+        indicator: {
+          backgroundColor: "surface.brand",
         },
       },
     },
@@ -133,6 +149,9 @@ export const tabsSlotRecipe = defineSlotRecipe({
         trigger: {
           paddingX: 2,
           paddingY: 0,
+        },
+        indicator: {
+          top: "1px",
         },
       },
       sm: {
@@ -163,10 +182,6 @@ export const tabsSlotRecipe = defineSlotRecipe({
           fontWeight: "bold",
           fontSize: "sm",
           paddingX: 3,
-          _focus: {
-            border: "md",
-            borderColor: "surface.accent",
-          },
         },
       },
     },

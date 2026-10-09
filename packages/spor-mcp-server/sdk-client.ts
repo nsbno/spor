@@ -41,6 +41,9 @@ async function main() {
       '  node sdk-client.js get_spor_tokens \'{"theme":"vyUtvikling"}\'',
     );
     console.log(
+      '  node sdk-client.js get_spor_tokens \'{"theme":"vyTeknologi"}\'',
+    );
+    console.log(
       '  node sdk-client.js get_spor_tokens \'{"theme":"cargonet"}\'',
     );
     await client.close();

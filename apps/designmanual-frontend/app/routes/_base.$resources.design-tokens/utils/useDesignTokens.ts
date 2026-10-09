@@ -22,6 +22,9 @@ const useGetThemeColorTokens = () => {
     case Brand.VyUtvikling: {
       return tokensJSON.color.vyUtvikling;
     }
+    case Brand.VyTeknologi: {
+      return tokensJSON.color.vyTeknologi;
+    }
     default: {
       return tokensJSON.color.vyDigital;
     }

@@ -159,6 +159,7 @@ export const radioCardAnatomy = createAnatomy("radio-card").parts(
   "itemDescription",
   "itemContent",
   "itemControl",
+  "itemIndicator",
 );
 
 export const radioAnatomy = createAnatomy("radio").parts(

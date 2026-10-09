@@ -33,10 +33,12 @@ type ComponentDocsProps = {
   component: Component;
 };
 export const ComponentDocs = ({ component }: ComponentDocsProps) => {
-  const visibleProps = component.props?.filter((property) => {
-    const platform = property.platform ?? "react, react-native";
-    return platform.split(", ").includes("react");
-  });
+  const visibleProps = component.props
+    ?.filter((property) => {
+      const platform = property.platform ?? "react, react-native";
+      return platform.split(", ").includes("react");
+    })
+    ?.toSorted((a, b) => a.name.localeCompare(b.name));
   return (
     <Box key={component.name} as="section" marginBottom={9}>
       <LinkableHeading as="h3" variant="sm" marginBottom={1}>

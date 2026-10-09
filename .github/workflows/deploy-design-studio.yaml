@@ -1,9 +1,15 @@
 name: "Deploy Design Studio 🎨"
 
 on:
+  workflow_dispatch:
+
   push:
     branches:
       - main
+
+concurrency:
+  group: deploy-design-studio
+  cancel-in-progress: false
 
 jobs:
   deploy-studio:
@@ -12,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [22.x]
 
     steps:
       - uses: actions/checkout@v4
@@ -33,6 +39,6 @@ jobs:
         run: pnpm --filter "@vygruppen/designmanual^..." build
 
       - name: Deploy Studio
-        run: pnpm --filter @vygruppen/designmanual deploy
+        run: pnpm --filter @vygruppen/designmanual run deploy
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}

@@ -13,10 +13,9 @@ export const Footer = () => {
       backgroundColor="surface.subtle"
       className="dark"
       alignItems="center"
-      marginTop={4}
+      marginTop={10}
       padding={{ base: 4, md: 7 }}
       width="100%"
-      zIndex="banner"
       justifyContent="space-between"
     >
       <Box alignSelf="center">
@@ -56,7 +55,7 @@ export const Footer = () => {
             icon={<GithubOutline18Icon />}
           />
           <FooterLink
-            url="https://www.figma.com/design/Tmr2URVX2vNkyRLqKhNRQA/Spor-komponentbibliotek?node-id=0-1&p=f&m=dev"
+            url="https://www.figma.com/@vy_spor"
             label="Figma"
             icon={<FigmaOutline18Icon />}
           />
@@ -79,7 +78,12 @@ const FooterLink = ({
   label: string;
   icon?: React.ReactNode;
 }) => (
-  <Button variant="tertiary" size={{ base: "xs", md: "sm" }} leftIcon={icon}>
+  <Button
+    variant="tertiary"
+    size={{ base: "xs", md: "sm" }}
+    leftIcon={icon}
+    asChild
+  >
     <Link to={url} target="_blank" rel="noopener noreferrer">
       {label}
     </Link>

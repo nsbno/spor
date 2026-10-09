@@ -34,10 +34,10 @@ export const Radio = ({
 }: RadioProps & {
   ref?: React.Ref<HTMLInputElement>;
 }) => {
-  const { children, inputProps, rootRef, ...rest } = props;
+  const { children, inputProps, rootRef, invalid, ...rest } = props;
 
   return (
-    <ChakraRadioGroup.Item ref={rootRef} {...rest}>
+    <ChakraRadioGroup.Item ref={rootRef} {...rest} aria-invalid={invalid}>
       <ChakraRadioGroup.ItemHiddenInput ref={ref} {...inputProps} />
       <ChakraRadioGroup.ItemIndicator />
       {children && (

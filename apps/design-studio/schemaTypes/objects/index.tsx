@@ -33,3 +33,4 @@ export * from "./textBlock";
 export * from "./textBlocks";
 export * from "./tipsPanel";
 export * from "./videoBlock";
+export * from "./imageBlockSquare";

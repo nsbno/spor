@@ -23,6 +23,9 @@ export const dialogSlotRecipe = defineSlotRecipe({
         animationName: "fade-out",
         animationDuration: "moderate",
       },
+      "&:has(~ [data-part='positioner'] [aria-modal='false'])": {
+        background: "transparent",
+      },
     },
     positioner: {
       display: "flex",

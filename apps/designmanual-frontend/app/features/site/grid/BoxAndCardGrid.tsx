@@ -1,4 +1,5 @@
 import { Grid, GridItem } from "@vygruppen/spor-react";
+import { JSX } from "react";
 
 import type { ImageSize } from "~/features/portable-text/components/ResponsiveImage";
 
@@ -47,9 +48,9 @@ export function BoxAndCardGrid({
   if (gridItems.length === 2 || gridItems.length === 4) {
     return (
       <GridContainer spacingSize={spacingSize}>
-        {gridItems.map((gridItem) => (
+        {gridItems.map((gridItem, index) => (
           <GridItem
-            key={gridItem.key}
+            key={gridItem.key ?? index}
             colSpan={
               cardSize === "sm"
                 ? { base: 3, sm: 2, lg: 3 }
@@ -65,9 +66,9 @@ export function BoxAndCardGrid({
 
   return (
     <GridContainer spacingSize={spacingSize}>
-      {gridItems.map((gridItem) => (
+      {gridItems.map((gridItem, index) => (
         <GridItem
-          key={gridItem.key}
+          key={gridItem.key ?? index}
           colSpan={
             cardSize === "sm"
               ? { base: 3, sm: 2, lg: 3 }

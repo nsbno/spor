@@ -13,6 +13,8 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       display: "flex",
       flex: 1,
       paddingY: 0.5,
+      paddingX: 2,
+      gap: 1.5,
       alignItems: "center",
       _hover: {
         zIndex: "docked",
@@ -80,6 +82,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       boxShadow: "md",
       backgroundColor: "surface.floating",
       minHeight: "min-content",
+      maxWidth: "100vw",
     },
     rangeCalendarPopover: {
       width: "43rem",
@@ -236,8 +239,23 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         },
       },
     },
+    size: {
+      sm: {
+        wrapper: {
+          fontSize: ["mobile.xs", "desktop.xs"],
+          paddingX: 1,
+          gap: 1,
+        },
+      },
+      md: {
+        wrapper: {
+          fontSize: ["mobile.sm", "desktop.sm"],
+        },
+      },
+    },
   },
   defaultVariants: {
     variant: "core",
+    size: "md",
   },
 });

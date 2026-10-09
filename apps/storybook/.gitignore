@@ -1,0 +1,11 @@
+storybook-static/
+
+# Ignore Storybook local performance and compilation cache
+.storybook/cache/
+.cache/
+
+# Ignore diagnostic and auto-migration logs
+*storybook.log
+build-storybook.log
+automigrate-storybook.log
+doctor-storybook.log

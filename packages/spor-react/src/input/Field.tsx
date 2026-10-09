@@ -121,23 +121,21 @@ export const Field = ({
         gap={gap}
       >
         {label && !floatingLabel && (
-          <Label asChild={labelAsChild} aria-hidden css={styles.label}>
+          <Label asChild={labelAsChild} css={styles.label}>
             {renderLabelWithIndicator(label, labelAsChild)}
           </Label>
         )}
-
-        {children}
 
         {label && floatingLabel && (
           <FloatingLabel
             data-float={shouldFloat ? true : undefined}
             asChild={labelAsChild}
-            aria-hidden
             css={styles.label}
           >
             {renderLabelWithIndicator(label, labelAsChild)}
           </FloatingLabel>
         )}
+        {children}
         {errorText && (
           <ChakraField.ErrorText aria-live="polite">
             {errorText}

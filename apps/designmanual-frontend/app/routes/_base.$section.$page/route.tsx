@@ -11,6 +11,7 @@ import {
   resolveFileListGroq,
   resolveImageAndTextListGroq,
   resolveImageBlockGroq,
+  resolveImageBlockSquareGroq,
   resolveImageCardListGroq,
   resolveLinkButtonGroq,
   resolveNonClickableBoxListGroq,
@@ -40,6 +41,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
       ...,
       ${resolveImageCardListGroq()},
       ${resolveImageBlockGroq()},
+      ${resolveImageBlockSquareGroq()},
       ${resolveTextBlocksGroq()},
       ${resolveImageAndTextListGroq()},
       ${resolveArticleHeaderGroq()},
@@ -92,7 +94,6 @@ export default function Index() {
           position="fixed"
           overflow="auto"
           right={0}
-          paddingLeft={1}
           paddingTop={3}
           top={`${headerOffset}px`}
           transition="all .3s linear"

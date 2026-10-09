@@ -56,6 +56,7 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
  * A date picker component.
  *
  * There are three different variants –`core`, `floating` and `ghost`.
+ * There are two different sizes - `sm` and `md`
  *
  * ```tsx
  * <DatePicker label="Dato" variant="core" />
@@ -65,6 +66,7 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
 export const DatePicker = ({
   ref: externalRef,
   variant,
+  size,
   errorText,
   minHeight,
   showYearNavigation,
@@ -93,6 +95,18 @@ export const DatePicker = ({
   const { labelProps, fieldProps, buttonProps, dialogProps, calendarProps } =
     useDatePicker(props, state, ref as React.MutableRefObject<HTMLDivElement>);
 
+  const focusCalendarTrigger = () => {
+    (ref as React.RefObject<HTMLElement>).current?.focus();
+  };
+
+  const calendarPropsWithFocus = {
+    ...calendarProps,
+    onChange: (value: DateValue) => {
+      calendarProps.onChange?.(value);
+      focusCalendarTrigger();
+    },
+  };
+
   const inputGroupId = `input-group-${useId()}`;
 
   const recipe = useSlotRecipe({
@@ -115,9 +129,9 @@ export const DatePicker = ({
   const popoverContent = (
     <ChakraPopover.Positioner>
       <ChakraPopover.Content css={styles.calendarPopover}>
-        <ChakraPopover.Body minWidth="20rem">
+        <ChakraPopover.Body minWidth="18rem">
           <Calendar
-            {...calendarProps}
+            {...calendarPropsWithFocus}
             variant={variant}
             showYearNavigation={showYearNavigation}
             css={css}
@@ -136,7 +150,13 @@ export const DatePicker = ({
         width={width}
         css={css}
       >
-        <ChakraPopover.Root {...dialogProps} positioning={positioning}>
+        <ChakraPopover.Root
+          positioning={positioning}
+          onOpenChange={({ open }) => {
+            if (!open) focusCalendarTrigger();
+          }}
+          {...dialogProps}
+        >
           <Field
             display="inline-flex"
             id={inputGroupId}
@@ -144,12 +164,13 @@ export const DatePicker = ({
             invalid={invalid}
             helperText={helperText}
             required={props.required}
+            size={size}
           >
             <PopoverAnchor>
               <StyledField
                 variant={variant}
+                size={size}
                 onClick={onFieldClick}
-                paddingX={3}
                 minHeight={minHeight}
                 isDisabled={props.isDisabled}
                 isActive={props.isActive}
@@ -162,8 +183,7 @@ export const DatePicker = ({
                 ) : (
                   <ChakraPopover.Trigger asChild>
                     <CalendarTriggerButton
-                      paddingLeft={1}
-                      paddingRight={1}
+                      marginLeft={1}
                       variant={variant}
                       ref={ref}
                       {...buttonProps}

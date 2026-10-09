@@ -1,5 +1,97 @@
 # @vygruppen/spor-codemods
 
+## 1.1.23
+
+### Patch Changes
+
+- Updated dependencies [f54a9cd]
+- Updated dependencies [bafddc3]
+- Updated dependencies [c205685]
+  - @vygruppen/spor-react@13.8.1
+
+## 1.1.22
+
+### Patch Changes
+
+- Updated dependencies [d5a0149]
+- Updated dependencies [988b0ad]
+- Updated dependencies [64589d0]
+  - @vygruppen/spor-react@13.8.0
+
+## 1.1.21
+
+### Patch Changes
+
+- Updated dependencies [ff28880]
+  - @vygruppen/spor-react@13.7.2
+
+## 1.1.20
+
+### Patch Changes
+
+- Updated dependencies [15a6c48]
+- Updated dependencies [e4c369c]
+- Updated dependencies [ac7ec72]
+- Updated dependencies [1272e1d]
+  - @vygruppen/spor-react@13.7.1
+
+## 1.1.19
+
+### Patch Changes
+
+- Updated dependencies [e6bfa69]
+- Updated dependencies [6d0bf57]
+- Updated dependencies [b80fda2]
+- Updated dependencies [022e894]
+- Updated dependencies [a1d5a12]
+  - @vygruppen/spor-react@13.7.0
+
+## 1.1.18
+
+### Patch Changes
+
+- Updated dependencies [ce5b9e0]
+  - @vygruppen/spor-react@13.6.0
+
+## 1.1.17
+
+### Patch Changes
+
+- Updated dependencies [44c4594]
+- Updated dependencies [bc0f4b4]
+- Updated dependencies [3ca4098]
+  - @vygruppen/spor-react@13.5.0
+
+## 1.1.16
+
+### Patch Changes
+
+- Updated dependencies [4500a7b]
+  - @vygruppen/spor-react@13.4.6
+
+## 1.1.15
+
+### Patch Changes
+
+- Updated dependencies [5b62e2e]
+  - @vygruppen/spor-react@13.4.5
+
+## 1.1.14
+
+### Patch Changes
+
+- Updated dependencies [5535288]
+  - @vygruppen/spor-react@13.4.4
+
+## 1.1.13
+
+### Patch Changes
+
+- Updated dependencies [dea15ec]
+- Updated dependencies [3426845]
+- Updated dependencies [dc7f5af]
+  - @vygruppen/spor-react@13.4.3
+
 ## 1.1.12
 
 ### Patch Changes

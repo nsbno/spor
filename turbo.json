@@ -18,6 +18,10 @@
     },
     "postinstall": {
       "dependsOn": ["@vygruppen/spor-design-tokens#build"]
+    },
+    "storybook": {
+      "cache": false,
+      "persistent": true
     }
   }
 }

@@ -95,7 +95,7 @@ export const ResponsiveImage = ({
     : {};
 
   return (
-    <Box width="100%">
+    <Box width="100%" height={props.height}>
       <picture>
         <source
           media={`(min-width: ${tokens.size.breakpoint.xl})`}

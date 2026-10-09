@@ -60,6 +60,18 @@ export const radioGroupSlotRecipe = defineSlotRecipe({
           backgroundColor: "outline.disabled",
         },
       },
+      _invalid: {
+        borderColor: "outline.error",
+        "& .dot": {
+          backgroundColor: "outline.error",
+        },
+        _hover: {
+          borderColor: "outline.error",
+          "& .dot": {
+            backgroundColor: "outline.error",
+          },
+        },
+      },
       _focusVisible: {
         outlineWidth: "2px",
         outlineColor: "outline.focus",

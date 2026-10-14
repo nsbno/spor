@@ -20,7 +20,7 @@
         "value": "#D8F1F4"
       },
       "fjerntog": {
-        "value": "#325D93"
+        "value": "#123DA0"
       },
       "fjerntogLight": {
         "value": "#DCE4EF"
@@ -44,19 +44,19 @@
         "value": "#EBEBEC"
       },
       "ferge": {
-        "value": "#965F96"
+        "value": "#8835A5"
       },
       "fergeLight": {
         "value": "#F0DDF0"
       },
       "trikk": {
-        "value": "#3998DC"
+        "value": "#0392F1"
       },
       "trikkLight": {
         "value": "#D9EDFB"
       },
       "tbane": {
-        "value": "#FF8200"
+        "value": "#E77300"
       },
       "tbaneLight": {
         "value": "#FFE6CC"

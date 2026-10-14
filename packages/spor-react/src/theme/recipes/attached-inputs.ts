@@ -11,7 +11,6 @@ export const attachedInputsRecipe = defineRecipe({
 
     "& > *": {
       position: "relative",
-      zIndex: 100,
     },
     "& > *:focus-within": {
       zIndex: 101,

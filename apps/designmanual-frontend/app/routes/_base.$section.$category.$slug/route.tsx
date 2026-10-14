@@ -1,6 +1,5 @@
 import { PortableTextBlock } from "@portabletext/react";
 import { groq } from "@sanity/groq-store";
-import { sidesporConfig } from "@vygruppen/sidespor-config";
 import { LinkOutOutline18Icon } from "@vygruppen/spor-icon-react";
 import {
   Badge,
@@ -75,7 +74,6 @@ type ComponentSection = {
 
 export const extendedSystemConfigWithSidespor = createSystem(
   themes.VyDigital._config,
-  sidesporConfig,
 );
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {

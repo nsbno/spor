@@ -172,9 +172,6 @@ importers:
       '@vercel/stega':
         specifier: ^1.0.0
         version: 1.1.0
-      '@vygruppen/sidespor-config':
-        specifier: workspace:*
-        version: link:../../packages/sidespor-config
       '@vygruppen/spor-codemods':
         specifier: workspace:*
         version: link:../../packages/spor-codemods
@@ -442,15 +439,6 @@ importers:
       typescript-eslint:
         specifier: ^8.47.0
         version: 8.47.0(eslint@9.39.1(jiti@2.7.0))(typescript@5.9.3)
-
-  packages/sidespor-config:
-    devDependencies:
-      '@vygruppen/spor-react':
-        specifier: workspace:*
-        version: link:../spor-react
-      tsup:
-        specifier: ^8.5.1
-        version: 8.5.1(jiti@2.7.0)(postcss@8.5.16)(tsx@4.22.4)(typescript@5.9.3)(yaml@2.9.0)
 
   packages/spor-codemods:
     dependencies:

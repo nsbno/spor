@@ -1,6 +1,6 @@
 # @vygruppen/spor-codemods
 
-Codemods for automatically migrating Spor code to newer versions. This package uses [jscodeshift](https://github.com/facebook/jscodeshift) to transform your codebase.
+Codemods are code modifications scripts for automatically migrating Spor code to newer versions. This package uses [jscodeshift](https://github.com/facebook/jscodeshift) to transform your codebase.
 
 ## Installation
 
@@ -18,66 +18,25 @@ The easiest way to use codemods is through the CLI:
 npx spor-codemod <transform> <path> [options]
 ```
 
-### Programmatic API
-
-You can also use codemods programmatically in Node.js:
-
-```typescript
-import { runTransform } from "@vygruppen/spor-codemods";
-
-// Run a transform
-await runTransform("color-tokens", {
-  paths: ["src/"],
-  dry: true, // Preview changes without writing
-});
-
-// Run with custom options
-await runTransform("color-tokens", {
-  paths: ["src/components/", "src/pages/"],
-  verbose: true,
-  extensions: ["tsx", "ts"],
-});
-```
-
-**Available functions:**
-
-- `runTransform(transform, options)` - Run a codemod transform
-- `getAvailableTransforms()` - Get list of available transform names
-- `getTransformPath(transform)` - Get the file path for a transform
-
-**TypeScript types:**
-
-```typescript
-import type {
-  TransformName,
-  TransformOptions,
-  Transform,
-  API,
-  FileInfo,
-} from "@vygruppen/spor-codemods";
-```
-
-### Available Transforms
-
-#### `color-tokens`
-
-Migrates old color token names to the new naming convention.
+run `npx spor-codemod --help` for more information.
 
 **Example:**
 
 ```bash
-# Transform a single file
-npx spor-codemod color-tokens src/App.tsx
-
 # Transform an entire directory
 npx spor-codemod color-tokens src/
-
-# Dry run to preview changes
-npx spor-codemod color-tokens src/ --dry
-
-# Print transformed output
-npx spor-codemod color-tokens src/Component.tsx --print
 ```
+
+## Available Transforms
+
+There are currently two codemods available.
+
+1. color-tokens
+2. data-color
+
+### `color-tokens`
+
+Migrates old color token names to the new naming convention. Can be used after upgrading the `spor-design-tokens` package from major-version 4 to 5.
 
 **What it does:**
 
@@ -90,6 +49,30 @@ Replaces old color tokens with their new equivalents:
 - And many more...
 
 See the [full token mapping](./transforms/color-tokens.js) for all transformations.
+
+### `data-color`
+
+Migrates the `spor-design-tokens` package from major version 5 to major version 6, and the `spor-react` package from major version 13 to major version 14.
+
+Replaces old color tokens with their new equivalents:
+
+- `bg.brand` → `bg.highlight`
+- `outline.*.hover` → `outline.*.highlight`
+
+Replace colorpalette in Badge and StaticCard, and variant in Alert with the use of data-color:
+
+- `<Alert variant="info" />` → `<Alert data-color="info" />`
+- `<Badge colorPalette="red" />` → `<Badge data-color="critical" />`
+- `<StaticCard colorPalette="green" />` → `<StaticCard data-color="success" />`
+- And more...
+
+## Options
+
+- `--dry` - Dry run (no files are changed)
+- `--print` - Print transformed output
+- `--silent` - No output
+- `--extensions=<extensions>` - File extensions to transform (example: tsx,ts,jsx,js)
+- `--ignore-pattern '<pattern>'` - Ignore files with pattern (example: '**/node_modules/**')
 
 ### Advanced Usage
 
@@ -105,14 +88,6 @@ npx spor-codemod color-tokens src/ --silent
 # Process files in parallel (faster for large codebases)
 npx spor-codemod color-tokens src/ --run-in-band
 ```
-
-## Options
-
-- `--dry` - Dry run (no files are changed)
-- `--print` - Print transformed output
-- `--silent` - No output
-- `--extensions=<extensions>` - File extensions to transform (example: tsx,ts,jsx,js)
-- `--ignore-pattern '<pattern>'` - Ignore files with pattern (example: '**/node_modules/**')
 
 ## Tips
 

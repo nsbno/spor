@@ -17,8 +17,10 @@
   "scripts": {
     "build": "tsup"
   },
-  "devDependencies": {
-    "tsup": "^8.5.1",
+  "dependencies": {
     "@vygruppen/spor-react": "workspace:*"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1"
   }
 }

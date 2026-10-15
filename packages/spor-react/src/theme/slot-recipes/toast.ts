@@ -33,7 +33,7 @@ export const toastSlotRecipe = defineSlotRecipe({
         backgroundColor: "surface.success",
         outlineColor: "outline.success",
       },
-      "&[data-type=error]": {
+      "&[data-type=critical]": {
         backgroundColor: "surface.critical",
         outlineColor: "outline.critical",
       },
@@ -53,7 +53,7 @@ export const toastSlotRecipe = defineSlotRecipe({
           fill: { _light: "darkTeal", _dark: "seaMist" },
         },
       },
-      "&[data-inverted][data-type=error]": {
+      "&[data-inverted][data-type=critical]": {
         backgroundColor: { _light: "burgundy", _dark: "lightRed" },
         color: { _light: "pink", _dark: "maroon" },
         outlineColor: { _light: "crimson", _dark: "salmon" },

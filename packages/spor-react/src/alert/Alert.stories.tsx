@@ -15,19 +15,21 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const variants = [
-  "info",
-  "important",
-  "alt",
-  "error",
-  "error-secondary",
   "success",
+  "info",
+  "warning",
+  "caution",
+  "critical",
+  "neutral",
+  "notice",
+  "service",
 ] as const;
 
 export const Overview: Story = {
   render: () => (
     <Flex gap={2} direction="column">
       {variants.map((variant) => (
-        <Alert key={variant} variant={variant} title={variant}>
+        <Alert key={variant} data-color={variant} title={variant}>
           Example of the {variant} alert variant.
         </Alert>
       ))}

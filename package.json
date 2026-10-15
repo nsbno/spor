@@ -34,7 +34,6 @@
   "pnpm": {
     "overrides": {
       "fast-xml-parser": "^5.3.5",
-      "typescript": "^5.9.3",
       "@types/react": "19.2.3"
     },
     "patchedDependencies": {

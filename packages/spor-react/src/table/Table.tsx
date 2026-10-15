@@ -252,6 +252,7 @@ export type ExpandableTableRowProps = PropsWithChildren<{
   defaultOpen?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  "data-color"?: string;
   ref?: React.Ref<HTMLTableRowElement>;
 }>;
 
@@ -261,10 +262,12 @@ export const ExpandableTableRow = ({
   defaultOpen = false,
   open: openProperty,
   onOpenChange,
+  "data-color": rowDataColor,
   ref,
 }: ExpandableTableRowProps) => {
   const styles = useTableStyles();
-  const { rowDataColor } = useContext(RowContext);
+  const { dataColor } = useTableSort();
+  const color = rowDataColor ?? dataColor;
   const [isOpen, setIsOpen] = useState(openProperty ?? defaultOpen);
   const columnCount = Children.count(children);
   const { size } = useTableSize();
@@ -278,15 +281,16 @@ export const ExpandableTableRow = ({
   };
 
   return (
-    <>
+    <RowContext.Provider value={{ rowDataColor: color }}>
       <ExpandableRowContext.Provider value={{ open: isOpen, onToggle }}>
         <ChakraTable.Row
           ref={ref}
           data-part="expandable-trigger"
           data-state={isOpen ? "open" : "closed"}
+          data-color={color}
           css={styles.expandableTrigger}
         >
-          <ChakraTable.Cell>
+          <TableCell>
             <Button
               variant="ghost"
               size="xs"
@@ -299,26 +303,27 @@ export const ExpandableTableRow = ({
                 transition="transform 0.2s"
               />
             </Button>
-          </ChakraTable.Cell>
+          </TableCell>
           {children}
         </ChakraTable.Row>
       </ExpandableRowContext.Provider>
       <ChakraTable.Row
         data-part="expandable-content"
         data-state={isOpen ? "open" : "closed"}
+        data-color={color}
         css={styles.expandableContent}
       >
-        <ChakraTable.Cell
+        <TableCell
           data-part="expandable-content-marker"
           css={styles.expandableContentMarker}
         />
-        <ChakraTable.Cell colSpan={columnCount}>
+        <TableCell colSpan={columnCount}>
           <Collapsible.Root open={isOpen}>
             <Collapsible.Content>{content}</Collapsible.Content>
           </Collapsible.Root>
-        </ChakraTable.Cell>
+        </TableCell>
       </ChakraTable.Row>
-    </>
+    </RowContext.Provider>
   );
 };
 export type TableCellProps = ChakraTableCellProps & {

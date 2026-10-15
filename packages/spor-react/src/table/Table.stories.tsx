@@ -77,6 +77,8 @@ const sampleRows = [
   },
 ];
 
+const dataColors = ["info", "warning", "alert", "critical"];
+
 export const Default: Story = {
   render: (arguments_) => (
     <Table {...arguments_}>
@@ -91,6 +93,38 @@ export const Default: Story = {
       <TableBody>
         {sampleRows.map((row, index) => (
           <TableRow key={index}>
+            <TableCell>{row.destination}</TableCell>
+            <TableCell>{row.departure}</TableCell>
+            <TableCell>{row.arrival}</TableCell>
+            <TableCell>{row.price}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+      <TableFooter>
+        <TableRow>
+          <TableCell>Footer</TableCell>
+          <TableCell>Footer</TableCell>
+          <TableCell>Footer</TableCell>
+          <TableCell>Footer</TableCell>
+        </TableRow>
+      </TableFooter>
+    </Table>
+  ),
+};
+export const DataColors: Story = {
+  render: (arguments_) => (
+    <Table {...arguments_}>
+      <TableHeader>
+        <TableRow>
+          <TableColumnHeader>Destination</TableColumnHeader>
+          <TableColumnHeader>Departure</TableColumnHeader>
+          <TableColumnHeader>Arrival</TableColumnHeader>
+          <TableColumnHeader>Price</TableColumnHeader>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {sampleRows.map((row, index) => (
+          <TableRow key={index} data-color={dataColors[index]}>
             <TableCell>{row.destination}</TableCell>
             <TableCell>{row.departure}</TableCell>
             <TableCell>{row.arrival}</TableCell>
@@ -370,15 +404,56 @@ export const Expandable: Story = {
             <TableCell>{row.price}</TableCell>
           </ExpandableTableRow>
         ))}
-        {/* {sampleRows.map((row, index) => (
-          <TableRow key={index}>
-            <TableCell />
-            <TableCell>{row.destination}</TableCell>
-            <TableCell>{row.departure}</TableCell>
-            <TableCell>{row.arrival}</TableCell>
-            <TableCell>{row.price}</TableCell>
-          </TableRow>
-        ))} */}
+      </TableBody>
+    </Table>
+  ),
+};
+
+export const ExpandableWithDataColor: Story = {
+  render: (arguments_) => (
+    <Table {...arguments_}>
+      <TableHeader>
+        <TableRow>
+          <TableColumnHeader data-nosort />
+          <TableColumnHeader>Destination</TableColumnHeader>
+          <TableColumnHeader>Departure</TableColumnHeader>
+          <TableColumnHeader>Arrival</TableColumnHeader>
+          <TableColumnHeader>Price</TableColumnHeader>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {sampleRows.map((row, index) => (
+          <ExpandableTableRow
+            data-color={dataColors[index]}
+            content={
+              <HStack justifyContent="space-between">
+                <Text>Valgfritt innhold</Text>
+              </HStack>
+            }
+            key={index}
+          >
+            <TableCell
+              data-color={index === 0 ? dataColors.toReversed()[index] : null}
+            >
+              {row.destination}
+            </TableCell>
+            <TableCell
+              data-color={index === 1 ? dataColors.toReversed()[index] : null}
+            >
+              {row.departure}
+            </TableCell>
+            <TableCell
+              data-color={index === 2 ? dataColors.toReversed()[index] : null}
+            >
+              {row.arrival}
+            </TableCell>
+            <TableCell
+              data-color={index === 3 ? dataColors.toReversed()[index] : null}
+            >
+              {row.price}
+            </TableCell>
+          </ExpandableTableRow>
+        ))}
       </TableBody>
     </Table>
   ),

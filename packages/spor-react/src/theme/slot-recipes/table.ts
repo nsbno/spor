@@ -45,6 +45,7 @@ export const tableSlotRecipe = defineSlotRecipe({
     },
     cell: {
       ...numericStyles,
+      color: "text"
     },
 
     expandableContent: {
@@ -118,6 +119,11 @@ export const tableSlotRecipe = defineSlotRecipe({
             "& td:last-of-type": {
               borderBottomRightRadius: "xs",
             },
+          },
+        },
+        cell: {
+          "&[data-color]": {
+            backgroundColor: "surface.accent",
           },
         },
         expandableTrigger: {
@@ -238,6 +244,11 @@ export const tableSlotRecipe = defineSlotRecipe({
           borderColor: "outline",
           [`${rowHover} td`]: {
             backgroundColor: "surface.ghost.hover",
+          },
+        },
+        cell: {
+          "&[data-color]": {
+            backgroundColor: "surface.accent",
           },
         },
         expandableTrigger: {

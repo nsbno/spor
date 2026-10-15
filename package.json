@@ -30,11 +30,5 @@
     "node": ">=22.12"
   },
   "prettier": {},
-  "packageManager": "pnpm@10.4.1",
-  "pnpm": {
-    "overrides": {
-      "fast-xml-parser": "5.11.2",
-      "@types/react": "19.2.3"
-    }
-  }
+  "packageManager": "pnpm@12.10.1"
 }

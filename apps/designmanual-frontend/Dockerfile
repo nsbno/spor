@@ -60,6 +60,9 @@ RUN pnpm --filter @vygruppen/designmanual-frontend... build
 FROM base AS final
 
 ENV NODE_ENV=production
+# pnpm 12 checks node_modules against the lockfile before "pnpm start" and reinstalls on a mismatch.
+# This image only has production dependencies, so without this it runs a full install at startup.
+ENV pnpm_config_verify_deps_before_run=false
 
 RUN mkdir /app
 WORKDIR /app

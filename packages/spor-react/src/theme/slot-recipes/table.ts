@@ -79,29 +79,6 @@ export const tableSlotRecipe = defineSlotRecipe({
       },
       false: {},
     },
-    colorPalette: {
-      green: {
-        header: {
-          backgroundColor: "bg.brand",
-        },
-        columnHeader: {
-          color: "text.highlight",
-        },
-      },
-      grey: {
-        columnHeader: {
-          backgroundColor: "surface.disabled",
-          _hover: {
-            backgroundColor: "surface.disabled",
-          },
-        },
-      },
-      white: {
-        columnHeader: {
-          color: "text",
-        },
-      },
-    },
     variant: {
       accent: {
         root: {

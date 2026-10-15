@@ -59,7 +59,7 @@ const TableSizeContext = createContext<{ size: "lg" | "md" | "sm" }>({
 export const useTableSort = () => useContext(SortContext);
 const useTableSize = () => useContext(TableSizeContext);
 
-export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
+export type TableProps = Exclude<ChakraTableProps, "variant"> &
   PropsWithChildren<TableVariantProps> & {
     sortable?: boolean;
     disableHover?: boolean;
@@ -69,7 +69,6 @@ export type TableProps = Exclude<ChakraTableProps, "variant" | "colorPalette"> &
 export const Table = ({
   variant = "ghost",
   size = "md",
-  colorPalette,
   children,
   sortable = false,
   striped = false,
@@ -95,7 +94,6 @@ export const Table = ({
       variant={variant}
       size={size}
       striped={striped}
-      colorPalette={colorPalette}
       css={styles}
       ref={ref}
       {...(disableHover ? { "data-disable-hover": "" } : {})}

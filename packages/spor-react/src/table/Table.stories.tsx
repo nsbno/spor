@@ -26,7 +26,6 @@ const meta = {
   component: Table,
   args: {
     variant: "accent",
-    colorPalette: undefined,
     size: "md",
     sortable: false,
     striped: false,
@@ -35,10 +34,6 @@ const meta = {
     variant: {
       control: "select",
       options: [undefined, "accent", "ghost", "floating"],
-    },
-    colorPalette: {
-      control: "select",
-      options: [undefined, "grey", "green", "white"],
     },
     size: { control: "select", options: ["sm", "md", "lg"] },
     sortable: { control: "boolean" },
@@ -124,38 +119,6 @@ export const Variants: Story = {
             {variant}
           </Box>
           <Table variant={variant}>
-            <TableHeader>
-              <TableRow>
-                <TableColumnHeader>Destination</TableColumnHeader>
-                <TableColumnHeader>Departure</TableColumnHeader>
-                <TableColumnHeader>Price</TableColumnHeader>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {sampleRows.slice(0, 3).map((row) => (
-                <TableRow key={row.destination}>
-                  <TableCell>{row.destination}</TableCell>
-                  <TableCell>{row.departure}</TableCell>
-                  <TableCell>{row.price}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </Box>
-      ))}
-    </Box>
-  ),
-};
-
-export const ColorPalettes: Story = {
-  render: () => (
-    <Box display="flex" flexDirection="column" gap={8}>
-      {(["green", "grey", "white"] as const).map((colorPalette) => (
-        <Box key={colorPalette}>
-          <Box fontWeight="bold" marginBottom={2}>
-            {colorPalette}
-          </Box>
-          <Table colorPalette={colorPalette}>
             <TableHeader>
               <TableRow>
                 <TableColumnHeader>Destination</TableColumnHeader>

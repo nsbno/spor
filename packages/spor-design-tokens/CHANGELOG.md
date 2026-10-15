@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.1.2
+
+### Patch Changes
+
+- 32d1fc4: Update linjetag colours for fjerntog, ferge, trikk and tbane
+
 ## 5.1.1
 
 ### Patch Changes

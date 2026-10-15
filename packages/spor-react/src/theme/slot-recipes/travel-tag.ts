@@ -55,22 +55,8 @@ export const travelTagSlotRecipe = defineSlotRecipe({
   },
   variants: {
     deviationLevel: {
-      critical: {
-        container: {
-          border: "1px solid",
-          borderColor: "outline.error",
-        },
-        deviationIcon: {
-          color: "outline.error",
-        },
-      },
-      major: {
-        container: {
-          border: "1px solid",
-          // eslint-disable-next-line spor/use-semantic-tokens
-          borderColor: "golden",
-        },
-      },
+      critical: {},
+      major: {},
       minor: {},
       info: {},
       none: {},

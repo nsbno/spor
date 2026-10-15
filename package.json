@@ -35,9 +35,6 @@
     "overrides": {
       "fast-xml-parser": "^5.3.5",
       "@types/react": "19.2.3"
-    },
-    "patchedDependencies": {
-      "lottie-web": "patches/lottie-web.patch"
     }
   }
 }

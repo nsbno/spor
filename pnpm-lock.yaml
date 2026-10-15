@@ -8,11 +8,6 @@ overrides:
   fast-xml-parser: ^5.3.5
   '@types/react': 19.2.3
 
-patchedDependencies:
-  lottie-web:
-    hash: af9adf2fec79e00f3de0e463a2d1f97ea616a3178881e1796e2d3a3cc22e6eae
-    path: patches/lottie-web.patch
-
 importers:
 
   .:
@@ -31742,11 +31737,11 @@ snapshots:
 
   lottie-react@2.4.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
-      lottie-web: 5.13.0(patch_hash=af9adf2fec79e00f3de0e463a2d1f97ea616a3178881e1796e2d3a3cc22e6eae)
+      lottie-web: 5.13.0
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
 
-  lottie-web@5.13.0(patch_hash=af9adf2fec79e00f3de0e463a2d1f97ea616a3178881e1796e2d3a3cc22e6eae): {}
+  lottie-web@5.13.0: {}
 
   lower-case@2.0.2:
     dependencies:

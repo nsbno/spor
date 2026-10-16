@@ -39,3 +39,6 @@ yarn-error.log*
 # Terraform
 .terraform/
 .react-router/
+
+# turbo - removed, but turbo-folders may still exist locally
+.turbo

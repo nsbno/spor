@@ -8,6 +8,7 @@
     "test": "pnpm -r test",
     "dev": "pnpm --parallel --filter '@vygruppen/designmanual-frontend...' --filter '@vygruppen/designmanual' run dev",
     "storybook": "pnpm --filter './apps/storybook' storybook",
+    "lint": "pnpm -r lint",
     "changeset": "npx changeset",
     "prerelease": "pnpm build",
     "release": "pnpm run build && changeset publish",

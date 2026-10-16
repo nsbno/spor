@@ -17,12 +17,11 @@
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
-    "build": "tsup",
-    "dev": "concurrently \"tsup --watch\" \"npx @chakra-ui/cli typegen src/theme/index.ts --watch\"",
-    "postinstall": "chakra typegen src/theme/index.ts",
-    "typegen": "npx @chakra-ui/cli typegen src/theme/index.ts",
-    "typegen:watch": "npx @chakra-ui/cli typegen src/theme/index.ts --watch",
-    "typegen:strict": "npx @chakra-ui/cli typegen /src/theme/index.ts --strict",
+    "build": "pnpm build:tokens && pnpm typegen && tsup",
+    "build:tokens": "pnpm --filter @vygruppen/spor-design-tokens build",
+    "dev": "pnpm build:tokens && concurrently \"tsup --watch\" \"pnpm typegen:watch\"",
+    "typegen": "chakra typegen src/theme/index.ts",
+    "typegen:watch": "pnpm typegen --watch",
     "lint": "eslint .",
     "test": "vitest run"
   },

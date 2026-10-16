@@ -9,7 +9,7 @@
     "dev": "pnpm --parallel --filter '@vygruppen/designmanual-frontend...' --filter '@vygruppen/designmanual' run dev",
     "storybook": "pnpm --filter './apps/storybook' storybook",
     "lint": "pnpm -r lint",
-    "changeset": "npx changeset",
+    "changeset": "changeset",
     "prerelease": "pnpm build",
     "release": "pnpm run build && changeset publish",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",

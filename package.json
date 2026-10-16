@@ -27,7 +27,7 @@
     "turbo": "2.11.7"
   },
   "engines": {
-    "node": ">=22.12"
+    "node": "22.23.3"
   },
   "devEngines": {
     "runtime": {

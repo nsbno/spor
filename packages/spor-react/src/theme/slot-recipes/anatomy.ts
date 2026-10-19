@@ -54,6 +54,9 @@ export const tableAnatomy = createAnatomy("table").parts(
   "caption",
   "footer",
   "header",
+  "expandableTrigger",
+  "expandableContent",
+  "expandableContentMarker",
 );
 
 export const fieldAnatomy = createAnatomy("field").parts(

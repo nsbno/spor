@@ -20,6 +20,7 @@
     "build": "pnpm build:tokens && pnpm typegen && tsup",
     "build:tokens": "pnpm --filter @vygruppen/spor-design-tokens build",
     "dev": "pnpm build:tokens && concurrently \"tsup --watch\" \"pnpm typegen:watch\"",
+    "postinstall": "chakra typegen src/theme/index.ts",
     "typegen": "chakra typegen src/theme/index.ts",
     "typegen:watch": "pnpm typegen --watch",
     "lint": "eslint .",

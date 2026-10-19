@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "prebuild": "rimraf packages/*/dist --glob",
+    "postinstall": "pnpm --filter @vygruppen/spor-design-tokens --filter @vygruppen/eslint-config build",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "dev": "pnpm --parallel --filter '@vygruppen/designmanual-frontend...' --filter '@vygruppen/designmanual' run dev",
     "storybook": "pnpm --filter './apps/storybook' storybook",
-    "lint": "pnpm -r lint",
+    "lint": "pnpm -r run lint --max-warnings=0",
     "changeset": "changeset",
     "prerelease": "pnpm build",
-    "release": "pnpm run build && changeset publish",
+    "release": "changeset publish",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css}\""
   },

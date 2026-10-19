@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "prebuild": "rimraf packages/*/dist --glob",
-    "postinstall": "pnpm --filter @vygruppen/spor-design-tokens --filter @vygruppen/eslint-config build",
+    "postinstall": "pnpm --filter @vygruppen/eslint-config build",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "dev": "pnpm --parallel --filter '@vygruppen/designmanual-frontend...' --filter '@vygruppen/designmanual' run dev",

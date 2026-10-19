@@ -30,27 +30,7 @@ import React from "react";
 import type { Size, Variant } from "./types";
 
 const icons: Record<Variant, Record<Size, React.ComponentType>> = {
-  "local-train": {
-    sm: TrainFill18Icon,
-    md: TrainFill24Icon,
-    lg: TrainFill30Icon,
-  },
-  "region-train": {
-    sm: TrainFill18Icon,
-    md: TrainFill24Icon,
-    lg: TrainFill30Icon,
-  },
-  "region-express-train": {
-    sm: TrainFill18Icon,
-    md: TrainFill24Icon,
-    lg: TrainFill30Icon,
-  },
-  "long-distance-train": {
-    sm: TrainFill18Icon,
-    md: TrainFill24Icon,
-    lg: TrainFill30Icon,
-  },
-  "airport-express-train": {
+  train: {
     sm: TrainFill18Icon,
     md: TrainFill24Icon,
     lg: TrainFill30Icon,

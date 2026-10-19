@@ -20,29 +20,9 @@ export const lineIconSlotRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      "local-train": {
+      train: {
         iconContainer: {
-          backgroundColor: "linjetag.lokaltog",
-        },
-      },
-      "region-train": {
-        iconContainer: {
-          backgroundColor: "linjetag.regiontog",
-        },
-      },
-      "region-express-train": {
-        iconContainer: {
-          backgroundColor: "linjetag.regionEkspress",
-        },
-      },
-      "long-distance-train": {
-        iconContainer: {
-          backgroundColor: "linjetag.fjerntog",
-        },
-      },
-      "airport-express-train": {
-        iconContainer: {
-          backgroundColor: "linjetag.flytog",
+          backgroundColor: "linjetag.fjernTog",
         },
       },
       "vy-bus": {

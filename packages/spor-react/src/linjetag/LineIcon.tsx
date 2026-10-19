@@ -98,7 +98,7 @@ export const LineIcon = function LineIcon({
       if ("customIconVariant" in rest) {
         return rest.customIconVariant;
       }
-      return "local-train";
+      return "train";
     }
     return variant;
   }

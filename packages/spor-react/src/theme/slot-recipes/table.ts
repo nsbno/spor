@@ -196,7 +196,7 @@ export const tableSlotRecipe = defineSlotRecipe({
         row: {
           [`${rowHover} td`]: {
             backgroundColor: "surface.floating.hover",
-            borderColor: "outline.floating.hover",
+            borderColor: "outline.floating.highlight",
           },
 
           "&:not(:has(th))": {
@@ -206,7 +206,7 @@ export const tableSlotRecipe = defineSlotRecipe({
         expandableTrigger: {
           [`${triggerHoverFromContent} td`]: {
             backgroundColor: "surface.floating.hover",
-            borderColor: "outline.floating.hover",
+            borderColor: "outline.floating.higlight",
           },
 
           '&[data-state="open"] td': {

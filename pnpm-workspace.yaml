@@ -40,8 +40,10 @@ overrides:
   fast-xml-parser: 5.11.2
   "@types/react": 19.2.3
 
-# Replaces turbo.json. A task with an entry here no longer gets the default
-# "^build", so build repeats it. "pnpm -r run test" builds each package first.
+# Task order for recursive runs ("pnpm -r run <task>").
+# Configuring a task replaces pnpm's default order (dependencies first),
+# so build lists ^build itself. test needs the package's own build,
+# so "pnpm test" builds before it tests.
 tasks:
   build:
     dependsOn:

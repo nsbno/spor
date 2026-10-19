@@ -35,10 +35,9 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+# turbo - removed, but .turbo folders may still exist locally
+.turbo
 
 # Terraform
 .terraform/
 .react-router/
-
-# turbo - removed, but turbo-folders may still exist locally
-.turbo

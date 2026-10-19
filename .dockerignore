@@ -1,0 +1,34 @@
+# Docker only reads the .dockerignore in the build context root, and the
+# context is the repo root. Keep the context close to a clean git checkout,
+# so a local build behaves like the CI build.
+
+# Dependencies. A local node_modules holds binaries for the host OS
+# (including the Node that pnpm downloads into node_modules/.bin).
+**/node_modules
+
+# Secrets. Never bake a local .env into an image.
+**/.env
+**/.env.*
+!**/.env.example
+**/*.pem
+
+# Build output. The image builds its own. A stale local build would
+# otherwise be copied over the fresh one by the final stage's "ADD . .".
+apps/*/build
+apps/*/dist
+apps/*/.react-router
+apps/*/.sanity
+packages/*/dist
+packages/*/tmp
+packages/spor-design-tokens/react-native
+packages/spor-icon-react/react
+packages/spor-icon-react-native/react
+
+# Tooling and editor state
+.git
+**/.turbo
+**/.terraform
+**/*.tsbuildinfo
+**/*.log
+**/.DS_Store
+.idea

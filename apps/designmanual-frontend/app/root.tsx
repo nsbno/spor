@@ -18,7 +18,6 @@ import {
   useLoaderData,
   useLocation,
   useRouteError,
-  useRouteLoaderData,
 } from "react-router";
 
 import { useInjectStyles } from "./emotion/emotion-client";
@@ -172,10 +171,9 @@ type DocumentProps = {
 
 const Document = withEmotionCache(
   ({ children, brand, title }: DocumentProps, emotionCache) => {
-    // Document also renders inside ErrorBoundary, where root loader data can be missing
-    const loaderData = useRouteLoaderData<typeof loader>("root");
-    const isPreview = loaderData?.isPreview;
-    const ENV = loaderData?.ENV;
+    const isPreview = useLoaderData<typeof loader>().isPreview;
+    const ENV = useLoaderData<typeof loader>().ENV;
+    const loaderData = useLoaderData<typeof loader>();
 
     useInjectStyles(emotionCache);
 
@@ -200,7 +198,7 @@ const Document = withEmotionCache(
           <script
             // Prevent CSP nonce issues if applicable
             dangerouslySetInnerHTML={{
-              __html: `window.__ENV__ = { VITE_ENVIRONMENT: "${loaderData?.env || ""}" };`,
+              __html: `window.__ENV__ = { VITE_ENVIRONMENT: "${loaderData.env || ""}" };`,
             }}
           />
         </head>

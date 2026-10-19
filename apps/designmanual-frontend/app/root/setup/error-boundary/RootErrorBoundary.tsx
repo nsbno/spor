@@ -9,11 +9,7 @@ export const RootErrorBoundary = ({ error }: RootErrorBoundaryProps) => {
       <Center minHeight="100vh">
         <Box>
           <Heading as="h1">There was an error</Heading>
-          <pre>
-            {error instanceof Error
-              ? `${error.message}\n\n${error.stack}`
-              : JSON.stringify(error, null, 2)}
-          </pre>
+          <pre>{JSON.stringify(error)}</pre>
         </Box>
       </Center>
     );

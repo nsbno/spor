@@ -45,7 +45,7 @@ export const tableSlotRecipe = defineSlotRecipe({
     },
     cell: {
       ...numericStyles,
-      color: "text"
+      color: "text",
     },
 
     expandableContent: {
@@ -206,7 +206,7 @@ export const tableSlotRecipe = defineSlotRecipe({
         expandableTrigger: {
           [`${triggerHoverFromContent} td`]: {
             backgroundColor: "surface.floating.hover",
-            borderColor: "outline.floating.higlight",
+            borderColor: "outline.floating.highlight",
           },
 
           '&[data-state="open"] td': {

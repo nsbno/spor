@@ -42,12 +42,10 @@ overrides:
 
 # Task order for recursive runs ("pnpm -r run <task>").
 # Configuring a task replaces pnpm's default order (dependencies first),
-# so build lists ^build itself. test needs the package's own build,
-# so "pnpm test" builds before it tests.
+# so build lists ^build itself.
+# test is not listed on purpose: "pnpm test" only runs tests, like before.
+# Run "pnpm build" first (CI does).
 tasks:
   build:
     dependsOn:
       - ^build
-  test:
-    dependsOn:
-      - build

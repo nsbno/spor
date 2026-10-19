@@ -25,6 +25,6 @@ jobs:
           cache: "pnpm"
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
-      # Builds every package first (see "tasks" in pnpm-workspace.yaml), then runs the tests
+      - run: pnpm build
       - run: pnpm test
       - run: pnpm format:validate

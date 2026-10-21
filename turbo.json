@@ -13,11 +13,9 @@
       "outputs": []
     },
     "dev": {
+      "dependsOn": ["^build"],
       "cache": false,
       "persistent": true
-    },
-    "postinstall": {
-      "dependsOn": ["@vygruppen/spor-design-tokens#build"]
     },
     "storybook": {
       "cache": false,

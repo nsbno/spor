@@ -20,8 +20,10 @@
     "target": "es2023",
     "strict": true,
     "baseUrl": ".",
+    "customConditions": ["@vygruppen/source"],
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": ["./app/*"],
+      "@/*": ["../../packages/spor-react/src/*"]
     },
     "noEmit": true,
     "allowJs": false,

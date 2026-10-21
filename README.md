@@ -55,7 +55,7 @@ Spor follows a **monorepo** structure, containing multiple **packages** and **ap
 
 Before you begin, ensure you have:
 
-- **Node.js 22.12 or newer** installed (required since the Sanity Studio moved to v6). Run `nvm use` to pick up the version pinned in `.nvmrc`.
+- **Node.js and pnpm** installed. pnpm downloads the Node version pinned in `devEngines` in the root `package.json` and uses it for every `pnpm` script, so your own Node only needs to run pnpm itself. Run `nvm use` if you want the same version in your shell (pinned in `.nvmrc`).
 - **Basic familiarity with Git** for version control.
 
 ### 📥 Cloning the Repository
@@ -82,6 +82,16 @@ pnpm build
 ```sh
 pnpm dev
 ```
+
+The design manual dev server reads the Spor packages from their source, so changes show up right away.
+
+### 🔍 Previewing the Production Build
+
+```sh
+pnpm preview
+```
+
+Builds the design manual and the packages it depends on, then starts it from the built output (`dist`), the same way it runs in production.
 
 ---
 

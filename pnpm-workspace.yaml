@@ -39,13 +39,3 @@ allowBuilds:
 overrides:
   fast-xml-parser: 5.11.2
   "@types/react": 19.2.3
-
-# Task order for recursive runs ("pnpm -r run <task>").
-# Configuring a task replaces pnpm's default order (dependencies first),
-# so build lists ^build itself.
-# test is not listed on purpose: "pnpm test" only runs tests, like before.
-# Run "pnpm build" first (CI does).
-tasks:
-  build:
-    dependsOn:
-      - ^build

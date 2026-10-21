@@ -1,50 +1,43 @@
 import { reactRouter } from "@react-router/dev/vite";
-import { defineConfig, type Plugin } from "vite";
+import { defineConfig } from "vite";
 import babel from "vite-plugin-babel";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 const ReactCompilerConfig = {
   /* ... */
 };
 
 /**
- * spor-react is a prebuilt bundle (`tsup --watch`) that can't be hot-swapped,
- * so skip HMR and do one full reload instead. Wait for `index.mjs`: tsup writes
- * the other files first, and reloading earlier renders the old bundle.
- * Keep `handleHotUpdate`: the newer `hotUpdate` hook doesn't stop the HMR updates.
+ * In dev, resolve workspace packages (spor-react, spor-loader, sidespor-config)
+ * to their source (see the `@vygruppen/source` condition in their
+ * package.json) so edits get Fast Refresh instead of a rebuild and reload.
+ * Builds keep using the published `dist`.
  */
-const SPOR_REACT_DIST = "/packages/spor-react/dist/";
-const SPOR_REACT_MAIN_BUNDLE = `${SPOR_REACT_DIST}index.mjs`;
+const SOURCE_CONDITION = "@vygruppen/source";
 
-const fullReloadOnSporReactBuild = (): Plugin => ({
-  name: "full-reload-on-spor-react-build",
-  enforce: "pre",
-  handleHotUpdate({ file, server }) {
-    if (!file.includes(SPOR_REACT_DIST)) return;
-    if (file.endsWith(SPOR_REACT_MAIN_BUNDLE)) {
-      for (const environment of Object.values(server.environments)) {
-        environment.hot.send({ type: "full-reload", triggeredBy: file });
-      }
-    }
-    return [];
-  },
-});
+export default defineConfig(({ command }) => {
+  // `command` is "serve" for the dev server (`react-router dev`) and "build"
+  // for production builds, so only the dev server reads package source.
+  const workspaceSource =
+    command === "serve" ? { conditions: [SOURCE_CONDITION] } : {};
 
-export default defineConfig({
-  server: {
-    port: 3008,
-    open: true,
-  },
-  plugins: [
-    fullReloadOnSporReactBuild(),
-    reactRouter(),
-    tsconfigPaths(),
-    babel({
-      filter: /\.[jt]sx?$/,
-      babelConfig: {
-        presets: ["@babel/preset-typescript"], // if you use TypeScript
-        plugins: [["babel-plugin-react-compiler", ReactCompilerConfig]],
-      },
-    }),
-  ],
+  return {
+    server: {
+      port: 3008,
+      open: true,
+    },
+    resolve: { tsconfigPaths: true, ...workspaceSource },
+    ssr: { resolve: workspaceSource },
+    plugins: [
+      reactRouter(),
+      babel({
+        filter: /\.[jt]sx?$/,
+        // Workspace packages ship without the React Compiler, so don't apply it here
+        exclude: ["**/packages/**"],
+        babelConfig: {
+          presets: ["@babel/preset-typescript"], // if you use TypeScript
+          plugins: [["babel-plugin-react-compiler", ReactCompilerConfig]],
+        },
+      }),
+    ],
+  };
 });

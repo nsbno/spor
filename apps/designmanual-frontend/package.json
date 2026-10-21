@@ -73,8 +73,7 @@
     "tsconfig": "^7.0.0",
     "typescript": "^5.9.3",
     "vite": "^8.0.8",
-    "vite-plugin-babel": "^1.3.2",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-plugin-babel": "^1.3.2"
   },
   "engines": {
     "node": ">=18"

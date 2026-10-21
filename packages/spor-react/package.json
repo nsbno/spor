@@ -4,11 +4,13 @@
   "version": "13.8.2",
   "exports": {
     ".": {
+      "@vygruppen/source": "./src/index.tsx",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
     "./icons": {
+      "@vygruppen/source": "./src/icons/index.tsx",
       "types": "./dist/icons/index.d.ts",
       "import": "./dist/icons/index.mjs",
       "require": "./dist/icons/index.cjs"
@@ -18,9 +20,9 @@
   "sideEffects": false,
   "scripts": {
     "build": "pnpm typegen && tsup",
-    "dev": "concurrently \"tsup --watch\" \"pnpm typegen:watch\"",
+    "dev": "pnpm typegen:watch",
     "postinstall": "chakra typegen src/theme/index.ts",
-    "typegen": "chakra typegen src/theme/index.ts",
+    "typegen": "chakra typegen src/theme/index.ts < /dev/null",
     "typegen:watch": "pnpm typegen --watch",
     "typegen:strict": "pnpm typegen --strict",
     "lint": "eslint .",
@@ -74,7 +76,6 @@
     "@vygruppen/eslint-config": "workspace:*",
     "@vygruppen/tsconfig": "workspace:*",
     "clsx": "^2.1.1",
-    "concurrently": "^9.1.2",
     "eslint": "^9.39.1",
     "jsdom": "^29.1.1",
     "react": "19.2.3",

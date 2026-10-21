@@ -8,6 +8,8 @@
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "dev": "pnpm -r --parallel run dev",
+    "preview:build": "pnpm --filter @vygruppen/designmanual-frontend... build",
+    "preview": "pnpm preview:build && pnpm --filter @vygruppen/designmanual-frontend start",
     "storybook": "pnpm --filter './apps/storybook' storybook",
     "lint": "pnpm -r --no-bail run lint --max-warnings=0",
     "changeset": "changeset",

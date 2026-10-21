@@ -5,6 +5,9 @@
       "outputs": [],
       "cache": false
     },
+    "prepare": {
+      "dependsOn": ["@vygruppen/spor-design-tokens#build"]
+    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**", "public/build/**"]
@@ -15,9 +18,6 @@
     "dev": {
       "cache": false,
       "persistent": true
-    },
-    "postinstall": {
-      "dependsOn": ["@vygruppen/spor-design-tokens#build"]
     },
     "storybook": {
       "cache": false,

@@ -1,3 +1,7 @@
+// Keep first: components call createTexts() at module level and import it via
+// this barrel, so it must be defined before any of them are evaluated.
+// eslint-disable-next-line simple-import-sort/exports
+export * from "./i18n";
 export * from "./accordion";
 export * from "./alert";
 export * from "./breadcrumb";
@@ -8,7 +12,6 @@ export * from "./data-color-context";
 export * from "./datepicker";
 export * from "./dialog";
 export * from "./error-summary";
-export * from "./i18n";
 export * from "./image";
 export * from "./input";
 export * from "./layout";

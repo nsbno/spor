@@ -1,5 +1,5 @@
 # Base node image
-FROM node:20-alpine AS base
+FROM node:22-alpine AS base
 
 # Set environment variables
 ENV NODE_ENV=production
@@ -50,10 +50,6 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 
 # Build the application
-# Need to run typegen to generate types for spor-react, 
-# typegen is dependent on spor-design-tokens
-RUN pnpm --filter @vygruppen/spor-design-tokens build
-RUN pnpm --filter @vygruppen/spor-react typegen
 RUN pnpm --filter @vygruppen/designmanual-frontend... build
 
 # Finally, build the production image with minimal footprint

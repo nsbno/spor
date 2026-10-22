@@ -63,7 +63,6 @@ export const Toaster = () => {
             width={{ md: toast.meta?.width }}
             data-inverted={toast.meta?.inverted ? "" : undefined}
             role="alert"
-            data-color={toast.type}
           >
             <AlertIcon variant={toast.type as Variant} />
             <Stack gap="1" flex="1" maxWidth="100%">

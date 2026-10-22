@@ -21,7 +21,7 @@
   "scripts": {
     "build": "pnpm typegen && tsup",
     "dev": "pnpm typegen:watch",
-    "postinstall": "chakra typegen src/theme/index.ts",
+    "prepare": "chakra typegen src/theme/index.ts",
     "typegen": "chakra typegen src/theme/index.ts < /dev/null",
     "typegen:watch": "pnpm typegen --watch",
     "typegen:strict": "pnpm typegen --strict",

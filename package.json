@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "prebuild": "rimraf packages/*/dist --glob",
-    "postinstall": "pnpm --filter @vygruppen/eslint-config build",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "dev": "pnpm -r --parallel run dev",

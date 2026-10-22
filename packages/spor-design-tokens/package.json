@@ -29,6 +29,7 @@
   },
   "scripts": {
     "build": "tsx scripts/build.mts",
+    "prepare": "pnpm build",
     "dev": "chokidar 'scripts/**/*' 'tokens/**/*' -c 'pnpm build'",
     "lint": "eslint ."
   },

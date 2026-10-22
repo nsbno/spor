@@ -9,7 +9,6 @@
     "dev": "turbo run dev",
     "storybook": "turbo run storybook",
     "lint": "turbo run lint -- --max-warnings=0",
-    "postinstall": "turbo run postinstall",
     "changeset": "npx changeset",
     "prerelease": "pnpm build",
     "release": "turbo run build && changeset publish",

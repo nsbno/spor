@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react-native
 
+## 2.17.1
+
+### Patch Changes
+
+- 224c251: Add caution icon
+
 ## 2.17.0
 
 ### Minor Changes

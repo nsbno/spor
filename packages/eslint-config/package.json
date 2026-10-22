@@ -6,7 +6,8 @@
     ".": "./index.mjs"
   },
   "scripts": {
-    "build": "node ./build-tokens.js"
+    "build": "node ./build-tokens.js",
+    "prepare": "pnpm build"
   },
   "files": [
     "dist",

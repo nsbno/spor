@@ -23,6 +23,7 @@ export type LinkProps = ChakraLinkProps & {
   variant?: "primary" | "secondary";
   /** Define if the link shows an icon on the right that indicate it is an external link */
   external?: boolean;
+  size?: "sm" | "md" | "lg";
 };
 
 /** Link to different sites or parts of site

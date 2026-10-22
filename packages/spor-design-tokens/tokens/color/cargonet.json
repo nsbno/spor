@@ -446,16 +446,10 @@
             "_dark": "colors.darkGrey"
           }
         },
-        "brand": {
+        "highlight": {
           "value": {
             "_light": "colors.bisque",
             "_dark": "colors.darkGrey"
-          }
-        },
-        "accent": {
-          "value": {
-            "_light": "colors.platinum",
-            "_dark": "colors.whiteAlpha.100"
           }
         }
       },

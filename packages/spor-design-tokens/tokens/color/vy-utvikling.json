@@ -286,15 +286,9 @@
             "_dark": "colors.night"
           }
         },
-        "brand": {
+        "highlight": {
           "value": {
-            "_light": "colors.lightGrey",
-            "_dark": "colors.jungle"
-          }
-        },
-        "accent": {
-          "value": {
-            "_light": "colors.platinum",
+            "_light": "colors.mint",
             "_dark": "colors.jungle"
           }
         }

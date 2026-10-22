@@ -11,10 +11,7 @@ import { Field, FieldBaseProps } from "./Field";
 
 type SwitchVariants = RecipeVariantProps<typeof switchSlotRecipe>;
 
-export type SwitchProps = Omit<
-  ChakraSwitch.RootProps,
-  keyof SwitchVariants
-> &
+export type SwitchProps = Omit<ChakraSwitch.RootProps, keyof SwitchVariants> &
   Omit<FieldBaseProps, keyof SwitchVariants> &
   PropsWithChildren<SwitchVariants> & {
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;

@@ -20,10 +20,7 @@ import { textareaRecipe } from "../theme/recipes/textarea";
 import { Field, FieldProps } from "./Field";
 import { useFloatingInputState } from "./useFLoatingInputState";
 type TextareaVariants = RecipeVariantProps<typeof textareaRecipe>;
-export type TextareaProps = Omit<
-  ChakraTextareaProps,
-  keyof TextareaVariants
-> &
+export type TextareaProps = Omit<ChakraTextareaProps, keyof TextareaVariants> &
   Omit<FieldProps, keyof TextareaVariants> &
   PropsWithChildren<TextareaVariants> & {
     label: ReactNode;

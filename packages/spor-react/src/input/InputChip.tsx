@@ -1,12 +1,22 @@
-import { Box, Tag as ChakraTag, TagRootProps } from "@chakra-ui/react";
+import {
+  Box,
+  RecipeVariantProps,
+  Tag as ChakraTag,
+  TagRootProps,
+} from "@chakra-ui/react";
 import { IconComponent } from "@vygruppen/spor-icon-react";
 import React from "react";
 
-export type InputChipProps = TagRootProps & {
-  startIcon?: IconComponent;
-  endIcon?: IconComponent;
-  onClick?: VoidFunction;
-};
+import { inputChipSlotRecipe } from "../theme/slot-recipes/input-chip";
+
+type InputChipVariantProps = RecipeVariantProps<typeof inputChipSlotRecipe>;
+
+export type InputChipProps = Omit<TagRootProps, keyof InputChipVariantProps> &
+  InputChipVariantProps & {
+    startIcon?: IconComponent;
+    endIcon?: IconComponent;
+    onClick?: VoidFunction;
+  };
 
 export const InputChip = ({
   startIcon,

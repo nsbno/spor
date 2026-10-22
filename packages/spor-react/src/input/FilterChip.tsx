@@ -1,7 +1,16 @@
 "use client";
-import { CheckboxCard, CheckboxCardRootProps, Span } from "@chakra-ui/react";
+import {
+  CheckboxCard,
+  CheckboxCardRootProps,
+  RecipeVariantProps,
+  Span,
+} from "@chakra-ui/react";
 import { CloseOutline24Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
+
+import { filterChipSlotRecipe } from "../theme/slot-recipes/filter-chip";
+
+type FilterChipVariantProps = RecipeVariantProps<typeof filterChipSlotRecipe>;
 
 type CheckBoxIcon = {
   default: React.ReactNode;
@@ -10,12 +19,13 @@ type CheckBoxIcon = {
 
 export type FilterChipProps = Omit<
   CheckboxCardRootProps,
-  "onCheckedChange" | "checked"
-> & {
-  icon?: CheckBoxIcon;
-  onCheckedChange?: (checked: boolean) => void;
-  checked?: boolean;
-};
+  keyof FilterChipVariantProps | "onCheckedChange" | "checked"
+> &
+  FilterChipVariantProps & {
+    icon?: CheckBoxIcon;
+    onCheckedChange?: (checked: boolean) => void;
+    checked?: boolean;
+  };
 
 /**
  * Filter chips are checkboxes that look like selectable buttons.

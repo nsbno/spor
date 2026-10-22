@@ -54,12 +54,12 @@ export type FieldBaseProps = {
   shouldFloat?: boolean;
   labelAsChild?: boolean;
   gap?: string | number;
-  size?: "sm" | "md";
+  size?: FieldVariantProps["size"];
 };
 
 export type FieldProps = Omit<
   ChakraField.RootProps,
-  "label" | "onChange" | "onBlur"
+  keyof FieldVariantProps | "label" | "onChange" | "onBlur"
 > &
   React.PropsWithChildren<FieldVariantProps> &
   FieldBaseProps;

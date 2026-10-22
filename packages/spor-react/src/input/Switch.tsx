@@ -1,6 +1,5 @@
 "use client";
 import {
-  ConditionalValue,
   RecipeVariantProps,
   Switch as ChakraSwitch,
   useSlotRecipe,
@@ -12,17 +11,16 @@ import { Field, FieldBaseProps } from "./Field";
 
 type SwitchVariants = RecipeVariantProps<typeof switchSlotRecipe>;
 
-export type SwitchProps = Exclude<
+export type SwitchProps = Omit<
   ChakraSwitch.RootProps,
-  "size" | "colorPalette"
+  keyof SwitchVariants
 > &
-  FieldBaseProps &
+  Omit<FieldBaseProps, keyof SwitchVariants> &
   PropsWithChildren<SwitchVariants> & {
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
     rootRef?: React.Ref<HTMLLabelElement>;
     trackLabel?: { on: React.ReactNode; off: React.ReactNode };
     thumbLabel?: { on: React.ReactNode; off: React.ReactNode };
-    size?: ConditionalValue<"sm" | "md" | "lg">;
     label?: React.ReactNode;
     onCheckedChange?: (checked: boolean) => void;
   };

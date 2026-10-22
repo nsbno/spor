@@ -17,8 +17,8 @@ type NativeSelectVariantProps = RecipeVariantProps<
 
 export type NativeSelectdProps =
   React.PropsWithChildren<NativeSelectVariantProps> &
-    FieldBaseProps &
-    ChakraNativeSelectFieldProps & {
+    Omit<FieldBaseProps, keyof NativeSelectVariantProps> &
+    Omit<ChakraNativeSelectFieldProps, keyof NativeSelectVariantProps> & {
       icon?: React.ReactNode;
     };
 

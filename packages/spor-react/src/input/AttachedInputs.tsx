@@ -31,7 +31,7 @@ import { attachedInputsRecipe } from "@/theme/recipes/attached-inputs";
 export type AttachedInputsProps = RecipeVariantProps<
   typeof attachedInputsRecipe
 > &
-  GroupProps &
+  Omit<GroupProps, keyof RecipeVariantProps<typeof attachedInputsRecipe>> &
   (
     | {
         onFlip?: undefined;

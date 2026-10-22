@@ -28,7 +28,7 @@ type ListBoxVariantProps = RecipeVariantProps<typeof listBoxSlotRecipe>;
 type ListBoxProps<T> = AriaListBoxProps<T> &
   Omit<BoxProps, "filter" | "autoFocus" | "children"> &
   PropsWithChildren<ListBoxVariantProps> &
-  Exclude<ListRootProps, "variant"> & {
+  Omit<ListRootProps, keyof ListBoxVariantProps> & {
     /** External reference to the ListBox itself */
     listBoxRef: React.RefObject<HTMLUListElement>;
     /** Whether or not the listbox is waiting on new data, i.e. through a autosuggest search */
@@ -38,7 +38,6 @@ type ListBoxProps<T> = AriaListBoxProps<T> &
     /** UI to render if the collection is empty */
     emptyContent?: React.ReactNode;
     maxWidth?: BoxProps["maxWidth"];
-    variant?: "core" | "floating";
     children: React.ReactNode;
     autoFocus?: boolean;
   };

@@ -5,6 +5,7 @@ import {
   Flex,
   Input as ChakraInput,
   InputElement,
+  RecipeVariantProps,
   useRecipe,
 } from "@chakra-ui/react";
 import React, {
@@ -15,13 +16,16 @@ import React, {
   useRef,
 } from "react";
 
-type ChakraInputProps = ComponentProps<typeof ChakraInput>;
-
+import { inputRecipe } from "../theme/recipes/input";
 import { Field, FieldProps } from "./Field";
 import { useFloatingInputState } from "./useFLoatingInputState";
 
-export type InputProps = FieldProps &
-  Exclude<ChakraInputProps, "label" | "colorPalette" | "placeholder"> & {
+type ChakraInputProps = ComponentProps<typeof ChakraInput>;
+type InputVariantProps = RecipeVariantProps<typeof inputRecipe>;
+
+export type InputProps = Omit<FieldProps, keyof InputVariantProps> &
+  Omit<ChakraInputProps, keyof InputVariantProps> &
+  InputVariantProps & {
     /** The input's label */
     label?: ReactNode;
     /** Element that shows up to the left */
@@ -30,8 +34,6 @@ export type InputProps = FieldProps &
     endElement?: React.ReactNode;
     /** Override the font size of the start and end elements */
     fontSize?: string;
-
-    //size?: "sm" | "md";
   };
 /**
  * Inputs let you enter text or other data.

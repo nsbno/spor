@@ -30,9 +30,9 @@ import { radioCardSlotRecipe } from "../theme/slot-recipes/radio-card";
 
 type RadioCardVariantProps = RecipeVariantProps<typeof radioCardSlotRecipe>;
 
-type RadioCardItemProps = Exclude<
+type RadioCardItemProps = Omit<
   ChakraRadioCard.ItemProps,
-  "colorPalette" | "indicator" | "variant" | "size" | "addon"
+  keyof RadioCardVariantProps
 > &
   RadioCardVariantProps & {
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
@@ -74,7 +74,7 @@ export const RadioCard = ({
 };
 
 type RadioCardRootProps = RadioCardVariantProps &
-  Exclude<ChakraRadioCard.RootProps, "variant"> & {
+  Omit<ChakraRadioCard.RootProps, keyof RadioCardVariantProps> & {
     children: React.ReactNode;
     gap?: string | number;
     direction?: "row" | "column";

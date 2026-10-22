@@ -16,12 +16,11 @@ import { SporSemantic } from "@/theme/tokens/global-css";
 
 import { createTexts, useTranslation } from "..";
 import { FieldProps } from "./Field";
-import { Input } from "./Input";
+import { Input, InputProps } from "./Input";
 
 type Item = { label: string; value: string };
 
 type Props = {
-  variant?: "core" | "floating";
   label: React.ReactNode;
   leftIcon?: React.ReactNode;
   filteredExternally?: boolean;
@@ -30,8 +29,9 @@ type Props = {
   openOnFocus?: boolean;
   ref?: React.Ref<HTMLInputElement | null>;
   "data-color"?: SporSemantic;
-} & Omit<ComboboxRootProps, "collection"> &
-  FieldProps;
+} & Omit<ComboboxRootProps, "collection" | "variant" | "size"> &
+  Omit<FieldProps, "variant" | "size"> &
+  Pick<InputProps, "variant" | "size">;
 
 export function Autocomplete({
   variant = "core",

@@ -2,6 +2,7 @@
 import {
   Link as ChakraLink,
   LinkProps as ChakraLinkProps,
+  RecipeVariantProps,
   VisuallyHidden,
 } from "@chakra-ui/react";
 import {
@@ -17,18 +18,21 @@ import React, {
 } from "react";
 
 import { createTexts, useTranslation } from "@/i18n";
+import { linkRecipe } from "@/theme/recipes/link";
 
-export type LinkProps = ChakraLinkProps & {
-  /** Defaults to primary */
-  variant?: "primary" | "secondary";
-  /** Define if the link shows an icon on the right that indicate it is an external link */
-  external?: boolean;
-  size?: "sm" | "md" | "lg";
-};
+type LinkVariantProps = RecipeVariantProps<typeof linkRecipe>;
+
+export type LinkProps = Omit<ChakraLinkProps, keyof LinkVariantProps> &
+  LinkVariantProps & {
+    /** Define if the link shows an icon on the right that indicate it is an external link */
+    external?: boolean;
+  };
 
 /** Link to different sites or parts of site
  *
  * You can specify the `variant` prop to get different link designs.
+ * Variants are "primary" (default) and "secondary".
+ * Sizes are "xs", "sm" (default), "md", and "lg".
  *  * ```tsx
  * <TextLink href="/url-to-page" variant="primary" size="md">
  *   text that is linked

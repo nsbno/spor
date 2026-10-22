@@ -8,7 +8,7 @@ import { radioGroupSlotRecipe } from "../theme/slot-recipes/radio";
 type RadioVariants = RecipeVariantProps<typeof radioGroupSlotRecipe>;
 
 export type RadioProps = PropsWithChildren<RadioVariants> &
-  ChakraRadioGroup.ItemProps & {
+  Omit<ChakraRadioGroup.ItemProps, keyof RadioVariants> & {
     rootRef?: React.Ref<HTMLDivElement>;
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
   };

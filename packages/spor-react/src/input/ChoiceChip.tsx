@@ -56,9 +56,9 @@ type CheckBoxIcon = {
   checked: React.ReactNode;
 };
 
-type RadioCardItemProps = Exclude<
+type RadioCardItemProps = Omit<
   ChakraRadioCard.ItemProps,
-  "colorPalette" | "indicator" | "variant" | "size" | "addon"
+  keyof RadioCardVariantProps
 > &
   RadioCardVariantProps & {
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
@@ -119,9 +119,9 @@ export const ChoiceChip = ({
   );
 };
 
-type RadioCardRootProps = Exclude<
+type RadioCardRootProps = Omit<
   ChakraRadioCard.RootProps,
-  "variant" | "size"
+  keyof RadioCardVariantProps
 > &
   RadioCardVariantProps & {
     children: React.ReactNode;
@@ -144,7 +144,6 @@ export const ChoiceChipGroup = ({
       <ChakraRadioCard.Root
         css={{ ...styles.root, ...css }}
         ref={ref}
-        variant={variant}
         {...rest}
       >
         {children}

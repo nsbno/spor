@@ -2,6 +2,7 @@
 
 import type {
   CollectionItem,
+  RecipeVariantProps,
   SelectLabelProps,
   SelectRootProps,
   SystemStyleObject,
@@ -22,13 +23,17 @@ import {
 import * as React from "react";
 
 import { CloseButton } from "@/button";
+import { selectSlotRecipe } from "@/theme/slot-recipes/select";
 import { SporSemantic } from "@/theme/tokens/global-css";
 
 import { Badge } from "..";
 import { Field, FieldProps } from "./Field";
 
-export type SelectProps = SelectRootProps &
-  FieldProps & {
+type SelectVariantProps = RecipeVariantProps<typeof selectSlotRecipe>;
+
+export type SelectProps = Omit<SelectRootProps, keyof SelectVariantProps> &
+  Omit<FieldProps, keyof SelectVariantProps> &
+  SelectVariantProps & {
     label?: string;
   };
 
@@ -183,10 +188,10 @@ export const SelectItemGroup = function SelectItemGroup({
   );
 };
 
-type SelectTriggerProps = ChakraSelect.ControlProps & {
+type SelectTriggerProps = Omit<ChakraSelect.ControlProps, "size"> & {
   clearable?: boolean;
   children?: React.ReactNode;
-  size: "sm" | "md";
+  size: SelectVariantProps["size"];
 };
 
 export const SelectTrigger = function SelectTrigger({

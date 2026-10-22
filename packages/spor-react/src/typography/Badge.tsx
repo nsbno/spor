@@ -3,12 +3,22 @@ import {
   Badge as ChakraBadge,
   BadgeProps as ChakraBadgeProps,
   Box,
+  RecipeVariantProps,
 } from "@chakra-ui/react";
 import { IconComponent } from "@vygruppen/spor-icon-react";
 
-export type BadgeProps = ChakraBadgeProps & {
-  icon?: IconComponent;
-};
+import { badgeRecipie } from "../theme/recipes/badge";
+
+type BadgeVariantProps = RecipeVariantProps<typeof badgeRecipie>;
+
+/** Badge supports the recipe's size, attached, inverted, and disabled variants. */
+export type BadgeProps = Omit<
+  ChakraBadgeProps,
+  "colorPalette" | keyof BadgeVariantProps
+> &
+  BadgeVariantProps & {
+    icon?: IconComponent;
+  };
 
 export const Badge = function Badge({
   ref,

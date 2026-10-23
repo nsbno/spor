@@ -446,16 +446,10 @@
             "_dark": "colors.darkGrey"
           }
         },
-        "brand": {
+        "highlight": {
           "value": {
             "_light": "colors.bisque",
             "_dark": "colors.darkGrey"
-          }
-        },
-        "accent": {
-          "value": {
-            "_light": "colors.platinum",
-            "_dark": "colors.whiteAlpha.100"
           }
         }
       },
@@ -543,7 +537,7 @@
         "info": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.cloudy",
+              "_light": "colors.sky",
               "_dark": "colors.ocean"
             }
           },
@@ -557,8 +551,8 @@
         "success": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.coralGreen",
-              "_dark": "colors.primaryGreen"
+              "_light": "colors.blueGreen",
+              "_dark": "colors.pine"
             }
           },
           "highlight": {
@@ -599,14 +593,14 @@
         "critical": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.salmon",
+              "_light": "colors.apricot",
               "_dark": "colors.crimson"
             }
           },
           "highlight": {
             "value": {
               "_light": "colors.region",
-              "_dark": "colors.region"
+              "_dark": "colors.carmine"
             }
           }
         },

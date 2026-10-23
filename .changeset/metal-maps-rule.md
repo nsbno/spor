@@ -1,5 +1,5 @@
 ---
-"@vygruppen/spor-design-tokens": patch
+"@vygruppen/spor-design-tokens": major
 "@vygruppen/spor-react": patch
 ---
 

@@ -38,8 +38,8 @@ import { pressableCardRecipe } from "../theme/recipes/pressable-card";
  * @see StaticCard
  */
 
-type PressableCardProps = RecipeVariantProps<typeof pressableCardRecipe> &
-  ButtonProps;
+export type PressableCardProps = ButtonProps &
+  RecipeVariantProps<typeof pressableCardRecipe>;
 
 export const PressableCard = ({
   ref,

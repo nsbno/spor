@@ -12,7 +12,7 @@ export const Tooltip = ({
 }: {
   children: React.ReactNode;
   "data-color"?: SporSemantic;
-}) => (
+} & ChakraTooltip.RootProps) => (
   <DataColorProvider data-color={dataColor}>
     <ChakraTooltip.Root data-color={dataColor} {...rest}>
       {children}

@@ -1,5 +1,13 @@
 # @vygruppen/spor-react
 
+## 14.0.2
+
+### Patch Changes
+
+- 7fbbc5c: Update cargonet, teknologi, and utvikling theme to include new tokens. Add chakra's tooltip props to the Tooltip component
+- Updated dependencies [7fbbc5c]
+  - @vygruppen/spor-design-tokens@7.0.0
+
 ## 14.0.1
 
 ### Patch Changes

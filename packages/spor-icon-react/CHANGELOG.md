@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 5.1.1
+
+### Patch Changes
+
+- 224c251: Add caution icon
+
 ## 5.1.0
 
 ### Minor Changes

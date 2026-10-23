@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 4.0.1
+
+### Patch Changes
+
+- 224c251: Add caution icon
+
 ## 4.0.0
 
 ### Major Changes

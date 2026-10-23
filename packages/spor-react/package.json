@@ -1,7 +1,7 @@
 {
   "name": "@vygruppen/spor-react",
   "type": "module",
-  "version": "14.0.0",
+  "version": "14.0.1",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

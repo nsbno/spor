@@ -59,9 +59,9 @@ export const DateField = ({
   );
 
   return (
-    <Box minWidth="6rem" width="100%">
+    <Box width="100%">
       {props.label && (
-        <Box css={styles.inputLabel} position="absolute" paddingTop="2px">
+        <Box css={styles.inputLabel} position="absolute">
           <Label
             padding="0"
             fontSize={["mobile.2xs", "desktop.2xs"]}
@@ -72,7 +72,7 @@ export const DateField = ({
           </Label>
         </Box>
       )}
-      <Flex {...fieldProps} ref={ref} paddingTop="3" paddingBottom="0.5">
+      <Flex {...fieldProps} ref={ref} paddingTop="3">
         {state.segments.map((segment, index) => (
           <DateTimeSegment
             key={index}

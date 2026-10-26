@@ -23,19 +23,7 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       },
     },
     indicator: {
-      width: "100%",
-      height: "100%",
       marginTop: -1,
-      transform: "scale(1)",
-      opacity: 0,
-      _checked: {
-        opacity: 1,
-        transition: "opacity 300ms cubic-bezier(0.65, 0.25, 0.56, 0.96)",
-      },
-      _indeterminate: {
-        opacity: 1,
-        transition: "opacity 300ms cubic-bezier(0.65, 0.25, 0.56, 0.96)",
-      },
     },
     control: {
       width: 4,

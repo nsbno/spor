@@ -48,7 +48,7 @@ const ShadowTokensTable = () => {
 
   return (
     <Box>
-      <Table colorPalette="white">
+      <Table disableHover>
         <TableHeader>
           <TableRow>
             <TableColumnHeader>Example</TableColumnHeader>

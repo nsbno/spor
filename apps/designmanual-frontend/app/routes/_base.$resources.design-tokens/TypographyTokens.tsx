@@ -66,7 +66,7 @@ const TypographyTokenTable = ({
   return (
     <Box>
       <LinkableHeading as="h3">{title}</LinkableHeading>
-      <Table colorPalette="white">
+      <Table disableHover>
         <TableHeader>
           <TableRow>
             <TableColumnHeader>Token</TableColumnHeader>

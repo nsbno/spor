@@ -4,7 +4,9 @@ import { CalendarDateTime } from "@internationalized/date";
 import { TimeValue } from "@react-types/datepicker";
 import {
   DropdownLeftFill18Icon,
+  DropdownLeftFill24Icon,
   DropdownRightFill18Icon,
+  DropdownRightFill24Icon,
 } from "@vygruppen/spor-icon-react";
 import { useTimeFieldState } from "react-stately";
 
@@ -82,6 +84,7 @@ export const TimePicker = ({
   minuteInterval = 30,
   disabled: isDisabledExternally = false,
   name,
+  size = "md",
   ...boxProps
 }: TimePickerProps) => {
   const { disabled: fieldDisabled, invalid: fieldInvalid } =
@@ -149,6 +152,7 @@ export const TimePicker = ({
         aria-disabled={isDisabled}
         aria-label={ariaLabel}
         position="relative"
+        size={size}
         {...boxProps}
       >
         <IconButton
@@ -157,7 +161,13 @@ export const TimePicker = ({
           borderRadius="xs"
           aria-label={backwardsLabel}
           title={backwardsLabel}
-          icon={<DropdownLeftFill18Icon />}
+          icon={
+            size == "sm" ? (
+              <DropdownLeftFill18Icon />
+            ) : (
+              <DropdownLeftFill24Icon />
+            )
+          }
           onClick={handleBackwardsClick}
           disabled={isDisabled}
           style={isDisabled ? { backgroundColor: "transparent" } : {}}
@@ -170,7 +180,13 @@ export const TimePicker = ({
           borderRadius="xs"
           aria-label={forwardsLabel}
           title={forwardsLabel}
-          icon={<DropdownRightFill18Icon />}
+          icon={
+            size == "sm" ? (
+              <DropdownRightFill18Icon />
+            ) : (
+              <DropdownRightFill24Icon />
+            )
+          }
           onClick={handleForwardClick}
           disabled={isDisabled}
           style={isDisabled ? { backgroundColor: "transparent" } : {}}

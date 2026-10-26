@@ -54,6 +54,9 @@ export const tableAnatomy = createAnatomy("table").parts(
   "caption",
   "footer",
   "header",
+  "expandableTrigger",
+  "expandableContent",
+  "expandableContentMarker",
 );
 
 export const fieldAnatomy = createAnatomy("field").parts(
@@ -131,6 +134,7 @@ export const checkboxAnatomy = createAnatomy("checkbox").parts(
 );
 
 export const breadcrumbAnatomy = createAnatomy("breadcrumb").parts(
+  "root",
   "link",
   "currentLink",
   "list",

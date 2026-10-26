@@ -14,7 +14,7 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       gap: 1.5,
       _hover: {
         "& > input:enabled:not([aria-invalid]) + .spor-checkbox__control": {
-          borderColor: "outline.core.hover",
+          borderColor: "outline.core.highlight",
         },
         "& > input:enabled:checked:not([aria-invalid]) + .spor-checkbox__control":
           {

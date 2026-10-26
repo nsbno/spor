@@ -99,9 +99,15 @@ export const ServiceAlert = ({
           >
             <HStack as={headingLevel} alignItems="center" gap="1">
               {variant === "service" ? (
-                <ServiceFill24Icon aria-label={t(texts.service)} />
+                <ServiceFill24Icon
+                  color="icon.service"
+                  aria-label={t(texts.service)}
+                />
               ) : (
-                <WarningFill24Icon aria-label={t(texts["global-deviation"])} />
+                <WarningFill24Icon
+                  color="icon.warning"
+                  aria-label={t(texts["global-deviation"])}
+                />
               )}
               <Span
                 css={{
@@ -123,7 +129,7 @@ export const ServiceAlert = ({
                 </Text>
               )}
               <Accordion.ItemIndicator>
-                <DropdownDownFill24Icon color="icon.brand" />
+                <DropdownDownFill24Icon color="icon.service" />
               </Accordion.ItemIndicator>
             </Flex>
           </HStack>

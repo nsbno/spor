@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-design-tokens",
-  "version": "5.1.1",
+  "version": "7.0.0",
   "description": "All Vy's design tokens",
   "type": "module",
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-card-react",
@@ -29,6 +29,7 @@
   },
   "scripts": {
     "build": "tsx scripts/build.mts",
+    "prepare": "pnpm build",
     "dev": "chokidar 'scripts/**/*' 'tokens/**/*' -c 'pnpm build'",
     "lint": "eslint ."
   },

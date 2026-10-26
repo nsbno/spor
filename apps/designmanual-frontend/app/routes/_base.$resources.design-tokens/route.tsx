@@ -77,7 +77,7 @@ export default function DesignTokensPage() {
 
           {brand === Brand.VyUtvikling && (
             <Alert
-              variant="important"
+              data-color="warning"
               icon={WarningOutline24Icon}
               title="Vy Utvikling is deprecated"
               role="status"
@@ -111,7 +111,6 @@ export default function DesignTokensPage() {
           position="fixed"
           overflow="auto"
           right={0}
-          paddingLeft={1}
           paddingTop={3}
           top={`${headerOffset}px`}
           transition="all .3s linear"

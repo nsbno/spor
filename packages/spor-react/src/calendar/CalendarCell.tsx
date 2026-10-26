@@ -114,7 +114,7 @@ const cellStyles = {
   // Hover for non-selected, non-disabled cells on devices that support hover
   "@media (hover: hover)": {
     "&:not([data-edge]):not([data-middle]):not([data-disabled]):hover": {
-      backgroundColor: "surface.subtle",
+      backgroundColor: "surface.ghost.hover",
       color: "text",
     },
   },

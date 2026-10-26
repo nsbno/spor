@@ -6,7 +6,36 @@ packages:
   - "apps/designmanual-frontend"
 
 minimumReleaseAge: 10080 # ensures that only packages released at least 7 days ago can be installed
+minimumReleaseAgeExclude:
+  # Came in with the fast-xml-parser 5.11.2 pin while pnpm 10.4.1 ignored minimumReleaseAge.
+  # It is 7 days old on 2026-10-17. Remove this entry then.
+  - strnum@2.5.1
 
 preferFrozenLockfile: true
 savePrefix: ""
 trustPolicy: no-downgrade
+# Lockfile entries whose trust level dropped compared to an earlier release.
+# They were in the lockfile before pnpm enforced trustPolicy (pnpm 10.4.1 ignored it).
+# Most come from apps/studio and Storybook, which Part 1 deletes; the prune setting
+# removes an entry here once the lockfile no longer has that version.
+trustPolicyExclude:
+  - "@sanity/template-validator@2.4.6"
+  - chokidar@4.0.3
+  - groq@3.88.1-typegen-experimental.0
+  - reselect@5.1.1
+  - semver@5.7.2 || 6.3.1
+  - undici-types@6.21.0
+  - vite@6.3.6
+trustPolicyExcludePrune: true
+
+# Dependency install scripts are blocked. A new one fails the install until someone sets it to true or false here.
+strictDepBuilds: true
+allowBuilds:
+  "@bundled-es-modules/glob": false
+  canvas: false
+  esbuild: false
+  style-dictionary: false
+
+overrides:
+  fast-xml-parser: 5.11.2
+  "@types/react": 19.2.3

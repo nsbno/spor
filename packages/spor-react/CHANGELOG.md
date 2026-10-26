@@ -1,5 +1,63 @@
 # @vygruppen/spor-react
 
+## 14.0.2
+
+### Patch Changes
+
+- 7fbbc5c: Update cargonet, teknologi, and utvikling theme to include new tokens. Add chakra's tooltip props to the Tooltip component
+- Updated dependencies [7fbbc5c]
+  - @vygruppen/spor-design-tokens@7.0.0
+
+## 14.0.1
+
+### Patch Changes
+
+- 224c251: Add caution icon
+- Updated dependencies [224c251]
+  - @vygruppen/spor-icon-react@5.1.1
+
+## 14.0.0
+
+### Major Changes
+
+- e09458f: Adds the `data-color` property to all Spor components. Set it to a status (`success`, `info`, `warning`, `critical`, `caution`, `neutral`, `notice`, or `service`) to change the default values of the `accent`, `brand`, `core`, `ghost`, and `floating` color tokens on that component and its children. For example, `data-color="info"` makes `surface.accent` resolve to `surface.info`.
+
+  Breaking changes:
+  - In `Alert`, replace the `variant` prop with `data-color` (for example, change `variant="info"` to `data-color="info"`).
+  - Components that used the `colorPalette` prop, such as `Badge` and `StaticCard`, now use `data-color` instead.
+  - Feedback icons (such as info, error, and success ) no longer have a preset color, so their color can follow the `data-color` value.
+  - The Toast `error` variant has been renamed to `critical`.
+
+  Migration
+  A new script has been added to the spor-codemods package. Please read the Readme for instructions on how to use it.
+
+- 540ec49: Update table with new design. Adds expandable table rows, stripes and new variant - accent.
+  Breaking! Removes core variant
+
+### Patch Changes
+
+- Updated dependencies [e09458f]
+  - @vygruppen/spor-design-tokens@6.0.0
+  - @vygruppen/spor-icon-react@5.1.0
+
+## 13.8.2
+
+### Patch Changes
+
+- 86d5ce7: ServiceAlert: use text.service and icon.service tokens instead of text.brand and icon.brand
+- Updated dependencies [9812e49]
+  - @vygruppen/spor-icon-react@5.1.0
+
+## 13.8.1
+
+### Patch Changes
+
+- f54a9cd: Dialog: Remove backdrop background when dialog is set to be a modal
+- bafddc3: Datepicker: Improve accessibility by solving focus-order issue in calendar navigation
+- c205685: AttachedInputs: remove override on zIndex on child components to solve bugs where elements such as errorText and selectItems got placed behind the inputfield
+- Updated dependencies [32d1fc4]
+  - @vygruppen/spor-design-tokens@5.1.2
+
 ## 13.8.0
 
 ### Minor Changes

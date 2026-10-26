@@ -46,7 +46,7 @@ export const comboboxSlotRecipe = defineSlotRecipe({
     },
 
     content: {
-      backgroundColor: "surface",
+      backgroundColor: "surface.floating",
       boxShadow: "sm",
       overflowY: "auto",
       maxHeight: "50vh",

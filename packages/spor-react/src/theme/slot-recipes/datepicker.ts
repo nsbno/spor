@@ -157,7 +157,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
           _hover: {
             outline: "2px solid",
 
-            outlineColor: "outline.core.hover",
+            outlineColor: "outline.core.highlight",
             _active: {
               backgroundColor: "surface.ghost.active",
               outline: "1px solid",
@@ -187,7 +187,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
 
           _hover: {
             outline: "1px solid",
-            outlineColor: "outline.floating.hover",
+            outlineColor: "outline.floating.highlight",
             _active: {
               backgroundColor: "surface.ghost.active",
               outline: "1px solid",
@@ -212,7 +212,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         wrapper: {
           _hover: {
             outline: "2px solid",
-            outlineColor: "outline.core.hover",
+            outlineColor: "outline.core.highlight",
             _active: {
               backgroundColor: "surface.ghost.active",
               outline: "1px solid",

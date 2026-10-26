@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.0.0
+
+### Major Changes
+
+- 7fbbc5c: Update cargonet, teknologi, and utvikling theme to include new tokens. Add chakra's tooltip props to the Tooltip component
+
 ## 6.0.0
 
 ### Major Changes

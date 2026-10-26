@@ -1,5 +1,12 @@
 # @vygruppen/sidespor-config
 
+## 3.0.2
+
+### Patch Changes
+
+- Updated dependencies [7fbbc5c]
+  - @vygruppen/spor-react@14.0.2
+
 ## 3.0.1
 
 ### Patch Changes

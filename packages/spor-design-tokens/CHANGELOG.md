@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.0.1
+
+### Patch Changes
+
+- cbc7d01: Update outline.highlight in CargoNet with new colorvalues
+
 ## 7.0.0
 
 ### Major Changes

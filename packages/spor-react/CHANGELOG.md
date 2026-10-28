@@ -1,5 +1,19 @@
 # @vygruppen/spor-react
 
+## 14.1.0
+
+### Minor Changes
+
+- 7a92bed: Checkbox: Add indeterminate state for checkbox when checked="indeterminate"
+
+### Patch Changes
+
+- 586073f: Date and Timepicker: Adjust the styling so they follow the size standard where the height is 54px (md) and 42px (small).
+- fd052cb: Autocomplete: fix spacing between icon and label when using autocomplete in size small
+- Updated dependencies [cbc7d01]
+  - @vygruppen/spor-design-tokens@7.0.1
+  - @vygruppen/spor-icon-react@5.1.1
+
 ## 14.0.2
 
 ### Patch Changes

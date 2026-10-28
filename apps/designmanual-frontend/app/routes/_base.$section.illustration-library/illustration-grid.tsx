@@ -29,11 +29,6 @@ export const IllustationGrid = ({
         ? illustration.imageLightBackground
         : illustration.imageDarkBackground;
 
-    const downloadUrl = urlBuilder
-      .image(imageUrl)
-      .forceDownload(`${slugify(illustration.title)}.svg`)
-      .url();
-
     return (
       <ClientOnly
         fallback={<Skeleton height="236px" borderRadius="md" />}
@@ -72,10 +67,10 @@ export const IllustationGrid = ({
               size="sm"
               icon={<DownloadOutline18Icon />}
               as="a"
-              download={`${slugify(illustration.title)}.svg`}
-              href={downloadUrl}
-              aria-label="Download SVG"
-              title="Download SVG"
+              download={`${slugify(illustration.title)}.zip`}
+              href={`/resources/illustration-library/${illustration._id}`}
+              aria-label="Download light and dark mode SVGs"
+              title="Download light and dark mode SVGs"
             />
           </Box>
         </StaticCard>

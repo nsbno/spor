@@ -1,6 +1,6 @@
 import { groq } from "@sanity/groq-store";
 import { Box } from "@vygruppen/spor-react";
-import { LoaderFunctionArgs, redirect, useLoaderData } from "react-router";
+import { LoaderFunctionArgs, useLoaderData } from "react-router";
 
 import {
   resolveAccordionGroq,
@@ -20,9 +20,6 @@ import { PortableText } from "~/features/portable-text/PortableText";
 import { getClient } from "~/utils/sanity/client";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  // remove next line to publish identity section
-  if (process.env.VITE_ENVIRONMENT === "prod") return redirect("/spor");
-
   const draftMode =
     new URL(request.url).searchParams.get("sanity-preview-perspective") ===
     "drafts";

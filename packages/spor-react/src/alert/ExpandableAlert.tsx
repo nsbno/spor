@@ -14,7 +14,7 @@ import { PropsWithChildren } from "react";
 import { AccordionItemContent } from "@/accordion";
 import { useDataColor } from "@/data-color-context";
 import { alertExpandableSlotRecipe } from "@/theme/slot-recipes/alert-expandable";
-import { SporSemantic } from "@/theme/tokens/global-css";
+import { SporStatusToken } from "@/theme/tokens/global-css";
 
 import { AlertIcon } from "./AlertIcon";
 
@@ -53,7 +53,7 @@ export const ExpandableAlert = ({
   ...props
 }: ExpandableAlertProps & {
   ref?: React.Ref<HTMLDivElement>;
-  "data-color": SporSemantic;
+  "data-color": SporStatusToken;
 }) => {
   const {
     children,

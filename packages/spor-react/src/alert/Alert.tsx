@@ -6,7 +6,7 @@ import { IconComponent } from "@vygruppen/spor-icon-react";
 import { CloseButton } from "@/button";
 import { useDataColor } from "@/data-color-context";
 import { createTexts, useTranslation } from "@/i18n";
-import { SporSemantic } from "@/theme/tokens/global-css";
+import { SporStatusToken } from "@/theme/tokens/global-css";
 
 import { AlertIcon } from "./AlertIcon";
 
@@ -46,7 +46,7 @@ export const Alert = ({
   ...props
 }: AlertProps & {
   ref?: React.Ref<HTMLDivElement>;
-  "data-color": SporSemantic;
+  "data-color": SporStatusToken;
 }) => {
   const {
     title,

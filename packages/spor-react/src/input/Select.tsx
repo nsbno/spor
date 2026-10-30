@@ -22,7 +22,7 @@ import {
 import * as React from "react";
 
 import { CloseButton } from "@/button";
-import { SporSemantic } from "@/theme/tokens/global-css";
+import { SporStatusToken } from "@/theme/tokens/global-css";
 
 import { Badge } from "..";
 import { Field, FieldProps } from "./Field";
@@ -67,7 +67,7 @@ export const Select = ({
   ...props
 }: SelectProps & {
   ref?: React.Ref<HTMLDivElement>;
-  "data-color"?: SporSemantic;
+  "data-color"?: SporStatusToken;
 }) => {
   const {
     variant = "core",

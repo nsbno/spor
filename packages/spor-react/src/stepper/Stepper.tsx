@@ -10,7 +10,7 @@ import { PropsWithChildren } from "react";
 
 import { Box, createTexts, IconButton, Text, useTranslation } from "..";
 import { stepperSlotRecipe } from "../theme/slot-recipes/stepper";
-import { SporSemantic } from "../theme/tokens/global-css";
+import { SporStatusToken } from "../theme/tokens/global-css";
 import { StepperStep } from ".";
 import { StepperProvider } from "./StepperContext";
 
@@ -43,7 +43,7 @@ type StepperProps = PropsWithChildren<StepperVariantProps> & {
   /** Disables all clicks */
   disabled?: boolean;
   css?: SystemStyleObject;
-  "data-color"?: SporSemantic;
+  "data-color"?: SporStatusToken;
 };
 /**
  * A stepper is used to show which step of a process a user is currently in.

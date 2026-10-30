@@ -12,7 +12,7 @@ import React from "react";
 
 import { CloseButton } from "@/button";
 import { ColorSpinner } from "@/loader";
-import { SporSemantic } from "@/theme/tokens/global-css";
+import { SporStatusToken } from "@/theme/tokens/global-css";
 
 import { createTexts, useTranslation } from "..";
 import { FieldProps } from "./Field";
@@ -29,7 +29,7 @@ type Props = {
   emptyLabel?: React.ReactNode;
   openOnFocus?: boolean;
   ref?: React.Ref<HTMLInputElement | null>;
-  "data-color"?: SporSemantic;
+  "data-color"?: SporStatusToken;
 } & Omit<ComboboxRootProps, "collection"> &
   FieldProps;
 

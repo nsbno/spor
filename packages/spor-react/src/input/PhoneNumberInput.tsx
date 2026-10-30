@@ -1,7 +1,7 @@
 "use client";
 import { useControllableState } from "@chakra-ui/react";
 
-import { SporSemantic } from "@/theme/tokens/global-css";
+import { SporStatusToken } from "@/theme/tokens/global-css";
 
 import { createTexts, Input, InputProps, useTranslation } from "..";
 import { AttachedInputs } from "./AttachedInputs";
@@ -49,7 +49,7 @@ export const PhoneNumberInput = ({
   ...props
 }: PhoneNumberInputProps & {
   ref?: React.Ref<HTMLInputElement>;
-  "data-color"?: SporSemantic;
+  "data-color"?: SporStatusToken;
 }) => {
   const {
     label: externalLabel,

@@ -13,10 +13,10 @@ import {
   WarningFill24Icon,
 } from "@vygruppen/spor-icon-react";
 
-import { SporSemantic } from "@/theme/tokens/global-css";
+import { SporStatusToken } from "@/theme/tokens/global-css";
 
 type AlertIconProps = {
-  variant: SporSemantic;
+  variant: SporStatusToken;
   customIcon?: IconComponent;
 };
 
@@ -41,7 +41,7 @@ export const AlertIcon = ({
   );
 };
 
-export const BaseAlertIcon = ({ variant }: { variant: SporSemantic }) => {
+export const BaseAlertIcon = ({ variant }: { variant: SporStatusToken }) => {
   switch (variant) {
     case "info": {
       return <InformationFill24Icon />;
